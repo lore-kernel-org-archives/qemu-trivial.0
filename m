@@ -1,78 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f812D-0007Xn-VL
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Apr 2018 06:06:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37405)
+	id 1f8BB4-00072b-IK
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Apr 2018 16:56:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36664)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f8129-0007TN-5c
-	for qemu-trivial@nongnu.org; Mon, 16 Apr 2018 06:06:52 -0400
+	(envelope-from <alistair23@gmail.com>) id 1f8BB0-00071P-LS
+	for qemu-trivial@nongnu.org; Mon, 16 Apr 2018 16:56:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f8123-0004GY-IU
-	for qemu-trivial@nongnu.org; Mon, 16 Apr 2018 06:06:49 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:38333)
+	(envelope-from <alistair23@gmail.com>) id 1f8BAz-0000BV-4M
+	for qemu-trivial@nongnu.org; Mon, 16 Apr 2018 16:56:38 -0400
+Received: from mail-lf0-x241.google.com ([2a00:1450:4010:c07::241]:33672)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f811z-0004A0-AQ; Mon, 16 Apr 2018 06:06:39 -0400
-Received: by mail-qt0-x242.google.com with SMTP id z23so14640166qti.5;
-	Mon, 16 Apr 2018 03:06:39 -0700 (PDT)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1f8BAy-0000A4-PD; Mon, 16 Apr 2018 16:56:37 -0400
+Received: by mail-lf0-x241.google.com with SMTP id m14-v6so12148377lfc.0;
+	Mon, 16 Apr 2018 13:56:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=cOljJF1H3fKwlDAcD3SOVdnvNeTRcJlaWuHvNTbo2PE=;
-	b=ajIAMJnj5D0mK00HwlDixbBpA3GCQDdLLZLucqFrLtKGmMRmAzWlwYUkeePLEfhguT
-	A9WIbfkY1cD2tDqMyEsMhgddCYssQpuNmjHpSiOShG53RnRrbyMrg0PSgxE2LaLzOATN
-	QzEcyDJ7JpubTGuGP0Chj9yP6b9d/SV8QOliW5dl45zSW6Qhz/KmkPggoPpEp5+LCl35
-	zvMOkfucPL5+TnvVetO++2RtpSG18grbF3Ln1Ea+gTJ/HWyJudFrCgwIm8maH104N0wk
-	BCDqfJ/kol0U2dKFYI3hOfEA8CwRtrzoTZy5GaCOJQMWzNJDnUe+gdPIlDMhdgmKsQKg
-	ScmA==
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=Uox431RlGdk1XGX/zg6vfUHINH5lbwyqe56dUQqiPw4=;
+	b=DOk3j4UsDURRzaUOy6vHDxndpae/ZVTZPVBOhVbAuM6i4fpse6XLMP0ONXMH1MzY/g
+	+I9AJJJYoIe6lOoUO0cq+WQK4+qQIad41sw7rD6NuC95YSA0/vvVYz/Nw7kGiYGHm4yS
+	2hDhOl5peoTFLdEPxObrVhpEh78o9l5rrQlSZpOObWlYuk/oW6hAjGl6tRxAShfsVAeE
+	DvHHH7H7rsa4zYrXbio5ia7adOyPaRuMwB1SvnrM3425HP157ujWDeXOUS7jpanDZGne
+	7Us7581a+UXxM5gMELB09v9pSX8TYcpxmLKqSRAym+TAiu06Pb6To1s2Msw/azEhiI5T
+	zsvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=cOljJF1H3fKwlDAcD3SOVdnvNeTRcJlaWuHvNTbo2PE=;
-	b=VKtokwDUsE8woBJ033HN9Hbgkf6nRFsw8aa6IctZ5UQsJXJa0Yu0YzkxOAdeINJZZE
-	RE6Oy/I+N4eTtElnAro4eejx9iW5rKpcQf5YNAaZcAdGH3v5cC+G+lAlf5AqDlSZQvGu
-	EcQVdwut/whkOgcOsNUyKQHjuprhxsgsd8IMHaNcut+pLKRBiptyX2qE8Ak228yPjH+T
-	c2bp5BwPEDQmM3ruZJ6srHuKlZ4fU+vQ6VOpj2Hmavq+kpcRnPVaYbNPcT2RBhZfe76s
-	m9FcCbTosQEqKSJFF3a9s44TboGKELOdOYcgR0+88Ahxissq1lZ4w5aWn+eJd5Ftvyh/
-	jomg==
-X-Gm-Message-State: ALQs6tAjco+h29DnzM4b4zH+IAaHibm55GQvhAIZxI3VwDc+rahC9hhD
-	S9LVpW/stmoNKGlw8p/KY+YwklD4XgA=
-X-Google-Smtp-Source: AIpwx499kaJVBXYMCZmYfX7yeEHhfOguJhySwP0QZwtNgR5SyE/5Yqq8VjCq4LLdbrnQtE8ZmTI7CQ==
-X-Received: by 10.200.16.21 with SMTP id z21mr15310188qti.162.1523873198810;
-	Mon, 16 Apr 2018 03:06:38 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.212])
-	by smtp.gmail.com with ESMTPSA id
-	u47sm3370803qtc.64.2018.04.16.03.06.37
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 16 Apr 2018 03:06:38 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org
-References: <20180415234307.28132-1-f4bug@amsat.org>
-	<20180415234307.28132-2-f4bug@amsat.org>
-	<a2d59a3a-0176-6065-68ae-60fee97c2332@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <50f40271-11e2-96df-a2f1-58f373cfc656@amsat.org>
-Date: Mon, 16 Apr 2018 07:06:34 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=Uox431RlGdk1XGX/zg6vfUHINH5lbwyqe56dUQqiPw4=;
+	b=Cq9qUE+KkQv7aHLG3L+hJNn7lhzbMW8YHrlAc7XGpDj9KGczwDrEb/CYdr/LXfjteG
+	6hZ35JaYHuF0IVvSQ+sD+U4MtsBboQqNWE+0FTrYvaJMlqReo67mhQVczSsD2Hbfz1ry
+	FowWJXXweFZLHSuEDF++hcTeqa9yH58vM6P4I8kcItRr0QS4Gmi2eSmxlx5qTlfnEhTn
+	PA/z725T/ADDEzSoU7l4YQfCHRSA/SEbWpSISUfWdcO6JlsapCIzW2qG+pwwqqTa29yu
+	LVIWT2G45p3kGXAfwysGJl/zYlOWwcdDU5ogg5eegzEIZDzQjSEm+0kRsCuwLT7+ZBtT
+	91Gg==
+X-Gm-Message-State: ALQs6tCQ3/HJOBatxHRAnEp8Wp5rZS5gAJMKxC/sAyyc8D4G1kS55FjE
+	3d13eqedGguUYO1d1cFPchsjGlLxPqABkojQkr4=
+X-Google-Smtp-Source: AIpwx497/fEjJUY9YUloGOd4I4xnqv1SFYkKU7hXZ22T26XrYwEGxa4ovXKkM5/lrhKcIG4ErfziLGlQjEwpwRlWcvc=
+X-Received: by 10.46.127.10 with SMTP id a10mr2382475ljd.78.1523912195300;
+	Mon, 16 Apr 2018 13:56:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <a2d59a3a-0176-6065-68ae-60fee97c2332@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 10.46.135.147 with HTTP; Mon, 16 Apr 2018 13:56:04 -0700 (PDT)
+In-Reply-To: <20180415234307.28132-30-f4bug@amsat.org>
+References: <20180415234307.28132-1-f4bug@amsat.org>
+	<20180415234307.28132-30-f4bug@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 16 Apr 2018 13:56:04 -0700
+Message-ID: <CAKmqyKPHbymtr4r9wgmb7H3ki96mWuFDjHRBJFm8sSfyB6J6xA@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>, 
+	Paul Burton <paul.burton@mips.com>, Yongbok Kim <yongbok.kim@mips.com>, 
+	Aurelien Jarno <aurelien@aurel32.net>, 
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-trivial] [PATCH v3 01/41] hw: Clean "hw/devices.h"
- includes
+X-Received-From: 2a00:1450:4010:c07::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 29/41] hw/mips: Use the
+ BYTE-based definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,40 +71,299 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Apr 2018 10:06:52 -0000
+X-List-Received-Date: Mon, 16 Apr 2018 20:56:40 -0000
 
-Hi Thomas,
+On Sun, Apr 15, 2018 at 4:42 PM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
+> It eases code review, unit is explicit.
+>
+> Patch generated using:
+>
+>   $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include/h=
+w/
+>
+> and modified manually.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-On 04/16/2018 01:53 AM, Thomas Huth wrote:
-> On 16.04.2018 01:42, Philippe Mathieu-Daudé wrote:
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  include/hw/devices.h | 7 ++-----
->>  1 file changed, 2 insertions(+), 5 deletions(-)
->>
->> diff --git a/include/hw/devices.h b/include/hw/devices.h
->> index 861ddea8af..0e27feb0c2 100644
->> --- a/include/hw/devices.h
->> +++ b/include/hw/devices.h
->> @@ -1,13 +1,10 @@
->>  #ifndef QEMU_DEVICES_H
->>  #define QEMU_DEVICES_H
->>  
->> -#include "hw/irq.h"
->> -
->> -/* ??? Not all users of this file can include cpu-common.h.  */
->> -struct MemoryRegion;
->> -
->>  /* Devices that have nowhere better to go.  */
->>  
->> +#include "hw/hw.h"
->> +
->>  /* smc91c111.c */
->>  void smc91c111_init(NICInfo *, uint32_t, qemu_irq);
-> 
-> IMHO we should rather get rid of devices.h (in a separate patch series)
-> and introduce proper small headers à la smc91c111.h for the single
-> sections in here... Just my 0.02 €.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Yes, the idea is to QOM'ify those devices and drop this file.
+Alistair
+
+> ---
+>  include/hw/intc/mips_gic.h |  3 ++-
+>  include/hw/mips/bios.h     |  3 ++-
+>  hw/mips/boston.c           |  4 ++--
+>  hw/mips/mips_fulong2e.c    |  7 ++++---
+>  hw/mips/mips_malta.c       | 23 +++++++++++++----------
+>  hw/mips/mips_r4k.c         | 11 ++++++-----
+>  hw/misc/mips_itu.c         |  3 ++-
+>  hw/pci-host/xilinx-pcie.c  |  5 +++--
+>  8 files changed, 34 insertions(+), 25 deletions(-)
+>
+> diff --git a/include/hw/intc/mips_gic.h b/include/hw/intc/mips_gic.h
+> index b98d50094a..c0da44bdb3 100644
+> --- a/include/hw/intc/mips_gic.h
+> +++ b/include/hw/intc/mips_gic.h
+> @@ -11,6 +11,7 @@
+>  #ifndef MIPS_GIC_H
+>  #define MIPS_GIC_H
+>
+> +#include "qemu/units.h"
+>  #include "hw/timer/mips_gictimer.h"
+>  #include "cpu.h"
+>  /*
+> @@ -19,7 +20,7 @@
+>
+>  /* The MIPS default location */
+>  #define GIC_BASE_ADDR           0x1bdc0000ULL
+> -#define GIC_ADDRSPACE_SZ        (128 * 1024)
+> +#define GIC_ADDRSPACE_SZ        (128 * K_BYTE)
+>
+>  /* Constants */
+>  #define GIC_POL_POS     1
+> diff --git a/include/hw/mips/bios.h b/include/hw/mips/bios.h
+> index b4b88ac43d..b4c97ce87c 100644
+> --- a/include/hw/mips/bios.h
+> +++ b/include/hw/mips/bios.h
+> @@ -1,6 +1,7 @@
+> +#include "qemu/units.h"
+>  #include "cpu.h"
+>
+> -#define BIOS_SIZE (4 * 1024 * 1024)
+> +#define BIOS_SIZE (4 * M_BYTE)
+>  #ifdef TARGET_WORDS_BIGENDIAN
+>  #define BIOS_FILENAME "mips_bios.bin"
+>  #else
+> diff --git a/hw/mips/boston.c b/hw/mips/boston.c
+> index fb23161b33..edc39e91f7 100644
+> --- a/hw/mips/boston.c
+> +++ b/hw/mips/boston.c
+> @@ -32,7 +32,7 @@
+>  #include "hw/mips/cpudevs.h"
+>  #include "hw/pci-host/xilinx-pcie.h"
+>  #include "qapi/error.h"
+> -#include "qemu/cutils.h"
+> +#include "qemu/units.h"
+>  #include "qemu/error-report.h"
+>  #include "qemu/log.h"
+>  #include "chardev/char.h"
+> @@ -437,7 +437,7 @@ static void boston_mach_init(MachineState *machine)
+>      bool is_64b;
+>
+>      if ((machine->ram_size % G_BYTE) ||
+> -        (machine->ram_size > (2 * G_BYTE))) {
+> +        (machine->ram_size > 2 * G_BYTE)) {
+>          error_report("Memory size must be 1GB or 2GB");
+>          exit(1);
+>      }
+> diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
+> index 02fb2fdcc4..779883db7c 100644
+> --- a/hw/mips/mips_fulong2e.c
+> +++ b/hw/mips/mips_fulong2e.c
+> @@ -19,6 +19,7 @@
+>   */
+>
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "qapi/error.h"
+>  #include "hw/hw.h"
+>  #include "hw/i386/pc.h"
+> @@ -159,7 +160,7 @@ static int64_t load_kernel (CPUMIPSState *env)
+>      /* Setup minimum environment variables */
+>      prom_set(prom_buf, index++, "busclock=3D33000000");
+>      prom_set(prom_buf, index++, "cpuclock=3D100000000");
+> -    prom_set(prom_buf, index++, "memsize=3D%i", loaderparams.ram_size/10=
+24/1024);
+> +    prom_set(prom_buf, index++, "memsize=3D%llu", loaderparams.ram_size =
+/ M_BYTE);
+>      prom_set(prom_buf, index++, "modetty0=3D38400n8r");
+>      prom_set(prom_buf, index++, NULL);
+>
+> @@ -303,10 +304,10 @@ static void mips_fulong2e_init(MachineState *machin=
+e)
+>      qemu_register_reset(main_cpu_reset, cpu);
+>
+>      /* fulong 2e has 256M ram. */
+> -    ram_size =3D 256 * 1024 * 1024;
+> +    ram_size =3D 256 * M_BYTE;
+>
+>      /* fulong 2e has a 1M flash.Winbond W39L040AP70Z */
+> -    bios_size =3D 1024 * 1024;
+> +    bios_size =3D 1 * M_BYTE;
+>
+>      /* allocate RAM */
+>      memory_region_allocate_system_memory(ram, NULL, "fulong2e.ram", ram_=
+size);
+> diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
+> index f6513a4fd5..240dd762be 100644
+> --- a/hw/mips/mips_malta.c
+> +++ b/hw/mips/mips_malta.c
+> @@ -23,6 +23,7 @@
+>   */
+>
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "qemu-common.h"
+>  #include "cpu.h"
+>  #include "hw/hw.h"
+> @@ -844,7 +845,8 @@ static int64_t load_kernel (void)
+>              /* The kernel allocates the bootmap memory in the low memory=
+ after
+>                 the initrd.  It takes at most 128kiB for 2GB RAM and 4kiB
+>                 pages.  */
+> -            initrd_offset =3D (loaderparams.ram_low_size - initrd_size -=
+ 131072
+> +            initrd_offset =3D (loaderparams.ram_low_size - initrd_size
+> +                             - (128 * K_BYTE)
+>                               - ~INITRD_PAGE_MASK) & INITRD_PAGE_MASK;
+>              if (kernel_high >=3D initrd_offset) {
+>                  error_report("memory too small for initial ram disk '%s'=
+",
+> @@ -1022,9 +1024,9 @@ void mips_malta_init(MachineState *machine)
+>      mips_create_cpu(s, machine->cpu_type, &cbus_irq, &i8259_irq);
+>
+>      /* allocate RAM */
+> -    if (ram_size > (2048u << 20)) {
+> -        error_report("Too much memory for this machine: %dMB, maximum 20=
+48MB",
+> -                     ((unsigned int)ram_size / (1 << 20)));
+> +    if (ram_size > 2 * G_BYTE) {
+> +        error_report("Too much memory for this machine: %lluMB, maximum =
+2048MB",
+> +                     ram_size / M_BYTE);
+>          exit(1);
+>      }
+>
+> @@ -1035,17 +1037,18 @@ void mips_malta_init(MachineState *machine)
+>
+>      /* alias for pre IO hole access */
+>      memory_region_init_alias(ram_low_preio, NULL, "mips_malta_low_preio.=
+ram",
+> -                             ram_high, 0, MIN(ram_size, (256 << 20)));
+> +                             ram_high, 0, MIN(ram_size, 256 * M_BYTE));
+>      memory_region_add_subregion(system_memory, 0, ram_low_preio);
+>
+>      /* alias for post IO hole access, if there is enough RAM */
+> -    if (ram_size > (512 << 20)) {
+> +    if (ram_size > 512 * M_BYTE) {
+>          ram_low_postio =3D g_new(MemoryRegion, 1);
+>          memory_region_init_alias(ram_low_postio, NULL,
+>                                   "mips_malta_low_postio.ram",
+> -                                 ram_high, 512 << 20,
+> -                                 ram_size - (512 << 20));
+> -        memory_region_add_subregion(system_memory, 512 << 20, ram_low_po=
+stio);
+> +                                 ram_high, 512 * M_BYTE,
+> +                                 ram_size - 512 * M_BYTE);
+> +        memory_region_add_subregion(system_memory, 512 * M_BYTE,
+> +                                    ram_low_postio);
+>      }
+>
+>  #ifdef TARGET_WORDS_BIGENDIAN
+> @@ -1082,7 +1085,7 @@ void mips_malta_init(MachineState *machine)
+>      bios =3D pflash_cfi01_get_memory(fl);
+>      fl_idx++;
+>      if (kernel_filename) {
+> -        ram_low_size =3D MIN(ram_size, 256 << 20);
+> +        ram_low_size =3D MIN(ram_size, 256 * M_BYTE);
+>          /* For KVM we reserve 1MB of RAM for running bootloader */
+>          if (kvm_enabled()) {
+>              ram_low_size -=3D 0x100000;
+> diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
+> index c26a44da06..2a848bc1c2 100644
+> --- a/hw/mips/mips_r4k.c
+> +++ b/hw/mips/mips_r4k.c
+> @@ -8,6 +8,7 @@
+>   * the standard PC ISA addresses.
+>  */
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "qapi/error.h"
+>  #include "qemu-common.h"
+>  #include "cpu.h"
+> @@ -144,7 +145,7 @@ static int64_t load_kernel(void)
+>      }
+>
+>      rom_add_blob_fixed("params", params_buf, params_size,
+> -                       (16 << 20) - params_size);
+> +                       16 * M_BYTE - params_size);
+>
+>      g_free(params_buf);
+>      return entry;
+> @@ -159,7 +160,7 @@ static void main_cpu_reset(void *opaque)
+>      env->active_tc.PC =3D s->vector;
+>  }
+>
+> -static const int sector_len =3D 32 * 1024;
+> +static const int sector_len =3D 32 * K_BYTE;
+>  static
+>  void mips_r4k_init(MachineState *machine)
+>  {
+> @@ -195,9 +196,9 @@ void mips_r4k_init(MachineState *machine)
+>      qemu_register_reset(main_cpu_reset, reset_info);
+>
+>      /* allocate RAM */
+> -    if (ram_size > (256 << 20)) {
+> -        error_report("Too much memory for this machine: %dMB, maximum 25=
+6MB",
+> -                     ((unsigned int)ram_size / (1 << 20)));
+> +    if (ram_size > 256 * M_BYTE) {
+> +        error_report("Too much memory for this machine: %lluMB, maximum =
+256MB",
+> +                     ram_size / M_BYTE);
+>          exit(1);
+>      }
+>      memory_region_allocate_system_memory(ram, NULL, "mips_r4k.ram", ram_=
+size);
+> diff --git a/hw/misc/mips_itu.c b/hw/misc/mips_itu.c
+> index ccc4c7d98a..e40d472108 100644
+> --- a/hw/misc/mips_itu.c
+> +++ b/hw/misc/mips_itu.c
+> @@ -18,6 +18,7 @@
+>   */
+>
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "qemu/log.h"
+>  #include "qapi/error.h"
+>  #include "cpu.h"
+> @@ -80,7 +81,7 @@ static void itc_reconfigure(MIPSITUState *tag)
+>      uint64_t *am =3D &tag->ITCAddressMap[0];
+>      MemoryRegion *mr =3D &tag->storage_io;
+>      hwaddr address =3D am[0] & ITC_AM0_BASE_ADDRESS_MASK;
+> -    uint64_t size =3D (1 << 10) + (am[1] & ITC_AM1_ADDR_MASK_MASK);
+> +    uint64_t size =3D (1 * K_BYTE) + (am[1] & ITC_AM1_ADDR_MASK_MASK);
+>      bool is_enabled =3D (am[0] & ITC_AM0_EN_MASK) !=3D 0;
+>
+>      memory_region_transaction_begin();
+> diff --git a/hw/pci-host/xilinx-pcie.c b/hw/pci-host/xilinx-pcie.c
+> index 044e312dc1..6758669ce9 100644
+> --- a/hw/pci-host/xilinx-pcie.c
+> +++ b/hw/pci-host/xilinx-pcie.c
+> @@ -18,6 +18,7 @@
+>   */
+>
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "qapi/error.h"
+>  #include "hw/pci/pci_bridge.h"
+>  #include "hw/pci-host/xilinx-pcie.h"
+> @@ -158,9 +159,9 @@ static void xilinx_pcie_host_init(Object *obj)
+>  static Property xilinx_pcie_host_props[] =3D {
+>      DEFINE_PROP_UINT32("bus_nr", XilinxPCIEHost, bus_nr, 0),
+>      DEFINE_PROP_SIZE("cfg_base", XilinxPCIEHost, cfg_base, 0),
+> -    DEFINE_PROP_SIZE("cfg_size", XilinxPCIEHost, cfg_size, 32 << 20),
+> +    DEFINE_PROP_SIZE("cfg_size", XilinxPCIEHost, cfg_size, 32 * M_BYTE),
+>      DEFINE_PROP_SIZE("mmio_base", XilinxPCIEHost, mmio_base, 0),
+> -    DEFINE_PROP_SIZE("mmio_size", XilinxPCIEHost, mmio_size, 1 << 20),
+> +    DEFINE_PROP_SIZE("mmio_size", XilinxPCIEHost, mmio_size, 1 * M_BYTE)=
+,
+>      DEFINE_PROP_BOOL("link_up", XilinxPCIEHost, link_up, true),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+> --
+> 2.17.0
+>
+>
 
