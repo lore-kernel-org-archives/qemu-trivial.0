@@ -1,75 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f7uE9-00038E-BA
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Apr 2018 22:50:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43126)
+	id 1f7vg9-00028O-5g
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Apr 2018 00:23:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35448)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7uE7-00037E-BW
-	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 22:50:44 -0400
+	(envelope-from <marcel@redhat.com>) id 1f7vg6-00026T-Mx
+	for qemu-trivial@nongnu.org; Mon, 16 Apr 2018 00:23:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7uE4-0008EP-4t
-	for qemu-trivial@nongnu.org; Sun, 15 Apr 2018 22:50:43 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:40008)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1f7uE3-0008Dy-ST; Sun, 15 Apr 2018 22:50:40 -0400
-Received: by mail-qk0-x241.google.com with SMTP id o64so15056148qkl.7;
-	Sun, 15 Apr 2018 19:50:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=yD1FSf1h0tMXO6/oISm1acwXqieuuI9poa/zor/hK4E=;
-	b=JV5fJpPlAKcJgYS+dEjSAQvChN3dZxtflHAe6Rwfzgk6e/7HlR/6dgU1gnJnHZ4KXe
-	4LsqEPd3Vrq/gW7+l+10KpwUcY9v3vOdQ0NdL3BopDKoC6b+Vx67p8kmQ+5FE5hv9nE3
-	KT6NqUOCmIynZ7Wy8BO8xhLtbHHgLfbE8Tlry4cLWoeLoCkJjQiDEPKiy2vL5Z3plqxX
-	BUb+mHrNF3Dp6p7PoXDbiafnRtQTPy8hawh4QhN+ImxFAZ/8ohRKfbdmh6DDWioX1z8z
-	H+kAJ0yQ1/KvKOIc7RfcHjOxAnbv3bp6kGAhw+dYP/k+/+7tSqzhi0IfZpE55xV4zF63
-	9jMQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=yD1FSf1h0tMXO6/oISm1acwXqieuuI9poa/zor/hK4E=;
-	b=eM9+yQS6wsAJZRwlBVlxoPXRKIDpOrh8AzRXXNS6LM7ioHju02YQSdPe/+rrTmlnc0
-	wecH7P9LueQ4xGAZdVO0FMYKLJn3IfmSNQufnXR1AMQIiMYNRHjmQoVeMyhVRXiPLZNF
-	zs4iAHRTlZ2pI1N04U6DuPKPUS4AItW2/L59OxBwdx2yvAIB1azWL0BeJyiNESPvjwkq
-	+erUa7d5q6CATVyVy7YNs90XV+IiH7m3I8A+E8JekGc5zQ5kF1zoCuSWnD10TuPRQAZi
-	mjUjzSP4BxShaqdTHSMbB1RPYSoxiWhwNCcCUb6Iv0wM7iJiLzafAnGX+u0/ETnE4wj8
-	gEZQ==
-X-Gm-Message-State: ALQs6tDcNlePICCiaXw776cRQsfJbf3Hq0Xi/Wmci+l2URUEs+cq0G0O
-	2G+xYqPviBCE+psxlT8t/2xF9pCCkII=
-X-Google-Smtp-Source: AIpwx4/xPNZDAqCjsQOYC9IWXaaXdgOT+OLHCgMu6zmqlWfR1rumXwWq288FB715sAfBkutvS3ktGw==
-X-Received: by 10.233.225.18 with SMTP id g18mr7521180qkm.113.1523847038770;
-	Sun, 15 Apr 2018 19:50:38 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.212])
-	by smtp.gmail.com with ESMTPSA id j1sm5765376qtc.53.2018.04.15.19.50.37
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 15 Apr 2018 19:50:38 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20180414142739.23375-1-mjt@msgid.tls.msk.ru>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <fbdc319a-d816-1135-116a-1db5438325c3@amsat.org>
-Date: Sun, 15 Apr 2018 23:50:35 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(envelope-from <marcel@redhat.com>) id 1f7vg5-0007Ni-S6
+	for qemu-trivial@nongnu.org; Mon, 16 Apr 2018 00:23:42 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48190 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <marcel@redhat.com>)
+	id 1f7vfz-0007KB-OU; Mon, 16 Apr 2018 00:23:35 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D312881A88D8;
+	Mon, 16 Apr 2018 04:23:30 +0000 (UTC)
+Received: from mapfelba-osx.local (unknown [10.35.206.23])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id AD29F111DCF8;
+	Mon, 16 Apr 2018 04:23:26 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Yuval Shaia <yuval.shaia@oracle.com>
+References: <20180415234307.28132-1-f4bug@amsat.org>
+	<20180415234307.28132-39-f4bug@amsat.org>
+From: Marcel Apfelbaum <marcel@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=marcel@redhat.com; prefer-encrypt=mutual; keydata=
+	xsBNBFpwpFoBCAC66VT3ZMlr10I420na21Mdr6q/+v5XJ6w8QPOTFQMd4V4viNXT7rgJ8Qfv
+	m4ViMaLoHBEmL6Kte4UNz3x28DUl91EcWpSRSMMGMa2oWj6Qv/9150byAByBYo2GijfIoayd
+	NKyAZ+PnlsJ2uQgb1I0wLUZ5tDpMeZFkC2Wb8QC9fsv9N7gOA5kvT2Mea0XzNVWHowt9A0hv
+	8+2O1YrqhqW7HVoLiET3XCec81rRPk+SbewVJtNIFkzamHBVruk4xozWZuluM8DNE4u+wlVx
+	NsI6gxoJV9DKthh0QDqPVy01FpBPk3fHkIdQZeo3eaTE9EHU+OW8iDTXIG1HRLzt6SovABEB
+	AAHNJE1hcmNlbCBBcGZlbGJhdW0gPG1hcmNlbEByZWRoYXQuY29tPsLAeAQTAQIAIgUCWnCk
+	WgIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQNtTA8M8v5G2awAf/eb5BhjgTEoc6
+	6En2oT2UnHvXvcGZlaMonfal9WDh/dgy3HmlV9nLdbc0xLEHywtIpthgXMRi+zN6tmOv6ddq
+	I4HmhvXHWnqoxIoOqpkCSFsYI3eq/z8n80FE8wAudUA6IyS/riLfUUOfh3g90d3bnRYTHCGF
+	ytFc9je4NmFvCJeIBJ9U/8QkmzZ5NXPP52HT0hSfIfOarxba2y91M05VMyAr38eskT0K2n0p
+	O9nruETrUu+OfXRFlil+0TsVaKH5ZxREEO6OrFUFZc/CWvgaewrCDljckJB+xDib0eFaGb/A
+	bhB8zVwJDyFgtvDfqHKfyx1BHskXxrRZdyjGTTAHAc7ATQRacKRaAQgAq5+6KAJvy6FTeHJU
+	Y5G3fensizw6Zn+YJ2elPCFMVd9bivYBZnr9tdv2tJtEar/buk/azOUYxki2T3aEAok1IUXW
+	yjCrwdwi8m8DAlvkZDDTA9i/cRJLd4otAB/TZWRrzT9oJN/odp4vpiwlu+0EkGCA1G/81Q0s
+	f062diIxm4GCmrP6hSliz8vGXJPQwjJuMQrgQH0ZW3WVXTyRJUgKzeW0Eo2YaJSnwIOormAD
+	pxuP5eHepg1+ph06XPkhujOW+/wD3qRSWbKmmemEP98w+lmsefDXGGTMzgkFaPooFfxo0tJe
+	nVxSTZjWWhxmjCdi3oSvRVdJ/ey4XoTj1kWacwARAQABwsBfBBgBAgAJBQJacKRaAhsMAAoJ
+	EDbUwPDPL+RtqH0H/34w4BflnhIxUpJYVdDQ1ypizk+UbmA9uI8ynMeeNqzSVZWihJ5syOGb
+	ssc6HnPddNWnfRaSSdxNgxn7v0M5HmgBxoO4euxUGhG3o3T1N+PDRek7vP8FhREDDaslp9mF
+	whJ/+/tjrAsMKSs+lVTAeuqQPo7BO9M7cugVPUEawq/OXTF6xnUq2oqVJtQ2wG0ZZNmuaN03
+	fEK8NjVpYnqnvvj3RyRqDCcAEcFKiZgXS0JXtYSGxQspDb0wY827IrF6QGh+2CttUkAfN02h
+	qYRsKqlZ4/hwJdGFuy10kqgHjjV6/bfQNjSmSbQaGjDR9afGm5TnP3s6ghQFB2aOJohd3G4=
+Message-ID: <3c4dcab3-b75f-8e1a-b4f0-9d7a7bda63a7@redhat.com>
+Date: Mon, 16 Apr 2018 07:23:24 +0300
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:52.0)
+	Gecko/20100101 Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <20180414142739.23375-1-mjt@msgid.tls.msk.ru>
+In-Reply-To: <20180415234307.28132-39-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-trivial] [PATCH trivial for-2.12] Makefile: install gtk
- message catalogs if CONFIG_GTK=y too, not only =m
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Mon, 16 Apr 2018 04:23:30 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Mon, 16 Apr 2018 04:23:30 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'marcel@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [PATCH v3 38/41] hw/rdma: Use the BYTE-based
+ definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,37 +84,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Apr 2018 02:50:44 -0000
+X-List-Received-Date: Mon, 16 Apr 2018 04:23:43 -0000
 
-Hi Michael,
-
-On 04/14/2018 11:27 AM, Michael Tokarev wrote:
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+On 16/04/2018 2:43, Philippe Mathieu-Daud=C3=A9 wrote:
+> It eases code review, unit is explicit.
+>=20
+> Patch generated using:
+>=20
+>   $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include=
+/hw/
+>=20
+> and modified manually.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  Makefile | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/Makefile b/Makefile
-> index 727ef118f3..8644c2e918 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -856,7 +856,7 @@ ifneq ($(BLOBS),)
->  		$(INSTALL_DATA) $(SRC_PATH)/pc-bios/$$x "$(DESTDIR)$(qemu_datadir)"; \
->  	done
->  endif
-> -ifeq ($(CONFIG_GTK),m)
-> +ifneq ($(filter $(CONFIG_GTK),y m),)
+>  hw/rdma/vmw/pvrdma.h | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/hw/rdma/vmw/pvrdma.h b/hw/rdma/vmw/pvrdma.h
+> index 8c173cb824..f17143f0e6 100644
+> --- a/hw/rdma/vmw/pvrdma.h
+> +++ b/hw/rdma/vmw/pvrdma.h
+> @@ -16,6 +16,7 @@
+>  #ifndef PVRDMA_PVRDMA_H
+>  #define PVRDMA_PVRDMA_H
+> =20
+> +#include "qemu/units.h"
+>  #include "hw/pci/pci.h"
+>  #include "hw/pci/msix.h"
+> =20
+> @@ -30,7 +31,7 @@
+>  #define RDMA_MSIX_BAR_IDX    0
+>  #define RDMA_REG_BAR_IDX     1
+>  #define RDMA_UAR_BAR_IDX     2
+> -#define RDMA_BAR0_MSIX_SIZE  (16 * 1024)
+> +#define RDMA_BAR0_MSIX_SIZE  (16 * K_BYTE)
+>  #define RDMA_BAR1_REGS_SIZE  256
+>  #define RDMA_BAR2_UAR_SIZE   (0x1000 * MAX_UCS) /* each uc gets page *=
+/
+> =20
+>=20
 
-Or simply:
+Reviewed-by: Marcel Apfelbaum <marcel@redhat.com>
 
-ifdef CONFIG_GTK
+Thanks,
+Marcel
 
->  	$(MAKE) -C po $@
->  endif
->  	$(INSTALL_DIR) "$(DESTDIR)$(qemu_datadir)/keymaps"
-> 
 
-Regards,
-
-Phil.
 
