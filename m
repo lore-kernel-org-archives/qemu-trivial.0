@@ -1,53 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f8mm7-0003Z3-27
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Apr 2018 09:05:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60790)
+	id 1f8nA7-00049K-15
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Apr 2018 09:30:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45233)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <olaf@aepfle.de>) id 1f8mm5-0003Xp-AG
-	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 09:05:26 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1f8nA4-00047P-Ac
+	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 09:30:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <olaf@aepfle.de>) id 1f8mm0-0005Tc-P4
-	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 09:05:25 -0400
-Received: from mo6-p02-ob.smtp.rzone.de ([2a01:238:20a:202:5302::3]:33797)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <olaf@aepfle.de>)
-	id 1f8mlt-0005OV-AB; Wed, 18 Apr 2018 09:05:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1524056711;
-	s=strato-dkim-0002; d=aepfle.de;
-	h=Content-Type:References:In-Reply-To:Message-ID:Subject:Cc:To:From:
-	Date:X-RZG-CLASS-ID:X-RZG-AUTH:From:Subject:Sender;
-	bh=a/3yDEEHIiZNZZkzbZJJmjtmmWXdszjq+zAZc+5hkVk=;
-	b=moai1ENAgEA+5G4plBeNsAqKTRQpfWbYHb7Vq+eT3IgCk36KZzRmS9BHdMCePljP9S
-	J8S7kS+iWsvEo9ZaHvmlVYWMTfN0LD0Xa+JLyohK73wrd9tvTYoMvk+LnIw7c/5NjB0L
-	M39z8anz6hzmpp9VpL6WJLfiSByS03gpdlCmd2eM738FVp5Yo9RxuKOY1V+tksdFnWci
-	74yopvM7SDYmHvzmsWDZasnI/hqK4PFHlM+7FufUX9p69WlOhe/OLUAiJPmfHrDd1933
-	ClnmemTMGTxfU6AnpDOfPNACN3l6FWSX1VPORaClj2mziTnx35HtGWzOe79Q3CewYDxr
-	Nt6Q==
-X-RZG-AUTH: :P2EQZWCpfu+qG7CngxMFH1J+3q8wa/QED/SSGq+wjGiUC4oc0Nr2ihluivsBRtyRe2qcrldJj63vYUTRQR/0RqPSgWq+RVwc
-X-RZG-CLASS-ID: mo00
-Received: from sender by smtp.strato.de (RZmta 43.4 AUTH)
-	with ESMTPSA id Q05f37u3ID4p6DB
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (curve secp521r1
-	with 521 ECDH bits, eq. 15360 bits RSA))
-	(Client did not present a certificate);
-	Wed, 18 Apr 2018 15:04:51 +0200 (CEST)
-Date: Wed, 18 Apr 2018 15:04:49 +0200
-From: Olaf Hering <olaf@aepfle.de>
-To: no-reply@patchew.org
-Cc: <qemu-devel@nongnu.org>, famz@redhat.com, qemu-trivial@nongnu.org,
-	peter.maydell@linaro.org, f4bug@amsat.org, kraxel@redhat.com,
-	pbonzini@redhat.com
-Message-ID: <20180418150449.0cefd440.olaf@aepfle.de>
-In-Reply-To: <152405603679.1932.900049084322274960@71c20359a636>
-References: <20180418123838.3511-1-olaf@aepfle.de>
-	<152405603679.1932.900049084322274960@71c20359a636>
-X-Mailer: Claws Mail 3.16.1 (GTK+ 2.24.32; x86_64-suse-linux-gnu)
+	(envelope-from <peter.maydell@linaro.org>) id 1f8nA0-0005xs-BJ
+	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 09:30:12 -0400
+Received: from mail-oi0-x229.google.com ([2607:f8b0:4003:c06::229]:36060)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1f8nA0-0005xZ-6Q
+	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 09:30:08 -0400
+Received: by mail-oi0-x229.google.com with SMTP id h11-v6so1568924oic.3
+	for <qemu-trivial@nongnu.org>; Wed, 18 Apr 2018 06:30:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=4McpK7oI61zUeYj0FNrkTh+hfTRH655hrLRa2V1xYIs=;
+	b=QqsSIzbIAafSTr1lamPsKrQ7BlAfy0ElOw84aXTbCeJ3o9uXpwLUNxJ78SXPnoCTnM
+	XaSIHxnFY+HiAlIw6pC5Be9UG7NlSggo/jgrrbMSsrfeSY/sj99ZJBd3PdHLBEsYaJ0f
+	hdBTWXGXWY4f7ZShY3oqv1giHX7uN/LDIVV5o=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=4McpK7oI61zUeYj0FNrkTh+hfTRH655hrLRa2V1xYIs=;
+	b=YKAl1D+UhhfE3PKGR7bebuFw/MW1wHcT9+imHlB6NsTmwqTQj+9I15nKIE+rMWVlTN
+	PFPNlRCWEPKvAtNnh6BGwaz9UVEk28u2vbCWqt+nuvynR1CCJcbznRABAM1W90Rxlpcr
+	LTZvgVOhzAFkxSKKK8gwi1FildgvnK93gPTbh72NPs4nSOcxzauJaBvvl1rlVpP1i0bn
+	GJVMovEbOGCtP+D4hohxZXVimVyINITwfYVMwdtsjTEy8/0fbeSTNPrIv32s0DWe/IVl
+	QuqjYeoUECL4LVUszcH5IYvaoOE3TxInvIF18CcWsQHLKM16Yf20EKYgc1C08SZD1SYd
+	Nl3A==
+X-Gm-Message-State: ALQs6tDAYpjElBDIk9M5xA4zG1++8FkXmTTgzkGOjqueLWw5oa1+CkP6
+	wpqloBvUNKyCb8YI2VELQn3VtwAiu7wRWzseUDAjpg==
+X-Google-Smtp-Source: AIpwx4+EWUqdcrJavM04pcz8uRIeplQXpVc6A6s08WsmQTMSSMGJJ0Hx4eNqKCfpcdC/elCKUOUSbqWGTEydsEGjD6E=
+X-Received: by 2002:aca:b3c1:: with SMTP id
+	c184-v6mr1180896oif.12.1524058207452; 
+	Wed, 18 Apr 2018 06:30:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	boundary="Sig_/=.VWlI_aO1xeAccL12h9kWX";
-	protocol="application/pgp-signature"
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 2a01:238:20a:202:5302::3
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Wed, 18 Apr 2018 06:29:47
+	-0700 (PDT)
+In-Reply-To: <20180418124753.GM27579@redhat.com>
+References: <20180418123838.3511-1-olaf@aepfle.de>
+	<20180418124753.GM27579@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 18 Apr 2018 14:29:47 +0100
+Message-ID: <CAFEAcA_TtC-p4JJFRPaBFwim1a8J9G+z79KAK8vqrTx7ZKjOKg@mail.gmail.com>
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Olaf Hering <olaf@aepfle.de>, QEMU Trivial <qemu-trivial@nongnu.org>,
+	Fam Zheng <famz@redhat.com>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	"open list:All patches CC here" <qemu-devel@nongnu.org>,
+	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::229
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1] configure: require
  glib-2.24
 X-BeenThere: qemu-trivial@nongnu.org
@@ -61,32 +72,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Apr 2018 13:05:26 -0000
+X-List-Received-Date: Wed, 18 Apr 2018 13:30:13 -0000
 
---Sig_/=.VWlI_aO1xeAccL12h9kWX
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+On 18 April 2018 at 13:47, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wr=
+ote:
+> On Wed, Apr 18, 2018 at 02:38:37PM +0200, Olaf Hering wrote:
+>> Since usage of g_realloc_n was introduced, glib-2.22 can not be used any=
+more.
+>> Fixes commit 418026ca43 ("util: Introduce vfio helpers")
+>
+> Normally we expect ./include/glib-compat.h to be changed in this scenario
+> to add compat for the missing symbol.
+>
+> IIRC, one of Peters desired build targets required 2.22, but I guess we
+> missed this bug because that platform would not enable vfio functionality=
+ ?
 
-Am Wed, 18 Apr 2018 05:53:58 -0700 (PDT)
-schrieb no-reply@patchew.org:
+Yes, my OSX build system is on glib 2.22. It's using 'fink' for 3rd
+party library installations, and they somehow seem to have got stuck
+on 2.22. Looking at the website the project seems to have basically
+stagnated, and I guess I need to move to homebrew at some point
+(likely after we get 2.12 out the door). But for the moment this
+patch would break my pullrequest testing builds.
 
-> This series failed docker-build@min-glib build test.
-
-I guess that test must be fixed either way because it does not test what it=
- is supposed to test...
-
-Olaf
-
---Sig_/=.VWlI_aO1xeAccL12h9kWX
-Content-Type: application/pgp-signature
-Content-Description: Digitale Signatur von OpenPGP
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQSkRyP6Rn//f03pRUBdQqD6ppg2fgUCWtdCcQAKCRBdQqD6ppg2
-fqg6AJ0WOoSQgXga0Mkg4PKSc2ZKDxmjsQCgm8GzRqD4YAENlWcZnTrzuZq1BI4=
-=LSgf
------END PGP SIGNATURE-----
-
---Sig_/=.VWlI_aO1xeAccL12h9kWX--
+thanks
+-- PMM
 
