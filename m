@@ -1,54 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f8md2-0006kO-71
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Apr 2018 08:56:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56831)
+	id 1f8mhl-0001qF-NS
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Apr 2018 09:00:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59033)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1f8md0-0006is-2i
-	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 08:56:03 -0400
+	(envelope-from <olaf@aepfle.de>) id 1f8mhk-0001pu-0t
+	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 09:00:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1f8mcy-0001FN-V1
-	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 08:56:02 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58956 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1f8mct-00016m-GH; Wed, 18 Apr 2018 08:55:55 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 50BC0EBFEA;
-	Wed, 18 Apr 2018 12:55:54 +0000 (UTC)
-Received: from redhat.com (unknown [10.33.36.63])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4E5DD2023227;
-	Wed, 18 Apr 2018 12:55:48 +0000 (UTC)
-Date: Wed, 18 Apr 2018 13:55:45 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Cornelia Huck <cohuck@redhat.com>
-Cc: Olaf Hering <olaf@aepfle.de>, Peter Maydell <peter.maydell@linaro.org>,
-	Fam Zheng <famz@redhat.com>, qemu-trivial@nongnu.org,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	"open list:All patches CC here" <qemu-devel@nongnu.org>,
+	(envelope-from <olaf@aepfle.de>) id 1f8mhe-0003NV-75
+	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 09:00:56 -0400
+Received: from mo6-p02-ob.smtp.rzone.de ([2a01:238:20a:202:5302::5]:19246)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <olaf@aepfle.de>)
+	id 1f8mhd-0003MN-Lr; Wed, 18 Apr 2018 09:00:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1524056447;
+	s=strato-dkim-0002; d=aepfle.de;
+	h=Content-Type:References:In-Reply-To:Message-ID:Subject:Cc:To:From:
+	Date:X-RZG-CLASS-ID:X-RZG-AUTH:From:Subject:Sender;
+	bh=qqUEI0hErtYU5QPJ0cWiqydOw/OLtQ3Z4gYH6ZjJsq0=;
+	b=dE8/dyzpa2pKSSboD6agXJgs2qj5cxLY6bubqV9e8xmfweUeFFNvPIjDaUBE8TcDfV
+	J9V1Ghl6oSeTB7cYlGInu8VU+5JASciziZ9a1mjCEgXtuh0l4ZESxGyVqPWAjMMpl9Z2
+	jIlcwPW/Yhvosn51WA59877CNVkydSeR7dXEBYUR4wal67KzkMz7t7Rdj14n8pAFuUJx
+	4W7L/xguSzC6NHj/UmxDXEwM8Vznt+pbkVmsofSeXu+PmGIJYpDa6nXnpiwmhmeJqAsU
+	rSWT7X2n40q8zpEdJiJqN5kUNeA5kWcKVNgaXeL/is/YO64f6slgN17JStAEgenAk8Fd
+	bIPw==
+X-RZG-AUTH: :P2EQZWCpfu+qG7CngxMFH1J+3q8wa/QED/SSGq+wjGiUC4oc0Nr2ihluivsBRtyRe2qcrldJj63vYUTRQR/0RqPSgWq+RVwc
+X-RZG-CLASS-ID: mo00
+Received: from sender by smtp.strato.de (RZmta 43.4 AUTH)
+	with ESMTPSA id Q05f37u3ID0j6BI
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (curve secp521r1
+	with 521 ECDH bits, eq. 15360 bits RSA))
+	(Client did not present a certificate);
+	Wed, 18 Apr 2018 15:00:45 +0200 (CEST)
+Date: Wed, 18 Apr 2018 15:00:40 +0200
+From: Olaf Hering <olaf@aepfle.de>
+To: "Daniel P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Fam
+	Zheng <famz@redhat.com>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
+	<f4bug@amsat.org>,
+	"open list:All patches CC here" <qemu-devel@nongnu.org>, 
 	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20180418125545.GN27579@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Message-ID: <20180418150029.30c5d1bb.olaf@aepfle.de>
+In-Reply-To: <20180418124753.GM27579@redhat.com>
 References: <20180418123838.3511-1-olaf@aepfle.de>
-	<20180418144538.4aa2f492.cohuck@redhat.com>
+	<20180418124753.GM27579@redhat.com>
+X-Mailer: Claws Mail 3.16.1 (GTK+ 2.24.32; x86_64-suse-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20180418144538.4aa2f492.cohuck@redhat.com>
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Wed, 18 Apr 2018 12:55:54 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Wed, 18 Apr 2018 12:55:54 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'berrange@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	boundary="Sig_/DN7LZlIsuduvQZTnacYL_7M";
+	protocol="application/pgp-signature"
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 2a01:238:20a:202:5302::5
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1] configure: require
  glib-2.24
 X-BeenThere: qemu-trivial@nongnu.org
@@ -62,62 +63,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Apr 2018 12:56:03 -0000
+X-List-Received-Date: Wed, 18 Apr 2018 13:00:57 -0000
 
-On Wed, Apr 18, 2018 at 02:45:38PM +0200, Cornelia Huck wrote:
-> On Wed, 18 Apr 2018 14:38:37 +0200
-> Olaf Hering <olaf@aepfle.de> wrote:
-> 
-> > Since usage of g_realloc_n was introduced, glib-2.22 can not be used anymore.
-> > Fixes commit 418026ca43 ("util: Introduce vfio helpers")
-> > 
-> > Signed-off-by: Olaf Hering <olaf@aepfle.de>
-> > ---
-> >  configure | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/configure b/configure
-> > index 6e9b994f21..81760ef45a 100755
-> > --- a/configure
-> > +++ b/configure
-> > @@ -3369,7 +3369,7 @@ fi
-> >  if test "$mingw32" = yes; then
-> >      glib_req_ver=2.30
-> >  else
-> > -    glib_req_ver=2.22
-> > +    glib_req_ver=2.24
-> >  fi
-> >  glib_modules=gthread-2.0
-> >  if test "$modules" = yes; then
-> > 
-> 
-> Are we ready to give up support for whatever distro is still on 2.22?
-> (If yes, can we bump to an even newer glib version?) Or should we
-> rather solve this by adding a g_realloc_n implementation for that case?
+--Sig_/DN7LZlIsuduvQZTnacYL_7M
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Version 2.22 was released in Sep 2009, so coming up for 9 years old now.
+Am Wed, 18 Apr 2018 13:47:53 +0100
+schrieb Daniel P. Berrang=C3=A9 <berrange@redhat.com>:
 
-At some point we should to declare that platforms shipping >= NNN year
-old versions of software are not a desirable target for QEMU. What is
-our desired NNN value - 9 years feels awfully long to me.
+> IIRC, one of Peters desired build targets required 2.22, but I guess we
+> missed this bug because that platform would not enable vfio functionality=
+ ?
 
-For libvirt we recently decided to become more aggressive[1] in culling old
-distros as supportable targets, declaring we'll only support non-EOL
-distros (for short life distros), or for long life distros (RHEL, LTS, etc)
-the most recent version, and the recent minus-1 for 2 years overlap.
+Does the check in configure need a wrap "if Linux", just as the Makefile do=
+es?
 
-Should we formalize similar guidelines for QEMU to give developers a
-guide for when it is reasonable to increase the min required version of
-any 3rd party library ?  glib is a mandatory dep, but we've countless
-other optional libraries we might wish to increase min versions for too,
-and no guide on when it is reasonable todo so.
+Olaf
 
-Regards,
-Daniel
+--Sig_/DN7LZlIsuduvQZTnacYL_7M
+Content-Type: application/pgp-signature
+Content-Description: Digitale Signatur von OpenPGP
 
-[1]   https://libvirt.org/platforms.html
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQSkRyP6Rn//f03pRUBdQqD6ppg2fgUCWtdBeAAKCRBdQqD6ppg2
+focNAJ4+3ZKIBxbc+HcMpF2RNI2LO9uyfQCdG2wu3phutai9uuGECZrd/WnNyo0=
+=I1vq
+-----END PGP SIGNATURE-----
+
+--Sig_/DN7LZlIsuduvQZTnacYL_7M--
 
