@@ -1,50 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f8iDp-00068m-5X
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Apr 2018 04:13:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32898)
+	id 1f8iWb-0003ik-L0
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Apr 2018 04:33:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41364)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <olaf@aepfle.de>) id 1f8iDm-00067u-BZ
-	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 04:13:44 -0400
+	(envelope-from <olaf@aepfle.de>) id 1f8iWZ-0003gh-8G
+	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 04:33:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <olaf@aepfle.de>) id 1f8iDl-0005qV-AX
-	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 04:13:42 -0400
-Received: from mo6-p01-ob.smtp.rzone.de ([2a01:238:20a:202:5301::5]:31097)
+	(envelope-from <olaf@aepfle.de>) id 1f8iWY-0007Mk-9m
+	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 04:33:07 -0400
+Received: from mo6-p01-ob.smtp.rzone.de ([2a01:238:20a:202:5301::9]:13810)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <olaf@aepfle.de>)
-	id 1f8iDk-0005p4-PR; Wed, 18 Apr 2018 04:13:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1524039218;
+	id 1f8iWX-0007LQ-PB; Wed, 18 Apr 2018 04:33:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1524040383;
 	s=strato-dkim-0002; d=aepfle.de;
-	h=Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:
-	X-RZG-CLASS-ID:X-RZG-AUTH:From:Subject:Sender;
-	bh=FUI3qzYc3aYlCcLQQ4pMmEicveIzMehhjdhF+85O+fg=;
-	b=IXD/VmJjkLuRD+rqN7BJ2XdyQe84j0i87mbBUnI/tjjx9AJVR89a8YaF3iexzWwxn9
-	3zhCQTye5doW7HWczI6XQ5WtXHX+iXVoXClcxe6IZDPMGhUy9b8eqP11BL2TCEEFKz9q
-	hbfmsibGFrc8Try0NOWpT8yLGucnmOqrBz97Gaccg+N7rc3a2J5h5ssfZWPTmg6K2Hqq
-	vlwAYC8CH47MCVxAoz9HERnmlgqrq0gAJI75hVOt0U9DdH5ldlSxUEha7HVZTUoL1Ib8
-	kjLUfb6+y7NhVNiOPZkbwadtv25MuXArIyFrbm1w16eXQoZUxDve51NsAJK6gYJcajWT
-	7ZRA==
-X-RZG-AUTH: :P2EQZWCpfu+qG7CngxMFH1J+3q8wa/QXkBR9MXjAuzpIG0mv9coXAgc1+lb4Esstf6UEufFpy8L/NK2kKUAyDFSMDbcP
+	h=Content-Type:References:In-Reply-To:Message-ID:Subject:Cc:To:From:
+	Date:X-RZG-CLASS-ID:X-RZG-AUTH:From:Subject:Sender;
+	bh=c4a5uF4PpfC8k8+WFcROS+4vHxBJjy0z+9VpWubIxkg=;
+	b=DBtKqYO/RjXiXCTViCV+oW/M7tIdbMfy0ZQAQKDQzvF5AgZk3rys/3TqBHGFbq61Qq
+	IDjuibxncH8QQvNbJBmHEx9/hW+hoQ6BTEQFHoKV4kLzbgPCAi6BP/5dnTIWIv7VZGNO
+	TEHepesZperXK5YHXSb4D50keqNeAjKvO587yIwb9ns8dYhG4asjQNgEzDmMUSqCbEH9
+	tu+Yzn8ew8wsV2VsPjLISD5KTlFPtHTWnS2Y0NLtEb+HkQqe5yQ5WL4H0wtx5GXLaAcX
+	J/DAtG6Omak6EPS9q5WmpHtP1dLCdrNhs79PD7RUFONJAsCSrqE4IYl5yerhnCj39XKy
+	D2zg==
+X-RZG-AUTH: :P2EQZWCpfu+qG7CngxMFH1J+3q8wa/QED/SSGq+wjGiUC4oc0Nr2ihluivsBRtyRe2qcrldJj63vYUTRQR/0RqPSgWq+RVwc
 X-RZG-CLASS-ID: mo00
 Received: from sender by smtp.strato.de (RZmta 43.4 AUTH)
-	with ESMTPSA id Q05f37u3I8DM4RC
+	with ESMTPSA id Q05f37u3I8Wn4Z0
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (curve secp521r1
 	with 521 ECDH bits, eq. 15360 bits RSA))
 	(Client did not present a certificate);
-	Wed, 18 Apr 2018 10:13:22 +0200 (CEST)
+	Wed, 18 Apr 2018 10:32:49 +0200 (CEST)
+Date: Wed, 18 Apr 2018 10:32:44 +0200
 From: Olaf Hering <olaf@aepfle.de>
 To: qemu-trivial@nongnu.org
-Cc: Olaf Hering <olaf@aepfle.de>, BALATON Zoltan <balaton@eik.bme.hu>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	qemu-devel@nongnu.org (open list:All patches CC here)
-Date: Wed, 18 Apr 2018 10:13:10 +0200
-Message-Id: <20180418081311.27803-1-olaf@aepfle.de>
-X-Mailer: git-send-email 2.16.3
+Cc: BALATON Zoltan <balaton@eik.bme.hu>, David Gibson
+	<david@gibson.dropbear.id.au>, qemu-devel@nongnu.org (open list:All patches
+	CC here)
+Message-ID: <20180418103244.6c65fa60.olaf@aepfle.de>
+In-Reply-To: <20180418081311.27803-1-olaf@aepfle.de>
+References: <20180418081311.27803-1-olaf@aepfle.de>
+X-Mailer: Claws Mail 3.16.1 (GTK+ 2.24.32; x86_64-suse-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	boundary="Sig_/u=NnQqes0uyiGNyvv1=8SbP";
+	protocol="application/pgp-signature"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 2a01:238:20a:202:5301::5
-Subject: [Qemu-trivial] [PATCH v1] roms/ipxe: use configured compiler for
- ipxe
+X-Received-From: 2a01:238:20a:202:5301::9
+Subject: Re: [Qemu-trivial] [PATCH v1] roms/ipxe: use configured compiler
+ for ipxe
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,39 +60,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Apr 2018 08:13:44 -0000
+X-List-Received-Date: Wed, 18 Apr 2018 08:33:08 -0000
 
-configure allows to run a dedicated compiler binary, which is stored in
-CC and HOST_CC variables, and overrides the default 'cc' command.
+--Sig_/u=NnQqes0uyiGNyvv1=8SbP
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 
-This command however is not used when building ipxe from source.
-"make -C roms pxerom" invokes the buildsystem of ipxe.git, which has the
-command "gcc" hardcoded. That binary may not be suitable to build ipxe.
-Reuse the same compiler command that is used to build qemu by specifying
-CC and HOST_CC as make commandline option to override the built-in
-defaults of ipxe.
+Am Wed, 18 Apr 2018 10:13:10 +0200
+schrieb Olaf Hering <olaf@aepfle.de>:
 
-Signed-off-by: Olaf Hering <olaf@aepfle.de>
----
- roms/Makefile | 2 ++
- 1 file changed, 2 insertions(+)
+> configure allows to run a dedicated compiler binary, which is stored in
+> CC and HOST_CC variables, and overrides the default 'cc' command.
+> This command however is not used when building ipxe from source.
+> "make -C roms pxerom" invokes ...
 
-diff --git a/roms/Makefile b/roms/Makefile
-index 02b69fbac8..982bf105a3 100644
---- a/roms/Makefile
-+++ b/roms/Makefile
-@@ -127,11 +127,13 @@ efi-rom-%: build-pxe-roms build-efi-roms
- 
- build-pxe-roms:
- 	$(MAKE) -C ipxe/src CONFIG=qemu \
-+		CC=$(CC) HOST_CC=$(HOST_CC) \
- 		CROSS_COMPILE=$(x86_64_cross_prefix) \
- 		$(patsubst %,bin/%.rom,$(pxerom_targets))
- 
- build-efi-roms: build-pxe-roms
- 	$(MAKE) -C ipxe/src CONFIG=qemu \
-+		CC=$(CC) HOST_CC=$(HOST_CC) \
- 		CROSS_COMPILE=$(x86_64_cross_prefix) \
- 		$(patsubst %,bin-i386-efi/%.efidrv,$(pxerom_targets)) \
- 		$(patsubst %,bin-x86_64-efi/%.efidrv,$(pxerom_targets))
+Scratch that patch. make -C operates just below 'roms/' and does not use
+results from configure. The CC variable built into make(1) happens to be cc.
+
+Olaf
+
+--Sig_/u=NnQqes0uyiGNyvv1=8SbP
+Content-Type: application/pgp-signature
+Content-Description: Digitale Signatur von OpenPGP
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQSkRyP6Rn//f03pRUBdQqD6ppg2fgUCWtcCrAAKCRBdQqD6ppg2
+fg/ZAJ9GKcdLcXaxAI+D8CF7DfoeDxBEVwCg63bNQy6HJCSVYPwsPUMs5y5wcCU=
+=rTPu
+-----END PGP SIGNATURE-----
+
+--Sig_/u=NnQqes0uyiGNyvv1=8SbP--
 
