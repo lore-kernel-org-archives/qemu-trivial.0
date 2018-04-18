@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f8mTK-0002A6-V1
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Apr 2018 08:46:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52089)
+	id 1f8mVT-0003QT-On
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Apr 2018 08:48:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53189)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1f8mTI-00028S-Pk
-	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 08:46:01 -0400
+	(envelope-from <berrange@redhat.com>) id 1f8mVR-0003OS-Ou
+	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 08:48:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1f8mTI-0003gD-4T
-	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 08:46:00 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:57820 helo=mx1.redhat.com)
+	(envelope-from <berrange@redhat.com>) id 1f8mVM-0005jx-6Q
+	for qemu-trivial@nongnu.org; Wed, 18 Apr 2018 08:48:13 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56052 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1f8mTC-0003YU-7M; Wed, 18 Apr 2018 08:45:54 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
+	(Exim 4.71) (envelope-from <berrange@redhat.com>)
+	id 1f8mVB-0005cH-Sh; Wed, 18 Apr 2018 08:47:57 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4718281A88C3;
-	Wed, 18 Apr 2018 12:45:50 +0000 (UTC)
-Received: from gondolin (dhcp-192-222.str.redhat.com [10.33.192.222])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9A4A910F1BED;
-	Wed, 18 Apr 2018 12:45:40 +0000 (UTC)
-Date: Wed, 18 Apr 2018 14:45:38 +0200
-From: Cornelia Huck <cohuck@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 6E350402333B;
+	Wed, 18 Apr 2018 12:47:57 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.63])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8FF752023594;
+	Wed, 18 Apr 2018 12:47:55 +0000 (UTC)
+Date: Wed, 18 Apr 2018 13:47:53 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Olaf Hering <olaf@aepfle.de>
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Fam
-	Zheng <famz@redhat.com>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
-	<f4bug@amsat.org>,
-	"open list:All patches CC here" <qemu-devel@nongnu.org>, 
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Fam Zheng <famz@redhat.com>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	"open list:All patches CC here" <qemu-devel@nongnu.org>,
 	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20180418144538.4aa2f492.cohuck@redhat.com>
-In-Reply-To: <20180418123838.3511-1-olaf@aepfle.de>
+Message-ID: <20180418124753.GM27579@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20180418123838.3511-1-olaf@aepfle.de>
-Organization: Red Hat GmbH
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20180418123838.3511-1-olaf@aepfle.de>
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Wed, 18 Apr 2018 12:45:50 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Wed, 18 Apr 2018 12:45:50 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'cohuck@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.6]);
+	Wed, 18 Apr 2018 12:47:57 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Wed, 18 Apr 2018 12:47:57 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'berrange@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
@@ -60,13 +61,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Apr 2018 12:46:01 -0000
+X-List-Received-Date: Wed, 18 Apr 2018 12:48:15 -0000
 
-On Wed, 18 Apr 2018 14:38:37 +0200
-Olaf Hering <olaf@aepfle.de> wrote:
-
+On Wed, Apr 18, 2018 at 02:38:37PM +0200, Olaf Hering wrote:
 > Since usage of g_realloc_n was introduced, glib-2.22 can not be used anymore.
 > Fixes commit 418026ca43 ("util: Introduce vfio helpers")
+
+Normally we expect ./include/glib-compat.h to be changed in this scenario
+to add compat for the missing symbol.
+
+IIRC, one of Peters desired build targets required 2.22, but I guess we
+missed this bug because that platform would not enable vfio functionality ?
+
+
+
 > 
 > Signed-off-by: Olaf Hering <olaf@aepfle.de>
 > ---
@@ -84,11 +92,17 @@ Olaf Hering <olaf@aepfle.de> wrote:
 > -    glib_req_ver=2.22
 > +    glib_req_ver=2.24
 >  fi
+
+
+
 >  glib_modules=gthread-2.0
 >  if test "$modules" = yes; then
 > 
 
-Are we ready to give up support for whatever distro is still on 2.22?
-(If yes, can we bump to an even newer glib version?) Or should we
-rather solve this by adding a g_realloc_n implementation for that case?
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
