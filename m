@@ -1,64 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f95Q6-0007xX-AT
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Apr 2018 04:59:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52039)
-	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <n54@gmx.com>)
-	id 1f95Q3-0007wn-Mz
-	for qemu-trivial@nongnu.org; Thu, 19 Apr 2018 04:59:56 -0400
+	id 1f95k6-00020H-Rt
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Apr 2018 05:20:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35133)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <kraxel@redhat.com>) id 1f95jz-0001vb-QA
+	for qemu-trivial@nongnu.org; Thu, 19 Apr 2018 05:20:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <n54@gmx.com>) id 1f95Q0-0005Bb-Ld
-	for qemu-trivial@nongnu.org; Thu, 19 Apr 2018 04:59:55 -0400
-Received: from mout.gmx.net ([212.227.15.19]:36095)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <n54@gmx.com>)
-	id 1f95Q0-0005Ai-9X; Thu, 19 Apr 2018 04:59:52 -0400
-Received: from [192.168.0.241] ([89.78.252.225]) by mail.gmx.com (mrgmx002
-	[212.227.17.184]) with ESMTPSA (Nemesis) id 0LtaDM-1eSIS92hYC-010thl;
-	Thu, 19 Apr 2018 10:59:41 +0200
-To: Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>
-Cc: Olaf Hering <olaf@aepfle.de>,
+	(envelope-from <kraxel@redhat.com>) id 1f95jv-0002bg-Vp
+	for qemu-trivial@nongnu.org; Thu, 19 Apr 2018 05:20:31 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:57486 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1f95jo-0002Sk-2h; Thu, 19 Apr 2018 05:20:20 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2247E11E11B;
+	Thu, 19 Apr 2018 09:20:19 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-117-151.ams2.redhat.com
+	[10.36.117.151])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D3E952166BAE;
+	Thu, 19 Apr 2018 09:20:18 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id DDF6940DD8; Thu, 19 Apr 2018 11:20:17 +0200 (CEST)
+Date: Thu, 19 Apr 2018 11:20:17 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+	Olaf Hering <olaf@aepfle.de>, Markus Armbruster <armbru@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>, Fam Zheng <famz@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	"open list:All patches CC here" <qemu-devel@nongnu.org>,
-	Fam Zheng <famz@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	Cornelia Huck <cohuck@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+	Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20180419092017.olujzxzlwvjlt6en@sirius.home.kraxel.org>
 References: <20180418123838.3511-1-olaf@aepfle.de>
 	<20180418144538.4aa2f492.cohuck@redhat.com>
-	<20180418125545.GN27579@redhat.com> <87sh7rvf27.fsf@dusky.pond.sub.org>
+	<20180418125545.GN27579@redhat.com>
+	<87sh7rvf27.fsf@dusky.pond.sub.org>
 	<20180419093024.27c77433.olaf@aepfle.de>
 	<20180419075958.GD10259@redhat.com>
 	<CAFEAcA9UYM3hifEbs_sp9jcFkwu5sSSXaLq9CLWuhNbV67+MBQ@mail.gmail.com>
-From: Kamil Rytarowski <n54@gmx.com>
-Message-ID: <71ff6ce5-c878-de18-5d03-bb4a8b66a98a@gmx.com>
-Date: Thu, 19 Apr 2018 11:01:51 +0200
-User-Agent: Mozilla/5.0 (X11; NetBSD amd64; rv:52.0) Gecko/20100101
-	Thunderbird/52.4.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 In-Reply-To: <CAFEAcA9UYM3hifEbs_sp9jcFkwu5sSSXaLq9CLWuhNbV67+MBQ@mail.gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="GsdJWqCo4910G8fLK8MvGDsiRkCRPuXpS"
-X-Provags-ID: V03:K1:yggQU+IZIvSvEspTa1IX5x9WUCc+Pb9+iTqGP1JCnbeD7eIvW4Z
-	Uau6L4gqb4oB32x95pOL8oqGU0MkcRO5h13t+ls6khVfqqiXp9eAQRdRtRQ9uN6SWm0Nhb4
-	u8ybaIlSolv9GwDrYYMro/TN9vem1MPuXlgkNUJE+eIZzOz5RCUxeVWmYH9hsj0N0ipiyBX
-	NcVj8Jt4RQfbuVSPSRfhQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:Jq3lNMqv4ck=:YlDC/0QW8iBdG34GmuDohW
-	jn7gkJnqsq07jVDyQ29krtI+Dj7bOnVjjPMCqlnK36xMCwXJBOwpVp5DbWlzcuXewuV8u/IL3
-	VGIipe+V2CusXZCI56nV9HawJAEntOCjRXbPY+xqGJ7XZebpEVXbIIPryvOfr8TJoqtrTEyTy
-	bNziLjiCQ89T0kK24xKRWzt7AiS9Ax7IgGVb3uOJcTDFTak+y3stOqQ8h9t6Be+TqXDYhVfXu
-	AiYOJJEV7T21AttT0sZfmmwDVW0a0DbPCFhq590RRjEwQHwHOn7kb0a/MXgZXDnqzkQPOPG1L
-	x73prgfsRWwOG4YoKDAmliu/LzzSP20ZdH46hTkouciTaDylZl2hSQ0qCzX5d9rQRPh/3zKlp
-	oOCa62LbHkTrMP9J40DL9xXZKWZIvOhkTU4lHoWYjBkUnGFKkqCE1frDsNUU/6B7um+BhSY9h
-	migtPSYiXqODajbZbgTDhBF3OCNCbEGyT4NbmjYFiHkpCRwPsY3qgaTwzh5J+QhWpalixkh+A
-	88TiC85wXoXTGQeHDq+SVjcl3rwW+eZawvsEls5fL35pVJHYhaO7QrNmdf7qLLX/NtjBwF4uM
-	3riHUrdykXJ5ZDwIACL3CPNpra60rT4V+lVEjWEIcY39J6IE8K6zzu1tywiU6pq/coxV1NzxW
-	sR8SKkCPATwMmn6eFPhkYVGvnjj307xRZ0Y3Y+lfUAVfp3f5DIyPso4T9U60o1vHYrkZoWUwK
-	la8oISaA+zi59V3MKn/tjYeCQ4FPCaYE6300qVAKtDA+ADx+Y+2I7uZ6ZtOmZ55Uw4Jms8Ko5
-	aYrrATiiTx4dUeAATweZZ4oWmTTIw==
+User-Agent: NeoMutt/20180323
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.1]);
+	Thu, 19 Apr 2018 09:20:19 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Thu, 19 Apr 2018 09:20:19 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 212.227.15.19
+X-Received-From: 66.187.233.73
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1] configure: require
  glib-2.24
 X-BeenThere: qemu-trivial@nongnu.org
@@ -72,95 +71,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Apr 2018 08:59:56 -0000
+X-List-Received-Date: Thu, 19 Apr 2018 09:20:36 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---GsdJWqCo4910G8fLK8MvGDsiRkCRPuXpS
-Content-Type: multipart/mixed; boundary="eESH9dLsHM7j50xMuIUjSHk6UM3J2fNTd";
- protected-headers="v1"
-From: Kamil Rytarowski <n54@gmx.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>
-Cc: Olaf Hering <olaf@aepfle.de>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Fam Zheng <famz@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
- Cornelia Huck <cohuck@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <71ff6ce5-c878-de18-5d03-bb4a8b66a98a@gmx.com>
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1] configure: require
- glib-2.24
-References: <20180418123838.3511-1-olaf@aepfle.de>
- <20180418144538.4aa2f492.cohuck@redhat.com>
- <20180418125545.GN27579@redhat.com> <87sh7rvf27.fsf@dusky.pond.sub.org>
- <20180419093024.27c77433.olaf@aepfle.de> <20180419075958.GD10259@redhat.com>
- <CAFEAcA9UYM3hifEbs_sp9jcFkwu5sSSXaLq9CLWuhNbV67+MBQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA9UYM3hifEbs_sp9jcFkwu5sSSXaLq9CLWuhNbV67+MBQ@mail.gmail.com>
+  Hi,
 
---eESH9dLsHM7j50xMuIUjSHk6UM3J2fNTd
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-On 19.04.2018 10:54, Peter Maydell wrote:
-> On 19 April 2018 at 08:59, Daniel P. Berrang=C3=A9 <berrange@redhat.com=
-> wrote:
->> I wouldn't say people don't care about SLE11 (or other similarly old d=
-istros
->> like RHEL-6). Rather the view in libvirt was that if a user is stuck o=
-n such
->> an old distro, they are likely doing that because they want the stabil=
-ity
->> inherant in running fixed software versions for years. IOW it is unlik=
-ely
->> that they want the stability of an old distro, combined with cutting e=
-dge
->> libvirt and/or QEMU.
->=20
 > Well, it depends. You might be stuck with an old distro because
 > some software you want to run depends on it, but also want to run
 > newer versions of some programs like QEMU. If you're in that
 > boat you can probably live with having to also compile a newer
-> version of glib to go with your newer QEMU, though. I think the
-> policy as outlined in that libvirt page seems a good one (it's
-> basically a codification of what we've been doing already), with
-> a few tweaks -- I think we still believe we support some older
-> OSX releases, and would want to mention NetBSD/OpenBSD I guess.
->=20
+> version of glib to go with your newer QEMU, though.
 
-In NetBSD we don't really support pkgsrc branches more than quarterly
-and keep using usually the recent releases.
+Core libraries like glib might not be that easy, I've seen updating glib
+breaking apps in the past.
 
-> thanks
-> -- PMM
->=20
+For stuff like spice where qemu and spice clients are pretty much the
+only users it is alot more reasonable to say "well, just update
+$dependency too if you want run cutting edge qemu."
 
+cheers,
+  Gerd
 
-
---eESH9dLsHM7j50xMuIUjSHk6UM3J2fNTd--
-
---GsdJWqCo4910G8fLK8MvGDsiRkCRPuXpS
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQJABAEBCAAqFiEELaxVpweEzw+lMDwuS7MI6bAudmwFAlrYWwUMHG41NEBnbXgu
-Y29tAAoJEEuzCOmwLnZsrJIQALDlGqzgpSybC8zRwsEt2y9fpGqm1/Kwj0XL7HSZ
-xlVIqsAZqikZxXJKrHZgEj+6TTVp0SwfEEUkN++PzHydvay/NtvOEUWEphLrY4J+
-CYF/IlvVmVEM7jbWcpLwn4WRiza0I2TLESnR2yPGu0+phKiuaLgvnyCcgKKoohzV
-UcV1IlPRz618SHwxTvc00uwD+cXZC3n16ncr66Ifpgowz/P+yGDttrL/P917tKzu
-Vy6HNjKUupoEHek0KIygYydZXV7AEvKN5knNHqWj+rJFlBFFFZOpaNr7oWFuCSRH
-M4E1Mm/Zp8vBTYfzL2gn0e8w5nFe7bX3i8uvHmby1j9BuBocupUZxjBPDzKsesVR
-SLXcP556jIhfnGKun1mdumtYtCMlqB+b+p6qcL4TOm//oABJyN2iTSV8krCgfnT5
-fajr6unmUjqr2rRrpFX9Pa4804iJzOZEiJHGlZNLZ4KNXUsLDqvXwvex/0D1hFbE
-PKGv4FSLlzHYdeTToUO49p3o6xjN8rwBAOZPOjAGZxqlEwsts6VCKY/PghF3Q1Vh
-L9SJY2/TxDgoa8/AglnBotGRs3k5VrOUb4ZdCE3IfiIuKnTrURg0LHrVzHnVAZZl
-8yMXEbMnHcS31UKEkNhz2KX+rubG2FQ4/RowS7WI4zCR3eFF/7DM2iH8FAw3l031
-/OIw
-=Ph2C
------END PGP SIGNATURE-----
-
---GsdJWqCo4910G8fLK8MvGDsiRkCRPuXpS--
 
