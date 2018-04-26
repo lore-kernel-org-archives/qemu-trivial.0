@@ -1,72 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1f9wjH-0006Iv-AT
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Apr 2018 13:55:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48837)
+	id 1fBc60-0000lu-NT
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Apr 2018 04:17:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60509)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <yuval.shaia@oracle.com>) id 1f9wjF-0006IW-Jb
-	for qemu-trivial@nongnu.org; Sat, 21 Apr 2018 13:55:18 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fBc5v-0000jM-Lf
+	for qemu-trivial@nongnu.org; Thu, 26 Apr 2018 04:17:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <yuval.shaia@oracle.com>) id 1f9wjC-0007Wf-Ft
-	for qemu-trivial@nongnu.org; Sat, 21 Apr 2018 13:55:17 -0400
-Received: from aserp2120.oracle.com ([141.146.126.78]:51888)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <yuval.shaia@oracle.com>)
-	id 1f9wjC-0007UL-6i; Sat, 21 Apr 2018 13:55:14 -0400
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
-	by aserp2120.oracle.com (8.16.0.22/8.16.0.22) with SMTP id
-	w3LHpfcc069678; Sat, 21 Apr 2018 17:55:10 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
-	h=date : from : to : cc
-	: subject : message-id : references : mime-version : content-type :
-	content-transfer-encoding : in-reply-to; s=corp-2017-10-26;
-	bh=k62hHZxlh05zw+DLOXfKFzirWqkEo/E8KR5ILQJ0saw=;
-	b=YLgyBNfym1fMqZn8YH59ouPOZK932fWgkRYRoE/7dwQrV/5/wB1p0FNBqJhitYK+flxH
-	ILHMcAY28vvw0KnUkMcTRtA5oNkDUU/33bsGxvQTTVBW+bpzWR40BRLa0TVKAXEnuxPa
-	RaMvSuymzL3FtbJ4LNG293Q7wDLxWYonv43kX63ieNk0vBVE8bUWdO0nQBs5rhUm8Dwd
-	ZjCuV586/AKkHeWUZzS5RXDgcOZDnzObpo3Wp+L4jlQqoRlaHl/w/I5okRCEshQ1T5Xb
-	zmSyCO2VwJ8i5/v0xx+Td3Mwq62iA3mJftgYzk5VOv+Ao7cvr++se/d1sXlUHYOpdJmP
-	cw== 
-Received: from userv0021.oracle.com (userv0021.oracle.com [156.151.31.71])
-	by aserp2120.oracle.com with ESMTP id 2hfw9a11ce-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Sat, 21 Apr 2018 17:55:10 +0000
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
-	by userv0021.oracle.com (8.14.4/8.14.4) with ESMTP id w3LHt93F009058
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Sat, 21 Apr 2018 17:55:09 GMT
-Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
-	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id w3LHt8tc011241;
-	Sat, 21 Apr 2018 17:55:08 GMT
-Received: from yuvallap (/77.138.186.148)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Sat, 21 Apr 2018 10:55:08 -0700
-Date: Sat, 21 Apr 2018 20:55:03 +0300
-From: Yuval Shaia <yuval.shaia@oracle.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
-	qemu-devel@nongnu.org, Marcel Apfelbaum <marcel@redhat.com>
-Message-ID: <20180421175502.GB2711@yuvallap>
-References: <20180415234307.28132-1-f4bug@amsat.org>
-	<20180415234307.28132-39-f4bug@amsat.org>
+	(envelope-from <peter.maydell@linaro.org>) id 1fBc5u-0006Nx-Ol
+	for qemu-trivial@nongnu.org; Thu, 26 Apr 2018 04:17:35 -0400
+Received: from mail-ot0-x229.google.com ([2607:f8b0:4003:c0f::229]:39220)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fBc5u-0006Na-Hz
+	for qemu-trivial@nongnu.org; Thu, 26 Apr 2018 04:17:34 -0400
+Received: by mail-ot0-x229.google.com with SMTP id l12-v6so522442oth.6
+	for <qemu-trivial@nongnu.org>; Thu, 26 Apr 2018 01:17:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=f3fVPGQj79L31M9mb+mwkLYCKLiQ9EbCaB1z6ZWh0rU=;
+	b=D2kQ6803ff52MT4OqfP1GnCAbrO9WFGFMCDW02ctOuaYyU4hGRY7tKAVGxy6+AA2kI
+	UPOodf9JBQdmw0n0lm02IrIoG9YYEul/y90K9pTi4WiiBq5HLaCwVB9q5Vivdr3WxqUV
+	GiyVnx+bIxxuKZmox7QeAAszZGs+cwt9ay7a4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=f3fVPGQj79L31M9mb+mwkLYCKLiQ9EbCaB1z6ZWh0rU=;
+	b=fOTZaTK4xGYGlnVBRpxi5hA0A9Jzf1cNfwvOO1PnPyfHCiaN5VaLWMZSmrLJ2TGZsF
+	/AFO2aws1dRbMLRbu5k1aaC0RbiL8RHtG8q2TzCQuf6cvpSn7ev2KtvRwFbXznDbH0DG
+	Vd0juDi7SyOqRsOHHToEUd0lr4KL+c3TU8yFPsDJMpYfF2baQGipp+Dg2Ya7aWLvDkWJ
+	a1eS+gV8TqkHRPcZi4j/Cdh2WXkZQHXGtezW58AR5ljRLG3xVF7EbzwUNg8LRNVhcKGo
+	tuedUkd57tTsAN0w5uGi9J8aw2v6npaqJl7q4AlCspZ6386KwBXlYtRHFADOKWsGbMIB
+	rrNg==
+X-Gm-Message-State: ALQs6tAMzHkqIX30fxdkqPlamb6Uj4SdcS8q+SsIVqZaR81nqviKuiE8
+	uuVE/xIycrmn+ijdB0u7Sl2ZI/oF7pcB6yA1794JBA==
+X-Google-Smtp-Source: AIpwx4+f1REmqCgTRwWPNHzxg+s7Le4hlC36jyhUQPAjwdRoj2QtlZ29GnZtJ24EdtPDwIw+IW6DYxL/9uLgRfjEwoU=
+X-Received: by 2002:a9d:2013:: with SMTP id
+	n19-v6mr12548341ota.258.1524730653773; 
+	Thu, 26 Apr 2018 01:17:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20180415234307.28132-39-f4bug@amsat.org>
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=8870
-	signatures=668698
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
-	malwarescore=0
-	phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
-	adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
-	engine=8.0.1-1711220000 definitions=main-1804210196
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Thu, 26 Apr 2018 01:17:13
+	-0700 (PDT)
+In-Reply-To: <20180418144433.GV27579@redhat.com>
+References: <20180418123838.3511-1-olaf@aepfle.de>
+	<20180418124753.GM27579@redhat.com>
+	<CAFEAcA_TtC-p4JJFRPaBFwim1a8J9G+z79KAK8vqrTx7ZKjOKg@mail.gmail.com>
+	<20180418144433.GV27579@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 26 Apr 2018 09:17:13 +0100
+Message-ID: <CAFEAcA8jXwo35B7KVdVZEiqZTtMRvVXCP87iHKECjWPkHiTJ_A@mail.gmail.com>
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Olaf Hering <olaf@aepfle.de>, QEMU Trivial <qemu-trivial@nongnu.org>,
+	Fam Zheng <famz@redhat.com>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	"open list:All patches CC here" <qemu-devel@nongnu.org>,
+	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-MIME-Autoconverted: from 8bit to quoted-printable by aserp2120.oracle.com id
-	w3LHpfcc069678
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 141.146.126.78
-Subject: Re: [Qemu-trivial] [PATCH v3 38/41] hw/rdma: Use the BYTE-based
- definitions
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::229
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1] configure: require
+ glib-2.24
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,49 +74,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Apr 2018 17:55:18 -0000
+X-List-Received-Date: Thu, 26 Apr 2018 08:17:38 -0000
 
-On Sun, Apr 15, 2018 at 08:43:04PM -0300, Philippe Mathieu-Daud=E9 wrote:
-> It eases code review, unit is explicit.
->=20
-> Patch generated using:
->=20
->   $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include=
-/hw/
->=20
-> and modified manually.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-> ---
->  hw/rdma/vmw/pvrdma.h | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->=20
-> diff --git a/hw/rdma/vmw/pvrdma.h b/hw/rdma/vmw/pvrdma.h
-> index 8c173cb824..f17143f0e6 100644
-> --- a/hw/rdma/vmw/pvrdma.h
-> +++ b/hw/rdma/vmw/pvrdma.h
-> @@ -16,6 +16,7 @@
->  #ifndef PVRDMA_PVRDMA_H
->  #define PVRDMA_PVRDMA_H
-> =20
-> +#include "qemu/units.h"
->  #include "hw/pci/pci.h"
->  #include "hw/pci/msix.h"
-> =20
-> @@ -30,7 +31,7 @@
->  #define RDMA_MSIX_BAR_IDX    0
->  #define RDMA_REG_BAR_IDX     1
->  #define RDMA_UAR_BAR_IDX     2
-> -#define RDMA_BAR0_MSIX_SIZE  (16 * 1024)
-> +#define RDMA_BAR0_MSIX_SIZE  (16 * K_BYTE)
->  #define RDMA_BAR1_REGS_SIZE  256
->  #define RDMA_BAR2_UAR_SIZE   (0x1000 * MAX_UCS) /* each uc gets page *=
-/
+On 18 April 2018 at 15:44, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wr=
+ote:
+> On Wed, Apr 18, 2018 at 02:29:47PM +0100, Peter Maydell wrote:
+>> Yes, my OSX build system is on glib 2.22. It's using 'fink' for 3rd
+>> party library installations, and they somehow seem to have got stuck
+>> on 2.22. Looking at the website the project seems to have basically
+>> stagnated, and I guess I need to move to homebrew at some point
+>> (likely after we get 2.12 out the door). But for the moment this
+>> patch would break my pullrequest testing builds.
+>
+> Yeah that sounds reasonable as it would also align your build env with
+> what we are testing via travis too.
 
-Reviewed-by: Yuval Shaia <yuval.shaia@oracle.com>
+I've now made the switch to homebrew, and so my OSX build tests
+will be using glib 2.56. NB that this means that none of my merge
+testing will catch "glib version too old" for our current setting
+of "too old" -- I'm not sure what my current oldest version is in
+the test machine set.
 
-> =20
-> --=20
-> 2.17.0
->=20
+I've also upgraded Xcode, which means I now have a machine with
+a clang that emits all the -Waddress-of-packed-member complaints.
+I have configured the test build so those aren't fatal
+(via --extra-cflags=3D'-Werror -Wno-error=3Daddress-of-packed-member
+-Wno-error=3Ddeprecated-declarations') but I'm now more interested in
+getting those cleaned up so they don't clutter up my logfiles :-)
+
+thanks
+-- PMM
 
