@@ -1,68 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fBc60-0000lu-NT
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Apr 2018 04:17:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60509)
+	id 1fBcXH-0001QR-K7
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Apr 2018 04:45:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42460)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fBc5v-0000jM-Lf
-	for qemu-trivial@nongnu.org; Thu, 26 Apr 2018 04:17:38 -0400
+	(envelope-from <marcel@redhat.com>) id 1fBcXA-0001Ki-T0
+	for qemu-trivial@nongnu.org; Thu, 26 Apr 2018 04:45:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fBc5u-0006Nx-Ol
-	for qemu-trivial@nongnu.org; Thu, 26 Apr 2018 04:17:35 -0400
-Received: from mail-ot0-x229.google.com ([2607:f8b0:4003:c0f::229]:39220)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fBc5u-0006Na-Hz
-	for qemu-trivial@nongnu.org; Thu, 26 Apr 2018 04:17:34 -0400
-Received: by mail-ot0-x229.google.com with SMTP id l12-v6so522442oth.6
-	for <qemu-trivial@nongnu.org>; Thu, 26 Apr 2018 01:17:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=f3fVPGQj79L31M9mb+mwkLYCKLiQ9EbCaB1z6ZWh0rU=;
-	b=D2kQ6803ff52MT4OqfP1GnCAbrO9WFGFMCDW02ctOuaYyU4hGRY7tKAVGxy6+AA2kI
-	UPOodf9JBQdmw0n0lm02IrIoG9YYEul/y90K9pTi4WiiBq5HLaCwVB9q5Vivdr3WxqUV
-	GiyVnx+bIxxuKZmox7QeAAszZGs+cwt9ay7a4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=f3fVPGQj79L31M9mb+mwkLYCKLiQ9EbCaB1z6ZWh0rU=;
-	b=fOTZaTK4xGYGlnVBRpxi5hA0A9Jzf1cNfwvOO1PnPyfHCiaN5VaLWMZSmrLJ2TGZsF
-	/AFO2aws1dRbMLRbu5k1aaC0RbiL8RHtG8q2TzCQuf6cvpSn7ev2KtvRwFbXznDbH0DG
-	Vd0juDi7SyOqRsOHHToEUd0lr4KL+c3TU8yFPsDJMpYfF2baQGipp+Dg2Ya7aWLvDkWJ
-	a1eS+gV8TqkHRPcZi4j/Cdh2WXkZQHXGtezW58AR5ljRLG3xVF7EbzwUNg8LRNVhcKGo
-	tuedUkd57tTsAN0w5uGi9J8aw2v6npaqJl7q4AlCspZ6386KwBXlYtRHFADOKWsGbMIB
-	rrNg==
-X-Gm-Message-State: ALQs6tAMzHkqIX30fxdkqPlamb6Uj4SdcS8q+SsIVqZaR81nqviKuiE8
-	uuVE/xIycrmn+ijdB0u7Sl2ZI/oF7pcB6yA1794JBA==
-X-Google-Smtp-Source: AIpwx4+f1REmqCgTRwWPNHzxg+s7Le4hlC36jyhUQPAjwdRoj2QtlZ29GnZtJ24EdtPDwIw+IW6DYxL/9uLgRfjEwoU=
-X-Received: by 2002:a9d:2013:: with SMTP id
-	n19-v6mr12548341ota.258.1524730653773; 
-	Thu, 26 Apr 2018 01:17:33 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Thu, 26 Apr 2018 01:17:13
-	-0700 (PDT)
-In-Reply-To: <20180418144433.GV27579@redhat.com>
-References: <20180418123838.3511-1-olaf@aepfle.de>
-	<20180418124753.GM27579@redhat.com>
-	<CAFEAcA_TtC-p4JJFRPaBFwim1a8J9G+z79KAK8vqrTx7ZKjOKg@mail.gmail.com>
-	<20180418144433.GV27579@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 26 Apr 2018 09:17:13 +0100
-Message-ID: <CAFEAcA8jXwo35B7KVdVZEiqZTtMRvVXCP87iHKECjWPkHiTJ_A@mail.gmail.com>
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Olaf Hering <olaf@aepfle.de>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	Fam Zheng <famz@redhat.com>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	"open list:All patches CC here" <qemu-devel@nongnu.org>,
-	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::229
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1] configure: require
- glib-2.24
+	(envelope-from <marcel@redhat.com>) id 1fBcXA-0002N5-1A
+	for qemu-trivial@nongnu.org; Thu, 26 Apr 2018 04:45:44 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51618 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <marcel@redhat.com>)
+	id 1fBcX4-0002Jr-8m; Thu, 26 Apr 2018 04:45:38 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 72A49406C74B;
+	Thu, 26 Apr 2018 08:45:32 +0000 (UTC)
+Received: from localhost.localdomain (unknown [10.35.206.57])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 22E7610EE6C7;
+	Thu, 26 Apr 2018 08:45:24 +0000 (UTC)
+From: Marcel Apfelbaum <marcel@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: ehabkost@redhat.com,
+	yuval.shaia@oracle.com,
+	mst@redhat.com
+Date: Thu, 26 Apr 2018 11:45:23 +0300
+Message-Id: <20180426084523.10565-1-marcel@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Thu, 26 Apr 2018 08:45:32 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Thu, 26 Apr 2018 08:45:32 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'marcel@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-trivial] [Qemu-devel] [PATCH] MAINTAINERS: update Marcel
+ Apfelbaum email
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,34 +53,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Apr 2018 08:17:38 -0000
+X-List-Received-Date: Thu, 26 Apr 2018 08:45:49 -0000
 
-On 18 April 2018 at 15:44, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wr=
-ote:
-> On Wed, Apr 18, 2018 at 02:29:47PM +0100, Peter Maydell wrote:
->> Yes, my OSX build system is on glib 2.22. It's using 'fink' for 3rd
->> party library installations, and they somehow seem to have got stuck
->> on 2.22. Looking at the website the project seems to have basically
->> stagnated, and I guess I need to move to homebrew at some point
->> (likely after we get 2.12 out the door). But for the moment this
->> patch would break my pullrequest testing builds.
->
-> Yeah that sounds reasonable as it would also align your build env with
-> what we are testing via travis too.
+Use my gmail account for maintainer tasks.
 
-I've now made the switch to homebrew, and so my OSX build tests
-will be using glib 2.56. NB that this means that none of my merge
-testing will catch "glib version too old" for our current setting
-of "too old" -- I'm not sure what my current oldest version is in
-the test machine set.
+Signed-off-by: Marcel Apfelbaum <marcel@redhat.com>
+---
+ MAINTAINERS | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-I've also upgraded Xcode, which means I now have a machine with
-a clang that emits all the -Waddress-of-packed-member complaints.
-I have configured the test build so those aren't fatal
-(via --extra-cflags=3D'-Werror -Wno-error=3Daddress-of-packed-member
--Wno-error=3Ddeprecated-declarations') but I'm now more interested in
-getting those cleaned up so they don't clutter up my logfiles :-)
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 24b70169bc..459e3594e1 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -909,7 +909,7 @@ X86 Machines
+ ------------
+ PC
+ M: Michael S. Tsirkin <mst@redhat.com>
+-M: Marcel Apfelbaum <marcel@redhat.com>
++M: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+ S: Supported
+ F: include/hw/i386/
+ F: hw/i386/
+@@ -959,7 +959,7 @@ F: include/hw/timer/mc146818rtc*
+ 
+ Machine core
+ M: Eduardo Habkost <ehabkost@redhat.com>
+-M: Marcel Apfelbaum <marcel@redhat.com>
++M: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+ S: Supported
+ F: hw/core/machine.c
+ F: hw/core/null-machine.c
+@@ -1033,7 +1033,7 @@ F: hw/ipack/
+ 
+ PCI
+ M: Michael S. Tsirkin <mst@redhat.com>
+-M: Marcel Apfelbaum <marcel@redhat.com>
++M: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+ S: Supported
+ F: include/hw/pci/*
+ F: hw/misc/pci-testdev.c
+@@ -2075,7 +2075,7 @@ F: docs/block-replication.txt
+ 
+ PVRDMA
+ M: Yuval Shaia <yuval.shaia@oracle.com>
+-M: Marcel Apfelbaum <marcel@redhat.com>
++M: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+ S: Maintained
+ F: hw/rdma/*
+ F: hw/rdma/vmw/*
+-- 
+2.13.6
 
-thanks
--- PMM
 
