@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fDVlI-0003Q0-Hm
-	for mharc-qemu-trivial@gnu.org; Tue, 01 May 2018 09:56:08 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43968)
+	id 1fDVlJ-0003R4-Lc
+	for mharc-qemu-trivial@gnu.org; Tue, 01 May 2018 09:56:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43989)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1fDVlG-0003PW-2U
-	for qemu-trivial@nongnu.org; Tue, 01 May 2018 09:56:07 -0400
+	(envelope-from <laurent@vivier.eu>) id 1fDVlH-0003Pj-Jz
+	for qemu-trivial@nongnu.org; Tue, 01 May 2018 09:56:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1fDVlB-0007te-8v
-	for qemu-trivial@nongnu.org; Tue, 01 May 2018 09:56:06 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:34481)
+	(envelope-from <laurent@vivier.eu>) id 1fDVlD-0007xd-Fb
+	for qemu-trivial@nongnu.org; Tue, 01 May 2018 09:56:07 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:42801)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1fDVlA-0007qc-VY; Tue, 01 May 2018 09:56:01 -0400
+	id 1fDVlD-0007vk-5f; Tue, 01 May 2018 09:56:03 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue007 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 0MVFW5-1eqZwv22xx-00YQmW; Tue, 01 May 2018 15:55:56 +0200
+	id 0MPeNx-1fIASH35TF-004lvA; Tue, 01 May 2018 15:56:01 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
 	Thomas Huth <huth@tuxfamily.org>, Michael Tokarev <mjt@tls.msk.ru>
-Date: Tue,  1 May 2018 15:55:43 +0200
-Message-Id: <20180501135547.12414-1-laurent@vivier.eu>
+Date: Tue,  1 May 2018 15:55:47 +0200
+Message-Id: <20180501135547.12414-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.14.3
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:reXoixhmhe8XnwG5u18x1PiwSZhrTaO97dvReQGNYQwjirb75n6
-	3/+WRgEYZ0npEJWw3xKKKkl8DqWIJL7pQI2Nfy5kBMWGet5wUHmlrcN6dGLml8meWgrKmKp
-	WracKJNr1YeiX0S77FHlRU4EY0x50gUHhDHbYbLx2f0IHyRyAP6/6Jn0GAh8I4LDq46uqbH
-	aISoyqSUHEie+t8w2+sAw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:UouQhuw7yw8=:RDNOxit20L+7iCs5b4uuXa
-	6JrB7ThpbFWdnggv2XLJ+iiM3MeSqMv6lHyZ62CQxs61wD27wMW8EtyLMXcRk4J3WrVNBGJKf
-	pYoo4DSEiRp+ebOc/UYgbZTrkOiHMYiJp6jl1is0t6Hdw5JqBEU0V8EZJOY9k7vGiehqf++xa
-	spYfSP4hjUF8KzSojvXOJskOCfpi+gJwfpouiyOn1RV5/iGrmUWrFq/KG3/gZvUarNfYWzs7N
-	n+PP5/AqJvI31aAkvPCjENYlqE5HPhaEi6cgE6vnSExAlx8078gXHXZN5U6O1Cc9oVPJQf4vI
-	3lpyYrAD3fmgW0k1A6lJ1jIxs2tKFi7YXHGMez8Xg0FZpLs7ftutC87wdydhwzp43/4Q/VdNq
-	XcSYDz557o37znB6pop6o5fqTVqsSQ/m5PcthvnKXQfNP9G8y7t0IUfwd8P1sJXib6eBWta7p
-	WcJEoTAAQrpBpWx62h7UZbc2twRdkAmfsDJSHhndo6zgASOwjsiXWAGiJjwODunfUfKfPCepN
-	CJa6ddoJGwUG36jKBtwTK44w6XKjBIQ4gQ9coakewKrJCtd735Bq7mACxKzzyQcKSsmh6Eg8V
-	vpG9ksQLX3/3sFWZY+mcaU+t531nTG9josIhTlAIFSKrKfqog9/QpSYWWc2icRVrFUOqh+CGo
-	ysWMji5OxUPwoCHNFK0DbGB861r9iaDcNLF/AbgmKRQ03Ujr8i8+CKgmHcmw67yhJPFCc2OA0
-	7ljcV/j4Al9u9uKT
+In-Reply-To: <20180501135547.12414-1-laurent@vivier.eu>
+References: <20180501135547.12414-1-laurent@vivier.eu>
+X-Provags-ID: V03:K1:lfptg0V/NAx9CaMsam3DUaPSynDSIPOSc96SLynWVMh5/FQ8N0h
+	qOdCV2z6m9KXdv6KBjpQ8V7U6n23PCHTeIHMuhW1Dzxwlx0rqw2uGxYT25o2RTi1GNgy/lg
+	+Ob7YLwbmjoSiF/jU+OUGfxkcUHF+3qxDkjstoScCeCl3YOQTuOrZ5m8Q5HEN/oIDdzpQU7
+	fktBs7lK/P4ZB1j0Ozplg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:+FK/SwCxydc=:WkeLwaeIvHIDMB14vBDTYH
+	wwmF5xL3NQLu/uH6UQvQUpSVvUuMvFon4ZampvdFMUFYxpFI/7kDbuaHxlpogmySMmKAkGocW
+	UPDS5PKZ1jLxQyn1xXa0AZ94GNvEMyC72Pr3SjYPAJcwLkxI3PgA0ALke/XLidOFcmteLdyKB
+	xlj22b05LwPFlC+4PAUPdGrg7NBcutnWFr05R4tx8c2sep46mj9mVCCFchHzjPsINUvYdtpby
+	0KrKrPPLtGNChTPLvXH1U29/XLmv0Ml54IwNvoHWSL25sziPjhfoC/9MwOsrwqlHPR+ivA54t
+	tnWLBpJbtQ2kCZC8zgc7D15w3O+3Px/KmvmZROFxRsrWDlROY2MTZ/IEPRBwkxVR/DO+jiu+Y
+	3Lbpmu0+g/rS/cjYFeN1jy/YYeAB3rRccxmzHFr6KMZ4dQOvn3NcKyVdLyxrni/odEQyfjSkI
+	FEkgr7f+mmxBgNe8GW2YT/hnmF28KC09auHLUGWjb6ZMY+gRK3dZXy6u9ySNR+dErlK4BIose
+	nzyvvI/KHaBteYQjEcLAjIZaJv/bDHhoal0FnujcY/i/cAXeT9L+dhxYhNNBCyIYS3tsoXwn1
+	oqkjxa3ZTkRev/kCNJblERrdfpLA/Oe1R2Mk0s2nmRvcroRdGgHAvOOubEFYLz9T9ov29AfpB
+	PDzznNK+j8/1hanqmPfAy98+XFCwcryQZ+DbcxtZ3pAddVfObhNnAFJFnbrjrMcSzwXs=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 212.227.126.130
-Subject: [Qemu-trivial] [PULL 0/4] M68k for 2.13 patches
+X-Received-From: 212.227.126.135
+Subject: [Qemu-trivial] [PULL 4/4] hw/m68k/mcf5208: Fix trivial typo in
+ board description
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,40 +56,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 May 2018 13:56:07 -0000
+X-List-Received-Date: Tue, 01 May 2018 13:56:08 -0000
 
-The following changes since commit c2c768500f17fc8cdcfa44d169f089953bb22748:
+From: Thomas Huth <huth@tuxfamily.org>
 
-  Merge remote-tracking branch 'remotes/vivier2/tags/linux-user-for-2.13-pull-request' into staging (2018-04-30 10:43:41 +0100)
+It's the MCF5208 evaluation board, not the MCF5206 eval board.
 
-are available in the Git repository at:
+Signed-off-by: Thomas Huth <huth@tuxfamily.org>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20180429094002.3293c9de@thl530.multi.box>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/m68k/mcf5208.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-  git://github.com/vivier/qemu-m68k.git tags/m68k-for-2.13-pull-request
-
-for you to fetch changes up to 83dc62f6ed6b4f2afce71d579a630441cca0957c:
-
-  hw/m68k/mcf5208: Fix trivial typo in board description (2018-05-01 15:37:54 +0200)
-
-----------------------------------------------------------------
-Some fixes for m68k CPU emulation
-including the trivial one from Thomas for mcf5208 (m68k hardware)
-----------------------------------------------------------------
-
-Laurent Vivier (2):
-  m68k: Fix floatx80_lognp1 (Coverity CID1390587)
-  m68k: remove dead code (Coverity CID1390617)
-
-Pavel Dovgalyuk (1):
-  m68k: fix subx mem, mem instruction
-
-Thomas Huth (1):
-  hw/m68k/mcf5208: Fix trivial typo in board description
-
- hw/m68k/mcf5208.c       |  2 +-
- target/m68k/softfloat.c | 46 ++++++++++++++++------------------------------
- target/m68k/translate.c |  4 ++--
- 3 files changed, 19 insertions(+), 33 deletions(-)
-
+diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
+index 7aca58542e..ae3dcc98c3 100644
+--- a/hw/m68k/mcf5208.c
++++ b/hw/m68k/mcf5208.c
+@@ -315,7 +315,7 @@ static void mcf5208evb_init(MachineState *machine)
+ 
+ static void mcf5208evb_machine_init(MachineClass *mc)
+ {
+-    mc->desc = "MCF5206EVB";
++    mc->desc = "MCF5208EVB";
+     mc->init = mcf5208evb_init;
+     mc->is_default = 1;
+     mc->default_cpu_type = M68K_CPU_TYPE_NAME("m5208");
 -- 
 2.14.3
 
