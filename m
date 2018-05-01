@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fDVlJ-0003R4-Lc
-	for mharc-qemu-trivial@gnu.org; Tue, 01 May 2018 09:56:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43989)
+	id 1fDVlL-0003Tg-PI
+	for mharc-qemu-trivial@gnu.org; Tue, 01 May 2018 09:56:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44035)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1fDVlH-0003Pj-Jz
-	for qemu-trivial@nongnu.org; Tue, 01 May 2018 09:56:08 -0400
+	(envelope-from <laurent@vivier.eu>) id 1fDVlJ-0003Qs-DC
+	for qemu-trivial@nongnu.org; Tue, 01 May 2018 09:56:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1fDVlD-0007xd-Fb
-	for qemu-trivial@nongnu.org; Tue, 01 May 2018 09:56:07 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:42801)
+	(envelope-from <laurent@vivier.eu>) id 1fDVlI-000815-Kw
+	for qemu-trivial@nongnu.org; Tue, 01 May 2018 09:56:09 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:47141)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1fDVlD-0007vk-5f; Tue, 01 May 2018 09:56:03 -0400
+	id 1fDVlC-0007vQ-V3; Tue, 01 May 2018 09:56:03 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue007 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 0MPeNx-1fIASH35TF-004lvA; Tue, 01 May 2018 15:56:01 +0200
+	id 0M4xAo-1eQd8N3IuU-00zClH; Tue, 01 May 2018 15:55:58 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
-	Thomas Huth <huth@tuxfamily.org>, Michael Tokarev <mjt@tls.msk.ru>
-Date: Tue,  1 May 2018 15:55:47 +0200
-Message-Id: <20180501135547.12414-5-laurent@vivier.eu>
+	Thomas Huth <huth@tuxfamily.org>, Michael Tokarev <mjt@tls.msk.ru>,
+	Pavel Dovgalyuk <Pavel.Dovgaluk@ispras.ru>
+Date: Tue,  1 May 2018 15:55:44 +0200
+Message-Id: <20180501135547.12414-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180501135547.12414-1-laurent@vivier.eu>
 References: <20180501135547.12414-1-laurent@vivier.eu>
-X-Provags-ID: V03:K1:lfptg0V/NAx9CaMsam3DUaPSynDSIPOSc96SLynWVMh5/FQ8N0h
-	qOdCV2z6m9KXdv6KBjpQ8V7U6n23PCHTeIHMuhW1Dzxwlx0rqw2uGxYT25o2RTi1GNgy/lg
-	+Ob7YLwbmjoSiF/jU+OUGfxkcUHF+3qxDkjstoScCeCl3YOQTuOrZ5m8Q5HEN/oIDdzpQU7
-	fktBs7lK/P4ZB1j0Ozplg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:+FK/SwCxydc=:WkeLwaeIvHIDMB14vBDTYH
-	wwmF5xL3NQLu/uH6UQvQUpSVvUuMvFon4ZampvdFMUFYxpFI/7kDbuaHxlpogmySMmKAkGocW
-	UPDS5PKZ1jLxQyn1xXa0AZ94GNvEMyC72Pr3SjYPAJcwLkxI3PgA0ALke/XLidOFcmteLdyKB
-	xlj22b05LwPFlC+4PAUPdGrg7NBcutnWFr05R4tx8c2sep46mj9mVCCFchHzjPsINUvYdtpby
-	0KrKrPPLtGNChTPLvXH1U29/XLmv0Ml54IwNvoHWSL25sziPjhfoC/9MwOsrwqlHPR+ivA54t
-	tnWLBpJbtQ2kCZC8zgc7D15w3O+3Px/KmvmZROFxRsrWDlROY2MTZ/IEPRBwkxVR/DO+jiu+Y
-	3Lbpmu0+g/rS/cjYFeN1jy/YYeAB3rRccxmzHFr6KMZ4dQOvn3NcKyVdLyxrni/odEQyfjSkI
-	FEkgr7f+mmxBgNe8GW2YT/hnmF28KC09auHLUGWjb6ZMY+gRK3dZXy6u9ySNR+dErlK4BIose
-	nzyvvI/KHaBteYQjEcLAjIZaJv/bDHhoal0FnujcY/i/cAXeT9L+dhxYhNNBCyIYS3tsoXwn1
-	oqkjxa3ZTkRev/kCNJblERrdfpLA/Oe1R2Mk0s2nmRvcroRdGgHAvOOubEFYLz9T9ov29AfpB
-	PDzznNK+j8/1hanqmPfAy98+XFCwcryQZ+DbcxtZ3pAddVfObhNnAFJFnbrjrMcSzwXs=
+X-Provags-ID: V03:K1:gO8KtUgiDaXaomxdHb/T6sq2AA1u8rkvM3YpB+k1jTmB9u/lFah
+	lIVgm8FJmLmrtpjpfZcr9LvdAm05Q1r5GgYJSpIEhlqNiIWZCYZFPFebyuaE4p0EJ6dqeDC
+	J9aa7HCRIq8mB6SFQdJTJKTqPcbZug4dnPhPkwQuiYdPjyeD1WyQMuFGn52k1c61ezQuC+x
+	LSqeYSpl0Egf4Ao9QB3Zg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:qtpq9Cqa/mw=:3DDnD4txp7IdAfy6ADtzXg
+	HJsHRIz5JV5B7df+JZpPkNwXymljA+BlJPIqTElE2saYv7tiMXLFNO1OAeh2cWYKhrk5p/dGj
+	8GoI5PNAwlpQvrKYVDGUJPhVRjVtl1juG9Ub34l9uEcfnozUdnQWgMYIvtUKq25CsV7sa6tRf
+	Uo3Rs8mXOmQqC0koayBvFckucG7lVbFOxTs1swdm/P5CT/fZf2g1/4CttKgW6ZpuTGWcHcifP
+	qr55WIGmNM8I5bLZsQKrb0XMxWevTrgZJERGdvL55JUDwTAuDy8DybxNgUEhGyI5+5p2P5qOe
+	x6z0SWAdqamSNGO7m+YTXNIOzMpZPA0m/WxnWqb/DcGSmXkzWYKmOZjgOPo+1WM0KDmqr+BnX
+	YRU8FkRQUmh+bF8w44AbXprnnacE33RZjrYGE2uE5rD/4IpPMagwCReQ2Tq3HLGdbgeasHMlf
+	OpzHNlTXl/5s7PVOV50S1joU5Ja48Fs3xRiueqT8YrN0h9NFrwPr5hsQ3f09/vC5J1lFuKWi4
+	Xb0O2hD9zaAeFASIgv3wa6nlZqF/3xaj8UcD9KIM5N9ZmDQtAt9XUeiUZxgChZ9YXqY9XzZUW
+	fVKsNr/PEov7J1f13/LqM7l6zOXuVV/rZJ5G1MDh8QVzr48X027gsff59GqvX7z0DiSzxwTyU
+	fORhh103g8SkTkyfeRNpx47hu9XUSvylw+0BkFTJQvgRKQ31RkEyyPOyb0Cn1hiEMoEQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 212.227.126.135
-Subject: [Qemu-trivial] [PULL 4/4] hw/m68k/mcf5208: Fix trivial typo in
- board description
+Subject: [Qemu-trivial] [PULL 1/4] m68k: fix subx mem, mem instruction
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,33 +56,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 May 2018 13:56:08 -0000
+X-List-Received-Date: Tue, 01 May 2018 13:56:10 -0000
 
-From: Thomas Huth <huth@tuxfamily.org>
+From: Pavel Dovgalyuk <Pavel.Dovgaluk@ispras.ru>
 
-It's the MCF5208 evaluation board, not the MCF5206 eval board.
+This patch fixes decrement of the pointers for subx mem, mem instructions.
+Without the patch pointers are decremented by OS_* constant value instead of
+retrieving the corresponding data size and using it as a decrement.
 
-Signed-off-by: Thomas Huth <huth@tuxfamily.org>
+Signed-off-by: Pavel Dovgalyuk <Pavel.Dovgaluk@ispras.ru>
 Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20180429094002.3293c9de@thl530.multi.box>
+Message-Id: <20180418064152.24606.71975.stgit@pasha-VirtualBox>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/m68k/mcf5208.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/m68k/translate.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
-index 7aca58542e..ae3dcc98c3 100644
---- a/hw/m68k/mcf5208.c
-+++ b/hw/m68k/mcf5208.c
-@@ -315,7 +315,7 @@ static void mcf5208evb_init(MachineState *machine)
+diff --git a/target/m68k/translate.c b/target/m68k/translate.c
+index 6beaf9ed66..e407ba2db3 100644
+--- a/target/m68k/translate.c
++++ b/target/m68k/translate.c
+@@ -3166,11 +3166,11 @@ DISAS_INSN(subx_mem)
+     opsize = insn_opsize(insn);
  
- static void mcf5208evb_machine_init(MachineClass *mc)
- {
--    mc->desc = "MCF5206EVB";
-+    mc->desc = "MCF5208EVB";
-     mc->init = mcf5208evb_init;
-     mc->is_default = 1;
-     mc->default_cpu_type = M68K_CPU_TYPE_NAME("m5208");
+     addr_src = AREG(insn, 0);
+-    tcg_gen_subi_i32(addr_src, addr_src, opsize);
++    tcg_gen_subi_i32(addr_src, addr_src, opsize_bytes(opsize));
+     src = gen_load(s, opsize, addr_src, 1, IS_USER(s));
+ 
+     addr_dest = AREG(insn, 9);
+-    tcg_gen_subi_i32(addr_dest, addr_dest, opsize);
++    tcg_gen_subi_i32(addr_dest, addr_dest, opsize_bytes(opsize));
+     dest = gen_load(s, opsize, addr_dest, 1, IS_USER(s));
+ 
+     gen_subx(s, src, dest, opsize);
 -- 
 2.14.3
 
