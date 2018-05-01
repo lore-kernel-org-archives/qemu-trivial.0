@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fDVlL-0003Tg-PI
-	for mharc-qemu-trivial@gnu.org; Tue, 01 May 2018 09:56:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44035)
+	id 1fDVlP-0003XQ-IF
+	for mharc-qemu-trivial@gnu.org; Tue, 01 May 2018 09:56:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43981)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1fDVlJ-0003Qs-DC
-	for qemu-trivial@nongnu.org; Tue, 01 May 2018 09:56:10 -0400
+	(envelope-from <laurent@vivier.eu>) id 1fDVlH-0003Pd-41
+	for qemu-trivial@nongnu.org; Tue, 01 May 2018 09:56:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1fDVlI-000815-Kw
-	for qemu-trivial@nongnu.org; Tue, 01 May 2018 09:56:09 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:47141)
+	(envelope-from <laurent@vivier.eu>) id 1fDVlC-0007wf-UL
+	for qemu-trivial@nongnu.org; Tue, 01 May 2018 09:56:07 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:42769)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1fDVlC-0007vQ-V3; Tue, 01 May 2018 09:56:03 -0400
+	id 1fDVlC-0007ua-K4; Tue, 01 May 2018 09:56:02 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue007 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 0M4xAo-1eQd8N3IuU-00zClH; Tue, 01 May 2018 15:55:58 +0200
+	id 0MHehs-1fCQMN2Who-003NH7; Tue, 01 May 2018 15:56:00 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
-	Thomas Huth <huth@tuxfamily.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	Pavel Dovgalyuk <Pavel.Dovgaluk@ispras.ru>
-Date: Tue,  1 May 2018 15:55:44 +0200
-Message-Id: <20180501135547.12414-2-laurent@vivier.eu>
+	Thomas Huth <huth@tuxfamily.org>, Michael Tokarev <mjt@tls.msk.ru>
+Date: Tue,  1 May 2018 15:55:46 +0200
+Message-Id: <20180501135547.12414-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.14.3
 In-Reply-To: <20180501135547.12414-1-laurent@vivier.eu>
 References: <20180501135547.12414-1-laurent@vivier.eu>
-X-Provags-ID: V03:K1:gO8KtUgiDaXaomxdHb/T6sq2AA1u8rkvM3YpB+k1jTmB9u/lFah
-	lIVgm8FJmLmrtpjpfZcr9LvdAm05Q1r5GgYJSpIEhlqNiIWZCYZFPFebyuaE4p0EJ6dqeDC
-	J9aa7HCRIq8mB6SFQdJTJKTqPcbZug4dnPhPkwQuiYdPjyeD1WyQMuFGn52k1c61ezQuC+x
-	LSqeYSpl0Egf4Ao9QB3Zg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:qtpq9Cqa/mw=:3DDnD4txp7IdAfy6ADtzXg
-	HJsHRIz5JV5B7df+JZpPkNwXymljA+BlJPIqTElE2saYv7tiMXLFNO1OAeh2cWYKhrk5p/dGj
-	8GoI5PNAwlpQvrKYVDGUJPhVRjVtl1juG9Ub34l9uEcfnozUdnQWgMYIvtUKq25CsV7sa6tRf
-	Uo3Rs8mXOmQqC0koayBvFckucG7lVbFOxTs1swdm/P5CT/fZf2g1/4CttKgW6ZpuTGWcHcifP
-	qr55WIGmNM8I5bLZsQKrb0XMxWevTrgZJERGdvL55JUDwTAuDy8DybxNgUEhGyI5+5p2P5qOe
-	x6z0SWAdqamSNGO7m+YTXNIOzMpZPA0m/WxnWqb/DcGSmXkzWYKmOZjgOPo+1WM0KDmqr+BnX
-	YRU8FkRQUmh+bF8w44AbXprnnacE33RZjrYGE2uE5rD/4IpPMagwCReQ2Tq3HLGdbgeasHMlf
-	OpzHNlTXl/5s7PVOV50S1joU5Ja48Fs3xRiueqT8YrN0h9NFrwPr5hsQ3f09/vC5J1lFuKWi4
-	Xb0O2hD9zaAeFASIgv3wa6nlZqF/3xaj8UcD9KIM5N9ZmDQtAt9XUeiUZxgChZ9YXqY9XzZUW
-	fVKsNr/PEov7J1f13/LqM7l6zOXuVV/rZJ5G1MDh8QVzr48X027gsff59GqvX7z0DiSzxwTyU
-	fORhh103g8SkTkyfeRNpx47hu9XUSvylw+0BkFTJQvgRKQ31RkEyyPOyb0Cn1hiEMoEQ=
+X-Provags-ID: V03:K1:t6NaEkclVVLvTfAPpfQo33Ce9K7pX2kK2KMeMgjVlGlpqtetvJY
+	0At7TbI6KUx8XyaMd5GUPLtskbVR7DtdS0QLDCx8Nj13SNWNGSskUal83qkaIPAFvWbKvih
+	Mzqh91+MnKjfP49aiElqcltx1twz7MjwfFYVcjsOFPYl6203LdLm+mdm97ajkIdku65RkfD
+	WdPXfuCBAufgnBExTsr7w==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:1AC23fPdMxA=:nCdhlPeR2G9hWynvwWL5KN
+	ROF8XELWpHHDXQ0EVUY7YdKyFvc0SgPq4KJEtH1V9kU9DvKZqdqtdVIzWKKjV3QAD0Z3ykeXi
+	xp/WS0hlAhjl4SsS+vBFwK5wsewUBVW2dmIQMmKqks/XRaxPVDiw1BGvJr0I8Tm6SB/vJjs9q
+	T/+QD+CHWAxEXVndc9p+TGWvQ1XKQu/OlIEaUx+2T1NdJzF7BMnimKLoZ2hio5x9iW+iXzuxr
+	5PvhzA49gxEItJDd+6WDZJY2OWYAJMg6VKp/c0uszEDMrSZaaIsR22zFYecTeM4L2wDS+PLEn
+	YH2abq2gnpFSxUnMdrDYl0zpVHg5DvfyK6reOpoJiOo4bjmx1ekjrQWUrB8neCK93xpAVnddu
+	pBchuAvFvKj3YKAIkMCc9FTf7GUqlXUECzQ2/jL+1VW/M+Cl+YcJrHz8cS490oGFhDgfHBax1
+	Jesh3Zk+KkJeiYy+0bXg5GfT5k4ijb9458RpcgRSPav6dipdp7P9/ty0b3F4Z3iXYCN6AFnJR
+	qnEqOeAR85Sf3I1hv5v12HuAci+cygT9mQ6UjFco8OE2LLWmoyuFdXOkOBP/1TBfq2np2P6f1
+	uNNgNMRWaVGqmIGXC8JUs7qrGq5WlqrsIryIcoAkeZvP3bdnj6OYuGU7iPzk0pneRpC/MyhKY
+	wwHHZ+J0JI3pCJTbI2oYw9KO2Y7DQ2vbQiVh0cPxPKAS33yBrRnQ4rgYl4Izs/LLM1BI=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 212.227.126.135
-Subject: [Qemu-trivial] [PULL 1/4] m68k: fix subx mem, mem instruction
+X-Received-From: 212.227.126.134
+Subject: [Qemu-trivial] [PULL 3/4] m68k: remove dead code (Coverity
+ CID1390617)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,40 +56,150 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 May 2018 13:56:10 -0000
+X-List-Received-Date: Tue, 01 May 2018 13:56:08 -0000
 
-From: Pavel Dovgalyuk <Pavel.Dovgaluk@ispras.ru>
+floatx80_sin() and floatx80_cos() are derived from one
+sincos() function. They have both unused code coming from
+their common origin. Remove it.
 
-This patch fixes decrement of the pointers for subx mem, mem instructions.
-Without the patch pointers are decremented by OS_* constant value instead of
-retrieving the corresponding data size and using it as a decrement.
-
-Signed-off-by: Pavel Dovgalyuk <Pavel.Dovgaluk@ispras.ru>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20180418064152.24606.71975.stgit@pasha-VirtualBox>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20180430170156.1860-2-laurent@vivier.eu>
 ---
- target/m68k/translate.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/m68k/softfloat.c | 43 ++++++++++++++-----------------------------
+ 1 file changed, 14 insertions(+), 29 deletions(-)
 
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index 6beaf9ed66..e407ba2db3 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -3166,11 +3166,11 @@ DISAS_INSN(subx_mem)
-     opsize = insn_opsize(insn);
+diff --git a/target/m68k/softfloat.c b/target/m68k/softfloat.c
+index 2c069a5efb..e41b07d042 100644
+--- a/target/m68k/softfloat.c
++++ b/target/m68k/softfloat.c
+@@ -1497,7 +1497,7 @@ floatx80 floatx80_sin(floatx80 a, float_status *status)
+     int32_t compact, l, n, j;
+     floatx80 fp0, fp1, fp2, fp3, fp4, fp5, x, invtwopi, twopi1, twopi2;
+     float32 posneg1, twoto63;
+-    flag adjn, endflag;
++    flag endflag;
  
-     addr_src = AREG(insn, 0);
--    tcg_gen_subi_i32(addr_src, addr_src, opsize);
-+    tcg_gen_subi_i32(addr_src, addr_src, opsize_bytes(opsize));
-     src = gen_load(s, opsize, addr_src, 1, IS_USER(s));
+     aSig = extractFloatx80Frac(a);
+     aExp = extractFloatx80Exp(a);
+@@ -1515,8 +1515,6 @@ floatx80 floatx80_sin(floatx80 a, float_status *status)
+         return packFloatx80(aSign, 0, 0);
+     }
  
-     addr_dest = AREG(insn, 9);
--    tcg_gen_subi_i32(addr_dest, addr_dest, opsize);
-+    tcg_gen_subi_i32(addr_dest, addr_dest, opsize_bytes(opsize));
-     dest = gen_load(s, opsize, addr_dest, 1, IS_USER(s));
+-    adjn = 0;
+-
+     user_rnd_mode = status->float_rounding_mode;
+     user_rnd_prec = status->floatx80_rounding_precision;
+     status->float_rounding_mode = float_round_nearest_even;
+@@ -1591,14 +1589,8 @@ floatx80 floatx80_sin(floatx80 a, float_status *status)
+             status->float_rounding_mode = user_rnd_mode;
+             status->floatx80_rounding_precision = user_rnd_prec;
  
-     gen_subx(s, src, dest, opsize);
+-            if (adjn) {
+-                /* COSTINY */
+-                a = floatx80_sub(fp0, float32_to_floatx80(
+-                                 make_float32(0x00800000), status), status);
+-            } else {
+-                /* SINTINY */
+-                a = floatx80_move(a, status);
+-            }
++            /* SINTINY */
++            a = floatx80_move(a, status);
+             float_raise(float_flag_inexact, status);
+ 
+             return a;
+@@ -1616,7 +1608,7 @@ floatx80 floatx80_sin(floatx80 a, float_status *status)
+                            status); /* FP0 IS R = (X-Y1)-Y2 */
+ 
+     sincont:
+-        if ((n + adjn) & 1) {
++        if (n & 1) {
+             /* COSPOLY */
+             fp0 = floatx80_mul(fp0, fp0, status); /* FP0 IS S */
+             fp1 = floatx80_mul(fp0, fp0, status); /* FP1 IS T */
+@@ -1629,7 +1621,7 @@ floatx80 floatx80_sin(floatx80 a, float_status *status)
+             xExp = extractFloatx80Exp(fp0);
+             xSig = extractFloatx80Frac(fp0);
+ 
+-            if (((n + adjn) >> 1) & 1) {
++            if ((n >> 1) & 1) {
+                 xSign ^= 1;
+                 posneg1 = make_float32(0xBF800000); /* -1 */
+             } else {
+@@ -1681,7 +1673,7 @@ floatx80 floatx80_sin(floatx80 a, float_status *status)
+             xExp = extractFloatx80Exp(fp0);
+             xSig = extractFloatx80Frac(fp0);
+ 
+-            xSign ^= ((n + adjn) >> 1) & 1; /* X IS NOW R'= SGN*R */
++            xSign ^= (n >> 1) & 1; /* X IS NOW R'= SGN*R */
+ 
+             fp0 = floatx80_mul(fp0, fp0, status); /* FP0 IS S */
+             fp1 = floatx80_mul(fp0, fp0, status); /* FP1 IS T */
+@@ -1744,7 +1736,7 @@ floatx80 floatx80_cos(floatx80 a, float_status *status)
+     int32_t compact, l, n, j;
+     floatx80 fp0, fp1, fp2, fp3, fp4, fp5, x, invtwopi, twopi1, twopi2;
+     float32 posneg1, twoto63;
+-    flag adjn, endflag;
++    flag endflag;
+ 
+     aSig = extractFloatx80Frac(a);
+     aExp = extractFloatx80Exp(a);
+@@ -1762,8 +1754,6 @@ floatx80 floatx80_cos(floatx80 a, float_status *status)
+         return packFloatx80(0, one_exp, one_sig);
+     }
+ 
+-    adjn = 1;
+-
+     user_rnd_mode = status->float_rounding_mode;
+     user_rnd_prec = status->floatx80_rounding_precision;
+     status->float_rounding_mode = float_round_nearest_even;
+@@ -1837,15 +1827,10 @@ floatx80 floatx80_cos(floatx80 a, float_status *status)
+             status->float_rounding_mode = user_rnd_mode;
+             status->floatx80_rounding_precision = user_rnd_prec;
+ 
+-            if (adjn) {
+-                /* COSTINY */
+-                a = floatx80_sub(fp0, float32_to_floatx80(
+-                                 make_float32(0x00800000), status),
+-                                 status);
+-            } else {
+-                /* SINTINY */
+-                a = floatx80_move(a, status);
+-            }
++            /* COSTINY */
++            a = floatx80_sub(fp0, float32_to_floatx80(
++                             make_float32(0x00800000), status),
++                             status);
+             float_raise(float_flag_inexact, status);
+ 
+             return a;
+@@ -1863,7 +1848,7 @@ floatx80 floatx80_cos(floatx80 a, float_status *status)
+                            status); /* FP0 IS R = (X-Y1)-Y2 */
+ 
+     sincont:
+-        if ((n + adjn) & 1) {
++        if ((n + 1) & 1) {
+             /* COSPOLY */
+             fp0 = floatx80_mul(fp0, fp0, status); /* FP0 IS S */
+             fp1 = floatx80_mul(fp0, fp0, status); /* FP1 IS T */
+@@ -1876,7 +1861,7 @@ floatx80 floatx80_cos(floatx80 a, float_status *status)
+             xExp = extractFloatx80Exp(fp0);
+             xSig = extractFloatx80Frac(fp0);
+ 
+-            if (((n + adjn) >> 1) & 1) {
++            if (((n + 1) >> 1) & 1) {
+                 xSign ^= 1;
+                 posneg1 = make_float32(0xBF800000); /* -1 */
+             } else {
+@@ -1927,7 +1912,7 @@ floatx80 floatx80_cos(floatx80 a, float_status *status)
+             xExp = extractFloatx80Exp(fp0);
+             xSig = extractFloatx80Frac(fp0);
+ 
+-            xSign ^= ((n + adjn) >> 1) & 1; /* X IS NOW R'= SGN*R */
++            xSign ^= ((n + 1) >> 1) & 1; /* X IS NOW R'= SGN*R */
+ 
+             fp0 = floatx80_mul(fp0, fp0, status); /* FP0 IS S */
+             fp1 = floatx80_mul(fp0, fp0, status); /* FP1 IS T */
 -- 
 2.14.3
 
