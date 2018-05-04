@@ -1,48 +1,106 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fENA4-0001b1-DD
-	for mharc-qemu-trivial@gnu.org; Thu, 03 May 2018 18:57:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60296)
+	id 1fEP8s-0005bp-Go
+	for mharc-qemu-trivial@gnu.org; Thu, 03 May 2018 21:04:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39056)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1fENA0-0001Wd-Ka
-	for qemu-trivial@nongnu.org; Thu, 03 May 2018 18:57:14 -0400
+	(envelope-from <jsnow@redhat.com>) id 1fEP8o-0005Yf-CN
+	for qemu-trivial@nongnu.org; Thu, 03 May 2018 21:04:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1fEN9v-000612-Lo
-	for qemu-trivial@nongnu.org; Thu, 03 May 2018 18:57:12 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40118 helo=mx1.redhat.com)
+	(envelope-from <jsnow@redhat.com>) id 1fEP8m-0001fg-Qh
+	for qemu-trivial@nongnu.org; Thu, 03 May 2018 21:04:06 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48624 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1fEN9l-0005lu-TV; Thu, 03 May 2018 18:56:57 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1fEP8d-0001Xl-S8; Thu, 03 May 2018 21:03:55 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5CFB3406C780;
-	Thu,  3 May 2018 22:56:57 +0000 (UTC)
-Received: from probe.redhat.com (ovpn-126-131.rdu2.redhat.com [10.10.126.131])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 078EB83B68;
-	Thu,  3 May 2018 22:56:56 +0000 (UTC)
-From: John Snow <jsnow@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-block@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	John Snow <jsnow@redhat.com>
-Date: Thu,  3 May 2018 18:56:47 -0400
-Message-Id: <20180503225648.13153-5-jsnow@redhat.com>
-In-Reply-To: <20180503225648.13153-1-jsnow@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 454F6A2C6F;
+	Fri,  4 May 2018 01:03:55 +0000 (UTC)
+Received: from [10.10.126.131] (ovpn-126-131.rdu2.redhat.com [10.10.126.131])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id DD7092166BAD;
+	Fri,  4 May 2018 01:03:54 +0000 (UTC)
+To: qemu-devel@nongnu.org, qemu-block@nongnu.org
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
 References: <20180503225648.13153-1-jsnow@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+From: John Snow <jsnow@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+	NRhibLIrSP2g5nqXONyQrFxb1HtVaoR+Nrk=
+Message-ID: <df5d75a1-6855-c462-6f05-662a42f50f39@redhat.com>
+Date: Thu, 3 May 2018 21:03:54 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
+MIME-Version: 1.0
+In-Reply-To: <20180503225648.13153-1-jsnow@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Thu, 03 May 2018 22:56:57 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Thu, 03 May 2018 22:56:57 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.2]);
+	Fri, 04 May 2018 01:03:55 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Fri, 04 May 2018 01:03:55 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'jsnow@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-trivial] [PATCH 4/5] qemu-img: Make documentation between
- .texi and .hx consistent
+Subject: Re: [Qemu-trivial] [PATCH 0/5] qemu-img: make subcommand usage
+ docstrings consistent
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,143 +112,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 May 2018 22:57:14 -0000
+X-List-Received-Date: Fri, 04 May 2018 01:04:09 -0000
 
-These are also different and out of order for whatever reason.
-I'd like to automate this in the future, but for now let's put
-on the band-aid.
+On 05/03/2018 06:56 PM, John Snow wrote:
+> I'm working on a project to attempt to autogenerate all of this, but
+> until then let's just do a bit of the usual kinds of tidying.
+> 
+> ________________________________________________________________________________
+> 
+> For convenience, this branch is available at:
+> https://github.com/jnsnow/qemu.git branch trivial-qemu-img
+> https://github.com/jnsnow/qemu/tree/trivial-qemu-img
+> 
+> This version is tagged trivial-qemu-img-v1:
+> https://github.com/jnsnow/qemu/releases/tag/trivial-qemu-img-v1
+> 
+> John Snow (5):
+>   qemu-img-commands.hx: argument ordering fixups
+>   qemu-img.texi: fix command ordering
+>   qemu-img: remove references to GEN_DOCS
+>   qemu-img: Make documentation between .texi and .hx consistent
+>   qemu-img-cmds.hx: add passive-aggressive note
+> 
+>  qemu-img-cmds.hx       | 13 +++++----
+>  qemu-img.c             |  2 --
+>  qemu-img.texi          | 78 ++++++++++++++++++++++++++------------------------
+>  qemu-options-wrapper.h |  1 -
+>  4 files changed, 48 insertions(+), 46 deletions(-)
+> 
 
-In the case of resize, there were options missing from all
-three docstrings; the new string is based on the code.
+Possessed by some kind of malevolent phantasm, I documented the following:
 
-Signed-off-by: John Snow <jsnow@redhat.com>
----
- qemu-img-cmds.hx |  4 ++--
- qemu-img.texi    | 24 ++++++++++++------------
- 2 files changed, 14 insertions(+), 14 deletions(-)
+amend	 [--object objectdef] [--image-opts] [-q] [-f fmt]      filename
+bench                                        [-q] [-f fmt] [-U] filename
+check    [--object objectdef] [--image-opts] [-q] [-f fmt] [-U] filename
+commit   [--object objectdef] [--image-opts] [-q] [-f fmt]      filename
+compare  [--object objectdef] [--image-opts] [-q] [-f fmt] [-U] filename
+convert  [--object objectdef] [--image-opts] [-q] [-f fmt] [-U] filename
+create   [--object objectdef]                [-q] [-f fmt]      filename
+dd                            [--image-opts]      [-f fmt] [-U]
+info     [--object objectdef] [--image-opts]      [-f fmt] [-U] filename
+map      [--object objectdef] [--image-opts]      [-f fmt] [-U] filename
+measure  [--object objectdef] [--image-opts]      [-f fmt]      filename
+snapshot [--object objectdef] [--image-opts] [-q]          [-U] filename
+rebase   [--object objectdef] [--image-opts] [-q] [-f fmt] [-U] filename
+resize   [--object objectdef] [--image-opts] [-q] [-f fmt]      filename
 
-diff --git a/qemu-img-cmds.hx b/qemu-img-cmds.hx
-index 8bcefcafe9..84deb858af 100644
---- a/qemu-img-cmds.hx
-+++ b/qemu-img-cmds.hx
-@@ -89,9 +89,9 @@ STEXI
- ETEXI
- 
- DEF("resize", img_resize,
--    "resize [--object objectdef] [--image-opts] [-q] [--shrink] filename [+ | -]size")
-+    "resize [--object objectdef] [--image-opts] [-f fmt] [--preallocation=prealloc] [-q] [--shrink] filename [+ | -]size")
- STEXI
--@item resize [--object @var{objectdef}] [--image-opts] [-q] [--shrink] @var{filename} [+ | -]@var{size}
-+@item resize [--object @var{objectdef}] [--image-opts] [-f @var{fmt}] [--preallocation=@var{prealloc}] [-q] [--shrink] @var{filename} [+ | -]@var{size}
- ETEXI
- 
- STEXI
-diff --git a/qemu-img.texi b/qemu-img.texi
-index adf5176902..2be8206a05 100644
---- a/qemu-img.texi
-+++ b/qemu-img.texi
-@@ -194,12 +194,12 @@ Command description:
- 
- @table @option
- 
--@item amend [-p] [-f @var{fmt}] [-t @var{cache}] -o @var{options} @var{filename}
-+@item amend [--object @var{objectdef}] [--image-opts] [-p] [-p] [-f @var{fmt}] [-t @var{cache}] -o @var{options} @var{filename}
- 
- Amends the image format specific @var{options} for the image file
- @var{filename}. Not all file formats support this operation.
- 
--@item bench [-c @var{count}] [-d @var{depth}] [-f @var{fmt}] [--flush-interval=@var{flush_interval}] [-n] [--no-drain] [-o @var{offset}] [--pattern=@var{pattern}] [-q] [-s @var{buffer_size}] [-S @var{step_size}] [-t @var{cache}] [-w] @var{filename}
-+@item bench [-c @var{count}] [-d @var{depth}] [-f @var{fmt}] [--flush-interval=@var{flush_interval}] [-n] [--no-drain] [-o @var{offset}] [--pattern=@var{pattern}] [-q] [-s @var{buffer_size}] [-S @var{step_size}] [-t @var{cache}] [-w] [-U] @var{filename}
- 
- Run a simple sequential I/O benchmark on the specified image. If @code{-w} is
- specified, a write test is performed, otherwise a read test is performed.
-@@ -223,7 +223,7 @@ specified as well.
- For write tests, by default a buffer filled with zeros is written. This can be
- overridden with a pattern byte specified by @var{pattern}.
- 
--@item check [-f @var{fmt}] [--output=@var{ofmt}] [-r [leaks | all]] [-T @var{src_cache}] @var{filename}
-+@item check [--object @var{objectdef}] [--image-opts] [-q] [-f @var{fmt}] [--output=@var{ofmt}] [-r [leaks | all]] [-T @var{src_cache}] [-U] @var{filename}
- 
- Perform a consistency check on the disk image @var{filename}. The command can
- output in the format @var{ofmt} which is either @code{human} or @code{json}.
-@@ -259,7 +259,7 @@ If @code{-r} is specified, exit codes representing the image state refer to the
- state after (the attempt at) repairing it. That is, a successful @code{-r all}
- will yield the exit code 0, independently of the image state before.
- 
--@item commit [-q] [-f @var{fmt}] [-t @var{cache}] [-b @var{base}] [-d] [-p] @var{filename}
-+@item commit [--object @var{objectdef}] [--image-opts] [-q] [-f @var{fmt}] [-t @var{cache}] [-b @var{base}] [-d] [-p] @var{filename}
- 
- Commit the changes recorded in @var{filename} in its base image or backing file.
- If the backing file is smaller than the snapshot, then the backing file will be
-@@ -281,7 +281,7 @@ all images between @var{base} and the top image will be invalid and may return
- garbage data when read. For this reason, @code{-b} implies @code{-d} (so that
- the top image stays valid).
- 
--@item compare [-f @var{fmt}] [-F @var{fmt}] [-T @var{src_cache}] [-p] [-s] [-q] @var{filename1} @var{filename2}
-+@item compare [--object @var{objectdef}] [--image-opts] [-f @var{fmt}] [-F @var{fmt}] [-T @var{src_cache}] [-p] [-q] [-s] [-U] @var{filename1} @var{filename2}
- 
- Check if two images have the same content. You can compare images with
- different format or settings.
-@@ -322,7 +322,7 @@ Error on reading data
- 
- @end table
- 
--@item convert [-c] [-p] [-n] [-f @var{fmt}] [-t @var{cache}] [-T @var{src_cache}] [-O @var{output_fmt}] [-B @var{backing_file}] [-o @var{options}] [-s @var{snapshot_id_or_name}] [-l @var{snapshot_param}] [-m @var{num_coroutines}] [-W] [-S @var{sparse_size}] @var{filename} [@var{filename2} [...]] @var{output_filename}
-+@item convert [--object @var{objectdef}] [--image-opts] [--target-image-opts] [-U] [-c] [-p] [-q] [-n] [-f @var{fmt}] [-t @var{cache}] [-T @var{src_cache}] [-O @var{output_fmt}] [-B @var{backing_file}] [-o @var{options}] [-s @var{snapshot_id_or_name}] [-l @var{snapshot_param}] [-S @var{sparse_size}] [-m @var{num_coroutines}] [-W] @var{filename} [@var{filename2} [...]] @var{output_filename}
- 
- Convert the disk image @var{filename} or a snapshot @var{snapshot_param}(@var{snapshot_id_or_name} is deprecated)
- to disk image @var{output_filename} using format @var{output_fmt}. It can be optionally compressed (@code{-c}
-@@ -363,7 +363,7 @@ creating compressed images.
- @var{num_coroutines} specifies how many coroutines work in parallel during
- the convert process (defaults to 8).
- 
--@item create [-f @var{fmt}] [-b @var{backing_file}] [-F @var{backing_fmt}] [-u] [-o @var{options}] @var{filename} [@var{size}]
-+@item create [--object @var{objectdef}] [-q] [-f @var{fmt}] [-b @var{backing_file}] [-F @var{backing_fmt}] [-u] [-o @var{options}] @var{filename} [@var{size}]
- 
- Create the new disk image @var{filename} of size @var{size} and format
- @var{fmt}. Depending on the file format, you can add one or more @var{options}
-@@ -387,7 +387,7 @@ way.
- The size can also be specified using the @var{size} option with @code{-o},
- it doesn't need to be specified separately in this case.
- 
--@item dd [-f @var{fmt}] [-O @var{output_fmt}] [bs=@var{block_size}] [count=@var{blocks}] [skip=@var{blocks}] if=@var{input} of=@var{output}
-+@item dd [--image-opts] [-U] [-f @var{fmt}] [-O @var{output_fmt}] [bs=@var{block_size}] [count=@var{blocks}] [skip=@var{blocks}] if=@var{input} of=@var{output}
- 
- Dd copies from @var{input} file to @var{output} file converting it from
- @var{fmt} format to @var{output_fmt} format.
-@@ -398,7 +398,7 @@ dd will stop reading input after reading @var{blocks} input blocks.
- 
- The size syntax is similar to dd(1)'s size syntax.
- 
--@item info [-f @var{fmt}] [--output=@var{ofmt}] [--backing-chain] @var{filename}
-+@item info [--object @var{objectdef}] [--image-opts] [-f @var{fmt}] [--output=@var{ofmt}] [--backing-chain] [-U] @var{filename}
- 
- Give information about the disk image @var{filename}. Use it in
- particular to know the size reserved on disk which can be different
-@@ -506,11 +506,11 @@ been written to all sectors.  This is the maximum size that the image file can
- occupy with the exception of internal snapshots, dirty bitmaps, vmstate data,
- and other advanced image format features.
- 
--@item snapshot [-l | -a @var{snapshot} | -c @var{snapshot} | -d @var{snapshot} ] @var{filename}
-+@item snapshot [--object @var{objectdef}] [--image-opts] [-U] [-q] [-l | -a @var{snapshot} | -c @var{snapshot} | -d @var{snapshot}] @var{filename}
- 
- List, apply, create or delete snapshots in image @var{filename}.
- 
--@item rebase [-f @var{fmt}] [-t @var{cache}] [-T @var{src_cache}] [-p] [-u] -b @var{backing_file} [-F @var{backing_fmt}] @var{filename}
-+@item rebase [--object @var{objectdef}] [--image-opts] [-U] [-q] [-f @var{fmt}] [-t @var{cache}] [-T @var{src_cache}] [-p] [-u] -b @var{backing_file} [-F @var{backing_fmt}] @var{filename}
- 
- Changes the backing file of an image. Only the formats @code{qcow2} and
- @code{qed} support changing the backing file.
-@@ -570,7 +570,7 @@ qemu-img rebase -b base.img diff.qcow2
- At this point, @code{modified.img} can be discarded, since
- @code{base.img + diff.qcow2} contains the same information.
- 
--@item resize [--shrink] [--preallocation=@var{prealloc}] @var{filename} [+ | -]@var{size}
-+@item resize [--object @var{objectdef}] [--image-opts] [-f @var{fmt}] [--preallocation=@var{prealloc}] [-q] [--shrink] @var{filename} [+ | -]@var{size}
- 
- Change the disk image as if it had been created with @var{size}.
- 
--- 
-2.14.3
+These are the largely universal set of options we support on most
+commands, except sometimes some commands don't support them. Maybe
+that's intentional, Maybe it isn't:
 
+- Maybe we don't really want -U on commands that are opened RDWR.
+- Maybe -f fmt isn't useful on snapshot or amend (which only work for
+qcow2?)
+- Maybe -q is inherently pretty useless for commands like info, map, or
+measure whose job is to show you something.
+
+Less clear to me:
+
+- Is there no place for --image-opts for create?
+- Or --object for dd?
+- Or either of these two for bench?
+
+
+The thought, though, is to define some core set of options that will
+always apply to all commands. It might not always be perfect, but the
+arguments listed here are a start for what probably makes sense for most
+commands. Maybe it's a bad idea; but maybe individual parsers could opt
+out of the common set of arguments on an as-needed basis instead.
+
+Might help the documentation along to be able to point to some
+definitely universal core group of options.
+
+--js
 
