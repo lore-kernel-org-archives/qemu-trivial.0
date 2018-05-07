@@ -1,57 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fEfvg-0004qO-0o
-	for mharc-qemu-trivial@gnu.org; Fri, 04 May 2018 14:59:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47691)
+	id 1fFcs0-0002Cv-Hv
+	for mharc-qemu-trivial@gnu.org; Mon, 07 May 2018 05:55:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45244)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <johnnymarler@gmail.com>) id 1fEfaj-0005jk-4K
-	for qemu-trivial@nongnu.org; Fri, 04 May 2018 14:38:02 -0400
+	(envelope-from <kraxel@redhat.com>) id 1fFcrz-0002BV-1x
+	for qemu-trivial@nongnu.org; Mon, 07 May 2018 05:55:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <johnnymarler@gmail.com>) id 1fEfai-0000Ks-88
-	for qemu-trivial@nongnu.org; Fri, 04 May 2018 14:38:01 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:40406)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <johnnymarler@gmail.com>)
-	id 1fEfaf-0000Ik-Up; Fri, 04 May 2018 14:37:58 -0400
-Received: by mail-qt0-x244.google.com with SMTP id h2-v6so28626152qtp.7;
-	Fri, 04 May 2018 11:37:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:from:date:message-id:subject:to:cc;
-	bh=iUuyLVfhV9Qes7ErBX5G74pzBEl52hOx2UARLAWfhWE=;
-	b=s9gdXe8GMGX9xR0RTozIHUutxb7lL51XxOSEKwHJpy2Muga3BZcjZZEj8iuKMhRYbI
-	Oo/VxoA2QnPiQw1WQA9qWhgSdwJTKvul98uoVprsWLpK1h13AqqeX8F1bVjSWR7GWjwZ
-	vAmskc5z+oEYsYwlR92/1FAFjfFV6agL+VfWkKuDD9+WdD1j4IhA5UOz1KYO+LKqVmNV
-	0fH9pf66BdEjdPltb89Vtg8dNsZHbYpLfDElK3+8nhVIPoGfrmY9NA2LT8MV1qyFrZb0
-	xRhopm0KWUnxQFur6Gtaccun/AbNjZmhV2j3pUaUqFWDxFsPoTvtbg5J+4j1KHiXshkD
-	XWpA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
-	bh=iUuyLVfhV9Qes7ErBX5G74pzBEl52hOx2UARLAWfhWE=;
-	b=UWylODYtPVog8bAY1cNJNoHD7MatTGvHOav9brSF8dzpjSsj4YeI+2Z2xcJYfUQy79
-	rFhcVWcVSUVVZ8AXnGnxl1Vd9LZneHQ1hMkT+xkSbhqhVAYtC0z7xR+HzwZw6THqEmPV
-	ck1cruYLIsCmZQ9EFvIPF2lY0Z12sHxvt8FwASKST3MTX49qQRcviKAnYIomK8aA4zTw
-	JHn9O2DQaD6i1LLfOT3BbAh7Jnwkp+DT5b4W/wyHZwwXAYHwOTHkeIEdDVEtetWlHdAs
-	aAHX4B90DsfLdAM/+agAFJ109u37s/L0z10y+EYyGp9e8aS3+T50uHoJNjuxaFRrzUWa
-	eMZA==
-X-Gm-Message-State: ALQs6tBDtD6eltv3YoHPsMAfpVLErpZ+c3l6ShYVIN6afAHJmA9UyPMT
-	YyPSwij+ysNknVHoPny6b1kOiXiAfYBl7xb8OqI=
-X-Google-Smtp-Source: AB8JxZoouXTZ8KDxh9wgG2feE/hm5Up0z0s0TupZE72UyFSI+vN4npwoU06z6XjRhGyQGcWQrL6joFMAbrqcMhRAMoU=
-X-Received: by 2002:ac8:41e:: with SMTP id
-	v30-v6mr26215042qtg.270.1525459077157; 
-	Fri, 04 May 2018 11:37:57 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 10.200.5.77 with HTTP; Fri, 4 May 2018 11:37:56 -0700 (PDT)
-From: Jonathan Marler <johnnymarler@gmail.com>
-Date: Fri, 4 May 2018 12:37:56 -0600
-Message-ID: <CACKT+Ap2MHCrSCT-0_=KG9UrGAtO7F3EGue6-63-XJxry9=C=w@mail.gmail.com>
-To: crosthwaite.peter@gmail.com, agraf@suse.de, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000069d7c8056b659e06"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-X-Mailman-Approved-At: Fri, 04 May 2018 14:59:39 -0400
-Subject: [Qemu-trivial] [PATCH] handle all fdt_get_phandle_errors
+	(envelope-from <kraxel@redhat.com>) id 1fFcry-0005I0-BH
+	for qemu-trivial@nongnu.org; Mon, 07 May 2018 05:55:47 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:52010 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1fFcrv-0005D9-3i; Mon, 07 May 2018 05:55:43 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9B56081A43B6;
+	Mon,  7 May 2018 09:55:42 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-99.ams2.redhat.com
+	[10.36.116.99])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5809C7C4B;
+	Mon,  7 May 2018 09:55:40 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id BA5CA51BA9; Mon,  7 May 2018 11:55:39 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>, Markus Armbruster <armbru@redhat.com>
+Date: Mon,  7 May 2018 11:55:39 +0200
+Message-Id: <20180507095539.19584-5-kraxel@redhat.com>
+In-Reply-To: <20180507095539.19584-1-kraxel@redhat.com>
+References: <20180507095539.19584-1-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Mon, 07 May 2018 09:55:42 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Mon, 07 May 2018 09:55:42 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-trivial] [PATCH v2 4/4] ui: document non-qapi parser cases.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,64 +56,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 May 2018 18:38:02 -0000
+X-List-Received-Date: Mon, 07 May 2018 09:55:48 -0000
 
---00000000000069d7c8056b659e06
-Content-Type: text/plain; charset="UTF-8"
+Add comments to the cases not (yet) switched
+over to parse_display_qapi().
 
-Signed-off-by: Jonathan Marler <johnnymarler@gmail.com>
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- device_tree.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ vl.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/device_tree.c b/device_tree.c
-index 52c3358..2b75905 100644
---- a/device_tree.c
-+++ b/device_tree.c
-@@ -379,8 +379,12 @@ uint32_t qemu_fdt_get_phandle(void *fdt, const char
-*path)
-
-     r = fdt_get_phandle(fdt, findnode_nofail(fdt, path));
-     if (r == 0) {
--        error_report("%s: Couldn't get phandle for %s: %s", __func__,
--                     path, fdt_strerror(r));
-+        error_report("%s: Node %s does not have a 'phandle'", __func__,
-+                     path);
-+        exit(1);
-+    }
-+    if (r == -1) {
-+        error_report("%s: Couldn't get phandle for %s", __func__, path);
-         exit(1);
-     }
-
+diff --git a/vl.c b/vl.c
+index 03ac9a2cbb..041b3836d7 100644
+--- a/vl.c
++++ b/vl.c
+@@ -2114,6 +2114,16 @@ static void parse_display(const char *p)
+     const char *opts;
+ 
+     if (strstart(p, "sdl", &opts)) {
++        /*
++         * sdl DisplayType needs hand-crafted parser instead of
++         * parse_display_qapi() due to some options not in
++         * DisplayOptions, specifically:
++         *   - frame
++         *     Already deprecated.
++         *   - ctrl_grab + alt_grab
++         *     Not clear yet what happens to them long-term.  Should
++         *     replaced by something better or deprecated and dropped.
++         */
+         dpy.type = DISPLAY_TYPE_SDL;
+         while (*opts) {
+             const char *nextopt;
+@@ -2179,6 +2189,10 @@ static void parse_display(const char *p)
+             opts = nextopt;
+         }
+     } else if (strstart(p, "vnc", &opts)) {
++        /*
++         * vnc isn't a (local) DisplayType but a protocol for remote
++         * display access.
++         */
+         if (*opts == '=') {
+             vnc_parse(opts + 1, &error_fatal);
+         } else {
 -- 
-2.1.4
+2.9.3
 
---00000000000069d7c8056b659e06
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div><div>Signed-off-by: Jonathan Marler &lt;<a href=3D"ma=
-ilto:johnnymarler@gmail.com">johnnymarler@gmail.com</a>&gt;</div><div>---</=
-div><div>=C2=A0device_tree.c | 8 ++++++--</div><div>=C2=A01 file changed, 6=
- insertions(+), 2 deletions(-)</div><div><br></div><div>diff --git a/device=
-_tree.c b/device_tree.c</div><div>index 52c3358..2b75905 100644</div><div>-=
--- a/device_tree.c</div><div>+++ b/device_tree.c</div><div>@@ -379,8 +379,1=
-2 @@ uint32_t qemu_fdt_get_phandle(void *fdt, const char *path)</div><div>=
-=C2=A0</div><div>=C2=A0 =C2=A0 =C2=A0r =3D fdt_get_phandle(fdt, findnode_no=
-fail(fdt, path));</div><div>=C2=A0 =C2=A0 =C2=A0if (r =3D=3D 0) {</div><div=
->-=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;%s: Couldn&#39;t get phand=
-le for %s: %s&quot;, __func__,</div><div>-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0path, fdt_strerror(r));</div><=
-div>+=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_report(&quot;%s: Node %s does not ha=
-ve a &#39;phandle&#39;&quot;, __func__,</div><div>+=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0path);</div><div>+=C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 exit(1);</div><div>+=C2=A0 =C2=A0 }</div><div>+=C2=
-=A0 =C2=A0 if (r =3D=3D -1) {</div><div>+=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_=
-report(&quot;%s: Couldn&#39;t get phandle for %s&quot;, __func__, path);</d=
-iv><div>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exit(1);</div><div>=C2=A0 =C2=A0 =
-=C2=A0}</div><div>=C2=A0</div><div>--=C2=A0</div><div>2.1.4</div><div><br><=
-/div></div></div>
-
---00000000000069d7c8056b659e06--
 
