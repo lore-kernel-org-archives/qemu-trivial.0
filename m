@@ -1,62 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fIFqh-0005Bs-7M
-	for mharc-qemu-trivial@gnu.org; Mon, 14 May 2018 11:57:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47059)
+	id 1fIHEs-0005Pi-8b
+	for mharc-qemu-trivial@gnu.org; Mon, 14 May 2018 13:26:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42170)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fIFqe-00059E-GV
-	for qemu-trivial@nongnu.org; Mon, 14 May 2018 11:57:17 -0400
+	(envelope-from <marcandre.lureau@gmail.com>) id 1fIHEq-0005Nx-3e
+	for qemu-trivial@nongnu.org; Mon, 14 May 2018 13:26:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fIFqd-0006hE-MW
-	for qemu-trivial@nongnu.org; Mon, 14 May 2018 11:57:16 -0400
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:42325)
+	(envelope-from <marcandre.lureau@gmail.com>) id 1fIHEp-0002dL-88
+	for qemu-trivial@nongnu.org; Mon, 14 May 2018 13:26:20 -0400
+Received: from mail-wr0-x243.google.com ([2a00:1450:400c:c0c::243]:46615)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fIFqd-0006h2-Hn
-	for qemu-trivial@nongnu.org; Mon, 14 May 2018 11:57:15 -0400
-Received: by mail-oi0-x243.google.com with SMTP id t27-v6so11139772oij.9
-	for <qemu-trivial@nongnu.org>; Mon, 14 May 2018 08:57:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+	id 1fIHEn-0002bF-5D; Mon, 14 May 2018 13:26:17 -0400
+Received: by mail-wr0-x243.google.com with SMTP id a12-v6so13165713wrn.13;
+	Mon, 14 May 2018 10:26:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=bvdiIjB3tgsGBL4XQ8Rr/emGnBKnxfsCGESGEmDq1zw=;
-	b=d35n6Gf5YP6/4losh1jhc6tjl0YGvog1Rnq8RJMysRjxSD039HZZr3Eang33JZD0Ee
-	3iAtNs5Ia5ybHq0vl+DriWm/2QLzb1b/4Yz2tX/YPIX75DPpvw1i1L6msLfSGqawoKCq
-	Ry2ZU4UJpe6FT1K7cElvBJEwCK6tpWCLf1QQY=
+	:cc:content-transfer-encoding;
+	bh=mbt8Hu2kjLpSD4WTX/4FFxmDuE7v8DfjTrnKfXwBzM0=;
+	b=es36tE1+Ab/LeF7feEdk+5erIaPgEM7CqmBeYBdXIfowWaN+fSq7CuAuKLk+GL1u4/
+	VWmYRz8sTj3EjzNu6NI9sbd8BLyd5cDsmZy9vU7iAxpmN8ekvBnUUloeVoYsKsouoycy
+	a2nUTwzq8p1237E0OV3CvY7myvpTWyZmBbWa/XdYig0Lz8pN/mPW5IJ4RTsPIg6CY7ub
+	ygZ1phnuyZQdfpfjhim454hbsRogMiB1FpFicxs+15Nr2EybZRwQXYm1K6eqTqbBuSXq
+	LbRzcN8VyrWbU0HWl4EfYGd3nuU/2B8qWp90q6MBxh1urkn5+hnAM091xV1fhw4E4iVk
+	5C9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=bvdiIjB3tgsGBL4XQ8Rr/emGnBKnxfsCGESGEmDq1zw=;
-	b=WIPV1PydKMpT910NZTTUeJXk9zrkehMldzYoqaQNlTvTB4LJUtlm62W1JS0FFmLClp
-	BiylMANqbA69hV4jWcLGzieJ6ArCohGnKKcI5pXnGPyd5URgG0MQOrtfEf5zzesDxjTh
-	PUmEPJDGklfjrRVLhPMoMYhvdBf/nDBLdC3l20r3FstLS2LCLVxHdCyE3f8e9ewT1kdx
-	41ui31cZNgv2g+wz9ojHyDx5T4yMb75d/P5HOuHgpZGspbAuP5Z5bC7gs8QEPpdKSJ1I
-	GGST5AMS4jGmx9fp1dtylJy7ejT6/5i6+VVJocKQ359jSo4i1HCPCs8deflAsr4oXXoj
-	8dqQ==
-X-Gm-Message-State: ALKqPwfxD6dv5tYqXaWi5HKiJ52LeH/VN8Rf7MK6XsHzzOIwbzxebDLa
-	eEJXggCTh9dobK8CdKJ8o4h1qL+zPcYPADOOkvjzjg==
-X-Google-Smtp-Source: AB8JxZpqywW4Wb3J9mq+FKvHj73m9pZxSGhStqGnEOpZwFzG/klFmUPgtCBchyVa8nxpHnDAe/02ZXATZWVYgzkUDNA=
-X-Received: by 2002:aca:538b:: with SMTP id
-	h133-v6mr7176300oib.252.1526313434786; 
-	Mon, 14 May 2018 08:57:14 -0700 (PDT)
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=mbt8Hu2kjLpSD4WTX/4FFxmDuE7v8DfjTrnKfXwBzM0=;
+	b=feZ1o5WceTsUeY9kIIouhHD0xmqDualL3D9MZA+Mde94Lgj0YNSgusw0ejjp8jPoP5
+	PmIwBKfWWBWu9FHxSOQEGAufB9wOD4igiyHKaioTP3cfit++dT3MjxqmJYJmw3CexfbU
+	K99yzpkxsZhoK6O8jIb6oqIsEb0Gog1feV1cT9RcM/ESx2He1ELkqdtw9u8+/CG2gP9l
+	c9shelSTzDquapbGyBd7i2b5yZZp1ZR5VButy6iJLVR6teg0tUKsukPZbDxGjTONcQyl
+	c3ryOSWuVVatLVwmW86Mu7xHxFWDpAtmQfMbc+KzntflMkBfY1BhxumopwIuul1+lvbQ
+	Br6g==
+X-Gm-Message-State: ALKqPwchT9Q+3Oao9bd/XGfa1se6xbSdVK1pEEgwEifMLkOlnK2vBiR4
+	p4Zf0FxTxrjo1sdF5E9zU/NssqO8SjU+JQYCIZ4=
+X-Google-Smtp-Source: AB8JxZo+ZBb6GqSkLH0S7LTC6k7d6acsAmg8euLpiDMqGiTzRZ4dcCfYzaGYQxTcHQqwtdudqEYFU+hKOwkpYVEqy8o=
+X-Received: by 2002:adf:b00f:: with SMTP id
+	f15-v6mr8677700wra.254.1526318775643; 
+	Mon, 14 May 2018 10:26:15 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Mon, 14 May 2018 08:56:54
-	-0700 (PDT)
-In-Reply-To: <CACKT+Ap2MHCrSCT-0_=KG9UrGAtO7F3EGue6-63-XJxry9=C=w@mail.gmail.com>
-References: <CACKT+Ap2MHCrSCT-0_=KG9UrGAtO7F3EGue6-63-XJxry9=C=w@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 May 2018 16:56:54 +0100
-Message-ID: <CAFEAcA-nnU2E6CKPiGqoAq1sSYtvf4Hxp3MtYiCvigr4i8-+Ow@mail.gmail.com>
-To: Jonathan Marler <johnnymarler@gmail.com>
-Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Alexander Graf <agraf@suse.de>, QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	David Gibson <david@gibson.dropbear.id.au>
+Received: by 10.223.156.209 with HTTP; Mon, 14 May 2018 10:26:14 -0700 (PDT)
+In-Reply-To: <9dbde2b5d864d126b75d8c0d7bae2011e8cc7e9b.1526305502.git.mprivozn@redhat.com>
+References: <9dbde2b5d864d126b75d8c0d7bae2011e8cc7e9b.1526305502.git.mprivozn@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Mon, 14 May 2018 19:26:14 +0200
+Message-ID: <CAJ+F1CKMq-nTSW3r4cwTTDcqMaqLBD4ShgUUJEMQ7QfRcU2UUA@mail.gmail.com>
+To: Michal Privoznik <mprivozn@redhat.com>
+Cc: QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] handle all
- fdt_get_phandle_errors
+X-Received-From: 2a00:1450:400c:c0c::243
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-options: Allow
+ -no-user-config again
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,45 +69,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 May 2018 15:57:17 -0000
+X-List-Received-Date: Mon, 14 May 2018 17:26:21 -0000
 
-On 4 May 2018 at 19:37, Jonathan Marler <johnnymarler@gmail.com> wrote:
-> Signed-off-by: Jonathan Marler <johnnymarler@gmail.com>
+On Mon, May 14, 2018 at 3:45 PM, Michal Privoznik <mprivozn@redhat.com> wro=
+te:
+> After 1217d6ca2bf28c0febe1bd7d5b3fa912bbf6af2a we error out
+> explicitly if an unknown -option was passed on the command line.
+> However, we are doing two pass command line option parsing. In
+> the first pass we just look for -no-user-config or -nodefconfig
+> being present which determines whether we load user config or
+> not. Then in the second pass we finally parse everything else
+> throwing an error if an unsupported -option was found. Problem is
+> that in the second pass -no-user-config and -nodefconfig are not
+> handled explicitly which makes us throw the unsupported option
+> error.
+>
+> Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
 
-Hi; thanks for this patch.
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
 
 > ---
->  device_tree.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
+>  vl.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 >
-> diff --git a/device_tree.c b/device_tree.c
-> index 52c3358..2b75905 100644
-> --- a/device_tree.c
-> +++ b/device_tree.c
-> @@ -379,8 +379,12 @@ uint32_t qemu_fdt_get_phandle(void *fdt, const char
-> *path)
+> diff --git a/vl.c b/vl.c
+> index b9f6b42779..846cd29d8a 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -4015,6 +4015,10 @@ int main(int argc, char **argv, char **envp)
+>                      exit(1);
+>                  }
+>                  break;
+> +            case QEMU_OPTION_nodefconfig:
+> +            case QEMU_OPTION_nouserconfig:
+> +                /* Nothing to be parsed here. Especially, do not error o=
+ut below. */
+> +                break;
+>              default:
+>                  if (os_parse_cmd_args(popt->index, optarg)) {
+>                      error_report("Option not supported in this build");
+> --
+> 2.16.1
 >
->      r = fdt_get_phandle(fdt, findnode_nofail(fdt, path));
->      if (r == 0) {
-> -        error_report("%s: Couldn't get phandle for %s: %s", __func__,
-> -                     path, fdt_strerror(r));
-> +        error_report("%s: Node %s does not have a 'phandle'", __func__,
-> +                     path);
-> +        exit(1);
-> +    }
-> +    if (r == -1) {
-> +        error_report("%s: Couldn't get phandle for %s", __func__, path);
->          exit(1);
->      }
+>
 
-Could you explain in what situation this is needed? The documentation
-for fdt_get_phandle() says
- * returns:
- *      the phandle of the node at nodeoffset, on success (!= 0, != -1)
- *      0, if the node has no phandle, or another error occurs
 
-which I interpret to mean that it is not possible for it to return -1.
 
-thanks
--- PMM
+--=20
+Marc-Andr=C3=A9 Lureau
 
