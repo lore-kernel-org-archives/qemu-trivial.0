@@ -1,52 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fIEh4-0000EZ-3c
-	for mharc-qemu-trivial@gnu.org; Mon, 14 May 2018 10:43:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54039)
+	id 1fIFq6-0004gS-Tv
+	for mharc-qemu-trivial@gnu.org; Mon, 14 May 2018 11:56:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46863)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fIEh1-0000C0-JF
-	for qemu-trivial@nongnu.org; Mon, 14 May 2018 10:43:16 -0400
+	(envelope-from <stefanha@gmail.com>) id 1fIFq4-0004e1-7g
+	for qemu-trivial@nongnu.org; Mon, 14 May 2018 11:56:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fIEh0-0004gU-P5
-	for qemu-trivial@nongnu.org; Mon, 14 May 2018 10:43:15 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34842 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fIEgv-0004bp-Qo; Mon, 14 May 2018 10:43:09 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D018F818F714;
-	Mon, 14 May 2018 14:43:03 +0000 (UTC)
-Received: from [10.36.118.71] (unknown [10.36.118.71])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 263A911166E0;
-	Mon, 14 May 2018 14:43:03 +0000 (UTC)
-To: Michal Privoznik <mprivozn@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
-References: <9dbde2b5d864d126b75d8c0d7bae2011e8cc7e9b.1526305502.git.mprivozn@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <9ff0bc35-8996-599a-9478-07f6e1e54596@redhat.com>
-Date: Mon, 14 May 2018 16:43:01 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(envelope-from <stefanha@gmail.com>) id 1fIFq3-0006YM-Gu
+	for qemu-trivial@nongnu.org; Mon, 14 May 2018 11:56:40 -0400
+Received: from mail-wm0-x244.google.com ([2a00:1450:400c:c09::244]:50200)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1fIFq1-0006XH-GP; Mon, 14 May 2018 11:56:37 -0400
+Received: by mail-wm0-x244.google.com with SMTP id t11-v6so14441626wmt.0;
+	Mon, 14 May 2018 08:56:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=13OxdREhBkxzoMyFIYv827b6FsvRAFa7k7ds8KeWJKM=;
+	b=WjotfZFg4ES7Kh1bOXqQnjwy4fZ/CRp+uUz8HcEcs6LPrFBQKOIUPCc7RqHVcQOsS2
+	cgIWgMgECg1HG0kb+V9F3WItQxoZrDdJbyjrV0efuDwjNIvetBZ9ITHKCfNnYSSNYv9A
+	8VoVmmOe2y2uGdG9c1ZCXTUAEW1WpPMjEBlmSX2baJUEFIWRoGNSs4DfxLUFucwG6UYC
+	fBltKumy6hzsCn/vIw/ptake1UDJfQ485AUYL7ti0uDSZ7KQjf4m1SUvkgVveyLoTj8h
+	PPH2ZO0jp37/JGPDb6zC3Kp8sr2X4QIPDKNOdwvlR7CnwXk0fQTNP0QV9v+WQmuKKuPZ
+	KH6w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=13OxdREhBkxzoMyFIYv827b6FsvRAFa7k7ds8KeWJKM=;
+	b=Aw+x5ewYcJuNu68lBKoMdN0jPD1iKal/KHyg3HLyuiWdOYOr1ljAkJWSl23ze+fCLn
+	fO3vHtpyApfIRVYNMCZgyin/5knPMJNvaTOfvV7r4N6lfowvnvFrthxT4OS5G50Qhfl4
+	m1vw3YOqcjpkg3JUyAjLMiNqQ9htMIEPAtAvyvHyj5EyDTruwIT5gnUH14S+vUuo2YsK
+	N3CEv2oGzrr872tIfCj5MD+km+1xtGP1ywWwtXOZlIYwXacPseDXRk9mYyxBBEF60G7I
+	wTH6zCVQHqxZbOpJzkdQt2wXTkLQc2LIGpfWPi/Gq9LQPS+fyUbNyFL3mqbzF7A9RZWv
+	FHdA==
+X-Gm-Message-State: ALKqPwen0THBkAh5s28t5f8fRvKFHxPNIWa9S1R47ZT1fWblShaI2ur6
+	uZ5Ga/LpEI46FSLWS4jRC+vpNTdQqp+GDAY+z+g=
+X-Google-Smtp-Source: AB8JxZqtC0JxyWImd1bTHyalSz/ruF4t4hSpVBy3vq8hw+NB50dRwWg0qZ159NmQnAlacefvBByVE1g2VQEu0pS+ByQ=
+X-Received: by 2002:a1c:f714:: with SMTP id
+	v20-v6mr5972005wmh.73.1526313396300; 
+	Mon, 14 May 2018 08:56:36 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <9dbde2b5d864d126b75d8c0d7bae2011e8cc7e9b.1526305502.git.mprivozn@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Mon, 14 May 2018 14:43:03 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Mon, 14 May 2018 14:43:03 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-options: Allow
- -no-user-config again
+Received: by 10.223.163.4 with HTTP; Mon, 14 May 2018 08:56:35 -0700 (PDT)
+In-Reply-To: <CACKT+Ap2MHCrSCT-0_=KG9UrGAtO7F3EGue6-63-XJxry9=C=w@mail.gmail.com>
+References: <CACKT+Ap2MHCrSCT-0_=KG9UrGAtO7F3EGue6-63-XJxry9=C=w@mail.gmail.com>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+Date: Mon, 14 May 2018 16:56:35 +0100
+Message-ID: <CAJSP0QW1BN8ouvQU4LRSeYmn02A63-pB3Cq6xT9h8hm70Gti3Q@mail.gmail.com>
+To: Jonathan Marler <johnnymarler@gmail.com>
+Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Alexander Graf <agraf@suse.de>, qemu-devel <qemu-devel@nongnu.org>,
+	qemu-trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:400c:c09::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] handle all
+ fdt_get_phandle_errors
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,41 +68,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 May 2018 14:43:16 -0000
+X-List-Received-Date: Mon, 14 May 2018 15:56:41 -0000
 
-On 14.05.2018 15:45, Michal Privoznik wrote:
-> After 1217d6ca2bf28c0febe1bd7d5b3fa912bbf6af2a we error out
-> explicitly if an unknown -option was passed on the command line.
-> However, we are doing two pass command line option parsing. In
-> the first pass we just look for -no-user-config or -nodefconfig
-> being present which determines whether we load user config or
-> not. Then in the second pass we finally parse everything else
-> throwing an error if an unsupported -option was found. Problem is
-> that in the second pass -no-user-config and -nodefconfig are not
-> handled explicitly which makes us throw the unsupported option
-> error.
-> 
-> Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+On Fri, May 4, 2018 at 7:37 PM, Jonathan Marler <johnnymarler@gmail.com> wrote:
+> Signed-off-by: Jonathan Marler <johnnymarler@gmail.com>
 > ---
->  vl.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/vl.c b/vl.c
-> index b9f6b42779..846cd29d8a 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -4015,6 +4015,10 @@ int main(int argc, char **argv, char **envp)
->                      exit(1);
->                  }
->                  break;
-> +            case QEMU_OPTION_nodefconfig:
-> +            case QEMU_OPTION_nouserconfig:
-> +                /* Nothing to be parsed here. Especially, do not error out below. */
-> +                break;
->              default:
->                  if (os_parse_cmd_args(popt->index, optarg)) {
->                      error_report("Option not supported in this build");
-> 
+>  device_tree.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
+>
+> diff --git a/device_tree.c b/device_tree.c
+> index 52c3358..2b75905 100644
+> --- a/device_tree.c
+> +++ b/device_tree.c
+> @@ -379,8 +379,12 @@ uint32_t qemu_fdt_get_phandle(void *fdt, const char
+> *path)
+>
+>      r = fdt_get_phandle(fdt, findnode_nofail(fdt, path));
+>      if (r == 0) {
+> -        error_report("%s: Couldn't get phandle for %s: %s", __func__,
+> -                     path, fdt_strerror(r));
+> +        error_report("%s: Node %s does not have a 'phandle'", __func__,
+> +                     path);
+> +        exit(1);
+> +    }
+> +    if (r == -1) {
+> +        error_report("%s: Couldn't get phandle for %s", __func__, path);
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
