@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fIW75-0004RN-Qb
-	for mharc-qemu-trivial@gnu.org; Tue, 15 May 2018 05:19:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48759)
+	id 1fIW77-0004Sa-1L
+	for mharc-qemu-trivial@gnu.org; Tue, 15 May 2018 05:19:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48782)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fIW72-0004Ml-8D
-	for qemu-trivial@nongnu.org; Tue, 15 May 2018 05:19:18 -0400
+	(envelope-from <kraxel@redhat.com>) id 1fIW74-0004Px-NH
+	for qemu-trivial@nongnu.org; Tue, 15 May 2018 05:19:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fIW6w-0001YD-E4
-	for qemu-trivial@nongnu.org; Tue, 15 May 2018 05:19:16 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:45988 helo=mx1.redhat.com)
+	(envelope-from <kraxel@redhat.com>) id 1fIW73-0001c1-33
+	for qemu-trivial@nongnu.org; Tue, 15 May 2018 05:19:18 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34910 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1fIW6r-0001U1-1p; Tue, 15 May 2018 05:19:05 -0400
+	id 1fIW6s-0001Uf-6J; Tue, 15 May 2018 05:19:06 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ACBBAD39CF;
-	Tue, 15 May 2018 09:19:04 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9307341AE7CE;
+	Tue, 15 May 2018 09:19:05 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-116-49.ams2.redhat.com
 	[10.36.116.49])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 527D32024CAB;
-	Tue, 15 May 2018 09:19:04 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 17EB72024CBE;
+	Tue, 15 May 2018 09:19:05 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id D3F883F11E; Tue, 15 May 2018 11:19:01 +0200 (CEST)
+	id EC4613F121; Tue, 15 May 2018 11:19:01 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
 	Gerd Hoffmann <kraxel@redhat.com>
-Date: Tue, 15 May 2018 11:18:57 +0200
-Message-Id: <20180515091901.27774-7-kraxel@redhat.com>
+Date: Tue, 15 May 2018 11:19:00 +0200
+Message-Id: <20180515091901.27774-10-kraxel@redhat.com>
 In-Reply-To: <20180515091901.27774-1-kraxel@redhat.com>
 References: <20180515091901.27774-1-kraxel@redhat.com>
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Tue, 15 May 2018 09:19:04 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Tue, 15 May 2018 09:19:04 +0000 (UTC) for IP:'10.11.54.4'
+	(mx1.redhat.com [10.11.55.6]);
+	Tue, 15 May 2018 09:19:05 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Tue, 15 May 2018 09:19:05 +0000 (UTC) for IP:'10.11.54.4'
 	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-trivial] [PULL 06/10] ui: switch trivial displays to qapi
- parser
+Subject: [Qemu-trivial] [PULL 09/10] console: use linked list for
+ QemuConsoles
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,42 +57,229 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 May 2018 09:19:18 -0000
-
-Drop the option-less display types (egl-headless, curses, none) from
-parse_display(), so they'll be handled by parse_display_qapi().
+X-List-Received-Date: Tue, 15 May 2018 09:19:20 -0000
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Message-id: 20180507095539.19584-3-kraxel@redhat.com
+Message-id: 20180507095424.16220-1-kraxel@redhat.com
 ---
- vl.c | 6 ------
- 1 file changed, 6 deletions(-)
+ ui/console.c | 105 +++++++++++++++++++++++++++++++++--------------------------
+ 1 file changed, 58 insertions(+), 47 deletions(-)
 
-diff --git a/vl.c b/vl.c
-index c56f7f8046..6b8f946d58 100644
---- a/vl.c
-+++ b/vl.c
-@@ -2185,10 +2185,6 @@ static void parse_display(const char *p)
-             error_report("VNC requires a display argument vnc=<display>");
-             exit(1);
-         }
--    } else if (strstart(p, "egl-headless", &opts)) {
--        dpy.type = DISPLAY_TYPE_EGL_HEADLESS;
--    } else if (strstart(p, "curses", &opts)) {
--        dpy.type = DISPLAY_TYPE_CURSES;
-     } else if (strstart(p, "gtk", &opts)) {
-         dpy.type = DISPLAY_TYPE_GTK;
-         while (*opts) {
-@@ -2221,8 +2217,6 @@ static void parse_display(const char *p)
-             }
-             opts = nextopt;
-         }
--    } else if (strstart(p, "none", &opts)) {
--        dpy.type = DISPLAY_TYPE_NONE;
-     } else {
-         parse_display_qapi(p);
+diff --git a/ui/console.c b/ui/console.c
+index b02510cdca..945f05d728 100644
+--- a/ui/console.c
++++ b/ui/console.c
+@@ -165,6 +165,8 @@ struct QemuConsole {
+     QEMUFIFO out_fifo;
+     uint8_t out_fifo_buf[16];
+     QEMUTimer *kbd_timer;
++
++    QTAILQ_ENTRY(QemuConsole) next;
+ };
+ 
+ struct DisplayState {
+@@ -180,8 +182,8 @@ struct DisplayState {
+ 
+ static DisplayState *display_state;
+ static QemuConsole *active_console;
+-static QemuConsole **consoles;
+-static int nb_consoles = 0;
++static QTAILQ_HEAD(consoles_head, QemuConsole) consoles =
++    QTAILQ_HEAD_INITIALIZER(consoles);
+ static bool cursor_visible_phase;
+ static QEMUTimer *cursor_timer;
+ 
+@@ -197,7 +199,7 @@ static void gui_update(void *opaque)
+     uint64_t dcl_interval;
+     DisplayState *ds = opaque;
+     DisplayChangeListener *dcl;
+-    int i;
++    QemuConsole *con;
+ 
+     ds->refreshing = true;
+     dpy_refresh(ds);
+@@ -212,9 +214,9 @@ static void gui_update(void *opaque)
      }
+     if (ds->update_interval != interval) {
+         ds->update_interval = interval;
+-        for (i = 0; i < nb_consoles; i++) {
+-            if (consoles[i]->hw_ops->update_interval) {
+-                consoles[i]->hw_ops->update_interval(consoles[i]->hw, interval);
++        QTAILQ_FOREACH(con, &consoles, next) {
++            if (con->hw_ops->update_interval) {
++                con->hw_ops->update_interval(con->hw, interval);
+             }
+         }
+         trace_console_refresh(interval);
+@@ -1292,10 +1294,13 @@ static QemuConsole *new_console(DisplayState *ds, console_type_t console_type,
+     s->ds = ds;
+     s->console_type = console_type;
+ 
+-    consoles = g_realloc(consoles, sizeof(*consoles) * (nb_consoles+1));
+-    if (console_type != GRAPHIC_CONSOLE || qdev_hotplug) {
+-        s->index = nb_consoles;
+-        consoles[nb_consoles++] = s;
++    if (QTAILQ_EMPTY(&consoles)) {
++        s->index = 0;
++        QTAILQ_INSERT_TAIL(&consoles, s, next);
++    } else if (console_type != GRAPHIC_CONSOLE || qdev_hotplug) {
++        QemuConsole *last = QTAILQ_LAST(&consoles, consoles_head);
++        s->index = last->index + 1;
++        QTAILQ_INSERT_TAIL(&consoles, s, next);
+     } else {
+         /*
+          * HACK: Put graphical consoles before text consoles.
+@@ -1303,15 +1308,24 @@ static QemuConsole *new_console(DisplayState *ds, console_type_t console_type,
+          * Only do that for coldplugged devices.  After initial device
+          * initialization we will not renumber the consoles any more.
+          */
+-        for (i = nb_consoles; i > 0; i--) {
+-            if (consoles[i - 1]->console_type == GRAPHIC_CONSOLE)
+-                break;
+-            consoles[i] = consoles[i - 1];
+-            consoles[i]->index = i;
++        QemuConsole *c = QTAILQ_FIRST(&consoles);
++
++        while (QTAILQ_NEXT(c, next) != NULL &&
++               c->console_type == GRAPHIC_CONSOLE) {
++            c = QTAILQ_NEXT(c, next);
++        }
++        if (c->console_type == GRAPHIC_CONSOLE) {
++            /* have no text consoles */
++            s->index = c->index + 1;
++            QTAILQ_INSERT_AFTER(&consoles, c, s, next);
++        } else {
++            s->index = c->index;
++            QTAILQ_INSERT_BEFORE(c, s, next);
++            /* renumber text consoles */
++            for (i = s->index + 1; c != NULL; c = QTAILQ_NEXT(c, next), i++) {
++                c->index = i;
++            }
+         }
+-        s->index = i;
+-        consoles[i] = s;
+-        nb_consoles++;
+     }
+     return s;
+ }
+@@ -1861,21 +1875,21 @@ static DisplayState *get_alloc_displaystate(void)
+ DisplayState *init_displaystate(void)
+ {
+     gchar *name;
+-    int i;
++    QemuConsole *con;
+ 
+     get_alloc_displaystate();
+-    for (i = 0; i < nb_consoles; i++) {
+-        if (consoles[i]->console_type != GRAPHIC_CONSOLE &&
+-            consoles[i]->ds == NULL) {
+-            text_console_do_init(consoles[i]->chr, display_state);
++    QTAILQ_FOREACH(con, &consoles, next) {
++        if (con->console_type != GRAPHIC_CONSOLE &&
++            con->ds == NULL) {
++            text_console_do_init(con->chr, display_state);
+         }
+ 
+         /* Hook up into the qom tree here (not in new_console()), once
+          * all QemuConsoles are created and the order / numbering
+          * doesn't change any more */
+-        name = g_strdup_printf("console[%d]", i);
++        name = g_strdup_printf("console[%d]", con->index);
+         object_property_add_child(container_get(object_get_root(), "/backend"),
+-                                  name, OBJECT(consoles[i]), &error_abort);
++                                  name, OBJECT(con), &error_abort);
+         g_free(name);
+     }
+ 
+@@ -1957,33 +1971,34 @@ void graphic_console_close(QemuConsole *con)
+ 
+ QemuConsole *qemu_console_lookup_by_index(unsigned int index)
+ {
+-    if (index >= nb_consoles) {
+-        return NULL;
++    QemuConsole *con;
++
++    QTAILQ_FOREACH(con, &consoles, next) {
++        if (con->index == index) {
++            return con;
++        }
+     }
+-    return consoles[index];
++    return NULL;
+ }
+ 
+ QemuConsole *qemu_console_lookup_by_device(DeviceState *dev, uint32_t head)
+ {
++    QemuConsole *con;
+     Object *obj;
+     uint32_t h;
+-    int i;
+ 
+-    for (i = 0; i < nb_consoles; i++) {
+-        if (!consoles[i]) {
+-            continue;
+-        }
+-        obj = object_property_get_link(OBJECT(consoles[i]),
++    QTAILQ_FOREACH(con, &consoles, next) {
++        obj = object_property_get_link(OBJECT(con),
+                                        "device", &error_abort);
+         if (DEVICE(obj) != dev) {
+             continue;
+         }
+-        h = object_property_get_uint(OBJECT(consoles[i]),
++        h = object_property_get_uint(OBJECT(con),
+                                      "head", &error_abort);
+         if (h != head) {
+             continue;
+         }
+-        return consoles[i];
++        return con;
+     }
+     return NULL;
+ }
+@@ -2013,22 +2028,19 @@ QemuConsole *qemu_console_lookup_by_device_name(const char *device_id,
+ 
+ QemuConsole *qemu_console_lookup_unused(void)
+ {
++    QemuConsole *con;
+     Object *obj;
+-    int i;
+ 
+-    for (i = 0; i < nb_consoles; i++) {
+-        if (!consoles[i]) {
++    QTAILQ_FOREACH(con, &consoles, next) {
++        if (con->hw_ops != &unused_ops) {
+             continue;
+         }
+-        if (consoles[i]->hw_ops != &unused_ops) {
+-            continue;
+-        }
+-        obj = object_property_get_link(OBJECT(consoles[i]),
++        obj = object_property_get_link(OBJECT(con),
+                                        "device", &error_abort);
+         if (obj != NULL) {
+             continue;
+         }
+-        return consoles[i];
++        return con;
+     }
+     return NULL;
+ }
+@@ -2130,12 +2142,11 @@ static void text_console_update_cursor_timer(void)
+ static void text_console_update_cursor(void *opaque)
+ {
+     QemuConsole *s;
+-    int i, count = 0;
++    int count = 0;
+ 
+     cursor_visible_phase = !cursor_visible_phase;
+ 
+-    for (i = 0; i < nb_consoles; i++) {
+-        s = consoles[i];
++    QTAILQ_FOREACH(s, &consoles, next) {
+         if (qemu_console_is_graphic(s) ||
+             !qemu_console_is_visible(s)) {
+             continue;
 -- 
 2.9.3
 
