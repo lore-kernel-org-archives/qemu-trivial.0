@@ -1,54 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fITRq-0007pw-0k
-	for mharc-qemu-trivial@gnu.org; Tue, 15 May 2018 02:28:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40313)
+	id 1fITV2-00011H-CC
+	for mharc-qemu-trivial@gnu.org; Tue, 15 May 2018 02:31:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40963)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <olaf@aepfle.de>) id 1fITRn-0007om-Sm
-	for qemu-trivial@nongnu.org; Tue, 15 May 2018 02:28:32 -0400
+	(envelope-from <olaf@aepfle.de>) id 1fITUy-00010A-2D
+	for qemu-trivial@nongnu.org; Tue, 15 May 2018 02:31:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <olaf@aepfle.de>) id 1fITRn-0000hE-3w
-	for qemu-trivial@nongnu.org; Tue, 15 May 2018 02:28:31 -0400
-Received: from mo6-p01-ob.smtp.rzone.de ([2a01:238:20a:202:5301::5]:35823)
+	(envelope-from <olaf@aepfle.de>) id 1fITUx-0002DF-3w
+	for qemu-trivial@nongnu.org; Tue, 15 May 2018 02:31:48 -0400
+Received: from mo6-p01-ob.smtp.rzone.de ([2a01:238:20a:202:5301::11]:24815)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <olaf@aepfle.de>)
-	id 1fITRk-0000fv-Og; Tue, 15 May 2018 02:28:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1526365706;
+	id 1fITUw-0002CX-JQ; Tue, 15 May 2018 02:31:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1526365905;
 	s=strato-dkim-0002; d=aepfle.de;
-	h=References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:
-	X-RZG-CLASS-ID:X-RZG-AUTH:From:Subject:Sender;
-	bh=jpMZt9PGOVC9ob78tBcUimpcjwfiMjT48T5A3JUGVc8=;
-	b=ZkXYWTrhWpsBpUpj+hYzOLk2QKVJRHafeqcuBpWkI0TRj+ZiF4jQT0sIfAZGBbWQMa
-	SHGGn/jCCKb8LVbqtpzOuieHp9ue1Xvxjn4tOPZmYYJOoggZ/H7pUcc7L+bP5IxYYBmj
-	6mQdki/NGRjC5N4nQK1yobhj1nq39HIzAp739mQB2iI10hEZRu+HYVIP/Y3REaCMtLnF
-	ZGpEnNa8W8n/b/6RfgH0K0zJc0U3X/PfZUg5KI7QitTv+ecoQ+rOfuEE1zbkgAOwzPDt
-	Pzm+w8M6r9RbYGlAF4EInYX8JalvQkdVK425eLYHjUVK9GLgTjy4d2ExAfIgMOz0XGxu
-	mdXg==
-X-RZG-AUTH: ":P2EQZWCpfu+qG7CngxMFH1J+3q8wa/QED/SSGq+wjGiUC4oc0Nr2ihluivsASdya+Vzel3uexBNxWoZbXfZuF5WsSPfv6W59"
+	h=Message-Id:Date:Subject:Cc:To:From:X-RZG-CLASS-ID:X-RZG-AUTH:From:
+	Subject:Sender;
+	bh=AuQwEfYVBoxLZic6+3CfPIRTJb887AgR8zPqlKjVwLc=;
+	b=SwwXRTcH6ZPqMJ1ettqRFcXSAF3xDmKmz/odHpJtvEd6Nfq7EW05VIuUuIrFF+8rwN
+	OoJa41Vun76sT57ShuhcW58JgfzzGB1OKk3WwsPjMdS0xq8E438DX0idOCezkH9c0bSU
+	JV44Y649NqaUaxjAOZTwG0Bd2rsEB+be1RvEs+9zkdTE/OuLpfclbKfawLHcU5PFdF3E
+	2dTCz2tcUbITP/V4zpuLfWOj2bG2eHz5RX+c0YxZWqhLMVJ0A++Ii9G6DWALVp30D7rh
+	+KO8enfVPLJitE9LBIKW5gbqIg2/FDMt6W/DMwDkYWep/Qrr6hMApaiBK5T9pxDd6vX1
+	Brug==
+X-RZG-AUTH: ":P2EQZWCpfu+qG7CngxMFH1J+3q8wa/QXkBR9MXjAuzpIG0mv9coXAgc09VbzR8stxx+XNVGnx9ZX3co74kFtJGu5gyLH"
 X-RZG-CLASS-ID: mo00
 Received: from sender by smtp.strato.de (RZmta 43.8 AUTH)
-	with ESMTPSA id h032f7u4F6SM2Wz
+	with ESMTPSA id h032f7u4F6VU2YI
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (curve secp521r1
 	with 521 ECDH bits, eq. 15360 bits RSA))
 	(Client did not present a certificate);
-	Tue, 15 May 2018 08:28:22 +0200 (CEST)
-Date: Tue, 15 May 2018 08:28:17 +0200
+	Tue, 15 May 2018 08:31:30 +0200 (CEST)
 From: Olaf Hering <olaf@aepfle.de>
-To: no-reply@patchew.org
-Cc: <qemu-devel@nongnu.org>, famz@redhat.com, qemu-trivial@nongnu.org,
-	pbonzini@redhat.com, stefanha@redhat.com
-Message-ID: <20180515082817.1125f292.olaf@aepfle.de>
-In-Reply-To: <152636426980.156.13889592265459743277@1f70390a8372>
-References: <20180515055949.6446-1-olaf@aepfle.de>
-	<152636426980.156.13889592265459743277@1f70390a8372>
-X-Mailer: Claws Mail 3.16.1 (GTK+ 2.24.32; x86_64-suse-linux-gnu)
+To: qemu-trivial@nongnu.org
+Cc: Olaf Hering <olaf@aepfle.de>, Fam Zheng <famz@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org (open list:All patches CC here)
+Date: Tue, 15 May 2018 08:31:28 +0200
+Message-Id: <20180515063128.7040-1-olaf@aepfle.de>
+X-Mailer: git-send-email 2.16.3
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	boundary="Sig_/xxdQ6aQc2Cv6ScX=WE_563q";
-	protocol="application/pgp-signature"
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 2a01:238:20a:202:5301::5
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] replace functions which are
- only available in glib-2.24
+X-Received-From: 2a01:238:20a:202:5301::11
+Subject: [Qemu-trivial] [PATCH v2] replace functions which are only
+ available in glib-2.24
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,31 +56,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 May 2018 06:28:32 -0000
+X-List-Received-Date: Tue, 15 May 2018 06:31:51 -0000
 
---Sig_/xxdQ6aQc2Cv6ScX=WE_563q
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+Currently the minimal supported version of glib is 2.22.
+Since testing is done with a glib that claims to be 2.22, but in fact
+has APIs from newer version of glib, this bug was not caught during
+submit of the patch referenced below.
 
-Am Mon, 14 May 2018 23:04:31 -0700 (PDT)
-schrieb no-reply@patchew.org:
+Replace g_realloc_n, which is available only since 2.24, with g_renew.
 
-> vfio-helpers.c:525:17: error: assignment from incompatible pointer type=20
+Fixes commit 418026ca43 ("util: Introduce vfio helpers")
 
-Does anyone happen to know what s390x is trying to do here?
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
 
-Olaf
+ This must go into stable-2.12.
 
---Sig_/xxdQ6aQc2Cv6ScX=WE_563q
-Content-Type: application/pgp-signature
-Content-Description: Digitale Signatur von OpenPGP
+ util/vfio-helpers.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQSkRyP6Rn//f03pRUBdQqD6ppg2fgUCWvp+AQAKCRBdQqD6ppg2
-fnZwAKDS8nHzFVDmrHPzsgVS+BUZHNxCpQCeKj3m6zo6rd+r5tp4V2hyc4l8zbc=
-=JKN3
------END PGP SIGNATURE-----
-
---Sig_/xxdQ6aQc2Cv6ScX=WE_563q--
+diff --git a/util/vfio-helpers.c b/util/vfio-helpers.c
+index 006674c916..1d9272efa4 100644
+--- a/util/vfio-helpers.c
++++ b/util/vfio-helpers.c
+@@ -522,8 +522,7 @@ static IOVAMapping *qemu_vfio_add_mapping(QEMUVFIOState *s,
+ 
+     assert(index >= 0);
+     s->nr_mappings++;
+-    s->mappings = g_realloc_n(s->mappings, sizeof(s->mappings[0]),
+-                              s->nr_mappings);
++    s->mappings = g_renew(IOVAMapping, s->mappings, s->nr_mappings);
+     insert = &s->mappings[index];
+     shift = s->nr_mappings - index - 1;
+     if (shift) {
+@@ -577,8 +576,7 @@ static void qemu_vfio_undo_mapping(QEMUVFIOState *s, IOVAMapping *mapping,
+     memmove(mapping, &s->mappings[index + 1],
+             sizeof(s->mappings[0]) * (s->nr_mappings - index - 1));
+     s->nr_mappings--;
+-    s->mappings = g_realloc_n(s->mappings, sizeof(s->mappings[0]),
+-                              s->nr_mappings);
++    s->mappings = g_renew(IOVAMapping, s->mappings, s->nr_mappings);
+ }
+ 
+ /* Check if the mapping list is (ascending) ordered. */
 
