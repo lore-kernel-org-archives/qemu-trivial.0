@@ -1,50 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fIW77-0004TJ-K8
-	for mharc-qemu-trivial@gnu.org; Tue, 15 May 2018 05:19:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48741)
+	id 1fIYTA-0003MA-O9
+	for mharc-qemu-trivial@gnu.org; Tue, 15 May 2018 07:50:16 -0400
+Received: from eggs.gnu.org ([208.118.235.92]:55262)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fIW70-0004KX-JN
-	for qemu-trivial@nongnu.org; Tue, 15 May 2018 05:19:18 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fIYT8-0003JH-AX
+	for qemu-trivial@nongnu.org; Tue, 15 May 2018 07:50:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fIW6v-0001Xr-TS
-	for qemu-trivial@nongnu.org; Tue, 15 May 2018 05:19:14 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:46016 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1fIW6s-0001Ur-GO; Tue, 15 May 2018 05:19:06 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E897BD39D5;
-	Tue, 15 May 2018 09:19:05 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-116-49.ams2.redhat.com
-	[10.36.116.49])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 71D55112D18D;
-	Tue, 15 May 2018 09:19:04 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id DCD2F3F11F; Tue, 15 May 2018 11:19:01 +0200 (CEST)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>
-Date: Tue, 15 May 2018 11:18:58 +0200
-Message-Id: <20180515091901.27774-8-kraxel@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1fIYT5-00056e-GG
+	for qemu-trivial@nongnu.org; Tue, 15 May 2018 07:50:12 -0400
+Received: from mail-oi0-x22c.google.com ([2607:f8b0:4003:c06::22c]:42828)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fIYT5-00055S-Ag
+	for qemu-trivial@nongnu.org; Tue, 15 May 2018 07:50:11 -0400
+Received: by mail-oi0-x22c.google.com with SMTP id t27-v6so13658429oij.9
+	for <qemu-trivial@nongnu.org>; Tue, 15 May 2018 04:50:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=f2ReTOQzNJ4a7HW20JGHZPMwsCLtWUNRZ8ue6W82Muk=;
+	b=H1QrmE/3qmxx0/eJobJpXZQchrGcmEs3WjMFU0NZEuUU2UWwlF76y9B7j/FX4nXZvP
+	ambEiCFgvA7/OpeqLkjmu5ljqEZz4VBboWCI34srmGWdNY3IjVNYPUOuYB+XTN4UG3Kf
+	Vc6D64f+PAxcsAdX2eXzrlWkWlD/Q3K2HVFGI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=f2ReTOQzNJ4a7HW20JGHZPMwsCLtWUNRZ8ue6W82Muk=;
+	b=m6ame4xnvhAz/v6XNYZqrlfacmChMfWKd15F7K1x87+Vdw3zEQAeGD6uqQdyG30GX9
+	VSQg+kr1OyCKQOrGcHD5G/TC9vS/3YWIEV1EmPO09vp7hQEWE3vpLuZU1f80wUi+jyHX
+	jbalHLyPbp0ds/ktoeYkOG3dJpOKgd65+VRSqIZ4CgHRsf+7OwlzL7CIWm5fWBVLWkmO
+	NPK/DlfwaG9qblg3yshnCs9+9ANUeFkUIxAERCD1Gks9bjiVTHyTBJezR14CNjWS3mvq
+	gqfitZ1N5CRCDYvXPbqg1toIrXI7hPWZJuIE9nLOfYEIdhRCg/C9jQ/LHYvJZTDWj51Y
+	p52Q==
+X-Gm-Message-State: ALKqPwdW3OIGMH5VwmmTIYk5Ja5eKhqn7WpLuOLwHSmAjfMCTVHaLqhu
+	ZnamsEY/1wCViod1vF55neGgJS2PsTAPX+u1jRcx6g==
+X-Google-Smtp-Source: AB8JxZpsdBJs+A4vtUrRfShhKQ/YG71aVanXID3m1nv9FItfqNluAA6MB0AtIlt3Wo58TROnheYjB7o1xME8U5yJ0zw=
+X-Received: by 2002:aca:f141:: with SMTP id
+	p62-v6mr9691569oih.80.1526385010285; 
+	Tue, 15 May 2018 04:50:10 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Tue, 15 May 2018 04:49:49
+	-0700 (PDT)
 In-Reply-To: <20180515091901.27774-1-kraxel@redhat.com>
 References: <20180515091901.27774-1-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Tue, 15 May 2018 09:19:05 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Tue, 15 May 2018 09:19:05 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-trivial] [PULL 07/10] ui: switch gtk display to qapi parser
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 15 May 2018 12:49:49 +0100
+Message-ID: <CAFEAcA8ejSxKXhh19FzEduSriAvauSjar8atoF=CkgEW_TyWTg@mail.gmail.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+	Laurent Vivier <laurent@vivier.eu>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::22c
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/10] Ui 20180515 patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,82 +67,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 May 2018 09:19:18 -0000
+X-List-Received-Date: Tue, 15 May 2018 11:50:15 -0000
 
-Drop the gtk option parser from parse_display(), so parse_display_qapi()
-will handle it instead.
+On 15 May 2018 at 10:18, Gerd Hoffmann <kraxel@redhat.com> wrote:
+> The following changes since commit fbd3a489df9953e2a5d017c922f3c103b2426952:
+>
+>   Merge remote-tracking branch 'remotes/cohuck/tags/s390x-20180514' into staging (2018-05-14 18:53:42 +0100)
+>
+> are available in the git repository at:
+>
+>   git://git.kraxel.org/qemu tags/ui-20180515-pull-request
+>
+> for you to fetch changes up to 677b490501823c1cb6946d8bb9e7907c12cd0c71:
+>
+>   gtk: disable the F10 menubar key (2018-05-15 10:47:01 +0200)
+>
+> ----------------------------------------------------------------
+> ui: qapi parser for -display cmd line.
+> gtk: multiple fixes.
+> sdl: opts bugfix.
+> vnc: magic cookie.
+>
+> ----------------------------------------------------------------
+>
+> Gerd Hoffmann (7):
+>   sdl2: move opts assignment into loop
+>   vnc: add magic cookie to VncState
+>   ui: add qapi parser for -display
+>   ui: switch trivial displays to qapi parser
+>   ui: switch gtk display to qapi parser
+>   ui: document non-qapi parser cases.
+>   console: use linked list for QemuConsoles
+>
+> Peter Wu (2):
+>   gtk: make it possible to hide the menu bar
+>   gtk: disable the F10 menubar key
+>
+> Tomeu Vizoso (1):
+>   ui/gtk: Only try to initialize EGL/X11 if GtkGlArea failed
+>
 
-With this change the parser will accept gl=core and gl=es too, gtk
-must catch the unsupported gles variant now.
+Applied, thanks.
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Message-id: 20180507095539.19584-4-kraxel@redhat.com
----
- ui/gtk.c |  6 +++++-
- vl.c     | 32 --------------------------------
- 2 files changed, 5 insertions(+), 33 deletions(-)
-
-diff --git a/ui/gtk.c b/ui/gtk.c
-index 568c9563ce..ef6ca7179e 100644
---- a/ui/gtk.c
-+++ b/ui/gtk.c
-@@ -2478,7 +2478,11 @@ static void early_gtk_display_init(DisplayOptions *opts)
-     }
- 
-     assert(opts->type == DISPLAY_TYPE_GTK);
--    if (opts->has_gl && opts->gl) {
-+    if (opts->has_gl && opts->gl != DISPLAYGL_MODE_OFF) {
-+        if (opts->gl == DISPLAYGL_MODE_ES) {
-+            error_report("gtk: opengl es not supported");
-+            return;
-+        }
- #if defined(CONFIG_OPENGL)
- #if defined(CONFIG_GTK_GL) && defined(GDK_WINDOWING_WAYLAND)
-         if (GDK_IS_WAYLAND_DISPLAY(gdk_display_get_default())) {
-diff --git a/vl.c b/vl.c
-index 6b8f946d58..5f1734d851 100644
---- a/vl.c
-+++ b/vl.c
-@@ -2185,38 +2185,6 @@ static void parse_display(const char *p)
-             error_report("VNC requires a display argument vnc=<display>");
-             exit(1);
-         }
--    } else if (strstart(p, "gtk", &opts)) {
--        dpy.type = DISPLAY_TYPE_GTK;
--        while (*opts) {
--            const char *nextopt;
--
--            if (strstart(opts, ",grab_on_hover=", &nextopt)) {
--                opts = nextopt;
--                dpy.u.gtk.has_grab_on_hover = true;
--                if (strstart(opts, "on", &nextopt)) {
--                    dpy.u.gtk.grab_on_hover = true;
--                } else if (strstart(opts, "off", &nextopt)) {
--                    dpy.u.gtk.grab_on_hover = false;
--                } else {
--                    goto invalid_gtk_args;
--                }
--            } else if (strstart(opts, ",gl=", &nextopt)) {
--                opts = nextopt;
--                dpy.has_gl = true;
--                if (strstart(opts, "on", &nextopt)) {
--                    dpy.gl = DISPLAYGL_MODE_ON;
--                } else if (strstart(opts, "off", &nextopt)) {
--                    dpy.gl = DISPLAYGL_MODE_OFF;
--                } else {
--                    goto invalid_gtk_args;
--                }
--            } else {
--            invalid_gtk_args:
--                error_report("invalid GTK option string");
--                exit(1);
--            }
--            opts = nextopt;
--        }
-     } else {
-         parse_display_qapi(p);
-     }
--- 
-2.9.3
-
+-- PMM
 
