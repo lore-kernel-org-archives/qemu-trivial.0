@@ -1,56 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fIeQS-0006na-ED
-	for mharc-qemu-trivial@gnu.org; Tue, 15 May 2018 14:11:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53660)
+	id 1fKGua-0004MH-Hq
+	for mharc-qemu-trivial@gnu.org; Sun, 20 May 2018 01:29:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40483)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1fIeQQ-0006ma-GQ
-	for qemu-trivial@nongnu.org; Tue, 15 May 2018 14:11:51 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1fKGuY-0004Fl-Mc
+	for qemu-trivial@nongnu.org; Sun, 20 May 2018 01:29:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1fIeQP-0004ZQ-Cg
-	for qemu-trivial@nongnu.org; Tue, 15 May 2018 14:11:50 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:46710 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1fIeQJ-0004XW-Ks; Tue, 15 May 2018 14:11:43 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A47054201AE5;
-	Tue, 15 May 2018 18:11:42 +0000 (UTC)
-Received: from [10.10.124.57] (ovpn-124-57.rdu2.redhat.com [10.10.124.57])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id ED7711C4C3;
-	Tue, 15 May 2018 18:11:39 +0000 (UTC)
-To: Murilo Opsfelder Araujo <muriloo@linux.ibm.com>, qemu-devel@nongnu.org
-References: <20180515134950.3755-1-muriloo@linux.ibm.com>
-Cc: Markus Armbruster <armbru@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial <qemu-trivial@nongnu.org>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <7abb9c3c-524d-16cb-4bbd-7a27c5c6e676@redhat.com>
-Date: Tue, 15 May 2018 13:11:39 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
-MIME-Version: 1.0
-In-Reply-To: <20180515134950.3755-1-muriloo@linux.ibm.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Tue, 15 May 2018 18:11:42 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Tue, 15 May 2018 18:11:42 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
+	(envelope-from <mjt@tls.msk.ru>) id 1fKGuX-0005Dg-VB
+	for qemu-trivial@nongnu.org; Sun, 20 May 2018 01:29:38 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:40389)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <mjt@tls.msk.ru>)
+	id 1fKGuS-0005A8-MP; Sun, 20 May 2018 01:29:32 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+	by isrv.corpit.ru (Postfix) with ESMTP id 55BA7410E4;
+	Sun, 20 May 2018 08:29:30 +0300 (MSK)
+Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
+	by tsrv.corpit.ru (Postfix) with SMTP id 3D0D3F4A;
+	Sun, 20 May 2018 08:29:30 +0300 (MSK)
+Received: (nullmailer pid 3523 invoked by uid 1000);
+	Sun, 20 May 2018 05:29:29 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Date: Sun, 20 May 2018 08:29:27 +0300
+Message-Id: <20180520052927.3479-1-mjt@msgid.tls.msk.ru>
+X-Mailer: git-send-email 2.11.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] HACKING: document
- preference for g_new instead of g_malloc
+X-Received-From: 86.62.121.231
+Subject: [Qemu-trivial] [PATCH] qemu-option-trace: -trace enable= is a
+ pattern, not a file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,51 +42,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 May 2018 18:11:51 -0000
+X-List-Received-Date: Sun, 20 May 2018 05:29:39 -0000
 
-adding qemu-trivial as a potential tree for this to go through
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ qemu-option-trace.texi | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-On 05/15/2018 08:49 AM, Murilo Opsfelder Araujo wrote:
-> This patch documents the preference for g_new instead of g_malloc. The
-> reasons were adapted from commit b45c03f585ea9bb1af76c73e82195418c294919d.
-> 
-> Discussion in QEMU's mailing list:
->    http://lists.nongnu.org/archive/html/qemu-devel/2018-05/msg03238.html
-> 
-> Cc: qemu-devel@nongnu.org
-> Cc: David Hildenbrand <david@redhat.com>
-> Cc: Eduardo Habkost <ehabkost@redhat.com>
-> Cc: Markus Armbruster <armbru@redhat.com>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Signed-off-by: Murilo Opsfelder Araujo <muriloo@linux.ibm.com>
-> ---
->   HACKING | 9 +++++++++
->   1 file changed, 9 insertions(+)
-> 
-> diff --git a/HACKING b/HACKING
-> index 4125c97d8d..0fc3e0fc04 100644
-> --- a/HACKING
-> +++ b/HACKING
-> @@ -118,6 +118,15 @@ Please note that g_malloc will exit on allocation failure, so there
->   is no need to test for failure (as you would have to with malloc).
->   Calling g_malloc with a zero size is valid and will return NULL.
->   
-> +Prefer g_new(T, n) instead of g_malloc(sizeof(T) * n) for the following
-> +reasons:
-> +
-> +  a. It catches multiplication overflowing size_t;
-> +  b. It returns T * instead of void *, letting compiler catch more type
-> +     errors.
-> +
-> +Declarations like T *v = g_malloc(sizeof(*v)) are acceptable, though.
-> +
->   Memory allocated by qemu_memalign or qemu_blockalign must be freed with
->   qemu_vfree, since breaking this will cause problems on Win32.
->   
-> 
-
+diff --git a/qemu-option-trace.texi b/qemu-option-trace.texi
+index 4166d5cdc2..7d1b7f05c5 100644
+--- a/qemu-option-trace.texi
++++ b/qemu-option-trace.texi
+@@ -2,9 +2,8 @@ Specify tracing options.
+ 
+ @table @option
+ @item [enable=]@var{pattern}
+-Immediately enable events matching @var{pattern}.
+-The file must contain one event name (as listed in the @file{trace-events-all}
+-file) per line; globbing patterns are accepted too.  This option is only
++Immediately enable events matching @var{pattern}
++(either event name or a globbing pattern).  This option is only
+ available if QEMU has been compiled with the @var{simple}, @var{log}
+ or @var{ftrace} tracing backend.  To specify multiple events or patterns,
+ specify the @option{-trace} option multiple times.
 -- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+2.11.0
+
 
