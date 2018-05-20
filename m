@@ -1,43 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fKHvK-00066x-0u
+	id 1fKHvK-00067B-6A
 	for mharc-qemu-trivial@gnu.org; Sun, 20 May 2018 02:34:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45995)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45999)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1fKHvH-00064j-WD
+	(envelope-from <mjt@tls.msk.ru>) id 1fKHvI-00064u-5i
 	for qemu-trivial@nongnu.org; Sun, 20 May 2018 02:34:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1fKHvH-00035D-9Z
+	(envelope-from <mjt@tls.msk.ru>) id 1fKHvH-00035Q-CA
 	for qemu-trivial@nongnu.org; Sun, 20 May 2018 02:34:28 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:48651)
+Received: from isrv.corpit.ru ([86.62.121.231]:56971)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1fKHvA-0002ty-Jt; Sun, 20 May 2018 02:34:20 -0400
+	id 1fKHv9-0002t5-SH; Sun, 20 May 2018 02:34:20 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 1A4714112C;
-	Sun, 20 May 2018 09:34:19 +0300 (MSK)
+	by isrv.corpit.ru (Postfix) with ESMTP id E01494111D;
+	Sun, 20 May 2018 09:34:18 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 400FF10C2;
-	Sun, 20 May 2018 09:15:13 +0300 (MSK)
-Received: (nullmailer pid 7416 invoked by uid 1000);
-	Sun, 20 May 2018 06:15:12 -0000
+	by tsrv.corpit.ru (Postfix) with SMTP id 3C26110CE;
+	Sun, 20 May 2018 09:15:14 +0300 (MSK)
+Received: (nullmailer pid 7384 invoked by uid 1000);
+	Sun, 20 May 2018 06:15:11 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun, 20 May 2018 09:15:08 +0300
-Message-Id: <9a232487aab8a7640ff8853d7d8d7c27106b44f8.1526796813.git.mjt@msgid.tls.msk.ru>
+Cc: John Snow <jsnow@redhat.com>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Date: Sun, 20 May 2018 09:14:56 +0300
+Message-Id: <4885b0caf607579a0f99c221fa39ca97d9a6ddf4.1526796813.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1526796813.git.mjt@msgid.tls.msk.ru>
 References: <cover.1526796813.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1526796813.git.mjt@msgid.tls.msk.ru>
 References: <cover.1526796813.git.mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 22/22] acpi: fix a comment about aml_call0()
+Subject: [Qemu-trivial] [PULL 10/22] qemu-img-cmds.hx: add
+ passive-aggressive note
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,29 +49,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sun, 20 May 2018 06:34:29 -0000
 
-From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+From: John Snow <jsnow@redhat.com>
 
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+I'm kidding. It's very easy to forget there are per-command sections
+in the texi, and insane that we don't autogenerate those, too.
+
+Until then, leave a little post-it note in this .hx file until I
+find a way to delete it.
+
+Signed-off-by: John Snow <jsnow@redhat.com>
+Reviewed-by: Jeff Cody <jcody@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/acpi/aml-build.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ qemu-img-cmds.hx | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index 3fa557cea1..1e43cd736d 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -627,7 +627,7 @@ Aml *aml_notify(Aml *arg1, Aml *arg2)
-     return var;
- }
-=20
--/* helper to call method with 1 argument */
-+/* helper to call method without argument */
- Aml *aml_call0(const char *method)
- {
-     Aml *var =3D aml_alloc();
---=20
+diff --git a/qemu-img-cmds.hx b/qemu-img-cmds.hx
+index 84deb858af..3d2f7b26eb 100644
+--- a/qemu-img-cmds.hx
++++ b/qemu-img-cmds.hx
+@@ -6,6 +6,9 @@ HXCOMM DEF(command, callback, arg_string) is used to construct
+ HXCOMM command structures and help message.
+ HXCOMM HXCOMM can be used for comments, discarded from both texi and C
+ 
++HXCOMM When amending the TEXI sections, please remember to copy the usage
++HXCOMM over to the per-command sections in qemu-img.texi.
++
+ STEXI
+ @table @option
+ ETEXI
+-- 
 2.11.0
 
 
