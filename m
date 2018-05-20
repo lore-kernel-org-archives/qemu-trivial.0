@@ -1,43 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fKIEd-00086W-DI
-	for mharc-qemu-trivial@gnu.org; Sun, 20 May 2018 02:54:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47674)
+	id 1fKIEf-00089n-7l
+	for mharc-qemu-trivial@gnu.org; Sun, 20 May 2018 02:54:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47724)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1fKIEa-0007w1-IS
-	for qemu-trivial@nongnu.org; Sun, 20 May 2018 02:54:25 -0400
+	(envelope-from <mjt@tls.msk.ru>) id 1fKIEc-00083p-RD
+	for qemu-trivial@nongnu.org; Sun, 20 May 2018 02:54:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mjt@tls.msk.ru>) id 1fKIEZ-0002On-R4
-	for qemu-trivial@nongnu.org; Sun, 20 May 2018 02:54:24 -0400
-Received: from isrv.corpit.ru ([86.62.121.231]:60971)
+	(envelope-from <mjt@tls.msk.ru>) id 1fKIEc-0002RR-0L
+	for qemu-trivial@nongnu.org; Sun, 20 May 2018 02:54:26 -0400
+Received: from isrv.corpit.ru ([86.62.121.231]:45493)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <mjt@tls.msk.ru>)
-	id 1fKIEV-0002Je-BB; Sun, 20 May 2018 02:54:19 -0400
+	id 1fKIEV-0002Jj-CL; Sun, 20 May 2018 02:54:19 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id 4A66E4112D;
+	by isrv.corpit.ru (Postfix) with ESMTP id 3EBFB41129;
 	Sun, 20 May 2018 09:54:18 +0300 (MSK)
 Received: from tls.msk.ru (mjt.vpn.tls.msk.ru [192.168.177.99])
-	by tsrv.corpit.ru (Postfix) with SMTP id 1F9C310CD;
-	Sun, 20 May 2018 09:15:14 +0300 (MSK)
-Received: (nullmailer pid 7410 invoked by uid 1000);
+	by tsrv.corpit.ru (Postfix) with SMTP id EEBF510B4;
+	Sun, 20 May 2018 09:15:12 +0300 (MSK)
+Received: (nullmailer pid 7408 invoked by uid 1000);
 	Sun, 20 May 2018 06:15:12 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun, 20 May 2018 09:15:05 +0300
-Message-Id: <f5bdd781316d2ba140323cb98392e44cac54017d.1526796813.git.mjt@msgid.tls.msk.ru>
+Cc: Olaf Hering <olaf@aepfle.de>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-stable@nongnu.org
+Date: Sun, 20 May 2018 09:15:04 +0300
+Message-Id: <d29eb678bcfbb2fbf4b79423797253ee02f5c6cf.1526796813.git.mjt@msgid.tls.msk.ru>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <cover.1526796813.git.mjt@msgid.tls.msk.ru>
 References: <cover.1526796813.git.mjt@msgid.tls.msk.ru>
 In-Reply-To: <cover.1526796813.git.mjt@msgid.tls.msk.ru>
 References: <cover.1526796813.git.mjt@msgid.tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 86.62.121.231
-Subject: [Qemu-trivial] [PULL 19/22] gdbstub: Use qemu_set_cloexec()
+Subject: [Qemu-trivial] [PULL 18/22] replace functions which are only
+ available in glib-2.24
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,50 +47,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 20 May 2018 06:54:25 -0000
+X-List-Received-Date: Sun, 20 May 2018 06:54:27 -0000
 
-From: Peter Maydell <peter.maydell@linaro.org>
+From: Olaf Hering <olaf@aepfle.de>
 
-Use the utility routine qemu_set_cloexec() rather than
-manually calling fcntl(). This lets us drop the #ifndef _WIN32
-guards and also means Coverity doesn't complain that we're
-ignoring the fcntl error return (CID 1005665, CID 1005667).
+Currently the minimal supported version of glib is 2.22.
+Since testing is done with a glib that claims to be 2.22, but in fact
+has APIs from newer version of glib, this bug was not caught during
+submit of the patch referenced below.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Replace g_realloc_n, which is available only since 2.24, with g_renew.
+
+Fixes commit 418026ca43 ("util: Introduce vfio helpers")
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+CC: qemu-stable@nongnu.org
 ---
- gdbstub.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ util/vfio-helpers.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/gdbstub.c b/gdbstub.c
-index 9682e16ef7..b99980d2e2 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -1828,9 +1828,7 @@ static void gdb_accept(void)
-             perror("accept");
-             return;
-         } else if (fd >=3D 0) {
--#ifndef _WIN32
--            fcntl(fd, F_SETFD, FD_CLOEXEC);
--#endif
-+            qemu_set_cloexec(fd);
-             break;
-         }
-     }
-@@ -1857,9 +1855,7 @@ static int gdbserver_open(int port)
-         perror("socket");
-         return -1;
-     }
--#ifndef _WIN32
--    fcntl(fd, F_SETFD, FD_CLOEXEC);
--#endif
-+    qemu_set_cloexec(fd);
-=20
-     socket_set_fast_reuse(fd);
-=20
---=20
+diff --git a/util/vfio-helpers.c b/util/vfio-helpers.c
+index 006674c916..1d9272efa4 100644
+--- a/util/vfio-helpers.c
++++ b/util/vfio-helpers.c
+@@ -522,8 +522,7 @@ static IOVAMapping *qemu_vfio_add_mapping(QEMUVFIOState *s,
+ 
+     assert(index >= 0);
+     s->nr_mappings++;
+-    s->mappings = g_realloc_n(s->mappings, sizeof(s->mappings[0]),
+-                              s->nr_mappings);
++    s->mappings = g_renew(IOVAMapping, s->mappings, s->nr_mappings);
+     insert = &s->mappings[index];
+     shift = s->nr_mappings - index - 1;
+     if (shift) {
+@@ -577,8 +576,7 @@ static void qemu_vfio_undo_mapping(QEMUVFIOState *s, IOVAMapping *mapping,
+     memmove(mapping, &s->mappings[index + 1],
+             sizeof(s->mappings[0]) * (s->nr_mappings - index - 1));
+     s->nr_mappings--;
+-    s->mappings = g_realloc_n(s->mappings, sizeof(s->mappings[0]),
+-                              s->nr_mappings);
++    s->mappings = g_renew(IOVAMapping, s->mappings, s->nr_mappings);
+ }
+ 
+ /* Check if the mapping list is (ascending) ordered. */
+-- 
 2.11.0
 
 
