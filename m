@@ -1,52 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fKb2F-0004O8-13
-	for mharc-qemu-trivial@gnu.org; Sun, 20 May 2018 22:58:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55379)
+	id 1fKjpj-0003Cr-C7
+	for mharc-qemu-trivial@gnu.org; Mon, 21 May 2018 08:22:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50990)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>) id 1fKb2D-0004Ms-3b
-	for qemu-trivial@nongnu.org; Sun, 20 May 2018 22:58:53 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fKjpg-0003AQ-QQ
+	for qemu-trivial@nongnu.org; Mon, 21 May 2018 08:22:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>) id 1fKb2C-0001XQ-Bf
-	for qemu-trivial@nongnu.org; Sun, 20 May 2018 22:58:53 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37952 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jasowang@redhat.com>)
-	id 1fKb26-0001VM-AS; Sun, 20 May 2018 22:58:46 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D88A9401DEA6;
-	Mon, 21 May 2018 02:58:44 +0000 (UTC)
-Received: from [10.72.12.38] (ovpn-12-38.pek2.redhat.com [10.72.12.38])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D4BF5215CDA7;
-	Mon, 21 May 2018 02:58:42 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org
-References: <1526401580-20535-1-git-send-email-thuth@redhat.com>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <a7297881-4e9b-4a41-d7e8-553afa47ce60@redhat.com>
-Date: Mon, 21 May 2018 10:58:39 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(envelope-from <peter.maydell@linaro.org>) id 1fKjpf-0008MV-TF
+	for qemu-trivial@nongnu.org; Mon, 21 May 2018 08:22:32 -0400
+Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:35626)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fKjpf-0008M3-OW
+	for qemu-trivial@nongnu.org; Mon, 21 May 2018 08:22:31 -0400
+Received: by mail-oi0-x244.google.com with SMTP id a6-v6so12792191oia.2
+	for <qemu-trivial@nongnu.org>; Mon, 21 May 2018 05:22:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=vUpEriaJ7JtQ3up/FYL3NU84RIZvaSWVgdIBwgr4OBM=;
+	b=EDvS1oHL6DqAVrsa2EqTJniMDluba5asUZAvozYx7sjjlyAFueI32hp5NLxtDO5y/h
+	q3NsPS5QZ/4ouJyloZrrX7zfOQkRZVLiAewDIqlBB4ctByvG4V+0nozu2DmpE6bR1FQJ
+	o8r7dxyIhZs4yWVPXj9QJBRMI++hCutdJIpu4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=vUpEriaJ7JtQ3up/FYL3NU84RIZvaSWVgdIBwgr4OBM=;
+	b=bCYxzWUbTzw6jF+gy+/DvB04saGxE5OuVxws1yqy43fZ3zvDRznn7wdmqz7XgGrDeD
+	2wVbnGNDJT0BrmKxSG9EXaQizzbyUKgd1k1p/E0i/k2rqCd/yaV0tM6D/ldiUjaRay4Y
+	jDvxIOptAAO4y1yHo/30JKCNnYTDYjijmhTnf1xCtgpocVwuFdHYG6LE34SaHSNJrzdW
+	P5okRDPG0ZnfWzqQkt5ZIQ1b5LicREgM2XArkGuS9Vo3ODx1OfH/iy5CexHvMT5l36OZ
+	LRt/RCpzmHulisqhgB6ICA+TEtevagAWHyFp5K9MRlU79mO2xkOoRQzVJHk2+5urQIh9
+	7gkA==
+X-Gm-Message-State: ALKqPwfM5WD8t6hK9d4mR4ktcavTcL0qAIZDFvQ7pq77NU3CHvrl1TZA
+	OtCCTLy6VzF4C///toXG5Kt1vP+c/fXvPaObkDedEaLO
+X-Google-Smtp-Source: AB8JxZoFClOOjdHpvghaJbhEO/Eq5WRIM4JcQEw/z9qM0Jl75aJ/5ZANgpAgcNMLfBcnKEqpA/VCtxJ9ppC/vEM0t3s=
+X-Received: by 2002:aca:d447:: with SMTP id
+	l68-v6mr11944835oig.102.1526905351064; 
+	Mon, 21 May 2018 05:22:31 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1526401580-20535-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Mon, 21 May 2018 02:58:44 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Mon, 21 May 2018 02:58:44 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'jasowang@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH] qapi/net.json: Fix the version number of
- the "vlan" removal
+Received: by 2002:a9d:40fb:0:0:0:0:0 with HTTP; Mon, 21 May 2018 05:22:10
+	-0700 (PDT)
+In-Reply-To: <cover.1526796813.git.mjt@msgid.tls.msk.ru>
+References: <cover.1526796813.git.mjt@msgid.tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 21 May 2018 13:22:10 +0100
+Message-ID: <CAFEAcA_1gA6ucQPtmqtvnEhWU_670M8ALH1ASwa=za0vS_V0PQ@mail.gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/22] Trivial patches for
+ 2018-05-20
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,46 +66,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 May 2018 02:58:54 -0000
+X-List-Received-Date: Mon, 21 May 2018 12:22:33 -0000
 
-
-
-On 2018=E5=B9=B405=E6=9C=8816=E6=97=A5 00:26, Thomas Huth wrote:
-> "vlan" will be dropped in 2.13, not in 2.12. And while we're at it,
-> use the better wording "dropped in" instead of "removed with" (also
-> for the "dump" removal).
+On 20 May 2018 at 07:14, Michael Tokarev <mjt@tls.msk.ru> wrote:
+> Hello!
 >
-> Reported-by: Stefan Hajnoczi <stefanha@redhat.com>
-> Reported-by: Eric Blake <eblake@redhat.com>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   qapi/net.json | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+> This is a next trivial-patches pull request. It's been a while
+> since the last pull, and quite some changes has been accumulated.
 >
-> diff --git a/qapi/net.json b/qapi/net.json
-> index b4fe4b6..b8adf1f 100644
-> --- a/qapi/net.json
-> +++ b/qapi/net.json
-> @@ -450,7 +450,7 @@
->   #
->   # Since: 2.7
->   #
-> -# 'dump' - removed with 2.12
-> +# 'dump': dropped in 2.12
->   ##
->   { 'enum': 'NetClientDriver',
->     'data': [ 'none', 'nic', 'user', 'tap', 'l2tpv3', 'socket', 'vde',
-> @@ -498,7 +498,7 @@
->   #
->   # Since: 1.2
->   #
-> -# 'vlan' - removed with 2.12
-> +# 'vlan': dropped in 2.13
->   ##
->   { 'struct': 'NetLegacy',
->     'data': {
+> Please consider pulling/applying.
+>
+> Thanks,
+>
+> /mjt
+>
+> The following changes since commit 5bcf917ee37a5efbef99f091a96db54a5276becb:
+>
+>   Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-20180518' into staging (2018-05-18 18:25:29 +0100)
+>
+> are available in the git repository at:
+>
+>   git://git.corpit.ru/qemu.git tags/trivial-patches-fetch
+>
+> for you to fetch changes up to 9a232487aab8a7640ff8853d7d8d7c27106b44f8:
+>
+>   acpi: fix a comment about aml_call0() (2018-05-20 08:58:58 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2018-05-20
+>
 
-Applied.
+Applied, thanks.
 
-Thanks
+-- PMM
 
