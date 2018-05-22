@@ -1,88 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fL91i-0000h3-MJ
-	for mharc-qemu-trivial@gnu.org; Tue, 22 May 2018 11:16:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56018)
+	id 1fLCnF-0000jX-9i
+	for mharc-qemu-trivial@gnu.org; Tue, 22 May 2018 15:17:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57967)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1fL91b-0000df-6q
-	for qemu-trivial@nongnu.org; Tue, 22 May 2018 11:16:37 -0400
+	(envelope-from <paolo.bonzini@gmail.com>) id 1fLCnC-0000gi-6q
+	for qemu-trivial@nongnu.org; Tue, 22 May 2018 15:17:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1fL91a-0008Br-Aa
-	for qemu-trivial@nongnu.org; Tue, 22 May 2018 11:16:31 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48502 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1fL91T-00089b-4Y; Tue, 22 May 2018 11:16:23 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DC3C8406DE3D;
-	Tue, 22 May 2018 15:16:21 +0000 (UTC)
-Received: from [10.36.116.195] (ovpn-116-195.ams2.redhat.com [10.36.116.195])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B49651002940;
-	Tue, 22 May 2018 15:16:20 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <1526990298-17924-1-git-send-email-thuth@redhat.com>
+	(envelope-from <paolo.bonzini@gmail.com>) id 1fLCnB-0002FW-BC
+	for qemu-trivial@nongnu.org; Tue, 22 May 2018 15:17:54 -0400
+Received: from mail-pl0-x22b.google.com ([2607:f8b0:400e:c01::22b]:32807)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
+	id 1fLCn4-0002Az-9n; Tue, 22 May 2018 15:17:46 -0400
+Received: by mail-pl0-x22b.google.com with SMTP id n10-v6so11476995plp.0;
+	Tue, 22 May 2018 12:17:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id;
+	bh=VqdE+j2PEF9zEvybUhQrlXHDqOPV7i8p/UUJDo5XFUw=;
+	b=bgLVgfBLyX4eZWEuuGDY8CIrFyD3SagkIid5Wwb9+wlcLIckHoGr+viQHeu0+r7V6K
+	MH4n9HV+TltCbMgAjQnr8kVeywkJaJlV0zKBhUyRokDUtqTQ0T6m1CTaZtO2sBBN3ck2
+	mWPJCYF7O46plYnP12/x8b3wpm9D96UI3Y88zeqIW3rjg6pzEMSqCdhFOzR9O+VH9Boy
+	1iZYwtit4yz21cxRjzbBK68fH8RonFHF47+Ud8HGCkrU9ooV2jc19v1iWWBwplbJ6e/g
+	gGeD2Nq4Vk6jiP5qjC0qaGtzRIqdug6GFp78Vxko6b58twqbU4WX9ZAS0km6WY59rwFM
+	CnPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
+	bh=VqdE+j2PEF9zEvybUhQrlXHDqOPV7i8p/UUJDo5XFUw=;
+	b=jgxluaHTN+8GxfvAazv7BXQrdz7/+0CXBHxMhxXg6r6fuZJaOrBZJyJHU0Z44SGVC9
+	T1Z/aCRG+GMzZqugYh7GcjMxAUm4GKvuIxxlvNQR9fTULh28o55Fz3SN2lCIrNtBPfJn
+	EMlWPZDyxQgswqgzqeB4mGg24LAmRHUezv21djN1nEd3X0I0kk1g27NmIQ0Ts1W3tUCi
+	qawENt5pCYimNpdERN7P3l+I+X/S0Y31BEdqfhGcStp93bxV3/D8+sqV4xwsV1qiqNs5
+	VWJrA3AHqnJCuZ5dz3ebeGQqTpshMps9BLMKhJmL5mvOvpdBdplqqK5xyzWy3Z0uZA/b
+	pOJQ==
+X-Gm-Message-State: ALKqPwcJF2C1ite2dv041teO0XjtAq3VqC7MN9EKAtfKcVoky07qdajL
+	ySSNh3XzUVJoZb0M8T4/Qb3UjmL4
+X-Google-Smtp-Source: AB8JxZqqKJjyb85Vmm8OGiCTU0kdDihAX+NYeYXh6aRQoMhHgqkX79qYUB+iI/TPQ07l7L/CikImaw==
+X-Received: by 2002:a17:902:74c7:: with SMTP id
+	f7-v6mr47787plt.385.1527016664741; 
+	Tue, 22 May 2018 12:17:44 -0700 (PDT)
+Received: from donizetti.event.priv ([72.28.93.232])
+	by smtp.gmail.com with ESMTPSA id
+	n5-v6sm27094617pff.134.2018.05.22.12.17.43
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Tue, 22 May 2018 12:17:44 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <f3213c6f-2705-fb10-2509-9669fbe1e25e@redhat.com>
-Date: Tue, 22 May 2018 17:16:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
-MIME-Version: 1.0
-In-Reply-To: <1526990298-17924-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Tue, 22 May 2018 15:16:21 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Tue, 22 May 2018 15:16:21 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'pbonzini@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH] qemu-options: Mark the non-functional
- -clock option as deprecated
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org,
+	qemu-trivial@nongnu.org
+Date: Tue, 22 May 2018 21:17:43 +0200
+Message-Id: <20180522191743.12872-1-pbonzini@redhat.com>
+X-Mailer: git-send-email 2.17.0
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c01::22b
+Subject: [Qemu-trivial] [PATCH] ppc: move at24c to its own CONFIG_ symbol
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,49 +67,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 May 2018 15:16:37 -0000
+X-List-Received-Date: Tue, 22 May 2018 19:17:55 -0000
 
-On 22/05/2018 13:58, Thomas Huth wrote:
-> The function is only ignored since QEMU version 1.7.0. Let's mark
-> it as deprecated, so that we can finally completely remove it soon.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  qemu-doc.texi | 5 +++++
->  vl.c          | 1 +
->  2 files changed, 6 insertions(+)
-> 
-> diff --git a/qemu-doc.texi b/qemu-doc.texi
-> index 0e0e0ae..057a48e 100644
-> --- a/qemu-doc.texi
-> +++ b/qemu-doc.texi
-> @@ -2922,6 +2922,11 @@ The @code{-startdate} option has been replaced by @code{-rtc base=@var{date}}.
->  Option @option{-virtioconsole} has been replaced by
->  @option{-device virtconsole}.
->  
-> +@subsection -clock (since 3.0.0)
-> +
-> +The @code{-clock} option is ignored since QEMU version 1.7.0. There is no
-> +replacement since it is not needed anymore.
-> +
->  @section qemu-img command line arguments
->  
->  @subsection convert -s (since 2.0.0)
-> diff --git a/vl.c b/vl.c
-> index d5836c6..f7c0a46 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -3829,6 +3829,7 @@ int main(int argc, char **argv, char **envp)
->                  /* Clock options no longer exist.  Keep this option for
->                   * backward compatibility.
->                   */
-> +                warn_report("This option is ignored and will be removed soon");
->                  break;
->              case QEMU_OPTION_startdate:
->                  warn_report("This option is deprecated, use '-rtc base=' instead.");
-> 
+AT24c EEPROM is currently gated by CONFIG_I2C, and as such it is
+being included in all emulators that use I2C, even if they do not
+really need it.  Separate it and, since it was added for the e500
+machines, add it to qemu-system-ppc and qemu-system-ppc64.
+---
+ default-configs/ppc-softmmu.mak | 1 +
+ hw/nvram/Makefile.objs          | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-Queued, thanks.
+diff --git a/default-configs/ppc-softmmu.mak b/default-configs/ppc-softmmu.mak
+index 4d7be45ac5..c57e568121 100644
+--- a/default-configs/ppc-softmmu.mak
++++ b/default-configs/ppc-softmmu.mak
+@@ -26,6 +26,7 @@ CONFIG_USB_EHCI_SYSBUS=y
+ CONFIG_SM501=y
+ CONFIG_IDE_SII3112=y
+ CONFIG_I2C=y
++CONFIG_AT24C=y
+ 
+ # For Macs
+ CONFIG_MAC=y
+diff --git a/hw/nvram/Makefile.objs b/hw/nvram/Makefile.objs
+index a912d25391..b318e53a43 100644
+--- a/hw/nvram/Makefile.objs
++++ b/hw/nvram/Makefile.objs
+@@ -1,6 +1,6 @@
+ common-obj-$(CONFIG_DS1225Y) += ds1225y.o
+ common-obj-y += eeprom93xx.o
+-common-obj-$(CONFIG_I2C) += eeprom_at24c.o
++common-obj-$(CONFIG_AT24C) += eeprom_at24c.o
+ common-obj-y += fw_cfg.o
+ common-obj-y += chrp_nvram.o
+ common-obj-$(CONFIG_MAC_NVRAM) += mac_nvram.o
+-- 
+2.17.0
 
-Paolo
 
