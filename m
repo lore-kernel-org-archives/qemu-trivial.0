@@ -1,76 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fLDwV-0002HF-3r
-	for mharc-qemu-trivial@gnu.org; Tue, 22 May 2018 16:31:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50678)
+	id 1fLEIG-0001mq-ON
+	for mharc-qemu-trivial@gnu.org; Tue, 22 May 2018 16:54:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55492)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fLDwS-0002FJ-90
-	for qemu-trivial@nongnu.org; Tue, 22 May 2018 16:31:33 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fLEIB-0001im-Ul
+	for qemu-trivial@nongnu.org; Tue, 22 May 2018 16:54:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fLDwR-0001gq-28
-	for qemu-trivial@nongnu.org; Tue, 22 May 2018 16:31:32 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:42635)
+	(envelope-from <richard.henderson@linaro.org>) id 1fLEI8-0001e4-SR
+	for qemu-trivial@nongnu.org; Tue, 22 May 2018 16:54:00 -0400
+Received: from mail-pg0-x244.google.com ([2607:f8b0:400e:c05::244]:46477)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fLDwL-0001e3-1R; Tue, 22 May 2018 16:31:25 -0400
-Received: by mail-qt0-x243.google.com with SMTP id c2-v6so25240748qtn.9;
-	Tue, 22 May 2018 13:31:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=6lxng7LgyOL8RedvwPfmAokGv/Rt/3ORk5CedMna1FM=;
-	b=Dv3DMfXcPMP4EnseED14rUTujyj+nmtvOvBeFNUHVm+TM9VN9paskzzIsmJ5Fr+I3M
-	9GXJz2MJOoq13Iwk5R1Lo7yFd6ij8a+NAeS9l+YKFbF/dywXzM2IY3nIsV/KsIASF7UC
-	HE7A/OraKYJYyj4dZiyrUJM/WiGCoHO+r9M9ZeRujDLmUMxLfYKm/Fic9sbqbhIaNKdS
-	nRet53rc/pJfD1AxPDUcqYTHOZRMZ9J4wfp7Pq6xAESi/OnEzARHFWIX7UbBOLuoNrib
-	nvX4K7SBhwDSlPe//wnvFk/ocCXt5piHae8EXkbg+vqreHgEbW9XaqKLRej1U+Wh3vd0
-	hppg==
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fLEI8-0001dS-Ma
+	for qemu-trivial@nongnu.org; Tue, 22 May 2018 16:53:56 -0400
+Received: by mail-pg0-x244.google.com with SMTP id a3-v6so3445104pgt.13
+	for <qemu-trivial@nongnu.org>; Tue, 22 May 2018 13:53:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=27FzTotgLwEHtt7HuLA3e5Vg+krMvLbE/NFKjoQXCgI=;
+	b=a5ZgRy3pz5dCmqZUW2s9KL2mOS9xYAmTDtVD+9NtbFtZLrAf4OxY7v9xsO1WjTLhjR
+	spFXT56KSvbdwbKKDC0lyJYoPmiMEwcZvJAMM6aMhwF0hyHsQvs+Miw5YHvYsMU2wCDt
+	qldzqMCSkpoWh1jFhDc+N5/6RZPXENLobSHhg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=6lxng7LgyOL8RedvwPfmAokGv/Rt/3ORk5CedMna1FM=;
-	b=BCEQjKvNZuPppXVKkT8y567lpLZjAXU23yfEU1yhICo+i6aw/MoP+5p48BJgE/lfdS
-	CwaE1QScW8sOXX7WJj8/PwEVEz+hEMfFUCCkIL5S+Q0OQEzfX0rkTqvneIRfh+/pLr44
-	YwI5Ghvn8DA+nHICy62rhpHmvwH6/7x+VFEssTJsDRq29logtTKxjQmmIl7nrfZZXmkx
-	L1xy9NGuxFImbBe85mMw6qoeD2tMx4Q1KmY4b9a3GWxmA319SoA95tvUBSbOeb4Gw0uu
-	cYGoDU8oupKIuFFnBOnkTKhJ3hBEkK8S5MwLI+4cXti9cGB+CTwkIMdVV8nhtJsmZqoR
-	AgDw==
-X-Gm-Message-State: ALKqPwd3Ax/e3MDSeZ2/W0XTbN3V6ijj3rtcgk+WEjkUYLnZ9Mz9soMn
-	6RGD2xeTdP0pBNKJiPEFw3tp5/YQ
-X-Google-Smtp-Source: AB8JxZrFoxuKjNpqDn2qUDJAGOLvK2jbTQ2XaVvTRURn+XkpL6rqk+dcObF69qfqWwigbIjjqXPZKQ==
-X-Received: by 2002:a0c:9944:: with SMTP id
-	i4-v6mr23879512qvd.192.1527021084368; 
-	Tue, 22 May 2018 13:31:24 -0700 (PDT)
-Received: from [192.168.1.53] ([190.175.4.178])
-	by smtp.gmail.com with ESMTPSA id
-	r189-v6sm12077837qkd.38.2018.05.22.13.31.19
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=27FzTotgLwEHtt7HuLA3e5Vg+krMvLbE/NFKjoQXCgI=;
+	b=dIOF6+5s3/oQbz6bF79CRUpNLRa+sT1P04Gi9jyIaBUB3BE1Z7HDqpbuuwS9Aevipz
+	xBPFY+7zui/htDJ/d/c0a+t1WIr4tDlaPdI6oOj2z+SZvkNO+F9bzlbsHdx2mB2c63j+
+	euOIRjMU2krEnisqAhKD4oMUJN1vZhJthrSPEvsi8OtZvBTtP/Cck9nIvSKVc0i30XK2
+	K1Rspfdf4WOWcYpWtbJQRrrI22Em+mN8IrBkIJ1MNCxGF2bITyGfjn3PJDZrE02UFt0c
+	ujUgczK2bCI9hrxz0h6Owkb4+sxOn4VDTCIxmVlnkVtj7oTYvy9pmHsmX9Jj4F6y67n+
+	Hqgw==
+X-Gm-Message-State: ALKqPweAL+jpOs1xdlPY1OtfFkMpV92rDjoBMgqvzMvGW1Gl5INsqSlK
+	1v6HUsaX69GeyjlI8uL50IspRw==
+X-Google-Smtp-Source: AB8JxZoJHONIts7hIT41QDUf2urE7SQ6q39tnVyiGFXSxcJUF89fo9KMj9pOEJXJNvPnfBheZ86QGA==
+X-Received: by 2002:a62:1306:: with SMTP id b6-v6mr59651pfj.58.1527022435012; 
+	Tue, 22 May 2018 13:53:55 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-113-173-254.tukw.qwest.net.
+	[97.113.173.254]) by smtp.gmail.com with ESMTPSA id
+	m72-v6sm39994842pfk.110.2018.05.22.13.53.48
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 22 May 2018 13:31:23 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
+	Tue, 22 May 2018 13:53:54 -0700 (PDT)
 To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
-References: <20180522191743.12872-1-pbonzini@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <ab0d563a-89f7-ffdb-7f43-956d7213b231@amsat.org>
-Date: Tue, 22 May 2018 17:31:07 -0300
+Cc: qemu-trivial@nongnu.org, thuth@redhat.com, david@redhat.com
+References: <20180522192034.13318-1-pbonzini@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <724510e7-e739-5f88-b20b-9e27376a3438@linaro.org>
+Date: Tue, 22 May 2018 13:53:45 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <20180522191743.12872-1-pbonzini@redhat.com>
+In-Reply-To: <20180522192034.13318-1-pbonzini@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: Re: [Qemu-trivial] [PATCH] ppc: move at24c to its own CONFIG_ symbol
+X-Received-From: 2607:f8b0:400e:c05::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tcg: remove softfloat from
+ --disable-tcg builds
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,45 +74,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 May 2018 20:31:33 -0000
+X-List-Received-Date: Tue, 22 May 2018 20:54:01 -0000
 
-On 05/22/2018 04:17 PM, Paolo Bonzini wrote:
-> AT24c EEPROM is currently gated by CONFIG_I2C, and as such it is
-> being included in all emulators that use I2C, even if they do not
-> really need it.  Separate it and, since it was added for the e500
-> machines, add it to qemu-system-ppc and qemu-system-ppc64.
-
-With your S-o-b:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
+On 05/22/2018 12:20 PM, Paolo Bonzini wrote:
+> Even though the presence of softfloat does not cause --disable-tcg builds to fail,
+> it is the single largest .o file in them.  Remove it, since TCG is the only client.
+> 
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 > ---
->  default-configs/ppc-softmmu.mak | 1 +
->  hw/nvram/Makefile.objs          | 2 +-
->  2 files changed, 2 insertions(+), 1 deletion(-)
+>  Makefile.target          |   2 +-
+>  hw/i386/x86-iommu-stub.c | 132 +++++++++++++++++++++++++++++++++++++++
+
+Assuming this wasn't supposed to be here.
+
+>  2 files changed, 133 insertions(+), 1 deletion(-)
+>  create mode 100644 hw/i386/x86-iommu-stub.c
 > 
-> diff --git a/default-configs/ppc-softmmu.mak b/default-configs/ppc-softmmu.mak
-> index 4d7be45ac5..c57e568121 100644
-> --- a/default-configs/ppc-softmmu.mak
-> +++ b/default-configs/ppc-softmmu.mak
-> @@ -26,6 +26,7 @@ CONFIG_USB_EHCI_SYSBUS=y
->  CONFIG_SM501=y
->  CONFIG_IDE_SII3112=y
->  CONFIG_I2C=y
-> +CONFIG_AT24C=y
->  
->  # For Macs
->  CONFIG_MAC=y
-> diff --git a/hw/nvram/Makefile.objs b/hw/nvram/Makefile.objs
-> index a912d25391..b318e53a43 100644
-> --- a/hw/nvram/Makefile.objs
-> +++ b/hw/nvram/Makefile.objs
-> @@ -1,6 +1,6 @@
->  common-obj-$(CONFIG_DS1225Y) += ds1225y.o
->  common-obj-y += eeprom93xx.o
-> -common-obj-$(CONFIG_I2C) += eeprom_at24c.o
-> +common-obj-$(CONFIG_AT24C) += eeprom_at24c.o
->  common-obj-y += fw_cfg.o
->  common-obj-y += chrp_nvram.o
->  common-obj-$(CONFIG_MAC_NVRAM) += mac_nvram.o
-> 
+> diff --git a/Makefile.target b/Makefile.target
+> index d0ec77a307..dad2cf8778 100644
+> --- a/Makefile.target
+> +++ b/Makefile.target
+> @@ -97,7 +97,7 @@ obj-$(CONFIG_TCG) += tcg/tcg.o tcg/tcg-op.o tcg/tcg-op-vec.o tcg/tcg-op-gvec.o
+>  obj-$(CONFIG_TCG) += tcg/tcg-common.o tcg/optimize.o
+>  obj-$(CONFIG_TCG_INTERPRETER) += tcg/tci.o
+>  obj-$(CONFIG_TCG_INTERPRETER) += disas/tci.o
+> -obj-y += fpu/softfloat.o
+> +obj-$(CONFIG_TCG) += fpu/softfloat.o
+
+But for this change alone,
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
+
+r~
 
