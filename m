@@ -1,98 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fMCbq-0003fy-3F
-	for mharc-qemu-trivial@gnu.org; Fri, 25 May 2018 09:18:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58715)
+	id 1fNAu7-0004hx-Ie
+	for mharc-qemu-trivial@gnu.org; Mon, 28 May 2018 01:41:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50282)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1fMCbm-0003en-J3
-	for qemu-trivial@nongnu.org; Fri, 25 May 2018 09:18:15 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNAu4-0004g7-E0
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 01:41:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1fMCbh-0004xU-Uo
-	for qemu-trivial@nongnu.org; Fri, 25 May 2018 09:18:14 -0400
-Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:37386)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNAu3-0007hO-Gu
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 01:41:08 -0400
+Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:38547)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1fMCbW-0004tE-Me; Fri, 25 May 2018 09:17:58 -0400
-Received: by mail-pl0-x243.google.com with SMTP id w19-v6so3160751plq.4;
-	Fri, 25 May 2018 06:17:58 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNAty-0007dq-Ne; Mon, 28 May 2018 01:41:02 -0400
+Received: by mail-qk0-x243.google.com with SMTP id c23-v6so8381093qkb.5;
+	Sun, 27 May 2018 22:41:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
+	h=sender:from:to:cc:subject:date:message-id:mime-version
 	:content-transfer-encoding;
-	bh=rgNPR3rCfHRWKAB5bm24HNCQlcL0PG3w6cOkY5Nlovk=;
-	b=cSB9XAghLOnz5khcBB5w8OtRVMFYGdt2B/lzs9O/z5x5Sq4701KsdPbOk7bX5OuAob
-	4BI99qHKvKpZ6i9qQTI6/LhKd9ASPEo9OSqwPD5n1zwVl4A4eS8t8naN0Iu2xPtRn7qc
-	LaQVOnetdm3rB/LqhR0Vi0FEiSgyPQdPz6Y3pUm0hoVGEgC3AlVOXxFSjWzWytVCIOg8
-	BA36RXBvWN7/Rv8qKlP00zIsKIoLu9wvDRiKMhX0X8WhEEBSba/SoyHDRx3pSbGsIkvL
-	XDTzzRhSYfUncpb7ni8+ZUEE9kohlOAH5sdQSkU9IcbcFrrEtyIfnOa/i930N3sh7+J6
-	BE4g==
+	bh=owkJCIC3+EDOSoytaIBKyKQ3CUkgwJlIASRByu5l7Fw=;
+	b=kMiPAiaZvpNiDjnKQsvMnm5eVl2SYIr5oGpsxuEaDgSw/+SSxv3a7PFNUoyrvUzQAK
+	9NW2Ouai+A+++xtxvOOkM1u/bFBw+r+YjP1IjqY9GRor5bN3o6nVoMtd03/+At6uQRJH
+	PtV4peTIYMbc4ATesp/TEF/FsOTqafVavcdX9cpYVEoR7dwzLGyINVXGZiRNSr56Rdma
+	rVCJ0x8X5zW+lgOJG9jB1zJsD6Bx5Q928ufy21MN0k1IPK7KLKPPHEOHH7SpOiKOkiw5
+	QMLlZj17PGVbAnDS7aBDgLyov8fgLINsbFziGS5+CxKcekCwrJLIDTS7OA6G/fI8CfKV
+	Sl1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=rgNPR3rCfHRWKAB5bm24HNCQlcL0PG3w6cOkY5Nlovk=;
-	b=uhkmzxIb5iQ3GqegFX55YJ/aM1gVkLD+TU/6s9Nax7M/8Ow+vcg9ruvbHptNwY7vk6
-	7y6hODgTw/HL8qiXvAK1JwbxoozNXLnNKu/DuxrVjNJxyLcoBepB81kaoB+L+B6lOAHz
-	IJX5iDvKyQao5wF7+xer8rqnVRb2n37gv4lbu80Ozx4ZpER31c39KTLaDCe9jWWsT+of
-	m8/XEx30WKZIBqkvDnTSlw7vlPDfj0aJSNR2RUFj9mBwSutZcRpwhVnZOAditk3nAYmW
-	Nq0dQDpPTqsff7MIYpGU9dtNZGDgmZikboPK1YNQMvkvTq77OiCVevzLtYgglTHuTKp6
-	GuPw==
-X-Gm-Message-State: ALKqPwcUQWh7syT+DdJ8ibcktG2jteIhuZ5tvevSzcfgwsP/9md2PwAY
-	m1LnX++MdFmzLiF7mzoz2/E=
-X-Google-Smtp-Source: AB8JxZpiWsfc8VmGaZJ/+nriiw4hYJYAePj/Q1ZFkfk675bo4JNvveI9qCJZcOfVW4+RWvC5Ncy+dQ==
-X-Received: by 2002:a17:902:6b45:: with SMTP id
-	g5-v6mr2647349plt.67.1527254277667; 
-	Fri, 25 May 2018 06:17:57 -0700 (PDT)
-Received: from cloudburst.twiddle.net ([172.56.42.51])
-	by smtp.googlemail.com with ESMTPSA id
-	r5-v6sm31224092pgp.81.2018.05.25.06.17.56
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=owkJCIC3+EDOSoytaIBKyKQ3CUkgwJlIASRByu5l7Fw=;
+	b=dkJTaBlpRbyIv3u/6tu/HiqBqWBdCfF4pYaF766wnAt0PGsXp3d6B+yfkPN7gYunVG
+	oV6VMSEYJPz5UXuQYxcV1KOWIbAV0z0uU4iYEha3WBBK3WDaNGuZ6VVr2HbBqrGmMSDY
+	b64mwh6FFQia7090F+HEVdEXaMBebbOVzGhDzACnKnzEt9jX3ntj+YqiKT1458UNkYfM
+	XHyL7x1Yh1TZaWCMpnXa9i8FHOuyT+nOS4fkAaMJyIzE73p7VrhBuir1TWm5UNTNCIO/
+	ko1SY1MSrcBm+7VmpEDdWH4QUVLGlF+jHUXdnTlXrDJzgzil148yEJFu44pes5OOt6j/
+	GqIg==
+X-Gm-Message-State: ALKqPwd4Vo/k2BxoqzHW4k72gsRulkuQDITdJ1NQR74zc+lQXbRZ00sB
+	cbsx++uFKMT9CexxtRWZSo4=
+X-Google-Smtp-Source: ADUXVKJUSMONuvU+R6Ox4DMwLA6b7i45J7/+p4HrJUZGSkCpvJ7Ra082w9cDg8uOX0+2b+9dOQNCPQ==
+X-Received: by 2002:a37:73c6:: with SMTP id
+	o189-v6mr10436458qkc.258.1527486061838; 
+	Sun, 27 May 2018 22:41:01 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	b13-v6sm20786829qtp.89.2018.05.27.22.40.59
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 25 May 2018 06:17:56 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-To: Michael Clark <mjc@sifive.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: patches@groups.riscv.org
-References: <1527229488-49822-1-git-send-email-mjc@sifive.com>
-From: Richard Henderson <rth@twiddle.net>
-Openpgp: preference=signencrypt
-Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
-	xsBNBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
-	n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
-	rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
-	Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
-	n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
-	AAHNI1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+wsCBBBMBAgArAhsDBgsJ
-	CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
-	cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
-	Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
-	eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
-	LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
-	Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVzsBNBFGuLC8BCACyEx3x
-	94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
-	86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
-	I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
-	VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
-	+PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAHCwGUEGAECAA8CGwwF
-	AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
-	Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
-	prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
-	/E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
-	jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
-	VcROBqvtH3ecaIL9iw==
-Message-ID: <83728e91-de69-c376-a768-0aad501ff64e@twiddle.net>
-Date: Fri, 25 May 2018 06:17:53 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	Sun, 27 May 2018 22:41:01 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Stefan Hajnoczi <stefanha@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
+	Eric Blake <eblake@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+	qemu-trivial@nongnu.org
+Date: Mon, 28 May 2018 02:40:55 -0300
+Message-Id: <20180528054055.21153-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-In-Reply-To: <1527229488-49822-1-git-send-email-mjc@sifive.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c01::243
-Subject: Re: [Qemu-trivial] [PATCH] RISC-V: Correct typo in RV32 perf
- counters
+X-Received-From: 2607:f8b0:400d:c09::243
+Subject: [Qemu-trivial] [PATCH] trace: Sort trace-events-subdirs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,23 +76,128 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 May 2018 13:18:15 -0000
+X-List-Received-Date: Mon, 28 May 2018 05:41:09 -0000
 
-On 05/24/2018 11:24 PM, Michael Clark wrote:
-> This patch enables mhpmcounter3h through mhpmcounter31h on RV32.
-> Previously the RV32 h versions (high 32-bits of 64-bit counters)
-> of these counters would trap with an illegal instruction instead
-> of returning 0 as intended.
-> 
-> Reported-by: Richard Henderson <rth@twiddle.net>
-> Signed-off-by: Michael Clark <mjc@sifive.com>
-> ---
->  target/riscv/op_helper.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Having these entries sorted helps to add new ones.
 
-Fixes: Coverity CID 1390849
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ Makefile.objs | 82 +++++++++++++++++++++++++--------------------------
+ 1 file changed, 41 insertions(+), 41 deletions(-)
 
+diff --git a/Makefile.objs b/Makefile.objs
+index c6c3554203..2c8cb72407 100644
+--- a/Makefile.objs
++++ b/Makefile.objs
+@@ -196,66 +196,66 @@ vhost-user-blk-obj-y = contrib/vhost-user-blk/
+ 
+ ######################################################################
+ trace-events-subdirs =
+-trace-events-subdirs += util
+-trace-events-subdirs += crypto
+-trace-events-subdirs += io
+-trace-events-subdirs += migration
++trace-events-subdirs += accel/kvm
++trace-events-subdirs += accel/tcg
++trace-events-subdirs += audio
+ trace-events-subdirs += block
+ trace-events-subdirs += chardev
++trace-events-subdirs += crypto
++trace-events-subdirs += hw/9pfs
++trace-events-subdirs += hw/acpi
++trace-events-subdirs += hw/alpha
++trace-events-subdirs += hw/arm
++trace-events-subdirs += hw/audio
+ trace-events-subdirs += hw/block
+ trace-events-subdirs += hw/block/dataplane
+ trace-events-subdirs += hw/char
+-trace-events-subdirs += hw/intc
+-trace-events-subdirs += hw/net
+-trace-events-subdirs += hw/rdma
+-trace-events-subdirs += hw/rdma/vmw
+-trace-events-subdirs += hw/virtio
+-trace-events-subdirs += hw/audio
+-trace-events-subdirs += hw/misc
+-trace-events-subdirs += hw/misc/macio
+-trace-events-subdirs += hw/usb
+-trace-events-subdirs += hw/scsi
+-trace-events-subdirs += hw/nvram
+ trace-events-subdirs += hw/display
+-trace-events-subdirs += hw/input
+-trace-events-subdirs += hw/timer
+ trace-events-subdirs += hw/dma
+-trace-events-subdirs += hw/sparc
+-trace-events-subdirs += hw/sparc64
+-trace-events-subdirs += hw/sd
+-trace-events-subdirs += hw/isa
+-trace-events-subdirs += hw/mem
++trace-events-subdirs += hw/hppa
+ trace-events-subdirs += hw/i386
+ trace-events-subdirs += hw/i386/xen
+-trace-events-subdirs += hw/9pfs
+-trace-events-subdirs += hw/ppc
++trace-events-subdirs += hw/ide
++trace-events-subdirs += hw/input
++trace-events-subdirs += hw/intc
++trace-events-subdirs += hw/isa
++trace-events-subdirs += hw/mem
++trace-events-subdirs += hw/misc
++trace-events-subdirs += hw/misc/macio
++trace-events-subdirs += hw/net
++trace-events-subdirs += hw/nvram
+ trace-events-subdirs += hw/pci
+ trace-events-subdirs += hw/pci-host
++trace-events-subdirs += hw/ppc
++trace-events-subdirs += hw/rdma
++trace-events-subdirs += hw/rdma/vmw
+ trace-events-subdirs += hw/s390x
++trace-events-subdirs += hw/scsi
++trace-events-subdirs += hw/sd
++trace-events-subdirs += hw/sparc
++trace-events-subdirs += hw/sparc64
++trace-events-subdirs += hw/timer
++trace-events-subdirs += hw/tpm
++trace-events-subdirs += hw/usb
+ trace-events-subdirs += hw/vfio
+-trace-events-subdirs += hw/acpi
+-trace-events-subdirs += hw/arm
+-trace-events-subdirs += hw/alpha
+-trace-events-subdirs += hw/hppa
++trace-events-subdirs += hw/virtio
+ trace-events-subdirs += hw/xen
+-trace-events-subdirs += hw/ide
+-trace-events-subdirs += hw/tpm
+-trace-events-subdirs += ui
+-trace-events-subdirs += audio
++trace-events-subdirs += io
++trace-events-subdirs += linux-user
++trace-events-subdirs += migration
++trace-events-subdirs += nbd
+ trace-events-subdirs += net
++trace-events-subdirs += qapi
++trace-events-subdirs += qom
++trace-events-subdirs += scsi
+ trace-events-subdirs += target/arm
+ trace-events-subdirs += target/i386
+ trace-events-subdirs += target/mips
+-trace-events-subdirs += target/sparc
+-trace-events-subdirs += target/s390x
+ trace-events-subdirs += target/ppc
+-trace-events-subdirs += qom
+-trace-events-subdirs += linux-user
+-trace-events-subdirs += qapi
+-trace-events-subdirs += accel/tcg
+-trace-events-subdirs += accel/kvm
+-trace-events-subdirs += nbd
+-trace-events-subdirs += scsi
++trace-events-subdirs += target/s390x
++trace-events-subdirs += target/sparc
++trace-events-subdirs += ui
++trace-events-subdirs += util
+ 
+ trace-events-files = $(SRC_PATH)/trace-events $(trace-events-subdirs:%=$(SRC_PATH)/%/trace-events)
+ 
+-- 
+2.17.0
 
-r~
 
