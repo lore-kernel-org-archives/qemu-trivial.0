@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fNRZV-0007w9-IS
-	for mharc-qemu-trivial@gnu.org; Mon, 28 May 2018 19:29:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33321)
+	id 1fNRZW-0007xf-Se
+	for mharc-qemu-trivial@gnu.org; Mon, 28 May 2018 19:29:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33344)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNRZT-0007ta-BC
-	for qemu-trivial@nongnu.org; Mon, 28 May 2018 19:29:00 -0400
+	id 1fNRZV-0007vh-3j
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 19:29:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNRZS-0001oW-Dh
-	for qemu-trivial@nongnu.org; Mon, 28 May 2018 19:28:59 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:42902)
+	id 1fNRZU-0001rA-Cz
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 19:29:01 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:44861)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNRZP-0001js-4T; Mon, 28 May 2018 19:28:55 -0400
-Received: by mail-qk0-x243.google.com with SMTP id j80-v6so8454162qke.9;
-	Mon, 28 May 2018 16:28:55 -0700 (PDT)
+	id 1fNRZS-0001oL-6M; Mon, 28 May 2018 19:28:58 -0400
+Received: by mail-qt0-x241.google.com with SMTP id d3-v6so16549707qtp.11;
+	Mon, 28 May 2018 16:28:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=2vgDLMMOYLk8mEhn1wi7FHPumY6S9xLlWJFaqz5dmig=;
-	b=vPjd+PDCoyC9UpEOOj7xUTnxysGmvIhEM80OpHFI2l9U25AqxfMmmkj7i1YbqyN9sZ
-	QWH583mlIKXxXYnrauiROS/v2P3TWz6uvAN/NTZ3D9Rb5r7O58pma41WJGFfzcjyz2YN
-	0fym4im/PEx+mb6rptOc4CVkukorpCc0mWcTdk73OYplP6dcFPyUcySwqBXAVvGBP354
-	Kp/0uyY5jqm4lc0+FVrLXllB0RvJRXJZZhY8y2CKblJ4WD9Jlz+N2rAZTJ8PnBQU1nY5
-	zu9koCrkr9GfpNovyloCaZQHr2k2wI13X3j6ZkTBRVK3YZivOTu3ZO57BX8SauX5O7iZ
-	/pUw==
+	bh=g0InmfQ5j/ssrjex/NLIB/couSgFJu9yQ1HtT53SDsI=;
+	b=nTc3j3WPcuWUIzpZVLgMKSnE6ZyRRCEBPO+RwaLlgH34BMpsKIrUq6QITvRy20G071
+	7lY2mjfNf/AMMtnRcFyQ6X+EkrAKajDxNFbrsDNnzyrKsgpGH254n4mJzYXmZWmNnmHp
+	xDBHgU7PO6NmRz7THab5jKoDN1x4A+rh6FpFmJ++C2jH1LVHCvRjtH/dpGkhoiU/IZ+u
+	PTBCMh55lZWxe+EnNS0riFNAUJ/BAg/hpX7C0K4kTV5wOCnxSEYmiflJcPrBCE7YgWaC
+	hcC4HKKzskwD28NBSWGJz6n0XrHRIcJTNlvvH75IbOW7WatetpmPWnjrH2xkUj/+kc8/
+	X73Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=2vgDLMMOYLk8mEhn1wi7FHPumY6S9xLlWJFaqz5dmig=;
-	b=H20yDZpubvrv5T0HXXOISz/7fdx1B8Xatc7MR8mTj50YMOaanW9aJeOREz2L968D2g
-	A81rsWBoMyPuiaoAE+mXYSCEIjOaoJpDVy14HYljrUfdM2QKMgDeYopOGvwaPMUjXmu9
-	60i18GYxfQkA5SEzAjIKDes4i0aq+ZyrPICR0F+clUykE4cH+SwqWJD3tUkk1ziDbqgs
-	CFLD7WyTW5VnvrKk1EBCu9QHEorYojm8RAX3KnNEDXe1F1GHvyKBNLyieKadvjIrZjA+
-	f7XC+/ziRlv+qL0z3OJciw9OuiBVHG61m4LxfBZPZIMuxe/rj9sfsd9fS1wP0KTNgG6q
-	1ung==
-X-Gm-Message-State: ALKqPwdvMjB8XCfiAhlFPsIszUQQjMjP8bBNN9ZXvJ33ApewDPB60zYV
-	MN7u2L+0J4QChPgBufnCr5pofgbIxWQ=
-X-Google-Smtp-Source: ADUXVKLqHtsNJk6dtQQzYc5gY72MbPeGiOTzW3r7ihu1dbmYN/8J9BSORPVHCCWSLycV4f3okNa/lg==
-X-Received: by 2002:a37:7183:: with SMTP id
-	m125-v6mr12775550qkc.107.1527550134652; 
-	Mon, 28 May 2018 16:28:54 -0700 (PDT)
+	bh=g0InmfQ5j/ssrjex/NLIB/couSgFJu9yQ1HtT53SDsI=;
+	b=DyfDnwUH1clDAw+CjvtL6MLMNu80PeW1VIZthlQztGMDBhPbQQ20K+r9wxP7N6FCkY
+	ooW4ANaz1k/LuDJhpEF9cshetSuhHBMsZgAURyiLKQi/EHp0GQ53oyIL2xup7JfdDSde
+	y7Kxw5jAlQCjy4HpOWU3zdlMarbxOHsg677DTe/kGf0ZLODM/HdpM7/gV9eAhuqvMVEA
+	mbDStWWEfFohhJAHFVdJpOViecmnB4qymYqioZ3aKbFt5bxXuEAKpiNLwd8sC7OMmaNT
+	rKWIjmOTqV2rVW4cXhhsgZzG22pqH3Pg4+I+HVpUB/qlopNvYJXGc0WV9MUYNAyDzzMz
+	dTjw==
+X-Gm-Message-State: ALKqPwdsgl+qxskELySf9ZO6boFSatWt4R9at9pmNu1E22ct0notO5cM
+	cwPafQzrSi02RnyeRxA80j0=
+X-Google-Smtp-Source: ADUXVKKahmEZXSJfHZjTWqHAfmHoT4d+k27r2wwUizlxMrW5mYqo/FH96ZFOCnw4Gzl+jktZgcL0Ew==
+X-Received: by 2002:ac8:5293:: with SMTP id
+	s19-v6mr13725324qtn.311.1527550137773; 
+	Mon, 28 May 2018 16:28:57 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	s19-v6sm23756182qki.62.2018.05.28.16.28.51
+	s19-v6sm23756182qki.62.2018.05.28.16.28.54
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 28 May 2018 16:28:54 -0700 (PDT)
+	Mon, 28 May 2018 16:28:57 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,10 +54,9 @@ To: Thomas Huth <thuth@redhat.com>,
 	"Michael S . Tsirkin" <mst@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Date: Mon, 28 May 2018 20:27:15 -0300
-Message-Id: <20180528232719.4721-18-f4bug@amsat.org>
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Date: Mon, 28 May 2018 20:27:16 -0300
+Message-Id: <20180528232719.4721-19-f4bug@amsat.org>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <20180528232719.4721-1-f4bug@amsat.org>
 References: <20180528232719.4721-1-f4bug@amsat.org>
@@ -66,9 +65,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: [Qemu-trivial] [PATCH v4 17/21] hw/misc/sga: Use the correct ISA
- include
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: [Qemu-trivial] [PATCH v4 18/21] hw/hppa: Remove unused include
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,28 +78,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 May 2018 23:29:00 -0000
-
-The SGA BIOS loader is an ISA device, it does not require the PCI header.
+X-List-Received-Date: Mon, 28 May 2018 23:29:02 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/misc/sga.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/hppa/hppa_sys.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/misc/sga.c b/hw/misc/sga.c
-index 97fd63f176..4a22a52a60 100644
---- a/hw/misc/sga.c
-+++ b/hw/misc/sga.c
-@@ -25,7 +25,7 @@
-  *
-  */
- #include "qemu/osdep.h"
--#include "hw/pci/pci.h"
-+#include "hw/isa/isa.h"
- #include "hw/loader.h"
- #include "sysemu/sysemu.h"
+diff --git a/hw/hppa/hppa_sys.h b/hw/hppa/hppa_sys.h
+index a182d1f34e..3f6c145120 100644
+--- a/hw/hppa/hppa_sys.h
++++ b/hw/hppa/hppa_sys.h
+@@ -3,7 +3,6 @@
+ #ifndef HW_HPPA_SYS_H
+ #define HW_HPPA_SYS_H
  
+-#include "target/hppa/cpu-qom.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pci_host.h"
+ #include "hw/ide.h"
 -- 
 2.17.0
 
