@@ -1,46 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fNO3b-0005Bt-MQ
-	for mharc-qemu-trivial@gnu.org; Mon, 28 May 2018 15:43:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52806)
+	id 1fNRYB-0006k1-GI
+	for mharc-qemu-trivial@gnu.org; Mon, 28 May 2018 19:27:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60788)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1fNO3Z-0005BA-C4
-	for qemu-trivial@nongnu.org; Mon, 28 May 2018 15:43:50 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNRY9-0006in-Df
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 19:27:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1fNO3V-0002td-Fi
-	for qemu-trivial@nongnu.org; Mon, 28 May 2018 15:43:49 -0400
-Received: from 6.mo179.mail-out.ovh.net ([46.105.56.76]:51426)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1fNO3V-0002s3-8m
-	for qemu-trivial@nongnu.org; Mon, 28 May 2018 15:43:45 -0400
-Received: from player158.ha.ovh.net (unknown [10.109.120.120])
-	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 6EA0CC8676
-	for <qemu-trivial@nongnu.org>; Mon, 28 May 2018 21:43:43 +0200 (CEST)
-Received: from bahia.lan (lns-bzn-46-82-253-208-248.adsl.proxad.net
-	[82.253.208.248]) (Authenticated sender: groug@kaod.org)
-	by player158.ha.ovh.net (Postfix) with ESMTPSA id 81836620094;
-	Mon, 28 May 2018 21:43:34 +0200 (CEST)
-Date: Mon, 28 May 2018 21:43:33 +0200
-From: Greg Kurz <groug@kaod.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org,
-	qemu-trivial@nongnu.org, Alistair Francis <alistair.francis@xilinx.com>,
-	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
-Message-ID: <20180528214333.5f3b2f8f@bahia.lan>
-In-Reply-To: <1527531079-32717-1-git-send-email-thuth@redhat.com>
-References: <1527531079-32717-1-git-send-email-thuth@redhat.com>
-X-Mailer: Claws Mail 3.16.0 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNRY6-0000SK-Bv
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 19:27:35 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:38710)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNRY4-0000Pp-9i; Mon, 28 May 2018 19:27:32 -0400
+Received: by mail-qt0-x243.google.com with SMTP id x34-v6so3250886qtk.5;
+	Mon, 28 May 2018 16:27:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=MolqtkoJWN2HaOXBWCDtrtTY/ZoLxlR9JpIa43OT99A=;
+	b=B0lNnDmPdGkmlxQFadveMwNl/HfSSJUjcWbs08gnb/CilHrtGwvZpyDU8CdAGsAVbI
+	CgvkrPk5h+oiKgxfATMUhUsYRJxQvvQ/fPAFYQGd/V16nvc5Aqn4CU+QEfpx4dUdINe6
+	ZXZswFvmZE6ilq7thBSl4JMbfCIYAQLJUn3fjh+XI7LWUHk/MOubXabAB1ydPG7k66Qk
+	jjOVPD40LrkPjQ1ylfmNUUYfGQvaLl0RGsL2f5Bk2t2TFkdOtZWEBFNZTD4/cD47JwfK
+	+z/s/2SVPRmE/0wbPzEmz6zaboVr6ggVPcWRLKDegm16psIsi2QlFn5cHS0KOXgY0lZV
+	pt0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=MolqtkoJWN2HaOXBWCDtrtTY/ZoLxlR9JpIa43OT99A=;
+	b=aZpyBc2TOYx0rbTm41aNh442ZPsN9QN5MK4WTXvgUy/hA6CoWuHzV/Up7x/YYoMtHH
+	lf8tS+Z3i2NkSy6dRK+DAwMZnwtvCZFg+cVV3zU0hqLwwugVqsA1lIklhYmrSXLwvAQl
+	02QzTpEIt2pZtNGGrEY/LmIO8DLRJiXVx6HMzY5TRkdAUfZHzM+ez+2eOFf9NZx4tNme
+	HQLW01EPgW377v0MZJCOsLcPOruDFbJ5m3wE/CZcdkf0xlHK6ovg6Z40rbhogAo6dtKN
+	OQbwk3nLVvZBA+aH9QxpFWaOPcuON8127+BKNVV3aNJzdKXoQe1kCY1CnQltK9vOtfn0
+	hsdg==
+X-Gm-Message-State: ALKqPweXuga78en2wbeSqhH7vR0puBRJdC+m2g/Hgt4NZnEeNMhP7bO0
+	scVPISVoTbmP2YgRtofHovM=
+X-Google-Smtp-Source: ADUXVKKCSpYjfME50cizMDrU3BMa/ZUShbm8DpEJ9eqyACKeqYaaswvRczH/PgyLm7RbI339Y2G3Lw==
+X-Received: by 2002:aed:3704:: with SMTP id
+	i4-v6mr13714553qtb.234.1527550051787; 
+	Mon, 28 May 2018 16:27:31 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	s19-v6sm23756182qki.62.2018.05.28.16.27.28
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 28 May 2018 16:27:31 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Thomas Huth <thuth@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	qemu-s390x@nongnu.org (open list:S390)
+Date: Mon, 28 May 2018 20:26:59 -0300
+Message-Id: <20180528232719.4721-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.17.0
+In-Reply-To: <20180528232719.4721-1-f4bug@amsat.org>
+References: <20180528232719.4721-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 6624513580714465586
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheeigddugedtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 46.105.56.76
-Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH] target/ppc: Use proper
- logging function for possible guest errors
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: [Qemu-trivial] [PATCH v4 01/21] vfio: Include
+ "exec/address-spaces.h" directly in the source file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,93 +81,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 May 2018 19:43:50 -0000
+X-List-Received-Date: Mon, 28 May 2018 23:27:38 -0000
 
-On Mon, 28 May 2018 20:11:19 +0200
-Thomas Huth <thuth@redhat.com> wrote:
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ include/hw/vfio/vfio-common.h | 1 -
+ hw/vfio/ccw.c                 | 1 +
+ hw/vfio/platform.c            | 1 +
+ 3 files changed, 2 insertions(+), 1 deletion(-)
 
-> fprintf() and qemu_log_separate() are frowned upon these days for printing
-> logging information in QEMU. Accessing the wrong SPRs indicates wrong guest
-> behaviour in most cases, and we've got a proper way to log such situations,
-> which is the qemu_log_mask(LOG_GUEST_ERROR, ...) function. So use this
-> function now for logging the bad SPR accesses instead.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
-
-Reviewed-by: Greg Kurz <groug@kaod.org>
-
->  target/ppc/translate.c | 37 ++++++++++++-------------------------
->  1 file changed, 12 insertions(+), 25 deletions(-)
-> 
-> diff --git a/target/ppc/translate.c b/target/ppc/translate.c
-> index e30d99f..0806ee0 100644
-> --- a/target/ppc/translate.c
-> +++ b/target/ppc/translate.c
-> @@ -3933,13 +3933,9 @@ static inline void gen_op_mfspr(DisasContext *ctx)
->               * allowing userland application to read the PVR
->               */
->              if (sprn != SPR_PVR) {
-> -                fprintf(stderr, "Trying to read privileged spr %d (0x%03x) at "
-> -                        TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
-> -                if (qemu_log_separate()) {
-> -                    qemu_log("Trying to read privileged spr %d (0x%03x) at "
-> -                             TARGET_FMT_lx "\n", sprn, sprn,
-> -                             ctx->base.pc_next - 4);
-> -                }
-> +                qemu_log_mask(LOG_GUEST_ERROR, "Trying to read privileged spr "
-> +                              "%d (0x%03x) at " TARGET_FMT_lx "\n", sprn, sprn,
-> +                              ctx->base.pc_next - 4);
->              }
->              gen_priv_exception(ctx, POWERPC_EXCP_PRIV_REG);
->          }
-> @@ -3951,12 +3947,9 @@ static inline void gen_op_mfspr(DisasContext *ctx)
->              return;
->          }
->          /* Not defined */
-> -        fprintf(stderr, "Trying to read invalid spr %d (0x%03x) at "
-> -                TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
-> -        if (qemu_log_separate()) {
-> -            qemu_log("Trying to read invalid spr %d (0x%03x) at "
-> -                     TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
-> -        }
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "Trying to read invalid spr %d (0x%03x) at "
-> +                      TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
->  
->          /* The behaviour depends on MSR:PR and SPR# bit 0x10,
->           * it can generate a priv, a hv emu or a no-op
-> @@ -4097,12 +4090,9 @@ static void gen_mtspr(DisasContext *ctx)
->              (*write_cb)(ctx, sprn, rS(ctx->opcode));
->          } else {
->              /* Privilege exception */
-> -            fprintf(stderr, "Trying to write privileged spr %d (0x%03x) at "
-> -                    TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
-> -            if (qemu_log_separate()) {
-> -                qemu_log("Trying to write privileged spr %d (0x%03x) at "
-> -                         TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
-> -            }
-> +            qemu_log_mask(LOG_GUEST_ERROR, "Trying to write privileged spr "
-> +                          "%d (0x%03x) at " TARGET_FMT_lx "\n", sprn, sprn,
-> +                          ctx->base.pc_next - 4);
->              gen_priv_exception(ctx, POWERPC_EXCP_PRIV_REG);
->          }
->      } else {
-> @@ -4114,12 +4104,9 @@ static void gen_mtspr(DisasContext *ctx)
->          }
->  
->          /* Not defined */
-> -        if (qemu_log_separate()) {
-> -            qemu_log("Trying to write invalid spr %d (0x%03x) at "
-> -                     TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
-> -        }
-> -        fprintf(stderr, "Trying to write invalid spr %d (0x%03x) at "
-> -                TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "Trying to write invalid spr %d (0x%03x) at "
-> +                      TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
->  
->  
->          /* The behaviour depends on MSR:PR and SPR# bit 0x10,
+diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
+index d9360148e6..8264a65fa5 100644
+--- a/include/hw/vfio/vfio-common.h
++++ b/include/hw/vfio/vfio-common.h
+@@ -22,7 +22,6 @@
+ #define HW_VFIO_VFIO_COMMON_H
+ 
+ #include "qemu-common.h"
+-#include "exec/address-spaces.h"
+ #include "exec/memory.h"
+ #include "qemu/queue.h"
+ #include "qemu/notify.h"
+diff --git a/hw/vfio/ccw.c b/hw/vfio/ccw.c
+index e67392c5f9..76e4e8c652 100644
+--- a/hw/vfio/ccw.c
++++ b/hw/vfio/ccw.c
+@@ -22,6 +22,7 @@
+ #include "hw/vfio/vfio-common.h"
+ #include "hw/s390x/s390-ccw.h"
+ #include "hw/s390x/ccw-device.h"
++#include "exec/address-spaces.h"
+ #include "qemu/error-report.h"
+ 
+ #define TYPE_VFIO_CCW "vfio-ccw"
+diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
+index 5c921c27ba..57c4a0ee2b 100644
+--- a/hw/vfio/platform.c
++++ b/hw/vfio/platform.c
+@@ -24,6 +24,7 @@
+ #include "qemu/range.h"
+ #include "sysemu/sysemu.h"
+ #include "exec/memory.h"
++#include "exec/address-spaces.h"
+ #include "qemu/queue.h"
+ #include "hw/sysbus.h"
+ #include "trace.h"
+-- 
+2.17.0
 
 
