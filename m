@@ -1,79 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fNMzf-0001xG-BF
-	for mharc-qemu-trivial@gnu.org; Mon, 28 May 2018 14:35:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43303)
+	id 1fNO3b-0005Bt-MQ
+	for mharc-qemu-trivial@gnu.org; Mon, 28 May 2018 15:43:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52806)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNMzd-0001w4-Da
-	for qemu-trivial@nongnu.org; Mon, 28 May 2018 14:35:42 -0400
+	(envelope-from <groug@kaod.org>) id 1fNO3Z-0005BA-C4
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 15:43:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNMzb-0008BN-Sb
-	for qemu-trivial@nongnu.org; Mon, 28 May 2018 14:35:41 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:44997)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNMzW-00084i-DM; Mon, 28 May 2018 14:35:34 -0400
-Received: by mail-qk0-x244.google.com with SMTP id 185-v6so9721513qkk.11;
-	Mon, 28 May 2018 11:35:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=Eyg2NKSW+eoKXVpB8aGboPQzPlULRoWXqEdB1mF5j6I=;
-	b=CbQB3S+wscc3oZ7/HgDur3tBK2LMFB4cskcNTFzm08FByVwpPh0JhUu+DNND7XKAb9
-	h1JcNx+l+REJc70NyVItW5gsiwXUqxNK4Su15/fx7V0CFNrZG6CHyC3OOqzNu6Gsr7IT
-	QintmLhPfuujiny2nxYnnuPI5pKG/J9d6PkMQNqtCdzRI9he5u29AN44rJ8DLD3KBeGR
-	KBm5Jj8AzxUJ1MV1o81KaY+3Wm9a4IQA9YtTXN9bTC7b6LT92XfNn6QAYrithZbrqYFK
-	dMQSWy1eyi++c3wtdTp1caRa358+7/IAQdDQFyv9f8nQEmiOl8pvFsZe3onN7Fut1v9l
-	Rjbw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=Eyg2NKSW+eoKXVpB8aGboPQzPlULRoWXqEdB1mF5j6I=;
-	b=sMPJKCTqfRlprwxhnJ8R8+N7KrO8PnxaoGePupc0lh1l1reKGZxaMayHwxGkBIawfz
-	bHoCGrKn6ykKHcFSvmeyyRmvNePwZKRyP98MPAoOwYCsuiy8Ok1Qqou6vkzIp6nd5dqO
-	t/58WRsdj+D1Ug/ALlSrGaGNkiw/zww+cOaT707vVEUFT4nyaaLZTC54B6wrgk126Kwd
-	rC1S+QVKZZI8v4npm8w9XGNV7EHjG6hCwFNlEOA1kaSDhUELxZ2f1gN8kV24RVxlLU/p
-	g684wxMOxtDEFXT/KBQxXOu3VMK3XgOEOCtDgIMBykGhaMSk22wHusS1nP9vORrJdYe2
-	p/wQ==
-X-Gm-Message-State: ALKqPwdfRyQo4RlZjSTKwal5Nm8djxBqSIAB5NMCTNhIQZhwNvMRKKjM
-	D6zui0uFspT8AQwXJzM7jrc=
-X-Google-Smtp-Source: ADUXVKIMjbkwmRP5waDyLljQRSE4R3run49NrQ3rJFWmmKlCaJxYww0j97zkHUfJ3jFJb5oQ/VcsKA==
-X-Received: by 2002:a37:9007:: with SMTP id
-	s7-v6mr12575442qkd.354.1527532533738; 
-	Mon, 28 May 2018 11:35:33 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.222])
-	by smtp.gmail.com with ESMTPSA id
-	m16-v6sm6202578qtn.92.2018.05.28.11.35.30
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 28 May 2018 11:35:33 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Thomas Huth <thuth@redhat.com>, David Gibson
-	<david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org
-Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair.francis@xilinx.com>,
+	(envelope-from <groug@kaod.org>) id 1fNO3V-0002td-Fi
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 15:43:49 -0400
+Received: from 6.mo179.mail-out.ovh.net ([46.105.56.76]:51426)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1fNO3V-0002s3-8m
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 15:43:45 -0400
+Received: from player158.ha.ovh.net (unknown [10.109.120.120])
+	by mo179.mail-out.ovh.net (Postfix) with ESMTP id 6EA0CC8676
+	for <qemu-trivial@nongnu.org>; Mon, 28 May 2018 21:43:43 +0200 (CEST)
+Received: from bahia.lan (lns-bzn-46-82-253-208-248.adsl.proxad.net
+	[82.253.208.248]) (Authenticated sender: groug@kaod.org)
+	by player158.ha.ovh.net (Postfix) with ESMTPSA id 81836620094;
+	Mon, 28 May 2018 21:43:34 +0200 (CEST)
+Date: Mon, 28 May 2018 21:43:33 +0200
+From: Greg Kurz <groug@kaod.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org,
+	qemu-trivial@nongnu.org, Alistair Francis <alistair.francis@xilinx.com>,
 	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
-References: <1527531079-32717-1-git-send-email-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <90f9685c-8407-6ffc-922c-8dd1221c33cf@amsat.org>
-Date: Mon, 28 May 2018 15:35:28 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
-MIME-Version: 1.0
+Message-ID: <20180528214333.5f3b2f8f@bahia.lan>
 In-Reply-To: <1527531079-32717-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: Re: [Qemu-trivial] [PATCH] target/ppc: Use proper logging function
- for possible guest errors
+References: <1527531079-32717-1-git-send-email-thuth@redhat.com>
+X-Mailer: Claws Mail 3.16.0 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 6624513580714465586
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedthedrheeigddugedtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 46.105.56.76
+Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH] target/ppc: Use proper
+ logging function for possible guest errors
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,9 +52,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 May 2018 18:35:42 -0000
+X-List-Received-Date: Mon, 28 May 2018 19:43:50 -0000
 
-On 05/28/2018 03:11 PM, Thomas Huth wrote:
+On Mon, 28 May 2018 20:11:19 +0200
+Thomas Huth <thuth@redhat.com> wrote:
+
 > fprintf() and qemu_log_separate() are frowned upon these days for printing
 > logging information in QEMU. Accessing the wrong SPRs indicates wrong guest
 > behaviour in most cases, and we've got a proper way to log such situations,
@@ -95,10 +64,10 @@ On 05/28/2018 03:11 PM, Thomas Huth wrote:
 > function now for logging the bad SPR accesses instead.
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
 > ---
+
+Reviewed-by: Greg Kurz <groug@kaod.org>
+
 >  target/ppc/translate.c | 37 ++++++++++++-------------------------
 >  1 file changed, 12 insertions(+), 25 deletions(-)
 > 
@@ -171,5 +140,5 @@ Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >  
 >  
 >          /* The behaviour depends on MSR:PR and SPR# bit 0x10,
-> 
+
 
