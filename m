@@ -1,80 +1,94 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fNSiR-0006hJ-Cm
-	for mharc-qemu-trivial@gnu.org; Mon, 28 May 2018 20:42:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44426)
+	id 1fNThB-0006fH-Ty
+	for mharc-qemu-trivial@gnu.org; Mon, 28 May 2018 21:45:05 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33085)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNSiO-0006fN-8J
-	for qemu-trivial@nongnu.org; Mon, 28 May 2018 20:42:18 -0400
+	id 1fNRZ9-0007cr-8M
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 19:28:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNSiN-0007ED-Hl
-	for qemu-trivial@nongnu.org; Mon, 28 May 2018 20:42:16 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:42523)
+	id 1fNRZ5-0001Xu-RG
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 19:28:39 -0400
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:40744)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNSiI-0007Aq-Hr; Mon, 28 May 2018 20:42:10 -0400
-Received: by mail-qt0-x241.google.com with SMTP id c2-v6so16704383qtn.9;
-	Mon, 28 May 2018 17:42:10 -0700 (PDT)
+	id 1fNRZ0-0001Sb-UT; Mon, 28 May 2018 19:28:31 -0400
+Received: by mail-qk0-x242.google.com with SMTP id r66-v6so10188677qkr.7;
+	Mon, 28 May 2018 16:28:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=zrgwAACpngJ+RiialOU7NLqhCiqaynx31tFneNGeIx4=;
-	b=QEniwwaA0snuSIEpdCCKhmlxyrFmrWRqsFmF4hWnDSlo4xahs/uhb6Lv33oNh12+Md
-	PsgrQt9dlGgnxAMPjXsX3oMD6EmlBnvGSpSlItdjHTkwBv1iNJ7wFHM4OfGYYAsaIf1q
-	6JpXchmNKscspHsSQ5PXY23CcA/pQM3y8aTiQMaCi8BedXXjf8fqVxwJs76h5m81C4/V
-	xOCvqok9H4+8C1uG4Webn3k3scX4H3GXsyio6iZiirPmJrEfvlSobFBslcVCQMazl+Kx
-	m6bzczOJ30Zek9FpIrPdEXJCbZhXLNh1OKRnsSTX6KljEt4ijY8sgYE+e+4TOzoG83/w
-	Wmbg==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=RvyTWQK4IVshF6tgbiQNR16lbtDMJb01dTVsShZHb54=;
+	b=HKPif/M0Zv7bPPhLGCagcwZn0DVDa1t2Z2nUS4zx6d38WNXw5QxFqLuDhpl++5PaNs
+	3NSX4Y+J1Un0UE3+vETcFAJrDfBj72IM5RDpB7KkEg40RXfpAmIRC5MjXeYTroyALkrT
+	rPyvSuPlJRo0gE7r7PalccW6gr3ykSw1ofCDJ09eUozm0Vf9Dr5sN384tEYle6EBVazs
+	P7ynC17/DFkdaygvL53rYe82EWHR5geH6E0c/SSQ68LBcb6nsd2Xd0XyjGcslwjwLdzX
+	oCr3wQQ8BH3es2pVks6aM2rF9ctGFmCJUIAFHcl3AFgV/q0QvbQFlMkgN1L4e4/ELUdX
+	GU+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=zrgwAACpngJ+RiialOU7NLqhCiqaynx31tFneNGeIx4=;
-	b=aw458qh9MGkH/mcKp4ehJlfgEMtIGJ/VyWzALj535M5LxsfTgcSbphT9F1+oUfuIHc
-	5Zz8xPxz8spnhoQrod+q5O1/6uCs0Dm3Lc/pEAnQQcZ0efEs3gVBoR/DZnuYmtLB/c/y
-	lZwZ8/JJRH0p2b4XsQxJ8iUXofgnprBxhx6SyQt6KAykj0A3/9TBtdfa/REcbXTQ1YMF
-	lV8LTPSpPLXLtN9tuY19fnR/1RiqTlzYi6eqlv93dMOBReQeT39btu8UtgwAct9Prs9R
-	2jXv7L51I6CFGJWdJy7CmyhPgjCvLbENOYR/SqCftndsZBFFJkkNItqwpon8+R/c16ui
-	0/7Q==
-X-Gm-Message-State: ALKqPwdwr6hQ2GNImyEnVDuj8o8SyibBYKkkT0rj3d+38hbdnvShHwOe
-	GuHXt9CN5V1PNFciajr7VK/Dp9MiAOU=
-X-Google-Smtp-Source: ADUXVKJst7PEUfp1RZtvXumbmp10qkwWYA+/0uPDoksXKanDoIeOVVJu7Dy5udanPbcYJ5oayCIPYg==
-X-Received: by 2002:a0c:a106:: with SMTP id d6-v6mr14155854qva.5.1527554529753;
-	Mon, 28 May 2018 17:42:09 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.222])
-	by smtp.gmail.com with ESMTPSA id
-	z15-v6sm21737141qti.93.2018.05.28.17.42.06
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=RvyTWQK4IVshF6tgbiQNR16lbtDMJb01dTVsShZHb54=;
+	b=rtaY4mADmWTv71pukO4xPvWqlY0g/AN+5sQQKiFyVqdyahE/wSfjRdrO8qTHycn0aI
+	OjSGKW4U6VIsxHdTeDgGvs6Uzt7XSLfcZDo3fZx/zHuNS1IkA0RIAevPCBko0aCqGqwY
+	ua1haAMZsXe1cRe2AL+ABRvAJSNrcZfjC7+wudgpNnp7HArR7w3aBLNc0+/A4aknZK2r
+	I9AJ41A2RmmN0YuJYuRvgnbOj5AokzPDGGh1tQZHS8C1oEI4JrxxpSx7LDgdpZ6CCsiE
+	gN74MuEMiVpfeS8+r/dMsya2ZS+RHT7z/zbtht3f0L2X3hlc1Me2HKbCIoedxIrODwhQ
+	x2Dg==
+X-Gm-Message-State: ALKqPwdHpIlsXnSN4P3OSCbErJfYzuPWR7DQqU9ML2S/319HyCxHYB9q
+	48IyYKSAs8D9A8Z0i/TNQSY=
+X-Google-Smtp-Source: ADUXVKIxkySLNIh6aKS3/qqgufMKU6azv1NUfC1UHHC4eCltaBkCR60q4x3jYo+1c/zaY+lppdr54w==
+X-Received: by 2002:a37:4cf:: with SMTP id
+	198-v6mr1953230qke.186.1527550110149; 
+	Mon, 28 May 2018 16:28:30 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	s19-v6sm23756182qki.62.2018.05.28.16.28.19
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 28 May 2018 17:42:09 -0700 (PDT)
+	Mon, 28 May 2018 16:28:29 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
-To: Thomas Huth <thuth@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Keith Busch <keith.busch@intel.com>,
-	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	"open list:nvme" <qemu-block@nongnu.org>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Thomas Huth <thuth@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+	Max Reitz <mreitz@redhat.com>, John Snow <jsnow@redhat.com>,
+	Michael Walle <michael@walle.cc>, Aurelien Jarno <aurelien@aurel32.net>,
+	Yongbok Kim <yongbok.kim@mips.com>,
+	David Gibson <david@gibson.dropbear.id.au>, Alexander Graf <agraf@suse.de>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Richard Henderson <rth@twiddle.net>, David Hildenbrand <david@redhat.com>,
+	Fam Zheng <famz@redhat.com>, Magnus Damm <magnus.damm@gmail.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org (open list:ARM),
+	qemu-block@nongnu.org (open list:virtio-blk),
+	qemu-ppc@nongnu.org (open list:sPAPR),
+	qemu-s390x@nongnu.org (open list:virtio-ccw),
+	xen-devel@lists.xenproject.org (open list:X86)
+Date: Mon, 28 May 2018 20:27:10 -0300
+Message-Id: <20180528232719.4721-13-f4bug@amsat.org>
+X-Mailer: git-send-email 2.17.0
+In-Reply-To: <20180528232719.4721-1-f4bug@amsat.org>
 References: <20180528232719.4721-1-f4bug@amsat.org>
-	<20180528232719.4721-16-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <a03e3c6d-52fc-b37c-c4f7-612c5af711a2@amsat.org>
-Date: Mon, 28 May 2018 21:42:05 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180528232719.4721-16-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: Re: [Qemu-trivial] [PATCH v4 15/21] hw/block/nvme: Include
- "qemu/cutils.h" directly in the source file
+X-Received-From: 2607:f8b0:400d:c09::242
+X-Mailman-Approved-At: Mon, 28 May 2018 21:45:04 -0400
+Subject: [Qemu-trivial] [PATCH v4 12/21] hw: Do not include
+ "sysemu/block-backend.h" if it is not necessary
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,45 +100,511 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 May 2018 00:42:18 -0000
+X-List-Received-Date: Mon, 28 May 2018 23:28:41 -0000
 
-On 05/28/2018 08:27 PM, Philippe Mathieu-Daudé wrote:
+Remove those unneeded includes to speed up the compilation
+process a little bit. (Continue 7eceff5b5a1fa cleanup)
 
-I forgot to add this commit description:
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/arm/collie.c                          | 1 -
+ hw/arm/gumstix.c                         | 1 -
+ hw/arm/mainstone.c                       | 1 -
+ hw/arm/nseries.c                         | 1 -
+ hw/arm/omap1.c                           | 1 -
+ hw/arm/omap2.c                           | 1 -
+ hw/arm/omap_sx1.c                        | 1 -
+ hw/arm/pxa2xx.c                          | 1 -
+ hw/arm/spitz.c                           | 1 -
+ hw/arm/versatilepb.c                     | 1 -
+ hw/arm/vexpress.c                        | 1 -
+ hw/arm/virt.c                            | 1 -
+ hw/arm/xilinx_zynq.c                     | 1 -
+ hw/arm/z2.c                              | 1 -
+ hw/block/dataplane/virtio-blk.c          | 1 -
+ hw/block/virtio-blk.c                    | 1 -
+ hw/core/qdev-properties.c                | 1 -
+ hw/cris/axis_dev88.c                     | 1 -
+ hw/display/tc6393xb.c                    | 1 -
+ hw/ide/pci.c                             | 1 -
+ hw/ide/via.c                             | 1 -
+ hw/isa/isa-superio.c                     | 1 -
+ hw/lm32/lm32_boards.c                    | 1 -
+ hw/lm32/milkymist.c                      | 1 -
+ hw/microblaze/petalogix_ml605_mmu.c      | 1 -
+ hw/microblaze/petalogix_s3adsp1800_mmu.c | 1 -
+ hw/mips/mips_r4k.c                       | 1 -
+ hw/ppc/spapr.c                           | 1 -
+ hw/ppc/virtex_ml507.c                    | 2 --
+ hw/s390x/virtio-ccw.c                    | 1 -
+ hw/scsi/mptsas.c                         | 1 -
+ hw/sd/pl181.c                            | 1 -
+ hw/sd/sdhci.c                            | 1 -
+ hw/sd/ssi-sd.c                           | 1 -
+ hw/sh4/r2d.c                             | 1 -
+ hw/virtio/virtio-pci.c                   | 1 -
+ hw/xen/xen_devconfig.c                   | 1 -
+ hw/xtensa/xtfpga.c                       | 1 -
+ 38 files changed, 39 deletions(-)
 
-  "block/nvme.h" does not require any declaration of "qemu/cutils.h".
-  Simplify dependencies by directly include it in the source file
-  where the declarations are used.
+diff --git a/hw/arm/collie.c b/hw/arm/collie.c
+index f8c566e2e5..48b732c176 100644
+--- a/hw/arm/collie.c
++++ b/hw/arm/collie.c
+@@ -16,7 +16,6 @@
+ #include "strongarm.h"
+ #include "hw/arm/arm.h"
+ #include "hw/block/flash.h"
+-#include "sysemu/block-backend.h"
+ #include "exec/address-spaces.h"
+ #include "cpu.h"
+ 
+diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
+index ea2a3c532d..56cb763c4e 100644
+--- a/hw/arm/gumstix.c
++++ b/hw/arm/gumstix.c
+@@ -42,7 +42,6 @@
+ #include "hw/block/flash.h"
+ #include "hw/devices.h"
+ #include "hw/boards.h"
+-#include "sysemu/block-backend.h"
+ #include "exec/address-spaces.h"
+ #include "sysemu/qtest.h"
+ #include "cpu.h"
+diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
+index 4215c025fc..0beb5c426b 100644
+--- a/hw/arm/mainstone.c
++++ b/hw/arm/mainstone.c
+@@ -21,7 +21,6 @@
+ #include "hw/devices.h"
+ #include "hw/boards.h"
+ #include "hw/block/flash.h"
+-#include "sysemu/block-backend.h"
+ #include "hw/sysbus.h"
+ #include "exec/address-spaces.h"
+ #include "sysemu/qtest.h"
+diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
+index 32687afced..906b7ca22d 100644
+--- a/hw/arm/nseries.c
++++ b/hw/arm/nseries.c
+@@ -35,7 +35,6 @@
+ #include "hw/hw.h"
+ #include "hw/bt.h"
+ #include "hw/loader.h"
+-#include "sysemu/block-backend.h"
+ #include "hw/sysbus.h"
+ #include "qemu/log.h"
+ #include "exec/address-spaces.h"
+diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+index e54c1f8f99..854996c1ac 100644
+--- a/hw/arm/omap1.c
++++ b/hw/arm/omap1.c
+@@ -28,7 +28,6 @@
+ #include "hw/arm/omap.h"
+ #include "sysemu/sysemu.h"
+ #include "hw/arm/soc_dma.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ #include "sysemu/qtest.h"
+ #include "qemu/range.h"
+diff --git a/hw/arm/omap2.c b/hw/arm/omap2.c
+index b8d0910a1f..cc4250b7da 100644
+--- a/hw/arm/omap2.c
++++ b/hw/arm/omap2.c
+@@ -23,7 +23,6 @@
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ #include "sysemu/qtest.h"
+ #include "hw/boards.h"
+diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
+index eccc19c77b..84550f0236 100644
+--- a/hw/arm/omap_sx1.c
++++ b/hw/arm/omap_sx1.c
+@@ -33,7 +33,6 @@
+ #include "hw/boards.h"
+ #include "hw/arm/arm.h"
+ #include "hw/block/flash.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/qtest.h"
+ #include "exec/address-spaces.h"
+ #include "cpu.h"
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index a2803fdee4..b67b0cefb6 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -19,7 +19,6 @@
+ #include "hw/i2c/i2c.h"
+ #include "hw/ssi/ssi.h"
+ #include "chardev/char-fe.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ #include "sysemu/qtest.h"
+ #include "qemu/cutils.h"
+diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+index e419e3c00e..3cc27a1e44 100644
+--- a/hw/arm/spitz.c
++++ b/hw/arm/spitz.c
+@@ -27,7 +27,6 @@
+ #include "hw/audio/wm8750.h"
+ #include "audio/audio.h"
+ #include "hw/boards.h"
+-#include "sysemu/block-backend.h"
+ #include "hw/sysbus.h"
+ #include "exec/address-spaces.h"
+ #include "cpu.h"
+diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
+index e01e3192ff..a5a06b6d40 100644
+--- a/hw/arm/versatilepb.c
++++ b/hw/arm/versatilepb.c
+@@ -19,7 +19,6 @@
+ #include "hw/pci/pci.h"
+ #include "hw/i2c/i2c.h"
+ #include "hw/boards.h"
+-#include "sysemu/block-backend.h"
+ #include "exec/address-spaces.h"
+ #include "hw/block/flash.h"
+ #include "qemu/error-report.h"
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index f1e33c8a36..5bfe2e4348 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -35,7 +35,6 @@
+ #include "hw/boards.h"
+ #include "hw/loader.h"
+ #include "exec/address-spaces.h"
+-#include "sysemu/block-backend.h"
+ #include "hw/block/flash.h"
+ #include "sysemu/device_tree.h"
+ #include "qemu/error-report.h"
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index a3a28e20e8..3aa19b2935 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -38,7 +38,6 @@
+ #include "hw/vfio/vfio-amd-xgbe.h"
+ #include "hw/devices.h"
+ #include "net/net.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/device_tree.h"
+ #include "sysemu/numa.h"
+ #include "sysemu/sysemu.h"
+diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+index 899a26326f..f1496d2927 100644
+--- a/hw/arm/xilinx_zynq.c
++++ b/hw/arm/xilinx_zynq.c
+@@ -26,7 +26,6 @@
+ #include "sysemu/sysemu.h"
+ #include "hw/boards.h"
+ #include "hw/block/flash.h"
+-#include "sysemu/block-backend.h"
+ #include "hw/loader.h"
+ #include "hw/misc/zynq-xadc.h"
+ #include "hw/ssi/ssi.h"
+diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+index 730a5392e9..697a822f1e 100644
+--- a/hw/arm/z2.c
++++ b/hw/arm/z2.c
+@@ -21,7 +21,6 @@
+ #include "hw/boards.h"
+ #include "sysemu/sysemu.h"
+ #include "hw/block/flash.h"
+-#include "sysemu/block-backend.h"
+ #include "ui/console.h"
+ #include "hw/audio/wm8750.h"
+ #include "audio/audio.h"
+diff --git a/hw/block/dataplane/virtio-blk.c b/hw/block/dataplane/virtio-blk.c
+index 101f32cf66..d648aeb73b 100644
+--- a/hw/block/dataplane/virtio-blk.c
++++ b/hw/block/dataplane/virtio-blk.c
+@@ -19,7 +19,6 @@
+ #include "qemu/thread.h"
+ #include "qemu/error-report.h"
+ #include "hw/virtio/virtio-access.h"
+-#include "sysemu/block-backend.h"
+ #include "hw/virtio/virtio-blk.h"
+ #include "virtio-blk.h"
+ #include "block/aio.h"
+diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
+index b1532e4e91..50b5c869e3 100644
+--- a/hw/block/virtio-blk.c
++++ b/hw/block/virtio-blk.c
+@@ -18,7 +18,6 @@
+ #include "qemu/error-report.h"
+ #include "trace.h"
+ #include "hw/block/block.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ #include "hw/virtio/virtio-blk.h"
+ #include "dataplane/virtio-blk.h"
+diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+index 5bbc2d98b5..989778ab7f 100644
+--- a/hw/core/qdev-properties.c
++++ b/hw/core/qdev-properties.c
+@@ -5,7 +5,6 @@
+ #include "hw/pci/pci.h"
+ #include "qapi/qmp/qerror.h"
+ #include "qemu/error-report.h"
+-#include "sysemu/block-backend.h"
+ #include "hw/block/block.h"
+ #include "net/hub.h"
+ #include "qapi/visitor.h"
+diff --git a/hw/cris/axis_dev88.c b/hw/cris/axis_dev88.c
+index 409f3d581a..56ee398ee5 100644
+--- a/hw/cris/axis_dev88.c
++++ b/hw/cris/axis_dev88.c
+@@ -34,7 +34,6 @@
+ #include "hw/loader.h"
+ #include "elf.h"
+ #include "boot.h"
+-#include "sysemu/block-backend.h"
+ #include "exec/address-spaces.h"
+ #include "sysemu/qtest.h"
+ #include "sysemu/sysemu.h"
+diff --git a/hw/display/tc6393xb.c b/hw/display/tc6393xb.c
+index 464465b7c2..8392e59493 100644
+--- a/hw/display/tc6393xb.c
++++ b/hw/display/tc6393xb.c
+@@ -18,7 +18,6 @@
+ #include "hw/block/flash.h"
+ #include "ui/console.h"
+ #include "ui/pixel_ops.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ 
+ #define IRQ_TC6393_NAND		0
+diff --git a/hw/ide/pci.c b/hw/ide/pci.c
+index 1ab0a892d0..fe1ceeb0cd 100644
+--- a/hw/ide/pci.c
++++ b/hw/ide/pci.c
+@@ -26,7 +26,6 @@
+ #include "hw/hw.h"
+ #include "hw/pci/pci.h"
+ #include "hw/isa/isa.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/dma.h"
+ #include "qemu/error-report.h"
+ #include "hw/ide/pci.h"
+diff --git a/hw/ide/via.c b/hw/ide/via.c
+index 117ac4d95e..238f038d72 100644
+--- a/hw/ide/via.c
++++ b/hw/ide/via.c
+@@ -27,7 +27,6 @@
+ #include "hw/hw.h"
+ #include "hw/pci/pci.h"
+ #include "hw/isa/isa.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/dma.h"
+ 
+diff --git a/hw/isa/isa-superio.c b/hw/isa/isa-superio.c
+index 76286c81a1..9359be7008 100644
+--- a/hw/isa/isa-superio.c
++++ b/hw/isa/isa-superio.c
+@@ -13,7 +13,6 @@
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "sysemu/sysemu.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ #include "chardev/char.h"
+ #include "hw/isa/superio.h"
+diff --git a/hw/lm32/lm32_boards.c b/hw/lm32/lm32_boards.c
+index 907e875d02..167058348e 100644
+--- a/hw/lm32/lm32_boards.c
++++ b/hw/lm32/lm32_boards.c
+@@ -27,7 +27,6 @@
+ #include "hw/devices.h"
+ #include "hw/boards.h"
+ #include "hw/loader.h"
+-#include "sysemu/block-backend.h"
+ #include "elf.h"
+ #include "lm32_hwsetup.h"
+ #include "lm32.h"
+diff --git a/hw/lm32/milkymist.c b/hw/lm32/milkymist.c
+index f9688e059e..c36bbc4ae2 100644
+--- a/hw/lm32/milkymist.c
++++ b/hw/lm32/milkymist.c
+@@ -30,7 +30,6 @@
+ #include "hw/boards.h"
+ #include "hw/loader.h"
+ #include "elf.h"
+-#include "sysemu/block-backend.h"
+ #include "milkymist-hw.h"
+ #include "lm32.h"
+ #include "exec/address-spaces.h"
+diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogix_ml605_mmu.c
+index cf6bf3f32a..6c4a544eac 100644
+--- a/hw/microblaze/petalogix_ml605_mmu.c
++++ b/hw/microblaze/petalogix_ml605_mmu.c
+@@ -36,7 +36,6 @@
+ #include "sysemu/sysemu.h"
+ #include "hw/devices.h"
+ #include "hw/boards.h"
+-#include "sysemu/block-backend.h"
+ #include "hw/char/serial.h"
+ #include "exec/address-spaces.h"
+ #include "hw/ssi/ssi.h"
+diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
+index 1186002a76..0da3e62102 100644
+--- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
++++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
+@@ -34,7 +34,6 @@
+ #include "sysemu/sysemu.h"
+ #include "hw/devices.h"
+ #include "hw/boards.h"
+-#include "sysemu/block-backend.h"
+ #include "exec/address-spaces.h"
+ #include "hw/char/xilinx_uartlite.h"
+ 
+diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
+index e04b49d3c5..e5cf8ed1a3 100644
+--- a/hw/mips/mips_r4k.c
++++ b/hw/mips/mips_r4k.c
+@@ -30,7 +30,6 @@
+ #include "hw/timer/mc146818rtc.h"
+ #include "hw/input/i8042.h"
+ #include "hw/timer/i8254.h"
+-#include "sysemu/block-backend.h"
+ #include "exec/address-spaces.h"
+ #include "sysemu/qtest.h"
+ #include "qemu/error-report.h"
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index ebf30dd60b..2e910428f3 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -35,7 +35,6 @@
+ #include "elf.h"
+ #include "net/net.h"
+ #include "sysemu/device_tree.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/cpus.h"
+ #include "sysemu/hw_accel.h"
+ #include "kvm_ppc.h"
+diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
+index a80cbdd7ee..b4bb90d50b 100644
+--- a/hw/ppc/virtex_ml507.c
++++ b/hw/ppc/virtex_ml507.c
+@@ -44,8 +44,6 @@
+ #include "hw/ppc/ppc4xx.h"
+ #include "ppc405.h"
+ 
+-#include "sysemu/block-backend.h"
+-
+ #define EPAPR_MAGIC    (0x45504150)
+ #define FLASH_SIZE     (16 * 1024 * 1024)
+ 
+diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
+index 22df33b509..b68798ac52 100644
+--- a/hw/s390x/virtio-ccw.c
++++ b/hw/s390x/virtio-ccw.c
+@@ -13,7 +13,6 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "hw/hw.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/kvm.h"
+diff --git a/hw/scsi/mptsas.c b/hw/scsi/mptsas.c
+index 3f061f3f68..4176e871e1 100644
+--- a/hw/scsi/mptsas.c
++++ b/hw/scsi/mptsas.c
+@@ -26,7 +26,6 @@
+ #include "hw/hw.h"
+ #include "hw/pci/pci.h"
+ #include "sysemu/dma.h"
+-#include "sysemu/block-backend.h"
+ #include "hw/pci/msi.h"
+ #include "qemu/iov.h"
+ #include "hw/scsi/scsi.h"
+diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
+index 3ba1f7dd23..1cc94dbfdf 100644
+--- a/hw/sd/pl181.c
++++ b/hw/sd/pl181.c
+@@ -8,7 +8,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ #include "hw/sysbus.h"
+ #include "hw/sd/sd.h"
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 63c44a4ee8..b65403947b 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -26,7 +26,6 @@
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "hw/hw.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ #include "sysemu/dma.h"
+ #include "qemu/timer.h"
+diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
+index ae04b6641b..96542ecd62 100644
+--- a/hw/sd/ssi-sd.c
++++ b/hw/sd/ssi-sd.c
+@@ -11,7 +11,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ #include "hw/ssi/ssi.h"
+ #include "hw/sd/sd.h"
+diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
+index 6b01d6eed8..8fe8766eb9 100644
+--- a/hw/sh4/r2d.c
++++ b/hw/sh4/r2d.c
+@@ -40,7 +40,6 @@
+ #include "hw/loader.h"
+ #include "hw/usb.h"
+ #include "hw/block/flash.h"
+-#include "sysemu/block-backend.h"
+ #include "exec/address-spaces.h"
+ 
+ #define FLASH_BASE 0x00000000
+diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+index 5eb0c323ca..3a01fe90f0 100644
+--- a/hw/virtio/virtio-pci.c
++++ b/hw/virtio/virtio-pci.c
+@@ -32,7 +32,6 @@
+ #include "hw/pci/msix.h"
+ #include "hw/loader.h"
+ #include "sysemu/kvm.h"
+-#include "sysemu/block-backend.h"
+ #include "virtio-pci.h"
+ #include "qemu/range.h"
+ #include "hw/virtio/virtio-bus.h"
+diff --git a/hw/xen/xen_devconfig.c b/hw/xen/xen_devconfig.c
+index fac9d3fcdc..aebc19bd71 100644
+--- a/hw/xen/xen_devconfig.c
++++ b/hw/xen/xen_devconfig.c
+@@ -1,7 +1,6 @@
+ #include "qemu/osdep.h"
+ #include "hw/xen/xen_backend.h"
+ #include "qemu/option.h"
+-#include "sysemu/block-backend.h"
+ #include "sysemu/blockdev.h"
+ 
+ /* ------------------------------------------------------------- */
+diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
+index 63734c70ec..5dc13034f9 100644
+--- a/hw/xtensa/xtfpga.c
++++ b/hw/xtensa/xtfpga.c
+@@ -38,7 +38,6 @@
+ #include "net/net.h"
+ #include "hw/sysbus.h"
+ #include "hw/block/flash.h"
+-#include "sysemu/block-backend.h"
+ #include "chardev/char.h"
+ #include "sysemu/device_tree.h"
+ #include "qemu/error-report.h"
+-- 
+2.17.0
 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/block/nvme.h | 1 -
->  hw/block/nvme.c | 1 +
->  2 files changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/block/nvme.h b/hw/block/nvme.h
-> index 8f3981121d..cabcf20c32 100644
-> --- a/hw/block/nvme.h
-> +++ b/hw/block/nvme.h
-> @@ -1,6 +1,5 @@
->  #ifndef HW_NVME_H
->  #define HW_NVME_H
-> -#include "qemu/cutils.h"
->  #include "block/nvme.h"
->  
->  typedef struct NvmeAsyncEvent {
-> diff --git a/hw/block/nvme.c b/hw/block/nvme.c
-> index 85d2406400..811084b6a7 100644
-> --- a/hw/block/nvme.c
-> +++ b/hw/block/nvme.c
-> @@ -35,6 +35,7 @@
->  #include "sysemu/block-backend.h"
->  
->  #include "qemu/log.h"
-> +#include "qemu/cutils.h"
->  #include "trace.h"
->  #include "nvme.h"
->  
-> 
 
