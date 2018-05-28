@@ -1,70 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fNAu7-0004hx-Ie
-	for mharc-qemu-trivial@gnu.org; Mon, 28 May 2018 01:41:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50282)
+	id 1fNMcL-0005iW-7A
+	for mharc-qemu-trivial@gnu.org; Mon, 28 May 2018 14:11:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39673)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNAu4-0004g7-E0
-	for qemu-trivial@nongnu.org; Mon, 28 May 2018 01:41:09 -0400
+	(envelope-from <thuth@redhat.com>) id 1fNMcG-0005gs-Dw
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 14:11:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNAu3-0007hO-Gu
-	for qemu-trivial@nongnu.org; Mon, 28 May 2018 01:41:08 -0400
-Received: from mail-qk0-x243.google.com ([2607:f8b0:400d:c09::243]:38547)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNAty-0007dq-Ne; Mon, 28 May 2018 01:41:02 -0400
-Received: by mail-qk0-x243.google.com with SMTP id c23-v6so8381093qkb.5;
-	Sun, 27 May 2018 22:41:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=owkJCIC3+EDOSoytaIBKyKQ3CUkgwJlIASRByu5l7Fw=;
-	b=kMiPAiaZvpNiDjnKQsvMnm5eVl2SYIr5oGpsxuEaDgSw/+SSxv3a7PFNUoyrvUzQAK
-	9NW2Ouai+A+++xtxvOOkM1u/bFBw+r+YjP1IjqY9GRor5bN3o6nVoMtd03/+At6uQRJH
-	PtV4peTIYMbc4ATesp/TEF/FsOTqafVavcdX9cpYVEoR7dwzLGyINVXGZiRNSr56Rdma
-	rVCJ0x8X5zW+lgOJG9jB1zJsD6Bx5Q928ufy21MN0k1IPK7KLKPPHEOHH7SpOiKOkiw5
-	QMLlZj17PGVbAnDS7aBDgLyov8fgLINsbFziGS5+CxKcekCwrJLIDTS7OA6G/fI8CfKV
-	Sl1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=owkJCIC3+EDOSoytaIBKyKQ3CUkgwJlIASRByu5l7Fw=;
-	b=dkJTaBlpRbyIv3u/6tu/HiqBqWBdCfF4pYaF766wnAt0PGsXp3d6B+yfkPN7gYunVG
-	oV6VMSEYJPz5UXuQYxcV1KOWIbAV0z0uU4iYEha3WBBK3WDaNGuZ6VVr2HbBqrGmMSDY
-	b64mwh6FFQia7090F+HEVdEXaMBebbOVzGhDzACnKnzEt9jX3ntj+YqiKT1458UNkYfM
-	XHyL7x1Yh1TZaWCMpnXa9i8FHOuyT+nOS4fkAaMJyIzE73p7VrhBuir1TWm5UNTNCIO/
-	ko1SY1MSrcBm+7VmpEDdWH4QUVLGlF+jHUXdnTlXrDJzgzil148yEJFu44pes5OOt6j/
-	GqIg==
-X-Gm-Message-State: ALKqPwd4Vo/k2BxoqzHW4k72gsRulkuQDITdJ1NQR74zc+lQXbRZ00sB
-	cbsx++uFKMT9CexxtRWZSo4=
-X-Google-Smtp-Source: ADUXVKJUSMONuvU+R6Ox4DMwLA6b7i45J7/+p4HrJUZGSkCpvJ7Ra082w9cDg8uOX0+2b+9dOQNCPQ==
-X-Received: by 2002:a37:73c6:: with SMTP id
-	o189-v6mr10436458qkc.258.1527486061838; 
-	Sun, 27 May 2018 22:41:01 -0700 (PDT)
-Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	b13-v6sm20786829qtp.89.2018.05.27.22.40.59
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 27 May 2018 22:41:01 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
-	Eric Blake <eblake@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
-	qemu-trivial@nongnu.org
-Date: Mon, 28 May 2018 02:40:55 -0300
-Message-Id: <20180528054055.21153-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.17.0
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::243
-Subject: [Qemu-trivial] [PATCH] trace: Sort trace-events-subdirs
+	(envelope-from <thuth@redhat.com>) id 1fNMcB-0007BI-Em
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 14:11:32 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34270 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1fNMc6-00078C-Ja; Mon, 28 May 2018 14:11:22 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3AFE7818BAF6;
+	Mon, 28 May 2018 18:11:22 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-88.ams2.redhat.com [10.36.116.88])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 87836ED178;
+	Mon, 28 May 2018 18:11:20 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: David Gibson <david@gibson.dropbear.id.au>,
+	qemu-ppc@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>,
+	Alistair Francis <alistair.francis@xilinx.com>
+Date: Mon, 28 May 2018 20:11:19 +0200
+Message-Id: <1527531079-32717-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Mon, 28 May 2018 18:11:22 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Mon, 28 May 2018 18:11:22 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: [Qemu-trivial] [PATCH] target/ppc: Use proper logging function for
+ possible guest errors
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,128 +53,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 May 2018 05:41:09 -0000
+X-List-Received-Date: Mon, 28 May 2018 18:11:33 -0000
 
-Having these entries sorted helps to add new ones.
+fprintf() and qemu_log_separate() are frowned upon these days for printing
+logging information in QEMU. Accessing the wrong SPRs indicates wrong guest
+behaviour in most cases, and we've got a proper way to log such situations,
+which is the qemu_log_mask(LOG_GUEST_ERROR, ...) function. So use this
+function now for logging the bad SPR accesses instead.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- Makefile.objs | 82 +++++++++++++++++++++++++--------------------------
- 1 file changed, 41 insertions(+), 41 deletions(-)
+ target/ppc/translate.c | 37 ++++++++++++-------------------------
+ 1 file changed, 12 insertions(+), 25 deletions(-)
 
-diff --git a/Makefile.objs b/Makefile.objs
-index c6c3554203..2c8cb72407 100644
---- a/Makefile.objs
-+++ b/Makefile.objs
-@@ -196,66 +196,66 @@ vhost-user-blk-obj-y = contrib/vhost-user-blk/
+diff --git a/target/ppc/translate.c b/target/ppc/translate.c
+index e30d99f..0806ee0 100644
+--- a/target/ppc/translate.c
++++ b/target/ppc/translate.c
+@@ -3933,13 +3933,9 @@ static inline void gen_op_mfspr(DisasContext *ctx)
+              * allowing userland application to read the PVR
+              */
+             if (sprn != SPR_PVR) {
+-                fprintf(stderr, "Trying to read privileged spr %d (0x%03x) at "
+-                        TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+-                if (qemu_log_separate()) {
+-                    qemu_log("Trying to read privileged spr %d (0x%03x) at "
+-                             TARGET_FMT_lx "\n", sprn, sprn,
+-                             ctx->base.pc_next - 4);
+-                }
++                qemu_log_mask(LOG_GUEST_ERROR, "Trying to read privileged spr "
++                              "%d (0x%03x) at " TARGET_FMT_lx "\n", sprn, sprn,
++                              ctx->base.pc_next - 4);
+             }
+             gen_priv_exception(ctx, POWERPC_EXCP_PRIV_REG);
+         }
+@@ -3951,12 +3947,9 @@ static inline void gen_op_mfspr(DisasContext *ctx)
+             return;
+         }
+         /* Not defined */
+-        fprintf(stderr, "Trying to read invalid spr %d (0x%03x) at "
+-                TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+-        if (qemu_log_separate()) {
+-            qemu_log("Trying to read invalid spr %d (0x%03x) at "
+-                     TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+-        }
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "Trying to read invalid spr %d (0x%03x) at "
++                      TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
  
- ######################################################################
- trace-events-subdirs =
--trace-events-subdirs += util
--trace-events-subdirs += crypto
--trace-events-subdirs += io
--trace-events-subdirs += migration
-+trace-events-subdirs += accel/kvm
-+trace-events-subdirs += accel/tcg
-+trace-events-subdirs += audio
- trace-events-subdirs += block
- trace-events-subdirs += chardev
-+trace-events-subdirs += crypto
-+trace-events-subdirs += hw/9pfs
-+trace-events-subdirs += hw/acpi
-+trace-events-subdirs += hw/alpha
-+trace-events-subdirs += hw/arm
-+trace-events-subdirs += hw/audio
- trace-events-subdirs += hw/block
- trace-events-subdirs += hw/block/dataplane
- trace-events-subdirs += hw/char
--trace-events-subdirs += hw/intc
--trace-events-subdirs += hw/net
--trace-events-subdirs += hw/rdma
--trace-events-subdirs += hw/rdma/vmw
--trace-events-subdirs += hw/virtio
--trace-events-subdirs += hw/audio
--trace-events-subdirs += hw/misc
--trace-events-subdirs += hw/misc/macio
--trace-events-subdirs += hw/usb
--trace-events-subdirs += hw/scsi
--trace-events-subdirs += hw/nvram
- trace-events-subdirs += hw/display
--trace-events-subdirs += hw/input
--trace-events-subdirs += hw/timer
- trace-events-subdirs += hw/dma
--trace-events-subdirs += hw/sparc
--trace-events-subdirs += hw/sparc64
--trace-events-subdirs += hw/sd
--trace-events-subdirs += hw/isa
--trace-events-subdirs += hw/mem
-+trace-events-subdirs += hw/hppa
- trace-events-subdirs += hw/i386
- trace-events-subdirs += hw/i386/xen
--trace-events-subdirs += hw/9pfs
--trace-events-subdirs += hw/ppc
-+trace-events-subdirs += hw/ide
-+trace-events-subdirs += hw/input
-+trace-events-subdirs += hw/intc
-+trace-events-subdirs += hw/isa
-+trace-events-subdirs += hw/mem
-+trace-events-subdirs += hw/misc
-+trace-events-subdirs += hw/misc/macio
-+trace-events-subdirs += hw/net
-+trace-events-subdirs += hw/nvram
- trace-events-subdirs += hw/pci
- trace-events-subdirs += hw/pci-host
-+trace-events-subdirs += hw/ppc
-+trace-events-subdirs += hw/rdma
-+trace-events-subdirs += hw/rdma/vmw
- trace-events-subdirs += hw/s390x
-+trace-events-subdirs += hw/scsi
-+trace-events-subdirs += hw/sd
-+trace-events-subdirs += hw/sparc
-+trace-events-subdirs += hw/sparc64
-+trace-events-subdirs += hw/timer
-+trace-events-subdirs += hw/tpm
-+trace-events-subdirs += hw/usb
- trace-events-subdirs += hw/vfio
--trace-events-subdirs += hw/acpi
--trace-events-subdirs += hw/arm
--trace-events-subdirs += hw/alpha
--trace-events-subdirs += hw/hppa
-+trace-events-subdirs += hw/virtio
- trace-events-subdirs += hw/xen
--trace-events-subdirs += hw/ide
--trace-events-subdirs += hw/tpm
--trace-events-subdirs += ui
--trace-events-subdirs += audio
-+trace-events-subdirs += io
-+trace-events-subdirs += linux-user
-+trace-events-subdirs += migration
-+trace-events-subdirs += nbd
- trace-events-subdirs += net
-+trace-events-subdirs += qapi
-+trace-events-subdirs += qom
-+trace-events-subdirs += scsi
- trace-events-subdirs += target/arm
- trace-events-subdirs += target/i386
- trace-events-subdirs += target/mips
--trace-events-subdirs += target/sparc
--trace-events-subdirs += target/s390x
- trace-events-subdirs += target/ppc
--trace-events-subdirs += qom
--trace-events-subdirs += linux-user
--trace-events-subdirs += qapi
--trace-events-subdirs += accel/tcg
--trace-events-subdirs += accel/kvm
--trace-events-subdirs += nbd
--trace-events-subdirs += scsi
-+trace-events-subdirs += target/s390x
-+trace-events-subdirs += target/sparc
-+trace-events-subdirs += ui
-+trace-events-subdirs += util
+         /* The behaviour depends on MSR:PR and SPR# bit 0x10,
+          * it can generate a priv, a hv emu or a no-op
+@@ -4097,12 +4090,9 @@ static void gen_mtspr(DisasContext *ctx)
+             (*write_cb)(ctx, sprn, rS(ctx->opcode));
+         } else {
+             /* Privilege exception */
+-            fprintf(stderr, "Trying to write privileged spr %d (0x%03x) at "
+-                    TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+-            if (qemu_log_separate()) {
+-                qemu_log("Trying to write privileged spr %d (0x%03x) at "
+-                         TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+-            }
++            qemu_log_mask(LOG_GUEST_ERROR, "Trying to write privileged spr "
++                          "%d (0x%03x) at " TARGET_FMT_lx "\n", sprn, sprn,
++                          ctx->base.pc_next - 4);
+             gen_priv_exception(ctx, POWERPC_EXCP_PRIV_REG);
+         }
+     } else {
+@@ -4114,12 +4104,9 @@ static void gen_mtspr(DisasContext *ctx)
+         }
  
- trace-events-files = $(SRC_PATH)/trace-events $(trace-events-subdirs:%=$(SRC_PATH)/%/trace-events)
+         /* Not defined */
+-        if (qemu_log_separate()) {
+-            qemu_log("Trying to write invalid spr %d (0x%03x) at "
+-                     TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+-        }
+-        fprintf(stderr, "Trying to write invalid spr %d (0x%03x) at "
+-                TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "Trying to write invalid spr %d (0x%03x) at "
++                      TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
  
+ 
+         /* The behaviour depends on MSR:PR and SPR# bit 0x10,
 -- 
-2.17.0
+1.8.3.1
 
 
