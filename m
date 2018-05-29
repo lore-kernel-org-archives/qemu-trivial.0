@@ -1,80 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fNfWb-0001Cc-MV
-	for mharc-qemu-trivial@gnu.org; Tue, 29 May 2018 10:22:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35052)
+	id 1fNfZ4-0002EY-Vd
+	for mharc-qemu-trivial@gnu.org; Tue, 29 May 2018 10:25:31 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35444)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNfWY-0001Ay-N8
-	for qemu-trivial@nongnu.org; Tue, 29 May 2018 10:22:55 -0400
+	id 1fNfZ2-0002DA-Ko
+	for qemu-trivial@nongnu.org; Tue, 29 May 2018 10:25:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNfWU-0007ul-P0
-	for qemu-trivial@nongnu.org; Tue, 29 May 2018 10:22:54 -0400
-Received: from mail-qt0-x233.google.com ([2607:f8b0:400d:c0d::233]:39608)
+	id 1fNfZ1-0000gl-H6
+	for qemu-trivial@nongnu.org; Tue, 29 May 2018 10:25:28 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:34419)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNfWU-0007ua-Kp; Tue, 29 May 2018 10:22:50 -0400
-Received: by mail-qt0-x233.google.com with SMTP id f1-v6so18837593qtj.6;
-	Tue, 29 May 2018 07:22:50 -0700 (PDT)
+	id 1fNfYv-0000Ys-Ul; Tue, 29 May 2018 10:25:22 -0400
+Received: by mail-qk0-x241.google.com with SMTP id q70-v6so2968745qke.1;
+	Tue, 29 May 2018 07:25:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=VJDaPSZSaCYGL/P1QTCSsu9uEnTLPE2n/y/MJrarDUg=;
-	b=kGFThCk9LsmAo84yD8LTmgR0HdoGqUr0DQWgqZ2khq7p+Bgeu0UnrZAHjthX0vKh1k
-	EtUEMb08CeSLDr/sUbWwN42FH+RZto1VGjfHcRintvPtAWn8IESnbazhlAEYIw0ZQl56
-	i2Gjg4bZUplcTxB0D/exYLCJce27HINOUEJ7Mwr/J/ycGYfbgQjGpTTUla8B6by42Wz7
-	CDf6DdomJbf4qw/xjZEAw6npCtvGveh4mtuqcdmksKR/p9diaw2ZGR+8/21b7gkK3tVh
-	oqCYMELAqOYR3sB4DSPtX+GPgNkX16oc4jdQYnNd9QiKo+BREn3BwYwWWVJDO1MZakl2
-	kOYw==
+	bh=ghEUv0Rmn6HlVwbB1vedKO7PalJLVihCMndLlD6HMew=;
+	b=VGL3KKJeZiKGNApmpShnwC3Q65lbL5k8KvkAVVUARLd8KiB7UsmNe+1nYol6kgl/O8
+	Jj7EmGCnCVFYchYK/k6td3mC2+7FU8aUTAC3yboiTd9GIkoQxX0rN4Uhu0sak2O8ZT0F
+	21WntH1IoRUMRYFE8ZKXkDRwViCGoEUav6tVfxSjPcN4VuOHV21ymMlARVhejtWpY/Ua
+	jVMg/bc0MH8aAz6zce+0sZQtBqvsg9KFmF9Sk7QVtdnVaPdiA0sWZ3N4Yurd8uASvkcd
+	6WMNpriZFlCx9EabfkCdLEaBudk57KdZCLacmibN+ejT+sUzh40gDKA1P8h3BS+/QeVE
+	WLmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=VJDaPSZSaCYGL/P1QTCSsu9uEnTLPE2n/y/MJrarDUg=;
-	b=rFzdLiufTGpejIsJV++YIaImSwEcXsIMauSlPSL1HasMj+7lS98y3IoKporc5W9MiU
-	ml6Th/Hyqeyhv5De1DfdC7RAJZiaBl3LJXab0kSg+UxfqpXtdNEX+ugtXDIZw/zMpCPk
-	CN9YgL3WLOeWJsa7i1HUybtocTX3QXrfOgMynjpjF1hWMbX192MMKsK50SEpwVjFaZ1H
-	QseuawOgdOg7ASV0LLqDnaA0JE4XqVr16x1Uhao/Y+dR32c9roYsgq7srYy71q3dJNSW
-	XrRc0aPc/RTMUyc/6WSHNKnUnF7kVF+bjRJj6LMYAQSCXXUtJMq316iwtYThcBE6dX+j
-	KiVQ==
-X-Gm-Message-State: ALKqPwfXtXOmsin6+g6tta7xQX25rZo8IMhMyibIPHWB2vQxhaIIblZk
-	dc+L8n0Z8Ch19AO9sGGC0sGtv6E7qto=
-X-Google-Smtp-Source: ADUXVKKhPnnwfUJENreLr0HSuw2miirk+ljXP8WdnF7T1fC6L3Tt/QdGJnFTb/XRzaSlQ72ECXlBmA==
-X-Received: by 2002:a0c:9699:: with SMTP id
-	a25-v6mr16059558qvd.119.1527603769906; 
-	Tue, 29 May 2018 07:22:49 -0700 (PDT)
+	bh=ghEUv0Rmn6HlVwbB1vedKO7PalJLVihCMndLlD6HMew=;
+	b=TSGoFEn6qqKMl/vjIwnhof2AaIiU8xkcS3rLJJJ5UJ4aplvPN+74Py0juBsc1UvAAB
+	JVzd1V3sy3Tw+83CuKWswzv21wmP49GDoB2sfwIdS6s5hOmC/jn/21Kz06qG0MKwqE7X
+	n9NlLv8vAm9iKSexY6FrhxWfc3xdyzBmu15FdzN7xJ+CxuLaKKczYGzfglAjoGTtW3BB
+	ETpy0FVNwfi13tFypBiqHxkwWjuzrXYXhgMkibOYelM1ReKCsSKo6zbfRRZBz1qLI90H
+	PuEPu5GvK0zMxHuc1P8eMPzUVukeVMXU/OzkV5sKaqtOXMWwTJ8ZqLLw5axpH3pzJlYs
+	/B4g==
+X-Gm-Message-State: ALKqPwcBMy6omQuGN+Vh74x/v3ar5qjbkVXRk/2UWmky8FOvJgxxEYPm
+	jVolBYsj4awnFHTPZBnyF8qkQHd5hI4=
+X-Google-Smtp-Source: ADUXVKJNrmR+bZpwlQzElUx0AA2vf7DaJ10tcOzgBNBV1nfLEf5B2aT3VfVMlNsY37qXpJ6tjIYwRw==
+X-Received: by 2002:a37:4d56:: with SMTP id
+	a83-v6mr15476428qkb.105.1527603921240; 
+	Tue, 29 May 2018 07:25:21 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	t184-v6sm23258537qkc.6.2018.05.29.07.22.47
+	47-v6sm26507950qtw.4.2018.05.29.07.25.18
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 29 May 2018 07:22:49 -0700 (PDT)
+	Tue, 29 May 2018 07:25:20 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
-To: Eric Blake <eblake@redhat.com>,
+To: Laurent Vivier <laurent@vivier.eu>, Eric Blake <eblake@redhat.com>,
 	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+	Riku Voipio <riku.voipio@iki.fi>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 References: <20170724182751.18261-1-f4bug@amsat.org>
-	<20170724182751.18261-16-f4bug@amsat.org>
+	<20170724182751.18261-27-f4bug@amsat.org>
+	<cc23ddee-ad10-74ef-874c-6ed1ef485d2e@vivier.eu>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <4f76d9d2-5c4b-a6ef-e050-9d9a1f31be85@amsat.org>
-Date: Tue, 29 May 2018 11:22:46 -0300
+Message-ID: <811e6e16-d9d7-3b96-7d43-f9d7b6ace063@amsat.org>
+Date: Tue, 29 May 2018 11:25:16 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20170724182751.18261-16-f4bug@amsat.org>
+In-Reply-To: <cc23ddee-ad10-74ef-874c-6ed1ef485d2e@vivier.eu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::233
-Subject: Re: [Qemu-trivial] [PATCH for 2.10 15/35] usb: correctly handle
- Zero Length Packets
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 2.10 26/35] linux-user:
+ use is_error() to avoid warnings and make the code clearer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,38 +87,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 May 2018 14:22:55 -0000
+X-List-Received-Date: Tue, 29 May 2018 14:25:29 -0000
 
-On 07/24/2017 03:27 PM, Philippe Mathieu-Daudé wrote:
-> USB Specification Revision 2.0, §5.5.3:
->   The Data stage of a control transfer from an endpoint to the host is complete when the endpoint does one of the following:
->   • Has transferred exactly the amount of data specified during the Setup stage
->   • Transfers a packet with a payload size less than wMaxPacketSize or transfers a zero-length packet"
-> 
-> hw/usb/redirect.c:802:9: warning: Declared variable-length array (VLA) has zero size
->         uint8_t buf[size];
->         ^~~~~~~~~~~ ~~~~
-> 
-> Reported-by: Clang Static Analyzer
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/usb/redirect.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
-> index 5e42730449..5b7073d2cd 100644
-> --- a/hw/usb/redirect.c
-> +++ b/hw/usb/redirect.c
-> @@ -795,7 +795,7 @@ static void usbredir_handle_bulk_data(USBRedirDevice *dev, USBPacket *p,
->             usbredirparser_peer_has_cap(dev->parser,
->                                         usb_redir_cap_32bits_bulk_length));
->  
-> -    if (ep & USB_DIR_IN) {
-> +    if (ep & USB_DIR_IN || size == 0) {
->          usbredirparser_send_bulk_packet(dev->parser, p->id,
->                                          &bulk_packet, NULL, 0);
->      } else {
-> 
+Hi Laurent,
 
-Ping?
+On 07/24/2017 04:16 PM, Laurent Vivier wrote:
+> Le 24/07/2017 à 20:27, Philippe Mathieu-Daudé a écrit :
+>> linux-user/flatload.c:740:9: warning: Loss of sign in implicit conversion
+>>     if (res > (unsigned long)-4096)
+>>         ^~~
+>>
+>> Reported-by: Clang Static Analyzer
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> 
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> 
+>> ---
+>>  linux-user/flatload.c | 15 +++++++++------
+>>  1 file changed, 9 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/linux-user/flatload.c b/linux-user/flatload.c
+>> index a35a560904..10c529910f 100644
+>> --- a/linux-user/flatload.c
+>> +++ b/linux-user/flatload.c
+>> @@ -224,8 +224,9 @@ static int decompress_exec(
+>>  		ret = bprm->file->f_op->read(bprm->file, buf, LBUFSIZE, &fpos);
+>>  		if (ret <= 0)
+>>  			break;
+>> -		if (ret >= (unsigned long) -4096)
+>> +                if (is_error(ret)) {
+>>  			break;
+>> +                }
+>>  		len -= ret;
+>>  
+>>  		strm.next_in = buf;
+>> @@ -283,8 +284,7 @@ calc_reloc(abi_ulong r, struct lib_info *p, int curid, int internalp)
+>>                      "in same module (%d != %d)\n",
+>>                      (unsigned) r, curid, id);
+>>              goto failed;
+>> -        } else if ( ! p[id].loaded &&
+>> -                    load_flat_shared_library(id, p) > (unsigned long) -4096) {
+>> +        } else if (!p[id].loaded && is_error(load_flat_shared_library(id, p))) {
+>>              fprintf(stderr, "BINFMT_FLAT: failed to load library %d\n", id);
+>>              goto failed;
+>>          }
+>> @@ -523,9 +523,10 @@ static int load_flat_file(struct linux_binprm * bprm,
+>>                  fpos = 0;
+>>                  result = bprm->file->f_op->read(bprm->file,
+>>                                  (char *) textpos, text_len, &fpos);
+>> -                if (result < (unsigned long) -4096)
+>> +                if (!is_error(result)) {
+>>                          result = decompress_exec(bprm, text_len, (char *) datapos,
+>>                                           data_len + (relocs * sizeof(unsigned long)), 0);
+>> +                }
+>>          }
+>>          else
+>>  #endif
+>> @@ -693,8 +694,9 @@ static int load_flat_shared_library(int id, struct lib_info *libs)
+>>  
+>>  	res = prepare_binprm(&bprm);
+>>  
+>> -	if (res <= (unsigned long)-4096)
+>> +        if (!is_error(res)) {
+>>  		res = load_flat_file(&bprm, libs, id, NULL);
+>> +        }
+>>  	if (bprm.file) {
+>>  		allow_write_access(bprm.file);
+>>  		fput(bprm.file);
+>> @@ -737,8 +739,9 @@ int load_flt_binary(struct linux_binprm *bprm, struct image_info *info)
+>>  
+>>  
+>>      res = load_flat_file(bprm, libinfo, 0, &stack_len);
+>> -    if (res > (unsigned long)-4096)
+>> +    if (is_error(res)) {
+>>              return res;
+>> +    }
+>>  
+>>      /* Update data segment pointers for all libraries */
+>>      for (i=0; i<MAX_SHARED_LIBS; i++) {
+>>
+
+Can you take this via your linux-user tree?
+
+Thanks,
+
+Phil.
 
