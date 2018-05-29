@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fNgPZ-0007gS-PE
-	for mharc-qemu-trivial@gnu.org; Tue, 29 May 2018 11:19:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50133)
+	id 1fNgSU-0000PD-EF
+	for mharc-qemu-trivial@gnu.org; Tue, 29 May 2018 11:22:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51916)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1fNgPW-0007eR-Il
-	for qemu-trivial@nongnu.org; Tue, 29 May 2018 11:19:43 -0400
+	(envelope-from <laurent@vivier.eu>) id 1fNgSS-0000O4-Ab
+	for qemu-trivial@nongnu.org; Tue, 29 May 2018 11:22:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1fNgPT-0002S9-Ap
-	for qemu-trivial@nongnu.org; Tue, 29 May 2018 11:19:42 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:35835)
+	(envelope-from <laurent@vivier.eu>) id 1fNgSR-0005ts-7B
+	for qemu-trivial@nongnu.org; Tue, 29 May 2018 11:22:44 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:40029)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1fNgPS-0002Qy-Vu; Tue, 29 May 2018 11:19:39 -0400
+	id 1fNgSM-0005mI-Ec; Tue, 29 May 2018 11:22:38 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue005 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	0Mgrp6-1fjd910VBg-00M2ef; Tue, 29 May 2018 17:19:31 +0200
+	0MOmRO-1fRWT82VF8-006AFL; Tue, 29 May 2018 17:22:24 +0200
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Eric Blake <eblake@redhat.com>,
 	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-	Riku Voipio <riku.voipio@linaro.org>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+	Riku Voipio <riku.voipio@iki.fi>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 References: <20170724182751.18261-1-f4bug@amsat.org>
-	<20170724182751.18261-27-f4bug@amsat.org>
-	<cc23ddee-ad10-74ef-874c-6ed1ef485d2e@vivier.eu>
-	<811e6e16-d9d7-3b96-7d43-f9d7b6ace063@amsat.org>
+	<20170724182751.18261-32-f4bug@amsat.org>
+	<950e1d4b-3a65-6cf5-88a7-13a986f69e0f@vivier.eu>
+	<d5692df7-1647-81cb-9034-98e8a0e31f4c@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -68,36 +68,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <d93b02bd-6776-497a-2dc0-aed009be380b@vivier.eu>
-Date: Tue, 29 May 2018 17:19:29 +0200
+Message-ID: <8a77c1f2-a1c3-4c7c-7130-8a8644493e0c@vivier.eu>
+Date: Tue, 29 May 2018 17:22:21 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <811e6e16-d9d7-3b96-7d43-f9d7b6ace063@amsat.org>
+In-Reply-To: <d5692df7-1647-81cb-9034-98e8a0e31f4c@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:dxSkWDmkeaztEzFTzgciKNcK/mYVHCPzuLWj2h4cpzamCLSucwN
-	kikYfxMdDFlrlCLLtpCwsqNV2v7TAGhlg14/NREglxH02/EVwpbw9vLBJNmyR0ZsCL4MxMr
-	7KsxFuh1qLfWPOwYTdVoxTHvt4neVcrZiFsxUdo5282cb88eCXRuqn5fwvRVrQqC64IyjEa
-	94psV796g7wUiXZERnssw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:4O7AotNpRXU=:Qw+dGBEjINjf4zKO6gjF1q
-	JU8AsqYeRHLAu9vGEPgrIoBqzT9ivUJHO2tSqx6qFA4nSywA6YtGOcNUfHOG5BlsWqKGo5YSw
-	IGxlNoHBsLaDDpQrkmJM4LeAVH0+Siq9bWbf/30NxXswUcMfJsbDCyV/suxG6bZov3V0JYGcr
-	NNPsI8CLbfu0UnsisVaTJxG5sVMh3MsW0JarlJRWUnS5wANPjOdBXJV54XIGxGY0ubYDR0c3l
-	N+/Mly0wwsZfpSE9/NN1JQZJnWqn0Xe9sJR7giG4YKUDMx/80N50jhq/ZFQ5XKmUKfgN695i6
-	Hu8gdCAsyWmXGQGBySCFQJppmPBi9o9qMluEwyjgaS5PzI9Cm6Dir+w6A13JWJqWvCrXHxcB7
-	VLzVYWVPZmODlG5Chl3kgoP0Lrj1qlRGed/bzAtOoU2iO9TcvMR2OKUTOFI0CLBRpSMja/kdY
-	Z4eg7kMYLQhIORBg62aoQVJN2qhQ9yUTQwdVH4ZG1JqUk/aSRQ+ot9eV6gZmrfo0QvMbvPM+K
-	jqqu4BsNTSDsOqw4XqZM/q8w6SZqzXr+36snV7RIF2/kv7/Gzw8pZCmJ4CmI0ezNrMFD34nzK
-	7AsK+aFb+H8vrP0UTD+groiRG+BmjQuzQmMkoxt0v0ryBlImtriJYeZPj41e8uFOcgR5aVIxU
-	udSxpFRuo/+wvXJbhZiYMZbhnHlyQgn+JUu8MOCD+XxAwC3SYAN8NP7u629QeREDlP6I4Y3Zl
-	9Xai1kXhC9dbk5lg
+X-Provags-ID: V03:K1:nqxasOKeXN2IeMJJdubNl9n4RW/2rUdqBfOHXekD9aZmSX2Uubn
+	Biz1PbnRxkghCF8OXYykCseHZhdfiws6D8ZsjneX7NOOmzfvca7YT5x7QLQaG+Gj27Cwme6
+	j8v497NW53LXTL1o8ppLfjoRRA5+rX07MQDPtzdhcg0qXqst33BP0NPs9wIFSh/JULZuP8Y
+	HYj2W+evQVlA/fWWtdbYw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:70qrpGtamzg=:1n7oNEk6VqLgUL6cvXFLrt
+	e/7KO+LsskKcPcXx7P6RSR6sULxxeAu8xg0rbJzQxDy3VeLR2Q0rBf6ou7+Yh8gDGszArkEv4
+	WM/T+PUN840khvHqA/O3ycWlbgJCXXepdfPWvLGS23qGoEOzf+ZXT7+oILLyLnEIz/gkabnHE
+	oHLkG0KFcm5hbjSSc93fkGNTR9d/IFiP7RZh2Aa0AvrYOSUNYnLwLaCd5pWqOJRC4RtFaF0sW
+	/x/v+Nc1fbDFjWFm+eZUcC1svxXdiDtgBEzOskgWIL1Avk7hIiM8lXmAZ3RWKOuMu+DVxMkGs
+	T89Cagq3SX5H+xh5KstM7WRajl/1EnSM0GYDSPY+mIew6+QcnLwWNuozAsHG4yifurYWKVilK
+	UmWmdNhifEywi9tyn4J6YKwVhCI9UsA4tJr6ip0oBds72qAhQ5TMzvqWcRprAkMLlJOGtXI+i
+	ztmJN9GsJAMT7kXvNaLyBMmMMl929M+qPPOaVXClJ/8TAfIaiy5O27bKDiwJqW/zrBQwWUIv4
+	yi0rKTm6JAgieFLJLPppupdnJHJuUlyZX5RctYtoJr3gfTnAhElI05n/HYE5ctU5hzD7gBbNE
+	5ujPwb2jVIYwcIbuNcI8hbO/chIrx9+qHxLcmWoJm87iJk+5ct4WmSwrd8fH773AKudPQg4zT
+	S60g6llfz1wIJ22pB/Vlo3f2K4W/1YqtYK6MvIosIdxdcKsUgEYHbKDwrWgUA872OVzBsvS5f
+	C70t6H4P1wTqsLcA
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 212.227.126.134
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for 2.10 26/35] linux-user:
- use is_error() to avoid warnings and make the code clearer
+X-Received-From: 212.227.126.130
+Subject: Re: [Qemu-trivial] [PATCH for 2.10 31/35] syscall: replace strcpy()
+ by g_strlcpy()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -109,95 +109,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 May 2018 15:19:44 -0000
+X-List-Received-Date: Tue, 29 May 2018 15:22:45 -0000
 
-Le 29/05/2018 à 16:25, Philippe Mathieu-Daudé a écrit :
+Le 29/05/2018 à 16:19, Philippe Mathieu-Daudé a écrit :
 > Hi Laurent,
-
-Hi Philippe,
-
-> On 07/24/2017 04:16 PM, Laurent Vivier wrote:
+> 
+> On 07/24/2017 04:28 PM, Laurent Vivier wrote:
 >> Le 24/07/2017 à 20:27, Philippe Mathieu-Daudé a écrit :
->>> linux-user/flatload.c:740:9: warning: Loss of sign in implicit conversion
->>>     if (res > (unsigned long)-4096)
->>>         ^~~
+>>> linux-user/syscall.c:9860:17: warning: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119
+>>>                 strcpy (buf->machine, cpu_to_uname_machine(cpu_env));
+>>>                 ^~~~~~
 >>>
 >>> Reported-by: Clang Static Analyzer
 >>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>> ---
+>>>  linux-user/syscall.c | 3 ++-
+>>>  1 file changed, 2 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+>>> index 963b9c8f4b..847f729834 100644
+>>> --- a/linux-user/syscall.c
+>>> +++ b/linux-user/syscall.c
+>>> @@ -9853,7 +9853,8 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
+>>>              if (!is_error(ret)) {
+>>>                  /* Overwrite the native machine name with whatever is being
+>>>                     emulated. */
+>>> -                strcpy (buf->machine, cpu_to_uname_machine(cpu_env));
+>>> +                g_strlcpy(buf->machine, cpu_to_uname_machine(cpu_env),
+>>> +                          sizeof(buf->machine));
+>>>                  /* Allow the user to override the reported release.  */
+>>>                  if (qemu_uname_release && *qemu_uname_release) {
+>>>                      g_strlcpy(buf->release, qemu_uname_release,
+>>>
+>>
+>> We should not have a problem here as cpu_to_uname_machine() is "const
+>> char *" and the string is defined inside QEMU (so it should fit into
+>> machine[]).
 >>
 >> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
->>
->>> ---
->>>  linux-user/flatload.c | 15 +++++++++------
->>>  1 file changed, 9 insertions(+), 6 deletions(-)
->>>
->>> diff --git a/linux-user/flatload.c b/linux-user/flatload.c
->>> index a35a560904..10c529910f 100644
->>> --- a/linux-user/flatload.c
->>> +++ b/linux-user/flatload.c
->>> @@ -224,8 +224,9 @@ static int decompress_exec(
->>>  		ret = bprm->file->f_op->read(bprm->file, buf, LBUFSIZE, &fpos);
->>>  		if (ret <= 0)
->>>  			break;
->>> -		if (ret >= (unsigned long) -4096)
->>> +                if (is_error(ret)) {
->>>  			break;
->>> +                }
->>>  		len -= ret;
->>>  
->>>  		strm.next_in = buf;
->>> @@ -283,8 +284,7 @@ calc_reloc(abi_ulong r, struct lib_info *p, int curid, int internalp)
->>>                      "in same module (%d != %d)\n",
->>>                      (unsigned) r, curid, id);
->>>              goto failed;
->>> -        } else if ( ! p[id].loaded &&
->>> -                    load_flat_shared_library(id, p) > (unsigned long) -4096) {
->>> +        } else if (!p[id].loaded && is_error(load_flat_shared_library(id, p))) {
->>>              fprintf(stderr, "BINFMT_FLAT: failed to load library %d\n", id);
->>>              goto failed;
->>>          }
->>> @@ -523,9 +523,10 @@ static int load_flat_file(struct linux_binprm * bprm,
->>>                  fpos = 0;
->>>                  result = bprm->file->f_op->read(bprm->file,
->>>                                  (char *) textpos, text_len, &fpos);
->>> -                if (result < (unsigned long) -4096)
->>> +                if (!is_error(result)) {
->>>                          result = decompress_exec(bprm, text_len, (char *) datapos,
->>>                                           data_len + (relocs * sizeof(unsigned long)), 0);
->>> +                }
->>>          }
->>>          else
->>>  #endif
->>> @@ -693,8 +694,9 @@ static int load_flat_shared_library(int id, struct lib_info *libs)
->>>  
->>>  	res = prepare_binprm(&bprm);
->>>  
->>> -	if (res <= (unsigned long)-4096)
->>> +        if (!is_error(res)) {
->>>  		res = load_flat_file(&bprm, libs, id, NULL);
->>> +        }
->>>  	if (bprm.file) {
->>>  		allow_write_access(bprm.file);
->>>  		fput(bprm.file);
->>> @@ -737,8 +739,9 @@ int load_flt_binary(struct linux_binprm *bprm, struct image_info *info)
->>>  
->>>  
->>>      res = load_flat_file(bprm, libinfo, 0, &stack_len);
->>> -    if (res > (unsigned long)-4096)
->>> +    if (is_error(res)) {
->>>              return res;
->>> +    }
->>>  
->>>      /* Update data segment pointers for all libraries */
->>>      for (i=0; i<MAX_SHARED_LIBS; i++) {
->>>
 > 
-> Can you take this via your linux-user tree?
-> 
+> Do you mind queuing this patch in your linux-user tree?
 
-Applied, thanks.
+Applied, thanks
 
 Laurent
-
 
 
