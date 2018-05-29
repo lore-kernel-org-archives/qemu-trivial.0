@@ -1,50 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fNSAb-0001Ia-53
-	for mharc-qemu-trivial@gnu.org; Mon, 28 May 2018 20:07:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40839)
+	id 1fNSd3-0005aD-FJ
+	for mharc-qemu-trivial@gnu.org; Mon, 28 May 2018 20:36:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43812)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1fNSAV-0001EG-UK
-	for qemu-trivial@nongnu.org; Mon, 28 May 2018 20:07:19 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNSd0-0005ZM-Ke
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 20:36:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1fNSAU-0001T8-Bd
-	for qemu-trivial@nongnu.org; Mon, 28 May 2018 20:07:15 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43926 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1fNSAN-0001R0-6u; Mon, 28 May 2018 20:07:07 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D1F79401EF05;
-	Tue, 29 May 2018 00:07:06 +0000 (UTC)
-Received: from redhat.com (ovpn-121-106.rdu2.redhat.com [10.10.121.106])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2F769202699A;
-	Tue, 29 May 2018 00:07:05 +0000 (UTC)
-Date: Tue, 29 May 2018 03:07:04 +0300
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNScz-0003gA-GU
+	for qemu-trivial@nongnu.org; Mon, 28 May 2018 20:36:42 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:46559)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fNScu-0003eD-7A; Mon, 28 May 2018 20:36:36 -0400
+Received: by mail-qt0-x243.google.com with SMTP id h5-v6so8676914qtm.13;
+	Mon, 28 May 2018 17:36:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=W07LbdLxdMFliPoXyvMYrZmrS0hgXJvddduT9cspvrI=;
+	b=VIQaHOYPrG3NqliVMsK/gF3nkGhvb3rhT3dIJiyKcH6SZVBNOqaf4JXuFHYcadNVuC
+	ns9VmiE29gvnFo5v7DU/XTrOl8FeQppkAPNFTMglIxuOqgYRYz27BicEchYwSzDEIZXa
+	SXrEq+LQZ15mxuJdPKHWoiegNTJZ81MBp1hKdEcbgittVObsH25YNdSnW4kFas8bIq8/
+	Mtmeamv/W7bKkRj8SfvvpMsNOVShjBy3kBMbhThWFYfMHyQs1mwUSM23l+5fUmtK3eDa
+	pV8b3pVcZQTTkvy1musvzaCYVRyfdAtml+Afm53Gj5wfsz7AcwHvrlUMT/nPr8OYDoJM
+	t0Yg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=W07LbdLxdMFliPoXyvMYrZmrS0hgXJvddduT9cspvrI=;
+	b=ojDYYQkBF4aPIxffjsyd8cO2NI8CaM67SMKRF32HXTr5a3bA1odrKQR521Jkqsm01e
+	jD1qrVYsyiaAfka2t3GDRFlt/YELhrFwrCbLHHHhGKhywi4XVYWHoqaxyuL18WPCc4oa
+	st6XSWoWORBSMqzydaLPPx/uZ0Hr19jsO9Q1Z4d24R7tnJtLuZ0hS9orjhMRa3+Guk4l
+	Ruu6xQvUGNVgNkprB0GyCVYgGDJqW2XxQzbkjaVCaAtUMw41tmEGzUTFUZpQRgEgGATd
+	+UOPBLgniNtDRazG3VkGTzq+AbwjaD0N4fPndGL6qmnyRt1ebC8F6/UugyutGcEPJ8kn
+	8TUA==
+X-Gm-Message-State: ALKqPwdOYBMwCcRbMaHmdOV+aWP7q3e20Lqbk2FsRSPHHVgzMQGtlk2h
+	zcWHJ3m25UtJc6JAT6Lwjyzd7w3yF+w=
+X-Google-Smtp-Source: ADUXVKJU/E0nEa6rJwwXe4Y00bu9UnUv/h04PlH+u0OyaAS9pNqf6EMDKEd1AzqEKD1Rme6eum8Naw==
+X-Received: by 2002:ac8:30ef:: with SMTP id
+	w44-v6mr10020990qta.238.1527554195474; 
+	Mon, 28 May 2018 17:36:35 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	e96-v6sm11687671qtb.69.2018.05.28.17.36.32
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 28 May 2018 17:36:34 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>
 Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20180529030657-mutt-send-email-mst@kernel.org>
+	qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>, "open list:S390" <qemu-s390x@nongnu.org>
 References: <20180528232719.4721-1-f4bug@amsat.org>
+	<20180528232719.4721-2-f4bug@amsat.org>
+	<20180528174805.7a56a4b8@w520.home>
+	<20180529030540-mutt-send-email-mst@kernel.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <ba9292ae-5bf3-54af-fefc-66336f83afd6@amsat.org>
+Date: Mon, 28 May 2018 21:36:31 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20180528232719.4721-1-f4bug@amsat.org>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Tue, 29 May 2018 00:07:06 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Tue, 29 May 2018 00:07:06 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH v4 00/21] Includes cleanup
+In-Reply-To: <20180529030540-mutt-send-email-mst@kernel.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: Re: [Qemu-trivial] [PATCH v4 01/21] vfio: Include
+ "exec/address-spaces.h" directly in the source file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,183 +89,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 May 2018 00:07:19 -0000
+X-List-Received-Date: Tue, 29 May 2018 00:36:43 -0000
 
-On Mon, May 28, 2018 at 08:26:58PM -0300, Philippe Mathieu-Daud=E9 wrote:
-> Hi,
->=20
-> I split the previous series "Use the BYTE-based definitions when useful=
-",
-> this is the first generic part, only headers cleanup, which is big enou=
-gh.
->=20
-> Many patches, but "12 insertions(+), 145 deletions(-)" \o/
+On 05/28/2018 09:06 PM, Michael S. Tsirkin wrote:
+> On Mon, May 28, 2018 at 05:48:05PM -0600, Alex Williamson wrote:
+>> On Mon, 28 May 2018 20:26:59 -0300
+>> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> -ENOCOMMITLOG
 
-Series
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Oops sorry Alex, I meant to add some, but missed this while rebasing.
 
+>> Why?  Tangible benefit.  Looks like noise.  Thanks,
+>>
+> I agree it should have a commit log, but .c files
+> should be self-sufficient not rely on .h files
+> pulling in headers for symbols the .h does not use
+> itself.
 
-> v3 was:
-> http://lists.nongnu.org/archive/html/qemu-devel/2018-04/msg02049.html
->=20
-> Philippe Mathieu-Daud=E9 (21):
->   vfio: Include "exec/address-spaces.h" directly in the source file
->   accel: Do not include "exec/address-spaces.h" if it is not necessary
->   target: Do not include "exec/address-spaces.h" if it is not necessary
->   memory: Do not include "exec/ioport.h" if it is not necessary
->   target/i386: Do not include "exec/ioport.h" if it is not necessary
->   target/xtensa: Include "qemu/timer.h" to use NANOSECONDS_PER_SECOND
->   target/ppc: Include "exec/exec-all.h" which provides tlb_flush()
->   target/hppa: Include "qemu/log.h" to use qemu_log()
->   target: Do not include "exec/exec-all.h" if it is not necessary
->   hw: Do not include "exec/ioport.h" if it is not necessary
->   hw: Do not include "exec/address-spaces.h" if it is not necessary
->   hw: Do not include "sysemu/block-backend.h" if it is not necessary
->   hw: Do not include "sysemu/blockdev.h" if it is not necessary
->   hw: Do not include "sysemu/blockdev.h" if it is not necessary
->   hw/block/nvme: Include "qemu/cutils.h" directly in the source file
->   hw/misc/mips_itu: Cleanup includes
->   hw/misc/sga: Use the correct ISA include
->   hw/hppa: Remove unused include
->   hw/i386/pc: Remove unused include
->   hw/ide: Remove unused include
->   hw: Clean "hw/devices.h" includes
->=20
->  bsd-user/qemu.h                          | 1 -
->  hw/block/nvme.h                          | 1 -
->  hw/hppa/hppa_sys.h                       | 1 -
->  include/hw/arm/allwinner-a10.h           | 1 -
->  include/hw/arm/bcm2835_peripherals.h     | 1 -
->  include/hw/devices.h                     | 7 ++-----
->  include/hw/display/bcm2835_fb.h          | 1 -
->  include/hw/dma/bcm2835_dma.h             | 1 -
->  include/hw/misc/bcm2835_mbox.h           | 1 -
->  include/hw/misc/bcm2835_property.h       | 1 -
->  include/hw/misc/mips_itu.h               | 2 ++
->  include/hw/sh4/sh_intc.h                 | 1 -
->  include/hw/vfio/vfio-common.h            | 1 -
->  include/hw/virtio/virtio-access.h        | 1 -
->  target/arm/arm_ldst.h                    | 1 -
->  target/ppc/helper_regs.h                 | 1 +
->  accel/tcg/cpu-exec.c                     | 1 -
->  hw/acpi/pcihp.c                          | 1 -
->  hw/acpi/piix4.c                          | 1 -
->  hw/arm/aspeed.c                          | 1 -
->  hw/arm/bcm2836.c                         | 1 -
->  hw/arm/collie.c                          | 1 -
->  hw/arm/gumstix.c                         | 1 -
->  hw/arm/mainstone.c                       | 1 -
->  hw/arm/nseries.c                         | 1 -
->  hw/arm/omap1.c                           | 2 --
->  hw/arm/omap2.c                           | 2 --
->  hw/arm/omap_sx1.c                        | 1 -
->  hw/arm/pxa2xx.c                          | 1 -
->  hw/arm/spitz.c                           | 1 -
->  hw/arm/versatilepb.c                     | 1 -
->  hw/arm/vexpress.c                        | 1 -
->  hw/arm/virt.c                            | 1 -
->  hw/arm/xilinx_zynq.c                     | 1 -
->  hw/arm/xlnx-zcu102.c                     | 1 -
->  hw/arm/z2.c                              | 1 -
->  hw/block/dataplane/virtio-blk.c          | 1 -
->  hw/block/m25p80.c                        | 1 -
->  hw/block/nvme.c                          | 1 +
->  hw/block/onenand.c                       | 2 --
->  hw/block/pflash_cfi01.c                  | 1 -
->  hw/block/pflash_cfi02.c                  | 1 -
->  hw/block/virtio-blk.c                    | 1 -
->  hw/char/mcf_uart.c                       | 1 -
->  hw/char/serial.c                         | 1 -
->  hw/char/sh_serial.c                      | 1 -
->  hw/core/loader-fit.c                     | 1 -
->  hw/core/platform-bus.c                   | 1 -
->  hw/core/qdev-properties.c                | 1 -
->  hw/cris/axis_dev88.c                     | 1 -
->  hw/display/sm501.c                       | 1 -
->  hw/display/tc6393xb.c                    | 1 -
->  hw/i386/kvmvapic.c                       | 1 -
->  hw/i386/pc.c                             | 1 -
->  hw/i386/xen/xen-mapcache.c               | 1 -
->  hw/ide/core.c                            | 1 -
->  hw/ide/pci.c                             | 1 -
->  hw/ide/via.c                             | 1 -
->  hw/isa/isa-superio.c                     | 1 -
->  hw/lm32/lm32_boards.c                    | 1 -
->  hw/lm32/milkymist.c                      | 1 -
->  hw/m68k/mcf5206.c                        | 1 -
->  hw/m68k/mcf_intc.c                       | 1 -
->  hw/microblaze/petalogix_ml605_mmu.c      | 1 -
->  hw/microblaze/petalogix_s3adsp1800_mmu.c | 1 -
->  hw/mips/mips_malta.c                     | 1 -
->  hw/mips/mips_r4k.c                       | 1 -
->  hw/misc/arm_integrator_debug.c           | 1 -
->  hw/misc/mips_itu.c                       | 5 +----
->  hw/misc/sga.c                            | 2 +-
->  hw/net/mcf_fec.c                         | 1 -
->  hw/net/ne2000-isa.c                      | 1 -
->  hw/pci-host/versatile.c                  | 1 -
->  hw/ppc/ppc405_boards.c                   | 1 -
->  hw/ppc/sam460ex.c                        | 1 -
->  hw/ppc/spapr.c                           | 1 -
->  hw/ppc/virtex_ml507.c                    | 2 --
->  hw/riscv/riscv_htif.c                    | 1 -
->  hw/s390x/virtio-ccw.c                    | 2 --
->  hw/scsi/mptsas.c                         | 1 -
->  hw/scsi/scsi-generic.c                   | 1 -
->  hw/sd/pl181.c                            | 1 -
->  hw/sd/sdhci.c                            | 2 --
->  hw/sd/ssi-sd.c                           | 1 -
->  hw/sh4/r2d.c                             | 1 -
->  hw/sh4/sh7750.c                          | 1 -
->  hw/timer/sh_timer.c                      | 1 -
->  hw/usb/dev-storage.c                     | 1 -
->  hw/vfio/ccw.c                            | 1 +
->  hw/vfio/platform.c                       | 1 +
->  hw/virtio/virtio-pci.c                   | 1 -
->  hw/xen/xen_devconfig.c                   | 1 -
->  hw/xtensa/xtfpga.c                       | 1 -
->  memory.c                                 | 1 -
->  monitor.c                                | 1 -
->  target/arm/arm-powerctl.c                | 1 -
->  target/arm/crypto_helper.c               | 1 -
->  target/arm/iwmmxt_helper.c               | 1 -
->  target/arm/neon_helper.c                 | 1 -
->  target/arm/psci.c                        | 1 -
->  target/arm/vec_helper.c                  | 1 -
->  target/cris/cpu.c                        | 1 -
->  target/hppa/helper.c                     | 1 -
->  target/hppa/int_helper.c                 | 2 +-
->  target/i386/hax-all.c                    | 2 --
->  target/i386/hax-mem.c                    | 1 -
->  target/i386/hax-windows.c                | 1 -
->  target/i386/hvf/hvf.c                    | 2 --
->  target/i386/hvf/x86_task.c               | 3 ---
->  target/i386/kvm.c                        | 1 -
->  target/i386/whpx-all.c                   | 1 -
->  target/lm32/cpu.c                        | 1 -
->  target/m68k/cpu.c                        | 1 -
->  target/moxie/cpu.c                       | 1 -
->  target/moxie/mmu.c                       | 1 -
->  target/openrisc/cpu.c                    | 1 -
->  target/ppc/int_helper.c                  | 1 -
->  target/s390x/cpu.c                       | 1 -
->  target/s390x/diag.c                      | 1 -
->  target/s390x/helper.c                    | 1 -
->  target/s390x/kvm.c                       | 1 -
->  target/s390x/mem_helper.c                | 1 -
->  target/s390x/misc_helper.c               | 1 -
->  target/sparc/mmu_helper.c                | 1 -
->  target/tilegx/cpu.c                      | 1 -
->  target/xtensa/core-dc232b.c              | 2 +-
->  target/xtensa/core-dc233c.c              | 1 -
->  target/xtensa/core-de212.c               | 1 -
->  target/xtensa/core-fsf.c                 | 1 -
->  target/xtensa/core-sample_controller.c   | 1 -
->  target/xtensa/cpu.c                      | 1 -
->  tcg/tcg-op-vec.c                         | 1 -
->  target/xtensa/import_core.sh             | 1 -
->  133 files changed, 12 insertions(+), 145 deletions(-)
->=20
-> --=20
-> 2.17.0
+I meant:
+
+  No declaration of "hw/vfio/vfio-common.h" directly requires to include
+  the "exec/address-spaces.h" header.  To simplify dependencies and
+  ease following cleanup of "exec/address-spaces.h", directly include
+  it in the source file where the declaration are used.
+
+> This is better because it makes refactoring easier.
+> 
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>> ---
+>>>  include/hw/vfio/vfio-common.h | 1 -
+>>>  hw/vfio/ccw.c                 | 1 +
+>>>  hw/vfio/platform.c            | 1 +
+>>>  3 files changed, 2 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
+>>> index d9360148e6..8264a65fa5 100644
+>>> --- a/include/hw/vfio/vfio-common.h
+>>> +++ b/include/hw/vfio/vfio-common.h
+>>> @@ -22,7 +22,6 @@
+>>>  #define HW_VFIO_VFIO_COMMON_H
+>>>  
+>>>  #include "qemu-common.h"
+>>> -#include "exec/address-spaces.h"
+>>>  #include "exec/memory.h"
+>>>  #include "qemu/queue.h"
+>>>  #include "qemu/notify.h"
+>>> diff --git a/hw/vfio/ccw.c b/hw/vfio/ccw.c
+>>> index e67392c5f9..76e4e8c652 100644
+>>> --- a/hw/vfio/ccw.c
+>>> +++ b/hw/vfio/ccw.c
+>>> @@ -22,6 +22,7 @@
+>>>  #include "hw/vfio/vfio-common.h"
+>>>  #include "hw/s390x/s390-ccw.h"
+>>>  #include "hw/s390x/ccw-device.h"
+>>> +#include "exec/address-spaces.h"
+>>>  #include "qemu/error-report.h"
+>>>  
+>>>  #define TYPE_VFIO_CCW "vfio-ccw"
+>>> diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
+>>> index 5c921c27ba..57c4a0ee2b 100644
+>>> --- a/hw/vfio/platform.c
+>>> +++ b/hw/vfio/platform.c
+>>> @@ -24,6 +24,7 @@
+>>>  #include "qemu/range.h"
+>>>  #include "sysemu/sysemu.h"
+>>>  #include "exec/memory.h"
+>>> +#include "exec/address-spaces.h"
+>>>  #include "qemu/queue.h"
+>>>  #include "hw/sysbus.h"
+>>>  #include "trace.h"
 
