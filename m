@@ -1,98 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fNkAx-0003lj-F5
-	for mharc-qemu-trivial@gnu.org; Tue, 29 May 2018 15:20:55 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60828)
+	id 1fNnqt-0004qI-Dw
+	for mharc-qemu-trivial@gnu.org; Tue, 29 May 2018 19:16:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53597)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1fNkAu-0003lY-SL
-	for qemu-trivial@nongnu.org; Tue, 29 May 2018 15:20:53 -0400
+	(envelope-from <alistair23@gmail.com>) id 1fNnqr-0004nn-Er
+	for qemu-trivial@nongnu.org; Tue, 29 May 2018 19:16:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1fNkAq-00020Y-UV
-	for qemu-trivial@nongnu.org; Tue, 29 May 2018 15:20:52 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:54441)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1fNkAq-0001z7-KJ; Tue, 29 May 2018 15:20:48 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue004 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	0MNPzx-1fPg7P38rx-006sN3; Tue, 29 May 2018 21:20:34 +0200
-References: <20180529190022.D3B2FC01BBA@smcpolin-M01.vmware.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
-	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
-Cc: qemu-devel@nongnu.org, "qemu-trivial@nongnu.org"
-	<qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>
-To: Steve Mcpolin <smcpolin@vmware.com>
-Message-ID: <a3aebed4-6156-e0eb-2b4c-c15d3efcb2f1@vivier.eu>
-Date: Tue, 29 May 2018 21:20:31 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(envelope-from <alistair23@gmail.com>) id 1fNnqq-0003MW-Dv
+	for qemu-trivial@nongnu.org; Tue, 29 May 2018 19:16:25 -0400
+Received: from mail-lf0-x243.google.com ([2a00:1450:4010:c07::243]:36087)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1fNnqn-0003Hb-Qc; Tue, 29 May 2018 19:16:22 -0400
+Received: by mail-lf0-x243.google.com with SMTP id u4-v6so1310058lff.3;
+	Tue, 29 May 2018 16:16:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:sender:in-reply-to:references:from:date:message-id
+	:subject:to:cc;
+	bh=hGwVKp/ox9vW1K+q6uus999NdbG67cbgYA8NuH/Gj3k=;
+	b=CCCFWSTxb/5hq1hCLc7vkmBdaZWHsUvZk7yxt2qm58XpGbhj6wn6pxOKBk9McnDGMS
+	jmXQdGJL6PAkXfB4xt2WMbWTJOmQpDVhCwUIqIlvDxm2q6mawTaN55nbBzkUASD3a96a
+	+MTSbYqc1vGzdhC21QTFAJm3Wm5wN7h4SxgbfvkdD28090ZdliMU+NhRW4fPlzmeNZi6
+	N0DxbWeyxBs044eXrJy7gBHHHzGg5oIZ+tyfmmWBP8JDvMadclSFgH41BiNGYkUG/RDG
+	Q0jvlPfBi755OSgA36fPdL4L0k4MfmH2fBe4z/O5u9nc8Mns2enQsYwtCXMsJes+jhB8
+	vXmw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
+	:date:message-id:subject:to:cc;
+	bh=hGwVKp/ox9vW1K+q6uus999NdbG67cbgYA8NuH/Gj3k=;
+	b=CqlYwx7wbhHV5HbXWPh2UYMtVsmyGsqWCJFRk/L5SLyt5otlnKIYn/baYOUCIAgHsu
+	PGKgwAnjs/EnZWeXJ6MBB0szGpAxXLqgdbpRJ9ZVBolYIo5fgbCu7qYoy6rz8YebL4Hg
+	aDeCrxl1C7XD/N5qtKN2CVTjoaifnuASnA2iey2zDUm1plQJG5b5TWrMl0E0tNBDSPa0
+	JyTiJExccETasdRarMaItmkqbVri5Y5ItGcyydTJOI/y0sYgAm6E+cJm5qCZTBRKVwPJ
+	bQfzDWPenhTtBcJLiQ05C15IanwvsL5STHDKF5P6SD6ATFvzfyY3hVizVZoDCfjd+YwA
+	NWVQ==
+X-Gm-Message-State: ALKqPwesrKgSpExUhDTOPVosOaHgoDPvfkkjzALgilNAXc5l8RzJajp6
+	CABCoENsJJvgEROd0T/sd/D2+6D69YMD0etA3Lw=
+X-Google-Smtp-Source: ADUXVKJVwZ98yGv175n9M6lYX7aBXqNt4pVMo58g5pvqHw4m7b+TADc+Y9UqvartJfsp8wq3bhy0s4KEU7Tm1DcnTzg=
+X-Received: by 2002:a19:b2c2:: with SMTP id t63-v6mr202888lfk.27.1527635780315;
+	Tue, 29 May 2018 16:16:20 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20180529190022.D3B2FC01BBA@smcpolin-M01.vmware.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:/hC1N30Tbfd1TO/mmChP0/CxVEE+wLxS6YpUQtxqMZ9AG1HllOx
-	STPvnzmgi7DRvwuIT2DzH/bKYN3GOLJSIEY3xQBCCj9kRiH5auz5kwaIUp92XkL11MQqrqY
-	kmz6Dh1gguGagVNTeEW3XUSp8QE+B/VKVtf0DdPtuOb3ZP2z2Fuv5qMHBYqG8er0sCHKhzg
-	eSk9Q5uyLbh+8W7Rc5c+A==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:XkSUokduUVo=:eUcZuVadWgZvowFJhEkPO3
-	04sdkay4v/lQDICnI78of6V5kHEXd3DzhdQ2L/0FcLT6I1sDC/l/wPIy1XZFvzZUT8ZLLaP97
-	RFBnZZ5fOGvDqnr/Sx08Fwc8UbmY8sO/yjRCjps0jQiYd/koSPKreyyRbwmqjFGViYR+Lexjb
-	BDvISuMpI38d567WjnEuJsxl+SvT9W9//LNkdqnocNNqtEpwKnd8UMWeNq3HC3QXr7nahDCwf
-	FVGS3n7F2ZmXHOQMjpnBKHYi1H+pUZ00LNxZnetmPTQAHtKe6WnXBbKCf9KjYmixPy5YiSP3/
-	UFKir2t5CfPtmAd9AtzEb335HJaJ2Jzb7Xg8cZ10Oa2exAiZ4w6hJwVlOSA/cS9v+QEEnX9t7
-	/VxhipH42+VRXyWwx0sB1TpM6qz/U59/WSyHaLT65wcv4rBP5vs4yKHXB6mC2pHXZSryCVI6W
-	wlDhPnSC/der+gbHWRDvdjz0UJi/FlOZlIoPEdROfYEqvc760cbqMK7IDYvPj/3RLKA/WpSac
-	XE1ui436vo5HG9nlFimI82NHJOeIPB7DteAQkDi89Taw/nXdK86KVUN8m9nfCyDJgFTB7ZuFj
-	XIAt3yf+REJKkA+J7SF5j2rfAIEODCz+X3z+QDdvyGxk2jin3eZwTFSeWAlBApNYc/bebPhfi
-	Lwd4ZIfLHql9igU63lnlWZ8eus2YnSLHSYHOkKQTUrol/KANfAF24zx10aB60FLDiYV28cl9h
-	bis3O3SCwPGsC/VV
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 212.227.126.131
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] linux-user: Remove extra
- mapping
+Sender: alistair23@gmail.com
+Received: by 2002:a2e:3c12:0:0:0:0:0 with HTTP; Tue, 29 May 2018 16:15:49
+	-0700 (PDT)
+In-Reply-To: <1527531079-32717-1-git-send-email-thuth@redhat.com>
+References: <1527531079-32717-1-git-send-email-thuth@redhat.com>
+From: Alistair Francis <alistair.francis@xilinx.com>
+Date: Tue, 29 May 2018 16:15:49 -0700
+X-Google-Sender-Auth: HV6Y5YqzBn4EDF4_ZKXHVba-4wA
+Message-ID: <CAKmqyKMgcG1sfQa1W_-kT-cnBSWyoaTGwftxoDE2-P=BFMKq0Q@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: David Gibson <david@gibson.dropbear.id.au>, 
+	"open list:New World" <qemu-ppc@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Alistair Francis <alistair.francis@xilinx.com>, 
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4010:c07::243
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target/ppc: Use proper
+ logging function for possible guest errors
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,67 +74,96 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 May 2018 19:20:53 -0000
+X-List-Received-Date: Tue, 29 May 2018 23:16:26 -0000
 
-Le 29/05/2018 à 20:15, Steve Mcpolin a écrit :
-> When a guest mmap()'d a file, an anonymous mapping was created to
-> align different host and client page granularity and provide for
-> beyond EOF mappings.  The file was then mapped ontop of this mapping,
-> releasing the memory reserved by it.  A file based mmap does not reserve
-> memory, but the anonymous map does; thus this anonymous mapping could
-> could cause spurious failures.
-> 
-> This patch minimizes the size of the anonymous mapping to prevent spurious
-> failures.
-> 
-> Signed-off-by: Steve Mcpolin <smcpolin@vmware.com>
+On Mon, May 28, 2018 at 11:11 AM, Thomas Huth <thuth@redhat.com> wrote:
+> fprintf() and qemu_log_separate() are frowned upon these days for printing
+> logging information in QEMU. Accessing the wrong SPRs indicates wrong guest
+> behaviour in most cases, and we've got a proper way to log such situations,
+> which is the qemu_log_mask(LOG_GUEST_ERROR, ...) function. So use this
+> function now for logging the bad SPR accesses instead.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
 > ---
-
-v3:
-  add missing flags in the second mmap()
-
-v2:
-  use REAL_HOST_PAGE_ALIGN(len) instead of HOST_PAGE_ALIGN(len)
-
-
->  linux-user/mmap.c | 32 ++++++++++++++++++++------------
->  1 file changed, 20 insertions(+), 12 deletions(-)
-> 
-> diff --git a/linux-user/mmap.c b/linux-user/mmap.c
-> index 9168a20..7a975c8 100644
-> --- a/linux-user/mmap.c
-> +++ b/linux-user/mmap.c
-> @@ -453,21 +453,29 @@ abi_long target_mmap(abi_ulong start, abi_ulong len, int prot,
->          /* Note: we prefer to control the mapping address. It is
->             especially important if qemu_host_page_size >
->             qemu_real_host_page_size */
-> -        p = mmap(g2h(start), host_len, prot,
-> -                 flags | MAP_FIXED | MAP_ANONYMOUS, -1, 0);
-> -        if (p == MAP_FAILED)
-> -            goto fail;
-> -        /* update start so that it points to the file position at 'offset' */
-> -        host_start = (unsigned long)p;
-> -        if (!(flags & MAP_ANONYMOUS)) {
-> -            p = mmap(g2h(start), len, prot,
-> +        if (flags & MAP_ANONYMOUS) {
-> +            offset = 0;
-> +            host_offset = 0;
-> +            fd = -1;
-> +        }
-> +        p = mmap(g2h(start), len, prot,
->                       flags | MAP_FIXED, fd, host_offset);
-> -            if (p == MAP_FAILED) {
-> -                munmap(g2h(start), host_len);
-> -                goto fail;
-> +        host_start = (uintptr_t)p;
-> +        if (p != MAP_FAILED && host_len > REAL_HOST_PAGE_ALIGN(len)) {
-> +            void *q;
-> +            q = mmap(g2h(start + len), host_len - REAL_HOST_PAGE_ALIGN(len),
-> +                     prot, MAP_FIXED | (flags & MAP_TYPE) | MAP_ANONYMOUS,
-
-Why do you restrict the flags with MAP_TYPE? Original code was not doing
-that. Is this needed?
-
-Thanks,
-Laurent
+>  target/ppc/translate.c | 37 ++++++++++++-------------------------
+>  1 file changed, 12 insertions(+), 25 deletions(-)
+>
+> diff --git a/target/ppc/translate.c b/target/ppc/translate.c
+> index e30d99f..0806ee0 100644
+> --- a/target/ppc/translate.c
+> +++ b/target/ppc/translate.c
+> @@ -3933,13 +3933,9 @@ static inline void gen_op_mfspr(DisasContext *ctx)
+>               * allowing userland application to read the PVR
+>               */
+>              if (sprn != SPR_PVR) {
+> -                fprintf(stderr, "Trying to read privileged spr %d (0x%03x) at "
+> -                        TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+> -                if (qemu_log_separate()) {
+> -                    qemu_log("Trying to read privileged spr %d (0x%03x) at "
+> -                             TARGET_FMT_lx "\n", sprn, sprn,
+> -                             ctx->base.pc_next - 4);
+> -                }
+> +                qemu_log_mask(LOG_GUEST_ERROR, "Trying to read privileged spr "
+> +                              "%d (0x%03x) at " TARGET_FMT_lx "\n", sprn, sprn,
+> +                              ctx->base.pc_next - 4);
+>              }
+>              gen_priv_exception(ctx, POWERPC_EXCP_PRIV_REG);
+>          }
+> @@ -3951,12 +3947,9 @@ static inline void gen_op_mfspr(DisasContext *ctx)
+>              return;
+>          }
+>          /* Not defined */
+> -        fprintf(stderr, "Trying to read invalid spr %d (0x%03x) at "
+> -                TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+> -        if (qemu_log_separate()) {
+> -            qemu_log("Trying to read invalid spr %d (0x%03x) at "
+> -                     TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+> -        }
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "Trying to read invalid spr %d (0x%03x) at "
+> +                      TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+>
+>          /* The behaviour depends on MSR:PR and SPR# bit 0x10,
+>           * it can generate a priv, a hv emu or a no-op
+> @@ -4097,12 +4090,9 @@ static void gen_mtspr(DisasContext *ctx)
+>              (*write_cb)(ctx, sprn, rS(ctx->opcode));
+>          } else {
+>              /* Privilege exception */
+> -            fprintf(stderr, "Trying to write privileged spr %d (0x%03x) at "
+> -                    TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+> -            if (qemu_log_separate()) {
+> -                qemu_log("Trying to write privileged spr %d (0x%03x) at "
+> -                         TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+> -            }
+> +            qemu_log_mask(LOG_GUEST_ERROR, "Trying to write privileged spr "
+> +                          "%d (0x%03x) at " TARGET_FMT_lx "\n", sprn, sprn,
+> +                          ctx->base.pc_next - 4);
+>              gen_priv_exception(ctx, POWERPC_EXCP_PRIV_REG);
+>          }
+>      } else {
+> @@ -4114,12 +4104,9 @@ static void gen_mtspr(DisasContext *ctx)
+>          }
+>
+>          /* Not defined */
+> -        if (qemu_log_separate()) {
+> -            qemu_log("Trying to write invalid spr %d (0x%03x) at "
+> -                     TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+> -        }
+> -        fprintf(stderr, "Trying to write invalid spr %d (0x%03x) at "
+> -                TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "Trying to write invalid spr %d (0x%03x) at "
+> +                      TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+>
+>
+>          /* The behaviour depends on MSR:PR and SPR# bit 0x10,
+> --
+> 1.8.3.1
+>
+>
 
