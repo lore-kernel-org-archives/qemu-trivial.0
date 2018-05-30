@@ -1,86 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fNu0W-0004f0-8B
-	for mharc-qemu-trivial@gnu.org; Wed, 30 May 2018 01:50:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54814)
+	id 1fNuPe-0001fZ-34
+	for mharc-qemu-trivial@gnu.org; Wed, 30 May 2018 02:16:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58280)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNu0T-0004dK-VA
-	for qemu-trivial@nongnu.org; Wed, 30 May 2018 01:50:46 -0400
+	(envelope-from <kraxel@redhat.com>) id 1fNuPb-0001eJ-NI
+	for qemu-trivial@nongnu.org; Wed, 30 May 2018 02:16:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNu0T-0007UN-0b
-	for qemu-trivial@nongnu.org; Wed, 30 May 2018 01:50:46 -0400
-Received: from mail-yb0-x244.google.com ([2607:f8b0:4002:c09::244]:42379)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNu0Q-0007Ty-Ok; Wed, 30 May 2018 01:50:42 -0400
-Received: by mail-yb0-x244.google.com with SMTP id d123-v6so5947841ybh.9;
-	Tue, 29 May 2018 22:50:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:sender:in-reply-to:references:from:date:message-id
-	:subject:to:cc:content-transfer-encoding;
-	bh=Fmijq3sHX8cFGu9GZQS8Lzy2sjkv5Zx7SN9T/OHMke0=;
-	b=qQCeG1IaiYB62mWn3A5aIGL5JvoDJVGMBShTUdtWBxYIvxLfAGFQ+WAHSlynG22PXU
-	QFWM8d9sZzYTSFOkeJd0D+Cu+F1ZRz/OgBowYvjhUhvialQXIejtCS06Q65dSUuub/jk
-	GlKjFChMX/s3nYdaZmlZ2+VrJsMwItfe7jZAT9sG4fbiaU7yar5qdLPrlEKTaBVyF3J7
-	8z+yOadf52tN7TZuvPlabZwmlTwUEF0SNUaVMXx4o9b4cKIJK/PWIGLCM0HSbmwZWO5A
-	hH+4seGJDB3wRMQNu6+ncej7Lc6FdNt4YCs/jovpW9QWMKjPEXfT68d8rMdujgbwn4im
-	n8Pw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:sender:in-reply-to:references:from
-	:date:message-id:subject:to:cc:content-transfer-encoding;
-	bh=Fmijq3sHX8cFGu9GZQS8Lzy2sjkv5Zx7SN9T/OHMke0=;
-	b=Eo/TUyYLp+0vlmNst5+DCGBbZDofasipioME5Ddcxpu7GjKydbdQ4XB9BU9jJ+VHmI
-	D5Wr1Jwq92py2XdkL40vSLBaGfJD97JW5aEbHpidpvFOIUbRYZOoHhIwlJl35oLtFoCs
-	fiS9eqFtpNwEOffZUL68kn/l3EFN7PoyYu4cPydVjbBZUol/1YB0tYXZZZbEDnWw1m9B
-	e/2RJKRaGXfMgQoibRPnvyEaTYOtveM8StOzZEnNe6jSGPVcwYTsnEvdgzQBTek78YO7
-	bSPUK4PAv8UXMEjQ2+A9VQSN6W07Xa7lW6L1eK/QDKWpz9JI+k3Jr4hxbTBbVZuGuPpa
-	9u/g==
-X-Gm-Message-State: APt69E2KJi5zwBULkCZtgE0byvBkOplw2TsGyyRwt2MVkk14eFsu4/1e
-	MD7YuOv+UPLsoxVly7xhLSZpo1xoYpeYge4MBWE=
-X-Google-Smtp-Source: ADUXVKIE0olXKeYsfJBFD+n+atKegi1mkQoMQUyrxYJYljoYC+utr/oFU0GtALrL38MpP7slEBFRMb2NJ/ZNumvByPk=
-X-Received: by 2002:a25:d1c5:: with SMTP id
-	i188-v6mr738478ybg.114.1527659441791; 
-	Tue, 29 May 2018 22:50:41 -0700 (PDT)
+	(envelope-from <kraxel@redhat.com>) id 1fNuPa-0000nG-QQ
+	for qemu-trivial@nongnu.org; Wed, 30 May 2018 02:16:43 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:38286 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1fNuPV-0000lA-Vl; Wed, 30 May 2018 02:16:38 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id DFCA9401EF0E;
+	Wed, 30 May 2018 06:16:36 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-117-13.ams2.redhat.com
+	[10.36.117.13])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 633701117624;
+	Wed, 30 May 2018 06:16:34 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id 72C2541A80; Wed, 30 May 2018 08:16:33 +0200 (CEST)
+Date: Wed, 30 May 2018 08:16:33 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Eric Blake <eblake@redhat.com>,
+	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20180530061633.iltyrqvyctpipxmt@sirius.home.kraxel.org>
+References: <20170724182751.18261-1-f4bug@amsat.org>
+	<20170724182751.18261-16-f4bug@amsat.org>
+	<4f76d9d2-5c4b-a6ef-e050-9d9a1f31be85@amsat.org>
 MIME-Version: 1.0
-Sender: philippe.mathieu.daude@gmail.com
-Received: by 2002:a25:3d7:0:0:0:0:0 with HTTP;
-	Tue, 29 May 2018 22:50:41 -0700 (PDT)
-In-Reply-To: <20180530074026-mutt-send-email-mst@kernel.org>
-References: <20180528232719.4721-1-f4bug@amsat.org>
-	<20180528232719.4721-10-f4bug@amsat.org>
-	<20180529134053.1ea9f46d.cohuck@redhat.com>
-	<11289f38-6d0f-74c9-1719-83b2a3ed2d97@amsat.org>
-	<20180530074026-mutt-send-email-mst@kernel.org>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Wed, 30 May 2018 02:50:41 -0300
-X-Google-Sender-Auth: MTQLDqEjj_pSZ-qkUhcUVkcgSOw
-Message-ID: <CAAdtpL7sDOg2m+Ffsbc3f_Za6fr3in5ZfBJ2BAtGNJ1j4vbhJQ@mail.gmail.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
-	Peter Maydell <peter.maydell@linaro.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
-	Michael Walle <michael@walle.cc>, Laurent Vivier <laurent@vivier.eu>, 
-	Anthony Green <green@moxielogic.com>, Stafford Horne <shorne@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Alexander Graf <agraf@suse.de>, 
-	David Hildenbrand <david@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>, 
-	"open list:S390" <qemu-s390x@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <4f76d9d2-5c4b-a6ef-e050-9d9a1f31be85@amsat.org>
+User-Agent: NeoMutt/20180512
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Wed, 30 May 2018 06:16:36 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Wed, 30 May 2018 06:16:36 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4002:c09::244
-Subject: Re: [Qemu-trivial] [PATCH v4 09/21] target: Do not include
- "exec/exec-all.h" if it is not necessary
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [PATCH for 2.10 15/35] usb: correctly handle
+ Zero Length Packets
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -92,66 +64,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 May 2018 05:50:47 -0000
+X-List-Received-Date: Wed, 30 May 2018 06:16:44 -0000
 
-On Wed, May 30, 2018 at 1:42 AM, Michael S. Tsirkin <mst@redhat.com> wrote:
-> On Wed, May 30, 2018 at 12:12:55AM -0300, Philippe Mathieu-Daud=C3=A9 wro=
+On Tue, May 29, 2018 at 11:22:46AM -0300, Philippe Mathieu-Daud=C3=A9 wro=
 te:
->> Hi Cornelia,
->>
->> On 05/29/2018 08:40 AM, Cornelia Huck wrote:
->> > On Mon, 28 May 2018 20:27:07 -0300
->> > Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
->> >
->> >> Code change produced with:
->> >>     $ git grep '#include "exec/exec-all.h"' | \
->> >>       cut -d: -f-1 | \
->> >>       xargs egrep -L "(cpu_address_space_init|cpu_loop_|tlb_|tb_|GETP=
-C|singlestep|TranslationBlock)" | \
->> >
->> > Hm, does this expression catch all files that need to include
->> > exec-all.h? The resulting patch seems fine, though.
->>
->> No, not all :/
->> I started with "(cpu_loop_|tlb_|tb_)" then kept brutebuilding until no
->> more errors appear. In 2 more steps I added "cpu_address_space_init|"
->> then "|GETPC|singlestep|TranslationBlock". Quick and dirty enough for my
->> goal than trying to build a regex to explode function/struct names from
->> headers. This is a clever way to do it for long term command reuse taken
->> from commit messages...
->
-> Brutebuilding isn't a good way to find unused includes, some other header
-> might pull in an include you are trying to remove for its own purposes.
-> If you want to try brutebuilding you must also verify that's
-> not the case - e.g. look at the dependency file generated.
+> On 07/24/2017 03:27 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > USB Specification Revision 2.0, =C2=A75.5.3:
+> >   The Data stage of a control transfer from an endpoint to the host i=
+s complete when the endpoint does one of the following:
+> >   =E2=80=A2 Has transferred exactly the amount of data specified duri=
+ng the Setup stage
+> >   =E2=80=A2 Transfers a packet with a payload size less than wMaxPack=
+etSize or transfers a zero-length packet"
+> >=20
+> > hw/usb/redirect.c:802:9: warning: Declared variable-length array (VLA=
+) has zero size
+> >         uint8_t buf[size];
+> >         ^~~~~~~~~~~ ~~~~
+> >=20
+> > Reported-by: Clang Static Analyzer
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> > ---
+> >  hw/usb/redirect.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >=20
+> > diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+> > index 5e42730449..5b7073d2cd 100644
+> > --- a/hw/usb/redirect.c
+> > +++ b/hw/usb/redirect.c
+> > @@ -795,7 +795,7 @@ static void usbredir_handle_bulk_data(USBRedirDev=
+ice *dev, USBPacket *p,
+> >             usbredirparser_peer_has_cap(dev->parser,
+> >                                         usb_redir_cap_32bits_bulk_len=
+gth));
+> > =20
+> > -    if (ep & USB_DIR_IN) {
+> > +    if (ep & USB_DIR_IN || size =3D=3D 0) {
+> >          usbredirparser_send_bulk_packet(dev->parser, p->id,
+> >                                          &bulk_packet, NULL, 0);
+> >      } else {
+> >=20
+>=20
+> Ping?
 
-Hmm you mean the .d files in the build dir?
+Whoops, pretty old one.  Don't have this in my qemu-devel archive any
+more.  Can you rebase + resend?
 
-i.e.
-$ find lm32-softmmu -name \*.d -exec fgrep -L exec-all.h {} \; | sed
--e 's/.*-softmmu\/\(.*\)d$/\1c/'
-dump.c
-numa.c
-tcg/tcg-common.c
-tcg/optimize.c
-tcg/tcg-op-gvec.c
-tcg/tcg-op-vec.c
-accel/tcg/tcg-runtime-gvec.c
-accel/tcg/tcg-all.c
-accel/accel.c
-accel/stubs/whpx-stub.c
-accel/stubs/hvf-stub.c
-accel/stubs/kvm-stub.c
-accel/stubs/hax-stub.c
-hw/lm32/milkymist.c
-hw/lm32/lm32_boards.c
-hw/core/generic-loader.c
-...
+thanks,
+  Gerd
 
-Then look why each .c included it?
-
->
->> >>       xargs sed -i.bak '/#include "exec\/exec-all.h"/d'
->> >>
->> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
