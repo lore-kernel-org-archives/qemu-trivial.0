@@ -1,70 +1,107 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fNuSS-0003Zh-GK
-	for mharc-qemu-trivial@gnu.org; Wed, 30 May 2018 02:19:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59024)
+	id 1fNxTr-0006kA-Ad
+	for mharc-qemu-trivial@gnu.org; Wed, 30 May 2018 05:33:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38238)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNuSP-0003Wk-Br
-	for qemu-trivial@nongnu.org; Wed, 30 May 2018 02:19:38 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1fNxTj-0006iF-Pd
+	for qemu-trivial@nongnu.org; Wed, 30 May 2018 05:33:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNuSN-0001wQ-Sm
-	for qemu-trivial@nongnu.org; Wed, 30 May 2018 02:19:37 -0400
-Received: from mail-yb0-f193.google.com ([209.85.213.193]:42007)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fNuSI-0001sn-Vo; Wed, 30 May 2018 02:19:31 -0400
-Received: by mail-yb0-f193.google.com with SMTP id d123-v6so5967080ybh.9;
-	Tue, 29 May 2018 23:19:30 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=X/enLrvTvozeqa6gWdiJO+/5kI1bEHammfpcgV30Gvg=;
-	b=VookSVL/JmJwEoPhd71CImOgIltsbwj+M+H8XYca4V9cvKr4BYIwXHM5jk06q1Zkhl
-	rXa8NYmIv77U+WdUx3HjUTK6KJCWdhtieOOC4pRrHslT2fgIja9H3asBMW9yMBmavzGf
-	9i5rViVKtb+s4EjJP2dq/4h6TnC7pwsTOrW0eeJFekwZceeKP9IB8AxhjoyYW8ec3VoV
-	xZPu5fFd52AteWiucTLBOLFjS8NUy7S4n+pa8cdYWeKyGWiNtd0Wnxx6uvFeXRMuW9Jy
-	v6u0/M9vLxYadwUmE+lwiPaZ4uPLHibIAkb26yAHDRBSpC2z1pRFfhqoCWm/yv5Sxcv3
-	Zz6Q==
-X-Gm-Message-State: ALKqPweWWxqMsy6qJalFmd//ropkz0Un0IvhCwoUtAxzeMaTLdjLlOhN
-	2EanJUhObQPp74An9DrJbwAvyEXZPvFEqusdA9s=
-X-Google-Smtp-Source: ADUXVKKBmdXHypaVQzVPrc08ufNFTeW9BucARNhT0UwFg7/u7JAzQMtwqG/3VJM26PA+fKVTCrDPbQ94iWYr6xdCE4A=
-X-Received: by 2002:a25:4cc3:: with SMTP id
-	z186-v6mr739513yba.81.1527661170269; 
-	Tue, 29 May 2018 23:19:30 -0700 (PDT)
-MIME-Version: 1.0
+	(envelope-from <pbonzini@redhat.com>) id 1fNxTg-0003mS-Lf
+	for qemu-trivial@nongnu.org; Wed, 30 May 2018 05:33:11 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:44572 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1fNxTN-0003i5-9g; Wed, 30 May 2018 05:32:49 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BBAD2401EF0E;
+	Wed, 30 May 2018 09:32:47 +0000 (UTC)
+Received: from [10.36.118.56] (unknown [10.36.118.56])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8246B10F1C13;
+	Wed, 30 May 2018 09:32:39 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Cc: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	Richard Henderson <rth@twiddle.net>, 
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Michael Walle <michael@walle.cc>, Laurent Vivier <laurent@vivier.eu>,
+	Anthony Green <green@moxielogic.com>, Stafford Horne <shorne@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Alexander Graf <agraf@suse.de>, 
+	David Hildenbrand <david@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+	"open list:ARM" <qemu-arm@nongnu.org>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>,
+	"open list:S390" <qemu-s390x@nongnu.org>
 References: <20180528232719.4721-1-f4bug@amsat.org>
 	<20180528232719.4721-10-f4bug@amsat.org>
 	<20180529134053.1ea9f46d.cohuck@redhat.com>
 	<11289f38-6d0f-74c9-1719-83b2a3ed2d97@amsat.org>
 	<20180530074026-mutt-send-email-mst@kernel.org>
 	<CAAdtpL7sDOg2m+Ffsbc3f_Za6fr3in5ZfBJ2BAtGNJ1j4vbhJQ@mail.gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <e1a5c08d-4b69-7590-0c48-1d459d2fbdab@redhat.com>
+Date: Wed, 30 May 2018 11:32:38 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
+MIME-Version: 1.0
 In-Reply-To: <CAAdtpL7sDOg2m+Ffsbc3f_Za6fr3in5ZfBJ2BAtGNJ1j4vbhJQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Wed, 30 May 2018 03:19:19 -0300
-Message-ID: <CAAdtpL6eW5=djFE-k7bHUR6s_b=wAmMuOLM8Djb_CYPf54L8CA@mail.gmail.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
-	Peter Maydell <peter.maydell@linaro.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
-	Michael Walle <michael@walle.cc>, Laurent Vivier <laurent@vivier.eu>, 
-	Anthony Green <green@moxielogic.com>, Stafford Horne <shorne@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Alexander Graf <agraf@suse.de>, 
-	David Hildenbrand <david@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
-	"open list:ARM" <qemu-arm@nongnu.org>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>, 
-	"open list:S390" <qemu-s390x@nongnu.org>
-Content-Type: multipart/alternative; boundary="000000000000642448056d665583"
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Wed, 30 May 2018 09:32:47 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Wed, 30 May 2018 09:32:47 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'pbonzini@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.213.193
+X-Received-From: 66.187.233.73
 Subject: Re: [Qemu-trivial] [PATCH v4 09/21] target: Do not include
  "exec/exec-all.h" if it is not necessary
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,181 +115,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 May 2018 06:19:38 -0000
+X-List-Received-Date: Wed, 30 May 2018 09:33:16 -0000
 
---000000000000642448056d665583
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Le mer. 30 mai 2018 02:50, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> a
-=C3=A9crit :
-
-> On Wed, May 30, 2018 at 1:42 AM, Michael S. Tsirkin <mst@redhat.com>
-> wrote:
-> > On Wed, May 30, 2018 at 12:12:55AM -0300, Philippe Mathieu-Daud=C3=A9 w=
-rote:
-> >> Hi Cornelia,
-> >>
-> >> On 05/29/2018 08:40 AM, Cornelia Huck wrote:
-> >> > On Mon, 28 May 2018 20:27:07 -0300
-> >> > Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
-> >> >
-> >> >> Code change produced with:
-> >> >>     $ git grep '#include "exec/exec-all.h"' | \
-> >> >>       cut -d: -f-1 | \
-> >> >>       xargs egrep -L
-> "(cpu_address_space_init|cpu_loop_|tlb_|tb_|GETPC|singlestep|TranslationB=
-lock)"
-> | \
-> >> >
-> >> > Hm, does this expression catch all files that need to include
-> >> > exec-all.h? The resulting patch seems fine, though.
-> >>
-> >> No, not all :/
-> >> I started with "(cpu_loop_|tlb_|tb_)" then kept brutebuilding until no
-> >> more errors appear. In 2 more steps I added "cpu_address_space_init|"
-> >> then "|GETPC|singlestep|TranslationBlock". Quick and dirty enough for =
-my
-> >> goal than trying to build a regex to explode function/struct names fro=
-m
-> >> headers. This is a clever way to do it for long term command reuse tak=
-en
-> >> from commit messages...
-> >
-> > Brutebuilding isn't a good way to find unused includes, some other head=
-er
-> > might pull in an include you are trying to remove for its own purposes.
-> > If you want to try brutebuilding you must also verify that's
-> > not the case - e.g. look at the dependency file generated.
->
-
-I think I get it for headers, but here I'm only modifying .c source files.
-I'll restrict the shell command to .c
-
-
+On 30/05/2018 07:50, Philippe Mathieu-Daud=C3=A9 wrote:
+>>> No, not all :/
+>>> I started with "(cpu_loop_|tlb_|tb_)" then kept brutebuilding until n=
+o
+>>> more errors appear. In 2 more steps I added "cpu_address_space_init|"
+>>> then "|GETPC|singlestep|TranslationBlock". Quick and dirty enough for=
+ my
+>>> goal than trying to build a regex to explode function/struct names fr=
+om
+>>> headers. This is a clever way to do it for long term command reuse ta=
+ken
+>>> from commit messages...
+>> Brutebuilding isn't a good way to find unused includes, some other hea=
+der
+>> might pull in an include you are trying to remove for its own purposes=
+.
+>> If you want to try brutebuilding you must also verify that's
+>> not the case - e.g. look at the dependency file generated.
 > Hmm you mean the .d files in the build dir?
->
-> i.e.
-> $ find lm32-softmmu -name \*.d -exec fgrep -L exec-all.h {} \; | sed
-> -e 's/.*-softmmu\/\(.*\)d$/\1c/'
-> dump.c
-> numa.c
-> tcg/tcg-common.c
-> tcg/optimize.c
-> tcg/tcg-op-gvec.c
-> tcg/tcg-op-vec.c
-> accel/tcg/tcg-runtime-gvec.c
-> accel/tcg/tcg-all.c
-> accel/accel.c
-> accel/stubs/whpx-stub.c
-> accel/stubs/hvf-stub.c
-> accel/stubs/kvm-stub.c
-> accel/stubs/hax-stub.c
-> hw/lm32/milkymist.c
-> hw/lm32/lm32_boards.c
-> hw/core/generic-loader.c
-> ...
->
-> Then look why each .c included it?
->
-> >
-> >> >>       xargs sed -i.bak '/#include "exec\/exec-all.h"/d'
-> >> >>
-> >> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->
 
---000000000000642448056d665583
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+You can also check which include files include this one.  In this case
+you can see that brute-building was more or less enough:
 
-<div dir=3D"auto"><div><div class=3D"gmail_quote"><div dir=3D"ltr">Le mer. =
-30 mai 2018 02:50, Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@=
-amsat.org">f4bug@amsat.org</a>&gt; a =C3=A9crit=C2=A0:<br></div><blockquote=
- class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc soli=
-d;padding-left:1ex">On Wed, May 30, 2018 at 1:42 AM, Michael S. Tsirkin &lt=
-;<a href=3D"mailto:mst@redhat.com" target=3D"_blank" rel=3D"noreferrer">mst=
-@redhat.com</a>&gt; wrote:<br>
-&gt; On Wed, May 30, 2018 at 12:12:55AM -0300, Philippe Mathieu-Daud=C3=A9 =
-wrote:<br>
-&gt;&gt; Hi Cornelia,<br>
-&gt;&gt;<br>
-&gt;&gt; On 05/29/2018 08:40 AM, Cornelia Huck wrote:<br>
-&gt;&gt; &gt; On Mon, 28 May 2018 20:27:07 -0300<br>
-&gt;&gt; &gt; Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat=
-.org" target=3D"_blank" rel=3D"noreferrer">f4bug@amsat.org</a>&gt; wrote:<b=
-r>
-&gt;&gt; &gt;<br>
-&gt;&gt; &gt;&gt; Code change produced with:<br>
-&gt;&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0$ git grep &#39;#include &quot;exec/ex=
-ec-all.h&quot;&#39; | \<br>
-&gt;&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0cut -d: -f-1 | \<br>
-&gt;&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0xargs egrep -L &quot;(cpu_addre=
-ss_space_init|cpu_loop_|tlb_|tb_|GETPC|singlestep|TranslationBlock)&quot; |=
- \<br>
-&gt;&gt; &gt;<br>
-&gt;&gt; &gt; Hm, does this expression catch all files that need to include=
-<br>
-&gt;&gt; &gt; exec-all.h? The resulting patch seems fine, though.<br>
-&gt;&gt;<br>
-&gt;&gt; No, not all :/<br>
-&gt;&gt; I started with &quot;(cpu_loop_|tlb_|tb_)&quot; then kept brutebui=
-lding until no<br>
-&gt;&gt; more errors appear. In 2 more steps I added &quot;cpu_address_spac=
-e_init|&quot;<br>
-&gt;&gt; then &quot;|GETPC|singlestep|TranslationBlock&quot;. Quick and dir=
-ty enough for my<br>
-&gt;&gt; goal than trying to build a regex to explode function/struct names=
- from<br>
-&gt;&gt; headers. This is a clever way to do it for long term command reuse=
- taken<br>
-&gt;&gt; from commit messages...<br>
-&gt;<br>
-&gt; Brutebuilding isn&#39;t a good way to find unused includes, some other=
- header<br>
-&gt; might pull in an include you are trying to remove for its own purposes=
-.<br>
-&gt; If you want to try brutebuilding you must also verify that&#39;s<br>
-&gt; not the case - e.g. look at the dependency file generated.<br></blockq=
-uote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto">I think I ge=
-t it for headers, but here I&#39;m only modifying .c source files.=C2=A0</d=
-iv><div dir=3D"auto">I&#39;ll restrict the shell command to .c=C2=A0</div><=
-div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quote"><bl=
-ockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #=
-ccc solid;padding-left:1ex">
-<br>
-Hmm you mean the .d files in the build dir?<br>
-<br>
-i.e.<br>
-$ find lm32-softmmu -name \*.d -exec fgrep -L exec-all.h {} \; | sed<br>
--e &#39;s/.*-softmmu\/\(.*\)d$/\1c/&#39;<br>
-dump.c<br>
-numa.c<br>
-tcg/tcg-common.c<br>
-tcg/optimize.c<br>
-tcg/tcg-op-gvec.c<br>
-tcg/tcg-op-vec.c<br>
-accel/tcg/tcg-runtime-gvec.c<br>
-accel/tcg/tcg-all.c<br>
-accel/accel.c<br>
-accel/stubs/whpx-stub.c<br>
-accel/stubs/hvf-stub.c<br>
-accel/stubs/kvm-stub.c<br>
-accel/stubs/hax-stub.c<br>
-hw/lm32/milkymist.c<br>
-hw/lm32/lm32_boards.c<br>
-hw/core/generic-loader.c<br>
-...<br>
-<br>
-Then look why each .c included it?<br>
-<br>
-&gt;<br>
-&gt;&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0xargs sed -i.bak &#39;/#include=
- &quot;exec\/exec-all.h&quot;/d&#39;<br>
-&gt;&gt; &gt;&gt;<br>
-&gt;&gt; &gt;&gt; Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D=
-"mailto:f4bug@amsat.org" target=3D"_blank" rel=3D"noreferrer">f4bug@amsat.o=
-rg</a>&gt;<br>
-</blockquote></div></div></div>
+$ git grep -l exec-all -- '*.h'
+accel/tcg/translate-all.h
+include/exec/tb-lookup.h
+include/exec/translator.h
+linux-user/qemu.h
+target/ppc/helper_regs.h
 
---000000000000642448056d665583--
+Leaving aside linux-user/qemu.h, let's check which files include one of
+those headers, but they do not include exec/exec-all.h:
+
+$ git grep -L exec-all \
+   $(git grep -lFf <(git grep -l exec-all -- '*.h' | \
+     grep -v qemu.h | sed 's,.*/,,'))
+linux-user/mmap.c
+target/arm/translate.h
+target/ppc/int_helper.c
+trace/control-target.c
+
+I'll send some patches shortly to fix up what's left.
+
+Paolo
 
