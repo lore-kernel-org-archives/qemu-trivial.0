@@ -1,109 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fO7jD-0005JZ-I6
-	for mharc-qemu-trivial@gnu.org; Wed, 30 May 2018 16:29:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44220)
+	id 1fPilh-0002DA-2b
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Jun 2018 02:15:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34462)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1fO7jB-0005Hf-7v
-	for qemu-trivial@nongnu.org; Wed, 30 May 2018 16:29:50 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1fPild-0002A1-CK
+	for qemu-trivial@nongnu.org; Mon, 04 Jun 2018 02:14:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1fO7jA-0008LS-CB
-	for qemu-trivial@nongnu.org; Wed, 30 May 2018 16:29:49 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58336 helo=mx1.redhat.com)
+	(envelope-from <dgibson@ozlabs.org>) id 1fPilc-0006ZM-4j
+	for qemu-trivial@nongnu.org; Mon, 04 Jun 2018 02:14:57 -0400
+Received: from ozlabs.org ([203.11.71.1]:51259)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1fO7j3-0008HB-FW; Wed, 30 May 2018 16:29:41 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 09D5F4000B6E;
-	Wed, 30 May 2018 20:29:41 +0000 (UTC)
-Received: from [10.18.17.177] (dhcp-17-177.bos.redhat.com [10.18.17.177])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6650720628A0;
-	Wed, 30 May 2018 20:29:40 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Thomas Huth <thuth@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
-Cc: "open list:IDE" <qemu-block@nongnu.org>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-References: <20180528232719.4721-1-f4bug@amsat.org>
-	<20180528232719.4721-21-f4bug@amsat.org>
-From: John Snow <jsnow@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-	NRhibLIrSP2g5nqXONyQrFxb1HtVaoR+Nrk=
-Message-ID: <3c9d5ad5-c723-0e84-5221-13a60f5c0e68@redhat.com>
-Date: Wed, 30 May 2018 16:29:40 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1fPilU-0006Vu-EC; Mon, 04 Jun 2018 02:14:49 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 40zl5c4HZmz9s0W; Mon,  4 Jun 2018 16:14:44 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1528092884;
+	bh=V16we/Gl7lC7T7xsZMSj6Zb0sS8djydbhY+xCkr2peY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=S6lWMeL8yOQJrUWddouJgM6+q4OQCm9turGc/n3uTUdTo7T1sCAL0mCR0i8E3svtO
+	uQ/O4T47wRr4LQT0ff46y7ji1GS6oE2Vz453NzGRrrS0MfmIWdzS9BNDpfuNwdFfA5
+	SOe5n3oPfbaFzlNpdzg+TfDvMf0+Vznt8MEwckrc=
+Date: Mon, 4 Jun 2018 11:27:34 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-ppc@nongnu.org, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>,
+	Alistair Francis <alistair.francis@xilinx.com>
+Message-ID: <20180604012734.GG4251@umbus>
+References: <1527531079-32717-1-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20180528232719.4721-21-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Wed, 30 May 2018 20:29:41 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Wed, 30 May 2018 20:29:41 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'jsnow@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="E69HUUNAyIJqGpVn"
+Content-Disposition: inline
+In-Reply-To: <1527531079-32717-1-git-send-email-thuth@redhat.com>
+User-Agent: Mutt/1.9.5 (2018-04-13)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 20/21] hw/ide: Remove
- unused include
+X-Received-From: 203.11.71.1
+Subject: Re: [Qemu-trivial] [PATCH] target/ppc: Use proper logging function
+ for possible guest errors
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -115,15 +51,140 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 May 2018 20:29:50 -0000
+X-List-Received-Date: Mon, 04 Jun 2018 06:14:59 -0000
 
 
+--E69HUUNAyIJqGpVn
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 05/28/2018 07:27 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> There is no need to include pci.h in this file.
-> (Continue f23c81073a cleanup).
+On Mon, May 28, 2018 at 08:11:19PM +0200, Thomas Huth wrote:
+> fprintf() and qemu_log_separate() are frowned upon these days for printing
+> logging information in QEMU. Accessing the wrong SPRs indicates wrong gue=
+st
+> behaviour in most cases, and we've got a proper way to log such situation=
+s,
+> which is the qemu_log_mask(LOG_GUEST_ERROR, ...) function. So use this
+> function now for logging the bad SPR accesses instead.
 >=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Acked-by: John Snow <jsnow@redhat.com>
+Applied to ppc-for-2.13, thanks.
+
+> ---
+>  target/ppc/translate.c | 37 ++++++++++++-------------------------
+>  1 file changed, 12 insertions(+), 25 deletions(-)
+>=20
+> diff --git a/target/ppc/translate.c b/target/ppc/translate.c
+> index e30d99f..0806ee0 100644
+> --- a/target/ppc/translate.c
+> +++ b/target/ppc/translate.c
+> @@ -3933,13 +3933,9 @@ static inline void gen_op_mfspr(DisasContext *ctx)
+>               * allowing userland application to read the PVR
+>               */
+>              if (sprn !=3D SPR_PVR) {
+> -                fprintf(stderr, "Trying to read privileged spr %d (0x%03=
+x) at "
+> -                        TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_nex=
+t - 4);
+> -                if (qemu_log_separate()) {
+> -                    qemu_log("Trying to read privileged spr %d (0x%03x) =
+at "
+> -                             TARGET_FMT_lx "\n", sprn, sprn,
+> -                             ctx->base.pc_next - 4);
+> -                }
+> +                qemu_log_mask(LOG_GUEST_ERROR, "Trying to read privilege=
+d spr "
+> +                              "%d (0x%03x) at " TARGET_FMT_lx "\n", sprn=
+, sprn,
+> +                              ctx->base.pc_next - 4);
+>              }
+>              gen_priv_exception(ctx, POWERPC_EXCP_PRIV_REG);
+>          }
+> @@ -3951,12 +3947,9 @@ static inline void gen_op_mfspr(DisasContext *ctx)
+>              return;
+>          }
+>          /* Not defined */
+> -        fprintf(stderr, "Trying to read invalid spr %d (0x%03x) at "
+> -                TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+> -        if (qemu_log_separate()) {
+> -            qemu_log("Trying to read invalid spr %d (0x%03x) at "
+> -                     TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next -=
+ 4);
+> -        }
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "Trying to read invalid spr %d (0x%03x) at "
+> +                      TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next =
+- 4);
+> =20
+>          /* The behaviour depends on MSR:PR and SPR# bit 0x10,
+>           * it can generate a priv, a hv emu or a no-op
+> @@ -4097,12 +4090,9 @@ static void gen_mtspr(DisasContext *ctx)
+>              (*write_cb)(ctx, sprn, rS(ctx->opcode));
+>          } else {
+>              /* Privilege exception */
+> -            fprintf(stderr, "Trying to write privileged spr %d (0x%03x) =
+at "
+> -                    TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - =
+4);
+> -            if (qemu_log_separate()) {
+> -                qemu_log("Trying to write privileged spr %d (0x%03x) at "
+> -                         TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_ne=
+xt - 4);
+> -            }
+> +            qemu_log_mask(LOG_GUEST_ERROR, "Trying to write privileged s=
+pr "
+> +                          "%d (0x%03x) at " TARGET_FMT_lx "\n", sprn, sp=
+rn,
+> +                          ctx->base.pc_next - 4);
+>              gen_priv_exception(ctx, POWERPC_EXCP_PRIV_REG);
+>          }
+>      } else {
+> @@ -4114,12 +4104,9 @@ static void gen_mtspr(DisasContext *ctx)
+>          }
+> =20
+>          /* Not defined */
+> -        if (qemu_log_separate()) {
+> -            qemu_log("Trying to write invalid spr %d (0x%03x) at "
+> -                     TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next -=
+ 4);
+> -        }
+> -        fprintf(stderr, "Trying to write invalid spr %d (0x%03x) at "
+> -                TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "Trying to write invalid spr %d (0x%03x) at "
+> +                      TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next =
+- 4);
+> =20
+> =20
+>          /* The behaviour depends on MSR:PR and SPR# bit 0x10,
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--E69HUUNAyIJqGpVn
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlsUlYYACgkQbDjKyiDZ
+s5J15g/8COrAAxXZQAaz/aYaKYFGF+gsDarB1/A3+xr6+ek+OIjsTar8DtlKXFF9
+St/1MCz13hMxJgiRMvuU/ebKUYCvWFOO82oyAji+cWUg+fxlOtIyKlFGDjROuTon
+lLr70ZP5JV+fXLsr/YlHLytROoJcgFinl5roibh+26Y+77mFTbkm93YEl41FmSor
+RnyOxoTPCnMnWtKAX9OusPUvNeYdqZDSQF6RumCteDreyym3AzT0QyxbBgNwwPHe
+gd9uwhWGPN9ZJh39s2rnrRJv7N6ox0335gVBDSvriHBpahBurmSRDOpLOOVrCcXt
+PnThhqWBLvmlcmwmp0B6F73ucxW6f54ZbUgk4bHpET5MOIwBDpejiEZ10aGt+q3F
+v88fe+anQq7h2B0+Hv95xg8IJBeVWq3EqxiJGn5l0eyJBIyipXGCMuFhDnc66bI1
+JkYGouGSB+s/nPb/Wt7wOfn6wL1lFrWOO3Ydm4X3EEl6N1ASZg6Uw9y42RHONWmD
+cPrfCbWTe6l1Sl5g/2afqTMPZtKtcEqjT3aWuntF7h3PMqatVdYCgXwta/Mu3bJI
+I+hF6JgJ6BJief8Sc1+Tb6giQ7RGA6Wc8YU5OOyJZUjf5Lt6bhMfyL8PaK7laieV
+iDWyINvP9RKpvFtFDqcfF0dfackMgSdYmOdfTdDopRBzJyYXitQ=
+=BEO5
+-----END PGP SIGNATURE-----
+
+--E69HUUNAyIJqGpVn--
 
