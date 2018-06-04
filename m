@@ -1,45 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fPilh-0002DA-2b
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Jun 2018 02:15:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34462)
+	id 1fPsEx-0000wo-9k
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Jun 2018 12:21:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59257)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1fPild-0002A1-CK
-	for qemu-trivial@nongnu.org; Mon, 04 Jun 2018 02:14:59 -0400
+	(envelope-from <pm215@archaic.org.uk>) id 1fPsEu-0000uf-KS
+	for qemu-trivial@nongnu.org; Mon, 04 Jun 2018 12:21:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1fPilc-0006ZM-4j
-	for qemu-trivial@nongnu.org; Mon, 04 Jun 2018 02:14:57 -0400
-Received: from ozlabs.org ([203.11.71.1]:51259)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1fPilU-0006Vu-EC; Mon, 04 Jun 2018 02:14:49 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 40zl5c4HZmz9s0W; Mon,  4 Jun 2018 16:14:44 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1528092884;
-	bh=V16we/Gl7lC7T7xsZMSj6Zb0sS8djydbhY+xCkr2peY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=S6lWMeL8yOQJrUWddouJgM6+q4OQCm9turGc/n3uTUdTo7T1sCAL0mCR0i8E3svtO
-	uQ/O4T47wRr4LQT0ff46y7ji1GS6oE2Vz453NzGRrrS0MfmIWdzS9BNDpfuNwdFfA5
-	SOe5n3oPfbaFzlNpdzg+TfDvMf0+Vznt8MEwckrc=
-Date: Mon, 4 Jun 2018 11:27:34 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-ppc@nongnu.org, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>,
-	Alistair Francis <alistair.francis@xilinx.com>
-Message-ID: <20180604012734.GG4251@umbus>
-References: <1527531079-32717-1-git-send-email-thuth@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="E69HUUNAyIJqGpVn"
-Content-Disposition: inline
-In-Reply-To: <1527531079-32717-1-git-send-email-thuth@redhat.com>
-User-Agent: Mutt/1.9.5 (2018-04-13)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 203.11.71.1
-Subject: Re: [Qemu-trivial] [PATCH] target/ppc: Use proper logging function
- for possible guest errors
+	(envelope-from <pm215@archaic.org.uk>) id 1fPsEt-00074r-Sx
+	for qemu-trivial@nongnu.org; Mon, 04 Jun 2018 12:21:48 -0400
+Received: from orth.archaic.org.uk ([2001:8b0:1d0::2]:42670)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pm215@archaic.org.uk>)
+	id 1fPsEr-00072i-OU; Mon, 04 Jun 2018 12:21:45 -0400
+Received: from pm215 by orth.archaic.org.uk with local (Exim 4.89)
+	(envelope-from <pm215@archaic.org.uk>)
+	id 1fPsEn-0007BA-PJ; Mon, 04 Jun 2018 17:21:41 +0100
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: patches@linaro.org, Richard Henderson <rth@twiddle.net>,
+	qemu-trivial@nongnu.org
+Date: Mon,  4 Jun 2018 17:21:40 +0100
+Message-Id: <20180604162140.20688-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2001:8b0:1d0::2
+Subject: [Qemu-trivial] [PATCH] CODING_STYLE: Define our preferred form for
+ multiline comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,140 +38,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Jun 2018 06:14:59 -0000
+X-List-Received-Date: Mon, 04 Jun 2018 16:21:49 -0000
 
+The codebase has a bit of a mix of
+ /* multiline comments
+  * like this
+  */
+and
+ /* multiline comments like this
+    in the GNU Coding Standards style */
 
---E69HUUNAyIJqGpVn
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+State a preference for the former.
 
-On Mon, May 28, 2018 at 08:11:19PM +0200, Thomas Huth wrote:
-> fprintf() and qemu_log_separate() are frowned upon these days for printing
-> logging information in QEMU. Accessing the wrong SPRs indicates wrong gue=
-st
-> behaviour in most cases, and we've got a proper way to log such situation=
-s,
-> which is the qemu_log_mask(LOG_GUEST_ERROR, ...) function. So use this
-> function now for logging the bad SPR accesses instead.
->=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+I admit that to some extent I'm imposing my aesthetic
+preferences here; pretty sure we have a lot more style
+1 comments than style 2, though.
+---
+ CODING_STYLE | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-Applied to ppc-for-2.13, thanks.
+diff --git a/CODING_STYLE b/CODING_STYLE
+index 12ba58ee293..fb1d1f1cd62 100644
+--- a/CODING_STYLE
++++ b/CODING_STYLE
+@@ -124,6 +124,19 @@ We use traditional C-style /* */ comments and avoid // comments.
+ Rationale: The // form is valid in C99, so this is purely a matter of
+ consistency of style. The checkpatch script will warn you about this.
+ 
++Multiline comments blocks should have a row of stars on the left
++and the terminating */ on its own line:
++    /* like
++     * this
++     */
++Putting the initial /* on its own line is accepted, but not required.
++(Some of the existing comments in the codebase use the GNU Coding
++Standards form which does not have stars on the left; avoid this
++when writing new comments.)
++
++Rationale: Consistency, and ease of visually picking out a multiline
++comment from the surrounding code.
++
+ 8. trace-events style
+ 
+ 8.1 0x prefix
+-- 
+2.17.1
 
-> ---
->  target/ppc/translate.c | 37 ++++++++++++-------------------------
->  1 file changed, 12 insertions(+), 25 deletions(-)
->=20
-> diff --git a/target/ppc/translate.c b/target/ppc/translate.c
-> index e30d99f..0806ee0 100644
-> --- a/target/ppc/translate.c
-> +++ b/target/ppc/translate.c
-> @@ -3933,13 +3933,9 @@ static inline void gen_op_mfspr(DisasContext *ctx)
->               * allowing userland application to read the PVR
->               */
->              if (sprn !=3D SPR_PVR) {
-> -                fprintf(stderr, "Trying to read privileged spr %d (0x%03=
-x) at "
-> -                        TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_nex=
-t - 4);
-> -                if (qemu_log_separate()) {
-> -                    qemu_log("Trying to read privileged spr %d (0x%03x) =
-at "
-> -                             TARGET_FMT_lx "\n", sprn, sprn,
-> -                             ctx->base.pc_next - 4);
-> -                }
-> +                qemu_log_mask(LOG_GUEST_ERROR, "Trying to read privilege=
-d spr "
-> +                              "%d (0x%03x) at " TARGET_FMT_lx "\n", sprn=
-, sprn,
-> +                              ctx->base.pc_next - 4);
->              }
->              gen_priv_exception(ctx, POWERPC_EXCP_PRIV_REG);
->          }
-> @@ -3951,12 +3947,9 @@ static inline void gen_op_mfspr(DisasContext *ctx)
->              return;
->          }
->          /* Not defined */
-> -        fprintf(stderr, "Trying to read invalid spr %d (0x%03x) at "
-> -                TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
-> -        if (qemu_log_separate()) {
-> -            qemu_log("Trying to read invalid spr %d (0x%03x) at "
-> -                     TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next -=
- 4);
-> -        }
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "Trying to read invalid spr %d (0x%03x) at "
-> +                      TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next =
-- 4);
-> =20
->          /* The behaviour depends on MSR:PR and SPR# bit 0x10,
->           * it can generate a priv, a hv emu or a no-op
-> @@ -4097,12 +4090,9 @@ static void gen_mtspr(DisasContext *ctx)
->              (*write_cb)(ctx, sprn, rS(ctx->opcode));
->          } else {
->              /* Privilege exception */
-> -            fprintf(stderr, "Trying to write privileged spr %d (0x%03x) =
-at "
-> -                    TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - =
-4);
-> -            if (qemu_log_separate()) {
-> -                qemu_log("Trying to write privileged spr %d (0x%03x) at "
-> -                         TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_ne=
-xt - 4);
-> -            }
-> +            qemu_log_mask(LOG_GUEST_ERROR, "Trying to write privileged s=
-pr "
-> +                          "%d (0x%03x) at " TARGET_FMT_lx "\n", sprn, sp=
-rn,
-> +                          ctx->base.pc_next - 4);
->              gen_priv_exception(ctx, POWERPC_EXCP_PRIV_REG);
->          }
->      } else {
-> @@ -4114,12 +4104,9 @@ static void gen_mtspr(DisasContext *ctx)
->          }
-> =20
->          /* Not defined */
-> -        if (qemu_log_separate()) {
-> -            qemu_log("Trying to write invalid spr %d (0x%03x) at "
-> -                     TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next -=
- 4);
-> -        }
-> -        fprintf(stderr, "Trying to write invalid spr %d (0x%03x) at "
-> -                TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next - 4);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "Trying to write invalid spr %d (0x%03x) at "
-> +                      TARGET_FMT_lx "\n", sprn, sprn, ctx->base.pc_next =
-- 4);
-> =20
-> =20
->          /* The behaviour depends on MSR:PR and SPR# bit 0x10,
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---E69HUUNAyIJqGpVn
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlsUlYYACgkQbDjKyiDZ
-s5J15g/8COrAAxXZQAaz/aYaKYFGF+gsDarB1/A3+xr6+ek+OIjsTar8DtlKXFF9
-St/1MCz13hMxJgiRMvuU/ebKUYCvWFOO82oyAji+cWUg+fxlOtIyKlFGDjROuTon
-lLr70ZP5JV+fXLsr/YlHLytROoJcgFinl5roibh+26Y+77mFTbkm93YEl41FmSor
-RnyOxoTPCnMnWtKAX9OusPUvNeYdqZDSQF6RumCteDreyym3AzT0QyxbBgNwwPHe
-gd9uwhWGPN9ZJh39s2rnrRJv7N6ox0335gVBDSvriHBpahBurmSRDOpLOOVrCcXt
-PnThhqWBLvmlcmwmp0B6F73ucxW6f54ZbUgk4bHpET5MOIwBDpejiEZ10aGt+q3F
-v88fe+anQq7h2B0+Hv95xg8IJBeVWq3EqxiJGn5l0eyJBIyipXGCMuFhDnc66bI1
-JkYGouGSB+s/nPb/Wt7wOfn6wL1lFrWOO3Ydm4X3EEl6N1ASZg6Uw9y42RHONWmD
-cPrfCbWTe6l1Sl5g/2afqTMPZtKtcEqjT3aWuntF7h3PMqatVdYCgXwta/Mu3bJI
-I+hF6JgJ6BJief8Sc1+Tb6giQ7RGA6Wc8YU5OOyJZUjf5Lt6bhMfyL8PaK7laieV
-iDWyINvP9RKpvFtFDqcfF0dfackMgSdYmOdfTdDopRBzJyYXitQ=
-=BEO5
------END PGP SIGNATURE-----
-
---E69HUUNAyIJqGpVn--
 
