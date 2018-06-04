@@ -1,105 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fPtnH-0007bt-37
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Jun 2018 14:01:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57101)
+	id 1fPush-0004TN-W0
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Jun 2018 15:11:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41634)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1fPtnE-0007ac-9A
-	for qemu-trivial@nongnu.org; Mon, 04 Jun 2018 14:01:21 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fPusd-0004TB-Hc
+	for qemu-trivial@nongnu.org; Mon, 04 Jun 2018 15:11:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1fPtnC-0001QR-Va
-	for qemu-trivial@nongnu.org; Mon, 04 Jun 2018 14:01:20 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:44842 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1fPtn8-0001HN-3Z; Mon, 04 Jun 2018 14:01:14 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 553B6805A530;
-	Mon,  4 Jun 2018 18:01:13 +0000 (UTC)
-Received: from [10.18.17.177] (dhcp-17-177.bos.redhat.com [10.18.17.177])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EAB012144B22;
-	Mon,  4 Jun 2018 18:01:12 +0000 (UTC)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fPusX-0005PO-D6
+	for qemu-trivial@nongnu.org; Mon, 04 Jun 2018 15:10:59 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:33965)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fPusX-0005Ov-8C; Mon, 04 Jun 2018 15:10:53 -0400
+Received: by mail-qt0-x243.google.com with SMTP id d3-v6so7364709qto.1;
+	Mon, 04 Jun 2018 12:10:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=0cpGLect97ZmHrEkblRCBbyQAhoWSLpw7xv89NhdbF0=;
+	b=k3qqXZvMY2VCmq7QGImxdQykjI8hAAPc2G6JGBa9tQRmN7nUfMzqeLgTbIOlNqnEF5
+	LssB4ZUaI0N+kjqiqot2CWmZQ9QjbS0djSTg9VSHRSxrg2y5TBzaCSMp5EchHDdhbZqh
+	ObSRr/k8AEszFVC4AiKt0tBnmF9S3LwpuceVQVWiHxNTAHQksXkcPEqHvdRivWEHNC8Q
+	564Fzd7mxcreiXR/7nKxuImPYMVHK53qUJZuSjLKVl0MBe5YO0/xSgXsAEQCMIytInm+
+	4qrdtyigz3m87zKfGYA4aBjC+OFyHsyA2SZ/dSSor49D4VNNZihPCCKQLUgBJpOTHW0x
+	H/LQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=0cpGLect97ZmHrEkblRCBbyQAhoWSLpw7xv89NhdbF0=;
+	b=BKqDc5Qr88INhvQ9O/pssGnVDGzDUyH0FT3cBP8U9c/fFOytt/N8OdjLHOI/XG5ZN5
+	OP/noICxE9ALRvIEVLXriIR5P5TVfFGux07MZ6sggPS6mSiII7BiO6rJNPR/QIzPEHb1
+	w6+Q34CcJGVxB+64MKcCEsLIhiZHN7yhZSrzbwIe1wskX7s1CNFp6OyOWcobpl4ws7bq
+	8Y9x2x4ImxdB6RHRzYKDIZU22F9TWg7uuJLTBl7mhh4xwG5fek7sp2k1FAn0PN+T8MxL
+	SJLBOJQfcSBklHa5THW0gE1Lg9hLbArmac0obDj7EacHFKuwkHlZBD0EcScL/ZSloMK2
+	VHOg==
+X-Gm-Message-State: APt69E1tBg5+m0jpAnmDwP8lTMU2VAo5Bb14aJiiB+gQELsVvtjlRVE8
+	kcbg5ndrpfHeEQd3XQeizZI=
+X-Google-Smtp-Source: ADUXVKIQimvDvnHNLT68wyaif0eTH3wtPf88ufnQiFmJWve6eo0fZL5hiWd+bhO+dUor2KePHN+QeQ==
+X-Received: by 2002:ac8:300e:: with SMTP id
+	f14-v6mr20901675qte.89.1528139452664; 
+	Mon, 04 Jun 2018 12:10:52 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	k30-v6sm6043338qtc.31.2018.06.04.12.10.50
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 04 Jun 2018 12:10:52 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Richard Henderson <rth@twiddle.net>,
 	patches@linaro.org
 References: <20180604162140.20688-1-peter.maydell@linaro.org>
-From: John Snow <jsnow@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-	NRhibLIrSP2g5nqXONyQrFxb1HtVaoR+Nrk=
-Message-ID: <03a1670a-8e43-d541-3468-a2249bc8fa34@redhat.com>
-Date: Mon, 4 Jun 2018 14:01:12 -0400
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <f191ff51-7bcb-dc30-e225-8ac83a4fbadd@amsat.org>
+Date: Mon, 4 Jun 2018 16:10:49 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	Thunderbird/52.8.0
 MIME-Version: 1.0
 In-Reply-To: <20180604162140.20688-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Mon, 04 Jun 2018 18:01:13 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Mon, 04 Jun 2018 18:01:13 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'jsnow@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::243
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] CODING_STYLE: Define our
  preferred form for multiline comments
 X-BeenThere: qemu-trivial@nongnu.org
@@ -113,11 +84,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Jun 2018 18:01:21 -0000
+X-List-Received-Date: Mon, 04 Jun 2018 19:11:03 -0000
 
-
-
-On 06/04/2018 12:21 PM, Peter Maydell wrote:
+On 06/04/2018 01:21 PM, Peter Maydell wrote:
 > The codebase has a bit of a mix of
 >  /* multiline comments
 >   * like this
@@ -133,6 +102,11 @@ On 06/04/2018 12:21 PM, Peter Maydell wrote:
 > I admit that to some extent I'm imposing my aesthetic
 > preferences here; pretty sure we have a lot more style
 > 1 comments than style 2, though.
+
+The later is easier to indent with unintelligent editors.
+
+Any one is fine as long as it has a guideline in coding style.
+
 > ---
 >  CODING_STYLE | 13 +++++++++++++
 >  1 file changed, 13 insertions(+)
@@ -157,24 +131,12 @@ On 06/04/2018 12:21 PM, Peter Maydell wrote:
 > +
 > +Rationale: Consistency, and ease of visually picking out a multiline
 > +comment from the surrounding code.
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 > +
 >  8. trace-events style
 >  
 >  8.1 0x prefix
 > 
-
-Is there some name for the unholy abomination that is the combination of
-both styles?:
-
-/* Like this, but without the trailing
- * end-comment on a standalone line. */
-
-I prefer the asterisks on the left because it makes it obvious when
-grepping that it's from a comment block; I dislike the standalone
-comment for taking up a bunch of room for seemingly no reason.
-
-...Not that I expect to change your mind, or to suggest I've got enough
-paint for a shed this large, so any standard is better than no standard...
-
---js
 
