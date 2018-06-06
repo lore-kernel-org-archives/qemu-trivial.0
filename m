@@ -1,70 +1,118 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fQdwr-0007g5-Vp
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Jun 2018 15:18:22 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40084)
+	id 1fQeL6-0000OG-F3
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Jun 2018 15:43:24 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45598)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fQdwn-0007do-SZ
-	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 15:18:19 -0400
+	(envelope-from <jsnow@redhat.com>) id 1fQeL4-0000M0-2F
+	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 15:43:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fQdwm-0005hK-M0
-	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 15:18:17 -0400
-Received: from mail-ua0-x242.google.com ([2607:f8b0:400c:c08::242]:34489)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fQdwh-0005fM-PJ; Wed, 06 Jun 2018 15:18:11 -0400
-Received: by mail-ua0-x242.google.com with SMTP id 74-v6so4820075uav.1;
-	Wed, 06 Jun 2018 12:18:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=mX5yDO0jXi7eKS/+2AdUqi565sC2QcQizv3tFIj3mqA=;
-	b=HksBuwrw44pd4zNFZKt8+xBhlO9AZVNTCDTRxmLbWzRlBpIIZZy1HzpN647hY5CLy4
-	t4mWrRXhne/OnGTP9Z4PhnAfYGoldlrYWcSGT1gA46kzo9f+AxEuhFw2dHW/UMjDdzHG
-	4Z4sxxMDnccxfOjHbM2iuQViSATD8AdMxF5GyQbEnNn+vxkFR6r2Y3ge/n9Xn0xK0nB+
-	be9d1TZQhsRXgmx8hNKuyKIZyAftoKxDrt9fBvLd9g19Q0UQrFpjQuq/P1Koy0mhFf0J
-	qG6xngey4OholHXaiEckklDm8nrJVHaF+aJWizsmMRKQIV6sc6B11nHQRwKtl43h0Jta
-	sBcQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=mX5yDO0jXi7eKS/+2AdUqi565sC2QcQizv3tFIj3mqA=;
-	b=VhyAoFK1xrim6eYMlOeG3LUXCstUAxAt7vGhEW7OvK6UXRsJsh+dY2En5x11WPhKUf
-	AbKeofjgj8PE61n9EHVtuwZ5BNa/n2tBEh38BG81NC3PetDrzcz1ze2NU9cKO4X9Td3l
-	t7ck5KMmL5catSy+wJmRRGHENYXCatTIdPeTQzwr8D9hepJPP3sVB7iFUmdK0H4jkbZe
-	sdG1GGJzI9P/9mvA2fjBR2+n5IyZGnefnfGIk7vUdaD7tzxMcvdhuUS4FbSopP41WxgF
-	xYN+ivTpszoTaO34L54/UIxxSMdXXNBeJ+7vQsxy5iIGJuQbSypzc8r6dh7f7FEL7P+m
-	e+Sw==
-X-Gm-Message-State: APt69E2F/nZAbjEFpZV/DC//IsFgIl5J+hZ+Ho2vJnOs7RZke/DJ2j30
-	Eye3q3md0/qn6LsR7OBXvZ4=
-X-Google-Smtp-Source: ADUXVKIjhAn/oz5gTIsrJ1Vnxi5/zFohbpQjiMile/GFwWgS10+9LK95dO7MTux01jwc0RgRGPuCKg==
-X-Received: by 2002:a9f:3bd1:: with SMTP id
-	y17-v6mr2972669uah.88.1528312691180; 
-	Wed, 06 Jun 2018 12:18:11 -0700 (PDT)
-Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	21-v6sm9884613vkd.49.2018.06.06.12.18.07
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 06 Jun 2018 12:18:10 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Corey Minyard <cminyard@mvista.com>, Stefan Hajnoczi <stefanha@redhat.com>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Linus Walleij <linus.walleij@linaro.org>
-Date: Wed,  6 Jun 2018 16:18:01 -0300
-Message-Id: <20180606191801.6331-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.17.1
+	(envelope-from <jsnow@redhat.com>) id 1fQeL0-0002pV-3w
+	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 15:43:22 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:55836 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
+	id 1fQeKp-0002hg-Mh; Wed, 06 Jun 2018 15:43:07 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C37AB88844;
+	Wed,  6 Jun 2018 19:43:06 +0000 (UTC)
+Received: from [10.18.17.177] (dhcp-17-177.bos.redhat.com [10.18.17.177])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id EC06A1134CA4;
+	Wed,  6 Jun 2018 19:43:04 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Michael Walle <michael@walle.cc>, 
+	Max Filippov <jcmvbkbc@gmail.com>, Michael Clark <mjc@sifive.com>,
+	Palmer Dabbelt <palmer@sifive.com>,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Laurent Vivier <laurent@vivier.eu>, Aurelien Jarno <aurelien@aurel32.net>, 
+	Paul Burton <paul.burton@mips.com>, Yongbok Kim <yongbok.kim@mips.com>, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Antony Pavlov <antonynpavlov@gmail.com>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+	qemu-devel@nongnu.org
+References: <20180606152128.449-1-f4bug@amsat.org>
+From: John Snow <jsnow@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+	NRhibLIrSP2g5nqXONyQrFxb1HtVaoR+Nrk=
+Message-ID: <b4903491-f450-1a54-2a70-a084c30cd8c6@redhat.com>
+Date: Wed, 6 Jun 2018 15:43:04 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400c:c08::242
-Subject: [Qemu-trivial] [PATCH] hw/i2c: Add trace events
+In-Reply-To: <20180606152128.449-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Wed, 06 Jun 2018 19:43:06 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Wed, 06 Jun 2018 19:43:06 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'jsnow@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 00/11] misc: Add trailing
+ '\n' to qemu_log() calls
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,152 +124,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Jun 2018 19:18:19 -0000
+X-List-Received-Date: Wed, 06 Jun 2018 19:43:23 -0000
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-$ qemu-system ... -d trace:i2c_recv,trace:i2c_send
 
-4486@1528311614.709959:i2c_recv recv(addr:0x50) data:0x00
-4486@1528311614.709994:i2c_send send(addr:0x50) data:0x05
-4486@1528311614.710060:i2c_recv recv(addr:0x50) data:0x02
-4486@1528311614.710161:i2c_recv recv(addr:0x50) data:0x40
-4486@1528311614.710185:i2c_send send(addr:0x50) data:0x02
-4486@1528311614.710233:i2c_recv recv(addr:0x50) data:0x08
-4486@1528311614.710380:i2c_recv recv(addr:0x50) data:0x0d
-4486@1528311614.710396:i2c_send send(addr:0x50) data:0x1f
-4486@1528311614.710437:i2c_recv recv(addr:0x50) data:0x40
 
-or
+On 06/06/2018 11:21 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Nothing very exciting here.
+> I sometimes miss to notice some trace events, running with -d unimp,tra=
+ce...
+> then using 'grep ^...'. This is only due to a missing '\n' :)
+>=20
 
-$ qemu-system ... -d trace:i2c\*
+so error_setg must be used WITHOUT \n and logging must happen with \n?
 
-4486@1528311614.698315:i2c_event start(addr:0x50)
-4486@1528311614.698338:i2c_recv recv(addr:0x50) data:0x82
-4486@1528311614.698349:i2c_event finish(addr:0x50)
-4486@1528311614.698354:i2c_event start(addr:0x50)
-4486@1528311614.698357:i2c_send send(addr:0x50) data:0x11
-4486@1528311614.698377:i2c_event finish(addr:0x50)
-4486@1528311614.698380:i2c_event start(addr:0x50)
-4486@1528311614.698402:i2c_recv recv(addr:0x50) data:0x04
-4486@1528311614.698485:i2c_event finish(addr:0x50)
+If we're sure that's the way we want to have things laid out, we really
+ought to augment checkpatch to catch this -- because there's 0% chance
+that we'll keep it straight on our own otherwise.
 
- Makefile.objs       |  1 +
- hw/i2c/core.c       | 25 ++++++++++++++++++-------
- hw/i2c/trace-events |  7 +++++++
- 3 files changed, 26 insertions(+), 7 deletions(-)
- create mode 100644 hw/i2c/trace-events
+--js
 
-diff --git a/Makefile.objs b/Makefile.objs
-index 2c8cb72407..7a9828da28 100644
---- a/Makefile.objs
-+++ b/Makefile.objs
-@@ -213,6 +213,7 @@ trace-events-subdirs += hw/char
- trace-events-subdirs += hw/display
- trace-events-subdirs += hw/dma
- trace-events-subdirs += hw/hppa
-+trace-events-subdirs += hw/i2c
- trace-events-subdirs += hw/i386
- trace-events-subdirs += hw/i386/xen
- trace-events-subdirs += hw/ide
-diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-index ab72d5bf2b..b54725985a 100644
---- a/hw/i2c/core.c
-+++ b/hw/i2c/core.c
-@@ -9,6 +9,7 @@
- 
- #include "qemu/osdep.h"
- #include "hw/i2c/i2c.h"
-+#include "trace.h"
- 
- #define I2C_BROADCAST 0x00
- 
-@@ -130,14 +131,16 @@ int i2c_start_transfer(I2CBus *bus, uint8_t address, int recv)
-     }
- 
-     QLIST_FOREACH(node, &bus->current_devs, next) {
-+        I2CSlave *s = node->elt;
-         int rv;
- 
--        sc = I2C_SLAVE_GET_CLASS(node->elt);
-+        sc = I2C_SLAVE_GET_CLASS(s);
-         /* If the bus is already busy, assume this is a repeated
-            start condition.  */
- 
-         if (sc->event) {
--            rv = sc->event(node->elt, recv ? I2C_START_RECV : I2C_START_SEND);
-+            trace_i2c_event("start", s->address);
-+            rv = sc->event(s, recv ? I2C_START_RECV : I2C_START_SEND);
-             if (rv && !bus->broadcast) {
-                 if (bus_scanned) {
-                     /* First call, terminate the transfer. */
-@@ -156,9 +159,11 @@ void i2c_end_transfer(I2CBus *bus)
-     I2CNode *node, *next;
- 
-     QLIST_FOREACH_SAFE(node, &bus->current_devs, next, next) {
--        sc = I2C_SLAVE_GET_CLASS(node->elt);
-+        I2CSlave *s = node->elt;
-+        sc = I2C_SLAVE_GET_CLASS(s);
-         if (sc->event) {
--            sc->event(node->elt, I2C_FINISH);
-+            trace_i2c_event("finish", s->address);
-+            sc->event(s, I2C_FINISH);
-         }
-         QLIST_REMOVE(node, next);
-         g_free(node);
-@@ -169,14 +174,17 @@ void i2c_end_transfer(I2CBus *bus)
- int i2c_send_recv(I2CBus *bus, uint8_t *data, bool send)
- {
-     I2CSlaveClass *sc;
-+    I2CSlave *s;
-     I2CNode *node;
-     int ret = 0;
- 
-     if (send) {
-         QLIST_FOREACH(node, &bus->current_devs, next) {
--            sc = I2C_SLAVE_GET_CLASS(node->elt);
-+            s = node->elt;
-+            sc = I2C_SLAVE_GET_CLASS(s);
-             if (sc->send) {
--                ret = ret || sc->send(node->elt, *data);
-+                trace_i2c_send(s->address, *data);
-+                ret = ret || sc->send(s, *data);
-             } else {
-                 ret = -1;
-             }
-@@ -189,7 +197,9 @@ int i2c_send_recv(I2CBus *bus, uint8_t *data, bool send)
- 
-         sc = I2C_SLAVE_GET_CLASS(QLIST_FIRST(&bus->current_devs)->elt);
-         if (sc->recv) {
--            ret = sc->recv(QLIST_FIRST(&bus->current_devs)->elt);
-+            s = QLIST_FIRST(&bus->current_devs)->elt;
-+            ret = sc->recv(s);
-+            trace_i2c_recv(s->address, ret);
-             if (ret < 0) {
-                 return ret;
-             } else {
-@@ -226,6 +236,7 @@ void i2c_nack(I2CBus *bus)
-     QLIST_FOREACH(node, &bus->current_devs, next) {
-         sc = I2C_SLAVE_GET_CLASS(node->elt);
-         if (sc->event) {
-+            trace_i2c_event("nack", node->elt->address);
-             sc->event(node->elt, I2C_NACK);
-         }
-     }
-diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-new file mode 100644
-index 0000000000..d339b61202
---- /dev/null
-+++ b/hw/i2c/trace-events
-@@ -0,0 +1,7 @@
-+# See docs/devel/tracing.txt for syntax documentation.
-+
-+# hw/i2c/core.c
-+
-+i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x)"
-+i2c_send(uint8_t address, uint8_t data) "send(addr:0x%02x) data:0x%02x"
-+i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
--- 
-2.17.1
-
+> Philippe Mathieu-Daud=C3=A9 (11):
+>   hw/sd/milkymist-memcard: Add trailing '\n' to qemu_log() call
+>   hw/digic: Add trailing '\n' to qemu_log() calls
+>   xilinx-dp: Add trailing '\n' to qemu_log() call
+>   ppc/pnv: Add trailing '\n' to qemu_log() calls
+>   hw/core/register: Add trailing '\n' to qemu_log() call
+>   hw/mips/boston: Add trailing '\n' to qemu_log() calls
+>   stellaris: Add trailing '\n' to qemu_log() calls
+>   target/arm: Add trailing '\n' to qemu_log() calls
+>   target/m68k: Add trailing '\n' to qemu_log() call
+>   RISC-V: Add trailing '\n' to qemu_log() calls
+>   RFC target/xtensa: Add trailing '\n' to qemu_log() calls
+>=20
+>  hw/arm/stellaris.c        | 11 ++++++-----
+>  hw/char/digic-uart.c      |  4 ++--
+>  hw/core/register.c        |  2 +-
+>  hw/display/xlnx_dp.c      |  4 +++-
+>  hw/mips/boston.c          |  8 ++++----
+>  hw/ppc/pnv_core.c         |  4 ++--
+>  hw/sd/milkymist-memcard.c |  2 +-
+>  hw/timer/digic-timer.c    |  4 ++--
+>  target/arm/helper.c       |  4 ++--
+>  target/m68k/translate.c   |  2 +-
+>  target/riscv/op_helper.c  |  6 ++++--
+>  target/xtensa/translate.c |  6 +++---
+>  12 files changed, 31 insertions(+), 26 deletions(-)
+>=20
 
