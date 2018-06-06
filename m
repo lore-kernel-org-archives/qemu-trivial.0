@@ -1,62 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fQaG4-0004dw-Ii
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Jun 2018 11:21:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39180)
+	id 1fQaG6-0004l0-RM
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Jun 2018 11:22:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39218)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fQaFy-0004Yp-Uu
-	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 11:21:55 -0400
+	id 1fQaG3-0004cH-2n
+	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 11:21:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fQaFx-0003c0-5G
-	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 11:21:50 -0400
-Received: from mail-qk0-x235.google.com ([2607:f8b0:400d:c09::235]:35247)
+	id 1fQaG0-0003dZ-0i
+	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 11:21:55 -0400
+Received: from mail-qt0-x232.google.com ([2607:f8b0:400d:c0d::232]:43629)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fQaFu-0003aQ-Hw; Wed, 06 Jun 2018 11:21:46 -0400
-Received: by mail-qk0-x235.google.com with SMTP id d130-v6so4187635qkc.2;
-	Wed, 06 Jun 2018 08:21:46 -0700 (PDT)
+	id 1fQaFr-0003Z4-VZ; Wed, 06 Jun 2018 11:21:44 -0400
+Received: by mail-qt0-x232.google.com with SMTP id y89-v6so6733174qtd.10;
+	Wed, 06 Jun 2018 08:21:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=H9Jx3ZsoCrenRU7skyz8KGCY7zDyhcjoy12Hh6vS5mo=;
-	b=opjsKYtzYAtET5SmaXPfsfxp1YHTOoQMzgEGYsCDdG91o55B9XPjU+6odd642wzOes
-	fejafjb6o4mmibRlPLb2bsP6GDll7QYqCpoftAVQ9oCOvYEYOcTaKRJQDxlqk+UD++Nl
-	HAVK/N1EgKbbFnOuyMzFJUbPjdEK6CiGD83EVuo6jZj17hzWBIQdlAYyH/MtDYUY0mYz
-	dbTwa/JIPqLC/QO3PJ+prBtxgR6Ny6Tj2C1z0G/dyvXPLcbdseRJE3HogYsSeW4pzI1j
-	Oe6XTLacZ0zyfhxzVlQeS7T5/rk/35VfJimP6e3xJoHDW0kfGl9WhECNfEj+NVeql07j
-	wE0Q==
+	bh=R2c0dCdRKfNwLK7aLrg342j87TiuJblDv2Y8wxRyhdQ=;
+	b=TRn4yXoKIy2Flke4AdU04pdO7Slub2y2TH0fbOcR7RRim9pk28eNsm83Qj3805GMyS
+	TfKVE+qkvP4CnrNqqnfZGFx88sNU6DxH3cLqJ2gE8bZmGdllixDRR9tegMDq3TW75bEg
+	ZRT559GD2/B++MA1Fpk72SGxhJUINYUwImQjxyc+5Lt3pNGpW+GBheo+LjKN+GoR7TEj
+	Ygtt6ynbuHCNkJuVpeyoyKOi4eP3GLbicLLtPgti0pKldZFqFX16q7E8tCDHA9tG4i6g
+	wPtQpQ0CV3qsf++RC3nsSDierxkv5nxyvrDV99U9Bc4kHwXWvPFY5quHFavhKpoXDwci
+	5pyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=H9Jx3ZsoCrenRU7skyz8KGCY7zDyhcjoy12Hh6vS5mo=;
-	b=UviZrzuqrzfqsKsZg3+Y0n6k2HWP2c/FSWjqZzVMG7iMyStMRVkElPip/az2pzup68
-	ztCPa4hLHsabBd+gkrABpsyrJemZWukRWOgRJwLWp8/BBis844wn0j3v78sLRphCK5Py
-	bBD1ruxzIFRZsK7qq/FnHIp8kcud+cbA8BLuKh1ck/c8HpIobx2+5a9MLMLt7jPfI36D
-	xkEli4Lze/khLbAlGNTR9H2Nlb1Q4xPfwuK2CDCm6c66Dpl7OX8NFuxpJLBLaxVd4Kl+
-	lmwrIHc756ChP2EswIZcdS6WV5Sb4BcnqVMR01qELHTBDgchn90bwokVAvLC9UQx+KpR
-	WD7w==
-X-Gm-Message-State: APt69E17QqWGFJNezjwq3Z8JdOlyBTVp7vUdv5ceSugpaYdGKPgJRPGc
-	mN8UEVES0Sr7xdjIszlHLYc=
-X-Google-Smtp-Source: ADUXVKI4IcqvHwn5c5sDM0UwrmCaEd7eEjrfmUE5WnobeSW9AL+VnJApfbMddBu7xv+7lkoHE4QLxA==
-X-Received: by 2002:a37:6294:: with SMTP id
-	w142-v6mr2862311qkb.124.1528298505995; 
-	Wed, 06 Jun 2018 08:21:45 -0700 (PDT)
+	bh=R2c0dCdRKfNwLK7aLrg342j87TiuJblDv2Y8wxRyhdQ=;
+	b=BmLvl16ejFVTJySJmXll48i92a0vGGdTF2OPBLRpJLcu96ZbrgyVeBj4OLK+Xg4FX+
+	0fx0Zy6jdLPzeo9ZWGhswzvI+AwhJnsO606o394TixvLISZuk5gq5Zo56g3s3K9VKzUl
+	3yNZ/bDWJkCLtCGZ1VmeoO7sDRFEalgsQrCyEHYpwAv/FKI466NkqVSudb3Otb+AoPlr
+	5CHHy9rvxdoYunn8F1vRNGs4CPhLR3wgGza31mOC9rqfNZz3JTF1lZovqSV7K83is2Wo
+	8wD6my3coCVwffyzNzk5GHccT0p4IMYhm16Xg2E4KBm65eO4e+6BftTdaEhTfSVrZpFu
+	u7sg==
+X-Gm-Message-State: APt69E2XYdT6VnDVmbQ0Hmjejvnl75Gy9xxYjUpz6hptVGWZuJ1kMpXl
+	GmQHiSrfp9Rvc7e38CFYgRk=
+X-Google-Smtp-Source: ADUXVKLGPvDbHeOtlH5QPvqXMA9zlqkjIOtNQI3Nzza9EmfIqsj7IF/tWxhr+VwJWMboTXKJ6vS5sA==
+X-Received: by 2002:ac8:388:: with SMTP id t8-v6mr3208062qtg.194.1528298503555;
+	Wed, 06 Jun 2018 08:21:43 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	i8-v6sm38756255qtb.11.2018.06.06.08.21.43
+	i8-v6sm38756255qtb.11.2018.06.06.08.21.41
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 06 Jun 2018 08:21:45 -0700 (PDT)
+	Wed, 06 Jun 2018 08:21:42 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Antony Pavlov <antonynpavlov@gmail.com>
+To: Michael Walle <michael@walle.cc>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-arm@nongnu.org (open list:Canon DIGIC)
-Date: Wed,  6 Jun 2018 12:21:19 -0300
-Message-Id: <20180606152128.449-3-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Wed,  6 Jun 2018 12:21:18 -0300
+Message-Id: <20180606152128.449-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180606152128.449-1-f4bug@amsat.org>
 References: <20180606152128.449-1-f4bug@amsat.org>
@@ -65,9 +62,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::235
-Subject: [Qemu-trivial] [PATCH 02/11] hw/digic: Add trailing '\n' to
- qemu_log() calls
+X-Received-From: 2607:f8b0:400d:c0d::232
+Subject: [Qemu-trivial] [PATCH 01/11] hw/sd/milkymist-memcard: Add trailing
+ '\n' to qemu_log() call
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,58 +76,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Jun 2018 15:21:55 -0000
+X-List-Received-Date: Wed, 06 Jun 2018 15:21:56 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/char/digic-uart.c   | 4 ++--
- hw/timer/digic-timer.c | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ hw/sd/milkymist-memcard.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/char/digic-uart.c b/hw/char/digic-uart.c
-index 6ebcb87a40..ccc75eaa4d 100644
---- a/hw/char/digic-uart.c
-+++ b/hw/char/digic-uart.c
-@@ -60,7 +60,7 @@ static uint64_t digic_uart_read(void *opaque, hwaddr addr,
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "digic-uart: read access to unknown register 0x"
--                      TARGET_FMT_plx, addr << 2);
-+                      TARGET_FMT_plx "\n", addr << 2);
-     }
- 
-     return ret;
-@@ -98,7 +98,7 @@ static void digic_uart_write(void *opaque, hwaddr addr, uint64_t value,
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "digic-uart: write access to unknown register 0x"
--                      TARGET_FMT_plx, addr << 2);
-+                      TARGET_FMT_plx "\n", addr << 2);
-     }
- }
- 
-diff --git a/hw/timer/digic-timer.c b/hw/timer/digic-timer.c
-index e1fcf73c3e..4d73077207 100644
---- a/hw/timer/digic-timer.c
-+++ b/hw/timer/digic-timer.c
-@@ -73,7 +73,7 @@ static uint64_t digic_timer_read(void *opaque, hwaddr offset, unsigned size)
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "digic-timer: read access to unknown register 0x"
--                      TARGET_FMT_plx, offset);
-+                      TARGET_FMT_plx "\n", offset);
-     }
- 
-     return ret;
-@@ -109,7 +109,7 @@ static void digic_timer_write(void *opaque, hwaddr offset,
-     default:
-         qemu_log_mask(LOG_UNIMP,
-                       "digic-timer: read access to unknown register 0x"
--                      TARGET_FMT_plx, offset);
-+                      TARGET_FMT_plx "\n", offset);
-     }
- }
- 
+diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
+index fe1cccca76..fcbccf54ea 100644
+--- a/hw/sd/milkymist-memcard.c
++++ b/hw/sd/milkymist-memcard.c
+@@ -140,7 +140,7 @@ static uint64_t memcard_read(void *opaque, hwaddr addr,
+             r = s->response[s->response_read_ptr++];
+             if (s->response_read_ptr > s->response_len) {
+                 qemu_log_mask(LOG_GUEST_ERROR, "milkymist_memcard: "
+-                              "read more cmd bytes than available. Clipping.");
++                              "read more cmd bytes than available: clipping\n");
+                 s->response_read_ptr = 0;
+             }
+         }
 -- 
 2.17.1
 
