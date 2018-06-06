@@ -1,72 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fQZue-0007bW-AS
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Jun 2018 10:59:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60769)
+	id 1fQaFy-0004Y8-9Y
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Jun 2018 11:21:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39154)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fQZub-0007UT-Rr
-	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 10:59:46 -0400
+	id 1fQaFw-0004Wy-7J
+	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 11:21:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fQZub-0007O5-8x
-	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 10:59:45 -0400
-Received: from mail-qk0-x234.google.com ([2607:f8b0:400d:c09::234]:39776)
+	id 1fQaFv-0003b9-Cc
+	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 11:21:48 -0400
+Received: from mail-qt0-x232.google.com ([2607:f8b0:400d:c0d::232]:44484)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fQZuV-0007Gr-2F; Wed, 06 Jun 2018 10:59:39 -0400
-Received: by mail-qk0-x234.google.com with SMTP id g14-v6so4124612qkm.6;
-	Wed, 06 Jun 2018 07:59:38 -0700 (PDT)
+	id 1fQaFp-0003Xp-PQ; Wed, 06 Jun 2018 11:21:41 -0400
+Received: by mail-qt0-x232.google.com with SMTP id l33-v6so6720786qta.11;
+	Wed, 06 Jun 2018 08:21:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=oGnUSJaPn2n38SJ88CoCgtmuH1hY1wXIECkZM/ZBhdM=;
-	b=iOh1jkac2rOJieKamkzZmyVeS2vk0j5X/qgBFX6sf/lha1vQbRkc7WcbkuEGECcivE
-	6t3wFwokDAdbPswnnNAjG0dz45Fz59ZBxFfCt7YuHWpG9wWelTHACnhfdY9H5G+fP/zL
-	vZb3khSHNMsE0m5sFijuL/kS8XnX4XrD521dLRJ3e5VhQi6RpJAE/QCXowwtRF+A2KFg
-	ffHC/3QhyHrqR54R2UqvTf1TsPVlOoA2Vd0aexH3FVjDsApLvQ3XQIv6zFc6vah+H53p
-	/opbGyxTUbaRIRCUQr6+cXtFrhgTbiMZo4KfoGipKdaALQRXiA4ebgYxdwe6oEoSLxlK
-	Mdog==
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=WmXrDEjSrbWiSs20Taaf/u9ygPS4zQsPt3kiHlH+Tqc=;
+	b=ezLloFJwo4z+oz8Kn9K+9T8w6kYZuYP5IQslActaHogsaYc5/xy8IM5CMEUrCBzeHD
+	ufMTBh4iTB1RHL/vvCnxhV+1k06hVMZDn9QlYnwmpjZq0B+DzRkUCabDPcV66vQcKev6
+	LCpXTqSTbOzj/lTHqYjPBqH8TW7KOV8T36sbdL6G7NkX/weSNfOGY8QN/fQma3Cvs0pI
+	BdqYBVx4CrgJCay1nqt/R1hQOAtuowjuKnvMgQf4YRsrJHEPEbJPQHaZ2iLq/O0RZo+w
+	5xBBaAQ67GgvjJsECI7v6OVpEuvfgTPwI7ncWVjakkIwrDuKOUmzeMuq71+3qMWsROSw
+	y6Ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=oGnUSJaPn2n38SJ88CoCgtmuH1hY1wXIECkZM/ZBhdM=;
-	b=Gr75hll/myEfN7QzGoaoSb36mOhzg+722V4hf6asw+zsEczVbr3iASYQMrO/uzE3gt
-	g6AH163OPr+AQrwX/RMycMoN7ZMtPxssafR+q9iVxVyThRxwsiU9bDdkHyM8M5QMsQl0
-	HgL+22N9NhkUucDIetT0AHLMsHqd7JVoIzxExUm35vwGpUhMUjxioJZzTGTbQwiLtgvF
-	rwUA7RVWeJtGP2U/hmVBmXYYmOKIvpNmNOoGl5FqJliaJoliIfbOSXMfK198Ls5a1ETG
-	a44WXj0aDaH/uyChxELgyEE2oJ/swi9Wiwm8N6eEHwBsnLkpoqAQXGxj3FeAj1HUzfhk
-	ZvHw==
-X-Gm-Message-State: APt69E2vf9oqcusify4aHSp9EJmbByblUqbLoiANz1wRqP6ZYHUvnJ4r
-	1WnoHLFjMlGsRX9d25AIqsxYWAbx
-X-Google-Smtp-Source: ADUXVKK9J52bCsWdgy34cw2UPPQZ5y7JbQruAWOehESgBIthPdZCnezxslDF0SU8H7YTdlS5FevjJw==
-X-Received: by 2002:a37:c602:: with SMTP id
-	b2-v6mr2716430qkj.413.1528297178456; 
-	Wed, 06 Jun 2018 07:59:38 -0700 (PDT)
+	:mime-version:content-transfer-encoding;
+	bh=WmXrDEjSrbWiSs20Taaf/u9ygPS4zQsPt3kiHlH+Tqc=;
+	b=CRp3oOlyF1WtmlbnIznMJqnH+FBWdqzSG9jDMB7V0b6wVD4rjx//Ijb2MakA/9nL7w
+	yPcxZe7t4Aq0H4Y/9WrZKcf/4Wp8iFxA/m0s0vb1RtiZaW7WB/80N84bnYYoZog9a9nH
+	bp9fKzwIMA3b6tOrSTih9Bl+fQKNizi92MP54989+UoUk/NpAM1c/tw8A2Po+fwuOyEB
+	/XuqVu/dLHnoyl7xOXbYHGksyrCMgsMA/LDjKbv7FTzJ+K32O7sSGjASsvX1jepz+Qml
+	gugWcjINA2rjpWKjoaHPUnrkSjX6azQZ4m3ga3/cFAPUF44Fy1ITqTEJFJYjyTSFbDvc
+	6pHw==
+X-Gm-Message-State: APt69E2qw4JWwIMGkby+4Rw/hX0WmOXbeFQj/ewoy4Bp5rCbCdlP7oEg
+	o4ou6sdU4zl9CwjVq3xe8Yc=
+X-Google-Smtp-Source: ADUXVKJVI6YYdBpcQub3abHEwLr+5h0ahu1NCfY4ny8RaUZ3LGrgmmM4ZvnVt0lrgxtMZwJ/c561qw==
+X-Received: by 2002:ac8:2d6c:: with SMTP id
+	o41-v6mr3219115qta.107.1528298501211; 
+	Wed, 06 Jun 2018 08:21:41 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	v29-v6sm8519439qkv.28.2018.06.06.07.59.35
+	i8-v6sm38756255qtb.11.2018.06.06.08.21.35
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 06 Jun 2018 07:59:38 -0700 (PDT)
+	Wed, 06 Jun 2018 08:21:40 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Alexander Graf <agraf@suse.de>, David Gibson <david@gibson.dropbear.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>, Michael Walle <michael@walle.cc>,
+	Max Filippov <jcmvbkbc@gmail.com>, Michael Clark <mjc@sifive.com>,
+	Palmer Dabbelt <palmer@sifive.com>,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Laurent Vivier <laurent@vivier.eu>, Aurelien Jarno <aurelien@aurel32.net>,
+	Paul Burton <paul.burton@mips.com>, Yongbok Kim <yongbok.kim@mips.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Antony Pavlov <antonynpavlov@gmail.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
-Date: Wed,  6 Jun 2018 11:59:21 -0300
-Message-Id: <20180606145921.30606-4-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org
+Date: Wed,  6 Jun 2018 12:21:17 -0300
+Message-Id: <20180606152128.449-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20180606145921.30606-1-f4bug@amsat.org>
-References: <20180606145921.30606-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::234
-Subject: [Qemu-trivial] [PATCH 3/3] hw/misc/mos6522: Add trailing '\n' to
- qemu_log() calls
+X-Received-From: 2607:f8b0:400d:c0d::232
+Subject: [Qemu-trivial] [PATCH 00/11] misc: Add trailing '\n' to qemu_log()
+ calls
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,32 +85,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Jun 2018 14:59:46 -0000
+X-List-Received-Date: Wed, 06 Jun 2018 15:21:49 -0000
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/misc/mos6522.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Nothing very exciting here.
+I sometimes miss to notice some trace events, running with -d unimp,trace...
+then using 'grep ^...'. This is only due to a missing '\n' :)
 
-diff --git a/hw/misc/mos6522.c b/hw/misc/mos6522.c
-index 6163cea6ab..49166cb8ad 100644
---- a/hw/misc/mos6522.c
-+++ b/hw/misc/mos6522.c
-@@ -189,12 +189,12 @@ static uint64_t mos6522_get_load_time(MOS6522State *s, MOS6522Timer *ti)
- 
- static void mos6522_portA_write(MOS6522State *s)
- {
--    qemu_log_mask(LOG_UNIMP, "portA_write unimplemented");
-+    qemu_log_mask(LOG_UNIMP, "portA_write unimplemented\n");
- }
- 
- static void mos6522_portB_write(MOS6522State *s)
- {
--    qemu_log_mask(LOG_UNIMP, "portB_write unimplemented");
-+    qemu_log_mask(LOG_UNIMP, "portB_write unimplemented\n");
- }
- 
- uint64_t mos6522_read(void *opaque, hwaddr addr, unsigned size)
+Philippe Mathieu-Daudé (11):
+  hw/sd/milkymist-memcard: Add trailing '\n' to qemu_log() call
+  hw/digic: Add trailing '\n' to qemu_log() calls
+  xilinx-dp: Add trailing '\n' to qemu_log() call
+  ppc/pnv: Add trailing '\n' to qemu_log() calls
+  hw/core/register: Add trailing '\n' to qemu_log() call
+  hw/mips/boston: Add trailing '\n' to qemu_log() calls
+  stellaris: Add trailing '\n' to qemu_log() calls
+  target/arm: Add trailing '\n' to qemu_log() calls
+  target/m68k: Add trailing '\n' to qemu_log() call
+  RISC-V: Add trailing '\n' to qemu_log() calls
+  RFC target/xtensa: Add trailing '\n' to qemu_log() calls
+
+ hw/arm/stellaris.c        | 11 ++++++-----
+ hw/char/digic-uart.c      |  4 ++--
+ hw/core/register.c        |  2 +-
+ hw/display/xlnx_dp.c      |  4 +++-
+ hw/mips/boston.c          |  8 ++++----
+ hw/ppc/pnv_core.c         |  4 ++--
+ hw/sd/milkymist-memcard.c |  2 +-
+ hw/timer/digic-timer.c    |  4 ++--
+ target/arm/helper.c       |  4 ++--
+ target/m68k/translate.c   |  2 +-
+ target/riscv/op_helper.c  |  6 ++++--
+ target/xtensa/translate.c |  6 +++---
+ 12 files changed, 31 insertions(+), 26 deletions(-)
+
 -- 
 2.17.1
 
