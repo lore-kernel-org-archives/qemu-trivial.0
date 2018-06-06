@@ -1,46 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fQ0c1-0006FH-CA
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Jun 2018 21:18:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51859)
+	id 1fQZuT-00076r-ST
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Jun 2018 10:59:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60634)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1fQ0bz-0006D5-0f
-	for qemu-trivial@nongnu.org; Mon, 04 Jun 2018 21:18:12 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fQZuS-00071N-9e
+	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 10:59:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1fQ0bx-0005IC-VI
-	for qemu-trivial@nongnu.org; Mon, 04 Jun 2018 21:18:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34184)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
-	id 1fQ0bs-0005GS-Iw; Mon, 04 Jun 2018 21:18:04 -0400
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.phx2.redhat.com
-	[10.5.11.25])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CC9BD30C4F55;
-	Tue,  5 Jun 2018 01:18:02 +0000 (UTC)
-Received: from w520.home (ovpn-116-135.phx2.redhat.com [10.3.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2640A2010CE6;
-	Tue,  5 Jun 2018 01:18:02 +0000 (UTC)
-Date: Mon, 4 Jun 2018 19:17:56 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Richard Henderson
-	<rth@twiddle.net>, patches@linaro.org
-Message-ID: <20180604191756.1ae61871@w520.home>
-In-Reply-To: <20180604162140.20688-1-peter.maydell@linaro.org>
-References: <20180604162140.20688-1-peter.maydell@linaro.org>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fQZuR-0007C9-Jd
+	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 10:59:36 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:33787)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fQZuL-00078M-DU; Wed, 06 Jun 2018 10:59:29 -0400
+Received: by mail-qt0-x244.google.com with SMTP id l10-v6so1447399qtj.0;
+	Wed, 06 Jun 2018 07:59:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=nkAN24y3wkG+pIL86nIxsjUfdKk4MXxnJlMhzLuNzcU=;
+	b=C74d4GEkBcPEy3GasyF/nLt+2slg3OyuYpUYlsKEp2Jf9EvwxMyOb+El8QsCKXxhmI
+	2eetURDPPYC9gTl/QsIAfF3KlzrDwQJzOfMi4PYEKHTXdI7cqa99NzAl+AKeSYc4ubmW
+	5i5Nwvo/34nFvISesPNaGJpkRwit+hHr5pyjXCKt0d5g2oYG5mFxyC3S3/RUS0+YeSsL
+	DZMePMkHzEWGzM3v52/UUBlXcfQtSS6IsZnxzNrNy4qTdyCshGtzJBlLTYZKu5mwWvl/
+	SIIIVNQ548PNkY7YtZvYkoLWD8++WIuvRj20SOc1hAjdwrIKZxvIoQobFle8k1//yY86
+	gdCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=nkAN24y3wkG+pIL86nIxsjUfdKk4MXxnJlMhzLuNzcU=;
+	b=D/30XVtwAQrTgAuFP8mXcjQlepig3PA2HhR/6m+KdWqo9lBdCTywq5tpdpVF7nMTEX
+	+uWMd055jctJMtxx6haETC9HhLO5lZ+Su5HZNJFEB86Ee4Bubo5d8JNtVxdrTLOvkpJ1
+	s/sWdQKSZQVuPxVkGZ0xu/e4EBLZJHUhrZBv5M6m8/YiQ3y0yRtwMgsN70B9aShkbw88
+	7Zxv8aTMmcabCk1jiay+3qUpMwX7B8IjZslrCMSEq1rHOZxgqd/AM2nOwZBs57SNcOUI
+	XvcGV91/at71i5SJKewGyPB+xtpCcGDRhDyRtM5VXdU0ZJ8LRR0s7C4T/TqE+gq3A1iQ
+	SarQ==
+X-Gm-Message-State: APt69E1PUPq1sUayQY1Rkx0ZDvm+CxATKMS0NyeZ6sotruPC0d6hUOT9
+	fERCqz65hYA01DMKB78SPkw=
+X-Google-Smtp-Source: ADUXVKLHAn/aUr/qLv1Egq2BNe/JXgI9jeh/Q0nkWpTk7Pb6/vgASw73tEXIV6NlYV5ziizAgIqW1g==
+X-Received: by 2002:ac8:43ce:: with SMTP id
+	w14-v6mr3110678qtn.137.1528297168651; 
+	Wed, 06 Jun 2018 07:59:28 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	v29-v6sm8519439qkv.28.2018.06.06.07.59.25
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 06 Jun 2018 07:59:28 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Alexander Graf <agraf@suse.de>, David Gibson <david@gibson.dropbear.id.au>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
+Date: Wed,  6 Jun 2018 11:59:18 -0300
+Message-Id: <20180606145921.30606-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.25
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Tue, 05 Jun 2018 01:18:02 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] CODING_STYLE: Define our
- preferred form for multiline comments
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::244
+Subject: [Qemu-trivial] [PATCH 0/3] mac_newworld: add MAINTAINERS entries,
+ fix qemu_log trailing '\n'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,70 +76,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Jun 2018 01:18:12 -0000
+X-List-Received-Date: Wed, 06 Jun 2018 14:59:37 -0000
 
-On Mon,  4 Jun 2018 17:21:40 +0100
-Peter Maydell <peter.maydell@linaro.org> wrote:
+Nothing very exciting here.
+I sometimes miss to notice some trace events, running with -d unimp,trace...
+then using 'grep ^...'. This is only due to a missing '\n' :)
 
-> The codebase has a bit of a mix of
->  /* multiline comments
->   * like this
->   */
-> and
->  /* multiline comments like this
->     in the GNU Coding Standards style */
-> 
-> State a preference for the former.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> I admit that to some extent I'm imposing my aesthetic
-> preferences here; pretty sure we have a lot more style
-> 1 comments than style 2, though.
-> ---
->  CODING_STYLE | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
-> 
-> diff --git a/CODING_STYLE b/CODING_STYLE
-> index 12ba58ee293..fb1d1f1cd62 100644
-> --- a/CODING_STYLE
-> +++ b/CODING_STYLE
-> @@ -124,6 +124,19 @@ We use traditional C-style /* */ comments and avoid // comments.
->  Rationale: The // form is valid in C99, so this is purely a matter of
->  consistency of style. The checkpatch script will warn you about this.
->  
-> +Multiline comments blocks should have a row of stars on the left
-> +and the terminating */ on its own line:
-> +    /* like
-> +     * this
-> +     */
-> +Putting the initial /* on its own line is accepted, but not required.
+Philippe Mathieu-Daudé (3):
+  MAINTAINERS: Add an entry for the MacIO device headers
+  MAINTAINERS: Add entries for the MOS6522 VIA device
+  hw/misc/mos6522: Add trailing '\n' to qemu_log() calls
 
-Could we say "at maintainer discretion", or is that always implied?  The
-asymmetry of the proposed standard is not my favorite and a mostly
-blank line before and after further supports standing out from
-surrounding code.  Note that the kernel coding style, except for
-certain exceptions, is:
+ hw/misc/mos6522.c | 4 ++--
+ MAINTAINERS       | 5 ++++-
+ 2 files changed, 6 insertions(+), 3 deletions(-)
 
-/*
- * This is a
- * multi-line
- * comment
- */
-
-Thanks,
-
-Alex
-
-> +(Some of the existing comments in the codebase use the GNU Coding
-> +Standards form which does not have stars on the left; avoid this
-> +when writing new comments.)
-> +
-> +Rationale: Consistency, and ease of visually picking out a multiline
-> +comment from the surrounding code.
-> +
->  8. trace-events style
->  
->  8.1 0x prefix
+-- 
+2.17.1
 
 
