@@ -1,65 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fQak1-0003D2-HW
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Jun 2018 11:52:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48278)
+	id 1fQbXf-00069x-Is
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Jun 2018 12:44:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35470)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1fQajy-0003BG-TC
-	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 11:52:51 -0400
+	(envelope-from <jcmvbkbc@gmail.com>) id 1fQbXd-000693-Bv
+	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 12:44:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1fQajy-0005wF-7f
-	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 11:52:50 -0400
-Received: from mail-lf0-x244.google.com ([2a00:1450:4010:c07::244]:33663)
+	(envelope-from <jcmvbkbc@gmail.com>) id 1fQbXc-0003fK-LZ
+	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 12:44:09 -0400
+Received: from mail-yb0-x241.google.com ([2607:f8b0:4002:c09::241]:38152)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1fQajx-0005vr-Vx; Wed, 06 Jun 2018 11:52:50 -0400
-Received: by mail-lf0-x244.google.com with SMTP id y20-v6so9920352lfy.0;
-	Wed, 06 Jun 2018 08:52:49 -0700 (PDT)
+	(Exim 4.71) (envelope-from <jcmvbkbc@gmail.com>)
+	id 1fQbXa-0003dY-KI; Wed, 06 Jun 2018 12:44:06 -0400
+Received: by mail-yb0-x241.google.com with SMTP id q62-v6so2204762ybg.5;
+	Wed, 06 Jun 2018 09:44:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=aJo4tZW25bINjMZeaBm92HZLVj7b1iV9Z6m+bmvpcrA=;
-	b=kEn6Ba2iiTbmz9jrK9UeDk6Qd4J1JoSUo2MZZ7qDmpYuSSHD/xHh8eJrYawZj6nGv2
-	Cc1UiXpB1SSKc6V042p1lKvyv2jzU7wXDHJfSDZkAELJ9mfiiQ3tSTtB+EmSfxQDrxTe
-	tBDmYcVrWxLzDEGYZviTGMbxZOWxHAv+tV4szijLlYP4BdziNciYAj8uZsrROxTUQCIe
-	TtaVI5pj4kwHG/pA1zo1TnJUcf0WFjFm9vTj6CxXskbPMW9qdt8mq1wVroQFyegtpSCP
-	y6Pq/BIGyPlcJnPsVMfLbqfFfJc3DcX4IeH5XwhlxOEXwiofEontr5VKsWIoSwmSiZBA
-	CmqA==
+	bh=djpZuru4l86t4wtG4q/q1X1epTQGTMsjfZSF09x5guk=;
+	b=krEbHi2NZfm/fhWl0pX/+jpv7kMstdhEz4S4tufti1pPsN8WVJCOkOZI97byrr7oPk
+	lcF5++Z/AHQ0CEqnESvCHuqpKpO8bKXYAOfsa0iGNt7X1YBAYchueVeuU93cZ6As8lLt
+	x5KV6EfeNZTX58B+n4CJDK5D/+O+sXU7DQq1NXYCt64h/5UkyudAxWSeOr3i1JCBQlBY
+	2ZIGQWZlFgKqlMfUmqXEjwXwyitG1dBIaRX5+eS82qMVEWQYUNmdEOFaJJsPoV9WxXP6
+	BDxCUc4WdAMwnrAEDYac1gfieMkJiMdrPDpHjsTlq45kvR7Vl2z4VsXbxWVF8EB8uPq7
+	IPFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=aJo4tZW25bINjMZeaBm92HZLVj7b1iV9Z6m+bmvpcrA=;
-	b=Q7n2a4bwHWb2wYFAmYIJ5cJxQlYt9r4aw+ZyLaRIIsQUtof9bx4fBlsSYrGuwIu853
-	x7HjxgB8VBrlXfXT58aSgnrfTJVxYCvk5PoD62N4JJEhSJT6xp2ai+TF61D3vHguMDYJ
-	S2MGxy6o0eRLwI1ZyBgamtSZKiDEh0Uk05I2b26XmjRmWNuIN1VtWTGim/J78pT3lsaz
-	j0KgTabvSReJfWL3t+V5Xol/aIW+pi+0oEcWerYgGYdafM8CkuVs08qPqrPwSZxRrIXm
-	vxf1JABuWXOyfTW3ZPYJK7RdTpf+6unCr8iL5X14gjF7Mq65pzOUAzG5FbgafBVlGQhW
-	ev0A==
-X-Gm-Message-State: APt69E3uVvf02l2Y/auVAGW1DITZpApgavP/bS+kMrH7MHCu4LwHCvHO
-	nO11Xznu2L8YyRTkmaRkZsZDRY4SZXyihlrHUSWJNg==
-X-Google-Smtp-Source: ADUXVKJTwzqa5bfj3ZRfDia7wTvzAfD2ZvPxQdniYjskdTlnYuYl4mL/aCPk4ZXAmkWmPtgdS7TfwC98SBEKPc9WjkU=
-X-Received: by 2002:a2e:9744:: with SMTP id f4-v6mr2475328ljj.5.1528300368600; 
-	Wed, 06 Jun 2018 08:52:48 -0700 (PDT)
+	bh=djpZuru4l86t4wtG4q/q1X1epTQGTMsjfZSF09x5guk=;
+	b=Vj8N8nQ2mzURqKmHhBZ1KLMhT5qPHZbRg2EmI3f+sgP5tKhmT1knIKOdFpzfW7yjRS
+	CHTkymYEw4dPemPBO31Q1Bf1CmMozu2RnWLXjwhZPSjkNdrwAKnfqH5haUCAvyFn1y0f
+	IETu1nbV9tJAZZwU4rUqzHn4LxcOET+Us8stgLqxP4y3cGZDfsS2WCH49jdpCCbUKShG
+	GK9uPahL1xsYPFzrZHyAOr+OLPpqdadJM3afubpRLYgRLAQA7o8SjYrvxF+DrcA8UG6q
+	U/uX/xRfcKjK21Iv8F+KgdmlWFikFkWGY9nGZHqsHavtL31IUGTBXeC3mvpnfPZOFM7C
+	9eYg==
+X-Gm-Message-State: APt69E16RZ3AiQZv2N/19vGS3h0xfGYz44xRuPIWV2rEV/lDwluQ0eRH
+	H1CoZ8VMRDiuw5LtasBZbL8JbJj83pZu/W4ixeE=
+X-Google-Smtp-Source: ADUXVKJr1R/C8JYscl3YMGIXae7Bi5ZXbQX1CUTixFhRb6mrx+2kuf2Iw6rYeeP4bw6sbhHGk3tCclKv+QqukBd1Frw=
+X-Received: by 2002:a25:ac06:: with SMTP id
+	w6-v6mr1775080ybi.153.1528303445682; 
+	Wed, 06 Jun 2018 09:44:05 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a2e:20e2:0:0:0:0:0 with HTTP;
-	Wed, 6 Jun 2018 08:52:18 -0700 (PDT)
-In-Reply-To: <20180606152128.449-6-f4bug@amsat.org>
+Received: by 2002:a25:28d:0:0:0:0:0 with HTTP;
+	Wed, 6 Jun 2018 09:44:05 -0700 (PDT)
+In-Reply-To: <20180606152128.449-12-f4bug@amsat.org>
 References: <20180606152128.449-1-f4bug@amsat.org>
-	<20180606152128.449-6-f4bug@amsat.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 6 Jun 2018 08:52:18 -0700
-Message-ID: <CAKmqyKMcru62C=vUamPyR+CayG-aN3kW9RW7+RCYFY2kt5_T2w@mail.gmail.com>
+	<20180606152128.449-12-f4bug@amsat.org>
+From: Max Filippov <jcmvbkbc@gmail.com>
+Date: Wed, 6 Jun 2018 09:44:05 -0700
+Message-ID: <CAMo8BfK-86N1__q5A4RBAOz3g3JZ_6ibcp8SZCPmk3vJakWQ-A@mail.gmail.com>
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Alistair Francis <alistair@alistair23.me>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Cc: qemu-devel <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4010:c07::244
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 05/11] hw/core/register: Add
- trailing '\n' to qemu_log() call
+X-Received-From: 2607:f8b0:4002:c09::241
+Subject: Re: [Qemu-trivial] [RFC PATCH 11/11] target/xtensa: Add trailing
+ '\n' to qemu_log() calls
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,37 +70,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Jun 2018 15:52:51 -0000
+X-List-Received-Date: Wed, 06 Jun 2018 16:44:10 -0000
 
 On Wed, Jun 6, 2018 at 8:21 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g> wrote:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
 > ---
->  hw/core/register.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/core/register.c b/hw/core/register.c
-> index 0741a1af32..d2d1636250 100644
-> --- a/hw/core/register.c
-> +++ b/hw/core/register.c
-> @@ -96,7 +96,7 @@ void register_write(RegisterInfo *reg, uint64_t val, ui=
-nt64_t we,
->      if (test) {
->          qemu_log_mask(LOG_UNIMP,
->                        "%s:%s writing %#" PRIx64 " to unimplemented bits:=
-" \
-> -                      " %#" PRIx64 "",
-> +                      " %#" PRIx64 "\n",
->                        prefix, reg->access->name, val, ac->unimp);
->      }
->
-> --
-> 2.17.1
->
->
+> RFC because I think the qemu_log_mask() was previously intended to concat=
+enate
+> output to stderr... (multiple registers described on a single line).
+
+No, there were no such intent.
+
+>  target/xtensa/translate.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+
+Acked-by: Max Filippov <jcmvbkbc@gmail.com>
+
+--=20
+Thanks.
+-- Max
 
