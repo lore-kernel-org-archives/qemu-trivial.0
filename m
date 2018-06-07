@@ -1,70 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fQuDL-0006pN-4M
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Jun 2018 08:40:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48181)
+	id 1fQuZD-0005eC-B3
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Jun 2018 09:03:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54821)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1fQuDJ-0006oF-8t
-	for qemu-trivial@nongnu.org; Thu, 07 Jun 2018 08:40:26 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fQuZ1-0005VD-Qx
+	for qemu-trivial@nongnu.org; Thu, 07 Jun 2018 09:03:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1fQuDD-0005Rf-Ew
-	for qemu-trivial@nongnu.org; Thu, 07 Jun 2018 08:40:25 -0400
-Received: from mail-wm0-x241.google.com ([2a00:1450:400c:c09::241]:39564)
+	(envelope-from <peter.maydell@linaro.org>) id 1fQuZ1-0000eT-20
+	for qemu-trivial@nongnu.org; Thu, 07 Jun 2018 09:02:51 -0400
+Received: from mail-ot0-x243.google.com ([2607:f8b0:4003:c0f::243]:36763)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1fQuDD-0005QS-4y; Thu, 07 Jun 2018 08:40:19 -0400
-Received: by mail-wm0-x241.google.com with SMTP id p11-v6so18853846wmc.4;
-	Thu, 07 Jun 2018 05:40:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=f53viIz9fTujyPSkFusGptnUmwTKbID0SXhQIiaU79Y=;
-	b=Z6AwwWVcwLOqBaLhxa/Vx2CaasHh8JkyFOaTmunT49xpSVmBN1YDyhWlNWcBgBskon
-	uk1M3zJA3Vmma8aOB33NsNa00uPnmzjgWMK+Oanh/iAgTtVEHe3ZvHdhPDsBfunvDpdB
-	0hZEUF7jZMvOaMwuuUH5hgxbnSajJlvd4LwrGL5tsoVHnbce9T/bDc9730JH4xzaqDVx
-	fQSaPMi7rqjLMtCc4pf8MsdYVSnPvpy/EVAStRQ1f3+xOmq77Ys6WFq0sd1Pk+So++zZ
-	MRD7QlRdyKpoJsPCCmq1J5n2RleOnYWD4vyCYaG9p8TxfonjH3HcQc+rdXA6QKxtJr/0
-	f+TQ==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fQuZ0-0000e3-SY
+	for qemu-trivial@nongnu.org; Thu, 07 Jun 2018 09:02:51 -0400
+Received: by mail-ot0-x243.google.com with SMTP id c15-v6so1559826otl.3
+	for <qemu-trivial@nongnu.org>; Thu, 07 Jun 2018 06:02:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=T6SkuW74gC4LzYm5NcOSw7I7i5GQ8vfEFwiNNiEsM4g=;
+	b=jj+pO5mjL0nnoWepYELvLCcz6aNuDjGorkWVDqfPOw4lT0ha9UP5YRe88PUNungDlg
+	r4LA4tBLFGZxNEcJcPBB4pDQl3XNZgCxdNgRbBarbRURKLOBIsOKrkeOtIu7SqZsHwkO
+	0xnUyaw4DFSEaTjIbeiRzPE/5pUaY7qL6u4Ow=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=f53viIz9fTujyPSkFusGptnUmwTKbID0SXhQIiaU79Y=;
-	b=rRAISJz31yGzRuUNfjH683oHNIaJ2YvPcJWMnSd57tmuVh9gCT/ZH+I1DR+pGpax8i
-	+7563+Zwj3Fmdz6IKYH4uM6lVp43lvgXhpS+9KEZ+oVPe2TJThleh3ShioKKp61a3+42
-	RCq2uDGWdqOxnEbfkEZhPPrzr3n0txSxh4oDoYDf4TbbPgnFZYQccwYLUT9qVzgWYou7
-	kJuVqroTv0i7DgiVzhNDEBCQEVwBYhtUQuzzRJq1YXaKEixo1wCqZ1deW8+yT6XDkmkL
-	VpZHHQI21C+bxCrYXL7F6h326Hsm9AlpGg/XW+CbB9FT25USiETRXfQOPQ5pbx8JSu4F
-	JffQ==
-X-Gm-Message-State: APt69E2sRDjXcJLdRBB4unvTT0++8uIdzMJr9UQBMfuP7IAdsAw9MsmP
-	XwQ7l8nhV1qSkbPx1azJ1e8=
-X-Google-Smtp-Source: ADUXVKJsr4egxYzSeFRsg5mOhY2wwDSH8PKVwJYMxrRZSREgfr4+wM5iIxqTydzm3rCQXvDsO1ENtw==
-X-Received: by 2002:a1c:4291:: with SMTP id
-	k17-v6mr1444142wmi.74.1528375218156; 
-	Thu, 07 Jun 2018 05:40:18 -0700 (PDT)
-Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
-	p6-v6sm23636130wrq.19.2018.06.07.05.40.17
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 07 Jun 2018 05:40:17 -0700 (PDT)
-Date: Thu, 7 Jun 2018 13:40:16 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Alex Williamson <alex.williamson@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
-	patches@linaro.org, qemu-devel@nongnu.org,
-	Richard Henderson <rth@twiddle.net>
-Message-ID: <20180607124016.GJ19032@stefanha-x1.localdomain>
-References: <20180604162140.20688-1-peter.maydell@linaro.org>
-	<20180604191756.1ae61871@w520.home>
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=T6SkuW74gC4LzYm5NcOSw7I7i5GQ8vfEFwiNNiEsM4g=;
+	b=tbgP99L+inAIEI61eAC5PN776RTShiLeMXHJN7olaWmHb5ps/CmxD3pk0a1LO8vEOC
+	a6X7AQGljCyV3DaPhZAQemEVfNt72BWoUw07CbBvoS8id3TnBVKMfBtLk3STMMa+NmGm
+	Jv8sVwoZB3wBERIs/KXtVDA4sFDFUg9uP9ErJTWCcwhBzo0BtcaHhw3FgmWrZE5b3GHn
+	PJGGT1XWxzjSWGiir2+dzQy3YnAfRzIcOgwSm/y9ihk8OyrbJM6sa/vBWKlR/HGNMrnh
+	mI4JZ2PFFMSVQyq6Y68NtDvuQyam8uF5Te49mSuyKEUlvgoqjiSCt2FkBV7ou8tsoeki
+	snUw==
+X-Gm-Message-State: APt69E2luhpwbLfAhzznm6Ceb7dwjdjka8gU14o8RiKML4wvJYkXe13a
+	ObPd5EzYyX2zPaM89I2cZqd9TTJL5EKoIjYnJZeD8Q==
+X-Google-Smtp-Source: ADUXVKIiWc4mR9FASren1pPFdmrUYuuCpjLJRwJvSsST6brn31ssiKu2/kAQhgLeyfvl+vQWhp1uxsNX6TOeveieVVI=
+X-Received: by 2002:a9d:16d0:: with SMTP id
+	s16-v6mr1015350ots.294.1528376570052; 
+	Thu, 07 Jun 2018 06:02:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="qD3brAgIG4LbUq6d"
-Content-Disposition: inline
-In-Reply-To: <20180604191756.1ae61871@w520.home>
-User-Agent: Mutt/1.9.5 (2018-04-13)
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP;
+	Thu, 7 Jun 2018 06:02:29 -0700 (PDT)
+In-Reply-To: <20180606191801.6331-1-f4bug@amsat.org>
+References: <20180606191801.6331-1-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 7 Jun 2018 14:02:29 +0100
+Message-ID: <CAFEAcA9mDByYZixijY8OwbgJQpsh5TztGcJhAyaNFxE_X6o7mA@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Corey Minyard <cminyard@mvista.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Linus Walleij <linus.walleij@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] CODING_STYLE: Define our
- preferred form for multiline comments
+X-Received-From: 2607:f8b0:4003:c0f::243
+Subject: Re: [Qemu-trivial] [PATCH] hw/i2c: Add trace events
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,40 +69,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Jun 2018 12:40:26 -0000
+X-List-Received-Date: Thu, 07 Jun 2018 13:03:01 -0000
+
+On 6 June 2018 at 20:18, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrot=
+e:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+> $ qemu-system ... -d trace:i2c_recv,trace:i2c_send
+>
+> 4486@1528311614.709959:i2c_recv recv(addr:0x50) data:0x00
+> 4486@1528311614.709994:i2c_send send(addr:0x50) data:0x05
+> 4486@1528311614.710060:i2c_recv recv(addr:0x50) data:0x02
+> 4486@1528311614.710161:i2c_recv recv(addr:0x50) data:0x40
+> 4486@1528311614.710185:i2c_send send(addr:0x50) data:0x02
+> 4486@1528311614.710233:i2c_recv recv(addr:0x50) data:0x08
+> 4486@1528311614.710380:i2c_recv recv(addr:0x50) data:0x0d
+> 4486@1528311614.710396:i2c_send send(addr:0x50) data:0x1f
+> 4486@1528311614.710437:i2c_recv recv(addr:0x50) data:0x40
+>
+> or
+>
+> $ qemu-system ... -d trace:i2c\*
+>
+> 4486@1528311614.698315:i2c_event start(addr:0x50)
+> 4486@1528311614.698338:i2c_recv recv(addr:0x50) data:0x82
+> 4486@1528311614.698349:i2c_event finish(addr:0x50)
+> 4486@1528311614.698354:i2c_event start(addr:0x50)
+> 4486@1528311614.698357:i2c_send send(addr:0x50) data:0x11
+> 4486@1528311614.698377:i2c_event finish(addr:0x50)
+> 4486@1528311614.698380:i2c_event start(addr:0x50)
+> 4486@1528311614.698402:i2c_recv recv(addr:0x50) data:0x04
+> 4486@1528311614.698485:i2c_event finish(addr:0x50)
+>
+>  Makefile.objs       |  1 +
+>  hw/i2c/core.c       | 25 ++++++++++++++++++-------
+>  hw/i2c/trace-events |  7 +++++++
+>  3 files changed, 26 insertions(+), 7 deletions(-)
+>  create mode 100644 hw/i2c/trace-events
 
 
---qD3brAgIG4LbUq6d
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Mon, Jun 04, 2018 at 07:17:56PM -0600, Alex Williamson wrote:
-> Note that the kernel coding style, except for certain exceptions, is:
->=20
-> /*
->  * This is a
->  * multi-line
->  * comment
->  */
+Applied to target-arm.next, thanks.
 
-Amen, the one true way.  :-)
-
-Stefan
-
---qD3brAgIG4LbUq6d
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJbGSewAAoJEJykq7OBq3PIPfcH/0ppV22KbSpTEefkgA6jUlSB
-LFLJofelfszjaRkXbenfrpv64u49QuPhIqJ8DD127alFaBm1XDXyB3mx9JbmYVUU
-FXKoI8fpS7FBy8TUIFnJMKH1/skDDEF8dvrk0Be4Vu4RFFCo0OTdwBLp8B0viDQH
-ShfZGussMLWOr+pY+i5i4K84ikBCtIOaISb+2NpHIekVsJzzs+4tEwSKiz0fGN+r
-BA0bvTbWRtzTEknN4KKvi/FWEC0PZrG2e8Rs1kUWa2d9OCR48gpsqi6et9+fYzAv
-57WJikqE9LrwVk2WTljxCTXQbEwu8FQrzioC3FyI72IzslZbSVpLY8YAH5AplE0=
-=qYCk
------END PGP SIGNATURE-----
-
---qD3brAgIG4LbUq6d--
+-- PMM
 
