@@ -1,118 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fQeL6-0000OG-F3
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Jun 2018 15:43:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45598)
+	id 1fQkUL-0001hI-0T
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Jun 2018 22:17:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49013)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1fQeL4-0000M0-2F
-	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 15:43:23 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1fQkUH-0001fb-9j
+	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 22:17:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1fQeL0-0002pV-3w
-	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 15:43:22 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:55836 helo=mx1.redhat.com)
+	(envelope-from <dgibson@ozlabs.org>) id 1fQkUG-0001kJ-A3
+	for qemu-trivial@nongnu.org; Wed, 06 Jun 2018 22:17:17 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:43437)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1fQeKp-0002hg-Mh; Wed, 06 Jun 2018 15:43:07 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C37AB88844;
-	Wed,  6 Jun 2018 19:43:06 +0000 (UTC)
-Received: from [10.18.17.177] (dhcp-17-177.bos.redhat.com [10.18.17.177])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EC06A1134CA4;
-	Wed,  6 Jun 2018 19:43:04 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Michael Walle <michael@walle.cc>, 
-	Max Filippov <jcmvbkbc@gmail.com>, Michael Clark <mjc@sifive.com>,
-	Palmer Dabbelt <palmer@sifive.com>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Laurent Vivier <laurent@vivier.eu>, Aurelien Jarno <aurelien@aurel32.net>, 
-	Paul Burton <paul.burton@mips.com>, Yongbok Kim <yongbok.kim@mips.com>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Antony Pavlov <antonynpavlov@gmail.com>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	qemu-devel@nongnu.org
-References: <20180606152128.449-1-f4bug@amsat.org>
-From: John Snow <jsnow@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-	NRhibLIrSP2g5nqXONyQrFxb1HtVaoR+Nrk=
-Message-ID: <b4903491-f450-1a54-2a70-a084c30cd8c6@redhat.com>
-Date: Wed, 6 Jun 2018 15:43:04 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1fQkUB-0001de-9u; Wed, 06 Jun 2018 22:17:12 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 411Th03YRTz9s1b; Thu,  7 Jun 2018 12:17:04 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1528337824;
+	bh=y1eyr89xYq63/N1zapZuYGomKWIrWIG/0QlepHCM4Hc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nxBWX6/IEkNnANNhGJKxdHppL0pC9sunzorUpU9AO2z4Dpue5/0mZEA53MIiMxKDR
+	uVaFXiiDOcGwLbJwWnjRFwK5jGQvEe39ssw9Zxw5kcIwdTsv8hrKafPzNvaVQtCAJE
+	B5iWdkeEZkks8BG8DuFQti1yns125u4jrdzchOM8=
+Date: Thu, 7 Jun 2018 12:11:27 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
+Message-ID: <20180607021127.GA3166@umbus.fritz.box>
+References: <20180606145921.30606-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20180606152128.449-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Wed, 06 Jun 2018 19:43:06 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Wed, 06 Jun 2018 19:43:06 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'jsnow@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 00/11] misc: Add trailing
- '\n' to qemu_log() calls
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="azLHFNyN32YCQGCU"
+Content-Disposition: inline
+In-Reply-To: <20180606145921.30606-1-f4bug@amsat.org>
+User-Agent: Mutt/1.9.5 (2018-04-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2401:3900:2:1::2
+Subject: Re: [Qemu-trivial] [PATCH 0/3] mac_newworld: add MAINTAINERS
+ entries, fix qemu_log trailing '\n'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -124,50 +51,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Jun 2018 19:43:23 -0000
+X-List-Received-Date: Thu, 07 Jun 2018 02:17:19 -0000
 
 
+--azLHFNyN32YCQGCU
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 06/06/2018 11:21 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+On Wed, Jun 06, 2018 at 11:59:18AM -0300, Philippe Mathieu-Daud=E9 wrote:
 > Nothing very exciting here.
-> I sometimes miss to notice some trace events, running with -d unimp,tra=
-ce...
+> I sometimes miss to notice some trace events, running with -d unimp,trace=
+=2E..
 > then using 'grep ^...'. This is only due to a missing '\n' :)
+
+Applied to ppc-for-3.0, thanks.
+
+>=20
+> Philippe Mathieu-Daud=E9 (3):
+>   MAINTAINERS: Add an entry for the MacIO device headers
+>   MAINTAINERS: Add entries for the MOS6522 VIA device
+>   hw/misc/mos6522: Add trailing '\n' to qemu_log() calls
+>=20
+>  hw/misc/mos6522.c | 4 ++--
+>  MAINTAINERS       | 5 ++++-
+>  2 files changed, 6 insertions(+), 3 deletions(-)
 >=20
 
-so error_setg must be used WITHOUT \n and logging must happen with \n?
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-If we're sure that's the way we want to have things laid out, we really
-ought to augment checkpatch to catch this -- because there's 0% chance
-that we'll keep it straight on our own otherwise.
+--azLHFNyN32YCQGCU
+Content-Type: application/pgp-signature; name="signature.asc"
 
---js
+-----BEGIN PGP SIGNATURE-----
 
-> Philippe Mathieu-Daud=C3=A9 (11):
->   hw/sd/milkymist-memcard: Add trailing '\n' to qemu_log() call
->   hw/digic: Add trailing '\n' to qemu_log() calls
->   xilinx-dp: Add trailing '\n' to qemu_log() call
->   ppc/pnv: Add trailing '\n' to qemu_log() calls
->   hw/core/register: Add trailing '\n' to qemu_log() call
->   hw/mips/boston: Add trailing '\n' to qemu_log() calls
->   stellaris: Add trailing '\n' to qemu_log() calls
->   target/arm: Add trailing '\n' to qemu_log() calls
->   target/m68k: Add trailing '\n' to qemu_log() call
->   RISC-V: Add trailing '\n' to qemu_log() calls
->   RFC target/xtensa: Add trailing '\n' to qemu_log() calls
->=20
->  hw/arm/stellaris.c        | 11 ++++++-----
->  hw/char/digic-uart.c      |  4 ++--
->  hw/core/register.c        |  2 +-
->  hw/display/xlnx_dp.c      |  4 +++-
->  hw/mips/boston.c          |  8 ++++----
->  hw/ppc/pnv_core.c         |  4 ++--
->  hw/sd/milkymist-memcard.c |  2 +-
->  hw/timer/digic-timer.c    |  4 ++--
->  target/arm/helper.c       |  4 ++--
->  target/m68k/translate.c   |  2 +-
->  target/riscv/op_helper.c  |  6 ++++--
->  target/xtensa/translate.c |  6 +++---
->  12 files changed, 31 insertions(+), 26 deletions(-)
->=20
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlsYlEwACgkQbDjKyiDZ
+s5Im0xAAkCV4M8LqXR5qCuichECx1vFWZskUrqZIXNeg+FVWjhhr3s9uI7WhaZnO
+1SrKkx3yIKJEp4jDCpQkNtj8H36ZUv0fQz2PVUz9lvGtMsVyM/xRMDMywLNMVLcf
+QcjYZP7mPfCV3srJsznrTji+MVlUp4m0B37QqaavaoHwkVOBCPML6YWG2d3TlunX
+arvjKEz8xjnhKs7YQXsh+wYAhWgTvlyeoKCGmcJfjh1YGuDU+W1z25zyTUOrDz0t
+2lietV6BnCjgrLtqIStShQwuddJDyrd930wHui7XU5EIt8rd5GbQuy2ShSmYnbA/
+G6KOUgz6TDaCLh4d+P7SMfOuKNxY+QNhB80Rt/6girIJfuz3yVSZlrHsD3SF4mFN
+YM1jivVpTFsEUwhsoCbNGPNHwsOpDXvQ9CqJ7i/Vz+QB/H2RpcHUL9Gu+s+ygLk/
+hYyjFfcuDxTTIhwmWdW3YKq+BIDj/ahQfE7QN8/YUyndY3paf98/XAD82ft3tPT7
+EMxkwGQ7Bb7tB2nTRY69g8dFe7Q1lIRw1roe1rY2vVukmjc6yMWrarklerkfNniI
+fgOTIFG0nBYDOtL/mRdPvVotMGQ5bDy9pEMaN5uTNojI1TWm4JKVltU8ibeN9Ega
+j9+4KTaJBLBdHdbjqf+o9eSeYkg+XhZkU+lHQSVAWd3iogalXUY=
+=0Tt3
+-----END PGP SIGNATURE-----
+
+--azLHFNyN32YCQGCU--
 
