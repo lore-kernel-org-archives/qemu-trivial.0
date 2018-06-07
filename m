@@ -1,63 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fQuZD-0005eC-B3
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Jun 2018 09:03:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54821)
+	id 1fQuvg-00013A-Vo
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Jun 2018 09:26:17 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60616)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fQuZ1-0005VD-Qx
-	for qemu-trivial@nongnu.org; Thu, 07 Jun 2018 09:03:01 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fQuve-00012r-UM
+	for qemu-trivial@nongnu.org; Thu, 07 Jun 2018 09:26:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fQuZ1-0000eT-20
-	for qemu-trivial@nongnu.org; Thu, 07 Jun 2018 09:02:51 -0400
-Received: from mail-ot0-x243.google.com ([2607:f8b0:4003:c0f::243]:36763)
+	(envelope-from <peter.maydell@linaro.org>) id 1fQuve-0006kO-6H
+	for qemu-trivial@nongnu.org; Thu, 07 Jun 2018 09:26:14 -0400
+Received: from mail-ot0-x241.google.com ([2607:f8b0:4003:c0f::241]:43526)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fQuZ0-0000e3-SY
-	for qemu-trivial@nongnu.org; Thu, 07 Jun 2018 09:02:51 -0400
-Received: by mail-ot0-x243.google.com with SMTP id c15-v6so1559826otl.3
-	for <qemu-trivial@nongnu.org>; Thu, 07 Jun 2018 06:02:50 -0700 (PDT)
+	id 1fQuve-0006io-0W
+	for qemu-trivial@nongnu.org; Thu, 07 Jun 2018 09:26:14 -0400
+Received: by mail-ot0-x241.google.com with SMTP id i19-v6so11497267otk.10
+	for <qemu-trivial@nongnu.org>; Thu, 07 Jun 2018 06:26:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=T6SkuW74gC4LzYm5NcOSw7I7i5GQ8vfEFwiNNiEsM4g=;
-	b=jj+pO5mjL0nnoWepYELvLCcz6aNuDjGorkWVDqfPOw4lT0ha9UP5YRe88PUNungDlg
-	r4LA4tBLFGZxNEcJcPBB4pDQl3XNZgCxdNgRbBarbRURKLOBIsOKrkeOtIu7SqZsHwkO
-	0xnUyaw4DFSEaTjIbeiRzPE/5pUaY7qL6u4Ow=
+	:cc; bh=R292H/oT8rKP/ypAWZpLdD3uRlMlU0BJ/VFZyrhHLPY=;
+	b=kJzmgFucJ8aBWux1de7+px/MfcjWBJI+3jLljkrXhvTXv5eep4/As2678MRNJu8TJQ
+	3+z6KCakSq1+7GHTwHtZ47zAOzEL0C1LDp1L6mlNNZQFS1S1uMfJ1EXcNTw/9D+YA5B+
+	au/hqIbhXy1wbh+FvOXQQaNyyFuU4sYIZYU+0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=T6SkuW74gC4LzYm5NcOSw7I7i5GQ8vfEFwiNNiEsM4g=;
-	b=tbgP99L+inAIEI61eAC5PN776RTShiLeMXHJN7olaWmHb5ps/CmxD3pk0a1LO8vEOC
-	a6X7AQGljCyV3DaPhZAQemEVfNt72BWoUw07CbBvoS8id3TnBVKMfBtLk3STMMa+NmGm
-	Jv8sVwoZB3wBERIs/KXtVDA4sFDFUg9uP9ErJTWCcwhBzo0BtcaHhw3FgmWrZE5b3GHn
-	PJGGT1XWxzjSWGiir2+dzQy3YnAfRzIcOgwSm/y9ihk8OyrbJM6sa/vBWKlR/HGNMrnh
-	mI4JZ2PFFMSVQyq6Y68NtDvuQyam8uF5Te49mSuyKEUlvgoqjiSCt2FkBV7ou8tsoeki
-	snUw==
-X-Gm-Message-State: APt69E2luhpwbLfAhzznm6Ceb7dwjdjka8gU14o8RiKML4wvJYkXe13a
-	ObPd5EzYyX2zPaM89I2cZqd9TTJL5EKoIjYnJZeD8Q==
-X-Google-Smtp-Source: ADUXVKIiWc4mR9FASren1pPFdmrUYuuCpjLJRwJvSsST6brn31ssiKu2/kAQhgLeyfvl+vQWhp1uxsNX6TOeveieVVI=
-X-Received: by 2002:a9d:16d0:: with SMTP id
-	s16-v6mr1015350ots.294.1528376570052; 
-	Thu, 07 Jun 2018 06:02:50 -0700 (PDT)
+	:message-id:subject:to:cc;
+	bh=R292H/oT8rKP/ypAWZpLdD3uRlMlU0BJ/VFZyrhHLPY=;
+	b=pFDVrHtkEk3Fa3nqpD4CuK44cjTxhthvH8itSLeFao3xN62yPV3GWa92gK80GxGvGj
+	BH79BtBm3pe4bvOpKTDE1y1R8v1RM9US8EUQdPO96qurrbFgXTbT+jdTH7T+Bh6E2MBW
+	6qGykgMTfRo/Z39AdMcKipjRoF1Gq8E0INbAqdIMKe6sBrHv8tozZYGJikt5ffBZevwc
+	yKmQolpLkLu/ZhtD+EaNjnKolJzXO9UqJAlOyRzWmxVmA7WdxNsq0O2s4Z5joSJCv527
+	gTmIaYA1Enr1JjN+SBdsJrBgKpF/7TJ0MEriybnBjxSa8OHsOawvfvw0PHzPiBXJ7oMv
+	qSXQ==
+X-Gm-Message-State: APt69E37tC19/9rG8/th1czMAtW64nI4KK8MJ3D3X9nq/Kp9T30LriOV
+	sm66NDM9NKKWX/pRV9DTUCcQdC307uOVIxz5SL5gZw==
+X-Google-Smtp-Source: ADUXVKI+IMPvzVtJzMgd8dFAQHR5Qv/TVjhyb4zOIYWF+j7URxI5h5NjepRTgFh6lnFLs0AiEqi0oojz+kXsJRcP7co=
+X-Received: by 2002:a9d:3fda:: with SMTP id
+	i26-v6mr932509ote.126.1528377973242; 
+	Thu, 07 Jun 2018 06:26:13 -0700 (PDT)
 MIME-Version: 1.0
 Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP;
-	Thu, 7 Jun 2018 06:02:29 -0700 (PDT)
-In-Reply-To: <20180606191801.6331-1-f4bug@amsat.org>
-References: <20180606191801.6331-1-f4bug@amsat.org>
+	Thu, 7 Jun 2018 06:25:52 -0700 (PDT)
+In-Reply-To: <20180607124016.GJ19032@stefanha-x1.localdomain>
+References: <20180604162140.20688-1-peter.maydell@linaro.org>
+	<20180604191756.1ae61871@w520.home>
+	<20180607124016.GJ19032@stefanha-x1.localdomain>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 7 Jun 2018 14:02:29 +0100
-Message-ID: <CAFEAcA9mDByYZixijY8OwbgJQpsh5TztGcJhAyaNFxE_X6o7mA@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Corey Minyard <cminyard@mvista.com>, Stefan Hajnoczi <stefanha@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
+Date: Thu, 7 Jun 2018 14:25:52 +0100
+Message-ID: <CAFEAcA9z=f9oiqYrF8ZeCMj9-FjZAyMMGwv9e-argF+vRd4X-g@mail.gmail.com>
+To: Stefan Hajnoczi <stefanha@gmail.com>
+Cc: Alex Williamson <alex.williamson@redhat.com>,
 	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Linus Walleij <linus.walleij@linaro.org>
+	"patches@linaro.org" <patches@linaro.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, 
+	Richard Henderson <rth@twiddle.net>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::243
-Subject: Re: [Qemu-trivial] [PATCH] hw/i2c: Add trace events
+X-Received-From: 2607:f8b0:4003:c0f::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] CODING_STYLE: Define our
+ preferred form for multiline comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,47 +71,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Jun 2018 13:03:01 -0000
+X-List-Received-Date: Thu, 07 Jun 2018 13:26:15 -0000
 
-On 6 June 2018 at 20:18, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrot=
-e:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> $ qemu-system ... -d trace:i2c_recv,trace:i2c_send
+On 7 June 2018 at 13:40, Stefan Hajnoczi <stefanha@gmail.com> wrote:
+> On Mon, Jun 04, 2018 at 07:17:56PM -0600, Alex Williamson wrote:
+>> Note that the kernel coding style, except for certain exceptions, is:
+>>
+>> /*
+>>  * This is a
+>>  * multi-line
+>>  * comment
+>>  */
 >
-> 4486@1528311614.709959:i2c_recv recv(addr:0x50) data:0x00
-> 4486@1528311614.709994:i2c_send send(addr:0x50) data:0x05
-> 4486@1528311614.710060:i2c_recv recv(addr:0x50) data:0x02
-> 4486@1528311614.710161:i2c_recv recv(addr:0x50) data:0x40
-> 4486@1528311614.710185:i2c_send send(addr:0x50) data:0x02
-> 4486@1528311614.710233:i2c_recv recv(addr:0x50) data:0x08
-> 4486@1528311614.710380:i2c_recv recv(addr:0x50) data:0x0d
-> 4486@1528311614.710396:i2c_send send(addr:0x50) data:0x1f
-> 4486@1528311614.710437:i2c_recv recv(addr:0x50) data:0x40
->
-> or
->
-> $ qemu-system ... -d trace:i2c\*
->
-> 4486@1528311614.698315:i2c_event start(addr:0x50)
-> 4486@1528311614.698338:i2c_recv recv(addr:0x50) data:0x82
-> 4486@1528311614.698349:i2c_event finish(addr:0x50)
-> 4486@1528311614.698354:i2c_event start(addr:0x50)
-> 4486@1528311614.698357:i2c_send send(addr:0x50) data:0x11
-> 4486@1528311614.698377:i2c_event finish(addr:0x50)
-> 4486@1528311614.698380:i2c_event start(addr:0x50)
-> 4486@1528311614.698402:i2c_recv recv(addr:0x50) data:0x04
-> 4486@1528311614.698485:i2c_event finish(addr:0x50)
->
->  Makefile.objs       |  1 +
->  hw/i2c/core.c       | 25 ++++++++++++++++++-------
->  hw/i2c/trace-events |  7 +++++++
->  3 files changed, 26 insertions(+), 7 deletions(-)
->  create mode 100644 hw/i2c/trace-events
+> Amen, the one true way.  :-)
 
+OK, consensus seems to be for recommending the kernel-style for
+multiline comments.
 
+Does anybody who knows checkpatch feel like they could write a
+checkpatch check for this? (Unfortunately there isn't one in
+the kernel's checkpatch script either, as I found out when I
+last wrote a kernel patch and got dinged for not putting that
+first blank line in...)
 
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM
 
