@@ -1,65 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fQuvg-00013A-Vo
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Jun 2018 09:26:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60616)
+	id 1fRAFV-0001Ro-MY
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Jun 2018 01:47:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38558)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fQuve-00012r-UM
-	for qemu-trivial@nongnu.org; Thu, 07 Jun 2018 09:26:15 -0400
+	(envelope-from <thuth@redhat.com>) id 1fRAFS-0001Q8-JP
+	for qemu-trivial@nongnu.org; Fri, 08 Jun 2018 01:47:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fQuve-0006kO-6H
-	for qemu-trivial@nongnu.org; Thu, 07 Jun 2018 09:26:14 -0400
-Received: from mail-ot0-x241.google.com ([2607:f8b0:4003:c0f::241]:43526)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fQuve-0006io-0W
-	for qemu-trivial@nongnu.org; Thu, 07 Jun 2018 09:26:14 -0400
-Received: by mail-ot0-x241.google.com with SMTP id i19-v6so11497267otk.10
-	for <qemu-trivial@nongnu.org>; Thu, 07 Jun 2018 06:26:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=R292H/oT8rKP/ypAWZpLdD3uRlMlU0BJ/VFZyrhHLPY=;
-	b=kJzmgFucJ8aBWux1de7+px/MfcjWBJI+3jLljkrXhvTXv5eep4/As2678MRNJu8TJQ
-	3+z6KCakSq1+7GHTwHtZ47zAOzEL0C1LDp1L6mlNNZQFS1S1uMfJ1EXcNTw/9D+YA5B+
-	au/hqIbhXy1wbh+FvOXQQaNyyFuU4sYIZYU+0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=R292H/oT8rKP/ypAWZpLdD3uRlMlU0BJ/VFZyrhHLPY=;
-	b=pFDVrHtkEk3Fa3nqpD4CuK44cjTxhthvH8itSLeFao3xN62yPV3GWa92gK80GxGvGj
-	BH79BtBm3pe4bvOpKTDE1y1R8v1RM9US8EUQdPO96qurrbFgXTbT+jdTH7T+Bh6E2MBW
-	6qGykgMTfRo/Z39AdMcKipjRoF1Gq8E0INbAqdIMKe6sBrHv8tozZYGJikt5ffBZevwc
-	yKmQolpLkLu/ZhtD+EaNjnKolJzXO9UqJAlOyRzWmxVmA7WdxNsq0O2s4Z5joSJCv527
-	gTmIaYA1Enr1JjN+SBdsJrBgKpF/7TJ0MEriybnBjxSa8OHsOawvfvw0PHzPiBXJ7oMv
-	qSXQ==
-X-Gm-Message-State: APt69E37tC19/9rG8/th1czMAtW64nI4KK8MJ3D3X9nq/Kp9T30LriOV
-	sm66NDM9NKKWX/pRV9DTUCcQdC307uOVIxz5SL5gZw==
-X-Google-Smtp-Source: ADUXVKI+IMPvzVtJzMgd8dFAQHR5Qv/TVjhyb4zOIYWF+j7URxI5h5NjepRTgFh6lnFLs0AiEqi0oojz+kXsJRcP7co=
-X-Received: by 2002:a9d:3fda:: with SMTP id
-	i26-v6mr932509ote.126.1528377973242; 
-	Thu, 07 Jun 2018 06:26:13 -0700 (PDT)
+	(envelope-from <thuth@redhat.com>) id 1fRAFR-0000ge-Fp
+	for qemu-trivial@nongnu.org; Fri, 08 Jun 2018 01:47:42 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43012 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1fRAFJ-0000ce-29; Fri, 08 Jun 2018 01:47:33 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 46A8E8A6FA;
+	Fri,  8 Jun 2018 05:47:32 +0000 (UTC)
+Received: from [10.36.116.125] (ovpn-116-125.ams2.redhat.com [10.36.116.125])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id BBE0F10EE6CA;
+	Fri,  8 Jun 2018 05:47:26 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Cc: Patryk Olszewski <patryk@fala.ehost.pl>,
+	BALATON Zoltan <balaton@eik.bme.hu>,
+	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	Eric Blake <eblake@redhat.com>,
+	Laurent Desnogues <laurent.desnogues@gmail.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20180607210818.12727-1-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <9abdaa17-d6d1-0c34-2a20-43078b487bef@redhat.com>
+Date: Fri, 8 Jun 2018 07:47:25 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP;
-	Thu, 7 Jun 2018 06:25:52 -0700 (PDT)
-In-Reply-To: <20180607124016.GJ19032@stefanha-x1.localdomain>
-References: <20180604162140.20688-1-peter.maydell@linaro.org>
-	<20180604191756.1ae61871@w520.home>
-	<20180607124016.GJ19032@stefanha-x1.localdomain>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 7 Jun 2018 14:25:52 +0100
-Message-ID: <CAFEAcA9z=f9oiqYrF8ZeCMj9-FjZAyMMGwv9e-argF+vRd4X-g@mail.gmail.com>
-To: Stefan Hajnoczi <stefanha@gmail.com>
-Cc: Alex Williamson <alex.williamson@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	"patches@linaro.org" <patches@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, 
-	Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] CODING_STYLE: Define our
- preferred form for multiline comments
+In-Reply-To: <20180607210818.12727-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Fri, 08 Jun 2018 05:47:32 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Fri, 08 Jun 2018 05:47:32 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [PATCH] chardev: Restore CR,LF on stdio
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,29 +65,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Jun 2018 13:26:15 -0000
+X-List-Received-Date: Fri, 08 Jun 2018 05:47:43 -0000
 
-On 7 June 2018 at 13:40, Stefan Hajnoczi <stefanha@gmail.com> wrote:
-> On Mon, Jun 04, 2018 at 07:17:56PM -0600, Alex Williamson wrote:
->> Note that the kernel coding style, except for certain exceptions, is:
->>
->> /*
->>  * This is a
->>  * multi-line
->>  * comment
->>  */
->
-> Amen, the one true way.  :-)
+On 07.06.2018 23:08, Philippe Mathieu-Daud=C3=A9 wrote:
+> Remove the 'stair-step output' on stdio.
+>=20
+> This partially reverts commit 12fb0ac05, which was correct
+> on the mailing list but got corrupted by the maintainer :p
+>=20
+> Introduced-by: 3b876140-c035-dd39-75d0-d54c48128fac@redhat.com
+> Reported-by: BALATON Zoltan <balaton@eik.bme.hu>
+> Suggested-by: Thomas Huth <thuth@redhat.com>
+> Tested-by: Laurent Desnogues <laurent.desnogues@gmail.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+> See:
+> http://lists.nongnu.org/archive/html/qemu-devel/2018-05/msg06202.html (=
+bug)
+> http://lists.nongnu.org/archive/html/qemu-devel/2018-06/msg01309.html (=
+report)
+>=20
+> Peter, Can this enters directly as bug-fix?
+>=20
+>  chardev/char-stdio.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/chardev/char-stdio.c b/chardev/char-stdio.c
+> index d83e60e787..96375f2ab8 100644
+> --- a/chardev/char-stdio.c
+> +++ b/chardev/char-stdio.c
+> @@ -59,7 +59,7 @@ static void qemu_chr_set_echo_stdio(Chardev *chr, boo=
+l echo)
+>      if (!echo) {
+>          tty.c_iflag &=3D ~(IGNBRK | BRKINT | PARMRK | ISTRIP
+>                           | INLCR | IGNCR | ICRNL | IXON);
+> -        tty.c_oflag &=3D ~OPOST;
+> +        tty.c_oflag |=3D OPOST;
+>          tty.c_lflag &=3D ~(ECHO | ECHONL | ICANON | IEXTEN);
+>          tty.c_cflag &=3D ~(CSIZE | PARENB);
+>          tty.c_cflag |=3D CS8;
+>=20
 
-OK, consensus seems to be for recommending the kernel-style for
-multiline comments.
+I think this is the right way to go.
 
-Does anybody who knows checkpatch feel like they could write a
-checkpatch check for this? (Unfortunately there isn't one in
-the kernel's checkpatch script either, as I found out when I
-last wrote a kernel patch and got dinged for not putting that
-first blank line in...)
-
-thanks
--- PMM
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
