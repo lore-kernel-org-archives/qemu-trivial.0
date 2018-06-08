@@ -1,50 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fRKty-0007ZM-5q
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Jun 2018 13:10:14 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39596)
+	id 1fRLMQ-0007rF-8K
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Jun 2018 13:39:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45990)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1fRKts-0007Sv-Mu
-	for qemu-trivial@nongnu.org; Fri, 08 Jun 2018 13:10:12 -0400
+	(envelope-from <no-reply@patchew.org>) id 1fRLMK-0007nr-IO
+	for qemu-trivial@nongnu.org; Fri, 08 Jun 2018 13:39:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1fRKtp-00008g-H1
-	for qemu-trivial@nongnu.org; Fri, 08 Jun 2018 13:10:08 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48016 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1fRKti-0008Vl-Fv; Fri, 08 Jun 2018 13:09:58 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2B966C12A8;
-	Fri,  8 Jun 2018 17:09:58 +0000 (UTC)
-Received: from t460.redhat.com (unknown [10.33.36.81])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 571D8205D521;
-	Fri,  8 Jun 2018 17:09:55 +0000 (UTC)
-From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
-	Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-trivial@nongnu.org,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Eric Blake <eblake@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
-Date: Fri,  8 Jun 2018 18:09:33 +0100
-Message-Id: <20180608170933.9137-9-berrange@redhat.com>
+	(envelope-from <no-reply@patchew.org>) id 1fRLMG-0005pR-Jq
+	for qemu-trivial@nongnu.org; Fri, 08 Jun 2018 13:39:32 -0400
+Resent-Date: Fri, 08 Jun 2018 13:39:32 -0400
+Resent-Message-Id: <E1fRLMG-0005pR-Jq@eggs.gnu.org>
+Received: from sender-of-o51.zoho.com ([135.84.80.216]:21011)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1fRLMG-0005pD-AZ
+	for qemu-trivial@nongnu.org; Fri, 08 Jun 2018 13:39:28 -0400
+Received: from [172.17.0.2] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1528479530961768.6287016573419;
+	Fri, 8 Jun 2018 10:38:50 -0700 (PDT)
 In-Reply-To: <20180608170933.9137-1-berrange@redhat.com>
-References: <20180608170933.9137-1-berrange@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Fri, 08 Jun 2018 17:09:58 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Fri, 08 Jun 2018 17:09:58 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'berrange@redhat.com' RCPT:''
+Reply-To: <qemu-devel@nongnu.org>
+Message-ID: <152847953015.459.12898836924769345313@d39dc562802a>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: berrange@redhat.com
+Cc: famz@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	mjt@tls.msk.ru, laurent@vivier.eu, armbru@redhat.com,
+	kraxel@redhat.com, afaerber@suse.de, dgilbert@redhat.com
+Date: Fri, 8 Jun 2018 10:38:50 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-trivial] [PATCH 8/8] authz: delete existing ACL implementation
+X-Received-From: 135.84.80.216
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/8] Add a standard
+ authorization framework
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,979 +48,612 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Jun 2018 17:10:12 -0000
+X-List-Received-Date: Fri, 08 Jun 2018 17:39:36 -0000
 
-From: "Daniel P. Berrange" <berrange@redhat.com>
-
-The 'qemu_acl' type was a previous non-QOM based attempt to provide an
-authorization facility in QEMU. Because it is non-QOM based it cannot be
-created via the command line and requires special monitor commands to
-manipulate it.
-
-The new QAuthZ subclasses provide a superset of the functionality in
-qemu_acl, so the latter can now be deleted. The HMP 'acl_*' monitor
-commands are converted to use the new QAuthZSimple data type instead
-in order to provide temporary backwards compatibility.
-
-Signed-off-by: Daniel P. Berrange <berrange@redhat.com>
----
- crypto/tlssession.c            |  35 ++++---
- crypto/trace-events            |   2 +-
- include/qemu/acl.h             |  66 ------------
- monitor.c                      | 180 ++++++++++++++++++++++-----------
- tests/Makefile.include         |   4 +-
- tests/test-crypto-tlssession.c |  15 ++-
- tests/test-io-channel-tls.c    |  16 ++-
- ui/vnc-auth-sasl.c             |  23 +++--
- ui/vnc-auth-sasl.h             |   5 +-
- ui/vnc-auth-vencrypt.c         |   2 +-
- ui/vnc-ws.c                    |   2 +-
- ui/vnc.c                       |  37 ++++---
- ui/vnc.h                       |   4 +-
- util/Makefile.objs             |   1 -
- util/acl.c                     | 179 --------------------------------
- 15 files changed, 210 insertions(+), 361 deletions(-)
- delete mode 100644 include/qemu/acl.h
- delete mode 100644 util/acl.c
-
-diff --git a/crypto/tlssession.c b/crypto/tlssession.c
-index 96a02deb69..510af8019e 100644
---- a/crypto/tlssession.c
-+++ b/crypto/tlssession.c
-@@ -23,7 +23,7 @@
- #include "crypto/tlscredsanon.h"
- #include "crypto/tlscredsx509.h"
- #include "qapi/error.h"
--#include "qemu/acl.h"
-+#include "authz/base.h"
- #include "trace.h"
- 
- #ifdef CONFIG_GNUTLS
-@@ -36,7 +36,7 @@ struct QCryptoTLSSession {
-     QCryptoTLSCreds *creds;
-     gnutls_session_t handle;
-     char *hostname;
--    char *aclname;
-+    char *authzid;
-     bool handshakeComplete;
-     QCryptoTLSSessionWriteFunc writeFunc;
-     QCryptoTLSSessionReadFunc readFunc;
-@@ -55,7 +55,7 @@ qcrypto_tls_session_free(QCryptoTLSSession *session)
-     gnutls_deinit(session->handle);
-     g_free(session->hostname);
-     g_free(session->peername);
--    g_free(session->aclname);
-+    g_free(session->authzid);
-     object_unref(OBJECT(session->creds));
-     g_free(session);
- }
-@@ -92,7 +92,7 @@ qcrypto_tls_session_pull(void *opaque, void *buf, size_t len)
- QCryptoTLSSession *
- qcrypto_tls_session_new(QCryptoTLSCreds *creds,
-                         const char *hostname,
--                        const char *aclname,
-+                        const char *authzid,
-                         QCryptoTLSCredsEndpoint endpoint,
-                         Error **errp)
- {
-@@ -102,13 +102,13 @@ qcrypto_tls_session_new(QCryptoTLSCreds *creds,
-     session = g_new0(QCryptoTLSSession, 1);
-     trace_qcrypto_tls_session_new(
-         session, creds, hostname ? hostname : "<none>",
--        aclname ? aclname : "<none>", endpoint);
-+        authzid ? authzid : "<none>", endpoint);
- 
-     if (hostname) {
-         session->hostname = g_strdup(hostname);
-     }
--    if (aclname) {
--        session->aclname = g_strdup(aclname);
-+    if (authzid) {
-+        session->authzid = g_strdup(authzid);
-     }
-     session->creds = creds;
-     object_ref(OBJECT(creds));
-@@ -220,6 +220,7 @@ qcrypto_tls_session_check_certificate(QCryptoTLSSession *session,
-     unsigned int nCerts, i;
-     time_t now;
-     gnutls_x509_crt_t cert = NULL;
-+    Error *err = NULL;
- 
-     now = time(NULL);
-     if (now == ((time_t)-1)) {
-@@ -307,19 +308,17 @@ qcrypto_tls_session_check_certificate(QCryptoTLSSession *session,
-                            gnutls_strerror(ret));
-                 goto error;
-             }
--            if (session->aclname) {
--                qemu_acl *acl = qemu_acl_find(session->aclname);
--                int allow;
--                if (!acl) {
--                    error_setg(errp, "Cannot find ACL %s",
--                               session->aclname);
-+            if (session->authzid) {
-+                bool allow;
-+
-+                allow = qauthz_is_allowed_by_id(session->authzid,
-+                                                session->peername, &err);
-+                if (err) {
-+                    error_propagate(errp, err);
-                     goto error;
-                 }
--
--                allow = qemu_acl_party_is_allowed(acl, session->peername);
--
-                 if (!allow) {
--                    error_setg(errp, "TLS x509 ACL check for %s is denied",
-+                    error_setg(errp, "TLS x509 authz check for %s is denied",
-                                session->peername);
-                     goto error;
-                 }
-@@ -506,7 +505,7 @@ qcrypto_tls_session_get_peer_name(QCryptoTLSSession *session)
- QCryptoTLSSession *
- qcrypto_tls_session_new(QCryptoTLSCreds *creds G_GNUC_UNUSED,
-                         const char *hostname G_GNUC_UNUSED,
--                        const char *aclname G_GNUC_UNUSED,
-+                        const char *authzid G_GNUC_UNUSED,
-                         QCryptoTLSCredsEndpoint endpoint G_GNUC_UNUSED,
-                         Error **errp)
- {
-diff --git a/crypto/trace-events b/crypto/trace-events
-index e589990359..4254256010 100644
---- a/crypto/trace-events
-+++ b/crypto/trace-events
-@@ -16,5 +16,5 @@ qcrypto_tls_creds_x509_load_cert(void *creds, int isServer, const char *file) "T
- qcrypto_tls_creds_x509_load_cert_list(void *creds, const char *file) "TLS creds x509 load cert list creds=%p file=%s"
- 
- # crypto/tlssession.c
--qcrypto_tls_session_new(void *session, void *creds, const char *hostname, const char *aclname, int endpoint) "TLS session new session=%p creds=%p hostname=%s aclname=%s endpoint=%d"
-+qcrypto_tls_session_new(void *session, void *creds, const char *hostname, const char *authzid, int endpoint) "TLS session new session=%p creds=%p hostname=%s authzid=%s endpoint=%d"
- qcrypto_tls_session_check_creds(void *session, const char *status) "TLS session check creds session=%p status=%s"
-diff --git a/include/qemu/acl.h b/include/qemu/acl.h
-deleted file mode 100644
-index 7c44119a47..0000000000
---- a/include/qemu/acl.h
-+++ /dev/null
-@@ -1,66 +0,0 @@
--/*
-- * QEMU access control list management
-- *
-- * Copyright (C) 2009 Red Hat, Inc
-- *
-- * Permission is hereby granted, free of charge, to any person obtaining a copy
-- * of this software and associated documentation files (the "Software"), to deal
-- * in the Software without restriction, including without limitation the rights
-- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-- * copies of the Software, and to permit persons to whom the Software is
-- * furnished to do so, subject to the following conditions:
-- *
-- * The above copyright notice and this permission notice shall be included in
-- * all copies or substantial portions of the Software.
-- *
-- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-- * THE SOFTWARE.
-- */
--
--#ifndef QEMU_ACL_H
--#define QEMU_ACL_H
--
--#include "qemu/queue.h"
--
--typedef struct qemu_acl_entry qemu_acl_entry;
--typedef struct qemu_acl qemu_acl;
--
--struct qemu_acl_entry {
--    char *match;
--    int deny;
--
--    QTAILQ_ENTRY(qemu_acl_entry) next;
--};
--
--struct qemu_acl {
--    char *aclname;
--    unsigned int nentries;
--    QTAILQ_HEAD(,qemu_acl_entry) entries;
--    int defaultDeny;
--};
--
--qemu_acl *qemu_acl_init(const char *aclname);
--
--qemu_acl *qemu_acl_find(const char *aclname);
--
--int qemu_acl_party_is_allowed(qemu_acl *acl,
--			      const char *party);
--
--void qemu_acl_reset(qemu_acl *acl);
--
--int qemu_acl_append(qemu_acl *acl,
--		    int deny,
--		    const char *match);
--int qemu_acl_insert(qemu_acl *acl,
--		    int deny,
--		    const char *match,
--		    int index);
--int qemu_acl_remove(qemu_acl *acl,
--		    const char *match);
--
--#endif /* QEMU_ACL_H */
-diff --git a/monitor.c b/monitor.c
-index 6d0cec552e..67c63013bd 100644
---- a/monitor.c
-+++ b/monitor.c
-@@ -50,7 +50,8 @@
- #include "sysemu/balloon.h"
- #include "qemu/timer.h"
- #include "sysemu/hw_accel.h"
--#include "qemu/acl.h"
-+#include "authz/list.h"
-+#include "qapi/util.h"
- #include "sysemu/tpm.h"
- #include "qapi/qmp/qdict.h"
- #include "qapi/qmp/qerror.h"
-@@ -2073,61 +2074,87 @@ static void hmp_wavcapture(Monitor *mon, const QDict *qdict)
-     QLIST_INSERT_HEAD (&capture_head, s, entries);
- }
- 
--static qemu_acl *find_acl(Monitor *mon, const char *name)
-+static QAuthZList *find_auth(Monitor *mon, const char *name)
- {
--    qemu_acl *acl = qemu_acl_find(name);
-+    Object *obj;
-+    Object *container;
- 
--    if (!acl) {
-+    container = object_get_objects_root();
-+    obj = object_resolve_path_component(container, name);
-+    if (!obj) {
-         monitor_printf(mon, "acl: unknown list '%s'\n", name);
-+        return NULL;
-     }
--    return acl;
-+
-+    return QAUTHZ_LIST(obj);
- }
- 
- static void hmp_acl_show(Monitor *mon, const QDict *qdict)
- {
-     const char *aclname = qdict_get_str(qdict, "aclname");
--    qemu_acl *acl = find_acl(mon, aclname);
--    qemu_acl_entry *entry;
--    int i = 0;
--
--    if (acl) {
--        monitor_printf(mon, "policy: %s\n",
--                       acl->defaultDeny ? "deny" : "allow");
--        QTAILQ_FOREACH(entry, &acl->entries, next) {
--            i++;
--            monitor_printf(mon, "%d: %s %s\n", i,
--                           entry->deny ? "deny" : "allow", entry->match);
--        }
-+    QAuthZList *auth = find_auth(mon, aclname);
-+    QAuthZListRuleList *rules;
-+    size_t i = 0;
-+
-+    if (!auth) {
-+        return;
-+    }
-+
-+    monitor_printf(mon, "policy: %s\n",
-+                   QAuthZListPolicy_lookup.array[auth->policy]);
-+
-+    rules = auth->rules;
-+    while (rules) {
-+        QAuthZListRule *rule = rules->value;
-+        i++;
-+        monitor_printf(mon, "%zu: %s %s\n", i,
-+                       QAuthZListPolicy_lookup.array[rule->policy],
-+                       rule->match);
-+        rules = rules->next;
-     }
- }
- 
- static void hmp_acl_reset(Monitor *mon, const QDict *qdict)
- {
-     const char *aclname = qdict_get_str(qdict, "aclname");
--    qemu_acl *acl = find_acl(mon, aclname);
-+    QAuthZList *auth = find_auth(mon, aclname);
- 
--    if (acl) {
--        qemu_acl_reset(acl);
--        monitor_printf(mon, "acl: removed all rules\n");
-+    if (!auth) {
-+        return;
-     }
-+
-+    auth->policy = QAUTHZ_LIST_POLICY_DENY;
-+    qapi_free_QAuthZListRuleList(auth->rules);
-+    auth->rules = NULL;
-+    monitor_printf(mon, "acl: removed all rules\n");
- }
- 
- static void hmp_acl_policy(Monitor *mon, const QDict *qdict)
- {
-     const char *aclname = qdict_get_str(qdict, "aclname");
-     const char *policy = qdict_get_str(qdict, "policy");
--    qemu_acl *acl = find_acl(mon, aclname);
-+    QAuthZList *auth = find_auth(mon, aclname);
-+    int val;
-+    Error *err = NULL;
-+
-+    if (!auth) {
-+        return;
-+    }
- 
--    if (acl) {
--        if (strcmp(policy, "allow") == 0) {
--            acl->defaultDeny = 0;
-+    val = qapi_enum_parse(&QAuthZListPolicy_lookup,
-+                          policy,
-+                          QAUTHZ_LIST_POLICY_DENY,
-+                          &err);
-+    if (err) {
-+        error_free(err);
-+        monitor_printf(mon, "acl: unknown policy '%s', "
-+                       "expected 'deny' or 'allow'\n", policy);
-+    } else {
-+        auth->policy = val;
-+        if (auth->policy == QAUTHZ_LIST_POLICY_ALLOW) {
-             monitor_printf(mon, "acl: policy set to 'allow'\n");
--        } else if (strcmp(policy, "deny") == 0) {
--            acl->defaultDeny = 1;
--            monitor_printf(mon, "acl: policy set to 'deny'\n");
-         } else {
--            monitor_printf(mon, "acl: unknown policy '%s', "
--                           "expected 'deny' or 'allow'\n", policy);
-+            monitor_printf(mon, "acl: policy set to 'deny'\n");
-         }
-     }
- }
-@@ -2136,30 +2163,60 @@ static void hmp_acl_add(Monitor *mon, const QDict *qdict)
- {
-     const char *aclname = qdict_get_str(qdict, "aclname");
-     const char *match = qdict_get_str(qdict, "match");
--    const char *policy = qdict_get_str(qdict, "policy");
-+    const char *policystr = qdict_get_str(qdict, "policy");
-     int has_index = qdict_haskey(qdict, "index");
-     int index = qdict_get_try_int(qdict, "index", -1);
--    qemu_acl *acl = find_acl(mon, aclname);
--    int deny, ret;
--
--    if (acl) {
--        if (strcmp(policy, "allow") == 0) {
--            deny = 0;
--        } else if (strcmp(policy, "deny") == 0) {
--            deny = 1;
--        } else {
--            monitor_printf(mon, "acl: unknown policy '%s', "
--                           "expected 'deny' or 'allow'\n", policy);
--            return;
--        }
--        if (has_index)
--            ret = qemu_acl_insert(acl, deny, match, index);
--        else
--            ret = qemu_acl_append(acl, deny, match);
--        if (ret < 0)
--            monitor_printf(mon, "acl: unable to add acl entry\n");
--        else
--            monitor_printf(mon, "acl: added rule at position %d\n", ret);
-+    QAuthZList *auth = find_auth(mon, aclname);
-+    Error *err = NULL;
-+    QAuthZListPolicy policy;
-+    QAuthZListFormat format;
-+    size_t i = 0;
-+
-+    if (!auth) {
-+        return;
-+    }
-+
-+    policy = qapi_enum_parse(&QAuthZListPolicy_lookup,
-+                             policystr,
-+                             QAUTHZ_LIST_POLICY_DENY,
-+                             &err);
-+    if (err) {
-+        error_free(err);
-+        monitor_printf(mon, "acl: unknown policy '%s', "
-+                       "expected 'deny' or 'allow'\n", policystr);
-+        return;
-+    }
-+
-+#ifdef CONFIG_FNMATCH
-+    if (strchr(match, '*')) {
-+        format = QAUTHZ_LIST_FORMAT_GLOB;
-+    } else {
-+        format = QAUTHZ_LIST_FORMAT_EXACT;
-+    }
-+#else
-+    /* Historically we silently degraded to plain strcmp
-+     * when fnmatch() was missing */
-+    format = QAUTHZ_LIST_FORMAT_EXACT;
-+#endif
-+
-+    if (has_index && index == 0) {
-+        monitor_printf(mon, "acl: unable to add acl entry\n");
-+        return;
-+    }
-+
-+    if (has_index) {
-+        i = qauthz_list_insert_rule(auth, match, policy,
-+                                    format, index - 1, &err);
-+    } else {
-+        i = qauthz_list_append_rule(auth, match, policy,
-+                                    format, &err);
-+    }
-+    if (err) {
-+        monitor_printf(mon, "acl: unable to add rule: %s",
-+                       error_get_pretty(err));
-+        error_free(err);
-+    } else {
-+        monitor_printf(mon, "acl: added rule at position %zu\n", i + 1);
-     }
- }
- 
-@@ -2167,15 +2224,18 @@ static void hmp_acl_remove(Monitor *mon, const QDict *qdict)
- {
-     const char *aclname = qdict_get_str(qdict, "aclname");
-     const char *match = qdict_get_str(qdict, "match");
--    qemu_acl *acl = find_acl(mon, aclname);
--    int ret;
-+    QAuthZList *auth = find_auth(mon, aclname);
-+    ssize_t i = 0;
- 
--    if (acl) {
--        ret = qemu_acl_remove(acl, match);
--        if (ret < 0)
--            monitor_printf(mon, "acl: no matching acl entry\n");
--        else
--            monitor_printf(mon, "acl: removed rule at position %d\n", ret);
-+    if (!auth) {
-+        return;
-+    }
-+
-+    i = qauthz_list_delete_rule(auth, match);
-+    if (i >= 0) {
-+        monitor_printf(mon, "acl: removed rule at position %zu\n", i + 1);
-+    } else {
-+        monitor_printf(mon, "acl: no matching acl entry\n");
-     }
- }
- 
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index 63123ec239..a1e59cb98c 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -605,8 +605,8 @@ test-qom-obj-y = $(qom-obj-y) $(test-util-obj-y)
- test-qapi-obj-y = tests/test-qapi-visit.o tests/test-qapi-types.o \
- 	tests/test-qapi-events.o tests/test-qapi-introspect.o \
- 	$(test-qom-obj-y)
--benchmark-crypto-obj-y = $(crypto-obj-y) $(test-qom-obj-y)
--test-crypto-obj-y = $(crypto-obj-y) $(test-qom-obj-y)
-+benchmark-crypto-obj-y = $(authz-obj-y) $(crypto-obj-y) $(test-qom-obj-y)
-+test-crypto-obj-y = $(authz-obj-y) $(crypto-obj-y) $(test-qom-obj-y)
- test-io-obj-y = $(io-obj-y) $(test-crypto-obj-y)
- test-block-obj-y = $(block-obj-y) $(test-io-obj-y) tests/iothread.o
- 
-diff --git a/tests/test-crypto-tlssession.c b/tests/test-crypto-tlssession.c
-index 82f21c27f2..c51297c864 100644
---- a/tests/test-crypto-tlssession.c
-+++ b/tests/test-crypto-tlssession.c
-@@ -26,7 +26,7 @@
- #include "qom/object_interfaces.h"
- #include "qapi/error.h"
- #include "qemu/sockets.h"
--#include "qemu/acl.h"
-+#include "authz/list.h"
- 
- #ifdef QCRYPTO_HAVE_TLS_TEST_SUPPORT
- 
-@@ -112,7 +112,7 @@ static void test_crypto_tls_session(const void *opaque)
-     QCryptoTLSCreds *serverCreds;
-     QCryptoTLSSession *clientSess = NULL;
-     QCryptoTLSSession *serverSess = NULL;
--    qemu_acl *acl;
-+    QAuthZList *auth;
-     const char * const *wildcards;
-     int channel[2];
-     bool clientShake = false;
-@@ -171,11 +171,15 @@ static void test_crypto_tls_session(const void *opaque)
-         &err);
-     g_assert(serverCreds != NULL);
- 
--    acl = qemu_acl_init("tlssessionacl");
--    qemu_acl_reset(acl);
-+    auth = qauthz_list_new("tlssessionacl",
-+                           QAUTHZ_LIST_POLICY_DENY,
-+                           &error_abort);
-     wildcards = data->wildcards;
-     while (wildcards && *wildcards) {
--        qemu_acl_append(acl, 0, *wildcards);
-+        qauthz_list_append_rule(auth, *wildcards,
-+                                QAUTHZ_LIST_POLICY_ALLOW,
-+                                QAUTHZ_LIST_FORMAT_GLOB,
-+                                &error_abort);
-         wildcards++;
-     }
- 
-@@ -265,6 +269,7 @@ static void test_crypto_tls_session(const void *opaque)
- 
-     object_unparent(OBJECT(serverCreds));
-     object_unparent(OBJECT(clientCreds));
-+    object_unparent(OBJECT(auth));
- 
-     qcrypto_tls_session_free(serverSess);
-     qcrypto_tls_session_free(clientSess);
-diff --git a/tests/test-io-channel-tls.c b/tests/test-io-channel-tls.c
-index bb88ee870f..6eb002fd56 100644
---- a/tests/test-io-channel-tls.c
-+++ b/tests/test-io-channel-tls.c
-@@ -29,7 +29,7 @@
- #include "io-channel-helpers.h"
- #include "crypto/init.h"
- #include "crypto/tlscredsx509.h"
--#include "qemu/acl.h"
-+#include "authz/list.h"
- #include "qom/object_interfaces.h"
- 
- #ifdef QCRYPTO_HAVE_TLS_TEST_SUPPORT
-@@ -116,7 +116,7 @@ static void test_io_channel_tls(const void *opaque)
-     QIOChannelTLS *serverChanTLS;
-     QIOChannelSocket *clientChanSock;
-     QIOChannelSocket *serverChanSock;
--    qemu_acl *acl;
-+    QAuthZList *auth;
-     const char * const *wildcards;
-     int channel[2];
-     struct QIOChannelTLSHandshakeData clientHandshake = { false, false };
-@@ -167,11 +167,15 @@ static void test_io_channel_tls(const void *opaque)
-         &err);
-     g_assert(serverCreds != NULL);
- 
--    acl = qemu_acl_init("channeltlsacl");
--    qemu_acl_reset(acl);
-+    auth = qauthz_list_new("channeltlsacl",
-+                           QAUTHZ_LIST_POLICY_DENY,
-+                           &error_abort);
-     wildcards = data->wildcards;
-     while (wildcards && *wildcards) {
--        qemu_acl_append(acl, 0, *wildcards);
-+        qauthz_list_append_rule(auth, *wildcards,
-+                                QAUTHZ_LIST_POLICY_ALLOW,
-+                                QAUTHZ_LIST_FORMAT_GLOB,
-+                                &error_abort);
-         wildcards++;
-     }
- 
-@@ -259,6 +263,8 @@ static void test_io_channel_tls(const void *opaque)
-     object_unref(OBJECT(serverChanSock));
-     object_unref(OBJECT(clientChanSock));
- 
-+    object_unparent(OBJECT(auth));
-+
-     close(channel[0]);
-     close(channel[1]);
- }
-diff --git a/ui/vnc-auth-sasl.c b/ui/vnc-auth-sasl.c
-index 3751a777a4..7b2b09f242 100644
---- a/ui/vnc-auth-sasl.c
-+++ b/ui/vnc-auth-sasl.c
-@@ -24,6 +24,7 @@
- 
- #include "qemu/osdep.h"
- #include "qapi/error.h"
-+#include "authz/base.h"
- #include "vnc.h"
- #include "trace.h"
- 
-@@ -146,13 +147,14 @@ size_t vnc_client_read_sasl(VncState *vs)
- static int vnc_auth_sasl_check_access(VncState *vs)
- {
-     const void *val;
--    int err;
--    int allow;
-+    int rv;
-+    Error *err = NULL;
-+    bool allow;
- 
--    err = sasl_getprop(vs->sasl.conn, SASL_USERNAME, &val);
--    if (err != SASL_OK) {
-+    rv = sasl_getprop(vs->sasl.conn, SASL_USERNAME, &val);
-+    if (rv != SASL_OK) {
-         trace_vnc_auth_fail(vs, vs->auth, "Cannot fetch SASL username",
--                            sasl_errstring(err, NULL, NULL));
-+                            sasl_errstring(rv, NULL, NULL));
-         return -1;
-     }
-     if (val == NULL) {
-@@ -163,12 +165,19 @@ static int vnc_auth_sasl_check_access(VncState *vs)
-     vs->sasl.username = g_strdup((const char*)val);
-     trace_vnc_auth_sasl_username(vs, vs->sasl.username);
- 
--    if (vs->vd->sasl.acl == NULL) {
-+    if (vs->vd->sasl.authzid == NULL) {
-         trace_vnc_auth_sasl_acl(vs, 1);
-         return 0;
-     }
- 
--    allow = qemu_acl_party_is_allowed(vs->vd->sasl.acl, vs->sasl.username);
-+    allow = qauthz_is_allowed_by_id(vs->vd->sasl.authzid,
-+                                    vs->sasl.username, &err);
-+    if (err) {
-+        trace_vnc_auth_fail(vs, vs->auth, "Error from authz",
-+                            error_get_pretty(err));
-+        error_free(err);
-+        return -1;
-+    }
- 
-     trace_vnc_auth_sasl_acl(vs, allow);
-     return allow ? 0 : -1;
-diff --git a/ui/vnc-auth-sasl.h b/ui/vnc-auth-sasl.h
-index 2ae224ee3a..fb55fe04ca 100644
---- a/ui/vnc-auth-sasl.h
-+++ b/ui/vnc-auth-sasl.h
-@@ -30,8 +30,8 @@
- typedef struct VncStateSASL VncStateSASL;
- typedef struct VncDisplaySASL VncDisplaySASL;
- 
--#include "qemu/acl.h"
- #include "qemu/main-loop.h"
-+#include "authz/base.h"
- 
- struct VncStateSASL {
-     sasl_conn_t *conn;
-@@ -60,7 +60,8 @@ struct VncStateSASL {
- };
- 
- struct VncDisplaySASL {
--    qemu_acl *acl;
-+    QAuthZ *authz;
-+    char *authzid;
- };
- 
- void vnc_sasl_client_cleanup(VncState *vs);
-diff --git a/ui/vnc-auth-vencrypt.c b/ui/vnc-auth-vencrypt.c
-index d99ea362c1..f072e16ace 100644
---- a/ui/vnc-auth-vencrypt.c
-+++ b/ui/vnc-auth-vencrypt.c
-@@ -109,7 +109,7 @@ static int protocol_client_vencrypt_auth(VncState *vs, uint8_t *data, size_t len
-         tls = qio_channel_tls_new_server(
-             vs->ioc,
-             vs->vd->tlscreds,
--            vs->vd->tlsaclname,
-+            vs->vd->tlsauthzid,
-             &err);
-         if (!tls) {
-             trace_vnc_auth_fail(vs, vs->auth, "TLS setup failed",
-diff --git a/ui/vnc-ws.c b/ui/vnc-ws.c
-index 950f1cd2ac..95c9703c72 100644
---- a/ui/vnc-ws.c
-+++ b/ui/vnc-ws.c
-@@ -62,7 +62,7 @@ gboolean vncws_tls_handshake_io(QIOChannel *ioc G_GNUC_UNUSED,
-     tls = qio_channel_tls_new_server(
-         vs->ioc,
-         vs->vd->tlscreds,
--        vs->vd->tlsaclname,
-+        vs->vd->tlsauthzid,
-         &err);
-     if (!tls) {
-         VNC_DEBUG("Failed to setup TLS %s\n", error_get_pretty(err));
-diff --git a/ui/vnc.c b/ui/vnc.c
-index 359693238b..9fb8430c35 100644
---- a/ui/vnc.c
-+++ b/ui/vnc.c
-@@ -33,7 +33,7 @@
- #include "qemu/option.h"
- #include "qemu/sockets.h"
- #include "qemu/timer.h"
--#include "qemu/acl.h"
-+#include "authz/list.h"
- #include "qemu/config-file.h"
- #include "qapi/qapi-events.h"
- #include "qapi/error.h"
-@@ -3267,12 +3267,24 @@ static void vnc_display_close(VncDisplay *vd)
-         object_unparent(OBJECT(vd->tlscreds));
-         vd->tlscreds = NULL;
-     }
--    g_free(vd->tlsaclname);
--    vd->tlsaclname = NULL;
-+    if (vd->tlsauthz) {
-+        object_unparent(OBJECT(vd->tlsauthz));
-+        vd->tlsauthz = NULL;
-+    }
-+    g_free(vd->tlsauthzid);
-+    vd->tlsauthzid = NULL;
-     if (vd->lock_key_sync) {
-         qemu_remove_led_event_handler(vd->led);
-         vd->led = NULL;
-     }
-+#ifdef CONFIG_VNC_SASL
-+    if (vd->sasl.authz) {
-+        object_unparent(OBJECT(vd->sasl.authz));
-+        vd->sasl.authz = NULL;
-+    }
-+    g_free(vd->sasl.authzid);
-+    vd->sasl.authzid = NULL;
-+#endif
- }
- 
- int vnc_display_password(const char *id, const char *password)
-@@ -4019,23 +4031,24 @@ void vnc_display_open(const char *id, Error **errp)
- 
-     if (acl) {
-         if (strcmp(vd->id, "default") == 0) {
--            vd->tlsaclname = g_strdup("vnc.x509dname");
-+            vd->tlsauthzid = g_strdup("vnc.x509dname");
-         } else {
--            vd->tlsaclname = g_strdup_printf("vnc.%s.x509dname", vd->id);
-+            vd->tlsauthzid = g_strdup_printf("vnc.%s.x509dname", vd->id);
-         }
--        qemu_acl_init(vd->tlsaclname);
-+        vd->tlsauthz = QAUTHZ(qauthz_list_new(vd->tlsauthzid,
-+                                              QAUTHZ_LIST_POLICY_DENY,
-+                                              &error_abort));
-     }
- #ifdef CONFIG_VNC_SASL
-     if (acl && sasl) {
--        char *aclname;
--
-         if (strcmp(vd->id, "default") == 0) {
--            aclname = g_strdup("vnc.username");
-+            vd->sasl.authzid = g_strdup("vnc.username");
-         } else {
--            aclname = g_strdup_printf("vnc.%s.username", vd->id);
-+            vd->sasl.authzid = g_strdup_printf("vnc.%s.username", vd->id);
-         }
--        vd->sasl.acl = qemu_acl_init(aclname);
--        g_free(aclname);
-+        vd->sasl.authz = QAUTHZ(qauthz_list_new(vd->sasl.authzid,
-+                                                QAUTHZ_LIST_POLICY_DENY,
-+                                                &error_abort));
-     }
- #endif
- 
-diff --git a/ui/vnc.h b/ui/vnc.h
-index 762632929b..d2efb14620 100644
---- a/ui/vnc.h
-+++ b/ui/vnc.h
-@@ -39,6 +39,7 @@
- #include "io/channel-socket.h"
- #include "io/channel-tls.h"
- #include "io/net-listener.h"
-+#include "authz/base.h"
- #include <zlib.h>
- 
- #include "keymaps.h"
-@@ -177,7 +178,8 @@ struct VncDisplay
-     bool lossy;
-     bool non_adaptive;
-     QCryptoTLSCreds *tlscreds;
--    char *tlsaclname;
-+    QAuthZ *tlsauthz;
-+    char *tlsauthzid;
- #ifdef CONFIG_VNC_SASL
-     VncDisplaySASL sasl;
- #endif
-diff --git a/util/Makefile.objs b/util/Makefile.objs
-index 4c1b44d019..09a259ddd0 100644
---- a/util/Makefile.objs
-+++ b/util/Makefile.objs
-@@ -19,7 +19,6 @@ util-obj-y += envlist.o path.o module.o
- util-obj-y += host-utils.o
- util-obj-y += bitmap.o bitops.o hbitmap.o
- util-obj-y += fifo8.o
--util-obj-y += acl.o
- util-obj-y += cacheinfo.o
- util-obj-y += error.o qemu-error.o
- util-obj-y += id.o
-diff --git a/util/acl.c b/util/acl.c
-deleted file mode 100644
-index c105addadc..0000000000
---- a/util/acl.c
-+++ /dev/null
-@@ -1,179 +0,0 @@
--/*
-- * QEMU access control list management
-- *
-- * Copyright (C) 2009 Red Hat, Inc
-- *
-- * Permission is hereby granted, free of charge, to any person obtaining a copy
-- * of this software and associated documentation files (the "Software"), to deal
-- * in the Software without restriction, including without limitation the rights
-- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-- * copies of the Software, and to permit persons to whom the Software is
-- * furnished to do so, subject to the following conditions:
-- *
-- * The above copyright notice and this permission notice shall be included in
-- * all copies or substantial portions of the Software.
-- *
-- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-- * THE SOFTWARE.
-- */
--
--
--#include "qemu/osdep.h"
--#include "qemu-common.h"
--#include "qemu/acl.h"
--
--#ifdef CONFIG_FNMATCH
--#include <fnmatch.h>
--#endif
--
--
--static unsigned int nacls = 0;
--static qemu_acl **acls = NULL;
--
--
--
--qemu_acl *qemu_acl_find(const char *aclname)
--{
--    int i;
--    for (i = 0 ; i < nacls ; i++) {
--        if (strcmp(acls[i]->aclname, aclname) == 0)
--            return acls[i];
--    }
--
--    return NULL;
--}
--
--qemu_acl *qemu_acl_init(const char *aclname)
--{
--    qemu_acl *acl;
--
--    acl = qemu_acl_find(aclname);
--    if (acl)
--        return acl;
--
--    acl = g_malloc(sizeof(*acl));
--    acl->aclname = g_strdup(aclname);
--    /* Deny by default, so there is no window of "open
--     * access" between QEMU starting, and the user setting
--     * up ACLs in the monitor */
--    acl->defaultDeny = 1;
--
--    acl->nentries = 0;
--    QTAILQ_INIT(&acl->entries);
--
--    acls = g_realloc(acls, sizeof(*acls) * (nacls +1));
--    acls[nacls] = acl;
--    nacls++;
--
--    return acl;
--}
--
--int qemu_acl_party_is_allowed(qemu_acl *acl,
--                              const char *party)
--{
--    qemu_acl_entry *entry;
--
--    QTAILQ_FOREACH(entry, &acl->entries, next) {
--#ifdef CONFIG_FNMATCH
--        if (fnmatch(entry->match, party, 0) == 0)
--            return entry->deny ? 0 : 1;
--#else
--        /* No fnmatch, so fallback to exact string matching
--         * instead of allowing wildcards */
--        if (strcmp(entry->match, party) == 0)
--            return entry->deny ? 0 : 1;
--#endif
--    }
--
--    return acl->defaultDeny ? 0 : 1;
--}
--
--
--void qemu_acl_reset(qemu_acl *acl)
--{
--    qemu_acl_entry *entry, *next_entry;
--
--    /* Put back to deny by default, so there is no window
--     * of "open access" while the user re-initializes the
--     * access control list */
--    acl->defaultDeny = 1;
--    QTAILQ_FOREACH_SAFE(entry, &acl->entries, next, next_entry) {
--        QTAILQ_REMOVE(&acl->entries, entry, next);
--        g_free(entry->match);
--        g_free(entry);
--    }
--    acl->nentries = 0;
--}
--
--
--int qemu_acl_append(qemu_acl *acl,
--                    int deny,
--                    const char *match)
--{
--    qemu_acl_entry *entry;
--
--    entry = g_malloc(sizeof(*entry));
--    entry->match = g_strdup(match);
--    entry->deny = deny;
--
--    QTAILQ_INSERT_TAIL(&acl->entries, entry, next);
--    acl->nentries++;
--
--    return acl->nentries;
--}
--
--
--int qemu_acl_insert(qemu_acl *acl,
--                    int deny,
--                    const char *match,
--                    int index)
--{
--    qemu_acl_entry *tmp;
--    int i = 0;
--
--    if (index <= 0)
--        return -1;
--    if (index > acl->nentries) {
--        return qemu_acl_append(acl, deny, match);
--    }
--
--    QTAILQ_FOREACH(tmp, &acl->entries, next) {
--        i++;
--        if (i == index) {
--            qemu_acl_entry *entry;
--            entry = g_malloc(sizeof(*entry));
--            entry->match = g_strdup(match);
--            entry->deny = deny;
--
--            QTAILQ_INSERT_BEFORE(tmp, entry, next);
--            acl->nentries++;
--            break;
--        }
--    }
--
--    return i;
--}
--
--int qemu_acl_remove(qemu_acl *acl,
--                    const char *match)
--{
--    qemu_acl_entry *entry;
--    int i = 0;
--
--    QTAILQ_FOREACH(entry, &acl->entries, next) {
--        i++;
--        if (strcmp(entry->match, match) == 0) {
--            QTAILQ_REMOVE(&acl->entries, entry, next);
--            acl->nentries--;
--            g_free(entry->match);
--            g_free(entry);
--            return i;
--        }
--    }
--    return -1;
--}
--- 
-2.17.0
+SGksCgpUaGlzIHNlcmllcyBmYWlsZWQgZG9ja2VyLW1pbmd3QGZlZG9yYSBidWlsZCB0ZXN0LiBQ
+bGVhc2UgZmluZCB0aGUgdGVzdGluZyBjb21tYW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJ
+ZiB5b3UgaGF2ZSBEb2NrZXIgaW5zdGFsbGVkLCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBp
+dApsb2NhbGx5LgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMTgwNjA4MTcwOTMzLjkxMzct
+MS1iZXJyYW5nZUByZWRoYXQuY29tClN1YmplY3Q6IFtRZW11LWRldmVsXSBbUEFUQ0ggMC84XSBB
+ZGQgYSBzdGFuZGFyZCBhdXRob3JpemF0aW9uIGZyYW1ld29yawoKPT09IFRFU1QgU0NSSVBUIEJF
+R0lOID09PQojIS9iaW4vYmFzaApzZXQgLWUKZ2l0IHN1Ym1vZHVsZSB1cGRhdGUgLS1pbml0IGR0
+YwojIExldCBkb2NrZXIgdGVzdHMgZHVtcCBlbnZpcm9ubWVudCBpbmZvCmV4cG9ydCBTSE9XX0VO
+Vj0xCmV4cG9ydCBKPTgKdGltZSBtYWtlIGRvY2tlci10ZXN0LW1pbmd3QGZlZG9yYQo9PT0gVEVT
+VCBTQ1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRi
+ZDg4ODcxMzM4NApGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQog
+dCBbdGFnIHVwZGF0ZV0gICAgICAgICAgICBwYXRjaGV3LzIwMTgwNjA4MTMxNjA0LjE2ODI2LTEt
+YmVycmFuZ2VAcmVkaGF0LmNvbSAtPiBwYXRjaGV3LzIwMTgwNjA4MTMxNjA0LjE2ODI2LTEtYmVy
+cmFuZ2VAcmVkaGF0LmNvbQogdCBbdGFnIHVwZGF0ZV0gICAgICAgICAgICBwYXRjaGV3LzIwMTgw
+NjA4MTcwMjMxLjI3OTEyLTEtYXJtYnJ1QHJlZGhhdC5jb20gLT4gcGF0Y2hldy8yMDE4MDYwODE3
+MDIzMS4yNzkxMi0xLWFybWJydUByZWRoYXQuY29tClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAn
+dGVzdCcKMThiNDg1NWEzNyBhdXRoejogZGVsZXRlIGV4aXN0aW5nIEFDTCBpbXBsZW1lbnRhdGlv
+bgoyMjYwNDAwZDNmIGF1dGh6OiBhZGQgUUF1dGhaUEFNIG9iamVjdCB0eXBlIGZvciBhdXRob3Jp
+emluZyB1c2luZyBQQU0KZmI4ZDZlYzgyMSBhdXRoejogYWRkIFFBdXRoWkxpc3RGaWxlIG9iamVj
+dCB0eXBlIGZvciBhIGZpbGUgYWNjZXNzIGNvbnRyb2wgbGlzdApiYmFkZTdhYmE3IGF1dGh6OiBh
+ZGQgUUF1dGhaTGlzdCBvYmplY3QgdHlwZSBmb3IgYW4gYWNjZXNzIGNvbnRyb2wgbGlzdAo4MTdh
+NGYwY2EzIGF1dGh6OiBhZGQgUUF1dGhaU2ltcGxlIG9iamVjdCB0eXBlIGZvciB0cml2aWFsIGF1
+dGggY2hlY2tzCjk1ZGMzZTVjYTYgYXV0aHo6IGFkZCBRQXV0aFogb2JqZWN0IGFzIGFuIGF1dGhv
+cml6YXRpb24gYmFzZSBjbGFzcwozZTU5MmM4NTgzIGh3L3VzYjogc3dpdGNoIE1UUCB0byB1c2Ug
+bmV3IGlub3RpZnkgQVBJcwoyYzYwZjU5YzJmIHV0aWw6IGFkZCBoZWxwZXIgQVBJcyBmb3IgZGVh
+bGluZyB3aXRoIGlub3RpZnkKCj09PSBPVVRQVVQgQkVHSU4gPT09ClN1Ym1vZHVsZSAnZHRjJyAo
+Z2l0Oi8vZ2l0LnFlbXUtcHJvamVjdC5vcmcvZHRjLmdpdCkgcmVnaXN0ZXJlZCBmb3IgcGF0aCAn
+ZHRjJwpDbG9uaW5nIGludG8gJy92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC1qaDFnX2Y4OC9z
+cmMvZHRjJy4uLgpTdWJtb2R1bGUgcGF0aCAnZHRjJzogY2hlY2tlZCBvdXQgJ2U1NDM4ODAxNWFm
+MWZiNGJmMDRkMGJjYTk5Y2FiYTEwNzRkOWNjNDInCiAgQlVJTEQgICBmZWRvcmEKbWFrZVsxXTog
+RW50ZXJpbmcgZGlyZWN0b3J5ICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtamgxZ19mODgv
+c3JjJwogIEdFTiAgICAgL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLWpoMWdfZjg4L3NyYy9k
+b2NrZXItc3JjLjIwMTgtMDYtMDgtMTMuMzYuNTIuMjQxNzcvcWVtdS50YXIKQ2xvbmluZyBpbnRv
+ICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtamgxZ19mODgvc3JjL2RvY2tlci1zcmMuMjAx
+OC0wNi0wOC0xMy4zNi41Mi4yNDE3Ny9xZW11LnRhci52cm9vdCcuLi4KZG9uZS4KQ2hlY2tpbmcg
+b3V0IGZpbGVzOiAgNDYlICgyOTI1LzYyMzIpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDQ3JSAo
+MjkzMC82MjMyKSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA0OCUgKDI5OTIvNjIzMikgICAKQ2hl
+Y2tpbmcgb3V0IGZpbGVzOiAgNDklICgzMDU0LzYyMzIpICAgCkNoZWNraW5nIG91dCBmaWxlczog
+IDUwJSAoMzExNi82MjMyKSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA1MSUgKDMxNzkvNjIzMikg
+ICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNTIlICgzMjQxLzYyMzIpICAgCkNoZWNraW5nIG91dCBm
+aWxlczogIDUzJSAoMzMwMy82MjMyKSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA1NCUgKDMzNjYv
+NjIzMikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNTUlICgzNDI4LzYyMzIpICAgCkNoZWNraW5n
+IG91dCBmaWxlczogIDU2JSAoMzQ5MC82MjMyKSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA1NyUg
+KDM1NTMvNjIzMikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNTglICgzNjE1LzYyMzIpICAgCkNo
+ZWNraW5nIG91dCBmaWxlczogIDU5JSAoMzY3Ny82MjMyKSAgIApDaGVja2luZyBvdXQgZmlsZXM6
+ICA2MCUgKDM3NDAvNjIzMikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNjElICgzODAyLzYyMzIp
+ICAgCkNoZWNraW5nIG91dCBmaWxlczogIDYyJSAoMzg2NC82MjMyKSAgIApDaGVja2luZyBvdXQg
+ZmlsZXM6ICA2MyUgKDM5MjcvNjIzMikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNjQlICgzOTg5
+LzYyMzIpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDY1JSAoNDA1MS82MjMyKSAgIApDaGVja2lu
+ZyBvdXQgZmlsZXM6ICA2NiUgKDQxMTQvNjIzMikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgNjcl
+ICg0MTc2LzYyMzIpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDY4JSAoNDIzOC82MjMyKSAgIApD
+aGVja2luZyBvdXQgZmlsZXM6ICA2OSUgKDQzMDEvNjIzMikgICAKQ2hlY2tpbmcgb3V0IGZpbGVz
+OiAgNzAlICg0MzYzLzYyMzIpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDcxJSAoNDQyNS82MjMy
+KSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA3MiUgKDQ0ODgvNjIzMikgICAKQ2hlY2tpbmcgb3V0
+IGZpbGVzOiAgNzMlICg0NTUwLzYyMzIpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDc0JSAoNDYx
+Mi82MjMyKSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA3NSUgKDQ2NzQvNjIzMikgICAKQ2hlY2tp
+bmcgb3V0IGZpbGVzOiAgNzYlICg0NzM3LzYyMzIpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDc3
+JSAoNDc5OS82MjMyKSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA3OCUgKDQ4NjEvNjIzMikgICAK
+Q2hlY2tpbmcgb3V0IGZpbGVzOiAgNzklICg0OTI0LzYyMzIpICAgCkNoZWNraW5nIG91dCBmaWxl
+czogIDgwJSAoNDk4Ni82MjMyKSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA4MSUgKDUwNDgvNjIz
+MikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgODIlICg1MTExLzYyMzIpICAgCkNoZWNraW5nIG91
+dCBmaWxlczogIDgzJSAoNTE3My82MjMyKSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA4NCUgKDUy
+MzUvNjIzMikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgODUlICg1Mjk4LzYyMzIpICAgCkNoZWNr
+aW5nIG91dCBmaWxlczogIDg2JSAoNTM2MC82MjMyKSAgIApDaGVja2luZyBvdXQgZmlsZXM6ICA4
+NyUgKDU0MjIvNjIzMikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgODglICg1NDg1LzYyMzIpICAg
+CkNoZWNraW5nIG91dCBmaWxlczogIDg5JSAoNTU0Ny82MjMyKSAgIApDaGVja2luZyBvdXQgZmls
+ZXM6ICA5MCUgKDU2MDkvNjIzMikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgOTElICg1NjcyLzYy
+MzIpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDkyJSAoNTczNC82MjMyKSAgIApDaGVja2luZyBv
+dXQgZmlsZXM6ICA5MyUgKDU3OTYvNjIzMikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAgOTQlICg1
+ODU5LzYyMzIpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDk1JSAoNTkyMS82MjMyKSAgIApDaGVj
+a2luZyBvdXQgZmlsZXM6ICA5NiUgKDU5ODMvNjIzMikgICAKQ2hlY2tpbmcgb3V0IGZpbGVzOiAg
+OTclICg2MDQ2LzYyMzIpICAgCkNoZWNraW5nIG91dCBmaWxlczogIDk4JSAoNjEwOC82MjMyKSAg
+IApDaGVja2luZyBvdXQgZmlsZXM6ICA5OSUgKDYxNzAvNjIzMikgICAKQ2hlY2tpbmcgb3V0IGZp
+bGVzOiAxMDAlICg2MjMyLzYyMzIpICAgCkNoZWNraW5nIG91dCBmaWxlczogMTAwJSAoNjIzMi82
+MjMyKSwgZG9uZS4KWW91ciBicmFuY2ggaXMgdXAtdG8tZGF0ZSB3aXRoICdvcmlnaW4vdGVzdCcu
+ClN1Ym1vZHVsZSAnZHRjJyAoZ2l0Oi8vZ2l0LnFlbXUtcHJvamVjdC5vcmcvZHRjLmdpdCkgcmVn
+aXN0ZXJlZCBmb3IgcGF0aCAnZHRjJwpDbG9uaW5nIGludG8gJy92YXIvdG1wL3BhdGNoZXctdGVz
+dGVyLXRtcC1qaDFnX2Y4OC9zcmMvZG9ja2VyLXNyYy4yMDE4LTA2LTA4LTEzLjM2LjUyLjI0MTc3
+L3FlbXUudGFyLnZyb290L2R0YycuLi4KU3VibW9kdWxlIHBhdGggJ2R0Yyc6IGNoZWNrZWQgb3V0
+ICdlNTQzODgwMTVhZjFmYjRiZjA0ZDBiY2E5OWNhYmExMDc0ZDljYzQyJwpTdWJtb2R1bGUgJ3Vp
+L2tleWNvZGVtYXBkYicgKGdpdDovL2dpdC5xZW11Lm9yZy9rZXljb2RlbWFwZGIuZ2l0KSByZWdp
+c3RlcmVkIGZvciBwYXRoICd1aS9rZXljb2RlbWFwZGInCkNsb25pbmcgaW50byAnL3Zhci90bXAv
+cGF0Y2hldy10ZXN0ZXItdG1wLWpoMWdfZjg4L3NyYy9kb2NrZXItc3JjLjIwMTgtMDYtMDgtMTMu
+MzYuNTIuMjQxNzcvcWVtdS50YXIudnJvb3QvdWkva2V5Y29kZW1hcGRiJy4uLgpTdWJtb2R1bGUg
+cGF0aCAndWkva2V5Y29kZW1hcGRiJzogY2hlY2tlZCBvdXQgJzZiM2Q3MTZlMmI2NDcyZWI3MTg5
+ZDMyMjA1NTIyODBlZjNkODMyY2UnCiAgQ09QWSAgICBSVU5ORVIKICAgIFJVTiB0ZXN0LW1pbmd3
+IGluIHFlbXU6ZmVkb3JhIApQYWNrYWdlcyBpbnN0YWxsZWQ6ClNETDItZGV2ZWwtMi4wLjgtNS5m
+YzI4Lng4Nl82NApiYy0xLjA3LjEtNS5mYzI4Lng4Nl82NApiaXNvbi0zLjAuNC05LmZjMjgueDg2
+XzY0CmJsdWV6LWxpYnMtZGV2ZWwtNS40OS0zLmZjMjgueDg2XzY0CmJybGFwaS1kZXZlbC0wLjYu
+Ny0xMi5mYzI4Lng4Nl82NApiemlwMi0xLjAuNi0yNi5mYzI4Lng4Nl82NApiemlwMi1kZXZlbC0x
+LjAuNi0yNi5mYzI4Lng4Nl82NApjY2FjaGUtMy40LjItMi5mYzI4Lng4Nl82NApjbGFuZy02LjAu
+MC01LmZjMjgueDg2XzY0CmRldmljZS1tYXBwZXItbXVsdGlwYXRoLWRldmVsLTAuNy40LTIuZ2l0
+MDdlN2JkNS5mYzI4Lng4Nl82NApmaW5kdXRpbHMtNC42LjAtMTkuZmMyOC54ODZfNjQKZmxleC0y
+LjYuMS03LmZjMjgueDg2XzY0CmdjYy04LjEuMS0xLmZjMjgueDg2XzY0CmdjYy1jKystOC4xLjEt
+MS5mYzI4Lng4Nl82NApnZXR0ZXh0LTAuMTkuOC4xLTE0LmZjMjgueDg2XzY0CmdpdC0yLjE3LjEt
+Mi5mYzI4Lng4Nl82NApnbGliMi1kZXZlbC0yLjU2LjEtMy5mYzI4Lng4Nl82NApnbHVzdGVyZnMt
+YXBpLWRldmVsLTQuMC4yLTEuZmMyOC54ODZfNjQKZ251dGxzLWRldmVsLTMuNi4yLTEuZmMyOC54
+ODZfNjQKZ3RrMy1kZXZlbC0zLjIyLjMwLTEuZmMyOC54ODZfNjQKaG9zdG5hbWUtMy4yMC0zLmZj
+MjgueDg2XzY0CmxpYmFpby1kZXZlbC0wLjMuMTEwLTExLmZjMjgueDg2XzY0CmxpYmFzYW4tOC4x
+LjEtMS5mYzI4Lng4Nl82NApsaWJhdHRyLWRldmVsLTIuNC40Ny0yMy5mYzI4Lng4Nl82NApsaWJj
+YXAtZGV2ZWwtMi4yNS05LmZjMjgueDg2XzY0CmxpYmNhcC1uZy1kZXZlbC0wLjcuOS0xLmZjMjgu
+eDg2XzY0CmxpYmN1cmwtZGV2ZWwtNy41OS4wLTMuZmMyOC54ODZfNjQKbGliZmR0LWRldmVsLTEu
+NC42LTQuZmMyOC54ODZfNjQKbGlicG5nLWRldmVsLTEuNi4zNC0zLmZjMjgueDg2XzY0CmxpYnJi
+ZC1kZXZlbC0xMi4yLjUtMS5mYzI4Lng4Nl82NApsaWJzc2gyLWRldmVsLTEuOC4wLTcuZmMyOC54
+ODZfNjQKbGlidWJzYW4tOC4xLjEtMS5mYzI4Lng4Nl82NApsaWJ1c2J4LWRldmVsLTEuMC4yMS02
+LmZjMjgueDg2XzY0CmxpYnhtbDItZGV2ZWwtMi45LjctNC5mYzI4Lng4Nl82NApsbHZtLTYuMC4w
+LTExLmZjMjgueDg2XzY0Cmx6by1kZXZlbC0yLjA4LTEyLmZjMjgueDg2XzY0Cm1ha2UtNC4yLjEt
+Ni5mYzI4Lng4Nl82NAptaW5ndzMyLVNETDItMi4wLjUtMy5mYzI3Lm5vYXJjaAptaW5ndzMyLWJ6
+aXAyLTEuMC42LTkuZmMyNy5ub2FyY2gKbWluZ3czMi1jdXJsLTcuNTcuMC0xLmZjMjgubm9hcmNo
+Cm1pbmd3MzItZ2xpYjItMi41NC4xLTEuZmMyOC5ub2FyY2gKbWluZ3czMi1nbXAtNi4xLjItMi5m
+YzI3Lm5vYXJjaAptaW5ndzMyLWdudXRscy0zLjUuMTMtMi5mYzI3Lm5vYXJjaAptaW5ndzMyLWd0
+azMtMy4yMi4xNi0xLmZjMjcubm9hcmNoCm1pbmd3MzItbGlianBlZy10dXJiby0xLjUuMS0zLmZj
+Mjcubm9hcmNoCm1pbmd3MzItbGlicG5nLTEuNi4yOS0yLmZjMjcubm9hcmNoCm1pbmd3MzItbGli
+c3NoMi0xLjguMC0zLmZjMjcubm9hcmNoCm1pbmd3MzItbGlidGFzbjEtNC4xMy0xLmZjMjgubm9h
+cmNoCm1pbmd3MzItbmV0dGxlLTMuMy0zLmZjMjcubm9hcmNoCm1pbmd3MzItcGl4bWFuLTAuMzQu
+MC0zLmZjMjcubm9hcmNoCm1pbmd3MzItcGtnLWNvbmZpZy0wLjI4LTkuZmMyNy54ODZfNjQKbWlu
+Z3c2NC1TREwyLTIuMC41LTMuZmMyNy5ub2FyY2gKbWluZ3c2NC1iemlwMi0xLjAuNi05LmZjMjcu
+bm9hcmNoCm1pbmd3NjQtY3VybC03LjU3LjAtMS5mYzI4Lm5vYXJjaAptaW5ndzY0LWdsaWIyLTIu
+NTQuMS0xLmZjMjgubm9hcmNoCm1pbmd3NjQtZ21wLTYuMS4yLTIuZmMyNy5ub2FyY2gKbWluZ3c2
+NC1nbnV0bHMtMy41LjEzLTIuZmMyNy5ub2FyY2gKbWluZ3c2NC1ndGszLTMuMjIuMTYtMS5mYzI3
+Lm5vYXJjaAptaW5ndzY0LWxpYmpwZWctdHVyYm8tMS41LjEtMy5mYzI3Lm5vYXJjaAptaW5ndzY0
+LWxpYnBuZy0xLjYuMjktMi5mYzI3Lm5vYXJjaAptaW5ndzY0LWxpYnNzaDItMS44LjAtMy5mYzI3
+Lm5vYXJjaAptaW5ndzY0LWxpYnRhc24xLTQuMTMtMS5mYzI4Lm5vYXJjaAptaW5ndzY0LW5ldHRs
+ZS0zLjMtMy5mYzI3Lm5vYXJjaAptaW5ndzY0LXBpeG1hbi0wLjM0LjAtMy5mYzI3Lm5vYXJjaApt
+aW5ndzY0LXBrZy1jb25maWctMC4yOC05LmZjMjcueDg2XzY0Cm5jdXJzZXMtZGV2ZWwtNi4xLTUu
+MjAxODAyMjQuZmMyOC54ODZfNjQKbmV0dGxlLWRldmVsLTMuNC0yLmZjMjgueDg2XzY0Cm5zcy1k
+ZXZlbC0zLjM2LjEtMS4xLmZjMjgueDg2XzY0Cm51bWFjdGwtZGV2ZWwtMi4wLjExLTguZmMyOC54
+ODZfNjQKcGFja2FnZSBQeVlBTUwgaXMgbm90IGluc3RhbGxlZApwYWNrYWdlIGxpYmpwZWctZGV2
+ZWwgaXMgbm90IGluc3RhbGxlZApwZXJsLTUuMjYuMi00MTEuZmMyOC54ODZfNjQKcGl4bWFuLWRl
+dmVsLTAuMzQuMC04LmZjMjgueDg2XzY0CnB5dGhvbjMtMy42LjUtMS5mYzI4Lng4Nl82NApzbmFw
+cHktZGV2ZWwtMS4xLjctNS5mYzI4Lng4Nl82NApzcGFyc2UtMC41LjItMS5mYzI4Lng4Nl82NApz
+cGljZS1zZXJ2ZXItZGV2ZWwtMC4xNC4wLTQuZmMyOC54ODZfNjQKc3lzdGVtdGFwLXNkdC1kZXZl
+bC0zLjItMTEuZmMyOC54ODZfNjQKdGFyLTEuMzAtMy5mYzI4Lng4Nl82NAp1c2JyZWRpci1kZXZl
+bC0wLjcuMS03LmZjMjgueDg2XzY0CnZpcmdscmVuZGVyZXItZGV2ZWwtMC42LjAtNC4yMDE3MDIx
+MGdpdDc2YjNkYTk3Yi5mYzI4Lng4Nl82NAp2dGUzLWRldmVsLTAuMzYuNS02LmZjMjgueDg2XzY0
+CndoaWNoLTIuMjEtOC5mYzI4Lng4Nl82NAp4ZW4tZGV2ZWwtNC4xMC4xLTMuZmMyOC54ODZfNjQK
+emxpYi1kZXZlbC0xLjIuMTEtOC5mYzI4Lng4Nl82NAoKRW52aXJvbm1lbnQgdmFyaWFibGVzOgpU
+QVJHRVRfTElTVD0KUEFDS0FHRVM9Y2NhY2hlIGdldHRleHQgZ2l0IHRhciBQeVlBTUwgc3BhcnNl
+IGZsZXggYmlzb24gcHl0aG9uMyBiemlwMiBob3N0bmFtZSAgICAgZ2NjIGdjYy1jKysgbGx2bSBj
+bGFuZyBtYWtlIHBlcmwgd2hpY2ggYmMgZmluZHV0aWxzIGdsaWIyLWRldmVsICAgICBsaWJhaW8t
+ZGV2ZWwgcGl4bWFuLWRldmVsIHpsaWItZGV2ZWwgbGliZmR0LWRldmVsIGxpYmFzYW4gbGlidWJz
+YW4gICAgIGJsdWV6LWxpYnMtZGV2ZWwgYnJsYXBpLWRldmVsIGJ6aXAyLWRldmVsICAgICBkZXZp
+Y2UtbWFwcGVyLW11bHRpcGF0aC1kZXZlbCBnbHVzdGVyZnMtYXBpLWRldmVsIGdudXRscy1kZXZl
+bCAgICAgZ3RrMy1kZXZlbCBsaWJhdHRyLWRldmVsIGxpYmNhcC1kZXZlbCBsaWJjYXAtbmctZGV2
+ZWwgbGliY3VybC1kZXZlbCAgICAgbGlianBlZy1kZXZlbCBsaWJwbmctZGV2ZWwgbGlicmJkLWRl
+dmVsIGxpYnNzaDItZGV2ZWwgbGlidXNieC1kZXZlbCAgICAgbGlieG1sMi1kZXZlbCBsem8tZGV2
+ZWwgbmN1cnNlcy1kZXZlbCBuZXR0bGUtZGV2ZWwgbnNzLWRldmVsICAgICBudW1hY3RsLWRldmVs
+IFNETDItZGV2ZWwgc25hcHB5LWRldmVsIHNwaWNlLXNlcnZlci1kZXZlbCAgICAgc3lzdGVtdGFw
+LXNkdC1kZXZlbCB1c2JyZWRpci1kZXZlbCB2aXJnbHJlbmRlcmVyLWRldmVsIHZ0ZTMtZGV2ZWwg
+ICAgIHhlbi1kZXZlbCAgICAgbWluZ3czMi1waXhtYW4gbWluZ3czMi1nbGliMiBtaW5ndzMyLWdt
+cCBtaW5ndzMyLVNETDIgbWluZ3czMi1wa2ctY29uZmlnICAgICBtaW5ndzMyLWd0azMgbWluZ3cz
+Mi1nbnV0bHMgbWluZ3czMi1uZXR0bGUgbWluZ3czMi1saWJ0YXNuMSAgICAgbWluZ3czMi1saWJq
+cGVnLXR1cmJvIG1pbmd3MzItbGlicG5nIG1pbmd3MzItY3VybCBtaW5ndzMyLWxpYnNzaDIgICAg
+IG1pbmd3MzItYnppcDIgICAgIG1pbmd3NjQtcGl4bWFuIG1pbmd3NjQtZ2xpYjIgbWluZ3c2NC1n
+bXAgbWluZ3c2NC1TREwyIG1pbmd3NjQtcGtnLWNvbmZpZyAgICAgbWluZ3c2NC1ndGszIG1pbmd3
+NjQtZ251dGxzIG1pbmd3NjQtbmV0dGxlIG1pbmd3NjQtbGlidGFzbjEgICAgIG1pbmd3NjQtbGli
+anBlZy10dXJibyBtaW5ndzY0LWxpYnBuZyBtaW5ndzY0LWN1cmwgbWluZ3c2NC1saWJzc2gyICAg
+ICBtaW5ndzY0LWJ6aXAyCko9OApWPQpIT1NUTkFNRT00ZTg2YzFlMTJkMjMKREVCVUc9ClNIT1df
+RU5WPTEKUFdEPS8KSE9NRT0vcm9vdApDQ0FDSEVfRElSPS92YXIvdG1wL2NjYWNoZQpESVNUVEFH
+PWYyOGNvbnRhaW5lcgpRRU1VX0NPTkZJR1VSRV9PUFRTPS0tcHl0aG9uPS91c3IvYmluL3B5dGhv
+bjMKRkdDPWYyOApURVNUX0RJUj0vdG1wL3FlbXUtdGVzdApTSExWTD0xCkZFQVRVUkVTPW1pbmd3
+IGNsYW5nIHB5eWFtbCBhc2FuIGR0YwpQQVRIPS91c3IvbGliL2NjYWNoZTovdXNyL2xpYjY0L2Nj
+YWNoZTovdXNyL2xvY2FsL3NiaW46L3Vzci9sb2NhbC9iaW46L3Vzci9zYmluOi91c3IvYmluOi9z
+YmluOi9iaW4KTUFLRUZMQUdTPSAtajgKRVhUUkFfQ09ORklHVVJFX09QVFM9Cl89L3Vzci9iaW4v
+ZW52CgpDb25maWd1cmUgb3B0aW9uczoKLS1lbmFibGUtd2Vycm9yIC0tdGFyZ2V0LWxpc3Q9eDg2
+XzY0LXNvZnRtbXUsYWFyY2g2NC1zb2Z0bW11IC0tcHJlZml4PS90bXAvcWVtdS10ZXN0L2luc3Rh
+bGwgLS1weXRob249L3Vzci9iaW4vcHl0aG9uMyAtLWNyb3NzLXByZWZpeD14ODZfNjQtdzY0LW1p
+bmd3MzItIC0tZW5hYmxlLXRyYWNlLWJhY2tlbmRzPXNpbXBsZSAtLWVuYWJsZS1nbnV0bHMgLS1l
+bmFibGUtbmV0dGxlIC0tZW5hYmxlLWN1cmwgLS1lbmFibGUtdm5jIC0tZW5hYmxlLWJ6aXAyIC0t
+ZW5hYmxlLWd1ZXN0LWFnZW50IC0td2l0aC1zZGxhYmk9Mi4wIC0td2l0aC1ndGthYmk9My4wCklu
+c3RhbGwgcHJlZml4ICAgIC90bXAvcWVtdS10ZXN0L2luc3RhbGwKQklPUyBkaXJlY3RvcnkgICAg
+L3RtcC9xZW11LXRlc3QvaW5zdGFsbApmaXJtd2FyZSBwYXRoICAgICAvdG1wL3FlbXUtdGVzdC9p
+bnN0YWxsL3NoYXJlL3FlbXUtZmlybXdhcmUKYmluYXJ5IGRpcmVjdG9yeSAgL3RtcC9xZW11LXRl
+c3QvaW5zdGFsbApsaWJyYXJ5IGRpcmVjdG9yeSAvdG1wL3FlbXUtdGVzdC9pbnN0YWxsL2xpYgpt
+b2R1bGUgZGlyZWN0b3J5ICAvdG1wL3FlbXUtdGVzdC9pbnN0YWxsL2xpYgpsaWJleGVjIGRpcmVj
+dG9yeSAvdG1wL3FlbXUtdGVzdC9pbnN0YWxsL2xpYmV4ZWMKaW5jbHVkZSBkaXJlY3RvcnkgL3Rt
+cC9xZW11LXRlc3QvaW5zdGFsbC9pbmNsdWRlCmNvbmZpZyBkaXJlY3RvcnkgIC90bXAvcWVtdS10
+ZXN0L2luc3RhbGwKbG9jYWwgc3RhdGUgZGlyZWN0b3J5ICAgcXVlcmllZCBhdCBydW50aW1lCldp
+bmRvd3MgU0RLICAgICAgIG5vClNvdXJjZSBwYXRoICAgICAgIC90bXAvcWVtdS10ZXN0L3NyYwpH
+SVQgYmluYXJ5ICAgICAgICBnaXQKR0lUIHN1Ym1vZHVsZXMgICAgCkMgY29tcGlsZXIgICAgICAg
+IHg4Nl82NC13NjQtbWluZ3czMi1nY2MKSG9zdCBDIGNvbXBpbGVyICAgY2MKQysrIGNvbXBpbGVy
+ICAgICAgeDg2XzY0LXc2NC1taW5ndzMyLWcrKwpPYmplY3RpdmUtQyBjb21waWxlciBjbGFuZwpB
+UkZMQUdTICAgICAgICAgICBydgpDRkxBR1MgICAgICAgICAgICAtTzIgLVVfRk9SVElGWV9TT1VS
+Q0UgLURfRk9SVElGWV9TT1VSQ0U9MiAtZyAKUUVNVV9DRkxBR1MgICAgICAgLUkvdXNyL3g4Nl82
+NC13NjQtbWluZ3czMi9zeXMtcm9vdC9taW5ndy9pbmNsdWRlL3BpeG1hbi0xICAtSSQoU1JDX1BB
+VEgpL2R0Yy9saWJmZHQgLVdlcnJvciAtREhBU19MSUJTU0gyX1NGVFBfRlNZTkMgLW1tcy1iaXRm
+aWVsZHMgLUkvdXNyL3g4Nl82NC13NjQtbWluZ3czMi9zeXMtcm9vdC9taW5ndy9pbmNsdWRlL2ds
+aWItMi4wIC1JL3Vzci94ODZfNjQtdzY0LW1pbmd3MzIvc3lzLXJvb3QvbWluZ3cvbGliL2dsaWIt
+Mi4wL2luY2x1ZGUgLUkvdXNyL3g4Nl82NC13NjQtbWluZ3czMi9zeXMtcm9vdC9taW5ndy9pbmNs
+dWRlICAtbTY0IC1tY3gxNiAtbXRocmVhZHMgLURfX1VTRV9NSU5HV19BTlNJX1NURElPPTEgLURX
+SU4zMl9MRUFOX0FORF9NRUFOIC1EV0lOVkVSPTB4NTAxIC1EX0dOVV9TT1VSQ0UgLURfRklMRV9P
+RkZTRVRfQklUUz02NCAtRF9MQVJHRUZJTEVfU09VUkNFIC1Xc3RyaWN0LXByb3RvdHlwZXMgLVdy
+ZWR1bmRhbnQtZGVjbHMgLVdhbGwgLVd1bmRlZiAtV3dyaXRlLXN0cmluZ3MgLVdtaXNzaW5nLXBy
+b3RvdHlwZXMgLWZuby1zdHJpY3QtYWxpYXNpbmcgLWZuby1jb21tb24gLWZ3cmFwdiAgLVdleHBh
+bnNpb24tdG8tZGVmaW5lZCAtV2VuZGlmLWxhYmVscyAtV25vLXNoaWZ0LW5lZ2F0aXZlLXZhbHVl
+IC1Xbm8tbWlzc2luZy1pbmNsdWRlLWRpcnMgLVdlbXB0eS1ib2R5IC1XbmVzdGVkLWV4dGVybnMg
+LVdmb3JtYXQtc2VjdXJpdHkgLVdmb3JtYXQteTJrIC1XaW5pdC1zZWxmIC1XaWdub3JlZC1xdWFs
+aWZpZXJzIC1Xb2xkLXN0eWxlLWRlY2xhcmF0aW9uIC1Xb2xkLXN0eWxlLWRlZmluaXRpb24gLVd0
+eXBlLWxpbWl0cyAtZnN0YWNrLXByb3RlY3Rvci1zdHJvbmcgLUkvdXNyL3g4Nl82NC13NjQtbWlu
+Z3czMi9zeXMtcm9vdC9taW5ndy9pbmNsdWRlIC1JL3Vzci94ODZfNjQtdzY0LW1pbmd3MzIvc3lz
+LXJvb3QvbWluZ3cvaW5jbHVkZS9wMTEta2l0LTEgLUkvdXNyL3g4Nl82NC13NjQtbWluZ3czMi9z
+eXMtcm9vdC9taW5ndy9pbmNsdWRlICAtSS91c3IveDg2XzY0LXc2NC1taW5ndzMyL3N5cy1yb290
+L21pbmd3L2luY2x1ZGUgICAtSS91c3IveDg2XzY0LXc2NC1taW5ndzMyL3N5cy1yb290L21pbmd3
+L2luY2x1ZGUvbGlicG5nMTYgCkxERkxBR1MgICAgICAgICAgIC1XbCwtLW54Y29tcGF0IC1XbCwt
+LW5vLXNlaCAtV2wsLS1keW5hbWljYmFzZSAtV2wsLS13YXJuLWNvbW1vbiAtbTY0IC1nIApRRU1V
+X0xERkxBR1MgICAgICAtTCQoQlVJTERfRElSKS9kdGMvbGliZmR0IAptYWtlICAgICAgICAgICAg
+ICBtYWtlCmluc3RhbGwgICAgICAgICAgIGluc3RhbGwKcHl0aG9uICAgICAgICAgICAgL3Vzci9i
+aW4vcHl0aG9uMyAtQgpzbWJkICAgICAgICAgICAgICAvdXNyL3NiaW4vc21iZAptb2R1bGUgc3Vw
+cG9ydCAgICBubwpob3N0IENQVSAgICAgICAgICB4ODZfNjQKaG9zdCBiaWcgZW5kaWFuICAgbm8K
+dGFyZ2V0IGxpc3QgICAgICAgeDg2XzY0LXNvZnRtbXUgYWFyY2g2NC1zb2Z0bW11Cmdwcm9mIGVu
+YWJsZWQgICAgIG5vCnNwYXJzZSBlbmFibGVkICAgIG5vCnN0cmlwIGJpbmFyaWVzICAgIHllcwpw
+cm9maWxlciAgICAgICAgICBubwpzdGF0aWMgYnVpbGQgICAgICBubwpTREwgc3VwcG9ydCAgICAg
+ICB5ZXMgKDIuMC41KQpHVEsgc3VwcG9ydCAgICAgICB5ZXMgKDMuMjIuMTYpCkdUSyBHTCBzdXBw
+b3J0ICAgIG5vClZURSBzdXBwb3J0ICAgICAgIG5vIApUTFMgcHJpb3JpdHkgICAgICBOT1JNQUwK
+R05VVExTIHN1cHBvcnQgICAgeWVzCkdOVVRMUyBybmQgICAgICAgIHllcwpsaWJnY3J5cHQgICAg
+ICAgICBubwpsaWJnY3J5cHQga2RmICAgICBubwpuZXR0bGUgICAgICAgICAgICB5ZXMgKDMuMykK
+bmV0dGxlIGtkZiAgICAgICAgeWVzCmxpYnRhc24xICAgICAgICAgIHllcwpQQU0gICAgICAgICAg
+ICAgICBubwpjdXJzZXMgc3VwcG9ydCAgICBubwp2aXJnbCBzdXBwb3J0ICAgICBubwpjdXJsIHN1
+cHBvcnQgICAgICB5ZXMKbWluZ3czMiBzdXBwb3J0ICAgeWVzCkF1ZGlvIGRyaXZlcnMgICAgIGRz
+b3VuZApCbG9jayB3aGl0ZWxpc3QgKHJ3KSAKQmxvY2sgd2hpdGVsaXN0IChybykgClZpcnRGUyBz
+dXBwb3J0ICAgIG5vCk11bHRpcGF0aCBzdXBwb3J0IG5vClZOQyBzdXBwb3J0ICAgICAgIHllcwpW
+TkMgU0FTTCBzdXBwb3J0ICBubwpWTkMgSlBFRyBzdXBwb3J0ICB5ZXMKVk5DIFBORyBzdXBwb3J0
+ICAgeWVzCnhlbiBzdXBwb3J0ICAgICAgIG5vCmJybGFwaSBzdXBwb3J0ICAgIG5vCmJsdWV6ICBz
+dXBwb3J0ICAgIG5vCkRvY3VtZW50YXRpb24gICAgIG5vClBJRSAgICAgICAgICAgICAgIG5vCnZk
+ZSBzdXBwb3J0ICAgICAgIG5vCm5ldG1hcCBzdXBwb3J0ICAgIG5vCkxpbnV4IEFJTyBzdXBwb3J0
+IG5vCkFUVFIvWEFUVFIgc3VwcG9ydCBubwpJbnN0YWxsIGJsb2JzICAgICB5ZXMKS1ZNIHN1cHBv
+cnQgICAgICAgbm8KSEFYIHN1cHBvcnQgICAgICAgeWVzCkhWRiBzdXBwb3J0ICAgICAgIG5vCldI
+UFggc3VwcG9ydCAgICAgIG5vClRDRyBzdXBwb3J0ICAgICAgIHllcwpUQ0cgZGVidWcgZW5hYmxl
+ZCBubwpUQ0cgaW50ZXJwcmV0ZXIgICBubwptYWxsb2MgdHJpbSBzdXBwb3J0IG5vClJETUEgc3Vw
+cG9ydCAgICAgIG5vCmZkdCBzdXBwb3J0ICAgICAgIGdpdAptZW1iYXJyaWVyICAgICAgICBubwpw
+cmVhZHYgc3VwcG9ydCAgICBubwpmZGF0YXN5bmMgICAgICAgICBubwptYWR2aXNlICAgICAgICAg
+ICBubwpwb3NpeF9tYWR2aXNlICAgICBubwpwb3NpeF9tZW1hbGlnbiAgICBubwpsaWJjYXAtbmcg
+c3VwcG9ydCBubwp2aG9zdC1uZXQgc3VwcG9ydCBubwp2aG9zdC1jcnlwdG8gc3VwcG9ydCBubwp2
+aG9zdC1zY3NpIHN1cHBvcnQgbm8Kdmhvc3QtdnNvY2sgc3VwcG9ydCBubwp2aG9zdC11c2VyIHN1
+cHBvcnQgbm8KVHJhY2UgYmFja2VuZHMgICAgc2ltcGxlClRyYWNlIG91dHB1dCBmaWxlIHRyYWNl
+LTxwaWQ+CnNwaWNlIHN1cHBvcnQgICAgIG5vIApyYmQgc3VwcG9ydCAgICAgICBubwp4ZnNjdGwg
+c3VwcG9ydCAgICBubwpzbWFydGNhcmQgc3VwcG9ydCBubwpsaWJ1c2IgICAgICAgICAgICBubwp1
+c2IgbmV0IHJlZGlyICAgICBubwpPcGVuR0wgc3VwcG9ydCAgICBubwpPcGVuR0wgZG1hYnVmcyAg
+ICBubwpsaWJpc2NzaSBzdXBwb3J0ICBubwpsaWJuZnMgc3VwcG9ydCAgICBubwpidWlsZCBndWVz
+dCBhZ2VudCB5ZXMKUUdBIFZTUyBzdXBwb3J0ICAgbm8KUUdBIHczMiBkaXNrIGluZm8geWVzClFH
+QSBNU0kgc3VwcG9ydCAgIG5vCnNlY2NvbXAgc3VwcG9ydCAgIG5vCmNvcm91dGluZSBiYWNrZW5k
+IHdpbjMyCmNvcm91dGluZSBwb29sICAgIHllcwpkZWJ1ZyBzdGFjayB1c2FnZSBubwpjcnlwdG8g
+YWZhbGcgICAgICBubwpHbHVzdGVyRlMgc3VwcG9ydCBubwpnY292ICAgICAgICAgICAgICBnY292
+Cmdjb3YgZW5hYmxlZCAgICAgIG5vClRQTSBzdXBwb3J0ICAgICAgIHllcwpsaWJzc2gyIHN1cHBv
+cnQgICB5ZXMKVFBNIHBhc3N0aHJvdWdoICAgbm8KVFBNIGVtdWxhdG9yICAgICAgbm8KUU9NIGRl
+YnVnZ2luZyAgICAgeWVzCkxpdmUgYmxvY2sgbWlncmF0aW9uIHllcwpsem8gc3VwcG9ydCAgICAg
+ICBubwpzbmFwcHkgc3VwcG9ydCAgICBubwpiemlwMiBzdXBwb3J0ICAgICB5ZXMKTlVNQSBob3N0
+IHN1cHBvcnQgbm8KbGlieG1sMiAgICAgICAgICAgbm8KdGNtYWxsb2Mgc3VwcG9ydCAgbm8KamVt
+YWxsb2Mgc3VwcG9ydCAgbm8KYXZ4MiBvcHRpbWl6YXRpb24geWVzCnJlcGxpY2F0aW9uIHN1cHBv
+cnQgeWVzClZ4SFMgYmxvY2sgZGV2aWNlIG5vCmNhcHN0b25lICAgICAgICAgIG5vCmRvY2tlciAg
+ICAgICAgICAgIG5vCiAgR0VOICAgICB4ODZfNjQtc29mdG1tdS9jb25maWctZGV2aWNlcy5tYWsu
+dG1wCiAgR0VOICAgICBjb25maWctaG9zdC5oCiAgR0VOICAgICBhYXJjaDY0LXNvZnRtbXUvY29u
+ZmlnLWRldmljZXMubWFrLnRtcAogIEdFTiAgICAgcWVtdS1vcHRpb25zLmRlZgogIEdFTiAgICAg
+cWFwaS1nZW4KICBHRU4gICAgIHRyYWNlL2dlbmVyYXRlZC10Y2ctdHJhY2Vycy5oCiAgR0VOICAg
+ICB0cmFjZS9nZW5lcmF0ZWQtaGVscGVycy13cmFwcGVycy5oCiAgR0VOICAgICB0cmFjZS9nZW5l
+cmF0ZWQtaGVscGVycy5oCiAgR0VOICAgICBtb2R1bGVfYmxvY2suaAogIEdFTiAgICAgdHJhY2Uv
+Z2VuZXJhdGVkLWhlbHBlcnMuYwogIEdFTiAgICAgeDg2XzY0LXNvZnRtbXUvY29uZmlnLWRldmlj
+ZXMubWFrCiAgR0VOICAgICB1aS9pbnB1dC1rZXltYXAtYXRzZXQxLXRvLXFjb2RlLmMKICBHRU4g
+ICAgIGFhcmNoNjQtc29mdG1tdS9jb25maWctZGV2aWNlcy5tYWsKICBHRU4gICAgIHVpL2lucHV0
+LWtleW1hcC1saW51eC10by1xY29kZS5jCiAgR0VOICAgICB1aS9pbnB1dC1rZXltYXAtcWNvZGUt
+dG8tYXRzZXQxLmMKICBHRU4gICAgIHVpL2lucHV0LWtleW1hcC1xY29kZS10by1hdHNldDIuYwog
+IEdFTiAgICAgdWkvaW5wdXQta2V5bWFwLXFjb2RlLXRvLWF0c2V0My5jCiAgR0VOICAgICB1aS9p
+bnB1dC1rZXltYXAtcWNvZGUtdG8tbGludXguYwogIEdFTiAgICAgdWkvaW5wdXQta2V5bWFwLXFj
+b2RlLXRvLXFudW0uYwogIEdFTiAgICAgdWkvaW5wdXQta2V5bWFwLXFudW0tdG8tcWNvZGUuYwog
+IEdFTiAgICAgdWkvaW5wdXQta2V5bWFwLXFjb2RlLXRvLXN1bi5jCiAgR0VOICAgICB1aS9pbnB1
+dC1rZXltYXAtdXNiLXRvLXFjb2RlLmMKICBHRU4gICAgIHVpL2lucHV0LWtleW1hcC13aW4zMi10
+by1xY29kZS5jCiAgR0VOICAgICB1aS9pbnB1dC1rZXltYXAteDExLXRvLXFjb2RlLmMKICBHRU4g
+ICAgIHVpL2lucHV0LWtleW1hcC14b3JnZXZkZXYtdG8tcWNvZGUuYwogIEdFTiAgICAgdWkvaW5w
+dXQta2V5bWFwLXhvcmdrYmQtdG8tcWNvZGUuYwogIEdFTiAgICAgdWkvaW5wdXQta2V5bWFwLXhv
+cmd4cXVhcnR6LXRvLXFjb2RlLmMKICBHRU4gICAgIHVpL2lucHV0LWtleW1hcC14b3JneHdpbi10
+by1xY29kZS5jCiAgR0VOICAgICB0cmFjZS1yb290LmgKICBHRU4gICAgIHRlc3RzL3Rlc3QtcWFw
+aS1nZW4KICBHRU4gICAgIGFjY2VsL2t2bS90cmFjZS5oCiAgR0VOICAgICBhY2NlbC90Y2cvdHJh
+Y2UuaAogIEdFTiAgICAgYXVkaW8vdHJhY2UuaAogIEdFTiAgICAgYXV0aHovdHJhY2UuaAogIEdF
+TiAgICAgYmxvY2svdHJhY2UuaAogIEdFTiAgICAgY2hhcmRldi90cmFjZS5oCiAgR0VOICAgICBj
+cnlwdG8vdHJhY2UuaAogIEdFTiAgICAgaHcvOXBmcy90cmFjZS5oCiAgR0VOICAgICBody9hY3Bp
+L3RyYWNlLmgKICBHRU4gICAgIGh3L2FscGhhL3RyYWNlLmgKICBHRU4gICAgIGh3L2FybS90cmFj
+ZS5oCiAgR0VOICAgICBody9hdWRpby90cmFjZS5oCiAgR0VOICAgICBody9ibG9jay90cmFjZS5o
+CiAgR0VOICAgICBody9ibG9jay9kYXRhcGxhbmUvdHJhY2UuaAogIEdFTiAgICAgaHcvY2hhci90
+cmFjZS5oCiAgR0VOICAgICBody9kaXNwbGF5L3RyYWNlLmgKICBHRU4gICAgIGh3L2RtYS90cmFj
+ZS5oCiAgR0VOICAgICBody9ocHBhL3RyYWNlLmgKICBHRU4gICAgIGh3L2kyYy90cmFjZS5oCiAg
+R0VOICAgICBody9pMzg2L3RyYWNlLmgKICBHRU4gICAgIGh3L2kzODYveGVuL3RyYWNlLmgKICBH
+RU4gICAgIGh3L2lkZS90cmFjZS5oCiAgR0VOICAgICBody9pbnB1dC90cmFjZS5oCiAgR0VOICAg
+ICBody9pbnRjL3RyYWNlLmgKICBHRU4gICAgIGh3L2lzYS90cmFjZS5oCiAgR0VOICAgICBody9t
+ZW0vdHJhY2UuaAogIEdFTiAgICAgaHcvbWlzYy90cmFjZS5oCiAgR0VOICAgICBody9taXNjL21h
+Y2lvL3RyYWNlLmgKICBHRU4gICAgIGh3L25ldC90cmFjZS5oCiAgR0VOICAgICBody9udnJhbS90
+cmFjZS5oCiAgR0VOICAgICBody9wY2kvdHJhY2UuaAogIEdFTiAgICAgaHcvcGNpLWhvc3QvdHJh
+Y2UuaAogIEdFTiAgICAgaHcvcHBjL3RyYWNlLmgKICBHRU4gICAgIGh3L3JkbWEvdHJhY2UuaAog
+IEdFTiAgICAgaHcvcmRtYS92bXcvdHJhY2UuaAogIEdFTiAgICAgaHcvczM5MHgvdHJhY2UuaAog
+IEdFTiAgICAgaHcvc2NzaS90cmFjZS5oCiAgR0VOICAgICBody9zZC90cmFjZS5oCiAgR0VOICAg
+ICBody9zcGFyYy90cmFjZS5oCiAgR0VOICAgICBody9zcGFyYzY0L3RyYWNlLmgKICBHRU4gICAg
+IGh3L3RpbWVyL3RyYWNlLmgKICBHRU4gICAgIGh3L3RwbS90cmFjZS5oCiAgR0VOICAgICBody91
+c2IvdHJhY2UuaAogIEdFTiAgICAgaHcvdmZpby90cmFjZS5oCiAgR0VOICAgICBody92aXJ0aW8v
+dHJhY2UuaAogIEdFTiAgICAgaHcveGVuL3RyYWNlLmgKICBHRU4gICAgIGlvL3RyYWNlLmgKICBH
+RU4gICAgIGxpbnV4LXVzZXIvdHJhY2UuaAogIEdFTiAgICAgbWlncmF0aW9uL3RyYWNlLmgKICBH
+RU4gICAgIG5iZC90cmFjZS5oCiAgR0VOICAgICBuZXQvdHJhY2UuaAogIEdFTiAgICAgcWFwaS90
+cmFjZS5oCiAgR0VOICAgICBxb20vdHJhY2UuaAogIEdFTiAgICAgc2NzaS90cmFjZS5oCiAgR0VO
+ICAgICB0YXJnZXQvYXJtL3RyYWNlLmgKICBHRU4gICAgIHRhcmdldC9pMzg2L3RyYWNlLmgKICBH
+RU4gICAgIHRhcmdldC9taXBzL3RyYWNlLmgKICBHRU4gICAgIHRhcmdldC9wcGMvdHJhY2UuaAog
+IEdFTiAgICAgdGFyZ2V0L3MzOTB4L3RyYWNlLmgKICBHRU4gICAgIHRhcmdldC9zcGFyYy90cmFj
+ZS5oCiAgR0VOICAgICB1aS90cmFjZS5oCiAgR0VOICAgICB1dGlsL3RyYWNlLmgKICBHRU4gICAg
+IHRyYWNlLXJvb3QuYwogIEdFTiAgICAgYWNjZWwva3ZtL3RyYWNlLmMKICBHRU4gICAgIGFjY2Vs
+L3RjZy90cmFjZS5jCiAgR0VOICAgICBhdWRpby90cmFjZS5jCiAgR0VOICAgICBhdXRoei90cmFj
+ZS5jCiAgR0VOICAgICBibG9jay90cmFjZS5jCiAgR0VOICAgICBjaGFyZGV2L3RyYWNlLmMKICBH
+RU4gICAgIGNyeXB0by90cmFjZS5jCiAgR0VOICAgICBody85cGZzL3RyYWNlLmMKICBHRU4gICAg
+IGh3L2FjcGkvdHJhY2UuYwogIEdFTiAgICAgaHcvYWxwaGEvdHJhY2UuYwogIEdFTiAgICAgaHcv
+YXJtL3RyYWNlLmMKICBHRU4gICAgIGh3L2F1ZGlvL3RyYWNlLmMKICBHRU4gICAgIGh3L2Jsb2Nr
+L3RyYWNlLmMKICBHRU4gICAgIGh3L2Jsb2NrL2RhdGFwbGFuZS90cmFjZS5jCiAgR0VOICAgICBo
+dy9jaGFyL3RyYWNlLmMKICBHRU4gICAgIGh3L2Rpc3BsYXkvdHJhY2UuYwogIEdFTiAgICAgaHcv
+ZG1hL3RyYWNlLmMKICBHRU4gICAgIGh3L2hwcGEvdHJhY2UuYwogIEdFTiAgICAgaHcvaTJjL3Ry
+YWNlLmMKICBHRU4gICAgIGh3L2kzODYvdHJhY2UuYwogIEdFTiAgICAgaHcvaTM4Ni94ZW4vdHJh
+Y2UuYwogIEdFTiAgICAgaHcvaWRlL3RyYWNlLmMKICBHRU4gICAgIGh3L2lucHV0L3RyYWNlLmMK
+ICBHRU4gICAgIGh3L2ludGMvdHJhY2UuYwogIEdFTiAgICAgaHcvaXNhL3RyYWNlLmMKICBHRU4g
+ICAgIGh3L21lbS90cmFjZS5jCiAgR0VOICAgICBody9taXNjL3RyYWNlLmMKICBHRU4gICAgIGh3
+L21pc2MvbWFjaW8vdHJhY2UuYwogIEdFTiAgICAgaHcvbmV0L3RyYWNlLmMKICBHRU4gICAgIGh3
+L252cmFtL3RyYWNlLmMKICBHRU4gICAgIGh3L3BjaS90cmFjZS5jCiAgR0VOICAgICBody9wY2kt
+aG9zdC90cmFjZS5jCiAgR0VOICAgICBody9wcGMvdHJhY2UuYwogIEdFTiAgICAgaHcvcmRtYS90
+cmFjZS5jCiAgR0VOICAgICBody9yZG1hL3Ztdy90cmFjZS5jCiAgR0VOICAgICBody9zMzkweC90
+cmFjZS5jCiAgR0VOICAgICBody9zY3NpL3RyYWNlLmMKICBHRU4gICAgIGh3L3NkL3RyYWNlLmMK
+ICBHRU4gICAgIGh3L3NwYXJjL3RyYWNlLmMKICBHRU4gICAgIGh3L3NwYXJjNjQvdHJhY2UuYwog
+IEdFTiAgICAgaHcvdGltZXIvdHJhY2UuYwogIEdFTiAgICAgaHcvdHBtL3RyYWNlLmMKICBHRU4g
+ICAgIGh3L3VzYi90cmFjZS5jCiAgR0VOICAgICBody92ZmlvL3RyYWNlLmMKICBHRU4gICAgIGh3
+L3ZpcnRpby90cmFjZS5jCiAgR0VOICAgICBody94ZW4vdHJhY2UuYwogIEdFTiAgICAgaW8vdHJh
+Y2UuYwogIEdFTiAgICAgbGludXgtdXNlci90cmFjZS5jCiAgR0VOICAgICBtaWdyYXRpb24vdHJh
+Y2UuYwogIEdFTiAgICAgbmJkL3RyYWNlLmMKICBHRU4gICAgIG5ldC90cmFjZS5jCiAgR0VOICAg
+ICBxYXBpL3RyYWNlLmMKICBHRU4gICAgIHFvbS90cmFjZS5jCiAgR0VOICAgICBzY3NpL3RyYWNl
+LmMKICBHRU4gICAgIHRhcmdldC9hcm0vdHJhY2UuYwogIEdFTiAgICAgdGFyZ2V0L2kzODYvdHJh
+Y2UuYwogIEdFTiAgICAgdGFyZ2V0L21pcHMvdHJhY2UuYwogIEdFTiAgICAgdGFyZ2V0L3BwYy90
+cmFjZS5jCiAgR0VOICAgICB0YXJnZXQvczM5MHgvdHJhY2UuYwogIEdFTiAgICAgdGFyZ2V0L3Nw
+YXJjL3RyYWNlLmMKICBHRU4gICAgIHVpL3RyYWNlLmMKICBHRU4gICAgIHV0aWwvdHJhY2UuYwog
+IEdFTiAgICAgY29uZmlnLWFsbC1kZXZpY2VzLm1hawoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMv
+ZHRjL3Rlc3RzL2R1bXB0cmVlcy5jCgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMv
+dHJlZXMuUwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL3Rlc3RzL3Rlc3R1dGlscy5jCgkg
+REVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvdmFsdWUtbGFiZWxzLmMKCSBERVAgL3Rt
+cC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9hc21fdHJlZV9kdW1wLmMKCSBERVAgL3RtcC9xZW11
+LXRlc3Qvc3JjL2R0Yy90ZXN0cy90cnVuY2F0ZWRfcHJvcGVydHkuYwoJIERFUCAvdG1wL3FlbXUt
+dGVzdC9zcmMvZHRjL3Rlc3RzL2NoZWNrX3BhdGguYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMv
+ZHRjL3Rlc3RzL292ZXJsYXlfYmFkX2ZpeHVwLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0
+Yy90ZXN0cy9zdWJub2RlX2l0ZXJhdGUuYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL3Rl
+c3RzL292ZXJsYXkuYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL3Rlc3RzL3Byb3BlcnR5
+X2l0ZXJhdGUuYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL3Rlc3RzL2ludGVnZXItZXhw
+cmVzc2lvbnMuYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL3Rlc3RzL3V0aWxmZHRfdGVz
+dC5jCgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvcGF0aF9vZmZzZXRfYWxpYXNl
+cy5jCgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvYWRkX3N1Ym5vZGVfd2l0aF9u
+b3BzLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9kdGJzX2VxdWFsX3Vub3Jk
+ZXJlZC5jCgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvZHRiX3JldmVyc2UuYwoJ
+IERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL3Rlc3RzL2R0YnNfZXF1YWxfb3JkZXJlZC5jCgkg
+REVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvZXh0cmEtdGVybWluYXRpbmctbnVsbC5j
+CgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvaW5jYmluLmMKCSBERVAgL3RtcC9x
+ZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9ib290LWNwdWlkLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qv
+c3JjL2R0Yy90ZXN0cy9waGFuZGxlX2Zvcm1hdC5jCgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9k
+dGMvdGVzdHMvcGF0aC1yZWZlcmVuY2VzLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90
+ZXN0cy9yZWZlcmVuY2VzLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9zdHJp
+bmdfZXNjYXBlcy5jCgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvcHJvcG5hbWVf
+ZXNjYXBlcy5jCgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvYXBwZW5kcHJvcDIu
+YwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL3Rlc3RzL2FwcGVuZHByb3AxLmMKCSBERVAg
+L3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9kZWxfbm9kZS5jCgkgREVQIC90bXAvcWVtdS10
+ZXN0L3NyYy9kdGMvdGVzdHMvZGVsX3Byb3BlcnR5LmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3Jj
+L2R0Yy90ZXN0cy9zZXRwcm9wLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9z
+ZXRfbmFtZS5jCgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvcndfdHJlZTEuYwoJ
+IERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL3Rlc3RzL29wZW5fcGFjay5jCgkgREVQIC90bXAv
+cWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvbm9wdWxhdGUuYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9z
+cmMvZHRjL3Rlc3RzL21hbmdsZS1sYXlvdXQuYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRj
+L3Rlc3RzL21vdmVfYW5kX3NhdmUuYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL3Rlc3Rz
+L3N3X3RyZWUxLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9ub3Bfbm9kZS5j
+CgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvbm9wX3Byb3BlcnR5LmMKCSBERVAg
+L3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9zZXRwcm9wX2lucGxhY2UuYwoJIERFUCAvdG1w
+L3FlbXUtdGVzdC9zcmMvZHRjL3Rlc3RzL3N0cmluZ2xpc3QuYwoJIERFUCAvdG1wL3FlbXUtdGVz
+dC9zcmMvZHRjL3Rlc3RzL2FkZHJfc2l6ZV9jZWxscy5jCgkgREVQIC90bXAvcWVtdS10ZXN0L3Ny
+Yy9kdGMvdGVzdHMvbm90Zm91bmQuYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL3Rlc3Rz
+L3NpemVkX2NlbGxzLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9jaGFyX2xp
+dGVyYWwuYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL3Rlc3RzL2dldF9hbGlhcy5jCgkg
+REVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvbm9kZV9vZmZzZXRfYnlfY29tcGF0aWJs
+ZS5jCgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvbm9kZV9jaGVja19jb21wYXRp
+YmxlLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9ub2RlX29mZnNldF9ieV9w
+aGFuZGxlLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9ub2RlX29mZnNldF9i
+eV9wcm9wX3ZhbHVlLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9wYXJlbnRf
+b2Zmc2V0LmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9zdXBlcm5vZGVfYXRk
+ZXB0aF9vZmZzZXQuYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL3Rlc3RzL2dldF9wYXRo
+LmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9nZXRfcGhhbmRsZS5jCgkgREVQ
+IC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvZ2V0cHJvcC5jCgkgREVQIC90bXAvcWVtdS10
+ZXN0L3NyYy9kdGMvdGVzdHMvZ2V0X25hbWUuYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRj
+L3Rlc3RzL3BhdGhfb2Zmc2V0LmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9z
+dWJub2RlX29mZnNldC5jCgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvZmluZF9w
+cm9wZXJ0eS5jCgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdGVzdHMvcm9vdF9ub2RlLmMK
+CSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy90ZXN0cy9nZXRfbWVtX3Jzdi5jCgkgREVQIC90
+bXAvcWVtdS10ZXN0L3NyYy9kdGMvbGliZmR0L2ZkdF9vdmVybGF5LmMKCSBERVAgL3RtcC9xZW11
+LXRlc3Qvc3JjL2R0Yy9saWJmZHQvZmR0X2FkZHJlc3Nlcy5jCgkgREVQIC90bXAvcWVtdS10ZXN0
+L3NyYy9kdGMvbGliZmR0L2ZkdF9lbXB0eV90cmVlLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3Jj
+L2R0Yy9saWJmZHQvZmR0X3N0cmVycm9yLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy9s
+aWJmZHQvZmR0X3J3LmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy9saWJmZHQvZmR0X3N3
+LmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy9saWJmZHQvZmR0X3dpcC5jCgkgREVQIC90
+bXAvcWVtdS10ZXN0L3NyYy9kdGMvbGliZmR0L2ZkdF9yby5jCgkgREVQIC90bXAvcWVtdS10ZXN0
+L3NyYy9kdGMvbGliZmR0L2ZkdC5jCgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvdXRpbC5j
+CgkgREVQIC90bXAvcWVtdS10ZXN0L3NyYy9kdGMvZmR0b3ZlcmxheS5jCgkgREVQIC90bXAvcWVt
+dS10ZXN0L3NyYy9kdGMvZmR0cHV0LmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy9mZHRn
+ZXQuYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL2ZkdGR1bXAuYwoJIExFWCBjb252ZXJ0
+LWR0c3YwLWxleGVyLmxleC5jCgkgQklTT04gZHRjLXBhcnNlci50YWIuYwoJIExFWCBkdGMtbGV4
+ZXIubGV4LmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy9zcmNwb3MuYwoJIERFUCAvdG1w
+L3FlbXUtdGVzdC9zcmMvZHRjL3RyZWVzb3VyY2UuYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMv
+ZHRjL2xpdmV0cmVlLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qvc3JjL2R0Yy9mc3RyZWUuYwoJIERF
+UCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL2ZsYXR0cmVlLmMKCSBERVAgL3RtcC9xZW11LXRlc3Qv
+c3JjL2R0Yy9kdGMuYwoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMvZHRjL2RhdGEuYwoJIERFUCAv
+dG1wL3FlbXUtdGVzdC9zcmMvZHRjL2NoZWNrcy5jCgkgREVQIGNvbnZlcnQtZHRzdjAtbGV4ZXIu
+bGV4LmMKCSBERVAgZHRjLXBhcnNlci50YWIuYwoJIERFUCBkdGMtbGV4ZXIubGV4LmMKCUNISyB2
+ZXJzaW9uX2dlbi5oCglVUEQgdmVyc2lvbl9nZW4uaAoJIERFUCAvdG1wL3FlbXUtdGVzdC9zcmMv
+ZHRjL3V0aWwuYwoJIENDIGxpYmZkdC9mZHQubwoJIENDIGxpYmZkdC9mZHRfcm8ubwoJIENDIGxp
+YmZkdC9mZHRfc3cubwoJIENDIGxpYmZkdC9mZHRfd2lwLm8KCSBDQyBsaWJmZHQvZmR0X3J3Lm8K
+CSBDQyBsaWJmZHQvZmR0X2VtcHR5X3RyZWUubwoJIENDIGxpYmZkdC9mZHRfc3RyZXJyb3IubwoJ
+IENDIGxpYmZkdC9mZHRfYWRkcmVzc2VzLm8KCSBDQyBsaWJmZHQvZmR0X292ZXJsYXkubwoJIEFS
+IGxpYmZkdC9saWJmZHQuYQp4ODZfNjQtdzY0LW1pbmd3MzItYXI6IGNyZWF0aW5nIGxpYmZkdC9s
+aWJmZHQuYQphIC0gbGliZmR0L2ZkdC5vCmEgLSBsaWJmZHQvZmR0X3JvLm8KYSAtIGxpYmZkdC9m
+ZHRfd2lwLm8KYSAtIGxpYmZkdC9mZHRfc3cubwphIC0gbGliZmR0L2ZkdF9ydy5vCmEgLSBsaWJm
+ZHQvZmR0X3N0cmVycm9yLm8KYSAtIGxpYmZkdC9mZHRfZW1wdHlfdHJlZS5vCmEgLSBsaWJmZHQv
+ZmR0X2FkZHJlc3Nlcy5vCmEgLSBsaWJmZHQvZmR0X292ZXJsYXkubwogIFJDICAgICAgdmVyc2lv
+bi5vCiAgR0VOICAgICBxZ2EvcWFwaS1nZW5lcmF0ZWQvcWFwaS1nZW4KICBDQyAgICAgIHFhcGkv
+cWFwaS1idWlsdGluLXR5cGVzLm8KICBDQyAgICAgIHFhcGkvcWFwaS10eXBlcy5vCiAgQ0MgICAg
+ICBxYXBpL3FhcGktdHlwZXMtYmxvY2stY29yZS5vCiAgQ0MgICAgICBxYXBpL3FhcGktdHlwZXMt
+Y2hhci5vCiAgQ0MgICAgICBxYXBpL3FhcGktdHlwZXMtY29tbW9uLm8KICBDQyAgICAgIHFhcGkv
+cWFwaS10eXBlcy1jcnlwdG8ubwogIENDICAgICAgcWFwaS9xYXBpLXR5cGVzLWJsb2NrLm8KICBD
+QyAgICAgIHFhcGkvcWFwaS10eXBlcy1pbnRyb3NwZWN0Lm8KICBDQyAgICAgIHFhcGkvcWFwaS10
+eXBlcy1qb2IubwogIENDICAgICAgcWFwaS9xYXBpLXR5cGVzLW1pZ3JhdGlvbi5vCiAgQ0MgICAg
+ICBxYXBpL3FhcGktdHlwZXMtbWlzYy5vCiAgQ0MgICAgICBxYXBpL3FhcGktdHlwZXMtbmV0Lm8K
+ICBDQyAgICAgIHFhcGkvcWFwaS10eXBlcy1yb2NrZXIubwogIENDICAgICAgcWFwaS9xYXBpLXR5
+cGVzLXJ1bi1zdGF0ZS5vCiAgQ0MgICAgICBxYXBpL3FhcGktdHlwZXMtc29ja2V0cy5vCiAgQ0Mg
+ICAgICBxYXBpL3FhcGktdHlwZXMtdHBtLm8KICBDQyAgICAgIHFhcGkvcWFwaS10eXBlcy10cmFj
+ZS5vCiAgQ0MgICAgICBxYXBpL3FhcGktdHlwZXMtdHJhbnNhY3Rpb24ubwogIENDICAgICAgcWFw
+aS9xYXBpLXR5cGVzLXVpLm8KICBDQyAgICAgIHFhcGkvcWFwaS10eXBlcy1hdXRoei5vCiAgQ0Mg
+ICAgICBxYXBpL3FhcGktdmlzaXQubwogIENDICAgICAgcWFwaS9xYXBpLWJ1aWx0aW4tdmlzaXQu
+bwogIENDICAgICAgcWFwaS9xYXBpLXZpc2l0LWJsb2NrLWNvcmUubwogIENDICAgICAgcWFwaS9x
+YXBpLXZpc2l0LWJsb2NrLm8KICBDQyAgICAgIHFhcGkvcWFwaS12aXNpdC1jaGFyLm8KICBDQyAg
+ICAgIHFhcGkvcWFwaS12aXNpdC1jb21tb24ubwogIENDICAgICAgcWFwaS9xYXBpLXZpc2l0LWNy
+eXB0by5vCiAgQ0MgICAgICBxYXBpL3FhcGktdmlzaXQtaW50cm9zcGVjdC5vCiAgQ0MgICAgICBx
+YXBpL3FhcGktdmlzaXQtam9iLm8KICBDQyAgICAgIHFhcGkvcWFwaS12aXNpdC1taXNjLm8KICBD
+QyAgICAgIHFhcGkvcWFwaS12aXNpdC1taWdyYXRpb24ubwogIENDICAgICAgcWFwaS9xYXBpLXZp
+c2l0LW5ldC5vCiAgQ0MgICAgICBxYXBpL3FhcGktdmlzaXQtcm9ja2VyLm8KICBDQyAgICAgIHFh
+cGkvcWFwaS12aXNpdC1ydW4tc3RhdGUubwogIENDICAgICAgcWFwaS9xYXBpLXZpc2l0LXNvY2tl
+dHMubwogIENDICAgICAgcWFwaS9xYXBpLXZpc2l0LXRwbS5vCiAgQ0MgICAgICBxYXBpL3FhcGkt
+dmlzaXQtdHJhY2UubwogIENDICAgICAgcWFwaS9xYXBpLXZpc2l0LXRyYW5zYWN0aW9uLm8KICBD
+QyAgICAgIHFhcGkvcWFwaS12aXNpdC11aS5vCiAgQ0MgICAgICBxYXBpL3FhcGktdmlzaXQtYXV0
+aHoubwogIENDICAgICAgcWFwaS9xYXBpLWV2ZW50cy5vCiAgQ0MgICAgICBxYXBpL3FhcGktZXZl
+bnRzLWJsb2NrLWNvcmUubwogIENDICAgICAgcWFwaS9xYXBpLWV2ZW50cy1ibG9jay5vCiAgQ0Mg
+ICAgICBxYXBpL3FhcGktZXZlbnRzLWNoYXIubwogIENDICAgICAgcWFwaS9xYXBpLWV2ZW50cy1j
+b21tb24ubwogIENDICAgICAgcWFwaS9xYXBpLWV2ZW50cy1jcnlwdG8ubwogIENDICAgICAgcWFw
+aS9xYXBpLWV2ZW50cy1pbnRyb3NwZWN0Lm8KICBDQyAgICAgIHFhcGkvcWFwaS1ldmVudHMtam9i
+Lm8KICBDQyAgICAgIHFhcGkvcWFwaS1ldmVudHMtbWlncmF0aW9uLm8KICBDQyAgICAgIHFhcGkv
+cWFwaS1ldmVudHMtbWlzYy5vCiAgQ0MgICAgICBxYXBpL3FhcGktZXZlbnRzLW5ldC5vCiAgQ0Mg
+ICAgICBxYXBpL3FhcGktZXZlbnRzLXJvY2tlci5vCiAgQ0MgICAgICBxYXBpL3FhcGktZXZlbnRz
+LXJ1bi1zdGF0ZS5vCiAgQ0MgICAgICBxYXBpL3FhcGktZXZlbnRzLXNvY2tldHMubwogIENDICAg
+ICAgcWFwaS9xYXBpLWV2ZW50cy10cG0ubwogIENDICAgICAgcWFwaS9xYXBpLWV2ZW50cy10cmFj
+ZS5vCiAgQ0MgICAgICBxYXBpL3FhcGktZXZlbnRzLXRyYW5zYWN0aW9uLm8KICBDQyAgICAgIHFh
+cGkvcWFwaS1ldmVudHMtdWkubwogIENDICAgICAgcWFwaS9xYXBpLWV2ZW50cy1hdXRoei5vCiAg
+Q0MgICAgICBxYXBpL3FhcGktaW50cm9zcGVjdC5vCiAgQ0MgICAgICBxYXBpL3FhcGktdmlzaXQt
+Y29yZS5vCiAgQ0MgICAgICBxYXBpL3FhcGktZGVhbGxvYy12aXNpdG9yLm8KICBDQyAgICAgIHFh
+cGkvcW9iamVjdC1pbnB1dC12aXNpdG9yLm8KICBDQyAgICAgIHFhcGkvcW9iamVjdC1vdXRwdXQt
+dmlzaXRvci5vCiAgQ0MgICAgICBxYXBpL3FtcC1yZWdpc3RyeS5vCiAgQ0MgICAgICBxYXBpL3Ft
+cC1kaXNwYXRjaC5vCiAgQ0MgICAgICBxYXBpL3N0cmluZy1pbnB1dC12aXNpdG9yLm8KICBDQyAg
+ICAgIHFhcGkvc3RyaW5nLW91dHB1dC12aXNpdG9yLm8KICBDQyAgICAgIHFhcGkvb3B0cy12aXNp
+dG9yLm8KICBDQyAgICAgIHFhcGkvcWFwaS1jbG9uZS12aXNpdG9yLm8KICBDQyAgICAgIHFhcGkv
+cW1wLWV2ZW50Lm8KICBDQyAgICAgIHFhcGkvcWFwaS11dGlsLm8KICBDQyAgICAgIHFvYmplY3Qv
+cW51bGwubwogIENDICAgICAgcW9iamVjdC9xbnVtLm8KICBDQyAgICAgIHFvYmplY3QvcXN0cmlu
+Zy5vCiAgQ0MgICAgICBxb2JqZWN0L3FkaWN0Lm8KICBDQyAgICAgIHFvYmplY3QvcWxpc3Qubwog
+IENDICAgICAgcW9iamVjdC9xYm9vbC5vCiAgQ0MgICAgICBxb2JqZWN0L3FsaXQubwogIENDICAg
+ICAgcW9iamVjdC9xanNvbi5vCiAgQ0MgICAgICBxb2JqZWN0L3FvYmplY3QubwogIENDICAgICAg
+cW9iamVjdC9qc29uLWxleGVyLm8KICBDQyAgICAgIHFvYmplY3QvanNvbi1zdHJlYW1lci5vCiAg
+Q0MgICAgICBxb2JqZWN0L2pzb24tcGFyc2VyLm8KICBDQyAgICAgIHRyYWNlL3NpbXBsZS5vCiAg
+Q0MgICAgICB0cmFjZS9jb250cm9sLm8KICBDQyAgICAgIHRyYWNlL3FtcC5vCiAgQ0MgICAgICB1
+dGlsL29zZGVwLm8KICBDQyAgICAgIHV0aWwvY3V0aWxzLm8KICBDQyAgICAgIHV0aWwvdW5pY29k
+ZS5vCiAgQ0MgICAgICB1dGlsL3FlbXUtdGltZXItY29tbW9uLm8KICBDQyAgICAgIHV0aWwvbG9j
+a2NudC5vCiAgQ0MgICAgICB1dGlsL2J1ZmZlcmlzemVyby5vCiAgQ0MgICAgICB1dGlsL2Fpb2Ni
+Lm8KICBDQyAgICAgIHV0aWwvYXN5bmMubwogIENDICAgICAgdXRpbC9haW8td2FpdC5vCiAgQ0Mg
+ICAgICB1dGlsL3RocmVhZC1wb29sLm8KICBDQyAgICAgIHV0aWwvcWVtdS10aW1lci5vCiAgQ0Mg
+ICAgICB1dGlsL21haW4tbG9vcC5vCiAgQ0MgICAgICB1dGlsL2lvaGFuZGxlci5vCiAgQ0MgICAg
+ICB1dGlsL2Fpby13aW4zMi5vCiAgQ0MgICAgICB1dGlsL2V2ZW50X25vdGlmaWVyLXdpbjMyLm8K
+ICBDQyAgICAgIHV0aWwvb3NsaWItd2luMzIubwogIENDICAgICAgdXRpbC9xZW11LXRocmVhZC13
+aW4zMi5vCiAgQ0MgICAgICB1dGlsL2Vudmxpc3QubwogIENDICAgICAgdXRpbC9wYXRoLm8KICBD
+QyAgICAgIHV0aWwvbW9kdWxlLm8KICBDQyAgICAgIHV0aWwvaG9zdC11dGlscy5vCiAgQ0MgICAg
+ICB1dGlsL2JpdG1hcC5vCiAgQ0MgICAgICB1dGlsL2JpdG9wcy5vCiAgQ0MgICAgICB1dGlsL2hi
+aXRtYXAubwogIENDICAgICAgdXRpbC9maWZvOC5vCiAgQ0MgICAgICB1dGlsL2NhY2hlaW5mby5v
+CiAgQ0MgICAgICB1dGlsL2Vycm9yLm8KICBDQyAgICAgIHV0aWwvcWVtdS1lcnJvci5vCiAgQ0Mg
+ICAgICB1dGlsL2lkLm8KICBDQyAgICAgIHV0aWwvaW92Lm8KICBDQyAgICAgIHV0aWwvcWVtdS1j
+b25maWcubwogIENDICAgICAgdXRpbC9xZW11LXNvY2tldHMubwogIENDICAgICAgdXRpbC91cmku
+bwogIENDICAgICAgdXRpbC9ub3RpZnkubwogIENDICAgICAgdXRpbC9xZW11LW9wdGlvbi5vCiAg
+Q0MgICAgICB1dGlsL3FlbXUtcHJvZ3Jlc3MubwogIENDICAgICAgdXRpbC9rZXl2YWwubwogIEND
+ICAgICAgdXRpbC9oZXhkdW1wLm8KICBDQyAgICAgIHV0aWwvY3JjMzJjLm8KICBDQyAgICAgIHV0
+aWwvdXVpZC5vCiAgQ0MgICAgICB1dGlsL3Rocm90dGxlLm8KICBDQyAgICAgIHV0aWwvZ2V0YXV4
+dmFsLm8KICBDQyAgICAgIHV0aWwvcmVhZGxpbmUubwogIENDICAgICAgdXRpbC9yY3UubwogIEND
+ICAgICAgdXRpbC9xZW11LWNvcm91dGluZS5vCiAgQ0MgICAgICB1dGlsL3FlbXUtY29yb3V0aW5l
+LWxvY2subwogIENDICAgICAgdXRpbC9xZW11LWNvcm91dGluZS1pby5vCiAgQ0MgICAgICB1dGls
+L3FlbXUtY29yb3V0aW5lLXNsZWVwLm8KICBDQyAgICAgIHV0aWwvY29yb3V0aW5lLXdpbjMyLm8K
+ICBDQyAgICAgIHV0aWwvYnVmZmVyLm8KICBDQyAgICAgIHV0aWwvdGltZWQtYXZlcmFnZS5vCiAg
+Q0MgICAgICB1dGlsL2Jhc2U2NC5vCiAgQ0MgICAgICB1dGlsL2xvZy5vCiAgQ0MgICAgICB1dGls
+L3BhZ2VzaXplLm8KICBDQyAgICAgIHV0aWwvcWRpc3QubwogIENDICAgICAgdXRpbC9xaHQubwog
+IENDICAgICAgdXRpbC9yYW5nZS5vCiAgQ0MgICAgICB1dGlsL3N0YXRzNjQubwogIENDICAgICAg
+dXRpbC9zeXN0ZW1kLm8KICBDQyAgICAgIHV0aWwvaW92YS10cmVlLm8KICBDQyAgICAgIHV0aWwv
+aW5vdGlmeS5vCiAgQ0MgICAgICB0cmFjZS1yb290Lm8KICBDQyAgICAgIGFjY2VsL2t2bS90cmFj
+ZS5vCiAgQ0MgICAgICBhY2NlbC90Y2cvdHJhY2UubwogIENDICAgICAgYXVkaW8vdHJhY2Uubwog
+IENDICAgICAgYXV0aHovdHJhY2UubwogIENDICAgICAgYmxvY2svdHJhY2UubwogIENDICAgICAg
+Y2hhcmRldi90cmFjZS5vCiAgQ0MgICAgICBjcnlwdG8vdHJhY2UubwogIENDICAgICAgaHcvOXBm
+cy90cmFjZS5vCiAgQ0MgICAgICBody9hY3BpL3RyYWNlLm8KICBDQyAgICAgIGh3L2FscGhhL3Ry
+YWNlLm8KICBDQyAgICAgIGh3L2FybS90cmFjZS5vCiAgQ0MgICAgICBody9hdWRpby90cmFjZS5v
+CiAgQ0MgICAgICBody9ibG9jay90cmFjZS5vCiAgQ0MgICAgICBody9ibG9jay9kYXRhcGxhbmUv
+dHJhY2UubwogIENDICAgICAgaHcvY2hhci90cmFjZS5vCiAgQ0MgICAgICBody9kaXNwbGF5L3Ry
+YWNlLm8KICBDQyAgICAgIGh3L2RtYS90cmFjZS5vCiAgQ0MgICAgICBody9ocHBhL3RyYWNlLm8K
+ICBDQyAgICAgIGh3L2kyYy90cmFjZS5vCiAgQ0MgICAgICBody9pMzg2L3RyYWNlLm8KICBDQyAg
+ICAgIGh3L2kzODYveGVuL3RyYWNlLm8KICBDQyAgICAgIGh3L2lkZS90cmFjZS5vCiAgQ0MgICAg
+ICBody9pbnB1dC90cmFjZS5vCiAgQ0MgICAgICBody9pbnRjL3RyYWNlLm8KICBDQyAgICAgIGh3
+L2lzYS90cmFjZS5vCiAgQ0MgICAgICBody9tZW0vdHJhY2UubwogIENDICAgICAgaHcvbWlzYy90
+cmFjZS5vCiAgQ0MgICAgICBody9taXNjL21hY2lvL3RyYWNlLm8KICBDQyAgICAgIGh3L25ldC90
+cmFjZS5vCiAgQ0MgICAgICBody9udnJhbS90cmFjZS5vCiAgQ0MgICAgICBody9wY2kvdHJhY2Uu
+bwogIENDICAgICAgaHcvcGNpLWhvc3QvdHJhY2UubwogIENDICAgICAgaHcvcHBjL3RyYWNlLm8K
+ICBDQyAgICAgIGh3L3JkbWEvdHJhY2UubwogIENDICAgICAgaHcvcmRtYS92bXcvdHJhY2Uubwog
+IENDICAgICAgaHcvczM5MHgvdHJhY2UubwogIENDICAgICAgaHcvc2NzaS90cmFjZS5vCiAgQ0Mg
+ICAgICBody9zZC90cmFjZS5vCiAgQ0MgICAgICBody9zcGFyYy90cmFjZS5vCiAgQ0MgICAgICBo
+dy9zcGFyYzY0L3RyYWNlLm8KICBDQyAgICAgIGh3L3RpbWVyL3RyYWNlLm8KICBDQyAgICAgIGh3
+L3RwbS90cmFjZS5vCiAgQ0MgICAgICBody91c2IvdHJhY2UubwogIENDICAgICAgaHcvdmZpby90
+cmFjZS5vCiAgQ0MgICAgICBody92aXJ0aW8vdHJhY2UubwogIENDICAgICAgaHcveGVuL3RyYWNl
+Lm8KICBDQyAgICAgIGlvL3RyYWNlLm8KICBDQyAgICAgIGxpbnV4LXVzZXIvdHJhY2UubwogIEND
+ICAgICAgbWlncmF0aW9uL3RyYWNlLm8KICBDQyAgICAgIG5iZC90cmFjZS5vCiAgQ0MgICAgICBu
+ZXQvdHJhY2UubwogIENDICAgICAgcWFwaS90cmFjZS5vCiAgQ0MgICAgICBxb20vdHJhY2Uubwog
+IENDICAgICAgc2NzaS90cmFjZS5vCiAgQ0MgICAgICB0YXJnZXQvYXJtL3RyYWNlLm8KICBDQyAg
+ICAgIHRhcmdldC9pMzg2L3RyYWNlLm8KICBDQyAgICAgIHRhcmdldC9taXBzL3RyYWNlLm8KICBD
+QyAgICAgIHRhcmdldC9wcGMvdHJhY2UubwogIENDICAgICAgdGFyZ2V0L3MzOTB4L3RyYWNlLm8K
+ICBDQyAgICAgIHRhcmdldC9zcGFyYy90cmFjZS5vCiAgQ0MgICAgICB1dGlsL3RyYWNlLm8KICBD
+QyAgICAgIHVpL3RyYWNlLm8KICBDQyAgICAgIGNyeXB0by9wYmtkZi1zdHViLm8KICBDQyAgICAg
+IHN0dWJzL2FyY2gtcXVlcnktY3B1LWRlZi5vCiAgQ0MgICAgICBzdHVicy9hcmNoLXF1ZXJ5LWNw
+dS1tb2RlbC1leHBhbnNpb24ubwogIENDICAgICAgc3R1YnMvYXJjaC1xdWVyeS1jcHUtbW9kZWwt
+Y29tcGFyaXNvbi5vCiAgQ0MgICAgICBzdHVicy9hcmNoLXF1ZXJ5LWNwdS1tb2RlbC1iYXNlbGlu
+ZS5vCiAgQ0MgICAgICBzdHVicy9iZHJ2LW5leHQtbW9uaXRvci1vd25lZC5vCiAgQ0MgICAgICBz
+dHVicy9ibGstY29tbWl0LWFsbC5vCiAgQ0MgICAgICBzdHVicy9ibG9ja2Rldi1jbG9zZS1hbGwt
+YmRydi1zdGF0ZXMubwogIENDICAgICAgc3R1YnMvY2xvY2std2FycC5vCiAgQ0MgICAgICBzdHVi
+cy9jcHUtZ2V0LWNsb2NrLm8KICBDQyAgICAgIHN0dWJzL2NwdS1nZXQtaWNvdW50Lm8KICBDQyAg
+ICAgIHN0dWJzL2R1bXAubwogIENDICAgICAgc3R1YnMvZXJyb3ItcHJpbnRmLm8KICBDQyAgICAg
+IHN0dWJzL2Zkc2V0Lm8KICBDQyAgICAgIHN0dWJzL2dkYnN0dWIubwogIENDICAgICAgc3R1YnMv
+Z2V0LXZtLW5hbWUubwogIENDICAgICAgc3R1YnMvaW90aHJlYWQubwogIENDICAgICAgc3R1YnMv
+aW90aHJlYWQtbG9jay5vCiAgQ0MgICAgICBzdHVicy9pcy1kYWVtb25pemVkLm8KICBDQyAgICAg
+IHN0dWJzL21hY2hpbmUtaW5pdC1kb25lLm8KICBDQyAgICAgIHN0dWJzL21pZ3ItYmxvY2tlci5v
+CiAgQ0MgICAgICBzdHVicy9jaGFuZ2Utc3RhdGUtaGFuZGxlci5vCiAgQ0MgICAgICBzdHVicy9t
+b25pdG9yLm8KICBDQyAgICAgIHN0dWJzL25vdGlmeS1ldmVudC5vCiAgQ0MgICAgICBzdHVicy9x
+dGVzdC5vCiAgQ0MgICAgICBzdHVicy9yZXBsYXkubwogIENDICAgICAgc3R1YnMvcnVuc3RhdGUt
+Y2hlY2subwogIENDICAgICAgc3R1YnMvc2V0LWZkLWhhbmRsZXIubwogIENDICAgICAgc3R1YnMv
+c2xpcnAubwogIENDICAgICAgc3R1YnMvc3lzYnVzLm8KICBDQyAgICAgIHN0dWJzL3RwbS5vCiAg
+Q0MgICAgICBzdHVicy90cmFjZS1jb250cm9sLm8KICBDQyAgICAgIHN0dWJzL3V1aWQubwogIEND
+ICAgICAgc3R1YnMvdm0tc3RvcC5vCiAgQ0MgICAgICBzdHVicy92bXN0YXRlLm8KICBDQyAgICAg
+IHN0dWJzL2ZkLXJlZ2lzdGVyLm8KICBDQyAgICAgIHN0dWJzL3FtcF9tZW1vcnlfZGV2aWNlLm8K
+ICBDQyAgICAgIHN0dWJzL3RhcmdldC1nZXQtbW9uaXRvci1kZWYubwogIENDICAgICAgc3R1YnMv
+dGFyZ2V0LW1vbml0b3ItZGVmcy5vCiAgQ0MgICAgICBzdHVicy9wY19tYWR0X2NwdV9lbnRyeS5v
+CiAgQ0MgICAgICBzdHVicy92bWdlbmlkLm8KICBDQyAgICAgIHN0dWJzL3hlbi1jb21tb24ubwog
+IENDICAgICAgc3R1YnMveGVuLWh2bS5vCiAgQ0MgICAgICBzdHVicy9wY2ktaG9zdC1waWl4Lm8K
+ICBDQyAgICAgIHN0dWJzL3JhbS1ibG9jay5vCiAgR0VOICAgICBxZW11LWltZy1jbWRzLmgKICBD
+QyAgICAgIGF1dGh6L2Jhc2UubwogIENDICAgICAgYXV0aHovbGlzdC5vCiAgQ0MgICAgICBhdXRo
+ei9zaW1wbGUubwogIENDICAgICAgYXV0aHovbGlzdGZpbGUubwogIENDICAgICAgYmxvY2subwog
+IENDICAgICAgYmxvY2tqb2IubwogIENDICAgICAgam9iLm8KICBDQyAgICAgIHFlbXUtaW8tY21k
+cy5vCiAgQ0MgICAgICByZXBsaWNhdGlvbi5vCiAgQ0MgICAgICBibG9jay9yYXctZm9ybWF0Lm8K
+ICBDQyAgICAgIGJsb2NrL3Fjb3cubwogIENDICAgICAgYmxvY2svdmRpLm8KICBDQyAgICAgIGJs
+b2NrL3ZtZGsubwogIENDICAgICAgYmxvY2svY2xvb3AubwogIENDICAgICAgYmxvY2svYm9jaHMu
+bwogIENDICAgICAgYmxvY2svdnBjLm8KICBDQyAgICAgIGJsb2NrL3Z2ZmF0Lm8KICBDQyAgICAg
+IGJsb2NrL2RtZy5vCiAgQ0MgICAgICBibG9jay9xY293Mi5vCiAgQ0MgICAgICBibG9jay9xY293
+Mi1yZWZjb3VudC5vCiAgQ0MgICAgICBibG9jay9xY293Mi1jbHVzdGVyLm8KICBDQyAgICAgIGJs
+b2NrL3Fjb3cyLXNuYXBzaG90Lm8KICBDQyAgICAgIGJsb2NrL3Fjb3cyLWNhY2hlLm8KICBDQyAg
+ICAgIGJsb2NrL3Fjb3cyLWJpdG1hcC5vCiAgQ0MgICAgICBibG9jay9xZWQubwogIENDICAgICAg
+YmxvY2svcWVkLWwyLWNhY2hlLm8KICBDQyAgICAgIGJsb2NrL3FlZC10YWJsZS5vCiAgQ0MgICAg
+ICBibG9jay9xZWQtY2x1c3Rlci5vCiAgQ0MgICAgICBibG9jay9xZWQtY2hlY2subwogIENDICAg
+ICAgYmxvY2svdmhkeC5vCiAgQ0MgICAgICBibG9jay92aGR4LWVuZGlhbi5vCiAgQ0MgICAgICBi
+bG9jay92aGR4LWxvZy5vCiAgQ0MgICAgICBibG9jay9xdW9ydW0ubwogIENDICAgICAgYmxvY2sv
+cGFyYWxsZWxzLm8KICBDQyAgICAgIGJsb2NrL2Jsa2RlYnVnLm8KICBDQyAgICAgIGJsb2NrL2Js
+a3ZlcmlmeS5vCi90bXAvcWVtdS10ZXN0L3NyYy9hdXRoei9saXN0ZmlsZS5jOiBJbiBmdW5jdGlv
+biAncWF1dGh6X2xpc3RfZmlsZV9pbm90aWZ5JzoKL3RtcC9xZW11LXRlc3Qvc3JjL2F1dGh6L2xp
+c3RmaWxlLmM6MTAzOjE4OiBlcnJvcjogJ0lOX0NMT1NFX1dSSVRFJyB1bmRlY2xhcmVkIChmaXJz
+dCB1c2UgaW4gdGhpcyBmdW5jdGlvbik7IGRpZCB5b3UgbWVhbiAnRkRfQ0xPU0VfQklUJz8KICAg
+ICBpZiAoIShtYXNrICYgSU5fQ0xPU0VfV1JJVEUpKSB7CiAgICAgICAgICAgICAgICAgIF5+fn5+
+fn5+fn5+fn5+CiAgICAgICAgICAgICAgICAgIEZEX0NMT1NFX0JJVAovdG1wL3FlbXUtdGVzdC9z
+cmMvYXV0aHovbGlzdGZpbGUuYzoxMDM6MTg6IG5vdGU6IGVhY2ggdW5kZWNsYXJlZCBpZGVudGlm
+aWVyIGlzIHJlcG9ydGVkIG9ubHkgb25jZSBmb3IgZWFjaCBmdW5jdGlvbiBpdCBhcHBlYXJzIGlu
+Cm1ha2U6ICoqKiBbL3RtcC9xZW11LXRlc3Qvc3JjL3J1bGVzLm1hazo2OTogYXV0aHovbGlzdGZp
+bGUub10gRXJyb3IgMQptYWtlOiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4uLgog
+IENDICAgICAgYmxvY2svYmxrcmVwbGF5Lm8KVHJhY2ViYWNrIChtb3N0IHJlY2VudCBjYWxsIGxh
+c3QpOgogIEZpbGUgIi4vdGVzdHMvZG9ja2VyL2RvY2tlci5weSIsIGxpbmUgNDI1LCBpbiA8bW9k
+dWxlPgogICAgc3lzLmV4aXQobWFpbigpKQogIEZpbGUgIi4vdGVzdHMvZG9ja2VyL2RvY2tlci5w
+eSIsIGxpbmUgNDIyLCBpbiBtYWluCiAgICByZXR1cm4gYXJncy5jbWRvYmoucnVuKGFyZ3MsIGFy
+Z3YpCiAgRmlsZSAiLi90ZXN0cy9kb2NrZXIvZG9ja2VyLnB5IiwgbGluZSAyNjEsIGluIHJ1bgog
+ICAgcmV0dXJuIERvY2tlcigpLnJ1bihhcmd2LCBhcmdzLmtlZXAsIHF1aWV0PWFyZ3MucXVpZXQp
+CiAgRmlsZSAiLi90ZXN0cy9kb2NrZXIvZG9ja2VyLnB5IiwgbGluZSAyMjksIGluIHJ1bgogICAg
+cXVpZXQ9cXVpZXQpCiAgRmlsZSAiLi90ZXN0cy9kb2NrZXIvZG9ja2VyLnB5IiwgbGluZSAxNDcs
+IGluIF9kb19jaGVjawogICAgcmV0dXJuIHN1YnByb2Nlc3MuY2hlY2tfY2FsbChzZWxmLl9jb21t
+YW5kICsgY21kLCAqKmt3YXJncykKICBGaWxlICIvdXNyL2xpYjY0L3B5dGhvbjIuNy9zdWJwcm9j
+ZXNzLnB5IiwgbGluZSAxODYsIGluIGNoZWNrX2NhbGwKICAgIHJhaXNlIENhbGxlZFByb2Nlc3NF
+cnJvcihyZXRjb2RlLCBjbWQpCnN1YnByb2Nlc3MuQ2FsbGVkUHJvY2Vzc0Vycm9yOiBDb21tYW5k
+ICdbJ2RvY2tlcicsICdydW4nLCAnLS1sYWJlbCcsICdjb20ucWVtdS5pbnN0YW5jZS51dWlkPThm
+OTMyMmRjNmI0MjExZTg4Zjk0NTI1NDAwNjljODMwJywgJy11JywgJzAnLCAnLS1zZWN1cml0eS1v
+cHQnLCAnc2VjY29tcD11bmNvbmZpbmVkJywgJy0tcm0nLCAnLS1uZXQ9bm9uZScsICctZScsICdU
+QVJHRVRfTElTVD0nLCAnLWUnLCAnRVhUUkFfQ09ORklHVVJFX09QVFM9JywgJy1lJywgJ1Y9Jywg
+Jy1lJywgJ0o9OCcsICctZScsICdERUJVRz0nLCAnLWUnLCAnU0hPV19FTlY9MScsICctZScsICdD
+Q0FDSEVfRElSPS92YXIvdG1wL2NjYWNoZScsICctdicsICcvcm9vdC8uY2FjaGUvcWVtdS1kb2Nr
+ZXItY2NhY2hlOi92YXIvdG1wL2NjYWNoZTp6JywgJy12JywgJy92YXIvdG1wL3BhdGNoZXctdGVz
+dGVyLXRtcC1qaDFnX2Y4OC9zcmMvZG9ja2VyLXNyYy4yMDE4LTA2LTA4LTEzLjM2LjUyLjI0MTc3
+Oi92YXIvdG1wL3FlbXU6eixybycsICdxZW11OmZlZG9yYScsICcvdmFyL3RtcC9xZW11L3J1bics
+ICd0ZXN0LW1pbmd3J10nIHJldHVybmVkIG5vbi16ZXJvIGV4aXQgc3RhdHVzIDIKbWFrZVsxXTog
+KioqIFt0ZXN0cy9kb2NrZXIvTWFrZWZpbGUuaW5jbHVkZToxMzM6IGRvY2tlci1ydW5dIEVycm9y
+IDEKbWFrZVsxXTogTGVhdmluZyBkaXJlY3RvcnkgJy92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRt
+cC1qaDFnX2Y4OC9zcmMnCm1ha2U6ICoqKiBbdGVzdHMvZG9ja2VyL01ha2VmaWxlLmluY2x1ZGU6
+MTY3OiBkb2NrZXItcnVuLXRlc3QtbWluZ3dAZmVkb3JhXSBFcnJvciAyCgpyZWFsCTJtMS45NThz
+CnVzZXIJMG00Ljc5NHMKc3lzCTBtMy45NDNzCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21t
+YW5kIGV4aXRlZCB3aXRoIGNvZGU6IDIKCgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2Fs
+bHkgYnkgUGF0Y2hldyBbaHR0cDovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVl
+ZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
 
 
