@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fRKtY-0007Ai-VV
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Jun 2018 13:09:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39292)
+	id 1fRKtZ-0007BR-P9
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Jun 2018 13:09:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39305)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1fRKtW-00078L-8P
-	for qemu-trivial@nongnu.org; Fri, 08 Jun 2018 13:09:47 -0400
+	(envelope-from <berrange@redhat.com>) id 1fRKtW-00078f-Qh
+	for qemu-trivial@nongnu.org; Fri, 08 Jun 2018 13:09:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1fRKtV-0008MJ-0G
+	(envelope-from <berrange@redhat.com>) id 1fRKtV-0008MV-8B
 	for qemu-trivial@nongnu.org; Fri, 08 Jun 2018 13:09:46 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58906 helo=mx1.redhat.com)
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48094 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1fRKtP-0008Fy-56; Fri, 08 Jun 2018 13:09:39 -0400
+	id 1fRKtQ-0008IY-GN; Fri, 08 Jun 2018 13:09:40 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D8BAC40122A8;
-	Fri,  8 Jun 2018 17:09:37 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 07002402315E;
+	Fri,  8 Jun 2018 17:09:40 +0000 (UTC)
 Received: from t460.redhat.com (unknown [10.33.36.81])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 96BAE2166BB2;
-	Fri,  8 Jun 2018 17:09:34 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 407332166BB2;
+	Fri,  8 Jun 2018 17:09:38 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Markus Armbruster <armbru@redhat.com>,
@@ -29,23 +29,26 @@ Cc: Markus Armbruster <armbru@redhat.com>,
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-trivial@nongnu.org,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Eric Blake <eblake@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
-Date: Fri,  8 Jun 2018 18:09:25 +0100
-Message-Id: <20180608170933.9137-1-berrange@redhat.com>
+Date: Fri,  8 Jun 2018 18:09:26 +0100
+Message-Id: <20180608170933.9137-2-berrange@redhat.com>
+In-Reply-To: <20180608170933.9137-1-berrange@redhat.com>
+References: <20180608170933.9137-1-berrange@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Fri, 08 Jun 2018 17:09:37 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Fri, 08 Jun 2018 17:09:37 +0000 (UTC) for IP:'10.11.54.6'
+	(mx1.redhat.com [10.11.55.6]);
+	Fri, 08 Jun 2018 17:09:40 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Fri, 08 Jun 2018 17:09:40 +0000 (UTC) for IP:'10.11.54.6'
 	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'berrange@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: [Qemu-trivial] [PATCH 0/8] Add a standard authorization framework
+Subject: [Qemu-trivial] [PATCH 1/8] util: add helper APIs for dealing with
+ inotify
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,112 +60,251 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Jun 2018 17:09:47 -0000
+X-List-Received-Date: Fri, 08 Jun 2018 17:09:48 -0000
 
-The current network services now support encryption via TLS and in some
-cases support authentication via SASL. In cases where SASL is not
-available, x509 client certificates can be used as a crude authorization
-scheme, but using a sub-CA and controlling who you give certs to. In
-general this is not very flexible though, so this series introduces a
-new standard authorization framework.
+The inotify userspace API for reading events is quite horrible, so it is
+useful to wrap it in a more friendly API to avoid duplicating code
+across many users in QEMU.
 
-It comes with four initial authorization mechanisms
-
- - Simple - an exact username match. This is useful when there is
-   exactly one user that is known to connect. For example when live
-   migrating from one QEMU to another with TLS, libvirt would use
-   the simple scheme to whitelist the TLS cert of the source QEMU.
-
- - List - an full access control list, with optional regex matching.
-   This is more flexible and is used to provide 100% backcompat with
-   the existing HMP ACL commands. The caveat is that we can't create
-   these via the CLI -object arg yet.
-
- - ListFile - the same as List, but with the rules stored in JSON
-   format in an external file. This avoids the -object limitation
-   while also allowing the admin to change list entries on the file.
-   QEMU uses inotify to notice these changes and auto-reload the
-   file contents. This is likely a good default choice for most
-   network services, if the "simple" mechanism isn't sufficient.
-
- - PAM - delegate the username lookup to a PAM module, which opens
-   the door to many options including things like SQL/LDAP lookups.
-
-A later series that follows will integrate this framework into the VNC,
-NBD, migration, and character device servers.
-
-Daniel P. Berrang=C3=A9 (8):
-  util: add helper APIs for dealing with inotify
-  hw/usb: switch MTP to use new inotify APIs
-  authz: add QAuthZ object as an authorization base class
-  authz: add QAuthZSimple object type for trivial auth checks
-  authz: add QAuthZList object type for an access control list
-  authz: add QAuthZListFile object type for a file access control list
-  authz: add QAuthZPAM object type for authorizing using PAM
-  authz: delete existing ACL implementation
-
- .gitignore                     |   4 +
- MAINTAINERS                    |  14 ++
- Makefile                       |  17 +-
- Makefile.objs                  |  10 ++
- Makefile.target                |   2 +
- authz/Makefile.objs            |   7 +
- authz/base.c                   |  82 +++++++++
- authz/list.c                   | 315 +++++++++++++++++++++++++++++++++
- authz/listfile.c               | 252 ++++++++++++++++++++++++++
- authz/pam.c                    | 149 ++++++++++++++++
- authz/simple.c                 | 122 +++++++++++++
- authz/trace-events             |  18 ++
- configure                      |  36 ++++
- crypto/tlssession.c            |  35 ++--
- crypto/trace-events            |   2 +-
- hw/usb/dev-mtp.c               | 238 ++++++++++---------------
- include/authz/base.h           | 112 ++++++++++++
- include/authz/list.h           | 106 +++++++++++
- include/authz/listfile.h       | 104 +++++++++++
- include/authz/pam.h            |  84 +++++++++
- include/authz/simple.h         |  81 +++++++++
- include/qemu/acl.h             |  66 -------
- include/qemu/inotify.h         |  49 +++++
- monitor.c                      | 180 ++++++++++++-------
- qapi/authz.json                |  58 ++++++
- qapi/qapi-schema.json          |   1 +
- qom/object.c                   |  12 +-
- qom/object_interfaces.c        |  16 +-
- tests/.gitignore               |   1 +
- tests/Makefile.include         |   8 +-
- tests/test-authz-list.c        | 171 ++++++++++++++++++
- tests/test-crypto-tlssession.c |  15 +-
- tests/test-io-channel-tls.c    |  16 +-
- ui/vnc-auth-sasl.c             |  23 ++-
- ui/vnc-auth-sasl.h             |   5 +-
- ui/vnc-auth-vencrypt.c         |   2 +-
- ui/vnc-ws.c                    |   2 +-
- ui/vnc.c                       |  37 ++--
- ui/vnc.h                       |   4 +-
- util/Makefile.objs             |   2 +-
- util/acl.c                     | 179 -------------------
- util/inotify.c                 | 138 +++++++++++++++
- 42 files changed, 2258 insertions(+), 517 deletions(-)
- create mode 100644 authz/Makefile.objs
- create mode 100644 authz/base.c
- create mode 100644 authz/list.c
- create mode 100644 authz/listfile.c
- create mode 100644 authz/pam.c
- create mode 100644 authz/simple.c
- create mode 100644 authz/trace-events
- create mode 100644 include/authz/base.h
- create mode 100644 include/authz/list.h
- create mode 100644 include/authz/listfile.h
- create mode 100644 include/authz/pam.h
- create mode 100644 include/authz/simple.h
- delete mode 100644 include/qemu/acl.h
+Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+---
+ MAINTAINERS            |   6 ++
+ include/qemu/inotify.h |  49 +++++++++++++++
+ util/Makefile.objs     |   1 +
+ util/inotify.c         | 138 +++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 194 insertions(+)
  create mode 100644 include/qemu/inotify.h
- create mode 100644 qapi/authz.json
- create mode 100644 tests/test-authz-list.c
- delete mode 100644 util/acl.c
  create mode 100644 util/inotify.c
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 41cd3736a9..3610479af7 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1766,6 +1766,12 @@ F: include/qemu/sockets.h
+ F: util/qemu-sockets.c
+ F: qapi/sockets.json
+=20
++Inotify
++M: Daniel P. Berrange <berrange@redhat.com>
++S: Odd fixes
++F: util/inotify.c
++F: include/qemu/inotify.h
++
+ Throttling infrastructure
+ M: Alberto Garcia <berto@igalia.com>
+ S: Supported
+diff --git a/include/qemu/inotify.h b/include/qemu/inotify.h
+new file mode 100644
+index 0000000000..d78d04c5bb
+--- /dev/null
++++ b/include/qemu/inotify.h
+@@ -0,0 +1,49 @@
++/*
++ * QEMU inotify helper
++ *
++ * Copyright (c) 2018 Red Hat, Inc.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/lice=
+nses/>.
++ *
++ */
++
++#ifndef QEMU_INOTIFY_H
++#define QEMU_INOTIFY_H
++
++#include "qemu-common.h"
++#ifdef CONFIG_INOTIFY1
++#include <sys/inotify.h>
++#endif
++
++
++typedef struct QInotify QInotify;
++
++typedef void (*QInotifyHandler)(int wd,
++                                   uint32_t mask,
++                                   const char *name,
++                                   void *opaque);
++
++QInotify *qemu_inotify_new(QInotifyHandler cb,
++                           void *opaque,
++                           GDestroyNotify ffcb,
++                           Error **errp);
++
++void qemu_inotify_free(QInotify *in);
++
++int qemu_inotify_add_watch(QInotify *in,
++                           const char *path,
++                           uint32_t mask,
++                           Error **errp);
++
++#endif /* QEMU_INOTIFY_H */
+diff --git a/util/Makefile.objs b/util/Makefile.objs
+index e1c3fed4dc..4c1b44d019 100644
+--- a/util/Makefile.objs
++++ b/util/Makefile.objs
+@@ -48,4 +48,5 @@ util-obj-y +=3D range.o
+ util-obj-y +=3D stats64.o
+ util-obj-y +=3D systemd.o
+ util-obj-y +=3D iova-tree.o
++util-obj-y +=3D inotify.o
+ util-obj-$(CONFIG_LINUX) +=3D vfio-helpers.o
+diff --git a/util/inotify.c b/util/inotify.c
+new file mode 100644
+index 0000000000..dd9c194bea
+--- /dev/null
++++ b/util/inotify.c
+@@ -0,0 +1,138 @@
++/*
++ * QEMU inotify helper
++ *
++ * Copyright (c) 2018 Red Hat, Inc.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/lice=
+nses/>.
++ *
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/inotify.h"
++#include "qemu/main-loop.h"
++#include "qemu/error-report.h"
++#include "qapi/error.h"
++
++struct QInotify {
++    int fd;
++    QInotifyHandler cb;
++    void *opaque;
++    GDestroyNotify ffcb;
++};
++
++#ifdef CONFIG_INOTIFY1
++static void qemu_inotify_watch(void *arg)
++{
++    QInotify *in =3D arg;
++    char buf[4096]
++        __attribute__ ((aligned(__alignof__(struct inotify_event))));
++    int used =3D 0;
++    int len =3D read(in->fd, buf, sizeof(buf));
++
++    if (len < 0) {
++        if (errno !=3D EAGAIN) {
++            error_report("Failure monitoring inotify FD, disabling event=
+s");
++            goto error;
++        }
++
++        /* no more events right now */
++        return;
++    }
++
++    /* Loop over all events in the buffer */
++    while (used < len) {
++        struct inotify_event *ev =3D
++            (struct inotify_event *)buf + used;
++
++        in->cb(ev->wd, ev->mask, ev->name, in->opaque);
++
++        used +=3D sizeof(struct inotify_event) + ev->len;
++    }
++
++    return;
++
++ error:
++    qemu_set_fd_handler(in->fd, NULL, NULL, NULL);
++    close(in->fd);
++    in->fd =3D -1;
++}
++#endif
++
++QInotify *qemu_inotify_new(QInotifyHandler cb,
++                           void *opaque,
++                           GDestroyNotify ffcb,
++                           Error **errp)
++{
++#ifdef CONFIG_INOTIFY1
++    QInotify *in =3D g_new0(QInotify, 1);
++
++    in->fd =3D inotify_init1(IN_NONBLOCK);
++    if (in->fd =3D=3D -1) {
++        error_setg_errno(errp, errno,
++                         "Unable to initialize inotify");
++        g_free(in);
++        return NULL;
++    }
++    in->cb =3D cb;
++    in->opaque =3D opaque;
++    in->ffcb =3D ffcb;
++
++    qemu_set_fd_handler(in->fd, qemu_inotify_watch, NULL, in);
++
++    return in;
++#else
++    error_setg(errp, "Inotify not available on this platform");
++    return NULL;
++#endif
++
++}
++
++
++void qemu_inotify_free(QInotify *in)
++{
++    if (!in) {
++        return;
++    }
++
++    if (in->ffcb) {
++        in->ffcb(in->opaque);
++    }
++
++    if (in->fd !=3D -1) {
++        qemu_set_fd_handler(in->fd, NULL, NULL, NULL);
++        close(in->fd);
++        g_free(in);
++    }
++}
++
++
++int qemu_inotify_add_watch(QInotify *in,
++                           const char *path,
++                           uint32_t mask,
++                           Error **errp)
++{
++#ifdef CONFIG_INOTIFY1
++    int rv;
++    rv =3D inotify_add_watch(in->fd, path, mask);
++    if (rv < 0) {
++        error_setg_errno(errp, errno, "Unable to watch '%s'", path);
++        return -1;
++    }
++
++    return rv;
++#else
++    error_setg(errp, "Inotify not available on this platform");
++    return -1;
++#endif
++}
 --=20
 2.17.0
 
