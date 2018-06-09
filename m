@@ -1,65 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fRcFJ-0007zu-9w
-	for mharc-qemu-trivial@gnu.org; Sat, 09 Jun 2018 07:41:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39582)
+	id 1fRfWj-00015X-4D
+	for mharc-qemu-trivial@gnu.org; Sat, 09 Jun 2018 11:11:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35473)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fRcFH-0007zf-7i
-	for qemu-trivial@nongnu.org; Sat, 09 Jun 2018 07:41:24 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fRfWh-00014c-Ix
+	for qemu-trivial@nongnu.org; Sat, 09 Jun 2018 11:11:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fRcFG-0005ka-Ju
-	for qemu-trivial@nongnu.org; Sat, 09 Jun 2018 07:41:23 -0400
-Received: from mail-ot0-x241.google.com ([2607:f8b0:4003:c0f::241]:40322)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fRfWg-0002IQ-9u
+	for qemu-trivial@nongnu.org; Sat, 09 Jun 2018 11:11:35 -0400
+Received: from mail-qt0-x232.google.com ([2607:f8b0:400d:c0d::232]:43562)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fRcFG-0005k4-FB
-	for qemu-trivial@nongnu.org; Sat, 09 Jun 2018 07:41:22 -0400
-Received: by mail-ot0-x241.google.com with SMTP id w9-v6so13192846otj.7
-	for <qemu-trivial@nongnu.org>; Sat, 09 Jun 2018 04:41:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=keAmfY//50emjVDsWQNJhvqVbvQdrMk7AbvjSH0B0ek=;
-	b=DWKu9Osya++BtlCIFpiekpenTJ3j8mQDdRRhpGJFFJGxOswh4ExvHHsXDZQHOO9Nb9
-	7pX9boPsU4fqFReXQu1DA8/wQ9NLaJDgXmuGzNN1VyMTgcRV2FpOnZU9zA6bG8ynDdaM
-	FqqcArxTT7FVCtZ35ZOEnX1/+Q3VE56WDUI1I=
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fRfWb-0002EQ-K7; Sat, 09 Jun 2018 11:11:29 -0400
+Received: by mail-qt0-x232.google.com with SMTP id y89-v6so16386155qtd.10;
+	Sat, 09 Jun 2018 08:11:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=GyQu28x08eY14sQuR6djY0yHljoIa7T09bju5auHauk=;
+	b=kI2T7Ep7wHpSx7d5H/hFvFP1k04gr588kOZLNGaBVZY+GljDGiIuj6wPGPcP6ZfUIF
+	Juc+0GE61RKp2DckUxYcKvDOZMaFsEehyT3A21zcbMAHVv0+B1paUwORfHq/ED6GqLD3
+	pkgK2BaAZzJWpdmJh6dt6g/vj/92rmtgzwYICTDZO2+E+XSmHWla2dmkhvJrDKdBoFvZ
+	2nVTaSKrILSYw8ji6nUO28SVJwqnXmDjYIWXov0PvKltLbtYxLzg4gc4FsJFMqkQgHOi
+	cujJydp1BSsLjIJWhb0Tp1anD7bt1NixF4m2Zv0ie5EQti6/v7opJ8fkpqrnVwjX0nau
+	cUgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=keAmfY//50emjVDsWQNJhvqVbvQdrMk7AbvjSH0B0ek=;
-	b=Ddwbo9BsHn9iWaU2LSDNYBQp6p/CSiLxwBPPIWn8lj9k+Lqv2mVdA0cwZes0Y6H25p
-	86wmnijCUpe5X/xuDQvfuvygW6p4eZILbNPWwBL9E/iqgZ9RHuSfOxk8LiorvZcb3GYl
-	akjR9outSHbbihfD8zWWSQKJA4lRI/0aI9YiMr6FqmcTtB4AWE4000tcqdFSYpB+ot4r
-	9iAXv8a4E25PSs75Frp+eGB9vtLX7+KAD54z7jLChz4VzoC7WIikrJpfc/Uts4nacIFn
-	28skpmeTSrMHm/y1F92xoGw3MEZIIO56f5C5EvkVxZArWhgcw90KeJPBRu+AvNhkSxiy
-	uStw==
-X-Gm-Message-State: APt69E2UVig6gtt5zIvgEyrJtTPF6SSdmISpBVqD8JfmAgQb6hpAc46S
-	fzXxJaBjO9t+9E/GnhfxvFvimenH0XOBYf8VG5pyTA==
-X-Google-Smtp-Source: ADUXVKKRL/6VV/GBh9qRWuKcf9KBnomdJQzL3B++c7IeCYOWtn0gqCxJqW0pojM7yjGgQ5I/Ly4S6nnUC+Ia293wNSU=
-X-Received: by 2002:a9d:3d76:: with SMTP id
-	a109-v6mr3475905otc.294.1528544481707; 
-	Sat, 09 Jun 2018 04:41:21 -0700 (PDT)
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=GyQu28x08eY14sQuR6djY0yHljoIa7T09bju5auHauk=;
+	b=ns9bf4g+5cZVWLwpczmJOhuAG15unh8mjRSDJz7BEjagRDYZnSJr1xfr0vSfEdJdNh
+	4s2OO6F0o60ZNbpNhYEL9rgxWw1mTj2d/2qFq3um5jVzV3ArrLoAFRXWUNVKN8T2d1eZ
+	wjBXiMAlCkT8K8CE6xBaCYyiZWyHpD3KVyxmLjlItpf63ukPmy6FDM1ljZQyw5/O1etg
+	TaQM5Jz7gV5RyHL9d2I6ERbrUaiiosh0pSD2GLVqKRqXTKP1jKflUN+QORhN6O9uQq1M
+	JrLje5Q0t28POBrSS3kCCxHlHq+Q0AMehFvZa5Uzd7xVnv+Ip/ihXJAiZnb9q0dwo4T7
+	ohHA==
+X-Gm-Message-State: APt69E2ESc68+Peij7NYwQarLOxdfwItwtPS6dR013Yk/HWS2IDqY862
+	SPoe4+9L83eSyQYCJlAzqK8=
+X-Google-Smtp-Source: ADUXVKIgXU3T9pSuye69XDpvZW1S1eAfHUKs4FKSW7GbPYsUADeOa2KaxcUmcW7qelgq2ewXkNsyRw==
+X-Received: by 2002:ac8:36d:: with SMTP id
+	w45-v6mr9892104qtg.382.1528557088979; 
+	Sat, 09 Jun 2018 08:11:28 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	o31-v6sm6503531qte.16.2018.06.09.08.11.24
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Sat, 09 Jun 2018 08:11:28 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Thomas Huth <thuth@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-trivial@nongnu.org
+Date: Sat,  9 Jun 2018 12:10:48 -0300
+Message-Id: <20180609151048.9628-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP;
-	Sat, 9 Jun 2018 04:41:01 -0700 (PDT)
-In-Reply-To: <20180608185826.10708-1-f4bug@amsat.org>
-References: <20180608185826.10708-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 9 Jun 2018 12:41:01 +0100
-Message-ID: <CAFEAcA8aVX6RjzDJ6+VxM3mENHP-aE6DYbZjhboCc+46bAnoAQ@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>, 
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>,
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c0f::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Makefile: Remove
- qemu-version.h and qemu-options.def during 'make distclean'
+X-Received-From: 2607:f8b0:400d:c0d::232
+Subject: [Qemu-trivial] [PATCH v2] Makefile: Check for more dangling scratch
+ files in out-of-tree builds
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,17 +80,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 09 Jun 2018 11:41:24 -0000
+X-List-Received-Date: Sat, 09 Jun 2018 15:11:36 -0000
 
-On 8 June 2018 at 19:58, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrot=
-e:
-> qemu-version.h and qemu-options.def are generated files
-> that should be deleted during 'make distclean'.
+It is easy to catch the generated 'config-host.mak' in the source
+tree, however qemu-version.h and qemu-options.def are also generated
+files and are hidden by .gitignore rules.
 
-These are both in GENERATED_FILES, and 'make distclean'
-invokes 'make clean' which does an rm of all GENERATED_FILES.
-Why isn't that sufficient here?
+Improve the out-of-tree safety net rule added in d1bd2423a90,
+by also checking for these two files.
 
-thanks
--- PMM
+This solves building issues with out-of-tree builds from a
+source tree that has been built in:
+
+- /qemu-version.h existing in source tree:
+
+    /source/qemu/qemu-nbd.c: In function ‘version’:
+    /source/qemu/qemu-nbd.c:133:6: error: expected ‘)’ before
+    ‘QEMU_FULL_VERSION’
+     "%s " QEMU_FULL_VERSION "\n"
+          ^~~~~~~~~~~~~~~~~~
+          )
+    /source/qemu/qemu-nbd.c:133:3: error: format ‘%s’ expects a matching
+    ‘char *’ argument [-Werror=format=]
+     "%s " QEMU_FULL_VERSION "\n"
+      ~^
+    cc1: all warnings being treated as errors
+
+- /qemu-options.def existing in source tree:
+
+    /source/qemu/vl.c: In function ‘main’:
+    /source/qemu/vl.c:3052:18: error: ‘QEMU_OPTION_blockdev’ undeclared
+    (first use in this function); did you mean ‘QEMU_OPTION_clock’?
+                 case QEMU_OPTION_blockdev:
+                      ^~~~~~~~~~~~~~~~~~~~
+                      QEMU_OPTION_clock
+    /source/qemu/vl.c:3052:18: note: each undeclared identifier is reported
+    only once for each function it appears in
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+Since v1 http://lists.nongnu.org/archive/html/qemu-devel/2018-06/msg02254.html:
+Peter noticed [1] those files already are in GENERATED_FILES
+
+[1] http://lists.nongnu.org/archive/html/qemu-devel/2018-06/msg02338.html
+
+ Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 023b3437ec..521009964c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -55,7 +55,8 @@ endif
+ # Check that we're not trying to do an out-of-tree build from
+ # a tree that's been used for an in-tree build.
+ ifneq ($(realpath $(SRC_PATH)),$(realpath .))
+-ifneq ($(wildcard $(SRC_PATH)/config-host.mak),)
++scratch_files = config-host.mak qemu-version.h qemu-options.def
++ifneq ($(wildcard $(addprefix $(SRC_PATH)/,$(scratch_files))),)
+ $(error This is an out of tree build but your source tree ($(SRC_PATH)) \
+ seems to have been used for an in-tree build. You can fix this by running \
+ "$(MAKE) distclean && rm -rf *-linux-user *-softmmu" in your source tree)
+-- 
+2.17.1
+
 
