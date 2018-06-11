@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fSBRt-0005cJ-Qw
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Jun 2018 21:16:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43134)
+	id 1fSBS0-0005fr-P2
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Jun 2018 21:16:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43178)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBRr-0005XU-Jw
-	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:44 -0400
+	id 1fSBRt-0005c1-N2
+	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBRq-0003CZ-IF
-	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:43 -0400
-Received: from mail-qk0-x234.google.com ([2607:f8b0:400d:c09::234]:42995)
+	id 1fSBRs-0003Dp-Og
+	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:45 -0400
+Received: from mail-qk0-x22a.google.com ([2607:f8b0:400d:c09::22a]:43722)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBRl-00037N-Qm; Sun, 10 Jun 2018 21:16:37 -0400
-Received: by mail-qk0-x234.google.com with SMTP id j80-v6so12056289qke.9;
-	Sun, 10 Jun 2018 18:16:37 -0700 (PDT)
+	id 1fSBRq-0003CT-K9; Sun, 10 Jun 2018 21:16:42 -0400
+Received: by mail-qk0-x22a.google.com with SMTP id g126-v6so12065814qke.10;
+	Sun, 10 Jun 2018 18:16:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=kLCoZ0LRFan9Viz3NI54Wxwq5XOpk5xuLF5Z3/6sRS0=;
-	b=I9qtYUQxl1E9GyoTAnwqEhMKCxQdK0t0Q9IOdNjzc+1cxvGxKgn8MR3xzdG1DUZu1y
-	bgyLmdxibyX+tR8QTKSpsKuJAxIQTpxhm8Iu35jbS5GQYAoeh6fhCpc4v1DNsC9QfMyY
-	S0Nk5kI7PmiQsFuRFRJZJS2REDN6+plDleMPwZViXSy7Jp8s0t0OiwLXTmco5lMkky4C
-	vaJxEx1WyMFqujkAgqAUIKkbHHB/0zxWsRwU5vNwCumvFt0T6ojqk0vfQmnZObAdl6je
-	9bA6KeDBHJBz56rhkFqwdh20wFSh6Lw20JWxlhplKn/e9yRzjsYgK5C2TRBqTeA426iu
-	lJoQ==
+	bh=ugcctDB+RuF0zIz7Ajg2Ab8yWZTVhrpaUyzohoHk0jU=;
+	b=ncQjOB3uLen1nJbwoMBVDAckk0OcGR24d3cBUK5sRVmk1uqg7BKLYXuNcCNZI4RwAv
+	rnmxNVhBbLwrO7RP0egbnUzhaLDiEupuy8xaDswx0BaV60Z0Azoko44FHKI5lMonv88E
+	VGLzXFqns4bdyQEpg3jt4XQ+RDbX04+XobqlTwsjb0c5+zn+A9IcJs9mMatxVvWHCzxp
+	9n8QyFTqwgRRr4nA5QOpSzepGmWnKFd8vquZQPuLZfJ/ZroHxsXcWdpWLCO2ODejpCM8
+	jvlT+8ZeIGuiN9Mv1XUNpnMd9oekoaqkMxGvFSxFXQQ2IdeqwfImF9rulATd7eHO/bQj
+	vtmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=kLCoZ0LRFan9Viz3NI54Wxwq5XOpk5xuLF5Z3/6sRS0=;
-	b=rVLIh7CJykCjQTwUXTNdT5ERxA5hNADNuCHyeGQWgfoXwyM3/EkbC6lcKz9xU834A8
-	JhqDMzSNEpg9xGpxG71D+5tRX6p39Q5k8P8JeX0N+K88b/UhXVlLxOlbyicKJpKkxVLW
-	4/HuY3hIE1lnM3KRLLB6XbE5lhLT/HJkMyPh5748OftEqXSuhj/CuLFJoYrERCPm/dy7
-	dcL4B7woBD4DSmIUKwT2/B7kzcRcY/AJKqvjOdXUuiU9aCu2BwDTlvomsWkSWOjYsERb
-	Ic3umnTuUtQuR+jvzcMuF3QtaxsiU4FmMaBIp3PK9l4daPGKX1Kgoh84AgJojrJvaBLy
-	XoXA==
-X-Gm-Message-State: APt69E3xvEitRdeHTNC0OEWJlbRpp8Li1f4Zts8CLWbxYM12d25+H4CR
-	74WGcj3OOAaDfTNgRcG54QU=
-X-Google-Smtp-Source: ADUXVKITGhbAhlHJOvp2/wfWiJOrmMD1BMLssqI5FcSrj2TJTT/pFt8HycJ6TJU0+SexU0g09Ia3LQ==
-X-Received: by 2002:a37:285e:: with SMTP id
-	o91-v6mr12744736qkh.129.1528679797347; 
-	Sun, 10 Jun 2018 18:16:37 -0700 (PDT)
+	bh=ugcctDB+RuF0zIz7Ajg2Ab8yWZTVhrpaUyzohoHk0jU=;
+	b=CYYwIHhjJErb35g8FC8XEGHQxNqTjaMKQ548/c8BYgnf8UGUv9sHlILSTvm2rVInba
+	MviESbpkMaivEhgVJhlpVGfZeh7S5lHeheb+iaokRMlfaY8XdxGOq/ny7xzNn4jQli3v
+	62QdXTrMNO9xwBEcXDVs7sMuSR4CIDRsSD/wBj3DfndeJUfJ26Kj4DY5BeZf3RK6Etge
+	7h6OVyQXe3Jz+ZK3ZSIFrBAk8zNOPm8ZsbcTwj51L64ULY9uRhQjfvgxe5uJjQAi9Clj
+	ZYQbQUGLjKGoN9b9oAO1Aj5DUypGBa2XpG00tWRxtCxIfNvJiP/bztvPuBWOLCNeQ9HU
+	Bo3w==
+X-Gm-Message-State: APt69E3CLN8MLk1BmRzdYOfniFW362ISsPQWd8dxR5I42K/4HP/YKI2B
+	4YbD30QFmsfT7uQLxCaHkdQ=
+X-Google-Smtp-Source: ADUXVKKp0DSn6f0mPJ7fA6fyb2JyYN/0Ov8SfjczUDitriQIX6v4qm8hA5lxXH1nrjkCEDOZWS+xIQ==
+X-Received: by 2002:a37:b506:: with SMTP id
+	e6-v6mr12596951qkf.80.1528679802165; 
+	Sun, 10 Jun 2018 18:16:42 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	o5-v6sm28237223qtm.60.2018.06.10.18.16.33
+	o5-v6sm28237223qtm.60.2018.06.10.18.16.40
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 10 Jun 2018 18:16:36 -0700 (PDT)
+	Sun, 10 Jun 2018 18:16:41 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,12 +54,9 @@ To: Thomas Huth <thuth@redhat.com>,
 	Stefan Weil <sw@weilnetz.de>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Richard Henderson <rth@twiddle.net>, Alexander Graf <agraf@suse.de>,
-	David Hildenbrand <david@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	qemu-s390x@nongnu.org (open list:S390)
-Date: Sun, 10 Jun 2018 22:14:40 -0300
-Message-Id: <20180611011501.10235-20-f4bug@amsat.org>
+	Max Filippov <jcmvbkbc@gmail.com>
+Date: Sun, 10 Jun 2018 22:14:42 -0300
+Message-Id: <20180611011501.10235-22-f4bug@amsat.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180611011501.10235-1-f4bug@amsat.org>
 References: <20180611011501.10235-1-f4bug@amsat.org>
@@ -68,9 +65,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::234
-Subject: [Qemu-trivial] [PATCH v4 19/40] hw/s390x: Use the IEC binary prefix
- definitions
+X-Received-From: 2607:f8b0:400d:c09::22a
+Subject: [Qemu-trivial] [PATCH v4 21/40] hw/xtensa: Use the IEC binary
+ prefix definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,7 +79,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jun 2018 01:16:44 -0000
+X-List-Received-Date: Mon, 11 Jun 2018 01:16:49 -0000
 
 It eases code review, unit is explicit.
 
@@ -93,61 +90,16 @@ Patch generated using:
 and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Acked-by: Cornelia Huck <cohuck@redhat.com>
+Acked-by: Max Filippov <jcmvbkbc@gmail.com>
 ---
- hw/s390x/s390-skeys.c    | 3 ++-
- hw/s390x/s390-stattrib.c | 3 ++-
- hw/s390x/sclp.c          | 4 ++--
- 3 files changed, 6 insertions(+), 4 deletions(-)
+ hw/xtensa/xtfpga.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/hw/s390x/s390-skeys.c b/hw/s390x/s390-skeys.c
-index 76241c240e..15f7ab0e53 100644
---- a/hw/s390x/s390-skeys.c
-+++ b/hw/s390x/s390-skeys.c
-@@ -10,6 +10,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/boards.h"
- #include "hw/s390x/storage-keys.h"
- #include "qapi/error.h"
-@@ -19,7 +20,7 @@
- #include "sysemu/kvm.h"
- #include "migration/register.h"
- 
--#define S390_SKEYS_BUFFER_SIZE 131072  /* Room for 128k storage keys */
-+#define S390_SKEYS_BUFFER_SIZE (128 * KiB)  /* Room for 128k storage keys */
- #define S390_SKEYS_SAVE_FLAG_EOS 0x01
- #define S390_SKEYS_SAVE_FLAG_SKEYS 0x02
- #define S390_SKEYS_SAVE_FLAG_ERROR 0x04
-diff --git a/hw/s390x/s390-stattrib.c b/hw/s390x/s390-stattrib.c
-index 70b95550a8..5161a1659b 100644
---- a/hw/s390x/s390-stattrib.c
-+++ b/hw/s390x/s390-stattrib.c
-@@ -10,6 +10,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/boards.h"
- #include "cpu.h"
- #include "migration/qemu-file.h"
-@@ -20,7 +21,7 @@
- #include "qapi/error.h"
- #include "qapi/qmp/qdict.h"
- 
--#define CMMA_BLOCK_SIZE  (1 << 10)
-+#define CMMA_BLOCK_SIZE  (1 * KiB)
- 
- #define STATTR_FLAG_EOS     0x01ULL
- #define STATTR_FLAG_MORE    0x02ULL
-diff --git a/hw/s390x/sclp.c b/hw/s390x/sclp.c
-index 047d577313..04b51fbd15 100644
---- a/hw/s390x/sclp.c
-+++ b/hw/s390x/sclp.c
-@@ -13,6 +13,7 @@
+diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
+index 5dc13034f9..918cdadbb4 100644
+--- a/hw/xtensa/xtfpga.c
++++ b/hw/xtensa/xtfpga.c
+@@ -26,6 +26,7 @@
   */
  
  #include "qemu/osdep.h"
@@ -155,16 +107,24 @@ index 047d577313..04b51fbd15 100644
  #include "qapi/error.h"
  #include "cpu.h"
  #include "sysemu/sysemu.h"
-@@ -288,8 +289,7 @@ static void sclp_realize(DeviceState *dev, Error **errp)
+@@ -152,7 +153,7 @@ static void xtfpga_net_init(MemoryRegion *address_space,
+             sysbus_mmio_get_region(s, 1));
  
-     ret = s390_set_memory_limit(machine->maxram_size, &hw_limit);
-     if (ret == -E2BIG) {
--        error_setg(&err, "host supports a maximum of %" PRIu64 " GB",
--                   hw_limit >> 30);
-+        error_setg(&err, "host supports a maximum of %llu GB", hw_limit / GiB);
-     } else if (ret) {
-         error_setg(&err, "setting the guest size failed");
-     }
+     ram = g_malloc(sizeof(*ram));
+-    memory_region_init_ram_nomigrate(ram, OBJECT(s), "open_eth.ram", 16384,
++    memory_region_init_ram_nomigrate(ram, OBJECT(s), "open_eth.ram", 16 * KiB,
+                            &error_fatal);
+     vmstate_register_ram_global(ram);
+     memory_region_add_subregion(address_space, buffers, ram);
+@@ -229,7 +230,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
+     const char *kernel_cmdline = qemu_opt_get(machine_opts, "append");
+     const char *dtb_filename = qemu_opt_get(machine_opts, "dtb");
+     const char *initrd_filename = qemu_opt_get(machine_opts, "initrd");
+-    const unsigned system_io_size = 224 * 1024 * 1024;
++    const unsigned system_io_size = 224 * MiB;
+     int n;
+ 
+     for (n = 0; n < smp_cpus; n++) {
 -- 
 2.17.1
 
