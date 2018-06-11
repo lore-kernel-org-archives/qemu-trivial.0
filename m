@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fSBRV-0005HZ-7Q
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Jun 2018 21:16:21 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42845)
+	id 1fSBRb-0005Ky-Gw
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Jun 2018 21:16:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42898)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBRP-0005Et-TA
-	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:19 -0400
+	id 1fSBRW-0005JB-Vo
+	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBRO-0002ss-UY
-	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:15 -0400
-Received: from mail-qk0-x230.google.com ([2607:f8b0:400d:c09::230]:33706)
+	id 1fSBRT-0002wE-GZ
+	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:22 -0400
+Received: from mail-qk0-x22d.google.com ([2607:f8b0:400d:c09::22d]:41671)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBRK-0002pl-RV; Sun, 10 Jun 2018 21:16:10 -0400
-Received: by mail-qk0-x230.google.com with SMTP id c131-v6so3504028qkb.0;
-	Sun, 10 Jun 2018 18:16:10 -0700 (PDT)
+	id 1fSBRQ-0002uR-9y; Sun, 10 Jun 2018 21:16:16 -0400
+Received: by mail-qk0-x22d.google.com with SMTP id w23-v6so12067734qkb.8;
+	Sun, 10 Jun 2018 18:16:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=BDeKJGQrUivq4RhBXjZALkC83H4jw6eGFc6jLVbQq/8=;
-	b=h81vH3atl5TgDeqgRifEjAsoYHZ4UorwKSibIfeyRFPcCHylb3Regd2fW5d/f8ZLAg
-	IWh6EQ6kVMKEw4m9nScy4PJXxvVjp5zdm4lbVvaxM7BmChcNerH6dPG3VbaeRWaMsNiZ
-	GC4XvoLJMBaIgTZIsO/hffuq+6seVrdE18XGVtVqt7SWrjfGLOJHggSnhe+POPT2sWOt
-	I6E5uCvGV/d/d9F3B+dRgOoyPAS+cSlRh5shRm5tilh3evpJTp7IZlRV2SKBmAUJb2cz
-	ueWAWVfyKVJ1Qz88C915fxBl+uwEn87E5xcVLCcUcst+xrdE5NFgpQQMupOMsX2odQih
-	YWFg==
+	bh=4EFKG3mDcOHQE1nyo4hxmJr/AEiksu62sw6BUErZzn8=;
+	b=KmY2k9PpRhZH+dTZUCGKQLplRYSlkvaba4bwIuoHveHitz368U9AytvGb0ziVY7qou
+	vm/N4QlHGyKONCvvLmWu2FYZstqALQ6dbk0lkOd4x1nsqph3d4+IkS6lvOn2BayM6E9P
+	ySJV3dhtJyREtK97u2msgwswbqXX6giZtwHtnXSp0H13dFQvvG0RSdofyEKWd/x4ypDB
+	r/PIhtPGK5a4tG0PW6iX19j6mh1w7cnJT9g3MJma92tP2elyITXfnARjAeD/CU8GdEef
+	UMxCheY9WOPKWlEIP43JkTvZ+3XIOeEpLpj+kYFblnKXzZ+orUdMud0OABF7reFZ0lCt
+	hDIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=BDeKJGQrUivq4RhBXjZALkC83H4jw6eGFc6jLVbQq/8=;
-	b=NXl5SXOm8gMKozB+vQ4/UKz/POMF3HydtJH2yoOYlWnOpULJPWsryeU9EJVvYiBZfj
-	DRZUe6m5ckk/yZkurIFuFdJuF7EusHmIwjDUDIe62JKlCOO93DYWwh8z8R8YHHcH7JFJ
-	PT/cC+DUVCThbcRARu8eqEa/wEHOQm6bNMiH2ZKQwQMrjWT459v5fKbbq/AFmurYrnCR
-	DL7XZxrNHEHSWm1K7Ce0urcAKL6agcaEGaWJ2Ucg3FSMtU27TLpKAzYTqhDH82E2KZK2
-	4Lp8aVEVkhzeFEQMDs6mRJzawaMckHlPWK+gQuHO1Vo7CYRBkvoaJDePNk8TzaTFQnhz
-	/eCw==
-X-Gm-Message-State: APt69E1zgv/CwecaCUP9ZFTWmP1kjZoiNNvFG//NfnV7xSJG6mZG09Dz
-	LvSoQ3FbhUjfpaZ/SHX87Zc=
-X-Google-Smtp-Source: ADUXVKK1cwzRGSAGMseiubQCXFR3vm79G4sCR6Lp4LoG7fm8Sal8CorJDLr5/LQNJjfMDaS5kKP1hQ==
-X-Received: by 2002:a37:66c5:: with SMTP id
-	a188-v6mr13099942qkc.201.1528679770416; 
-	Sun, 10 Jun 2018 18:16:10 -0700 (PDT)
+	bh=4EFKG3mDcOHQE1nyo4hxmJr/AEiksu62sw6BUErZzn8=;
+	b=fcLuUnsFSKZzIcM4n4qVtqeMYSBLmgxcSk3yNpNjZu/2yqsUwic5awRs9yi6V2v2Jg
+	gKYGpcf22+9+ev60sw+gGC9S6IdXkYDWxeS0dX0T1cR54KrKgRT9lKnKhz9CZWKzR7ur
+	UsTFhsK6cPcGtFImFWvv5z9xv2er4rVBM+qEAj6Yvr8uQCPSQc0J822Z7yFZjPb1kSN6
+	W2H7ZVRwBijj1nu8sOuX01LQLGzTEQlvT+MDS9I8R9bAS5xoeeLMH+VVnKxq2di+Fa8K
+	msY3JcQOPZMbrkGIf4F+Sn0Ztuvq1L6nX9Mk9smAQM/6YdtLe5mVaL5EIzqsEY/BLKEN
+	TxYg==
+X-Gm-Message-State: APt69E0xPlo7mvQaIe4qM2qpq0Qpguyc46NWIZu3RtL1OVIZPqT7gGMw
+	NNR03Pd9tjnjqMtI23Gzvuo=
+X-Google-Smtp-Source: ADUXVKILlWhCGxi2UT8jrRrWYuiJiaNPGVOZ8swd+uJHj+5V7znS8ZvRAMwdMU3NRaBdWHrCEbTF4g==
+X-Received: by 2002:ae9:ef0a:: with SMTP id
+	d10-v6mr12352221qkg.253.1528679775807; 
+	Sun, 10 Jun 2018 18:16:15 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	o5-v6sm28237223qtm.60.2018.06.10.18.16.06
+	o5-v6sm28237223qtm.60.2018.06.10.18.16.10
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 10 Jun 2018 18:16:09 -0700 (PDT)
+	Sun, 10 Jun 2018 18:16:15 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,10 +54,12 @@ To: Thomas Huth <thuth@redhat.com>,
 	Stefan Weil <sw@weilnetz.de>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>
-Date: Sun, 10 Jun 2018 22:14:33 -0300
-Message-Id: <20180611011501.10235-13-f4bug@amsat.org>
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
+	Max Reitz <mreitz@redhat.com>, Keith Busch <keith.busch@intel.com>,
+	qemu-block@nongnu.org (open list:Block layer core)
+Date: Sun, 10 Jun 2018 22:14:34 -0300
+Message-Id: <20180611011501.10235-14-f4bug@amsat.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180611011501.10235-1-f4bug@amsat.org>
 References: <20180611011501.10235-1-f4bug@amsat.org>
@@ -66,8 +68,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::230
-Subject: [Qemu-trivial] [PATCH v4 12/40] hw/tpm: Use the IEC binary prefix
+X-Received-From: 2607:f8b0:400d:c09::22d
+Subject: [Qemu-trivial] [PATCH v4 13/40] hw/block: Use the IEC binary prefix
  definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -80,7 +82,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jun 2018 01:16:19 -0000
+X-List-Received-Date: Mon, 11 Jun 2018 01:16:24 -0000
 
 It eases code review, unit is explicit.
 
@@ -91,32 +93,79 @@ Patch generated using:
 and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- include/hw/acpi/tpm.h | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/block/m25p80.c  | 5 +++--
+ hw/block/nvme.c    | 3 ++-
+ hw/block/tc58128.c | 3 ++-
+ 3 files changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/acpi/tpm.h b/include/hw/acpi/tpm.h
-index 46ac4dc581..3580ffd50c 100644
---- a/include/hw/acpi/tpm.h
-+++ b/include/hw/acpi/tpm.h
-@@ -16,6 +16,7 @@
- #ifndef HW_ACPI_TPM_H
- #define HW_ACPI_TPM_H
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index a5ccffb4aa..38c69c81a9 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -22,6 +22,7 @@
+  */
  
+ #include "qemu/osdep.h"
 +#include "qemu/units.h"
- #include "hw/registerfields.h"
+ #include "hw/hw.h"
+ #include "sysemu/block-backend.h"
+ #include "hw/ssi/ssi.h"
+@@ -541,12 +542,12 @@ static void flash_erase(Flash *s, int offset, FlashCMD cmd)
+     switch (cmd) {
+     case ERASE_4K:
+     case ERASE4_4K:
+-        len = 4 << 10;
++        len = 4 * KiB;
+         capa_to_assert = ER_4K;
+         break;
+     case ERASE_32K:
+     case ERASE4_32K:
+-        len = 32 << 10;
++        len = 32 * KiB;
+         capa_to_assert = ER_32K;
+         break;
+     case ERASE_SECTOR:
+diff --git a/hw/block/nvme.c b/hw/block/nvme.c
+index 811084b6a7..ae2188c761 100644
+--- a/hw/block/nvme.c
++++ b/hw/block/nvme.c
+@@ -25,6 +25,7 @@
+  */
  
- #define TPM_TIS_ADDR_BASE           0xFED40000
-@@ -176,7 +177,7 @@ REG32(CRB_DATA_BUFFER, 0x80)
- #define TPM_CRB_ADDR_CTRL           (TPM_CRB_ADDR_BASE + A_CRB_CTRL_REQ)
- #define TPM_CRB_R_MAX               R_CRB_DATA_BUFFER
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "hw/block/block.h"
+ #include "hw/hw.h"
+ #include "hw/pci/msix.h"
+@@ -648,7 +649,7 @@ static uint16_t nvme_identify_ns(NvmeCtrl *n, NvmeIdentify *c)
  
--#define TPM_LOG_AREA_MINIMUM_SIZE   (64 * 1024)
-+#define TPM_LOG_AREA_MINIMUM_SIZE   (64 * KiB)
+ static uint16_t nvme_identify_nslist(NvmeCtrl *n, NvmeIdentify *c)
+ {
+-    static const int data_len = 4096;
++    static const int data_len = 4 * KiB;
+     uint32_t min_nsid = le32_to_cpu(c->nsid);
+     uint64_t prp1 = le64_to_cpu(c->prp1);
+     uint64_t prp2 = le64_to_cpu(c->prp2);
+diff --git a/hw/block/tc58128.c b/hw/block/tc58128.c
+index 1d9f7ee000..808ad76ba6 100644
+--- a/hw/block/tc58128.c
++++ b/hw/block/tc58128.c
+@@ -1,4 +1,5 @@
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "hw/hw.h"
+ #include "hw/sh4/sh.h"
+ #include "hw/loader.h"
+@@ -26,7 +27,7 @@ typedef struct {
  
- #define TPM_TCPA_ACPI_CLASS_CLIENT  0
- #define TPM_TCPA_ACPI_CLASS_SERVER  1
+ static tc58128_dev tc58128_devs[2];
+ 
+-#define FLASH_SIZE (16*1024*1024)
++#define FLASH_SIZE (16 * MiB)
+ 
+ static void init_dev(tc58128_dev * dev, const char *filename)
+ {
 -- 
 2.17.1
 
