@@ -1,96 +1,112 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fSPg7-00078T-0c
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Jun 2018 12:28:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40052)
+	id 1fSPjO-0000xu-MA
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Jun 2018 12:31:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41360)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1fSPg5-000772-Bd
-	for qemu-trivial@nongnu.org; Mon, 11 Jun 2018 12:28:22 -0400
+	(envelope-from <jsnow@redhat.com>) id 1fSPjL-0000un-OF
+	for qemu-trivial@nongnu.org; Mon, 11 Jun 2018 12:31:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1fSPg4-0001UD-DV
-	for qemu-trivial@nongnu.org; Mon, 11 Jun 2018 12:28:21 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59722 helo=mx1.redhat.com)
+	(envelope-from <jsnow@redhat.com>) id 1fSPjK-0003XZ-PJ
+	for qemu-trivial@nongnu.org; Mon, 11 Jun 2018 12:31:43 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:41626 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1fSPfo-0001GS-8l; Mon, 11 Jun 2018 12:28:04 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
+	id 1fSPjG-0003Uw-31; Mon, 11 Jun 2018 12:31:38 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1872D406E8A1;
-	Mon, 11 Jun 2018 16:28:03 +0000 (UTC)
-Received: from redhat.com (ovpn-122-170.rdu2.redhat.com [10.10.122.170])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 56E8C2024CA2;
-	Mon, 11 Jun 2018 16:27:57 +0000 (UTC)
-Date: Mon, 11 Jun 2018 19:27:57 +0300
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>,
-	Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>, qemu-arm@nongnu.org,
-	qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
-	qemu-s390x@nongnu.org, qemu-trivial@nongnu.org,
-	Fabien Chouteau <chouteau@adacore.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Marek Vasut <marex@denx.de>, Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Antony Pavlov <antonynpavlov@gmail.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Beniamino Galvani <b.galvani@gmail.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	"Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Alberto Garcia <berto@igalia.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Keith Busch <keith.busch@intel.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Paul Burton <paul.burton@mips.com>, Yongbok Kim <yongbok.kim@mips.com>,
-	Peter Chubb <peter.chubb@nicta.com.au>,
-	Yuval Shaia <yuval.shaia@oracle.com>,
-	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+	by mx1.redhat.com (Postfix) with ESMTPS id D26CF401EF00;
+	Mon, 11 Jun 2018 16:31:35 +0000 (UTC)
+Received: from [10.10.124.5] (ovpn-124-5.rdu2.redhat.com [10.10.124.5])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7CCDB112D195;
+	Mon, 11 Jun 2018 16:31:29 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	patches@linaro.org, Cornelia Huck <cohuck@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Markus Armbruster <armbru@redhat.com>,
 	Alex Williamson <alex.williamson@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, Fam Zheng <famz@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Michael Clark <mjc@sifive.com>,
-	Palmer Dabbelt <palmer@sifive.com>, Jiri Slaby <jslaby@suse.cz>,
-	Alexander Graf <agraf@suse.de>, Richard Henderson <rth@twiddle.net>,
-	Michael Walle <michael@walle.cc>, Jan Kiszka <jan.kiszka@web.de>
-Message-ID: <20180611192510-mutt-send-email-mst@kernel.org>
-References: <20180611011501.10235-1-f4bug@amsat.org>
-	<54eb6ae9-d7e0-8a4d-6bd4-f8f1d0f00b92@redhat.com>
+	Stefan Hajnoczi <stefanha@redhat.com>, Richard Henderson <rth@twiddle.net>
+References: <20180611141716.3813-1-peter.maydell@linaro.org>
+From: John Snow <jsnow@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+	NRhibLIrSP2g5nqXONyQrFxb1HtVaoR+Nrk=
+Message-ID: <67eed517-2f84-eaf9-25db-cdacee70c2aa@redhat.com>
+Date: Mon, 11 Jun 2018 12:31:29 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <54eb6ae9-d7e0-8a4d-6bd4-f8f1d0f00b92@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+In-Reply-To: <20180611141716.3813-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Mon, 11 Jun 2018 16:28:03 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Mon, 11 Jun 2018 16:28:03 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'mst@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.11.55.5]);
+	Mon, 11 Jun 2018 16:31:35 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Mon, 11 Jun 2018 16:31:35 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'jsnow@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH v4 00/40] Use the IEC binary prefix
- definitions
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] CODING_STYLE: Define our
+ preferred form for multiline comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,69 +118,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jun 2018 16:28:22 -0000
-
-On Mon, Jun 11, 2018 at 10:55:17AM -0500, Eric Blake wrote:
-> On 06/10/2018 08:14 PM, Philippe Mathieu-Daud=E9 wrote:
-> > Hi,
-> >=20
-> > This series:
-> >=20
-> > - split the byte-based definitions from "qemu/cutils.h" to "qemu/unit=
-s.h"
-> >    (this now triggers WARNING: 1 added file, does MAINTAINERS need up=
-dating?)
-> > - clean hw/ includes;
-> > - replace different constants used for byte size with their correspon=
-ding
-> >    IEC binary prefix definitions.
-> >=20
-> > Since v3:
-> > - use IEC binary prefix definitions (Stefan Weil)
-> > - rebased
-> > - added R-b tags
-> >=20
->=20
-> >   hw/net/ne2000.h                          |  5 ++--
-> ...
-> >   tests/test-qemu-opts.c                   |  7 +++---
-> >   scripts/checkpatch.pl                    |  1 +
-> >   135 files changed, 533 insertions(+), 431 deletions(-)
-> >   create mode 100644 include/qemu/units.h
-> >=20
->=20
-> At least monitor.c and vl.c are missing from this list; a more general =
-grep
-> shows that the following are all potential candidates for this cleanup:
->=20
-> $ git grep -n '[<>][<>]=3D [1-5]0'
-> disas/m68k.c:787:      val >>=3D 10;
-> hw/mips/mips_malta.c:194:    ram_size >>=3D 20;
-> hw/ppc/sam460ex.c:129:    ram_size >>=3D 20;
-> hw/timer/sh_timer.c:112:        case 4: freq >>=3D 10; break;
-
-Most likely not 4 kilobyte.
-
-
-> linux-user/mips/cpu_loop.c:641:                                code >>=3D=
- 10;
-> linux-user/mips/cpu_loop.c:664:                        code >>=3D 10;
-
-Seems to do with decoding machine code. Also unlikely to be in bytes.
-
-> monitor.c:3198:                    val <<=3D 20;
-> target/m68k/helper.c:386:    size >>=3D 10;
-> target/m68k/helper.c:390:        size >>=3D 10;
-> target/m68k/helper.c:394:            size >>=3D 10;
-> target/xtensa/helper.c:729:            sz >>=3D 20;
-> target/xtensa/helper.c:732:            sz >>=3D 10;
-> vl.c:2793:            sz <<=3D 20;
+X-List-Received-Date: Mon, 11 Jun 2018 16:31:44 -0000
 
 
 
+On 06/11/2018 10:17 AM, Peter Maydell wrote:
+> The codebase has a bit of a mix of different multiline
+> comment styles. State a preference for the Linux kernel
+> style:
+>     /*
+>      * Star on the left for each line.
+>      * Leading slash-star and trailing star-slash
+>      * each go on a line of their own.
+>      */
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> This is not my personal favourite, but seemed to be the
+> closest we had to consensus in the mail thread for v1;
+> I can live with it in order to avoid getting patches which
+> use the styles I like even less :-)
 
-> --=20
-> Eric Blake, Principal Software Engineer
-> Red Hat, Inc.           +1-919-301-3266
-> Virtualization:  qemu.org | libvirt.org
+"Same."
+
+Well, at least it's not asymmetric.
+
+Reviewed-by: John Snow <jsnow@redhat.com>
+
+> ---
+>  CODING_STYLE | 17 +++++++++++++++++
+>  1 file changed, 17 insertions(+)
+> 
+> diff --git a/CODING_STYLE b/CODING_STYLE
+> index 12ba58ee293..2d84f5f26d1 100644
+> --- a/CODING_STYLE
+> +++ b/CODING_STYLE
+> @@ -124,6 +124,23 @@ We use traditional C-style /* */ comments and avoid // comments.
+>  Rationale: The // form is valid in C99, so this is purely a matter of
+>  consistency of style. The checkpatch script will warn you about this.
+>  
+> +Multiline comments blocks should have a row of stars on the left,
+> +and the initial /* and terminating */ both on their own lines:
+> +    /*
+> +     * like
+> +     * this
+> +     */
+> +This is the same format required by the Linux kernel coding style.
+> +
+> +(Some of the existing comments in the codebase use the GNU Coding
+> +Standards form which does not have stars on the left, or other
+> +variations; avoid these when writing new comments, but don't worry
+> +about converting to the preferred form unless you're editing that
+> +comment anyway.)
+> +
+> +Rationale: Consistency, and ease of visually picking out a multiline
+> +comment from the surrounding code.
+> +
+>  8. trace-events style
+>  
+>  8.1 0x prefix
+> 
 
