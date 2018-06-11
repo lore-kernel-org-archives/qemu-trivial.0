@@ -1,51 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fSBRl-0005Uj-8X
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Jun 2018 21:16:37 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43035)
+	id 1fSBRs-0005Yn-OO
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Jun 2018 21:16:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43065)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBRi-0005RP-B9
-	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:35 -0400
+	id 1fSBRl-0005Ud-5o
+	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBRh-000340-FF
-	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:34 -0400
-Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:43219)
+	id 1fSBRk-00036a-0y
+	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:37 -0400
+Received: from mail-qt0-x236.google.com ([2607:f8b0:400d:c0d::236]:43813)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBRe-000324-99; Sun, 10 Jun 2018 21:16:30 -0400
-Received: by mail-qt0-x241.google.com with SMTP id y89-v6so18853568qtd.10;
-	Sun, 10 Jun 2018 18:16:30 -0700 (PDT)
+	id 1fSBRh-00033r-Dt; Sun, 10 Jun 2018 21:16:33 -0400
+Received: by mail-qt0-x236.google.com with SMTP id y89-v6so18853657qtd.10;
+	Sun, 10 Jun 2018 18:16:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=EPlJKkwR19zn0ufeJQi2AEIxY5hMqZr5frIwkDyD2j4=;
-	b=AVZUy1ZYeqEXPVOHxO8KfQOJrGNFDyVy5l86te0xb5mEKVOhjHjtTfz1KoU0Tn18cY
-	xJErY6oTfOOqq4V/Up00IaxoRhc9Rg+LVsw08cDorCVxtgAE+TRBTCSveaDanFYwkxXC
-	ecrcsqfUUtXaqVteuBMjKkLiiLA0bvr0M8HndFXJsdxqaXNsV1bJv8ZkZjKFDRNuHYxB
-	ix+jI+QBZpJQmM3r8tRLniMo2+h3WihNm5j+uEYgqTpo4c6C0DBi5GJ4cuatPMaEZaOv
-	x75tmYKWCFyxIBaxe4aQ+Nj+skh/29L62is878EyAIm8NRuVIECBaArTWiV+3XeNApIT
-	juxQ==
+	bh=0zHXyro76d9KMOvtUt9hnZNZ0IsWeXrBXNwvo8qmJr8=;
+	b=ZsrvMfmsFdmfel1IhKLLd6dbALGGdNH3GuVhFNtp/YOA138j3HeFYsnCicLs1YA9Y1
+	27dket6Yz34RoIduqKfYMq93fwxWZsj7TDWKJKF4GxzbH7h/HenMOxDvATFecEzH6W6o
+	SrehA51Xyz6WHUaHjxsC1V9K23R48sUUwDFJw5sTFiTJxN2OW6/4JtlygOA8s0OiwknA
+	DQp8A53UmItS87n5Ucb9pZnbfUP62LlOycBx6Ic/BxR75RfE8Zri6ev+3vx1BY8l4lmD
+	GzyiRwRp8PsqMo6/Z0p7vwrx6hyGx29Anm8ImX18VlrBl0r1Iyo7UVhUUmuKLH28wLvo
+	fyJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=EPlJKkwR19zn0ufeJQi2AEIxY5hMqZr5frIwkDyD2j4=;
-	b=W/xTpvR88VQ8Ku/b/+SQNG5V9PrEgID0pOvhBmbDE9vYzStf1EjGU4and/hMa5IrCg
-	Ax1PC8CqFYvWLbtDYYUkOTHUlIE+FdlYMuU2IlH+LhYA2NxqFPksLpNMbC1GrVXxQOWK
-	cJiiprFF9nHqaa74cS7q2UDCh8bfwbetiJFMD+inaV3bwwPmB9wy82M6OHmc0p+/2jh0
-	/vwXQks1y/mZTEtqZDDdmCe4+YsXQtAhlqrN4NiIT615uDqZ+wgKEuZePbcPghomJhtr
-	W3Lj48L+RuC98oHnN4WTwxB6zyOotSFq6gGvBqfxVhQJPfCwTYt/EnT6ovhAPGzWUgZB
-	y5jg==
-X-Gm-Message-State: APt69E0h5jfPwyj1zaU/UBbsy+NkXT2g9VOlMoGpytcDCPqx2g3ePiAj
-	Mg28ZtJeiw+cmVHC8XAtaf0=
-X-Google-Smtp-Source: ADUXVKI7nvm8CCAascHQq4ddOyB34hg6ZZYYhd6Bc9R3FGtAfLR3OCD20eE/fGbQdJahVp7nuVg5mg==
-X-Received: by 2002:a0c:c584:: with SMTP id a4-v6mr9239010qvj.11.1528679789898;
-	Sun, 10 Jun 2018 18:16:29 -0700 (PDT)
+	bh=0zHXyro76d9KMOvtUt9hnZNZ0IsWeXrBXNwvo8qmJr8=;
+	b=UEhcUg/4F9oblkTtS/Ko9cIGEMvz4p8gXfjDx4H61bUiueX2pOAzQAH2tn36RZ9iad
+	ta7nkoR5RHX8HQsNptMHF5V8OHdPEFuJREjWCLkcgqUdRYhO0vL/ztlp8yAdQFSExVFI
+	5i1GXJJAvvep12QxW1TiIjqI+THsI5IvlMCHF3j4jSrR32O8tyHtFUfRHKxvOuHNJoG9
+	oSdfod+HKZFee045kusEjPGRJz+hrimcSCTqJvuopExeUfMT0CmDZaA7FNmD44639wbt
+	VBzZ2a2v0YWwiEtTr0KWaHMvSVgHez5SGGeLmnDmi6JKM5SE1F/aAQC6Rz9eog+i31Pa
+	iHeA==
+X-Gm-Message-State: APt69E0juYXm43EjyBHSmvjA9CHAW8xIDZ1y9mQOQY9mvm/IkCV7vf8J
+	cSu+veNZHlzx5QUSLOP1RdA=
+X-Google-Smtp-Source: ADUXVKK+4QfBbvdArxixSxRXHXnofce/u8d8U0uW+vG+4a5C8s/SQNkwysKMq+KnJSi0MW0V46pF4w==
+X-Received: by 2002:ac8:2393:: with SMTP id
+	q19-v6mr14225505qtq.197.1528679792970; 
+	Sun, 10 Jun 2018 18:16:32 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	o5-v6sm28237223qtm.60.2018.06.10.18.16.27
+	o5-v6sm28237223qtm.60.2018.06.10.18.16.30
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 10 Jun 2018 18:16:29 -0700 (PDT)
+	Sun, 10 Jun 2018 18:16:32 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -53,9 +54,11 @@ To: Thomas Huth <thuth@redhat.com>,
 	Stefan Weil <sw@weilnetz.de>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Thomas Huth <huth@tuxfamily.org>
-Date: Sun, 10 Jun 2018 22:14:38 -0300
-Message-Id: <20180611011501.10235-18-f4bug@amsat.org>
+	Fabien Chouteau <chouteau@adacore.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Artyom Tarasenko <atar4qemu@gmail.com>
+Date: Sun, 10 Jun 2018 22:14:39 -0300
+Message-Id: <20180611011501.10235-19-f4bug@amsat.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180611011501.10235-1-f4bug@amsat.org>
 References: <20180611011501.10235-1-f4bug@amsat.org>
@@ -64,8 +67,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::241
-Subject: [Qemu-trivial] [PATCH v4 17/40] hw/m68k: Use the IEC binary prefix
+X-Received-From: 2607:f8b0:400d:c0d::236
+Subject: [Qemu-trivial] [PATCH v4 18/40] hw/sparc: Use the IEC binary prefix
  definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -78,7 +81,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jun 2018 01:16:35 -0000
+X-List-Received-Date: Mon, 11 Jun 2018 01:16:42 -0000
 
 It eases code review, unit is explicit.
 
@@ -89,32 +92,134 @@ Patch generated using:
 and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@tuxfamily.org>
 ---
- hw/m68k/mcf5208.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/sparc/leon3.c     | 9 +++++----
+ hw/sparc/sun4m.c     | 9 ++++-----
+ hw/sparc64/niagara.c | 3 ++-
+ hw/sparc64/sun4u.c   | 4 ++--
+ 4 files changed, 13 insertions(+), 12 deletions(-)
 
-diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
-index ae3dcc98c3..0f2245dd81 100644
---- a/hw/m68k/mcf5208.c
-+++ b/hw/m68k/mcf5208.c
-@@ -6,6 +6,7 @@
-  * This code is licensed under the GPL
+diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
+index 98fa6adae0..60400923d5 100644
+--- a/hw/sparc/leon3.c
++++ b/hw/sparc/leon3.c
+@@ -22,6 +22,7 @@
+  * THE SOFTWARE.
   */
  #include "qemu/osdep.h"
 +#include "qemu/units.h"
  #include "qemu/error-report.h"
  #include "qapi/error.h"
  #include "qemu-common.h"
-@@ -241,7 +242,7 @@ static void mcf5208evb_init(MachineState *machine)
+@@ -139,9 +140,9 @@ static void leon3_generic_hw_init(MachineState *machine)
+     env->qemu_irq_ack = leon3_irq_manager;
+ 
+     /* Allocate RAM */
+-    if ((uint64_t)ram_size > (1UL << 30)) {
+-        error_report("Too much memory for this machine: %d, maximum 1G",
+-                     (unsigned int)(ram_size / (1024 * 1024)));
++    if (ram_size > 1 * GiB) {
++        error_report("Too much memory for this machine: %lluMB, maximum 1G",
++                     ram_size / MiB);
+         exit(1);
+     }
+ 
+@@ -149,7 +150,7 @@ static void leon3_generic_hw_init(MachineState *machine)
      memory_region_add_subregion(address_space_mem, 0x40000000, ram);
  
-     /* Internal SRAM.  */
--    memory_region_init_ram(sram, NULL, "mcf5208.sram", 16384, &error_fatal);
-+    memory_region_init_ram(sram, NULL, "mcf5208.sram", 16 * KiB, &error_fatal);
-     memory_region_add_subregion(address_space_mem, 0x80000000, sram);
+     /* Allocate BIOS */
+-    prom_size = 8 * 1024 * 1024; /* 8Mb */
++    prom_size = 8 * MiB;
+     memory_region_init_ram(prom, NULL, "Leon3.bios", prom_size, &error_fatal);
+     memory_region_set_readonly(prom, true);
+     memory_region_add_subregion(address_space_mem, 0x00000000, prom);
+diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+index 0ee779fafe..d29411f013 100644
+--- a/hw/sparc/sun4m.c
++++ b/hw/sparc/sun4m.c
+@@ -22,6 +22,7 @@
+  * THE SOFTWARE.
+  */
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+@@ -45,7 +46,6 @@
+ #include "hw/loader.h"
+ #include "elf.h"
+ #include "trace.h"
+-#include "qemu/cutils.h"
  
-     /* Internal peripherals.  */
+ /*
+  * Sun4m architecture was used in the following machines:
+@@ -66,7 +66,7 @@
+ #define KERNEL_LOAD_ADDR     0x00004000
+ #define CMDLINE_ADDR         0x007ff000
+ #define INITRD_LOAD_ADDR     0x00800000
+-#define PROM_SIZE_MAX        (1024 * 1024)
++#define PROM_SIZE_MAX        (1 * MiB)
+ #define PROM_VADDR           0xffd00000
+ #define PROM_FILENAME        "openbios-sparc32"
+ #define CFG_ADDR             0xd00000510ULL
+@@ -741,9 +741,8 @@ static void ram_init(hwaddr addr, ram_addr_t RAM_size,
+ 
+     /* allocate RAM */
+     if ((uint64_t)RAM_size > max_mem) {
+-        error_report("Too much memory for this machine: %d, maximum %d",
+-                     (unsigned int)(RAM_size / (1024 * 1024)),
+-                     (unsigned int)(max_mem / (1024 * 1024)));
++        error_report("Too much memory for this machine: %llu, maximum %llu",
++                     RAM_size / MiB, max_mem / MiB);
+         exit(1);
+     }
+     dev = qdev_create(NULL, "memory");
+diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
+index 22c4655fde..4fa8cb2904 100644
+--- a/hw/sparc64/niagara.c
++++ b/hw/sparc64/niagara.c
+@@ -23,6 +23,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qemu-common.h"
+ #include "cpu.h"
+ #include "hw/hw.h"
+@@ -84,7 +85,7 @@ typedef struct NiagaraBoardState {
+ #define NIAGARA_PROM_BASE   0xfff0000000ULL
+ #define NIAGARA_Q_OFFSET    0x10000ULL
+ #define NIAGARA_OBP_OFFSET  0x80000ULL
+-#define PROM_SIZE_MAX       (4 * 1024 * 1024)
++#define PROM_SIZE_MAX       (4 * MiB)
+ 
+ static void add_rom_or_fail(const char *file, const hwaddr addr)
+ {
+diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+index 1bede85370..fd07b36226 100644
+--- a/hw/sparc64/sun4u.c
++++ b/hw/sparc64/sun4u.c
+@@ -22,6 +22,7 @@
+  * THE SOFTWARE.
+  */
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+@@ -52,11 +53,10 @@
+ #include "hw/loader.h"
+ #include "elf.h"
+ #include "trace.h"
+-#include "qemu/cutils.h"
+ 
+ #define KERNEL_LOAD_ADDR     0x00404000
+ #define CMDLINE_ADDR         0x003ff000
+-#define PROM_SIZE_MAX        (4 * 1024 * 1024)
++#define PROM_SIZE_MAX        (4 * MiB)
+ #define PROM_VADDR           0x000ffd00000ULL
+ #define PBM_SPECIAL_BASE     0x1fe00000000ULL
+ #define PBM_MEM_BASE         0x1ff00000000ULL
 -- 
 2.17.1
 
