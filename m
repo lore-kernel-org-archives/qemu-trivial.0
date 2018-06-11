@@ -1,55 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fSOGl-0003pq-O8
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Jun 2018 10:58:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34003)
+	id 1fSOrj-0000IG-Tx
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Jun 2018 11:36:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46098)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1fSOGj-0003mI-Uq
-	for qemu-trivial@nongnu.org; Mon, 11 Jun 2018 10:58:06 -0400
+	(envelope-from <cminyard@mvista.com>) id 1fSOrc-0000ED-Pi
+	for qemu-trivial@nongnu.org; Mon, 11 Jun 2018 11:36:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1fSOGj-0000hL-7J
-	for qemu-trivial@nongnu.org; Mon, 11 Jun 2018 10:58:06 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:36944 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1fSOGe-0000fC-QA; Mon, 11 Jun 2018 10:58:00 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2C243BD9E;
-	Mon, 11 Jun 2018 14:58:00 +0000 (UTC)
-Received: from gondolin (ovpn-117-32.ams2.redhat.com [10.36.117.32])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 22C382024CA1;
-	Mon, 11 Jun 2018 14:57:57 +0000 (UTC)
-Date: Mon, 11 Jun 2018 16:57:55 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, patches@linaro.org,
-	Richard Henderson <rth@twiddle.net>, John Snow <jsnow@redhat.com>, Philippe
-	=?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>, Alex Williamson
-	<alex.williamson@redhat.com>, Thomas Huth <thuth@redhat.com>, Markus
-	Armbruster <armbru@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, 
-	Kevin Wolf <kwolf@redhat.com>
-Message-ID: <20180611165755.64b684c8.cohuck@redhat.com>
-In-Reply-To: <20180611141716.3813-1-peter.maydell@linaro.org>
-References: <20180611141716.3813-1-peter.maydell@linaro.org>
-Organization: Red Hat GmbH
+	(envelope-from <cminyard@mvista.com>) id 1fSOrW-0000fJ-MM
+	for qemu-trivial@nongnu.org; Mon, 11 Jun 2018 11:36:12 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:41216)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <cminyard@mvista.com>) id 1fSOrW-0000es-CK
+	for qemu-trivial@nongnu.org; Mon, 11 Jun 2018 11:36:06 -0400
+Received: by mail-oi0-x243.google.com with SMTP id a141-v6so18252743oii.8
+	for <qemu-trivial@nongnu.org>; Mon, 11 Jun 2018 08:36:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=mvista-com.20150623.gappssmtp.com; s=20150623;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding:content-language;
+	bh=FhWEFwHbw/BnI2NKkzub0sTDB9nKiD6Wg5IgdVU6vzs=;
+	b=ql+bmEh43IOhtiy+7l4/1ipGFRHQa7Y3WYLgdeocuSCRfZ0Tw6F2X7KY99cqBGI29d
+	+MeS7V9lpGipw1/xEkqOchYHcw4OKimuEPqcb+gny9zxJtjQsndTlATZMN7G96YF/CF0
+	6UgmFazHWIIDmZT/uUzUJb7tRm24IiBBWTFkdAVT4H6LBl0S1JqBCvThZuns0fOn/BFy
+	6VMoNwplMK2a8DilMPGYGkE0QYCra0KDPOQwbuc+3IhATbcya45GFRzQZ5wHyBTb/rYT
+	KzhTaFoMJt7cQ9y1YGmckRk96F/7B8VJhW5DxIUfujXeOdvYgd+gcnAapY9eSZnH/6Gh
+	bJkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-transfer-encoding
+	:content-language;
+	bh=FhWEFwHbw/BnI2NKkzub0sTDB9nKiD6Wg5IgdVU6vzs=;
+	b=dGcVcse/TbUSl/s9pjDi1PHbEMSF2uk2Q8F9uLwAaT08cncvaJleG+cRuKSVcCYZFL
+	VT1ViSb2RJbqlmEpfjwnZS+TMI4vkh501ep201WhrRR3/03ImMlzbiRfrNXdWtxkqG5Q
+	9m9A2QyXSqlQ0V6mnz30lslRxTydwE/PddKAJxgig5JDHhUugFDBbcjwg9RyualXFdNQ
+	PV9oyYUgWe8GG7JeQiQAJxckqzGUND1NSkVjOwd7s+z7O13Iy+zP/gGQCrqQ0Cn8/T1F
+	xpMDYQeYNkZ3apxVSj5Z4j/Phgf5sJiUgqQjrAfpAwZOdQJjxA05tB1ag08aXG/yzKZy
+	T85w==
+X-Gm-Message-State: APt69E2ZW4sZ21mnXBGVxtBMwJk2UcijdvnFHi33Iupyo0aKd3fxAp6n
+	2JgHdYE74RTsY2QvkzDmzq2Aww==
+X-Google-Smtp-Source: ADUXVKIMzI/sBFXGFAK6JQuVotq8eOhLushbSq3wzbMTAz45hFnvR03N3++7WISmTzIvw651p6CUqA==
+X-Received: by 2002:aca:3c07:: with SMTP id
+	j7-v6mr9152778oia.128.1528731365354; 
+	Mon, 11 Jun 2018 08:36:05 -0700 (PDT)
+Received: from [192.168.27.3] ([47.184.170.59])
+	by smtp.gmail.com with ESMTPSA id
+	t10-v6sm24819793ota.23.2018.06.11.08.36.04
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 11 Jun 2018 08:36:04 -0700 (PDT)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Linus Walleij <linus.walleij@linaro.org>
+References: <20180606191801.6331-1-f4bug@amsat.org>
+From: Corey Minyard <cminyard@mvista.com>
+Message-ID: <c2812961-3b92-34b1-f207-a2cf8c4a6a6d@mvista.com>
+Date: Mon, 11 Jun 2018 10:36:03 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Mon, 11 Jun 2018 14:58:00 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Mon, 11 Jun 2018 14:58:00 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'cohuck@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH v2] CODING_STYLE: Define our preferred
- form for multiline comments
+In-Reply-To: <20180606191801.6331-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-GB
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::243
+Subject: Re: [Qemu-trivial] [PATCH] hw/i2c: Add trace events
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,29 +79,157 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jun 2018 14:58:07 -0000
+X-List-Received-Date: Mon, 11 Jun 2018 15:36:19 -0000
 
-On Mon, 11 Jun 2018 15:17:16 +0100
-Peter Maydell <peter.maydell@linaro.org> wrote:
-
-> The codebase has a bit of a mix of different multiline
-> comment styles. State a preference for the Linux kernel
-> style:
->     /*
->      * Star on the left for each line.
->      * Leading slash-star and trailing star-slash
->      * each go on a line of their own.
->      */
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On 06/06/2018 02:18 PM, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
-> This is not my personal favourite, but seemed to be the
-> closest we had to consensus in the mail thread for v1;
-> I can live with it in order to avoid getting patches which
-> use the styles I like even less :-)
-> ---
->  CODING_STYLE | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
+> $ qemu-system ... -d trace:i2c_recv,trace:i2c_send
+>
+> 4486@1528311614.709959:i2c_recv recv(addr:0x50) data:0x00
+> 4486@1528311614.709994:i2c_send send(addr:0x50) data:0x05
+> 4486@1528311614.710060:i2c_recv recv(addr:0x50) data:0x02
+> 4486@1528311614.710161:i2c_recv recv(addr:0x50) data:0x40
+> 4486@1528311614.710185:i2c_send send(addr:0x50) data:0x02
+> 4486@1528311614.710233:i2c_recv recv(addr:0x50) data:0x08
+> 4486@1528311614.710380:i2c_recv recv(addr:0x50) data:0x0d
+> 4486@1528311614.710396:i2c_send send(addr:0x50) data:0x1f
+> 4486@1528311614.710437:i2c_recv recv(addr:0x50) data:0x40
+>
+> or
+>
+> $ qemu-system ... -d trace:i2c\*
+>
+> 4486@1528311614.698315:i2c_event start(addr:0x50)
+> 4486@1528311614.698338:i2c_recv recv(addr:0x50) data:0x82
+> 4486@1528311614.698349:i2c_event finish(addr:0x50)
+> 4486@1528311614.698354:i2c_event start(addr:0x50)
+> 4486@1528311614.698357:i2c_send send(addr:0x50) data:0x11
+> 4486@1528311614.698377:i2c_event finish(addr:0x50)
+> 4486@1528311614.698380:i2c_event start(addr:0x50)
+> 4486@1528311614.698402:i2c_recv recv(addr:0x50) data:0x04
+> 4486@1528311614.698485:i2c_event finish(addr:0x50)
 
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+I looked this over and it all looks correct and complete.
+
+Reviewed-by: Corey Minyard <cminyard@mvista.com>
+
+>
+>   Makefile.objs       |  1 +
+>   hw/i2c/core.c       | 25 ++++++++++++++++++-------
+>   hw/i2c/trace-events |  7 +++++++
+>   3 files changed, 26 insertions(+), 7 deletions(-)
+>   create mode 100644 hw/i2c/trace-events
+>
+> diff --git a/Makefile.objs b/Makefile.objs
+> index 2c8cb72407..7a9828da28 100644
+> --- a/Makefile.objs
+> +++ b/Makefile.objs
+> @@ -213,6 +213,7 @@ trace-events-subdirs += hw/char
+>   trace-events-subdirs += hw/display
+>   trace-events-subdirs += hw/dma
+>   trace-events-subdirs += hw/hppa
+> +trace-events-subdirs += hw/i2c
+>   trace-events-subdirs += hw/i386
+>   trace-events-subdirs += hw/i386/xen
+>   trace-events-subdirs += hw/ide
+> diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+> index ab72d5bf2b..b54725985a 100644
+> --- a/hw/i2c/core.c
+> +++ b/hw/i2c/core.c
+> @@ -9,6 +9,7 @@
+>   
+>   #include "qemu/osdep.h"
+>   #include "hw/i2c/i2c.h"
+> +#include "trace.h"
+>   
+>   #define I2C_BROADCAST 0x00
+>   
+> @@ -130,14 +131,16 @@ int i2c_start_transfer(I2CBus *bus, uint8_t address, int recv)
+>       }
+>   
+>       QLIST_FOREACH(node, &bus->current_devs, next) {
+> +        I2CSlave *s = node->elt;
+>           int rv;
+>   
+> -        sc = I2C_SLAVE_GET_CLASS(node->elt);
+> +        sc = I2C_SLAVE_GET_CLASS(s);
+>           /* If the bus is already busy, assume this is a repeated
+>              start condition.  */
+>   
+>           if (sc->event) {
+> -            rv = sc->event(node->elt, recv ? I2C_START_RECV : I2C_START_SEND);
+> +            trace_i2c_event("start", s->address);
+> +            rv = sc->event(s, recv ? I2C_START_RECV : I2C_START_SEND);
+>               if (rv && !bus->broadcast) {
+>                   if (bus_scanned) {
+>                       /* First call, terminate the transfer. */
+> @@ -156,9 +159,11 @@ void i2c_end_transfer(I2CBus *bus)
+>       I2CNode *node, *next;
+>   
+>       QLIST_FOREACH_SAFE(node, &bus->current_devs, next, next) {
+> -        sc = I2C_SLAVE_GET_CLASS(node->elt);
+> +        I2CSlave *s = node->elt;
+> +        sc = I2C_SLAVE_GET_CLASS(s);
+>           if (sc->event) {
+> -            sc->event(node->elt, I2C_FINISH);
+> +            trace_i2c_event("finish", s->address);
+> +            sc->event(s, I2C_FINISH);
+>           }
+>           QLIST_REMOVE(node, next);
+>           g_free(node);
+> @@ -169,14 +174,17 @@ void i2c_end_transfer(I2CBus *bus)
+>   int i2c_send_recv(I2CBus *bus, uint8_t *data, bool send)
+>   {
+>       I2CSlaveClass *sc;
+> +    I2CSlave *s;
+>       I2CNode *node;
+>       int ret = 0;
+>   
+>       if (send) {
+>           QLIST_FOREACH(node, &bus->current_devs, next) {
+> -            sc = I2C_SLAVE_GET_CLASS(node->elt);
+> +            s = node->elt;
+> +            sc = I2C_SLAVE_GET_CLASS(s);
+>               if (sc->send) {
+> -                ret = ret || sc->send(node->elt, *data);
+> +                trace_i2c_send(s->address, *data);
+> +                ret = ret || sc->send(s, *data);
+>               } else {
+>                   ret = -1;
+>               }
+> @@ -189,7 +197,9 @@ int i2c_send_recv(I2CBus *bus, uint8_t *data, bool send)
+>   
+>           sc = I2C_SLAVE_GET_CLASS(QLIST_FIRST(&bus->current_devs)->elt);
+>           if (sc->recv) {
+> -            ret = sc->recv(QLIST_FIRST(&bus->current_devs)->elt);
+> +            s = QLIST_FIRST(&bus->current_devs)->elt;
+> +            ret = sc->recv(s);
+> +            trace_i2c_recv(s->address, ret);
+>               if (ret < 0) {
+>                   return ret;
+>               } else {
+> @@ -226,6 +236,7 @@ void i2c_nack(I2CBus *bus)
+>       QLIST_FOREACH(node, &bus->current_devs, next) {
+>           sc = I2C_SLAVE_GET_CLASS(node->elt);
+>           if (sc->event) {
+> +            trace_i2c_event("nack", node->elt->address);
+>               sc->event(node->elt, I2C_NACK);
+>           }
+>       }
+> diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
+> new file mode 100644
+> index 0000000000..d339b61202
+> --- /dev/null
+> +++ b/hw/i2c/trace-events
+> @@ -0,0 +1,7 @@
+> +# See docs/devel/tracing.txt for syntax documentation.
+> +
+> +# hw/i2c/core.c
+> +
+> +i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x)"
+> +i2c_send(uint8_t address, uint8_t data) "send(addr:0x%02x) data:0x%02x"
+> +i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
+
+
 
