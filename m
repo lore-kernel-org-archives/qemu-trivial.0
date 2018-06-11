@@ -1,70 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fSBR8-0004uX-25
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Jun 2018 21:15:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42623)
+	id 1fSBR9-0004wD-K9
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Jun 2018 21:15:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42647)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBR5-0004sV-5e
-	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:15:56 -0400
+	id 1fSBR7-0004td-9M
+	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:15:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBR1-0002cn-Um
-	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:15:55 -0400
-Received: from mail-qk0-x233.google.com ([2607:f8b0:400d:c09::233]:43729)
+	id 1fSBR6-0002gn-Gp
+	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:15:57 -0400
+Received: from mail-qt0-x234.google.com ([2607:f8b0:400d:c0d::234]:46274)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBQz-0002a0-FZ; Sun, 10 Jun 2018 21:15:49 -0400
-Received: by mail-qk0-x233.google.com with SMTP id g126-v6so12065060qke.10;
-	Sun, 10 Jun 2018 18:15:49 -0700 (PDT)
+	id 1fSBR1-0002cN-P1; Sun, 10 Jun 2018 21:15:51 -0400
+Received: by mail-qt0-x234.google.com with SMTP id h5-v6so18821133qtm.13;
+	Sun, 10 Jun 2018 18:15:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=CHj5nEG5wdEZBDfB0EoC2/TWxMav1mdYMU70/zVl+Wc=;
-	b=RmMViC/B0BSufcZiPL2w5n2k/Ckezsyd6BFoHolYCcgGb8lUqMTHUmqVB6t+dYKu5h
-	3sNf/PIDrZeup+9td5sSNl+LNxXtvP6tBE0GDECu2lyWJ0sKYDDVC7QJEHeTCmiiO0w7
-	3SNfGqZA1MY8cK4VlZ4SHtNqh3ONTA7DzR2nS058WPAQqURnM5ojuZK3Rvz0DlRO0ga8
-	Ektmx2gDMx6ZxKqdXUxHWtMZt8967iI/85luBt2Nsanp9jd0EMux4ORlbIF02JylVQ53
-	CQebMzEQod5RymLJS3ufg8irNHdnP9uDp+DmgupwNnmTMDppaX+vMQztdJR6P5goT495
-	A3og==
+	bh=E70dtblfVfhO6wmbl0ejCoJouwpMVSuWo7ui6CXQ6Ro=;
+	b=SyhwJbarnNK7TfrurWE+7kX0rrWFtMZ6D1Nq9s8vMG85nEtSXWEOBX7r17L1VKsN5x
+	Zm8lA9Aps2c/XEdYtQI8fvwiIeskbgju4CjU8Nkfjpzi8GahYpf17uk4VTML5t6hHReY
+	+QkNAqiwhOhTE50IkLCiVKzBN5l5WFXw35SYtu7GWugz1rU5F7rzQuzkab+wm4559Jfe
+	SQ5XCSuNCco8QS55h3l5ar8RBo295zf0sSFrM5L+jFoXoIDHQYxNg9Ggrsd1tW1UZxIz
+	kWvDX1eC1+ILwGMwoc5GZdxfKIddMvotGeu4mglaDVBiTnigiVz6eD9wz4Ujoym/otmI
+	p8lQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=CHj5nEG5wdEZBDfB0EoC2/TWxMav1mdYMU70/zVl+Wc=;
-	b=X2UKgj6Xw7enHc4NGuI+XSvsfkDyCxSzCviYwAVxfeFr6SZQ9t3LPzPWuh6vQkwMCL
-	l4042gkJcNb55uoI48sIBvDWq357UWYqKV1gjSENCmCOGfU4qMSKqL9Pyuf4GsrfL0Ns
-	HTPNHIiufa/6TwU5+6dGVyKtt7nGrZSxPNLXubfrInYI2VvME4BBBi/E2dhXzEO0kNyc
-	YHlq3wkAOjC3mTsAyQ/5qOoOXaULu7u5Nzx6U120s9fAAYAnwU0LnwkAPVYWG/IVUMhP
-	+VekoOu/dKOJhhHFR9W8x4bQY+1XFcIl8purkJpe79evMqM6CIU8cZAZKoknCaNjcQVh
-	gy3Q==
-X-Gm-Message-State: APt69E0p2BgjrkLUfflB3gKzFTTpfD0Qs4/IdHDgwIpv8OHDT8jFFsqh
-	cZ7iJ8M5eIGJyEhnLFbRMuw=
-X-Google-Smtp-Source: ADUXVKIjub5YomE0X+sPmDOjcZL14DfFQPuNyyEhGFLnLJ9fUn5EEzXNtgBkTPcT7PF69vZK2wd1EA==
-X-Received: by 2002:a37:285e:: with SMTP id
-	o91-v6mr12743336qkh.129.1528679748979; 
-	Sun, 10 Jun 2018 18:15:48 -0700 (PDT)
+	bh=E70dtblfVfhO6wmbl0ejCoJouwpMVSuWo7ui6CXQ6Ro=;
+	b=hd78eR3t57qMng0bIq/GbQLYjpFZKw9WIlDQf5kxcUw6Sdnlycm+qLKCnq/dclZl9G
+	C2nDo/ePtQsnTgiHpPSbNf+fKp7+C/D3VVqafUKSkukaNLRStPIZ+pHsjlMu6Tgy9I0m
+	y5FbUFtRYDf2TbNGSAhnWSVxvLYWuceFjIOcn7hwxwjvIvk3byVPaOxqy8sTEBLoMDiW
+	mglCISTPcN85vwK37YKt8vpac5Foa8YNr8IJBBrmigjoBCfa8fzSH8jyK6kczjAoHhru
+	e0FxRMYprgLld4jD2FR2sKPdeYsQq3X2jB7r4yy+ocRJbOOnhKaMBoEYjaCof/L2NwNz
+	soSA==
+X-Gm-Message-State: APt69E1SXk8LBC4Ih1cf+b+64NFUJkhtPHfTnYCi8lgsH2nWkyy5Wwni
+	9Raqv8Ru8b8q/WPipGxk8lYIXKg2
+X-Google-Smtp-Source: ADUXVKI7x1Kch2Hr9s3HAWnGNJBQl778n2sPG6qpXbDyIrhbdm7GRnhNsRJwY5yGNddRHU984jcQHg==
+X-Received: by 2002:aed:3541:: with SMTP id
+	b1-v6mr14267015qte.68.1528679751315; 
+	Sun, 10 Jun 2018 18:15:51 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	o5-v6sm28237223qtm.60.2018.06.10.18.15.43
+	o5-v6sm28237223qtm.60.2018.06.10.18.15.49
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 10 Jun 2018 18:15:48 -0700 (PDT)
+	Sun, 10 Jun 2018 18:15:50 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Thomas Huth <thuth@redhat.com>,
 	Stefan Weil <sw@weilnetz.de>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paul Burton <paul.burton@mips.com>, Aurelien Jarno <aurelien@aurel32.net>,
-	Yongbok Kim <yongbok.kim@mips.com>,
-	David Gibson <david@gibson.dropbear.id.au>, Alexander Graf <agraf@suse.de>,
-	qemu-arm@nongnu.org (open list:ARM),
-	qemu-ppc@nongnu.org (open list:PowerPC)
-Date: Sun, 10 Jun 2018 22:14:27 -0300
-Message-Id: <20180611011501.10235-7-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Sun, 10 Jun 2018 22:14:28 -0300
+Message-Id: <20180611011501.10235-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180611011501.10235-1-f4bug@amsat.org>
 References: <20180611011501.10235-1-f4bug@amsat.org>
@@ -73,9 +64,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::233
-Subject: [Qemu-trivial] [PATCH v4 06/40] hw: Directly use "qemu/units.h"
- instead of "qemu/cutils.h"
+X-Received-From: 2607:f8b0:400d:c0d::234
+Subject: [Qemu-trivial] [PATCH v4 07/40] hw/ivshmem: Use the IEC binary
+ prefix definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -87,146 +78,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jun 2018 01:15:56 -0000
+X-List-Received-Date: Mon, 11 Jun 2018 01:15:58 -0000
 
-These files don't use anything exposed by "qemu/cutils.h",
-simplify preprocessing including directly "qemu/units.h".
+It eases code review, unit is explicit.
+
+Patch generated using:
+
+  $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include/hw/
+
+and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/arm/msf2-soc.c  | 2 +-
- hw/arm/msf2-som.c  | 2 +-
- hw/core/machine.c  | 2 +-
- hw/display/sm501.c | 2 +-
- hw/mips/boston.c   | 2 +-
- hw/ppc/pnv.c       | 2 +-
- hw/ppc/ppc440_uc.c | 2 +-
- 7 files changed, 7 insertions(+), 7 deletions(-)
+ hw/misc/ivshmem.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-index 530e461c42..edb3ba824f 100644
---- a/hw/arm/msf2-soc.c
-+++ b/hw/arm/msf2-soc.c
-@@ -23,13 +23,13 @@
+diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
+index 16f03701b7..9a9f990867 100644
+--- a/hw/misc/ivshmem.c
++++ b/hw/misc/ivshmem.c
+@@ -17,6 +17,7 @@
+  * GNU GPL, version 2 or (at your option) any later version.
   */
- 
  #include "qemu/osdep.h"
 +#include "qemu/units.h"
  #include "qapi/error.h"
- #include "qemu-common.h"
- #include "hw/arm/arm.h"
- #include "exec/address-spaces.h"
- #include "hw/char/serial.h"
- #include "hw/boards.h"
--#include "qemu/cutils.h"
- #include "hw/arm/msf2-soc.h"
- #include "hw/misc/unimp.h"
+ #include "qemu/cutils.h"
+ #include "hw/hw.h"
+@@ -1302,7 +1303,7 @@ static void ivshmem_realize(PCIDevice *dev, Error **errp)
+     }
  
-diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-index ed533bbde1..2432b5e935 100644
---- a/hw/arm/msf2-som.c
-+++ b/hw/arm/msf2-som.c
-@@ -23,12 +23,12 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "hw/boards.h"
- #include "hw/arm/arm.h"
- #include "exec/address-spaces.h"
--#include "qemu/cutils.h"
- #include "hw/arm/msf2-soc.h"
- #include "cpu.h"
- 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index ccf3a4b9c7..2077328bcc 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -11,6 +11,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/boards.h"
- #include "qapi/error.h"
- #include "qapi/qapi-visit-common.h"
-@@ -19,7 +20,6 @@
- #include "sysemu/sysemu.h"
- #include "sysemu/numa.h"
- #include "qemu/error-report.h"
--#include "qemu/cutils.h"
- #include "sysemu/qtest.h"
- 
- static char *machine_get_accel(Object *obj, Error **errp)
-diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index 1c6c9445c5..bbb9274886 100644
---- a/hw/display/sm501.c
-+++ b/hw/display/sm501.c
-@@ -24,7 +24,7 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "qemu/cutils.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-index 512c60c03e..b7bfeccf4c 100644
---- a/hw/mips/boston.c
-+++ b/hw/mips/boston.c
-@@ -18,6 +18,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qemu-common.h"
- 
- #include "exec/address-spaces.h"
-@@ -32,7 +33,6 @@
- #include "hw/mips/cpudevs.h"
- #include "hw/pci-host/xilinx-pcie.h"
- #include "qapi/error.h"
--#include "qemu/cutils.h"
- #include "qemu/error-report.h"
- #include "qemu/log.h"
- #include "chardev/char.h"
-diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-index bdb6f63d2c..0df4a4fd74 100644
---- a/hw/ppc/pnv.c
-+++ b/hw/ppc/pnv.c
-@@ -18,6 +18,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "sysemu/sysemu.h"
- #include "sysemu/numa.h"
-@@ -31,7 +32,6 @@
- #include "hw/ppc/pnv_core.h"
- #include "hw/loader.h"
- #include "exec/address-spaces.h"
--#include "qemu/cutils.h"
- #include "qapi/visitor.h"
- #include "monitor/monitor.h"
- #include "hw/intc/intc.h"
-diff --git a/hw/ppc/ppc440_uc.c b/hw/ppc/ppc440_uc.c
-index b5b31b4b9b..1ab2235f20 100644
---- a/hw/ppc/ppc440_uc.c
-+++ b/hw/ppc/ppc440_uc.c
-@@ -9,8 +9,8 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qemu-common.h"
--#include "qemu/cutils.h"
- #include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "cpu.h"
+     if (s->sizearg == NULL) {
+-        s->legacy_size = 4 << 20; /* 4 MB default */
++        s->legacy_size = 4 * MiB; /* 4 MB default */
+     } else {
+         int ret;
+         uint64_t size;
 -- 
 2.17.1
 
