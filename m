@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fSBRC-000501-Sw
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Jun 2018 21:16:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42704)
+	id 1fSBRI-00058C-Te
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Jun 2018 21:16:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42749)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBRA-0004xB-DX
-	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:01 -0400
+	id 1fSBRG-00053X-8i
+	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBR9-0002if-FA
-	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:00 -0400
-Received: from mail-qt0-x229.google.com ([2607:f8b0:400d:c0d::229]:42489)
+	id 1fSBRF-0002mn-1i
+	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:06 -0400
+Received: from mail-qk0-x242.google.com ([2607:f8b0:400d:c09::242]:41712)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBR7-0002hD-9g; Sun, 10 Jun 2018 21:15:57 -0400
-Received: by mail-qt0-x229.google.com with SMTP id y31-v6so18837193qty.9;
-	Sun, 10 Jun 2018 18:15:57 -0700 (PDT)
+	id 1fSBRA-0002iy-IO; Sun, 10 Jun 2018 21:16:00 -0400
+Received: by mail-qk0-x242.google.com with SMTP id w23-v6so12067496qkb.8;
+	Sun, 10 Jun 2018 18:16:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=G1TJOuGeCM/sX0MP4L0B7rLOEQ4M5WxP9k7w9FqKd+k=;
-	b=kDl8yDsRFb5f3BE7g3ebjrVHBtISmnVSR/2uEpZlSfAle3vr+vc+v73cOLkcW9SNDP
-	GfryWVNbTCfVuD7Th4Ocj9KEjOjiuVwOEJpqMNdrnmVy3Ojz2mebCKh7U6wCc0KTF3Fh
-	Hp1ljjhdehyls1a4o7HdtNAHT69Xd6oNuxkiIihD81laOmBPE8gUmTYD2ZoIC0tCghSf
-	ECeRmFqfEqJPj9zAxmIGdzBahrRA/B6ySP0lrYmXIORvIdckRC0+uxoqB1kZ2boM+Z30
-	mGbwOBYygIQ14790C5Zl69YfxtYEkXCVWUsNazDBVKEOmBXbmFPYD348dgB5aHZfwgyF
-	TgHQ==
+	bh=il7wha5HlRd74bIeuuro7pR2rsTDOz8yWq0585fLYxk=;
+	b=R2L2hGLG7efAQLhIYuOS6R+lWFHj6RQ8EFBV694RCsXWLw5H0WJaWmK+LHawVnZeSZ
+	Rzk0SVydrFFZlcVdbdmb7PQOIMyMl89m5DE6Wg+/T6Uy4DA3JUO3NCoPIZ95/SB3f1Cz
+	ALRIBpFuJgjQmL3HNd6mRvq0Iwz/2h18cJtwEDNo5ahQzbDOfeDbnQ3geIXuvV8jr9MM
+	xupQmyzypeG4pNTRamQcT8QFYyg2Ad7BBin7daTmuLnMo3YjAOdGwCLNSk6CXRWwlEUb
+	1HBG/+kJcXBxYhr+yKkW9T4ocejemMtnWodBv1lTcmq2mtM66o725LwMx+xYVJfT9I+X
+	9c6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=G1TJOuGeCM/sX0MP4L0B7rLOEQ4M5WxP9k7w9FqKd+k=;
-	b=reMAigaYz2aHbaIseAqZgwC1iheVhaMU7YyRyj8KKSbfPosg8Tt6CQsUn+fqzcYV8c
-	3Q+y+DyJQm6/FPGzZgqhSQTl26hV0tp31N6F7HRtXz2SgSZEBDpQFcjDjui/My/WKKQN
-	NbILMsB3s1HpvqSE1ITNZsvy7WyOyL6sH5k00RtFgJoG7bb18seIWtxCiqYgu+WTXMNu
-	UpPTytLQic1vAuxWql54J+ZBFR5H7nVNmjKewQcTTR6QKeib26R3bMCS9tWRbGTIaSfI
-	ReasbtAK9gScNtUhp3eRtLc31sdYX9ynSJ5Y5WcPXzgvGQooHPuRQSHxQr+U7AahUqnQ
-	87RA==
-X-Gm-Message-State: APt69E0+S4Y8o5HYUVUADt2bMz//TlJHe6uc4vjZ7ZOwrKd9brRpeeVo
-	o2MZ57VHRQ8LiTLRtND+1zs=
-X-Google-Smtp-Source: ADUXVKLTv9IfbUZdptgeEZ2VbvBEbhNclh6ncSM5nS8S/DE2KHPAp4EVP3+Ioo/KANgm4mOKgtS5dg==
-X-Received: by 2002:ac8:1bee:: with SMTP id
-	m43-v6mr14742840qtk.339.1528679756870; 
-	Sun, 10 Jun 2018 18:15:56 -0700 (PDT)
+	bh=il7wha5HlRd74bIeuuro7pR2rsTDOz8yWq0585fLYxk=;
+	b=MuA3F5isQEPfgfgqNs4NZgS5V77qlp7lB3IGcz6Z/6qjdn1ffmSB+mOqX3oS9Bcl5h
+	LrIYp/GRg+re9cqlgX21ntKHZzxyCwPnIrnaslJ4G1jyo+CkVoFT6ZVwGCirIM+q2RSa
+	LkuvW/RjYMJI8UO+8RJQoxywswM8SpzV75NZ9j2EYTTC1Q1dp6923MaIxPhXZ9CcQpnX
+	kTALe77sH/556NAZhJ5Bv1E9QTfbJ3LW4mo8Fjw+cSarC3d2pgmotjrCuzK94OZVhu8M
+	Dl08fQ4obHxeAYq/TqPWK1uMiZAlK+d30dH8oetbXbfZrZmSFix7G3V2vWvmhQR3VtDu
+	hxlQ==
+X-Gm-Message-State: APt69E3pPlrdHCyeDaIHpYnd7n2eYTuBRg2zZi7FSDZCZ3FBKm42b9n/
+	7pRbAp7J7z9I5IsI/KDG158=
+X-Google-Smtp-Source: ADUXVKI9GjuQW5DydehD56PCL/1OIFLc6Alfigm+0zDOUTUttOaJhedCv8GrfHhh9TCdWI+u0cVb6Q==
+X-Received: by 2002:a37:9543:: with SMTP id
+	x64-v6mr12621121qkd.368.1528679760094; 
+	Sun, 10 Jun 2018 18:16:00 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	o5-v6sm28237223qtm.60.2018.06.10.18.15.54
+	o5-v6sm28237223qtm.60.2018.06.10.18.15.57
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 10 Jun 2018 18:15:56 -0700 (PDT)
+	Sun, 10 Jun 2018 18:15:59 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,9 +54,9 @@ To: Thomas Huth <thuth@redhat.com>,
 	Stefan Weil <sw@weilnetz.de>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <famz@redhat.com>
-Date: Sun, 10 Jun 2018 22:14:30 -0300
-Message-Id: <20180611011501.10235-10-f4bug@amsat.org>
+	"Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+Date: Sun, 10 Jun 2018 22:14:31 -0300
+Message-Id: <20180611011501.10235-11-f4bug@amsat.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180611011501.10235-1-f4bug@amsat.org>
 References: <20180611011501.10235-1-f4bug@amsat.org>
@@ -65,9 +65,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::229
-Subject: [Qemu-trivial] [PATCH v4 09/40] hw/scsi: Use the IEC binary prefix
- definitions
+X-Received-From: 2607:f8b0:400d:c09::242
+Subject: [Qemu-trivial] [PATCH v4 10/40] hw/smbios: Use the IEC binary
+ prefix definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,7 +79,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jun 2018 01:16:01 -0000
+X-List-Received-Date: Mon, 11 Jun 2018 01:16:07 -0000
 
 It eases code review, unit is explicit.
 
@@ -91,39 +91,70 @@ and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/scsi/scsi-disk.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ hw/smbios/smbios.c | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
 
-diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
-index ded23d36ca..00c8fc571a 100644
---- a/hw/scsi/scsi-disk.c
-+++ b/hw/scsi/scsi-disk.c
-@@ -29,6 +29,7 @@ do { printf("scsi-disk: " fmt , ## __VA_ARGS__); } while (0)
- #endif
+diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+index 27a07e96f4..a27e54b2fa 100644
+--- a/hw/smbios/smbios.c
++++ b/hw/smbios/smbios.c
+@@ -16,6 +16,7 @@
+  */
  
  #include "qemu/osdep.h"
 +#include "qemu/units.h"
  #include "qapi/error.h"
+ #include "qemu/config-file.h"
  #include "qemu/error-report.h"
- #include "hw/scsi/scsi.h"
-@@ -44,13 +45,13 @@ do { printf("scsi-disk: " fmt , ## __VA_ARGS__); } while (0)
- #include <scsi/sg.h>
- #endif
+@@ -625,10 +626,6 @@ static void smbios_build_type_11_table(void)
+     SMBIOS_BUILD_TABLE_POST;
+ }
  
--#define SCSI_WRITE_SAME_MAX         524288
--#define SCSI_DMA_BUF_SIZE           131072
-+#define SCSI_WRITE_SAME_MAX         (512 * KiB)
-+#define SCSI_DMA_BUF_SIZE           (128 * KiB)
- #define SCSI_MAX_INQUIRY_LEN        256
- #define SCSI_MAX_MODE_LEN           256
+-#define ONE_KB ((ram_addr_t)1 << 10)
+-#define ONE_MB ((ram_addr_t)1 << 20)
+-#define ONE_GB ((ram_addr_t)1 << 30)
+-
+ #define MAX_T16_STD_SZ 0x80000000 /* 2T in Kilobytes */
  
--#define DEFAULT_DISCARD_GRANULARITY 4096
--#define DEFAULT_MAX_UNMAP_SIZE      (1 << 30)   /* 1 GB */
-+#define DEFAULT_DISCARD_GRANULARITY (4 * KiB)
-+#define DEFAULT_MAX_UNMAP_SIZE      (1 * GiB)
- #define DEFAULT_MAX_IO_SIZE         INT_MAX     /* 2 GB - 1 block */
+ static void smbios_build_type_16_table(unsigned dimm_cnt)
+@@ -640,7 +637,7 @@ static void smbios_build_type_16_table(unsigned dimm_cnt)
+     t->location = 0x01; /* Other */
+     t->use = 0x03; /* System memory */
+     t->error_correction = 0x06; /* Multi-bit ECC (for Microsoft, per SeaBIOS) */
+-    size_kb = QEMU_ALIGN_UP(ram_size, ONE_KB) / ONE_KB;
++    size_kb = QEMU_ALIGN_UP(ram_size, KiB) / KiB;
+     if (size_kb < MAX_T16_STD_SZ) {
+         t->maximum_capacity = cpu_to_le32(size_kb);
+         t->extended_maximum_capacity = cpu_to_le64(0);
+@@ -668,7 +665,7 @@ static void smbios_build_type_17_table(unsigned instance, uint64_t size)
+     t->memory_error_information_handle = cpu_to_le16(0xFFFE); /* Not provided */
+     t->total_width = cpu_to_le16(0xFFFF); /* Unknown */
+     t->data_width = cpu_to_le16(0xFFFF); /* Unknown */
+-    size_mb = QEMU_ALIGN_UP(size, ONE_MB) / ONE_MB;
++    size_mb = QEMU_ALIGN_UP(size, MiB) / MiB;
+     if (size_mb < MAX_T17_STD_SZ) {
+         t->size = cpu_to_le16(size_mb);
+         t->extended_size = cpu_to_le32(0);
+@@ -707,8 +704,8 @@ static void smbios_build_type_19_table(unsigned instance,
  
- #define TYPE_SCSI_DISK_BASE         "scsi-disk-base"
+     end = start + size - 1;
+     assert(end > start);
+-    start_kb = start / ONE_KB;
+-    end_kb = end / ONE_KB;
++    start_kb = start / KiB;
++    end_kb = end / KiB;
+     if (start_kb < UINT32_MAX && end_kb < UINT32_MAX) {
+         t->starting_address = cpu_to_le32(start_kb);
+         t->ending_address = cpu_to_le32(end_kb);
+@@ -869,7 +866,7 @@ void smbios_get_tables(const struct smbios_phys_mem_area *mem_array,
+ 
+         smbios_build_type_11_table();
+ 
+-#define MAX_DIMM_SZ (16ll * ONE_GB)
++#define MAX_DIMM_SZ (16 * GiB)
+ #define GET_DIMM_SZ ((i < dimm_cnt - 1) ? MAX_DIMM_SZ \
+                                         : ((ram_size - 1) % MAX_DIMM_SZ) + 1)
+ 
 -- 
 2.17.1
 
