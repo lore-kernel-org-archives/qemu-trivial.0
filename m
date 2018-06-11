@@ -1,61 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fSBRg-0005Q5-UD
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Jun 2018 21:16:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42966)
+	id 1fSBRj-0005SW-8X
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Jun 2018 21:16:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43015)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBRc-0005Lr-6c
-	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:31 -0400
+	id 1fSBRg-0005Q3-IU
+	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBRb-00030q-6r
-	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:28 -0400
-Received: from mail-qt0-x234.google.com ([2607:f8b0:400d:c0d::234]:42500)
+	id 1fSBRf-00032z-Hd
+	for qemu-trivial@nongnu.org; Sun, 10 Jun 2018 21:16:32 -0400
+Received: from mail-qt0-x241.google.com ([2607:f8b0:400d:c0d::241]:41614)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fSBRX-0002yN-Bk; Sun, 10 Jun 2018 21:16:23 -0400
-Received: by mail-qt0-x234.google.com with SMTP id y31-v6so18837862qty.9;
-	Sun, 10 Jun 2018 18:16:23 -0700 (PDT)
+	id 1fSBRb-00030x-Kf; Sun, 10 Jun 2018 21:16:27 -0400
+Received: by mail-qt0-x241.google.com with SMTP id y20-v6so18862972qto.8;
+	Sun, 10 Jun 2018 18:16:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=URI5vXq1/Pq4eTrMDKrrT8V6K5VVTyPtLTtqCCDfXmk=;
-	b=VShdoAThjKTiYPuqv84RZcrzx4r/yA8XGhG96IH2CuIY3jpbP6glAaGWsHECapddyL
-	Zq2+lcVDzDd2KtU/wl71D38YdH0ZmzO2LwSPzdWbq5LqpRYdtLL5Hm330myuMtSE2Tdo
-	Wo/MstpOU293TDhYW/8EVR2aj4W0iY8Fvl+ESao2znAwbx0nh/so3ilNYERgGF0RNxzO
-	MKJtbKj03cx9Dfqep7XTRJF5tI13ESPF9BcOtuAJ3O+t51JMRDTlMoXrZbhMrTepE7uK
-	6A7U3uUEL7z0fhC1GBepB7GXVSdy2M63rSWyj/wPPas5GdrneSzXFI6kVUMT/7vKFZYi
-	iBVw==
+	bh=7bVTiSVu+UWhOWC+PqanAHeZhjQ/cdQ2iLBIKH31zbk=;
+	b=exl9itLum9ashP0LbqXkPmAbLz3+Ajju2Aldh/geXJRZ5/0H6eU9ySYmzenqC9cjg+
+	QDfoxtoBEyo5lrj391DfvGfHtYFNIbqBqBjCFpYZgrznJoTHd0tQquy8A+Z6UEmW7lmG
+	lJGLOvkmk/nSkTT9EPlmDT+F9vDg3KBnKIgmiCFGz6z58RxknFi+W3kcLUOrJ4UAyALM
+	i01l06CFvFAIDVx9SbMLGTcdgBgau9IWoIKazZbXC0blCSCKmYqzFULy8fh3g05cOvXq
+	AkZHkoMme/qMsq+14XeGWYvRuNi4mN/wmJfq4J71tyU1GleWYjf2smvNOHw8fIUs4oho
+	Woag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=URI5vXq1/Pq4eTrMDKrrT8V6K5VVTyPtLTtqCCDfXmk=;
-	b=cUIL5omZjwCUoHub7TMk6662O96fOVL3G32tpfhz408jHeV6eB5sFQkjK+SOvjcyso
-	Oan+wxkU/B4+pv3JirDvkHNZsTQe4o4FKt3jojupMOEP+MiPeYoepbXW3hsormvniCRg
-	I5FId+I0Fgmjb7vRbY6CD7VatcMvVjBMpgJQFad5LmWIEA5JN6dlry0A2R7JZ6vZNCKK
-	LXcxNwm4w4WHUpGmbzV1Xe5Rada+Nb9+tCglWQCDZv+Eq/X7HGz71PdEwa6q7Tug3yiw
-	PEwQ27BJ88/wf3tlh2QHa6zzdh3kADZkEtdpxaQJmXOq4rn7/Q41WPPFxUpj6lUl2VJA
-	zkcg==
-X-Gm-Message-State: APt69E1ywtacRBfaStLpG4Jqy897XgX8D0dk0z9GdJDBKDc937oOr3QS
-	E617p+2gsCYPiZRaddnw6MM=
-X-Google-Smtp-Source: ADUXVKILa7Ibkd8MP4G3Q8eg6z5WxnHBRZoNVmkk593d4+IA9qoVf9wEBALp8Qri+/s2xLAWQVjFxw==
-X-Received: by 2002:aed:3942:: with SMTP id
-	l60-v6mr14805563qte.67.1528679782978; 
-	Sun, 10 Jun 2018 18:16:22 -0700 (PDT)
+	bh=7bVTiSVu+UWhOWC+PqanAHeZhjQ/cdQ2iLBIKH31zbk=;
+	b=GBdLQbG9uTob/WQe+Q932exy0usFPCvDafNdStUOMf7VEJVb4c4pEcmdEAEYZbONrz
+	QntzDC4a8stL74HRpRNasrav1oU/NCrcWtHxjo8kNqY7yLp7CVKgc7lHiw5+IqkIlnK+
+	g9c1unJQN/K+4SdLA4Xo8oVP8KwomrGibRje6dGV0j5BAUYb2kzVmqhLdriUpIkMX27K
+	fxICIYCBORgaCVSl6XXeIdx0d2leSmZRSnjMkIyon5V1JLbYYBGMQl8gHTzucH9XxzsW
+	n5f66R8uPxUSfzoGlcCemwCWui/+WRBymrWy61QgbG2clJHQi0ajmZ7vk7bc8yaNzz8D
+	Ru0w==
+X-Gm-Message-State: APt69E3sIIiiBAiroLAwhvG/PtcX1JsAf75GcY4wOIyPI16PXsH9ltsb
+	deOqAAYRqhaWcpcNXWG5bSA=
+X-Google-Smtp-Source: ADUXVKKluzbIMcCwpVm0Eedmq/iVpgPP7I6AFx0ffB/jcrBWZpmjtTPPFFpa40uZpK06Ie14JdpflQ==
+X-Received: by 2002:a0c:f612:: with SMTP id
+	r18-v6mr13648968qvm.38.1528679787254; 
+	Sun, 10 Jun 2018 18:16:27 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	o5-v6sm28237223qtm.60.2018.06.10.18.16.20
+	o5-v6sm28237223qtm.60.2018.06.10.18.16.23
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 10 Jun 2018 18:16:22 -0700 (PDT)
+	Sun, 10 Jun 2018 18:16:26 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Thomas Huth <thuth@redhat.com>,
 	Stefan Weil <sw@weilnetz.de>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Jiri Slaby <jslaby@suse.cz>
-Date: Sun, 10 Jun 2018 22:14:36 -0300
-Message-Id: <20180611011501.10235-16-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Michael Clark <mjc@sifive.com>, Palmer Dabbelt <palmer@sifive.com>,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Date: Sun, 10 Jun 2018 22:14:37 -0300
+Message-Id: <20180611011501.10235-17-f4bug@amsat.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20180611011501.10235-1-f4bug@amsat.org>
 References: <20180611011501.10235-1-f4bug@amsat.org>
@@ -64,8 +67,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::234
-Subject: [Qemu-trivial] [PATCH v4 15/40] hw/misc: Use the IEC binary prefix
+X-Received-From: 2607:f8b0:400d:c0d::241
+Subject: [Qemu-trivial] [PATCH v4 16/40] hw/riscv: Use the IEC binary prefix
  definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -78,7 +81,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jun 2018 01:16:31 -0000
+X-List-Received-Date: Mon, 11 Jun 2018 01:16:33 -0000
 
 It eases code review, unit is explicit.
 
@@ -90,52 +93,30 @@ and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/misc/auxbus.c | 3 ++-
- hw/misc/edu.c    | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+ hw/riscv/virt.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/misc/auxbus.c b/hw/misc/auxbus.c
-index b4cacd664b..b8a8721201 100644
---- a/hw/misc/auxbus.c
-+++ b/hw/misc/auxbus.c
-@@ -27,6 +27,7 @@
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index ad03113e0f..34d48993a2 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -19,6 +19,7 @@
   */
  
  #include "qemu/osdep.h"
 +#include "qemu/units.h"
  #include "qemu/log.h"
- #include "hw/misc/auxbus.h"
- #include "hw/i2c/i2c.h"
-@@ -68,7 +69,7 @@ AUXBus *aux_init_bus(DeviceState *parent, const char *name)
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+@@ -84,7 +85,7 @@ static hwaddr load_initrd(const char *filename, uint64_t mem_size,
+      * halfway into RAM, and for boards with 256MB of RAM or more we put
+      * the initrd at 128MB.
+      */
+-    *start = kernel_entry + MIN(mem_size / 2, 128 * 1024 * 1024);
++    *start = kernel_entry + MIN(mem_size / 2, 128 * MiB);
  
-     /* Memory related. */
-     bus->aux_io = g_malloc(sizeof(*bus->aux_io));
--    memory_region_init(bus->aux_io, OBJECT(bus), "aux-io", (1 << 20));
-+    memory_region_init(bus->aux_io, OBJECT(bus), "aux-io", 1 * MiB);
-     address_space_init(&bus->aux_addr_space, bus->aux_io, "aux-io");
-     return bus;
- }
-diff --git a/hw/misc/edu.c b/hw/misc/edu.c
-index 34eb05d213..df26a4d046 100644
---- a/hw/misc/edu.c
-+++ b/hw/misc/edu.c
-@@ -23,6 +23,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/pci/pci.h"
- #include "hw/pci/msi.h"
- #include "qemu/timer.h"
-@@ -357,7 +358,7 @@ static void pci_edu_realize(PCIDevice *pdev, Error **errp)
-                        edu, QEMU_THREAD_JOINABLE);
- 
-     memory_region_init_io(&edu->mmio, OBJECT(edu), &edu_mmio_ops, edu,
--                    "edu-mmio", 1 << 20);
-+                    "edu-mmio", 1 * MiB);
-     pci_register_bar(pdev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY, &edu->mmio);
- }
- 
+     size = load_ramdisk(filename, *start, mem_size - *start);
+     if (size == -1) {
 -- 
 2.17.1
 
