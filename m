@@ -1,73 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fSOrj-0000IG-Tx
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Jun 2018 11:36:19 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46098)
+	id 1fSOzV-00048i-0x
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Jun 2018 11:44:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48311)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cminyard@mvista.com>) id 1fSOrc-0000ED-Pi
-	for qemu-trivial@nongnu.org; Mon, 11 Jun 2018 11:36:18 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fSOzQ-000467-C9
+	for qemu-trivial@nongnu.org; Mon, 11 Jun 2018 11:44:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cminyard@mvista.com>) id 1fSOrW-0000fJ-MM
-	for qemu-trivial@nongnu.org; Mon, 11 Jun 2018 11:36:12 -0400
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:41216)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fSOzP-0004FH-5F
+	for qemu-trivial@nongnu.org; Mon, 11 Jun 2018 11:44:16 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:35302)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <cminyard@mvista.com>) id 1fSOrW-0000es-CK
-	for qemu-trivial@nongnu.org; Mon, 11 Jun 2018 11:36:06 -0400
-Received: by mail-oi0-x243.google.com with SMTP id a141-v6so18252743oii.8
-	for <qemu-trivial@nongnu.org>; Mon, 11 Jun 2018 08:36:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=mvista-com.20150623.gappssmtp.com; s=20150623;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding:content-language;
-	bh=FhWEFwHbw/BnI2NKkzub0sTDB9nKiD6Wg5IgdVU6vzs=;
-	b=ql+bmEh43IOhtiy+7l4/1ipGFRHQa7Y3WYLgdeocuSCRfZ0Tw6F2X7KY99cqBGI29d
-	+MeS7V9lpGipw1/xEkqOchYHcw4OKimuEPqcb+gny9zxJtjQsndTlATZMN7G96YF/CF0
-	6UgmFazHWIIDmZT/uUzUJb7tRm24IiBBWTFkdAVT4H6LBl0S1JqBCvThZuns0fOn/BFy
-	6VMoNwplMK2a8DilMPGYGkE0QYCra0KDPOQwbuc+3IhATbcya45GFRzQZ5wHyBTb/rYT
-	KzhTaFoMJt7cQ9y1YGmckRk96F/7B8VJhW5DxIUfujXeOdvYgd+gcnAapY9eSZnH/6Gh
-	bJkA==
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fSOzH-0004AW-Gt; Mon, 11 Jun 2018 11:44:07 -0400
+Received: by mail-qt0-x243.google.com with SMTP id s9-v6so20681863qtg.2;
+	Mon, 11 Jun 2018 08:44:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=WyPpFahjaE+suUlA3LZRLKQpT/zfPpH+X6zGFIvWfQo=;
+	b=N/uG1yDalfGL2TpkRkXmv0PVJfe+/u8Ht2GHymduKHcHoVYlFjde5ZWi3BQAepZT+k
+	T675evPKNOcayScNXAqIES5PkOs6gfpX9gLl06T/e0Li2cs/jJpSfEuWTGyym+tUd2ko
+	UGSJUWFwF2y/JixZMtstS5C3plUMpQCQFIMKnYyoADZFBkt2a41vfcUuegw1JxhzMSGt
+	M9LC4R9OhpDBrsvolRyZcsj5uEalLbxJ6Gbx2EqFKE16ui5Go38AK008n1cX3UGjqkg4
+	8Af8kkph3N43I5msaNT4Q4Ng38tC0QnSSW9tn1g7dXBagIr2qAJ6eAwrUT18NIONcVbF
+	2/dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding
-	:content-language;
-	bh=FhWEFwHbw/BnI2NKkzub0sTDB9nKiD6Wg5IgdVU6vzs=;
-	b=dGcVcse/TbUSl/s9pjDi1PHbEMSF2uk2Q8F9uLwAaT08cncvaJleG+cRuKSVcCYZFL
-	VT1ViSb2RJbqlmEpfjwnZS+TMI4vkh501ep201WhrRR3/03ImMlzbiRfrNXdWtxkqG5Q
-	9m9A2QyXSqlQ0V6mnz30lslRxTydwE/PddKAJxgig5JDHhUugFDBbcjwg9RyualXFdNQ
-	PV9oyYUgWe8GG7JeQiQAJxckqzGUND1NSkVjOwd7s+z7O13Iy+zP/gGQCrqQ0Cn8/T1F
-	xpMDYQeYNkZ3apxVSj5Z4j/Phgf5sJiUgqQjrAfpAwZOdQJjxA05tB1ag08aXG/yzKZy
-	T85w==
-X-Gm-Message-State: APt69E2ZW4sZ21mnXBGVxtBMwJk2UcijdvnFHi33Iupyo0aKd3fxAp6n
-	2JgHdYE74RTsY2QvkzDmzq2Aww==
-X-Google-Smtp-Source: ADUXVKIMzI/sBFXGFAK6JQuVotq8eOhLushbSq3wzbMTAz45hFnvR03N3++7WISmTzIvw651p6CUqA==
-X-Received: by 2002:aca:3c07:: with SMTP id
-	j7-v6mr9152778oia.128.1528731365354; 
-	Mon, 11 Jun 2018 08:36:05 -0700 (PDT)
-Received: from [192.168.27.3] ([47.184.170.59])
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=WyPpFahjaE+suUlA3LZRLKQpT/zfPpH+X6zGFIvWfQo=;
+	b=mR+ONijyEokeLQMYedKUgoSKtzXpXxMjJCAwPrK4D+2k9lTRlQoqkSZ1uuz5V6ZosN
+	EcQg/DOt+qV1jLvSUf/3BcskRVrH2UTd5w0MAdzmMH1A0ItwUGvSBzCf5a41hwV4NFve
+	sgbc19UFmd01eyN1ZuXPopmQRSL/9N7sAl7c5BTrqsa6FBEbfsaY3DWpZtaeCVNYRHg7
+	VtKKXMWgoAyCZQYk0n/bpMCSHPNOWMqwWIVUEBu2aDiy7NZVTkZ5gcp9t6GJR5nBhJ/z
+	B8QCm2gpebd6CJLu/gBj9RixTaW9nUwKEzpitEUbdUu6RJ5778QlzTH+CIyOVPCxB741
+	zcPQ==
+X-Gm-Message-State: APt69E2czzsA4B1iyudBzfjZ4kh/JpNEFif3LsIUjUWwYIPxUpmHzKZP
+	BrWlLyxhQ6fV4Yb3RQr4cAk=
+X-Google-Smtp-Source: ADUXVKKNnQI1d5DhHoi32gH4uoZhEQbqV+5Uqt4PyJ3K4NTzSNwSqX5lQJ16VkDob0ghQ7SB1cD7hA==
+X-Received: by 2002:ac8:43ce:: with SMTP id
+	w14-v6mr16661386qtn.137.1528731846844; 
+	Mon, 11 Jun 2018 08:44:06 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	t10-v6sm24819793ota.23.2018.06.11.08.36.04
+	k6-v6sm16906679qth.24.2018.06.11.08.44.03
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 11 Jun 2018 08:36:04 -0700 (PDT)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Linus Walleij <linus.walleij@linaro.org>
-References: <20180606191801.6331-1-f4bug@amsat.org>
-From: Corey Minyard <cminyard@mvista.com>
-Message-ID: <c2812961-3b92-34b1-f207-a2cf8c4a6a6d@mvista.com>
-Date: Mon, 11 Jun 2018 10:36:03 -0500
+	Mon, 11 Jun 2018 08:44:06 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+	Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
+	"open list:sPAPR" <qemu-ppc@nongnu.org>,
+	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+	David Gibson <david@gibson.dropbear.id.au>
+References: <20180611011501.10235-1-f4bug@amsat.org>
+	<20180611011501.10235-33-f4bug@amsat.org>
+	<alpine.BSF.2.21.1806110959440.5957@zero.eik.bme.hu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <d04f4485-3b07-3b19-458d-0372ee131fca@amsat.org>
+Date: Mon, 11 Jun 2018 12:44:02 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180606191801.6331-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <alpine.BSF.2.21.1806110959440.5957@zero.eik.bme.hu>
+Content-Type: text/plain; charset=iso-8859-15
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Language: en-GB
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-trivial] [PATCH] hw/i2c: Add trace events
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: Re: [Qemu-trivial] [Qemu-devel] [Qemu-ppc] [PATCH v4 32/40] hw/ppc:
+ Use the IEC binary prefix definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,157 +89,123 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Jun 2018 15:36:19 -0000
+X-List-Received-Date: Mon, 11 Jun 2018 15:44:19 -0000
 
-On 06/06/2018 02:18 PM, Philippe Mathieu-Daud√© wrote:
-> Signed-off-by: Philippe Mathieu-Daud√© <f4bug@amsat.org>
-> ---
-> $ qemu-system ... -d trace:i2c_recv,trace:i2c_send
->
-> 4486@1528311614.709959:i2c_recv recv(addr:0x50) data:0x00
-> 4486@1528311614.709994:i2c_send send(addr:0x50) data:0x05
-> 4486@1528311614.710060:i2c_recv recv(addr:0x50) data:0x02
-> 4486@1528311614.710161:i2c_recv recv(addr:0x50) data:0x40
-> 4486@1528311614.710185:i2c_send send(addr:0x50) data:0x02
-> 4486@1528311614.710233:i2c_recv recv(addr:0x50) data:0x08
-> 4486@1528311614.710380:i2c_recv recv(addr:0x50) data:0x0d
-> 4486@1528311614.710396:i2c_send send(addr:0x50) data:0x1f
-> 4486@1528311614.710437:i2c_recv recv(addr:0x50) data:0x40
->
-> or
->
-> $ qemu-system ... -d trace:i2c\*
->
-> 4486@1528311614.698315:i2c_event start(addr:0x50)
-> 4486@1528311614.698338:i2c_recv recv(addr:0x50) data:0x82
-> 4486@1528311614.698349:i2c_event finish(addr:0x50)
-> 4486@1528311614.698354:i2c_event start(addr:0x50)
-> 4486@1528311614.698357:i2c_send send(addr:0x50) data:0x11
-> 4486@1528311614.698377:i2c_event finish(addr:0x50)
-> 4486@1528311614.698380:i2c_event start(addr:0x50)
-> 4486@1528311614.698402:i2c_recv recv(addr:0x50) data:0x04
-> 4486@1528311614.698485:i2c_event finish(addr:0x50)
+Hi Zoltan,
 
-I looked this over and it all looks correct and complete.
+On 06/11/2018 05:09 AM, BALATON Zoltan wrote:
+> On Sun, 10 Jun 2018, Philippe Mathieu-DaudÈ wrote:
+>> diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+>> index 2a98c10664..b35e3fff1c 100644
+>> --- a/hw/ppc/sam460ex.c
+>> +++ b/hw/ppc/sam460ex.c
+>> @@ -12,8 +12,9 @@
+>> †*/
+>>
+>> #include "qemu/osdep.h"
+>> +#include "qemu/units.h"
+>> #include "qemu-common.h"
+>> -#include "qemu/cutils.h"
+>> +#include "qemu/units.h"
+> 
+> I think one of these includes of qemu/units.h is enough.
 
-Reviewed-by: Corey Minyard <cminyard@mvista.com>
+Oops :) Rebase mistake.
 
->
->   Makefile.objs       |  1 +
->   hw/i2c/core.c       | 25 ++++++++++++++++++-------
->   hw/i2c/trace-events |  7 +++++++
->   3 files changed, 26 insertions(+), 7 deletions(-)
->   create mode 100644 hw/i2c/trace-events
->
-> diff --git a/Makefile.objs b/Makefile.objs
-> index 2c8cb72407..7a9828da28 100644
-> --- a/Makefile.objs
-> +++ b/Makefile.objs
-> @@ -213,6 +213,7 @@ trace-events-subdirs += hw/char
->   trace-events-subdirs += hw/display
->   trace-events-subdirs += hw/dma
->   trace-events-subdirs += hw/hppa
-> +trace-events-subdirs += hw/i2c
->   trace-events-subdirs += hw/i386
->   trace-events-subdirs += hw/i386/xen
->   trace-events-subdirs += hw/ide
-> diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-> index ab72d5bf2b..b54725985a 100644
-> --- a/hw/i2c/core.c
-> +++ b/hw/i2c/core.c
-> @@ -9,6 +9,7 @@
->   
->   #include "qemu/osdep.h"
->   #include "hw/i2c/i2c.h"
-> +#include "trace.h"
->   
->   #define I2C_BROADCAST 0x00
->   
-> @@ -130,14 +131,16 @@ int i2c_start_transfer(I2CBus *bus, uint8_t address, int recv)
->       }
->   
->       QLIST_FOREACH(node, &bus->current_devs, next) {
-> +        I2CSlave *s = node->elt;
->           int rv;
->   
-> -        sc = I2C_SLAVE_GET_CLASS(node->elt);
-> +        sc = I2C_SLAVE_GET_CLASS(s);
->           /* If the bus is already busy, assume this is a repeated
->              start condition.  */
->   
->           if (sc->event) {
-> -            rv = sc->event(node->elt, recv ? I2C_START_RECV : I2C_START_SEND);
-> +            trace_i2c_event("start", s->address);
-> +            rv = sc->event(s, recv ? I2C_START_RECV : I2C_START_SEND);
->               if (rv && !bus->broadcast) {
->                   if (bus_scanned) {
->                       /* First call, terminate the transfer. */
-> @@ -156,9 +159,11 @@ void i2c_end_transfer(I2CBus *bus)
->       I2CNode *node, *next;
->   
->       QLIST_FOREACH_SAFE(node, &bus->current_devs, next, next) {
-> -        sc = I2C_SLAVE_GET_CLASS(node->elt);
-> +        I2CSlave *s = node->elt;
-> +        sc = I2C_SLAVE_GET_CLASS(s);
->           if (sc->event) {
-> -            sc->event(node->elt, I2C_FINISH);
-> +            trace_i2c_event("finish", s->address);
-> +            sc->event(s, I2C_FINISH);
->           }
->           QLIST_REMOVE(node, next);
->           g_free(node);
-> @@ -169,14 +174,17 @@ void i2c_end_transfer(I2CBus *bus)
->   int i2c_send_recv(I2CBus *bus, uint8_t *data, bool send)
->   {
->       I2CSlaveClass *sc;
-> +    I2CSlave *s;
->       I2CNode *node;
->       int ret = 0;
->   
->       if (send) {
->           QLIST_FOREACH(node, &bus->current_devs, next) {
-> -            sc = I2C_SLAVE_GET_CLASS(node->elt);
-> +            s = node->elt;
-> +            sc = I2C_SLAVE_GET_CLASS(s);
->               if (sc->send) {
-> -                ret = ret || sc->send(node->elt, *data);
-> +                trace_i2c_send(s->address, *data);
-> +                ret = ret || sc->send(s, *data);
->               } else {
->                   ret = -1;
->               }
-> @@ -189,7 +197,9 @@ int i2c_send_recv(I2CBus *bus, uint8_t *data, bool send)
->   
->           sc = I2C_SLAVE_GET_CLASS(QLIST_FIRST(&bus->current_devs)->elt);
->           if (sc->recv) {
-> -            ret = sc->recv(QLIST_FIRST(&bus->current_devs)->elt);
-> +            s = QLIST_FIRST(&bus->current_devs)->elt;
-> +            ret = sc->recv(s);
-> +            trace_i2c_recv(s->address, ret);
->               if (ret < 0) {
->                   return ret;
->               } else {
-> @@ -226,6 +236,7 @@ void i2c_nack(I2CBus *bus)
->       QLIST_FOREACH(node, &bus->current_devs, next) {
->           sc = I2C_SLAVE_GET_CLASS(node->elt);
->           if (sc->event) {
-> +            trace_i2c_event("nack", node->elt->address);
->               sc->event(node->elt, I2C_NACK);
->           }
->       }
-> diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-> new file mode 100644
-> index 0000000000..d339b61202
-> --- /dev/null
-> +++ b/hw/i2c/trace-events
-> @@ -0,0 +1,7 @@
-> +# See docs/devel/tracing.txt for syntax documentation.
-> +
-> +# hw/i2c/core.c
-> +
-> +i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x)"
-> +i2c_send(uint8_t address, uint8_t data) "send(addr:0x%02x) data:0x%02x"
-> +i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
+> 
+>> #include "qemu/error-report.h"
+>> #include "qapi/error.h"
+>> #include "hw/hw.h"
+>> @@ -46,7 +47,7 @@
+>> /* from Sam460 U-Boot include/configs/Sam460ex.h */
+>> #define FLASH_BASE†††††††††††† 0xfff00000
+>> #define FLASH_BASE_H†††††††††† 0x4
+>> -#define FLASH_SIZE†††††††††††† (1 << 20)
+>> +#define FLASH_SIZE†††††††††††† (1 * MiB)
+>> #define UBOOT_LOAD_BASE††††††† 0xfff80000
+>> #define UBOOT_SIZE†††††††††††† 0x00080000
+>> #define UBOOT_ENTRY††††††††††† 0xfffffffc
+>> @@ -71,7 +72,8 @@
+>>
+>> /* FIXME: See u-boot.git 8ac41e, also fix in ppc440_uc.c */
+>> static const unsigned int ppc460ex_sdram_bank_sizes[] = {
+>> -††† 1024 << 20, 512 << 20, 256 << 20, 128 << 20, 64 << 20, 32 << 20, 0
+>> +††† 1 * GiB, 512 * MiB, 256 * MiB, 128 * MiB,
+>> +††† 64 * MiB, 32 * MiB, 0
+>> };
+> 
+> You said elsewhere:
+> 
+> On Sun, 10 Jun 2018, Philippe Mathieu-DaudÈ wrote:
+>> Each use this saves 3 char of the 80 columns limit!
 
+This was versus the M_BYTE/G_BYTE definitions, now I noticed the ML ate
+this patch...
+(it supposed to be 31/41 here)
+http://patchew.org/QEMU/20180415234307.28132-1-f4bug@amsat.org/
 
+Where the diff was:
+
+ static const unsigned int ppc460ex_sdram_bank_sizes[] = {
+-    1024 << 20, 512 << 20, 256 << 20, 128 << 20, 64 << 20, 32 << 20, 0
++    1 * G_BYTE, 512 * M_BYTE, 256 * M_BYTE, 128 * M_BYTE,
++    64 * M_BYTE, 32 * M_BYTE, 0
+ };
+
+> Except when not but at least should not be longer than before and maybe
+> more readable. But why are you splitting this line into two? I prefer
+> one line for readability if it's not over the line limit.
+
+Sure, as it fits.
+
+> 
+>> struct boot_info {
+>> @@ -225,7 +227,7 @@ static int sam460ex_load_uboot(void)
+>> ††† fl_sectors = (bios_size + 65535) >> 16;
+>>
+>> ††† if (!pflash_cfi01_register(base, NULL, "sam460ex.flash", bios_size,
+>> -†††††††††††††††††††††††††††††† blk, (64 * 1024), fl_sectors,
+>> +†††††††††††††††††††††††††††††† blk, 64 * KiB, fl_sectors,
+>> †††††††††††††††††††††††††††††† 1, 0x89, 0x18, 0x0000, 0x0, 1)) {
+>> ††††††† error_report("qemu: Error registering flash memory.");
+>> ††††††† /* XXX: return an error instead? */
+>> @@ -359,14 +361,14 @@ static void main_cpu_reset(void *opaque)
+>>
+>> ††† /* either we have a kernel to boot or we jump to U-Boot */
+>> ††† if (bi->entry != UBOOT_ENTRY) {
+>> -††††††† env->gpr[1] = (16 << 20) - 8;
+>> +††††††† env->gpr[1] = (16 * MiB) - 8;
+>> ††††††† env->gpr[3] = FDT_ADDR;
+>> ††††††† env->nip = bi->entry;
+>>
+>> ††††††† /* Create a mapping for the kernel.† */
+>> ††††††† mmubooke_create_initial_mapping(env, 0, 0);
+>> ††††††† env->gpr[6] = tswap32(EPAPR_MAGIC);
+>> -††††††† env->gpr[7] = (16 << 20) - 8; /*bi->ima_size;*/
+>> +††††††† env->gpr[7] = (16 * MiB) - 8; /* bi->ima_size; */
+>>
+>> ††† } else {
+>> ††††††† env->nip = UBOOT_ENTRY;
+>> @@ -479,8 +481,8 @@ static void sam460ex_init(MachineState *machine)
+>> ††† /* 256K of L2 cache as memory */
+>> ††† ppc4xx_l2sram_init(env);
+>> ††† /* FIXME: remove this after fixing l2sram mapping in ppc440_uc.c? */
+>> -††† memory_region_init_ram(l2cache_ram, NULL, "ppc440.l2cache_ram",
+>> 256 << 10,
+>> -†††††††††††††††††††††††††† &error_abort);
+>> +††† memory_region_init_ram(l2cache_ram, NULL, "ppc440.l2cache_ram",
+>> +†††††††††††††††††††††††††† 256 * KiB, &error_abort);
+> 
+> Line is split differently here too for no apparent reason.
+
+Same explanation:
+
++    memory_region_init_ram(l2cache_ram, NULL, "ppc440.l2cache_ram",
++                           256 * K_BYTE, &error_abort);
+
+I'll update.
+
+> 
+> Regards,
+> BALATON Zoltan
 
