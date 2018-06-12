@@ -1,54 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fSoKS-0007QK-RK
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Jun 2018 14:47:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59045)
+	id 1fSq7z-0004u5-4H
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Jun 2018 16:42:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52195)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1fSoKQ-0007O2-3H
-	for qemu-trivial@nongnu.org; Tue, 12 Jun 2018 14:47:39 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fSq7x-0004tl-Hx
+	for qemu-trivial@nongnu.org; Tue, 12 Jun 2018 16:42:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1fSoKP-0005U9-9U
-	for qemu-trivial@nongnu.org; Tue, 12 Jun 2018 14:47:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43634)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
-	id 1fSoKK-0005Qm-Qn; Tue, 12 Jun 2018 14:47:32 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DE8D981F0B;
-	Tue, 12 Jun 2018 18:47:30 +0000 (UTC)
-Received: from w520.home (ovpn-116-135.phx2.redhat.com [10.3.116.135])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E02B81001F41;
-	Tue, 12 Jun 2018 18:47:29 +0000 (UTC)
-Date: Tue, 12 Jun 2018 12:47:29 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>, Peter Maydell
-	<peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, 
-	Kevin Wolf <kwolf@redhat.com>, patches@linaro.org, Cornelia Huck
-	<cohuck@redhat.com>, Markus Armbruster <armbru@redhat.com>, Philippe
-	=?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>, Stefan Hajnoczi
-	<stefanha@redhat.com>, John Snow <jsnow@redhat.com>, Richard Henderson
-	<rth@twiddle.net>
-Message-ID: <20180612124729.0e630825@w520.home>
-In-Reply-To: <85642e2a-f00a-3d85-8525-0ae89e4d71c9@redhat.com>
-References: <20180611141716.3813-1-peter.maydell@linaro.org>
-	<650048df-f4b1-b351-f877-be8c84197ba2@linaro.org>
-	<85642e2a-f00a-3d85-8525-0ae89e4d71c9@redhat.com>
+	(envelope-from <richard.henderson@linaro.org>) id 1fSq7u-00016e-Fh
+	for qemu-trivial@nongnu.org; Tue, 12 Jun 2018 16:42:53 -0400
+Received: from mail-pl0-x243.google.com ([2607:f8b0:400e:c01::243]:40619)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fSq7u-00016C-1X
+	for qemu-trivial@nongnu.org; Tue, 12 Jun 2018 16:42:50 -0400
+Received: by mail-pl0-x243.google.com with SMTP id t12-v6so153257plo.7
+	for <qemu-trivial@nongnu.org>; Tue, 12 Jun 2018 13:42:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=3aqevszYTZYj1bGWxByRs2qTHFHlo5pRcOMOtyazFEA=;
+	b=jlfPiIxRFCObvoq3sbnr+zuTMikdtwHfmqOTbXjCJ4IDzl4Xl5opbU+8uJkj/u3ujc
+	tgAFMbNApua/47QVTEg3WdnFMjCH3Ru1ntks/FzllKzXDF8Dz06+n8yvKfhKQXS6fkEa
+	p058TKyP0H+TiEgs5bKIpHHG0ZBNWNWRZ1+WI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=3aqevszYTZYj1bGWxByRs2qTHFHlo5pRcOMOtyazFEA=;
+	b=fXLkiqnmD1xVYxkGWfay1qVrzQOh+3aNY4K/z6oLfIaxDME7sVcSCPAdgPl1qLnjWJ
+	9m59tKIacVcQNMaf7xM3sHwMD11kAwhDhaIUYPyfXcvsTVty69zIwoGfctWFMX+rH7ka
+	OcFGe1wsFXpX2n4yEhisN29kPMF1QAmNtPhxazGCsmHngUIDEzcM38WyrGPmnN7NPneo
+	e30OxIJ+WdWvzAe+V1NE7LfXUixx29U0aWJZi0tX22a0+K24xYNsyO4gz1boDqiPOaQs
+	THd0dB/J+Vm2VrD1I8T0wCMCjWypdaf71CihmG2tCiax4vE9+OA/0DTjweAczzBxXPFc
+	KoPA==
+X-Gm-Message-State: APt69E1vr/DLhm/4azRItrGLwWERvxg8DLBFeKh7FdQL0Tbgyx7ZsqR/
+	aAr3EUbSrN60itAI79Donnh3fw==
+X-Google-Smtp-Source: ADUXVKJQiNlqsjdJD9jN5lh9ZgBWcoaT1MWxIlI8AuvRBjjje5PpU+wgoKk03uwyyhkrzEFObKQgmg==
+X-Received: by 2002:a17:902:563:: with SMTP id
+	90-v6mr1993763plf.327.1528836168972; 
+	Tue, 12 Jun 2018 13:42:48 -0700 (PDT)
+Received: from cloudburst.twiddle.net (rrcs-173-198-77-219.west.biz.rr.com.
+	[173.198.77.219]) by smtp.gmail.com with ESMTPSA id
+	y2-v6sm1305301pfk.82.2018.06.12.13.42.46
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 12 Jun 2018 13:42:48 -0700 (PDT)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>, Thomas Huth
+	<thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <20180611011501.10235-1-f4bug@amsat.org>
+	<20180611011501.10235-2-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <08e5205f-c3e4-6a13-80da-cde7f51e831b@linaro.org>
+Date: Tue, 12 Jun 2018 10:42:43 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 12 Jun 2018 18:47:31 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] CODING_STYLE: Define our
- preferred form for multiline comments
+In-Reply-To: <20180611011501.10235-2-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c01::243
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 01/40] include: Add IEC
+ binary prefixes in "qemu/units.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,60 +78,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Jun 2018 18:47:39 -0000
+X-List-Received-Date: Tue, 12 Jun 2018 20:42:54 -0000
 
-On Tue, 12 Jun 2018 20:12:02 +0200
-Thomas Huth <thuth@redhat.com> wrote:
+On 06/10/2018 03:14 PM, Philippe Mathieu-Daudé wrote:
+> +#define KiB     (1ULL << 10)
+> +#define MiB     (1ULL << 20)
+> +#define GiB     (1ULL << 30)
+> +#define TiB     (1ULL << 40)
+> +#define PiB     (1ULL << 50)
+> +#define EiB     (1ULL << 60)
 
-> On 12.06.2018 19:30, Richard Henderson wrote:
-> > On 06/11/2018 04:17 AM, Peter Maydell wrote:  
-> >> The codebase has a bit of a mix of different multiline
-> >> comment styles. State a preference for the Linux kernel
-> >> style:
-> >>     /*
-> >>      * Star on the left for each line.
-> >>      * Leading slash-star and trailing star-slash
-> >>      * each go on a line of their own.
-> >>      */
-> >>
-> >> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> >> ---
-> >> This is not my personal favourite, but seemed to be the
-> >> closest we had to consensus in the mail thread for v1;
-> >> I can live with it in order to avoid getting patches which
-> >> use the styles I like even less :-)  
-> > 
-> > Honestly, I don't like this except for "important" comments.
-> > 
-> > A "small" comment, e.g. one that doesn't quite fit on a single line, now takes
-> > 4 lines instead of 2.  Which is really annoying and IMO tends to break flow.
-> > 
-> > If you don't like
-> > 
-> >   /* gnu
-> >      style */
-> > 
-> > or
-> > 
-> >   /* whatever
-> >    * this is */
-> > 
-> > could you live with
-> > 
-> >   // c99/c++
-> >   // comments  
-> 
-> FWIW:
-> 
-> +1 for one or two of those compact styles for two- or three-line comments.
+Is there any particular reason to force these to be unsigned?
+Or, for that matter, 64-bit (at least for the first 3).
 
-or four-line or single paragraphs or comments that rhyme with
-"orange"...  If the comment is too large for a single line, then take
-some time to say it more concisely, or maybe it does deserve enough
-thought to frame a nice paragraph for it.  We're well into personal
-style here, so either this is important enough to make some people
-unhappy or we should leave it to maintainer preference and consistency
-within a file/area.  Thanks,
+I ask because this changes the types of some of the expressions
+in which you use these.
 
-Alex
+
+r~
 
