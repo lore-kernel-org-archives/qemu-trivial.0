@@ -1,82 +1,88 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fSqYj-0006jf-Mg
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Jun 2018 17:10:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57627)
+	id 1fSrfy-000134-SR
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Jun 2018 18:22:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41503)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fSqYi-0006iJ-5I
-	for qemu-trivial@nongnu.org; Tue, 12 Jun 2018 17:10:33 -0400
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1fSrfw-00012X-Dd
+	for qemu-trivial@nongnu.org; Tue, 12 Jun 2018 18:22:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fSqYc-0007g4-DJ
-	for qemu-trivial@nongnu.org; Tue, 12 Jun 2018 17:10:32 -0400
-Received: from mail-pl0-x241.google.com ([2607:f8b0:400e:c01::241]:37400)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fSqYb-0007ez-UQ
-	for qemu-trivial@nongnu.org; Tue, 12 Jun 2018 17:10:26 -0400
-Received: by mail-pl0-x241.google.com with SMTP id 31-v6so194212plc.4
-	for <qemu-trivial@nongnu.org>; Tue, 12 Jun 2018 14:10:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=YYJ4+8fD7boEKf75OokWXxmzy2a5WNtZAvVbHrm/VxI=;
-	b=fLvklqZV/vYOcAUE7WoAFYBsy8pBdaciB4j7KLwR0kbTF3j40WS96purYD3sDDj2fc
-	u0bAUy4SEgxPy5QaOr6Hha3FUkZPeJUixmLeU/ZhaAaR4qZenoF/fh3hRsaVcdoqN8Aq
-	Cf7JLMkgN3V3qzf74ym7azl0CF0AlH9KsBHZQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=YYJ4+8fD7boEKf75OokWXxmzy2a5WNtZAvVbHrm/VxI=;
-	b=flVQRmKPwDY10tfaLUCEa+Grn11E6uE2X/kpuaNbN2XWHqwEML/hed0HshIzeibSbw
-	xLEj/jJj+EePxnN07pdu9O5YEi/8NHqWrCAEcP2t+K0hsop3Gu5xyGCju4XMuUzlE3sN
-	EjAYqc7RRCyiX4mcj140lT8JkoymUJSlzskehn+rd/s/HJKVtPJqLNNip1ja6cmE4mKJ
-	rGwsaPGQW4SabyUbGyDEpyKqNTXzUa70wuJNjKXvbsSB0jmgggvaL7gdWyfzIBOuUdWs
-	jxMgVsnbSqxdNPs7EGGWuzmhdmgP7v79eAoorm4L1eWSguoFrC6BNj/Y2eaTCXtMXVWX
-	CdPg==
-X-Gm-Message-State: APt69E3SNS3Lo31HQI7/++KmM2GnKRCxu1mb0IZMgl/N0G3fiywX3D7b
-	AJequEGeFC5s3xLfnIdUp8p5OA==
-X-Google-Smtp-Source: ADUXVKJveNkL2Adw42v+VNEFTbktYQhvISyi6+VxRigWtOJ4bNEiB93SdwAJakK+5/dtNqQ7Kaq1ng==
-X-Received: by 2002:a17:902:728a:: with SMTP id
-	d10-v6mr2131277pll.192.1528837824819; 
-	Tue, 12 Jun 2018 14:10:24 -0700 (PDT)
-Received: from cloudburst.twiddle.net (rrcs-173-198-77-219.west.biz.rr.com.
-	[173.198.77.219]) by smtp.gmail.com with ESMTPSA id
-	t10-v6sm945530pgn.20.2018.06.12.14.10.21
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 12 Jun 2018 14:10:23 -0700 (PDT)
-To: Eric Blake <eblake@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
-	<f4bug@amsat.org>, Thomas Huth <thuth@redhat.com>,
-	Stefan Weil <sw@weilnetz.de>
-Cc: Kevin Wolf <kwolf@redhat.com>, Stefano Stabellini
-	<sstabellini@kernel.org>, Eduardo Habkost <ehabkost@redhat.com>,
-	"open list:Block layer core" <qemu-block@nongnu.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, Max Reitz <mreitz@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	"open list:X86" <xen-devel@lists.xenproject.org>,
-	Richard Henderson <rth@twiddle.net>
-References: <20180611011501.10235-1-f4bug@amsat.org>
-	<20180611011501.10235-12-f4bug@amsat.org>
-	<15d222dd-d2e9-4855-62c6-f89f2ee59c52@linaro.org>
-	<76aa5170-1d18-8799-6ff1-a7c0dba0b489@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <8537ca07-2645-6c2c-5945-a91da035b474@linaro.org>
-Date: Tue, 12 Jun 2018 11:10:19 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <mdroth@linux.vnet.ibm.com>) id 1fSrft-000127-MG
+	for qemu-trivial@nongnu.org; Tue, 12 Jun 2018 18:22:04 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:47354)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mdroth@linux.vnet.ibm.com>)
+	id 1fSrft-00010x-Di
+	for qemu-trivial@nongnu.org; Tue, 12 Jun 2018 18:22:01 -0400
+Received: from pps.filterd (m0098394.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.22/8.16.0.22) with SMTP id
+	w5CMIwJN072707
+	for <qemu-trivial@nongnu.org>; Tue, 12 Jun 2018 18:22:00 -0400
+Received: from e33.co.us.ibm.com (e33.co.us.ibm.com [32.97.110.151])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 2jjpca10r7-1
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <qemu-trivial@nongnu.org>; Tue, 12 Jun 2018 18:22:00 -0400
+Received: from localhost
+	by e33.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <mdroth@linux.vnet.ibm.com>;
+	Tue, 12 Jun 2018 16:21:59 -0600
+Received: from b03cxnp07029.gho.boulder.ibm.com (9.17.130.16)
+	by e33.co.us.ibm.com (192.168.1.133) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	(version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+	Tue, 12 Jun 2018 16:21:55 -0600
+Received: from b03ledav004.gho.boulder.ibm.com
+	(b03ledav004.gho.boulder.ibm.com [9.17.130.235])
+	by b03cxnp07029.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id w5CMLsNh11141482
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=FAIL); Tue, 12 Jun 2018 15:21:54 -0700
+Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 3D9D97805F;
+	Tue, 12 Jun 2018 16:21:54 -0600 (MDT)
+Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 2B7AF78060;
+	Tue, 12 Jun 2018 16:21:54 -0600 (MDT)
+Received: from localhost (unknown [9.53.92.156])
+	by b03ledav004.gho.boulder.ibm.com (Postfix) with ESMTP;
+	Tue, 12 Jun 2018 16:21:54 -0600 (MDT)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-In-Reply-To: <76aa5170-1d18-8799-6ff1-a7c0dba0b489@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c01::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 11/40] hw/xen: Use the
- IEC binary prefix definitions
+Content-Transfer-Encoding: quoted-printable
+To: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>
+From: Michael Roth <mdroth@linux.vnet.ibm.com>
+In-Reply-To: <20180515100949.248bc43b.cohuck@redhat.com>
+Cc: Olaf Hering <olaf@aepfle.de>, qemu-trivial@nongnu.org,
+	"open list:All patches   CC here" <qemu-devel@nongnu.org>,
+	qemu-stable@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+References: <20180515063128.7040-1-olaf@aepfle.de>
+	<d17ae62a-03a5-61fa-934a-4cb917d14222@redhat.com>
+	<20180515100949.248bc43b.cohuck@redhat.com>
+User-Agent: alot/0.6
+Date: Tue, 12 Jun 2018 17:21:43 -0500
+X-TM-AS-GCONF: 00
+x-cbid: 18061222-0036-0000-0000-000009FB1849
+X-IBM-SpamModules-Scores: 
+X-IBM-SpamModules-Versions: BY=3.00009178; HX=3.00000241; KW=3.00000007;
+	PH=3.00000004; SC=3.00000265; SDB=6.01046072; UDB=6.00535710;
+	IPR=6.00825049; 
+	MB=3.00021612; MTD=3.00000008; XFM=3.00000015; UTC=2018-06-12 22:21:57
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 18061222-0037-0000-0000-000047B695D7
+Message-Id: <152884210382.21982.6157008274157617034@sif>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+	definitions=2018-06-12_14:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	priorityscore=1501
+	malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+	clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
+	mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+	scancount=1 engine=8.0.1-1805220000 definitions=main-1806120247
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.156.1
+Subject: Re: [Qemu-trivial] [Qemu-stable] [Qemu-devel] [PATCH v2] replace
+ functions which are only available in glib-2.24
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,43 +94,96 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Jun 2018 21:10:33 -0000
+X-List-Received-Date: Tue, 12 Jun 2018 22:22:05 -0000
 
-On 06/12/2018 11:04 AM, Eric Blake wrote:
-> On 06/12/2018 03:51 PM, Richard Henderson wrote:
->> On 06/10/2018 03:14 PM, Philippe Mathieu-Daudé wrote:
->>>       xen_pv_printf(xendev, 1, "type \"%s\", fileproto \"%s\", filename
->>> \"%s\","
->>> -                  " size %" PRId64 " (%" PRId64 " MB)\n",
->>> +                  " size %" PRId64 " (%llu MB)\n",
->>>                     blkdev->type, blkdev->fileproto, blkdev->filename,
->>> -                  blkdev->file_size, blkdev->file_size >> 20);
->>> +                  blkdev->file_size, blkdev->file_size / MiB);
->>
->> Having to change printf markup is exactly why you shouldn't use ULL in MiB.
-> 
-> Conversely, M_BYTE was already ULL, so if you don't use it in MiB, you'll have
-> to change other printf markup where you were changing those uses.
-> 
-> One benefit of using the widest possible type: we avoid risk of silent
-> truncation.  Potential downsides: wasted processing time (when 32 bits was
-> sufficient), and compilers might start warning when we narrow a 64-bit value
-> into a 32-bit variable (but I think we already ignore that).
-> 
-> One benefit of using the natural type that holds the value: use of 64-bit math
-> is explicit based on the type of what else is being multiplied by the macro. 
-> Potential downside: 32*32 assigned to a 64-bit result may be botched (but
-> hopefully Coverity will flag it).
-> 
-> So there's tradeoffs either way, and you at least need to document in your
-> commit messages what auditing you have done that any type changes introduced by
-> your changes are safe.
+Quoting Cornelia Huck (2018-05-15 03:09:49)
+> On Tue, 15 May 2018 09:18:52 +0200
+> Thomas Huth <thuth@redhat.com> wrote:
+> =
 
-I'm more concerned about unnecessary or unintended signed vs unsigned changes
-than I am about width.  But if we're going to force a 64-bit type, use
-(int64_t)1 not 1LL.  That way the type will match the existing PRId64 printf
-markup.
+> > On 15.05.2018 08:31, Olaf Hering wrote:
+> > > Currently the minimal supported version of glib is 2.22.
+> > > Since testing is done with a glib that claims to be 2.22, but in fact
+> > > has APIs from newer version of glib, this bug was not caught during
+> > > submit of the patch referenced below.
+> > > =
+
+> > > Replace g_realloc_n, which is available only since 2.24, with g_renew.
+> > > =
+
+> > > Fixes commit 418026ca43 ("util: Introduce vfio helpers")
+> > > =
+
+> > > Signed-off-by: Olaf Hering <olaf@aepfle.de>
+> > > ---
+> > >  This must go into stable-2.12.  =
+
+> > =
+
+> > In that case please CC: qemu-stable@nongnu.org (done now).
+> > =
+
+> > Reviewed-by: Thomas Huth <thuth@redhat.com>
+> > =
+
+> > >  util/vfio-helpers.c | 6 ++----
+> > >  1 file changed, 2 insertions(+), 4 deletions(-)
+> > > =
+
+> > > diff --git a/util/vfio-helpers.c b/util/vfio-helpers.c
+> > > index 006674c916..1d9272efa4 100644
+> > > --- a/util/vfio-helpers.c
+> > > +++ b/util/vfio-helpers.c
+> > > @@ -522,8 +522,7 @@ static IOVAMapping *qemu_vfio_add_mapping(QEMUVFI=
+OState *s,
+> > >  =
+
+> > >      assert(index >=3D 0);
+> > >      s->nr_mappings++;
+> > > -    s->mappings =3D g_realloc_n(s->mappings, sizeof(s->mappings[0]),
+> > > -                              s->nr_mappings);
+> > > +    s->mappings =3D g_renew(IOVAMapping, s->mappings, s->nr_mappings=
+);
+> > >      insert =3D &s->mappings[index];
+> > >      shift =3D s->nr_mappings - index - 1;
+> > >      if (shift) {
+> > > @@ -577,8 +576,7 @@ static void qemu_vfio_undo_mapping(QEMUVFIOState =
+*s, IOVAMapping *mapping,
+> > >      memmove(mapping, &s->mappings[index + 1],
+> > >              sizeof(s->mappings[0]) * (s->nr_mappings - index - 1));
+> > >      s->nr_mappings--;
+> > > -    s->mappings =3D g_realloc_n(s->mappings, sizeof(s->mappings[0]),
+> > > -                              s->nr_mappings);
+> > > +    s->mappings =3D g_renew(IOVAMapping, s->mappings, s->nr_mappings=
+);
+> > >  }
+> > >  =
+
+> > >  /* Check if the mapping list is (ascending) ordered. */
+> > >   =
+
+> =
+
+> This looks fine to me, so
+> =
+
+> Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+> =
+
+> But this leads to another question: What do we do if we want a fix only
+> in stable? Hypothetical scenario: Same parameters as for this patch
+> (glib version bump, newer function sneaked in), but the older function
+> that could be used in stable is clearly worse (IOW, we don't want it in
+> the new version). Do we have a process to get a change only into stable?
+> =
 
 
-r~
+I've answered in the form of a patch :)
+
+  "docs: add details regarding submitting stable-specific patches"
+
+but here's a recent example:
+
+  https://lists.gnu.org/archive/html/qemu-devel/2018-05/msg04999.html
+
 
