@@ -1,63 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fT8Ea-0005kf-Es
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Jun 2018 12:02:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46616)
+	id 1fT8Lt-0002eN-Gs
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Jun 2018 12:10:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48621)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1fT8ET-0005ec-Qf
-	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 12:02:55 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1fT8Lr-0002cP-Eg
+	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 12:10:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1fT8EN-0006bp-Pg
-	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 12:02:49 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:57776 helo=mx1.redhat.com)
+	(envelope-from <ehabkost@redhat.com>) id 1fT8Lq-0001IV-H9
+	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 12:10:27 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44882)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1fT8EC-00063q-P0; Wed, 13 Jun 2018 12:02:32 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1fT8Lk-00012m-Lj; Wed, 13 Jun 2018 12:10:20 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6190C859C5;
-	Wed, 13 Jun 2018 16:02:31 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-117-1.ams2.redhat.com [10.36.117.1])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id CF7221116706;
-	Wed, 13 Jun 2018 16:02:28 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id A33BE1138645; Wed, 13 Jun 2018 18:02:27 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, zhang.zhanghailiang@huawei.com,
-	Ben Warren <ben@skyportsystems.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 81FE13082A21;
+	Wed, 13 Jun 2018 16:10:19 +0000 (UTC)
+Received: from localhost (ovpn-116-19.gru2.redhat.com [10.97.116.19])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6987E89D35;
+	Wed, 13 Jun 2018 16:10:13 +0000 (UTC)
+Date: Wed, 13 Jun 2018 13:10:12 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Ben Warren <ben@skyportsystems.com>, zhang.zhanghailiang@huawei.com,
+	Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
+Message-ID: <20180613161012.GT7451@localhost.localdomain>
 References: <1528866321-23886-1-git-send-email-thuth@redhat.com>
-	<1528866321-23886-5-git-send-email-thuth@redhat.com>
-	<20180613133840.GK24528@stefanha-x1.localdomain>
-	<20180613134452.GU19901@redhat.com>
-	<b0ebd968-797f-48e0-32c1-869c452feca9@redhat.com>
-	<20180613151942.GC19901@redhat.com>
-Date: Wed, 13 Jun 2018 18:02:27 +0200
-In-Reply-To: <20180613151942.GC19901@redhat.com> ("Daniel P. =?utf-8?Q?Ber?=
-	=?utf-8?Q?rang=C3=A9=22's?=
-	message of "Wed, 13 Jun 2018 16:19:42 +0100")
-Message-ID: <87k1r24quk.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	<1528866321-23886-2-git-send-email-thuth@redhat.com>
+	<540abc07-2b96-bf0b-6f5a-2a4efc5184d9@redhat.com>
+	<c203ab47-c88b-544d-0233-f7ba48e5e639@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c203ab47-c88b-544d-0233-f7ba48e5e639@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Wed, 13 Jun 2018 16:02:31 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Wed, 13 Jun 2018 16:02:31 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
+	(mx1.redhat.com [10.5.110.45]);
+	Wed, 13 Jun 2018 16:10:19 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC PATCH 4/4] qemu-options: Do
- not show -enable-kvm and -enable-hax in the docs anymore
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH 1/4] Replace '-machine accel=xyz' with
+ '-accel xyz'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,111 +59,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Jun 2018 16:02:56 -0000
+X-List-Received-Date: Wed, 13 Jun 2018 16:10:28 -0000
 
-Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
+On Wed, Jun 13, 2018 at 02:53:04PM +0200, Thomas Huth wrote:
+> On 13.06.2018 14:48, Paolo Bonzini wrote:
+> > On 13/06/2018 07:05, Thomas Huth wrote:
+> >> diff --git a/tests/vmgenid-test.c b/tests/vmgenid-test.c
+> >> index 8d915c6..4324034 100644
+> >> --- a/tests/vmgenid-test.c
+> >> +++ b/tests/vmgenid-test.c
+> >> @@ -131,7 +131,7 @@ static void read_guid_from_monitor(QemuUUID *guid)
+> >>  static char disk[] = "tests/vmgenid-test-disk-XXXXXX";
+> >>  
+> >>  #define GUID_CMD(guid)                          \
+> >> -    "-machine accel=kvm:tcg "                   \
+> >> +    "-accel kvm:tcg "                           \
+> >>      "-device vmgenid,id=testvgid,guid=%s "      \
+> > 
+> > "-accel kvm:tcg" works, but it really shouldn't (and I think we can
+> > change it without a deprecation period).   The right syntax would be
+> > "-accel kvm -accel tcg", so that you can specify options that are valid
+> > only for KVM, or onlty for TCG.
+> 
+> I see your point, but this would break these qtests that are trying to
+> override the "-machine accel=qtest" from libqtest.c this way... and if
+> any other tool out there in the wild is already depending on this
+> behavior, too, we can not change it so easily anymore.
 
-> On Wed, Jun 13, 2018 at 05:11:51PM +0200, Thomas Huth wrote:
->> On 13.06.2018 15:44, Daniel P. Berrang=C3=A9 wrote:
->> > On Wed, Jun 13, 2018 at 02:38:40PM +0100, Stefan Hajnoczi wrote:
->> >> On Wed, Jun 13, 2018 at 07:05:21AM +0200, Thomas Huth wrote:
->> >>> We've got three ways of enabling an accelerator: -machine accel=3Dxy=
-z,
->> >>> -accel xyz and -enable-xyz. For new QEMU users, this must be very
->> >>> confusing ("Which one do I have to use? Is there a difference between
->> >>> the options?"). While -enable-kvm was useful in the past, there is no
->> >>> real good reason for using it anymore today ("-accel kvm" is even le=
-ss
->> >>> to type than "-enable-kvm"), so let's decrease the confusing amount =
-of
->> >>> options in our documenation a little bit by removing the -enable-xyz
->> >>> here. Note that the option itself is neither removed nor marked as
->> >>> deprecated - since -enable-kvm is likely used in a lot of scripts and
->> >>> since its code is easy to maintain, we should keep it around to avoid
->> >>> to break old setups.
->> >>>
->> >>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> >>> ---
->> >>>  PS: I guess Paolo won't like this patch ... let's try it anyway ;-)
->> >>
->> >> It's widely used and we're removing the documentation for it?!  That =
-is
->> >> likely to cause issues for new users who refer to the man page to
->> >> understand the QEMU command-lines they see online, in scripts, etc.
->> >=20
->> > Agreed, this is a very bad idea. Any option that is accepted by QEMU,
->> > but not documented is a bug that must be fixed. IOW removing docs
->> > is creating bugs.
->>=20
->> Not documenting unliked options that are still kept for compatibility
->> was at least a common practice in the past (see -no-kvm for example, or
->> many of those deprecated options like -net channel that have been
->> removed in the past year).
+Tools might rely in "-machine accel=kvm:tcg", but I don't think
+anybody should be relying on "-accel kvm:tcg" to work.
 
-Not least because both --help output and the user manual are hard enough
-to read without them droning about umpteen deprecated things you could
-also use, but shouldn't.
+I agree with Paolo.  If "-accel kvm:tcg" works today, I think we
+should either remove that behavior immediately, or deprecate it
+on QEMU 3.0.
 
-> If we're planning to deprecate & then delete an option, then I
-> don't mind if docs are dropped,
+We should also make sure "-accel kvm,FOO=BAR -accel tcg" won't
+set FOO=BAR in the TCG accelerator if KVM is unavailable.
 
-De-documenting deprecated options that warn "use this instead" feels
-like a no-brainer to me.
-
->                                 but IIUC, in this case we're
-> not doing that - the option will essentially exist forever.
-
-Deprecated option: something we don't want users to use, and intend to
-remove.  It should warn on use, pointing to the replacement, and
-documentation should no longer cover it.
-
-Convenience option: something we consider perfectly fine to use, say
-because it's much less typing.  Document normally.
-
-Legacy option: something in between, i.e. we don't intend to remove it,
-but we don't want to advertise it, either.  The less of those we have,
-the happier I am.  Their documentation to be shunted out of the way, so
-users can find it if they need it, but won't find it *first* when they
-look for how to do something.
-
->> > If we want to help users understand why we have -enable-kvm, just
->> > make the docs say that it is syntactic for '-machine accel=3Dkvm'.
->> > Users can decide for themselves whether they want to switch to
->> > the more verbose way or not
->>=20
->> Uh, well, in this case "-enable-kvm" is already the more verbose way:
->> "-accel kvm" is shorter :-)
->
-> If I'm a user looking for how to enable KVM, then -enable-kvm is the
-> one I'll pick because of the obvious name.
-
-Why does a user have to know how to enable KVM?  Oh, because our default
-is "run this guest much slower than necessary".  Great!
-
-By "pick", I guess you mean "pick out of output of --help".  If the only
-occurence of KVM there was --accel kvm, I trust the user would pick that
-without any trouble.  Less confusing than what we have now, I'd say.
-
->> It's just a big mess: We've got -enable-kvm, -enable-hax, but there is
->> no -enable-hvf, -enable-whpx or -enable-xen option. And to force TCG
->> mode, you've got to use -no-kvm ... honestly, if I were a new user, I'd
->> simply say: WTF!?!
->
-> Personally I'd just clean that up by just adding the missing
-> -enable-xxx options for consistency :-)
-
-I disagree.  The way to a saner QEMU CLI is reducing crap, not adding
-crap for consistency.
-
->> But ok, since -enable-kvm has such a big tradition and is used in a lot
->> of examples out there, it's likely really better if we keep it in the
->> documentation. But we should either move it to a "obsolete option"
->> chapter, or update the current documentation with some words like
->> "obsolete" or "legacy" (to make it clear that nobody gets the idea of
->> introducing -enable-hvf or other similar options in the future).
->>=20
->> And what about -enable-hax? That hardly has any tradtion. Should we
->> maybe even deprecate it?
-
-I would, but it's not a hill I'm prepared to die on.
+-- 
+Eduardo
 
