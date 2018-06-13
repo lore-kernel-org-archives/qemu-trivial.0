@@ -1,47 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fT36h-0004tx-4q
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Jun 2018 06:34:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49508)
+	id 1fT3wY-0003by-Ir
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Jun 2018 07:28:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59132)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1fT36d-0004s8-Tj
-	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 06:34:25 -0400
+	(envelope-from <eblake@redhat.com>) id 1fT3wW-0003aU-G9
+	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 07:28:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1fT36b-00068h-HI
-	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 06:34:22 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:50763)
+	(envelope-from <eblake@redhat.com>) id 1fT3wV-00034Q-FL
+	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 07:28:00 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:55450 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1fT36V-000630-DQ; Wed, 13 Jun 2018 06:34:16 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 415NQp1dl9z9s0W; Wed, 13 Jun 2018 20:34:10 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1528886050;
-	bh=iWN5pv7tDwYVOZuieXHD1hJijK4Ok6SwXjUT0A1y0Ws=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DqicTgMtYzd9BFBHGHykKZC/FrrD1f6yKTNzUXnYx0TEiqlAZlMizowXiPb8HhVMk
-	6xTk/lizAnKiIxlAl3o8ko+EhM8qlXhCuLDAUnh+E/KWNbjYjK0ynUoO/x74Mm+i8C
-	IueKBXAXx3vFeZa8PR8HuUP84uwZSMZsMavmCAAw=
-Date: Wed, 13 Jun 2018 20:34:02 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Jonathan Marler <johnnymarler@gmail.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Alexander Graf <agraf@suse.de>, QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Message-ID: <20180613103402.GM30690@umbus.fritz.box>
-References: <CACKT+Ap2MHCrSCT-0_=KG9UrGAtO7F3EGue6-63-XJxry9=C=w@mail.gmail.com>
-	<CAFEAcA-nnU2E6CKPiGqoAq1sSYtvf4Hxp3MtYiCvigr4i8-+Ow@mail.gmail.com>
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1fT3wQ-00032M-P0; Wed, 13 Jun 2018 07:27:54 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4A80E40122A1;
+	Wed, 13 Jun 2018 11:27:54 +0000 (UTC)
+Received: from [10.10.120.103] (ovpn-120-103.rdu2.redhat.com [10.10.120.103])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 262F81116701;
+	Wed, 13 Jun 2018 11:27:50 +0000 (UTC)
+To: "Emilio G. Cota" <cota@braap.org>,
+	Yaowei Bai <baiyaowei@cmss.chinamobile.com>
+References: <1528859749-25286-1-git-send-email-baiyaowei@cmss.chinamobile.com>
+	<20180613035030.GB25430@flamenco>
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, laurent@vivier.eu,
+	stefanha@redhat.com, qemu-devel@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <23a38716-196f-53a0-0a3d-61f269b1dab4@redhat.com>
+Date: Wed, 13 Jun 2018 06:27:49 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="OE2a2PUdqti0gBVO"
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-nnU2E6CKPiGqoAq1sSYtvf4Hxp3MtYiCvigr4i8-+Ow@mail.gmail.com>
-User-Agent: Mutt/1.10.0 (2018-05-17)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] handle all
- fdt_get_phandle_errors
+In-Reply-To: <20180613035030.GB25430@flamenco>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Wed, 13 Jun 2018 11:27:54 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Wed, 13 Jun 2018 11:27:54 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tracing.txt: add missing
+ '-' for trace option
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,93 +63,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Jun 2018 10:34:25 -0000
+X-List-Received-Date: Wed, 13 Jun 2018 11:28:01 -0000
 
+On 06/12/2018 10:50 PM, Emilio G. Cota wrote:
+> On Tue, Jun 12, 2018 at 23:15:49 -0400, Yaowei Bai wrote:
+>> Signed-off-by: Yaowei Bai <baiyaowei@cmss.chinamobile.com>
+>> ---
+>>   docs/devel/tracing.txt | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/docs/devel/tracing.txt b/docs/devel/tracing.txt
+>> index 07abbb3..6ab32cc 100644
+>> --- a/docs/devel/tracing.txt
+>> +++ b/docs/devel/tracing.txt
+>> @@ -18,7 +18,7 @@ for debugging, profiling, and observing execution.
+>>   
+>>   3. Run the virtual machine to produce a trace file:
+>>   
+>> -    qemu -trace events=/tmp/events ... # your normal QEMU invocation
+>> +    qemu --trace events=/tmp/events ... # your normal QEMU invocation
+> 
+> The second dash is not missing; both '-args' and '--args' work.
+> 
+> '-args' seems to be favoured though; see `qemu -h' or `qemu --h' :-)
 
---OE2a2PUdqti0gBVO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Actually, we're trying to fix that:
+https://wiki.qemu.org/BiteSizedTasks#Consistent_option_usage_in_documentation
 
-On Mon, May 14, 2018 at 04:56:54PM +0100, Peter Maydell wrote:
-> On 4 May 2018 at 19:37, Jonathan Marler <johnnymarler@gmail.com> wrote:
-> > Signed-off-by: Jonathan Marler <johnnymarler@gmail.com>
->=20
-> Hi; thanks for this patch.
->=20
-> > ---
-> >  device_tree.c | 8 ++++++--
-> >  1 file changed, 6 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/device_tree.c b/device_tree.c
-> > index 52c3358..2b75905 100644
-> > --- a/device_tree.c
-> > +++ b/device_tree.c
-> > @@ -379,8 +379,12 @@ uint32_t qemu_fdt_get_phandle(void *fdt, const char
-> > *path)
-> >
-> >      r =3D fdt_get_phandle(fdt, findnode_nofail(fdt, path));
-> >      if (r =3D=3D 0) {
-> > -        error_report("%s: Couldn't get phandle for %s: %s", __func__,
-> > -                     path, fdt_strerror(r));
-> > +        error_report("%s: Node %s does not have a 'phandle'", __func__,
-> > +                     path);
-> > +        exit(1);
-> > +    }
-> > +    if (r =3D=3D -1) {
-> > +        error_report("%s: Couldn't get phandle for %s", __func__, path=
-);
-> >          exit(1);
-> >      }
->=20
-> Could you explain in what situation this is needed? The documentation
-> for fdt_get_phandle() says
->  * returns:
->  *      the phandle of the node at nodeoffset, on success (!=3D 0, !=3D -=
-1)
->  *      0, if the node has no phandle, or another error occurs
->=20
-> which I interpret to mean that it is not possible for it to return -1.
+The one-vs-two dash usage is only supported in qemu, not in qemu-nbd or 
+qemu-img (that is, qemu acts as if it uses getopt_long_only(), while the 
+others use getopt_long() - except that we hand-rolled the parser in 
+qemu, meaning you might find quirks where it sometimes doesn't even 
+match getopt_long_only()).
 
-I *think* that was the intention; it's a long time since I wrote it,
-so I'm not sure.  However, looking at the implementation, that's not
-strictly the case.
+At any rate, since --trace is an option that is supported across 
+multiple binaries, we SHOULD favor the double-dash spelling in our 
+documentation, so that you can consistently reuse the same --trace 
+invocation without worrying whether the binary parses its arguments with 
+getopt_long() (where double is required) or like getopt_long_only() 
+(where the double is optional but supported).
 
-We certainly return 0 for any error we explicitly detect.  However, if
-the node has a "phandle" property that's correctly formed but contains
--1, then we'll return -1.  Of course, a correct dt blob won't have
-such a property, but then we do detect a bunch of other conditions
-that a correct dt shouldn't have.
+So I'm in favor of this patch, although it may need more of a commit 
+message summarizing the justification I've just pointed you to.
 
-On balance, I'm thinking I should probably change libfdt to check for
-a -1 phandle property and return 0 for that case, like all other error
-cases.
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---OE2a2PUdqti0gBVO
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlsg8xcACgkQbDjKyiDZ
-s5Kb+A//TxGHEM7Z4gJ5lOaA9h4OnOvfHOHkzCoeUK/kN+h2jI4QdQomDaJSMDfd
-Bu5G+Ojd1F3i9gKYE0is9HCXk0l/QlLE71H26VLfzUoEbAIBj2rrnPy4oU7eIIcs
-ENp1T7DWojjij32bpD7tnpE/HDPzp/Ab8c3bZjZcoePRSzBv9AqQbNwt2SNn4DHr
-i4Ml9iXTNaPkw+AUa31rIgFplNHli6y5TGA/p4nEtmDtv8kgJDl9h7s92PaBjmib
-olyQaCeVkLZj4wTqBrMxpaNb7vmdYprUwiGU1HLPNuYMsSEhmJh9ug+jGJM0m/HT
-PxpH3ehf4ikkOM7TVSHVmNskBkjQ9SP1JXRyzmaZUkY3MvAk+iMpgHka82M3MH76
-5WgIZONVxPaRI5vS0eANhqB8xj3bxp5lY6BWzwNQ8u6DhpK3mx4gLuXbz8Ah9Z4j
-DWJYEKO2w6uBruq8D7X3CvpP8lqDLywv/fvHW8itice+q+z2GJgQ2UW2fuf0Fwjx
-4y2LxzFnnAuMMo4q5mY4NB+y+7uNJSTG5rxooBXzEt4SAFf3qynSJ9lNA/uRxCtJ
-fV49krPMePs1s/6O52hvQ1lDeX8fYJS4AT9d6fUxDur9GJJWylLcDHiw+fI75ptP
-zAII+IyTaFPIRB0DULUYdB+64JTEjOIgj/POhci9dlEOUTxk29A=
-=kl1o
------END PGP SIGNATURE-----
-
---OE2a2PUdqti0gBVO--
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
