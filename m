@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fT5zN-00006Y-D5
+	id 1fT5zN-00006u-Mz
 	for mharc-qemu-trivial@gnu.org; Wed, 13 Jun 2018 09:39:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33501)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33489)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1fT5zL-0008Vw-3a
-	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 09:39:03 -0400
+	(envelope-from <stefanha@redhat.com>) id 1fT5zK-0008VX-N4
+	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 09:39:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1fT5zK-0006FX-11
-	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 09:39:03 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:55364 helo=mx1.redhat.com)
+	(envelope-from <stefanha@redhat.com>) id 1fT5zJ-0006FS-V3
+	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 09:39:02 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50198 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1fT5z0-0005LU-Nx; Wed, 13 Jun 2018 09:38:56 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
+	id 1fT5zF-0005zx-H7; Wed, 13 Jun 2018 09:38:57 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 49AD4818BAED;
-	Wed, 13 Jun 2018 13:38:42 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1E588D4338;
+	Wed, 13 Jun 2018 13:38:57 +0000 (UTC)
 Received: from localhost (ovpn-117-110.ams2.redhat.com [10.36.117.110])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 68AED201E8ED;
-	Wed, 13 Jun 2018 13:38:41 +0000 (UTC)
-Date: Wed, 13 Jun 2018 14:38:40 +0100
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C127B1116704;
+	Wed, 13 Jun 2018 13:38:56 +0000 (UTC)
+Date: Wed, 13 Jun 2018 14:38:55 +0100
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: Thomas Huth <thuth@redhat.com>
 Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Ben Warren <ben@skyportsystems.com>, zhang.zhanghailiang@huawei.com,
 	Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
-Message-ID: <20180613133840.GK24528@stefanha-x1.localdomain>
+Message-ID: <20180613133855.GN24528@stefanha-x1.localdomain>
 References: <1528866321-23886-1-git-send-email-thuth@redhat.com>
-	<1528866321-23886-5-git-send-email-thuth@redhat.com>
+	<1528866321-23886-4-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="ee6FjwWxuMujAVRe"
+	protocol="application/pgp-signature"; boundary="yK/6QRnH3Zanb0EF"
 Content-Disposition: inline
-In-Reply-To: <1528866321-23886-5-git-send-email-thuth@redhat.com>
+In-Reply-To: <1528866321-23886-4-git-send-email-thuth@redhat.com>
 User-Agent: Mutt/1.9.5 (2018-04-13)
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Wed, 13 Jun 2018 13:38:42 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Wed, 13 Jun 2018 13:38:42 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.2]);
+	Wed, 13 Jun 2018 13:38:57 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Wed, 13 Jun 2018 13:38:57 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'stefanha@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [RFC PATCH 4/4] qemu-options: Do not show
- -enable-kvm and -enable-hax in the docs anymore
+Subject: Re: [Qemu-trivial] [PATCH 3/4] qemu-options: Improve the
+ documentation of '-accel' and '-machine accel=...'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,49 +64,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 X-List-Received-Date: Wed, 13 Jun 2018 13:39:04 -0000
 
 
---ee6FjwWxuMujAVRe
+--yK/6QRnH3Zanb0EF
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jun 13, 2018 at 07:05:21AM +0200, Thomas Huth wrote:
-> We've got three ways of enabling an accelerator: -machine accel=3Dxyz,
-> -accel xyz and -enable-xyz. For new QEMU users, this must be very
-> confusing ("Which one do I have to use? Is there a difference between
-> the options?"). While -enable-kvm was useful in the past, there is no
-> real good reason for using it anymore today ("-accel kvm" is even less
-> to type than "-enable-kvm"), so let's decrease the confusing amount of
-> options in our documenation a little bit by removing the -enable-xyz
-> here. Note that the option itself is neither removed nor marked as
-> deprecated - since -enable-kvm is likely used in a lot of scripts and
-> since its code is easy to maintain, we should keep it around to avoid
-> to break old setups.
+On Wed, Jun 13, 2018 at 07:05:20AM +0200, Thomas Huth wrote:
+> Instead of repeating the same text for both options, let's rather change
+> the '-machine accel' documentation to point to the preferred '-accel' opt=
+ion
+> instead.
+> And in the documenation of the -accel option, make it clear that you can
+> use colons to specify multiple accelerators.
 >=20
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  PS: I guess Paolo won't like this patch ... let's try it anyway ;-)
+>  qemu-options.hx | 20 +++++++++-----------
+>  1 file changed, 9 insertions(+), 11 deletions(-)
 
-It's widely used and we're removing the documentation for it?!  That is
-likely to cause issues for new users who refer to the man page to
-understand the QEMU command-lines they see online, in scripts, etc.
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-IMO -enable-kvm is not worth inconveniencing users about.  We gain very
-little from abolishing it from docs and/or code, but its absence will
-annoy our users.
-
---ee6FjwWxuMujAVRe
+--yK/6QRnH3Zanb0EF
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEcBAEBAgAGBQJbIR5gAAoJEJykq7OBq3PIfgwH/jGywT2Fgt1Fe2pqG3iOy0UK
-ldqsd+MwKklAvqdrlxiI9huOaKXuEziRTK6QOWbyfwkxNqMTcR0kJdzSV+Ca7vRo
-oaS+cuWnkF0x5YRKhdX/xxxIQj57aOvksqXul2EfTrUOCoG82r6NR0phIu09isG0
-xEvjqTpIp1XEUm9YHszgQBpbTGVxk/b9HRUHkMahQoXEZptKFHPwSxxD86+wdCOs
-car1rhbdFf85JU+ca8+G+29HHT4FxULkFdblvWht6yjU2gsOwFkHEhdo9SUAHCGR
-/jXDZHHmCsAP0C+bLax1oXRXLdXdHTKKOoTmneycX7GOLdlWPaBDVeKZv7onaoY=
-=rdhw
+iQEcBAEBAgAGBQJbIR5uAAoJEJykq7OBq3PICDkH/3hsoMwaLqVnLNd5wKeZZ5wh
+S7/H/LUvhexLs7VMhOMCOX6Z8eEOonr36VXyw4dVscmqY5ufIam9hw88yk2uypma
+5ETbex5gQPS/osSlq/9ph8/wlXlnSc2P7bUHHmg9PmF1n4r8rT7v7LgXULT76qqi
+fNDCmoJtpnZxaVNabbzNTX4voqaWTWJQ/4FdMKzM2NUQbt7p5QYYanNJqSsIt0fL
+dgl+VjHcrHWQt561SVG+vAB7Cz0iNoPTxauG2WOxAYzwlSW9za+GT6o3iu0XDxiL
+6hQhAjHfYi6BKmtbsCHSd1hTfWr6/79mAt0xgah1VTHa5glywplunfkllVx0Uew=
+=opkH
 -----END PGP SIGNATURE-----
 
---ee6FjwWxuMujAVRe--
+--yK/6QRnH3Zanb0EF--
 
