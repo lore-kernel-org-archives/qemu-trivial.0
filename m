@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fT5zN-00006u-Mz
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Jun 2018 09:39:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33489)
+	id 1fT5zO-00008N-VV
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Jun 2018 09:39:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33494)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1fT5zK-0008VX-N4
-	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 09:39:04 -0400
+	(envelope-from <stefanha@redhat.com>) id 1fT5zK-0008Vc-Py
+	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 09:39:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1fT5zJ-0006FS-V3
+	(envelope-from <stefanha@redhat.com>) id 1fT5zK-0006Fc-1R
 	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 09:39:02 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50198 helo=mx1.redhat.com)
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50186 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1fT5zF-0005zx-H7; Wed, 13 Jun 2018 09:38:57 -0400
+	id 1fT5z7-0005br-EI; Wed, 13 Jun 2018 09:38:56 -0400
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1E588D4338;
-	Wed, 13 Jun 2018 13:38:57 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id E3EB4D4338;
+	Wed, 13 Jun 2018 13:38:48 +0000 (UTC)
 Received: from localhost (ovpn-117-110.ams2.redhat.com [10.36.117.110])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C127B1116704;
-	Wed, 13 Jun 2018 13:38:56 +0000 (UTC)
-Date: Wed, 13 Jun 2018 14:38:55 +0100
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 92CC81117645;
+	Wed, 13 Jun 2018 13:38:48 +0000 (UTC)
+Date: Wed, 13 Jun 2018 14:38:47 +0100
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: Thomas Huth <thuth@redhat.com>
 Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Ben Warren <ben@skyportsystems.com>, zhang.zhanghailiang@huawei.com,
 	Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
-Message-ID: <20180613133855.GN24528@stefanha-x1.localdomain>
+Message-ID: <20180613133847.GL24528@stefanha-x1.localdomain>
 References: <1528866321-23886-1-git-send-email-thuth@redhat.com>
-	<1528866321-23886-4-git-send-email-thuth@redhat.com>
+	<1528866321-23886-2-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="yK/6QRnH3Zanb0EF"
+	protocol="application/pgp-signature"; boundary="L/Qt9NZ8t00Dhfad"
 Content-Disposition: inline
-In-Reply-To: <1528866321-23886-4-git-send-email-thuth@redhat.com>
+In-Reply-To: <1528866321-23886-2-git-send-email-thuth@redhat.com>
 User-Agent: Mutt/1.9.5 (2018-04-13)
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.2]);
-	Wed, 13 Jun 2018 13:38:57 +0000 (UTC)
+	Wed, 13 Jun 2018 13:38:48 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Wed, 13 Jun 2018 13:38:57 +0000 (UTC) for IP:'10.11.54.3'
+	Wed, 13 Jun 2018 13:38:48 +0000 (UTC) for IP:'10.11.54.3'
 	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'stefanha@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH 3/4] qemu-options: Improve the
- documentation of '-accel' and '-machine accel=...'
+Subject: Re: [Qemu-trivial] [PATCH 1/4] Replace '-machine accel=xyz' with
+ '-accel xyz'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,42 +61,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Jun 2018 13:39:04 -0000
+X-List-Received-Date: Wed, 13 Jun 2018 13:39:03 -0000
 
 
---yK/6QRnH3Zanb0EF
+--L/Qt9NZ8t00Dhfad
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jun 13, 2018 at 07:05:20AM +0200, Thomas Huth wrote:
-> Instead of repeating the same text for both options, let's rather change
-> the '-machine accel' documentation to point to the preferred '-accel' opt=
-ion
-> instead.
-> And in the documenation of the -accel option, make it clear that you can
-> use colons to specify multiple accelerators.
+On Wed, Jun 13, 2018 at 07:05:18AM +0200, Thomas Huth wrote:
+> We've got a separate option to configure the accelerator nowadays.
+> Use it in the source and examples to demonstrate that this is the
+> preferred way of setting this option now.
 >=20
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  qemu-options.hx | 20 +++++++++-----------
->  1 file changed, 9 insertions(+), 11 deletions(-)
+>  qemu-doc.texi                       | 3 +--
+>  qemu-options.hx                     | 2 +-
+>  scripts/qtest.py                    | 2 +-
+>  tests/bios-tables-test.c            | 2 +-
+>  tests/boot-serial-test.c            | 2 +-
+>  tests/libqtest.c                    | 2 +-
+>  tests/migration-test.c              | 8 ++++----
+>  tests/migration/guestperf/engine.py | 2 +-
+>  tests/pnv-xscom-test.c              | 2 +-
+>  tests/prom-env-test.c               | 2 +-
+>  tests/pxe-test.c                    | 2 +-
+>  tests/qemu-iotests/172              | 2 +-
+>  tests/qemu-iotests/check            | 2 +-
+>  tests/vmgenid-test.c                | 2 +-
+>  14 files changed, 17 insertions(+), 18 deletions(-)
 
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
---yK/6QRnH3Zanb0EF
+--L/Qt9NZ8t00Dhfad
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEcBAEBAgAGBQJbIR5uAAoJEJykq7OBq3PICDkH/3hsoMwaLqVnLNd5wKeZZ5wh
-S7/H/LUvhexLs7VMhOMCOX6Z8eEOonr36VXyw4dVscmqY5ufIam9hw88yk2uypma
-5ETbex5gQPS/osSlq/9ph8/wlXlnSc2P7bUHHmg9PmF1n4r8rT7v7LgXULT76qqi
-fNDCmoJtpnZxaVNabbzNTX4voqaWTWJQ/4FdMKzM2NUQbt7p5QYYanNJqSsIt0fL
-dgl+VjHcrHWQt561SVG+vAB7Cz0iNoPTxauG2WOxAYzwlSW9za+GT6o3iu0XDxiL
-6hQhAjHfYi6BKmtbsCHSd1hTfWr6/79mAt0xgah1VTHa5glywplunfkllVx0Uew=
-=opkH
+iQEcBAEBAgAGBQJbIR5nAAoJEJykq7OBq3PInR0H/iJIPy0ic80YAqyRpW9uzgor
+LebJlACCgr8DRirs74++bgOQjPdGjpCDtFcyNePeHgK6owcnzf+vkgXLBOfGYoV+
+02NMC1vkF7yk4NSgEpCH0QPzpJFIyS/F43Us7KBD6xG/Abkni+R6cP+lFNvPtQQA
+qy92icuRmRKwCeJNh+71IcOmLkY0dYfJDWVemlEIN8FGrIZgz9gXbiFWaIc8YCfg
+pCG12B5XKdzGQ0TmtngEf2bp4v2rfvmGAHsidbYJPBdiv+BXmtzcbOART62y/rgb
+1uvCGG1WgXLCqydcfAI4E5Gzj/YEpnFGJFmo4Qe0qpLQOQT6XJePvyYbkk0qA/k=
+=uWkU
 -----END PGP SIGNATURE-----
 
---yK/6QRnH3Zanb0EF--
+--L/Qt9NZ8t00Dhfad--
 
