@@ -1,79 +1,93 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fTBr6-0007fF-Lv
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Jun 2018 15:54:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41423)
+	id 1fTBz2-0001qn-UF
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Jun 2018 16:03:08 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46796)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fTBr3-0007ex-Qr
-	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 15:54:54 -0400
+	id 1fTBz0-0001pq-Pe
+	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 16:03:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fTBr0-0000EY-N8
-	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 15:54:53 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:33960)
+	id 1fTBz0-0006dv-2A
+	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 16:03:06 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:43374)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fTBr0-0000D9-IH; Wed, 13 Jun 2018 15:54:50 -0400
-Received: by mail-qk0-x244.google.com with SMTP id q70-v6so2290495qke.1;
-	Wed, 13 Jun 2018 12:54:50 -0700 (PDT)
+	id 1fTByv-0006ZE-SI; Wed, 13 Jun 2018 16:03:01 -0400
+Received: by mail-qt0-x243.google.com with SMTP id y89-v6so3611752qtd.10;
+	Wed, 13 Jun 2018 13:03:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=sELpEAollELIDB3AAubqJurIx121OK0dqZwBUXMeUIU=;
-	b=S8IicEIQHq9MYD/3MfwGzvryfiwDwT7sEXRZeRIJrWQaMq5Kp3YJ+yyClRvdiH+5Wn
-	YcvmqPm/V3jbPvAMZY236lcPaz86e4YVTjpy2OEbgbLaB13vxw/v7CcoTL/WpB+wkKHa
-	zTuppOwIHAP5UU3Eom7pTeL3SehsjWjnaMaDX+uzax71AGvi9SAcjlu3iDdUK/8BsDev
-	1REebYz+asXdkwkjCBQCa9bUATxTElWxYCutmN+jmeA5IBR5Rn/0f6cM+4xLQ9mp3FnM
-	yZ+N7wIB1RhtrMs6VJbE7a6hFnBcajpzGClfcpLE8GpO9JI/Tzcxxbsa67nA8zHkQDNT
-	3OHg==
+	bh=5PRqe21KrF+WChOPItFuanEL+ef+6gU14G0uqvhzTBQ=;
+	b=Scd6HvfPsOu1N7GQLiR770yHg5Y5qkAnuYcpnGDqY0RqJGV+7UhMnUyYxHzPQkGMmE
+	+glqJRSF9DOF9jlHh92ByQKngz9UTPLyeS9N2IStVloW9/EAIckX//aoJTygffc1QT3l
+	+4x3XHoVoDybKIuGgn9rZTCgV+cBbyAJ0re2zVYTvA4GUp/XKIBzqwEUEOa7bXX2G8Uz
+	Cx0tYvXgAAselsb7fU5psiRK6jCt45+AHgrSjEaovLZzU51Hq2ctodNMMkJ7CbqUS57g
+	brofpGpBc749u4KvhDQDZwf962g9bBtSZYyvSThScxYT1REemG0FOuFun8Ts+YNXsrCK
+	gBqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=sELpEAollELIDB3AAubqJurIx121OK0dqZwBUXMeUIU=;
-	b=PdhEXXcYAJYy7oNXnlMlov1luWh7OAGZ0fpVu/rBJDrVNtoUnsXhwelChkOgiE2EiR
-	uwe3OHQmDLvoclqKsZ44S0P9mz1G0oxjCpbHaxERStHV+sEr3xj53NjA2Y8A1fWeyP4B
-	3UzGjtB8gLhAkB1u2ipR6cVgNU0T3sxF3mPjJozGyqEyAM9Ohw67i9PiszAyUAYQhsJm
-	xqOA+aaWJHO/D2VwmimkzV7AKthjmMH2Ae+6K4Y5aCz/L2Gvn9EYOkDcJvn/J/1VkYLT
-	rJneaMrsgcRRCDV2q15LP8lMxcC6OUBoCEjz50ecne0ftU1JUocdw6Dyf3RrMOlyC2Lx
-	4mbw==
-X-Gm-Message-State: APt69E2N7cq1AfUU5shcqB1x7zrk+jOnM6kfYOLStoyjymzbLIz+kjx3
-	XrEEwj4/fc6YTBm01dcXCkDJ1sd+
-X-Google-Smtp-Source: ADUXVKI4UAN5aMOP7ZNEKLpDFqcpsi6MpE/hT89twPkimYjBtGX3GgUQrzeyOl7YnxyLg1CDHhhZ0Q==
-X-Received: by 2002:a37:5886:: with SMTP id
-	m128-v6mr5798697qkb.275.1528919689757; 
-	Wed, 13 Jun 2018 12:54:49 -0700 (PDT)
+	bh=5PRqe21KrF+WChOPItFuanEL+ef+6gU14G0uqvhzTBQ=;
+	b=Jg9H2VoqAY65w8X60/668X99CsgSRSx/t7COhTd6PhgiGqgcv32QQKRHCi27iuxpfE
+	gJjP/OKeNRkPa60xJVkBAVr1pDTK5ooaAmrQBqCZrNwSbj8Wg2kW2essHR8uITRll9Vk
+	in9Tx+b4PUpiot5WLM9UlF6+4VzFN+7CEx7lNid9ov5ELeVrgSABfGyBkAccMCiAGAXn
+	nAiJKPBHYZSatxSr8kW1f5nl6cd5pDwQ9faJAnyZf327xofe3ojCH9lpWt5IQjCGtPqw
+	OeXaExaU4ecciMpFtIs105Gh9o1NTYnLFlCG7kCM8Tz+tZwI5BKhEvYCfWKznVhufWMn
+	GUMQ==
+X-Gm-Message-State: APt69E29d+a0bHigqYN/F5Mv8ZhSGbHz8dR/7fVupDOQoXJbxfgiY2pV
+	PwaGOJZ6UujxXxYFrG9PXMc=
+X-Google-Smtp-Source: ADUXVKJX0pafXYRaMYoUJkGm5tZdGewVqjglEujFKI5qRgx0rOq5ZHiVfBZ/B15wQd4felRE9WiSEw==
+X-Received: by 2002:ac8:2e41:: with SMTP id
+	s1-v6mr6095459qta.193.1528920181294; 
+	Wed, 13 Jun 2018 13:03:01 -0700 (PDT)
 Received: from [192.168.1.124] ([190.177.133.49])
 	by smtp.gmail.com with ESMTPSA id
-	l66-v6sm2473693qke.69.2018.06.13.12.54.47
+	j16-v6sm2097398qtn.29.2018.06.13.13.02.55
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 13 Jun 2018 12:54:49 -0700 (PDT)
+	Wed, 13 Jun 2018 13:03:00 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
-To: Eric Blake <eblake@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>
 Cc: Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+	Kevin Wolf <kwolf@redhat.com>,
+	Stefano Stabellini <sstabellini@kernel.org>, 
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"open list:Block layer core" <qemu-block@nongnu.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, Max Reitz <mreitz@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Richard Henderson <rth@twiddle.net>
 References: <20180611011501.10235-1-f4bug@amsat.org>
-	<20180611011501.10235-5-f4bug@amsat.org>
+	<20180611011501.10235-12-f4bug@amsat.org>
+	<15d222dd-d2e9-4855-62c6-f89f2ee59c52@linaro.org>
+	<76aa5170-1d18-8799-6ff1-a7c0dba0b489@redhat.com>
+	<8537ca07-2645-6c2c-5945-a91da035b474@linaro.org>
+	<a856ef80-fcab-0003-2bdd-89a1849fe857@redhat.com>
+	<7c27cd3e-124c-1c03-46de-1b016b37edf1@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <896e3c84-3001-23d8-30a1-072763e86297@amsat.org>
-Date: Wed, 13 Jun 2018 16:54:44 -0300
+Message-ID: <72cb44fc-fb48-49a6-3aa7-3e63762d9586@amsat.org>
+Date: Wed, 13 Jun 2018 17:02:53 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180611011501.10235-5-f4bug@amsat.org>
+In-Reply-To: <7c27cd3e-124c-1c03-46de-1b016b37edf1@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: Re: [Qemu-trivial] [PATCH v4 04/40] checkpatch: Recognize IEC
- binary prefix definitions
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v4 11/40] hw/xen: Use the
+ IEC binary prefix definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,87 +99,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Jun 2018 19:54:54 -0000
+X-List-Received-Date: Wed, 13 Jun 2018 20:03:07 -0000
 
-On 06/10/2018 10:14 PM, Philippe Mathieu-Daudé wrote:
-> This fixes:
+On 06/13/2018 04:31 PM, Richard Henderson wrote:
+> On 06/13/2018 02:13 AM, Eric Blake wrote:
+>> Or spell it UINT64_C(1) if you don't want a cast.
 > 
->     ERROR: "foo * bar" should be "foo *bar"
->     #310: FILE: hw/ppc/ppc440_uc.c:564:
->     +        size = 8 * MiB * sh;
->     total: 1 errors, 0 warnings, 433 lines checked
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  scripts/checkpatch.pl | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-> index e3d8c2cdfc..4923674c71 100755
-> --- a/scripts/checkpatch.pl
-> +++ b/scripts/checkpatch.pl
-> @@ -322,6 +322,7 @@ sub build_types {
->  				(?:${all}\b)
->  			)
->  			(?:\s+$Modifier|\s+const)*
-> +			(?:[KMGTPE]iB)
->  		  }x;
->  	$Type	= qr{
->  			$NonptrType
-> 
+> Not unsigned is what I want most.
 
-Well this patch doesn't work like expected...
+I used both of your suggestions, but now new format string errors
+appeared due to ram_addr_t being unsigned, so code cleaned using
+MachineState->ram_size now complains.
 
-$ git diff --cached | \
-  scripts/checkpatch.pl --no-signoff --debug values=2 -
- <E> <E> <_>WS(         )
- <E> <E> <_>IDENT(size)
- <E> <V> <_>WS( )
- <E> <V> <_>ASSIGN(=)
- <E> <N> <_>WS( )
- <E> <N> <_>IDENT(8)
- <E> <V> <_>WS( )
- <E> <V> <_>OPV(*)
- <E> <N> <_>WS( )
- <E> <N> <_>DECLARE(MiB * ) <------------
- <E> <T> <_>IDENT(sh)
- <E> <V> <_>END(;)
- <E> <E> <_>WS(
-)
-22 > .         size = 8 * MiB * sh;
-22 > EEEEEEEEEEVVVVVNNVVNNTTTTTTVVEE
-22 >  __________________B___________
+include/exec/cpu-common.h:53:typedef uintptr_t ram_addr_t;
+include/hw/boards.h:259:    ram_addr_t ram_size;
 
-Which looks OK, but then (example):
+Is the following snippet OK?
 
-$ git diff --cached
-diff --git a/include/net/net.h b/include/net/net.h
--void qemu_del_nic(NICState *nic);
-+void qemu_del_nic(NICState *test);
-
-$ git diff --cached | \
-  scripts/checkpatch.pl --no-signoff --debug values=2 -
-
- void qemu_del_nic(NICState *test);
-
- <E> <E> <_>WS( )
- <E> <E> <_>IDENT(void)
- <E> <V> <_>WS( )
- <E> <V> <_>FUNC(qemu_del_nic)
- <E> <V> <V>PAREN('(')
- <EV> <N> <_>IDENT(NICState)
- <EV> <V> <_>WS( )
- <EV> <V> <_>OPV(*)
- <EV> <N> <_>IDENT(test)
- <EV> <V> <_>PAREN(')') -> V
- <E> <V> <_>END(;)
- <E> <E> <_>WS(
-)
-10 > . void qemu_del_nic(NICState *test);
-10 > EEVVVVVVVVVVVVVVVVVNVVVVVVVVVNVVVVVEE
-10 >  ____________________________B_______
-ERROR: spaces required around that '*' (ctx:WxV)
-#10: FILE: include/net/net.h:136:
-+void qemu_del_nic(NICState *test);
-                            ^
+     /* allocate RAM */
+-    if (ram_size > (2048u << 20)) {
+-        error_report("Too much memory for this machine: %dMB, maximum
+2048MB",
+-                     ((unsigned int)ram_size / (1 << 20)));
++    if (ram_size > 2 * GiB) {
++        error_report("Too much memory for this machine: %luMB, maximum
+2048MB",
++                     ram_size / MiB);
+         exit(1);
+     }
 
