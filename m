@@ -1,58 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fT4lN-0000Ac-J7
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Jun 2018 08:20:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41199)
+	id 1fT4vR-0003ev-3n
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Jun 2018 08:30:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43568)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1fT4lI-000093-PK
-	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 08:20:29 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fT4vO-0003cw-9N
+	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 08:30:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1fT4lH-0001iM-UR
-	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 08:20:28 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:57404 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1fT4lD-0001XM-1W; Wed, 13 Jun 2018 08:20:23 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 670824040073;
-	Wed, 13 Jun 2018 12:20:22 +0000 (UTC)
-Received: from [10.10.120.103] (ovpn-120-103.rdu2.redhat.com [10.10.120.103])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 314882026609;
-	Wed, 13 Jun 2018 12:20:21 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-References: <1528866321-23886-1-git-send-email-thuth@redhat.com>
-	<1528866321-23886-2-git-send-email-thuth@redhat.com>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Ben Warren
-	<ben@skyportsystems.com>, qemu-trivial@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>, Stefan Hajnoczi
-	<stefanha@redhat.com>, zhang.zhanghailiang@huawei.com
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <b4b86190-1f16-758b-448f-b3766327d635@redhat.com>
-Date: Wed, 13 Jun 2018 07:20:20 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <peter.maydell@linaro.org>) id 1fT4vN-0008Sm-7K
+	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 08:30:54 -0400
+Received: from mail-ot0-x241.google.com ([2607:f8b0:4003:c0f::241]:42313)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fT4vM-0008RD-PB
+	for qemu-trivial@nongnu.org; Wed, 13 Jun 2018 08:30:53 -0400
+Received: by mail-ot0-x241.google.com with SMTP id 92-v6so2714944otw.9
+	for <qemu-trivial@nongnu.org>; Wed, 13 Jun 2018 05:30:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=yAJvLyiqgwLPK93/dYU3l41GKUDEKbe8fuohIqMYbjg=;
+	b=NwxMkmMsTlZcBtDInFNyS/zjzmNFa8tUHwnUQ9P3M+mYHo9lLq+1x6uZ1twl1anqmO
+	JKNyeR7d7YtYTEPIp6g771yQA0JmE9azSyNUHA9BqVTW3nwqMi8cZye78b9fA2YtKU0c
+	LvMChUuvmLI41j+9RAhDQrEzX/hWWR+CBWvow=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=yAJvLyiqgwLPK93/dYU3l41GKUDEKbe8fuohIqMYbjg=;
+	b=qGLC/4KOwFUIXSmiEIzxhlQRQrgYjT7598mOC7AbOXSqos6tS0iDBCwkVJ/Sg0Zt4l
+	iAAyxGMPhyLsmvWezoTvTurBplNsMF1j2lOj5YDNFRp5R1enGyHEV2lmFb8zxHEhS7ZI
+	IGgxqvdhnUFkZczI+UePS/qJCa7pxZYMNzOxQ4JuM6AqBIzHO/TGnQxK28BngAO4KN7X
+	t4jbyoz8edSb+zJRM+MR2mJYdGjgGOPiX47dFayk9xlL4+gaVo9eT8EpppMbDHjDV0lj
+	GCjYSxdMtbjo31RAxv3sb2Oy++3b8SdmjyvJLMrTdN/hGM69Rk10Q9Oa+KuyW+xWcgJH
+	EVZg==
+X-Gm-Message-State: APt69E0OPmRz8pzJsw6vCZqDIAM2bNj9byE+CLlOiPYB2F5+lLTED8vb
+	MD/lSXzprP0APem6n1aDSQKOHqv3XAZQ/oYIB4+TPQ==
+X-Google-Smtp-Source: ADUXVKLbnMS4UhXJOUsOnvntdbZ+SlUiBaQlDDxC/dzQjpldCFCxLxLj74wRGTC/JlkUzpW10qDB9eFvTlXyfUiN1Pk=
+X-Received: by 2002:a9d:2909:: with SMTP id
+	d9-v6mr2789413otb.258.1528893052025; 
+	Wed, 13 Jun 2018 05:30:52 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1528866321-23886-2-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Wed, 13 Jun 2018 12:20:22 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Wed, 13 Jun 2018 12:20:22 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/4] Replace '-machine
- accel=xyz' with '-accel xyz'
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Wed, 13 Jun 2018 05:30:31
+	-0700 (PDT)
+In-Reply-To: <650048df-f4b1-b351-f877-be8c84197ba2@linaro.org>
+References: <20180611141716.3813-1-peter.maydell@linaro.org>
+	<650048df-f4b1-b351-f877-be8c84197ba2@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 13 Jun 2018 13:30:31 +0100
+Message-ID: <CAFEAcA-vZH0KUxi+iYP3eYzXeHxNTotNwCMhEPcGhOLksbG71A@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Kevin Wolf <kwolf@redhat.com>, Thomas Huth <thuth@redhat.com>, 
+	"patches@linaro.org" <patches@linaro.org>,
+	Cornelia Huck <cohuck@redhat.com>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	Markus Armbruster <armbru@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, John Snow <jsnow@redhat.com>, 
+	Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c0f::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] CODING_STYLE: Define our
+ preferred form for multiline comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,27 +75,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Jun 2018 12:20:32 -0000
+X-List-Received-Date: Wed, 13 Jun 2018 12:30:55 -0000
 
-On 06/13/2018 12:05 AM, Thomas Huth wrote:
-> We've got a separate option to configure the accelerator nowadays.
-> Use it in the source and examples to demonstrate that this is the
-> preferred way of setting this option now.
+On 12 June 2018 at 18:30, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+> On 06/11/2018 04:17 AM, Peter Maydell wrote:
+>> The codebase has a bit of a mix of different multiline
+>> comment styles. State a preference for the Linux kernel
+>> style:
+>>     /*
+>>      * Star on the left for each line.
+>>      * Leading slash-star and trailing star-slash
+>>      * each go on a line of their own.
+>>      */
+>>
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>> This is not my personal favourite, but seemed to be the
+>> closest we had to consensus in the mail thread for v1;
+>> I can live with it in order to avoid getting patches which
+>> use the styles I like even less :-)
+>
+> Honestly, I don't like this except for "important" comments.
+>
+> A "small" comment, e.g. one that doesn't quite fit on a single line, now takes
+> 4 lines instead of 2.  Which is really annoying and IMO tends to break flow.
 
-Is it worth bike-shedding the preferred spelling as '--accel xyz', to 
-match 
-https://wiki.qemu.org/BiteSizedTasks#Consistent_option_usage_in_documentation?
+That's why I prefer
+ /* two
+  * lines
+  */
+style over kernel-style. But apparently nobody else does...
 
-It's more important to use double-dash for options shared between 
-binaries, but qemu-nbd and qemu-img don't use --accel, so that makes the 
-argument slightly weaker for the doubled form here.
-
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+thanks
+-- PMM
 
