@@ -1,100 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fTkBH-00029O-BG
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Jun 2018 04:34:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60586)
+	id 1fTkMK-0008II-BP
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Jun 2018 04:45:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37189)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fTkBE-00027U-TD
-	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 04:34:01 -0400
+	(envelope-from <thuth@redhat.com>) id 1fTkMH-0008Gf-JH
+	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 04:45:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fTkBB-0004Dm-PS
-	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 04:34:00 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:59600 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fTkMG-0002nu-66
+	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 04:45:25 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:33438 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fTkB1-00040N-OO; Fri, 15 Jun 2018 04:33:47 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1fTkLx-0002MC-5B; Fri, 15 Jun 2018 04:45:05 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E668F406DE3D;
-	Fri, 15 Jun 2018 08:33:46 +0000 (UTC)
-Received: from [10.36.116.79] (ovpn-116-79.ams2.redhat.com [10.36.116.79])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 11D8D63A7D;
-	Fri, 15 Jun 2018 08:33:43 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6F4F28A702;
+	Fri, 15 Jun 2018 08:45:04 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-79.ams2.redhat.com [10.36.116.79])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A1BDB2023580;
+	Fri, 15 Jun 2018 08:45:01 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org, Christian Borntraeger <borntraeger@de.ibm.com>,
 	Cornelia Huck <cohuck@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-s390x@nongnu.org,
-	qemu-arm@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
-	Paolo Bonzini <pbonzini@redhat.com>, Yongbok Kim <yongbok.kim@mips.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>
-References: <1529045897-25260-1-git-send-email-thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <5ab4dd7b-b717-5e58-41d8-1d996c515a10@redhat.com>
-Date: Fri, 15 Jun 2018 10:33:42 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
-MIME-Version: 1.0
-In-Reply-To: <1529045897-25260-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+Cc: qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+	Yongbok Kim <yongbok.kim@mips.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org
+Date: Fri, 15 Jun 2018 10:45:00 +0200
+Message-Id: <1529052300-23093-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Fri, 15 Jun 2018 08:33:47 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Fri, 15 Jun 2018 08:33:47 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.2]);
+	Fri, 15 Jun 2018 08:45:04 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Fri, 15 Jun 2018 08:45:04 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] loader: Check access size
- when calling rom_ptr() to avoid crashes
+Subject: [Qemu-trivial] [PATCH v2] loader: Check access size when calling
+ rom_ptr() to avoid crashes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,55 +56,205 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jun 2018 08:34:01 -0000
+X-List-Received-Date: Fri, 15 Jun 2018 08:45:27 -0000
 
-On 15.06.2018 08:58, Thomas Huth wrote:
-> The rom_ptr() function allows direct access to the ROM blobs that we
-> load during startup. However, there are currently no checks for the
-> size of the accesses, so it's currently possible to crash QEMU for
-> example with:
-> 
-> $ echo "Insane in the mainframe" > /tmp/test.txt
-> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -append xyz
-> Segmentation fault (core dumped)
-> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -initrd /tmp/test.txt
-> Segmentation fault (core dumped)
-> 
-> We need a possibility to check the size of the ROM area that we want
-> to access, thus let's add a size parameter to the rom_ptr() function
-> to avoid these problems.
-[...]
-> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-> index 0ee779f..2375cb2 100644
-> --- a/hw/sparc/sun4m.c
-> +++ b/hw/sparc/sun4m.c
-> @@ -272,7 +272,7 @@ static unsigned long sun4m_load_kernel(const char *kernel_filename,
->          }
->          if (initrd_size > 0) {
->              for (i = 0; i < 64 * TARGET_PAGE_SIZE; i += TARGET_PAGE_SIZE) {
-> -                ptr = rom_ptr(KERNEL_LOAD_ADDR + i);
-> +                ptr = rom_ptr(KERNEL_LOAD_ADDR + i, 24);
->                  if (ldl_p(ptr) == 0x48647253) { // HdrS
+The rom_ptr() function allows direct access to the ROM blobs that we
+load during startup. However, there are currently no checks for the
+size of the accesses, so it's currently possible to crash QEMU for
+example with:
 
-Darn, that should check for ptr != NULL ...
+$ echo "Insane in the mainframe" > /tmp/test.txt
+$ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -append xyz
+Segmentation fault (core dumped)
+$ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -initrd /tmp/test.txt
+Segmentation fault (core dumped)
+$ echo -n HdrS > /tmp/hdr.txt
+$ sparc64-softmmu/qemu-system-sparc64 -kernel /tmp/hdr.txt -initrd /tmp/hdr.txt
+Segmentation fault (core dumped)
 
->                      stl_p(ptr + 16, INITRD_LOAD_ADDR);
->                      stl_p(ptr + 20, initrd_size);
-> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-> index 1bede85..8b09090 100644
-> --- a/hw/sparc64/sun4u.c
-> +++ b/hw/sparc64/sun4u.c
-> @@ -186,7 +186,7 @@ static uint64_t sun4u_load_kernel(const char *kernel_filename,
->          }
->          if (*initrd_size > 0) {
->              for (i = 0; i < 64 * TARGET_PAGE_SIZE; i += TARGET_PAGE_SIZE) {
-> -                ptr = rom_ptr(*kernel_addr + i);
-> +                ptr = rom_ptr(*kernel_addr + i, 32);
->                  if (ldl_p(ptr + 8) == 0x48647253) { /* HdrS */
+We need a possibility to check the size of the ROM area that we want
+to access, thus let's add a size parameter to the rom_ptr() function
+to avoid these problems.
 
-... dito ...
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ v2:
+ - Add sparc64 crash to the patch description
+ - Added Cornelia's Rb from v1
+ - NULL pointer check in the sparc machines
 
-I'll send a v2.
+ hw/core/loader.c     | 10 +++++-----
+ hw/mips/mips_malta.c |  6 ++++--
+ hw/s390x/ipl.c       | 13 ++++++++++---
+ hw/sparc/sun4m.c     |  4 ++--
+ hw/sparc64/sun4u.c   |  4 ++--
+ include/hw/loader.h  |  2 +-
+ target/arm/cpu.c     |  2 +-
+ 7 files changed, 25 insertions(+), 16 deletions(-)
 
- Thomas
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 06bdbca..54be522 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -191,7 +191,7 @@ void pstrcpy_targphys(const char *name, hwaddr dest, int buf_size,
+         rom_add_blob_fixed(name, source, (nulp - source) + 1, dest);
+     } else {
+         rom_add_blob_fixed(name, source, buf_size, dest);
+-        ptr = rom_ptr(dest + buf_size - 1);
++        ptr = rom_ptr(dest + buf_size - 1, sizeof(*ptr));
+         *ptr = 0;
+     }
+ }
+@@ -1165,7 +1165,7 @@ void rom_reset_order_override(void)
+     fw_cfg_reset_order_override(fw_cfg);
+ }
+ 
+-static Rom *find_rom(hwaddr addr)
++static Rom *find_rom(hwaddr addr, size_t size)
+ {
+     Rom *rom;
+ 
+@@ -1176,7 +1176,7 @@ static Rom *find_rom(hwaddr addr)
+         if (rom->mr) {
+             continue;
+         }
+-        if (rom->addr > addr) {
++        if (rom->addr > addr + size) {
+             continue;
+         }
+         if (rom->addr + rom->romsize < addr) {
+@@ -1249,11 +1249,11 @@ int rom_copy(uint8_t *dest, hwaddr addr, size_t size)
+     return (d + l) - dest;
+ }
+ 
+-void *rom_ptr(hwaddr addr)
++void *rom_ptr(hwaddr addr, size_t size)
+ {
+     Rom *rom;
+ 
+-    rom = find_rom(addr);
++    rom = find_rom(addr, size);
+     if (!rom || !rom->data)
+         return NULL;
+     return rom->data + (addr - rom->addr);
+diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
+index 494f84e..3733e2f 100644
+--- a/hw/mips/mips_malta.c
++++ b/hw/mips/mips_malta.c
+@@ -1133,11 +1133,13 @@ void mips_malta_init(MachineState *machine)
+            a neat trick which allows bi-endian firmware. */
+ #ifndef TARGET_WORDS_BIGENDIAN
+         {
+-            uint32_t *end, *addr = rom_ptr(FLASH_ADDRESS);
++            uint32_t *end, *addr;
++            const size_t swapsize = MIN(bios_size, 0x3e0000);
++            addr = rom_ptr(FLASH_ADDRESS, swapsize);
+             if (!addr) {
+                 addr = memory_region_get_ram_ptr(bios);
+             }
+-            end = (void *)addr + MIN(bios_size, 0x3e0000);
++            end = (void *)addr + swapsize;
+             while (addr < end) {
+                 bswap32s(addr);
+                 addr++;
+diff --git a/hw/s390x/ipl.c b/hw/s390x/ipl.c
+index 04245b5..bcac204 100644
+--- a/hw/s390x/ipl.c
++++ b/hw/s390x/ipl.c
+@@ -169,9 +169,12 @@ static void s390_ipl_realize(DeviceState *dev, Error **errp)
+          * loader) and it won't work. For this case we force it to 0x10000, too.
+          */
+         if (pentry == KERN_IMAGE_START || pentry == 0x800) {
++            char *parm_area = rom_ptr(KERN_PARM_AREA, strlen(ipl->cmdline) + 1);
+             ipl->start_addr = KERN_IMAGE_START;
+             /* Overwrite parameters in the kernel image, which are "rom" */
+-            strcpy(rom_ptr(KERN_PARM_AREA), ipl->cmdline);
++            if (parm_area) {
++                strcpy(parm_area, ipl->cmdline);
++            }
+         } else {
+             ipl->start_addr = pentry;
+         }
+@@ -179,6 +182,7 @@ static void s390_ipl_realize(DeviceState *dev, Error **errp)
+         if (ipl->initrd) {
+             ram_addr_t initrd_offset;
+             int initrd_size;
++            uint64_t *romptr;
+ 
+             initrd_offset = INITRD_START;
+             while (kernel_size + 0x100000 > initrd_offset) {
+@@ -195,8 +199,11 @@ static void s390_ipl_realize(DeviceState *dev, Error **errp)
+              * we have to overwrite values in the kernel image,
+              * which are "rom"
+              */
+-            stq_p(rom_ptr(INITRD_PARM_START), initrd_offset);
+-            stq_p(rom_ptr(INITRD_PARM_SIZE), initrd_size);
++            romptr = rom_ptr(INITRD_PARM_START, 16);
++            if (romptr) {
++                stq_p(romptr, initrd_offset);
++                stq_p(romptr + 1, initrd_size);
++            }
+         }
+     }
+     /*
+diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+index 0ee779f..8eef74b 100644
+--- a/hw/sparc/sun4m.c
++++ b/hw/sparc/sun4m.c
+@@ -272,8 +272,8 @@ static unsigned long sun4m_load_kernel(const char *kernel_filename,
+         }
+         if (initrd_size > 0) {
+             for (i = 0; i < 64 * TARGET_PAGE_SIZE; i += TARGET_PAGE_SIZE) {
+-                ptr = rom_ptr(KERNEL_LOAD_ADDR + i);
+-                if (ldl_p(ptr) == 0x48647253) { // HdrS
++                ptr = rom_ptr(KERNEL_LOAD_ADDR + i, 24);
++                if (ptr && ldl_p(ptr) == 0x48647253) { /* HdrS */
+                     stl_p(ptr + 16, INITRD_LOAD_ADDR);
+                     stl_p(ptr + 20, initrd_size);
+                     break;
+diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+index 1bede85..5b76863 100644
+--- a/hw/sparc64/sun4u.c
++++ b/hw/sparc64/sun4u.c
+@@ -186,8 +186,8 @@ static uint64_t sun4u_load_kernel(const char *kernel_filename,
+         }
+         if (*initrd_size > 0) {
+             for (i = 0; i < 64 * TARGET_PAGE_SIZE; i += TARGET_PAGE_SIZE) {
+-                ptr = rom_ptr(*kernel_addr + i);
+-                if (ldl_p(ptr + 8) == 0x48647253) { /* HdrS */
++                ptr = rom_ptr(*kernel_addr + i, 32);
++                if (ptr && ldl_p(ptr + 8) == 0x48647253) { /* HdrS */
+                     stl_p(ptr + 24, *initrd_addr + *kernel_addr);
+                     stl_p(ptr + 28, *initrd_size);
+                     break;
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index 5ed3fd8..e98b84b 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -226,7 +226,7 @@ void rom_set_fw(FWCfgState *f);
+ void rom_set_order_override(int order);
+ void rom_reset_order_override(void);
+ int rom_copy(uint8_t *dest, hwaddr addr, size_t size);
+-void *rom_ptr(hwaddr addr);
++void *rom_ptr(hwaddr addr, size_t size);
+ void hmp_info_roms(Monitor *mon, const QDict *qdict);
+ 
+ #define rom_add_file_fixed(_f, _a, _i)          \
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index ab047b9..95f92b2 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -232,7 +232,7 @@ static void arm_cpu_reset(CPUState *s)
+ 
+         /* Load the initial SP and PC from offset 0 and 4 in the vector table */
+         vecbase = env->v7m.vecbase[env->v7m.secure];
+-        rom = rom_ptr(vecbase);
++        rom = rom_ptr(vecbase, 8);
+         if (rom) {
+             /* Address zero is covered by ROM which hasn't yet been
+              * copied into physical memory.
+-- 
+1.8.3.1
+
 
