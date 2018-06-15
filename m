@@ -1,65 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fTnsm-0005sd-1N
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Jun 2018 08:31:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33134)
+	id 1fTo7J-0006QW-HZ
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Jun 2018 08:46:13 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36526)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fTnsj-0005ok-Bv
-	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 08:31:10 -0400
+	(envelope-from <armbru@redhat.com>) id 1fTo7F-0006MM-6X
+	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 08:46:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fTnse-000643-VV
-	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 08:31:09 -0400
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:39973)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fTnse-00063Y-Hn
-	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 08:31:04 -0400
-Received: by mail-oi0-x243.google.com with SMTP id f79-v6so8630698oib.7
-	for <qemu-trivial@nongnu.org>; Fri, 15 Jun 2018 05:31:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=jKE4XPj52RVHJ1sPJyWhdBG+MgTtPq8FNSKUr1cdOzE=;
-	b=Q6655tuprBwm4mihJr0u47CbatKmQceBrw2ib018T5Pt/IOXZ5PMcnYbaQP9Ixx36X
-	1yIWAwOkm5dTkJPhI9W+wr7ecAGfqRlaEQpBSayKZNmeSW6gD8ufyiN7r2CNafvmS/YJ
-	Qe4YZIt7NTK9Bp2cJ1k7per3gb/dsg8szyQL0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=jKE4XPj52RVHJ1sPJyWhdBG+MgTtPq8FNSKUr1cdOzE=;
-	b=N5wemtiMejkRimIxnZH6fhCbnasBjMuIoCV2yU8b7P3NsQ3D96ql5iUTPkVJiOdz9M
-	MztbfsBLzvXqP0hndt2rl3DY2CxC+1rc1cgebzTopvkYUMu7rguLIv6gTVxloBnNtwN/
-	aSYkHEh+EZmQeZW0FQ6xlSb3w+JnEFFF1ZJRNhQjygEsDkyg3U5IWTjNMHDjGMwWZStD
-	La6a3FYfvLgK8fNjU+hvPtlBJg1gddmGpatpHcipqGrem4iPXCdrgNgCFo7y33pd4iFv
-	suq5Gbz0qyJj5GRj8TeMWimX+v4sIlmQRsjKMVlK0MbclcWiTpp7tZAjl3fo2w9XC93/
-	ot8w==
-X-Gm-Message-State: APt69E1Ezlo8lpbiZu9rhS+msMg5nFig+l+hndL3lJLa8VR6Wm4cTJJK
-	Lo+RRHI9QzQZQrKs9Y8/i9hIDiLGxWBzb7MN8aLIjw==
-X-Google-Smtp-Source: ADUXVKKOkw+kBUFL8HHIrjBYTzAb7bq0LHL4F4eEkwWYnYpKLSOmC5PIpU1h+ebPl8foB0Bv46DPnrxU8ELM4sorm7s=
-X-Received: by 2002:aca:a846:: with SMTP id r67-v6mr798487oie.12.1529065863841;
-	Fri, 15 Jun 2018 05:31:03 -0700 (PDT)
+	(envelope-from <armbru@redhat.com>) id 1fTo7E-0004Xj-8g
+	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 08:46:09 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51312 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1fTo78-0004Rh-4K; Fri, 15 Jun 2018 08:46:02 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9B2B240122B9;
+	Fri, 15 Jun 2018 12:46:01 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-117-237.ams2.redhat.com
+	[10.36.117.237])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id D4A43111AF2C;
+	Fri, 15 Jun 2018 12:45:54 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 8C97C1138645; Fri, 15 Jun 2018 14:45:53 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: John Snow <jsnow@redhat.com>,  Kevin Wolf <kwolf@redhat.com>,  Thomas
+	Huth <thuth@redhat.com>,  "patches\@linaro.org" <patches@linaro.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,  Markus Armbruster
+	<armbru@redhat.com>,  Cornelia Huck <cohuck@redhat.com>,  Richard
+	Henderson <richard.henderson@linaro.org>,  QEMU Developers
+	<qemu-devel@nongnu.org>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+	<f4bug@amsat.org>, Alex Williamson <alex.williamson@redhat.com>, Stefan
+	Hajnoczi <stefanha@redhat.com>,  Richard Henderson <rth@twiddle.net>
+References: <20180611141716.3813-1-peter.maydell@linaro.org>
+	<650048df-f4b1-b351-f877-be8c84197ba2@linaro.org>
+	<CAFEAcA-vZH0KUxi+iYP3eYzXeHxNTotNwCMhEPcGhOLksbG71A@mail.gmail.com>
+	<f9beda14-7c4a-8f89-baf1-5a79e847c4ac@redhat.com>
+	<CAFEAcA_egToeW7ksTncbFCsW6uTh1FcPSgW6gx+VnjvQpqwWsw@mail.gmail.com>
+Date: Fri, 15 Jun 2018 14:45:53 +0200
+In-Reply-To: <CAFEAcA_egToeW7ksTncbFCsW6uTh1FcPSgW6gx+VnjvQpqwWsw@mail.gmail.com>
+	(Peter Maydell's message of "Thu, 14 Jun 2018 11:46:17 +0100")
+Message-ID: <87k1r01am6.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Fri, 15 Jun 2018 05:30:43
-	-0700 (PDT)
-In-Reply-To: <20180609151048.9628-1-f4bug@amsat.org>
-References: <20180609151048.9628-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 15 Jun 2018 13:30:43 +0100
-Message-ID: <CAFEAcA-2GKS-hJnHp6Lv7OJ8-QnirGLAUikNvfYooa=yk4k9aw@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
-	Thomas Huth <thuth@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, 
-	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-trivial] [PATCH v2] Makefile: Check for more dangling
- scratch files in out-of-tree builds
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Fri, 15 Jun 2018 12:46:01 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Fri, 15 Jun 2018 12:46:01 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] CODING_STYLE: Define our
+ preferred form for multiline comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,90 +70,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jun 2018 12:31:10 -0000
+X-List-Received-Date: Fri, 15 Jun 2018 12:46:10 -0000
 
-On 9 June 2018 at 16:10, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrot=
-e:
-> It is easy to catch the generated 'config-host.mak' in the source
-> tree, however qemu-version.h and qemu-options.def are also generated
-> files and are hidden by .gitignore rules.
->
-> Improve the out-of-tree safety net rule added in d1bd2423a90,
-> by also checking for these two files.
->
-> This solves building issues with out-of-tree builds from a
-> source tree that has been built in:
->
-> - /qemu-version.h existing in source tree:
->
->     /source/qemu/qemu-nbd.c: In function =E2=80=98version=E2=80=99:
->     /source/qemu/qemu-nbd.c:133:6: error: expected =E2=80=98)=E2=80=99 be=
-fore
->     =E2=80=98QEMU_FULL_VERSION=E2=80=99
->      "%s " QEMU_FULL_VERSION "\n"
->           ^~~~~~~~~~~~~~~~~~
->           )
->     /source/qemu/qemu-nbd.c:133:3: error: format =E2=80=98%s=E2=80=99 exp=
-ects a matching
->     =E2=80=98char *=E2=80=99 argument [-Werror=3Dformat=3D]
->      "%s " QEMU_FULL_VERSION "\n"
->       ~^
->     cc1: all warnings being treated as errors
->
-> - /qemu-options.def existing in source tree:
->
->     /source/qemu/vl.c: In function =E2=80=98main=E2=80=99:
->     /source/qemu/vl.c:3052:18: error: =E2=80=98QEMU_OPTION_blockdev=E2=80=
-=99 undeclared
->     (first use in this function); did you mean =E2=80=98QEMU_OPTION_clock=
-=E2=80=99?
->                  case QEMU_OPTION_blockdev:
->                       ^~~~~~~~~~~~~~~~~~~~
->                       QEMU_OPTION_clock
->     /source/qemu/vl.c:3052:18: note: each undeclared identifier is report=
-ed
->     only once for each function it appears in
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-This commit message should I think also mention that it is
-only needed to deal with source trees that have these stale
-files from failed build attempts that predate commit
-428952cfa966f5af8. Otherwise the existing test on config-host.mak
-is sufficient.
-
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> Since v1 http://lists.nongnu.org/archive/html/qemu-devel/2018-06/msg02254=
-.html:
-> Peter noticed [1] those files already are in GENERATED_FILES
+> On 13 June 2018 at 17:55, John Snow <jsnow@redhat.com> wrote:
+[...]
+>> It would only begin to matter terribly much if we actually decided we
+>> wanted to do a doxygen-style doc generation for our internal APIs for
+>> compatibility with, say, fancier IDEs than vim/emacs.
 >
-> [1] http://lists.nongnu.org/archive/html/qemu-devel/2018-06/msg02338.html
+> We ought to do that at some point -- I had some prototype patches
+> for it. Doc-comment comments always start /** on a line of its own,
+> though.
 >
->  Makefile | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>> As it stands, we're pretty inconsistent about which exact style we apply
+>> when we "document" internal functions -- sometimes we document the
+>> header, sometimes the implementation, sometimes both (but differently!)
+>> and always with different styles all over the place. That's the real
+>> problem, IMO.
 >
-> diff --git a/Makefile b/Makefile
-> index 023b3437ec..521009964c 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -55,7 +55,8 @@ endif
->  # Check that we're not trying to do an out-of-tree build from
->  # a tree that's been used for an in-tree build.
->  ifneq ($(realpath $(SRC_PATH)),$(realpath .))
-> -ifneq ($(wildcard $(SRC_PATH)/config-host.mak),)
-> +scratch_files =3D config-host.mak qemu-version.h qemu-options.def
-> +ifneq ($(wildcard $(addprefix $(SRC_PATH)/,$(scratch_files))),)
->  $(error This is an out of tree build but your source tree ($(SRC_PATH)) =
-\
->  seems to have been used for an in-tree build. You can fix this by runnin=
-g \
->  "$(MAKE) distclean && rm -rf *-linux-user *-softmmu" in your source tree=
-)
-> --
-> 2.17.1
+> IMHO -- global functions should always be documented in the header
+> with the prototype, and any new global function should get a
+> doc comment (I require this for code I review...) I should be able
+> to read about the API your code exposes to the rest of QEMU purely
+> by looking at your headers.
 
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Putting the function contract far from the actual function is a proven
+way to end up with a contract that is far from what the function
+actually does.
 
-thanks
--- PMM
+With a documentation generator such as Sphinx, the usual argument for
+putting the contracts in headers "I want API documentation in one place,
+without clutter" carries a lot less weight: the generated documentation
+is exactly that.
 
