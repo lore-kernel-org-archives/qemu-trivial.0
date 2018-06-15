@@ -1,64 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fTo7J-0006QW-HZ
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Jun 2018 08:46:13 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36526)
+	id 1fTsYO-0004ya-FV
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Jun 2018 13:30:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56683)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1fTo7F-0006MM-6X
-	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 08:46:10 -0400
+	(envelope-from <stefanha@redhat.com>) id 1fTsYL-0004wT-PC
+	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 13:30:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1fTo7E-0004Xj-8g
-	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 08:46:09 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:51312 helo=mx1.redhat.com)
+	(envelope-from <stefanha@redhat.com>) id 1fTsYK-0001SJ-4U
+	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 13:30:25 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:46570 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1fTo78-0004Rh-4K; Fri, 15 Jun 2018 08:46:02 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
+	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
+	id 1fTsYF-0001Ke-7W; Fri, 15 Jun 2018 13:30:19 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9B2B240122B9;
-	Fri, 15 Jun 2018 12:46:01 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-117-237.ams2.redhat.com
-	[10.36.117.237])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D4A43111AF2C;
-	Fri, 15 Jun 2018 12:45:54 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 8C97C1138645; Fri, 15 Jun 2018 14:45:53 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: John Snow <jsnow@redhat.com>,  Kevin Wolf <kwolf@redhat.com>,  Thomas
-	Huth <thuth@redhat.com>,  "patches\@linaro.org" <patches@linaro.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,  Markus Armbruster
-	<armbru@redhat.com>,  Cornelia Huck <cohuck@redhat.com>,  Richard
-	Henderson <richard.henderson@linaro.org>,  QEMU Developers
-	<qemu-devel@nongnu.org>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
-	<f4bug@amsat.org>, Alex Williamson <alex.williamson@redhat.com>, Stefan
-	Hajnoczi <stefanha@redhat.com>,  Richard Henderson <rth@twiddle.net>
-References: <20180611141716.3813-1-peter.maydell@linaro.org>
-	<650048df-f4b1-b351-f877-be8c84197ba2@linaro.org>
-	<CAFEAcA-vZH0KUxi+iYP3eYzXeHxNTotNwCMhEPcGhOLksbG71A@mail.gmail.com>
-	<f9beda14-7c4a-8f89-baf1-5a79e847c4ac@redhat.com>
-	<CAFEAcA_egToeW7ksTncbFCsW6uTh1FcPSgW6gx+VnjvQpqwWsw@mail.gmail.com>
-Date: Fri, 15 Jun 2018 14:45:53 +0200
-In-Reply-To: <CAFEAcA_egToeW7ksTncbFCsW6uTh1FcPSgW6gx+VnjvQpqwWsw@mail.gmail.com>
-	(Peter Maydell's message of "Thu, 14 Jun 2018 11:46:17 +0100")
-Message-ID: <87k1r01am6.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	by mx1.redhat.com (Postfix) with ESMTPS id 357C840704B5;
+	Fri, 15 Jun 2018 17:30:16 +0000 (UTC)
+Received: from localhost (ovpn-117-51.ams2.redhat.com [10.36.117.51])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 533BE20284D6;
+	Fri, 15 Jun 2018 17:30:13 +0000 (UTC)
+Date: Fri, 15 Jun 2018 18:30:13 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Yaowei Bai <baiyaowei@cmss.chinamobile.com>
+Cc: Eric Blake <eblake@redhat.com>, "Emilio G. Cota" <cota@braap.org>,
+	qemu-trivial@nongnu.org, mjt@tls.msk.ru, laurent@vivier.eu,
+	qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
+Message-ID: <20180615173013.GH12972@stefanha-x1.localdomain>
+References: <1528859749-25286-1-git-send-email-baiyaowei@cmss.chinamobile.com>
+	<20180613035030.GB25430@flamenco>
+	<23a38716-196f-53a0-0a3d-61f269b1dab4@redhat.com>
+	<20180613141510.GA672@byw>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="cW+P/jduATWpL925"
+Content-Disposition: inline
+In-Reply-To: <20180613141510.GA672@byw>
+User-Agent: Mutt/1.10.0 (2018-05-17)
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Fri, 15 Jun 2018 12:46:01 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Fri, 15 Jun 2018 12:46:01 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.7]);
+	Fri, 15 Jun 2018 17:30:16 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Fri, 15 Jun 2018 17:30:16 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'stefanha@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] CODING_STYLE: Define our
- preferred form for multiline comments
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tracing.txt: add missing
+ '-' for trace option
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,38 +62,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jun 2018 12:46:10 -0000
+X-List-Received-Date: Fri, 15 Jun 2018 17:30:27 -0000
 
-Peter Maydell <peter.maydell@linaro.org> writes:
 
-> On 13 June 2018 at 17:55, John Snow <jsnow@redhat.com> wrote:
-[...]
->> It would only begin to matter terribly much if we actually decided we
->> wanted to do a doxygen-style doc generation for our internal APIs for
->> compatibility with, say, fancier IDEs than vim/emacs.
->
-> We ought to do that at some point -- I had some prototype patches
-> for it. Doc-comment comments always start /** on a line of its own,
-> though.
->
->> As it stands, we're pretty inconsistent about which exact style we apply
->> when we "document" internal functions -- sometimes we document the
->> header, sometimes the implementation, sometimes both (but differently!)
->> and always with different styles all over the place. That's the real
->> problem, IMO.
->
-> IMHO -- global functions should always be documented in the header
-> with the prototype, and any new global function should get a
-> doc comment (I require this for code I review...) I should be able
-> to read about the API your code exposes to the rest of QEMU purely
-> by looking at your headers.
+--cW+P/jduATWpL925
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Putting the function contract far from the actual function is a proven
-way to end up with a contract that is far from what the function
-actually does.
+On Wed, Jun 13, 2018 at 10:15:10AM -0400, Yaowei Bai wrote:
+> On Wed, Jun 13, 2018 at 06:27:49AM -0500, Eric Blake wrote:
+> > On 06/12/2018 10:50 PM, Emilio G. Cota wrote:
+> > >On Tue, Jun 12, 2018 at 23:15:49 -0400, Yaowei Bai wrote:
+> > >>Signed-off-by: Yaowei Bai <baiyaowei@cmss.chinamobile.com>
+> > >>---
+> > >>  docs/devel/tracing.txt | 2 +-
+> > >>  1 file changed, 1 insertion(+), 1 deletion(-)
+> > >>
+> > >>diff --git a/docs/devel/tracing.txt b/docs/devel/tracing.txt
+> > >>index 07abbb3..6ab32cc 100644
+> > >>--- a/docs/devel/tracing.txt
+> > >>+++ b/docs/devel/tracing.txt
+> > >>@@ -18,7 +18,7 @@ for debugging, profiling, and observing execution.
+> > >>  3. Run the virtual machine to produce a trace file:
+> > >>-    qemu -trace events=3D/tmp/events ... # your normal QEMU invocati=
+on
+> > >>+    qemu --trace events=3D/tmp/events ... # your normal QEMU invocat=
+ion
+> > >
+> > >The second dash is not missing; both '-args' and '--args' work.
+> > >
+> > >'-args' seems to be favoured though; see `qemu -h' or `qemu --h' :-)
+> >=20
+> > Actually, we're trying to fix that:
+> > https://wiki.qemu.org/BiteSizedTasks#Consistent_option_usage_in_documen=
+tation
+> >=20
+> > The one-vs-two dash usage is only supported in qemu, not in qemu-nbd
+> > or qemu-img (that is, qemu acts as if it uses getopt_long_only(),
+> > while the others use getopt_long() - except that we hand-rolled the
+> > parser in qemu, meaning you might find quirks where it sometimes
+> > doesn't even match getopt_long_only()).
+> >=20
+> > At any rate, since --trace is an option that is supported across
+> > multiple binaries, we SHOULD favor the double-dash spelling in our
+> > documentation, so that you can consistently reuse the same --trace
+> > invocation without worrying whether the binary parses its arguments
+>=20
+> Yes, this patch is inspired by this situation when translating DPRINT into
+> trace for a new qemu utility (much like qemu-nbd) following docs/devel/tr=
+acing.txt.
+> The utility complains it don't support -trace option. So i sent this
+> patch after confirming this with qemu-nbd,qemu-io utilities.
+>=20
+> > with getopt_long() (where double is required) or like
+> > getopt_long_only() (where the double is optional but supported).
+> >=20
+> > So I'm in favor of this patch, although it may need more of a commit
+> > message summarizing the justification I've just pointed you to.
+>=20
+> Thanks for your nice explaination. If this patch could be merged i will
+> send V2 with a commit message.
 
-With a documentation generator such as Sphinx, the usual argument for
-putting the contracts in headers "I want API documentation in one place,
-without clutter" carries a lot less weight: the generated documentation
-is exactly that.
+Please update the remaining occurrences of the -trace option syntax in
+v2:
+
+  $ git grep -- -trace docs/devel/tracing.txt
+
+Stefan
+
+--cW+P/jduATWpL925
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJbI/elAAoJEJykq7OBq3PIDEcH/3tjlc9aVPiS7+IQoouv1ytk
+bEDQFIeW6fp2RJy4l+e4k9M95cjeVu0t3tl3j1mxy7hYny75sZFoXGUcIkwGx2Dp
+jz+VZDc3iAFSOtITib9gTzPquyh8m8jCKXo8k0ZUsuW5jQmqB+heY4+C7eFdNqOp
+CqlmH2JF20bH0fymLSg+1Vr0z4FS6SBVmbDQCd2mP5tXAfJph7dAJaiGtTDUT08s
+l5z0uM5MVmk3anBWs0e7BK5yxNXUBTP3sLWadVbcNfmK9uRZxU8DXzVELqHWiY5J
+Ra1y1MLLurX9fzNe4AICwn/5uyR6FuahznxtUpziSfl0VMoFOwXvqpxIT223i78=
+=ygn1
+-----END PGP SIGNATURE-----
+
+--cW+P/jduATWpL925--
 
