@@ -1,107 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fTgap-0000B9-Uw
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Jun 2018 00:44:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51163)
+	id 1fTigy-0001nB-Lw
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Jun 2018 02:58:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42561)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fTgan-00007V-4Q
-	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 00:44:10 -0400
+	(envelope-from <thuth@redhat.com>) id 1fTigv-0001lD-PQ
+	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 02:58:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fTgam-0004ZJ-4T
-	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 00:44:09 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54096 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fTigu-0000gu-Ca
+	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 02:58:37 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:42090 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fTgag-0004Wm-V7; Fri, 15 Jun 2018 00:44:03 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1fTigg-0000Xm-BM; Fri, 15 Jun 2018 02:58:22 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 11F0A4071181;
-	Fri, 15 Jun 2018 04:44:02 +0000 (UTC)
-Received: from [10.36.116.79] (ovpn-116-79.ams2.redhat.com [10.36.116.79])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6715C63A63;
-	Fri, 15 Jun 2018 04:43:52 +0000 (UTC)
-To: John Snow <jsnow@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
-	"patches@linaro.org" <patches@linaro.org>, Cornelia Huck
-	<cohuck@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
-	<f4bug@amsat.org>, Markus Armbruster <armbru@redhat.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Richard Henderson <rth@twiddle.net>
-References: <20180611141716.3813-1-peter.maydell@linaro.org>
-	<650048df-f4b1-b351-f877-be8c84197ba2@linaro.org>
-	<CAFEAcA-vZH0KUxi+iYP3eYzXeHxNTotNwCMhEPcGhOLksbG71A@mail.gmail.com>
-	<f9beda14-7c4a-8f89-baf1-5a79e847c4ac@redhat.com>
-	<CAFEAcA_egToeW7ksTncbFCsW6uTh1FcPSgW6gx+VnjvQpqwWsw@mail.gmail.com>
-	<ba6b4e80-c31a-6033-ea59-b4c4f1923be7@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 697C5401EF03;
+	Fri, 15 Jun 2018 06:58:21 +0000 (UTC)
+Received: from thh440s.redhat.com (ovpn-116-79.ams2.redhat.com [10.36.116.79])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8CB351116718;
+	Fri, 15 Jun 2018 06:58:18 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <ddf0a4cf-2286-9d3d-ea18-f61865f40fa9@redhat.com>
-Date: Fri, 15 Jun 2018 06:43:50 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
-MIME-Version: 1.0
-In-Reply-To: <ba6b4e80-c31a-6033-ea59-b4c4f1923be7@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+To: qemu-devel@nongnu.org, Christian Borntraeger <borntraeger@de.ibm.com>,
+	Cornelia Huck <cohuck@redhat.com>
+Cc: qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+	Yongbok Kim <yongbok.kim@mips.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org
+Date: Fri, 15 Jun 2018 08:58:17 +0200
+Message-Id: <1529045897-25260-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Fri, 15 Jun 2018 04:44:02 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Fri, 15 Jun 2018 04:44:02 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.5]);
+	Fri, 15 Jun 2018 06:58:21 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Fri, 15 Jun 2018 06:58:21 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] CODING_STYLE: Define our
- preferred form for multiline comments
+Subject: [Qemu-trivial] [PATCH] loader: Check access size when calling
+ rom_ptr() to avoid crashes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,42 +56,192 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jun 2018 04:44:10 -0000
+X-List-Received-Date: Fri, 15 Jun 2018 06:58:39 -0000
 
-On 14.06.2018 22:11, John Snow wrote:
->=20
-> On 06/14/2018 06:46 AM, Peter Maydell wrote:
-[...]
->=20
-> *cough* I hate the way it looks too, but C99 comments have a few things
-> going for them:
->=20
-> // A multi-line comment block like this has no extra lines and every
-> // line in the comment is prefaced individually which aids grep
-> // readability, while maintained good vertical symmetry.
->=20
-> I think we hate C99 comments, though? Certainly we don't use them at al=
-l
-> right now, so it's not a good fit.
+The rom_ptr() function allows direct access to the ROM blobs that we
+load during startup. However, there are currently no checks for the
+size of the accesses, so it's currently possible to crash QEMU for
+example with:
 
-But why do we hate them? I remember there were some reasons for not
-using them 10 or 15 years ago (some old C-compilers still did not
-support them yet), but today? ... it's likely just a legacy feeling.
-Maybe it's time to get over that feeling now?
+$ echo "Insane in the mainframe" > /tmp/test.txt
+$ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -append xyz
+Segmentation fault (core dumped)
+$ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -initrd /tmp/test.txt
+Segmentation fault (core dumped)
 
->>> It would only begin to matter terribly much if we actually decided we
->>> wanted to do a doxygen-style doc generation for our internal APIs for
->>> compatibility with, say, fancier IDEs than vim/emacs.
-[...]
-> Do you have a proposed standard / do we have some consensus on which
-> generator tool or doc format we'd most like to see in QEMU? I could put
-> in some elbow grease to shine up the block layer if so...
+We need a possibility to check the size of the ROM area that we want
+to access, thus let's add a size parameter to the rom_ptr() function
+to avoid these problems.
 
-I remember that some years ago, somebody (I forgot who it was, sorry)
-once told me that we should use the same format in QEMU as in glib, i.e.
-GTK-Doc. But citing the GTK-Doc homepage: "For a more polished
-general-purpose documentation tool you may want to look at Doxygen" - so
-maybe that's the better choice instead.
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/core/loader.c     | 10 +++++-----
+ hw/mips/mips_malta.c |  6 ++++--
+ hw/s390x/ipl.c       | 13 ++++++++++---
+ hw/sparc/sun4m.c     |  2 +-
+ hw/sparc64/sun4u.c   |  2 +-
+ include/hw/loader.h  |  2 +-
+ target/arm/cpu.c     |  2 +-
+ 7 files changed, 23 insertions(+), 14 deletions(-)
 
- Thomas
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 06bdbca..54be522 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -191,7 +191,7 @@ void pstrcpy_targphys(const char *name, hwaddr dest, int buf_size,
+         rom_add_blob_fixed(name, source, (nulp - source) + 1, dest);
+     } else {
+         rom_add_blob_fixed(name, source, buf_size, dest);
+-        ptr = rom_ptr(dest + buf_size - 1);
++        ptr = rom_ptr(dest + buf_size - 1, sizeof(*ptr));
+         *ptr = 0;
+     }
+ }
+@@ -1165,7 +1165,7 @@ void rom_reset_order_override(void)
+     fw_cfg_reset_order_override(fw_cfg);
+ }
+ 
+-static Rom *find_rom(hwaddr addr)
++static Rom *find_rom(hwaddr addr, size_t size)
+ {
+     Rom *rom;
+ 
+@@ -1176,7 +1176,7 @@ static Rom *find_rom(hwaddr addr)
+         if (rom->mr) {
+             continue;
+         }
+-        if (rom->addr > addr) {
++        if (rom->addr > addr + size) {
+             continue;
+         }
+         if (rom->addr + rom->romsize < addr) {
+@@ -1249,11 +1249,11 @@ int rom_copy(uint8_t *dest, hwaddr addr, size_t size)
+     return (d + l) - dest;
+ }
+ 
+-void *rom_ptr(hwaddr addr)
++void *rom_ptr(hwaddr addr, size_t size)
+ {
+     Rom *rom;
+ 
+-    rom = find_rom(addr);
++    rom = find_rom(addr, size);
+     if (!rom || !rom->data)
+         return NULL;
+     return rom->data + (addr - rom->addr);
+diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
+index 494f84e..3733e2f 100644
+--- a/hw/mips/mips_malta.c
++++ b/hw/mips/mips_malta.c
+@@ -1133,11 +1133,13 @@ void mips_malta_init(MachineState *machine)
+            a neat trick which allows bi-endian firmware. */
+ #ifndef TARGET_WORDS_BIGENDIAN
+         {
+-            uint32_t *end, *addr = rom_ptr(FLASH_ADDRESS);
++            uint32_t *end, *addr;
++            const size_t swapsize = MIN(bios_size, 0x3e0000);
++            addr = rom_ptr(FLASH_ADDRESS, swapsize);
+             if (!addr) {
+                 addr = memory_region_get_ram_ptr(bios);
+             }
+-            end = (void *)addr + MIN(bios_size, 0x3e0000);
++            end = (void *)addr + swapsize;
+             while (addr < end) {
+                 bswap32s(addr);
+                 addr++;
+diff --git a/hw/s390x/ipl.c b/hw/s390x/ipl.c
+index 04245b5..bcac204 100644
+--- a/hw/s390x/ipl.c
++++ b/hw/s390x/ipl.c
+@@ -169,9 +169,12 @@ static void s390_ipl_realize(DeviceState *dev, Error **errp)
+          * loader) and it won't work. For this case we force it to 0x10000, too.
+          */
+         if (pentry == KERN_IMAGE_START || pentry == 0x800) {
++            char *parm_area = rom_ptr(KERN_PARM_AREA, strlen(ipl->cmdline) + 1);
+             ipl->start_addr = KERN_IMAGE_START;
+             /* Overwrite parameters in the kernel image, which are "rom" */
+-            strcpy(rom_ptr(KERN_PARM_AREA), ipl->cmdline);
++            if (parm_area) {
++                strcpy(parm_area, ipl->cmdline);
++            }
+         } else {
+             ipl->start_addr = pentry;
+         }
+@@ -179,6 +182,7 @@ static void s390_ipl_realize(DeviceState *dev, Error **errp)
+         if (ipl->initrd) {
+             ram_addr_t initrd_offset;
+             int initrd_size;
++            uint64_t *romptr;
+ 
+             initrd_offset = INITRD_START;
+             while (kernel_size + 0x100000 > initrd_offset) {
+@@ -195,8 +199,11 @@ static void s390_ipl_realize(DeviceState *dev, Error **errp)
+              * we have to overwrite values in the kernel image,
+              * which are "rom"
+              */
+-            stq_p(rom_ptr(INITRD_PARM_START), initrd_offset);
+-            stq_p(rom_ptr(INITRD_PARM_SIZE), initrd_size);
++            romptr = rom_ptr(INITRD_PARM_START, 16);
++            if (romptr) {
++                stq_p(romptr, initrd_offset);
++                stq_p(romptr + 1, initrd_size);
++            }
+         }
+     }
+     /*
+diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+index 0ee779f..2375cb2 100644
+--- a/hw/sparc/sun4m.c
++++ b/hw/sparc/sun4m.c
+@@ -272,7 +272,7 @@ static unsigned long sun4m_load_kernel(const char *kernel_filename,
+         }
+         if (initrd_size > 0) {
+             for (i = 0; i < 64 * TARGET_PAGE_SIZE; i += TARGET_PAGE_SIZE) {
+-                ptr = rom_ptr(KERNEL_LOAD_ADDR + i);
++                ptr = rom_ptr(KERNEL_LOAD_ADDR + i, 24);
+                 if (ldl_p(ptr) == 0x48647253) { // HdrS
+                     stl_p(ptr + 16, INITRD_LOAD_ADDR);
+                     stl_p(ptr + 20, initrd_size);
+diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+index 1bede85..8b09090 100644
+--- a/hw/sparc64/sun4u.c
++++ b/hw/sparc64/sun4u.c
+@@ -186,7 +186,7 @@ static uint64_t sun4u_load_kernel(const char *kernel_filename,
+         }
+         if (*initrd_size > 0) {
+             for (i = 0; i < 64 * TARGET_PAGE_SIZE; i += TARGET_PAGE_SIZE) {
+-                ptr = rom_ptr(*kernel_addr + i);
++                ptr = rom_ptr(*kernel_addr + i, 32);
+                 if (ldl_p(ptr + 8) == 0x48647253) { /* HdrS */
+                     stl_p(ptr + 24, *initrd_addr + *kernel_addr);
+                     stl_p(ptr + 28, *initrd_size);
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index 5ed3fd8..e98b84b 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -226,7 +226,7 @@ void rom_set_fw(FWCfgState *f);
+ void rom_set_order_override(int order);
+ void rom_reset_order_override(void);
+ int rom_copy(uint8_t *dest, hwaddr addr, size_t size);
+-void *rom_ptr(hwaddr addr);
++void *rom_ptr(hwaddr addr, size_t size);
+ void hmp_info_roms(Monitor *mon, const QDict *qdict);
+ 
+ #define rom_add_file_fixed(_f, _a, _i)          \
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index ab047b9..95f92b2 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -232,7 +232,7 @@ static void arm_cpu_reset(CPUState *s)
+ 
+         /* Load the initial SP and PC from offset 0 and 4 in the vector table */
+         vecbase = env->v7m.vecbase[env->v7m.secure];
+-        rom = rom_ptr(vecbase);
++        rom = rom_ptr(vecbase, 8);
+         if (rom) {
+             /* Address zero is covered by ROM which hasn't yet been
+              * copied into physical memory.
+-- 
+1.8.3.1
+
 
