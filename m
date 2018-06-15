@@ -1,64 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fTer6-00077s-9X
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Jun 2018 22:52:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38174)
+	id 1fTgap-0000B9-Uw
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Jun 2018 00:44:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51163)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fTer2-00077U-DB
-	for qemu-trivial@nongnu.org; Thu, 14 Jun 2018 22:52:50 -0400
+	(envelope-from <thuth@redhat.com>) id 1fTgan-00007V-4Q
+	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 00:44:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fTeqz-0000oc-9G
-	for qemu-trivial@nongnu.org; Thu, 14 Jun 2018 22:52:48 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:46044)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fTeqz-0000n4-3a; Thu, 14 Jun 2018 22:52:45 -0400
-Received: by mail-qt0-x242.google.com with SMTP id i18-v6so7831411qtp.12;
-	Thu, 14 Jun 2018 19:52:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=U/pV9igBF3VWrV8QhTDAWOTlQFeuWtYf1xlqyn4akW8=;
-	b=VX+wx4iguzsjhqY/Oczu2pWTO4SX4ePcdvHdGoChtF5uYGSFDPtXCF8bwFoqfEyTk/
-	qMEO2pWEnWiRdHlAybMdY7b+VBaW+jQkh2vAtG+LMUI0ybmjZ6AsTJTGESCI7yzUhIJ6
-	Pn2Y6NIO8DISQ69PnjNTcReZ1OnRHeDyxzlnD9I98Anlo/waqpzuNHdGg7jlTqH8EGvM
-	o+TarWNw+HVWkV8MybIyr6uOnRQSR5xMjg2drmnJPvIK19UvIDTUrtIPyEEpuaULPAVe
-	gW6+SCGyTtDF0MCpqQ6T8olcmx4+kVtTrrinvy12TUO9GtI1jLK2R1vMXSjft0l1UMHY
-	BqVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=U/pV9igBF3VWrV8QhTDAWOTlQFeuWtYf1xlqyn4akW8=;
-	b=A60kvmZvFOa+lzEkvg4t8cG5z1KWQ1f1XJxiJbXpIsYL5rgQv+joQsREuKufeixY1k
-	LGFxl2wn1SbFO7ozpvNe4+iANzNA4PR3ltWwdgOi3BA2eyd0cPXxA/jWGavdRPJOZ6JA
-	G6TgO7184K7gXJVoLGaaFWsGzfUyOlzv2tnn8Et+WVmV7eiEel79kAWte7KnLyri7DE9
-	508+wtpHk+EfaWLfsy/PuJ2BRf0GDw35gLyN9n/3gGNuHx9+zYJV6tK8+6oMW2vQLmjz
-	c5O7eNXb/stdDJh2rg1/ViO133LYxVooV36dDQAjEBgjqH++qA/fBt4UJk4Rd7H+t7yr
-	3FOg==
-X-Gm-Message-State: APt69E3vOSmcRRdoyhAahOwR8CUaG3l9wiK2dQacHSWZcSQYCObjjuSj
-	8ftVRkxN5QQl12dCbNdFabc=
-X-Google-Smtp-Source: ADUXVKLkljvKsZz4BX4O/RDC82TySkq6q8kPZWPqWiMQgmLRyfkr2RM5ZW5uEXIoXzlgCsdlws4JWg==
-X-Received: by 2002:ac8:19ab:: with SMTP id
-	u40-v6mr4843830qtj.266.1529031164408; 
-	Thu, 14 Jun 2018 19:52:44 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.222])
-	by smtp.gmail.com with ESMTPSA id
-	p72-v6sm5520886qki.15.2018.06.14.19.52.39
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Jun 2018 19:52:43 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: John Snow <jsnow@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
+	(envelope-from <thuth@redhat.com>) id 1fTgam-0004ZJ-4T
+	for qemu-trivial@nongnu.org; Fri, 15 Jun 2018 00:44:09 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54096 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1fTgag-0004Wm-V7; Fri, 15 Jun 2018 00:44:03 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 11F0A4071181;
+	Fri, 15 Jun 2018 04:44:02 +0000 (UTC)
+Received: from [10.36.116.79] (ovpn-116-79.ams2.redhat.com [10.36.116.79])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6715C63A63;
+	Fri, 15 Jun 2018 04:43:52 +0000 (UTC)
+To: John Snow <jsnow@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>,
 	QEMU Developers <qemu-devel@nongnu.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
-	Thomas Huth <thuth@redhat.com>, "patches@linaro.org" <patches@linaro.org>, 
-	Cornelia Huck <cohuck@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	"patches@linaro.org" <patches@linaro.org>, Cornelia Huck
+	<cohuck@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+	<f4bug@amsat.org>, Markus Armbruster <armbru@redhat.com>,
 	Alex Williamson <alex.williamson@redhat.com>,
 	Stefan Hajnoczi <stefanha@redhat.com>, Richard Henderson <rth@twiddle.net>
 References: <20180611141716.3813-1-peter.maydell@linaro.org>
@@ -67,21 +36,70 @@ References: <20180611141716.3813-1-peter.maydell@linaro.org>
 	<f9beda14-7c4a-8f89-baf1-5a79e847c4ac@redhat.com>
 	<CAFEAcA_egToeW7ksTncbFCsW6uTh1FcPSgW6gx+VnjvQpqwWsw@mail.gmail.com>
 	<ba6b4e80-c31a-6033-ea59-b4c4f1923be7@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <8e29cd6e-6c54-30a2-a397-dbbacf343f0c@amsat.org>
-Date: Thu, 14 Jun 2018 23:52:34 -0300
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+	xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
+	yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
+	4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
+	tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
+	0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
+	O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
+	0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
+	gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
+	3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
+	zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzRxUaG9tYXMgSHV0
+	aCA8dGguaHV0aEBnbXguZGU+wsF7BBMBAgAlAhsDBgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIX
+	gAUCUfuWKwIZAQAKCRAu2dd0/nAttbe/EACb9hafyOb2FmhUqeAiBORSsUifFacQ7laVjcgR
+	I4um8CSHvxijYftpkM2EdAtmXIKgbNDpQoXcWLXB9lu9mLgTO4DVT00TRR65ikn3FCWcyT74
+	ENTOzRKyKLsDCjhXKPblTPIQbYAUCOWElcyAPm0ERd62fA/rKNxgIiNo/l4UODOMoOJm2/Ox
+	ZoTckW68Eqv7k9L7m7j+Hn3hoDTjAmcCBJt+j7pOhzWvCbqoNOIH8C8qvPaNlrba+R/K6jkO
+	6jZkTbYQpGIofEQJ/TNn38IsNGpI1ALTHWFtoMxp3j2Imz0REO6dRE2fHRN8sVlHgkoeGhmY
+	NbDsDE1jFQOEObFnu0euk//7BXU7tGOHckVAZ8T1smiRPHfQU7UEH2a/grndxJ+PNeM5w7n2
+	l+FN3cf2KgPotCK2s9MjSdZA7C5e3rFYO8lqiqTJKvc62vqp3e7B0Kjyy5/QtzSOejBij2QL
+	xkKSFNtxIz4MtuxN8e3IDQNxsKry3nF7R4MDvouXlMo6wP9KuyNWb+vFJt9GtbgfDMIFVamp
+	ZfhEWzWRJH4VgksENA4K/BzjEHCcbTUb1TFsiB1VRnBPJ0SqlvifnfKk6HcpkDk6Pg8Q5FOJ
+	gbNHrdgXsm+m/9GF2zUUr+rOlhVbK23TUqKqPfwnD7uxjpakVcJnsVCFqJpZi1F/ga9IN87B
+	TQRR+3lMARAAtp831HniPHb9AuKq3wj83ujZK8lH5RLrfVsB4X1wi47bwo56BqhXpR/zxPTR
+	eOFT0gnbw9UkphVc7uk/alnXMDEmgvnuxv89PwIQX6k3qLABeV7ykJQG/WT5HQ6+2DdGtVw3
+	2vjYAPiWQeETsgWRRQMDR0/hwp8s8tL/UodwYCScH6Vxx9pdy353L1fK4Bb9G73a+9FPjp9l
+	x+WwKTsltVqSBuSjyZQ3c3EE8qbTidXZxB38JwARH8yN3TX+t65cbBqLl/zRUUUTapHQpUEd
+	yoAsHIml32e4q+3xdLtTdlLi7FgPBItSazcqZPjEcYW73UAuLcmQmfJlQ5PkDiuqcitn+KzH
+	/1pqsTU7QFZjbmSMJyXY0TDErOFuMOjf20b6arcpEqse1V3IKrb+nqqA2azboRm3pEANLAJw
+	iVTwK3qwGRgK5ut6N/Znv20VEHkFUsRAZoOusrIRfR5HFDxlXguAdEz8M/hxXFYYXqOoaCYy
+	6pJxTjy0Y/tIfmS/g9Bnp8qg9wsrsnk0+XRnDVPak++G3Uq9tJPwpJbyO0vcqEI3vAXkAB7X
+	VXLzvFwi66RrsPUoDkuzj+aCNumtOePDOCpXQGPpKl+l1aYRMN/+lNSk3+1sVuc2C07WnYyE
+	gV/cbEVklPmKrNwu6DeUyD0qI/bVzKMWZAiB1r56hsGeyYcAEQEAAcLBXwQYAQIACQUCUft5
+	TAIbDAAKCRAu2dd0/nAttYTwEACLAS/THRqXRKb17PQmKwZHerUvZm2klo+lwQ3wNQBHUJAT
+	p2R9ULexyXrJPqjUpy7+voz+FcKiuQBTKyieiIxO46oMxsbXGZ70o3gxjxdYdgimUD6U8PPd
+	JH8tfAL4BR5FZNjspcnscN2jgbF4OrpDeOLyBaj6HPmElNPtECHWCaf1xbIFsZxSDGMA6cUh
+	0uX3Q8VI7JN1AR2cfiIRY7NrIlWYucJxyKjO3ivWm69nCtsHiJ0wcF8KlVo7F2eLaufo0K8A
+	ynL8SHMF3VEyxsXOP2f1UR9T2Ur30MXcTBpjUxml1TX3RWY5uH89Js/jlIugBwuAmacJ7JYh
+	lTg6sF/GNc4nPb4kk2yktNWTade+TzsllYlJPaorD2Qe8qX0iFUhFC6y9+O6mP4ZvWoYapp9
+	ezYNuebMgEr93ob1+4sFg3812wNP01WqsGtWCJHnPv/JoonFdMzD/bIkXGEJMk6ks2kxQQZq
+	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
+	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
+	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
+Message-ID: <ddf0a4cf-2286-9d3d-ea18-f61865f40fa9@redhat.com>
+Date: Fri, 15 Jun 2018 06:43:50 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
 In-Reply-To: <ba6b4e80-c31a-6033-ea59-b4c4f1923be7@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.7]);
+	Fri, 15 Jun 2018 04:44:02 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Fri, 15 Jun 2018 04:44:02 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] CODING_STYLE: Define our
  preferred form for multiline comments
 X-BeenThere: qemu-trivial@nongnu.org
@@ -95,83 +113,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Jun 2018 02:52:50 -0000
+X-List-Received-Date: Fri, 15 Jun 2018 04:44:10 -0000
 
-On 06/14/2018 05:11 PM, John Snow wrote:
+On 14.06.2018 22:11, John Snow wrote:
+>=20
 > On 06/14/2018 06:46 AM, Peter Maydell wrote:
->> On 13 June 2018 at 17:55, John Snow <jsnow@redhat.com> wrote:
->>> The same reasoning could be used to justify
->>>
->>> /* two
->>>  * lines */
->>>
->>> as it's ... actually just two lines. I think people don't seem to like
->>> this much either (why? does it look 'naked' on the end?)
->>
->> I dislike the way it breaks up the line of stars. For me it is the
->> /*
->>  *
->>  */
->> shape that defines a multiline comment, and where exactly the text is
->> on the RHS of it is not important to my sense of visual neatness :-)
->>
-> 
-> Yours does look an awful lot more symmetrical once you remove the text,
-> yeah.
-> 
+[...]
+>=20
 > *cough* I hate the way it looks too, but C99 comments have a few things
 > going for them:
-> 
+>=20
 > // A multi-line comment block like this has no extra lines and every
 > // line in the comment is prefaced individually which aids grep
 > // readability, while maintained good vertical symmetry.
-> 
-> I think we hate C99 comments, though? Certainly we don't use them at all
+>=20
+> I think we hate C99 comments, though? Certainly we don't use them at al=
+l
 > right now, so it's not a good fit.
-> 
+
+But why do we hate them? I remember there were some reasons for not
+using them 10 or 15 years ago (some old C-compilers still did not
+support them yet), but today? ... it's likely just a legacy feeling.
+Maybe it's time to get over that feeling now?
+
 >>> It would only begin to matter terribly much if we actually decided we
 >>> wanted to do a doxygen-style doc generation for our internal APIs for
 >>> compatibility with, say, fancier IDEs than vim/emacs.
->>
->> We ought to do that at some point -- I had some prototype patches
->> for it. Doc-comment comments always start /** on a line of its own,
->> though.
->>
-> 
-> I'd love this! I love vim/emacs, but my usage of it is not wizard-tier
-> and in the past when working on large C++ projects I have benefited from
-> the magical refactoring click-buttons, tool-tips and etc. These
-> operations are infrequent enough that I believe it's reasonable to not
-> know how to do them in traditional CLI editors. If we want to lure in
-> new contributors, maybe this could sweeten the pot a bit?
-> 
-> Rigorous, mechanically verifiable function documentation is quite nice
-> to have in these cases. It'd be nice in general, really. It would go a
-> long way to help us attract less "hardcore" developers implementing
-> devices and features for QEMU without such a steep onboarding curve.
-> 
+[...]
 > Do you have a proposed standard / do we have some consensus on which
 > generator tool or doc format we'd most like to see in QEMU? I could put
 > in some elbow grease to shine up the block layer if so...
-> 
->>> As it stands, we're pretty inconsistent about which exact style we apply
->>> when we "document" internal functions -- sometimes we document the
->>> header, sometimes the implementation, sometimes both (but differently!)
->>> and always with different styles all over the place. That's the real
->>> problem, IMO.
->>
->> IMHO -- global functions should always be documented in the header
->> with the prototype, and any new global function should get a
->> doc comment (I require this for code I review...) I should be able
->> to read about the API your code exposes to the rest of QEMU purely
->> by looking at your headers.
->>
-> 
-> This makes sense, though the way C code is laid out makes it unfortunate
-> you don't get to see the same comment right beside the implementation if
-> that's what you're working on -- but I suppose this is why we have tabs,
-> multi-monitors and IDEs with tooltips.
 
-Thanks to tabs we don't need multi-monitors of 1600+ resolution to fit
-80 chars per line.
+I remember that some years ago, somebody (I forgot who it was, sorry)
+once told me that we should use the same format in QEMU as in glib, i.e.
+GTK-Doc. But citing the GTK-Doc homepage: "For a more polished
+general-purpose documentation tool you may want to look at Doxygen" - so
+maybe that's the better choice instead.
+
+ Thomas
 
