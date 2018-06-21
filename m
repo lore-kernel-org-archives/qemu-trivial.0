@@ -1,60 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fW39G-0004sR-7L
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Jun 2018 13:13:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50334)
+	id 1fW39M-0004z2-Pa
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Jun 2018 13:13:36 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50364)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fW39D-0004pW-Mu
-	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 13:13:28 -0400
+	id 1fW39G-0004sT-9I
+	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 13:13:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fW39C-00029M-Iu
-	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 13:13:27 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:44052)
+	id 1fW39F-0002Aw-9E
+	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 13:13:30 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:35504)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fW39A-00027o-3Q; Thu, 21 Jun 2018 13:13:24 -0400
-Received: by mail-qt0-x243.google.com with SMTP id x5-v6so2801718qte.11;
-	Thu, 21 Jun 2018 10:13:24 -0700 (PDT)
+	id 1fW39D-00029R-0P; Thu, 21 Jun 2018 13:13:27 -0400
+Received: by mail-qt0-x243.google.com with SMTP id z6-v6so3529237qti.2;
+	Thu, 21 Jun 2018 10:13:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=eRMJDpqk0yCa6rHcwkCR6dFJMVqWYYnwID4tm/ziM8U=;
-	b=ooCooruVqx+ZA+KwHH32Er3JDiYRNec+Zp+RjwNJFhvus4mT/T+Imlz4bnEsxXwayD
-	Awb+I+sTxWlvkPcovYCRvRUCC6aYFwkgouQ5DIlFMNjCmx1kMxnWvq45l0Lkk1Wen+3J
-	p5GRJzDLF1Qt4u/Xry18/i+V1+fGRlo1LGxhzmQQIsY6264+fi2JCKGX8n6Xohnk9oT1
-	CCGmo6BQ/VTcaAAxTTu8dUcN0Nru+bZ3P+m0ntQqZ63DLsKFsRxdnRGc6EM/ZHT/tJzE
-	iz2yGcQIQlFV28+UtYQQNIebH46vTjnZGDdt6aSgQPhVKbA2QYH31perBBwSME6ZvyeR
-	QoBg==
+	bh=mDFsqTKP5o5farRoCBSHuRIHFmlPoGFGPoegeQW6YGg=;
+	b=sIdJf0004lGpCZXl1k/jcp2EPEiKYN6tyh/2qkL4Be1BwlKltuug6Qy7a4vuOcl4/M
+	Nk5JyVhV16jmJ0azUXFUobn8uEBqIJQZ0eEnlvoLyAcxcADHYpdNHCFd24VatBCXOCcm
+	J2P7dDwBwgrRYgeP65R4ojeoGWU1QsouRGhjXhXJI9JdjyPHcF9TkAcpp2H3CYDnCItX
+	u8U9n1utApStRrgWa292l0lYnDWxk8xGIpxtS/BNRJQkE3wemfE9xbwYMPcJB/U6ogvg
+	8060MX/SRTPaxxeQcPROuAL7CsFh3LmQWLoQQCZHxZNpWYK58qHG0cUAJQ9SvuYg6Y40
+	ZQ1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=eRMJDpqk0yCa6rHcwkCR6dFJMVqWYYnwID4tm/ziM8U=;
-	b=TN0ZJ9gHbmhuZp+ulbxY5gSI7d/vx6LKcLilKnrUr5QZJ+od8e5ijrQLOEWV3QIsTN
-	Kwo5rGZnvtK9SNnkvarw9d7ZGDTLvlaggKRc4hw2tognJg0RcsZpZB+5YJy5CT+CecLs
-	sCKGEj1j2wxFjF9al12J6ZHPCwcCkR9YpAbEd6ovWuFVpDQ7ZSF6sfnfU1l/MPJcSpl2
-	IskpnCfLCZUceVB8J08BdRyqU5Fbb11DC6AqvHPgHWkYt5VZ6D45veXmgQ7mvNw7eDFM
-	FI4v4KUOr589e/hufNKQPjkIvhqv4XWzhBPM4MAJnPCgrKfUfvsWe+A4dRk1f7LZlRGt
-	Rjdw==
-X-Gm-Message-State: APt69E2qQd2kat5hrYEZzkmuT1exgbqSpoJvIv2S1W+qJcs031A6ourk
-	GOylPGXBaMunpdwD5lZK1MFPH6tV
-X-Google-Smtp-Source: ADUXVKKQwhNSzwLFpntzV/ErT3jZRNQ2E/ulcYIcCyBSBVNu8OeRMfTtpYPXRbun/L56gR4HEkZWPw==
-X-Received: by 2002:a0c:ae63:: with SMTP id
-	z32-v6mr23047245qvc.108.1529601203462; 
-	Thu, 21 Jun 2018 10:13:23 -0700 (PDT)
+	bh=mDFsqTKP5o5farRoCBSHuRIHFmlPoGFGPoegeQW6YGg=;
+	b=Jl+j7bWaVFJjbJE9dpYZNWMrmnuu5MeQMBhs6NObqHyfyCxPdsrZfRpfxEInsON3Nk
+	PbZXZk9maiTQ0t6AkHGlQkSIuIToDQfh2EUSv0u4KIwoQ2wwY2cdQb0QLE0Uu5kcx9sz
+	wIMJTvpOycgw5kgLhoTNFFxbIeNc6cxBr7xflwzHGad56v/pCBZj0FqqiaU8NsZeEHTs
+	L1S+R0eLM5yI8fx2pII45VJz4T2HezuHUKXAXfuUSspTn2KJ7u2eQ7lfVrlMyLfDNe93
+	vg2E7jMs+G2kGhUINYuaRQmJBjNF6B76QK4VtMZVo/4lZvOZoxETL5Zt/+dJA0nRLDTK
+	fSyA==
+X-Gm-Message-State: APt69E2stVplahj9iFQ+TESWMh7YSLY+9iF25MFM8400XvgyIs5CdT8a
+	Ndngfm9rFcNBEdSklB59nuA=
+X-Google-Smtp-Source: ADUXVKIcIOT2m55ugjIo+13mUcpsgwFF1xEkqHUY/78O4RXtYLNkJOM/GA9XKSR3ge9WTzhjsMWKag==
+X-Received: by 2002:a0c:e8cf:: with SMTP id
+	m15-v6mr23310371qvo.52.1529601206454; 
+	Thu, 21 Jun 2018 10:13:26 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	t14-v6sm3166159qtp.65.2018.06.21.10.13.21
+	t14-v6sm3166159qtp.65.2018.06.21.10.13.23
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 21 Jun 2018 10:13:23 -0700 (PDT)
+	Thu, 21 Jun 2018 10:13:26 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Stefan Hajnoczi <stefanha@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Thu, 21 Jun 2018 14:12:52 -0300
-Message-Id: <20180621171257.14897-7-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Jason Wang <jasowang@redhat.com>
+Date: Thu, 21 Jun 2018 14:12:53 -0300
+Message-Id: <20180621171257.14897-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.18.0.rc2
 In-Reply-To: <20180621171257.14897-1-f4bug@amsat.org>
 References: <20180621171257.14897-1-f4bug@amsat.org>
@@ -64,8 +65,7 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-trivial] [PATCH 06/11] hw/input/tsc2005: Convert a fprintf()
- call to trace events
+Subject: [Qemu-trivial] [PATCH 07/11] hw/net/ne2000: Add trace events
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,59 +77,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Jun 2018 17:13:28 -0000
+X-List-Received-Date: Thu, 21 Jun 2018 17:13:35 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/input/tsc2005.c    | 7 +++----
- hw/input/trace-events | 3 +++
- 2 files changed, 6 insertions(+), 4 deletions(-)
+ hw/net/ne2000.c     | 17 ++++++++++++-----
+ hw/net/trace-events |  4 ++++
+ 2 files changed, 16 insertions(+), 5 deletions(-)
 
-diff --git a/hw/input/tsc2005.c b/hw/input/tsc2005.c
-index 7990954b6c..4e1ee756ed 100644
---- a/hw/input/tsc2005.c
-+++ b/hw/input/tsc2005.c
-@@ -23,6 +23,7 @@
- #include "qemu/timer.h"
- #include "ui/console.h"
- #include "hw/devices.h"
+diff --git a/hw/net/ne2000.c b/hw/net/ne2000.c
+index 3a9fc89e48..26b234b7eb 100644
+--- a/hw/net/ne2000.c
++++ b/hw/net/ne2000.c
+@@ -26,6 +26,7 @@
+ #include "net/eth.h"
+ #include "ne2000.h"
+ #include "sysemu/sysemu.h"
 +#include "trace.h"
  
- #define TSC_CUT_RESOLUTION(value, p)	((value) >> (16 - (p ? 12 : 10)))
+ /* debug NE2000 card */
+ //#define DEBUG_NE2000
+@@ -662,19 +663,24 @@ static uint64_t ne2000_read(void *opaque, hwaddr addr,
+                             unsigned size)
+ {
+     NE2000State *s = opaque;
++    uint64_t val;
  
-@@ -200,8 +201,7 @@ static void tsc2005_write(TSC2005State *s, int reg, uint16_t data)
-         s->host_mode = (data >> 15) != 0;
-         if (s->enabled != !(data & 0x4000)) {
-             s->enabled = !(data & 0x4000);
--            fprintf(stderr, "%s: touchscreen sense %sabled\n",
--                            __func__, s->enabled ? "en" : "dis");
-+            trace_tsc2005_sense(s->enabled ? "enabled" : "disabled");
-             if (s->busy && !s->enabled)
-                 timer_del(s->timer);
-             s->busy = s->busy && s->enabled;
-@@ -337,8 +337,7 @@ static uint8_t tsc2005_txrx_word(void *opaque, uint8_t value)
-                 s->nextprecision = (value >> 2) & 1;
-                 if (s->enabled != !(value & 1)) {
-                     s->enabled = !(value & 1);
--                    fprintf(stderr, "%s: touchscreen sense %sabled\n",
--                                    __func__, s->enabled ? "en" : "dis");
-+                    trace_tsc2005_sense(s->enabled ? "enabled" : "disabled");
-                     if (s->busy && !s->enabled)
-                         timer_del(s->timer);
-                     s->busy = s->busy && s->enabled;
-diff --git a/hw/input/trace-events b/hw/input/trace-events
-index db72484a25..3965a842ae 100644
---- a/hw/input/trace-events
-+++ b/hw/input/trace-events
-@@ -41,5 +41,8 @@ milkymist_softusb_pulse_irq(void) "Pulse IRQ"
- hid_kbd_queue_full(void) "queue full"
- hid_kbd_queue_empty(void) "queue empty"
- 
-+# hw/input/tsc2005.c
-+tsc2005_sense(const char *state) "touchscreen sense %s"
+     if (addr < 0x10 && size == 1) {
+-        return ne2000_ioport_read(s, addr);
++        val = ne2000_ioport_read(s, addr);
+     } else if (addr == 0x10) {
+         if (size <= 2) {
+-            return ne2000_asic_ioport_read(s, addr);
++            val = ne2000_asic_ioport_read(s, addr);
+         } else {
+-            return ne2000_asic_ioport_readl(s, addr);
++            val = ne2000_asic_ioport_readl(s, addr);
+         }
+     } else if (addr == 0x1f && size == 1) {
+-        return ne2000_reset_ioport_read(s, addr);
++        val = ne2000_reset_ioport_read(s, addr);
++    } else {
++        val = ((uint64_t)1 << (size * 8)) - 1;
+     }
+-    return ((uint64_t)1 << (size * 8)) - 1;
++    trace_ne2000_read(addr, val);
 +
- # hw/input/virtio
- virtio_input_queue_full(void) "queue full"
++    return val;
+ }
+ 
+ static void ne2000_write(void *opaque, hwaddr addr,
+@@ -682,6 +688,7 @@ static void ne2000_write(void *opaque, hwaddr addr,
+ {
+     NE2000State *s = opaque;
+ 
++    trace_ne2000_write(addr, data);
+     if (addr < 0x10 && size == 1) {
+         ne2000_ioport_write(s, addr, data);
+     } else if (addr == 0x10) {
+diff --git a/hw/net/trace-events b/hw/net/trace-events
+index 45c4e9fba0..95a1de01e9 100644
+--- a/hw/net/trace-events
++++ b/hw/net/trace-events
+@@ -23,6 +23,10 @@ mipsnet_read(uint64_t addr, uint32_t val) "read addr=0x%" PRIx64 " val=0x%x"
+ mipsnet_write(uint64_t addr, uint64_t val) "write addr=0x%" PRIx64 " val=0x%" PRIx64
+ mipsnet_irq(uint32_t isr, uint32_t intctl) "set irq to %d (0x%02x)"
+ 
++# hw/net/ne2000.c
++ne2000_read(uint64_t addr, uint64_t val) "read addr=0x%" PRIx64 " val=0x%" PRIx64
++ne2000_write(uint64_t addr, uint64_t val) "write addr=0x%" PRIx64 " val=0x%" PRIx64
++
+ # hw/net/opencores_eth.c
+ open_eth_mii_write(unsigned idx, uint16_t v) "MII[0x%02x] <- 0x%04x"
+ open_eth_mii_read(unsigned idx, uint16_t v) "MII[0x%02x] -> 0x%04x"
 -- 
 2.18.0.rc2
 
