@@ -1,61 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fW39P-00051e-92
+	id 1fW39P-00051r-HB
 	for mharc-qemu-trivial@gnu.org; Thu, 21 Jun 2018 13:13:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50425)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50455)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fW39M-0004yI-7S
-	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 13:13:37 -0400
+	id 1fW39N-0004zx-Jb
+	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 13:13:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fW39L-0002EX-Dv
-	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 13:13:36 -0400
-Received: from mail-qk0-x22c.google.com ([2607:f8b0:400d:c09::22c]:44956)
+	id 1fW39M-0002FB-HB
+	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 13:13:37 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:40696)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fW39F-0002Au-KN; Thu, 21 Jun 2018 13:13:29 -0400
-Received: by mail-qk0-x22c.google.com with SMTP id 185-v6so2162513qkk.11;
-	Thu, 21 Jun 2018 10:13:29 -0700 (PDT)
+	id 1fW39J-0002Cy-37; Thu, 21 Jun 2018 13:13:33 -0400
+Received: by mail-qk0-x244.google.com with SMTP id b129-v6so2165011qke.7;
+	Thu, 21 Jun 2018 10:13:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=wSP6w8ohT2gfRXsFROSFrxCscONP4h6pn9+UEY1nQCg=;
-	b=Oz1Psqwzay0kRNRR4yC2KHxvIABj7Q3fKuHF2ppXGj8p1oweV+3Kwsj8VWwFJpwz0e
-	4SjGII7pZGcvt9q+EUJgfeF05vU4NopfRJz+hKoCKJjjdN64LwXcjyzgCSE7iwS+D1sj
-	gM19OrDHEcJcIFpdPtXGwn/+LoYUvH2w20JJbsupEvNA0oLeyRSZvvaJJ+I5inXlw+UZ
-	Liq3IS4xdXWMJNf7iYEv9VQRI/d3hpREsz3NIgb5jX1rvsPGEM70NKbm3dT2MS91MFxV
-	mP0NS+WevHXNQkj8zufUKkK7ljut5sh1AGtU6Cyuan1AARTOTpPcsv0UCIiSZU4Z+yby
-	v3jA==
+	bh=fhKVXKgJcleUU2612zexva/vYuIk9xiQ98uXDyn6FF8=;
+	b=A5OxAbVXEk50KM0ad7JcqaBEKX5tIm5codEidduM3B6ozW48b0369KG5s3hwbuo/bL
+	6QSSTP5gPB6u3aWF6hwlWvQM1VuuF0S0kPmYKHRTbqFHwI32Gf8MFiRVfXLBfY8RCbst
+	gKjHfLHAPzTPgbTt5W92CED2SNqd2c48DSPyptxMoYCpgr4tAibSVk2ELuwsBJXprYrp
+	EERVSkpyM2wuBhqfnZ7LwwZLcyOwd/hyMN4TjdKCuBS+QvR749K3GCruMwel7SEIiBah
+	2f6RIy8gr917I6zXH29zj6MqczO6Wl+Da0Ipi4uJDu/qI3G3jizaRMP1gSo0X7nyVhKG
+	Z6zQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=wSP6w8ohT2gfRXsFROSFrxCscONP4h6pn9+UEY1nQCg=;
-	b=FJI/S1d/NvqnjIq9FEuExAdlitQmKEQ5MdjoZqHGupcIksWQCEIKaHgaYGbN5R2RcU
-	bq6F4WqxSz81dNjoZYDQgyLl4g7FBK0gB6OCwP2+LLXNcboDuUSYUMRdJ3x2i4LrS2Zl
-	gVt0Otab4FOZFyPx/4yvXhLduh8RNnGOTZHM8rylq2Rca4Mmr+IPEkZGTLaC81pUYz8/
-	XB19q6cjtowre9/mUBGLV6zl+Fddgx+lpEmDDOVt10PGdyZjSLrfJzRglHP4hChYb8ed
-	8QE/sWDIuQOSOVfW2FvOepH5pjRpryc81pXjREvX5KEK7Ey+9jspx1HW/SrUNa3k5/LG
-	28tw==
-X-Gm-Message-State: APt69E1CHr2efxgt5s8Cwvf6rOI5VyNvRUKdnZ1YG85n2/YycLuqYdiS
-	nyH6U0AHfyAaOJSKiG2ZnvY=
-X-Google-Smtp-Source: ADUXVKJ9A7akUGhy6SOCzAncvMRD2YCxS0q6+AVwoKv7wmiGD/As44FCwESJLqRRlb0eaEYvDIvrwA==
-X-Received: by 2002:a37:c24d:: with SMTP id
-	j13-v6mr22269669qkm.210.1529601209019; 
-	Thu, 21 Jun 2018 10:13:29 -0700 (PDT)
+	bh=fhKVXKgJcleUU2612zexva/vYuIk9xiQ98uXDyn6FF8=;
+	b=FLI7rGO3vSJMw0GB9ot8YOCO49r6NRwcIzdMvWpIWwGTGtjbj0T1iRkOWyYVFI6rrj
+	8XoxknspezH/T74LgWGV5f/0SVwlshB3tAokTndxwKhSXZIAN4HME1OKGMB3hCwnUmvF
+	UG1ry8hdIexJNSV+ba8aKlday2xVvtquLS6qj4bq/C5GwKLEPOAvfUCsnQGE1WvKLTqJ
+	yvaTbIXfsmvnh5AcKbngYaOhEsNvKqp42obZPmyV2ZSGNsm+JW5DyhkOWc8VpiTuyqLw
+	SKAPpUrc4e3E0U+yQ/k8Ru3rAdTts0qP5Tmj/8efRrzDTlgH2GA+AuqL3QmZzweZJBrV
+	+e1A==
+X-Gm-Message-State: APt69E329ue+Mg2J1Jsw6+GA07l1SkcRBmGOQ0wnT1YmekK9WNghf8uJ
+	PUnoKx/jIt9kkabsnUZAwS0=
+X-Google-Smtp-Source: ADUXVKLdncNls1bOZg0r8X8jspAdxVGDZv4FN58mvy+TNEH7vDetyq4lOLeRZ7q1v1MZJgpXzwK+sg==
+X-Received: by 2002:a37:bf42:: with SMTP id
+	p63-v6mr22538818qkf.240.1529601212336; 
+	Thu, 21 Jun 2018 10:13:32 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	t14-v6sm3166159qtp.65.2018.06.21.10.13.26
+	t14-v6sm3166159qtp.65.2018.06.21.10.13.29
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 21 Jun 2018 10:13:28 -0700 (PDT)
+	Thu, 21 Jun 2018 10:13:31 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Stefan Hajnoczi <stefanha@redhat.com>
+To: Stefan Hajnoczi <stefanha@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Jason Wang <jasowang@redhat.com>
-Date: Thu, 21 Jun 2018 14:12:54 -0300
-Message-Id: <20180621171257.14897-9-f4bug@amsat.org>
+Date: Thu, 21 Jun 2018 14:12:55 -0300
+Message-Id: <20180621171257.14897-10-f4bug@amsat.org>
 X-Mailer: git-send-email 2.18.0.rc2
 In-Reply-To: <20180621171257.14897-1-f4bug@amsat.org>
 References: <20180621171257.14897-1-f4bug@amsat.org>
@@ -64,9 +66,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::22c
-Subject: [Qemu-trivial] [PATCH 08/11] hw/net/ne2000: Convert printf() calls
- to trace events
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: [Qemu-trivial] [PATCH 09/11] hw/net/etraxfs_eth: Convert printf()
+ calls to trace events
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,53 +80,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Jun 2018 17:13:37 -0000
+X-List-Received-Date: Thu, 21 Jun 2018 17:13:38 -0000
 
+Suggested-by: Alistair Francis <alistair@alistair23.me>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/net/ne2000.c     | 8 ++------
- hw/net/trace-events | 2 ++
- 2 files changed, 4 insertions(+), 6 deletions(-)
+ hw/net/etraxfs_eth.c | 8 ++++----
+ hw/net/trace-events  | 5 +++++
+ 2 files changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/hw/net/ne2000.c b/hw/net/ne2000.c
-index 26b234b7eb..07d79e317f 100644
---- a/hw/net/ne2000.c
-+++ b/hw/net/ne2000.c
-@@ -277,9 +277,7 @@ static void ne2000_ioport_write(void *opaque, uint32_t addr, uint32_t val)
-     int offset, page, index;
+diff --git a/hw/net/etraxfs_eth.c b/hw/net/etraxfs_eth.c
+index 013c8d0a41..a6932432b1 100644
+--- a/hw/net/etraxfs_eth.c
++++ b/hw/net/etraxfs_eth.c
+@@ -27,6 +27,7 @@
+ #include "net/net.h"
+ #include "hw/cris/etraxfs.h"
+ #include "qemu/error-report.h"
++#include "trace.h"
  
-     addr &= 0xf;
--#ifdef DEBUG_NE2000
--    printf("NE2000: write addr=0x%x val=0x%02x\n", addr, val);
--#endif
-+    trace_ne2000_ioport_write(addr, val);
-     if (addr == E8390_CMD) {
-         /* control register */
-         s->cmd = val;
-@@ -442,9 +440,7 @@ static uint32_t ne2000_ioport_read(void *opaque, uint32_t addr)
-             break;
-         }
+ #define D(x)
+ 
+@@ -106,7 +107,7 @@ static unsigned int tdk_read(struct qemu_phy *phy, unsigned int req)
+         r = phy->regs[regnum];
+         break;
      }
--#ifdef DEBUG_NE2000
--    printf("NE2000: read addr=0x%x val=%02x\n", addr, ret);
--#endif
-+    trace_ne2000_ioport_read(addr, ret);
-     return ret;
+-    D(printf("\n%s %x = reg[%d]\n", __func__, r, regnum));
++    trace_mdio_phy_read(regnum, r);
+     return r;
  }
  
+@@ -116,7 +117,7 @@ tdk_write(struct qemu_phy *phy, unsigned int req, unsigned int data)
+     int regnum;
+ 
+     regnum = req & 0x1f;
+-    D(printf("%s reg[%d] = %x\n", __func__, regnum, data));
++    trace_mdio_phy_write(regnum, data);
+     switch (regnum) {
+     default:
+         phy->regs[regnum] = data;
+@@ -206,8 +207,7 @@ static void mdio_cycle(struct qemu_mdio *bus)
+ {
+     bus->cnt++;
+ 
+-    D(printf("mdc=%d mdio=%d state=%d cnt=%d drv=%d\n",
+-        bus->mdc, bus->mdio, bus->state, bus->cnt, bus->drive));
++    trace_mdio_bitbang(bus->mdc, bus->mdio, bus->state, bus->cnt, bus->drive);
+ #if 0
+     if (bus->mdc) {
+         printf("%d", bus->mdio);
 diff --git a/hw/net/trace-events b/hw/net/trace-events
-index 95a1de01e9..f57010df37 100644
+index f57010df37..663bea1b74 100644
 --- a/hw/net/trace-events
 +++ b/hw/net/trace-events
-@@ -26,6 +26,8 @@ mipsnet_irq(uint32_t isr, uint32_t intctl) "set irq to %d (0x%02x)"
- # hw/net/ne2000.c
- ne2000_read(uint64_t addr, uint64_t val) "read addr=0x%" PRIx64 " val=0x%" PRIx64
- ne2000_write(uint64_t addr, uint64_t val) "write addr=0x%" PRIx64 " val=0x%" PRIx64
-+ne2000_ioport_read(uint64_t addr, uint64_t val) "io read addr=0x%02" PRIx64 " val=0x%02" PRIx64
-+ne2000_ioport_write(uint64_t addr, uint64_t val) "io write addr=0x%02" PRIx64 " val=0x%02" PRIx64
+@@ -1,5 +1,10 @@
+ # See docs/devel/tracing.txt for syntax documentation.
  
- # hw/net/opencores_eth.c
- open_eth_mii_write(unsigned idx, uint16_t v) "MII[0x%02x] <- 0x%04x"
++# hw/net/etraxfs_eth.c
++mdio_phy_read(int regnum, uint16_t value) "read phy_reg:%d value:0x%04x"
++mdio_phy_write(int regnum, uint16_t value) "write phy_reg:%d value:0x%04x"
++mdio_bitbang(bool mdc, bool mdio, int state, uint16_t cnt, unsigned int drive) "bitbang mdc=%u mdio=%u state=%d cnt=%u drv=%d"
++
+ # hw/net/lance.c
+ lance_mem_readw(uint64_t addr, uint32_t ret) "addr=0x%"PRIx64"val=0x%04x"
+ lance_mem_writew(uint64_t addr, uint32_t val) "addr=0x%"PRIx64"val=0x%04x"
 -- 
 2.18.0.rc2
 
