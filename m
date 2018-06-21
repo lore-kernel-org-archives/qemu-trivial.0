@@ -1,73 +1,110 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fW39b-0005Ec-21
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Jun 2018 13:13:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50520)
+	id 1fW3an-0003tQ-Bi
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Jun 2018 13:41:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55909)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fW39Y-0005AZ-JC
-	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 13:13:50 -0400
+	(envelope-from <jsnow@redhat.com>) id 1fW3al-0003rr-9q
+	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 13:41:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fW39W-0002M8-RN
-	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 13:13:48 -0400
-Received: from mail-qt0-x22c.google.com ([2607:f8b0:400d:c0d::22c]:44747)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fW39P-0002Ga-Ib; Thu, 21 Jun 2018 13:13:39 -0400
-Received: by mail-qt0-x22c.google.com with SMTP id x5-v6so2802528qte.11;
-	Thu, 21 Jun 2018 10:13:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding;
-	bh=8lxHEY1hwZ5p2Byd+3k4fljeLFiWOxsj4S6SPtGUAn8=;
-	b=gMmu9P5yHTraKGMdiWZONbChp2vy2RX3WbyNAbrS7YvPDbiSlCEyYigwhMJBx7aGG0
-	Zh6MZ7h5TR7Wuw9hn5gU8zcSwOcs/R0CtDyae25Kaq4DRkvrQeptHDzWOUm3WlGDLBZY
-	SKeXC19f+2ZmzBu70whsqWgF8e3NPt3Z2iQBnLtmODzeqX8YiQ/ApQ9OI0MgnLZAFR2h
-	1COjM00x0bcvVESLB7re+uee1niJJQmXIiEYeQd5+ROHjZ3LIO2k9EQGl4JCD0iK0jLk
-	K/zqqK9YpaBOrlMmWjxX0CPFdo3GlGs5+eZCJJGqRD7S3yXsPQ/AWKp2AhW8cTzSgyuU
-	qBfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=8lxHEY1hwZ5p2Byd+3k4fljeLFiWOxsj4S6SPtGUAn8=;
-	b=fU+40gK5xBGoQdGc7KY7rg/qvj5VzJ3QoxmOmhDZK3KR09bz5eQTuN0FQbtUKsJ3Pl
-	nIaJ06HeTZ96oiIJshuPl3cc8+G9CB712KvQCBWPCzatrMhXn29mYOIW2Qt2U4UAu3Pz
-	R5ABcO5+DQpUifq9DNq50cvwIAYPDlmJh6N5xZFVs5FtppkcqZa+lXOSTykS/qsemNfg
-	wOqOPdWZEjm9JKgFwV6ekRYL3wPeZ0JklxZywX8beADBVh/idwJOr5/0MkRMZYmmB8St
-	08TIf4w/VhF8QzxjQA/f9gEuyKUVr7BpXeixxCZnr0kmzRqsyOncPUKDX/kbnDyk7JsO
-	H01Q==
-X-Gm-Message-State: APt69E0025mmAPng3xmUnl7Aiax8iqJKrcvT9nUap8Yuann5QgHaraGU
-	pf0xedojufEAA0PzFH+bBZw=
-X-Google-Smtp-Source: ADUXVKIGl4qBxF+QJpWktPe9YgSoCk7/7nGM6M1ftyQXt3X+81/qFMZUC/YrFs+V1FK6Iwrvuy8ZFA==
-X-Received: by 2002:ac8:41d5:: with SMTP id
-	o21-v6mr23905114qtm.265.1529601218871; 
-	Thu, 21 Jun 2018 10:13:38 -0700 (PDT)
-Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	t14-v6sm3166159qtp.65.2018.06.21.10.13.35
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 21 Jun 2018 10:13:38 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	(envelope-from <jsnow@redhat.com>) id 1fW3ak-0005no-Bq
+	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 13:41:55 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35926 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
+	id 1fW3ad-0005lQ-Ia; Thu, 21 Jun 2018 13:41:47 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E26E5401EF07;
+	Thu, 21 Jun 2018 17:41:46 +0000 (UTC)
+Received: from [10.10.120.68] (ovpn-120-68.rdu2.redhat.com [10.10.120.68])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C35A2111CB9E;
+	Thu, 21 Jun 2018 17:41:44 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
 	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	qemu-block@nongnu.org (open list:Block layer core)
-Date: Thu, 21 Jun 2018 14:12:57 -0300
-Message-Id: <20180621171257.14897-12-f4bug@amsat.org>
-X-Mailer: git-send-email 2.18.0.rc2
-In-Reply-To: <20180621171257.14897-1-f4bug@amsat.org>
+	"open list:Floppy" <qemu-block@nongnu.org>
 References: <20180621171257.14897-1-f4bug@amsat.org>
+	<20180621171257.14897-11-f4bug@amsat.org>
+From: John Snow <jsnow@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+	NRhibLIrSP2g5nqXONyQrFxb1HtVaoR+Nrk=
+Message-ID: <4aa9b48d-1934-bf06-0bae-9d8d2721f199@redhat.com>
+Date: Thu, 21 Jun 2018 13:41:44 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::22c
-Subject: [Qemu-trivial] [PATCH 11/11] hw/block/pflash_cfi: Convert from
- DPRINTF() macro to trace events
+In-Reply-To: <20180621171257.14897-11-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Thu, 21 Jun 2018 17:41:46 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Thu, 21 Jun 2018 17:41:46 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'jsnow@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [PATCH 10/11] hw/block/fdc: Convert from
+ FLOPPY_DPRINTF() macro to trace events
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,260 +116,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Jun 2018 17:13:50 -0000
+X-List-Received-Date: Thu, 21 Jun 2018 17:41:56 -0000
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/block/pflash_cfi01.c | 42 +++++++++++++++--------------------------
- hw/block/pflash_cfi02.c | 18 +++++++++---------
- hw/block/trace-events   | 13 +++++++++++++
- 3 files changed, 37 insertions(+), 36 deletions(-)
 
-diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-index e4b5b3c273..bffb4c40e7 100644
---- a/hw/block/pflash_cfi01.c
-+++ b/hw/block/pflash_cfi01.c
-@@ -47,6 +47,7 @@
- #include "qemu/log.h"
- #include "hw/sysbus.h"
- #include "sysemu/sysemu.h"
-+#include "trace.h"
- 
- #define PFLASH_BUG(fmt, ...) \
- do { \
-@@ -120,7 +121,7 @@ static void pflash_timer (void *opaque)
- {
-     pflash_t *pfl = opaque;
- 
--    DPRINTF("%s: command %02x done\n", __func__, pfl->cmd);
-+    trace_pflash_timer_expired(pfl->cmd);
-     /* Reset flash */
-     pfl->status ^= 0x80;
-     memory_region_rom_device_set_romd(&pfl->mem, true);
-@@ -218,15 +219,14 @@ static uint32_t pflash_devid_query(pflash_t *pfl, hwaddr offset)
-     switch (boff & 0xFF) {
-     case 0:
-         resp = pfl->ident0;
--        DPRINTF("%s: Manufacturer Code %04x\n", __func__, resp);
-+        trace_pflash_manufacturer_id(resp);
-         break;
-     case 1:
-         resp = pfl->ident1;
--        DPRINTF("%s: Device ID Code %04x\n", __func__, resp);
-+        trace_pflash_device_id(resp);
-         break;
-     default:
--        DPRINTF("%s: Read Device Information offset=%x\n", __func__,
--                (unsigned)offset);
-+        trace_pflash_device_info(offset);
-         return 0;
-         break;
-     }
-@@ -251,8 +251,7 @@ static uint32_t pflash_data_read(pflash_t *pfl, hwaddr offset,
-     switch (width) {
-     case 1:
-         ret = p[offset];
--        DPRINTF("%s: data offset " TARGET_FMT_plx " %02x\n",
--                __func__, offset, ret);
-+        trace_pflash_data_read8(offset, ret);
-         break;
-     case 2:
-         if (be) {
-@@ -262,8 +261,7 @@ static uint32_t pflash_data_read(pflash_t *pfl, hwaddr offset,
-             ret = p[offset];
-             ret |= p[offset + 1] << 8;
-         }
--        DPRINTF("%s: data offset " TARGET_FMT_plx " %04x\n",
--                __func__, offset, ret);
-+        trace_pflash_data_read16(offset, ret);
-         break;
-     case 4:
-         if (be) {
-@@ -277,8 +275,7 @@ static uint32_t pflash_data_read(pflash_t *pfl, hwaddr offset,
-             ret |= p[offset + 2] << 16;
-             ret |= p[offset + 3] << 24;
-         }
--        DPRINTF("%s: data offset " TARGET_FMT_plx " %08x\n",
--                __func__, offset, ret);
-+        trace_pflash_data_read32(offset, ret);
-         break;
-     default:
-         DPRINTF("BUG in %s\n", __func__);
-@@ -294,11 +291,7 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
-     uint32_t ret;
- 
-     ret = -1;
--
--#if 0
--    DPRINTF("%s: reading offset " TARGET_FMT_plx " under cmd %02x width %d\n",
--            __func__, offset, pfl->cmd, width);
--#endif
-+    trace_pflash_read(offset, pfl->cmd, width, pfl->wcycle);
-     switch (pfl->cmd) {
-     default:
-         /* This should never happen : reset state & treat it as a read */
-@@ -349,15 +342,14 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
-             switch (boff) {
-             case 0:
-                 ret = pfl->ident0 << 8 | pfl->ident1;
--                DPRINTF("%s: Manufacturer Code %04x\n", __func__, ret);
-+                trace_pflash_manufacturer_id(ret);
-                 break;
-             case 1:
-                 ret = pfl->ident2 << 8 | pfl->ident3;
--                DPRINTF("%s: Device ID Code %04x\n", __func__, ret);
-+                trace_pflash_device_id(ret);
-                 break;
-             default:
--                DPRINTF("%s: Read Device Information boff=%x\n", __func__,
--                        (unsigned)boff);
-+                trace_pflash_device_info(boff);
-                 ret = 0;
-                 break;
-             }
-@@ -425,9 +417,7 @@ static inline void pflash_data_write(pflash_t *pfl, hwaddr offset,
- {
-     uint8_t *p = pfl->storage;
- 
--    DPRINTF("%s: block write offset " TARGET_FMT_plx
--            " value %x counter %016" PRIx64 "\n",
--            __func__, offset, value, pfl->counter);
-+    trace_pflash_data_write(offset, value, width, pfl->counter);
-     switch (width) {
-     case 1:
-         p[offset] = value;
-@@ -466,9 +456,7 @@ static void pflash_write(pflash_t *pfl, hwaddr offset,
- 
-     cmd = value;
- 
--    DPRINTF("%s: writing offset " TARGET_FMT_plx " value %08x width %d wcycle 0x%x\n",
--            __func__, offset, value, width, pfl->wcycle);
--
-+    trace_pflash_write(offset, value, width, pfl->wcycle);
-     if (!pfl->wcycle) {
-         /* Set the device in I/O access mode */
-         memory_region_rom_device_set_romd(&pfl->mem, false);
-@@ -656,8 +644,8 @@ static void pflash_write(pflash_t *pfl, hwaddr offset,
-                   "\n", __func__, offset, pfl->wcycle, pfl->cmd, value);
- 
-  reset_flash:
-+    trace_pflash_reset();
-     memory_region_rom_device_set_romd(&pfl->mem, true);
--
-     pfl->wcycle = 0;
-     pfl->cmd = 0;
- }
-diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-index 6c18e5e578..0f8b7b8c7b 100644
---- a/hw/block/pflash_cfi02.c
-+++ b/hw/block/pflash_cfi02.c
-@@ -43,6 +43,7 @@
- #include "sysemu/block-backend.h"
- #include "qemu/host-utils.h"
- #include "hw/sysbus.h"
-+#include "trace.h"
- 
- //#define PFLASH_DEBUG
- #ifdef PFLASH_DEBUG
-@@ -124,7 +125,7 @@ static void pflash_timer (void *opaque)
- {
-     pflash_t *pfl = opaque;
- 
--    DPRINTF("%s: command %02x done\n", __func__, pfl->cmd);
-+    trace_pflash_timer_expired(pfl->cmd);
-     /* Reset flash */
-     pfl->status ^= 0x80;
-     if (pfl->bypass) {
-@@ -143,8 +144,8 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
-     uint32_t ret;
-     uint8_t *p;
- 
--    DPRINTF("%s: offset " TARGET_FMT_plx "\n", __func__, offset);
-     ret = -1;
-+    trace_pflash_read(offset, pfl->cmd, width, pfl->wcycle);
-     /* Lazy reset to ROMD mode after a certain amount of read accesses */
-     if (!pfl->rom_mode && pfl->wcycle == 0 &&
-         ++pfl->read_counter > PFLASH_LAZY_ROMD_THRESHOLD) {
-@@ -172,7 +173,7 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
-         switch (width) {
-         case 1:
-             ret = p[offset];
--//            DPRINTF("%s: data offset %08x %02x\n", __func__, offset, ret);
-+            trace_pflash_data_read8(offset, ret);
-             break;
-         case 2:
-             if (be) {
-@@ -182,7 +183,7 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
-                 ret = p[offset];
-                 ret |= p[offset + 1] << 8;
-             }
--//            DPRINTF("%s: data offset %08x %04x\n", __func__, offset, ret);
-+            trace_pflash_data_read16(offset, ret);
-             break;
-         case 4:
-             if (be) {
-@@ -196,7 +197,7 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
-                 ret |= p[offset + 2] << 16;
-                 ret |= p[offset + 3] << 24;
-             }
--//            DPRINTF("%s: data offset %08x %08x\n", __func__, offset, ret);
-+            trace_pflash_data_read32(offset, ret);
-             break;
-         }
-         break;
-@@ -274,8 +275,7 @@ static void pflash_write (pflash_t *pfl, hwaddr offset,
- #endif
-         goto reset_flash;
-     }
--    DPRINTF("%s: offset " TARGET_FMT_plx " %08x %d %d\n", __func__,
--            offset, value, width, pfl->wcycle);
-+    trace_pflash_write(offset, value, width, pfl->wcycle);
-     offset &= pfl->chip_len - 1;
- 
-     DPRINTF("%s: offset " TARGET_FMT_plx " %08x %d\n", __func__,
-@@ -345,8 +345,7 @@ static void pflash_write (pflash_t *pfl, hwaddr offset,
-             /* We need another unlock sequence */
-             goto check_unlock0;
-         case 0xA0:
--            DPRINTF("%s: write data offset " TARGET_FMT_plx " %08x %d\n",
--                    __func__, offset, value, width);
-+            trace_pflash_data_write(offset, value, width, 0);
-             p = pfl->storage;
-             if (!pfl->ro) {
-                 switch (width) {
-@@ -483,6 +482,7 @@ static void pflash_write (pflash_t *pfl, hwaddr offset,
- 
-     /* Reset flash */
-  reset_flash:
-+    trace_pflash_reset();
-     pfl->bypass = 0;
-     pfl->wcycle = 0;
-     pfl->cmd = 0;
-diff --git a/hw/block/trace-events b/hw/block/trace-events
-index d842c45409..f1017fac39 100644
---- a/hw/block/trace-events
-+++ b/hw/block/trace-events
-@@ -4,6 +4,19 @@
- fdc_ioport_read(uint8_t reg, uint8_t value) "read reg 0x%02x val 0x%02x"
- fdc_ioport_write(uint8_t reg, uint8_t value) "write reg 0x%02x val 0x%02x"
- 
-+# hw/block/pflash_cfi0?.c
-+pflash_reset(void) "reset"
-+pflash_read(uint64_t offset, uint8_t cmd, int width, uint8_t wcycle) "offset:0x%04"PRIx64" cmd:0x%02x width:%d wcycle:%u"
-+pflash_write(uint64_t offset, uint32_t value, int width, uint8_t wcycle) "offset:0x%04"PRIx64" value:0x%03x width:%d wcycle:%u"
-+pflash_timer_expired(uint8_t cmd) "command 0x%02x done"
-+pflash_data_read8(uint64_t offset, uint32_t value) "data offset:0x%04"PRIx64" value:0x%02x"
-+pflash_data_read16(uint64_t offset, uint32_t value) "data offset:0x%04"PRIx64" value:0x%04x"
-+pflash_data_read32(uint64_t offset, uint32_t value) "data offset:0x%04"PRIx64" value:0x%08x"
-+pflash_data_write(uint64_t offset, uint32_t value, int width, uint64_t counter) "data offset:0x%04"PRIx64" value:0x%08x width:%d counter:0x%016"PRIx64
-+pflash_manufacturer_id(uint16_t id) "Read Manufacturer ID: 0x%04x"
-+pflash_device_id(uint16_t id) "Read Device ID: 0x%04x"
-+pflash_device_info(uint64_t offset) "Read Device Information offset:0x%04lx"
-+
- # hw/block/virtio-blk.c
- virtio_blk_req_complete(void *vdev, void *req, int status) "vdev %p req %p status %d"
- virtio_blk_rw_complete(void *vdev, void *req, int ret) "vdev %p req %p ret %d"
--- 
-2.18.0.rc2
 
+On 06/21/2018 01:12 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/block/fdc.c        | 6 +++---
+>  hw/block/trace-events | 4 ++++
+>  2 files changed, 7 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/hw/block/fdc.c b/hw/block/fdc.c
+> index cd29e27d8f..c7b4fe9b3e 100644
+> --- a/hw/block/fdc.c
+> +++ b/hw/block/fdc.c
+> @@ -40,6 +40,7 @@
+>  #include "sysemu/blockdev.h"
+>  #include "sysemu/sysemu.h"
+>  #include "qemu/log.h"
+> +#include "trace.h"
+> =20
+>  /********************************************************/
+>  /* debug Floppy devices */
+> @@ -934,7 +935,7 @@ static uint32_t fdctrl_read (void *opaque, uint32_t=
+ reg)
+>          retval =3D (uint32_t)(-1);
+>          break;
+>      }
+> -    FLOPPY_DPRINTF("read reg%d: 0x%02x\n", reg & 7, retval);
+> +    trace_fdc_ioport_read(reg, retval);
+
+Earlier in this function we've already masked the register number, which
+is not clear from context.
+
+Reviewed-by: John Snow <jsnow@redhat.com>
+
+(and ACK, to whomever stages this outside of my branch. --js)
+
+> =20
+>      return retval;
+>  }
+> @@ -943,9 +944,8 @@ static void fdctrl_write (void *opaque, uint32_t re=
+g, uint32_t value)
+>  {
+>      FDCtrl *fdctrl =3D opaque;
+> =20
+> -    FLOPPY_DPRINTF("write reg%d: 0x%02x\n", reg & 7, value);
+> -
+>      reg &=3D 7;
+> +    trace_fdc_ioport_write(reg, value);
+>      switch (reg) {
+>      case FD_REG_DOR:
+>          fdctrl_write_dor(fdctrl, value);
+> diff --git a/hw/block/trace-events b/hw/block/trace-events
+> index 6b9e733412..d842c45409 100644
+> --- a/hw/block/trace-events
+> +++ b/hw/block/trace-events
+> @@ -1,5 +1,9 @@
+>  # See docs/devel/tracing.txt for syntax documentation.
+> =20
+> +# hw/block/fdc.c
+> +fdc_ioport_read(uint8_t reg, uint8_t value) "read reg 0x%02x val 0x%02=
+x"
+> +fdc_ioport_write(uint8_t reg, uint8_t value) "write reg 0x%02x val 0x%=
+02x"
+> +
+>  # hw/block/virtio-blk.c
+>  virtio_blk_req_complete(void *vdev, void *req, int status) "vdev %p re=
+q %p status %d"
+>  virtio_blk_rw_complete(void *vdev, void *req, int ret) "vdev %p req %p=
+ ret %d"
+>=20
 
