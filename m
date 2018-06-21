@@ -1,110 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fW3an-0003tQ-Bi
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Jun 2018 13:41:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55909)
+	id 1fW3ut-0000QE-6U
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Jun 2018 14:02:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59116)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1fW3al-0003rr-9q
-	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 13:41:56 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fW3ur-0000On-AL
+	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 14:02:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1fW3ak-0005no-Bq
-	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 13:41:55 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35926 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1fW3ad-0005lQ-Ia; Thu, 21 Jun 2018 13:41:47 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E26E5401EF07;
-	Thu, 21 Jun 2018 17:41:46 +0000 (UTC)
-Received: from [10.10.120.68] (ovpn-120-68.rdu2.redhat.com [10.10.120.68])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id C35A2111CB9E;
-	Thu, 21 Jun 2018 17:41:44 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	"open list:Floppy" <qemu-block@nongnu.org>
-References: <20180621171257.14897-1-f4bug@amsat.org>
-	<20180621171257.14897-11-f4bug@amsat.org>
-From: John Snow <jsnow@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
-	xsFNBFTKefwBEAChvwqYC6saTzawbih87LqBYq0d5A8jXYXaiFMV/EvMSDqqY4EY6whXliNO
-	IYzhgrPEe7ZmPxbCSe4iMykjhwMh5byIHDoPGDU+FsQty2KXuoxto+ZdrP9gymAgmyqdk3aV
-	vzzmCa3cOppcqKvA0Kqr10UeX/z4OMVV390V+DVWUvzXpda45/Sxup57pk+hyY52wxxjIqef
-	rj8u5BN93s5uCVTus0oiVA6W+iXYzTvVDStMFVqnTxSxlpZoH5RGKvmoWV3uutByQyBPHW2U
-	1Y6n6iEZ9MlP3hcDqlo0S8jeP03HaD4gOqCuqLceWF5+2WyHzNfylpNMFVi+Hp0H/nSDtCvQ
-	ua7j+6Pt7q5rvqgHvRipkDDVsjqwasuNc3wyoHexrBeLU/iJBuDld5iLy+dHXoYMB3HmjMxj
-	3K5/8XhGrDx6BDFeO3HIpi3u2z1jniB7RtyVEtdupED6lqsDj0oSz9NxaOFZrS3Jf6z/kHIf
-	h42mM9Sx7+s4c07N2LieUxcfqhFTaa/voRibF4cmkBVUhOD1AKXNfhEsTvmcz9NbUchCkcvA
-	T9119CrsxfVsE7bXiGvdXnzyGLXdsoosjzwacKdOrVaDmN3Uy+SHiQXo6TlkSdV0XH2PUxTM
-	LsBFIO9qXO43Ai6J6iPAP/01l8fuZfpJE0/L/c25yyaND7xA3wARAQABzSpKb2huIFNub3cg
-	KEpvaG4gSHVzdG9uKSA8anNub3dAcmVkaGF0LmNvbT7CwX0EEwECACcCGwMCHgECF4AFCwkI
-	BwMFFQoJCAsFFgIDAQAFAlid5ikFCQeV0y0ACgkQiKkGTRg1YesAOw/8DLxVyLbPecXUbxLs
-	+TRhmkoxO5UHReTvmMefyBJxflKSNQQEV49rw0aQe5S4cfOh97K5XHMh2O3tJZS3+zwrRxaK
-	ZMdQrfeJ20acsOKkYuFYKCZuib4tAClf/lk/uF6TVdyDeY1AWf9lXWfwLnBetNpHVqY0C312
-	K9FC/l42+QEyDXHa2l0j0re1B1D8zScS5tHt9vj43t/VJTjJWHrlE3IAde6mNvM/wbvuFfYG
-	SuaxpRRbFuIDUVW9DinUGtawjtkvttTWUe4+XCtT5u48P4QXvtlgNlc8eEL4+SL3ABB8oepE
-	2J2LcMDn6QG7o3pKIqJrKvmKKH5BHzi02c0b+u0BrzsNhNSlxUB0cpHyfzlFpJGlaxdsvwC7
-	CQ85KMaCB8WsQIgwgFHRldCszr9LXU52V8Tib1tnxgvwBVDYaDQEWjTZB1725FooHuRJaCVU
-	+lthkjYoileOG0sNzTPHMXSTsKrNK9aVjg3Cs+D2hU2xi9BlG0Nzf4FqcHVxJg3tOI2f/EeR
-	Dc9UB88GH3yPLouCshz6tG3ftimTtpf5FH0IRTSupmBO3n2JnReyIJcYbmYgo1PucmDWQVgc
-	t+bXdgvRY8QB5EbTO1Etn5CXk3be0iUY7OE4XPRWbnEY8d9m6E4U/p083sW1kdki935XML17
-	WSHh0ChaSX07jREm3qTOwU0EVMp5/AEQAMG4T+OQRHf8wDAT1dnZNlsCMCkUilCxJT95F6XL
-	og1mEKG91Dg1FKgpTvt2l1UZ3WjZmV/Vm8xmHsVaN+Y/glQQhq9w5VPAC/aadykN0iYoVnA3
-	ndS0plH/LUvtdHepnRsQ6oJ3fzllNteIrL4YFmbWRjDP14+3MeaRESIj/o6ruz09XIm3H3BC
-	oT42HcldUJy7SjRq04P1DCmi/qpFgVCP/LgaGtBy7DR+t217EbTQBvMOqhu4ornmGVCFynOC
-	ByDVILqmECVXUnvrvG9jeVzYQ0hFIXZahWK2ib1+nU48TE1uZc1Rtio87XxK0TUlJrtoHs28
-	NfwldM7Z4jigwO5pEIulCFA0YeC8UZuZn5Xyogsg0C+j/48RwcRb/rCII7i63zYSAtad8/a7
-	wofonQFSYLR7WJfKehgFaxfuMUFds2R+ObYJh6NvkibCz412bVlbFgDaXqV53rMmm1rTQFeK
-	kAe/0nwu+82cLFV9DjmNkHPoqIZl6PFOw4F1Q4Jf0f+UIH55b9P96znTLemT8uSya/A/SyZn
-	D9Eb1/fI8qATn9OkPULRMCbDSwjgqNiyjS+9QzY2a51xMI1B+ugl4kVw2wyqa7e9QYkk4rZB
-	YRhlPPFwra6fEfcgK1z3+DDfsDWAY30+ytvYFk88bfQ2ECLxH+vaGQ+Weah2BqdN9RPdABEB
-	AAHCwWUEGAECAA8CGwwFAlTKiksFCQPCd00ACgkQiKkGTRg1YessJA//TdJTJDK/G+oBOo2I
-	niVnVKeBrd3WbKRKZFyRV2lsxulMs8VTdq+FwXwkHox9W/8aJcPWgGmd5VG3axky9w74XPLP
-	Z17r/N55/PZF93bcBjXlaR9Y6W6UFkfkZYaKsaxL6AYx4haydW+Zfb4dubhgKXkdKlfdM8lp
-	TRzQVfssj/l9DEwbHweQZPCECZG7qrUoQmMCqiKkDMajxfwR9MYxVvRE3+Cnm6UlUZ30FFy8
-	fok9CzgsWKmConTrz3+84yMCnW88oG15tCgfsqmmGByNqITD73XeFmE2hI1DSAUJo0jB4urq
-	8mw+muq2+cPxhrJu5RvvUDaMstFCh4AWID5O11s5rDunn2ZTAFUI5AbGfQwG8a8flVie3cQm
-	TqRcS8jlCKCI0eBVQICRW9n7CJezb6dguoao7MDwJEaLtp8BCnHYctx+/5TxnIMgKOuXKGce
-	Vck/xfu8poWzaPUEnqwCR80N2ZFhXoyc9M6VJ0bNNH7vmshSmcs+0OAeVgkOPiDDyROaphWX
-	oI5/IhU3QJ7z95f3PU5sFRjs0anR9qXAzDFrYnMXhZZ3Cr+rAJgXYcoF2O6p26j2Ge8ckYPz
-	ssv8YkXne7L8YZq8UEV/juy9WNG0B87YtiKK+m1Gl8YLGOo36tGJBaL8ZHFNxmwhBR4yulcM
-	xwh+WlGQdSwtPFpMf7LCwWUEGAECAA8CGwwFAlid5kgFCQeV00wACgkQiKkGTRg1YesKXg//
-	VY/yAWFlhQulEDYWagbOnok+gl57C5GH8p6s41mZsir4zN3wUE7KAYSV7O9rCXZQothIwG0u
-	bpssiFqKStjcykf0Mac/3x8GSZyciu6rXi+3+bGlOH0kJI/qJ1nUCQ1vwjVcqYYscQRw7zhK
-	DtivZAk4dCHNE5WDWyVvZh3Sw7EIEvXFLDPdWlAPL6BleI2LI/LJcA3biiJFGVvXhYh75e1N
-	R+cVyi11URVxnWjRL9QcXvM/srVzi1+YWIP8c/6ftgq/vicjovNvF5E34Rj2IW/fCKyU4ma0
-	0HOlXaCO4H2ngZuyRpOYPXVt/Iohvzu8daKVRotOnCE1LsJ4MLN2Oi76Rw9UXHLCJ7eqw3A9
-	MhGOuRSgA5d/8rn3iy8SvhIIPJDCJDFwCwSX5i3E+AyH21Qf4Go3cz427PgE0HotDi2GEH8a
-	nxH/tkXn4i+sG9gyJGCzKobXi1g2xCWdrMBkbl0J6HfdOG3IDIrVDO3LgUp2J3oZT9NlYewP
-	d5wOERgtgqY8XvqXNpDv9c/FgPnfrmD4A1wlUtbCr+UukOD0Ky3iW/0Ij2DJlw+KUFCKxwWh
-	EmSAxTi2NAg5f5e5A5d/clCwVeB3DXes5H6tdez4f/ai1eAB+FtItxT37i2KpUvUAdic37Io
-	NRhibLIrSP2g5nqXONyQrFxb1HtVaoR+Nrk=
-Message-ID: <4aa9b48d-1934-bf06-0bae-9d8d2721f199@redhat.com>
-Date: Thu, 21 Jun 2018 13:41:44 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fW3uq-0006R5-G3
+	for qemu-trivial@nongnu.org; Thu, 21 Jun 2018 14:02:41 -0400
+Received: from mail-qt0-x230.google.com ([2607:f8b0:400d:c0d::230]:39060)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fW3um-0006Q2-63; Thu, 21 Jun 2018 14:02:36 -0400
+Received: by mail-qt0-x230.google.com with SMTP id p23-v6so3664507qtn.6;
+	Thu, 21 Jun 2018 11:02:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=DMRxpurs0O6SQaofjNj8qhq/fUQQ+sk9CUt/ldhsPnQ=;
+	b=RoIGga5lBSZLUcnf6SfKjTPLZjv2UWslXZT4SJ/Gd5+QMYle5rDWEnhLKFJisNHhcV
+	4hyPwWNNkL2uado/cPT1xWCqbiPS6Jmo1OT2mtyPRQH89xIAmNe0FqZ4X3/TIHcQGNAK
+	epW0tLJE6Yy7Fl5cKB0Cq7GCJdDfMTkWUVWB2p1hqixQGFWfk1/w9SJt7j5vtV1acAtE
+	CExxv0bswTNI0Af21WWRDeUHcbxDc/Mhnt53diIgWe4Qh9dopJnWWOHpq7Ze+saZ/Som
+	fgXJpl1i+FpXcBIukbwdAdQLz1RPjKG/3jqvtFoI+ghZkIXITZaNmkSF5xr0tCCEByRr
+	+UoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=DMRxpurs0O6SQaofjNj8qhq/fUQQ+sk9CUt/ldhsPnQ=;
+	b=aeMYcgzZJsk+MeKXSPbR/4VEkJc5/RdV2bdDA+x6ZNOWBT692R+YsNDquOTR9SuuFi
+	85o8cHi9KdCo0PhQwEPGtBdwHiuuJMb0ZYcvWJTQqNMubXaI1+o08ABNSEx6JUp7Mrxp
+	ZCu2V9L2LXTiPLffgmuHV8N6zTzt4Gyp4oFutJ/Y/2sbQKlySgWYZGK6x+CXmFL8YZKc
+	5FuTEkq/2r32wQpsFiZrrC+2cBmft5VEOityznCLgwyxe+6tcy0AeD+fMgoHSpRNfI/9
+	4ctjrBOoUXvkA4q5+o3q1BrJbRJZN25Zw8KoopssN1myv79rCrDc0w8w86YJMqtCvHXk
+	FCPg==
+X-Gm-Message-State: APt69E12VE5zm5T6jH6XB6JO2koqPN4iBBTzjtthJfasOOOgc887T9Qw
+	VMwMwA9cOqoyjhNGd1poRws=
+X-Google-Smtp-Source: ADUXVKL4QENWkeJ82xYDwWnxClbcQ3vkwY0ZVVX+uCXPTIu1pN3NFwUb6vKeIotNQ37wcF/FbqKdwA==
+X-Received: by 2002:ac8:2c23:: with SMTP id
+	d32-v6mr24047307qta.54.1529604155471; 
+	Thu, 21 Jun 2018 11:02:35 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	w51-v6sm2469469qta.12.2018.06.21.11.02.31
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 21 Jun 2018 11:02:34 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Jason Wang <jasowang@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
+Date: Thu, 21 Jun 2018 15:02:13 -0300
+Message-Id: <20180621180224.8312-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.18.0.rc2
 MIME-Version: 1.0
-In-Reply-To: <20180621171257.14897-11-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Thu, 21 Jun 2018 17:41:46 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Thu, 21 Jun 2018 17:41:46 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'jsnow@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH 10/11] hw/block/fdc: Convert from
- FLOPPY_DPRINTF() macro to trace events
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::230
+Subject: [Qemu-trivial] [PATCH 00/11] hw/arm: use qemu_log_mask instead of
+ fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,76 +79,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Jun 2018 17:41:56 -0000
+X-List-Received-Date: Thu, 21 Jun 2018 18:02:42 -0000
 
+Hi,
 
+This series is another collection of trivial patches from
+different stagnating branches, OMAP and Stellaris. Time to
+share before loosing them.
 
-On 06/21/2018 01:12 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/block/fdc.c        | 6 +++---
->  hw/block/trace-events | 4 ++++
->  2 files changed, 7 insertions(+), 3 deletions(-)
->=20
-> diff --git a/hw/block/fdc.c b/hw/block/fdc.c
-> index cd29e27d8f..c7b4fe9b3e 100644
-> --- a/hw/block/fdc.c
-> +++ b/hw/block/fdc.c
-> @@ -40,6 +40,7 @@
->  #include "sysemu/blockdev.h"
->  #include "sysemu/sysemu.h"
->  #include "qemu/log.h"
-> +#include "trace.h"
-> =20
->  /********************************************************/
->  /* debug Floppy devices */
-> @@ -934,7 +935,7 @@ static uint32_t fdctrl_read (void *opaque, uint32_t=
- reg)
->          retval =3D (uint32_t)(-1);
->          break;
->      }
-> -    FLOPPY_DPRINTF("read reg%d: 0x%02x\n", reg & 7, retval);
-> +    trace_fdc_ioport_read(reg, retval);
+Regards,
 
-Earlier in this function we've already masked the register number, which
-is not clear from context.
+Phil.
 
-Reviewed-by: John Snow <jsnow@redhat.com>
+Philippe Mathieu-Daudé (11):
+  hw/input/pckbd: Use qemu_log_mask(GUEST_ERROR) instead of fprintf
+  hw/input/tsc2005: Use qemu_log_mask(GUEST_ERROR) instead of fprintf
+  hw/dma/omap_dma: Use qemu_log_mask(UNIMP) instead of printf
+  hw/dma/omap_dma: Use qemu_log_mask(GUEST_ERROR) instead of fprintf
+  hw/ssi/omap_spi: Use qemu_log_mask(GUEST_ERROR) instead of fprintf
+  hw/sd/omap_mmc: Use qemu_log_mask(UNIMP) instead of printf
+  hw/i2c/omap_i2c: Use qemu_log_mask(UNIMP) instead of fprintf
+  hw/arm/omap: Use qemu_log_mask(GUEST_ERROR) instead of fprintf
+  hw/arm/stellaris: Use qemu_log_mask(UNIMP) instead of fprintf
+  hw/net/stellaris_enet: Use qemu_log_mask(GUEST_ERROR) instead of hw_error
+  hw/net/smc91c111: Use qemu_log_mask(GUEST_ERROR) instead of hw_error
 
-(and ACK, to whomever stages this outside of my branch. --js)
+ include/hw/arm/omap.h   | 20 +++++++-----
+ hw/arm/stellaris.c      |  2 +-
+ hw/dma/omap_dma.c       | 72 ++++++++++++++++++++++++++---------------
+ hw/i2c/omap_i2c.c       | 23 ++++++++-----
+ hw/input/pckbd.c        |  4 ++-
+ hw/input/tsc2005.c      | 14 +++++---
+ hw/net/smc91c111.c      |  9 ++++--
+ hw/net/stellaris_enet.c |  9 ++++--
+ hw/sd/omap_mmc.c        | 13 +++++---
+ hw/ssi/omap_spi.c       | 15 ++++++---
+ 10 files changed, 119 insertions(+), 62 deletions(-)
 
-> =20
->      return retval;
->  }
-> @@ -943,9 +944,8 @@ static void fdctrl_write (void *opaque, uint32_t re=
-g, uint32_t value)
->  {
->      FDCtrl *fdctrl =3D opaque;
-> =20
-> -    FLOPPY_DPRINTF("write reg%d: 0x%02x\n", reg & 7, value);
-> -
->      reg &=3D 7;
-> +    trace_fdc_ioport_write(reg, value);
->      switch (reg) {
->      case FD_REG_DOR:
->          fdctrl_write_dor(fdctrl, value);
-> diff --git a/hw/block/trace-events b/hw/block/trace-events
-> index 6b9e733412..d842c45409 100644
-> --- a/hw/block/trace-events
-> +++ b/hw/block/trace-events
-> @@ -1,5 +1,9 @@
->  # See docs/devel/tracing.txt for syntax documentation.
-> =20
-> +# hw/block/fdc.c
-> +fdc_ioport_read(uint8_t reg, uint8_t value) "read reg 0x%02x val 0x%02=
-x"
-> +fdc_ioport_write(uint8_t reg, uint8_t value) "write reg 0x%02x val 0x%=
-02x"
-> +
->  # hw/block/virtio-blk.c
->  virtio_blk_req_complete(void *vdev, void *req, int status) "vdev %p re=
-q %p status %d"
->  virtio_blk_rw_complete(void *vdev, void *req, int ret) "vdev %p req %p=
- ret %d"
->=20
+-- 
+2.18.0.rc2
+
 
