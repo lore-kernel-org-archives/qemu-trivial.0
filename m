@@ -1,79 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWSO3-0002Gw-Pg
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 16:10:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50729)
+	id 1fWSRK-0003hw-QK
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 16:13:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51215)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWSO1-0002FD-1J
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 16:10:26 -0400
+	id 1fWSRI-0003ea-9s
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 16:13:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWSNz-0002y6-NA
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 16:10:24 -0400
-Received: from mail-qk0-x22b.google.com ([2607:f8b0:400d:c09::22b]:34800)
+	id 1fWSRH-0003ue-A3
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 16:13:48 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:42271)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWSNu-0002wS-Uf; Fri, 22 Jun 2018 16:10:19 -0400
-Received: by mail-qk0-x22b.google.com with SMTP id q70-v6so4377994qke.1;
-	Fri, 22 Jun 2018 13:10:18 -0700 (PDT)
+	id 1fWSRC-0003sg-SH; Fri, 22 Jun 2018 16:13:42 -0400
+Received: by mail-qk0-x244.google.com with SMTP id u62-v6so1827439qkf.9;
+	Fri, 22 Jun 2018 13:13:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=S742fyqUhwmBfafC9BxD8PchPr/FFLH/smvpJc7XSwE=;
-	b=oFEDJItJ/HkxM2IjqJbf2DUx0M4pycLOKH09NgdApYoIvq28SPwpNWaQMY+vMhnqy9
-	FFZIuMFEUnK9FkP9BED6PHDfWIcCtBhlHQ6UWzV0xaIKr5/LIbp9v8nx8CW3tx4wuFOu
-	PX9uQesw7OXkKxEVOWvfCIuq/Fy+kJ/3VDtmuENkPqDBy3azRxFiLdxhCinISKo14Sqr
-	pcHpB+1hTnWahtt2b1NOCOQdS6W/AbKJtw38LZlQNMu5RWBCijvZnq4PC3RkHUr2ghaA
-	Hn73nopCUw0aPaoct52S7W636kZAI+RzdJ/QwchFC1/aP/I6emEdd0j6Xk4Hhe5EJ98u
-	1+SQ==
+	bh=n5wfJr5o6sydZTE3B9UCajlYWxgsrD7XfyRdCwFX48U=;
+	b=TykEcnihDhbT2REbKo2gZSfBOOAYb/2n9rXVKKDyGxwJWKf8uwXV2oAvprcGs7QuSl
+	uxNELimZB8KQbhimaMjgn3QkuTwgBFWLOdM4Rj946eYvQj2oZAHsMo3ypD20FUaqrd8U
+	o6lfWI8vx3gcjS3s7rzW/8V+vx0q68nYLHRltEeNQo91KJvl22jIx4Ci8WNfLcMraNBG
+	ZWklPGV+ymnPz7FQblHnXdGrffXXSs2bwsNIhPA2vKG3wulQ4obYqf5y3duN8Ux2zlMG
+	LAQTp90mR8A6cSDgyb8+XDVbhVGWi2XvpszSjtYd4MbSoGyhjc/8K0U24GHsfPeGToFB
+	rfFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=S742fyqUhwmBfafC9BxD8PchPr/FFLH/smvpJc7XSwE=;
-	b=NijYM3n6+CAZKK9g9Bnq2mzkNLjTap7bE/9pKzabWkZ0VwKBVMw4+VM/AMEr+pQqSk
-	6R4GHb1eGWvc0/T0J19dXtFTrlMzam7kVkKDEZFqG25NvEqCz/YWdDLLIeFTUQyH9gp1
-	qWaVoYHhFAQoEJL1FB8P4B3UU4Iz82Laaqdz+d5lrZjyDsEtXa20DsAsoHoFs7Xjz5Dr
-	Tba3H3QVWQuVrwe7eg2M/p31EDOgkcwfXVyzySQwZdtD4lBUIcnvS1Pjg7JjdU4JDkCP
-	vcMVjPtdfw/uXfYfb6rY4G3xG3MQ20ZvuL0sVb9iWk15WdPzB68wtuAQFroWz+9MMPAW
-	h2wA==
-X-Gm-Message-State: APt69E2uWSpSfgqbknKTDBX+9FBbNcKRe93ttAgd9WDrvA+JEfOalzKA
-	xIVN4P5S/n35ESAd7s58RciJ2qHW
-X-Google-Smtp-Source: ADUXVKLYjo5/WQpNeQek9emzXBTLFA6eNwDHA/19CWxH+neEt6fwZ7YSSkjM9TXXjhQFutNY0Xaigw==
-X-Received: by 2002:a37:d4d1:: with SMTP id
-	s78-v6mr2559137qks.244.1529698218293; 
-	Fri, 22 Jun 2018 13:10:18 -0700 (PDT)
+	bh=n5wfJr5o6sydZTE3B9UCajlYWxgsrD7XfyRdCwFX48U=;
+	b=LOqJkZKGZWTulklMxYktAk9tCfiTqzqXKhu6HbHM24VlFcrnDLF+TT25W5EX4q4BT3
+	6dvjrpOlqj1k9hvKvo2JsBhpFuoI4Hvpc0hFdZpNWbfR085o6IHikiQR4eDcauQnAxAb
+	43lp0b87KCLrN2JQfpmwrkBpLgp6OOf1GX+ohbb2+QTK17cd7QKdOiNmPz2UYJRZ4gt4
+	NH8uPn6FOF6KgE5rtSy4sCPY4q8dZHBR/i+aDIK5W7B9yogsGtv8NDHfP2gPdS4NXyxi
+	/jxhwlIXCy2LiizmFcHLZ2IgZDZ8UWAwePSKl1Amqy6nXSebJMW8BENnPPKhq4OK92X4
+	HfxQ==
+X-Gm-Message-State: APt69E3gosPzjocYGwKNyxhAlJYP/P487r85He7GLRY8CcBGlzwVmmxc
+	T2V4Gdaxn6JAZa08QnzdGcZ4hRgA
+X-Google-Smtp-Source: ADUXVKJHWKorhq3MKjLag4lQoC+ob0BLc6JbhYXD2wujS9yhxEtFZCjCdkbGA4+ES/zIedIkzjxbwA==
+X-Received: by 2002:a37:78c5:: with SMTP id
+	t188-v6mr2551450qkc.283.1529698422248; 
+	Fri, 22 Jun 2018 13:13:42 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	o31-v6sm5446788qte.16.2018.06.22.13.10.16
+	d192-v6sm5597668qkb.46.2018.06.22.13.13.39
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 22 Jun 2018 13:10:17 -0700 (PDT)
+	Fri, 22 Jun 2018 13:13:41 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
 References: <20180622134036.23182-1-f4bug@amsat.org>
-	<20180622134036.23182-8-f4bug@amsat.org>
-	<e98bac2c-ce0b-e226-3d96-004e46478f2f@redhat.com>
+	<20180622134036.23182-10-f4bug@amsat.org>
+	<b70145b2-5c24-d525-b23a-aaeb7ab960c5@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <8256c2d4-722c-299f-e8e3-42c1a7f68e1d@amsat.org>
-Date: Fri, 22 Jun 2018 17:10:13 -0300
+Message-ID: <39def888-734e-f4e6-8104-9534e611fcb1@amsat.org>
+Date: Fri, 22 Jun 2018 17:13:38 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <e98bac2c-ce0b-e226-3d96-004e46478f2f@redhat.com>
+In-Reply-To: <b70145b2-5c24-d525-b23a-aaeb7ab960c5@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::22b
-Subject: Re: [Qemu-trivial] [PATCH v2 07/14] hw/i2c/omap_i2c: Use
- qemu_log_mask(UNIMP) instead of fprintf
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: Re: [Qemu-trivial] [PATCH v2 09/14] hw/arm/omap: Use
+ qemu_log_mask(GUEST_ERROR) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,62 +85,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 20:10:26 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 20:13:49 -0000
 
-On 06/22/2018 04:38 PM, Thomas Huth wrote:
+On 06/22/2018 04:44 PM, Thomas Huth wrote:
 > On 22.06.2018 15:40, Philippe Mathieu-Daudé wrote:
 >> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >> ---
->>  hw/i2c/omap_i2c.c | 20 ++++++++++++--------
->>  1 file changed, 12 insertions(+), 8 deletions(-)
+>>  include/hw/arm/omap.h | 5 +++--
+>>  1 file changed, 3 insertions(+), 2 deletions(-)
 >>
->> diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
->> index 26e3e5ebf6..690876e43e 100644
->> --- a/hw/i2c/omap_i2c.c
->> +++ b/hw/i2c/omap_i2c.c
->> @@ -17,6 +17,7 @@
->>   * with this program; if not, see <http://www.gnu.org/licenses/>.
->>   */
->>  #include "qemu/osdep.h"
+>> diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+>> index 39abba753d..3867687b8c 100644
+>> --- a/include/hw/arm/omap.h
+>> +++ b/include/hw/arm/omap.h
+>> @@ -21,6 +21,7 @@
+>>  # define hw_omap_h		"omap.h"
+>>  #include "hw/irq.h"
+>>  #include "target/arm/cpu-qom.h"
 >> +#include "qemu/log.h"
->>  #include "hw/hw.h"
->>  #include "hw/i2c/i2c.h"
->>  #include "hw/arm/omap.h"
->> @@ -339,14 +340,15 @@ static void omap_i2c_write(void *opaque, hwaddr addr,
->>              }
->>              break;
->>          }
->> -        if ((value & (1 << 15)) && !(value & (1 << 10))) {	/* MST */
->> -            fprintf(stderr, "%s: I^2C slave mode not supported\n",
->> -                            __func__);
->> +        if ((value & (1 << 15)) && !(value & (1 << 10))) { /* MST */
+>>  
+>>  # define OMAP_EMIFS_BASE	0x00000000
+>>  # define OMAP2_Q0_BASE		0x00000000
+>> @@ -962,8 +963,8 @@ void omap_mpu_wakeup(void *opaque, int irq, int req);
+>>          fprintf(stderr, "%s: Bad register " OMAP_FMT_plx "\n",	\
+>>                          __func__, paddr)
 > 
-> Please keep the white spaces before the comment if you don't change
-> anything else.
+> What about that fprintf above?
 
-This is a <tab> and checkpatch complains...
+Well there are still many fprintf() in the OMAP codebase.
 
-I can use 4 spaces for this tab. I tried to align with other tab-aligned
-comments I didn't modify, but the result is messier. Thus a simple space.
+I didn't want to start a fprintf() cleanup, I just cherry-picked the
+patches I used to make sens of the current (ugly) output.
+
+With this series the console is 'usable'.
 
 > 
->> +            qemu_log_mask(LOG_UNIMP, "%s: I^2C slave mode not supported\n",
->> +                          __func__);
->>              break;
->>          }
->> -        if ((value & (1 << 15)) && value & (1 << 8)) {		/* XA */
->> -            fprintf(stderr, "%s: 10-bit addressing mode not supported\n",
->> -                            __func__);
->> +        if ((value & (1 << 15)) && value & (1 << 8)) { /* XA */
+>>  # define OMAP_RO_REG(paddr)		\
+>> -        fprintf(stderr, "%s: Read-only register " OMAP_FMT_plx "\n",	\
+>> -                        __func__, paddr)
+>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Read-only register " OMAP_FMT_plx \
+>> +                      "\n", __func__, paddr)
+>>  
+>>  /* OMAP-specific Linux bootloader tags for the ATAG_BOARD area
+>>     (Board-specifc tags are not here)  */
+>>
 > 
-> dito.
-> 
->> +            qemu_log_mask(LOG_UNIMP,
->> +                          "%s: 10-bit addressing mode not supported\n",
->> +                          __func__);
-> 
-> Apart from the nits, looks fine to me, so once you've fixed that:
-> 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
+>  Thomas
 > 
 
