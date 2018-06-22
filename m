@@ -1,78 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWM2o-00009W-Jo
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 09:24:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55973)
+	id 1fWM3Y-0000mi-Do
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 09:24:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56189)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWM2j-0008WQ-Ps
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 09:24:05 -0400
+	id 1fWM3W-0000kR-2P
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 09:24:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWM2i-0005kq-Sv
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 09:24:01 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:36036)
+	id 1fWM3V-00061M-33
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 09:24:50 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:36562)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWM2a-0005bx-QD; Fri, 22 Jun 2018 09:23:52 -0400
-Received: by mail-qk0-x241.google.com with SMTP id a195-v6so3640313qkg.3;
-	Fri, 22 Jun 2018 06:23:52 -0700 (PDT)
+	id 1fWM3M-0005yh-Qw; Fri, 22 Jun 2018 09:24:40 -0400
+Received: by mail-qt0-x242.google.com with SMTP id o9-v6so5875157qtp.3;
+	Fri, 22 Jun 2018 06:24:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=lTELApfYi2Oh0kHQeClDf+07PRCKMeR3Aj9M7a8Ocdc=;
-	b=aC1aROOpnFg1sq+VZTNZbKStJnwqeRKOe97XkZ1INLmwvzrQIy5CLqZDV3uUi1kA3g
-	lpEaFZyHjVmXBVtnaZAaBuwjLbiAdTrum0698BrWEITqG1QNTGY9x2ZP8T7pmDazm5Zu
-	cFa9XERNkGmrrmk8mk4nGWYhdVCs6fxOMhjFmg6x4MqcUumIo1WKfAN+Fgp1ReQgLec0
-	u4Xbd6h+okixikMsKfWo27ZCiAH5NhM/365n5LMcIIoW1++UBHOOr8oYpxoNBSZkJon2
-	92X+rsrdTV+iSIaoUs8ROgFHHO8QZjog9BSQtBJgCy1T1O3MV8Rqq4zpj14RmQGDGjy1
-	wfug==
+	bh=WokhsUVBbzAkqKpAEJ747jLaGMR2KkSvBeDZftg7QiI=;
+	b=jyjHVj7ayEUV0uof9IJLM0VLA8WV3JOicv5YdWuhVOmsybBxa05XE+pfv4caLRY7N0
+	fb1DVvoe95jnvHCx+8ZVUwUuU0ebENfSnPL0bYnr8Lk3fnu95SRpBmUkw5SaDzSljZbW
+	EyKTmGQoiGzkzMsMsUtCQMSEzRwL0R8/3xBn2lE4OOcw+PNU8bctoaQqWi1hH2HWes3F
+	tgqiPmK0PnToHEPhsOZsdIclWXo2GaTSwbl8TybK+tPpFkTTKJgwT6EZHgSCcunG2EgL
+	ju3CwbRahgZecFwcgS4zVM2ua3vJPkuHg6MCi7lHUMHKPgagOkRGo/VGk3jADs0p/Syk
+	LaCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=lTELApfYi2Oh0kHQeClDf+07PRCKMeR3Aj9M7a8Ocdc=;
-	b=ORSd8p7gG+CyNEO4lofTEGCPCLmnYLXd0maf0qDJfPBIexBjsivs+I4o383lw4AR4T
-	PNxTCR+IerXeXk6XqyHqUH6GmIqhLS6KDKtqBJ2TTJt/0bUp7C/IdfSlGxOIoIe1+7BV
-	D7sXXFPUuVYHkaW0Mu9rRSa0A749VcrOqsNUcrgZdhIN8Fq5Yr4LgUyyjRHesSlbFMsL
-	X0OMxoaRbyXq6PpTLFvfqFJq+nJ5KTnX0YID4luJ6/KiEyPWIUjPcln9NPe91bEAELMg
-	Z7P8/9G6b3TFQDYEZF8Y0W7ryEwrD/58d3ZdLPZMvn9z2Xo5gzzlzptojii/xK4K/lwI
-	P3IA==
-X-Gm-Message-State: APt69E3LWSgFUX6DRaJYu3dOWVtrwufFrkj9csKf2JSMf5KpL1zbtwGQ
-	YfuwD88nUqRQWQ9nIIZxspFKHcGi
-X-Google-Smtp-Source: AAOMgper/CFW4l+tEl5r17oHX2eYafBmKu+ZEbNRPP9Fa4yKaVNvrQsx99ordyGFuJRs9uCmWGCgdQ==
-X-Received: by 2002:a37:f06:: with SMTP id z6-v6mr1275496qkg.418.1529673832068;
-	Fri, 22 Jun 2018 06:23:52 -0700 (PDT)
+	bh=WokhsUVBbzAkqKpAEJ747jLaGMR2KkSvBeDZftg7QiI=;
+	b=NJDelxIyERDYrd23KUymgU1oL9fJN9rny1Cg5uPyt1sWuvdaFys6oGIpEAwjMuX8M8
+	lHen+MAETyKHHaDV/RWx/noXKJZw3eJv6+V6+dh1lLSqZajcF38+uW2xmJsaYiEvzi3t
+	xjjZATC0N2x7qjOXZaj0R/5yfrBDnayAyuVFBk4WBjqS3NrUcywiKaHhoK96VRm1QaXc
+	hzAeVzmTx34oyGAfJtbsukRtVtgGoaqViUpAj/z5TYU83aH0kSIJo4urtrx9rZ+ToYpm
+	1w1E7fZDEft9bXUKVh0z3JgLd1O9NAdJkvJqZ16DYy5pVTArlutmmhWCmi/doxviM+qp
+	jxiQ==
+X-Gm-Message-State: APt69E1VcTExgNnljkJTWQwQ9w7hsU8tgLh0/sM5AoPvhnOXWKV0IxZE
+	j0fWd07AG7AfF2edw9e+ZICIVy3D
+X-Google-Smtp-Source: AAOMgpcQYl+Kdq/fxNqKU1Ev8XJgRGTzu02T/4ZAEKYqcpLH5wyu1VeQlx2AaibG2OwStchJsLlkkA==
+X-Received: by 2002:a0c:b5af:: with SMTP id
+	g47-v6mr1378187qve.94.1529673880161; 
+	Fri, 22 Jun 2018 06:24:40 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	g56-v6sm6166080qta.83.2018.06.22.06.23.49
+	v56-v6sm6132613qtv.50.2018.06.22.06.24.37
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 22 Jun 2018 06:23:51 -0700 (PDT)
+	Fri, 22 Jun 2018 06:24:39 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20180621180224.8312-1-f4bug@amsat.org>
-	<20180621180224.8312-9-f4bug@amsat.org>
-	<e8e5e2ff-9576-402d-1502-9b584b0295f7@redhat.com>
+	<20180621180224.8312-11-f4bug@amsat.org>
+	<8b75e080-6c68-0bdc-1f2c-8ca6c0f80089@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <12b750e6-fd0a-4a57-a3cc-eb0afb8e3237@amsat.org>
-Date: Fri, 22 Jun 2018 10:23:48 -0300
+Message-ID: <44d9b737-073f-983e-fe19-03b908e7c9a3@amsat.org>
+Date: Fri, 22 Jun 2018 10:24:36 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <e8e5e2ff-9576-402d-1502-9b584b0295f7@redhat.com>
+In-Reply-To: <8b75e080-6c68-0bdc-1f2c-8ca6c0f80089@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 08/11] hw/arm/omap: Use
- qemu_log_mask(GUEST_ERROR) instead of fprintf
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 10/11]
+ hw/net/stellaris_enet: Use qemu_log_mask(GUEST_ERROR) instead of hw_error
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,45 +86,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 13:24:05 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 13:24:51 -0000
 
-On 06/22/2018 05:34 AM, Thomas Huth wrote:
+On 06/22/2018 05:43 AM, Thomas Huth wrote:
 > On 21.06.2018 20:02, Philippe Mathieu-Daudé wrote:
+>> hw_error() finally calls abort(), but there is no need to abort here.
+> 
+> Additionally, hw_error() is also only meant for CPU errors (since it
+> dumps the CPU state). We should really rename that function to
+> "cpu_hw_error" one day to avoid that people use it in the wrong spots...
+
+Another painful cleanup series...
+
+> 
 >> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >> ---
->>  include/hw/arm/omap.h | 20 ++++++++++++--------
->>  1 file changed, 12 insertions(+), 8 deletions(-)
-> [...]
->> @@ -997,14 +998,17 @@ enum {
->>  
->>  # ifdef TCMI_VERBOSE
->>  #  define OMAP_8B_REG(paddr)		\
->> -        fprintf(stderr, "%s: 8-bit register " OMAP_FMT_plx "\n",	\
->> -                        __func__, paddr)
->> +        qemu_log_mask(LOG_GUEST_ERROR, \
->> +                      "%s: 8-bit register " OMAP_FMT_plx "\n", \
->> +                      __func__, paddr)
->>  #  define OMAP_16B_REG(paddr)		\
->> -        fprintf(stderr, "%s: 16-bit register " OMAP_FMT_plx "\n",	\
->> -                        __func__, paddr)
->> +        qemu_log_mask(LOG_GUEST_ERROR, \
->> +                      "%s: 16-bit register " OMAP_FMT_plx "\n", \
->> +                      __func__, paddr)
->>  #  define OMAP_32B_REG(paddr)		\
->> -        fprintf(stderr, "%s: 32-bit register " OMAP_FMT_plx "\n",	\
->> -                        __func__, paddr)
->> +        qemu_log_mask(LOG_GUEST_ERROR, \
->> +                      "%s: 32-bit register " OMAP_FMT_plx "\n", \
->> +                      __func__, paddr)
->>  # else
->>  #  define OMAP_8B_REG(paddr)
->>  #  define OMAP_16B_REG(paddr)
+>>  hw/net/stellaris_enet.c | 9 +++++++--
+>>  1 file changed, 7 insertions(+), 2 deletions(-)
 >>
+>> diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
+>> index 04bd10ada3..188adcbd15 100644
+>> --- a/hw/net/stellaris_enet.c
+>> +++ b/hw/net/stellaris_enet.c
+>> @@ -9,6 +9,7 @@
+>>  #include "qemu/osdep.h"
+>>  #include "hw/sysbus.h"
+>>  #include "net/net.h"
+>> +#include "qemu/log.h"
+>>  #include <zlib.h>
+>>  
+>>  //#define DEBUG_STELLARIS_ENET 1
+>> @@ -343,7 +344,9 @@ static uint64_t stellaris_enet_read(void *opaque, hwaddr offset,
+>>      case 0x3c: /* Undocuented: Timestamp? */
+>>          return 0;
+>>      default:
+>> -        hw_error("stellaris_enet_read: Bad offset %x\n", (int)offset);
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +                      "stellaris_enet_rd%d: 0x%" HWADDR_PRIx "\n",
+>> +                      size, offset);
+>>          return 0;
+>>      }
+>>  }
+>> @@ -442,7 +445,9 @@ static void stellaris_enet_write(void *opaque, hwaddr offset,
+>>          /* Ignored.  */
+>>          break;
+>>      default:
+>> -        hw_error("stellaris_enet_write: Bad offset %x\n", (int)offset);
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +                      "stellaris_enet_wr%d: 0x%" HWADDR_PRIx " = 0x%lx\n",
+>> +                      size, offset, value);
+>>      }
+>>  }
 > 
-> Since the qemu_log_mask(LOG_GUEST_ERROR, ...) calls are not shown up by
-> default anymore, I think it would rather be better to get rid of this
-> #ifdef TCMI_VERBOSE ... #endif block now and put the qemu_log_mask()
-> statements directly into the omap_badwidth_* functions instead.
+> Could you please keep the "bad offset" or a similar error message, so
+> that the user knows that there is really something wrong here?
 
-Good idea!
+Sure.
 
