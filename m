@@ -1,61 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWMJC-000633-5Z
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 09:41:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59621)
+	id 1fWMJE-00065Y-Cd
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 09:41:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59654)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWMJ9-00060G-V8
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 09:41:01 -0400
+	id 1fWMJC-000636-6e
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 09:41:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWMJ8-0003BP-PT
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 09:41:00 -0400
-Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:45799)
+	id 1fWMJB-0003Ii-Cr
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 09:41:02 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:47057)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWMJ6-00034N-2C; Fri, 22 Jun 2018 09:40:56 -0400
-Received: by mail-qt0-x244.google.com with SMTP id i18-v6so5893456qtp.12;
-	Fri, 22 Jun 2018 06:40:55 -0700 (PDT)
+	id 1fWMJ8-0003AW-QE; Fri, 22 Jun 2018 09:40:58 -0400
+Received: by mail-qt0-x243.google.com with SMTP id h5-v6so5888896qtm.13;
+	Fri, 22 Jun 2018 06:40:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=xT+wdDJ0+mzvn9PuSVGwp5pg/05Y7iGYk8C8bIHQifI=;
-	b=PIgSxHmwgOFSGahWVQ/bvRsJuH0WdxdaYm4rgmqLomiUdYIOLOlHHQzGbOj+9pLDGj
-	4Rlprt284cBABQjW62RDLE6uNM54Og24N3NPk4O+fCIfDpIwXtkwaKJ1fJ+wnh8+7x0p
-	ljfg2oTwK2H/nj/NPskx1AfuB3SIT6WXa/KmWOny8L/pDtCcNlPEIWBSBwXIoohdm3lw
-	gW7P99w2hnEon/ilQB1TuqHSKoj0p6a9fQRhvLjBlGeo2MnSrQ4RkVExjLta1+qMfqIL
-	Z3xnb8Su4Igkp4VmWUhVHVYL65j/3TqVmW/P+8Xy4ZrwP4Mb1IxXo+jv/qX77JRjevvT
-	SgmA==
+	bh=0mutGa0sDmrzFg5daZsr8Rt8Y88n2i/QbM/UUL4yJrc=;
+	b=aDSkZroWWSODVCXrLp7bVTWLYCuA+caAGKpgSKO/3tWUBDbgPkIK2gLDIU72FjbyK4
+	rP1IxC6p0a/nkqvV96tIJCu0L21jK6MPuECfMe7/eo2iuT7zoTSShSZWT40JCnCuDCRN
+	UqoUUrM3WNH4JCV7f6JyCKsu1vBfKi6H2hktmW8ord4KF33Z2nGGvy3bVeIFaybMGfPQ
+	DrSACd1eQeHu0O+5GoFQeRdtaSJHBSDCHeu8pqTlWaFyZwGYJg5e++yUaNPQOTF3sQXO
+	8+LGgwsQy/1O2fls/CukZRTClmAmC2Ii5Y4heJcilBkY6Dt6ydUHgdRZeiXAWFKT5w5S
+	1T1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=xT+wdDJ0+mzvn9PuSVGwp5pg/05Y7iGYk8C8bIHQifI=;
-	b=aowrigDe6YfOIiWmfXTV+AE9To6TYYBCQ2n96aNiHX2ON+KBIwcdg7wqvpvUvtrcsS
-	r6ZpuKdC0rGC6vrNoBTK5ZZQ8FlZb7SNmeZiqEirogKtHS529x+iYXOyVmWk24A07HIq
-	6bdl++knL6HwFtO7qG1yhX1OWeES+Bp5YA9FLuCPpkNOC6Des6KAC5Vynlhy60amYy9D
-	SusFwwB7mbbVB5zoaRtN7yJcmii8CDmTrpzzanvEtl7rhbnb+0rUjs4Q6d56ya0jpJkb
-	l6GYN8Qxt9Ta5b9A/s941EatCiXSsQvLSI9cFGYnambsYjpJtqWB7YEFmzH2QMhC/vDg
-	T8CA==
-X-Gm-Message-State: APt69E0OrcHBieQxtzz2gT0wLtZo2Zjru2v91Kr+spnTLof+exZ5qe5n
-	h/BWFF4TrqBMRTzE6whDGP4=
-X-Google-Smtp-Source: AAOMgpdGsiASwxrwbgiiMsIai+0see8cK5olFT73F93VPa6o6aGdvEe1MPEnFzOWTj8IUAyp/iAS2A==
-X-Received: by 2002:a0c:b084:: with SMTP id
-	o4-v6mr1417193qvc.133.1529674855323; 
-	Fri, 22 Jun 2018 06:40:55 -0700 (PDT)
+	bh=0mutGa0sDmrzFg5daZsr8Rt8Y88n2i/QbM/UUL4yJrc=;
+	b=hwh8Kdu43BfFQfDybZbywI5XDtEhZH6WWcJsrqtwdrwNS/D+nN6yjq/bsYh92YaRxB
+	WZezwyG9mNh6LwjxgTKmT0FONF9iar1/6SjUK//pCEj93WdUFSwUEBmJhTO9kleZHdHY
+	LnHiZA57S55R0J8iAh/kAaFJlZGGCRMozrarCPX9qauQ/buYRZ79y3PlZp/XutRUAYWt
+	oPQU4E56T6/PByU8dpST4QMlhnvq7agGA+Ps9AUml+VjThuidX2lYoW+sduOJq770yzG
+	bEgR71Y2H1P4HA0pqWzGsTEq3sDeC86IWFBeSHbyeA8ryN4tPoOs4XiYsWtqSmKCS8EU
+	yxWw==
+X-Gm-Message-State: APt69E0YY3fxWGPGsDL0HOT+iWh8CD5mgZad4cJM7I3rDgkr91ABGjoj
+	wVBGhg1cn4iyjJhliwG3VsQ=
+X-Google-Smtp-Source: AAOMgpfJxuritr8ixVtsc7QKjgPuKnflKTzsJnVLjd986S1ffUNfD/V1yY9lCmIBrHF1wsYX+mE31w==
+X-Received: by 2002:a0c:f54d:: with SMTP id
+	p13-v6mr1404371qvm.149.1529674858134; 
+	Fri, 22 Jun 2018 06:40:58 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	s39-v6sm6006629qts.42.2018.06.22.06.40.52
+	s39-v6sm6006629qts.42.2018.06.22.06.40.55
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 22 Jun 2018 06:40:54 -0700 (PDT)
+	Fri, 22 Jun 2018 06:40:57 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	Thomas Huth <thuth@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
-Date: Fri, 22 Jun 2018 10:40:26 -0300
-Message-Id: <20180622134036.23182-5-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>
+Date: Fri, 22 Jun 2018 10:40:27 -0300
+Message-Id: <20180622134036.23182-6-f4bug@amsat.org>
 X-Mailer: git-send-email 2.18.0.rc2
 In-Reply-To: <20180622134036.23182-1-f4bug@amsat.org>
 References: <20180622134036.23182-1-f4bug@amsat.org>
@@ -64,8 +66,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::244
-Subject: [Qemu-trivial] [PATCH v2 04/14] hw/dma/omap_dma: Use
+X-Received-From: 2607:f8b0:400d:c0d::243
+Subject: [Qemu-trivial] [PATCH v2 05/14] hw/ssi/omap_spi: Use
  qemu_log_mask(GUEST_ERROR) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -78,131 +80,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 13:41:01 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 13:41:03 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- hw/dma/omap_dma.c | 64 +++++++++++++++++++++++++++++------------------
- 1 file changed, 40 insertions(+), 24 deletions(-)
+ hw/ssi/omap_spi.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
-diff --git a/hw/dma/omap_dma.c b/hw/dma/omap_dma.c
-index ab3a1b0451..cbb920f31d 100644
---- a/hw/dma/omap_dma.c
-+++ b/hw/dma/omap_dma.c
-@@ -879,15 +879,18 @@ static int omap_dma_ch_reg_write(struct omap_dma_s *s,
-         ch->burst[0] = (value & 0x0180) >> 7;
-         ch->pack[0] = (value & 0x0040) >> 6;
-         ch->port[0] = (enum omap_dma_port) ((value & 0x003c) >> 2);
--        if (ch->port[0] >= __omap_dma_port_last)
--            printf("%s: invalid DMA port %i\n", __func__,
--                            ch->port[0]);
--        if (ch->port[1] >= __omap_dma_port_last)
--            printf("%s: invalid DMA port %i\n", __func__,
--                            ch->port[1]);
-+        if (ch->port[0] >= __omap_dma_port_last) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid DMA port %i\n",
-+                          __func__, ch->port[0]);
+diff --git a/hw/ssi/omap_spi.c b/hw/ssi/omap_spi.c
+index 34163e5646..f278a55160 100644
+--- a/hw/ssi/omap_spi.c
++++ b/hw/ssi/omap_spi.c
+@@ -20,6 +20,7 @@
+  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  */
+ #include "qemu/osdep.h"
++#include "qemu/log.h"
+ #include "hw/hw.h"
+ #include "hw/arm/omap.h"
+ 
+@@ -294,11 +295,15 @@ static void omap_mcspi_write(void *opaque, hwaddr addr,
+     case 0x2c:	/* MCSPI_CHCONF */
+         if ((value ^ s->ch[ch].config) & (3 << 14))	/* DMAR | DMAW */
+             omap_mcspi_dmarequest_update(s->ch + ch);
+-        if (((value >> 12) & 3) == 3)			/* TRM */
+-            fprintf(stderr, "%s: invalid TRM value (3)\n", __func__);
+-        if (((value >> 7) & 0x1f) < 3)			/* WL */
+-            fprintf(stderr, "%s: invalid WL value (%" PRIx64 ")\n",
+-                            __func__, (value >> 7) & 0x1f);
++        if (((value >> 12) & 3) == 3) { /* TRM */
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid TRM value (3)\n",
++                          __func__);
 +        }
-+        if (ch->port[1] >= __omap_dma_port_last) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid DMA port %i\n",
-+                          __func__, ch->port[1]);
-+        }
-         ch->data_type = 1 << (value & 3);
-         if ((value & 3) == 3) {
--            printf("%s: bad data_type for DMA channel\n", __func__);
++        if (((value >> 7) & 0x1f) < 3) { /* WL */
 +            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: bad data_type for DMA channel\n", __func__);
-             ch->data_type >>= 1;
-         }
++                          "%s: invalid WL value (%" PRIx64 ")\n",
++                          __func__, (value >> 7) & 0x1f);
++        }
+         s->ch[ch].config = value & 0x7fffff;
          break;
-@@ -1899,14 +1902,18 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-         if (value & 2)						/* SOFTRESET */
-             omap_dma_reset(s->dma);
-         s->ocp = value & 0x3321;
--        if (((s->ocp >> 12) & 3) == 3)				/* MIDLEMODE */
--            fprintf(stderr, "%s: invalid DMA power mode\n", __func__);
-+        if (((s->ocp >> 12) & 3) == 3) { /* MIDLEMODE */
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid DMA power mode\n",
-+                          __func__);
-+        }
-         return;
  
-     case 0x78:	/* DMA4_GCR */
-         s->gcr = value & 0x00ff00ff;
--	if ((value & 0xff) == 0x00)		/* MAX_CHANNEL_FIFO_DEPTH */
--            fprintf(stderr, "%s: wrong FIFO depth in GCR\n", __func__);
-+        if ((value & 0xff) == 0x00) { /* MAX_CHANNEL_FIFO_DEPTH */
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: wrong FIFO depth in GCR\n",
-+                          __func__);
-+        }
-         return;
- 
-     case 0x80 ... 0xfff:
-@@ -1935,9 +1942,11 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-     case 0x00:	/* DMA4_CCR */
-         ch->buf_disable = (value >> 25) & 1;
-         ch->src_sync = (value >> 24) & 1;	/* XXX For CamDMA must be 1 */
--        if (ch->buf_disable && !ch->src_sync)
--            fprintf(stderr, "%s: Buffering disable is not allowed in "
--                            "destination synchronised mode\n", __func__);
-+        if (ch->buf_disable && !ch->src_sync) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: Buffering disable is not allowed in "
-+                          "destination synchronised mode\n", __func__);
-+        }
-         ch->prefetch = (value >> 23) & 1;
-         ch->bs = (value >> 18) & 1;
-         ch->transparent_copy = (value >> 17) & 1;
-@@ -1947,9 +1956,11 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-         ch->suspend = (value & 0x0100) >> 8;
-         ch->priority = (value & 0x0040) >> 6;
-         ch->fs = (value & 0x0020) >> 5;
--        if (ch->fs && ch->bs && ch->mode[0] && ch->mode[1])
--            fprintf(stderr, "%s: For a packet transfer at least one port "
--                            "must be constant-addressed\n", __func__);
-+        if (ch->fs && ch->bs && ch->mode[0] && ch->mode[1]) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: For a packet transfer at least one port "
-+                          "must be constant-addressed\n", __func__);
-+        }
-         ch->sync = (value & 0x001f) | ((value >> 14) & 0x0060);
-         /* XXX must be 0x01 for CamDMA */
- 
-@@ -1978,9 +1989,11 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-         ch->endian_lock[0] =(value >> 20) & 1;
-         ch->endian[1] =(value >> 19) & 1;
-         ch->endian_lock[1] =(value >> 18) & 1;
--        if (ch->endian[0] != ch->endian[1])
--            fprintf(stderr, "%s: DMA endianness conversion enable attempt\n",
--                            __func__);
-+        if (ch->endian[0] != ch->endian[1]) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: DMA endianness conversion enable attempt\n",
-+                          __func__);
-+        }
-         ch->write_mode = (value >> 16) & 3;
-         ch->burst[1] = (value & 0xc000) >> 14;
-         ch->pack[1] = (value & 0x2000) >> 13;
-@@ -1988,12 +2001,15 @@ static void omap_dma4_write(void *opaque, hwaddr addr,
-         ch->burst[0] = (value & 0x0180) >> 7;
-         ch->pack[0] = (value & 0x0040) >> 6;
-         ch->translate[0] = (value & 0x003c) >> 2;
--        if (ch->translate[0] | ch->translate[1])
--            fprintf(stderr, "%s: bad MReqAddressTranslate sideband signal\n",
--                            __func__);
-+        if (ch->translate[0] | ch->translate[1]) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: bad MReqAddressTranslate sideband signal\n",
-+                          __func__);
-+        }
-         ch->data_type = 1 << (value & 3);
-         if ((value & 3) == 3) {
--            printf("%s: bad data_type for DMA channel\n", __func__);
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: bad data_type for DMA channel\n", __func__);
-             ch->data_type >>= 1;
-         }
-         break;
 -- 
 2.18.0.rc2
 
