@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWHRc-00050F-GO
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 04:29:24 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48934)
+	id 1fWHX4-0006Zt-52
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 04:35:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49832)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWHRa-0004yg-AP
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:29:23 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWHX2-0006YK-2f
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:35:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWHRZ-0000IZ-BW
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:29:22 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58666 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fWHWx-0004f5-Ce
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:35:00 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54046 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWHRR-0000G3-HB; Fri, 22 Jun 2018 04:29:13 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
+	id 1fWHWn-0004c4-Nt; Fri, 22 Jun 2018 04:34:45 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0DECB401C9AA;
-	Fri, 22 Jun 2018 08:29:13 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4B3D881A4EAF;
+	Fri, 22 Jun 2018 08:34:45 +0000 (UTC)
 Received: from [10.36.116.139] (ovpn-116-139.ams2.redhat.com [10.36.116.139])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id F3EBE2156888;
-	Fri, 22 Jun 2018 08:29:11 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 12146111DD0A;
+	Fri, 22 Jun 2018 08:34:43 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20180621180224.8312-1-f4bug@amsat.org>
-	<20180621180224.8312-8-f4bug@amsat.org>
+	<20180621180224.8312-9-f4bug@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -70,28 +70,28 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <d57b6ebf-f28e-083f-9cf5-6a4c702b9d96@redhat.com>
-Date: Fri, 22 Jun 2018 10:29:10 +0200
+Message-ID: <e8e5e2ff-9576-402d-1502-9b584b0295f7@redhat.com>
+Date: Fri, 22 Jun 2018 10:34:42 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180621180224.8312-8-f4bug@amsat.org>
+In-Reply-To: <20180621180224.8312-9-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Fri, 22 Jun 2018 08:29:13 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Fri, 22 Jun 2018 08:29:13 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.8]);
+	Fri, 22 Jun 2018 08:34:45 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Fri, 22 Jun 2018 08:34:45 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 07/11] hw/i2c/omap_i2c: Use
- qemu_log_mask(UNIMP) instead of fprintf
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 08/11] hw/arm/omap: Use
+ qemu_log_mask(GUEST_ERROR) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,74 +103,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 08:29:23 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 08:35:01 -0000
 
 On 21.06.2018 20:02, Philippe Mathieu-Daud=C3=A9 wrote:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/i2c/omap_i2c.c | 23 +++++++++++++++--------
->  1 file changed, 15 insertions(+), 8 deletions(-)
->=20
-> diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
-> index 26e3e5ebf6..e6f34fe31f 100644
-> --- a/hw/i2c/omap_i2c.c
-> +++ b/hw/i2c/omap_i2c.c
-> @@ -17,6 +17,7 @@
->   * with this program; if not, see <http://www.gnu.org/licenses/>.
->   */
->  #include "qemu/osdep.h"
-> +#include "qemu/log.h"
->  #include "hw/hw.h"
->  #include "hw/i2c/i2c.h"
->  #include "hw/arm/omap.h"
-> @@ -339,14 +340,17 @@ static void omap_i2c_write(void *opaque, hwaddr a=
-ddr,
->              }
->              break;
->          }
-> -        if ((value & (1 << 15)) && !(value & (1 << 10))) {	/* MST */
-> -            fprintf(stderr, "%s: I^2C slave mode not supported\n",
-> -                            __func__);
-> +        if ((value & (1 << 15)) && !(value & (1 << 10))) {
-> +            /* MST */
-> +            qemu_log_mask(LOG_UNIMP, "%s: I^2C slave mode not supporte=
-d\n",
-> +                          __func__);
->              break;
->          }
-> -        if ((value & (1 << 15)) && value & (1 << 8)) {		/* XA */
-> -            fprintf(stderr, "%s: 10-bit addressing mode not supported\=
-n",
-> -                            __func__);
-> +        if ((value & (1 << 15)) && value & (1 << 8)) {
-> +            /* XA */
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "%s: 10-bit addressing mode not supported\n"=
-,
-> +                          __func__);
->              break;
->          }
->          if ((value & (1 << 15)) && value & (1 << 0)) {		/* STT */
-> @@ -392,8 +396,11 @@ static void omap_i2c_write(void *opaque, hwaddr ad=
-dr,
->                  s->stat |=3D 0x3f;
->                  omap_i2c_interrupts_update(s);
->              }
-> -        if (value & (1 << 15))					/* ST_EN */
-> -            fprintf(stderr, "%s: System Test not supported\n", __func_=
-_);
-> +        if (value & (1 << 15)) {
-> +            /* ST_EN */
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "%s: System Test not supported\n", __func__)=
-;
-> +        }
->          break;
+>  include/hw/arm/omap.h | 20 ++++++++++++--------
+>  1 file changed, 12 insertions(+), 8 deletions(-)
+[...]
+> @@ -997,14 +998,17 @@ enum {
 > =20
->      default:
+>  # ifdef TCMI_VERBOSE
+>  #  define OMAP_8B_REG(paddr)		\
+> -        fprintf(stderr, "%s: 8-bit register " OMAP_FMT_plx "\n",	\
+> -                        __func__, paddr)
+> +        qemu_log_mask(LOG_GUEST_ERROR, \
+> +                      "%s: 8-bit register " OMAP_FMT_plx "\n", \
+> +                      __func__, paddr)
+>  #  define OMAP_16B_REG(paddr)		\
+> -        fprintf(stderr, "%s: 16-bit register " OMAP_FMT_plx "\n",	\
+> -                        __func__, paddr)
+> +        qemu_log_mask(LOG_GUEST_ERROR, \
+> +                      "%s: 16-bit register " OMAP_FMT_plx "\n", \
+> +                      __func__, paddr)
+>  #  define OMAP_32B_REG(paddr)		\
+> -        fprintf(stderr, "%s: 32-bit register " OMAP_FMT_plx "\n",	\
+> -                        __func__, paddr)
+> +        qemu_log_mask(LOG_GUEST_ERROR, \
+> +                      "%s: 32-bit register " OMAP_FMT_plx "\n", \
+> +                      __func__, paddr)
+>  # else
+>  #  define OMAP_8B_REG(paddr)
+>  #  define OMAP_16B_REG(paddr)
+>=20
 
-Could you please leave the comments at the end of the if-statement lines?
+Since the qemu_log_mask(LOG_GUEST_ERROR, ...) calls are not shown up by
+default anymore, I think it would rather be better to get rid of this
+#ifdef TCMI_VERBOSE ... #endif block now and put the qemu_log_mask()
+statements directly into the omap_badwidth_* functions instead.
 
  Thomas
-
 
