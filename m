@@ -1,41 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWRbK-0004j7-QF
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 15:20:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42902)
+	id 1fWRfP-00078K-RD
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 15:24:19 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43547)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWRbI-0004hQ-Ax
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:20:05 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWRfM-00075e-Ro
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:24:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWRbH-0002M1-78
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:20:04 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:36836 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fWRfM-0003Fe-1B
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:24:16 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:36964 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWRbE-0002LZ-Vj; Fri, 22 Jun 2018 15:20:01 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	id 1fWRfF-0003Be-Ls; Fri, 22 Jun 2018 15:24:09 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 97887406E87A;
-	Fri, 22 Jun 2018 19:20:00 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 33221400E9BA;
+	Fri, 22 Jun 2018 19:24:09 +0000 (UTC)
 Received: from [10.36.116.50] (ovpn-116-50.ams2.redhat.com [10.36.116.50])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 65D2A2026D6C;
-	Fri, 22 Jun 2018 19:19:58 +0000 (UTC)
-To: Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Cc: Cornelia Huck <cohuck@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
-	=?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>,
-	zhang.zhanghailiang@huawei.com, Ben Warren <ben@skyportsystems.com>,
-	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Stefan Hajnoczi <stefanha@redhat.com>
-References: <1528866321-23886-1-git-send-email-thuth@redhat.com>
-	<1528866321-23886-5-git-send-email-thuth@redhat.com>
-	<20180613133840.GK24528@stefanha-x1.localdomain>
-	<20180613134452.GU19901@redhat.com>
-	<b0ebd968-797f-48e0-32c1-869c452feca9@redhat.com>
-	<20180613151942.GC19901@redhat.com> <87k1r24quk.fsf@dusky.pond.sub.org>
-	<20180619171539.0adc90d6.cohuck@redhat.com>
-	<d4e02083-c372-3ce5-d4a2-4809579fc8f2@redhat.com>
-	<20180622181108.GY7451@localhost.localdomain>
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id AB0411C71A;
+	Fri, 22 Jun 2018 19:24:05 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+	"Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20180622134036.23182-1-f4bug@amsat.org>
+	<20180622134036.23182-2-f4bug@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -80,28 +71,28 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <c10c2ffa-7ee2-5106-07d1-528df939d6ad@redhat.com>
-Date: Fri, 22 Jun 2018 21:19:56 +0200
+Message-ID: <ceca80d5-7619-4afa-ce82-5870d7a235ad@redhat.com>
+Date: Fri, 22 Jun 2018 21:24:04 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180622181108.GY7451@localhost.localdomain>
+In-Reply-To: <20180622134036.23182-2-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.7]);
-	Fri, 22 Jun 2018 19:20:00 +0000 (UTC)
+	Fri, 22 Jun 2018 19:24:09 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Fri, 22 Jun 2018 19:20:00 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	Fri, 22 Jun 2018 19:24:09 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC PATCH 4/4] qemu-options: Do
- not show -enable-kvm and -enable-hax in the docs anymore
+Subject: Re: [Qemu-trivial] [PATCH v2 01/14] hw/input/pckbd: Use
+ qemu_log_mask(GUEST_ERROR) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,25 +104,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 19:20:05 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 19:24:17 -0000
 
-On 22.06.2018 20:11, Eduardo Habkost wrote:
-> On Tue, Jun 19, 2018 at 06:16:33PM +0200, Paolo Bonzini wrote:
->> On 19/06/2018 17:15, Cornelia Huck wrote:
->>>> Why does a user have to know how to enable KVM?  Oh, because our default
->>>> is "run this guest much slower than necessary".  Great!
->>> Should we try again to default to a better accelerator, if possible? I
->>> don't quite recall why we didn't do so the last time that came up...
->>> was it tests?
->>
->> My plan was to create qemu-{kvm,hax,hvf,whpx} binaries that default to a
->> better accelerator, and leave qemu-system-* as defaulting to TCG.  This
->> matches what distributions already do.
-> 
-> Why is this better than using KVM by default if it's available?
+On 22.06.2018 15:40, Philippe Mathieu-Daud=C3=A9 wrote:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/input/pckbd.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+> index f33e3fc63d..26aeac2326 100644
+> --- a/hw/input/pckbd.c
+> +++ b/hw/input/pckbd.c
+> @@ -22,6 +22,7 @@
+>   * THE SOFTWARE.
+>   */
+>  #include "qemu/osdep.h"
+> +#include "qemu/log.h"
+>  #include "hw/hw.h"
+>  #include "hw/isa/isa.h"
+>  #include "hw/i386/pc.h"
+> @@ -308,7 +309,8 @@ static void kbd_write_command(void *opaque, hwaddr =
+addr,
+>          /* ignore that */
+>          break;
+>      default:
+> -        fprintf(stderr, "qemu: unsupported keyboard cmd=3D0x%02x\n", (=
+int)val);
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "unsupported keyboard cmd=3D0x%02lx\n", val);
 
-The answer is (as almost always): Compatibility with migration. Nobody
-dares to sacrifice that chicken :-(
+Sorry for not spotting it in v1 already, but val is a uint64_t value, so
+you need PRIx64 as format string here, otherwise you'll get an error
+with 32-bit compilers.
 
  Thomas
 
