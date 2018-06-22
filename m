@@ -1,57 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWLEN-0003bt-C2
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 08:31:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44227)
+	id 1fWLTS-0007JM-En
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 08:47:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47216)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fWLEL-0003aB-Cb
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 08:31:58 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWLTN-0007HT-Gd
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 08:47:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fWLEK-0005T9-9E
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 08:31:57 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:45488 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1fWLEE-0005RG-Um; Fri, 22 Jun 2018 08:31:51 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5211DA5002;
-	Fri, 22 Jun 2018 12:31:50 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-116-109.ams2.redhat.com
-	[10.36.116.109])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 01C8A2156700;
-	Fri, 22 Jun 2018 12:31:49 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 27F0B97CA0; Fri, 22 Jun 2018 14:31:49 +0200 (CEST)
-Date: Fri, 22 Jun 2018 14:31:49 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Message-ID: <20180622123149.qxirhe6uajzkc22s@sirius.home.kraxel.org>
-References: <20180621171257.14897-1-f4bug@amsat.org>
-	<20180621171257.14897-6-f4bug@amsat.org>
-	<20180622062225.ay4bubgshxjj3uey@sirius.home.kraxel.org>
-	<3a5e52f6-3b65-5ce8-f5d2-48b76e3e4f21@amsat.org>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWLTM-0007G9-Lo
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 08:47:29 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:43607)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWLTI-000780-5a; Fri, 22 Jun 2018 08:47:24 -0400
+Received: by mail-qk0-x244.google.com with SMTP id s190-v6so3565215qke.10;
+	Fri, 22 Jun 2018 05:47:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=4Rp1wIOKleO2N0z1Lv5Zo6ySubXVZy8oOCEXAQbAeq8=;
+	b=jiUE9cnwA4sN6h1Z3/5VE1FgI//F6Go3DKSMO+fHBtaL/cJdTXPBsVaoRTl/FzOrJl
+	SB76apeeU1uBjB0aUKwN7SL7/HIrfbsesD6YaxceoaHguinbVQTuzZTImeBHFJiT25Jp
+	sLj/bp2DK+mWel7+6x08/y0oDOnsOAZ70PM82fXRJfusEo9yo2re3EsFGOxz81w55Ge7
+	wlgaioH1UmEXqK26JhimN7Jvz4a27RCvvlqEPPUwcAsRh7bpDvzBHyTf8mDJ3XmaVeGQ
+	0KYtFT69UrJPoj7hwIC8p73gqtiLzlUyQDz6h34gn9Hk+3FKIkYKq2qu56JwMMeQsKqY
+	SqWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=4Rp1wIOKleO2N0z1Lv5Zo6ySubXVZy8oOCEXAQbAeq8=;
+	b=W3/pDZq/T1PC0qQ7XQ9psgf3jLQvSKzOeq0uWdPB1o/Nc1CJUgsU1ckZG/1OtpUYo9
+	+Zk4Rk1RkawV4fhZG4rDY7+a+hrLePE5ETv/4iVYXyPMwKsTCZp/Xtcdf5IT76lteR3x
+	tPhV86MgpxKu5f3whcso+vSqvXEYDqfyCG6SNduLnp3FVOzKHoUqSpDaRUXCOOhaXXop
+	kFr9Ux98TY5CHilEnkSwqz4GwIqjQ2irEjWPEbEXpVQLV0/o3YZpwl+fDZwcPzeSpCO2
+	LLNshhBNYDIqmk3VLIlGXcriUuxoCfyyTh5665x6W4J5KZq2YyGpcfkXCnE0D/oxcDMu
+	56FA==
+X-Gm-Message-State: APt69E1Pjln8f1mVIk9jbv9DI1vMIXlLV0ECfbKzil0Gpaqnq3BSRLyF
+	Ab/+TTXxsjgn4wveXFfRc58=
+X-Google-Smtp-Source: AAOMgpfingX8EXk1X/Qjy2KD41rpBLVEKZvQK762cTH61Q0GF6Vrp9hpJ3HvIc1+h7kR0rrOaUUBjA==
+X-Received: by 2002:a37:85c5:: with SMTP id
+	h188-v6mr1196632qkd.40.1529671643583; 
+	Fri, 22 Jun 2018 05:47:23 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	m128-v6sm5280884qkd.33.2018.06.22.05.47.21
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 22 Jun 2018 05:47:23 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Fri, 22 Jun 2018 09:47:16 -0300
+Message-Id: <20180622124716.9179-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.18.0.rc2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <3a5e52f6-3b65-5ce8-f5d2-48b76e3e4f21@amsat.org>
-User-Agent: NeoMutt/20180512
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Fri, 22 Jun 2018 12:31:50 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Fri, 22 Jun 2018 12:31:50 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH 05/11] hw/display/cirrus: Convert
- printf() calls to trace events
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: [Qemu-trivial] [PATCH] hw/core/register: Log unimplemented access
+ via the 'unimp' debug level
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,24 +76,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 12:31:58 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 12:47:30 -0000
 
-> > Indention looks weird.
-> 
-> Actually this is the code around that is weirdly intended, a mix of
-> <tab> and <spaces>.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/core/register.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Ok.
-
-> Do you prefer a previous indent cleanup patch or can I add your Acked-by
-> tag?
-
-Leave as is.  Breaking "git blame" with a whitespace cleanup is not
-useful indeed.
-
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
-
-cheers,
-  Gerd
+diff --git a/hw/core/register.c b/hw/core/register.c
+index d2d1636250..8ed7c6b927 100644
+--- a/hw/core/register.c
++++ b/hw/core/register.c
+@@ -203,7 +203,7 @@ void register_write_memory(void *opaque, hwaddr addr,
+     }
+ 
+     if (!reg) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: write to unimplemented register " \
++        qemu_log_mask(LOG_UNIMP, "%s: write to unimplemented register " \
+                       "at address: %#" PRIx64 "\n", reg_array->prefix, addr);
+         return;
+     }
+@@ -232,7 +232,7 @@ uint64_t register_read_memory(void *opaque, hwaddr addr,
+     }
+ 
+     if (!reg) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s:  read to unimplemented register " \
++        qemu_log_mask(LOG_UNIMP, "%s:  read to unimplemented register " \
+                       "at address: %#" PRIx64 "\n", reg_array->prefix, addr);
+         return 0;
+     }
+-- 
+2.18.0.rc2
 
 
