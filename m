@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWRm2-0001Qr-3q
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 15:31:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44449)
+	id 1fWRpl-0003SF-4b
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 15:35:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45180)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWRly-0001PZ-7f
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:31:08 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWRpi-0003Px-Bb
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:34:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWRlx-00057m-5M
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:31:06 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:49246 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fWRph-0006vM-LN
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:34:58 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37464 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWRlq-00052w-Hf; Fri, 22 Jun 2018 15:30:58 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
+	id 1fWRpa-0006sq-Hc; Fri, 22 Jun 2018 15:34:50 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F38FD5BCBE;
-	Fri, 22 Jun 2018 19:30:57 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0B62E400E9BA;
+	Fri, 22 Jun 2018 19:34:50 +0000 (UTC)
 Received: from [10.36.116.50] (ovpn-116-50.ams2.redhat.com [10.36.116.50])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8E56921565E1;
-	Fri, 22 Jun 2018 19:30:56 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id CB7BD1C5A3;
+	Fri, 22 Jun 2018 19:34:48 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
 References: <20180622134036.23182-1-f4bug@amsat.org>
-	<20180622134036.23182-3-f4bug@amsat.org>
+	<20180622134036.23182-5-f4bug@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -70,27 +70,27 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <ced44643-660e-97d4-1339-5c842eeee0db@redhat.com>
-Date: Fri, 22 Jun 2018 21:30:54 +0200
+Message-ID: <dc7e0220-ee8a-8ab0-05de-572e34d4d78b@redhat.com>
+Date: Fri, 22 Jun 2018 21:34:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180622134036.23182-3-f4bug@amsat.org>
+In-Reply-To: <20180622134036.23182-5-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Fri, 22 Jun 2018 19:30:58 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Fri, 22 Jun 2018 19:30:58 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.7]);
+	Fri, 22 Jun 2018 19:34:50 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
+	Fri, 22 Jun 2018 19:34:50 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH v2 02/14] hw/input/tsc2005: Use
+Subject: Re: [Qemu-trivial] [PATCH v2 04/14] hw/dma/omap_dma: Use
  qemu_log_mask(GUEST_ERROR) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -103,56 +103,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 19:31:09 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 19:34:59 -0000
 
 On 22.06.2018 15:40, Philippe Mathieu-Daud=C3=A9 wrote:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/input/tsc2005.c | 13 ++++++++-----
->  1 file changed, 8 insertions(+), 5 deletions(-)
->=20
-> diff --git a/hw/input/tsc2005.c b/hw/input/tsc2005.c
-> index 7990954b6c..4dd95596ab 100644
-> --- a/hw/input/tsc2005.c
-> +++ b/hw/input/tsc2005.c
-> @@ -19,6 +19,7 @@
->   */
-> =20
->  #include "qemu/osdep.h"
-> +#include "qemu/log.h"
->  #include "hw/hw.h"
->  #include "qemu/timer.h"
->  #include "ui/console.h"
-> @@ -208,9 +209,10 @@ static void tsc2005_write(TSC2005State *s, int reg=
-, uint16_t data)
->          }
->          s->nextprecision =3D (data >> 13) & 1;
->          s->timing[0] =3D data & 0x1fff;
-> -        if ((s->timing[0] >> 11) =3D=3D 3)
-> -            fprintf(stderr, "%s: illegal conversion clock setting\n",
-> -                            __func__);
-> +        if ((s->timing[0] >> 11) =3D=3D 3) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "tsc2005_write: illegal conversion clock set=
-ting\n");
-> +        }
->          break;
->      case 0xd:	/* CFR1 */
->          s->timing[1] =3D data & 0xf07;
-> @@ -221,8 +223,9 @@ static void tsc2005_write(TSC2005State *s, int reg,=
- uint16_t data)
->          break;
-> =20
->      default:
-> -        fprintf(stderr, "%s: write into read-only register %x\n",
-> -                        __func__, reg);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: write into read-only register 0x%x\n",
-> +                      __func__, reg);
->      }
->  }
-> =20
+>  hw/dma/omap_dma.c | 64 +++++++++++++++++++++++++++++------------------
+>  1 file changed, 40 insertions(+), 24 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-
 
