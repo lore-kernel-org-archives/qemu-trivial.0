@@ -1,80 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWSTT-0004si-Ui
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 16:16:03 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51771)
+	id 1fWSU7-0005D4-C3
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 16:16:43 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51881)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWSTR-0004rn-Pe
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 16:16:02 -0400
+	id 1fWSU5-0005Be-6w
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 16:16:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWSTQ-0005LJ-VX
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 16:16:01 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:43512)
+	id 1fWSU4-0005j0-BZ
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 16:16:41 -0400
+Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:33224)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWSTM-0005Go-PF; Fri, 22 Jun 2018 16:15:56 -0400
-Received: by mail-qt0-x243.google.com with SMTP id y89-v6so7034357qtd.10;
-	Fri, 22 Jun 2018 13:15:56 -0700 (PDT)
+	id 1fWSTz-0005gg-Vg; Fri, 22 Jun 2018 16:16:36 -0400
+Received: by mail-qt0-x243.google.com with SMTP id l10-v6so7071364qtj.0;
+	Fri, 22 Jun 2018 13:16:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=pwO+2USPudIVD/6rTtPTrosRmljOK+u8XafeUdYd7Rw=;
-	b=JXnsHMiU65cYoO1CQE1XVNijhNTgbinSu219+mL148PYlREfX49ksCE+Qf2rOt4N4n
-	3H1J2LJZXul3aXOot/kJf3RH+MgAge3LXhA+eR10epgxPTR+xsL4HBgZaDlEDTTuWmHa
-	VVlLHur/4P60DllQpXtb16X4co+qLZkD6DaRQMuStnhGveM3DFkP/diWSVwBTVB58u6i
-	lPLeGSByzhb+e5pmoUr9qUX41TcKTlwEtzDZm2QdUtk2X+mf6e2Sx363Bi8vPtk/i0i+
-	H9suVIgk39QqFQSduyOidoEhFvfA7fdudUD0UJd0RZ7w67GouEVzNadOPbdpBQ+Yqylk
-	DUWQ==
+	bh=XN/MPsGmDKtKO+OHwPvyw+JxQakgAoSeV1Qo6hKMB7Q=;
+	b=nYrRFhkN9fYbX6L5gJqxYvr7cG3YtZvIzLNQc0jDNM0IVEPBczu+tlT6zkP2Aj3cbl
+	Wbs241MG85R1Jvgk7ziELD3Moe8hxSX0kcuJJeO4zpViit7H7HoVzwZ4oMMtLKv/KQ9q
+	dN+uLqU1ggmzutzfa0qaFX9y3tCzea0BPs/PsZTu5OkR2KDSLUOHQhXH0ZawhTiwfbcu
+	FkJ8KNeji325QooQS5qagFELQjS87zANvOR3vfDqbEUWq6XH0d37/rn2fbUQzyYoVU3I
+	OfiJBVD/KMJfOKy8iF9aE/Hgix7OD7/FnLr5XkCLkRVB/B5Hz+n5iGOPxoUN1fkSuHGV
+	ZbHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=pwO+2USPudIVD/6rTtPTrosRmljOK+u8XafeUdYd7Rw=;
-	b=WCX5LeyToeNfMAhIWdfn2vN9aGvS0sGqWMcMGkKm5HcMhtZnqEimRn4CFraKwSp8I1
-	UIwXbbiuzEhASv+nyUUcR7Pl7pe57DFWjp3AC7RNtwvelHWo7i9N0M0YfrPbleaoa5kW
-	QknUAbHGHVZM3MaXq9IsorTAoSK+JSATV9TZYxLzX91LMCBqCFBijXfB0O2O8hP2v0dk
-	NH9YYI+XlqhmO8YoCnMjqas7xMtMuhHuetJ7QTJtzXYj5jHGNVEzCdWNgSow8qZO0BxP
-	PGIaLb+h950ICOb9ZZ+0YXZwq4n3nWLKhPq1av/2w+agmGtHQxdGtgwxLGobMJkKJO43
-	zYOw==
-X-Gm-Message-State: APt69E1FA4g2Uc5yaPraHs9xcj+i7BfsBz8Ty48DAVhmWKoOEwqvl0K7
-	k8pBJfPob08nMuS0AoOQRO0=
-X-Google-Smtp-Source: ADUXVKK4HBshEpWO8DbhYXzkSguy+9YEmS+kQXstfvQbja3zEuegidIp2ZgmF/VbnNHg+iQyGVMHAg==
-X-Received: by 2002:aed:23e7:: with SMTP id
-	k36-v6mr2852451qtc.20.1529698556284; 
-	Fri, 22 Jun 2018 13:15:56 -0700 (PDT)
+	bh=XN/MPsGmDKtKO+OHwPvyw+JxQakgAoSeV1Qo6hKMB7Q=;
+	b=VKiU/uQiLbpSSh7bjgBbW89mHLzW3poy/bCxoW5JrAMqbJxq526FE7w6hX3zms+ZIO
+	Rgp9WHSESKXEHKBMXTlF+MvtgB6kneXOzL8aJfFAcrAGFkyClW2A6NEKQqPUXxQWsd1V
+	OTP/xkAWc/s8LDv668TjFtS7LXCvk8QiF1H5bYpCbOy2N7Idjsdlpo9gJzez6n96//j+
+	7t6s3erFF59JL7CQM/BYAEXFqY/E84+N72ePmeTb81ZZoYBKHojmaAGNZW+frFgiDXJL
+	Iet1jjjpeiUZsOA2SfGqNp+Tjp8Sv5YXoNOMNnlGdwSL3R1e9OvsIfR1TitOETwUDzZn
+	E51w==
+X-Gm-Message-State: APt69E2mlINjpDp8w05fJ01E7vMKVVDvTP2eU7Slv/K9tTDz5UCMkvhm
+	b5RdX5y6q/2rf5qPXNUd8JDZN2Nx
+X-Google-Smtp-Source: AAOMgpc+NVbWERuwKoeUBMGSvZF7rFN7b4wxA349Xp8uP0W+7Vh+i+qVHM463NzkJzWDL55dCrjqfw==
+X-Received: by 2002:a0c:f8c2:: with SMTP id
+	h2-v6mr2823760qvo.163.1529698595421; 
+	Fri, 22 Jun 2018 13:16:35 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	f10-v6sm2522175qka.18.2018.06.22.13.15.53
+	e97-v6sm5494692qtb.78.2018.06.22.13.16.32
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 22 Jun 2018 13:15:55 -0700 (PDT)
+	Fri, 22 Jun 2018 13:16:34 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
-	Jason Wang <jasowang@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
 References: <20180622134036.23182-1-f4bug@amsat.org>
-	<20180622134036.23182-12-f4bug@amsat.org>
-	<bcbba38b-7d1b-3a70-383f-69c0832666a6@redhat.com>
+	<20180622134036.23182-15-f4bug@amsat.org>
+	<9e5b3eee-1335-9eae-709a-3f8d05729c03@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <f4a54fa0-c0fb-3cd4-8cef-3b7cef4d6914@amsat.org>
-Date: Fri, 22 Jun 2018 17:15:51 -0300
+Message-ID: <49794564-eb8b-476e-6373-e70f814220ee@amsat.org>
+Date: Fri, 22 Jun 2018 17:16:32 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <bcbba38b-7d1b-3a70-383f-69c0832666a6@redhat.com>
+In-Reply-To: <9e5b3eee-1335-9eae-709a-3f8d05729c03@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: Re: [Qemu-trivial] [PATCH v2 11/14] hw/net/stellaris_enet: Use
- qemu_log_mask(GUEST_ERROR) instead of hw_error
+Subject: Re: [Qemu-trivial] [PATCH v2 14/14] hw/arm/stellaris: Fix
+ gptm_write() error message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,67 +85,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 20:16:02 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 20:16:42 -0000
 
-On 06/22/2018 04:50 PM, Thomas Huth wrote:
+On 06/22/2018 04:55 PM, Thomas Huth wrote:
 > On 22.06.2018 15:40, Philippe Mathieu-Daudé wrote:
->> hw_error() finally calls abort(), but there is no need to abort here.
->>
 >> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >> ---
->>  hw/net/stellaris_enet.c | 9 +++++++--
->>  1 file changed, 7 insertions(+), 2 deletions(-)
+>>  hw/arm/stellaris.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
 >>
->> diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
->> index 04bd10ada3..f8edebdecd 100644
->> --- a/hw/net/stellaris_enet.c
->> +++ b/hw/net/stellaris_enet.c
->> @@ -9,6 +9,7 @@
->>  #include "qemu/osdep.h"
->>  #include "hw/sysbus.h"
->>  #include "net/net.h"
->> +#include "qemu/log.h"
->>  #include <zlib.h>
->>  
->>  //#define DEBUG_STELLARIS_ENET 1
->> @@ -343,7 +344,9 @@ static uint64_t stellaris_enet_read(void *opaque, hwaddr offset,
->>      case 0x3c: /* Undocuented: Timestamp? */
-> 
-> I guess it's trivial enough that you could fix the above type in your
-> patch here, too (just mention it in the patch description).
-
-Well I guess it depends the maintainer taking it :)
-
-Since I expect this series to go via the ARM tree, I'll fix this typo in
-another patch.
-
-> 
->>          return 0;
->>      default:
->> -        hw_error("stellaris_enet_read: Bad offset %x\n", (int)offset);
->> +        qemu_log_mask(LOG_GUEST_ERROR, "stellaris_enet_rd%d: Illegal register"
->> +                                       " 0x02%" HWADDR_PRIx "\n",
->> +                      size << 2, offset);
-> 
-> Why "<< 2" ? Shouldn't that be "<< 3" or "* 8" instead?
-
-Oops "* 8" indeed.
-
-> 
->>          return 0;
->>      }
->>  }
->> @@ -442,7 +445,9 @@ static void stellaris_enet_write(void *opaque, hwaddr offset,
->>          /* Ignored.  */
+>> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+>> index d06e366402..42baa768b2 100644
+>> --- a/hw/arm/stellaris.c
+>> +++ b/hw/arm/stellaris.c
+>> @@ -294,7 +294,7 @@ static void gptm_write(void *opaque, hwaddr offset,
 >>          break;
 >>      default:
->> -        hw_error("stellaris_enet_write: Bad offset %x\n", (int)offset);
->> +        qemu_log_mask(LOG_GUEST_ERROR, "stellaris_enet_wr%d: Illegal register"
->> +                                       " 0x02%" HWADDR_PRIx " = 0x%lx\n",
->> +                      size << 2, offset, value);
+>>          qemu_log_mask(LOG_GUEST_ERROR,
+>> -                      "GPTM: read at bad offset 0x%x\n", (int)offset);
+>> +                      "GPTM: write at bad offset 0x%x\n", (int)offset);
 > 
-> dito.
-> 
->  Thomas
-> 
+> While you're at it, remove the cast and use HWADDR_PRIx ?
+
+Sure.
+
+Thanks for your review!
 
