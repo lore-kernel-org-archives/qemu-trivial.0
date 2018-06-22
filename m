@@ -1,97 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWRz7-00021R-UK
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 15:44:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46759)
+	id 1fWS4I-0003Db-GA
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 15:50:02 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47547)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWRz5-0001zc-R4
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:44:40 -0400
+	(envelope-from <alistair23@gmail.com>) id 1fWS4G-0003DP-Lf
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:50:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWRz5-0001oz-3N
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:44:39 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54204 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWRyw-0001mr-GN; Fri, 22 Jun 2018 15:44:30 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 03CBE401CC41;
-	Fri, 22 Jun 2018 19:44:29 +0000 (UTC)
-Received: from [10.36.116.50] (ovpn-116-50.ams2.redhat.com [10.36.116.50])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id ADFC21C5A3;
-	Fri, 22 Jun 2018 19:44:27 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
-References: <20180622134036.23182-1-f4bug@amsat.org>
-	<20180622134036.23182-10-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
-	xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
-	yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
-	4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
-	tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
-	0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
-	O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
-	0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
-	gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
-	3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
-	zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzRxUaG9tYXMgSHV0
-	aCA8dGguaHV0aEBnbXguZGU+wsF7BBMBAgAlAhsDBgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIX
-	gAUCUfuWKwIZAQAKCRAu2dd0/nAttbe/EACb9hafyOb2FmhUqeAiBORSsUifFacQ7laVjcgR
-	I4um8CSHvxijYftpkM2EdAtmXIKgbNDpQoXcWLXB9lu9mLgTO4DVT00TRR65ikn3FCWcyT74
-	ENTOzRKyKLsDCjhXKPblTPIQbYAUCOWElcyAPm0ERd62fA/rKNxgIiNo/l4UODOMoOJm2/Ox
-	ZoTckW68Eqv7k9L7m7j+Hn3hoDTjAmcCBJt+j7pOhzWvCbqoNOIH8C8qvPaNlrba+R/K6jkO
-	6jZkTbYQpGIofEQJ/TNn38IsNGpI1ALTHWFtoMxp3j2Imz0REO6dRE2fHRN8sVlHgkoeGhmY
-	NbDsDE1jFQOEObFnu0euk//7BXU7tGOHckVAZ8T1smiRPHfQU7UEH2a/grndxJ+PNeM5w7n2
-	l+FN3cf2KgPotCK2s9MjSdZA7C5e3rFYO8lqiqTJKvc62vqp3e7B0Kjyy5/QtzSOejBij2QL
-	xkKSFNtxIz4MtuxN8e3IDQNxsKry3nF7R4MDvouXlMo6wP9KuyNWb+vFJt9GtbgfDMIFVamp
-	ZfhEWzWRJH4VgksENA4K/BzjEHCcbTUb1TFsiB1VRnBPJ0SqlvifnfKk6HcpkDk6Pg8Q5FOJ
-	gbNHrdgXsm+m/9GF2zUUr+rOlhVbK23TUqKqPfwnD7uxjpakVcJnsVCFqJpZi1F/ga9IN87B
-	TQRR+3lMARAAtp831HniPHb9AuKq3wj83ujZK8lH5RLrfVsB4X1wi47bwo56BqhXpR/zxPTR
-	eOFT0gnbw9UkphVc7uk/alnXMDEmgvnuxv89PwIQX6k3qLABeV7ykJQG/WT5HQ6+2DdGtVw3
-	2vjYAPiWQeETsgWRRQMDR0/hwp8s8tL/UodwYCScH6Vxx9pdy353L1fK4Bb9G73a+9FPjp9l
-	x+WwKTsltVqSBuSjyZQ3c3EE8qbTidXZxB38JwARH8yN3TX+t65cbBqLl/zRUUUTapHQpUEd
-	yoAsHIml32e4q+3xdLtTdlLi7FgPBItSazcqZPjEcYW73UAuLcmQmfJlQ5PkDiuqcitn+KzH
-	/1pqsTU7QFZjbmSMJyXY0TDErOFuMOjf20b6arcpEqse1V3IKrb+nqqA2azboRm3pEANLAJw
-	iVTwK3qwGRgK5ut6N/Znv20VEHkFUsRAZoOusrIRfR5HFDxlXguAdEz8M/hxXFYYXqOoaCYy
-	6pJxTjy0Y/tIfmS/g9Bnp8qg9wsrsnk0+XRnDVPak++G3Uq9tJPwpJbyO0vcqEI3vAXkAB7X
-	VXLzvFwi66RrsPUoDkuzj+aCNumtOePDOCpXQGPpKl+l1aYRMN/+lNSk3+1sVuc2C07WnYyE
-	gV/cbEVklPmKrNwu6DeUyD0qI/bVzKMWZAiB1r56hsGeyYcAEQEAAcLBXwQYAQIACQUCUft5
-	TAIbDAAKCRAu2dd0/nAttYTwEACLAS/THRqXRKb17PQmKwZHerUvZm2klo+lwQ3wNQBHUJAT
-	p2R9ULexyXrJPqjUpy7+voz+FcKiuQBTKyieiIxO46oMxsbXGZ70o3gxjxdYdgimUD6U8PPd
-	JH8tfAL4BR5FZNjspcnscN2jgbF4OrpDeOLyBaj6HPmElNPtECHWCaf1xbIFsZxSDGMA6cUh
-	0uX3Q8VI7JN1AR2cfiIRY7NrIlWYucJxyKjO3ivWm69nCtsHiJ0wcF8KlVo7F2eLaufo0K8A
-	ynL8SHMF3VEyxsXOP2f1UR9T2Ur30MXcTBpjUxml1TX3RWY5uH89Js/jlIugBwuAmacJ7JYh
-	lTg6sF/GNc4nPb4kk2yktNWTade+TzsllYlJPaorD2Qe8qX0iFUhFC6y9+O6mP4ZvWoYapp9
-	ezYNuebMgEr93ob1+4sFg3812wNP01WqsGtWCJHnPv/JoonFdMzD/bIkXGEJMk6ks2kxQQZq
-	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
-	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
-	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <b70145b2-5c24-d525-b23a-aaeb7ab960c5@redhat.com>
-Date: Fri, 22 Jun 2018 21:44:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <alistair23@gmail.com>) id 1fWS4F-0003lG-Ug
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:50:00 -0400
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:39418)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1fWS4F-0003lB-N5; Fri, 22 Jun 2018 15:49:59 -0400
+Received: by mail-lj1-x243.google.com with SMTP id t7-v6so272542ljj.6;
+	Fri, 22 Jun 2018 12:49:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=Fd6QyC1DKCzDybvzJTjXyJC3CBHLFiiNioaLIJg9ANQ=;
+	b=VFA7J9VIYrgyqCEUe3rb7ApDsVgspu5bMwh8PUw34+S+wR+GDR1OC0Zb0MLc/AJ2Ml
+	b3UhHWS/bT3eHmMDzXkYBx5D1+E2R7U/p3TJeDMdbn3hzRVWpiuNivcNBv0JerYCcHEL
+	4oOMg5JrqyqiWaPCP3cJ9g1S27p8TASt4lNlnBfBsoGXjHGQ7SWbwZoyccQQ68mHa0Ge
+	2wcdqC+kCA7J8UwWWnF3hQ020GBhBZ0mXA94N56srNRWDY/TZRQAaquN44jfg6lZMeLH
+	5AoiGASGhLrkGvwgjSd0Oue199hFhD87CWVYGqul9yMvPgHckSENqGFOs5fQ6I+h1ZsH
+	dbYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=Fd6QyC1DKCzDybvzJTjXyJC3CBHLFiiNioaLIJg9ANQ=;
+	b=N9YvzzhO+/u4v0GGmkwUxrgjexrKpkK4mCU+TO/bDfdZ8z5LoeFcglZj2Se2OjuIpk
+	XKOIVDSaTwb7Ukb8oY3MD3c03bVRA4YQ3uT8fr7r8tzqrkIfXFsIDjL2fMje7KfKXjcC
+	tBKJ8Ew3w1QxHHYMHERi0mfjrSMexalcl8/tJHT2BlUgYBu2QGOuFsp4LjWcWC5/j2Eg
+	YvRZpwWrFcG9niiZagT8NINEhRz1f9qn+MuP24XYfCpv4NVp+ct3Ox68FchCK39Wqju9
+	6vWnwD0bNTtZyTbdYpLKFDwIa+PcxfOz00MJceUfElqfsq/zJBmPqfXTykFZ4b+Re/Nr
+	BDBw==
+X-Gm-Message-State: APt69E0XfhhVSV0G69QbPHGkApWQbBZRVsBdDXXpakMhHq9mqobBwmQo
+	sy4ywJiQLVvA/P3kThXFoNHKJ1BRV/zsy0YmCEw=
+X-Google-Smtp-Source: ADUXVKJOKl/nno1PTLXOBPir2Z4HKcc1sBWokVxKOelvyw1P8I2AhbO8NYWffqPEMd8/WyhkYvxACauWCuPHUw+S9ws=
+X-Received: by 2002:a2e:9187:: with SMTP id f7-v6mr2087029ljg.98.1529696998000;
+	Fri, 22 Jun 2018 12:49:58 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20180622134036.23182-10-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Fri, 22 Jun 2018 19:44:29 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Fri, 22 Jun 2018 19:44:29 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+Received: by 2002:a2e:4242:0:0:0:0:0 with HTTP; Fri, 22 Jun 2018 12:49:27
+	-0700 (PDT)
+In-Reply-To: <20180622124716.9179-1-f4bug@amsat.org>
+References: <20180622124716.9179-1-f4bug@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 22 Jun 2018 12:49:27 -0700
+Message-ID: <CAKmqyKMp8-ZAaTU2nxaMCqoR0JsbXoogR6t6Nq7UwU3B3o1AKw@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Alistair Francis <alistair@alistair23.me>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH v2 09/14] hw/arm/omap: Use
- qemu_log_mask(GUEST_ERROR) instead of fprintf
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::243
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/core/register: Log
+ unimplemented access via the 'unimp' debug level
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,43 +71,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 19:44:40 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 19:50:01 -0000
 
-On 22.06.2018 15:40, Philippe Mathieu-Daud=C3=A9 wrote:
+On Fri, Jun 22, 2018 at 5:47 AM, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  include/hw/arm/omap.h | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
->=20
-> diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-> index 39abba753d..3867687b8c 100644
-> --- a/include/hw/arm/omap.h
-> +++ b/include/hw/arm/omap.h
-> @@ -21,6 +21,7 @@
->  # define hw_omap_h		"omap.h"
->  #include "hw/irq.h"
->  #include "target/arm/cpu-qom.h"
-> +#include "qemu/log.h"
-> =20
->  # define OMAP_EMIFS_BASE	0x00000000
->  # define OMAP2_Q0_BASE		0x00000000
-> @@ -962,8 +963,8 @@ void omap_mpu_wakeup(void *opaque, int irq, int req=
-);
->          fprintf(stderr, "%s: Bad register " OMAP_FMT_plx "\n",	\
->                          __func__, paddr)
+>  hw/core/register.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/core/register.c b/hw/core/register.c
+> index d2d1636250..8ed7c6b927 100644
+> --- a/hw/core/register.c
+> +++ b/hw/core/register.c
+> @@ -203,7 +203,7 @@ void register_write_memory(void *opaque, hwaddr addr,
+>      }
+>
+>      if (!reg) {
+> -        qemu_log_mask(LOG_GUEST_ERROR, "%s: write to unimplemented regis=
+ter " \
+> +        qemu_log_mask(LOG_UNIMP, "%s: write to unimplemented register " =
+\
+>                        "at address: %#" PRIx64 "\n", reg_array->prefix, a=
+ddr);
+>          return;
+>      }
+> @@ -232,7 +232,7 @@ uint64_t register_read_memory(void *opaque, hwaddr ad=
+dr,
+>      }
+>
+>      if (!reg) {
+> -        qemu_log_mask(LOG_GUEST_ERROR, "%s:  read to unimplemented regis=
+ter " \
+> +        qemu_log_mask(LOG_UNIMP, "%s:  read to unimplemented register " =
+\
+>                        "at address: %#" PRIx64 "\n", reg_array->prefix, a=
+ddr);
 
-What about that fprintf above?
+I'm not sure this is correct. These can be unimplemented because there
+are gaps in the register memory map, so it is a guest error.
 
->  # define OMAP_RO_REG(paddr)		\
-> -        fprintf(stderr, "%s: Read-only register " OMAP_FMT_plx "\n",	\
-> -                        __func__, paddr)
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Read-only register " OMAP_=
-FMT_plx \
-> +                      "\n", __func__, paddr)
-> =20
->  /* OMAP-specific Linux bootloader tags for the ATAG_BOARD area
->     (Board-specifc tags are not here)  */
->=20
+Alistair
 
- Thomas
+>          return 0;
+>      }
+> --
+> 2.18.0.rc2
+>
+>
 
