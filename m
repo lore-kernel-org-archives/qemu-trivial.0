@@ -1,78 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWM22-0007uE-B0
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 09:23:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55664)
+	id 1fWM2o-00009W-Jo
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 09:24:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55973)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWM1y-0007sD-Q4
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 09:23:15 -0400
+	id 1fWM2j-0008WQ-Ps
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 09:24:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWM1x-00059u-WB
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 09:23:14 -0400
-Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:46529)
+	id 1fWM2i-0005kq-Sv
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 09:24:01 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:36036)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWM1p-00053E-Qx; Fri, 22 Jun 2018 09:23:05 -0400
-Received: by mail-qk0-x241.google.com with SMTP id o2-v6so3622646qkc.13;
-	Fri, 22 Jun 2018 06:23:05 -0700 (PDT)
+	id 1fWM2a-0005bx-QD; Fri, 22 Jun 2018 09:23:52 -0400
+Received: by mail-qk0-x241.google.com with SMTP id a195-v6so3640313qkg.3;
+	Fri, 22 Jun 2018 06:23:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:subject:to:cc:references:from:openpgp:message-id:date
 	:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=ZW4HvlzcY5Xc2TRp91BW/YIucMX2WLbM95X0e8eVsu0=;
-	b=O8c2XrG2p3DngMwsxqBfLR3hdprPOjflFHkkpxnl9hw8BtK85SThUIQ4jKUA+sEscE
-	aWkav5V7UkXRpUfMsKBddX287xvQ7HJbwqDoAhs5lznaV6vNRxlv40S/Ggjc0txi5yeF
-	mQVLjBMujO7AnWx1xqtkjVWqC6ZTVaJZBbzJiiyyzebBYLw1lLwhVqolAj11hbEKuD7b
-	7p903GUSeUG+QlPfEraJ8NrfXSrMTHUIKuSIO4qTszv6vCKxCvKyNyaOrwMJiprpC3zG
-	6kIPF+KgA0vWjWufhyzFmxqPnT8Me1ZJu/pOy52D4h8ik4f45gazIelWqC0daccIYU5l
-	4RaQ==
+	bh=lTELApfYi2Oh0kHQeClDf+07PRCKMeR3Aj9M7a8Ocdc=;
+	b=aC1aROOpnFg1sq+VZTNZbKStJnwqeRKOe97XkZ1INLmwvzrQIy5CLqZDV3uUi1kA3g
+	lpEaFZyHjVmXBVtnaZAaBuwjLbiAdTrum0698BrWEITqG1QNTGY9x2ZP8T7pmDazm5Zu
+	cFa9XERNkGmrrmk8mk4nGWYhdVCs6fxOMhjFmg6x4MqcUumIo1WKfAN+Fgp1ReQgLec0
+	u4Xbd6h+okixikMsKfWo27ZCiAH5NhM/365n5LMcIIoW1++UBHOOr8oYpxoNBSZkJon2
+	92X+rsrdTV+iSIaoUs8ROgFHHO8QZjog9BSQtBJgCy1T1O3MV8Rqq4zpj14RmQGDGjy1
+	wfug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
 	:message-id:date:user-agent:mime-version:in-reply-to
 	:content-language:content-transfer-encoding;
-	bh=ZW4HvlzcY5Xc2TRp91BW/YIucMX2WLbM95X0e8eVsu0=;
-	b=ROkEPJpDM+hD1EMgDlB4i7qlFBk0K0JeyHc75qtBP3OLSjjSVKFv5k6KxkQZBejp7W
-	v28rsX4nb8pqd+/7oMtONNDlxSylWV/S0ILfvuRrSdiH4ZB4sD8ZwSgtcjwpRfJSeZZW
-	9bFRqU72qhbdtZRiKWrJVdIfqcrBN4xu1WxJRmEr2wP0V9DKPlTpE9nW9YTN0w7SATo/
-	GmvdHqyMoHxfPfuyZWMUXs9tq6+MJYZD72YR38oxbznEQ6oeCO44W4EAqstJKvwd7Ys3
-	ugfRwrTGOeuCvVGEiXCA8WHo1k0Ubc+Do9fiEzZZDjx0pjPAWHKT00otScs3Li7A+f0c
-	hbZQ==
-X-Gm-Message-State: APt69E3g56JLTWuVUKqAKAMkJbO2VZikAwujD3tbXLJR/BAxZEvb8tWn
-	3nfxxfcbrMskqi3VDAeBwjBmT10h
-X-Google-Smtp-Source: ADUXVKL9x5FPf1SmWfsQB8d5qCLnZI5CkcF63VmcCEvnKjpo/PK6gXxOZNUFY+PEaUyDfkzEwX1qag==
-X-Received: by 2002:a37:4cf:: with SMTP id
-	198-v6mr1239415qke.186.1529673785152; 
-	Fri, 22 Jun 2018 06:23:05 -0700 (PDT)
+	bh=lTELApfYi2Oh0kHQeClDf+07PRCKMeR3Aj9M7a8Ocdc=;
+	b=ORSd8p7gG+CyNEO4lofTEGCPCLmnYLXd0maf0qDJfPBIexBjsivs+I4o383lw4AR4T
+	PNxTCR+IerXeXk6XqyHqUH6GmIqhLS6KDKtqBJ2TTJt/0bUp7C/IdfSlGxOIoIe1+7BV
+	D7sXXFPUuVYHkaW0Mu9rRSa0A749VcrOqsNUcrgZdhIN8Fq5Yr4LgUyyjRHesSlbFMsL
+	X0OMxoaRbyXq6PpTLFvfqFJq+nJ5KTnX0YID4luJ6/KiEyPWIUjPcln9NPe91bEAELMg
+	Z7P8/9G6b3TFQDYEZF8Y0W7ryEwrD/58d3ZdLPZMvn9z2Xo5gzzlzptojii/xK4K/lwI
+	P3IA==
+X-Gm-Message-State: APt69E3LWSgFUX6DRaJYu3dOWVtrwufFrkj9csKf2JSMf5KpL1zbtwGQ
+	YfuwD88nUqRQWQ9nIIZxspFKHcGi
+X-Google-Smtp-Source: AAOMgper/CFW4l+tEl5r17oHX2eYafBmKu+ZEbNRPP9Fa4yKaVNvrQsx99ordyGFuJRs9uCmWGCgdQ==
+X-Received: by 2002:a37:f06:: with SMTP id z6-v6mr1275496qkg.418.1529673832068;
+	Fri, 22 Jun 2018 06:23:52 -0700 (PDT)
 Received: from [192.168.1.11] ([138.117.48.222])
 	by smtp.gmail.com with ESMTPSA id
-	k6-v6sm4455139qtm.30.2018.06.22.06.23.02
+	g56-v6sm6166080qta.83.2018.06.22.06.23.49
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 22 Jun 2018 06:23:04 -0700 (PDT)
+	Fri, 22 Jun 2018 06:23:51 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20180621180224.8312-1-f4bug@amsat.org>
-	<20180621180224.8312-5-f4bug@amsat.org>
-	<cbfadf4b-e3ef-e7bc-921b-2926c270f51f@redhat.com>
+	<20180621180224.8312-9-f4bug@amsat.org>
+	<e8e5e2ff-9576-402d-1502-9b584b0295f7@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <aa4f6d42-7784-a462-3110-f88b0ff64970@amsat.org>
-Date: Fri, 22 Jun 2018 10:23:01 -0300
+Message-ID: <12b750e6-fd0a-4a57-a3cc-eb0afb8e3237@amsat.org>
+Date: Fri, 22 Jun 2018 10:23:48 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <cbfadf4b-e3ef-e7bc-921b-2926c270f51f@redhat.com>
+In-Reply-To: <e8e5e2ff-9576-402d-1502-9b584b0295f7@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400d:c09::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 04/11] hw/dma/omap_dma: Use
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 08/11] hw/arm/omap: Use
  qemu_log_mask(GUEST_ERROR) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -85,29 +84,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 13:23:15 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 13:24:05 -0000
 
-On 06/22/2018 05:24 AM, Thomas Huth wrote:
+On 06/22/2018 05:34 AM, Thomas Huth wrote:
 > On 21.06.2018 20:02, Philippe Mathieu-Daudé wrote:
 >> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >> ---
->>  hw/dma/omap_dma.c | 66 ++++++++++++++++++++++++++++++-----------------
->>  1 file changed, 42 insertions(+), 24 deletions(-)
+>>  include/hw/arm/omap.h | 20 ++++++++++++--------
+>>  1 file changed, 12 insertions(+), 8 deletions(-)
 > [...]
->>      case 0x78:	/* DMA4_GCR */
->>          s->gcr = value & 0x00ff00ff;
->> -	if ((value & 0xff) == 0x00)		/* MAX_CHANNEL_FIFO_DEPTH */
->> -            fprintf(stderr, "%s: wrong FIFO depth in GCR\n", __func__);
->> +        if ((value & 0xff) == 0x00) {
->> +            /* MAX_CHANNEL_FIFO_DEPTH */
->> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: wrong FIFO depth in GCR\n",
->> +                          __func__);
->> +        }
->>          return;
+>> @@ -997,14 +998,17 @@ enum {
+>>  
+>>  # ifdef TCMI_VERBOSE
+>>  #  define OMAP_8B_REG(paddr)		\
+>> -        fprintf(stderr, "%s: 8-bit register " OMAP_FMT_plx "\n",	\
+>> -                        __func__, paddr)
+>> +        qemu_log_mask(LOG_GUEST_ERROR, \
+>> +                      "%s: 8-bit register " OMAP_FMT_plx "\n", \
+>> +                      __func__, paddr)
+>>  #  define OMAP_16B_REG(paddr)		\
+>> -        fprintf(stderr, "%s: 16-bit register " OMAP_FMT_plx "\n",	\
+>> -                        __func__, paddr)
+>> +        qemu_log_mask(LOG_GUEST_ERROR, \
+>> +                      "%s: 16-bit register " OMAP_FMT_plx "\n", \
+>> +                      __func__, paddr)
+>>  #  define OMAP_32B_REG(paddr)		\
+>> -        fprintf(stderr, "%s: 32-bit register " OMAP_FMT_plx "\n",	\
+>> -                        __func__, paddr)
+>> +        qemu_log_mask(LOG_GUEST_ERROR, \
+>> +                      "%s: 32-bit register " OMAP_FMT_plx "\n", \
+>> +                      __func__, paddr)
+>>  # else
+>>  #  define OMAP_8B_REG(paddr)
+>>  #  define OMAP_16B_REG(paddr)
+>>
 > 
-> Not sure, but doesn't that MAX_CHANNEL_FIFO_DEPTH comment rather belong
-> to the if-statement than to the print statement? If so, could you please
-> leave it at the end of the line?
+> Since the qemu_log_mask(LOG_GUEST_ERROR, ...) calls are not shown up by
+> default anymore, I think it would rather be better to get rid of this
+> #ifdef TCMI_VERBOSE ... #endif block now and put the qemu_log_mask()
+> statements directly into the omap_badwidth_* functions instead.
 
-OK ;)
+Good idea!
 
