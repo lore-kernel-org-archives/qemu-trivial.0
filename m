@@ -1,32 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWS85-0005Og-Cx
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 15:53:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48214)
+	id 1fWS9O-0006Sd-3G
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 15:55:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48521)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWS81-0005Mk-RS
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:53:56 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWS9L-0006Pg-8N
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:55:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWS81-00050i-1v
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:53:53 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40884 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fWS9K-0005cO-El
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:55:15 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54484 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWS7t-0004zO-O8; Fri, 22 Jun 2018 15:53:45 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1fWS9C-0005P4-Fv; Fri, 22 Jun 2018 15:55:06 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 269694022905;
-	Fri, 22 Jun 2018 19:53:45 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id E8A03401CC41;
+	Fri, 22 Jun 2018 19:55:05 +0000 (UTC)
 Received: from [10.36.116.50] (ovpn-116-50.ams2.redhat.com [10.36.116.50])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id AE90D1C5A3;
-	Fri, 22 Jun 2018 19:53:43 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C181A2026D6C;
+	Fri, 22 Jun 2018 19:55:04 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
-	Jason Wang <jasowang@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
 References: <20180622134036.23182-1-f4bug@amsat.org>
-	<20180622134036.23182-14-f4bug@amsat.org>
+	<20180622134036.23182-15-f4bug@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -71,28 +70,28 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <a3f1d1f7-3435-3056-1c19-76c706098f3f@redhat.com>
-Date: Fri, 22 Jun 2018 21:53:42 +0200
+Message-ID: <9e5b3eee-1335-9eae-709a-3f8d05729c03@redhat.com>
+Date: Fri, 22 Jun 2018 21:55:03 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180622134036.23182-14-f4bug@amsat.org>
+In-Reply-To: <20180622134036.23182-15-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Fri, 22 Jun 2018 19:53:45 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Fri, 22 Jun 2018 19:53:45 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.5]);
+	Fri, 22 Jun 2018 19:55:05 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Fri, 22 Jun 2018 19:55:05 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH v2 13/14] hw/net/smc91c111: Use
- qemu_log_mask(UNIMP) instead of fprintf
+Subject: Re: [Qemu-trivial] [PATCH v2 14/14] hw/arm/stellaris: Fix
+ gptm_write() error message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,42 +103,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 19:53:56 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 19:55:16 -0000
 
 On 22.06.2018 15:40, Philippe Mathieu-Daud=C3=A9 wrote:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/net/smc91c111.c | 12 ++++++++----
->  1 file changed, 8 insertions(+), 4 deletions(-)
+>  hw/arm/stellaris.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
-> index 9094c0b47c..d2fd2040e8 100644
-> --- a/hw/net/smc91c111.c
-> +++ b/hw/net/smc91c111.c
-> @@ -362,10 +362,14 @@ static void smc91c111_writeb(void *opaque, hwaddr=
- offset,
->              SET_HIGH(gpr, value);
->              return;
->          case 12: /* Control */
-> -            if (value & 1)
-> -                fprintf(stderr, "smc91c111:EEPROM store not implemente=
-d\n");
-> -            if (value & 2)
-> -                fprintf(stderr, "smc91c111:EEPROM reload not implement=
-ed\n");
-> +            if (value & 1) {
-> +                qemu_log_mask(LOG_UNIMP,
-> +                              "smc91c111: EEPROM store not implemented=
-\n");
-> +            }
-> +            if (value & 2) {
-> +                qemu_log_mask(LOG_UNIMP,
-> +                              "smc91c111: EEPROM reload not implemente=
-d\n");
-> +            }
->              value &=3D ~3;
->              SET_LOW(ctr, value);
->              return;
+> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+> index d06e366402..42baa768b2 100644
+> --- a/hw/arm/stellaris.c
+> +++ b/hw/arm/stellaris.c
+> @@ -294,7 +294,7 @@ static void gptm_write(void *opaque, hwaddr offset,
+>          break;
+>      default:
+>          qemu_log_mask(LOG_GUEST_ERROR,
+> -                      "GPTM: read at bad offset 0x%x\n", (int)offset);
+> +                      "GPTM: write at bad offset 0x%x\n", (int)offset)=
+;
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+While you're at it, remove the cast and use HWADDR_PRIx ?
+
+ Thomas
 
