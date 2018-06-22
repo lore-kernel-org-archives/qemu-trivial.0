@@ -1,97 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWS9O-0006Sd-3G
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 15:55:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48521)
+	id 1fWSO3-0002Gw-Pg
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 16:10:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50729)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWS9L-0006Pg-8N
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:55:16 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWSO1-0002FD-1J
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 16:10:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWS9K-0005cO-El
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:55:15 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54484 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWS9C-0005P4-Fv; Fri, 22 Jun 2018 15:55:06 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E8A03401CC41;
-	Fri, 22 Jun 2018 19:55:05 +0000 (UTC)
-Received: from [10.36.116.50] (ovpn-116-50.ams2.redhat.com [10.36.116.50])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C181A2026D6C;
-	Fri, 22 Jun 2018 19:55:04 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWSNz-0002y6-NA
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 16:10:24 -0400
+Received: from mail-qk0-x22b.google.com ([2607:f8b0:400d:c09::22b]:34800)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fWSNu-0002wS-Uf; Fri, 22 Jun 2018 16:10:19 -0400
+Received: by mail-qk0-x22b.google.com with SMTP id q70-v6so4377994qke.1;
+	Fri, 22 Jun 2018 13:10:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=S742fyqUhwmBfafC9BxD8PchPr/FFLH/smvpJc7XSwE=;
+	b=oFEDJItJ/HkxM2IjqJbf2DUx0M4pycLOKH09NgdApYoIvq28SPwpNWaQMY+vMhnqy9
+	FFZIuMFEUnK9FkP9BED6PHDfWIcCtBhlHQ6UWzV0xaIKr5/LIbp9v8nx8CW3tx4wuFOu
+	PX9uQesw7OXkKxEVOWvfCIuq/Fy+kJ/3VDtmuENkPqDBy3azRxFiLdxhCinISKo14Sqr
+	pcHpB+1hTnWahtt2b1NOCOQdS6W/AbKJtw38LZlQNMu5RWBCijvZnq4PC3RkHUr2ghaA
+	Hn73nopCUw0aPaoct52S7W636kZAI+RzdJ/QwchFC1/aP/I6emEdd0j6Xk4Hhe5EJ98u
+	1+SQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=S742fyqUhwmBfafC9BxD8PchPr/FFLH/smvpJc7XSwE=;
+	b=NijYM3n6+CAZKK9g9Bnq2mzkNLjTap7bE/9pKzabWkZ0VwKBVMw4+VM/AMEr+pQqSk
+	6R4GHb1eGWvc0/T0J19dXtFTrlMzam7kVkKDEZFqG25NvEqCz/YWdDLLIeFTUQyH9gp1
+	qWaVoYHhFAQoEJL1FB8P4B3UU4Iz82Laaqdz+d5lrZjyDsEtXa20DsAsoHoFs7Xjz5Dr
+	Tba3H3QVWQuVrwe7eg2M/p31EDOgkcwfXVyzySQwZdtD4lBUIcnvS1Pjg7JjdU4JDkCP
+	vcMVjPtdfw/uXfYfb6rY4G3xG3MQ20ZvuL0sVb9iWk15WdPzB68wtuAQFroWz+9MMPAW
+	h2wA==
+X-Gm-Message-State: APt69E2uWSpSfgqbknKTDBX+9FBbNcKRe93ttAgd9WDrvA+JEfOalzKA
+	xIVN4P5S/n35ESAd7s58RciJ2qHW
+X-Google-Smtp-Source: ADUXVKLYjo5/WQpNeQek9emzXBTLFA6eNwDHA/19CWxH+neEt6fwZ7YSSkjM9TXXjhQFutNY0Xaigw==
+X-Received: by 2002:a37:d4d1:: with SMTP id
+	s78-v6mr2559137qks.244.1529698218293; 
+	Fri, 22 Jun 2018 13:10:18 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	o31-v6sm5446788qte.16.2018.06.22.13.10.16
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 22 Jun 2018 13:10:17 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
 References: <20180622134036.23182-1-f4bug@amsat.org>
-	<20180622134036.23182-15-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
-	xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
-	yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
-	4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
-	tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
-	0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
-	O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
-	0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
-	gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
-	3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
-	zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzRxUaG9tYXMgSHV0
-	aCA8dGguaHV0aEBnbXguZGU+wsF7BBMBAgAlAhsDBgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIX
-	gAUCUfuWKwIZAQAKCRAu2dd0/nAttbe/EACb9hafyOb2FmhUqeAiBORSsUifFacQ7laVjcgR
-	I4um8CSHvxijYftpkM2EdAtmXIKgbNDpQoXcWLXB9lu9mLgTO4DVT00TRR65ikn3FCWcyT74
-	ENTOzRKyKLsDCjhXKPblTPIQbYAUCOWElcyAPm0ERd62fA/rKNxgIiNo/l4UODOMoOJm2/Ox
-	ZoTckW68Eqv7k9L7m7j+Hn3hoDTjAmcCBJt+j7pOhzWvCbqoNOIH8C8qvPaNlrba+R/K6jkO
-	6jZkTbYQpGIofEQJ/TNn38IsNGpI1ALTHWFtoMxp3j2Imz0REO6dRE2fHRN8sVlHgkoeGhmY
-	NbDsDE1jFQOEObFnu0euk//7BXU7tGOHckVAZ8T1smiRPHfQU7UEH2a/grndxJ+PNeM5w7n2
-	l+FN3cf2KgPotCK2s9MjSdZA7C5e3rFYO8lqiqTJKvc62vqp3e7B0Kjyy5/QtzSOejBij2QL
-	xkKSFNtxIz4MtuxN8e3IDQNxsKry3nF7R4MDvouXlMo6wP9KuyNWb+vFJt9GtbgfDMIFVamp
-	ZfhEWzWRJH4VgksENA4K/BzjEHCcbTUb1TFsiB1VRnBPJ0SqlvifnfKk6HcpkDk6Pg8Q5FOJ
-	gbNHrdgXsm+m/9GF2zUUr+rOlhVbK23TUqKqPfwnD7uxjpakVcJnsVCFqJpZi1F/ga9IN87B
-	TQRR+3lMARAAtp831HniPHb9AuKq3wj83ujZK8lH5RLrfVsB4X1wi47bwo56BqhXpR/zxPTR
-	eOFT0gnbw9UkphVc7uk/alnXMDEmgvnuxv89PwIQX6k3qLABeV7ykJQG/WT5HQ6+2DdGtVw3
-	2vjYAPiWQeETsgWRRQMDR0/hwp8s8tL/UodwYCScH6Vxx9pdy353L1fK4Bb9G73a+9FPjp9l
-	x+WwKTsltVqSBuSjyZQ3c3EE8qbTidXZxB38JwARH8yN3TX+t65cbBqLl/zRUUUTapHQpUEd
-	yoAsHIml32e4q+3xdLtTdlLi7FgPBItSazcqZPjEcYW73UAuLcmQmfJlQ5PkDiuqcitn+KzH
-	/1pqsTU7QFZjbmSMJyXY0TDErOFuMOjf20b6arcpEqse1V3IKrb+nqqA2azboRm3pEANLAJw
-	iVTwK3qwGRgK5ut6N/Znv20VEHkFUsRAZoOusrIRfR5HFDxlXguAdEz8M/hxXFYYXqOoaCYy
-	6pJxTjy0Y/tIfmS/g9Bnp8qg9wsrsnk0+XRnDVPak++G3Uq9tJPwpJbyO0vcqEI3vAXkAB7X
-	VXLzvFwi66RrsPUoDkuzj+aCNumtOePDOCpXQGPpKl+l1aYRMN/+lNSk3+1sVuc2C07WnYyE
-	gV/cbEVklPmKrNwu6DeUyD0qI/bVzKMWZAiB1r56hsGeyYcAEQEAAcLBXwQYAQIACQUCUft5
-	TAIbDAAKCRAu2dd0/nAttYTwEACLAS/THRqXRKb17PQmKwZHerUvZm2klo+lwQ3wNQBHUJAT
-	p2R9ULexyXrJPqjUpy7+voz+FcKiuQBTKyieiIxO46oMxsbXGZ70o3gxjxdYdgimUD6U8PPd
-	JH8tfAL4BR5FZNjspcnscN2jgbF4OrpDeOLyBaj6HPmElNPtECHWCaf1xbIFsZxSDGMA6cUh
-	0uX3Q8VI7JN1AR2cfiIRY7NrIlWYucJxyKjO3ivWm69nCtsHiJ0wcF8KlVo7F2eLaufo0K8A
-	ynL8SHMF3VEyxsXOP2f1UR9T2Ur30MXcTBpjUxml1TX3RWY5uH89Js/jlIugBwuAmacJ7JYh
-	lTg6sF/GNc4nPb4kk2yktNWTade+TzsllYlJPaorD2Qe8qX0iFUhFC6y9+O6mP4ZvWoYapp9
-	ezYNuebMgEr93ob1+4sFg3812wNP01WqsGtWCJHnPv/JoonFdMzD/bIkXGEJMk6ks2kxQQZq
-	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
-	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
-	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <9e5b3eee-1335-9eae-709a-3f8d05729c03@redhat.com>
-Date: Fri, 22 Jun 2018 21:55:03 +0200
+	<20180622134036.23182-8-f4bug@amsat.org>
+	<e98bac2c-ce0b-e226-3d96-004e46478f2f@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <8256c2d4-722c-299f-e8e3-42c1a7f68e1d@amsat.org>
+Date: Fri, 22 Jun 2018 17:10:13 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180622134036.23182-15-f4bug@amsat.org>
+In-Reply-To: <e98bac2c-ce0b-e226-3d96-004e46478f2f@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Fri, 22 Jun 2018 19:55:05 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Fri, 22 Jun 2018 19:55:05 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH v2 14/14] hw/arm/stellaris: Fix
- gptm_write() error message
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::22b
+Subject: Re: [Qemu-trivial] [PATCH v2 07/14] hw/i2c/omap_i2c: Use
+ qemu_log_mask(UNIMP) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,27 +85,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 19:55:16 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 20:10:26 -0000
 
-On 22.06.2018 15:40, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/arm/stellaris.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-> index d06e366402..42baa768b2 100644
-> --- a/hw/arm/stellaris.c
-> +++ b/hw/arm/stellaris.c
-> @@ -294,7 +294,7 @@ static void gptm_write(void *opaque, hwaddr offset,
->          break;
->      default:
->          qemu_log_mask(LOG_GUEST_ERROR,
-> -                      "GPTM: read at bad offset 0x%x\n", (int)offset);
-> +                      "GPTM: write at bad offset 0x%x\n", (int)offset)=
-;
+On 06/22/2018 04:38 PM, Thomas Huth wrote:
+> On 22.06.2018 15:40, Philippe Mathieu-Daudé wrote:
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  hw/i2c/omap_i2c.c | 20 ++++++++++++--------
+>>  1 file changed, 12 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
+>> index 26e3e5ebf6..690876e43e 100644
+>> --- a/hw/i2c/omap_i2c.c
+>> +++ b/hw/i2c/omap_i2c.c
+>> @@ -17,6 +17,7 @@
+>>   * with this program; if not, see <http://www.gnu.org/licenses/>.
+>>   */
+>>  #include "qemu/osdep.h"
+>> +#include "qemu/log.h"
+>>  #include "hw/hw.h"
+>>  #include "hw/i2c/i2c.h"
+>>  #include "hw/arm/omap.h"
+>> @@ -339,14 +340,15 @@ static void omap_i2c_write(void *opaque, hwaddr addr,
+>>              }
+>>              break;
+>>          }
+>> -        if ((value & (1 << 15)) && !(value & (1 << 10))) {	/* MST */
+>> -            fprintf(stderr, "%s: I^2C slave mode not supported\n",
+>> -                            __func__);
+>> +        if ((value & (1 << 15)) && !(value & (1 << 10))) { /* MST */
+> 
+> Please keep the white spaces before the comment if you don't change
+> anything else.
 
-While you're at it, remove the cast and use HWADDR_PRIx ?
+This is a <tab> and checkpatch complains...
 
- Thomas
+I can use 4 spaces for this tab. I tried to align with other tab-aligned
+comments I didn't modify, but the result is messier. Thus a simple space.
+
+> 
+>> +            qemu_log_mask(LOG_UNIMP, "%s: I^2C slave mode not supported\n",
+>> +                          __func__);
+>>              break;
+>>          }
+>> -        if ((value & (1 << 15)) && value & (1 << 8)) {		/* XA */
+>> -            fprintf(stderr, "%s: 10-bit addressing mode not supported\n",
+>> -                            __func__);
+>> +        if ((value & (1 << 15)) && value & (1 << 8)) { /* XA */
+> 
+> dito.
+> 
+>> +            qemu_log_mask(LOG_UNIMP,
+>> +                          "%s: 10-bit addressing mode not supported\n",
+>> +                          __func__);
+> 
+> Apart from the nits, looks fine to me, so once you've fixed that:
+> 
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> 
 
