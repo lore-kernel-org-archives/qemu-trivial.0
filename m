@@ -1,56 +1,99 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWFSz-000818-4F
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 02:22:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56702)
+	id 1fWH3a-0003YX-Fy
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 04:04:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44479)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fWFSx-00080p-A6
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 02:22:40 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWH3Y-0003Vh-73
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:04:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kraxel@redhat.com>) id 1fWFSu-0007e2-Gd
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 02:22:37 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:33108 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fWH3X-0003QZ-8g
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:04:32 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:44990 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
-	id 1fWFSo-0007aO-ER; Fri, 22 Jun 2018 02:22:30 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1fWH3G-0003BI-00; Fri, 22 Jun 2018 04:04:14 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 47FAB8D685;
-	Fri, 22 Jun 2018 06:22:28 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-116-109.ams2.redhat.com
-	[10.36.116.109])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1ADC4111DD0B;
-	Fri, 22 Jun 2018 06:22:26 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
-	id 4DD44143B3D; Fri, 22 Jun 2018 08:22:25 +0200 (CEST)
-Date: Fri, 22 Jun 2018 08:22:25 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Message-ID: <20180622062225.ay4bubgshxjj3uey@sirius.home.kraxel.org>
-References: <20180621171257.14897-1-f4bug@amsat.org>
-	<20180621171257.14897-6-f4bug@amsat.org>
+	by mx1.redhat.com (Postfix) with ESMTPS id 62A074023132;
+	Fri, 22 Jun 2018 08:04:13 +0000 (UTC)
+Received: from [10.36.116.139] (ovpn-116-139.ams2.redhat.com [10.36.116.139])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E4B3F2156888;
+	Fri, 22 Jun 2018 08:04:11 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+References: <20180621180224.8312-1-f4bug@amsat.org>
+	<20180621180224.8312-2-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <114c5545-19e6-690a-78a7-4586aa57860d@redhat.com>
+Date: Fri, 22 Jun 2018 10:04:10 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20180621171257.14897-6-f4bug@amsat.org>
-User-Agent: NeoMutt/20180512
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+In-Reply-To: <20180621180224.8312-2-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Fri, 22 Jun 2018 06:22:28 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Fri, 22 Jun 2018 06:22:28 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'kraxel@redhat.com' RCPT:''
+	(mx1.redhat.com [10.11.55.6]);
+	Fri, 22 Jun 2018 08:04:13 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Fri, 22 Jun 2018 08:04:13 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH 05/11] hw/display/cirrus: Convert
- printf() calls to trace events
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 01/11] hw/input/pckbd: Use
+ qemu_log_mask(GUEST_ERROR) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,35 +105,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 06:22:40 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 08:04:33 -0000
 
-On Thu, Jun 21, 2018 at 02:12:51PM -0300, Philippe Mathieu-Daud=E9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+On 21.06.2018 20:02, Philippe Mathieu-Daud=C3=A9 wrote:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/display/cirrus_vga.c | 25 ++++++-------------------
->  hw/display/trace-events |  2 ++
->  2 files changed, 8 insertions(+), 19 deletions(-)
+>  hw/input/pckbd.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 >=20
-> diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
-> index 138ae961b9..a826bef6ec 100644
-> --- a/hw/display/cirrus_vga.c
-> +++ b/hw/display/cirrus_vga.c
-> @@ -2608,11 +2608,8 @@ static uint64_t cirrus_vga_ioport_read(void *opa=
-que, hwaddr addr,
->  	    break;
->  	case 0x3c5:
->  	    val =3D cirrus_vga_read_sr(c);
-> +        trace_vga_cirrus_read_reg("SR", s->sr_index, val);
->              break;
-> -#ifdef DEBUG_VGA_REG
-> -	    printf("vga: read SR%x =3D 0x%02x\n", s->sr_index, val);
-> -#endif
+> diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+> index f33e3fc63d..1102d2a31b 100644
+> --- a/hw/input/pckbd.c
+> +++ b/hw/input/pckbd.c
+> @@ -22,6 +22,7 @@
+>   * THE SOFTWARE.
+>   */
+>  #include "qemu/osdep.h"
+> +#include "qemu/log.h"
+>  #include "hw/hw.h"
+>  #include "hw/isa/isa.h"
+>  #include "hw/i386/pc.h"
+> @@ -308,7 +309,8 @@ static void kbd_write_command(void *opaque, hwaddr =
+addr,
+>          /* ignore that */
+>          break;
+>      default:
+> -        fprintf(stderr, "qemu: unsupported keyboard cmd=3D0x%02x\n", (=
+int)val);
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "qemu: unsupported keyboard cmd=3D0x%02lx\n", va=
+l);
 
-Indention looks weird.
+Please remove the "qemu:" prefix while you're at it.
 
-otherwise the patch looks fine.
-
-cheers,
-  Gerd
-
+ Thomas
 
