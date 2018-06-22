@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWRtG-00067D-Rk
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 15:38:38 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45674)
+	id 1fWRvq-0008A8-4a
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 15:41:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46222)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWRtE-00064y-1a
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:38:37 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWRvo-00088F-19
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:41:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWRtD-0008HM-1m
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:38:36 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54070 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fWRvn-0000rS-By
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:41:16 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37728 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWRt4-0008A0-KI; Fri, 22 Jun 2018 15:38:26 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	id 1fWRvf-0000oD-EZ; Fri, 22 Jun 2018 15:41:07 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 186F74040075;
-	Fri, 22 Jun 2018 19:38:26 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id D478B7D65F;
+	Fri, 22 Jun 2018 19:41:06 +0000 (UTC)
 Received: from [10.36.116.50] (ovpn-116-50.ams2.redhat.com [10.36.116.50])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A673E2026D6C;
-	Fri, 22 Jun 2018 19:38:24 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7BC511C5A3;
+	Fri, 22 Jun 2018 19:41:05 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
 References: <20180622134036.23182-1-f4bug@amsat.org>
-	<20180622134036.23182-8-f4bug@amsat.org>
+	<20180622134036.23182-9-f4bug@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -70,28 +70,28 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <e98bac2c-ce0b-e226-3d96-004e46478f2f@redhat.com>
-Date: Fri, 22 Jun 2018 21:38:23 +0200
+Message-ID: <1a2889a3-681f-487e-828b-89cb6f59d9d9@redhat.com>
+Date: Fri, 22 Jun 2018 21:41:04 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180622134036.23182-8-f4bug@amsat.org>
+In-Reply-To: <20180622134036.23182-9-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Fri, 22 Jun 2018 19:38:26 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Fri, 22 Jun 2018 19:38:26 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.2]);
+	Fri, 22 Jun 2018 19:41:06 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Fri, 22 Jun 2018 19:41:06 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH v2 07/14] hw/i2c/omap_i2c: Use
- qemu_log_mask(UNIMP) instead of fprintf
+Subject: Re: [Qemu-trivial] [PATCH v2 08/14] hw/arm/omap1: Use
+ qemu_log_mask(GUEST_ERROR) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,58 +103,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 19:38:37 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 19:41:17 -0000
 
 On 22.06.2018 15:40, Philippe Mathieu-Daud=C3=A9 wrote:
+> TCMI_VERBOSE is no more used, drop the OMAP_8/16/32B_REG macros.
+>=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/i2c/omap_i2c.c | 20 ++++++++++++--------
->  1 file changed, 12 insertions(+), 8 deletions(-)
->=20
-> diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
-> index 26e3e5ebf6..690876e43e 100644
-> --- a/hw/i2c/omap_i2c.c
-> +++ b/hw/i2c/omap_i2c.c
-> @@ -17,6 +17,7 @@
->   * with this program; if not, see <http://www.gnu.org/licenses/>.
->   */
->  #include "qemu/osdep.h"
-> +#include "qemu/log.h"
->  #include "hw/hw.h"
->  #include "hw/i2c/i2c.h"
->  #include "hw/arm/omap.h"
-> @@ -339,14 +340,15 @@ static void omap_i2c_write(void *opaque, hwaddr a=
-ddr,
->              }
->              break;
->          }
-> -        if ((value & (1 << 15)) && !(value & (1 << 10))) {	/* MST */
-> -            fprintf(stderr, "%s: I^2C slave mode not supported\n",
-> -                            __func__);
-> +        if ((value & (1 << 15)) && !(value & (1 << 10))) { /* MST */
-
-Please keep the white spaces before the comment if you don't change
-anything else.
-
-> +            qemu_log_mask(LOG_UNIMP, "%s: I^2C slave mode not supporte=
-d\n",
-> +                          __func__);
->              break;
->          }
-> -        if ((value & (1 << 15)) && value & (1 << 8)) {		/* XA */
-> -            fprintf(stderr, "%s: 10-bit addressing mode not supported\=
-n",
-> -                            __func__);
-> +        if ((value & (1 << 15)) && value & (1 << 8)) { /* XA */
-
-dito.
-
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "%s: 10-bit addressing mode not supported\n"=
-,
-> +                          __func__);
-
-Apart from the nits, looks fine to me, so once you've fixed that:
+>  include/hw/arm/omap.h | 18 ------------------
+>  hw/arm/omap1.c        | 18 ++++++++++++------
+>  2 files changed, 12 insertions(+), 24 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
