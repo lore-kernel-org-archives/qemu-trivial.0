@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWRvq-0008A8-4a
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 15:41:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46222)
+	id 1fWRz7-00021R-UK
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 15:44:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46759)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWRvo-00088F-19
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:41:16 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWRz5-0001zc-R4
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:44:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWRvn-0000rS-By
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:41:16 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37728 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fWRz5-0001oz-3N
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 15:44:39 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54204 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWRvf-0000oD-EZ; Fri, 22 Jun 2018 15:41:07 -0400
+	id 1fWRyw-0001mr-GN; Fri, 22 Jun 2018 15:44:30 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D478B7D65F;
-	Fri, 22 Jun 2018 19:41:06 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 03CBE401CC41;
+	Fri, 22 Jun 2018 19:44:29 +0000 (UTC)
 Received: from [10.36.116.50] (ovpn-116-50.ams2.redhat.com [10.36.116.50])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7BC511C5A3;
-	Fri, 22 Jun 2018 19:41:05 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id ADFC21C5A3;
+	Fri, 22 Jun 2018 19:44:27 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
 References: <20180622134036.23182-1-f4bug@amsat.org>
-	<20180622134036.23182-9-f4bug@amsat.org>
+	<20180622134036.23182-10-f4bug@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -70,27 +70,27 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <1a2889a3-681f-487e-828b-89cb6f59d9d9@redhat.com>
-Date: Fri, 22 Jun 2018 21:41:04 +0200
+Message-ID: <b70145b2-5c24-d525-b23a-aaeb7ab960c5@redhat.com>
+Date: Fri, 22 Jun 2018 21:44:26 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180622134036.23182-9-f4bug@amsat.org>
+In-Reply-To: <20180622134036.23182-10-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Fri, 22 Jun 2018 19:41:06 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Fri, 22 Jun 2018 19:41:06 +0000 (UTC) for IP:'10.11.54.5'
+	(mx1.redhat.com [10.11.55.5]);
+	Fri, 22 Jun 2018 19:44:29 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Fri, 22 Jun 2018 19:44:29 +0000 (UTC) for IP:'10.11.54.5'
 	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH v2 08/14] hw/arm/omap1: Use
+Subject: Re: [Qemu-trivial] [PATCH v2 09/14] hw/arm/omap: Use
  qemu_log_mask(GUEST_ERROR) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -103,16 +103,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 19:41:17 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 19:44:40 -0000
 
 On 22.06.2018 15:40, Philippe Mathieu-Daud=C3=A9 wrote:
-> TCMI_VERBOSE is no more used, drop the OMAP_8/16/32B_REG macros.
->=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  include/hw/arm/omap.h | 18 ------------------
->  hw/arm/omap1.c        | 18 ++++++++++++------
->  2 files changed, 12 insertions(+), 24 deletions(-)
+>  include/hw/arm/omap.h | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+> index 39abba753d..3867687b8c 100644
+> --- a/include/hw/arm/omap.h
+> +++ b/include/hw/arm/omap.h
+> @@ -21,6 +21,7 @@
+>  # define hw_omap_h		"omap.h"
+>  #include "hw/irq.h"
+>  #include "target/arm/cpu-qom.h"
+> +#include "qemu/log.h"
+> =20
+>  # define OMAP_EMIFS_BASE	0x00000000
+>  # define OMAP2_Q0_BASE		0x00000000
+> @@ -962,8 +963,8 @@ void omap_mpu_wakeup(void *opaque, int irq, int req=
+);
+>          fprintf(stderr, "%s: Bad register " OMAP_FMT_plx "\n",	\
+>                          __func__, paddr)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+What about that fprintf above?
+
+>  # define OMAP_RO_REG(paddr)		\
+> -        fprintf(stderr, "%s: Read-only register " OMAP_FMT_plx "\n",	\
+> -                        __func__, paddr)
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Read-only register " OMAP_=
+FMT_plx \
+> +                      "\n", __func__, paddr)
+> =20
+>  /* OMAP-specific Linux bootloader tags for the ATAG_BOARD area
+>     (Board-specifc tags are not here)  */
+>=20
+
+ Thomas
 
