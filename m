@@ -1,32 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWHf1-0001H7-K2
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 04:43:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51414)
+	id 1fWHfj-0001jk-6A
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 04:43:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51553)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWHey-0001F4-7v
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:43:13 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWHfh-0001iM-9I
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:43:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWHex-0008UF-C0
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:43:12 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:37498 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fWHfg-0000Lv-Ft
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:43:57 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:48618 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWHeq-0008RE-DT; Fri, 22 Jun 2018 04:43:04 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1fWHfa-0000Jr-8j; Fri, 22 Jun 2018 04:43:50 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DF5838D76C;
-	Fri, 22 Jun 2018 08:43:03 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id BF2F5F68B2;
+	Fri, 22 Jun 2018 08:43:49 +0000 (UTC)
 Received: from [10.36.116.139] (ovpn-116-139.ams2.redhat.com [10.36.116.139])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D6E281C5A2;
-	Fri, 22 Jun 2018 08:43:02 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 14CA62156888;
+	Fri, 22 Jun 2018 08:43:47 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
 	qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20180621180224.8312-1-f4bug@amsat.org>
-	<20180621180224.8312-11-f4bug@amsat.org>
+	<20180621180224.8312-12-f4bug@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -71,28 +71,28 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <8b75e080-6c68-0bdc-1f2c-8ca6c0f80089@redhat.com>
-Date: Fri, 22 Jun 2018 10:43:01 +0200
+Message-ID: <346ca2ea-3423-b263-0a86-bd10fa62bb4d@redhat.com>
+Date: Fri, 22 Jun 2018 10:43:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180621180224.8312-11-f4bug@amsat.org>
+In-Reply-To: <20180621180224.8312-12-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Fri, 22 Jun 2018 08:43:03 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Fri, 22 Jun 2018 08:43:03 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.1]);
+	Fri, 22 Jun 2018 08:43:49 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Fri, 22 Jun 2018 08:43:49 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 10/11]
- hw/net/stellaris_enet: Use qemu_log_mask(GUEST_ERROR) instead of hw_error
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 11/11] hw/net/smc91c111: Use
+ qemu_log_mask(GUEST_ERROR) instead of hw_error
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,60 +104,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 08:43:13 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 08:43:58 -0000
 
 On 21.06.2018 20:02, Philippe Mathieu-Daud=C3=A9 wrote:
 > hw_error() finally calls abort(), but there is no need to abort here.
-
-Additionally, hw_error() is also only meant for CPU errors (since it
-dumps the CPU state). We should really rename that function to
-"cpu_hw_error" one day to avoid that people use it in the wrong spots...
-
+>=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/net/stellaris_enet.c | 9 +++++++--
+>  hw/net/smc91c111.c | 9 +++++++--
 >  1 file changed, 7 insertions(+), 2 deletions(-)
 >=20
-> diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
-> index 04bd10ada3..188adcbd15 100644
-> --- a/hw/net/stellaris_enet.c
-> +++ b/hw/net/stellaris_enet.c
-> @@ -9,6 +9,7 @@
->  #include "qemu/osdep.h"
+> diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
+> index c8cc5379b7..705a034cb9 100644
+> --- a/hw/net/smc91c111.c
+> +++ b/hw/net/smc91c111.c
+> @@ -11,6 +11,7 @@
 >  #include "hw/sysbus.h"
 >  #include "net/net.h"
+>  #include "hw/devices.h"
 > +#include "qemu/log.h"
+>  /* For crc32 */
 >  #include <zlib.h>
 > =20
->  //#define DEBUG_STELLARIS_ENET 1
-> @@ -343,7 +344,9 @@ static uint64_t stellaris_enet_read(void *opaque, h=
-waddr offset,
->      case 0x3c: /* Undocuented: Timestamp? */
->          return 0;
->      default:
-> -        hw_error("stellaris_enet_read: Bad offset %x\n", (int)offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "stellaris_enet_rd%d: 0x%" HWADDR_PRIx "\n",
-> +                      size, offset);
->          return 0;
->      }
->  }
-> @@ -442,7 +445,9 @@ static void stellaris_enet_write(void *opaque, hwad=
-dr offset,
->          /* Ignored.  */
+> @@ -478,7 +479,9 @@ static void smc91c111_writeb(void *opaque, hwaddr o=
+ffset,
+>          }
 >          break;
->      default:
-> -        hw_error("stellaris_enet_write: Bad offset %x\n", (int)offset)=
-;
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "stellaris_enet_wr%d: 0x%" HWADDR_PRIx " =3D 0x%=
-lx\n",
-> +                      size, offset, value);
 >      }
+> -    hw_error("smc91c111_write: Bad reg %d:%x\n", s->bank, (int)offset)=
+;
+> +    qemu_log_mask(LOG_GUEST_ERROR,
+> +                  "smc91c111_write(bank:%d) 0x%" HWADDR_PRIx " =3D 0x%=
+x\n",
+> +                  s->bank, offset, value);
+>  }
+> =20
+>  static uint32_t smc91c111_readb(void *opaque, hwaddr offset)
+> @@ -621,7 +624,9 @@ static uint32_t smc91c111_readb(void *opaque, hwadd=
+r offset)
+>          }
+>          break;
+>      }
+> -    hw_error("smc91c111_read: Bad reg %d:%x\n", s->bank, (int)offset);
+> +    qemu_log_mask(LOG_GUEST_ERROR,
+> +                  "smc91c111_read(bank:%d) 0x%" HWADDR_PRIx "\n",
+> +                  s->bank, offset);
+>      return 0;
 >  }
 
-Could you please keep the "bad offset" or a similar error message, so
-that the user knows that there is really something wrong here?
+Please keep "bad register" or a similar text in here.
 
  Thomas
+
 
