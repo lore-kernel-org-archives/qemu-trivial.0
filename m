@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWHX4-0006Zt-52
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 04:35:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49832)
+	id 1fWHYZ-0007ZG-KK
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 04:36:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50138)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWHX2-0006YK-2f
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:35:00 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWHYX-0007XB-2J
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:36:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWHWx-0004f5-Ce
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:35:00 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54046 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fWHYT-0005Ga-KV
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:36:32 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:58922 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWHWn-0004c4-Nt; Fri, 22 Jun 2018 04:34:45 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
+	id 1fWHYP-0005FP-UD; Fri, 22 Jun 2018 04:36:26 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4B3D881A4EAF;
-	Fri, 22 Jun 2018 08:34:45 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5883A401C9AA;
+	Fri, 22 Jun 2018 08:36:25 +0000 (UTC)
 Received: from [10.36.116.139] (ovpn-116-139.ams2.redhat.com [10.36.116.139])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 12146111DD0A;
-	Fri, 22 Jun 2018 08:34:43 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 52A9A2026D6B;
+	Fri, 22 Jun 2018 08:36:24 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20180621180224.8312-1-f4bug@amsat.org>
-	<20180621180224.8312-9-f4bug@amsat.org>
+	<20180621180224.8312-10-f4bug@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -70,28 +70,28 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <e8e5e2ff-9576-402d-1502-9b584b0295f7@redhat.com>
-Date: Fri, 22 Jun 2018 10:34:42 +0200
+Message-ID: <9eba4426-6870-29a4-cb4b-63af49350fe9@redhat.com>
+Date: Fri, 22 Jun 2018 10:36:23 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180621180224.8312-9-f4bug@amsat.org>
+In-Reply-To: <20180621180224.8312-10-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Fri, 22 Jun 2018 08:34:45 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Fri, 22 Jun 2018 08:34:45 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.5]);
+	Fri, 22 Jun 2018 08:36:25 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Fri, 22 Jun 2018 08:36:25 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 08/11] hw/arm/omap: Use
- qemu_log_mask(GUEST_ERROR) instead of fprintf
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 09/11] hw/arm/stellaris: Use
+ qemu_log_mask(UNIMP) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,44 +103,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 08:35:01 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 08:36:34 -0000
 
 On 21.06.2018 20:02, Philippe Mathieu-Daud=C3=A9 wrote:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  include/hw/arm/omap.h | 20 ++++++++++++--------
->  1 file changed, 12 insertions(+), 8 deletions(-)
-[...]
-> @@ -997,14 +998,17 @@ enum {
-> =20
->  # ifdef TCMI_VERBOSE
->  #  define OMAP_8B_REG(paddr)		\
-> -        fprintf(stderr, "%s: 8-bit register " OMAP_FMT_plx "\n",	\
-> -                        __func__, paddr)
-> +        qemu_log_mask(LOG_GUEST_ERROR, \
-> +                      "%s: 8-bit register " OMAP_FMT_plx "\n", \
-> +                      __func__, paddr)
->  #  define OMAP_16B_REG(paddr)		\
-> -        fprintf(stderr, "%s: 16-bit register " OMAP_FMT_plx "\n",	\
-> -                        __func__, paddr)
-> +        qemu_log_mask(LOG_GUEST_ERROR, \
-> +                      "%s: 16-bit register " OMAP_FMT_plx "\n", \
-> +                      __func__, paddr)
->  #  define OMAP_32B_REG(paddr)		\
-> -        fprintf(stderr, "%s: 32-bit register " OMAP_FMT_plx "\n",	\
-> -                        __func__, paddr)
-> +        qemu_log_mask(LOG_GUEST_ERROR, \
-> +                      "%s: 32-bit register " OMAP_FMT_plx "\n", \
-> +                      __func__, paddr)
->  # else
->  #  define OMAP_8B_REG(paddr)
->  #  define OMAP_16B_REG(paddr)
+>  hw/arm/stellaris.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+> index a8f1f6a912..d06e366402 100644
+> --- a/hw/arm/stellaris.c
+> +++ b/hw/arm/stellaris.c
+> @@ -560,7 +560,7 @@ static void ssys_write(void *opaque, hwaddr offset,
+>      case 0x040: /* SRCR0 */
+>      case 0x044: /* SRCR1 */
+>      case 0x048: /* SRCR2 */
+> -        fprintf(stderr, "Peripheral reset not implemented\n");
+> +        qemu_log_mask(LOG_UNIMP, "Peripheral reset not implemented\n")=
+;
+>          break;
+>      case 0x054: /* IMC */
+>          s->int_mask =3D value & 0x7f;
 >=20
 
-Since the qemu_log_mask(LOG_GUEST_ERROR, ...) calls are not shown up by
-default anymore, I think it would rather be better to get rid of this
-#ifdef TCMI_VERBOSE ... #endif block now and put the qemu_log_mask()
-statements directly into the omap_badwidth_* functions instead.
-
- Thomas
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
