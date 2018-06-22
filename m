@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWHNJ-000338-70
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 04:24:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47966)
+	id 1fWHP8-0004EX-Qd
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 04:26:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48571)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWHNH-00031a-0p
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:24:55 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWHP5-0004AI-NB
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:26:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWHNG-0006X2-4i
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:24:55 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:47830 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fWHP4-0007k1-ML
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:26:47 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:53854 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWHN9-0006VI-85; Fri, 22 Jun 2018 04:24:47 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
+	id 1fWHOx-0007fG-Bj; Fri, 22 Jun 2018 04:26:39 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 63FB568801;
-	Fri, 22 Jun 2018 08:24:46 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id EC2DA818F027;
+	Fri, 22 Jun 2018 08:26:38 +0000 (UTC)
 Received: from [10.36.116.139] (ovpn-116-139.ams2.redhat.com [10.36.116.139])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6598D111DD0A;
-	Fri, 22 Jun 2018 08:24:45 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id F28AF2026D6C;
+	Fri, 22 Jun 2018 08:26:37 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20180621180224.8312-1-f4bug@amsat.org>
-	<20180621180224.8312-5-f4bug@amsat.org>
+	<20180621180224.8312-7-f4bug@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -70,28 +70,28 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <cbfadf4b-e3ef-e7bc-921b-2926c270f51f@redhat.com>
-Date: Fri, 22 Jun 2018 10:24:44 +0200
+Message-ID: <7b7b28e6-5a74-08b5-0cea-78d159501a24@redhat.com>
+Date: Fri, 22 Jun 2018 10:26:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180621180224.8312-5-f4bug@amsat.org>
+In-Reply-To: <20180621180224.8312-7-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.1]);
-	Fri, 22 Jun 2018 08:24:46 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
-	Fri, 22 Jun 2018 08:24:46 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.8]);
+	Fri, 22 Jun 2018 08:26:39 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Fri, 22 Jun 2018 08:26:39 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 04/11] hw/dma/omap_dma: Use
- qemu_log_mask(GUEST_ERROR) instead of fprintf
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 06/11] hw/sd/omap_mmc: Use
+ qemu_log_mask(UNIMP) instead of printf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,30 +103,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 08:24:56 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 08:26:48 -0000
 
 On 21.06.2018 20:02, Philippe Mathieu-Daud=C3=A9 wrote:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/dma/omap_dma.c | 66 ++++++++++++++++++++++++++++++-----------------
->  1 file changed, 42 insertions(+), 24 deletions(-)
-[...]
->      case 0x78:	/* DMA4_GCR */
->          s->gcr =3D value & 0x00ff00ff;
-> -	if ((value & 0xff) =3D=3D 0x00)		/* MAX_CHANNEL_FIFO_DEPTH */
-> -            fprintf(stderr, "%s: wrong FIFO depth in GCR\n", __func__)=
-;
-> +        if ((value & 0xff) =3D=3D 0x00) {
-> +            /* MAX_CHANNEL_FIFO_DEPTH */
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: wrong FIFO depth in GC=
-R\n",
-> +                          __func__);
+>  hw/sd/omap_mmc.c | 13 +++++++++----
+>  1 file changed, 9 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
+> index 5b47cadf11..aa2a816f76 100644
+> --- a/hw/sd/omap_mmc.c
+> +++ b/hw/sd/omap_mmc.c
+> @@ -17,6 +17,7 @@
+>   * with this program; if not, see <http://www.gnu.org/licenses/>.
+>   */
+>  #include "qemu/osdep.h"
+> +#include "qemu/log.h"
+>  #include "hw/hw.h"
+>  #include "hw/arm/omap.h"
+>  #include "hw/sd/sd.h"
+> @@ -449,10 +450,14 @@ static void omap_mmc_write(void *opaque, hwaddr o=
+ffset,
+>          s->enable =3D (value >> 11) & 1;
+>          s->be =3D (value >> 10) & 1;
+>          s->clkdiv =3D (value >> 0) & (s->rev >=3D 2 ? 0x3ff : 0xff);
+> -        if (s->mode !=3D 0)
+> -            printf("SD mode %i unimplemented!\n", s->mode);
+> -        if (s->be !=3D 0)
+> -            printf("SD FIFO byte sex unimplemented!\n");
+> +        if (s->mode !=3D 0) {
+> +            qemu_log_mask(LOG_UNIMP,
+> +                          "omap_mmc_wr: mode #%i unimplemented\n", s->=
+mode);
 > +        }
->          return;
+> +        if (s->be !=3D 0) {
+> +            qemu_log_mask(LOG_UNIMP,
+> +                          "omap_mmc_wr: Big Endian not implemented\n")=
+;
+> +        }
+>          if (s->dw !=3D 0 && s->lines < 4)
+>              printf("4-bit SD bus enabled\n");
+>          if (!s->enable)
 
-Not sure, but doesn't that MAX_CHANNEL_FIFO_DEPTH comment rather belong
-to the if-statement than to the print statement? If so, could you please
-leave it at the end of the line?
-
- Thomas
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
