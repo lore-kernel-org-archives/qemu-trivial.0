@@ -1,70 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWLTS-0007JM-En
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 08:47:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47216)
+	id 1fWLe7-0004TX-Hq
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 08:58:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50315)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWLTN-0007HT-Gd
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 08:47:30 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fWLe5-0004S7-Sm
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 08:58:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWLTM-0007G9-Lo
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 08:47:29 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:43607)
+	(envelope-from <peter.maydell@linaro.org>) id 1fWLe5-00066u-9V
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 08:58:33 -0400
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:38888)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWLTI-000780-5a; Fri, 22 Jun 2018 08:47:24 -0400
-Received: by mail-qk0-x244.google.com with SMTP id s190-v6so3565215qke.10;
-	Fri, 22 Jun 2018 05:47:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=4Rp1wIOKleO2N0z1Lv5Zo6ySubXVZy8oOCEXAQbAeq8=;
-	b=jiUE9cnwA4sN6h1Z3/5VE1FgI//F6Go3DKSMO+fHBtaL/cJdTXPBsVaoRTl/FzOrJl
-	SB76apeeU1uBjB0aUKwN7SL7/HIrfbsesD6YaxceoaHguinbVQTuzZTImeBHFJiT25Jp
-	sLj/bp2DK+mWel7+6x08/y0oDOnsOAZ70PM82fXRJfusEo9yo2re3EsFGOxz81w55Ge7
-	wlgaioH1UmEXqK26JhimN7Jvz4a27RCvvlqEPPUwcAsRh7bpDvzBHyTf8mDJ3XmaVeGQ
-	0KYtFT69UrJPoj7hwIC8p73gqtiLzlUyQDz6h34gn9Hk+3FKIkYKq2qu56JwMMeQsKqY
-	SqWg==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fWLe5-00066h-3g
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 08:58:33 -0400
+Received: by mail-oi0-x242.google.com with SMTP id d5-v6so6043708oib.5
+	for <qemu-trivial@nongnu.org>; Fri, 22 Jun 2018 05:58:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=tp4GuiiSdhrZ+TNz/ryEjLki4PTkRMh5taVpfPyvvyE=;
+	b=PoKOWYxE6cHjf2HX2ibH9cxDYjm1f5idj3fS4cV1gtOuFUHIDX8cC1YHBvJSgTm0UZ
+	kG6BmsQiID6wHNC1BS722Vl2UFSTurLktWdCmJm3y1EZ8rE0QPvaNvJx+wJUrqX5F3jg
+	YMx99EXFQ2jbN5TdPU/LUC0mDfkmvBJdYg1K8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=4Rp1wIOKleO2N0z1Lv5Zo6ySubXVZy8oOCEXAQbAeq8=;
-	b=W3/pDZq/T1PC0qQ7XQ9psgf3jLQvSKzOeq0uWdPB1o/Nc1CJUgsU1ckZG/1OtpUYo9
-	+Zk4Rk1RkawV4fhZG4rDY7+a+hrLePE5ETv/4iVYXyPMwKsTCZp/Xtcdf5IT76lteR3x
-	tPhV86MgpxKu5f3whcso+vSqvXEYDqfyCG6SNduLnp3FVOzKHoUqSpDaRUXCOOhaXXop
-	kFr9Ux98TY5CHilEnkSwqz4GwIqjQ2irEjWPEbEXpVQLV0/o3YZpwl+fDZwcPzeSpCO2
-	LLNshhBNYDIqmk3VLIlGXcriUuxoCfyyTh5665x6W4J5KZq2YyGpcfkXCnE0D/oxcDMu
-	56FA==
-X-Gm-Message-State: APt69E1Pjln8f1mVIk9jbv9DI1vMIXlLV0ECfbKzil0Gpaqnq3BSRLyF
-	Ab/+TTXxsjgn4wveXFfRc58=
-X-Google-Smtp-Source: AAOMgpfingX8EXk1X/Qjy2KD41rpBLVEKZvQK762cTH61Q0GF6Vrp9hpJ3HvIc1+h7kR0rrOaUUBjA==
-X-Received: by 2002:a37:85c5:: with SMTP id
-	h188-v6mr1196632qkd.40.1529671643583; 
-	Fri, 22 Jun 2018 05:47:23 -0700 (PDT)
-Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	m128-v6sm5280884qkd.33.2018.06.22.05.47.21
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 22 Jun 2018 05:47:23 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	Alistair Francis <alistair@alistair23.me>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Fri, 22 Jun 2018 09:47:16 -0300
-Message-Id: <20180622124716.9179-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.18.0.rc2
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=tp4GuiiSdhrZ+TNz/ryEjLki4PTkRMh5taVpfPyvvyE=;
+	b=bbevWuprxz+WfkKExBKVfR6yrzNKUeMZVERzAbXygrRkHbTRO+ftggeGaeDPGFq799
+	oTDaALc2PWdGnacTo30kocWad9Cb1XFTXzlD/GpYXPmBlmH7pXN61mJE6YY9wmqVtaC0
+	M/0459/ZYXcFGnapH/XlgtKfD4VKzRZt3jQlSeuvSK99Y3HWpkXb0UIi+wZ/aLbAQ2Zb
+	hzsStkD1TCUYOx5jAYmLmI0aIqaxhaMw5Kw9bmY5MfSKDq0DjtPuWDewtSTmjtF43ulU
+	zDkGxxsSRJeqHMgtVZclEbuyXA3zFhQLfdm9dk7Y8s96evh1QU6QJ47K4Nmd4VBjz6uH
+	iX4Q==
+X-Gm-Message-State: APt69E3D9/qf8wtdgdDUlw7xsGF+3cRfxZnobs8Rp4QaCKyorpIo//4P
+	XkFRib1yo3dMnSNm3dB+w/nUzZVLoS7xyrMO3dG7Nw==
+X-Google-Smtp-Source: ADUXVKIi8C4ypgWwmBL2RVYfb80SHuayMFl18sfVZQ5j2WJW8nhpNI6mcx5U0m1WM7NfMtsm90upTHdprfpzAaUV1YQ=
+X-Received: by 2002:aca:d4c7:: with SMTP id
+	l190-v6mr841453oig.102.1529672312347; 
+	Fri, 22 Jun 2018 05:58:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Received: by 2002:a9d:40d3:0:0:0:0:0 with HTTP; Fri, 22 Jun 2018 05:58:12
+	-0700 (PDT)
+In-Reply-To: <CAFEAcA-xe-zX8_y3p_XKb2pHharJwwfL3ebtUU71E_EY+xvU3w@mail.gmail.com>
+References: <20180426140253.3918-1-peter.maydell@linaro.org>
+	<4f0eec20-64a6-fb8f-58ae-1fab9ef34f53@redhat.com>
+	<CAFEAcA86RRfz-YQivsPDRqAbZqOtdNpRnnBeKC24B5yYzY1=zg@mail.gmail.com>
+	<CAFEAcA-xe-zX8_y3p_XKb2pHharJwwfL3ebtUU71E_EY+xvU3w@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 22 Jun 2018 13:58:12 +0100
+Message-ID: <CAFEAcA-+vOgGj_Mbow2H4c1NNdjSNXibMqSmFF8KibKBbDeRsg@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: [Qemu-trivial] [PATCH] hw/core/register: Log unimplemented access
- via the 'unimp' debug level
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vl.c: Don't zero-initialize
+ statics for serial_hds
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,36 +71,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 12:47:30 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 12:58:34 -0000
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/core/register.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On 11 June 2018 at 14:56, Peter Maydell <peter.maydell@linaro.org> wrote:
+> Ping^2 for qemu-trivial?
 
-diff --git a/hw/core/register.c b/hw/core/register.c
-index d2d1636250..8ed7c6b927 100644
---- a/hw/core/register.c
-+++ b/hw/core/register.c
-@@ -203,7 +203,7 @@ void register_write_memory(void *opaque, hwaddr addr,
-     }
- 
-     if (!reg) {
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: write to unimplemented register " \
-+        qemu_log_mask(LOG_UNIMP, "%s: write to unimplemented register " \
-                       "at address: %#" PRIx64 "\n", reg_array->prefix, addr);
-         return;
-     }
-@@ -232,7 +232,7 @@ uint64_t register_read_memory(void *opaque, hwaddr addr,
-     }
- 
-     if (!reg) {
--        qemu_log_mask(LOG_GUEST_ERROR, "%s:  read to unimplemented register " \
-+        qemu_log_mask(LOG_UNIMP, "%s:  read to unimplemented register " \
-                       "at address: %#" PRIx64 "\n", reg_array->prefix, addr);
-         return 0;
-     }
--- 
-2.18.0.rc2
+Gave up and threw it into the latest target-arm pullreq :-)
 
+thanks
+-- PMM
 
