@@ -1,33 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWH3a-0003YX-Fy
-	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 04:04:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44479)
+	id 1fWHAP-0000BE-Eg
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Jun 2018 04:11:37 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46092)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWH3Y-0003Vh-73
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:04:33 -0400
+	(envelope-from <thuth@redhat.com>) id 1fWHAN-00008u-EI
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:11:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fWH3X-0003QZ-8g
-	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:04:32 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:44990 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fWHAM-0000FU-DX
+	for qemu-trivial@nongnu.org; Fri, 22 Jun 2018 04:11:35 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:47542 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fWH3G-0003BI-00; Fri, 22 Jun 2018 04:04:14 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
+	id 1fWHAE-0000Ai-Ip; Fri, 22 Jun 2018 04:11:26 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 62A074023132;
-	Fri, 22 Jun 2018 08:04:13 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2265A1133F8;
+	Fri, 22 Jun 2018 08:11:26 +0000 (UTC)
 Received: from [10.36.116.139] (ovpn-116-139.ams2.redhat.com [10.36.116.139])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id E4B3F2156888;
-	Fri, 22 Jun 2018 08:04:11 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id DF8B42026D6B;
+	Fri, 22 Jun 2018 08:11:24 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20180621180224.8312-1-f4bug@amsat.org>
-	<20180621180224.8312-2-f4bug@amsat.org>
+	<20180621180224.8312-4-f4bug@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -72,28 +70,28 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <114c5545-19e6-690a-78a7-4586aa57860d@redhat.com>
-Date: Fri, 22 Jun 2018 10:04:10 +0200
+Message-ID: <3b263d94-b684-3c59-1c34-62f075ea1c9f@redhat.com>
+Date: Fri, 22 Jun 2018 10:11:23 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180621180224.8312-2-f4bug@amsat.org>
+In-Reply-To: <20180621180224.8312-4-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Fri, 22 Jun 2018 08:04:13 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Fri, 22 Jun 2018 08:04:13 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	(mx1.redhat.com [10.11.55.1]);
+	Fri, 22 Jun 2018 08:11:26 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Fri, 22 Jun 2018 08:11:26 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 01/11] hw/input/pckbd: Use
- qemu_log_mask(GUEST_ERROR) instead of fprintf
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 03/11] hw/dma/omap_dma: Use
+ qemu_log_mask(UNIMP) instead of printf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,38 +103,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 22 Jun 2018 08:04:33 -0000
+X-List-Received-Date: Fri, 22 Jun 2018 08:11:36 -0000
 
 On 21.06.2018 20:02, Philippe Mathieu-Daud=C3=A9 wrote:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/input/pckbd.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+>  hw/dma/omap_dma.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 >=20
-> diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
-> index f33e3fc63d..1102d2a31b 100644
-> --- a/hw/input/pckbd.c
-> +++ b/hw/input/pckbd.c
-> @@ -22,6 +22,7 @@
->   * THE SOFTWARE.
+> diff --git a/hw/dma/omap_dma.c b/hw/dma/omap_dma.c
+> index abd18c67ea..ab3a1b0451 100644
+> --- a/hw/dma/omap_dma.c
+> +++ b/hw/dma/omap_dma.c
+> @@ -18,6 +18,7 @@
+>   * with this program; if not, see <http://www.gnu.org/licenses/>.
 >   */
 >  #include "qemu/osdep.h"
 > +#include "qemu/log.h"
->  #include "hw/hw.h"
->  #include "hw/isa/isa.h"
->  #include "hw/i386/pc.h"
-> @@ -308,7 +309,8 @@ static void kbd_write_command(void *opaque, hwaddr =
-addr,
->          /* ignore that */
+>  #include "qemu-common.h"
+>  #include "qemu/timer.h"
+>  #include "hw/arm/omap.h"
+> @@ -1439,8 +1440,9 @@ static int omap_dma_sys_read(struct omap_dma_s *s=
+, int offset,
+>      case 0x480:	/* DMA_PCh0_SR */
+>      case 0x482:	/* DMA_PCh1_SR */
+>      case 0x4c0:	/* DMA_PChD_SR_0 */
+> -        printf("%s: Physical Channel Status Registers not implemented.=
+\n",
+> -               __func__);
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s: Physical Channel Status Registers not imple=
+mented\n",
+> +                      __func__);
+>          *ret =3D 0xff;
 >          break;
->      default:
-> -        fprintf(stderr, "qemu: unsupported keyboard cmd=3D0x%02x\n", (=
-int)val);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "qemu: unsupported keyboard cmd=3D0x%02lx\n", va=
-l);
 
-Please remove the "qemu:" prefix while you're at it.
-
- Thomas
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
