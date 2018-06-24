@@ -1,61 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fWwIX-0003vS-Fs
-	for mharc-qemu-trivial@gnu.org; Sun, 24 Jun 2018 00:06:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42255)
+	id 1fWwIZ-0003xp-A7
+	for mharc-qemu-trivial@gnu.org; Sun, 24 Jun 2018 00:06:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42320)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWwIO-0003oX-Sv
-	for qemu-trivial@nongnu.org; Sun, 24 Jun 2018 00:06:41 -0400
+	id 1fWwIW-0003u9-G5
+	for qemu-trivial@nongnu.org; Sun, 24 Jun 2018 00:06:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWwIN-0003nY-TN
-	for qemu-trivial@nongnu.org; Sun, 24 Jun 2018 00:06:36 -0400
-Received: from mail-qk0-x22d.google.com ([2607:f8b0:400d:c09::22d]:46879)
+	id 1fWwIU-0003rR-Ij
+	for qemu-trivial@nongnu.org; Sun, 24 Jun 2018 00:06:43 -0400
+Received: from mail-qk0-x22c.google.com ([2607:f8b0:400d:c09::22c]:41520)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fWwIL-0003l0-JQ; Sun, 24 Jun 2018 00:06:33 -0400
-Received: by mail-qk0-x22d.google.com with SMTP id o2-v6so5822350qkc.13;
-	Sat, 23 Jun 2018 21:06:33 -0700 (PDT)
+	id 1fWwIR-0003q5-Hy; Sun, 24 Jun 2018 00:06:39 -0400
+Received: by mail-qk0-x22c.google.com with SMTP id d22-v6so169262qkc.8;
+	Sat, 23 Jun 2018 21:06:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=9BJrfe3YsXs6O2ov28k+EgGRDFxXxxjtMYmwMWtaRlY=;
-	b=L50UsBP56A6kQYytHBgjVB+2IkwYODPRw6w99sCL/dHKfscNTwq7luHrPD10XBj/B4
-	vx6nyoL3Cb6Mc+73BQ/Y+vCNrnggzOZs9/qZ9iQ/u9EadCgkJ0xegFqPFOOvwEzAQEMo
-	e2T8nNT88rysqiFEaGG3qla70kcxsFdHvEfFa27pXxkyBQKua7yZcxtKxsfunhJWi1al
-	1nKYf5WBrjYdkGuVahG+2R3rsNDsR5zSkFhG5Gzm2cL0dO3WEsbfYWVxH6+I/M/NKtj2
-	B/vNo+DOWBRsAYYjAtaKfeIfsdlokYQirWEzq8lNd6gy7cUjJwt/g3MXDiTC/Nx0Q1O1
-	xH+w==
+	bh=LBtULdpVGZHXXdJeP9a2uG196NqZT+OU//3yrTeMnA8=;
+	b=pOnkILMuWfO0HuAyo+XYeTUaMt2K6Qc75xN/WW+oUY3iEEab+Qbl4z3liVa6wc2WyQ
+	8W7u/KsVqC/3tzOYDrUX1xaQISEBw9APaIKOqy64krxFsnCoV73XVWiDt+t5fyiGO9xW
+	Jn45vvFox796GF39nwuHJL2mBdlr0Qq8v38lcChXPqJX+Ww7mDxHPtRzwRuWXLzTo870
+	p9yOrt2iTQ7oKg2dEiypyAmlaXaB0fxYD++Ynj91+z3NxCu+b6Dc5ZLIypIasBEOGXUA
+	QXIgOyvyFhO00lmQJCfDsw2xw21plWKTC5JIvR2Mm+bEw1lSFEaoQ3WjfvIB+p+KsPWG
+	FOsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=9BJrfe3YsXs6O2ov28k+EgGRDFxXxxjtMYmwMWtaRlY=;
-	b=oykA6JDfs+zH5TMKKj2lYmImX0syYaTKIEj2ElGAMccVnt+lwVybBVq2ERgkjE/qTr
-	QhR5xeHX9kSCrIPrcUoa4m2paweVeQE/SqO3AR93TqiC/XY7N0K4h5eGFCOf3rwkvkNv
-	PVm3343y9y3nAMte1kwWfj92df14RCQkc726XL1/w+x7SCNz4cs8H4P5AWOxlZ9/q8nB
-	xHFsvwXVd4pVkwNGSv6fjhVXm41x2BHZAcEqyy1USA1A8jkYuPrNyd3RuTuz3ZNVhCCX
-	M6VJIe3bx6hcGqSRDEgswVBpMgvba43wEto9hHt0vqt5yRADKLPAd4LjCa2EmDO0yvfj
-	q1hQ==
-X-Gm-Message-State: APt69E2KkJK9MfJhP2qS7It640fulP9cnXuiBO2POOaa5pLrSU0Qv9gB
-	Euoes7IsU3+nCnzZCgA44wI=
-X-Google-Smtp-Source: AAOMgpdW0MCkN297rfJ8YYZqiOgvCbxa6e7aUPu1wfL4WB4rjCNO/YbssGJRqt5Nhk7XCVyP51/lCA==
-X-Received: by 2002:a37:16d1:: with SMTP id
-	78-v6mr6700828qkw.271.1529813193169; 
-	Sat, 23 Jun 2018 21:06:33 -0700 (PDT)
+	bh=LBtULdpVGZHXXdJeP9a2uG196NqZT+OU//3yrTeMnA8=;
+	b=cniuiamDKz+kMhVt+VG+jJZYy/6NI7xdm+uS6LZ2KzeGX+fAwYSe+zRNbIzP83mtxL
+	TkCx84uVtfy74cZbQFtnVdGIZ2ju3LhofcmCkjgwqdTTkIwqaptHjfT/4WZsrDF1vHXI
+	KmnqqgUHxL1WniTmU+C/9EQpT2GKu0lO09De3E0t4ZjZGqGbsGlaRSHhEHCqwwRCAv5M
+	aDFr9s7mvx5o1GEs2ZFI5Tp3nXrx3eOj3+IrjjKRDeKzdpygj15gsdSmqmrICkyJn91K
+	amVzaUVLhfooSHti7pkJlRR4VYlEeigm8UKSn65Xr702QlJfTqjnBQqERSNaw82XR8l/
+	bSDw==
+X-Gm-Message-State: APt69E1reYbEi/WHSUd+JPSdnmP+X75jmXsBnVWibGsGhYT+1N1saCZi
+	0af7TOmH5jKnJzGd1xUM3GY=
+X-Google-Smtp-Source: ADUXVKLhdu57UsJFQFnqcKeJbqyJbjBvWh7A/d/n/VcXfrn3ALNICpkXNIKMfbA+jKoy/kFNjQQzAQ==
+X-Received: by 2002:a37:be06:: with SMTP id
+	o6-v6mr6531255qkf.162.1529813199058; 
+	Sat, 23 Jun 2018 21:06:39 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	d14-v6sm7145313qtn.90.2018.06.23.21.06.31
+	d14-v6sm7145313qtn.90.2018.06.23.21.06.36
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 23 Jun 2018 21:06:32 -0700 (PDT)
+	Sat, 23 Jun 2018 21:06:38 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	Thomas Huth <thuth@redhat.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
-Date: Sun, 24 Jun 2018 01:05:56 -0300
-Message-Id: <20180624040609.17572-4-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>
+Date: Sun, 24 Jun 2018 01:05:58 -0300
+Message-Id: <20180624040609.17572-6-f4bug@amsat.org>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20180624040609.17572-1-f4bug@amsat.org>
 References: <20180624040609.17572-1-f4bug@amsat.org>
@@ -64,9 +66,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c09::22d
-Subject: [Qemu-trivial] [PATCH v3 03/16] hw/dma/omap_dma: Use
- qemu_log_mask(UNIMP) instead of printf
+X-Received-From: 2607:f8b0:400d:c09::22c
+Subject: [Qemu-trivial] [PATCH v3 05/16] hw/ssi/omap_spi: Use
+ qemu_log_mask(GUEST_ERROR) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,36 +80,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 Jun 2018 04:06:41 -0000
+X-List-Received-Date: Sun, 24 Jun 2018 04:06:45 -0000
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- hw/dma/omap_dma.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ hw/ssi/omap_spi.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
-diff --git a/hw/dma/omap_dma.c b/hw/dma/omap_dma.c
-index abd18c67ea..ab3a1b0451 100644
---- a/hw/dma/omap_dma.c
-+++ b/hw/dma/omap_dma.c
-@@ -18,6 +18,7 @@
-  * with this program; if not, see <http://www.gnu.org/licenses/>.
+diff --git a/hw/ssi/omap_spi.c b/hw/ssi/omap_spi.c
+index 34163e5646..f278a55160 100644
+--- a/hw/ssi/omap_spi.c
++++ b/hw/ssi/omap_spi.c
+@@ -20,6 +20,7 @@
+  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   */
  #include "qemu/osdep.h"
 +#include "qemu/log.h"
- #include "qemu-common.h"
- #include "qemu/timer.h"
+ #include "hw/hw.h"
  #include "hw/arm/omap.h"
-@@ -1439,8 +1440,9 @@ static int omap_dma_sys_read(struct omap_dma_s *s, int offset,
-     case 0x480:	/* DMA_PCh0_SR */
-     case 0x482:	/* DMA_PCh1_SR */
-     case 0x4c0:	/* DMA_PChD_SR_0 */
--        printf("%s: Physical Channel Status Registers not implemented.\n",
--               __func__);
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s: Physical Channel Status Registers not implemented\n",
-+                      __func__);
-         *ret = 0xff;
+ 
+@@ -294,11 +295,15 @@ static void omap_mcspi_write(void *opaque, hwaddr addr,
+     case 0x2c:	/* MCSPI_CHCONF */
+         if ((value ^ s->ch[ch].config) & (3 << 14))	/* DMAR | DMAW */
+             omap_mcspi_dmarequest_update(s->ch + ch);
+-        if (((value >> 12) & 3) == 3)			/* TRM */
+-            fprintf(stderr, "%s: invalid TRM value (3)\n", __func__);
+-        if (((value >> 7) & 0x1f) < 3)			/* WL */
+-            fprintf(stderr, "%s: invalid WL value (%" PRIx64 ")\n",
+-                            __func__, (value >> 7) & 0x1f);
++        if (((value >> 12) & 3) == 3) { /* TRM */
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid TRM value (3)\n",
++                          __func__);
++        }
++        if (((value >> 7) & 0x1f) < 3) { /* WL */
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: invalid WL value (%" PRIx64 ")\n",
++                          __func__, (value >> 7) & 0x1f);
++        }
+         s->ch[ch].config = value & 0x7fffff;
          break;
  
 -- 
