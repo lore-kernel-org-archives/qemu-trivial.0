@@ -1,99 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fXKi9-000138-Aq
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 02:10:49 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56142)
+	id 1fXLKM-0001lk-LB
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 02:50:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33774)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fXKi6-00011E-SO
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 02:10:47 -0400
+	(envelope-from <armbru@redhat.com>) id 1fXLKH-0001iK-8u
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 02:50:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fXKi5-00075y-Vl
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 02:10:46 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43618 helo=mx1.redhat.com)
+	(envelope-from <armbru@redhat.com>) id 1fXLKG-0002dJ-Ah
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 02:50:13 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:40620 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fXKi0-00072N-Aq; Mon, 25 Jun 2018 02:10:40 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1fXLKB-0002Xd-S7; Mon, 25 Jun 2018 02:50:07 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E76C04075656;
-	Mon, 25 Jun 2018 06:10:39 +0000 (UTC)
-Received: from [10.36.116.31] (ovpn-116-31.ams2.redhat.com [10.36.116.31])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A07762026D5B;
-	Mon, 25 Jun 2018 06:10:38 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
-References: <20180622134036.23182-1-f4bug@amsat.org>
-	<20180622134036.23182-10-f4bug@amsat.org>
-	<b70145b2-5c24-d525-b23a-aaeb7ab960c5@redhat.com>
-	<39def888-734e-f4e6-8104-9534e611fcb1@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <797d336f-bfc6-050e-7f13-d9872049d197@redhat.com>
-Date: Mon, 25 Jun 2018 08:10:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	by mx1.redhat.com (Postfix) with ESMTPS id 91FEE8182D1F;
+	Mon, 25 Jun 2018 06:50:06 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-145.ams2.redhat.com
+	[10.36.116.145])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A24167C42;
+	Mon, 25 Jun 2018 06:50:04 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 622D611385D6; Mon, 25 Jun 2018 08:50:03 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	zhang.zhanghailiang@huawei.com,
+	Ben Warren <ben@skyportsystems.com>, qemu-trivial@nongnu.org,
+	Cornelia Huck <cohuck@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
+	Stefan Hajnoczi <stefanha@redhat.com>
+References: <1528866321-23886-5-git-send-email-thuth@redhat.com>
+	<20180613133840.GK24528@stefanha-x1.localdomain>
+	<20180613134452.GU19901@redhat.com>
+	<b0ebd968-797f-48e0-32c1-869c452feca9@redhat.com>
+	<20180613151942.GC19901@redhat.com>
+	<87k1r24quk.fsf@dusky.pond.sub.org>
+	<20180619171539.0adc90d6.cohuck@redhat.com>
+	<d4e02083-c372-3ce5-d4a2-4809579fc8f2@redhat.com>
+	<20180622181108.GY7451@localhost.localdomain>
+	<c10c2ffa-7ee2-5106-07d1-528df939d6ad@redhat.com>
+	<20180622193522.GI7451@localhost.localdomain>
+	<743d495e-51cd-8c8e-293e-026b8dece74a@redhat.com>
+Date: Mon, 25 Jun 2018 08:50:03 +0200
+In-Reply-To: <743d495e-51cd-8c8e-293e-026b8dece74a@redhat.com> (Paolo
+	Bonzini's message of "Fri, 22 Jun 2018 23:22:43 +0200")
+Message-ID: <87lgb3xsv8.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <39def888-734e-f4e6-8104-9534e611fcb1@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Mon, 25 Jun 2018 06:10:39 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Mon, 25 Jun 2018 06:10:39 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.11.55.8]);
+	Mon, 25 Jun 2018 06:50:06 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Mon, 25 Jun 2018 06:50:06 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH v2 09/14] hw/arm/omap: Use
- qemu_log_mask(GUEST_ERROR) instead of fprintf
+Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC PATCH 4/4] qemu-options: Do
+ not show -enable-kvm and -enable-hax in the docs anymore
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,43 +75,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Jun 2018 06:10:47 -0000
+X-List-Received-Date: Mon, 25 Jun 2018 06:50:14 -0000
 
-On 22.06.2018 22:13, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 06/22/2018 04:44 PM, Thomas Huth wrote:
->> On 22.06.2018 15:40, Philippe Mathieu-Daud=C3=A9 wrote:
->>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->>> ---
->>>  include/hw/arm/omap.h | 5 +++--
->>>  1 file changed, 3 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
->>> index 39abba753d..3867687b8c 100644
->>> --- a/include/hw/arm/omap.h
->>> +++ b/include/hw/arm/omap.h
->>> @@ -21,6 +21,7 @@
->>>  # define hw_omap_h		"omap.h"
->>>  #include "hw/irq.h"
->>>  #include "target/arm/cpu-qom.h"
->>> +#include "qemu/log.h"
->>> =20
->>>  # define OMAP_EMIFS_BASE	0x00000000
->>>  # define OMAP2_Q0_BASE		0x00000000
->>> @@ -962,8 +963,8 @@ void omap_mpu_wakeup(void *opaque, int irq, int r=
-eq);
->>>          fprintf(stderr, "%s: Bad register " OMAP_FMT_plx "\n",	\
->>>                          __func__, paddr)
->>
->> What about that fprintf above?
->=20
-> Well there are still many fprintf() in the OMAP codebase.
->=20
-> I didn't want to start a fprintf() cleanup, I just cherry-picked the
-> patches I used to make sens of the current (ugly) output.
->=20
-> With this series the console is 'usable'.
+Paolo Bonzini <pbonzini@redhat.com> writes:
 
-Ok, fair. But I guess you should mention this in the patch description.
+> On 22/06/2018 21:35, Eduardo Habkost wrote:
+>>>> Why is this better than using KVM by default if it's available?
+>>> The answer is (as almost always): Compatibility with migration. Nobody
+>>> dares to sacrifice that chicken :-(
+>> We can now kill it if we announce the feature as deprecated a
+>> couple of releases in advance.
+>> 
+>> If we declare that compatibility when the accelerator is omitted
+>> is deprecated in 3.0, in QEMU 3.3 we will be free to choose a
+>> different default accelerator.
+>
+> We can, we don't necessarily want it.
+>
+> The status quo is that people using KVM are invoking qemu as qemu-kvm,
+> people using TCG are invoking qemu as qemu-system-*.  All distros are
+> shipping a qemu-kvm or more rarely kvm binary, which is invariably a
+> wrapper script except for RHEL because RHEL doesn't have a qemu-system-*
+> binary at all.
+>
+> By the way, changing qemu-system-*'s default to e.g. RHEL's "kvm or tcg"
+> would not help distros that have "-accel kvm" in their /usr/bin/qemu-kvm
+> script.
 
- Thomas
+It wouldn't hurt them, either.
+
+Attentive distros could even replace the wrapper script by a link.
+
+> All in all, it seems simpler for me to take the status quo, which is
+> what non-RHEL distros do, and make it part of upstream.
+>
+> Paolo
 
