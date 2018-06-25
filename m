@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fXQqQ-0001Ma-DQ
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 08:43:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53928)
+	id 1fXQqR-0001Od-PU
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 08:43:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53986)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQqM-0001K7-8X
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:43:44 -0400
+	id 1fXQqP-0001Lm-Oq
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:43:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQqK-0007f9-2D
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:43:42 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:39695)
+	id 1fXQqO-0007ii-V5
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:43:45 -0400
+Received: from mail-qk0-x231.google.com ([2607:f8b0:400d:c09::231]:33603)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQqE-0007cm-Ic; Mon, 25 Jun 2018 08:43:34 -0400
-Received: by mail-qt0-x243.google.com with SMTP id c23-v6so2825649qtn.6;
-	Mon, 25 Jun 2018 05:43:34 -0700 (PDT)
+	id 1fXQqM-0007h5-23; Mon, 25 Jun 2018 08:43:42 -0400
+Received: by mail-qk0-x231.google.com with SMTP id c131-v6so7370120qkb.0;
+	Mon, 25 Jun 2018 05:43:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=ks9APs4FnU7N4alkvQahhOOn31iXi+wj6DszMhAYvWg=;
-	b=g7Moo/gcZII4UjwTdMNijLGMlp58osHCXMLjCdhlts+WpXeCJPQnepGBa2e/qG2lA1
-	QkNi3DjpMzmSDwMaRu3jf3YJncbL4/pr+jfpgbxsUksgoZDWXmA9v+sk2fnN5Lgbsc3Q
-	OlUkpSjABEU4l3dwOKcGGGroR2siOaKNs+E0q1uGeQNtYyXUhIRJKi3e+Vn3aQ7rmDW2
-	oUxanKaOCzMdqPTP3iqkdVHqs8+QVEEmyrSo0CeSwv/knE9Mruo9uaKDhFLXcwik8IO4
-	FO3Uz5Mfo5IvEu+YQFgq//2jNQSr/zqyLPW66v5t9xgpwewVs3ASxzt+vRRYjU3jGVp9
-	bNGg==
+	bh=+dMOwVwWsV1ekYTem4+xUaMUvfilyxHnQ6xvBi0DQCo=;
+	b=XlsPLnSA3XAdSqlGqamU3eAH1GX/pDsfpHxk9jEAZfFiwaLtsePgvTjYx5aJAEbeqF
+	cuRSoNkQ0Ortv5/VK7izgzr01IxkQ5PIl9fo5MzV2mN8sC1czS5adlGj3YUtKH6P1rFG
+	CI5ykXnP38QnIs9zjeX+j4zXw2GHsVLPOvSRqgqUcO2z1gqTA36Lg4Q+/Wu2Iz2p9B4z
+	75XPJq5ZFvPnYNtGSv0D5v1vPUsjON0dDRyLkn46cFFqstzdw72S+sokVEOrlpcOQjWX
+	kNOVFQV5e0IgUSO0p6bSTzgkbwVUGCuoSI8jFMeb4+SvdrbWKSm5IcojhWZNOMVobjCE
+	EmyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=ks9APs4FnU7N4alkvQahhOOn31iXi+wj6DszMhAYvWg=;
-	b=K0H2iLFUSb6pO8h+khCDNk3rWjoTLXRbKyKnk27boh7wfEZNFbQ8u0+/3Rjc8n+ELA
-	JDt2+SbEabjatoDlexxa21v8ZTHo2baxFs/yJiI1YNzq4oWO5a4b7jKWY49V/iBId4P6
-	73/2nfHprNCRr9avPLOulul/3sSKRZdlAIzR74zDVFOp4Kqq4XeY4EsF43R7/KzGGCLP
-	Zw7AqD+MoZGg0xfYjgFRohF10emjQ7ibFl5HvPUYbuUBXpD13IX2GHVfQpz8QoMIFleK
-	CHem6r5Do43d/5nhmVzHQdMjBH9/N1kzxvYiDAC8GtuMUqVTDjDTrNOrwfFQebPnwJWG
-	W4uw==
-X-Gm-Message-State: APt69E06bi9a1nShSdGBjxHqJCvFhIOJJQK9rm2FIVnO2VYv//hYkqnA
-	F4cLYWgIE7DTpVOCuDKQAvvR1Z4Sf+0=
-X-Google-Smtp-Source: AAOMgpewGeDMj11U0if5JuJoO+P2hqrtZB5VeGzRjJdjmeujXPU1fWFwPOzHVivsufWRbYRg0oOr9g==
-X-Received: by 2002:aed:3cae:: with SMTP id
-	d43-v6mr4827943qtf.379.1529930614062; 
-	Mon, 25 Jun 2018 05:43:34 -0700 (PDT)
+	bh=+dMOwVwWsV1ekYTem4+xUaMUvfilyxHnQ6xvBi0DQCo=;
+	b=KJU7z8dSzp9t0ipvIMU1o9zfmtU3dThb5wf/+7E86gvgsZox5wxTG2By9u/MRfAiG2
+	2K3rQRo3lbyqarxHV438mlD7+XCLTrAIhxA12/U2UBFP4WyN5fluLradVjJPd6Plu86U
+	yE1Kky/OoWtfME1goGPPqc1DD/DOAZMF3InV00OqC8P5MHcDbXTDwoiJVYSzWZpX0EXI
+	cWzG9hNIKEyS43I+Tmk9Qtd9/h64g4opaWsyeIQ+IlhPwzH8zj2mQk3ZQAPxUt1Gm+xk
+	pYKxGl5TjK+LuTqj2osvKEdplFd/jNRlUVuj8IJ+e9hV6maCP9Psa/T1D+BqHd4xaXJP
+	L2eA==
+X-Gm-Message-State: APt69E2AsR02jSzjrYIvQeywjKISbPlZeEiUB7ipdDFtGwnT+aCuNI+F
+	h/O0Q53SvuIT94ISoVVST/YF8Q4bWXc=
+X-Google-Smtp-Source: ADUXVKJuumF1Hko4OoH2wQURQqwvWDR+9no8YQgpUAhwjlQz7LmfKZQvuwOfWGMkynqoI44If91/GA==
+X-Received: by 2002:a37:9704:: with SMTP id
+	z4-v6mr10710222qkd.272.1529930621559; 
+	Mon, 25 Jun 2018 05:43:41 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	m15-v6sm12549562qtm.84.2018.06.25.05.43.31
+	m15-v6sm12549562qtm.84.2018.06.25.05.43.38
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 25 Jun 2018 05:43:33 -0700 (PDT)
+	Mon, 25 Jun 2018 05:43:40 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,9 +54,10 @@ To: Thomas Huth <thuth@redhat.com>,
 	Stefan Weil <sw@weilnetz.de>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	"Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>
-Date: Mon, 25 Jun 2018 09:42:02 -0300
-Message-Id: <20180625124238.25339-11-f4bug@amsat.org>
+	"Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	Stefan Berger <stefanb@linux.vnet.ibm.com>
+Date: Mon, 25 Jun 2018 09:42:04 -0300
+Message-Id: <20180625124238.25339-13-f4bug@amsat.org>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20180625124238.25339-1-f4bug@amsat.org>
 References: <20180625124238.25339-1-f4bug@amsat.org>
@@ -65,9 +66,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-trivial] [PATCH v5 10/46] hw/smbios: Use the IEC binary
- prefix definitions
+X-Received-From: 2607:f8b0:400d:c09::231
+Subject: [Qemu-trivial] [PATCH v5 12/46] hw/tpm: Use the IEC binary prefix
+ definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,7 +80,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Jun 2018 12:43:44 -0000
+X-List-Received-Date: Mon, 25 Jun 2018 12:43:46 -0000
 
 It eases code review, unit is explicit.
 
@@ -90,71 +91,32 @@ Patch generated using:
 and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/smbios/smbios.c | 15 ++++++---------
- 1 file changed, 6 insertions(+), 9 deletions(-)
+ include/hw/acpi/tpm.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-index 27a07e96f4..a27e54b2fa 100644
---- a/hw/smbios/smbios.c
-+++ b/hw/smbios/smbios.c
+diff --git a/include/hw/acpi/tpm.h b/include/hw/acpi/tpm.h
+index 46ac4dc581..3580ffd50c 100644
+--- a/include/hw/acpi/tpm.h
++++ b/include/hw/acpi/tpm.h
 @@ -16,6 +16,7 @@
-  */
+ #ifndef HW_ACPI_TPM_H
+ #define HW_ACPI_TPM_H
  
- #include "qemu/osdep.h"
 +#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu/config-file.h"
- #include "qemu/error-report.h"
-@@ -625,10 +626,6 @@ static void smbios_build_type_11_table(void)
-     SMBIOS_BUILD_TABLE_POST;
- }
+ #include "hw/registerfields.h"
  
--#define ONE_KB ((ram_addr_t)1 << 10)
--#define ONE_MB ((ram_addr_t)1 << 20)
--#define ONE_GB ((ram_addr_t)1 << 30)
--
- #define MAX_T16_STD_SZ 0x80000000 /* 2T in Kilobytes */
+ #define TPM_TIS_ADDR_BASE           0xFED40000
+@@ -176,7 +177,7 @@ REG32(CRB_DATA_BUFFER, 0x80)
+ #define TPM_CRB_ADDR_CTRL           (TPM_CRB_ADDR_BASE + A_CRB_CTRL_REQ)
+ #define TPM_CRB_R_MAX               R_CRB_DATA_BUFFER
  
- static void smbios_build_type_16_table(unsigned dimm_cnt)
-@@ -640,7 +637,7 @@ static void smbios_build_type_16_table(unsigned dimm_cnt)
-     t->location = 0x01; /* Other */
-     t->use = 0x03; /* System memory */
-     t->error_correction = 0x06; /* Multi-bit ECC (for Microsoft, per SeaBIOS) */
--    size_kb = QEMU_ALIGN_UP(ram_size, ONE_KB) / ONE_KB;
-+    size_kb = QEMU_ALIGN_UP(ram_size, KiB) / KiB;
-     if (size_kb < MAX_T16_STD_SZ) {
-         t->maximum_capacity = cpu_to_le32(size_kb);
-         t->extended_maximum_capacity = cpu_to_le64(0);
-@@ -668,7 +665,7 @@ static void smbios_build_type_17_table(unsigned instance, uint64_t size)
-     t->memory_error_information_handle = cpu_to_le16(0xFFFE); /* Not provided */
-     t->total_width = cpu_to_le16(0xFFFF); /* Unknown */
-     t->data_width = cpu_to_le16(0xFFFF); /* Unknown */
--    size_mb = QEMU_ALIGN_UP(size, ONE_MB) / ONE_MB;
-+    size_mb = QEMU_ALIGN_UP(size, MiB) / MiB;
-     if (size_mb < MAX_T17_STD_SZ) {
-         t->size = cpu_to_le16(size_mb);
-         t->extended_size = cpu_to_le32(0);
-@@ -707,8 +704,8 @@ static void smbios_build_type_19_table(unsigned instance,
+-#define TPM_LOG_AREA_MINIMUM_SIZE   (64 * 1024)
++#define TPM_LOG_AREA_MINIMUM_SIZE   (64 * KiB)
  
-     end = start + size - 1;
-     assert(end > start);
--    start_kb = start / ONE_KB;
--    end_kb = end / ONE_KB;
-+    start_kb = start / KiB;
-+    end_kb = end / KiB;
-     if (start_kb < UINT32_MAX && end_kb < UINT32_MAX) {
-         t->starting_address = cpu_to_le32(start_kb);
-         t->ending_address = cpu_to_le32(end_kb);
-@@ -869,7 +866,7 @@ void smbios_get_tables(const struct smbios_phys_mem_area *mem_array,
- 
-         smbios_build_type_11_table();
- 
--#define MAX_DIMM_SZ (16ll * ONE_GB)
-+#define MAX_DIMM_SZ (16 * GiB)
- #define GET_DIMM_SZ ((i < dimm_cnt - 1) ? MAX_DIMM_SZ \
-                                         : ((ram_size - 1) % MAX_DIMM_SZ) + 1)
- 
+ #define TPM_TCPA_ACPI_CLASS_CLIENT  0
+ #define TPM_TCPA_ACPI_CLASS_SERVER  1
 -- 
 2.18.0
 
