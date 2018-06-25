@@ -1,33 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fXKfr-00086C-Ub
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 02:08:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55791)
+	id 1fXKi9-000138-Aq
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 02:10:49 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56142)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fXKfp-00084J-Og
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 02:08:27 -0400
+	(envelope-from <thuth@redhat.com>) id 1fXKi6-00011E-SO
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 02:10:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fXKfm-0005id-HT
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 02:08:25 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43552 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fXKi5-00075y-Vl
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 02:10:46 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43618 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fXKfc-0005cL-VK; Mon, 25 Jun 2018 02:08:13 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
+	id 1fXKi0-00072N-Aq; Mon, 25 Jun 2018 02:10:40 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C208C401EF03;
-	Mon, 25 Jun 2018 06:08:10 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id E76C04075656;
+	Mon, 25 Jun 2018 06:10:39 +0000 (UTC)
 Received: from [10.36.116.31] (ovpn-116-31.ams2.redhat.com [10.36.116.31])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A4D837C44;
-	Mon, 25 Jun 2018 06:08:09 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A07762026D5B;
+	Mon, 25 Jun 2018 06:10:38 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
 References: <20180622134036.23182-1-f4bug@amsat.org>
-	<20180622134036.23182-8-f4bug@amsat.org>
-	<e98bac2c-ce0b-e226-3d96-004e46478f2f@redhat.com>
-	<8256c2d4-722c-299f-e8e3-42c1a7f68e1d@amsat.org>
+	<20180622134036.23182-10-f4bug@amsat.org>
+	<b70145b2-5c24-d525-b23a-aaeb7ab960c5@redhat.com>
+	<39def888-734e-f4e6-8104-9534e611fcb1@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -72,28 +72,28 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
 	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Message-ID: <0bf443e6-fd49-9aaf-43fb-f171edf5fd38@redhat.com>
-Date: Mon, 25 Jun 2018 08:08:08 +0200
+Message-ID: <797d336f-bfc6-050e-7f13-d9872049d197@redhat.com>
+Date: Mon, 25 Jun 2018 08:10:37 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <8256c2d4-722c-299f-e8e3-42c1a7f68e1d@amsat.org>
+In-Reply-To: <39def888-734e-f4e6-8104-9534e611fcb1@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.5]);
-	Mon, 25 Jun 2018 06:08:10 +0000 (UTC)
+	Mon, 25 Jun 2018 06:10:39 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Mon, 25 Jun 2018 06:08:10 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	Mon, 25 Jun 2018 06:10:39 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH v2 07/14] hw/i2c/omap_i2c: Use
- qemu_log_mask(UNIMP) instead of fprintf
+Subject: Re: [Qemu-trivial] [PATCH v2 09/14] hw/arm/omap: Use
+ qemu_log_mask(GUEST_ERROR) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,51 +105,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Jun 2018 06:08:27 -0000
+X-List-Received-Date: Mon, 25 Jun 2018 06:10:47 -0000
 
-On 22.06.2018 22:10, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 06/22/2018 04:38 PM, Thomas Huth wrote:
+On 22.06.2018 22:13, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 06/22/2018 04:44 PM, Thomas Huth wrote:
 >> On 22.06.2018 15:40, Philippe Mathieu-Daud=C3=A9 wrote:
 >>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 >>> ---
->>>  hw/i2c/omap_i2c.c | 20 ++++++++++++--------
->>>  1 file changed, 12 insertions(+), 8 deletions(-)
+>>>  include/hw/arm/omap.h | 5 +++--
+>>>  1 file changed, 3 insertions(+), 2 deletions(-)
 >>>
->>> diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
->>> index 26e3e5ebf6..690876e43e 100644
->>> --- a/hw/i2c/omap_i2c.c
->>> +++ b/hw/i2c/omap_i2c.c
->>> @@ -17,6 +17,7 @@
->>>   * with this program; if not, see <http://www.gnu.org/licenses/>.
->>>   */
->>>  #include "qemu/osdep.h"
+>>> diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+>>> index 39abba753d..3867687b8c 100644
+>>> --- a/include/hw/arm/omap.h
+>>> +++ b/include/hw/arm/omap.h
+>>> @@ -21,6 +21,7 @@
+>>>  # define hw_omap_h		"omap.h"
+>>>  #include "hw/irq.h"
+>>>  #include "target/arm/cpu-qom.h"
 >>> +#include "qemu/log.h"
->>>  #include "hw/hw.h"
->>>  #include "hw/i2c/i2c.h"
->>>  #include "hw/arm/omap.h"
->>> @@ -339,14 +340,15 @@ static void omap_i2c_write(void *opaque, hwaddr=
- addr,
->>>              }
->>>              break;
->>>          }
->>> -        if ((value & (1 << 15)) && !(value & (1 << 10))) {	/* MST */
->>> -            fprintf(stderr, "%s: I^2C slave mode not supported\n",
->>> -                            __func__);
->>> +        if ((value & (1 << 15)) && !(value & (1 << 10))) { /* MST */
+>>> =20
+>>>  # define OMAP_EMIFS_BASE	0x00000000
+>>>  # define OMAP2_Q0_BASE		0x00000000
+>>> @@ -962,8 +963,8 @@ void omap_mpu_wakeup(void *opaque, int irq, int r=
+eq);
+>>>          fprintf(stderr, "%s: Bad register " OMAP_FMT_plx "\n",	\
+>>>                          __func__, paddr)
 >>
->> Please keep the white spaces before the comment if you don't change
->> anything else.
+>> What about that fprintf above?
 >=20
-> This is a <tab> and checkpatch complains...
+> Well there are still many fprintf() in the OMAP codebase.
 >=20
-> I can use 4 spaces for this tab. I tried to align with other tab-aligne=
-d
-> comments I didn't modify, but the result is messier. Thus a simple spac=
-e.
+> I didn't want to start a fprintf() cleanup, I just cherry-picked the
+> patches I used to make sens of the current (ugly) output.
+>=20
+> With this series the console is 'usable'.
 
-Oh, sorry, I didn't notice that you've replaced a TAB here. I guess it's
-ok then. But why does checkpatch complain if it is just in the context
-of your modification? That's weird.
+Ok, fair. But I guess you should mention this in the patch description.
 
  Thomas
 
