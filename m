@@ -1,80 +1,99 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fX86s-0004EE-Uq
-	for mharc-qemu-trivial@gnu.org; Sun, 24 Jun 2018 12:43:30 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35175)
+	id 1fXKfr-00086C-Ub
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 02:08:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55791)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fX86n-0004BQ-Tc
-	for qemu-trivial@nongnu.org; Sun, 24 Jun 2018 12:43:29 -0400
+	(envelope-from <thuth@redhat.com>) id 1fXKfp-00084J-Og
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 02:08:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fX86k-0003TN-2A
-	for qemu-trivial@nongnu.org; Sun, 24 Jun 2018 12:43:23 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:45197)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fX86e-0003PZ-Rx; Sun, 24 Jun 2018 12:43:16 -0400
-Received: by mail-qt0-x242.google.com with SMTP id i18-v6so10057038qtp.12;
-	Sun, 24 Jun 2018 09:43:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=dVdNbgKOXmL9DbyZHXHpz28C7NXSwva7e7FncxGN+1E=;
-	b=XVSs6oaBkrrzd3hndvfUwRCi016VUyK7wFFr9zGO5K9hpohFGze9FMTtQhOgl13j/0
-	uA3bdV/ia5w3yp6AtWuZaZMza5fRxGD5YrfxYRdfuXnAkW9yfU2t4HhhSY/LM/q2wlj+
-	bFq6gsO3kdn5AdyXbg+jwnwgnF3UVhZtIYYCK4roEbVQgoRt8ABSWpKbpbyulGbe6308
-	lZ4r/DtEKDHJ502R8t/jurNuopvTaVGZOVC+t8PVhdkA3g5Ygrfb8WWc00BoL+xsouvd
-	FuHueiHe3QEQwty9wp7UzEZGXKJrF1pIL5rmAbBi+lMJ4NlI/W1DyfEpU4/1egP7E3JX
-	splA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=dVdNbgKOXmL9DbyZHXHpz28C7NXSwva7e7FncxGN+1E=;
-	b=TNBYpLlJGyueZMhsUV9NlHe6zCgK/SCXPZCmABD9gXdtDgI36LPfUKFTT509FbIwZA
-	t0D0W9PCv3CjrNKzMy8+DTU0CpRYJZqwm5dUYw0FhwjP5F8C/dMbckeXI1oRzQe0qi4n
-	lT2Ka0iSpBsVZxABU0YfgIO9vySi7T8ulFSrlWwjh8fWp6zE0ky8vSuwoY3kRhxO8EfY
-	ssjLRyf0QVSQo051MLmLuBO1Dhg+w6WASrdgx7lqFmhBkj8Uggk4MnwT/ioDqMqNaFum
-	77UPchGouuQzQtbpm3EviPsS059cMSHqf/MhV3nowuQGcWBcrP1YmwavJOyzLjIN2rsC
-	LTMQ==
-X-Gm-Message-State: APt69E3f/96aTQOkwVXY9SL6dY4rY7vzdTVtmG/xdZJ74MI0ZHiqUrGl
-	vAdzQMtUu8K6weT9TwdB0wSETGkW
-X-Google-Smtp-Source: AAOMgpc3It/b3yZK6PibYpBBBL2TTGzAlhv2PGX8YZeY02skJrdpapLcpGcz+0YjE1zGKnQBCoW/YQ==
-X-Received: by 2002:a0c:b753:: with SMTP id
-	q19-v6mr8350367qve.82.1529858596037; 
-	Sun, 24 Jun 2018 09:43:16 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.222])
-	by smtp.gmail.com with ESMTPSA id
-	x21-v6sm8140828qto.2.2018.06.24.09.43.11
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 24 Jun 2018 09:43:15 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>, Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	"open list:Block layer core" <qemu-block@nongnu.org>
-References: <20180621171257.14897-1-f4bug@amsat.org>
-	<20180621171257.14897-12-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <6bed73d5-7af4-7513-c714-4a25f3c7b489@amsat.org>
-Date: Sun, 24 Jun 2018 13:43:10 -0300
+	(envelope-from <thuth@redhat.com>) id 1fXKfm-0005id-HT
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 02:08:25 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43552 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1fXKfc-0005cL-VK; Mon, 25 Jun 2018 02:08:13 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C208C401EF03;
+	Mon, 25 Jun 2018 06:08:10 +0000 (UTC)
+Received: from [10.36.116.31] (ovpn-116-31.ams2.redhat.com [10.36.116.31])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A4D837C44;
+	Mon, 25 Jun 2018 06:08:09 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
+References: <20180622134036.23182-1-f4bug@amsat.org>
+	<20180622134036.23182-8-f4bug@amsat.org>
+	<e98bac2c-ce0b-e226-3d96-004e46478f2f@redhat.com>
+	<8256c2d4-722c-299f-e8e3-42c1a7f68e1d@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <0bf443e6-fd49-9aaf-43fb-f171edf5fd38@redhat.com>
+Date: Mon, 25 Jun 2018 08:08:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180621171257.14897-12-f4bug@amsat.org>
+In-Reply-To: <8256c2d4-722c-299f-e8e3-42c1a7f68e1d@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-trivial] [PATCH 11/11] hw/block/pflash_cfi: Convert from
- DPRINTF() macro to trace events
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Mon, 25 Jun 2018 06:08:10 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Mon, 25 Jun 2018 06:08:10 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [PATCH v2 07/14] hw/i2c/omap_i2c: Use
+ qemu_log_mask(UNIMP) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,266 +105,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 Jun 2018 16:43:29 -0000
+X-List-Received-Date: Mon, 25 Jun 2018 06:08:27 -0000
 
-On 06/21/2018 02:12 PM, Philippe Mathieu-Daudé wrote:
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/block/pflash_cfi01.c | 42 +++++++++++++++--------------------------
->  hw/block/pflash_cfi02.c | 18 +++++++++---------
->  hw/block/trace-events   | 13 +++++++++++++
->  3 files changed, 37 insertions(+), 36 deletions(-)
-> 
-> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-> index e4b5b3c273..bffb4c40e7 100644
-> --- a/hw/block/pflash_cfi01.c
-> +++ b/hw/block/pflash_cfi01.c
-> @@ -47,6 +47,7 @@
->  #include "qemu/log.h"
->  #include "hw/sysbus.h"
->  #include "sysemu/sysemu.h"
-> +#include "trace.h"
->  
->  #define PFLASH_BUG(fmt, ...) \
->  do { \
-> @@ -120,7 +121,7 @@ static void pflash_timer (void *opaque)
->  {
->      pflash_t *pfl = opaque;
->  
-> -    DPRINTF("%s: command %02x done\n", __func__, pfl->cmd);
-> +    trace_pflash_timer_expired(pfl->cmd);
->      /* Reset flash */
->      pfl->status ^= 0x80;
->      memory_region_rom_device_set_romd(&pfl->mem, true);
-> @@ -218,15 +219,14 @@ static uint32_t pflash_devid_query(pflash_t *pfl, hwaddr offset)
->      switch (boff & 0xFF) {
->      case 0:
->          resp = pfl->ident0;
-> -        DPRINTF("%s: Manufacturer Code %04x\n", __func__, resp);
-> +        trace_pflash_manufacturer_id(resp);
->          break;
->      case 1:
->          resp = pfl->ident1;
-> -        DPRINTF("%s: Device ID Code %04x\n", __func__, resp);
-> +        trace_pflash_device_id(resp);
->          break;
->      default:
-> -        DPRINTF("%s: Read Device Information offset=%x\n", __func__,
-> -                (unsigned)offset);
-> +        trace_pflash_device_info(offset);
->          return 0;
->          break;
->      }
-> @@ -251,8 +251,7 @@ static uint32_t pflash_data_read(pflash_t *pfl, hwaddr offset,
->      switch (width) {
->      case 1:
->          ret = p[offset];
-> -        DPRINTF("%s: data offset " TARGET_FMT_plx " %02x\n",
-> -                __func__, offset, ret);
-> +        trace_pflash_data_read8(offset, ret);
->          break;
->      case 2:
->          if (be) {
-> @@ -262,8 +261,7 @@ static uint32_t pflash_data_read(pflash_t *pfl, hwaddr offset,
->              ret = p[offset];
->              ret |= p[offset + 1] << 8;
->          }
-> -        DPRINTF("%s: data offset " TARGET_FMT_plx " %04x\n",
-> -                __func__, offset, ret);
-> +        trace_pflash_data_read16(offset, ret);
->          break;
->      case 4:
->          if (be) {
-> @@ -277,8 +275,7 @@ static uint32_t pflash_data_read(pflash_t *pfl, hwaddr offset,
->              ret |= p[offset + 2] << 16;
->              ret |= p[offset + 3] << 24;
->          }
-> -        DPRINTF("%s: data offset " TARGET_FMT_plx " %08x\n",
-> -                __func__, offset, ret);
-> +        trace_pflash_data_read32(offset, ret);
->          break;
->      default:
->          DPRINTF("BUG in %s\n", __func__);
-> @@ -294,11 +291,7 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
->      uint32_t ret;
->  
->      ret = -1;
-> -
-> -#if 0
-> -    DPRINTF("%s: reading offset " TARGET_FMT_plx " under cmd %02x width %d\n",
-> -            __func__, offset, pfl->cmd, width);
-> -#endif
-> +    trace_pflash_read(offset, pfl->cmd, width, pfl->wcycle);
->      switch (pfl->cmd) {
->      default:
->          /* This should never happen : reset state & treat it as a read */
-> @@ -349,15 +342,14 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
->              switch (boff) {
->              case 0:
->                  ret = pfl->ident0 << 8 | pfl->ident1;
-> -                DPRINTF("%s: Manufacturer Code %04x\n", __func__, ret);
-> +                trace_pflash_manufacturer_id(ret);
->                  break;
->              case 1:
->                  ret = pfl->ident2 << 8 | pfl->ident3;
-> -                DPRINTF("%s: Device ID Code %04x\n", __func__, ret);
-> +                trace_pflash_device_id(ret);
->                  break;
->              default:
-> -                DPRINTF("%s: Read Device Information boff=%x\n", __func__,
-> -                        (unsigned)boff);
-> +                trace_pflash_device_info(boff);
->                  ret = 0;
->                  break;
->              }
-> @@ -425,9 +417,7 @@ static inline void pflash_data_write(pflash_t *pfl, hwaddr offset,
->  {
->      uint8_t *p = pfl->storage;
->  
-> -    DPRINTF("%s: block write offset " TARGET_FMT_plx
-> -            " value %x counter %016" PRIx64 "\n",
-> -            __func__, offset, value, pfl->counter);
-> +    trace_pflash_data_write(offset, value, width, pfl->counter);
->      switch (width) {
->      case 1:
->          p[offset] = value;
-> @@ -466,9 +456,7 @@ static void pflash_write(pflash_t *pfl, hwaddr offset,
->  
->      cmd = value;
->  
-> -    DPRINTF("%s: writing offset " TARGET_FMT_plx " value %08x width %d wcycle 0x%x\n",
-> -            __func__, offset, value, width, pfl->wcycle);
-> -
-> +    trace_pflash_write(offset, value, width, pfl->wcycle);
->      if (!pfl->wcycle) {
->          /* Set the device in I/O access mode */
->          memory_region_rom_device_set_romd(&pfl->mem, false);
-> @@ -656,8 +644,8 @@ static void pflash_write(pflash_t *pfl, hwaddr offset,
->                    "\n", __func__, offset, pfl->wcycle, pfl->cmd, value);
->  
->   reset_flash:
-> +    trace_pflash_reset();
->      memory_region_rom_device_set_romd(&pfl->mem, true);
-> -
->      pfl->wcycle = 0;
->      pfl->cmd = 0;
->  }
-> diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-> index 6c18e5e578..0f8b7b8c7b 100644
-> --- a/hw/block/pflash_cfi02.c
-> +++ b/hw/block/pflash_cfi02.c
-> @@ -43,6 +43,7 @@
->  #include "sysemu/block-backend.h"
->  #include "qemu/host-utils.h"
->  #include "hw/sysbus.h"
-> +#include "trace.h"
->  
->  //#define PFLASH_DEBUG
->  #ifdef PFLASH_DEBUG
-> @@ -124,7 +125,7 @@ static void pflash_timer (void *opaque)
->  {
->      pflash_t *pfl = opaque;
->  
-> -    DPRINTF("%s: command %02x done\n", __func__, pfl->cmd);
-> +    trace_pflash_timer_expired(pfl->cmd);
->      /* Reset flash */
->      pfl->status ^= 0x80;
->      if (pfl->bypass) {
-> @@ -143,8 +144,8 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
->      uint32_t ret;
->      uint8_t *p;
->  
-> -    DPRINTF("%s: offset " TARGET_FMT_plx "\n", __func__, offset);
->      ret = -1;
-> +    trace_pflash_read(offset, pfl->cmd, width, pfl->wcycle);
->      /* Lazy reset to ROMD mode after a certain amount of read accesses */
->      if (!pfl->rom_mode && pfl->wcycle == 0 &&
->          ++pfl->read_counter > PFLASH_LAZY_ROMD_THRESHOLD) {
-> @@ -172,7 +173,7 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
->          switch (width) {
->          case 1:
->              ret = p[offset];
-> -//            DPRINTF("%s: data offset %08x %02x\n", __func__, offset, ret);
-> +            trace_pflash_data_read8(offset, ret);
->              break;
->          case 2:
->              if (be) {
-> @@ -182,7 +183,7 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
->                  ret = p[offset];
->                  ret |= p[offset + 1] << 8;
->              }
-> -//            DPRINTF("%s: data offset %08x %04x\n", __func__, offset, ret);
-> +            trace_pflash_data_read16(offset, ret);
->              break;
->          case 4:
->              if (be) {
-> @@ -196,7 +197,7 @@ static uint32_t pflash_read (pflash_t *pfl, hwaddr offset,
->                  ret |= p[offset + 2] << 16;
->                  ret |= p[offset + 3] << 24;
->              }
-> -//            DPRINTF("%s: data offset %08x %08x\n", __func__, offset, ret);
-> +            trace_pflash_data_read32(offset, ret);
->              break;
->          }
->          break;
-> @@ -274,8 +275,7 @@ static void pflash_write (pflash_t *pfl, hwaddr offset,
->  #endif
->          goto reset_flash;
->      }
-> -    DPRINTF("%s: offset " TARGET_FMT_plx " %08x %d %d\n", __func__,
-> -            offset, value, width, pfl->wcycle);
-> +    trace_pflash_write(offset, value, width, pfl->wcycle);
->      offset &= pfl->chip_len - 1;
->  
->      DPRINTF("%s: offset " TARGET_FMT_plx " %08x %d\n", __func__,
-> @@ -345,8 +345,7 @@ static void pflash_write (pflash_t *pfl, hwaddr offset,
->              /* We need another unlock sequence */
->              goto check_unlock0;
->          case 0xA0:
-> -            DPRINTF("%s: write data offset " TARGET_FMT_plx " %08x %d\n",
-> -                    __func__, offset, value, width);
-> +            trace_pflash_data_write(offset, value, width, 0);
->              p = pfl->storage;
->              if (!pfl->ro) {
->                  switch (width) {
-> @@ -483,6 +482,7 @@ static void pflash_write (pflash_t *pfl, hwaddr offset,
->  
->      /* Reset flash */
->   reset_flash:
-> +    trace_pflash_reset();
->      pfl->bypass = 0;
->      pfl->wcycle = 0;
->      pfl->cmd = 0;
-> diff --git a/hw/block/trace-events b/hw/block/trace-events
-> index d842c45409..f1017fac39 100644
-> --- a/hw/block/trace-events
-> +++ b/hw/block/trace-events
-> @@ -4,6 +4,19 @@
->  fdc_ioport_read(uint8_t reg, uint8_t value) "read reg 0x%02x val 0x%02x"
->  fdc_ioport_write(uint8_t reg, uint8_t value) "write reg 0x%02x val 0x%02x"
->  
-> +# hw/block/pflash_cfi0?.c
-> +pflash_reset(void) "reset"
-> +pflash_read(uint64_t offset, uint8_t cmd, int width, uint8_t wcycle) "offset:0x%04"PRIx64" cmd:0x%02x width:%d wcycle:%u"
-> +pflash_write(uint64_t offset, uint32_t value, int width, uint8_t wcycle) "offset:0x%04"PRIx64" value:0x%03x width:%d wcycle:%u"
-> +pflash_timer_expired(uint8_t cmd) "command 0x%02x done"
-> +pflash_data_read8(uint64_t offset, uint32_t value) "data offset:0x%04"PRIx64" value:0x%02x"
-> +pflash_data_read16(uint64_t offset, uint32_t value) "data offset:0x%04"PRIx64" value:0x%04x"
-> +pflash_data_read32(uint64_t offset, uint32_t value) "data offset:0x%04"PRIx64" value:0x%08x"
-> +pflash_data_write(uint64_t offset, uint32_t value, int width, uint64_t counter) "data offset:0x%04"PRIx64" value:0x%08x width:%d counter:0x%016"PRIx64
-> +pflash_manufacturer_id(uint16_t id) "Read Manufacturer ID: 0x%04x"
-> +pflash_device_id(uint16_t id) "Read Device ID: 0x%04x"
-> +pflash_device_info(uint64_t offset) "Read Device Information offset:0x%04lx"
+On 22.06.2018 22:10, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 06/22/2018 04:38 PM, Thomas Huth wrote:
+>> On 22.06.2018 15:40, Philippe Mathieu-Daud=C3=A9 wrote:
+>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>>> ---
+>>>  hw/i2c/omap_i2c.c | 20 ++++++++++++--------
+>>>  1 file changed, 12 insertions(+), 8 deletions(-)
+>>>
+>>> diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
+>>> index 26e3e5ebf6..690876e43e 100644
+>>> --- a/hw/i2c/omap_i2c.c
+>>> +++ b/hw/i2c/omap_i2c.c
+>>> @@ -17,6 +17,7 @@
+>>>   * with this program; if not, see <http://www.gnu.org/licenses/>.
+>>>   */
+>>>  #include "qemu/osdep.h"
+>>> +#include "qemu/log.h"
+>>>  #include "hw/hw.h"
+>>>  #include "hw/i2c/i2c.h"
+>>>  #include "hw/arm/omap.h"
+>>> @@ -339,14 +340,15 @@ static void omap_i2c_write(void *opaque, hwaddr=
+ addr,
+>>>              }
+>>>              break;
+>>>          }
+>>> -        if ((value & (1 << 15)) && !(value & (1 << 10))) {	/* MST */
+>>> -            fprintf(stderr, "%s: I^2C slave mode not supported\n",
+>>> -                            __func__);
+>>> +        if ((value & (1 << 15)) && !(value & (1 << 10))) { /* MST */
+>>
+>> Please keep the white spaces before the comment if you don't change
+>> anything else.
+>=20
+> This is a <tab> and checkpatch complains...
+>=20
+> I can use 4 spaces for this tab. I tried to align with other tab-aligne=
+d
+> comments I didn't modify, but the result is messier. Thus a simple spac=
+e.
 
-As noted by Thomas Huth in another review, this format is incorrect.
+Oh, sorry, I didn't notice that you've replaced a TAB here. I guess it's
+ok then. But why does checkpatch complain if it is just in the context
+of your modification? That's weird.
 
-Correct (lx -> PRIx64):
-pflash_device_info(uint64_t offset) "Read Device Information
-offset:0x%04"PRIx64
-
-> +
->  # hw/block/virtio-blk.c
->  virtio_blk_req_complete(void *vdev, void *req, int status) "vdev %p req %p status %d"
->  virtio_blk_rw_complete(void *vdev, void *req, int ret) "vdev %p req %p ret %d"
-> 
+ Thomas
 
