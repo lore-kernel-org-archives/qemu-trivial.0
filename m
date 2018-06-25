@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fXQre-0002XZ-1J
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 08:45:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54952)
+	id 1fXQrf-0002Z5-6W
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 08:45:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55006)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQrW-0002Pw-4x
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:44:56 -0400
+	id 1fXQrY-0002Su-Qb
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:44:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQrT-0008DC-1h
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:44:54 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:33114)
+	id 1fXQrX-0008FX-Mb
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:44:56 -0400
+Received: from mail-qk0-x229.google.com ([2607:f8b0:400d:c09::229]:34943)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQrK-0008AS-I1; Mon, 25 Jun 2018 08:44:42 -0400
-Received: by mail-qt0-x243.google.com with SMTP id l10-v6so11767538qtj.0;
-	Mon, 25 Jun 2018 05:44:42 -0700 (PDT)
+	id 1fXQrU-0008De-4y; Mon, 25 Jun 2018 08:44:52 -0400
+Received: by mail-qk0-x229.google.com with SMTP id u21-v6so1774738qku.2;
+	Mon, 25 Jun 2018 05:44:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=AQSf+SgqPbtXXQJ8tJJNF5OBAvAGjGM62qQyfslxu+k=;
-	b=lg5+nMZWe9qRCIj7fk7TOTlqzqCDVlbzW6TPaHKmOspSRAUej3W1C35yp5jaisTpeZ
-	WM8V1qRm9th8g6ixE0HoTqF0T9NLYNj5q2qAfgxIS3chI3z7Na46i2IW9Ff/EKB+Xk9e
-	mCHZy2kV2bEhVynI1vni4aVqtwByq7zmm68z5BFrJS5Aaoo6f/lwCocJMOZnjlKcYIKZ
-	gMR9a2SKkYbgJnBvSn3Jb7+UldYtdCcGCrNW+QWv2ayBsJ/POTYsV7XkRlA0k8GWN+wm
-	HyQDk+O8Ag49A8s+1llvUwk+TVrZdtE1qiK52F9x7J4jZaNAM0wZRSXpGH4U1y2OmQti
-	hwZw==
+	bh=cT4R+V0+fb3Ve2pbM3Q3ZJUYFAn12RDM/rctRSApmKQ=;
+	b=i9/+l0bAYdWydMKRlvyfbtGrHmnOyY5vb9mmXV1NGlJ0LdDuLuz5omcuMedeFSk2qN
+	LeAUa9Pt2aKd9mYnZQZi6U0X7cELjfn4v1Sfm6FHoaHRzDaGx5GNy4GjVe9mjk5JgMDP
+	90AHn7DDjv+7dayOJb1u3W1uAygsokq9tekyVsKbu+SZyourmNiaU3wBP62vVM2Fxs6Q
+	T4OpFOXmN65lQ2d8ZGy1qgFiyNTMP+TwQbXUF4ou8hEUHUJD+Z5uk2LlCiVz8rb+YMfm
+	cuCkurH7bdvLYrb1RUp9va6DoqmkZC7eO8c4IFB/TBMjs7y/8FK+pLcFyCqhCqNcIr4Z
+	mEmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=AQSf+SgqPbtXXQJ8tJJNF5OBAvAGjGM62qQyfslxu+k=;
-	b=Be19ET6hW/ZkHCOunXtPka+GnjJZHNF3F7YqB35I//MvNo26+Q5/7//boznOjxlAo7
-	/knPG6O1GTGjBj7cvOb6nKI9f5hm4Lv2amV2S4KJ2upEvqvDCmHZ43KSM61q2cqGjq/R
-	TuAGWYTFpsHjmBpw8bUqT5abYEcqnlglWmzepAYUSotRnWKFdZOlqEWLypUySzWb0uaO
-	pFQQx1bjTlMRtu+v+j8Sqmj/LZSdNkvCWh+dWwvAJ80VVsaA7Wslpg6DTL7yZUxZOWGd
-	A3bcYnqO8hq5yCq3aislpPBwvnn+PaemeFLWMz8ddc+eeA0tt/7np73YEOSS+x5AGs/R
-	V4IA==
-X-Gm-Message-State: APt69E2FOKYiGdqzuzmNZaAF7ZXsLZTfArSBBYZqgUyoLWcX/mOLjzdL
-	9syVSnf3w3PGX3IAm/EH6po=
-X-Google-Smtp-Source: AAOMgpdYVUnHrw6g4YFLU0xBKGqw33dq1AVQUlhq0WIXHv3x6rXxEJEnQCQnAkaPtd/C2kXTlb/yVA==
-X-Received: by 2002:aed:3cae:: with SMTP id
-	d43-v6mr4831550qtf.379.1529930681751; 
-	Mon, 25 Jun 2018 05:44:41 -0700 (PDT)
+	bh=cT4R+V0+fb3Ve2pbM3Q3ZJUYFAn12RDM/rctRSApmKQ=;
+	b=ObTv4aO12/XOrkJlyc2/ou6w7gTBAHGbx3E2PAPFiyarN2kGJbmfLCmrpcN9pyYNdt
+	dwWfdTJDvGupnGQLmLEwVUIwpCjQXT0vp+auR+zyV6a2y0/AohpsrUFh3XyVBQeqGDn8
+	35wZET53GZ+TSqFsuvp7nCFPSIFKP4FAv9QGGWH9SlQc9mmYGdPg4ZZCOly4aQuDMifs
+	I7R+9S/eT9H1ADtbYozCVZC/KwU3VQbUaVBwHVqFK5xatIwKKd2E/5Y+/6VcrWRvYsz/
+	uaGvnl9U3x8PfF4DMYmtCnONxWEBaGzyq5x8bCV6/RWQkM4OumWkwJ++pOoD334qdd6i
+	DhAQ==
+X-Gm-Message-State: APt69E31tVCePcdid0ewhIbGizuaQyKNf3cZp0/NkgUo2J2ZZbScUCze
+	VV8T++0tIx+t76w7wQ/env4=
+X-Google-Smtp-Source: AAOMgpc6+eFjLLxryE8CqvMAaTEyuLsr4KPsWuPs2H1ERkXCeZPRp6PERNim/XyplO0mj8Y39GB5/g==
+X-Received: by 2002:a37:7886:: with SMTP id
+	t128-v6mr10389896qkc.367.1529930691596; 
+	Mon, 25 Jun 2018 05:44:51 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	m15-v6sm12549562qtm.84.2018.06.25.05.44.38
+	m15-v6sm12549562qtm.84.2018.06.25.05.44.49
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 25 Jun 2018 05:44:41 -0700 (PDT)
+	Mon, 25 Jun 2018 05:44:51 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,12 +54,9 @@ To: Thomas Huth <thuth@redhat.com>,
 	Stefan Weil <sw@weilnetz.de>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	David Gibson <david@gibson.dropbear.id.au>, Alexander Graf <agraf@suse.de>,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	qemu-ppc@nongnu.org (open list:sPAPR)
-Date: Mon, 25 Jun 2018 09:42:24 -0300
-Message-Id: <20180625124238.25339-33-f4bug@amsat.org>
+	Gerd Hoffmann <kraxel@redhat.com>
+Date: Mon, 25 Jun 2018 09:42:27 -0300
+Message-Id: <20180625124238.25339-36-f4bug@amsat.org>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20180625124238.25339-1-f4bug@amsat.org>
 References: <20180625124238.25339-1-f4bug@amsat.org>
@@ -68,8 +65,8 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-trivial] [PATCH v5 32/46] hw/ppc: Use the IEC binary prefix
+X-Received-From: 2607:f8b0:400d:c09::229
+Subject: [Qemu-trivial] [PATCH v5 35/46] hw/usb: Use the IEC binary prefix
  definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -82,7 +79,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Jun 2018 12:44:57 -0000
+X-List-Received-Date: Mon, 25 Jun 2018 12:44:58 -0000
 
 It eases code review, unit is explicit.
 
@@ -93,642 +90,106 @@ Patch generated using:
 and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
 ---
- hw/ppc/mac.h           |  3 ++-
- include/hw/ppc/spapr.h |  5 +++--
- hw/nvram/spapr_nvram.c | 11 +++++++----
- hw/pci-host/prep.c     |  3 ++-
- hw/ppc/e500.c          | 13 +++++++------
- hw/ppc/e500plat.c      |  3 ++-
- hw/ppc/mac_newworld.c  |  1 -
- hw/ppc/mac_oldworld.c  |  9 ++++-----
- hw/ppc/ppc405_boards.c |  9 +++++----
- hw/ppc/ppc405_uc.c     |  7 ++++---
- hw/ppc/ppc440_bamboo.c |  5 +++--
- hw/ppc/ppc4xx_devs.c   | 22 ++++++++++++----------
- hw/ppc/ppce500_spin.c  |  3 ++-
- hw/ppc/prep.c          |  4 ++--
- hw/ppc/rs6000_mc.c     | 13 +++++++------
- hw/ppc/sam460ex.c      | 14 +++++++-------
- hw/ppc/spapr.c         |  2 +-
- hw/ppc/virtex_ml507.c  |  7 ++++---
- 18 files changed, 74 insertions(+), 60 deletions(-)
+ hw/usb/ccid-card-passthru.c   | 5 +++--
+ hw/usb/combined-packet.c      | 3 ++-
+ hw/usb/dev-smartcard-reader.c | 3 ++-
+ hw/usb/redirect.c             | 3 ++-
+ 4 files changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/hw/ppc/mac.h b/hw/ppc/mac.h
-index c0217e66f2..41fd289e81 100644
---- a/hw/ppc/mac.h
-+++ b/hw/ppc/mac.h
-@@ -26,6 +26,7 @@
- #ifndef PPC_MAC_H
- #define PPC_MAC_H
- 
-+#include "qemu/units.h"
- #include "exec/memory.h"
- #include "hw/boards.h"
- #include "hw/sysbus.h"
-@@ -38,7 +39,7 @@
- /* SMP is not enabled, for now */
- #define MAX_CPUS 1
- 
--#define BIOS_SIZE     (1024 * 1024)
-+#define BIOS_SIZE        (1 * MiB)
- #define NVRAM_SIZE        0x2000
- #define PROM_FILENAME    "openbios-ppc"
- #define PROM_ADDR         0xfff00000
-diff --git a/include/hw/ppc/spapr.h b/include/hw/ppc/spapr.h
-index 7e028164ba..7e5de1a6fd 100644
---- a/include/hw/ppc/spapr.h
-+++ b/include/hw/ppc/spapr.h
-@@ -1,6 +1,7 @@
- #ifndef HW_SPAPR_H
- #define HW_SPAPR_H
- 
-+#include "qemu/units.h"
- #include "sysemu/dma.h"
- #include "hw/boards.h"
- #include "hw/ppc/xics.h"
-@@ -749,8 +750,8 @@ int spapr_rng_populate_dt(void *fdt);
-  */
- #define SPAPR_MAX_RAM_SLOTS     32
- 
--/* 1GB alignment for device memory region */
--#define SPAPR_DEVICE_MEM_ALIGN (1ULL << 30)
-+/* 1GB alignment for hotplug memory region */
-+#define SPAPR_DEVICE_MEM_ALIGN (1 * GiB)
- 
- /*
-  * Number of 32 bit words in each LMB list entry in ibm,dynamic-memory
-diff --git a/hw/nvram/spapr_nvram.c b/hw/nvram/spapr_nvram.c
-index 4a0aec8e1d..bed1557d83 100644
---- a/hw/nvram/spapr_nvram.c
-+++ b/hw/nvram/spapr_nvram.c
-@@ -23,6 +23,7 @@
+diff --git a/hw/usb/ccid-card-passthru.c b/hw/usb/ccid-card-passthru.c
+index 25fb19b0d7..e75d433e56 100644
+--- a/hw/usb/ccid-card-passthru.c
++++ b/hw/usb/ccid-card-passthru.c
+@@ -9,6 +9,7 @@
   */
  
  #include "qemu/osdep.h"
 +#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -47,9 +48,9 @@ typedef struct sPAPRNVRAM {
- #define VIO_SPAPR_NVRAM(obj) \
-      OBJECT_CHECK(sPAPRNVRAM, (obj), TYPE_VIO_SPAPR_NVRAM)
- 
--#define MIN_NVRAM_SIZE 8192
--#define DEFAULT_NVRAM_SIZE 65536
--#define MAX_NVRAM_SIZE 1048576
-+#define MIN_NVRAM_SIZE      (8 * KiB)
-+#define DEFAULT_NVRAM_SIZE  (64 * KiB)
-+#define MAX_NVRAM_SIZE      (1 * MiB)
- 
- static void rtas_nvram_fetch(PowerPCCPU *cpu, sPAPRMachineState *spapr,
-                              uint32_t token, uint32_t nargs,
-@@ -167,7 +168,9 @@ static void spapr_nvram_realize(VIOsPAPRDevice *dev, Error **errp)
-     nvram->buf = g_malloc0(nvram->size);
- 
-     if ((nvram->size < MIN_NVRAM_SIZE) || (nvram->size > MAX_NVRAM_SIZE)) {
--        error_setg(errp, "spapr-nvram must be between %d and %d bytes in size",
-+        error_setg(errp,
-+                   "spapr-nvram must be between %" PRId64
-+                   " and %" PRId64 " bytes in size",
-                    MIN_NVRAM_SIZE, MAX_NVRAM_SIZE);
-         return;
-     }
-diff --git a/hw/pci-host/prep.c b/hw/pci-host/prep.c
-index 01f67f9db1..88f035c20b 100644
---- a/hw/pci-host/prep.c
-+++ b/hw/pci-host/prep.c
-@@ -24,6 +24,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "hw/hw.h"
- #include "hw/pci/pci.h"
-@@ -70,7 +71,7 @@ typedef struct PRePPCIState {
-     int contiguous_map;
- } PREPPCIState;
- 
--#define BIOS_SIZE (1024 * 1024)
-+#define BIOS_SIZE (1 * MiB)
- 
- static inline uint32_t raven_pci_io_config(hwaddr addr)
- {
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index 826053edc8..7d19b1498c 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -15,6 +15,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "e500.h"
- #include "e500-ccsr.h"
-@@ -46,11 +47,11 @@
- #define BINARY_DEVICE_TREE_FILE    "mpc8544ds.dtb"
- #define DTC_LOAD_PAD               0x1800000
- #define DTC_PAD_MASK               0xFFFFF
--#define DTB_MAX_SIZE               (8 * 1024 * 1024)
-+#define DTB_MAX_SIZE               (8 * MiB)
- #define INITRD_LOAD_PAD            0x2000000
- #define INITRD_PAD_MASK            0xFFFFFF
- 
--#define RAM_SIZES_ALIGN            (64UL << 20)
-+#define RAM_SIZES_ALIGN            (64 * MiB)
- 
- /* TODO: parameterize */
- #define MPC8544_CCSRBAR_SIZE       0x00100000ULL
-@@ -603,7 +604,7 @@ static int ppce500_prep_device_tree(PPCE500MachineState *machine,
- /* Create -kernel TLB entries for BookE.  */
- hwaddr booke206_page_size_to_tlb(uint64_t size)
- {
--    return 63 - clz64(size >> 10);
-+    return 63 - clz64(size / KiB);
- }
- 
- static int booke206_initial_map_tsize(CPUPPCState *env)
-@@ -671,7 +672,7 @@ static void ppce500_cpu_reset(void *opaque)
- 
-     /* Set initial guest state. */
-     cs->halted = 0;
--    env->gpr[1] = (16<<20) - 8;
-+    env->gpr[1] = (16 * MiB) - 8;
-     env->gpr[3] = bi->dt_base;
-     env->gpr[4] = 0;
-     env->gpr[5] = 0;
-@@ -1012,9 +1013,9 @@ void ppce500_init(MachineState *machine)
-     }
- 
-     cur_base = loadaddr + payload_size;
--    if (cur_base < (32 * 1024 * 1024)) {
-+    if (cur_base < 32 * MiB) {
-         /* u-boot occupies memory up to 32MB, so load blobs above */
--        cur_base = (32 * 1024 * 1024);
-+        cur_base = 32 * MiB;
-     }
- 
-     /* Load bare kernel only if no bios/u-boot has been provided */
-diff --git a/hw/ppc/e500plat.c b/hw/ppc/e500plat.c
-index d8e3f2066e..963d429cc8 100644
---- a/hw/ppc/e500plat.c
-+++ b/hw/ppc/e500plat.c
-@@ -10,6 +10,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qemu-common.h"
- #include "e500.h"
- #include "hw/net/fsl_etsec/etsec.h"
-@@ -85,7 +86,7 @@ static void e500plat_machine_class_init(ObjectClass *oc, void *data)
-     pmc->has_mpc8xxx_gpio = true;
-     pmc->has_platform_bus = true;
-     pmc->platform_bus_base = 0xf00000000ULL;
--    pmc->platform_bus_size = (128ULL * 1024 * 1024);
-+    pmc->platform_bus_size = 128 * MiB;
-     pmc->platform_bus_first_irq = 5;
-     pmc->platform_bus_num_irqs = 10;
-     pmc->ccsrbar_base = 0xFE0000000ULL;
-diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-index ff715ffffd..84355b2672 100644
---- a/hw/ppc/mac_newworld.c
-+++ b/hw/ppc/mac_newworld.c
-@@ -71,7 +71,6 @@
- #include "hw/usb.h"
- #include "exec/address-spaces.h"
- #include "hw/sysbus.h"
--#include "qemu/cutils.h"
- #include "trace.h"
- 
- #define MAX_IDE_BUS 2
-diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-index 4608bab014..06ed6f660e 100644
---- a/hw/ppc/mac_oldworld.c
-+++ b/hw/ppc/mac_oldworld.c
-@@ -24,6 +24,7 @@
-  * THE SOFTWARE.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "hw/hw.h"
- #include "hw/ppc/ppc.h"
-@@ -46,7 +47,6 @@
- #include "sysemu/kvm.h"
- #include "kvm_ppc.h"
- #include "exec/address-spaces.h"
--#include "qemu/cutils.h"
- 
- #define MAX_IDE_BUS 2
- #define CFG_ADDR 0xf0000510
-@@ -118,10 +118,9 @@ static void ppc_heathrow_init(MachineState *machine)
-     }
- 
-     /* allocate RAM */
--    if (ram_size > (2047 << 20)) {
--        fprintf(stderr,
--                "qemu: Too much memory for this machine: %d MB, maximum 2047 MB\n",
--                ((unsigned int)ram_size / (1 << 20)));
-+    if (ram_size > 2047 * MiB) {
-+        error_report("Too much memory for this machine: %" PRId64 " MB, "
-+                     "maximum 2047 MB", ram_size / MiB);
-         exit(1);
-     }
- 
-diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
-index d301067d3b..70111075b3 100644
---- a/hw/ppc/ppc405_boards.c
-+++ b/hw/ppc/ppc405_boards.c
-@@ -22,6 +22,7 @@
-  * THE SOFTWARE.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -40,7 +41,7 @@
- #include "exec/address-spaces.h"
- 
- #define BIOS_FILENAME "ppc405_rom.bin"
--#define BIOS_SIZE (2048 * 1024)
-+#define BIOS_SIZE (2 * MiB)
- 
- #define KERNEL_LOAD_ADDR 0x00000000
- #define INITRD_LOAD_ADDR 0x01800000
-@@ -216,14 +217,14 @@ static void ref405ep_init(MachineState *machine)
-     memory_region_init(&ram_memories[1], NULL, "ef405ep.ram1", 0);
-     ram_bases[1] = 0x00000000;
-     ram_sizes[1] = 0x00000000;
--    ram_size = 128 * 1024 * 1024;
-+    ram_size = 128 * MiB;
- #ifdef DEBUG_BOARD_INIT
-     printf("%s: register cpu\n", __func__);
- #endif
-     env = ppc405ep_init(sysmem, ram_memories, ram_bases, ram_sizes,
-                         33333333, &pic, kernel_filename == NULL ? 0 : 1);
-     /* allocate SRAM */
--    sram_size = 512 * 1024;
-+    sram_size = 512 * KiB;
-     memory_region_init_ram(sram, NULL, "ef405ep.sram", sram_size,
-                            &error_fatal);
-     memory_region_add_subregion(sysmem, 0xFFF00000, sram);
-@@ -589,7 +590,7 @@ static void taihu_405ep_init(MachineState *machine)
- 
-         bios_size = blk_getlength(blk);
-         /* XXX: should check that size is 32MB */
--        bios_size = 32 * 1024 * 1024;
-+        bios_size = 32 * MiB;
-         fl_sectors = (bios_size + 65535) >> 16;
- #ifdef DEBUG_BOARD_INIT
-         printf("Register parallel flash %d size %lx"
-diff --git a/hw/ppc/ppc405_uc.c b/hw/ppc/ppc405_uc.c
-index 34f8d57b07..4bd9fbcc1e 100644
---- a/hw/ppc/ppc405_uc.c
-+++ b/hw/ppc/ppc405_uc.c
-@@ -22,6 +22,7 @@
-  * THE SOFTWARE.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qapi/error.h"
- #include "qemu-common.h"
- #include "cpu.h"
-@@ -983,10 +984,10 @@ static void ppc405_ocm_init(CPUPPCState *env)
- 
-     ocm = g_malloc0(sizeof(ppc405_ocm_t));
-     /* XXX: Size is 4096 or 0x04000000 */
--    memory_region_init_ram(&ocm->isarc_ram, NULL, "ppc405.ocm", 4096,
-+    memory_region_init_ram(&ocm->isarc_ram, NULL, "ppc405.ocm", 4 * KiB,
-                            &error_fatal);
--    memory_region_init_alias(&ocm->dsarc_ram, NULL, "ppc405.dsarc", &ocm->isarc_ram,
--                             0, 4096);
-+    memory_region_init_alias(&ocm->dsarc_ram, NULL, "ppc405.dsarc",
-+                             &ocm->isarc_ram, 0, 4 * KiB);
-     qemu_register_reset(&ocm_reset, ocm);
-     ppc_dcr_register(env, OCM0_ISARC,
-                      ocm, &dcr_read_ocm, &dcr_write_ocm);
-diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
-index 44e6a0c21b..3d4c43b8cc 100644
---- a/hw/ppc/ppc440_bamboo.c
-+++ b/hw/ppc/ppc440_bamboo.c
-@@ -12,6 +12,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
+ #include <libcacard.h>
+ #include "chardev/char-fe.h"
  #include "qemu/error-report.h"
- #include "qemu-common.h"
- #include "qemu/error-report.h"
-@@ -49,7 +50,7 @@
- #define PPC440EP_SDRAM_NR_BANKS 4
- 
- static const unsigned int ppc440ep_sdram_bank_sizes[] = {
--    256<<20, 128<<20, 64<<20, 32<<20, 16<<20, 8<<20, 0
-+    256 * MiB, 128 * MiB, 64 * MiB, 32 * MiB, 16 * MiB, 8 * MiB, 0
+@@ -40,7 +41,7 @@ static const uint8_t DEFAULT_ATR[] = {
+  0x13, 0x08
  };
  
- static hwaddr entry;
-@@ -151,7 +152,7 @@ static void main_cpu_reset(void *opaque)
-     CPUPPCState *env = &cpu->env;
+-#define VSCARD_IN_SIZE 65536
++#define VSCARD_IN_SIZE      (64 * KiB)
  
-     cpu_reset(CPU(cpu));
--    env->gpr[1] = (16<<20) - 8;
-+    env->gpr[1] = (16 * MiB) - 8;
-     env->gpr[3] = FDT_ADDR;
-     env->nip = entry;
+ /* maximum size of ATR - from 7816-3 */
+ #define MAX_ATR_SIZE        40
+@@ -276,7 +277,7 @@ static void ccid_card_vscard_read(void *opaque, const uint8_t *buf, int size)
  
-diff --git a/hw/ppc/ppc4xx_devs.c b/hw/ppc/ppc4xx_devs.c
-index 2e963894fe..8c6f3c9577 100644
---- a/hw/ppc/ppc4xx_devs.c
-+++ b/hw/ppc/ppc4xx_devs.c
-@@ -22,6 +22,7 @@
-  * THE SOFTWARE.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "cpu.h"
- #include "hw/hw.h"
- #include "hw/ppc/ppc.h"
-@@ -29,6 +30,7 @@
- #include "hw/boards.h"
- #include "qemu/log.h"
- #include "exec/address-spaces.h"
-+#include "qemu/error-report.h"
- 
- #define DEBUG_UIC
- 
-@@ -353,25 +355,25 @@ static uint32_t sdram_bcr (hwaddr ram_base,
-     uint32_t bcr;
- 
-     switch (ram_size) {
--    case (4 * 1024 * 1024):
-+    case 4 * MiB:
-         bcr = 0x00000000;
-         break;
--    case (8 * 1024 * 1024):
-+    case 8 * MiB:
-         bcr = 0x00020000;
-         break;
--    case (16 * 1024 * 1024):
-+    case 16 * MiB:
-         bcr = 0x00040000;
-         break;
--    case (32 * 1024 * 1024):
-+    case 32 * MiB:
-         bcr = 0x00060000;
-         break;
--    case (64 * 1024 * 1024):
-+    case 64 * MiB:
-         bcr = 0x00080000;
-         break;
--    case (128 * 1024 * 1024):
-+    case 128 * MiB:
-         bcr = 0x000A0000;
-         break;
--    case (256 * 1024 * 1024):
-+    case 256 * MiB:
-         bcr = 0x000C0000;
-         break;
-     default:
-@@ -399,7 +401,7 @@ static target_ulong sdram_size (uint32_t bcr)
-     if (sh == 7)
-         size = -1;
-     else
--        size = (4 * 1024 * 1024) << sh;
-+        size = (4 * MiB) << sh;
- 
-     return size;
- }
-@@ -702,8 +704,8 @@ ram_addr_t ppc4xx_sdram_adjust(ram_addr_t ram_size, int nr_banks,
- 
-     ram_size -= size_left;
-     if (size_left) {
--        printf("Truncating memory to %d MiB to fit SDRAM controller limits.\n",
--               (int)(ram_size >> 20));
-+        error_report("Truncating memory to %" PRId64 " MiB to fit SDRAM"
-+                     " controller limits", ram_size / MiB);
-     }
- 
-     memory_region_allocate_system_memory(ram, NULL, "ppc4xx.sdram", ram_size);
-diff --git a/hw/ppc/ppce500_spin.c b/hw/ppc/ppce500_spin.c
-index 69ca2d0e42..c45fc858de 100644
---- a/hw/ppc/ppce500_spin.c
-+++ b/hw/ppc/ppce500_spin.c
-@@ -28,6 +28,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/hw.h"
- #include "hw/sysbus.h"
- #include "sysemu/hw_accel.h"
-@@ -89,7 +90,7 @@ static void spin_kick(CPUState *cs, run_on_cpu_data data)
-     PowerPCCPU *cpu = POWERPC_CPU(cs);
-     CPUPPCState *env = &cpu->env;
-     SpinInfo *curspin = data.host_ptr;
--    hwaddr map_size = 64 * 1024 * 1024;
-+    hwaddr map_size = 64 * MiB;
-     hwaddr map_start;
- 
-     cpu_synchronize_state(cs);
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index 25ae53304c..6689407b3d 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -50,7 +50,7 @@
- #include "exec/address-spaces.h"
- #include "trace.h"
- #include "elf.h"
--#include "qemu/cutils.h"
-+#include "qemu/units.h"
- #include "kvm_ppc.h"
- 
- /* SMP is not enabled, for now */
-@@ -60,7 +60,7 @@
- 
- #define CFG_ADDR 0xf0000510
- 
--#define BIOS_SIZE (1024 * 1024)
-+#define BIOS_SIZE (1 * MiB)
- #define BIOS_FILENAME "ppc_rom.bin"
- #define KERNEL_LOAD_ADDR 0x01000000
- #define INITRD_LOAD_ADDR 0x01800000
-diff --git a/hw/ppc/rs6000_mc.c b/hw/ppc/rs6000_mc.c
-index b6135650bd..45cb95e08a 100644
---- a/hw/ppc/rs6000_mc.c
-+++ b/hw/ppc/rs6000_mc.c
-@@ -18,6 +18,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/isa/isa.h"
- #include "exec/address-spaces.h"
- #include "hw/boards.h"
-@@ -109,7 +110,7 @@ static void rs6000mc_port0820_write(void *opaque, uint32_t addr, uint32_t val)
-             size = end_address - start_address;
-             memory_region_set_enabled(&s->simm[socket - 1], size != 0);
-             memory_region_set_address(&s->simm[socket - 1],
--                                      start_address * 8 * 1024 * 1024);
-+                                      start_address * 8 * MiB);
-         }
-     }
- }
-@@ -140,7 +141,7 @@ static void rs6000mc_realize(DeviceState *dev, Error **errp)
- {
-     RS6000MCState *s = RS6000MC_DEVICE(dev);
-     int socket = 0;
--    unsigned int ram_size = s->ram_size / (1024 * 1024);
-+    unsigned int ram_size = s->ram_size / MiB;
- 
-     while (socket < 6) {
-         if (ram_size >= 64) {
-@@ -163,8 +164,8 @@ static void rs6000mc_realize(DeviceState *dev, Error **errp)
-             char name[] = "simm.?";
-             name[5] = socket + '0';
-             memory_region_allocate_system_memory(&s->simm[socket], OBJECT(dev),
--                                                 name, s->simm_size[socket]
--                                                 * 1024 * 1024);
-+                                                 name,
-+                                                 s->simm_size[socket] * MiB);
-             memory_region_add_subregion_overlap(get_system_memory(), 0,
-                                                 &s->simm[socket], socket);
-         }
-@@ -172,8 +173,8 @@ static void rs6000mc_realize(DeviceState *dev, Error **errp)
-     if (ram_size) {
-         /* unable to push all requested RAM in SIMMs */
-         error_setg(errp, "RAM size incompatible with this board. "
--                   "Try again with something else, like %d MB",
--                   s->ram_size / 1024 / 1024 - ram_size);
-+                   "Try again with something else, like %" PRId64 " MB",
-+                   s->ram_size / MiB - ram_size);
-         return;
-     }
- 
-diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
-index 2a98c10664..ffe561fbc1 100644
---- a/hw/ppc/sam460ex.c
-+++ b/hw/ppc/sam460ex.c
-@@ -12,8 +12,8 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qemu-common.h"
--#include "qemu/cutils.h"
- #include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "hw/hw.h"
-@@ -46,7 +46,7 @@
- /* from Sam460 U-Boot include/configs/Sam460ex.h */
- #define FLASH_BASE             0xfff00000
- #define FLASH_BASE_H           0x4
--#define FLASH_SIZE             (1 << 20)
-+#define FLASH_SIZE             (1 * MiB)
- #define UBOOT_LOAD_BASE        0xfff80000
- #define UBOOT_SIZE             0x00080000
- #define UBOOT_ENTRY            0xfffffffc
-@@ -71,7 +71,7 @@
- 
- /* FIXME: See u-boot.git 8ac41e, also fix in ppc440_uc.c */
- static const unsigned int ppc460ex_sdram_bank_sizes[] = {
--    1024 << 20, 512 << 20, 256 << 20, 128 << 20, 64 << 20, 32 << 20, 0
-+    1 * GiB, 512 * MiB, 256 * MiB, 128 * MiB, 64 * MiB, 32 * MiB, 0
- };
- 
- struct boot_info {
-@@ -225,7 +225,7 @@ static int sam460ex_load_uboot(void)
-     fl_sectors = (bios_size + 65535) >> 16;
- 
-     if (!pflash_cfi01_register(base, NULL, "sam460ex.flash", bios_size,
--                               blk, (64 * 1024), fl_sectors,
-+                               blk, 64 * KiB, fl_sectors,
-                                1, 0x89, 0x18, 0x0000, 0x0, 1)) {
-         error_report("qemu: Error registering flash memory.");
-         /* XXX: return an error instead? */
-@@ -359,14 +359,14 @@ static void main_cpu_reset(void *opaque)
- 
-     /* either we have a kernel to boot or we jump to U-Boot */
-     if (bi->entry != UBOOT_ENTRY) {
--        env->gpr[1] = (16 << 20) - 8;
-+        env->gpr[1] = (16 * MiB) - 8;
-         env->gpr[3] = FDT_ADDR;
-         env->nip = bi->entry;
- 
-         /* Create a mapping for the kernel.  */
-         mmubooke_create_initial_mapping(env, 0, 0);
-         env->gpr[6] = tswap32(EPAPR_MAGIC);
--        env->gpr[7] = (16 << 20) - 8; /*bi->ima_size;*/
-+        env->gpr[7] = (16 * MiB) - 8; /* bi->ima_size; */
- 
-     } else {
-         env->nip = UBOOT_ENTRY;
-@@ -479,7 +479,7 @@ static void sam460ex_init(MachineState *machine)
-     /* 256K of L2 cache as memory */
-     ppc4xx_l2sram_init(env);
-     /* FIXME: remove this after fixing l2sram mapping in ppc440_uc.c? */
--    memory_region_init_ram(l2cache_ram, NULL, "ppc440.l2cache_ram", 256 << 10,
-+    memory_region_init_ram(l2cache_ram, NULL, "ppc440.l2cache_ram", 256 * KiB,
-                            &error_abort);
-     memory_region_add_subregion(address_space_mem, 0x400000000LL, l2cache_ram);
- 
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 6a2d8fcef0..d0390b35a0 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -2763,7 +2763,7 @@ static void spapr_machine_init(MachineState *machine)
-         }
-     }
- 
--    if (spapr->rma_size < (MIN_RMA_SLOF << 20)) {
-+    if (spapr->rma_size < (MIN_RMA_SLOF * MiB)) {
+     if (card->vscard_in_pos + size > VSCARD_IN_SIZE) {
          error_report(
-             "pSeries SLOF firmware requires >= %ldM guest RMA (Real Mode Area memory)",
-             MIN_RMA_SLOF);
-diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
-index b4bb90d50b..7891464cd9 100644
---- a/hw/ppc/virtex_ml507.c
-+++ b/hw/ppc/virtex_ml507.c
-@@ -23,6 +23,7 @@
+-            "no room for data: pos %d +  size %d > %d. dropping connection.",
++            "no room for data: pos %u +  size %d > %ld. dropping connection.",
+             card->vscard_in_pos, size, VSCARD_IN_SIZE);
+         ccid_card_vscard_drop_connection(card);
+         return;
+diff --git a/hw/usb/combined-packet.c b/hw/usb/combined-packet.c
+index 48cac87f6a..01a7ed0848 100644
+--- a/hw/usb/combined-packet.c
++++ b/hw/usb/combined-packet.c
+@@ -20,6 +20,7 @@
+  * along with this program; if not, see <http://www.gnu.org/licenses/>.
+  */
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qemu-common.h"
+ #include "hw/usb.h"
+ #include "qemu/iov.h"
+@@ -171,7 +172,7 @@ void usb_ep_combine_input_packets(USBEndpoint *ep)
+         if ((p->iov.size % ep->max_packet_size) != 0 || !p->short_not_ok ||
+                 next == NULL ||
+                 /* Work around for Linux usbfs bulk splitting + migration */
+-                (totalsize == 16348 && p->int_req)) {
++                (totalsize == (16 * KiB - 36) && p->int_req)) {
+             usb_device_handle_data(ep->dev, first);
+             assert(first->status == USB_RET_ASYNC);
+             if (first->combined) {
+diff --git a/hw/usb/dev-smartcard-reader.c b/hw/usb/dev-smartcard-reader.c
+index 13d0befd9c..8f716fc165 100644
+--- a/hw/usb/dev-smartcard-reader.c
++++ b/hw/usb/dev-smartcard-reader.c
+@@ -35,6 +35,7 @@
   */
  
  #include "qemu/osdep.h"
 +#include "qemu/units.h"
- #include "cpu.h"
- #include "hw/sysbus.h"
- #include "hw/hw.h"
-@@ -45,7 +46,7 @@
- #include "ppc405.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "qemu/error-report.h"
+@@ -63,7 +64,7 @@ do { \
+  * or handle the migration complexity - VMState doesn't handle this case.
+  * sizes are expected never to be exceeded, unless guest misbehaves.
+  */
+-#define BULK_OUT_DATA_SIZE 65536
++#define BULK_OUT_DATA_SIZE  (64 * KiB)
+ #define PENDING_ANSWERS_NUM 128
  
- #define EPAPR_MAGIC    (0x45504150)
--#define FLASH_SIZE     (16 * 1024 * 1024)
-+#define FLASH_SIZE     (16 * MiB)
+ #define BULK_IN_BUF_SIZE 384
+diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+index 58e8f7f5bd..99094a721e 100644
+--- a/hw/usb/redirect.c
++++ b/hw/usb/redirect.c
+@@ -26,6 +26,7 @@
+  */
  
- #define INTC_BASEADDR       0x81800000
- #define UART16550_BASEADDR  0x83e01003
-@@ -127,7 +128,7 @@ static void main_cpu_reset(void *opaque)
-        *   r8: 0
-        *   r9: 0
-     */
--    env->gpr[1] = (16<<20) - 8;
-+    env->gpr[1] = (16 * MiB) - 8;
-     /* Provide a device-tree.  */
-     env->gpr[3] = bi->fdt;
-     env->nip = bi->bootstrap_pc;
-@@ -235,7 +236,7 @@ static void virtex_init(MachineState *machine)
-     dinfo = drive_get(IF_PFLASH, 0, 0);
-     pflash_cfi01_register(PFLASH_BASEADDR, NULL, "virtex.flash", FLASH_SIZE,
-                           dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
--                          (64 * 1024), FLASH_SIZE >> 16,
-+                          64 * KiB, FLASH_SIZE >> 16,
-                           1, 0x89, 0x18, 0x0000, 0x0, 1);
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "qemu/timer.h"
+@@ -1298,7 +1299,7 @@ static int usbredir_chardev_can_read(void *opaque)
+     }
  
-     cpu_irq = (qemu_irq *) &env->irq_inputs[PPC40x_INPUT_INT];
+     /* usbredir_parser_do_read will consume *all* data we give it */
+-    return 1024 * 1024;
++    return 1 * MiB;
+ }
+ 
+ static void usbredir_chardev_read(void *opaque, const uint8_t *buf, int size)
 -- 
 2.18.0
 
