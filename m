@@ -1,131 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fXQxV-0007Pq-B8
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 08:51:05 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56842)
+	id 1fXQyp-00008N-OG
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 08:52:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57238)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <borntraeger@de.ibm.com>) id 1fXQxS-0007Ne-Oo
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:51:03 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fXQyl-0008WU-90
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:52:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <borntraeger@de.ibm.com>) id 1fXQxP-0001y1-MK
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:51:02 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:33440
-	helo=mx0a-001b2d01.pphosted.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <borntraeger@de.ibm.com>)
-	id 1fXQxP-0001xk-HO
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:50:59 -0400
-Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
-	by mx0b-001b2d01.pphosted.com (8.16.0.22/8.16.0.22) with SMTP id
-	w5PCo2I7001492
-	for <qemu-trivial@nongnu.org>; Mon, 25 Jun 2018 08:50:58 -0400
-Received: from e06smtp04.uk.ibm.com (e06smtp04.uk.ibm.com [195.75.94.100])
-	by mx0b-001b2d01.pphosted.com with ESMTP id 2jtyesuna2-1
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
-	for <qemu-trivial@nongnu.org>; Mon, 25 Jun 2018 08:50:58 -0400
-Received: from localhost
-	by e06smtp04.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <borntraeger@de.ibm.com>;
-	Mon, 25 Jun 2018 13:50:56 +0100
-Received: from b06cxnps4076.portsmouth.uk.ibm.com (9.149.109.198)
-	by e06smtp04.uk.ibm.com (192.168.101.134) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	(version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
-	Mon, 25 Jun 2018 13:50:51 +0100
-Received: from d06av26.portsmouth.uk.ibm.com (d06av26.portsmouth.uk.ibm.com
-	[9.149.105.62])
-	by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id w5PCooiJ28639380
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=FAIL); Mon, 25 Jun 2018 12:50:50 GMT
-Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 5F591AE055;
-	Mon, 25 Jun 2018 13:50:46 +0100 (BST)
-Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id DE480AE059;
-	Mon, 25 Jun 2018 13:50:45 +0100 (BST)
-Received: from oc7330422307.ibm.com (unknown [9.152.224.43])
-	by d06av26.portsmouth.uk.ibm.com (Postfix) with ESMTP;
-	Mon, 25 Jun 2018 13:50:45 +0100 (BST)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	Cornelia Huck <cohuck@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
-	Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
-	Yongbok Kim <yongbok.kim@mips.com>, Artyom Tarasenko <atar4qemu@gmail.com>
-References: <1529056145-6404-1-git-send-email-thuth@redhat.com>
-	<93f1dae5-e071-41f2-a1b7-1fbfdbe7917a@redhat.com>
-From: Christian Borntraeger <borntraeger@de.ibm.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=borntraeger@de.ibm.com; prefer-encrypt=mutual; keydata=
-	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
-	syiRa+UVlsKmx1hsEg==
-Date: Mon, 25 Jun 2018 14:50:49 +0200
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fXQyk-0002fh-AQ
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:52:23 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:38728)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fXQyc-0002ds-Iy; Mon, 25 Jun 2018 08:52:14 -0400
+Received: by mail-qk0-x244.google.com with SMTP id y4-v6so7381453qka.5;
+	Mon, 25 Jun 2018 05:52:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=+8CSZUYeCXcw1B8w4xUpTJo22rtL9bOkMP2z5pbZtI8=;
+	b=SEma1cNvwoIpiVfmMzPm65aId82pj4vCJZQARzAxHqoE2Uv6s+b+QoCn8TDo3Bazpz
+	eZlajNUqcDj92Ndo8ndyFvWEZqtuBb4msOI1EqGDlaoKGCJ2hddJJOxhhWY8Iy+SF4WS
+	0Oy/w/r+dqeuf1QJMU7j/74+SW7Vhb773/xOlN6cioBp6RpMjjRWCKwTY9sGn2VkgrRm
+	NASHt1wCKhZwcR5Rh9c0ToLeDBS2FxFpiHDAXus7G/sVzJr4a+AHiqO101HZsCJ5v7zp
+	PtEI8P2Q6pSyKl8nUaTuJ9CjA13Ug87/CJ7iChBxtIlCzVVYJyNspByZ16YwlkPUQZpa
+	WKxA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=+8CSZUYeCXcw1B8w4xUpTJo22rtL9bOkMP2z5pbZtI8=;
+	b=HRqcP7LjnfMb88rV7EI+lg7LbhhGFo1p0s/R1tm86KsA2En62orYhRBUD3nFhX52zn
+	io02/RgFFtsk26bJTYgralCl0lf7bfPtbUtQ/dmDioQbJ/i9uy0ZcV9+4Qr1ENj6wJDg
+	vRIrjHIWLNenXTuQqdWfsJmNvWOrZdhFAEzq4/48Yll74y67hKNJ7GKTeePoCx8sVDzb
+	OM4D3wXx2TLfehdLiWzn0uCcISFsrKDND5j3d77gSxh8wQ81iOH5NJQGGZUuMUO9jE9d
+	JTcC2k+dtUh4ljnQIZU5FahwxLwhCnzutn0S5STdCdRk3yqmL8G9zkPdfiMqb7S0FAyQ
+	jjnw==
+X-Gm-Message-State: APt69E0MN35Q/q8hf//FMgU9r6vQ5PyYrVUqQL6ie/KpRx+/RTVfBIBq
+	FwsQrjMwLzIaVliBj110pZephy1nmQM=
+X-Google-Smtp-Source: ADUXVKJ0fZvyS4KYF1vyG/laDnivvbUqkU+LfwpISNjT2vOd6clWDBrvDZnHMugEuEcZOPDf4zorMw==
+X-Received: by 2002:a37:8fc3:: with SMTP id
+	r186-v6mr10467566qkd.27.1529931133839; 
+	Mon, 25 Jun 2018 05:52:13 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	f9-v6sm9254645qkb.43.2018.06.25.05.52.11
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 25 Jun 2018 05:52:13 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, qemu-arm@nongnu.org
+References: <20180622134036.23182-1-f4bug@amsat.org>
+	<20180622134036.23182-8-f4bug@amsat.org>
+	<e98bac2c-ce0b-e226-3d96-004e46478f2f@redhat.com>
+	<8256c2d4-722c-299f-e8e3-42c1a7f68e1d@amsat.org>
+	<0bf443e6-fd49-9aaf-43fb-f171edf5fd38@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <57e04a05-442c-bd4a-2daa-1b690540c061@amsat.org>
+Date: Mon, 25 Jun 2018 09:52:10 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <93f1dae5-e071-41f2-a1b7-1fbfdbe7917a@redhat.com>
-Content-Language: en-US
-X-TM-AS-GCONF: 00
-x-cbid: 18062512-0016-0000-0000-000001DFD62D
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 18062512-0017-0000-0000-0000323408DC
-Message-Id: <f70f99ec-e415-1bbb-b7c2-2a916e2f3f66@de.ibm.com>
+In-Reply-To: <0bf443e6-fd49-9aaf-43fb-f171edf5fd38@redhat.com>
 Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
-	definitions=2018-06-25_06:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	priorityscore=1501
-	malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
-	clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
-	mlxlogscore=932 adultscore=0 classifier=spam adjust=0 reason=mlx
-	scancount=1 engine=8.0.1-1806210000 definitions=main-1806250150
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 148.163.158.5
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] loader: Check access
- size when calling rom_ptr() to avoid crashes
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: Re: [Qemu-trivial] [PATCH v2 07/14] hw/i2c/omap_i2c: Use
+ qemu_log_mask(UNIMP) instead of fprintf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -137,38 +88,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Jun 2018 12:51:04 -0000
+X-List-Received-Date: Mon, 25 Jun 2018 12:52:26 -0000
 
-On 06/25/2018 10:31 AM, Thomas Huth wrote:
-> On 15.06.2018 11:49, Thomas Huth wrote:
->> The rom_ptr() function allows direct access to the ROM blobs that we
->> load during startup. However, there are currently no checks for the
->> size of the accesses, so it's currently possible to crash QEMU for
->> example with:
+On 06/25/2018 03:08 AM, Thomas Huth wrote:
+> On 22.06.2018 22:10, Philippe Mathieu-Daudé wrote:
+>> On 06/22/2018 04:38 PM, Thomas Huth wrote:
+>>> On 22.06.2018 15:40, Philippe Mathieu-Daudé wrote:
+>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>>> ---
+>>>>  hw/i2c/omap_i2c.c | 20 ++++++++++++--------
+>>>>  1 file changed, 12 insertions(+), 8 deletions(-)
+>>>>
+>>>> diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
+>>>> index 26e3e5ebf6..690876e43e 100644
+>>>> --- a/hw/i2c/omap_i2c.c
+>>>> +++ b/hw/i2c/omap_i2c.c
+>>>> @@ -17,6 +17,7 @@
+>>>>   * with this program; if not, see <http://www.gnu.org/licenses/>.
+>>>>   */
+>>>>  #include "qemu/osdep.h"
+>>>> +#include "qemu/log.h"
+>>>>  #include "hw/hw.h"
+>>>>  #include "hw/i2c/i2c.h"
+>>>>  #include "hw/arm/omap.h"
+>>>> @@ -339,14 +340,15 @@ static void omap_i2c_write(void *opaque, hwaddr addr,
+>>>>              }
+>>>>              break;
+>>>>          }
+>>>> -        if ((value & (1 << 15)) && !(value & (1 << 10))) {	/* MST */
+>>>> -            fprintf(stderr, "%s: I^2C slave mode not supported\n",
+>>>> -                            __func__);
+>>>> +        if ((value & (1 << 15)) && !(value & (1 << 10))) { /* MST */
+>>>
+>>> Please keep the white spaces before the comment if you don't change
+>>> anything else.
 >>
->> $ echo "Insane in the mainframe" > /tmp/test.txt
->> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -append xyz
->> Segmentation fault (core dumped)
->> $ s390x-softmmu/qemu-system-s390x -kernel /tmp/test.txt -initrd /tmp/test.txt
->> Segmentation fault (core dumped)
->> $ echo -n HdrS > /tmp/hdr.txt
->> $ sparc64-softmmu/qemu-system-sparc64 -kernel /tmp/hdr.txt -initrd /tmp/hdr.txt
->> Segmentation fault (core dumped)
+>> This is a <tab> and checkpatch complains...
 >>
->> We need a possibility to check the size of the ROM area that we want
->> to access, thus let's add a size parameter to the rom_ptr() function
->> to avoid these problems.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> I can use 4 spaces for this tab. I tried to align with other tab-aligned
+>> comments I didn't modify, but the result is messier. Thus a simple space.
 > 
-> Ping!
-> 
-> Could anybody please pick this patch up? Qemu-trivial seems to be pretty
-> dormant these days (?), so maybe Paolo via misc? Or either the s390x or
-> Sparc tree, since it fixes a crash on these machines?
+> Oh, sorry, I didn't notice that you've replaced a TAB here. I guess it's
+> ok then. But why does checkpatch complain if it is just in the context
+> of your modification? That's weird.
 
-Acked-by: Christian Borntraeger <borntraeger@de.ibm.com>
+The first 2 contexts (MST and XA) are fine, however checkpatch complains
+with the last one (ST_EN):
 
-if this will go via the s390x tree.
+ERROR: code indent should never use tabs
+#38: FILE: hw/i2c/omap_i2c.c:397:
++        if (value & (1 << 15)) {^I^I^I^I^I/* ST_EN */$
 
+Since I replaced this one, I also did with the 2 previous.
+
+Now I realize I can _not_ add the brackets so I don't have to update the
+<tabs>:
+
+         if (value & (1 << 15))^I^I^I^I^I/* ST_EN */
+-            fprintf(stderr, "%s: System Test not supported\n", __func__);
++            qemu_log_mask(LOG_UNIMP,
++                          "%s: System Test not supported\n", __func__);
+         break;
+
+I think if it better to unify the code style when possible, but it is up
+to you, if you prefer I can resend with tabs and no brackets.
+
+Regards,
+
+Phil.
 
