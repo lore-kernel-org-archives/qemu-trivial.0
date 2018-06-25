@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fXQrg-0002bf-Pm
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 08:45:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55089)
+	id 1fXQri-0002dq-OD
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 08:45:06 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55107)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQrf-0002Yi-1a
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:45:04 -0400
+	id 1fXQrg-0002aM-5g
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:45:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQrd-0008IK-VB
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:45:03 -0400
-Received: from mail-qt0-x231.google.com ([2607:f8b0:400d:c0d::231]:43142)
+	id 1fXQrf-0008KF-7k
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:45:04 -0400
+Received: from mail-qk0-x232.google.com ([2607:f8b0:400d:c09::232]:46904)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQrZ-0008G6-1Q; Mon, 25 Jun 2018 08:44:57 -0400
-Received: by mail-qt0-x231.google.com with SMTP id y89-v6so11731475qtd.10;
-	Mon, 25 Jun 2018 05:44:56 -0700 (PDT)
+	id 1fXQrb-0008HK-H1; Mon, 25 Jun 2018 08:44:59 -0400
+Received: by mail-qk0-x232.google.com with SMTP id o2-v6so7357118qkc.13;
+	Mon, 25 Jun 2018 05:44:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=5NhtA11DFK/NbIj6IVOslmvAnwYcEY5l2w6PfZU8Vqc=;
-	b=LxtRpI+ff9U/N1wkU/RksNNBI6dNn2tel+jIpoZz8lbvTtaGoGYoHIN7iM3ij5NMQ8
-	O33FxVXiRGFACiTu9sYXjy6h8jd7ityrhFgCQacJ/v1Ynch6M/jM4WCUVQS2UbBa97Px
-	Rdnu+vjcIF6Yvo4fokZ6QX72zQil/sI3COb8fO2V9EED5OKTgVIHjeQlw9I8zMTu5JqV
-	JtsRDzXVwuNLVgj+FtBDTPSt9LglZoJJ8tbOJMqtcP3fMBW61C+Eti6qVcoh54JJu2Zc
-	gqSOu+phu/E8ebDzjR7ZYZ93DyRB5ivi2K/MCOU4ffnu7M1GDr0ljVuklswzi56SWji4
-	V1lw==
+	bh=jEdOJMrTQyDHwdwa2ZYHeouSFiuQ23P+sklzrRWqDtk=;
+	b=rpSzEBNBxJj9YMWxUxHaAdnY0ATxTX7Wp76IuYXYOqOhqEAGah1DQSBJ70fFhP7sCG
+	euuNCB/+Q/P6XwaD/TTIv1jr1Jd5Hd/Gv6JFuItet+QqdRW70gmo0o7gUr5oSex2zMvx
+	gGqPn3AOXcFdV1LcvT8l5mX3WfGFQpi06EUIQkNoCJ89uXti4RwverkEgR+ol2d1Xtqh
+	kldeK7RSCGCmJmTpXXzFP2Ae7hIVdruMq8w9VDJpIUWV/X1uHfJedBmmJzYPZHBDfF2r
+	f+uZQ8Z+goelDpq0Jygw/9d+i3EEFgsxvSPoqt3HOqfUQ7Id+y94pWD2C0lZk0GSJCcM
+	+0OQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=5NhtA11DFK/NbIj6IVOslmvAnwYcEY5l2w6PfZU8Vqc=;
-	b=QPSPge1MSeMbSNaKCdjc5l+XJNVpzppd44i9Kx5GkmfcAQZ6ZCO7Q9hyZFpDZNLp+L
-	VKZszkpwLPmqdZCbvYCpN7tn7xl49HjGPAOTQrscSCWR181LuLoWi7+dZb7c49ILCbig
-	Ka6Veek0wqkRHwZT2EDZn2ZP3riYLcMVHSWGZMwr+k31PZVVnTmh/Z0JeXXc5gO9YT24
-	n1iH3wGUpOjYu3EhT2QKiaweA3xXqfa7jhN4E8XbmnQxZlwAbQLDJYM4snTcC/JXfIiV
-	1eazVdZrrj4aoq9D/jv+wjGAucwxuBk10MZZT3YHvXkXS0rN/AFgedZu2OseUdqjpQCB
-	56Bw==
-X-Gm-Message-State: APt69E0wik5Kqoc41xp/jKdTo8P2Y9+jfBFGlbOnVO40C/3/FOx8eamM
-	7HmITablIB2u109e3SCQ5KM=
-X-Google-Smtp-Source: ADUXVKLLYohEKxJ+EYTXvupDuBLzhY854n3kZvwvc+rPGRKKKk/OfnBqeIfN6jtyjlEBcwvIZGHe/Q==
-X-Received: by 2002:aed:3f36:: with SMTP id
-	p51-v6mr10527639qtf.213.1529930696484; 
-	Mon, 25 Jun 2018 05:44:56 -0700 (PDT)
+	bh=jEdOJMrTQyDHwdwa2ZYHeouSFiuQ23P+sklzrRWqDtk=;
+	b=R+fWhO48AEpdwc3+M6VwtXglfyNGivs5gA9cjOV7WKwg/+oAD1qxkJDJdxM8+hkzVi
+	a/Op51wC5eO+Lb6HST9M4jEUhWGABp7/nn7kEnndSk72Q+B3uxFd9pilZmYnyoIYtqzE
+	frCYToosE+hSDU1n2Tp3Oygr1AecJGchq4x1fMCnmpB49YUEJN3rJ21wiRK9OIKZCide
+	pEh/Junz2+bRZyArJKQn8A4KHvdqTTb494IZUQDJRi6Id3+AzHTabUJSPDqCDyuxvGfM
+	TB6ogH1+DCLgO9CDB5vWoiYBHGfRbSACr4K4NHe97txruMAO+1PwtovHOGK9CaIiDENR
+	jd9g==
+X-Gm-Message-State: APt69E0zAOMyaxUTKuIx8JpJSf9wRqeM5knA6yVSxHBQkN1lU/4Q/KH8
+	6XSjRWgQP5rDWQjsan6x6Ho=
+X-Google-Smtp-Source: AAOMgpcKpA3bGnBlONMHdEJjVvEUPvbvDJefEuWNKp152R10Ua0YejPn7vOg/tOCvtxXb4ErBORQ6A==
+X-Received: by 2002:a37:6086:: with SMTP id
+	u128-v6mr9983385qkb.8.1529930698967; 
+	Mon, 25 Jun 2018 05:44:58 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	m15-v6sm12549562qtm.84.2018.06.25.05.44.54
+	m15-v6sm12549562qtm.84.2018.06.25.05.44.56
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 25 Jun 2018 05:44:56 -0700 (PDT)
+	Mon, 25 Jun 2018 05:44:58 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -54,9 +54,9 @@ To: Thomas Huth <thuth@redhat.com>,
 	Stefan Weil <sw@weilnetz.de>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Alex Williamson <alex.williamson@redhat.com>
-Date: Mon, 25 Jun 2018 09:42:29 -0300
-Message-Id: <20180625124238.25339-38-f4bug@amsat.org>
+	"Michael S. Tsirkin" <mst@redhat.com>
+Date: Mon, 25 Jun 2018 09:42:30 -0300
+Message-Id: <20180625124238.25339-39-f4bug@amsat.org>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20180625124238.25339-1-f4bug@amsat.org>
 References: <20180625124238.25339-1-f4bug@amsat.org>
@@ -65,9 +65,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::231
-Subject: [Qemu-trivial] [PATCH v5 37/46] hw/vfio: Use the IEC binary prefix
- definitions
+X-Received-From: 2607:f8b0:400d:c09::232
+Subject: [Qemu-trivial] [PATCH v5 38/46] hw/virtio: Use the IEC binary
+ prefix definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,7 +79,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Jun 2018 12:45:04 -0000
+X-List-Received-Date: Mon, 25 Jun 2018 12:45:05 -0000
 
 It eases code review, unit is explicit.
 
@@ -91,73 +91,30 @@ and modified manually.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/vfio/pci-quirks.c | 9 +++++----
- hw/vfio/pci.c        | 3 ++-
- 2 files changed, 7 insertions(+), 5 deletions(-)
+ include/hw/virtio/virtio-net.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
-index 061259b86b..481fd08df7 100644
---- a/hw/vfio/pci-quirks.c
-+++ b/hw/vfio/pci-quirks.c
-@@ -11,6 +11,7 @@
-  */
+diff --git a/include/hw/virtio/virtio-net.h b/include/hw/virtio/virtio-net.h
+index 02484dc94c..4d7f3c82ca 100644
+--- a/include/hw/virtio/virtio-net.h
++++ b/include/hw/virtio/virtio-net.h
+@@ -14,6 +14,7 @@
+ #ifndef QEMU_VIRTIO_NET_H
+ #define QEMU_VIRTIO_NET_H
  
- #include "qemu/osdep.h"
 +#include "qemu/units.h"
- #include "qemu/error-report.h"
- #include "qemu/main-loop.h"
- #include "qemu/range.h"
-@@ -1448,9 +1449,9 @@ static int vfio_igd_gtt_max(VFIOPCIDevice *vdev)
-         ggms = 1 << ggms;
-     }
+ #include "standard-headers/linux/virtio_net.h"
+ #include "hw/virtio/virtio.h"
  
--    ggms *= 1024 * 1024;
-+    ggms *= MiB;
+@@ -44,7 +45,7 @@ typedef struct virtio_net_conf
+ } virtio_net_conf;
  
--    return (ggms / (4 * 1024)) * (gen < 8 ? 4 : 8);
-+    return (ggms / (4 * KiB)) * (gen < 8 ? 4 : 8);
- }
+ /* Maximum packet size we can receive from tap device: header + 64k */
+-#define VIRTIO_NET_MAX_BUFSIZE (sizeof(struct virtio_net_hdr) + (64 << 10))
++#define VIRTIO_NET_MAX_BUFSIZE (sizeof(struct virtio_net_hdr) + (64 * KiB))
  
- /*
-@@ -1705,7 +1706,7 @@ static void vfio_probe_igd_bar4_quirk(VFIOPCIDevice *vdev, int nr)
-     igd->vdev = vdev;
-     igd->index = ~0;
-     igd->bdsm = vfio_pci_read_config(&vdev->pdev, IGD_BDSM, 4);
--    igd->bdsm &= ~((1 << 20) - 1); /* 1MB aligned */
-+    igd->bdsm &= ~((1 * MiB) - 1); /* 1MB aligned */
- 
-     memory_region_init_io(&quirk->mem[0], OBJECT(vdev), &vfio_igd_index_quirk,
-                           igd, "vfio-igd-index-quirk", 4);
-@@ -1752,7 +1753,7 @@ static void vfio_probe_igd_bar4_quirk(VFIOPCIDevice *vdev, int nr)
-      * config offset 0x5C.
-      */
-     bdsm_size = g_malloc(sizeof(*bdsm_size));
--    *bdsm_size = cpu_to_le64((ggms_mb + gms_mb) * 1024 * 1024);
-+    *bdsm_size = cpu_to_le64((ggms_mb + gms_mb) * MiB);
-     fw_cfg_add_file(fw_cfg_find(), "etc/igd-bdsm-size",
-                     bdsm_size, sizeof(*bdsm_size));
- 
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index 18c493b49e..a1577dea7f 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -28,6 +28,7 @@
- #include "qemu/error-report.h"
- #include "qemu/option.h"
- #include "qemu/range.h"
-+#include "qemu/units.h"
- #include "sysemu/kvm.h"
- #include "sysemu/sysemu.h"
- #include "pci.h"
-@@ -1417,7 +1418,7 @@ static void vfio_pci_relocate_msix(VFIOPCIDevice *vdev, Error **errp)
-     }
- 
-     /* 2GB max size for 32-bit BARs, cannot double if already > 1G */
--    if (vdev->bars[target_bar].size > (1 * 1024 * 1024 * 1024) &&
-+    if (vdev->bars[target_bar].size > 1 * GiB &&
-         !vdev->bars[target_bar].mem64) {
-         error_setg(errp, "Invalid MSI-X relocation BAR %d, "
-                    "no space to extend 32-bit BAR", target_bar);
+ typedef struct VirtIONetQueue {
+     VirtQueue *rx_vq;
 -- 
 2.18.0
 
