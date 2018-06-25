@@ -1,82 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fXQyp-00008N-OG
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 08:52:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57238)
+	id 1fXRDe-0004Lz-64
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 09:07:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60972)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQyl-0008WU-90
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:52:26 -0400
+	(envelope-from <cohuck@redhat.com>) id 1fXRDa-0004Hr-Sx
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 09:07:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQyk-0002fh-AQ
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 08:52:23 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:38728)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fXQyc-0002ds-Iy; Mon, 25 Jun 2018 08:52:14 -0400
-Received: by mail-qk0-x244.google.com with SMTP id y4-v6so7381453qka.5;
-	Mon, 25 Jun 2018 05:52:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=+8CSZUYeCXcw1B8w4xUpTJo22rtL9bOkMP2z5pbZtI8=;
-	b=SEma1cNvwoIpiVfmMzPm65aId82pj4vCJZQARzAxHqoE2Uv6s+b+QoCn8TDo3Bazpz
-	eZlajNUqcDj92Ndo8ndyFvWEZqtuBb4msOI1EqGDlaoKGCJ2hddJJOxhhWY8Iy+SF4WS
-	0Oy/w/r+dqeuf1QJMU7j/74+SW7Vhb773/xOlN6cioBp6RpMjjRWCKwTY9sGn2VkgrRm
-	NASHt1wCKhZwcR5Rh9c0ToLeDBS2FxFpiHDAXus7G/sVzJr4a+AHiqO101HZsCJ5v7zp
-	PtEI8P2Q6pSyKl8nUaTuJ9CjA13Ug87/CJ7iChBxtIlCzVVYJyNspByZ16YwlkPUQZpa
-	WKxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=+8CSZUYeCXcw1B8w4xUpTJo22rtL9bOkMP2z5pbZtI8=;
-	b=HRqcP7LjnfMb88rV7EI+lg7LbhhGFo1p0s/R1tm86KsA2En62orYhRBUD3nFhX52zn
-	io02/RgFFtsk26bJTYgralCl0lf7bfPtbUtQ/dmDioQbJ/i9uy0ZcV9+4Qr1ENj6wJDg
-	vRIrjHIWLNenXTuQqdWfsJmNvWOrZdhFAEzq4/48Yll74y67hKNJ7GKTeePoCx8sVDzb
-	OM4D3wXx2TLfehdLiWzn0uCcISFsrKDND5j3d77gSxh8wQ81iOH5NJQGGZUuMUO9jE9d
-	JTcC2k+dtUh4ljnQIZU5FahwxLwhCnzutn0S5STdCdRk3yqmL8G9zkPdfiMqb7S0FAyQ
-	jjnw==
-X-Gm-Message-State: APt69E0MN35Q/q8hf//FMgU9r6vQ5PyYrVUqQL6ie/KpRx+/RTVfBIBq
-	FwsQrjMwLzIaVliBj110pZephy1nmQM=
-X-Google-Smtp-Source: ADUXVKJ0fZvyS4KYF1vyG/laDnivvbUqkU+LfwpISNjT2vOd6clWDBrvDZnHMugEuEcZOPDf4zorMw==
-X-Received: by 2002:a37:8fc3:: with SMTP id
-	r186-v6mr10467566qkd.27.1529931133839; 
-	Mon, 25 Jun 2018 05:52:13 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.222])
-	by smtp.gmail.com with ESMTPSA id
-	f9-v6sm9254645qkb.43.2018.06.25.05.52.11
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 25 Jun 2018 05:52:13 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, qemu-arm@nongnu.org
-References: <20180622134036.23182-1-f4bug@amsat.org>
-	<20180622134036.23182-8-f4bug@amsat.org>
-	<e98bac2c-ce0b-e226-3d96-004e46478f2f@redhat.com>
-	<8256c2d4-722c-299f-e8e3-42c1a7f68e1d@amsat.org>
-	<0bf443e6-fd49-9aaf-43fb-f171edf5fd38@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <57e04a05-442c-bd4a-2daa-1b690540c061@amsat.org>
-Date: Mon, 25 Jun 2018 09:52:10 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <cohuck@redhat.com>) id 1fXRDZ-0008AO-V7
+	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 09:07:42 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:60744 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
+	id 1fXRDI-00087L-Fl; Mon, 25 Jun 2018 09:07:24 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id CE5BE7D84D;
+	Mon, 25 Jun 2018 13:07:23 +0000 (UTC)
+Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 06FA02026D5B;
+	Mon, 25 Jun 2018 13:07:21 +0000 (UTC)
+Date: Mon, 25 Jun 2018 15:07:19 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Cc: Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Richard Henderson
+	<rth@twiddle.net>, Alexander Graf <agraf@suse.de>, David Hildenbrand
+	<david@redhat.com>, Christian Borntraeger <borntraeger@de.ibm.com>,
+	qemu-s390x@nongnu.org (open list:S390)
+Message-ID: <20180625150719.0392da6c.cohuck@redhat.com>
+In-Reply-To: <20180625124238.25339-20-f4bug@amsat.org>
+References: <20180625124238.25339-1-f4bug@amsat.org>
+	<20180625124238.25339-20-f4bug@amsat.org>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-In-Reply-To: <0bf443e6-fd49-9aaf-43fb-f171edf5fd38@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
-Subject: Re: [Qemu-trivial] [PATCH v2 07/14] hw/i2c/omap_i2c: Use
- qemu_log_mask(UNIMP) instead of fprintf
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Mon, 25 Jun 2018 13:07:23 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Mon, 25 Jun 2018 13:07:23 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'cohuck@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [PATCH v5 19/46] hw/s390x: Use the IEC binary
+ prefix definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,72 +61,107 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Jun 2018 12:52:26 -0000
+X-List-Received-Date: Mon, 25 Jun 2018 13:07:44 -0000
 
-On 06/25/2018 03:08 AM, Thomas Huth wrote:
-> On 22.06.2018 22:10, Philippe Mathieu-Daudé wrote:
->> On 06/22/2018 04:38 PM, Thomas Huth wrote:
->>> On 22.06.2018 15:40, Philippe Mathieu-Daudé wrote:
->>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>>> ---
->>>>  hw/i2c/omap_i2c.c | 20 ++++++++++++--------
->>>>  1 file changed, 12 insertions(+), 8 deletions(-)
->>>>
->>>> diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
->>>> index 26e3e5ebf6..690876e43e 100644
->>>> --- a/hw/i2c/omap_i2c.c
->>>> +++ b/hw/i2c/omap_i2c.c
->>>> @@ -17,6 +17,7 @@
->>>>   * with this program; if not, see <http://www.gnu.org/licenses/>.
->>>>   */
->>>>  #include "qemu/osdep.h"
->>>> +#include "qemu/log.h"
->>>>  #include "hw/hw.h"
->>>>  #include "hw/i2c/i2c.h"
->>>>  #include "hw/arm/omap.h"
->>>> @@ -339,14 +340,15 @@ static void omap_i2c_write(void *opaque, hwaddr addr,
->>>>              }
->>>>              break;
->>>>          }
->>>> -        if ((value & (1 << 15)) && !(value & (1 << 10))) {	/* MST */
->>>> -            fprintf(stderr, "%s: I^2C slave mode not supported\n",
->>>> -                            __func__);
->>>> +        if ((value & (1 << 15)) && !(value & (1 << 10))) { /* MST */
->>>
->>> Please keep the white spaces before the comment if you don't change
->>> anything else.
->>
->> This is a <tab> and checkpatch complains...
->>
->> I can use 4 spaces for this tab. I tried to align with other tab-aligned
->> comments I didn't modify, but the result is messier. Thus a simple space.
-> 
-> Oh, sorry, I didn't notice that you've replaced a TAB here. I guess it's
-> ok then. But why does checkpatch complain if it is just in the context
-> of your modification? That's weird.
+On Mon, 25 Jun 2018 09:42:11 -0300
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
 
-The first 2 contexts (MST and XA) are fine, however checkpatch complains
-with the last one (ST_EN):
+> It eases code review, unit is explicit.
+>=20
+> Patch generated using:
+>=20
+>   $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include/h=
+w/
+>=20
+> and modified manually.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Acked-by: Cornelia Huck <cohuck@redhat.com>
 
-ERROR: code indent should never use tabs
-#38: FILE: hw/i2c/omap_i2c.c:397:
-+        if (value & (1 << 15)) {^I^I^I^I^I/* ST_EN */$
+Hm, I had not looked at the v2+ patches, as this already carried my
+ack...
 
-Since I replaced this one, I also did with the 2 previous.
+> ---
+>  hw/s390x/s390-skeys.c    | 3 ++-
+>  hw/s390x/s390-stattrib.c | 3 ++-
 
-Now I realize I can _not_ add the brackets so I don't have to update the
-<tabs>:
+...but these two were added later on.
 
-         if (value & (1 << 15))^I^I^I^I^I/* ST_EN */
--            fprintf(stderr, "%s: System Test not supported\n", __func__);
-+            qemu_log_mask(LOG_UNIMP,
-+                          "%s: System Test not supported\n", __func__);
-         break;
+>  hw/s390x/sclp.c          | 3 ++-
+>  3 files changed, 6 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/hw/s390x/s390-skeys.c b/hw/s390x/s390-skeys.c
+> index 76241c240e..15f7ab0e53 100644
+> --- a/hw/s390x/s390-skeys.c
+> +++ b/hw/s390x/s390-skeys.c
+> @@ -10,6 +10,7 @@
+>   */
+> =20
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "hw/boards.h"
+>  #include "hw/s390x/storage-keys.h"
+>  #include "qapi/error.h"
+> @@ -19,7 +20,7 @@
+>  #include "sysemu/kvm.h"
+>  #include "migration/register.h"
+> =20
+> -#define S390_SKEYS_BUFFER_SIZE 131072  /* Room for 128k storage keys */
+> +#define S390_SKEYS_BUFFER_SIZE (128 * KiB)  /* Room for 128k storage key=
+s */
 
-I think if it better to unify the code style when possible, but it is up
-to you, if you prefer I can resend with tabs and no brackets.
+This one looks confusing to me. We're not allocating 128 chunks of 1
+KiB size, but space enough for 128k byte values. What do others think?
 
-Regards,
+>  #define S390_SKEYS_SAVE_FLAG_EOS 0x01
+>  #define S390_SKEYS_SAVE_FLAG_SKEYS 0x02
+>  #define S390_SKEYS_SAVE_FLAG_ERROR 0x04
+> diff --git a/hw/s390x/s390-stattrib.c b/hw/s390x/s390-stattrib.c
+> index 70b95550a8..5161a1659b 100644
+> --- a/hw/s390x/s390-stattrib.c
+> +++ b/hw/s390x/s390-stattrib.c
+> @@ -10,6 +10,7 @@
+>   */
+> =20
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "hw/boards.h"
+>  #include "cpu.h"
+>  #include "migration/qemu-file.h"
+> @@ -20,7 +21,7 @@
+>  #include "qapi/error.h"
+>  #include "qapi/qmp/qdict.h"
+> =20
+> -#define CMMA_BLOCK_SIZE  (1 << 10)
+> +#define CMMA_BLOCK_SIZE  (1 * KiB)
 
-Phil.
+This one looks fine.
+
+> =20
+>  #define STATTR_FLAG_EOS     0x01ULL
+>  #define STATTR_FLAG_MORE    0x02ULL
+> diff --git a/hw/s390x/sclp.c b/hw/s390x/sclp.c
+> index 047d577313..bd2a024efd 100644
+> --- a/hw/s390x/sclp.c
+> +++ b/hw/s390x/sclp.c
+> @@ -13,6 +13,7 @@
+>   */
+> =20
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "qapi/error.h"
+>  #include "cpu.h"
+>  #include "sysemu/sysemu.h"
+> @@ -289,7 +290,7 @@ static void sclp_realize(DeviceState *dev, Error **er=
+rp)
+>      ret =3D s390_set_memory_limit(machine->maxram_size, &hw_limit);
+>      if (ret =3D=3D -E2BIG) {
+>          error_setg(&err, "host supports a maximum of %" PRIu64 " GB",
+> -                   hw_limit >> 30);
+> +                   hw_limit / GiB);
+>      } else if (ret) {
+>          error_setg(&err, "setting the guest size failed");
+>      }
+
 
