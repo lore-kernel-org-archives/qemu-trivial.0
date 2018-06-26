@@ -1,47 +1,109 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fXdXK-0005vI-9v
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Jun 2018 22:16:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59765)
+	id 1fXfmv-0005Ua-12
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Jun 2018 00:41:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51759)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1fXdXI-0005tT-2q
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 22:16:53 -0400
+	(envelope-from <thuth@redhat.com>) id 1fXfmt-0005TL-0D
+	for qemu-trivial@nongnu.org; Tue, 26 Jun 2018 00:41:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1fXdXE-0001UQ-35
-	for qemu-trivial@nongnu.org; Mon, 25 Jun 2018 22:16:49 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:47933)
+	(envelope-from <thuth@redhat.com>) id 1fXfms-0007we-1K
+	for qemu-trivial@nongnu.org; Tue, 26 Jun 2018 00:41:07 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:50964 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1fXdX3-0001Kr-0m; Mon, 25 Jun 2018 22:16:38 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 41F8mY6Qndz9s0W; Tue, 26 Jun 2018 12:16:29 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1529979389;
-	bh=AC3CXbGfAaRAuxqI2QxRqgq6LlQvXBa8jZgbj1lIR9c=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hhDPrepHY/c9vyA5zK1OtH8b4LCUMdt8ganxEUEW7eIZ0yPXmGHZbxAB7keOmEzoJ
-	Y7Cr7IkT1RkO0ITeNHjHW94rklhBZ4ET6f317h4G6WGScBS3DBRKw36eKahftElk+q
-	miKdIpUTdAnOaLve4fLPLzaXGjH7lxvd3QB4OF04=
-Date: Tue, 26 Jun 2018 10:48:44 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>,
-	Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, Alexander Graf <agraf@suse.de>,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>
-Message-ID: <20180626004844.GG22971@umbus.fritz.box>
-References: <20180625124238.25339-1-f4bug@amsat.org>
-	<20180625124238.25339-42-f4bug@amsat.org>
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1fXfmn-0007qO-LW; Tue, 26 Jun 2018 00:41:01 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id CCB7B81ACF4A;
+	Tue, 26 Jun 2018 04:41:00 +0000 (UTC)
+Received: from [10.40.204.33] (ovpn-204-33.brq.redhat.com [10.40.204.33])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 57D272166B5D;
+	Tue, 26 Jun 2018 04:40:58 +0000 (UTC)
+To: Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>, zhang.zhanghailiang@huawei.com,
+	Ben Warren <ben@skyportsystems.com>, qemu-trivial@nongnu.org,
+	Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
+	Stefan Hajnoczi <stefanha@redhat.com>
+References: <20180613151942.GC19901@redhat.com>
+	<87k1r24quk.fsf@dusky.pond.sub.org>
+	<20180619171539.0adc90d6.cohuck@redhat.com>
+	<d4e02083-c372-3ce5-d4a2-4809579fc8f2@redhat.com>
+	<20180622181108.GY7451@localhost.localdomain>
+	<c10c2ffa-7ee2-5106-07d1-528df939d6ad@redhat.com>
+	<20180622193522.GI7451@localhost.localdomain>
+	<743d495e-51cd-8c8e-293e-026b8dece74a@redhat.com>
+	<87lgb3xsv8.fsf@dusky.pond.sub.org>
+	<4292432f-5f26-6925-4c14-ad1370e36e5b@redhat.com>
+	<20180625173056.GM7451@localhost.localdomain>
+	<97504b42-9ebe-45c5-6ff3-b43102c8374a@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <54dfe708-cccf-c628-753f-692c83391ec4@redhat.com>
+Date: Tue, 26 Jun 2018 06:40:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="m0vRWufqUC70IDnR"
-Content-Disposition: inline
-In-Reply-To: <20180625124238.25339-42-f4bug@amsat.org>
-User-Agent: Mutt/1.10.0 (2018-05-17)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-trivial] [PATCH v5 41/46] hw/ppc: Use the IEC binary
- prefix definitions
+In-Reply-To: <97504b42-9ebe-45c5-6ff3-b43102c8374a@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.8]);
+	Tue, 26 Jun 2018 04:41:00 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
+	Tue, 26 Jun 2018 04:41:00 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC PATCH 4/4] qemu-options: Do
+ not show -enable-kvm and -enable-hax in the docs anymore
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,106 +115,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Jun 2018 02:16:53 -0000
+X-List-Received-Date: Tue, 26 Jun 2018 04:41:08 -0000
 
-
---m0vRWufqUC70IDnR
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Jun 25, 2018 at 09:42:33AM -0300, Philippe Mathieu-Daud=E9 wrote:
-> It eases code review, unit is explicit.
+On 25.06.2018 20:26, Paolo Bonzini wrote:
+> On 25/06/2018 19:30, Eduardo Habkost wrote:
+>>>> Attentive distros could even replace the wrapper script by a link.
+>>> If they are okay with replacing the "KVM only" semantics with "KVM or
+>>> TCG", which I think is generally worse.
+>>
+>> If we can't get agreement on what's the right default for each
+>> QEMU binary, I think that's yet another reason to document that
+>> upstream QEMU won't guarantee ABI compatibility if -accel is
+>> omitted.
 >=20
-> Patch generated using:
->=20
->   $ git grep -n '[<>][<>]=3D ?[1-5]0'
->=20
-> and modified manually.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+> Before that we should ask what the benefit is in changing the default
+> for qemu-system-*.  Nobody is using it in practice to start QEMU with
+> KVM enabled...
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+That's certainly not true. I've seen a couple of times already that
+people ask on IRC why their guests are running so slow, and if you ask
+them about their command line, it's obvious that they simply were not
+aware of "-accel" / "-enable-kvm" yet.
 
-> ---
->  hw/ppc/sam460ex.c       | 2 +-
->  target/ppc/mmu_helper.c | 8 ++++----
->  2 files changed, 5 insertions(+), 5 deletions(-)
->=20
-> diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
-> index ffe561fbc1..c7c799b843 100644
-> --- a/hw/ppc/sam460ex.c
-> +++ b/hw/ppc/sam460ex.c
-> @@ -126,7 +126,7 @@ static void generate_eeprom_spd(uint8_t *eeprom, ram_=
-addr_t ram_size)
->      int i;
-> =20
->      /* work in terms of MB */
-> -    ram_size >>=3D 20;
-> +    ram_size /=3D MiB;
-> =20
->      while ((ram_size >=3D 4) && (nbanks <=3D 2)) {
->          int sz_log2 =3D MIN(31 - clz32(ram_size), 14);
-> diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
-> index 98ce17985b..e6739e6c24 100644
-> --- a/target/ppc/mmu_helper.c
-> +++ b/target/ppc/mmu_helper.c
-> @@ -17,6 +17,7 @@
->   * License along with this library; if not, see <http://www.gnu.org/lice=
-nses/>.
->   */
->  #include "qemu/osdep.h"
-> +#include "qemu/units.h"
->  #include "cpu.h"
->  #include "exec/helper-proto.h"
->  #include "sysemu/kvm.h"
-> @@ -1090,11 +1091,10 @@ static void mmubooke_dump_mmu(FILE *f, fprintf_fu=
-nction cpu_fprintf,
->          pa =3D entry->RPN & mask;
->          /* Extend the physical address to 36 bits */
->          pa |=3D (hwaddr)(entry->RPN & 0xF) << 32;
-> -        size /=3D 1024;
-> -        if (size >=3D 1024) {
-> -            snprintf(size_buf, sizeof(size_buf), "%3" PRId64 "M", size /=
- 1024);
-> +        if (size >=3D 1 * MiB) {
-> +            snprintf(size_buf, sizeof(size_buf), "%3" PRId64 "M", size /=
- MiB);
->          } else {
-> -            snprintf(size_buf, sizeof(size_buf), "%3" PRId64 "k", size);
-> +            snprintf(size_buf, sizeof(size_buf), "%3" PRId64 "k", size /=
- KiB);
->          }
->          cpu_fprintf(f, "0x%016" PRIx64 " 0x%016" PRIx64 " %s %-5u %08x %=
-08x\n",
->                      (uint64_t)ea, (uint64_t)pa, size_buf, (uint32_t)entr=
-y->PID,
+<semi-sarcastic>
+Maybe we simply should add a "--verbose" command line option that people
+can use to diagnose their problems:
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+$ qemu-system-x86_64 --verbose
+QEMU emulator version 2.12.50
+Using 'tcg' accelerator. Use '-accel kvm' to speed things up.
+Machine type is 'pc-i440fx-3.0'. Use 'q35' for a more modern machine.
+....
+</semi-sarcastic>
 
---m0vRWufqUC70IDnR
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlsxjWMACgkQbDjKyiDZ
-s5IeHA//WKWRBI5sSa9Tj8RPBFwFiFxvYehmayuzOlfZ7ewZ8EG8mlXg3w52uboW
-6t+JjNF8vIhmTm83/qTKJB9Fzn6bZalqDaa23OYlSOeDt9EhP2wAxocbfRvJt9KH
-3bthUP1EWncRGYdpvMQqVJPdlyM9YPdRMHfWrzKWACGgWT+fzmNnzgmbS/DCNodC
-Mwdnofs7fOYGR5guxFCgqpN8zGlikPg4s++NE1IeNq4KR+veUIqDZVHVM6i+33yW
-NdEjv0VFXI0mEYCS3X5w1jv0T+yyaZ5L+Eog+Y+ppcTVmeV1ZSKQ+9FZORl56mLp
-FmKmV7YDBQpc0a8rpUqRTr3NE9TO7qcRjyFfnV9b3BgN8WdQjEC+ShrJpO5sQWl0
-UmIgyE0MdETpRTL9a7+ayhFjEXyNNENpVCS80Ud4d5x08IGeODVEM15HDzJcIk0l
-dbtY3Bt8eJ+ffmcwPnMGlJ9eQrwAARnsVRMZU7Nh8mFnbsdthxdQiKNDEAe2u9WY
-W2RHMippDQ1nRYQr5ukeDg8s9QnJzz0VhYsLzg1xogOifYufEZxQZWZ5c3qjYsfX
-7WxJx/oGCIOl/U2GGkBUBAGMsf+r4kExazVqcSbBZcnjbEa98REC00ZyESou1ElI
-kFSMXpvp075GgqHag1lNqE7Dvsanr9MxfqX9tH7X2JDA1li92oY=
-=ldnl
------END PGP SIGNATURE-----
-
---m0vRWufqUC70IDnR--
+ Cheers,
+  Thomas
 
