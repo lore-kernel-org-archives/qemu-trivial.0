@@ -1,71 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fYBeq-0001J6-10
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Jun 2018 10:42:56 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50455)
+	id 1fYBgY-0002sX-JA
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Jun 2018 10:44:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51242)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fYBen-0001GU-Bo
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:42:54 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fYBgW-0002qM-17
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:44:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fYBel-0006BS-8G
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:42:53 -0400
-Received: from mail-pf0-x243.google.com ([2607:f8b0:400e:c00::243]:35480)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fYBgV-0000sL-9j
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:44:40 -0400
+Received: from mail-ua0-x234.google.com ([2607:f8b0:400c:c08::234]:41714)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fYBel-0006AE-28
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:42:51 -0400
-Received: by mail-pf0-x243.google.com with SMTP id c22-v6so1073942pfi.2
-	for <qemu-trivial@nongnu.org>; Wed, 27 Jun 2018 07:42:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=s0ucI9cFW+5zmrwj9LnjGjDwZ7QRZyPvw+5V6w3Jwi4=;
-	b=h3QoHUuSxGUDE5O2KoJy9mOLJeczcSVFUwEplIi4UEZiY2JRrTBU+WAgNFZKzxzk7A
-	ZHS5ulVZEb8eDDBBh7xz58kWMFJgVcBKEPjOuy9k6udwDSJVLv1mdF1016Hs7tvaaCXg
-	I1GLEnhfJoCK5olfXowehvkXlFjA1VLAFq3Z0=
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fYBgP-0000iD-M7; Wed, 27 Jun 2018 10:44:33 -0400
+Received: by mail-ua0-x234.google.com with SMTP id z12-v6so1303724uac.8;
+	Wed, 27 Jun 2018 07:44:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=z7V2wXgwxrETGg1xnUctY/NHQEuSX71buowKHKtdCwA=;
+	b=PCcLOhI6ADihDqMukmwE0sn4Yq2ujGyYqBsSS79sGcljJhbHtjqz6MeNL2QoRI1f07
+	E/t2aA+7+Kfk9gRvWq2KSx+nExjoHE3Ig+3LTLVrq2IzLgiT0FXRtdQ2+ax6KmFzWGtV
+	I6z2TRQb3LVB3DZ+IN3q5ku+zb1QiZITZZabEx8qogl7I2FpGNJoeUuomBC4n1e75pL3
+	HNdG441AqQHn/hEYxOkOc5Tzp5iab6q+fwLLmrm+/uUZNjaYYejP4X5CsBU9GzR9M4TI
+	7JBQBr5OJ44cYaGAR11l3Ty+4x/sZ4Lyg32wf2sTfzksaTmQsY1yiV64HPvZwGX96cvw
+	IcbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=s0ucI9cFW+5zmrwj9LnjGjDwZ7QRZyPvw+5V6w3Jwi4=;
-	b=aIB6ds3TYDpv5Tk4FsBt2c2ZpLN/hDkqV7Uy6VRzTf9YVT2C1mj+Sv+96J5sIphHWc
-	ynm6GnkGV4MFERo33EYAon5Nomo1U4NQ44N3VEi7JcwhnXr5K5UUsJHBmQxsrO5cmwJ0
-	CS4yw0iK+0vmBecFrIcmb9I1Ndxzp9OWtSfPtxXkvLPoU5j0l/ZgBm1oc+PFTbgL9YRC
-	++B09wQoBNh76wXoP/hYy+wyZiAO3vM6+yrfZTFqK4d+E4hG/FY3b6xkHfuh9+vxhsuA
-	U+gjDcqEtGdBJFFloJrYCCitRqnwhBJEDcHWrgoC3Ljmb9YV4s08x0RRDVk4brCny4gR
-	mclA==
-X-Gm-Message-State: APt69E21b1whVUp7WieT+aaYnjIEcgtdbJCPhJ3C12dLs28vj3KZOLQE
-	zKaEVmVbuZI3QCdCiVsi5DbpkQ==
-X-Google-Smtp-Source: AAOMgpfI6IqqjpNbmS09q/aRxWaXSPmwlLPZSmoTaFidmWx5VqT+m3131kdvdD7ujSoQYqvrtLipyA==
-X-Received: by 2002:a62:5601:: with SMTP id
-	k1-v6mr6200055pfb.212.1530110570137; 
-	Wed, 27 Jun 2018 07:42:50 -0700 (PDT)
-Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
-	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
-	i186-v6sm8288052pfg.73.2018.06.27.07.42.48
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=z7V2wXgwxrETGg1xnUctY/NHQEuSX71buowKHKtdCwA=;
+	b=CWEUadsQN63TNS5cGfFEigRH/2XsUp1pPfM0VqVvTOuSazbOoZKY2UJXLjpwJ03GEr
+	/szqealJ2eL+oZDYDL8mMG2RNNbf8jRea9xAMPje3IhCJF9hnm07Skcc0zRZhMcnEY3X
+	HX3Fwxz0wIN74WjDRvhB16NeZFGTHnLr98DiN7qsgRqvGPeXdinvym5fdDV74nTPpkgF
+	jKSFvmvifT9AebNu1T7XPUSje7rBh6ZOHeNOxXQGp+/H42neBQ6kxt0bQap5DNli6+mO
+	iTJW1swpfRWxjHLQrP1K3k+tahw3ltUr9GrdyzKidkaxyLt+PhFLJXj6D9LdT2vILlqL
+	UfyQ==
+X-Gm-Message-State: APt69E22eRwR1Xm82ljDapugbXMF7nmgFakCB1c3j4OdoqwoYYoO8eCR
+	bep/UgxERSDNW4Am3Ck27bkdiXAP
+X-Google-Smtp-Source: AAOMgpfpSJ17HVRHNkMREl2lrGzCZN/fD7FEJn1QI6/YxPSyHNpJzi7gWwTr5CW5GWmnpy1Zt+Fr4g==
+X-Received: by 2002:a9f:23a1:: with SMTP id 30-v6mr3931530uao.42.1530110672799;
+	Wed, 27 Jun 2018 07:44:32 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	b39-v6sm1069270uaa.47.2018.06.27.07.44.29
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 27 Jun 2018 07:42:49 -0700 (PDT)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>,
-	Eric Blake <eblake@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+	Wed, 27 Jun 2018 07:44:32 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>
+Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+	qemu-devel@nongnu.org
 References: <20180625124238.25339-1-f4bug@amsat.org>
-	<20180625124238.25339-47-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <4defeb14-beb7-5244-db11-1b19bc751e5b@linaro.org>
-Date: Wed, 27 Jun 2018 07:42:47 -0700
+	<20180625124238.25339-36-f4bug@amsat.org>
+	<3c5eef2f-115c-9c6d-2dba-0407fcebcdc4@linaro.org>
+	<45330ee3-4dcf-3c9c-6781-2db11ff4e8c5@amsat.org>
+	<c487ad94-5a1c-64da-5e26-61202e0e6d69@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <607204a2-26a2-ff6e-8df9-a91ad8ab1290@amsat.org>
+Date: Wed, 27 Jun 2018 11:43:16 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180625124238.25339-47-f4bug@amsat.org>
+In-Reply-To: <c487ad94-5a1c-64da-5e26-61202e0e6d69@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v5 46/46] bsd-user: Use the
+X-Received-From: 2607:f8b0:400c:c08::234
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v5 35/46] hw/usb: Use the
  IEC binary prefix definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -78,26 +88,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Jun 2018 14:42:54 -0000
+X-List-Received-Date: Wed, 27 Jun 2018 14:44:41 -0000
 
-On 06/25/2018 05:42 AM, Philippe Mathieu-Daudé wrote:
-> It eases code review, unit is explicit.
+On 06/27/2018 10:47 AM, Richard Henderson wrote:
+> On 06/27/2018 06:03 AM, Philippe Mathieu-Daudé wrote:
+>> On 06/27/2018 04:04 AM, Richard Henderson wrote:
+>>> On 06/25/2018 05:42 AM, Philippe Mathieu-Daudé wrote:
+>>>> -#define VSCARD_IN_SIZE 65536
+>>>> +#define VSCARD_IN_SIZE      (64 * KiB)
+>>>>  
+>>>>  /* maximum size of ATR - from 7816-3 */
+>>>>  #define MAX_ATR_SIZE        40
+>>>> @@ -276,7 +277,7 @@ static void ccid_card_vscard_read(void *opaque, const uint8_t *buf, int size)
+>>>>  
+>>>>      if (card->vscard_in_pos + size > VSCARD_IN_SIZE) {
+>>>>          error_report(
+>>>> -            "no room for data: pos %d +  size %d > %d. dropping connection.",
+>>>> +            "no room for data: pos %u +  size %d > %ld. dropping connection.",
+>>>>              card->vscard_in_pos, size, VSCARD_IN_SIZE);
+>>>
+>>> Did you test this with i686 host?  %ld doesn't look right.
+>>
+>> Yes...
+>>
+>> $ uname -m
+>> x86_64
+>> $ make hw/usb/ccid-card-passthru.o
+>>   CC      hw/usb/ccid-card-passthru.o
+>> $
 > 
-> Patch generated using:
-> 
->   $ git grep -n '[<>][<>]= ?[1-5]0'
-> 
-> and modified manually.
-> 
-> Suggested-by: Eric Blake <eblake@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  bsd-user/main.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+> Ah, no, I mean 32-bit i686, not x86_64.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+I built using the MXE MinGW32 toolchain, but since the libcacard is not
+packaged for this target I didn't notice...
 
+win32# make hw/usb/ccid-card-passthru.o
+  CC      hw/usb/ccid-card-passthru.o
+hw/usb/ccid-card-passthru.c:13:23: fatal error: libcacard.h: No such
+file or directory
+compilation terminated.
 
-r~
+win32# apt install libcacard-dev
+E: Unable to locate package libcacard-dev
 
+I forgot to run 'make vm-build-ubuntu.i386' on this series.
 
