@@ -1,72 +1,101 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fY4qI-0005hX-Bn
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Jun 2018 03:26:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50583)
+	id 1fY5zH-0007wy-FZ
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Jun 2018 04:39:39 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38161)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fY4qF-0005fY-3g
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 03:26:16 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1fY5zF-0007wE-Nr
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 04:39:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fY4qB-0006zA-48
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 03:26:15 -0400
-Received: from mail-pl0-x241.google.com ([2607:f8b0:400e:c01::241]:41264)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fY4qA-0006wX-UD
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 03:26:11 -0400
-Received: by mail-pl0-x241.google.com with SMTP id w8-v6so632283ply.8
-	for <qemu-trivial@nongnu.org>; Wed, 27 Jun 2018 00:26:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=6viBol9YJNZLoXezaxi9ki9BqzVpT0JL64uYsILwyn8=;
-	b=ixAVr6UDv5HqaGsZ6ecqyzIJ20JkkCLQL+mhkESKT+nfP5YzQA+gPo0VemRR474/FY
-	iKFBgXiBwrzpOtF9Mzxed5wLHMgebN4xACOtn0tJ5FU9XQtA/l5lYJ8UAzSkFu4bbJ08
-	XA1XMTyWfGqTkueR4dAiQZ5vOZ/XtUCJMGovw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=6viBol9YJNZLoXezaxi9ki9BqzVpT0JL64uYsILwyn8=;
-	b=gaRq1shJk9y5E3M9PykQFB6r8xOp4XS3ouft62GHJnnIwMxTwEw5XnOwCOElQJhQHZ
-	lLVVCuwds7DJKNfgliKSqcAgCnN3jq86lzUmv1ePWBSb7X6nT4nBPzEtfw+o+xD02Lxk
-	ei+BfSfTf/msVbPvMgzmVpB2YnbGzmkYdgdHICWeztvsNfu3GT3QvzMhPfSmco/gbYYz
-	9fIj00awyE7oTM1R/884whg0BOTFs9MSGnDzAPG7lTv0mw3umj6PePeYt8zzH1wiz6ei
-	2U1CScB2LKDrGoYlXCUNiRGKxwIg0Rd+GPJf5hFv4u8JFUYXZUp2mWhMxEGfRkGCVT2r
-	rDOQ==
-X-Gm-Message-State: APt69E3/lwkCfJ1DwHFYdQO6OT2XiPLDTMxYVrsOUPO/MSs/uYhCi/zW
-	UDuY2u6n62BvES20cengrHDOFw==
-X-Google-Smtp-Source: ADUXVKIHnYyvlxzxH15acwjK1TiSrqOuZsIJ3PDcyhccoNblr617GRlG3uIxVMHVmeezBbEx7UxV/Q==
-X-Received: by 2002:a17:902:bf0b:: with SMTP id
-	bi11-v6mr4868795plb.25.1530084369986; 
-	Wed, 27 Jun 2018 00:26:09 -0700 (PDT)
-Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
-	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
-	x90-v6sm12398520pfk.151.2018.06.27.00.26.08
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 27 Jun 2018 00:26:08 -0700 (PDT)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>
-Cc: qemu-trivial@nongnu.org, Alex Williamson <alex.williamson@redhat.com>,
-	qemu-devel@nongnu.org
-References: <20180625124238.25339-1-f4bug@amsat.org>
-	<20180625124238.25339-38-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
+	(envelope-from <pbonzini@redhat.com>) id 1fY5zE-0004i5-Uo
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 04:39:37 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56522 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1fY5zB-0004h6-59; Wed, 27 Jun 2018 04:39:33 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.4])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A6AC94007874;
+	Wed, 27 Jun 2018 08:39:32 +0000 (UTC)
+Received: from [10.36.117.31] (ovpn-117-31.ams2.redhat.com [10.36.117.31])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 05C312026D5B;
+	Wed, 27 Jun 2018 08:39:30 +0000 (UTC)
+To: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	zhang.zhanghailiang@huawei.com, Ben Warren <ben@skyportsystems.com>,
+	qemu-trivial@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
+	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
+References: <20180622193522.GI7451@localhost.localdomain>
+	<743d495e-51cd-8c8e-293e-026b8dece74a@redhat.com>
+	<87lgb3xsv8.fsf@dusky.pond.sub.org>
+	<4292432f-5f26-6925-4c14-ad1370e36e5b@redhat.com>
+	<20180625173056.GM7451@localhost.localdomain>
+	<97504b42-9ebe-45c5-6ff3-b43102c8374a@redhat.com>
+	<20180625195126.GN7451@localhost.localdomain>
+	<a931e759-879b-6f6b-3524-4b5a78fed323@redhat.com>
+	<20180626122908.GQ7451@localhost.localdomain>
+	<577768c0-5205-2fb4-209f-845332fe158d@redhat.com>
+	<20180626160623.GT7451@localhost.localdomain>
+From: Paolo Bonzini <pbonzini@redhat.com>
 Openpgp: preference=signencrypt
-Message-ID: <e45c5f02-bb42-2dc2-a898-32fef7fabee6@linaro.org>
-Date: Wed, 27 Jun 2018 00:26:07 -0700
+Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <a0457847-d775-9bc9-32ea-b7337504eabd@redhat.com>
+Date: Wed, 27 Jun 2018 10:39:29 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180625124238.25339-38-f4bug@amsat.org>
+In-Reply-To: <20180626160623.GT7451@localhost.localdomain>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400e:c01::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v5 37/46] hw/vfio: Use the
- IEC binary prefix definitions
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.6]);
+	Wed, 27 Jun 2018 08:39:32 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
+	Wed, 27 Jun 2018 08:39:32 +0000 (UTC) for IP:'10.11.54.4'
+	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'pbonzini@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC PATCH 4/4] qemu-options: Do
+ not show -enable-kvm and -enable-hax in the docs anymore
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,26 +107,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Jun 2018 07:26:16 -0000
+X-List-Received-Date: Wed, 27 Jun 2018 08:39:38 -0000
 
-On 06/25/2018 05:42 AM, Philippe Mathieu-Daudé wrote:
-> It eases code review, unit is explicit.
-> 
-> Patch generated using:
-> 
->   $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include/hw/
-> 
-> and modified manually.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/vfio/pci-quirks.c | 9 +++++----
->  hw/vfio/pci.c        | 3 ++-
->  2 files changed, 7 insertions(+), 5 deletions(-)
+On 26/06/2018 18:06, Eduardo Habkost wrote:
+>> On the other hand I see no benefit in changing a default that people are
+>> obviously not using (since most people use KVM, not TCG).  Distros will
+>> keep shipping, and people will keep using qemu-kvm even if we change the
+>> default.
+>
+> Not changing the default is different from promising we will keep
+> ABI compatibility if the accelerator is omitted.  I just want to
+> get rid of the latter.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+I understand; what I don't understand is why do the latter unless you
+plan to change the default.
 
-
-r~
-
+Paolo
 
