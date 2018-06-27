@@ -1,71 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fY4jd-00033M-V6
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Jun 2018 03:19:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49234)
+	id 1fY4qI-0005hX-Bn
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Jun 2018 03:26:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50583)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fY4jb-00032f-7T
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 03:19:23 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fY4qF-0005fY-3g
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 03:26:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fY4jX-00060C-7H
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 03:19:23 -0400
-Received: from mail-pf0-x233.google.com ([2607:f8b0:400e:c00::233]:39838)
+	(envelope-from <richard.henderson@linaro.org>) id 1fY4qB-0006zA-48
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 03:26:15 -0400
+Received: from mail-pl0-x241.google.com ([2607:f8b0:400e:c01::241]:41264)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fY4jX-0005z9-0j
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 03:19:19 -0400
-Received: by mail-pf0-x233.google.com with SMTP id s21-v6so579374pfm.6
-	for <qemu-trivial@nongnu.org>; Wed, 27 Jun 2018 00:19:18 -0700 (PDT)
+	id 1fY4qA-0006wX-UD
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 03:26:11 -0400
+Received: by mail-pl0-x241.google.com with SMTP id w8-v6so632283ply.8
+	for <qemu-trivial@nongnu.org>; Wed, 27 Jun 2018 00:26:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=vi2GvDh7IDWkBNBpEw4rveIvlM6xhWPiKJA3RygG2Q8=;
-	b=kRI2qKSfaKe331D2Zt5H8AA67lCLVN4EcWXg/a+jfTXsjKHjoOcmSQKZWSIYKYclH4
-	zKSa6prAy1zO8Z8Td91FT9SSzauZzsNqVYfEgAR7EiID1ApjVY8DGWFKix7zdfDmLygE
-	qC23BE18wp0dpqX+BKmd4dSqLqLFHHysKOGsE=
+	bh=6viBol9YJNZLoXezaxi9ki9BqzVpT0JL64uYsILwyn8=;
+	b=ixAVr6UDv5HqaGsZ6ecqyzIJ20JkkCLQL+mhkESKT+nfP5YzQA+gPo0VemRR474/FY
+	iKFBgXiBwrzpOtF9Mzxed5wLHMgebN4xACOtn0tJ5FU9XQtA/l5lYJ8UAzSkFu4bbJ08
+	XA1XMTyWfGqTkueR4dAiQZ5vOZ/XtUCJMGovw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=vi2GvDh7IDWkBNBpEw4rveIvlM6xhWPiKJA3RygG2Q8=;
-	b=T6rP/FNIFBCAJy8ACukyp4GYf1bvTTc6jWnK9cawJAutS5XkRGvBtnu7qOc0EA4k/W
-	G3Oc+aV3E0AUeykJatAkWQqLrlhkOcRfNWF6waMxZYyquOWtsmDGDvWBJ2Cf1+lyOrJ6
-	OReIAYLjQguAMpOzcP9Yv3cQgqBADwj7CUDEdy9xqRRgheg6b4nubxleEllyC6XtPH2T
-	m7/oCV7p+6stTCHUtmn9WdtVaYQa9tHYfRVzAGP8qLnAzqHPV49t6EAURDnAJyIMhVAp
-	nWnr31ENHFyTIXH74LkJoswcAFuJ/dH9kAqbVcjKRT9SyaEgaHUbIWLd5oDfCyxAT8T9
-	HxjQ==
-X-Gm-Message-State: APt69E05lOg2KsqonoxRR0r7zSjmpwPK4Tr510tJQ5qfz82SRLTpVM1v
-	MvG4W3w9bZX69oIF2LrtyuEklg==
-X-Google-Smtp-Source: AAOMgpdhth9EVuEklvnFJ1Buo1c3YCxQDSVaXFEem3VeVGwMeMff/+EtACgu2bE1j3YkTaOo9GpMVg==
-X-Received: by 2002:a62:ae08:: with SMTP id
-	q8-v6mr4236518pff.126.1530083957910; 
-	Wed, 27 Jun 2018 00:19:17 -0700 (PDT)
+	bh=6viBol9YJNZLoXezaxi9ki9BqzVpT0JL64uYsILwyn8=;
+	b=gaRq1shJk9y5E3M9PykQFB6r8xOp4XS3ouft62GHJnnIwMxTwEw5XnOwCOElQJhQHZ
+	lLVVCuwds7DJKNfgliKSqcAgCnN3jq86lzUmv1ePWBSb7X6nT4nBPzEtfw+o+xD02Lxk
+	ei+BfSfTf/msVbPvMgzmVpB2YnbGzmkYdgdHICWeztvsNfu3GT3QvzMhPfSmco/gbYYz
+	9fIj00awyE7oTM1R/884whg0BOTFs9MSGnDzAPG7lTv0mw3umj6PePeYt8zzH1wiz6ei
+	2U1CScB2LKDrGoYlXCUNiRGKxwIg0Rd+GPJf5hFv4u8JFUYXZUp2mWhMxEGfRkGCVT2r
+	rDOQ==
+X-Gm-Message-State: APt69E3/lwkCfJ1DwHFYdQO6OT2XiPLDTMxYVrsOUPO/MSs/uYhCi/zW
+	UDuY2u6n62BvES20cengrHDOFw==
+X-Google-Smtp-Source: ADUXVKIHnYyvlxzxH15acwjK1TiSrqOuZsIJ3PDcyhccoNblr617GRlG3uIxVMHVmeezBbEx7UxV/Q==
+X-Received: by 2002:a17:902:bf0b:: with SMTP id
+	bi11-v6mr4868795plb.25.1530084369986; 
+	Wed, 27 Jun 2018 00:26:09 -0700 (PDT)
 Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
 	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
-	a23-v6sm5130067pfn.113.2018.06.27.00.19.16
+	x90-v6sm12398520pfk.151.2018.06.27.00.26.08
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 27 Jun 2018 00:19:16 -0700 (PDT)
+	Wed, 27 Jun 2018 00:26:08 -0700 (PDT)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Alex Williamson <alex.williamson@redhat.com>,
+	qemu-devel@nongnu.org
 References: <20180625124238.25339-1-f4bug@amsat.org>
-	<20180625124238.25339-37-f4bug@amsat.org>
+	<20180625124238.25339-38-f4bug@amsat.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <5e58c7aa-4c54-53ee-8d1a-ee7280bcda9b@linaro.org>
-Date: Wed, 27 Jun 2018 00:19:15 -0700
+Message-ID: <e45c5f02-bb42-2dc2-a898-32fef7fabee6@linaro.org>
+Date: Wed, 27 Jun 2018 00:26:07 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180625124238.25339-37-f4bug@amsat.org>
+In-Reply-To: <20180625124238.25339-38-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400e:c00::233
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v5 36/46] hw/sd: Use the IEC
- binary prefix definitions
+X-Received-From: 2607:f8b0:400e:c01::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v5 37/46] hw/vfio: Use the
+ IEC binary prefix definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,7 +78,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Jun 2018 07:19:24 -0000
+X-List-Received-Date: Wed, 27 Jun 2018 07:26:16 -0000
 
 On 06/25/2018 05:42 AM, Philippe Mathieu-Daudé wrote:
 > It eases code review, unit is explicit.
@@ -90,9 +91,9 @@ On 06/25/2018 05:42 AM, Philippe Mathieu-Daudé wrote:
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/sd/sd.c    | 4 ++--
->  hw/sd/sdhci.c | 6 +++---
->  2 files changed, 5 insertions(+), 5 deletions(-)
+>  hw/vfio/pci-quirks.c | 9 +++++----
+>  hw/vfio/pci.c        | 3 ++-
+>  2 files changed, 7 insertions(+), 5 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
