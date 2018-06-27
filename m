@@ -1,42 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fY5zH-0007wy-FZ
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Jun 2018 04:39:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38161)
+	id 1fY68c-00042v-Eg
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Jun 2018 04:49:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40000)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1fY5zF-0007wE-Nr
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 04:39:38 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1fY68a-00041X-0Y
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 04:49:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1fY5zE-0004i5-Uo
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 04:39:37 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:56522 helo=mx1.redhat.com)
+	(envelope-from <pbonzini@redhat.com>) id 1fY68Z-0001Bh-EU
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 04:49:16 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:60612 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1fY5zB-0004h6-59; Wed, 27 Jun 2018 04:39:33 -0400
+	id 1fY68U-00018i-2F; Wed, 27 Jun 2018 04:49:10 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
 	[10.11.54.4])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A6AC94007874;
-	Wed, 27 Jun 2018 08:39:32 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5D300857AB;
+	Wed, 27 Jun 2018 08:49:09 +0000 (UTC)
 Received: from [10.36.117.31] (ovpn-117-31.ams2.redhat.com [10.36.117.31])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 05C312026D5B;
-	Wed, 27 Jun 2018 08:39:30 +0000 (UTC)
-To: Eduardo Habkost <ehabkost@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8BE992026D5B;
+	Wed, 27 Jun 2018 08:49:07 +0000 (UTC)
+To: Markus Armbruster <armbru@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>
+Cc: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
 	zhang.zhanghailiang@huawei.com, Ben Warren <ben@skyportsystems.com>,
-	qemu-trivial@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
-	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
-References: <20180622193522.GI7451@localhost.localdomain>
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Stefan Hajnoczi <stefanha@redhat.com>
+References: <20180622181108.GY7451@localhost.localdomain>
+	<c10c2ffa-7ee2-5106-07d1-528df939d6ad@redhat.com>
+	<20180622193522.GI7451@localhost.localdomain>
 	<743d495e-51cd-8c8e-293e-026b8dece74a@redhat.com>
 	<87lgb3xsv8.fsf@dusky.pond.sub.org>
 	<4292432f-5f26-6925-4c14-ad1370e36e5b@redhat.com>
 	<20180625173056.GM7451@localhost.localdomain>
 	<97504b42-9ebe-45c5-6ff3-b43102c8374a@redhat.com>
-	<20180625195126.GN7451@localhost.localdomain>
-	<a931e759-879b-6f6b-3524-4b5a78fed323@redhat.com>
-	<20180626122908.GQ7451@localhost.localdomain>
-	<577768c0-5205-2fb4-209f-845332fe158d@redhat.com>
-	<20180626160623.GT7451@localhost.localdomain>
+	<54dfe708-cccf-c628-753f-692c83391ec4@redhat.com>
+	<20180626095004.7e92fdaa.cohuck@redhat.com>
+	<20180626125644.GS7451@localhost.localdomain>
+	<878t71xzub.fsf@dusky.pond.sub.org>
 From: Paolo Bonzini <pbonzini@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
@@ -74,21 +76,21 @@ Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
 	1lJAPPSIqZKvHzGShdh8DduC0U3xYkfbGAUvbxeepjgzp0uEnBXfPTy09JGpgWbg0w91GyfT
 	/ujKaGd4vxG2Ei+MMNDmS1SMx7wu0evvQ5kT9NPzyq8R2GIhVSiAd2jioGuTjX6AZCFv3ToO
 	53DliFMkVTecLptsXaesuUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <a0457847-d775-9bc9-32ea-b7337504eabd@redhat.com>
-Date: Wed, 27 Jun 2018 10:39:29 +0200
+Message-ID: <736ff87e-8f3c-ca43-9e79-a316df33701b@redhat.com>
+Date: Wed, 27 Jun 2018 10:49:06 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180626160623.GT7451@localhost.localdomain>
+In-Reply-To: <878t71xzub.fsf@dusky.pond.sub.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Wed, 27 Jun 2018 08:39:32 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Wed, 27 Jun 2018 08:39:32 +0000 (UTC) for IP:'10.11.54.4'
+	(mx1.redhat.com [10.11.55.2]);
+	Wed, 27 Jun 2018 08:49:09 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Wed, 27 Jun 2018 08:49:09 +0000 (UTC) for IP:'10.11.54.4'
 	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'pbonzini@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
@@ -107,20 +109,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Jun 2018 08:39:38 -0000
+X-List-Received-Date: Wed, 27 Jun 2018 08:49:16 -0000
 
-On 26/06/2018 18:06, Eduardo Habkost wrote:
->> On the other hand I see no benefit in changing a default that people are
->> obviously not using (since most people use KVM, not TCG).  Distros will
->> keep shipping, and people will keep using qemu-kvm even if we change the
->> default.
->
-> Not changing the default is different from promising we will keep
-> ABI compatibility if the accelerator is omitted.  I just want to
-> get rid of the latter.
+On 26/06/2018 18:43, Markus Armbruster wrote:
+>>> Not sure how serious you meant that, but I actually quite like the
+>>> idea :)
+>> Also, this mode could be enabled by default if stderr is a tty.
+> It could be enabled by default, period.
 
-I understand; what I don't understand is why do the latter unless you
-plan to change the default.
+I agree, summarizing the configuration to stderr on startup is a good
+idea and it shouldn't be a problem for backwards compatibility.  Doing
+it only if it is a tty could be a good idea though, at least initially.
 
 Paolo
 
