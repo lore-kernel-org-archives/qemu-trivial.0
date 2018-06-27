@@ -1,98 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fYAoq-0001bI-3o
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Jun 2018 09:49:12 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35483)
+	id 1fYB1F-0003n0-Mk
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Jun 2018 10:02:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38626)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fYAoi-0001Xe-3j
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 09:49:08 -0400
+	(envelope-from <imammedo@redhat.com>) id 1fYB18-0003hl-ER
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:01:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fYAoh-0002Ay-87
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 09:49:04 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:36656 helo=mx1.redhat.com)
+	(envelope-from <imammedo@redhat.com>) id 1fYB11-00013B-Vi
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:01:54 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:53966 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fYAoa-00020I-MR; Wed, 27 Jun 2018 09:48:56 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1fYB0u-0000xY-F7; Wed, 27 Jun 2018 10:01:40 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F0441407048A;
-	Wed, 27 Jun 2018 13:48:55 +0000 (UTC)
-Received: from [10.36.116.127] (ovpn-116-127.ams2.redhat.com [10.36.116.127])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 738B72026D5B;
-	Wed, 27 Jun 2018 13:48:54 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Stefan Weil <sw@weilnetz.de>
-Cc: qemu-trivial@nongnu.org, Yongbok Kim <yongbok.kim@mips.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, qemu-devel@nongnu.org
+	by mx1.redhat.com (Postfix) with ESMTPS id E797D407529E;
+	Wed, 27 Jun 2018 14:01:39 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9AB36111CA19;
+	Wed, 27 Jun 2018 14:01:36 +0000 (UTC)
+Date: Wed, 27 Jun 2018 16:01:35 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Cc: Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, "Michael S. Tsirkin"
+	<mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Paolo
+	Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>, Eduardo
+	Habkost <ehabkost@redhat.com>
+Message-ID: <20180627160135.7799d7a1@redhat.com>
+In-Reply-To: <20180625124238.25339-34-f4bug@amsat.org>
 References: <20180625124238.25339-1-f4bug@amsat.org>
-	<20180625124238.25339-30-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <8ced7c8b-94f4-6378-0b2d-39158726e2ee@redhat.com>
-Date: Wed, 27 Jun 2018 15:48:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	<20180625124238.25339-34-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20180625124238.25339-30-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.7]);
-	Wed, 27 Jun 2018 13:48:56 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.7]);
-	Wed, 27 Jun 2018 13:48:56 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Wed, 27 Jun 2018 14:01:39 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Wed, 27 Jun 2018 14:01:39 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v5 29/46] hw/mips/r4k:
- Constify params_size
+Subject: Re: [Qemu-trivial] [PATCH v5 33/46] hw/i386: Use the IEC binary
+ prefix definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,46 +60,381 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Jun 2018 13:49:08 -0000
+X-List-Received-Date: Wed, 27 Jun 2018 14:01:59 -0000
 
-On 25.06.2018 14:42, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/mips/mips_r4k.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+On Mon, 25 Jun 2018 09:42:25 -0300
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+
+> It eases code review, unit is explicit.
 >=20
-> diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
-> index e5cf8ed1a3..fc38b4bf99 100644
-> --- a/hw/mips/mips_r4k.c
-> +++ b/hw/mips/mips_r4k.c
-> @@ -79,8 +79,9 @@ typedef struct ResetData {
-> =20
->  static int64_t load_kernel(void)
->  {
-> +    const size_t params_size =3D 264;
->      int64_t entry, kernel_high;
-> -    long kernel_size, initrd_size, params_size;
-> +    long kernel_size, initrd_size;
->      ram_addr_t initrd_offset;
->      uint32_t *params_buf;
->      int big_endian;
-> @@ -128,7 +129,6 @@ static int64_t load_kernel(void)
->      }
-> =20
->      /* Store command line.  */
-> -    params_size =3D 264;
->      params_buf =3D g_malloc(params_size);
-> =20
->      params_buf[0] =3D tswap32(ram_size);
-> @@ -143,7 +143,7 @@ static int64_t load_kernel(void)
->      }
-> =20
->      rom_add_blob_fixed("params", params_buf, params_size,
-> -                       (16 << 20) - 264);
-> +                       (16 << 20) - params_size);
-> =20
->      g_free(params_buf);
->      return entry;
+> Patch generated using:
+>=20
+>   $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include/h=
+w/
+>=20
+> and modified manually.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Reviewed-by: Marcel Apfelbaum <marcel@redhat.com>
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+non important nit below
+
+> ---
+>  include/hw/i386/ich9.h |  3 ++-
+>  hw/i386/acpi-build.c   |  5 +++--
+>  hw/i386/pc.c           | 19 ++++++++++---------
+>  hw/i386/pc_piix.c      |  4 ++--
+>  hw/i386/pc_q35.c       |  3 ++-
+>  hw/i386/pc_sysfw.c     |  9 +++++----
+>  hw/intc/apic_common.c  |  3 ++-
+>  hw/pci-host/piix.c     |  5 +++--
+>  hw/pci-host/q35.c      | 17 +++++++++--------
+>  9 files changed, 38 insertions(+), 30 deletions(-)
+>=20
+> diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
+> index 673d13d28f..3f0b80f0da 100644
+> --- a/include/hw/i386/ich9.h
+> +++ b/include/hw/i386/ich9.h
+> @@ -1,6 +1,7 @@
+>  #ifndef HW_ICH9_H
+>  #define HW_ICH9_H
+> =20
+> +#include "qemu/units.h"
+>  #include "hw/hw.h"
+>  #include "hw/isa/isa.h"
+>  #include "hw/sysbus.h"
+> @@ -22,7 +23,7 @@ I2CBus *ich9_smb_init(PCIBus *bus, int devfn, uint32_t =
+smb_io_base);
+> =20
+>  void ich9_generate_smi(void);
+> =20
+> -#define ICH9_CC_SIZE (16 * 1024) /* 16KB. Chipset configuration register=
+s */
+> +#define ICH9_CC_SIZE (16 * KiB) /* Chipset configuration registers */
+> =20
+>  #define TYPE_ICH9_LPC_DEVICE "ICH9-LPC"
+>  #define ICH9_LPC_DEVICE(obj) \
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 9bc6d97ea1..05fed5af44 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -21,6 +21,7 @@
+>   */
+> =20
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "qapi/error.h"
+>  #include "qapi/qmp/qnum.h"
+>  #include "acpi-build.h"
+> @@ -2248,8 +2249,8 @@ build_tpm2(GArray *table_data, BIOSLinker *linker, =
+GArray *tcpalog)
+>                   (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL, N=
+ULL);
+>  }
+> =20
+> -#define HOLE_640K_START  (640 * 1024)
+> -#define HOLE_640K_END   (1024 * 1024)
+> +#define HOLE_640K_START  (640 * KiB)
+> +#define HOLE_640K_END   (1024 * KiB)
+> =20
+>  static void build_srat_hotpluggable_memory(GArray *table_data, uint64_t =
+base,
+>                                             uint64_t len, int default_nod=
+e)
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 622e49d6bc..41c434d7e3 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -23,6 +23,7 @@
+>   */
+> =20
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "hw/hw.h"
+>  #include "hw/i386/pc.h"
+>  #include "hw/char/serial.h"
+> @@ -452,8 +453,8 @@ void pc_cmos_init(PCMachineState *pcms,
+>      rtc_set_memory(s, 0x15, val);
+>      rtc_set_memory(s, 0x16, val >> 8);
+>      /* extended memory (next 64MiB) */
+> -    if (pcms->below_4g_mem_size > 1024 * 1024) {
+> -        val =3D (pcms->below_4g_mem_size - 1024 * 1024) / 1024;
+> +    if (pcms->below_4g_mem_size > 1 * MiB) {
+> +        val =3D (pcms->below_4g_mem_size - 1 * MiB) / 1024;
+could be:
+   val =3D (pcms->below_4g_mem_size - 1 * MiB) / KiB
+
+>      } else {
+>          val =3D 0;
+>      }
+> @@ -464,8 +465,8 @@ void pc_cmos_init(PCMachineState *pcms,
+>      rtc_set_memory(s, 0x30, val);
+>      rtc_set_memory(s, 0x31, val >> 8);
+>      /* memory between 16MiB and 4GiB */
+> -    if (pcms->below_4g_mem_size > 16 * 1024 * 1024) {
+> -        val =3D (pcms->below_4g_mem_size - 16 * 1024 * 1024) / 65536;
+> +    if (pcms->below_4g_mem_size > 16 * MiB) {
+> +        val =3D (pcms->below_4g_mem_size - 16 * MiB) / 65536;
+>      } else {
+>          val =3D 0;
+>      }
+> @@ -1392,11 +1393,11 @@ void pc_memory_init(PCMachineState *pcms,
+>          }
+> =20
+>          machine->device_memory->base =3D
+> -            ROUND_UP(0x100000000ULL + pcms->above_4g_mem_size, 1ULL << 3=
+0);
+> +            ROUND_UP(0x100000000ULL + pcms->above_4g_mem_size, GiB);
+> =20
+>          if (pcmc->enforce_aligned_dimm) {
+>              /* size device region assuming 1G page max alignment per slo=
+t */
+> -            device_mem_size +=3D (1ULL << 30) * machine->ram_slots;
+> +            device_mem_size +=3D machine->ram_slots * GiB;
+>          }
+> =20
+>          if ((machine->device_memory->base + device_mem_size) <
+> @@ -1438,7 +1439,7 @@ void pc_memory_init(PCMachineState *pcms,
+>          if (!pcmc->broken_reserved_end) {
+>              res_mem_end +=3D memory_region_size(&machine->device_memory-=
+>mr);
+>          }
+> -        *val =3D cpu_to_le64(ROUND_UP(res_mem_end, 0x1ULL << 30));
+> +        *val =3D cpu_to_le64(ROUND_UP(res_mem_end, GiB));
+>          fw_cfg_add_file(fw_cfg, "etc/reserved-memory-end", val, sizeof(*=
+val));
+>      }
+> =20
+> @@ -1475,7 +1476,7 @@ uint64_t pc_pci_hole64_start(void)
+>          hole64_start =3D 0x100000000ULL + pcms->above_4g_mem_size;
+>      }
+> =20
+> -    return ROUND_UP(hole64_start, 1ULL << 30);
+> +    return ROUND_UP(hole64_start, 1 * GiB);
+>  }
+> =20
+>  qemu_irq pc_allocate_cpu_irq(void)
+> @@ -2100,7 +2101,7 @@ static void pc_machine_set_max_ram_below_4g(Object =
+*obj, Visitor *v,
+>          return;
+>      }
+> =20
+> -    if (value < (1ULL << 20)) {
+> +    if (value < 1 * MiB) {
+>          warn_report("Only %" PRIu64 " bytes of RAM below the 4GiB bounda=
+ry,"
+>                      "BIOS may not work with less than 1MiB", value);
+>      }
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index e9b6f064fb..fd740bbc9c 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -23,7 +23,7 @@
+>   */
+> =20
+>  #include "qemu/osdep.h"
+> -
+> +#include "qemu/units.h"
+>  #include "hw/hw.h"
+>  #include "hw/loader.h"
+>  #include "hw/i386/pc.h"
+> @@ -131,7 +131,7 @@ static void pc_init1(MachineState *machine,
+>                  if (lowmem > 0xc0000000) {
+>                      lowmem =3D 0xc0000000;
+>                  }
+> -                if (lowmem & ((1ULL << 30) - 1)) {
+> +                if (lowmem & (1 * GiB - 1)) {
+>                      warn_report("Large machine and max_ram_below_4g "
+>                                  "(%" PRIu64 ") not a multiple of 1G; "
+>                                  "possible bad performance.",
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index 1a73e1848a..532241e3f8 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -29,6 +29,7 @@
+>   */
+> =20
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "hw/hw.h"
+>  #include "hw/loader.h"
+>  #include "sysemu/arch_init.h"
+> @@ -105,7 +106,7 @@ static void pc_q35_init(MachineState *machine)
+>      if (lowmem > pcms->max_ram_below_4g) {
+>          lowmem =3D pcms->max_ram_below_4g;
+>          if (machine->ram_size - lowmem > lowmem &&
+> -            lowmem & ((1ULL << 30) - 1)) {
+> +            lowmem & (1 * GiB - 1)) {
+>              warn_report("There is possibly poor performance as the ram s=
+ize "
+>                          " (0x%" PRIx64 ") is more then twice the size of"
+>                          " max-ram-below-4g (%"PRIu64") and"
+> diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
+> index 73ac783f20..a9e2a72736 100644
+> --- a/hw/i386/pc_sysfw.c
+> +++ b/hw/i386/pc_sysfw.c
+> @@ -24,6 +24,7 @@
+>   */
+> =20
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "qapi/error.h"
+>  #include "sysemu/block-backend.h"
+>  #include "qemu/error-report.h"
+> @@ -56,7 +57,7 @@ static void pc_isa_bios_init(MemoryRegion *rom_memory,
+>      flash_size =3D memory_region_size(flash_mem);
+> =20
+>      /* map the last 128KB of the BIOS in ISA space */
+> -    isa_bios_size =3D MIN(flash_size, 128 * 1024);
+> +    isa_bios_size =3D MIN(flash_size, 128 * KiB);
+>      isa_bios =3D g_malloc(sizeof(*isa_bios));
+>      memory_region_init_ram(isa_bios, NULL, "isa-bios", isa_bios_size,
+>                             &error_fatal);
+> @@ -83,7 +84,7 @@ static void pc_isa_bios_init(MemoryRegion *rom_memory,
+>   * only 18MB-4KB below 4G. For now, restrict the cumulative mapping to 8=
+MB in
+>   * size.
+>   */
+> -#define FLASH_MAP_BASE_MIN ((hwaddr)(0x100000000ULL - 8*1024*1024))
+> +#define FLASH_MAP_BASE_MIN ((hwaddr)(0x100000000ULL - 8 * MiB))
+> =20
+>  /* This function maps flash drives from 4G downward, in order of their u=
+nit
+>   * numbers. The mapping starts at unit#0, with unit number increments of=
+ 1, and
+> @@ -222,8 +223,8 @@ static void old_pc_system_rom_init(MemoryRegion *rom_=
+memory, bool isapc_ram_fw)
+> =20
+>      /* map the last 128KB of the BIOS in ISA space */
+>      isa_bios_size =3D bios_size;
+> -    if (isa_bios_size > (128 * 1024)) {
+> -        isa_bios_size =3D 128 * 1024;
+> +    if (isa_bios_size > 128 * KiB) {
+> +        isa_bios_size =3D 128 * KiB;
+>      }
+>      isa_bios =3D g_malloc(sizeof(*isa_bios));
+>      memory_region_init_alias(isa_bios, NULL, "isa-bios", bios,
+> diff --git a/hw/intc/apic_common.c b/hw/intc/apic_common.c
+> index 78903ea909..75fa49cbc3 100644
+> --- a/hw/intc/apic_common.c
+> +++ b/hw/intc/apic_common.c
+> @@ -18,6 +18,7 @@
+>   * License along with this library; if not, see <http://www.gnu.org/lice=
+nses/>
+>   */
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "qemu/error-report.h"
+>  #include "qapi/error.h"
+>  #include "qemu-common.h"
+> @@ -319,7 +320,7 @@ static void apic_common_realize(DeviceState *dev, Err=
+or **errp)
+> =20
+>      /* Note: We need at least 1M to map the VAPIC option ROM */
+>      if (!vapic && s->vapic_control & VAPIC_ENABLE_MASK &&
+> -        !hax_enabled() && ram_size >=3D 1024 * 1024) {
+> +        !hax_enabled() && ram_size >=3D 1 * MiB) {
+>          vapic =3D sysbus_create_simple("kvmvapic", -1, NULL);
+>      }
+>      s->vapic =3D vapic;
+> diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
+> index 0e608347c1..391dd6c9b8 100644
+> --- a/hw/pci-host/piix.c
+> +++ b/hw/pci-host/piix.c
+> @@ -23,6 +23,7 @@
+>   */
+> =20
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "hw/hw.h"
+>  #include "hw/i386/pc.h"
+>  #include "hw/pci/pci.h"
+> @@ -284,7 +285,7 @@ static void i440fx_pcihost_get_pci_hole64_end(Object =
+*obj, Visitor *v,
+> =20
+>      pci_bus_get_w64_range(h->bus, &w64);
+>      value =3D range_is_empty(&w64) ? 0 : range_upb(&w64) + 1;
+> -    hole64_end =3D ROUND_UP(hole64_start + s->pci_hole64_size, 1ULL << 3=
+0);
+> +    hole64_end =3D ROUND_UP(hole64_start + s->pci_hole64_size, 1 * GiB);
+>      if (s->pci_hole64_fix && value < hole64_end) {
+>          value =3D hole64_end;
+>      }
+> @@ -430,7 +431,7 @@ PCIBus *i440fx_init(const char *host_type, const char=
+ *pci_type,
+> =20
+>      *piix3_devfn =3D piix3->dev.devfn;
+> =20
+> -    ram_size =3D ram_size / 8 / 1024 / 1024;
+> +    ram_size /=3D 8 * MiB;
+>      if (ram_size > 255) {
+>          ram_size =3D 255;
+>      }
+> diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+> index 02f9576588..fbc255ca39 100644
+> --- a/hw/pci-host/q35.c
+> +++ b/hw/pci-host/q35.c
+> @@ -28,6 +28,7 @@
+>   * THE SOFTWARE.
+>   */
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
+>  #include "hw/hw.h"
+>  #include "hw/pci-host/q35.h"
+>  #include "qapi/error.h"
+> @@ -144,7 +145,7 @@ static void q35_host_get_pci_hole64_end(Object *obj, =
+Visitor *v,
+> =20
+>      pci_bus_get_w64_range(h->bus, &w64);
+>      value =3D range_is_empty(&w64) ? 0 : range_upb(&w64) + 1;
+> -    hole64_end =3D ROUND_UP(hole64_start + s->mch.pci_hole64_size, 1ULL =
+<< 30);
+> +    hole64_end =3D ROUND_UP(hole64_start + s->mch.pci_hole64_size, 1 * G=
+iB);
+>      if (s->pci_hole64_fix && value < hole64_end) {
+>          value =3D hole64_end;
+>      }
+> @@ -310,15 +311,15 @@ static void mch_update_pciexbar(MCHPCIState *mch)
+>      addr_mask =3D MCH_HOST_BRIDGE_PCIEXBAR_ADMSK;
+>      switch (pciexbar & MCH_HOST_BRIDGE_PCIEXBAR_LENGTH_MASK) {
+>      case MCH_HOST_BRIDGE_PCIEXBAR_LENGTH_256M:
+> -        length =3D 256 * 1024 * 1024;
+> +        length =3D 256 * MiB;
+>          break;
+>      case MCH_HOST_BRIDGE_PCIEXBAR_LENGTH_128M:
+> -        length =3D 128 * 1024 * 1024;
+> +        length =3D 128 * MiB;
+>          addr_mask |=3D MCH_HOST_BRIDGE_PCIEXBAR_128ADMSK |
+>              MCH_HOST_BRIDGE_PCIEXBAR_64ADMSK;
+>          break;
+>      case MCH_HOST_BRIDGE_PCIEXBAR_LENGTH_64M:
+> -        length =3D 64 * 1024 * 1024;
+> +        length =3D 64 * MiB;
+>          addr_mask |=3D MCH_HOST_BRIDGE_PCIEXBAR_64ADMSK;
+>          break;
+>      case MCH_HOST_BRIDGE_PCIEXBAR_LENGTH_RVD:
+> @@ -396,16 +397,16 @@ static void mch_update_smram(MCHPCIState *mch)
+>          switch (pd->config[MCH_HOST_BRIDGE_ESMRAMC] &
+>                  MCH_HOST_BRIDGE_ESMRAMC_TSEG_SZ_MASK) {
+>          case MCH_HOST_BRIDGE_ESMRAMC_TSEG_SZ_1MB:
+> -            tseg_size =3D 1024 * 1024;
+> +            tseg_size =3D 1 * MiB;
+>              break;
+>          case MCH_HOST_BRIDGE_ESMRAMC_TSEG_SZ_2MB:
+> -            tseg_size =3D 1024 * 1024 * 2;
+> +            tseg_size =3D 2 * MiB;
+>              break;
+>          case MCH_HOST_BRIDGE_ESMRAMC_TSEG_SZ_8MB:
+> -            tseg_size =3D 1024 * 1024 * 8;
+> +            tseg_size =3D 8 * MiB;
+>              break;
+>          default:
+> -            tseg_size =3D 1024 * 1024 * (uint32_t)mch->ext_tseg_mbytes;
+> +            tseg_size =3D (uint32_t)mch->ext_tseg_mbytes * MiB;
+>              break;
+>          }
+>      } else {
+
 
