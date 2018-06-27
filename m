@@ -1,59 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fYB5E-0006dL-Cg
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Jun 2018 10:06:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39850)
+	id 1fYBbZ-0005Uv-CT
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Jun 2018 10:39:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49683)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1fYB59-0006a2-DS
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:06:07 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fYBbW-0005L0-Iz
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:39:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1fYB58-0006P4-KU
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:06:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50300)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1fYB51-0006JA-H4; Wed, 27 Jun 2018 10:05:55 -0400
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.phx2.redhat.com
-	[10.5.11.24])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B8132356E8;
-	Wed, 27 Jun 2018 14:05:54 +0000 (UTC)
-Received: from localhost (ovpn-116-35.gru2.redhat.com [10.97.116.35])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D83E2308BDBF;
-	Wed, 27 Jun 2018 14:05:43 +0000 (UTC)
-Date: Wed, 27 Jun 2018 11:05:42 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	zhang.zhanghailiang@huawei.com, Ben Warren <ben@skyportsystems.com>,
-	qemu-trivial@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
-	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
-Message-ID: <20180627140542.GC7451@localhost.localdomain>
-References: <87lgb3xsv8.fsf@dusky.pond.sub.org>
-	<4292432f-5f26-6925-4c14-ad1370e36e5b@redhat.com>
-	<20180625173056.GM7451@localhost.localdomain>
-	<97504b42-9ebe-45c5-6ff3-b43102c8374a@redhat.com>
-	<20180625195126.GN7451@localhost.localdomain>
-	<a931e759-879b-6f6b-3524-4b5a78fed323@redhat.com>
-	<20180626122908.GQ7451@localhost.localdomain>
-	<577768c0-5205-2fb4-209f-845332fe158d@redhat.com>
-	<20180626160623.GT7451@localhost.localdomain>
-	<a0457847-d775-9bc9-32ea-b7337504eabd@redhat.com>
+	(envelope-from <richard.henderson@linaro.org>) id 1fYBbS-0003Js-IA
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:39:30 -0400
+Received: from mail-pf0-x242.google.com ([2607:f8b0:400e:c00::242]:37294)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fYBbS-0003JB-Aq
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:39:26 -0400
+Received: by mail-pf0-x242.google.com with SMTP id y5-v6so1068815pfn.4
+	for <qemu-trivial@nongnu.org>; Wed, 27 Jun 2018 07:39:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=zl+oFUS9EflLeX0L5y2MqXrCTpUy3G+Ag0eqNAwizeU=;
+	b=jUr+gy5cstA40ntPYZAfwiM/duVtde3DsFIgJFC5amWxLwkf+bYwUz/jZkMJo0t0e6
+	kmtTKn42/oWI9sTEXqNXBK8NTV8B2V18qacZg92LADp8opyb41/5cSVVRE2HqE5+vmxg
+	NxD6VkI13lU1lJoO3HUruAdqrVZA08ITUAgvo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=zl+oFUS9EflLeX0L5y2MqXrCTpUy3G+Ag0eqNAwizeU=;
+	b=efCBsbzRAtgDf1C3HP0LujF1BAEmIAPcRqUOtFbncfqiHCU9TIIAVOkjslkY4O2pfN
+	XWIsOeE0Q/3M/UQ7tmThXAImgT9OOFIO5yUWtJGmJZN72YO1CynCBJ75Qmc2KMYpHQRf
+	PYP0Zta1OIfoyOv2rcr4VtD8JUG24fMW09t3HEhYInMVCXJBxHs+EMGgKjULtGSyoh9/
+	Hj3Uz0GmVLuS8SMS6Z9a7PuWmtJBdACZEnbXKHznAFMohl4NciAcQWj8YKXrbdMBEUUp
+	kS4E3qZyzpfBSR5k2RttKb2FEvtDw14EEuugnRJRIV8IswG5zCCr28MwcViP5TBgZLSj
+	M4xw==
+X-Gm-Message-State: APt69E2nvboyF+MvZsM+/L5/3WoV8GE+x37/cz5+xVAS1x3FDctUT9tv
+	5y7pITh5NwYZAEmNcoR1iB4DaA==
+X-Google-Smtp-Source: ADUXVKKe9d3cWaRw3IS5StTKMM+FYmyaLC8gL93Q3pJssacENnG686P+NkVzTn+nPO9GCWZfnChqcA==
+X-Received: by 2002:a63:7558:: with SMTP id
+	f24-v6mr5541308pgn.314.1530110365402; 
+	Wed, 27 Jun 2018 07:39:25 -0700 (PDT)
+Received: from cloudburst.twiddle.net (97-126-112-211.tukw.qwest.net.
+	[97.126.112.211]) by smtp.gmail.com with ESMTPSA id
+	e5-v6sm5886270pgs.59.2018.06.27.07.39.24
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 27 Jun 2018 07:39:24 -0700 (PDT)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>,
+	Eric Blake <eblake@redhat.com>
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-devel@nongnu.org
+References: <20180625124238.25339-1-f4bug@amsat.org>
+	<20180625124238.25339-43-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <77701561-fead-eeea-2184-6a45aa7deafa@linaro.org>
+Date: Wed, 27 Jun 2018 07:39:22 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <a0457847-d775-9bc9-32ea-b7337504eabd@redhat.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.24
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Wed, 27 Jun 2018 14:05:54 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC PATCH 4/4] qemu-options: Do
- not show -enable-kvm and -enable-hax in the docs anymore
+In-Reply-To: <20180625124238.25339-43-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400e:c00::242
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v5 42/46] monitor: Use the
+ IEC binary prefix definitions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,26 +79,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Jun 2018 14:06:07 -0000
+X-List-Received-Date: Wed, 27 Jun 2018 14:39:31 -0000
 
-On Wed, Jun 27, 2018 at 10:39:29AM +0200, Paolo Bonzini wrote:
-> On 26/06/2018 18:06, Eduardo Habkost wrote:
-> >> On the other hand I see no benefit in changing a default that people are
-> >> obviously not using (since most people use KVM, not TCG).  Distros will
-> >> keep shipping, and people will keep using qemu-kvm even if we change the
-> >> default.
-> >
-> > Not changing the default is different from promising we will keep
-> > ABI compatibility if the accelerator is omitted.  I just want to
-> > get rid of the latter.
+On 06/25/2018 05:42 AM, Philippe Mathieu-Daudé wrote:
+> It eases code review, unit is explicit.
 > 
-> I understand; what I don't understand is why do the latter unless you
-> plan to change the default.
+> Patch generated using:
+> 
+>   $ git grep -n '[<>][<>]= ?[1-5]0'
+> 
+> and modified manually.
+> 
+> Suggested-by: Eric Blake <eblake@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  monitor.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Why should we make a compatibility promise if we don't have to?
-Making and keeping promises have a cost, and I'd like us to spend
-our energy elsewhere.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
--- 
-Eduardo
+
+r~
+
 
