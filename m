@@ -1,52 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fYB2j-0004zW-SX
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Jun 2018 10:03:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39067)
+	id 1fYB5E-0006dL-Cg
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Jun 2018 10:06:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39850)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1fYB2e-0004xR-U2
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:03:32 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1fYB59-0006a2-DS
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:06:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1fYB2b-00030V-0o
-	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:03:28 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:45422 helo=mx1.redhat.com)
+	(envelope-from <ehabkost@redhat.com>) id 1fYB58-0006P4-KU
+	for qemu-trivial@nongnu.org; Wed, 27 Jun 2018 10:06:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50300)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1fYB2S-0002rN-GM; Wed, 27 Jun 2018 10:03:16 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1fYB51-0006JA-H4; Wed, 27 Jun 2018 10:05:55 -0400
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.phx2.redhat.com
+	[10.5.11.24])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F01D9A500A;
-	Wed, 27 Jun 2018 14:03:15 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E7D842156880;
-	Wed, 27 Jun 2018 14:03:14 +0000 (UTC)
-Date: Wed, 27 Jun 2018 16:03:14 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Cc: Thomas Huth <thuth@redhat.com>, Stefan Weil <sw@weilnetz.de>,
-	qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-devel@nongnu.org
-Message-ID: <20180627160314.022e3f81@redhat.com>
-In-Reply-To: <20180625124238.25339-11-f4bug@amsat.org>
-References: <20180625124238.25339-1-f4bug@amsat.org>
-	<20180625124238.25339-11-f4bug@amsat.org>
+	by mx1.redhat.com (Postfix) with ESMTPS id B8132356E8;
+	Wed, 27 Jun 2018 14:05:54 +0000 (UTC)
+Received: from localhost (ovpn-116-35.gru2.redhat.com [10.97.116.35])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D83E2308BDBF;
+	Wed, 27 Jun 2018 14:05:43 +0000 (UTC)
+Date: Wed, 27 Jun 2018 11:05:42 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	zhang.zhanghailiang@huawei.com, Ben Warren <ben@skyportsystems.com>,
+	qemu-trivial@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
+	qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
+Message-ID: <20180627140542.GC7451@localhost.localdomain>
+References: <87lgb3xsv8.fsf@dusky.pond.sub.org>
+	<4292432f-5f26-6925-4c14-ad1370e36e5b@redhat.com>
+	<20180625173056.GM7451@localhost.localdomain>
+	<97504b42-9ebe-45c5-6ff3-b43102c8374a@redhat.com>
+	<20180625195126.GN7451@localhost.localdomain>
+	<a931e759-879b-6f6b-3524-4b5a78fed323@redhat.com>
+	<20180626122908.GQ7451@localhost.localdomain>
+	<577768c0-5205-2fb4-209f-845332fe158d@redhat.com>
+	<20180626160623.GT7451@localhost.localdomain>
+	<a0457847-d775-9bc9-32ea-b7337504eabd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a0457847-d775-9bc9-32ea-b7337504eabd@redhat.com>
+X-Fnord: you can see the fnord
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.24
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Wed, 27 Jun 2018 14:03:16 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Wed, 27 Jun 2018 14:03:16 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'imammedo@redhat.com' RCPT:''
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 27 Jun 2018 14:05:54 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v5 10/46] hw/smbios: Use the
- IEC binary prefix definitions
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC PATCH 4/4] qemu-options: Do
+ not show -enable-kvm and -enable-hax in the docs anymore
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,96 +65,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Jun 2018 14:03:33 -0000
+X-List-Received-Date: Wed, 27 Jun 2018 14:06:07 -0000
 
-On Mon, 25 Jun 2018 09:42:02 -0300
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+On Wed, Jun 27, 2018 at 10:39:29AM +0200, Paolo Bonzini wrote:
+> On 26/06/2018 18:06, Eduardo Habkost wrote:
+> >> On the other hand I see no benefit in changing a default that people are
+> >> obviously not using (since most people use KVM, not TCG).  Distros will
+> >> keep shipping, and people will keep using qemu-kvm even if we change the
+> >> default.
+> >
+> > Not changing the default is different from promising we will keep
+> > ABI compatibility if the accelerator is omitted.  I just want to
+> > get rid of the latter.
+> 
+> I understand; what I don't understand is why do the latter unless you
+> plan to change the default.
 
-> It eases code review, unit is explicit.
->=20
-> Patch generated using:
->=20
->   $ git grep -E '(1024|2048|4096|8192|(<<|>>).?(10|20|30))' hw/ include/h=
-w/
->=20
-> and modified manually.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Why should we make a compatibility promise if we don't have to?
+Making and keeping promises have a cost, and I'd like us to spend
+our energy elsewhere.
 
-
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
-> ---
->  hw/smbios/smbios.c | 15 ++++++---------
->  1 file changed, 6 insertions(+), 9 deletions(-)
->=20
-> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-> index 27a07e96f4..a27e54b2fa 100644
-> --- a/hw/smbios/smbios.c
-> +++ b/hw/smbios/smbios.c
-> @@ -16,6 +16,7 @@
->   */
-> =20
->  #include "qemu/osdep.h"
-> +#include "qemu/units.h"
->  #include "qapi/error.h"
->  #include "qemu/config-file.h"
->  #include "qemu/error-report.h"
-> @@ -625,10 +626,6 @@ static void smbios_build_type_11_table(void)
->      SMBIOS_BUILD_TABLE_POST;
->  }
-> =20
-> -#define ONE_KB ((ram_addr_t)1 << 10)
-> -#define ONE_MB ((ram_addr_t)1 << 20)
-> -#define ONE_GB ((ram_addr_t)1 << 30)
-> -
->  #define MAX_T16_STD_SZ 0x80000000 /* 2T in Kilobytes */
-> =20
->  static void smbios_build_type_16_table(unsigned dimm_cnt)
-> @@ -640,7 +637,7 @@ static void smbios_build_type_16_table(unsigned dimm_=
-cnt)
->      t->location =3D 0x01; /* Other */
->      t->use =3D 0x03; /* System memory */
->      t->error_correction =3D 0x06; /* Multi-bit ECC (for Microsoft, per S=
-eaBIOS) */
-> -    size_kb =3D QEMU_ALIGN_UP(ram_size, ONE_KB) / ONE_KB;
-> +    size_kb =3D QEMU_ALIGN_UP(ram_size, KiB) / KiB;
->      if (size_kb < MAX_T16_STD_SZ) {
->          t->maximum_capacity =3D cpu_to_le32(size_kb);
->          t->extended_maximum_capacity =3D cpu_to_le64(0);
-> @@ -668,7 +665,7 @@ static void smbios_build_type_17_table(unsigned insta=
-nce, uint64_t size)
->      t->memory_error_information_handle =3D cpu_to_le16(0xFFFE); /* Not p=
-rovided */
->      t->total_width =3D cpu_to_le16(0xFFFF); /* Unknown */
->      t->data_width =3D cpu_to_le16(0xFFFF); /* Unknown */
-> -    size_mb =3D QEMU_ALIGN_UP(size, ONE_MB) / ONE_MB;
-> +    size_mb =3D QEMU_ALIGN_UP(size, MiB) / MiB;
->      if (size_mb < MAX_T17_STD_SZ) {
->          t->size =3D cpu_to_le16(size_mb);
->          t->extended_size =3D cpu_to_le32(0);
-> @@ -707,8 +704,8 @@ static void smbios_build_type_19_table(unsigned insta=
-nce,
-> =20
->      end =3D start + size - 1;
->      assert(end > start);
-> -    start_kb =3D start / ONE_KB;
-> -    end_kb =3D end / ONE_KB;
-> +    start_kb =3D start / KiB;
-> +    end_kb =3D end / KiB;
->      if (start_kb < UINT32_MAX && end_kb < UINT32_MAX) {
->          t->starting_address =3D cpu_to_le32(start_kb);
->          t->ending_address =3D cpu_to_le32(end_kb);
-> @@ -869,7 +866,7 @@ void smbios_get_tables(const struct smbios_phys_mem_a=
-rea *mem_array,
-> =20
->          smbios_build_type_11_table();
-> =20
-> -#define MAX_DIMM_SZ (16ll * ONE_GB)
-> +#define MAX_DIMM_SZ (16 * GiB)
->  #define GET_DIMM_SZ ((i < dimm_cnt - 1) ? MAX_DIMM_SZ \
->                                          : ((ram_size - 1) % MAX_DIMM_SZ)=
- + 1)
-> =20
-
+-- 
+Eduardo
 
