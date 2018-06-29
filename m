@@ -1,81 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fYfnO-00013g-9Z
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Jun 2018 18:53:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48193)
+	id 1fYsN6-0007Vf-JD
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Jun 2018 08:19:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51014)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fYfnL-00011A-Kj
-	for qemu-trivial@nongnu.org; Thu, 28 Jun 2018 18:53:44 -0400
+	(envelope-from <eblake@redhat.com>) id 1fYsN3-0007RJ-N2
+	for qemu-trivial@nongnu.org; Fri, 29 Jun 2018 08:19:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fYfnK-0003R8-L1
-	for qemu-trivial@nongnu.org; Thu, 28 Jun 2018 18:53:43 -0400
-Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:42988)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fYfnG-0003Kk-BF; Thu, 28 Jun 2018 18:53:38 -0400
-Received: by mail-qk0-x244.google.com with SMTP id u62-v6so3963702qkf.9;
-	Thu, 28 Jun 2018 15:53:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=i5ULdSp/hOF9d4lnFvrkwxP9CSLsoKtrd1JdRy4D49M=;
-	b=pFxLUSxntsBmyE7muG7SVbCkR9dDpijbH8IAw2M3n2uKJA1TK0IC3L7utqOugYwT1s
-	c0kRYyqo4+acjBxyHzb6hamslPnmCelMUhY3fGnFq+rgsrqVzf+4oH6fUB9mOsLs+gcb
-	50rN9w8+gC6xF5UHUJCu/q+opeR3gOx/iTvBYfM1vEni1gwghcJzdUsH32j+geRLUoCk
-	XGD44NM722xFC41NlpMjSoRoksGjnBKP3loZR2CwMJs1BmZzLMOkKxpPyYKqNP1QyR7m
-	GP63CzkxznmkTUdVq+SQdckmvphjT/kRs01Yuky3Ox+LMHvfz2w5XKOuu05uvcC5eAUb
-	w1ow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=i5ULdSp/hOF9d4lnFvrkwxP9CSLsoKtrd1JdRy4D49M=;
-	b=iW6tme2xYtB9wbejeFnV4iPM1iTur8eP1zxPEBY1oQSMEsAFnB7j7MJbiDOD3hkJOu
-	gGmb9lSMc9qg8YU4yt+eigB9bFn0iWd+rA61Ntq2C33uuDL/3xqcQrcKnutZXErY59sF
-	qwVvbMZyq1oQCE/pmtNe+QP7TqqndA6QDcWz214k/IDHsxXsqZ3QJ6dsn0/nVfsAJsnT
-	wIewinWSTErwYyQ2+OR4g8WZDhk5oiffYt9f1ObqTfsE8ZGWCuWvOWM+hqvqgl976LLH
-	4FEz5egw9sljiOJZb8m8Y3Ut4rwLf5vmAQRlo8s8wBmDQ4tlDbHc3nqjkSfo7sbmAA3U
-	GKgw==
-X-Gm-Message-State: APt69E07WC/gs+dY8FBsKNcM+bvCN7Rz9LCJzTieOO6w0KibHLq+UPHQ
-	VV5Se5JClZqiKzfmjmJr0c52hCZQ
-X-Google-Smtp-Source: AAOMgpceFFdCkLNQg050R1l1yANG4LeB4XQy2DI7g95tepbcX22kLWGPjwjuPFAXmNGPx9GvgsNT+A==
-X-Received: by 2002:a37:192:: with SMTP id
-	u18-v6mr10981350qkg.254.1530226417549; 
-	Thu, 28 Jun 2018 15:53:37 -0700 (PDT)
-Received: from [192.168.100.74] (host8.190-229-104.telecom.net.ar.
-	[190.229.104.8]) by smtp.gmail.com with ESMTPSA id
-	e11-v6sm5476507qkb.4.2018.06.28.15.53.33
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 28 Jun 2018 15:53:36 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-To: Eric Blake <eblake@redhat.com>,
+	(envelope-from <eblake@redhat.com>) id 1fYsN2-0006iC-Id
+	for qemu-trivial@nongnu.org; Fri, 29 Jun 2018 08:19:25 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:47970 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1fYsMx-0006b0-07; Fri, 29 Jun 2018 08:19:19 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E9C3D401CE88;
+	Fri, 29 Jun 2018 12:19:17 +0000 (UTC)
+Received: from [10.10.121.132] (ovpn-121-132.rdu2.redhat.com [10.10.121.132])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D2B27111AF1A;
+	Fri, 29 Jun 2018 12:19:16 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Richard Henderson <richard.henderson@linaro.org>
-Cc: Igor Mammedov <imammedo@redhat.com>, qemu-trivial@nongnu.org,
-	Stefan Weil <sw@weilnetz.de>, Thomas Huth <thuth@redhat.com>,
-	qemu-devel@nongnu.org
 References: <20180625124238.25339-1-f4bug@amsat.org>
 	<20180625124238.25339-2-f4bug@amsat.org>
 	<20180627132747.76773eb9@redhat.com>
 	<3dd9341a-f4e6-c107-2f1f-0745d039f03e@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <15aad1db-2f4c-ea49-9966-a969f0c769f5@amsat.org>
-Date: Thu, 28 Jun 2018 19:53:31 -0300
+	<15aad1db-2f4c-ea49-9966-a969f0c769f5@amsat.org>
+Cc: Igor Mammedov <imammedo@redhat.com>, qemu-trivial@nongnu.org,
+	Stefan Weil <sw@weilnetz.de>, Thomas Huth <thuth@redhat.com>,
+	qemu-devel@nongnu.org
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <c1939f7b-76e2-eca9-2819-d0b4d9a134b1@redhat.com>
+Date: Fri, 29 Jun 2018 07:19:16 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <3dd9341a-f4e6-c107-2f1f-0745d039f03e@redhat.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <15aad1db-2f4c-ea49-9966-a969f0c769f5@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:400d:c09::244
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Fri, 29 Jun 2018 12:19:17 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Fri, 29 Jun 2018 12:19:17 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'eblake@redhat.com' RCPT:''
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v5 01/46] include: Add IEC
  binary prefixes in "qemu/units.h"
 X-BeenThere: qemu-trivial@nongnu.org
@@ -89,54 +66,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Jun 2018 22:53:44 -0000
+X-List-Received-Date: Fri, 29 Jun 2018 12:19:27 -0000
 
-On 06/27/2018 09:26 AM, Eric Blake wrote:
-> On 06/27/2018 06:27 AM, Igor Mammedov wrote:
->> On Mon, 25 Jun 2018 09:41:53 -0300
->> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+On 06/28/2018 05:53 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+
+>>>> +#ifndef QEMU_UNITS_H
+>>>> +#define QEMU_UNITS_H
+>>>> +
+>>>> +#define KiB=C2=A0=C2=A0=C2=A0=C2=A0 (INT64_C(1) << 10)
+>>>> +#define MiB=C2=A0=C2=A0=C2=A0=C2=A0 (INT64_C(1) << 20)
+>>>> +#define GiB=C2=A0=C2=A0=C2=A0=C2=A0 (INT64_C(1) << 30)
+>>>> +#define TiB=C2=A0=C2=A0=C2=A0=C2=A0 (INT64_C(1) << 40)
+>>>> +#define PiB=C2=A0=C2=A0=C2=A0=C2=A0 (INT64_C(1) << 50)
+>>>> +#define EiB=C2=A0=C2=A0=C2=A0=C2=A0 (INT64_C(1) << 60)
+>>> Shouldn't above use UINT64_C()
 >>
->>> Loosely based on 076b35b5a56.
->>>
->>> Suggested-by: Stefan Weil <sw@weilnetz.de>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> ---
-> 
->>> +#ifndef QEMU_UNITS_H
->>> +#define QEMU_UNITS_H
->>> +
->>> +#define KiB     (INT64_C(1) << 10)
->>> +#define MiB     (INT64_C(1) << 20)
->>> +#define GiB     (INT64_C(1) << 30)
->>> +#define TiB     (INT64_C(1) << 40)
->>> +#define PiB     (INT64_C(1) << 50)
->>> +#define EiB     (INT64_C(1) << 60)
->> Shouldn't above use UINT64_C()
-> 
-> Since the decision of signed vs. unsigned was intentional based on
-> review on earlier versions, it may be worth a comment in this file that
-> these constants are intentionally signed (in usage patterns, these tend
-> to be multiplied by another value; and while it is easy to go to
-> unsigned by doing '1U * KiB', you can't go in the opposite direction if
-> you want a signed number for '1 * KiB' unless KiB is signed).
+>> Since the decision of signed vs. unsigned was intentional based on
+>> review on earlier versions, it may be worth a comment in this file tha=
+t
+>> these constants are intentionally signed (in usage patterns, these ten=
+d
+>> to be multiplied by another value; and while it is easy to go to
+>> unsigned by doing '1U * KiB', you can't go in the opposite direction i=
+f
+>> you want a signed number for '1 * KiB' unless KiB is signed).
+>=20
+> OK.
 
-OK.
+Actually, '1U * KiB' still ends up signed.  Why? Because as written, KiB=20
+is a 64-bit quantity, but 1U is 32-bit; type promotion says that since a=20
+64-bit int can represent all 32-bit unsigned values, the result of the=20
+expression is still signed 64-bit.
 
-I'll also change this tests using your suggestion:
+To get unsigned KiB, you either have to use '1ULL * KiB', or KiB should=20
+be changed to be (INT32_C(1) << 10) (a 32-bit constant, rather than a=20
+64-bit one).
 
-diff --git a/tests/test-qemu-opts.c b/tests/test-qemu-opts.c
-@@ -709,8 +709,7 @@ static void test_opts_parse_size(void)
-                            false, &error_abort);
--    g_assert_cmphex(qemu_opt_get_size(opts, "size2", 0),
--                     ==, 16777215 * T_BYTE);
-+    g_assert_cmphex(qemu_opt_get_size(opts, "size2", 0), ==, 16777215U
-* TiB);
+>=20
+> I'll also change this tests using your suggestion:
+>=20
+> diff --git a/tests/test-qemu-opts.c b/tests/test-qemu-opts.c
+> @@ -709,8 +709,7 @@ static void test_opts_parse_size(void)
+>                              false, &error_abort);
+> -    g_assert_cmphex(qemu_opt_get_size(opts, "size2", 0),
+> -                     =3D=3D, 16777215 * T_BYTE);
+> +    g_assert_cmphex(qemu_opt_get_size(opts, "size2", 0), =3D=3D, 16777=
+215U
+> * TiB);
+>=20
+> to avoid this error on 32-bit archs:
+>=20
+> source/qemu/tests/test-qemu-opts.c: In function 'test_opts_parse_size':
+> source/qemu/tests/test-qemu-opts.c:713:71: error: integer overflow in
+> expression [-Werror=3Doverflow]
+>    g_assert_cmphex(qemu_opt_get_size(opts, "size2", 0), =3D=3D, 1677721=
+5 * TiB);
+>                                                                        =
+ ^
 
-to avoid this error on 32-bit archs:
+And this compile error is proof of the confusion when we have a signed=20
+integer overflow (why it only happens on 32-bit arch and not also on=20
+64-bit arch is subtle - it's because TiB is 'long long' on 32-bit, but=20
+merely 'long' on 64-bit, which results in a different type after type=20
+promotion - although I still find it odd that the 64-bit compiler isn't=20
+warning).
 
-source/qemu/tests/test-qemu-opts.c: In function 'test_opts_parse_size':
-source/qemu/tests/test-qemu-opts.c:713:71: error: integer overflow in
-expression [-Werror=overflow]
-  g_assert_cmphex(qemu_opt_get_size(opts, "size2", 0), ==, 16777215 * TiB);
-                                                                       ^
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
