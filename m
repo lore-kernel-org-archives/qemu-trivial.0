@@ -1,55 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fb6uC-0001Eu-64
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Jul 2018 12:14:52 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57933)
+	id 1fb6xY-00043k-32
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Jul 2018 12:18:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59404)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1fb6uA-0001DQ-Ot
-	for qemu-trivial@nongnu.org; Thu, 05 Jul 2018 12:14:51 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fb6xQ-0003zj-KN
+	for qemu-trivial@nongnu.org; Thu, 05 Jul 2018 12:18:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1fb6u9-0008VC-QR
-	for qemu-trivial@nongnu.org; Thu, 05 Jul 2018 12:14:50 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:43108 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1fb6u4-0008PM-Fa; Thu, 05 Jul 2018 12:14:44 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0E47A72646;
-	Thu,  5 Jul 2018 16:14:44 +0000 (UTC)
-Received: from gondolin (ovpn-116-231.ams2.redhat.com [10.36.116.231])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id F246776C9;
-	Thu,  5 Jul 2018 16:14:38 +0000 (UTC)
-Date: Thu, 5 Jul 2018 18:14:36 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, Christian Borntraeger
-	<borntraeger@de.ibm.com>, "Michael S. Tsirkin" <mst@redhat.com>, Richard
-	Henderson <rth@twiddle.net>, Alexander Graf <agraf@suse.de>, David
-	Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org (open
-	list:virtio-ccw)
-Message-ID: <20180705181436.6a2f796e.cohuck@redhat.com>
-In-Reply-To: <20180705155811.20366-3-f4bug@amsat.org>
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fb6xL-0003BM-M7
+	for qemu-trivial@nongnu.org; Thu, 05 Jul 2018 12:18:12 -0400
+Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:35951)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fb6xA-00030X-14; Thu, 05 Jul 2018 12:17:56 -0400
+Received: by mail-qt0-x242.google.com with SMTP id f1-v6so7566113qti.3;
+	Thu, 05 Jul 2018 09:17:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=PjdAjblqkRiMeCoB9Rh7z3skW0ewjm67v3Ih8+cZmuQ=;
+	b=s+9vmdLw/oi0Z7qTWkDd4XzKg8D5wtsce5uVxXy58bW37dUHG5O6RaDpjhQKharKsR
+	JwmndNpE7S1vm/ZDLewwOSob9SD5yhLZYU3fkN6gRjhCXJRWU4Mtqr+x9LAQLO+Y5rFu
+	Y2GYM1D4mmc/lGr6WYNtKBavrR0WuVzEuxJxir3Yv4LyIvl/q/yShk9RR4SyZYBJgo+4
+	LWtRPCM/AX7J/3cpzFGKLZGTK5vuucHfrPokgaywNqkFztoyjynOra9OdOgMftnYXaJ4
+	ryrbNuuuZxtx3IcCoUy7MYBRWh0fOfMF+76lNxgHTWp3tB2NF2ySFSz22iF9/PjQia7x
+	48Xg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=PjdAjblqkRiMeCoB9Rh7z3skW0ewjm67v3Ih8+cZmuQ=;
+	b=C84+V5BQTIv7A35AXnrD4puNpCDWuyqo/oav86vBpParwD9nb9RVbNnv84P5EoTgN8
+	jjN4YKOawvTNyI6Md5cd0Xo5VeJRIwKd6IF4e6KMALTbWRxCjamm8cDr/wcLCPf5fugu
+	JijcdN5lBB6pA67rXFIIwRxHaB3+OQ8yRtv7TszqnGzVT/Sd5SA3Pr+1AlKFjUOnIPdb
+	wq4rhd7A8ilt3cAzOcjj4OmLhmLcLLWWA8mEIn32+Lny4yEsTtNgEfI62v6haFBGirEv
+	WcV5SJ33m88gnNPbkJS1vuHQOjh9VMIVSfdt8TLtE5y56E5TrKvC+FIXS8/OJqrQjBN2
+	f+dQ==
+X-Gm-Message-State: APt69E1LtfykHuqE3WskFofbAWPm/MtxuhKQ3hg1Y8axRAxq7KaG/jnX
+	/eeFMp1BoNZAW70VE5Lq8If7nr7D
+X-Google-Smtp-Source: AAOMgpecBQ2f4qM6W6kXSUe12RcpDzSvFBpUZigeVNp6kifpBNRNooZXXUx1zpJTVU2T9ca0TSaGGQ==
+X-Received: by 2002:ac8:2c72:: with SMTP id
+	e47-v6mr6127123qta.60.1530807475401; 
+	Thu, 05 Jul 2018 09:17:55 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	b3-v6sm1027975qtg.20.2018.07.05.09.17.53
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 05 Jul 2018 09:17:54 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org
+Cc: Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin"
+	<mst@redhat.com>, qemu-devel@nongnu.org
 References: <20180705155811.20366-1-f4bug@amsat.org>
-	<20180705155811.20366-3-f4bug@amsat.org>
-Organization: Red Hat GmbH
+	<20180705155811.20366-5-f4bug@amsat.org>
+	<af8abd7f-d72d-0445-298c-4ff91fccdb5e@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <f83286cc-e70e-596d-58ce-4b3f4e715d8e@amsat.org>
+Date: Thu, 5 Jul 2018 13:17:51 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Thu, 05 Jul 2018 16:14:44 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Thu, 05 Jul 2018 16:14:44 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'cohuck@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH v2 2/7] error: Remove NULL checks on
- error_propagate() calls
+In-Reply-To: <af8abd7f-d72d-0445-298c-4ff91fccdb5e@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c0d::242
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 4/7]
+ tests/bios-tables-test: Remove an useless cast
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,26 +86,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Jul 2018 16:14:51 -0000
+X-List-Received-Date: Thu, 05 Jul 2018 16:18:18 -0000
 
-On Thu,  5 Jul 2018 12:58:06 -0300
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+On 07/05/2018 01:13 PM, Eric Blake wrote:
+> On 07/05/2018 10:58 AM, Philippe Mathieu-Daudé wrote:
+>> Patch created mechanically by rerunning:
+> 
+> In the subject: s/an useless/a useless/
+> 
+> (English is weird; we use "a" when the 'u' is pronounced hard as in
+> "unicorn", and "an" when the 'u' is soft as in "umbrella")
 
-> Patch created mechanically by rerunning:
->=20
->   $  spatch --sp-file scripts/coccinelle/error_propagate_null.cocci \
->             --macro-file scripts/cocci-macro-file.h \
->             --dir . --in-place
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-> Reviewed-by: David Hildenbrand <david@redhat.com>
-> Acked-by: Michael S. Tsirkin <mst@redhat.com>
-> ---
->  hw/s390x/virtio-ccw.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
+TIL, thanks for catching/correcting this Eric :)
 
-I might send this via the s390x tree; in case trivial is quicker:
-
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+>>
+>>    $  spatch --sp-file scripts/coccinelle/typecast.cocci \
+>>              --macro-file scripts/cocci-macro-file.h \
+>>              --dir . --in-place
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>> Acked-by: Michael S. Tsirkin <mst@redhat.com>
+>> ---
 
