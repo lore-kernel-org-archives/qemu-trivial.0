@@ -1,65 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fazhv-0005wE-VA
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Jul 2018 04:33:44 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35321)
+	id 1fb6eL-0004Ju-Mm
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Jul 2018 11:58:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52896)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1fazhr-0005uF-Iv
-	for qemu-trivial@nongnu.org; Thu, 05 Jul 2018 04:33:42 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fb6eJ-0004IQ-4U
+	for qemu-trivial@nongnu.org; Thu, 05 Jul 2018 11:58:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1fazhq-0006Ls-Tk
-	for qemu-trivial@nongnu.org; Thu, 05 Jul 2018 04:33:39 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:54600 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1fazhd-0005dP-9d; Thu, 05 Jul 2018 04:33:25 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0537381A4EAA;
-	Thu,  5 Jul 2018 08:33:24 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-19.ams2.redhat.com
-	[10.36.116.19])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8F56F2156880;
-	Thu,  5 Jul 2018 08:33:22 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 6478A11385D6; Thu,  5 Jul 2018 10:33:21 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: Laurent Vivier <laurent@vivier.eu>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
-	<marcandre.lureau@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org, Alexander
-	Graf <agraf@suse.de>,  Gerd Hoffmann <kraxel@redhat.com>,  Stefano
-	Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org, "Michael S .
-	Tsirkin" <mst@redhat.com>,  Markus Armbruster <armbru@redhat.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,  Anthony Perard
-	<anthony.perard@citrix.com>,  xen-devel@lists.xenproject.org,
-	qemu-s390x@nongnu.org,  qemu-arm@nongnu.org,  Richard Henderson
-	<rth@twiddle.net>,  Kevin Wolf <kwolf@redhat.com>,  Cornelia Huck
-	<cohuck@redhat.com>,  Max Reitz <mreitz@redhat.com>,  Igor Mammedov
-	<imammedo@redhat.com>, qemu-trivial@nongnu.org
-References: <20180704153919.12432-1-f4bug@amsat.org>
-Date: Thu, 05 Jul 2018 10:33:21 +0200
-In-Reply-To: <20180704153919.12432-1-f4bug@amsat.org> ("Philippe
-	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Wed, 4 Jul 2018 12:39:11
-	-0300")
-Message-ID: <87a7r6axpq.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fb6eG-000513-34
+	for qemu-trivial@nongnu.org; Thu, 05 Jul 2018 11:58:27 -0400
+Received: from mail-qk0-x244.google.com ([2607:f8b0:400d:c09::244]:39251)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fb6eF-00050n-TQ; Thu, 05 Jul 2018 11:58:24 -0400
+Received: by mail-qk0-x244.google.com with SMTP id b5-v6so2735870qkg.6;
+	Thu, 05 Jul 2018 08:58:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=2x5s73zFKEZW9Zy7do8M4M3wOlHTyf1YSYxIeCfImU0=;
+	b=CWT0eWKZy8dQyylxKSt1i9tMiqIB1+9HjxTseWz3jsgoG+LnYnNW3fe9sI1fUiryQx
+	FrYO42EJhVR+lZCtQ1sBerEMEPX+hkrwUah7z4gf97WoI3R30Ybai/alDCA+zOUy/L0e
+	jN9Ic5jGrKwfN72N+eN/B8h7cJtuAbsltSgLIMhHsmfN9vTJhArOxAdvOFuzTahfPT2a
+	M03EshDcd5xgrdnaJYf5sFqY53vqcdgTHYzxJ6buJSpF5ugYMx1AbiC9S2llcgEQSxrO
+	z1yt7GBfMO0Oy8aVB7TPi4tF56BL3nSneRYn5gYdpTm+583rJcvL83EaJ+nz9pvzAPjc
+	BUlA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=2x5s73zFKEZW9Zy7do8M4M3wOlHTyf1YSYxIeCfImU0=;
+	b=C+uOlub3twrYnzX8LSxLpW2/wHAneRqtScmUm6lILJdk0TLVxQk03yAamhaXNN4HIV
+	jINsZ6DGd+DJ3WRmdv3k/4ZBHNo/t2mY1BuJMa0wWSbBvLBTr4ORXgQey+FwHAqy3fh5
+	KJ1sYHncjyuThi3eFZD7syl6BBwtO2NtFwX81DnF28DQWmlmKpDMgzTAOfkhu7o+tzQb
+	3tspWYWiQAYwrFqVFEBaBAEGO3nUWJZqjlZgoCM5HUgXn/7hv2VNhcQpveHcJPHsfY7F
+	NCMsS0Odbk+Kq7lzSPU8bTJndu15BrZvu53Gy2YAx9NZZD/HXZ5ubhL7et9Xc1yaswW8
+	6SYQ==
+X-Gm-Message-State: APt69E1ly3qZSLZpemLKSw0RxoU7EyMQ11ru4DMfUeFpBdfQkzeTf2i0
+	JI5Zvi6bxB7RyqQjZjkfgOkPKTRJ
+X-Google-Smtp-Source: AAOMgpcKLht60aSqdv6JkAx9pCOsss0jwqN8bVn3c1YSRr0jBiV25AfZn5ePNSSxKv6l1W0hzRC6gQ==
+X-Received: by 2002:a37:6812:: with SMTP id
+	d18-v6mr5442890qkc.215.1530806303094; 
+	Thu, 05 Jul 2018 08:58:23 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	k66-v6sm4049403qkc.86.2018.07.05.08.58.18
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 05 Jul 2018 08:58:22 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-trivial@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Laurent Vivier <laurent@vivier.eu>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>,
+	"Daniel P . Berrange" <berrange@redhat.com>,
+	David Hildenbrand <david@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>
+Date: Thu,  5 Jul 2018 12:58:04 -0300
+Message-Id: <20180705155811.20366-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Thu, 05 Jul 2018 08:33:24 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Thu, 05 Jul 2018 08:33:24 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/8] Coccinelle cleanups
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:400d:c09::244
+Subject: [Qemu-trivial] [PATCH v2 0/7] Coccinelle cleanups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,12 +81,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Jul 2018 08:33:42 -0000
+X-List-Received-Date: Thu, 05 Jul 2018 15:58:28 -0000
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+Hi Michael,
 
-> Nothing exciting here, patches created mechanically
-> (common after soft freeze).
+Nothing exciting here, patches created mechanically
+(common after soft freeze).
 
-Cc: qemu-trivial
+All patches are reviewed, can you queue them in your Trivial tree?
+
+Thanks,
+
+Phil.
+
+Since v1:
+- rebased
+- dropped incorrect "crypto: Remove useless casts" (Daniel)
+- use PCI_DEVICE() to access XenPCIPassthroughState->dev (Peter)
+- added R-b, A-b
+
+Philippe Mathieu-Daudé (7):
+  qobject: Catch another straggler for use of qdict_put_str()
+  error: Remove NULL checks on error_propagate() calls
+  xen: Use the PCI_DEVICE macro
+  tests/bios-tables-test: Remove an useless cast
+  ui/vnc: Remove useless parenthesis around DIV_ROUND_UP macro
+  hw/pci-host: Remove useless parenthesis around DIV_ROUND_UP macro
+  hw/intc/gicv3: Remove useless parenthesis around DIV_ROUND_UP macro
+
+ include/hw/intc/arm_gicv3_common.h | 2 +-
+ hw/pci-host/piix.c                 | 2 +-
+ hw/pci-host/q35.c                  | 2 +-
+ hw/s390x/virtio-ccw.c              | 4 +---
+ hw/xen/xen_pt_config_init.c        | 8 ++++----
+ qobject/block-qdict.c              | 2 +-
+ tests/bios-tables-test.c           | 2 +-
+ ui/vnc-enc-tight.c                 | 2 +-
+ ui/vnc.c                           | 3 ++-
+ 9 files changed, 13 insertions(+), 14 deletions(-)
+
+-- 
+2.18.0
+
 
