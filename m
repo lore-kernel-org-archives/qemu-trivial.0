@@ -1,65 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fbTKl-000391-Mv
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Jul 2018 12:11:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37270)
+	id 1fbTZd-0001Q7-KX
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Jul 2018 12:27:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40829)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fbTKj-00037Z-HT
-	for qemu-trivial@nongnu.org; Fri, 06 Jul 2018 12:11:46 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fbTZb-0001PG-Ve
+	for qemu-trivial@nongnu.org; Fri, 06 Jul 2018 12:27:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fbTKi-000608-Iv
-	for qemu-trivial@nongnu.org; Fri, 06 Jul 2018 12:11:45 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:32975)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fbTZa-0003T5-VS
+	for qemu-trivial@nongnu.org; Fri, 06 Jul 2018 12:27:07 -0400
+Received: from mail-qk0-x241.google.com ([2607:f8b0:400d:c09::241]:41140)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fbTKi-0005yl-EQ
-	for qemu-trivial@nongnu.org; Fri, 06 Jul 2018 12:11:44 -0400
-Received: by mail-oi0-x241.google.com with SMTP id c6-v6so24470452oiy.0
-	for <qemu-trivial@nongnu.org>; Fri, 06 Jul 2018 09:11:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=fu7v8u9TbSFUFCiP0gNNmXN4lAE4KGNMVxdSCMqsKsw=;
-	b=Cwpb+CozffTe5B5Cw8SjqThZfp33EklhCxKGk/ArC11GADFwvWZUPLoo8rsclxAK0y
-	QGAf+JAqfYmP4R9z9QxLGyR/zQNwOKCAP26dzJyR7/Qp4K4UIpZifRUfcTEPlGIu/5M8
-	6QF1Au/d8h4Evv12eCKKcX7Nl9cz/Js2IuZSk=
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fbTZU-0003RT-Pu; Fri, 06 Jul 2018 12:27:00 -0400
+Received: by mail-qk0-x241.google.com with SMTP id d22-v6so6593847qkc.8;
+	Fri, 06 Jul 2018 09:27:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:subject:to:cc:references:from:openpgp:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=jXWygoV7zDptwCJSMIBJDKav5uLDLnCs6EeoAqTwqkg=;
+	b=bsQKnWBRCHrR3TUSvSZgIgGZyt6/016mBtw2o+p4yY1ne3GDz4Sa0Y53p60IA/Ftv3
+	ZmhHo9HUbEVRUk3o5ksag6iSr4cShXzUYAyqfrXrC3yf44idlQmpsD797afw8phQKJVR
+	CMSvQQ6rDWBvD7z0LYK63Cgejrg1oiHcngjlY2WktoMLtPGbVD6Iu/ZIU439aeN9PytZ
+	F2DHPapAfAhJIzicXWqfe2lPaEt3JLnlNwkKenlQGjiOIB/fKBI74lLw7FL1lYpBaZ9g
+	9MlBFk5RWsBra4+zUmG03r0sOnKDzZwpNa0WCWy3/NzYj6/FAwhoEU15SB5SZZ9ukh8H
+	j1hA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=fu7v8u9TbSFUFCiP0gNNmXN4lAE4KGNMVxdSCMqsKsw=;
-	b=tX8ZNjSbarzrWS8e0VDj5ZejhQ46bldaYwHmrUcy1v9RdfVWIRCZQXEA+Xz4fuFQAs
-	A08FGipOC93XyD658IxrrtCdzBfet5JGNjET2I+SY737XVsjczzavtf/FUGTf+HBJJ6f
-	hL3m1RuMoXeg95/GoXnPyFABqDmd/7af0HbvVB4GicYjcPK2wF7VtO313lo2/VSfTg3k
-	4ion0lTFgf3/d3sqGZR0uBcpRd9ONpUnxsQd2RY9fGfRMqqlVGuiBivZC0GIMUlitLu6
-	6nFnxTQvk8k7zNOQlofkcgwoMi2zl3dd3Rwx7e8e0vUoxEGyu27znVt5g4ANYvjVvJvV
-	XU6A==
-X-Gm-Message-State: APt69E3IR8J19PWEvy41Cs51biB6ef2ypWucmxh+CTjpz13vcFaXKA14
-	J4QTtnZva6X3ac6EibrSNqf6oKVenajBZae1+AvfSbag
-X-Google-Smtp-Source: AAOMgpedDBrPSW81PCXjhRNxHs3I6fIAgICu5EP+z3LsZQHXzc5XHvADD+JWSxy7b/hhdZuHYZdzuHqWj2uSJ0dlLw4=
-X-Received: by 2002:aca:4a49:: with SMTP id
-	x70-v6mr10865960oia.11.1530893503939; 
-	Fri, 06 Jul 2018 09:11:43 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:554d:0:0:0:0:0 with HTTP;
-	Fri, 6 Jul 2018 09:11:23 -0700 (PDT)
-In-Reply-To: <20180706155127.7483-2-f4bug@amsat.org>
-References: <20180706155127.7483-1-f4bug@amsat.org>
-	<20180706155127.7483-2-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Jul 2018 17:11:23 +0100
-Message-ID: <CAFEAcA8hUPd00KJ=-Njax1UWAGQWVY_NJC1fjq7GjkdgpZPqGA@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Laurent Vivier <laurent@vivier.eu>, Riku Voipio <riku.voipio@iki.fi>, 
-	QEMU Developers <qemu-devel@nongnu.org>, 
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=jXWygoV7zDptwCJSMIBJDKav5uLDLnCs6EeoAqTwqkg=;
+	b=S/xFiifun6fj5TdlC8nUuQYRi4CW9C+1P2jopF5shu30oHncLenePgJx2OK4Qrjlr5
+	vTsSB+DMEil4AYtdCXG3UN5f4xR+GRxak1ep6YtNEy8lcrbNxY2CQDO1jOTvEmwP7MiR
+	nplc+M7cS+xzfank6lj98/r/MK4HIj9Mi8U4iolfHtcujrS2RlJw8JwpWbqJdLrXrx2g
+	b25uQhfvETcb1MGfD8yOkYcVSoHVdAMbYkp0pl1faquO/m50IHtlG8RhVsZ2vRJjpXhZ
+	95BHbYwuGEOimINDe48C+EtK5cGxVGmDA+qjYnsmVfBUNu0b6ZT+0aduxv6Mgin4T6uA
+	iZ5g==
+X-Gm-Message-State: APt69E25Fv6PPnApPIHMmuKXakyzXV3dsPZK4vMk/hOtPs26Sba73Ht2
+	bEWLbEE2sAMKpxyXM+3zPLJW0bXb
+X-Google-Smtp-Source: AAOMgpdwXK9s8ouIw46vsu2BoN59kqxe5yRT6ZTBOLPIyMjwR7q3/DcCzxdEAlxwgy9WHbRLH2a+9w==
+X-Received: by 2002:a37:ddd5:: with SMTP id
+	u82-v6mr9329288qku.420.1530894420174; 
+	Fri, 06 Jul 2018 09:27:00 -0700 (PDT)
+Received: from [192.168.1.11] ([138.117.48.222])
+	by smtp.gmail.com with ESMTPSA id
+	b7-v6sm4067446qkd.56.2018.07.06.09.26.57
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 06 Jul 2018 09:26:59 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>,
+	QEMU Developers <qemu-devel@nongnu.org>
+References: <20180706155127.7483-1-f4bug@amsat.org>
+	<20180706155127.7483-3-f4bug@amsat.org>
+	<CAFEAcA_rKe5MrPt36EAYjxB5TDREb9Ea+vj8u4kVPgamLDFiog@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
+Message-ID: <c5000a69-8309-cb26-feeb-a70d1d9107ee@amsat.org>
+Date: Fri, 6 Jul 2018 13:26:56 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA_rKe5MrPt36EAYjxB5TDREb9Ea+vj8u4kVPgamLDFiog@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-trivial] [PATCH for-3.0 1/3] linux-user: Do not report
- "Unsupported syscall" by default
+X-Received-From: 2607:f8b0:400d:c09::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-3.0 2/3] linux-user: Do
+ not report "syscall not implemented" by default
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,40 +88,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Jul 2018 16:11:46 -0000
+X-List-Received-Date: Fri, 06 Jul 2018 16:27:09 -0000
 
-On 6 July 2018 at 16:51, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrot=
-e:
-> This can still be reported using the "-d unimp" command line option.
->
-> Fixes: https://bugs.launchpad.net/qemu/+bug/1777226
-> Reported-by: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  linux-user/syscall.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index 5822e03e28..e4b1b7d7da 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -12757,7 +12757,7 @@ abi_long do_syscall(void *cpu_env, int num, abi_l=
-ong arg1,
->
->      default:
->      unimplemented:
-> -        gemu_log("qemu: Unsupported syscall: %d\n", num);
-> +        qemu_log_mask(LOG_UNIMP, "Unsupported syscall: %d\n", num);
->  #if defined(TARGET_NR_setxattr) || defined(TARGET_NR_get_thread_area) ||=
- defined(TARGET_NR_getdomainname) || defined(TARGET_NR_set_robust_list)
->      unimplemented_nowarn:
->  #endif
-> --
-> 2.18.0
+On 07/06/2018 01:08 PM, Peter Maydell wrote:
+> On 6 July 2018 at 16:51, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>> This can still be reported using the "-d unimp" command line option.
+>>
+>> Code change produced with:
+>>
+>>   git ls-files linux-user | \
+>>   xargs sed -i -E 's/fprintf\(stderr,\s?(".*not implemented\\n")\);/qemu_log_mask(LOG_UNIMP, \1);/g'
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  linux-user/cris/signal.c       | 4 ++--
+>>  linux-user/microblaze/signal.c | 4 ++--
+>>  linux-user/nios2/signal.c      | 2 +-
+>>  linux-user/sparc/signal.c      | 4 ++--
+>>  4 files changed, 7 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/linux-user/cris/signal.c b/linux-user/cris/signal.c
+>> index 0b405247cf..1e02194377 100644
+>> --- a/linux-user/cris/signal.c
+>> +++ b/linux-user/cris/signal.c
+>> @@ -146,7 +146,7 @@ void setup_rt_frame(int sig, struct target_sigaction *ka,
+>>                      target_siginfo_t *info,
+>>                       target_sigset_t *set, CPUCRISState *env)
+>>  {
+>> -    fprintf(stderr, "CRIS setup_rt_frame: not implemented\n");
+>> +    qemu_log_mask(LOG_UNIMP, "setup_rt_frame: not implemented\n");
+> 
+> Your regex seems to have gone a bit awry here, because it's lost
+> the "CRIS" part of the string (similarly below).
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Oh I deliberately dropped it when using 'git add -p' after the regex
+because I noticed neither nios2 nor sparc arch were using it, and I
+don't think this is a relevant information.
 
-thanks
--- PMM
+Do you prefer I restore them, I reword the commit message, or even add
+similar description for the nios2/sparc?
+
+Thanks,
+
+Phil.
 
