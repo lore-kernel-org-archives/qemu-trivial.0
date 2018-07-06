@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fbT1W-0002d9-5i
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Jul 2018 11:51:54 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33661)
+	id 1fbT1Y-0002f5-A7
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Jul 2018 11:51:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33663)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fbT1U-0002c2-CR
+	id 1fbT1U-0002c3-Hr
 	for qemu-trivial@nongnu.org; Fri, 06 Jul 2018 11:51:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fbT1T-0000bi-G1
+	id 1fbT1T-0000c2-KP
 	for qemu-trivial@nongnu.org; Fri, 06 Jul 2018 11:51:52 -0400
-Received: from mail-qt0-x22e.google.com ([2607:f8b0:400d:c0d::22e]:33623)
+Received: from mail-qk0-x234.google.com ([2607:f8b0:400d:c09::234]:43966)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fbT1O-0000X6-L5; Fri, 06 Jul 2018 11:51:46 -0400
-Received: by mail-qt0-x22e.google.com with SMTP id l10-v6so10338568qtj.0;
-	Fri, 06 Jul 2018 08:51:46 -0700 (PDT)
+	id 1fbT1R-0000aH-8k; Fri, 06 Jul 2018 11:51:49 -0400
+Received: by mail-qk0-x234.google.com with SMTP id z74-v6so6537928qkb.10;
+	Fri, 06 Jul 2018 08:51:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=RtyCkRPGxF/ngyL3Jw4u9smbZ1BS6eqItL6f3mFAsOo=;
-	b=AKxs5LeTzx8SiNjR058ZnWs2U8WU5MuXE+1QiOZEh8S8hWeaqj9fM9OpQyhRKb1okH
-	1XqhdTPCRDZbOSziKqPSux8i0nWEj4QpGwXpFu5pZfdfN3hQf0waJy4lAhbyf6wZqzo9
-	1AkQoUbsp6bTLZtZ1/+HigluTKKG6NeuLq0Tn2iOwazrB19CrMtSDMTENAD5W4sLTevA
-	OdzsWYCyj/nJ4DmxAOVn2zmoseDmCIqzSvqRBRBugs+vKXIry264QANtTmeWF8GWx3MT
-	anJ0p8sn8TQM578kZSs/L8JBOZs/qZ9jKmgOoX6DyRoAVzq3iup0rNqfV89RalldRR2x
-	SSCg==
+	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=dozsARSGVZ1UHi/0qPQHi5wytcp0Vh7XMpXWlKcPZW4=;
+	b=oNK3bsqH8l9AQQ0GRv3Q+q49L34KW/c7+aQzff9u30sPAbMGKXJQEf7BEbdxwE/k6H
+	v5tZJsKhBgdW1rADMO3Vtyb7TyrnCmYofukzBe20Tdcj1W9hFXXciCGlchd01nOOvNE3
+	p7QZmXSuGDonVybaGsppkyZJWIXNxNkX23MzKs0bglY5IT/mvyB3V06aO0Fc0LJCvyPM
+	LYqsVfbVJpEVab5QKB2OvRS7ZXjWJo/sT+azox6IL8ujWmKoyZ7Aqx3LNG6SNIxGEtdp
+	X/xREaDukVwFHxnmn5VlA5YdK+h3QbEV5ugiURX/FzS0Lm2rrOrZdyh40MpOsX4eb5Gr
+	rEZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=RtyCkRPGxF/ngyL3Jw4u9smbZ1BS6eqItL6f3mFAsOo=;
-	b=nj2tCcbtNfEQBUWlWGDa4e3PlE7HwLNQEgVhg7aO8ZGh4pvNvp4R+LrDAx6WVTE3Gq
-	cNqgzd+VHW9bE/qkGALJt4BpAKSsrz2gfD/m2qJzbBq8vXowSn4LuTOcAtQjxeac2BaV
-	M7WEwg4b555oo4U0qiUdM38KbyWwIwM5TelY1rXsDlbgvsUq5oWBS//cfpvJHP94THeU
-	45ryXylL11h79l1/UWViQVl9rVlc6JQpSfQ8EmNfyszxRqd/yfpIiQoQjBzvnp+f4Z69
-	74Ox/GMe/UUgNTPvn9tbOEXjSNsiehNNPEIO6XcMFsCEUvDD1ZtCB2r0UQEEPpC5cxh1
-	Vikw==
-X-Gm-Message-State: APt69E1AogvJZnDVwKUGafyU3kv9icbVNsltgNo82Ei/jcKTUh+Z/Mgw
-	ZKS4/hrj/ji9z2VvcB1GqTE=
-X-Google-Smtp-Source: AAOMgpdyV9rezt4n5Ln81Rcxb/VYzIv5GgfS4oYWtTv9UlatB08/wtM69eab+oHGDFrjqMHgZ3hWJQ==
-X-Received: by 2002:a0c:c70d:: with SMTP id
-	w13-v6mr9305900qvi.205.1530892305854; 
-	Fri, 06 Jul 2018 08:51:45 -0700 (PDT)
+	:in-reply-to:references:mime-version:content-transfer-encoding;
+	bh=dozsARSGVZ1UHi/0qPQHi5wytcp0Vh7XMpXWlKcPZW4=;
+	b=T6BJaHO52QYXd/qufGVNvozV6ewOW0ivCC7AfRjs3eA/QY6OhkzwyNnbqnMA0bA9Sa
+	9y3AMf3It1mOYwsJIvX5N7ZU7cDz3laZ6XZJkrZ0Y3H4s8WiPev/f6hDPTPYGzlnNUEM
+	+/fB/aREf9ApKrPcFX3NVIzERiOei1gNZAJCG1pSo6NYf3pvvP0VErEEBq+k5tki66Ai
+	eQPuSFpNkbVcIX4B1sN+f1esVDUxow44/3vo8Vklkwh6HqzcMb5OglAUInlDjpDyyEoJ
+	EutrjKC6nKz4ayIlD9QucCENFA/NoYmthBEfC/pCtBiPRrEiAl9Ted8/tjwO72czNwFw
+	i4wA==
+X-Gm-Message-State: APt69E00GlJuLLehWWTuB3NbKE2tW9oDlq876UXazj9iMYryYuMdVsHy
+	HdQMbES/7px+w9N5gaTaR0M=
+X-Google-Smtp-Source: AAOMgpd6G/g4y0AbAUyGhMaNj9lvyqpTBGlJgWFesyplfVRghqX6oGu+PPUf8LxNTbU4nGcvBblUdg==
+X-Received: by 2002:a37:1456:: with SMTP id
+	e83-v6mr9659827qkh.69.1530892308686; 
+	Fri, 06 Jul 2018 08:51:48 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	140-v6sm5913691qkm.18.2018.07.06.08.51.43
+	140-v6sm5913691qkm.18.2018.07.06.08.51.46
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Jul 2018 08:51:45 -0700 (PDT)
+	Fri, 06 Jul 2018 08:51:48 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -56,16 +56,19 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org,
 	John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>,
 	Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org
-Date: Fri,  6 Jul 2018 12:51:24 -0300
-Message-Id: <20180706155127.7483-1-f4bug@amsat.org>
+Date: Fri,  6 Jul 2018 12:51:25 -0300
+Message-Id: <20180706155127.7483-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20180706155127.7483-1-f4bug@amsat.org>
+References: <20180706155127.7483-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::22e
-Subject: [Qemu-trivial] [PATCH for-3.0 0/3] Sanitize linux-user stdout
+X-Received-From: 2607:f8b0:400d:c09::234
+Subject: [Qemu-trivial] [PATCH for-3.0 1/3] linux-user: Do not report
+ "Unsupported syscall" by default
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,33 +82,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 06 Jul 2018 15:51:53 -0000
 
-Hi Laurent,
+This can still be reported using the "-d unimp" command line option.
 
-Here 3 trivial patches, the first one resolves this launchpad issue:
-https://bugs.launchpad.net/qemu/+bug/1777226, then the following two
-sanitize a bit further.
+Fixes: https://bugs.launchpad.net/qemu/+bug/1777226
+Reported-by: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ linux-user/syscall.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Regards,
-
-Phil.
-
-Philippe Mathieu-Daudé (3):
-  linux-user: Do not report "Unsupported syscall" by default
-  linux-user: Do not report "syscall not implemented" by default
-  linux-user: Report error message on stderr, rather than stdout
-
- linux-user/alpha/cpu_loop.c      | 2 +-
- linux-user/cris/cpu_loop.c       | 2 +-
- linux-user/cris/signal.c         | 4 ++--
- linux-user/microblaze/cpu_loop.c | 6 +++---
- linux-user/microblaze/signal.c   | 4 ++--
- linux-user/nios2/signal.c        | 2 +-
- linux-user/sh4/cpu_loop.c        | 2 +-
- linux-user/sparc/cpu_loop.c      | 2 +-
- linux-user/sparc/signal.c        | 4 ++--
- linux-user/syscall.c             | 2 +-
- 10 files changed, 15 insertions(+), 15 deletions(-)
-
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 5822e03e28..e4b1b7d7da 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -12757,7 +12757,7 @@ abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
+ 
+     default:
+     unimplemented:
+-        gemu_log("qemu: Unsupported syscall: %d\n", num);
++        qemu_log_mask(LOG_UNIMP, "Unsupported syscall: %d\n", num);
+ #if defined(TARGET_NR_setxattr) || defined(TARGET_NR_get_thread_area) || defined(TARGET_NR_getdomainname) || defined(TARGET_NR_set_robust_list)
+     unimplemented_nowarn:
+ #endif
 -- 
 2.18.0
 
