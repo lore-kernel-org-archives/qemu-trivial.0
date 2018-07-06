@@ -1,80 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fb6xY-00043k-32
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Jul 2018 12:18:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59404)
+	id 1fbT1W-0002d9-5i
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Jul 2018 11:51:54 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33661)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fb6xQ-0003zj-KN
-	for qemu-trivial@nongnu.org; Thu, 05 Jul 2018 12:18:18 -0400
+	id 1fbT1U-0002c2-CR
+	for qemu-trivial@nongnu.org; Fri, 06 Jul 2018 11:51:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fb6xL-0003BM-M7
-	for qemu-trivial@nongnu.org; Thu, 05 Jul 2018 12:18:12 -0400
-Received: from mail-qt0-x242.google.com ([2607:f8b0:400d:c0d::242]:35951)
+	id 1fbT1T-0000bi-G1
+	for qemu-trivial@nongnu.org; Fri, 06 Jul 2018 11:51:52 -0400
+Received: from mail-qt0-x22e.google.com ([2607:f8b0:400d:c0d::22e]:33623)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fb6xA-00030X-14; Thu, 05 Jul 2018 12:17:56 -0400
-Received: by mail-qt0-x242.google.com with SMTP id f1-v6so7566113qti.3;
-	Thu, 05 Jul 2018 09:17:55 -0700 (PDT)
+	id 1fbT1O-0000X6-L5; Fri, 06 Jul 2018 11:51:46 -0400
+Received: by mail-qt0-x22e.google.com with SMTP id l10-v6so10338568qtj.0;
+	Fri, 06 Jul 2018 08:51:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
+	h=sender:from:to:cc:subject:date:message-id:mime-version
 	:content-transfer-encoding;
-	bh=PjdAjblqkRiMeCoB9Rh7z3skW0ewjm67v3Ih8+cZmuQ=;
-	b=s+9vmdLw/oi0Z7qTWkDd4XzKg8D5wtsce5uVxXy58bW37dUHG5O6RaDpjhQKharKsR
-	JwmndNpE7S1vm/ZDLewwOSob9SD5yhLZYU3fkN6gRjhCXJRWU4Mtqr+x9LAQLO+Y5rFu
-	Y2GYM1D4mmc/lGr6WYNtKBavrR0WuVzEuxJxir3Yv4LyIvl/q/yShk9RR4SyZYBJgo+4
-	LWtRPCM/AX7J/3cpzFGKLZGTK5vuucHfrPokgaywNqkFztoyjynOra9OdOgMftnYXaJ4
-	ryrbNuuuZxtx3IcCoUy7MYBRWh0fOfMF+76lNxgHTWp3tB2NF2ySFSz22iF9/PjQia7x
-	48Xg==
+	bh=RtyCkRPGxF/ngyL3Jw4u9smbZ1BS6eqItL6f3mFAsOo=;
+	b=AKxs5LeTzx8SiNjR058ZnWs2U8WU5MuXE+1QiOZEh8S8hWeaqj9fM9OpQyhRKb1okH
+	1XqhdTPCRDZbOSziKqPSux8i0nWEj4QpGwXpFu5pZfdfN3hQf0waJy4lAhbyf6wZqzo9
+	1AkQoUbsp6bTLZtZ1/+HigluTKKG6NeuLq0Tn2iOwazrB19CrMtSDMTENAD5W4sLTevA
+	OdzsWYCyj/nJ4DmxAOVn2zmoseDmCIqzSvqRBRBugs+vKXIry264QANtTmeWF8GWx3MT
+	anJ0p8sn8TQM578kZSs/L8JBOZs/qZ9jKmgOoX6DyRoAVzq3iup0rNqfV89RalldRR2x
+	SSCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=PjdAjblqkRiMeCoB9Rh7z3skW0ewjm67v3Ih8+cZmuQ=;
-	b=C84+V5BQTIv7A35AXnrD4puNpCDWuyqo/oav86vBpParwD9nb9RVbNnv84P5EoTgN8
-	jjN4YKOawvTNyI6Md5cd0Xo5VeJRIwKd6IF4e6KMALTbWRxCjamm8cDr/wcLCPf5fugu
-	JijcdN5lBB6pA67rXFIIwRxHaB3+OQ8yRtv7TszqnGzVT/Sd5SA3Pr+1AlKFjUOnIPdb
-	wq4rhd7A8ilt3cAzOcjj4OmLhmLcLLWWA8mEIn32+Lny4yEsTtNgEfI62v6haFBGirEv
-	WcV5SJ33m88gnNPbkJS1vuHQOjh9VMIVSfdt8TLtE5y56E5TrKvC+FIXS8/OJqrQjBN2
-	f+dQ==
-X-Gm-Message-State: APt69E1LtfykHuqE3WskFofbAWPm/MtxuhKQ3hg1Y8axRAxq7KaG/jnX
-	/eeFMp1BoNZAW70VE5Lq8If7nr7D
-X-Google-Smtp-Source: AAOMgpecBQ2f4qM6W6kXSUe12RcpDzSvFBpUZigeVNp6kifpBNRNooZXXUx1zpJTVU2T9ca0TSaGGQ==
-X-Received: by 2002:ac8:2c72:: with SMTP id
-	e47-v6mr6127123qta.60.1530807475401; 
-	Thu, 05 Jul 2018 09:17:55 -0700 (PDT)
-Received: from [192.168.1.11] ([138.117.48.222])
-	by smtp.gmail.com with ESMTPSA id
-	b3-v6sm1027975qtg.20.2018.07.05.09.17.53
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=RtyCkRPGxF/ngyL3Jw4u9smbZ1BS6eqItL6f3mFAsOo=;
+	b=nj2tCcbtNfEQBUWlWGDa4e3PlE7HwLNQEgVhg7aO8ZGh4pvNvp4R+LrDAx6WVTE3Gq
+	cNqgzd+VHW9bE/qkGALJt4BpAKSsrz2gfD/m2qJzbBq8vXowSn4LuTOcAtQjxeac2BaV
+	M7WEwg4b555oo4U0qiUdM38KbyWwIwM5TelY1rXsDlbgvsUq5oWBS//cfpvJHP94THeU
+	45ryXylL11h79l1/UWViQVl9rVlc6JQpSfQ8EmNfyszxRqd/yfpIiQoQjBzvnp+f4Z69
+	74Ox/GMe/UUgNTPvn9tbOEXjSNsiehNNPEIO6XcMFsCEUvDD1ZtCB2r0UQEEPpC5cxh1
+	Vikw==
+X-Gm-Message-State: APt69E1AogvJZnDVwKUGafyU3kv9icbVNsltgNo82Ei/jcKTUh+Z/Mgw
+	ZKS4/hrj/ji9z2VvcB1GqTE=
+X-Google-Smtp-Source: AAOMgpdyV9rezt4n5Ln81Rcxb/VYzIv5GgfS4oYWtTv9UlatB08/wtM69eab+oHGDFrjqMHgZ3hWJQ==
+X-Received: by 2002:a0c:c70d:: with SMTP id
+	w13-v6mr9305900qvi.205.1530892305854; 
+	Fri, 06 Jul 2018 08:51:45 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	140-v6sm5913691qkm.18.2018.07.06.08.51.43
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 05 Jul 2018 09:17:54 -0700 (PDT)
+	Fri, 06 Jul 2018 08:51:45 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
-To: Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org
-Cc: Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin"
-	<mst@redhat.com>, qemu-devel@nongnu.org
-References: <20180705155811.20366-1-f4bug@amsat.org>
-	<20180705155811.20366-5-f4bug@amsat.org>
-	<af8abd7f-d72d-0445-298c-4ff91fccdb5e@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Openpgp: id=FAABE75E12917221DCFD6BB2E3E32C2CDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xE3E32C2CDEADC0DE
-Message-ID: <f83286cc-e70e-596d-58ce-4b3f4e715d8e@amsat.org>
-Date: Thu, 5 Jul 2018 13:17:51 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Laurent Vivier <laurent@vivier.eu>,
+	Riku Voipio <riku.voipio@iki.fi>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org,
+	John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org
+Date: Fri,  6 Jul 2018 12:51:24 -0300
+Message-Id: <20180706155127.7483-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <af8abd7f-d72d-0445-298c-4ff91fccdb5e@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 4/7]
- tests/bios-tables-test: Remove an useless cast
+X-Received-From: 2607:f8b0:400d:c0d::22e
+Subject: [Qemu-trivial] [PATCH for-3.0 0/3] Sanitize linux-user stdout
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -86,26 +77,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Jul 2018 16:18:18 -0000
+X-List-Received-Date: Fri, 06 Jul 2018 15:51:53 -0000
 
-On 07/05/2018 01:13 PM, Eric Blake wrote:
-> On 07/05/2018 10:58 AM, Philippe Mathieu-Daudé wrote:
->> Patch created mechanically by rerunning:
-> 
-> In the subject: s/an useless/a useless/
-> 
-> (English is weird; we use "a" when the 'u' is pronounced hard as in
-> "unicorn", and "an" when the 'u' is soft as in "umbrella")
+Hi Laurent,
 
-TIL, thanks for catching/correcting this Eric :)
+Here 3 trivial patches, the first one resolves this launchpad issue:
+https://bugs.launchpad.net/qemu/+bug/1777226, then the following two
+sanitize a bit further.
 
->>
->>    $  spatch --sp-file scripts/coccinelle/typecast.cocci \
->>              --macro-file scripts/cocci-macro-file.h \
->>              --dir . --in-place
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> Reviewed-by: Markus Armbruster <armbru@redhat.com>
->> Acked-by: Michael S. Tsirkin <mst@redhat.com>
->> ---
+Regards,
+
+Phil.
+
+Philippe Mathieu-Daudé (3):
+  linux-user: Do not report "Unsupported syscall" by default
+  linux-user: Do not report "syscall not implemented" by default
+  linux-user: Report error message on stderr, rather than stdout
+
+ linux-user/alpha/cpu_loop.c      | 2 +-
+ linux-user/cris/cpu_loop.c       | 2 +-
+ linux-user/cris/signal.c         | 4 ++--
+ linux-user/microblaze/cpu_loop.c | 6 +++---
+ linux-user/microblaze/signal.c   | 4 ++--
+ linux-user/nios2/signal.c        | 2 +-
+ linux-user/sh4/cpu_loop.c        | 2 +-
+ linux-user/sparc/cpu_loop.c      | 2 +-
+ linux-user/sparc/signal.c        | 4 ++--
+ linux-user/syscall.c             | 2 +-
+ 10 files changed, 15 insertions(+), 15 deletions(-)
+
+-- 
+2.18.0
+
 
