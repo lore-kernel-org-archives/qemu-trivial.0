@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fbT1d-0002kW-8l
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Jul 2018 11:52:01 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33692)
+	id 1fbT1f-0002mN-Aa
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Jul 2018 11:52:03 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33715)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fbT1X-0002ea-NB
-	for qemu-trivial@nongnu.org; Fri, 06 Jul 2018 11:51:58 -0400
+	id 1fbT1c-0002jy-SW
+	for qemu-trivial@nongnu.org; Fri, 06 Jul 2018 11:52:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fbT1W-0000eH-L6
-	for qemu-trivial@nongnu.org; Fri, 06 Jul 2018 11:51:55 -0400
-Received: from mail-qt0-x243.google.com ([2607:f8b0:400d:c0d::243]:38328)
+	id 1fbT1b-0000mO-TX
+	for qemu-trivial@nongnu.org; Fri, 06 Jul 2018 11:52:00 -0400
+Received: from mail-qt0-x22f.google.com ([2607:f8b0:400d:c0d::22f]:37718)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fbT1U-0000c9-3N; Fri, 06 Jul 2018 11:51:52 -0400
-Received: by mail-qt0-x243.google.com with SMTP id c5-v6so10315635qth.5;
-	Fri, 06 Jul 2018 08:51:51 -0700 (PDT)
+	id 1fbT1X-0000fO-Bc; Fri, 06 Jul 2018 11:51:55 -0400
+Received: by mail-qt0-x22f.google.com with SMTP id a18-v6so10321827qtj.4;
+	Fri, 06 Jul 2018 08:51:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
 	:mime-version:content-transfer-encoding;
-	bh=Qq4zW0j5/pH4zwxGo2ae9u1gX5pvBe1OqPDzfP89sAg=;
-	b=kxHrnn70hEU+0Q+5JIgB8/Drdfx/tzBK3bp3tYC/MUVpAMvRgWlSt3bSOCxdHJT1lN
-	RNBXJLgKk6+ArA96PmtVvIxSNDAtGEBjwWbXpYUuP4f6YemxwUxtiUf1RWmLMQEbr4TD
-	yoDj6xNOkGXBx69nKe8oeeylVAmcB/wB/h+KNY0zof0JZC/3wDhwG1Z5oYnLXYR7kaOe
-	QO4NNkjLBeGEC/69Nsho8vp7XewLtYR8VVlzlmQg2+qZFAM2H4K4Ie377uK8lZIq8LTF
-	SRScfNnKLuTLRz3NsAXpitjNFmU4dDYLYh1idP8dLGyg1vq2CEqT6zjWB8TUhA76ozEZ
-	WdRQ==
+	bh=mM7lbfYF2Xdi5f/oKpXZNYIRgi91L/aGcXQSd6e2nIo=;
+	b=RsxkcjhsqiJXtJl5KFEsZ6Ac7lWwUI4XOdCd1pLWmBBpnknxWbMauAqq0zaX+5GoAG
+	M1hIKkXi2+kS+6z9bvQIDjjBPj5Ial5xQFrEckTcdCJh6HVPU/ExM4s+nJBSrJkxEHbi
+	UK9BnuVNcHFoE7Yv9u71Hg/aGaQNlZwekzHwM3G+8qe2Gz9fQ5TgK9XR8NLlJqLjnc4T
+	GZ6B9Gm7I+Fau6xP+NmZcooJzWT/ftFk1DR6cBFi2X+OA9iIrAvyp9VRQVrkTuwol9FA
+	GRM6JzFoWx3WSv7LkYb4WKEb63Je5hLqRahcu98Mb8+W3YCpfxS9F3aWkmjnDW+Kocv4
+	RkVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:in-reply-to:references:mime-version:content-transfer-encoding;
-	bh=Qq4zW0j5/pH4zwxGo2ae9u1gX5pvBe1OqPDzfP89sAg=;
-	b=gjUNANX5GKlsKXRUvKlxGOk8jMx08n1sh7+t3pgVec/sxRau6Om8kukd6SunEzbK6I
-	7SuzFgkz2r0xT9c6o6ZiARhTOVWxQczpgIdAIsqPkl6WECWeVpaFDsiWKXnCkQlHE1Gx
-	PQzMRSUwPIyUZyouQUF1Czhq1ec75JHfPwDgzZGxP0WwBAOJL1WLbc9fpSvWH49k/iNi
-	LG5Kfq54dYHZNDdEkMzMuDcL39HESSGWA7zS075JunMDgqx+2Cl//sQffeMUd8/W5xUL
-	XmdrQCjv4U5fya5F8YRYSD5qMzhgp1almxgPDovPnZ/E0kx4MJauxp3eHkAKgn/Lv9ly
-	J7xQ==
-X-Gm-Message-State: APt69E0siaXaz5wVtTI32JbLiJz8Ljcn9Z3CHOroC3frn7JmD2KcLuiO
-	POEF6/aFQWgC91yVgEFXER8=
-X-Google-Smtp-Source: AAOMgpd2n6a8CyGGW9FIC14MLBHqd6cYJil4PR/Gf791/XJFGlixh4+PrV46vqXsOFTbLBr13QQgLA==
-X-Received: by 2002:aed:2317:: with SMTP id
-	h23-v6mr9469242qtc.85.1530892311474; 
-	Fri, 06 Jul 2018 08:51:51 -0700 (PDT)
+	bh=mM7lbfYF2Xdi5f/oKpXZNYIRgi91L/aGcXQSd6e2nIo=;
+	b=TbOnekmRqWCsSJtQSGTZfq70BY3DqpfK3cadb73+6n95SC7GeEXMkQ3w2NDeo4WHuj
+	nNmTv+Gu2GdEp+hDBk96D4w0Swx4sxKamBBMcgXoxJkqw0U3ITu3N76YlLLsktSIS856
+	EkcZO0jHfOT4jFuyG2EVCOOZHk94oomvfxrNGJ8uHmoHjr5/eebpXZROpeg0OvhbTSMb
+	cfnGUCFeWVN1x5VlqehkeSwIwc23TZ+JoXGhUmaadd8iQxWSV/5i11PLfwpoqZN3xIVV
+	a4MNdCjJ8W1wvlmk57vXcwxzMwZMYe3M7g38qkDmd1eaOWmwxhvQWyiTA/vz2yGlyYOx
+	cNLQ==
+X-Gm-Message-State: APt69E2aCAqCEod9VJFgeS51OnUKYoCk9oY3SEJmNQrdJUPEAT2077du
+	2L428fIIklkd4XSK3GQ3dqY=
+X-Google-Smtp-Source: AAOMgpclBufpIwiVAuJP8o2eLUf4h7C4J2s8Yis81JG5YupnJfbVfhgUAE7p9CouAbce/rDlnTfNew==
+X-Received: by 2002:ac8:709:: with SMTP id g9-v6mr9836926qth.110.1530892314303;
+	Fri, 06 Jul 2018 08:51:54 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	140-v6sm5913691qkm.18.2018.07.06.08.51.48
+	140-v6sm5913691qkm.18.2018.07.06.08.51.51
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 06 Jul 2018 08:51:50 -0700 (PDT)
+	Fri, 06 Jul 2018 08:51:53 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
@@ -56,8 +55,8 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org,
 	John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>,
 	Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org
-Date: Fri,  6 Jul 2018 12:51:26 -0300
-Message-Id: <20180706155127.7483-3-f4bug@amsat.org>
+Date: Fri,  6 Jul 2018 12:51:27 -0300
+Message-Id: <20180706155127.7483-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20180706155127.7483-1-f4bug@amsat.org>
 References: <20180706155127.7483-1-f4bug@amsat.org>
@@ -66,9 +65,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::243
-Subject: [Qemu-trivial] [PATCH for-3.0 2/3] linux-user: Do not report
- "syscall not implemented" by default
+X-Received-From: 2607:f8b0:400d:c0d::22f
+Subject: [Qemu-trivial] [PATCH for-3.0 3/3] linux-user: Report error message
+ on stderr, rather than stdout
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,100 +79,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Jul 2018 15:51:58 -0000
-
-This can still be reported using the "-d unimp" command line option.
+X-List-Received-Date: Fri, 06 Jul 2018 15:52:02 -0000
 
 Code change produced with:
 
   git ls-files linux-user | \
-  xargs sed -i -E 's/fprintf\(stderr,\s?(".*not implemented\\n")\);/qemu_log_mask(LOG_UNIMP, \1);/g'
+  xargs sed -i -E 's/(\s+)printf\s*\(("Unhandled.*)\);/\1fprintf(stderr, \2);/g'
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- linux-user/cris/signal.c       | 4 ++--
- linux-user/microblaze/signal.c | 4 ++--
- linux-user/nios2/signal.c      | 2 +-
- linux-user/sparc/signal.c      | 4 ++--
- 4 files changed, 7 insertions(+), 7 deletions(-)
+ linux-user/alpha/cpu_loop.c      | 2 +-
+ linux-user/cris/cpu_loop.c       | 2 +-
+ linux-user/microblaze/cpu_loop.c | 6 +++---
+ linux-user/sh4/cpu_loop.c        | 2 +-
+ linux-user/sparc/cpu_loop.c      | 2 +-
+ 5 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/linux-user/cris/signal.c b/linux-user/cris/signal.c
-index 0b405247cf..1e02194377 100644
---- a/linux-user/cris/signal.c
-+++ b/linux-user/cris/signal.c
-@@ -146,7 +146,7 @@ void setup_rt_frame(int sig, struct target_sigaction *ka,
-                     target_siginfo_t *info,
-                      target_sigset_t *set, CPUCRISState *env)
- {
--    fprintf(stderr, "CRIS setup_rt_frame: not implemented\n");
-+    qemu_log_mask(LOG_UNIMP, "setup_rt_frame: not implemented\n");
- }
- 
- long do_sigreturn(CPUCRISState *env)
-@@ -183,6 +183,6 @@ badframe:
- long do_rt_sigreturn(CPUCRISState *env)
- {
-     trace_user_do_rt_sigreturn(env, 0);
--    fprintf(stderr, "CRIS do_rt_sigreturn: not implemented\n");
-+    qemu_log_mask(LOG_UNIMP, "do_rt_sigreturn: not implemented\n");
-     return -TARGET_ENOSYS;
- }
-diff --git a/linux-user/microblaze/signal.c b/linux-user/microblaze/signal.c
-index 712ee522b2..80950c2181 100644
---- a/linux-user/microblaze/signal.c
-+++ b/linux-user/microblaze/signal.c
-@@ -200,7 +200,7 @@ void setup_rt_frame(int sig, struct target_sigaction *ka,
-                     target_siginfo_t *info,
-                     target_sigset_t *set, CPUMBState *env)
- {
--    fprintf(stderr, "Microblaze setup_rt_frame: not implemented\n");
-+    qemu_log_mask(LOG_UNIMP, "setup_rt_frame: not implemented\n");
- }
- 
- long do_sigreturn(CPUMBState *env)
-@@ -240,6 +240,6 @@ badframe:
- long do_rt_sigreturn(CPUMBState *env)
- {
-     trace_user_do_rt_sigreturn(env, 0);
--    fprintf(stderr, "Microblaze do_rt_sigreturn: not implemented\n");
-+    qemu_log_mask(LOG_UNIMP, "do_rt_sigreturn: not implemented\n");
-     return -TARGET_ENOSYS;
- }
-diff --git a/linux-user/nios2/signal.c b/linux-user/nios2/signal.c
-index 4985dc2212..7d535065ed 100644
---- a/linux-user/nios2/signal.c
-+++ b/linux-user/nios2/signal.c
-@@ -203,7 +203,7 @@ give_sigsegv:
- long do_sigreturn(CPUNios2State *env)
- {
-     trace_user_do_sigreturn(env, 0);
--    fprintf(stderr, "do_sigreturn: not implemented\n");
-+    qemu_log_mask(LOG_UNIMP, "do_sigreturn: not implemented\n");
-     return -TARGET_ENOSYS;
- }
- 
-diff --git a/linux-user/sparc/signal.c b/linux-user/sparc/signal.c
-index 55e9d6f9b2..b4c60aa446 100644
---- a/linux-user/sparc/signal.c
-+++ b/linux-user/sparc/signal.c
-@@ -278,7 +278,7 @@ void setup_rt_frame(int sig, struct target_sigaction *ka,
-                     target_siginfo_t *info,
-                     target_sigset_t *set, CPUSPARCState *env)
- {
--    fprintf(stderr, "setup_rt_frame: not implemented\n");
-+    qemu_log_mask(LOG_UNIMP, "setup_rt_frame: not implemented\n");
- }
- 
- long do_sigreturn(CPUSPARCState *env)
-@@ -357,7 +357,7 @@ segv_and_exit:
- long do_rt_sigreturn(CPUSPARCState *env)
- {
-     trace_user_do_rt_sigreturn(env, 0);
--    fprintf(stderr, "do_rt_sigreturn: not implemented\n");
-+    qemu_log_mask(LOG_UNIMP, "do_rt_sigreturn: not implemented\n");
-     return -TARGET_ENOSYS;
- }
- 
+diff --git a/linux-user/alpha/cpu_loop.c b/linux-user/alpha/cpu_loop.c
+index b87fcaea87..c1a98c8cbf 100644
+--- a/linux-user/alpha/cpu_loop.c
++++ b/linux-user/alpha/cpu_loop.c
+@@ -196,7 +196,7 @@ void cpu_loop(CPUAlphaState *env)
+             arch_interrupt = false;
+             break;
+         default:
+-            printf ("Unhandled trap: 0x%x\n", trapnr);
++            fprintf(stderr, "Unhandled trap: 0x%x\n", trapnr);
+             cpu_dump_state(cs, stderr, fprintf, 0);
+             exit(EXIT_FAILURE);
+         }
+diff --git a/linux-user/cris/cpu_loop.c b/linux-user/cris/cpu_loop.c
+index 1c5eca9f83..37bdcfa8cc 100644
+--- a/linux-user/cris/cpu_loop.c
++++ b/linux-user/cris/cpu_loop.c
+@@ -81,7 +81,7 @@ void cpu_loop(CPUCRISState *env)
+             cpu_exec_step_atomic(cs);
+             break;
+         default:
+-            printf ("Unhandled trap: 0x%x\n", trapnr);
++            fprintf(stderr, "Unhandled trap: 0x%x\n", trapnr);
+             cpu_dump_state(cs, stderr, fprintf, 0);
+             exit(EXIT_FAILURE);
+         }
+diff --git a/linux-user/microblaze/cpu_loop.c b/linux-user/microblaze/cpu_loop.c
+index 5af12d5b21..2af93eb39a 100644
+--- a/linux-user/microblaze/cpu_loop.c
++++ b/linux-user/microblaze/cpu_loop.c
+@@ -105,8 +105,8 @@ void cpu_loop(CPUMBState *env)
+                     queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
+                     break;
+                 default:
+-                    printf("Unhandled hw-exception: 0x%" PRIx64 "\n",
+-                           env->sregs[SR_ESR] & ESR_EC_MASK);
++                    fprintf(stderr, "Unhandled hw-exception: 0x%" PRIx64 "\n",
++                            env->sregs[SR_ESR] & ESR_EC_MASK);
+                     cpu_dump_state(cs, stderr, fprintf, 0);
+                     exit(EXIT_FAILURE);
+                     break;
+@@ -130,7 +130,7 @@ void cpu_loop(CPUMBState *env)
+             cpu_exec_step_atomic(cs);
+             break;
+         default:
+-            printf ("Unhandled trap: 0x%x\n", trapnr);
++            fprintf(stderr, "Unhandled trap: 0x%x\n", trapnr);
+             cpu_dump_state(cs, stderr, fprintf, 0);
+             exit(EXIT_FAILURE);
+         }
+diff --git a/linux-user/sh4/cpu_loop.c b/linux-user/sh4/cpu_loop.c
+index 418833ea25..fdd348170b 100644
+--- a/linux-user/sh4/cpu_loop.c
++++ b/linux-user/sh4/cpu_loop.c
+@@ -84,7 +84,7 @@ void cpu_loop(CPUSH4State *env)
+             arch_interrupt = false;
+             break;
+         default:
+-            printf ("Unhandled trap: 0x%x\n", trapnr);
++            fprintf(stderr, "Unhandled trap: 0x%x\n", trapnr);
+             cpu_dump_state(cs, stderr, fprintf, 0);
+             exit(EXIT_FAILURE);
+         }
+diff --git a/linux-user/sparc/cpu_loop.c b/linux-user/sparc/cpu_loop.c
+index 7c4796ca23..91f714afc6 100644
+--- a/linux-user/sparc/cpu_loop.c
++++ b/linux-user/sparc/cpu_loop.c
+@@ -285,7 +285,7 @@ void cpu_loop (CPUSPARCState *env)
+             cpu_exec_step_atomic(cs);
+             break;
+         default:
+-            printf ("Unhandled trap: 0x%x\n", trapnr);
++            fprintf(stderr, "Unhandled trap: 0x%x\n", trapnr);
+             cpu_dump_state(cs, stderr, fprintf, 0);
+             exit(EXIT_FAILURE);
+         }
 -- 
 2.18.0
 
