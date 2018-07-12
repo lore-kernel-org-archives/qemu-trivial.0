@@ -1,47 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fdi6h-0004Rz-OE
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Jul 2018 16:22:31 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57652)
+	id 1fdiDa-0007N2-1Y
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Jul 2018 16:29:38 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60395)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stweil@ub-blade-01.bib.uni-mannheim.de>)
-	id 1fdi6g-0004RR-0K
-	for qemu-trivial@nongnu.org; Thu, 12 Jul 2018 16:22:30 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fdiDX-0007JB-5a
+	for qemu-trivial@nongnu.org; Thu, 12 Jul 2018 16:29:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stweil@ub-blade-01.bib.uni-mannheim.de>)
-	id 1fdi6f-0002zp-BM
-	for qemu-trivial@nongnu.org; Thu, 12 Jul 2018 16:22:30 -0400
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80]:33229)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stweil@ub-blade-01.bib.uni-mannheim.de>)
-	id 1fdi6b-000261-0x; Thu, 12 Jul 2018 16:22:25 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id 0839310280C;
-	Thu, 12 Jul 2018 21:45:03 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at uni-mannheim.de
-Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
-	by localhost (mail-r83.rz.uni-mannheim.de [127.0.0.1]) (amavisd-new,
-	port 10024)
-	with ESMTP id GBExjAjHikMn; Thu, 12 Jul 2018 21:45:02 +0200 (CEST)
-Received: from ub-blade-01.bib.uni-mannheim.de
-	(ub-blade-01.bib.uni-mannheim.de [134.155.36.5])
-	by smtp.mail.uni-mannheim.de (Postfix) with ESMTPS id D932F1027EF;
-	Thu, 12 Jul 2018 21:45:02 +0200 (CEST)
-Received: from stweil by ub-blade-01.bib.uni-mannheim.de with local (Exim 4.89)
-	(envelope-from <stweil@ub-blade-01.bib.uni-mannheim.de>)
-	id 1fdhWQ-0006yS-O9; Thu, 12 Jul 2018 21:45:02 +0200
-From: Stefan Weil <sw@weilnetz.de>
-To: QEMU Developer <qemu-devel@nongnu.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Stefan Weil <sw@weilnetz.de>
-Date: Thu, 12 Jul 2018 21:44:54 +0200
-Message-Id: <20180712194454.26765-1-sw@weilnetz.de>
-X-Mailer: git-send-email 2.11.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 134.155.96.80
-Subject: [Qemu-trivial] [PATCH] accel: Fix typo and grammar in comment
+	(envelope-from <peter.maydell@linaro.org>) id 1fdiDW-0000e6-9D
+	for qemu-trivial@nongnu.org; Thu, 12 Jul 2018 16:29:35 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:36823)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fdiDV-0000dX-Rg
+	for qemu-trivial@nongnu.org; Thu, 12 Jul 2018 16:29:34 -0400
+Received: by mail-oi0-x243.google.com with SMTP id r16-v6so58265648oie.3
+	for <qemu-trivial@nongnu.org>; Thu, 12 Jul 2018 13:29:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=p1cGZaeiWaxX/ktzmdR8afvqdmRuEaROSB2FPDOCZLc=;
+	b=YAXlKwMYUH92VgRVJ7WA8pD9sQJvcCIBKIy0V2f4OssbHPVwwuA3qGH9wqYACAatbe
+	F7+kFitHuhRJtHBZNslKRVUP/vjF/XEP0NHK7HWCj6IrtNNr0diQSqXbiPCtUFm/1qIw
+	D1MGXpqzDslj0cE3eAbeDToY1fIT9iOM1Jz7U=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=p1cGZaeiWaxX/ktzmdR8afvqdmRuEaROSB2FPDOCZLc=;
+	b=tXAr3Ap/UZYXke251Mmew0RZVp8Bi6K6AodiqEAHud+C1viE80x41FsdWaZJQnOxft
+	mhcJzVvMG6AzzIjiZdFOwM4G3djwlrLz8l2Tcn/AljcgNH1zOgvpOcUYlfiuUgZXtKfw
+	y7+GowJCLmV/BEpa9T5jgaNSfoGEsWTEdY9xfkNRoRntDuzQtPKXqpeF6Qy7VH1/+9/e
+	JFSrs2qlF7xX7U+jgKJDiZI0PhiNcVcgimKtddNK9/W+Qcxcihx1phh5fwafOyx/6sfz
+	obdc891gRyCBykVeicYLDVsWn9zQ68TmO1hras5yITueKgeJHM71V2DgpNOGepOv9V2i
+	OmbQ==
+X-Gm-Message-State: AOUpUlF2X25KG7e20rrk2IpqL3FAPF3gXgGuOZQt0m8nvgNnND5cbZhK
+	vBx9zGEbp7JxFyYNBpSlsmxHYp7kLNpomMQEYiPSlA==
+X-Google-Smtp-Source: AAOMgpdzAZuUDRgAvz3xONsD+YXU6WH4cdFSQLBkCyuP+NkzCTbpcY3Cwj3iIwliAgzuad1/pY81ZqCt3jziY1/bh9Y=
+X-Received: by 2002:aca:f409:: with SMTP id
+	s9-v6mr4262301oih.102.1531427373174; 
+	Thu, 12 Jul 2018 13:29:33 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Thu, 12 Jul 2018 13:29:12
+	-0700 (PDT)
+In-Reply-To: <20180712200152.28569-1-sw@weilnetz.de>
+References: <20180712200152.28569-1-sw@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Jul 2018 21:29:12 +0100
+Message-ID: <CAFEAcA-D_Kw33EeMrCg4k=B0yLB8U_X92OC09BQ1JKH4UiYUNQ@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Cc: QEMU Developer <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	zhanghailiang <zhang.zhanghailiang@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::243
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] docs: Fix some typos (most
+ found by codespell)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,29 +67,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Jul 2018 20:22:31 -0000
+X-List-Received-Date: Thu, 12 Jul 2018 20:29:37 -0000
 
-The typo was found by codespell.
+On 12 July 2018 at 21:01, Stefan Weil <sw@weilnetz.de> wrote:
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>  docs/COLO-FT.txt                     | 2 +-
+>  docs/config/mach-virt-graphical.cfg  | 2 +-
+>  docs/config/mach-virt-serial.cfg     | 2 +-
+>  docs/config/q35-emulated.cfg         | 2 +-
+>  docs/config/q35-virtio-graphical.cfg | 2 +-
+>  docs/config/q35-virtio-serial.cfg    | 2 +-
+>  docs/interop/vhost-user.txt          | 4 ++--
+>  docs/replay.txt                      | 2 +-
+>  docs/specs/tpm.txt                   | 2 +-
+>  9 files changed, 10 insertions(+), 10 deletions(-)
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- accel/tcg/translate-all.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hi. A bunch of these are fixed by this patch posted last month
+https://patchwork.kernel.org/patch/10459487/
 
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index 49d77fad44..1571987113 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -1795,7 +1795,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
-     tb->jmp_dest[0] = (uintptr_t)NULL;
-     tb->jmp_dest[1] = (uintptr_t)NULL;
- 
--    /* init original jump addresses wich has been set during tcg_gen_code() */
-+    /* init original jump addresses which have been set during tcg_gen_code() */
-     if (tb->jmp_reset_offset[0] != TB_JMP_RESET_OFFSET_INVALID) {
-         tb_reset_jump(tb, 0);
-     }
--- 
-2.11.0
+which seems to have got lost because our qemu-trivial
+patch process has stalled out. I think we should apply
+that and then see what still remains to be fixed
+after that.
 
+thanks
+-- PMM
 
