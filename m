@@ -1,47 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fctmE-0000LC-3K
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Jul 2018 10:38:02 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58526)
+	id 1fdhEM-0002qt-38
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Jul 2018 15:26:22 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42832)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1fctmC-0000Jt-P8
-	for qemu-trivial@nongnu.org; Tue, 10 Jul 2018 10:38:01 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1fdhEJ-0002no-9I
+	for qemu-trivial@nongnu.org; Thu, 12 Jul 2018 15:26:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1fctmC-0007KJ-0H
-	for qemu-trivial@nongnu.org; Tue, 10 Jul 2018 10:38:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53612)
+	(envelope-from <stefan@weilnetz.de>) id 1fdhEI-0003t2-BV
+	for qemu-trivial@nongnu.org; Thu, 12 Jul 2018 15:26:19 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:38512
+	helo=v2201612906741603.powersrv.de)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1fctm6-0007IF-9w; Tue, 10 Jul 2018 10:37:54 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2D9D93084030;
-	Tue, 10 Jul 2018 14:37:53 +0000 (UTC)
-Received: from localhost (ovpn-116-12.gru2.redhat.com [10.97.116.12])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B5F9A60BE0;
-	Tue, 10 Jul 2018 14:37:52 +0000 (UTC)
-Date: Tue, 10 Jul 2018 11:37:51 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Dou Liyang <douly.fnst@cn.fujitsu.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, imammedo@redhat.com
-Message-ID: <20180710143751.GI7451@localhost.localdomain>
-References: <20180710105129.23296-1-douly.fnst@cn.fujitsu.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20180710105129.23296-1-douly.fnst@cn.fujitsu.com>
-X-Fnord: you can see the fnord
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.40]);
-	Tue, 10 Jul 2018 14:37:53 +0000 (UTC)
+	(Exim 4.71) (envelope-from <stefan@weilnetz.de>)
+	id 1fdhEC-0003hV-0y; Thu, 12 Jul 2018 15:26:12 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by v2201612906741603.powersrv.de (Postfix) with ESMTP id C8355DADA94;
+	Thu, 12 Jul 2018 21:26:08 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id U36jjJ-yr9cK; Thu, 12 Jul 2018 21:26:07 +0200 (CEST)
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+	by v2201612906741603.powersrv.de (Postfix) with ESMTP id AD473DAD85E;
+	Thu, 12 Jul 2018 21:26:07 +0200 (CEST)
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+	id 09B8E4606D3; Thu, 12 Jul 2018 21:26:06 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: QEMU Developer <qemu-devel@nongnu.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Stefan Weil <sw@weilnetz.de>
+Date: Thu, 12 Jul 2018 21:26:03 +0200
+Message-Id: <20180712192603.11599-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.11.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] hw/machine: Remove the Zero check of
- nb_numa_nodes for numa_complete_configuration() follow-up
+X-Received-From: 37.120.169.71
+Subject: [Qemu-trivial] [PATCH] configure: Support pkg-config for zlib
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,30 +48,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Jul 2018 14:38:01 -0000
+X-List-Received-Date: Thu, 12 Jul 2018 19:26:20 -0000
 
-On Tue, Jul 10, 2018 at 06:51:29PM +0800, Dou Liyang wrote:
-> This Commit 7747abf11487 misses the curly brackets. Follow Igor's and Eduardo's suggestion,
-> 
-> Add a follow-up patch for it.
-> 
-> Signed-off-by: Dou Liyang <douly.fnst@cn.fujitsu.com>
+This is needed for builds with the mingw64-* packages from Cygwin,
+but also works for Linux.
 
-I'm queueing this for 3.1, but the subject line didn't make sense
-(this patch doesn't remove zero check of nb_numa_nodes), so I
-rewrote the commit message as:
+Move the zlib test also more to the end because users should
+get information on the really important missing packages
+(which also require zlib) first.
 
-    machine: Fix coding style at machine_run_board_init()
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ configure | 40 +++++++++++++++++++++++-----------------
+ 1 file changed, 23 insertions(+), 17 deletions(-)
 
-    Commit 7747abf11487 ("hw/machine: Remove the Zero check of
-    nb_numa_nodes for numa_complete_configuration()") removed the
-    curly brackets.  Re-add them.
-
-    Signed-off-by: Dou Liyang <douly.fnst@cn.fujitsu.com>
-    Message-Id: <20180710105129.23296-1-douly.fnst@cn.fujitsu.com>
-    [ehabkost: rewrote commit message]
-    Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-
+diff --git a/configure b/configure
+index 2a7796ea80..dcaab01729 100755
+--- a/configure
++++ b/configure
+@@ -2140,23 +2140,6 @@ EOF
+   fi
+ fi
+ 
+-#########################################
+-# zlib check
+-
+-if test "$zlib" != "no" ; then
+-    cat > $TMPC << EOF
+-#include <zlib.h>
+-int main(void) { zlibVersion(); return 0; }
+-EOF
+-    if compile_prog "" "-lz" ; then
+-        :
+-    else
+-        error_exit "zlib check failed" \
+-            "Make sure to have the zlib libs and headers installed."
+-    fi
+-fi
+-LIBS="$LIBS -lz"
+-
+ ##########################################
+ # lzo check
+ 
+@@ -3525,6 +3508,29 @@ if ! compile_prog "$glib_cflags -Werror" "$glib_libs" ; then
+     fi
+ fi
+ 
++#########################################
++# zlib check
++
++if test "$zlib" != "no" ; then
++    if $pkg_config --exists zlib; then
++        zlib_cflags=$($pkg_config --cflags zlib)
++        zlib_libs=$($pkg_config --libs zlib)
++        QEMU_CFLAGS="$zlib_cflags $QEMU_CFLAGS"
++        LIBS="$zlib_libs $LIBS"
++    else
++        cat > $TMPC << EOF
++#include <zlib.h>
++int main(void) { zlibVersion(); return 0; }
++EOF
++        if compile_prog "" "-lz" ; then
++            LIBS="$LIBS -lz"
++        else
++            error_exit "zlib check failed" \
++                "Make sure to have the zlib libs and headers installed."
++        fi
++    fi
++fi
++
+ ##########################################
+ # SHA command probe for modules
+ if test "$modules" = yes; then
 -- 
-Eduardo
+2.11.0
+
 
