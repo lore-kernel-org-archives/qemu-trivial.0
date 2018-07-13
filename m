@@ -1,49 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fdiNH-0002Vs-FP
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Jul 2018 16:39:39 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34431)
+	id 1fdrBO-00074a-Ni
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Jul 2018 02:03:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38519)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcody@redhat.com>) id 1fdiNE-0002UI-Kt
-	for qemu-trivial@nongnu.org; Thu, 12 Jul 2018 16:39:37 -0400
+	(envelope-from <stweil@ub-blade-01.bib.uni-mannheim.de>)
+	id 1fdrBM-00072r-AK
+	for qemu-trivial@nongnu.org; Fri, 13 Jul 2018 02:03:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcody@redhat.com>) id 1fdiND-0007uV-J2
-	for qemu-trivial@nongnu.org; Thu, 12 Jul 2018 16:39:36 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60982)
+	(envelope-from <stweil@ub-blade-01.bib.uni-mannheim.de>)
+	id 1fdrBL-0002cq-0J
+	for qemu-trivial@nongnu.org; Fri, 13 Jul 2018 02:03:56 -0400
+Received: from smtp.mail.uni-mannheim.de ([134.155.96.80]:54554)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jcody@redhat.com>)
-	id 1fdiN4-0007ed-Np; Thu, 12 Jul 2018 16:39:26 -0400
-Received: from smtp.corp.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com
-	[10.5.11.26])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 10A793081D80;
-	Thu, 12 Jul 2018 20:39:25 +0000 (UTC)
-Received: from localhost (ovpn-116-27.phx2.redhat.com [10.3.116.27])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A84593083326;
-	Thu, 12 Jul 2018 20:39:24 +0000 (UTC)
-Date: Thu, 12 Jul 2018 16:39:24 -0400
-From: Jeff Cody <jcody@redhat.com>
-To: Stefan Weil <sw@weilnetz.de>
-Cc: QEMU Developer <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	qemu-block@nongnu.org
-Message-ID: <20180712203924.GC3729096@localhost.localdomain>
-References: <20180712195120.27394-1-sw@weilnetz.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20180712195120.27394-1-sw@weilnetz.de>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.26
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.43]);
-	Thu, 12 Jul 2018 20:39:25 +0000 (UTC)
+	(Exim 4.71) (envelope-from <stweil@ub-blade-01.bib.uni-mannheim.de>)
+	id 1fdrBF-0002AR-Uv; Fri, 13 Jul 2018 02:03:50 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id 0E7E116707C;
+	Fri, 13 Jul 2018 08:00:44 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at uni-mannheim.de
+Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
+	by localhost (mail-r83.rz.uni-mannheim.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id su3uws9kt1TE; Fri, 13 Jul 2018 08:00:43 +0200 (CEST)
+Received: from ub-blade-01.bib.uni-mannheim.de
+	(ub-blade-01.bib.uni-mannheim.de [134.155.36.5])
+	by smtp.mail.uni-mannheim.de (Postfix) with ESMTPS id 80F20167C97;
+	Fri, 13 Jul 2018 07:47:56 +0200 (CEST)
+Received: from stweil by ub-blade-01.bib.uni-mannheim.de with local (Exim 4.89)
+	(envelope-from <stweil@ub-blade-01.bib.uni-mannheim.de>)
+	id 1fdqvs-00064s-CX; Fri, 13 Jul 2018 07:47:56 +0200
+From: Stefan Weil <sw@weilnetz.de>
+To: QEMU Developer <qemu-devel@nongnu.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Fam Zheng <famz@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Stefan Weil <sw@weilnetz.de>
+Date: Fri, 13 Jul 2018 07:47:55 +0200
+Message-Id: <20180713054755.23323-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.11.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] block: Fix typos in comments (found by
- codespell)
+X-Received-From: 134.155.96.80
+Subject: [Qemu-trivial] [PATCH] tests: Fix typos in comments and help
+ message (found by codespell)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,100 +53,136 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Jul 2018 20:39:37 -0000
+X-List-Received-Date: Fri, 13 Jul 2018 06:03:57 -0000
 
-On Thu, Jul 12, 2018 at 09:51:20PM +0200, Stefan Weil wrote:
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  block.c         | 2 +-
->  block/backup.c  | 4 ++--
->  block/curl.c    | 2 +-
->  block/gluster.c | 2 +-
->  block/vhdx.c    | 2 +-
->  5 files changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/block.c b/block.c
-> index a2fe05ea96..39f373e035 100644
-> --- a/block.c
-> +++ b/block.c
-> @@ -3002,7 +3002,7 @@ BlockReopenQueue *bdrv_reopen_queue(BlockReopenQueue *bs_queue,
->   *
->   * Reopens all BDS specified in the queue, with the appropriate
->   * flags.  All devices are prepared for reopen, and failure of any
-> - * device will cause all device changes to be abandonded, and intermediate
-> + * device will cause all device changes to be abandoned, and intermediate
->   * data cleaned up.
->   *
->   * If all devices prepare successfully, then the changes are committed
-> diff --git a/block/backup.c b/block/backup.c
-> index 319fc922e8..8630d32926 100644
-> --- a/block/backup.c
-> +++ b/block/backup.c
-> @@ -91,7 +91,7 @@ static void cow_request_end(CowRequest *req)
->  }
->  
->  /* Copy range to target with a bounce buffer and return the bytes copied. If
-> - * error occured, return a negative error number */
-> + * error occurred, return a negative error number */
->  static int coroutine_fn backup_cow_with_bounce_buffer(BackupBlockJob *job,
->                                                        int64_t start,
->                                                        int64_t end,
-> @@ -148,7 +148,7 @@ fail:
->  
->  }
->  
-> -/* Copy range to target and return the bytes copied. If error occured, return a
-> +/* Copy range to target and return the bytes copied. If error occurred, return a
->   * negative error number. */
->  static int coroutine_fn backup_cow_with_offload(BackupBlockJob *job,
->                                                  int64_t start,
-> diff --git a/block/curl.c b/block/curl.c
-> index aa42535783..229bb84a27 100644
-> --- a/block/curl.c
-> +++ b/block/curl.c
-> @@ -804,7 +804,7 @@ static int curl_open(BlockDriverState *bs, QDict *options, int flags,
->      }
->      /* Prior CURL 7.19.4 return value of 0 could mean that the file size is not
->       * know or the size is zero. From 7.19.4 CURL returns -1 if size is not
-> -     * known and zero if it is realy zero-length file. */
-> +     * known and zero if it is really zero-length file. */
->  #if LIBCURL_VERSION_NUM >= 0x071304
->      if (d < 0) {
->          pstrcpy(state->errmsg, CURL_ERROR_SIZE,
-> diff --git a/block/gluster.c b/block/gluster.c
-> index a4e1c8ecd8..4fd55a9cc5 100644
-> --- a/block/gluster.c
-> +++ b/block/gluster.c
-> @@ -1326,7 +1326,7 @@ static int qemu_gluster_has_zero_init(BlockDriverState *bs)
->   * If @start is in a trailing hole or beyond EOF, return -ENXIO.
->   * If we can't find out, return a negative errno other than -ENXIO.
->   *
-> - * (Shamefully copied from file-posix.c, only miniscule adaptions.)
-> + * (Shamefully copied from file-posix.c, only minuscule adaptions.)
->   */
->  static int find_allocation(BlockDriverState *bs, off_t start,
->                             off_t *data, off_t *hole)
-> diff --git a/block/vhdx.c b/block/vhdx.c
-> index 4d0819750f..0795ca1985 100644
-> --- a/block/vhdx.c
-> +++ b/block/vhdx.c
-> @@ -185,7 +185,7 @@ uint32_t vhdx_checksum_calc(uint32_t crc, uint8_t *buf, size_t size,
->  /* Validates the checksum of the buffer, with an in-place CRC.
->   *
->   * Zero is substituted during crc calculation for the original crc field,
-> - * and the crc field is restored afterwards.  But the buffer will be modifed
-> + * and the crc field is restored afterwards.  But the buffer will be modified
+Fix also a grammar issue.
 
-Oops, that one was mine.
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+ tests/bios-tables-test.c              | 2 +-
+ tests/docker/Makefile.include         | 2 +-
+ tests/docker/docker.py                | 4 ++--
+ tests/guest-debug/test-gdbstub.py     | 2 +-
+ tests/qemu-iotests/common.qemu        | 2 +-
+ tests/tcg/Makefile.include            | 2 +-
+ tests/tcg/Makefile.probe              | 2 +-
+ tests/tcg/mips/mips64-dsp/subq_s_pw.c | 2 +-
+ 8 files changed, 9 insertions(+), 9 deletions(-)
 
->   * during the calculation, so this may not be not suitable for multi-threaded
->   * use.
->   *
-> -- 
-> 2.11.0
-> 
-
-
-Reviewed-by: Jeff Cody <jcody@redhat.com>
+diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
+index 4e24930c4b..af4b1fb6bd 100644
+--- a/tests/bios-tables-test.c
++++ b/tests/bios-tables-test.c
+@@ -390,7 +390,7 @@ try_again:
+         if (g_file_test(aml_file, G_FILE_TEST_EXISTS)) {
+             exp_sdt.aml_file = aml_file;
+         } else if (*ext != '\0') {
+-            /* try fallback to generic (extention less) expected file */
++            /* try fallback to generic (extension less) expected file */
+             ext = "";
+             g_free(aml_file);
+             goto try_again;
+diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+index b2a7e761cc..d865dcfdaa 100644
+--- a/tests/docker/Makefile.include
++++ b/tests/docker/Makefile.include
+@@ -37,7 +37,7 @@ docker-qemu-src: $(DOCKER_SRC_COPY)
+ docker-image: ${DOCKER_TARGETS}
+ 
+ # General rule for building docker images. If we are a sub-make
+-# invoked with SKIP_DOCKER_BUILD we still check the image is upto date
++# invoked with SKIP_DOCKER_BUILD we still check the image is up to date
+ # though
+ ifdef SKIP_DOCKER_BUILD
+ docker-image-%: $(DOCKER_FILES_DIR)/%.docker
+diff --git a/tests/docker/docker.py b/tests/docker/docker.py
+index 69e7130db7..b82926596c 100755
+--- a/tests/docker/docker.py
++++ b/tests/docker/docker.py
+@@ -99,7 +99,7 @@ def _get_so_libs(executable):
+     return libs
+ 
+ def _copy_binary_with_libs(src, dest_dir):
+-    """Copy a binary executable and all its dependant libraries.
++    """Copy a binary executable and all its dependent libraries.
+ 
+     This does rely on the host file-system being fairly multi-arch
+     aware so the file don't clash with the guests layout."""
+@@ -261,7 +261,7 @@ class SubCommand(object):
+     name = None # Subcommand name
+     def shared_args(self, parser):
+         parser.add_argument("--quiet", action="store_true",
+-                            help="Run quietly unless an error occured")
++                            help="Run quietly unless an error occurred")
+ 
+     def args(self, parser):
+         """Setup argument parser"""
+diff --git a/tests/guest-debug/test-gdbstub.py b/tests/guest-debug/test-gdbstub.py
+index 474d2c5c65..0e4ac01426 100644
+--- a/tests/guest-debug/test-gdbstub.py
++++ b/tests/guest-debug/test-gdbstub.py
+@@ -122,7 +122,7 @@ class CatchBreakpoint(gdb.Breakpoint):
+ 
+ 
+ def run_test():
+-    "Run throught the tests one by one"
++    "Run through the tests one by one"
+ 
+     print ("Checking we can step the first few instructions")
+     step_ok = 0
+diff --git a/tests/qemu-iotests/common.qemu b/tests/qemu-iotests/common.qemu
+index f285484951..dadde2a266 100644
+--- a/tests/qemu-iotests/common.qemu
++++ b/tests/qemu-iotests/common.qemu
+@@ -257,7 +257,7 @@ function _launch_qemu()
+ }
+ 
+ 
+-# Silenty kills the QEMU process
++# Silently kills the QEMU process
+ #
+ # If $wait is set to anything other than the empty string, the process will not
+ # be killed but only waited for, and any output will be forwarded to stdout. If
+diff --git a/tests/tcg/Makefile.include b/tests/tcg/Makefile.include
+index 57470b2a2c..c581bd6ffc 100644
+--- a/tests/tcg/Makefile.include
++++ b/tests/tcg/Makefile.include
+@@ -2,7 +2,7 @@
+ #
+ # TCG tests (per-target rules)
+ #
+-# This Makefile fragement is included from the per-target
++# This Makefile fragment is included from the per-target
+ # Makefile.target so will be invoked for each linux-user program we
+ # build. We have two options for compiling, either using a configured
+ # guest compiler or calling one of our docker images to do it for us.
+diff --git a/tests/tcg/Makefile.probe b/tests/tcg/Makefile.probe
+index 15c0412657..9dc654663d 100644
+--- a/tests/tcg/Makefile.probe
++++ b/tests/tcg/Makefile.probe
+@@ -2,7 +2,7 @@
+ #
+ # TCG Compiler Probe
+ #
+-# This Makefile fragement is included multiple times in the main make
++# This Makefile fragment is included multiple times in the main make
+ # script to probe for available compilers. This is used to build up a
+ # selection of required docker targets before we invoke a sub-make for
+ # each target.
+diff --git a/tests/tcg/mips/mips64-dsp/subq_s_pw.c b/tests/tcg/mips/mips64-dsp/subq_s_pw.c
+index e8e0b0567e..4c080b785a 100644
+--- a/tests/tcg/mips/mips64-dsp/subq_s_pw.c
++++ b/tests/tcg/mips/mips64-dsp/subq_s_pw.c
+@@ -24,7 +24,7 @@ int main(void)
+     rt = 0x123456789ABCDEF1;
+     rs = 0x123456789ABCDEF2;
+     result =  0x0000000000000001;
+-    /* This time we do not set dspctrl, but it setted in pre-action. */
++    /* This time we do not set dspctrl, but set it in pre-action. */
+     dspresult = 0x1;
+ 
+     __asm
+-- 
+2.11.0
 
 
