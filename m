@@ -1,62 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fdvSs-0006KX-6u
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Jul 2018 06:38:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37879)
+	id 1fdx1o-0005HN-BV
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Jul 2018 08:18:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57577)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fdvSp-0006I4-88
-	for qemu-trivial@nongnu.org; Fri, 13 Jul 2018 06:38:16 -0400
+	(envelope-from <stweil@ub-blade-01.bib.uni-mannheim.de>)
+	id 1fdx1l-0005F5-Kb
+	for qemu-trivial@nongnu.org; Fri, 13 Jul 2018 08:18:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fdvSo-00071G-9Q
-	for qemu-trivial@nongnu.org; Fri, 13 Jul 2018 06:38:15 -0400
-Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:45038)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fdvSo-00070n-3Y
-	for qemu-trivial@nongnu.org; Fri, 13 Jul 2018 06:38:14 -0400
-Received: by mail-oi0-x242.google.com with SMTP id s198-v6so61376908oih.11
-	for <qemu-trivial@nongnu.org>; Fri, 13 Jul 2018 03:38:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=bx5oBCDuo9d20WhCrgH1rX4pOxyhcrGjxr0DNZL9sLQ=;
-	b=CJCyXbiiK6l9HePnSYcQuscQf7TqZ1SBgwXbD8sIadLiSjdXPMHze5FZ+JPqQmdR4Q
-	ojV24PlE7eanKYuXsEUkkx6wMEtpFh+kP7JwQb6xNbKSugc/JahGwlpmJ0cUwRYaE+Rk
-	QemXYPgK6dx8XhzNSKKeluZByfkI/+C+5965U=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=bx5oBCDuo9d20WhCrgH1rX4pOxyhcrGjxr0DNZL9sLQ=;
-	b=MJGAYlunjTyDIgdvRN34tY5vWUIU7m02/oOuYtzUrh/FoCJ00tfrZU5Jfx63R1trjk
-	0jTnq0t7QZMTuQYW20N9q3NmgH9ZdujGdcC8BdYKfgmQeCsThmnwbgkQeXTyD6w0XsJP
-	Gw1Z6zfETb6G926Avhj2rlHoI7gJGrtXzQhJaho46khezFxOR9CiVB1R4B8tYH6/vw4I
-	qaOVXqzEErQxRm0HXKkTKE/Ai5AnGYt5K7Ep+mL46U/qHuYaawjeXpEzqn9HYJtK38Aq
-	d5LWG969is8wwXbUqfEm1eKBZdNQBLo1swcBP5DZykuavxyObufOu5Cs6Rk6BSuGMd8n
-	S2MA==
-X-Gm-Message-State: AOUpUlHkScRRnOnIquB7EYaq8GF1V2lxs4x9m1UAEWXNUqCQGJQAf/JW
-	/TRtRIbD+RQ0kI8sRU+Y/uxj+I0KQyC/RSPZsfD+CVSe
-X-Google-Smtp-Source: AAOMgpdc4WVIoNUYCJurKytFOFwrtdsHw9S7v+VvQ6C8n9Zl8DwIdn8hsDR/0eOAKMrW26kBElnLA5cGsVv2JyeZh24=
-X-Received: by 2002:aca:4c14:: with SMTP id
-	z20-v6mr5824658oia.164.1531478293393; 
-	Fri, 13 Jul 2018 03:38:13 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Fri, 13 Jul 2018 03:37:52
-	-0700 (PDT)
-In-Reply-To: <CAFEAcA-D_Kw33EeMrCg4k=B0yLB8U_X92OC09BQ1JKH4UiYUNQ@mail.gmail.com>
-References: <20180712200152.28569-1-sw@weilnetz.de>
-	<CAFEAcA-D_Kw33EeMrCg4k=B0yLB8U_X92OC09BQ1JKH4UiYUNQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Jul 2018 11:37:52 +0100
-Message-ID: <CAFEAcA8eEMH6dT_+w+u9woFr9oovFA3NuU4L475qFQ=O2q1kfQ@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Cc: QEMU Developer <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	zhanghailiang <zhang.zhanghailiang@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] docs: Fix some typos (most
- found by codespell)
+	(envelope-from <stweil@ub-blade-01.bib.uni-mannheim.de>)
+	id 1fdx1k-0004EK-NJ
+	for qemu-trivial@nongnu.org; Fri, 13 Jul 2018 08:18:25 -0400
+Received: from smtp.mail.uni-mannheim.de ([134.155.96.80]:53842)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <stweil@ub-blade-01.bib.uni-mannheim.de>)
+	id 1fdx1g-0003N6-4n; Fri, 13 Jul 2018 08:18:20 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by smtp.mail.uni-mannheim.de (Postfix) with ESMTP id 1A0C8169C2D;
+	Fri, 13 Jul 2018 14:17:36 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at uni-mannheim.de
+Received: from smtp.mail.uni-mannheim.de ([134.155.96.80])
+	by localhost (mail-r83.rz.uni-mannheim.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id L2_E_pzBwU5h; Fri, 13 Jul 2018 14:17:36 +0200 (CEST)
+Received: from ub-blade-01.bib.uni-mannheim.de
+	(ub-blade-01.bib.uni-mannheim.de [134.155.36.5])
+	by smtp.mail.uni-mannheim.de (Postfix) with ESMTPS id EA55D169C22;
+	Fri, 13 Jul 2018 14:17:35 +0200 (CEST)
+Received: from stweil by ub-blade-01.bib.uni-mannheim.de with local (Exim 4.89)
+	(envelope-from <stweil@ub-blade-01.bib.uni-mannheim.de>)
+	id 1fdx0x-0001b0-Py; Fri, 13 Jul 2018 14:17:35 +0200
+From: Stefan Weil <sw@weilnetz.de>
+To: QEMU Developer <qemu-devel@nongnu.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	zhanghailiang <zhang.zhanghailiang@huawei.com>,
+	Peter Maydell <peter.maydell@linaro.org>, Stefan Weil <sw@weilnetz.de>
+Date: Fri, 13 Jul 2018 14:17:27 +0200
+Message-Id: <20180713121727.6095-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.11.0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 134.155.96.80
+Subject: [Qemu-trivial] [PATCH v2] docs: Fix some typos (most found by
+ codespell)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,33 +53,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Jul 2018 10:38:16 -0000
+X-List-Received-Date: Fri, 13 Jul 2018 12:18:26 -0000
 
-On 12 July 2018 at 21:29, Peter Maydell <peter.maydell@linaro.org> wrote:
-> On 12 July 2018 at 21:01, Stefan Weil <sw@weilnetz.de> wrote:
->> Signed-off-by: Stefan Weil <sw@weilnetz.de>
->> ---
->>  docs/COLO-FT.txt                     | 2 +-
->>  docs/config/mach-virt-graphical.cfg  | 2 +-
->>  docs/config/mach-virt-serial.cfg     | 2 +-
->>  docs/config/q35-emulated.cfg         | 2 +-
->>  docs/config/q35-virtio-graphical.cfg | 2 +-
->>  docs/config/q35-virtio-serial.cfg    | 2 +-
->>  docs/interop/vhost-user.txt          | 4 ++--
->>  docs/replay.txt                      | 2 +-
->>  docs/specs/tpm.txt                   | 2 +-
->>  9 files changed, 10 insertions(+), 10 deletions(-)
->
-> Hi. A bunch of these are fixed by this patch posted last month
-> https://patchwork.kernel.org/patch/10459487/
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
 
-I've now applied that patch to master, so if you rebase this
-I think the remaining changes left in this patch will be
+v2: Rebased, so the recently applied fixes are no longer included.
 
-docs/COLO-FT.txt                     | 2 +-
-docs/interop/vhost-user.txt          | 4 ++--
-docs/replay.txt                      | 2 +-
+ docs/COLO-FT.txt            | 2 +-
+ docs/interop/vhost-user.txt | 4 ++--
+ docs/replay.txt             | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-thanks
--- PMM
+diff --git a/docs/COLO-FT.txt b/docs/COLO-FT.txt
+index d7c7dcda8f..70cfb9ce7d 100644
+--- a/docs/COLO-FT.txt
++++ b/docs/COLO-FT.txt
+@@ -104,7 +104,7 @@ Primary side.
+ COLO Proxy:
+ Delivers packets to Primary and Seconday, and then compare the responses from
+ both side. Then decide whether to start a checkpoint according to some rules.
+-Please refer to docs/colo-proxy.txt for more informations.
++Please refer to docs/colo-proxy.txt for more information.
+ 
+ Note:
+ HeartBeat has not been implemented yet, so you need to trigger failover process
+diff --git a/docs/interop/vhost-user.txt b/docs/interop/vhost-user.txt
+index f59667f498..c2194711d9 100644
+--- a/docs/interop/vhost-user.txt
++++ b/docs/interop/vhost-user.txt
+@@ -666,12 +666,12 @@ Master message types
+       Equivalent ioctl: VHOST_SET_VRING_ENDIAN
+       Master payload: vring state description
+ 
+-      Set the endianess of a VQ for legacy devices. Little-endian is indicated
++      Set the endianness of a VQ for legacy devices. Little-endian is indicated
+       with state.num set to 0 and big-endian is indicated with state.num set
+       to 1. Other values are invalid.
+       This request should be sent only when VHOST_USER_PROTOCOL_F_CROSS_ENDIAN
+       has been negotiated.
+-      Backends that negotiated this feature should handle both endianesses
++      Backends that negotiated this feature should handle both endiannesses
+       and expect this message once (per VQ) during device configuration
+       (ie. before the master starts the VQ).
+ 
+diff --git a/docs/replay.txt b/docs/replay.txt
+index 2e21e9ccb0..3497585f5a 100644
+--- a/docs/replay.txt
++++ b/docs/replay.txt
+@@ -320,7 +320,7 @@ Here is the list of events that are written into the log:
+    async event id from the following list:
+      - REPLAY_ASYNC_EVENT_BH. Bottom-half callback. This event synchronizes
+        callbacks that affect virtual machine state, but normally called
+-       asyncronously.
++       asynchronously.
+        Argument: 8-byte operation id.
+      - REPLAY_ASYNC_EVENT_INPUT. Input device event. Contains
+        parameters of keyboard and mouse input operations
+-- 
+2.11.0
+
 
