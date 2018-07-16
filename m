@@ -1,61 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ff7yu-000332-Hs
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Jul 2018 14:12:20 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35123)
+	id 1ff8XU-0003wW-Gn
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jul 2018 14:48:04 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50486)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <krinkin.m.u@gmail.com>) id 1ff7VR-0001Kw-RN
-	for qemu-trivial@nongnu.org; Mon, 16 Jul 2018 13:41:54 -0400
+	(envelope-from <berrange@redhat.com>) id 1ff8XS-0003v4-7Y
+	for qemu-trivial@nongnu.org; Mon, 16 Jul 2018 14:48:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <krinkin.m.u@gmail.com>) id 1ff7VQ-0004wU-Vx
-	for qemu-trivial@nongnu.org; Mon, 16 Jul 2018 13:41:53 -0400
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:42811)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <krinkin.m.u@gmail.com>)
-	id 1ff7VP-0004vr-3l; Mon, 16 Jul 2018 13:41:51 -0400
-Received: by mail-ed1-x544.google.com with SMTP id r4-v6so2178341edp.9;
-	Mon, 16 Jul 2018 10:41:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=JQhlYkA/sm6IVZjzgzznezMU5siaxNM0gHh6imtnElw=;
-	b=sWbsn+St+Mf6E9z874T1dZfqosocxhRyZEOpBp5SdS2VMq12HjxsNJi2ltYJ1wKBb5
-	nxRGoSpke+U+tpgp6NjjzDw5grG3qYC9TzkjZp4QT2U5Kt770DhGslmR5rEVE62oqmKF
-	mUZAHncCtNvv0Nr1PjOyQJnTLQ3yUjCGAHHaVPTAXteBFm3EL3HHsmXQoHShOwa+0PAc
-	i05HOt+Hqyo+O8rVBmva2nqFOjAVrpjWfkpfXIY/ESzFM/0tXK90nlezKC0fqPdlP6B/
-	28q2HBdaIjLEfe/+j1ZUMzPXZxTXhUyNOCnUHDTMGyairwCqcp3/kE+/lrfT7rGU9fCx
-	XTTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=JQhlYkA/sm6IVZjzgzznezMU5siaxNM0gHh6imtnElw=;
-	b=SNp/hF2aUrl1kiog01VR/tImzdm1rQchzrLkk2PmB4cgnoepiSuxMuz6s9ek/nFYAc
-	XNXJibUhRmbf9wzCzTxrBD6H+Z0JAmiaLWM4Lh9m9AVTAO4I7uSdLnOw1b6teJkO3J+m
-	yADxIRqbvLXy2f0ONaPBcCFRK4UISazvSuJ8UciWr0WAZqMH62Y0sJPpwge91RtnoQaF
-	hkjizmqhnls7uUinX0Te6QFeSvwuJrzbUm4r2JpoIVqxoEsugJl0DYkQ6ua9uzVylw96
-	kBuuoxyj2AjIDUcPagnb8vilU+I5BZ2/FaXsmcvMrQ5TtN2cXYdssG8w2LVy9b1oVu9S
-	E5rA==
-X-Gm-Message-State: AOUpUlGyN/GkPt3Cey2CRC808NYON0UokmHSO9/GzQptkLO0rRfnhP0F
-	KdxbXc6UfeTXfGAAq4P+daUQ5Q==
-X-Google-Smtp-Source: AAOMgpfVj8NWqSPGRCjwrODE2WTMH9I6C6I0F+OEnO1wlpG5QUzlLHlzSlrXpuT5ngWFg9tFDoNDzg==
-X-Received: by 2002:a50:e718:: with SMTP id
-	a24-v6mr18413679edn.278.1531762909700; 
-	Mon, 16 Jul 2018 10:41:49 -0700 (PDT)
-Received: from localhost.localdomain ([2a00:79e1:abc:110e:f944:d77f:2533:7bab])
-	by smtp.gmail.com with ESMTPSA id
-	v56-v6sm2062482edm.97.2018.07.16.10.41.48
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 16 Jul 2018 10:41:49 -0700 (PDT)
-From: Mike Krinkin <krinkin.m.u@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: armbru@redhat.com, berrange@redhat.com, pbonzini@redhat.com,
-	qemu-trivial@nongnu.org, Mike Krinkin <krinkin.m.u@gmail.com>
-Date: Mon, 16 Jul 2018 18:41:46 +0100
-Message-Id: <20180716174146.19845-1-krinkin.m.u@gmail.com>
-X-Mailer: git-send-email 2.17.1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::544
-X-Mailman-Approved-At: Mon, 16 Jul 2018 14:12:19 -0400
-Subject: [Qemu-trivial] [PATCH] opts: fix NULL pointer derefernce in
+	(envelope-from <berrange@redhat.com>) id 1ff8XR-0007YE-6x
+	for qemu-trivial@nongnu.org; Mon, 16 Jul 2018 14:48:02 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:53918 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <berrange@redhat.com>)
+	id 1ff8XL-0007WY-VN; Mon, 16 Jul 2018 14:47:56 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1DCBB7DAC6;
+	Mon, 16 Jul 2018 18:47:55 +0000 (UTC)
+Received: from redhat.com (unknown [10.33.36.17])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 22CB32156893;
+	Mon, 16 Jul 2018 18:47:54 +0000 (UTC)
+Date: Mon, 16 Jul 2018 19:47:52 +0100
+From: "Daniel P. Berrange" <berrange@redhat.com>
+To: Mike Krinkin <krinkin.m.u@gmail.com>
+Cc: qemu-devel@nongnu.org, armbru@redhat.com, pbonzini@redhat.com,
+	qemu-trivial@nongnu.org
+Message-ID: <20180716184752.GA30657@redhat.com>
+Reply-To: "Daniel P. Berrange" <berrange@redhat.com>
+References: <20180716174146.19845-1-krinkin.m.u@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20180716174146.19845-1-krinkin.m.u@gmail.com>
+User-Agent: Mutt/1.10.0 (2018-05-17)
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.2]);
+	Mon, 16 Jul 2018 18:47:55 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
+	Mon, 16 Jul 2018 18:47:55 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'berrange@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [PATCH] opts: fix NULL pointer derefernce in
  get_opt_value
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -68,37 +58,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Jul 2018 17:41:54 -0000
+X-List-Received-Date: Mon, 16 Jul 2018 18:48:03 -0000
 
-The value argument can be NULL, for example, in hw/i386/multiboot.c
-in the load_multiboot function get_opt_value is explicitly called
-with NULL as the second argument.
+On Mon, Jul 16, 2018 at 06:41:46PM +0100, Mike Krinkin wrote:
+> The value argument can be NULL, for example, in hw/i386/multiboot.c
+> in the load_multiboot function get_opt_value is explicitly called
+> with NULL as the second argument.
+> 
+> The problem was introduced in commit 950c4e6c94b1 ("opts: don't
+> silently truncate long option values"). This change fixes the
+> problem by adding a check whether the value is NULL or not.
+> 
+> Signed-off-by: Mike Krinkin <krinkin.m.u@gmail.com>
+> ---
+>  util/qemu-option.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 
-The problem was introduced in commit 950c4e6c94b1 ("opts: don't
-silently truncate long option values"). This change fixes the
-problem by adding a check whether the value is NULL or not.
+This problem is fixed in this:
 
-Signed-off-by: Mike Krinkin <krinkin.m.u@gmail.com>
----
- util/qemu-option.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+  https://lists.gnu.org/archive/html/qemu-devel/2018-06/msg01490.html
 
-diff --git a/util/qemu-option.c b/util/qemu-option.c
-index 19761e3eaf..834217fc75 100644
---- a/util/qemu-option.c
-+++ b/util/qemu-option.c
-@@ -75,7 +75,9 @@ const char *get_opt_value(const char *p, char **value)
-     size_t capacity = 0, length;
-     const char *offset;
- 
--    *value = NULL;
-+    if (value) {
-+        *value = NULL;
-+    }
-     while (1) {
-         offset = qemu_strchrnul(p, ',');
-         length = offset - p;
+but it is still waiting for i386 maintainers to respond....
+
+Regards,
+Daniel
 -- 
-2.17.1
-
+|: http://berrange.com      -o-    http://www.flickr.com/photos/dberrange/ :|
+|: http://libvirt.org              -o-             http://virt-manager.org :|
+|: http://entangle-photo.org       -o-    http://search.cpan.org/~danberr/ :|
 
