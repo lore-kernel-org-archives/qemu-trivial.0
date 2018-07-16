@@ -1,89 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fei3E-00047p-3R
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Jul 2018 10:31:04 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35197)
+	id 1ff7yu-000332-Hs
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jul 2018 14:12:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35123)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1fei3C-00046b-1Z
-	for qemu-trivial@nongnu.org; Sun, 15 Jul 2018 10:31:02 -0400
+	(envelope-from <krinkin.m.u@gmail.com>) id 1ff7VR-0001Kw-RN
+	for qemu-trivial@nongnu.org; Mon, 16 Jul 2018 13:41:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1fei3B-0007vG-9T
-	for qemu-trivial@nongnu.org; Sun, 15 Jul 2018 10:31:02 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:41148 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1fei35-0007tc-HI; Sun, 15 Jul 2018 10:30:55 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0A50281A4E9F;
-	Sun, 15 Jul 2018 14:30:55 +0000 (UTC)
-Received: from [10.36.116.39] (ovpn-116-39.ams2.redhat.com [10.36.116.39])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0448376CE;
-	Sun, 15 Jul 2018 14:30:49 +0000 (UTC)
-To: Stefan Weil <sw@weilnetz.de>, QEMU Developer <qemu-devel@nongnu.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	Richard Henderson <rth@twiddle.net>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>
-References: <20180712194454.26765-1-sw@weilnetz.de>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <98121629-3cd8-c0a5-f779-ccaa6298fdb1@redhat.com>
-Date: Sun, 15 Jul 2018 16:30:46 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
-MIME-Version: 1.0
-In-Reply-To: <20180712194454.26765-1-sw@weilnetz.de>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Sun, 15 Jul 2018 14:30:55 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Sun, 15 Jul 2018 14:30:55 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'pbonzini@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH] accel: Fix typo and grammar in comment
+	(envelope-from <krinkin.m.u@gmail.com>) id 1ff7VQ-0004wU-Vx
+	for qemu-trivial@nongnu.org; Mon, 16 Jul 2018 13:41:53 -0400
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:42811)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <krinkin.m.u@gmail.com>)
+	id 1ff7VP-0004vr-3l; Mon, 16 Jul 2018 13:41:51 -0400
+Received: by mail-ed1-x544.google.com with SMTP id r4-v6so2178341edp.9;
+	Mon, 16 Jul 2018 10:41:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=JQhlYkA/sm6IVZjzgzznezMU5siaxNM0gHh6imtnElw=;
+	b=sWbsn+St+Mf6E9z874T1dZfqosocxhRyZEOpBp5SdS2VMq12HjxsNJi2ltYJ1wKBb5
+	nxRGoSpke+U+tpgp6NjjzDw5grG3qYC9TzkjZp4QT2U5Kt770DhGslmR5rEVE62oqmKF
+	mUZAHncCtNvv0Nr1PjOyQJnTLQ3yUjCGAHHaVPTAXteBFm3EL3HHsmXQoHShOwa+0PAc
+	i05HOt+Hqyo+O8rVBmva2nqFOjAVrpjWfkpfXIY/ESzFM/0tXK90nlezKC0fqPdlP6B/
+	28q2HBdaIjLEfe/+j1ZUMzPXZxTXhUyNOCnUHDTMGyairwCqcp3/kE+/lrfT7rGU9fCx
+	XTTA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=JQhlYkA/sm6IVZjzgzznezMU5siaxNM0gHh6imtnElw=;
+	b=SNp/hF2aUrl1kiog01VR/tImzdm1rQchzrLkk2PmB4cgnoepiSuxMuz6s9ek/nFYAc
+	XNXJibUhRmbf9wzCzTxrBD6H+Z0JAmiaLWM4Lh9m9AVTAO4I7uSdLnOw1b6teJkO3J+m
+	yADxIRqbvLXy2f0ONaPBcCFRK4UISazvSuJ8UciWr0WAZqMH62Y0sJPpwge91RtnoQaF
+	hkjizmqhnls7uUinX0Te6QFeSvwuJrzbUm4r2JpoIVqxoEsugJl0DYkQ6ua9uzVylw96
+	kBuuoxyj2AjIDUcPagnb8vilU+I5BZ2/FaXsmcvMrQ5TtN2cXYdssG8w2LVy9b1oVu9S
+	E5rA==
+X-Gm-Message-State: AOUpUlGyN/GkPt3Cey2CRC808NYON0UokmHSO9/GzQptkLO0rRfnhP0F
+	KdxbXc6UfeTXfGAAq4P+daUQ5Q==
+X-Google-Smtp-Source: AAOMgpfVj8NWqSPGRCjwrODE2WTMH9I6C6I0F+OEnO1wlpG5QUzlLHlzSlrXpuT5ngWFg9tFDoNDzg==
+X-Received: by 2002:a50:e718:: with SMTP id
+	a24-v6mr18413679edn.278.1531762909700; 
+	Mon, 16 Jul 2018 10:41:49 -0700 (PDT)
+Received: from localhost.localdomain ([2a00:79e1:abc:110e:f944:d77f:2533:7bab])
+	by smtp.gmail.com with ESMTPSA id
+	v56-v6sm2062482edm.97.2018.07.16.10.41.48
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 16 Jul 2018 10:41:49 -0700 (PDT)
+From: Mike Krinkin <krinkin.m.u@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: armbru@redhat.com, berrange@redhat.com, pbonzini@redhat.com,
+	qemu-trivial@nongnu.org, Mike Krinkin <krinkin.m.u@gmail.com>
+Date: Mon, 16 Jul 2018 18:41:46 +0100
+Message-Id: <20180716174146.19845-1-krinkin.m.u@gmail.com>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::544
+X-Mailman-Approved-At: Mon, 16 Jul 2018 14:12:19 -0400
+Subject: [Qemu-trivial] [PATCH] opts: fix NULL pointer derefernce in
+ get_opt_value
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,32 +68,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Jul 2018 14:31:03 -0000
+X-List-Received-Date: Mon, 16 Jul 2018 17:41:54 -0000
 
-On 12/07/2018 21:44, Stefan Weil wrote:
-> The typo was found by codespell.
-> 
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->  accel/tcg/translate-all.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-> index 49d77fad44..1571987113 100644
-> --- a/accel/tcg/translate-all.c
-> +++ b/accel/tcg/translate-all.c
-> @@ -1795,7 +1795,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
->      tb->jmp_dest[0] = (uintptr_t)NULL;
->      tb->jmp_dest[1] = (uintptr_t)NULL;
->  
-> -    /* init original jump addresses wich has been set during tcg_gen_code() */
-> +    /* init original jump addresses which have been set during tcg_gen_code() */
->      if (tb->jmp_reset_offset[0] != TB_JMP_RESET_OFFSET_INVALID) {
->          tb_reset_jump(tb, 0);
->      }
-> 
+The value argument can be NULL, for example, in hw/i386/multiboot.c
+in the load_multiboot function get_opt_value is explicitly called
+with NULL as the second argument.
 
-Queued, thanks.
+The problem was introduced in commit 950c4e6c94b1 ("opts: don't
+silently truncate long option values"). This change fixes the
+problem by adding a check whether the value is NULL or not.
 
-Paolo
+Signed-off-by: Mike Krinkin <krinkin.m.u@gmail.com>
+---
+ util/qemu-option.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/util/qemu-option.c b/util/qemu-option.c
+index 19761e3eaf..834217fc75 100644
+--- a/util/qemu-option.c
++++ b/util/qemu-option.c
+@@ -75,7 +75,9 @@ const char *get_opt_value(const char *p, char **value)
+     size_t capacity = 0, length;
+     const char *offset;
+ 
+-    *value = NULL;
++    if (value) {
++        *value = NULL;
++    }
+     while (1) {
+         offset = qemu_strchrnul(p, ',');
+         length = offset - p;
+-- 
+2.17.1
+
 
