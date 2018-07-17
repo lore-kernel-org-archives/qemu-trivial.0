@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ffNL7-0003Mm-9r
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Jul 2018 06:36:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33232)
+	id 1ffNip-0002Rb-3L
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Jul 2018 07:00:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38628)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ffNL5-0003Lu-3w
-	for qemu-trivial@nongnu.org; Tue, 17 Jul 2018 06:36:16 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1ffNig-0002Ol-Fg
+	for qemu-trivial@nongnu.org; Tue, 17 Jul 2018 07:00:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1ffNL4-0006aW-8U
-	for qemu-trivial@nongnu.org; Tue, 17 Jul 2018 06:36:15 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:35446 helo=mx1.redhat.com)
+	(envelope-from <pbonzini@redhat.com>) id 1ffNib-00063B-EB
+	for qemu-trivial@nongnu.org; Tue, 17 Jul 2018 07:00:38 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:36130 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1ffNKz-0006YT-Jh; Tue, 17 Jul 2018 06:36:09 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
+	id 1ffNiV-0005wE-61; Tue, 17 Jul 2018 07:00:27 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 247C6814F0B7;
-	Tue, 17 Jul 2018 10:36:09 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 467108163C5F;
+	Tue, 17 Jul 2018 11:00:26 +0000 (UTC)
 Received: from [10.36.116.189] (ovpn-116-189.ams2.redhat.com [10.36.116.189])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id E1BBE2026D68;
-	Tue, 17 Jul 2018 10:36:07 +0000 (UTC)
-To: "Daniel P. Berrange" <berrange@redhat.com>,
-	Mike Krinkin <krinkin.m.u@gmail.com>
-Cc: qemu-devel@nongnu.org, armbru@redhat.com, qemu-trivial@nongnu.org
-References: <20180716174146.19845-1-krinkin.m.u@gmail.com>
-	<20180716184752.GA30657@redhat.com>
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E66E7111CA17;
+	Tue, 17 Jul 2018 11:00:22 +0000 (UTC)
+To: Thomas Huth <thuth@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Eric Blake <eblake@redhat.com>
+References: <20180716193312.A5BA17456B9@zero.eik.bme.hu>
+	<2164ddc5-68be-ffa2-cebf-6980220b1238@redhat.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
@@ -63,28 +63,28 @@ Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
 	1lJAPPSIqZKvHzGShdh8DduC0U3xYkfbGAUvbxeepjgzp0uEnBXfPTy09JGpgWbg0w91GyfT
 	/ujKaGd4vxG2Ei+MMNDmS1SMx7wu0evvQ5kT9NPzyq8R2GIhVSiAd2jioGuTjX6AZCFv3ToO
 	53DliFMkVTecLptsXaesuUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <5ea51a39-bddd-81b7-318d-fac8bfb56a93@redhat.com>
-Date: Tue, 17 Jul 2018 12:36:06 +0200
+Message-ID: <38d43770-ecc6-8ba0-0eab-34ca31c2ce7c@redhat.com>
+Date: Tue, 17 Jul 2018 13:00:20 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180716184752.GA30657@redhat.com>
+In-Reply-To: <2164ddc5-68be-ffa2-cebf-6980220b1238@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.8]);
-	Tue, 17 Jul 2018 10:36:09 +0000 (UTC)
+	Tue, 17 Jul 2018 11:00:26 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Tue, 17 Jul 2018 10:36:09 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
+	Tue, 17 Jul 2018 11:00:26 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'pbonzini@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
+X-detected-operating-system: by eggs.gnu.org: Error: Can't connect to API
+	socket.
 X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [PATCH] opts: fix NULL pointer derefernce in
- get_opt_value
+Subject: Re: [Qemu-trivial] [PATCH] Document command line options with
+ single dash
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,32 +96,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Jul 2018 10:36:16 -0000
+X-List-Received-Date: Tue, 17 Jul 2018 11:00:43 -0000
 
-On 16/07/2018 20:47, Daniel P. Berrange wrote:
-> On Mon, Jul 16, 2018 at 06:41:46PM +0100, Mike Krinkin wrote:
->> The value argument can be NULL, for example, in hw/i386/multiboot.c
->> in the load_multiboot function get_opt_value is explicitly called
->> with NULL as the second argument.
+On 17/07/2018 09:43, Thomas Huth wrote:
+> On 16.07.2018 21:12, BALATON Zoltan wrote:
+>> QEMU options have a single dash (but also work as double dash for
+>> convenience and compatibility). Most options are listed with single
+>> dash in command line help but some were listed with two dashes.
+>> Normalize these to have the same format as the others.
 >>
->> The problem was introduced in commit 950c4e6c94b1 ("opts: don't
->> silently truncate long option values"). This change fixes the
->> problem by adding a check whether the value is NULL or not.
+>> Left --preconfig as that is mentioned as double dash everywhere so I
+>> assume that is the preferred form for that.
 >>
->> Signed-off-by: Mike Krinkin <krinkin.m.u@gmail.com>
+>> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 >> ---
->>  util/qemu-option.c | 4 +++-
->>  1 file changed, 3 insertions(+), 1 deletion(-)
+>>  qemu-options.hx | 8 ++++----
+>>  1 file changed, 4 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/qemu-options.hx b/qemu-options.hx
+>> index 371c427..b1bf0f4 100644
+>> --- a/qemu-options.hx
+>> +++ b/qemu-options.hx
+>> @@ -471,7 +471,7 @@ STEXI
+>>  @item -balloon virtio[,addr=@var{addr}]
+>>  @findex -balloon
+>>  Enable virtio balloon device, optionally with PCI address @var{addr}. This
+>> -option is deprecated, use @option{--device virtio-balloon} instead.
+>> +option is deprecated, use @option{-device virtio-balloon} instead.
+>>  ETEXI
+>>  
+>>  DEF("device", HAS_ARG, QEMU_OPTION_device,
+>> @@ -2005,7 +2005,7 @@ DEF("netdev", HAS_ARG, QEMU_OPTION_netdev,
+>>      "-netdev hubport,id=str,hubid=n[,netdev=nd]\n"
+>>      "                configure a hub port on the hub with ID 'n'\n", QEMU_ARCH_ALL)
+>>  DEF("nic", HAS_ARG, QEMU_OPTION_nic,
+>> -    "--nic [tap|bridge|"
+>> +    "-nic [tap|bridge|"
+>>  #ifdef CONFIG_SLIRP
+>>      "user|"
+>>  #endif
+>> @@ -2024,7 +2024,7 @@ DEF("nic", HAS_ARG, QEMU_OPTION_nic,
+>>      "socket][,option][,...][mac=macaddr]\n"
+>>      "                initialize an on-board / default host NIC (using MAC address\n"
+>>      "                macaddr) and connect it to the given host network backend\n"
+>> -    "--nic none      use it alone to have zero network devices (the default is to\n"
+>> +    "-nic none       use it alone to have zero network devices (the default is to\n"
+>>      "                provided a 'user' network connection)\n",
+>>      QEMU_ARCH_ALL)
+>>  DEF("net", HAS_ARG, QEMU_OPTION_net,
+>> @@ -3339,7 +3339,7 @@ mlocking qemu and guest memory can be enabled via @option{mlock=on}
+>>  ETEXI
+>>  
+>>  DEF("overcommit", HAS_ARG, QEMU_OPTION_overcommit,
+>> -    "--overcommit [mem-lock=on|off][cpu-pm=on|off]\n"
+>> +    "-overcommit [mem-lock=on|off][cpu-pm=on|off]\n"
+>>      "                run qemu with overcommit hints\n"
+>>      "                mem-lock=on|off controls memory lock support (default: off)\n"
+>>      "                cpu-pm=on|off controls cpu power management (default: off)\n",
+>>
 > 
-> This problem is fixed in this:
+> Acked-by: Thomas Huth <thuth@redhat.com>
 > 
->   https://lists.gnu.org/archive/html/qemu-devel/2018-06/msg01490.html
+> ... I'm in favour for consistency for the 3.0 release. But in the long
+> run, we should really come to a conclusion what we prefer (we still got
+> the double dash task at
+> https://wiki.qemu.org/BiteSizedTasks#Consistent_option_usage_in_documentation
+> )
 > 
-> but it is still waiting for i386 maintainers to respond....
 
-Generally Kevin has looked at multiboot patches, but I'll merge these
-ones because he's on vacation.  Thanks,
+Queued, thanks.
 
 Paolo
-
 
