@@ -1,65 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ffroF-0002a7-Cp
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Jul 2018 15:08:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41610)
+	id 1fgWyN-00068U-FY
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Jul 2018 11:05:35 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50619)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ffroE-0002Zr-44
-	for qemu-trivial@nongnu.org; Wed, 18 Jul 2018 15:08:22 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fgWyG-00063a-NK
+	for qemu-trivial@nongnu.org; Fri, 20 Jul 2018 11:05:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ffroD-0002Ha-55
-	for qemu-trivial@nongnu.org; Wed, 18 Jul 2018 15:08:22 -0400
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:39185)
+	(envelope-from <peter.maydell@linaro.org>) id 1fgWyF-0000R5-ME
+	for qemu-trivial@nongnu.org; Fri, 20 Jul 2018 11:05:28 -0400
+Received: from mail-oi0-x242.google.com ([2607:f8b0:4003:c06::242]:37873)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ffroC-0002HL-Uv
-	for qemu-trivial@nongnu.org; Wed, 18 Jul 2018 15:08:21 -0400
-Received: by mail-oi0-x243.google.com with SMTP id d189-v6so10840350oib.6
-	for <qemu-trivial@nongnu.org>; Wed, 18 Jul 2018 12:08:20 -0700 (PDT)
+	id 1fgWyF-0000Qm-Gu
+	for qemu-trivial@nongnu.org; Fri, 20 Jul 2018 11:05:27 -0400
+Received: by mail-oi0-x242.google.com with SMTP id k81-v6so21882359oib.4
+	for <qemu-trivial@nongnu.org>; Fri, 20 Jul 2018 08:05:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=eP9EAfkO8IYTauco7jKm76ovhu5kp5sMcgsQ8wDnyQk=;
-	b=IkMoSzC4YGtamGGsZ+ECnE3kvpXUeerTyoEwjH7nYj4u0Hql+yMgUq7syqQnE44F9x
-	+ciYQf5ID7Jq8fuDTiMjup5JYwyOnpgqbD0HbkRW2pJc9RD3v7JzIeODNvG0oo52RE8a
-	me5+N+3Xs50eY+TfZtyAk6RKRuJBNXPuQM63U=
+	:cc; bh=JVS0R1oXtwoY+jBepgkZayWd0fXinyrwdSVYBdL1vyQ=;
+	b=RZ7NXF52euf7iKvqzQy1cAYnq6f9HGxzRa1qrafUHpP2T9gXZiYWvrcSVbEhlbB1sc
+	7lEyh7Vv3E8wt36dzanjbEigoXOGulywe7JElFH3GDXnLHSn0vjSHXF63mARo3VQ1RCm
+	50FXYd5cyj2oSeFNy2rKt+FTPUvLzs1RYjS+M=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=eP9EAfkO8IYTauco7jKm76ovhu5kp5sMcgsQ8wDnyQk=;
-	b=HgN0Y4k0ujmzHnxof/5JfXo1HYZl+yIWXwq04DxPlmZKe2JHqVBvHB9HjmGpYl+s3y
-	0/fni01kyLhmnJMMzo44OT2czn1uLyRicP2vyYEz+tyCUejySU59zM0C49YPLCIEbSzv
-	/Jn2LwI1+K2HkJ2LXUe0oKxkKxzySW3M+IaROhvpNrFrBct9Th22+jS3m9ybAdB1r69K
-	bbWXUJhOAJNr0tssZQyUPONGcyoxuKS1gM4ijeq41wwba5t/IAaXVkBH5Ab2rqcBzp75
-	P72ztM4dtp2XmwCdwi5Cs9bsik4Vdzp5KajnXFHVRMXO8FX0QsCkbmrMc4Tl/Pe3C1V/
-	Xnmg==
-X-Gm-Message-State: AOUpUlEW1nhxSH4SXov6le9cPAfNOwChxReSM/HRr7WABha3r1TP8fMH
-	P+/AdZDhtUJpyvVmT+dc+s9CoOadfsITk1Bk3rbUwg==
-X-Google-Smtp-Source: AAOMgpeFR4RDnc7vd6Lhqb5SMA39IVwPgoW12n/jPzfqzQFZOYrze023cVTqWTx4ZyLlWsCoom/ILpwXijO6o5uIk60=
-X-Received: by 2002:aca:4a49:: with SMTP id
-	x70-v6mr6989522oia.11.1531940900305; 
-	Wed, 18 Jul 2018 12:08:20 -0700 (PDT)
+	:message-id:subject:to:cc;
+	bh=JVS0R1oXtwoY+jBepgkZayWd0fXinyrwdSVYBdL1vyQ=;
+	b=XIFzr9iTUjssolcumJB7H0xS18fXtiOjctzpxRk7OSKljNrZ8eoG1NDS+3LDcI1Ef8
+	JMB74EgjbaS1FdgRZmhzgbAUF1zqjOiKrYLSivmqiwXUJiWJr18bE+8A6f1cqm9hdt8W
+	P5iH/QM5L9NJTLjEwp1nI/14FTXEnzRpDev0pL1BKdGailPSd5n+jxGaODOssf2nk8qE
+	SUQje4i+y+C4ftkMxRtlkfcH1hB6H+QXoSSYwKjw2+N5AIZWr3ArUzoGuNnK+vFMEmoo
+	8SRTAb12dG5sivwisuPZ5X2LapFkC8+q+xUe0xm+mTzgcoEwlYbM2/CX5cs/2ruCON3e
+	t1fQ==
+X-Gm-Message-State: AOUpUlGvqvn8Um8hfTYbBY0RJ7QFN0n3RDXCMROH9wF4nalzgSvQax8C
+	Og1I/GcFIu1SiYHw3HonB18eifg1bDpdIjD/2fMGjg==
+X-Google-Smtp-Source: AAOMgpdMEYFkgLmaNs1FZSAG/bcfmm11v3cScPCWtgx/ont/MCy0eVG21wP+svKbME9CRJkgrzE10o5YTA+bgitckyA=
+X-Received: by 2002:aca:a982:: with SMTP id
+	s124-v6mr2610345oie.80.1532099126918; 
+	Fri, 20 Jul 2018 08:05:26 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Wed, 18 Jul 2018 12:07:59
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Fri, 20 Jul 2018 08:05:06
 	-0700 (PDT)
-In-Reply-To: <20180718170428.GT9812@redhat.com>
-References: <20180712192603.11599-1-sw@weilnetz.de>
-	<20180718162111.GR9812@redhat.com>
-	<255cc07f-8eb7-0839-2001-e6ead4f3d969@weilnetz.de>
-	<20180718170428.GT9812@redhat.com>
+In-Reply-To: <20180718061027.10980-1-sw@weilnetz.de>
+References: <20180718061027.10980-1-sw@weilnetz.de>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 18 Jul 2018 20:07:59 +0100
-Message-ID: <CAFEAcA-qaDKwG1Use+WG-ocBMd7h3irDQNBYsq_jyE1u8fRA2Q@mail.gmail.com>
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Stefan Weil <sw@weilnetz.de>, QEMU Trivial <qemu-trivial@nongnu.org>, 
-	QEMU Developer <qemu-devel@nongnu.org>
+Date: Fri, 20 Jul 2018 16:05:06 +0100
+Message-ID: <CAFEAcA9GD5ApmZJUeCMfTZnQJsFaKbceP6G2Q_QXCWYm8mow2g@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Cc: QEMU Developer <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Alexander Shopov <ash@kambanaria.org>, Kevin Wolf <kwolf@redhat.com>, 
+	Aurelien Jarno <aurelien@aurel32.net>,
+	=?UTF-8?B?w4Frb3MgS292w6Fjcw==?= <akoskovacs@gmx.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?B?T3phbiDDh2HEn2xheWFu?= <ozancag@gmail.com>, 
+	Fam Zheng <famz@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Support
- pkg-config for zlib
+X-Received-From: 2607:f8b0:4003:c06::242
+Subject: Re: [Qemu-trivial] [PATCH for-3.0] po: Don't include comments with
+ location
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,36 +72,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Jul 2018 19:08:23 -0000
+X-List-Received-Date: Fri, 20 Jul 2018 15:05:34 -0000
 
-On 18 July 2018 at 18:04, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wro=
-te:
-> On Wed, Jul 18, 2018 at 06:59:25PM +0200, Stefan Weil wrote:
->> Am 18.07.2018 um 18:21 schrieb Daniel P. Berrang=C3=A9:
->> > .... this fallback support for non-pkgconfig scenarios can be entirely
->> > deleted, just leaving the error_exit message.
->>
->> I have no objection. Thank you for the investigation of the zlib
->> history. Removing old unneeded code is always good, but maybe that's
->> something which could be done after release 3.0.
->>
->> Or would you suggest to do it now? Then I can either send an updated
->> patch (v2), or whoever pulls that patch can make that trivial modificati=
-on.
+On 18 July 2018 at 07:10, Stefan Weil <sw@weilnetz.de> wrote:
+> Those comments change often when ui/gtk.c is changed and are not
+> really useful.
 >
-> If we're ok with adding support for pkg-config in 3.0, I think it is
-> reasonable to drop the fallback check at the same time.  I think it
-> this stills qualify as a bug fix patch in terms of our freeze rules,
-> since we're specificially aiming to fix build problems on one of our
-> supported platforms.
+> Add also a new translation for German (still to be done for all other
+> languages).
 >
-> So personally I'd suggest sending a v2 with the fallback dropped.
-> for 3.0
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
 
-I would favour doing that part in 3.1. This feels like the
-kind of change that we're all pretty certain is safe that
-then turns out not to be for some case or other, and it's
-easier not to have to fix it up later.
+I think I agree with Philippe that we should split out the
+mechanical change from the significant one.
 
 thanks
 -- PMM
