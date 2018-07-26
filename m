@@ -1,67 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fhXVY-0001tc-RH
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Jul 2018 05:52:00 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:60395)
+	id 1fifeO-0002XS-83
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Jul 2018 08:45:48 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41331)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fhXVX-0001tM-6m
-	for qemu-trivial@nongnu.org; Mon, 23 Jul 2018 05:52:00 -0400
+	(envelope-from <armbru@redhat.com>) id 1fifeJ-0002UD-3a
+	for qemu-trivial@nongnu.org; Thu, 26 Jul 2018 08:45:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fhXVW-0002xa-K6
-	for qemu-trivial@nongnu.org; Mon, 23 Jul 2018 05:51:59 -0400
-Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:43134)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fhXVW-0002x1-DW
-	for qemu-trivial@nongnu.org; Mon, 23 Jul 2018 05:51:58 -0400
-Received: by mail-oi0-x244.google.com with SMTP id b15-v6so30425oib.10
-	for <qemu-trivial@nongnu.org>; Mon, 23 Jul 2018 02:51:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=fzzqgaD/aMzPp34DfJ1hNhz4lI8zgvYgBThSISbDhh0=;
-	b=eGcDwPnSaiQ9VZ1yJQ6WgVfBPFNJ4+L9MZGmtKx5LQOpj9EayZ6Toav4yWABG+/ORL
-	hcl19kWFL5PfHwRNkf9+qqi/Hdz1k0SAF1HMz/qiDDxyJOPICp+rXUmsiNRDP7S5WOnT
-	3pW5AVomqoHjQ0fh+CwWOFiG01NS8aSDA+UXw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=fzzqgaD/aMzPp34DfJ1hNhz4lI8zgvYgBThSISbDhh0=;
-	b=CvVdIl5KRSywPAFTTuQL8c9yogFXVw7oXBGewOvI7flOMO/qbkRyIwO5L8/jbclu5Z
-	O3ewVhMFrvI/qvx1V58Ci9pZ/4Bimc4Hvg55CwcYqLnqY8K2VJW/w+Q4QI8SJQWTDR7e
-	pNO8pqNm6mDfuAlO83yqMeiytQ+JuVdbO6omFUvfEubHXj7jR6t2YeZqVnEKM4p4sC+N
-	kIkgKihYZe9GmYs55gxQRk9eytkTsEehLR5EEgqSuu6H6fSx+tCtNiz1X6Xhin6tfWT0
-	oJ0kjpv6bZdLiM5BKJZut+uVEutTLFr6JSBsCpCiM3ISKmIxA3Bcb8VDjgdscV/0gnhY
-	D3gw==
-X-Gm-Message-State: AOUpUlFraLGwoHCSE2E8smlISuufAYfXKVJCyG7cjmrq2VnZS2RVhTCG
-	NlxqaZFNl0P2kf9RH4Bt48WUrbSgXiKXNyNjyHMcWQ==
-X-Google-Smtp-Source: AAOMgpejRnDK8hO9cLcbldDstiKGkcVsS4VX6xb3Gn5nOq3+nK+pDPOeVT0tHAtOiaMkEFOI5Fz7UffU7NrfzwVk7TY=
-X-Received: by 2002:aca:4c14:: with SMTP id
-	z20-v6mr7185112oia.164.1532339516324; 
-	Mon, 23 Jul 2018 02:51:56 -0700 (PDT)
+	(envelope-from <armbru@redhat.com>) id 1fifeG-0005Io-5T
+	for qemu-trivial@nongnu.org; Thu, 26 Jul 2018 08:45:43 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:38970 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1fife9-000509-JF; Thu, 26 Jul 2018 08:45:33 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0690640216E3;
+	Thu, 26 Jul 2018 12:45:22 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-135.ams2.redhat.com
+	[10.36.116.135])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 14EA821568A1;
+	Thu, 26 Jul 2018 12:45:20 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id C62721138648; Thu, 26 Jul 2018 14:45:14 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+	Paolo Bonzini <pbonzini@redhat.com>
+References: <20180419132026.5494-1-kraxel@redhat.com>
+	<20180419132026.5494-2-kraxel@redhat.com>
+Date: Thu, 26 Jul 2018 14:45:14 +0200
+In-Reply-To: <20180419132026.5494-2-kraxel@redhat.com> (Gerd Hoffmann's
+	message of "Thu, 19 Apr 2018 15:20:23 +0200")
+Message-ID: <87va92dv39.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Mon, 23 Jul 2018 02:51:36
-	-0700 (PDT)
-In-Reply-To: <20180720212509.18339-1-sw@weilnetz.de>
-References: <20180720212509.18339-1-sw@weilnetz.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 23 Jul 2018 10:51:36 +0100
-Message-ID: <CAFEAcA-ML2PVG6y4OESWBt-Ac2uNwvPK8Ucb5ggxJ4vcQ=ZYGA@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Cc: QEMU Developer <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Alexander Shopov <ash@kambanaria.org>, Kevin Wolf <kwolf@redhat.com>, 
-	Aurelien Jarno <aurelien@aurel32.net>,
-	=?UTF-8?B?w4Frb3MgS292w6Fjcw==?= <akoskovacs@gmx.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?B?T3phbiDDh2HEn2xheWFu?= <ozancag@gmail.com>, 
-	Fam Zheng <famz@redhat.com>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::244
-Subject: Re: [Qemu-trivial] [PATCH v2 for-3.0] po: Don't include comments
- with location
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.5]);
+	Thu, 26 Jul 2018 12:45:22 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
+	Thu, 26 Jul 2018 12:45:22 +0000 (UTC) for IP:'10.11.54.6'
+	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'armbru@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/4] ui: add qapi parser for
+ -display
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,22 +62,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Jul 2018 09:52:00 -0000
+X-List-Received-Date: Thu, 26 Jul 2018 12:45:46 -0000
 
-On 20 July 2018 at 22:25, Stefan Weil <sw@weilnetz.de> wrote:
-> Those comments change often when ui/gtk.c is changed and are not
-> really useful.
+Gerd Hoffmann <kraxel@redhat.com> writes:
+
+> Add parse_display_qapi() function which parses the -display command line
+> using a qapi visitor for DisplayOptions.  Wire up as default catch in
+> parse_display().
 >
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> Improves the error message for unknown display types.
+>
+> Also enables json as -display argument, i.e. -display "{ 'type': 'gtk' }"
+
+This new option argument syntax is undocumented.  Intentional?
+
+> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 > ---
->
-> CC'ing all translators because of the new string which still needs
-> translations.
->
-> v2: Only automatically created content, no new German translation.
->
-
-Applied to master, thanks.
-
--- PMM
+>  vl.c | 29 +++++++++++++++++++++++++++--
+>  1 file changed, 27 insertions(+), 2 deletions(-)
 
