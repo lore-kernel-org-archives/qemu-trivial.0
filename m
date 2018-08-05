@@ -1,59 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fmNkk-0005Jn-Gf
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Aug 2018 14:27:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39580)
+	id 1fmNm0-00063L-1H
+	for mharc-qemu-trivial@gnu.org; Sun, 05 Aug 2018 14:29:00 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39893)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pavel.zbitskiy@gmail.com>) id 1fmNki-0005I8-25
-	for qemu-trivial@nongnu.org; Sun, 05 Aug 2018 14:27:41 -0400
+	(envelope-from <pavel.zbitskiy@gmail.com>) id 1fmNlw-00060y-Q7
+	for qemu-trivial@nongnu.org; Sun, 05 Aug 2018 14:28:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pavel.zbitskiy@gmail.com>) id 1fmNkh-00048x-8w
-	for qemu-trivial@nongnu.org; Sun, 05 Aug 2018 14:27:40 -0400
-Received: from mail-qt0-x22b.google.com ([2607:f8b0:400d:c0d::22b]:34790)
+	(envelope-from <pavel.zbitskiy@gmail.com>) id 1fmNlv-000597-2h
+	for qemu-trivial@nongnu.org; Sun, 05 Aug 2018 14:28:56 -0400
+Received: from mail-qt0-x244.google.com ([2607:f8b0:400d:c0d::244]:40729)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <pavel.zbitskiy@gmail.com>)
-	id 1fmNkb-0003wj-8E; Sun, 05 Aug 2018 14:27:33 -0400
-Received: by mail-qt0-x22b.google.com with SMTP id m13-v6so11537059qth.1;
-	Sun, 05 Aug 2018 11:27:33 -0700 (PDT)
+	id 1fmNlo-00051n-8i; Sun, 05 Aug 2018 14:28:48 -0400
+Received: by mail-qt0-x244.google.com with SMTP id h4-v6so11492771qtj.7;
+	Sun, 05 Aug 2018 11:28:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id;
 	bh=xVs61bJBnIwWy8fAh9ZXoThBCw+QPxKw+Y9z2+s8j6I=;
-	b=VLcAsyaUy8fXaX5D+TCpZk6B511dJUYV/zjfSPMnhrN2H4r7zC86YQnYmPtelytrvm
-	MKOjW7j/T7wR2iL1R4nu48n/0omYoXnwyhgIVA0LoFBlEhLa5RLCq5jOhJTLb70e+XjA
-	RPtGR1bQ31Ya92vcrRDY2t6FCFlZhDOfQWszGD8fmBgs2sIqbNUEuqgNrlPUB2kAl9wU
-	SAx64AURwztAPbqn/SaitfU+sagAE9/bJXS74XL05B89G7CMtRK9klfyEiHsQFQQkIes
-	9idnZs68sszhppYGDSjcCNv7AzuiAGWGwETpce+O1U7vQciiTR5ZgThK4/z/+7h0hFQ+
-	Gm2g==
+	b=IRUusLGKspcbfN5x9UkJhERUkClU1hROgKY3TZdev7Q69VUXrpFA9G55DPislnwiiL
+	RRc3Xbhej41BVOXQuR89e9C7Ji7klzfkPsqx8nvPqGzU92ptGIjhh1s951kIdoMxz4O6
+	ZuZO7Bt1F9YD4nJdSRnpihE46ShznStveeDkfdz0nxPtuc/vWtdMYqy7+Y5NQCYn+8GZ
+	coHxSYQmLUsqGY8frPC2a4l8CHyUGvQCJ7Zb45E9oYLEUxS/SwkQHoQ9NXLTywdqiBtE
+	8an3X52+gz24skO9dLTi6Fyoks4nZ/Vg6eZfuwDGW09BA3Jgc5hmOnBQ7q2o902/xzof
+	PqFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id;
 	bh=xVs61bJBnIwWy8fAh9ZXoThBCw+QPxKw+Y9z2+s8j6I=;
-	b=L3ft62BdBB2T6Gfn+dAUIEm9P03dZuT1fwGwK1urFOmWB6LkT+Xl2gDdXG8ORXKKUX
-	6nq973cYF/fM1uivaG8FKNj+K8TreXhFZMMINWd7tmj9PwfqhwaBVFropTw9OrbFOn80
-	53BqnDzTDQR4JFe76UEKamyzkXeZ/IXr1Pypn0FNnCtVHAsEvNG7S3/HhKTLCa1oOZz8
-	PhgeheH3rpmHnAHeg0G2T8LLooXIzKebSGFLqSOagD3Ofui5a2aBKKArKqZdCZaBCiXz
-	LBxavcP0KbuG+YJIdTVuNDFdAheM2alxclL2xcV7sRzK0l2u7wz41+MDeaj0zD+cHI49
-	AULQ==
-X-Gm-Message-State: AOUpUlEChDszlj6nxuqvmsogn8EZqcW2PHB4KzSTorZ6cNEiuhqGtapk
-	mbTfL/+xw8R/hkSnF0JBw4t4AXOzV9E=
-X-Google-Smtp-Source: AAOMgpedBKFSB9VxCJtI0tOMT6lBv4BzA6QoBtafoXT1DfGjoVn3WN0KnXxMHc47AV4WzzrEBmg0OQ==
-X-Received: by 2002:ac8:3762:: with SMTP id
-	p31-v6mr11658196qtb.310.1533493652459; 
-	Sun, 05 Aug 2018 11:27:32 -0700 (PDT)
+	b=sWFlnk7Cp44O1pEXozd8v7k1YhsZPp4Vw5fS+a3rI/Yirk0UW3ySaFB08Pjqr8+9E2
+	aaSuY+iBGzveeZuAybKyVhwRWPngENos49sBNpU7vCLw16gITjJ9p6C2fpyPix6GN4TB
+	CC3wx4qGgNNnUFD3jZ9dSajz7UFFltqsxfEE0yRsgymS/JrNC6uggWQhHT1VqX2gEwuG
+	6s3ZUuwja4c1Y60YSE9Xt4cSeAIB/lBmbCXJf9ALx70T7KRjpPOe2CN7AAtTFhEar86G
+	G3uZ5MHYzDtHPui2A1KpTv8rCBD8cKPi+dvi6+Fc3QIg4ksf648SyrF6PK8ckzwcfsAT
+	FO8w==
+X-Gm-Message-State: AOUpUlH25St9D65GpVG1MhlzopsWy4DFVJKHx2ekLMzi5WmQ6cTzlaEg
+	A6moLx1Ot5R+QU3/J8SlQqwhKtZQPqc=
+X-Google-Smtp-Source: AAOMgpfE7uDkTyHQslUTsBRNgSbm6tcbSVWS9rcEIPFc738iIjRUslEz6zemaxcKjntpJi8QBkWtng==
+X-Received: by 2002:a0c:86b3:: with SMTP id
+	48-v6mr10363711qvf.64.1533493727592; 
+	Sun, 05 Aug 2018 11:28:47 -0700 (PDT)
 Received: from WAL-L-PZ01.rocketsoftware.com
 	(inet-64-112-177-9.bos.netblazr.com. [64.112.177.9])
 	by smtp.gmail.com with ESMTPSA id
-	o26-v6sm8671526qtk.4.2018.08.05.11.27.31
+	j86-v6sm12842786qkh.60.2018.08.05.11.28.46
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 05 Aug 2018 11:27:31 -0700 (PDT)
+	Sun, 05 Aug 2018 11:28:47 -0700 (PDT)
 From: Pavel Zbitskiy <pavel.zbitskiy@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
 	Pavel Zbitskiy <pavel.zbitskiy@gmail.com>
-Date: Sun,  5 Aug 2018 14:26:19 -0400
-Message-Id: <20180805182625.13540-1-pavel.zbitskiy@gmail.com>
+Date: Sun,  5 Aug 2018 14:28:25 -0400
+Message-Id: <20180805182832.3012-1-pavel.zbitskiy@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:400d:c0d::22b
+X-Received-From: 2607:f8b0:400d:c0d::244
 Subject: [Qemu-trivial] [PATCH 0/6] Some improvements in z/Arch instructions
  support
 X-BeenThere: qemu-trivial@nongnu.org
@@ -67,7 +67,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 Aug 2018 18:27:41 -0000
+X-List-Received-Date: Sun, 05 Aug 2018 18:28:58 -0000
 
 Add BAL, BALR, CVB instructions
 Fix few bugs in PACK, CSST
