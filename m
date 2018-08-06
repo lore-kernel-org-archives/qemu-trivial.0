@@ -1,50 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fmh5c-00009X-Gb
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Aug 2018 11:06:32 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45033)
+	id 1fmhNR-0006Lv-8V
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Aug 2018 11:24:57 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49752)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1fmh5Z-00007K-Gw
-	for qemu-trivial@nongnu.org; Mon, 06 Aug 2018 11:06:30 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1fmhNO-0006Kl-1f
+	for qemu-trivial@nongnu.org; Mon, 06 Aug 2018 11:24:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1fmh5Y-0005ma-Lm
-	for qemu-trivial@nongnu.org; Mon, 06 Aug 2018 11:06:29 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:46094 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1fmh5U-0005hM-Dc; Mon, 06 Aug 2018 11:06:24 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 705F27C6A9;
-	Mon,  6 Aug 2018 15:06:18 +0000 (UTC)
-Received: from gondolin (dhcp-192-215.str.redhat.com [10.33.192.215])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id AC1BA1C55D;
-	Mon,  6 Aug 2018 15:06:17 +0000 (UTC)
-Date: Mon, 6 Aug 2018 17:06:16 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Pavel Zbitskiy <pavel.zbitskiy@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-s390x@nongnu.org
-Message-ID: <20180806170616.2064e677.cohuck@redhat.com>
-In-Reply-To: <20180805182832.3012-1-pavel.zbitskiy@gmail.com>
+	(envelope-from <richard.henderson@linaro.org>) id 1fmhNK-0005Mk-Rf
+	for qemu-trivial@nongnu.org; Mon, 06 Aug 2018 11:24:54 -0400
+Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:37568)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1fmhNK-0005MQ-K9
+	for qemu-trivial@nongnu.org; Mon, 06 Aug 2018 11:24:50 -0400
+Received: by mail-oi0-x241.google.com with SMTP id j205-v6so22906588oib.4
+	for <qemu-trivial@nongnu.org>; Mon, 06 Aug 2018 08:24:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=R5IlPvItUnz05Hfb5YjE4M+FD7citz/81GFHLr9vy7A=;
+	b=XVh1ua2vXEFhzW2is2Oy16Z3JDbe39LdBBzVllL4BJ5uqCgBj0puqzJSykktuW0z6a
+	POuB5jG49/KdHO5m3PB03540BZ5L/G/WwBBEZEEDZaG0Jfi0UQpiZCj7ldCQsd4Qu86h
+	Pmp6MdMLJjToX/1Z1Y6JEsg0Q1nBw2mEi2sWg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=R5IlPvItUnz05Hfb5YjE4M+FD7citz/81GFHLr9vy7A=;
+	b=IDSzb90f5iM1Ec9XL8+pV7AyMhV7ZOxBC4mt6S0oX7HEfcX3VdtkvXEpmgPcnzDuf6
+	wkNQbQByl5MSPIvdZbFRWP0eMd6Gnqry7YeIj7T6OrI1J+OlPu3OahhPXMDsYxXDf+xJ
+	CYqtxVv+2Vpq5wmRHD2xsx2oShnP3TVdJUk15VWIEp45pQMzh1HcLFXQwcnTBUTkHK7l
+	t/IuGNV2rcvB26AtrB7ha4PP2NiScWQQlv6SO4sJnAWTcDf/MqKf6WQ3z2uMQ2gMaFju
+	Ss295t1qX+uIeKnSHlVTOkJ3FiJYKz6Gg2QnbLopzWcOaygysU+svEqKt1dsR4uk1w2O
+	/N6g==
+X-Gm-Message-State: AOUpUlHEwZoPVz9FdmIOi/sHz7rsvI2K+ovyIfi9z4enMDejupnPmL7K
+	Tis8KDzNLgoi+DT+kLwSGCNbmQ==
+X-Google-Smtp-Source: AAOMgpdXIaEl5xl3dsuvn+1+fsCQGLrG/wB01gdikqB3iYWc5mJVYJzHp8+G5YtmsBt1EwbY2qAR4Q==
+X-Received: by 2002:aca:b3d6:: with SMTP id
+	c205-v6mr16260191oif.133.1533569088585; 
+	Mon, 06 Aug 2018 08:24:48 -0700 (PDT)
+Received: from cloudburst.twiddle.net ([172.56.42.130])
+	by smtp.gmail.com with ESMTPSA id
+	v202-v6sm10434391oie.47.2018.08.06.08.24.46
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 06 Aug 2018 08:24:47 -0700 (PDT)
+To: Pavel Zbitskiy <pavel.zbitskiy@gmail.com>, qemu-devel@nongnu.org
+Cc: David Hildenbrand <david@redhat.com>, qemu-trivial@nongnu.org,
+	Cornelia Huck <cohuck@redhat.com>, Alexander Graf <agraf@suse.de>,
+	"open list:S390" <qemu-s390x@nongnu.org>,
+	Richard Henderson <rth@twiddle.net>
 References: <20180805182832.3012-1-pavel.zbitskiy@gmail.com>
-Organization: Red Hat GmbH
+	<20180805182832.3012-4-pavel.zbitskiy@gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <15c06ae1-5262-85fe-df70-afd570f7efa7@linaro.org>
+Date: Mon, 6 Aug 2018 08:24:44 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <20180805182832.3012-4-pavel.zbitskiy@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.2]);
-	Mon, 06 Aug 2018 15:06:18 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.2]);
-	Mon, 06 Aug 2018 15:06:18 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'cohuck@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/6] Some improvements in
- z/Arch instructions support
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/6] target/s390x: fix ipm
+ polluting irrelevant bits
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,36 +79,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Aug 2018 15:06:30 -0000
+X-List-Received-Date: Mon, 06 Aug 2018 15:24:55 -0000
 
-On Sun,  5 Aug 2018 14:28:25 -0400
-Pavel Zbitskiy <pavel.zbitskiy@gmail.com> wrote:
+On 08/05/2018 11:28 AM, Pavel Zbitskiy wrote:
+> +    tcg_gen_andi_i64(t1, psw_mask, 0x00000f0000000000);
+> +    tcg_gen_shri_i64(t1, t1, 16);
 
-Meta note #1: please add the s390x maintainers on cc: for the cover
-              letter as well; that makes tracking easier
-Meta note #2: I don't think this really fits trivial? I'll be happy to
-              take the end result via the s390x tree, anyway.
+It would be better to swap these two operations, so that a 64-bit constant
+isn't needed for the mask, e.g:
 
-> Add BAL, BALR, CVB instructions
-> Fix few bugs in PACK, CSST
-> 
-> Pavel Zbitskiy (6):
->   target/s390x: add BAL and BALR instructions
->   target/s390x: fix CSST decoding and runtime alignment check
->   target/s390x: fix ipm polluting irrelevant bits
->   target/s390x: add EX support for TRT and TRTR
->   target/s390x: fix PACK reading 1 byte less and writing 1 byte more
->   target/s390x: implement CVB, CVBY and CVBG
-> 
->  target/s390x/helper.h      |  2 ++
->  target/s390x/insn-data.def |  7 ++++++
->  target/s390x/int_helper.c  | 58 ++++++++++++++++++++++++++++++++++++++++++++++
->  target/s390x/mem_helper.c  | 24 +++++++++++++++----
->  target/s390x/translate.c   | 52 +++++++++++++++++++++++++++++++++++++----
->  5 files changed, 135 insertions(+), 8 deletions(-)
-> 
+    tcg_gen_shri_i64(t1, psw_mask, 16);
+    tcg_gen_andi_i64(t1, t1, 0xf000000);
 
-Out of curiousity: Do you have some code that actually makes use of
-these instructions (especially BAL/BALR), or have you found this by
-looking at the documentation?
+Or maybe rewrite this whole function with extract/deposit:
+
+    tcg_gen_extract_i64(t1, psw_mask, 40, 4);
+    tcg_gen_extu_i32_i64(t2, cc_op);
+    tcg_gen_deposit_i64(t1, t1, t2, 4, 60);
+    tcg_gen_deposit_i64(o->out, o->out, t1, 24, 8);
+
+But what you have is not wrong so,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~
 
