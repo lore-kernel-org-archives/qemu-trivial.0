@@ -1,73 +1,100 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fmhNR-0006Lv-8V
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Aug 2018 11:24:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49752)
+	id 1fmyWK-0001Pn-Lt
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Aug 2018 05:43:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54139)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fmhNO-0006Kl-1f
-	for qemu-trivial@nongnu.org; Mon, 06 Aug 2018 11:24:55 -0400
+	(envelope-from <thuth@redhat.com>) id 1fmyWI-0001Nz-C3
+	for qemu-trivial@nongnu.org; Tue, 07 Aug 2018 05:43:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1fmhNK-0005Mk-Rf
-	for qemu-trivial@nongnu.org; Mon, 06 Aug 2018 11:24:54 -0400
-Received: from mail-oi0-x241.google.com ([2607:f8b0:4003:c06::241]:37568)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1fmhNK-0005MQ-K9
-	for qemu-trivial@nongnu.org; Mon, 06 Aug 2018 11:24:50 -0400
-Received: by mail-oi0-x241.google.com with SMTP id j205-v6so22906588oib.4
-	for <qemu-trivial@nongnu.org>; Mon, 06 Aug 2018 08:24:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=R5IlPvItUnz05Hfb5YjE4M+FD7citz/81GFHLr9vy7A=;
-	b=XVh1ua2vXEFhzW2is2Oy16Z3JDbe39LdBBzVllL4BJ5uqCgBj0puqzJSykktuW0z6a
-	POuB5jG49/KdHO5m3PB03540BZ5L/G/WwBBEZEEDZaG0Jfi0UQpiZCj7ldCQsd4Qu86h
-	Pmp6MdMLJjToX/1Z1Y6JEsg0Q1nBw2mEi2sWg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=R5IlPvItUnz05Hfb5YjE4M+FD7citz/81GFHLr9vy7A=;
-	b=IDSzb90f5iM1Ec9XL8+pV7AyMhV7ZOxBC4mt6S0oX7HEfcX3VdtkvXEpmgPcnzDuf6
-	wkNQbQByl5MSPIvdZbFRWP0eMd6Gnqry7YeIj7T6OrI1J+OlPu3OahhPXMDsYxXDf+xJ
-	CYqtxVv+2Vpq5wmRHD2xsx2oShnP3TVdJUk15VWIEp45pQMzh1HcLFXQwcnTBUTkHK7l
-	t/IuGNV2rcvB26AtrB7ha4PP2NiScWQQlv6SO4sJnAWTcDf/MqKf6WQ3z2uMQ2gMaFju
-	Ss295t1qX+uIeKnSHlVTOkJ3FiJYKz6Gg2QnbLopzWcOaygysU+svEqKt1dsR4uk1w2O
-	/N6g==
-X-Gm-Message-State: AOUpUlHEwZoPVz9FdmIOi/sHz7rsvI2K+ovyIfi9z4enMDejupnPmL7K
-	Tis8KDzNLgoi+DT+kLwSGCNbmQ==
-X-Google-Smtp-Source: AAOMgpdXIaEl5xl3dsuvn+1+fsCQGLrG/wB01gdikqB3iYWc5mJVYJzHp8+G5YtmsBt1EwbY2qAR4Q==
-X-Received: by 2002:aca:b3d6:: with SMTP id
-	c205-v6mr16260191oif.133.1533569088585; 
-	Mon, 06 Aug 2018 08:24:48 -0700 (PDT)
-Received: from cloudburst.twiddle.net ([172.56.42.130])
-	by smtp.gmail.com with ESMTPSA id
-	v202-v6sm10434391oie.47.2018.08.06.08.24.46
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 06 Aug 2018 08:24:47 -0700 (PDT)
+	(envelope-from <thuth@redhat.com>) id 1fmyWH-00009M-Jn
+	for qemu-trivial@nongnu.org; Tue, 07 Aug 2018 05:43:14 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:45258 helo=mx1.redhat.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1fmyWA-00005U-D4; Tue, 07 Aug 2018 05:43:06 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id DAAA28790A;
+	Tue,  7 Aug 2018 09:42:59 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-117-37.ams2.redhat.com [10.36.117.37])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 002521010417;
+	Tue,  7 Aug 2018 09:42:55 +0000 (UTC)
 To: Pavel Zbitskiy <pavel.zbitskiy@gmail.com>, qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>, qemu-trivial@nongnu.org,
 	Cornelia Huck <cohuck@redhat.com>, Alexander Graf <agraf@suse.de>,
 	"open list:S390" <qemu-s390x@nongnu.org>,
 	Richard Henderson <rth@twiddle.net>
 References: <20180805182832.3012-1-pavel.zbitskiy@gmail.com>
-	<20180805182832.3012-4-pavel.zbitskiy@gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
+	<20180805182832.3012-6-pavel.zbitskiy@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
-Message-ID: <15c06ae1-5262-85fe-df70-afd570f7efa7@linaro.org>
-Date: Mon, 6 Aug 2018 08:24:44 -0700
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <8de24c1a-a51a-35a4-19a8-cec480848bea@redhat.com>
+Date: Tue, 7 Aug 2018 11:42:54 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20180805182832.3012-4-pavel.zbitskiy@gmail.com>
+In-Reply-To: <20180805182832.3012-6-pavel.zbitskiy@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/6] target/s390x: fix ipm
- polluting irrelevant bits
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.11.55.1]);
+	Tue, 07 Aug 2018 09:42:59 +0000 (UTC)
+X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.1]);
+	Tue, 07 Aug 2018 09:42:59 +0000 (UTC) for IP:'10.11.54.3'
+	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
+	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 66.187.233.73
+Subject: Re: [Qemu-trivial] [qemu-s390x] [PATCH 5/6] target/s390x: fix PACK
+ reading 1 byte less and writing 1 byte more
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,28 +106,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Aug 2018 15:24:55 -0000
+X-List-Received-Date: Tue, 07 Aug 2018 09:43:15 -0000
 
-On 08/05/2018 11:28 AM, Pavel Zbitskiy wrote:
-> +    tcg_gen_andi_i64(t1, psw_mask, 0x00000f0000000000);
-> +    tcg_gen_shri_i64(t1, t1, 16);
+On 08/05/2018 08:28 PM, Pavel Zbitskiy wrote:
+> PACK fails on the test from the Principles of Operation: F1F2F3F4
+> becomes 0000234C instead of 0001234C due to an off-by-one error.
+> Furthermore, it overwrites one extra byte to the left of F1.
 
-It would be better to swap these two operations, so that a 64-bit constant
-isn't needed for the mask, e.g:
+ Hi Pavel,
 
-    tcg_gen_shri_i64(t1, psw_mask, 16);
-    tcg_gen_andi_i64(t1, t1, 0xf000000);
+thanks for fixing these bugs in the s390x instructions! If you've got
+some more spare minutes, could you maybe also add regression tests for
+these (user space) instruction to the tests/tcg/s390x folder? ... we
+really need some tests there ...
 
-Or maybe rewrite this whole function with extract/deposit:
-
-    tcg_gen_extract_i64(t1, psw_mask, 40, 4);
-    tcg_gen_extu_i32_i64(t2, cc_op);
-    tcg_gen_deposit_i64(t1, t1, t2, 4, 60);
-    tcg_gen_deposit_i64(o->out, o->out, t1, 24, 8);
-
-But what you have is not wrong so,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+ Thomas
 
 
-r~
 
