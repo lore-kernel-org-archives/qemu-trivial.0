@@ -1,53 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fpm90-000536-Jp
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Aug 2018 23:06:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56168)
+	id 1fpxb8-0007z5-FG
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Aug 2018 11:20:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35833)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>) id 1fpm8x-00052P-BW
-	for qemu-trivial@nongnu.org; Tue, 14 Aug 2018 23:06:45 -0400
+	(envelope-from <hans-erik.floryd@rt-labs.com>) id 1fpwHW-0006Hx-FP
+	for qemu-trivial@nongnu.org; Wed, 15 Aug 2018 09:56:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jasowang@redhat.com>) id 1fpm8w-0005Vf-D3
-	for qemu-trivial@nongnu.org; Tue, 14 Aug 2018 23:06:43 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:36050 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jasowang@redhat.com>)
-	id 1fpm8r-0005Fv-MM; Tue, 14 Aug 2018 23:06:37 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.4])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6E54D8197010;
-	Wed, 15 Aug 2018 03:06:36 +0000 (UTC)
-Received: from [10.72.12.27] (ovpn-12-27.pek2.redhat.com [10.72.12.27])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 434B52026D7E;
-	Wed, 15 Aug 2018 03:06:33 +0000 (UTC)
-To: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Harald Hoyer <harald@redhat.com>
-References: <1534161104-8253-1-git-send-email-thuth@redhat.com>
-	<87y3da5txn.fsf@dusky.pond.sub.org>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <a06a8e46-2710-82ba-90cc-5d48fc182e5c@redhat.com>
-Date: Wed, 15 Aug 2018 11:06:30 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
-MIME-Version: 1.0
-In-Reply-To: <87y3da5txn.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.4
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.8]);
-	Wed, 15 Aug 2018 03:06:36 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.8]);
-	Wed, 15 Aug 2018 03:06:36 +0000 (UTC) for IP:'10.11.54.4'
-	DOMAIN:'int-mx04.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'jasowang@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 66.187.233.73
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-options: Fix bad
- "macaddr" property in the documentation
+	(envelope-from <hans-erik.floryd@rt-labs.com>) id 1fpwHS-0003xF-Ud
+	for qemu-trivial@nongnu.org; Wed, 15 Aug 2018 09:56:14 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:42987)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <hans-erik.floryd@rt-labs.com>)
+	id 1fpwHS-0003pE-7u
+	for qemu-trivial@nongnu.org; Wed, 15 Aug 2018 09:56:10 -0400
+Received: by mail-lf1-x143.google.com with SMTP id 95-v6so931054lfy.9
+	for <qemu-trivial@nongnu.org>; Wed, 15 Aug 2018 06:56:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=rt-labs-com.20150623.gappssmtp.com; s=20150623;
+	h=from:to:cc:subject:date:message-id;
+	bh=Kb7aWsu8zS2IOeSg5ko2TIUgTzGM9dkgU/rT5SsqMLM=;
+	b=MhD4+XCQj0BrIes7LClbQxbrP/ngDMfp7Rbizj13fpbfCB6EIsrEe+IgmXzeYpMfYn
+	OHsPCJ388iy5hr8CcZ4sLTo5fZzwC29EwrYSZ3mbZLRe7us1EQKe/fGcIaEBDzqFfps0
+	MyceSAVmvI9x0GXfnLzcYGLRlgE3/vM9T8NaYuvuSYh2o//TXi53MPqyffcZqCoJ4KP/
+	7qjfsBLfoVBk2YM7qWs2tmap6Dudd3FbGUPvuDipesLjc80oVj4Tbkp/3K9qL5QL6dXd
+	wYHIJaxI29lml0wli9dv6uZIGP8hMUAn2KpRlDWNLgXg+mprN13I6XcIQrte9c7nsJvA
+	nv3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=Kb7aWsu8zS2IOeSg5ko2TIUgTzGM9dkgU/rT5SsqMLM=;
+	b=kzq7nrVkCdFuXRT5YtkA4Awi68PVmUNdbjdZ2vJ1BrHgr2/KkUXDnh6XaAoXwYsn3V
+	84YpiuTFMdvgK44asscNcpe2n8yWBJDHekbQZMVq3ulevEPMeX/xgu9VBsqxVi+Kov9K
+	x6PPB+YuutYHsPBVziah3B4ZFelYSQs3vXNlFbglvYCzzr3HYLpdLMYIx7lhzTe28IPD
+	8bnITHpAi1mx3FTqrZiGzwoOxVaeXy19dGRMFmZmLkRV+CGwzolM87JSsXZ7beW/aFze
+	QvjL4e0m1jNus2r+j1vMzfVOek1n2T9AoOhFP8yQV+S96OVMu4B1eIFeAoyV2SIAspXQ
+	kwpQ==
+X-Gm-Message-State: AOUpUlFu+/ad5M5i7hWAkSGKtUgF1PaU/14WPwo5oVrCYusriLkKPsNd
+	5Pabn71MGOBxgwZ1PP7nFIxgE2tKSGk=
+X-Google-Smtp-Source: AA+uWPy/wvH3nxdnS9xPg8r1bqFO4rcb0WSLW9R7ujBPx22euIjoVrJcvXEB/K0bPiph1YQVHCOcvw==
+X-Received: by 2002:a19:a705:: with SMTP id
+	q5-v6mr17832662lfe.148.1534341368484; 
+	Wed, 15 Aug 2018 06:56:08 -0700 (PDT)
+Received: from rtlap25.rt-labs.intra (h-72-195.A137.corp.bahnhof.se.
+	[212.116.72.195]) by smtp.gmail.com with ESMTPSA id
+	d4-v6sm339900lfc.57.2018.08.15.06.56.07
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Wed, 15 Aug 2018 06:56:07 -0700 (PDT)
+From: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
+To: qemu-trivial@nongnu.org
+Cc: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>,
+	Peter Chubb <peter.chubb@nicta.com.au>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-arm@nongnu.org (open list:i.MX31),
+	qemu-devel@nongnu.org (open list:All patches CC here)
+Date: Wed, 15 Aug 2018 15:55:54 +0200
+Message-Id: <1534341354-11956-1-git-send-email-hans-erik.floryd@rt-labs.com>
+X-Mailer: git-send-email 2.7.4
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::143
+X-Mailman-Approved-At: Wed, 15 Aug 2018 11:20:33 -0400
+Subject: [Qemu-trivial] [PATCH] imx_serial: Generate interrupt on receive
+ data ready if enabled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,47 +73,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Aug 2018 03:06:45 -0000
+X-List-Received-Date: Wed, 15 Aug 2018 13:56:15 -0000
 
+Generate an interrupt if USR2_RDR and UCR4_DREN are both set.
 
+Signed-off-by: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
+---
+ hw/char/imx_serial.c         | 3 ++-
+ include/hw/char/imx_serial.h | 1 +
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-On 2018=E5=B9=B408=E6=9C=8813=E6=97=A5 20:31, Markus Armbruster wrote:
-> Thomas Huth <thuth@redhat.com> writes:
->
->> When using the "-device" option, the property is called "mac".
->> "macaddr" is only used for the legacy "-net nic" option.
-> Indeed:
->
->      #define DEFINE_NIC_PROPERTIES(_state, _conf)                      =
-      \
-> --->    DEFINE_PROP_MACADDR("mac",   _state, _conf.macaddr),           =
-     \
->          DEFINE_PROP_NETDEV("netdev", _state, _conf.peers)
->
->> Reported-by: Harald Hoyer <harald@redhat.com>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>   qemu-options.hx | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/qemu-options.hx b/qemu-options.hx
->> index b1bf0f4..3495531 100644
->> --- a/qemu-options.hx
->> +++ b/qemu-options.hx
->> @@ -2345,7 +2345,7 @@ qemu-system-i386 linux.img \
->>                    -netdev socket,id=3Dn2,mcast=3D230.0.0.1:1234
->>   # launch yet another QEMU instance on same "bus"
->>   qemu-system-i386 linux.img \
->> -                 -device e1000,netdev=3Dn3,macaddr=3D52:54:00:12:34:5=
-8 \
->> +                 -device e1000,netdev=3Dn3,mac=3D52:54:00:12:34:58 \
->>                    -netdev socket,id=3Dn3,mcast=3D230.0.0.1:1234
->>   @end example
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
->
-
-Applied.
-
-Thanks
+diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
+index 0747db9..1e36319 100644
+--- a/hw/char/imx_serial.c
++++ b/hw/char/imx_serial.c
+@@ -74,8 +74,9 @@ static void imx_update(IMXSerialState *s)
+     mask = (s->ucr1 & UCR1_TXMPTYEN) ? USR2_TXFE : 0;
+     /*
+      * TCEN and TXDC are both bit 3
++     * RDR and DREN are both bit 0
+      */
+-    mask |= s->ucr4 & UCR4_TCEN;
++    mask |= s->ucr4 & (UCR4_TCEN | UCR4_DREN);
+ 
+     usr2 = s->usr2 & mask;
+ 
+diff --git a/include/hw/char/imx_serial.h b/include/hw/char/imx_serial.h
+index ee80da1..c8b7428 100644
+--- a/include/hw/char/imx_serial.h
++++ b/include/hw/char/imx_serial.h
+@@ -68,6 +68,7 @@
+ #define UCR2_RXEN       (1<<1)    /* Receiver enable */
+ #define UCR2_SRST       (1<<0)    /* Reset complete */
+ 
++#define UCR4_DREN       BIT(0)    /* Receive Data Ready interrupt enable */
+ #define UCR4_TCEN       BIT(3)    /* TX complete interrupt enable */
+ 
+ #define UTS1_TXEMPTY    (1<<6)
+-- 
+2.7.4
 
 
