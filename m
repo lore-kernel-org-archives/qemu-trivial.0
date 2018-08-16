@@ -1,67 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fpxb8-0007z5-FG
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Aug 2018 11:20:34 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35833)
+	id 1fqHPC-0005tu-Nv
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Aug 2018 08:29:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42556)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hans-erik.floryd@rt-labs.com>) id 1fpwHW-0006Hx-FP
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2018 09:56:15 -0400
+	(envelope-from <hans-erik.floryd@rt-labs.com>) id 1fqHPA-0005sX-Gl
+	for qemu-trivial@nongnu.org; Thu, 16 Aug 2018 08:29:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hans-erik.floryd@rt-labs.com>) id 1fpwHS-0003xF-Ud
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2018 09:56:14 -0400
-Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:42987)
+	(envelope-from <hans-erik.floryd@rt-labs.com>) id 1fqHP4-0008FJ-QY
+	for qemu-trivial@nongnu.org; Thu, 16 Aug 2018 08:29:32 -0400
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:34445)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <hans-erik.floryd@rt-labs.com>)
-	id 1fpwHS-0003pE-7u
-	for qemu-trivial@nongnu.org; Wed, 15 Aug 2018 09:56:10 -0400
-Received: by mail-lf1-x143.google.com with SMTP id 95-v6so931054lfy.9
-	for <qemu-trivial@nongnu.org>; Wed, 15 Aug 2018 06:56:09 -0700 (PDT)
+	id 1fqHOz-00088Z-5O
+	for qemu-trivial@nongnu.org; Thu, 16 Aug 2018 08:29:24 -0400
+Received: by mail-lj1-x244.google.com with SMTP id f8-v6so3519759ljk.1
+	for <qemu-trivial@nongnu.org>; Thu, 16 Aug 2018 05:29:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=rt-labs-com.20150623.gappssmtp.com; s=20150623;
 	h=from:to:cc:subject:date:message-id;
-	bh=Kb7aWsu8zS2IOeSg5ko2TIUgTzGM9dkgU/rT5SsqMLM=;
-	b=MhD4+XCQj0BrIes7LClbQxbrP/ngDMfp7Rbizj13fpbfCB6EIsrEe+IgmXzeYpMfYn
-	OHsPCJ388iy5hr8CcZ4sLTo5fZzwC29EwrYSZ3mbZLRe7us1EQKe/fGcIaEBDzqFfps0
-	MyceSAVmvI9x0GXfnLzcYGLRlgE3/vM9T8NaYuvuSYh2o//TXi53MPqyffcZqCoJ4KP/
-	7qjfsBLfoVBk2YM7qWs2tmap6Dudd3FbGUPvuDipesLjc80oVj4Tbkp/3K9qL5QL6dXd
-	wYHIJaxI29lml0wli9dv6uZIGP8hMUAn2KpRlDWNLgXg+mprN13I6XcIQrte9c7nsJvA
-	nv3Q==
+	bh=W8XY0EP9ae+WqaLnakGIReV/uWFOMxsmGsoGS45KijM=;
+	b=TvU4MPFneunoS0beW9pDUh0Tlrtbbbk5js02sBWWwdVdMK4Rmc0j7Uxx+x9DtKG3SR
+	BhmneqH1X4oR6pc5KZzFgOquQsRICZXm42A84N5ekbBW8FSZ6jdTNsgpK/oTmrlfQCB9
+	ytGEqrgnOpWsHV9U3MyVWC2Dgj6Y8SC+DXx85sFF8VMVdhCajdhaVz4rS0ZC7h2UZFpa
+	pxgguZMDq30rOgFMhtfKAN8VuNcGPBa38jtIqQVgdBWWn3Pnhpln6lVJy2ZA5oKXZM5Q
+	MG7okCr7iUm7aZGCuSfhTMPwWBj/XLciRuJctihgbBl2WtXJfOMNgQD/Wt5+0r4O91Ih
+	nEow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=Kb7aWsu8zS2IOeSg5ko2TIUgTzGM9dkgU/rT5SsqMLM=;
-	b=kzq7nrVkCdFuXRT5YtkA4Awi68PVmUNdbjdZ2vJ1BrHgr2/KkUXDnh6XaAoXwYsn3V
-	84YpiuTFMdvgK44asscNcpe2n8yWBJDHekbQZMVq3ulevEPMeX/xgu9VBsqxVi+Kov9K
-	x6PPB+YuutYHsPBVziah3B4ZFelYSQs3vXNlFbglvYCzzr3HYLpdLMYIx7lhzTe28IPD
-	8bnITHpAi1mx3FTqrZiGzwoOxVaeXy19dGRMFmZmLkRV+CGwzolM87JSsXZ7beW/aFze
-	QvjL4e0m1jNus2r+j1vMzfVOek1n2T9AoOhFP8yQV+S96OVMu4B1eIFeAoyV2SIAspXQ
-	kwpQ==
-X-Gm-Message-State: AOUpUlFu+/ad5M5i7hWAkSGKtUgF1PaU/14WPwo5oVrCYusriLkKPsNd
-	5Pabn71MGOBxgwZ1PP7nFIxgE2tKSGk=
-X-Google-Smtp-Source: AA+uWPy/wvH3nxdnS9xPg8r1bqFO4rcb0WSLW9R7ujBPx22euIjoVrJcvXEB/K0bPiph1YQVHCOcvw==
-X-Received: by 2002:a19:a705:: with SMTP id
-	q5-v6mr17832662lfe.148.1534341368484; 
-	Wed, 15 Aug 2018 06:56:08 -0700 (PDT)
+	bh=W8XY0EP9ae+WqaLnakGIReV/uWFOMxsmGsoGS45KijM=;
+	b=oR0h/18cCvPtIjZnhduqbMJuMy934uFhT8GGHT/2JOaZ1ghUkzYKVf+g5DMW6iq2mV
+	kFdjYlVKSfCVsEqlRJRm9AHgo4g2zmmIVyoqkG5lYytEa2f9/VbIvPbriWggtJq+qxJH
+	BYFxb0mTxEuC8wwMIEa2cd0Fds3jbdo0t4kxEIhzlixxC08Kx4XT8/LFAvn6ZcqEHyXc
+	gIi5jZ+hMbmXKw2PXVyamfv9Yh27d6TS8VLK8FgwwFwH0SvctFlRqWuNV9tKIedJK7uE
+	/s4r4UZ/ybLwolzhuJpkyDIxqbWz+j3rFzzHjkbyJ6Kn4cd3eC9doSszM4Kwq9NDAAva
+	KjLQ==
+X-Gm-Message-State: AOUpUlEn65Ld/07QQx8gTEvjSx3BOlIT+PZ92Bf0iO9TZhSLx/ThvpPR
+	j2domNx/YOoJSJPJW2MB5tn2zQ0eMjo=
+X-Google-Smtp-Source: AA+uWPyvHeU1yrEHrc5FU6MDmai/UUQIS1iqSaDboTeHRMIqyyQWEBaIzROXL992Lr4KWjTmerwPyA==
+X-Received: by 2002:a2e:91d6:: with SMTP id
+	u22-v6mr20562185ljg.64.1534422554330; 
+	Thu, 16 Aug 2018 05:29:14 -0700 (PDT)
 Received: from rtlap25.rt-labs.intra (h-72-195.A137.corp.bahnhof.se.
 	[212.116.72.195]) by smtp.gmail.com with ESMTPSA id
-	d4-v6sm339900lfc.57.2018.08.15.06.56.07
+	d14-v6sm4314721ljc.56.2018.08.16.05.29.12
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Wed, 15 Aug 2018 06:56:07 -0700 (PDT)
+	Thu, 16 Aug 2018 05:29:13 -0700 (PDT)
 From: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
 To: qemu-trivial@nongnu.org
 Cc: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>,
-	Peter Chubb <peter.chubb@nicta.com.au>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-arm@nongnu.org (open list:i.MX31),
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-devel@nongnu.org (open list:All patches CC here)
-Date: Wed, 15 Aug 2018 15:55:54 +0200
-Message-Id: <1534341354-11956-1-git-send-email-hans-erik.floryd@rt-labs.com>
+Date: Thu, 16 Aug 2018 14:29:00 +0200
+Message-Id: <1534422540-18815-1-git-send-email-hans-erik.floryd@rt-labs.com>
 X-Mailer: git-send-email 2.7.4
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::143
-X-Mailman-Approved-At: Wed, 15 Aug 2018 11:20:33 -0400
-Subject: [Qemu-trivial] [PATCH] imx_serial: Generate interrupt on receive
- data ready if enabled
+X-Received-From: 2a00:1450:4864:20::244
+Subject: [Qemu-trivial] [PATCH] sdhci: add i.MX SD Stable Clock bit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,43 +69,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Aug 2018 13:56:15 -0000
+X-List-Received-Date: Thu, 16 Aug 2018 12:29:33 -0000
 
-Generate an interrupt if USR2_RDR and UCR4_DREN are both set.
+Add the ESDHC PRSSTAT_SDSTB bit, using the value of SDHC_CLOCK_INT_STABLE.
+Freescale recommends checking this bit when changing clock frequency.
 
 Signed-off-by: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
 ---
- hw/char/imx_serial.c         | 3 ++-
- include/hw/char/imx_serial.h | 1 +
- 2 files changed, 3 insertions(+), 1 deletion(-)
+ hw/sd/sdhci-internal.h | 2 ++
+ hw/sd/sdhci.c          | 7 +++++++
+ 2 files changed, 9 insertions(+)
 
-diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
-index 0747db9..1e36319 100644
---- a/hw/char/imx_serial.c
-+++ b/hw/char/imx_serial.c
-@@ -74,8 +74,9 @@ static void imx_update(IMXSerialState *s)
-     mask = (s->ucr1 & UCR1_TXMPTYEN) ? USR2_TXFE : 0;
-     /*
-      * TCEN and TXDC are both bit 3
-+     * RDR and DREN are both bit 0
-      */
--    mask |= s->ucr4 & UCR4_TCEN;
-+    mask |= s->ucr4 & (UCR4_TCEN | UCR4_DREN);
+diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
+index 756ef3f..19665fd 100644
+--- a/hw/sd/sdhci-internal.h
++++ b/hw/sd/sdhci-internal.h
+@@ -302,4 +302,6 @@ extern const VMStateDescription sdhci_vmstate;
+ #define ESDHC_CTRL_4BITBUS              (0x1 << 1)
+ #define ESDHC_CTRL_8BITBUS              (0x2 << 1)
  
-     usr2 = s->usr2 & mask;
++#define ESDHC_PRNSTS_SDSTB              (1 << 3)
++
+ #endif
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 8f58c31..cb82782 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -1651,6 +1651,13 @@ static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
  
-diff --git a/include/hw/char/imx_serial.h b/include/hw/char/imx_serial.h
-index ee80da1..c8b7428 100644
---- a/include/hw/char/imx_serial.h
-+++ b/include/hw/char/imx_serial.h
-@@ -68,6 +68,7 @@
- #define UCR2_RXEN       (1<<1)    /* Receiver enable */
- #define UCR2_SRST       (1<<0)    /* Reset complete */
+         break;
  
-+#define UCR4_DREN       BIT(0)    /* Receive Data Ready interrupt enable */
- #define UCR4_TCEN       BIT(3)    /* TX complete interrupt enable */
- 
- #define UTS1_TXEMPTY    (1<<6)
++    case SDHC_PRNSTS:
++       /* Add SDSTB (SD Clock Stable) bit to PRNSTS */
++       ret = sdhci_read(opaque, offset, size) & ~ESDHC_PRNSTS_SDSTB;
++       if (s->clkcon & SDHC_CLOCK_INT_STABLE)
++          ret |= ESDHC_PRNSTS_SDSTB;
++       break;
++
+     case ESDHC_DLL_CTRL:
+     case ESDHC_TUNE_CTRL_STATUS:
+     case ESDHC_UNDOCUMENTED_REG27:
 -- 
 2.7.4
 
