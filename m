@@ -1,63 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fqizD-0008U9-AR
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Aug 2018 13:56:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47287)
+	id 1fqrQU-0007Vm-HF
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Aug 2018 22:57:18 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59522)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <hans-erik.floryd@rt-labs.com>) id 1fqizB-0008So-7u
-	for qemu-trivial@nongnu.org; Fri, 17 Aug 2018 13:56:33 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fqrQQ-0007U7-6C
+	for qemu-trivial@nongnu.org; Fri, 17 Aug 2018 22:57:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <hans-erik.floryd@rt-labs.com>) id 1fqizA-0000jp-CJ
-	for qemu-trivial@nongnu.org; Fri, 17 Aug 2018 13:56:33 -0400
-Received: from mail-it0-x22a.google.com ([2607:f8b0:4001:c0b::22a]:33613)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fqrQP-0002Qq-BV
+	for qemu-trivial@nongnu.org; Fri, 17 Aug 2018 22:57:14 -0400
+Received: from mail-vk0-x244.google.com ([2607:f8b0:400c:c05::244]:39808)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <hans-erik.floryd@rt-labs.com>)
-	id 1fqizA-0000j8-3Z
-	for qemu-trivial@nongnu.org; Fri, 17 Aug 2018 13:56:32 -0400
-Received: by mail-it0-x22a.google.com with SMTP id d16-v6so2176854itj.0
-	for <qemu-trivial@nongnu.org>; Fri, 17 Aug 2018 10:56:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=rt-labs-com.20150623.gappssmtp.com; s=20150623;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=hkUwKpDWlk58n73TR0A/zAPMtfYVbKD8XVS0OzXthNA=;
-	b=YxkRy8c+KXFaoMw8UE/L9/2QLEoraw1T9xGz6FcmsW+31FOZlAFRnC3DVwhieDrHrX
-	v+Vff5wL8UjXxl1KhhfHa6iT0cVwStMbNv8h8PjJHFp/hsdN75uUpVJtW6CMXHf3heb8
-	/WLBRqVKyCywzBxQCrbn4RyNQyiitAL3rgyGBb5541bBd7G9rAXffw3u5rS8M7YI28ci
-	pw3Q4JOXFXWISzF1R1tY8YyWvtDo2EsdvqErMeBFAXTylitkF2jrI9skdD8ccYuYZZ8g
-	+tgHSp/BWZd3DWmSnad2KMNLMwBEAczkYmotrPuVQFAe9piDfjoET9uXFm42Bggzgt+Q
-	yLrQ==
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1fqrQJ-0002ML-Br; Fri, 17 Aug 2018 22:57:07 -0400
+Received: by mail-vk0-x244.google.com with SMTP id e139-v6so4101959vkf.6;
+	Fri, 17 Aug 2018 19:57:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=zZp8sws8Jom7wHnaY9m6i2pwewPlZSa16z6KmBFeE00=;
+	b=Cz2YvptXJ0CgTkOdDxMNcaG6FljIhr1QPm5KRxgrdI9AqmsODb4UkS8JcPDeYDcQGX
+	QFi1z+CWC/7N1ohfo52omgC+mU9zOKoREEnXXrGdr+7w4IcBmkqQ0VqeUpReTRq/9Yga
+	7VfzEQLAh5CgzhoRJ1h6ATkFYS6ekS1uRXzjcr1fuZoWFKsEc/w1c9VSZ7u/jWaPO1Ij
+	GeCf07VPZSIJ/HRswxL02SWVeiDRjvTH9KinV7teUO6/a2iFw7trSzwXnLw61kH8plyO
+	rsW9bVVUHYSZC1OnDVypzgZQIBZzC/hG6Hebndt14u2LVWgQOzwOKSGiUtLlTgZZsEZx
+	7+3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=hkUwKpDWlk58n73TR0A/zAPMtfYVbKD8XVS0OzXthNA=;
-	b=qlBgNeAXqtqrDw/5kEIq3SUakczAcE+vQLIhNwu0bAicMvutEs94inetDhEz79PKzw
-	d5kAgVSEyel6jiRfTIszIjOumWgu534BhWw6JK/6GiOac6EPfCzXTdzPezsmluiqnEc/
-	kbYyCS3qzkFD84KILl09vUGzITm6Rq4UsIcvfk8BBwz8OS7XVWqwLIrHkF+4BEMeOTVF
-	8I2388KM+vsg80JT5EmLIaY3hqbDghvadM1UyBbKQERr7no5t/3+iJayyhQ3oQMWt7hO
-	HG2eX75vHrSBSVpl7YGZwaRNfxwekMuR/4gu9Fs6WHZIgfVvU7Nd3nBKL/DafFyOoA+I
-	pJ/w==
-X-Gm-Message-State: AOUpUlHnLdBvzFFYt22mlvjCDiKISdGn1ziXAgq3lvaj+hmkmqxZhaMw
-	GDPicMSJl1JxRS5nCtUoIOPLDteNMQGqxQRjwGI4sg==
-X-Google-Smtp-Source: AA+uWPxmzOwYAUz8CFy+7iKWAQ32oIuI2VmRpeFQoBlRwaHtUtsYS2UpK+vcljqx2uOQnFVG+Pzi9LLxPG30pVtqoQI=
-X-Received: by 2002:a24:aa08:: with SMTP id b8-v6mr5152046itf.49.1534528590830;
-	Fri, 17 Aug 2018 10:56:30 -0700 (PDT)
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=zZp8sws8Jom7wHnaY9m6i2pwewPlZSa16z6KmBFeE00=;
+	b=Lqe7SCTk4mSSuQaXFdhgqzqZjz0sMFq2TG+QL1MYXKdbB/gX92MNRmv3To1loHkBDt
+	8wX0YXlXFTTjvD2QBsrVEshII8oG/MgA+EmUmwTJiurtRI3jQmR0j3mt2ON0n1Rml7T7
+	UkryRKSZRLDnqs8gS41BMcdtt6LTnJebD79LANod/Mp36AKGkUQz6HomFBloyRxiUDev
+	+sWjNVxX8y5zjJcNxVcTGluHgE1WOFq+L38zV1Tc+Po/LxttOb97deZu/zBUDdwBHJeO
+	yXKuZ9RjNJvMZLN4ekUxYSZbYLYzhfZBafQBsfD3bb/Kj1ZKN6MrkQwUYkI6EdYfWBhS
+	f9ew==
+X-Gm-Message-State: AOUpUlFi4JMkQnnYV9/UtMomEhbxbYU3NusYVu73T2ot+SNfKDO9JAIO
+	tj83Io/ZnmYIYX/15/pMZDI=
+X-Google-Smtp-Source: AA+uWPzjFJuf/wyWvJm+j1m7sxloyyiIW+zfS+vMCNuifap/ONg7sg2/W9fzxHsGpWk7l28JyfGSKg==
+X-Received: by 2002:a1f:b60f:: with SMTP id
+	g15-v6mr24603054vkf.27.1534561026922; 
+	Fri, 17 Aug 2018 19:57:06 -0700 (PDT)
+Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
+	j7-v6sm1383374vka.43.2018.08.17.19.57.03
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 17 Aug 2018 19:57:06 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Juan Quintela <quintela@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	David Hildenbrand <david@redhat.com>, Howard Spoelstra <hsp.cat7@gmail.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Fri, 17 Aug 2018 23:56:53 -0300
+Message-Id: <20180818025653.21192-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <1534507843-4251-1-git-send-email-hans-erik.floryd@rt-labs.com>
-	<CAFEAcA_Ki4Sqke3qExAihjx+x9XpX2e6DJG0ua-VEvdes_gKBw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_Ki4Sqke3qExAihjx+x9XpX2e6DJG0ua-VEvdes_gKBw@mail.gmail.com>
-From: Hans-Erik Floryd <hans-erik.floryd@rt-labs.com>
-Date: Fri, 17 Aug 2018 19:56:20 +0200
-Message-ID: <CADS1RdSn1rVnXbWxB6+DmMOEgEsCLA-ZX3tZBA9FXWoAFsegPg@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	"open list:All patches CC here" <qemu-devel@nongnu.org>
-Content-Type: multipart/alternative; boundary="0000000000008df7200573a5476c"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4001:c0b::22a
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] sdhci: add i.MX SD
- Stable Clock bit
+X-Received-From: 2607:f8b0:400c:c05::244
+Subject: [Qemu-trivial] [PATCH] migration: Replace strncpy() by g_strlcpy()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,44 +76,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Aug 2018 17:56:34 -0000
+X-List-Received-Date: Sat, 18 Aug 2018 02:57:17 -0000
 
---0000000000008df7200573a5476c
-Content-Type: text/plain; charset="UTF-8"
+Fedora 29 comes with GCC 8.1 which added the 'stringop-truncation' checks.
 
-Den fre 17 aug 2018 19:51Peter Maydell <peter.maydell@linaro.org> skrev
+Replace the strncpy() calls by g_strlcpy() to avoid the following warning:
 
-> (Your indentation was off-by-one -- we use 4-space indent -- but I fixed
-> that.)
+  migration/global_state.c: In function 'global_state_store_running':
+  migration/global_state.c:45:5: error: 'strncpy' specified bound 100 equals destination size [-Werror=stringop-truncation]
+       strncpy((char *)global_state.runstate,
+       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+              state, sizeof(global_state.runstate));
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--- PMM
->
+Reported-by: Howard Spoelstra <hsp.cat7@gmail.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+See http://lists.nongnu.org/archive/html/qemu-devel/2018-07/msg03723.html
 
-Thanks! I think i fixed that in a new patch so please ignore v3.
+ migration/global_state.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-/Hans-Erik Floryd
+diff --git a/migration/global_state.c b/migration/global_state.c
+index 8e8ab5c51e..d5df502cd5 100644
+--- a/migration/global_state.c
++++ b/migration/global_state.c
+@@ -42,7 +42,7 @@ int global_state_store(void)
+ void global_state_store_running(void)
+ {
+     const char *state = RunState_str(RUN_STATE_RUNNING);
+-    strncpy((char *)global_state.runstate,
++    g_strlcpy((char *)global_state.runstate,
+            state, sizeof(global_state.runstate));
+ }
+ 
+-- 
+2.18.0
 
->
-
---0000000000008df7200573a5476c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr">=
-Den fre 17 aug 2018 19:51Peter Maydell &lt;<a href=3D"mailto:peter.maydell@=
-linaro.org">peter.maydell@linaro.org</a>&gt; skrev</div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
-ing-left:1ex">
-(Your indentation was off-by-one -- we use 4-space indent -- but I fixed th=
-at.)</blockquote></div></div><div dir=3D"auto"><div class=3D"gmail_quote"><=
-blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px=
- #ccc solid;padding-left:1ex">
--- PMM<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"=
-auto">Thanks! I think i fixed that in a new patch so please ignore v3.</div=
-><div dir=3D"auto"><br></div><div dir=3D"auto">/Hans-Erik Floryd</div><div =
-dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" s=
-tyle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
-</blockquote></div></div></div>
-
---0000000000008df7200573a5476c--
 
