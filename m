@@ -1,62 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fqrQU-0007Vm-HF
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Aug 2018 22:57:18 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59522)
+	id 1fqrUv-00012j-0m
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Aug 2018 23:01:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60408)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fqrQQ-0007U7-6C
-	for qemu-trivial@nongnu.org; Fri, 17 Aug 2018 22:57:17 -0400
+	id 1fqrUs-00012b-TQ
+	for qemu-trivial@nongnu.org; Fri, 17 Aug 2018 23:01:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fqrQP-0002Qq-BV
-	for qemu-trivial@nongnu.org; Fri, 17 Aug 2018 22:57:14 -0400
-Received: from mail-vk0-x244.google.com ([2607:f8b0:400c:c05::244]:39808)
+	id 1fqrUn-0004dV-V2
+	for qemu-trivial@nongnu.org; Fri, 17 Aug 2018 23:01:50 -0400
+Received: from mail-vk0-x244.google.com ([2607:f8b0:400c:c05::244]:46286)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1fqrQJ-0002ML-Br; Fri, 17 Aug 2018 22:57:07 -0400
-Received: by mail-vk0-x244.google.com with SMTP id e139-v6so4101959vkf.6;
-	Fri, 17 Aug 2018 19:57:07 -0700 (PDT)
+	id 1fqrPq-00026Y-W8; Fri, 17 Aug 2018 22:56:39 -0400
+Received: by mail-vk0-x244.google.com with SMTP id b14-v6so4108420vke.13;
+	Fri, 17 Aug 2018 19:56:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=sender:from:to:cc:subject:date:message-id:mime-version
 	:content-transfer-encoding;
-	bh=zZp8sws8Jom7wHnaY9m6i2pwewPlZSa16z6KmBFeE00=;
-	b=Cz2YvptXJ0CgTkOdDxMNcaG6FljIhr1QPm5KRxgrdI9AqmsODb4UkS8JcPDeYDcQGX
-	QFi1z+CWC/7N1ohfo52omgC+mU9zOKoREEnXXrGdr+7w4IcBmkqQ0VqeUpReTRq/9Yga
-	7VfzEQLAh5CgzhoRJ1h6ATkFYS6ekS1uRXzjcr1fuZoWFKsEc/w1c9VSZ7u/jWaPO1Ij
-	GeCf07VPZSIJ/HRswxL02SWVeiDRjvTH9KinV7teUO6/a2iFw7trSzwXnLw61kH8plyO
-	rsW9bVVUHYSZC1OnDVypzgZQIBZzC/hG6Hebndt14u2LVWgQOzwOKSGiUtLlTgZZsEZx
-	7+3A==
+	bh=mwukKB2k9Hc61r4rHdDPMorA0V40PztPxwhrjrUbbrY=;
+	b=jUGL/eClHjzoot+C7tw9sgylwu4h17HubGbV3HD/6j+oybCQhThO4NxbvbqVYF1uOP
+	3RqKCSYV4mULcSccBHT56GKWsY06qJJ3C0hApDKugk7gjDvNkXsJw610uzbN5U6gzKdv
+	M+jYEq+HB/yDvhuf41cg3DKkWAHLRS24NC/Ev1RYmaAYUSsc69TrmdejGvnl89sGglhs
+	WpRVucZXRM3UllgYNRvygadTWTpORabljr6Zu29HXJz1wZ2UIFgsmeSCNYdOPrJ2y8lc
+	RjnDF5NK1OkMTyvcukRKq9IozzRNwrCf9PMnuvl4EeINCPWBcTMIYS2vBB5E1Jga9HN+
+	y3EA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
 	:mime-version:content-transfer-encoding;
-	bh=zZp8sws8Jom7wHnaY9m6i2pwewPlZSa16z6KmBFeE00=;
-	b=Lqe7SCTk4mSSuQaXFdhgqzqZjz0sMFq2TG+QL1MYXKdbB/gX92MNRmv3To1loHkBDt
-	8wX0YXlXFTTjvD2QBsrVEshII8oG/MgA+EmUmwTJiurtRI3jQmR0j3mt2ON0n1Rml7T7
-	UkryRKSZRLDnqs8gS41BMcdtt6LTnJebD79LANod/Mp36AKGkUQz6HomFBloyRxiUDev
-	+sWjNVxX8y5zjJcNxVcTGluHgE1WOFq+L38zV1Tc+Po/LxttOb97deZu/zBUDdwBHJeO
-	yXKuZ9RjNJvMZLN4ekUxYSZbYLYzhfZBafQBsfD3bb/Kj1ZKN6MrkQwUYkI6EdYfWBhS
-	f9ew==
-X-Gm-Message-State: AOUpUlFi4JMkQnnYV9/UtMomEhbxbYU3NusYVu73T2ot+SNfKDO9JAIO
-	tj83Io/ZnmYIYX/15/pMZDI=
-X-Google-Smtp-Source: AA+uWPzjFJuf/wyWvJm+j1m7sxloyyiIW+zfS+vMCNuifap/ONg7sg2/W9fzxHsGpWk7l28JyfGSKg==
-X-Received: by 2002:a1f:b60f:: with SMTP id
-	g15-v6mr24603054vkf.27.1534561026922; 
-	Fri, 17 Aug 2018 19:57:06 -0700 (PDT)
+	bh=mwukKB2k9Hc61r4rHdDPMorA0V40PztPxwhrjrUbbrY=;
+	b=pq2AjA5yrkBTwrHKRcKkNYybKmNssWUF/yEjRcCPKiRCiGmpVxUtssuavVYsxS/5vo
+	57/pVwea8VT7zqgtOSfbDVSMaHfNXsKP1lpTiSbxGfe3hL15Kpn3kP9q0mSeYLPX2wan
+	GcmCNmwmQNQJBr5zMX3/PQ/cah17VxHO7vt10TghIegt3FrQ/B3iX7K0PaRQj10qcgW+
+	38NmZH6dQAFVsfuDEa7ST4qYBQkV3fzBn9/QJN4GXiFv6Zu5vUsfgOwVpG3pwJb753yR
+	O2RKbWCBjhKgau/HgarmD9fwQf+2yGD+dzHZiatDrhV9vttI+ikjqn4LGUEF4a9rth7P
+	wQ9g==
+X-Gm-Message-State: AOUpUlHVVQIBxor/ZiJIr0cshMN/6AL1aWRaGqbzELym9ZjjOjlbE2gm
+	NCsNxMk6vCVTGPn7luybmR4=
+X-Google-Smtp-Source: AA+uWPxs+KYkOQPXCKfD9MybeEAk9kocrn3DhRTQLDuuOuvTnhuIHtiWUo+CtBUwV+knvPZDvVc9IA==
+X-Received: by 2002:a1f:284:: with SMTP id 126-v6mr302192vkc.14.1534560998236; 
+	Fri, 17 Aug 2018 19:56:38 -0700 (PDT)
 Received: from x1.local ([138.117.48.222]) by smtp.gmail.com with ESMTPSA id
-	j7-v6sm1383374vka.43.2018.08.17.19.57.03
+	p48-v6sm692025uad.7.2018.08.17.19.56.33
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 17 Aug 2018 19:57:06 -0700 (PDT)
+	Fri, 17 Aug 2018 19:56:37 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
 	<philippe.mathieu.daude@gmail.com>
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: Juan Quintela <quintela@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	David Hildenbrand <david@redhat.com>, Howard Spoelstra <hsp.cat7@gmail.com>
+To: David Hildenbrand <david@redhat.com>,
+	Howard Spoelstra <hsp.cat7@gmail.com>,
+	Hitoshi Mitake <mitake.hitoshi@lab.ntt.co.jp>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Fri, 17 Aug 2018 23:56:53 -0300
-Message-Id: <20180818025653.21192-1-f4bug@amsat.org>
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Liu Yuan <namei.unix@gmail.com>, Jeff Cody <jcody@redhat.com>,
+	Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
+	qemu-block@nongnu.org (open list:Sheepdog),
+	sheepdog@lists.wpkg.org (open list:Sheepdog)
+Date: Fri, 17 Aug 2018 23:56:00 -0300
+Message-Id: <20180818025600.21132-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -64,7 +67,7 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:400c:c05::244
-Subject: [Qemu-trivial] [PATCH] migration: Replace strncpy() by g_strlcpy()
+Subject: [Qemu-trivial] [PATCH] sheepdog: Replace strncpy() by g_strlcpy()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,40 +79,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 18 Aug 2018 02:57:17 -0000
+X-List-Received-Date: Sat, 18 Aug 2018 03:01:51 -0000
 
 Fedora 29 comes with GCC 8.1 which added the 'stringop-truncation' checks.
 
 Replace the strncpy() calls by g_strlcpy() to avoid the following warning:
 
-  migration/global_state.c: In function 'global_state_store_running':
-  migration/global_state.c:45:5: error: 'strncpy' specified bound 100 equals destination size [-Werror=stringop-truncation]
-       strncpy((char *)global_state.runstate,
-       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-              state, sizeof(global_state.runstate));
-              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  block/sheepdog.c: In function 'find_vdi_name':
+  block/sheepdog.c:1239:5: error: 'strncpy' specified bound 256 equals
+  destination size [-Werror=stringop-truncation]
+       strncpy(buf + SD_MAX_VDI_LEN, tag, SD_MAX_VDI_TAG_LEN);
+       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Reported-by: Howard Spoelstra <hsp.cat7@gmail.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
 See http://lists.nongnu.org/archive/html/qemu-devel/2018-07/msg03723.html
 
- migration/global_state.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ block/sheepdog.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/migration/global_state.c b/migration/global_state.c
-index 8e8ab5c51e..d5df502cd5 100644
---- a/migration/global_state.c
-+++ b/migration/global_state.c
-@@ -42,7 +42,7 @@ int global_state_store(void)
- void global_state_store_running(void)
- {
-     const char *state = RunState_str(RUN_STATE_RUNNING);
--    strncpy((char *)global_state.runstate,
-+    g_strlcpy((char *)global_state.runstate,
-            state, sizeof(global_state.runstate));
- }
+diff --git a/block/sheepdog.c b/block/sheepdog.c
+index b229a664d9..5dc3d0c39e 100644
+--- a/block/sheepdog.c
++++ b/block/sheepdog.c
+@@ -1224,19 +1224,19 @@ static int find_vdi_name(BDRVSheepdogState *s, const char *filename,
+     SheepdogVdiReq hdr;
+     SheepdogVdiRsp *rsp = (SheepdogVdiRsp *)&hdr;
+     unsigned int wlen, rlen = 0;
+-    char buf[SD_MAX_VDI_LEN + SD_MAX_VDI_TAG_LEN];
++    /* Ensures that the buffer is zero-filled,
++     * which is desirable since we'll soon be sending those bytes, and
++     * don't want the send_req to read uninitialized data.
++     */
++    char buf[SD_MAX_VDI_LEN + SD_MAX_VDI_TAG_LEN] = { };
  
+     fd = connect_to_sdog(s, errp);
+     if (fd < 0) {
+         return fd;
+     }
+ 
+-    /* This pair of strncpy calls ensures that the buffer is zero-filled,
+-     * which is desirable since we'll soon be sending those bytes, and
+-     * don't want the send_req to read uninitialized data.
+-     */
+-    strncpy(buf, filename, SD_MAX_VDI_LEN);
+-    strncpy(buf + SD_MAX_VDI_LEN, tag, SD_MAX_VDI_TAG_LEN);
++    g_strlcpy(buf, filename, SD_MAX_VDI_LEN);
++    g_strlcpy(buf + SD_MAX_VDI_LEN, tag, SD_MAX_VDI_TAG_LEN);
+ 
+     memset(&hdr, 0, sizeof(hdr));
+     if (lock) {
 -- 
 2.18.0
 
