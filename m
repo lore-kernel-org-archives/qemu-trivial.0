@@ -1,68 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1frjDD-0005Du-69
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Aug 2018 08:23:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48311)
+	id 1frjNY-00035X-UQ
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Aug 2018 08:33:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41211)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marko.klopcic@isystem.si>) id 1fri5M-0007Cp-3C
-	for qemu-trivial@nongnu.org; Mon, 20 Aug 2018 07:11:00 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1frjNW-000354-He
+	for qemu-trivial@nongnu.org; Mon, 20 Aug 2018 08:33:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marko.klopcic@isystem.si>) id 1fri5I-0001A9-Tj
-	for qemu-trivial@nongnu.org; Mon, 20 Aug 2018 07:11:00 -0400
-Received: from mail-wm0-x242.google.com ([2a00:1450:400c:c09::242]:36110)
+	(envelope-from <peter.maydell@linaro.org>) id 1frjNV-0001SI-I9
+	for qemu-trivial@nongnu.org; Mon, 20 Aug 2018 08:33:50 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:44205)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <marko.klopcic@isystem.si>)
-	id 1fri5I-00019l-Je
-	for qemu-trivial@nongnu.org; Mon, 20 Aug 2018 07:10:56 -0400
-Received: by mail-wm0-x242.google.com with SMTP id w24-v6so13438075wmc.1
-	for <qemu-trivial@nongnu.org>; Mon, 20 Aug 2018 04:10:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=isystem-si.20150623.gappssmtp.com; s=20150623;
-	h=from:subject:to:cc:message-id:date:user-agent:mime-version
-	:content-language:content-transfer-encoding;
-	bh=eTqYZf1VQ8w0alLr3dlFBYin3ZtdWr3RXKfk3Lay7i4=;
-	b=ADz5HcwmNMvdBvok2EtAh3tvJjbQvi3xAwaNmcPcNoyTL0mwLjY75qlLMa4zLU4vM+
-	skw2Ki6tq595CRYg8tYuK+20t7/1MfZ/bpFxXe3dMfldBqevaExGeEOeR2WV1mHbzeiZ
-	QVbJJmKjFDWJcP1F8IFkk6L9NF5gvYohK5OoXhAi49WrOZEKDdWerGLXDdq4JjVtCTr4
-	PlAN28+fXQUGeMSBrmSp0Z4ajUKsVnPD19Anyli3oiog/P9VOKe5wEgGiOoWIIWYrdAY
-	LV6cgeNx3da+IaGkRVPH6/BLBQiWCDRcIpPuSubPtGSBJ82bYPG6xLuS3ln6d5hh8IOD
-	fDXQ==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1frjNV-0001RN-1U
+	for qemu-trivial@nongnu.org; Mon, 20 Aug 2018 08:33:49 -0400
+Received: by mail-oi0-x243.google.com with SMTP id s198-v6so25448433oih.11
+	for <qemu-trivial@nongnu.org>; Mon, 20 Aug 2018 05:33:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=FjlDf/RK86IeMREsWUJYw4jAJTmNiTkSUp4Lp8LOf2I=;
+	b=KgNmd/M/uPoMFLcJuHY3HfO3A320UstWLHGw80odEzEDkJcgVrKdSHSkxXKzzP2DqM
+	zH8tqh8upUBPUV/44IzKCCA1rHhBVK+6hZKPdZssfKxe3TUJUUQ+I2mhzyecBh8OYDfs
+	X4PsI973ai7r6uupDb3HGFB8Ouy3keGG97+iA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:subject:to:cc:message-id:date:user-agent
-	:mime-version:content-language:content-transfer-encoding;
-	bh=eTqYZf1VQ8w0alLr3dlFBYin3ZtdWr3RXKfk3Lay7i4=;
-	b=QVlMLFZPk53cIyNuhRI5WIpC4YB2H/sSoxiU0TW8m4Zs/iPrETF6LHATKz/Msyg+gI
-	39T12hMiznIESPSZF7qJ7iYvK62+yb0fw11719aYXePEwsbK+Bd4B0md81XzaEH8USpe
-	zjO43JvJTO41UdZzjLJ5fa+Z2Edp5jFyKgNCj/dQ3JtLri6RiJo6l40RLql782HbKHBO
-	S6/58lYb3zcNOfeEXy0u0CN54OP6TvOdXJtMA1077UeWQ1djx8B5fXKnQOFdvAZvNsL2
-	UIZgWPTo8qAsl7QeAdSfBxo7ixRDOv62QXPQP9aGMkNdmPACTHtNTFUEIvPb71//ZGek
-	iuUQ==
-X-Gm-Message-State: AOUpUlE1zBdWWr7u6T3vgiVZUCXEArEB9z9Vnd0PESq3pf684YM9xbvG
-	zSAu5ITih7uP7z86WldBLddzdw==
-X-Google-Smtp-Source: AA+uWPzegiPNde5zSHI/t3l7h7RdjhwcdjlXQA+AJM+py8G8TVdWX/xY/agyg7NrdYBO4/W+lqiLlg==
-X-Received: by 2002:a1c:55c2:: with SMTP id
-	j185-v6mr26037488wmb.104.1534763455048; 
-	Mon, 20 Aug 2018 04:10:55 -0700 (PDT)
-Received: from [10.1.2.132] ([77.94.130.182]) by smtp.gmail.com with ESMTPSA id
-	m207-v6sm12468099wma.31.2018.08.20.04.10.54
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 20 Aug 2018 04:10:54 -0700 (PDT)
-From: Marko Klopcic <marko.klopcic@isystem.si>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, mjt@tls.msk.ru
-Message-ID: <2edf4dc3-5cc2-c3f3-fd40-7901e2c06413@isystem.si>
-Date: Mon, 20 Aug 2018 13:10:53 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=FjlDf/RK86IeMREsWUJYw4jAJTmNiTkSUp4Lp8LOf2I=;
+	b=kBVPbfJWbFD1AmJeEMZgrlAGHMqUrMEhTfHA61BT8IC4U0XsqV900QjkzQMucE0w8f
+	WzijjWcfDFc73zFU2uAixhDjBOEw+EzIXudnzs/yONKvAUrV+AsthmYcwOveKecc0wC/
+	X69l6yQeJpDRQdUiyTmS+iKR0XJbtmlf5u4FS4QfxUm+oHH6l6uOnG1+07u4fqhEW7bI
+	0MElnCLPwafS+8H4dqVnW+EJnBAOgdzBuNraDc1fL7UiWgU5W55XV0IW5Xy+IWomg87Y
+	m2DWTwzayHeVNTrENQZ2MKLC6Zj5GbI09vGZuB1k9hwlIlez9ClQ4QgRPBFvTXRuuz4G
+	Kqpw==
+X-Gm-Message-State: AOUpUlFMu0fCzvqU6yYXniCVHCEx5AFPqpbOR3gWx3ROxHnQmfPyaKjk
+	iESdUdnu1HlJLBN1ZPeds8+IVf5FqBL71/QDzsU1xg==
+X-Google-Smtp-Source: AA+uWPxIcIo2dsnn/k1y826IxrV298Ofjz2lxoVdCo2zefNIw1ZNvcUXGAP9oZZHyYZNQrnCVkg5QqZfIAwkkozkVeQ=
+X-Received: by 2002:aca:4204:: with SMTP id
+	p4-v6mr12909190oia.242.1534768428384; 
+	Mon, 20 Aug 2018 05:33:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/html; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Received: by 2002:a9d:5c8a:0:0:0:0:0 with HTTP; Mon, 20 Aug 2018 05:33:28
+	-0700 (PDT)
+In-Reply-To: <2edf4dc3-5cc2-c3f3-fd40-7901e2c06413@isystem.si>
+References: <2edf4dc3-5cc2-c3f3-fd40-7901e2c06413@isystem.si>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 20 Aug 2018 13:33:28 +0100
+Message-ID: <CAFEAcA-gbG0xF3faXZYpkg_OyOyNcPyviDBhytzi1AkUj3FL4w@mail.gmail.com>
+To: Marko Klopcic <marko.klopcic@isystem.si>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:400c:c09::242
-X-Mailman-Approved-At: Mon, 20 Aug 2018 08:23:09 -0400
-Subject: [Qemu-trivial] [PATCH] arm: fix reset operation on netduino2 board.
+X-Received-From: 2607:f8b0:4003:c06::243
+Subject: Re: [Qemu-trivial] [Qemu-arm] [PATCH] arm: fix reset operation on
+ netduino2 board.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,91 +67,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Aug 2018 11:11:01 -0000
+X-List-Received-Date: Mon, 20 Aug 2018 12:33:51 -0000
 
-<html>
-  <head>
+On 20 August 2018 at 12:10, Marko Klopcic <marko.klopcic@isystem.si> wrote:
+> Because roms are located on aliased addresses on netduino2 (Cortex M3,
+> STM32F205), PC and SP are not read from loaded kernel, which means
+> that the first reset fails. This fix adds additional call to reset.
+> See more details in code comment below.
+>
+> Signed-off-by: Marko Klopcic <marko.klopcic@isystem.si>
+>
+> ---
+>  hw/arm/netduino2.c | 27 +++++++++++++++++++++++++++
+>  1 file changed, 27 insertions(+)
+>
+> diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
+> index f936017d4a..a2f102b14b 100644
+> --- a/hw/arm/netduino2.c
+> +++ b/hw/arm/netduino2.c
+> @@ -25,6 +25,7 @@
+>  #include "qemu/osdep.h"
+>  #include "qapi/error.h"
+>  #include "hw/boards.h"
+> +#include "hw/loader.h"
+>  #include "qemu/error-report.h"
+>  #include "hw/arm/stm32f205_soc.h"
+>  #include "hw/arm/arm.h"
+> @@ -39,6 +40,32 @@ static void netduino2_init(MachineState *machine)
+>
+>      armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
+>                         FLASH_SIZE);
+> +
+> +    /*
+> +      The following two calls are a workaround for problem with rom on
+> aliased
+> +      addresses on STM32.
+> +      Kernel is loaded into Rom objects, which are stored in loader.c. Roms
+> +      are copied to memory in:
+> +
+> +      void rom_reset() {
+> +        ...
+> +         cpu_physical_memory_write_rom(rom->as, rom->addr, rom->data,
+> +                                       rom->datasize);
+> +        ...
+> +      }
+> +
+> +      However, since CPU reset is registered BEFORE
+> +      rom_reset(), SP and PC are read from memory BEFORE roms are copied to
+> +      memory. CPU reset also checks Roms for data, so this is normally not
+> a
+> +      problem, but in STM32 PC and SP are read from aliased memory, and
+> these
+> +      memory addresses are not mapped to Roms. Since ROMs are private in
+> +      loader.c the only option to copy Roms to memory is through reset. So
+> we
+> +      first have to register Roms for reset, and then trigger system reset,
+> which
+> +      copies Roms to mem, so that reset vectors are in memory, when
+> +      qemu_system_reset() is called again from main().
+> +     */
+> +    rom_check_and_register_reset();
+> +    qemu_system_reset(SHUTDOWN_CAUSE_NONE);
+>  }
 
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  </head>
-  <body text="#000000" bgcolor="#FFFFFF">
-    <tt>Because roms are located on aliased addresses on netduino2 (</tt><tt><tt>Cortex
-        M3, <br>
-      </tt>STM32F205</tt><tt>), PC and SP are not read from loaded
-      kernel, which means</tt><tt><br>
-    </tt><tt>that the first reset fails. This fix adds additional call
-      to reset.</tt><tt><br>
-    </tt><tt>See more details in code comment below.</tt><tt><br>
-    </tt><tt><br>
-    </tt><tt>Signed-off-by: Marko Klopcic
-      <a class="moz-txt-link-rfc2396E" href="mailto:marko.klopcic@isystem.si">&lt;marko.klopcic@isystem.si&gt;</a></tt><tt><br>
-    </tt><tt><br>
-    </tt><tt>---</tt><tt><br>
-    </tt><tt> hw/arm/netduino2.c | 27 +++++++++++++++++++++++++++</tt><tt><br>
-    </tt><tt> 1 file changed, 27 insertions(+)</tt><tt><br>
-    </tt><tt><br>
-    </tt><tt>diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c</tt><tt><br>
-    </tt><tt>index f936017d4a..a2f102b14b 100644</tt><tt><br>
-    </tt><tt>--- a/hw/arm/netduino2.c</tt><tt><br>
-    </tt><tt>+++ b/hw/arm/netduino2.c</tt><tt><br>
-    </tt><tt>@@ -25,6 +25,7 @@</tt><tt><br>
-    </tt><tt> #include "qemu/osdep.h"</tt><tt><br>
-    </tt><tt> #include "qapi/error.h"</tt><tt><br>
-    </tt><tt> #include "hw/boards.h"</tt><tt><br>
-    </tt><tt>+#include "hw/loader.h"</tt><tt><br>
-    </tt><tt> #include "qemu/error-report.h"</tt><tt><br>
-    </tt><tt> #include "hw/arm/stm32f205_soc.h"</tt><tt><br>
-    </tt><tt> #include "hw/arm/arm.h"</tt><tt><br>
-    </tt><tt>@@ -39,6 +40,32 @@ static void netduino2_init(MachineState
-      *machine)</tt><tt><br>
-    </tt><tt> </tt><tt><br>
-    </tt><tt>     armv7m_load_kernel(ARM_CPU(first_cpu),
-      machine-&gt;kernel_filename,</tt><tt><br>
-    </tt><tt>                        FLASH_SIZE);</tt><tt><br>
-    </tt><tt>+</tt><tt><br>
-    </tt><tt>+    /* </tt><tt><br>
-    </tt><tt>+      The following two calls are a workaround for problem
-      with rom on aliased</tt><tt><br>
-    </tt><tt>+      addresses on STM32.</tt><tt><br>
-    </tt><tt>+      Kernel is loaded into Rom objects, which are stored
-      in loader.c. Roms</tt><tt><br>
-    </tt><tt>+      are copied to memory in:</tt><tt><br>
-    </tt><tt>+      </tt><tt><br>
-    </tt><tt>+      void rom_reset() {</tt><tt><br>
-    </tt><tt>+        ...</tt><tt><br>
-    </tt><tt>+         cpu_physical_memory_write_rom(rom-&gt;as,
-      rom-&gt;addr, rom-&gt;data,</tt><tt><br>
-    </tt><tt>+                                       rom-&gt;datasize);</tt><tt><br>
-    </tt><tt>+        ...</tt><tt><br>
-    </tt><tt>+      }</tt><tt><br>
-    </tt><tt>+</tt><tt><br>
-    </tt><tt>+      However, since CPU reset is registered BEFORE</tt><tt><br>
-    </tt><tt>+      rom_reset(), SP and PC are read from memory BEFORE
-      roms are copied to</tt><tt><br>
-    </tt><tt>+      memory. CPU reset also checks Roms for data, so this
-      is normally not a</tt><tt><br>
-    </tt><tt>+      problem, but in STM32 PC and SP are read from
-      aliased memory, and these</tt><tt><br>
-    </tt><tt>+      memory addresses are not mapped to Roms. Since ROMs
-      are private in</tt><tt><br>
-    </tt><tt>+      loader.c the only option to copy Roms to memory is
-      through reset. So we</tt><tt><br>
-    </tt><tt>+      first have to register Roms for reset, and then
-      trigger system reset, which</tt><tt><br>
-    </tt><tt>+      copies Roms to mem, so that reset vectors are in
-      memory, when</tt><tt><br>
-    </tt><tt>+      qemu_system_reset() is called again from main().</tt><tt><br>
-    </tt><tt>+     */</tt><tt><br>
-    </tt><tt>+    rom_check_and_register_reset();</tt><tt><br>
-    </tt><tt>+    qemu_system_reset(SHUTDOWN_CAUSE_NONE);</tt><tt><br>
-    </tt><tt> }</tt><tt><br>
-    </tt><tt> </tt><tt><br>
-    </tt><tt> static void netduino2_machine_init(MachineClass *mc)</tt><tt><br>
-    </tt><tt>-- </tt><tt><br>
-    </tt><tt>2.14.1</tt><tt><br>
-    </tt><tt><br>
-    </tt><tt><br>
-    </tt>
-  </body>
-</html>
+I agree that this is a bug, but I think this is not the right way
+to fix it, as it is not specific to this particular board. We need
+to either somehow ensure the reset order between the rom code
+and the Arm CPU reset is enforced, or change how we do the SP/PC
+load on reset of an M-profile core.
+
+thanks
+-- PMM
 
