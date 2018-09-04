@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fx8xp-0007gI-9B
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Sep 2018 06:53:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46500)
+	id 1fx92j-0004H6-8X
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Sep 2018 06:58:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47645)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fx8xn-0007bd-7X
-	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 06:53:39 -0400
+	(envelope-from <thuth@redhat.com>) id 1fx92h-0004Fy-Ei
+	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 06:58:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fx8xm-0003fr-9C
-	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 06:53:39 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34264 helo=mx1.redhat.com)
+	(envelope-from <thuth@redhat.com>) id 1fx92g-0006jN-KQ
+	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 06:58:43 -0400
+Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34640 helo=mx1.redhat.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fx8xh-0003de-PX; Tue, 04 Sep 2018 06:53:33 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.6])
+	id 1fx92c-0006hG-3T; Tue, 04 Sep 2018 06:58:38 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+	[10.11.54.5])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 530164023820;
-	Tue,  4 Sep 2018 10:53:33 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id A10154023827;
+	Tue,  4 Sep 2018 10:58:37 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-20.ams2.redhat.com [10.36.116.20])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8B20B2166BA1;
-	Tue,  4 Sep 2018 10:53:31 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>,
-	QEMU Developers <qemu-devel@nongnu.org>
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 44F9D63AD5;
+	Tue,  4 Sep 2018 10:58:34 +0000 (UTC)
+To: =?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>
+Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+	qemu-devel@nongnu.org
 References: <1536044538-22507-1-git-send-email-thuth@redhat.com>
-	<CAFEAcA8uVksn0w5Z6WBS8jXc8KtZjMgNuTk+TOPtsVgnXK4C0A@mail.gmail.com>
+	<20180904104333.GC22349@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -71,21 +71,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <ed01225b-b948-9429-a2d7-f9a5095499de@redhat.com>
-Date: Tue, 4 Sep 2018 12:53:29 +0200
+Message-ID: <b2038979-044f-5a98-e130-8cbadd02489d@redhat.com>
+Date: Tue, 4 Sep 2018 12:58:33 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8uVksn0w5Z6WBS8jXc8KtZjMgNuTk+TOPtsVgnXK4C0A@mail.gmail.com>
+In-Reply-To: <20180904104333.GC22349@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.6
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.11.55.6]);
-	Tue, 04 Sep 2018 10:53:33 +0000 (UTC)
+	Tue, 04 Sep 2018 10:58:37 +0000 (UTC)
 X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Tue, 04 Sep 2018 10:53:33 +0000 (UTC) for IP:'10.11.54.6'
-	DOMAIN:'int-mx06.intmail.prod.int.rdu2.redhat.com'
+	Tue, 04 Sep 2018 10:58:37 +0000 (UTC) for IP:'10.11.54.5'
+	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
 	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
@@ -103,10 +103,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Sep 2018 10:53:40 -0000
+X-List-Received-Date: Tue, 04 Sep 2018 10:58:44 -0000
 
-On 2018-09-04 12:35, Peter Maydell wrote:
-> On 4 September 2018 at 08:02, Thomas Huth <thuth@redhat.com> wrote:
+On 2018-09-04 12:43, Daniel P. Berrang=C3=A9 wrote:
+> On Tue, Sep 04, 2018 at 09:02:18AM +0200, Thomas Huth wrote:
 >> When cross-compiling QEMU for a target that significantly differs from
 >> the host, the current information in config.status is not enough to
 >> properly re-create the configuration. For example when I try to test
@@ -118,28 +118,21 @@ On 2018-09-04 12:35, Peter Maydell wrote:
 >>        You probably need to set PKG_CONFIG_LIBDIR
 >>        to point to the right pkg-config files for your
 >>        build target
->> RAND
+>>
 >> A similar problem exists for the "windres" tool, where you have to
 >> set the WINDRES variable in case it has a different name.
->> So let's fix these issues by storing the configuration for theseq
+>> So let's fix these issues by storing the configuration for these
 >> variables in the config.status file, too.
 >=20
-> This is also true if the user set CC or RANLIB or any of a bunch
-> of other environment variables that configure uses. If we're going
-> to store those settings in config.status we should consistently
-> do it for all environment variables we care about, I think.
+> Doh, I sent a patch to fix this problem more broadly years ago now:
+>=20
+>   https://lists.nongnu.org/archive/html/qemu-devel/2015-11/msg04157.htm=
+l
+>=20
+> but it appears no maintainer ever merged it !
 
-Ok, never mind, forget about WINDRES (and the other tools like RANLIB),
-that's not required, I just noticed that I simply forgot to specify
-"--cross-prefix=3Di686-w64-mingw32-" when running configure. With that
-option, i686-w64-mingw32-windres is properly used, and the pkg-config
-problem also goes away since i686-w64-mingw32-pkg-config is used instead.
-
-But still, I think at least the PKG_CONFIG_LIBDIR part could be useful,
-since the same problem e.g. also occurs when trying do a 32-bit build on
-a 64-bit host, i.e. when running configure with "--extra-cflags=3D-m32".
-Or is there also another configure switch that can help to get
-PKG_CONFIG_LIBDIR right here?
+This certainly eases some configurations ... could you refresh the patch
+and post it again?
 
  Thomas
 
