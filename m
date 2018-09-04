@@ -1,44 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fx5MX-0006zV-JA
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Sep 2018 03:02:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57894)
+	id 1fx8gZ-0004iI-B1
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Sep 2018 06:35:51 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38911)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fx5MQ-0006ic-To
-	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 03:02:56 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fx8gX-0004h4-D7
+	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 06:35:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fx5ML-0004QZ-Q6
-	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 03:02:50 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:44706 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fx5Lz-0003uO-Us; Tue, 04 Sep 2018 03:02:24 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.3])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9B59940216E5;
-	Tue,  4 Sep 2018 07:02:22 +0000 (UTC)
-Received: from thuth.com (ovpn-116-20.ams2.redhat.com [10.36.116.20])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EC2C210EE6C6;
-	Tue,  4 Sep 2018 07:02:21 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Stefan Weil <sw@weilnetz.de>,
-	qemu-trivial@nongnu.org
-Date: Tue,  4 Sep 2018 09:02:18 +0200
-Message-Id: <1536044538-22507-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.5]);
-	Tue, 04 Sep 2018 07:02:22 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.5]);
-	Tue, 04 Sep 2018 07:02:22 +0000 (UTC) for IP:'10.11.54.3'
-	DOMAIN:'int-mx03.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 66.187.233.73
-Subject: [Qemu-trivial] [PATCH] configure: Save PKG_CONFIG_LIBDIR and
- WINDRES in config.status
+	(envelope-from <peter.maydell@linaro.org>) id 1fx8gW-0008MS-Hx
+	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 06:35:49 -0400
+Received: from mail-oi0-x244.google.com ([2607:f8b0:4003:c06::244]:37684)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fx8gV-0008Lx-TZ
+	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 06:35:48 -0400
+Received: by mail-oi0-x244.google.com with SMTP id p84-v6so5759452oic.4
+	for <qemu-trivial@nongnu.org>; Tue, 04 Sep 2018 03:35:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=skPj+kOPHHEF2Q3FELCaWbRokbHSOYcYQtgY/rWS254=;
+	b=Uu4TWg+u6u7LNfMfQT8vF0Tphfv/8+O6ABjwjl2hwpP6Xv23NHdT1qqcScT+eRtqgT
+	fjkt5SmNHv9OlxUuKeYQnMlj13pfa1rGgpgJc8SMBKbXpjiSZ/tHSABr1w9owoxFPOMr
+	Gqo/gCyb8/Kf867m0LL9ncTjWWB2m+3U25iT4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=skPj+kOPHHEF2Q3FELCaWbRokbHSOYcYQtgY/rWS254=;
+	b=kRFxzOSA/yjcMkV1v27fFu+I1CE/97MZArmNV+/0CGSI6yOK/7BOKmgX06ZAfFxdGf
+	KhZS2Pir2aKYMz4o1ZFCOI5qh+JCfDk3bj+8buCxmzMgmoJaJzYlxFesqaSZX+IykjZn
+	Se6cVFwfg1mEySO8hJMwmgTq+Vq3fL6VoWxqsZ1XhN6tHH+x3MXejCrgWv5XQ6wTi+Jx
+	+2l42hUxsGow7pMwSjY6cae7e77WFIz9hxJuXQXGsY7aiVX7pMmPprYwbjCYgVMrtp7c
+	BdUjHbjxOO+HyGn/08WmUH+DXFX0KyLcafM3QFYXPhkmNFkcGhihCBac4Mn1sNgNsRNh
+	FgEg==
+X-Gm-Message-State: APzg51BFDItFCalpcyDhZEpSbD6UA4iF+JFVY61H1EtYcEiZqfUWExn6
+	NIEnJKTTJkWTpK4kV0tTaMUA+J/QVfoBSgnrix4KqQ==
+X-Google-Smtp-Source: ANB0VdaQcG2zTyA2MrXaQh26ZFySTEIpBYMHLq2Nap6Yw1131v1TeY1yjXFzsOExuAzoWULuC4jECjri8NSuY0dcBVY=
+X-Received: by 2002:aca:e594:: with SMTP id
+	c142-v6mr22083231oih.337.1536057347039; 
+	Tue, 04 Sep 2018 03:35:47 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a9d:41ca:0:0:0:0:0 with HTTP;
+	Tue, 4 Sep 2018 03:35:26 -0700 (PDT)
+In-Reply-To: <1536044538-22507-1-git-send-email-thuth@redhat.com>
+References: <1536044538-22507-1-git-send-email-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 4 Sep 2018 11:35:26 +0100
+Message-ID: <CAFEAcA8uVksn0w5Z6WBS8jXc8KtZjMgNuTk+TOPtsVgnXK4C0A@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Save
+ PKG_CONFIG_LIBDIR and WINDRES in config.status
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,48 +66,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Sep 2018 07:02:56 -0000
+X-List-Received-Date: Tue, 04 Sep 2018 10:35:50 -0000
 
-When cross-compiling QEMU for a target that significantly differs from
-the host, the current information in config.status is not enough to
-properly re-create the configuration. For example when I try to test
-my build with the mingw32 cross-compiler, I regularly get this error
-after the build system tried to re-create the configuration with the
-config.status file:
+On 4 September 2018 at 08:02, Thomas Huth <thuth@redhat.com> wrote:
+> When cross-compiling QEMU for a target that significantly differs from
+> the host, the current information in config.status is not enough to
+> properly re-create the configuration. For example when I try to test
+> my build with the mingw32 cross-compiler, I regularly get this error
+> after the build system tried to re-create the configuration with the
+> config.status file:
+>
+> ERROR: sizeof(size_t) doesn't match GLIB_SIZEOF_SIZE_T.
+>        You probably need to set PKG_CONFIG_LIBDIR
+>        to point to the right pkg-config files for your
+>        build target
+>RAND
+> A similar problem exists for the "windres" tool, where you have to
+> set the WINDRES variable in case it has a different name.
+> So let's fix these issues by storing the configuration for theseq
+> variables in the config.status file, too.
 
-ERROR: sizeof(size_t) doesn't match GLIB_SIZEOF_SIZE_T.
-       You probably need to set PKG_CONFIG_LIBDIR
-       to point to the right pkg-config files for your
-       build target
+This is also true if the user set CC or RANLIB or any of a bunch
+of other environment variables that configure uses. If we're going
+to store those settings in config.status we should consistently
+do it for all environment variables we care about, I think.
 
-A similar problem exists for the "windres" tool, where you have to
-set the WINDRES variable in case it has a different name.
-So let's fix these issues by storing the configuration for these
-variables in the config.status file, too.
+What does autoconf do for the equivalent situation?
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- configure | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/configure b/configure
-index 58862d2..4d8888f 100755
---- a/configure
-+++ b/configure
-@@ -7534,6 +7534,12 @@ cat <<EOD >config.status
- # Compiler output produced by configure, useful for debugging
- # configure, is in config.log if it exists.
- EOD
-+if [ -n "$PKG_CONFIG_LIBDIR" ]; then
-+    echo "export PKG_CONFIG_LIBDIR=\"$PKG_CONFIG_LIBDIR\"" >>config.status
-+fi
-+if [ -n "$WINDRES" ]; then
-+    echo "export WINDRES=\"$WINDRES\"" >>config.status
-+fi
- printf "exec" >>config.status
- printf " '%s'" "$0" "$@" >>config.status
- echo ' "$@"' >>config.status
--- 
-1.8.3.1
-
+thanks
+-- PMM
 
