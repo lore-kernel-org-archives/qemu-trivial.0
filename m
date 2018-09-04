@@ -1,95 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fx92j-0004H6-8X
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Sep 2018 06:58:45 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:47645)
+	id 1fxAC3-0000Lt-6V
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Sep 2018 08:12:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38349)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fx92h-0004Fy-Ei
-	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 06:58:44 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1fxAC1-0000Fe-QN
+	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 08:12:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1fx92g-0006jN-KQ
-	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 06:58:43 -0400
-Received: from mx3-rdu2.redhat.com ([66.187.233.73]:34640 helo=mx1.redhat.com)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1fx92c-0006hG-3T; Tue, 04 Sep 2018 06:58:38 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
-	[10.11.54.5])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A10154023827;
-	Tue,  4 Sep 2018 10:58:37 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-20.ams2.redhat.com [10.36.116.20])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 44F9D63AD5;
-	Tue,  4 Sep 2018 10:58:34 +0000 (UTC)
-To: =?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>
-Cc: qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
-	qemu-devel@nongnu.org
-References: <1536044538-22507-1-git-send-email-thuth@redhat.com>
-	<20180904104333.GC22349@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <b2038979-044f-5a98-e130-8cbadd02489d@redhat.com>
-Date: Tue, 4 Sep 2018 12:58:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	(envelope-from <peter.maydell@linaro.org>) id 1fxAC1-0001XM-1t
+	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 08:12:25 -0400
+Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:32966)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1fxAC0-0001WN-R5
+	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 08:12:24 -0400
+Received: by mail-oi0-x243.google.com with SMTP id 8-v6so6260029oip.0
+	for <qemu-trivial@nongnu.org>; Tue, 04 Sep 2018 05:12:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=P5M7N3LnwdNgAmjS7+kWEzud0PUkGIurGOMl+nJDxKA=;
+	b=Jw+jNGytF5kaII0lwbWc1Z53Bhb0pUMHWH9WXq2+E7KjLrBeQHoK1UBMuI8kWC0sLd
+	LcWNX1tQLclv769vNJTxE0bd1KOeIgEnqt3C4FYC/pm6BPlGQqeTCYtgY3nRgywbaeWt
+	UQ4Tcl/taNswsTZMbMci342nl7NDzqlu7ma2A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=P5M7N3LnwdNgAmjS7+kWEzud0PUkGIurGOMl+nJDxKA=;
+	b=NaXWIPg1dV8rgaslKQNx5TrpaGNkYarT6m7f7nbiHFw1zthBtIiR0DNHb8P3qK32Ue
+	dFmRhiFIvAINEbURMw6qahLBjI2oVZta3AGjmAk99jroVkftDo5UPzg47p4Z0pZIEVTJ
+	aq5gLpSlkVZ43NQMVMaYnapUV53tYhL4RkH7+4XmuB3yPPRNBH5FcAjOYR/wPgGqyig4
+	P/Q+2UJlV4Yvpq56cnTHlx5B8Lw1n/0Z9hum3oO65JxQcj5SDlKv6P0B8vmYFm6ovLPU
+	ZmWWt/W9/RTJ0Sk2mXJrxGRqq9dfwQzzJr+fslLKWjhWXTBgsXAT24U3VvxWBpCt7AZj
+	cwnA==
+X-Gm-Message-State: APzg51BdVQqU60+kHSDqSv2UWTPpbBz648+7ab/elhUoOdAYuJd4W4dk
+	F41ZQbALgVXGwzrJO52WuJyffHeU371pvIZOEblRtA==
+X-Google-Smtp-Source: ANB0VdYs1gvbhGlvVgeos82r1XpWxX0RY6hTbLU6F0biTHNAeF/MyV10uwFmdpgcGBntCdNXvKu22GK5tpOjzG2vxZc=
+X-Received: by 2002:aca:7513:: with SMTP id
+	q19-v6mr23099910oic.13.1536063143105; 
+	Tue, 04 Sep 2018 05:12:23 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20180904104333.GC22349@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.11.55.6]);
-	Tue, 04 Sep 2018 10:58:37 +0000 (UTC)
-X-Greylist: inspected by milter-greylist-4.5.16 (mx1.redhat.com [10.11.55.6]);
-	Tue, 04 Sep 2018 10:58:37 +0000 (UTC) for IP:'10.11.54.5'
-	DOMAIN:'int-mx05.intmail.prod.int.rdu2.redhat.com'
-	HELO:'smtp.corp.redhat.com' FROM:'thuth@redhat.com' RCPT:''
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 66.187.233.73
+Received: by 2002:a9d:41ca:0:0:0:0:0 with HTTP;
+	Tue, 4 Sep 2018 05:12:02 -0700 (PDT)
+In-Reply-To: <ed01225b-b948-9429-a2d7-f9a5095499de@redhat.com>
+References: <1536044538-22507-1-git-send-email-thuth@redhat.com>
+	<CAFEAcA8uVksn0w5Z6WBS8jXc8KtZjMgNuTk+TOPtsVgnXK4C0A@mail.gmail.com>
+	<ed01225b-b948-9429-a2d7-f9a5095499de@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 4 Sep 2018 13:12:02 +0100
+Message-ID: <CAFEAcA9xt9+pnt4MSuuvzhCWv3-bpata6BG0RiD86Joo3zH4dA@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>, 
+	QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4003:c06::243
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Save
  PKG_CONFIG_LIBDIR and WINDRES in config.status
 X-BeenThere: qemu-trivial@nongnu.org
@@ -103,36 +68,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Sep 2018 10:58:44 -0000
+X-List-Received-Date: Tue, 04 Sep 2018 12:12:26 -0000
 
-On 2018-09-04 12:43, Daniel P. Berrang=C3=A9 wrote:
-> On Tue, Sep 04, 2018 at 09:02:18AM +0200, Thomas Huth wrote:
->> When cross-compiling QEMU for a target that significantly differs from
->> the host, the current information in config.status is not enough to
->> properly re-create the configuration. For example when I try to test
->> my build with the mingw32 cross-compiler, I regularly get this error
->> after the build system tried to re-create the configuration with the
->> config.status file:
->>
->> ERROR: sizeof(size_t) doesn't match GLIB_SIZEOF_SIZE_T.
->>        You probably need to set PKG_CONFIG_LIBDIR
->>        to point to the right pkg-config files for your
->>        build target
->>
->> A similar problem exists for the "windres" tool, where you have to
->> set the WINDRES variable in case it has a different name.
->> So let's fix these issues by storing the configuration for these
->> variables in the config.status file, too.
->=20
-> Doh, I sent a patch to fix this problem more broadly years ago now:
->=20
->   https://lists.nongnu.org/archive/html/qemu-devel/2015-11/msg04157.htm=
-l
->=20
-> but it appears no maintainer ever merged it !
+On 4 September 2018 at 11:53, Thomas Huth <thuth@redhat.com> wrote:
+> But still, I think at least the PKG_CONFIG_LIBDIR part could be useful,
+> since the same problem e.g. also occurs when trying do a 32-bit build on
+> a 64-bit host, i.e. when running configure with "--extra-cflags=-m32".
+> Or is there also another configure switch that can help to get
+> PKG_CONFIG_LIBDIR right here?
 
-This certainly eases some configurations ... could you refresh the patch
-and post it again?
+Personally I think the neatest way to handle 32-bit-build-on-64-bit-host
+is to treat it like any other non-native build, ie have the distro
+ship compiler, pkg-config, etc so that --cross-prefix=i686-linux-gnu-
+works :-)
 
- Thomas
+thanks
+-- PMM
 
