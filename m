@@ -1,62 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fxAC3-0000Lt-6V
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Sep 2018 08:12:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38349)
+	id 1fylCe-0007b5-Su
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Sep 2018 17:55:40 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59984)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fxAC1-0000Fe-QN
-	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 08:12:26 -0400
+	(envelope-from <Tony.Garnock-Jones@glasgow.ac.uk>)
+	id 1fyhwg-0003PZ-Or
+	for qemu-trivial@nongnu.org; Sat, 08 Sep 2018 14:27:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1fxAC1-0001XM-1t
-	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 08:12:25 -0400
-Received: from mail-oi0-x243.google.com ([2607:f8b0:4003:c06::243]:32966)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1fxAC0-0001WN-R5
-	for qemu-trivial@nongnu.org; Tue, 04 Sep 2018 08:12:24 -0400
-Received: by mail-oi0-x243.google.com with SMTP id 8-v6so6260029oip.0
-	for <qemu-trivial@nongnu.org>; Tue, 04 Sep 2018 05:12:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=P5M7N3LnwdNgAmjS7+kWEzud0PUkGIurGOMl+nJDxKA=;
-	b=Jw+jNGytF5kaII0lwbWc1Z53Bhb0pUMHWH9WXq2+E7KjLrBeQHoK1UBMuI8kWC0sLd
-	LcWNX1tQLclv769vNJTxE0bd1KOeIgEnqt3C4FYC/pm6BPlGQqeTCYtgY3nRgywbaeWt
-	UQ4Tcl/taNswsTZMbMci342nl7NDzqlu7ma2A=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=P5M7N3LnwdNgAmjS7+kWEzud0PUkGIurGOMl+nJDxKA=;
-	b=NaXWIPg1dV8rgaslKQNx5TrpaGNkYarT6m7f7nbiHFw1zthBtIiR0DNHb8P3qK32Ue
-	dFmRhiFIvAINEbURMw6qahLBjI2oVZta3AGjmAk99jroVkftDo5UPzg47p4Z0pZIEVTJ
-	aq5gLpSlkVZ43NQMVMaYnapUV53tYhL4RkH7+4XmuB3yPPRNBH5FcAjOYR/wPgGqyig4
-	P/Q+2UJlV4Yvpq56cnTHlx5B8Lw1n/0Z9hum3oO65JxQcj5SDlKv6P0B8vmYFm6ovLPU
-	ZmWWt/W9/RTJ0Sk2mXJrxGRqq9dfwQzzJr+fslLKWjhWXTBgsXAT24U3VvxWBpCt7AZj
-	cwnA==
-X-Gm-Message-State: APzg51BdVQqU60+kHSDqSv2UWTPpbBz648+7ab/elhUoOdAYuJd4W4dk
-	F41ZQbALgVXGwzrJO52WuJyffHeU371pvIZOEblRtA==
-X-Google-Smtp-Source: ANB0VdYs1gvbhGlvVgeos82r1XpWxX0RY6hTbLU6F0biTHNAeF/MyV10uwFmdpgcGBntCdNXvKu22GK5tpOjzG2vxZc=
-X-Received: by 2002:aca:7513:: with SMTP id
-	q19-v6mr23099910oic.13.1536063143105; 
-	Tue, 04 Sep 2018 05:12:23 -0700 (PDT)
+	(envelope-from <Tony.Garnock-Jones@glasgow.ac.uk>)
+	id 1fyhwU-0007cf-DM
+	for qemu-trivial@nongnu.org; Sat, 08 Sep 2018 14:26:58 -0400
+Received: from hillend.cent.gla.ac.uk ([130.209.16.102]:45122)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <Tony.Garnock-Jones@glasgow.ac.uk>)
+	id 1fyhuW-0000Ro-PR; Sat, 08 Sep 2018 14:24:45 -0400
+Received: from cas08.campus.gla.ac.uk ([130.209.14.165])
+	by hillend.cent.gla.ac.uk with esmtp (Exim 4.72)
+	(envelope-from <Tony.Garnock-Jones@glasgow.ac.uk>)
+	id 1fyhuH-0001gz-F1; Sat, 08 Sep 2018 19:24:29 +0100
+Received: from mornington.dcs.gla.ac.uk (130.209.253.38) by
+	cas08.campus.gla.ac.uk (130.209.14.165) with Microsoft SMTP Server
+	(TLS) id 15.0.1395.4; Sat, 8 Sep 2018 19:24:28 +0100
+Date: Sat, 8 Sep 2018 19:22:05 +0100
+From: Tony Garnock-Jones <tony.garnock-jones@glasgow.ac.uk>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-trivial@nongnu.org>, <qemu-stable@nongnu.org>, Riku Voipio
+	<riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>
+Message-ID: <20180908182205.GB409@mornington.dcs.gla.ac.uk>
 MIME-Version: 1.0
-Received: by 2002:a9d:41ca:0:0:0:0:0 with HTTP;
-	Tue, 4 Sep 2018 05:12:02 -0700 (PDT)
-In-Reply-To: <ed01225b-b948-9429-a2d7-f9a5095499de@redhat.com>
-References: <1536044538-22507-1-git-send-email-thuth@redhat.com>
-	<CAFEAcA8uVksn0w5Z6WBS8jXc8KtZjMgNuTk+TOPtsVgnXK4C0A@mail.gmail.com>
-	<ed01225b-b948-9429-a2d7-f9a5095499de@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Sep 2018 13:12:02 +0100
-Message-ID: <CAFEAcA9xt9+pnt4MSuuvzhCWv3-bpata6BG0RiD86Joo3zH4dA@mail.gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>, 
-	QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4003:c06::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Save
- PKG_CONFIG_LIBDIR and WINDRES in config.status
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Originating-IP: [130.209.253.38]
+X-ClientProxiedBy: cas07.campus.gla.ac.uk (130.209.14.164) To
+	cas08.campus.gla.ac.uk (130.209.14.165)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Solaris 10
+X-Received-From: 130.209.16.102
+X-Mailman-Approved-At: Sat, 08 Sep 2018 17:55:39 -0400
+Subject: [Qemu-trivial] [PATCH] linux-user: write(fd, NULL,
+ 0) parity with linux's treatment of same
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,20 +51,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Sep 2018 12:12:26 -0000
+X-List-Received-Date: Sat, 08 Sep 2018 18:27:03 -0000
 
-On 4 September 2018 at 11:53, Thomas Huth <thuth@redhat.com> wrote:
-> But still, I think at least the PKG_CONFIG_LIBDIR part could be useful,
-> since the same problem e.g. also occurs when trying do a 32-bit build on
-> a 64-bit host, i.e. when running configure with "--extra-cflags=-m32".
-> Or is there also another configure switch that can help to get
-> PKG_CONFIG_LIBDIR right here?
+Bring linux-user write(2) handling into line with linux for the case
+of a 0-byte write with a NULL buffer. Based on a patch originally
+written by Zhuowei Zhang.
 
-Personally I think the neatest way to handle 32-bit-build-on-64-bit-host
-is to treat it like any other non-native build, ie have the distro
-ship compiler, pkg-config, etc so that --cross-prefix=i686-linux-gnu-
-works :-)
+Addresses https://bugs.launchpad.net/qemu/+bug/1716292.
 
-thanks
--- PMM
+From Zhuowei Zhang's patch (https://lists.gnu.org/archive/html/qemu-devel/2=
+017-09/msg08073.html):
+
+    Linux returns success for the special case of calling write with a
+    zero-length NULL buffer: compiling and running
+
+    int main() {
+       ssize_t ret =3D write(STDOUT_FILENO, NULL, 0);
+       fprintf(stderr, "write returned %ld\n", ret);
+       return 0;
+    }
+
+    gives "write returned 0" when run directly, but "write returned
+    -1" in QEMU.
+
+    This commit checks for this situation and returns success if
+    found.
+
+Subsequent discussion raised the following questions (and my answers):
+
+ - Q. Should TARGET_NR_read pass through to safe_read in this
+      situation too?
+   A. I'm wary of changing unrelated code to the specific problem I'm
+      addressing. TARGET_NR_read is already consistent with Linux for
+      this case.
+
+ - Q. Do pread64/pwrite64 need to be changed similarly?
+   A. Experiment suggests not: both linux and linux-user yield -1 for
+      NULL 0-length reads/writes.
+
+Signed-off-by: Tony Garnock-Jones <tonygarnockjones@gmail.com>
+---
+ linux-user/syscall.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 850b72a0c7..8f46540534 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -8168,6 +8168,9 @@ static abi_long do_syscall1(void *cpu_env, int num, a=
+bi_long arg1,
+         }
+         return ret;
+     case TARGET_NR_write:
++        if (arg2 =3D=3D 0 && arg3 =3D=3D 0) {
++            return get_errno(safe_write(arg1, 0, 0));
++        }
+         if (!(p =3D lock_user(VERIFY_READ, arg2, arg3, 1)))
+             return -TARGET_EFAULT;
+         if (fd_trans_target_to_host_data(arg1)) {
+--
+2.18.0
+
+
+[University of Glasgow: The Times Scottish University of the Year 2018]
 
