@@ -1,98 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1fyuzS-00039b-7d
-	for mharc-qemu-trivial@gnu.org; Sun, 09 Sep 2018 04:22:42 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32899)
+	id 1fz3f2-0005wP-4o
+	for mharc-qemu-trivial@gnu.org; Sun, 09 Sep 2018 13:38:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36722)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1fyuzQ-00039S-Ag
-	for qemu-trivial@nongnu.org; Sun, 09 Sep 2018 04:22:41 -0400
+	(envelope-from <sw@weilnetz.de>) id 1fz3ex-0005qO-7z
+	for qemu-trivial@nongnu.org; Sun, 09 Sep 2018 13:38:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1fyuzN-0008Uf-5i
-	for qemu-trivial@nongnu.org; Sun, 09 Sep 2018 04:22:40 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:46585)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1fyuzM-0008TH-Ri; Sun, 09 Sep 2018 04:22:37 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue004 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	0M9cEd-1g9fy90X6t-00D2J3; Sun, 09 Sep 2018 10:22:26 +0200
-To: Tony Garnock-Jones <tony.garnock-jones@glasgow.ac.uk>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
-	qemu-stable@nongnu.org
-References: <20180908182205.GB409@mornington.dcs.gla.ac.uk>
-From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <f7076ae9-da04-7dbc-8acf-ebe5b948c4ed@vivier.eu>
-Date: Sun, 9 Sep 2018 10:22:23 +0200
+	(envelope-from <sw@weilnetz.de>) id 1fz3cA-0005iY-63
+	for qemu-trivial@nongnu.org; Sun, 09 Sep 2018 13:35:15 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:48962
+	helo=v2201612906741603.powersrv.de)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sw@weilnetz.de>)
+	id 1fz3c2-0005Ub-QG; Sun, 09 Sep 2018 13:35:07 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by v2201612906741603.powersrv.de (Postfix) with ESMTP id 925F5DAF95C;
+	Sun,  9 Sep 2018 19:35:02 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id oRWrGX5Uf6Yg; Sun,  9 Sep 2018 19:35:01 +0200 (CEST)
+Received: from [192.168.178.24] (p5B1518CB.dip0.t-ipconnect.de [91.21.24.203])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128
+	bits)) (No client certificate requested)
+	by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 0D760DAF957; 
+	Sun,  9 Sep 2018 19:35:01 +0200 (CEST)
+To: John Arbuckle <programmingkidx@gmail.com>, peter.maydell@linaro.org,
+	qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20180909153238.4046-1-programmingkidx@gmail.com>
+From: Stefan Weil <sw@weilnetz.de>
+Message-ID: <817e08da-e255-7d1f-4668-503bd3c009d1@weilnetz.de>
+Date: Sun, 9 Sep 2018 19:34:53 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20180908182205.GB409@mornington.dcs.gla.ac.uk>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Y1m5vXm4tFAKVHF4WKifLSbpAYclUeRj0w+MUqCsgPUI2m9zfRR
-	9VM24r0T9uIBXTGTZezUInUmnb8MOU3sQ3bKVooUQVT+vVBgXYuQAxz/8TS2XyT+fDag3Ms
-	eVNater4IQprx7IsEUj9BP+nxFCz2TNA4RI/tFUMtZTqxpiSvj4cl7SEhRSXZYvC8cV25aU
-	tnqSzs3BpSc59//zpeiFA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:f18C/mXzFfY=:JASx4g81aZpDq1JS5y8SpI
-	y57M/Y3sOS8U2OS12RXBgD/ZUCPwzkAYtbOepowcj7c4aZQpZymXwaiX1vw+s1o9un3ni5jVx
-	8BQ+U9Zd+3/iEZ0sPU5m9VH/iClq7340Bl1SXNskQjpGuwma5tArSyuU3A66V2Pa3rbPAgF6N
-	KV7evQhLrJbY5a3AODo6uCsd6GZURH1wz1FFvneVKob//u6oZGu9/cuI0352z5RA71zZnnSwh
-	welNleLfVWyFgFlPmT5n97hygSN16NMddKK1NQVhskzQr7H/3c35U6iqgszXhEEsTdPEFYjYj
-	qEMjKRoYzmZe06Ly9md1BkQ3fnC13YyKENwHtKveBmrBiuEJzHhrWqaUbvsK+PnvbDKXsLqHz
-	tGm3bBXwhnMsXTy//oixInnvvu1hRtakZ6fYUZKkblWyJkzcsFq1KzD/3xKACrPKehjcgyxrT
-	8Tmr55wvWyhOVfm3+ktiC8FDrcUoFrbf/ArF398nXLuXc6rWrRpH6ihAVQwqig2rIE42zXv7A
-	0G+KvrV90UGYXJqSW/itAj5scgRTp938aEi3gevG2nCj0mwO1LBAMRSGGyYGMB9Un444mDtax
-	hfrD67ho/23dnBmkEGsOhhq6aTzkKsF0nCBnLZ1oYAyxv+dXzD95WOZH4qATOid6scr9pX8f0
-	Ofy8Nc/QLAwyfOhG9gA4k9K6Kq7IOGwM988KHipCLhhJSr0nbos/S3ImLoiUEMA1F81KZeWJX
-	4wCr6PBNtYNXI6J9
+In-Reply-To: <20180909153238.4046-1-programmingkidx@gmail.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="RBSP6MN6HR3sTrNGNoKL1uzVxiY1FOcmO"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: write(fd, NULL,
- 0) parity with linux's treatment of same
+X-Received-From: 37.120.169.71
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-common.h: update
+ copyright date to 2018
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,50 +54,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 09 Sep 2018 08:22:41 -0000
+X-List-Received-Date: Sun, 09 Sep 2018 17:38:11 -0000
 
-Le 08/09/2018 à 20:22, Tony Garnock-Jones a écrit :
-> Bring linux-user write(2) handling into line with linux for the case
-> of a 0-byte write with a NULL buffer. Based on a patch originally
-> written by Zhuowei Zhang.
-> 
-> Addresses https://bugs.launchpad.net/qemu/+bug/1716292.
-> 
-> From Zhuowei Zhang's patch (https://lists.gnu.org/archive/html/qemu-devel/2017-09/msg08073.html):
-> 
->     Linux returns success for the special case of calling write with a
->     zero-length NULL buffer: compiling and running
-> 
->     int main() {
->        ssize_t ret = write(STDOUT_FILENO, NULL, 0);
->        fprintf(stderr, "write returned %ld\n", ret);
->        return 0;
->     }
-> 
->     gives "write returned 0" when run directly, but "write returned
->     -1" in QEMU.
-> 
->     This commit checks for this situation and returns success if
->     found.
-> 
-> Subsequent discussion raised the following questions (and my answers):
-> 
->  - Q. Should TARGET_NR_read pass through to safe_read in this
->       situation too?
->    A. I'm wary of changing unrelated code to the specific problem I'm
->       addressing. TARGET_NR_read is already consistent with Linux for
->       this case.
-> 
->  - Q. Do pread64/pwrite64 need to be changed similarly?
->    A. Experiment suggests not: both linux and linux-user yield -1 for
->       NULL 0-length reads/writes.
-> 
-> Signed-off-by: Tony Garnock-Jones <tonygarnockjones@gmail.com>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--RBSP6MN6HR3sTrNGNoKL1uzVxiY1FOcmO
+Content-Type: multipart/mixed; boundary="RaV00Uj4aXeVRV0Fa18LWq3EBlfodBXJX";
+ protected-headers="v1"
+From: Stefan Weil <sw@weilnetz.de>
+To: John Arbuckle <programmingkidx@gmail.com>, peter.maydell@linaro.org,
+ qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+Message-ID: <817e08da-e255-7d1f-4668-503bd3c009d1@weilnetz.de>
+Subject: Re: [Qemu-devel] [PATCH] qemu-common.h: update copyright date to 2018
+References: <20180909153238.4046-1-programmingkidx@gmail.com>
+In-Reply-To: <20180909153238.4046-1-programmingkidx@gmail.com>
+
+--RaV00Uj4aXeVRV0Fa18LWq3EBlfodBXJX
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-GB
+Content-Transfer-Encoding: quoted-printable
+
+Am 09.09.2018 um 17:32 schrieb John Arbuckle:
+> Currently the copyright date is set to 2017. Update the date to say
+> 2018.
+>=20
+> Signed-off-by: John Arbuckle <programmingkidx@gmail.com>
 > ---
->  linux-user/syscall.c | 3 +++
->  1 file changed, 3 insertions(+)
+>  include/qemu-common.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/include/qemu-common.h b/include/qemu-common.h
+> index 85f4749aef..ed60ba251d 100644
+> --- a/include/qemu-common.h
+> +++ b/include/qemu-common.h
+> @@ -17,7 +17,7 @@
+>  #define TFR(expr) do { if ((expr) !=3D -1) break; } while (errno =3D=3D=
+ EINTR)
+> =20
+>  /* Copyright string for -version arguments, About dialogs, etc */
+> -#define QEMU_COPYRIGHT "Copyright (c) 2003-2017 " \
+> +#define QEMU_COPYRIGHT "Copyright (c) 2003-2018 " \
+>      "Fabrice Bellard and the QEMU Project developers"
+> =20
+>  /* Bug reporting information for --help arguments, About dialogs, etc =
+*/
+>=20
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+
+I think this is trivial enough for qemu-trivial.
+
+Thanks,
+Stefan
 
 
+--RaV00Uj4aXeVRV0Fa18LWq3EBlfodBXJX--
+
+--RBSP6MN6HR3sTrNGNoKL1uzVxiY1FOcmO
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEESSNv6nXJXWmOwreK4Iwh1Wd0UK0FAluVWcQACgkQ4Iwh1Wd0
+UK2DWA//VoOtjl67SvR9P6daDYJ9g2Ay4JU3AxsA76wNOHVsJZJoAVxNlD7Zipsl
+ESbCeltWN9cBfieJECY+HLgnKj/WANf6TBnqriWoKtBYH5zaaOheVMhEZAMx1l52
+gtiLuGt1dWmpFeN8WV/GlrVGtKsNc9XFYX4+ZKF3FDdV8uyzHaCrKTwkxRY9VH6T
+jE5pWmZWAb/7TT00F6xOLQ2QBG7HoxMH+TP0wntSwbAuTUKzkx9xI8DNULt1IFy7
+vfO1Jd8Tp5B8W4J18ZZMkjQ2p/L8/t1ntKp3HEGCFLXihYpq8y18L5S06Q3X37ea
+LUBCZFZ8lyNHGj2HKp273hgDaSgrYB5a/dD7PO+mjY9BCKbX/p8S8UD6IbkkNuoJ
+kw2Gw0YHnbwwVylevCfQeIm6gv2nbGwfWOfWySFBMm12Mv1o1TWBszsB2nYNxUBw
+ApZ5ibgJjFyY0/BXbMjxjTtmeC99cGlI3PT1QWqDf5l5BLcah0ep7CoCi/eiDDUS
+d941M7RddBOFGNdAhf8oARsLHCt6GIU6OnS37eQADTsJfW8/i+Ou4BJXvE3ROsGt
+RNclPOXeQNm5Fxgd5du3cH7GXrKP55TIyddVzuz8ZUnBH30oTWxDNkGQ21Pw7CS/
+EU5/BYRSHVOp77+eF49+K2Uon+J+wjuwh5AhK808DIBeS69G1S4=
+=EwQX
+-----END PGP SIGNATURE-----
+
+--RBSP6MN6HR3sTrNGNoKL1uzVxiY1FOcmO--
 
