@@ -1,65 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1g5kyP-0001qt-N7
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Sep 2018 01:05:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46750)
+	id 1g6stw-0000hH-8R
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Oct 2018 03:45:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41044)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mgaio35@gmail.com>) id 1g5Y6a-0003ac-VT
-	for qemu-trivial@nongnu.org; Thu, 27 Sep 2018 11:21:30 -0400
+	(envelope-from <kraxel@redhat.com>) id 1g6stv-0000h3-4I
+	for qemu-trivial@nongnu.org; Mon, 01 Oct 2018 03:45:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mgaio35@gmail.com>) id 1g5Y6W-0007wK-0j
-	for qemu-trivial@nongnu.org; Thu, 27 Sep 2018 11:21:28 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35472)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mgaio35@gmail.com>) id 1g5Y6V-0007vI-QH
-	for qemu-trivial@nongnu.org; Thu, 27 Sep 2018 11:21:23 -0400
-Received: by mail-wr1-x441.google.com with SMTP id o16so3092704wrx.2
-	for <qemu-trivial@nongnu.org>; Thu, 27 Sep 2018 08:21:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=zyJU5H0FAQV3FTC9tAbps830GRiPLQKusimJkjZ8B50=;
-	b=gcmQTnpjAGgUvHLgIO3xmK5T9/cw4tfh5hd1PRGtpfiuz9S2jnqHJAVFBp9dVAsUXj
-	FrSgTLe9UhizjzYSPI1wJkBJ5xMaBInjPYqYKPl8TrQthwZn5hXmwK/W7keyZQX4sDdO
-	Xm07FZXYTFUEDhvEgtyW/1rg+aT1QBDaMN0BewekIjlSSqhF3gX/BoqdaDJu15tJpug4
-	eySk8xQBMGeS4xT4feu/fPw9yjWopaxjfXA3s9XJVCwRc/N2lL85sfa9aJj+eIOoRkfX
-	v9ZxOIq6UuPY9TGyfXoolgKqbjG5S9twvYUbiZiBeU7hn6Zd8OElpZudACFxvEup3g4S
-	LtXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=zyJU5H0FAQV3FTC9tAbps830GRiPLQKusimJkjZ8B50=;
-	b=cPEuZYtYEy7Y3LlfegkUemL5o74tNRf4yzjdgsI3CRN3HeFHisEMIBKky4sHfpy2D6
-	PmpwxIK5ogc3WEuuqUU1HxD6iDOMjqxyXY0d6ep1U7aYefPqPaBRnZL5jj7GTLqNg/Ny
-	mTj7n+VRdX7niBvfLh3EN52hYl4YubE1mnQw2kPcV54TzzmjX/4HHc3lfFSvYxhesDbK
-	b2kIWMwl8cEoKULX3a/zcBE10+kKP6hrUDtGkPy1nSJ0BgIi/7Mopyyu6P9oojT9fqbr
-	c/SvqkFCiNH3M7GF13zMi5qdXGATtS0vACpdAkeGzaqRle8ASh4qBtLth90/gAgHWwX7
-	nasQ==
-X-Gm-Message-State: ABuFfoj8uSGF5X9+vXTMMcDi7P4iZx+QRZSqdetF9Ot9g5AakZbZiGid
-	bvdpM/EwbpwDfy7J0KBjoQ==
-X-Google-Smtp-Source: ACcGV629VC/SQbOXzjX9rb4eTXMqlyDkKlQuAVzu/wA//xc98cCu7gDfwQtjuLSxUzZ8I2qfbkB5Pw==
-X-Received: by 2002:adf:c98d:: with SMTP id
-	f13-v6mr9324817wrh.148.1538061682206; 
-	Thu, 27 Sep 2018 08:21:22 -0700 (PDT)
-Received: from localhost.localdomain (29.25.124.78.rev.sfr.net. [78.124.25.29])
-	by smtp.gmail.com with ESMTPSA id
-	f3-v6sm2663874wmf.30.2018.09.27.08.21.20
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 27 Sep 2018 08:21:21 -0700 (PDT)
-From: Miguel GAIO <mgaio35@gmail.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-trivial@nongnu.org,
-	Miguel GAIO <mgaio35@gmail.com>
-Date: Thu, 27 Sep 2018 17:19:36 +0200
-Message-Id: <20180927151936.3647-1-mgaio35@gmail.com>
-X-Mailer: git-send-email 2.19.0
+	(envelope-from <kraxel@redhat.com>) id 1g6str-0004uu-U4
+	for qemu-trivial@nongnu.org; Mon, 01 Oct 2018 03:45:55 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40914)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>) id 1g6str-0004u8-N0
+	for qemu-trivial@nongnu.org; Mon, 01 Oct 2018 03:45:51 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BB7E744BD5;
+	Mon,  1 Oct 2018 07:45:49 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-29.ams2.redhat.com
+	[10.36.116.29])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 670C276623;
+	Mon,  1 Oct 2018 07:45:49 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id 4B01F9C487; Mon,  1 Oct 2018 09:45:48 +0200 (CEST)
+Date: Mon, 1 Oct 2018 09:45:48 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Miguel GAIO <mgaio35@gmail.com>
+Cc: qemu-trivial@nongnu.org
+Message-ID: <20181001074548.ahngt5fz3uivd3kx@sirius.home.kraxel.org>
+References: <20180927151936.3647-1-mgaio35@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::441
-X-Mailman-Approved-At: Fri, 28 Sep 2018 01:05:52 -0400
-Subject: [Qemu-trivial] [PATCH] ohci: set effectively usb frame rate to 1kHz
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20180927151936.3647-1-mgaio35@gmail.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Mon, 01 Oct 2018 07:45:50 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] ohci: set effectively usb frame rate to
+ 1kHz
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,61 +54,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Sep 2018 15:21:30 -0000
+X-List-Received-Date: Mon, 01 Oct 2018 07:45:55 -0000
 
-USB frame rate is slightly lower than 1kHz: ie. ~950Hz.
-Thus usb-audio device is not able to perform a simple audio playback
-without underruns on audio backend.
-eg. "-device pci-ohci,id=ohci -device usb-audio,bus=ohci.0" vs PulseAudio
-backend. more than 50 underruns are observed per second.
+On Thu, Sep 27, 2018 at 05:19:36PM +0200, Miguel GAIO wrote:
+> USB frame rate is slightly lower than 1kHz: ie. ~950Hz.
+> Thus usb-audio device is not able to perform a simple audio playback
+> without underruns on audio backend.
+> eg. "-device pci-ohci,id=ohci -device usb-audio,bus=ohci.0" vs PulseAudio
+> backend. more than 50 underruns are observed per second.
+> 
+> Update ohci_sof_time computation, using QEMU_CLOCK_VIRTUAL in
+> ohci_usb_start(), and increment by usb_frame_time in ohci_sof()
+> makes USB frame rate close to 1kHz.
+> This way, no audio underrun are observed during audio playback.
 
-Update ohci_sof_time computation, using QEMU_CLOCK_VIRTUAL in
-ohci_usb_start(), and increment by usb_frame_time in ohci_sof()
-makes USB frame rate close to 1kHz.
-This way, no audio underrun are observed during audio playback.
+Added to usb patch queue.
 
-Signed-off-by: Miguel GAIO <mgaio35@gmail.com>
----
- hw/usb/hcd-ohci.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
-index 98da5f0f04..66656a1133 100644
---- a/hw/usb/hcd-ohci.c
-+++ b/hw/usb/hcd-ohci.c
-@@ -1253,12 +1253,12 @@ static int ohci_service_ed_list(OHCIState *ohci, uint32_t head, int completion)
- /* set a timer for EOF */
- static void ohci_eof_timer(OHCIState *ohci)
- {
--    ohci->sof_time = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-     timer_mod(ohci->eof_timer, ohci->sof_time + usb_frame_time);
- }
- /* Set a timer for EOF and generate a SOF event */
- static void ohci_sof(OHCIState *ohci)
- {
-+    ohci->sof_time += usb_frame_time;
-     ohci_eof_timer(ohci);
-     ohci_set_interrupt(ohci, OHCI_INTR_SF);
- }
-@@ -1362,6 +1362,7 @@ static int ohci_bus_start(OHCIState *ohci)
-      * can meet some race conditions
-      */
- 
-+    ohci->sof_time = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-     ohci_eof_timer(ohci);
- 
-     return 1;
-@@ -1476,6 +1477,9 @@ static uint32_t ohci_get_frame_remaining(OHCIState *ohci)
-      * set already.
-      */
-     tks = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) - ohci->sof_time;
-+    if (tks < 0) {
-+        tks = 0;
-+    }
- 
-     /* avoid muldiv if possible */
-     if (tks >= usb_frame_time)
--- 
-2.19.0
+thanks,
+  Gerd
 
 
