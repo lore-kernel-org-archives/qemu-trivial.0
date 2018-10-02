@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1g7G8v-0008VJ-G1
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Oct 2018 04:34:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39660)
+	id 1g7G9j-0000Y1-Ln
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Oct 2018 04:35:47 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39806)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1g7G8u-0008Uk-64
-	for qemu-trivial@nongnu.org; Tue, 02 Oct 2018 04:34:56 -0400
+	(envelope-from <thuth@redhat.com>) id 1g7G9h-0000Ue-V9
+	for qemu-trivial@nongnu.org; Tue, 02 Oct 2018 04:35:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1g7G8t-0001x0-Ha
-	for qemu-trivial@nongnu.org; Tue, 02 Oct 2018 04:34:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51558)
+	(envelope-from <thuth@redhat.com>) id 1g7G9h-0002FF-70
+	for qemu-trivial@nongnu.org; Tue, 02 Oct 2018 04:35:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39280)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1g7G8p-0001vZ-Dq; Tue, 02 Oct 2018 04:34:51 -0400
-Received: from smtp.corp.redhat.com (int-mx11.intmail.prod.int.phx2.redhat.com
-	[10.5.11.26])
+	id 1g7G9a-0002DI-SJ; Tue, 02 Oct 2018 04:35:39 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1053D30BD9FD;
-	Tue,  2 Oct 2018 08:34:50 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 21955C05D415;
+	Tue,  2 Oct 2018 08:35:38 +0000 (UTC)
 Received: from thuth.remote.csb (dhcp-200-199.str.redhat.com [10.33.200.199])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 21CA23091327;
-	Tue,  2 Oct 2018 08:34:47 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 489387943D;
+	Tue,  2 Oct 2018 08:35:36 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
 	<clg@kaod.org>
@@ -28,7 +28,7 @@ Cc: Richard Henderson <rth@twiddle.net>, Eduardo Habkost
 	<ehabkost@redhat.com>, qemu-devel@nongnu.org,
 	QEMU Trivial <qemu-trivial@nongnu.org>
 References: <20181001220942.2382-1-f4bug@amsat.org>
-	<20181001220942.2382-14-f4bug@amsat.org>
+	<20181001220942.2382-15-f4bug@amsat.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -74,22 +74,22 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <f2956781-a134-76e0-9463-e943d20304bb@redhat.com>
-Date: Tue, 2 Oct 2018 10:34:47 +0200
+Message-ID: <ba9e6666-fe49-5bed-2b67-b8672314d5d9@redhat.com>
+Date: Tue, 2 Oct 2018 10:35:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20181001220942.2382-14-f4bug@amsat.org>
+In-Reply-To: <20181001220942.2382-15-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.26
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Tue, 02 Oct 2018 08:34:50 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.32]);
+	Tue, 02 Oct 2018 08:35:38 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC PATCH 13/15] hw/alpha/typhoon:
+Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC PATCH 14/15] hw/hppa/dino:
  Remove unuseful code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -102,45 +102,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Oct 2018 08:34:57 -0000
+X-List-Received-Date: Tue, 02 Oct 2018 08:35:46 -0000
 
 On 2018-10-02 00:09, Philippe Mathieu-Daud=C3=A9 wrote:
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/alpha/typhoon.c | 13 -------------
->  1 file changed, 13 deletions(-)
+>  hw/hppa/dino.c | 7 -------
+>  1 file changed, 7 deletions(-)
 >=20
-> diff --git a/hw/alpha/typhoon.c b/hw/alpha/typhoon.c
-> index d74b5b55e1..8004afe45b 100644
-> --- a/hw/alpha/typhoon.c
-> +++ b/hw/alpha/typhoon.c
-> @@ -932,23 +932,10 @@ PCIBus *typhoon_init(ram_addr_t ram_size, ISABus =
-**isa_bus,
+> diff --git a/hw/hppa/dino.c b/hw/hppa/dino.c
+> index 564b938e3a..31e09942b5 100644
+> --- a/hw/hppa/dino.c
+> +++ b/hw/hppa/dino.c
+> @@ -488,17 +488,10 @@ PCIBus *dino_init(MemoryRegion *addr_space,
 >      return b;
 >  }
 > =20
-> -static int typhoon_pcihost_init(SysBusDevice *dev)
+> -static int dino_pcihost_init(SysBusDevice *dev)
 > -{
 > -    return 0;
 > -}
 > -
-> -static void typhoon_pcihost_class_init(ObjectClass *klass, void *data)
-> -{
+>  static void dino_pcihost_class_init(ObjectClass *klass, void *data)
+>  {
 > -    SysBusDeviceClass *k =3D SYS_BUS_DEVICE_CLASS(klass);
-> -
-> -    k->init =3D typhoon_pcihost_init;
-> -}
-> -
->  static const TypeInfo typhoon_pcihost_info =3D {
->      .name          =3D TYPE_TYPHOON_PCI_HOST_BRIDGE,
->      .parent        =3D TYPE_PCI_HOST_BRIDGE,
->      .instance_size =3D sizeof(TyphoonState),
-> -    .class_init    =3D typhoon_pcihost_class_init,
->  };
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
 > =20
->  static void typhoon_iommu_memory_region_class_init(ObjectClass *klass,
-
-As far as I can see, this should be fine.
+> -    k->init =3D dino_pcihost_init;
+>      dc->vmsd =3D &vmstate_dino;
+>  }
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
