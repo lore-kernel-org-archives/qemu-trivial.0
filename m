@@ -1,34 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1g7G9j-0000Y1-Ln
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Oct 2018 04:35:47 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39806)
+	id 1g7yut-0001Z5-MP
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Oct 2018 04:23:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55483)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1g7G9h-0000Ue-V9
-	for qemu-trivial@nongnu.org; Tue, 02 Oct 2018 04:35:46 -0400
+	(envelope-from <thuth@redhat.com>) id 1g7yum-0001L0-L4
+	for qemu-trivial@nongnu.org; Thu, 04 Oct 2018 04:23:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1g7G9h-0002FF-70
-	for qemu-trivial@nongnu.org; Tue, 02 Oct 2018 04:35:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39280)
+	(envelope-from <thuth@redhat.com>) id 1g7ynK-0007dX-Pz
+	for qemu-trivial@nongnu.org; Thu, 04 Oct 2018 04:15:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40492)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1g7G9a-0002DI-SJ; Tue, 02 Oct 2018 04:35:39 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	id 1g7ynD-0007WM-7Y; Thu, 04 Oct 2018 04:15:31 -0400
+Received: from smtp.corp.redhat.com (int-mx12.intmail.prod.int.phx2.redhat.com
+	[10.5.11.27])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 21955C05D415;
-	Tue,  2 Oct 2018 08:35:38 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6155A308FF16;
+	Thu,  4 Oct 2018 08:15:29 +0000 (UTC)
 Received: from thuth.remote.csb (dhcp-200-199.str.redhat.com [10.33.200.199])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 489387943D;
-	Tue,  2 Oct 2018 08:35:36 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
-	<clg@kaod.org>
-Cc: Richard Henderson <rth@twiddle.net>, Eduardo Habkost
-	<ehabkost@redhat.com>, qemu-devel@nongnu.org,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20181001220942.2382-1-f4bug@amsat.org>
-	<20181001220942.2382-15-f4bug@amsat.org>
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D76409E8A1;
+	Thu,  4 Oct 2018 08:15:24 +0000 (UTC)
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-devel@nongnu.org
+References: <20181003132041.10075-1-marcandre.lureau@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -74,23 +70,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <ba9e6666-fe49-5bed-2b67-b8672314d5d9@redhat.com>
-Date: Tue, 2 Oct 2018 10:35:35 +0200
+Message-ID: <aee68960-248e-6930-2375-2fbc767f1d5f@redhat.com>
+Date: Thu, 4 Oct 2018 10:15:24 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20181001220942.2382-15-f4bug@amsat.org>
+In-Reply-To: <20181003132041.10075-1-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.27
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 02 Oct 2018 08:35:38 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.49]);
+	Thu, 04 Oct 2018 08:15:29 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [RFC PATCH 14/15] hw/hppa/dino:
- Remove unuseful code
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: remove
+ glib_subprocess check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,35 +98,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Oct 2018 08:35:46 -0000
+X-List-Received-Date: Thu, 04 Oct 2018 08:23:26 -0000
 
-On 2018-10-02 00:09, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/hppa/dino.c | 7 -------
->  1 file changed, 7 deletions(-)
+On 2018-10-03 15:20, Marc-Andr=C3=A9 Lureau wrote:
+> This should have been removed as part of commit
+> 692fbdf9f4c6f6bafd0b3a4d4f94973effd3bbae.
 >=20
-> diff --git a/hw/hppa/dino.c b/hw/hppa/dino.c
-> index 564b938e3a..31e09942b5 100644
-> --- a/hw/hppa/dino.c
-> +++ b/hw/hppa/dino.c
-> @@ -488,17 +488,10 @@ PCIBus *dino_init(MemoryRegion *addr_space,
->      return b;
->  }
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  configure | 6 ------
+>  1 file changed, 6 deletions(-)
+>=20
+> diff --git a/configure b/configure
+> index a7368044cc..4f6d6e03b1 100755
+> --- a/configure
+> +++ b/configure
+> @@ -3557,12 +3557,6 @@ if ! compile_prog "$CFLAGS" "$LIBS" ; then
+>  	       "build target"
+>  fi
 > =20
-> -static int dino_pcihost_init(SysBusDevice *dev)
-> -{
-> -    return 0;
-> -}
+> -# g_test_trap_subprocess added in 2.38. Used by some tests.
+> -glib_subprocess=3Dyes
+> -if ! $pkg_config --atleast-version=3D2.38 glib-2.0; then
+> -    glib_subprocess=3Dno
+> -fi
 > -
->  static void dino_pcihost_class_init(ObjectClass *klass, void *data)
->  {
-> -    SysBusDeviceClass *k =3D SYS_BUS_DEVICE_CLASS(klass);
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
-> =20
-> -    k->init =3D dino_pcihost_init;
->      dc->vmsd =3D &vmstate_dino;
->  }
+>  # Silence clang 3.5.0 warnings about glib attribute __alloc_size__ usa=
+ge
+>  cat > $TMPC << EOF
+>  #include <glib.h>
+>=20
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
