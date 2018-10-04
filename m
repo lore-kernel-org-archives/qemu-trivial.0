@@ -1,39 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1g84GH-0004k5-5c
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Oct 2018 10:05:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53989)
+	id 1g86LT-0005jb-Ou
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Oct 2018 12:19:23 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46307)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1g84GF-0004iU-2z
-	for qemu-trivial@nongnu.org; Thu, 04 Oct 2018 10:05:51 -0400
+	(envelope-from <crosa@redhat.com>) id 1g86LK-0005d3-VX
+	for qemu-trivial@nongnu.org; Thu, 04 Oct 2018 12:19:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1g84GB-0003zE-03
-	for qemu-trivial@nongnu.org; Thu, 04 Oct 2018 10:05:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54960)
+	(envelope-from <crosa@redhat.com>) id 1g86LH-0002Xh-LH
+	for qemu-trivial@nongnu.org; Thu, 04 Oct 2018 12:19:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39140)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1g84G5-0003er-Ez; Thu, 04 Oct 2018 10:05:42 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <crosa@redhat.com>)
+	id 1g86L1-0002Mp-6f; Thu, 04 Oct 2018 12:18:55 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EF57E3083393;
-	Thu,  4 Oct 2018 14:05:31 +0000 (UTC)
-Received: from red.redhat.com (ovpn-126-73.rdu2.redhat.com [10.10.126.73])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D9E6F690F5;
-	Thu,  4 Oct 2018 14:05:29 +0000 (UTC)
-From: Eric Blake <eblake@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 593C632B669;
+	Thu,  4 Oct 2018 16:18:54 +0000 (UTC)
+Received: from dhcp-17-10.bos.redhat.com (dhcp-17-10.bos.redhat.com
+	[10.18.17.10])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4CEE877BFE;
+	Thu,  4 Oct 2018 16:18:52 +0000 (UTC)
+From: Cleber Rosa <crosa@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: kraxel@redhat.com,
-	qemu-trivial@nongnu.org
-Date: Thu,  4 Oct 2018 09:05:22 -0500
-Message-Id: <20181004140522.945682-1-eblake@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Cc: Riku Voipio <riku.voipio@iki.fi>, Eduardo Habkost <ehabkost@redhat.com>,
+	qemu-block@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+	Cleber Rosa <crosa@redhat.com>, qemu-trivial@nongnu.org,
+	Max Reitz <mreitz@redhat.com>
+Date: Thu,  4 Oct 2018 12:18:42 -0400
+Message-Id: <20181004161852.11673-1-crosa@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.44]);
-	Thu, 04 Oct 2018 14:05:32 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Thu, 04 Oct 2018 16:18:54 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] edid: Ignore built binary
+Subject: [Qemu-trivial] [PATCH 00/10] Trivial fixes and clean ups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -45,27 +49,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Oct 2018 14:05:51 -0000
+X-List-Received-Date: Thu, 04 Oct 2018 16:19:18 -0000
 
-Added in commit 72d277a7.
+Just a collection of trivial fixes and clean ups that have been lying
+around here for some time.
 
-Signed-off-by: Eric Blake <eblake@redhat.com>
----
- .gitignore | 1 +
- 1 file changed, 1 insertion(+)
+Cleber Rosa (10):
+  qemu-img.c: comment typo fix
+  tests/tcg/README: fix location for lm32 tests
+  qemu-iotests: make 218 executable
+  qemu-iotests: fix filename containing checks
+  docs/devel/testing.rst: add missing newlines after code block
+  thunk.c: clean up commented out definition
+  scripts/decodetree.py: remove unused imports
+  scripts/decodetree.py: fix reference to attributes
+  scripts/qemu.py: use a more consistent docstring style
+  scripts/qemu.py: remove trailing quotes on docstring
 
-diff --git a/.gitignore b/.gitignore
-index 5668d027824..64efdfd9292 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -107,6 +107,7 @@
- /qemu-doc.html
- /qemu-doc.info
- /qemu-doc.txt
-+/qemu-edid
- /qemu-img
- /qemu-nbd
- /qemu-options.def
+ docs/devel/testing.rst       |  2 ++
+ dtc                          |  2 +-
+ qemu-img.c                   |  2 +-
+ scripts/decodetree.py        |  4 +--
+ scripts/qemu.py              | 67 ++++++++++++++++++++++--------------
+ tests/qemu-iotests/218       |  0
+ tests/qemu-iotests/common.rc |  4 +--
+ tests/tcg/README             |  2 +-
+ thunk.c                      |  2 --
+ 9 files changed, 50 insertions(+), 35 deletions(-)
+ mode change 100644 => 100755 tests/qemu-iotests/218
+
 -- 
 2.17.1
 
