@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1g86Ld-0005qs-Cl
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Oct 2018 12:19:33 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46477)
+	id 1g86Le-0005rX-3e
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Oct 2018 12:19:34 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46475)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosa@redhat.com>) id 1g86Lb-0005ow-Bx
+	(envelope-from <crosa@redhat.com>) id 1g86Lb-0005ov-BS
 	for qemu-trivial@nongnu.org; Thu, 04 Oct 2018 12:19:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosa@redhat.com>) id 1g86LT-0002cX-Lh
+	(envelope-from <crosa@redhat.com>) id 1g86LT-0002cj-Lv
 	for qemu-trivial@nongnu.org; Thu, 04 Oct 2018 12:19:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41422)
+Received: from mx1.redhat.com ([209.132.183.28]:6942)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <crosa@redhat.com>)
-	id 1g86L8-0002Pe-6F; Thu, 04 Oct 2018 12:19:02 -0400
+	id 1g86L8-0002PR-Be; Thu, 04 Oct 2018 12:19:03 -0400
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
 	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E3B2830832D1;
-	Thu,  4 Oct 2018 16:18:59 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id B1B4A3082E07;
+	Thu,  4 Oct 2018 16:18:58 +0000 (UTC)
 Received: from dhcp-17-10.bos.redhat.com (dhcp-17-10.bos.redhat.com
 	[10.18.17.10])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D165A77BFE;
-	Thu,  4 Oct 2018 16:18:58 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 98F7677BFE;
+	Thu,  4 Oct 2018 16:18:57 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Riku Voipio <riku.voipio@iki.fi>, Eduardo Habkost <ehabkost@redhat.com>,
@@ -29,18 +29,17 @@ Cc: Riku Voipio <riku.voipio@iki.fi>, Eduardo Habkost <ehabkost@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
 	Cleber Rosa <crosa@redhat.com>, qemu-trivial@nongnu.org,
 	Max Reitz <mreitz@redhat.com>
-Date: Thu,  4 Oct 2018 12:18:46 -0400
-Message-Id: <20181004161852.11673-5-crosa@redhat.com>
+Date: Thu,  4 Oct 2018 12:18:45 -0400
+Message-Id: <20181004161852.11673-4-crosa@redhat.com>
 In-Reply-To: <20181004161852.11673-1-crosa@redhat.com>
 References: <20181004161852.11673-1-crosa@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.44]);
-	Thu, 04 Oct 2018 16:19:00 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.46]);
+	Thu, 04 Oct 2018 16:18:58 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH 04/10] qemu-iotests: fix filename containing
- checks
+Subject: [Qemu-trivial] [PATCH 03/10] qemu-iotests: make 218 executable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,37 +53,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 04 Oct 2018 16:19:32 -0000
 
-Commit cce293a2945 moved some functions from common.config to
-common.rc, but the error messages still reference the old file
-location.
+Commit 990dc39c made all tests executable at the time, but 218 came in
+later, and missing those permissions.
 
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/qemu-iotests/common.rc | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/qemu-iotests/218 | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ mode change 100644 => 100755 tests/qemu-iotests/218
 
-diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
-index 44bee16a5e..70ca65b49b 100644
---- a/tests/qemu-iotests/common.rc
-+++ b/tests/qemu-iotests/common.rc
-@@ -170,7 +170,7 @@ if [ ! -e "$TEST_DIR" ]; then
- fi
- 
- if [ ! -d "$TEST_DIR" ]; then
--    echo "common.config: Error: \$TEST_DIR ($TEST_DIR) is not a directory"
-+    echo "common.rc: Error: \$TEST_DIR ($TEST_DIR) is not a directory"
-     exit 1
- fi
- 
-@@ -179,7 +179,7 @@ if [ -z "$REMOTE_TEST_DIR" ]; then
- fi
- 
- if [ ! -d "$SAMPLE_IMG_DIR" ]; then
--    echo "common.config: Error: \$SAMPLE_IMG_DIR ($SAMPLE_IMG_DIR) is not a directory"
-+    echo "common.rc: Error: \$SAMPLE_IMG_DIR ($SAMPLE_IMG_DIR) is not a directory"
-     exit 1
- fi
- 
+diff --git a/tests/qemu-iotests/218 b/tests/qemu-iotests/218
+old mode 100644
+new mode 100755
 -- 
 2.17.1
 
