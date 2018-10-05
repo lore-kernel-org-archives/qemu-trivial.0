@@ -1,60 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1g8T2I-0003I8-IK
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Oct 2018 12:33:06 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43284)
+	id 1g8UIl-00016X-0D
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Oct 2018 13:54:11 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35378)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1g8T2G-0003GK-DV
-	for qemu-trivial@nongnu.org; Fri, 05 Oct 2018 12:33:04 -0400
+	(envelope-from <crosa@redhat.com>) id 1g8UIb-00011g-SK
+	for qemu-trivial@nongnu.org; Fri, 05 Oct 2018 13:54:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1g8T2F-0006nb-Pp
-	for qemu-trivial@nongnu.org; Fri, 05 Oct 2018 12:33:04 -0400
-Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330]:46573)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1g8T2F-0006nI-DF
-	for qemu-trivial@nongnu.org; Fri, 05 Oct 2018 12:33:03 -0400
-Received: by mail-ot1-x330.google.com with SMTP id o21so12978137otb.13
-	for <qemu-trivial@nongnu.org>; Fri, 05 Oct 2018 09:33:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=TVzF6hCwO8d9bUYDt2DGC1A/kTe3uYt/qwaII4VHcsw=;
-	b=Fe3IcIfZAAvswoG6Q5tzfshfLo5RdpKlW3zlmYPjOdopIN/4pwL1G6R1BP7AjmfK5M
-	JNisFvrsbwlnmjcw+/JKes8puWYvM6A6BigKJX3HtOGZuCcrtNFZ/1z3Xr5mgbOrnqP3
-	IUuRL6nMzTEql5U9lrdxNBpmbi6P9QZ3ypB+0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=TVzF6hCwO8d9bUYDt2DGC1A/kTe3uYt/qwaII4VHcsw=;
-	b=YzEMGy87cbDjmeiUBe5jyEPLhz20cR0nZEb+oLvHCWz4IB456YGXd9C55jxyVebVN6
-	M3/oqRpMpJDeL8TsQtAlAWhhbToL9kb8P+HOQi/iEZlLKtRFbzo0J5R313sQHtGxB2O5
-	zn1RkLvmira0wgkHakuH2i7mfaMlmBYYWWqyxomvo0pi9cYYEzMVTzIsUjDct4g5JGFq
-	CRFpwNLV0W9U3pRMdgjCnqjDW28nRHuZMfONzNiMmOaFxzB3jYHrQ4h2D31+qsqXqbGP
-	9j4jEx2P6DWb4tUra/LZaOrk7brIwh4+8t/HbZWPBqbyDsEiOETBgQIuz/d09xV2lxbD
-	CidA==
-X-Gm-Message-State: ABuFfoipC0XjGwE0uFVz9b5rOOUxg2dgtbgaI5Rh7lPaf7BkT2FzbGj9
-	lcL/lKPf2r4T0z5zq9sOY6JaPNzqJDwR8ORBxVXKBA==
-X-Google-Smtp-Source: ACcGV6157s4JgVzapE8cl0RlOgu/QBb/D8yHdpsoH/sflj8IWUZd+bGWLjGPzu1RaVTEhFhox7IUsYs8daeKYKRrfe0=
-X-Received: by 2002:a9d:420c:: with SMTP id q12mr289585ote.317.1538757182304; 
-	Fri, 05 Oct 2018 09:33:02 -0700 (PDT)
+	(envelope-from <crosa@redhat.com>) id 1g8UFS-00082B-S4
+	for qemu-trivial@nongnu.org; Fri, 05 Oct 2018 13:50:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41648)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <crosa@redhat.com>)
+	id 1g8UFL-0007l3-7F; Fri, 05 Oct 2018 13:50:40 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 69C4631676B0;
+	Fri,  5 Oct 2018 17:50:35 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-120-82.rdu2.redhat.com
+	[10.10.120.82])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2D6E65D962;
+	Fri,  5 Oct 2018 17:49:58 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>
+Cc: Kevin Wolf <kwolf@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+	qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+	Riku Voipio <riku.voipio@iki.fi>, Michael Tokarev <mjt@tls.msk.ru>,
+	Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>
+References: <20181004161852.11673-1-crosa@redhat.com>
+	<20181004161852.11673-4-crosa@redhat.com>
+	<4ebd6e33-e1e7-962f-3ca8-4bae7b7ce425@redhat.com>
+From: Cleber Rosa <crosa@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <c33abf23-46c6-3939-f781-61662714acc5@redhat.com>
+Date: Fri, 5 Oct 2018 13:49:57 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.0
 MIME-Version: 1.0
-Received: by 2002:a9d:20e3:0:0:0:0:0 with HTTP;
-	Fri, 5 Oct 2018 09:32:41 -0700 (PDT)
-In-Reply-To: <1538732546-2284-1-git-send-email-thuth@redhat.com>
-References: <1538732546-2284-1-git-send-email-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 Oct 2018 17:32:41 +0100
-Message-ID: <CAFEAcA_W9ioV5qDFV6jNY6t-W3MfEkuUXZeZCAST8_tOe=k9wg@mail.gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Alistair Francis <alistair@alistair23.me>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::330
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/core/generic-loader: Set
- a category for the generic-loader device
+In-Reply-To: <4ebd6e33-e1e7-962f-3ca8-4bae7b7ce425@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.41]);
+	Fri, 05 Oct 2018 17:50:36 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 03/10] qemu-iotests: make
+ 218 executable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,16 +61,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Oct 2018 16:33:05 -0000
+X-List-Received-Date: Fri, 05 Oct 2018 17:54:06 -0000
 
-On 5 October 2018 at 10:42, Thomas Huth <thuth@redhat.com> wrote:
-> Each device that is instantiatable by the users should be marked with
-> a category.
 
-Presumably we could assert() this somewhere (at which
-point we'd find that we have dozens of devices that
-fail to set a category bit, I imagine) ?
 
-thanks
--- PMM
+On 10/5/18 9:36 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 04/10/2018 18:18, Cleber Rosa wrote:
+>> Commit 990dc39c made all tests executable at the time, but 218 came in
+>> later, and missing those permissions.
+>>
+>> Signed-off-by: Cleber Rosa <crosa@redhat.com>
+>> ---
+>>  tests/qemu-iotests/218 | 0
+>>  1 file changed, 0 insertions(+), 0 deletions(-)
+>>  mode change 100644 =3D> 100755 tests/qemu-iotests/218
+>>
+>> diff --git a/tests/qemu-iotests/218 b/tests/qemu-iotests/218
+>> old mode 100644
+>> new mode 100755
+>=20
+> We could add a git pre-commit hook grep'ing for "^#!\
+> *(/usr/bin/env|/bin/(b?a)?sh)" in the 1st line and then checking the
+> file perms.
+>=20
+
+Good idea.  Probably better to send that as a different patch, right?
 
