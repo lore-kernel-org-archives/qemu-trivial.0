@@ -1,29 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1g8UIl-00016X-0D
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Oct 2018 13:54:11 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35378)
+	id 1g8URJ-00017j-S0
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Oct 2018 14:03:01 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38904)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <crosa@redhat.com>) id 1g8UIb-00011g-SK
-	for qemu-trivial@nongnu.org; Fri, 05 Oct 2018 13:54:05 -0400
+	(envelope-from <eblake@redhat.com>) id 1g8URF-00014v-Fq
+	for qemu-trivial@nongnu.org; Fri, 05 Oct 2018 14:02:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <crosa@redhat.com>) id 1g8UFS-00082B-S4
-	for qemu-trivial@nongnu.org; Fri, 05 Oct 2018 13:50:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41648)
+	(envelope-from <eblake@redhat.com>) id 1g8URE-0000d6-N3
+	for qemu-trivial@nongnu.org; Fri, 05 Oct 2018 14:02:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:32814)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <crosa@redhat.com>)
-	id 1g8UFL-0007l3-7F; Fri, 05 Oct 2018 13:50:40 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1g8UR8-0008Qy-T6; Fri, 05 Oct 2018 14:02:51 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 69C4631676B0;
-	Fri,  5 Oct 2018 17:50:35 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-120-82.rdu2.redhat.com
-	[10.10.120.82])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2D6E65D962;
-	Fri,  5 Oct 2018 17:49:58 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 881C1307D86D;
+	Fri,  5 Oct 2018 18:02:49 +0000 (UTC)
+Received: from [10.10.126.73] (ovpn-126-73.rdu2.redhat.com [10.10.126.73])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id DA50212A62;
+	Fri,  5 Oct 2018 18:02:43 +0000 (UTC)
+To: Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+	<philmd@redhat.com>, qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
 	qemu-block@nongnu.org, qemu-trivial@nongnu.org,
 	Riku Voipio <riku.voipio@iki.fi>, Michael Tokarev <mjt@tls.msk.ru>,
@@ -31,21 +30,22 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
 References: <20181004161852.11673-1-crosa@redhat.com>
 	<20181004161852.11673-4-crosa@redhat.com>
 	<4ebd6e33-e1e7-962f-3ca8-4bae7b7ce425@redhat.com>
-From: Cleber Rosa <crosa@redhat.com>
+	<c33abf23-46c6-3939-f781-61662714acc5@redhat.com>
+From: Eric Blake <eblake@redhat.com>
 Organization: Red Hat, Inc.
-Message-ID: <c33abf23-46c6-3939-f781-61662714acc5@redhat.com>
-Date: Fri, 5 Oct 2018 13:49:57 -0400
+Message-ID: <2b62d615-615b-a128-9c22-7d37df052abb@redhat.com>
+Date: Fri, 5 Oct 2018 13:02:43 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.0
 MIME-Version: 1.0
-In-Reply-To: <4ebd6e33-e1e7-962f-3ca8-4bae7b7ce425@redhat.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <c33abf23-46c6-3939-f781-61662714acc5@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Fri, 05 Oct 2018 17:50:36 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.48]);
+	Fri, 05 Oct 2018 18:02:49 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 03/10] qemu-iotests: make
@@ -61,29 +61,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Oct 2018 17:54:06 -0000
+X-List-Received-Date: Fri, 05 Oct 2018 18:03:00 -0000
 
+On 10/5/18 12:49 PM, Cleber Rosa wrote:
 
-
-On 10/5/18 9:36 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 04/10/2018 18:18, Cleber Rosa wrote:
->> Commit 990dc39c made all tests executable at the time, but 218 came in
->> later, and missing those permissions.
 >>
->> Signed-off-by: Cleber Rosa <crosa@redhat.com>
->> ---
->>  tests/qemu-iotests/218 | 0
->>  1 file changed, 0 insertions(+), 0 deletions(-)
->>  mode change 100644 =3D> 100755 tests/qemu-iotests/218
+>> We could add a git pre-commit hook grep'ing for "^#!\
+>> *(/usr/bin/env|/bin/(b?a)?sh)" in the 1st line and then checking the
+>> file perms.
 >>
->> diff --git a/tests/qemu-iotests/218 b/tests/qemu-iotests/218
->> old mode 100644
->> new mode 100755
->=20
-> We could add a git pre-commit hook grep'ing for "^#!\
-> *(/usr/bin/env|/bin/(b?a)?sh)" in the 1st line and then checking the
-> file perms.
->=20
+> 
+> Good idea.  Probably better to send that as a different patch, right?
 
-Good idea.  Probably better to send that as a different patch, right?
+Yes, separate patch. For that matter, "^#!/" is probably a sufficient 
+pattern to catch any file that intends to be run via an interpreter, and 
+therefore wants to be executable, rather than limiting to just env and 
+specific shells.
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
