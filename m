@@ -1,33 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1g9bSd-0006Jv-VG
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Oct 2018 15:44:59 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58218)
+	id 1g9bXG-0007ri-TG
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Oct 2018 15:49:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59861)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1g9bSX-0006GI-57
-	for qemu-trivial@nongnu.org; Mon, 08 Oct 2018 15:44:58 -0400
+	(envelope-from <jsnow@redhat.com>) id 1g9bXD-0007qG-G3
+	for qemu-trivial@nongnu.org; Mon, 08 Oct 2018 15:49:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1g9bST-0005pD-Gu
-	for qemu-trivial@nongnu.org; Mon, 08 Oct 2018 15:44:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58098)
+	(envelope-from <jsnow@redhat.com>) id 1g9bXC-0007kG-Qn
+	for qemu-trivial@nongnu.org; Mon, 08 Oct 2018 15:49:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45870)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1g9bS8-0005eD-1T; Mon, 08 Oct 2018 15:44:29 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1g9bX7-0007iO-3f; Mon, 08 Oct 2018 15:49:37 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B6925300177C;
-	Mon,  8 Oct 2018 19:44:16 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1BB7F30001D8;
+	Mon,  8 Oct 2018 19:49:36 +0000 (UTC)
 Received: from [10.18.17.221] (dhcp-17-221.bos.redhat.com [10.18.17.221])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BDC9060F86;
-	Mon,  8 Oct 2018 19:44:14 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id DCAF41001F4A;
+	Mon,  8 Oct 2018 19:49:34 +0000 (UTC)
 To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
 	qemu-block@nongnu.org, qemu-trivial@nongnu.org,
 	Riku Voipio <riku.voipio@iki.fi>, Michael Tokarev <mjt@tls.msk.ru>,
 	Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>
 References: <20181004161852.11673-1-crosa@redhat.com>
-	<20181004161852.11673-10-crosa@redhat.com>
+	<20181004161852.11673-6-crosa@redhat.com>
 From: John Snow <jsnow@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
@@ -83,23 +83,23 @@ Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
 	d5wOERgtgqY8XvqXNpDv9c/FgPnfrmD4A1wlUtbCr+UukOD0Ky3iW/0Ij2DJlw+KUFCKxwWh
 	EmSAxTi2NAg5f5e5A5d/clCwVeB3DXes5H6tdez4f/ai1eAB+FtItxT37i2KpUvUAdic37Io
 	NRhibLIrSP2g5nqXONyQrFxb1HtVaoR+Nrk=
-Message-ID: <b590e7a3-c0e8-f39b-8a9b-b56d4804a6bc@redhat.com>
-Date: Mon, 8 Oct 2018 15:44:14 -0400
+Message-ID: <11027abb-cc36-8921-fec3-f310104ad8a2@redhat.com>
+Date: Mon, 8 Oct 2018 15:49:34 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20181004161852.11673-10-crosa@redhat.com>
+In-Reply-To: <20181004161852.11673-6-crosa@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Mon, 08 Oct 2018 19:44:16 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.41]);
+	Mon, 08 Oct 2018 19:49:36 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-block] [PATCH 09/10] scripts/qemu.py: use
- a more consistent docstring style
+Subject: Re: [Qemu-trivial] [Qemu-block] [PATCH 05/10]
+ docs/devel/testing.rst: add missing newlines after code block
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,236 +111,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Oct 2018 19:44:58 -0000
+X-List-Received-Date: Mon, 08 Oct 2018 19:49:44 -0000
 
 
 
 On 10/04/2018 12:18 PM, Cleber Rosa wrote:
+> The line immediate following a ".. code::" block is considered
+> to contains arguments to the "code directive".  The lack of a
+> new line gives me during at parse time:
+> 
+>    testing.rst:63: (ERROR/3) Error in "code" directive:
+>    maximum 1 argument(s) allowed, 3 supplied.
+> 
+>    .. code::
+>      make check-unit V=1
+> 
+>    testing.rst:120: (ERROR/3) Error in "code" directive:
+>    maximum 1 argument(s) allowed, 3 supplied.
+> 
+>    .. code::
+>      make check-qtest V=1
+> 
+
+pandoc doesn't complain, but rst.ninjs.org does. What tool did you use
+to find these? we should formalize a formatting checker for rst files.
+
+Actually, we should formalize building our RST docs at all...
+
+--js
+
+> Let's add the missing newlines, both for consistency and to
+> avoid the parsing errors.
+> 
 > Signed-off-by: Cleber Rosa <crosa@redhat.com>
-> ---
->  dtc             |  2 +-
->  scripts/qemu.py | 65 +++++++++++++++++++++++++++++++------------------
->  2 files changed, 42 insertions(+), 25 deletions(-)
-> 
-> diff --git a/dtc b/dtc
-> index 88f18909db..e54388015a 160000
-> --- a/dtc
-> +++ b/dtc
-> @@ -1 +1 @@
-> -Subproject commit 88f18909db731a627456f26d779445f84e449536
-> +Subproject commit e54388015af1fb4bf04d0bca99caba1074d9cc42
-> diff --git a/scripts/qemu.py b/scripts/qemu.py
-> index f099ce7278..7abe26de69 100644
-> --- a/scripts/qemu.py
-> +++ b/scripts/qemu.py
-> @@ -53,9 +53,9 @@ class QEMUMachineAddDeviceError(QEMUMachineError):
->      """
->  
->  class MonitorResponseError(qmp.qmp.QMPError):
-> -    '''
-> +    """
->      Represents erroneous QMP monitor reply
-> -    '''
-> +    """
 
-This seems obviously correct, as per the Python Dogma Handbook ...
-
->      def __init__(self, reply):
->          try:
->              desc = reply["error"]["desc"]
-> @@ -66,14 +66,15 @@ class MonitorResponseError(qmp.qmp.QMPError):
->  
->  
->  class QEMUMachine(object):
-> -    '''A QEMU VM
-> +    """
-> +    A QEMU VM
->  
->      Use this object as a context manager to ensure the QEMU process terminates::
->  
->          with VM(binary) as vm:
->              ...
->          # vm is guaranteed to be shut down here
-> -    '''
-> +    """
-
-As does this,,
-
->  
->      def __init__(self, binary, args=None, wrapper=None, name=None,
->                   test_dir="/var/tmp", monitor_address=None,
-> @@ -135,7 +136,9 @@ class QEMUMachine(object):
->          self._args.append(args)
->  
->      def add_fd(self, fd, fdset, opaque, opts=''):
-> -        '''Pass a file descriptor to the VM'''
-> +        """
-> +        Pass a file descriptor to the VM
-> +        """
-
-However, is it established practice among ne'er-do-wells to format
-one-line docstrings as three-liners? (And without punctuation to boot --
-for shame!)
-
-PEP257 suggests that one-liners are allowed, but doesn't seem to
-necessitate their usage. Does this kind of change have any kind of benefit?
-
->          options = ['fd=%d' % fd,
->                     'set=%d' % fdset,
->                     'opaque=%s' % opaque]
-> @@ -168,7 +171,9 @@ class QEMUMachine(object):
->  
->      @staticmethod
->      def _remove_if_exists(path):
-> -        '''Remove file object at path if it exists'''
-> +        """
-> +        Remove file object at path if it exists
-> +        """
->          try:
->              os.remove(path)
->          except OSError as exception:
-> @@ -271,7 +276,9 @@ class QEMUMachine(object):
->              raise
->  
->      def _launch(self):
-> -        '''Launch the VM and establish a QMP connection'''
-> +        """
-> +        Launch the VM and establish a QMP connection
-> +        """
->          devnull = open(os.path.devnull, 'rb')
->          self._pre_launch()
->          self._qemu_full_args = (self._wrapper + [self._binary] +
-> @@ -284,14 +291,18 @@ class QEMUMachine(object):
->          self._post_launch()
->  
->      def wait(self):
-> -        '''Wait for the VM to power off'''
-> +        """
-> +        Wait for the VM to power off
-> +        """
->          self._popen.wait()
->          self._qmp.close()
->          self._load_io_log()
->          self._post_shutdown()
->  
->      def shutdown(self):
-> -        '''Terminate the VM and clean up'''
-> +        """
-> +        Terminate the VM and clean up
-> +        """
->          if self.is_running():
->              try:
->                  self._qmp.cmd('quit')
-> @@ -315,7 +326,9 @@ class QEMUMachine(object):
->          self._launched = False
->  
->      def qmp(self, cmd, conv_keys=True, **args):
-> -        '''Invoke a QMP command and return the response dict'''
-> +        """
-> +        Invoke a QMP command and return the response dict
-> +        """
->          qmp_args = dict()
->          for key, value in args.items():
->              if conv_keys:
-> @@ -326,11 +339,11 @@ class QEMUMachine(object):
->          return self._qmp.cmd(cmd, args=qmp_args)
->  
->      def command(self, cmd, conv_keys=True, **args):
-> -        '''
-> +        """
->          Invoke a QMP command.
->          On success return the response dict.
->          On failure raise an exception.
-> -        '''
-> +        """
->          reply = self.qmp(cmd, conv_keys, **args)
->          if reply is None:
->              raise qmp.qmp.QMPError("Monitor is closed")
-> @@ -339,13 +352,17 @@ class QEMUMachine(object):
->          return reply["return"]
->  
->      def get_qmp_event(self, wait=False):
-> -        '''Poll for one queued QMP events and return it'''
-> +        """
-> +        Poll for one queued QMP events and return it
-> +        """
->          if len(self._events) > 0:
->              return self._events.pop(0)
->          return self._qmp.pull_event(wait=wait)
->  
->      def get_qmp_events(self, wait=False):
-> -        '''Poll for queued QMP events and return a list of dicts'''
-> +        """
-> +        Poll for queued QMP events and return a list of dicts
-> +        """
->          events = self._qmp.get_events(wait=wait)
->          events.extend(self._events)
->          del self._events[:]
-> @@ -353,7 +370,7 @@ class QEMUMachine(object):
->          return events
->  
->      def event_wait(self, name, timeout=60.0, match=None):
-> -        '''
-> +        """
->          Wait for specified timeout on named event in QMP; optionally filter
->          results by match.
->  
-> @@ -361,7 +378,7 @@ class QEMUMachine(object):
->          branch processing on match's value None
->             {"foo": {"bar": 1}} matches {"foo": None}
->             {"foo": {"bar": 1}} does not matches {"foo": {"baz": None}}
-> -        '''
-> +        """
->          def event_match(event, match=None):
->              if match is None:
->                  return True
-> @@ -394,29 +411,29 @@ class QEMUMachine(object):
->          return None
->  
->      def get_log(self):
-> -        '''
-> +        """
->          After self.shutdown or failed qemu execution, this returns the output
->          of the qemu process.
-> -        '''
-> +        """
->          return self._iolog
->  
->      def add_args(self, *args):
-> -        '''
-> +        """
->          Adds to the list of extra arguments to be given to the QEMU binary
-> -        '''
-> +        """
->          self._args.extend(args)
->  
->      def set_machine(self, machine_type):
-> -        '''
-> +        """
->          Sets the machine type
->  
->          If set, the machine type will be added to the base arguments
->          of the resulting QEMU command line.
-> -        '''
-> +        """
->          self._machine = machine_type
->  
->      def set_console(self, device_type=None):
-> -        '''
-> +        """
->          Sets the device type for a console device
->  
->          If set, the console device and a backing character device will
-> @@ -434,7 +451,7 @@ class QEMUMachine(object):
->          @param device_type: the device type, such as "isa-serial"
->          @raises: QEMUMachineAddDeviceError if the device type is not given
->                   and can not be determined.
-> -        '''
-> +        """
->          if device_type is None:
->              if self._machine is None:
->                  raise QEMUMachineAddDeviceError("Can not add a console device:"
-> 
-
-
+Reviewed-by: John Snow <jsnow@redhat.com>
 
