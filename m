@@ -1,61 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1g9pPV-0005x9-A2
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Oct 2018 06:38:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36764)
+	id 1gA8a8-0002tg-Ua
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Oct 2018 03:06:56 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51688)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <liq3ea@gmail.com>) id 1g9pPT-0005w4-8q
-	for qemu-trivial@nongnu.org; Tue, 09 Oct 2018 06:38:39 -0400
+	(envelope-from <thuth@redhat.com>) id 1gA8a6-0002sD-CW
+	for qemu-trivial@nongnu.org; Wed, 10 Oct 2018 03:06:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <liq3ea@gmail.com>) id 1g9pPS-0002Fg-FB
-	for qemu-trivial@nongnu.org; Tue, 09 Oct 2018 06:38:39 -0400
-Received: from mail-it1-x141.google.com ([2607:f8b0:4864:20::141]:51339)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <liq3ea@gmail.com>)
-	id 1g9pPM-00029j-VI; Tue, 09 Oct 2018 06:38:33 -0400
-Received: by mail-it1-x141.google.com with SMTP id 74-v6so1867509itw.1;
-	Tue, 09 Oct 2018 03:38:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=5jUMTIBvtJNDG/fPxToMDAmiSIaN3jxAIggjtq4GlGM=;
-	b=h3Fdb9MOVr+8uCKfrVEOkaF20NTwjm7pXeEuyRLm1vocwEAEWkfKF18MZWVuskzz8a
-	lXEt8kT9xO1SHDk7yjiw0LMu6wRxDgA+4W3MO8SVr+mB6Vt650ELMZkFdW299vR+Isp1
-	9vpnbY2B+0j/L+j0pqUo5p0g+nQIptX4LXO9qhoPvwVgXy6hVV8U84ryqTB2EP7C3TfM
-	BfjDsbqxsO8FLvifA4E/y9OnogdMxmCNPZSF6NRSv0yIS/ic1PBIye//VxnyLJGXL1az
-	NDJPvn4W2fA6al3jRjXQWA3hho9pV1zAAkI7JDHSh9i7h1UxUP5YEBETk3ogbD6u3ZAu
-	KdkQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=5jUMTIBvtJNDG/fPxToMDAmiSIaN3jxAIggjtq4GlGM=;
-	b=m4lIuGJn5Tv+iy8ZbaWwu4hPj4IU247Xhg3WcXmmxQ3K94MSxFyp+kkwiuO4mcN/i+
-	WWc6gMyFoDqJDKrnYjSSvuHH50zGufBCm2vR2jp0NGzF789YIuQSIhUwH5IOsIIgk9vL
-	FoGxXbWJnp2D6nGoPA3k1gkO4NlQS0XAAed+qwF4mGNzWiEhsh8wJv4MjoIaehDLSSjM
-	pIcurwKuOXoZ1cHbyuNHfZLTeIFxSv4U1Z+VusoPzbW6X4vJrK4FoARWGA75MHbMGAYA
-	pJMxw0I0cXZLVzBADFleQljP1f4RQf9r3ear33TM2U6mZKB8F3qjkKXpHO0B3n1OpupI
-	Vg+g==
-X-Gm-Message-State: ABuFfoiKQEM4IoYqYfsR8iU2WPgAnd9sUfRyz0SPeVlL+V/jhDlTxWeT
-	ReHNxTcX1wGbLrJHpXLUrFDFm6vtdLDu0XkNuEw=
-X-Google-Smtp-Source: ACcGV61sOxVyu8A9ucqsdNRxplPA3MLNa2JTekWFAr8lXYYnPxGR/7F5ceisGQo0bzLNpFYBjtyj2l4X6bHqBQ/JDZ4=
-X-Received: by 2002:a02:8a5a:: with SMTP id
-	e26-v6mr20304644jal.89.1539081512226; 
-	Tue, 09 Oct 2018 03:38:32 -0700 (PDT)
-MIME-Version: 1.0
-References: <1539080467-2976-1-git-send-email-liq3ea@gmail.com>
-	<CAFEAcA9HOhtPbAOrbvRQfrnfcq14WuW+a5w=EXG3+-9t6Wfx5Q@mail.gmail.com>
-In-Reply-To: <CAFEAcA9HOhtPbAOrbvRQfrnfcq14WuW+a5w=EXG3+-9t6Wfx5Q@mail.gmail.com>
-From: Li Qiang <liq3ea@gmail.com>
-Date: Tue, 9 Oct 2018 18:37:56 +0800
-Message-ID: <CAKXe6SJGpJVeaqs5boqWZqtVjKornk6TEEWhUd7TFnnfb-eOSg@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	Qemu Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000d1163d0577c9565e"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::141
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] memory.h: fix types in
- comments
+	(envelope-from <thuth@redhat.com>) id 1gA8a5-0004Fd-Ky
+	for qemu-trivial@nongnu.org; Wed, 10 Oct 2018 03:06:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33764)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gA8a1-0004CG-EW; Wed, 10 Oct 2018 03:06:49 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id AA058307CEB1;
+	Wed, 10 Oct 2018 07:06:48 +0000 (UTC)
+Received: from thuth.com (dhcp-200-199.str.redhat.com [10.33.200.199])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7A22918233;
+	Wed, 10 Oct 2018 07:06:44 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: qemu-trivial@nongnu.org,
+	philmd@redhat.com
+Date: Wed, 10 Oct 2018 09:06:38 +0200
+Message-Id: <1539155198-5873-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <f8c0f859-2d70-b53e-a39a-48c2bf253be6@redhat.com>
+References: <f8c0f859-2d70-b53e-a39a-48c2bf253be6@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.44]);
+	Wed, 10 Oct 2018 07:06:48 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH v2] target/cris/translate: Get rid of
+ qemu_log_separate()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,73 +49,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Oct 2018 10:38:40 -0000
+X-List-Received-Date: Wed, 10 Oct 2018 07:06:55 -0000
 
---000000000000d1163d0577c9565e
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The gen_BUG() function calls already cpu_abort(), which prints the
+information to stderr and the log already. So instead of additionally
+printing the dc->pc via fprintf() and qemu_log here, too, we can
+simply pass this information to cpu_abort() instead.
 
-Peter Maydell <peter.maydell@linaro.org> =E4=BA=8E2018=E5=B9=B410=E6=9C=889=
-=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=886:26=E5=86=99=E9=81=93=EF=BC=
-=9A
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ v2: Use "pc=" instead of "dc->pc=" in the string as suggested by Phil
 
-> On 9 October 2018 at 11:21, Li Qiang <liq3ea@gmail.com> wrote:
-> > Signed-off-by: Li Qiang <liq3ea@gmail.com>
-> > ---
-> >  include/exec/memory.h | 6 +++---
-> >  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> Thanks. Contents of patch
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->
-> but the commit message should say "fix typos", not "fix types"
-> (a 'typo' is a typing mistake; a 'type' is something like "uint32_t".)
->
->
-Indeed, hope the maintainer can fix this typo when queuing this patch, :)
+ target/cris/translate.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-In additon, Cc: qemu-trivial@nongnu.org
+diff --git a/target/cris/translate.c b/target/cris/translate.c
+index 4ae1c04..11b2c11 100644
+--- a/target/cris/translate.c
++++ b/target/cris/translate.c
+@@ -137,11 +137,7 @@ typedef struct DisasContext {
+ 
+ static void gen_BUG(DisasContext *dc, const char *file, int line)
+ {
+-    fprintf(stderr, "BUG: pc=%x %s %d\n", dc->pc, file, line);
+-    if (qemu_log_separate()) {
+-        qemu_log("BUG: pc=%x %s %d\n", dc->pc, file, line);
+-    }
+-    cpu_abort(CPU(dc->cpu), "%s:%d\n", file, line);
++    cpu_abort(CPU(dc->cpu), "%s:%d pc=%x\n", file, line, dc->pc);
+ }
+ 
+ static const char *regnames_v32[] =
+-- 
+1.8.3.1
 
-
->
-> thanks
-> -- PMM
->
-
---000000000000d1163d0577c9565e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><br><div class=3D"gmail_quote"><div dir=3D"ltr">Peter =
-Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linar=
-o.org</a>&gt; =E4=BA=8E2018=E5=B9=B410=E6=9C=889=E6=97=A5=E5=91=A8=E4=BA=8C=
- =E4=B8=8B=E5=8D=886:26=E5=86=99=E9=81=93=EF=BC=9A<br></div><blockquote cla=
-ss=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;pa=
-dding-left:1ex">On 9 October 2018 at 11:21, Li Qiang &lt;<a href=3D"mailto:=
-liq3ea@gmail.com" target=3D"_blank">liq3ea@gmail.com</a>&gt; wrote:<br>
-&gt; Signed-off-by: Li Qiang &lt;<a href=3D"mailto:liq3ea@gmail.com" target=
-=3D"_blank">liq3ea@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 include/exec/memory.h | 6 +++---<br>
-&gt;=C2=A0 1 file changed, 3 insertions(+), 3 deletions(-)<br>
-<br>
-Thanks. Contents of patch<br>
-Reviewed-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" =
-target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
-<br>
-but the commit message should say &quot;fix typos&quot;, not &quot;fix type=
-s&quot;<br>
-(a &#39;typo&#39; is a typing mistake; a &#39;type&#39; is something like &=
-quot;uint32_t&quot;.)<br>
-<br></blockquote><div><br></div><div>Indeed, hope the maintainer can fix th=
-is typo when queuing this patch, :)</div><div><br></div><div>In additon, Cc=
-:=C2=A0<a href=3D"mailto:qemu-trivial@nongnu.org" target=3D"_blank">qemu-tr=
-ivial@nongnu.org</a></div><div>=C2=A0</div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div></div>
-
---000000000000d1163d0577c9565e--
 
