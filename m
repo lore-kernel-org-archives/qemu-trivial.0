@@ -1,54 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gAL4I-0007tJ-Gu
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Oct 2018 16:26:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40974)
+	id 1gALWz-000716-K3
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Oct 2018 16:56:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:44539)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <xypron.glpk@gmx.de>) id 1gAJdU-0005B5-W4
-	for qemu-trivial@nongnu.org; Wed, 10 Oct 2018 14:55:09 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1gALWx-000703-TJ
+	for qemu-trivial@nongnu.org; Wed, 10 Oct 2018 16:56:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <xypron.glpk@gmx.de>) id 1gAJdU-00068s-5k
-	for qemu-trivial@nongnu.org; Wed, 10 Oct 2018 14:55:08 -0400
-Received: from mout.gmx.net ([212.227.15.18]:38343)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <xypron.glpk@gmx.de>)
-	id 1gAJdP-00066Q-Li; Wed, 10 Oct 2018 14:55:03 -0400
-Received: from LT02.fritz.box ([95.222.187.17]) by mail.gmx.com (mrgmx003
-	[212.227.17.184]) with ESMTPSA (Nemesis) id 0M54L0-1fkY1K207y-00zIO0;
-	Wed, 10 Oct 2018 20:55:00 +0200
-Received: from LT02.fritz.box ([95.222.187.17]) by mail.gmx.com (mrgmx003
-	[212.227.17.184]) with ESMTPSA (Nemesis) id 0M54L0-1fkY1K207y-00zIO0;
-	Wed, 10 Oct 2018 20:55:00 +0200
-From: Heinrich Schuchardt <xypron.glpk@gmx.de>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Heinrich Schuchardt <xypron.glpk@gmx.de>
-Date: Wed, 10 Oct 2018 20:54:45 +0200
-Message-Id: <20181010185445.10290-1-xypron.glpk@gmx.de>
-X-Mailer: git-send-email 2.19.1
+	(envelope-from <ehabkost@redhat.com>) id 1gALWx-0002Dj-6Y
+	for qemu-trivial@nongnu.org; Wed, 10 Oct 2018 16:56:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60216)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1gALWe-00008L-Mm; Wed, 10 Oct 2018 16:56:13 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A06A030024D8;
+	Wed, 10 Oct 2018 20:56:11 +0000 (UTC)
+Received: from localhost (ovpn-117-52.phx2.redhat.com [10.3.117.52])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2536F5C688;
+	Wed, 10 Oct 2018 20:56:10 +0000 (UTC)
+Date: Wed, 10 Oct 2018 17:56:09 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Li Qiang <liq3ea@163.com>
+Cc: marcel.apfelbaum@gmail.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20181010205609.GN5738@habkost.net>
+References: <20181010161025.34796-1-liq3ea@163.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:iXB/pkhqGiuNR5s7f7RQ0Xvcvfs144WPqFWeYZHecig6XrVMdwl
-	dgmdwBAA1MeuWRWuNN3Muw6jtJRsW/PUIDJ4igzQcE6Cloi1VyM6SbH+IYxz2e1l0cfgL21
-	ss4HonjVZvTOYIJhI2lBgLDl7Nn+mEQ8r1kmjMCYP3qCmDEg49ZRL0X/oqxkPBjbn/SuStB
-	ro+4pYPBjaEJLd3ovzigg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:BbKaM8EdanY=:i9FC5WB7QOpwTGlKAL1Cs1
-	XOSc8n3T2UI3V3aJdHM0prv2FPa+8mJGQEinhSDgOFzZyN/AJKUab/URBhwTww4EaI2QK9udt
-	p3culn8iMwOQeo4G5u44FH+8Rt6aCLX0VNgEMHjiUXkElad0RNKIgypWwdbCYrcjPGsmPs4Z8
-	RsuvL2Bit0dwFAkHT1UoV/ZeZ+rFSmhTCItksa/UWc81N6fVAOGEpByy54HX4kHxPpJOeP9xf
-	g0BwHslhl7MUMIkz9lnT2hDXyug2anvib6PknOf0nR/4POuhMA+ufSRwwFizvPxuALv8uU2T5
-	LayaS33DX96J4zQHUcIeNSzFTwXEK6g7xaX5MYSwxRR992KnVAX/Jru4qxwjms/EBNYiu0UAD
-	i0OSrjZ+CCSj+tCmyXZPJedPbh+aLY9ULV0CBLAP8yG1xGRzxg5nqaUfSkrnmig9V9FUCfbEe
-	PXL7IQnOyKjVhL85K30G1GDM5/9nw5qd/666a+QWhfC9n8dszWDLNJQH+GphV69yHKnAu+3f8
-	q23SzJeED/Ccedv0iQi9eo2wucCSxkgVNMoVOm5kg9wGMOv54gCiPmMJF9HHHW8HaXmRt+hkJ
-	0hOK5aZehpbzd5P+FVq4CENLvju6GRR+ofedbTXXIt+nmnu5u/JuII6j8gBAKXXU3L6WguWY7
-	gQ4q7Q+mUVuWWfgHaLXrYEu1uxaTMFJf+dSl8kZZGMa5bcMHGKPvxQ4Nl7UqlZBk8Obuw0/5+
-	f90Ga3dZyfxnESm2y7LfkQ+DTYMjp/W94O1Yf2ZcW0G4InsdilcFrx5FNMBOMZe+tVofLomvU
-	it2nAhvtL8IhJrdUR/A2TZDnPylTw==
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20181010161025.34796-1-liq3ea@163.com>
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.43]);
+	Wed, 10 Oct 2018 20:56:11 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.15.18
-X-Mailman-Approved-At: Wed, 10 Oct 2018 16:26:53 -0400
-Subject: [Qemu-trivial] [PATCH 1/1] hw/arm/virt: provide a model property in
- the fdt
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] machine: fix a typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,32 +50,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Oct 2018 18:55:09 -0000
+X-List-Received-Date: Wed, 10 Oct 2018 20:56:32 -0000
 
-Device trees in the Linux kernel generally provide a model property. Some
-software like the Debian flash-kernel package rely on this property to
-identify boards.
+On Wed, Oct 10, 2018 at 09:10:25AM -0700, Li Qiang wrote:
+> Cc: qemu-trivial@nongnu.org
+> Signed-off-by: Li Qiang <liq3ea@163.com>
 
-The patch sets the model property for the virt boards to 'QEMU virt'.
+Queued, thanks.
 
-Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
----
- hw/arm/virt.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 281ddcdf6e..abe366895a 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -200,6 +200,7 @@ static void create_fdt(VirtMachineState *vms)
-     vms->fdt = fdt;
- 
-     /* Header */
-+    qemu_fdt_setprop_string(fdt, "/", "model", "QEMU virt");
-     qemu_fdt_setprop_string(fdt, "/", "compatible", "linux,dummy-virt");
-     qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
-     qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
 -- 
-2.19.1
-
+Eduardo
 
