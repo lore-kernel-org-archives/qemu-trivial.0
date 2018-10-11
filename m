@@ -1,50 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gAPMC-00009W-Q0
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Oct 2018 21:01:40 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34951)
+	id 1gARzo-0003qt-AP
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Oct 2018 23:50:44 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36697)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1gAPMA-00007o-4M
-	for qemu-trivial@nongnu.org; Wed, 10 Oct 2018 21:01:38 -0400
+	(envelope-from <xypron.glpk@gmx.de>) id 1gARzm-0003qD-5E
+	for qemu-trivial@nongnu.org; Wed, 10 Oct 2018 23:50:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1gAPM9-0006A9-CU
-	for qemu-trivial@nongnu.org; Wed, 10 Oct 2018 21:01:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:20200)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1gAPM3-00068T-Bo; Wed, 10 Oct 2018 21:01:31 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8ED0A30001D7;
-	Thu, 11 Oct 2018 01:01:29 +0000 (UTC)
-Received: from [10.10.121.240] (ovpn-121-240.rdu2.redhat.com [10.10.121.240])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A6DCD80D96;
-	Thu, 11 Oct 2018 01:01:28 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	=?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20181010222944.29304-1-f4bug@amsat.org>
-	<20181010222944.29304-3-f4bug@amsat.org>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <ffec53e7-9471-bb6f-d438-11a531e748dc@redhat.com>
-Date: Wed, 10 Oct 2018 20:01:27 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
+	(envelope-from <xypron.glpk@gmx.de>) id 1gARzl-000566-EU
+	for qemu-trivial@nongnu.org; Wed, 10 Oct 2018 23:50:42 -0400
+Received: from mout.gmx.net ([212.227.17.21]:35263)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <xypron.glpk@gmx.de>)
+	id 1gARzh-00051C-5O; Wed, 10 Oct 2018 23:50:37 -0400
+Received: from LT02.fritz.box ([95.222.187.17]) by mail.gmx.com (mrgmx103
+	[212.227.17.174]) with ESMTPSA (Nemesis) id 0MTBfe-1gHZYl49xO-00S7lL;
+	Thu, 11 Oct 2018 05:50:34 +0200
+Received: from LT02.fritz.box ([95.222.187.17]) by mail.gmx.com (mrgmx103
+	[212.227.17.174]) with ESMTPSA (Nemesis) id 0MTBfe-1gHZYl49xO-00S7lL;
+	Thu, 11 Oct 2018 05:50:34 +0200
+From: Heinrich Schuchardt <xypron.glpk@gmx.de>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Heinrich Schuchardt <xypron.glpk@gmx.de>
+Date: Thu, 11 Oct 2018 05:50:26 +0200
+Message-Id: <20181011035026.23517-1-xypron.glpk@gmx.de>
+X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20181010185445.10290-1-xypron.glpk@gmx.de>
+References: <20181010185445.10290-1-xypron.glpk@gmx.de>
 MIME-Version: 1.0
-In-Reply-To: <20181010222944.29304-3-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.43]);
-	Thu, 11 Oct 2018 01:01:29 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:l2Oz9NoUti0aOdNumimRmZqmqde0CJJPl2babal3cETfPOT49Ag
+	UbPx1MnvwgwL1WT3uQ/WsMQb8nCdspxTaSw/O6vIDNOtnulByNRMK4xu8snUOz4HShUge7V
+	SIi9ZSiZvlydYyAy5YDj0F7a5ZVpXEQQHHsKTnmFin9WUfLW4G6UsEtFw8C+FJkSqERWUHx
+	y9sgP/rcjwDYtKdadjI1w==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:zJzduwCZSLs=:+gyVEpeVnOLP7yqshNwsOM
+	ldoS/djttjVvsYI3GX3214MPvMMCcB1UiS6dly8sh43b7tkaP3uEtuU7ujgiA6j64Yk5tuPQz
+	gQU/7LgYzq8PJ7oISLAabEMUZzN/l2Er2sGTYkd5BSbCxxqgYoQgsg+qFa5ZWDe89gSFTR1OG
+	M1Th4TdCVeiRMpubrFyabdkPoW2k+y57df+9XOYO/5yNRyHhe6AOZmyMa/SkH9vXtWIqpuf5f
+	hz/BqsCMDwt96uC5pmYKHUIaYxajtO7XXhMA3xj4ApMGVzCRFNQExcdnONhA8tF6EYXIUzcOB
+	WWBoyqiCqAneZ34n22fyh/kPY5FuBaSo+hy84/QEZM0OauY604Qkh8cXcu+bNCP02lGrDdX+O
+	aT2zSTwfvuyci+osymvZgJkKrvG8ayiNaDYyx+cE6ZGCsMH5b0YmdVHf+7LsbD/54Rq7fanZO
+	Ock74E6ebnY4rgUS2MX/+ruQNb305wrVBhKU7rkv4s8qRg43suWqn4vBhkZKodlDgx8beNBon
+	E46Qi5JTAXIFz92Po2bOLC21XqrcjxjABEqMiR6UJOYauGauPwHuP+ycjjs6ztFYvH9bNp89G
+	Nve8tcZa+nVp52CB0csefB2ATeFTqjhppUrXShdTDzDARlwss8drCI0Ey0suLVrpIc1Nr60Ol
+	hyGYEZpgKmP6MB3OGXERIfpUfBaw4014qlRGrJSUmtMjddNJsQ0FDWPCp6Qoum+cOVnZPizSh
+	xtLpbcztLCi08yVUjtb1BK4P0vXhpMvJstdSjn5RfGH4JRm2TXoNAI+yu40XnnCngCKl5Gzw8
+	D1/Mjm/QGeE+BYlJQWcFniUgggcXg==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH 2/2] mailmap: Split 'prefered emails'
- from 'original git import' section
+X-Received-From: 212.227.17.21
+Subject: [Qemu-trivial] [PATCH v2 1/1] hw/arm/virt: provide a model property
+ in the fdt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,55 +61,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Oct 2018 01:01:39 -0000
+X-List-Received-Date: Thu, 11 Oct 2018 03:50:42 -0000
 
-On 10/10/18 5:29 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+According to the "Devicetree Specification, Release v0.2" 'model' is a
+required property of the root node.
 
-In the subject: s/prefered/preferred/
+Some software like the Debian flash-kernel package rely on this property
+to identify boards.
 
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->   .mailmap | 21 +++++++++++++--------
->   1 file changed, 13 insertions(+), 8 deletions(-)
->=20
+The patch sets the model property to 'qemu,virt'.
 
-> +
-> +# This section is to track prefered (or last up to date) email for peo=
-ple
+Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+---
+v2
+	use the recommended format of the model property
+---
+ hw/arm/virt.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-and again
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 281ddcdf6e..abe366895a 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -200,6 +200,7 @@ static void create_fdt(VirtMachineState *vms)
+     vms->fdt = fdt;
+ 
+     /* Header */
++    qemu_fdt_setprop_string(fdt, "/", "model", "qemu,virt");
+     qemu_fdt_setprop_string(fdt, "/", "compatible", "linux,dummy-virt");
+     qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
+     qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
+-- 
+2.19.1
 
-> +# that uses (or had use) various emails.
-
-that use (or have used)
-
-> +# Example can be people changing from companies, or companies changing=
- their
-> +# name.
-
-Examples include people changing companies, or companies changing their=20
-name.
-
-> +Aleksandar Markovic <amarkovic@wavecomp.com> <aleksandar.markovic@imgt=
-ec.com>
-> +Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori <aliguori@us.i=
-bm.com>
-> +James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
-> +Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
-> +Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
-> +Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
-> +
-> +
->   # Next, translate a few commits where mailman rewrote the From: line =
-due
->   # to strict SPF, although we prefer to avoid adding more entries like=
- that.
->   Ed Swierk <eswierk@skyportsystems.com> Ed Swierk via Qemu-devel <qemu=
--devel@nongnu.org>
->=20
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
 
