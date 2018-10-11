@@ -1,61 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gAYJ9-0002v2-Js
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Oct 2018 06:35:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43824)
+	id 1gAZrJ-0007o6-Jl
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Oct 2018 08:14:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38335)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gAYJ7-0002uX-N6
-	for qemu-trivial@nongnu.org; Thu, 11 Oct 2018 06:35:06 -0400
+	(envelope-from <liq3ea@gmail.com>) id 1gAZrI-0007nF-3a
+	for qemu-trivial@nongnu.org; Thu, 11 Oct 2018 08:14:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gAYJ4-0001xe-J2
-	for qemu-trivial@nongnu.org; Thu, 11 Oct 2018 06:35:05 -0400
-Received: from mail-wr1-f65.google.com ([209.85.221.65]:34323)
+	(envelope-from <liq3ea@gmail.com>) id 1gAZrH-0004p3-Fo
+	for qemu-trivial@nongnu.org; Thu, 11 Oct 2018 08:14:28 -0400
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:44282)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gAYJ4-0001wI-BA
-	for qemu-trivial@nongnu.org; Thu, 11 Oct 2018 06:35:02 -0400
-Received: by mail-wr1-f65.google.com with SMTP id l6-v6so8670962wrt.1
-	for <qemu-trivial@nongnu.org>; Thu, 11 Oct 2018 03:35:02 -0700 (PDT)
+	(Exim 4.71) (envelope-from <liq3ea@gmail.com>)
+	id 1gAZr8-0004lm-6r; Thu, 11 Oct 2018 08:14:19 -0400
+Received: by mail-pg1-x542.google.com with SMTP id g2-v6so4086044pgu.11;
+	Thu, 11 Oct 2018 05:14:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=oJPUw9eGc+c4/HJRXmrY6G+YLqLvGXQU1VtpKbbv9Ws=;
+	b=f59z0haiqB8ykio+6dC0Bra2PCsXg7GRZhatxPyDW3+vJP4WOgWS6k/77DaOjcxiEc
+	zWf6CzMlr8qLpTwciSD+axNg9crrsiXIbxsBRiRbW+h0DdV9slNHHOM1vPa6wBBxVmpP
+	fWPX+NHpmEk128+wB7YeS+1SY7ay8i1rfd2BcSA7XawvUbaWlVXMaXLv5SCY1LM7eWI4
+	1w66qZK73RIggRywb0tM/kGpfSAfONwOdDkoWsaIurJAfFRI+wCkRAn8++9ZvVRAF6T+
+	IMseYFYB2y5Yf+q7AX0QCX5587VeQkIBYnAX3jM1HEv6xA8xO2aIJprcf4Tu0wpw0YEU
+	G2rQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=h8gM0DVddxE8Q47Xpt4/6FqWhXXs09QMSRWTZ/Tfx7g=;
-	b=XahGwYMswnNrLPS5vEULe8XqnOPBRhv82qawHJlDN/ZFowWFox69kbQugol+JMbhrO
-	BAA5pXjzP4UNV7NVCbLVvgHd4Ba1+eHzrJ2VgYC2rvcN+0VDFhUxsl639gbrbFzk3ySD
-	vf/qEb6X7mqXKQq1XGsno7XEnw4fPd6JNdmfMyZtoNEn0pN+VJPy5THvpmq4GGfRItJe
-	8H5ZhHiehujGJn7iJZ7OmvnXz1hZQvIPrAFMwEB8Axze3R+X499ep49h4eFoOSL/JSCd
-	UQwWvo4s3EUdbJdtvpxhL6eUPXNmL6RnNPMcBNvU/KDQZAwf7p4za0K1Hbm3d5e04TRL
-	ultg==
-X-Gm-Message-State: ABuFfohhzx5J5g+rUC+3h74qVFpH5CcY5yK/R1RO/MhaT9Gu+vLYIZJ4
-	DFHxjYSGmBRmOnogL87+ZI4d8Q==
-X-Google-Smtp-Source: ACcGV62AQMTSRrindgaXxyb4K9kD2gomWTJgatJPZQ+m8gyJcyhSEORxWs1ArX33p5c6sjUbh4irDw==
-X-Received: by 2002:adf:a29d:: with SMTP id
-	s29-v6mr1061372wra.100.1539254101258; 
-	Thu, 11 Oct 2018 03:35:01 -0700 (PDT)
-Received: from [192.168.2.33] (62.red-88-24-165.staticip.rima-tde.net.
-	[88.24.165.62]) by smtp.gmail.com with ESMTPSA id
-	y76-v6sm10909902wmd.37.2018.10.11.03.35.00
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=oJPUw9eGc+c4/HJRXmrY6G+YLqLvGXQU1VtpKbbv9Ws=;
+	b=j4fe/0I5YtLMcZ2OuWSBUD+wis/TBJJBVowucjCu404TSGSxcupfWXwVSPsB7AhnPX
+	3wFh/IvW/erXffy519yfxBZwFJBb9iWPjbXTtoUrWPn5qqqlivin7346pQSX4MODNzsl
+	QdWTNMDhx1+LOaYuVgMTDP7X7TYcbT5cdwbBDGSQft0muN2m7iPQY7Kq57gme6WKgPnE
+	9bVD4xH/lOjlmAm92+sCe+dboFd/kle95tLwZSSSMmMqcNMoztmnEi1b9JU95RxBG8nZ
+	cmCGcgFV1JZx4ESuQjgVQBwESTagTPelWLk6qnYRtGsowgv5Vw6e00bLL889TRcrhEMD
+	hIdg==
+X-Gm-Message-State: ABuFfogLwW4ez+UoJrSTktbNei3s2IBJnFsQ1d5Zy3tAawhk+1rVp6JX
+	D9dHsbD9yubEnIjT84iYWVw=
+X-Google-Smtp-Source: ACcGV63ayl9P5HIMosd5C2xXbU+VBMEx7RVFjj7H58Lj4Rk8TiDiS8UBP6NMfR2Ori4EfteFkso/gg==
+X-Received: by 2002:a65:5083:: with SMTP id
+	r3-v6mr1165286pgp.355.1539260056690; 
+	Thu, 11 Oct 2018 05:14:16 -0700 (PDT)
+Received: from localhost.localdomain.localdomain ([103.65.40.65])
+	by smtp.gmail.com with ESMTPSA id
+	x186-v6sm39410691pfx.152.2018.10.11.05.14.14
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 11 Oct 2018 03:35:00 -0700 (PDT)
-To: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: mst@redhat.com
-References: <20181011082508.29014-1-maozhongyi@cmss.chinamobile.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <e8a3e14b-3bac-603f-74c5-fa77b1bc26c2@redhat.com>
-Date: Thu, 11 Oct 2018 12:34:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
-MIME-Version: 1.0
-In-Reply-To: <20181011082508.29014-1-maozhongyi@cmss.chinamobile.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.65
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] pci_bridge: fix typo in
- comment
+	Thu, 11 Oct 2018 05:14:16 -0700 (PDT)
+From: Li Qiang <liq3ea@gmail.com>
+To: mst@redhat.com,
+	marcel.apfelbaum@gmail.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Li Qiang <liq3ea@gmail.com>
+Date: Thu, 11 Oct 2018 05:14:03 -0700
+Message-Id: <1539260043-4264-1-git-send-email-liq3ea@gmail.com>
+X-Mailer: git-send-email 1.8.3.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::542
+Subject: [Qemu-trivial] [PATCH] i440fx: use ARRAY_SIZE for pam_regions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,29 +66,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Oct 2018 10:35:06 -0000
+X-List-Received-Date: Thu, 11 Oct 2018 12:14:28 -0000
 
-On 11/10/2018 10:25, Mao Zhongyi wrote:
-> Signed-off-by: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
+Cc: qemu-trivial@nongnu.org 
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Li Qiang <liq3ea@gmail.com>
+---
+ hw/pci-host/piix.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> ---
->  hw/pci/pci_bridge.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/pci/pci_bridge.c b/hw/pci/pci_bridge.c
-> index 90f7208856..da8daa3ff2 100644
-> --- a/hw/pci/pci_bridge.c
-> +++ b/hw/pci/pci_bridge.c
-> @@ -399,7 +399,7 @@ void pci_bridge_exitfn(PCIDevice *pci_dev)
->  
->  /*
->   * before qdev initialization(qdev_init()), this function sets bus_name and
-> - * map_irq callback which are necessry for pci_bridge_initfn() to
-> + * map_irq callback which are necessary for pci_bridge_initfn() to
->   * initialize bus.
->   */
->  void pci_bridge_map_irq(PCIBridge *br, const char* bus_name,
-> 
+diff --git a/hw/pci-host/piix.c b/hw/pci-host/piix.c
+index 0e608347c1..230d5d2ea3 100644
+--- a/hw/pci-host/piix.c
++++ b/hw/pci-host/piix.c
+@@ -142,7 +142,7 @@ static void i440fx_update_memory_mappings(PCII440FXState *d)
+     PCIDevice *pd = PCI_DEVICE(d);
+ 
+     memory_region_transaction_begin();
+-    for (i = 0; i < 13; i++) {
++    for (i = 0; i < ARRAY_SIZE(d->pam_regions); i++) {
+         pam_update(&d->pam_regions[i], i,
+                    pd->config[I440FX_PAM + (DIV_ROUND_UP(i, 2))]);
+     }
+@@ -401,7 +401,7 @@ PCIBus *i440fx_init(const char *host_type, const char *pci_type,
+ 
+     init_pam(dev, f->ram_memory, f->system_memory, f->pci_address_space,
+              &f->pam_regions[0], PAM_BIOS_BASE, PAM_BIOS_SIZE);
+-    for (i = 0; i < 12; ++i) {
++    for (i = 0; i < ARRAY_SIZE(f->pam_regions) - 1; ++i) {
+         init_pam(dev, f->ram_memory, f->system_memory, f->pci_address_space,
+                  &f->pam_regions[i+1], PAM_EXPAN_BASE + i * PAM_EXPAN_SIZE,
+                  PAM_EXPAN_SIZE);
+-- 
+2.11.0
+
 
