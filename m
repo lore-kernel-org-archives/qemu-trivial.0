@@ -1,90 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gArZy-00023M-76
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Oct 2018 03:09:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35823)
+	id 1gCN30-00051c-By
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Oct 2018 06:57:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33100)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gArZt-00021M-2d
-	for qemu-trivial@nongnu.org; Fri, 12 Oct 2018 03:09:41 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1gCN2y-0004zl-UC
+	for qemu-trivial@nongnu.org; Tue, 16 Oct 2018 06:57:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gArZs-0000I7-Du
-	for qemu-trivial@nongnu.org; Fri, 12 Oct 2018 03:09:41 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53500)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gArZm-00005K-6P; Fri, 12 Oct 2018 03:09:34 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 307C630023A1;
-	Fri, 12 Oct 2018 07:09:33 +0000 (UTC)
-Received: from thuth.remote.csb (dhcp-200-199.str.redhat.com [10.33.200.199])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6B6541001947;
-	Fri, 12 Oct 2018 07:09:30 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20181012002113.2452-1-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <ea92c33f-9d85-fbea-68a9-4554367e3542@redhat.com>
-Date: Fri, 12 Oct 2018 09:09:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	(envelope-from <peter.maydell@linaro.org>) id 1gCN2y-0006zR-24
+	for qemu-trivial@nongnu.org; Tue, 16 Oct 2018 06:57:56 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:32882)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gCN2x-0006yI-QR
+	for qemu-trivial@nongnu.org; Tue, 16 Oct 2018 06:57:55 -0400
+Received: by mail-oi1-x241.google.com with SMTP id a203-v6so17663292oib.0
+	for <qemu-trivial@nongnu.org>; Tue, 16 Oct 2018 03:57:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc; bh=6fNQlT7a7uh/drHg7yE/0K0I4l0ifSOqfiZXxWYhEZs=;
+	b=YYAZAzwCY6xD1jIsU04ZMHJi/poVonhRTtL+Iv7Q64NGwB3Nhuv9b7d2OgQV5c9M5D
+	+27hFeL0o1Uk+VZ1ROe4BvIdvr2G8zOkymKt9UZF4tinSrHwim+SmUOIPFkz9vTeS9ip
+	ILFGn5iJBFIZW4+YdoU/fuP8/DDwkEmK+vGWw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc;
+	bh=6fNQlT7a7uh/drHg7yE/0K0I4l0ifSOqfiZXxWYhEZs=;
+	b=kwE0AmYyL3uHfC+vqB3etqjs94alrFxWIz/KAEQSiVEzipdOywnjgQGr8URRRYxKuf
+	x0ypAU8pGO22/dVDW+/LfXhLB/hH6ALFnJl3fTgDMHS9ef+yurxtFaWVJTGKkz5Z6857
+	HhMVYWnF/djQKJm0tv3Xet7fQv5a5T6flbH0WYbTzqOwsjZhoeSvRjZPVT5BwYjCilwE
+	KAxfVbfq1l/cB7HS985PdnV3SDR2phPCJFozZJUrVmB6OAZHMXYdZuF2tChOofWw+c0L
+	swI0uhcf1+GQEjp7eGlJtUO805syEGb62fXqqmsd5dCZdAwiDk6mvwpxhfgVirxv6LHb
+	5cxg==
+X-Gm-Message-State: ABuFfoiu3iscKHRlzjvNhz6ZaifqUSFxkA9EKev3YmQv9ZG1xe6fFrxu
+	//eT4WeMZjJ8/sKTZS6c2Fv720HcuMs6S9KxpYoqVg==
+X-Google-Smtp-Source: ACcGV61z8nxC6MDn5b9haruPXjIpobs8LUK5CKkhySdYneDwHJFJyFu3srRT8hOTkjgKom22tpQtXs3rKN2FLzl3QAM=
+X-Received: by 2002:aca:53c4:: with SMTP id
+	h187-v6mr10480091oib.48.1539687474592; 
+	Tue, 16 Oct 2018 03:57:54 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20181012002113.2452-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.47]);
-	Fri, 12 Oct 2018 07:09:33 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] gdbstub: Remove unused include
+Received: by 2002:a9d:7c90:0:0:0:0:0 with HTTP; Tue, 16 Oct 2018 03:57:34
+	-0700 (PDT)
+In-Reply-To: <20181011035026.23517-1-xypron.glpk@gmx.de>
+References: <20181010185445.10290-1-xypron.glpk@gmx.de>
+	<20181011035026.23517-1-xypron.glpk@gmx.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 16 Oct 2018 11:57:34 +0100
+Message-ID: <CAFEAcA-95cCzjw6opxqCPvQjNOdRBh+ive3+G-SE-04c3qKF5Q@mail.gmail.com>
+To: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::241
+Subject: Re: [Qemu-trivial] [PATCH v2 1/1] hw/arm/virt: provide a model
+ property in the fdt
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -96,28 +67,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Oct 2018 07:09:41 -0000
+X-List-Received-Date: Tue, 16 Oct 2018 10:57:57 -0000
 
-On 2018-10-12 02:21, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+On 11 October 2018 at 04:50, Heinrich Schuchardt <xypron.glpk@gmx.de> wrote:
+> According to the "Devicetree Specification, Release v0.2" 'model' is a
+> required property of the root node.
+>
+> Some software like the Debian flash-kernel package rely on this property
+> to identify boards.
+>
+> The patch sets the model property to 'qemu,virt'.
+>
+> Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
 > ---
->  gdbstub.c | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/gdbstub.c b/gdbstub.c
-> index c8478de8f5..c4e4f9f082 100644
-> --- a/gdbstub.c
-> +++ b/gdbstub.c
-> @@ -20,7 +20,6 @@
->  #include "qapi/error.h"
->  #include "qemu/error-report.h"
->  #include "qemu/cutils.h"
-> -#include "cpu.h"
->  #include "trace-root.h"
->  #ifdef CONFIG_USER_ONLY
->  #include "qemu.h"
+> v2
+>         use the recommended format of the model property
+> ---
+>  hw/arm/virt.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 281ddcdf6e..abe366895a 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -200,6 +200,7 @@ static void create_fdt(VirtMachineState *vms)
+>      vms->fdt = fdt;
+>
+>      /* Header */
+> +    qemu_fdt_setprop_string(fdt, "/", "model", "qemu,virt");
+>      qemu_fdt_setprop_string(fdt, "/", "compatible", "linux,dummy-virt");
+>      qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 0x2);
+>      qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
 
-Seems to work.
+The spec says "a string that uniquely identifies the model of the system
+board". So should we be using "virt" for everything, or should we use
+"virt-2.10", "virt-2.11", "virt-2.12", etc ?
 
-Tested-by: Thomas Huth <thuth@redhat.com>
+thanks
+-- PMM
 
