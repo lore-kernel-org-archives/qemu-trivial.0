@@ -1,59 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gDEZG-0000iv-Rf
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Oct 2018 16:06:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39375)
+	id 1gDNBN-0002uR-Jc
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Oct 2018 01:18:45 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41990)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gDEZC-0000fr-In
-	for qemu-trivial@nongnu.org; Thu, 18 Oct 2018 16:06:47 -0400
+	(envelope-from <philmd@redhat.com>) id 1gDNBJ-0002sX-Jp
+	for qemu-trivial@nongnu.org; Fri, 19 Oct 2018 01:18:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gDEZA-0001cV-Oe
-	for qemu-trivial@nongnu.org; Thu, 18 Oct 2018 16:06:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35176)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gDEYr-0001Ec-Kj; Thu, 18 Oct 2018 16:06:26 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5EDED155AC;
-	Thu, 18 Oct 2018 20:06:21 +0000 (UTC)
-Received: from localhost (ovpn-117-52.phx2.redhat.com [10.3.117.52])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6137B60BE1;
-	Thu, 18 Oct 2018 20:06:15 +0000 (UTC)
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <agraf@suse.de>,
-	Rob Herring <robh@kernel.org>, libvir-list@redhat.com,
-	Richard Henderson <rth@twiddle.net>,
-	David Gibson <david@gibson.dropbear.id.au>, Eric Blake <eblake@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Eduardo Habkost <ehabkost@redhat.com>, Michael Walle <michael@walle.cc>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Alistair Francis <alistair@alistair23.me>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	qemu-ppc@nongnu.org, Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
-	Max Filippov <jcmvbkbc@gmail.com>, Li Qiang <liq3ea@163.com>,
-	qemu-trivial@nongnu.org
-Date: Thu, 18 Oct 2018 17:03:54 -0300
-Message-Id: <20181018200422.4358-18-ehabkost@redhat.com>
-In-Reply-To: <20181018200422.4358-1-ehabkost@redhat.com>
-References: <20181018200422.4358-1-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Thu, 18 Oct 2018 20:06:21 +0000 (UTC)
+	(envelope-from <philmd@redhat.com>) id 1gDNBE-0006Dv-1L
+	for qemu-trivial@nongnu.org; Fri, 19 Oct 2018 01:18:41 -0400
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:52674)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gDNAz-0005wU-Vg
+	for qemu-trivial@nongnu.org; Fri, 19 Oct 2018 01:18:24 -0400
+Received: by mail-wm1-f67.google.com with SMTP id 189-v6so2336547wmw.2
+	for <qemu-trivial@nongnu.org>; Thu, 18 Oct 2018 22:18:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=Ebj+bkZcnFTklezsrJkUgTx+PvLkpK8gHbKIn/UBOKc=;
+	b=tbd/C9B1ha1cTtSo4uskTrtZBDoDy0IXq+2K4c7kOrk7DnDGSX81J0fTpGhefGhA9n
+	jjL/EJUdF0Z2aKqrRjVI7gYb80Pts2pWCvwZpzq6TNjuVR4PytNZP7TEqvPuKx/v2DvY
+	qHKbKYP4SGU2nwakG4WPoIdotxoSO0Uif0l7TO2I4PIO5ithe76AdYFrKVIyJpPE9Y0U
+	eOW9ap1+RFOqumJfWKyZyYv9CH7OJJJcnqRASUsneHdwiuO/PCwuT3AOlGrYibSrAWnW
+	Jqwl6GrdHc99gyiN8coKk01vagh3fo7qr0z1zDOKeKy4f4F8kuCfJYXTfmlbJwKwDZ+q
+	rxIg==
+X-Gm-Message-State: ABuFfohZ+hxjZFymo3kGe2WlrIfIZE4U5ao+7EIsFEzM+Vn5niNKCbik
+	8mRcqCLtg4t0HqYL3P+xHIG4kfDiI1Q=
+X-Google-Smtp-Source: ACcGV62TtDB7Q8KPvx5CW41nZKjnJAfwNFxIKHccEqu6tSdFJgtTcv3avVc9cfe6CyKRZ99aKBGNDg==
+X-Received: by 2002:a1c:af07:: with SMTP id y7-v6mr3305647wme.33.1539926297587;
+	Thu, 18 Oct 2018 22:18:17 -0700 (PDT)
+Received: from [10.124.10.192] (smb-adpcdg1-05.hotspot.hub-one.net.
+	[213.174.99.133]) by smtp.gmail.com with ESMTPSA id
+	v129-v6sm1370661wme.45.2018.10.18.22.18.16
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 18 Oct 2018 22:18:16 -0700 (PDT)
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
+Cc: "Bonzini, Paolo" <pbonzini@redhat.com>, qemu-devel
+	<qemu-devel@nongnu.org>, qemu-trivial@nongnu.org
+References: <20181011171254.32428-1-philmd@redhat.com>
+	<CAMxuvay4Hs_Aa1km5vav75GAdxtzo0YO=xfe8H-_=-7oS1ej-w@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <2c64df66-6949-56f8-02a2-8a61b2c9fd98@redhat.com>
+Date: Fri, 19 Oct 2018 07:18:14 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.0
+MIME-Version: 1.0
+In-Reply-To: <CAMxuvay4Hs_Aa1km5vav75GAdxtzo0YO=xfe8H-_=-7oS1ej-w@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PULL 17/45] machine: fix a typo
+	[fuzzy]
+X-Received-From: 209.85.128.67
+Subject: Re: [Qemu-trivial] [PATCH] vl: Print error when using incorrect
+ backend for debugcon
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,33 +67,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Oct 2018 20:06:47 -0000
+X-List-Received-Date: Fri, 19 Oct 2018 05:18:44 -0000
 
-From: Li Qiang <liq3ea@163.com>
+Cc'ing qemu-trivial@
 
-Cc: qemu-trivial@nongnu.org
-Signed-off-by: Li Qiang <liq3ea@163.com>
-Message-Id: <20181010161025.34796-1-liq3ea@163.com>
-Reviewed-by: Stefano Garzarella <stefanogarzarella@gmail.com>
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
----
- hw/core/machine.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 1987557833..da50ad6de7 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -636,7 +636,7 @@ static void machine_class_init(ObjectClass *oc, void *data)
-         machine_get_memory_encryption, machine_set_memory_encryption,
-         &error_abort);
-     object_class_property_set_description(oc, "memory-encryption",
--        "Set memory encyption object to use", &error_abort);
-+        "Set memory encryption object to use", &error_abort);
- }
- 
- static void machine_class_base_init(ObjectClass *oc, void *data)
--- 
-2.18.0.rc1.1.g3f1ff2140
-
+On 11/10/2018 23:48, Marc-André Lureau wrote:
+> On Thu, Oct 11, 2018 at 9:13 PM Philippe Mathieu-Daudé
+> <philmd@redhat.com> wrote:
+>>
+>> When using an incorrect backend for the debugcon, QEMU exits silently
+>> without any error indication, which is confusing.
+>> Add a message that the character backend is invalid.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> 
+> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> 
+>> ---
+>>  vl.c | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+>> diff --git a/vl.c b/vl.c
+>> index 4e25c78bff..61305b5891 100644
+>> --- a/vl.c
+>> +++ b/vl.c
+>> @@ -2466,6 +2466,7 @@ static int debugcon_parse(const char *devname)
+>>      QemuOpts *opts;
+>>
+>>      if (!qemu_chr_new_mux_mon("debugcon", devname)) {
+>> +        error_report("invalid character backend '%s'", devname);
+>>          exit(1);
+>>      }
+>>      opts = qemu_opts_create(qemu_find_opts("device"), "debugcon", 1, NULL);
+>> --
+>> 2.17.1
+>>
 
