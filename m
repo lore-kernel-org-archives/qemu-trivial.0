@@ -1,60 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gEjw3-0008D7-N8
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Oct 2018 19:48:35 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52124)
+	id 1gEtd7-0004lM-1q
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Oct 2018 06:09:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42154)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gEjvx-0008CN-I3
-	for qemu-trivial@nongnu.org; Mon, 22 Oct 2018 19:48:34 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gEtd5-0004V2-Jy
+	for qemu-trivial@nongnu.org; Tue, 23 Oct 2018 06:09:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gEjsw-0006Xs-Nl
-	for qemu-trivial@nongnu.org; Mon, 22 Oct 2018 19:45:27 -0400
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:43664)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gEjsv-0006X5-Uf
-	for qemu-trivial@nongnu.org; Mon, 22 Oct 2018 19:45:22 -0400
-Received: by mail-wr1-f67.google.com with SMTP id t10-v6so5195112wrn.10
-	for <qemu-trivial@nongnu.org>; Mon, 22 Oct 2018 16:45:21 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=EexC4d30QJznOjf0cEkGcmVP+rLcETIkTtxmtkpvAJY=;
-	b=W28PojjSEZvPl4vJaIdJcM/+7rUnixqHiV1uOA2/UB4tzk9F9ZksziCvkb5KF5zqFN
-	zEPCNzmroE2UK9sCQbJFagssnctFPCyfe2jeeOKJF0Kmi0+NfJRVj1t2f5D9mNRna9Kr
-	xFLXyEAs/CBUSId+41IxS2XeBSeCqbsVXHMvglB7MXjy0ZLMB/11FaHSyVu8VJ0TgpSn
-	9+sUjlwCcG0jMnwrUvu6CMFGWkyyxE4BRA5GXm+elUnMfdpIvjoa670wHBsBMs3kaXAq
-	pFEwgI38XQIvpEpF8ODmp0l17FFoCejM+F4MS1WyWh7l0axzKcRCts0kGXGRWYymRVEV
-	iqHw==
-X-Gm-Message-State: ABuFfoh2AoFG1vZxbEEW934Sl+f3r8okxRdAt2COYCEXEL1b8wE93oSV
-	Z6OINyIsUDlGarKJ8XWiuu/DY4g2iWE=
-X-Google-Smtp-Source: ACcGV62jmNErFhvR5HEW1TvLzmUI6xOWuPnumt3EgzKhk0y+h0iM93zT8eQOYozoVAGC383IWV3XKA==
-X-Received: by 2002:adf:bc84:: with SMTP id
-	g4-v6mr50332203wrh.250.1540251920876; 
-	Mon, 22 Oct 2018 16:45:20 -0700 (PDT)
-Received: from [172.29.28.213] ([185.30.24.106])
-	by smtp.gmail.com with ESMTPSA id
-	j46-v6sm60815294wre.91.2018.10.22.16.45.19
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 22 Oct 2018 16:45:20 -0700 (PDT)
-To: yuchenlin@synology.com, qemu-devel@nongnu.org
-Cc: kraxel@redhat.com, qemu-trivial@nongnu.org
-References: <20181022080053.9379-1-yuchenlin@synology.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <adce4765-3ff4-0898-168d-7d55606720f4@redhat.com>
-Date: Tue, 23 Oct 2018 01:45:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
+	(envelope-from <laurent@vivier.eu>) id 1gEtYi-000707-DO
+	for qemu-trivial@nongnu.org; Tue, 23 Oct 2018 06:05:18 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:40245)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1gEtYa-0006pw-Jx; Tue, 23 Oct 2018 06:05:03 -0400
+Received: from [172.29.22.129] ([185.30.24.106]) by mrelayeu.kundenserver.de
+	(mreue009 [212.227.15.168]) with ESMTPSA (Nemesis) id
+	1MfpGL-1fi1mc3S13-00gK2T; Tue, 23 Oct 2018 12:04:51 +0200
+Received: from [172.29.22.129] ([185.30.24.106]) by mrelayeu.kundenserver.de
+	(mreue009 [212.227.15.168]) with ESMTPSA (Nemesis) id
+	1MfpGL-1fi1mc3S13-00gK2T; Tue, 23 Oct 2018 12:04:51 +0200
+To: QEMU Trivial <qemu-trivial@nongnu.org>,
+	qemu-devel qemu-devel <qemu-devel@nongnu.org>
+Cc: Michael Tokarev <mjt@tls.msk.ru>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <38b0df70-338e-c842-95bb-c1a5fbd54b7b@vivier.eu>
+Date: Tue, 23 Oct 2018 11:04:36 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <20181022080053.9379-1-yuchenlin@synology.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:ikuoloG5HN8x83ig0nTyQbTU4zNw6gaqK/FBXA0PFUc8A9SsDfn
+	tbKmXJtc4uo9diA1nGTwtAODNm9RuBHICskgojg+I+Cmqe90L+DGU0g/mGGv8sCEhnd4gm3
+	nKHxJN1A/Vi6d/GRIUOC/rY8qUKskWz6apBxLhUUk0fT17w7N3K6PZd5TP0LKXXvajlI3yR
+	2zoROqFkZKSl0sTZyM/tA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:vaVCuDV9pZo=:EN+L9htmnW7FwiWVIUzcH6
+	Iy4vyIFg9vig8hEPJqxL3nh3b2HqiHlaCJihUmzwpl4YT/c5haMZnwA1o/SvOQjHvYp8k3Pmv
+	9neM76wWbjkbDRHCY9SbANKKSfiE2DwjqImPIotKCyZRYx/NOGNvMSb+DuzGid2KyUJYyfbAN
+	eYGElhVu5keH09I3wFnQAd/j5qbjWGafOhkqkKjmCfXoaKXSnBnZhIpbkV4X8OilKFDJ7idXL
+	TxzalyxQjQyF8Xy+y7rBosc4TcXDufkch0ZDMQUhvSWX9notHLqPNkcMILO0vg0sKGevDWGML
+	wltaFVIECDtZxcq9uRJFkGQaX6/oXOWRzyjTPZ9ipgXo+kpqBjsdumrmvz/syEJA4o+Lah8JR
+	xcwMtK0J3wk8vuljktzBsVcIdQOJzjkEe4oVkes2NTuiNjC3ITN3cDMlvyUtg5wKNn90VxLNV
+	gse7a65TY6k4TKGgSHch2VXWWdkdWXShWY52AvYQw4x9A4FvUsdUimUR+h1L8LAy33zBX7Ypq
+	nef46/Ia6FsIppj1azDN0mnGQNtXCpR81OTPFiB+7jmHJtvLN18xZs37KMXJaJbutPX9K1MAN
+	acx+3QT+8ZT6rCKoroaUr7XGU3QD90iCQF/wsKMVaoMqDiCw1Vt9UYOeisQ49fkmiSVTldnhK
+	l1A6ISvD1DmOG/KOZi2OX64+bDZEsmPk2jwTRbNyz2VpJkHPogDJAxI7o2AyTkxTyJWzi/Vj+
+	FISjpMbKxRV76Kat
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vga_int: remove unused
- function protype
+X-Received-From: 212.227.126.133
+Subject: [Qemu-trivial] Call for patches for the qemu-trivial pull request
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,30 +60,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Oct 2018 23:48:34 -0000
+X-List-Received-Date: Tue, 23 Oct 2018 10:09:40 -0000
 
-On 22/10/18 10:00, yuchenlin--- via Qemu-devel wrote:
-> From: yuchenlin <yuchenlin@synology.com>
-> 
-> Signed-off-by: yuchenlin <yuchenlin@synology.com>
+Hi,
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+I'm going to collect patches for the next pull request for the
+qemu-trivial I'd like to do before the softfreeze.
 
-> ---
->   hw/display/vga_int.h | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> diff --git a/hw/display/vga_int.h b/hw/display/vga_int.h
-> index 6e4fa48a79..55c418eab5 100644
-> --- a/hw/display/vga_int.h
-> +++ b/hw/display/vga_int.h
-> @@ -166,7 +166,6 @@ MemoryRegion *vga_init_io(VGACommonState *s, Object *obj,
->                             const MemoryRegionPortio **vbe_ports);
->   void vga_common_reset(VGACommonState *s);
->   
-> -void vga_sync_dirty_bitmap(VGACommonState *s);
->   void vga_dirty_log_start(VGACommonState *s);
->   void vga_dirty_log_stop(VGACommonState *s);
->   
-> 
+As we didn't have any pull request for more than 3 months and some of
+the patches have been pushed through another maintainer branches, it's a
+little bit difficult to collect correctly the patches to send.
+
+So, it would be helpful if any of you knowing that some patches have to
+be added to the pull request send me their list.
+
+After the next release, I will try to do pull-requests on a weekly basis.
+
+Thanks,
+Laurent
 
