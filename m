@@ -1,54 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gEtd7-0004lM-1q
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Oct 2018 06:09:41 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42154)
+	id 1gEyhN-0007DS-Cf
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Oct 2018 11:34:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36857)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gEtd5-0004V2-Jy
-	for qemu-trivial@nongnu.org; Tue, 23 Oct 2018 06:09:40 -0400
+	(envelope-from <dgibson@ozlabs.org>) id 1gEyhL-0006fy-I1
+	for qemu-trivial@nongnu.org; Tue, 23 Oct 2018 11:34:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gEtYi-000707-DO
-	for qemu-trivial@nongnu.org; Tue, 23 Oct 2018 06:05:18 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:40245)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gEtYa-0006pw-Jx; Tue, 23 Oct 2018 06:05:03 -0400
-Received: from [172.29.22.129] ([185.30.24.106]) by mrelayeu.kundenserver.de
-	(mreue009 [212.227.15.168]) with ESMTPSA (Nemesis) id
-	1MfpGL-1fi1mc3S13-00gK2T; Tue, 23 Oct 2018 12:04:51 +0200
-Received: from [172.29.22.129] ([185.30.24.106]) by mrelayeu.kundenserver.de
-	(mreue009 [212.227.15.168]) with ESMTPSA (Nemesis) id
-	1MfpGL-1fi1mc3S13-00gK2T; Tue, 23 Oct 2018 12:04:51 +0200
-To: QEMU Trivial <qemu-trivial@nongnu.org>,
-	qemu-devel qemu-devel <qemu-devel@nongnu.org>
-Cc: Michael Tokarev <mjt@tls.msk.ru>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <38b0df70-338e-c842-95bb-c1a5fbd54b7b@vivier.eu>
-Date: Tue, 23 Oct 2018 11:04:36 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(envelope-from <dgibson@ozlabs.org>) id 1gEybx-000760-N4
+	for qemu-trivial@nongnu.org; Tue, 23 Oct 2018 11:28:51 -0400
+Received: from ozlabs.org ([203.11.71.1]:55061)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1gEybr-0006sb-Ae; Tue, 23 Oct 2018 11:28:43 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 42fcj816h9z9sNr; Wed, 24 Oct 2018 02:28:11 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1540308492;
+	bh=vQoIAnxEk5We/wFgSysi6WoJaVxV7bh9PCS+torRFGM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bMF4Ft9D/Rfmj44Br7vRgzjOvaJvbau6PmVdsPhTVbfLVJfR/OYYm4evIiuCFI27s
+	yD5W2pxBeA/nd3kw3J6wB1fpQt4exJ8XsFbonrzWFP4gYXnJkUBLbkSMug/2ZnFy+A
+	S9IqxidYmt2YhxisBxflgD1oFbhI7DSzAQ3oayAU=
+Date: Tue, 23 Oct 2018 16:20:01 +0100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <agraf@suse.de>,
+	Rob Herring <robh@kernel.org>, libvir-list@redhat.com,
+	Richard Henderson <rth@twiddle.net>, Eric Blake <eblake@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Michael Walle <michael@walle.cc>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Alistair Francis <alistair@alistair23.me>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Jason Wang <jasowang@redhat.com>, qemu-ppc@nongnu.org,
+	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+	Max Filippov <jcmvbkbc@gmail.com>, Li Qiang <liq3ea@163.com>,
+	qemu-trivial@nongnu.org
+Message-ID: <20181023152001.GN12127@umbus.hotspot.internet-for-guests.com>
+References: <20181018200422.4358-1-ehabkost@redhat.com>
+	<20181018200422.4358-18-ehabkost@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:ikuoloG5HN8x83ig0nTyQbTU4zNw6gaqK/FBXA0PFUc8A9SsDfn
-	tbKmXJtc4uo9diA1nGTwtAODNm9RuBHICskgojg+I+Cmqe90L+DGU0g/mGGv8sCEhnd4gm3
-	nKHxJN1A/Vi6d/GRIUOC/rY8qUKskWz6apBxLhUUk0fT17w7N3K6PZd5TP0LKXXvajlI3yR
-	2zoROqFkZKSl0sTZyM/tA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:vaVCuDV9pZo=:EN+L9htmnW7FwiWVIUzcH6
-	Iy4vyIFg9vig8hEPJqxL3nh3b2HqiHlaCJihUmzwpl4YT/c5haMZnwA1o/SvOQjHvYp8k3Pmv
-	9neM76wWbjkbDRHCY9SbANKKSfiE2DwjqImPIotKCyZRYx/NOGNvMSb+DuzGid2KyUJYyfbAN
-	eYGElhVu5keH09I3wFnQAd/j5qbjWGafOhkqkKjmCfXoaKXSnBnZhIpbkV4X8OilKFDJ7idXL
-	TxzalyxQjQyF8Xy+y7rBosc4TcXDufkch0ZDMQUhvSWX9notHLqPNkcMILO0vg0sKGevDWGML
-	wltaFVIECDtZxcq9uRJFkGQaX6/oXOWRzyjTPZ9ipgXo+kpqBjsdumrmvz/syEJA4o+Lah8JR
-	xcwMtK0J3wk8vuljktzBsVcIdQOJzjkEe4oVkes2NTuiNjC3ITN3cDMlvyUtg5wKNn90VxLNV
-	gse7a65TY6k4TKGgSHch2VXWWdkdWXShWY52AvYQw4x9A4FvUsdUimUR+h1L8LAy33zBX7Ypq
-	nef46/Ia6FsIppj1azDN0mnGQNtXCpR81OTPFiB+7jmHJtvLN18xZs37KMXJaJbutPX9K1MAN
-	acx+3QT+8ZT6rCKoroaUr7XGU3QD90iCQF/wsKMVaoMqDiCw1Vt9UYOeisQ49fkmiSVTldnhK
-	l1A6ISvD1DmOG/KOZi2OX64+bDZEsmPk2jwTRbNyz2VpJkHPogDJAxI7o2AyTkxTyJWzi/Vj+
-	FISjpMbKxRV76Kat
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="8CNmCRe8Sh4keFKJ"
+Content-Disposition: inline
+In-Reply-To: <20181018200422.4358-18-ehabkost@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-Subject: [Qemu-trivial] Call for patches for the qemu-trivial pull request
+X-Received-From: 203.11.71.1
+Subject: Re: [Qemu-trivial] [PULL 17/45] machine: fix a typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,22 +67,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Oct 2018 10:09:40 -0000
+X-List-Received-Date: Tue, 23 Oct 2018 15:34:24 -0000
 
-Hi,
 
-I'm going to collect patches for the next pull request for the
-qemu-trivial I'd like to do before the softfreeze.
+--8CNmCRe8Sh4keFKJ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-As we didn't have any pull request for more than 3 months and some of
-the patches have been pushed through another maintainer branches, it's a
-little bit difficult to collect correctly the patches to send.
+On Thu, Oct 18, 2018 at 05:03:54PM -0300, Eduardo Habkost wrote:
+> From: Li Qiang <liq3ea@163.com>
+>=20
+> Cc: qemu-trivial@nongnu.org
+> Signed-off-by: Li Qiang <liq3ea@163.com>
+> Message-Id: <20181010161025.34796-1-liq3ea@163.com>
+> Reviewed-by: Stefano Garzarella <stefanogarzarella@gmail.com>
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 
-So, it would be helpful if any of you knowing that some patches have to
-be added to the pull request send me their list.
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
-After the next release, I will try to do pull-requests on a weekly basis.
+> ---
+>  hw/core/machine.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index 1987557833..da50ad6de7 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -636,7 +636,7 @@ static void machine_class_init(ObjectClass *oc, void =
+*data)
+>          machine_get_memory_encryption, machine_set_memory_encryption,
+>          &error_abort);
+>      object_class_property_set_description(oc, "memory-encryption",
+> -        "Set memory encyption object to use", &error_abort);
+> +        "Set memory encryption object to use", &error_abort);
+>  }
+> =20
+>  static void machine_class_base_init(ObjectClass *oc, void *data)
 
-Thanks,
-Laurent
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--8CNmCRe8Sh4keFKJ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlvPPCEACgkQbDjKyiDZ
+s5L3+Q/+JhO7ZX8Js1h3E7W084g9DevCgdEkiDxRw/wUcYNsu/YoIa1mAw28AonM
+I5ge5kV4xkqq1uJO0ZqnFPgi4GoKF+k3/i8/5GNLnl9cF97YWTxmvJOb040D9oaN
+VsGoPfErDy0MW3pZNCTzTr3+MKAKoNT8yBFjfeSGMiOrRKeExPlHx/EOrm00ZDPZ
+e5jcJU8h+34Xu6eBud72hstSiFYrPN/FaZChNJq/TGH+DUqGs8O1qA77B7ELc+Ne
+VkKt1+OoIkWzNz52I7NKGYgWPh1MWRvTErzr/2hU4wg0CdRelUmgkLHHCZR211z1
+qpkWqb9R+eZ9Re33QeaEqdpSd1rupBUGEq28PVOgmcZFvvzQ3D1vHvQbNN1oeNiH
+3w2RcIZn1H+7xuAA1U7V+R30RNqqvr9K1NagvOJe8g/Wa2V2sMbJBPMMJR5WG7Rs
+DXpl3g9esM7llDmSV3nDDQg4l8lClSpF1fleH0frB3AQMMzWwwcOVUVSNmpCnoh5
+3oalkRlmUSn/bBHks0WNR4thV7yAOsec3cooRtJUAH79U04j4Q9BWVsb+KPBwsCQ
+ziDcrNjE7DMc6QAPwKirMXdNRu+ytSKGgk7KXUOIKkbU9EkJ7lwpFqALtFFxUqnL
++Zm/5b2ZTid44ME/VfnMrvuvM+7WRMMd+M82Bz0L83kt5BjfUAo=
+=WozB
+-----END PGP SIGNATURE-----
+
+--8CNmCRe8Sh4keFKJ--
 
