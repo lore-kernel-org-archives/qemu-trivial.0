@@ -1,58 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gFPWm-0005f9-1Q
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Oct 2018 16:13:16 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:34575)
+	id 1gFSQE-0003dZ-Gi
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Oct 2018 19:18:42 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:38814)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kristopher@connectfree.jp>) id 1gFMqQ-0000ov-MW
-	for qemu-trivial@nongnu.org; Wed, 24 Oct 2018 13:21:23 -0400
+	(envelope-from <philmd@redhat.com>) id 1gFSQC-0003d2-DT
+	for qemu-trivial@nongnu.org; Wed, 24 Oct 2018 19:18:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kristopher@connectfree.jp>) id 1gFMqP-0002XL-6c
-	for qemu-trivial@nongnu.org; Wed, 24 Oct 2018 13:21:22 -0400
-Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:34184)
+	(envelope-from <philmd@redhat.com>) id 1gFSQ9-0004qa-2C
+	for qemu-trivial@nongnu.org; Wed, 24 Oct 2018 19:18:40 -0400
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:50412)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <kristopher@connectfree.jp>)
-	id 1gFMqO-0002SJ-GV
-	for qemu-trivial@nongnu.org; Wed, 24 Oct 2018 13:21:20 -0400
-Received: by mail-lf1-x143.google.com with SMTP id n26-v6so4609789lfl.1
-	for <qemu-trivial@nongnu.org>; Wed, 24 Oct 2018 10:21:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=connectfree-jp.20150623.gappssmtp.com; s=20150623;
-	h=mime-version:from:date:message-id:subject:to;
-	bh=GW2MRNrJ61ET1rc5t/Z9HXJ8PXkKa5uRZt1sUR2TAHM=;
-	b=ToYn6YLq/4K9ZqGCLLNlfWXH47oPbnMWjwLvuRZ6lKl2Af+cIclsYgHzcE5AOqI2ZA
-	AcFHbhHJ46xJYLaXP8NIVQ0u0f4HAmQCTkc+oRGDQXzK4bQTgiRntUKpyeC7VHnzSRuN
-	k5SNQJcXCUbQWuESLqXg8W1s7gYOGm5t1Dw9OLN2hyLHSVqZt+SiMGFVDU8AvqbdUIDg
-	zCXgfNiu3lyVOi9WmGRUqtkQr7blTmRRsbBe75RauTaOWeZ6zVwqF0N+bY8gA4wKus9o
-	zbWia9ELSuk5ZxiZMTuZYOpeiAC+u2UE6kFluM/wXn8g0v2QY5vSWZwf7ldDNZZIKXR0
-	UoEg==
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gFSQ6-0004l4-TO
+	for qemu-trivial@nongnu.org; Wed, 24 Oct 2018 19:18:35 -0400
+Received: by mail-wm1-f67.google.com with SMTP id i8-v6so6996812wmg.0
+	for <qemu-trivial@nongnu.org>; Wed, 24 Oct 2018 16:18:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-	bh=GW2MRNrJ61ET1rc5t/Z9HXJ8PXkKa5uRZt1sUR2TAHM=;
-	b=ZhHbRUcGObcCJ+G9pPfpUfLbYS8/xqodOSBB/BX6vLZBVt8VIctQbLwb/R5G3JhIJ/
-	xbu9zO+ht9ZmZknBOUQgZZH9AJMG7dwaYSZYpG6e35cAzxgvaZa2zSu+41+VPjvGEOLH
-	fURu1sXuwshBFVmaGo3xINLmRYZ2RSmfnKVZj5qdqD0KTP/KqcyH/stUzgNW+Z8W8Lnc
-	oeWwx/rfnOwBn0bFDz9owhgqgiRGt3IQ9VHLI+R5XF98Lgz3YEswL7uIRM3SeZA9wpVr
-	RLQFH+GWIwrT73ggRXjexdBdTqha2RKX8ZwrF0FBiGrEScm6UTRmgxSsl6APlUgDK6aI
-	z8ng==
-X-Gm-Message-State: ABuFfoj9DeNWy0vKvPr5KXzYdcqWTOURthTxBEGFKMWVkgNVPX2FzcbG
-	48JMI1BPbiyUV57EsE1Vx141+eRMmbFcZWSzIkRpEQ0p3dU=
-X-Google-Smtp-Source: ACcGV611IHJdqjpEJYB6Ofu3Nm0dlFhVSpBidw0qPfbFKZ7Fp4GKA7xTAZiB0pKcTpKPv+92NfyAl95G4N7P3k6d18o=
-X-Received: by 2002:a19:5f1e:: with SMTP id t30mr7584266lfb.76.1540401677423; 
-	Wed, 24 Oct 2018 10:21:17 -0700 (PDT)
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=6GGo3g1VB3T984l0XSFqhhlCgiQKXzbSEvu8/KhME/A=;
+	b=nW7T15M5eAzmdI8iILL8riptFyyXmOtpZUjlMoMZlqSdElZm0ODNuD4sLFFHYliVBq
+	2kR809oDCqcZzOjXke9uI6x8lNQrXEs9DD8OfzCJQaFT4MQC6ATXIVe4VkbQD2mfGETy
+	WwkcYsQ8e+lK7Fs33XhL8lfpgAC89FgczcNpdKVanXpolNTHKjrukA0Nnh+JF4zxNSs8
+	YiJ/Yzfq+O2C0hPa8jlxQ5P5Nq2kZJhRWYZUrA2Hs5Iu+knezxEKig8RcdSkbrAylP8e
+	N/LNNCvMV4tjfquMh4F8AJwk92UkO7IHCKVHB6vd8AbZy+bcu3zw/NRsb8APwHyO/zEI
+	4xXw==
+X-Gm-Message-State: AGRZ1gLHSZoqGSJ2bHkmnE4XLlIrKAEslDbbpVdJ2Ajsb10S2RzDBKAi
+	e1S2gumJqX21EJAZIxU+895nXw==
+X-Google-Smtp-Source: AJdET5dApOjKXe6Zxmi0pfXW9GvkeUgX0my6mrrCF+js3xSQRr1BDp/KTJWOtru885RGSiPW5KsSOw==
+X-Received: by 2002:a1c:c708:: with SMTP id
+	x8-v6mr4614583wmf.116.1540423112301; 
+	Wed, 24 Oct 2018 16:18:32 -0700 (PDT)
+Received: from [172.29.28.213] ([185.30.24.106])
+	by smtp.gmail.com with ESMTPSA id
+	l67-v6sm9975495wma.20.2018.10.24.16.18.31
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 24 Oct 2018 16:18:31 -0700 (PDT)
+To: Thomas Huth <thuth@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+	<f4bug@amsat.org>
+References: <1540376314-5727-1-git-send-email-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <3a04e8e5-22a7-efe4-2187-aaf5fcc95099@redhat.com>
+Date: Thu, 25 Oct 2018 01:18:30 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.2.1
 MIME-Version: 1.0
-From: =?UTF-8?B?5bid6YO9IOS5heWIqeWvvw==?= <kristopher@connectfree.jp>
-Date: Thu, 25 Oct 2018 02:21:06 +0900
-Message-ID: <CABnLni0KVQZpgEA5ShShycKizKJ_ULieq365FDcJFDrNqdOL0g@mail.gmail.com>
-To: qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::143
-X-Mailman-Approved-At: Wed, 24 Oct 2018 16:13:14 -0400
-Subject: [Qemu-trivial] [PATCH] ui/sdl2-2d.c: macOS Mojave checks for UI
- running off the main thread -- run sdl2_window_resize on the main thread
- via dispatch_async; 
+In-Reply-To: <1540376314-5727-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.128.67
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configs/alpha: Remove
+ unused CONFIG_PARALLEL_ISA switch
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,42 +68,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Oct 2018 17:21:23 -0000
+X-List-Received-Date: Wed, 24 Oct 2018 23:18:41 -0000
 
-Signed-off-by: kristopher tate <kt@connectfree.co.jp>
----
- ui/sdl2-2d.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+On 24/10/18 12:18, Thomas Huth wrote:
+> We don't use CONFIG_PARALLEL_ISA in any of our Makefiles, so this
+> is just a dead config option which can be removed.
+> 
+> Fixes: a4cb773928e047b137c6998209cf2eec857fac6b
 
-diff --git a/ui/sdl2-2d.c b/ui/sdl2-2d.c
-index 091ecfc..4b931c9 100644
---- a/ui/sdl2-2d.c
-+++ b/ui/sdl2-2d.c
-@@ -29,6 +29,9 @@
- #include "ui/input.h"
- #include "ui/sdl2.h"
- #include "sysemu/sysemu.h"
-+#if defined(__APPLE__)
-+  #include <dispatch/dispatch.h>
-+#endif
+Oops, this slipped while refactoring the series, this is part of a 
+further cleanup that I never finished. Hopefully Kconfig will outdate it.
 
- void sdl2_2d_update(DisplayChangeListener *dcl,
-                     int x, int y, int w, int h)
-@@ -87,7 +90,13 @@ void sdl2_2d_switch(DisplayChangeListener *dcl,
-     } else if (old_surface &&
-                ((surface_width(old_surface)  != surface_width(new_surface)) ||
-                 (surface_height(old_surface) !=
-surface_height(new_surface)))) {
-+#if defined(__APPLE__)
-+        dispatch_async(dispatch_get_main_queue(), ^{
-+          sdl2_window_resize(scon);
-+        });
-+#else
-         sdl2_window_resize(scon);
-+#endif
-     }
+Thanks for cleaning this!
 
-     SDL_RenderSetLogicalSize(scon->real_renderer,
--- 
-2.17.1 (Apple Git-112)
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+> ---
+>   default-configs/alpha-softmmu.mak | 1 -
+>   1 file changed, 1 deletion(-)
+> 
+> diff --git a/default-configs/alpha-softmmu.mak b/default-configs/alpha-softmmu.mak
+> index bbe361f..61435cc 100644
+> --- a/default-configs/alpha-softmmu.mak
+> +++ b/default-configs/alpha-softmmu.mak
+> @@ -8,7 +8,6 @@ CONFIG_I82374=y
+>   CONFIG_I8254=y
+>   CONFIG_I8257=y
+>   CONFIG_PARALLEL=y
+> -CONFIG_PARALLEL_ISA=y
+>   CONFIG_FDC=y
+>   CONFIG_PCKBD=y
+>   CONFIG_VGA_CIRRUS=y
+> 
 
