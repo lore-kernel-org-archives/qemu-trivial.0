@@ -1,61 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gEyhN-0007DS-Cf
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Oct 2018 11:34:25 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36857)
+	id 1gFGFZ-0003k1-Ev
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Oct 2018 06:18:53 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50898)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gEyhL-0006fy-I1
-	for qemu-trivial@nongnu.org; Tue, 23 Oct 2018 11:34:24 -0400
+	(envelope-from <thuth@redhat.com>) id 1gFGFW-0003hR-Qd
+	for qemu-trivial@nongnu.org; Wed, 24 Oct 2018 06:18:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gEybx-000760-N4
-	for qemu-trivial@nongnu.org; Tue, 23 Oct 2018 11:28:51 -0400
-Received: from ozlabs.org ([203.11.71.1]:55061)
+	(envelope-from <thuth@redhat.com>) id 1gFGFW-0007yz-41
+	for qemu-trivial@nongnu.org; Wed, 24 Oct 2018 06:18:50 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35454)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1gEybr-0006sb-Ae; Tue, 23 Oct 2018 11:28:43 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 42fcj816h9z9sNr; Wed, 24 Oct 2018 02:28:11 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1540308492;
-	bh=vQoIAnxEk5We/wFgSysi6WoJaVxV7bh9PCS+torRFGM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bMF4Ft9D/Rfmj44Br7vRgzjOvaJvbau6PmVdsPhTVbfLVJfR/OYYm4evIiuCFI27s
-	yD5W2pxBeA/nd3kw3J6wB1fpQt4exJ8XsFbonrzWFP4gYXnJkUBLbkSMug/2ZnFy+A
-	S9IqxidYmt2YhxisBxflgD1oFbhI7DSzAQ3oayAU=
-Date: Tue, 23 Oct 2018 16:20:01 +0100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <agraf@suse.de>,
-	Rob Herring <robh@kernel.org>, libvir-list@redhat.com,
-	Richard Henderson <rth@twiddle.net>, Eric Blake <eblake@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Michael Walle <michael@walle.cc>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Alistair Francis <alistair@alistair23.me>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Jason Wang <jasowang@redhat.com>, qemu-ppc@nongnu.org,
-	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
-	Max Filippov <jcmvbkbc@gmail.com>, Li Qiang <liq3ea@163.com>,
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gFGFP-0007vq-GF; Wed, 24 Oct 2018 06:18:43 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C9185B4FE;
+	Wed, 24 Oct 2018 10:18:42 +0000 (UTC)
+Received: from thuth.com (ovpn-117-39.ams2.redhat.com [10.36.117.39])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1C3E15D75F;
+	Wed, 24 Oct 2018 10:18:39 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Richard Henderson <rth@twiddle.net>,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	qemu-trivial@nongnu.org
-Message-ID: <20181023152001.GN12127@umbus.hotspot.internet-for-guests.com>
-References: <20181018200422.4358-1-ehabkost@redhat.com>
-	<20181018200422.4358-18-ehabkost@redhat.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="8CNmCRe8Sh4keFKJ"
-Content-Disposition: inline
-In-Reply-To: <20181018200422.4358-18-ehabkost@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Date: Wed, 24 Oct 2018 11:18:34 +0100
+Message-Id: <1540376314-5727-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Wed, 24 Oct 2018 10:18:42 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 203.11.71.1
-Subject: Re: [Qemu-trivial] [PULL 17/45] machine: fix a typo
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] configs/alpha: Remove unused
+ CONFIG_PARALLEL_ISA switch
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,69 +47,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Oct 2018 15:34:24 -0000
+X-List-Received-Date: Wed, 24 Oct 2018 10:18:51 -0000
 
+We don't use CONFIG_PARALLEL_ISA in any of our Makefiles, so this
+is just a dead config option which can be removed.
 
---8CNmCRe8Sh4keFKJ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Fixes: a4cb773928e047b137c6998209cf2eec857fac6b
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ default-configs/alpha-softmmu.mak | 1 -
+ 1 file changed, 1 deletion(-)
 
-On Thu, Oct 18, 2018 at 05:03:54PM -0300, Eduardo Habkost wrote:
-> From: Li Qiang <liq3ea@163.com>
->=20
-> Cc: qemu-trivial@nongnu.org
-> Signed-off-by: Li Qiang <liq3ea@163.com>
-> Message-Id: <20181010161025.34796-1-liq3ea@163.com>
-> Reviewed-by: Stefano Garzarella <stefanogarzarella@gmail.com>
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+diff --git a/default-configs/alpha-softmmu.mak b/default-configs/alpha-softmmu.mak
+index bbe361f..61435cc 100644
+--- a/default-configs/alpha-softmmu.mak
++++ b/default-configs/alpha-softmmu.mak
+@@ -8,7 +8,6 @@ CONFIG_I82374=y
+ CONFIG_I8254=y
+ CONFIG_I8257=y
+ CONFIG_PARALLEL=y
+-CONFIG_PARALLEL_ISA=y
+ CONFIG_FDC=y
+ CONFIG_PCKBD=y
+ CONFIG_VGA_CIRRUS=y
+-- 
+1.8.3.1
 
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-
-> ---
->  hw/core/machine.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 1987557833..da50ad6de7 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -636,7 +636,7 @@ static void machine_class_init(ObjectClass *oc, void =
-*data)
->          machine_get_memory_encryption, machine_set_memory_encryption,
->          &error_abort);
->      object_class_property_set_description(oc, "memory-encryption",
-> -        "Set memory encyption object to use", &error_abort);
-> +        "Set memory encryption object to use", &error_abort);
->  }
-> =20
->  static void machine_class_base_init(ObjectClass *oc, void *data)
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---8CNmCRe8Sh4keFKJ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlvPPCEACgkQbDjKyiDZ
-s5L3+Q/+JhO7ZX8Js1h3E7W084g9DevCgdEkiDxRw/wUcYNsu/YoIa1mAw28AonM
-I5ge5kV4xkqq1uJO0ZqnFPgi4GoKF+k3/i8/5GNLnl9cF97YWTxmvJOb040D9oaN
-VsGoPfErDy0MW3pZNCTzTr3+MKAKoNT8yBFjfeSGMiOrRKeExPlHx/EOrm00ZDPZ
-e5jcJU8h+34Xu6eBud72hstSiFYrPN/FaZChNJq/TGH+DUqGs8O1qA77B7ELc+Ne
-VkKt1+OoIkWzNz52I7NKGYgWPh1MWRvTErzr/2hU4wg0CdRelUmgkLHHCZR211z1
-qpkWqb9R+eZ9Re33QeaEqdpSd1rupBUGEq28PVOgmcZFvvzQ3D1vHvQbNN1oeNiH
-3w2RcIZn1H+7xuAA1U7V+R30RNqqvr9K1NagvOJe8g/Wa2V2sMbJBPMMJR5WG7Rs
-DXpl3g9esM7llDmSV3nDDQg4l8lClSpF1fleH0frB3AQMMzWwwcOVUVSNmpCnoh5
-3oalkRlmUSn/bBHks0WNR4thV7yAOsec3cooRtJUAH79U04j4Q9BWVsb+KPBwsCQ
-ziDcrNjE7DMc6QAPwKirMXdNRu+ytSKGgk7KXUOIKkbU9EkJ7lwpFqALtFFxUqnL
-+Zm/5b2ZTid44ME/VfnMrvuvM+7WRMMd+M82Bz0L83kt5BjfUAo=
-=WozB
------END PGP SIGNATURE-----
-
---8CNmCRe8Sh4keFKJ--
 
