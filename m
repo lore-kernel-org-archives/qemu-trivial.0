@@ -1,55 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gFLjF-0005nL-TR
-	for mharc-qemu-trivial@gnu.org; Wed, 24 Oct 2018 12:09:53 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52310)
+	id 1gFPWm-0005f9-1Q
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Oct 2018 16:13:16 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34575)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <seba.dos1@gmail.com>) id 1gFKXp-0000cq-Lx
-	for qemu-trivial@nongnu.org; Wed, 24 Oct 2018 10:54:05 -0400
+	(envelope-from <kristopher@connectfree.jp>) id 1gFMqQ-0000ov-MW
+	for qemu-trivial@nongnu.org; Wed, 24 Oct 2018 13:21:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <seba.dos1@gmail.com>) id 1gFKIG-000328-TJ
-	for qemu-trivial@nongnu.org; Wed, 24 Oct 2018 10:38:01 -0400
-Received: from mail-lj1-f195.google.com ([209.85.208.195]:42978)
+	(envelope-from <kristopher@connectfree.jp>) id 1gFMqP-0002XL-6c
+	for qemu-trivial@nongnu.org; Wed, 24 Oct 2018 13:21:22 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:34184)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <seba.dos1@gmail.com>)
-	id 1gFKID-0002zG-TB; Wed, 24 Oct 2018 10:37:54 -0400
-Received: by mail-lj1-f195.google.com with SMTP id z9-v6so169765ljk.9;
-	Wed, 24 Oct 2018 07:37:53 -0700 (PDT)
+	(Exim 4.71) (envelope-from <kristopher@connectfree.jp>)
+	id 1gFMqO-0002SJ-GV
+	for qemu-trivial@nongnu.org; Wed, 24 Oct 2018 13:21:20 -0400
+Received: by mail-lf1-x143.google.com with SMTP id n26-v6so4609789lfl.1
+	for <qemu-trivial@nongnu.org>; Wed, 24 Oct 2018 10:21:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=connectfree-jp.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:from:date:message-id:subject:to;
+	bh=GW2MRNrJ61ET1rc5t/Z9HXJ8PXkKa5uRZt1sUR2TAHM=;
+	b=ToYn6YLq/4K9ZqGCLLNlfWXH47oPbnMWjwLvuRZ6lKl2Af+cIclsYgHzcE5AOqI2ZA
+	AcFHbhHJ46xJYLaXP8NIVQ0u0f4HAmQCTkc+oRGDQXzK4bQTgiRntUKpyeC7VHnzSRuN
+	k5SNQJcXCUbQWuESLqXg8W1s7gYOGm5t1Dw9OLN2hyLHSVqZt+SiMGFVDU8AvqbdUIDg
+	zCXgfNiu3lyVOi9WmGRUqtkQr7blTmRRsbBe75RauTaOWeZ6zVwqF0N+bY8gA4wKus9o
+	zbWia9ELSuk5ZxiZMTuZYOpeiAC+u2UE6kFluM/wXn8g0v2QY5vSWZwf7ldDNZZIKXR0
+	UoEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=4plvH/cr3X+I0G5yEN4wdOhTXgMZK0fRnYvqcoDUJTA=;
-	b=dhg6tLjTvp55TK+SnWGyj45JUEVXRquACQf6Q0I8fnFTl+43J9F2XeKR7oEaIx1+ws
-	rudlmIq8tJNbFCZtTZvnuKfFmnH/idvuwRSz7d+cCFMuqAyKkjCd/Kd2EmUnj6eGGNCD
-	O6e8ZDrLm+RGAy18g3V3aI6+krdRrkjRHc+27g/bVW0bPvCF/qyTYL4eq9CU8RdF7gs5
-	hF8j+YbYr6v6PIH8jfGwbUgTl0kWYYMUrUsrvI7BTQUeYkjxyJNV3LcbMcL1TvUscyDR
-	ZwDypKknrMR9ZEfyIxubrcdecpYpfvYUSKbE9TKUPDxvdo3sqAJ/qMJNrBSvzr2jywzi
-	Mpzg==
-X-Gm-Message-State: AGRZ1gJV1PBc2QiRiYwK9QTGNtbKnlREo7yKjp4D6sFqYRvLw82gTRwz
-	2u3rT1dg2mcLKu2+fILg9iI=
-X-Google-Smtp-Source: AJdET5frcZS91lSOzz2Br+zPZCh4pgmWjuaRbe1932hc4zDPFsQLWrIaZrd1pB5QO7HAr59Aorce5A==
-X-Received: by 2002:a2e:a28b:: with SMTP id
-	k11-v6mr1990811lja.24.1540391872217; 
-	Wed, 24 Oct 2018 07:37:52 -0700 (PDT)
-Received: from localhost.localdomain (77-254-1-82.adsl.inetia.pl.
-	[77.254.1.82]) by smtp.gmail.com with ESMTPSA id
-	w19-v6sm679750lji.73.2018.10.24.07.37.51
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 24 Oct 2018 07:37:51 -0700 (PDT)
-From: Sebastian Krzyszkowiak <dos@dosowisko.net>
-To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, dos@dosowisko.net
-Date: Wed, 24 Oct 2018 16:37:48 +0200
-Message-Id: <20181024143748.4425-1-dos@dosowisko.net>
-X-Mailer: git-send-email 2.19.1
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=GW2MRNrJ61ET1rc5t/Z9HXJ8PXkKa5uRZt1sUR2TAHM=;
+	b=ZhHbRUcGObcCJ+G9pPfpUfLbYS8/xqodOSBB/BX6vLZBVt8VIctQbLwb/R5G3JhIJ/
+	xbu9zO+ht9ZmZknBOUQgZZH9AJMG7dwaYSZYpG6e35cAzxgvaZa2zSu+41+VPjvGEOLH
+	fURu1sXuwshBFVmaGo3xINLmRYZ2RSmfnKVZj5qdqD0KTP/KqcyH/stUzgNW+Z8W8Lnc
+	oeWwx/rfnOwBn0bFDz9owhgqgiRGt3IQ9VHLI+R5XF98Lgz3YEswL7uIRM3SeZA9wpVr
+	RLQFH+GWIwrT73ggRXjexdBdTqha2RKX8ZwrF0FBiGrEScm6UTRmgxSsl6APlUgDK6aI
+	z8ng==
+X-Gm-Message-State: ABuFfoj9DeNWy0vKvPr5KXzYdcqWTOURthTxBEGFKMWVkgNVPX2FzcbG
+	48JMI1BPbiyUV57EsE1Vx141+eRMmbFcZWSzIkRpEQ0p3dU=
+X-Google-Smtp-Source: ACcGV611IHJdqjpEJYB6Ofu3Nm0dlFhVSpBidw0qPfbFKZ7Fp4GKA7xTAZiB0pKcTpKPv+92NfyAl95G4N7P3k6d18o=
+X-Received: by 2002:a19:5f1e:: with SMTP id t30mr7584266lfb.76.1540401677423; 
+	Wed, 24 Oct 2018 10:21:17 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.208.195
-X-Mailman-Approved-At: Wed, 24 Oct 2018 12:09:53 -0400
-Subject: [Qemu-trivial] [PATCH] SDL: set a hint to not bypass the window
- compositor
+From: =?UTF-8?B?5bid6YO9IOS5heWIqeWvvw==?= <kristopher@connectfree.jp>
+Date: Thu, 25 Oct 2018 02:21:06 +0900
+Message-ID: <CABnLni0KVQZpgEA5ShShycKizKJ_ULieq365FDcJFDrNqdOL0g@mail.gmail.com>
+To: qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::143
+X-Mailman-Approved-At: Wed, 24 Oct 2018 16:13:14 -0400
+Subject: [Qemu-trivial] [PATCH] ui/sdl2-2d.c: macOS Mojave checks for UI
+ running off the main thread -- run sdl2_window_resize on the main thread
+ via dispatch_async; 
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,32 +64,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 Oct 2018 14:54:06 -0000
+X-List-Received-Date: Wed, 24 Oct 2018 17:21:23 -0000
 
-Without that, window effects in KWin get suspended as soon as any
-qemu-sdl window becomes visible. While the SDL default makes sense
-for games, it's not really suitable for QEMU.
-
-Signed-off-by: Sebastian Krzyszkowiak <dos@dosowisko.net>
+Signed-off-by: kristopher tate <kt@connectfree.co.jp>
 ---
- ui/sdl2.c | 3 +++
- 1 file changed, 3 insertions(+)
+ ui/sdl2-2d.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/ui/sdl2.c b/ui/sdl2.c
-index 2696b95c79..a10b6e3a08 100644
---- a/ui/sdl2.c
-+++ b/ui/sdl2.c
-@@ -786,6 +786,9 @@ static void sdl2_display_init(DisplayState *ds, DisplayOptions *o)
-                 SDL_GetError());
-         exit(1);
-     }
-+#ifdef SDL_HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR /* only available since SDL 2.0.8 */
-+    SDL_SetHint(SDL_HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR, "0");
+diff --git a/ui/sdl2-2d.c b/ui/sdl2-2d.c
+index 091ecfc..4b931c9 100644
+--- a/ui/sdl2-2d.c
++++ b/ui/sdl2-2d.c
+@@ -29,6 +29,9 @@
+ #include "ui/input.h"
+ #include "ui/sdl2.h"
+ #include "sysemu/sysemu.h"
++#if defined(__APPLE__)
++  #include <dispatch/dispatch.h>
 +#endif
-     SDL_SetHint(SDL_HINT_GRAB_KEYBOARD, "1");
-     memset(&info, 0, sizeof(info));
-     SDL_VERSION(&info.version);
--- 
-2.19.1
 
+ void sdl2_2d_update(DisplayChangeListener *dcl,
+                     int x, int y, int w, int h)
+@@ -87,7 +90,13 @@ void sdl2_2d_switch(DisplayChangeListener *dcl,
+     } else if (old_surface &&
+                ((surface_width(old_surface)  != surface_width(new_surface)) ||
+                 (surface_height(old_surface) !=
+surface_height(new_surface)))) {
++#if defined(__APPLE__)
++        dispatch_async(dispatch_get_main_queue(), ^{
++          sdl2_window_resize(scon);
++        });
++#else
+         sdl2_window_resize(scon);
++#endif
+     }
+
+     SDL_RenderSetLogicalSize(scon->real_renderer,
+-- 
+2.17.1 (Apple Git-112)
 
