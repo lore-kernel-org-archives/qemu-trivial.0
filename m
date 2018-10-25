@@ -1,58 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gFg4A-0002PQ-1v
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Oct 2018 09:52:50 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37272)
+	id 1gFg4W-0002sa-Hh
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Oct 2018 09:53:12 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37423)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gFg47-0002LZ-Kb
-	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 09:52:49 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gFg4T-0002pi-3N
+	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 09:53:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gFg42-0003qH-Fs
-	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 09:52:47 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:57379)
+	(envelope-from <laurent@vivier.eu>) id 1gFg4S-00049x-D0
+	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 09:53:09 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:56391)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gFg3k-0003cd-Ll; Thu, 25 Oct 2018 09:52:25 -0400
+	id 1gFg4J-00041G-Ni; Thu, 25 Oct 2018 09:52:59 -0400
 Received: from [10.101.215.124] ([185.7.230.216]) by mrelayeu.kundenserver.de
-	(mreue001 [212.227.15.168]) with ESMTPSA (Nemesis) id
-	0Ltifl-1fYL2n2WEH-011Bmi; Thu, 25 Oct 2018 15:52:04 +0200
+	(mreue011 [212.227.15.168]) with ESMTPSA (Nemesis) id
+	1M9WiK-1gCOo51R2q-005bE4; Thu, 25 Oct 2018 15:52:53 +0200
 Received: from [10.101.215.124] ([185.7.230.216]) by mrelayeu.kundenserver.de
-	(mreue001 [212.227.15.168]) with ESMTPSA (Nemesis) id
-	0Ltifl-1fYL2n2WEH-011Bmi; Thu, 25 Oct 2018 15:52:04 +0200
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	yuchenlin@synology.com, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
-References: <20181022080053.9379-1-yuchenlin@synology.com>
-	<adce4765-3ff4-0898-168d-7d55606720f4@redhat.com>
+	(mreue011 [212.227.15.168]) with ESMTPSA (Nemesis) id
+	1M9WiK-1gCOo51R2q-005bE4; Thu, 25 Oct 2018 15:52:53 +0200
+To: Li Qiang <liq3ea@gmail.com>, mst@redhat.com, marcel.apfelbaum@gmail.com
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <1539261534-2795-1-git-send-email-liq3ea@gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <e6f9d70f-4e18-6bf7-9f61-1f0f56742162@vivier.eu>
-Date: Thu, 25 Oct 2018 14:52:02 +0100
+Message-ID: <9d750f50-3692-8376-6b04-34b1c3991b15@vivier.eu>
+Date: Thu, 25 Oct 2018 14:52:52 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <adce4765-3ff4-0898-168d-7d55606720f4@redhat.com>
+In-Reply-To: <1539261534-2795-1-git-send-email-liq3ea@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:hBtc35eCU4tn3m8cS8Y/x5O4HiBlVC6Dy+ItOpKxoDy7tJ3bjVd
-	VnAtVzIwePjYs04zrBDp+CQOAA/8gLWM+72lpTX7B6M5USsC5z4Zq/7jw+JZK7yya+8w91A
-	sF8uYvSGJt89r00JmdVxaP5Nzcocc1kqvJBrdEIH5shPVnKhhMjg3wCGQoYiuM+MCXj0wCV
-	jBBkw1IMZTXEvpoPn6FOw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:tQt+61IUw/E=:PIUEdeF8O3I2D9A9LY2c6R
-	fXmLkSrDCkOa3z7awUCXa8E5zHGsyxadmW1yNyam3RhVGVPF90luaSSWIwJf888DpTm0aZpu4
-	j22s0yhPBofhLG/G0wQdXCGoNCLzZo1s2KeObDijOqToqaBGyhGuC9PM3ZeTzGMJqm+1OKRSY
-	xhtaKiB6kNq4rvpAmp4dW1wueX6RPxB5XlDlEe+HVC8mOqziudlfp6WeV+FEpTJlNp9SAm/Gf
-	wiqiqaPFlaOMO0sKHfNcZC13IYQ5DLER5Mmq29tHaB+zwAwHBz5BJd1uRaB5q8AGPulBbjDQE
-	bieEidG2/igi1jOsUYMfPcK5EhLWbqs5gj3Xn4jhoZqIpBsJ0NfwMl+8gJATvIzCYMvVIP6hW
-	F1GTFsIkH54Jbd2zRo+HcaOLAbDsGOkivicdSiFDKicaOLQzkyB134LU1DWKTm/OE+gAhvUzU
-	jiNPiCyJC6atvYKvJrGcWrsrJ0iGA8Ghr+ZDPGEkuiwghNvAr/gV6E916yWB2KN4czBjYc7bM
-	/W4u4EhKR5BQQ5pPTKqmJH++4v7Hm+ZEmsOniAyv2gynSmULgNyFrTvrZmhJksEkb13EMzKzs
-	EN19V9Wxxmk061JFB7WGw3USHUcedWzY4n0Vggt5sPPwHZTwbuVWuPadFn6f4X0GorWi4x2cY
-	eSZ76qyxOa22RuWMNqNq87tija/62gqCXCOkX82qDaB7wMwFgP+h2gWbIUoxt71IMqNLssk0i
-	+oJYzJH8v+tSlmid
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:Y0X2ZTfEqJL263Ajd/kgxnYvOUIWKQjOZG8vDfs3lKsAPlXT0yt
+	lzaaWxzlj4rRHUn33d8KQpXm5xbI/A52G91cxgFbHDnQpiLeofpVE71QAXXMKSZlA4OgjLy
+	iZDLo7tKe9R0HCmGED2XwAo+XEbqpaBCsZn2bThwG0i5RLkSpLCWEWIeee/gWAommBTA4uk
+	ql5J5kPYg6CbbYAtm5t6g==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:ArW75fSVx8w=:cSjxiqoHxMsH4F9k1qw/Id
+	2sMlh628udzyWXV+sN9i9LX3FyxsyanIIz3BWPu4f+hwJyyhbf2kxUy/7ydyPxr9fLIcOA+Su
+	3y9/+9vd0ZGm5AA2TVkglILXyeQxvkLQPxfPIt7zoVRdS6/vWFxnhcOrwWTtqtFpm0bYCTukj
+	cP9ZXMiKVKv3IhQk9IQNgMEUm/4aYWGbyBK1Bnj5K8cuqzmzbfa3E1eTZC8M4gb5DThCzwyhs
+	Jy2lGVaFmBwPHklm187UFEw8z9mtqzNxmo+5Vf/rcAmbpV7gNWfoeYH8JSUMa7m6BvCXnbwyv
+	sgpc/589kxA7D7M90S0kcxspbzixsLI+Q5ufgfj2L6SMYNbODCWsvi471nlqxkQs7UQAxMOVl
+	hAtS0u4KB4FK7urXcO5Q+mWarMCFSjaGd6I33VwPTV0Vq/xHljQxfTjFTIAw9OtKwcTOgxqRl
+	LrUXv8KCKbzc1nTFCOi6wKoSs5P+g4zoMj9e191gDUJbmX6rZ+rc2eaJ7rG1D6jLMFXHSwWkZ
+	a5W2ZOdTNFg2gRoUt1uEH7WE8hHBMgocmFvICD5UE2mPhd8NtxWyFf1Vy3E/ozFJ5WBTqT3iI
+	ab6ZhnuOLPM4ddVGAyRcuHztnpwFui5fHWWNq0AJX/Unty2IU14KqNrF6Mo6aihPcVu4kssrK
+	bzhEQgC3C+6wd94QdvAqiz6Vhml0GChzCIHYQyXjTa3JdGW1DYZ6RTK1H+Qb0UuhP3z7SoBVF
+	aWleEK5RGtxG3h2c
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vga_int: remove unused
- function protype
+X-Received-From: 212.227.126.131
+Subject: Re: [Qemu-trivial] [PATCH] piix: use TYPE_FOO constants than string
+ constats
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,16 +62,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Oct 2018 13:52:49 -0000
+X-List-Received-Date: Thu, 25 Oct 2018 13:53:10 -0000
 
-On 23/10/2018 00:45, Philippe Mathieu-Daudé wrote:
-> On 22/10/18 10:00, yuchenlin--- via Qemu-devel wrote:
->> From: yuchenlin <yuchenlin@synology.com>
->>
->> Signed-off-by: yuchenlin <yuchenlin@synology.com>
+On 11/10/2018 13:38, Li Qiang wrote:
+> Make them more QOMConventional.
+> Cc:qemu-trivial@nongnu.org 
 > 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> 
+> Signed-off-by: Li Qiang <liq3ea@gmail.com>
+> ---
+>  hw/pci-host/piix.c | 11 +++++++----
+>  1 file changed, 7 insertions(+), 4 deletions(-)
 
 Applied,
 
