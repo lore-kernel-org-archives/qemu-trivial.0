@@ -1,56 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gFmZL-0007UE-6J
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Oct 2018 16:49:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49604)
+	id 1gFn9v-0008CD-F7
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Oct 2018 17:27:15 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59451)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gFmZD-0007QV-Vg
-	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 16:49:23 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gFn9t-0008BM-Om
+	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 17:27:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gFmZ3-00039o-5j
-	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 16:49:16 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:41771)
+	(envelope-from <laurent@vivier.eu>) id 1gFn9s-0007bV-SA
+	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 17:27:13 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:37737)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gFmZ2-000391-Hh; Thu, 25 Oct 2018 16:49:09 -0400
+	id 1gFn9n-0007a9-UP; Thu, 25 Oct 2018 17:27:08 -0400
 Received: from [10.43.15.91] ([94.185.135.34]) by mrelayeu.kundenserver.de
-	(mreue106 [212.227.15.184]) with ESMTPSA (Nemesis) id
-	1N8G6I-1fTZi714nA-014BBw; Thu, 25 Oct 2018 22:48:51 +0200
+	(mreue108 [212.227.15.184]) with ESMTPSA (Nemesis) id
+	1M5QAt-1gHA490XET-001Qxh; Thu, 25 Oct 2018 23:27:00 +0200
 Received: from [10.43.15.91] ([94.185.135.34]) by mrelayeu.kundenserver.de
-	(mreue106 [212.227.15.184]) with ESMTPSA (Nemesis) id
-	1N8G6I-1fTZi714nA-014BBw; Thu, 25 Oct 2018 22:48:51 +0200
-To: "Emilio G. Cota" <cota@braap.org>, qemu-devel@nongnu.org
-Cc: Riku Voipio <riku.voipio@iki.fi>, qemu-trivial@nongnu.org
-References: <20180811211011.6277-1-cota@braap.org>
+	(mreue108 [212.227.15.184]) with ESMTPSA (Nemesis) id
+	1M5QAt-1gHA490XET-001Qxh; Thu, 25 Oct 2018 23:27:00 +0200
+To: Thomas Huth <thuth@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: qemu-devel qemu-devel <qemu-devel@nongnu.org>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <38b0df70-338e-c842-95bb-c1a5fbd54b7b@vivier.eu>
+	<f0a16cde-5fbc-b3b2-f5c6-105855d356c8@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <a101eaea-7605-f9f7-cc2b-762a6539a91c@vivier.eu>
-Date: Thu, 25 Oct 2018 21:48:47 +0100
+Message-ID: <39f0aaff-ba05-ffe9-8321-182f096c031e@vivier.eu>
+Date: Thu, 25 Oct 2018 22:26:56 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <20180811211011.6277-1-cota@braap.org>
+In-Reply-To: <f0a16cde-5fbc-b3b2-f5c6-105855d356c8@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:im3b/4tagLqqfD/6DBz5JHcRJKmA2NLoYmyYt88ru63DuNI41f5
-	ecNHA71Go0+0VcGRql31YytGoTc7wZ1wZuuI7n7obIuDKPmxTNcXFEMYcHUn5M9wMU16RwI
-	7Ocng1mjYED7SYXmS5RyNMrMoZXbCFyOxg58xTwyjYpEp1sUpC9lfZxtW7eDIxTUDlAC2ta
-	DOz19ADcz4BglENH3RFDA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:VEIXhI3reaM=:DrubqdZKQtpnOwbPLZ5c4D
-	SzAG8765mUG7h6fwFLZHqz+z+9oO0Sqg0VsmmFLZfZpWh2GBFioFlY1IJSqmNbFB0P1G6uWaQ
-	qDTUIKNaKCvv+pSvT6H6w7ktdMJImIzL9TWkO6kQgFO6JZEwKmeXEMS71i1/1s1Gmd2SdevZ6
-	s4SzwYyZNFWeFQaadg2Zoo74cdfvDfEc7QFre2RES7tZ6mxSuZHw2urOtXm1WBnXF8umPcyrF
-	GYF2a/OgNklZnlGSuSrBevoCmDYEvzyyfEqfEcVimu7g4Zyjfym2LSvQcBaJ6UPxUrDu0A1/i
-	K/18ssu3BIOiom7q+KwsPxTfayZBCJXmoyHgNyseuia9rZ8bIMNSKjKqQ9FksUqPvVXSSdbLQ
-	KDFUJZZcH0Wd1TiIePVvVpqAdminjsfDJoh8TdAEEeltFgL3uVK23VkGhStbyAL8XXMEoYqTD
-	sj7PcO82oe88G/hUh2wsNw0L8s4p5FPriyyKyj6K08xfxi/S56PwfLptyeQYSwtX4G3ZzFtOz
-	t/pj5evGnWMA5H+tw/ggo62v2gWubKfijIFB36/aj3mU8YdrXKM1Pm0QHr9Us6PQe3/c+QdVl
-	rftxVZnUT/cJiJzWRBt0zRQsNFOk37r9/eM0vgdLBgT1kbGCbeThj9CFL7v+SWXYPf12cnY55
-	RZ8muyylbpWO8HAIQwpnSJWU8gzAPq2m+4jlp1V9+UsYc4+YG3ILM325wVeiEWR6lURdHfhay
-	j8pGblMN4MWqP7ih
+X-Provags-ID: V03:K1:nzruJJw3dxAea81td+WBFI/Ft1VucdNIkcmUamn7Q4HclLNvYZp
+	AjbKKPw87N2VhKkqpTZKV+Ekpj3bY6UKIIC8eAMdXthQN7+QP1i3OFob5KRT2VEderw8nWR
+	OYFpv1jEpuHXKcde8AzBSWoIhTg+6O0yiHtfhLk3BCZ1Pz8t+FA438JbvGvzU2tTixEKPs4
+	aYSHnb1kuOvGNj9uFOlyg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:5RyeLi4FG4A=:Y5Npk3BizrcxnXu8T+RqRi
+	3rxVHEk+1eFJGTDXbpe+38BwygpTCn1Ia2Jnmuc6A23p87TpvB4eB5EhBk2ZJEVUCEhbF6miI
+	mXPLSmHIOMChETu/Yw1oI3wX4jkETGNB9pBVNRT5aODnQ1ZaXQAKlP/008InNyL541sEoa4sS
+	g7aZ76Mjl/NNOp3hndxCt41b1U7mF8R/65B/j0r14WQ5HX7QHq2oAoPhgsdJs6wKA1detd4k4
+	JXhGc8E3M3kW/3hPiTeGjX1bVS8ti+LRAWiAJ+1vAkrgyD6j2PtFIUvuqC9Qld1kmm0qlMtIv
+	mdjgspNR4JdEmik9qPtHHe5arI+INWFpLecw5ZVrs13YNQpDlBCKehSlsVJm3hr6TDjg0B2Sn
+	4faoHGNqb/dDgVsojikdDdPXoCgRHoBS+DfeKRNp2hn0txZcGjTrDhJO6I2oYp/gmeVWiMNIp
+	UrTPs5YtXoHzEC35Fm51pAkpdC5/pB3nBrwBweWaghau3kOUoMQRjKAf9Z1daPv6rF3imphEn
+	3Ah+NcnaR8lFrcRey+EzXcjiG6AHeLjBSnPG6V8I/rk39KuhFBerHfa5P7FSPXQRN1NTg19FR
+	4QDdFQ6YqqD2qzVShjOa+Lsu72cYBXdUU4O400M7MneXRtilU1fw30Y2EzEWkSk2UxCI/UwxK
+	eyBs2NsxTBV/NOrN/DNl1YPIg+pS/U2oMqdplZperWb3CAYdHHn8CqCN35AyV7uQjTrzNMhQg
+	mNFYTynXgYxXJYj+
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.24
-Subject: Re: [Qemu-trivial] [PATCH] linux-user: fix comment
- s/atomic_write/atomic_set/
+Subject: Re: [Qemu-trivial] [Qemu-devel] Call for patches for the
+ qemu-trivial pull request
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,31 +64,110 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Oct 2018 20:49:24 -0000
+X-List-Received-Date: Thu, 25 Oct 2018 21:27:14 -0000
 
-On 11/08/2018 22:10, Emilio G. Cota wrote:
-> Signed-off-by: Emilio G. Cota <cota@braap.org>
-> ---
->  linux-user/qemu.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+On 25/10/2018 21:13, Thomas Huth wrote:
+> On 2018-10-23 11:04, Laurent Vivier wrote:
+>> Hi,
+>>
+>> I'm going to collect patches for the next pull request for the
+>> qemu-trivial I'd like to do before the softfreeze.
+>>
+>> As we didn't have any pull request for more than 3 months and some of
+>> the patches have been pushed through another maintainer branches, it's a
+>> little bit difficult to collect correctly the patches to send.
+>>
+>> So, it would be helpful if any of you knowing that some patches have to
+>> be added to the pull request send me their list.
 > 
-> diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-> index b4959e41c6..e6a8bc5867 100644
-> --- a/linux-user/qemu.h
-> +++ b/linux-user/qemu.h
-> @@ -143,7 +143,7 @@ typedef struct TaskState {
->      /* Nonzero if process_pending_signals() needs to do something (either
->       * handle a pending signal or unblock signals).
->       * This flag is written from a signal handler so should be accessed via
-> -     * the atomic_read() and atomic_write() functions. (It is not accessed
-> +     * the atomic_read() and atomic_set() functions. (It is not accessed
->       * from multiple threads.)
->       */
->      int signal_pending;
+> For June to September, I'd like to suggest:
+> 
+>  cpu.h: fix a typo in comment
+>  https://lists.nongnu.org/archive/html/qemu-trivial/2018-09/msg00021.html
+
+applied
+
+> 
+>  linux-user: fix comment s/atomic_write/atomic_set
+>  https://lists.nongnu.org/archive/html/qemu-trivial/2018-08/msg00017.html
+
+applied
+
+> 
+>  tests: Fix typos in comments and help message (found by codespell)
+>  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00039.html
+
+applied
+
+> 
+>  configure: Support pkg-config for zlib
+>  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00032.html
+>  (this had a suggestion for dropping the fallback test, but I think
+>  that could be done as an additional patch after the next release instead)
 > 
 
-Applied
+applied
 
-Thanks,
+>  qobject: Catch another straggler for use of qdict_put_str()
+>  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00006.html
+
+applied
+
+> 
+>  xen: Use the PCI_DEVICE macro
+>  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00008.html
+
+applied
+
+> 
+>  tests/bios-tables-test: Remove an useless cast
+>  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00009.html
+
+applied
+
+> 
+>  hw/pci-host: Remove useless parenthesis around DIV_ROUND_UP macro
+>  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00011.html
+> 
+
+applied
+
+>  hw/intc/gicv3: Remove useless parenthesis around DIV_ROUND_UP macro
+>  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00012.html
+
+applied
+
+> 
+>  dump: fix a typo
+>  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00002.html
+
+I don't find it in patchwork.
+
+> 
+>  milkymist-minimac2: Use qemu_log_mask(GUEST_ERROR) instead of error_report
+>  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00001.html
+
+applied
+
+> 
+>  Makefile: Remove qemu-version.h and qemu-options.def during 'make distclean'
+>  https://lists.nongnu.org/archive/html/qemu-trivial/2018-06/msg00050.html
+> 
+
+doesn't apply cleanly. not applied.
+
+>  ppc: move at24c to its own CONFIG_ symbol
+>  https://lists.nongnu.org/archive/html/qemu-trivial/2018-05/msg00118.html
+
+applied
+
+> 
+> Additionally you could also include the reviewed patches from the the
+> "use qemu_log_mask instead of fprintf" series here:
+> https://lists.nongnu.org/archive/html/qemu-trivial/2018-06/msg00276.html
+
+I'll see later for these ones...
+
+Thanks
 Laurent
 
