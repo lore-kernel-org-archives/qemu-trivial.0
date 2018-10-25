@@ -1,58 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gFg1H-00006e-Ir
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Oct 2018 09:49:51 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35821)
+	id 1gFg4A-0002PQ-1v
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Oct 2018 09:52:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37272)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gFg1G-00004t-0U
-	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 09:49:50 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gFg47-0002LZ-Kb
+	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 09:52:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gFg1F-00022r-8E
-	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 09:49:49 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:40587)
+	(envelope-from <laurent@vivier.eu>) id 1gFg42-0003qH-Fs
+	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 09:52:47 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:57379)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gFg18-0001t3-Ra; Thu, 25 Oct 2018 09:49:43 -0400
+	id 1gFg3k-0003cd-Ll; Thu, 25 Oct 2018 09:52:25 -0400
 Received: from [10.101.215.124] ([185.7.230.216]) by mrelayeu.kundenserver.de
-	(mreue012 [212.227.15.168]) with ESMTPSA (Nemesis) id
-	1Mv3M8-1fOfmv0Rou-00r0a9; Thu, 25 Oct 2018 15:49:33 +0200
+	(mreue001 [212.227.15.168]) with ESMTPSA (Nemesis) id
+	0Ltifl-1fYL2n2WEH-011Bmi; Thu, 25 Oct 2018 15:52:04 +0200
 Received: from [10.101.215.124] ([185.7.230.216]) by mrelayeu.kundenserver.de
-	(mreue012 [212.227.15.168]) with ESMTPSA (Nemesis) id
-	1Mv3M8-1fOfmv0Rou-00r0a9; Thu, 25 Oct 2018 15:49:33 +0200
-To: Thomas Huth <thuth@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
-	<f4bug@amsat.org>
-References: <1540376314-5727-1-git-send-email-thuth@redhat.com>
+	(mreue001 [212.227.15.168]) with ESMTPSA (Nemesis) id
+	0Ltifl-1fYL2n2WEH-011Bmi; Thu, 25 Oct 2018 15:52:04 +0200
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	yuchenlin@synology.com, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, kraxel@redhat.com
+References: <20181022080053.9379-1-yuchenlin@synology.com>
+	<adce4765-3ff4-0898-168d-7d55606720f4@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <9c924931-beed-3a3b-d033-87a7fa4863f1@vivier.eu>
-Date: Thu, 25 Oct 2018 14:49:30 +0100
+Message-ID: <e6f9d70f-4e18-6bf7-9f61-1f0f56742162@vivier.eu>
+Date: Thu, 25 Oct 2018 14:52:02 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <1540376314-5727-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <adce4765-3ff4-0898-168d-7d55606720f4@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:jel2tgTNLBm+TreIXRkpc31k2KitOMADg6YOkxaLj6kE4QQlL03
-	sjGvT2wL0Ky3JapSUsBKwHV+yWtDk03qYMguYd+QEyC9htCmuUgD/pqgkl36kf/FJnCPeeA
-	QmFFU09/bT56ylHQilgVZ3R1n6y8VCvHOpvb0chj1FRzo1ipVIX0bGriwf5iTFl4JgvqujI
-	1uV79zbZxgt9pQYkttGYw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:6NMNTjO9JXw=:Ere77acjAkq0kgIkfGD7sk
-	0caqkOo4JvKWBvDqlHiHvd9OMoT+4GJwwZLyNvEb2M7Q0ICTzksgtRLlmEJDuq5AN/wAEMVpO
-	ZwRqUZWGwos92jUwJI/yef5WgyQciplE120iCICM93awsECV2fJSyZzj/ZIzk4XVYofBMWXJx
-	JxQL2/bMEu2fttCdB9fbflRE/w2hRkyU7w9uOHSAod14q0vu1bwYqwcHtwGCIoxAlsjNqQcjq
-	Hr2G3SuJhENzxNqlR4PHMAV1r/6khI0K/Y4j8n/v92so32A7pnVNig14PUh+Cz2lxcDt2KtJw
-	OZTgzRY/HGCPlWqx0o10Nc1YNTzDxoaK79tr86HwEEyZBZsLiWleNesLmh9Ao77Szxwjneord
-	FhsGK6sCs8UL2pquwKXBOZab1VpZM5bc0QvgIxOxxej/hf5rqaHFM5fX1oZo6A6yn/pwOF7C9
-	G+bieFVnKUKMibWZmwVT3RD/G9mXSV9jaU/5Rd6P25zgatv6T3neKcdGEhYnUwhJei83y4XJz
-	TO+8jIq/vqgxYhmfFqbhB/ikF5ThrNWB0lm7w4NqYmPc1y9R34OZh9S8tBjvIgpg+JS3EGUb7
-	P0PfrGLEVv3Z0DOOSaz/CJB/bWLgOhHKp0y3FuwMRNdBIbW8svFYPI4EBHfICQBVa/sk/wZBo
-	eYDHzYQWQTTLHh2HUyQXF70V3aFkzIpUNeSsyRcFFOi9Bi++9W3iN52p5OcroQOJTeMi7ARa7
-	hqRvWPdxMcyvcf4R
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:hBtc35eCU4tn3m8cS8Y/x5O4HiBlVC6Dy+ItOpKxoDy7tJ3bjVd
+	VnAtVzIwePjYs04zrBDp+CQOAA/8gLWM+72lpTX7B6M5USsC5z4Zq/7jw+JZK7yya+8w91A
+	sF8uYvSGJt89r00JmdVxaP5Nzcocc1kqvJBrdEIH5shPVnKhhMjg3wCGQoYiuM+MCXj0wCV
+	jBBkw1IMZTXEvpoPn6FOw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:tQt+61IUw/E=:PIUEdeF8O3I2D9A9LY2c6R
+	fXmLkSrDCkOa3z7awUCXa8E5zHGsyxadmW1yNyam3RhVGVPF90luaSSWIwJf888DpTm0aZpu4
+	j22s0yhPBofhLG/G0wQdXCGoNCLzZo1s2KeObDijOqToqaBGyhGuC9PM3ZeTzGMJqm+1OKRSY
+	xhtaKiB6kNq4rvpAmp4dW1wueX6RPxB5XlDlEe+HVC8mOqziudlfp6WeV+FEpTJlNp9SAm/Gf
+	wiqiqaPFlaOMO0sKHfNcZC13IYQ5DLER5Mmq29tHaB+zwAwHBz5BJd1uRaB5q8AGPulBbjDQE
+	bieEidG2/igi1jOsUYMfPcK5EhLWbqs5gj3Xn4jhoZqIpBsJ0NfwMl+8gJATvIzCYMvVIP6hW
+	F1GTFsIkH54Jbd2zRo+HcaOLAbDsGOkivicdSiFDKicaOLQzkyB134LU1DWKTm/OE+gAhvUzU
+	jiNPiCyJC6atvYKvJrGcWrsrJ0iGA8Ghr+ZDPGEkuiwghNvAr/gV6E916yWB2KN4czBjYc7bM
+	/W4u4EhKR5BQQ5pPTKqmJH++4v7Hm+ZEmsOniAyv2gynSmULgNyFrTvrZmhJksEkb13EMzKzs
+	EN19V9Wxxmk061JFB7WGw3USHUcedWzY4n0Vggt5sPPwHZTwbuVWuPadFn6f4X0GorWi4x2cY
+	eSZ76qyxOa22RuWMNqNq87tija/62gqCXCOkX82qDaB7wMwFgP+h2gWbIUoxt71IMqNLssk0i
+	+oJYzJH8v+tSlmid
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
-Subject: Re: [Qemu-trivial] [PATCH] configs/alpha: Remove unused
- CONFIG_PARALLEL_ISA switch
+X-Received-From: 212.227.126.130
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vga_int: remove unused
+ function protype
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,21 +64,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Oct 2018 13:49:50 -0000
+X-List-Received-Date: Thu, 25 Oct 2018 13:52:49 -0000
 
-On 24/10/2018 11:18, Thomas Huth wrote:
-> We don't use CONFIG_PARALLEL_ISA in any of our Makefiles, so this
-> is just a dead config option which can be removed.
+On 23/10/2018 00:45, Philippe Mathieu-Daudé wrote:
+> On 22/10/18 10:00, yuchenlin--- via Qemu-devel wrote:
+>> From: yuchenlin <yuchenlin@synology.com>
+>>
+>> Signed-off-by: yuchenlin <yuchenlin@synology.com>
 > 
-> Fixes: a4cb773928e047b137c6998209cf2eec857fac6b
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  default-configs/alpha-softmmu.mak | 1 -
->  1 file changed, 1 deletion(-)
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> 
 
-Applied
+Applied,
 
 Thanks,
 Laurent
-
 
