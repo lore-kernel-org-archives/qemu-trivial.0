@@ -1,58 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gFds9-0007de-9Z
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Oct 2018 07:32:17 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53392)
+	id 1gFfog-0003rv-D1
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Oct 2018 09:36:50 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58553)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gFdry-0007Ny-DW
-	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 07:32:14 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1gFfod-0003pL-Us
+	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 09:36:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gFdjp-0007YD-2M
-	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 07:23:41 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:43965)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gFdjk-0007W3-Ef; Thu, 25 Oct 2018 07:23:36 -0400
-Received: from [10.101.215.124] ([185.7.230.216]) by mrelayeu.kundenserver.de
-	(mreue010 [212.227.15.168]) with ESMTPSA (Nemesis) id
-	1MgeXk-1ffE3I2vaG-00h4W1; Thu, 25 Oct 2018 13:23:28 +0200
-Received: from [10.101.215.124] ([185.7.230.216]) by mrelayeu.kundenserver.de
-	(mreue010 [212.227.15.168]) with ESMTPSA (Nemesis) id
-	1MgeXk-1ffE3I2vaG-00h4W1; Thu, 25 Oct 2018 13:23:28 +0200
-To: Thomas Huth <thuth@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
-	qemu-devel qemu-devel <qemu-devel@nongnu.org>
-Cc: Michael Tokarev <mjt@tls.msk.ru>
-References: <38b0df70-338e-c842-95bb-c1a5fbd54b7b@vivier.eu>
-	<678d990b-e016-6ce0-ec8b-39891dc56a90@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <cc025e74-395a-b278-ba9d-a49b513f012f@vivier.eu>
-Date: Thu, 25 Oct 2018 12:23:26 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
-MIME-Version: 1.0
-In-Reply-To: <678d990b-e016-6ce0-ec8b-39891dc56a90@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:vgKspIKDsyPLEX39mSAcsH6CNUOdRIQk2hlbbFut+0QAmq46IGg
-	X/myimODf3umWHjv0BuBQMKd7B9QBYoVA6eaiKELNuDTKRXLQiqee1G123qoFN2ZBKvIJ+h
-	jKlx4koOLAVWzsb4Q5jxonbQeGb8gq1CXahboGV1cGrDWqqKqRs9i4on37K2Fi/3RCgQKAg
-	5Xw6CitSZ9X2qbEaiT3hw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:LgoAsY8NNkE=:kVCOCYmYzIl0RBSRnD6adW
-	hLGLZz01csr32PTC2Oh66WEEAa2TTygrJ9sUFA8YvMHoqpoXvMHtA0ZG4ylltgX2yUaljh2LZ
-	DPc+2KXU3dVbKhjWLpJPjRe+5mL2gu+yZujkqYhtzPmxElQu9ZWaJ0JaLBUs32ACnmsccIwr2
-	LPQV8F/QbSIT/g7b4EwN9Wqu/EKgpr+tYt+KkZfbima/NloCzcHeLGFe7WCSf7mnvVYZfnK/N
-	0PfQxxpeR8aecG0Ql2wQTfK5KdkrWUDWObrvAdijm1bhalY5PmSiEnSi07NytFWr30ChNJi1U
-	xlbY29yxQVkyowDRbUGnGA1GlaU1eOoLreolk9hatVJyhJ6bp0ydoUIOpSRJV5oyrnzfr3hcH
-	HVuojIG9lQ8ckENumkrVH8tXUaeUiivE5J5CNS6kbNNqA9o+aIJj9n+SdgpuADiTB8I4mOgNt
-	e3EPxV3Wy4j95dX3ndtBB7mVaP+pgxmXe0jLikIY44pC1iPRgXl4g4AaFwMgckSWAnD5tXfb8
-	Yh0ZTe18WHbg339a9nkRJPhrVU5X92KYOK63JIxsDnq+K44k5vnZvvQShtHkhKEfmJhi8OnMI
-	ilhr8wTYkoKnIDhU2+4Chl2nLfQpEbPIz6WYZvihmUeGaOItVI2/7ylA1UkqgvAvKsc4x5SLE
-	VkxWkd0Nsj2BZKWtIMEdfPF+n23rXT4vRCh4L06RjEg+mnzWgPrd6RleRYJuGO9fizr2NzvcT
-	mx/c0MUbzGhku7Z2
+	(envelope-from <ehabkost@redhat.com>) id 1gFfod-0000pa-3c
+	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 09:36:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51152)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1gFfmw-00081D-Ne; Thu, 25 Oct 2018 09:35:02 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A742C30832E9;
+	Thu, 25 Oct 2018 13:35:01 +0000 (UTC)
+Received: from localhost (unknown [10.33.36.149])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D940E5D6AA;
+	Thu, 25 Oct 2018 13:34:56 +0000 (UTC)
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <agraf@suse.de>,
+	Rob Herring <robh@kernel.org>, libvir-list@redhat.com,
+	Richard Henderson <rth@twiddle.net>,
+	David Gibson <david@gibson.dropbear.id.au>, Eric Blake <eblake@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Eduardo Habkost <ehabkost@redhat.com>, Michael Walle <michael@walle.cc>,
+	Thomas Huth <thuth@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Alistair Francis <alistair@alistair23.me>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>, qemu-ppc@nongnu.org,
+	Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+	Max Filippov <jcmvbkbc@gmail.com>, Li Qiang <liq3ea@163.com>,
+	qemu-trivial@nongnu.org
+Date: Thu, 25 Oct 2018 10:32:34 -0300
+Message-Id: <20181025133301.16578-17-ehabkost@redhat.com>
+In-Reply-To: <20181025133301.16578-1-ehabkost@redhat.com>
+References: <20181025133301.16578-1-ehabkost@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.44]);
+	Thu, 25 Oct 2018 13:35:02 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-Subject: Re: [Qemu-trivial] [Qemu-devel] Call for patches for the
- qemu-trivial pull request
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PULL v2 16/43] machine: fix a typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,94 +67,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Oct 2018 11:32:14 -0000
+X-List-Received-Date: Thu, 25 Oct 2018 13:36:49 -0000
 
-On 25/10/2018 07:56, Thomas Huth wrote:
-> On 2018-10-23 11:04, Laurent Vivier wrote:
->> Hi,
->>
->> I'm going to collect patches for the next pull request for the
->> qemu-trivial I'd like to do before the softfreeze.
->>
->> As we didn't have any pull request for more than 3 months and some of
->> the patches have been pushed through another maintainer branches, it's a
->> little bit difficult to collect correctly the patches to send.
->>
->> So, it would be helpful if any of you knowing that some patches have to
->> be added to the pull request send me their list.
-> 
-> For October, I'd suggest:
-> 
->  configs/alpha: Remove unused CONFIG_PARALLEL_ISA
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-10/msg00081.html
+From: Li Qiang <liq3ea@163.com>
 
-Applied
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Li Qiang <liq3ea@163.com>
+Message-Id: <20181010161025.34796-1-liq3ea@163.com>
+Reviewed-by: Stefano Garzarella <stefanogarzarella@gmail.com>
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+---
+ hw/core/machine.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> 
->  vga_int: remove unused function protype
->  https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg04798.html
-
-Applied
-
-> 
->  piix: use TYPE_FOO constants than string constats
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-10/msg00071.html
-
-Applied
-
-> 
->  memory.h: fix types in comments
->  (title should be changed with s/types/typos/)
->  https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg01570.html
-
-Applied
-
-> 
->  tests/tcg/README: fix location for lm32 tests
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-10/msg00007.html
-
-Applied
-
-> 
->  qemu-iotests: fix filename containing checks
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-10/msg00008.html
-
-Applied
-
-> 
->  qemu-iotests: make 218 executable
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-10/msg00009.html
-
-Applied
-
-> 
->  docs/devel/testing.rst: add missing newlines after code block
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-10/msg00011.html
-
-Applied
-
-> 
->  scripts/decodetree.py: remove unused imports
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-10/msg00012.html
-
-Applied
-
-> 
->  scripts/qemu.py: remove trailing quotes on docstring
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-10/msg00015.html
-
-Applied
-
-> 
-> ... will try to have a look at the previous months later ...
-
-Thank you Thomas to have done this difficult work.
-
-The collected patches are available on my branch:
-
-git://github.com/vivier/qemu.git trivial-patches
-
-Thanks,
-Laurent
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 1987557833..da50ad6de7 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -636,7 +636,7 @@ static void machine_class_init(ObjectClass *oc, void *data)
+         machine_get_memory_encryption, machine_set_memory_encryption,
+         &error_abort);
+     object_class_property_set_description(oc, "memory-encryption",
+-        "Set memory encyption object to use", &error_abort);
++        "Set memory encryption object to use", &error_abort);
+ }
+ 
+ static void machine_class_base_init(ObjectClass *oc, void *data)
+-- 
+2.18.0.rc1.1.g3f1ff2140
 
 
