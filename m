@@ -1,60 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gFgAs-0001Qe-RN
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Oct 2018 09:59:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:40139)
+	id 1gFgC3-0002UO-U9
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Oct 2018 10:00:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40727)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gFgAo-0001PI-8A
-	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 09:59:45 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gFgC1-0002Sl-MA
+	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 10:00:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gFgAi-00017b-AE
-	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 09:59:42 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:60481)
+	(envelope-from <laurent@vivier.eu>) id 1gFgBw-0002C7-Fb
+	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 10:00:57 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:49949)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gFgAe-00010L-SA; Thu, 25 Oct 2018 09:59:34 -0400
+	id 1gFgBw-00027I-1l; Thu, 25 Oct 2018 10:00:52 -0400
 Received: from [10.101.215.124] ([185.7.230.216]) by mrelayeu.kundenserver.de
-	(mreue011 [212.227.15.168]) with ESMTPSA (Nemesis) id
-	1N8GhM-1fT80W1egi-014CKn; Thu, 25 Oct 2018 15:59:20 +0200
+	(mreue010 [212.227.15.168]) with ESMTPSA (Nemesis) id
+	1M4K6z-1gFPCi0Qq1-000LY1; Thu, 25 Oct 2018 16:00:33 +0200
 Received: from [10.101.215.124] ([185.7.230.216]) by mrelayeu.kundenserver.de
-	(mreue011 [212.227.15.168]) with ESMTPSA (Nemesis) id
-	1N8GhM-1fT80W1egi-014CKn; Thu, 25 Oct 2018 15:59:20 +0200
+	(mreue010 [212.227.15.168]) with ESMTPSA (Nemesis) id
+	1M4K6z-1gFPCi0Qq1-000LY1; Thu, 25 Oct 2018 16:00:33 +0200
 To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
 	qemu-block@nongnu.org, qemu-trivial@nongnu.org,
 	Riku Voipio <riku.voipio@iki.fi>, Michael Tokarev <mjt@tls.msk.ru>,
 	Max Reitz <mreitz@redhat.com>
 References: <20181004161852.11673-1-crosa@redhat.com>
-	<20181004161852.11673-6-crosa@redhat.com>
+	<20181004161852.11673-11-crosa@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <620802c3-e3e9-f89d-63dc-07928dc0cd85@vivier.eu>
-Date: Thu, 25 Oct 2018 14:59:19 +0100
+Message-ID: <a49bbe8f-7c63-a7c7-64e1-01f9842a76ef@vivier.eu>
+Date: Thu, 25 Oct 2018 15:00:32 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <20181004161852.11673-6-crosa@redhat.com>
+In-Reply-To: <20181004161852.11673-11-crosa@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:U6jGMd/+NInWOIoZtuVXDzSPAu/vkRmPHsqe96hVlYdYSzF4wDL
-	iYbXqlR7qlS0DALQe86LfbXX2lfOvtos5PURIgXa56U1C+URWTf1VJ+uMxr2cnLVZaGSVMu
-	TwnNgAeU7lxZBibcPZvxXc1Dj38bRrozTYEU06bXR/V+1gHKuDrzh4D+JXYjBGmZloklLZA
-	bGcCxv+1H7mYR8hlijREA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:C5+yMRq626E=:aC9XUxscRqfkYw7sAPBRJl
-	/uPFsrAHT8dhqy1KcIeAUVQYLAYfr/HwoRhst0z0gc+I/w+1VH1wcXn3vaN9ygO8iO5+BrRMx
-	9N+pGHu7CgyX5BTwFruePxxUddphcejUyl01bJcwwpf1sGFwjf/EnBQ3cqJxwJHVorGIpwqOx
-	88FD4OGd7Nrzcg9rzt9sf14REs0/CWL9uXbHNTTFs6r8Do7AYyGDyCn5WOADiLCGpE0eH2YZe
-	sZd/ix7yqxKOTff7/gueMMxxjxhfeFS6CLZ05eAkQeF7703EYMUJ7Rlf/XJz5W2+EWBDNAUqQ
-	2desxUxppmEBcDi+1rPV40sQcsXrACUE9anGjQpsyu+aRdJfyXnt4KVBS6y8o9pTJMBYmPzqv
-	kWQOIR+s2FwYczwzdXcV7B9uSElEtv2MU0qL1qFiroG2Lq804C2i264MuL9ni5ffl5tJ4pVJp
-	jpAmvhMRZU2F9M8Bw8WPJO7n5Pyn8ljrfoSQn9Gc4m8mt6g+hNdAjBCExtJoTAJZEfGGa6WMM
-	vK5R0wJ+zDquk+WhUYwEqUwb97bpnfZSOZbE0EWH211w6t2MR+txDcrVbVIoeA7oWFiSf+B0/
-	drTsYsDsZuoc44z3mR4YjShCii9VtvBh4x3qhpeBSTHF/oPI6ylj74qp7I/sZlDw90qRVhuDB
-	7k3jtt7yHL+lM00xxA8MlL3/A/H+w7o6SUsIHctuX7iCULl5VAD+qHXvPkc7iFyoQ3TUUsarU
-	iL1SXcyieFVFiomk
+X-Provags-ID: V03:K1:ZWcV4fnvvAcDJJynlcxrt6Y9S+x96eERNXs2/N6X4gn4S0HMK05
+	gZXx1XT8u/HUbl/NAmCaDMA9rViFWPA9vFP08m0crgfIVd618iY/0EetmnrFq07HOH10N31
+	unkita1t47RQSj2T1oXPKWPwRrvgIWiK4L9wMVw+EqhhRvnF1KpNHn9OJuIzg0u0zfGYalq
+	rDGa07nHQNPuRPSbwNA7w==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:xZ605NeAzHw=:K1+c7lE9toIPozzBKrMjzw
+	805CTM+20WEPhcMKS7e3OfDfkxDW33PZzFdpE0K7xRIrrOxLD7FXBqf8NJZ3Dc/immI33yuln
+	k1oHoZnTOQO8Ry9RMCB5Mg5Pb+ae6oLdE/sKIocU2TcFMt07ojH8Y36gxW5IZUPXb3I7lGCH0
+	4qkMIzf6NnQUvPXxRjNPRkQJ0XiXR0tX14NqceWNChZKYpfceInI8UQdPaj2g229wbXaMlb5x
+	vb1wBcjWqHEoAQ/xoaPK4tqO/iclQiQvxPmpX2MmqOCaZtHGZG1v9S8ni4YAn3+T8upeioxq3
+	chqOCGeImbkkYnUlDfKkIDAmsvwOGNXV+mTahbjHEjE1J3zZ8Vi7GXXmj+9I4vUOU2w2dMRxW
+	KB3ndaXn1/t4L5cbbS2r40gIcZ51M6PmAKdIeAVxvQeDXMN6pZ8JNJlG/99GH1fK7sxjvdCJi
+	YUNU3w6BeMpuAIrb5PnMgD07r/OMraRW+pdfyMhfeOXjiDe9HrCMMYWmzi0WF+HT2WpDCYtgi
+	2B2BpRHArZA7IWfOZOQVJsiwz0rnebVGZu1UOrw+1ZTOXuF2pkd2N0fac+AtV7TMrmRZyXfkm
+	POWi6kgLU5QshvGezP3/mkOCiSo60NoB+6k+QjK38Jx06B8EqJfgN2aIq9OQs2quTYtd7HqAB
+	zCAwtvLBUjeToCvL2FzqPTulehb37Ftkpt2Fdo2duHaIeu437nYy8nrk1zoxZkyBtnn9t5gv0
+	ZBpIqnvhaUIIcqoI
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: Re: [Qemu-trivial] [PATCH 05/10] docs/devel/testing.rst: add
- missing newlines after code block
+X-Received-From: 212.227.126.134
+Subject: Re: [Qemu-trivial] [PATCH 10/10] scripts/qemu.py: remove trailing
+ quotes on docstring
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,53 +66,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Oct 2018 13:59:45 -0000
+X-List-Received-Date: Thu, 25 Oct 2018 14:00:58 -0000
 
 On 04/10/2018 17:18, Cleber Rosa wrote:
-> The line immediate following a ".. code::" block is considered
-> to contains arguments to the "code directive".  The lack of a
-> new line gives me during at parse time:
-> 
->    testing.rst:63: (ERROR/3) Error in "code" directive:
->    maximum 1 argument(s) allowed, 3 supplied.
-> 
->    .. code::
->      make check-unit V=1
-> 
->    testing.rst:120: (ERROR/3) Error in "code" directive:
->    maximum 1 argument(s) allowed, 3 supplied.
-> 
->    .. code::
->      make check-qtest V=1
-> 
-> Let's add the missing newlines, both for consistency and to
-> avoid the parsing errors.
-> 
 > Signed-off-by: Cleber Rosa <crosa@redhat.com>
 > ---
->  docs/devel/testing.rst | 2 ++
->  1 file changed, 2 insertions(+)
+>  scripts/qemu.py | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-> index 727c4019b5..9355ad49f2 100644
-> --- a/docs/devel/testing.rst
-> +++ b/docs/devel/testing.rst
-> @@ -61,6 +61,7 @@ variable (which affects memory reclamation and catches invalid pointers better)
->  and gtester options. If necessary, you can run
->  
->  .. code::
-> +
->    make check-unit V=1
->  
->  and copy the actual command line which executes the unit test, then run
-> @@ -118,6 +119,7 @@ and using gdb on the test is still simple to do: find out the actual command
->  from the output of
->  
->  .. code::
-> +
->    make check-qtest V=1
->  
->  which you can run manually.
+> diff --git a/scripts/qemu.py b/scripts/qemu.py
+> index 7abe26de69..676eb9709a 100644
+> --- a/scripts/qemu.py
+> +++ b/scripts/qemu.py
+> @@ -88,7 +88,7 @@ class QEMUMachine(object):
+>          @param name: prefix for socket and log file names (default: qemu-PID)
+>          @param test_dir: where to create socket and log file
+>          @param monitor_address: address for QMP monitor
+> -        @param socket_scm_helper: helper program, required for send_fd_scm()"
+> +        @param socket_scm_helper: helper program, required for send_fd_scm()
+>          @note: Qemu process is not started until launch() is used.
+>          '''
+>          if args is None:
 > 
 
 Applied
