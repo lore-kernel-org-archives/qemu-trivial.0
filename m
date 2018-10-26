@@ -1,58 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gFn9v-0008CD-F7
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Oct 2018 17:27:15 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59451)
+	id 1gG3zJ-0001r3-8M
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:25:25 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45134)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gFn9t-0008BM-Om
-	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 17:27:14 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1gG3zG-0001ot-Mh
+	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:25:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gFn9s-0007bV-SA
-	for qemu-trivial@nongnu.org; Thu, 25 Oct 2018 17:27:13 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:37737)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gFn9n-0007a9-UP; Thu, 25 Oct 2018 17:27:08 -0400
-Received: from [10.43.15.91] ([94.185.135.34]) by mrelayeu.kundenserver.de
-	(mreue108 [212.227.15.184]) with ESMTPSA (Nemesis) id
-	1M5QAt-1gHA490XET-001Qxh; Thu, 25 Oct 2018 23:27:00 +0200
-Received: from [10.43.15.91] ([94.185.135.34]) by mrelayeu.kundenserver.de
-	(mreue108 [212.227.15.184]) with ESMTPSA (Nemesis) id
-	1M5QAt-1gHA490XET-001Qxh; Thu, 25 Oct 2018 23:27:00 +0200
-To: Thomas Huth <thuth@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: qemu-devel qemu-devel <qemu-devel@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <38b0df70-338e-c842-95bb-c1a5fbd54b7b@vivier.eu>
-	<f0a16cde-5fbc-b3b2-f5c6-105855d356c8@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <39f0aaff-ba05-ffe9-8321-182f096c031e@vivier.eu>
-Date: Thu, 25 Oct 2018 22:26:56 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(envelope-from <ehabkost@redhat.com>) id 1gG3zA-0007qs-Ul
+	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:25:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40564)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1gG3z4-0007Dm-2M; Fri, 26 Oct 2018 11:25:10 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2084B37E8F;
+	Fri, 26 Oct 2018 15:25:08 +0000 (UTC)
+Received: from localhost (unknown [10.33.36.116])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id AE1DD271BF;
+	Fri, 26 Oct 2018 15:25:02 +0000 (UTC)
+Date: Fri, 26 Oct 2018 12:25:01 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Cc: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org,
+	Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+	qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+	Michael Tokarev <mjt@tls.msk.ru>,
+	Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>
+Message-ID: <20181026152501.GG3902@habkost.net>
+References: <20181004161852.11673-1-crosa@redhat.com>
+	<20181004161852.11673-10-crosa@redhat.com>
+	<b590e7a3-c0e8-f39b-8a9b-b56d4804a6bc@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <f0a16cde-5fbc-b3b2-f5c6-105855d356c8@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:nzruJJw3dxAea81td+WBFI/Ft1VucdNIkcmUamn7Q4HclLNvYZp
-	AjbKKPw87N2VhKkqpTZKV+Ekpj3bY6UKIIC8eAMdXthQN7+QP1i3OFob5KRT2VEderw8nWR
-	OYFpv1jEpuHXKcde8AzBSWoIhTg+6O0yiHtfhLk3BCZ1Pz8t+FA438JbvGvzU2tTixEKPs4
-	aYSHnb1kuOvGNj9uFOlyg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:5RyeLi4FG4A=:Y5Npk3BizrcxnXu8T+RqRi
-	3rxVHEk+1eFJGTDXbpe+38BwygpTCn1Ia2Jnmuc6A23p87TpvB4eB5EhBk2ZJEVUCEhbF6miI
-	mXPLSmHIOMChETu/Yw1oI3wX4jkETGNB9pBVNRT5aODnQ1ZaXQAKlP/008InNyL541sEoa4sS
-	g7aZ76Mjl/NNOp3hndxCt41b1U7mF8R/65B/j0r14WQ5HX7QHq2oAoPhgsdJs6wKA1detd4k4
-	JXhGc8E3M3kW/3hPiTeGjX1bVS8ti+LRAWiAJ+1vAkrgyD6j2PtFIUvuqC9Qld1kmm0qlMtIv
-	mdjgspNR4JdEmik9qPtHHe5arI+INWFpLecw5ZVrs13YNQpDlBCKehSlsVJm3hr6TDjg0B2Sn
-	4faoHGNqb/dDgVsojikdDdPXoCgRHoBS+DfeKRNp2hn0txZcGjTrDhJO6I2oYp/gmeVWiMNIp
-	UrTPs5YtXoHzEC35Fm51pAkpdC5/pB3nBrwBweWaghau3kOUoMQRjKAf9Z1daPv6rF3imphEn
-	3Ah+NcnaR8lFrcRey+EzXcjiG6AHeLjBSnPG6V8I/rk39KuhFBerHfa5P7FSPXQRN1NTg19FR
-	4QDdFQ6YqqD2qzVShjOa+Lsu72cYBXdUU4O400M7MneXRtilU1fw30Y2EzEWkSk2UxCI/UwxK
-	eyBs2NsxTBV/NOrN/DNl1YPIg+pS/U2oMqdplZperWb3CAYdHHn8CqCN35AyV7uQjTrzNMhQg
-	mNFYTynXgYxXJYj+
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <b590e7a3-c0e8-f39b-8a9b-b56d4804a6bc@redhat.com>
+User-Agent: Mutt/1.9.2 (2017-12-15)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Fri, 26 Oct 2018 15:25:09 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: Re: [Qemu-trivial] [Qemu-devel] Call for patches for the
- qemu-trivial pull request
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [Qemu-block] [PATCH 09/10]
+ scripts/qemu.py: use a more consistent docstring style
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,110 +57,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Oct 2018 21:27:14 -0000
+X-List-Received-Date: Fri, 26 Oct 2018 15:25:23 -0000
 
-On 25/10/2018 21:13, Thomas Huth wrote:
-> On 2018-10-23 11:04, Laurent Vivier wrote:
->> Hi,
->>
->> I'm going to collect patches for the next pull request for the
->> qemu-trivial I'd like to do before the softfreeze.
->>
->> As we didn't have any pull request for more than 3 months and some of
->> the patches have been pushed through another maintainer branches, it's a
->> little bit difficult to collect correctly the patches to send.
->>
->> So, it would be helpful if any of you knowing that some patches have to
->> be added to the pull request send me their list.
+On Mon, Oct 08, 2018 at 03:44:14PM -0400, John Snow wrote:
 > 
-> For June to September, I'd like to suggest:
 > 
->  cpu.h: fix a typo in comment
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-09/msg00021.html
-
-applied
-
+> On 10/04/2018 12:18 PM, Cleber Rosa wrote:
+> > Signed-off-by: Cleber Rosa <crosa@redhat.com>
+> > ---
+> >  dtc             |  2 +-
+> >  scripts/qemu.py | 65 +++++++++++++++++++++++++++++++------------------
+> >  2 files changed, 42 insertions(+), 25 deletions(-)
+> > 
+> > diff --git a/dtc b/dtc
+> > index 88f18909db..e54388015a 160000
+> > --- a/dtc
+> > +++ b/dtc
+> > @@ -1 +1 @@
+> > -Subproject commit 88f18909db731a627456f26d779445f84e449536
+> > +Subproject commit e54388015af1fb4bf04d0bca99caba1074d9cc42
+> > diff --git a/scripts/qemu.py b/scripts/qemu.py
+> > index f099ce7278..7abe26de69 100644
+> > --- a/scripts/qemu.py
+> > +++ b/scripts/qemu.py
+> > @@ -53,9 +53,9 @@ class QEMUMachineAddDeviceError(QEMUMachineError):
+> >      """
+> >  
+> >  class MonitorResponseError(qmp.qmp.QMPError):
+> > -    '''
+> > +    """
+> >      Represents erroneous QMP monitor reply
+> > -    '''
+> > +    """
 > 
->  linux-user: fix comment s/atomic_write/atomic_set
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-08/msg00017.html
-
-applied
-
+> This seems obviously correct, as per the Python Dogma Handbook ...
 > 
->  tests: Fix typos in comments and help message (found by codespell)
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00039.html
-
-applied
-
+[...]
+> >      def add_fd(self, fd, fdset, opaque, opts=''):
+> > -        '''Pass a file descriptor to the VM'''
+> > +        """
+> > +        Pass a file descriptor to the VM
+> > +        """
 > 
->  configure: Support pkg-config for zlib
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00032.html
->  (this had a suggestion for dropping the fallback test, but I think
->  that could be done as an additional patch after the next release instead)
+> However, is it established practice among ne'er-do-wells to format
+> one-line docstrings as three-liners? (And without punctuation to boot --
+> for shame!)
 > 
+> PEP257 suggests that one-liners are allowed, but doesn't seem to
+> necessitate their usage. Does this kind of change have any kind of benefit?
 
-applied
+I don't mind having one-line docstrings.  But if we're already
+touching multiple docstrings, consistency with the rest of the
+module code sounds nice.
 
->  qobject: Catch another straggler for use of qdict_put_str()
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00006.html
+I'm queueing this on python-next.
 
-applied
-
-> 
->  xen: Use the PCI_DEVICE macro
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00008.html
-
-applied
-
-> 
->  tests/bios-tables-test: Remove an useless cast
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00009.html
-
-applied
-
-> 
->  hw/pci-host: Remove useless parenthesis around DIV_ROUND_UP macro
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00011.html
-> 
-
-applied
-
->  hw/intc/gicv3: Remove useless parenthesis around DIV_ROUND_UP macro
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00012.html
-
-applied
-
-> 
->  dump: fix a typo
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00002.html
-
-I don't find it in patchwork.
-
-> 
->  milkymist-minimac2: Use qemu_log_mask(GUEST_ERROR) instead of error_report
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-07/msg00001.html
-
-applied
-
-> 
->  Makefile: Remove qemu-version.h and qemu-options.def during 'make distclean'
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-06/msg00050.html
-> 
-
-doesn't apply cleanly. not applied.
-
->  ppc: move at24c to its own CONFIG_ symbol
->  https://lists.nongnu.org/archive/html/qemu-trivial/2018-05/msg00118.html
-
-applied
-
-> 
-> Additionally you could also include the reviewed patches from the the
-> "use qemu_log_mask instead of fprintf" series here:
-> https://lists.nongnu.org/archive/html/qemu-trivial/2018-06/msg00276.html
-
-I'll see later for these ones...
-
-Thanks
-Laurent
+-- 
+Eduardo
 
