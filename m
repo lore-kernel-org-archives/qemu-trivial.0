@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gG4JN-0004xA-BA
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:46:10 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49850)
+	id 1gG4JZ-00056n-Tm
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:46:21 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49998)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gG4JI-0003mJ-I9
-	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:46:05 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gG4JM-00041t-9b
+	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:46:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gG46p-0005N3-O9
+	(envelope-from <laurent@vivier.eu>) id 1gG46p-0005MO-Gm
 	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:33:13 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:44053)
+Received: from mout.kundenserver.de ([212.227.126.187]:33755)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gG46c-0004yJ-1q; Fri, 26 Oct 2018 11:32:58 -0400
+	id 1gG46b-0004uO-3G; Fri, 26 Oct 2018 11:32:57 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MuF4v-1fSVlz3MEf-00uabe; Fri, 26 Oct 2018 17:31:51 +0200
+	id 1MgARS-1ffLh50QDG-00hbtl; Fri, 26 Oct 2018 17:32:05 +0200
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MuF4v-1fSVlz3MEf-00uabe; Fri, 26 Oct 2018 17:31:51 +0200
+	id 1MgARS-1ffLh50QDG-00hbtl; Fri, 26 Oct 2018 17:32:05 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
@@ -39,35 +39,35 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
 	qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
-	Eduardo Habkost <ehabkost@redhat.com>
-Date: Fri, 26 Oct 2018 17:31:10 +0200
-Message-Id: <20181026153125.24738-6-laurent@vivier.eu>
+	Eduardo Habkost <ehabkost@redhat.com>, Stefan Weil <sw@weilnetz.de>
+Date: Fri, 26 Oct 2018 17:31:17 +0200
+Message-Id: <20181026153125.24738-13-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
 References: <20181026153125.24738-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:AHIYzvZ0k2AaXsDkHzyH3mfSFFsxCdqJRBeK+MP9hZPehMjxUA5
-	eGWZ82GiJJn0o7a+gzV3bkC3phsf/nyn3w2kiRrkal4eHCM1+CBGa+6eSV48Rp0EbJrJaBP
-	69+ksD/WCvbxM6QJg4wt40DWgit+xvppkxtX8mfuNUPyyYaiUEamF54ab7ID27sfRInL+b8
-	Dcn6lFU8pDiyUJrNXA2Mg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:a079i6mtQvY=:mXM+exP3XoS8LPq93wsz7g
-	mW0aRzKSCQk5ysSjcpRMVQW7FCYBEGhf9KStCMzo8U4B2YL/MzIZUT2LDozfBjzq+OUBaU3Sw
-	lTpFZW8aEK5qasOYh8zUZ3DePbSp0D30BmroEqxD9d+jPYUejS4O0ZV+M41X3mH33xr/f9eDo
-	0guOYHzqAtf8CR9PRgIqIXZodBMu9bZzHXleI95vhtePv8GxCWQUWrTv8nHdhnBDllB8z+d7w
-	hbb9qVWSJebZLv6Yc+3o/H8E33sZIA8yia7Kl7VNrVf3L4Lh7S8PwpsVgqRn+MFScKIzmp59F
-	BPwbLDQ6qMwgAwYp76WR4w5M/mf1XLrT5qCmT06F3zrNVk3wfKZftPVUwyhdpQXiwB1HMOFmF
-	pqxYPNFr2rLDFFUXF/X34AIWuyRR2jt3yadBmsgcSiF9lQ0RDoYZM3VGlRv98R2ia6dbuzSzj
-	BjfFM03oUVNu1BX4CMl3hCr1t1v4+VP4DwWjYpGojts722TfTVf9MsLKbWN96AHtg10bE1n3u
-	RvYEyj3GXOz+ivlYMdHixAGnJsj/Ug0xM/sS70M98aQLX24e1+863VqKzLJ2XO836CDrHmhHu
-	gNsDFrB+LRXiIJKxNmznQkTeXl2LXAraOjeLPMbTCfF9tR8ek+m6j6X8/9nquenwzvZsbtAeI
-	6viJrksGHumC2QWFJnxcF3tvlSJAGuCOWQCI/XY05MW8QbSz0ZFFlfG5RMwpK7cE/guEfmbuh
-	giCVff7Z8XZ0mARP
+X-Provags-ID: V03:K1:ex2+kfocSHYiSFatyHnbgYg6PbpKVY9xitw2Vhe2SRwOK5wFpye
+	WzTXWFeZycPBflsRTUQCJdfJIfYS9wEbxqIdLf56LCf/IQvTYsruo8snUVasRtP0S0J2GDm
+	aIK9o7o9Xqjm5SH65Y1gwW7/diBtR9KEvlXschdEGuYXQ0Utfn/dtKaQlokYxvqWmBzEnIK
+	mIyPtVj6UdDrWmQD06JLA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:detTgguHPt0=:Ec7dYIeTiXiizbwBWjVA82
+	1bhjC0EtY+xf53OOXuG7Q9VOa+aBJgKppIySlxiVx4ci0aLVXddBuGtRgBBa6snQutylLHcGh
+	E6GV8BiZ8jZY6JgU4cdjPTFR8Y0/0ZSF+1ARF6IqT31mrHv3C95ZSpt7RR5w7I3cK09ki8I72
+	iTvOjHV1YBt2E0sXxUE6L5rqeI/tS6EPVX61VpUBs47PPnNclH6vuGIWeem2FK4IIXHQZPX6p
+	lDOkTX2T/RRTjasH4Xof6elqb+e2hfDpLQbQt+HRJQJw+5FjgJStOeKDAsVIXWhLRVbiZjuSq
+	cjZGKBS7JuTmrYoCQb6zy8O90746NWCVLrSuSkwTurxJL59kRYyUu9Ml4MQnrsGqd/f7IjYhS
+	fYrcj9yYO+zAOdusUjkIuV9I0I0k0RMFlvMoXyUIu10Q62ivYAe+8qhm4gvT9IyLNp/6wpwOQ
+	QHQPwrsSBcz+lNzIzt2Yd31cGQffdPF2hy3PInHpfrLhz7e7rMUXaX6QruTR1YL3hK5IU3Dx4
+	rXaUG+WpG+co3oGpHj+ywZMaKhs9Ho3RoAvMBAfIl2HSb0XFiOTBfeFSj89I+NIMJJbu1JB1Q
+	qdBPxuMpcI7kzT2rUvBbz6q5EfKAXCyRcVDlWSFwjRHxJtpMG6fVYPqH4Qz8t1sWxBXwHhUAK
+	HUBzn/KyLcw2aGvS0aPRuDzhnr/Vbxg+ef/m1To4nq01zVCYJ4tt42FgZ/XuR0HKBLFumdPlB
+	0spzLrBGT41oirWY
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.187
-Subject: [Qemu-trivial] [PULL 05/20] qemu-iotests: fix filename containing
- checks
+Subject: [Qemu-trivial] [PULL 12/20] tests: Fix typos in comments and help
+ message (found by codespell)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,45 +79,140 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Oct 2018 15:46:05 -0000
+X-List-Received-Date: Fri, 26 Oct 2018 15:46:12 -0000
 
-From: Cleber Rosa <crosa@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-Commit cce293a2945 moved some functions from common.config to
-common.rc, but the error messages still reference the old file
-location.
+Fix also a grammar issue.
 
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
-Reviewed-by: Max Reitz <mreitz@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20181004161852.11673-5-crosa@redhat.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20180713054755.23323-1-sw@weilnetz.de>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/qemu-iotests/common.rc | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/bios-tables-test.c              | 2 +-
+ tests/docker/Makefile.include         | 2 +-
+ tests/docker/docker.py                | 4 ++--
+ tests/guest-debug/test-gdbstub.py     | 2 +-
+ tests/qemu-iotests/common.qemu        | 2 +-
+ tests/tcg/Makefile.include            | 2 +-
+ tests/tcg/Makefile.probe              | 2 +-
+ tests/tcg/mips/mips64-dsp/subq_s_pw.c | 2 +-
+ 8 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
-index 44bee16a5e..70ca65b49b 100644
---- a/tests/qemu-iotests/common.rc
-+++ b/tests/qemu-iotests/common.rc
-@@ -170,7 +170,7 @@ if [ ! -e "$TEST_DIR" ]; then
- fi
+diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
+index 4e24930c4b..af4b1fb6bd 100644
+--- a/tests/bios-tables-test.c
++++ b/tests/bios-tables-test.c
+@@ -390,7 +390,7 @@ try_again:
+         if (g_file_test(aml_file, G_FILE_TEST_EXISTS)) {
+             exp_sdt.aml_file = aml_file;
+         } else if (*ext != '\0') {
+-            /* try fallback to generic (extention less) expected file */
++            /* try fallback to generic (extension less) expected file */
+             ext = "";
+             g_free(aml_file);
+             goto try_again;
+diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+index 6e03235ab9..9467e9d088 100644
+--- a/tests/docker/Makefile.include
++++ b/tests/docker/Makefile.include
+@@ -41,7 +41,7 @@ docker-qemu-src: $(DOCKER_SRC_COPY)
+ docker-image: ${DOCKER_TARGETS}
  
- if [ ! -d "$TEST_DIR" ]; then
--    echo "common.config: Error: \$TEST_DIR ($TEST_DIR) is not a directory"
-+    echo "common.rc: Error: \$TEST_DIR ($TEST_DIR) is not a directory"
-     exit 1
- fi
+ # General rule for building docker images. If we are a sub-make
+-# invoked with SKIP_DOCKER_BUILD we still check the image is upto date
++# invoked with SKIP_DOCKER_BUILD we still check the image is up to date
+ # though
+ ifdef SKIP_DOCKER_BUILD
+ docker-image-%: $(DOCKER_FILES_DIR)/%.docker
+diff --git a/tests/docker/docker.py b/tests/docker/docker.py
+index 44d5f7493b..02d8a83847 100755
+--- a/tests/docker/docker.py
++++ b/tests/docker/docker.py
+@@ -97,7 +97,7 @@ def _get_so_libs(executable):
+     return libs
  
-@@ -179,7 +179,7 @@ if [ -z "$REMOTE_TEST_DIR" ]; then
- fi
+ def _copy_binary_with_libs(src, dest_dir):
+-    """Copy a binary executable and all its dependant libraries.
++    """Copy a binary executable and all its dependent libraries.
  
- if [ ! -d "$SAMPLE_IMG_DIR" ]; then
--    echo "common.config: Error: \$SAMPLE_IMG_DIR ($SAMPLE_IMG_DIR) is not a directory"
-+    echo "common.rc: Error: \$SAMPLE_IMG_DIR ($SAMPLE_IMG_DIR) is not a directory"
-     exit 1
- fi
+     This does rely on the host file-system being fairly multi-arch
+     aware so the file don't clash with the guests layout."""
+@@ -284,7 +284,7 @@ class SubCommand(object):
+     name = None # Subcommand name
+     def shared_args(self, parser):
+         parser.add_argument("--quiet", action="store_true",
+-                            help="Run quietly unless an error occured")
++                            help="Run quietly unless an error occurred")
  
+     def args(self, parser):
+         """Setup argument parser"""
+diff --git a/tests/guest-debug/test-gdbstub.py b/tests/guest-debug/test-gdbstub.py
+index 474d2c5c65..0e4ac01426 100644
+--- a/tests/guest-debug/test-gdbstub.py
++++ b/tests/guest-debug/test-gdbstub.py
+@@ -122,7 +122,7 @@ class CatchBreakpoint(gdb.Breakpoint):
+ 
+ 
+ def run_test():
+-    "Run throught the tests one by one"
++    "Run through the tests one by one"
+ 
+     print ("Checking we can step the first few instructions")
+     step_ok = 0
+diff --git a/tests/qemu-iotests/common.qemu b/tests/qemu-iotests/common.qemu
+index f285484951..dadde2a266 100644
+--- a/tests/qemu-iotests/common.qemu
++++ b/tests/qemu-iotests/common.qemu
+@@ -257,7 +257,7 @@ function _launch_qemu()
+ }
+ 
+ 
+-# Silenty kills the QEMU process
++# Silently kills the QEMU process
+ #
+ # If $wait is set to anything other than the empty string, the process will not
+ # be killed but only waited for, and any output will be forwarded to stdout. If
+diff --git a/tests/tcg/Makefile.include b/tests/tcg/Makefile.include
+index 57470b2a2c..c581bd6ffc 100644
+--- a/tests/tcg/Makefile.include
++++ b/tests/tcg/Makefile.include
+@@ -2,7 +2,7 @@
+ #
+ # TCG tests (per-target rules)
+ #
+-# This Makefile fragement is included from the per-target
++# This Makefile fragment is included from the per-target
+ # Makefile.target so will be invoked for each linux-user program we
+ # build. We have two options for compiling, either using a configured
+ # guest compiler or calling one of our docker images to do it for us.
+diff --git a/tests/tcg/Makefile.probe b/tests/tcg/Makefile.probe
+index 15c0412657..9dc654663d 100644
+--- a/tests/tcg/Makefile.probe
++++ b/tests/tcg/Makefile.probe
+@@ -2,7 +2,7 @@
+ #
+ # TCG Compiler Probe
+ #
+-# This Makefile fragement is included multiple times in the main make
++# This Makefile fragment is included multiple times in the main make
+ # script to probe for available compilers. This is used to build up a
+ # selection of required docker targets before we invoke a sub-make for
+ # each target.
+diff --git a/tests/tcg/mips/mips64-dsp/subq_s_pw.c b/tests/tcg/mips/mips64-dsp/subq_s_pw.c
+index e8e0b0567e..4c080b785a 100644
+--- a/tests/tcg/mips/mips64-dsp/subq_s_pw.c
++++ b/tests/tcg/mips/mips64-dsp/subq_s_pw.c
+@@ -24,7 +24,7 @@ int main(void)
+     rt = 0x123456789ABCDEF1;
+     rs = 0x123456789ABCDEF2;
+     result =  0x0000000000000001;
+-    /* This time we do not set dspctrl, but it setted in pre-action. */
++    /* This time we do not set dspctrl, but set it in pre-action. */
+     dspresult = 0x1;
+ 
+     __asm
 -- 
 2.17.2
 
