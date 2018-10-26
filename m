@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gG4J9-0004jF-4k
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:45:55 -0400
+	id 1gG4JA-0004lg-Vq
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:45:57 -0400
 Received: from eggs.gnu.org ([2001:4830:134:3::10]:50000)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gG4J3-00041v-RR
-	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:45:53 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gG4J7-00041v-9R
+	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:45:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gG47K-0005dP-I9
-	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:33:46 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:39581)
+	(envelope-from <laurent@vivier.eu>) id 1gG47G-0005ZE-3K
+	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:33:42 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:55681)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gG46t-0005Og-H1; Fri, 26 Oct 2018 11:33:15 -0400
+	id 1gG479-0005Tj-EK; Fri, 26 Oct 2018 11:33:34 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N4eOd-1fYW2A0gTv-011lKe; Fri, 26 Oct 2018 17:32:17 +0200
+	id 1N3Xvv-1fXPaQ0kwV-010fOy; Fri, 26 Oct 2018 17:32:13 +0200
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N4eOd-1fYW2A0gTv-011lKe; Fri, 26 Oct 2018 17:32:17 +0200
+	id 1N3Xvv-1fXPaQ0kwV-010fOy; Fri, 26 Oct 2018 17:32:13 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
@@ -40,34 +40,34 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
 	Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
 	qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
 	Eduardo Habkost <ehabkost@redhat.com>
-Date: Fri, 26 Oct 2018 17:31:23 +0200
-Message-Id: <20181026153125.24738-19-laurent@vivier.eu>
+Date: Fri, 26 Oct 2018 17:31:21 +0200
+Message-Id: <20181026153125.24738-17-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
 References: <20181026153125.24738-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:7uzmE3hXAIS81p8gYH56fkh6UHOHziydz3GRt0kqKk+9lI6V8tO
-	ymcxVNd2k3nNh5OSk2Pk/jxynYGCbtG21Hh/1CgAkkVIWi48rsrCDSx+W4i0sR1XGlWK5kC
-	NFLNOXod/A5Ns+fCSGK2nX6J9jQuXZ1bP7IV0vckAO2dQYDS8esPHcMSEKZ+oges4O0L4eH
-	Ro/pTH0X+jX3PNs37yFqQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:sMp6R0Un3T8=:UOJ0GTL/xFzLMW0oWfWIC2
-	Wb/tFPUw5Dh4J/s5cNR5yAwXQDeWxdwkapc7bVXyEB7qk8b5KLPc6g6zbjOrT0HQ64QjHADx3
-	Jy/eAX7Ibk1C3TV0pHnvhXGjf+ALK7PvjZZr6zkh604AcvqGmjNrrLAt605XHBvD1gocDXbMc
-	KmgLzntqdGbaJGd5Rj3FZ2YInkY6Z7kjuvfWw3/alimzMA4osUNiXO2MK43tk9gCcThE2DZbx
-	2fhGim5AgG9W4uOj0WJNef8Q+mzVEXdb8kdMAqDnRuiZfedp/GvojmlgPZnSn2TQ07vrz3UiC
-	6XpBYFAyTaBQ7EWq5F9gK6Bx6nqzFCXrVQeq7KJcjBoutxxntMLX97AVILrCuzgb0cRrS6OcJ
-	bLr1tHAhuUb9PpMInWchc417uZgHQrlvfi67OdLltNOW3z1UGSvS1QvDzeAzaOLnYammOejmQ
-	/SZ4DFuo/vtcO/ObBniPTq7K39xFuXE/feMgl8RrMxNDSJSVmsiVnlmtQ9v0hwyTjQFoXxyB2
-	QO993deYXeBHkKavB1yq98L+sUDD6ylz3m1MIr/hivJaZnHZ89YUApJ9IKC2kvIeIBjx1GkQ8
-	h6JdeXvBuzHAdU7bAceIG9aVfoDHfXwJ+f6q9VlbJWtNQPf1Pg2U0PqQv8WgOV4O5VMJjC56z
-	hbhvur6+k1acJnD2K45fVbP9dNiRZlWtB30XVCjH6qmiKZZw1t9e48srm2CnaKE7k73kGGdxW
-	ngmAYwqy4WUPDYeW
+X-Provags-ID: V03:K1:jyFUglwv22ZGvQhGYHhC9I79VIt+cGsDI6GkuGxaHtotGw1i812
+	NY5fhRWppxfts+BIGYlT9+CFsQBIi9YOPobjRk6yGrv7p3XJtUaiEHuzfaYcPre/54W/5fz
+	u+S8zriEuPn4ob6AJ5IVDCUEInX/eLQckyi5EMhYDLS/1YeouXlhmUe3diKxFl3lxdGxA/W
+	xShGMcOi94+N8+L+g0tIw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:/1PXSljl2Y4=:6Kj16mcRkzvlI6uvICand2
+	KhQJ/ZKwV0E9ydZSHLRwpUakacRHwHVnnDwsXo2rD+OB3WdN2lTW9g41qOJxLJ3ruvMsnIYyH
+	UhMABuBkQ0R6UaAgFnGLVmR96kOE2UF+D4CTaq9XoZCL/DIqnbcOmHcU7U4f9EZkzSwUWRsNE
+	b70rVKHVbX9+A+ZyJePcd+cIBKnqCc/ezrK6opSjT0oIfGYPVQu3vlshpJdg/j+vkM6KzPbsC
+	GApHIJoeGcjbHhIoPc6XV9O7SluYMnJ09IgTvvs/27VLnkpEQqMvAXIwGswtgjdthNlTHsw+4
+	f/Vyt40YleKh8d+S1h8wMkUfCezJ5c6NIKE8RbqTR1y55RbctbQXuKYnD1cmPW8LdwLTiWhVQ
+	KNZsB+isGvHRkpyZ/1Fk+1smheBVN2znegsKs0sjW+LIkHviJXrf3elt538yMByqqzd8potmR
+	K9JpltaDes3yfdUNrdvjDek6UsB6r6UPvmb7p+GEltz0FgSBjeAB8TCKKRjscsbLgUyi8MJGz
+	fhBGs2KIyfrwTLVHP/sy3ybI6edLQ703zdKLELxQMzmS0V5o8RzMKPJcRNpvmgEMPtfXiCd0d
+	fFa5sYi4VDRmHmjElP8sckOhb1YQ7V4q+Z2ijW4r1vrWGYqaEMVbCZScObm8dmTFFtr1Nn08S
+	SI1u73UPQkoljvXGXeVoV4yphSbfEplPwl2fv2YE0eszq1iboFiNVrwdf8QZmJNgk/Ysu82C1
+	HNHEZ3Ts7yqxZHSV
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: [Qemu-trivial] [PULL 18/20] hw/intc/gicv3: Remove useless
- parenthesis around DIV_ROUND_UP macro
+X-Received-From: 212.227.126.134
+Subject: [Qemu-trivial] [PULL 16/20] tests/bios-tables-test: Remove an
+ useless cast
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,37 +79,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Oct 2018 15:45:53 -0000
+X-List-Received-Date: Fri, 26 Oct 2018 15:45:54 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 Patch created mechanically by rerunning:
 
-  $  spatch --sp-file scripts/coccinelle/round.cocci \
+  $  spatch --sp-file scripts/coccinelle/typecast.cocci \
             --macro-file scripts/cocci-macro-file.h \
             --dir . --in-place
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20180705155811.20366-8-f4bug@amsat.org>
+Message-Id: <20180705155811.20366-5-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- include/hw/intc/arm_gicv3_common.h | 2 +-
+ tests/bios-tables-test.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-index b798486ecf..31ec9a1ae4 100644
---- a/include/hw/intc/arm_gicv3_common.h
-+++ b/include/hw/intc/arm_gicv3_common.h
-@@ -62,7 +62,7 @@
-  * avoids bugs where we forget to subtract GIC_INTERNAL from an
-  * interrupt number.
-  */
--#define GICV3_BMP_SIZE (DIV_ROUND_UP(GICV3_MAXIRQ, 32))
-+#define GICV3_BMP_SIZE DIV_ROUND_UP(GICV3_MAXIRQ, 32)
- 
- #define GIC_DECLARE_BITMAP(name) \
-     uint32_t name[GICV3_BMP_SIZE]
+diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
+index af4b1fb6bd..02e77ec811 100644
+--- a/tests/bios-tables-test.c
++++ b/tests/bios-tables-test.c
+@@ -319,7 +319,7 @@ static bool load_asl(GArray *sdts, AcpiSdtTable *sdt)
+     ret = g_spawn_command_line_sync(command_line->str, &out, &out_err, NULL, &error);
+     g_assert_no_error(error);
+     if (ret) {
+-        ret = g_file_get_contents(sdt->asl_file, (gchar **)&sdt->asl,
++        ret = g_file_get_contents(sdt->asl_file, &sdt->asl,
+                                   &sdt->asl_len, &error);
+         g_assert(ret);
+         g_assert_no_error(error);
 -- 
 2.17.2
 
