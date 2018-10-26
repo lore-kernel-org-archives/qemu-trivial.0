@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gG4Jg-0005EK-4P
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:46:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50000)
+	id 1gG4Jh-0005FS-0V
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:46:29 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50586)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gG4JR-00041v-81
-	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:46:19 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gG4JZ-0004rD-UK
+	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:46:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gG46j-0005H1-Hf
-	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:33:07 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:35693)
+	(envelope-from <laurent@vivier.eu>) id 1gG46b-00056O-SV
+	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:33:03 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:50227)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gG46b-0004vo-0C; Fri, 26 Oct 2018 11:32:57 -0400
+	id 1gG46b-000529-41; Fri, 26 Oct 2018 11:32:57 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N3Xvv-1fXPaK0qXL-010fOy; Fri, 26 Oct 2018 17:32:11 +0200
+	id 1M9qYn-1gCTaj3BfJ-005nJ0; Fri, 26 Oct 2018 17:31:57 +0200
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N3Xvv-1fXPaK0qXL-010fOy; Fri, 26 Oct 2018 17:32:11 +0200
+	id 1M9qYn-1gCTaj3BfJ-005nJ0; Fri, 26 Oct 2018 17:31:57 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
@@ -40,33 +40,34 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
 	Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
 	qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
 	Eduardo Habkost <ehabkost@redhat.com>
-Date: Fri, 26 Oct 2018 17:31:20 +0200
-Message-Id: <20181026153125.24738-16-laurent@vivier.eu>
+Date: Fri, 26 Oct 2018 17:31:13 +0200
+Message-Id: <20181026153125.24738-9-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
 References: <20181026153125.24738-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ujcQMLVnNdlA+bT6z6rODRtkZg/zsDEqRdCnz0gVnaZ9/UQrReP
-	yYwtX/6ZZtTkN6YZvVq54IrtX1iqx1Xkwd5t2OJ98jNQ1a4UmWDICn6a7FyQKjgJF7W+Ctn
-	QhTDR0tSekyjaYRLrbiYdL3X6UDp5aoM44K76g4syHvKF2eQxJRCBHixUz5iJDvpc3V9THi
-	BBKc9sIV3voKPz5VYe5HA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:mDkSnPqe98M=:915bT4UpaXUVeT5R6liQYf
-	w/dv7Ug2RSxa3KsGn+7+8g4f1ywSgyhZLKn7vYN0GfwmGhQArERISpZTBitmSAY/82mJJmPsB
-	NvNdFf4tNjCK5ssXJsNtv4ZxU3h6e8CLvgCrGYxPKh7ON6DvOHEghV97LQUtR2E6sJxPGbrEZ
-	ZRlftgPq3oJ8N7oFLRto2bVzIkVNDQOsWcxilAaFgKkd69mz/O60aiqy5qkym+i4hnDr7uMY/
-	9Bty4ZbNp8mf1y3rtQc1uP1s7RWAf8BuDXeXiuSduAVbuwXcyUw5eMnWDkeJcgB2HdrMFYsxI
-	vOPGdwsLZJqj+TLxiozh3y9lfi1YknPb7Nng/4fj0Z9nHsSJCGrJzacfFvYHyp/5YRuusD7Sk
-	QDnBpWVYTJMnyyAVrNS9S+l2kR3n51RrIXDY6HjJ9GwcySHizBRyu8W3Ztj5QreLn/pYPvpS2
-	JuOJj0emB9SmQ6hwpmHc7LUwYSCzX1fQK4stbEF0T0+/Aeyk/SL95f+fuoJhrN9vZVtTTCqjH
-	7FHhGf525pC5VBpO0KCdiFwCDn5lEz3jfF5FGRgSVj2nqarRkJHS0cVsD1dUb9NCdAu4yCzSH
-	CTOXdBv7ZjNZnlzw1rTTha8FTBVxwBEsgRVwSFOGR97Ilorc3IWMoWTq/HkwO/V8CFb9ERV1K
-	RtoS1dDCoMkV+DEU4xVCJs5o1o9hNYzAlmnp1F9m1kIUuvD+OX+edWjILFNP//jnYmbq/OIji
-	qt4DZM7g+prHqIIV
+X-Provags-ID: V03:K1:Y9ErdKazy18pRB4sG30VI0C2WaT1vuPEezP7oCLYrbTfLCVfYYH
+	oNPCWNLcp7NXxcXxQQUjHLCr2pTZGohUEtfYpAr+KXetrMfFky2zQmFY6CXbKAO3fEh6ON2
+	5DUKTcThUbkphkRoQYijLb1KR7+QzpeZ8kAU/ZS8C3nw1gz7r3+iRBRRj4jrAYJrwrUwM6g
+	eo+1kef5MijhhbhuYk9cw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:Job3xHGt+as=:7GzYCbv+GfH3YLI0X+i0bY
+	wBk2kGtdFyNPJOk0wnMLRyf3Fxaq3CUxJxXMTiJrb0G2IfIRl7oNmgnkrp85B8IbpB2xiL7S6
+	DRzg18Y32vgrTfEBN3OBiZuDCQyhz6CT/M1ii77z5nAQ/lubRApo5R3+waKa3qAMsrq/fMssj
+	Jm48HFZ9kTI/Hxq/mtS27YinTvQHfNEomASwXihOWkfZ7v3rknVRVc4FagcuA+zdSCA32OHVD
+	Xe0bDQj9qz39k8aTVCFHQ/PnLJlBhef5acy5DOkO9ndrdiybST5mZ+cV4+cvMI8nibibVZAnW
+	F4ySnL/fwtmqDVPPOjs9+E/SzBOiNEDBLDgc7GUaCmxBFmHol/fY4Xm6Epxp2HjpVKC91fsSw
+	0qh9zye7bEc+pqu8E16KphS5YwDDhD7DOena0wQntAJJr75vNc8Uf0NwFAekbKyR0+rLVJUDl
+	aaj3lJiNsTkCuzOIzlmW5VDh8q/zvafsSE4/5k2dZhEFBqwo1mERB5ikY3/fHmqcCYp0YfyA2
+	ffqTjuYltCtgMNQT9z1jbJT7vQKmJelToPG43+WbOEGf4OPqEFHiWFshayRDcLw0txzrnDiGL
+	2/cxafNSLLa7C0+VmJAPX1CmRNHH84jMYgRq+E7lrKUvkL9ABid1mNsemWb8DLccyJ+ENHW8h
+	mFZStuKOYKnDyJ14ySTu9HDMpPTVz1R+KAsjrlpiIZTXbqhggj4CCh63ENWSYrnlBd65NjmOG
+	3f6LrvJnLsHoQ4J1
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.134
-Subject: [Qemu-trivial] [PULL 15/20] xen: Use the PCI_DEVICE macro
+X-Received-From: 212.227.126.133
+Subject: [Qemu-trivial] [PULL 08/20] scripts/qemu.py: remove trailing quotes
+ on docstring
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,64 +79,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Oct 2018 15:46:20 -0000
+X-List-Received-Date: Fri, 26 Oct 2018 15:46:25 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Cleber Rosa <crosa@redhat.com>
 
-TYPE_XEN_PT_DEVICE is a subclass of TYPE_PCI_DEVICE, the clean way
-to access the PCIDevice pointer is using the PCI_DEVICE() macro.
-
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Acked-by: Anthony PERARD <anthony.perard@citrix.com>
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20180705155811.20366-4-f4bug@amsat.org>
+Signed-off-by: Cleber Rosa <crosa@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20181004161852.11673-11-crosa@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/xen/xen_pt_config_init.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ scripts/qemu.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
-index aee31c62bb..47f9010c75 100644
---- a/hw/xen/xen_pt_config_init.c
-+++ b/hw/xen/xen_pt_config_init.c
-@@ -358,7 +358,7 @@ static uint64_t xen_pt_get_bar_size(PCIIORegion *r)
- static XenPTBarFlag xen_pt_bar_reg_parse(XenPCIPassthroughState *s,
-                                          int index)
- {
--    PCIDevice *d = &s->dev;
-+    PCIDevice *d = PCI_DEVICE(s);
-     XenPTRegion *region = NULL;
-     PCIIORegion *r;
- 
-@@ -469,7 +469,7 @@ static int xen_pt_bar_reg_write(XenPCIPassthroughState *s, XenPTReg *cfg_entry,
- {
-     XenPTRegInfo *reg = cfg_entry->reg;
-     XenPTRegion *base = NULL;
--    PCIDevice *d = &s->dev;
-+    PCIDevice *d = PCI_DEVICE(s);
-     const PCIIORegion *r;
-     uint32_t writable_mask = 0;
-     uint32_t bar_emu_mask = 0;
-@@ -543,7 +543,7 @@ static int xen_pt_exp_rom_bar_reg_write(XenPCIPassthroughState *s,
- {
-     XenPTRegInfo *reg = cfg_entry->reg;
-     XenPTRegion *base = NULL;
--    PCIDevice *d = (PCIDevice *)&s->dev;
-+    PCIDevice *d = PCI_DEVICE(s);
-     uint32_t writable_mask = 0;
-     uint32_t throughable_mask = get_throughable_mask(s, reg, valid_mask);
-     pcibus_t r_size = 0;
-@@ -1587,7 +1587,7 @@ static int xen_pt_pcie_size_init(XenPCIPassthroughState *s,
-                                  const XenPTRegGroupInfo *grp_reg,
-                                  uint32_t base_offset, uint8_t *size)
- {
--    PCIDevice *d = &s->dev;
-+    PCIDevice *d = PCI_DEVICE(s);
-     uint8_t version = get_capability_version(s, base_offset);
-     uint8_t type = get_device_type(s, base_offset);
-     uint8_t pcie_size = 0;
+diff --git a/scripts/qemu.py b/scripts/qemu.py
+index f099ce7278..b0b2f12ce6 100644
+--- a/scripts/qemu.py
++++ b/scripts/qemu.py
+@@ -87,7 +87,7 @@ class QEMUMachine(object):
+         @param name: prefix for socket and log file names (default: qemu-PID)
+         @param test_dir: where to create socket and log file
+         @param monitor_address: address for QMP monitor
+-        @param socket_scm_helper: helper program, required for send_fd_scm()"
++        @param socket_scm_helper: helper program, required for send_fd_scm()
+         @note: Qemu process is not started until launch() is used.
+         '''
+         if args is None:
 -- 
 2.17.2
 
