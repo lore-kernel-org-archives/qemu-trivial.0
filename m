@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gG4Jo-0005QC-7A
+	id 1gG4Jo-0005Ql-LS
 	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:46:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50571)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49998)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gG4Jj-0004py-3k
+	(envelope-from <laurent@vivier.eu>) id 1gG4Jj-00041t-44
 	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:46:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gG46a-00053W-MX
+	(envelope-from <laurent@vivier.eu>) id 1gG46b-00056Z-Sy
 	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:33:00 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:58815)
+Received: from mout.kundenserver.de ([212.227.126.131]:38645)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gG46a-0004fJ-96; Fri, 26 Oct 2018 11:32:56 -0400
+	id 1gG46b-0004pe-5K; Fri, 26 Oct 2018 11:32:57 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MTOZQ-1gAc183Rs4-00ToMR; Fri, 26 Oct 2018 17:31:47 +0200
+	id 1MqINP-1fkWcM0r3b-00nPqS; Fri, 26 Oct 2018 17:32:09 +0200
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MTOZQ-1gAc183Rs4-00ToMR; Fri, 26 Oct 2018 17:31:47 +0200
+	id 1MqINP-1fkWcM0r3b-00nPqS; Fri, 26 Oct 2018 17:32:09 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
@@ -39,30 +39,35 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
 	qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
-	Eduardo Habkost <ehabkost@redhat.com>, Li Qiang <liq3ea@gmail.com>
-Date: Fri, 26 Oct 2018 17:31:08 +0200
-Message-Id: <20181026153125.24738-4-laurent@vivier.eu>
+	Eduardo Habkost <ehabkost@redhat.com>
+Date: Fri, 26 Oct 2018 17:31:19 +0200
+Message-Id: <20181026153125.24738-15-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
 References: <20181026153125.24738-1-laurent@vivier.eu>
-X-Provags-ID: V03:K1:kZEj9JglbRW2FesANw2/HZOsdrHk8/OHFw64y91KTz11EYf+3oK
-	7ZzeSp8mMDCAQ6bF3DuoD3LlgGfGQCH0lj4lQUWko1GcelP2Dn1zQiqhyL0IoQb6oYg5LJU
-	Psxa4KPYBA2DrW6aDL91hamu7kHwdOcATSbSjLa1Yd0pW8bjLxc1PlW0P1MKykgm46Zoexm
-	X3SdiZg0xVzI3npVN/nEw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:bdivrMHNBek=:2ZJEsyHlCb3wurBMkhn7N/
-	4nCEuOhazb+/j0d6nHmbFA2m3oFMAdSFrBE+GkHMhwG2IQestGZJV5YWA8fxOHLZCwFIM/knW
-	x3zMmB3mn/SpN+qTUo4C2rodcwYTUwb1lkSqWZmW5Kc8JJK+hnBwXkWreIcrY55T20rgjGkck
-	uAi0zE3iaglbYC4HdLiC1LXnoBwphBEkzD3ScjrBEFBlpszewEwSCwn1HBVKUpGeMUwAgJyji
-	iPWnIxXc2XW2gLv8E2r7yKsUGLFrfJL1+KF+x4n0YDkT3G7/RCVo8nrYubQvA+zBURLPILNSa
-	ojophlfSRbU1shzrqBosYIn2w9AwWm8+rc9dvMOcWSu52aY+L+ywC0M5yfA98deZnlLV5/tue
-	TVbSpXbL7+7FChM+2+PX7xfif0RzmIcgw6HElc2fKTVAE/AR6od/+wfHNLu0o8A512RjFw3uH
-	VGAVeOrE50jzdxvO3OG5EvcOQNJ90xRhxns2KX6pz38TRc8gf251X7qnI2X95ad61B6TA9WAb
-	kZ+OWBxb6b1yvTdn/8WQaQ/Uq3N8fUxh9ZWAnbkEHV2IzK7xITH4JpbgMc/wFRIDKlQbjD6Px
-	m6Wo0HeMfAi8TpdHfOr22t/r7AV1x0bJeGxavhfLHdPo9Qxjw4e0CMaD5M50geOF6s8o+KIuq
-	wLqCMS6gdbWLQJQ3F/M+lTnMZnPVgmPud7xXenNkr46++Wl/3i9fRe6Xo4yiX0yFqWzo=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:BYR+/FPhEvEIEPaEM5ke2EXSPWYCalHZ0Y81g7n3v3Tl3p//XTQ
+	o6GosBJsTIKYw/euWRnKMWZD4sKg4mcJEFHpocdLHNonF/yZncm5xqg8lu93h6CYOkdBT/n
+	D38fB3r0/AEutCRHTyOewRUmSkMX/pm+hxr3Ro9oCVuHeDRl9LWBcYc8HoHHTw+g0uS7n3F
+	NBROm3ztSMeuMNBqmkFEg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:Fvg2WalvKo4=:nBzqshRJOV20mzxB+QvkFN
+	awi2dQnkDtBvX4YV3SSHdiONNwwKlL5XWpYI1YXMBQY7Mq5f3nfuGlNeXjGMUf3m+FEmrVaZJ
+	11R7omVgLeRdzviaLZ5ZcqZRvc0nXXrEKTT0buFO62pMeCBpdMsyMw0w/gmKNALVQfD23w+Sp
+	VHokr35LpzGOGVUQkh8ADFrQjacCzYnV8ILB4nuRevzd0nK2b54P1Z5Xuxo1UpMtFO8PvvJNF
+	7qWw+oZ7MJlAXPpPUiQw8xqTu6NFDkF4oDbrqRqj2Ws8fkIBejOHIy/yUvURUIs+kXUMlwetl
+	Du5AGvcQZqi036ahTuAGgtgN/eB8JdqY8bU+Tf0Wp5M0Uvz8kNbUWDfYetRK61UJXl5CZ7KQY
+	dKnzy4QFZHxGKpHdzriIE/PPTFBKFp+mXMUzSuEoCIbT3frYSr6UdcviHwJcZphZXWsnHmSRr
+	21Cg0SfHVlGn2DX/VvvMrPU8LyDespxfpEEmqxlqJgcnG1eRHxvUt0q/pFTuIWOMEEC9jkdKX
+	b+d/gP9KS/yjb5qcRriqYA8oFvZKEsxM4zCuMWGHOgNaTq6KQnOQMZzy1vLVmwIW4dzh72B6d
+	jeQsbdXwqPMWViEkobCI1qabdyGwFMWmlWYWOsCbGQCmHXXDLoV/vfDlHXpB48X2K2EJIQPM/
+	OTY6fGK1P6BND3wLNryRETdhX2+2ixv0ux9lF/juSfNI66/PCgvjJELL26CFnpcVsM8USxNLb
+	gzvHG8A8Zcy25FiO
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: [Qemu-trivial] [PULL 03/20] memory.h: fix typos in comments
+X-Received-From: 212.227.126.131
+Subject: [Qemu-trivial] [PULL 14/20] qobject: Catch another straggler for
+ use of qdict_put_str()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,48 +81,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 26 Oct 2018 15:46:34 -0000
 
-From: Li Qiang <liq3ea@gmail.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Signed-off-by: Li Qiang <liq3ea@gmail.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <1539080467-2976-1-git-send-email-liq3ea@gmail.com>
-[lv: s/types/typos/]
+Patch created mechanically by rerunning:
+
+  $  spatch --sp-file scripts/coccinelle/qobject.cocci \
+            --macro-file scripts/cocci-macro-file.h \
+            --dir . --in-place
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Message-Id: <20180705155811.20366-2-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- include/exec/memory.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ qobject/block-qdict.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 667466b8f3..d0c7f0d9e9 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -935,7 +935,7 @@ uint64_t memory_region_size(MemoryRegion *mr);
- /**
-  * memory_region_is_ram: check whether a memory region is random access
-  *
-- * Returns %true is a memory region is random access.
-+ * Returns %true if a memory region is random access.
-  *
-  * @mr: the memory region being queried
-  */
-@@ -947,7 +947,7 @@ static inline bool memory_region_is_ram(MemoryRegion *mr)
- /**
-  * memory_region_is_ram_device: check whether a memory region is a ram device
-  *
-- * Returns %true is a memory region is a device backed ram region
-+ * Returns %true if a memory region is a device backed ram region
-  *
-  * @mr: the memory region being queried
-  */
-@@ -1161,7 +1161,7 @@ uint8_t memory_region_get_dirty_log_mask(MemoryRegion *mr);
- /**
-  * memory_region_is_rom: check whether a memory region is ROM
-  *
-- * Returns %true is a memory region is read-only memory.
-+ * Returns %true if a memory region is read-only memory.
-  *
-  * @mr: the memory region being queried
-  */
+diff --git a/qobject/block-qdict.c b/qobject/block-qdict.c
+index 42054cc274..1487cc5dd8 100644
+--- a/qobject/block-qdict.c
++++ b/qobject/block-qdict.c
+@@ -577,7 +577,7 @@ static QObject *qdict_crumple_for_keyval_qiv(QDict *src, Error **errp)
+         if (!tmp) {
+             tmp = qdict_clone_shallow(src);
+         }
+-        qdict_put(tmp, ent->key, qstring_from_str(s));
++        qdict_put_str(tmp, ent->key, s);
+         g_free(buf);
+     }
+ 
 -- 
 2.17.2
 
