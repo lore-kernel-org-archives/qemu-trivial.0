@@ -1,48 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gG41Q-0003mu-Ox
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:27:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45854)
+	id 1gG4J9-0004jF-4k
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:45:55 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50000)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gG41P-0003lL-6y
-	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:27:35 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gG4J3-00041v-RR
+	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:45:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gG41O-0001fU-En
-	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:27:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:4496)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gG41I-0001Z7-4v; Fri, 26 Oct 2018 11:27:28 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7153130020B8;
-	Fri, 26 Oct 2018 15:27:23 +0000 (UTC)
-Received: from localhost (unknown [10.33.36.116])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 091455D76E;
-	Fri, 26 Oct 2018 15:27:22 +0000 (UTC)
-Date: Fri, 26 Oct 2018 12:27:21 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Cleber Rosa <crosa@redhat.com>
-Cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu-block@nongnu.org, qemu-trivial@nongnu.org,
-	Riku Voipio <riku.voipio@iki.fi>, Michael Tokarev <mjt@tls.msk.ru>,
-	Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>
-Message-ID: <20181026152721.GH3902@habkost.net>
-References: <20181004161852.11673-1-crosa@redhat.com>
+	(envelope-from <laurent@vivier.eu>) id 1gG47K-0005dP-I9
+	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:33:46 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:39581)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1gG46t-0005Og-H1; Fri, 26 Oct 2018 11:33:15 -0400
+Received: from localhost.localdomain ([78.238.229.36]) by
+	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
+	(Nemesis)
+	id 1N4eOd-1fYW2A0gTv-011lKe; Fri, 26 Oct 2018 17:32:17 +0200
+Received: from localhost.localdomain ([78.238.229.36]) by
+	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
+	(Nemesis)
+	id 1N4eOd-1fYW2A0gTv-011lKe; Fri, 26 Oct 2018 17:32:17 +0200
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+	Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
+	Michael Walle <michael@walle.cc>, Laurent Vivier <lvivier@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>, xen-devel@lists.xenproject.org,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>,
+	Fam Zheng <famz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Aurelien Jarno <aurelien@aurel32.net>, Kevin Wolf <kwolf@redhat.com>,
+	qemu-block@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+	Eduardo Habkost <ehabkost@redhat.com>
+Date: Fri, 26 Oct 2018 17:31:23 +0200
+Message-Id: <20181026153125.24738-19-laurent@vivier.eu>
+X-Mailer: git-send-email 2.17.2
+In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
+References: <20181026153125.24738-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20181004161852.11673-1-crosa@redhat.com>
-User-Agent: Mutt/1.9.2 (2017-12-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.44]);
-	Fri, 26 Oct 2018 15:27:23 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:7uzmE3hXAIS81p8gYH56fkh6UHOHziydz3GRt0kqKk+9lI6V8tO
+	ymcxVNd2k3nNh5OSk2Pk/jxynYGCbtG21Hh/1CgAkkVIWi48rsrCDSx+W4i0sR1XGlWK5kC
+	NFLNOXod/A5Ns+fCSGK2nX6J9jQuXZ1bP7IV0vckAO2dQYDS8esPHcMSEKZ+oges4O0L4eH
+	Ro/pTH0X+jX3PNs37yFqQ==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:sMp6R0Un3T8=:UOJ0GTL/xFzLMW0oWfWIC2
+	Wb/tFPUw5Dh4J/s5cNR5yAwXQDeWxdwkapc7bVXyEB7qk8b5KLPc6g6zbjOrT0HQ64QjHADx3
+	Jy/eAX7Ibk1C3TV0pHnvhXGjf+ALK7PvjZZr6zkh604AcvqGmjNrrLAt605XHBvD1gocDXbMc
+	KmgLzntqdGbaJGd5Rj3FZ2YInkY6Z7kjuvfWw3/alimzMA4osUNiXO2MK43tk9gCcThE2DZbx
+	2fhGim5AgG9W4uOj0WJNef8Q+mzVEXdb8kdMAqDnRuiZfedp/GvojmlgPZnSn2TQ07vrz3UiC
+	6XpBYFAyTaBQ7EWq5F9gK6Bx6nqzFCXrVQeq7KJcjBoutxxntMLX97AVILrCuzgb0cRrS6OcJ
+	bLr1tHAhuUb9PpMInWchc417uZgHQrlvfi67OdLltNOW3z1UGSvS1QvDzeAzaOLnYammOejmQ
+	/SZ4DFuo/vtcO/ObBniPTq7K39xFuXE/feMgl8RrMxNDSJSVmsiVnlmtQ9v0hwyTjQFoXxyB2
+	QO993deYXeBHkKavB1yq98L+sUDD6ylz3m1MIr/hivJaZnHZ89YUApJ9IKC2kvIeIBjx1GkQ8
+	h6JdeXvBuzHAdU7bAceIG9aVfoDHfXwJ+f6q9VlbJWtNQPf1Pg2U0PqQv8WgOV4O5VMJjC56z
+	hbhvur6+k1acJnD2K45fVbP9dNiRZlWtB30XVCjH6qmiKZZw1t9e48srm2CnaKE7k73kGGdxW
+	ngmAYwqy4WUPDYeW
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 00/10] Trivial fixes and
- clean ups
+X-Received-From: 212.227.126.130
+Subject: [Qemu-trivial] [PULL 18/20] hw/intc/gicv3: Remove useless
+ parenthesis around DIV_ROUND_UP macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,17 +79,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Oct 2018 15:27:36 -0000
+X-List-Received-Date: Fri, 26 Oct 2018 15:45:53 -0000
 
-On Thu, Oct 04, 2018 at 12:18:42PM -0400, Cleber Rosa wrote:
-> Just a collection of trivial fixes and clean ups that have been lying
-> around here for some time.
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-I'm queueing patches 07-10 on python-next.  I'm aware that
-Laurent already queued some of them (thanks!), but I want to
-avoid conflicts in case other patches touching these modules are
-queued on python-next.
+Patch created mechanically by rerunning:
 
+  $  spatch --sp-file scripts/coccinelle/round.cocci \
+            --macro-file scripts/cocci-macro-file.h \
+            --dir . --in-place
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Message-Id: <20180705155811.20366-8-f4bug@amsat.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ include/hw/intc/arm_gicv3_common.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index b798486ecf..31ec9a1ae4 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -62,7 +62,7 @@
+  * avoids bugs where we forget to subtract GIC_INTERNAL from an
+  * interrupt number.
+  */
+-#define GICV3_BMP_SIZE (DIV_ROUND_UP(GICV3_MAXIRQ, 32))
++#define GICV3_BMP_SIZE DIV_ROUND_UP(GICV3_MAXIRQ, 32)
+ 
+ #define GIC_DECLARE_BITMAP(name) \
+     uint32_t name[GICV3_BMP_SIZE]
 -- 
-Eduardo
+2.17.2
+
 
