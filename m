@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gG4JA-0004lg-Vq
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:45:57 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50000)
+	id 1gG4JC-0004oT-C7
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:45:58 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49850)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gG4J7-00041v-9R
-	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:45:54 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gG4J8-0003mJ-Om
+	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:45:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gG47G-0005ZE-3K
-	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:33:42 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:55681)
+	(envelope-from <laurent@vivier.eu>) id 1gG46y-0005Ti-UD
+	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:33:26 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:52491)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gG479-0005Tj-EK; Fri, 26 Oct 2018 11:33:34 -0400
+	id 1gG46b-0004ly-3E; Fri, 26 Oct 2018 11:32:57 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N3Xvv-1fXPaQ0kwV-010fOy; Fri, 26 Oct 2018 17:32:13 +0200
+	id 1N3Gok-1fXghI38r4-010OHp; Fri, 26 Oct 2018 17:31:59 +0200
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N3Xvv-1fXPaQ0kwV-010fOy; Fri, 26 Oct 2018 17:32:13 +0200
+	id 1N3Gok-1fXghI38r4-010OHp; Fri, 26 Oct 2018 17:31:59 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
@@ -40,34 +40,29 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
 	Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
 	qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
 	Eduardo Habkost <ehabkost@redhat.com>
-Date: Fri, 26 Oct 2018 17:31:21 +0200
-Message-Id: <20181026153125.24738-17-laurent@vivier.eu>
+Date: Fri, 26 Oct 2018 17:31:14 +0200
+Message-Id: <20181026153125.24738-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
 References: <20181026153125.24738-1-laurent@vivier.eu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:jyFUglwv22ZGvQhGYHhC9I79VIt+cGsDI6GkuGxaHtotGw1i812
-	NY5fhRWppxfts+BIGYlT9+CFsQBIi9YOPobjRk6yGrv7p3XJtUaiEHuzfaYcPre/54W/5fz
-	u+S8zriEuPn4ob6AJ5IVDCUEInX/eLQckyi5EMhYDLS/1YeouXlhmUe3diKxFl3lxdGxA/W
-	xShGMcOi94+N8+L+g0tIw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:/1PXSljl2Y4=:6Kj16mcRkzvlI6uvICand2
-	KhQJ/ZKwV0E9ydZSHLRwpUakacRHwHVnnDwsXo2rD+OB3WdN2lTW9g41qOJxLJ3ruvMsnIYyH
-	UhMABuBkQ0R6UaAgFnGLVmR96kOE2UF+D4CTaq9XoZCL/DIqnbcOmHcU7U4f9EZkzSwUWRsNE
-	b70rVKHVbX9+A+ZyJePcd+cIBKnqCc/ezrK6opSjT0oIfGYPVQu3vlshpJdg/j+vkM6KzPbsC
-	GApHIJoeGcjbHhIoPc6XV9O7SluYMnJ09IgTvvs/27VLnkpEQqMvAXIwGswtgjdthNlTHsw+4
-	f/Vyt40YleKh8d+S1h8wMkUfCezJ5c6NIKE8RbqTR1y55RbctbQXuKYnD1cmPW8LdwLTiWhVQ
-	KNZsB+isGvHRkpyZ/1Fk+1smheBVN2znegsKs0sjW+LIkHviJXrf3elt538yMByqqzd8potmR
-	K9JpltaDes3yfdUNrdvjDek6UsB6r6UPvmb7p+GEltz0FgSBjeAB8TCKKRjscsbLgUyi8MJGz
-	fhBGs2KIyfrwTLVHP/sy3ybI6edLQ703zdKLELxQMzmS0V5o8RzMKPJcRNpvmgEMPtfXiCd0d
-	fFa5sYi4VDRmHmjElP8sckOhb1YQ7V4q+Z2ijW4r1vrWGYqaEMVbCZScObm8dmTFFtr1Nn08S
-	SI1u73UPQkoljvXGXeVoV4yphSbfEplPwl2fv2YE0eszq1iboFiNVrwdf8QZmJNgk/Ysu82C1
-	HNHEZ3Ts7yqxZHSV
+X-Provags-ID: V03:K1:gMxyO7cWiaH3Jx8M5bWDfTmNhiRZ8d5Z+EEnmLDHlJVSZ9g4bZj
+	zqBcvvzl2TYWPx/7WhLpoop4bCMqP++g9JYwv6Ri89uwvtUWF3vdETI2ZN1I++X3yLGL9OX
+	s6ArVYQwsnEAPqlwLQrCaSRbaMgzNfR//jGK/mP1C+paIUcS/cDCBs/TpiVD1Jzg8BkkKaB
+	7hhrZW8gYoMhvQet2cfpQ==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:wLyk8Prc9+g=:4d34OV/M03Vrq/gr64rvqz
+	fDNpJ8apH/4Rv4HxBKnTHLtM0MzqNCxjD0j+KG1kbx08dw4i3hMxHwJOKoYQDVgjFB1faSCqk
+	GqAeO2zEYN6cw960JcuhIGhmIViv//bKi3FNjEeQAJgxWGuTVPHs+CrvtrvoaIj8X119vJ9YO
+	ErJ4rGc9oEYKHaDrB7X+mQVtPvTKlAbCvub4WVJy+3sYkZU+l7uY6S9GE6RlGeUq5LHFwx/7h
+	uC89UyxrdVvYSUgXPdG7DH4KB7ITc7VYsdmPng044RVXynctAqrFd+3l5P/CWGXmlqbKhoNHS
+	dYhuvUNltKeMXlc0hXU8IuRUWxF6GpovJ7snoDi/ybu8o7dSptV/RkmE/06T1EoVmMu1LlGPu
+	xhOPwCxvdN2W7RBB6+C6pYaEPTK2r1Z6vaINqQFXOpXX/YWAgfWLrkZd39o/BtdIeKZtTdwsp
+	Jeli3FaSlzqe5zuw6WJgbPowY57mygF/Jeywp50C3m6HWhT733raY6vpms4QB1njTJDyMV8QZ
+	Im5ivmbWw0JJBpwYel5zZ2VrFs376L/JGWQzDaeKzF1C2mva3YrKr7jySocoUe5UwV55e4a1H
+	7xsxxLEHE0t3tD9/7T7Agsh4ZGyx+2lYSHqpiXa65SXRNZ7don+LbKe6K83qQkVaIlxTmqA9R
+	bRDvOiag+lobbRxbL+UmnMo4gVbsQQjms5Nh73zQopuoWh2mkFhJpKWu9cEF7EbJYexY=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.134
-Subject: [Qemu-trivial] [PULL 16/20] tests/bios-tables-test: Remove an
- useless cast
+Subject: [Qemu-trivial] [PULL 09/20] qemu-iotests: make 218 executable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,38 +74,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Oct 2018 15:45:54 -0000
+X-List-Received-Date: Fri, 26 Oct 2018 15:45:55 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Cleber Rosa <crosa@redhat.com>
 
-Patch created mechanically by rerunning:
+Commit 990dc39c made all tests executable at the time, but 218 came in
+later, and missing those permissions.
 
-  $  spatch --sp-file scripts/coccinelle/typecast.cocci \
-            --macro-file scripts/cocci-macro-file.h \
-            --dir . --in-place
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20180705155811.20366-5-f4bug@amsat.org>
+Signed-off-by: Cleber Rosa <crosa@redhat.com>
+Message-Id: <20181004161852.11673-4-crosa@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/bios-tables-test.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/qemu-iotests/218 | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ mode change 100644 => 100755 tests/qemu-iotests/218
 
-diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
-index af4b1fb6bd..02e77ec811 100644
---- a/tests/bios-tables-test.c
-+++ b/tests/bios-tables-test.c
-@@ -319,7 +319,7 @@ static bool load_asl(GArray *sdts, AcpiSdtTable *sdt)
-     ret = g_spawn_command_line_sync(command_line->str, &out, &out_err, NULL, &error);
-     g_assert_no_error(error);
-     if (ret) {
--        ret = g_file_get_contents(sdt->asl_file, (gchar **)&sdt->asl,
-+        ret = g_file_get_contents(sdt->asl_file, &sdt->asl,
-                                   &sdt->asl_len, &error);
-         g_assert(ret);
-         g_assert_no_error(error);
+diff --git a/tests/qemu-iotests/218 b/tests/qemu-iotests/218
+old mode 100644
+new mode 100755
 -- 
 2.17.2
 
