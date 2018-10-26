@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gG4JC-0004oT-C7
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:45:58 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49850)
+	id 1gG4JD-0004pM-0X
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:45:59 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49905)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gG4J8-0003mJ-Om
-	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:45:55 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gG4J7-0003tV-AW
+	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:45:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gG46y-0005Ti-UD
-	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:33:26 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:52491)
+	(envelope-from <laurent@vivier.eu>) id 1gG47G-0005Z6-2i
+	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:33:38 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:46289)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gG46b-0004ly-3E; Fri, 26 Oct 2018 11:32:57 -0400
+	id 1gG46n-0005Ha-J6; Fri, 26 Oct 2018 11:33:11 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N3Gok-1fXghI38r4-010OHp; Fri, 26 Oct 2018 17:31:59 +0200
+	id 1N2SXX-1faiyG0v0B-013yG4; Fri, 26 Oct 2018 17:32:07 +0200
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N3Gok-1fXghI38r4-010OHp; Fri, 26 Oct 2018 17:31:59 +0200
+	id 1N2SXX-1faiyG0v0B-013yG4; Fri, 26 Oct 2018 17:32:07 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
@@ -39,30 +39,30 @@ Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
 	qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
-	Eduardo Habkost <ehabkost@redhat.com>
-Date: Fri, 26 Oct 2018 17:31:14 +0200
-Message-Id: <20181026153125.24738-10-laurent@vivier.eu>
+	Eduardo Habkost <ehabkost@redhat.com>, Stefan Weil <sw@weilnetz.de>
+Date: Fri, 26 Oct 2018 17:31:18 +0200
+Message-Id: <20181026153125.24738-14-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
 References: <20181026153125.24738-1-laurent@vivier.eu>
-X-Provags-ID: V03:K1:gMxyO7cWiaH3Jx8M5bWDfTmNhiRZ8d5Z+EEnmLDHlJVSZ9g4bZj
-	zqBcvvzl2TYWPx/7WhLpoop4bCMqP++g9JYwv6Ri89uwvtUWF3vdETI2ZN1I++X3yLGL9OX
-	s6ArVYQwsnEAPqlwLQrCaSRbaMgzNfR//jGK/mP1C+paIUcS/cDCBs/TpiVD1Jzg8BkkKaB
-	7hhrZW8gYoMhvQet2cfpQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:wLyk8Prc9+g=:4d34OV/M03Vrq/gr64rvqz
-	fDNpJ8apH/4Rv4HxBKnTHLtM0MzqNCxjD0j+KG1kbx08dw4i3hMxHwJOKoYQDVgjFB1faSCqk
-	GqAeO2zEYN6cw960JcuhIGhmIViv//bKi3FNjEeQAJgxWGuTVPHs+CrvtrvoaIj8X119vJ9YO
-	ErJ4rGc9oEYKHaDrB7X+mQVtPvTKlAbCvub4WVJy+3sYkZU+l7uY6S9GE6RlGeUq5LHFwx/7h
-	uC89UyxrdVvYSUgXPdG7DH4KB7ITc7VYsdmPng044RVXynctAqrFd+3l5P/CWGXmlqbKhoNHS
-	dYhuvUNltKeMXlc0hXU8IuRUWxF6GpovJ7snoDi/ybu8o7dSptV/RkmE/06T1EoVmMu1LlGPu
-	xhOPwCxvdN2W7RBB6+C6pYaEPTK2r1Z6vaINqQFXOpXX/YWAgfWLrkZd39o/BtdIeKZtTdwsp
-	Jeli3FaSlzqe5zuw6WJgbPowY57mygF/Jeywp50C3m6HWhT733raY6vpms4QB1njTJDyMV8QZ
-	Im5ivmbWw0JJBpwYel5zZ2VrFs376L/JGWQzDaeKzF1C2mva3YrKr7jySocoUe5UwV55e4a1H
-	7xsxxLEHE0t3tD9/7T7Agsh4ZGyx+2lYSHqpiXa65SXRNZ7don+LbKe6K83qQkVaIlxTmqA9R
-	bRDvOiag+lobbRxbL+UmnMo4gVbsQQjms5Nh73zQopuoWh2mkFhJpKWu9cEF7EbJYexY=
+X-Provags-ID: V03:K1:nHwqIfD7U1p4B2yoxOg3RbD7c0Q74lJnwOwV3+memYJKXd3VPHe
+	ukJt7WzZgTFF8QfTFWEH8S+Kf/pXvB56SNq79YrtKkct5Bc1bE62Zqold5ehue7Ngj6gXZh
+	ic4RlJ9ug1N1xqIQLYFSHfDHmWQrNQNJII4YgJ9s/ruhmlhI0LVhrIjrNYsS161Z4ZQTuKq
+	dKIkAR8/79m8hupRwCipQ==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:u0w10T44iq4=:9aPSRBKTLB6nG1raNJUVAo
+	IYRblKzQ+KTyDtQ5cT/QxcnxjdO49BCoiVJHMAEjzye5s+4S9kjyXuoCI8Tkkt21yBPP0OWdv
+	Dr3qGNEEGXw9IUyGQm5/aMVxIsq5CG83Y5pyS+ovvttzW0MYl/ELBNfDUSxt44VEDbVSo4ned
+	MsvIrXR3OOy+uNW+p3BzEOnaVRUCGJMzqShk8XdgN3G1ERVd6pjFmBwTP9/8C6CcGyrAodSof
+	uqd6KajrBc9i1pyszFjLIC9pgSXPsLsrcw6jYMGnQ/Gzm2kXzrmLR8D/1Vyq7dKkJSCbaLH1T
+	gBvSfUd0l+7fhqn+bOcRYtMVFL3Kwj7YMDHNMwbZL9h2hF9U3I3M/EK0MyZq5YV8cds8xYDzf
+	GDGrKjUpEZglB82W3MmQLxOhh/t2gSfUW0PHmM1ngibCUXy9AdubtpOIU548idKOEOTjvxpVT
+	/NDq2RzWYsW7/iUHPZFC7ocJR++HqEV8ITNdJoispY6ycRT/yH10zJZoefv9yTb9/t1lvEau6
+	FyvbdlPtubEFjF/OexQiSoq+t24OgmoPIz7VxoNiNcLpyfRCHUUf3Vpq6GRpPk9B6q00P/k1V
+	E4EcwT9Wy7fM3v/5XallPkxURFRxwoEPCJgAAdX2UGeRjsyml4M5iPua4zPeCAfOyYU9trVH3
+	Ul9Ee0TcZx1paAZ66Su+q25L2H952IEeRu1bLXrcs5HoVDGyMnznCjR1P6FGpMk+MGrE=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.134
-Subject: [Qemu-trivial] [PULL 09/20] qemu-iotests: make 218 executable
+X-Received-From: 212.227.126.133
+Subject: [Qemu-trivial] [PULL 13/20] configure: Support pkg-config for zlib
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,24 +74,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Oct 2018 15:45:55 -0000
+X-List-Received-Date: Fri, 26 Oct 2018 15:45:56 -0000
 
-From: Cleber Rosa <crosa@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-Commit 990dc39c made all tests executable at the time, but 218 came in
-later, and missing those permissions.
+This is needed for builds with the mingw64-* packages from Cygwin,
+but also works for Linux.
 
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
-Message-Id: <20181004161852.11673-4-crosa@redhat.com>
+Move the zlib test also more to the end because users should
+get information on the really important missing packages
+(which also require zlib) first.
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Message-Id: <20180712192603.11599-1-sw@weilnetz.de>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/qemu-iotests/218 | 0
- 1 file changed, 0 insertions(+), 0 deletions(-)
- mode change 100644 => 100755 tests/qemu-iotests/218
+ configure | 40 +++++++++++++++++++++++-----------------
+ 1 file changed, 23 insertions(+), 17 deletions(-)
 
-diff --git a/tests/qemu-iotests/218 b/tests/qemu-iotests/218
-old mode 100644
-new mode 100755
+diff --git a/configure b/configure
+index 1ee09bd112..a02df30dde 100755
+--- a/configure
++++ b/configure
+@@ -2151,23 +2151,6 @@ EOF
+   fi
+ fi
+ 
+-#########################################
+-# zlib check
+-
+-if test "$zlib" != "no" ; then
+-    cat > $TMPC << EOF
+-#include <zlib.h>
+-int main(void) { zlibVersion(); return 0; }
+-EOF
+-    if compile_prog "" "-lz" ; then
+-        :
+-    else
+-        error_exit "zlib check failed" \
+-            "Make sure to have the zlib libs and headers installed."
+-    fi
+-fi
+-LIBS="$LIBS -lz"
+-
+ ##########################################
+ # lzo check
+ 
+@@ -3479,6 +3462,29 @@ if ! compile_prog "$glib_cflags -Werror" "$glib_libs" ; then
+     fi
+ fi
+ 
++#########################################
++# zlib check
++
++if test "$zlib" != "no" ; then
++    if $pkg_config --exists zlib; then
++        zlib_cflags=$($pkg_config --cflags zlib)
++        zlib_libs=$($pkg_config --libs zlib)
++        QEMU_CFLAGS="$zlib_cflags $QEMU_CFLAGS"
++        LIBS="$zlib_libs $LIBS"
++    else
++        cat > $TMPC << EOF
++#include <zlib.h>
++int main(void) { zlibVersion(); return 0; }
++EOF
++        if compile_prog "" "-lz" ; then
++            LIBS="$LIBS -lz"
++        else
++            error_exit "zlib check failed" \
++                "Make sure to have the zlib libs and headers installed."
++        fi
++    fi
++fi
++
+ ##########################################
+ # SHA command probe for modules
+ if test "$modules" = yes; then
 -- 
 2.17.2
 
