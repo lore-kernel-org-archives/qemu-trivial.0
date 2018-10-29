@@ -1,73 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gG4Jv-0005UQ-Tl
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Oct 2018 11:46:43 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49905)
+	id 1gH3mj-0004n6-2G
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Oct 2018 05:24:33 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48343)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gG4Jm-0003tV-M8
-	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:46:35 -0400
+	(envelope-from <kraxel@redhat.com>) id 1gH3mg-0004m5-Rz
+	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 05:24:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gG46B-0004oo-OZ
-	for qemu-trivial@nongnu.org; Fri, 26 Oct 2018 11:32:38 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:48635)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gG45y-0004Xg-PV; Fri, 26 Oct 2018 11:32:19 -0400
-Received: from localhost.localdomain ([78.238.229.36]) by
-	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
-	(Nemesis)
-	id 1Mpkwn-1foOEz3MAH-00qAjm; Fri, 26 Oct 2018 17:31:41 +0200
-Received: from localhost.localdomain ([78.238.229.36]) by
-	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
-	(Nemesis)
-	id 1Mpkwn-1foOEz3MAH-00qAjm; Fri, 26 Oct 2018 17:31:41 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
-	Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
-	Michael Walle <michael@walle.cc>, Laurent Vivier <lvivier@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, xen-devel@lists.xenproject.org,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	Fam Zheng <famz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Anthony Perard <anthony.perard@citrix.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, Kevin Wolf <kwolf@redhat.com>,
-	qemu-block@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
-	Eduardo Habkost <ehabkost@redhat.com>
-Date: Fri, 26 Oct 2018 17:31:06 +0200
-Message-Id: <20181026153125.24738-2-laurent@vivier.eu>
-X-Mailer: git-send-email 2.17.2
-In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
-References: <20181026153125.24738-1-laurent@vivier.eu>
+	(envelope-from <kraxel@redhat.com>) id 1gH3mg-0002hb-AR
+	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 05:24:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38768)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1gH3ma-0002VQ-Ae; Mon, 29 Oct 2018 05:24:24 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C740230001EE;
+	Mon, 29 Oct 2018 09:24:21 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-158.ams2.redhat.com
+	[10.36.116.158])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 80267608EE;
+	Mon, 29 Oct 2018 09:24:21 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id AD3BD7731; Mon, 29 Oct 2018 10:24:20 +0100 (CET)
+Date: Mon, 29 Oct 2018 10:24:20 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Sebastian Krzyszkowiak <dos@dosowisko.net>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20181029092420.oevomnhk2uvg3xdp@sirius.home.kraxel.org>
+References: <20181024143748.4425-1-dos@dosowisko.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:He25IKfwYFFVyHEil/j6dKpPeRhUiROgBqc5BJx27k1B1AKKmXO
-	qa8n5M3ZE4MoK5dD72n7rLGWNdhQKeKRZLiQb20zepMpYZIyPxxa/tDYamLBUAHqHzeE9CF
-	4uCMn0kDcpBEdHiNAh7bfjj9WrnhhbuPeQVYcTLldb4t988sA3gQv3vSBVpdNk+cPIfGu1l
-	uaiFLEWI12qDiH0aJW4rA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:6TtGxG1Ucd0=:lLo9Hj/tctiwpnmBpNrNBf
-	hyV45z8dHa9qmM3TGPdSvl+k3jr2G3LmZyn1W2g6oPRBE4XSpcdrG9E3WkE9EK/+NU9pYypq5
-	EG1tJYW0zhr7tWDypkjZVvxTM4AnQ8LSrBSCLMmVEundB430Pn/Z+1hpz7c3Jbk/ML36ztSnF
-	r2PQDbtJR9H8fv8whKhxUdngZRSswtekR7ly4CSAosseCZsNWblwX+msGI9fdiBkxw4yFihe9
-	TrYitG1AqLDCAxyU6U0uFoXRUuVHtM+OnvVw3Ik2WZ9nmNcG3g0kF8eLz27DfTLSgOMs0Lb10
-	TIsp27Wpt2WvLCDwHG0jrngTLHsDEupVkpCt0XdH9C31XlexChk2z19Zroi6F4IW3X6vCY3Fo
-	i5D4ka0H8luKFMjeFLq3osLzPt0a527TmjHipahqnOP4m87vr5JYN/yqzTMs7w/Z8Sf0CNqrD
-	c9zizvtI5YPlgL6EvpLuh1F7jwZurUunqwdPI7daHhCDhuBLOP99lBLNz7ZZ0H6cqCKqqxfX6
-	cIaAAdzF4vUaYZlHOuT667ktqwSWxbVgXC0GH263SGWxLZLChuATuTbjX+j+Va95ZfT+u/YcH
-	kQKgwANzVb9V23a++4YwkdxnsIa/nkatt00ZcTBC1F/gmxBmLKbY2wsZMUHNbagGfXDO4flHz
-	NgINbg49DOFmqEeyHssKEWbG7mX4BaFDU1kdvbw4Qr2+QyTUwGxCHBPFkjc1WHUI/i8hoWGjY
-	NN1m4AMuT7+XV11O
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20181024143748.4425-1-dos@dosowisko.net>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.42]);
+	Mon, 29 Oct 2018 09:24:21 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
-Subject: [Qemu-trivial] [PULL 01/20] configs/alpha: Remove unused
- CONFIG_PARALLEL_ISA switch
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] SDL: set a hint to not bypass the window
+ compositor
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,36 +54,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Oct 2018 15:46:35 -0000
+X-List-Received-Date: Mon, 29 Oct 2018 09:24:31 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+On Wed, Oct 24, 2018 at 04:37:48PM +0200, Sebastian Krzyszkowiak wrote:
+> Without that, window effects in KWin get suspended as soon as any
+> qemu-sdl window becomes visible. While the SDL default makes sense
+> for games, it's not really suitable for QEMU.
+> 
+> Signed-off-by: Sebastian Krzyszkowiak <dos@dosowisko.net>
 
-We don't use CONFIG_PARALLEL_ISA in any of our Makefiles, so this
-is just a dead config option which can be removed.
+Added to UI patch queue.
 
-Fixes: a4cb773928e047b137c6998209cf2eec857fac6b
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <1540376314-5727-1-git-send-email-thuth@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- default-configs/alpha-softmmu.mak | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/default-configs/alpha-softmmu.mak b/default-configs/alpha-softmmu.mak
-index eb58b40254..4d654eaa0b 100644
---- a/default-configs/alpha-softmmu.mak
-+++ b/default-configs/alpha-softmmu.mak
-@@ -8,7 +8,6 @@ CONFIG_I82374=y
- CONFIG_I8254=y
- CONFIG_I8257=y
- CONFIG_PARALLEL=y
--CONFIG_PARALLEL_ISA=y
- CONFIG_FDC=y
- CONFIG_PCKBD=y
- CONFIG_VGA_CIRRUS=y
--- 
-2.17.2
+thanks,
+  Gerd
 
 
