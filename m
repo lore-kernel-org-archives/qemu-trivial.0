@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gH7ng-0006Bj-18
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Oct 2018 09:41:48 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33404)
+	id 1gH82A-0003TU-NU
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Oct 2018 09:56:46 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:37717)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gH7nd-00069J-K7
-	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 09:41:46 -0400
+	(envelope-from <stefanha@redhat.com>) id 1gH826-0003KC-Ua
+	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 09:56:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gH7nc-0007VF-Pl
-	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 09:41:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:18421)
+	(envelope-from <stefanha@redhat.com>) id 1gH826-0003H0-3b
+	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 09:56:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44430)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1gH7nY-0007OJ-6z; Mon, 29 Oct 2018 09:41:40 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	id 1gH81k-0002xo-0d; Mon, 29 Oct 2018 09:56:22 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 81DE69A768;
-	Mon, 29 Oct 2018 13:41:38 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 19FD87DF9B;
+	Mon, 29 Oct 2018 13:56:16 +0000 (UTC)
 Received: from localhost (ovpn-116-92.ams2.redhat.com [10.36.116.92])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7E9695D75E;
-	Mon, 29 Oct 2018 13:41:31 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9759A600C5;
+	Mon, 29 Oct 2018 13:56:15 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: <qemu-devel@nongnu.org>
-Cc: Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	Fam Zheng <famz@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org,
-	Li Qiang <liq3ea@gmail.com>, qemu-trivial@nongnu.org
-Date: Mon, 29 Oct 2018 13:41:22 +0000
-Message-Id: <20181029134123.3365-2-stefanha@redhat.com>
-In-Reply-To: <20181029134123.3365-1-stefanha@redhat.com>
-References: <20181029134123.3365-1-stefanha@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Cc: Stefan Hajnoczi <stefanha@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+	Fam Zheng <famz@redhat.com>, Li Qiang <liq3ea@gmail.com>,
+	qemu-trivial@nongnu.org
+Date: Mon, 29 Oct 2018 13:56:06 +0000
+Message-Id: <20181029135607.4485-2-stefanha@redhat.com>
+In-Reply-To: <20181029135607.4485-1-stefanha@redhat.com>
+References: <20181029135607.4485-1-stefanha@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Mon, 29 Oct 2018 13:41:38 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 29 Oct 2018 13:56:16 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [0 1/2] util: aio-posix: fix a typo
+Subject: [Qemu-trivial] [PULL 1/2] util: aio-posix: fix a typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,7 +49,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Oct 2018 13:41:46 -0000
+X-List-Received-Date: Mon, 29 Oct 2018 13:56:43 -0000
 
 From: Li Qiang <liq3ea@gmail.com>
 
