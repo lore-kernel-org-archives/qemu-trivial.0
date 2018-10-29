@@ -1,43 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gH82A-0003TU-NU
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Oct 2018 09:56:46 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37717)
+	id 1gHDhY-00017r-AE
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Oct 2018 15:59:52 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50360)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gH826-0003KC-Ua
-	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 09:56:43 -0400
+	(envelope-from <philmd@redhat.com>) id 1gHDhW-00016M-FX
+	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 15:59:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gH826-0003H0-3b
-	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 09:56:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44430)
+	(envelope-from <philmd@redhat.com>) id 1gHDhV-0004Jg-Hm
+	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 15:59:50 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54270)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1gH81k-0002xo-0d; Mon, 29 Oct 2018 09:56:22 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <philmd@redhat.com>)
+	id 1gHDhO-00049U-Gi; Mon, 29 Oct 2018 15:59:42 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 19FD87DF9B;
-	Mon, 29 Oct 2018 13:56:16 +0000 (UTC)
-Received: from localhost (ovpn-116-92.ams2.redhat.com [10.36.116.92])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9759A600C5;
-	Mon, 29 Oct 2018 13:56:15 +0000 (UTC)
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: <qemu-devel@nongnu.org>
-Cc: Stefan Hajnoczi <stefanha@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
-	Fam Zheng <famz@redhat.com>, Li Qiang <liq3ea@gmail.com>,
-	qemu-trivial@nongnu.org
-Date: Mon, 29 Oct 2018 13:56:06 +0000
-Message-Id: <20181029135607.4485-2-stefanha@redhat.com>
-In-Reply-To: <20181029135607.4485-1-stefanha@redhat.com>
-References: <20181029135607.4485-1-stefanha@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+	by mx1.redhat.com (Postfix) with ESMTPS id 7F104308624E;
+	Mon, 29 Oct 2018 19:59:41 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-38.brq.redhat.com [10.40.204.38])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 977BC60BE7;
+	Mon, 29 Oct 2018 19:59:35 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: Shannon Zhao <shannon.zhaosl@gmail.com>,
+	Samuel Ortiz <sameo@linux.intel.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
+Date: Mon, 29 Oct 2018 20:59:31 +0100
+Message-Id: <20181029195931.8747-1-philmd@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Mon, 29 Oct 2018 13:56:16 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.49]);
+	Mon, 29 Oct 2018 19:59:41 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PULL 1/2] util: aio-posix: fix a typo
+Subject: [Qemu-trivial] [PATCH] MAINTAINERS: Remove bouncing email in ARM
+ ACPI
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,34 +51,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Oct 2018 13:56:43 -0000
+X-List-Received-Date: Mon, 29 Oct 2018 19:59:51 -0000
 
-From: Li Qiang <liq3ea@gmail.com>
+Shannon Zhao's email at Huawei is bouncing: remove it.
 
-Cc: qemu-trivial@nongnu.org
-Signed-off-by: Li Qiang <liq3ea@gmail.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Fam Zheng <famz@redhat.com>
-Message-id: 1538964972-3223-1-git-send-email-liq3ea@gmail.com
-Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+    X-Failed-Recipients: zhaoshenglong@huawei.com
+    ** Address not found **
+    Your message wasn't delivered to zhaoshenglong@huawei.com because the=
+ address couldn't be found, or is unable to receive mail.
+
+Note that the section still contains his personal email (see e59f13d76bb)=
+.
+
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- util/aio-posix.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ MAINTAINERS | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/util/aio-posix.c b/util/aio-posix.c
-index 621b3025d8..51c41ed3c9 100644
---- a/util/aio-posix.c
-+++ b/util/aio-posix.c
-@@ -40,7 +40,7 @@ struct AioHandler
- 
- #ifdef CONFIG_EPOLL_CREATE1
- 
--/* The fd number threashold to switch to epoll */
-+/* The fd number threshold to switch to epoll */
- #define EPOLL_ENABLE_THRESHOLD 64
- 
- static void aio_epoll_disable(AioContext *ctx)
--- 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index d794bd7a66..1aa2728aac 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -625,7 +625,6 @@ F: hw/*/xlnx*.c
+ F: include/hw/*/xlnx*.h
+=20
+ ARM ACPI Subsystem
+-M: Shannon Zhao <zhaoshenglong@huawei.com>
+ M: Shannon Zhao <shannon.zhaosl@gmail.com>
+ L: qemu-arm@nongnu.org
+ S: Maintained
+--=20
 2.17.2
 
 
