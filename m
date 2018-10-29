@@ -1,76 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gH67w-0007SK-0J
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Oct 2018 07:54:36 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58910)
+	id 1gH7AJ-000248-TH
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Oct 2018 09:01:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50795)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gH67t-0007Q9-B3
-	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 07:54:34 -0400
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1gH7AE-0001xT-6C
+	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 09:01:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gH67r-0007iP-4v
-	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 07:54:33 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:38347)
+	(envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1gH7AC-0004Kg-9S
+	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 09:01:02 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:45281)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gH67q-0007c2-TJ
-	for qemu-trivial@nongnu.org; Mon, 29 Oct 2018 07:54:30 -0400
-Received: by mail-oi1-x244.google.com with SMTP id v83-v6so793489oia.5
-	for <qemu-trivial@nongnu.org>; Mon, 29 Oct 2018 04:54:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-	:cc; bh=YNejyqvlvtqZ5lekjzx/o1ZDa4m359Wd/oZyre5a2vw=;
-	b=hyl9Xec+0issRvxxfMji7qUYEIlErPCw6h5RlkydBiX9OH1ngBVMJOEMNv1HsoEv9k
-	ot46Jh8ABhfz6NfoGk2PLoqEJZBl2e6zMeMiccRKw+IRrym8/FuevOzJWu7srgquFrW+
-	lznUXZfRwqDBb2kHnBicBWfmgwxdpeOpa8xgo=
+	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+	id 1gH7A6-000435-Q7; Mon, 29 Oct 2018 09:00:54 -0400
+Received: by mail-wr1-x441.google.com with SMTP id n5-v6so8551858wrw.12;
+	Mon, 29 Oct 2018 06:00:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=sender:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=tNjrC/pGw0eGeVtNQBbofdQUL+4ecHNO0puGOj16MlE=;
+	b=VFve2bOKv43G+Gx0SV0675H2ZVk/ISVvrB1SNi3R1KwvXVkSfuy0yGa+nt+61InHo8
+	MQ6+kdt88nC9q17Nsvkta6s6CARbN+Pz2+heNjkd/Pf6mj+OAKvSuD7IvuO0Fwtn7rWD
+	WMihwVvim5WZCs/nJPSBy1ypOt3u9i95Op96HhMXvf17lSMHyMu24s4DqkJ5eTo2BY+u
+	+sHaIXWojSUrRs3ggZvr0Rhq12wpxLUdg7Wm7CZyH+RcGXia/frp28MiNusM7zKSUYrg
+	9gjqNHnOeQev4SM20g+4KBxfT6lL1toUphGY1FQzwQ6/wmbMDYgLQ/x2ImSUlRbL8MEe
+	oD4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-	:message-id:subject:to:cc;
-	bh=YNejyqvlvtqZ5lekjzx/o1ZDa4m359Wd/oZyre5a2vw=;
-	b=R62DbC9mHOZ3koI+/BygiuZifMGnQq74KVEM7x9CucgqSm9O227m+Z0cDYptKvlOiR
-	BshNWXdgQBJsjGlVQnHQOyJEalHWRFoqxm7aozbmdGQHG0Gl9QIlX1xWwc7kR1mnR30O
-	qr+JFCtDleT1Ho9X8cOI5bTQ/K5lZ4ug+YK1Hddre4cyVumPtUKJ+DDDJvr0sTHofwh3
-	wkMKLlEW60fEkZoH+FDmBpdtFUsVZX1zttjAWPUh/6HqqOctbd2Of9lOFauSFGR6xAtB
-	/rIcBeQdj4K2FVTa/isyyx/sDUZtgPHRHtNyz3lK4MSVs0LvWjiQKzbfXQLj8jpDyRYk
-	JDrw==
-X-Gm-Message-State: AGRZ1gKdSq4vfJZfNi7JsmOTT1D5ifv3DY2tdquT3aDM9noue7kUEfBk
-	TKyIpWJhzj3sMeLI+d4ABIeSWcoW/X4nduieZSIudA==
-X-Google-Smtp-Source: AJdET5ehURSSvcsUSsBmx/awNHewJrPOLYG4gJ/DtIIivq41+pIrhA/ThnUuBG7J2h7ZVmEu2iJiz84nIiymJnQ+nFA=
-X-Received: by 2002:aca:c509:: with SMTP id v9-v6mr7717600oif.48.1540814067282;
-	Mon, 29 Oct 2018 04:54:27 -0700 (PDT)
+	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+	:mime-version:content-transfer-encoding;
+	bh=tNjrC/pGw0eGeVtNQBbofdQUL+4ecHNO0puGOj16MlE=;
+	b=r+t30/PuMX3exf8GSee7N+OXusXNo5o9uEWt4fRTlLrGLPzUhj/PmXd3L3OMaKTTkS
+	WJtI9IMH2KwKvCuHln48Nm3s9X6yb32nFRp8RX83Ec+FaYub5thqsS82sq7PmMgRiaxb
+	ivd5ID7DM3sEltAJYxrsWY0rhyfK6Asvb6NJOKB5+ed+1VD07hjmYq8byz90Hp9C+DZK
+	hpv/hsbehAkf89FgqY6NfxYb1xZ3bOB1xBFKtkRl7xG44VJoFdtsg0YliiJQQepQr0nm
+	vItS9VlYjwJH65nvJg24vsyixmqF2e3OaDf8kIbY3+TctI87aS0LMWmDb6ADW0iw8wD4
+	JTrw==
+X-Gm-Message-State: AGRZ1gJqFxy3k03AFfz2N9g/O4TNJvV2vZejpcAuyn2ELgTKOq1nXz8k
+	7mqUMY62VR4//YJhLnhdaFo=
+X-Google-Smtp-Source: AJdET5cpg+ROpHANoHVAxcxh6DA4eI1L0qt5Ct3ska8ySn8VM/esSqRsWThhrfVXz/T60j8vdbC7kg==
+X-Received: by 2002:adf:f74f:: with SMTP id
+	z15-v6mr14789928wrp.237.1540818039021; 
+	Mon, 29 Oct 2018 06:00:39 -0700 (PDT)
+Received: from x1.redhat.com ([195.166.127.210])
+	by smtp.gmail.com with ESMTPSA id
+	n7-v6sm7441142wrr.81.2018.10.29.06.00.37
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 29 Oct 2018 06:00:38 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+	<philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: Michael Walle <michael@walle.cc>, Jason Wang <jasowang@redhat.com>,
+	Laurent Vivier <laurent@vivier.eu>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Mon, 29 Oct 2018 14:00:34 +0100
+Message-Id: <20181029130034.26750-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Received: by 2002:a9d:7c90:0:0:0:0:0 with HTTP; Mon, 29 Oct 2018 04:54:06
-	-0700 (PDT)
-In-Reply-To: <20181026153125.24738-1-laurent@vivier.eu>
-References: <20181026153125.24738-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 29 Oct 2018 11:54:06 +0000
-Message-ID: <CAFEAcA-8sN2MGK6OcK5uMbMuw33MMOAgsdr9y4Uj2qmpbTkeig@mail.gmail.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
-	Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	Michael Walle <michael@walle.cc>, Laurent Vivier <lvivier@redhat.com>, 
-	"Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, 
-	"open list:X86" <xen-devel@lists.xenproject.org>, 
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Markus Armbruster <armbru@redhat.com>, 
-	Max Reitz <mreitz@redhat.com>, Fam Zheng <famz@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Anthony Perard <anthony.perard@citrix.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, 
-	Kevin Wolf <kwolf@redhat.com>, Qemu-block <qemu-block@nongnu.org>, 
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Gerd Hoffmann <kraxel@redhat.com>, 
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
-	Thomas Huth <thuth@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Riku Voipio <riku.voipio@iki.fi>, Eduardo Habkost <ehabkost@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-Subject: Re: [Qemu-trivial] [PULL 00/20] Trivial patches patches
+X-Received-From: 2a00:1450:4864:20::441
+Subject: [Qemu-trivial] [PATCH v3] milkymist-minimac2: Use
+ qemu_log_mask(GUEST_ERROR) instead of error_report
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,49 +77,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Oct 2018 11:54:34 -0000
+X-List-Received-Date: Mon, 29 Oct 2018 13:01:06 -0000
 
-On 26 October 2018 at 16:31, Laurent Vivier <laurent@vivier.eu> wrote:
-> The following changes since commit 808ebd66e467f77c0d1f8c6346235f81e9c99cf2:
->
->   Merge remote-tracking branch 'remotes/riscv/tags/riscv-for-master-3.1-sf0' into staging (2018-10-25 17:41:03 +0100)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
->
-> for you to fetch changes up to 4b03da6e87c34793137a231b558231fd406c05e8:
->
->   ppc: move at24c to its own CONFIG_ symbol (2018-10-26 17:17:32 +0200)
->
-> ----------------------------------------------------------------
-> QEMU trivial patches collected between June and October 2018
-> (Thank you to Thomas Huth)
->
-> ----------------------------------------------------------------
+qemu_log_mask(GUEST_ERROR) is more appropriate:
 
-Hi; I get a compile error due to a format string issue:
+  $ qemu -d help
+  Log items (comma separated):
+  guest_errors    log when the guest OS does something invalid (eg accessing a non-existent register)
 
-In file included from
-/home/petmay01/qemu-for-merges/hw/net/milkymist-minimac2.c:33:0:
-/home/petmay01/qemu-for-merges/hw/net/milkymist-minimac2.c: In
-function 'minimac2_write':
-/home/petmay01/qemu-for-merges/hw/net/milkymist-minimac2.c:420:23:
-error: format '%lx' expects
- argument of type 'long unsigned int', but argument 4 has type
-'uint64_t {aka long long unsign
-ed int}' [-Werror=format=]
-                       "milkymist_minimac2_wr%d: 0x%" HWADDR_PRIx " = 0x%lx\n",
-                       ^
-/home/petmay01/qemu-for-merges/include/qemu/log.h:85:22: note: in
-definition of macro 'qemu_lo
-g_mask'
-             qemu_log(FMT, ## __VA_ARGS__);              \
-                      ^
-cc1: all warnings being treated as errors
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Acked-by: Michael Walle <michael@walle.cc>
+---
+v3: Fixed format string (Peter Maydell)
 
-(affects windows crossbuilds, OSX and 32-bit hosts).
+ hw/net/milkymist-minimac2.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
-thanks
--- PMM
+diff --git a/hw/net/milkymist-minimac2.c b/hw/net/milkymist-minimac2.c
+index 7ef1daee41..85c9fc0b65 100644
+--- a/hw/net/milkymist-minimac2.c
++++ b/hw/net/milkymist-minimac2.c
+@@ -30,6 +30,7 @@
+ #include "hw/sysbus.h"
+ #include "trace.h"
+ #include "net/net.h"
++#include "qemu/log.h"
+ #include "qemu/error-report.h"
+ 
+ #include <zlib.h>
+@@ -214,7 +215,8 @@ static size_t assemble_frame(uint8_t *buf, size_t size,
+     uint32_t crc;
+ 
+     if (size < payload_size + 12) {
+-        error_report("milkymist_minimac2: received too big ethernet frame");
++        qemu_log_mask(LOG_GUEST_ERROR, "milkymist_minimac2: frame too big "
++                      "(%zd bytes)\n", payload_size);
+         return 0;
+     }
+ 
+@@ -347,8 +349,9 @@ minimac2_read(void *opaque, hwaddr addr, unsigned size)
+         break;
+ 
+     default:
+-        error_report("milkymist_minimac2: read access to unknown register 0x"
+-                TARGET_FMT_plx, addr << 2);
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "milkymist_minimac2_rd%d: 0x%" HWADDR_PRIx "\n",
++                      size, addr << 2);
+         break;
+     }
+ 
+@@ -413,8 +416,10 @@ minimac2_write(void *opaque, hwaddr addr, uint64_t value,
+         break;
+ 
+     default:
+-        error_report("milkymist_minimac2: write access to unknown register 0x"
+-                TARGET_FMT_plx, addr << 2);
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "milkymist_minimac2_wr%d: 0x%" HWADDR_PRIx
++                      " = 0x%" PRIx64 "\n",
++                      size, addr << 2, value);
+         break;
+     }
+ }
+-- 
+2.19.1
+
 
