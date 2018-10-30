@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gHS8z-0001sl-DY
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Oct 2018 07:25:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58344)
+	id 1gHS90-0001uj-3M
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Oct 2018 07:25:10 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58345)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gHS8v-0001nN-48
+	(envelope-from <laurent@vivier.eu>) id 1gHS8v-0001nO-4F
 	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gHS8q-0002yy-Ae
+	(envelope-from <laurent@vivier.eu>) id 1gHS8q-0002yp-AZ
 	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:02 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:50765)
+Received: from mout.kundenserver.de ([212.227.126.133]:56459)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gHS8j-0002jP-5C; Tue, 30 Oct 2018 07:24:53 -0400
+	id 1gHS8j-0002kz-Ue; Tue, 30 Oct 2018 07:24:54 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N2lv2-1fYVzA2bpE-0133sk; Tue, 30 Oct 2018 12:23:44 +0100
+	id 1Mgvev-1fd8Zf1xuf-00hQH9; Tue, 30 Oct 2018 12:24:22 +0100
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N2lv2-1fYVzA2bpE-0133sk; Tue, 30 Oct 2018 12:23:44 +0100
+	id 1Mgvev-1fd8Zf1xuf-00hQH9; Tue, 30 Oct 2018 12:24:22 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
@@ -40,31 +40,34 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <lvivier@redhat.com>,
 	Michael Walle <michael@walle.cc>, Markus Armbruster <armbru@redhat.com>
-Date: Tue, 30 Oct 2018 12:23:17 +0100
-Message-Id: <20181030112337.17973-1-laurent@vivier.eu>
+Date: Tue, 30 Oct 2018 12:23:35 +0100
+Message-Id: <20181030112337.17973-19-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
+In-Reply-To: <20181030112337.17973-1-laurent@vivier.eu>
+References: <20181030112337.17973-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:y4wJZBQa36fYeIfafVVGOGE7fIbv9mjAWFxbq5hFhvYf5uTUIa4
-	uUXJnKGwf48j3geM8iJBwHm12geZVEqo4OxKyqMKBzMUs26F7O+hRzAmq9E6jSNhmQrcquq
-	5qluvC9rh1yysZGuNFdD7Aew6vNJm6CVVZmTclHhX7Wpro/q1MR2HikUg4oP9+owQUb5qo5
-	AEgQnCING+xIHCLAgVQaw==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:Y1WZhTh/8Ew=:LtGR41t7EDavmeMarZFYsD
-	hDyqbpoeUu7TV1BrlADahHWN3Kry8UxhokdYr/+NkLiQlQCDz7dW8XvCVFy5qP6bd8nr/uzjT
-	0Wy836k88tRTsHnzmq6dwAt2i9cSgb17gywcCMqSzgRUxkrcZvyc1Fl3pkZyMW5HMvSvcMGDT
-	1jJNZ13O2CxYXMyvnerEkrs5BU941xgXrAbew9Wvp0udQ6hI5xmO93hUUuLw6Kz3fhVXecl4y
-	sQOqKJpuzV+v7jShGRmWoyQ6nHQkBLPtmx7RPCFtQnuJf8R6cbuaM8HAd4rs9tkAa985MKLus
-	bQ7bZbs80OM4UBGV/Ja8jVz2edhuSLenIKofgyDFssst1yPvtBxGIOdze2wi43yEv88LYofz2
-	/Nl8v/HIDDqPBYf/49mHQzK66GMdtyocSmHLcyOXc4hlBx2adojXeqqDLkVFOieCFKEqcQjG+
-	EPFMrGN9WtkRcE9zEhoWU3qP1nnNdUtCeJTZwPSEauaFXoYC0T4TDdQTM0l4mHwnCC5/iufVn
-	T3tQS3HcKC5M1ARS48qExmQ3TokoYy/VzBfHYn6YPgnHt4q+1M6iFxaDjJ+tNTxBvN5SrzamC
-	MoCJoixHxcYHkkT94ijuI2S+KusRzWAlnp8Qdox2JInnux1efEWdkBeM/tT/EuVOtOrpEfA+P
-	Gr8Ijpm5WK/R/UmrUY+jcKVXi1V4qJipG+TNPF07terMEF3GTj8lxjhHsJceezAlR/soyVhm+
-	Z7CHSJ6pzYZk2xjP
+X-Provags-ID: V03:K1:TYAOM2UPEG2JBrG3DvbA0XzcWbCUGxCmCQZzQFwpas8OwFalWkQ
+	IfAUy6Uz0fyXww+ircB3twrD2TNA22GqjI2kzdr02wHQdG8K/9xvk+YczYH642jaE9/ci7i
+	z26UlhE4FjoZBH7O1DVnKIBIzB2wGxkRhnCbkgMSo3QNmc6wDOH96bMe7N2z599xz9UHIbk
+	CEY/dc0S/JA70X+T32KOg==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:v5/9TckJ5bo=:xqSfrIMOY/cr1Lc1v3RRE3
+	LUBNJ1JgPh4xHAHG2L0GU4m7W9O2RKs48lWkGAMuU1d3iW3oHf+MnGmr3opwqFCYbQ7DCQpEf
+	3T0FCdbN8HhQ7oICi34MrhZJ0DHBDgfzonYqAekslYT7CIIPVBkN+zYbnQPa6lrkBBvltDdbq
+	SEmbjo+PLuwlnV3SzNYv0UsPgIWtkCtrNv2n+DnqjYogH8lAei7ZuCyHxEXjtM1wicgejiakl
+	tmxHdaHlgEKJOlTVZQWY6YdZqg/BS+d1/qIwIOoBqf7zyCziCXCIe8gf6VCO01wqKUY5vS8XQ
+	FdYHLlP8uGjd6CE09JzcvSaqoamGZKBgoYQqHwhP7ZCG1edjAbrfn4i1gxx9Fg3eZxWIs0L0F
+	B0BL08W0mdwVhEZNIcgCw1KzPRUPuW0Y2Ac+G7sSGkt4/jlPZ56+XjTzalVV4LENb6u1zdfz5
+	WdJOR6guCtE9CBybb5L3a5nj1fL3Glp3mBH058XhrFB+q0l/pgJ4QcvJ+HcPWET2QS8aIlHiG
+	iMXcy2hHUxZcLCFcHn+lEDeRN400UjlJ348ybgwi4esi30xharK4zAM4GXCBFBiBJMh5FUTJb
+	cjf/4ZLCyWTMOb3OeHLF5WQ5juCQ6v6XNQQC3xuXlh/vCus9WIagv3Z6bzJMLAY+bqroiW1v0
+	YrtQGM7iY+GfOZXqO6nZbFRcowrEyDe7nVzGfoeqjx+pm+eSSFRZHdLh1Nin8sxg3rjlqFd6P
+	BqKmd2bK9Wkxko78
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.133
-Subject: [Qemu-trivial] [PULL v2 00/20] Qemu trivial for 3.1 patches
+Subject: [Qemu-trivial] [PULL v2 18/20] hw/intc/gicv3: Remove useless
+ parenthesis around DIV_ROUND_UP macro
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,95 +81,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 30 Oct 2018 11:25:08 -0000
 
-The following changes since commit 808ebd66e467f77c0d1f8c6346235f81e9c99cf2:
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-  Merge remote-tracking branch 'remotes/riscv/tags/riscv-for-master-3.1-sf0' into staging (2018-10-25 17:41:03 +0100)
+Patch created mechanically by rerunning:
 
-are available in the Git repository at:
+  $  spatch --sp-file scripts/coccinelle/round.cocci \
+            --macro-file scripts/cocci-macro-file.h \
+            --dir . --in-place
 
-  git://github.com/vivier/qemu.git tags/qemu-trivial-for-3.1-pull-request
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Message-Id: <20180705155811.20366-8-f4bug@amsat.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ include/hw/intc/arm_gicv3_common.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-for you to fetch changes up to 7b2b797cf0addac789ba858fdbd95c55128d72d5:
-
-  milkymist-minimac2: Use qemu_log_mask(GUEST_ERROR) instead of error_report (2018-10-30 09:13:31 +0100)
-
-----------------------------------------------------------------
-QEMU trivial patches collected between June and October 2018
-(Thank you to Thomas Huth)
-
-v2: fix 32bit build with updated patch (v3) from Philippe Mathieu-Daudé
-    built in a 32bit debian sid chroot
-
-----------------------------------------------------------------
-
-Cleber Rosa (6):
-  tests/tcg/README: fix location for lm32 tests
-  qemu-iotests: fix filename containing checks
-  docs/devel/testing.rst: add missing newlines after code block
-  scripts/decodetree.py: remove unused imports
-  scripts/qemu.py: remove trailing quotes on docstring
-  qemu-iotests: make 218 executable
-
-Emilio G. Cota (1):
-  linux-user: fix comment s/atomic_write/atomic_set/
-
-Li Qiang (2):
-  memory.h: fix typos in comments
-  cpu.h: fix a typo in comment
-
-Paolo Bonzini (1):
-  ppc: move at24c to its own CONFIG_ symbol
-
-Philippe Mathieu-Daudé (6):
-  qobject: Catch another straggler for use of qdict_put_str()
-  xen: Use the PCI_DEVICE macro
-  tests/bios-tables-test: Remove an useless cast
-  hw/pci-host: Remove useless parenthesis around DIV_ROUND_UP macro
-  hw/intc/gicv3: Remove useless parenthesis around DIV_ROUND_UP macro
-  milkymist-minimac2: Use qemu_log_mask(GUEST_ERROR) instead of
-    error_report
-
-Stefan Weil (2):
-  tests: Fix typos in comments and help message (found by codespell)
-  configure: Support pkg-config for zlib
-
-Thomas Huth (1):
-  configs/alpha: Remove unused CONFIG_PARALLEL_ISA switch
-
-yuchenlin (1):
-  vga_int: remove unused function protype
-
- configure                             | 40 +++++++++++++++------------
- default-configs/alpha-softmmu.mak     |  1 -
- default-configs/ppc-softmmu.mak       |  1 +
- docs/devel/testing.rst                |  2 ++
- hw/display/vga_int.h                  |  1 -
- hw/net/milkymist-minimac2.c           | 15 ++++++----
- hw/nvram/Makefile.objs                |  2 +-
- hw/pci-host/piix.c                    |  2 +-
- hw/pci-host/q35.c                     |  2 +-
- hw/xen/xen_pt_config_init.c           |  8 +++---
- include/exec/memory.h                 |  6 ++--
- include/hw/intc/arm_gicv3_common.h    |  2 +-
- include/qom/cpu.h                     |  2 +-
- linux-user/qemu.h                     |  2 +-
- qobject/block-qdict.c                 |  2 +-
- scripts/decodetree.py                 |  2 --
- scripts/qemu.py                       |  2 +-
- tests/bios-tables-test.c              |  4 +--
- tests/docker/Makefile.include         |  2 +-
- tests/docker/docker.py                |  4 +--
- tests/guest-debug/test-gdbstub.py     |  2 +-
- tests/qemu-iotests/218                |  0
- tests/qemu-iotests/common.qemu        |  2 +-
- tests/qemu-iotests/common.rc          |  4 +--
- tests/tcg/Makefile.include            |  2 +-
- tests/tcg/Makefile.probe              |  2 +-
- tests/tcg/README                      |  2 +-
- tests/tcg/mips/mips64-dsp/subq_s_pw.c |  2 +-
- 28 files changed, 64 insertions(+), 54 deletions(-)
- mode change 100644 => 100755 tests/qemu-iotests/218
-
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index b798486ecf..31ec9a1ae4 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -62,7 +62,7 @@
+  * avoids bugs where we forget to subtract GIC_INTERNAL from an
+  * interrupt number.
+  */
+-#define GICV3_BMP_SIZE (DIV_ROUND_UP(GICV3_MAXIRQ, 32))
++#define GICV3_BMP_SIZE DIV_ROUND_UP(GICV3_MAXIRQ, 32)
+ 
+ #define GIC_DECLARE_BITMAP(name) \
+     uint32_t name[GICV3_BMP_SIZE]
 -- 
 2.17.2
 
