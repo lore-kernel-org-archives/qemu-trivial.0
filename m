@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gHS9H-0002HK-51
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Oct 2018 07:25:27 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58677)
+	id 1gHS9I-0002If-C4
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Oct 2018 07:25:28 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58676)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gHS9E-0002EP-GM
+	(envelope-from <laurent@vivier.eu>) id 1gHS9E-0002EN-G7
 	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gHS98-0003aZ-N8
+	(envelope-from <laurent@vivier.eu>) id 1gHS97-0003Xi-9j
 	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:22 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:49445)
+Received: from mout.kundenserver.de ([212.227.126.134]:50633)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gHS8n-0002r2-94; Tue, 30 Oct 2018 07:24:57 -0400
+	id 1gHS8n-0002qC-GU; Tue, 30 Oct 2018 07:24:57 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1M7aqD-1gCCGc44Td-0085WZ; Tue, 30 Oct 2018 12:23:56 +0100
+	id 1MdNoW-1fiOQE08I4-00ZSig; Tue, 30 Oct 2018 12:23:54 +0100
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1M7aqD-1gCCGc44Td-0085WZ; Tue, 30 Oct 2018 12:23:56 +0100
+	id 1MdNoW-1fiOQE08I4-00ZSig; Tue, 30 Oct 2018 12:23:54 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
@@ -40,34 +40,34 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <lvivier@redhat.com>,
 	Michael Walle <michael@walle.cc>, Markus Armbruster <armbru@redhat.com>
-Date: Tue, 30 Oct 2018 12:23:22 +0100
-Message-Id: <20181030112337.17973-6-laurent@vivier.eu>
+Date: Tue, 30 Oct 2018 12:23:21 +0100
+Message-Id: <20181030112337.17973-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181030112337.17973-1-laurent@vivier.eu>
 References: <20181030112337.17973-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:HGf3vO88OS9YjExxl3IHlSCxaolOWWZDr/ZpH95+T9lkzF5OCnR
-	OOZAhze5Ahl5x3FuY/VbrS6OcOQBYpBe2s+y49rJLQ3YRAXf8TipWZYqMR8we7MLUtr3ByR
-	523u1xENy0P0bKNoXDJyVebtP0pGanvRJVBIUJo5ZExF7Hhj3RbTcBqDE0hy0VX2amu7IC2
-	jMiWW1a1tQzP9WQsIcJ8A==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:EO6XVGOJqlo=:wvXON1J+jwCx85xUT939P0
-	pBNcPmcjzCbU7hD45t48L+tmCLO+rtJV73Q4RlsLbncMoxuo+SobB0zPxqrrHm1+vzDjfooiA
-	1k/YaC7M06EJx/Z6vAJdXaMdCzUjFRsy3mgTUSTyk+5W3z7fgpla1fvmQhH0dAX2jT0ckS2iP
-	2TL0cv3zvNeZOI/dHgAS/ANL33JYJGqb9LqNlNMLGbuvIDjCZXvGQaIaD9BMBbKJmWm/5v8Bv
-	aEPzXo1bhruFsKEbEIT/ojbZYakbNtwwiXyqUYJ3NOVlZ8Xep0gh9ZbM9JGTC/JgmSu1O0FrV
-	2e6gSEmzDhDhUJhNRU5TCLmY/3AT4umHAgfp5KwO+nDHtdH1JJVqmYkG8ApDoBBa7Fqo1zJOz
-	08INLuzhOBs1cRSoZwjBvSwncRayNMAuiaCdJKO0cfLpk46fxOs3pU3gXByytCevib/JsQTWN
-	lM/47/WugFW3Cahh3c/HfmRwgefqIyMEde9TtZMd57wUfSv4qvu6CwMEIR+CXsDtFIzaDrl0G
-	59s/r1lskp7p+CcNspJl/ZXSF+x0VZ0Rz08tcm4njBw1ABorJ+LiNhIFHBMl0G7n9C9M5nQNJ
-	qwkk3spqSbdXHX6eWgIfkP8LtK5nZRFfgxDBsPDZtWATn1jeogQ2tZeqfjz3wqj7qsgVMFi1s
-	+G+rATUi12Lw+pCJD1nOS+fmvRsCeDXtbxq5iZG8sJ60y74CsNi9TE/z+TAt+I6n1upa682NB
-	ZYT5xr2qSKX/ay9O
+X-Provags-ID: V03:K1:F8l4smf1nL5W4DsrL/7cTra6H6sZJmx/uvzB/1jWx/wdKk/NVxp
+	m/fq6/P0ALLGTaCdkdXooOLOe8GgI0XFOI0jqL6wU/uL32dCmmytmJOvG40vDdoivXgaMTY
+	M4UmUveDPmCbjaUkB6SPRFzmAkBQ7ibaH2p90ew21v1SCeCuiT3cCz9p+K7+scs3WGgCzqc
+	1kM4wMQC2oXZpiX9tZNjQ==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:OPbiJZFlUtg=:6UDHRGrOhs4uRU3/KtYvSw
+	JPuR5jLG8ZkuaBXlmbxZ8h5Te0MlKiH1Sx9O8MbGT6Z0frkx3JC9bKvj/v3qO1oTwRu6/Lt2p
+	+Mo3kkzwKoP4r3n2oZkuQDjVl+fvUtpdI19jyeG4Eblpnb7e5fdSt21hhhu8FgvADgAUlqTe7
+	jYfDVl4kI9/CqArD5CQdKC2kd8xy0SzdqpyTrTuNBDwYtFLEEpngDGNDGBAftp26GqiExsGIX
+	zzlBjrVD5gi0PXuN6jJQSI44BFgEgWn/m8MswbJXFMyyA6FZkccEpi2aNgUtAyP5tWlLb8ivA
+	AQK7eTq7916LYMPAD+/bLYblvQ3Vw1VuMC4X8xTInVDfQl47b8ASDXSTzCKjEJZaXQ7G5bpe5
+	8vzAlsOaCKeLJyOmSEODYlNJ2R5LPONDg7okAChcO5682rGabP4D1wEYeCyznLX/8ioMZq4tX
+	d/0EYIEow0m/JKrKGeYs5aqGjN15l4aGDwp16ehnbBVbIkaHbgawNfl5INwQWMSTf6UyIfkuc
+	bnkgdPtUBETO/Tm1DJlA+gtXb8w5TMX35TPmd1izoXoMzQWyjFXw+cISmGk5OgPvKhH7FJuwz
+	g/RdPSoTYva8w+2/Qq93jWQstEOruf0zB5/bXlvvf4mi4CL+NR5v6wj/QJnyMngjvU02yN7K6
+	d7XPWYuO6lv//2y430+cnd9rie9/F8D5R5qJDKMQjRsgz+QbPrpqX7WzIZNVC/g6UUN7AfLrh
+	8a7Y/XO3wclCG/RS
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: [Qemu-trivial] [PULL v2 05/20] qemu-iotests: fix filename
- containing checks
+X-Received-From: 212.227.126.134
+Subject: [Qemu-trivial] [PULL v2 04/20] tests/tcg/README: fix location for
+ lm32 tests
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -83,40 +83,28 @@ X-List-Received-Date: Tue, 30 Oct 2018 11:25:25 -0000
 
 From: Cleber Rosa <crosa@redhat.com>
 
-Commit cce293a2945 moved some functions from common.config to
-common.rc, but the error messages still reference the old file
-location.
+Point to the right and obvious location for lm32 tests.
 
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
-Reviewed-by: Max Reitz <mreitz@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20181004161852.11673-5-crosa@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20181004161852.11673-3-crosa@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/qemu-iotests/common.rc | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/tcg/README | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
-index 44bee16a5e..70ca65b49b 100644
---- a/tests/qemu-iotests/common.rc
-+++ b/tests/qemu-iotests/common.rc
-@@ -170,7 +170,7 @@ if [ ! -e "$TEST_DIR" ]; then
- fi
+diff --git a/tests/tcg/README b/tests/tcg/README
+index a5643d33e7..2a58f9a058 100644
+--- a/tests/tcg/README
++++ b/tests/tcg/README
+@@ -10,6 +10,6 @@ with "make test-cris".
  
- if [ ! -d "$TEST_DIR" ]; then
--    echo "common.config: Error: \$TEST_DIR ($TEST_DIR) is not a directory"
-+    echo "common.rc: Error: \$TEST_DIR ($TEST_DIR) is not a directory"
-     exit 1
- fi
- 
-@@ -179,7 +179,7 @@ if [ -z "$REMOTE_TEST_DIR" ]; then
- fi
- 
- if [ ! -d "$SAMPLE_IMG_DIR" ]; then
--    echo "common.config: Error: \$SAMPLE_IMG_DIR ($SAMPLE_IMG_DIR) is not a directory"
-+    echo "common.rc: Error: \$SAMPLE_IMG_DIR ($SAMPLE_IMG_DIR) is not a directory"
-     exit 1
- fi
+ LM32
+ ====
+-The testsuite for LM32 is in tests/tcg/cris.  You can run it
++The testsuite for LM32 is in tests/tcg/lm32.  You can run it
+ with "make test-lm32".
  
 -- 
 2.17.2
