@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gHS9D-0002D4-Gc
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Oct 2018 07:25:23 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58580)
+	id 1gHS9H-0002HK-51
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Oct 2018 07:25:27 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58677)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gHS97-000260-Cg
-	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:21 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gHS9E-0002EP-GM
+	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gHS91-0003Le-PN
-	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:17 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:60689)
+	(envelope-from <laurent@vivier.eu>) id 1gHS98-0003aZ-N8
+	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:22 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:49445)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gHS8e-0002R3-De; Tue, 30 Oct 2018 07:24:48 -0400
+	id 1gHS8n-0002r2-94; Tue, 30 Oct 2018 07:24:57 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MCsgS-1gQDZW2FWq-008tOU; Tue, 30 Oct 2018 12:24:14 +0100
+	id 1M7aqD-1gCCGc44Td-0085WZ; Tue, 30 Oct 2018 12:23:56 +0100
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MCsgS-1gQDZW2FWq-008tOU; Tue, 30 Oct 2018 12:24:14 +0100
+	id 1M7aqD-1gCCGc44Td-0085WZ; Tue, 30 Oct 2018 12:23:56 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
@@ -40,34 +40,34 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <lvivier@redhat.com>,
 	Michael Walle <michael@walle.cc>, Markus Armbruster <armbru@redhat.com>
-Date: Tue, 30 Oct 2018 12:23:31 +0100
-Message-Id: <20181030112337.17973-15-laurent@vivier.eu>
+Date: Tue, 30 Oct 2018 12:23:22 +0100
+Message-Id: <20181030112337.17973-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181030112337.17973-1-laurent@vivier.eu>
 References: <20181030112337.17973-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:g5ba0aGiQIhKNZQKzBcM73r/UbedX9z9Q+bwBO3E5dSMCN4T4ND
-	Xj4biXxswOFgZ0M2GQW/WZwxl8HPlr6S/wqvU7CUDa4NeUJu16QR2WRS3hqa7Z4cuWr3sQw
-	FLbu5kybqWRnoCmrq2o0VjvSiJ9Z60rfpjAtSUYsHN7TlRSjGFGAbhcxeSnLPxFB7gWu/Nz
-	E7vb6avBOhIvrF2HRzuOg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:dSiTzJmTzx0=:bY02KXQE/BFOriVgAZE9k0
-	vBF1sd4moRPgEuKkwXeU1B2tsSb/Gq7YoM3wf6FL9mABQDT8uv9gs2iD9VUMfKywyfJ1SxgQh
-	AS4pwdOKnrJMUizp8aijtoRQHAcjM9CLaMJl/fcdZhlYSvZAUrNNuuoVfsrdhfZPptZKy1oqj
-	shdZu2qLIETz2qBHDQHS6+u4CZC7NZ22jcx3I9eaHjTVRyIesRlok0yG+DkW6sSQcwqzFgwL6
-	0cYKVvHv3M+GfvF832OnEF6EJtApVBKoZCjBIFnjyayXoSK+1CME/UFvUtEYtd5wWoACtHo9A
-	6uVtpG2WLed1ol3z/PkKmgjSfFKZDugW6pFaMZxm8JSSxjflU/NyPzBXTI3gvjM4g7YWKsvkQ
-	LSOOvI0HegcNnsuDHnfJTnFksOgqyubFygKZurLhEX59iulVoQLEOHDDofG0Vov/he5bz/+BO
-	OJW+fLy4vZE10SOb5WlpPOizbAdAyG4Zu+zOSsFaOcd7efvpYp2TKb8rshzsT4pFtk4yp96jA
-	+zWvYP+5Aj8DriABJEMxxFm158+XLv3ynqrEeJjyDAXD0ngKv2zODwd8yo5jF7SMH1k/l2fdE
-	jy6lI3krKnfoPya5Hoi2DO6H83Gqf7gaNJoBVShKAmVYUZN7tZpj9lq4rODXKczZ4luAY3vDb
-	xgkTGutX/u/W9BisJq/oHpHgFxZgnqVkrAzGqbzsYMggGmHUNqGIPZl40cv7BYpP7SdaHAIqR
-	llNI4dJu1DsWD91L
+X-Provags-ID: V03:K1:HGf3vO88OS9YjExxl3IHlSCxaolOWWZDr/ZpH95+T9lkzF5OCnR
+	OOZAhze5Ahl5x3FuY/VbrS6OcOQBYpBe2s+y49rJLQ3YRAXf8TipWZYqMR8we7MLUtr3ByR
+	523u1xENy0P0bKNoXDJyVebtP0pGanvRJVBIUJo5ZExF7Hhj3RbTcBqDE0hy0VX2amu7IC2
+	jMiWW1a1tQzP9WQsIcJ8A==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:EO6XVGOJqlo=:wvXON1J+jwCx85xUT939P0
+	pBNcPmcjzCbU7hD45t48L+tmCLO+rtJV73Q4RlsLbncMoxuo+SobB0zPxqrrHm1+vzDjfooiA
+	1k/YaC7M06EJx/Z6vAJdXaMdCzUjFRsy3mgTUSTyk+5W3z7fgpla1fvmQhH0dAX2jT0ckS2iP
+	2TL0cv3zvNeZOI/dHgAS/ANL33JYJGqb9LqNlNMLGbuvIDjCZXvGQaIaD9BMBbKJmWm/5v8Bv
+	aEPzXo1bhruFsKEbEIT/ojbZYakbNtwwiXyqUYJ3NOVlZ8Xep0gh9ZbM9JGTC/JgmSu1O0FrV
+	2e6gSEmzDhDhUJhNRU5TCLmY/3AT4umHAgfp5KwO+nDHtdH1JJVqmYkG8ApDoBBa7Fqo1zJOz
+	08INLuzhOBs1cRSoZwjBvSwncRayNMAuiaCdJKO0cfLpk46fxOs3pU3gXByytCevib/JsQTWN
+	lM/47/WugFW3Cahh3c/HfmRwgefqIyMEde9TtZMd57wUfSv4qvu6CwMEIR+CXsDtFIzaDrl0G
+	59s/r1lskp7p+CcNspJl/ZXSF+x0VZ0Rz08tcm4njBw1ABorJ+LiNhIFHBMl0G7n9C9M5nQNJ
+	qwkk3spqSbdXHX6eWgIfkP8LtK5nZRFfgxDBsPDZtWATn1jeogQ2tZeqfjz3wqj7qsgVMFi1s
+	+G+rATUi12Lw+pCJD1nOS+fmvRsCeDXtbxq5iZG8sJ60y74CsNi9TE/z+TAt+I6n1upa682NB
+	ZYT5xr2qSKX/ay9O
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: [Qemu-trivial] [PULL v2 14/20] qobject: Catch another straggler for
- use of qdict_put_str()
+X-Received-From: 212.227.126.135
+Subject: [Qemu-trivial] [PULL v2 05/20] qemu-iotests: fix filename
+ containing checks
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,37 +79,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Oct 2018 11:25:21 -0000
+X-List-Received-Date: Tue, 30 Oct 2018 11:25:25 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Cleber Rosa <crosa@redhat.com>
 
-Patch created mechanically by rerunning:
+Commit cce293a2945 moved some functions from common.config to
+common.rc, but the error messages still reference the old file
+location.
 
-  $  spatch --sp-file scripts/coccinelle/qobject.cocci \
-            --macro-file scripts/cocci-macro-file.h \
-            --dir . --in-place
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20180705155811.20366-2-f4bug@amsat.org>
+Signed-off-by: Cleber Rosa <crosa@redhat.com>
+Reviewed-by: Max Reitz <mreitz@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20181004161852.11673-5-crosa@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qobject/block-qdict.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/qemu-iotests/common.rc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/qobject/block-qdict.c b/qobject/block-qdict.c
-index 42054cc274..1487cc5dd8 100644
---- a/qobject/block-qdict.c
-+++ b/qobject/block-qdict.c
-@@ -577,7 +577,7 @@ static QObject *qdict_crumple_for_keyval_qiv(QDict *src, Error **errp)
-         if (!tmp) {
-             tmp = qdict_clone_shallow(src);
-         }
--        qdict_put(tmp, ent->key, qstring_from_str(s));
-+        qdict_put_str(tmp, ent->key, s);
-         g_free(buf);
-     }
+diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
+index 44bee16a5e..70ca65b49b 100644
+--- a/tests/qemu-iotests/common.rc
++++ b/tests/qemu-iotests/common.rc
+@@ -170,7 +170,7 @@ if [ ! -e "$TEST_DIR" ]; then
+ fi
+ 
+ if [ ! -d "$TEST_DIR" ]; then
+-    echo "common.config: Error: \$TEST_DIR ($TEST_DIR) is not a directory"
++    echo "common.rc: Error: \$TEST_DIR ($TEST_DIR) is not a directory"
+     exit 1
+ fi
+ 
+@@ -179,7 +179,7 @@ if [ -z "$REMOTE_TEST_DIR" ]; then
+ fi
+ 
+ if [ ! -d "$SAMPLE_IMG_DIR" ]; then
+-    echo "common.config: Error: \$SAMPLE_IMG_DIR ($SAMPLE_IMG_DIR) is not a directory"
++    echo "common.rc: Error: \$SAMPLE_IMG_DIR ($SAMPLE_IMG_DIR) is not a directory"
+     exit 1
+ fi
  
 -- 
 2.17.2
