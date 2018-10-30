@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gHS9x-0002sC-EZ
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Oct 2018 07:26:09 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58930)
+	id 1gHSA8-000316-6j
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Oct 2018 07:26:20 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59023)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gHS9r-0002mw-SO
-	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:26:08 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gHSA2-0002xV-LA
+	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:26:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gHS9h-0004x6-5m
-	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:54 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:33245)
+	(envelope-from <laurent@vivier.eu>) id 1gHSA0-0005q7-I2
+	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:26:14 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:46133)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gHS95-0003QZ-PS; Tue, 30 Oct 2018 07:25:16 -0400
+	id 1gHS9P-0003pT-AJ; Tue, 30 Oct 2018 07:25:35 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N4Qbu-1fbGre21f4-011OvM; Tue, 30 Oct 2018 12:24:16 +0100
+	id 1MAOeB-1gOpZx1zcB-00BvGL; Tue, 30 Oct 2018 12:24:26 +0100
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N4Qbu-1fbGre21f4-011OvM; Tue, 30 Oct 2018 12:24:16 +0100
+	id 1MAOeB-1gOpZx1zcB-00BvGL; Tue, 30 Oct 2018 12:24:26 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
@@ -40,33 +40,34 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <lvivier@redhat.com>,
 	Michael Walle <michael@walle.cc>, Markus Armbruster <armbru@redhat.com>
-Date: Tue, 30 Oct 2018 12:23:32 +0100
-Message-Id: <20181030112337.17973-16-laurent@vivier.eu>
+Date: Tue, 30 Oct 2018 12:23:37 +0100
+Message-Id: <20181030112337.17973-21-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181030112337.17973-1-laurent@vivier.eu>
 References: <20181030112337.17973-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:fEA6fEZUli6katgBcLR2UN6VP+wotM/9GE2n0cKhVL+g9AJJPqS
-	aEsrP3QZQ1Z1kZfwABTc8xuERCj/NZX6+cjgovsZdIKZikW1jEvFAdRcqAE2pUSaG9Uqfvy
-	Cp76U6QMb5PTUhEB7k8fjD0N9Fhk0wzbv+priZDqd4I8trza/F0LUZOaJwXOgxtPSIfO/QS
-	W4/2FmL7pirR1OPGpjE4A==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:+0dT5Ik5g5A=:wSNQ6JljSuIwB+4s8LSxPs
-	hCo43ZZSo1UY7aDC0Hom3leMsEsPOO6ley0omKGUR68uyRCqgBQZm5nh7Ax6EgwhXcrmedO2C
-	4KlKvJVDBtK3QsDh56jEsDtlqtx4IIlg4z6hv9iLoVAztOZludyxI1UKODEMrYbnkRh0oNk0S
-	Nr3yA3nqVSqAou0J3Oc7Hrc7j55ax47ssxPoN53YDv+EExIqB7/83/f8mL8376s+gMWdoobe7
-	WUTTAJI/7b0LWmYVtTwfrMH50CgANP42Y/u6/+6YMfRUmhqHT+pzs/VETsQ4zDt+nYShhY79H
-	FXlhn+pLwzX71R1e43/9R5Kp/Xuw2nooQhoqjocJNL7OQBSh37JdnzIlaswuUUOM8tjjHTVnn
-	5Kjh75yM3qhRRpm94wZVaCN7enNc+w3AOJJD3cJBcvl4vn6wsJP5AwZdX4A+DTC9FlQb9TgfU
-	sQ2ON/qumkenkEcXAuKIqhwfzyDyGG9M2pS5TRCLz3olCntr4f9KadPG7eRppcZCQ2/yKRF0o
-	HbBed2bjuKd3HbmARIu1pqx9IsygYs8wiwxSimW/24ZcoQ6nVQsAClEmWKV6BS6maVYs7XG1G
-	FwzlVncQ0WyYyT/Azl1xaH+DrguprnXMmY7Pet4nVd3YPSEw6WnVhNn1h11KwSs8rT2RldyiC
-	cGoMDybGtNcAjea7773tlkLWEZYZU+1hyC8KYZSOqvCuCT+2Tnub+D9UMIVfvYCqinLO7K1UG
-	wL18M3gzM+71QJ63
+X-Provags-ID: V03:K1:q5LxrzvdYU7CPNsTLmGXXcTjoHWS7tXgOUNrLn6WUBVWOyJHjX4
+	58/MogZSaPYGsRQWWABAyYmkkq4GP4kTSBoX+BW8xORZbw9lnsftm0ULdRZVfyzPHvBfkVX
+	im0zJo8hI/KqAI1lgVRGV+pAQltLLBEgS7mpqxBUTnMctLi4AA45imQ6ctGdfhsQfXau6wS
+	maYGw3ZIKpvCBF1VfQoPQ==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:7TFd7E5ROws=:B4993IzhonnCusVI0tYSqj
+	oK4t//8Dukd/+oJducnR5RFvmCYRSEaVEbLsC4ZmEuEBZgyRWltcIR1lu2F8v2ZjwYB2JknH6
+	GsPdi4itO5Erwp9m+K+HRu+jWmQLpZMzrPj9749Kk6W/pUF3n7fUYBR3vcLVe/q94VlSn3r/G
+	AAkn/tk20nLGuE6rsbVb6z4F3sI1xNZmBuKWm0+vFrO3fndTto5s+am2PctR10ypxG2iT0Kev
+	fSxN8W4MrqjLJfe0G2dROfSA5HgKL1ZxGVCDtmMT8nXH9GPhRiwx02k1SE4P4s9PIzJ8cMag2
+	EbWY+nTlE9ccICMPQSC05/sOAYj4QuA7kpQSA+PsNTYPaJ7F+xvc/O6ZCkV4gCQOxNnBqIBYx
+	jBJ4WkuaHZZgXEBCnp2FNktnVWx2EUVQBm3FQBogC7uYb8aKeWZzqgpBdZalh0fuOvcD2NolC
+	/cK4AghL6ZPqyiefJJndsrUdEj2hsEtcWsQyt1P89IecFc6F9dJ7AbP2mh/3Km2O5BVuAVUWO
+	AFA8nwytpwTIyg6gO2IGxHvFRpFQ+x7B4J8A6+WaEjgUsZjk3Fli64vK3ct5bCA/WJ4X+J2e0
+	+AV2ac23Rf+NNlPxMNjNTRCTv0iXAK9kkzj7PQMERjYAUrvRjN8DuLKyzGRVi7x4UsPH3uFl0
+	UMaSxu2UYm85aPUAngv4wCBbWS/dguGcFXRMTXulLxNh5tcATdAYn5GCSEvAVVcHdk1bD69X9
+	qEaOjjIeMk4CJVII
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
-Subject: [Qemu-trivial] [PULL v2 15/20] xen: Use the PCI_DEVICE macro
+X-Received-From: 212.227.126.135
+Subject: [Qemu-trivial] [PULL v2 20/20] milkymist-minimac2: Use
+ qemu_log_mask(GUEST_ERROR) instead of error_report
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,64 +79,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Oct 2018 11:26:08 -0000
+X-List-Received-Date: Tue, 30 Oct 2018 11:26:19 -0000
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-TYPE_XEN_PT_DEVICE is a subclass of TYPE_PCI_DEVICE, the clean way
-to access the PCIDevice pointer is using the PCI_DEVICE() macro.
+qemu_log_mask(GUEST_ERROR) is more appropriate:
 
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+  $ qemu -d help
+  Log items (comma separated):
+  guest_errors    log when the guest OS does something invalid (eg accessing a non-existent register)
+
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Acked-by: Anthony PERARD <anthony.perard@citrix.com>
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20180705155811.20366-4-f4bug@amsat.org>
+Acked-by: Michael Walle <michael@walle.cc>
+Message-Id: <20181029130034.26750-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/xen/xen_pt_config_init.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ hw/net/milkymist-minimac2.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
-diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
-index aee31c62bb..47f9010c75 100644
---- a/hw/xen/xen_pt_config_init.c
-+++ b/hw/xen/xen_pt_config_init.c
-@@ -358,7 +358,7 @@ static uint64_t xen_pt_get_bar_size(PCIIORegion *r)
- static XenPTBarFlag xen_pt_bar_reg_parse(XenPCIPassthroughState *s,
-                                          int index)
- {
--    PCIDevice *d = &s->dev;
-+    PCIDevice *d = PCI_DEVICE(s);
-     XenPTRegion *region = NULL;
-     PCIIORegion *r;
+diff --git a/hw/net/milkymist-minimac2.c b/hw/net/milkymist-minimac2.c
+index 3eaa19dfde..664ac34f25 100644
+--- a/hw/net/milkymist-minimac2.c
++++ b/hw/net/milkymist-minimac2.c
+@@ -30,6 +30,7 @@
+ #include "hw/sysbus.h"
+ #include "trace.h"
+ #include "net/net.h"
++#include "qemu/log.h"
+ #include "qemu/error-report.h"
  
-@@ -469,7 +469,7 @@ static int xen_pt_bar_reg_write(XenPCIPassthroughState *s, XenPTReg *cfg_entry,
- {
-     XenPTRegInfo *reg = cfg_entry->reg;
-     XenPTRegion *base = NULL;
--    PCIDevice *d = &s->dev;
-+    PCIDevice *d = PCI_DEVICE(s);
-     const PCIIORegion *r;
-     uint32_t writable_mask = 0;
-     uint32_t bar_emu_mask = 0;
-@@ -543,7 +543,7 @@ static int xen_pt_exp_rom_bar_reg_write(XenPCIPassthroughState *s,
- {
-     XenPTRegInfo *reg = cfg_entry->reg;
-     XenPTRegion *base = NULL;
--    PCIDevice *d = (PCIDevice *)&s->dev;
-+    PCIDevice *d = PCI_DEVICE(s);
-     uint32_t writable_mask = 0;
-     uint32_t throughable_mask = get_throughable_mask(s, reg, valid_mask);
-     pcibus_t r_size = 0;
-@@ -1587,7 +1587,7 @@ static int xen_pt_pcie_size_init(XenPCIPassthroughState *s,
-                                  const XenPTRegGroupInfo *grp_reg,
-                                  uint32_t base_offset, uint8_t *size)
- {
--    PCIDevice *d = &s->dev;
-+    PCIDevice *d = PCI_DEVICE(s);
-     uint8_t version = get_capability_version(s, base_offset);
-     uint8_t type = get_device_type(s, base_offset);
-     uint8_t pcie_size = 0;
+ #include <zlib.h>
+@@ -214,7 +215,8 @@ static size_t assemble_frame(uint8_t *buf, size_t size,
+     uint32_t crc;
+ 
+     if (size < payload_size + 12) {
+-        error_report("milkymist_minimac2: received too big ethernet frame");
++        qemu_log_mask(LOG_GUEST_ERROR, "milkymist_minimac2: frame too big "
++                      "(%zd bytes)\n", payload_size);
+         return 0;
+     }
+ 
+@@ -347,8 +349,9 @@ minimac2_read(void *opaque, hwaddr addr, unsigned size)
+         break;
+ 
+     default:
+-        error_report("milkymist_minimac2: read access to unknown register 0x"
+-                TARGET_FMT_plx, addr << 2);
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "milkymist_minimac2_rd%d: 0x%" HWADDR_PRIx "\n",
++                      size, addr << 2);
+         break;
+     }
+ 
+@@ -413,8 +416,10 @@ minimac2_write(void *opaque, hwaddr addr, uint64_t value,
+         break;
+ 
+     default:
+-        error_report("milkymist_minimac2: write access to unknown register 0x"
+-                TARGET_FMT_plx, addr << 2);
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "milkymist_minimac2_wr%d: 0x%" HWADDR_PRIx
++                      " = 0x%" PRIx64 "\n",
++                      size, addr << 2, value);
+         break;
+     }
+ }
 -- 
 2.17.2
 
