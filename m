@@ -1,71 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gHT8H-0000d9-BJ
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Oct 2018 08:28:29 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:38087)
+	id 1gHUHX-0001Ub-4H
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Oct 2018 09:42:07 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56303)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <shannon.zhaosl@gmail.com>) id 1gHLfS-0003Cm-AX
-	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 00:30:15 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1gHUHU-0001Q9-I4
+	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 09:42:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <shannon.zhaosl@gmail.com>) id 1gHLfQ-0002Q3-KL
-	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 00:30:14 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:41701)
+	(envelope-from <peter.maydell@linaro.org>) id 1gHUHT-0004t7-QN
+	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 09:42:04 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:38210)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <shannon.zhaosl@gmail.com>)
-	id 1gHLfM-0002HG-En; Tue, 30 Oct 2018 00:30:08 -0400
-Received: by mail-oi1-x244.google.com with SMTP id i10-v6so9232172oik.8;
-	Mon, 29 Oct 2018 21:30:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=xvhtgDM1Cu151/NXfmBhKuIUK+4DfjLFqcEOAaWraQo=;
-	b=mH/ntlFKfXiOsdNQa70Epl2J6GD5JjHGpz+RP9tX68ob4pQwdKnUrap6R6SamtQcGB
-	47uyAcIPR2h7khxrenSDqJnqJlUfqgDiGvLcQwXVsovNEKIph3RhRRFl5duBoeWOmL4m
-	+tojakdCqTFf1sPb6qReSgZYmH7Xfs5+7UFNZcb8rqZzeBbkBzyYX+H2V8kYx/ajawaT
-	+AUINWwuWKyEjeKcL3E1TSMRa9HxAkbbhqpPTvbbntzq2tKLkhNdFRw6+zCdoNMFw9EX
-	ED+YuIHfkrhJVsSDT5am0MkRwKyopZIrrE1oP3jT+2qkbWgW6P/P3vjaB1vHVtAre4eT
-	aGSw==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gHUHT-0004cu-GK
+	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 09:42:03 -0400
+Received: by mail-ot1-x341.google.com with SMTP id f24so5355361otl.5
+	for <qemu-trivial@nongnu.org>; Tue, 30 Oct 2018 06:41:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=U+ZpxlBlUlh90Una4x7wQkF/+r/5WMtVjb+elbgBAvc=;
+	b=CFppDPQtETwWfbbKPcby+3p5/f3p7ezsXcazGIt4V9lQfNqi+aEhCj9n56bwJNzNhk
+	BrdbPu5MhguKHaJL9hNktEWcY7u64nLFPO2B4C9mfdHU6J9YqJ39wNO9YLxi5Ap3T34T
+	98ZFHk4O3YtbvXQJ9DwZbIaqBlyPY/w2P4quw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=xvhtgDM1Cu151/NXfmBhKuIUK+4DfjLFqcEOAaWraQo=;
-	b=YYrHlWtwsxqPdLujhF+4cUMdxJJw4OQ9rkHxnlCwwsgVLuog65f5IlX3iRtKRCNO5v
-	l7pujevFI4/nrDVi5Uv04gKK1RerFavyPvnJ9Q+3ACYLWWzPono9bc2VwYNAeEymnDDH
-	w/fgcG/Co5XTb1UHaznaknXRPIQEQREdDhpx5UOM7XdCRdePh1Prqgrc/5U8P20biuSK
-	nf5TH+naHH5tQX1+sjjos2FvsRakxdcwu14e8Jtu4YwvV7AcWKuMloXj3cWyCgS5d8M9
-	o2adWqiHPYl2LLAWnyIlNQ1T1FqG7pG//6bp5RSqgpAFLB/VbHrjZZUU5iozjYgFySSN
-	nCWg==
-X-Gm-Message-State: AGRZ1gLGgmv7Vu0om0U1c92PSwgf4taXJ6cP8SdMW4N/e1yw7LYWUE0R
-	f5o+O2PcEJzBXj7Fb0ZrwUR9Az6E
-X-Google-Smtp-Source: AJdET5dDIEvip3wzfrCzye4Rc+MhEClUhT5jqHzST5R/IsMWPbqkczq3tPwAbZ5CsDUZtA2/c/ukFQ==
-X-Received: by 2002:aca:6c3:: with SMTP id
-	186-v6mr10649538oig.158.1540873807107; 
-	Mon, 29 Oct 2018 21:30:07 -0700 (PDT)
-Received: from [30.43.121.251] ([47.89.83.59])
-	by smtp.gmail.com with ESMTPSA id
-	b185-v6sm7267611oia.12.2018.10.29.21.30.03
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 29 Oct 2018 21:30:05 -0700 (PDT)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Samuel Ortiz <sameo@linux.intel.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
-References: <20181029195931.8747-1-philmd@redhat.com>
-From: Shannon Zhao <shannon.zhaosl@gmail.com>
-Message-ID: <fa65f06c-13dc-a73e-2bcd-2c7fcf7c3d30@gmail.com>
-Date: Tue, 30 Oct 2018 12:30:00 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:60.0) Gecko/20100101
-	Thunderbird/60.2.1
+	h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=U+ZpxlBlUlh90Una4x7wQkF/+r/5WMtVjb+elbgBAvc=;
+	b=GI13FJXhpc8HrSc1h6h2bGFX7tXDxHJl6UEI67jN9tiA928A6rKZiZHx2QaEOfuEfW
+	eEFmcHBNFlZohUmBsSIWJZXy2kJqEL5gLaFnmipakPQ1DThsR+/NwyvZaO3EycqoO2Jt
+	sInKqs4NVZg7fvUGo4b0El3i4quWKWkHuC4ptBdkbX35/9KA9/kld1Gu40+OSlflIcpU
+	azR58WXf5Q3trhiU9q5ceeGQjoh+M9aQ56gMQo9T04Pvbf35ucDXVoHmeXeHzpF4drRx
+	6VIcsoQZL47nYlTVAB3l+gC1YlyVETKSmReqOTs/tMf6v8qyE1YBuZabSEcDlMfQ6yBx
+	1XXQ==
+X-Gm-Message-State: AGRZ1gKFYc0oPAaRbT7oDac/n9wdWRNEY0LwGu+unCYyES6F+ZTF3LQd
+	lH1KncoGV9jXJJ46xjK1G0yvVosFmxeYRb9NF75kKA==
+X-Google-Smtp-Source: AJdET5fIp1Uxc92cYrazTnu4eSqVYKeXnXQjxqEK4dYJn0dzebBnDiA9dnmI3JX4cGin8JnT1r9WiTnsKvy6oSswXLw=
+X-Received: by 2002:a9d:64d1:: with SMTP id n17mr10287428otl.151.1540906914821;
+	Tue, 30 Oct 2018 06:41:54 -0700 (PDT)
 MIME-Version: 1.0
+Received: by 2002:a9d:7c90:0:0:0:0:0 with HTTP; Tue, 30 Oct 2018 06:41:34
+	-0700 (PDT)
 In-Reply-To: <20181029195931.8747-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+References: <20181029195931.8747-1-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 30 Oct 2018 13:41:34 +0000
+Message-ID: <CAFEAcA_JXyRqy2c7C6GqGYFoDPYRmccCorP7-f2U+tDtW2ZiUg@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>,
+	Samuel Ortiz <sameo@linux.intel.com>, 
+	QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-X-Mailman-Approved-At: Tue, 30 Oct 2018 08:28:27 -0400
+X-Received-From: 2607:f8b0:4864:20::341
 Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Remove bouncing email in
  ARM ACPI
 X-BeenThere: qemu-trivial@nongnu.org
@@ -79,38 +69,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Oct 2018 04:30:15 -0000
+X-List-Received-Date: Tue, 30 Oct 2018 13:42:05 -0000
 
-
-
-On 2018/10/30 3:59, Philippe Mathieu-Daudé wrote:
+On 29 October 2018 at 19:59, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
+> wrote:
 > Shannon Zhao's email at Huawei is bouncing: remove it.
-> 
->      X-Failed-Recipients: zhaoshenglong@huawei.com
->      ** Address not found **
->      Your message wasn't delivered to zhaoshenglong@huawei.com because the address couldn't be found, or is unable to receive mail.
-> 
-> Note that the section still contains his personal email (see e59f13d76bb).
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Thanks Philippe.
-
-Acked-by: Shannon Zhao <shannon.zhaosl@gmail.com>
+>
+>     X-Failed-Recipients: zhaoshenglong@huawei.com
+>     ** Address not found **
+>     Your message wasn't delivered to zhaoshenglong@huawei.com because the=
+ address couldn't be found, or is unable to receive mail.
+>
+> Note that the section still contains his personal email (see e59f13d76bb)=
+.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->   MAINTAINERS | 1 -
->   1 file changed, 1 deletion(-)
-> 
+>  MAINTAINERS | 1 -
+>  1 file changed, 1 deletion(-)
+>
 > diff --git a/MAINTAINERS b/MAINTAINERS
 > index d794bd7a66..1aa2728aac 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
 > @@ -625,7 +625,6 @@ F: hw/*/xlnx*.c
->   F: include/hw/*/xlnx*.h
->   
->   ARM ACPI Subsystem
+>  F: include/hw/*/xlnx*.h
+>
+>  ARM ACPI Subsystem
 > -M: Shannon Zhao <zhaoshenglong@huawei.com>
->   M: Shannon Zhao <shannon.zhaosl@gmail.com>
->   L: qemu-arm@nongnu.org
->   S: Maintained
-> 
+>  M: Shannon Zhao <shannon.zhaosl@gmail.com>
+>  L: qemu-arm@nongnu.org
+>  S: Maintained
+
+
+
+Applied to target-arm.next, thanks.
+
+-- PMM
 
