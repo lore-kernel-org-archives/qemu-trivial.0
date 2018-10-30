@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gHS8x-0001q4-Hz
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Oct 2018 07:25:07 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58318)
+	id 1gHS8z-0001sl-DY
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Oct 2018 07:25:09 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58344)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gHS8s-0001mt-AG
-	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:05 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gHS8v-0001nN-48
+	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gHS8n-0002sm-92
+	(envelope-from <laurent@vivier.eu>) id 1gHS8q-0002yy-Ae
 	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:02 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:57849)
+Received: from mout.kundenserver.de ([212.227.126.133]:50765)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gHS8c-0002M0-In; Tue, 30 Oct 2018 07:24:48 -0400
+	id 1gHS8j-0002jP-5C; Tue, 30 Oct 2018 07:24:53 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MqsL3-1fn0zx1rWb-00msqh; Tue, 30 Oct 2018 12:24:08 +0100
+	id 1N2lv2-1fYVzA2bpE-0133sk; Tue, 30 Oct 2018 12:23:44 +0100
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MqsL3-1fn0zx1rWb-00msqh; Tue, 30 Oct 2018 12:24:08 +0100
+	id 1N2lv2-1fYVzA2bpE-0133sk; Tue, 30 Oct 2018 12:23:44 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
@@ -39,31 +39,32 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
 	Riku Voipio <riku.voipio@iki.fi>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <lvivier@redhat.com>,
-	Michael Walle <michael@walle.cc>, Markus Armbruster <armbru@redhat.com>,
-	Li Qiang <liq3ea@gmail.com>
-Date: Tue, 30 Oct 2018 12:23:28 +0100
-Message-Id: <20181030112337.17973-12-laurent@vivier.eu>
+	Michael Walle <michael@walle.cc>, Markus Armbruster <armbru@redhat.com>
+Date: Tue, 30 Oct 2018 12:23:17 +0100
+Message-Id: <20181030112337.17973-1-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
-In-Reply-To: <20181030112337.17973-1-laurent@vivier.eu>
-References: <20181030112337.17973-1-laurent@vivier.eu>
-X-Provags-ID: V03:K1:Yjf2ebhyBBOqqgfJyr+mzJqt5S8tkY4j56FZpmecQpTDZ/v4uOU
-	faHtWIUMSDvWVYzOvNMV2egasm5Nv/Sw86QCJGPHvRHZetzWLbGZLwewTg1GN5UCCMix8Jo
-	2Hc6CFJ9FGlaIpdH5QdtN9CSvoHAfCACXeilSysUSbI5v9quFdAc7IvB9U0JMUqXumqcrWc
-	MVgQ5/EvTTQjlLI0YXZyA==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:+LC4JChDFpQ=:9My5E99dnArsVIYlhHsbIJ
-	xKWIRA2JWFSl805LKNHOY1RAxyIY+ZYTJ5K6DqhsBEIQ4ajsStioOlZb6tKb++8xKxB/8LzWY
-	nPlFMX5w6CJDNQJxGRR82urgKZe9kdl2n1lT8gK/Aj2H99P4hB8onnq8UM5f0lL4lNy3CyiHR
-	Xe1uqk72xRUZYQXHBxB3q3YgGA2+CILp51r54byEq7p6rMz9jt4++jmVG2QYG+ghzKhOPitDa
-	8Bn0Q4i6d8kAf2fmjLMgUwr0YkxhlaJ+BPApJsb/5iYsk5K6sf+ADyjNgAEFRs+UzDZWG44FT
-	G0XWc4RXKnXYNWBaQffU1G87MSrhpgHKnlTMgnLEZVqFwQagiD8CmWgZfVI89Jxz8xNqF5A+B
-	dSni8uFfc+b3ZFWdjsxynYkKT3QIqD/b53JcLstaSkWrnpCmGw0dkN4MohmDtzGjBLdIeOGLd
-	U8nN3HmZAlj6QyGXzQJwOG1RkTo8dDomSh+k0JVIT58cxodTQdOMEAmlIhd+P2/Dr5nBrOUeh
-	HUpKr2NZfCTOTIVIwlggRkqWAqZGMdIijZE3f4C1rLcFGUvxc+cGvERszEBBjNxHZrlmzS+D1
-	nwe341NK7vXSt230PYaSv+YX0Z5xsmWgxplU36y6npeIB8hugIV8iN3ig4ttKz81VTfwNu35I
-	i/YFCCaTYbQnnqOfRkMJKwo9McooJXQc4tDF43rwWo9V3IH2ftmEFFlfw1qZM2ZUHJYE=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:y4wJZBQa36fYeIfafVVGOGE7fIbv9mjAWFxbq5hFhvYf5uTUIa4
+	uUXJnKGwf48j3geM8iJBwHm12geZVEqo4OxKyqMKBzMUs26F7O+hRzAmq9E6jSNhmQrcquq
+	5qluvC9rh1yysZGuNFdD7Aew6vNJm6CVVZmTclHhX7Wpro/q1MR2HikUg4oP9+owQUb5qo5
+	AEgQnCING+xIHCLAgVQaw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:Y1WZhTh/8Ew=:LtGR41t7EDavmeMarZFYsD
+	hDyqbpoeUu7TV1BrlADahHWN3Kry8UxhokdYr/+NkLiQlQCDz7dW8XvCVFy5qP6bd8nr/uzjT
+	0Wy836k88tRTsHnzmq6dwAt2i9cSgb17gywcCMqSzgRUxkrcZvyc1Fl3pkZyMW5HMvSvcMGDT
+	1jJNZ13O2CxYXMyvnerEkrs5BU941xgXrAbew9Wvp0udQ6hI5xmO93hUUuLw6Kz3fhVXecl4y
+	sQOqKJpuzV+v7jShGRmWoyQ6nHQkBLPtmx7RPCFtQnuJf8R6cbuaM8HAd4rs9tkAa985MKLus
+	bQ7bZbs80OM4UBGV/Ja8jVz2edhuSLenIKofgyDFssst1yPvtBxGIOdze2wi43yEv88LYofz2
+	/Nl8v/HIDDqPBYf/49mHQzK66GMdtyocSmHLcyOXc4hlBx2adojXeqqDLkVFOieCFKEqcQjG+
+	EPFMrGN9WtkRcE9zEhoWU3qP1nnNdUtCeJTZwPSEauaFXoYC0T4TDdQTM0l4mHwnCC5/iufVn
+	T3tQS3HcKC5M1ARS48qExmQ3TokoYy/VzBfHYn6YPgnHt4q+1M6iFxaDjJ+tNTxBvN5SrzamC
+	MoCJoixHxcYHkkT94ijuI2S+KusRzWAlnp8Qdox2JInnux1efEWdkBeM/tT/EuVOtOrpEfA+P
+	Gr8Ijpm5WK/R/UmrUY+jcKVXi1V4qJipG+TNPF07terMEF3GTj8lxjhHsJceezAlR/soyVhm+
+	Z7CHSJ6pzYZk2xjP
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: [Qemu-trivial] [PULL v2 11/20] cpu.h: fix a typo in comment
+X-Received-From: 212.227.126.133
+Subject: [Qemu-trivial] [PULL v2 00/20] Qemu trivial for 3.1 patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,32 +76,97 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Oct 2018 11:25:06 -0000
+X-List-Received-Date: Tue, 30 Oct 2018 11:25:08 -0000
 
-From: Li Qiang <liq3ea@gmail.com>
+The following changes since commit 808ebd66e467f77c0d1f8c6346235f81e9c99cf2:
 
-Found by reading the code.
+  Merge remote-tracking branch 'remotes/riscv/tags/riscv-for-master-3.1-sf0' into staging (2018-10-25 17:41:03 +0100)
 
-Signed-off-by: Li Qiang <liq3ea@gmail.com>
-Message-Id: <1536150548-2797-1-git-send-email-liq3ea@gmail.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- include/qom/cpu.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+are available in the Git repository at:
 
-diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-index 4e238b0d9f..def0c64308 100644
---- a/include/qom/cpu.h
-+++ b/include/qom/cpu.h
-@@ -852,7 +852,7 @@ extern CPUInterruptHandler cpu_interrupt_handler;
- /**
-  * cpu_interrupt:
-  * @cpu: The CPU to set an interrupt on.
-- * @mask: The interupts to set.
-+ * @mask: The interrupts to set.
-  *
-  * Invokes the interrupt handler.
-  */
+  git://github.com/vivier/qemu.git tags/qemu-trivial-for-3.1-pull-request
+
+for you to fetch changes up to 7b2b797cf0addac789ba858fdbd95c55128d72d5:
+
+  milkymist-minimac2: Use qemu_log_mask(GUEST_ERROR) instead of error_report (2018-10-30 09:13:31 +0100)
+
+----------------------------------------------------------------
+QEMU trivial patches collected between June and October 2018
+(Thank you to Thomas Huth)
+
+v2: fix 32bit build with updated patch (v3) from Philippe Mathieu-Daudé
+    built in a 32bit debian sid chroot
+
+----------------------------------------------------------------
+
+Cleber Rosa (6):
+  tests/tcg/README: fix location for lm32 tests
+  qemu-iotests: fix filename containing checks
+  docs/devel/testing.rst: add missing newlines after code block
+  scripts/decodetree.py: remove unused imports
+  scripts/qemu.py: remove trailing quotes on docstring
+  qemu-iotests: make 218 executable
+
+Emilio G. Cota (1):
+  linux-user: fix comment s/atomic_write/atomic_set/
+
+Li Qiang (2):
+  memory.h: fix typos in comments
+  cpu.h: fix a typo in comment
+
+Paolo Bonzini (1):
+  ppc: move at24c to its own CONFIG_ symbol
+
+Philippe Mathieu-Daudé (6):
+  qobject: Catch another straggler for use of qdict_put_str()
+  xen: Use the PCI_DEVICE macro
+  tests/bios-tables-test: Remove an useless cast
+  hw/pci-host: Remove useless parenthesis around DIV_ROUND_UP macro
+  hw/intc/gicv3: Remove useless parenthesis around DIV_ROUND_UP macro
+  milkymist-minimac2: Use qemu_log_mask(GUEST_ERROR) instead of
+    error_report
+
+Stefan Weil (2):
+  tests: Fix typos in comments and help message (found by codespell)
+  configure: Support pkg-config for zlib
+
+Thomas Huth (1):
+  configs/alpha: Remove unused CONFIG_PARALLEL_ISA switch
+
+yuchenlin (1):
+  vga_int: remove unused function protype
+
+ configure                             | 40 +++++++++++++++------------
+ default-configs/alpha-softmmu.mak     |  1 -
+ default-configs/ppc-softmmu.mak       |  1 +
+ docs/devel/testing.rst                |  2 ++
+ hw/display/vga_int.h                  |  1 -
+ hw/net/milkymist-minimac2.c           | 15 ++++++----
+ hw/nvram/Makefile.objs                |  2 +-
+ hw/pci-host/piix.c                    |  2 +-
+ hw/pci-host/q35.c                     |  2 +-
+ hw/xen/xen_pt_config_init.c           |  8 +++---
+ include/exec/memory.h                 |  6 ++--
+ include/hw/intc/arm_gicv3_common.h    |  2 +-
+ include/qom/cpu.h                     |  2 +-
+ linux-user/qemu.h                     |  2 +-
+ qobject/block-qdict.c                 |  2 +-
+ scripts/decodetree.py                 |  2 --
+ scripts/qemu.py                       |  2 +-
+ tests/bios-tables-test.c              |  4 +--
+ tests/docker/Makefile.include         |  2 +-
+ tests/docker/docker.py                |  4 +--
+ tests/guest-debug/test-gdbstub.py     |  2 +-
+ tests/qemu-iotests/218                |  0
+ tests/qemu-iotests/common.qemu        |  2 +-
+ tests/qemu-iotests/common.rc          |  4 +--
+ tests/tcg/Makefile.include            |  2 +-
+ tests/tcg/Makefile.probe              |  2 +-
+ tests/tcg/README                      |  2 +-
+ tests/tcg/mips/mips64-dsp/subq_s_pw.c |  2 +-
+ 28 files changed, 64 insertions(+), 54 deletions(-)
+ mode change 100644 => 100755 tests/qemu-iotests/218
+
 -- 
 2.17.2
 
