@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gHS9I-0002If-C4
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Oct 2018 07:25:28 -0400
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:58676)
+	id 1gHS9V-0002SL-0V
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Oct 2018 07:25:41 -0400
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58724)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gHS9E-0002EN-G7
-	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:25 -0400
+	(envelope-from <laurent@vivier.eu>) id 1gHS9J-0002K3-HR
+	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gHS97-0003Xi-9j
-	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:22 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:50633)
+	(envelope-from <laurent@vivier.eu>) id 1gHS9D-0003lo-RA
+	for qemu-trivial@nongnu.org; Tue, 30 Oct 2018 07:25:26 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:41459)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gHS8n-0002qC-GU; Tue, 30 Oct 2018 07:24:57 -0400
+	id 1gHS8n-0002qI-UW; Tue, 30 Oct 2018 07:24:58 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MdNoW-1fiOQE08I4-00ZSig; Tue, 30 Oct 2018 12:23:54 +0100
+	id 1MBDSg-1gPeXG0HrK-00CkD6; Tue, 30 Oct 2018 12:23:52 +0100
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MdNoW-1fiOQE08I4-00ZSig; Tue, 30 Oct 2018 12:23:54 +0100
+	id 1MBDSg-1gPeXG0HrK-00CkD6; Tue, 30 Oct 2018 12:23:52 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
@@ -39,35 +39,31 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>, Cleber Rosa <crosa@redhat.com>,
 	Riku Voipio <riku.voipio@iki.fi>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <lvivier@redhat.com>,
-	Michael Walle <michael@walle.cc>, Markus Armbruster <armbru@redhat.com>
-Date: Tue, 30 Oct 2018 12:23:21 +0100
-Message-Id: <20181030112337.17973-5-laurent@vivier.eu>
+	Michael Walle <michael@walle.cc>, Markus Armbruster <armbru@redhat.com>,
+	Li Qiang <liq3ea@gmail.com>
+Date: Tue, 30 Oct 2018 12:23:20 +0100
+Message-Id: <20181030112337.17973-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.17.2
 In-Reply-To: <20181030112337.17973-1-laurent@vivier.eu>
 References: <20181030112337.17973-1-laurent@vivier.eu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:F8l4smf1nL5W4DsrL/7cTra6H6sZJmx/uvzB/1jWx/wdKk/NVxp
-	m/fq6/P0ALLGTaCdkdXooOLOe8GgI0XFOI0jqL6wU/uL32dCmmytmJOvG40vDdoivXgaMTY
-	M4UmUveDPmCbjaUkB6SPRFzmAkBQ7ibaH2p90ew21v1SCeCuiT3cCz9p+K7+scs3WGgCzqc
-	1kM4wMQC2oXZpiX9tZNjQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:OPbiJZFlUtg=:6UDHRGrOhs4uRU3/KtYvSw
-	JPuR5jLG8ZkuaBXlmbxZ8h5Te0MlKiH1Sx9O8MbGT6Z0frkx3JC9bKvj/v3qO1oTwRu6/Lt2p
-	+Mo3kkzwKoP4r3n2oZkuQDjVl+fvUtpdI19jyeG4Eblpnb7e5fdSt21hhhu8FgvADgAUlqTe7
-	jYfDVl4kI9/CqArD5CQdKC2kd8xy0SzdqpyTrTuNBDwYtFLEEpngDGNDGBAftp26GqiExsGIX
-	zzlBjrVD5gi0PXuN6jJQSI44BFgEgWn/m8MswbJXFMyyA6FZkccEpi2aNgUtAyP5tWlLb8ivA
-	AQK7eTq7916LYMPAD+/bLYblvQ3Vw1VuMC4X8xTInVDfQl47b8ASDXSTzCKjEJZaXQ7G5bpe5
-	8vzAlsOaCKeLJyOmSEODYlNJ2R5LPONDg7okAChcO5682rGabP4D1wEYeCyznLX/8ioMZq4tX
-	d/0EYIEow0m/JKrKGeYs5aqGjN15l4aGDwp16ehnbBVbIkaHbgawNfl5INwQWMSTf6UyIfkuc
-	bnkgdPtUBETO/Tm1DJlA+gtXb8w5TMX35TPmd1izoXoMzQWyjFXw+cISmGk5OgPvKhH7FJuwz
-	g/RdPSoTYva8w+2/Qq93jWQstEOruf0zB5/bXlvvf4mi4CL+NR5v6wj/QJnyMngjvU02yN7K6
-	d7XPWYuO6lv//2y430+cnd9rie9/F8D5R5qJDKMQjRsgz+QbPrpqX7WzIZNVC/g6UUN7AfLrh
-	8a7Y/XO3wclCG/RS
+X-Provags-ID: V03:K1:HBV5Oe768CROwcgkYs8F4WrMsfUq3swxoVTPbJS52XmjQTYOUg/
+	eTVVWAqDKvgkEQGNiKHNMy8IZGaiGbbGEW+0aPPL3oE7Q1mIQkZ5spo05gsoG+ZxoBIA/Ha
+	dNTxSlsX5Vu5s+VQgd6OakOVBljzGmBrmqLUoNhfBe8//o7jBUiRyZKy+Kxmq2/3lZo4gNY
+	Kbjme8dMgUacGwLo3Xx8Q==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:ry5LPF+NyDE=:jfS2YQ0jlbPQX+wXY2FMQY
+	BCVa8D8yCRnw6VJEVi9GVOjozKSiNHGxI5rXGx4E4DNvi+JlE1MglK61DiiXd+F18dfEu7SWr
+	GFerDkJQIX2Ze18RlEPvkVXg/DZxKWATttezhY+GPSru/6RwKZdPchyOfjzdunFCZveG2QPZ0
+	0alLvrI1NOxRvOJ7Jdruz5Ucecw1B1cqwgi9CItUb91lzBW9D6EL4yL67ifhvxnA2S4qn0w2m
+	B4/XXBiiEXO3fxhyX78lys9msP0MWya4Jp4m157ui9cR/RUxsLJci2oSSjI2JtWBdvE9QBN2w
+	726uALHqVdPNEfIn0EILFvCxQb5gFqX6lDH8C8JAuGHL6Ce0cM0Dd4EiNXY8h160f7z0zN5bV
+	4VlXZ8Y0O3rAAjmOMZ5asHsXbyIps4Vs5e2XMJaj85KLgJD4ipql0eXZ54GdQShUk9z1cux7R
+	9AStll3MrryeiuEo3qxhCLPMnzX1kX/LtIJXv4Q3JCUD9i0T9iyHUv3fJrDGQyhCq4LxNbVHe
+	5Qz2ejkmBYirV6zLX9wpKzYRxixoEHpoKCceSowx0njorrXoePO1JBm87NyPPiN5tMHxlHWc4
+	R7SkgV7X/0NeyLFBn+lC9AsqRdPFXsRDQ9y34333VgE+wqFrpnVYqSlTvqJky46AMsIvwrxIr
+	Ykwb15N62IwcnaY07OsCUZ9a6yqkCkoeENVK891eiggUy63ubH6YxEdV24UyoxTNwB6A=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.134
-Subject: [Qemu-trivial] [PULL v2 04/20] tests/tcg/README: fix location for
- lm32 tests
+X-Received-From: 212.227.126.130
+Subject: [Qemu-trivial] [PULL v2 03/20] memory.h: fix typos in comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,33 +75,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Oct 2018 11:25:25 -0000
+X-List-Received-Date: Tue, 30 Oct 2018 11:25:36 -0000
 
-From: Cleber Rosa <crosa@redhat.com>
+From: Li Qiang <liq3ea@gmail.com>
 
-Point to the right and obvious location for lm32 tests.
-
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Acked-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20181004161852.11673-3-crosa@redhat.com>
+Signed-off-by: Li Qiang <liq3ea@gmail.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <1539080467-2976-1-git-send-email-liq3ea@gmail.com>
+[lv: s/types/typos/]
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/tcg/README | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/exec/memory.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/tests/tcg/README b/tests/tcg/README
-index a5643d33e7..2a58f9a058 100644
---- a/tests/tcg/README
-+++ b/tests/tcg/README
-@@ -10,6 +10,6 @@ with "make test-cris".
- 
- LM32
- ====
--The testsuite for LM32 is in tests/tcg/cris.  You can run it
-+The testsuite for LM32 is in tests/tcg/lm32.  You can run it
- with "make test-lm32".
- 
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 667466b8f3..d0c7f0d9e9 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -935,7 +935,7 @@ uint64_t memory_region_size(MemoryRegion *mr);
+ /**
+  * memory_region_is_ram: check whether a memory region is random access
+  *
+- * Returns %true is a memory region is random access.
++ * Returns %true if a memory region is random access.
+  *
+  * @mr: the memory region being queried
+  */
+@@ -947,7 +947,7 @@ static inline bool memory_region_is_ram(MemoryRegion *mr)
+ /**
+  * memory_region_is_ram_device: check whether a memory region is a ram device
+  *
+- * Returns %true is a memory region is a device backed ram region
++ * Returns %true if a memory region is a device backed ram region
+  *
+  * @mr: the memory region being queried
+  */
+@@ -1161,7 +1161,7 @@ uint8_t memory_region_get_dirty_log_mask(MemoryRegion *mr);
+ /**
+  * memory_region_is_rom: check whether a memory region is ROM
+  *
+- * Returns %true is a memory region is read-only memory.
++ * Returns %true if a memory region is read-only memory.
+  *
+  * @mr: the memory region being queried
+  */
 -- 
 2.17.2
 
