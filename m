@@ -1,83 +1,97 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gJc4s-0008Cx-7f
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Nov 2018 05:25:50 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54189)
+	id 1gJdGb-0002dk-P7
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Nov 2018 06:42:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48823)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gJc4m-00086R-Am
-	for qemu-trivial@nongnu.org; Mon, 05 Nov 2018 05:25:48 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gJdGW-0002c0-0L
+	for qemu-trivial@nongnu.org; Mon, 05 Nov 2018 06:41:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gJbw6-0000wK-25
-	for qemu-trivial@nongnu.org; Mon, 05 Nov 2018 05:16:46 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:50244)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1gJbw0-0007M8-DV; Mon, 05 Nov 2018 05:16:40 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 34F602D7F1;
-	Mon,  5 Nov 2018 10:16:39 +0000 (UTC)
-Received: from [10.36.112.70] (ovpn-112-70.ams2.redhat.com [10.36.112.70])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A0B1560140;
-	Mon,  5 Nov 2018 10:16:10 +0000 (UTC)
-To: Laurent Vivier <lvivier@redhat.com>,
-	Dongli Zhang <dongli.zhang@oracle.com>, qemu-devel@nongnu.org
+	(envelope-from <laurent@vivier.eu>) id 1gJdGU-00082y-3y
+	for qemu-trivial@nongnu.org; Mon, 05 Nov 2018 06:41:55 -0500
+Received: from mout.kundenserver.de ([212.227.126.131]:59619)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1gJdG8-0002pZ-TN; Mon, 05 Nov 2018 06:41:38 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue011 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1N17pC-1fMx4O06ig-012XvS; Mon, 05 Nov 2018 12:41:10 +0100
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue011 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1N17pC-1fMx4O06ig-012XvS; Mon, 05 Nov 2018 12:41:10 +0100
+To: Dongli Zhang <dongli.zhang@oracle.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, mst@redhat.com
 References: <1541139396-4727-1-git-send-email-dongli.zhang@oracle.com>
-	<1b8261f5-ddc8-7863-7a0a-0177c022787f@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	xsEhBFRCcBIBDqDGsz4K0zZun3jh+U6Z9wNGLKQ0kSFyjN38gMqU1SfP+TUNQepFHb/Gc0E2
-	CxXPkIBTvYY+ZPkoTh5xF9oS1jqI8iRLzouzF8yXs3QjQIZ2SfuCxSVwlV65jotcjD2FTN04
-	hVopm9llFijNZpVIOGUTqzM4U55sdsCcZUluWM6x4HSOdw5F5Utxfp1wOjD/v92Lrax0hjiX
-	DResHSt48q+8FrZzY+AUbkUS+Jm34qjswdrgsC5uxeVcLkBgWLmov2kMaMROT0YmFY6A3m1S
-	P/kXmHDXxhe23gKb3dgwxUTpENDBGcfEzrzilWueOeUWiOcWuFOed/C3SyijBx3Av/lbCsHU
-	Vx6pMycNTdzU1BuAroB+Y3mNEuW56Yd44jlInzG2UOwt9XjjdKkJZ1g0P9dwptwLEgTEd3Fo
-	UdhAQyRXGYO8oROiuh+RZ1lXp6AQ4ZjoyH8WLfTLf5g1EKCTc4C1sy1vQSdzIRu3rBIjAvnC
-	tGZADei1IExLqB3uzXKzZ1BZ+Z8hnt2og9hb7H0y8diYfEk2w3R7wEr+Ehk5NQsT2MPI2QBd
-	wEv1/Aj1DgUHZAHzG1QN9S8wNWQ6K9DqHZTBnI1hUlkp22zCSHK/6FwUCuYp1zcAEQEAAc0f
-	UGFvbG8gQm9uemluaSA8Ym9uemluaUBnbnUub3JnPsLBTQQTAQIAIwUCVEJ7AwIbAwcLCQgH
-	AwIBBhUIAgkKCwQWAgMBAh4BAheAAAoJEH4VEAzNNmmxNcwOniaZVLsuy1lW/ntYCA0Caz0i
-	sHpmecK8aWlvL9wpQCk4GlOX9L1emyYXZPmzIYB0IRqmSzAlZxi+A2qm9XOxs5gJ2xqMEXX5
-	FMtUH3kpkWWJeLqe7z0EoQdUI4EG988uv/tdZyqjUn2XJE+K01x7r3MkUSFz/HZKZiCvYuze
-	VlS0NTYdUt5jBXualvAwNKfxEkrxeHjxgdFHjYWhjflahY7TNRmuqPM/Lx7wAuyoDjlYNE40
-	Z+Kun4/KjMbjgpcF4Nf3PJQR8qXI6p3so2qsSn91tY7DFSJO6v2HwFJkC2jU95wxfNmTEUZc
-	znXahYbVOwCDJRuPrE5GKFd/XJU9u5hNtr/uYipHij01WXal2cce1S5mn1/HuM1yo1u8xdHy
-	IupCd57EWI948e8BlhpujUCU2tzOb2iYS0kpmJ9/oLVZrOcSZCcCl2P0AaCAsj59z2kwQS9D
-	du0WxUs8waso0Qq6tDEHo8yLCOJDzSz4oojTtWe4zsulVnWV+wu70AioemAT8S6JOtlu60C5
-	dHgQUD1Tp+ReXpDKXmjbASJx4otvW0qah3o6JaqO79tbDqIvncu3tewwp6c85uZd48JnIOh3
-	utBAu684nJakbbvZUGikJfxd887ATQRUQnHuAQgAx4dxXO6/Zun0eVYOnr5GRl76+2UrAAem
-	Vv9Yfn2PbDIbxXqLff7oyVJIkw4WdhQIIvvtu5zH24iYjmdfbg8iWpP7NqxUQRUZJEWbx2CR
-	wkMHtOmzQiQ2tSLjKh/cHeyFH68xjeLcinR7jXMrHQK+UCEw6jqi1oeZzGvfmxarUmS0uRuf
-	fAb589AJW50kkQK9VD/9QC2FJISSUDnRC0PawGSZDXhmvITJMdD4TjYrePYhSY4uuIV02v02
-	8TVAaYbIhxvDY0hUQE4r8ZbGRLn52bEzaIPgl1p/adKfeOUeMReg/CkyzQpmyB1TSk8lDMxQ
-	zCYHXAzwnGi8WU9iuE1P0wARAQABwsEzBBgBAgAJBQJUQnHuAhsMAAoJEH4VEAzNNmmxp1EO
-	oJy0uZggJm7gZKeJ7iUpeX4eqUtqelUw6gU2daz2hE/jsxsTbC/w5piHmk1H1VWDKEM4bQBT
-	uiJ0bfo55SWsUNN+c9hhIX+Y8LEe22izK3w7mRpvGcg+/ZRG4DEMHLP6JVsv5GMpoYwYOmHn
-	plOzCXHvmdlW0i6SrMsBDl9rw4AtIa6bRwWLim1lQ6EM3PWifPrWSUPrPcw4OLSwFk0CPqC4
-	HYv/7ZnASVkR5EERFF3+6iaaVi5OgBd81F1TCvCX2BEyIDRZLJNvX3TOd5FEN+lIrl26xecz
-	876SvcOb5SL5SKg9/rCBufdPSjojkGFWGziHiFaYhbuI2E+NfWLJtd+ZvWAAV+O0d8vFFSvr
-	iy9enJ8kxJwhC0ECbSKFY+W1eTIhMD3aeAKY90drozWEyHhENf4l/V+Ja5vOnW+gCDQkGt2Y
-	1lJAPPSIqZKvHzGShdh8DduC0U3xYkfbGAUvbxeepjgzp0uEnBXfPTy09JGpgWbg0w91GyfT
-	/ujKaGd4vxG2Ei+MMNDmS1SMx7wu0evvQ5kT9NPzyq8R2GIhVSiAd2jioGuTjX6AZCFv3ToO
-	53DliFMkVTecLptsXaesuUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <85a4ce76-e558-7743-eb16-9e3b1eaed5e5@redhat.com>
-Date: Mon, 5 Nov 2018 11:16:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <e06eeaf1-0042-2a68-904f-d625357c714d@vivier.eu>
+Date: Mon, 5 Nov 2018 12:41:08 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <1b8261f5-ddc8-7863-7a0a-0177c022787f@redhat.com>
+In-Reply-To: <1541139396-4727-1-git-send-email-dongli.zhang@oracle.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Mon, 05 Nov 2018 10:16:39 +0000 (UTC)
+X-Provags-ID: V03:K1:xwEOpW3h7yCYewFprD41nRpB23mXiaiVj1OXCuoQQmRHwvAiHig
+	KY97PG5dA0R6a67yCcwP48nK2kBuVufnlGbWYz9WWo5Gn56iS4Ld/VVN+Y8Nwyvyk9C2SDY
+	/qq3QL+co687rAfBrK5R3Lm4p0vytJrxzUIoxTQgbRCVpTDzH9nO2gV5ZHSsShfYjeYfic+
+	zpjeEDoppe60PuuYY88mA==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:IPp0FlnMu/M=:grOGaHN5xlxoplwH9WyV6e
+	gTyGmEW6YSvdUdEwP7h6FXz0b+5kOZIFl3mK9alol1CGyGR1+0nsbdyRIBo+aor6c2fzDhcD/
+	TWBzI+cC8RPvhxYS3tAvaaE2/nnbp6orOJ2p7Vjqh7G5XhsS/6MTKxn3P3LDLoYXip1SM5lRW
+	2ykQOCl858zzzMVXGnWoJXcHg16qHreHLydJpcfag0RpwChe8OiEc21DbVND/0Lz60RcCmKvy
+	ALJna8WlSDOB5n6rBxqAJKNEQEqPit8Xka3NDB8Uddfe9/uEIna+v0p8DzyUUTFay/OSs3HtT
+	npZg2SDkJ53WBTFjRMxmjZKPexdzgVqTSFKgPnhSbUAaQ5PdWKtP9Sd1c35odLiEUOMwIddlP
+	+DPx6D2+7WB46T+uo2ScYB8vhsX+ZJMTWAUg9hQ34N8sFDtZxgYGYfmkqmPQEPxpRz1mBJkIm
+	t8cR9yGZgZWK19eCrUb8BVHjPaKgMaVHMzKLXuTqE+2wQ3hu7wAol5j4qMIkt8hcz9+g6Ytwc
+	JRjx2aIucdwztUQ9oA5B2H7oB1LgxchahUzkCIKy21sJuEcM5Rt2lfbZDYQWFwvLzh0K+fc/8
+	cGd2lL4aDeNZYKN78jHaPegc6WDktnynxbvOf5haIdc7O6BCUheJBjjgAH6D6eFVLJfBtmw6f
+	SCMZE5mNrorjU4BaSxlkY6V1QtFwTN45K0DQCS3gwibjnmF4089WttVdRv+YzE0yexs2VMEyB
+	7So7HhppyFSqnOBL
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-Received-From: 212.227.126.131
 Subject: Re: [Qemu-trivial] [PATCH 1/1] virtio: pass argument by value for
  virtqueue_map_iovec()
 X-BeenThere: qemu-trivial@nongnu.org
@@ -91,63 +105,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Nov 2018 10:25:48 -0000
+X-List-Received-Date: Mon, 05 Nov 2018 11:42:00 -0000
 
-On 05/11/2018 09:40, Laurent Vivier wrote:
-> CC: Paolo as the use of modified num_sg has been removed by his patch:
+On 02/11/2018 07:16, Dongli Zhang wrote:
+> Pass num_sg by value instead of by pointer, as num_sg is never modified in
+> virtqueue_map_iovec().
 > 
->   3b3b062821 virtio: slim down allocation of VirtQueueElements
-
-Indeed, virtqueue_map and virtqueue_map_iovec are only used on migration
-now, and that path does not need to modify *num_sg.  After my patch
-virtqueue_pop calls virtqueue_map_desc instead of virtqueue_map (and
-virtqueue_map_desc does need an in-out argument).
-
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-
-Paolo
-
-> On 02/11/2018 07:16, Dongli Zhang wrote:
->> Pass num_sg by value instead of by pointer, as num_sg is never modified in
->> virtqueue_map_iovec().
->>
->> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
->> ---
->>  hw/virtio/virtio.c | 8 ++++----
->>  1 file changed, 4 insertions(+), 4 deletions(-)
->>
->> diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
->> index 4136d23..a5cb4e6 100644
->> --- a/hw/virtio/virtio.c
->> +++ b/hw/virtio/virtio.c
->> @@ -796,13 +796,13 @@ static void virtqueue_undo_map_desc(unsigned int out_num, unsigned int in_num,
->>  }
->>  
->>  static void virtqueue_map_iovec(VirtIODevice *vdev, struct iovec *sg,
->> -                                hwaddr *addr, unsigned int *num_sg,
->> +                                hwaddr *addr, unsigned int num_sg,
->>                                  int is_write)
->>  {
->>      unsigned int i;
->>      hwaddr len;
->>  
->> -    for (i = 0; i < *num_sg; i++) {
->> +    for (i = 0; i < num_sg; i++) {
->>          len = sg[i].iov_len;
->>          sg[i].iov_base = dma_memory_map(vdev->dma_as,
->>                                          addr[i], &len, is_write ?
->> @@ -821,8 +821,8 @@ static void virtqueue_map_iovec(VirtIODevice *vdev, struct iovec *sg,
->>  
->>  void virtqueue_map(VirtIODevice *vdev, VirtQueueElement *elem)
->>  {
->> -    virtqueue_map_iovec(vdev, elem->in_sg, elem->in_addr, &elem->in_num, 1);
->> -    virtqueue_map_iovec(vdev, elem->out_sg, elem->out_addr, &elem->out_num, 0);
->> +    virtqueue_map_iovec(vdev, elem->in_sg, elem->in_addr, elem->in_num, 1);
->> +    virtqueue_map_iovec(vdev, elem->out_sg, elem->out_addr, elem->out_num, 0);
->>  }
->>  
->>  static void *virtqueue_alloc_element(size_t sz, unsigned out_num, unsigned in_num)
->>
+> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+> ---
+>  hw/virtio/virtio.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 > 
+
+Applied to my branch trivial-patches.
+
+Thanks,
+Laurent
 
 
