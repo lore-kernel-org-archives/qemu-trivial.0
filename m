@@ -1,28 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gJwG3-0007Mt-N4
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Nov 2018 02:58:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55305)
+	id 1gJwK2-0002AZ-OF
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Nov 2018 03:02:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56153)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gJwFy-0007M6-4a
-	for qemu-trivial@nongnu.org; Tue, 06 Nov 2018 02:58:42 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gJwJv-0001f2-T4
+	for qemu-trivial@nongnu.org; Tue, 06 Nov 2018 03:02:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gJwFm-0000FZ-Ak
-	for qemu-trivial@nongnu.org; Tue, 06 Nov 2018 02:58:32 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:49359)
+	(envelope-from <laurent@vivier.eu>) id 1gJwJn-0004mk-NH
+	for qemu-trivial@nongnu.org; Tue, 06 Nov 2018 03:02:41 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:55643)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gJwFk-0000BD-GI; Tue, 06 Nov 2018 02:58:25 -0500
+	id 1gJwJX-0004YU-56; Tue, 06 Nov 2018 03:02:19 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue011 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1M6DrU-1gQXxD11TM-006g4j; Tue, 06 Nov 2018 08:58:11 +0100
+	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MdNoW-1fksXn0DLs-00ZS5r; Tue, 06 Nov 2018 09:02:15 +0100
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue011 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1M6DrU-1gQXxD11TM-006g4j; Tue, 06 Nov 2018 08:58:11 +0100
-To: Dongli Zhang <dongli.zhang@oracle.com>, qemu-devel@nongnu.org,
-	qemu-block@nongnu.org, mst@redhat.com
-Cc: qemu-trivial@nongnu.org, kwolf@redhat.com, stefanha@redhat.com,
-	mreitz@redhat.com
-References: <1541479952-32355-1-git-send-email-dongli.zhang@oracle.com>
+	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MdNoW-1fksXn0DLs-00ZS5r; Tue, 06 Nov 2018 09:02:15 +0100
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20181105135400.18366-1-marcandre.lureau@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -67,35 +66,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <57f0794a-857a-8009-eb41-44d422817ce4@vivier.eu>
-Date: Tue, 6 Nov 2018 08:58:09 +0100
+Message-ID: <2f1e312b-2ece-8039-1e7b-b6b67749760a@vivier.eu>
+Date: Tue, 6 Nov 2018 09:02:14 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <1541479952-32355-1-git-send-email-dongli.zhang@oracle.com>
+In-Reply-To: <20181105135400.18366-1-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:rRa4ApNpWjeKXnt1DfqygA1ciBn8oAHjyyeopCWQWtY9Lxb8QmL
-	h8aqg7tOlYHrrNsn/Nwdul84sWzgJ//e+mkBdWcV7aEPmNNjstC5leEZWGpq2Hl663nm2rU
-	CQlnyPjbGniO38wdNoYHU38o+h555+j9mv+vE6R62bchicpaJwR7ak/+Iz9S5HyhKluOtZt
-	eLJusmbJaSnIw5Kdr5d6Q==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:YIhQaDBSgMQ=:/fwcNQalEJX6LjDIIvL9Da
-	6bLoEi7NTIobjhUz+zB0vhwt1UUk/I7te6EBcsQAzuUvXZGDbzqbkeZs/BVyff/gkotqbB0oG
-	AfJomGle8ZaKkjm5j0veXyVVkUff0aKMzPuR5bZA9Od6kLDoE32E7k80V8FuW0xi4qhJoX+2V
-	xYL6HX1QsXCifhKH/bX9Vk6po8pL/LLFK34ZvyXUz/fCWRjCj8xID4A52ae/UvKH+Yqz+CEZv
-	E3kQjAMOXUI4yoJjUAIXe/QL1d+kq3mFbKXoIOF+HK+MKTPzIwe2zcd2aBxvAfG0yPWr4nt4e
-	E80yi4txdy+AmFspIXE7eJ64aB79k6ACdAjzbRn7R8IuYuaruJkMPEQfjFCKFWIzZdAWGXdAo
-	3qgNfiCCtTD/VpGBaf32tHABYg5d/xYfuh1WacKF5lVOkr4pzKRl0VfkuroyeGL05FxLDiiiv
-	uC9OOOkEuRqurwxfFKZ0Ya3OwVzBqrOEVLWqZUx1WwSL+Vm4lPkfYBw3fJecAGl+K1+itsQ06
-	VQ8WfaD8nIsQCvaCqO1fCVI2CSjYdY+BdbAv4HVLIQ8/xyuTqg+rn0hPovWPO7zR31bpJbKOt
-	8oqC1aEtxmQ1RIGpJmCKh6IRif8fn82D3ebFu9Bh0SRhCuJjEHFoTRBBI3m6vehZXNHfecu4l
-	rsGAbYsEKk2xIqk8LXVy8m/jQQ2nLxGT9JemlFa98NzbmZWW4LRwDoO1mJSNuP3kS40fOb+av
-	SrbvT2EhHWL+TUig
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:8fPNq0tI32GFVRphtaWIS1/wxpmsCqmK6Uv7YC+zCqiQT6hc7gD
+	taGHMqB+XhCmjN8gSrVCQVvHP1SPnCDbgLfOAE71RlztPbu3dwA4gqcpYe6J1opFTrq3TQu
+	F+JXEI3wjgqnBOcki5xvfEhbywsZv4nK778qPyFfbntBEeQY5oDUpTU0a2YH64vkQY1Smu1
+	WLD+kRffedRQzO46dzUyw==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:0RlbrbVll8E=:TM9xAdg+39An29V8rZVmIw
+	nCoYupFdknHlfBuZ+SibgjlW6t0BeihyZDiE2MEHuDwi330vPUCGGKa9aNq0mPMlUN19qskyz
+	vCkDuqI5th2EXU8ATn7Qt6esyVW9f4uKlkco45oSv6gUcEhZzQQSPXvAQfL4QpURczRclVaOM
+	aqrHVPhLfS9YRz98kG5pWycHWHve0QIniM8S/z0+nbg/tVFBXl7h5dxjVH5x8fKuwOxFPsivp
+	p7Lc3rmO8PyIPpuZmfd0wKWj1NrIRtqNb4R0AazPQWy5/9+Kbocc9jtmmZyZMOnXgEuU8ghTk
+	o1Hz158nhK5vxl0PGRTgHQ61SC+xYlAMJ6/Dh7l+XWzvE6O2KeHgIHNndoH6j+1PY3HPv4TpC
+	OsVL9m0gMOxpDDAvOLmdjfp4WdQa/LoA8bnpkK8MT+EpTZ/e7JqJ+z4YAreoBiYXEdA1FZpCl
+	fEbKczahlurpD+fhoGg8qWjRv1VyIJVN2b/3WqApDSRSlbARpEXxsQUroRKAQ/59qgLtlireE
+	7epbOzbCga3gbyD8QDnFkQvoInQXcloZlHNt5YhRfm6PFIrDzbiHJsEINCcsO/IzFZPitfCH7
+	lhWvXY+uvEjbNN7rNQOrpKg0ul00GK6DCpW5e4ZK8AYvp10i4GRkcXGOf76wX7Fqm2w17Tm+3
+	paYBILOwwnxjY/tm+qKuzagGKexMvzbybU1GRWi1aoO03mwJhLN9lH2kinHULFI5kaZlcnzET
+	S+D6Wv8HQX6olQLP
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.134
-Subject: Re: [Qemu-trivial] [PATCH 1/1] virtio-blk: fix comment for
- virtio_blk_rw_complete as nalloc is initially -1
+X-Received-From: 212.227.126.135
+Subject: Re: [Qemu-trivial] [PATCH] misc: fix spelling
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,33 +105,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Nov 2018 07:58:42 -0000
+X-List-Received-Date: Tue, 06 Nov 2018 08:02:49 -0000
 
-On 06/11/2018 05:52, Dongli Zhang wrote:
-> The initial value of nalloc is -1, but not 1.
-> 
-> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+On 05/11/2018 14:54, Marc-André Lureau wrote:
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 > ---
-> This is based on git://git.kernel.org/pub/scm/virt/kvm/mst/qemu.git tags/for_upstream
-> 
->  hw/block/virtio-blk.c | 2 +-
+>  target/i386/cpu.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-> index 83cf5c0..30999c3 100644
-> --- a/hw/block/virtio-blk.c
-> +++ b/hw/block/virtio-blk.c
-> @@ -96,7 +96,7 @@ static void virtio_blk_rw_complete(void *opaque, int ret)
->          trace_virtio_blk_rw_complete(vdev, req, ret);
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index af7e9f09cc..4d2e2d9902 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -4065,7 +4065,7 @@ arch_query_cpu_model_expansion(CpuModelExpansionType type,
+>          x86_cpu_to_dict_full(xc, props);
+>      break;
+>      default:
+> -        error_setg(&err, "Unsupportted expansion type");
+> +        error_setg(&err, "Unsupported expansion type");
+>          goto out;
+>      }
 >  
->          if (req->qiov.nalloc != -1) {
-> -            /* If nalloc is != 1 req->qiov is a local copy of the original
-> +            /* If nalloc is != -1 req->qiov is a local copy of the original
->               * external iovec. It was allocated in submit_requests to be
->               * able to merge requests. */
->              qemu_iovec_destroy(&req->qiov);
 > 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Applied to my trivial-patches branch.
 
+Thanks,
+Laurent
 
