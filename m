@@ -1,98 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gKiCo-00006H-Dh
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Nov 2018 06:10:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54447)
+	id 1gKk7R-00015W-8F
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Nov 2018 08:13:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:59200)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gKiCm-00004x-J5
-	for qemu-trivial@nongnu.org; Thu, 08 Nov 2018 06:10:33 -0500
+	(envelope-from <philmd@redhat.com>) id 1gKk7M-0000iP-2g
+	for qemu-trivial@nongnu.org; Thu, 08 Nov 2018 08:13:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gKiCl-0005eH-Pm
-	for qemu-trivial@nongnu.org; Thu, 08 Nov 2018 06:10:32 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:37387)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gKiCe-0004sI-21; Thu, 08 Nov 2018 06:10:24 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue011 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1MN5Nt-1g2MMM2JGf-00IzNv; Thu, 08 Nov 2018 12:09:43 +0100
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>
-References: <20181108105904.27980-1-alex.bennee@linaro.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
-	xsFNBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
-	WoeuLWDmXE7A3oJoIsRecD6BXHTb0OYS20lS608anr3B0xn5g0BX7es9Mw+hV/pL+63EOCVm
-	SUVTEQwbGQN62guOKnJJJfphbbv82glIC/Ei4Ky8BwZkUuXd7d5NFJKC9/GDrbWdj75cDNQx
-	UZ9XXbXEKY9MHX83Uy7JFoiFDMOVHn55HnncflUncO0zDzY7CxFeQFwYRbsCXOUL9yBtqLer
-	Ky8/yjBskIlNrp0uQSt9LMoMsdSjYLYhvk1StsNPg74+s4u0Q6z45+l8RAsgLw5OLtTa+ePM
-	JyS7OIGNYxAX6eZk1+91a6tnqfyPcMbduxyBaYXn94HUG162BeuyBkbNoIDkB7pCByed1A7q
-	q9/FbuTDwgVGVLYthYSfTtN0Y60OgNkWCMtFwKxRaXt1WFA5ceqinN/XkgA+vf2Ch72zBkJL
-	RBIhfOPFv5f2Hkkj0MvsUXpOWaOjatiu0fpPo6Hw14UEpywke1zN4NKubApQOlNKZZC4hu6/
-	8pv2t4HRi7s0K88jQYBRPObjrN5+owtI51xMaYzvPitHQ2053LmgsOdN9EKOqZeHAYG2SmRW
-	LOxYWKX14YkZI5j/TXfKlTpwSMvXho+efN4kgFvFmP6WT+tPnwARAQABzSNMYXVyZW50IFZp
-	dmllciA8bHZpdmllckByZWRoYXQuY29tPsLBeAQTAQIAIgUCVgVQgAIbAwYLCQgHAwIGFQgC
-	CQoLBBYCAwECHgECF4AACgkQ8ww4vT8vvjwpgg//fSGy0Rs/t8cPFuzoY1cex4limJQfReLr
-	SJXCANg9NOWy/bFK5wunj+h/RCFxIFhZcyXveurkBwYikDPUrBoBRoOJY/BHK0iZo7/WQkur
-	6H5losVZtrotmKOGnP/lJYZ3H6OWvXzdz8LL5hb3TvGOP68K8Bn8UsIaZJoeiKhaNR0sOJyI
-	YYbgFQPWMHfVwHD/U+/gqRhD7apVysxv5by/pKDln1I5v0cRRH6hd8M8oXgKhF2+rAOL7gvh
-	jEHSSWKUlMjC7YwwjSZmUkL+TQyE18e2XBk85X8Da3FznrLiHZFHQ/NzETYxRjnOzD7/kOVy
-	gKD/o7asyWQVU65mh/ECrtjfhtCBSYmIIVkopoLaVJ/kEbVJQegT2P6NgERC/31kmTF69vn8
-	uQyW11Hk8tyubicByL3/XVBrq4jZdJW3cePNJbTNaT0d/bjMg5zCWHbMErUib2Nellnbg6bc
-	2HLDe0NLVPuRZhHUHM9hO/JNnHfvgiRQDh6loNOUnm9Iw2YiVgZNnT4soUehMZ7au8PwSl4I
-	KYE4ulJ8RRiydN7fES3IZWmOPlyskp1QMQBD/w16o+lEtY6HSFEzsK3o0vuBRBVp2WKnssVH
-	qeeV01ZHw0bvWKjxVNOksP98eJfWLfV9l9e7s6TaAeySKRRubtJ+21PRuYAxKsaueBfUE7ZT
-	7zfOwU0EVgUmGQEQALxSQRbl/QOnmssVDxWhHM5TGxl7oLNJms2zmBpcmlrIsn8nNz0rRyxT
-	460k2niaTwowSRK8KWVDeAW6ZAaWiYjLlTunoKwvF8vP3JyWpBz0diTxL5o+xpvy/Q6YU3BN
-	efdq8Vy3rFsxgW7mMSrI/CxJ667y8ot5DVugeS2NyHfmZlPGE0Nsy7hlebS4liisXOrN3jFz
-	asKyUws3VXek4V65lHwB23BVzsnFMn/bw/rPliqXGcwl8CoJu8dSyrCcd1Ibs0/Inq9S9+t0
-	VmWiQWfQkz4rvEeTQkp/VfgZ6z98JRW7S6l6eophoWs0/ZyRfOm+QVSqRfFZdxdP2PlGeIFM
-	C3fXJgygXJkFPyWkVElr76JTbtSHsGWbt6xUlYHKXWo+xf9WgtLeby3cfSkEchACrxDrQpj+
-	Jt/JFP+q997dybkyZ5IoHWuPkn7uZGBrKIHmBunTco1+cKSuRiSCYpBIXZMHCzPgVDjk4viP
-	brV9NwRkmaOxVvye0vctJeWvJ6KA7NoAURplIGCqkCRwg0MmLrfoZnK/gRqVJ/f6adhU1oo6
-	z4p2/z3PemA0C0ANatgHgBb90cd16AUxpdEQmOCmdNnNJF/3Zt3inzF+NFzHoM5Vwq6rc1JP
-	jfC3oqRLJzqAEHBDjQFlqNR3IFCIAo4SYQRBdAHBCzkM4rWyRhuVABEBAAHCwV8EGAECAAkF
-	AlYFJhkCGwwACgkQ8ww4vT8vvjwg9w//VQrcnVg3TsjEybxDEUBm8dBmnKqcnTBFmxN5FFtI
-	WlEuY8+YMiWRykd8Ln9RJ/98/ghABHz9TN8TRo2b6WimV64FmlVn17Ri6FgFU3xNt9TTEChq
-	AcNg88eYryKsYpFwegGpwUlaUaaGh1m9OrTzcQy+klVfZWaVJ9Nw0keoGRGb8j4XjVpL8+2x
-	OhXKrM1fzzb8JtAuSbuzZSQPDwQEI5CKKxp7zf76J21YeRrEW4WDznPyVcDTa+tz++q2S/Bp
-	P4W98bXCBIuQgs2m+OflERv5c3Ojldp04/S4NEjXEYRWdiCxN7ca5iPml5gLtuvhJMSy36gl
-	U6IW9kn30IWuSoBpTkgV7rLUEhh9Ms82VWW/h2TxL8enfx40PrfbDtWwqRID3WY8jLrjKfTd
-	R3LW8BnUDNkG+c4FzvvGUs8AvuqxxyHbXAfDx9o/jXfPHVRmJVhSmd+hC3mcQ+4iX5bBPBPM
-	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
-	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
-	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <0c6c5e77-92b7-e64e-c666-6f5c3bc10ca8@vivier.eu>
-Date: Thu, 8 Nov 2018 12:09:41 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+	(envelope-from <philmd@redhat.com>) id 1gKk7A-0004EU-PQ
+	for qemu-trivial@nongnu.org; Thu, 08 Nov 2018 08:12:59 -0500
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:33961)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gKk78-0003om-NZ
+	for qemu-trivial@nongnu.org; Thu, 08 Nov 2018 08:12:52 -0500
+Received: by mail-wr1-f67.google.com with SMTP id j26-v6so21228108wre.1
+	for <qemu-trivial@nongnu.org>; Thu, 08 Nov 2018 05:12:39 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=xeWdK68jUpUFcvoYdxrj1gaJNjmxRG8DC4m4vX4AvA8=;
+	b=YNftPV2m1hPLaicsaida6UGYAMdjN5yM3ZcNKlksy4XGYiAPRUN9w4ZPbO/QIZTb50
+	4MNfwKTUWv5GOKFla0CQaVlgHIVN/+PnpWaIDYnEVBgg8kuDK1Aoi8WbFidC1MI97VGh
+	HmDp9ktXrYQqpEgf420K5R3p3gwA7qPnVidgOjg16dynaqT2pq6T67bCJx5Gu9UUiRKp
+	zwSnCn2BBm9g8RT9hUJ8NPd1Jwna/ubZe87CLxcFBmnU9vEoW1s5YdS0U+SoCK5CsmWr
+	MEN43J3VnTpxTF/3fun8H2Ka+a0Cy1/Y/rjJ6aSgRez9Rgo9s3BMdEl/Xe+ecArA2V1K
+	nB/g==
+X-Gm-Message-State: AGRZ1gKD/KW9SWwAfM42mw7UO+EYGY6PpGpzMdyQQWtIS+AjSdakdTZR
+	1MWAbpytLRRyirZVg44m4y6nl1DlLzdS+Q==
+X-Google-Smtp-Source: AJdET5els8O7LJDKyPsbzk7kzAweiLc2k1lWIr4Q8XKLm8i6rouY2d4qdbz4fZOOFfuaEWdtHt45Tg==
+X-Received: by 2002:adf:9b84:: with SMTP id
+	d4-v6mr3912613wrc.240.1541682758512; 
+	Thu, 08 Nov 2018 05:12:38 -0800 (PST)
+Received: from [192.168.0.151] (138.red-88-22-110.staticip.rima-tde.net.
+	[88.22.110.138]) by smtp.gmail.com with ESMTPSA id
+	j203-v6sm6327257wmd.46.2018.11.08.05.12.35
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 08 Nov 2018 05:12:37 -0800 (PST)
+To: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>, qemu-devel@nongnu.org
+Cc: mst@redhat.com,
+	"qemu-trivial@nongnu.org >> QEMU Trivial" <qemu-trivial@nongnu.org>
+References: <20181108122102.9915-1-maozhongyi@cmss.chinamobile.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <1898dc23-c512-88bd-cb73-5a2cffccd176@redhat.com>
+Date: Thu, 8 Nov 2018 14:12:33 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.2.1
 MIME-Version: 1.0
-In-Reply-To: <20181108105904.27980-1-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20181108122102.9915-1-maozhongyi@cmss.chinamobile.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:742XUyLNpdNxTGNN5MNHkdIG7Tb6EdkGGj5duveVlp059uhml0R
-	V9FJ53eCH38RcXY8r2BXC8Y/PaSVuQYKZktiFxgIg00p7FpIfdpibZer+V9o/pOLVh6V8+Q
-	NfVYUOqiORE433aJH3HE+PmooWmd18yj/EUoeJQDv+jLMhFRD+SVGGTCRgXGr9c8VChTdXP
-	KdNHN8dtFZ9SxPvPl5Dvg==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:nkNouuOl6gQ=:H0eq51BJfr4YcSy/Twf32N
-	WLHr1tgpr/wa5nu3wyBay1az1do7MDLNgkTnFfxBQ2sSfLhNtSVJVFoDJ2IonWKce9JSFvGdl
-	wVaQ6UbdsTXBjeqDJUwjuSTGLSNe+faMduBaQapch65U+JWMCc9JjfF7PenHUsuUhwbyFN9tD
-	cx1MpipJ/qm9FEurjHaEItnEa9CYVTWJho0V8LtpQizxK5ZsZBC698Zx6pYEX7QzrBr9S467q
-	AL4IH8oigS5aRFRCvQItS+JVGz+Gni1KXtqAi1BOcw1hRdT2Ju1M2/MvbMInUmsq0EdKe+bp7
-	/WMJ6qlNS/F0Vug2ohGi2bIw0NeV/u6SU8Ln3Or8XDBpEULnS6mGya1ta3ziseqngeSAbVONM
-	hiGpH8e7OW1h1EP9jhqz2lI0Si4ZRCtNQfGA+O7Phv+V+BIW5KKMhv3tlsIv6oIBrsyrPujXo
-	gFR/AivDOunTlh0NarYtTufIjfBngssgx9wPsvybv6E22wDYIkDUqCT0XrRSMLhkQF/8MWuMy
-	yE7qjBa/j4qUlY/lTgk576HZzT8sRjTAVGbH8x0PcSGQVOKXBVU685X6kHWlaRUlHNbPEzaD7
-	+/kTeZqI5xodDybalexkbldAyiwsOloKy9oKV0d3g2E8bVQ9w9eBYik8JO4MmzXIHUehQDzU/
-	GMm13p8jXWn31cVdycoqIUmx5UVBBpfO+QzEJT0+FnDkqZMZFcyBJIEiJ5DdFB6wuisxvvYXt
-	DRjCy9kwMRwtwOlvJeA31ZhvvtQ4N4Rv/NVqFNoXMCr7dq5VX/9JhPlfqzaczIgzpv1+VQPOp
-	wO+jPPuytbf+yjnSzEJkp3emXrDAw==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: Re: [Qemu-trivial] [PATCH] linux-users/syscall: make do_ioctl_rt
- safer
+	[fuzzy]
+X-Received-From: 209.85.221.67
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] pci_bridge: fix a typo in
+ comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,45 +67,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Nov 2018 11:10:33 -0000
+X-List-Received-Date: Thu, 08 Nov 2018 13:13:08 -0000
 
-On 08/11/2018 11:59, Alex Bennée wrote:
-> host_rt_dev_ptr is set while looping through a control structure. The
-> compiler can not know that all structures passed to do_ioctl_rt will
-> trigger the if clause so rightly complains with an --enable-sanitizers
-> build. To keep the compiler happy we default the host_rt_dev_ptr and
-> check it has been set before attempting to follow it.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> CC: qemu-trivial@nongnu.org
+Cc'ing qemu-trivial@
+
+On 8/11/18 13:21, Mao Zhongyi wrote:
+> Signed-off-by: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
 > ---
->  linux-user/syscall.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>   hw/pci/pci_bridge.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-> index 810a58b704..3a942f1f4a 100644
-> --- a/linux-user/syscall.c
-> +++ b/linux-user/syscall.c
-> @@ -4669,7 +4669,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie, uint8_t *buf_temp,
->      int target_size;
->      void *argptr;
->      abi_ulong *target_rt_dev_ptr;
-> -    unsigned long *host_rt_dev_ptr;
-> +    unsigned long *host_rt_dev_ptr = NULL;
->      abi_long ret;
->      int i;
->  
-> @@ -4715,7 +4715,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie, uint8_t *buf_temp,
->      unlock_user(argptr, arg, 0);
->  
->      ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
-> -    if (*host_rt_dev_ptr != 0) {
-> +    if (host_rt_dev_ptr && *host_rt_dev_ptr != 0) {
-
-As host_rt_dev_ptr should be set in every case, I think an
-"assert(host_rt_dev_ptr != NULL)" would be more meaningful.
-
-Thanks,
-Laurent
-
+> diff --git a/hw/pci/pci_bridge.c b/hw/pci/pci_bridge.c
+> index ee9dff2d3a..da8daa3ff2 100644
+> --- a/hw/pci/pci_bridge.c
+> +++ b/hw/pci/pci_bridge.c
+> @@ -310,7 +310,7 @@ void pci_bridge_reset(DeviceState *qdev)
+>   
+>       /*
+>        * the default values for base/limit registers aren't specified
+> -     * in the PCI-to-PCI-bridge spec. So we don't thouch them here.
+> +     * in the PCI-to-PCI-bridge spec. So we don't touch them here.
+>        * Each implementation can override it.
+>        * typical implementation does
+>        * zero base/limit registers or
+> 
 
