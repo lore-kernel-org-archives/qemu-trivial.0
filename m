@@ -1,89 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gK6XB-0002m7-Mn
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Nov 2018 13:57:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36190)
+	id 1gKi1z-0006WI-Pd
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Nov 2018 05:59:23 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51988)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gK6X5-0002iH-C4
-	for qemu-trivial@nongnu.org; Tue, 06 Nov 2018 13:57:04 -0500
+	(envelope-from <alex.bennee@linaro.org>) id 1gKi1x-0006Vr-IQ
+	for qemu-trivial@nongnu.org; Thu, 08 Nov 2018 05:59:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gK6X4-0003Mu-H8
-	for qemu-trivial@nongnu.org; Tue, 06 Nov 2018 13:56:59 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:42546)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1gK6Wu-0001EZ-6G; Tue, 06 Nov 2018 13:56:48 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 35F0E2F2B;
-	Tue,  6 Nov 2018 18:56:16 +0000 (UTC)
-Received: from [10.36.112.70] (ovpn-112-70.ams2.redhat.com [10.36.112.70])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9804E194BA;
-	Tue,  6 Nov 2018 18:56:13 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, P J P <ppandit@redhat.com>,
-	Qemu Developers <qemu-devel@nongnu.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <pmathieu@redhat.com>,
-	Arash TC <tohidi.arash@gmail.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Peter Maydell <peter.maydell@linaro.org>
-References: <20181021175858.25886-1-ppandit@redhat.com>
-	<nycvar.YSQ.7.76.1810270118190.7551@xnncv>
-	<nycvar.YSQ.7.76.1811021434001.17929@xnncv>
-	<1055bb12-6b57-1240-790c-930f2405ebee@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <d68a8ce9-7be0-9f10-23a1-eed362ee7f18@redhat.com>
-Date: Tue, 6 Nov 2018 19:56:11 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.0
+	(envelope-from <alex.bennee@linaro.org>) id 1gKi1t-0003EX-Ev
+	for qemu-trivial@nongnu.org; Thu, 08 Nov 2018 05:59:20 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:45026)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+	id 1gKi1t-0003Dk-6f
+	for qemu-trivial@nongnu.org; Thu, 08 Nov 2018 05:59:17 -0500
+Received: by mail-wr1-x442.google.com with SMTP id j17-v6so15616436wrq.11
+	for <qemu-trivial@nongnu.org>; Thu, 08 Nov 2018 02:59:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=vkt28YUk2b8VXkuvPjG4t57qv2BficVRMJGaBsWH6Vo=;
+	b=LBqRnontum9mURNVGdWI7nL8/lezsV9/Uykrhe26LKKG8R9zsoKRwG7997Pztn96Lo
+	q2TOxK4nIOxVQDqK4FnsE/Ct4ND9AbbC5F3Jb1Cxg641XtohVLTnl65jy9gbDDYMf2xZ
+	8YEGOSoxWkuihrsZMFWmO4JcfTRnVdCO0JMmc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=vkt28YUk2b8VXkuvPjG4t57qv2BficVRMJGaBsWH6Vo=;
+	b=atZEouC3OeIxpDXg6xJY+iVTY6kwqg5Rd8hrdxa2QVYepBrvGi00aWAKx/+FT0fLab
+	wuyEVubL630NhuUtm6j0aSwF9U9UkOoFUpUVnEJkq4E6MS7GPiyoA9KDgjevYJSMZVNa
+	AIcW131/Yy8/Anf1E+gxmas4y1hABLafNA/GX9vR09JnDLicWEGIPoku421VhHOGT9ow
+	q885Bjw71+UbZXQCJF8C56gO/sg7Nw5YGzDnX+7/ZcS3zi+5jbgEABtXs22t26nSmWEI
+	oirQyzNQ/79ELE4JFTTD4bLE82xraLHdBDlZd2yVWPnxQ+moNBbnQmn3JjHV63ztDBGF
+	DhMA==
+X-Gm-Message-State: AGRZ1gLQeDhwiADbPlh7UvOdR0/sAuVxKgSq6QEztA75NmKXFmUX/Tka
+	mejAVyEecvMfvG6utO8yKevYtw==
+X-Google-Smtp-Source: AJdET5c4lH3ZUZCv2+HWb46ldICLUKZPAH+zMVB6cfXnP3+w7baWkIkS6q2OobUu0NhefvIY1DfXqQ==
+X-Received: by 2002:adf:9dd1:: with SMTP id
+	q17-v6mr3585127wre.12.1541674754989; 
+	Thu, 08 Nov 2018 02:59:14 -0800 (PST)
+Received: from zen.linaro.local ([81.128.185.34])
+	by smtp.gmail.com with ESMTPSA id
+	y2-v6sm7774663wrh.53.2018.11.08.02.59.14
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 08 Nov 2018 02:59:14 -0800 (PST)
+Received: from zen.linaroharston (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTP id B7D083E009E;
+	Thu,  8 Nov 2018 10:59:13 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+	Laurent Vivier <laurent@vivier.eu>
+Date: Thu,  8 Nov 2018 10:59:04 +0000
+Message-Id: <20181108105904.27980-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-In-Reply-To: <1055bb12-6b57-1240-790c-930f2405ebee@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Tue, 06 Nov 2018 18:56:16 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1] bt: use size_t type for
- length parameters instead of int
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::442
+Subject: [Qemu-trivial] [PATCH] linux-users/syscall: make do_ioctl_rt safer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -95,28 +73,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Nov 2018 18:57:04 -0000
+X-List-Received-Date: Thu, 08 Nov 2018 10:59:22 -0000
 
-On 06/11/2018 15:52, Thomas Huth wrote:
-> The bluetooth subsystem is completely unmaintained, so if Paolo does not
-> want to pick it up through his "misc" tree, maybe Peter could apply this
-> patch directly? Or maybe it could go through the trivial tree since it
-> does not look very complicated?
+host_rt_dev_ptr is set while looping through a control structure. The
+compiler can not know that all structures passed to do_ioctl_rt will
+trigger the if clause so rightly complains with an --enable-sanitizers
+build. To keep the compiler happy we default the host_rt_dev_ptr and
+check it has been set before attempting to follow it.
 
-I wanted to check that there were no possible underflows, but that takes
-time.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+CC: qemu-trivial@nongnu.org
+---
+ linux-user/syscall.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> FWIW, the patch looks OK to me at a first glance, so:
-> 
-> Acked-by: Thomas Huth <thuth@redhat.com>
-> 
-> PS: I still think we should deprecate the bt subsystem, since nobody
-> really touched it within years...
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 810a58b704..3a942f1f4a 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -4669,7 +4669,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie, uint8_t *buf_temp,
+     int target_size;
+     void *argptr;
+     abi_ulong *target_rt_dev_ptr;
+-    unsigned long *host_rt_dev_ptr;
++    unsigned long *host_rt_dev_ptr = NULL;
+     abi_long ret;
+     int i;
+ 
+@@ -4715,7 +4715,7 @@ static abi_long do_ioctl_rt(const IOCTLEntry *ie, uint8_t *buf_temp,
+     unlock_user(argptr, arg, 0);
+ 
+     ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
+-    if (*host_rt_dev_ptr != 0) {
++    if (host_rt_dev_ptr && *host_rt_dev_ptr != 0) {
+         unlock_user((void *)*host_rt_dev_ptr,
+                     *target_rt_dev_ptr, 0);
+     }
+-- 
+2.17.1
 
-Well, apparently there _are_ people using it, and it worked for them.
-Or at least they were using it in 2014.  I'm sure that if people
-starting poking at it, some holes would appear, but it appears to work
-decently.
-
-Paolo
 
