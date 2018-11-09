@@ -1,22 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gL4U7-0000w1-Tv
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Nov 2018 05:57:55 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59590)
+	id 1gL4W9-0002Nm-Co
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Nov 2018 06:00:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60881)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gL4U6-0000nv-3T
-	for qemu-trivial@nongnu.org; Fri, 09 Nov 2018 05:57:54 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gL4W3-0002Jp-Uh
+	for qemu-trivial@nongnu.org; Fri, 09 Nov 2018 05:59:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gL4U1-0004KG-Sw
-	for qemu-trivial@nongnu.org; Fri, 09 Nov 2018 05:57:53 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:46337)
+	(envelope-from <laurent@vivier.eu>) id 1gL4W2-0002Nd-KB
+	for qemu-trivial@nongnu.org; Fri, 09 Nov 2018 05:59:55 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:52637)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1gL4U1-0003wW-HB
-	for qemu-trivial@nongnu.org; Fri, 09 Nov 2018 05:57:49 -0500
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1gL4Vs-0000Uw-Nd; Fri, 09 Nov 2018 05:59:45 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1N2Dgk-1fN9rS2d9q-013g0v for <qemu-trivial@nongnu.org>; Fri, 09 Nov 2018
-	11:57:36 +0100
-To: qemu-trivial@nongnu.org
+	(mreue011 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MNc1T-1gAI5f2NbP-00P2i2; Fri, 09 Nov 2018 11:59:24 +0100
+To: Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
+	Thomas Huth <thuth@redhat.com>, Li Qiang <liq3ea@gmail.com>,
+	stefanha@redhat.com, marcandre.lureau@redhat.com
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>
 References: <1541751214-17515-1-git-send-email-liq3ea@gmail.com>
 	<7d20734d-f43a-957c-9cb5-4644320037aa@redhat.com>
 	<fc711588-581f-515a-dbf2-62faf6ff1d2f@redhat.com>
@@ -66,8 +70,8 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <7832151d-3f51-520e-92ba-ccb87ee1d75b@vivier.eu>
-Date: Fri, 9 Nov 2018 11:57:35 +0100
+Message-ID: <1cb384f4-fc97-af81-0308-2d07ee5f3745@vivier.eu>
+Date: Fri, 9 Nov 2018 11:59:23 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
@@ -75,26 +79,27 @@ In-Reply-To: <87933d44-2ae8-f5c6-cc60-04456fb2bcff@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:afwmlau07iRwZZ4VjT6lrpHEvQXbN0mXmmYiN2tiYqIACxYlkoZ
-	1wjenv0ETmMd/rHQx7eaFzYRRjzZKU6h69z/PgS/XGOWzx+hRoFhkJi18zepMbP9eYxedIs
-	3uqxbxtNTdVU4TzMJ4foTZq0BRqD8dAN+sfKMxxgCjjOuqUcWZgUF/guZmkwrqPFQBEUnn3
-	DMmPlvqb3Fj8C4d4XYn5g==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:lPUTFieSIPs=:gZq84c4tPf9g4YVOT/rMcF
-	NC4lluwQAQX4qvAX10HOzQuVmDDjDLsTtcX9TgNvhTB8KdymQAbhoisNFXWlsOgdXqiAbJeAk
-	1RN+gHi7CMe1e9N2NQHHt39zs2VBwWFE2r/uTnFXW0pH/wRoylHt8DrQbVmIwuWYmir+UM7ic
-	jXhaVdb5MAaLaNA/x7R51zMAl6OTl4H21t0dGze7OMZC4J/I89FkN1HBaYeY6hWwjheKE1q7G
-	mpWxG/F/8CR+9AbjVMsqtje8BucWuMbzQ683nD+UcHIKzBexXRmh7BipzEDqWKatdvizOGVPk
-	rZOjnpoaal4ozAi23rNkbcrmIdSZdL8D+xGMvaw5IGRZO4eXnDP724yJ6Jhu+mAMOmb6bNuBs
-	B2w2hcGMstmlYjkgaymi7JdqGAtckPGWGd6aqknOLBXujtMGfSudNOF7KO4Pi/UYw1O3ocl+n
-	8UzgZuZUKFIuskYHo67Inomzuot8AVJP9Z+9pTUlifvid6zEc1hgqFADSVB04Et+DB3T0lELJ
-	fkHQXZYIb52AKOG8rChflEAejLwhnlQOQZNhOpeep/3elkQ47R6jP+zaB0Ex9hIoHdP25ZHVQ
-	JLT7OYgG3LOFk3VOi2OR+hmWu6lsI9J8wZag8ekmo2PgGWltip3hVYAYVaPEIRVR3tpJKgYal
-	ivpVgxvP/XYGkt3kEqNduXKWNtoWsc2TMW0di0utbB+aFjHhzZ91f6aWMXn6nu27Tdjq4RvP9
-	WpLcc3Qi4lkkUd/5ph7IRUnxwbBIRCPei1OVG2CKOzbx023e/k2U4JQ9OKVwPuzG3iXJWqX6L
-	xw+3v41hvC/kxu5x6elhVcVCm48+A==
+X-Provags-ID: V03:K1:r4LFTQ2LIAskKBFIOuDSjcXZwutxT0oNc8EWct03wZbNPThvQZV
+	H7Hf7gBx1K7iST4597Kd6xYOg83HbvZfrmcnEC2JtDkCn7NBaU+LVAjnn64lU/EoqDU19k/
+	Iqa+d4h1lV5iSzMNXJbWPq8DHOat4AaRD4HFLyvElg516WELF0v5922awBHmFAoEoNPjm99
+	k4Fl3K+n6USMTPT6QrLGQ==
+X-UI-Out-Filterresults: notjunk:1;V01:K0:rxH+SJp4smQ=:gvBzOf00SOwkIgtNvq96fb
+	2pcQXkxWyTWE1d7cOzZhEqKWGYD+F1zb96t33UVL3qydcQPMhb7dfIzP3u33Fz5+5P7MIc8xB
+	//5XFjp0oKvJtpz2X8DU8ccdNYvHdEpkbN9ZB2t7w8Sbyy06TC2ees0iCRxljGvXUPgSw5faV
+	wOmsohvyFmAqU8qGOicS0nw4cZu6qYmFMfkcl7HD0X4eRoMv8YqBOR2kbri9gMoJv6PlIgDjn
+	TBS6wjxQTAzsI+qLk2XaLEMRBE6oDjjeFZUQ5VbaiVe25t+XJURk4fhXqCtaLz7HqFosdInJ4
+	VLhq7BwWT+HaioXkWzo6M0qNL+h1t+JAJoFM94f0iwbB7gWBPzlhvqefN+4CeoRL4kFAuue3/
+	SQ94EdTMTaQw7b7uh6hYUIFVXW+8HF2Wpgpbf2+dsahN6ZeC61jv8b96BY9fVDOmCSolWcusS
+	GPsllMqcwHe4aSGliTfPCHcxwx40XReV2zS3R6+Ko30SAoGncg5Es4eevtWsauJkSwAgXW0sn
+	woNjE2JQVmKCSn2PTAFNenXvUuM/Gw/6fcd3DLDsTIykTMC1M9Me3n29QtEeeTe76fhPOcy6q
+	FpkZej9nCeUVJO0kXlW3Jyq42X1hq8GoSVe/93vu2ghpcY62zPvyzCkX+gSf/62r/PGI2BeCw
+	NgDwNWNIuy5VOlBTX6kn4XRqUdVb5Zu0qZzVEnOWdsdl7/E/4hDk95d27bI6xCL9cSPO/cCqP
+	zeTmRvXed3KTvaHTOYmQiJl/9gqRWgmTLG3kw+rX5caHu2apxdirv9dGFgepoRQh2vm/bFzUN
+	scTFbhw1+F8Dd8qe7Jeioa6KnxzsA==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.134
-Subject: Re: [Qemu-trivial] [PATCH] hw: set_netdev: remove useless code
+X-Received-From: 212.227.126.135
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw: set_netdev: remove
+ useless code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -106,7 +111,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Nov 2018 10:57:54 -0000
+X-List-Received-Date: Fri, 09 Nov 2018 11:00:00 -0000
 
 On 09/11/2018 11:00, Paolo Bonzini wrote:
 > On 09/11/2018 09:29, Laurent Vivier wrote:
