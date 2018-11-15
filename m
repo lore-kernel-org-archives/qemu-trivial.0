@@ -1,40 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gNPbU-0007zo-0l
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2018 16:55:12 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35136)
+	id 1gNQH0-000059-1V
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2018 17:38:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:48669)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1gNPbP-0007y8-LM
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2018 16:55:09 -0500
+	(envelope-from <eblake@redhat.com>) id 1gNQGy-0008VA-EY
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2018 17:38:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1gNPbN-0003eX-M6
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2018 16:55:07 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46300)
+	(envelope-from <eblake@redhat.com>) id 1gNQGw-0005AP-FE
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2018 17:38:03 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:12847)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1gNPbF-0003Zv-Ty; Thu, 15 Nov 2018 16:54:59 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1gNQGp-00054Y-0Q; Thu, 15 Nov 2018 17:37:56 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8109F3001580;
-	Thu, 15 Nov 2018 21:54:55 +0000 (UTC)
-Received: from red.redhat.com (ovpn-123-32.rdu2.redhat.com [10.10.123.32])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5FB9760C44;
-	Thu, 15 Nov 2018 21:54:54 +0000 (UTC)
-From: Eric Blake <eblake@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 53495C050014;
+	Thu, 15 Nov 2018 22:37:39 +0000 (UTC)
+Received: from [10.10.123.32] (ovpn-123-32.rdu2.redhat.com [10.10.123.32])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B10F461D26;
+	Thu, 15 Nov 2018 22:37:37 +0000 (UTC)
 To: qemu-devel@nongnu.org
-Cc: armbru@redhat.com,
-	xiezhide@huawei.com,
-	qemu-trivial@nongnu.org
-Date: Thu, 15 Nov 2018 15:54:49 -0600
-Message-Id: <20181115215449.1300769-1-eblake@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Cc: qemu-trivial@nongnu.org, armbru@redhat.com, xiezhide@huawei.com,
+	Paolo Bonzini <pbonzini@redhat.com>
+References: <20181115215449.1300769-1-eblake@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <b600b483-0e46-5c2e-f52b-2f330ebaa5a7@redhat.com>
+Date: Thu, 15 Nov 2018 16:37:36 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.0
+MIME-Version: 1.0
+In-Reply-To: <20181115215449.1300769-1-eblake@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Thu, 15 Nov 2018 21:54:55 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Thu, 15 Nov 2018 22:37:39 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] qapi: Reduce Makefile boilerplate
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qapi: Reduce Makefile
+ boilerplate
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,240 +55,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Nov 2018 21:55:09 -0000
+X-List-Received-Date: Thu, 15 Nov 2018 22:38:05 -0000
 
-Adding a new qapi module had some rather tedious repetition to
-wire it into Makefile. Add some indirection by taking advantage
-of GNU Make string processing to expand a list of module names
-into all the required artifacts, so that future additions of a
-new module need only touch the list of module names.
+On 11/15/18 3:54 PM, Eric Blake wrote:
+> Adding a new qapi module had some rather tedious repetition to
+> wire it into Makefile. Add some indirection by taking advantage
+> of GNU Make string processing to expand a list of module names
+> into all the required artifacts, so that future additions of a
+> new module need only touch the list of module names.
+> 
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
+> 
+> I finally found time to follow through with my threats to make it
+> MUCH easier to add a new qapi/FOO.json file.
+> 
+> Should be no semantic change, but as it is not fixing an actual
+> bug, I don't care if it goes in 3.1 or 4.0.
+> 
+>   Makefile | 194 +++++++------------------------------------------------
+>   1 file changed, 25 insertions(+), 169 deletions(-)
 
-Signed-off-by: Eric Blake <eblake@redhat.com>
----
+I'm trying to do the same thing to Makefile.objs, but when I use:
 
-I finally found time to follow through with my threats to make it
-MUCH easier to add a new qapi/FOO.json file.
+common-obj-y += $(QAPI_MODULES:%=qapi/qapi-commands-%.o)
 
-Should be no semantic change, but as it is not fixing an actual
-bug, I don't care if it goes in 3.1 or 4.0.
+or the longer $(patsubst %,qapi,qapi-commands-%.o,$(QAPI_MODULES))
 
- Makefile | 194 +++++++------------------------------------------------
- 1 file changed, 25 insertions(+), 169 deletions(-)
+both before and after the change, 'make print-common-obj-y | grep qapi' 
+returns identical content, but after the change, the linker fails with:
 
-diff --git a/Makefile b/Makefile
-index f2947186a4c..e343722c71d 100644
---- a/Makefile
-+++ b/Makefile
-@@ -88,82 +88,28 @@ endif
- include $(SRC_PATH)/rules.mak
+   LINK    x86_64-softmmu/qemu-system-x86_64
+monitor.o: In function `monitor_init_qmp_commands':
+/home/eblake/qemu/monitor.c:1200: undefined reference to 
+`qmp_marshal_qmp_capabilities'
+monitor.o: In function `qmp_greeting':
+/home/eblake/qemu/monitor.c:4342: undefined reference to 
+`qmp_marshal_query_version'
+../qapi/qapi-commands.o: In function `qmp_init_marshal':
+/home/eblake/qemu/qapi/qapi-commands.c:30: undefined reference to 
+`qmp_marshal_query_status'
+...
 
- GENERATED_FILES = qemu-version.h config-host.h qemu-options.def
--GENERATED_FILES += qapi/qapi-builtin-types.h qapi/qapi-builtin-types.c
--GENERATED_FILES += qapi/qapi-types.h qapi/qapi-types.c
--GENERATED_FILES += qapi/qapi-types-block-core.h qapi/qapi-types-block-core.c
--GENERATED_FILES += qapi/qapi-types-block.h qapi/qapi-types-block.c
--GENERATED_FILES += qapi/qapi-types-char.h qapi/qapi-types-char.c
--GENERATED_FILES += qapi/qapi-types-common.h qapi/qapi-types-common.c
--GENERATED_FILES += qapi/qapi-types-crypto.h qapi/qapi-types-crypto.c
--GENERATED_FILES += qapi/qapi-types-introspect.h qapi/qapi-types-introspect.c
--GENERATED_FILES += qapi/qapi-types-job.h qapi/qapi-types-job.c
--GENERATED_FILES += qapi/qapi-types-migration.h qapi/qapi-types-migration.c
--GENERATED_FILES += qapi/qapi-types-misc.h qapi/qapi-types-misc.c
--GENERATED_FILES += qapi/qapi-types-net.h qapi/qapi-types-net.c
--GENERATED_FILES += qapi/qapi-types-rocker.h qapi/qapi-types-rocker.c
--GENERATED_FILES += qapi/qapi-types-run-state.h qapi/qapi-types-run-state.c
--GENERATED_FILES += qapi/qapi-types-sockets.h qapi/qapi-types-sockets.c
--GENERATED_FILES += qapi/qapi-types-tpm.h qapi/qapi-types-tpm.c
--GENERATED_FILES += qapi/qapi-types-trace.h qapi/qapi-types-trace.c
--GENERATED_FILES += qapi/qapi-types-transaction.h qapi/qapi-types-transaction.c
--GENERATED_FILES += qapi/qapi-types-ui.h qapi/qapi-types-ui.c
--GENERATED_FILES += qapi/qapi-builtin-visit.h qapi/qapi-builtin-visit.c
--GENERATED_FILES += qapi/qapi-visit.h qapi/qapi-visit.c
--GENERATED_FILES += qapi/qapi-visit-block-core.h qapi/qapi-visit-block-core.c
--GENERATED_FILES += qapi/qapi-visit-block.h qapi/qapi-visit-block.c
--GENERATED_FILES += qapi/qapi-visit-char.h qapi/qapi-visit-char.c
--GENERATED_FILES += qapi/qapi-visit-common.h qapi/qapi-visit-common.c
--GENERATED_FILES += qapi/qapi-visit-crypto.h qapi/qapi-visit-crypto.c
--GENERATED_FILES += qapi/qapi-visit-introspect.h qapi/qapi-visit-introspect.c
--GENERATED_FILES += qapi/qapi-visit-job.h qapi/qapi-visit-job.c
--GENERATED_FILES += qapi/qapi-visit-migration.h qapi/qapi-visit-migration.c
--GENERATED_FILES += qapi/qapi-visit-misc.h qapi/qapi-visit-misc.c
--GENERATED_FILES += qapi/qapi-visit-net.h qapi/qapi-visit-net.c
--GENERATED_FILES += qapi/qapi-visit-rocker.h qapi/qapi-visit-rocker.c
--GENERATED_FILES += qapi/qapi-visit-run-state.h qapi/qapi-visit-run-state.c
--GENERATED_FILES += qapi/qapi-visit-sockets.h qapi/qapi-visit-sockets.c
--GENERATED_FILES += qapi/qapi-visit-tpm.h qapi/qapi-visit-tpm.c
--GENERATED_FILES += qapi/qapi-visit-trace.h qapi/qapi-visit-trace.c
--GENERATED_FILES += qapi/qapi-visit-transaction.h qapi/qapi-visit-transaction.c
--GENERATED_FILES += qapi/qapi-visit-ui.h qapi/qapi-visit-ui.c
--GENERATED_FILES += qapi/qapi-commands.h qapi/qapi-commands.c
--GENERATED_FILES += qapi/qapi-commands-block-core.h qapi/qapi-commands-block-core.c
--GENERATED_FILES += qapi/qapi-commands-block.h qapi/qapi-commands-block.c
--GENERATED_FILES += qapi/qapi-commands-char.h qapi/qapi-commands-char.c
--GENERATED_FILES += qapi/qapi-commands-common.h qapi/qapi-commands-common.c
--GENERATED_FILES += qapi/qapi-commands-crypto.h qapi/qapi-commands-crypto.c
--GENERATED_FILES += qapi/qapi-commands-introspect.h qapi/qapi-commands-introspect.c
--GENERATED_FILES += qapi/qapi-commands-job.h qapi/qapi-commands-job.c
--GENERATED_FILES += qapi/qapi-commands-migration.h qapi/qapi-commands-migration.c
--GENERATED_FILES += qapi/qapi-commands-misc.h qapi/qapi-commands-misc.c
--GENERATED_FILES += qapi/qapi-commands-net.h qapi/qapi-commands-net.c
--GENERATED_FILES += qapi/qapi-commands-rocker.h qapi/qapi-commands-rocker.c
--GENERATED_FILES += qapi/qapi-commands-run-state.h qapi/qapi-commands-run-state.c
--GENERATED_FILES += qapi/qapi-commands-sockets.h qapi/qapi-commands-sockets.c
--GENERATED_FILES += qapi/qapi-commands-tpm.h qapi/qapi-commands-tpm.c
--GENERATED_FILES += qapi/qapi-commands-trace.h qapi/qapi-commands-trace.c
--GENERATED_FILES += qapi/qapi-commands-transaction.h qapi/qapi-commands-transaction.c
--GENERATED_FILES += qapi/qapi-commands-ui.h qapi/qapi-commands-ui.c
--GENERATED_FILES += qapi/qapi-events.h qapi/qapi-events.c
--GENERATED_FILES += qapi/qapi-events-block-core.h qapi/qapi-events-block-core.c
--GENERATED_FILES += qapi/qapi-events-block.h qapi/qapi-events-block.c
--GENERATED_FILES += qapi/qapi-events-char.h qapi/qapi-events-char.c
--GENERATED_FILES += qapi/qapi-events-common.h qapi/qapi-events-common.c
--GENERATED_FILES += qapi/qapi-events-crypto.h qapi/qapi-events-crypto.c
--GENERATED_FILES += qapi/qapi-events-introspect.h qapi/qapi-events-introspect.c
--GENERATED_FILES += qapi/qapi-events-job.h qapi/qapi-events-job.c
--GENERATED_FILES += qapi/qapi-events-migration.h qapi/qapi-events-migration.c
--GENERATED_FILES += qapi/qapi-events-misc.h qapi/qapi-events-misc.c
--GENERATED_FILES += qapi/qapi-events-net.h qapi/qapi-events-net.c
--GENERATED_FILES += qapi/qapi-events-rocker.h qapi/qapi-events-rocker.c
--GENERATED_FILES += qapi/qapi-events-run-state.h qapi/qapi-events-run-state.c
--GENERATED_FILES += qapi/qapi-events-sockets.h qapi/qapi-events-sockets.c
--GENERATED_FILES += qapi/qapi-events-tpm.h qapi/qapi-events-tpm.c
--GENERATED_FILES += qapi/qapi-events-trace.h qapi/qapi-events-trace.c
--GENERATED_FILES += qapi/qapi-events-transaction.h qapi/qapi-events-transaction.c
--GENERATED_FILES += qapi/qapi-events-ui.h qapi/qapi-events-ui.c
--GENERATED_FILES += qapi/qapi-introspect.c qapi/qapi-introspect.h
--GENERATED_FILES += qapi/qapi-doc.texi
-+
-+QAPI_MODULES = block-core block char common crypto introspect job migration
-+QAPI_MODULES += misc net rocker run-state sockets tpm trace transaction ui
-+
-+GENERATED_QAPI_FILES = qapi/qapi-builtin-types.h qapi/qapi-builtin-types.c
-+GENERATED_QAPI_FILES += qapi/qapi-types.h qapi/qapi-types.c
-+GENERATED_QAPI_FILES += $(patsubst %,qapi/qapi-types-%.h,$(QAPI_MODULES))
-+GENERATED_QAPI_FILES += $(patsubst %,qapi/qapi-types-%.c,$(QAPI_MODULES))
-+GENERATED_QAPI_FILES += qapi/qapi-builtin-visit.h qapi/qapi-builtin-visit.c
-+GENERATED_QAPI_FILES += qapi/qapi-visit.h qapi/qapi-visit.c
-+GENERATED_QAPI_FILES += $(patsubst %,qapi/qapi-visit-%.h,$(QAPI_MODULES))
-+GENERATED_QAPI_FILES += $(patsubst %,qapi/qapi-visit-%.c,$(QAPI_MODULES))
-+GENERATED_QAPI_FILES += qapi/qapi-commands.h qapi/qapi-commands.c
-+GENERATED_QAPI_FILES += $(patsubst %,qapi/qapi-commands-%.h,$(QAPI_MODULES))
-+GENERATED_QAPI_FILES += $(patsubst %,qapi/qapi-commands-%.c,$(QAPI_MODULES))
-+GENERATED_QAPI_FILES += qapi/qapi-events.h qapi/qapi-events.c
-+GENERATED_QAPI_FILES += $(patsubst %,qapi/qapi-events-%.h,$(QAPI_MODULES))
-+GENERATED_QAPI_FILES += $(patsubst %,qapi/qapi-events-%.c,$(QAPI_MODULES))
-+GENERATED_QAPI_FILES += qapi/qapi-introspect.c qapi/qapi-introspect.h
-+GENERATED_QAPI_FILES += qapi/qapi-doc.texi
-+
-+GENERATED_FILES += $(GENERATED_QAPI_FILES)
+So something about variable expansions is NOT playing nicely with our
 
- GENERATED_FILES += trace/generated-tcg-tracers.h
+dummy := $(call unnest-vars,, \
+                 stub-obj-y \
+                 chardev-obj-y \
+...
+                 common-obj-y \
 
-@@ -583,100 +529,10 @@ qga/qapi-generated/qapi-gen-timestamp: $(SRC_PATH)/qga/qapi-schema.json $(qapi-p
- 		"GEN","$(@:%-timestamp=%)")
- 	@>$@
+that builds up the set of files the linker needs to see.  But I have 
+_no_ idea what is going wrong that makes unnest-vars unable to see 
+through a variable expansion of .o files.  Ideas on how to compress 
+Makefile.objs to avoid the redundancy would be appreciated.
 
--qapi-modules = $(SRC_PATH)/qapi/qapi-schema.json $(SRC_PATH)/qapi/common.json \
--               $(SRC_PATH)/qapi/block.json $(SRC_PATH)/qapi/block-core.json \
--               $(SRC_PATH)/qapi/char.json \
--               $(SRC_PATH)/qapi/crypto.json \
--               $(SRC_PATH)/qapi/introspect.json \
--               $(SRC_PATH)/qapi/job.json \
--               $(SRC_PATH)/qapi/migration.json \
--               $(SRC_PATH)/qapi/misc.json \
--               $(SRC_PATH)/qapi/net.json \
--               $(SRC_PATH)/qapi/rocker.json \
--               $(SRC_PATH)/qapi/run-state.json \
--               $(SRC_PATH)/qapi/sockets.json \
--               $(SRC_PATH)/qapi/tpm.json \
--               $(SRC_PATH)/qapi/trace.json \
--               $(SRC_PATH)/qapi/transaction.json \
--               $(SRC_PATH)/qapi/ui.json
-+qapi-modules = $(SRC_PATH)/qapi/qapi-schema.json \
-+               $(patsubst %,$(SRC_PATH)/qapi/%.json,$(QAPI_MODULES))
-
--qapi/qapi-builtin-types.c qapi/qapi-builtin-types.h \
--qapi/qapi-types.c qapi/qapi-types.h \
--qapi/qapi-types-block-core.c qapi/qapi-types-block-core.h \
--qapi/qapi-types-block.c qapi/qapi-types-block.h \
--qapi/qapi-types-char.c qapi/qapi-types-char.h \
--qapi/qapi-types-common.c qapi/qapi-types-common.h \
--qapi/qapi-types-crypto.c qapi/qapi-types-crypto.h \
--qapi/qapi-types-introspect.c qapi/qapi-types-introspect.h \
--qapi/qapi-types-job.c qapi/qapi-types-job.h \
--qapi/qapi-types-migration.c qapi/qapi-types-migration.h \
--qapi/qapi-types-misc.c qapi/qapi-types-misc.h \
--qapi/qapi-types-net.c qapi/qapi-types-net.h \
--qapi/qapi-types-rocker.c qapi/qapi-types-rocker.h \
--qapi/qapi-types-run-state.c qapi/qapi-types-run-state.h \
--qapi/qapi-types-sockets.c qapi/qapi-types-sockets.h \
--qapi/qapi-types-tpm.c qapi/qapi-types-tpm.h \
--qapi/qapi-types-trace.c qapi/qapi-types-trace.h \
--qapi/qapi-types-transaction.c qapi/qapi-types-transaction.h \
--qapi/qapi-types-ui.c qapi/qapi-types-ui.h \
--qapi/qapi-builtin-visit.c qapi/qapi-builtin-visit.h \
--qapi/qapi-visit.c qapi/qapi-visit.h \
--qapi/qapi-visit-block-core.c qapi/qapi-visit-block-core.h \
--qapi/qapi-visit-block.c qapi/qapi-visit-block.h \
--qapi/qapi-visit-char.c qapi/qapi-visit-char.h \
--qapi/qapi-visit-common.c qapi/qapi-visit-common.h \
--qapi/qapi-visit-crypto.c qapi/qapi-visit-crypto.h \
--qapi/qapi-visit-introspect.c qapi/qapi-visit-introspect.h \
--qapi/qapi-visit-job.c qapi/qapi-visit-job.h \
--qapi/qapi-visit-migration.c qapi/qapi-visit-migration.h \
--qapi/qapi-visit-misc.c qapi/qapi-visit-misc.h \
--qapi/qapi-visit-net.c qapi/qapi-visit-net.h \
--qapi/qapi-visit-rocker.c qapi/qapi-visit-rocker.h \
--qapi/qapi-visit-run-state.c qapi/qapi-visit-run-state.h \
--qapi/qapi-visit-sockets.c qapi/qapi-visit-sockets.h \
--qapi/qapi-visit-tpm.c qapi/qapi-visit-tpm.h \
--qapi/qapi-visit-trace.c qapi/qapi-visit-trace.h \
--qapi/qapi-visit-transaction.c qapi/qapi-visit-transaction.h \
--qapi/qapi-visit-ui.c qapi/qapi-visit-ui.h \
--qapi/qapi-commands.h qapi/qapi-commands.c \
--qapi/qapi-commands-block-core.c qapi/qapi-commands-block-core.h \
--qapi/qapi-commands-block.c qapi/qapi-commands-block.h \
--qapi/qapi-commands-char.c qapi/qapi-commands-char.h \
--qapi/qapi-commands-common.c qapi/qapi-commands-common.h \
--qapi/qapi-commands-crypto.c qapi/qapi-commands-crypto.h \
--qapi/qapi-commands-introspect.c qapi/qapi-commands-introspect.h \
--qapi/qapi-commands-job.c qapi/qapi-commands-job.h \
--qapi/qapi-commands-migration.c qapi/qapi-commands-migration.h \
--qapi/qapi-commands-misc.c qapi/qapi-commands-misc.h \
--qapi/qapi-commands-net.c qapi/qapi-commands-net.h \
--qapi/qapi-commands-rocker.c qapi/qapi-commands-rocker.h \
--qapi/qapi-commands-run-state.c qapi/qapi-commands-run-state.h \
--qapi/qapi-commands-sockets.c qapi/qapi-commands-sockets.h \
--qapi/qapi-commands-tpm.c qapi/qapi-commands-tpm.h \
--qapi/qapi-commands-trace.c qapi/qapi-commands-trace.h \
--qapi/qapi-commands-transaction.c qapi/qapi-commands-transaction.h \
--qapi/qapi-commands-ui.c qapi/qapi-commands-ui.h \
--qapi/qapi-events.c qapi/qapi-events.h \
--qapi/qapi-events-block-core.c qapi/qapi-events-block-core.h \
--qapi/qapi-events-block.c qapi/qapi-events-block.h \
--qapi/qapi-events-char.c qapi/qapi-events-char.h \
--qapi/qapi-events-common.c qapi/qapi-events-common.h \
--qapi/qapi-events-crypto.c qapi/qapi-events-crypto.h \
--qapi/qapi-events-introspect.c qapi/qapi-events-introspect.h \
--qapi/qapi-events-job.c qapi/qapi-events-job.h \
--qapi/qapi-events-migration.c qapi/qapi-events-migration.h \
--qapi/qapi-events-misc.c qapi/qapi-events-misc.h \
--qapi/qapi-events-net.c qapi/qapi-events-net.h \
--qapi/qapi-events-rocker.c qapi/qapi-events-rocker.h \
--qapi/qapi-events-run-state.c qapi/qapi-events-run-state.h \
--qapi/qapi-events-sockets.c qapi/qapi-events-sockets.h \
--qapi/qapi-events-tpm.c qapi/qapi-events-tpm.h \
--qapi/qapi-events-trace.c qapi/qapi-events-trace.h \
--qapi/qapi-events-transaction.c qapi/qapi-events-transaction.h \
--qapi/qapi-events-ui.c qapi/qapi-events-ui.h \
--qapi/qapi-introspect.h qapi/qapi-introspect.c \
--qapi/qapi-doc.texi: \
--qapi-gen-timestamp ;
-+$(GENERATED_QAPI_FILES): qapi-gen-timestamp ;
- qapi-gen-timestamp: $(qapi-modules) $(qapi-py)
- 	$(call quiet-command,$(PYTHON) $(SRC_PATH)/scripts/qapi-gen.py \
- 		-o "qapi" -b $<, \
 -- 
-2.17.2
-
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
