@@ -1,98 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gND7S-0005Hc-EX
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2018 03:35:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52772)
+	id 1gNEFx-0003Pv-Mo
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Nov 2018 04:48:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41561)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gND7J-0005C5-Dg
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2018 03:35:18 -0500
+	(envelope-from <alex.bennee@linaro.org>) id 1gNEFv-0003OQ-6O
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2018 04:48:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gND7I-0007ZW-PP
-	for qemu-trivial@nongnu.org; Thu, 15 Nov 2018 03:35:13 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:48161)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gND7C-0007Vv-L6; Thu, 15 Nov 2018 03:35:06 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1MirSu-1frSj71q7Q-00esnO; Thu, 15 Nov 2018 09:34:57 +0100
-To: Li Qiang <liq3ea@gmail.com>, pbonzini@redhat.com, rth@twiddle.net,
-	ehabkost@redhat.com
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+	(envelope-from <alex.bennee@linaro.org>) id 1gNEFq-000874-7u
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2018 04:48:10 -0500
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:36813)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+	id 1gNEFp-00084T-EV
+	for qemu-trivial@nongnu.org; Thu, 15 Nov 2018 04:48:05 -0500
+Received: by mail-wr1-x443.google.com with SMTP id z13-v6so20451778wrs.3
+	for <qemu-trivial@nongnu.org>; Thu, 15 Nov 2018 01:48:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=references:user-agent:from:to:cc:subject:in-reply-to:date
+	:message-id:mime-version:content-transfer-encoding;
+	bh=yjGjWPQkNWq1saZuegqRFL20RYSD0D45JjBc+Va6maI=;
+	b=jA2eDZnrHmIoOpLBYktDMnmAbcwqdolvYuC1OARimlCsHOU/s2pJy7XRCjFnZ/ch03
+	a9s6griIvfYhpOgwSUVul4hWxskfiWSkiVNWTV6ANdES8YSuXC07QXSL0y7o6MrBwrFL
+	+tW2R11x+pOje68CH6ICivlX+lVYvyXIShNX0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:references:user-agent:from:to:cc:subject
+	:in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+	bh=yjGjWPQkNWq1saZuegqRFL20RYSD0D45JjBc+Va6maI=;
+	b=eqc4REiUgrN9g0knlc6XGJAFPXiszoGUYISUFV5BqwjVF9TkWmJN64b4WYmAPtMgnH
+	itmFxXrgB88/J2fTwzp5IJFYhfNfyjDO91M8QKrOkEled1BT3mrIVwyNqIMST4AMALxX
+	HzAZ5+JsFipEmt4LCvg8nl/+e101lUKIxR65xRXUQnFOb6rpT7vcuGQ1manu1ZSJ6as7
+	AYmtWijwKm425F5JdAA8tOEIeQ7Li+rpY9HuXonYcprkMEInU78z7qn8+bxFe09PkhgX
+	Z6K/zPwx4sVcfKPVX5bm53iIh27eMBbEhh885aPFSVBA9S35K8Yfm6ek+GBRke14H20D
+	5t1g==
+X-Gm-Message-State: AGRZ1gJGNfIws8ZAri+do1lZ9UBMshEQj1MnEkgQHJffp+GpcW44D6O7
+	OJJ6/SYvWRFjEHGNRw6HRBPpow==
+X-Google-Smtp-Source: AJdET5fKp645XVtoUoQw5mrSdbfN3lZ5lpkL0jfZQy9YFRKkGqa2WDJQ6PzFYeKDtc2HzyOTGreH9w==
+X-Received: by 2002:adf:f1c2:: with SMTP id z2mr5227669wro.218.1542275283857; 
+	Thu, 15 Nov 2018 01:48:03 -0800 (PST)
+Received: from zen.linaro.local ([81.128.185.34])
+	by smtp.gmail.com with ESMTPSA id q2sm4188454wru.56.2018.11.15.01.48.03
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 15 Nov 2018 01:48:03 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaro.local (Postfix) with ESMTPS id 8CC253E0494;
+	Thu, 15 Nov 2018 09:48:02 +0000 (GMT)
 References: <1542261954-4060-1-git-send-email-liq3ea@gmail.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <f72616d4-dc22-73c4-b73b-810c00aed5a2@vivier.eu>
-Date: Thu, 15 Nov 2018 09:34:55 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.7.0
+User-agent: mu4e 1.1.0; emacs 26.1.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: pbonzini@redhat.com, rth@twiddle.net, ehabkost@redhat.com,
+	laurent@vivier.eu, qemu-trivial@nongnu.org, Li Qiang <liq3ea@gmail.com>
+In-reply-to: <1542261954-4060-1-git-send-email-liq3ea@gmail.com>
+Date: Thu, 15 Nov 2018 09:48:02 +0000
+Message-ID: <87muqad63x.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <1542261954-4060-1-git-send-email-liq3ea@gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:EiIjrBNLyJETRkqJJ4+Ty86SIMZwiHPGiDKhDj+tBNfGw79iXPH
-	A4e8qMX2LsjDSnlcJgv2qlPDocfjtWrtZajefk4NWehpQUMxaSbmA6b5uTrFMBIB4awGDOc
-	2jYugzd4sQ1LIe5txcT/dakvUGV5b/fk1p7wO1xRS2gyg1AmSMStxj3heKu7d5ZDrrbwiQw
-	xvh8jPqjDy6HRD63kr8ZQ==
-X-UI-Out-Filterresults: notjunk:1;V01:K0:F8vvhV6S0hk=:CyMrD9cNFD+1JUVuGn/L2a
-	788DUDcPB6OW0Laq+56M/s665tl+XYNNoxc9bAjsVAqRWkycuHnpSY3i7q7FihhKtsCbDsqR8
-	wNmVvoytVVwdKXwoDwGOkWT6Vv3iyIHWvuNkajhs4Q0MNNeSZxhFBAKx++bsLqqfR6HozmBFW
-	mbkPplxE23SZWLstrYE7XIXgS+uQtBN+FnmVwT3FY1DlOO5MZS2KseZNZEfd/BP2oFn3L/e5Q
-	taurSef0sX4gl5P95wp4HeCktmIMHuH3+DubgInu0TebUOjTsX0/ff9x3ZU/WnoCxYKQyunWT
-	uhZJ8CI6Khj/65jrunPIs1BxMZo6rUoZ4OJxCtIY9RPlFWvFZlazhLkPDa1dwJyzSpQlIhne2
-	c5RWsfJyqP4pDzrRH+Wi14a5Lvv4dU4Aw7Z0TqBHoAgcNsKnDpXRN4OxxMQLbhv8Qy0PKWOlc
-	+z1uoiJHkQITKQwNPdbmMgHjDB49UDWNxrG9Z8fJuayCm+RoYZtU9PzBofgDIgrMIVkyG+8bB
-	KVAB7LcaZ6F8axuylzpH9B+t5OsKUPVNTuD2I6V91MiiUTITK0OsW+/XLphAB+w6I+p5foUE5
-	fbqQRREi2mraZu7GJFlzpFwMmv4H1zK6ygkqbypQx/P+qQSM7FKua+g32D2o4R5Xk5ixTFlF0
-	XB88BOeJb5H75alErrxRO/i4pPsr+oyDNI91IrcIXVONSjsBwtmDxG1wRLW/gUOoBF9RLx34E
-	M3+gXOCeRznybjJhh335RWIKR/QFfUOODOBZk3B4slE98nzvBMuBLzuCyZ6OeFMKY3Bt7wC4+
-	OteQgt7RAg8J6WCwWl5yv45CLbYyg==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-Subject: Re: [Qemu-trivial] [PATCH] target: hax: replace g_malloc with
- g_malloc0
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::443
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target: hax: replace
+ g_malloc with g_malloc0
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,20 +73,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Nov 2018 08:35:21 -0000
+X-List-Received-Date: Thu, 15 Nov 2018 09:48:12 -0000
 
-On 15/11/2018 07:05, Li Qiang wrote:
+
+Li Qiang <liq3ea@gmail.com> writes:
+
 > And also the g_malloc doesn't need check return value,
 > remove it.
-> 
+>
 > Cc: qemu-trivial@nongnu.org
-> 
+>
 > Signed-off-by: Li Qiang <liq3ea@gmail.com>
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
 > ---
 >  target/i386/hax-all.c | 15 +++------------
 >  1 file changed, 3 insertions(+), 12 deletions(-)
-> 
+>
+> diff --git a/target/i386/hax-all.c b/target/i386/hax-all.c
+> index d2e512856b..a460c605af 100644
+> --- a/target/i386/hax-all.c
+> +++ b/target/i386/hax-all.c
+> @@ -154,13 +154,7 @@ int hax_vcpu_create(int id)
+>          return 0;
+>      }
+>
+> -    vcpu =3D g_malloc(sizeof(struct hax_vcpu_state));
+> -    if (!vcpu) {
+> -        fprintf(stderr, "Failed to alloc vcpu state\n");
+> -        return -ENOMEM;
+> -    }
+> -
+> -    memset(vcpu, 0, sizeof(struct hax_vcpu_state));
+> +    vcpu =3D g_malloc0(sizeof(struct hax_vcpu_state));
+>
+>      ret =3D hax_host_create_vcpu(hax_global.vm->fd, id);
+>      if (ret) {
+> @@ -250,11 +244,8 @@ struct hax_vm *hax_vm_create(struct hax_state *hax)
+>          return hax->vm;
+>      }
+>
+> -    vm =3D g_malloc(sizeof(struct hax_vm));
+> -    if (!vm) {
+> -        return NULL;
+> -    }
+> -    memset(vm, 0, sizeof(struct hax_vm));
+> +    vm =3D g_malloc0(sizeof(struct hax_vm));
+> +
+>      ret =3D hax_host_create_vm(hax, &vm_id);
+>      if (ret) {
+>          fprintf(stderr, "Failed to create vm %x\n", ret);
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
+--
+Alex Benn=C3=A9e
 
