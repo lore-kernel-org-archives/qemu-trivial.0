@@ -1,54 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gPVEr-0003eW-2D
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Nov 2018 11:20:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41913)
+	id 1gPWi4-00083y-C1
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Nov 2018 12:54:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:53061)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1gPVEk-0003Zn-Bx
-	for qemu-trivial@nongnu.org; Wed, 21 Nov 2018 11:20:27 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1gPWi1-000821-5O
+	for qemu-trivial@nongnu.org; Wed, 21 Nov 2018 12:54:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1gPVEj-0005Gv-FE
-	for qemu-trivial@nongnu.org; Wed, 21 Nov 2018 11:20:22 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36988)
+	(envelope-from <pbonzini@redhat.com>) id 1gPWhz-0006xm-82
+	for qemu-trivial@nongnu.org; Wed, 21 Nov 2018 12:54:41 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:49100)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1gPVEe-00059u-U7; Wed, 21 Nov 2018 11:20:17 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1gPWhr-0006rr-NU; Wed, 21 Nov 2018 12:54:31 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1E2973167E4C;
-	Wed, 21 Nov 2018 16:20:16 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-104.ams2.redhat.com
-	[10.36.116.104])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 62C1A1054FCF;
-	Wed, 21 Nov 2018 16:20:05 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id E964011385F2; Wed, 21 Nov 2018 17:20:03 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: Eric Blake <eblake@redhat.com>, John Snow <jsnow@redhat.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20181120203628.2367003-1-eblake@redhat.com>
-	<cb5fbd50-0629-8afb-e1d4-cc3d1a94e057@redhat.com>
-	<1671d82c-da21-de1e-58c4-dd22696f9a62@redhat.com>
-	<8987fde5-a0f3-ea00-e19b-ab512a81ae39@redhat.com>
-Date: Wed, 21 Nov 2018 17:20:03 +0100
-In-Reply-To: <8987fde5-a0f3-ea00-e19b-ab512a81ae39@redhat.com> ("Philippe
-	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Wed,
-	21 Nov 2018 12:39:38 +0100")
-Message-ID: <87efbe1jyk.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0BF233D966;
+	Wed, 21 Nov 2018 17:54:31 +0000 (UTC)
+Received: from [10.36.112.53] (ovpn-112-53.ams2.redhat.com [10.36.112.53])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id CB36360151;
+	Wed, 21 Nov 2018 17:54:28 +0000 (UTC)
+To: Li Qiang <liq3ea@gmail.com>, laurent@vivier.eu
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <1542276385-7638-1-git-send-email-liq3ea@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <865c7495-e007-6d0e-74fc-a35d9a1cbcfa@redhat.com>
+Date: Wed, 21 Nov 2018 18:54:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.0
 MIME-Version: 1.0
+In-Reply-To: <1542276385-7638-1-git-send-email-liq3ea@gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Wed, 21 Nov 2018 16:20:16 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 21 Nov 2018 17:54:31 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] misc: Avoid UTF-8 in error
- messages
+Subject: Re: [Qemu-trivial] [PATCH] vl.c: remove outdated comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,76 +89,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Nov 2018 16:20:28 -0000
+X-List-Received-Date: Wed, 21 Nov 2018 17:54:42 -0000
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+On 15/11/18 11:06, Li Qiang wrote:
+> Cc: qemu-trivial@nongnu.org
+> 
+> Signed-off-by: Li Qiang <liq3ea@gmail.com>
+> ---
+>  vl.c | 3 ---
+>  1 file changed, 3 deletions(-)
+> 
+> diff --git a/vl.c b/vl.c
+> index fa25d1ae2d..ae63018a1d 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -1522,9 +1522,6 @@ static int machine_help_func(QemuOpts *opts, MachineState *machine)
+>      return 1;
+>  }
+>  
+> -/***********************************************************/
+> -/* main execution loop */
+> -
+>  struct vm_change_state_entry {
+>      VMChangeStateHandler *cb;
+>      void *opaque;
+> 
 
-> On 20/11/18 23:01, Eric Blake wrote:
->> [adding Markus in CC, since git didn't do it automatically from the
->> 'Reported-by']
->>
->> On 11/20/18 3:28 PM, John Snow wrote:
->>>
->>>
->>> On 11/20/18 3:36 PM, Eric Blake wrote:
->>>> While most developers are now using UTF-8 environments, it's
->>>> harder to guarantee that error messages will be output to
->>>> a multibyte locale. Rather than risking error messages that
->>>> get corrupted into mojibake when the user runs qemu in a
->>>> non-multibyte locale, let's stick to straight ASCII error
->>>> messages, rather than assuming that our use of UTF-8 in source
->>>> code string constants will work unchanged in other locales.
->>>>
->>>> Reported-by: Markus Armbruster <armbru@redhat.com>
->>>> Signed-off-by: Eric Blake <eblake@redhat.com>
->>>> ---
->>>> =C2=A0 hw/misc/tmp105.c | 2 +-
->>>> =C2=A0 hw/misc/tmp421.c | 2 +-
->>>> =C2=A0 2 files changed, 2 insertions(+), 2 deletions(-)
->>
->>>
->>> Do we have any policy in place to prohibit this in the future?
->>> (Presumably a policy that is automatic and won't interfere with QEMU
->>> localization efforts which may rightly attempt to use UTF-8 for those
->>> locales.)
->>
->> Not that I know of.
+Queued, thanks.
 
-We already outlaw newline and trailing punctuation, we could amend that
-to outlaw non-ASCII.
-
-$ git-grep 'no newline'
-include/qapi/error.h: * The resulting message should be a single phrase, wi=
-th no newline or
-util/qemu-error.c: * a single phrase, with no newline or trailing punctuati=
-on.
-util/qemu-error.c: * a single phrase, with no newline or trailing punctuati=
-on.
-util/qemu-error.c: * a single phrase, with no newline or trailing punctuati=
-on.
-util/qemu-error.c: * a single phrase, with no newline or trailing punctuati=
-on.
-util/qemu-error.c: * a single phrase, with no newline or trailing punctuati=
-on.
-util/qemu-error.c: * single phrase, with no newline or trailing punctuation.
-util/qemu-error.c: * single phrase, with no newline or trailing punctuation.
-
-[...]
->> Maybe checkpatch.pl could be taught to do a similar check?
->
-> It looks easier in shell than perl...
->
-> We could add a checkpatch.sh which finally call 'exec -l checkpatch.pl
-> $@' or similar?
-
-Congratulations, you found yet another way to make our checkpatch
-program less readable.
-
-Back to serious.  checkpatch.pl already flags error messages containing
-newlines (search for "should not contain newlines").  Extending that to
-flag non-ASCII characters shouldn't be hard.
-
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Paolo
 
