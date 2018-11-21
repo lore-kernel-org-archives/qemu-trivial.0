@@ -1,30 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gPWin-0000Jn-Mi
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Nov 2018 12:55:29 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:53302)
+	id 1gPXx0-0002Tt-6m
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Nov 2018 14:14:14 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56568)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gPWil-0000HA-0T
-	for qemu-trivial@nongnu.org; Wed, 21 Nov 2018 12:55:27 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1gPXwx-0002TC-Fp
+	for qemu-trivial@nongnu.org; Wed, 21 Nov 2018 14:14:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gPWik-00087R-A3
-	for qemu-trivial@nongnu.org; Wed, 21 Nov 2018 12:55:26 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:52636)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1gPWii-00081L-16; Wed, 21 Nov 2018 12:55:24 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8D553C067824;
-	Wed, 21 Nov 2018 17:55:22 +0000 (UTC)
-Received: from [10.36.112.53] (ovpn-112-53.ams2.redhat.com [10.36.112.53])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 48AC416C6D;
-	Wed, 21 Nov 2018 17:55:19 +0000 (UTC)
-To: Li Qiang <liq3ea@gmail.com>, rth@twiddle.net, ehabkost@redhat.com,
-	laurent@vivier.eu
+	(envelope-from <pbonzini@redhat.com>) id 1gPXwp-0003XG-Rt
+	for qemu-trivial@nongnu.org; Wed, 21 Nov 2018 14:14:09 -0500
+Received: from mail-wm1-f52.google.com ([209.85.128.52]:55764)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1gPXwk-0003GI-9I
+	for qemu-trivial@nongnu.org; Wed, 21 Nov 2018 14:14:00 -0500
+Received: by mail-wm1-f52.google.com with SMTP id y139so6594586wmc.5
+	for <qemu-trivial@nongnu.org>; Wed, 21 Nov 2018 11:13:56 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
+	:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=8yMV7T4mE0H8Rzq9h6iugL5s3wPRf96aUaJx92NG7ok=;
+	b=njWwH9NS89qZcZNZDCk4JauRZUobrQoLCuZTAHB10WwxKw6ZTwshd1dtkuaf5n770G
+	Ov26rALfEkM9ElH4gUKJ8sMtd9QYA/ZIobGbXG0bcAUSPx0voyHLgKbmKPVCf8XT187r
+	2nCNu1JHf4yR7yEpZozKemUsl4+AiytmUNJewQb3V8d8wXSAm21tj5UbVSeefQUx/Syt
+	wCDJSubkqMt1HKCekQP/Mw2+xJxgAegP/Q9kaEqXFlmFzcE9A10kprurMcyn2J0SBPa+
+	gfcAatmKIrHeaoGeDq1ZXQWcCPqx51AUohNyaxplXalJddXlOs2PxuYHg5Z5tsFvIKHj
+	AXpQ==
+X-Gm-Message-State: AA+aEWbu/2Upu1DethZma1rTl/Ax7pMUAO1RK1CL/oLvYSYRLJTw4dJC
+	qndJTLDMAMk260dZOBfpRixxtQ==
+X-Google-Smtp-Source: AFSGD/W6HMtrs2PVMfQTAvLFILVCnkqtrtTqz/s+aVKqxfmYZaP6yf3mfhpmXa2CGng+jY1Q3fhzrg==
+X-Received: by 2002:a1c:e0d:: with SMTP id 13mr7154454wmo.52.1542827634832;
+	Wed, 21 Nov 2018 11:13:54 -0800 (PST)
+Received: from [192.168.10.150] ([93.56.166.5])
+	by smtp.gmail.com with ESMTPSA id q12sm1309792wmf.2.2018.11.21.11.13.53
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 21 Nov 2018 11:13:54 -0800 (PST)
+To: Li Qiang <liq3ea@gmail.com>, laurent@vivier.eu
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <1542261954-4060-1-git-send-email-liq3ea@gmail.com>
+References: <1542276385-7638-1-git-send-email-liq3ea@gmail.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
@@ -62,24 +75,19 @@ Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
 	1lJAPPSIqZKvHzGShdh8DduC0U3xYkfbGAUvbxeepjgzp0uEnBXfPTy09JGpgWbg0w91GyfT
 	/ujKaGd4vxG2Ei+MMNDmS1SMx7wu0evvQ5kT9NPzyq8R2GIhVSiAd2jioGuTjX6AZCFv3ToO
 	53DliFMkVTecLptsXaesuUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <da889f34-09b3-6c01-050a-778b86a731fa@redhat.com>
-Date: Wed, 21 Nov 2018 18:55:18 +0100
+Message-ID: <e929f930-2a0b-28ee-fab9-234c99da1d3a@redhat.com>
+Date: Wed, 21 Nov 2018 20:13:52 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.0
 MIME-Version: 1.0
-In-Reply-To: <1542261954-4060-1-git-send-email-liq3ea@gmail.com>
+In-Reply-To: <1542276385-7638-1-git-send-email-liq3ea@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Wed, 21 Nov 2018 17:55:22 +0000 (UTC)
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] target: hax: replace g_malloc with
- g_malloc0
+X-Received-From: 209.85.128.52
+Subject: Re: [Qemu-trivial] [PATCH] vl.c: remove outdated comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,52 +99,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Nov 2018 17:55:28 -0000
+X-List-Received-Date: Wed, 21 Nov 2018 19:14:12 -0000
 
-On 15/11/18 07:05, Li Qiang wrote:
-> And also the g_malloc doesn't need check return value,
-> remove it.
-> 
+On 15/11/18 11:06, Li Qiang wrote:
 > Cc: qemu-trivial@nongnu.org
 > 
 > Signed-off-by: Li Qiang <liq3ea@gmail.com>
 > ---
->  target/i386/hax-all.c | 15 +++------------
->  1 file changed, 3 insertions(+), 12 deletions(-)
+>  vl.c | 3 ---
+>  1 file changed, 3 deletions(-)
 > 
-> diff --git a/target/i386/hax-all.c b/target/i386/hax-all.c
-> index d2e512856b..a460c605af 100644
-> --- a/target/i386/hax-all.c
-> +++ b/target/i386/hax-all.c
-> @@ -154,13 +154,7 @@ int hax_vcpu_create(int id)
->          return 0;
->      }
+> diff --git a/vl.c b/vl.c
+> index fa25d1ae2d..ae63018a1d 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -1522,9 +1522,6 @@ static int machine_help_func(QemuOpts *opts, MachineState *machine)
+>      return 1;
+>  }
 >  
-> -    vcpu = g_malloc(sizeof(struct hax_vcpu_state));
-> -    if (!vcpu) {
-> -        fprintf(stderr, "Failed to alloc vcpu state\n");
-> -        return -ENOMEM;
-> -    }
+> -/***********************************************************/
+> -/* main execution loop */
 > -
-> -    memset(vcpu, 0, sizeof(struct hax_vcpu_state));
-> +    vcpu = g_malloc0(sizeof(struct hax_vcpu_state));
->  
->      ret = hax_host_create_vcpu(hax_global.vm->fd, id);
->      if (ret) {
-> @@ -250,11 +244,8 @@ struct hax_vm *hax_vm_create(struct hax_state *hax)
->          return hax->vm;
->      }
->  
-> -    vm = g_malloc(sizeof(struct hax_vm));
-> -    if (!vm) {
-> -        return NULL;
-> -    }
-> -    memset(vm, 0, sizeof(struct hax_vm));
-> +    vm = g_malloc0(sizeof(struct hax_vm));
-> +
->      ret = hax_host_create_vm(hax, &vm_id);
->      if (ret) {
->          fprintf(stderr, "Failed to create vm %x\n", ret);
+>  struct vm_change_state_entry {
+>      VMChangeStateHandler *cb;
+>      void *opaque;
 > 
 
 Queued, thanks.
