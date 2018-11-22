@@ -1,95 +1,100 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gPpFa-0002eM-7s
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Nov 2018 08:42:34 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49043)
+	id 1gPpIy-0003ER-KE
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Nov 2018 08:46:04 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:55168)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <amarkovic@wavecomp.com>) id 1gPp18-0003gU-Kz
-	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 08:27:39 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gPpIu-0003Bc-D8
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 08:46:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <amarkovic@wavecomp.com>) id 1gPp16-0007gD-Ju
-	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 08:27:38 -0500
-Received: from mail-eopbgr710095.outbound.protection.outlook.com
-	([40.107.71.95]:22976
-	helo=NAM05-BY2-obe.outbound.protection.outlook.com)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <amarkovic@wavecomp.com>)
-	id 1gPp0z-00076e-Le; Thu, 22 Nov 2018 08:27:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=wavesemi.onmicrosoft.com; s=selector1-wavecomp-com;
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=FRHLJ/OXDEuPJuRI8mlusNHdD1EEFuJla2wILDbu/F0=;
-	b=MJWfYZdyMshh6KnxOIk+ko+Y6j75Z7ZVIWJ1a4D6B3sN09nc2f+NtRKE8go6CKWES65uTT/bB3cs6P2g8v1yCAEWkwZZfgHKl7KC3XZHT4OvpNqZX/JGSyzIQDXT+J+GllURy2g5brLSUVNqEmUpWIAUnr2hdNQVqcWp8O7FIz0=
-Received: from BN6PR2201MB1251.namprd22.prod.outlook.com (10.174.81.139) by
-	BN6PR2201MB1252.namprd22.prod.outlook.com (10.174.81.140) with
-	Microsoft SMTP
-	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
-	15.20.1361.16; Thu, 22 Nov 2018 13:27:11 +0000
-Received: from BN6PR2201MB1251.namprd22.prod.outlook.com
-	([fe80::7488:a500:daaf:3897]) by
-	BN6PR2201MB1251.namprd22.prod.outlook.com
-	([fe80::7488:a500:daaf:3897%3]) with mapi id 15.20.1361.016;
-	Thu, 22 Nov 2018 13:27:10 +0000
-From: Aleksandar Markovic <amarkovic@wavecomp.com>
-To: Thomas Huth <thuth@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-CC: Stefan Markovic <smarkovic@wavecomp.com>, Paul Burton
-	<pburton@wavecomp.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	David Gibson <david@gibson.dropbear.id.au>, "qemu-ppc@nongnu.org"
-	<qemu-ppc@nongnu.org>
-Thread-Topic: [PATCH] MAINTAINERS: Add missing hw/pci-host entries
-Thread-Index: AQHUgmOqOcjz+oz7TkCZ4RFtnVyahqVbx9wI
-Date: Thu, 22 Nov 2018 13:27:10 +0000
-Message-ID: <BN6PR2201MB12510FB3F495AE15BD4E006CC6DB0@BN6PR2201MB1251.namprd22.prod.outlook.com>
+	(envelope-from <laurent@vivier.eu>) id 1gPpIt-00063d-Kh
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 08:46:00 -0500
+Received: from mout.kundenserver.de ([212.227.17.24]:51761)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1gPpIl-0005vq-4V; Thu, 22 Nov 2018 08:45:51 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue107 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1N0nOF-1fTiu82x41-00wq0m; Thu, 22 Nov 2018 14:45:41 +0100
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Paul Burton <pburton@wavecomp.com>,
+	Stefan Markovic <smarkovic@wavecomp.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-ppc@nongnu.org, 
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	David Gibson <david@gibson.dropbear.id.au>
 References: <1542891760-13937-1-git-send-email-thuth@redhat.com>
-In-Reply-To: <1542891760-13937-1-git-send-email-thuth@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [82.117.201.26]
-x-ms-publictraffictype: Email
-x-microsoft-exchange-diagnostics: 1; BN6PR2201MB1252;
-	6:CXyvEn5bIT4MXeXsaPRHcJjoXj96gOb6FHY4m7ROu3TbRrHhaVFtkQPF/46rhFazbJt1OgE3MTDIPlTP9/mDo9OttG13zgd373JopCOnZYPHeLtMbAnUMzNYib+7lPwHBLjMWBA0RW4tj0ov9Cz6MtH/LV1AZOzvbEHfHDpIx3ZPWsTqE4Zu88SVuvRQOMJvrfdbYB7BjR+TxgWrN9CDA7uscqP4+HoGSrq8+ck6wR5Qo4DUXOqHNVB/FHpAeYlk3GB/851eDKQW4UIRzza+ueOt7dkHSTX/EKIPztAwGe3Ww8OAK6Byvr6NdZUZGAVB36dXt4F+jS1RpwQ7Macozmxw/MJ4QsHyDCXNdlod996mTq56+jMY2QTSwk7leCpQpCQpWhea24VBwQ4qQfVRZ2fMNSV0QHqN6ZxkEId4ULGnbpnc86spE/xJhoTDEsX1PFuryVkTScyKn47a4Cwq0w==;
-	5:YlfoQs4yrsEoBsHZXSmMEUNUgkT5dmOlyO2KRjVQv3/+nD8n/U6JknVoz0JGXYkUue3ngRX4nf80CbDvmNKZEBBYUVG9iwjA0Wkn8d+OM1FioPxKn9Y2/+U3+T5kHSWNOuCQCkgn17H0UpzuiUfDkkIAUk1pg+cmgeONLeU7DT4=;
-	7:/ekKA5dHEBNpAPIxCBpn3jPQWHNFqD5bdhPJNWIqEVhKbbWaFaCXAXDxRcdVuBpnM4z4ecEl4CHsp4H0mKDQI7W0OFne9dOrdM0awDM7tY4rKvw3KcKqS0n1BQX8luA10loKSSDqklyftcPuDcUq9A==
-x-ms-exchange-antispam-srfa-diagnostics: SOS;SOR;
-x-forefront-antispam-report: SFV:SKI; SCL:-1; SFV:NSPM;
-	SFS:(10019020)(346002)(366004)(396003)(136003)(376002)(39840400004)(189003)(199004)(97736004)(66066001)(8676002)(508600001)(6246003)(25786009)(4326008)(68736007)(106356001)(105586002)(71190400001)(7696005)(71200400001)(26005)(55236004)(6506007)(53546011)(102836004)(8936002)(86362001)(186003)(6436002)(81166006)(81156014)(76176011)(2201001)(99286004)(256004)(14444005)(486006)(316002)(229853002)(5660300001)(33656002)(74316002)(476003)(11346002)(446003)(7736002)(305945005)(14454004)(3846002)(2900100001)(2501003)(6116002)(9686003)(2906002)(53936002)(110136005)(54906003)(55016002);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:BN6PR2201MB1252;
-	H:BN6PR2201MB1251.namprd22.prod.outlook.com; FPR:; SPF:None;
-	LANG:en; PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-office365-filtering-correlation-id: 599d792f-460c-4fdf-259f-08d6507e3520
-x-microsoft-antispam: BCL:0; PCL:0;
-	RULEID:(2390098)(7020095)(4652040)(7021145)(8989299)(4534185)(7022145)(4603075)(7168020)(4627221)(201702281549075)(8990200)(7048125)(7024125)(7027125)(7023125)(5600074)(711020)(2017052603328)(7153060)(7193020);
-	SRVR:BN6PR2201MB1252; 
-x-ms-traffictypediagnostic: BN6PR2201MB1252:
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=amarkovic@wavecomp.com; 
-x-microsoft-antispam-prvs: <BN6PR2201MB1252D99BC4B428FE9D938EDCC6DB0@BN6PR2201MB1252.namprd22.prod.outlook.com>
-x-ms-exchange-senderadcheck: 1
-x-exchange-antispam-report-cfa-test: BCL:0; PCL:0;
-	RULEID:(6040522)(2401047)(5005006)(8121501046)(10201501046)(3231442)(944501410)(52105112)(3002001)(93006095)(93001095)(148016)(149066)(150057)(6041310)(2016111802025)(20161123560045)(20161123562045)(20161123558120)(20161123564045)(6043046)(201708071742011)(7699051)(76991095);
-	SRVR:BN6PR2201MB1252; BCL:0; PCL:0; RULEID:;
-	SRVR:BN6PR2201MB1252; 
-x-forefront-prvs: 0864A36BBF
-received-spf: None (protection.outlook.com: wavecomp.com does not designate
-	permitted sender hosts)
-x-microsoft-antispam-message-info: Y7sFgyQLLukAnMRxqYnHzOPdfQZ6tY3/84GCzqIBxeLjKUyd/JDsG6Ke9KTf1RBHLx/d2D8MqU0l3EEF07abZoGXajiqV+mgTZ6311dhVAjo78V8AHDS9Om5So3l+cMavBLKtSdtKqx5qJjZuFNc691ItLJARyKZYjZTN8Yw8ivxMbY20ZxtTKC67FQk9BEmZaFCl+JxZPLl7dQq8b3N7BGEQnaMC7sXaP9k7EflDJSFx0L6BoDjY8f7lGOg+E/UCZBmkgKq9QDPfoXhUIyoQc/j/QzwoSPu+rwitlm+DQ7b2IV82kDn4QtvqDp/ge6ikfBqNmjk5NkbQmHUMzKIpcxuZwoGmshFjdzMREyLLW0=
-spamdiagnosticoutput: 1:99
-spamdiagnosticmetadata: NSPM
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <114155bf-fe75-4523-bce3-c1b763df6a43@vivier.eu>
+Date: Thu, 22 Nov 2018 14:45:38 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
-X-OriginatorOrg: wavecomp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 599d792f-460c-4fdf-259f-08d6507e3520
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Nov 2018 13:27:10.4332 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 463607d3-1db3-40a0-8a29-970c56230104
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR2201MB1252
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.71.95
-X-Mailman-Approved-At: Thu, 22 Nov 2018 08:42:33 -0500
+In-Reply-To: <1542891760-13937-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:4F1O903+7j/Cu7WtPxgnFT2v+mYPakcVhxw4K3WLbfMu9K/ymdv
+	sM5SUF9oD8aVnOQo3+9WtjGoJWeAyg4aQfANq4Wr1wnfujjCrrG68bLnZMV+H//pIx9PAQK
+	5vQsQs+qCDAss5wCpW0TAFGVIxN4AZIxk6SNh07E6GWxMYDydELX1b28f3Xkg3Yj7xlhSXT
+	ABStByTHG2CMA05b3sWWg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:o1L2YzOFkrw=:YEntlERSvG5MlAp4FjgMlg
+	pXOZrC/1lQEjv4xthjfvi1bV3N5U3tP8eLnj/qCFHP+exb38wCmRZ3yt84a1n2lN6HGb/FbPd
+	3PAQJl7/8P1iuWlrZH9MbBX9y4YYk6Z++pSKrA9FAvqXPZrAdLCcrT4rZqARm64i+CT/PgiTs
+	8qX5RoZdsY8zrSvXtj6OXecQcsDr6/qB7UxgwrehbvjEqmYBNDfZ4kEzHM1TYUoj7iO0FqPD+
+	G4eA2egHtPcLB1kxeICQ8T1fvvliGvBh0T+t1MMgajtgDHx+cbcPsYKIHzZTCnwN9L47rzYYc
+	M11gdr8jkB/fgWAUknPofhu0pocaBnQZlfv/an49jYd08OcLYIknk9bPoLtGodPxoyG6oZ9Sp
+	G0BVXyK6a0TT/KwIBTWHqwbaYRT/79gy8c/Rqvy8rEz/CY+QKBnlmh3yZQOg+9NMCd4LwF4gw
+	y4FQUX9UTpx+R0+wyv4M2wDXkvaWy7jVOuS1e7/Dl9CPrXlzXxM3gr3xwa3tv4P9xI+hVMjHF
+	A1Y983J0R/WRQYfN6EeuoitWVfYediJ9/OagBOhQDMCnGJkSvc9nA6x3ZPg+QUdBw2kXEHxff
+	Of7vhDOutcEcsIPLNnW9Dsi/LDwZDjbatfoq6L67ez7nBBcnRG6M+Y04smWfgHg4ifJtfT+Z0
+	woAJ3MRIkz2ZNawFC4OPg2X4o4gtKATgKsOXqQMMBD+sFAvMwEFYmAjBZiK+2rM8Sae2Rc39+
+	KzleULfyms4gr0ABWEpgmzw7Ti4PmhdZdn794KlC3FNawdgTttbMprkznR9fri9xA//ww1ndy
+	jNvjjOkUEevyV9V45xDiiF395unWg==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.227.17.24
 Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Add missing hw/pci-host
  entries
 X-BeenThere: qemu-trivial@nongnu.org
@@ -103,83 +108,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Nov 2018 13:27:39 -0000
+X-List-Received-Date: Thu, 22 Nov 2018 13:46:03 -0000
 
-Thomas wrote:
-
+On 22/11/2018 14:02, Thomas Huth wrote:
 > Bonito belongs to Fulong-2E, Sabre belongs to Sun4u, and Mac-Newworld
 > and Mips-Boston were missing the header files.
->
+> 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
 >  MAINTAINERS | 6 +++++-
 >  1 file changed, 5 insertions(+), 1 deletion(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 6522621..46a5581 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -876,7 +876,7 @@ R: Stefan Markovic <smarkovic@wavecomp.com>
+>  S: Odd Fixes
+>  F: hw/mips/mips_fulong2e.c
+>  F: hw/isa/vt82c686.c
+> -
+> +F: hw/pci-host/bonito.c
+>  F: include/hw/isa/vt82c686.h
+>  
+>  Boston
+> @@ -886,6 +886,7 @@ S: Maintained
+>  F: hw/core/loader-fit.c
+>  F: hw/mips/boston.c
+>  F: hw/pci-host/xilinx-pcie.c
+> +F: include/hw/pci-host/xilinx-pcie.h
+>  
+>  OpenRISC Machines
+>  -----------------
+> @@ -938,6 +939,7 @@ F: hw/nvram/mac_nvram.c
+>  F: include/hw/misc/macio/
+>  F: include/hw/misc/mos6522.h
+>  F: include/hw/ppc/mac_dbdma.h
+> +F: include/hw/pci-host/uninorth.h
+>  
+>  Old World
+>  M: David Gibson <david@gibson.dropbear.id.au>
+> @@ -1029,6 +1031,8 @@ M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+>  S: Maintained
+>  F: hw/sparc64/sun4u.c
+>  F: pc-bios/openbios-sparc64
+> +F: hw/pci-host/sabre.c
+> +F: include/hw/pci-host/sabre.h
+>  
+>  Sun4v
+>  M: Artyom Tarasenko <atar4qemu@gmail.com>
+> 
 
-For MIPS bits and pieces (Fulong-2E and Boston boards):
-
-Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com>
-
-For others:
-
-Acked-by: Aleksandar Markovic <amarkovic@wavecomp.com>
-
-THANKS!
-
-________________________________________
-From: Thomas Huth <thuth@redhat.com>
-Sent: Thursday, November 22, 2018 2:02:40 PM
-To: qemu-devel@nongnu.org; qemu-trivial@nongnu.org
-Cc: Aleksandar Markovic; Stefan Markovic; Paul Burton; Mark Cave-Ayland; Da=
-vid Gibson; qemu-ppc@nongnu.org
-Subject: [PATCH] MAINTAINERS: Add missing hw/pci-host entries
-
-Bonito belongs to Fulong-2E, Sabre belongs to Sun4u, and Mac-Newworld
-and Mips-Boston were missing the header files.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- MAINTAINERS | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 6522621..46a5581 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -876,7 +876,7 @@ R: Stefan Markovic <smarkovic@wavecomp.com>
- S: Odd Fixes
- F: hw/mips/mips_fulong2e.c
- F: hw/isa/vt82c686.c
--
-+F: hw/pci-host/bonito.c
- F: include/hw/isa/vt82c686.h
-
- Boston
-@@ -886,6 +886,7 @@ S: Maintained
- F: hw/core/loader-fit.c
- F: hw/mips/boston.c
- F: hw/pci-host/xilinx-pcie.c
-+F: include/hw/pci-host/xilinx-pcie.h
-
- OpenRISC Machines
- -----------------
-@@ -938,6 +939,7 @@ F: hw/nvram/mac_nvram.c
- F: include/hw/misc/macio/
- F: include/hw/misc/mos6522.h
- F: include/hw/ppc/mac_dbdma.h
-+F: include/hw/pci-host/uninorth.h
-
- Old World
- M: David Gibson <david@gibson.dropbear.id.au>
-@@ -1029,6 +1031,8 @@ M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
- S: Maintained
- F: hw/sparc64/sun4u.c
- F: pc-bios/openbios-sparc64
-+F: hw/pci-host/sabre.c
-+F: include/hw/pci-host/sabre.h
-
- Sun4v
- M: Artyom Tarasenko <atar4qemu@gmail.com>
---
-1.8.3.1
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
 
