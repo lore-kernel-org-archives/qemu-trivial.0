@@ -1,24 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gPnyh-0005rr-G4
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Nov 2018 07:21:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49086)
+	id 1gPo5n-0004lo-Vl
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Nov 2018 07:28:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:52747)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gPnyf-0005pc-Ad
-	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 07:21:02 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gPo5l-0004kI-RQ
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 07:28:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gPnye-0008Ur-Jb
-	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 07:21:01 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:58735)
+	(envelope-from <laurent@vivier.eu>) id 1gPo5i-0005cy-Iv
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 07:28:21 -0500
+Received: from mout.kundenserver.de ([212.227.17.24]:53943)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gPnyZ-0008ND-Cy; Thu, 22 Nov 2018 07:20:55 -0500
+	id 1gPo5g-0005E1-5a; Thu, 22 Nov 2018 07:28:16 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue106 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1Miqvq-1fkwv02OkW-00eyFE; Thu, 22 Nov 2018 13:20:50 +0100
+	(mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1M4JeB-1gQ5Cb1NmD-000JrU; Thu, 22 Nov 2018 13:28:00 +0100
 To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, berrange@redhat.com,
-	armbru@redhat.com
-References: <20181116200016.2080785-1-eblake@redhat.com>
+Cc: qemu-trivial@nongnu.org
+References: <20181120203628.2367003-1-eblake@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -63,35 +62,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <b5ad7ab0-b880-2cc0-c5b5-ebe5b4022494@vivier.eu>
-Date: Thu, 22 Nov 2018 13:20:49 +0100
+Message-ID: <9a664c5c-d15d-5320-c60a-eeef56638e0f@vivier.eu>
+Date: Thu, 22 Nov 2018 13:27:59 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <20181116200016.2080785-1-eblake@redhat.com>
+In-Reply-To: <20181120203628.2367003-1-eblake@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:XoiVc/eiVNenIFckh6cFs/szwd1ACGQb1viCJYepvvxP7pTuy1k
-	oFGHAPn5ov5Nvan8SiH1jJ/emUMgiXtSYiuQV95gj7minwKEZBpaVsfOED+KX2rYcn0Rz21
-	8ocPIHEnplPwLpKGOM2F8p0AJ7WRtD8o5JCMsDFrZ9QdI4nH/GOOiNpkehVPLUi0VGlih45
-	76xf/wBhDKafhfDn3pUmg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:l6UcmLmwkDU=:lh42sug81h+sncJ28BHxPZ
-	b93JE6cGxV++XPPvmIbth9YSzLJO2Gbh57QztwzBKwI84OQUbRMgwa1hXl4Gep6HloiKnxzVd
-	9ZSeXFE7+sZ888qYLenMnXwwOxTQOcoD1KOcpSoDJidbfCjhnEMNQ4u8X34tZcX0EEvtFyxi0
-	GKbX4DYMRlfYRZMY77ZaJ/uXu7tgIFNepmdpxaqK6iZtWjgQLGFq7CTXE19lXnDdAhNOi8uLy
-	GK5RdGm7x3dZNOoq5FNuHYMU39IzUv1z+D7FrKggR3RCYt208y4g672oiyyjoF4b+CoxtkFnz
-	0FY9vbOkfL3YvonZ4XtbQbAE1TQTUTa9l5H/3iY3Z4bRy6tpZm661Ysq84aBG7VqXKMBgseGY
-	CTB/ExUtXH3aJI8iklhxRiXLBOF7ZI7IwISn5w0iPs8KZM5bx8pv9duWhVj2XHJxU5Dr7qkjb
-	gmUOKDkPc0WKVz7y8bsmg6N5FqYoTURwhY3zXPpk+DXc+G4xjfcf3c87VcLd/b1WHEnggzYIg
-	OeR7ROddtFi5EIg+2AmVDTOhwJRL9kdpr0Ve/ZdXiNn0YxRGKtM76gv7zcYnqDwqrqn8QFjGC
-	lu/UBgaJhAbhxw5D/7PJd7tWgbKEPFYk6oJj6vvX/6uxseqbZAEdPs/IKnIO+vwVmajt+XwAA
-	0ZBs83IBUibGuGtw/1fhBcNW7Hj2l8N1MuFf/nD7MYEZGJQWs0L8afiKOrxpfI4hFav67ai4C
-	SINmI/UUIgTcDccLB/qLlLpM7nIuFRELankjE3m4SCx01ZDNYdil1CTRcc4OtKA+rXQCvin7Z
-	pA92Yf7RcYVU+7yNrJZmvwmiFAlCA==
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:9mo3PASzFDNOVYAzcqHBe6Lp69tspD5SFCEYAZ100h+ehLGsgnZ
+	XUSJT7l9qgn5C3TzTV1zzONDMAe4xZLaZ12pMGjrz1KpuH702rqaf1k8GFw2Tajk/i9C5Ku
+	i13j3VdlKbHdtFMP977pweNhbheg4+Qgn2fIlGVLm1Z17B9DCoTC7IapMze5j6ZgW39i5Vo
+	e5mNHdy9jxt7bgv0XC/cQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:m0E0SdQym5M=:g71R9y1pIH+Q6T/chimi16
+	skMhhD/raIFzXlx5ErKo/f+KAQxOeWgKGGAkp1Etosdpz2j7szIjm0HvTs0G5uoj65oLymyuk
+	uUILTIoO33fzFPJK4zERzu3BCysHB0aR89idpOqanHbLF0zslQ4tfJqJVm1yTzEkanhKb6xf6
+	VqhzqXigm5h50bdv5Od0cpKkvHakS3ZJ30n3GIK0bWNAsUtbfAe8QsilJ3LZAzdYp2O4of8pW
+	L31UsrcJ82TLO5m/4JqaQDG/07icwmLOOBcspAu75v61kJCzrRuw87kNUT7c4kWq23NUurWOo
+	zZSA/5s7H8CITkD6A+K4NpMXQf9CcXNEc0tbO1xmhD+MOYR7r4BpMAk2+NL3yP6Ts0m2B3+Ga
+	LsUDQO1GoxfjWi8Qf+GiwlDnIJFx4DfS8YZm+vNBp8n+R3+uB0PSbRKw3OMLgr84dPVUxvQsu
+	4mvlx/ro29QZLbaZq4fKAwVwviNqFcITM+ayrVJIvJWQclVLUKrojtk+rCsEaGk/I46wdgyzr
+	2BEWu9f8Z6w2rXt5g6Xz48YF+OkRD8cImAiedmOMakv9MCzoZvLSWH09lozq7SWNBFr2c/Iab
+	6sDpIz8y43t8VU0ToXnws8V1B8fnIDFuZSBBeOhoP3pflzN8Lb17wauBeQrI7Ft83CjzKz41p
+	0mD7RL7y6udIVw1OAc9B137lC8S1p695nR6GOclyPbK4DTyHqW/SspHVigx+brtHWFNiito4w
+	G9Ixylw1FiM8FIZnD9kiyYMABZ3HMX2d0FpVMYfgbkx7swchy6DpXrgHg75xD/x1GlpyxKgY+
+	6Q6ZJnu6HElRTIRqFp/Bwn7e3s8yg==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.73
-Subject: Re: [Qemu-trivial] [PATCH v3] qapi: Reduce Makefile boilerplate
+X-Received-From: 212.227.17.24
+Subject: Re: [Qemu-trivial] [PATCH] misc: Avoid UTF-8 in error messages
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,35 +102,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Nov 2018 12:21:02 -0000
+X-List-Received-Date: Thu, 22 Nov 2018 12:28:23 -0000
 
-On 16/11/2018 21:00, Eric Blake wrote:
-> Adding a new qapi module had some rather tedious repetition to
-> wire it into Makefile, Makefile.objs, and .gitignore (for example,
-> see commit bf42508f and its followup b61acdec). For make, add some
-> indirection by taking advantage of GNU Make string processing to
-> expand a list of module names into all the required artifacts, so
-> that future additions of a new module need only touch the list of
-> module names.  And for gitignore, use globs to cover all generated
-> file names.
+On 20/11/2018 21:36, Eric Blake wrote:
+> While most developers are now using UTF-8 environments, it's
+> harder to guarantee that error messages will be output to
+> a multibyte locale. Rather than risking error messages that
+> get corrupted into mojibake when the user runs qemu in a
+> non-multibyte locale, let's stick to straight ASCII error
+> messages, rather than assuming that our use of UTF-8 in source
+> code string constants will work unchanged in other locales.
 > 
-> The list has to live in Makefile.objs, due to the way that
-> our unnest-vars macro slirps in that file without remembering
-> any definition of $(QAPI_MODULES) from Makefile.
-> 
+> Reported-by: Markus Armbruster <armbru@redhat.com>
 > Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
+>  hw/misc/tmp105.c | 2 +-
+>  hw/misc/tmp421.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 > 
-> ---
-> v3: also tweak .gitignore [Dan]
-> v2: also condense Makefile.objs, prefer $(FOO:%=a%b) over
-> $(patsubst %,a%b,$(FOO))
-> ---
->  Makefile      | 192 ++++++--------------------------------------------
->  Makefile.objs |  75 ++------------------
->  .gitignore    |  72 ++-----------------
->  3 files changed, 34 insertions(+), 305 deletions(-)
+> diff --git a/hw/misc/tmp105.c b/hw/misc/tmp105.c
+> index 0918f3a6ea2..f6d7163273a 100644
+> --- a/hw/misc/tmp105.c
+> +++ b/hw/misc/tmp105.c
+> @@ -79,7 +79,7 @@ static void tmp105_set_temperature(Object *obj, Visitor *v, const char *name,
+>          return;
+>      }
+>      if (temp >= 128000 || temp < -128000) {
+> -        error_setg(errp, "value %" PRId64 ".%03" PRIu64 " °C is out of range",
+> +        error_setg(errp, "value %" PRId64 ".%03" PRIu64 " C is out of range",
+>                     temp / 1000, temp % 1000);
+>          return;
+>      }
+> diff --git a/hw/misc/tmp421.c b/hw/misc/tmp421.c
+> index c234044305d..eeb11000f0f 100644
+> --- a/hw/misc/tmp421.c
+> +++ b/hw/misc/tmp421.c
+> @@ -153,7 +153,7 @@ static void tmp421_set_temperature(Object *obj, Visitor *v, const char *name,
+>      }
+> 
+>      if (temp >= maxs[ext_range] || temp < mins[ext_range]) {
+> -        error_setg(errp, "value %" PRId64 ".%03" PRIu64 " °C is out of range",
+> +        error_setg(errp, "value %" PRId64 ".%03" PRIu64 " C is out of range",
+>                     temp / 1000, temp % 1000);
+>          return;
+>      }
+> 
 
-Applied to qemu-trivial branch.
+Applied to qemu-trivial with updated message log (command to find the
+non-ASCII characters).
 
 Thanks,
 Laurent
