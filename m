@@ -1,44 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gPoda-0000bq-KE
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Nov 2018 08:03:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:41938)
+	id 1gPoel-0001dc-HH
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Nov 2018 08:04:31 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42443)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gPodY-0000Xi-2q
-	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 08:03:17 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1gPoeh-0001aC-Pp
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 08:04:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gPodW-0004g1-OI
-	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 08:03:16 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:44107)
+	(envelope-from <pbonzini@redhat.com>) id 1gPoed-00062j-BD
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 08:04:27 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59190)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gPod3-000463-Tf; Thu, 22 Nov 2018 08:02:46 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1gPoeQ-0005qK-Jz; Thu, 22 Nov 2018 08:04:10 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5830230C53B8;
-	Thu, 22 Nov 2018 13:02:44 +0000 (UTC)
-Received: from thuth.com (ovpn-116-181.ams2.redhat.com [10.36.116.181])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 3ECA25D763;
-	Thu, 22 Nov 2018 13:02:42 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Stefan Markovic <smarkovic@wavecomp.com>,
-	Paul Burton <pburton@wavecomp.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org
-Date: Thu, 22 Nov 2018 14:02:40 +0100
-Message-Id: <1542891760-13937-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+	by mx1.redhat.com (Postfix) with ESMTPS id 504A4308FE94;
+	Thu, 22 Nov 2018 13:04:09 +0000 (UTC)
+Received: from [10.36.112.67] (ovpn-112-67.ams2.redhat.com [10.36.112.67])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id CE2C14AA;
+	Thu, 22 Nov 2018 13:04:04 +0000 (UTC)
+To: Laurent Vivier <laurent@vivier.eu>, Li Qiang <liq3ea@gmail.com>,
+	rth@twiddle.net, ehabkost@redhat.com
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <1542261954-4060-1-git-send-email-liq3ea@gmail.com>
+	<da889f34-09b3-6c01-050a-778b86a731fa@redhat.com>
+	<815170fb-b014-23cd-f1ad-03969a7964e7@vivier.eu>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <38798655-dea2-2e8b-d968-af00fd9234d4@redhat.com>
+Date: Thu, 22 Nov 2018 14:04:03 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.0
+MIME-Version: 1.0
+In-Reply-To: <815170fb-b014-23cd-f1ad-03969a7964e7@vivier.eu>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.45]);
-	Thu, 22 Nov 2018 13:02:44 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.49]);
+	Thu, 22 Nov 2018 13:04:09 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] MAINTAINERS: Add missing hw/pci-host entries
+Subject: Re: [Qemu-trivial] [PATCH] target: hax: replace g_malloc with
+ g_malloc0
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,55 +95,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Nov 2018 13:03:17 -0000
+X-List-Received-Date: Thu, 22 Nov 2018 13:04:30 -0000
 
-Bonito belongs to Fulong-2E, Sabre belongs to Sun4u, and Mac-Newworld
-and Mips-Boston were missing the header files.
+On 22/11/18 13:08, Laurent Vivier wrote:
+> On 21/11/2018 18:55, Paolo Bonzini wrote:
+>> On 15/11/18 07:05, Li Qiang wrote:
+>>> And also the g_malloc doesn't need check return value,
+>>> remove it.
+>>>
+>>> Cc: qemu-trivial@nongnu.org
+>>>
+>>> Signed-off-by: Li Qiang <liq3ea@gmail.com>
+>>> ---
+>>>  target/i386/hax-all.c | 15 +++------------
+>>>  1 file changed, 3 insertions(+), 12 deletions(-)
+>>>
+>>> diff --git a/target/i386/hax-all.c b/target/i386/hax-all.c
+>>> index d2e512856b..a460c605af 100644
+>>> --- a/target/i386/hax-all.c
+>>> +++ b/target/i386/hax-all.c
+>>> @@ -154,13 +154,7 @@ int hax_vcpu_create(int id)
+>>>          return 0;
+>>>      }
+>>>  
+>>> -    vcpu = g_malloc(sizeof(struct hax_vcpu_state));
+>>> -    if (!vcpu) {
+>>> -        fprintf(stderr, "Failed to alloc vcpu state\n");
+>>> -        return -ENOMEM;
+>>> -    }
+>>> -
+>>> -    memset(vcpu, 0, sizeof(struct hax_vcpu_state));
+>>> +    vcpu = g_malloc0(sizeof(struct hax_vcpu_state));
+>>>  
+>>>      ret = hax_host_create_vcpu(hax_global.vm->fd, id);
+>>>      if (ret) {
+>>> @@ -250,11 +244,8 @@ struct hax_vm *hax_vm_create(struct hax_state *hax)
+>>>          return hax->vm;
+>>>      }
+>>>  
+>>> -    vm = g_malloc(sizeof(struct hax_vm));
+>>> -    if (!vm) {
+>>> -        return NULL;
+>>> -    }
+>>> -    memset(vm, 0, sizeof(struct hax_vm));
+>>> +    vm = g_malloc0(sizeof(struct hax_vm));
+>>> +
+>>>      ret = hax_host_create_vm(hax, &vm_id);
+>>>      if (ret) {
+>>>          fprintf(stderr, "Failed to create vm %x\n", ret);
+>>>
+>>
+>> Queued, thanks.
+> 
+> Markus and Philippe have asked to use g_new0() rather than g_malloc0().
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- MAINTAINERS | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+Sorry, not sure why I didn't notice the replies.  Also, it's sent to
+qemu-trivial so I'll ignore v2...
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 6522621..46a5581 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -876,7 +876,7 @@ R: Stefan Markovic <smarkovic@wavecomp.com>
- S: Odd Fixes
- F: hw/mips/mips_fulong2e.c
- F: hw/isa/vt82c686.c
--
-+F: hw/pci-host/bonito.c
- F: include/hw/isa/vt82c686.h
- 
- Boston
-@@ -886,6 +886,7 @@ S: Maintained
- F: hw/core/loader-fit.c
- F: hw/mips/boston.c
- F: hw/pci-host/xilinx-pcie.c
-+F: include/hw/pci-host/xilinx-pcie.h
- 
- OpenRISC Machines
- -----------------
-@@ -938,6 +939,7 @@ F: hw/nvram/mac_nvram.c
- F: include/hw/misc/macio/
- F: include/hw/misc/mos6522.h
- F: include/hw/ppc/mac_dbdma.h
-+F: include/hw/pci-host/uninorth.h
- 
- Old World
- M: David Gibson <david@gibson.dropbear.id.au>
-@@ -1029,6 +1031,8 @@ M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
- S: Maintained
- F: hw/sparc64/sun4u.c
- F: pc-bios/openbios-sparc64
-+F: hw/pci-host/sabre.c
-+F: include/hw/pci-host/sabre.h
- 
- Sun4v
- M: Artyom Tarasenko <atar4qemu@gmail.com>
--- 
-1.8.3.1
+Paolo
 
 
