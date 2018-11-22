@@ -1,27 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gPnu9-0000uL-Gt
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Nov 2018 07:16:21 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:55332)
+	id 1gPnyh-0005rr-G4
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Nov 2018 07:21:03 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49086)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gPntw-0000XO-DD
-	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 07:16:12 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gPnyf-0005pc-Ad
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 07:21:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gPnmo-0008HE-Up
-	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 07:08:47 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:55367)
+	(envelope-from <laurent@vivier.eu>) id 1gPnye-0008Ur-Jb
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 07:21:01 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:58735)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gPnmk-0007o9-JF; Thu, 22 Nov 2018 07:08:42 -0500
+	id 1gPnyZ-0008ND-Cy; Thu, 22 Nov 2018 07:20:55 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue106 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1Mna0x-1fgsEq2Oov-00jaSy; Thu, 22 Nov 2018 13:08:21 +0100
-To: Paolo Bonzini <pbonzini@redhat.com>, Li Qiang <liq3ea@gmail.com>,
-	rth@twiddle.net, ehabkost@redhat.com
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <1542261954-4060-1-git-send-email-liq3ea@gmail.com>
-	<da889f34-09b3-6c01-050a-778b86a731fa@redhat.com>
+	1Miqvq-1fkwv02OkW-00eyFE; Thu, 22 Nov 2018 13:20:50 +0100
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, berrange@redhat.com,
+	armbru@redhat.com
+References: <20181116200016.2080785-1-eblake@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -66,36 +63,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <815170fb-b014-23cd-f1ad-03969a7964e7@vivier.eu>
-Date: Thu, 22 Nov 2018 13:08:17 +0100
+Message-ID: <b5ad7ab0-b880-2cc0-c5b5-ebe5b4022494@vivier.eu>
+Date: Thu, 22 Nov 2018 13:20:49 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <da889f34-09b3-6c01-050a-778b86a731fa@redhat.com>
+In-Reply-To: <20181116200016.2080785-1-eblake@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:OdnEK9IbMg7T6kPIObximVUpiP83QehwAEabLobXpzUeCV1gyG+
-	lLMrl4/6FuC91Lq3svwV1MCPxjMxtf+RkgkEYlbPJY38fe665ideQwd7tsist/O95h8eSD2
-	FCpgQ3dUo8AIkU6LzYY9jTgVWap3c74nu0h0mPs3J9Fr/63EBNFW7Kw5RzqVGR5PHPREIm2
-	vOQTV3I4vYueNEeWyNrVw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:+M8yNOmkhR0=:Jlr+10WVYDoJnV6KgSz+5y
-	E9Y6Jq7pVNhMEnYJ+e6yu0ESMB9iLPTJxOEviNxoz3kLqaXtXT/Huo8YG9JA0w6Bzta+5vbsN
-	uW/n5U7J6Yk2Cz0GJ2ru1XZWTB8fW72I9abt+VqRCMFsO35Oi2cvBHY++4SbY7ZzSLSNXSLAO
-	rSfEN8UpbQgO1AZdEU5neKcUtu/4/5uRNQojmeRxxnigK+Uh6O0zviHLywd8VjK6CKEir2gS5
-	uwLAnB/qehA6DyDoSQ/PSBaLKCxg2aAIS6XflZE0auXv0c4boxbyS9Jnene5rP+EWKaoMmH60
-	ER83Qq+LVpa6fq1vAJ02YZI13fGPJDHC9d/zk8Wyx/k1uR03ua7QevxpD1rqQ8CjHdSgo/pQp
-	HNXvUWVGfVZ8Mm1UKKRHWKlrmc1Dsjuomn0dt3I0RSY2uxdGZ2RTl86iawwDjF/klgqiVA3Mu
-	FsRF2EJtS1ri4Bwj2WL8Ludqmx+JgoAGz79oXbeaXg4gE/MzZ60Y5f/Gmd44TP+vXPLqYGULN
-	NcKvowCBLvOcQYNc2bKyBr6anaHdukbM0VbtIXBs6l6qDjeJaVt0k6vIMZoUHNeUm/mK4samk
-	m7mmoCoYj6fafsJzJmH9AY5zIY4XDNbwiNkgLZmsHfNVKF9eTerFZq4SptcCR2dW+U3SksezU
-	JtbvdICwK7jGLN6zus0qVajKL75TJ6Q+2kTjqtsvDqZFGdi7o02i37cDmbiXOcCCHjYekWp1L
-	fcw0UpeDRl29WmulTNJWbzEetVgcHW9WrQO/eT064v4oef+NwZykL/Hmn4YszZQ6HrXAS5X1w
-	kS0E1IxvCHJyu9y19j5gyY+U+faCw==
+X-Provags-ID: V03:K1:XoiVc/eiVNenIFckh6cFs/szwd1ACGQb1viCJYepvvxP7pTuy1k
+	oFGHAPn5ov5Nvan8SiH1jJ/emUMgiXtSYiuQV95gj7minwKEZBpaVsfOED+KX2rYcn0Rz21
+	8ocPIHEnplPwLpKGOM2F8p0AJ7WRtD8o5JCMsDFrZ9QdI4nH/GOOiNpkehVPLUi0VGlih45
+	76xf/wBhDKafhfDn3pUmg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:l6UcmLmwkDU=:lh42sug81h+sncJ28BHxPZ
+	b93JE6cGxV++XPPvmIbth9YSzLJO2Gbh57QztwzBKwI84OQUbRMgwa1hXl4Gep6HloiKnxzVd
+	9ZSeXFE7+sZ888qYLenMnXwwOxTQOcoD1KOcpSoDJidbfCjhnEMNQ4u8X34tZcX0EEvtFyxi0
+	GKbX4DYMRlfYRZMY77ZaJ/uXu7tgIFNepmdpxaqK6iZtWjgQLGFq7CTXE19lXnDdAhNOi8uLy
+	GK5RdGm7x3dZNOoq5FNuHYMU39IzUv1z+D7FrKggR3RCYt208y4g672oiyyjoF4b+CoxtkFnz
+	0FY9vbOkfL3YvonZ4XtbQbAE1TQTUTa9l5H/3iY3Z4bRy6tpZm661Ysq84aBG7VqXKMBgseGY
+	CTB/ExUtXH3aJI8iklhxRiXLBOF7ZI7IwISn5w0iPs8KZM5bx8pv9duWhVj2XHJxU5Dr7qkjb
+	gmUOKDkPc0WKVz7y8bsmg6N5FqYoTURwhY3zXPpk+DXc+G4xjfcf3c87VcLd/b1WHEnggzYIg
+	OeR7ROddtFi5EIg+2AmVDTOhwJRL9kdpr0Ve/ZdXiNn0YxRGKtM76gv7zcYnqDwqrqn8QFjGC
+	lu/UBgaJhAbhxw5D/7PJd7tWgbKEPFYk6oJj6vvX/6uxseqbZAEdPs/IKnIO+vwVmajt+XwAA
+	0ZBs83IBUibGuGtw/1fhBcNW7Hj2l8N1MuFf/nD7MYEZGJQWs0L8afiKOrxpfI4hFav67ai4C
+	SINmI/UUIgTcDccLB/qLlLpM7nIuFRELankjE3m4SCx01ZDNYdil1CTRcc4OtKA+rXQCvin7Z
+	pA92Yf7RcYVU+7yNrJZmvwmiFAlCA==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 217.72.192.73
-Subject: Re: [Qemu-trivial] [PATCH] target: hax: replace g_malloc with
- g_malloc0
+Subject: Re: [Qemu-trivial] [PATCH v3] qapi: Reduce Makefile boilerplate
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,60 +103,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Nov 2018 12:16:13 -0000
+X-List-Received-Date: Thu, 22 Nov 2018 12:21:02 -0000
 
-On 21/11/2018 18:55, Paolo Bonzini wrote:
-> On 15/11/18 07:05, Li Qiang wrote:
->> And also the g_malloc doesn't need check return value,
->> remove it.
->>
->> Cc: qemu-trivial@nongnu.org
->>
->> Signed-off-by: Li Qiang <liq3ea@gmail.com>
->> ---
->>  target/i386/hax-all.c | 15 +++------------
->>  1 file changed, 3 insertions(+), 12 deletions(-)
->>
->> diff --git a/target/i386/hax-all.c b/target/i386/hax-all.c
->> index d2e512856b..a460c605af 100644
->> --- a/target/i386/hax-all.c
->> +++ b/target/i386/hax-all.c
->> @@ -154,13 +154,7 @@ int hax_vcpu_create(int id)
->>          return 0;
->>      }
->>  
->> -    vcpu = g_malloc(sizeof(struct hax_vcpu_state));
->> -    if (!vcpu) {
->> -        fprintf(stderr, "Failed to alloc vcpu state\n");
->> -        return -ENOMEM;
->> -    }
->> -
->> -    memset(vcpu, 0, sizeof(struct hax_vcpu_state));
->> +    vcpu = g_malloc0(sizeof(struct hax_vcpu_state));
->>  
->>      ret = hax_host_create_vcpu(hax_global.vm->fd, id);
->>      if (ret) {
->> @@ -250,11 +244,8 @@ struct hax_vm *hax_vm_create(struct hax_state *hax)
->>          return hax->vm;
->>      }
->>  
->> -    vm = g_malloc(sizeof(struct hax_vm));
->> -    if (!vm) {
->> -        return NULL;
->> -    }
->> -    memset(vm, 0, sizeof(struct hax_vm));
->> +    vm = g_malloc0(sizeof(struct hax_vm));
->> +
->>      ret = hax_host_create_vm(hax, &vm_id);
->>      if (ret) {
->>          fprintf(stderr, "Failed to create vm %x\n", ret);
->>
+On 16/11/2018 21:00, Eric Blake wrote:
+> Adding a new qapi module had some rather tedious repetition to
+> wire it into Makefile, Makefile.objs, and .gitignore (for example,
+> see commit bf42508f and its followup b61acdec). For make, add some
+> indirection by taking advantage of GNU Make string processing to
+> expand a list of module names into all the required artifacts, so
+> that future additions of a new module need only touch the list of
+> module names.  And for gitignore, use globs to cover all generated
+> file names.
 > 
-> Queued, thanks.
+> The list has to live in Makefile.objs, due to the way that
+> our unnest-vars macro slirps in that file without remembering
+> any definition of $(QAPI_MODULES) from Makefile.
+> 
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> 
+> ---
+> v3: also tweak .gitignore [Dan]
+> v2: also condense Makefile.objs, prefer $(FOO:%=a%b) over
+> $(patsubst %,a%b,$(FOO))
+> ---
+>  Makefile      | 192 ++++++--------------------------------------------
+>  Makefile.objs |  75 ++------------------
+>  .gitignore    |  72 ++-----------------
+>  3 files changed, 34 insertions(+), 305 deletions(-)
 
-Markus and Philippe have asked to use g_new0() rather than g_malloc0().
+Applied to qemu-trivial branch.
 
 Thanks,
 Laurent
-
 
