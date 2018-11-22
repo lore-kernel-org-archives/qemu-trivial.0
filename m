@@ -1,60 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gPZyI-0002Sr-DO
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Nov 2018 16:23:42 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54624)
+	id 1gPngj-0005bv-DF
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Nov 2018 07:02:29 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42947)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <r.bolshakov@yadro.com>) id 1gPZG1-00052o-Cd
-	for qemu-trivial@nongnu.org; Wed, 21 Nov 2018 15:37:58 -0500
+	(envelope-from <kraxel@redhat.com>) id 1gPngh-0005aa-2T
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 07:02:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <r.bolshakov@yadro.com>) id 1gPZG0-0005iD-LK
-	for qemu-trivial@nongnu.org; Wed, 21 Nov 2018 15:37:57 -0500
-Received: from mta-01.yadro.com ([89.207.88.251]:50458)
+	(envelope-from <kraxel@redhat.com>) id 1gPngb-0005ln-1x
+	for qemu-trivial@nongnu.org; Thu, 22 Nov 2018 07:02:26 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:38834)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <r.bolshakov@yadro.com>)
-	id 1gPZFw-0005ZI-DJ; Wed, 21 Nov 2018 15:37:52 -0500
-Received: from localhost (unknown [127.0.0.1])
-	by mta-01.yadro.com (Postfix) with ESMTP id ECBB24193A;
-	Wed, 21 Nov 2018 20:37:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
-	content-type:content-type:content-transfer-encoding:mime-version
-	:x-mailer:message-id:date:date:subject:subject:from:from
-	:received:received:received; s=mta-01; t=1542832669; x=
-	1544647070; bh=E7MWH8ooWsNBSSeRmzfsC/zow1g3xRPO3PQcgPpL5Pw=; b=C
-	iV2llXeV5Xtw2KGZAAnW5YN3f+eBOnN2aF57Qg7a3F/+ipxww0BJyWtmqvfE1/EW
-	zuMKCgoZAvFkUVmg8hEPttMyNUxnEwp1tCVDXbrC9ZXb5h97akUAP4nxdget3nzV
-	9uULUexMuXiPjm92vuaqOrP7vfIFKOR6saPClhz20Y=
-X-Virus-Scanned: amavisd-new at yadro.com
-Received: from mta-01.yadro.com ([127.0.0.1])
-	by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CpYdkL1GJcDc; Wed, 21 Nov 2018 23:37:49 +0300 (MSK)
-Received: from T-EXCH-02.corp.yadro.com (t-exch-02.corp.yadro.com
-	[172.17.10.102])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1gPngO-0005Mo-GG; Thu, 22 Nov 2018 07:02:10 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mta-01.yadro.com (Postfix) with ESMTPS id 0F90941860;
-	Wed, 21 Nov 2018 23:37:49 +0300 (MSK)
-Received: from localhost (172.17.1.58) by T-EXCH-02.corp.yadro.com
-	(172.17.10.102) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32;
-	Wed, 21 Nov 2018 23:37:48 +0300
-From: Roman Bolshakov <r.bolshakov@yadro.com>
-To: <qemu-devel@nongnu.org>
-CC: Roman Bolshakov <r.bolshakov@yadro.com>, <qemu-trivial@nongnu.org>
-Date: Wed, 21 Nov 2018 23:37:21 +0300
-Message-ID: <20181121203720.75916-1-r.bolshakov@yadro.com>
-X-Mailer: git-send-email 2.19.1
+	by mx1.redhat.com (Postfix) with ESMTPS id 4A3E63001567;
+	Thu, 22 Nov 2018 12:02:07 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-59.ams2.redhat.com
+	[10.36.116.59])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id F2BEF27CA2;
+	Thu, 22 Nov 2018 12:02:06 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id E1AF55BDF7; Thu, 22 Nov 2018 13:02:05 +0100 (CET)
+Date: Thu, 22 Nov 2018 13:02:05 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Roman Bolshakov <r.bolshakov@yadro.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20181122120205.jhmzcd6h2nmnytyu@sirius.home.kraxel.org>
+References: <20181121203720.75916-1-r.bolshakov@yadro.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [172.17.1.58]
-X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
-	T-EXCH-02.corp.yadro.com (172.17.10.102)
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20181121203720.75916-1-r.bolshakov@yadro.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.46]);
+	Thu, 22 Nov 2018 12:02:07 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 89.207.88.251
-X-Mailman-Approved-At: Wed, 21 Nov 2018 16:23:41 -0500
-Subject: [Qemu-trivial] [PATCH] roms: seabios: Rename CROSS_COMPILE to
- CROSS_PREFIX
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] roms: seabios: Rename
+ CROSS_COMPILE to CROSS_PREFIX
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,42 +55,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Nov 2018 20:37:58 -0000
+X-List-Received-Date: Thu, 22 Nov 2018 12:02:27 -0000
 
-SeaBIOS introduced CROSS_PREFIX in 2013 but it's not set in roms
-Makefile.
+On Wed, Nov 21, 2018 at 11:37:21PM +0300, Roman Bolshakov wrote:
+> SeaBIOS introduced CROSS_PREFIX in 2013 but it's not set in roms
+> Makefile.
 
-With the change it's possible to cross-compile SeaBIOS on macOS,
-if acpica/iasl is installed:
-  cd roms
-  export PATH=3D/path/to/cross/x86_64-unknown-linux-gnu/bin:$PATH
-  make bios system=3Dunknown-linux-gnu
+> -		CROSS_COMPILE=$(x86_64_cross_prefix) \
+> +		CROSS_PREFIX=$(x86_64_cross_prefix) \
 
-Signed-off-by: Roman Bolshakov <r.bolshakov@yadro.com>
----
- roms/Makefile | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+I'm wondering how that slipped though, IIRC I had actually tested
+seabios crossbuilds ...
 
-diff --git a/roms/Makefile b/roms/Makefile
-index f4141e1d96..a6043eff37 100644
---- a/roms/Makefile
-+++ b/roms/Makefile
-@@ -83,12 +83,12 @@ build-seabios-config-%: config.%
- 	cp $< seabios/builds/$*/.config
- 	$(MAKE) -C seabios \
- 		EXTRAVERSION=3D$(SEABIOS_EXTRAVERSION) \
--		CROSS_COMPILE=3D$(x86_64_cross_prefix) \
-+		CROSS_PREFIX=3D$(x86_64_cross_prefix) \
- 		KCONFIG_CONFIG=3D$(CURDIR)/seabios/builds/$*/.config \
- 		OUT=3D$(CURDIR)/seabios/builds/$*/ oldnoconfig
- 	$(MAKE) -C seabios \
- 		EXTRAVERSION=3D$(SEABIOS_EXTRAVERSION) \
--		CROSS_COMPILE=3D$(x86_64_cross_prefix) \
-+		CROSS_PREFIX=3D$(x86_64_cross_prefix) \
- 		KCONFIG_CONFIG=3D$(CURDIR)/seabios/builds/$*/.config \
- 		OUT=3D$(CURDIR)/seabios/builds/$*/ all
-=20
---=20
-2.19.1
+Queued up (for 4.0).
+
+thanks,
+  Gerd
 
 
