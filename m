@@ -1,44 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gQ6S5-0005Kc-5h
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Nov 2018 03:04:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32840)
+	id 1gQpGD-0001MU-BP
+	for mharc-qemu-trivial@gnu.org; Sun, 25 Nov 2018 02:55:21 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:49690)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1gQ6S3-0005JV-KI
-	for qemu-trivial@nongnu.org; Fri, 23 Nov 2018 03:04:36 -0500
+	(envelope-from <dgibson@ozlabs.org>) id 1gQpGB-0001KZ-3e
+	for qemu-trivial@nongnu.org; Sun, 25 Nov 2018 02:55:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1gQ6Rx-0006ie-U9
-	for qemu-trivial@nongnu.org; Fri, 23 Nov 2018 03:04:35 -0500
-Received: from 15.mo5.mail-out.ovh.net ([178.33.107.29]:56213)
+	(envelope-from <dgibson@ozlabs.org>) id 1gQpGA-0004DP-6N
+	for qemu-trivial@nongnu.org; Sun, 25 Nov 2018 02:55:19 -0500
+Received: from ozlabs.org ([2401:3900:2:1::2]:36129)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1gQ6Rx-0006U6-La
-	for qemu-trivial@nongnu.org; Fri, 23 Nov 2018 03:04:29 -0500
-Received: from player714.ha.ovh.net (unknown [10.109.143.109])
-	by mo5.mail-out.ovh.net (Postfix) with ESMTP id 7C2561FAFCA
-	for <qemu-trivial@nongnu.org>; Fri, 23 Nov 2018 09:04:27 +0100 (CET)
-Received: from kaod.org (lns-bzn-46-82-253-208-248.adsl.proxad.net
-	[82.253.208.248]) (Authenticated sender: groug@kaod.org)
-	by player714.ha.ovh.net (Postfix) with ESMTPSA id 57B5E1093C2;
-	Fri, 23 Nov 2018 08:04:21 +0000 (UTC)
-Date: Fri, 23 Nov 2018 09:04:19 +0100
-From: Greg Kurz <groug@kaod.org>
-To: David Gibson <david@gibson.dropbear.id.au>
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1gQpG5-00040J-UE; Sun, 25 Nov 2018 02:55:14 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 432j57119Wz9s0n; Sun, 25 Nov 2018 18:55:06 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1543132507;
+	bh=k7JCqWDx8//zRU+DreYb5HiM7qLM284EynuzAWnT6/0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hLP6qkQmP1vSStOO/xYs7X/ajYsGLjxFyQ/vdDXOL9I9oeUcAGU/iKX/c/h64ZW7q
+	YSHB5WqVIBuDi8JHUDF/D5fDzdPJBNIMqZptxcvryU5XIhYyiHkSD3V4Hqh8XaIdm+
+	DXBjzUZBPZOG9E1IomrzjRKQG3uSQ3I9CweuoCPs=
+Date: Sun, 25 Nov 2018 18:46:43 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Greg Kurz <groug@kaod.org>
 Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org
-Message-ID: <20181123090419.6209d66e@bahia.lan>
-In-Reply-To: <20181123002037.GO10448@umbus.fritz.box>
+Message-ID: <20181125074643.GB2251@umbus.fritz.box>
 References: <154289709597.235079.13366613265527123490.stgit@bahia.lan>
 	<20181123002037.GO10448@umbus.fritz.box>
-X-Mailer: Claws Mail 3.16.0 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+	<20181123090419.6209d66e@bahia.lan>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	boundary="Sig_/_ErRIVuHeKJ0Rq6TyT+afR/";
-	protocol="application/pgp-signature"
-X-Ovh-Tracer-Id: 13009491949901617638
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedtkedruddutddgudduiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 178.33.107.29
+	protocol="application/pgp-signature"; boundary="LyciRD1jyfeSSjG0"
+Content-Disposition: inline
+In-Reply-To: <20181123090419.6209d66e@bahia.lan>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2401:3900:2:1::2
 Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH] spapr: drop redundant
  statement in spapr_populate_drconf_memory()
 X-BeenThere: qemu-trivial@nongnu.org
@@ -52,66 +51,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Nov 2018 08:04:36 -0000
+X-List-Received-Date: Sun, 25 Nov 2018 07:55:20 -0000
 
---Sig_/_ErRIVuHeKJ0Rq6TyT+afR/
-Content-Type: text/plain; charset=US-ASCII
+
+--LyciRD1jyfeSSjG0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, 23 Nov 2018 11:20:37 +1100
-David Gibson <david@gibson.dropbear.id.au> wrote:
-
-> On Thu, Nov 22, 2018 at 03:31:36PM +0100, Greg Kurz wrote:
-> > Signed-off-by: Greg Kurz <groug@kaod.org> =20
+On Fri, Nov 23, 2018 at 09:04:19AM +0100, Greg Kurz wrote:
+> On Fri, 23 Nov 2018 11:20:37 +1100
+> David Gibson <david@gibson.dropbear.id.au> wrote:
 >=20
-> Applied to ppc-for-3.2.
->=20
-
-AFAIK, next release will be 4.0.
-
-> > ---
-> >  hw/ppc/spapr.c |    2 --
-> >  1 file changed, 2 deletions(-)
+> > On Thu, Nov 22, 2018 at 03:31:36PM +0100, Greg Kurz wrote:
+> > > Signed-off-by: Greg Kurz <groug@kaod.org> =20
 > >=20
-> > diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> > index 9c41098b5781..7771a628f879 100644
-> > --- a/hw/ppc/spapr.c
-> > +++ b/hw/ppc/spapr.c
-> > @@ -893,8 +893,6 @@ static int spapr_populate_drconf_memory(sPAPRMachin=
-eState *spapr, void *fdt)
-> >      /* ibm,associativity-lookup-arrays */
-> >      buf_len =3D (nr_nodes * 4 + 2) * sizeof(uint32_t);
-> >      cur_index =3D int_buf =3D g_malloc0(buf_len);
-> > -
-> > -    cur_index =3D int_buf;
-> >      int_buf[0] =3D cpu_to_be32(nr_nodes);
-> >      int_buf[1] =3D cpu_to_be32(4); /* Number of entries per associativ=
-ity list */
-> >      cur_index +=3D 2;
-> >  =20
+> > Applied to ppc-for-3.2.
+> >=20
+>=20
+> AFAIK, next release will be 4.0.
+
+Oh, right, I've renamed that.
+
+>=20
+> > > ---
+> > >  hw/ppc/spapr.c |    2 --
+> > >  1 file changed, 2 deletions(-)
+> > >=20
+> > > diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> > > index 9c41098b5781..7771a628f879 100644
+> > > --- a/hw/ppc/spapr.c
+> > > +++ b/hw/ppc/spapr.c
+> > > @@ -893,8 +893,6 @@ static int spapr_populate_drconf_memory(sPAPRMach=
+ineState *spapr, void *fdt)
+> > >      /* ibm,associativity-lookup-arrays */
+> > >      buf_len =3D (nr_nodes * 4 + 2) * sizeof(uint32_t);
+> > >      cur_index =3D int_buf =3D g_malloc0(buf_len);
+> > > -
+> > > -    cur_index =3D int_buf;
+> > >      int_buf[0] =3D cpu_to_be32(nr_nodes);
+> > >      int_buf[1] =3D cpu_to_be32(4); /* Number of entries per associat=
+ivity list */
+> > >      cur_index +=3D 2;
+> > >  =20
+> >=20
 >=20
 
 
---Sig_/_ErRIVuHeKJ0Rq6TyT+afR/
-Content-Type: application/pgp-signature
-Content-Description: OpenPGP digital signature
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--LyciRD1jyfeSSjG0
+Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEtIKLr5QxQM7yo0kQcdTV5YIvc9YFAlv3tIMACgkQcdTV5YIv
-c9ZgZw//cTfKod9ATnNl97gYNd7rG95YuQLw2cwuh272VQiSfPS2kJbN2+288A6Z
-Gzub8ecIcP0eT7W+tyCAduGc3nRFV6/GhIg1a4zj5Xe8w1sJXln8HhgiYNtLYy5R
-X9uvG1YxysrFLJFQofrTO1zJbKiwYScBp+IaMfrhaQOyobl7ChVYBBhJ1JP0JJoU
-Jbor3kXflLE+ACxCaI5F2o8lv7/Bc2e55C5ctD5C3TXSIlzVVBgABQlL8jpQyF30
-H+fH8MLLgLwBCKDBuSI3TfpZLZO2+7tjbU2HFFc3Nk+G7FlLFrgI4RYKXVtRcNr3
-rT/1JRPQm/jmIgHTl+bEfefeR+xw5wB5S8lVi6Ii0XWjTgQEs5Tf/4geaU2qhI8u
-PObluR6QEaR9vkGUeZNuk4ap4AxD/Sd743WqfOXaOvn0tPi3XknLt11mc/eQI/6S
-EbNsDwc0sVMRJiIbya0F0DLLvdg3ohFLEstVTF8IXLoe1OpC/uXaoR79Ycs5r0QF
-dZfK72cJvZ4idmNc1DIJySMgcyDtrXo3vjjW912d2RN28cuhWPn2m+4e0pS4liuY
-yYg0Sjl3QtMp1NTHNdArkUVIBzBzihH/DNme/0yX+n+9RlReO9K/gs2D+Cv5Sz2o
-63Xq+3qYBF+Iosgd+0yVvgRjnpKLctLNf2d2Com4u1jH8CZXK7k=
-=s1m2
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlv6U2MACgkQbDjKyiDZ
+s5ICvg/+JZKlo+ZJjq90SSqVDf5v3tJcCrTH0L98DVM6Y9hgCLUP5MW9BDfSoJch
++rQ7e5/XKPl7oOcuLUpyXz+9Us7RfpMYd8Ac2H2ZgFDZB1lTTyvLKU7Wqas32o3u
+BTzx0yQaoYTp9BlPmTMiAOlrAECugvoDWY0/yeLaOv0L/xD7pFYvCCYuUUDavOnu
+lgC3+mwcBStNNnxpK40x9JFO2OolfFkcyD2bMa0bHU+v/rE3+ArdglYy3dcoOnWe
+AAJBP4iDctzyYiE3CN8lBY3kxXa7JhIDzObW8TXeVIURmM73f4mDaxDyUrlvvwgQ
+RVokFXkJa7nfAEqriKhx/6fdW6xb6178YaCWteU/UKHvmjwajXUQqkWlpdS10t+A
+oDBC+HPaO1s+ca9p3/HVh1fCv2+s3Ymx4fh2pT0EnlHuZOJML83FMuaM3per7nzx
+JqTw3ZV/362A2Hc9VflO5A484AB90BDxdazhtMmvSMByWJXHJJ0K86NFWAA+erK4
+RyM7q00vF4/+9bgG/YgdOEjQn7bVE+W8wfv8EjqSJGYnFgV5ibxmmAR1sv8jQl1t
+kNvuftc5UYizYwSta5bwBAGMHAlRrciWL3qLdfC1cqSlYiLlMdi33rS3Ha3017KN
+L2uV5iPnMGgOnb8QpKupVANcdjrZr3B1WmBYlJQIpHdO94znkKY=
+=HiJG
 -----END PGP SIGNATURE-----
 
---Sig_/_ErRIVuHeKJ0Rq6TyT+afR/--
+--LyciRD1jyfeSSjG0--
 
