@@ -1,49 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gR1Nc-0000LX-RW
-	for mharc-qemu-trivial@gnu.org; Sun, 25 Nov 2018 15:51:48 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39444)
+	id 1gR1Nk-0000TK-25
+	for mharc-qemu-trivial@gnu.org; Sun, 25 Nov 2018 15:51:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39546)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gR1Na-0000Ih-IY
-	for qemu-trivial@nongnu.org; Sun, 25 Nov 2018 15:51:47 -0500
+	(envelope-from <philmd@redhat.com>) id 1gR1Nh-0000QR-Rt
+	for qemu-trivial@nongnu.org; Sun, 25 Nov 2018 15:51:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gR1NZ-0005pA-T6
-	for qemu-trivial@nongnu.org; Sun, 25 Nov 2018 15:51:46 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46848)
+	(envelope-from <philmd@redhat.com>) id 1gR1Nh-0005sn-84
+	for qemu-trivial@nongnu.org; Sun, 25 Nov 2018 15:51:53 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:57570)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1gR1NY-0005mr-0o; Sun, 25 Nov 2018 15:51:44 -0500
+	id 1gR1Nf-0005rk-Mh; Sun, 25 Nov 2018 15:51:51 -0500
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
 	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4DBFF74F19;
-	Sun, 25 Nov 2018 20:51:43 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0F3F5356D2;
+	Sun, 25 Nov 2018 20:51:51 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-26.brq.redhat.com [10.40.204.26])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9DDF85C1B2;
-	Sun, 25 Nov 2018 20:51:37 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 44C245C1B2;
+	Sun, 25 Nov 2018 20:51:47 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
 	Aleksandar Markovic <amarkovic@wavecomp.com>,
 	Stefan Markovic <smarkovic@wavecomp.com>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Date: Sun, 25 Nov 2018 21:49:40 +0100
-Message-Id: <20181125205000.10324-6-philmd@redhat.com>
+Date: Sun, 25 Nov 2018 21:49:42 +0100
+Message-Id: <20181125205000.10324-8-philmd@redhat.com>
 In-Reply-To: <20181125205000.10324-1-philmd@redhat.com>
 References: <20181125205000.10324-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Sun, 25 Nov 2018 20:51:43 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Sun, 25 Nov 2018 20:51:51 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH for-3.1 05/25] MAINTAINERS: Add missing
- entries for the Jazz machine
+Subject: [Qemu-trivial] [PATCH for-3.1 07/25] MAINTAINERS: Add a missing
+ entry for the Fulong 2E machine
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,26 +54,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 25 Nov 2018 20:51:47 -0000
+X-List-Received-Date: Sun, 25 Nov 2018 20:51:54 -0000
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- MAINTAINERS | 2 ++
- 1 file changed, 2 insertions(+)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 007f89f126..4e396cbe71 100644
+index aa17e9bbd3..81a22b2ccf 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -835,6 +835,8 @@ M: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
- R: Stefan Markovic <smarkovic@wavecomp.com>
- S: Maintained
- F: hw/mips/mips_jazz.c
-+F: hw/display/jazz_led.c
-+F: hw/dma/rc4030.c
+@@ -864,6 +864,7 @@ R: Stefan Markovic <smarkovic@wavecomp.com>
+ S: Odd Fixes
+ F: hw/mips/mips_fulong2e.c
+ F: hw/isa/vt82c686.c
++F: hw/pci-host/bonito.c
 =20
- Malta
- M: Aurelien Jarno <aurelien@aurel32.net>
+ F: include/hw/isa/vt82c686.h
+=20
 --=20
 2.17.2
 
