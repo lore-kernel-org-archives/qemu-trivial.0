@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gRKEo-0002F9-Iy
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Nov 2018 11:59:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:46843)
+	id 1gRKHm-0004tm-Kf
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Nov 2018 12:03:02 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47855)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1gRKEm-0002DJ-MS
-	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 11:59:57 -0500
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1gRKHj-0004r7-UQ
+	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 12:03:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1gRKEm-0007x6-1w
-	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 11:59:56 -0500
-Received: from chuckie.co.uk ([82.165.15.123]:55236
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1gRKHj-00010p-6V
+	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 12:02:59 -0500
+Received: from chuckie.co.uk ([82.165.15.123]:55249
 	helo=s16892447.onlinehome-server.info)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1gRKEg-0007vX-Ad; Mon, 26 Nov 2018 11:59:50 -0500
+	id 1gRKHd-0000wP-Er; Mon, 26 Nov 2018 12:02:54 -0500
 Received: from host109-146-247-52.range109-146.btcentralplus.com
 	([109.146.247.52] helo=[192.168.1.65])
 	by s16892447.onlinehome-server.info with esmtpsa
 	(TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
 	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1gRKEt-0000kS-Io; Mon, 26 Nov 2018 17:00:04 +0000
+	id 1gRKHr-0000lV-L3; Mon, 26 Nov 2018 17:03:08 +0000
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Thomas Huth <thuth@redhat.com>, David Gibson <david@gibson.dropbear.id.au>
-Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org
+	Thomas Huth <thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 References: <20181125205000.10324-1-philmd@redhat.com>
-	<20181125205000.10324-9-philmd@redhat.com>
+	<20181125205000.10324-10-philmd@redhat.com>
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Openpgp: preference=signencrypt
 Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
@@ -50,12 +50,12 @@ Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
 	Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
 	KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
 	imgcU9TTGC5qd9g=
-Message-ID: <01933a22-d0fa-10b6-ffe1-a558b3c0e471@ilande.co.uk>
-Date: Mon, 26 Nov 2018 16:59:40 +0000
+Message-ID: <d4959433-0436-9806-4a33-8a2d8ba96ebc@ilande.co.uk>
+Date: Mon, 26 Nov 2018 17:02:44 +0000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.0
 MIME-Version: 1.0
-In-Reply-To: <20181125205000.10324-9-philmd@redhat.com>
+In-Reply-To: <20181125205000.10324-10-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-GB
 Content-Transfer-Encoding: 8bit
@@ -65,8 +65,8 @@ X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
 X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 82.165.15.123
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-3.1 08/25] MAINTAINERS:
- Add a missing entry for the Old World machines
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-3.1 09/25] MAINTAINERS:
+ Add a missing entry for the sun4m machines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,7 +78,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Nov 2018 16:59:57 -0000
+X-List-Received-Date: Mon, 26 Nov 2018 17:03:00 -0000
 
 On 25/11/2018 20:49, Philippe Mathieu-Daudé wrote:
 
@@ -88,17 +88,17 @@ On 25/11/2018 20:49, Philippe Mathieu-Daudé wrote:
 >  1 file changed, 1 insertion(+)
 > 
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 81a22b2ccf..aa51ae813b 100644
+> index aa51ae813b..ba9cd9ac2b 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -936,6 +936,7 @@ F: hw/ppc/mac_oldworld.c
->  F: hw/pci-host/grackle.c
->  F: hw/misc/macio/
->  F: hw/intc/heathrow_pic.c
-> +F: include/hw/intc/heathrow_pic.h
+> @@ -1013,6 +1013,7 @@ F: hw/misc/eccmemctl.c
+>  F: hw/misc/slavio_misc.c
+>  F: include/hw/sparc/sparc32_dma.h
+>  F: pc-bios/openbios-sparc32
+> +F: include/hw/sparc/sun4m_iommu.h
 >  
->  PReP
->  M: Hervé Poussineau <hpoussin@reactos.org>
+>  Sun4u
+>  M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
 Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
