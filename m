@@ -1,66 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gRJIL-0002Lt-0F
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Nov 2018 10:59:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56179)
+	id 1gRKDo-0001b2-9D
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Nov 2018 11:58:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:46252)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1gRJII-0002Lk-Vt
-	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 10:59:31 -0500
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1gRKDm-0001ZR-F3
+	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 11:58:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1gRJIH-0007he-RR
-	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 10:59:30 -0500
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:34068)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1gRJIH-0007gk-K0; Mon, 26 Nov 2018 10:59:29 -0500
-Received: by mail-lj1-x242.google.com with SMTP id u6-v6so17078283ljd.1;
-	Mon, 26 Nov 2018 07:59:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=VT7gIq5j/tYnkWC7p5jfalCkxSsEQwgp5lWucxCm9Fw=;
-	b=BdYGe815RI46AMvp/cqmvWwbszP7Ds0ipML+HkfaNY8LQ/g3alMHJD3wvE6V86LDJk
-	AUcVlShMM+zTP0ifZk4+T5b2eW3hHj/7MnBweOn+TARdCa5Zg609uYG+5oHH8kGhcJrJ
-	q59VH7GQ4t3rNTX+EhlGLKmSeTAIe5usnXXPXcutvlKHRj2wsVOO2+FeOp7CjdP5/AYM
-	ck/08bBYgY+hyde21ojxbdVW9/pcmw5DB3eQrahNJtPrZSJ84tGsz0o4VnVLKohBxPhW
-	hSYmOm9II4LwEiNC5yEp4QwHkpw6LYczTYzK3zgXQB77SAuaFVAph4njCfF7vBrvSasv
-	1LkQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=VT7gIq5j/tYnkWC7p5jfalCkxSsEQwgp5lWucxCm9Fw=;
-	b=jfOfW5nsq8VryMpLslKZywyz8WJDJz28GfIARdT4aZ9rfapykmQGQ40fwkz0lAnEjT
-	RBNCFUaCzkAjuog8c1T6znxMHst4XKEZkBMOjMNmWgwQZYR7hm9mIUqEKi/pmre8OJpx
-	jGIbBaGqN1UmKCwqSImAdeck3gR89sMtWVr9QalcWP6mCYXifHRjSPoQ9mdAAGBbb+WP
-	FZBGq8kbRJ+IlMizEb7JsSKHS91nYu5dUFZ/ZAfjZ3YoaoQHayfpxgIquazgOTebZikS
-	l9c4JniXKQJO+hplOolb31/K0RobYVtjFH5BFgv+OY1z1E1radxytQ9LdVUN3xxiBuX7
-	BvcQ==
-X-Gm-Message-State: AA+aEWZBB/o9+B/DMP3JxZGBTjj8D789XJBTZJSGnaAUdUfKr3njAVDA
-	VlpdEAn4XkiJufXDjOSIW65jlzQgunsCmvGUpww=
-X-Google-Smtp-Source: AFSGD/UeQPTOr6NwYAOEDySQ4i1PqI/BYizAZgePaCgCLvxlNZInblrd25d3j4DCAREWT4LbNMloT+RhaLutQhZWhUA=
-X-Received: by 2002:a2e:4218:: with SMTP id
-	p24-v6mr17248237lja.58.1543247966528; 
-	Mon, 26 Nov 2018 07:59:26 -0800 (PST)
-MIME-Version: 1.0
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1gRKDl-0007Tf-OR
+	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 11:58:54 -0500
+Received: from chuckie.co.uk ([82.165.15.123]:55230
+	helo=s16892447.onlinehome-server.info)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1gRKDh-0007Ot-Fd; Mon, 26 Nov 2018 11:58:49 -0500
+Received: from host109-146-247-52.range109-146.btcentralplus.com
+	([109.146.247.52] helo=[192.168.1.65])
+	by s16892447.onlinehome-server.info with esmtpsa
+	(TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1gRKDo-0000jx-M8; Mon, 26 Nov 2018 16:58:57 +0000
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Thomas Huth <thuth@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 References: <20181125205000.10324-1-philmd@redhat.com>
-	<20181125205000.10324-5-philmd@redhat.com>
-In-Reply-To: <20181125205000.10324-5-philmd@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 26 Nov 2018 07:58:58 -0800
-Message-ID: <CAKmqyKPzxsj4oATNH4k5C23ShG4RUTWpFHHbq4+4GDo5wXNa=g@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, Edgar Iglesias <edgar.iglesias@gmail.com>, 
-	Alistair Francis <alistair@alistair23.me>,
-	Peter Maydell <peter.maydell@linaro.org>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-3.1 04/25] MAINTAINERS:
- Add missing entries for the Xilinx ZynqMP machine
+	<20181125205000.10324-3-philmd@redhat.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Openpgp: preference=signencrypt
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+	xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+	3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+	E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+	PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+	PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+	AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+	eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+	NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+	mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+	z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+	T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+	DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+	y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+	2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+	14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+	YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+	Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+	BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+	opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+	NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+	Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+	KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+	imgcU9TTGC5qd9g=
+Message-ID: <c7b9d6dd-caa2-4a92-56bd-eb55f6f71835@ilande.co.uk>
+Date: Mon, 26 Nov 2018 16:58:30 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.0
+MIME-Version: 1.0
+In-Reply-To: <20181125205000.10324-3-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-GB
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 109.146.247.52
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
+X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 82.165.15.123
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-3.1 02/25] MAINTAINERS:
+ Add a missing entry to the SPARC CPU
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,37 +78,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Nov 2018 15:59:31 -0000
+X-List-Received-Date: Mon, 26 Nov 2018 16:58:55 -0000
 
-On Sun, Nov 25, 2018 at 12:54 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+On 25/11/2018 20:49, Philippe Mathieu-Daudé wrote:
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  MAINTAINERS | 3 +++
->  1 file changed, 3 insertions(+)
->
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 3b9996ab2c..007f89f126 100644
+> index 6c4f25fb05..ae12323647 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -711,6 +711,9 @@ L: qemu-arm@nongnu.org
->  S: Maintained
->  F: hw/*/xlnx*.c
->  F: include/hw/*/xlnx*.h
-> +F: include/hw/ssi/xilinx_spips.h
-> +F: hw/display/dpcd.c
-> +F: include/hw/display/dpcd.h
->
->  ARM ACPI Subsystem
->  M: Shannon Zhao <shannon.zhaosl@gmail.com>
-> --
-> 2.17.2
->
->
+> @@ -281,6 +281,7 @@ S: Maintained
+>  F: target/sparc/
+>  F: hw/sparc/
+>  F: hw/sparc64/
+> +F: include/hw/sparc/sparc64.h
+>  F: disas/sparc.c
+>  
+>  UniCore32
+
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+
+
+ATB,
+
+Mark.
 
