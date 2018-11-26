@@ -1,45 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gR4uA-0005hy-EP
-	for mharc-qemu-trivial@gnu.org; Sun, 25 Nov 2018 19:37:38 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:37351)
+	id 1gRBOu-0003Mm-6J
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Nov 2018 02:33:48 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:41296)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gR4u8-0005gS-Hv
-	for qemu-trivial@nongnu.org; Sun, 25 Nov 2018 19:37:37 -0500
+	(envelope-from <kraxel@redhat.com>) id 1gRBOq-0003Lz-6K
+	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 02:33:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gR4u7-0001sC-JU
-	for qemu-trivial@nongnu.org; Sun, 25 Nov 2018 19:37:36 -0500
-Received: from ozlabs.org ([2401:3900:2:1::2]:50621)
+	(envelope-from <kraxel@redhat.com>) id 1gRBOp-0002iY-Ib
+	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 02:33:44 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:46526)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1gR4u3-0001o6-CO; Sun, 25 Nov 2018 19:37:32 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 4337Kg58Ykz9s3C; Mon, 26 Nov 2018 11:37:27 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1543192647;
-	bh=giW1X9QRG56iOv0VNotsfU4SjNhjXUrnS+z+1nmxVsw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ect/pNoL/RKox+z/3NfhM/uzdD0y8gHPxvh513a0SnrafNbzMNzbmltTY+3hUqQlO
-	/WZ/gu2MU1xLl9fnh9HiNB1r7ezwcvKjdADn+6oX3et+3hNXL74TXqa2jcDuf27m7S
-	+LupTT7V3+p0LgnApVCBSWDwqzMHtz0nVU83AAjM=
-Date: Mon, 26 Nov 2018 11:15:40 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1gRBOk-0002Q7-P2; Mon, 26 Nov 2018 02:33:38 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0F7AA8535D;
+	Mon, 26 Nov 2018 07:33:38 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-59.ams2.redhat.com
+	[10.36.116.59])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 731675D776;
+	Mon, 26 Nov 2018 07:33:32 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id 92F175DEFE; Mon, 26 Nov 2018 08:33:31 +0100 (CET)
+Date: Mon, 26 Nov 2018 08:33:31 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
-Message-ID: <20181126001540.GF2251@umbus.fritz.box>
+	qemu-trivial@nongnu.org,
+	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
+Message-ID: <20181126073331.ankv2nyifmnuagra@sirius.home.kraxel.org>
 References: <20181125205000.10324-1-philmd@redhat.com>
-	<20181125205000.10324-9-philmd@redhat.com>
+	<20181125205000.10324-18-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="V4b9U9vrdWczvw78"
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20181125205000.10324-9-philmd@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-trivial] [PATCH for-3.1 08/25] MAINTAINERS: Add a missing
- entry for the Old World machines
+In-Reply-To: <20181125205000.10324-18-philmd@redhat.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 26 Nov 2018 07:33:38 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH for-3.1 17/25] MAINTAINERS: Add a missing
+ entry to SPICE
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,61 +59,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Nov 2018 00:37:37 -0000
+X-List-Received-Date: Mon, 26 Nov 2018 07:33:44 -0000
 
-
---V4b9U9vrdWczvw78
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Sun, Nov 25, 2018 at 09:49:43PM +0100, Philippe Mathieu-Daud=E9 wrote:
+On Sun, Nov 25, 2018 at 09:49:52PM +0100, Philippe Mathieu-Daud=E9 wrote:
 > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
 > ---
 >  MAINTAINERS | 1 +
 >  1 file changed, 1 insertion(+)
 >=20
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 81a22b2ccf..aa51ae813b 100644
+> index 2795135a09..28e5038c73 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -936,6 +936,7 @@ F: hw/ppc/mac_oldworld.c
->  F: hw/pci-host/grackle.c
->  F: hw/misc/macio/
->  F: hw/intc/heathrow_pic.c
-> +F: include/hw/intc/heathrow_pic.h
-> =20
->  PReP
->  M: Herv=E9 Poussineau <hpoussin@reactos.org>
+> @@ -1736,6 +1736,7 @@ F: ui/spice-*.c
+>  F: audio/spiceaudio.c
+>  F: hw/display/qxl*
+>  F: qapi/ui.json
+> +F: docs/spice-port-fqdn.txt
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---V4b9U9vrdWczvw78
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlv7OycACgkQbDjKyiDZ
-s5KrZA//bhZPfoOo2Sy5yDgCtHH6Bqo0cSQgEYeFIb2GirVFwzsQ6I8UaDAW5dGV
-h6lk1Qe7n4PtPx6ZrwCpVEQStAdsWivGit0y49iMhQyz0ivAd9ySI/RZ82YOrKj1
-Z6BcAzDjx+PD85q19zYjSf2JqDv06hWk3DsHkAd0H0M6A4wiuI0zUwthcBYy7Cs4
-Vu+YBu6BcEqW3OuvYkYXxyFaBDo6x9Pp29kZzfnjUtAmE5Pb6xlyzr4dFJ+/mWQn
-R5zclKOSM7g0boT/bgW/NT8HC5KJ+9GsDRQp5pLuVGLpldmNgG0MY7uVAt25RTJ/
-JjF0TECmqwEBT5I3BFF6b6JhiN/FtvleBvy3p48hJxlY22ruFueUS1XnthD+dNVS
-OTSakLzeRgYaewMZeoV9Zo/S0eAliU/bh2rWdsVEgQIwv0KfbadR+RA6JQjWWxIR
-vX3lDqpiGqxX9eiNUJ2RjwoEJnxAZQFcV6d7o1VcTGAefQOoSZDMfezEpDxAKn/f
-KUXhQNoODZGNshkTpK5e9K/+DFpXmJVjcBalWCrxxqDpnmbAhJnuIhF43Ju1Xdeo
-fu0XJqv0Dex0vv5LcJGWU9M9zZHJsJC9XSer7g+WubIc1d6loTXjt2Z3XHqTtcSh
-sPfo2fwB8JKx7SHoAKbtDSEbhdWHQAmzb4+74pSS5wE1S22LNxI=
-=yl+G
------END PGP SIGNATURE-----
-
---V4b9U9vrdWczvw78--
+Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
 
