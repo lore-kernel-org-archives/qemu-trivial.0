@@ -1,70 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gRKK4-00078L-AH
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Nov 2018 12:05:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:48785)
+	id 1gRL1Y-0003JL-3U
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Nov 2018 12:50:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36734)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1gRKK1-00073n-JE
-	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 12:05:22 -0500
+	(envelope-from <philmd@redhat.com>) id 1gRL1T-0003J7-9u
+	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 12:50:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1gRKK0-0002Jp-T7
-	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 12:05:21 -0500
-Received: from chuckie.co.uk ([82.165.15.123]:55259
-	helo=s16892447.onlinehome-server.info)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1gRKJu-0002GW-7g; Mon, 26 Nov 2018 12:05:14 -0500
-Received: from host109-146-247-52.range109-146.btcentralplus.com
-	([109.146.247.52] helo=[192.168.1.65])
-	by s16892447.onlinehome-server.info with esmtpsa
-	(TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1gRKK8-0000mK-MR; Mon, 26 Nov 2018 17:05:29 +0000
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	(envelope-from <philmd@redhat.com>) id 1gRL1Q-0003iz-6U
+	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 12:50:15 -0500
+Received: from mail-wm1-f65.google.com ([209.85.128.65]:34389)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gRL1Q-0003iK-0x
+	for qemu-trivial@nongnu.org; Mon, 26 Nov 2018 12:50:12 -0500
+Received: by mail-wm1-f65.google.com with SMTP id y185so13075984wmd.1
+	for <qemu-trivial@nongnu.org>; Mon, 26 Nov 2018 09:50:11 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=12c8da+w1/HmKURotRyCNKYc0RsXRgEbN8iz5sNhDCo=;
+	b=gT74VKRfZ7yf6Ao0D+YAfW/gsprigGWPKXgERxHIQkHGXpB3JkYhPh9uddURB1GIjU
+	MaW+AdNzXX7owj8lnpeQaIdsBZzLMHVZCDt9irwTXI2yxskbVkbKeUwSqAUYZZLD2BvC
+	IkX8JvFGtIYeaKorCIAQX7VN+8/BOjv2b9S0jinwl1nbpLTPi3Mh4owXjPS+RGiV752o
+	WZUBc8di5sYutT0/v1X8DYrW+D6v7LJFmXbWjBAbs4WbyrywYZt0nplJW259IrASE0Uq
+	2jelD0nT5a6/2r1ezj+I5qvR0chXRbBxCkmqg6/3iZdqRsEFfwXFXpYPTxbGcWdW4dIM
+	kEtQ==
+X-Gm-Message-State: AGRZ1gLgvG370XRgJoBh2wIKfdsdG0FDuomp4Q1WhO5ED5UYjdDllRV2
+	0fxZBpRENVDk+CywJ3uJLbWSdA==
+X-Google-Smtp-Source: AJdET5f+Xo35kTBfJ47bSJrlHnFrDsaNdd0JvG+jM/3G0bOJUx59tWpJooUMYXW8OR1Mda1NIzvvYw==
+X-Received: by 2002:a7b:c0d2:: with SMTP id s18mr26455307wmh.66.1543254610974; 
+	Mon, 26 Nov 2018 09:50:10 -0800 (PST)
+Received: from ?IPv6:2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9?
+	([2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9])
+	by smtp.gmail.com with ESMTPSA id
+	a17sm1304923wrs.58.2018.11.26.09.49.37
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 26 Nov 2018 09:49:50 -0800 (PST)
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Thomas Huth <thuth@redhat.com>
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 References: <20181125205000.10324-1-philmd@redhat.com>
 	<20181125205000.10324-11-philmd@redhat.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Openpgp: preference=signencrypt
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
-	xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
-	3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
-	E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
-	PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
-	PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
-	AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
-	eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
-	NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
-	mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
-	z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
-	T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
-	DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
-	y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
-	2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
-	14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
-	YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
-	Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
-	BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
-	opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
-	NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
-	Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
-	KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
-	imgcU9TTGC5qd9g=
-Message-ID: <40c0e94b-687c-aaba-9d29-9ecdcbad937d@ilande.co.uk>
-Date: Mon, 26 Nov 2018 17:05:05 +0000
+	<40c0e94b-687c-aaba-9d29-9ecdcbad937d@ilande.co.uk>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <2a9cf123-f677-3bdd-efeb-08c895a6243c@redhat.com>
+Date: Mon, 26 Nov 2018 18:49:26 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.0
 MIME-Version: 1.0
-In-Reply-To: <20181125205000.10324-11-philmd@redhat.com>
+In-Reply-To: <40c0e94b-687c-aaba-9d29-9ecdcbad937d@ilande.co.uk>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-GB
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 109.146.247.52
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
-X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 82.165.15.123
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.128.65
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-3.1 10/25] MAINTAINERS:
  Add missing entries for the sun4u machines
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,40 +70,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Nov 2018 17:05:22 -0000
+X-List-Received-Date: Mon, 26 Nov 2018 17:50:16 -0000
 
-On 25/11/2018 20:49, Philippe Mathieu-Daudé wrote:
-
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  MAINTAINERS | 4 ++++
->  1 file changed, 4 insertions(+)
+On 26/11/18 18:05, Mark Cave-Ayland wrote:
+> On 25/11/2018 20:49, Philippe Mathieu-Daudé wrote:
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index ba9cd9ac2b..d9cddb0cc8 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1019,6 +1019,10 @@ Sun4u
->  M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
->  S: Maintained
->  F: hw/sparc64/sun4u.c
-> +F: hw/sparc64/sun4u_iommu.c
-> +F: include/hw/sparc/sun4u_iommu.h
-> +F: hw/pci-host/sabre.c
-> +F: include/hw/pci-host/sabre.h
->  F: pc-bios/openbios-sparc64
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  MAINTAINERS | 4 ++++
+>>  1 file changed, 4 insertions(+)
+>>
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index ba9cd9ac2b..d9cddb0cc8 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -1019,6 +1019,10 @@ Sun4u
+>>  M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+>>  S: Maintained
+>>  F: hw/sparc64/sun4u.c
+>> +F: hw/sparc64/sun4u_iommu.c
+>> +F: include/hw/sparc/sun4u_iommu.h
+>> +F: hw/pci-host/sabre.c
+>> +F: include/hw/pci-host/sabre.h
+>>  F: pc-bios/openbios-sparc64
+> 
+> These are correct, however you also want to add the simba PCI bridges i.e.
+> 
+> F: hw/pci-bridge/simba.c
+> F: include/hw/pci-bridge/simba.h
 
-These are correct, however you also want to add the simba PCI bridges i.e.
+OK, will update.
 
-F: hw/pci-bridge/simba.c
-F: include/hw/pci-bridge/simba.h
+> 
+> So with that:
+> 
+> Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
-So with that:
+Thanks!
 
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-
-
-ATB,
-
-Mark.
+Phil.
 
