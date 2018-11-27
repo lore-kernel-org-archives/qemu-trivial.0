@@ -1,28 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gRbXA-0004Kj-FY
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 06:28:04 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56542)
+	id 1gRbY3-0005lI-MC
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 06:28:59 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56868)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gRbX8-0004Ix-5r
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:28:03 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gRbY2-0005kV-8v
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:28:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gRbX7-0001tH-Co
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:28:02 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:36137)
+	(envelope-from <laurent@vivier.eu>) id 1gRbXy-0002FV-P7
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:28:57 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:50051)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gRbWy-0001k2-TY; Tue, 27 Nov 2018 06:27:53 -0500
+	id 1gRbXy-0002F3-GK; Tue, 27 Nov 2018 06:28:54 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue108 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1MSbt9-1fyl3y1le5-00SxBv; Tue, 27 Nov 2018 12:27:39 +0100
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: Paul Burton <pburton@wavecomp.com>,
-	Stefan Markovic <smarkovic@wavecomp.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-ppc@nongnu.org, 
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-References: <1542891760-13937-1-git-send-email-thuth@redhat.com>
+	(mreue106 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1MmCyE-1fji8f1ze4-00iDh4; Tue, 27 Nov 2018 12:28:49 +0100
+To: Thomas Huth <thuth@redhat.com>, Chris Wulff <crwulff@gmail.com>,
+	Marek Vasut <marex@denx.de>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <1542899500-23346-1-git-send-email-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -67,36 +63,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <4ee473b2-58a6-746c-56d0-533a17114181@vivier.eu>
-Date: Tue, 27 Nov 2018 12:27:36 +0100
+Message-ID: <e5f08bf0-c4fb-52c2-41ef-07ed61c51098@vivier.eu>
+Date: Tue, 27 Nov 2018 12:28:48 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <1542891760-13937-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <1542899500-23346-1-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:sAPvtlLgAJI0NUQpRh8esVyuqmXT2DIP7KLxqlpINyKcKBztyC2
-	7C+eH7ftmYo5baUiId+SAXqisouEYF9EHGAzjgJTarH181btR4VekMO3fUyRhWEa/pkMZLt
-	sAZUOlljixu4fIBb8ApOx6veLV+j+ila1TgbDabWyJRhmyR0iD+5VWtwRm1a+CJpm6OoDjK
-	YKsKZDET5sglB/48DEwoA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:WZLP66Mho+k=:gkq+IByY6eefe4UYAaj3Ys
-	gfMDkvPlacshiTiuGrqCg6TcRqSom3M2y+BRagd90UyOtp1ipfq3qA4tnCS3pT4gSftC7vQOp
-	L4UUXOKP6CApV5zf3npsQq+7tqaez9paZ5wUGczXRwBrOrU2zGBNE7GqKsHT2G50AQVnRDDBK
-	QasbUwYTMZehvBzH2FrRvaee9CwaGyLTlkd9zqdjEYbS56HLkvhyuXvmL1TUszpObABPS5Zrt
-	OUC6yhO/i5a1thoMuu1FU3qy3nFGDXlCoK3ZWMLO3FB80RK2nS4FXjL0iYQbFBVQCAAcvBEVD
-	VxH1vZ92VEoQ/1fsbD11QmFkBVdWLJfEXPBQcQj2hRApz0+/+0Jtwqz0BPcQCVkSUMLghkoiK
-	c3bCyxuNx3+1U5CekMLKAGik+U9+cDuBpvMEU7pkh/TfXNInKWnGpDNBoYhSSaK/Bc4BK6Qz5
-	QDv9P4bO2DIIsLEWbBIUaXXJTXuRGjXWi0rWCOR7NEXtSSIWgFVcEX10WpVHtbJxix6jtBUWq
-	d1bcsLRwpDtDohMC65DtB99G6vewlbAJGr32V54g8CpDIlod3A8yX5c261KVwf0pwHLBOM7eF
-	z5WQid7WCNsa+VtpXY1fRf3StMI1ueIvufIyQ60F3GhnGh0V7VVWPq+XKCNID4b9fv7cnxHoA
-	3ZGFX/O1w8+UetuykkIzftnCL/ZQcGUQ/8btdKarhlDWeLbPA9+G8sYeOq3KmvuVnBhf7s0V6
-	FmC+ucgN8XcKf/orS5YnnvgNYRGXGfFJRuc10isLVJZYpLwq3LGpNAlmHSKLRawnh2xLJIRHX
-	QSQU+2+L5vLb1SuZ3kpq9S/VBDkbA==
+X-Provags-ID: V03:K1:Zux8C7GLhg9RXsiOZyUOnhs8XFKfncgea0vmmk7xLz73RWIhQSV
+	IseUTxgIs4bCpALDos3hWka/GdkgsQUDh46YkyQxr7TuhIROX+wS6gGL/E+Y4ZbIQAoCWxM
+	1kgOkojSJVY2SE2HipT2OnmVJBKMkLxriS03iSZR0wqWJ6TenrzZw4Kny8Z4uxG7xPweifr
+	Spe6Qt3RgRYnO00awov3Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:shOCVsQtYgc=:ngnjDehxKgXi2J11RuwmoC
+	KpdBSkaG8LZNwsrSQT6ujSNS0zGK71gT7b3T3rbv2+0usCbU/q330V1VKH2uP3e4wZ3qUcmj0
+	5BP0JdZ2EHaBfskFMPDHMBwl7YrutnWUh9f0CjmcSSa8Jb3duObLoW5VYcwj6G8C0bGM97StL
+	W0DKrEhOW/G0ikhXrQzg3uP62Yvi5Hu31zVNeYlxSeo2bF1KmiJbLOjKQmtrNx5qUVKIHfmgH
+	N8RoxnNeh2Bj/zVoOlFkLlsMs9dUGW1CWYLWxGLq771ZoRmeeTg67sNluqekoEywoYCug2ojq
+	gdXCjGO00ITbBrcdeNYoJGFvARi5lOLY+65JOkaIy/ppQb8fEC2qCf8Tk7H2G3vrZ4QJOiok8
+	QLNoBBXiWy138wnCA6IPr7POcXMGaVWH6LT0NzWniYKAZXaM05/w3ZsPRRN1yiI3y1l+g0qrV
+	5pd17se/VHvpnSPH6EESgvyUTOVqURkFSLr1Nu5Rcn0BSWECHendwUqkYMvs3n1Okr72ELzQT
+	4P7DsJ18LOjHR/F6R/hVBTtRhVmpqqsJ86AdHre4zsmT3tbKCEJkiskYDWOFGEPzNySYNN5Zj
+	ei5E8kr3lKOZ3+xnvAdXQ5w0U56EhZPeQMxR3DLeiKZYuulxblJ//KJ0cqxuOzEeTRBkSjm36
+	d7Ld/QagClgKE5BmfxyomEPV2g7yHlU0HSAliqTQQhwRDZz2RUsSeklNFCSdM6fAg+gnvyjXG
+	sj+EFSPD9loiQYLesNszr+TAFVdmJmoS/8w+F8UaUpBSnzg6Qz+Ib99K8R8jPOouvfJrwQc19
+	FkHLQtA1w0E8Xn4G68aeI8w+TdnPQ==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 217.72.192.74
-Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Add missing hw/pci-host
- entries
+Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Add nios2-related files to
+ the Nios2 section
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,16 +104,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Nov 2018 11:28:04 -0000
+X-List-Received-Date: Tue, 27 Nov 2018 11:28:59 -0000
 
-On 22/11/2018 14:02, Thomas Huth wrote:
-> Bonito belongs to Fulong-2E, Sabre belongs to Sun4u, and Mac-Newworld
-> and Mips-Boston were missing the header files.
+On 22/11/2018 16:11, Thomas Huth wrote:
+> nios2_iic.c and the default-configs/nios2-softmmu.mak file are
+> currently "unmaintained" according to the get_maintainers.pl script.
+> Move them to the Nios2 section where they obviously belong to.
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  MAINTAINERS | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
+>  MAINTAINERS | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 1291c07..33245b4 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -226,7 +226,9 @@ M: Marek Vasut <marex@denx.de>
+>  S: Maintained
+>  F: target/nios2/
+>  F: hw/nios2/
+> +F: hw/intc/nios2_iic.c
+>  F: disas/nios2.c
+> +F: default-configs/nios2-softmmu.mak
+>  
+>  OpenRISC
+>  M: Stafford Horne <shorne@gmail.com>
 > 
 
 
