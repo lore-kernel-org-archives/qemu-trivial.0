@@ -1,88 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gRaJf-0008P6-3F
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 05:10:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33507)
+	id 1gRaYW-0007Gl-PM
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 05:25:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36237)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gRaJZ-0008Lb-A7
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 05:10:01 -0500
+	(envelope-from <philmd@redhat.com>) id 1gRaYU-0007At-Qf
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 05:25:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gRaJY-00067W-BP
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 05:09:57 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:56726)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1gRaJP-00063w-Iz; Tue, 27 Nov 2018 05:09:47 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 100B6C0495AD;
-	Tue, 27 Nov 2018 10:09:46 +0000 (UTC)
-Received: from [10.36.112.42] (ovpn-112-42.ams2.redhat.com [10.36.112.42])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 99A7F1057077;
-	Tue, 27 Nov 2018 10:09:38 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
-	<philmd@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Eduardo Habkost <ehabkost@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+	(envelope-from <philmd@redhat.com>) id 1gRaYR-0006xx-LS
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 05:25:22 -0500
+Received: from mail-wm1-f66.google.com ([209.85.128.66]:50950)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gRaYR-0006xM-GC
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 05:25:19 -0500
+Received: by mail-wm1-f66.google.com with SMTP id 125so21298942wmh.0
+	for <qemu-trivial@nongnu.org>; Tue, 27 Nov 2018 02:25:19 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=4aD/RjV6v+Qs32EhOGv02RC2vKrMN6jUZ03dt3CQIv8=;
+	b=ZTlYpXq7jBns7JWcJtL/z5TKeAZKLOwfE88GN71XfNzOnX3PjaxkvN6pGKZDQ1nQAc
+	1u5U6eLpOCFTYfU2sSYTXzgTe2chorM0J7Ra+hoj7ylEeK7qnHtshlxXMt9xRiW+6Ghj
+	uEZbVIzZaYGH2ZtpbCMsuBjYB91wS2rBTnhGZQ2nXYK+XcHJeU5W2K8iucIan5u5Hxn5
+	pVo1InB0D8I7umlA/2Z81syTWswnoxD66sEK/VpF43+xTny0ycOkiBoFROXMNgILvZIr
+	SVEZnhD4M0eM3AnxKRHJek9ey60g3Hvu/bfwqMK6yOg8IprrAJD5RFg1yuwhP05r4kT5
+	OygQ==
+X-Gm-Message-State: AGRZ1gLApzhGxQQCgM7slw0bRr6sWAar+JUKeqxHguQNKCRVDTWklnWg
+	9LMPUYCWWf4opfjUj2C7m/mSy2t7M3A=
+X-Google-Smtp-Source: AFSGD/Ws53UzJLuKe86gjATg7G1HgydlClUEFNVdE3V7aL6JgGrqS49b8e0DzLSPiylPiIPphc8XtA==
+X-Received: by 2002:a1c:3e84:: with SMTP id
+	l126-v6mr26607829wma.57.1543314318227; 
+	Tue, 27 Nov 2018 02:25:18 -0800 (PST)
+Received: from ?IPv6:2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9?
+	([2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9])
+	by smtp.gmail.com with ESMTPSA id
+	n62sm1921484wmd.25.2018.11.27.02.25.17
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 27 Nov 2018 02:25:17 -0800 (PST)
+To: Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Thomas Huth <thuth@redhat.com>, Stefan Markovic <smarkovic@wavecomp.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
 References: <20181125205000.10324-1-philmd@redhat.com>
-	<20181125205000.10324-4-philmd@redhat.com>
-	<602e637d-1e85-102a-4d90-b3c7aa4dac13@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <73fe6263-8dbf-c9b7-6e0e-cbcdc25118c3@redhat.com>
-Date: Tue, 27 Nov 2018 11:09:36 +0100
+	<20181125205000.10324-8-philmd@redhat.com>
+	<19bfc512-65ac-9968-3930-8b423efde241@redhat.com>
+	<BN6PR2201MB12517471D0B4ADEE146C1414C6D00@BN6PR2201MB1251.namprd22.prod.outlook.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <1ce06557-1b19-c736-e2d0-674263cf4f79@redhat.com>
+Date: Tue, 27 Nov 2018 11:25:16 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.0
 MIME-Version: 1.0
-In-Reply-To: <602e637d-1e85-102a-4d90-b3c7aa4dac13@redhat.com>
+In-Reply-To: <BN6PR2201MB12517471D0B4ADEE146C1414C6D00@BN6PR2201MB1251.namprd22.prod.outlook.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Tue, 27 Nov 2018 10:09:46 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-3.1 03/25] MAINTAINERS:
- Add missing entries to the X86 section (AMD SEV)
+X-Received-From: 209.85.128.66
+Subject: Re: [Qemu-trivial] [PATCH for-3.1 07/25] MAINTAINERS: Add a missing
+ entry for the Fulong 2E machine
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -94,33 +74,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Nov 2018 10:10:01 -0000
+X-List-Received-Date: Tue, 27 Nov 2018 10:25:23 -0000
 
-On 27/11/18 11:00, Thomas Huth wrote:
-> On 2018-11-25 21:49, Philippe Mathieu-Daud=C3=A9 wrote:
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+On 27/11/18 10:58, Aleksandar Markovic wrote:
+
+[moving Aleksandar reply down to avoid top-posting on technical list]
+
+> From: Thomas Huth <thuth@redhat.com>
+> On 2018-11-25 21:49, Philippe Mathieu-Daudé wrote:
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 >> ---
->>  MAINTAINERS | 2 ++
->>  1 file changed, 2 insertions(+)
+>>  MAINTAINERS | 1 +
+>>  1 file changed, 1 insertion(+)
 >>
 >> diff --git a/MAINTAINERS b/MAINTAINERS
->> index ae12323647..3b9996ab2c 100644
+>> index aa17e9bbd3..81a22b2ccf 100644
 >> --- a/MAINTAINERS
 >> +++ b/MAINTAINERS
->> @@ -300,8 +300,10 @@ F: target/i386/
->>  F: tests/tcg/i386/
->>  F: tests/tcg/x86_64/
->>  F: hw/i386/
->> +F: include/sysemu/sev.h
->>  F: disas/i386.c
->>  F: docs/qemu-cpu-models.texi
->> +F: docs/amd-memory-encryption.txt
->>  T: git https://github.com/ehabkost/qemu.git x86-next
->=20
-> Not sure, but I think this should rather be added to the KVM section,
-> not to the TCG section?
+>> @@ -864,6 +864,7 @@ R: Stefan Markovic <smarkovic@wavecomp.com>
+>>  S: Odd Fixes
+>>  F: hw/mips/mips_fulong2e.c
+>>  F: hw/isa/vt82c686.c
+>> +F: hw/pci-host/bonito.c
+>>
+>>  F: include/hw/isa/vt82c686.h
+> 
+> Please remove the empty line between bonito.c and vt82c686.h - or we
+> could use my patch here from last Thursday instead:
+> 
+>  https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg04526.html
 
-Yes, agreed.
+> I like better the patch that Thomas linked to. I think Philippe should
+have included Thomas' patch, rather than creating new, overlapping,
+patches. Confusion about straitforward things! Aleksandar
 
-Paolo
+Yes you are right, I missed Thomas's patch, so please disregard mine.
+
+Thanks!
+
+Phil.
+
+> 
+>  Thomas
+> 
+> 
 
