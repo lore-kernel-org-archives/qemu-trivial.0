@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gRXhA-0005pi-FB
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 02:22:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45283)
+	id 1gRXht-0006Bo-Qf
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 02:22:53 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45442)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gRXh8-0005pT-P1
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 02:22:07 -0500
+	(envelope-from <thuth@redhat.com>) id 1gRXhr-0006AQ-VZ
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 02:22:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gRXh3-000845-TI
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 02:22:06 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35426)
+	(envelope-from <thuth@redhat.com>) id 1gRXhr-0008FV-9x
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 02:22:51 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:36090)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gRXc7-0005a8-RI; Tue, 27 Nov 2018 02:16:56 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	id 1gRXhj-0008Dq-Uf; Tue, 27 Nov 2018 02:22:44 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2B7B73001932;
-	Tue, 27 Nov 2018 07:16:54 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id DBF9931524E2;
+	Tue, 27 Nov 2018 07:22:42 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-130.ams2.redhat.com [10.36.116.130])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 3851A50F4E;
-	Tue, 27 Nov 2018 07:16:44 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 546BE5D9CA;
+	Tue, 27 Nov 2018 07:22:37 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+	David Gibson <david@gibson.dropbear.id.au>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-ppc@nongnu.org
 References: <20181125205000.10324-1-philmd@redhat.com>
-	<20181125205000.10324-15-philmd@redhat.com>
+	<20181125205000.10324-23-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -71,24 +71,24 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <c93084ba-42a0-14d1-7835-cec72eacc6f0@redhat.com>
-Date: Tue, 27 Nov 2018 08:16:43 +0100
+Message-ID: <1fc0d0cb-dead-be57-e4d1-590eed9929a7@redhat.com>
+Date: Tue, 27 Nov 2018 08:22:36 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20181125205000.10324-15-philmd@redhat.com>
+In-Reply-To: <20181125205000.10324-23-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.47]);
-	Tue, 27 Nov 2018 07:16:54 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.41]);
+	Tue, 27 Nov 2018 07:22:43 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH for-3.1 14/25] MAINTAINERS: Add missing
- entries to the vhost section
+Subject: Re: [Qemu-trivial] [PATCH for-3.1 22/25] MAINTAINERS: Add a missing
+ entry to the New World machines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,27 +100,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Nov 2018 07:22:07 -0000
+X-List-Received-Date: Tue, 27 Nov 2018 07:22:52 -0000
 
 On 2018-11-25 21:49, Philippe Mathieu-Daud=C3=A9 wrote:
+> The CHRP NVRAM has his own section, but since the New World
+> section contains the mac_nvram.c, it makes sens to also monitor
+> the corresponding header.
+>=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
 >  MAINTAINERS | 1 +
 >  1 file changed, 1 insertion(+)
 >=20
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index e124792557..eab0fb9742 100644
+> index 92691589b1..a248c8c564 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -1359,6 +1359,7 @@ M: Michael S. Tsirkin <mst@redhat.com>
->  S: Supported
->  F: hw/*/*vhost*
->  F: docs/interop/vhost-user.txt
-> +F: contrib/vhost-user-*/
-> =20
->  virtio
->  M: Michael S. Tsirkin <mst@redhat.com>
->=20
+> @@ -930,6 +930,7 @@ F: hw/nvram/mac_nvram.c
+>  F: include/hw/misc/macio/
+>  F: include/hw/misc/mos6522.h
+>  F: include/hw/ppc/mac_dbdma.h
+> +F: include/hw/nvram/chrp_nvram.h
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+I don't see the point why we should add duplicated entries here? The
+header is also used by the Sparc machines, so why should this be added
+additionally to the Mac machines only here, too? I suggest to drop this
+patch.
+
+ Thomas
 
