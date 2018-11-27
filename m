@@ -1,66 +1,101 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gRghm-0002u0-8z
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 11:59:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:50169)
+	id 1gRghn-0002vi-V2
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 11:59:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:50007)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gRghe-0002m3-R0
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 11:59:18 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gRghi-0002gP-8j
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 11:59:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gRgZC-00076X-42
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 11:50:34 -0500
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:39192)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gRgZB-000768-Ux
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 11:50:30 -0500
-Received: by mail-wm1-f66.google.com with SMTP id n133so6199136wmd.4
-	for <qemu-trivial@nongnu.org>; Tue, 27 Nov 2018 08:50:29 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=X/xkKfGX/HftLKirSiSbt9uxFqpmvyjJB0J+lykjqW8=;
-	b=V/fSTehqbftlV1UjPwud3a8iZ23d5/0+CxZMVVnZ3t3zblpbXgCxaJHx0O/pH2DExT
-	P4znvZ4gzOJjx7BoDsX3g225UOef7MqMaBoMtmKBavHrJEGotIb4WLZ2ROevB0pIzWUQ
-	zkvz1qXxiql6wJa2hgrwZuVFJEvFFiSCtvgWNr+0JqW9RJu+KyeO1FlAD5xhsIlzeJEF
-	VAkunNSlR26dsErv0w0UuxYPFLQy6M7TEzJGgJLmbZAbr7xq/dWiad+ruVqmKWiNden6
-	YD5Oys3/+fcKMwwRK0UMPcIBZlhdD72lKplWSyZzTf0HTxQGzJa+NB/VkwWFv9rHZAua
-	9tEw==
-X-Gm-Message-State: AA+aEWbwm7Aw4URAimG8oPOaJgpEaVQLV9GCfvdmDTTddd4wXOE0LR7l
-	T3727ksZ42FZMGijWTapWwKavg==
-X-Google-Smtp-Source: AFSGD/XFabR5e2qw9XBMG2hgVdUIP54lhUIHeYx2IGICkC0Kc5XbwBVb+eeHswQJuo9sx996m86Ewg==
-X-Received: by 2002:a7b:c245:: with SMTP id b5mr26308355wmj.42.1543337428967; 
-	Tue, 27 Nov 2018 08:50:28 -0800 (PST)
-Received: from ?IPv6:2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9?
-	([2a01:e35:8a1f:dc10:bc9e:f614:2d6b:7cc9])
-	by smtp.gmail.com with ESMTPSA id
-	b131sm4561941wma.21.2018.11.27.08.50.25
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 27 Nov 2018 08:50:26 -0800 (PST)
-To: Alex Williamson <alex.williamson@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, Fam Zheng <fam@euphon.net>,
-	Fam Zheng <famz@redhat.com>
+	(envelope-from <laurent@vivier.eu>) id 1gRgZ0-0006ze-Qv
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 11:50:23 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:46621)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1gRgZ0-0006yl-Ib; Tue, 27 Nov 2018 11:50:18 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue009 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1N0o3Z-1fV9xg0DNF-00wpnJ; Tue, 27 Nov 2018 17:50:13 +0100
+To: Alex Williamson <alex.williamson@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+	qemu-devel@nongnu.org
 References: <20181125205000.10324-1-philmd@redhat.com>
 	<20181125205000.10324-14-philmd@redhat.com>
 	<20181127093552.4f53790d@x1.home>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <9225e792-010f-4882-4d82-477f6cb393e9@redhat.com>
-Date: Tue, 27 Nov 2018 17:50:24 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.0
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <a752d154-7158-7729-2ea4-3a1e1766efbc@vivier.eu>
+Date: Tue, 27 Nov 2018 17:50:11 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.7.0
 MIME-Version: 1.0
 In-Reply-To: <20181127093552.4f53790d@x1.home>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:AGCZPZpiFwM4vfTrSvN5ec2GXBx6oXtdNeFYNGtJ17XjVr8GTKV
+	6Y7HpqIZwHNEEgIQMSfnFPf2MvCZPTxWqU23jI4RVCl54oFdQ25/B5c3ooh0+0rry12cNMQ
+	PAwakUC69p7Nt+61XVgEtjM7vzZ/pCTVFnyaBLn/FI2FCnnTBhWZyQYTF3eXTZN4HUAj85t
+	zXffWS2ntllXaLFUdtVVw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:PMawHdbbm7U=:dfkigCm+mM6YwXpN7F4Kkr
+	DJKRRU46QKOPvzGD9JnuA4Mhgp3y2mJ4F3bMYccjS3eoAgKncDdCI0HoEyMyYBFy2hILA9nuo
+	S47omHCdKLP7Pe+FuDzpOthgDayFDak+niTIDYtxsG+03Bdh+TS6ufpK82J8keCJ/hNBQ72Hx
+	9RJz9zfe+c+GIewZ0edbYSEhv6IMxx4QDPR8kYujXUg+PSzblpnb44aQLmWOC47jZzwuWkgn/
+	Ymn3Br/96qO/xP+7kF44JhhYErTFiGaKOm6W5OdshiM7hJzdKAyz/bNTNfELpw8KCNQrJvjm8
+	/dxqYWDY79xR0Kzybf/hF7UcGQOKbwFEnNmiP2G+z+Xyqlq7S7YP8GWr9Au2worc+xLoCQWIP
+	70uUGtZMxqerlHcVdQosSbPlxABryXC6qHAQz2dERWMmLLNWWo+0x5gHAdJ8MVOdRYPU5WvN7
+	WsUm007XA2Rz+lPW+KjAFAQVT2Y9KCf0D3JeCpF6428S0DKszNCq9y7yKVHMUpSbA3yit2RYH
+	Sasx4NU04D30go3UAD/6xVaPZ1AEB3MCwkDC8ESu3EQfmLfWdzRqZvuQPeEbKwWH0hnviz7r2
+	pPvTE+l6O5IVfsKDD7Q+rgadVXHcSf1kUTi6hTuXhlmvNCBLUsmygRTWXaueDwB/iuCrN54rb
+	UD/i4yuVhQ7KG50b2sVkQ/K49M3QebVNildtbsT1pCu/G1LZS2JhHc0L+ZHMrc9pnbxh/f7ad
+	iWFdZ0KJPncz53JSVH8xvnJT/Zzqx0gfGsR5UaNindrNevmMXN8y8gr4znjFcWl05lJ6bF10Q
+	VUVzcLFFYxz3MhddYofWnjjZthU4Q==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-trivial] [PATCH for-3.1 13/25] MAINTAINERS: Add missing
- entries to VFIO
+X-Received-From: 212.227.126.134
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-3.1 13/25] MAINTAINERS:
+ Add missing entries to VFIO
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,9 +107,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Nov 2018 16:59:18 -0000
+X-List-Received-Date: Tue, 27 Nov 2018 16:59:21 -0000
 
-On 27/11/18 17:35, Alex Williamson wrote:
+On 27/11/2018 17:35, Alex Williamson wrote:
 > On Sun, 25 Nov 2018 21:49:48 +0100
 > Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
 > 
@@ -100,20 +135,8 @@ On 27/11/18 17:35, Alex Williamson wrote:
 > attention to them.  I'm not sure signing someone up for new files
 > they've never touched counts as trivial ;)  Thanks,
 
-OK (Cc'ed Fam).
-
-Laurent, can you unqueue this patch? (sorry).
+Un-applied to my trivial-patches branch...
 
 Thanks,
-
-Phil.
-
-> 
-> Alex
-> 
->> +F: docs/igd-assign.txt
->>  
->>  vfio-ccw
->>  M: Cornelia Huck <cohuck@redhat.com>
-> 
+Laurent
 
