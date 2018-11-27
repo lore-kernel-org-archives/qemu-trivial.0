@@ -1,32 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gRXVr-0008QK-9P
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 02:10:27 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42799)
+	id 1gRXaH-0002kt-2i
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 02:15:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43708)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gRXVp-0008Pc-MO
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 02:10:26 -0500
+	(envelope-from <thuth@redhat.com>) id 1gRXaF-0002kD-E3
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 02:14:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gRXVo-0002rS-Vi
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 02:10:25 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:53522)
+	(envelope-from <thuth@redhat.com>) id 1gRXaE-0004ix-Rw
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 02:14:59 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55082)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gRXVj-0002kq-A7; Tue, 27 Nov 2018 02:10:19 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	id 1gRXa9-0004hw-1n; Tue, 27 Nov 2018 02:14:53 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C3A893969;
-	Tue, 27 Nov 2018 07:10:17 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id C18663082DDB;
+	Tue, 27 Nov 2018 07:14:50 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-130.ams2.redhat.com [10.36.116.130])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0AB535D9CA;
-	Tue, 27 Nov 2018 07:09:59 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6EBE75D6A9;
+	Tue, 27 Nov 2018 07:14:44 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
+	Alex Williamson <alex.williamson@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 References: <20181125205000.10324-1-philmd@redhat.com>
-	<20181125205000.10324-2-philmd@redhat.com>
+	<20181125205000.10324-14-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -72,24 +71,24 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <8477ce22-5961-a6f0-bf33-3bd72bf8bffc@redhat.com>
-Date: Tue, 27 Nov 2018 08:09:54 +0100
+Message-ID: <2d60f3df-272a-2d87-4350-c274b25276dc@redhat.com>
+Date: Tue, 27 Nov 2018 08:14:43 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20181125205000.10324-2-philmd@redhat.com>
+In-Reply-To: <20181125205000.10324-14-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Tue, 27 Nov 2018 07:10:17 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.46]);
+	Tue, 27 Nov 2018 07:14:50 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH for-3.1 01/25] MAINTAINERS: Fix ACPI
- tests data files path
+Subject: Re: [Qemu-trivial] [PATCH for-3.1 13/25] MAINTAINERS: Add missing
+ entries to VFIO
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,32 +100,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Nov 2018 07:10:26 -0000
+X-List-Received-Date: Tue, 27 Nov 2018 07:15:00 -0000
 
 On 2018-11-25 21:49, Philippe Mathieu-Daud=C3=A9 wrote:
-> Missed while moving those files in 438c78dab75.
->=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 > ---
->  MAINTAINERS | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+>  MAINTAINERS | 2 ++
+>  1 file changed, 2 insertions(+)
 >=20
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 1032406c56..6c4f25fb05 100644
+> index bfe71f2555..e124792557 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -1216,8 +1216,7 @@ F: hw/i386/acpi-build.[hc]
->  F: hw/arm/virt-acpi-build.c
->  F: tests/bios-tables-test.c
->  F: tests/acpi-utils.[hc]
-> -F: tests/acpi-test-data/*
-> -F: tests/acpi-test-data/*/*
-> +F: tests/data/acpi/
-> =20
->  ppc4xx
->  M: David Gibson <david@gibson.dropbear.id.au>
->=20
+> @@ -1326,6 +1326,8 @@ M: Alex Williamson <alex.williamson@redhat.com>
+>  S: Supported
+>  F: hw/vfio/*
+>  F: include/hw/vfio/
+> +F: include/qemu/vfio-helpers.h
+> +F: docs/igd-assign.txt
+
+Sounds reasonable to me.
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
