@@ -1,32 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gRXj6-00072g-AF
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 02:24:08 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:45787)
+	id 1gRXr4-0003fF-Ex
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 02:32:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:47459)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gRXj4-000717-DY
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 02:24:07 -0500
+	(envelope-from <thuth@redhat.com>) id 1gRXr2-0003dY-2j
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 02:32:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gRXj3-000059-Mg
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 02:24:06 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46028)
+	(envelope-from <thuth@redhat.com>) id 1gRXqw-0003sT-I3
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 02:32:18 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55644)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gRXiy-0008Tr-EZ; Tue, 27 Nov 2018 02:24:00 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	id 1gRXm1-00017A-1c; Tue, 27 Nov 2018 02:27:09 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B637F3DE2F;
-	Tue, 27 Nov 2018 07:23:59 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5238788E4A;
+	Tue, 27 Nov 2018 07:27:08 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-130.ams2.redhat.com [10.36.116.130])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D9B58600D7;
-	Tue, 27 Nov 2018 07:23:51 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	=?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
-	Fam Zheng <famz@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Fam Zheng <fam@euphon.net>
+	by smtp.corp.redhat.com (Postfix) with ESMTP id AD7315D6A9;
+	Tue, 27 Nov 2018 07:26:54 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+	<peter.maydell@linaro.org>, "Michael S . Tsirkin" <mst@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>
 References: <20181125205000.10324-1-philmd@redhat.com>
-	<20181125205000.10324-25-philmd@redhat.com>
+	<20181125205000.10324-26-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -72,24 +73,24 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <d455d959-bfc9-b535-1522-c48eb055c1df@redhat.com>
-Date: Tue, 27 Nov 2018 08:23:51 +0100
+Message-ID: <5fedf421-a138-041a-638b-98f3fd3ffeef@redhat.com>
+Date: Tue, 27 Nov 2018 08:26:53 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20181125205000.10324-25-philmd@redhat.com>
+In-Reply-To: <20181125205000.10324-26-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Tue, 27 Nov 2018 07:23:59 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Tue, 27 Nov 2018 07:27:08 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH for-3.1 24/25] MAINTAINERS: Use my work
- email to review Build and test automation patches
+Subject: Re: [Qemu-trivial] [PATCH for-3.1 25/25] MAINTAINERS: Remove
+ duplicate entries of qemu-devel@nongnu.org
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,28 +102,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Nov 2018 07:24:07 -0000
+X-List-Received-Date: Tue, 27 Nov 2018 07:32:20 -0000
 
-On 2018-11-25 21:49, Philippe Mathieu-Daud=C3=A9 wrote:
+On 2018-11-25 21:50, Philippe Mathieu-Daud=C3=A9 wrote:
+> The list is always selected by the 'All patches CC here' section.
+>=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  MAINTAINERS | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  MAINTAINERS | 13 -------------
+>  1 file changed, 13 deletions(-)
 >=20
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index ad82c0377c..c616861ca3 100644
+> index c616861ca3..9d6dae71ff 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -2388,7 +2388,7 @@ Build and test automation
->  Build and test automation
->  M: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->  M: Fam Zheng <famz@redhat.com>
-> -R: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> +R: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->  L: qemu-devel@nongnu.org
+> @@ -109,7 +109,6 @@ L: qemu-s390x@nongnu.org
+>  Guest CPU cores (TCG):
+>  ----------------------
+>  Overall
+> -L: qemu-devel@nongnu.org
+>  M: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+>  M: Richard Henderson <rth@twiddle.net>
+>  R: Paolo Bonzini <pbonzini@redhat.com>
+> @@ -403,30 +402,25 @@ Hosts:
+>  ------
+> =20
+>  LINUX
+> -L: qemu-devel@nongnu.org
 >  S: Maintained
->  F: .travis.yml
->=20
+>  F: linux-*
+>  F: linux-headers/
+> =20
+>  POSIX
+> -L: qemu-devel@nongnu.org
+>  S: Maintained
+>  F: *posix*
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+I agree that we can remove the "L: qemu-devel" entries everywhere, but
+for these subsystems that have no "M:" entry, but "S: Maintained", this
+now looks somewhat strange - the subsystem is "Maintained" but has no
+maintainer? I think we need somebody who feels responsible to pick up
+patches here...?
+
+ Thomas
 
