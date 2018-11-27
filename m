@@ -1,25 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gRbZR-0006k0-5i
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 06:30:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57366)
+	id 1gRbcM-0000jC-VW
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 06:33:26 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:58387)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gRbZP-0006hz-09
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:30:23 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gRbcK-0000it-Go
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:33:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gRbZO-0002jw-22
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:30:22 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:35649)
+	(envelope-from <laurent@vivier.eu>) id 1gRbcF-0003tD-I1
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:33:24 -0500
+Received: from mout.kundenserver.de ([212.227.17.24]:38803)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gRbZH-0002h9-4H; Tue, 27 Nov 2018 06:30:15 -0500
+	id 1gRbcF-0003sy-9E; Tue, 27 Nov 2018 06:33:19 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue107 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1Mc0Aj-1fpVvG232N-00dUtH; Tue, 27 Nov 2018 12:30:05 +0100
-To: Li Qiang <liq3ea@gmail.com>, pbonzini@redhat.com, rth@twiddle.net,
-	ehabkost@redhat.com, alex.bennee@linaro.org, philmd@redhat.com,
-	armbru@redhat.com
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <1543226179-5135-1-git-send-email-liq3ea@gmail.com>
+	(mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1Ma1wY-1fvlNN171Y-00Vzo8; Tue, 27 Nov 2018 12:33:13 +0100
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-devel@nongnu.org
+References: <20181125205000.10324-1-philmd@redhat.com>
+	<20181125205000.10324-2-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -64,35 +66,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <4c9db3a1-9ad7-3937-040d-529ec30e2b21@vivier.eu>
-Date: Tue, 27 Nov 2018 12:30:02 +0100
+Message-ID: <d5a96abc-c384-3f3c-5f95-8b08887ef423@vivier.eu>
+Date: Tue, 27 Nov 2018 12:33:11 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <1543226179-5135-1-git-send-email-liq3ea@gmail.com>
+In-Reply-To: <20181125205000.10324-2-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:rH0oh4gL9w0aMxRKTLwt6K15IHoR/5j1oOVG0xHuzPszodYp5qj
-	yz2TcCDxt4m+4trfzYmBMmhI71ovcAyKeA9jpWbQMnbqUxiYb3DnKeP9KxVFAZY/kZ4dqcu
-	AIo78KNj3rfl0hnQIxLv38OrUNYUr+G5lNBvwDXW5XfmKVmOdBKQmloBbfoHmPzstyxliRz
-	uwOKVRHTVUAFW/x+GEB9Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:6O8fH66/FGA=:DStkuiH6n20ROj1LtPX8id
-	xuxz4BhrgVZcyDhSjKDzZTlttbx327hj5oNVaaeT5GQY+o6otvSSr0ke1V3vaM2JX0+bhycgU
-	VdRrGDW6IyLKWn0zKQpboLni8hMPD9LmpxQn8UTDjJCxwEHwpra64c+rRA2t9QgL0W2hPMQpY
-	AoOe/0Q+UJlUKT3NwY7/Gq7fsBEc4XhaAu+cbbYyYj0lTdyZOJBN3a8jnDwTsFV7sZaK8oV33
-	aTHJrE3gzjpp2tbgiy33hRvFmrnAZgiqPiljtC6NLwFnlBBn+2q9dSxi9nKj4O0y/nNOlg6yY
-	QpzCfKZGpGpWTVgiFZcG9quIGOc32uysWT+67YMT7YqehWwep0Y5JzeCjC7b0gaqunS3XIqg+
-	g7HJoDxR2Z4HVTqhMcoZ2ASQCBdL4Kv2+KwsbNiNCbppYsPhV7F51wEPMMXPj+1iODTLXzMMV
-	fIgba2u8unGtK9Lfduxaoka4rvlq7oAtE3Gwe+sYCBvVUynLxghls9ZXmf/5JytOr/IQREJPa
-	u/J6G2GztfRWtCxHA4mGX2e/E1kPgCG8NcGO+WEbMz1E+e85D+ExZOs9w5aaUlmpfkZ/V4K0K
-	5eNRGuL2cugc0RcHQ/bMMTYAWj8pAd92S9VHh+NJiQCQYpFWOXhZdvdg+71bxFOWZfChc91MU
-	qNco2AKiAfeW+lPdAj8tNUWyENWKfsgxtnFcu4d8NO3XVFSbKl7j0ZbZ2LU4kCJU8S5UIY8IZ
-	btYo0O1DjSHgX83MMSFQII3y193CVQLila0YiHZ9qsbZUdSccClH9yz7DPIBGYxakGuZU1hTj
-	wID7DzGSYVPE6c1RM7+kYb6ISvRMQ==
+X-Provags-ID: V03:K1:Irn6bKANy0aJ3UYSLPZ4Onhgs7gs4h+/Uqp4SMsJ20HOMYV7o57
+	gKJqEfsXNak0QWohBLUQL9/UP6JePFn+M+vJTUqc1NV5EOYePQTW0o1zh1e6k0a+6NffIRI
+	d17BWneKtwRQY2EpBbXlZtBsmWv+XUHcaQmBrT5bepGSWGkhPtU1JLnBsXFZ4cbrG+qI4WH
+	oW7FgGZ5TyxdQcQwT3CIA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:p3WXYpsqqb0=:gR5bMLYSwcji0TM6PJns9/
+	hAQp9lCnNKmzqwJR6AcM3QSwrzvW+ZDMek6wEDGCAfDZj7s9KEjT5Q7aQ4CkmRGjwwyzaJrsm
+	olTtm1HnkMjqe2uzsg6N3yOQt+jmEfxoKwMnLvtuogZK/Guk3JWBtD1V9o6nelYcjkivGjaDz
+	oYo6H/6AfWgviLvYvIiCzYpHgFvUKaPIWoTQ+n0UUZD/hci5A02ePpGLY+uf/GI4DU7Hk8pva
+	vRDu7CSZqlgX78+wN7sfbhhD4jkq1uG9tscuCx38YZkwcxN/IxsGVbDL9MN9nrrHeZlQcf0ON
+	SUuG8ioC64rlPMQDNlIf5o9GIVvnLD1v7eY9xAqeeoyuuSyRPChGMaV6gYLA9zCP2lcX9IHLE
+	SeBNdry0xUO3iBWA6dAPDft3kqaBWey5pDBEIar/GLuqF2FMPRlGz8oQJbLPptl4vbKkooymp
+	BBF8qssPz8DIQA9cQxdc0XSVUsWJxCmWt1ScdoIubc8fPsQBftiqmQVZ56QlpYqyNlg7WcWTx
+	Ua6y9RODsbh/md6yk3kjxT0qPIiCG3rN6jNXadbdXMXsPIAyO6zerooUbQbL55gKi3J6BQloN
+	G2iGXyDYuU64XaF3tnxckJRm9PBGdFrnBIt/B+wn5febFJF2qN03RYkTWU8j2tiTn+V4N0og1
+	fyDULGf9+co1PQPZFLGyfQpnJRaLAtHuqYRDf+MHOqWOUnFAwQTwnZtV93l1ej3lwQiNdnE1I
+	30uqhfIvIjiJLgzIBGWgFOVgDZCMIcf5TBncAnNNZZvUMRw3o2XiqDT7jAcbK60yB0LUMmefK
+	JFJhPwVP6D+sW2gHEY9XDB7OfCIow==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
-Subject: Re: [Qemu-trivial] [PATCH] target: hax: replace g_malloc with g_new0
+X-Received-From: 212.227.17.24
+Subject: Re: [Qemu-trivial] [PATCH for-3.1 01/25] MAINTAINERS: Fix ACPI
+ tests data files path
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,20 +107,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Nov 2018 11:30:23 -0000
+X-List-Received-Date: Tue, 27 Nov 2018 11:33:25 -0000
 
-On 26/11/2018 10:56, Li Qiang wrote:
-> And also the g_malloc doesn't need check return value,
-> remove it.
+On 25/11/2018 21:49, Philippe Mathieu-Daudé wrote:
+> Missed while moving those files in 438c78dab75.
 > 
-> Cc: qemu-trivial@nongnu.org
-> 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-> Signed-off-by: Li Qiang <liq3ea@gmail.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 > ---
->  target/i386/hax-all.c | 15 +++------------
->  1 file changed, 3 insertions(+), 12 deletions(-)
+>  MAINTAINERS | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 1032406c56..6c4f25fb05 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1216,8 +1216,7 @@ F: hw/i386/acpi-build.[hc]
+>  F: hw/arm/virt-acpi-build.c
+>  F: tests/bios-tables-test.c
+>  F: tests/acpi-utils.[hc]
+> -F: tests/acpi-test-data/*
+> -F: tests/acpi-test-data/*/*
+> +F: tests/data/acpi/
+>  
+>  ppc4xx
+>  M: David Gibson <david@gibson.dropbear.id.au>
 > 
 
 Applied to my trivial-patches branch.
