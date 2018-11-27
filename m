@@ -1,24 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gRbY3-0005lI-MC
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 06:28:59 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56868)
+	id 1gRbZR-0006k0-5i
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 06:30:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57366)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gRbY2-0005kV-8v
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:28:59 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gRbZP-0006hz-09
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:30:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gRbXy-0002FV-P7
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:28:57 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:50051)
+	(envelope-from <laurent@vivier.eu>) id 1gRbZO-0002jw-22
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:30:22 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:35649)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gRbXy-0002F3-GK; Tue, 27 Nov 2018 06:28:54 -0500
+	id 1gRbZH-0002h9-4H; Tue, 27 Nov 2018 06:30:15 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue106 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1MmCyE-1fji8f1ze4-00iDh4; Tue, 27 Nov 2018 12:28:49 +0100
-To: Thomas Huth <thuth@redhat.com>, Chris Wulff <crwulff@gmail.com>,
-	Marek Vasut <marex@denx.de>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <1542899500-23346-1-git-send-email-thuth@redhat.com>
+	(mreue107 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1Mc0Aj-1fpVvG232N-00dUtH; Tue, 27 Nov 2018 12:30:05 +0100
+To: Li Qiang <liq3ea@gmail.com>, pbonzini@redhat.com, rth@twiddle.net,
+	ehabkost@redhat.com, alex.bennee@linaro.org, philmd@redhat.com,
+	armbru@redhat.com
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <1543226179-5135-1-git-send-email-liq3ea@gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -63,36 +64,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <e5f08bf0-c4fb-52c2-41ef-07ed61c51098@vivier.eu>
-Date: Tue, 27 Nov 2018 12:28:48 +0100
+Message-ID: <4c9db3a1-9ad7-3937-040d-529ec30e2b21@vivier.eu>
+Date: Tue, 27 Nov 2018 12:30:02 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <1542899500-23346-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <1543226179-5135-1-git-send-email-liq3ea@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:Zux8C7GLhg9RXsiOZyUOnhs8XFKfncgea0vmmk7xLz73RWIhQSV
-	IseUTxgIs4bCpALDos3hWka/GdkgsQUDh46YkyQxr7TuhIROX+wS6gGL/E+Y4ZbIQAoCWxM
-	1kgOkojSJVY2SE2HipT2OnmVJBKMkLxriS03iSZR0wqWJ6TenrzZw4Kny8Z4uxG7xPweifr
-	Spe6Qt3RgRYnO00awov3Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:shOCVsQtYgc=:ngnjDehxKgXi2J11RuwmoC
-	KpdBSkaG8LZNwsrSQT6ujSNS0zGK71gT7b3T3rbv2+0usCbU/q330V1VKH2uP3e4wZ3qUcmj0
-	5BP0JdZ2EHaBfskFMPDHMBwl7YrutnWUh9f0CjmcSSa8Jb3duObLoW5VYcwj6G8C0bGM97StL
-	W0DKrEhOW/G0ikhXrQzg3uP62Yvi5Hu31zVNeYlxSeo2bF1KmiJbLOjKQmtrNx5qUVKIHfmgH
-	N8RoxnNeh2Bj/zVoOlFkLlsMs9dUGW1CWYLWxGLq771ZoRmeeTg67sNluqekoEywoYCug2ojq
-	gdXCjGO00ITbBrcdeNYoJGFvARi5lOLY+65JOkaIy/ppQb8fEC2qCf8Tk7H2G3vrZ4QJOiok8
-	QLNoBBXiWy138wnCA6IPr7POcXMGaVWH6LT0NzWniYKAZXaM05/w3ZsPRRN1yiI3y1l+g0qrV
-	5pd17se/VHvpnSPH6EESgvyUTOVqURkFSLr1Nu5Rcn0BSWECHendwUqkYMvs3n1Okr72ELzQT
-	4P7DsJ18LOjHR/F6R/hVBTtRhVmpqqsJ86AdHre4zsmT3tbKCEJkiskYDWOFGEPzNySYNN5Zj
-	ei5E8kr3lKOZ3+xnvAdXQ5w0U56EhZPeQMxR3DLeiKZYuulxblJ//KJ0cqxuOzEeTRBkSjm36
-	d7Ld/QagClgKE5BmfxyomEPV2g7yHlU0HSAliqTQQhwRDZz2RUsSeklNFCSdM6fAg+gnvyjXG
-	sj+EFSPD9loiQYLesNszr+TAFVdmJmoS/8w+F8UaUpBSnzg6Qz+Ib99K8R8jPOouvfJrwQc19
-	FkHLQtA1w0E8Xn4G68aeI8w+TdnPQ==
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:rH0oh4gL9w0aMxRKTLwt6K15IHoR/5j1oOVG0xHuzPszodYp5qj
+	yz2TcCDxt4m+4trfzYmBMmhI71ovcAyKeA9jpWbQMnbqUxiYb3DnKeP9KxVFAZY/kZ4dqcu
+	AIo78KNj3rfl0hnQIxLv38OrUNYUr+G5lNBvwDXW5XfmKVmOdBKQmloBbfoHmPzstyxliRz
+	uwOKVRHTVUAFW/x+GEB9Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6O8fH66/FGA=:DStkuiH6n20ROj1LtPX8id
+	xuxz4BhrgVZcyDhSjKDzZTlttbx327hj5oNVaaeT5GQY+o6otvSSr0ke1V3vaM2JX0+bhycgU
+	VdRrGDW6IyLKWn0zKQpboLni8hMPD9LmpxQn8UTDjJCxwEHwpra64c+rRA2t9QgL0W2hPMQpY
+	AoOe/0Q+UJlUKT3NwY7/Gq7fsBEc4XhaAu+cbbYyYj0lTdyZOJBN3a8jnDwTsFV7sZaK8oV33
+	aTHJrE3gzjpp2tbgiy33hRvFmrnAZgiqPiljtC6NLwFnlBBn+2q9dSxi9nKj4O0y/nNOlg6yY
+	QpzCfKZGpGpWTVgiFZcG9quIGOc32uysWT+67YMT7YqehWwep0Y5JzeCjC7b0gaqunS3XIqg+
+	g7HJoDxR2Z4HVTqhMcoZ2ASQCBdL4Kv2+KwsbNiNCbppYsPhV7F51wEPMMXPj+1iODTLXzMMV
+	fIgba2u8unGtK9Lfduxaoka4rvlq7oAtE3Gwe+sYCBvVUynLxghls9ZXmf/5JytOr/IQREJPa
+	u/J6G2GztfRWtCxHA4mGX2e/E1kPgCG8NcGO+WEbMz1E+e85D+ExZOs9w5aaUlmpfkZ/V4K0K
+	5eNRGuL2cugc0RcHQ/bMMTYAWj8pAd92S9VHh+NJiQCQYpFWOXhZdvdg+71bxFOWZfChc91MU
+	qNco2AKiAfeW+lPdAj8tNUWyENWKfsgxtnFcu4d8NO3XVFSbKl7j0ZbZ2LU4kCJU8S5UIY8IZ
+	btYo0O1DjSHgX83MMSFQII3y193CVQLila0YiHZ9qsbZUdSccClH9yz7DPIBGYxakGuZU1hTj
+	wID7DzGSYVPE6c1RM7+kYb6ISvRMQ==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Add nios2-related files to
- the Nios2 section
+X-Received-From: 217.72.192.75
+Subject: Re: [Qemu-trivial] [PATCH] target: hax: replace g_malloc with g_new0
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,34 +104,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Nov 2018 11:28:59 -0000
+X-List-Received-Date: Tue, 27 Nov 2018 11:30:23 -0000
 
-On 22/11/2018 16:11, Thomas Huth wrote:
-> nios2_iic.c and the default-configs/nios2-softmmu.mak file are
-> currently "unmaintained" according to the get_maintainers.pl script.
-> Move them to the Nios2 section where they obviously belong to.
+On 26/11/2018 10:56, Li Qiang wrote:
+> And also the g_malloc doesn't need check return value,
+> remove it.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Cc: qemu-trivial@nongnu.org
+> 
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Li Qiang <liq3ea@gmail.com>
 > ---
->  MAINTAINERS | 2 ++
->  1 file changed, 2 insertions(+)
+>  target/i386/hax-all.c | 15 +++------------
+>  1 file changed, 3 insertions(+), 12 deletions(-)
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 1291c07..33245b4 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -226,7 +226,9 @@ M: Marek Vasut <marex@denx.de>
->  S: Maintained
->  F: target/nios2/
->  F: hw/nios2/
-> +F: hw/intc/nios2_iic.c
->  F: disas/nios2.c
-> +F: default-configs/nios2-softmmu.mak
->  
->  OpenRISC
->  M: Stafford Horne <shorne@gmail.com>
-> 
-
 
 Applied to my trivial-patches branch.
 
