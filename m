@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gRbfA-0002TC-Q4
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 06:36:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:59480)
+	id 1gRbgy-0003iA-56
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Nov 2018 06:38:12 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60036)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gRbf5-0002Rg-RR
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:36:16 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gRbgu-0003gm-1k
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:38:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gRbf5-00052y-4x
-	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:36:15 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:49097)
+	(envelope-from <laurent@vivier.eu>) id 1gRbgs-0005jJ-0E
+	for qemu-trivial@nongnu.org; Tue, 27 Nov 2018 06:38:07 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:39425)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gRbey-0004zX-NO; Tue, 27 Nov 2018 06:36:08 -0500
+	id 1gRbgq-0005i5-0l; Tue, 27 Nov 2018 06:38:05 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue108 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1MZl1l-1fw2B51DgV-00Wpvp; Tue, 27 Nov 2018 12:36:00 +0100
+	(mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1MeCxd-1friho1PHD-00bJGo; Tue, 27 Nov 2018 12:37:55 +0100
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
-	<hpoussin@reactos.org>, Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Stefan Markovic <smarkovic@wavecomp.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+	Thomas Huth <thuth@redhat.com>, "Edgar E . Iglesias"
+	<edgar.iglesias@gmail.com>, Alistair Francis <alistair@alistair23.me>, 
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20181125205000.10324-1-philmd@redhat.com>
-	<20181125205000.10324-6-philmd@redhat.com>
+	<20181125205000.10324-7-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -66,36 +66,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <905e949b-eb1d-0f31-ffc2-21c3c3252917@vivier.eu>
-Date: Tue, 27 Nov 2018 12:35:58 +0100
+Message-ID: <bbd65041-d216-f063-8d94-a11db5d730c9@vivier.eu>
+Date: Tue, 27 Nov 2018 12:37:53 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <20181125205000.10324-6-philmd@redhat.com>
+In-Reply-To: <20181125205000.10324-7-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:s0O25TYNH7wav9w0kyUjylZXHWraQKjMjHfsm+EkTkprfqcGgmo
-	N1C5HQjNlmyHSaJQ4Vo4qGH7alyK2BVmbCcgqoV41egtkk3CxlteITIDL7oj3YcoK57ojv8
-	t3CEn6ZtZF9dn70ckYZlRoUfvuOZ4rKV1U5lVsBwOyrd1GYnp28IJNXWio/GfkGqhn6fZA6
-	esKzlD8x/E7+eJP6oOUXA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:mLfg5hjA3Kg=:CkEy0Qa8uaa8yjdyZIXsZ9
-	KiJLTjl6maEUINFRecFoXFJt03aLGmaIGVXw0ndWdoSI1KhIoLS+4CJESjZ8nfCJ76HTwd8y7
-	19hKuQ30oH+AxQBaqCNf7rCH7sO9z/N7tnD4Yj7+EDqbDo62Nq6vTIsrIxtys+sSBvkGZzJio
-	tWmGltdAPBIgXixpxo6DUoS8f4KwBL85VU3CMkrYywjPLDG46rCfpWyT+QMnHrE3QMRu4V9AJ
-	bFOOmyw3vfzz2ydthQF73teac/fIOy/w36aYTumn25oVqnFUd8xiBhJm211cgjAxfD/u1Aa45
-	x9/jBn5wpbbTRFIkBXm0r1ljU8h5UpqG4WwQJlJMRnao/ExJ1iLGi7mSoHLm6kqEKV7oMkFhW
-	Gxo3Vs+0uya2LNl38k8oAaaQRFBYbtRw/Ph4z2IH7oz4glomYaieqfMOzVLSF9IP0lZeDi3t+
-	ujIL6gACv5KYCy5YE6dlSQc37TMTdLU5WSCGV/gOTsGpheAsuEmPtnYdTyVEEX2PVUpzu9+Kc
-	muIVAjfCabUGBhnYTFX0Yh8cqd7162vtirnakxE1Ujn8cFVDQ7TKdAcLEVpkfIRRQeO1s0ioT
-	sS3Gp5xaZibEgYg8XaMOnHtLcMZFWrCF9p4lXd2580iXnWK7D6QSF2C++SSo4gLwaB9m/ZOOj
-	JGHoxbOi/7IUuKvQI+zZS52ITdrUQEckARbqt1ulJR+5JUNMmXphUX42SSYK0AJnuh5Ks+yBq
-	8hhGYgSh05bb4IK5krPQkZhqceAw8EeNAM0WKmDVs7j7G0ZhIoVU/STOq8/VA0Ykgx0z/yis/
-	LC7ixkGEF+wMwgl+T/rvsjNsNpmxQ==
+X-Provags-ID: V03:K1:ZxlbSKwcto2jkl1DWDBPmCkC3ggBH76I6ILflPtr3103swNC7bP
+	zr5dGETbBT5+RjPfT/JQNWgR3ztZjUNoLePNm7Uaz8Z5JnMQDK0JEZL7PbN/bDOR29oTp9C
+	H3hcw/Hb7G3WdJOgC0zGGD4uQbVgLg7qQ3UQS/ZkM+emmhKoGDkoTZQlfvNJGzkltMQ9T5s
+	Bzka8X8WdYEnP3BxpStpQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:sKusO2esoxE=:bulM+LHT6llylvrVYPelU1
+	HVV+1D85FxJWwvAMYli4WLcqhEiVMumVVkfhdD/N1e6bFQXy5A524lYcQUmBQRfteKVN6fUrO
+	fqC1xMXYIc4fSB4dPZ5TYPvg+El7Pg4eS7YIL7Gn2LDK/fKbEqiJieP85vQsDatgDdJgUrZlY
+	QU4dKs6jJp0fH+7EZhy8OsFG20blZ256noJ9eKmczRA3S5HD2GsfZ0Zc2QzzyfQ51aZI1405n
+	r2QbeOcJTI3trUBYnXjfJ/s1iv2LVJTLrKrv28bF2KfsDKo90eWTDs1G4GHxJFB/X9k3KNEu4
+	EGTee+cNjZEXOte/Bbz4V/zRNorsUvj9Iy4VnajR21MvLqPdM/Wg5gWB58JPVySlIxWo6lVZR
+	bkERt3iSukywbGrz64ucUcAzvcpNtxrEXLiflTv0Q0LF1VCVy9RwmHpGFaEqduSvkkZfoInn9
+	GC05+hUWVe//rgocY5zzsS72FvaGqMN1YG4WjORsPrade46hQtnTKxFnFWJR5fcCvBTK+ccD4
+	Ov0PLIWo8wjNB+K7vL21kQQ3zUIdU85ke0cgJVPE4QZa2Emue2TEjkKM8LpyfE5HGBDfrZpWD
+	6L1oLs1r/KN6Sd87owUFY5NpGR7g34tH2dwb4oRU1YEq1eUXNU4Vn5Qlxrehbo+Pg3XR1LAcc
+	VKQlNBMGqEg/OeU8n1j/9UJDgDSUdFNXxgH4U87JoVxV1K+hc/+eJFQrIWcM9cVOPSkRTTxDZ
+	frOf20Q5H/Ak6f3y5VkUTXkhzqrkXlJy+QCqUHRlYhb0ExQB5aG4okmm5C1W4CpMA3u45MGqH
+	7gdXPqxMhAe9gAko9jaO+GkokAgkw==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 217.72.192.74
-Subject: Re: [Qemu-trivial] [PATCH for-3.1 05/25] MAINTAINERS: Add missing
- entries for the Jazz machine
+Subject: Re: [Qemu-trivial] [PATCH for-3.1 06/25] MAINTAINERS: Add a missing
+ entry for the Xilinx S3A-DSP 1800 machine
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,28 +107,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Nov 2018 11:36:16 -0000
+X-List-Received-Date: Tue, 27 Nov 2018 11:38:10 -0000
 
 On 25/11/2018 21:49, Philippe Mathieu-Daudé wrote:
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  MAINTAINERS | 2 ++
->  1 file changed, 2 insertions(+)
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
 > 
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 007f89f126..4e396cbe71 100644
+> index 4e396cbe71..aa17e9bbd3 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -835,6 +835,8 @@ M: Hervé Poussineau <hpoussin@reactos.org>
->  R: Stefan Markovic <smarkovic@wavecomp.com>
+> @@ -822,6 +822,7 @@ petalogix_s3adsp1800
+>  M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
 >  S: Maintained
->  F: hw/mips/mips_jazz.c
-> +F: hw/display/jazz_led.c
-> +F: hw/dma/rc4030.c
+>  F: hw/microblaze/petalogix_s3adsp1800_mmu.c
+> +include/hw/char/xilinx_uartlite.h
 >  
->  Malta
->  M: Aurelien Jarno <aurelien@aurel32.net>
+>  petalogix_ml605
+>  M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
 > 
+
+I've added the missing 'F:' field.
 
 Applied to my trivial-patches branch.
 
