@@ -1,96 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gSTIw-0000V4-VT
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Nov 2018 15:52:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:49309)
+	id 1gSfV1-0004pI-Kb
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Nov 2018 04:54:15 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43141)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gSTIu-0000Hx-NK
-	for qemu-trivial@nongnu.org; Thu, 29 Nov 2018 15:52:57 -0500
+	(envelope-from <liq3ea@gmail.com>) id 1gSfUz-0004ml-1J
+	for qemu-trivial@nongnu.org; Fri, 30 Nov 2018 04:54:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gSTIu-00082U-4e
-	for qemu-trivial@nongnu.org; Thu, 29 Nov 2018 15:52:56 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:54373)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gSTIo-0007zm-VH; Thu, 29 Nov 2018 15:52:51 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue009 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1MvsN5-1hLGbi3Mlb-00ss3r; Thu, 29 Nov 2018 21:52:30 +0100
-To: Li Qiang <liq3ea@gmail.com>, rth@twiddle.net, ehabkost@redhat.com,
-	alex.bennee@linaro.org, philmd@redhat.com
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <1543312812-2929-1-git-send-email-liq3ea@gmail.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <ae8b0b38-0080-0086-5f5c-5d8f575d3381@vivier.eu>
-Date: Thu, 29 Nov 2018 21:52:27 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
-MIME-Version: 1.0
-In-Reply-To: <1543312812-2929-1-git-send-email-liq3ea@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:fKdJBPItNl1+cg6u7qF18ZIG2OYBv69HRh9WArjJCKw67HlO0Cd
-	qSmFWl2p4PQh1Mmg9cba/t6SyNmNzLCvfX2GTXKGTEXRI//em9fS0zBv3ITMgiLdj2rYUjj
-	QMLfYBRWqBU/0sg1NqBvVX8zG5iBpL1iy4i+VIhRiuhmRFN1w5r+chrKxhjTcPMOAl3OLs9
-	SVWtM0uAVIJB4lMeUS0qg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:z5TBb/KIH/g=:PLYG8NYUePNbV0zrDSJKvz
-	JSlUtCTFepPIBlHQYpNLvRBiXt8NUoxVmQvNShnBS3pnOYKymE++QQBt87huLVWLkcfyfffq2
-	VS2NhgYUvuJM6rE8a3SIjSxXV72GsZk1pTXEKLc+6B5wWz7pA5lTd2Br6N3t+M3PTLWngqzGl
-	XioYntn6y0hVtFA+b/a16sLe0jVaxhxQuw9x8f5BspPjozndsuOfXLw64UJXmDpSPR+cXyF4c
-	dVU6POcYkffiNaPkNI2mWeCFdJdJHU/TB9nwEqKjXCZIhknuMl0+SJpVs3k+snkLU8NCDdtwP
-	3jYA7fJDttT4jHW0N9zq5T4Qx6ED3/hEIjDCaHCQY0Z3FaYSIOzmo7SVTDyAhc1OQah1mzDQ4
-	0QWGADzEjqMCZ/dQt0fs5nlNfB619CgoQvXUzLOjcwc2PZyIW/XG9T4ThGw2RyYPJGInZ98kG
-	2AIvRs2hTTMm02wtbIaEVNgQvTLe/KLVzywwrtUXgol5wK1KGYOuN3mB/TJKRR9lWeGCvQpH7
-	rr3ZZ5fmfT3SYaku3QFKBF8L/jIWcI0cNlm4rSKcSTZi3PUIIYpDrAf+l4FIYbHnWEv0BMzOa
-	+TT8iKJukj7mTp0OeVw5A3eyWvn/Jq4cDWESZgV6iaDMtMpG5iNLqCVz9a1b9GWWyJumPghDB
-	KB9J7TZJpMmUkT+FfuyLyskcVkc5GcJFcPbvnQll8WpOPmANFAk/yg/8Pq6Acqzs9XTxQDAr5
-	2+6MjkeEeTJkDeFzEYmIfTyGHS4Y2zoa2d2BB31DZYRCTuiuoBjUVQntsV8=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: Re: [Qemu-trivial] [PATCH v2] target: hax: fix errors in comment
+	(envelope-from <liq3ea@gmail.com>) id 1gSfUx-0005AG-1E
+	for qemu-trivial@nongnu.org; Fri, 30 Nov 2018 04:54:12 -0500
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:46295)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <liq3ea@gmail.com>)
+	id 1gSfUr-00056m-Ik; Fri, 30 Nov 2018 04:54:05 -0500
+Received: by mail-pl1-x641.google.com with SMTP id t13so2539199ply.13;
+	Fri, 30 Nov 2018 01:54:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=GQIWcweVx3gLLdOHvKSpGH9I6m3makYE2yanlXuHnIg=;
+	b=NC0U/u0aHrtiEBhvK7+GuxleBlZaQPJc42Udy4IeaVfvLRD1JADPnT9ur4/ZWPIvvF
+	2Ce+pwBmYfnMzGRpokB9iMk/+X//AMEG7P+thDmya/46iTPTiXtNsq5iEyNvfUw6I0kE
+	03oiOoY9DhrgsR1YTTcgdyX6w1eGIdh0/o0xLlyzP/MOjOuFFfN5P8E7Hvn6B8BA6jSU
+	KA+r4ER6J7ZFM0IBH7lIfS9S6YEOaIy94XLxUxNDC5f7Om+t43RgtCFufwKmB7zE68Hx
+	atokvD2kDpauLrmpdWamISXpdmtAo1mZtkmPzSall9SjueT8sXmjGMbWdKyAzJb/HGtT
+	R/OA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=GQIWcweVx3gLLdOHvKSpGH9I6m3makYE2yanlXuHnIg=;
+	b=N+p/dlqGDpakN1R37MSwwgE4w/NI3ybZTpMaSjwODc4UtMn6uxmnCOGInSCEpWZLPO
+	hh0oTYj2QnKWHKA4JkJQtzPID/pniQX0udNrw5BDg8QGHq5SUNzSo9TM7xTFKifVB12p
+	trvWRfKEqBuP9t0xzwWm6BZvj5e2RGXvcFQBh1X7DiYsqmwVTZadOy/9u7cVbjW0tteP
+	bVn1jUI2gwkGtmQWIydIabO45qKWVom95EhrqSeRkjw0blC0Fh4A0CAIGG2a4iDLNrN6
+	TDbhD7Fyh9JFU5UfqKZlAX06GuJtDRjpXiObK5WkKawvQhjHuloDMhJHD1xJhbeF5M1T
+	vmig==
+X-Gm-Message-State: AA+aEWbg0E+zVs6D+crIzKqeoiAExIylF5EIhJ3p8UsRrfChLdhw9+ao
+	tyAlyCCAPcMlwXtE1+i44ro=
+X-Google-Smtp-Source: AFSGD/Wti4/I1U4SEBUoKTj2R6e9SxgaNcPxS1KySIj6yx7BT/rrP83eC2UHA8l2NnqV7Eei+0E5ag==
+X-Received: by 2002:a17:902:24d:: with SMTP id
+	71mr4872918plc.225.1543571644465; 
+	Fri, 30 Nov 2018 01:54:04 -0800 (PST)
+Received: from localhost.localdomain.localdomain ([103.129.255.252])
+	by smtp.gmail.com with ESMTPSA id
+	h128sm5442299pgc.15.2018.11.30.01.54.02
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 30 Nov 2018 01:54:03 -0800 (PST)
+From: Li Qiang <liq3ea@gmail.com>
+To: laurent@vivier.eu,
+	philmd@redhat.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Li Qiang <liq3ea@gmail.com>
+Date: Fri, 30 Nov 2018 01:53:58 -0800
+Message-Id: <1543571638-2892-1-git-send-email-liq3ea@gmail.com>
+X-Mailer: git-send-email 1.8.3.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::641
+Subject: [Qemu-trivial] [PATCH] util: vfio-helpers: use ARRAY_SIZE in
+ qemu_vfio_init_pci()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,34 +67,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Nov 2018 20:52:57 -0000
+X-List-Received-Date: Fri, 30 Nov 2018 09:54:14 -0000
 
-On 27/11/2018 11:00, Li Qiang wrote:
-> Cc: qemu-trivial@nongnu.org
-> 
-> Signed-off-by: Li Qiang <liq3ea@gmail.com>
-> ---
->  target/i386/hax-all.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/target/i386/hax-all.c b/target/i386/hax-all.c
-> index 502ce6f0af..b978a9b821 100644
-> --- a/target/i386/hax-all.c
-> +++ b/target/i386/hax-all.c
-> @@ -205,7 +205,7 @@ int hax_vcpu_destroy(CPUState *cpu)
->      }
->  
->      /*
-> -     * 1. The hax_tunnel is also destroied when vcpu destroy
-> +     * 1. The hax_tunnel is also destroyed when vcpu is destroyed
->       * 2. close fd will cause hax module vcpu be cleaned
->       */
->      hax_close_fd(vcpu->fd);
-> 
+Cc: qemu-trivial@nongnu.org
 
+Signed-off-by: Li Qiang <liq3ea@gmail.com>
+---
+ util/vfio-helpers.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Applied to my trivial-patches branch.
+diff --git a/util/vfio-helpers.c b/util/vfio-helpers.c
+index cccc9cd42e..342d4a2285 100644
+--- a/util/vfio-helpers.c
++++ b/util/vfio-helpers.c
+@@ -348,7 +348,7 @@ static int qemu_vfio_init_pci(QEMUVFIOState *s, const char *device,
+         goto fail;
+     }
+ 
+-    for (i = 0; i < 6; i++) {
++    for (i = 0; i < ARRAY_SIZE(s->bar_region_info); i++) {
+         ret = qemu_vfio_pci_init_bar(s, i, errp);
+         if (ret) {
+             goto fail;
+-- 
+2.11.0
 
-Thanks,
-Laurent
 
