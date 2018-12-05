@@ -1,60 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gTl7H-0003mD-IN
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Dec 2018 05:06:15 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36594)
+	id 1gUUDH-00039x-6R
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Dec 2018 05:15:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:34122)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <r.bolshakov@yadro.com>) id 1gTl7F-0003kr-Bt
-	for qemu-trivial@nongnu.org; Mon, 03 Dec 2018 05:06:14 -0500
+	(envelope-from <stefanha@gmail.com>) id 1gUUDF-00039Z-5M
+	for qemu-trivial@nongnu.org; Wed, 05 Dec 2018 05:15:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <r.bolshakov@yadro.com>) id 1gTl79-0004Iz-L8
-	for qemu-trivial@nongnu.org; Mon, 03 Dec 2018 05:06:13 -0500
-Received: from mta-01.yadro.com ([89.207.88.251]:37864)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <r.bolshakov@yadro.com>)
-	id 1gTl6x-0004Bi-87; Mon, 03 Dec 2018 05:05:55 -0500
-Received: from localhost (unknown [127.0.0.1])
-	by mta-01.yadro.com (Postfix) with ESMTP id 58FA04194F;
-	Mon,  3 Dec 2018 10:05:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
-	content-type:content-type:mime-version:x-mailer:message-id:date
-	:date:subject:subject:from:from:received:received:received; s=
-	mta-01; t=1543831552; x=1545645953; bh=ZvvJ4BQXqXmafltvUVBAGwAQY
-	KmPeaIvMXBoo8ll3ZU=; b=u98JpKKDqYvus0pm1QiU11BR5+ooFVbD7BEhkdNWU
-	vdsB87zrqVuyNBc+7gGBYLmbvCG5exWP+10GNwk94GZ7mpvzyuxEwNOPUPuUjBmM
-	10w7pb/AhoGcYwmHg6+mDQoSboHF3YstsC3MRs9mKUQ8uVF7Vp/7MwY8UFMFd+Hz
-	ms=
-X-Virus-Scanned: amavisd-new at yadro.com
-Received: from mta-01.yadro.com ([127.0.0.1])
-	by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 538s4iMJt3SU; Mon,  3 Dec 2018 13:05:52 +0300 (MSK)
-Received: from T-EXCH-02.corp.yadro.com (t-exch-02.corp.yadro.com
-	[172.17.10.102])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by mta-01.yadro.com (Postfix) with ESMTPS id 049214194D;
-	Mon,  3 Dec 2018 13:05:51 +0300 (MSK)
-Received: from localhost (172.17.128.60) by T-EXCH-02.corp.yadro.com
-	(172.17.10.102) with Microsoft SMTP Server (version=TLS1_2,
-	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32;
-	Mon, 3 Dec 2018 13:05:50 +0300
-From: Roman Bolshakov <r.bolshakov@yadro.com>
-To: <qemu-devel@nongnu.org>
-CC: <qemu-trivial@nongnu.org>, Roman Bolshakov <r.bolshakov@yadro.com>, Paolo
-	Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>, Eduardo
-	Habkost <ehabkost@redhat.com>
-Date: Mon, 3 Dec 2018 13:04:14 +0300
-Message-ID: <20181203100415.53027-1-r.bolshakov@yadro.com>
-X-Mailer: git-send-email 2.17.2 (Apple Git-113)
+	(envelope-from <stefanha@gmail.com>) id 1gUUDB-0001X6-C5
+	for qemu-trivial@nongnu.org; Wed, 05 Dec 2018 05:15:25 -0500
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43287)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1gUU3A-0007Bk-85; Wed, 05 Dec 2018 05:05:00 -0500
+Received: by mail-wr1-x441.google.com with SMTP id r10so18965695wrs.10;
+	Wed, 05 Dec 2018 02:04:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=qiOPlRcfQmkVUYQELVaXUf5Ul6gvfAAatsFPRbXQZcM=;
+	b=ZDprmLtdI8vnNAKaOPUyEC5y8o51aSEMfczE3C8gK/7yTzM2Ee+b64QAgZ/22nhkpH
+	3xSwgVh54d7COLL+ONv5k432ElTNQdc8ySgnHKt73R0XIJ8xrkIJvUF0CquwjtiKZW/Y
+	tngF7RYNeO07vvFGZGuzldw5gYMABO/pt68P4cMJ6eGzPDFXWRlj7uo/nthd1LEJt2ns
+	AjmDWwG3Zr0C2Z1zEoYnMe/GHPT7ODq+73GPKJvDtGtE4DtPLdYiWkos93ScWydgkvc0
+	20MdkhKTWLS6+PAsyPYZKe2YQxDJKmhNZDz3HYKpn1dJgmrze7p2oOKuKdNBrMzjmyMb
+	NT0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=qiOPlRcfQmkVUYQELVaXUf5Ul6gvfAAatsFPRbXQZcM=;
+	b=rUElEiU/FXPW1qlL3iq0++4m5bdNU3T06KdtNpXockB5GlnebRiRJ6ykZ/OtQpxBjs
+	ejejV/2pSNrJKeZOTUp21X9JFva6MZ3cXYYtMs6zAGaI9TLOOZ9d4HVnfvQYZq1OzIbf
+	JcEpp91FxaFi8N1QNr2ulDBmhzarYbxJCM+d3AIedDlxZUMi+v2848fpC99mRLIzAewx
+	pEmf6gx0G0fG0sJkzIgwpKITk9TJ7E+aNbY8v8LHgQ6NlAJ0+gRUU7aur7w2k8IEc9cY
+	a3u0Qqw9EyXodcO6WApqMf2wkd5j2zws3bxcQ+CwhGZWVi+jZMSrJxWsGY9XIQo0dG2o
+	Ke2w==
+X-Gm-Message-State: AA+aEWaugsWcCEN00SskwDNmLPN2LZ+RmbIX3ku07kpFCyOkXErKs6Vh
+	m5L+1bFDTsl04/o+tmUd1Eg=
+X-Google-Smtp-Source: AFSGD/UhDPIwRh2Oz38IaraPC4qT+eDyDR96L9MCGqdwOvyB+OTtp8V2RILOWgmbZzzLRqivTbtD4A==
+X-Received: by 2002:a5d:6648:: with SMTP id f8mr15693245wrw.117.1544004298712; 
+	Wed, 05 Dec 2018 02:04:58 -0800 (PST)
+Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
+	r12sm24338584wrq.3.2018.12.05.02.04.57
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Wed, 05 Dec 2018 02:04:57 -0800 (PST)
+Date: Wed, 5 Dec 2018 10:04:56 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Dongli Zhang <dongli.zhang@oracle.com>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, mst@redhat.com,
+	qemu-trivial@nongnu.org, kwolf@redhat.com, stefanha@redhat.com,
+	mreitz@redhat.com
+Message-ID: <20181205100456.GF20933@stefanha-x1.localdomain>
+References: <1541479952-32355-1-git-send-email-dongli.zhang@oracle.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [172.17.128.60]
-X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
-	T-EXCH-02.corp.yadro.com (172.17.10.102)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 89.207.88.251
-Subject: [Qemu-trivial] [PATCH for-3.1 1/2] i386: hvf: Fix overrun of
- _decode_tbl1
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="UBnjLfzoMQYIXCvq"
+Content-Disposition: inline
+In-Reply-To: <1541479952-32355-1-git-send-email-dongli.zhang@oracle.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::441
+Subject: Re: [Qemu-trivial] [Qemu-block] [PATCH 1/1] virtio-blk: fix comment
+ for virtio_blk_rw_complete as nalloc is initially -1
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,40 +74,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Dec 2018 10:06:14 -0000
+X-List-Received-Date: Wed, 05 Dec 2018 10:15:26 -0000
 
-Single opcode instructions in ff group were incorrectly processed
-because an overrun of _decode_tbl1[0xff] resulted in access of
-_decode_tbl2[0x0]. Thus, decode_sldtgroup was called instead of
-decode_ffgroup:
-  7d71: decode_sldtgroup: 1
-  Unimplemented handler (7d71) for 108 (ff 0)
 
-While at it correct maximum length for _decode_tbl2 and _decode_tbl3.
+--UBnjLfzoMQYIXCvq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Roman Bolshakov <r.bolshakov@yadro.com>
----
- target/i386/hvf/x86_decode.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+On Tue, Nov 06, 2018 at 12:52:32PM +0800, Dongli Zhang wrote:
+> The initial value of nalloc is -1, but not 1.
+>=20
+> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+> ---
+> This is based on git://git.kernel.org/pub/scm/virt/kvm/mst/qemu.git tags/=
+for_upstream
+>=20
+>  hw/block/virtio-blk.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/i386/hvf/x86_decode.c b/target/i386/hvf/x86_decode.c
-index 2e33b69541..d125a6ef83 100644
---- a/target/i386/hvf/x86_decode.c
-+++ b/target/i386/hvf/x86_decode.c
-@@ -454,9 +454,9 @@ struct decode_x87_tbl {
- struct decode_tbl invl_inst = {0x0, 0, 0, false, NULL, NULL, NULL, NULL,
-                                decode_invalid};
- 
--struct decode_tbl _decode_tbl1[255];
--struct decode_tbl _decode_tbl2[255];
--struct decode_x87_tbl _decode_tbl3[255];
-+struct decode_tbl _decode_tbl1[256];
-+struct decode_tbl _decode_tbl2[256];
-+struct decode_x87_tbl _decode_tbl3[256];
- 
- static void decode_x87_ins(CPUX86State *env, struct x86_decode *decode)
- {
--- 
-2.17.2 (Apple Git-113)
+Thanks, applied to my block-next tree for QEMU 3.2:
+https://github.com/stefanha/qemu/commits/block-next
 
+Stefan
+
+--UBnjLfzoMQYIXCvq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJcB6LIAAoJEJykq7OBq3PIy6sH+wS3Y+lpGw/AaEPASEGCawJu
+0RPav85ldN/MHDzCbX3EOROxmWylPUwLYLs2svg0XKqdfCtTF9yzlAwzVueq81Gp
++JP/L/zzUZbprEd0AF1g0Hs0Rfk52JTZPQkSfNn422Is49VpLXxvy92+ElH+MoiA
+IqZs3CKniGtnGYPLgJ+PcH+doI+d83L7mk8iGrIJJRzkRcSHfcI7bidd1QfkdgMT
+Om44lZXbnj9r1E75aRJOKElzvKwbejjGg8r5/r0MYxTCpG6UhUi/N5LJklTxcuIg
+D3Mo4f8ZcBFdSrrIUQuBl8VBKJPBt5rfbeoDXhfIyDLiUA9ZHZXhJhjxwGw2YXQ=
+=Becf
+-----END PGP SIGNATURE-----
+
+--UBnjLfzoMQYIXCvq--
 
