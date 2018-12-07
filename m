@@ -1,49 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gVIcN-00005H-AL
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Dec 2018 11:04:43 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:43948)
+	id 1gVJba-0001Xx-VE
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Dec 2018 12:07:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:60067)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Fabrice.DESCLAUX@CEA.FR>) id 1gVHNB-0001oE-Qa
-	for qemu-trivial@nongnu.org; Fri, 07 Dec 2018 09:44:58 -0500
+	(envelope-from <eblake@redhat.com>) id 1gVJbY-0001V0-4V
+	for qemu-trivial@nongnu.org; Fri, 07 Dec 2018 12:07:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Fabrice.DESCLAUX@CEA.FR>) id 1gVHN8-0005ve-JO
-	for qemu-trivial@nongnu.org; Fri, 07 Dec 2018 09:44:57 -0500
-Received: from sainfoin-smtp-out.extra.cea.fr ([132.167.192.228]:50102)
+	(envelope-from <eblake@redhat.com>) id 1gVJbS-0000pc-9m
+	for qemu-trivial@nongnu.org; Fri, 07 Dec 2018 12:07:56 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:31253)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <Fabrice.DESCLAUX@CEA.FR>)
-	id 1gVHN8-0005RK-8a
-	for qemu-trivial@nongnu.org; Fri, 07 Dec 2018 09:44:54 -0500
-Received: from pisaure.intra.cea.fr (pisaure.intra.cea.fr [132.166.88.21])
-	by sainfoin-sys.extra.cea.fr (8.14.7/8.14.7/CEAnet-Internet-out-4.0)
-	with ESMTP id wB7EiksR041801
-	for <qemu-trivial@nongnu.org>; Fri, 7 Dec 2018 15:44:46 +0100
-Received: from pisaure.intra.cea.fr (localhost [127.0.0.1])
-	by localhost (Postfix) with SMTP id 06D002023F2
-	for <qemu-trivial@nongnu.org>; Fri,  7 Dec 2018 15:44:46 +0100 (CET)
-Received: from muguet2-smtp-out.intra.cea.fr (muguet2-smtp-out.intra.cea.fr
-	[132.166.192.13])
-	by pisaure.intra.cea.fr (Postfix) with ESMTP id F0840201E31
-	for <qemu-trivial@nongnu.org>; Fri,  7 Dec 2018 15:44:45 +0100 (CET)
-Received: from zia.cdc.esteban.ctsi (out.dam.intra.cea.fr [132.165.76.10])
-	by muguet2-sys.intra.cea.fr (8.14.7/8.14.7/CEAnet-Internet-out-4.0)
-	with SMTP id wB7EijAV017614
-	for <qemu-trivial@nongnu.org>; Fri, 7 Dec 2018 15:44:45 +0100
-Received: (qmail 16455 invoked from network); 7 Dec 2018 14:44:45 -0000
-To: <qemu-trivial@nongnu.org>
-CC: MOUGEY Camille <camille.mougey@cea.fr>, Michael Tokarev <mjt@tls.msk.ru>, 
-	Laurent Vivier <laurent@vivier.eu>
-Message-ID: <03506cf0-a204-f619-8ee4-4990a5e69af5@cea.fr>
-Date: Fri, 7 Dec 2018 15:44:40 +0100
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1gVJbH-0000da-MJ; Fri, 07 Dec 2018 12:07:39 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0B17430842D0;
+	Fri,  7 Dec 2018 17:07:39 +0000 (UTC)
+Received: from red.redhat.com (ovpn-125-104.rdu2.redhat.com [10.10.125.104])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 110D25C1A1;
+	Fri,  7 Dec 2018 17:07:37 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	berrange@redhat.com
+Date: Fri,  7 Dec 2018 11:07:33 -0600
+Message-Id: <20181207170733.129532-1-eblake@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-From: <fabrice.desclaux@cea.fr>
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.40]);
+	Fri, 07 Dec 2018 17:07:39 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 132.167.192.228
-X-Mailman-Approved-At: Fri, 07 Dec 2018 11:04:41 -0500
-Subject: [Qemu-trivial] [PATCH] Fixes i386 xchgq test
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] maint: Grammar fix to mailmap
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,30 +49,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Dec 2018 14:44:58 -0000
+X-List-Received-Date: Fri, 07 Dec 2018 17:07:57 -0000
 
-As "xchg" reads and writes both operands, the "+m" is required to avoid 
-undefined behavior on -O2 compilation.
+Make the sentence read better.
 
-
-Signed-off-by: Fabrice Desclaux <fabrice.desclaux@cea.fr>
+Signed-off-by: Eric Blake <eblake@redhat.com>
 ---
-  tests/tcg/i386/test-i386.c | 2 +-
-  1 file changed, 1 insertion(+), 1 deletion(-)
+ .mailmap | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/tcg/i386/test-i386.c b/tests/tcg/i386/test-i386.c
-index a29b41e764..18d5609665 100644
---- a/tests/tcg/i386/test-i386.c
-+++ b/tests/tcg/i386/test-i386.c
-@@ -1137,7 +1137,7 @@ void test_xchg(void)
-      TEST_XCHG(xchgb, "b", "+q");
+diff --git a/.mailmap b/.mailmap
+index ed8faa57192..b8e08297c90 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -34,6 +34,6 @@ Justin Terry (VM) <juterry@microsoft.com> Justin Terry =
+(VM) via Qemu-devel <qemu
 
-  #if defined(__x86_64__)
--    TEST_XCHG(xchgq, "", "=m");
-+    TEST_XCHG(xchgq, "", "+m");
-  #endif
-      TEST_XCHG(xchgl, "k", "+m");
-      TEST_XCHG(xchgw, "w", "+m");
--- 
-2.19.2
+
+ # Also list preferred name forms where people have changed their
+-# git author config, or having utf8/latin1 encoding issues.
++# git author config, or had utf8/latin1 encoding issues.
+ Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+ Reimar D=C3=B6ffinger <Reimar.Doeffinger@gmx.de>
+--=20
+2.17.2
+
 
