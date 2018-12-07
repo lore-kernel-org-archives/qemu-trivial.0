@@ -1,23 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gVE6b-00080I-G5
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Dec 2018 06:15:37 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42835)
+	id 1gVE9G-0000jp-RC
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Dec 2018 06:18:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:43259)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gVE6Y-0007yd-Qi
-	for qemu-trivial@nongnu.org; Fri, 07 Dec 2018 06:15:36 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gVE9D-0000iY-OZ
+	for qemu-trivial@nongnu.org; Fri, 07 Dec 2018 06:18:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gVE6X-0008Og-Gf
-	for qemu-trivial@nongnu.org; Fri, 07 Dec 2018 06:15:34 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:33733)
+	(envelope-from <laurent@vivier.eu>) id 1gVE99-00038L-QM
+	for qemu-trivial@nongnu.org; Fri, 07 Dec 2018 06:18:19 -0500
+Received: from mout.kundenserver.de ([212.227.126.131]:54981)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gVE6R-0007tP-3j; Fri, 07 Dec 2018 06:15:27 -0500
+	id 1gVE99-00037S-DE; Fri, 07 Dec 2018 06:18:15 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1MyJx6-1hPNYw2fHg-00ylJu; Fri, 07 Dec 2018 12:15:18 +0100
-To: Li Qiang <liq3ea@gmail.com>, philmd@redhat.com
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <1543571638-2892-1-git-send-email-liq3ea@gmail.com>
+	1MYNaE-1gzQAM3Dt4-00VSsv; Fri, 07 Dec 2018 12:18:08 +0100
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, vsementsov@virtuozzo.com, armbru@redhat.com
+References: <20181206151856.77503-1-eblake@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -62,35 +62,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <653dfb5d-f90a-12c2-44f0-2acd1858772f@vivier.eu>
-Date: Fri, 7 Dec 2018 12:15:17 +0100
+Message-ID: <9c3877f7-6884-791d-b67b-7f32b8275470@vivier.eu>
+Date: Fri, 7 Dec 2018 12:18:06 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.1
 MIME-Version: 1.0
-In-Reply-To: <1543571638-2892-1-git-send-email-liq3ea@gmail.com>
+In-Reply-To: <20181206151856.77503-1-eblake@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:4cG8vStb8D21tPo7qfxW2e7xWkhDmzKfDNfg+15P8vkGJkgi5TB
-	TP1dXJe/WY+Ua3TgQsAvebWcEQDtXLAwZJfcxFcyXbplxT3p20BC03g3KGK8ekDTdueWvv2
-	iybyyDZ4iu88d/d+6K0ApCHBNlQzncD9qIVLERnZl4g4XVsolAvM74sABZECyoIZK77Nc+S
-	NtCRiBFfa8adUiTBYT0ww==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:h+isOB97sVE=:XnkVLOTaH5K2Zjht2i5zZQ
-	NqiWC971olehSjIH8u1AXghWdNovLg4kLPtKPCTru8+vfJJMFPzMU/FGiZCG7oTVCqTaKFM+D
-	5CKvwB1BHn7+raQ8TcRbbXGuc9/prl7POMi2xQsca1avxh7z8VqAPZVRfJ/HTpbh9zS2+YUL8
-	T9iA/zbnSEw1Ars2Zl6Wjpqx8ebRv9Jw/grKc2jWVHMPvEcwqSPkEI/nMA4YKJ5hHq1ARUxKW
-	LzTfYOEYUUCQCoP/DrGo/X8T3OYV5o3eL0f+9QvBX680YSe0eS4uRQXpMW66pFB9K5qlCEtNl
-	eGr6pDj3zlX8NpyHoFDEVku2K3WkJf/bbSPK1IGiOR1jk/fBg0nGzi8plgRrLslBXEU64nBrP
-	qbeTGBCREiQIEYiI8OOs585v7+ljVdyTPg5GDkS28UWWgDelEn1cNHj2r2vHhpdVflAdLLRnO
-	zMFegdrfkzoFp0B1ZA5rk9YRDIVvSLJWZqR4V/1Up+Q++kHwH+tU+cFajBprt9XJrX9juseZ0
-	nQFbDRwXBblUTJX/+F8OCZLNQIkrNypzqOSxzeB3/6b0rsLdBtrOXZPWcs8uFczTDWTdsoN/k
-	TZEDIZwatkv2DPAHPC9N0q5Wgg1FlNG+0V3FzPyk5toJIxh/i6zVW06v0OMDX3oYwe+AydEDs
-	KEZrNnLAQi1MJZI5UpaUfnad7uyoWjDLT/H2oC+LPHh4+DgCpRedK4baurQI1yeqpf+as8gAW
-	yP2IHfDZbndWwh0LUmoThHmtp/QsaSqCVQX56HpzcRpkl4rpZyqoeR4b2mc=
+X-Provags-ID: V03:K1:ZPSAyDDJMgPaDpqsf0hedddWOp3Z5JVf45C1PI9yFQVPMrNTdw7
+	v6QQWZuOdZw+hOrExl9zVMxApnNdnomrpua25h1kOH9mATpxoIGVHZmPrHJp26Q15xJxnFi
+	JT1/aAX/dFOSvAS1RoJju1M/kzemhxsRCizluR00fSEjvIEweiGFBQrzT8ZGELwpKZjh7IZ
+	WHTEo/PjhuuWUQ7raalFA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:2JGIg+r7UN0=:qh0rgCOih1UXP3m8+JUCnu
+	RzuD56BCqfovUAetdOYKPVNuc1klNWJ4esGbjeSooVk3s5PLap7UbILWQNpq7U8VbHbTpXA7w
+	BKklbFjoeFo6J8/mti5RwyxSz/xi9biPZUTKbamJeH6Su8fBclezzSnK1jiLNXJkfzeOAbJL4
+	8By8In8Qq8iZ0MfZOWANjEMV1iltfp6udxaoZeRGykpSGW149tHCxN6nW485hdCiQ/IxqvLHi
+	ahBTtdk8rqJrDLngCKsIiMhJxvRajby8K6tFTDPImvpDJhekth8MgMGZuBOEMncIuFMoP6ESy
+	ftnyP/ZnHD/Ctne5h8qeQucYGDLJqxiUsmSRQ/qnHRS4y4Y5QvYRbwPFxqzH7/g9L2UPpXRpf
+	mNZBqTEKA7MgRF606iJOQFbVzrO9sGNqwrmz+8F9nPDBNjXaN0CZO3cEVklGzqZBspCL49TXa
+	9OeuqUfAfZ+OaD06oGLFIHtGoNmcCItIpjM+skbLPqP2lNNJdIC+n/nXhwW5j37lCc09+2uth
+	+l7vInL4DP1bIDfZTzSQsyrP4agamc3D7HO0n68W2ESon3oNbSJfCkPfFIX8JHQa0hrof9Ze8
+	m7sOhCriJNtfoMOSzMlxGylE4bQmIGnLlFslXZm/YlXDKKD7FAsQnh4/7Hp0dggHct9GT6dnD
+	PRJABQY4K/7ih+W+9zF1BITXDZ3oV+rPNn4kVN5TI+2gIq/aUhoyoYWLsF7yLBXRJ2BIl8lD4
+	sgfufpmNKvQ3rAYx+oV0VmaO9Susnx0OtGVj/PBFMZq3T0pTtE8y9uz97IU=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.131
-Subject: Re: [Qemu-trivial] [PATCH] util: vfio-helpers: use ARRAY_SIZE in
- qemu_vfio_init_pci()
+Subject: Re: [Qemu-trivial] [PATCH] cutils: Assert in-range base for
+ string-to-integer conversions
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,29 +102,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Dec 2018 11:15:36 -0000
+X-List-Received-Date: Fri, 07 Dec 2018 11:18:21 -0000
 
-Le 30/11/2018 à 10:53, Li Qiang a écrit :
-> Cc: qemu-trivial@nongnu.org
+Le 06/12/2018 à 16:18, Eric Blake a écrit :
+> POSIX states that the value of endptr is unspecified if strtol()
+> fails with EINVAL due to an invalid base argument.  Since none of
+> the callers to check_strtox_error() initialized endptr, we could
+> end up propagating uninitialized data back to a caller on error.
+> However, passing an out-of-range base is already a sign of poor
+> programming, so let's just assert that base is in range, at which
+> point check_strtox_error() can be tightened to assert that it is
+> receiving an initialized ep that points somewhere within the
+> caller's original string, regardless of whether strto*() succeeded
+> or failed with ERANGE.
 > 
-> Signed-off-by: Li Qiang <liq3ea@gmail.com>
+> Reported-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+> Signed-off-by: Eric Blake <eblake@redhat.com>
 > ---
->  util/vfio-helpers.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/util/vfio-helpers.c b/util/vfio-helpers.c
-> index cccc9cd42e..342d4a2285 100644
-> --- a/util/vfio-helpers.c
-> +++ b/util/vfio-helpers.c
-> @@ -348,7 +348,7 @@ static int qemu_vfio_init_pci(QEMUVFIOState *s, const char *device,
->          goto fail;
->      }
->  
-> -    for (i = 0; i < 6; i++) {
-> +    for (i = 0; i < ARRAY_SIZE(s->bar_region_info); i++) {
->          ret = qemu_vfio_pci_init_bar(s, i, errp);
->          if (ret) {
->              goto fail;
+> Also tested that this does not negatively impact David's pending
+> additions of qemu_strtod{,_finite}().  Thus:
+> Based-on: <20181121164421.20780-1-david@redhat.com>
+> 
+>  util/cutils.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
 > 
 
 Applied to my trivial-patches branch.
