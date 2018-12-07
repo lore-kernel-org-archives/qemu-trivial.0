@@ -1,62 +1,96 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gVD8B-0006wB-A7
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Dec 2018 05:13:11 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52888)
+	id 1gVE6b-00080I-G5
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Dec 2018 06:15:37 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42835)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gVD88-0006vm-Ng
-	for qemu-trivial@nongnu.org; Fri, 07 Dec 2018 05:13:09 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gVE6Y-0007yd-Qi
+	for qemu-trivial@nongnu.org; Fri, 07 Dec 2018 06:15:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gVD85-0002S6-HL
-	for qemu-trivial@nongnu.org; Fri, 07 Dec 2018 05:13:08 -0500
-Received: from mail-wm1-f49.google.com ([209.85.128.49]:36922)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gVD81-0002E4-Mw
-	for qemu-trivial@nongnu.org; Fri, 07 Dec 2018 05:13:03 -0500
-Received: by mail-wm1-f49.google.com with SMTP id g67so3912518wmd.2
-	for <qemu-trivial@nongnu.org>; Fri, 07 Dec 2018 02:13:00 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=TBnuPdiv+YYyR2AgFmobVDcK50XB7bfMC4zCWLTzQkc=;
-	b=T2L/0SGMnYj9VCm5AY0ft0wcpugMwOmeQvZWZC3lJhw0b6vLYCWh4lgwIrOQEoFOQh
-	U/3dsSHt9qQw0/6rGPv16plcIcGHPWUzPdX+ymQbqJKzRtq6yYSlORescILDPLek55l1
-	PVZDnsqtVl7BkeCT1tpaVuYVmBX27nBayL1zil82EkDCWJ04nUjZthsRjs00WyhGGCqM
-	KgsH6RTNL13retKEWMs8NE6vFPi8E3/7r8CQxQyQD4p2cwzXIaJKVLELspU+XgsDdsuu
-	REFt9CeZQwWgd+TTDjG8UYzmO4Vu41MPf1L5STNWk2FOHVp3Aio+SCSz0cp1xpm7WkK+
-	6AIQ==
-X-Gm-Message-State: AA+aEWYMGI/1F1LSQnL4OwNh3Qay/M6lNNY45y5N9VeWqXegNxJ6BT/V
-	PyHHLkbnh8vzLVVP+3AbTcWQgg==
-X-Google-Smtp-Source: AFSGD/Xr0oYecCzqG7xBzWLi1ztc1fVDn7+f0AzB43ThIimAIjYaJngHholywezD53LP1Rb3m+qddA==
-X-Received: by 2002:a1c:5585:: with SMTP id
-	j127-v6mr1535828wmb.127.1544177579961; 
-	Fri, 07 Dec 2018 02:12:59 -0800 (PST)
-Received: from [192.168.1.34] (172.red-88-21-202.staticip.rima-tde.net.
-	[88.21.202.172]) by smtp.gmail.com with ESMTPSA id
-	k128sm1416863wmd.37.2018.12.07.02.12.59
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 07 Dec 2018 02:12:59 -0800 (PST)
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, vsementsov@virtuozzo.com, armbru@redhat.com
-References: <20181206151856.77503-1-eblake@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <9022c85e-9bbd-3500-edcd-c4ff014c5604@redhat.com>
-Date: Fri, 7 Dec 2018 11:12:58 +0100
+	(envelope-from <laurent@vivier.eu>) id 1gVE6X-0008Og-Gf
+	for qemu-trivial@nongnu.org; Fri, 07 Dec 2018 06:15:34 -0500
+Received: from mout.kundenserver.de ([212.227.126.131]:33733)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1gVE6R-0007tP-3j; Fri, 07 Dec 2018 06:15:27 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MyJx6-1hPNYw2fHg-00ylJu; Fri, 07 Dec 2018 12:15:18 +0100
+To: Li Qiang <liq3ea@gmail.com>, philmd@redhat.com
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <1543571638-2892-1-git-send-email-liq3ea@gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <653dfb5d-f90a-12c2-44f0-2acd1858772f@vivier.eu>
+Date: Fri, 7 Dec 2018 12:15:17 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.1
 MIME-Version: 1.0
-In-Reply-To: <20181206151856.77503-1-eblake@redhat.com>
+In-Reply-To: <1543571638-2892-1-git-send-email-liq3ea@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:4cG8vStb8D21tPo7qfxW2e7xWkhDmzKfDNfg+15P8vkGJkgi5TB
+	TP1dXJe/WY+Ua3TgQsAvebWcEQDtXLAwZJfcxFcyXbplxT3p20BC03g3KGK8ekDTdueWvv2
+	iybyyDZ4iu88d/d+6K0ApCHBNlQzncD9qIVLERnZl4g4XVsolAvM74sABZECyoIZK77Nc+S
+	NtCRiBFfa8adUiTBYT0ww==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:h+isOB97sVE=:XnkVLOTaH5K2Zjht2i5zZQ
+	NqiWC971olehSjIH8u1AXghWdNovLg4kLPtKPCTru8+vfJJMFPzMU/FGiZCG7oTVCqTaKFM+D
+	5CKvwB1BHn7+raQ8TcRbbXGuc9/prl7POMi2xQsca1avxh7z8VqAPZVRfJ/HTpbh9zS2+YUL8
+	T9iA/zbnSEw1Ars2Zl6Wjpqx8ebRv9Jw/grKc2jWVHMPvEcwqSPkEI/nMA4YKJ5hHq1ARUxKW
+	LzTfYOEYUUCQCoP/DrGo/X8T3OYV5o3eL0f+9QvBX680YSe0eS4uRQXpMW66pFB9K5qlCEtNl
+	eGr6pDj3zlX8NpyHoFDEVku2K3WkJf/bbSPK1IGiOR1jk/fBg0nGzi8plgRrLslBXEU64nBrP
+	qbeTGBCREiQIEYiI8OOs585v7+ljVdyTPg5GDkS28UWWgDelEn1cNHj2r2vHhpdVflAdLLRnO
+	zMFegdrfkzoFp0B1ZA5rk9YRDIVvSLJWZqR4V/1Up+Q++kHwH+tU+cFajBprt9XJrX9juseZ0
+	nQFbDRwXBblUTJX/+F8OCZLNQIkrNypzqOSxzeB3/6b0rsLdBtrOXZPWcs8uFczTDWTdsoN/k
+	TZEDIZwatkv2DPAHPC9N0q5Wgg1FlNG+0V3FzPyk5toJIxh/i6zVW06v0OMDX3oYwe+AydEDs
+	KEZrNnLAQi1MJZI5UpaUfnad7uyoWjDLT/H2oC+LPHh4+DgCpRedK4baurQI1yeqpf+as8gAW
+	yP2IHfDZbndWwh0LUmoThHmtp/QsaSqCVQX56HpzcRpkl4rpZyqoeR4b2mc=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.49
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] cutils: Assert in-range
- base for string-to-integer conversions
+X-Received-From: 212.227.126.131
+Subject: Re: [Qemu-trivial] [PATCH] util: vfio-helpers: use ARRAY_SIZE in
+ qemu_vfio_init_pci()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,100 +102,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Dec 2018 10:13:09 -0000
+X-List-Received-Date: Fri, 07 Dec 2018 11:15:36 -0000
 
-On 12/6/18 4:18 PM, Eric Blake wrote:
-> POSIX states that the value of endptr is unspecified if strtol()
-> fails with EINVAL due to an invalid base argument.  Since none of
-> the callers to check_strtox_error() initialized endptr, we could
-> end up propagating uninitialized data back to a caller on error.
-> However, passing an out-of-range base is already a sign of poor
-> programming, so let's just assert that base is in range, at which
-> point check_strtox_error() can be tightened to assert that it is
-> receiving an initialized ep that points somewhere within the
-> caller's original string, regardless of whether strto*() succeeded
-> or failed with ERANGE.
+Le 30/11/2018 à 10:53, Li Qiang a écrit :
+> Cc: qemu-trivial@nongnu.org
 > 
-> Reported-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-> Signed-off-by: Eric Blake <eblake@redhat.com>
+> Signed-off-by: Li Qiang <liq3ea@gmail.com>
 > ---
+>  util/vfio-helpers.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Also tested that this does not negatively impact David's pending
-> additions of qemu_strtod{,_finite}().  Thus:
-> Based-on: <20181121164421.20780-1-david@redhat.com>
-> 
->  util/cutils.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
-> 
-> diff --git a/util/cutils.c b/util/cutils.c
-> index 91930d1bbeb..e098debdc0c 100644
-> --- a/util/cutils.c
-> +++ b/util/cutils.c
-> @@ -278,6 +278,7 @@ int qemu_strtosz_metric(const char *nptr, const char **end, uint64_t *result)
->  static int check_strtox_error(const char *nptr, char *ep,
->                                const char **endptr, int libc_errno)
->  {
-> +    assert(ep >= nptr);
->      if (endptr) {
->          *endptr = ep;
+> diff --git a/util/vfio-helpers.c b/util/vfio-helpers.c
+> index cccc9cd42e..342d4a2285 100644
+> --- a/util/vfio-helpers.c
+> +++ b/util/vfio-helpers.c
+> @@ -348,7 +348,7 @@ static int qemu_vfio_init_pci(QEMUVFIOState *s, const char *device,
+>          goto fail;
 >      }
-> @@ -325,6 +326,7 @@ int qemu_strtoi(const char *nptr, const char **endptr, int base,
->      char *ep;
->      long long lresult;
-> 
-> +    assert((unsigned) base <= 36 && base != 1);
->      if (!nptr) {
->          if (endptr) {
->              *endptr = nptr;
-> @@ -377,6 +379,7 @@ int qemu_strtoui(const char *nptr, const char **endptr, int base,
->      char *ep;
->      long long lresult;
-> 
-> +    assert((unsigned) base <= 36 && base != 1);
->      if (!nptr) {
->          if (endptr) {
->              *endptr = nptr;
-> @@ -433,6 +436,7 @@ int qemu_strtol(const char *nptr, const char **endptr, int base,
->  {
->      char *ep;
-> 
-> +    assert((unsigned) base <= 36 && base != 1);
->      if (!nptr) {
->          if (endptr) {
->              *endptr = nptr;
-> @@ -475,6 +479,7 @@ int qemu_strtoul(const char *nptr, const char **endptr, int base,
->  {
->      char *ep;
-> 
-> +    assert((unsigned) base <= 36 && base != 1);
->      if (!nptr) {
->          if (endptr) {
->              *endptr = nptr;
-> @@ -502,6 +507,7 @@ int qemu_strtoi64(const char *nptr, const char **endptr, int base,
->  {
->      char *ep;
-> 
-> +    assert((unsigned) base <= 36 && base != 1);
->      if (!nptr) {
->          if (endptr) {
->              *endptr = nptr;
-> @@ -525,6 +531,7 @@ int qemu_strtou64(const char *nptr, const char **endptr, int base,
->  {
->      char *ep;
-> 
-> +    assert((unsigned) base <= 36 && base != 1);
->      if (!nptr) {
->          if (endptr) {
->              *endptr = nptr;
-> @@ -657,6 +664,7 @@ int parse_uint(const char *s, unsigned long long *value, char **endptr,
->      char *endp = (char *)s;
->      unsigned long long val = 0;
-> 
-> +    assert((unsigned) base <= 36 && base != 1);
->      if (!s) {
->          r = -EINVAL;
->          goto out;
+>  
+> -    for (i = 0; i < 6; i++) {
+> +    for (i = 0; i < ARRAY_SIZE(s->bar_region_info); i++) {
+>          ret = qemu_vfio_pci_init_bar(s, i, errp);
+>          if (ret) {
+>              goto fail;
 > 
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Applied to my trivial-patches branch.
+
+Thanks,
+Laurent
+
 
