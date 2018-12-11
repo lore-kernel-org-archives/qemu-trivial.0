@@ -1,52 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gWmOM-0007T9-Kb
+	id 1gWmOM-0007TL-Sd
 	for mharc-qemu-trivial@gnu.org; Tue, 11 Dec 2018 13:04:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42410)
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42451)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gWmOI-0007Qx-LV
+	(envelope-from <laurent@vivier.eu>) id 1gWmOK-0007RR-Qa
 	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 13:04:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gWmOH-0006xG-Md
-	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 13:04:18 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:45543)
+	(envelope-from <laurent@vivier.eu>) id 1gWmOG-0006wt-SW
+	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 13:04:20 -0500
+Received: from mout.kundenserver.de ([212.227.126.133]:53459)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gWmO9-0006rb-EB; Tue, 11 Dec 2018 13:04:11 -0500
+	id 1gWmOG-0006w5-Fr; Tue, 11 Dec 2018 13:04:16 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N94FT-1hYamt2q51-0165Dm; Tue, 11 Dec 2018 19:04:00 +0100
+	id 1MvsyF-1hLRdB2xnD-00stx4; Tue, 11 Dec 2018 19:04:06 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
 	Laurent Vivier <laurent@vivier.eu>, Richard Henderson <rth@twiddle.net>,
 	Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Date: Tue, 11 Dec 2018 19:03:22 +0100
-Message-Id: <20181211180352.19644-1-laurent@vivier.eu>
+	Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
+Date: Tue, 11 Dec 2018 19:03:29 +0100
+Message-Id: <20181211180352.19644-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.19.2
+In-Reply-To: <20181211180352.19644-1-laurent@vivier.eu>
+References: <20181211180352.19644-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Pm4UGjXpwDcxgnMEGvAqQ5oWKnteeV0fVjd7ubXM9q1F0a442hf
-	EtcaMMstiTAkVZDnBQUN/QQn132rtb4JiQ6yfrc+28J+5aOOoKub3KIcGUyhY1vTBysJwSc
-	kX7kloNxbvDpYMLGW1yA6RGH78S8erfOtR7KgH27l1s+zdY6GCbaT/xo2NmqM5t/8cmo0WT
-	b7x9RMdSWBuWwGMiVZKFA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:8IRQ7RYcifU=:fLrFeRVJ4qtQP9J9ubQhAW
-	IkkRoL10HbVetArABqmHgwALWioeZHdoPXG9ZmZKmhJvHt84QLG++ODCtvWfgWMJ3iMqU2Q/f
-	4ZzNwDm1BX59udBwXoZpSGtMBBnUf2NLS0e10rfusNgzEE5vBidXUdpInRm08PfLq2jIWoe8m
-	jCfhJBIizuijhddN4k/yzEBjhm7UABcXCctCOzZrj2jzvJuOMmQRQ9OZZoOJgpmlHRF4gaQQD
-	L9RntBvuhU042RX2QsM0QohBgdHgvEV0W60zOoOSIHNPprwuORnAr+fwFMW4IZtdgL1NIOg8v
-	fJ0W5NVPg5+opiFqTLDLH885YA9jIMpl52/EknllPSOChZPn1TgheNmvG9ePyEsQmVth+ujOs
-	w88VUPGz5xwuNv2s3fAPAXEmKUrMv/agT9ltAP93n1+jXKelywH5ZixwgygxraOWhwL2g2OBp
-	K5xZXOgGKbc8ehH6H+AW/xqWR7htWpKfYzeWrWLT9reCqNwf71etTVaILTqmy17fbNV7WCK2X
-	c89g1KHl+tKlo5J7mgY9OIesCmitD5DaXYUL6I3jgRgNJjIm5VCocF3mNWnwfc8266h3igQaE
-	4DVmQR5RemqAlFv1kdUnJNFcwEa1Mr0J+ZXAT+OoxbwwxZNwM9ocwLPh3G2nZVNnkRM4pq+jy
-	cqvTHkAv/oFaWPQgMPun6AEKAC8pPBgvF0/yv7+NndnCVhG2YjpqV+xwo0Qly0d/VXpIIa8Yi
-	FrFCtB78Jb/6vSioB08tfb3jFWHdXj6vA3XCzmdIkp87EqWP7GQfoQTE/I0=
+X-Provags-ID: V03:K1:pPAph6NW+a/KlKIlzraVwsFkptN0vrBxUkYqsrH9qZ4gG0/jj5m
+	22p9HTGI/ytG2tZaEF8+E/fN164wslHcJpo/owhBHwlXg3eVQkoR8Xx3+3w8uorrKq5Z/nY
+	loCzsyiqhuCeeKR0Fid5DawQEZbhQCnrjWeSpksRLxkz0xIZXtdAU1lXKHYpwW5xGxW0yl1
+	bUA1wbIfvAbei1oMFZ8QQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:3QbK7vwcThs=:rqMjZLORT7VW4gozCRrNiJ
+	4sqht8wer4YcN+AHg90drM8rcglKjtnZ8FXFCO6XLo4RmYa5+h6u4e0czNfbULeBGKP8HiC05
+	0oGJd3ralWGTQy6MbTE0kBoZhbLmBC5ZVMFhHk0sQXgtvfWhUA6vGnOc3s3kvIYS28cjJ2ZnB
+	ZlpjZb2tTt3UyxCwueFkOU6AjURjakkJVrw1woymAKK25cuSL5uOzC6aLnJKtSzXdVKpnmFI3
+	6mv9Dx9hctKaw04VbZu9idouKgUCL8OshVzvaw8KTDVb43MmcKRbdDUYhSfBx6TwEOwIqb4bA
+	VeJNrScOt1YDp3eLU4FyPwq6oMVAHYbrmRYu17V5KZ3wMuDkrBhZvmcW2bEb4PHY40I1h8xKc
+	ZeZxIQShJkSHneYDDkbv1bT8lrGHTpEWDXgnpz62/4QIkkM/z96ODpk4lBSsSAtxv6poU1mkh
+	n4+aMJCK9K2AtOHtl/WCxrMh4y4QNdE27FxJm+NxjsB+/ZthRAa4oMmwxiYGDnB3dChkijzNh
+	tdBPbi84oA5TRGV6cOMoj3P9nSPy9UgS4JO7KTdA0uPeNYhWZIm5KCwKJcnzOvPgHoUjDp4bV
+	YjNBvgkobx7fneP7yAYQcK2fO6vwsaBS0kmv2QuGdjJubsRjkv7556gKoJZ48MMOLdlstbBim
+	gWoUiM1qxg7Ru1qX1A4/DX/D8TgP7cW5XxlI48nLXBrkSF93kRuvqQ3uCso0DOZoKnLec8geJ
+	XZQkhdv+kSOz+ZyyHRi7wlHNi9rJY5MHDD6NNw==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
-Subject: [Qemu-trivial] [PULL 00/30] Trivial patches
+X-Received-From: 212.227.126.133
+Subject: [Qemu-trivial] [PULL 07/30] MAINTAINERS: Add missing hw/pci-host
+ entries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,87 +62,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 11 Dec 2018 18:04:21 -0000
 
-The following changes since commit 32a1a94dd324d33578dca1dc96d7896a0244d768:
+From: Thomas Huth <thuth@redhat.com>
 
-  Update version for v3.1.0 release (2018-12-11 17:18:37 +0000)
+Bonito belongs to Fulong-2E, Sabre belongs to Sun4u, and Mac-Newworld
+and Mips-Boston were missing the header files.
 
-are available in the Git repository at:
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com>
+Acked-by: Aleksandar Markovic <amarkovic@wavecomp.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <1542891760-13937-1-git-send-email-thuth@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ MAINTAINERS | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-  git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
-
-for you to fetch changes up to 82c48fb79df5596a9d0a3b6d998c4491e542aa7a:
-
-  Fixes i386 xchgq test (2018-12-11 18:41:25 +0100)
-
-----------------------------------------------------------------
-Trivial patches (2018-12-11)
-
-----------------------------------------------------------------
-
-Dongli Zhang (1):
-  virtio: pass argument by value for virtqueue_map_iovec()
-
-Eric Blake (4):
-  qapi: Reduce Makefile boilerplate
-  misc: Avoid UTF-8 in error messages
-  cutils: Assert in-range base for string-to-integer conversions
-  maint: Grammar fix to mailmap
-
-Fam Zheng (1):
-  MAINTAINERS: Update email address for Fam Zheng
-
-Li Qiang (5):
-  hw: qdev: fix error in comment
-  hw: set_netdev: remove useless code
-  target: hax: replace g_malloc with g_new0
-  target: hax: fix errors in comment
-  util: vfio-helpers: use ARRAY_SIZE in qemu_vfio_init_pci()
-
-Marc-André Lureau (1):
-  misc: fix spelling
-
-Philippe Mathieu-Daudé (15):
-  MAINTAINERS: Fix ACPI tests data files path
-  MAINTAINERS: Add a missing entry to the SPARC CPU
-  MAINTAINERS: Add missing entries for the Xilinx ZynqMP machine
-  MAINTAINERS: Add missing entries for the Jazz machine
-  MAINTAINERS: Add a missing entry for the Xilinx S3A-DSP 1800 machine
-  MAINTAINERS: Add a missing entry for the Old World machines
-  MAINTAINERS: Add a missing entry for the sun4m machines
-  MAINTAINERS: Add missing entries to the PC Chipset section
-  MAINTAINERS: Add missing entries to the vhost section
-  MAINTAINERS: Add missing entries for the Canon DIGIC machine
-  MAINTAINERS: Add missing entries for the MPS2 machine
-  MAINTAINERS: Add a missing entry to SPICE
-  MAINTAINERS: Add a missing entry to the QMP section
-  MAINTAINERS: Add a missing entry for the NVDIMM device
-  MAINTAINERS: Use my work email to review Build and test automation
-    patches
-
-Thomas Huth (2):
-  MAINTAINERS: Add missing hw/pci-host entries
-  MAINTAINERS: Add nios2-related files to the Nios2 section
-
-fabrice.desclaux@cea.fr (1):
-  Fixes i386 xchgq test
-
- .gitignore                       |  72 +-----------
- .mailmap                         |   2 +-
- MAINTAINERS                      |  49 +++++---
- Makefile                         | 194 ++++---------------------------
- Makefile.objs                    |  75 ++----------
- hw/core/qdev-properties-system.c |   4 -
- hw/misc/tmp105.c                 |   2 +-
- hw/misc/tmp421.c                 |   2 +-
- hw/virtio/virtio.c               |   8 +-
- include/hw/qdev-core.h           |   2 +-
- target/i386/cpu.c                |   2 +-
- target/i386/hax-all.c            |  17 +--
- tests/tcg/i386/test-i386.c       |   2 +-
- util/cutils.c                    |   8 ++
- util/vfio-helpers.c              |   2 +-
- 15 files changed, 94 insertions(+), 347 deletions(-)
-
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 63effdc473..059c775a06 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -885,7 +885,7 @@ R: Stefan Markovic <smarkovic@wavecomp.com>
+ S: Odd Fixes
+ F: hw/mips/mips_fulong2e.c
+ F: hw/isa/vt82c686.c
+-
++F: hw/pci-host/bonito.c
+ F: include/hw/isa/vt82c686.h
+ 
+ Boston
+@@ -895,6 +895,7 @@ S: Maintained
+ F: hw/core/loader-fit.c
+ F: hw/mips/boston.c
+ F: hw/pci-host/xilinx-pcie.c
++F: include/hw/pci-host/xilinx-pcie.h
+ 
+ OpenRISC Machines
+ -----------------
+@@ -947,6 +948,7 @@ F: hw/nvram/mac_nvram.c
+ F: include/hw/misc/macio/
+ F: include/hw/misc/mos6522.h
+ F: include/hw/ppc/mac_dbdma.h
++F: include/hw/pci-host/uninorth.h
+ 
+ Old World
+ M: David Gibson <david@gibson.dropbear.id.au>
+@@ -1038,6 +1040,8 @@ M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+ S: Maintained
+ F: hw/sparc64/sun4u.c
+ F: pc-bios/openbios-sparc64
++F: hw/pci-host/sabre.c
++F: include/hw/pci-host/sabre.h
+ 
+ Sun4v
+ M: Artyom Tarasenko <atar4qemu@gmail.com>
 -- 
 2.19.2
 
