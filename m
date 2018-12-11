@@ -1,55 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gWmOf-0007jX-2R
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Dec 2018 13:04:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42678)
+	id 1gWmOk-0007pI-PB
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Dec 2018 13:04:46 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42729)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gWmOd-0007i4-Ee
-	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 13:04:40 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gWmOi-0007md-4M
+	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 13:04:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gWmOY-0007AI-Fy
-	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 13:04:39 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:50693)
+	(envelope-from <laurent@vivier.eu>) id 1gWmOd-0007DH-8y
+	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 13:04:44 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:40177)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gWmOY-00079g-65; Tue, 11 Dec 2018 13:04:34 -0500
+	id 1gWmOc-0007CH-Ue; Tue, 11 Dec 2018 13:04:39 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1Mbkac-1h1yo21QXm-00dHwR; Tue, 11 Dec 2018 19:04:08 +0100
+	id 1N8n8I-1hYrlk1LJG-015oEt; Tue, 11 Dec 2018 19:04:02 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
 	Laurent Vivier <laurent@vivier.eu>, Richard Henderson <rth@twiddle.net>,
 	Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	Paolo Bonzini <pbonzini@redhat.com>, Li Qiang <liq3ea@gmail.com>
-Date: Tue, 11 Dec 2018 19:03:31 +0100
-Message-Id: <20181211180352.19644-10-laurent@vivier.eu>
+	Paolo Bonzini <pbonzini@redhat.com>, Dongli Zhang <dongli.zhang@oracle.com>
+Date: Tue, 11 Dec 2018 19:03:24 +0100
+Message-Id: <20181211180352.19644-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.19.2
 In-Reply-To: <20181211180352.19644-1-laurent@vivier.eu>
 References: <20181211180352.19644-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:68z1m1htApw8UP8hUsasHO9uOzDAZnnw9h804ukKuhitT4NIw58
-	Vh/E9Dexcz6ZNQaUMJQEKA74ISkkcp1fUuTBEhLWt4LsSvskMCmLEeRQa/8ZQJUvC704cV+
-	rcnSypPBGHLrzU41D2DA3rIk+Sv0Y2EczSY10Ga2yJ8MJQz46MPD6x/dxaPnaSKmVOI9lFG
-	QIcAJam2D8GktE70up9lA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:4hqAJ23Suzc=:ja9yXWHqsyENUx13wUOovX
-	sV1Vf3kUMy2vx+0jFWtl1rYxVQFBu7/SCCTIKkx99edI5cm9RJfOFlxTQYJ1Jq+wSxVDnGHYu
-	3dQMBkz/EjzbLjBAT0L9rwz8bnSPwTti14GI36HX4yLxhSax7WJujvQ4S04acO2cxocIBNcCJ
-	JwokaRhyPDj383LFWjuqWioV+PzuaxILd1AvGZ7xX8RZUDpYUdMDKABElVcwBfmUK6fD1sk7L
-	nVs6X3Ic8b+07O5t0jfQGuBGZRLRORwmNwe43rW48euGcPg2WHCUfjWSHjdX+MeUjzh+mmEIC
-	1qwj8mG84F1ckjbMW4olYSZeTAOYA21Ots4QH+KWS2klEY5iTNmDPIxgqwHSwikCdyFxhVqPV
-	U8CcBM5RPw3rrrzQi5ZJ64iIJ3PYNhj5hZkmuAicxi46FxU3uW0VSn/x8EVC+ABGQOaGkGDRS
-	0EJ055caG4oYWOXcvgpyLmBUcexQQurc5R/lq+S3KlaHcaaRQ0vozuYM4Oc1HFwdx3WcccStU
-	r8aQkiQn5Wt+uVRCLpedZdtkSwc3xBdcPPcP3TnBBWpzOyBZBWJF9GP5VN0N4kjGrUThXb8vj
-	s7ZiiM6xEz6/LLnd7Rtg4neKCwXHY64ZBnJz5iNdf6zn9RGl1zUiOoOEVxPeW3JkBKO1NjtgD
-	vqgBGtNp4cYcBmYwaZj+MA+fKDlmXhgmUXPz1FcsIKNYRaJYfYQAkx54cjcjD/+FVECjqtwAF
-	+ZMTa23gf9GqQ8FwTkuhxEWIXPLxyveqsQ+FgO84fqRbxVPH6sH4g01cfS0=
+X-Provags-ID: V03:K1:fpJsAoGc7GC1l0PSv9fbvpsyxEoGTJbHlpQuIP19WeijIRJuaGN
+	09xU87WWbmveuGX5rbnRaf2SeaYJwj3wy+qmMrTRUC4NZmGvFdHW+WYCji3U7BguEdJqAX9
+	exKYFQswM0sFSaV2Crcs5wkLG/hFd2t6dY3r5o6XI8/iTRWG0SdpqWQd7QFmr5/MG1IO4O/
+	1If3//ZM/rngU6/0tPByA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:tDBpv1ywkjw=:q2Xsl1cIayz58WFhu4ajqo
+	FHrh9AmwDS5ZXbgVI/yajUgK/3Rzjd3mV0DrP4bwiq+34b7EZgOZiVYyiU6Ay0EF+xLnnpMYD
+	qUZ0sp2O8BmxuR2FMsG03d4OCTRGHcgRmLBtgslJJBSRAIknujHAXZj8ulCjJv4QBniB3R72K
+	oAgR883dSGVauGhknwF+DbzTBmykflhZEV6gtm2yOn541v5BmwafYL3nPIHfgogSRvMMVRj5d
+	qkIygVB69gixIn/AkMEo1RXzy0yUT2gIGlxPrWzCMmRvRj2VZ3osecn7IyOSx3vRRg2DlUKsB
+	+bcHqHOTFv5MiEbHWyBsGWNYvfHcIAerdWuRjKEVbv5bQG0GgLQzFkyQe/6JgLI0t/AzxPBie
+	1Xsqgh3BNTRvpeg/Q9XX0RuUMCzX/JjmPlnXOpYk4YdB4V7pMQ2xHvxynBlXU8IKJedq5j4FG
+	fP5+KmJe3haIIkMfnb0NaV5bUIgER7goPFLA9Pdmi1eaJPXhdbL/Bgl1or/CspCllsM0AG7+x
+	P0EApnOK9+fOSPREUXo++ZyvbIa+LezIXIPo9TW1s9WQULIwMDy9k32cPdQTLd3RROdzi/Q/w
+	pzxfJnNoSdHEuewGFLCJPKoAsvQjYj6PqBjUh7pcxLp4cPNkA+LDEFYEWpRDwxVVortDKQ59c
+	/E1GQL2bklifL+QvpWzR0Vc19NSRtI/p0/JLRBrwx2tlkzeN0WCEGVq/LZxopFtQsZafPKC32
+	e+2BIieG8Cl1KjbOos6TVf8AHhBjk8Pw4NbWkA==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
-Subject: [Qemu-trivial] [PULL 09/30] target: hax: replace g_malloc with
- g_new0
+X-Received-From: 212.227.126.135
+Subject: [Qemu-trivial] [PULL 02/30] virtio: pass argument by value for
+ virtqueue_map_iovec()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,59 +60,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Dec 2018 18:04:40 -0000
+X-List-Received-Date: Tue, 11 Dec 2018 18:04:45 -0000
 
-From: Li Qiang <liq3ea@gmail.com>
+From: Dongli Zhang <dongli.zhang@oracle.com>
 
-And also the g_malloc doesn't need check return value,
-remove it.
+Pass num_sg by value instead of by pointer, as num_sg is never modified in
+virtqueue_map_iovec().
 
-Cc: qemu-trivial@nongnu.org
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Li Qiang <liq3ea@gmail.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <1543226179-5135-1-git-send-email-liq3ea@gmail.com>
+Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Message-Id: <1541139396-4727-1-git-send-email-dongli.zhang@oracle.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/i386/hax-all.c | 15 +++------------
- 1 file changed, 3 insertions(+), 12 deletions(-)
+ hw/virtio/virtio.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/target/i386/hax-all.c b/target/i386/hax-all.c
-index d2e512856b..502ce6f0af 100644
---- a/target/i386/hax-all.c
-+++ b/target/i386/hax-all.c
-@@ -154,13 +154,7 @@ int hax_vcpu_create(int id)
-         return 0;
-     }
+diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+index 5828ed14df..22bd1ac34e 100644
+--- a/hw/virtio/virtio.c
++++ b/hw/virtio/virtio.c
+@@ -796,13 +796,13 @@ static void virtqueue_undo_map_desc(unsigned int out_num, unsigned int in_num,
+ }
  
--    vcpu = g_malloc(sizeof(struct hax_vcpu_state));
--    if (!vcpu) {
--        fprintf(stderr, "Failed to alloc vcpu state\n");
--        return -ENOMEM;
--    }
--
--    memset(vcpu, 0, sizeof(struct hax_vcpu_state));
-+    vcpu = g_new0(struct hax_vcpu_state, 1);
+ static void virtqueue_map_iovec(VirtIODevice *vdev, struct iovec *sg,
+-                                hwaddr *addr, unsigned int *num_sg,
++                                hwaddr *addr, unsigned int num_sg,
+                                 int is_write)
+ {
+     unsigned int i;
+     hwaddr len;
  
-     ret = hax_host_create_vcpu(hax_global.vm->fd, id);
-     if (ret) {
-@@ -250,11 +244,8 @@ struct hax_vm *hax_vm_create(struct hax_state *hax)
-         return hax->vm;
-     }
+-    for (i = 0; i < *num_sg; i++) {
++    for (i = 0; i < num_sg; i++) {
+         len = sg[i].iov_len;
+         sg[i].iov_base = dma_memory_map(vdev->dma_as,
+                                         addr[i], &len, is_write ?
+@@ -821,8 +821,8 @@ static void virtqueue_map_iovec(VirtIODevice *vdev, struct iovec *sg,
  
--    vm = g_malloc(sizeof(struct hax_vm));
--    if (!vm) {
--        return NULL;
--    }
--    memset(vm, 0, sizeof(struct hax_vm));
-+    vm = g_new0(struct hax_vm, 1);
-+
-     ret = hax_host_create_vm(hax, &vm_id);
-     if (ret) {
-         fprintf(stderr, "Failed to create vm %x\n", ret);
+ void virtqueue_map(VirtIODevice *vdev, VirtQueueElement *elem)
+ {
+-    virtqueue_map_iovec(vdev, elem->in_sg, elem->in_addr, &elem->in_num, 1);
+-    virtqueue_map_iovec(vdev, elem->out_sg, elem->out_addr, &elem->out_num, 0);
++    virtqueue_map_iovec(vdev, elem->in_sg, elem->in_addr, elem->in_num, 1);
++    virtqueue_map_iovec(vdev, elem->out_sg, elem->out_addr, elem->out_num, 0);
+ }
+ 
+ static void *virtqueue_alloc_element(size_t sz, unsigned out_num, unsigned in_num)
 -- 
 2.19.2
 
