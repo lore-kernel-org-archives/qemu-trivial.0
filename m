@@ -1,24 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gWlvx-0001bR-1m
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Dec 2018 12:35:01 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:32822)
+	id 1gWlxo-0002Ca-GC
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Dec 2018 12:36:56 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33516)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gWlvr-0001aL-Fd
-	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 12:35:00 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gWlxk-00029c-DE
+	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 12:36:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gWlvo-0007A6-Lj
-	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 12:34:55 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:52273)
+	(envelope-from <laurent@vivier.eu>) id 1gWlxe-0008P2-Cs
+	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 12:36:49 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:37071)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1gWlvo-000792-Ap
-	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 12:34:52 -0500
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1gWlxV-0008IX-MQ; Tue, 11 Dec 2018 12:36:39 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1MryGj-1hHbGJ0R5J-00nvpH for <qemu-trivial@nongnu.org>; Tue, 11 Dec 2018
-	18:34:50 +0100
-To: qemu-trivial@nongnu.org
-References: <20181121153036.2941-1-famz@redhat.com>
-	<bdb6e6b7-0da0-d2aa-893f-a14e16230e4d@redhat.com>
+	(mreue009 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1McH1Q-1h2XKt2S4q-00chjG; Tue, 11 Dec 2018 18:36:31 +0100
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, berrange@redhat.com
+References: <20181207170733.129532-1-eblake@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -63,35 +62,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <d4bd40db-4387-1c64-3ebd-40f4799a22c1@vivier.eu>
-Date: Tue, 11 Dec 2018 18:34:49 +0100
+Message-ID: <91a9ed54-0d57-b3f8-55b7-6c9589b232a8@vivier.eu>
+Date: Tue, 11 Dec 2018 18:36:30 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.1
 MIME-Version: 1.0
-In-Reply-To: <bdb6e6b7-0da0-d2aa-893f-a14e16230e4d@redhat.com>
+In-Reply-To: <20181207170733.129532-1-eblake@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:a5kEI3r22hWsoyJsajZtPev/8ffW/EWKDYzfM2Q1jcM4jVxngXT
-	EBFHinth+fyiAOHGQliFfDj0C8zB3BIE8ZqtUZ9vKj9LUNtVLZZ0Z8aNOhXdO1Qz0WRLyAU
-	qPSWVTXIfXqD/pBcUjJqXCifMoNGtK8jXmB55FoQdB1VmHJav8NuceNRJ+/PMNlgQH/7kVe
-	CTwJ3DW0ossw4/Q6fbYfA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Cp6S7dm4xt8=:zSh6Fs0niAA8KZ3fNqueMJ
-	nEmngYGgXeYclOTKhtGHVKdH/0qmSLX74VnVLipB0sUmxEhbFiZX2SHv898qb4GiJd2eMVwCl
-	S4wPcj2DBptG6jCfWD/EyZxZAOlzyMlbdYMnb4Eo2sBuVic0P7uevc56O8+KEQk2C4UXF8TlK
-	au8cyH17hd8EgcQjGnPv6XAnDEaPvWCDLAjO4XXo3YgB3tl8Oj//RhxwbyIBOShWxKeVTIfES
-	tWOa2qsYTqqED5AGVxl0XdGyoJRHICAfBK2BdNdaR0CVd4HVtdCYxWZLNp7N521REDriWDpR0
-	2dsenCH9v5Q1cNjY/bdVMFqd3CmrQD728YW370W3cHrwTmrolw0Z3wGwxJR8CmN7lnfJXbs86
-	ts+9xy2+ut+4jWNBStbzlDzx572+APCfVC88DbqSxUb3xkQP31u0bTrNy3rAYlTn23ADbnP4U
-	2w4tycyEyz9Ls18UYoS8rH3wxIpBBq9R+1dPBu+a1eN7NuyHYuR7xxJP6z1CJoHipUbl+9fUq
-	SjRxgnGTwA3/NJ5N+JAnggHBpMxFlAN0rThQdG3VEIw6dfeKjtn7pMZxzRECWhV9b4KIUHkeJ
-	LKOC22rHu19r88mNq7c+l3HhZgJa69R8HyEzvmfiZr5ckx4GmBns7BhoktCb9PUrArAmacnBG
-	bJvDAw+5CE0XOY9pAC40/M8oEEMfIdEaRz+HyffiO8i1sjq1atlHqzP9V7TUuXNXzp8YfLv0Y
-	i1hNuf4lAa/SAFDfdWzLtH2FNHNwY4/Ypkv1qzfaRoiz9R+75v96V55HZ4I=
+X-Provags-ID: V03:K1:bwWm3kFoMmjWbpBRhyvFBIm68VW1bZk9RUTpaMjwKxVAwpx++gN
+	t0o0XWuFb+lmz6ra8D0M+bnikdgWg+RHXPGc6mNkGPxo1o+xIe2wumWGqY+gWdmub7XvRPE
+	WUutWZo1TBTFCRIuKZL5mOweGkSu0rYYMlA9UsIVnANVHqh0dnz/SPht5CWIhCanV+N9ZyX
+	BUWbgTDv2zWU4CsaDenPQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:BAzVVF++7Z8=:IV2+s8DvDz3eN+VRyfQDcX
+	NN5EJ/eUijx60T28pfIIPKnA5ih5/2KUiw71l97KT4ocyjR1hatYP7nNsjkHvfqlyZDaiYbFX
+	0ZhQ3WkRzSQJOZ1AAz3SpK0INVc4nLRSQmpFD3hUiNwzDhZMiMoPIW63aX3+OKck7bfVHpDkx
+	VmBds626s9ltxXCPtO72PmU30v7g3N58rhSHntjTamz0CwlgubDN0vhxFsCiXtaALHjMsBFMP
+	O7T/tYJ4Tj674r99bMJ34RcayGFpI6EiuWOD3WpjhvEgeKq+YPeyVDqf492JzjmlviFsLvsnE
+	Jx04UsYCDjFqUEjHBQNfpEBU0NlqYed9d5+7qvmQhRUK6If589rkYFw5IILl0smjAWl1ltllo
+	8oN8+6/GlpbghmrCNtcNJgSEkI/v1NzSooiqX+55L4I8XM6S/T3lh7P6o0V458napXGtLfufg
+	KqALpt1VA+iE8L9iBMXyBKZX6O71w/gJSviTH469uZMRW6/8M4hJNiRax04YXSEwXKOMzKPqf
+	wSScK5UJpcwXzJeGb++A/nHjfAqMDwuTg8WbiBFLoDOyohs3yD5Fdp4ZN01sq1YwKV+9tmg8k
+	loZX+14xGX4qvftZ+MazTMUSMaxt6LPWFmlFtdRZCVTva3R3td8kmkUhU3AWBFv/EIwxVwv1r
+	2BWdeK8gCAiJmyXyG5b8OOe5MVrsQqg2MTY+3MthOOHrASvqhbjzunqRCnWfrJ/DLXzuMvcv8
+	McI/G4B56gtgXGjKRWbKOyt0Is/EjN/lTAT/9/znSHGMO97kMtAv2CWx2wI=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] MAINTAINERS: Update email
- address for Fam Zheng
+X-Received-From: 212.227.126.187
+Subject: Re: [Qemu-trivial] [PATCH] maint: Grammar fix to mailmap
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,32 +101,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Dec 2018 17:35:00 -0000
+X-List-Received-Date: Tue, 11 Dec 2018 17:36:55 -0000
 
-Le 02/12/2018 à 00:17, Philippe Mathieu-Daudé a écrit :
-> Cc'ing Trivial@ & Peter.
+Le 07/12/2018 à 18:07, Eric Blake a écrit :
+> Make the sentence read better.
 > 
-> I seems this email is now over, thus it would be nice to have this patch
-> merged in 4.1 early opening.
-> (Does it apply as a fix before the 4.0 release?)
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
+>  .mailmap | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> On 21/11/18 16:30, Fam Zheng wrote:
->> Since I am about to change company, update the email address in
->> MAINTAINERS to my personal one. Depending on responsibility changes I
->> may eventually fade out in some of the maintained areas, but that will
->> be figured out afterward, or maybe I'll use the work email later. For
->> now, just do a search and replace.
->>
->> Signed-off-by: Fam Zheng <fam@euphon.net>
->> Signed-off-by: Fam Zheng <famz@redhat.com>
+> diff --git a/.mailmap b/.mailmap
+> index ed8faa57192..b8e08297c90 100644
+> --- a/.mailmap
+> +++ b/.mailmap
+> @@ -34,6 +34,6 @@ Justin Terry (VM) <juterry@microsoft.com> Justin Terry (VM) via Qemu-devel <qemu
 > 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> 
+>  # Also list preferred name forms where people have changed their
+> -# git author config, or having utf8/latin1 encoding issues.
+> +# git author config, or had utf8/latin1 encoding issues.
+>  Daniel P. Berrangé <berrange@redhat.com>
+>  Reimar Döffinger <Reimar.Doeffinger@gmx.de>
 > 
 
-I've applied it to trivial-patches branch in case no one takes it
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
 
