@@ -1,53 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gWmOI-0007Qw-LB
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Dec 2018 13:04:18 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:42365)
+	id 1gWmOL-0007SQ-VG
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Dec 2018 13:04:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42366)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gWmOG-0007P9-JE
-	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 13:04:17 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gWmOG-0007P8-JC
+	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 13:04:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gWmOC-0006ts-Bk
+	(envelope-from <laurent@vivier.eu>) id 1gWmOE-0006v7-BN
 	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 13:04:16 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:57749)
+Received: from mout.kundenserver.de ([212.227.126.131]:37243)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gWmOB-0006ss-SN; Tue, 11 Dec 2018 13:04:12 -0500
+	id 1gWmOD-0006uJ-Vy; Tue, 11 Dec 2018 13:04:14 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MgARS-1h6MWL3vv4-00hhml; Tue, 11 Dec 2018 19:04:04 +0100
+	id 1MCoYS-1gfXpV3o1o-008srl; Tue, 11 Dec 2018 19:04:06 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
 	Laurent Vivier <laurent@vivier.eu>, Richard Henderson <rth@twiddle.net>,
 	Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	Paolo Bonzini <pbonzini@redhat.com>, Li Qiang <liq3ea@gmail.com>
-Date: Tue, 11 Dec 2018 19:03:26 +0100
-Message-Id: <20181211180352.19644-5-laurent@vivier.eu>
+	Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
+Date: Tue, 11 Dec 2018 19:03:28 +0100
+Message-Id: <20181211180352.19644-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.19.2
 In-Reply-To: <20181211180352.19644-1-laurent@vivier.eu>
 References: <20181211180352.19644-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:aCWctxygWlU9bDGXgb1+d94m6Xw5h9f0FePnF4x8PP6X2UeQn74
-	Xboq6qV5NyVDkTuZ6E5qNwxJZHht6JVXMwJ+jB5bZ8coFRZa0nv021WQgcs0en0/14Mve4l
-	cXudssFDCZdS6dJ9s0KtRPmBiismYJSfBd7VSF7+1pStdOM1W8uEV7sZbr756B8oTfdx3+8
-	h1K/SJyvmhWHqYtGzYBmg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:yl3SSUtcGz0=:Ah99ObE9qDn43P6taaLySu
-	M1qR22+y7ykmEiu7FTrDxdKb1+ch/YxBvckHG18R2W8XW61vz2590hfcyqXqUn7FIm7GQqI5C
-	WAEbc0pjFoeQACedpWX9cF998n8oxAZwzhc8fx07evCa7XUYHKDgmJpmnK1LpmgO3imycnBeO
-	M3I49XKruS1JJJ2VzA2mO5HvucEQTy/710nqjLK2b6F5uvwEpYtxP6BIkiPRo3rJtezZDoJXA
-	DeMLn8XptMYCK+krOC/gLac12JKEXMWBU8Ot3M2pAe1vpj/XNIMVtT5UCnBa3TnSccqGG+CNN
-	0+wZVCA4V6ulu9Ze6pmRIpEQvFpDZIZzZDstUxMjRy5iinztnY3AC9n/+SJM0RonfHOLZ7lTz
-	m4DAm1rOHCJdL7OHNdpl28CcPdDqJTAgaK4v5mLX7euYgcywEPHkBcudxyADuIpxwFKMc2IM1
-	dMUgz89G0ew30RR2JzJx3U6lUtENUH8SSob582CsIGYskx7d3uQo281NQqhehFeCfTq8vFFzj
-	LobYBFj2UpN8g2Zzzls04hG7KJWbiiTEQjU1/dhraMs5c3+Vcucv98cy4DSHBl7enBv8I3tR2
-	Y+TJgimz/6pmxf8BrmTvN7KhwCksZ1i++jmp2sws+D1LU1Bj2Qaerhd97CKsnMVMoVbA6rQqp
-	on8zWkNiyHYLRffDefy198qkn6nY0vO9I08cNR+rodOoo3u2USO7mHWRYVb58yZw7BAsL//Vi
-	Ve1o92CqbcpjY1kdYv2XfEfURZ13AE0uToOvKA==
+X-Provags-ID: V03:K1:z5bX8gz6MFEW6bVIxa6soa6jRXAFS+jC6z8khHFDqOmkzpdQhNa
+	LIe4s4qN1KiId+xyvisKBVmFZvCFC7DxtaT622po6Nx9rymDerGbgHXpJhgzEFo4zwt4Fls
+	SLVvIC1y6iAI7Cb9ZNMUIGz7yTWfdpyhSJz2JVGMgvbDB/VPh6IVb8wcOmsbA0nvpwm25mg
+	l8pW51o1rfy/j3knlwrNA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:BileiT3Smeg=:MYgWv0e8mV1K13a1Kg0DFK
+	kuMv7+tOeQ3a8glDoWcqVYt4Ee72kyG4NXU3mcvSJziVp83n/V0JUTsOs8r2dRNAf3IXZgtp0
+	e80J1xmWuZ6U22iIigDa98iALFqOCaKZnQM8Q04VUPJpTKjowXE35zLIDD/V3C496H8H5Y+Oa
+	xUaZGXJrGhRFdcmKg0ucUEP/1ERsvh+us/jhU+EkYn2qwJetbCTcvl/lrh7O46vK9hJyhC/HJ
+	ZDDxSqiAm76Jj0D3N3hLIvfhIRJilB+QGzlHZVtvAMew1FMOY2PoKqVqWeBw//EfNl63ZPvdF
+	a3R29HV8pJjr8hcu4SMM3qM1yPqT/t8ps7YDpItbmjCD1tSkZflPM6Mbwm3A8F7Dae6ef1bDc
+	x1aH1D1ppSlM/FdhZQeoHaCDF6e71XjVqXEzdqR4kVztjIP5Cin73gIiqeSEr8SwU/wSs8g+w
+	q3CzdjVeNI601m7ar//Uu4oS6A8gZZ+utu8AFGpjh3rtCnxt8H4DJdhWYQMG3tfwGHyjVX4B5
+	g1EZupxPzEHfaRGvOZgb7XgA4mDElifqwAVhwWnZ86l4oupXMF8ylfoYVoaiSxdB2xEg3zFWR
+	pvd/92kDAT5CxLUl+EJPF9kZSyO+nXloIQ6OkjndmqVZZIqYDm7vtdX0J2zlfdbCTxdGwSkxj
+	eT+80rChtNCPk194qxwdnArkXrdxixRZAPO0RSxI/VK6PqpTxM1knOXgeEhihL9L57DF/ZYvP
+	rNG7LEDzHlx0zWXwQBp0ML1RXFFDaJLcHTlwmfNuZcf2ZVkDh55gge1hWFA=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.131
-Subject: [Qemu-trivial] [PULL 04/30] hw: set_netdev: remove useless code
+Subject: [Qemu-trivial] [PULL 06/30] misc: Avoid UTF-8 in error messages
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,39 +60,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Dec 2018 18:04:17 -0000
+X-List-Received-Date: Tue, 11 Dec 2018 18:04:18 -0000
 
-From: Li Qiang <liq3ea@gmail.com>
+From: Eric Blake <eblake@redhat.com>
 
-In set_netdev(), the peers[i] is initialized
-qemu_find_net_clients_except() when i is in
-0 between 'queues' it can't be NULL.
+While most developers are now using UTF-8 environments, it's
+harder to guarantee that error messages will be output to
+a multibyte locale. Rather than risking error messages that
+get corrupted into mojibake when the user runs qemu in a
+non-multibyte locale, let's stick to straight ASCII error
+messages, rather than assuming that our use of UTF-8 in source
+code string constants will work unchanged in other locales.
 
-Signed-off-by: Li Qiang <liq3ea@gmail.com>
-Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+Found with:
+$ LC_ALL=C git grep -l $'".*[\x80-\xff].*"' origin -- '**/*.[ch]' | cat
+origin:hw/misc/tmp105.c
+origin:hw/misc/tmp421.c
+
+Reported-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: John Snow <jsnow@redhat.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-Message-Id: <1541751214-17515-1-git-send-email-liq3ea@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Message-Id: <20181120203628.2367003-1-eblake@redhat.com>
+[lv: added command line to find non ASCII characters]
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/core/qdev-properties-system.c | 4 ----
- 1 file changed, 4 deletions(-)
+ hw/misc/tmp105.c | 2 +-
+ hw/misc/tmp421.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
-index 8b22fb51c9..b45a7ef54b 100644
---- a/hw/core/qdev-properties-system.c
-+++ b/hw/core/qdev-properties-system.c
-@@ -288,10 +288,6 @@ static void set_netdev(Object *obj, Visitor *v, const char *name,
+diff --git a/hw/misc/tmp105.c b/hw/misc/tmp105.c
+index 0918f3a6ea..f6d7163273 100644
+--- a/hw/misc/tmp105.c
++++ b/hw/misc/tmp105.c
+@@ -79,7 +79,7 @@ static void tmp105_set_temperature(Object *obj, Visitor *v, const char *name,
+         return;
+     }
+     if (temp >= 128000 || temp < -128000) {
+-        error_setg(errp, "value %" PRId64 ".%03" PRIu64 " °C is out of range",
++        error_setg(errp, "value %" PRId64 ".%03" PRIu64 " C is out of range",
+                    temp / 1000, temp % 1000);
+         return;
+     }
+diff --git a/hw/misc/tmp421.c b/hw/misc/tmp421.c
+index c234044305..eeb11000f0 100644
+--- a/hw/misc/tmp421.c
++++ b/hw/misc/tmp421.c
+@@ -153,7 +153,7 @@ static void tmp421_set_temperature(Object *obj, Visitor *v, const char *name,
      }
  
-     for (i = 0; i < queues; i++) {
--        if (peers[i] == NULL) {
--            err = -ENOENT;
--            goto out;
--        }
- 
-         if (peers[i]->peer) {
-             err = -EEXIST;
+     if (temp >= maxs[ext_range] || temp < mins[ext_range]) {
+-        error_setg(errp, "value %" PRId64 ".%03" PRIu64 " °C is out of range",
++        error_setg(errp, "value %" PRId64 ".%03" PRIu64 " C is out of range",
+                    temp / 1000, temp % 1000);
+         return;
+     }
 -- 
 2.19.2
 
