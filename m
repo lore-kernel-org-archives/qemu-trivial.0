@@ -1,23 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gWlxo-0002Ca-GC
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Dec 2018 12:36:56 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33516)
+	id 1gWm3p-0004T7-IW
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Dec 2018 12:43:09 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35809)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gWlxk-00029c-DE
-	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 12:36:55 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gWm3n-0004Rq-IX
+	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 12:43:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gWlxe-0008P2-Cs
-	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 12:36:49 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:37071)
+	(envelope-from <laurent@vivier.eu>) id 1gWm3m-0005In-JW
+	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 12:43:07 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:56163)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gWlxV-0008IX-MQ; Tue, 11 Dec 2018 12:36:39 -0500
+	id 1gWm3i-0005G0-5x; Tue, 11 Dec 2018 12:43:02 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue009 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1McH1Q-1h2XKt2S4q-00chjG; Tue, 11 Dec 2018 18:36:31 +0100
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, berrange@redhat.com
-References: <20181207170733.129532-1-eblake@redhat.com>
+	1MOzKm-1gpOKs0myK-00PJha; Tue, 11 Dec 2018 18:42:34 +0100
+To: Richard Henderson <rth@twiddle.net>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	fabrice.desclaux@cea.fr, Paolo Bonzini <pbonzini@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
+	camille.mougey@cea.fr
+References: <03506cf0-a204-f619-8ee4-4990a5e69af5@cea.fr>
+	<CAAdtpL5BdqUvHpVTpKuJ6R+yEHGi7U6T9rUK2PbL3nwC7F_3jA@mail.gmail.com>
+	<271fd922-943a-f092-d714-697320e9ea21@twiddle.net>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -62,34 +69,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <91a9ed54-0d57-b3f8-55b7-6c9589b232a8@vivier.eu>
-Date: Tue, 11 Dec 2018 18:36:30 +0100
+Message-ID: <fae4435d-2b31-204c-7c5d-4bc19a122d12@vivier.eu>
+Date: Tue, 11 Dec 2018 18:42:30 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.1
 MIME-Version: 1.0
-In-Reply-To: <20181207170733.129532-1-eblake@redhat.com>
+In-Reply-To: <271fd922-943a-f092-d714-697320e9ea21@twiddle.net>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:bwWm3kFoMmjWbpBRhyvFBIm68VW1bZk9RUTpaMjwKxVAwpx++gN
-	t0o0XWuFb+lmz6ra8D0M+bnikdgWg+RHXPGc6mNkGPxo1o+xIe2wumWGqY+gWdmub7XvRPE
-	WUutWZo1TBTFCRIuKZL5mOweGkSu0rYYMlA9UsIVnANVHqh0dnz/SPht5CWIhCanV+N9ZyX
-	BUWbgTDv2zWU4CsaDenPQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:BAzVVF++7Z8=:IV2+s8DvDz3eN+VRyfQDcX
-	NN5EJ/eUijx60T28pfIIPKnA5ih5/2KUiw71l97KT4ocyjR1hatYP7nNsjkHvfqlyZDaiYbFX
-	0ZhQ3WkRzSQJOZ1AAz3SpK0INVc4nLRSQmpFD3hUiNwzDhZMiMoPIW63aX3+OKck7bfVHpDkx
-	VmBds626s9ltxXCPtO72PmU30v7g3N58rhSHntjTamz0CwlgubDN0vhxFsCiXtaALHjMsBFMP
-	O7T/tYJ4Tj674r99bMJ34RcayGFpI6EiuWOD3WpjhvEgeKq+YPeyVDqf492JzjmlviFsLvsnE
-	Jx04UsYCDjFqUEjHBQNfpEBU0NlqYed9d5+7qvmQhRUK6If589rkYFw5IILl0smjAWl1ltllo
-	8oN8+6/GlpbghmrCNtcNJgSEkI/v1NzSooiqX+55L4I8XM6S/T3lh7P6o0V458napXGtLfufg
-	KqALpt1VA+iE8L9iBMXyBKZX6O71w/gJSviTH469uZMRW6/8M4hJNiRax04YXSEwXKOMzKPqf
-	wSScK5UJpcwXzJeGb++A/nHjfAqMDwuTg8WbiBFLoDOyohs3yD5Fdp4ZN01sq1YwKV+9tmg8k
-	loZX+14xGX4qvftZ+MazTMUSMaxt6LPWFmlFtdRZCVTva3R3td8kmkUhU3AWBFv/EIwxVwv1r
-	2BWdeK8gCAiJmyXyG5b8OOe5MVrsQqg2MTY+3MthOOHrASvqhbjzunqRCnWfrJ/DLXzuMvcv8
-	McI/G4B56gtgXGjKRWbKOyt0Is/EjN/lTAT/9/znSHGMO97kMtAv2CWx2wI=
+X-Provags-ID: V03:K1:CZd2AKwuXOlQyVlQKy1XraQsiNlBX8nK0uMEiG372EOfyawHGUs
+	loc/+oHyLZioAwhPXZIelu05hk8TwXwYEK1Yo/SEdk/G4lCqsqOETXYamCEvZSVtCR96quL
+	GCkIJBjF9Rbr04EcU1udwBTCtoYc04ZIZdfU+bKpSMsC6XZp7IK7BE9UH5dJdQSkBhBlVyR
+	9Sv5EWVUvhRW+EkslC4YA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:BL8CrV3H4wo=:e5Vg5I898ec6CPOG2QBzTw
+	zK8FRsf7aFsCiIdJpItVaEbciaEMto2+Pjb6SUjQ6N2XCU2LPuHe2YQiB4pnrXnw8Ip0n/okN
+	Dz2pec61DBtaDIATrWc7hZ5gzQdRplaTHXhYO1SGSHjVEsczSt5Bnh3uUMQtf8VarP/XdXSN3
+	OnLnQO2hTt+7jpi9zL0cdUCujhAmYY9NbBAJdssyD9h8NbPo4tKWdkxDLmuVxupr7cLjP5ntH
+	FPrLB0nSwNhoev0423GJFXNeD6mWlplv3zNdnukZFt7+l5Sm3eKVqbnA26hJUTFD+zW3/8e2P
+	2r2sQb3yKjpfvt2+MH0uGtcolLGE7j2gjHLyE6yyFX0y5+oR7fRxjX29nEhl1Xih8fmfBE/xo
+	K7d03U3gIodLYgo8kWVfxG4a+tI25mplF3Nr6Ai2RuyyRW7h8wEcVDAkL8YgPkW2g1chXhUXl
+	RJP6HpTwaPZLW5tCfcNvncKFysh4xCw8a0u9WrILxGWfKqmDWB6TRsRbvHU9V2Tk6AKyZN0kd
+	Li3JzDuLdhog9BnZLSNyYPiNOHvoEtR+KtByOWe4k4xazhZyhtLGzVD77SJQBXbTWnPUe+C/y
+	k9Q5prsjKmAoj5a/F2NVVy9u6cy3IV/LQIS20UioCcnvggqcNIlw6q7uLy97RuKhrL20FgSze
+	6Mnz05ocGnkNn16Tpk+Rl+/u7VTop4w4w1CSV4Ugv+KjVVGqB7JVTy5wLCoYHVcjNRKT3+tBU
+	Fa+cVX3msn63lGfBYhLobJzfcnBa1xoVgd3kkUItxORWZWoMNKbzBAoQnyg=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: Re: [Qemu-trivial] [PATCH] maint: Grammar fix to mailmap
+X-Received-From: 212.227.126.135
+Subject: Re: [Qemu-trivial] [PATCH] Fixes i386 xchgq test
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,32 +108,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Dec 2018 17:36:55 -0000
+X-List-Received-Date: Tue, 11 Dec 2018 17:43:08 -0000
 
-Le 07/12/2018 à 18:07, Eric Blake a écrit :
-> Make the sentence read better.
+Le 10/12/2018 à 20:42, Richard Henderson a écrit :
+> On 12/10/18 1:26 PM, Philippe Mathieu-Daudé wrote:
+>> Hi Fabrice,
+>>
+>> On Fri, Dec 7, 2018 at 5:06 PM <fabrice.desclaux@cea.fr> wrote:
+>>>
+>>> As "xchg" reads and writes both operands, the "+m" is required to avoid
+>>> undefined behavior on -O2 compilation.
+>>>
+>>> Signed-off-by: Fabrice Desclaux <fabrice.desclaux@cea.fr>
 > 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> ---
->  .mailmap | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > 
-> diff --git a/.mailmap b/.mailmap
-> index ed8faa57192..b8e08297c90 100644
-> --- a/.mailmap
-> +++ b/.mailmap
-> @@ -34,6 +34,6 @@ Justin Terry (VM) <juterry@microsoft.com> Justin Terry (VM) via Qemu-devel <qemu
-> 
-> 
->  # Also list preferred name forms where people have changed their
-> -# git author config, or having utf8/latin1 encoding issues.
-> +# git author config, or had utf8/latin1 encoding issues.
->  Daniel P. Berrangé <berrange@redhat.com>
->  Reimar Döffinger <Reimar.Doeffinger@gmx.de>
 > 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
+
 
