@@ -1,102 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gWm3p-0004T7-IW
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Dec 2018 12:43:09 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35809)
+	id 1gWmOI-0007Qw-LB
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Dec 2018 13:04:18 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:42365)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gWm3n-0004Rq-IX
-	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 12:43:08 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gWmOG-0007P9-JE
+	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 13:04:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gWm3m-0005In-JW
-	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 12:43:07 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:56163)
+	(envelope-from <laurent@vivier.eu>) id 1gWmOC-0006ts-Bk
+	for qemu-trivial@nongnu.org; Tue, 11 Dec 2018 13:04:16 -0500
+Received: from mout.kundenserver.de ([212.227.126.131]:57749)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gWm3i-0005G0-5x; Tue, 11 Dec 2018 12:43:02 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue009 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1MOzKm-1gpOKs0myK-00PJha; Tue, 11 Dec 2018 18:42:34 +0100
-To: Richard Henderson <rth@twiddle.net>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	fabrice.desclaux@cea.fr, Paolo Bonzini <pbonzini@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>, 
-	camille.mougey@cea.fr
-References: <03506cf0-a204-f619-8ee4-4990a5e69af5@cea.fr>
-	<CAAdtpL5BdqUvHpVTpKuJ6R+yEHGi7U6T9rUK2PbL3nwC7F_3jA@mail.gmail.com>
-	<271fd922-943a-f092-d714-697320e9ea21@twiddle.net>
+	id 1gWmOB-0006ss-SN; Tue, 11 Dec 2018 13:04:12 -0500
+Received: from localhost.localdomain ([78.238.229.36]) by
+	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
+	(Nemesis)
+	id 1MgARS-1h6MWL3vv4-00hhml; Tue, 11 Dec 2018 19:04:04 +0100
 From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <fae4435d-2b31-204c-7c5d-4bc19a122d12@vivier.eu>
-Date: Tue, 11 Dec 2018 18:42:30 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.1
+To: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>, Richard Henderson <rth@twiddle.net>,
+	Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+	Paolo Bonzini <pbonzini@redhat.com>, Li Qiang <liq3ea@gmail.com>
+Date: Tue, 11 Dec 2018 19:03:26 +0100
+Message-Id: <20181211180352.19644-5-laurent@vivier.eu>
+X-Mailer: git-send-email 2.19.2
+In-Reply-To: <20181211180352.19644-1-laurent@vivier.eu>
+References: <20181211180352.19644-1-laurent@vivier.eu>
 MIME-Version: 1.0
-In-Reply-To: <271fd922-943a-f092-d714-697320e9ea21@twiddle.net>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:CZd2AKwuXOlQyVlQKy1XraQsiNlBX8nK0uMEiG372EOfyawHGUs
-	loc/+oHyLZioAwhPXZIelu05hk8TwXwYEK1Yo/SEdk/G4lCqsqOETXYamCEvZSVtCR96quL
-	GCkIJBjF9Rbr04EcU1udwBTCtoYc04ZIZdfU+bKpSMsC6XZp7IK7BE9UH5dJdQSkBhBlVyR
-	9Sv5EWVUvhRW+EkslC4YA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:BL8CrV3H4wo=:e5Vg5I898ec6CPOG2QBzTw
-	zK8FRsf7aFsCiIdJpItVaEbciaEMto2+Pjb6SUjQ6N2XCU2LPuHe2YQiB4pnrXnw8Ip0n/okN
-	Dz2pec61DBtaDIATrWc7hZ5gzQdRplaTHXhYO1SGSHjVEsczSt5Bnh3uUMQtf8VarP/XdXSN3
-	OnLnQO2hTt+7jpi9zL0cdUCujhAmYY9NbBAJdssyD9h8NbPo4tKWdkxDLmuVxupr7cLjP5ntH
-	FPrLB0nSwNhoev0423GJFXNeD6mWlplv3zNdnukZFt7+l5Sm3eKVqbnA26hJUTFD+zW3/8e2P
-	2r2sQb3yKjpfvt2+MH0uGtcolLGE7j2gjHLyE6yyFX0y5+oR7fRxjX29nEhl1Xih8fmfBE/xo
-	K7d03U3gIodLYgo8kWVfxG4a+tI25mplF3Nr6Ai2RuyyRW7h8wEcVDAkL8YgPkW2g1chXhUXl
-	RJP6HpTwaPZLW5tCfcNvncKFysh4xCw8a0u9WrILxGWfKqmDWB6TRsRbvHU9V2Tk6AKyZN0kd
-	Li3JzDuLdhog9BnZLSNyYPiNOHvoEtR+KtByOWe4k4xazhZyhtLGzVD77SJQBXbTWnPUe+C/y
-	k9Q5prsjKmAoj5a/F2NVVy9u6cy3IV/LQIS20UioCcnvggqcNIlw6q7uLy97RuKhrL20FgSze
-	6Mnz05ocGnkNn16Tpk+Rl+/u7VTop4w4w1CSV4Ugv+KjVVGqB7JVTy5wLCoYHVcjNRKT3+tBU
-	Fa+cVX3msn63lGfBYhLobJzfcnBa1xoVgd3kkUItxORWZWoMNKbzBAoQnyg=
+X-Provags-ID: V03:K1:aCWctxygWlU9bDGXgb1+d94m6Xw5h9f0FePnF4x8PP6X2UeQn74
+	Xboq6qV5NyVDkTuZ6E5qNwxJZHht6JVXMwJ+jB5bZ8coFRZa0nv021WQgcs0en0/14Mve4l
+	cXudssFDCZdS6dJ9s0KtRPmBiismYJSfBd7VSF7+1pStdOM1W8uEV7sZbr756B8oTfdx3+8
+	h1K/SJyvmhWHqYtGzYBmg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:yl3SSUtcGz0=:Ah99ObE9qDn43P6taaLySu
+	M1qR22+y7ykmEiu7FTrDxdKb1+ch/YxBvckHG18R2W8XW61vz2590hfcyqXqUn7FIm7GQqI5C
+	WAEbc0pjFoeQACedpWX9cF998n8oxAZwzhc8fx07evCa7XUYHKDgmJpmnK1LpmgO3imycnBeO
+	M3I49XKruS1JJJ2VzA2mO5HvucEQTy/710nqjLK2b6F5uvwEpYtxP6BIkiPRo3rJtezZDoJXA
+	DeMLn8XptMYCK+krOC/gLac12JKEXMWBU8Ot3M2pAe1vpj/XNIMVtT5UCnBa3TnSccqGG+CNN
+	0+wZVCA4V6ulu9Ze6pmRIpEQvFpDZIZzZDstUxMjRy5iinztnY3AC9n/+SJM0RonfHOLZ7lTz
+	m4DAm1rOHCJdL7OHNdpl28CcPdDqJTAgaK4v5mLX7euYgcywEPHkBcudxyADuIpxwFKMc2IM1
+	dMUgz89G0ew30RR2JzJx3U6lUtENUH8SSob582CsIGYskx7d3uQo281NQqhehFeCfTq8vFFzj
+	LobYBFj2UpN8g2Zzzls04hG7KJWbiiTEQjU1/dhraMs5c3+Vcucv98cy4DSHBl7enBv8I3tR2
+	Y+TJgimz/6pmxf8BrmTvN7KhwCksZ1i++jmp2sws+D1LU1Bj2Qaerhd97CKsnMVMoVbA6rQqp
+	on8zWkNiyHYLRffDefy198qkn6nY0vO9I08cNR+rodOoo3u2USO7mHWRYVb58yZw7BAsL//Vi
+	Ve1o92CqbcpjY1kdYv2XfEfURZ13AE0uToOvKA==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: Re: [Qemu-trivial] [PATCH] Fixes i386 xchgq test
+X-Received-From: 212.227.126.131
+Subject: [Qemu-trivial] [PULL 04/30] hw: set_netdev: remove useless code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,27 +59,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Dec 2018 17:43:08 -0000
+X-List-Received-Date: Tue, 11 Dec 2018 18:04:17 -0000
 
-Le 10/12/2018 à 20:42, Richard Henderson a écrit :
-> On 12/10/18 1:26 PM, Philippe Mathieu-Daudé wrote:
->> Hi Fabrice,
->>
->> On Fri, Dec 7, 2018 at 5:06 PM <fabrice.desclaux@cea.fr> wrote:
->>>
->>> As "xchg" reads and writes both operands, the "+m" is required to avoid
->>> undefined behavior on -O2 compilation.
->>>
->>> Signed-off-by: Fabrice Desclaux <fabrice.desclaux@cea.fr>
-> 
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> 
-> 
+From: Li Qiang <liq3ea@gmail.com>
 
-Applied to my trivial-patches branch.
+In set_netdev(), the peers[i] is initialized
+qemu_find_net_clients_except() when i is in
+0 between 'queues' it can't be NULL.
 
-Thanks,
-Laurent
+Signed-off-by: Li Qiang <liq3ea@gmail.com>
+Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Message-Id: <1541751214-17515-1-git-send-email-liq3ea@gmail.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/core/qdev-properties-system.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
+diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
+index 8b22fb51c9..b45a7ef54b 100644
+--- a/hw/core/qdev-properties-system.c
++++ b/hw/core/qdev-properties-system.c
+@@ -288,10 +288,6 @@ static void set_netdev(Object *obj, Visitor *v, const char *name,
+     }
+ 
+     for (i = 0; i < queues; i++) {
+-        if (peers[i] == NULL) {
+-            err = -ENOENT;
+-            goto out;
+-        }
+ 
+         if (peers[i]->peer) {
+             err = -EEXIST;
+-- 
+2.19.2
 
 
