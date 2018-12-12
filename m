@@ -1,60 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gXBnB-0007JF-Qz
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Dec 2018 16:11:41 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:44513)
+	id 1gXBrw-0000b9-L0
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Dec 2018 16:16:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:45482)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gXBn8-0007In-BM
-	for qemu-trivial@nongnu.org; Wed, 12 Dec 2018 16:11:39 -0500
+	(envelope-from <r.bolshakov@yadro.com>) id 1gXBrq-0000YM-Be
+	for qemu-trivial@nongnu.org; Wed, 12 Dec 2018 16:16:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gXBn6-0007ui-Oy
-	for qemu-trivial@nongnu.org; Wed, 12 Dec 2018 16:11:38 -0500
-Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e]:37693)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gXBn6-0007tM-Ds
-	for qemu-trivial@nongnu.org; Wed, 12 Dec 2018 16:11:36 -0500
-Received: by mail-oi1-x22e.google.com with SMTP id y23so16262691oia.4
-	for <qemu-trivial@nongnu.org>; Wed, 12 Dec 2018 13:11:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=WDDnLtUe8dXxj8O1+1Iu+OAoLI+08odcVi2Z7GJoTx4=;
-	b=AumEoIwf2pPsCTH3dDditZryr2XNPWnbAAUoLtIv04EMGqpkvcZ2RWT4YQ3PUAo+X0
-	Iv8+1EbKZfXsB3yZzFecmyXgDBJO1Rx4cEuFDWZ7XwKrRcki0o8N5ZRxhrhaJ0bCl4FF
-	qT2KsDzt02rhfLqqLgDinzdbyW+Hu6gG98cLA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=WDDnLtUe8dXxj8O1+1Iu+OAoLI+08odcVi2Z7GJoTx4=;
-	b=prxyyRjUTZ3glLKKC1Y7EYOQru2SOIUcw7hQZGKjRamxNSzXI0ryegDbUgMwr4uoIM
-	P/4fkNnlQcJV8ATHhpDSvz5iw2YO85bYOJx5e7vVoBTlHvxLevgQZoFdisVmspni9+Ka
-	/tBPeXmS65G+jQ8oPlN8kEBbnpuT/r4CEGE7j6Wb1I10dk6P2FjxZVNx9/SS+UR8rwwY
-	Gnvwtwl2DdX9HxQ5ImtEnirHw1OmaqFEOK8DYr+6K4bq+NpuOO0hE6svi3cFS+cJ2HPO
-	xMlG00YC6CDTRAt0mwwKYPSY21MYbFbQLeqqndTTY4F72W8i9LdXI8E+e6sVOOl5vbcs
-	Zkfw==
-X-Gm-Message-State: AA+aEWYzqBc2KMAARz/kQlYQip6kiZeW64g3ToG2A1OrI8lBtKBZrQwP
-	hoH5MapYMjds7gyaQV0rZbFz4+rMX1IkldGsym4ujBYZ
-X-Google-Smtp-Source: AFSGD/UHdyGglbnqchtq6UepwXlb5QPjsNGNbCMlxqliTZ1gDTK1iqtkyABlr0t02Ubal9Yfn+yP61Xbv2RMeACVWLA=
-X-Received: by 2002:aca:5c05:: with SMTP id q5mr1275450oib.146.1544649094473; 
-	Wed, 12 Dec 2018 13:11:34 -0800 (PST)
+	(envelope-from <r.bolshakov@yadro.com>) id 1gXBro-0003l2-7U
+	for qemu-trivial@nongnu.org; Wed, 12 Dec 2018 16:16:30 -0500
+Received: from mta-01.yadro.com ([89.207.88.251]:48844)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <r.bolshakov@yadro.com>)
+	id 1gXBrf-0003gh-Mg; Wed, 12 Dec 2018 16:16:19 -0500
+Received: from localhost (unknown [127.0.0.1])
+	by mta-01.yadro.com (Postfix) with ESMTP id 93BA541950;
+	Wed, 12 Dec 2018 21:16:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
+	user-agent:in-reply-to:content-disposition:content-type
+	:content-type:mime-version:references:message-id:subject:subject
+	:from:from:date:date:received:received:received; s=mta-01; t=
+	1544649377; x=1546463778; bh=N8c8KSw7+vUqHhEWyHPwwaCrWM2MfNDgyWT
+	Cpj6wBYA=; b=ImRwH05is1m5MwVhgLCMCkvHAyRDV5ROZAPZaT8nb7fDtU36Hsr
+	6AO4WuCt4+jvJ3cBvyF6BSUltepSuSkxXKkRB9RZtDquAYKJxHIRvW+yEfYBh1mz
+	QwM1oUU44bia7KkE2lJ1pjaikVFPY/GVAZDnhBVL+vsv3bz56X+B/CIY=
+X-Virus-Scanned: amavisd-new at yadro.com
+Received: from mta-01.yadro.com ([127.0.0.1])
+	by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FbB3xtOOhGjE; Thu, 13 Dec 2018 00:16:17 +0300 (MSK)
+Received: from T-EXCH-02.corp.yadro.com (t-exch-02.corp.yadro.com
+	[172.17.10.102])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mta-01.yadro.com (Postfix) with ESMTPS id B1BFC41943;
+	Thu, 13 Dec 2018 00:16:17 +0300 (MSK)
+Received: from localhost (172.17.128.60) by T-EXCH-02.corp.yadro.com
+	(172.17.10.102) with Microsoft SMTP Server (version=TLS1_2,
+	cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32;
+	Thu, 13 Dec 2018 00:16:17 +0300
+Date: Thu, 13 Dec 2018 00:16:46 +0300
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, Richard
+	Henderson <rth@twiddle.net>, Eduardo Habkost <ehabkost@redhat.com>
+Message-ID: <20181212211646.vem27l5pe6pzujd4@SPB-NB-133.local>
+References: <20181203100415.53027-1-r.bolshakov@yadro.com>
+	<20181203100415.53027-2-r.bolshakov@yadro.com>
 MIME-Version: 1.0
-References: <20181211180352.19644-1-laurent@vivier.eu>
-In-Reply-To: <20181211180352.19644-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 12 Dec 2018 21:11:22 +0000
-Message-ID: <CAFEAcA_wRfVWjWOMjE36Fepmv7TPSf5JJNoKVZbs_JXe-_W69Q@mail.gmail.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, 
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::22e
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/30] Trivial patches
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20181203100415.53027-2-r.bolshakov@yadro.com>
+User-Agent: NeoMutt/20180716
+X-Originating-IP: [172.17.128.60]
+X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
+	T-EXCH-02.corp.yadro.com (172.17.10.102)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 89.207.88.251
+Subject: Re: [Qemu-trivial] [PATCH for-3.1 2/2] i386: hvf: drop debug printf
+ in decode_sldtgroup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,28 +69,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Dec 2018 21:11:39 -0000
+X-List-Received-Date: Wed, 12 Dec 2018 21:16:35 -0000
 
-On Tue, 11 Dec 2018 at 18:13, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit 32a1a94dd324d33578dca1dc96d7896a0244d768:
->
->   Update version for v3.1.0 release (2018-12-11 17:18:37 +0000)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
->
-> for you to fetch changes up to 82c48fb79df5596a9d0a3b6d998c4491e542aa7a:
->
->   Fixes i386 xchgq test (2018-12-11 18:41:25 +0100)
->
-> ----------------------------------------------------------------
-> Trivial patches (2018-12-11)
->
-> ----------------------------------------------------------------
+On Mon, Dec 03, 2018 at 01:04:15PM +0300, Roman Bolshakov wrote:
+> It's going to clutter QEMU logs if 0x0f00 is trapped.
+> 
+> Signed-off-by: Roman Bolshakov <r.bolshakov@yadro.com>
+> ---
+>  target/i386/hvf/x86_decode.c | 2 --
+>  1 file changed, 2 deletions(-)
+> 
+> diff --git a/target/i386/hvf/x86_decode.c b/target/i386/hvf/x86_decode.c
+> index d125a6ef83..5f513c5563 100644
+> --- a/target/i386/hvf/x86_decode.c
+> +++ b/target/i386/hvf/x86_decode.c
+> @@ -525,8 +525,6 @@ static void decode_sldtgroup(CPUX86State *env, struct x86_decode *decode)
+>          X86_DECODE_CMD_INVL
+>      };
+>      decode->cmd = group[decode->modrm.reg];
+> -    printf("%llx: decode_sldtgroup: %d\n", env->hvf_emul->fetch_rip,
+> -            decode->modrm.reg);
+>  }
+>  
+>  static void decode_lidtgroup(CPUX86State *env, struct x86_decode *decode)
+> -- 
+> 2.17.2 (Apple Git-113)
+> 
 
-Applied, thanks.
+Could you please apply to trivial queue?
 
--- PMM
+Thank you,
+Roman
 
