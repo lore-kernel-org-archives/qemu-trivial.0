@@ -1,65 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gXN8U-0002Df-3m
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Dec 2018 04:18:26 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:52245)
+	id 1gXNBh-0003LV-UC
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Dec 2018 04:21:45 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54395)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gXN8Q-0002Bi-TL
-	for qemu-trivial@nongnu.org; Thu, 13 Dec 2018 04:18:24 -0500
+	(envelope-from <philmd@redhat.com>) id 1gXNBe-0003Ir-S9
+	for qemu-trivial@nongnu.org; Thu, 13 Dec 2018 04:21:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gXN8M-0007tu-R3
-	for qemu-trivial@nongnu.org; Thu, 13 Dec 2018 04:18:22 -0500
-Received: from mail-wr1-f43.google.com ([209.85.221.43]:33254)
+	(envelope-from <philmd@redhat.com>) id 1gXNBZ-0002ol-0y
+	for qemu-trivial@nongnu.org; Thu, 13 Dec 2018 04:21:42 -0500
+Received: from mail-wm1-f43.google.com ([209.85.128.43]:54680)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gXN8M-0007sZ-CY
-	for qemu-trivial@nongnu.org; Thu, 13 Dec 2018 04:18:18 -0500
-Received: by mail-wr1-f43.google.com with SMTP id c14so1209032wrr.0
-	for <qemu-trivial@nongnu.org>; Thu, 13 Dec 2018 01:18:18 -0800 (PST)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gXNBY-0002is-J9
+	for qemu-trivial@nongnu.org; Thu, 13 Dec 2018 04:21:36 -0500
+Received: by mail-wm1-f43.google.com with SMTP id a62so1540338wmh.4
+	for <qemu-trivial@nongnu.org>; Thu, 13 Dec 2018 01:21:33 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=uNRCEf3laZRC5i9L/Pvpuyv1Q4We6sQie/MxjkANiOY=;
-	b=Ugwk5cczB1qAZagTo6lM3YXMd6uoas/3LNzuaqkLKh2FGj547pfdT0qVkv8N6ItmEv
-	ilWJHzme0Gtv7dEBIMFhigspi0iB97D2UE7G6O/AoedydgruAWyLhVzpHcmlEtC3WgWE
-	zTfvId4Wg2JzGoSPzsPmYaRWwNuABMSk8I45ejB3zzFRq/AYh+11udjzmTWJvIZWMT6s
-	uRIAzHxFh47DVwCmfLTYzj7fHEEfW+FS1kOB7pRcPDjl5q1JA29/uxkManAxBX3kqzF6
-	SnxMnlZ3ytncGtJHbeksulHu7moYKKsOur6aWw9QYU8DdD2avGFh9C/Mzh0elRvQxM13
-	sXTw==
-X-Gm-Message-State: AA+aEWYMphatbMhpQIt/oHm2vxyOjUs2XuBNuCqMqPvhjS0DXeDwBL14
-	xk0R/f75zLl7hoSuXXEg7PSHaQ==
-X-Google-Smtp-Source: AFSGD/V90GkAy/mu+a4nfqbdkndOLabhxqTUpUIpYd+l+a4lHQ73zYs2a64MxyPRjgiSF69bIjLGIA==
-X-Received: by 2002:adf:fbc8:: with SMTP id d8mr18957910wrs.318.1544692696395; 
-	Thu, 13 Dec 2018 01:18:16 -0800 (PST)
+	bh=urVWsU9g4PhELm5xUsyCuPCsxOIMcBd70f5inHn05rQ=;
+	b=e+h3VDDbVRp+yfIHwXyizt4HzHbgBr5Z24284QF1FZhi0bkN6JIAZUU9nL0HoYIjF1
+	5GtKt2kC+v/zV2BfCQmTM92b/AJFa689L0q+HWhLoqJ7f42QKjEfFa29NhBYoRjf3zjE
+	C5TJIjwVyd6KAqtPNCzPRCXq2i8ejqHV6z395+BLJ/NNtUDI65nptzRiFeYMxQGlbtjk
+	/VRyWbsqkEmrNauiNquq/W2vaiaqwvcXmVzBhpyY4Owg6rME4wSZ/N7gD/pklYMYQfkh
+	/poRVNhVjOs06hXhJEX1YFEQNbzw4cNbkjz+zcNcEi8FbE+DvVWo8F3TDXHo7mT02tWJ
+	4D7A==
+X-Gm-Message-State: AA+aEWa3+B5F8wOlkYctsMKNfG8Ve+e+1fvqigg3Xo8BMHmzBsA8Ed8l
+	mYX6CxT89+zOdjvBNaUctY6xQg==
+X-Google-Smtp-Source: AFSGD/Xt0MgDoCeCod6JklqvsFByfK4L9k8jGYeE/epdOpUknJaSs4rU3E4uAI8MY6tNrsX5B7LgVg==
+X-Received: by 2002:a7b:cb0a:: with SMTP id u10mr9847073wmj.0.1544692891794;
+	Thu, 13 Dec 2018 01:21:31 -0800 (PST)
 Received: from [192.168.1.34] (172.red-88-21-202.staticip.rima-tde.net.
 	[88.21.202.172]) by smtp.gmail.com with ESMTPSA id
-	t76sm1931981wme.33.2018.12.13.01.18.15
+	e27sm1235492wra.67.2018.12.13.01.21.30
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 13 Dec 2018 01:18:15 -0800 (PST)
+	Thu, 13 Dec 2018 01:21:31 -0800 (PST)
 To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
 	qemu-trivial@nongnu.org, "Richard W.M. Jones" <rjones@redhat.com>,
 	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Liu Yuan <namei.unix@gmail.com>, Max Reitz <mreitz@redhat.com>
 References: <20181212194009.2951-1-lvivier@redhat.com>
-	<20181212194009.2951-4-lvivier@redhat.com>
+	<20181212194009.2951-5-lvivier@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <2282b7a4-70fb-bcb1-bc06-3265a2ab6a67@redhat.com>
-Date: Thu, 13 Dec 2018 10:18:15 +0100
+Message-ID: <270fb776-d977-77df-36c9-f77088b2ad04@redhat.com>
+Date: Thu, 13 Dec 2018 10:21:29 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.1
 MIME-Version: 1.0
-In-Reply-To: <20181212194009.2951-4-lvivier@redhat.com>
+In-Reply-To: <20181212194009.2951-5-lvivier@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.221.43
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/4] block/file-posix:
- Convert from DPRINTF() macro to trace events
+X-Received-From: 209.85.128.43
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/4] block/sheepdog: Convert
+ from DPRINTF() macro to trace events
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,103 +71,190 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Dec 2018 09:18:25 -0000
+X-List-Received-Date: Thu, 13 Dec 2018 09:21:45 -0000
+
+Hi Laurent,
 
 On 12/12/18 8:40 PM, Laurent Vivier wrote:
 > Signed-off-by: Laurent Vivier <lvivier@redhat.com>
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
 > ---
->  block/file-posix.c | 25 ++++++-------------------
->  block/trace-events |  7 +++++++
->  2 files changed, 13 insertions(+), 19 deletions(-)
+>  block/sheepdog.c   | 47 +++++++++++++++++-----------------------------
+>  block/trace-events | 14 ++++++++++++++
+>  2 files changed, 31 insertions(+), 30 deletions(-)
 > 
-> diff --git a/block/file-posix.c b/block/file-posix.c
-> index 07bbdab953..cf90899a6e 100644
-> --- a/block/file-posix.c
-> +++ b/block/file-posix.c
-> @@ -102,19 +102,7 @@
->  #include <xfs/xfs.h>
->  #endif
->  
-> -//#define DEBUG_BLOCK
-> -
-> -#ifdef DEBUG_BLOCK
-> -# define DEBUG_BLOCK_PRINT 1
-> -#else
-> -# define DEBUG_BLOCK_PRINT 0
-> -#endif
-> -#define DPRINTF(fmt, ...) \
-> -do { \
-> -    if (DEBUG_BLOCK_PRINT) { \
-> -        printf(fmt, ## __VA_ARGS__); \
-> -    } \
-> -} while (0)
+> diff --git a/block/sheepdog.c b/block/sheepdog.c
+> index 0125df9d49..a5000d271b 100644
+> --- a/block/sheepdog.c
+> +++ b/block/sheepdog.c
+> @@ -28,6 +28,7 @@
+>  #include "sysemu/block-backend.h"
+>  #include "qemu/bitops.h"
+>  #include "qemu/cutils.h"
 > +#include "trace.h"
 >  
->  /* OS X does not have O_DSYNC */
->  #ifndef O_DSYNC
-> @@ -1386,7 +1374,7 @@ static int xfs_write_zeroes(BDRVRawState *s, int64_t offset, uint64_t bytes)
+>  #define SD_PROTO_VER 0x01
 >  
->      if (xfsctl(NULL, s->fd, XFS_IOC_ZERO_RANGE, &fl) < 0) {
->          err = errno;
-> -        DPRINTF("cannot write zero range (%s)\n", strerror(errno));
-> +        trace_file_xfs_write_zeroes(strerror(errno));
->          return -err;
->      }
+> @@ -299,19 +300,6 @@ static inline size_t count_data_objs(const struct SheepdogInode *inode)
+>                          (1UL << inode->block_size_shift));
+>  }
 >  
-> @@ -1405,7 +1393,7 @@ static int xfs_discard(BDRVRawState *s, int64_t offset, uint64_t bytes)
+> -#undef DPRINTF
+> -#ifdef DEBUG_SDOG
+> -#define DEBUG_SDOG_PRINT 1
+> -#else
+> -#define DEBUG_SDOG_PRINT 0
+> -#endif
+> -#define DPRINTF(fmt, args...)                                           \
+> -    do {                                                                \
+> -        if (DEBUG_SDOG_PRINT) {                                         \
+> -            fprintf(stderr, "%s %d: " fmt, __func__, __LINE__, ##args); \
+> -        }                                                               \
+> -    } while (0)
+> -
+>  typedef struct SheepdogAIOCB SheepdogAIOCB;
+>  typedef struct BDRVSheepdogState BDRVSheepdogState;
 >  
->      if (xfsctl(NULL, s->fd, XFS_IOC_UNRESVSP64, &fl) < 0) {
->          err = errno;
-> -        DPRINTF("cannot punch hole (%s)\n", strerror(errno));
-> +        trace_file_xfs_discard(strerror(errno));
->          return -err;
->      }
->  
-> @@ -2798,7 +2786,7 @@ static char *FindEjectableOpticalMedia(io_iterator_t *mediaIterator)
->  
->          /* If a match was found, leave the loop */
->          if (*mediaIterator != 0) {
-> -            DPRINTF("Matching using %s\n", matching_array[index]);
-> +            trace_file_FindEjectableOpticalMedia(matching_array[index]);
->              mediaType = g_strdup(matching_array[index]);
->              break;
+> @@ -750,7 +738,7 @@ static coroutine_fn void reconnect_to_sdog(void *opaque)
+>          Error *local_err = NULL;
+>          s->fd = get_sheep_fd(s, &local_err);
+>          if (s->fd < 0) {
+> -            DPRINTF("Wait for connection to be established\n");
+> +            trace_sd_reconnect_to_sdog();
+>              error_report_err(local_err);
+>              qemu_co_sleep_ns(QEMU_CLOCK_REALTIME, 1000000000ULL);
 >          }
-> @@ -2858,7 +2846,7 @@ static bool setup_cdrom(char *bsd_path, Error **errp)
->      if (partition_found == false) {
->          error_setg(errp, "Failed to find a working partition on disc");
->      } else {
-> -        DPRINTF("Using %s as optical disc\n", test_partition);
-> +        trace_file_setup_cdrom(test_partition);
->          pstrcpy(bsd_path, MAXPATHLEN, test_partition);
->      }
->      return partition_found;
-> @@ -2953,8 +2941,7 @@ static bool hdev_is_sg(BlockDriverState *bs)
+> @@ -847,7 +835,7 @@ static void coroutine_fn aio_read_response(void *opaque)
+>          break;
+>      case AIOCB_FLUSH_CACHE:
+>          if (rsp.result == SD_RES_INVALID_PARMS) {
+> -            DPRINTF("disable cache since the server doesn't support it\n");
+> +            trace_sd_aio_read_response();
+>              s->cache_flags = SD_FLAG_CMD_DIRECT;
+>              rsp.result = SD_RES_SUCCESS;
+>          }
+> @@ -1639,7 +1627,7 @@ static int sd_open(BlockDriverState *bs, QDict *options, int flags,
+>      s->discard_supported = true;
 >  
->      ret = ioctl(s->fd, SG_GET_SCSI_ID, &scsiid);
->      if (ret >= 0) {
-> -        DPRINTF("SG device found: type=%d, version=%d\n",
-> -            scsiid.scsi_type, sg_version);
-> +        trace_file_hdev_is_sg(scsiid.scsi_type, sg_version);
->          return true;
+>      if (snap_id || tag[0]) {
+> -        DPRINTF("%" PRIx32 " snapshot inode was open.\n", vid);
+> +        trace_sd_open(vid);
+>          s->is_snapshot = true;
 >      }
 >  
+> @@ -2252,7 +2240,7 @@ static void sd_close(BlockDriverState *bs)
+>      unsigned int wlen, rlen = 0;
+>      int fd, ret;
+>  
+> -    DPRINTF("%s\n", s->name);
+> +    trace_sd_close(s->name);
+>  
+>      fd = connect_to_sdog(s, &local_err);
+>      if (fd < 0) {
+> @@ -2429,7 +2417,7 @@ static int sd_create_branch(BDRVSheepdogState *s)
+>      char *buf;
+>      bool deleted;
+>  
+> -    DPRINTF("%" PRIx32 " is snapshot.\n", s->inode.vdi_id);
+> +    trace_sd_create_branch_snapshot(s->inode.vdi_id);
+>  
+>      buf = g_malloc(SD_INODE_SIZE);
+>  
+> @@ -2445,7 +2433,7 @@ static int sd_create_branch(BDRVSheepdogState *s)
+>          goto out;
+>      }
+>  
+> -    DPRINTF("%" PRIx32 " is created.\n", vid);
+> +    trace_sd_create_branch_created(vid);
+>  
+>      fd = connect_to_sdog(s, &local_err);
+>      if (fd < 0) {
+> @@ -2467,7 +2455,7 @@ static int sd_create_branch(BDRVSheepdogState *s)
+>  
+>      s->is_snapshot = false;
+>      ret = 0;
+> -    DPRINTF("%" PRIx32 " was newly created.\n", s->inode.vdi_id);
+> +    trace_sd_create_branch_new(s->inode.vdi_id);
+>  
+>  out:
+>      g_free(buf);
+> @@ -2561,11 +2549,11 @@ static void coroutine_fn sd_co_rw_vector(SheepdogAIOCB *acb)
+>          }
+>  
+>          if (create) {
+> -            DPRINTF("update ino (%" PRIu32 ") %" PRIu64 " %" PRIu64 " %ld\n",
+> -                    inode->vdi_id, oid,
+> -                    vid_to_data_oid(inode->data_vdi_id[idx], idx), idx);
+> +            trace_sd_co_rw_vector_update(inode->vdi_id, oid,
+> +                                  vid_to_data_oid(inode->data_vdi_id[idx], idx),
+> +                                  idx);
+>              oid = vid_to_data_oid(inode->vdi_id, idx);
+> -            DPRINTF("new oid %" PRIx64 "\n", oid);
+> +            trace_sd_co_rw_vector_new(oid);
+>          }
+>  
+>          aio_req = alloc_aio_req(s, acb, oid, len, offset, flags, create,
+> @@ -2670,9 +2658,8 @@ static int sd_snapshot_create(BlockDriverState *bs, QEMUSnapshotInfo *sn_info)
+>      SheepdogInode *inode;
+>      unsigned int datalen;
+>  
+> -    DPRINTF("sn_info: name %s id_str %s s: name %s vm_state_size %" PRId64 " "
+> -            "is_snapshot %d\n", sn_info->name, sn_info->id_str,
+> -            s->name, sn_info->vm_state_size, s->is_snapshot);
+> +    trace_sd_snapshot_create_info(sn_info->name, sn_info->id_str, s->name,
+> +                                  sn_info->vm_state_size, s->is_snapshot);
+>  
+>      if (s->is_snapshot) {
+>          error_report("You can't create a snapshot of a snapshot VDI, "
+> @@ -2681,7 +2668,7 @@ static int sd_snapshot_create(BlockDriverState *bs, QEMUSnapshotInfo *sn_info)
+>          return -EINVAL;
+>      }
+>  
+> -    DPRINTF("%s %s\n", sn_info->name, sn_info->id_str);
+> +    trace_sd_snapshot_create(sn_info->name, sn_info->id_str);
+>  
+>      s->inode.vm_state_size = sn_info->vm_state_size;
+>      s->inode.vm_clock_nsec = sn_info->vm_clock_nsec;
+> @@ -2726,8 +2713,8 @@ static int sd_snapshot_create(BlockDriverState *bs, QEMUSnapshotInfo *sn_info)
+>      }
+>  
+>      memcpy(&s->inode, inode, datalen);
+> -    DPRINTF("s->inode: name %s snap_id %x oid %x\n",
+> -            s->inode.name, s->inode.snap_id, s->inode.vdi_id);
+> +    trace_sd_snapshot_create_inode(s->inode.name, s->inode.snap_id,
+> +                                   s->inode.vdi_id);
+>  
+>  cleanup:
+>      g_free(inode);
 > diff --git a/block/trace-events b/block/trace-events
-> index 5b83280b02..49f31966e7 100644
+> index 49f31966e7..7a92d7b3db 100644
 > --- a/block/trace-events
 > +++ b/block/trace-events
-> @@ -182,3 +182,10 @@ curl_open(const char *file) "opening %s"
->  curl_open_size(uint64_t size) "size = %" PRIu64
->  curl_setup_preadv(uint64_t bytes, uint64_t start, const char *range) "reading %" PRIu64 " at %" PRIu64 " (%s)"
->  curl_close(void) "close"
+> @@ -189,3 +189,17 @@ file_xfs_discard(const char* error) "cannot punch hole (%s)"
+>  file_FindEjectableOpticalMedia(const char *media) "Matching using %s"
+>  file_setup_cdrom(const char *partition) "Using %s as optical disc"
+>  file_hdev_is_sg(int type, int version) "SG device found: type=%d, version=%d"
 > +
-> +# block/file-posix.c
-> +file_xfs_write_zeroes(const char *error) "cannot write zero range (%s)"
-> +file_xfs_discard(const char* error) "cannot punch hole (%s)"
-> +file_FindEjectableOpticalMedia(const char *media) "Matching using %s"
-> +file_setup_cdrom(const char *partition) "Using %s as optical disc"
-> +file_hdev_is_sg(int type, int version) "SG device found: type=%d, version=%d"
+> +# block/sheepdog.c
+> +sd_reconnect_to_sdog(void) "Wait for connection to be established"
+
+Can you use the 'sheepdog' prefix to avoid clashing with the 'sd' subsystem?
+
+> +sd_aio_read_response(void) "disable cache since the server doesn't support it"
+> +sd_open(uint32_t vid) "0x%" PRIx32 " snapshot inode was open."
+
+We can drop the trailing dots.
+
+> +sd_close(const char *name) "%s"
+> +sd_create_branch_snapshot(uint32_t vdi) "0x%" PRIx32 " is snapshot."
+> +sd_create_branch_created(uint32_t vdi) "0x%" PRIx32 " is created."
+> +sd_create_branch_new(uint32_t vdi) "0x%" PRIx32 " was newly created."
+> +sd_co_rw_vector_update(uint32_t vdi, uint64_t oid, uint64_t data, long idx) "update ino (%" PRIu32 ") %" PRIu64 " %" PRIu64 " %ld"
+> +sd_co_rw_vector_new(uint64_t oid) "new oid 0x%" PRIx64
+> +sd_snapshot_create_info(const char *sn_name, const char *id, const char *name, int64_t size, int is_snapshot) "sn_info: name %s id_str %s s: name %s vm_state_size %" PRId64 " " "is_snapshot %d"
+> +sd_snapshot_create(const char *sn_name, const char *id) "%s %s"
+> +sd_snapshot_create_inode(const char *name, uint32_t snap, uint32_t vdi) "s->inode: name %s snap_id 0x%x vdi 0x%x"
 > 
+
+With 'sheepdog' prefix:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
