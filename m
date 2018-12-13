@@ -1,99 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gXMQG-0004gW-JP
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Dec 2018 03:32:44 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:56714)
+	id 1gXN7Q-0001fW-TH
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Dec 2018 04:17:20 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:51670)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gXMQB-0004fS-Kf
-	for qemu-trivial@nongnu.org; Thu, 13 Dec 2018 03:32:40 -0500
+	(envelope-from <philmd@redhat.com>) id 1gXN7N-0001eT-Qj
+	for qemu-trivial@nongnu.org; Thu, 13 Dec 2018 04:17:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gXMQ3-000459-Nu
-	for qemu-trivial@nongnu.org; Thu, 13 Dec 2018 03:32:37 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:58739)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gXMPp-0003qc-8z; Thu, 13 Dec 2018 03:32:17 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue012 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1Mrwnt-1hCUXD1THh-00o0Ue; Thu, 13 Dec 2018 09:32:06 +0100
-To: Roman Bolshakov <r.bolshakov@yadro.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, Richard Henderson <rth@twiddle.net>
-References: <20181203100415.53027-1-r.bolshakov@yadro.com>
-	<20181203100415.53027-2-r.bolshakov@yadro.com>
-	<20181212211646.vem27l5pe6pzujd4@SPB-NB-133.local>
-From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <8ad0725d-50e5-4503-e380-acc5720b8fd3@vivier.eu>
-Date: Thu, 13 Dec 2018 09:32:04 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <philmd@redhat.com>) id 1gXN7J-0006wN-N8
+	for qemu-trivial@nongnu.org; Thu, 13 Dec 2018 04:17:17 -0500
+Received: from mail-wm1-f41.google.com ([209.85.128.41]:55152)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gXN7J-0006vC-Da
+	for qemu-trivial@nongnu.org; Thu, 13 Dec 2018 04:17:13 -0500
+Received: by mail-wm1-f41.google.com with SMTP id a62so1527141wmh.4
+	for <qemu-trivial@nongnu.org>; Thu, 13 Dec 2018 01:17:12 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=cIUokZqyV+zRQVcQmDT8Rc63agmg/PuYeaO+9IUMnkU=;
+	b=o+NBBoVKZqaTCzY3aqMeIwJakbdxWH/pf+r5NkTVxAtprUTDF0uxThq3gFnfVRGtAH
+	WdXmLO9yBk+XskvxmpZmONzxFosrvaLE3MGMcg82Wj3IcTuIArztMzXWs0QkHVoLSaDI
+	lIjjehlnZGqKARWHjWxSs9nUcKn0LCaVE2JNXoUh3QcnpK1H1OokC6IbrX8oayChBfUq
+	g9IM90mbfP8KuW2MLxWnE5zshadBa7n895Gl0PxxaqcBoUMbWxbQxqNruuvPF8DtgJ7H
+	I++SuB/q1hr4YAh7AvBawhFQR/vyDyCIIfHppr42Yq2n0PNfponJ9XQ+Axx1xjwVwp8H
+	Mv5w==
+X-Gm-Message-State: AA+aEWY/TlVKtzptZ7Eq6ivuTlL+FQoqmXwB3DWgxo8B5jP7KjyIb7/h
+	P7XbBArWKPnVxsLvkErIOIwRzA==
+X-Google-Smtp-Source: AFSGD/VnJG7Jk/nexYDB8SMJBX9G3MVpLJUEFV1rSn5KlUUj+jdNgA/qh9dNEGkDIzgqqeT3RK+kVw==
+X-Received: by 2002:a1c:de57:: with SMTP id v84mr9147970wmg.55.1544692631801; 
+	Thu, 13 Dec 2018 01:17:11 -0800 (PST)
+Received: from [192.168.1.34] (172.red-88-21-202.staticip.rima-tde.net.
+	[88.21.202.172]) by smtp.gmail.com with ESMTPSA id
+	f66sm1292209wmd.28.2018.12.13.01.17.10
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 13 Dec 2018 01:17:11 -0800 (PST)
+To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+	qemu-trivial@nongnu.org, "Richard W.M. Jones" <rjones@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Liu Yuan <namei.unix@gmail.com>, Max Reitz <mreitz@redhat.com>
+References: <20181212194009.2951-1-lvivier@redhat.com>
+	<20181212194009.2951-2-lvivier@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <0437051b-f816-6afb-e0d1-8f67a84dd59c@redhat.com>
+Date: Thu, 13 Dec 2018 10:17:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.1
 MIME-Version: 1.0
-In-Reply-To: <20181212211646.vem27l5pe6pzujd4@SPB-NB-133.local>
+In-Reply-To: <20181212194009.2951-2-lvivier@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:aKW2kfVLs9UgOVM5w1Tvbj29SLjICOs+p35yBQAnofuG3DIFeVu
-	udDI6yF82Jl8QrHqStGCwSa24Xey+3cNP5OcgKRuMzhiHwXWEtUGc2/NYfSMwXe8SJH898P
-	HMg/CZl9FeyPXuH5Qy8BqIrFOERHbHc5mOpGdToR7LYG2l9E8KVSs8lanfy3dqk/G6wCa0g
-	rChd5q5GirSquOhkJcCdg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Lu5oXJkL67A=:UAq1QnUlg8aI3I88JM2WzR
-	n5Q9R9pCTtDD4Au/vAey9JnaG00tNT0gsBMo1eQUqMFXFiQSdBjh5h/JHrAAHh40BETIwlY7D
-	TbzReJ/oiHIVkJRqk/NkGzrmMZEui28wdFLb1vmXRyQd6iQFIsWB2xM/liN+6xWuKB0Kk4nGR
-	hmhJp+kvawzCwgj3KcTwuuxyywQ2o4I5xTL2FlyqFNQgqzZzSOUqUNRdMcoMFDgsqakc7hKZ3
-	vOTER94KyLANCZ53sqzLQ90IYVqR74Hjmf/Gkv4Pw6YQi6DOQH6X4FaWLuvNSL0C2/yRvVKoI
-	VONOREcZRnbN3c09uFmrtQjzDyvcoawwjX6KYAdywHsygnCZ8mYNcZdsnSZGw5isdA+KeQMlG
-	UwLh+n+/cTu+wgmNcEx5ocviPQlU7yjK2gLIpUb9e/LCqxW5dlFTq0PMSZj8uIgQD0p0IKfqW
-	LnQ4enQUThDgqzCNliohEd98MTqbkZd4/eXxyYW8ZcMKBPnLVeOX/oiC2McSfrfVqj9Z6RhQ0
-	Q0rSKTUnNZffZ85EBxl0q354alCoeaDjmbF5sDbtMQDIlK6PBrHBQ6HnnntAENNlFe6PR+U/J
-	B+L2WhYyO6If7ouXhRNpkc41iOsvDVL1g+ueZj/U6+e3a0PCgqqtzQVokTvcqYr3pJQ7pAqxy
-	j/9TReww3JnM28/9D8jkT67sYZVhRJmdMwjgpMzi79wyiE4or8blkCusdf5fHb/AmFPxwTbgd
-	qtlo0ZiDd9sXFbfET8DoV316ybVR69szrfKg4NGAiRNAQlNe4+WUj5kEFQQ=
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: Re: [Qemu-trivial] [PATCH for-3.1 2/2] i386: hvf: drop debug printf
- in decode_sldtgroup
+	[fuzzy]
+X-Received-From: 209.85.128.41
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/4] block/ssh: Convert from
+ DPRINTF() macro to trace events
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,38 +71,200 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Dec 2018 08:32:41 -0000
+X-List-Received-Date: Thu, 13 Dec 2018 09:17:19 -0000
 
-On 12/12/2018 22:16, Roman Bolshakov wrote:
-> On Mon, Dec 03, 2018 at 01:04:15PM +0300, Roman Bolshakov wrote:
->> It's going to clutter QEMU logs if 0x0f00 is trapped.
->>
->> Signed-off-by: Roman Bolshakov <r.bolshakov@yadro.com>
->> ---
->>  target/i386/hvf/x86_decode.c | 2 --
->>  1 file changed, 2 deletions(-)
->>
->> diff --git a/target/i386/hvf/x86_decode.c b/target/i386/hvf/x86_decode.c
->> index d125a6ef83..5f513c5563 100644
->> --- a/target/i386/hvf/x86_decode.c
->> +++ b/target/i386/hvf/x86_decode.c
->> @@ -525,8 +525,6 @@ static void decode_sldtgroup(CPUX86State *env, struct x86_decode *decode)
->>          X86_DECODE_CMD_INVL
->>      };
->>      decode->cmd = group[decode->modrm.reg];
->> -    printf("%llx: decode_sldtgroup: %d\n", env->hvf_emul->fetch_rip,
->> -            decode->modrm.reg);
->>  }
->>  
->>  static void decode_lidtgroup(CPUX86State *env, struct x86_decode *decode)
->> -- 
->> 2.17.2 (Apple Git-113)
->>
+On 12/12/18 8:40 PM, Laurent Vivier wrote:
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> ---
+>  block/ssh.c        | 46 +++++++++++++++++-----------------------------
+>  block/trace-events | 17 +++++++++++++++++
+>  2 files changed, 34 insertions(+), 29 deletions(-)
 > 
-> Could you please apply to trivial queue
-Applied to my trivial-patches branch.
+> diff --git a/block/ssh.c b/block/ssh.c
+> index 7fbc27abdf..bbc513e095 100644
+> --- a/block/ssh.c
+> +++ b/block/ssh.c
+> @@ -41,27 +41,17 @@
+>  #include "qapi/qmp/qstring.h"
+>  #include "qapi/qobject-input-visitor.h"
+>  #include "qapi/qobject-output-visitor.h"
+> +#include "trace.h"
+>  
+> -/* DEBUG_SSH=1 enables the DPRINTF (debugging printf) statements in
+> - * this block driver code.
+> - *
+> +/*
+>   * TRACE_LIBSSH2=<bitmask> enables tracing in libssh2 itself.  Note
+>   * that this requires that libssh2 was specially compiled with the
+>   * `./configure --enable-debug' option, so most likely you will have
+>   * to compile it yourself.  The meaning of <bitmask> is described
+>   * here: http://www.libssh2.org/libssh2_trace.html
+>   */
+> -#define DEBUG_SSH     0
+>  #define TRACE_LIBSSH2 0 /* or try: LIBSSH2_TRACE_SFTP */
+>  
+> -#define DPRINTF(fmt, ...)                           \
+> -    do {                                            \
+> -        if (DEBUG_SSH) {                            \
+> -            fprintf(stderr, "ssh: %-15s " fmt "\n", \
+> -                    __func__, ##__VA_ARGS__);       \
+> -        }                                           \
+> -    } while (0)
+> -
+>  typedef struct BDRVSSHState {
+>      /* Coroutine. */
+>      CoMutex lock;
+> @@ -336,7 +326,7 @@ static int check_host_key_knownhosts(BDRVSSHState *s,
+>      switch (r) {
+>      case LIBSSH2_KNOWNHOST_CHECK_MATCH:
+>          /* OK */
+> -        DPRINTF("host key OK: %s", found->key);
+> +        trace_ssh_check_host_key_knownhosts(found->key);
+>          break;
+>      case LIBSSH2_KNOWNHOST_CHECK_MISMATCH:
+>          ret = -EINVAL;
+> @@ -721,8 +711,7 @@ static int connect_to_ssh(BDRVSSHState *s, BlockdevOptionsSsh *opts,
+>      }
+>  
+>      /* Open the remote file. */
+> -    DPRINTF("opening file %s flags=0x%x creat_mode=0%o",
+> -            opts->path, ssh_flags, creat_mode);
+> +    trace_ssh_connect_to_ssh(opts->path, ssh_flags, creat_mode);
+>      s->sftp_handle = libssh2_sftp_open(s->sftp, opts->path, ssh_flags,
+>                                         creat_mode);
+>      if (!s->sftp_handle) {
+> @@ -890,7 +879,7 @@ static int coroutine_fn ssh_co_create_opts(const char *filename, QemuOpts *opts,
+>      /* Get desired file size. */
+>      ssh_opts->size = ROUND_UP(qemu_opt_get_size_del(opts, BLOCK_OPT_SIZE, 0),
+>                                BDRV_SECTOR_SIZE);
+> -    DPRINTF("total_size=%" PRIi64, ssh_opts->size);
+> +    trace_ssh_co_create_opts(ssh_opts->size);
+>  
+>      uri_options = qdict_new();
+>      ret = parse_uri(filename, uri_options, errp);
+> @@ -946,7 +935,7 @@ static void restart_coroutine(void *opaque)
+>      BDRVSSHState *s = bs->opaque;
+>      AioContext *ctx = bdrv_get_aio_context(bs);
+>  
+> -    DPRINTF("co=%p", restart->co);
+> +    trace_ssh_restart_coroutine(restart->co);
+>      aio_set_fd_handler(ctx, s->sock, false, NULL, NULL, NULL, NULL);
+>  
+>      aio_co_wake(restart->co);
+> @@ -974,13 +963,12 @@ static coroutine_fn void co_yield(BDRVSSHState *s, BlockDriverState *bs)
+>          wr_handler = restart_coroutine;
+>      }
+>  
+> -    DPRINTF("s->sock=%d rd_handler=%p wr_handler=%p", s->sock,
+> -            rd_handler, wr_handler);
+> +    trace_ssh_co_yield(s->sock, rd_handler, wr_handler);
+>  
+>      aio_set_fd_handler(bdrv_get_aio_context(bs), s->sock,
+>                         false, rd_handler, wr_handler, NULL, &restart);
+>      qemu_coroutine_yield();
+> -    DPRINTF("s->sock=%d - back", s->sock);
+> +    trace_ssh_co_yield_back(s->sock);
+>  }
+>  
+>  /* SFTP has a function `libssh2_sftp_seek64' which seeks to a position
+> @@ -1003,7 +991,7 @@ static void ssh_seek(BDRVSSHState *s, int64_t offset, int flags)
+>      bool force = (flags & SSH_SEEK_FORCE) != 0;
+>  
+>      if (force || op_read != s->offset_op_read || offset != s->offset) {
+> -        DPRINTF("seeking to offset=%" PRIi64, offset);
+> +        trace_ssh_seek(offset);
+>          libssh2_sftp_seek64(s->sftp_handle, offset);
+>          s->offset = offset;
+>          s->offset_op_read = op_read;
+> @@ -1019,7 +1007,7 @@ static coroutine_fn int ssh_read(BDRVSSHState *s, BlockDriverState *bs,
+>      char *buf, *end_of_vec;
+>      struct iovec *i;
+>  
+> -    DPRINTF("offset=%" PRIi64 " size=%zu", offset, size);
+> +    trace_ssh_read(offset, size);
+>  
+>      ssh_seek(s, offset, SSH_SEEK_READ);
+>  
+> @@ -1038,9 +1026,9 @@ static coroutine_fn int ssh_read(BDRVSSHState *s, BlockDriverState *bs,
+>       */
+>      for (got = 0; got < size; ) {
+>      again:
+> -        DPRINTF("sftp_read buf=%p size=%zu", buf, end_of_vec - buf);
+> +        trace_ssh_read_buf(buf, end_of_vec - buf);
+>          r = libssh2_sftp_read(s->sftp_handle, buf, end_of_vec - buf);
+> -        DPRINTF("sftp_read returned %zd", r);
+> +        trace_ssh_read_return(r);
+>  
+>          if (r == LIBSSH2_ERROR_EAGAIN || r == LIBSSH2_ERROR_TIMEOUT) {
+>              co_yield(s, bs);
+> @@ -1094,7 +1082,7 @@ static int ssh_write(BDRVSSHState *s, BlockDriverState *bs,
+>      char *buf, *end_of_vec;
+>      struct iovec *i;
+>  
+> -    DPRINTF("offset=%" PRIi64 " size=%zu", offset, size);
+> +    trace_ssh_write(offset, size);
+>  
+>      ssh_seek(s, offset, SSH_SEEK_WRITE);
+>  
+> @@ -1108,9 +1096,9 @@ static int ssh_write(BDRVSSHState *s, BlockDriverState *bs,
+>  
+>      for (written = 0; written < size; ) {
+>      again:
+> -        DPRINTF("sftp_write buf=%p size=%zu", buf, end_of_vec - buf);
+> +        trace_ssh_write_buf(buf, end_of_vec - buf);
+>          r = libssh2_sftp_write(s->sftp_handle, buf, end_of_vec - buf);
+> -        DPRINTF("sftp_write returned %zd", r);
+> +        trace_ssh_write_return(r);
+>  
+>          if (r == LIBSSH2_ERROR_EAGAIN || r == LIBSSH2_ERROR_TIMEOUT) {
+>              co_yield(s, bs);
+> @@ -1187,7 +1175,7 @@ static coroutine_fn int ssh_flush(BDRVSSHState *s, BlockDriverState *bs)
+>  {
+>      int r;
+>  
+> -    DPRINTF("fsync");
+> +    trace_ssh_flush();
+>   again:
+>      r = libssh2_sftp_fsync(s->sftp_handle);
+>      if (r == LIBSSH2_ERROR_EAGAIN || r == LIBSSH2_ERROR_TIMEOUT) {
+> @@ -1238,7 +1226,7 @@ static int64_t ssh_getlength(BlockDriverState *bs)
+>  
+>      /* Note we cannot make a libssh2 call here. */
+>      length = (int64_t) s->attrs.filesize;
+> -    DPRINTF("length=%" PRIi64, length);
+> +    trace_ssh_getlength(length);
+>  
+>      return length;
+>  }
+> diff --git a/block/trace-events b/block/trace-events
+> index 3e8c47bb24..b13b1e9706 100644
+> --- a/block/trace-events
+> +++ b/block/trace-events
+> @@ -156,3 +156,20 @@ nvme_cmd_map_qiov_iov(void *s, int i, void *page, int pages) "s %p iov[%d] %p pa
+>  
+>  # block/iscsi.c
+>  iscsi_xcopy(void *src_lun, uint64_t src_off, void *dst_lun, uint64_t dst_off, uint64_t bytes, int ret) "src_lun %p offset %"PRIu64" dst_lun %p offset %"PRIu64" bytes %"PRIu64" ret %d"
+> +
+> +# block/ssh.c
+> +ssh_restart_coroutine(void *co) "co=%p"
+> +ssh_flush(void) "fsync"
+> +ssh_check_host_key_knownhosts(const char *key) "host key OK: %s"
+> +ssh_connect_to_ssh(char *path, int flags, int mode) "opening file %s flags=0x%x creat_mode=0%o"
+> +ssh_co_yield(int sock, void *rd_handler, void *wr_handler) "s->sock=%d rd_handler=%p wr_handler=%p"
+> +ssh_co_yield_back(int sock) "s->sock=%d - back"
+> +ssh_getlength(int64_t length) "length=%" PRIi64
+> +ssh_co_create_opts(uint64_t size) "total_size=%" PRIu64
+> +ssh_read(int64_t offset, size_t size) "offset=%" PRIi64 " size=%zu"
+> +ssh_read_buf(void *buf, size_t size) "sftp_read buf=%p size=%zu"
+> +ssh_read_return(size_t ret) "sftp_read returned %zd"
+> +ssh_write(int64_t offset, size_t size) "offset=%" PRIi64 " size=%zu"
+> +ssh_write_buf(void *buf, size_t size) "sftp_write buf=%p size=%zu"
+> +ssh_write_return(size_t ret) "sftp_write returned %zd"
 
-Thanks,
-Laurent
+%zu?
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+> +ssh_seek(uint64_t offset) "seeking to offset=%" PRIi64
+> 
 
