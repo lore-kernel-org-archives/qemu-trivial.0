@@ -1,49 +1,96 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gXYXH-0004aN-Uc
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Dec 2018 16:28:47 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:51655)
+	id 1gXkVx-0005m7-Ed
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Dec 2018 05:16:13 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54568)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1gXYXE-0004X6-8r
-	for qemu-trivial@nongnu.org; Thu, 13 Dec 2018 16:28:47 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gXkVl-0005hp-Rr
+	for qemu-trivial@nongnu.org; Fri, 14 Dec 2018 05:16:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1gXYXD-0008EE-4O
-	for qemu-trivial@nongnu.org; Thu, 13 Dec 2018 16:28:44 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:48602)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1gXYX4-0007m0-Cm; Thu, 13 Dec 2018 16:28:34 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 081F480F93;
-	Thu, 13 Dec 2018 21:28:33 +0000 (UTC)
-Received: from [10.10.122.76] (ovpn-122-76.rdu2.redhat.com [10.10.122.76])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 3C280105706A;
-	Thu, 13 Dec 2018 21:28:32 +0000 (UTC)
+	(envelope-from <laurent@vivier.eu>) id 1gXkVk-0003Ng-4t
+	for qemu-trivial@nongnu.org; Fri, 14 Dec 2018 05:16:01 -0500
+Received: from mout.kundenserver.de ([212.227.126.133]:45757)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1gXkVb-0003Cr-G6; Fri, 14 Dec 2018 05:15:51 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1Ma1kC-1guyKr0Z7s-00VzRO; Fri, 14 Dec 2018 11:15:37 +0100
 To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-References: <20181213175807.12039-1-armbru@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <9e685aeb-29f1-a755-cca1-b3b51da82472@redhat.com>
-Date: Thu, 13 Dec 2018 15:28:31 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.1
+References: <20181213173113.11211-1-armbru@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <ebdef399-64a3-3995-16d8-a57570bc2133@vivier.eu>
+Date: Fri, 14 Dec 2018 11:15:36 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20181213175807.12039-1-armbru@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20181213173113.11211-1-armbru@redhat.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Thu, 13 Dec 2018 21:28:33 +0000 (UTC)
+X-Provags-ID: V03:K1:XZdv3e+/cJuMbYyuztMP4uWgKXzZhKYFOjYjLatKuGx9BqqtfLv
+	X7HpvVmhggcjwDb/sNGKB3EyLEBgOPD5ifKff3RwSMT/YZQS7B2pWkg2XP/ZYzNLbuiHUFI
+	0nSEXbLBl46S8GREGjyN23Dgrhp+Hx2KVoUhyJ+RdsiVVc+ZzzAOP76nWLGB4C70sOhmCkS
+	nIjELaP1ZfC1EWNgE92og==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:kuT3QVdusJE=:1E6aNhxY6zQzUz/bHGuyVm
+	Nenih7y8RTHB1L2J0H9yjy6GUi7mObVfxYlwMR+ZY2NjFCPEL/dq32dUIGUnaTCttBmgQttl2
+	o5y9HInTHzXdylK4B1krZL1m7/ZOwcgAfW0KtN2d6NuvKfJbGkBhhLIoazzEcgtEaCCOmBOYy
+	Rx2ecWmbrQ6NzCd45BHUBL21nEtLHvTnqSaiHPEEmsXuH293wzkLBnGJI1ZealGL8V7IhzVHB
+	6cwrBBOyYu9W0ZTprEGQaVoAWq6GX5666D2ivjI5tILGR8mDr7+ofoLyh+8nN/+dhXH4PA+OR
+	5bZcXfwd+me46f7UgYIhZ1naGXI6JkbwWMvxlNiZUZUKSaMSylclN2EVXHhOqYuuV+6w4Ssff
+	QqXElzNmdWnQ7AaIDf2hGCcGgVj3fKz57Nt3scYfPVYVFQrCqAp0otrWKf7GJmUSucEUKn9WR
+	SUVFXD3oFH6928qDNp188xbm/NADp1zSuwAvV2fA2Tc/YFy9hVgikpwIU84XPbny9Lx73dVDF
+	EqMjTqkYxsxxzUAN3IwK/XVeP9pXfWlVzTGmukuTttpBOWi1F9wL5GoavICv09tTDO4PLrt5g
+	DsXQp6+VoaaOfQaEzZexin4vUTxiAnP7WngVlsB0rzxeko+YNp1TGL24N2rqMtATkb79VZOCX
+	Zz8GV0IVELDXzPD0kwtojIE+8ctogkn3nRB9qrPvTXr1wb8+LFozq+TuETbrsY30kl3NKpGFv
+	yYR5Cz417cEWuQeEwcBLGj1pmOaOxDjvCXA1XIC9THK3Qsfp9TH/wId6DDc=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vl: Use error_fatal to
- simplify obvious fatal errors (again)
+X-Received-From: 212.227.126.133
+Subject: Re: [Qemu-trivial] [PATCH] error: Remove NULL checks on
+ error_propagate() calls
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,24 +102,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Dec 2018 21:28:47 -0000
+X-List-Received-Date: Fri, 14 Dec 2018 10:16:07 -0000
 
-On 12/13/18 11:58 AM, Markus Armbruster wrote:
+On 13/12/2018 18:31, Markus Armbruster wrote:
 > Patch created mechanically by rerunning:
 > 
->      $ spatch --in-place --sp-file scripts/coccinelle/use-error_fatal.cocci \
->               --macro-file scripts/cocci-macro-file.h vl.c
+>   $  spatch --sp-file scripts/coccinelle/error_propagate_null.cocci \
+>             --macro-file scripts/cocci-macro-file.h \
+>             --dir . --in-place
+> 
+> Whitespace tidied up manually.
 > 
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
->   vl.c | 7 ++-----
->   1 file changed, 2 insertions(+), 5 deletions(-)
-> 
+>  blockdev.c              | 4 +---
+>  hw/s390x/s390-pci-bus.c | 4 +---
+>  qga/commands-posix.c    | 7 ++-----
+>  3 files changed, 4 insertions(+), 11 deletions(-)
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3266
-Virtualization:  qemu.org | libvirt.org
+
 
