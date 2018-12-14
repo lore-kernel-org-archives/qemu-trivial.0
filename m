@@ -1,23 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gXkVx-0005m7-Ed
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Dec 2018 05:16:13 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54568)
+	id 1gXkWo-0006EA-5p
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Dec 2018 05:17:06 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54834)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gXkVl-0005hp-Rr
-	for qemu-trivial@nongnu.org; Fri, 14 Dec 2018 05:16:07 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gXkWl-0006C6-AV
+	for qemu-trivial@nongnu.org; Fri, 14 Dec 2018 05:17:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gXkVk-0003Ng-4t
-	for qemu-trivial@nongnu.org; Fri, 14 Dec 2018 05:16:01 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:45757)
+	(envelope-from <laurent@vivier.eu>) id 1gXkWj-00040I-6A
+	for qemu-trivial@nongnu.org; Fri, 14 Dec 2018 05:17:03 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:38659)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gXkVb-0003Cr-G6; Fri, 14 Dec 2018 05:15:51 -0500
+	id 1gXkWb-0003wP-4f; Fri, 14 Dec 2018 05:16:54 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1Ma1kC-1guyKr0Z7s-00VzRO; Fri, 14 Dec 2018 11:15:37 +0100
+	(mreue012 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MUTxo-1gyFdY21xY-00QPWG; Fri, 14 Dec 2018 11:16:48 +0100
 To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-References: <20181213173113.11211-1-armbru@redhat.com>
+References: <20181213175807.12039-1-armbru@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -62,35 +62,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <ebdef399-64a3-3995-16d8-a57570bc2133@vivier.eu>
-Date: Fri, 14 Dec 2018 11:15:36 +0100
+Message-ID: <13484f73-1119-cac2-5c12-877557c3474f@vivier.eu>
+Date: Fri, 14 Dec 2018 11:16:47 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20181213173113.11211-1-armbru@redhat.com>
+In-Reply-To: <20181213175807.12039-1-armbru@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:XZdv3e+/cJuMbYyuztMP4uWgKXzZhKYFOjYjLatKuGx9BqqtfLv
-	X7HpvVmhggcjwDb/sNGKB3EyLEBgOPD5ifKff3RwSMT/YZQS7B2pWkg2XP/ZYzNLbuiHUFI
-	0nSEXbLBl46S8GREGjyN23Dgrhp+Hx2KVoUhyJ+RdsiVVc+ZzzAOP76nWLGB4C70sOhmCkS
-	nIjELaP1ZfC1EWNgE92og==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:kuT3QVdusJE=:1E6aNhxY6zQzUz/bHGuyVm
-	Nenih7y8RTHB1L2J0H9yjy6GUi7mObVfxYlwMR+ZY2NjFCPEL/dq32dUIGUnaTCttBmgQttl2
-	o5y9HInTHzXdylK4B1krZL1m7/ZOwcgAfW0KtN2d6NuvKfJbGkBhhLIoazzEcgtEaCCOmBOYy
-	Rx2ecWmbrQ6NzCd45BHUBL21nEtLHvTnqSaiHPEEmsXuH293wzkLBnGJI1ZealGL8V7IhzVHB
-	6cwrBBOyYu9W0ZTprEGQaVoAWq6GX5666D2ivjI5tILGR8mDr7+ofoLyh+8nN/+dhXH4PA+OR
-	5bZcXfwd+me46f7UgYIhZ1naGXI6JkbwWMvxlNiZUZUKSaMSylclN2EVXHhOqYuuV+6w4Ssff
-	QqXElzNmdWnQ7AaIDf2hGCcGgVj3fKz57Nt3scYfPVYVFQrCqAp0otrWKf7GJmUSucEUKn9WR
-	SUVFXD3oFH6928qDNp188xbm/NADp1zSuwAvV2fA2Tc/YFy9hVgikpwIU84XPbny9Lx73dVDF
-	EqMjTqkYxsxxzUAN3IwK/XVeP9pXfWlVzTGmukuTttpBOWi1F9wL5GoavICv09tTDO4PLrt5g
-	DsXQp6+VoaaOfQaEzZexin4vUTxiAnP7WngVlsB0rzxeko+YNp1TGL24N2rqMtATkb79VZOCX
-	Zz8GV0IVELDXzPD0kwtojIE+8ctogkn3nRB9qrPvTXr1wb8+LFozq+TuETbrsY30kl3NKpGFv
-	yYR5Cz417cEWuQeEwcBLGj1pmOaOxDjvCXA1XIC9THK3Qsfp9TH/wId6DDc=
+X-Provags-ID: V03:K1:hON72u7IcWXA5eS70mHG8xm3QFgwCFYTcjOGVDYdDkLmaHBdxiJ
+	fu3hdVD9Az3H5+66l561t4htOKUoOkGKHCNJdNly1tEYoZQW9lACnKOrk/TchS01Fiju4IT
+	MmvF9AFxz6rc5N0gCaGH6g6WYwo4vg8MDW1kq8n/Jz8gRYw/+FrBgXHIg/Twpa+qYKbFN5T
+	fmx6nv+pAni7f+IpJ6L9g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:LhIGHfym3Sw=:lRtgmzpM/6K9lplA7EBgQa
+	5dVWaKTPekT1PMIRI5+ckCgWu1amxIWit4WufChruycFjlAXJBGqbbAAd6PK82VmKH9kxLSUk
+	0J5V7sSTQcxI6KunppVtPdGi2ndEppdJnAdqOLmkw669jQ4vAhOyUpUdJeBlGTs8URjNy148d
+	CygE7exMVM+6hZEkm+hgnpT1TEfE+Dw3VLCtEWR0g5UJ0biAO+us8xz/S2EVtLmZEkKKr+wcn
+	kH+mSUr7w2xZGlpeLEjZ8sbumjDaQgvXRzX7r1oGqSiEEIEWw9omN3Yd6swlKz6do/UxeAbIW
+	CaNgWfVRVm4hBGTjK0KEH+M+0EdaMVuXzsfhwvhpCarnoIf3lBaTmkRqxVkSw/fltlcwRkEsw
+	5LliYW9jZgomVkvK9QBnN8WPw+A5ndaETNeJs6FEfZijajOKWeYylbeOiWrjnwVZvrPEA2ysz
+	KLeUb5kvwRHN0V70u3uA2esWKXrPgENz2lznz0qNFZMtyKueiLWWaMZ+yFwlVIVVjPyheFpT6
+	Zk0G4HMfqcZt6kz+Fsvm9yUN0x82FY7iFpD0GZE8cN91HNx8ySqsAWkHpEtpxB2Am/KrM1syc
+	RSnggaFSDUD/sf+oQJ3QuL63o8pCIji4gW8FUzGoKZPUBbaQacgD0pvT30mK2IwkNKniaFa7M
+	NJYKNds+s9v+wGZq5Er5QdZLZdhG1J5wkjJHyU1Hfs+HBLJHECtM1fx+VJBhFIu50um0A8Ogp
+	fosNw+tH+1Z9v55XC3iLHr+tm+/57cR2B1vjz/FfHJA7YCjKwD4j8G+jpZU=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-Subject: Re: [Qemu-trivial] [PATCH] error: Remove NULL checks on
- error_propagate() calls
+X-Received-From: 212.227.126.130
+Subject: Re: [Qemu-trivial] [PATCH] vl: Use error_fatal to simplify obvious
+ fatal errors (again)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,23 +102,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Dec 2018 10:16:07 -0000
+X-List-Received-Date: Fri, 14 Dec 2018 10:17:04 -0000
 
-On 13/12/2018 18:31, Markus Armbruster wrote:
+On 13/12/2018 18:58, Markus Armbruster wrote:
 > Patch created mechanically by rerunning:
 > 
->   $  spatch --sp-file scripts/coccinelle/error_propagate_null.cocci \
->             --macro-file scripts/cocci-macro-file.h \
->             --dir . --in-place
-> 
-> Whitespace tidied up manually.
+>     $ spatch --in-place --sp-file scripts/coccinelle/use-error_fatal.cocci \
+>              --macro-file scripts/cocci-macro-file.h vl.c
 > 
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
->  blockdev.c              | 4 +---
->  hw/s390x/s390-pci-bus.c | 4 +---
->  qga/commands-posix.c    | 7 ++-----
->  3 files changed, 4 insertions(+), 11 deletions(-)
+>  vl.c | 7 ++-----
+>  1 file changed, 2 insertions(+), 5 deletions(-)
+> 
 
 Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
