@@ -1,23 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gYsyH-00030p-Vt
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Dec 2018 08:30:10 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:55685)
+	id 1gYszo-0004G6-T2
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Dec 2018 08:31:44 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:56390)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gYsyA-0002vO-JS
-	for qemu-trivial@nongnu.org; Mon, 17 Dec 2018 08:30:08 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gYszf-00047r-BE
+	for qemu-trivial@nongnu.org; Mon, 17 Dec 2018 08:31:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gYsy8-0005FZ-Vo
-	for qemu-trivial@nongnu.org; Mon, 17 Dec 2018 08:30:02 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:56453)
+	(envelope-from <laurent@vivier.eu>) id 1gYsze-0006tR-AK
+	for qemu-trivial@nongnu.org; Mon, 17 Dec 2018 08:31:35 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:54441)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gYsy2-00059B-3y; Mon, 17 Dec 2018 08:29:54 -0500
+	id 1gYszG-0006WO-1i; Mon, 17 Dec 2018 08:31:10 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue009 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1MhUDj-1h2k0X0QsN-00eezG; Mon, 17 Dec 2018 14:29:46 +0100
+	(mreue012 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MjBNV-1h2BSP3WLN-00fF3c; Mon, 17 Dec 2018 14:31:05 +0100
 To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-References: <20181213175807.12039-1-armbru@redhat.com>
+References: <20181213173113.11211-1-armbru@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -62,35 +62,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <acaa022e-681c-bf52-a962-b3a10b08321e@vivier.eu>
-Date: Mon, 17 Dec 2018 14:29:45 +0100
+Message-ID: <8186ba39-8e0b-d53e-24ea-0750aabd27f4@vivier.eu>
+Date: Mon, 17 Dec 2018 14:31:04 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20181213175807.12039-1-armbru@redhat.com>
+In-Reply-To: <20181213173113.11211-1-armbru@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:1pBleH//TSSgcvCzyUhivjobd0nbNt2DfBEswsfR9A2ZW7BlxVx
-	Hska9qYeKwwH0ZoEJy5GhTJ4vh5u5k/61jEIEx5YmGao7EaqqjqoKLswScSkircA3JpCqd5
-	N0s6eLMnJKa/9NszLZUmDiVpug8Jvwhb36txh27kWZWp1HbK1cMHLP/wYDkxT/+3oU4sgJc
-	VlaP1lv7clre9fAjjuBCg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:79Af9L3mJMc=:dPeK2wLs6dHCC9nOjYtvvx
-	oBThM/A2/AGd0KhRbw4Fo8kXrsI21krisS3N0d7aBCTk6NEjGXFU8NNW18tqirLaa5724N7DQ
-	X1M0zW4FACXm4De2/WiiYqw/K8gY2RuJRssJOnpF94d/H5o1vVO7kQHaQAsyhTprO5ecM/kY+
-	ML8zGNEj+Mut8zZQ2v3GG2+T4D9AAyEeoWCA4DkEohiulgDuYTLG8HeisBzQI02XB4XbU0/aW
-	vaFxXLuqP6D7goSjZ4EYeiXe0AxUDmwrdhkERMD5D6naN7txPPA2Cnkbp26Mo2u0qZgzQbxoq
-	um3uLb+YBg13kZrmZ4c5AAZqX3+wcKk6pQHKUKBg+9l0/ag8zdlKZoj1spC0qqvqa1vok/6cy
-	BLTFUPPUdlw6ISvE8yg/yiCNKclY2YNm7ht9ruZiNpC+8D6OoZcI0t/pCXZg+Jo5gzDpWowHi
-	v6XUdEBm2gTOdQCZBeTXIRpaOcAqWSTgw3weA9ieKGEQR2q63VBKyYlbUgHAW448Fvj6NzHs8
-	0qCYOUQB3dkS4X9ADdX6gNGsn81jZKdfHjP0qkq5LacDZM50WaGxJpCkd9DdG89O5eTONufLc
-	C42PxGp5eyQC8Xx7Hc3XU9iSaREUVJJpDXbyIBIqacTZnR1wOO0PUH2zqfeaP0h97csnEBQ9f
-	Bd2Zfwuyj1uytZSDBoYUkhI8oQHF3y2OhfSERRTztWcVzyScPYNxDSC0h0CvM/HP32LmOVCH9
-	oel6DsKIGiyxGT4BzMhf1tm6yg1I4W8qWroH39bVT2rIAxkiDdXoo+2d3Kw=
+X-Provags-ID: V03:K1:zmT8SYlVzVphXdQNhf8JEXnu+M5mf2/BGD8CffNpaa+Kg5a8XvP
+	GPN8Eg7ZqJQ/AjLYNl1Ny8UaoZv1VU8NAx5KGF0uRY9sIIkkBks05rNqc5Uof35nCdn3hhh
+	YRdgFcNJX3LOiL88csD/2QTIXX8CiQ/U7eedPxSNEwZI8NrTs/I1fpsc5ZmVHXeu04gVGw/
+	sRRByAmka2CAw5eXSQyhA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:S4siDI84l9k=:6BXxXV1NzAblgBiXPPddwf
+	iUvyWvMIRNNm20aCDzgvQhZ7TCERiP2Y35UnMxbaBtld+H4w72PsbiI0xbcLKJtwKXFADArcI
+	H+S0UHxXozwkT/k7hqdt2H6cBfPoAXqGIBUVyBpKOVUClKKEw4JnxowvQI18DOX2GbWDGivaQ
+	f/duSMXKqmANnJrGVVc00svH712qcNWrGPk4xKRLwfVKcv53Ge3tyLD93qjFZCH3dvac82JxZ
+	qit8g6YIpM69/J/QigR3PuNn9cywrTBNAOReLifwSLYWtnt9rMrz7FviS+VFlpJIE+LyCV/EB
+	IyGN2NakVLg7ZFApO/S7sXQya2y4NltCoLtty5AL5x8VcpqX5x4Bq+1D4dE1u6nLefShMfO3A
+	bdVRk5G1izxYApRAH6I+Y+vY13CY3MmmigyGU2ZJyFwlIkCgHzrQIpREewrxPhE1mD0Z2Z7ov
+	Hy0tpM2bC3mPxzqtr55sQ0w0uCCudPbIi/VTMISLjVE5X93l1l//O7rxhxvSgYlM/jh3aF/do
+	EcXZ5AclEWrBxpJge6ryhUHgqGmtbbVs4gCki/vB8qrpstKdbF/wRQaSIluRtziUNpOXcQVK9
+	ckknswbfy2RYOIXIK9I2grYr02TKJtLB3KOF3EZxd19tCJDmS7h0ScseSN2y/ePBracPVTR+V
+	TFkU03n8nV6vGsY/HG8fOXCKJdYmisSFULwliTQW02c2XEDPkhPro1AcZYgSKNJUs1NFu4WHf
+	K3iGbKdJV0lSHpYLAtXRUDdBrmn9FzfvFnFc5qu8ImSN2zSFFj0pA76SHK4=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.187
-Subject: Re: [Qemu-trivial] [PATCH] vl: Use error_fatal to simplify obvious
- fatal errors (again)
+Subject: Re: [Qemu-trivial] [PATCH] error: Remove NULL checks on
+ error_propagate() calls
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,37 +102,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Dec 2018 13:30:08 -0000
+X-List-Received-Date: Mon, 17 Dec 2018 13:31:41 -0000
 
-On 13/12/2018 18:58, Markus Armbruster wrote:
+On 13/12/2018 18:31, Markus Armbruster wrote:
 > Patch created mechanically by rerunning:
 > 
->     $ spatch --in-place --sp-file scripts/coccinelle/use-error_fatal.cocci \
->              --macro-file scripts/cocci-macro-file.h vl.c
+>   $  spatch --sp-file scripts/coccinelle/error_propagate_null.cocci \
+>             --macro-file scripts/cocci-macro-file.h \
+>             --dir . --in-place
+> 
+> Whitespace tidied up manually.
 > 
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
->  vl.c | 7 ++-----
->  1 file changed, 2 insertions(+), 5 deletions(-)
+>  blockdev.c              | 4 +---
+>  hw/s390x/s390-pci-bus.c | 4 +---
+>  qga/commands-posix.c    | 7 ++-----
+>  3 files changed, 4 insertions(+), 11 deletions(-)
 > 
-> diff --git a/vl.c b/vl.c
-> index a5ae5f23d2..702a828ca2 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -3138,11 +3138,8 @@ int main(int argc, char **argv, char **envp)
->                      Visitor *v;
->                      BlockdevOptions_queue *bdo;
+> diff --git a/blockdev.c b/blockdev.c
+> index 81f95d920b..5f2cbe352d 100644
+> --- a/blockdev.c
+> +++ b/blockdev.c
+> @@ -992,9 +992,7 @@ DriveInfo *drive_new(QemuOpts *all_opts, BlockInterfaceType block_default_type,
+>      blk = blockdev_init(filename, bs_opts, &local_err);
+>      bs_opts = NULL;
+>      if (!blk) {
+> -        if (local_err) {
+> -            error_propagate(errp, local_err);
+> -        }
+> +        error_propagate(errp, local_err);
+>          goto fail;
+>      } else {
+>          assert(!local_err);
+> diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
+> index 060ff062bc..98c9d6206a 100644
+> --- a/hw/s390x/s390-pci-bus.c
+> +++ b/hw/s390x/s390-pci-bus.c
+> @@ -731,9 +731,7 @@ static void s390_pcihost_realize(DeviceState *dev, Error **errp)
 >  
-> -                    v = qobject_input_visitor_new_str(optarg, "driver", &err);
-> -                    if (!v) {
-> -                        error_report_err(err);
-> -                        exit(1);
-> -                    }
-> +                    v = qobject_input_visitor_new_str(optarg, "driver",
-> +                                                      &error_fatal);
+>      css_register_io_adapters(CSS_IO_ADAPTER_PCI, true, false,
+>                               S390_ADAPTER_SUPPRESSIBLE, &local_err);
+> -    if (local_err) {
+> -        error_propagate(errp, local_err);
+> -    }
+> +    error_propagate(errp, local_err);
+>  }
 >  
->                      bdo = g_new(BlockdevOptions_queue, 1);
->                      visit_type_BlockdevOptions(v, NULL, &bdo->bdo,
+>  static int s390_pci_msix_init(S390PCIBusDevice *pbdev)
+> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+> index 1877976522..2e719d9b6b 100644
+> --- a/qga/commands-posix.c
+> +++ b/qga/commands-posix.c
+> @@ -1573,10 +1573,7 @@ static bool systemd_supports_mode(SuspendMode mode, Error **errp)
+>          return true;
+>      }
+>  
+> -    if (local_err) {
+> -        error_propagate(errp, local_err);
+> -    }
+> -
+> +    error_propagate(errp, local_err);
+>      return false;
+>  }
+>  
+> @@ -1782,7 +1779,7 @@ static void guest_suspend(SuspendMode mode, Error **errp)
+>      if (!mode_supported) {
+>          error_setg(errp,
+>                     "the requested suspend mode is not supported by the guest");
+> -    } else if (local_err) {
+> +    } else {
+>          error_propagate(errp, local_err);
+>      }
+>  }
 > 
 
 Applied to my trivial-patches branch.
