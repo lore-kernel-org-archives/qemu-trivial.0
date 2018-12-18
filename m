@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gZGKo-0007Dr-Pf
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 09:26:58 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35155)
+	id 1gZGKq-0007FI-2F
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 09:27:00 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35157)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gZGKj-00076S-CD
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:26:55 -0500
+	(envelope-from <philmd@redhat.com>) id 1gZGKj-00076T-Cj
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:26:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gZGKh-0008Lu-Kz
+	(envelope-from <philmd@redhat.com>) id 1gZGKh-0008Ln-J0
 	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:26:53 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:60448)
+Received: from mx1.redhat.com ([209.132.183.28]:60442)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1gZGKd-0008Iu-22; Tue, 18 Dec 2018 09:26:47 -0500
+	id 1gZGKd-0008It-3t; Tue, 18 Dec 2018 09:26:47 -0500
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
 	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8FC16169743;
-	Tue, 18 Dec 2018 11:57:26 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 26616169752;
+	Tue, 18 Dec 2018 11:59:16 +0000 (UTC)
 Received: from x1w.redhat.com (unknown [10.40.205.65])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id CE6051001914;
-	Tue, 18 Dec 2018 11:57:17 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id ADD6F1001914;
+	Tue, 18 Dec 2018 11:59:01 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
@@ -34,8 +34,8 @@ Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	"Daniel P . Berrange" <berrange@redhat.com>,
 	"Michael S . Tsirkin" <mst@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Tue, 18 Dec 2018 12:56:06 +0100
-Message-Id: <20181218115615.1499-4-philmd@redhat.com>
+Date: Tue, 18 Dec 2018 12:56:14 +0100
+Message-Id: <20181218115615.1499-12-philmd@redhat.com>
 In-Reply-To: <20181218115615.1499-1-philmd@redhat.com>
 References: <20181218115615.1499-1-philmd@redhat.com>
 MIME-Version: 1.0
@@ -43,13 +43,13 @@ Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.30]);
-	Tue, 18 Dec 2018 11:57:26 +0000 (UTC)
+	Tue, 18 Dec 2018 11:59:16 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v2 03/12] MAINTAINERS: Add missing entries
- for the PC machines
+Subject: [Qemu-trivial] [PATCH v2 11/12] MAINTAINERS: Orphanize the 'GDB
+ stub' subsystem
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,28 +61,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Dec 2018 14:26:55 -0000
+X-List-Received-Date: Tue, 18 Dec 2018 14:26:59 -0000
 
+Nobody is looking at those files, downgrade this subsystem as orphan.
+
+Remove the qemu-devel@nongnu.org entry because the list is always
+selected by the 'All patches CC here' section.
+
+Suggested-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- MAINTAINERS | 4 ++++
- 1 file changed, 4 insertions(+)
+Luc: interested in stepping in? :)
+---
+ MAINTAINERS | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index dac394d125..f3305a65b6 100644
+index e6a73820f1..49f8f2fa37 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -1141,6 +1141,10 @@ F: hw/acpi/ich9.c
- F: include/hw/acpi/ich9.h
- F: include/hw/acpi/piix4.h
- F: hw/misc/sga.c
-+F: hw/isa/apm.c
-+F: include/hw/isa/apm.h
-+F: tests/test-x86-cpuid.c
-+F: tests/test-x86-cpuid-compat.c
+@@ -1776,8 +1776,7 @@ F: util/error.c
+ F: util/qemu-error.c
 =20
- PC Chipset
- M: Michael S. Tsirkin <mst@redhat.com>
+ GDB stub
+-L: qemu-devel@nongnu.org
+-S: Odd Fixes
++S: Orphan
+ F: gdbstub*
+ F: gdb-xml/
+=20
 --=20
 2.17.2
 
