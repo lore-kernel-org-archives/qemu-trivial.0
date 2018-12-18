@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gZGN6-0000nN-Qm
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 09:29:20 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35741)
+	id 1gZGN8-0000ow-4f
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 09:29:22 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35810)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gZGN3-0000jO-BY
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:29:19 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gZGN5-0000mA-TQ
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:29:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gZGMy-0000s0-FQ
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:29:17 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:46383)
+	(envelope-from <laurent@vivier.eu>) id 1gZGN5-0000vx-4F
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:29:19 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:41071)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gZGMy-0000r8-6D; Tue, 18 Dec 2018 09:29:12 -0500
+	id 1gZGMx-0000qH-2I; Tue, 18 Dec 2018 09:29:11 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N7Qp3-1hTLed30nt-017kvM; Tue, 18 Dec 2018 15:29:02 +0100
+	id 1N2m7Q-1hY0Lm0OIm-01365V; Tue, 18 Dec 2018 15:28:58 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Halil Pasic <pasic@linux.ibm.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -30,34 +30,31 @@ Cc: Halil Pasic <pasic@linux.ibm.com>, Laurent Vivier <laurent@vivier.eu>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	David Hildenbrand <david@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
 	Max Reitz <mreitz@redhat.com>, qemu-trivial@nongnu.org
-Date: Tue, 18 Dec 2018 15:28:50 +0100
-Message-Id: <20181218142851.9477-4-laurent@vivier.eu>
+Date: Tue, 18 Dec 2018 15:28:47 +0100
+Message-Id: <20181218142851.9477-1-laurent@vivier.eu>
 X-Mailer: git-send-email 2.19.2
-In-Reply-To: <20181218142851.9477-1-laurent@vivier.eu>
-References: <20181218142851.9477-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:XcvVyTRNcuVoO7w926JgzxmXRp1FGKKZbPZfW3sMI8lTgZO0CMc
-	gNaPQ5v3qC2fuF7iN1mzsAWCLaU8Hq0CKvko2PFy2IwlD86Ue3E6tRhEl5YuQ26VVWb8qbU
-	QuoyaWVxXZj6cmoHVOga67LrLS900ycHGBaKq089dUJT3ISzLyggovUTECaYeFoCGYNVlyC
-	glbsReoORZ/JDkwhb3MAg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:dPeCUy9F6kg=:IRNDK1QmnzHVY1nVXSaj8d
-	bYoDo0GicW6OIW2PYzZg2LgE4obR4a7ZDzBn02LuQiLQ5nhpvPyaiFPz0z4JM0+1ojNsoTqXD
-	33EEI+KMi3QiZUcZLZ0N3ND5zIhAsmx3p0lo4vfHAwjv2a/wmDDACT0rRTk0gXCqdTPvZLO50
-	5/PXTfskpSpkQLdQ3Ckw9rAnjIPV7eDgV/EngF/7rYekt4irxWTyXqKPZiUBWx87Rc9+8ssxA
-	MRrilMGPLJdFVIdNexS/355zZsbR9LtBbB0XiB3yptfaMfl5QHMQDjZneuwL2lt88O/HQ9ME9
-	eH2YRSZE+rlKSqJSjakaMPh6xNYnc9nY2Pc0DxUuV4i7o9hRbWH/1SJR/MgPoAj3ZIunqvkL/
-	r2GFZTH+15j7RmCJllMBewr3nstNGcN+k19rJjL6tvXnG1ZuxSrqpJ6nP6Dovsd55BcTnEh1z
-	mzWyHyVYE4NkzOGMEWWZe9khM/ueVC5KwU0I/0/YxHZUuhaHVp7IKyuqczQv9hILQXmKn6fog
-	HHkBxGsdDRqaFr4vxtonAsq8EjzR6wK+d4lemh+REYVZGLOe5wPUJnqwsa/sBszY9NcYgES1d
-	THV5Vh/DmcLYnswR2VZDwlBLKAnv8koM2JLTMdk97thcKVaOKqn8inEck2UnuKJInv1y+1Awj
-	Z4CI9KclF3s21aYL/8whmQ+BURHq90/8Mgll+7r3SF8lVcB3khA6fd18mEkxPaGzPmzHt9qtV
-	+g/VIG3rZBlWAeMyVR5F8hKwrPIKDb5p0TWzKnBot3XSu4WdegavlYEuC1w=
+X-Provags-ID: V03:K1:5vuoYSTcJ+Mt2ssrtg0RP7m2CXUNr4KLKFhRvnH2vWh/3cCzOLa
+	rL3eSUM2sokiKDDI0YTkq8wa88Zzr+7t1fOBwoWXnTWzlGMK+8T5e/0nkWn2HQFw+9Fyrp0
+	5MIK207Sr1OPTwrT9XfDEoIneJdG16p2L9vgFOeuBfEyD0KGjuzb69jn6KMKkKcELm25107
+	GFwQmcqFK4YSAsPl03JkA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:lyikioX35w0=:CVH7FXIcKilAciVspqMa7J
+	DgtRVPQzdk5wIHq2C4fe0SALL4kb4R5dk3n8rMemgGt9qA2CA4LulBfapILa0gVNb1MxhO81s
+	iCrM9t+W60ZGmHhMzeX/PfdwRKUKxM72BTVm0vIyX0G+r2dj4y4qXZf2B7qlTHkp8VHctb6qT
+	ALC253ZruIWkNDkqEWGaQPaxUHV2LXRfQ8nkVKKl/r/S99ABptiMtyX0HkEWKVIuRIVmfRjdb
+	ZMrf79BQCWhBO7uPb975ghvmh45p6lBgCJL7cpmSZQPKtToFmYa31iMu822rP3rkPqqYeqF05
+	WPzKQmHL8WglU/KcutPED8obPvkqIjrAVQEzVS9Ij1jCkx2EE+6eMGtsaviUq9l3YCVJsYtM4
+	Qq/+3GdKtNSxM9ZlK6PawhFMEpRSUQRcRNra15o9xiH192yyWZBGeb/ayEcknA1uD2WKIpEJ0
+	Ms9Ol63TWgBR/1a/FmqB+2dvyRs41W/XeHxbcg4IkM42x3cwDT7zXAFrd/6dERZslGbTsYE8d
+	pagoRc+8CtHAgoxYMcKTZglNQ4P86gMH133to32Myny5WB+VX/uTqaxe0XIh/ApJPQQfEzgQp
+	hV6AZqoxKqIR5+4vgEPANMoPqnxIOADSfyI5pFnigOEZ7KdDB6fCs0HGex6tjM0bOr3Y+S/EQ
+	WwI7X6eKxmjNc59ILKyq8Ytwcw01xpE2qUGIJ4mH7TspAolQThAhjdjL4PKgdmiKY0C1C+RQi
+	VyJulKw6q4xz+Ko5/eHpyM9+JyZKyrt109u5JQO92WV6sZjS86gRgEY5TKQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: [Qemu-trivial] [PULL 3/4] vl: Use error_fatal to simplify obvious
- fatal errors (again)
+X-Received-From: 212.227.126.187
+Subject: [Qemu-trivial] [PULL 0/4] Trivial patches patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,43 +66,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Dec 2018 14:29:19 -0000
+X-List-Received-Date: Tue, 18 Dec 2018 14:29:20 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
+The following changes since commit f163448536e5f7ae8905b14547eab37a41a75f6c:
 
-Patch created mechanically by rerunning:
+  Merge remote-tracking branch 'remotes/rth/tags/pull-tcg-20181216' into staging (2018-12-17 13:04:25 +0000)
 
-    $ spatch --in-place --sp-file scripts/coccinelle/use-error_fatal.cocci \
-             --macro-file scripts/cocci-macro-file.h vl.c
+are available in the Git repository at:
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20181213175807.12039-1-armbru@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- vl.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+  git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
 
-diff --git a/vl.c b/vl.c
-index 2a8b2ee16d..530fad6a71 100644
---- a/vl.c
-+++ b/vl.c
-@@ -3133,11 +3133,8 @@ int main(int argc, char **argv, char **envp)
-                     Visitor *v;
-                     BlockdevOptions_queue *bdo;
- 
--                    v = qobject_input_visitor_new_str(optarg, "driver", &err);
--                    if (!v) {
--                        error_report_err(err);
--                        exit(1);
--                    }
-+                    v = qobject_input_visitor_new_str(optarg, "driver",
-+                                                      &error_fatal);
- 
-                     bdo = g_new(BlockdevOptions_queue, 1);
-                     visit_type_BlockdevOptions(v, NULL, &bdo->bdo,
+for you to fetch changes up to b2322003b6389c7c98104c8626ffa342928ba83c:
+
+  error: Remove NULL checks on error_propagate() calls (2018-12-18 14:57:48 +0100)
+
+----------------------------------------------------------------
+Trivial patches (2018-12-18)
+
+----------------------------------------------------------------
+
+Emilio G. Cota (1):
+  docs/devel/build-system: fix 'softmu' typo
+
+Markus Armbruster (2):
+  vl: Use error_fatal to simplify obvious fatal errors (again)
+  error: Remove NULL checks on error_propagate() calls
+
+Roman Bolshakov (1):
+  i386: hvf: drop debug printf in decode_sldtgroup
+
+ blockdev.c                   | 4 +---
+ docs/devel/build-system.txt  | 2 +-
+ hw/s390x/s390-pci-bus.c      | 4 +---
+ qga/commands-posix.c         | 7 ++-----
+ target/i386/hvf/x86_decode.c | 2 --
+ vl.c                         | 7 ++-----
+ 6 files changed, 7 insertions(+), 19 deletions(-)
+
 -- 
 2.19.2
 
