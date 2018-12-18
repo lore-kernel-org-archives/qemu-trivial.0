@@ -1,63 +1,115 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gZGNM-00011Z-BR
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 09:29:36 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35920)
+	id 1gZGOH-0001vb-6Y
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 09:30:33 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:36298)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gZGNE-0000ue-Kt
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:29:33 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1gZGOD-0001sB-9Y
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:30:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gZGN8-0000ym-T0
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:29:28 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:46705)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gZGN2-0000tL-4b; Tue, 18 Dec 2018 09:29:16 -0500
-Received: from localhost.localdomain ([78.238.229.36]) by
-	mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA
-	(Nemesis)
-	id 1MMXYN-1gsIxL0LKR-00JY3a; Tue, 18 Dec 2018 15:29:04 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Halil Pasic <pasic@linux.ibm.com>, Laurent Vivier <laurent@vivier.eu>,
-	qemu-block@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, Richard Henderson <rth@twiddle.net>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
-	Collin Walling <walling@linux.ibm.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	David Hildenbrand <david@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
-	Max Reitz <mreitz@redhat.com>, qemu-trivial@nongnu.org
-Date: Tue, 18 Dec 2018 15:28:51 +0100
-Message-Id: <20181218142851.9477-5-laurent@vivier.eu>
-X-Mailer: git-send-email 2.19.2
-In-Reply-To: <20181218142851.9477-1-laurent@vivier.eu>
-References: <20181218142851.9477-1-laurent@vivier.eu>
+	(envelope-from <pbonzini@redhat.com>) id 1gZGOC-0001dI-Fc
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:30:29 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53554)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1gZGO4-0001TU-GG; Tue, 18 Dec 2018 09:30:20 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 60A61804FA;
+	Tue, 18 Dec 2018 12:35:15 +0000 (UTC)
+Received: from [10.36.112.35] (ovpn-112-35.ams2.redhat.com [10.36.112.35])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8F7CD1001914;
+	Tue, 18 Dec 2018 12:34:54 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Mark Cave-Ayland
+	<mark.cave-ayland@ilande.co.uk>, Thomas Huth <thuth@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Markus Armbruster <armbru@redhat.com>, 
+	Helge Deller <deller@gmx.de>, Artyom Tarasenko <atar4qemu@gmail.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	Luc Michel <luc.michel@greensocs.com>,
+	"Daniel P . Berrange" <berrange@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>
+References: <20181218115615.1499-1-philmd@redhat.com>
+	<20181218115615.1499-11-philmd@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+	uUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
+Message-ID: <20f62f62-f677-6d0f-09dc-3759cc813d8f@redhat.com>
+Date: Tue, 18 Dec 2018 13:34:52 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:vWgRSiuAdicdIsVonsksGCVB9bBEgulCYydaPpv2yQm6LEcSb2A
-	mVBdDJfogi9Ow4fphflifx+pEb6Kpc/5bFx+wwcck/5s3tIlHsUhTL/jjiniMK4wxfFr+j3
-	Iem+BDEhhAD55Z+0rU/omO+uMeva20yVKWEtTzniidErVcZQuLlW+iyco0bSLts/U5tFo6T
-	sr4wqribvT2/I2qsB1UIg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:K8/xurr9AlQ=:KWh3A7Z47p4u61OQj4nv+h
-	Iy9X4rj7Ab7SHj5XT13nNkBl2odL1WdETSRu8hqGVsx5RUuDaQvqDHnpaF4Wgw6kG7AUWctVt
-	LIF18w9JspjwVbwIplDFsroFzTHtJkt8rlSYixPI6zxwNqsojkNko0Ld91SUQm0/YlE5fbycc
-	PYHzm1qKIuBlQBC6OFd/J0e72OiyXSMZEnZCjl8QYG5gfRGMJELLR3X+YGJlK9xli2fxhJhpz
-	FPnXq5afRnQmidErkA4RC+2M0JhgZ2fEliL0yK2lB5+MwMnwGVjnuaPn4vIQnPGKbgCpGXoA/
-	tEdinUnnQIuomqOpzM3VhtfM34wXSi1ez5dyg7SV8Sb9XSdrIiPVBVCY7J5aSn3oE/G7Z1sU8
-	cLt6a8iE/gdhFGpu7l7ZGCW+a3Q/MgfYGvQR/sGTcru+UhWTCaA87ux9jfur6orMlcrQ32PaN
-	y1GUpMHphP5E48iqli8ev8xdwqdf9XeYPePgw7VVw6PV1vBHQ2zKkuzfpAly2jvGFPYE9K6C+
-	QOwzz3qqjqG0EN0peMTRF5nCLWatMSLTU5R25t8egc+nEq7SiQIY61BUK3Xd6eKn93nFqO+fq
-	ihGGAyRmq3EewcfBpiajRo8qD1nzu2qmSgEFNVsM5fA/tRNgX8mlMRJMbrFwNO5/SuJziVMCL
-	sSImA2RuC5o+TTVfjuqpVDBcgw7LCFSfNSs1inelA2c2YiAUT4fJ44883Up72z5pXZw0yqaZJ
-	H3N7mJpgPWFUdwRHFGwlXJx1O75NHPpRMZN0JR6wnXH6auqNeN1LwVbYED4=
+In-Reply-To: <20181218115615.1499-11-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 18 Dec 2018 12:35:15 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: [Qemu-trivial] [PULL 4/4] error: Remove NULL checks on
- error_propagate() calls
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH v2 10/12] MAINTAINERS: Orphanize the 'CPU
+ (QOM)' subsystem
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,86 +121,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Dec 2018 14:29:33 -0000
+X-List-Received-Date: Tue, 18 Dec 2018 14:30:31 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
+On 18/12/18 12:56, Philippe Mathieu-Daud=C3=A9 wrote:
+> Nobody is looking at those files, downgrade this subsystem as orphan.
+>=20
+> Remove the qemu-devel@nongnu.org entry because the list is always
+> selected by the 'All patches CC here' section.
+>=20
+> Suggested-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  MAINTAINERS | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>=20
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index e50f8c6b97..e6a73820f1 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1745,8 +1745,7 @@ S: Supported
+>  F: scripts/coverity-model.c
+> =20
+>  CPU
+> -L: qemu-devel@nongnu.org
+> -S: Supported
+> +S: Orphan
+>  F: qom/cpu.c
+>  F: include/qom/cpu.h
+> =20
+>=20
 
-Patch created mechanically by rerunning:
+I don't think that's accurate.  Simply there's not much going on.  If
+patches are sent, get-maintainers's git fallback will do something
+(probably sending the patch to Eduardo, Igor or me).
 
-  $  spatch --sp-file scripts/coccinelle/error_propagate_null.cocci \
-            --macro-file scripts/cocci-macro-file.h \
-            --dir . --in-place
-
-Whitespace tidied up manually.
-
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20181213173113.11211-1-armbru@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- blockdev.c              | 4 +---
- hw/s390x/s390-pci-bus.c | 4 +---
- qga/commands-posix.c    | 7 ++-----
- 3 files changed, 4 insertions(+), 11 deletions(-)
-
-diff --git a/blockdev.c b/blockdev.c
-index e6c8349409..a6f71f9d83 100644
---- a/blockdev.c
-+++ b/blockdev.c
-@@ -992,9 +992,7 @@ DriveInfo *drive_new(QemuOpts *all_opts, BlockInterfaceType block_default_type,
-     blk = blockdev_init(filename, bs_opts, &local_err);
-     bs_opts = NULL;
-     if (!blk) {
--        if (local_err) {
--            error_propagate(errp, local_err);
--        }
-+        error_propagate(errp, local_err);
-         goto fail;
-     } else {
-         assert(!local_err);
-diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
-index 99d0368868..f7458445c0 100644
---- a/hw/s390x/s390-pci-bus.c
-+++ b/hw/s390x/s390-pci-bus.c
-@@ -731,9 +731,7 @@ static void s390_pcihost_realize(DeviceState *dev, Error **errp)
- 
-     css_register_io_adapters(CSS_IO_ADAPTER_PCI, true, false,
-                              S390_ADAPTER_SUPPRESSIBLE, &local_err);
--    if (local_err) {
--        error_propagate(errp, local_err);
--    }
-+    error_propagate(errp, local_err);
- }
- 
- static int s390_pci_msix_init(S390PCIBusDevice *pbdev)
-diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-index 1877976522..2e719d9b6b 100644
---- a/qga/commands-posix.c
-+++ b/qga/commands-posix.c
-@@ -1573,10 +1573,7 @@ static bool systemd_supports_mode(SuspendMode mode, Error **errp)
-         return true;
-     }
- 
--    if (local_err) {
--        error_propagate(errp, local_err);
--    }
--
-+    error_propagate(errp, local_err);
-     return false;
- }
- 
-@@ -1782,7 +1779,7 @@ static void guest_suspend(SuspendMode mode, Error **errp)
-     if (!mode_supported) {
-         error_setg(errp,
-                    "the requested suspend mode is not supported by the guest");
--    } else if (local_err) {
-+    } else {
-         error_propagate(errp, local_err);
-     }
- }
--- 
-2.19.2
-
+Paolo
 
