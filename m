@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gZGN8-0000ow-4f
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 09:29:22 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35810)
+	id 1gZGNA-0000rQ-HB
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 09:29:24 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35835)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gZGN5-0000mA-TQ
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:29:20 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gZGN6-0000nY-Tc
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:29:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gZGN5-0000vx-4F
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:29:19 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:41071)
+	(envelope-from <laurent@vivier.eu>) id 1gZGN6-0000wv-5P
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:29:20 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:54937)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gZGMx-0000qH-2I; Tue, 18 Dec 2018 09:29:11 -0500
+	id 1gZGMz-0000sB-K4; Tue, 18 Dec 2018 09:29:13 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N2m7Q-1hY0Lm0OIm-01365V; Tue, 18 Dec 2018 15:28:58 +0100
+	id 1MJm8H-1goSvs1WeX-00K6Hg; Tue, 18 Dec 2018 15:29:01 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Halil Pasic <pasic@linux.ibm.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -29,32 +29,35 @@ Cc: Halil Pasic <pasic@linux.ibm.com>, Laurent Vivier <laurent@vivier.eu>,
 	Markus Armbruster <armbru@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	David Hildenbrand <david@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
-	Max Reitz <mreitz@redhat.com>, qemu-trivial@nongnu.org
-Date: Tue, 18 Dec 2018 15:28:47 +0100
-Message-Id: <20181218142851.9477-1-laurent@vivier.eu>
+	Max Reitz <mreitz@redhat.com>, qemu-trivial@nongnu.org,
+	Roman Bolshakov <r.bolshakov@yadro.com>
+Date: Tue, 18 Dec 2018 15:28:49 +0100
+Message-Id: <20181218142851.9477-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.19.2
+In-Reply-To: <20181218142851.9477-1-laurent@vivier.eu>
+References: <20181218142851.9477-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:5vuoYSTcJ+Mt2ssrtg0RP7m2CXUNr4KLKFhRvnH2vWh/3cCzOLa
-	rL3eSUM2sokiKDDI0YTkq8wa88Zzr+7t1fOBwoWXnTWzlGMK+8T5e/0nkWn2HQFw+9Fyrp0
-	5MIK207Sr1OPTwrT9XfDEoIneJdG16p2L9vgFOeuBfEyD0KGjuzb69jn6KMKkKcELm25107
-	GFwQmcqFK4YSAsPl03JkA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:lyikioX35w0=:CVH7FXIcKilAciVspqMa7J
-	DgtRVPQzdk5wIHq2C4fe0SALL4kb4R5dk3n8rMemgGt9qA2CA4LulBfapILa0gVNb1MxhO81s
-	iCrM9t+W60ZGmHhMzeX/PfdwRKUKxM72BTVm0vIyX0G+r2dj4y4qXZf2B7qlTHkp8VHctb6qT
-	ALC253ZruIWkNDkqEWGaQPaxUHV2LXRfQ8nkVKKl/r/S99ABptiMtyX0HkEWKVIuRIVmfRjdb
-	ZMrf79BQCWhBO7uPb975ghvmh45p6lBgCJL7cpmSZQPKtToFmYa31iMu822rP3rkPqqYeqF05
-	WPzKQmHL8WglU/KcutPED8obPvkqIjrAVQEzVS9Ij1jCkx2EE+6eMGtsaviUq9l3YCVJsYtM4
-	Qq/+3GdKtNSxM9ZlK6PawhFMEpRSUQRcRNra15o9xiH192yyWZBGeb/ayEcknA1uD2WKIpEJ0
-	Ms9Ol63TWgBR/1a/FmqB+2dvyRs41W/XeHxbcg4IkM42x3cwDT7zXAFrd/6dERZslGbTsYE8d
-	pagoRc+8CtHAgoxYMcKTZglNQ4P86gMH133to32Myny5WB+VX/uTqaxe0XIh/ApJPQQfEzgQp
-	hV6AZqoxKqIR5+4vgEPANMoPqnxIOADSfyI5pFnigOEZ7KdDB6fCs0HGex6tjM0bOr3Y+S/EQ
-	WwI7X6eKxmjNc59ILKyq8Ytwcw01xpE2qUGIJ4mH7TspAolQThAhjdjL4PKgdmiKY0C1C+RQi
-	VyJulKw6q4xz+Ko5/eHpyM9+JyZKyrt109u5JQO92WV6sZjS86gRgEY5TKQ=
+X-Provags-ID: V03:K1:UY57jcpLeXyZhLzCOjp8UlR5puYrJhbzXT6lmqfhxXg5RnslyHc
+	Fr6jLa8PH3g4+4NOiI6W8rkVExMKbJ3E1vL8zGlMMUVGqHKPqmReyXod3KRjZgxWsll2FBA
+	CP+6A9ctJkslEpTbgbiPqbDgNcwUSub6I+1NlPe8nKE8HEN8ZkmUEaIQ/EgQhLi4sCt7H5/
+	CxtWj0wmiUNSbcbEDleaQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:lqqYrYZAU74=:RdmYonMLtWwZSaw6llySDE
+	i/7Cap2ogaw98h8X5iADrgDW2zPGWCT8DHPx9uEzxnkDyuVpL7abXYCtmHnlFVNP6l7mxryju
+	BKYt7HRnO8QYtAOJxMiV0pKDhYHpO9dQfRTnQT+pz7pDPGThPUziBs4AiO3dWlaiaw7ispfb5
+	iCOISv0Uash8XTNCf3WpPTvgh+Bj6/2WsbLZd6w6Tjr/mhOonoGU13K4o7U2lfWWKK93y90eS
+	apEsMaPBAetTdX1mR1kvxcyVbLi8KGHrtxu90uJ2UevNHfZP4PRuZ10Ytu51dwgmlR4GCpeFk
+	01Npf8p0eMtRXN8copCuy/xifQb9txr1s1Al0LxjisTUTLD493F3uSmpvGHhG0imh86GJcUof
+	zY/UWL+Ra1JKD9yBMzMwYfuoGRi6gejNHJ8fnSppxYOlTY4Mq1oLt3x5gIhhc5CSTfjMKWWTV
+	j3IRIwCGpS6iu2IJ04VWHqPe7Sf2y/gM3TVoY+uKkfpd9ncHStIf4Vl29vXegtQLVQCkqO3h8
+	zRMzt3VgRLrC8EM9S0rDzaFDaGH53+bdReCyiFg1C6Pex8Cy8WAWtB8lY+aXVXZ2pNGlMmT3M
+	Gp1/956qq1eyvBF6qI/32aO5X5dynGj0ZJLTM0FX8kBZIxoJAF2KpFDIT0vxEtDS3nu1tLca7
+	t68mCYZjYkvL4uC0AwQQvhKHD38qdpbcPS8hjKH/v2/Xds72ZpvbEJytmb2DqGSIZSWNdxEPC
+	DQgJATf4V9iNv5dLsBWup2nokp/TEu/pe922Tg==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: [Qemu-trivial] [PULL 0/4] Trivial patches patches
+X-Received-From: 212.227.126.130
+Subject: [Qemu-trivial] [PULL 2/4] i386: hvf: drop debug printf in
+ decode_sldtgroup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,43 +69,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Dec 2018 14:29:20 -0000
+X-List-Received-Date: Tue, 18 Dec 2018 14:29:21 -0000
 
-The following changes since commit f163448536e5f7ae8905b14547eab37a41a75f6c:
+From: Roman Bolshakov <r.bolshakov@yadro.com>
 
-  Merge remote-tracking branch 'remotes/rth/tags/pull-tcg-20181216' into staging (2018-12-17 13:04:25 +0000)
+It's going to clutter QEMU logs if 0x0f00 is trapped.
 
-are available in the Git repository at:
-
-  git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
-
-for you to fetch changes up to b2322003b6389c7c98104c8626ffa342928ba83c:
-
-  error: Remove NULL checks on error_propagate() calls (2018-12-18 14:57:48 +0100)
-
-----------------------------------------------------------------
-Trivial patches (2018-12-18)
-
-----------------------------------------------------------------
-
-Emilio G. Cota (1):
-  docs/devel/build-system: fix 'softmu' typo
-
-Markus Armbruster (2):
-  vl: Use error_fatal to simplify obvious fatal errors (again)
-  error: Remove NULL checks on error_propagate() calls
-
-Roman Bolshakov (1):
-  i386: hvf: drop debug printf in decode_sldtgroup
-
- blockdev.c                   | 4 +---
- docs/devel/build-system.txt  | 2 +-
- hw/s390x/s390-pci-bus.c      | 4 +---
- qga/commands-posix.c         | 7 ++-----
+Signed-off-by: Roman Bolshakov <r.bolshakov@yadro.com>
+Message-Id: <20181203100415.53027-2-r.bolshakov@yadro.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
  target/i386/hvf/x86_decode.c | 2 --
- vl.c                         | 7 ++-----
- 6 files changed, 7 insertions(+), 19 deletions(-)
+ 1 file changed, 2 deletions(-)
 
+diff --git a/target/i386/hvf/x86_decode.c b/target/i386/hvf/x86_decode.c
+index d125a6ef83..5f513c5563 100644
+--- a/target/i386/hvf/x86_decode.c
++++ b/target/i386/hvf/x86_decode.c
+@@ -525,8 +525,6 @@ static void decode_sldtgroup(CPUX86State *env, struct x86_decode *decode)
+         X86_DECODE_CMD_INVL
+     };
+     decode->cmd = group[decode->modrm.reg];
+-    printf("%llx: decode_sldtgroup: %d\n", env->hvf_emul->fetch_rip,
+-            decode->modrm.reg);
+ }
+ 
+ static void decode_lidtgroup(CPUX86State *env, struct x86_decode *decode)
 -- 
 2.19.2
 
