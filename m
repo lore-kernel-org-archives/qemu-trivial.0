@@ -1,115 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gZGOH-0001vb-6Y
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 09:30:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36298)
+	id 1gZGwQ-0007Nu-0u
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 10:05:50 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:57706)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gZGOD-0001sB-9Y
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:30:31 -0500
+	(envelope-from <mst@redhat.com>) id 1gZGwI-0007Jc-FY
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 10:05:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gZGOC-0001dI-Fc
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:30:29 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:53554)
+	(envelope-from <mst@redhat.com>) id 1gZGwB-0000Xk-RC
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 10:05:39 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:37992)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1gZGO4-0001TU-GG; Tue, 18 Dec 2018 09:30:20 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
+	(Exim 4.71) (envelope-from <mst@redhat.com>)
+	id 1gZGvx-0000Cc-AO; Tue, 18 Dec 2018 10:05:22 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 60A61804FA;
-	Tue, 18 Dec 2018 12:35:15 +0000 (UTC)
-Received: from [10.36.112.35] (ovpn-112-35.ams2.redhat.com [10.36.112.35])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8F7CD1001914;
-	Tue, 18 Dec 2018 12:34:54 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Mark Cave-Ayland
-	<mark.cave-ayland@ilande.co.uk>, Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Markus Armbruster <armbru@redhat.com>, 
-	Helge Deller <deller@gmx.de>, Artyom Tarasenko <atar4qemu@gmail.com>,
+	by mx1.redhat.com (Postfix) with ESMTPS id 98F50C0C0FA8;
+	Tue, 18 Dec 2018 12:39:54 +0000 (UTC)
+Received: from redhat.com (ovpn-120-67.rdu2.redhat.com [10.10.120.67])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D48072D321;
+	Tue, 18 Dec 2018 12:39:52 +0000 (UTC)
+Date: Tue, 18 Dec 2018 07:39:52 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Markus Armbruster <armbru@redhat.com>, Helge Deller <deller@gmx.de>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Alex Williamson <alex.williamson@redhat.com>,
 	Luc Michel <luc.michel@greensocs.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>
+	"Daniel P . Berrange" <berrange@redhat.com>
+Message-ID: <20181218073945-mutt-send-email-mst@kernel.org>
 References: <20181218115615.1499-1-philmd@redhat.com>
-	<20181218115615.1499-11-philmd@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-	uUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <20f62f62-f677-6d0f-09dc-3759cc813d8f@redhat.com>
-Date: Tue, 18 Dec 2018 13:34:52 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.1
+	<20181218115615.1499-4-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20181218115615.1499-11-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20181218115615.1499-4-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Tue, 18 Dec 2018 12:35:15 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 18 Dec 2018 12:39:54 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2 10/12] MAINTAINERS: Orphanize the 'CPU
- (QOM)' subsystem
+Subject: Re: [Qemu-trivial] [PATCH v2 03/12] MAINTAINERS: Add missing
+ entries for the PC machines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -121,39 +62,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Dec 2018 14:30:31 -0000
+X-List-Received-Date: Tue, 18 Dec 2018 15:05:48 -0000
 
-On 18/12/18 12:56, Philippe Mathieu-Daud=C3=A9 wrote:
-> Nobody is looking at those files, downgrade this subsystem as orphan.
->=20
-> Remove the qemu-devel@nongnu.org entry because the list is always
-> selected by the 'All patches CC here' section.
->=20
-> Suggested-by: Markus Armbruster <armbru@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+On Tue, Dec 18, 2018 at 12:56:06PM +0100, Philippe Mathieu-Daud=E9 wrote:
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+
 > ---
->  MAINTAINERS | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+>  MAINTAINERS | 4 ++++
+>  1 file changed, 4 insertions(+)
 >=20
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index e50f8c6b97..e6a73820f1 100644
+> index dac394d125..f3305a65b6 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -1745,8 +1745,7 @@ S: Supported
->  F: scripts/coverity-model.c
+> @@ -1141,6 +1141,10 @@ F: hw/acpi/ich9.c
+>  F: include/hw/acpi/ich9.h
+>  F: include/hw/acpi/piix4.h
+>  F: hw/misc/sga.c
+> +F: hw/isa/apm.c
+> +F: include/hw/isa/apm.h
+> +F: tests/test-x86-cpuid.c
+> +F: tests/test-x86-cpuid-compat.c
 > =20
->  CPU
-> -L: qemu-devel@nongnu.org
-> -S: Supported
-> +S: Orphan
->  F: qom/cpu.c
->  F: include/qom/cpu.h
-> =20
->=20
-
-I don't think that's accurate.  Simply there's not much going on.  If
-patches are sent, get-maintainers's git fallback will do something
-(probably sending the patch to Eduardo, Igor or me).
-
-Paolo
+>  PC Chipset
+>  M: Michael S. Tsirkin <mst@redhat.com>
+> --=20
+> 2.17.2
 
