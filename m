@@ -1,64 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gZKpb-0003yb-Sp
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 14:15:03 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:57596)
+	id 1gZLWg-0006f6-QT
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 14:59:34 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40292)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gZKpV-0003v8-To
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 14:15:02 -0500
+	(envelope-from <eblake@redhat.com>) id 1gZLWf-0006do-1t
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 14:59:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gZKoY-0006Mm-Rs
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 14:14:01 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38232)
+	(envelope-from <eblake@redhat.com>) id 1gZLWe-0007Gp-5w
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 14:59:32 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:65309)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gZKoT-00064g-Jc; Tue, 18 Dec 2018 14:13:53 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1gZLWY-0006cT-2f; Tue, 18 Dec 2018 14:59:27 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 165EE8831D;
-	Tue, 18 Dec 2018 19:13:52 +0000 (UTC)
-Received: from localhost (ovpn-116-63.gru2.redhat.com [10.97.116.63])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id E56AC10512;
-	Tue, 18 Dec 2018 19:13:44 +0000 (UTC)
-Date: Tue, 18 Dec 2018 17:13:43 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Cornelia Huck <cohuck@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Markus Armbruster <armbru@redhat.com>, Helge Deller <deller@gmx.de>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Luc Michel <luc.michel@greensocs.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20181218191343.GE19442@habkost.net>
-References: <20181218115615.1499-1-philmd@redhat.com>
-	<20181218115615.1499-11-philmd@redhat.com>
-	<20f62f62-f677-6d0f-09dc-3759cc813d8f@redhat.com>
-	<20181218152239.GB19442@habkost.net>
-	<94e8bd71-302e-bced-665d-78538ea3aba3@redhat.com>
-	<2ae5b6cd-7227-fab5-1bd1-4d3ebb88feee@redhat.com>
-	<20181218155731.GC19442@habkost.net>
-	<e5f62788-4b59-223c-c85e-562daf3a27d9@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id EF59385546;
+	Tue, 18 Dec 2018 19:59:24 +0000 (UTC)
+Received: from [10.10.122.76] (ovpn-122-76.rdu2.redhat.com [10.10.122.76])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 277967C805;
+	Tue, 18 Dec 2018 19:59:24 +0000 (UTC)
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, armbru@redhat.com,
+	Laurent Vivier <lvivier@redhat.com>
+References: <20181115211752.1295571-1-eblake@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <ae6d8857-0d5f-f70c-1547-2f75d1a74cf6@redhat.com>
+Date: Tue, 18 Dec 2018 13:59:23 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <e5f62788-4b59-223c-c85e-562daf3a27d9@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+In-Reply-To: <20181115211752.1295571-1-eblake@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.28]);
-	Tue, 18 Dec 2018 19:13:52 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	Tue, 18 Dec 2018 19:59:25 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2 10/12] MAINTAINERS: Orphanize the 'CPU
- (QOM)' subsystem
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/2] typedefs.h cleanup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,79 +55,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Dec 2018 19:15:02 -0000
+X-List-Received-Date: Tue, 18 Dec 2018 19:59:33 -0000
 
-On Tue, Dec 18, 2018 at 06:15:06PM +0100, Paolo Bonzini wrote:
-> On 18/12/18 16:57, Eduardo Habkost wrote:
-> > On Tue, Dec 18, 2018 at 04:44:25PM +0100, Thomas Huth wrote:
-> >> On 2018-12-18 16:31, Philippe Mathieu-Daud=E9 wrote:
-> >>> Hi Paolo, Eduardo,
-> >>>
-> >>> On 12/18/18 4:22 PM, Eduardo Habkost wrote:
-> >>>> On Tue, Dec 18, 2018 at 01:34:52PM +0100, Paolo Bonzini wrote:
-> >>>>> On 18/12/18 12:56, Philippe Mathieu-Daud=E9 wrote:
-> >>>>>> Nobody is looking at those files, downgrade this subsystem as or=
-phan.
-> >>>>>>
-> >>>>>> Remove the qemu-devel@nongnu.org entry because the list is alway=
-s
-> >>>>>> selected by the 'All patches CC here' section.
-> >>>>>>
-> >>>>>> Suggested-by: Markus Armbruster <armbru@redhat.com>
-> >>>>>> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> >>>>>> ---
-> >>>>>>  MAINTAINERS | 3 +--
-> >>>>>>  1 file changed, 1 insertion(+), 2 deletions(-)
-> >>>>>>
-> >>>>>> diff --git a/MAINTAINERS b/MAINTAINERS
-> >>>>>> index e50f8c6b97..e6a73820f1 100644
-> >>>>>> --- a/MAINTAINERS
-> >>>>>> +++ b/MAINTAINERS
-> >>>>>> @@ -1745,8 +1745,7 @@ S: Supported
-> >>>>>>  F: scripts/coverity-model.c
-> >>>>>> =20
-> >>>>>>  CPU
-> >>>>>> -L: qemu-devel@nongnu.org
-> >>>>>> -S: Supported
-> >>>>>> +S: Orphan
-> >>>>>>  F: qom/cpu.c
-> >>>>>>  F: include/qom/cpu.h
-> >>>>>> =20
-> >>>>>>
-> >>>>>
-> >>>>> I don't think that's accurate.  Simply there's not much going on.=
-  If
-> >>>>> patches are sent, get-maintainers's git fallback will do somethin=
-g
-> >>>>> (probably sending the patch to Eduardo, Igor or me).
-> >>>
-> >>> I followed Markus suggestion from
-> >>> https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg05414.html=
-:
-> >>>
-> >>>   If we take the definition of S: in MAINTAINERS seriously,
-> >>>   we need to appoint a maintainer (a person, not a mailing list),
-> >>>   or downgrade to S: Orphan.
-> >>
-> >> I agree with Markus and Philippe. Having "S: Supported" but no names
-> >> available is just confusing. So either put a maintainer name in here=
-, or
-> >> downgrade to "Orphan".
-> >=20
-> > I volunteer to maintain it, but I don't want to be the only
-> > maintainer.  Any other volunteer?
->=20
-> I can volunteer since I'd take the patches anyway.  We can also mark it
-> as Odd Fixes, and also make it a single thing with all of qom/ and
-> include/qom/.
+On 11/15/18 3:17 PM, Eric Blake wrote:
+> Prompted by my review of xiezhide's work.  No semantic change, but
+> not technically a bug fix, so I don't care if it goes in 3.1 or
+> waits for 4.0.
+> 
+> Eric Blake (2):
+>    typedefs: (Re-)sort entries alphabetically
+>    numa: Match struct to typedef name
+> 
 
-Actually, I consider qom/cpu.c distinct from QOM core, and I was
-planning to move it to hw/cpu, and add hw/cpu/core.c to the same
-section.
+Ping. Patch 2 is now in master (aec90730) via numa, but patch 1 got 
+overlooked in the trivial queue, even though it has reviews.
 
-Anyway, I guess this means you're also volunteering to be listed
-as QOM maintainer?
+>   include/qemu/typedefs.h | 12 ++++++------
+>   include/sysemu/numa.h   |  2 +-
+>   2 files changed, 7 insertions(+), 7 deletions(-)
+> 
 
---=20
-Eduardo
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3266
+Virtualization:  qemu.org | libvirt.org
 
