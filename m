@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gZGKh-00074u-V7
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 09:26:52 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35073)
+	id 1gZGKo-0007Dd-HU
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 09:26:58 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:35148)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gZGKc-00072g-Kh
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:26:47 -0500
+	(envelope-from <philmd@redhat.com>) id 1gZGKi-00075R-Ar
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:26:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gZGKZ-0008I2-Gu
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:26:46 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:51940)
+	(envelope-from <philmd@redhat.com>) id 1gZGKh-0008Li-HN
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 09:26:52 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:60440)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1gZGKW-0008GX-1d; Tue, 18 Dec 2018 09:26:40 -0500
+	id 1gZGKd-0008Is-1U; Tue, 18 Dec 2018 09:26:47 -0500
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
 	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A9CA9C073D78;
-	Tue, 18 Dec 2018 11:59:22 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 666BC169747;
+	Tue, 18 Dec 2018 11:58:54 +0000 (UTC)
 Received: from x1w.redhat.com (unknown [10.40.205.65])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1853D1001914;
-	Tue, 18 Dec 2018 11:59:16 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id CB7491059581;
+	Tue, 18 Dec 2018 11:58:39 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
@@ -34,22 +34,22 @@ Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
 	"Daniel P . Berrange" <berrange@redhat.com>,
 	"Michael S . Tsirkin" <mst@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Tue, 18 Dec 2018 12:56:15 +0100
-Message-Id: <20181218115615.1499-13-philmd@redhat.com>
+Date: Tue, 18 Dec 2018 12:56:12 +0100
+Message-Id: <20181218115615.1499-10-philmd@redhat.com>
 In-Reply-To: <20181218115615.1499-1-philmd@redhat.com>
 References: <20181218115615.1499-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 18 Dec 2018 11:59:22 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.30]);
+	Tue, 18 Dec 2018 11:58:54 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v2 12/12] MAINTAINERS: Add maintainer to the
- TCG/i386 subsystem
+Subject: [Qemu-trivial] [PATCH v2 09/12] MAINTAINERS: Add maintainer to the
+ POSIX subsystem
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,31 +61,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Dec 2018 14:26:47 -0000
+X-List-Received-Date: Tue, 18 Dec 2018 14:26:55 -0000
 
-Richard obviously maintains this subdirectory, make this official :)
+Add Paolo as maintainer of the POSIX subsystem.
 
 Remove the qemu-devel@nongnu.org entry because the list is always
 selected by the 'All patches CC here' section.
 
+Suggested-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ MAINTAINERS | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 49f8f2fa37..a879ddfc53 100644
+index 5f39fa4b80..e50f8c6b97 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -2175,7 +2175,7 @@ F: tcg/arm/
- F: disas/arm.c
+@@ -427,9 +427,12 @@ S: Maintained
+ F: linux-headers/
 =20
- i386 target
+ POSIX
 -L: qemu-devel@nongnu.org
-+M: Richard Henderson <rth@twiddle.net>
++M: Paolo Bonzini <pbonzini@redhat.com>
  S: Maintained
- F: tcg/i386/
- F: disas/i386.c
+-F: *posix*
++F: os-posix.c
++F: include/sysemu/os-posix.h
++F: util/*posix*.c
++F: include/qemu/*posix*.h
+=20
+ NETBSD
+ L: qemu-devel@nongnu.org
 --=20
 2.17.2
 
