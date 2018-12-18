@@ -1,57 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gZHDQ-00057D-6L
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 10:23:24 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:36239)
+	id 1gZHLM-0003xI-L2
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 10:31:36 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39291)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gZHDO-000561-1I
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 10:23:23 -0500
+	(envelope-from <philmd@redhat.com>) id 1gZHLJ-0003vO-EW
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 10:31:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gZHDK-0003b7-Ou
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 10:23:21 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:40090)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gZHCt-0003HK-1C; Tue, 18 Dec 2018 10:22:51 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ED14D99D38;
-	Tue, 18 Dec 2018 15:22:49 +0000 (UTC)
-Received: from localhost (ovpn-116-63.gru2.redhat.com [10.97.116.63])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6890B612A7;
-	Tue, 18 Dec 2018 15:22:41 +0000 (UTC)
-Date: Tue, 18 Dec 2018 13:22:39 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	(envelope-from <philmd@redhat.com>) id 1gZHLG-00084w-2M
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 10:31:33 -0500
+Received: from mail-wm1-f66.google.com ([209.85.128.66]:39895)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gZHLF-000846-QA
+	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 10:31:29 -0500
+Received: by mail-wm1-f66.google.com with SMTP id f81so3221608wmd.4
+	for <qemu-trivial@nongnu.org>; Tue, 18 Dec 2018 07:31:29 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=8yrFPF0b52gazOru3PPuk8cVsjVmPtd9IJYmxT0d3Wk=;
+	b=ruXlisGSCLE9NHGZdr783W6wBQrlwil4b2HjAWBu8FwdLkKwP48gW+U+9uhPERrr9s
+	o5ciWaTwCw4fD/ejAR4JEHiXdd2G5r9G8uHtRWT+MB4qxICGwc/VPTaiVimfeOZq3chn
+	Z6B+Wzr596nGxeuGaJbmwYH5W0zD2OdOeq+E7n/RbSiEpZdTySW9rZvu8MaC08USwrkG
+	ziZTBB96yh/rVqx11Y1b19t3eheDSFoGjfdTPqQ+g4CxJj9zo+UU+v7tWe1x9ga27uXC
+	5SHWIT41LE4pdpHxRSSik8LXgLAeGO6UJyyp4CKTNxqbYbMWoluIbWZW0tBeQaZVzujj
+	bxyQ==
+X-Gm-Message-State: AA+aEWbA6XBFL7WS7v2Urh4ujEhA2h6MijBY16L93jQ25zE4+y7lIEmF
+	7LEV6KlgdHTISNZcDjsCBbKgKg==
+X-Google-Smtp-Source: AFSGD/VwhEm9Z9zGne2V4NuPksdBbvl2NCuUlqoUdJIrrsux2YopbDRIAvm567xfXJtYNid8zuNhOA==
+X-Received: by 2002:a1c:2787:: with SMTP id n129mr3780306wmn.128.1545147088456;
+	Tue, 18 Dec 2018 07:31:28 -0800 (PST)
+Received: from [192.168.1.35] (156.red-88-21-102.staticip.rima-tde.net.
+	[88.21.102.156]) by smtp.gmail.com with ESMTPSA id
+	l197sm6323826wma.44.2018.12.18.07.31.27
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Tue, 18 Dec 2018 07:31:27 -0800 (PST)
+To: Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Thomas Huth <thuth@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
 	Richard Henderson <rth@twiddle.net>,
-	Markus Armbruster <armbru@redhat.com>, Helge Deller <deller@gmx.de>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>, 
+	Helge Deller <deller@gmx.de>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Alex Williamson <alex.williamson@redhat.com>,
 	Luc Michel <luc.michel@greensocs.com>,
 	"Daniel P . Berrange" <berrange@redhat.com>,
 	"Michael S . Tsirkin" <mst@redhat.com>
-Message-ID: <20181218152239.GB19442@habkost.net>
 References: <20181218115615.1499-1-philmd@redhat.com>
 	<20181218115615.1499-11-philmd@redhat.com>
 	<20f62f62-f677-6d0f-09dc-3759cc813d8f@redhat.com>
+	<20181218152239.GB19442@habkost.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <94e8bd71-302e-bced-665d-78538ea3aba3@redhat.com>
+Date: Tue, 18 Dec 2018 16:31:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20f62f62-f677-6d0f-09dc-3759cc813d8f@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Tue, 18 Dec 2018 15:22:50 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20181218152239.GB19442@habkost.net>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.132.183.28
+X-Received-From: 209.85.128.66
 Subject: Re: [Qemu-trivial] [PATCH v2 10/12] MAINTAINERS: Orphanize the 'CPU
  (QOM)' subsystem
 X-BeenThere: qemu-trivial@nongnu.org
@@ -65,45 +79,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Dec 2018 15:23:23 -0000
+X-List-Received-Date: Tue, 18 Dec 2018 15:31:35 -0000
 
-On Tue, Dec 18, 2018 at 01:34:52PM +0100, Paolo Bonzini wrote:
-> On 18/12/18 12:56, Philippe Mathieu-Daud=E9 wrote:
-> > Nobody is looking at those files, downgrade this subsystem as orphan.
-> >=20
-> > Remove the qemu-devel@nongnu.org entry because the list is always
-> > selected by the 'All patches CC here' section.
-> >=20
-> > Suggested-by: Markus Armbruster <armbru@redhat.com>
-> > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> > ---
-> >  MAINTAINERS | 3 +--
-> >  1 file changed, 1 insertion(+), 2 deletions(-)
-> >=20
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index e50f8c6b97..e6a73820f1 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -1745,8 +1745,7 @@ S: Supported
-> >  F: scripts/coverity-model.c
-> > =20
-> >  CPU
-> > -L: qemu-devel@nongnu.org
-> > -S: Supported
-> > +S: Orphan
-> >  F: qom/cpu.c
-> >  F: include/qom/cpu.h
-> > =20
-> >=20
->=20
-> I don't think that's accurate.  Simply there's not much going on.  If
-> patches are sent, get-maintainers's git fallback will do something
-> (probably sending the patch to Eduardo, Igor or me).
+Hi Paolo, Eduardo,
 
-Should we add our names to that section, or is it OK to leave it
-as "S: Supported" even if it doesn't have any official
-maintainers?
+On 12/18/18 4:22 PM, Eduardo Habkost wrote:
+> On Tue, Dec 18, 2018 at 01:34:52PM +0100, Paolo Bonzini wrote:
+>> On 18/12/18 12:56, Philippe Mathieu-Daudé wrote:
+>>> Nobody is looking at those files, downgrade this subsystem as orphan.
+>>>
+>>> Remove the qemu-devel@nongnu.org entry because the list is always
+>>> selected by the 'All patches CC here' section.
+>>>
+>>> Suggested-by: Markus Armbruster <armbru@redhat.com>
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>>> ---
+>>>  MAINTAINERS | 3 +--
+>>>  1 file changed, 1 insertion(+), 2 deletions(-)
+>>>
+>>> diff --git a/MAINTAINERS b/MAINTAINERS
+>>> index e50f8c6b97..e6a73820f1 100644
+>>> --- a/MAINTAINERS
+>>> +++ b/MAINTAINERS
+>>> @@ -1745,8 +1745,7 @@ S: Supported
+>>>  F: scripts/coverity-model.c
+>>>  
+>>>  CPU
+>>> -L: qemu-devel@nongnu.org
+>>> -S: Supported
+>>> +S: Orphan
+>>>  F: qom/cpu.c
+>>>  F: include/qom/cpu.h
+>>>  
+>>>
+>>
+>> I don't think that's accurate.  Simply there's not much going on.  If
+>> patches are sent, get-maintainers's git fallback will do something
+>> (probably sending the patch to Eduardo, Igor or me).
 
---=20
-Eduardo
+I followed Markus suggestion from
+https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg05414.html:
+
+  If we take the definition of S: in MAINTAINERS seriously,
+  we need to appoint a maintainer (a person, not a mailing list),
+  or downgrade to S: Orphan.
+
+> 
+> Should we add our names to that section, or is it OK to leave it
+> as "S: Supported" even if it doesn't have any official
+> maintainers?
 
