@@ -1,122 +1,97 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gZMpV-0000IQ-Ne
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Dec 2018 16:23:05 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:35960)
+	id 1gZX97-0007hD-At
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Dec 2018 03:24:01 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:54238)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gZMpT-0000Gj-2P
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 16:23:04 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gZX94-0007gX-Ua
+	for qemu-trivial@nongnu.org; Wed, 19 Dec 2018 03:23:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gZMpR-0002kl-TM
-	for qemu-trivial@nongnu.org; Tue, 18 Dec 2018 16:23:03 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:35662)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1gZMpN-0002gs-B0; Tue, 18 Dec 2018 16:22:57 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 746D0A909;
-	Tue, 18 Dec 2018 21:22:55 +0000 (UTC)
-Received: from [10.36.112.20] (ovpn-112-20.ams2.redhat.com [10.36.112.20])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id BA82F60C44;
-	Tue, 18 Dec 2018 21:22:41 +0000 (UTC)
-To: Eduardo Habkost <ehabkost@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
-	<philmd@redhat.com>, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Cornelia Huck <cohuck@redhat.com>, Richard Henderson <rth@twiddle.net>, 
-	Markus Armbruster <armbru@redhat.com>, Helge Deller <deller@gmx.de>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Luc Michel <luc.michel@greensocs.com>,
-	"Daniel P . Berrange" <berrange@redhat.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Igor Mammedov <imammedo@redhat.com>, Daniel Berrange <berrange@redhat.com>
-References: <20181218115615.1499-1-philmd@redhat.com>
-	<20181218115615.1499-11-philmd@redhat.com>
-	<20f62f62-f677-6d0f-09dc-3759cc813d8f@redhat.com>
-	<20181218152239.GB19442@habkost.net>
-	<94e8bd71-302e-bced-665d-78538ea3aba3@redhat.com>
-	<2ae5b6cd-7227-fab5-1bd1-4d3ebb88feee@redhat.com>
-	<20181218155731.GC19442@habkost.net>
-	<e5f62788-4b59-223c-c85e-562daf3a27d9@redhat.com>
-	<20181218191343.GE19442@habkost.net>
-From: Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <laurent@vivier.eu>) id 1gZX94-0002ww-Ab
+	for qemu-trivial@nongnu.org; Wed, 19 Dec 2018 03:23:58 -0500
+Received: from mout.kundenserver.de ([212.227.126.131]:50359)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1gZX90-0002ub-3A; Wed, 19 Dec 2018 03:23:54 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1Mxlio-1hKWHy0f0w-00zJeH; Wed, 19 Dec 2018 09:23:48 +0100
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, armbru@redhat.com
+References: <20181115211752.1295571-1-eblake@redhat.com>
+	<20181115211752.1295571-2-eblake@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-	uUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <99b7b806-b18a-8c59-b4f5-ff04ffe3da6e@redhat.com>
-Date: Tue, 18 Dec 2018 22:22:39 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.1
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <79cb1a33-0237-c321-d5f7-1b7586363613@vivier.eu>
+Date: Wed, 19 Dec 2018 09:23:46 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20181218191343.GE19442@habkost.net>
+In-Reply-To: <20181115211752.1295571-2-eblake@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Tue, 18 Dec 2018 21:22:55 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:K+uTlAO5gcsa3ojll1BThPG+y2Dex9+qAt3JQ8vLdMzmWfzuC2f
+	qBl5/MViehxGyH/bo9Bl2aSZpBi23zctGu2lxZxOIRJKXr1NoFJxiAWHfUQsWrGwy4B5hwt
+	qAWhvizaus/wv46VCejSBMXXua5yET/3svsyLBur/B1kygPHDk5H3X8JpBkLef7HC7G066H
+	cZoAvon+9K4V3qY9xiYwg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:w1+sEP7htbs=:wP+OTFkvRivN3GIyISaFyz
+	9y9ug9qvsnl1B7za2W4fPsOhriGECh68GhaOTttzU4TgVlB6yRiBqy9bIhKD5lISnuBWIlQes
+	4izub4PYZWZaMq3HjuVc5vai+IM1pHPq1SCm+/piu+uTdZaBQorjo1pPTwNmxFqpr2ekpoB3/
+	5amOCoo5kN5kzTyFmuHSXCh0KJic7GfrVQ3PAhkBAZKzAUHOBXvWbl8HLw2BuCOWxr47gBJ7H
+	HzfIEKBsRo9RgVDwtGVCA4u9XZtAa85XeSmC/9OQUYRTreHh2oaw9iYV/cjHc3wFj3PjOBjp3
+	oX6ejs5LSOhvNzP31D7ET6ckpW2sYG1rFxiYlFStbDNlouLj9lIaidp9HFaVpBEpT/R7fITWR
+	oRxnIsVV9kmUKTWa0he35nKWkDsUn5t6gwpwZktrIdRzWRqCI+vG327zegZteq+gmPtl+upte
+	Xz5BqiEpPOPwOOzDUZd67YzUygR+ArPs+eG5E3CT3XbCxgrKODrIOoMF2nr35Fe6vV5SG9tMl
+	o925Y2Ndpj4A+LjiSPjwZ6uLaPie1hM1UuNLENLrsEfPGcNBoh7u8dAXm3aHQzQDWBhiSIo/k
+	PIXwfCRF528W681rtDLwayw9kctcLElcLOkFMATSImxM+crEvOCJDgjFxkJFNrBwYM9ygAQA1
+	nhMMNn+35KS2UT0wyglvnInRBO1IokiBQwLALUCgXQczGVhlkfEehkTI2R1O+BBgO73JuJX/D
+	x9FX2dacntnfppkHCTLFUiHlxrbuviu/JAo6dEtM7r6Xt7JPuoG91xAFPfY=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2 10/12] MAINTAINERS: Orphanize the 'CPU
- (QOM)' subsystem
+X-Received-From: 212.227.126.131
+Subject: Re: [Qemu-trivial] [PATCH 1/2] typedefs: (Re-)sort entries
+ alphabetically
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -128,82 +103,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Dec 2018 21:23:04 -0000
+X-List-Received-Date: Wed, 19 Dec 2018 08:23:59 -0000
 
-On 18/12/18 20:13, Eduardo Habkost wrote:
-> On Tue, Dec 18, 2018 at 06:15:06PM +0100, Paolo Bonzini wrote:
->> On 18/12/18 16:57, Eduardo Habkost wrote:
->>> On Tue, Dec 18, 2018 at 04:44:25PM +0100, Thomas Huth wrote:
->>>> On 2018-12-18 16:31, Philippe Mathieu-Daud=C3=A9 wrote:
->>>>> Hi Paolo, Eduardo,
->>>>>
->>>>> On 12/18/18 4:22 PM, Eduardo Habkost wrote:
->>>>>> On Tue, Dec 18, 2018 at 01:34:52PM +0100, Paolo Bonzini wrote:
->>>>>>> On 18/12/18 12:56, Philippe Mathieu-Daud=C3=A9 wrote:
->>>>>>>> Nobody is looking at those files, downgrade this subsystem as or=
-phan.
->>>>>>>>
->>>>>>>> Remove the qemu-devel@nongnu.org entry because the list is alway=
-s
->>>>>>>> selected by the 'All patches CC here' section.
->>>>>>>>
->>>>>>>> Suggested-by: Markus Armbruster <armbru@redhat.com>
->>>>>>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->>>>>>>> ---
->>>>>>>>  MAINTAINERS | 3 +--
->>>>>>>>  1 file changed, 1 insertion(+), 2 deletions(-)
->>>>>>>>
->>>>>>>> diff --git a/MAINTAINERS b/MAINTAINERS
->>>>>>>> index e50f8c6b97..e6a73820f1 100644
->>>>>>>> --- a/MAINTAINERS
->>>>>>>> +++ b/MAINTAINERS
->>>>>>>> @@ -1745,8 +1745,7 @@ S: Supported
->>>>>>>>  F: scripts/coverity-model.c
->>>>>>>> =20
->>>>>>>>  CPU
->>>>>>>> -L: qemu-devel@nongnu.org
->>>>>>>> -S: Supported
->>>>>>>> +S: Orphan
->>>>>>>>  F: qom/cpu.c
->>>>>>>>  F: include/qom/cpu.h
->>>>>>>> =20
->>>>>>>>
->>>>>>>
->>>>>>> I don't think that's accurate.  Simply there's not much going on.=
-  If
->>>>>>> patches are sent, get-maintainers's git fallback will do somethin=
-g
->>>>>>> (probably sending the patch to Eduardo, Igor or me).
->>>>>
->>>>> I followed Markus suggestion from
->>>>> https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg05414.html=
-:
->>>>>
->>>>>   If we take the definition of S: in MAINTAINERS seriously,
->>>>>   we need to appoint a maintainer (a person, not a mailing list),
->>>>>   or downgrade to S: Orphan.
->>>>
->>>> I agree with Markus and Philippe. Having "S: Supported" but no names
->>>> available is just confusing. So either put a maintainer name in here=
-, or
->>>> downgrade to "Orphan".
->>>
->>> I volunteer to maintain it, but I don't want to be the only
->>> maintainer.  Any other volunteer?
->>
->> I can volunteer since I'd take the patches anyway.  We can also mark i=
-t
->> as Odd Fixes, and also make it a single thing with all of qom/ and
->> include/qom/.
->=20
-> Actually, I consider qom/cpu.c distinct from QOM core, and I was
-> planning to move it to hw/cpu, and add hw/cpu/core.c to the same
-> section.
->=20
-> Anyway, I guess this means you're also volunteering to be listed
-> as QOM maintainer?
+On 15/11/2018 22:17, Eric Blake wrote:
+> Since the last time we sorted things (2988cbeaf), we've had a
+> few relapses that were inserted out of order.  Also, we had more
+> entries that were sorted case-insensitively than not, so let's
+> document that convention and stick to it.
+> 
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
+>  include/qemu/typedefs.h | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+> 
 
-Igor and Daniel, would you co-maintain or review it?
+Applied to my trivial-patches branch.
 
-Paolo
+Thanks,
+Laurent
+
 
