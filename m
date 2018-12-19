@@ -1,66 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gZYaf-0007LB-BH
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Dec 2018 04:56:33 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:54514)
+	id 1gZguL-0008QA-7U
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Dec 2018 13:49:25 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:39125)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1gZYad-0007KL-NQ
-	for qemu-trivial@nongnu.org; Wed, 19 Dec 2018 04:56:32 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gZguJ-0008Pl-9F
+	for qemu-trivial@nongnu.org; Wed, 19 Dec 2018 13:49:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1gZYac-0005Ne-HJ
-	for qemu-trivial@nongnu.org; Wed, 19 Dec 2018 04:56:31 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45192)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1gZYaX-0005GS-DI; Wed, 19 Dec 2018 04:56:25 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 94BE3C051671;
-	Wed, 19 Dec 2018 09:56:24 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.22.189])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B428467162;
-	Wed, 19 Dec 2018 09:56:12 +0000 (UTC)
-Date: Wed, 19 Dec 2018 09:56:10 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Cornelia Huck <cohuck@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Markus Armbruster <armbru@redhat.com>, Helge Deller <deller@gmx.de>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Luc Michel <luc.michel@greensocs.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20181219095610.GB20465@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20181218115615.1499-1-philmd@redhat.com>
-	<20181218115615.1499-11-philmd@redhat.com>
-	<20f62f62-f677-6d0f-09dc-3759cc813d8f@redhat.com>
-	<20181218152239.GB19442@habkost.net>
-	<94e8bd71-302e-bced-665d-78538ea3aba3@redhat.com>
-	<2ae5b6cd-7227-fab5-1bd1-4d3ebb88feee@redhat.com>
-	<20181218155731.GC19442@habkost.net>
-	<e5f62788-4b59-223c-c85e-562daf3a27d9@redhat.com>
-	<20181218191343.GE19442@habkost.net>
-	<99b7b806-b18a-8c59-b4f5-ff04ffe3da6e@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1gZguI-0004Z2-Ci
+	for qemu-trivial@nongnu.org; Wed, 19 Dec 2018 13:49:23 -0500
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:33260)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gZguI-0004XT-4p
+	for qemu-trivial@nongnu.org; Wed, 19 Dec 2018 13:49:22 -0500
+Received: by mail-ot1-x342.google.com with SMTP id i20so20100244otl.0
+	for <qemu-trivial@nongnu.org>; Wed, 19 Dec 2018 10:49:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=zNAM2rOGe9JKVjBjrMaID0K+TfeXE9M7NY6j7cgxVuU=;
+	b=if1zq3U2utoGtCFKkeB/Rt3CcUdR3gx+BuDiVE62SnmNQMpkR6OR7/+tr51DtowrfH
+	CKqCuYRTBfV8R7FqP0gi2pFjr7DPimXZLpWww1YG2pEbnLzMUjwwxwArQl7hAetyErsQ
+	m1CHn7NDCmkbF0Wx3czEbeTXOBjc6RGwp0D1g=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=zNAM2rOGe9JKVjBjrMaID0K+TfeXE9M7NY6j7cgxVuU=;
+	b=lfUks9qO8EVZlAmhdDvA8tublIYHHLmOiOXZIoWzOwbW3s9Gw5I9Co4Z320Mf1TVzl
+	sQPFdkU6V4jpALa7l4GHp99oacLFkBaSgVaCXiq37AGC9kjhQZii8HV7FRcZcGJG9gnt
+	j1TX73DwSjjsyKSuE6/7WFF/ndOZ8H0BkB7vjkQe1KbGWHSlqCwCXJicM9HK7uEXwI2N
+	s+cvtL74j0PNImhNdvMY9HZIDqhpNmGsY0IZVIvYyEL4kXsKZXumDvkYxCresHNPobBL
+	PBDRT6g4Msk4miKr4kjymyzmGlrFQ6gAxNrdDI19Tl2MGlrayTPfK5+q2K6xc4fMLNdA
+	kIfg==
+X-Gm-Message-State: AA+aEWb2pK/DmVIVAjXuihw/uEGjfD6s9s/q4QU5KjcQ3pWUwpdYoD/M
+	wWGeRCsycE7VwnKhRR7jhwiQEtZAJJ0JZnnoocZF1Q==
+X-Google-Smtp-Source: AFSGD/WprO+LJprnvZB9TxCejuqNy8hhkc0RU1yV2B97JF5qFZJ7zbl/6cPnG3N59KxGin3f1QQ6/IeC23esLvjz2dU=
+X-Received: by 2002:a05:6830:1115:: with SMTP id
+	w21mr15321786otq.316.1545245359156; 
+	Wed, 19 Dec 2018 10:49:19 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <99b7b806-b18a-8c59-b4f5-ff04ffe3da6e@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Wed, 19 Dec 2018 09:56:24 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2 10/12] MAINTAINERS: Orphanize the 'CPU
- (QOM)' subsystem
+References: <20181218142851.9477-1-laurent@vivier.eu>
+In-Reply-To: <20181218142851.9477-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 19 Dec 2018 18:49:07 +0000
+Message-ID: <CAFEAcA8tO=9xbauigHPy2Tv2JMHntHv+fF+vn+KXJN-HPaeTng@mail.gmail.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
+	Collin Walling <walling@linux.ibm.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, 
+	Qemu-block <qemu-block@nongnu.org>, David Hildenbrand <david@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	Markus Armbruster <armbru@redhat.com>, 
+	Cornelia Huck <cohuck@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, 
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Halil Pasic <pasic@linux.ibm.com>, 
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	qemu-s390x <qemu-s390x@nongnu.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Max Reitz <mreitz@redhat.com>, 
+	Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::342
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 0/4] Trivial patches patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,96 +74,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Dec 2018 09:56:32 -0000
+X-List-Received-Date: Wed, 19 Dec 2018 18:49:24 -0000
 
-On Tue, Dec 18, 2018 at 10:22:39PM +0100, Paolo Bonzini wrote:
-> On 18/12/18 20:13, Eduardo Habkost wrote:
-> > On Tue, Dec 18, 2018 at 06:15:06PM +0100, Paolo Bonzini wrote:
-> >> On 18/12/18 16:57, Eduardo Habkost wrote:
-> >>> On Tue, Dec 18, 2018 at 04:44:25PM +0100, Thomas Huth wrote:
-> >>>> On 2018-12-18 16:31, Philippe Mathieu-Daud=C3=A9 wrote:
-> >>>>> Hi Paolo, Eduardo,
-> >>>>>
-> >>>>> On 12/18/18 4:22 PM, Eduardo Habkost wrote:
-> >>>>>> On Tue, Dec 18, 2018 at 01:34:52PM +0100, Paolo Bonzini wrote:
-> >>>>>>> On 18/12/18 12:56, Philippe Mathieu-Daud=C3=A9 wrote:
-> >>>>>>>> Nobody is looking at those files, downgrade this subsystem as =
-orphan.
-> >>>>>>>>
-> >>>>>>>> Remove the qemu-devel@nongnu.org entry because the list is alw=
-ays
-> >>>>>>>> selected by the 'All patches CC here' section.
-> >>>>>>>>
-> >>>>>>>> Suggested-by: Markus Armbruster <armbru@redhat.com>
-> >>>>>>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> >>>>>>>> ---
-> >>>>>>>>  MAINTAINERS | 3 +--
-> >>>>>>>>  1 file changed, 1 insertion(+), 2 deletions(-)
-> >>>>>>>>
-> >>>>>>>> diff --git a/MAINTAINERS b/MAINTAINERS
-> >>>>>>>> index e50f8c6b97..e6a73820f1 100644
-> >>>>>>>> --- a/MAINTAINERS
-> >>>>>>>> +++ b/MAINTAINERS
-> >>>>>>>> @@ -1745,8 +1745,7 @@ S: Supported
-> >>>>>>>>  F: scripts/coverity-model.c
-> >>>>>>>> =20
-> >>>>>>>>  CPU
-> >>>>>>>> -L: qemu-devel@nongnu.org
-> >>>>>>>> -S: Supported
-> >>>>>>>> +S: Orphan
-> >>>>>>>>  F: qom/cpu.c
-> >>>>>>>>  F: include/qom/cpu.h
-> >>>>>>>> =20
-> >>>>>>>>
-> >>>>>>>
-> >>>>>>> I don't think that's accurate.  Simply there's not much going o=
-n.  If
-> >>>>>>> patches are sent, get-maintainers's git fallback will do someth=
-ing
-> >>>>>>> (probably sending the patch to Eduardo, Igor or me).
-> >>>>>
-> >>>>> I followed Markus suggestion from
-> >>>>> https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg05414.ht=
-ml:
-> >>>>>
-> >>>>>   If we take the definition of S: in MAINTAINERS seriously,
-> >>>>>   we need to appoint a maintainer (a person, not a mailing list),
-> >>>>>   or downgrade to S: Orphan.
-> >>>>
-> >>>> I agree with Markus and Philippe. Having "S: Supported" but no nam=
-es
-> >>>> available is just confusing. So either put a maintainer name in he=
-re, or
-> >>>> downgrade to "Orphan".
-> >>>
-> >>> I volunteer to maintain it, but I don't want to be the only
-> >>> maintainer.  Any other volunteer?
-> >>
-> >> I can volunteer since I'd take the patches anyway.  We can also mark=
- it
-> >> as Odd Fixes, and also make it a single thing with all of qom/ and
-> >> include/qom/.
-> >=20
-> > Actually, I consider qom/cpu.c distinct from QOM core, and I was
-> > planning to move it to hw/cpu, and add hw/cpu/core.c to the same
-> > section.
-> >=20
-> > Anyway, I guess this means you're also volunteering to be listed
-> > as QOM maintainer?
->=20
-> Igor and Daniel, would you co-maintain or review it?
+On Tue, 18 Dec 2018 at 14:53, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit f163448536e5f7ae8905b14547eab37a41a75f6c:
+>
+>   Merge remote-tracking branch 'remotes/rth/tags/pull-tcg-20181216' into staging (2018-12-17 13:04:25 +0000)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
+>
+> for you to fetch changes up to b2322003b6389c7c98104c8626ffa342928ba83c:
+>
+>   error: Remove NULL checks on error_propagate() calls (2018-12-18 14:57:48 +0100)
+>
+> ----------------------------------------------------------------
+> Trivial patches (2018-12-18)
+>
+> ----------------------------------------------------------------
 
-I'm fine being listed as a manitainer for qom/, agree with moving
-qom/cpu.c to hw/cpu, as I was going to suggest that myself :-)
+Applied, thanks.
 
+Please update the changelog at https://wiki.qemu.org/ChangeLog/4.0
+for any user-visible changes.
 
-Regards,
-Daniel
---=20
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
-ge :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.c=
-om :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
-ge :|
+-- PMM
 
