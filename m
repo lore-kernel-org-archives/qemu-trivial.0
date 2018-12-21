@@ -1,46 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gaL3b-0002Gl-MY
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Dec 2018 08:41:39 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:33183)
+	id 1gaLWR-0005bJ-EH
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Dec 2018 09:11:27 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:40416)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1gaL3X-0002FG-I6
-	for qemu-trivial@nongnu.org; Fri, 21 Dec 2018 08:41:38 -0500
+	(envelope-from <npes87184@gmail.com>) id 1gaLK3-0000j8-1v
+	for qemu-trivial@nongnu.org; Fri, 21 Dec 2018 08:58:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1gaL3W-0000VI-UO
-	for qemu-trivial@nongnu.org; Fri, 21 Dec 2018 08:41:35 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:50814)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1gaL3Q-0000O5-Vv; Fri, 21 Dec 2018 08:41:29 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 084F2811C0;
-	Fri, 21 Dec 2018 13:41:26 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-112-61.ams2.redhat.com
-	[10.36.112.61])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5A2335D737;
-	Fri, 21 Dec 2018 13:41:23 +0000 (UTC)
-From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+	(envelope-from <npes87184@gmail.com>) id 1gaLK2-0004DD-DZ
+	for qemu-trivial@nongnu.org; Fri, 21 Dec 2018 08:58:38 -0500
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:39290)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <npes87184@gmail.com>)
+	id 1gaLJx-00048F-1j; Fri, 21 Dec 2018 08:58:33 -0500
+Received: by mail-pg1-x544.google.com with SMTP id w6so2563758pgl.6;
+	Fri, 21 Dec 2018 05:58:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id;
+	bh=G9QvOoCEr50F+wt+K33Hubpl2FiMIku4UKSsayjL+RI=;
+	b=RxPt1EdbPTtwY/7/QsuiCtoi2M01bA1Vf2g7gOcbOUbpNg7hTCYie3W7f6NBKDJEIa
+	L86wTiuIzeufpo6PL18ttbZnJ0i2FLrSbSmO/6S53hIQZaqsAZaO7nAc3EKsHa27O24B
+	asjCL1V7bKT+iDSlCRBRmtgONionwZsGLFfR7Pifr+Ya/Z5MUwVyvWh7CBxQW3FTXTaa
+	za2b2xGRyJw6vkf3cyVgvlBJKY+JUNuLwrCQujMxk7KBCKCxMV5xx1VuPKlhqdl5Kkst
+	hM7JAlCDpVaqjURiPXariqSehSPw8jARXxbnJc/l8n4HTlDqMtWBceRCpDyDzYlcozjE
+	R90w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=G9QvOoCEr50F+wt+K33Hubpl2FiMIku4UKSsayjL+RI=;
+	b=Q3S0MHpBucNeIBK947REZHR5dh5mw0Tn3qFn2E7RuJ6cAC5XL/mCPaQGtNw5kYlS4K
+	g8xEkgHvLgKMR/L+3IEuLH53m8Smn9Yj6C/3XqqFKpAWt07rRNDqWnJLgcwhUWivWngB
+	cq5yKfZQNSNqeOO8MdG8s/WFKPIyrN1XgQ+q2+PLNVrlVfXxy6zjz5p+UiEOnReqMjLo
+	gGHRL2Cz5nEk9cg4rILpBT+q+B+6Elo8jBiNt7wcuVY51OIzbn0KqdgHDvdScOeSGngq
+	UIIQE9+91GUQX3MGq5CjgqoHCp0OBkaZXlddreLB23tHxmsBTahYf2G95FNbvJxC7crc
+	aGrg==
+X-Gm-Message-State: AJcUukd/x/4Ksd5L8RcxH4Y72VIN+YD4q0A1tWbujJar/vC2/BACpsz8
+	3CaNDSkzjqBKyGZAgAwAkjztrFHi
+X-Google-Smtp-Source: ALg8bN5peoilsJ2nVJ1zHB0UIv4ngePoguwYk1AtxzvjhSO8vmahAAg2LtKz4+Rj0PBN4IEaxiXeAQ==
+X-Received: by 2002:a63:2c0e:: with SMTP id s14mr2569992pgs.132.1545400708414; 
+	Fri, 21 Dec 2018 05:58:28 -0800 (PST)
+Received: from localhost.localdomain (223-137-9-156.emome-ip.hinet.net.
+	[223.137.9.156]) by smtp.gmail.com with ESMTPSA id
+	p7sm46575187pfj.72.2018.12.21.05.58.26
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 21 Dec 2018 05:58:27 -0800 (PST)
+From: yuchenlin <npes87184@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-stable@nongnu.org,
-	qemu-trivial@nongnu.org,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Date: Fri, 21 Dec 2018 13:41:15 +0000
-Message-Id: <20181221134115.27973-1-berrange@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Fri, 21 Dec 2018 13:41:26 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] hw/usb: fix mistaken de-initialization of
- CCID state
+Cc: stefanha@redhat.com, qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+	yuchenlin <npes87184@gmail.com>
+Date: Fri, 21 Dec 2018 21:58:03 +0800
+Message-Id: <20181221135803.9583-1-npes87184@gmail.com>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::544
+X-Mailman-Approved-At: Fri, 21 Dec 2018 09:11:26 -0500
+Subject: [Qemu-trivial] [PATCH] dmg: fix binary search
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,50 +66,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Dec 2018 13:41:38 -0000
+X-List-Received-Date: Fri, 21 Dec 2018 13:58:39 -0000
 
-In previous commit:
+There is a possible hang in original binary searsh implemtation. That is
+if chunk1 = 4, chunk2 = 5, chunk3 = 4, and we go else case.
 
-  commit 7dea29e4af17fc1d27478de9f8ea38144deac54a
-  Author: Li Qiang <liq3ea@gmail.com>
-  Date:   Fri Oct 19 03:50:36 2018 -0700
+The chunk1 will be still 4, and so on.
 
-    hw: ccid-card-emulated: cleanup resource when realize in error path
-
-The emulated_realize method was changed so that it jumps to a cleanup
-label to de-initialize state upon error. This change failed to ensure
-the success path exited the method before this point though. So the
-mutexes are always destroyed even in normal operation. The result is
-as crashtastic as expected:
-
-$ qemu-system-x86_64 -usb -device usb-ccid,id=3Dccid0 -device ccid-card-e=
-mulated,backend=3Dnss-emulated,id=3Dsmartcard0,bus=3Dccid0.0
-qemu-system-x86_64: util/qemu-thread-posix.c:64: qemu_mutex_lock_impl: As=
-sertion `mutex->initialized' failed.
-Aborted (core dumped)
-
-Reported-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+Signed-off-by: yuchenlin <npes87184@gmail.com>
 ---
- hw/usb/ccid-card-emulated.c | 2 ++
- 1 file changed, 2 insertions(+)
+ block/dmg.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
-index 25976ed84f..e0457d305b 100644
---- a/hw/usb/ccid-card-emulated.c
-+++ b/hw/usb/ccid-card-emulated.c
-@@ -549,6 +549,8 @@ static void emulated_realize(CCIDCardState *base, Err=
-or **errp)
-     qemu_thread_create(&card->apdu_thread_id, "ccid/apdu", handle_apdu_t=
-hread,
-                        card, QEMU_THREAD_JOINABLE);
-=20
-+    return;
-+
- out2:
-     clean_event_notifier(card);
- out1:
---=20
-2.19.2
+diff --git a/block/dmg.c b/block/dmg.c
+index 50e91aef6d..0e05702f5d 100644
+--- a/block/dmg.c
++++ b/block/dmg.c
+@@ -572,14 +572,14 @@ static inline uint32_t search_chunk(BDRVDMGState *s, uint64_t sector_num)
+ {
+     /* binary search */
+     uint32_t chunk1 = 0, chunk2 = s->n_chunks, chunk3;
+-    while (chunk1 != chunk2) {
++    while (chunk1 <= chunk2) {
+         chunk3 = (chunk1 + chunk2) / 2;
+         if (s->sectors[chunk3] > sector_num) {
+-            chunk2 = chunk3;
++            chunk2 = chunk3 - 1;
+         } else if (s->sectors[chunk3] + s->sectorcounts[chunk3] > sector_num) {
+             return chunk3;
+         } else {
+-            chunk1 = chunk3;
++            chunk1 = chunk3 + 1;
+         }
+     }
+     return s->n_chunks; /* error */
+-- 
+2.17.1
 
 
