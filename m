@@ -1,68 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gZguL-0008QA-7U
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Dec 2018 13:49:25 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39125)
+	id 1gaL3b-0002Gl-MY
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Dec 2018 08:41:39 -0500
+Received: from eggs.gnu.org ([2001:4830:134:3::10]:33183)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gZguJ-0008Pl-9F
-	for qemu-trivial@nongnu.org; Wed, 19 Dec 2018 13:49:24 -0500
+	(envelope-from <berrange@redhat.com>) id 1gaL3X-0002FG-I6
+	for qemu-trivial@nongnu.org; Fri, 21 Dec 2018 08:41:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gZguI-0004Z2-Ci
-	for qemu-trivial@nongnu.org; Wed, 19 Dec 2018 13:49:23 -0500
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:33260)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gZguI-0004XT-4p
-	for qemu-trivial@nongnu.org; Wed, 19 Dec 2018 13:49:22 -0500
-Received: by mail-ot1-x342.google.com with SMTP id i20so20100244otl.0
-	for <qemu-trivial@nongnu.org>; Wed, 19 Dec 2018 10:49:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=zNAM2rOGe9JKVjBjrMaID0K+TfeXE9M7NY6j7cgxVuU=;
-	b=if1zq3U2utoGtCFKkeB/Rt3CcUdR3gx+BuDiVE62SnmNQMpkR6OR7/+tr51DtowrfH
-	CKqCuYRTBfV8R7FqP0gi2pFjr7DPimXZLpWww1YG2pEbnLzMUjwwxwArQl7hAetyErsQ
-	m1CHn7NDCmkbF0Wx3czEbeTXOBjc6RGwp0D1g=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=zNAM2rOGe9JKVjBjrMaID0K+TfeXE9M7NY6j7cgxVuU=;
-	b=lfUks9qO8EVZlAmhdDvA8tublIYHHLmOiOXZIoWzOwbW3s9Gw5I9Co4Z320Mf1TVzl
-	sQPFdkU6V4jpALa7l4GHp99oacLFkBaSgVaCXiq37AGC9kjhQZii8HV7FRcZcGJG9gnt
-	j1TX73DwSjjsyKSuE6/7WFF/ndOZ8H0BkB7vjkQe1KbGWHSlqCwCXJicM9HK7uEXwI2N
-	s+cvtL74j0PNImhNdvMY9HZIDqhpNmGsY0IZVIvYyEL4kXsKZXumDvkYxCresHNPobBL
-	PBDRT6g4Msk4miKr4kjymyzmGlrFQ6gAxNrdDI19Tl2MGlrayTPfK5+q2K6xc4fMLNdA
-	kIfg==
-X-Gm-Message-State: AA+aEWb2pK/DmVIVAjXuihw/uEGjfD6s9s/q4QU5KjcQ3pWUwpdYoD/M
-	wWGeRCsycE7VwnKhRR7jhwiQEtZAJJ0JZnnoocZF1Q==
-X-Google-Smtp-Source: AFSGD/WprO+LJprnvZB9TxCejuqNy8hhkc0RU1yV2B97JF5qFZJ7zbl/6cPnG3N59KxGin3f1QQ6/IeC23esLvjz2dU=
-X-Received: by 2002:a05:6830:1115:: with SMTP id
-	w21mr15321786otq.316.1545245359156; 
-	Wed, 19 Dec 2018 10:49:19 -0800 (PST)
+	(envelope-from <berrange@redhat.com>) id 1gaL3W-0000VI-UO
+	for qemu-trivial@nongnu.org; Fri, 21 Dec 2018 08:41:35 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50814)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <berrange@redhat.com>)
+	id 1gaL3Q-0000O5-Vv; Fri, 21 Dec 2018 08:41:29 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 084F2811C0;
+	Fri, 21 Dec 2018 13:41:26 +0000 (UTC)
+Received: from localhost.localdomain.com (ovpn-112-61.ams2.redhat.com
+	[10.36.112.61])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5A2335D737;
+	Fri, 21 Dec 2018 13:41:23 +0000 (UTC)
+From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-stable@nongnu.org,
+	qemu-trivial@nongnu.org,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Date: Fri, 21 Dec 2018 13:41:15 +0000
+Message-Id: <20181221134115.27973-1-berrange@redhat.com>
 MIME-Version: 1.0
-References: <20181218142851.9477-1-laurent@vivier.eu>
-In-Reply-To: <20181218142851.9477-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 19 Dec 2018 18:49:07 +0000
-Message-ID: <CAFEAcA8tO=9xbauigHPy2Tv2JMHntHv+fF+vn+KXJN-HPaeTng@mail.gmail.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
-	Collin Walling <walling@linux.ibm.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, 
-	Qemu-block <qemu-block@nongnu.org>, David Hildenbrand <david@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>, 
-	Cornelia Huck <cohuck@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, 
-	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	Halil Pasic <pasic@linux.ibm.com>, 
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	qemu-s390x <qemu-s390x@nongnu.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Max Reitz <mreitz@redhat.com>, 
-	Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::342
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 0/4] Trivial patches patches
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Fri, 21 Dec 2018 13:41:26 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] hw/usb: fix mistaken de-initialization of
+ CCID state
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,31 +52,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Dec 2018 18:49:24 -0000
+X-List-Received-Date: Fri, 21 Dec 2018 13:41:38 -0000
 
-On Tue, 18 Dec 2018 at 14:53, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit f163448536e5f7ae8905b14547eab37a41a75f6c:
->
->   Merge remote-tracking branch 'remotes/rth/tags/pull-tcg-20181216' into staging (2018-12-17 13:04:25 +0000)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
->
-> for you to fetch changes up to b2322003b6389c7c98104c8626ffa342928ba83c:
->
->   error: Remove NULL checks on error_propagate() calls (2018-12-18 14:57:48 +0100)
->
-> ----------------------------------------------------------------
-> Trivial patches (2018-12-18)
->
-> ----------------------------------------------------------------
+In previous commit:
 
-Applied, thanks.
+  commit 7dea29e4af17fc1d27478de9f8ea38144deac54a
+  Author: Li Qiang <liq3ea@gmail.com>
+  Date:   Fri Oct 19 03:50:36 2018 -0700
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/4.0
-for any user-visible changes.
+    hw: ccid-card-emulated: cleanup resource when realize in error path
 
--- PMM
+The emulated_realize method was changed so that it jumps to a cleanup
+label to de-initialize state upon error. This change failed to ensure
+the success path exited the method before this point though. So the
+mutexes are always destroyed even in normal operation. The result is
+as crashtastic as expected:
+
+$ qemu-system-x86_64 -usb -device usb-ccid,id=3Dccid0 -device ccid-card-e=
+mulated,backend=3Dnss-emulated,id=3Dsmartcard0,bus=3Dccid0.0
+qemu-system-x86_64: util/qemu-thread-posix.c:64: qemu_mutex_lock_impl: As=
+sertion `mutex->initialized' failed.
+Aborted (core dumped)
+
+Reported-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+---
+ hw/usb/ccid-card-emulated.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
+index 25976ed84f..e0457d305b 100644
+--- a/hw/usb/ccid-card-emulated.c
++++ b/hw/usb/ccid-card-emulated.c
+@@ -549,6 +549,8 @@ static void emulated_realize(CCIDCardState *base, Err=
+or **errp)
+     qemu_thread_create(&card->apdu_thread_id, "ccid/apdu", handle_apdu_t=
+hread,
+                        card, QEMU_THREAD_JOINABLE);
+=20
++    return;
++
+ out2:
+     clean_event_notifier(card);
+ out1:
+--=20
+2.19.2
+
 
