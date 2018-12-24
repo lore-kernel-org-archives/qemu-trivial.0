@@ -1,61 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gbJnL-00050b-Ax
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Dec 2018 01:32:55 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:55952)
+	id 1gbT6i-000600-IY
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Dec 2018 11:29:32 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:58641)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dongli.zhang@oracle.com>) id 1gbJnJ-0004zz-Mx
-	for qemu-trivial@nongnu.org; Mon, 24 Dec 2018 01:32:54 -0500
+	(envelope-from <wainersm@redhat.com>) id 1gbSU4-0002m5-O9
+	for qemu-trivial@nongnu.org; Mon, 24 Dec 2018 10:49:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dongli.zhang@oracle.com>) id 1gbJnG-00078d-Jk
-	for qemu-trivial@nongnu.org; Mon, 24 Dec 2018 01:32:53 -0500
-Received: from userp2130.oracle.com ([156.151.31.86]:55974)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dongli.zhang@oracle.com>)
-	id 1gbJnG-00076Z-Aw; Mon, 24 Dec 2018 01:32:50 -0500
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
-	by userp2130.oracle.com (8.16.0.22/8.16.0.22) with SMTP id
-	wBO6TJBA030524; Mon, 24 Dec 2018 06:32:47 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
-	h=from : to : cc :
-	subject : date : message-id; s=corp-2018-07-02;
-	bh=MPELyg8KJAlwZEnk8F+NGDmLhsOcOEXMgZTXHe4gerE=;
-	b=oDJhu4t8KObFlYwrdGOoKjHI0xalG1BNaVIxU6Uy5tjE3XZKCskACZYT17pQMipVMyaX
-	SPj0odpwV4UkrO0PR3WQq1LrIv4F1KaU5Pte1TcUfKLDfc7wiju/7jT7ox0wm2qLTbEy
-	PzAvd0rvjqyENRIZZl3cAVNBfgw6EELLwqh8XOMpZ/mg7ni612bMltqpGuup47IsBEo6
-	Xf6B/bwbsFEt+j6yIazEZ0Ft2Pnhw1+PVRul5YSb6fYAiUkyq8OsF4+s2odzSm7L/ewy
-	+LDlB7Kx7p5n6s4trcFUpSQXRcTzeRu0sdyDhhLXpJ0VBRp4O02TVMs6k/qe8Nv63iOK
-	qw== 
-Received: from userv0021.oracle.com (userv0021.oracle.com [156.151.31.71])
-	by userp2130.oracle.com with ESMTP id 2phcptkpcq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 24 Dec 2018 06:32:47 +0000
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
-	by userv0021.oracle.com (8.14.4/8.14.4) with ESMTP id wBO6Wj0F009197
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Mon, 24 Dec 2018 06:32:45 GMT
-Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
-	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id wBO6WZ5N018657;
-	Mon, 24 Dec 2018 06:32:35 GMT
-Received: from linux.cn.oracle.com (/10.182.70.25)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Sun, 23 Dec 2018 22:32:34 -0800
-From: Dongli Zhang <dongli.zhang@oracle.com>
-To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Cc: laurent@vivier.eu, mjt@tls.msk.ru, armbru@redhat.com
-Date: Mon, 24 Dec 2018 14:35:23 +0800
-Message-Id: <1545633323-10818-1-git-send-email-dongli.zhang@oracle.com>
-X-Mailer: git-send-email 2.7.4
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9116
-	signatures=668680
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
-	malwarescore=0
-	phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=943
-	adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
-	engine=8.0.1-1810050000 definitions=main-1812240058
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 156.151.31.86
-Subject: [Qemu-trivial] [PATCH 1/1] qdev: rename qdev_create() argument to
- sync with qdev_try_create()
+	(envelope-from <wainersm@redhat.com>) id 1gbSU2-00043w-QP
+	for qemu-trivial@nongnu.org; Mon, 24 Dec 2018 10:49:36 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:60256)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <wainersm@redhat.com>)
+	id 1gbSTv-0003tl-0f; Mon, 24 Dec 2018 10:49:27 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B157EC04AC54;
+	Mon, 24 Dec 2018 15:49:24 +0000 (UTC)
+Received: from virtlab501.virt.lab.eng.bos.redhat.com
+	(virtlab501.virt.lab.eng.bos.redhat.com [10.19.152.162])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1DB7C60161;
+	Mon, 24 Dec 2018 15:49:23 +0000 (UTC)
+From: Wainer dos Santos Moschetta <wainersm@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, ehabkost@redhat.com, marcel.apfelbaum@gmail.com
+Date: Mon, 24 Dec 2018 10:49:22 -0500
+Message-Id: <20181224154922.3338-1-wainersm@redhat.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Mon, 24 Dec 2018 15:49:24 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.132.183.28
+X-Mailman-Approved-At: Mon, 24 Dec 2018 11:29:31 -0500
+Subject: [Qemu-trivial] [PATCH] hw/core: fix whitespace in a sentence
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,44 +49,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Dec 2018 06:32:54 -0000
+X-List-Received-Date: Mon, 24 Dec 2018 15:49:37 -0000
 
-The second argument used by qdev_create() is typename and 'name' is very
-confusing. Rename it from 'name' to 'type', which is the same used by
-qdev_try_create().
-
-Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
 ---
- hw/core/qdev.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ hw/core/machine.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index 6b3cc55..1d65e8f 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -113,17 +113,17 @@ void qdev_set_parent_bus(DeviceState *dev, BusState *bus)
- /* Create a new device.  This only initializes the device state
-    structure and allows properties to be set.  The device still needs
-    to be realized.  See qdev-core.h.  */
--DeviceState *qdev_create(BusState *bus, const char *name)
-+DeviceState *qdev_create(BusState *bus, const char *type)
- {
-     DeviceState *dev;
- 
--    dev = qdev_try_create(bus, name);
-+    dev = qdev_try_create(bus, type);
-     if (!dev) {
-         if (bus) {
--            error_report("Unknown device '%s' for bus '%s'", name,
-+            error_report("Unknown device '%s' for bus '%s'", type,
-                          object_get_typename(OBJECT(bus)));
-         } else {
--            error_report("Unknown device '%s' for default sysbus", name);
-+            error_report("Unknown device '%s' for default sysbus", type);
-         }
-         abort();
-     }
--- 
-2.7.4
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 4439ea663f..a0beeeb2a9 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -591,7 +591,7 @@ static void machine_class_init(ObjectClass *oc, void =
+*data)
+     object_class_property_add_bool(oc, "dump-guest-core",
+         machine_get_dump_guest_core, machine_set_dump_guest_core, &error=
+_abort);
+     object_class_property_set_description(oc, "dump-guest-core",
+-        "Include guest memory in  a core dump", &error_abort);
++        "Include guest memory in a core dump", &error_abort);
+=20
+     object_class_property_add_bool(oc, "mem-merge",
+         machine_get_mem_merge, machine_set_mem_merge, &error_abort);
+--=20
+2.19.2
 
 
