@@ -1,63 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gaMaJ-0004oP-6g
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Dec 2018 10:19:31 -0500
-Received: from eggs.gnu.org ([2001:4830:134:3::10]:39536)
+	id 1gbJnL-00050b-Ax
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Dec 2018 01:32:55 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:55952)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gaMaH-0004n1-6Z
-	for qemu-trivial@nongnu.org; Fri, 21 Dec 2018 10:19:29 -0500
+	(envelope-from <dongli.zhang@oracle.com>) id 1gbJnJ-0004zz-Mx
+	for qemu-trivial@nongnu.org; Mon, 24 Dec 2018 01:32:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gaMa9-00071c-Oc
-	for qemu-trivial@nongnu.org; Fri, 21 Dec 2018 10:19:29 -0500
-Received: from mail-wr1-f41.google.com ([209.85.221.41]:45989)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gaMa9-0006xe-3o
-	for qemu-trivial@nongnu.org; Fri, 21 Dec 2018 10:19:21 -0500
-Received: by mail-wr1-f41.google.com with SMTP id t6so5628541wrr.12
-	for <qemu-trivial@nongnu.org>; Fri, 21 Dec 2018 07:19:18 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=7mF0QdavoQKLyFpkaXfUT9HwDDzySDX4qwqiqBmWvW0=;
-	b=fyYQx2bROY8EZjILUopHxEhg5QirE/rxN6zpyf+GKJkwjLn+YxgUc4QVPXXxo5ryey
-	ZzOp2kRj+Ue1hnJgdPuis0SJkdh7cFxujr+SahggoVBJNX+3YPwmzHKVGTQPIanIU3iq
-	rTTVNzRdrYa8KnNC1FhKaQq5ogjaAB1rQaB/zGSgkkTPdQ0d/lymMxDTPFp6+37BN9cm
-	8a1SRGNYwE7iDyUUnkGCK6L1p+h/GLITD5b2HEx6T6GedDnnuR94qMs8KklgmEW1qFg1
-	Q0ST4vm+OT42vRPJtjV2dyYP27p3Jf5qHyfPuMudPq9xOeisNRX7E1YR4QNp0KVGbVrt
-	plwg==
-X-Gm-Message-State: AJcUukcLK8b9OLQ7Tr8kl9Z0DevMT8YnhMG8Dn7uHPfF93tj2h3iRrLF
-	PlBGmCPT7svoL9S4G9+s86GkeQ==
-X-Google-Smtp-Source: ALg8bN5Oes3tKnqlkc3pf7sWuWdsmgmJB4dXxNk7dEGNI5/nnA4jk4Ylua3uxIcdiHGW1q3X+RL4nA==
-X-Received: by 2002:adf:8b83:: with SMTP id o3mr3148557wra.81.1545405557676;
-	Fri, 21 Dec 2018 07:19:17 -0800 (PST)
-Received: from [192.168.1.15] (abayonne-654-1-110-220.w86-222.abo.wanadoo.fr.
-	[86.222.61.220]) by smtp.gmail.com with ESMTPSA id
-	o17sm19796658wmg.35.2018.12.21.07.19.16
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 21 Dec 2018 07:19:16 -0800 (PST)
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-stable@nongnu.org
-References: <20181221134115.27973-1-berrange@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <009f5d95-c968-6f3f-93c2-32300ee7e5e1@redhat.com>
-Date: Fri, 21 Dec 2018 16:19:15 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.1
-MIME-Version: 1.0
-In-Reply-To: <20181221134115.27973-1-berrange@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.41
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/usb: fix mistaken
- de-initialization of CCID state
+	(envelope-from <dongli.zhang@oracle.com>) id 1gbJnG-00078d-Jk
+	for qemu-trivial@nongnu.org; Mon, 24 Dec 2018 01:32:53 -0500
+Received: from userp2130.oracle.com ([156.151.31.86]:55974)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dongli.zhang@oracle.com>)
+	id 1gbJnG-00076Z-Aw; Mon, 24 Dec 2018 01:32:50 -0500
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+	by userp2130.oracle.com (8.16.0.22/8.16.0.22) with SMTP id
+	wBO6TJBA030524; Mon, 24 Dec 2018 06:32:47 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+	h=from : to : cc :
+	subject : date : message-id; s=corp-2018-07-02;
+	bh=MPELyg8KJAlwZEnk8F+NGDmLhsOcOEXMgZTXHe4gerE=;
+	b=oDJhu4t8KObFlYwrdGOoKjHI0xalG1BNaVIxU6Uy5tjE3XZKCskACZYT17pQMipVMyaX
+	SPj0odpwV4UkrO0PR3WQq1LrIv4F1KaU5Pte1TcUfKLDfc7wiju/7jT7ox0wm2qLTbEy
+	PzAvd0rvjqyENRIZZl3cAVNBfgw6EELLwqh8XOMpZ/mg7ni612bMltqpGuup47IsBEo6
+	Xf6B/bwbsFEt+j6yIazEZ0Ft2Pnhw1+PVRul5YSb6fYAiUkyq8OsF4+s2odzSm7L/ewy
+	+LDlB7Kx7p5n6s4trcFUpSQXRcTzeRu0sdyDhhLXpJ0VBRp4O02TVMs6k/qe8Nv63iOK
+	qw== 
+Received: from userv0021.oracle.com (userv0021.oracle.com [156.151.31.71])
+	by userp2130.oracle.com with ESMTP id 2phcptkpcq-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 24 Dec 2018 06:32:47 +0000
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+	by userv0021.oracle.com (8.14.4/8.14.4) with ESMTP id wBO6Wj0F009197
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Mon, 24 Dec 2018 06:32:45 GMT
+Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
+	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id wBO6WZ5N018657;
+	Mon, 24 Dec 2018 06:32:35 GMT
+Received: from linux.cn.oracle.com (/10.182.70.25)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Sun, 23 Dec 2018 22:32:34 -0800
+From: Dongli Zhang <dongli.zhang@oracle.com>
+To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: laurent@vivier.eu, mjt@tls.msk.ru, armbru@redhat.com
+Date: Mon, 24 Dec 2018 14:35:23 +0800
+Message-Id: <1545633323-10818-1-git-send-email-dongli.zhang@oracle.com>
+X-Mailer: git-send-email 2.7.4
+X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9116
+	signatures=668680
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+	malwarescore=0
+	phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=943
+	adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+	engine=8.0.1-1810050000 definitions=main-1812240058
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 156.151.31.86
+Subject: [Qemu-trivial] [PATCH 1/1] qdev: rename qdev_create() argument to
+ sync with qdev_try_create()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,51 +67,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Dec 2018 15:19:30 -0000
+X-List-Received-Date: Mon, 24 Dec 2018 06:32:54 -0000
 
-On 12/21/18 2:41 PM, Daniel P. Berrangé wrote:
-> In previous commit:
-> 
->   commit 7dea29e4af17fc1d27478de9f8ea38144deac54a
->   Author: Li Qiang <liq3ea@gmail.com>
->   Date:   Fri Oct 19 03:50:36 2018 -0700
-> 
->     hw: ccid-card-emulated: cleanup resource when realize in error path
-> 
-> The emulated_realize method was changed so that it jumps to a cleanup
-> label to de-initialize state upon error. This change failed to ensure
-> the success path exited the method before this point though. So the
-> mutexes are always destroyed even in normal operation. The result is
-> as crashtastic as expected:
-> 
-> $ qemu-system-x86_64 -usb -device usb-ccid,id=ccid0 -device ccid-card-emulated,backend=nss-emulated,id=smartcard0,bus=ccid0.0
-> qemu-system-x86_64: util/qemu-thread-posix.c:64: qemu_mutex_lock_impl: Assertion `mutex->initialized' failed.
-> Aborted (core dumped)
-> 
-> Reported-by: Michael Tokarev <mjt@tls.msk.ru>
+The second argument used by qdev_create() is typename and 'name' is very
+confusing. Rename it from 'name' to 'type', which is the same used by
+qdev_try_create().
 
-Fixes: 7dea29e4af1
+Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+---
+ hw/core/qdev.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index 6b3cc55..1d65e8f 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -113,17 +113,17 @@ void qdev_set_parent_bus(DeviceState *dev, BusState *bus)
+ /* Create a new device.  This only initializes the device state
+    structure and allows properties to be set.  The device still needs
+    to be realized.  See qdev-core.h.  */
+-DeviceState *qdev_create(BusState *bus, const char *name)
++DeviceState *qdev_create(BusState *bus, const char *type)
+ {
+     DeviceState *dev;
+ 
+-    dev = qdev_try_create(bus, name);
++    dev = qdev_try_create(bus, type);
+     if (!dev) {
+         if (bus) {
+-            error_report("Unknown device '%s' for bus '%s'", name,
++            error_report("Unknown device '%s' for bus '%s'", type,
+                          object_get_typename(OBJECT(bus)));
+         } else {
+-            error_report("Unknown device '%s' for default sysbus", name);
++            error_report("Unknown device '%s' for default sysbus", type);
+         }
+         abort();
+     }
+-- 
+2.7.4
 
-> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> ---
->  hw/usb/ccid-card-emulated.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
-> index 25976ed84f..e0457d305b 100644
-> --- a/hw/usb/ccid-card-emulated.c
-> +++ b/hw/usb/ccid-card-emulated.c
-> @@ -549,6 +549,8 @@ static void emulated_realize(CCIDCardState *base, Error **errp)
->      qemu_thread_create(&card->apdu_thread_id, "ccid/apdu", handle_apdu_thread,
->                         card, QEMU_THREAD_JOINABLE);
->  
-> +    return;
-> +
->  out2:
->      clean_event_notifier(card);
->  out1:
-> 
 
