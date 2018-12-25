@@ -1,63 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gbn7i-0006Gi-TL
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Dec 2018 08:51:54 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:49735)
+	id 1gbn7j-0006HC-47
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Dec 2018 08:51:55 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:52181)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <arilou@gmail.com>) id 1gbmDo-0006po-75
-	for qemu-trivial@nongnu.org; Tue, 25 Dec 2018 07:54:10 -0500
+	(envelope-from <jon.diekema@gmail.com>) id 1gbjME-0004le-1Q
+	for qemu-trivial@nongnu.org; Tue, 25 Dec 2018 04:50:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <arilou@gmail.com>) id 1gbmDn-0004sE-Eq
-	for qemu-trivial@nongnu.org; Tue, 25 Dec 2018 07:54:08 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:53031)
+	(envelope-from <jon.diekema@gmail.com>) id 1gbjMD-0007FO-2y
+	for qemu-trivial@nongnu.org; Tue, 25 Dec 2018 04:50:38 -0500
+Received: from mail-it1-x12a.google.com ([2607:f8b0:4864:20::12a]:38530)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <arilou@gmail.com>)
-	id 1gbmDh-0004ks-2E; Tue, 25 Dec 2018 07:54:01 -0500
-Received: by mail-wm1-x341.google.com with SMTP id m1so12890481wml.2;
-	Tue, 25 Dec 2018 04:54:00 -0800 (PST)
+	(Exim 4.71) (envelope-from <jon.diekema@gmail.com>)
+	id 1gbjMC-0007AX-LE
+	for qemu-trivial@nongnu.org; Tue, 25 Dec 2018 04:50:37 -0500
+Received: by mail-it1-x12a.google.com with SMTP id h65so17404849ith.3
+	for <qemu-trivial@nongnu.org>; Tue, 25 Dec 2018 01:50:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=cH4+SY/Crqnq3Wvkn0fIeaz6uG1O9YvFEUCWKwpOK1E=;
-	b=iGCZjtk89Q/nKSqEiG5gooNBx7kKY+02xLgMqa8h5n+ZFOK8GXN2oMYulAOOw2QXfG
-	kur3QpOFgtmmAMe+RqCaUf8qth21LAWnlfaOmNo5D/PPydlqS9GTXsDS+x6j+BPyBoPn
-	D0Aeg8JHn7McZWwN1ZxEuewBbY6OB/fZHZy941FOv/XFd3iOLrWioMKfZjF0EBOTUOqM
-	EwsmApG3tQkoR2wK0mUP7Vl1HxOR7tB7K81zoMMk5UzgB7d3UNsiSfvi++U6BAihhyTa
-	OXVpx0OTO/UZss6hTdiyR0YbQULC4cTbwYTG7O8DSZYy8YfjpOxKMa4nk+2b+w6JsGGU
-	i4Sw==
+	h=mime-version:from:date:message-id:subject:to;
+	bh=N6M+kXQ6LqmwNEy62dlSBAUSH8le7kKs28ziAgcRqDg=;
+	b=mGPMpD5sYUdaP6Kd4Q3F2t2HsnqVH/tN8lOTAdFWKpoRwBhQl3aBCatLhPoZBIb0LV
+	Y2X/ikz641FOFITFWgPgo8uKelQKWQkdTQH1TanLG3i9e7M5cqMU3U1QZyHtuTNRZRvf
+	F/KLUpaRCIKjmP/CEvBGUpVghsfOYDe4LEaqiruiBfe+aW3x+psOhZ7jmvKyMgXJze9t
+	N1+yMFjNtS6MMqCR1l256IlVmu1ibicEJa4iR724clwtQXO9gttAa/sNs0SrQ9B+9lNm
+	mxxh8fKLgXjBE3Q96/+RmWHZj5nDZV+hEH95vy7SERWxh0MyHcp+s9d5upa/3Lpnutv3
+	KYIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=cH4+SY/Crqnq3Wvkn0fIeaz6uG1O9YvFEUCWKwpOK1E=;
-	b=ancMREKciI/5Yw84GlEIx33AO4L1Ttnv+y9QOcCpv+/gqGKHUSllHoPh+INC7JjmO2
-	Mtn91grnJYc+a0mqRZDwf4gRu4JqY9r9khdCHpG4K2WYKLjrEnjLS50AIB59J1yD0XFa
-	GMghA4YXitCbyXfvFk1Jm1p0jdmgv9AZKXUmGlO7iuc0SylFXuqEfdWnaa6SbFAkbsuk
-	po29bv+jnqrkUGh/5sIoCESNlSCQEKv3VdQ+/USFtd/wBBER9tZIPBk10igq4s6LKjmu
-	X7uiihnCDE6UVRSOWAhFFRRDa7ih3sLv2eFYG0PyK72P+JukJvv0XPx8u9ehZMb0+LtE
-	BBew==
-X-Gm-Message-State: AA+aEWaN2dzoDOiaYbcmQLIQQGbyCuDZvJfxZyqjorW9VCrSAC9XULfm
-	ILq6rtuWF4u9zM25qIiTPZIz6Iqm
-X-Google-Smtp-Source: ALg8bN63hd/YX0kJgbc598Rc2eGGwxvRy0UlAew1cQXZ894FQsMxUEbfc7VyROV7Y5A82InIE3NZpA==
-X-Received: by 2002:a1c:8095:: with SMTP id b143mr14741104wmd.63.1545742439545;
-	Tue, 25 Dec 2018 04:53:59 -0800 (PST)
-Received: from linux.local ([82.166.99.178]) by smtp.gmail.com with ESMTPSA id
-	j8sm16425656wrt.40.2018.12.25.04.53.58
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 25 Dec 2018 04:53:58 -0800 (PST)
-From: Jon Doron <arilou@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com,
-	Jon Doron <arilou@gmail.com>
-Date: Tue, 25 Dec 2018 14:53:44 +0200
-Message-Id: <20181225125344.4482-1-arilou@gmail.com>
-X-Mailer: git-send-email 2.19.2
+	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+	bh=N6M+kXQ6LqmwNEy62dlSBAUSH8le7kKs28ziAgcRqDg=;
+	b=D4XCrNG8vp2eV+j42C+maCyoui49KZxTGixfhh6YyvRdIY1xKdkxDilJD9XJncuME5
+	+Tory94HE3QJaYSb7vjZYTDHJR5nbldYT2r/+H2uxsFD2tNEU0WYb8itqIkFir4pu3Dc
+	drp63q/o6jNJXAwvKaX+V/uK4PUkvYYI+Ty4jswuhqbsputSqJRLmL9KJMyl32VRsC0W
+	MIwhbrSd0Yj+fXMMogfsEWzTdCtV7siyqoAgMuNmQpbur+w7T3+W7s3Pyy5GGLF080ZD
+	41ulLQoHdtcsITmyGNNyyjzx+iOo3/jdhfmfrpts2UJi1vq7iQN6Am5329zkz2rdbF80
+	ovBg==
+X-Gm-Message-State: AA+aEWbTIZSkdXBsy5EJJeCY5bjkVoQcs80PCCwxjTt9aIMx2kzYcp2r
+	BFcatxKVHDRTFjfAjGUUhykCanvrLulYFCQx/UuLTPh8
+X-Google-Smtp-Source: ALg8bN5DCW2eTwnUD4rq4VyWuslNefkZz3fAzYFrFr3zBf52POOO1RSTUvy7J5YbkAXUa7IMYAXItecG5VYt2o23kKc=
+X-Received: by 2002:a24:7349:: with SMTP id y70mr10338159itb.48.1545731435212; 
+	Tue, 25 Dec 2018 01:50:35 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+From: Jon Diekema <jon.diekema@gmail.com>
+Date: Tue, 25 Dec 2018 04:50:24 -0500
+Message-ID: <CALvuzg43uSodseEHjNaRcPFBKKPTY2mcppUbYgiLL=QO9RxX_Q@mail.gmail.com>
+To: qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000001d369c057dd5a580"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::341
+X-Received-From: 2607:f8b0:4864:20::12a
 X-Mailman-Approved-At: Tue, 25 Dec 2018 08:51:52 -0500
-Subject: [Qemu-trivial] [PATCH v1] dump: Set correct vaddr for ELF dump
+Subject: [Qemu-trivial] ppc: e6500 registers SPR 604 twice
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,56 +61,100 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Dec 2018 12:54:11 -0000
+X-List-Received-Date: Tue, 25 Dec 2018 09:50:38 -0000
 
-vaddr needs to be equal to the paddr since the dump file represents the
-physical memory image.
+--0000000000001d369c057dd5a580
+Content-Type: text/plain; charset="UTF-8"
 
-Without setting vaddr correctly, GDB would load all the different memory
-regions on top of each other to vaddr 0, thus making GDB showing the wrong
-memory data for a given address.
+From f399f28441e0aa79458d68996038ca3606fcb699 Mon Sep 17 00:00:00 2001
+From: Jon Diekema <jon.diekema@ge.com>
+Date: Tue, 25 Dec 2018 04:36:06 -0500
+Subject: ppc: e6500 registers SPR 604 twice
 
-Signed-off-by: Jon Doron <arilou@gmail.com>
+When using the e6500 CPU, QEMU generates a fatal error after
+complaining about registering SPR 604 twice.
+
+Building and testing with commit
+9b2e891ec5ccdb4a7d583b77988848282606fdea shows the issue:
+
+qemu-system-ppc64 --version
+QEMU emulator version 3.1.50 (v3.1.0-456-g9b2e891ec5-dirty)
+Copyright (c) 2003-2018 Fabrice Bellard and the QEMU Project developers
+
+qemu-system-ppc64 -M none -cpu e6500
+Error: Trying to register SPR 604 (25c) twice !
+
+Signed-off-by: Jon Diekema <jon.diekema@ge.com>
 ---
- dump.c                       | 4 ++--
- scripts/dump-guest-memory.py | 1 +
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ target/ppc/translate_init.inc.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
-diff --git a/dump.c b/dump.c
-index 4ec94c5e25..bf77a119ea 100644
---- a/dump.c
-+++ b/dump.c
-@@ -192,7 +192,7 @@ static void write_elf64_load(DumpState *s, MemoryMapping *memory_mapping,
-     phdr.p_paddr = cpu_to_dump64(s, memory_mapping->phys_addr);
-     phdr.p_filesz = cpu_to_dump64(s, filesz);
-     phdr.p_memsz = cpu_to_dump64(s, memory_mapping->length);
--    phdr.p_vaddr = cpu_to_dump64(s, memory_mapping->virt_addr);
-+    phdr.p_vaddr = phdr.p_paddr;
- 
-     assert(memory_mapping->length >= filesz);
- 
-@@ -216,7 +216,7 @@ static void write_elf32_load(DumpState *s, MemoryMapping *memory_mapping,
-     phdr.p_paddr = cpu_to_dump32(s, memory_mapping->phys_addr);
-     phdr.p_filesz = cpu_to_dump32(s, filesz);
-     phdr.p_memsz = cpu_to_dump32(s, memory_mapping->length);
--    phdr.p_vaddr = cpu_to_dump32(s, memory_mapping->virt_addr);
-+    phdr.p_vaddr = phdr.p_paddr;
- 
-     assert(memory_mapping->length >= filesz);
- 
-diff --git a/scripts/dump-guest-memory.py b/scripts/dump-guest-memory.py
-index 198cd0fe40..2c587cbefc 100644
---- a/scripts/dump-guest-memory.py
-+++ b/scripts/dump-guest-memory.py
-@@ -163,6 +163,7 @@ class ELF(object):
-         phdr = get_arch_phdr(self.endianness, self.elfclass)
-         phdr.p_type = p_type
-         phdr.p_paddr = p_paddr
-+        phdr.p_vaddr = p_paddr
-         phdr.p_filesz = p_size
-         phdr.p_memsz = p_size
-         self.segments.append(phdr)
+diff --git a/target/ppc/translate_init.inc.c
+b/target/ppc/translate_init.inc.c
+index 03f1d34a97..c971a5faf7 100644
+--- a/target/ppc/translate_init.inc.c
++++ b/target/ppc/translate_init.inc.c
+@@ -4947,14 +4947,6 @@ static void init_proc_e500(CPUPPCState *env, int
+version)
+     }
+
+     if (version == fsl_e6500) {
+-        spr_register(env, SPR_BOOKE_SPRG8, "SPRG8",
+-                     SPR_NOACCESS, SPR_NOACCESS,
+-                     &spr_read_generic, &spr_write_generic,
+-                     0x00000000);
+-        spr_register(env, SPR_BOOKE_SPRG9, "SPRG9",
+-                     SPR_NOACCESS, SPR_NOACCESS,
+-                     &spr_read_generic, &spr_write_generic,
+-                     0x00000000);
+         /* Thread identification */
+         spr_register(env, SPR_TIR, "TIR",
+                      SPR_NOACCESS, SPR_NOACCESS,
 -- 
-2.19.2
+2.20.1.3.gf17a2b179
 
+--0000000000001d369c057dd5a580
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><div>From f399f28441e0aa79458d68996038ca3=
+606fcb699 Mon Sep 17 00:00:00 2001</div><div>From: Jon Diekema &lt;<a href=
+=3D"mailto:jon.diekema@ge.com">jon.diekema@ge.com</a>&gt;</div><div>Date: T=
+ue, 25 Dec 2018 04:36:06 -0500</div><div>Subject: ppc: e6500 registers SPR =
+604 twice</div><div><br></div><div>When using the e6500 CPU, QEMU generates=
+ a fatal error after</div><div>complaining about registering SPR 604 twice.=
+</div><div><br></div><div>Building and testing with commit</div><div>9b2e89=
+1ec5ccdb4a7d583b77988848282606fdea shows the issue:</div><div><br></div><di=
+v>qemu-system-ppc64 --version</div><div>QEMU emulator version 3.1.50 (v3.1.=
+0-456-g9b2e891ec5-dirty)</div><div>Copyright (c) 2003-2018 Fabrice Bellard =
+and the QEMU Project developers</div><div><br></div><div>qemu-system-ppc64 =
+-M none -cpu e6500</div><div>Error: Trying to register SPR 604 (25c) twice =
+!</div><div><br></div><div>Signed-off-by: Jon Diekema &lt;<a href=3D"mailto=
+:jon.diekema@ge.com">jon.diekema@ge.com</a>&gt;</div><div>---</div><div>=C2=
+=A0target/ppc/translate_init.inc.c | 8 --------</div><div>=C2=A01 file chan=
+ged, 8 deletions(-)</div><div><br></div><div>diff --git a/target/ppc/transl=
+ate_init.inc.c b/target/ppc/translate_init.inc.c</div><div>index 03f1d34a97=
+..c971a5faf7 100644</div><div>--- a/target/ppc/translate_init.inc.c</div><d=
+iv>+++ b/target/ppc/translate_init.inc.c</div><div>@@ -4947,14 +4947,6 @@ s=
+tatic void init_proc_e500(CPUPPCState *env, int version)</div><div>=C2=A0 =
+=C2=A0 =C2=A0}</div><div>=C2=A0</div><div>=C2=A0 =C2=A0 =C2=A0if (version =
+=3D=3D fsl_e6500) {</div><div>-=C2=A0 =C2=A0 =C2=A0 =C2=A0 spr_register(env=
+, SPR_BOOKE_SPRG8, &quot;SPRG8&quot;,</div><div>-=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0SPR_NOACCESS, SPR_NOACC=
+ESS,</div><div>-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0&amp;spr_read_generic, &amp;spr_write_generic,</div><div>-=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A00x00000000);</div><div>-=C2=A0 =C2=A0 =C2=A0 =C2=A0 spr_register(env, SP=
+R_BOOKE_SPRG9, &quot;SPRG9&quot;,</div><div>-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0SPR_NOACCESS, SPR_NOACCESS,=
+</div><div>-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0&amp;spr_read_generic, &amp;spr_write_generic,</div><div>-=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A00x=
+00000000);</div><div>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Thread identifica=
+tion */</div><div>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0spr_register(env, SPR_T=
+IR, &quot;TIR&quot;,</div><div>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 SPR_NOACCESS, SPR_NOACCESS,</div><div>--=
+=C2=A0</div><div>2.20.1.3.gf17a2b179</div><div><br></div></div></div>
+
+--0000000000001d369c057dd5a580--
 
