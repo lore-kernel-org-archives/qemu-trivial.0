@@ -1,44 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gbz1h-0007lF-2P
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Dec 2018 21:34:29 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:37512)
+	id 1gc8jk-0005rK-Lc
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Dec 2018 07:56:36 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:51376)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <plaes@plaes.org>) id 1gbxD7-0007B0-Ko
-	for qemu-trivial@nongnu.org; Tue, 25 Dec 2018 19:38:14 -0500
+	(envelope-from <philmd@redhat.com>) id 1gc8jj-0005r9-O5
+	for qemu-trivial@nongnu.org; Wed, 26 Dec 2018 07:56:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <plaes@plaes.org>) id 1gbxD3-00055U-OF
-	for qemu-trivial@nongnu.org; Tue, 25 Dec 2018 19:38:09 -0500
-Received: from plaes.org ([188.166.43.21]:39054)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <plaes@plaes.org>)
-	id 1gbxCu-0004qe-Kp; Tue, 25 Dec 2018 19:37:56 -0500
-Received: from localhost (185-237-29-85.dyn.estpak.ee [85.29.237.185])
-	by plaes.org (Postfix) with ESMTPSA id 604CD40377;
-	Wed, 26 Dec 2018 00:37:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=plaes.org; s=mail;
-	t=1545784644; bh=M25/Lq+17Ad436oCFcE9Eouyh1/N8MRo7HOlMBBylP8=;
-	h=From:To:Cc:Subject:Date:From;
-	b=QxrWT/XZhoGqUf3pS9pehVKjttqTOjb0boG5IZikXTtFgOzKJbzD+9Pz1RC3yjWTA
-	s+jNuITzT7Ke3z5CejTR+MtIHbRgpO33jlvbZzkFB07q07BrlV8bv5tQAXzkLBr+50
-	A2NpuOhi9C9mkZqtl7jA2lGZ9MSHZ+hMIeC/3QjSewhPzheQTg2lK2lUwBzKora9gk
-	Lu8RHPxlPbdkAhWiAjhfQtbF8aFgVk1hlw7PBFESw18KaSy6woajMXxQcnoSPj1HWd
-	7dQGYqIsC1z6Vj04G4kR1XxA4srRG3+QmTys1W35f72DuXrC7VyeBEDA1WesB1lyas
-	92nMS5l4kfRHw==
-From: Priit Laes <plaes@plaes.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
+	(envelope-from <philmd@redhat.com>) id 1gc8jg-0007Dg-JW
+	for qemu-trivial@nongnu.org; Wed, 26 Dec 2018 07:56:35 -0500
+Received: from mail-wm1-f46.google.com ([209.85.128.46]:55467)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gc8jg-0007BW-CG
+	for qemu-trivial@nongnu.org; Wed, 26 Dec 2018 07:56:32 -0500
+Received: by mail-wm1-f46.google.com with SMTP id y139so14436254wmc.5
+	for <qemu-trivial@nongnu.org>; Wed, 26 Dec 2018 04:56:31 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=pMNt5sKDB+w41QundCjpoyUidMKANL3ibYVU2Qyxpfc=;
+	b=MhBPAm41GpR2HGwW+3a6fMfNwb9t9j9KWL44QckQub2LUDVEO7LYwAhHdMoqj55+Ef
+	kkpk+9zHHKp9PMbuw97kfxVplkHxj8GifBoWn7Wbd2ccOpmZqWXD3YqKTQOo1aijTGhu
+	yxP2LCnlwxxzIENBW+Y+LergaQcOG42j1ctQ7e9NzJi4WdiQtkmQNpzkescxYaqCgjge
+	5ZSN1Ky/LZhct9iF5m12Uii28Tp2RgUHdoPvQUNPqJ51lhRi69jmgbehsrJhwDGav/o1
+	/cKKP2qSiKb13EwxJ+J6L9FicR1Y799O8KN8HJAAS0+WX5r6RBM0zKQgwAXNwNMBoPI1
+	kMGQ==
+X-Gm-Message-State: AJcUukfGEHfqmz4PUTHJ9FEfGltP99MdmYpzaXh4npyyHlp7YntHEN4i
+	UUn+T6AjM1btboCBsXzX39KKiwui6JhAaQ==
+X-Google-Smtp-Source: ALg8bN7djKlxEIAxtsuj5IHVE6rLwOSIySMJCSAm8iSHLqDtmHgOHqZMxpVnQKVz9ldspTWOn4Gk/A==
+X-Received: by 2002:a1c:4955:: with SMTP id w82mr18876212wma.33.1545828990270; 
+	Wed, 26 Dec 2018 04:56:30 -0800 (PST)
+Received: from [10.9.9.175] ([109.190.253.16])
+	by smtp.gmail.com with ESMTPSA id
+	10sm25555292wmy.40.2018.12.26.04.56.28
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 26 Dec 2018 04:56:29 -0800 (PST)
+To: Priit Laes <plaes@plaes.org>, Peter Maydell <peter.maydell@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Priit Laes <plaes@plaes.org>
-Date: Wed, 26 Dec 2018 02:37:22 +0200
-Message-Id: <20181226003722.31257-1-plaes@plaes.org>
-X-Mailer: git-send-email 2.20.1
+Cc: qemu-trivial@nongnu.org
+References: <20181226003722.31257-1-plaes@plaes.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <8d71a38b-f907-c959-0bb5-aed5b62f5652@redhat.com>
+Date: Wed, 26 Dec 2018 13:56:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20181226003722.31257-1-plaes@plaes.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 188.166.43.21
-X-Mailman-Approved-At: Tue, 25 Dec 2018 21:34:27 -0500
-Subject: [Qemu-trivial] [PATCH] qom: Include qemu/fprintf-fn.h in cpu.h
+X-Received-From: 209.85.128.46
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qom: Include
+ qemu/fprintf-fn.h in cpu.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,29 +68,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Dec 2018 00:38:14 -0000
+X-List-Received-Date: Wed, 26 Dec 2018 12:56:36 -0000
 
-QOM cpu.h uses fprintf_function which requires Qemu's
-qemu/fprintf-fn.h header. Include it.
+On 12/26/18 1:37 AM, Priit Laes wrote:
+> QOM cpu.h uses fprintf_function which requires Qemu's
+> qemu/fprintf-fn.h header. Include it.
+> 
+> Signed-off-by: Priit Laes <plaes@plaes.org>
 
-Signed-off-by: Priit Laes <plaes@plaes.org>
----
- include/qom/cpu.h | 1 +
- 1 file changed, 1 insertion(+)
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-index 1396f53e5b..6d1ba53d72 100644
---- a/include/qom/cpu.h
-+++ b/include/qom/cpu.h
-@@ -26,6 +26,7 @@
- #include "exec/memattrs.h"
- #include "qapi/qapi-types-run-state.h"
- #include "qemu/bitmap.h"
-+#include "qemu/fprintf-fn.h"
- #include "qemu/rcu_queue.h"
- #include "qemu/queue.h"
- #include "qemu/thread.h"
---=20
-2.20.1
-
+> ---
+>  include/qom/cpu.h | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+> index 1396f53e5b..6d1ba53d72 100644
+> --- a/include/qom/cpu.h
+> +++ b/include/qom/cpu.h
+> @@ -26,6 +26,7 @@
+>  #include "exec/memattrs.h"
+>  #include "qapi/qapi-types-run-state.h"
+>  #include "qemu/bitmap.h"
+> +#include "qemu/fprintf-fn.h"
+>  #include "qemu/rcu_queue.h"
+>  #include "qemu/queue.h"
+>  #include "qemu/thread.h"
+> 
 
