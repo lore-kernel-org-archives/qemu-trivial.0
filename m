@@ -1,49 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gcCnK-0007RE-RX
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Dec 2018 12:16:34 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:47013)
+	id 1gctbF-0000Aw-5A
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Dec 2018 09:58:57 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:55912)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gcCnG-0007OY-8x
-	for qemu-trivial@nongnu.org; Wed, 26 Dec 2018 12:16:33 -0500
+	(envelope-from <jcfaracco@gmail.com>) id 1gctbA-00007E-Ru
+	for qemu-trivial@nongnu.org; Fri, 28 Dec 2018 09:58:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gcCnE-0005Xm-2P
-	for qemu-trivial@nongnu.org; Wed, 26 Dec 2018 12:16:30 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:56554)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1gcCn4-0005Qw-LA; Wed, 26 Dec 2018 12:16:19 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5FCD780F6C;
-	Wed, 26 Dec 2018 17:16:17 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-51.brq.redhat.com [10.40.204.51])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 836215D9C9;
-	Wed, 26 Dec 2018 17:16:04 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+	(envelope-from <jcfaracco@gmail.com>) id 1gctTg-0004pC-29
+	for qemu-trivial@nongnu.org; Fri, 28 Dec 2018 09:51:08 -0500
+Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844]:40716)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <jcfaracco@gmail.com>)
+	id 1gctTc-0004m6-OI; Fri, 28 Dec 2018 09:51:04 -0500
+Received: by mail-qt1-x844.google.com with SMTP id k12so23547953qtf.7;
+	Fri, 28 Dec 2018 06:51:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=LZwaqyqDnOHYgyr8uzKi105IWbd382DvxwYMDiRi5as=;
+	b=nxLxcH1dWNTduAacngIghe5u2JAUNbKSsts5zw3U86L2fWTp3WCAg5B+YVBJlECH5C
+	TdxMhMSGwrEyQlzjHEVV86uSIzV/EN1tB7S45+UEdgyPwX5QRjghnspl48u//hr5giUS
+	zkeyfbfEnl6GPLjryyBawtC7lvuojnBPQFoYTKXm4UVdwpua3gPCRUK860W9MfEYiYA+
+	Rvav1nWzBuH5zk9S4rezAvcXHRnBINGXqOQxs3mX+jexoaNr8xI9kquhFynpmbH9vV9h
+	VW1dkN2p63UXyvvlsGM96gUzsl1tlxY6gXgQknZNHNzqNmDalzHX7QVKHancyG9zSQMd
+	7yNw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+	:content-transfer-encoding;
+	bh=LZwaqyqDnOHYgyr8uzKi105IWbd382DvxwYMDiRi5as=;
+	b=QST4Gpsd6eL23hqkPH3k0JE0UKtKh8g9LgcJDNTbjxsx5OlpM2HylJBARmZiEWEln1
+	VdD/gm7RzrxcpaIAWdfj1eBKJf5fy6mW51+onMhR1ubKaatqt/syOtzFIUpVQX5HcY8v
+	KM9UaosOt0QRPY9lEPBr6GTkpkE/CoKVCxLDhomKOcR/ePUHkMiqq/51rHb3Vmiy/jq+
+	BylRC5vokoBNJi5noUfRxTWxG/y2wwvrltLxVtQepAnl2tNmIk7stHQeDbbCbSl8MMP7
+	7TAaz6VIhohJypgE27Z3J2jZ2Pgekcp82plfbhcLkeYK0mUSdGmco4l1qDLpe7p4SL4R
+	wCQg==
+X-Gm-Message-State: AA+aEWY6XoKvzEtz1x+/QX9a9dDwDaHc8PoAuoTyqd/d58K00n/rB8t7
+	uDXeldfAdQAmrnBJy4ORZ+WsOEZ3
+X-Google-Smtp-Source: AFSGD/XHjPGc89zx2hZWIRROrm6R45n13a3ScYDU468P5sXjlmeK/eczwrwHPAknzOgMAawBDaXKUA==
+X-Received: by 2002:ac8:7250:: with SMTP id l16mr25713419qtp.348.1546008663833;
+	Fri, 28 Dec 2018 06:51:03 -0800 (PST)
+Received: from localhost.localdomain (200-100-184-135.dial-up.telesp.net.br.
+	[200.100.184.135]) by smtp.gmail.com with ESMTPSA id
+	o27sm21752053qkh.35.2018.12.28.06.51.01
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Fri, 28 Dec 2018 06:51:03 -0800 (PST)
+From: Julio Faracco <jcfaracco@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Michael Roth <mdroth@linux.vnet.ibm.com>, qemu-trivial@nongnu.org,
-	Gerd Hoffmann <kraxel@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Wed, 26 Dec 2018 18:15:38 +0100
-Message-Id: <20181226171538.21984-4-philmd@redhat.com>
-In-Reply-To: <20181226171538.21984-1-philmd@redhat.com>
-References: <20181226171538.21984-1-philmd@redhat.com>
+Cc: qemu-trivial@nongnu.org, stefanha@redhat.com, kwolf@redhat.com,
+	mreitz@redhat.com, qemu-block@nongnu.org
+Date: Fri, 28 Dec 2018 12:50:55 -0200
+Message-Id: <20181228145055.18039-1-jcfaracco@gmail.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Wed, 26 Dec 2018 17:16:17 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH 3/3] util/cutils: Move function
- documentations to the header
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::844
+Subject: [Qemu-trivial] [PATCH] dmg: Fixing wrong dmg block type value for
+ block terminator.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,616 +70,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Dec 2018 17:16:33 -0000
+X-List-Received-Date: Fri, 28 Dec 2018 14:58:56 -0000
 
-Many functions have documentation before the implementation in
-cutils.c. Since we expect documentation around the prototype
-declaration in headers, move the comments in cutils.h.
+This is a trivial patch to fix a wrong value for block terminator.
+The old value was 0x7fffffff which is wrong. It was not affecting the
+code because QEMU dmg block is not handling block terminator right now.
+Neverthless, it should be fixed.
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Signed-off-by: Julio Faracco <jcfaracco@gmail.com>
 ---
- include/qemu/cutils.h | 224 ++++++++++++++++++++++++++++++++++++++++++
- util/cutils.c         | 185 ----------------------------------
- 2 files changed, 224 insertions(+), 185 deletions(-)
+ block/dmg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
-index cb06a5adab..fa22152e07 100644
---- a/include/qemu/cutils.h
-+++ b/include/qemu/cutils.h
-@@ -46,6 +46,7 @@
-  *    bytes and then add a NUL
-  */
- void pstrcpy(char *buf, int buf_size, const char *str);
-+
- /**
-  * strpadcpy:
-  * @buf: buffer to copy string into
-@@ -59,6 +60,7 @@ void pstrcpy(char *buf, int buf_size, const char *str);
-  * first @buf_size characters of @str, with no terminator.
-  */
- void strpadcpy(char *buf, int buf_size, const char *str, char pad);
-+
- /**
-  * pstrcat:
-  * @buf: buffer containing existing string
-@@ -76,6 +78,7 @@ void strpadcpy(char *buf, int buf_size, const char *str=
-, char pad);
-  * Returns: @buf.
-  */
- char *pstrcat(char *buf, int buf_size, const char *s);
-+
- /**
-  * strstart:
-  * @str: string to test
-@@ -93,6 +96,7 @@ char *pstrcat(char *buf, int buf_size, const char *s);
-  * Returns: true if @str starts with prefix @val, false otherwise.
-  */
- int strstart(const char *str, const char *val, const char **ptr);
-+
- /**
-  * stristart:
-  * @str: string to test
-@@ -109,6 +113,7 @@ int strstart(const char *str, const char *val, const =
-char **ptr);
-  *          false otherwise.
-  */
- int stristart(const char *str, const char *val, const char **ptr);
-+
- /**
-  * qemu_strnlen:
-  * @s: string
-@@ -125,6 +130,7 @@ int stristart(const char *str, const char *val, const=
- char **ptr);
-  * Returns: length of @s in bytes, or @max_len, whichever is smaller.
-  */
- int qemu_strnlen(const char *s, int max_len);
-+
- /**
-  * qemu_strsep:
-  * @input: pointer to string to parse
-@@ -146,6 +152,16 @@ int qemu_strnlen(const char *s, int max_len);
-  * Returns: the pointer originally in @input.
-  */
- char *qemu_strsep(char **input, const char *delim);
-+
-+/**
-+ * qemu_strchrnul:
-+ *
-+ * @s: String to parse.
-+ * @c: Character to find.
-+ *
-+ * Searches for the first occurrence of @c in @s, and returns a pointer
-+ * to the trailing null byte if none was found.
-+ */
- #ifdef HAVE_STRCHRNUL
- static inline const char *qemu_strchrnul(const char *s, int c)
- {
-@@ -154,27 +170,235 @@ static inline const char *qemu_strchrnul(const cha=
-r *s, int c)
- #else
- const char *qemu_strchrnul(const char *s, int c);
- #endif
-+
- time_t mktimegm(struct tm *tm);
- int qemu_fdatasync(int fd);
- int fcntl_setfl(int fd, int flag);
- int qemu_parse_fd(const char *param);
-+
-+/**
-+ * qemu_strtoi:
-+ *
-+ * Convert string @nptr to an integer, and store it in @result.
-+ *
-+ * This is a wrapper around strtol() that is harder to misuse.
-+ * Semantics of @nptr, @endptr, @base match strtol() with differences
-+ * noted below.
-+ *
-+ * @nptr may be null, and no conversion is performed then.
-+ *
-+ * If no conversion is performed, store @nptr in *@endptr and return
-+ * -EINVAL.
-+ *
-+ * If @endptr is null, and the string isn't fully converted, return
-+ * -EINVAL.  This is the case when the pointer that would be stored in
-+ * a non-null @endptr points to a character other than '\0'.
-+ *
-+ * If the conversion overflows @result, store INT_MAX in @result,
-+ * and return -ERANGE.
-+ *
-+ * If the conversion underflows @result, store INT_MIN in @result,
-+ * and return -ERANGE.
-+ *
-+ * Else store the converted value in @result, and return zero.
-+ */
- int qemu_strtoi(const char *nptr, const char **endptr, int base,
-                 int *result);
-+
-+/**
-+ * qemu_strtoui:
-+ *
-+ * Convert string @nptr to an unsigned integer, and store it in @result.
-+ *
-+ * This is a wrapper around strtoul() that is harder to misuse.
-+ * Semantics of @nptr, @endptr, @base match strtoul() with differences
-+ * noted below.
-+ *
-+ * @nptr may be null, and no conversion is performed then.
-+ *
-+ * If no conversion is performed, store @nptr in *@endptr and return
-+ * -EINVAL.
-+ *
-+ * If @endptr is null, and the string isn't fully converted, return
-+ * -EINVAL.  This is the case when the pointer that would be stored in
-+ * a non-null @endptr points to a character other than '\0'.
-+ *
-+ * If the conversion overflows @result, store UINT_MAX in @result,
-+ * and return -ERANGE.
-+ *
-+ * Else store the converted value in @result, and return zero.
-+ *
-+ * Note that a number with a leading minus sign gets converted without
-+ * the minus sign, checked for overflow (see above), then negated (in
-+ * @result's type).  This is exactly how strtoul() works.
-+ */
- int qemu_strtoui(const char *nptr, const char **endptr, int base,
-                  unsigned int *result);
-+
-+/**
-+ * qemu_strtol:
-+ *
-+ * Convert string @nptr to a long integer, and store it in @result.
-+ *
-+ * This is a wrapper around strtol() that is harder to misuse.
-+ * Semantics of @nptr, @endptr, @base match strtol() with differences
-+ * noted below.
-+ *
-+ * @nptr may be null, and no conversion is performed then.
-+ *
-+ * If no conversion is performed, store @nptr in *@endptr and return
-+ * -EINVAL.
-+ *
-+ * If @endptr is null, and the string isn't fully converted, return
-+ * -EINVAL.  This is the case when the pointer that would be stored in
-+ * a non-null @endptr points to a character other than '\0'.
-+ *
-+ * If the conversion overflows @result, store LONG_MAX in @result,
-+ * and return -ERANGE.
-+ *
-+ * If the conversion underflows @result, store LONG_MIN in @result,
-+ * and return -ERANGE.
-+ *
-+ * Else store the converted value in @result, and return zero.
-+ */
- int qemu_strtol(const char *nptr, const char **endptr, int base,
-                 long *result);
-+
-+/**
-+ * qemu_strtoul:
-+ *
-+ * Convert string @nptr to an unsigned long, and store it in @result.
-+ *
-+ * This is a wrapper around strtoul() that is harder to misuse.
-+ * Semantics of @nptr, @endptr, @base match strtoul() with differences
-+ * noted below.
-+ *
-+ * @nptr may be null, and no conversion is performed then.
-+ *
-+ * If no conversion is performed, store @nptr in *@endptr and return
-+ * -EINVAL.
-+ *
-+ * If @endptr is null, and the string isn't fully converted, return
-+ * -EINVAL.  This is the case when the pointer that would be stored in
-+ * a non-null @endptr points to a character other than '\0'.
-+ *
-+ * If the conversion overflows @result, store ULONG_MAX in @result,
-+ * and return -ERANGE.
-+ *
-+ * Else store the converted value in @result, and return zero.
-+ *
-+ * Note that a number with a leading minus sign gets converted without
-+ * the minus sign, checked for overflow (see above), then negated (in
-+ * @result's type).  This is exactly how strtoul() works.
-+ */
-+
- int qemu_strtoul(const char *nptr, const char **endptr, int base,
-                  unsigned long *result);
-+
-+/**
-+ * qemu_strtoi64:
-+ *
-+ * Convert string @nptr to an int64_t.
-+ *
-+ * Works like qemu_strtol(), except it stores INT64_MAX on overflow,
-+ * and INT_MIN on underflow.
-+ */
- int qemu_strtoi64(const char *nptr, const char **endptr, int base,
-                   int64_t *result);
-+
-+/**
-+ * qemu_strtou64:
-+ *
-+ * Convert string @nptr to an uint64_t.
-+ *
-+ * Works like qemu_strtoul(), except it stores UINT64_MAX on overflow.
-+ */
- int qemu_strtou64(const char *nptr, const char **endptr, int base,
-                   uint64_t *result);
-+
-+/**
-+ * qemu_strtod:
-+ *
-+ * Convert string @nptr to a double.
-+ *
-+ * This is a wrapper around strtod() that is harder to misuse.
-+ * Semantics of @nptr and @endptr match strtod() with differences
-+ * noted below.
-+ *
-+ * @nptr may be null, and no conversion is performed then.
-+ *
-+ * If no conversion is performed, store @nptr in *@endptr and return
-+ * -EINVAL.
-+ *
-+ * If @endptr is null, and the string isn't fully converted, return
-+ * -EINVAL. This is the case when the pointer that would be stored in
-+ * a non-null @endptr points to a character other than '\0'.
-+ *
-+ * If the conversion overflows, store +/-HUGE_VAL in @result, depending
-+ * on the sign, and return -ERANGE.
-+ *
-+ * If the conversion underflows, store +/-0.0 in @result, depending on t=
-he
-+ * sign, and return -ERANGE.
-+ *
-+ * Else store the converted value in @result, and return zero.
-+ */
- int qemu_strtod(const char *nptr, const char **endptr, double *result);
-+
-+/**
-+ * qemu_strtod_finite:
-+ *
-+ * Convert string @nptr to a finite double.
-+ *
-+ * Works like qemu_strtod(), except that "NaN" and "inf" are rejected
-+ * with -EINVAL and no conversion is performed.
-+ */
- int qemu_strtod_finite(const char *nptr, const char **endptr, double *re=
-sult);
-=20
-+/**
-+ * parse_uint:
-+ *
-+ * @s: String to parse
-+ * @value: Destination for parsed integer value
-+ * @endptr: Destination for pointer to first character not consumed
-+ * @base: integer base, between 2 and 36 inclusive, or 0
-+ *
-+ * Parse unsigned integer
-+ *
-+ * Parsed syntax is like strtoull()'s: arbitrary whitespace, a single op=
-tional
-+ * '+' or '-', an optional "0x" if @base is 0 or 16, one or more digits.
-+ *
-+ * If @s is null, or @base is invalid, or @s doesn't start with an
-+ * integer in the syntax above, set *@value to 0, *@endptr to @s, and
-+ * return -EINVAL.
-+ *
-+ * Set *@endptr to point right beyond the parsed integer (even if the in=
-teger
-+ * overflows or is negative, all digits will be parsed and *@endptr will
-+ * point right beyond them).
-+ *
-+ * If the integer is negative, set *@value to 0, and return -ERANGE.
-+ *
-+ * If the integer overflows unsigned long long, set *@value to
-+ * ULLONG_MAX, and return -ERANGE.
-+ *
-+ * Else, set *@value to the parsed integer, and return 0.
-+ */
- int parse_uint(const char *s, unsigned long long *value, char **endptr,
-                int base);
-+
-+/**
-+ * parse_uint_full:
-+ *
-+ * @s: String to parse
-+ * @value: Destination for parsed integer value
-+ * @base: integer base, between 2 and 36 inclusive, or 0
-+ *
-+ * Parse unsigned integer from entire string
-+ *
-+ * Have the same behavior of parse_uint(), but with an additional check
-+ * for additional data after the parsed number. If extra characters are =
-present
-+ * after the parsed number, the function will return -EINVAL, and *@v wi=
-ll
-+ * be set to 0.
-+ */
- int parse_uint_full(const char *s, unsigned long long *value, int base);
-=20
- int qemu_strtosz(const char *nptr, const char **end, uint64_t *result);
-diff --git a/util/cutils.c b/util/cutils.c
-index a8a3a3ba3b..a4c8858712 100644
---- a/util/cutils.c
-+++ b/util/cutils.c
-@@ -296,30 +296,6 @@ static int check_strtox_error(const char *nptr, char=
- *ep,
-     return -libc_errno;
- }
-=20
--/**
-- * Convert string @nptr to an integer, and store it in @result.
-- *
-- * This is a wrapper around strtol() that is harder to misuse.
-- * Semantics of @nptr, @endptr, @base match strtol() with differences
-- * noted below.
-- *
-- * @nptr may be null, and no conversion is performed then.
-- *
-- * If no conversion is performed, store @nptr in *@endptr and return
-- * -EINVAL.
-- *
-- * If @endptr is null, and the string isn't fully converted, return
-- * -EINVAL.  This is the case when the pointer that would be stored in
-- * a non-null @endptr points to a character other than '\0'.
-- *
-- * If the conversion overflows @result, store INT_MAX in @result,
-- * and return -ERANGE.
-- *
-- * If the conversion underflows @result, store INT_MIN in @result,
-- * and return -ERANGE.
-- *
-- * Else store the converted value in @result, and return zero.
-- */
- int qemu_strtoi(const char *nptr, const char **endptr, int base,
-                 int *result)
- {
-@@ -348,31 +324,6 @@ int qemu_strtoi(const char *nptr, const char **endpt=
-r, int base,
-     return check_strtox_error(nptr, ep, endptr, errno);
- }
-=20
--/**
-- * Convert string @nptr to an unsigned integer, and store it in @result.
-- *
-- * This is a wrapper around strtoul() that is harder to misuse.
-- * Semantics of @nptr, @endptr, @base match strtoul() with differences
-- * noted below.
-- *
-- * @nptr may be null, and no conversion is performed then.
-- *
-- * If no conversion is performed, store @nptr in *@endptr and return
-- * -EINVAL.
-- *
-- * If @endptr is null, and the string isn't fully converted, return
-- * -EINVAL.  This is the case when the pointer that would be stored in
-- * a non-null @endptr points to a character other than '\0'.
-- *
-- * If the conversion overflows @result, store UINT_MAX in @result,
-- * and return -ERANGE.
-- *
-- * Else store the converted value in @result, and return zero.
-- *
-- * Note that a number with a leading minus sign gets converted without
-- * the minus sign, checked for overflow (see above), then negated (in
-- * @result's type).  This is exactly how strtoul() works.
-- */
- int qemu_strtoui(const char *nptr, const char **endptr, int base,
-                  unsigned int *result)
- {
-@@ -407,30 +358,6 @@ int qemu_strtoui(const char *nptr, const char **endp=
-tr, int base,
-     return check_strtox_error(nptr, ep, endptr, errno);
- }
-=20
--/**
-- * Convert string @nptr to a long integer, and store it in @result.
-- *
-- * This is a wrapper around strtol() that is harder to misuse.
-- * Semantics of @nptr, @endptr, @base match strtol() with differences
-- * noted below.
-- *
-- * @nptr may be null, and no conversion is performed then.
-- *
-- * If no conversion is performed, store @nptr in *@endptr and return
-- * -EINVAL.
-- *
-- * If @endptr is null, and the string isn't fully converted, return
-- * -EINVAL.  This is the case when the pointer that would be stored in
-- * a non-null @endptr points to a character other than '\0'.
-- *
-- * If the conversion overflows @result, store LONG_MAX in @result,
-- * and return -ERANGE.
-- *
-- * If the conversion underflows @result, store LONG_MIN in @result,
-- * and return -ERANGE.
-- *
-- * Else store the converted value in @result, and return zero.
-- */
- int qemu_strtol(const char *nptr, const char **endptr, int base,
-                 long *result)
- {
-@@ -449,31 +376,6 @@ int qemu_strtol(const char *nptr, const char **endpt=
-r, int base,
-     return check_strtox_error(nptr, ep, endptr, errno);
- }
-=20
--/**
-- * Convert string @nptr to an unsigned long, and store it in @result.
-- *
-- * This is a wrapper around strtoul() that is harder to misuse.
-- * Semantics of @nptr, @endptr, @base match strtoul() with differences
-- * noted below.
-- *
-- * @nptr may be null, and no conversion is performed then.
-- *
-- * If no conversion is performed, store @nptr in *@endptr and return
-- * -EINVAL.
-- *
-- * If @endptr is null, and the string isn't fully converted, return
-- * -EINVAL.  This is the case when the pointer that would be stored in
-- * a non-null @endptr points to a character other than '\0'.
-- *
-- * If the conversion overflows @result, store ULONG_MAX in @result,
-- * and return -ERANGE.
-- *
-- * Else store the converted value in @result, and return zero.
-- *
-- * Note that a number with a leading minus sign gets converted without
-- * the minus sign, checked for overflow (see above), then negated (in
-- * @result's type).  This is exactly how strtoul() works.
-- */
- int qemu_strtoul(const char *nptr, const char **endptr, int base,
-                  unsigned long *result)
- {
-@@ -496,12 +398,6 @@ int qemu_strtoul(const char *nptr, const char **endp=
-tr, int base,
-     return check_strtox_error(nptr, ep, endptr, errno);
- }
-=20
--/**
-- * Convert string @nptr to an int64_t.
-- *
-- * Works like qemu_strtol(), except it stores INT64_MAX on overflow,
-- * and INT_MIN on underflow.
-- */
- int qemu_strtoi64(const char *nptr, const char **endptr, int base,
-                  int64_t *result)
- {
-@@ -521,11 +417,6 @@ int qemu_strtoi64(const char *nptr, const char **end=
-ptr, int base,
-     return check_strtox_error(nptr, ep, endptr, errno);
- }
-=20
--/**
-- * Convert string @nptr to an uint64_t.
-- *
-- * Works like qemu_strtoul(), except it stores UINT64_MAX on overflow.
-- */
- int qemu_strtou64(const char *nptr, const char **endptr, int base,
-                   uint64_t *result)
- {
-@@ -549,30 +440,6 @@ int qemu_strtou64(const char *nptr, const char **end=
-ptr, int base,
-     return check_strtox_error(nptr, ep, endptr, errno);
- }
-=20
--/**
-- * Convert string @nptr to a double.
--  *
-- * This is a wrapper around strtod() that is harder to misuse.
-- * Semantics of @nptr and @endptr match strtod() with differences
-- * noted below.
-- *
-- * @nptr may be null, and no conversion is performed then.
-- *
-- * If no conversion is performed, store @nptr in *@endptr and return
-- * -EINVAL.
-- *
-- * If @endptr is null, and the string isn't fully converted, return
-- * -EINVAL. This is the case when the pointer that would be stored in
-- * a non-null @endptr points to a character other than '\0'.
-- *
-- * If the conversion overflows, store +/-HUGE_VAL in @result, depending
-- * on the sign, and return -ERANGE.
-- *
-- * If the conversion underflows, store +/-0.0 in @result, depending on t=
-he
-- * sign, and return -ERANGE.
-- *
-- * Else store the converted value in @result, and return zero.
-- */
- int qemu_strtod(const char *nptr, const char **endptr, double *result)
- {
-     char *ep;
-@@ -589,12 +456,6 @@ int qemu_strtod(const char *nptr, const char **endpt=
-r, double *result)
-     return check_strtox_error(nptr, ep, endptr, errno);
- }
-=20
--/**
-- * Convert string @nptr to a finite double.
-- *
-- * Works like qemu_strtod(), except that "NaN" and "inf" are rejected
-- * with -EINVAL and no conversion is performed.
-- */
- int qemu_strtod_finite(const char *nptr, const char **endptr, double *re=
-sult)
- {
-     double tmp;
-@@ -614,10 +475,6 @@ int qemu_strtod_finite(const char *nptr, const char =
-**endptr, double *result)
-     return ret;
- }
-=20
--/**
-- * Searches for the first occurrence of 'c' in 's', and returns a pointe=
-r
-- * to the trailing null byte if none was found.
-- */
- #ifndef HAVE_STRCHRNUL
- const char *qemu_strchrnul(const char *s, int c)
- {
-@@ -629,34 +486,6 @@ const char *qemu_strchrnul(const char *s, int c)
- }
- #endif
-=20
--/**
-- * parse_uint:
-- *
-- * @s: String to parse
-- * @value: Destination for parsed integer value
-- * @endptr: Destination for pointer to first character not consumed
-- * @base: integer base, between 2 and 36 inclusive, or 0
-- *
-- * Parse unsigned integer
-- *
-- * Parsed syntax is like strtoull()'s: arbitrary whitespace, a single op=
-tional
-- * '+' or '-', an optional "0x" if @base is 0 or 16, one or more digits.
-- *
-- * If @s is null, or @base is invalid, or @s doesn't start with an
-- * integer in the syntax above, set *@value to 0, *@endptr to @s, and
-- * return -EINVAL.
-- *
-- * Set *@endptr to point right beyond the parsed integer (even if the in=
-teger
-- * overflows or is negative, all digits will be parsed and *@endptr will
-- * point right beyond them).
-- *
-- * If the integer is negative, set *@value to 0, and return -ERANGE.
-- *
-- * If the integer overflows unsigned long long, set *@value to
-- * ULLONG_MAX, and return -ERANGE.
-- *
-- * Else, set *@value to the parsed integer, and return 0.
-- */
- int parse_uint(const char *s, unsigned long long *value, char **endptr,
-                int base)
- {
-@@ -698,20 +527,6 @@ out:
-     return r;
- }
-=20
--/**
-- * parse_uint_full:
-- *
-- * @s: String to parse
-- * @value: Destination for parsed integer value
-- * @base: integer base, between 2 and 36 inclusive, or 0
-- *
-- * Parse unsigned integer from entire string
-- *
-- * Have the same behavior of parse_uint(), but with an additional check
-- * for additional data after the parsed number. If extra characters are =
-present
-- * after the parsed number, the function will return -EINVAL, and *@v wi=
-ll
-- * be set to 0.
-- */
- int parse_uint_full(const char *s, unsigned long long *value, int base)
- {
-     char *endp;
---=20
-2.17.2
+diff --git a/block/dmg.c b/block/dmg.c
+index 50e91aef6d..2c806e3389 100644
+--- a/block/dmg.c
++++ b/block/dmg.c
+@@ -54,7 +54,7 @@ enum {
+     UDBZ,
+     ULFO,
+     UDCM = 0x7ffffffe, /* Comments */
+-    UDLE               /* Last Entry */
++    UDLE = 0xffffffff  /* Last Entry */
+ };
+ 
+ static int dmg_probe(const uint8_t *buf, int buf_size, const char *filename)
+-- 
+2.19.1
 
 
