@@ -1,59 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gehMn-0005Hf-Sn
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Jan 2019 09:19:29 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:51562)
+	id 1gekWh-0007os-HC
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Jan 2019 12:41:58 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:55576)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jcfaracco@gmail.com>) id 1gehMl-0005FZ-Ro
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 09:19:28 -0500
+	(envelope-from <no-reply@patchew.org>) id 1gekWe-0007mF-Fp
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 12:41:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jcfaracco@gmail.com>) id 1gehMk-0007xP-Tb
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 09:19:27 -0500
-Received: from mail-it1-x144.google.com ([2607:f8b0:4864:20::144]:56070)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <jcfaracco@gmail.com>)
-	id 1gehMk-0007vO-MD; Wed, 02 Jan 2019 09:19:26 -0500
-Received: by mail-it1-x144.google.com with SMTP id m62so41013087ith.5;
-	Wed, 02 Jan 2019 06:19:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=hbwuruvBIiJ6p3zL721uaxTSW3sI/l4UtB7GuS54QEc=;
-	b=XDimDj23fXI7jhQ/rADUWjn5ASGECQ/YkSACCM28CYJnbfX/3IEeUNY/MWAGlklqBr
-	V0eHY8dLMoH4NDb1HXNGcd87bRSpnfctzAEOVtroW8Lqwr8uq7TuCJrp8NMdH23WGP8C
-	+/YFmBrPVibrNaF9MyHecO/aoJvoc01NqJqrIyPFVfx1/alZq3lQ1vtbZvvrc861bG68
-	62W08PGWrbjgmetbD09VWf3Jq6DXDAh2CAtInsJmnGyMgTKhh0mnhd5bD8pz+hQc/xl5
-	S75cB70TxPNiCfKFO5YvdxeYz1jeKlY6v6+T0OxOY8gXFtoLyU/ZPZpq1Ti3coo6Xh1z
-	3fQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=hbwuruvBIiJ6p3zL721uaxTSW3sI/l4UtB7GuS54QEc=;
-	b=FHML2yzRYt+kjVpmMMzybb5wUy+isNLR8vseQi+Ym+zPes3IF2jHWj7KaBWVlb+YOY
-	99C3IryrUzAsw1WpU5VWh1ZprzY6T47ih5ETqisO2/Iwiyxp8Q87czFzJjZtkiB8Cj8u
-	MpQadYXvRVyVgxsRpMojhuK7aHWgbFWC/lWcEX8d8ipv5YNV1h45NtqYfCbbeR+g8orB
-	XIGjEbuGJhkuGSCC9XI93OJ/mWqQjuORJo/m7qTdmiDFdhOsXobXrAmzN9FOjhXgC8na
-	tIY/IroNUrB8irEVbKFdY3fVAP3Bcr9nWKii/f4dt5gEaLb/fBGTu9Uno+OPVCb+i01b
-	u0Ew==
-X-Gm-Message-State: AA+aEWYwrfaqMj5whXSQU5DZYiu/Hf0egC2oTDuKDdDUYDhuR/YmZl5Q
-	yXHwT8ik9OH64j+UBGib6KTy/fBKkOgsj8GxSms=
-X-Google-Smtp-Source: AFSGD/WFGbQyPWdGwl77swNxv21GurhTH4dL8wcyPhtNM1+/CjPX1UYNpa+nOpZ3+ZXiLhQqyJtBgpQ/yMfOW8PbO2Q=
-X-Received: by 2002:a24:3609:: with SMTP id l9mr29831311itl.142.1546438762900; 
-	Wed, 02 Jan 2019 06:19:22 -0800 (PST)
+	(envelope-from <no-reply@patchew.org>) id 1gekWd-00006e-7i
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 12:41:52 -0500
+Resent-Date: Wed, 02 Jan 2019 12:41:52 -0500
+Resent-Message-Id: <E1gekWd-00006e-7i@eggs.gnu.org>
+Received: from sender-of-o53.zoho.com ([135.84.80.218]:21817)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1gekWX-0008Tm-3P; Wed, 02 Jan 2019 12:41:45 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1546450883; cv=none; d=zoho.com; s=zohoarc; 
+	b=hNF/Lc63LJ2c+lpWxxau5xW4cA7rahGnqqHrZ4gC6wpWHz+XZzP67cvZt7VWl6gvixz4T2BQXx2latbGuiok2aomVwVqucFNrdX6Q+C8R4Yk4g6uNKo1JfD84Tdr5Ynd6C0OpatE6VixbtWm+CtTxsar6VN3M2LcB4JoRP1YPIQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+	s=zohoarc; t=1546450883;
+	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+	bh=e27oNYNJVoF9nvQi9Wo4V1xzXj7mW92RDVEfBwV+RO0=; 
+	b=GX4NQLlN9d9HmUWXXqRtZAobHUDDlyj7JK7fXeK1E+gB2IxcRPHhmYY/qG/Fz5TVFaFT47QWV4Qj6SoTlk+2qe3ymca68gTApeUOzKeAl6MTg7sJoVwsadDVz0uxa3Z8Jdnx7GGreEvDFRoCT10sgVUnxjVSlM3LQArSjxukY9E=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org>
+	header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1546450881169655.8677558840662;
+	Wed, 2 Jan 2019 09:41:21 -0800 (PST)
+In-Reply-To: <20181226171538.21984-1-philmd@redhat.com>
+Message-ID: <154645087925.9907.8533035759502851896@02a1dbf831e2>
+Reply-To: <qemu-devel@nongnu.org>
 MIME-Version: 1.0
-References: <20181221135803.9583-1-npes87184@gmail.com>
-	<20190102104659.GG24009@stefanha-x1.localdomain>
-In-Reply-To: <20190102104659.GG24009@stefanha-x1.localdomain>
-From: Julio Faracco <jcfaracco@gmail.com>
-Date: Wed, 2 Jan 2019 12:19:12 -0200
-Message-ID: <CAENf94JObEbH6tm53itn8zMZsJak3JUD9TkkSqzgeEwnjRDQUw@mail.gmail.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: yuchenlin <npes87184@gmail.com>, qemu-trivial@nongnu.org, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-block@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000021342b057e7a5512"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::144
-Subject: Re: [Qemu-trivial] [Qemu-block] [PATCH] dmg: fix binary search
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: philmd@redhat.com
+Cc: fam@euphon.net, qemu-devel@nongnu.org, david@redhat.com,
+	qemu-trivial@nongnu.org, cohuck@redhat.com, armbru@redhat.com,
+	mdroth@linux.vnet.ibm.com, kraxel@redhat.com,
+	pbonzini@redhat.com, philmd@redhat.com
+Date: Wed, 2 Jan 2019 09:41:21 -0800 (PST)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 135.84.80.218
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/3] cutils: Cleanup,
+ improve documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,110 +59,108 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Jan 2019 14:19:28 -0000
+X-List-Received-Date: Wed, 02 Jan 2019 17:41:53 -0000
 
---00000000000021342b057e7a5512
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE4MTIyNjE3MTUzOC4yMTk4
+NC0xLXBoaWxtZEByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUg
+c29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUgaW5m
+b3JtYXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAxODEyMjYxNzE1MzguMjE5ODQt
+MS1waGlsbWRAcmVkaGF0LmNvbQpTdWJqZWN0OiBbUWVtdS1kZXZlbF0gW1BBVENIIDAvM10gY3V0
+aWxzOiBDbGVhbnVwLCBpbXByb3ZlIGRvY3VtZW50YXRpb24KCj09PSBURVNUIFNDUklQVCBCRUdJ
+TiA9PT0KIyEvYmluL2Jhc2gKCkJBU0U9YmFzZQpuPTEKdG90YWw9JChnaXQgbG9nIC0tb25lbGlu
+ZSAkQkFTRS4uIHwgd2MgLWwpCmZhaWxlZD0wCgpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5h
+bWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmln
+IC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCgpjb21taXRzPSIkKGdpdCBsb2cgLS1m
+b3JtYXQ9JUggLS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8KICAgIGVj
+aG8gIkNoZWNraW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3JtYXQ9JXMg
+JGMpLi4uIgogICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9j
+aGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAg
+ZWNobwogICAgZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFND
+UklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4
+NzEzMzg0ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKNWFjMzY1ZCB1dGlsL2N1dGls
+czogTW92ZSBmdW5jdGlvbiBkb2N1bWVudGF0aW9ucyB0byB0aGUgaGVhZGVyCjFkNGI0OTYgdXRp
+bC9jdXRpbHM6IE1vdmUgY3R5cGUgbWFjcm9zIHRvICJjdXRpbHMuaCIKNzBkYjcxMyB1dGlsL2N1
+dGlsczogTW92ZSBzaXplX3RvX3N0cigpIGZyb20gInFlbXUtY29tbW9uLmgiIHRvICJjdXRpbHMu
+aCIKCj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5nIFBBVENIIDEvMzogdXRpbC9jdXRpbHM6
+IE1vdmUgc2l6ZV90b19zdHIoKSBmcm9tICJxZW11LWNvbW1vbi5oIiB0byAiY3V0aWxzLmgiLi4u
+CldBUk5JTkc6IEJsb2NrIGNvbW1lbnRzIHVzZSBhIGxlYWRpbmcgLyogb24gYSBzZXBhcmF0ZSBs
+aW5lCiM0MjogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjE2MDoKKy8qKgoKdG90YWw6IDAg
+ZXJyb3JzLCAxIHdhcm5pbmdzLCA0OCBsaW5lcyBjaGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHls
+ZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZh
+bHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFU
+Q0ggaW4gTUFJTlRBSU5FUlMuCkNoZWNraW5nIFBBVENIIDIvMzogdXRpbC9jdXRpbHM6IE1vdmUg
+Y3R5cGUgbWFjcm9zIHRvICJjdXRpbHMuaCIuLi4KV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNl
+IGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzEwMDogRklMRTogaW5jbHVkZS9xZW11
+L2N1dGlscy5oOjY6CisvKiogdW5zaWduZWQgY3R5cGUgbWFjcm9zOgoKRVJST1I6IGNvZGUgaW5k
+ZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMTA4OiBGSUxFOiBpbmNsdWRlL3FlbXUvY3V0aWxz
+Lmg6MTQ6CisjZGVmaW5lIHFlbXVfaXNhbG51bShjKV5JXklpc2FsbnVtKCh1bnNpZ25lZCBjaGFy
+KShjKSkkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMxMDk6IEZJ
+TEU6IGluY2x1ZGUvcWVtdS9jdXRpbHMuaDoxNToKKyNkZWZpbmUgcWVtdV9pc2FscGhhKGMpXkle
+SWlzYWxwaGEoKHVuc2lnbmVkIGNoYXIpKGMpKSQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQg
+bmV2ZXIgdXNlIHRhYnMKIzExMDogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjE2OgorI2Rl
+ZmluZSBxZW11X2lzY250cmwoYyleSV5JaXNjbnRybCgodW5zaWduZWQgY2hhcikoYykpJAoKRVJS
+T1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMTExOiBGSUxFOiBpbmNsdWRl
+L3FlbXUvY3V0aWxzLmg6MTc6CisjZGVmaW5lIHFlbXVfaXNkaWdpdChjKV5JXklpc2RpZ2l0KCh1
+bnNpZ25lZCBjaGFyKShjKSkkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0
+YWJzCiMxMTI6IEZJTEU6IGluY2x1ZGUvcWVtdS9jdXRpbHMuaDoxODoKKyNkZWZpbmUgcWVtdV9p
+c2dyYXBoKGMpXkleSWlzZ3JhcGgoKHVuc2lnbmVkIGNoYXIpKGMpKSQKCkVSUk9SOiBjb2RlIGlu
+ZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzExMzogRklMRTogaW5jbHVkZS9xZW11L2N1dGls
+cy5oOjE5OgorI2RlZmluZSBxZW11X2lzbG93ZXIoYyleSV5JaXNsb3dlcigodW5zaWduZWQgY2hh
+cikoYykpJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMTE0OiBG
+SUxFOiBpbmNsdWRlL3FlbXUvY3V0aWxzLmg6MjA6CisjZGVmaW5lIHFlbXVfaXNwcmludChjKV5J
+Xklpc3ByaW50KCh1bnNpZ25lZCBjaGFyKShjKSkkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxk
+IG5ldmVyIHVzZSB0YWJzCiMxMTU6IEZJTEU6IGluY2x1ZGUvcWVtdS9jdXRpbHMuaDoyMToKKyNk
+ZWZpbmUgcWVtdV9pc3B1bmN0KGMpXkleSWlzcHVuY3QoKHVuc2lnbmVkIGNoYXIpKGMpKSQKCkVS
+Uk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzExNjogRklMRTogaW5jbHVk
+ZS9xZW11L2N1dGlscy5oOjIyOgorI2RlZmluZSBxZW11X2lzc3BhY2UoYyleSV5JaXNzcGFjZSgo
+dW5zaWduZWQgY2hhcikoYykpJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2Ug
+dGFicwojMTE3OiBGSUxFOiBpbmNsdWRlL3FlbXUvY3V0aWxzLmg6MjM6CisjZGVmaW5lIHFlbXVf
+aXN1cHBlcihjKV5JXklpc3VwcGVyKCh1bnNpZ25lZCBjaGFyKShjKSkkCgpFUlJPUjogY29kZSBp
+bmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMxMTg6IEZJTEU6IGluY2x1ZGUvcWVtdS9jdXRp
+bHMuaDoyNDoKKyNkZWZpbmUgcWVtdV9pc3hkaWdpdChjKV5JaXN4ZGlnaXQoKHVuc2lnbmVkIGNo
+YXIpKGMpKSQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzExOTog
+RklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjI1OgorI2RlZmluZSBxZW11X3RvbG93ZXIoYyle
+SV5JdG9sb3dlcigodW5zaWduZWQgY2hhcikoYykpJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3Vs
+ZCBuZXZlciB1c2UgdGFicwojMTIwOiBGSUxFOiBpbmNsdWRlL3FlbXUvY3V0aWxzLmg6MjY6Cisj
+ZGVmaW5lIHFlbXVfdG91cHBlcihjKV5JXkl0b3VwcGVyKCh1bnNpZ25lZCBjaGFyKShjKSkkCgpF
+UlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMxMjE6IEZJTEU6IGluY2x1
+ZGUvcWVtdS9jdXRpbHMuaDoyNzoKKyNkZWZpbmUgcWVtdV9pc2FzY2lpKGMpXkleSWlzYXNjaWko
+KHVuc2lnbmVkIGNoYXIpKGMpKSQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNl
+IHRhYnMKIzEyMjogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjI4OgorI2RlZmluZSBxZW11
+X3RvYXNjaWkoYyleSV5JdG9hc2NpaSgodW5zaWduZWQgY2hhcikoYykpJAoKdG90YWw6IDE1IGVy
+cm9ycywgMSB3YXJuaW5ncywgMTI2IGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxl
+IHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFs
+c2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRD
+SCBpbiBNQUlOVEFJTkVSUy4KCkNoZWNraW5nIFBBVENIIDMvMzogdXRpbC9jdXRpbHM6IE1vdmUg
+ZnVuY3Rpb24gZG9jdW1lbnRhdGlvbnMgdG8gdGhlIGhlYWRlci4uLgpXQVJOSU5HOiBCbG9jayBj
+b21tZW50cyB1c2UgYSBsZWFkaW5nIC8qIG9uIGEgc2VwYXJhdGUgbGluZQojNzM6IEZJTEU6IGlu
+Y2x1ZGUvcWVtdS9jdXRpbHMuaDoxNTY6CisvKioKCldBUk5JTkc6IEJsb2NrIGNvbW1lbnRzIHVz
+ZSBhIGxlYWRpbmcgLyogb24gYSBzZXBhcmF0ZSBsaW5lCiM5NTogRklMRTogaW5jbHVkZS9xZW11
+L2N1dGlscy5oOjE3OToKKy8qKgoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGlu
+ZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzEyNDogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5o
+OjIwODoKKy8qKgoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBvbiBh
+IHNlcGFyYXRlIGxpbmUKIzE1NDogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjIzODoKKy8q
+KgoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRl
+IGxpbmUKIzE4MzogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjI2NzoKKy8qKgoKV0FSTklO
+RzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzIx
+NDogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjI5ODoKKy8qKgoKV0FSTklORzogQmxvY2sg
+Y29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzIyNTogRklMRTog
+aW5jbHVkZS9xZW11L2N1dGlscy5oOjMwOToKKy8qKgoKV0FSTklORzogQmxvY2sgY29tbWVudHMg
+dXNlIGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzIzNTogRklMRTogaW5jbHVkZS9x
+ZW11L2N1dGlscy5oOjMxOToKKy8qKgoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVh
+ZGluZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzI2MzogRklMRTogaW5jbHVkZS9xZW11L2N1dGls
+cy5oOjM0NzoKKy8qKgoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBv
+biBhIHNlcGFyYXRlIGxpbmUKIzI3MzogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjM1NzoK
+Ky8qKgoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBvbiBhIHNlcGFy
+YXRlIGxpbmUKIzMwNDogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjM4ODoKKy8qKgoKdG90
+YWw6IDAgZXJyb3JzLCAxMSB3YXJuaW5ncywgNTQ0IGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2gg
+aGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9y
+cwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUK
+Q0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1h
+bmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0
+cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAxODEyMjYxNzE1MzguMjE5ODQtMS1waGlsbWRAcmVkaGF0
+LmNvbS90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRl
+ZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ug
+c2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 
-Hi Stefan,
-
-I created a simple DMG file from MacOS to reproduce the problem:
-https://bugs.launchpad.net/qemu/+bug/1809304
-
-Em qua, 2 de jan de 2019 =C3=A0s 08:47, Stefan Hajnoczi <stefanha@redhat.co=
-m>
-escreveu:
-
-> On Fri, Dec 21, 2018 at 09:58:03PM +0800, yuchenlin wrote:
-> > There is a possible hang in original binary searsh implemtation. That i=
-s
-> > if chunk1 =3D 4, chunk2 =3D 5, chunk3 =3D 4, and we go else case.
-> >
-> > The chunk1 will be still 4, and so on.
-> >
-> > Signed-off-by: yuchenlin <npes87184@gmail.com>
-> > ---
-> >  block/dmg.c | 6 +++---
-> >  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> Do you have an example dmg file that triggers this bug?
->
-> > diff --git a/block/dmg.c b/block/dmg.c
-> > index 50e91aef6d..0e05702f5d 100644
-> > --- a/block/dmg.c
-> > +++ b/block/dmg.c
-> > @@ -572,14 +572,14 @@ static inline uint32_t search_chunk(BDRVDMGState
-> *s, uint64_t sector_num)
-> >  {
-> >      /* binary search */
-> >      uint32_t chunk1 =3D 0, chunk2 =3D s->n_chunks, chunk3;
-> > -    while (chunk1 !=3D chunk2) {
-> > +    while (chunk1 <=3D chunk2) {
-> >          chunk3 =3D (chunk1 + chunk2) / 2;
-> >          if (s->sectors[chunk3] > sector_num) {
-> > -            chunk2 =3D chunk3;
-> > +            chunk2 =3D chunk3 - 1;
->
-> What if chunk1 =3D 0 and chunk2 =3D 1?  chunk3 =3D 0 and the new chunk2 v=
-alue
-> would be 0xffffffff so the loop continues with out-of-bounds sectors[]
-> accesses!
->
-
---00000000000021342b057e7a5512
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div><div class=3D"gmail=
-_signature">Hi Stefan,</div></div><div class=3D"gmail_signature"><br></div>=
-<div class=3D"gmail_signature">I created a simple DMG file from MacOS to re=
-produce the problem:<br><a href=3D"https://bugs.launchpad.net/qemu/+bug/180=
-9304">https://bugs.launchpad.net/qemu/+bug/1809304</a><br></div></div></div=
-><br><div class=3D"gmail_quote"><div dir=3D"ltr">Em qua, 2 de jan de 2019 =
-=C3=A0s 08:47, Stefan Hajnoczi &lt;<a href=3D"mailto:stefanha@redhat.com">s=
-tefanha@redhat.com</a>&gt; escreveu:<br></div><blockquote class=3D"gmail_qu=
-ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
-4);padding-left:1ex">On Fri, Dec 21, 2018 at 09:58:03PM +0800, yuchenlin wr=
-ote:<br>
-&gt; There is a possible hang in original binary searsh implemtation. That =
-is<br>
-&gt; if chunk1 =3D 4, chunk2 =3D 5, chunk3 =3D 4, and we go else case.<br>
-&gt; <br>
-&gt; The chunk1 will be still 4, and so on.<br>
-&gt; <br>
-&gt; Signed-off-by: yuchenlin &lt;<a href=3D"mailto:npes87184@gmail.com" ta=
-rget=3D"_blank">npes87184@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 block/dmg.c | 6 +++---<br>
-&gt;=C2=A0 1 file changed, 3 insertions(+), 3 deletions(-)<br>
-<br>
-Do you have an example dmg file that triggers this bug?<br>
-<br>
-&gt; diff --git a/block/dmg.c b/block/dmg.c<br>
-&gt; index 50e91aef6d..0e05702f5d 100644<br>
-&gt; --- a/block/dmg.c<br>
-&gt; +++ b/block/dmg.c<br>
-&gt; @@ -572,14 +572,14 @@ static inline uint32_t search_chunk(BDRVDMGState=
- *s, uint64_t sector_num)<br>
-&gt;=C2=A0 {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 /* binary search */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 uint32_t chunk1 =3D 0, chunk2 =3D s-&gt;n_chunks, =
-chunk3;<br>
-&gt; -=C2=A0 =C2=A0 while (chunk1 !=3D chunk2) {<br>
-&gt; +=C2=A0 =C2=A0 while (chunk1 &lt;=3D chunk2) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 chunk3 =3D (chunk1 + chunk2) / 2;<br=
->
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (s-&gt;sectors[chunk3] &gt; secto=
-r_num) {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 chunk2 =3D chunk3;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 chunk2 =3D chunk3 - 1;<br>
-<br>
-What if chunk1 =3D 0 and chunk2 =3D 1?=C2=A0 chunk3 =3D 0 and the new chunk=
-2 value<br>
-would be 0xffffffff so the loop continues with out-of-bounds sectors[]<br>
-accesses!<br>
-</blockquote></div></div>
-
---00000000000021342b057e7a5512--
 
