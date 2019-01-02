@@ -1,63 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1geeBd-0003EH-0s
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Jan 2019 05:55:45 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:35575)
+	id 1gehDQ-0000HK-GK
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Jan 2019 09:09:48 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:48311)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sgarzare@redhat.com>) id 1gecKK-0000s8-AM
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 03:56:37 -0500
+	(envelope-from <stefanha@redhat.com>) id 1gehDO-0000FJ-Ml
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 09:09:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sgarzare@redhat.com>) id 1gecKF-0002W2-At
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 03:56:36 -0500
-Received: from mail-oi1-f194.google.com ([209.85.167.194]:45202)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1gecKF-0002V3-4C
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 03:56:31 -0500
-Received: by mail-oi1-f194.google.com with SMTP id y1so24580031oie.12
-	for <qemu-trivial@nongnu.org>; Wed, 02 Jan 2019 00:56:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=emu+uCEDPx7L04UM09fx1vLYRnp1xmAKBRlVTcE5IRM=;
-	b=mML/vodTkBTOgv5cJ5RP8dUe4U3/3IISU9edCpJLvFd/4F2KhOnbrvvKBPF08sUxQP
-	8jDzSJfuroI4fbKCEk88hpn27aEIF21WDs4Aum2flcUj4vcFbwChWCBvnJPkKwaspntc
-	4kDkXLYe+/TQCwKWlmXbUnVDz/MZMy//8fxc/gHLJGe92GBIHX30033hcRti3mSEvaPT
-	EKlC5yhmRG7Tf87g8TKFPCswg75IaHeCe6pGQdRC9AqjtMOKcyfgn3eorKPVubpb3nom
-	gMtRbyoYRyDVzbL10kEO1RiE5ClbJaaTEHXeyyQIqBpZRqlCQlyFbo/9RkzLB0pkmSa0
-	8V+w==
-X-Gm-Message-State: AA+aEWa2WeIjOhRrHkgK8C12CfmxYVON2cGmsbiBLjDrnO+cMZhh3d/m
-	fJgWtzbrWdQBOEIvaTJSNYIa0ihlIXLLazEYngrJLA==
-X-Google-Smtp-Source: AFSGD/WAerNs72uy8FcaYq3IDU7p3SeTIHX6KqiyUWflJXSm5fiWrQu0z3RX32D2BWdjBDJRI4frJ1WVxfaWSSdhJuk=
-X-Received: by 2002:aca:50cf:: with SMTP id
-	e198mr30087209oib.343.1546419389535; 
-	Wed, 02 Jan 2019 00:56:29 -0800 (PST)
+	(envelope-from <stefanha@redhat.com>) id 1gehDN-0005CR-UR
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 09:09:46 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:58354)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
+	id 1gehDG-0004FC-K1; Wed, 02 Jan 2019 09:09:38 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E0A46CD66C;
+	Wed,  2 Jan 2019 14:09:37 +0000 (UTC)
+Received: from localhost (ovpn-116-137.ams2.redhat.com [10.36.116.137])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6AF2F5C22E;
+	Wed,  2 Jan 2019 14:09:37 +0000 (UTC)
+Date: Wed, 2 Jan 2019 14:09:36 +0000
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Julio Faracco <jcfaracco@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, kwolf@redhat.com,
+	mreitz@redhat.com, qemu-block@nongnu.org
+Message-ID: <20190102140936.GT24009@stefanha-x1.localdomain>
+References: <20181228145055.18039-1-jcfaracco@gmail.com>
 MIME-Version: 1.0
-References: <20181226171538.21984-1-philmd@redhat.com>
-	<20181226171538.21984-3-philmd@redhat.com>
-In-Reply-To: <20181226171538.21984-3-philmd@redhat.com>
-From: Stefano Garzarella <sgarzare@redhat.com>
-Date: Wed, 2 Jan 2019 09:56:18 +0100
-Message-ID: <CAGxU2F60pcF88j7MYqAKYyvDOYJN0qJF487fCvgEO_CFWpsnSQ@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>, 
-	David Hildenbrand <david@redhat.com>, qemu-trivial@nongnu.org, 
-	Cornelia Huck <cohuck@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	Halil Pasic <pasic@linux.ibm.com>, 
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	"open list:S390" <qemu-s390x@nongnu.org>, 
-	"open list:PowerPC" <qemu-ppc@nongnu.org>,
-	Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>, 
-	Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="ceuyUbi+oA5bUa/n"
+Content-Disposition: inline
+In-Reply-To: <20181228145055.18039-1-jcfaracco@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 02 Jan 2019 14:09:38 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.167.194
-X-Mailman-Approved-At: Wed, 02 Jan 2019 05:55:42 -0500
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/3] util/cutils: Move ctype
- macros to "cutils.h"
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] dmg: Fixing wrong dmg block type value
+ for block terminator.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,227 +54,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Jan 2019 08:56:38 -0000
+X-List-Received-Date: Wed, 02 Jan 2019 14:09:47 -0000
 
-On Wed, Dec 26, 2018 at 6:25 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> Introduced in cd390083ad1, these macros don't need to be in
-> a generic header.
-> Add documentation to justify their use.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+--ceuyUbi+oA5bUa/n
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Dec 28, 2018 at 12:50:55PM -0200, Julio Faracco wrote:
+> This is a trivial patch to fix a wrong value for block terminator.
+> The old value was 0x7fffffff which is wrong. It was not affecting the
+> code because QEMU dmg block is not handling block terminator right now.
+> Neverthless, it should be fixed.
+>=20
+> Signed-off-by: Julio Faracco <jcfaracco@gmail.com>
 > ---
->  hw/core/bus.c              |  2 +-
->  hw/core/qdev-properties.c  |  1 +
->  hw/s390x/s390-virtio-ccw.c |  1 +
->  hw/scsi/scsi-generic.c     |  2 +-
->  include/qemu-common.h      | 16 ----------------
->  include/qemu/cutils.h      | 24 ++++++++++++++++++++++++
->  qapi/qapi-util.c           |  2 +-
->  qobject/json-parser.c      |  1 -
->  target/ppc/monitor.c       |  1 +
->  ui/keymaps.c               |  1 +
->  util/id.c                  |  2 +-
->  util/readline.c            |  1 -
->  12 files changed, 32 insertions(+), 22 deletions(-)
+>  block/dmg.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Thanks, applied to my block tree:
+https://github.com/stefanha/qemu/commits/block
 
->
-> diff --git a/hw/core/bus.c b/hw/core/bus.c
-> index 4651f24486..dceb144075 100644
-> --- a/hw/core/bus.c
-> +++ b/hw/core/bus.c
-> @@ -18,7 +18,7 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu-common.h"
-> +#include "qemu/cutils.h"
->  #include "hw/qdev.h"
->  #include "qapi/error.h"
->
-> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-> index 943dc2654b..3bdebac361 100644
-> --- a/hw/core/qdev-properties.c
-> +++ b/hw/core/qdev-properties.c
-> @@ -1,4 +1,5 @@
->  #include "qemu/osdep.h"
-> +#include "qemu/cutils.h"
->  #include "net/net.h"
->  #include "hw/qdev.h"
->  #include "qapi/error.h"
-> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-> index fd9d0b0542..ed23bb7b3a 100644
-> --- a/hw/s390x/s390-virtio-ccw.c
-> +++ b/hw/s390x/s390-virtio-ccw.c
-> @@ -11,6 +11,7 @@
->   */
->
->  #include "qemu/osdep.h"
-> +#include "qemu/cutils.h"
->  #include "qapi/error.h"
->  #include "cpu.h"
->  #include "hw/boards.h"
-> diff --git a/hw/scsi/scsi-generic.c b/hw/scsi/scsi-generic.c
-> index 7237b4162e..86f65fd474 100644
-> --- a/hw/scsi/scsi-generic.c
-> +++ b/hw/scsi/scsi-generic.c
-> @@ -12,8 +12,8 @@
->   */
->
->  #include "qemu/osdep.h"
-> +#include "qemu/cutils.h"
->  #include "qapi/error.h"
-> -#include "qemu-common.h"
->  #include "qemu/error-report.h"
->  #include "hw/scsi/scsi.h"
->  #include "hw/scsi/emulation.h"
-> diff --git a/include/qemu-common.h b/include/qemu-common.h
-> index 760527294f..ed43ae286d 100644
-> --- a/include/qemu-common.h
-> +++ b/include/qemu-common.h
-> @@ -33,22 +33,6 @@ int qemu_main(int argc, char **argv, char **envp);
->  void qemu_get_timedate(struct tm *tm, int offset);
->  int qemu_timedate_diff(struct tm *tm);
->
-> -#define qemu_isalnum(c)                isalnum((unsigned char)(c))
-> -#define qemu_isalpha(c)                isalpha((unsigned char)(c))
-> -#define qemu_iscntrl(c)                iscntrl((unsigned char)(c))
-> -#define qemu_isdigit(c)                isdigit((unsigned char)(c))
-> -#define qemu_isgraph(c)                isgraph((unsigned char)(c))
-> -#define qemu_islower(c)                islower((unsigned char)(c))
-> -#define qemu_isprint(c)                isprint((unsigned char)(c))
-> -#define qemu_ispunct(c)                ispunct((unsigned char)(c))
-> -#define qemu_isspace(c)                isspace((unsigned char)(c))
-> -#define qemu_isupper(c)                isupper((unsigned char)(c))
-> -#define qemu_isxdigit(c)       isxdigit((unsigned char)(c))
-> -#define qemu_tolower(c)                tolower((unsigned char)(c))
-> -#define qemu_toupper(c)                toupper((unsigned char)(c))
-> -#define qemu_isascii(c)                isascii((unsigned char)(c))
-> -#define qemu_toascii(c)                toascii((unsigned char)(c))
-> -
->  void *qemu_oom_check(void *ptr);
->
->  ssize_t qemu_write_full(int fd, const void *buf, size_t count)
-> diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
-> index 9ee40470e3..cb06a5adab 100644
-> --- a/include/qemu/cutils.h
-> +++ b/include/qemu/cutils.h
-> @@ -3,6 +3,30 @@
->
->  #include "qemu/fprintf-fn.h"
->
-> +/** unsigned ctype macros:
-> + *
-> + * The standards require that the argument for these functions
-> + * is either EOF or a value that is representable in the type
-> + * unsigned char. If the argument is of type char, it must be
-> + * cast to unsigned char. This is what these macros do,
-> + * avoiding 'signed to unsigned' conversion warnings.
-> + */
-> +#define qemu_isalnum(c)                isalnum((unsigned char)(c))
-> +#define qemu_isalpha(c)                isalpha((unsigned char)(c))
-> +#define qemu_iscntrl(c)                iscntrl((unsigned char)(c))
-> +#define qemu_isdigit(c)                isdigit((unsigned char)(c))
-> +#define qemu_isgraph(c)                isgraph((unsigned char)(c))
-> +#define qemu_islower(c)                islower((unsigned char)(c))
-> +#define qemu_isprint(c)                isprint((unsigned char)(c))
-> +#define qemu_ispunct(c)                ispunct((unsigned char)(c))
-> +#define qemu_isspace(c)                isspace((unsigned char)(c))
-> +#define qemu_isupper(c)                isupper((unsigned char)(c))
-> +#define qemu_isxdigit(c)       isxdigit((unsigned char)(c))
-> +#define qemu_tolower(c)                tolower((unsigned char)(c))
-> +#define qemu_toupper(c)                toupper((unsigned char)(c))
-> +#define qemu_isascii(c)                isascii((unsigned char)(c))
-> +#define qemu_toascii(c)                toascii((unsigned char)(c))
-> +
->  /**
->   * pstrcpy:
->   * @buf: buffer to copy string into
-> diff --git a/qapi/qapi-util.c b/qapi/qapi-util.c
-> index e9b266bb70..ea93ae05d9 100644
-> --- a/qapi/qapi-util.c
-> +++ b/qapi/qapi-util.c
-> @@ -11,8 +11,8 @@
->   */
->
->  #include "qemu/osdep.h"
-> +#include "qemu/cutils.h"
->  #include "qapi/error.h"
-> -#include "qemu-common.h"
->
->  const char *qapi_enum_lookup(const QEnumLookup *lookup, int val)
->  {
-> diff --git a/qobject/json-parser.c b/qobject/json-parser.c
-> index 7a7ae9e8d1..06316f3a53 100644
-> --- a/qobject/json-parser.c
-> +++ b/qobject/json-parser.c
-> @@ -15,7 +15,6 @@
->  #include "qemu/cutils.h"
->  #include "qemu/unicode.h"
->  #include "qapi/error.h"
-> -#include "qemu-common.h"
->  #include "qapi/qmp/qbool.h"
->  #include "qapi/qmp/qdict.h"
->  #include "qapi/qmp/qlist.h"
-> diff --git a/target/ppc/monitor.c b/target/ppc/monitor.c
-> index 14915119fc..dbcb921231 100644
-> --- a/target/ppc/monitor.c
-> +++ b/target/ppc/monitor.c
-> @@ -22,6 +22,7 @@
->   * THE SOFTWARE.
->   */
->  #include "qemu/osdep.h"
-> +#include "qemu/cutils.h"
->  #include "cpu.h"
->  #include "monitor/monitor.h"
->  #include "monitor/hmp-target.h"
-> diff --git a/ui/keymaps.c b/ui/keymaps.c
-> index 085889b555..00b52a6db3 100644
-> --- a/ui/keymaps.c
-> +++ b/ui/keymaps.c
-> @@ -23,6 +23,7 @@
->   */
->
->  #include "qemu/osdep.h"
-> +#include "qemu/cutils.h"
->  #include "keymaps.h"
->  #include "sysemu/sysemu.h"
->  #include "trace.h"
-> diff --git a/util/id.c b/util/id.c
-> index 6141352955..ca21a77522 100644
-> --- a/util/id.c
-> +++ b/util/id.c
-> @@ -11,7 +11,7 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu-common.h"
-> +#include "qemu/cutils.h"
->  #include "qemu/id.h"
->
->  bool id_wellformed(const char *id)
-> diff --git a/util/readline.c b/util/readline.c
-> index ec91ee0fea..f3d8b0698a 100644
-> --- a/util/readline.c
-> +++ b/util/readline.c
-> @@ -23,7 +23,6 @@
->   */
->
->  #include "qemu/osdep.h"
-> -#include "qemu-common.h"
->  #include "qemu/readline.h"
->  #include "qemu/cutils.h"
->
-> --
-> 2.17.2
->
->
+Stefan
 
+--ceuyUbi+oA5bUa/n
+Content-Type: application/pgp-signature; name="signature.asc"
 
---
-Stefano Garzarella
-Red Hat
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJcLMYgAAoJEJykq7OBq3PISnUIAIREEpoX4A1LE+QgN2ivsCUO
+DsRuyzOVfOmJQ2vj255xL664ZW/9F3/GLGVthRIJ6oBN40vLH4d0ZhBNFmmb1dvU
+Wk4ffsNHwxA+RoVjMrsSqKz9x1YtZlE+zatEKfX4pcmeL9O+KpzetoluW0q+0Dtm
+NhpIWT4D6dTadtsaYs56gedMjKOb1EO/HsQdUS2YE4mCp6OFH+QHitTTcUL8OM6G
++Ip26+gaCTmhKRIMd/M0SFyr96W/QGMcaH4RTnoVH4oDUxeg8YL12/q0HAK2Ube4
+v0M8WiXd/zQX8+cUL2R6QQPEUh7o/Eo2GMI6Afvr0KKTw4KNIM5OmbxnK2ZlYh0=
+=MllY
+-----END PGP SIGNATURE-----
+
+--ceuyUbi+oA5bUa/n--
 
