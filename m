@@ -1,46 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gee3K-0007qu-C2
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Jan 2019 05:47:10 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:41273)
+	id 1geeBb-0003Bz-8t
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Jan 2019 05:55:43 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:33352)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gee3I-0007on-MZ
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 05:47:09 -0500
+	(envelope-from <yuchenlin@synology.com>) id 1gecE5-0007Zp-Bv
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 03:50:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@redhat.com>) id 1gee3H-0005CK-WC
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 05:47:08 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:37322)
+	(envelope-from <yuchenlin@synology.com>) id 1gecDz-0003q1-Ub
+	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 03:50:06 -0500
+Received: from mail.synology.com ([211.23.38.101]:58141 helo=synology.com)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
-	id 1gee3C-00058e-CH; Wed, 02 Jan 2019 05:47:02 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 76CA3C049DC1;
-	Wed,  2 Jan 2019 10:47:01 +0000 (UTC)
-Received: from localhost (ovpn-116-137.ams2.redhat.com [10.36.116.137])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id F270A60C66;
-	Wed,  2 Jan 2019 10:47:00 +0000 (UTC)
-Date: Wed, 2 Jan 2019 10:46:59 +0000
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: yuchenlin <npes87184@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20190102104659.GG24009@stefanha-x1.localdomain>
-References: <20181221135803.9583-1-npes87184@gmail.com>
+	(Exim 4.71) (envelope-from <yuchenlin@synology.com>)
+	id 1gecDi-0003Vc-L0; Wed, 02 Jan 2019 03:49:48 -0500
+Received: from _ (localhost [127.0.0.1])
+	by synology.com (Postfix) with ESMTPA id 563D31924922;
+	Wed,  2 Jan 2019 16:49:30 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=synology.com; s=123;
+	t=1546418970; bh=A1urnavRRpkYXt3jt/bipEr1PL9svbHk9zQFacPethA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=Bh54S1xThyVVLhSEA/Npgetvy3xIXKFA/dvyb6NSPjalEaNAGfOrL5QdH0yAf6LDu
+	EQVJAOEjx6tlpb86eRutobSFQPOjhNIvjbbh35I3RJVOfvSgAFnDkw1J2Jz8rjrTH9
+	eDZbiM1Jua/huIDFFgvsFD044jS1v0Arxg4psvIU=
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="xjyYRNSh/RebjC6o"
-Content-Disposition: inline
-In-Reply-To: <20181221135803.9583-1-npes87184@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Wed, 02 Jan 2019 10:47:01 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] dmg: fix binary search
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+Date: Wed, 02 Jan 2019 16:49:30 +0800
+From: yuchenlin <yuchenlin@synology.com>
+To: Julio Faracco <jcfaracco@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, kwolf@redhat.com,
+	qemu-block@nongnu.org, stefanha@redhat.com, mreitz@redhat.com, Qemu-block
+	<qemu-block-bounces+yuchenlin=synology.com@nongnu.org>
+In-Reply-To: <20181228145055.18039-1-jcfaracco@gmail.com>
+References: <20181228145055.18039-1-jcfaracco@gmail.com>
+Message-ID: <ed671ae893c52d3ff94c849ab18f2857@synology.com>
+X-Sender: yuchenlin@synology.com
+User-Agent: Roundcube Webmail/1.1.2
+X-Synology-MCP-Status: no
+X-Synology-Spam-Flag: no
+X-Synology-Spam-Status: score=0, required 6, WHITELIST_FROM_ADDRESS 0
+X-Synology-Virus-Status: no
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
+X-Received-From: 211.23.38.101
+X-Mailman-Approved-At: Wed, 02 Jan 2019 05:55:42 -0500
+Subject: Re: [Qemu-trivial] [Qemu-block] [PATCH] dmg: Fixing wrong dmg block
+ type value for block terminator.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,61 +56,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Jan 2019 10:47:09 -0000
+X-List-Received-Date: Wed, 02 Jan 2019 08:50:12 -0000
 
+On 2018-12-28 22:50, Julio Faracco wrote:
+> This is a trivial patch to fix a wrong value for block terminator.
+> The old value was 0x7fffffff which is wrong. It was not affecting the
+> code because QEMU dmg block is not handling block terminator right now.
+> Neverthless, it should be fixed.
+> 
+> Signed-off-by: Julio Faracco <jcfaracco@gmail.com>
 
---xjyYRNSh/RebjC6o
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: yuchenlin <yuchenlin@synology.com>
 
-On Fri, Dec 21, 2018 at 09:58:03PM +0800, yuchenlin wrote:
-> There is a possible hang in original binary searsh implemtation. That is
-> if chunk1 =3D 4, chunk2 =3D 5, chunk3 =3D 4, and we go else case.
->=20
-> The chunk1 will be still 4, and so on.
->=20
-> Signed-off-by: yuchenlin <npes87184@gmail.com>
 > ---
->  block/dmg.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-
-Do you have an example dmg file that triggers this bug?
-
+>  block/dmg.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
 > diff --git a/block/dmg.c b/block/dmg.c
-> index 50e91aef6d..0e05702f5d 100644
+> index 50e91aef6d..2c806e3389 100644
 > --- a/block/dmg.c
 > +++ b/block/dmg.c
-> @@ -572,14 +572,14 @@ static inline uint32_t search_chunk(BDRVDMGState *s=
-, uint64_t sector_num)
->  {
->      /* binary search */
->      uint32_t chunk1 =3D 0, chunk2 =3D s->n_chunks, chunk3;
-> -    while (chunk1 !=3D chunk2) {
-> +    while (chunk1 <=3D chunk2) {
->          chunk3 =3D (chunk1 + chunk2) / 2;
->          if (s->sectors[chunk3] > sector_num) {
-> -            chunk2 =3D chunk3;
-> +            chunk2 =3D chunk3 - 1;
+> @@ -54,7 +54,7 @@ enum {
+>      UDBZ,
+>      ULFO,
+>      UDCM = 0x7ffffffe, /* Comments */
+> -    UDLE               /* Last Entry */
+> +    UDLE = 0xffffffff  /* Last Entry */
+>  };
+> 
+>  static int dmg_probe(const uint8_t *buf, int buf_size, const char 
+> *filename)
 
-What if chunk1 =3D 0 and chunk2 =3D 1?  chunk3 =3D 0 and the new chunk2 val=
-ue
-would be 0xffffffff so the loop continues with out-of-bounds sectors[]
-accesses!
-
---xjyYRNSh/RebjC6o
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJcLJajAAoJEJykq7OBq3PIJw4H/Rm/gU4yon7+M0pl4VuikjjH
-K8DAKBg81jx8k7MJ9ps5YYEBruRUzbW3XszcuF8GW4JsXZdLCm61NuPwGsQeyL8r
-CgetPXdolvE5DUvyE7OtGZLhz5jlAn4jIc3AB5arwAdM75jvWmXR1SA9CzYAE1X3
-DozqOlxjqc2W0ld/a15tDaTCUpmnRf3DnxuwE8ukNyl7DmnbcHs7WP+Za/swQX6C
-r4GhtK0GUGT60X+/Gs8dQjxIfKR7Y8FXT5Yr2A8zlflamLXE2QDkuoXTozgJK8z1
-1FebUJaEy47r4N9vNQf1ZGE/GnAdFUkNxrz0hFutEMSSz1cjdQUZlUXtolzoG6c=
-=Oskr
------END PGP SIGNATURE-----
-
---xjyYRNSh/RebjC6o--
 
