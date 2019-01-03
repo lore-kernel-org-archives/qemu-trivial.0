@@ -1,51 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gekWh-0007os-HC
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Jan 2019 12:41:58 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:55576)
+	id 1geyvj-00015t-I9
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Jan 2019 04:04:43 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:50098)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1gekWe-0007mF-Fp
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 12:41:53 -0500
+	(envelope-from <philmd@redhat.com>) id 1geyvh-00015H-Nc
+	for qemu-trivial@nongnu.org; Thu, 03 Jan 2019 04:04:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1gekWd-00006e-7i
-	for qemu-trivial@nongnu.org; Wed, 02 Jan 2019 12:41:52 -0500
-Resent-Date: Wed, 02 Jan 2019 12:41:52 -0500
-Resent-Message-Id: <E1gekWd-00006e-7i@eggs.gnu.org>
-Received: from sender-of-o53.zoho.com ([135.84.80.218]:21817)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1gekWX-0008Tm-3P; Wed, 02 Jan 2019 12:41:45 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1546450883; cv=none; d=zoho.com; s=zohoarc; 
-	b=hNF/Lc63LJ2c+lpWxxau5xW4cA7rahGnqqHrZ4gC6wpWHz+XZzP67cvZt7VWl6gvixz4T2BQXx2latbGuiok2aomVwVqucFNrdX6Q+C8R4Yk4g6uNKo1JfD84Tdr5Ynd6C0OpatE6VixbtWm+CtTxsar6VN3M2LcB4JoRP1YPIQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
-	s=zohoarc; t=1546450883;
-	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
-	bh=e27oNYNJVoF9nvQi9Wo4V1xzXj7mW92RDVEfBwV+RO0=; 
-	b=GX4NQLlN9d9HmUWXXqRtZAobHUDDlyj7JK7fXeK1E+gB2IxcRPHhmYY/qG/Fz5TVFaFT47QWV4Qj6SoTlk+2qe3ymca68gTApeUOzKeAl6MTg7sJoVwsadDVz0uxa3Z8Jdnx7GGreEvDFRoCT10sgVUnxjVSlM3LQArSjxukY9E=
-ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
-	spf=pass  smtp.mailfrom=no-reply@patchew.org;
-	dmarc=pass header.from=<no-reply@patchew.org>
-	header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1546450881169655.8677558840662;
-	Wed, 2 Jan 2019 09:41:21 -0800 (PST)
-In-Reply-To: <20181226171538.21984-1-philmd@redhat.com>
-Message-ID: <154645087925.9907.8533035759502851896@02a1dbf831e2>
-Reply-To: <qemu-devel@nongnu.org>
+	(envelope-from <philmd@redhat.com>) id 1geyvd-0008N2-Hs
+	for qemu-trivial@nongnu.org; Thu, 03 Jan 2019 04:04:41 -0500
+Received: from mail-wm1-f68.google.com ([209.85.128.68]:38105)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1geyvd-0008MT-BE
+	for qemu-trivial@nongnu.org; Thu, 03 Jan 2019 04:04:37 -0500
+Received: by mail-wm1-f68.google.com with SMTP id m22so29775295wml.3
+	for <qemu-trivial@nongnu.org>; Thu, 03 Jan 2019 01:04:37 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=KvakvV+2+VDXuW/vxtMj2uIVOm3FdQUNWpKh6SxSf8Y=;
+	b=CY1xiC5KQIX1r5a09R9jgJR3nigp8b4FTtHE3nPBwg2i7sBR0HE95v5oe0ssBgXSty
+	5Sy+ECZsGvUiW966UYXIrsqfwQSRG8W6J8CPqLlzw9Z5NxkpQ4H1miQyOtvUOMXSKDpY
+	pPNT6xHT91i/F4k4NnwSb/WXf90I4QuhOzEZEKIVOV3K0JFx9jYQQsDwNotdv0/EJyN8
+	mdTlbpKg7H4C1C3MxnaYU6QTaL+xnNHkeyhsoA7DmhQreChS5UQlEYsC3Yyyq0CoSNeT
+	BGMM2n+1Ori3c+NDlv5B3vg1Bsc+o237OuxboT4Chms7yR20zCXMYwsjQzSKmKRTb83R
+	oGNA==
+X-Gm-Message-State: AA+aEWZbYDmFJzgVX6AL+WZ9tSdCZO3P2RVsWeTOQc491vL+5rGM6Q4m
+	bgy5WUTikVxhzZq9EK5h9E7yfw==
+X-Google-Smtp-Source: AFSGD/X2QBwCYI5CCDpiei/fIX+hgC3OO63DNPk6UFa6p1T023b68LUjWvs+CDHsay8Emnwy35ad9w==
+X-Received: by 2002:a1c:6707:: with SMTP id b7mr37161858wmc.138.1546506276274; 
+	Thu, 03 Jan 2019 01:04:36 -0800 (PST)
+Received: from [192.168.1.33] (110.red-83-51-161.dynamicip.rima-tde.net.
+	[83.51.161.110]) by smtp.gmail.com with ESMTPSA id
+	t12sm50717943wrr.65.2019.01.03.01.04.35
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Thu, 03 Jan 2019 01:04:35 -0800 (PST)
+To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Cc: fam@euphon.net, david@redhat.com, qemu-trivial@nongnu.org,
+	cohuck@redhat.com, armbru@redhat.com, mdroth@linux.vnet.ibm.com,
+	kraxel@redhat.com, pbonzini@redhat.com
+References: <154645087925.9907.8533035759502851896@02a1dbf831e2>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <e122954c-760c-47ac-3858-1c25e0b2f9ff@redhat.com>
+Date: Thu, 3 Jan 2019 10:04:29 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: philmd@redhat.com
-Cc: fam@euphon.net, qemu-devel@nongnu.org, david@redhat.com,
-	qemu-trivial@nongnu.org, cohuck@redhat.com, armbru@redhat.com,
-	mdroth@linux.vnet.ibm.com, kraxel@redhat.com,
-	pbonzini@redhat.com, philmd@redhat.com
-Date: Wed, 2 Jan 2019 09:41:21 -0800 (PST)
-X-ZohoMailClient: External
+In-Reply-To: <154645087925.9907.8533035759502851896@02a1dbf831e2>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 135.84.80.218
+X-Received-From: 209.85.128.68
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/3] cutils: Cleanup,
  improve documentation
 X-BeenThere: qemu-trivial@nongnu.org
@@ -59,108 +69,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Jan 2019 17:41:53 -0000
+X-List-Received-Date: Thu, 03 Jan 2019 09:04:42 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE4MTIyNjE3MTUzOC4yMTk4
-NC0xLXBoaWxtZEByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUg
-c29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUgaW5m
-b3JtYXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAxODEyMjYxNzE1MzguMjE5ODQt
-MS1waGlsbWRAcmVkaGF0LmNvbQpTdWJqZWN0OiBbUWVtdS1kZXZlbF0gW1BBVENIIDAvM10gY3V0
-aWxzOiBDbGVhbnVwLCBpbXByb3ZlIGRvY3VtZW50YXRpb24KCj09PSBURVNUIFNDUklQVCBCRUdJ
-TiA9PT0KIyEvYmluL2Jhc2gKCkJBU0U9YmFzZQpuPTEKdG90YWw9JChnaXQgbG9nIC0tb25lbGlu
-ZSAkQkFTRS4uIHwgd2MgLWwpCmZhaWxlZD0wCgpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5h
-bWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmln
-IC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCgpjb21taXRzPSIkKGdpdCBsb2cgLS1m
-b3JtYXQ9JUggLS1yZXZlcnNlICRCQVNFLi4pIgpmb3IgYyBpbiAkY29tbWl0czsgZG8KICAgIGVj
-aG8gIkNoZWNraW5nIFBBVENIICRuLyR0b3RhbDogJChnaXQgbG9nIC1uIDEgLS1mb3JtYXQ9JXMg
-JGMpLi4uIgogICAgaWYgISBnaXQgc2hvdyAkYyAtLWZvcm1hdD1lbWFpbCB8IC4vc2NyaXB0cy9j
-aGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgLTsgdGhlbgogICAgICAgIGZhaWxlZD0xCiAgICAgICAg
-ZWNobwogICAgZmkKICAgIG49JCgobisxKSkKZG9uZQoKZXhpdCAkZmFpbGVkCj09PSBURVNUIFND
-UklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4
-NzEzMzg0ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKNWFjMzY1ZCB1dGlsL2N1dGls
-czogTW92ZSBmdW5jdGlvbiBkb2N1bWVudGF0aW9ucyB0byB0aGUgaGVhZGVyCjFkNGI0OTYgdXRp
-bC9jdXRpbHM6IE1vdmUgY3R5cGUgbWFjcm9zIHRvICJjdXRpbHMuaCIKNzBkYjcxMyB1dGlsL2N1
-dGlsczogTW92ZSBzaXplX3RvX3N0cigpIGZyb20gInFlbXUtY29tbW9uLmgiIHRvICJjdXRpbHMu
-aCIKCj09PSBPVVRQVVQgQkVHSU4gPT09CkNoZWNraW5nIFBBVENIIDEvMzogdXRpbC9jdXRpbHM6
-IE1vdmUgc2l6ZV90b19zdHIoKSBmcm9tICJxZW11LWNvbW1vbi5oIiB0byAiY3V0aWxzLmgiLi4u
-CldBUk5JTkc6IEJsb2NrIGNvbW1lbnRzIHVzZSBhIGxlYWRpbmcgLyogb24gYSBzZXBhcmF0ZSBs
-aW5lCiM0MjogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjE2MDoKKy8qKgoKdG90YWw6IDAg
-ZXJyb3JzLCAxIHdhcm5pbmdzLCA0OCBsaW5lcyBjaGVja2VkCgpZb3VyIHBhdGNoIGhhcyBzdHls
-ZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZh
-bHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFU
-Q0ggaW4gTUFJTlRBSU5FUlMuCkNoZWNraW5nIFBBVENIIDIvMzogdXRpbC9jdXRpbHM6IE1vdmUg
-Y3R5cGUgbWFjcm9zIHRvICJjdXRpbHMuaCIuLi4KV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNl
-IGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzEwMDogRklMRTogaW5jbHVkZS9xZW11
-L2N1dGlscy5oOjY6CisvKiogdW5zaWduZWQgY3R5cGUgbWFjcm9zOgoKRVJST1I6IGNvZGUgaW5k
-ZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMTA4OiBGSUxFOiBpbmNsdWRlL3FlbXUvY3V0aWxz
-Lmg6MTQ6CisjZGVmaW5lIHFlbXVfaXNhbG51bShjKV5JXklpc2FsbnVtKCh1bnNpZ25lZCBjaGFy
-KShjKSkkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMxMDk6IEZJ
-TEU6IGluY2x1ZGUvcWVtdS9jdXRpbHMuaDoxNToKKyNkZWZpbmUgcWVtdV9pc2FscGhhKGMpXkle
-SWlzYWxwaGEoKHVuc2lnbmVkIGNoYXIpKGMpKSQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQg
-bmV2ZXIgdXNlIHRhYnMKIzExMDogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjE2OgorI2Rl
-ZmluZSBxZW11X2lzY250cmwoYyleSV5JaXNjbnRybCgodW5zaWduZWQgY2hhcikoYykpJAoKRVJS
-T1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMTExOiBGSUxFOiBpbmNsdWRl
-L3FlbXUvY3V0aWxzLmg6MTc6CisjZGVmaW5lIHFlbXVfaXNkaWdpdChjKV5JXklpc2RpZ2l0KCh1
-bnNpZ25lZCBjaGFyKShjKSkkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0
-YWJzCiMxMTI6IEZJTEU6IGluY2x1ZGUvcWVtdS9jdXRpbHMuaDoxODoKKyNkZWZpbmUgcWVtdV9p
-c2dyYXBoKGMpXkleSWlzZ3JhcGgoKHVuc2lnbmVkIGNoYXIpKGMpKSQKCkVSUk9SOiBjb2RlIGlu
-ZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzExMzogRklMRTogaW5jbHVkZS9xZW11L2N1dGls
-cy5oOjE5OgorI2RlZmluZSBxZW11X2lzbG93ZXIoYyleSV5JaXNsb3dlcigodW5zaWduZWQgY2hh
-cikoYykpJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMTE0OiBG
-SUxFOiBpbmNsdWRlL3FlbXUvY3V0aWxzLmg6MjA6CisjZGVmaW5lIHFlbXVfaXNwcmludChjKV5J
-Xklpc3ByaW50KCh1bnNpZ25lZCBjaGFyKShjKSkkCgpFUlJPUjogY29kZSBpbmRlbnQgc2hvdWxk
-IG5ldmVyIHVzZSB0YWJzCiMxMTU6IEZJTEU6IGluY2x1ZGUvcWVtdS9jdXRpbHMuaDoyMToKKyNk
-ZWZpbmUgcWVtdV9pc3B1bmN0KGMpXkleSWlzcHVuY3QoKHVuc2lnbmVkIGNoYXIpKGMpKSQKCkVS
-Uk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzExNjogRklMRTogaW5jbHVk
-ZS9xZW11L2N1dGlscy5oOjIyOgorI2RlZmluZSBxZW11X2lzc3BhY2UoYyleSV5JaXNzcGFjZSgo
-dW5zaWduZWQgY2hhcikoYykpJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2Ug
-dGFicwojMTE3OiBGSUxFOiBpbmNsdWRlL3FlbXUvY3V0aWxzLmg6MjM6CisjZGVmaW5lIHFlbXVf
-aXN1cHBlcihjKV5JXklpc3VwcGVyKCh1bnNpZ25lZCBjaGFyKShjKSkkCgpFUlJPUjogY29kZSBp
-bmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMxMTg6IEZJTEU6IGluY2x1ZGUvcWVtdS9jdXRp
-bHMuaDoyNDoKKyNkZWZpbmUgcWVtdV9pc3hkaWdpdChjKV5JaXN4ZGlnaXQoKHVuc2lnbmVkIGNo
-YXIpKGMpKSQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzExOTog
-RklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjI1OgorI2RlZmluZSBxZW11X3RvbG93ZXIoYyle
-SV5JdG9sb3dlcigodW5zaWduZWQgY2hhcikoYykpJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3Vs
-ZCBuZXZlciB1c2UgdGFicwojMTIwOiBGSUxFOiBpbmNsdWRlL3FlbXUvY3V0aWxzLmg6MjY6Cisj
-ZGVmaW5lIHFlbXVfdG91cHBlcihjKV5JXkl0b3VwcGVyKCh1bnNpZ25lZCBjaGFyKShjKSkkCgpF
-UlJPUjogY29kZSBpbmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMxMjE6IEZJTEU6IGluY2x1
-ZGUvcWVtdS9jdXRpbHMuaDoyNzoKKyNkZWZpbmUgcWVtdV9pc2FzY2lpKGMpXkleSWlzYXNjaWko
-KHVuc2lnbmVkIGNoYXIpKGMpKSQKCkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNl
-IHRhYnMKIzEyMjogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjI4OgorI2RlZmluZSBxZW11
-X3RvYXNjaWkoYyleSV5JdG9hc2NpaSgodW5zaWduZWQgY2hhcikoYykpJAoKdG90YWw6IDE1IGVy
-cm9ycywgMSB3YXJuaW5ncywgMTI2IGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2ggaGFzIHN0eWxl
-IHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFs
-c2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRD
-SCBpbiBNQUlOVEFJTkVSUy4KCkNoZWNraW5nIFBBVENIIDMvMzogdXRpbC9jdXRpbHM6IE1vdmUg
-ZnVuY3Rpb24gZG9jdW1lbnRhdGlvbnMgdG8gdGhlIGhlYWRlci4uLgpXQVJOSU5HOiBCbG9jayBj
-b21tZW50cyB1c2UgYSBsZWFkaW5nIC8qIG9uIGEgc2VwYXJhdGUgbGluZQojNzM6IEZJTEU6IGlu
-Y2x1ZGUvcWVtdS9jdXRpbHMuaDoxNTY6CisvKioKCldBUk5JTkc6IEJsb2NrIGNvbW1lbnRzIHVz
-ZSBhIGxlYWRpbmcgLyogb24gYSBzZXBhcmF0ZSBsaW5lCiM5NTogRklMRTogaW5jbHVkZS9xZW11
-L2N1dGlscy5oOjE3OToKKy8qKgoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGlu
-ZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzEyNDogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5o
-OjIwODoKKy8qKgoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBvbiBh
-IHNlcGFyYXRlIGxpbmUKIzE1NDogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjIzODoKKy8q
-KgoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRl
-IGxpbmUKIzE4MzogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjI2NzoKKy8qKgoKV0FSTklO
-RzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzIx
-NDogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjI5ODoKKy8qKgoKV0FSTklORzogQmxvY2sg
-Y29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzIyNTogRklMRTog
-aW5jbHVkZS9xZW11L2N1dGlscy5oOjMwOToKKy8qKgoKV0FSTklORzogQmxvY2sgY29tbWVudHMg
-dXNlIGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzIzNTogRklMRTogaW5jbHVkZS9x
-ZW11L2N1dGlscy5oOjMxOToKKy8qKgoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVh
-ZGluZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzI2MzogRklMRTogaW5jbHVkZS9xZW11L2N1dGls
-cy5oOjM0NzoKKy8qKgoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBv
-biBhIHNlcGFyYXRlIGxpbmUKIzI3MzogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjM1NzoK
-Ky8qKgoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBvbiBhIHNlcGFy
-YXRlIGxpbmUKIzMwNDogRklMRTogaW5jbHVkZS9xZW11L2N1dGlscy5oOjM4ODoKKy8qKgoKdG90
-YWw6IDAgZXJyb3JzLCAxMSB3YXJuaW5ncywgNTQ0IGxpbmVzIGNoZWNrZWQKCllvdXIgcGF0Y2gg
-aGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9y
-cwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUK
-Q0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1h
-bmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0
-cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAxODEyMjYxNzE1MzguMjE5ODQtMS1waGlsbWRAcmVkaGF0
-LmNvbS90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRl
-ZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ug
-c2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+On 1/2/19 6:41 PM, no-reply@patchew.org wrote:
+> Patchew URL: https://patchew.org/QEMU/20181226171538.21984-1-philmd@redhat.com/
+[...]> === OUTPUT BEGIN ===
+> Checking PATCH 1/3: util/cutils: Move size_to_str() from "qemu-common.h" to "cutils.h"...
+> WARNING: Block comments use a leading /* on a separate line
+> #42: FILE: include/qemu/cutils.h:160:
+> +/**
 
+I believe this warning is incorrect, since we use the /** marking for
+Doxygen generated documentation. The offending comment is:
+
+  /**
+   * size_to_str:
+   *
+   * Return human readable string for size @val.
+   * Use IEC binary units like KiB, MiB, and so forth.
+   *
+   * @val: The value to format.
+   *       Can be anything that uint64_t allows (no more than "16 EiB").
+   *
+   * Caller is responsible for passing it to g_free().
+   */
+   char *size_to_str(uint64_t val);
+
+Am I missing something?
+
+> Checking PATCH 2/3: util/cutils: Move ctype macros to "cutils.h"...
+> WARNING: Block comments use a leading /* on a separate line
+> #100: FILE: include/qemu/cutils.h:6:
+> +/** unsigned ctype macros:
+> 
+> ERROR: code indent should never use tabs
+> #108: FILE: include/qemu/cutils.h:14:
+> +#define qemu_isalnum(c)^I^Iisalnum((unsigned char)(c))$
+
+OK, this is code movement I forgot to fix :/
+
+> Checking PATCH 3/3: util/cutils: Move function documentations to the header...
+> WARNING: Block comments use a leading /* on a separate line
+> #73: FILE: include/qemu/cutils.h:156:
+> +/**
+> 
+> WARNING: Block comments use a leading /* on a separate line
+> #95: FILE: include/qemu/cutils.h:179:
+> +/**
+> 
+> WARNING: Block comments use a leading /* on a separate line
+> #124: FILE: include/qemu/cutils.h:208:
+> +/**
+> 
+> WARNING: Block comments use a leading /* on a separate line
+> #154: FILE: include/qemu/cutils.h:238:
+> +/**
+> 
+> WARNING: Block comments use a leading /* on a separate line
+> #183: FILE: include/qemu/cutils.h:267:
+> +/**
+> 
+> WARNING: Block comments use a leading /* on a separate line
+> #214: FILE: include/qemu/cutils.h:298:
+> +/**
+> 
+> WARNING: Block comments use a leading /* on a separate line
+> #225: FILE: include/qemu/cutils.h:309:
+> +/**
+> 
+> WARNING: Block comments use a leading /* on a separate line
+> #235: FILE: include/qemu/cutils.h:319:
+> +/**
+> 
+> WARNING: Block comments use a leading /* on a separate line
+> #263: FILE: include/qemu/cutils.h:347:
+> +/**
+> 
+> WARNING: Block comments use a leading /* on a separate line
+> #273: FILE: include/qemu/cutils.h:357:
+> +/**
+> 
+> WARNING: Block comments use a leading /* on a separate line
+> #304: FILE: include/qemu/cutils.h:388:
+> +/**
 
