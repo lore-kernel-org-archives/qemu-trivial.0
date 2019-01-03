@@ -1,59 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gf7mI-00006c-Ik
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Jan 2019 13:31:34 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:36186)
+	id 1gf98X-0001DW-3L
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Jan 2019 14:58:37 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:58185)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gf7mE-0008Vj-2d
-	for qemu-trivial@nongnu.org; Thu, 03 Jan 2019 13:31:31 -0500
+	(envelope-from <jon.diekema@gmail.com>) id 1gf98U-0001DJ-Qm
+	for qemu-trivial@nongnu.org; Thu, 03 Jan 2019 14:58:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1gf7mC-0007LT-A3
-	for qemu-trivial@nongnu.org; Thu, 03 Jan 2019 13:31:29 -0500
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:37151)
+	(envelope-from <jon.diekema@gmail.com>) id 1gf98Q-0002ee-PJ
+	for qemu-trivial@nongnu.org; Thu, 03 Jan 2019 14:58:34 -0500
+Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e]:43494)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1gf7mC-0007Hj-15
-	for qemu-trivial@nongnu.org; Thu, 03 Jan 2019 13:31:28 -0500
-Received: by mail-ot1-x341.google.com with SMTP id 40so30122678oth.4
-	for <qemu-trivial@nongnu.org>; Thu, 03 Jan 2019 10:31:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=gTjlVCifx06q4oHQ9YFVXzgLrIuhUcFTQKS7YSRmVzE=;
-	b=Z00H3Srr8TElWiZmj3wnO6HGT/xsptzAMUywl9bsNPgmzg4/fsBngxvfu6+GuvJjv0
-	gyVTF/gkNp3PSDoHgbZGnQfN7Tdcta4SJGAW6SH8qNQ04+etYUDv3WNvuT+pY9bN1Ki2
-	eI+DYfANlg8VEY8/CYU7mEEcdrRs/13yQEC5s=
+	(Exim 4.71) (envelope-from <jon.diekema@gmail.com>)
+	id 1gf98Q-0002eS-J6
+	for qemu-trivial@nongnu.org; Thu, 03 Jan 2019 14:58:30 -0500
+Received: by mail-vs1-xe2e.google.com with SMTP id x1so21408559vsc.10
+	for <qemu-trivial@nongnu.org>; Thu, 03 Jan 2019 11:58:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=message-id:from:date:subject:to;
+	bh=HjxHS80aC4HyPnmeSwPV9bvfJe6RWyYaxVQSULN5OQI=;
+	b=h9ktXAzPvY892yUy6+4bwIz2dN+XwYJOKq7ElANCLV5csMunH7gmxo6o6ABLnmLb4g
+	SaeJYBYZ+/K7SfsUFKSLZRkKMsXA2SVnFhABfIIKHmH1slza4XEv0smjOfgRKFyB4PVG
+	3HWzZ82pa3znFmlbSpMSR0jRLH4ZKgiKfE9qFto+EBteTNA+NDZJjnQomF6tXXRnvJ8V
+	PLfMV9EqTKyrX1iqM5JFBHU+bgTrClrvpwxwHDN//KI2TRW6BsSP2bfUcTTlapRvRHNN
+	24OL1tcaJs2ez4u0qtzyNj41MokI0gq1wmoFHP5wgA5Wqt0Kuay9h4pIHpDDBsn1CIIj
+	0YJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=gTjlVCifx06q4oHQ9YFVXzgLrIuhUcFTQKS7YSRmVzE=;
-	b=RpYXIDUAkQl5NBKEkxqjp+KthlbHFK9iGEZQkMY0KjrsrSG7zGQ7pg26lSC+P2B3F+
-	hGC5xZOtwZ8Ydm48K8PIttLLWMD3A81yuwav5PUCxdKsBHeNwvBPdTOvrD6NnLXdXscu
-	8Bcf3/tH+IQJchfkUnzWfaL6kM2rctS/muBcuxdjr+h40u4ppmbO7mypQ6eQFDerRSk8
-	mdNLFVPjDuz9kc5Qv48OSlR0T4IKoBxMlm7A4TcCU7ImOKiHXHfde2YYtNshnraq0I0t
-	Foyo85pJTN+R97NBpy/oxlZD4/CQnJgDkE/vxaHwviQD1NOg78x20UTzEICgsSGYFNd4
-	BmoQ==
-X-Gm-Message-State: AJcUukclNlHF0xEU+1Vm3KhSIiXzJLcz46ijOlhqAevqvzoSRiPdz2TJ
-	5o9lKgEtawmXEfgoENPTNaIYqmdfI8t1n6qKCBmXIA==
-X-Google-Smtp-Source: ALg8bN6+5oTu9Jp0IwYbKIAUxGCbXFQLsSpUox8Xu86ThY33HaubQ0K1b8T88UQCw2aC/WQfl0HYGfXEicaJwtjBUCM=
-X-Received: by 2002:a9d:3786:: with SMTP id x6mr34322852otb.238.1546540285023; 
-	Thu, 03 Jan 2019 10:31:25 -0800 (PST)
-MIME-Version: 1.0
-References: <20180908182205.GB409@mornington.dcs.gla.ac.uk>
-In-Reply-To: <20180908182205.GB409@mornington.dcs.gla.ac.uk>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 3 Jan 2019 18:31:13 +0000
-Message-ID: <CAFEAcA83dVVyQLsADoNBN7feFxnWcVr5r0SPA8PffaG2140yPw@mail.gmail.com>
-To: Tony Garnock-Jones <tony.garnock-jones@glasgow.ac.uk>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Riku Voipio <riku.voipio@iki.fi>, qemu-stable <qemu-stable@nongnu.org>, 
-	Laurent Vivier <laurent@vivier.eu>
-Content-Type: text/plain; charset="UTF-8"
+	h=x-gm-message-state:message-id:from:date:subject:to;
+	bh=HjxHS80aC4HyPnmeSwPV9bvfJe6RWyYaxVQSULN5OQI=;
+	b=gaVl+p7KUzPY6V7NXn3iYD/C8FQJUX3gac5/VdaEW4CZpx5jzjnusEGdk+IxADiHrJ
+	zAoKthkWinXMsDd27LNGmSn5qK7/2s+tLn/y5vPWfE069nkEcTfwtIBYzCwfVQuo3wws
+	nzg5xxF6Vjnqp1SP1Ns2P2Aepkv4zEMREl/37jLBRBpyV6a6Ml9at87143aN1tdRH/Qt
+	dzmCWvYZELRySykqse3WOijlp9jI5Q0xbLrfxshJ4MRacgOanlSTLuHTS1b733gA2pIm
+	eEEMpRXZ/r/gDI9P7s48CQi55AeHUUJJjZWn2nS5vJRWAAADtBN5lPuyOj5uPitEhAtu
+	d+pg==
+X-Gm-Message-State: AA+aEWZVuDCog413OICIgp5GiIW7k9sg+QLEaRoxlzq59doM5/Y2NNP6
+	QnaZwJowoxt0tqIv8VqVhYvRn8p/
+X-Google-Smtp-Source: AFSGD/V7RBai+QXrs7Tdy37Aa7fSM9EvciDDW/M18kIdIIc9s91us4xU3PCWEsmsOG66A1wmVb+JwA==
+X-Received: by 2002:a67:820f:: with SMTP id e15mr19827636vsd.156.1546545509674;
+	Thu, 03 Jan 2019 11:58:29 -0800 (PST)
+Received: from localhost.localdomain (c-68-61-44-136.hsd1.mi.comcast.net.
+	[68.61.44.136]) by smtp.gmail.com with ESMTPSA id
+	w83sm16068518vke.22.2019.01.03.11.58.27
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 03 Jan 2019 11:58:29 -0800 (PST)
+Message-ID: <5c2e6965.1c69fb81.b832c.13ee@mx.google.com>
+From: Jon Diekema <jon.diekema@gmail.com>
+X-Google-Original-From: "Jon Diekema" <diekemjm@localhost.localdomain>
+Received: by localhost.localdomain (sSMTP sendmail emulation);
+	Thu, 03 Jan 2019 14:58:27 -0500
+Date: Thu, 03 Jan 2019 14:58:27 -0500
+To: <qemu-trivial@nongnu.org>,<jon.diekema@gmail.com>
+X-Mailer: mail (GNU Mailutils 3.4)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::341
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: write(fd, NULL,
- 0) parity with linux's treatment of same
+X-Received-From: 2607:f8b0:4864:20::e2e
+Subject: [Qemu-trivial] Whitespace cleanup: target/ppc/translate_init.inc.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,60 +67,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Jan 2019 18:31:31 -0000
+X-List-Received-Date: Thu, 03 Jan 2019 19:58:35 -0000
 
-On Sat, 8 Sep 2018 at 22:04, Tony Garnock-Jones
-<tony.garnock-jones@glasgow.ac.uk> wrote:
->
-> Bring linux-user write(2) handling into line with linux for the case
-> of a 0-byte write with a NULL buffer. Based on a patch originally
-> written by Zhuowei Zhang.
->
-> Addresses https://bugs.launchpad.net/qemu/+bug/1716292.
->
-> From Zhuowei Zhang's patch (https://lists.gnu.org/archive/html/qemu-devel/2017-09/msg08073.html):
->
->     Linux returns success for the special case of calling write with a
->     zero-length NULL buffer: compiling and running
->
->     int main() {
->        ssize_t ret = write(STDOUT_FILENO, NULL, 0);
->        fprintf(stderr, "write returned %ld\n", ret);
->        return 0;
->     }
->
->     gives "write returned 0" when run directly, but "write returned
->     -1" in QEMU.
->
->     This commit checks for this situation and returns success if
->     found.
->
-> Subsequent discussion raised the following questions (and my answers):
->
->  - Q. Should TARGET_NR_read pass through to safe_read in this
->       situation too?
->    A. I'm wary of changing unrelated code to the specific problem I'm
->       addressing. TARGET_NR_read is already consistent with Linux for
->       this case.
->
->  - Q. Do pread64/pwrite64 need to be changed similarly?
->    A. Experiment suggests not: both linux and linux-user yield -1 for
->       NULL 0-length reads/writes.
+From: Jon Diekema <jon.diekema@gmail.com>
+Date: Tue, 25 Dec 2018 04:03:04 -0500
+Subject: Whitespace cleanup: target/ppc/translate_init.inc.c
 
-Hi; following up on this, we've just had
-https://bugs.launchpad.net/qemu/+bug/1810433 which is
-a report of the same NULL/0 bug for pwrite64. Looking at the
-kernel code I see that both the write and pwrite64 syscalls
-go through the same vfs_write() common function, so their
-behaviour for NULL/0 should be identical. Experimentally,
-stracing the 1810433 test program gives
- pwrite64(3, NULL, 0, 0)                 = 0
-so we do indeed need to special case NULL/0 there as well
-as in write().
+Signed-off-by: Jon Diekema <jon.diekema@gmail.com>
+---
+ target/ppc/translate_init.inc.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-The extra fix should be straightforward -- does anybody
-feel like writing up a patch for it?
+diff --git a/target/ppc/translate_init.inc.c b/target/ppc/translate_init.inc.c
+index c971a5faf7..b5f4c9bd55 100644
+--- a/target/ppc/translate_init.inc.c
++++ b/target/ppc/translate_init.inc.c
+@@ -5237,7 +5237,7 @@ static void init_proc_601(CPUPPCState *env)
+                  0x00000000);
+     /* Memory management */
+     init_excp_601(env);
+-    /* XXX: beware that dcache line size is 64 
++    /* XXX: beware that dcache line size is 64
+      *      but dcbz uses 32 bytes "sectors"
+      * XXX: this breaks clcs instruction !
+      */
+@@ -10485,7 +10485,7 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
+     cc->tcg_initialize = ppc_translate_init;
+ #endif
+     cc->disas_set_info = ppc_disas_set_info;
+- 
++
+     dc->fw_name = "PowerPC,UNKNOWN";
+ }
+ 
+-- 
+2.20.1.3.gf17a2b179
 
-thanks
--- PMM
 
