@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gfVtA-00030c-FU
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Jan 2019 15:16:16 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:34180)
+	id 1gfVuV-00047y-KH
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Jan 2019 15:17:39 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:34646)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1gfVt6-0002v3-33
-	for qemu-trivial@nongnu.org; Fri, 04 Jan 2019 15:16:15 -0500
+	(envelope-from <eblake@redhat.com>) id 1gfVuP-00045V-Sg
+	for qemu-trivial@nongnu.org; Fri, 04 Jan 2019 15:17:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1gfVt5-0004UV-8b
-	for qemu-trivial@nongnu.org; Fri, 04 Jan 2019 15:16:12 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36002)
+	(envelope-from <eblake@redhat.com>) id 1gfVuP-0005yf-8J
+	for qemu-trivial@nongnu.org; Fri, 04 Jan 2019 15:17:33 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:39854)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1gfVsw-0004PA-NI; Fri, 04 Jan 2019 15:16:02 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	id 1gfVuG-0005Wl-Pj; Fri, 04 Jan 2019 15:17:25 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F089EC058CA9;
-	Fri,  4 Jan 2019 20:16:00 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 7BB654E90E;
+	Fri,  4 Jan 2019 20:17:23 +0000 (UTC)
 Received: from [10.3.116.216] (ovpn-116-216.phx2.redhat.com [10.3.116.216])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id AE414600D6;
-	Fri,  4 Jan 2019 20:15:50 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7C5095C1A1;
+	Fri,  4 Jan 2019 20:17:15 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	qemu-devel@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <thuth@redhat.com>,
@@ -34,7 +34,7 @@ Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <thuth@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Stefano Garzarella
 	<sgarzare@redhat.com>, Richard Henderson <rth@twiddle.net>
 References: <20190104181208.7809-1-philmd@redhat.com>
-	<20190104181208.7809-3-philmd@redhat.com>
+	<20190104181208.7809-4-philmd@redhat.com>
 From: Eric Blake <eblake@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=eblake@redhat.com; keydata=
@@ -62,24 +62,24 @@ Autocrypt: addr=eblake@redhat.com; keydata=
 	CTV4mvrOQjWqQwd+qdUGHRQTl+JmAKT3EWZkqLpmvGknsYSN+qtwOwBJQx1xMrDaLMJjRhur
 	yDNGgb1fUeXFoaCmi+Xb/jO1/5oo1cfeiCorcAEhQppR1B8RFRNVDUYGHIHRfB7lpOU=
 Organization: Red Hat, Inc.
-Message-ID: <791f6b8e-c488-7d72-956f-91e9748c74b8@redhat.com>
-Date: Fri, 4 Jan 2019 14:15:49 -0600
+Message-ID: <349cd87b-0526-30b8-d9cd-0eee537ab5a4@redhat.com>
+Date: Fri, 4 Jan 2019 14:17:14 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.3.1
 MIME-Version: 1.0
-In-Reply-To: <20190104181208.7809-3-philmd@redhat.com>
+In-Reply-To: <20190104181208.7809-4-philmd@redhat.com>
 Content-Type: multipart/signed; micalg=pgp-sha256;
 	protocol="application/pgp-signature";
-	boundary="U6mMksGBEI6Y1Yf8MkJsA8179rEGiP5wO"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+	boundary="ovPHYZvWjj0WMrppWv1Y6vY58dY7WfNiU"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Fri, 04 Jan 2019 20:16:01 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 04 Jan 2019 20:17:23 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 2/3] util/cutils: Move
- ctype macros to "cutils.h"
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 3/3] util/cutils: Move
+ function documentations to the header
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -91,11 +91,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Jan 2019 20:16:15 -0000
+X-List-Received-Date: Fri, 04 Jan 2019 20:17:38 -0000
 
 This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---U6mMksGBEI6Y1Yf8MkJsA8179rEGiP5wO
-Content-Type: multipart/mixed; boundary="hEhYHS9yuPJ042oxmMfnYYkTWfbKzFujC";
+--ovPHYZvWjj0WMrppWv1Y6vY58dY7WfNiU
+Content-Type: multipart/mixed; boundary="hLXyelTPJUEd7FS2v354URSGA5z0CvD0D";
  protected-headers="v1"
 From: Eric Blake <eblake@redhat.com>
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
@@ -109,46 +109,35 @@ Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <thuth@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>,
  Paolo Bonzini <pbonzini@redhat.com>, Stefano Garzarella
  <sgarzare@redhat.com>, Richard Henderson <rth@twiddle.net>
-Message-ID: <791f6b8e-c488-7d72-956f-91e9748c74b8@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH v2 2/3] util/cutils: Move ctype macros to
- "cutils.h"
+Message-ID: <349cd87b-0526-30b8-d9cd-0eee537ab5a4@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH v2 3/3] util/cutils: Move function
+ documentations to the header
 References: <20190104181208.7809-1-philmd@redhat.com>
- <20190104181208.7809-3-philmd@redhat.com>
-In-Reply-To: <20190104181208.7809-3-philmd@redhat.com>
+ <20190104181208.7809-4-philmd@redhat.com>
+In-Reply-To: <20190104181208.7809-4-philmd@redhat.com>
 
---hEhYHS9yuPJ042oxmMfnYYkTWfbKzFujC
+--hLXyelTPJUEd7FS2v354URSGA5z0CvD0D
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 
 On 1/4/19 12:12 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Introduced in cd390083ad1, these macros don't need to be in
-> a generic header.
-> Add documentation to justify their use.
+> Many functions have documentation before the implementation in
+> cutils.c. Since we expect documentation around the prototype
+> declaration in headers, move the comments in cutils.h.
 >=20
-> Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
+>  include/qemu/cutils.h | 224 ++++++++++++++++++++++++++++++++++++++++++=
 
-> +++ b/include/qemu/cutils.h
-> @@ -3,6 +3,31 @@
-> =20
->  #include "qemu/fprintf-fn.h"
-> =20
-> +/**
-> + * unsigned ctype macros:
-> + *
-> + * The standards require that the argument for these functions
-> + * is either EOF or a value that is representable in the type
-> + * unsigned char. If the argument is of type char, it must be
-> + * cast to unsigned char. This is what these macros do,
-> + * avoiding 'signed to unsigned' conversion warnings.
+>  util/cutils.c         | 185 ----------------------------------
+>  2 files changed, 224 insertions(+), 185 deletions(-)
 
-I would also mention that these macros are ONLY intended for use with
-char arguments (as they CANNOT handle EOF); if you are doing int c =3D
-getchar() or similar, you still want to call the original ctype macro.
-
-Otherwise, the move and added comments makes sense to me.
+I find documentation in .c files slightly easier to use (you can then
+read the code right below to see if the documentation is still
+accurate); but as we had an inconsistent mix, I'm also okay with your
+patch consolidating all the documentation to one of the two files,
+rather than the bad mix of half-and-half.
 
 --=20
 Eric Blake, Principal Software Engineer
@@ -156,24 +145,24 @@ Red Hat, Inc.           +1-919-301-3226
 Virtualization:  qemu.org | libvirt.org
 
 
---hEhYHS9yuPJ042oxmMfnYYkTWfbKzFujC--
+--hLXyelTPJUEd7FS2v354URSGA5z0CvD0D--
 
---U6mMksGBEI6Y1Yf8MkJsA8179rEGiP5wO
+--ovPHYZvWjj0WMrppWv1Y6vY58dY7WfNiU
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
 Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAEBCAAdFiEEY3OaSlgimHGqKqRv3g5py3orov0FAlwvvvYACgkQ3g5py3or
-ov2lOAf+PRxOQGnw4rAIKrcvzydUFWGyTLA1OaZtrGLjtgMQdDviQK4sP35+Or0i
-TKS5PUHLmWtOY2TP+ABlaF8elTfL7p5XX8QAMPrPhQvp3uk+SLCC1GMdfKhNKJc4
-s2l8zZh+y6qMCJWzQlsYavle1BdLvGcZWLLC+hQJfwghPODxnQgk/bkzJKvYjQr4
-NVQ1kSigVcy4j3yOOF4aE2W14ikvbr8nDRVeSrfrD4/p34tYutBlKV2YLCMO9PN2
-zS2P1JRYcnQVWpgAqSbkaJOplG+G0u+4av0Bf50reNpOoYyIghJ8qE4TftODBq9j
-J3AB1gyTMf/cqTp/DLkLW6VAdkHhhw==
-=vrPr
+iQEzBAEBCAAdFiEEY3OaSlgimHGqKqRv3g5py3orov0FAlwvv0oACgkQ3g5py3or
+ov1/8gf8DOeTEAae/7Z0+naf9nIxiQr4KaMa7lEAD5J1lPumjYmcjLY8Xm5r6g2g
+vVNilsHfenfdoVgk25op5eS0j03/FRu3aY++iVaVYRmERvL+sCPcjFq5zaAePg+d
+GFByjBH9c9qrtrijN+nwBjKGnCj2IR7Ik18lNKSx30gzjsT7UJMQ6DLKVGTn4D4p
+zDKBeGvz33NGOQ/iBFSYmLBsewyJvWAw6s6MibeJlJT6S1sxK+eLbcOw0lk6UE9M
+780zYBMXtS3mtGM29GokFhI72RSzp7VlvMwF3vQtMnAVZtvS/Ac2dauVrsyskCWf
+KyNN5Xwv3CDiM01nkAobDY5rpgUBjA==
+=w43k
 -----END PGP SIGNATURE-----
 
---U6mMksGBEI6Y1Yf8MkJsA8179rEGiP5wO--
+--ovPHYZvWjj0WMrppWv1Y6vY58dY7WfNiU--
 
