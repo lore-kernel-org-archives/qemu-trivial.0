@@ -1,40 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gfRSk-0006V3-LD
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Jan 2019 10:32:42 -0500
-Received: from eggs.gnu.org ([208.118.235.92]:60071)
+	id 1gfTxe-0002IO-67
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Jan 2019 13:12:46 -0500
+Received: from eggs.gnu.org ([208.118.235.92]:56731)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gfRSi-0006TJ-Mj
-	for qemu-trivial@nongnu.org; Fri, 04 Jan 2019 10:32:41 -0500
+	(envelope-from <philmd@redhat.com>) id 1gfTxb-0002E5-AB
+	for qemu-trivial@nongnu.org; Fri, 04 Jan 2019 13:12:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gfRSg-0004Sh-Um
-	for qemu-trivial@nongnu.org; Fri, 04 Jan 2019 10:32:40 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:48692)
+	(envelope-from <philmd@redhat.com>) id 1gfTxY-0003Gf-Ao
+	for qemu-trivial@nongnu.org; Fri, 04 Jan 2019 13:12:43 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50920)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gfRSc-0004Gg-4S; Fri, 04 Jan 2019 10:32:34 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
+	(Exim 4.71) (envelope-from <philmd@redhat.com>)
+	id 1gfTxP-00035G-46; Fri, 04 Jan 2019 13:12:31 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3594A7970E;
-	Fri,  4 Jan 2019 15:32:27 +0000 (UTC)
-Received: from thuth.com (dhcp-200-199.str.redhat.com [10.33.200.199])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6BD48105B203;
-	Fri,  4 Jan 2019 15:32:26 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 65BDB8666F;
+	Fri,  4 Jan 2019 18:12:25 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-119.brq.redhat.com [10.40.204.119])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id A0FAD4EE1F;
+	Fri,  4 Jan 2019 18:12:11 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Date: Fri,  4 Jan 2019 16:32:23 +0100
-Message-Id: <1546615943-16274-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Cc: Fam Zheng <fam@euphon.net>, qemu-trivial@nongnu.org,
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>,
+	qemu-ppc@nongnu.org, Thomas Huth <thuth@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	qemu-s390x@nongnu.org, Richard Henderson <rth@twiddle.net>,
+	Stefano Garzarella <sgarzare@redhat.com>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Halil Pasic <pasic@linux.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Fri,  4 Jan 2019 19:12:05 +0100
+Message-Id: <20190104181208.7809-1-philmd@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Fri, 04 Jan 2019 15:32:27 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Fri, 04 Jan 2019 18:12:25 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] trivial: Don't include isa.h if it is not
- really necessary
+Subject: [Qemu-trivial] [PATCH v2 0/3] cutils: Cleanup, improve documentation
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,133 +58,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Jan 2019 15:32:41 -0000
+X-List-Received-Date: Fri, 04 Jan 2019 18:12:44 -0000
 
-These files don't seem to do anything related to ISA directly, so
-there is no need to include isa.h here.
+This series is a fairly trivial cleanup of "cutils.h"
+(size_to_str() and ctype macros moved into it), and
+some documentation improvements.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/display/ramfb-standalone.c | 1 -
- hw/ide/pci.c                  | 1 -
- hw/ide/piix.c                 | 1 -
- hw/ide/via.c                  | 1 -
- hw/misc/macio/mac_dbdma.c     | 1 -
- hw/moxie/moxiesim.c           | 1 -
- hw/nvram/fw_cfg.c             | 1 -
- hw/sparc/sun4m.c              | 1 -
- hw/timer/i8254.c              | 1 -
- 9 files changed, 9 deletions(-)
+Since v1:
+- Fixed checkpatch errors (patchew)
+- Added Stefano R-b
 
-diff --git a/hw/display/ramfb-standalone.c b/hw/display/ramfb-standalone.c
-index c0d241b..da3229a 100644
---- a/hw/display/ramfb-standalone.c
-+++ b/hw/display/ramfb-standalone.c
-@@ -1,7 +1,6 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "hw/loader.h"
--#include "hw/isa/isa.h"
- #include "hw/display/ramfb.h"
- #include "ui/console.h"
- #include "sysemu/sysemu.h"
-diff --git a/hw/ide/pci.c b/hw/ide/pci.c
-index fe1ceeb..b75154f 100644
---- a/hw/ide/pci.c
-+++ b/hw/ide/pci.c
-@@ -25,7 +25,6 @@
- #include "qemu/osdep.h"
- #include "hw/hw.h"
- #include "hw/pci/pci.h"
--#include "hw/isa/isa.h"
- #include "sysemu/dma.h"
- #include "qemu/error-report.h"
- #include "hw/ide/pci.h"
-diff --git a/hw/ide/piix.c b/hw/ide/piix.c
-index a3afe1f..885c16e 100644
---- a/hw/ide/piix.c
-+++ b/hw/ide/piix.c
-@@ -26,7 +26,6 @@
- #include "qemu/osdep.h"
- #include "hw/hw.h"
- #include "hw/pci/pci.h"
--#include "hw/isa/isa.h"
- #include "sysemu/block-backend.h"
- #include "sysemu/sysemu.h"
- #include "sysemu/blockdev.h"
-diff --git a/hw/ide/via.c b/hw/ide/via.c
-index 238f038..987d99c 100644
---- a/hw/ide/via.c
-+++ b/hw/ide/via.c
-@@ -26,7 +26,6 @@
- #include "qemu/osdep.h"
- #include "hw/hw.h"
- #include "hw/pci/pci.h"
--#include "hw/isa/isa.h"
- #include "sysemu/sysemu.h"
- #include "sysemu/dma.h"
- 
-diff --git a/hw/misc/macio/mac_dbdma.c b/hw/misc/macio/mac_dbdma.c
-index 87ae246..e5917d8 100644
---- a/hw/misc/macio/mac_dbdma.c
-+++ b/hw/misc/macio/mac_dbdma.c
-@@ -38,7 +38,6 @@
-  */
- #include "qemu/osdep.h"
- #include "hw/hw.h"
--#include "hw/isa/isa.h"
- #include "hw/ppc/mac_dbdma.h"
- #include "qemu/main-loop.h"
- #include "qemu/log.h"
-diff --git a/hw/moxie/moxiesim.c b/hw/moxie/moxiesim.c
-index 4b0ce09..c6b6f72 100644
---- a/hw/moxie/moxiesim.c
-+++ b/hw/moxie/moxiesim.c
-@@ -31,7 +31,6 @@
- #include "cpu.h"
- #include "hw/sysbus.h"
- #include "hw/hw.h"
--#include "hw/isa/isa.h"
- #include "net/net.h"
- #include "sysemu/sysemu.h"
- #include "hw/boards.h"
-diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-index 3cb726f..62e9464 100644
---- a/hw/nvram/fw_cfg.c
-+++ b/hw/nvram/fw_cfg.c
-@@ -27,7 +27,6 @@
- #include "sysemu/sysemu.h"
- #include "sysemu/dma.h"
- #include "hw/boards.h"
--#include "hw/isa/isa.h"
- #include "hw/nvram/fw_cfg.h"
- #include "hw/sysbus.h"
- #include "trace.h"
-diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-index 639906c..709ee37 100644
---- a/hw/sparc/sun4m.c
-+++ b/hw/sparc/sun4m.c
-@@ -37,7 +37,6 @@
- #include "net/net.h"
- #include "hw/boards.h"
- #include "hw/scsi/esp.h"
--#include "hw/isa/isa.h"
- #include "hw/nvram/sun_nvram.h"
- #include "hw/nvram/chrp_nvram.h"
- #include "hw/nvram/fw_cfg.h"
-diff --git a/hw/timer/i8254.c b/hw/timer/i8254.c
-index 1057850..20f834e 100644
---- a/hw/timer/i8254.c
-+++ b/hw/timer/i8254.c
-@@ -23,7 +23,6 @@
-  */
- #include "qemu/osdep.h"
- #include "hw/hw.h"
--#include "hw/isa/isa.h"
- #include "qemu/timer.h"
- #include "hw/timer/i8254.h"
- #include "hw/timer/i8254_internal.h"
--- 
-1.8.3.1
+There are still checkpatch warnings (due to 8c06fbdf36b) for using the
+Doxygen '/**' comment opening:
+
+    WARNING: Block comments use a leading /* on a separate line
+    #42: FILE: include/qemu/cutils.h:160:
+    +/**
+
+v1: https://lists.gnu.org/archive/html/qemu-devel/2018-12/msg05927.html
+
+Regards,
+
+Phil.
+
+Philippe Mathieu-Daud=C3=A9 (3):
+  util/cutils: Move size_to_str() from "qemu-common.h" to "cutils.h"
+  util/cutils: Move ctype macros to "cutils.h"
+  util/cutils: Move function documentations to the header
+
+ hw/core/bus.c                |   2 +-
+ hw/core/qdev-properties.c    |   1 +
+ hw/s390x/s390-virtio-ccw.c   |   1 +
+ hw/scsi/scsi-generic.c       |   2 +-
+ include/qemu-common.h        |  17 ---
+ include/qemu/cutils.h        | 262 +++++++++++++++++++++++++++++++++++
+ qapi/qapi-util.c             |   2 +-
+ qapi/string-output-visitor.c |   2 +-
+ qobject/json-parser.c        |   1 -
+ target/ppc/monitor.c         |   1 +
+ ui/keymaps.c                 |   1 +
+ util/cutils.c                | 191 -------------------------
+ util/id.c                    |   2 +-
+ util/readline.c              |   1 -
+ 14 files changed, 271 insertions(+), 215 deletions(-)
+
+--=20
+2.17.2
 
 
