@@ -1,107 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ggPR7-0006Qw-SI
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Jan 2019 02:35:01 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33978)
+	id 1ggQkq-0005uU-Ew
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Jan 2019 03:59:28 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34003)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggPR5-0006Ot-RO
-	for qemu-trivial@nongnu.org; Mon, 07 Jan 2019 02:35:00 -0500
+	(envelope-from <sgarzare@redhat.com>) id 1ggQko-0005tF-Q2
+	for qemu-trivial@nongnu.org; Mon, 07 Jan 2019 03:59:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggPR5-0003gE-5M
-	for qemu-trivial@nongnu.org; Mon, 07 Jan 2019 02:34:59 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:36298)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1ggPR2-0003eR-0n; Mon, 07 Jan 2019 02:34:56 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 753EC85362;
-	Mon,  7 Jan 2019 07:34:53 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-133.ams2.redhat.com [10.36.116.133])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D07A35D9CD;
-	Mon,  7 Jan 2019 07:34:40 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>, Andrew Jeffery
-	<andrew@aj.id.au>, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
-	Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Beniamino Galvani <b.galvani@gmail.com>, Michael Walle <michael@walle.cc>, 
-	Richard Henderson <rth@twiddle.net>, Jan Kiszka <jan.kiszka@web.de>,
-	Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	Peter Chubb <peter.chubb@nicta.com.au>, Aurelien Jarno
-	<aurelien@aurel32.net>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Rob Herring <robh@kernel.org>
-References: <20190104175847.6290-1-philmd@redhat.com>
-	<20190104175847.6290-14-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <5b87c418-4260-eb4a-2918-b8105abd816d@redhat.com>
-Date: Mon, 7 Jan 2019 08:34:39 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	(envelope-from <sgarzare@redhat.com>) id 1ggQkl-0000Th-VA
+	for qemu-trivial@nongnu.org; Mon, 07 Jan 2019 03:59:25 -0500
+Received: from mail-oi1-f196.google.com ([209.85.167.196]:44034)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1ggQkj-0000Q4-KN
+	for qemu-trivial@nongnu.org; Mon, 07 Jan 2019 03:59:23 -0500
+Received: by mail-oi1-f196.google.com with SMTP id m6so35258003oig.11
+	for <qemu-trivial@nongnu.org>; Mon, 07 Jan 2019 00:59:15 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=4GWv31SBU9rVXpz8/1PXpayCeYS7BV69Svb/hc+/23s=;
+	b=LbEwBgfVBE2qhZ6UJZAmm6MbrGzco/RKWxW/rVsF1r1vh9BaTQ0e3J/K7oCg4BN75g
+	XO3ZyaOiCEpspwAowQzjlo8iUG+WJvuFl6ETQRcjZzT6pJoppqFvPF5QnlVH/B5Xd5yH
+	JsIA7sG0VyDr12ZdNueLKFaaV6ygDdwok/Y+kjO51WTYzUDIV7xwltpeEX0+JwEWkGKe
+	Ay/iEOqzEcd2FcDGboj+ItLt+qoU26MU5ajNQ5nxAzFVM3iOiHAEaZXpBtXteTrviZN5
+	A/usvCWGM8fxRQOmBfjoZ4BlKpbfcabwEoM+ezOvgRlFvZny9iL3wzgSRegjk8cDLTA4
+	u3Dg==
+X-Gm-Message-State: AA+aEWZTAv2Tk+wcHK+8H9XYcc6kXZ1egrKnnzapTuxtCiwLxSjb2shY
+	ZI+xy628IMFzy8zpQ6Iyk0j73Wt7rEzLa14O1dOftA==
+X-Google-Smtp-Source: AFSGD/VGh3CH/1oAHHpnX3AaKqmF4cz3bocvvUpEZuALOcJEHFY5Se6IqflDzuwUhArRl2soUDvMlIW7q8R92d9hw9o=
+X-Received: by 2002:aca:ed48:: with SMTP id l69mr42634175oih.31.1546851554825; 
+	Mon, 07 Jan 2019 00:59:14 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20190104175847.6290-14-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.25]);
-	Mon, 07 Jan 2019 07:34:54 +0000 (UTC)
+References: <20190104181208.7809-1-philmd@redhat.com>
+	<20190104181208.7809-2-philmd@redhat.com>
+In-Reply-To: <20190104181208.7809-2-philmd@redhat.com>
+From: Stefano Garzarella <sgarzare@redhat.com>
+Date: Mon, 7 Jan 2019 09:59:03 +0100
+Message-ID: <CAGxU2F6wbeFXAvcCMJbDn4_FF3iigiD25QZVo7RnR2--YbUbrQ@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>, qemu-trivial@nongnu.org,
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>,
+	"open list:PowerPC" <qemu-ppc@nongnu.org>, Thomas Huth <thuth@redhat.com>, 
+	Cornelia Huck <cohuck@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	"open list:S390" <qemu-s390x@nongnu.org>,
+	Richard Henderson <rth@twiddle.net>, 
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Halil Pasic <pasic@linux.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH 13/16] hw/net/ne2000-isa: Add guards to
- the header
+	[fuzzy]
+X-Received-From: 209.85.167.196
+Subject: Re: [Qemu-trivial] [PATCH v2 1/3] util/cutils: Move size_to_str()
+ from "qemu-common.h" to "cutils.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -113,38 +66,105 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Jan 2019 07:35:00 -0000
+X-List-Received-Date: Mon, 07 Jan 2019 08:59:27 -0000
 
-On 2019-01-04 18:58, Philippe Mathieu-Daud=C3=A9 wrote:
+On Fri, Jan 4, 2019 at 7:12 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+om> wrote:
+>
+> The size_to_str() function doesn't need to be in a generic header.
+>
+> It makes also sens to find this function in the same header than
+> the opposite string to size functions: qemu_strtosz*().
+> Note than this function is already implemented in util/cutils.c.
+>
+> Since we introduce a new function in a header, we document it,
+> using the previous comment from the source file.
+>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  include/hw/net/ne2000-isa.h | 6 ++++++
->  1 file changed, 6 insertions(+)
->=20
-> diff --git a/include/hw/net/ne2000-isa.h b/include/hw/net/ne2000-isa.h
-> index ff2bed9c95..527337c454 100644
-> --- a/include/hw/net/ne2000-isa.h
-> +++ b/include/hw/net/ne2000-isa.h
-> @@ -6,6 +6,10 @@
->   * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
->   * See the COPYING file in the top-level directory.
->   */
-> +
-> +#ifndef HW_NET_NE2K_ISA_H
-> +#define HW_NET_NE2K_ISA_H
-> +
->  #include "hw/hw.h"
->  #include "hw/qdev.h"
->  #include "hw/isa/isa.h"
-> @@ -31,3 +35,5 @@ static inline ISADevice *isa_ne2000_init(ISABus *bus,=
- int base, int irq,
->      }
->      return d;
->  }
-> +
-> +#endif
->=20
+>  include/qemu-common.h        |  1 -
+>  include/qemu/cutils.h        | 13 +++++++++++++
+>  qapi/string-output-visitor.c |  2 +-
+>  util/cutils.c                |  6 ------
+>  4 files changed, 14 insertions(+), 8 deletions(-)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+
+>
+> diff --git a/include/qemu-common.h b/include/qemu-common.h
+> index ed60ba251d..760527294f 100644
+> --- a/include/qemu-common.h
+> +++ b/include/qemu-common.h
+> @@ -153,7 +153,6 @@ void qemu_hexdump(const char *buf, FILE *fp, const ch=
+ar *prefix, size_t size);
+>  int parse_debug_env(const char *name, int max, int initial);
+>
+>  const char *qemu_ether_ntoa(const MACAddr *mac);
+> -char *size_to_str(uint64_t val);
+>  void page_size_init(void);
+>
+>  /* returns non-zero if dump is in progress, otherwise zero is
+> diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
+> index d2dad3057c..9ee40470e3 100644
+> --- a/include/qemu/cutils.h
+> +++ b/include/qemu/cutils.h
+> @@ -157,6 +157,19 @@ int qemu_strtosz(const char *nptr, const char **end,=
+ uint64_t *result);
+>  int qemu_strtosz_MiB(const char *nptr, const char **end, uint64_t *resul=
+t);
+>  int qemu_strtosz_metric(const char *nptr, const char **end, uint64_t *re=
+sult);
+>
+> +/**
+> + * size_to_str:
+> + *
+> + * Return human readable string for size @val.
+> + * Use IEC binary units like KiB, MiB, and so forth.
+> + *
+> + * @val: The value to format.
+> + *       Can be anything that uint64_t allows (no more than "16 EiB").
+> + *
+> + * Caller is responsible for passing it to g_free().
+> + */
+> +char *size_to_str(uint64_t val);
+> +
+>  /* used to print char* safely */
+>  #define STR_OR_NULL(str) ((str) ? (str) : "null")
+>
+> diff --git a/qapi/string-output-visitor.c b/qapi/string-output-visitor.c
+> index 7ab64468d9..edf268b373 100644
+> --- a/qapi/string-output-visitor.c
+> +++ b/qapi/string-output-visitor.c
+> @@ -11,9 +11,9 @@
+>   */
+>
+>  #include "qemu/osdep.h"
+> -#include "qemu-common.h"
+>  #include "qapi/string-output-visitor.h"
+>  #include "qapi/visitor-impl.h"
+> +#include "qemu/cutils.h"
+>  #include "qemu/host-utils.h"
+>  #include <math.h>
+>  #include "qemu/range.h"
+> diff --git a/util/cutils.c b/util/cutils.c
+> index e098debdc0..a8a3a3ba3b 100644
+> --- a/util/cutils.c
+> +++ b/util/cutils.c
+> @@ -816,12 +816,6 @@ const char *qemu_ether_ntoa(const MACAddr *mac)
+>      return ret;
+>  }
+>
+> -/*
+> - * Return human readable string for size @val.
+> - * @val can be anything that uint64_t allows (no more than "16 EiB").
+> - * Use IEC binary units like KiB, MiB, and so forth.
+> - * Caller is responsible for passing it to g_free().
+> - */
+>  char *size_to_str(uint64_t val)
+>  {
+>      static const char *suffixes[] =3D { "", "Ki", "Mi", "Gi", "Ti", "Pi"=
+, "Ei" };
+> --
+> 2.17.2
+>
 
