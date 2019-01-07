@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ggPJ2-0002gq-If
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Jan 2019 02:26:40 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59399)
+	id 1ggPR7-0006Qw-SI
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Jan 2019 02:35:01 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33978)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggPJ0-0002fF-C2
-	for qemu-trivial@nongnu.org; Mon, 07 Jan 2019 02:26:39 -0500
+	(envelope-from <thuth@redhat.com>) id 1ggPR5-0006Ot-RO
+	for qemu-trivial@nongnu.org; Mon, 07 Jan 2019 02:35:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggPIz-0007a5-ME
-	for qemu-trivial@nongnu.org; Mon, 07 Jan 2019 02:26:38 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38636)
+	(envelope-from <thuth@redhat.com>) id 1ggPR5-0003gE-5M
+	for qemu-trivial@nongnu.org; Mon, 07 Jan 2019 02:34:59 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:36298)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1ggPIw-0007IQ-44; Mon, 07 Jan 2019 02:26:34 -0500
+	id 1ggPR2-0003eR-0n; Mon, 07 Jan 2019 02:34:56 -0500
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
 	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0997887624;
-	Mon,  7 Jan 2019 07:26:33 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 753EC85362;
+	Mon,  7 Jan 2019 07:34:53 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-133.ams2.redhat.com [10.36.116.133])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 18FFD5D9CD;
-	Mon,  7 Jan 2019 07:26:20 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D07A35D9CD;
+	Mon,  7 Jan 2019 07:34:40 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
@@ -39,7 +39,7 @@ Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
 	Rob Herring <robh@kernel.org>
 References: <20190104175847.6290-1-philmd@redhat.com>
-	<20190104175847.6290-12-philmd@redhat.com>
+	<20190104175847.6290-14-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -85,22 +85,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <87221351-b355-f489-6381-adb131cd6ec4@redhat.com>
-Date: Mon, 7 Jan 2019 08:26:19 +0100
+Message-ID: <5b87c418-4260-eb4a-2918-b8105abd816d@redhat.com>
+Date: Mon, 7 Jan 2019 08:34:39 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20190104175847.6290-12-philmd@redhat.com>
+In-Reply-To: <20190104175847.6290-14-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 07 Jan 2019 07:26:33 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 07 Jan 2019 07:34:54 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH 11/16] typedefs: Remove PS2State
+Subject: Re: [Qemu-trivial] [PATCH 13/16] hw/net/ne2000-isa: Add guards to
+ the header
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,44 +113,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Jan 2019 07:26:39 -0000
+X-List-Received-Date: Mon, 07 Jan 2019 07:35:00 -0000
 
 On 2019-01-04 18:58, Philippe Mathieu-Daud=C3=A9 wrote:
-> PS2State is only used in "hw/input/ps2.h", there is no
-> need to expose it via "qemu/typedefs.h".
->=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  include/hw/input/ps2.h  | 2 ++
->  include/qemu/typedefs.h | 1 -
->  2 files changed, 2 insertions(+), 1 deletion(-)
+>  include/hw/net/ne2000-isa.h | 6 ++++++
+>  1 file changed, 6 insertions(+)
 >=20
-> diff --git a/include/hw/input/ps2.h b/include/hw/input/ps2.h
-> index 213aa16aa3..b60455d4f6 100644
-> --- a/include/hw/input/ps2.h
-> +++ b/include/hw/input/ps2.h
-> @@ -31,6 +31,8 @@
->  #define PS2_MOUSE_BUTTON_SIDE   0x08
->  #define PS2_MOUSE_BUTTON_EXTRA  0x10
-> =20
-> +typedef struct PS2State PS2State;
+> diff --git a/include/hw/net/ne2000-isa.h b/include/hw/net/ne2000-isa.h
+> index ff2bed9c95..527337c454 100644
+> --- a/include/hw/net/ne2000-isa.h
+> +++ b/include/hw/net/ne2000-isa.h
+> @@ -6,6 +6,10 @@
+>   * This work is licensed under the terms of the GNU GPL, version 2 or =
+later.
+>   * See the COPYING file in the top-level directory.
+>   */
 > +
->  /* ps2.c */
->  void *ps2_kbd_init(void (*update_irq)(void *, int), void *update_arg);
->  void *ps2_mouse_init(void (*update_irq)(void *, int), void *update_arg=
-);
-> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-> index 927b340bb4..181f8fa68e 100644
-> --- a/include/qemu/typedefs.h
-> +++ b/include/qemu/typedefs.h
-> @@ -82,7 +82,6 @@ typedef struct PixelFormat PixelFormat;
->  typedef struct PostcopyDiscardState PostcopyDiscardState;
->  typedef struct Property Property;
->  typedef struct PropertyInfo PropertyInfo;
-> -typedef struct PS2State PS2State;
->  typedef struct QEMUBH QEMUBH;
->  typedef struct QemuConsole QemuConsole;
->  typedef struct QemuDmaBuf QemuDmaBuf;
+> +#ifndef HW_NET_NE2K_ISA_H
+> +#define HW_NET_NE2K_ISA_H
+> +
+>  #include "hw/hw.h"
+>  #include "hw/qdev.h"
+>  #include "hw/isa/isa.h"
+> @@ -31,3 +35,5 @@ static inline ISADevice *isa_ne2000_init(ISABus *bus,=
+ int base, int irq,
+>      }
+>      return d;
+>  }
+> +
+> +#endif
 >=20
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
