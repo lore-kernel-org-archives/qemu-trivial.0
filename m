@@ -1,106 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ggRen-0007NC-14
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Jan 2019 04:57:17 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52237)
+	id 1ggTny-0000yl-7Q
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Jan 2019 07:14:54 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45280)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggRek-0007Ku-3o
-	for qemu-trivial@nongnu.org; Mon, 07 Jan 2019 04:57:14 -0500
+	(envelope-from <marcandre.lureau@gmail.com>) id 1ggTnw-0000x9-3p
+	for qemu-trivial@nongnu.org; Mon, 07 Jan 2019 07:14:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1ggRej-0005UB-Ej
-	for qemu-trivial@nongnu.org; Mon, 07 Jan 2019 04:57:14 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:28227)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1ggRef-0005SX-M3; Mon, 07 Jan 2019 04:57:09 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 1AFBF804FA;
-	Mon,  7 Jan 2019 09:57:08 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-133.ams2.redhat.com [10.36.116.133])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 59EF819741;
-	Mon,  7 Jan 2019 09:56:57 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang
-	<jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Rob Herring
-	<robh@kernel.org>, Magnus Damm <magnus.damm@gmail.com>,
-	Joel Stanley <joel@jms.id.au>, David Gibson <david@gibson.dropbear.id.au>, 
-	Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
-	Peter Chubb <peter.chubb@nicta.com.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
-	<clg@kaod.org>, Richard Henderson <rth@twiddle.net>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, Michael Walle <michael@walle.cc>,
-	qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
-	Aurelien Jarno <aurelien@aurel32.net>
-References: <20190104175847.6290-1-philmd@redhat.com>
-	<20190104175847.6290-3-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
-	yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
-	4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
-	tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
-	0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
-	O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
-	0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
-	gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
-	3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
-	zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzRxUaG9tYXMgSHV0
-	aCA8dGguaHV0aEBnbXguZGU+wsF7BBMBAgAlAhsDBgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIX
-	gAUCUfuWKwIZAQAKCRAu2dd0/nAttbe/EACb9hafyOb2FmhUqeAiBORSsUifFacQ7laVjcgR
-	I4um8CSHvxijYftpkM2EdAtmXIKgbNDpQoXcWLXB9lu9mLgTO4DVT00TRR65ikn3FCWcyT74
-	ENTOzRKyKLsDCjhXKPblTPIQbYAUCOWElcyAPm0ERd62fA/rKNxgIiNo/l4UODOMoOJm2/Ox
-	ZoTckW68Eqv7k9L7m7j+Hn3hoDTjAmcCBJt+j7pOhzWvCbqoNOIH8C8qvPaNlrba+R/K6jkO
-	6jZkTbYQpGIofEQJ/TNn38IsNGpI1ALTHWFtoMxp3j2Imz0REO6dRE2fHRN8sVlHgkoeGhmY
-	NbDsDE1jFQOEObFnu0euk//7BXU7tGOHckVAZ8T1smiRPHfQU7UEH2a/grndxJ+PNeM5w7n2
-	l+FN3cf2KgPotCK2s9MjSdZA7C5e3rFYO8lqiqTJKvc62vqp3e7B0Kjyy5/QtzSOejBij2QL
-	xkKSFNtxIz4MtuxN8e3IDQNxsKry3nF7R4MDvouXlMo6wP9KuyNWb+vFJt9GtbgfDMIFVamp
-	ZfhEWzWRJH4VgksENA4K/BzjEHCcbTUb1TFsiB1VRnBPJ0SqlvifnfKk6HcpkDk6Pg8Q5FOJ
-	gbNHrdgXsm+m/9GF2zUUr+rOlhVbK23TUqKqPfwnD7uxjpakVcJnsVCFqJpZi1F/ga9IN87B
-	TQRR+3lMARAAtp831HniPHb9AuKq3wj83ujZK8lH5RLrfVsB4X1wi47bwo56BqhXpR/zxPTR
-	eOFT0gnbw9UkphVc7uk/alnXMDEmgvnuxv89PwIQX6k3qLABeV7ykJQG/WT5HQ6+2DdGtVw3
-	2vjYAPiWQeETsgWRRQMDR0/hwp8s8tL/UodwYCScH6Vxx9pdy353L1fK4Bb9G73a+9FPjp9l
-	x+WwKTsltVqSBuSjyZQ3c3EE8qbTidXZxB38JwARH8yN3TX+t65cbBqLl/zRUUUTapHQpUEd
-	yoAsHIml32e4q+3xdLtTdlLi7FgPBItSazcqZPjEcYW73UAuLcmQmfJlQ5PkDiuqcitn+KzH
-	/1pqsTU7QFZjbmSMJyXY0TDErOFuMOjf20b6arcpEqse1V3IKrb+nqqA2azboRm3pEANLAJw
-	iVTwK3qwGRgK5ut6N/Znv20VEHkFUsRAZoOusrIRfR5HFDxlXguAdEz8M/hxXFYYXqOoaCYy
-	6pJxTjy0Y/tIfmS/g9Bnp8qg9wsrsnk0+XRnDVPak++G3Uq9tJPwpJbyO0vcqEI3vAXkAB7X
-	VXLzvFwi66RrsPUoDkuzj+aCNumtOePDOCpXQGPpKl+l1aYRMN/+lNSk3+1sVuc2C07WnYyE
-	gV/cbEVklPmKrNwu6DeUyD0qI/bVzKMWZAiB1r56hsGeyYcAEQEAAcLBXwQYAQIACQUCUft5
-	TAIbDAAKCRAu2dd0/nAttYTwEACLAS/THRqXRKb17PQmKwZHerUvZm2klo+lwQ3wNQBHUJAT
-	p2R9ULexyXrJPqjUpy7+voz+FcKiuQBTKyieiIxO46oMxsbXGZ70o3gxjxdYdgimUD6U8PPd
-	JH8tfAL4BR5FZNjspcnscN2jgbF4OrpDeOLyBaj6HPmElNPtECHWCaf1xbIFsZxSDGMA6cUh
-	0uX3Q8VI7JN1AR2cfiIRY7NrIlWYucJxyKjO3ivWm69nCtsHiJ0wcF8KlVo7F2eLaufo0K8A
-	ynL8SHMF3VEyxsXOP2f1UR9T2Ur30MXcTBpjUxml1TX3RWY5uH89Js/jlIugBwuAmacJ7JYh
-	lTg6sF/GNc4nPb4kk2yktNWTade+TzsllYlJPaorD2Qe8qX0iFUhFC6y9+O6mP4ZvWoYapp9
-	ezYNuebMgEr93ob1+4sFg3812wNP01WqsGtWCJHnPv/JoonFdMzD/bIkXGEJMk6ks2kxQQZq
-	g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
-	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
-	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Organization: Red Hat
-Message-ID: <58b91746-5462-c4b4-226b-c0063d69c988@redhat.com>
-Date: Mon, 7 Jan 2019 10:56:56 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	(envelope-from <marcandre.lureau@gmail.com>) id 1ggTnv-0006xS-Bl
+	for qemu-trivial@nongnu.org; Mon, 07 Jan 2019 07:14:52 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:35851)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+	id 1ggTnt-0006w2-IM; Mon, 07 Jan 2019 07:14:49 -0500
+Received: by mail-wr1-x442.google.com with SMTP id u4so191725wrp.3;
+	Mon, 07 Jan 2019 04:14:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=2vuar0L4wVH0YegFNWcuX70oO9kXvQ24Qf8gL6QmfN4=;
+	b=ZwL3ydegtLSg4DxLfJYyhKJexZfS5XRzDhvf5hLgtibzfScTnG5bkZSRil8nrLEEze
+	PI1f7tuJ9ddpffNmLJNTEbWT/d41E0D6OHLh2gU/7GOEH0gxmoMLgaVUpA98itEimYqh
+	Q3ZoHHguonQlO2wmjRjJ8b2x84tsuHx7yvrbp9gCKD57/utIHfo+2ZC4Q7xyyj38dBUr
+	WrjxrPCeODoHqUWL+Mu8q5Wf4f84Qt0pVHezODCBPQzqXaekWzj5zlG6t/jMGZTicugE
+	9Y81C2sTIZ6jiKZI1dl6ZVs4moQFy8cBefxTNw3MRA20G8qIADghsYwKbhtOsePH6R5L
+	gUEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=2vuar0L4wVH0YegFNWcuX70oO9kXvQ24Qf8gL6QmfN4=;
+	b=ZxQU2rYBYro3R/4ebkkTzzl000RucZDEyb9mJHddWXW9LcMF+0U72ZI0VqnFvo7GrQ
+	sKbD+c9ynZ3RbhXXNIuiIURy8WJ9BZOyoYB0/7o0hXjuIqSIDmCDL0IQfENTcjVwCDSk
+	QCyEeEiDfDhKBJKoMaE++LWG0Ke7RrIEaZfgvDaS80fgRVYJ7xyaLIIGf545YF4zFcxm
+	5xFEmM/YcXqnxWUarK+ZUFzp+BSuD3bGPIdqGete4etPLbpSWUBRUVP1F0hDzVYNPHyE
+	NzNmUM5BBimPO56wDBxa3LIkjHtRQhxvNI+Gwputv9PPbsS/Y1Twt6QI88I0G9KDnhxh
+	YY6Q==
+X-Gm-Message-State: AJcUukffL8jwv++Y8DHqRWRE9bZgijKaw4ZOALVf/RfxskftIgw6A+FN
+	d/iLaYL+G8EmAam9eFGdpanBFO8KYPq16tE4RYU=
+X-Google-Smtp-Source: ALg8bN7GLUiazITov9PeRBPA2BQtc4Ld+ApMmgth6KcysrxA/NoE8nJJaxdjnDQDWMmdzWUP1mW+0DJOTCnToztXDg8=
+X-Received: by 2002:adf:f691:: with SMTP id v17mr49506397wrp.114.1546863287835;
+	Mon, 07 Jan 2019 04:14:47 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20190104175847.6290-3-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Mon, 07 Jan 2019 09:57:08 +0000 (UTC)
+References: <20181225125344.4482-1-arilou@gmail.com>
+In-Reply-To: <20181225125344.4482-1-arilou@gmail.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Mon, 7 Jan 2019 16:14:36 +0400
+Message-ID: <CAJ+F1CJN=Gn5GYqrOeqWFNryw=q+7q8TDUX0VQEzrtS8tbUeQg@mail.gmail.com>
+To: Jon Doron <arilou@gmail.com>
+Cc: QEMU <qemu-devel@nongnu.org>, qemu trival <qemu-trivial@nongnu.org>, 
+	Laszlo Ersek <lersek@redhat.com>, Wen Congyang <wency@cn.fujitsu.com>, 
+	Luiz Capitulino <lcapitulino@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 02/16] hw: Remove unused
- 'hw/devices.h' include
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::442
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1] dump: Set correct vaddr
+ for ELF dump
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,37 +69,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Jan 2019 09:57:15 -0000
+X-List-Received-Date: Mon, 07 Jan 2019 12:14:53 -0000
 
-On 2019-01-04 18:58, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Hi
+
+On Tue, Dec 25, 2018 at 5:52 PM Jon Doron <arilou@gmail.com> wrote:
+>
+> vaddr needs to be equal to the paddr since the dump file represents the
+> physical memory image.
+>
+> Without setting vaddr correctly, GDB would load all the different memory
+> regions on top of each other to vaddr 0, thus making GDB showing the wron=
+g
+> memory data for a given address.
+>
+> Signed-off-by: Jon Doron <arilou@gmail.com>
+
+This is a non-trivial patch! (qemu-trivial, please ignore).
+
 > ---
->  hw/alpha/typhoon.c                       | 1 -
->  hw/arm/allwinner-a10.c                   | 1 -
->  hw/arm/collie.c                          | 1 -
->  hw/arm/cubieboard.c                      | 1 -
->  hw/arm/highbank.c                        | 1 -
->  hw/arm/mps2-tz.c                         | 1 -
->  hw/arm/musicpal.c                        | 1 -
->  hw/arm/nrf51_soc.c                       | 1 -
->  hw/arm/spitz.c                           | 1 -
->  hw/arm/virt.c                            | 1 -
->  hw/arm/z2.c                              | 1 -
->  hw/display/sm501.c                       | 1 -
->  hw/hppa/dino.c                           | 1 -
->  hw/intc/allwinner-a10-pic.c              | 1 -
->  hw/lm32/lm32_boards.c                    | 1 -
->  hw/lm32/milkymist.c                      | 1 -
->  hw/microblaze/petalogix_ml605_mmu.c      | 1 -
->  hw/microblaze/petalogix_s3adsp1800_mmu.c | 1 -
->  hw/net/dp8393x.c                         | 1 -
->  hw/ppc/virtex_ml507.c                    | 1 -
->  hw/sh4/r2d.c                             | 1 -
->  hw/tricore/tricore_testboard.c           | 1 -
->  hw/usb/tusb6010.c                        | 1 -
->  23 files changed, 23 deletions(-)
+>  dump.c                       | 4 ++--
+>  scripts/dump-guest-memory.py | 1 +
+>  2 files changed, 3 insertions(+), 2 deletions(-)
+>
+> diff --git a/dump.c b/dump.c
+> index 4ec94c5e25..bf77a119ea 100644
+> --- a/dump.c
+> +++ b/dump.c
+> @@ -192,7 +192,7 @@ static void write_elf64_load(DumpState *s, MemoryMapp=
+ing *memory_mapping,
+>      phdr.p_paddr =3D cpu_to_dump64(s, memory_mapping->phys_addr);
+>      phdr.p_filesz =3D cpu_to_dump64(s, filesz);
+>      phdr.p_memsz =3D cpu_to_dump64(s, memory_mapping->length);
+> -    phdr.p_vaddr =3D cpu_to_dump64(s, memory_mapping->virt_addr);
+> +    phdr.p_vaddr =3D phdr.p_paddr;
 
-Works for me.
+This is likely breaking paging=3Dtrue somehow, which sets
+memory_mapping->virt_addr to non-0.
 
-Tested-by: Thomas Huth <thuth@redhat.com>
+According to doc "If you want to use gdb to process the core, please
+set @paging to true."
+
+Although I am not able to (gdb) x/10bx 0xa0000 for example on a core
+produced with paging. Not sure why, anybody could help?
+
+>      assert(memory_mapping->length >=3D filesz);
+>
+> @@ -216,7 +216,7 @@ static void write_elf32_load(DumpState *s, MemoryMapp=
+ing *memory_mapping,
+>      phdr.p_paddr =3D cpu_to_dump32(s, memory_mapping->phys_addr);
+>      phdr.p_filesz =3D cpu_to_dump32(s, filesz);
+>      phdr.p_memsz =3D cpu_to_dump32(s, memory_mapping->length);
+> -    phdr.p_vaddr =3D cpu_to_dump32(s, memory_mapping->virt_addr);
+> +    phdr.p_vaddr =3D phdr.p_paddr;
+>
+>      assert(memory_mapping->length >=3D filesz);
+>
+> diff --git a/scripts/dump-guest-memory.py b/scripts/dump-guest-memory.py
+> index 198cd0fe40..2c587cbefc 100644
+> --- a/scripts/dump-guest-memory.py
+> +++ b/scripts/dump-guest-memory.py
+> @@ -163,6 +163,7 @@ class ELF(object):
+>          phdr =3D get_arch_phdr(self.endianness, self.elfclass)
+>          phdr.p_type =3D p_type
+>          phdr.p_paddr =3D p_paddr
+> +        phdr.p_vaddr =3D p_paddr
+
+With your proposed change though, I can dump memory with gdb...
+
+>          phdr.p_filesz =3D p_size
+>          phdr.p_memsz =3D p_size
+>          self.segments.append(phdr)
+> --
+> 2.19.2
+>
+>
+
+
+--=20
+Marc-Andr=C3=A9 Lureau
 
