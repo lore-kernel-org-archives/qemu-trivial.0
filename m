@@ -1,51 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ggqeq-0002O3-Vi
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Jan 2019 07:39:01 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55871)
+	id 1ggql2-0004gS-Lo
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Jan 2019 07:45:24 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58543)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ggqeo-0002Mj-PK
-	for qemu-trivial@nongnu.org; Tue, 08 Jan 2019 07:38:59 -0500
+	(envelope-from <cohuck@redhat.com>) id 1ggqku-0004dW-Q0
+	for qemu-trivial@nongnu.org; Tue, 08 Jan 2019 07:45:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1ggqem-0004Dq-RX
-	for qemu-trivial@nongnu.org; Tue, 08 Jan 2019 07:38:58 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:55072)
+	(envelope-from <cohuck@redhat.com>) id 1ggqko-0003L9-8y
+	for qemu-trivial@nongnu.org; Tue, 08 Jan 2019 07:45:15 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:44544)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1ggqed-0003eK-6Z; Tue, 08 Jan 2019 07:38:47 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
+	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
+	id 1ggqkh-0002jv-8i; Tue, 08 Jan 2019 07:45:03 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7E44B821C3;
-	Tue,  8 Jan 2019 12:38:42 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-32.ams2.redhat.com
-	[10.36.116.32])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 600EA10018FB;
-	Tue,  8 Jan 2019 12:38:37 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id E12E61138648; Tue,  8 Jan 2019 13:38:35 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Dongli Zhang <dongli.zhang@oracle.com>
-Cc: qemu-trivial@nongnu.org,  qemu-devel@nongnu.org,  mjt@tls.msk.ru,
-	laurent@vivier.eu,
-	=?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-References: <1545633323-10818-1-git-send-email-dongli.zhang@oracle.com>
-Date: Tue, 08 Jan 2019 13:38:35 +0100
-In-Reply-To: <1545633323-10818-1-git-send-email-dongli.zhang@oracle.com>
-	(Dongli Zhang's message of "Mon, 24 Dec 2018 14:35:23 +0800")
-Message-ID: <87ef9nnx2s.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5C2308667D;
+	Tue,  8 Jan 2019 12:44:54 +0000 (UTC)
+Received: from gondolin (dhcp-192-222.str.redhat.com [10.33.192.222])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 35FDD22706;
+	Tue,  8 Jan 2019 12:44:42 +0000 (UTC)
+Date: Tue, 8 Jan 2019 13:44:40 +0100
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
+	qemu-trivial@nongnu.org, Michael Roth <mdroth@linux.vnet.ibm.com>, Paolo
+	Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>,
+	qemu-ppc@nongnu.org, Thomas Huth <thuth@redhat.com>, Markus Armbruster
+	<armbru@redhat.com>, qemu-s390x@nongnu.org, Richard Henderson
+	<rth@twiddle.net>, Stefano Garzarella <sgarzare@redhat.com>, Christian
+	Borntraeger <borntraeger@de.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, David Gibson
+	<david@gibson.dropbear.id.au>
+Message-ID: <20190108134440.0d52f2c7.cohuck@redhat.com>
+In-Reply-To: <20190104181208.7809-2-philmd@redhat.com>
+References: <20190104181208.7809-1-philmd@redhat.com>
+	<20190104181208.7809-2-philmd@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Tue, 08 Jan 2019 12:38:43 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Tue, 08 Jan 2019 12:44:54 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/1] qdev: rename
- qdev_create() argument to sync with qdev_try_create()
+Subject: Re: [Qemu-trivial] [PATCH v2 1/3] util/cutils: Move size_to_str()
+ from "qemu-common.h" to "cutils.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,67 +60,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Jan 2019 12:38:59 -0000
+X-List-Received-Date: Tue, 08 Jan 2019 12:45:22 -0000
 
-Dongli Zhang <dongli.zhang@oracle.com> writes:
+On Fri,  4 Jan 2019 19:12:06 +0100
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
-> The second argument used by qdev_create() is typename and 'name' is very
-> confusing. Rename it from 'name' to 'type', which is the same used by
-> qdev_try_create().
->
-> Signed-off-by: Dongli Zhang <dongli.zhang@oracle.com>
+> The size_to_str() function doesn't need to be in a generic header.
+>=20
+> It makes also sens to find this function in the same header than
+> the opposite string to size functions: qemu_strtosz*().
+> Note than this function is already implemented in util/cutils.c.
+>=20
+> Since we introduce a new function in a header, we document it,
+> using the previous comment from the source file.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  hw/core/qdev.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-> index 6b3cc55..1d65e8f 100644
-> --- a/hw/core/qdev.c
-> +++ b/hw/core/qdev.c
-> @@ -113,17 +113,17 @@ void qdev_set_parent_bus(DeviceState *dev, BusState *bus)
->  /* Create a new device.  This only initializes the device state
->     structure and allows properties to be set.  The device still needs
->     to be realized.  See qdev-core.h.  */
-> -DeviceState *qdev_create(BusState *bus, const char *name)
-> +DeviceState *qdev_create(BusState *bus, const char *type)
->  {
->      DeviceState *dev;
->  
-> -    dev = qdev_try_create(bus, name);
-> +    dev = qdev_try_create(bus, type);
->      if (!dev) {
->          if (bus) {
-> -            error_report("Unknown device '%s' for bus '%s'", name,
-> +            error_report("Unknown device '%s' for bus '%s'", type,
->                           object_get_typename(OBJECT(bus)));
->          } else {
-> -            error_report("Unknown device '%s' for default sysbus", name);
-> +            error_report("Unknown device '%s' for default sysbus", type);
->          }
->          abort();
->      }
+>  include/qemu-common.h        |  1 -
+>  include/qemu/cutils.h        | 13 +++++++++++++
+>  qapi/string-output-visitor.c |  2 +-
+>  util/cutils.c                |  6 ------
+>  4 files changed, 14 insertions(+), 8 deletions(-)
 
-Yes, @name is rather generic.  The sub-par function comment doesn't
-really help.
+With the patch description fixed (as noted by Eric):
 
-You rename the parameter in the definition, but not in the declaration
-(qdev-core.h).  Better keep them consistent.
-
-Note that qdev_create() is just one instance of the "variables
-containing type names are confusingly named" pattern.  Let's start with
-just qdev-core.h:
-
-* qdev_create() parameter @name.
-
-* qdev_try_create() parameter @name.  The definition in qdev.c calls it
-  @type.
-
-* qbus_create_inplace() parameter @typename.
-
-* qbus_create() parameter @typename.  The definition in bus.c calls it
-  @name.
-
-Let's pick a single identifier and use it consistently.  Picking
-@typename would minimize churn, and be consistent with object_new() &
-friends.  Philippe, Paolo, what do you think?
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
