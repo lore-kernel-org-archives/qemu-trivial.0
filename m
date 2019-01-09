@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ghDei-0003A5-Af
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2019 08:12:24 -0500
+	id 1ghDej-0003Bu-FT
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2019 08:12:25 -0500
 Received: from eggs.gnu.org ([209.51.188.92]:47063)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghDef-00036E-LV
-	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 08:12:23 -0500
+	(envelope-from <laurent@vivier.eu>) id 1ghDeh-00036E-GG
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 08:12:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghDc1-0000J6-MJ
-	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 08:09:38 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:46249)
+	(envelope-from <laurent@vivier.eu>) id 1ghDbx-0000FZ-Kt
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 08:09:37 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:37655)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1ghDbz-0000Ec-Gw; Wed, 09 Jan 2019 08:09:35 -0500
+	id 1ghDbm-00008h-G8; Wed, 09 Jan 2019 08:09:23 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MjBNV-1hAUcI46VR-00fFFq; Wed, 09 Jan 2019 14:09:00 +0100
+	id 1MlsWZ-1h7ieH1ZPH-00j2M8; Wed, 09 Jan 2019 14:08:58 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -30,34 +30,34 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	qemu-ppc@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
 	Gerd Hoffmann <kraxel@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=83=C2=A9?= <philmd@redhat.com>,
-	Priit Laes <plaes@plaes.org>
-Date: Wed,  9 Jan 2019 14:08:41 +0100
-Message-Id: <20190109130844.5172-4-laurent@vivier.eu>
+	Wainer dos Santos Moschetta <wainersm@redhat.com>
+Date: Wed,  9 Jan 2019 14:08:40 +0100
+Message-Id: <20190109130844.5172-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190109130844.5172-1-laurent@vivier.eu>
 References: <20190109130844.5172-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:z+DJUB0MWDZdmTm0vS6X3uH8zc+yGvWaOXH2QX6XImucEK1XHSS
-	MlOCPa+FrKgmMTXwAkxDR/0dpSSgul/r4iZlBln456dQig06goaUVAsH7f5br0OnF3yjtwE
-	pPsT5jfReJ4O6m0ZEoizAO4oiXCLrcDfQ32Z5+2KeJk/nTNAsiK7aHqQJwKfwnsjAb2IarR
-	genDbgrHj+16cMdhVdHig==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:rbcjEW9bXYY=:/7opPXSoOeezOOiV0guBO8
-	ctbQ6MMDVfufAX6t0hYLl1BXhliiAQkvKezA7AFtDPXpAK3hskrXrppgXioeCLDG/Nf7P1OA4
-	yoChDdOzGiHlftShug7GcSMZDNmQXz7hA1BhxJz4/CntXcwo7ilLL/prAEpQM3hfpGW0d7bTy
-	CkjkmDb+1rvFEweAd4HSSGNgFYrIaLBpvqcnpvalAquDRI7JDsm050HFGTsIWnFlsX7JzIvSM
-	52HbX6V/pN+/LBPXN7tx8MzDrHGaunRF875l2G51cs6nWSUuRmm0m5giOBxTyFWZLSNbcLuDu
-	DsZYxLVor/M75BQt5GKoHQBn12ryovEo3dYkioYNpXt2ayWO32t9QGIPaKoOk3CPPjRCB4BdM
-	Jz3uvbrPJQOFNm693j2TJoALvVCEZCRiERG/tuOfBQGMn4L3pJlnXcy9eOEKRNuOh4J1yCFMy
-	kJJqTXuadT65C2QmcRhgE6qn6I11y8jahCSJITlRfynPfa0X38/AxULqO1IFk7ET433aNDwXw
-	85evHgspSORyJSxJOQPZGNWWQ6aCcqyIC66mGtcaB9W/Fg2xX9Yt7i3ndXQ5xNCbZ63wRAoJw
-	jgR7VRcRYPd8tL5QeSuxaMsrDR5vcLTI1paSawys324NOJ7dbjv9ZxQygXia2T3/kpWQj1h1c
-	b45vNSSbs+7EaipTfl6AnY37SY/O6eO+aD+F6rcIAr4suEXy1PQJ8xmHVH2cePczfP6LSYw8L
-	rWTi4CSQiEBpMEURjWJ1SmudZ6QZrfyftH0uKmkfETDOF0vhLmwDHnWf3fo=
+X-Provags-ID: V03:K1:ebbmJ/kMcCm8S0YKvyTW72w1/gy2msEqaWMQxOFdi7wQgN/sJtr
+	TVedsCwNiT6Cq40nCq4ZsZLmXE0QjcQKVTqkU0FRUMtTMDlACZORkkzzHI1aRo4fad7OEJJ
+	0motCutmz678LQcQJpyuNVRGNPpSi9rSmjimAOeWm38OtHP9pKB8H6hKg5btqmErhhjmw46
+	8o9H6PfyQaGF80VsK5+ag==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Qcu3PCtDvRY=:26Y4LwA9wi0K5BcFgfk3Od
+	vpZ5SF4fH9hZ5YHoRY+GXKgodykg1CXwgliGfU+UtAwQ+Av/4Gi+RjB1wwBlrY8KuE2ZaK2CR
+	IDBQt+NEdID8Ash+4XQQp34BA7FrsMm4onaGjuiyQb0UIqYaKBpBFwuM02k3MuL4bkWIeaSN5
+	A8+pwjIknziQ9XqSzjX7zxsY0TNQ6K7inJY4luw1syo4xYgTsMmodyY8i4xi+DdtEbU4+UTUY
+	Led1NjhmuiB7NgHZkahTqFEGqKVDf5KKTFzSSvwGO0BeqKsV7QACc1op5g1wKYeVh0KuNhIR2
+	S662zd4CGS/3HTMIcbrRy+CTQG52rXBR6HU47tJx1SzhCmv6qc5oV9oe4Afi/YQW7lKxZ/Js4
+	kFtrV5IzgAuqERNN2ViLbo4JRtyaT7tHG2JjtWIYBp9OnfByuinY3tJYwTXXDCMolKQeWlJSC
+	N32eJkqZ/3KX0tkW/Ov9gpxuawpFPHaPG62gnl2WPoPl0sfW/SzHmUDtbbeYrRT1ph79HTnW8
+	SznhyNYqqGGsDB9I8Nikm2qc+MvpmzRrvmkDmvCMeCcF7Oy06PSqrDecc7avKoJd7cmrDOW4p
+	5Su/BBDUVziPQl+OO8ccOug0slIFxqXXCrWQGgIz1R1oEWG2S7VQp+Flsr9R84qISWf3aLTUB
+	4w5/GNbAqWxNriEmAEibpGFhqaTuBh5HddEph4vpmLnAuTjd1W+uuO5IGa0Ox2g9o5pc9kGNs
+	Mkgq601+bFShT4zDNBT7iX8iaHwW0/j84R2L9cv0CaSrY/NxdSLDCl1L2qE=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: [Qemu-trivial] [PULL 3/6] qom: Include qemu/fprintf-fn.h in cpu.h
+X-Received-From: 212.227.126.187
+Subject: [Qemu-trivial] [PULL 2/6] hw/core: fix whitespace in a sentence
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,33 +69,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Jan 2019 13:12:23 -0000
+X-List-Received-Date: Wed, 09 Jan 2019 13:12:24 -0000
 
-From: Priit Laes <plaes@plaes.org>
+From: Wainer dos Santos Moschetta <wainersm@redhat.com>
 
-QOM cpu.h uses fprintf_function which requires Qemu's
-qemu/fprintf-fn.h header. Include it.
-
-Signed-off-by: Priit Laes <plaes@plaes.org>
+Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20181226003722.31257-1-plaes@plaes.org>
+Message-Id: <20181224154922.3338-1-wainersm@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- include/qom/cpu.h | 1 +
- 1 file changed, 1 insertion(+)
+ hw/core/machine.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/qom/cpu.h b/include/qom/cpu.h
-index 1396f53e5b..6d1ba53d72 100644
---- a/include/qom/cpu.h
-+++ b/include/qom/cpu.h
-@@ -26,6 +26,7 @@
- #include "exec/memattrs.h"
- #include "qapi/qapi-types-run-state.h"
- #include "qemu/bitmap.h"
-+#include "qemu/fprintf-fn.h"
- #include "qemu/rcu_queue.h"
- #include "qemu/queue.h"
- #include "qemu/thread.h"
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index f8563efb86..1a0a9ab111 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -919,7 +919,7 @@ static void machine_class_init(ObjectClass *oc, void *data)
+     object_class_property_add_bool(oc, "dump-guest-core",
+         machine_get_dump_guest_core, machine_set_dump_guest_core, &error_abort);
+     object_class_property_set_description(oc, "dump-guest-core",
+-        "Include guest memory in  a core dump", &error_abort);
++        "Include guest memory in a core dump", &error_abort);
+ 
+     object_class_property_add_bool(oc, "mem-merge",
+         machine_get_mem_merge, machine_set_mem_merge, &error_abort);
 -- 
 2.20.1
 
