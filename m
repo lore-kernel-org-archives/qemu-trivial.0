@@ -1,23 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ghAo8-0002SW-3K
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2019 05:09:56 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59757)
+	id 1ghAot-0002zy-98
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2019 05:10:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:60080)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghAo6-0002S0-K1
-	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:09:55 -0500
+	(envelope-from <laurent@vivier.eu>) id 1ghAoq-0002wu-6r
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:10:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghAo5-0001vb-VP
-	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:09:54 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:40009)
+	(envelope-from <laurent@vivier.eu>) id 1ghAop-0002fX-Ie
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:10:40 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:44645)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1ghAo4-0001se-4T; Wed, 09 Jan 2019 05:09:52 -0500
+	id 1ghAop-0002eo-9N; Wed, 09 Jan 2019 05:10:39 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue107 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1M1ZQT-1gjduU25Kl-0038Hc; Wed, 09 Jan 2019 11:09:45 +0100
-To: Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, ehabkost@redhat.com, marcel.apfelbaum@gmail.com
-References: <20181224154922.3338-1-wainersm@redhat.com>
+	1M2wbS-1giGkD1fpM-003PRW; Wed, 09 Jan 2019 11:10:37 +0100
+To: Priit Laes <plaes@plaes.org>, Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20181226003722.31257-1-plaes@plaes.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -62,34 +63,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <f2dae419-462b-71c3-5918-ebee55397b5f@vivier.eu>
-Date: Wed, 9 Jan 2019 11:09:44 +0100
+Message-ID: <ead8c68c-66af-f7a4-fd92-fb0db785b226@vivier.eu>
+Date: Wed, 9 Jan 2019 11:10:36 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20181224154922.3338-1-wainersm@redhat.com>
+In-Reply-To: <20181226003722.31257-1-plaes@plaes.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:XSPDvE61cjgZCFFseAsCe5szNB3jGjCXYOojSghhQPIb+zS+8Wt
-	rj/sH9lcUaEtNshHCuNu5m1eEdgPNUo36bJF9gjD6Ov2hr8OZ7AjuM+iAmLw/bI6ddoeHu3
-	WqRnk5jHQaBCp+pEfPbsOOWK/n9J1qPENi9cwBUo7PEFUlnJCticiMYh/b6hLWk6bFcBpGd
-	PKfaRruIkJuC+N4HYqDQw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:835tdni5vdE=:kXRz75njN29ZgiH76XcvS7
-	SS0TkGuROSo+LQLRaZcu3AxSDwKLvYw2u49IVcp7+jaKBohFpv/398n9SPLDiex94GSE/gG9j
-	pyN3G7Y/+rU0KMrCjFvgCsKCJl9UWRmn9MwW1JemMeYHF37kS5aaL/Fdsh251vZ8RBaPJUYzW
-	7pk6vkyRMwerkXJYHxMnNKTeVwo4QmwzRqgXm2PpanmP+K7WNncQ0QPBbI+0+b81dGzfbl0TE
-	NBjhMSXETgbTdiR1HPdFPZTUxl9+H/NybI8oTDW5laM0BeJOhg2k0ars9qHpol9hUxBrWykzG
-	RbQWvlhRrlRb94qwadIx6/jyPsiOfm8RAl69DwnWIIvG8LaF7W5Yz3Tr7qp8lbqSmpwXcjEaS
-	/TSXXQPib5q+u9OME7t3G1A/zq4Te/C7nDpi+5F4GHWrgWPW7pQAyaGBphHXbZZL2uDeFyrp0
-	F/jswTQGwbHFeRBGcLtXYE5VxcgUuEZFtD6p2uTKissA6EBn4ZOhpIssdk0Ae9tA9RRFH3gpE
-	8UB9mxPA0O+Sm8QYl9876l51kEhwBKP7rP42wuwC5H/osgBofmT3cOqkv9iR4KXU8qUhacNAD
-	1U6Hox4ws4kpJ3VWfRmKjherVHGBQ90By7yt2Ad9cbu0vvwd+/xanEvd0fN0rAUo6ibazzAfR
-	8JKvPnMICdgm1SbxV4LuBXhN6ifNhZvsRmUmW/lCAndgpL7zhJpsh63lzmadVk1Moupzsh+OC
-	TdwgwNldiiLbyLfDSMB9unbexWdys5pbKtupz+it+baMGJFPC9SPNWeu3tk=
+X-Provags-ID: V03:K1:gWoD11aco/VgQ7TRI9bWC8wOemDcbF8lX7A+i/5OVywfTC7h1fO
+	wuydB/L2sCN9OvJ7ifhuB95MceWDGRXn+/EonM7zNbx+1+qQH0G37okAIiAHofTC7CphXK7
+	X1PwON2bymA8f+33F338njA4aHpZc7Kc5vwuQuPGR63kJv+wKVgrWtxroais3NXMwiT6PKu
+	1+KI9YcNbM+38v8J56xhg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:zbU2y/oE02I=:p2ziJISOolViogbgMkET1Q
+	qe4RBxqmBINdO3FhuhgqGunQDjYPxrIg6s+rHjImaACgkkyRwc8yQKkHNgh7XdkZD9N/6B7eK
+	LqGOQCT/synLSeXZf0Ak6N58vKmHIIG7IJjJdwrIYtMvCQM19RmwTv5kR9WVtgDlBIePSaYz8
+	XTCo+3b17SBZqcKDXbzvzzNqTP8PIWcz6FrJCK9O9GaRrjLfKGwhN+h/h9TEH8oDFoA0M104J
+	mnQWZ3gx7Gf4ZFFrf2/3zQdvZpV0lvAayNaTg69nU4ruizQKPsbRwfh7jFV9vqGQaazLNaG+u
+	s2Pr7cKBUQt25kKxXdW6Ie000m9fZTssyIHCWij1w6j6CDOwaBs4B7BwD9lpUjmqdaRCv3rfO
+	0TetRXVRa1VdfrIwSOUhR+5ZIykrD5NuILm66yIlUCJIXKcsRd+q07eQpDJDND+jPu8geRc2C
+	gNXs0G0wcLhizsJQwJTCzbLMJMHmQ4Hgsgi83xpaChrS54uaYeoswdsnSduZQ0SlzlvtIZqBL
+	/ymo80QCX95zCmJuwyeVlXkED0lgSUFHqYqF6jsU7kTwyahzS8i1EHPone5mFP+r+vQOdL4t7
+	L6B7Hr0mzbQqqsAFssGRu7ddp80204JVfUTPQApOb/MzA/t/DH6fRjdCbAV+5zzA+h9TmQtRw
+	vYs2eFufggHYrpj1tHxLeILH4nyec7Zic9OxWI7chCOEhx41+uJIjQ93qats/KbmB/QJnOzm2
+	zsRU5hGFWswxdkHnZ8rlPHx+MthGwM+KdJPx24DXRvqHf78x/tmx/z5ugqM=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 217.72.192.73
-Subject: Re: [Qemu-trivial] [PATCH] hw/core: fix whitespace in a sentence
+Subject: Re: [Qemu-trivial] [PATCH] qom: Include qemu/fprintf-fn.h in cpu.h
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,29 +102,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Jan 2019 10:09:55 -0000
+X-List-Received-Date: Wed, 09 Jan 2019 10:10:42 -0000
 
-On 24/12/2018 16:49, Wainer dos Santos Moschetta wrote:
-> Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+On 26/12/2018 01:37, Priit Laes wrote:
+> QOM cpu.h uses fprintf_function which requires Qemu's
+> qemu/fprintf-fn.h header. Include it.
+> 
+> Signed-off-by: Priit Laes <plaes@plaes.org>
 > ---
->  hw/core/machine.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  include/qom/cpu.h | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 4439ea663f..a0beeeb2a9 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -591,7 +591,7 @@ static void machine_class_init(ObjectClass *oc, void *data)
->      object_class_property_add_bool(oc, "dump-guest-core",
->          machine_get_dump_guest_core, machine_set_dump_guest_core, &error_abort);
->      object_class_property_set_description(oc, "dump-guest-core",
-> -        "Include guest memory in  a core dump", &error_abort);
-> +        "Include guest memory in a core dump", &error_abort);
->  
->      object_class_property_add_bool(oc, "mem-merge",
->          machine_get_mem_merge, machine_set_mem_merge, &error_abort);
+> diff --git a/include/qom/cpu.h b/include/qom/cpu.h
+> index 1396f53e5b..6d1ba53d72 100644
+> --- a/include/qom/cpu.h
+> +++ b/include/qom/cpu.h
+> @@ -26,6 +26,7 @@
+>  #include "exec/memattrs.h"
+>  #include "qapi/qapi-types-run-state.h"
+>  #include "qemu/bitmap.h"
+> +#include "qemu/fprintf-fn.h"
+>  #include "qemu/rcu_queue.h"
+>  #include "qemu/queue.h"
+>  #include "qemu/thread.h"
 > 
-
 
 Applied to my trivial-patches branch.
 
