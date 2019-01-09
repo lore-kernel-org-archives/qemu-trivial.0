@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ghDeb-00035H-Hh
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2019 08:12:17 -0500
+	id 1ghDec-00036D-Q3
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2019 08:12:21 -0500
 Received: from eggs.gnu.org ([209.51.188.92]:47001)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghDeZ-00032A-CK
-	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 08:12:16 -0500
+	(envelope-from <laurent@vivier.eu>) id 1ghDea-00032A-Df
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 08:12:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghDc4-0000NE-A6
-	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 08:09:41 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:37439)
+	(envelope-from <laurent@vivier.eu>) id 1ghDc1-0000Jy-U6
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 08:09:39 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:50849)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1ghDbr-00009x-H3; Wed, 09 Jan 2019 08:09:30 -0500
+	id 1ghDbp-00009U-MA; Wed, 09 Jan 2019 08:09:27 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1M4KFF-1ggwcb13jN-000O8E; Wed, 09 Jan 2019 14:09:04 +0100
+	id 1MMY9X-1gxvVX3zIF-00JZPM; Wed, 09 Jan 2019 14:08:57 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -30,34 +30,34 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	qemu-ppc@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
 	Gerd Hoffmann <kraxel@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=83=C2=A9?= <philmd@redhat.com>,
-	Li Qiang <liq3ea@163.com>
-Date: Wed,  9 Jan 2019 14:08:44 +0100
-Message-Id: <20190109130844.5172-7-laurent@vivier.eu>
+	Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>
+Date: Wed,  9 Jan 2019 14:08:39 +0100
+Message-Id: <20190109130844.5172-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190109130844.5172-1-laurent@vivier.eu>
 References: <20190109130844.5172-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:/yB9ECdKhtQRTY1MgeTwiZKF1WVLcG/+fyJqYczaZSrPMS5l65j
-	jUdWtHgfWj3tc2dj4MyxAwU55J4EcQyf/YK9nkAuvNHDvhZCtNfUKMOyZE+w+7iEQnNAm/L
-	684/w4gp/zWs6HjJD2vdtKZo/suMe8dkDBAFxbv60ia1sk4yZVCiJZCRWJqp1cM48NKk2hF
-	i36t3gqcxrlp4q3SO2nYw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:d47CSabWAiw=:MW/DH0T0uGv27Ej5maTDvp
-	LhI2Wi2NIQy8uzukHD0wXkSWHI8RUcgSVg0FO5nSL6xHAW19LeqbwaxbrRPdZhO8nuMJQQlwX
-	eSBVtRJCvDSs1D/9mBIt27wmwv7s3OfqqbhEasz6u1j+AYDbP/CbDXOGVtd1K9/xgR9SnzFaD
-	VdU7lkwp9eVOuNhc836TYDLXdjrtIALRp0D1xLlYkR35x/saXkgj66eCwvpbwK8Fmys5hecXB
-	ebqb6iIo5xBlbzMeOTZj4TYPZsHgguuUsXiC5F9m7jJHhxWL8odt3sNETC5iw0CoXl2DFec2X
-	hGtaJAsR+tv8QrPGNsi+ZtB7sqLzzS4jQI+7IK53UZy5540ejVBCEUGq8Xp6az6y7JqPlcPt5
-	COH5G+tkvmJwzAFh3HiCOsibJlPykse3kEDCp/T3lvyvStBrLuPMYnlRwYDsaic392ITSUWeH
-	IMV9wKav2d0o+aS2ZbFqo+uimmkojo/MSVcjsr9IiStDYcGe5qFcc63PRjD5ICgXyMuMc+mD5
-	Fg+MTn0CDRQ3Fv+SWNOixyBgI0MPUTc0a6bHoQmAM3kJrpDAt0PZ84ETmCZCv93pWNYFl6Z5X
-	S1l+34pBt40oM4wiCiaTrRst94d7uA5xjvtLTUti73UEfHFehGCgkwbcfXSbe3lWToLBo3cHd
-	3bNbXP1xMaTVFcW2bjIzbUM05rLq+ztb6UfT7EmO73QbaDShlll4ulb/zDDk6m02JEog7FL3+
-	LpT/lZUEM7CnQFYtaF1IKuLHk7omW2SQEFk1Tg==
+X-Provags-ID: V03:K1:TlPVI3BIUb8Ige1p52gQshXzRcrKhFAqxm5g6Jzjpo1GaZKmzNT
+	a+KXeVGl/LxIxk1AZytlrsy8+x2xGiXcaLxPKKoX+QDzIEjhcq8eW8eaMH1nA8+BhuHY2Zh
+	eF1gSUvtF8IyNxXxlaHT4x4gMwR/98RgsNLHk8MQtl4V6a11BaT31hmnxcIq8Aqm3jTI1DO
+	JMv7Wg/qRnzSYRm9Bq+nA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:X95vxnZKfO4=:37aqTx8m5ogS/dywdrwXQk
+	Q+uF9Pxczi9dxtEzpvqaRaqTCFtlJNgMjMqv49N15bo4T3HibKZHZctW3meLVMyR9m9l6opnb
+	/fPwnVs1cQOzXePtslsjvKJkX2QCr4wvzII+1UB0qtofeIMEwnX3Goa8/lNzHRQ2mKY6LmjOe
+	0JMKh2nH4ZlHjgVVlEJT/B1lMGv2aST60GlKFqmXBMDp1qrr+JK1hEvqCnMw/CIvds2Fbw7Tg
+	sYHt/ozSAIwOtsxkNsaXXlKmAmg1t4O740JSIWjthZ9Gt33o1NqjUN12dsRBVzkfdGunY++a5
+	pfzFzu4T6T7JBuO9YmInBfH4hwq63aFhr1cOIjXs8MxcY4QprfWiRKG9xQw9CatM+imkQlxyz
+	jaiCjzjc/O+b3FrNN16VceEh6Ohfvkoc6g37U+ZhseR5sao54qBHYsWxyLkwjfEzm5NAmTAoD
+	vUZe+z/FB7dIo/qhsKvcNeUXtTLCf6F7rncb4rJeFTBKEpKPAM7e1abZj7bTGGHhjPngzNfXp
+	RLW9bT8PboCxxaqQ1rHnH2ygAD7TElCCiTX4gOecHRiH+gpXvbPP6JXxfvSzKITbzYV+8cPvx
+	MyV9YoolTmmLpQhCoBYDwBgnegSLcdl6AJEyq+ABgmvFkU6NJeyG+BQpZ3gXG13YXkIEkLc7f
+	Owd2RVHnpF4JFjrpo/hEnwdiblKwO1PdKgs42aPjCiL0PiJhmnw8Y/7zNjv2RZV4Em4jbNKWZ
+	J8ECdDHbF2Vflg/uTqCrEiT8J3vltrNXb+mEQhuG2OPrvbaF83ksvH/sHjU=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-Subject: [Qemu-trivial] [PULL 6/6] ioapic: use TYPE_FOO MACRO than constant
- string
+X-Received-From: 212.227.126.130
+Subject: [Qemu-trivial] [PULL 1/6] typedefs: (Re-)sort entries alphabetically
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,80 +69,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Jan 2019 13:12:16 -0000
+X-List-Received-Date: Wed, 09 Jan 2019 13:12:17 -0000
 
-From: Li Qiang <liq3ea@163.com>
+From: Eric Blake <eblake@redhat.com>
 
-Make them more QOMConventional.
-Cc:qemu-trivial@nongnu.org
+Since the last time we sorted things (2988cbeaf), we've had a
+few relapses that were inserted out of order.  Also, we had more
+entries that were sorted case-insensitively than not, so let's
+document that convention and stick to it.
 
-Signed-off-by: Li Qiang <liq3ea@163.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20190105023831.66910-1-liq3ea@163.com>
+Signed-off-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Message-Id: <20181115211752.1295571-2-eblake@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/i386/kvm/ioapic.c     | 2 +-
- hw/i386/pc.c             | 4 ++--
- hw/intc/ioapic.c         | 2 +-
- include/hw/i386/ioapic.h | 3 +++
- 4 files changed, 7 insertions(+), 4 deletions(-)
+ include/qemu/typedefs.h | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
-index 5b40d75439..e453692199 100644
---- a/hw/i386/kvm/ioapic.c
-+++ b/hw/i386/kvm/ioapic.c
-@@ -163,7 +163,7 @@ static void kvm_ioapic_class_init(ObjectClass *klass, void *data)
- }
+diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+index d59df20c4d..741935fe36 100644
+--- a/include/qemu/typedefs.h
++++ b/include/qemu/typedefs.h
+@@ -4,7 +4,7 @@
+ /* A load of opaque types so that device init declarations don't have to
+    pull in all the real definitions.  */
  
- static const TypeInfo kvm_ioapic_info = {
--    .name  = "kvm-ioapic",
-+    .name  = TYPE_KVM_IOAPIC,
-     .parent = TYPE_IOAPIC_COMMON,
-     .instance_size = sizeof(KVMIOAPICState),
-     .class_init = kvm_ioapic_class_init,
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 4952feb476..3c9e20ad9c 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -2339,9 +2339,9 @@ void ioapic_init_gsi(GSIState *gsi_state, const char *parent_name)
-     unsigned int i;
- 
-     if (kvm_ioapic_in_kernel()) {
--        dev = qdev_create(NULL, "kvm-ioapic");
-+        dev = qdev_create(NULL, TYPE_KVM_IOAPIC);
-     } else {
--        dev = qdev_create(NULL, "ioapic");
-+        dev = qdev_create(NULL, TYPE_IOAPIC);
-     }
-     if (parent_name) {
-         object_property_add_child(object_resolve_path(parent_name, NULL),
-diff --git a/hw/intc/ioapic.c b/hw/intc/ioapic.c
-index 4e529729b4..9d75f84d3b 100644
---- a/hw/intc/ioapic.c
-+++ b/hw/intc/ioapic.c
-@@ -429,7 +429,7 @@ static void ioapic_class_init(ObjectClass *klass, void *data)
- }
- 
- static const TypeInfo ioapic_info = {
--    .name          = "ioapic",
-+    .name          = TYPE_IOAPIC,
-     .parent        = TYPE_IOAPIC_COMMON,
-     .instance_size = sizeof(IOAPICCommonState),
-     .class_init    = ioapic_class_init,
-diff --git a/include/hw/i386/ioapic.h b/include/hw/i386/ioapic.h
-index 9c8816f11f..59fcb158a7 100644
---- a/include/hw/i386/ioapic.h
-+++ b/include/hw/i386/ioapic.h
-@@ -23,6 +23,9 @@
- #define IOAPIC_NUM_PINS 24
- #define IO_APIC_DEFAULT_ADDRESS 0xfec00000
- 
-+#define TYPE_KVM_IOAPIC "kvm-ioapic"
-+#define TYPE_IOAPIC "ioapic"
-+
- void ioapic_eoi_broadcast(int vector);
- 
- #endif /* HW_IOAPIC_H */
+-/* Please keep this list in alphabetical order */
++/* Please keep this list in case-insensitive alphabetical order */
+ typedef struct AdapterInfo AdapterInfo;
+ typedef struct AddressSpace AddressSpace;
+ typedef struct AioContext AioContext;
+@@ -40,6 +40,7 @@ typedef struct HCIInfo HCIInfo;
+ typedef struct HVFX86EmulatorState HVFX86EmulatorState;
+ typedef struct I2CBus I2CBus;
+ typedef struct I2SCodec I2SCodec;
++typedef struct IOMMUMemoryRegion IOMMUMemoryRegion;
+ typedef struct ISABus ISABus;
+ typedef struct ISADevice ISADevice;
+ typedef struct IsaDma IsaDma;
+@@ -49,7 +50,6 @@ typedef struct MachineState MachineState;
+ typedef struct MemoryListener MemoryListener;
+ typedef struct MemoryMappingList MemoryMappingList;
+ typedef struct MemoryRegion MemoryRegion;
+-typedef struct IOMMUMemoryRegion IOMMUMemoryRegion;
+ typedef struct MemoryRegionCache MemoryRegionCache;
+ typedef struct MemoryRegionSection MemoryRegionSection;
+ typedef struct MigrationIncomingState MigrationIncomingState;
+@@ -84,6 +84,8 @@ typedef struct PostcopyDiscardState PostcopyDiscardState;
+ typedef struct Property Property;
+ typedef struct PropertyInfo PropertyInfo;
+ typedef struct PS2State PS2State;
++typedef struct QBool QBool;
++typedef struct QDict QDict;
+ typedef struct QEMUBH QEMUBH;
+ typedef struct QemuConsole QemuConsole;
+ typedef struct QemuDmaBuf QemuDmaBuf;
+@@ -93,12 +95,10 @@ typedef struct QemuMutex QemuMutex;
+ typedef struct QemuOpt QemuOpt;
+ typedef struct QemuOpts QemuOpts;
+ typedef struct QemuOptsList QemuOptsList;
+-typedef struct QemuSpin QemuSpin;
+ typedef struct QEMUSGList QEMUSGList;
++typedef struct QemuSpin QemuSpin;
+ typedef struct QEMUTimer QEMUTimer;
+ typedef struct QEMUTimerListGroup QEMUTimerListGroup;
+-typedef struct QBool QBool;
+-typedef struct QDict QDict;
+ typedef struct QJSON QJSON;
+ typedef struct QList QList;
+ typedef struct QNull QNull;
 -- 
 2.20.1
 
