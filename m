@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ghDeY-00031P-6s
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2019 08:12:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46864)
+	id 1ghDeb-00035H-Hh
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2019 08:12:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47001)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghDeW-0002z4-DY
-	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 08:12:13 -0500
+	(envelope-from <laurent@vivier.eu>) id 1ghDeZ-00032A-CK
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 08:12:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghDc6-0000Tr-OU
-	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 08:09:43 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:57903)
+	(envelope-from <laurent@vivier.eu>) id 1ghDc4-0000NE-A6
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 08:09:41 -0500
+Received: from mout.kundenserver.de ([212.227.126.133]:37439)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1ghDbz-0000EK-Go; Wed, 09 Jan 2019 08:09:35 -0500
+	id 1ghDbr-00009x-H3; Wed, 09 Jan 2019 08:09:30 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N0Zfg-1hSIRt1kTU-00wV7j; Wed, 09 Jan 2019 14:09:01 +0100
+	id 1M4KFF-1ggwcb13jN-000O8E; Wed, 09 Jan 2019 14:09:04 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -30,34 +30,34 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	qemu-ppc@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
 	Gerd Hoffmann <kraxel@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=83=C2=A9?= <philmd@redhat.com>,
-	Thomas Huth <thuth@redhat.com>
-Date: Wed,  9 Jan 2019 14:08:42 +0100
-Message-Id: <20190109130844.5172-5-laurent@vivier.eu>
+	Li Qiang <liq3ea@163.com>
+Date: Wed,  9 Jan 2019 14:08:44 +0100
+Message-Id: <20190109130844.5172-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190109130844.5172-1-laurent@vivier.eu>
 References: <20190109130844.5172-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:zFog74qFr6jfDAJZtrQ8v/ricCXyaU1qOwsOdl6f61yAcj3eXVx
-	UaE10aN29i8tu8vUIk30YYrozosVeHAyVsgAF/tjR6BFPA4F5oC7nGtow4XkJviL/dJA96H
-	fwe+B1hKy6yoZlNY80ctHlDAub6iuVW8CBgte2IGTUeSh2zEDsa3MnxwILfV3t3y778v06M
-	fu8EyL7US3o/QIMr4MgqA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:s5K+itDi2t8=:zXTgCpmPVHshVvd7QWjMj+
-	zu53DkRgu7MgACu3NVowpsIrpsm4ToKOz6FlU8fY7vLpf2RhS1iBrtydc5wL9UdXY4tC1BB05
-	0tlbAnAnLGOxtO7McFy7hYNzgEztK53OQEoPp2GfCQzCHMBkb8K3imQ6mf0npZSZJCbuScau4
-	jwv49iIEsxBgVuBedQFIZ1npd9KYuEjblVKvpj2zjI6mdYCwh5KptZbHH4ml0DsQGr/4Hg60q
-	d9y1OFLx1RDyvEzgww1RujQTOLz/wyzvbd9CNuWQWvdfpcujLEhZnBNMh0uJ9ABj7nDnX3CXP
-	HqWWQUVyCzNls1WfXryMzuua5ngWqTuJpwJqnySSY1qU0zj5bZO4wIaB3wWuUQXCWPjie6Jdy
-	rF5rFftLazsLWxYs1ZDhDOY5Bq5upJHvrYyFJI5Lphb5bJNTihAQxH8/ryh3mz9MlffHuSbJh
-	q8fpflfFUKXhXbt8+mlJUi0pfxp58XzSYXs6V6+Fb7AIBOpMcYj1+2r4MsRA0Ya8lxtmQcGrg
-	xAp8gvR+6t6cnXSkjl100tDbDD5YsYZt7yjEVuXmjW7PqyTL1Fconnsu0mwfF8+2onTE80dpi
-	3GZHNKBTSAFxJXhB71SORahji94zpO34RyKxdH1eDhBqiCSZev+7h6Nrw8u96p9qpgWWv/hu8
-	ikvL9qwuC9tZ33alFVGfBU5PIBBGtV607fg/+bgqFf2x+2Z8CJiRUHCZA5PyLOl67cPhb8dwt
-	YWYBuPDFMPdBOYUMGJezgynZvo3u0LPz26vDnQ==
+X-Provags-ID: V03:K1:/yB9ECdKhtQRTY1MgeTwiZKF1WVLcG/+fyJqYczaZSrPMS5l65j
+	jUdWtHgfWj3tc2dj4MyxAwU55J4EcQyf/YK9nkAuvNHDvhZCtNfUKMOyZE+w+7iEQnNAm/L
+	684/w4gp/zWs6HjJD2vdtKZo/suMe8dkDBAFxbv60ia1sk4yZVCiJZCRWJqp1cM48NKk2hF
+	i36t3gqcxrlp4q3SO2nYw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:d47CSabWAiw=:MW/DH0T0uGv27Ej5maTDvp
+	LhI2Wi2NIQy8uzukHD0wXkSWHI8RUcgSVg0FO5nSL6xHAW19LeqbwaxbrRPdZhO8nuMJQQlwX
+	eSBVtRJCvDSs1D/9mBIt27wmwv7s3OfqqbhEasz6u1j+AYDbP/CbDXOGVtd1K9/xgR9SnzFaD
+	VdU7lkwp9eVOuNhc836TYDLXdjrtIALRp0D1xLlYkR35x/saXkgj66eCwvpbwK8Fmys5hecXB
+	ebqb6iIo5xBlbzMeOTZj4TYPZsHgguuUsXiC5F9m7jJHhxWL8odt3sNETC5iw0CoXl2DFec2X
+	hGtaJAsR+tv8QrPGNsi+ZtB7sqLzzS4jQI+7IK53UZy5540ejVBCEUGq8Xp6az6y7JqPlcPt5
+	COH5G+tkvmJwzAFh3HiCOsibJlPykse3kEDCp/T3lvyvStBrLuPMYnlRwYDsaic392ITSUWeH
+	IMV9wKav2d0o+aS2ZbFqo+uimmkojo/MSVcjsr9IiStDYcGe5qFcc63PRjD5ICgXyMuMc+mD5
+	Fg+MTn0CDRQ3Fv+SWNOixyBgI0MPUTc0a6bHoQmAM3kJrpDAt0PZ84ETmCZCv93pWNYFl6Z5X
+	S1l+34pBt40oM4wiCiaTrRst94d7uA5xjvtLTUti73UEfHFehGCgkwbcfXSbe3lWToLBo3cHd
+	3bNbXP1xMaTVFcW2bjIzbUM05rLq+ztb6UfT7EmO73QbaDShlll4ulb/zDDk6m02JEog7FL3+
+	LpT/lZUEM7CnQFYtaF1IKuLHk7omW2SQEFk1Tg==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: [Qemu-trivial] [PULL 4/6] hw/audio/marvell: Don't include
- unnecessary i2c.h header file
+X-Received-From: 212.227.126.133
+Subject: [Qemu-trivial] [PULL 6/6] ioapic: use TYPE_FOO MACRO than constant
+ string
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,31 +69,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Jan 2019 13:12:13 -0000
+X-List-Received-Date: Wed, 09 Jan 2019 13:12:16 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Li Qiang <liq3ea@163.com>
 
-This device does not use I2C, so no need to include the header file here.
+Make them more QOMConventional.
+Cc:qemu-trivial@nongnu.org
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <1546614146-10525-1-git-send-email-thuth@redhat.com>
+Signed-off-by: Li Qiang <liq3ea@163.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20190105023831.66910-1-liq3ea@163.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/audio/marvell_88w8618.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/i386/kvm/ioapic.c     | 2 +-
+ hw/i386/pc.c             | 4 ++--
+ hw/intc/ioapic.c         | 2 +-
+ include/hw/i386/ioapic.h | 3 +++
+ 4 files changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/hw/audio/marvell_88w8618.c b/hw/audio/marvell_88w8618.c
-index 6600ab4851..035dd76cbf 100644
---- a/hw/audio/marvell_88w8618.c
-+++ b/hw/audio/marvell_88w8618.c
-@@ -12,7 +12,6 @@
- #include "qemu/osdep.h"
- #include "hw/sysbus.h"
- #include "hw/hw.h"
--#include "hw/i2c/i2c.h"
- #include "hw/audio/wm8750.h"
- #include "audio/audio.h"
- #include "qapi/error.h"
+diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
+index 5b40d75439..e453692199 100644
+--- a/hw/i386/kvm/ioapic.c
++++ b/hw/i386/kvm/ioapic.c
+@@ -163,7 +163,7 @@ static void kvm_ioapic_class_init(ObjectClass *klass, void *data)
+ }
+ 
+ static const TypeInfo kvm_ioapic_info = {
+-    .name  = "kvm-ioapic",
++    .name  = TYPE_KVM_IOAPIC,
+     .parent = TYPE_IOAPIC_COMMON,
+     .instance_size = sizeof(KVMIOAPICState),
+     .class_init = kvm_ioapic_class_init,
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 4952feb476..3c9e20ad9c 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -2339,9 +2339,9 @@ void ioapic_init_gsi(GSIState *gsi_state, const char *parent_name)
+     unsigned int i;
+ 
+     if (kvm_ioapic_in_kernel()) {
+-        dev = qdev_create(NULL, "kvm-ioapic");
++        dev = qdev_create(NULL, TYPE_KVM_IOAPIC);
+     } else {
+-        dev = qdev_create(NULL, "ioapic");
++        dev = qdev_create(NULL, TYPE_IOAPIC);
+     }
+     if (parent_name) {
+         object_property_add_child(object_resolve_path(parent_name, NULL),
+diff --git a/hw/intc/ioapic.c b/hw/intc/ioapic.c
+index 4e529729b4..9d75f84d3b 100644
+--- a/hw/intc/ioapic.c
++++ b/hw/intc/ioapic.c
+@@ -429,7 +429,7 @@ static void ioapic_class_init(ObjectClass *klass, void *data)
+ }
+ 
+ static const TypeInfo ioapic_info = {
+-    .name          = "ioapic",
++    .name          = TYPE_IOAPIC,
+     .parent        = TYPE_IOAPIC_COMMON,
+     .instance_size = sizeof(IOAPICCommonState),
+     .class_init    = ioapic_class_init,
+diff --git a/include/hw/i386/ioapic.h b/include/hw/i386/ioapic.h
+index 9c8816f11f..59fcb158a7 100644
+--- a/include/hw/i386/ioapic.h
++++ b/include/hw/i386/ioapic.h
+@@ -23,6 +23,9 @@
+ #define IOAPIC_NUM_PINS 24
+ #define IO_APIC_DEFAULT_ADDRESS 0xfec00000
+ 
++#define TYPE_KVM_IOAPIC "kvm-ioapic"
++#define TYPE_IOAPIC "ioapic"
++
+ void ioapic_eoi_broadcast(int vector);
+ 
+ #endif /* HW_IOAPIC_H */
 -- 
 2.20.1
 
