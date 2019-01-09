@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ghB9p-0004OQ-5T
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2019 05:32:21 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37221)
+	id 1ghBC5-0005xn-2Z
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2019 05:34:41 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37917)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghB9m-0004Mv-DQ
-	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:32:19 -0500
+	(envelope-from <laurent@vivier.eu>) id 1ghBC2-0005tV-2i
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:34:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghB9k-0003Dd-9f
-	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:32:17 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:55683)
+	(envelope-from <laurent@vivier.eu>) id 1ghBC0-0004Ra-K4
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:34:37 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:44955)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1ghB9i-0003C4-Gr; Wed, 09 Jan 2019 05:32:14 -0500
+	id 1ghBC0-0004JR-9h; Wed, 09 Jan 2019 05:34:36 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue106 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1MnItm-1h6Mxn48m4-00jLN4; Wed, 09 Jan 2019 11:31:52 +0100
+	(mreue108 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1N3bfB-1hPHNZ0Ce3-010gUl; Wed, 09 Jan 2019 11:34:10 +0100
 To: Li Qiang <liq3ea@163.com>, mst@redhat.com, marcel.apfelbaum@gmail.com,
 	pbonzini@redhat.com, rth@twiddle.net, ehabkost@redhat.com
 Cc: qemu-trivial@nongnu.org, lvivier@redhat.com, qemu-devel@nongnu.org
@@ -63,8 +63,8 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <733a962f-badf-6586-8fa6-b9e44b2dd7a2@vivier.eu>
-Date: Wed, 9 Jan 2019 11:31:49 +0100
+Message-ID: <a2c4b0e3-f850-8e8b-eeb9-25e77d06cfb6@vivier.eu>
+Date: Wed, 9 Jan 2019 11:34:08 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
@@ -72,24 +72,24 @@ In-Reply-To: <20190105023831.66910-1-liq3ea@163.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:hvVnUcgOEtug4WQouItFJV0SQ3vSv2pe3NQUEtM4BediZi4Imiv
-	mjQHhRoyQsfC9p54etEA3t7K5V02s1XRXQDyFurqAFSXoy5aTsu0s8dgOgZ7HyqtGYT1H3w
-	CquvfM7mGdqF5rhnSL+Izld59WAnWQB+jDtb5pH7mNhV92GD4rQtU5yUVYmQnTZNlTOLvYN
-	MuQCZJt9XihyOe3YDCq0g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:9wrMj2tXTfE=:cfDvfdXktSBwSCWTb/ZPuL
-	K2DCbg9+LNgClA1OPfOnEGZFuuN4bka2kUBxY9CheyELBow1FPZYbsMqU+mHE5N2eoEV92o9t
-	jLfSgd6i3PpNBCnKTzcNmbLRNhPuBRmJp0EezUryPi0GNBlkf/9lOPSWV/j9AgWIPHhmwIXbi
-	VH1D67VwrWtsUQKXwPVnqSS8kLQJMQ3FGWtBfywY6Ob+DddADuqMZwu8/fJZStZw9uPSP1ZQ8
-	+jmT0zFQk3vZDWzdf4iCsPE+l/q1KwMzgbCXvlDOgHSUhlHtktz6hN1ePbSd4ZZyNJakhoesp
-	AtImMLoMd8g/OArIWNUrmx4vdKCNmKl+mWLNcoymUgvaixaYIgx8EMp+KoFVyPrdqRv/iNWND
-	1P90S5kPzkWPP74YB9qNxafRZgwOLYHtjUA5CJxCzznZHG/wgHlNupXFWbUzu90BYny/0BOsH
-	wPqiayIpWOluH2H8dBTsahBQf0vbIS6B9f6HN0HwYOp81twMdsBlykpZc7dit5rIigzyXtpt/
-	EQFQB+VIeSuC1bCmap7qxPwORZAvrXslurou2Xp/MuB1dUHEFy8tgoeXIF/Jtw4xzs2WF1k0j
-	BMwhJTgRKj2y6EedpSsNJ7cqFddvnkBz1G0n/DCnWiedZSFkXr3+f7nJUSLqzldod385XAZ41
-	dS9y1p3+KMf03G4MTFlhsySi8KpxDn3iAhGTHSY1Z4So8Vh30E9BxHUf8RJmv1t0SQl4ZWOly
-	kVInUlZRQ0IhzsfyhabzB91NZDGeKBRcGwevUvMm2PY6xCwhsyP+lv7NjL0=
+X-Provags-ID: V03:K1:Le9s2/9FwJUNmL3pBpUaO3ty3l7Zef+lYg/+t7KWb+qmSetRFJB
+	AFUkKQ1JcQRR48tNDej64mmd02jLfSepGbNwh/3iLt8W6ibl7CtH0G/KfSHy0WhYBtdYyMx
+	MDnQTc+15l1eEFlmrwLap60qgel1755Xz/RCyQ6pfUjdgBe/PmbJtzxVOqMDIg188aDB/6M
+	nskNwsYbp+6EJIoSGWkdg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:FSTi9gRicpc=:GIQ/9ZfXqjJaD5tmojklsV
+	u7R6pT1wo+zrRzUwZ8+kpp8gRgFpcOQQgQ83Isb/irSeNrfWwuVBNRCufjLgKqvQ+GLNfxQE3
+	NpafZUH5WPrq+uTqrSz9k9EVBa1VeCbAbhBuE2t9VstFNYYjnIzLW7YeCqu7pIswdGXmTS9MY
+	Db6BrphovyMnqu38qZ2Nd6JbLapydRQtwgydC7qsG4grzuBZ/aDaf/AKXZKhGZIcPcz+0mlAy
+	hd80uiLeBU+oJSRSwizZ4xWKEGil+OYbUp+FoilbCUb9z9Jn8oWvDeRom10a+Fo7q4duXOmdX
+	uZF0OLvUalfeNzHI+ltZUvqZg5ryPEp+/Y2D0Aex0Op0Svndk1KdLCriTpFKA0P14R3AzGsMn
+	2NHfQqt4IyDsLAzrP2Q1/PNE4rw/ZiAHZ7yx78UBMqjseLnvxE5Y2ryPwzboT8HS2Y9+2O6Lk
+	mcOcUco8YmlQ5w1Gy557MPjVdLRq0FWpqbCWHb5Nu9FzGBtjy8pn3lpMXNFMA440SAhXBcxLQ
+	u5robBst5cpEZqz+VsCVPqJwBTXaIFPYVdDwPscCsiSN7NAhHwHBgI4YzH/oTn9WrY8o+uV2s
+	FVSoRRDrkLCk46zNkMtAEQl3K7cEd0E/7LVfbrRUNux6y+eu3F5nMm+u2I9SUM7GWlLCEbIIl
+	5yBRvsJTLxjmt4dZW5PKPJ6Bvwun19BDpvlT3YBABtfcQ2gwNPirS8OJc1e23+7wSjd3cgeEt
+	Rgku3kvhGa7d5ke7runcK3pgOlEtdxOKs4Kno00Pyrj4HHXLn6j0DLHSX98=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
+X-Received-From: 217.72.192.74
 Subject: Re: [Qemu-trivial] [PATCH] ioapic: use TYPE_FOO MACRO than constant
  string
 X-BeenThere: qemu-trivial@nongnu.org
@@ -103,7 +103,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Jan 2019 10:32:19 -0000
+X-List-Received-Date: Wed, 09 Jan 2019 10:34:39 -0000
 
 On 05/01/2019 03:38, Li Qiang wrote:
 > Make them more QOMConventional.
@@ -116,8 +116,67 @@ On 05/01/2019 03:38, Li Qiang wrote:
 >  hw/intc/ioapic.c         | 2 +-
 >  include/hw/i386/ioapic.h | 3 +++
 >  4 files changed, 7 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
+> index 5b40d75439..e453692199 100644
+> --- a/hw/i386/kvm/ioapic.c
+> +++ b/hw/i386/kvm/ioapic.c
+> @@ -163,7 +163,7 @@ static void kvm_ioapic_class_init(ObjectClass *klass, void *data)
+>  }
+>  
+>  static const TypeInfo kvm_ioapic_info = {
+> -    .name  = "kvm-ioapic",
+> +    .name  = TYPE_KVM_IOAPIC,
+>      .parent = TYPE_IOAPIC_COMMON,
+>      .instance_size = sizeof(KVMIOAPICState),
+>      .class_init = kvm_ioapic_class_init,
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index f248662e97..af68a61615 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -1665,9 +1665,9 @@ void ioapic_init_gsi(GSIState *gsi_state, const char *parent_name)
+>      unsigned int i;
+>  
+>      if (kvm_ioapic_in_kernel()) {
+> -        dev = qdev_create(NULL, "kvm-ioapic");
+> +        dev = qdev_create(NULL, TYPE_KVM_IOAPIC);
+>      } else {
+> -        dev = qdev_create(NULL, "ioapic");
+> +        dev = qdev_create(NULL, TYPE_IOAPIC);
+>      }
+>      if (parent_name) {
+>          object_property_add_child(object_resolve_path(parent_name, NULL),
+> diff --git a/hw/intc/ioapic.c b/hw/intc/ioapic.c
+> index 4e529729b4..9d75f84d3b 100644
+> --- a/hw/intc/ioapic.c
+> +++ b/hw/intc/ioapic.c
+> @@ -429,7 +429,7 @@ static void ioapic_class_init(ObjectClass *klass, void *data)
+>  }
+>  
+>  static const TypeInfo ioapic_info = {
+> -    .name          = "ioapic",
+> +    .name          = TYPE_IOAPIC,
+>      .parent        = TYPE_IOAPIC_COMMON,
+>      .instance_size = sizeof(IOAPICCommonState),
+>      .class_init    = ioapic_class_init,
+> diff --git a/include/hw/i386/ioapic.h b/include/hw/i386/ioapic.h
+> index 9c8816f11f..59fcb158a7 100644
+> --- a/include/hw/i386/ioapic.h
+> +++ b/include/hw/i386/ioapic.h
+> @@ -23,6 +23,9 @@
+>  #define IOAPIC_NUM_PINS 24
+>  #define IO_APIC_DEFAULT_ADDRESS 0xfec00000
+>  
+> +#define TYPE_KVM_IOAPIC "kvm-ioapic"
+> +#define TYPE_IOAPIC "ioapic"
+> +
+>  void ioapic_eoi_broadcast(int vector);
+>  
+>  #endif /* HW_IOAPIC_H */
+> 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Applied to my trivial-patches branch.
 
-
+Thanks,
+Laurent
 
