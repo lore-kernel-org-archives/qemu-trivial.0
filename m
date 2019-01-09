@@ -1,26 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ghAth-0005MO-CO
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2019 05:15:41 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33051)
+	id 1ghAvW-0006PH-Qb
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2019 05:17:34 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33546)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghAtf-0005KV-5z
-	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:15:40 -0500
+	(envelope-from <laurent@vivier.eu>) id 1ghAvS-0006LU-UA
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:17:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghAte-0005YM-8B
-	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:15:39 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:37513)
+	(envelope-from <laurent@vivier.eu>) id 1ghAvH-0007QD-UP
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:17:23 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:36337)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1ghAtd-0005Um-Sa; Wed, 09 Jan 2019 05:15:38 -0500
+	id 1ghAv2-0006vG-Mn; Wed, 09 Jan 2019 05:17:04 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1N9dkB-1hJFGW18ab-015VfQ; Wed, 09 Jan 2019 11:15:29 +0100
-To: Jon Diekema <jon.diekema@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>
-References: <5c2e6965.1c69fb81.b832c.13ee@mx.google.com>
-Cc: qemu-trivial@nongnu.org
+	(mreue106 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1Mgf4k-1hCwtN1fGW-00h8Hz; Wed, 09 Jan 2019 11:17:01 +0100
+Cc: Roman Kapl <roman.kapl@sysgo.com>, Jon Diekema <jon.diekema@gmail.com>,
+	qemu-trivial@nongnu.org, Roman Kapl <rka@sysgo.com>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+References: <CALvuzg43uSodseEHjNaRcPFBKKPTY2mcppUbYgiLL=QO9RxX_Q@mail.gmail.com>
+	<e62bbdda-2ab9-b9a1-7843-0a3a40f56282@vivier.eu>
+	<4cfad0f8-1b66-b6be-693e-ba439e81f171@sysgo.com>
+To: David Gibson <david@gibson.dropbear.id.au>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -65,35 +67,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <2c434536-6388-563f-344b-c6800769a733@vivier.eu>
-Date: Wed, 9 Jan 2019 11:15:26 +0100
+Message-ID: <f36c1752-98ad-7c44-4637-7186c7511f38@vivier.eu>
+Date: Wed, 9 Jan 2019 11:17:00 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <5c2e6965.1c69fb81.b832c.13ee@mx.google.com>
+In-Reply-To: <4cfad0f8-1b66-b6be-693e-ba439e81f171@sysgo.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:ZwqdWwThyeZT04kr5lfZJbNQFfZGhYUe3+xHYzBV8Aj7OtXbou9
-	DoqEI0ecvEK2FeHWro37W9scfuYFfiTDXJU6q5l3yb1z9lYCcrkLMlHMaJKE2tD4sLmkNVG
-	axtN780oBRgJ+D+86OMY3SDLibK4Ppy3xt9ns2VVwQdDIeklReGl/Wb+k/zVWX23EVkn1c2
-	REqDfSxXoBOR3Luf+YdMQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:WwUtxew8d8w=:XHZMANRNqeX2+G72YpX04n
-	EJRx2uXojtWIWdHDgS+U2H9aj3DSMh+3gRuU2epEMb1vpEtYMAic6nGwZEfZXfHPI0x3P7k3W
-	m3Gvp62hhtkdvAb5G4Huk5YPoIDURwcftzr1D2iDGMyamQVRTTVYstuW9BZncPCeakMWlgXRf
-	7OvhTdAiZyKvfWpR7j0xf/aOKK+gj0/NXuWd2/9RJac9+WaSUVbdq1w/4MUbgxLYGO/l9uPFg
-	bOIA8eIcnsayjYWxQWdpno+C/TyW3CTQkdNOQ4ZeZTbhqGxc61/MkynrBJZ967S4FWda73lu+
-	39PaOqZGI33qsqINAVXAAxQZMuX+4eAadqgZOp9ePW2WHfXLD2vaihCSs0zdd3xyOYFhmK7g/
-	J2mr1djCM86h6/TCeevlTsqZuGwbGt6sOIektrSpmynYjl5NJRfoFBUrq0+xLu88quGXgIG+D
-	UjJ74foaRO8JY6BMQfcDIDZiYV8T+Nh4w4Xpy6DE/tEn6Z+RhZ5A2f+tdjMuSiltpegAN5HxB
-	/VGNXcN31o3VKXcY2Bjkook1AnSS82/4vKNkw36xvRvSd9Km/Yf8fs4qU/8GRfz+n2kDq5uVk
-	VEcU/3DnJrPV8S2znFhbpEIu/My92vSQpiYN4TtI2wAow554JPCl7aAgdC+X2D6+XYQ6PQg2d
-	F4HJrM+jnhOcZjBRHbdNzmUIO6L14I6l4g3KRjg3kk4cgn5JnkrklNHl+t5tGXiUQuLOtqmnK
-	OzOgq4ibsa+9kG0O8/FXqI5mzW5mKB1RzzXQWdCl6GWLa9Oqd8LK7MvAaGE=
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:CUbKWG/Za5w5rRtfgK3m/sLabcJfEcgW2mpcOhJLQ5g2ihiTuyn
+	xhmrk3UBRyRoBkXHt+z1y3M6NM5syskeMWRZhG6a+sQvj/8HJ3F7HU/pZqjTNZvkKEMmO+Y
+	fmpo7fn680ARmLC7DfMJeHeqDARy44aAlceOYY6TaPiZQOErt2C4hb3vJJdUkUxNSa5FzML
+	cEHjvgAH2xGpRZnqkZWaw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:trnoRg7bIV0=:ba+Je288jmFn6j4o282nVT
+	F+E2IIwLo4Upw58KSB9vgBaubyJkEYPzG0608ByYEs6EyyKX1dRFCEWox3WhEd5Cb9QxNmCDp
+	AA9G4qVP/xP9edvzfmqL2jhpSbV+EHXHgASLJgm5owR1rLDlvFsER2t1KF7pSroe0IFhNHR7K
+	gjp1jMtu+XYWvPPAaqSw7K4l1NL/6hFCHR/akL6stSTcKNa6A+xMhlaeEuklTE6VUJST7rfUA
+	HaUssZuYYpsb/rl2Zcqesj72xKkvtNGuFrmvKKCxSWlm9fQW+KLXruJISQPO2z3iLyfv7XzIs
+	eCRib/gvLasQerNvZEOkg2Car1ts5RyGf6ZYt35J2rjBMxA3wtMcZQvwVZRTo+uLwgBGeHhHY
+	NDMRn2UFlDvNXM6UTvyTPS95swnCu+ISWCWiWKqO4hxiB9MbZCh0AxooYw+6Psbw338tcsdEm
+	IvZD4EAkoKsmPwxOqsT0VsnrsPxT3pjuSL40gr5ff0zeYcLOYR7zzlQ1UkON56xbXiiVvULoS
+	AUOv44Rh+hOY6ml/5OYzLi1ObKPQwx9InsevtBjfHNBCmtE/GB3AVqXmVtM12leEK1CU3l0oH
+	TdSDBmT/1IIqQnFTr/KTqd8FrIcxrgzrUa/xlt4mbm4dLYU4U53bXINqBiZi6Rrmunz2STZwJ
+	UoqRY2To8ShNuH9Avx21Jk12ZTdwU4WOlxQGbRiD1xLlSPNVlCaLamdaGEy5kYCCXw+bp+L2I
+	kgwT1ng4k9cEefZfgOzx5xO9xMC5iMqWmLH4znPV15OXP6EW+XASX+M+EI4=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.10
-Subject: Re: [Qemu-trivial] Whitespace cleanup:
- target/ppc/translate_init.inc.c
+X-Received-From: 217.72.192.75
+Subject: Re: [Qemu-trivial] ppc: e6500 registers SPR 604 twice
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,51 +106,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Jan 2019 10:15:40 -0000
+X-List-Received-Date: Wed, 09 Jan 2019 10:17:33 -0000
 
-Hi Jon,
+David,
 
-please cc: qemu-devel and MAINTAINERS when you send a patch.
-
-You can have the list of maintainers using a script in qemu directory:
-
-   ./scripts/get_maintainer.pl XXXX.patch
+will you take this through your ppc branch?
 
 Thanks,
 Laurent
 
-On 03/01/2019 20:58, Jon Diekema wrote:
-> From: Jon Diekema <jon.diekema@gmail.com>
-> Date: Tue, 25 Dec 2018 04:03:04 -0500
-> Subject: Whitespace cleanup: target/ppc/translate_init.inc.c
+On 04/01/2019 11:41, Roman Kapl wrote:
+>> Le 25/12/2018 à 10:50, Jon Diekema a écrit :
+>>>  From f399f28441e0aa79458d68996038ca3606fcb699 Mon Sep 17 00:00:00 2001
+>>> From: Jon Diekema <jon.diekema@ge.com <mailto:jon.diekema@ge.com>>
+>>> Date: Tue, 25 Dec 2018 04:36:06 -0500
+>>> Subject: ppc: e6500 registers SPR 604 twice
+>>>
+>>> When using the e6500 CPU, QEMU generates a fatal error after
+>>> complaining about registering SPR 604 twice.
+>>>
+>>>
+>>> diff --git a/target/ppc/translate_init.inc.c
+>>> b/target/ppc/translate_init.inc.c
+>>> index 03f1d34a97..c971a5faf7 100644
+>>> --- a/target/ppc/translate_init.inc.c
+>>> +++ b/target/ppc/translate_init.inc.c
+>>> @@ -4947,14 +4947,6 @@ static void init_proc_e500(CPUPPCState *env, int
+>>> version)
+>>>       }
+>>>         if (version == fsl_e6500) {
+>>> -        spr_register(env, SPR_BOOKE_SPRG8, "SPRG8",
+>>> -                     SPR_NOACCESS, SPR_NOACCESS,
+>>> -                     &spr_read_generic, &spr_write_generic,
+>>> -                     0x00000000);
+>>> -        spr_register(env, SPR_BOOKE_SPRG9, "SPRG9",
+>>> -                     SPR_NOACCESS, SPR_NOACCESS,
+>>> -                     &spr_read_generic, &spr_write_generic,
+>>> -                     0x00000000);
+>>>           /* Thread identification */
+>>>           spr_register(env, SPR_TIR, "TIR",
+>>>                        SPR_NOACCESS, SPR_NOACCESS,
+>>> -- 
+>>> 2.20.1.3.gf17a2b179
+>>>
+>>
+>> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+>> Tested-by: Laurent Vivier <laurent@vivier.eu>
+>>
 > 
-> Signed-off-by: Jon Diekema <jon.diekema@gmail.com>
-> ---
->  target/ppc/translate_init.inc.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> Thanks Jon, I did not test with e6500. The patch fixes the issue &
+> debugging still works on e5500.
 > 
-> diff --git a/target/ppc/translate_init.inc.c b/target/ppc/translate_init.inc.c
-> index c971a5faf7..b5f4c9bd55 100644
-> --- a/target/ppc/translate_init.inc.c
-> +++ b/target/ppc/translate_init.inc.c
-> @@ -5237,7 +5237,7 @@ static void init_proc_601(CPUPPCState *env)
->                   0x00000000);
->      /* Memory management */
->      init_excp_601(env);
-> -    /* XXX: beware that dcache line size is 64 
-> +    /* XXX: beware that dcache line size is 64
->       *      but dcbz uses 32 bytes "sectors"
->       * XXX: this breaks clcs instruction !
->       */
-> @@ -10485,7 +10485,7 @@ static void ppc_cpu_class_init(ObjectClass *oc, void *data)
->      cc->tcg_initialize = ppc_translate_init;
->  #endif
->      cc->disas_set_info = ppc_disas_set_info;
-> - 
-> +
->      dc->fw_name = "PowerPC,UNKNOWN";
->  }
->  
+> Roman Kapl
 > 
 
 
