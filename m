@@ -1,23 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ghB2i-0001Sd-J5
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2019 05:25:00 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35536)
+	id 1ghB9p-0004OQ-5T
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Jan 2019 05:32:21 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37221)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghB2g-0001RI-ET
-	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:24:59 -0500
+	(envelope-from <laurent@vivier.eu>) id 1ghB9m-0004Mv-DQ
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:32:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1ghB2f-0005hB-PY
-	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:24:58 -0500
-Received: from mout.kundenserver.de ([212.227.17.24]:33311)
+	(envelope-from <laurent@vivier.eu>) id 1ghB9k-0003Dd-9f
+	for qemu-trivial@nongnu.org; Wed, 09 Jan 2019 05:32:17 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:55683)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1ghB2d-0005WU-VE; Wed, 09 Jan 2019 05:24:56 -0500
+	id 1ghB9i-0003C4-Gr; Wed, 09 Jan 2019 05:32:14 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1Mc02T-1hHbWW0KcB-00daWg; Wed, 09 Jan 2019 11:24:51 +0100
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <1546615943-16274-1-git-send-email-thuth@redhat.com>
+	(mreue106 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1MnItm-1h6Mxn48m4-00jLN4; Wed, 09 Jan 2019 11:31:52 +0100
+To: Li Qiang <liq3ea@163.com>, mst@redhat.com, marcel.apfelbaum@gmail.com,
+	pbonzini@redhat.com, rth@twiddle.net, ehabkost@redhat.com
+Cc: qemu-trivial@nongnu.org, lvivier@redhat.com, qemu-devel@nongnu.org
+References: <20190105023831.66910-1-liq3ea@163.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -62,35 +63,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <4b9b4d5a-d124-19df-46c9-f3b2a68f46d8@vivier.eu>
-Date: Wed, 9 Jan 2019 11:24:50 +0100
+Message-ID: <733a962f-badf-6586-8fa6-b9e44b2dd7a2@vivier.eu>
+Date: Wed, 9 Jan 2019 11:31:49 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <1546615943-16274-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <20190105023831.66910-1-liq3ea@163.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:r7n6T00cXQpde2+uN4pAbpHR4USkeMtNtqA54GIe+zEUDBgXvn3
-	cdKhgE2yWEsLucvpY1FIhxkPaEUyyQDhqsbM2lmex81UbWO5zMNTgsuDPcuatgY2Gx3CGZO
-	rTbIlzblCKda/s6qWt8BB3OiIZCKnRGFb0pz1Rni9kuaMJxPLW8Hk4auB+QJSf0vDSKBv+F
-	OnLHrGxmOmjhgwBPDSOdQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:esN7soQzbbU=:oZGnS/bIccKvJD7vvtGGVR
-	uNTJGREKB/h+ldcSjG0LTzxwp9LQDnKqGkr4YMWEwKJA7iuilejCyVko0wnftdtNTC0ZCfV2s
-	n6rCcNgsyy199YbcNLBLZzqkAOR59ZYyHpSGGbNoWwpLgPWXq5GatDN1ti7wSMQMPeUEr+MRW
-	fmBjDsrENWSzNISBPLKG3H+slO9m6SJ/aXojOETpwR1R7WliBInymCKGxsMesxp4CkiqPj0CJ
-	/YKMQoOLW5YMdXawiL53jrXxH6rWkZe5nT4/PC+CN3JZ7DMxssD7sO0quBy4GQbitfCeOVhDR
-	h883BGInZjRT5sjSrffvRkf6InFMdha2mBg2+CJGY0pqxAPGjNuwh1ygd3YqLvG7gDCpV4BqX
-	ZN+1J0ktx6mDIcouy0sJMg0gJnX+AAQ+CYFFhJEAP28yNblMZ7A2j0TujPZKGR9xphKxIF3L0
-	RLHoKP67TU3QecD6/WQKFOAy1ON7X10j717+vxoWoxUJsiHse/6GBwrn8w+GhiJy0yYhaA0x+
-	hAww642sOVvcfxB2tIxrTNew04nLq04cZr6tB1KDgKPR1dy33YPP1OR221iHPlK24mJ7rSkqi
-	pQ1qV/vRlFblj8QaJBPEe6y/bLhSioGV80E3LWFvqiK1OYyeiMO7bnXRIp5ratOWas0kon/+3
-	Z9kBR6vRtud/fIQgmdIvOkFhiYi6YqnqvHPCaA+DAkPApfTOuq6eVtK7Jxo6SSrd7xSQ+WVNm
-	B1DSV5tC1FmWD2buNxsqOCdkVeV0PYPdvw+d95huQth+OTV/4G9hJgOsevE=
+X-Provags-ID: V03:K1:hvVnUcgOEtug4WQouItFJV0SQ3vSv2pe3NQUEtM4BediZi4Imiv
+	mjQHhRoyQsfC9p54etEA3t7K5V02s1XRXQDyFurqAFSXoy5aTsu0s8dgOgZ7HyqtGYT1H3w
+	CquvfM7mGdqF5rhnSL+Izld59WAnWQB+jDtb5pH7mNhV92GD4rQtU5yUVYmQnTZNlTOLvYN
+	MuQCZJt9XihyOe3YDCq0g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:9wrMj2tXTfE=:cfDvfdXktSBwSCWTb/ZPuL
+	K2DCbg9+LNgClA1OPfOnEGZFuuN4bka2kUBxY9CheyELBow1FPZYbsMqU+mHE5N2eoEV92o9t
+	jLfSgd6i3PpNBCnKTzcNmbLRNhPuBRmJp0EezUryPi0GNBlkf/9lOPSWV/j9AgWIPHhmwIXbi
+	VH1D67VwrWtsUQKXwPVnqSS8kLQJMQ3FGWtBfywY6Ob+DddADuqMZwu8/fJZStZw9uPSP1ZQ8
+	+jmT0zFQk3vZDWzdf4iCsPE+l/q1KwMzgbCXvlDOgHSUhlHtktz6hN1ePbSd4ZZyNJakhoesp
+	AtImMLoMd8g/OArIWNUrmx4vdKCNmKl+mWLNcoymUgvaixaYIgx8EMp+KoFVyPrdqRv/iNWND
+	1P90S5kPzkWPP74YB9qNxafRZgwOLYHtjUA5CJxCzznZHG/wgHlNupXFWbUzu90BYny/0BOsH
+	wPqiayIpWOluH2H8dBTsahBQf0vbIS6B9f6HN0HwYOp81twMdsBlykpZc7dit5rIigzyXtpt/
+	EQFQB+VIeSuC1bCmap7qxPwORZAvrXslurou2Xp/MuB1dUHEFy8tgoeXIF/Jtw4xzs2WF1k0j
+	BMwhJTgRKj2y6EedpSsNJ7cqFddvnkBz1G0n/DCnWiedZSFkXr3+f7nJUSLqzldod385XAZ41
+	dS9y1p3+KMf03G4MTFlhsySi8KpxDn3iAhGTHSY1Z4So8Vh30E9BxHUf8RJmv1t0SQl4ZWOly
+	kVInUlZRQ0IhzsfyhabzB91NZDGeKBRcGwevUvMm2PY6xCwhsyP+lv7NjL0=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: Re: [Qemu-trivial] [PATCH] trivial: Don't include isa.h if it is
- not really necessary
+X-Received-From: 217.72.192.75
+Subject: Re: [Qemu-trivial] [PATCH] ioapic: use TYPE_FOO MACRO than constant
+ string
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,30 +103,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Jan 2019 10:24:59 -0000
+X-List-Received-Date: Wed, 09 Jan 2019 10:32:19 -0000
 
-On 04/01/2019 16:32, Thomas Huth wrote:
-> These files don't seem to do anything related to ISA directly, so
-> there is no need to include isa.h here.
+On 05/01/2019 03:38, Li Qiang wrote:
+> Make them more QOMConventional.
+> Cc:qemu-trivial@nongnu.org
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Li Qiang <liq3ea@163.com>
 > ---
->  hw/display/ramfb-standalone.c | 1 -
->  hw/ide/pci.c                  | 1 -
->  hw/ide/piix.c                 | 1 -
->  hw/ide/via.c                  | 1 -
->  hw/misc/macio/mac_dbdma.c     | 1 -
->  hw/moxie/moxiesim.c           | 1 -
->  hw/nvram/fw_cfg.c             | 1 -
->  hw/sparc/sun4m.c              | 1 -
->  hw/timer/i8254.c              | 1 -
->  9 files changed, 9 deletions(-)
-> 
+>  hw/i386/kvm/ioapic.c     | 2 +-
+>  hw/i386/pc.c             | 4 ++--
+>  hw/intc/ioapic.c         | 2 +-
+>  include/hw/i386/ioapic.h | 3 +++
+>  4 files changed, 7 insertions(+), 4 deletions(-)
 
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
-Applied to my trivial-patches branch.
-
-Thanks,
-Laurent
 
 
