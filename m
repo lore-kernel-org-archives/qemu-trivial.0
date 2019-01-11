@@ -1,66 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ghdCd-0007Rb-QY
-	for mharc-qemu-trivial@gnu.org; Thu, 10 Jan 2019 11:29:07 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42688)
+	id 1ghkpl-0005kq-0q
+	for mharc-qemu-trivial@gnu.org; Thu, 10 Jan 2019 19:38:01 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58586)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ghdCb-0007RG-VI
-	for qemu-trivial@nongnu.org; Thu, 10 Jan 2019 11:29:06 -0500
+	(envelope-from <dgibson@ozlabs.org>) id 1ghkpg-0005ey-MP
+	for qemu-trivial@nongnu.org; Thu, 10 Jan 2019 19:37:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1ghdCY-0008Oc-7Q
-	for qemu-trivial@nongnu.org; Thu, 10 Jan 2019 11:29:04 -0500
-Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330]:38540)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1ghdCW-0008Mz-So
-	for qemu-trivial@nongnu.org; Thu, 10 Jan 2019 11:29:00 -0500
-Received: by mail-ot1-x330.google.com with SMTP id e12so10452556otl.5
-	for <qemu-trivial@nongnu.org>; Thu, 10 Jan 2019 08:29:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=mseTLoi6+NUkPoJ7mEjoD8fCy0pwkUHMDt95vmkqp0k=;
-	b=dEKScDCM4P8fRJB68G+iUOWz9S3NXI5NZPpZwwrPaFz0mXAGvfcET1nv2r72eapDXQ
-	AuGkAAuTen3usGbMG0XVuZ7vRiJ/7fp1cSJVRMoLQzEiHOaDbPonsbN5U4hdzBQGkCV6
-	hfEsJo74W764JL41ADnP1pMi9XVmjDlnvDo9s=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=mseTLoi6+NUkPoJ7mEjoD8fCy0pwkUHMDt95vmkqp0k=;
-	b=TW61TavOoOUXrDABE/DHC7IhoMaQEUGJfY/eVY9OgPJWwljba4ns46qOwII0jXyaza
-	ye0ShQFtb25E6HLpCGxU90BCv6/ZnTjQpSiKxZt+XSLLjHh//0PK6Ton8Q1J9mYwof3A
-	vbE45IyTb1kjYfQxmTbcYkO+fxh3MbDnv1sB660OEIz+Tfm7TGsymhABNg0JFrJ3Q+va
-	NADH/vLjFLuTFutqWb3CYzfmcKzrm5RQmoZPoJmRyY0iKFpMdRWSi0fBCkY6O+QMhANj
-	cxEFCEGoCzXKVcA+hMegM2Ml9EOPdwQvMGgAmmcP8H1z0URQO+Xrnk3XDLJPOM+S3114
-	u3+g==
-X-Gm-Message-State: AJcUukffqEjyotJC/YJOZ6uAVa1wZoGC1IKFpS78WSl+Ytf7Z9iR3n1f
-	NbWJaTBzDOyJeTpf+PzWB/trc/VaLjt37bUGvP8Fpg==
-X-Google-Smtp-Source: ALg8bN5nOhyfnLM+uEt6JgQDIZPqQkudUz/4LV0GXVhzze0nhh126T90YZTLXhP7fBkL384ef4s+2rGNZwYL0bW0i+s=
-X-Received: by 2002:a9d:5a81:: with SMTP id w1mr7597378oth.317.1547137739547; 
-	Thu, 10 Jan 2019 08:28:59 -0800 (PST)
-MIME-Version: 1.0
-References: <20190109130844.5172-1-laurent@vivier.eu>
-In-Reply-To: <20190109130844.5172-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 Jan 2019 16:28:48 +0000
-Message-ID: <CAFEAcA86x-Mp+uf5bj=FkcgXdVpmwZ=hquTNZv6_+UBd7avKaw@mail.gmail.com>
+	(envelope-from <dgibson@ozlabs.org>) id 1ghkpf-0003Z0-TN
+	for qemu-trivial@nongnu.org; Thu, 10 Jan 2019 19:37:56 -0500
+Received: from ozlabs.org ([203.11.71.1]:58777)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1ghkpb-0003Sk-6r; Thu, 10 Jan 2019 19:37:51 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 43bP8m6z4lz9sNH; Fri, 11 Jan 2019 11:37:44 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1547167064;
+	bh=OJ8xH7dMBHSAIpGK7gdJ6PCoTYltfqGQwOpKyhY8M6c=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RQ170qScjGmXVFA08HXSl/A3T+VotdnoMZGvivBHDVeUyfMYlpbw2bN3AmQ+v2K0J
+	Pd+xfEQIxJCAY0NnbOTAEHX+cFMw1RYz0PgdEjfLabTufa1q2brLLrC41pGHhWkWT4
+	7nU4WPyLnKHEn9XMq4EqSiN9ZpH1N7Kd84GmaRPM=
+Date: Fri, 11 Jan 2019 11:37:35 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
 To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, Laszlo Ersek <lersek@redhat.com>,
-	Anthony Green <green@moxielogic.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=83=C2=A9?= <philmd@redhat.com>, 
-	Michael Tokarev <mjt@tls.msk.ru>, qemu-ppc <qemu-ppc@nongnu.org>,
-	Gerd Hoffmann <kraxel@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	John Snow <jsnow@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::330
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 0/6] Trivial patches patches
+Cc: Jon Diekema <jon.diekema@gmail.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>, qemu-trivial@nongnu.org
+Message-ID: <20190111003735.GP6682@umbus.fritz.box>
+References: <5c2e6965.1c69fb81.b832c.13ee@mx.google.com>
+	<2c434536-6388-563f-344b-c6800769a733@vivier.eu>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="EkxpYdHiqGHPYbUt"
+Content-Disposition: inline
+In-Reply-To: <2c434536-6388-563f-344b-c6800769a733@vivier.eu>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 203.11.71.1
+Subject: Re: [Qemu-trivial] Whitespace cleanup:
+ target/ppc/translate_init.inc.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,31 +51,93 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 10 Jan 2019 16:29:07 -0000
+X-List-Received-Date: Fri, 11 Jan 2019 00:37:57 -0000
 
-On Wed, 9 Jan 2019 at 13:23, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit 147923b1a901a0370f83a0f4c58ec1baffef22f0:
->
->   Merge remote-tracking branch 'remotes/kraxel/tags/usb-20190108-pull-request' into staging (2019-01-08 16:07:32 +0000)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
->
-> for you to fetch changes up to 34bec7a8d04f23d6258dcf338894956b945673a5:
->
->   ioapic: use TYPE_FOO MACRO than constant string (2019-01-09 11:33:47 +0100)
->
-> ----------------------------------------------------------------
-> Trivial patches for 4.0 (2019-01-09)
->
-> ----------------------------------------------------------------
 
-Applied, thanks.
+--EkxpYdHiqGHPYbUt
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/4.0
-for any user-visible changes.
+On Wed, Jan 09, 2019 at 11:15:26AM +0100, Laurent Vivier wrote:
+> Hi Jon,
+>=20
+> please cc: qemu-devel and MAINTAINERS when you send a patch.
+>=20
+> You can have the list of maintainers using a script in qemu directory:
+>=20
+>    ./scripts/get_maintainer.pl XXXX.patch
+>=20
+> Thanks,
+> Laurent
 
--- PMM
+Hrm.  Like the other patch, I didn't seem to receive this - I checked
+back through my archives.  I think something must be not working with
+email from Jon to me, although I can't quite imagine what.
+
+>=20
+> On 03/01/2019 20:58, Jon Diekema wrote:
+> > From: Jon Diekema <jon.diekema@gmail.com>
+> > Date: Tue, 25 Dec 2018 04:03:04 -0500
+> > Subject: Whitespace cleanup: target/ppc/translate_init.inc.c
+> >=20
+> > Signed-off-by: Jon Diekema <jon.diekema@gmail.com>
+> > ---
+> >  target/ppc/translate_init.inc.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >=20
+> > diff --git a/target/ppc/translate_init.inc.c b/target/ppc/translate_ini=
+t.inc.c
+> > index c971a5faf7..b5f4c9bd55 100644
+> > --- a/target/ppc/translate_init.inc.c
+> > +++ b/target/ppc/translate_init.inc.c
+> > @@ -5237,7 +5237,7 @@ static void init_proc_601(CPUPPCState *env)
+> >                   0x00000000);
+> >      /* Memory management */
+> >      init_excp_601(env);
+> > -    /* XXX: beware that dcache line size is 64=20
+> > +    /* XXX: beware that dcache line size is 64
+> >       *      but dcbz uses 32 bytes "sectors"
+> >       * XXX: this breaks clcs instruction !
+> >       */
+> > @@ -10485,7 +10485,7 @@ static void ppc_cpu_class_init(ObjectClass *oc,=
+ void *data)
+> >      cc->tcg_initialize =3D ppc_translate_init;
+> >  #endif
+> >      cc->disas_set_info =3D ppc_disas_set_info;
+> > -=20
+> > +
+> >      dc->fw_name =3D "PowerPC,UNKNOWN";
+> >  }
+> > =20
+> >=20
+>=20
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--EkxpYdHiqGHPYbUt
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlw35U8ACgkQbDjKyiDZ
+s5IG1g//VvXNy8J7FYFtXA7vg7vNmovn6VVK0g4RdzegqTho0pnF7JMDsonsqsiX
+u0173dqIPGWzwY3qNaQgpdMS47hiqr2gZSwkXNCtJnQvSb6GJxKBLywDgdNjFmjS
+cWIDmzmSE7velgzozRwyEWGnQxtuv76r173VpDzRBDzt0V1v2OlIgeSKk8HL4REJ
+OT1ieyFtQLpPk+GqRzEWIezfwPRtmaRn65RK7V2qn6zKd2BcilSqNOqWWQZUhK60
+5VqLYaA6u5KKI6aPym5FP3H2oiggE0xYb1HLsn/Cjf3N22itC6PSrF116X0Yz/U7
+U9E3HTmeedzaAmOgUDVt4Bp6LwiXtXQPl97Kp3bZX6EQ5ZNsiK4wVdf9OPZxmeqr
+LbeOA2QWm5qK6Lqk+V45GhP6g0+BSncbiUZJxv6JalpzNc1PgV4g0ZHcwX9LTsTx
+qTb1X487ZhuTfZwltOFR+rbvKRfnhgarNVIbQIwiUWX2um4pH/onxar+6jFBGqOP
+KbSiSZZKwRz6IXUyQ6ZCGYAIojZPkMXgzmDBYhieK8Pn/TgkO8Qi4saHMHWTQ2sK
+xOOEX3wKaIBknu9lL2LrMbjAY0oimLX2baRmwaSyrq+WjtA0UY+rEiwryUCreFZB
+dJECEiInXJoQ5WfJN4iIHE5d9TquegN5cFEBVI+iIGikR1UmRh8=
+=4qbU
+-----END PGP SIGNATURE-----
+
+--EkxpYdHiqGHPYbUt--
 
