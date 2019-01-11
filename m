@@ -1,45 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1ghkpl-0005kq-0q
+	id 1ghkpl-0005l6-62
 	for mharc-qemu-trivial@gnu.org; Thu, 10 Jan 2019 19:38:01 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:58586)
+Received: from eggs.gnu.org ([209.51.188.92]:58591)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1ghkpg-0005ey-MP
-	for qemu-trivial@nongnu.org; Thu, 10 Jan 2019 19:37:57 -0500
+	(envelope-from <dgibson@ozlabs.org>) id 1ghkph-0005fb-47
+	for qemu-trivial@nongnu.org; Thu, 10 Jan 2019 19:37:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1ghkpf-0003Z0-TN
-	for qemu-trivial@nongnu.org; Thu, 10 Jan 2019 19:37:56 -0500
-Received: from ozlabs.org ([203.11.71.1]:58777)
+	(envelope-from <dgibson@ozlabs.org>) id 1ghkpg-0003ZH-9p
+	for qemu-trivial@nongnu.org; Thu, 10 Jan 2019 19:37:57 -0500
+Received: from ozlabs.org ([2401:3900:2:1::2]:35591)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1ghkpb-0003Sk-6r; Thu, 10 Jan 2019 19:37:51 -0500
+	id 1ghkpb-0003Sy-Kv; Thu, 10 Jan 2019 19:37:52 -0500
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 43bP8m6z4lz9sNH; Fri, 11 Jan 2019 11:37:44 +1100 (AEDT)
+	id 43bP8n0lVDz9sNK; Fri, 11 Jan 2019 11:37:44 +1100 (AEDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1547167064;
-	bh=OJ8xH7dMBHSAIpGK7gdJ6PCoTYltfqGQwOpKyhY8M6c=;
+	d=gibson.dropbear.id.au; s=201602; t=1547167065;
+	bh=QVxOGT8m3iJnPMk3m80utbg2HHFcNEjft0Wu0WTAuFo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RQ170qScjGmXVFA08HXSl/A3T+VotdnoMZGvivBHDVeUyfMYlpbw2bN3AmQ+v2K0J
-	Pd+xfEQIxJCAY0NnbOTAEHX+cFMw1RYz0PgdEjfLabTufa1q2brLLrC41pGHhWkWT4
-	7nU4WPyLnKHEn9XMq4EqSiN9ZpH1N7Kd84GmaRPM=
-Date: Fri, 11 Jan 2019 11:37:35 +1100
+	b=kx+foIU43vyGjp1IBIuzjNe5vFLWCnb7Jyl46bw47MGepfkxmlw8Z5svCt7kMHWag
+	yq/nutY1XwCHLOL7dmaMAcwYmFd2TQ7OqVDT6A4RqU4Q/OzhcMH/FhpGEjL4ycrqOX
+	hgx0LSC/mnmqp7XPgveekyKrCZIaqR2vrZucwz4Q=
+Date: Fri, 11 Jan 2019 11:35:27 +1100
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Laurent Vivier <laurent@vivier.eu>
-Cc: Jon Diekema <jon.diekema@gmail.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>, qemu-trivial@nongnu.org
-Message-ID: <20190111003735.GP6682@umbus.fritz.box>
-References: <5c2e6965.1c69fb81.b832c.13ee@mx.google.com>
-	<2c434536-6388-563f-344b-c6800769a733@vivier.eu>
+Cc: Roman Kapl <roman.kapl@sysgo.com>, Jon Diekema <jon.diekema@gmail.com>,
+	qemu-trivial@nongnu.org, Roman Kapl <rka@sysgo.com>,
+	"qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>
+Message-ID: <20190111003527.GO6682@umbus.fritz.box>
+References: <CALvuzg43uSodseEHjNaRcPFBKKPTY2mcppUbYgiLL=QO9RxX_Q@mail.gmail.com>
+	<e62bbdda-2ab9-b9a1-7843-0a3a40f56282@vivier.eu>
+	<4cfad0f8-1b66-b6be-693e-ba439e81f171@sysgo.com>
+	<f36c1752-98ad-7c44-4637-7186c7511f38@vivier.eu>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="EkxpYdHiqGHPYbUt"
+	protocol="application/pgp-signature"; boundary="m46qSNjkc66Ye11q"
 Content-Disposition: inline
-In-Reply-To: <2c434536-6388-563f-344b-c6800769a733@vivier.eu>
+In-Reply-To: <f36c1752-98ad-7c44-4637-7186c7511f38@vivier.eu>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 203.11.71.1
-Subject: Re: [Qemu-trivial] Whitespace cleanup:
- target/ppc/translate_init.inc.c
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2401:3900:2:1::2
+Subject: Re: [Qemu-trivial] ppc: e6500 registers SPR 604 twice
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,65 +54,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Jan 2019 00:37:57 -0000
+X-List-Received-Date: Fri, 11 Jan 2019 00:37:58 -0000
 
 
---EkxpYdHiqGHPYbUt
-Content-Type: text/plain; charset=us-ascii
+--m46qSNjkc66Ye11q
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jan 09, 2019 at 11:15:26AM +0100, Laurent Vivier wrote:
-> Hi Jon,
+On Wed, Jan 09, 2019 at 11:17:00AM +0100, Laurent Vivier wrote:
+> David,
 >=20
-> please cc: qemu-devel and MAINTAINERS when you send a patch.
->=20
-> You can have the list of maintainers using a script in qemu directory:
->=20
->    ./scripts/get_maintainer.pl XXXX.patch
+> will you take this through your ppc branch?
+
+Somehow I missed this one, sorry.  Even when I look back through my
+mail archives I can't see the original message of this thread.  Can
+you resend please?
+
 >=20
 > Thanks,
 > Laurent
-
-Hrm.  Like the other patch, I didn't seem to receive this - I checked
-back through my archives.  I think something must be not working with
-email from Jon to me, although I can't quite imagine what.
-
 >=20
-> On 03/01/2019 20:58, Jon Diekema wrote:
-> > From: Jon Diekema <jon.diekema@gmail.com>
-> > Date: Tue, 25 Dec 2018 04:03:04 -0500
-> > Subject: Whitespace cleanup: target/ppc/translate_init.inc.c
+> On 04/01/2019 11:41, Roman Kapl wrote:
+> >> Le 25/12/2018 =E0 10:50, Jon Diekema a =E9crit=A0:
+> >>> =A0From f399f28441e0aa79458d68996038ca3606fcb699 Mon Sep 17 00:00:00 =
+2001
+> >>> From: Jon Diekema <jon.diekema@ge.com <mailto:jon.diekema@ge.com>>
+> >>> Date: Tue, 25 Dec 2018 04:36:06 -0500
+> >>> Subject: ppc: e6500 registers SPR 604 twice
+> >>>
+> >>> When using the e6500 CPU, QEMU generates a fatal error after
+> >>> complaining about registering SPR 604 twice.
+> >>>
+> >>>
+> >>> diff --git a/target/ppc/translate_init.inc.c
+> >>> b/target/ppc/translate_init.inc.c
+> >>> index 03f1d34a97..c971a5faf7 100644
+> >>> --- a/target/ppc/translate_init.inc.c
+> >>> +++ b/target/ppc/translate_init.inc.c
+> >>> @@ -4947,14 +4947,6 @@ static void init_proc_e500(CPUPPCState *env, i=
+nt
+> >>> version)
+> >>> =A0=A0 =A0 =A0}
+> >>> =A0 =A0=A0 =A0 =A0if (version =3D=3D fsl_e6500) {
+> >>> -=A0 =A0 =A0 =A0 spr_register(env, SPR_BOOKE_SPRG8, "SPRG8",
+> >>> -=A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0SPR_NOACCESS, SPR_NOACCES=
+S,
+> >>> -=A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0&spr_read_generic, &spr_w=
+rite_generic,
+> >>> -=A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A00x00000000);
+> >>> -=A0 =A0 =A0 =A0 spr_register(env, SPR_BOOKE_SPRG9, "SPRG9",
+> >>> -=A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0SPR_NOACCESS, SPR_NOACCES=
+S,
+> >>> -=A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0&spr_read_generic, &spr_w=
+rite_generic,
+> >>> -=A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A00x00000000);
+> >>> =A0=A0 =A0 =A0 =A0 =A0/* Thread identification */
+> >>> =A0=A0 =A0 =A0 =A0 =A0spr_register(env, SPR_TIR, "TIR",
+> >>> =A0=A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 SPR_NOACCESS, SPR_NOAC=
+CESS,
+> >>> --=A0
+> >>> 2.20.1.3.gf17a2b179
+> >>>
+> >>
+> >> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> >> Tested-by: Laurent Vivier <laurent@vivier.eu>
+> >>
 > >=20
-> > Signed-off-by: Jon Diekema <jon.diekema@gmail.com>
-> > ---
-> >  target/ppc/translate_init.inc.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > Thanks Jon, I did not test with e6500. The patch fixes the issue &
+> > debugging still works on e5500.
 > >=20
-> > diff --git a/target/ppc/translate_init.inc.c b/target/ppc/translate_ini=
-t.inc.c
-> > index c971a5faf7..b5f4c9bd55 100644
-> > --- a/target/ppc/translate_init.inc.c
-> > +++ b/target/ppc/translate_init.inc.c
-> > @@ -5237,7 +5237,7 @@ static void init_proc_601(CPUPPCState *env)
-> >                   0x00000000);
-> >      /* Memory management */
-> >      init_excp_601(env);
-> > -    /* XXX: beware that dcache line size is 64=20
-> > +    /* XXX: beware that dcache line size is 64
-> >       *      but dcbz uses 32 bytes "sectors"
-> >       * XXX: this breaks clcs instruction !
-> >       */
-> > @@ -10485,7 +10485,7 @@ static void ppc_cpu_class_init(ObjectClass *oc,=
- void *data)
-> >      cc->tcg_initialize =3D ppc_translate_init;
-> >  #endif
-> >      cc->disas_set_info =3D ppc_disas_set_info;
-> > -=20
-> > +
-> >      dc->fw_name =3D "PowerPC,UNKNOWN";
-> >  }
-> > =20
+> > Roman Kapl
 > >=20
 >=20
 
@@ -119,25 +134,25 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---EkxpYdHiqGHPYbUt
+--m46qSNjkc66Ye11q
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlw35U8ACgkQbDjKyiDZ
-s5IG1g//VvXNy8J7FYFtXA7vg7vNmovn6VVK0g4RdzegqTho0pnF7JMDsonsqsiX
-u0173dqIPGWzwY3qNaQgpdMS47hiqr2gZSwkXNCtJnQvSb6GJxKBLywDgdNjFmjS
-cWIDmzmSE7velgzozRwyEWGnQxtuv76r173VpDzRBDzt0V1v2OlIgeSKk8HL4REJ
-OT1ieyFtQLpPk+GqRzEWIezfwPRtmaRn65RK7V2qn6zKd2BcilSqNOqWWQZUhK60
-5VqLYaA6u5KKI6aPym5FP3H2oiggE0xYb1HLsn/Cjf3N22itC6PSrF116X0Yz/U7
-U9E3HTmeedzaAmOgUDVt4Bp6LwiXtXQPl97Kp3bZX6EQ5ZNsiK4wVdf9OPZxmeqr
-LbeOA2QWm5qK6Lqk+V45GhP6g0+BSncbiUZJxv6JalpzNc1PgV4g0ZHcwX9LTsTx
-qTb1X487ZhuTfZwltOFR+rbvKRfnhgarNVIbQIwiUWX2um4pH/onxar+6jFBGqOP
-KbSiSZZKwRz6IXUyQ6ZCGYAIojZPkMXgzmDBYhieK8Pn/TgkO8Qi4saHMHWTQ2sK
-xOOEX3wKaIBknu9lL2LrMbjAY0oimLX2baRmwaSyrq+WjtA0UY+rEiwryUCreFZB
-dJECEiInXJoQ5WfJN4iIHE5d9TquegN5cFEBVI+iIGikR1UmRh8=
-=4qbU
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlw35M8ACgkQbDjKyiDZ
+s5JrDBAA2W9jRgDOmtIA3oS0ABuCbESvUObpqMgVHF+wZNdlYy97pIdnTvE/zV20
+IF2SKzvM8N919DZHpdJRfLNm5tmnG9O6vfLXv//PfxYeE+h6VCPDQRjfAlTSpkKY
+gZPKUUU+OzRaco8yC3CvuRAxe5VrHnMrDmepoFo5BND02dSNl8JnHbMkPHC5yhKU
+zHNbbienVs3OX7fcnAX19VnL9CDkKZBv3G9mQkWdn7J0IW9AcfaloSNsSOa9+3o/
+2bFnt78Ze9jXvb9Fo5krXzbLUqCEeP3FVzuBBTXH1GGKjswQ5BTT92N+gLcihSfH
+mCjYWrJOVtqNgKqcIzX78gvgaZgDOhhUpujBVgMBBKY0JutJ74nbFa0rTNjqpQxl
+qZfTlKbIiEQf51my0C2HWnj1dxyrz5c/QzHMA3nomT03Ox7FfmMshVEG4sAODrNo
+YO9PGKEQmyWTJ7bHOCzSGEkPOia3GIDIC5McFPVZykXTxprUVyyHk8CwTykNboFc
+jCpOuXTiEzOESMECF/xp1cMzDy7Kx20POQJkr7slq2c7G64Tw4L6fGNXzYLReD1Z
+zwdt7TMCzjqDgnv8AKxkTskAqkOAsvjVOjPOM9D9xMC7wnCTK8AUzEftvaQVUqfG
+dJ/DoecSAxGTPvcpNlNzMM5edtJo13tEvUaj9uFL5Uni3t2gAy0=
+=/zHe
 -----END PGP SIGNATURE-----
 
---EkxpYdHiqGHPYbUt--
+--m46qSNjkc66Ye11q--
 
