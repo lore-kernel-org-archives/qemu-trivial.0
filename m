@@ -1,60 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gi5Sp-0006xx-7B
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Jan 2019 17:39:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:43016)
+	id 1gidgG-0006Bg-Fe
+	for mharc-qemu-trivial@gnu.org; Sun, 13 Jan 2019 06:11:52 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:42938)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gi5Sn-0006xm-J5
-	for qemu-trivial@nongnu.org; Fri, 11 Jan 2019 17:39:42 -0500
+	(envelope-from <no-reply@patchew.org>) id 1gidgD-00068t-4u
+	for qemu-trivial@nongnu.org; Sun, 13 Jan 2019 06:11:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gi5Sm-0004it-AJ
-	for qemu-trivial@nongnu.org; Fri, 11 Jan 2019 17:39:41 -0500
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:35943)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gi5Sm-0004hl-2p
-	for qemu-trivial@nongnu.org; Fri, 11 Jan 2019 17:39:40 -0500
-Received: by mail-wr1-f67.google.com with SMTP id u4so16834617wrp.3
-	for <qemu-trivial@nongnu.org>; Fri, 11 Jan 2019 14:39:37 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=5lG4puu6UttF7USBSXtlycyOQNdN4Ot2nzMKoAhXmMs=;
-	b=aZqVG86QgQsJojpdQ4XIBEtpX24K2JxVmLt/kb6GZibw2ZU3dvZ2Js3l6tUK5BMOt0
-	hRdD/OqpGUaC8jNAY1yQOiDuZUeNvRSVC1iR7+JTXrin33rzasVDAdTJttz1TQGSYkp1
-	7IpytMthFZC2H6aXV3JnJBWK0733JBfhWDaUtP5lsAE+Y1ZvtI/AzlpeXiuYvSLLeY8d
-	e7qu9Hvtd3XueAbmS07L9GX6X/7axpy51Ui89mlyajahr2PupEaFTbEQ1PHp5nYq0xf+
-	0YwF+cKOvIqoVTZkxSXmtoku6JGiRuZev0zKf8M9mRwqeKn8HmPQUfe+zYYXb6vnGmw4
-	4UdQ==
-X-Gm-Message-State: AJcUukeDC6Z2YE/twPWYNNE/VcaRFZMGEerau1cZ10fl1c8t4lKlL1b2
-	HQ97TwfE6UUU6CGF0F3S0LOcIw==
-X-Google-Smtp-Source: ALg8bN7CGtSzr1sWCuEfud9oON99n70WMS90L7UBDjoKgBwHdidWprrjAFUU+IEwtk9bqypxr1uNBA==
-X-Received: by 2002:a05:6000:1c8:: with SMTP id
-	t8mr15570113wrx.146.1547246375867; 
-	Fri, 11 Jan 2019 14:39:35 -0800 (PST)
-Received: from [192.168.1.33] (110.red-83-51-161.dynamicip.rima-tde.net.
-	[83.51.161.110]) by smtp.gmail.com with ESMTPSA id
-	p139sm39652126wmd.31.2019.01.11.14.39.34
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Fri, 11 Jan 2019 14:39:35 -0800 (PST)
-To: fam@euphon.net, Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, alex.bennee@linaro.org
-References: <154724210898.37.4367801081630939892@2d170d368aaa>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <834ad86b-27d1-ce01-91dc-a5c939061ce9@redhat.com>
-Date: Fri, 11 Jan 2019 23:39:34 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.1
+	(envelope-from <no-reply@patchew.org>) id 1gidgC-0007FF-4Y
+	for qemu-trivial@nongnu.org; Sun, 13 Jan 2019 06:11:49 -0500
+Resent-Date: Sun, 13 Jan 2019 06:11:49 -0500
+Resent-Message-Id: <E1gidgC-0007FF-4Y@eggs.gnu.org>
+Received: from sender-of-o53.zoho.com ([135.84.80.218]:21756)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1gidgB-0007E9-T9
+	for qemu-trivial@nongnu.org; Sun, 13 Jan 2019 06:11:48 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1547377870; cv=none; d=zoho.com; s=zohoarc; 
+	b=HVxHwDaheRwsWMmcn33Bok1uvOlOCFkO4ysRpF+rAf/z9ucj1oXzfYeH73pPBUa8sd8aBZXhv12P54UFV4SJenuhcxw4a9k8N7rkMDjN8xjZEpg5hXqLdKI0EvFNt72RYQNW+E3FfyS5AqvYWpvRMOx9OsGB1AP1zqRS/XyQD8s=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+	s=zohoarc; t=1547377870;
+	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+	bh=ctfYdCt1Sn0/EJXX8B7OJawjB75OvPp7hzYCoQFWnkI=; 
+	b=MQLJgEVwfJALtm6VyNW45RZFprW0uOOIlJGAY6mGx5mBsFFQUAqhFdO4wpRh3d9fi5DorjHHGXNo6pGtRYHYPFKraw1XRsxcJqniUp6Y+ZdeRlH3H5gjOT0ZmBghi18qaXPovBcHMBrk/xGKhNXMGiGfpSjT8YuThaYlz8RWi18=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org>
+	header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1547377868493798.2823464338925;
+	Sun, 13 Jan 2019 03:11:08 -0800 (PST)
+Message-ID: <154737786725.37.7712660050714925768@2d170d368aaa>
+Reply-To: <qemu-devel@nongnu.org>
+In-Reply-To: <20190111155555.8270-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <154724210898.37.4367801081630939892@2d170d368aaa>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: philmd@redhat.com
+Cc: fam@euphon.net, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	philmd@redhat.com, alex.bennee@linaro.org
+Date: Sun, 13 Jan 2019 03:11:08 -0800 (PST)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.67
+X-Received-From: 135.84.80.218
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] contrib/gitdm: Fix a typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -67,76 +56,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Jan 2019 22:39:42 -0000
+X-List-Received-Date: Sun, 13 Jan 2019 11:11:50 -0000
 
-On 1/11/19 10:28 PM, no-reply@patchew.org wrote:
-> Patchew URL: https://patchew.org/QEMU/20190111155555.8270-1-philmd@redhat.com/
-> 
-> Hi,
-> 
-> This series seems to have some coding style problems. See output below for
-> more information:
-> 
-> Message-id: 20190111155555.8270-1-philmd@redhat.com
-> Type: series
-> Subject: [Qemu-devel] [PATCH] contrib/gitdm: Fix a typo
-> 
-> === TEST SCRIPT BEGIN ===
-> #!/bin/bash
-> git config --local diff.renamelimit 0
-> git config --local diff.renames True
-> git config --local diff.algorithm histogram
-> ./scripts/checkpatch.pl --mailback --color=always base..
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDExMTE1NTU1NS44Mjcw
+LTEtcGhpbG1kQHJlZGhhdC5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8gaGF2ZSBz
+b21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9yZSBpbmZv
+cm1hdGlvbjoKClN1YmplY3Q6IFtRZW11LWRldmVsXSBbUEFUQ0hdIGNvbnRyaWIvZ2l0ZG06IEZp
+eCBhIHR5cG8KVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMTkwMTExMTU1NTU1LjgyNzAtMS1w
+aGlsbWRAcmVkaGF0LmNvbQoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaApn
+aXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBk
+aWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9n
+cmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgLS1jb2xvcj1hbHdheXMgYmFz
+ZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2
+NGQxZGVmN2Y0NGJkODg4NzEzMzg0ClRyYWNlYmFjayAobW9zdCByZWNlbnQgY2FsbCBsYXN0KToK
+ICBGaWxlICJwYXRjaGV3LXRlc3RlcjIvc3JjL3BhdGNoZXctY2xpIiwgbGluZSA1MjEsIGluIHRl
+c3Rfb25lCiAgICBnaXRfY2xvbmVfcmVwbyhjbG9uZSwgclsicmVwbyJdLCByWyJoZWFkIl0sIGxv
+Z2YsIFRydWUpCiAgRmlsZSAicGF0Y2hldy10ZXN0ZXIyL3NyYy9wYXRjaGV3LWNsaSIsIGxpbmUg
+NDgsIGluIGdpdF9jbG9uZV9yZXBvCiAgICBzdGRvdXQ9bG9nZiwgc3RkZXJyPWxvZ2YpCiAgRmls
+ZSAiL3Vzci9saWI2NC9weXRob24zLjMvc3VicHJvY2Vzcy5weSIsIGxpbmUgNTQ0LCBpbiBjaGVj
+a19jYWxsCiAgICByYWlzZSBDYWxsZWRQcm9jZXNzRXJyb3IocmV0Y29kZSwgY21kKQpzdWJwcm9j
+ZXNzLkNhbGxlZFByb2Nlc3NFcnJvcjogQ29tbWFuZCAnWydnaXQnLCAncmVtb3RlJywgJ2FkZCcs
+ICctZicsICctLW1pcnJvcj1mZXRjaCcsICczYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJk
+ODg4NzEzMzg0JywgJ2h0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdSddJyBy
+ZXR1cm5lZCBub24temVybyBleGl0IHN0YXR1cyAtOQoKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxh
+YmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMTkwMTExMTU1NTU1LjgyNzAtMS1waGls
+bWRAcmVkaGF0LmNvbS90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWls
+IGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3Lm9yZy9d
+LgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 
-I suppose Paolo expected his PR to land to upgrade patchew, and patchew
-is still processing from an old queue?
-
-> === TEST SCRIPT END ===
-> 
-> Updating 3c8cf5a9c21ff8782164d1def7f44bd888713384
-> Switched to a new branch 'test'
-> c995f5f contrib/gitdm: Fix a typo
-> 
-> === OUTPUT BEGIN ===
-> Unknown option: color
-> Usage:
-> 
->     checkpatch.pl [OPTION]... [FILE]...
->     checkpatch.pl [OPTION]... [GIT-REV-LIST]
-> 
-> Version: 0.31
-> 
-> Options:
->   -q, --quiet                quiet
->   --no-tree                  run without a kernel tree
->   --no-signoff               do not check for 'Signed-off-by' line
->   --patch                    treat FILE as patchfile
->   --branch                   treat args as GIT revision list
->   --emacs                    emacs compile window format
->   --terse                    one line per report
->   -f, --file                 treat FILE as regular source file
->   --strict                   fail if only warnings are found
->   --root=PATH                PATH to the kernel tree root
->   --no-summary               suppress the per-file summary
->   --mailback                 only produce a report in case of warnings/errors
->   --summary-file             include the filename in summary
->   --debug KEY=[0|1]          turn on/off debugging of KEY, where KEY is one of
->                              'values', 'possible', 'type', and 'attr' (default
->                              is all off)
->   --test-only=WORD           report only warnings/errors containing WORD
->                              literally
->   -h, --help, --version      display this help and exit
-> 
-> When FILE is - read standard input.
-> === OUTPUT END ===
-> 
-> Test command exited with code: 1
-> 
-> 
-> The full log is available at
-> http://patchew.org/logs/20190111155555.8270-1-philmd@redhat.com/testing.checkpatch/?type=message.
-> ---
-> Email generated automatically by Patchew [http://patchew.org/].
-> Please send your feedback to patchew-devel@redhat.com
-> 
 
