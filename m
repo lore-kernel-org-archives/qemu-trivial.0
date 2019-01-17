@@ -1,53 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gkBib-0000yN-0O
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Jan 2019 12:44:41 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45549)
+	id 1gkBpU-0005LS-6o
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Jan 2019 12:51:48 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47441)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gkBiZ-0000wu-1s
-	for qemu-trivial@nongnu.org; Thu, 17 Jan 2019 12:44:39 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gkBpS-0005KQ-F5
+	for qemu-trivial@nongnu.org; Thu, 17 Jan 2019 12:51:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gkBiR-0000Wk-FO
-	for qemu-trivial@nongnu.org; Thu, 17 Jan 2019 12:44:37 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:32915)
+	(envelope-from <laurent@vivier.eu>) id 1gkBpO-0004oI-Ur
+	for qemu-trivial@nongnu.org; Thu, 17 Jan 2019 12:51:44 -0500
+Received: from mout.kundenserver.de ([212.227.126.133]:59093)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gkBiG-0000Gt-3Y; Thu, 17 Jan 2019 12:44:20 -0500
+	id 1gkBpM-0004GS-RR; Thu, 17 Jan 2019 12:51:42 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue011 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1MVv4X-1gcnIQ0uQv-00RoGy; Thu, 17 Jan 2019 18:44:15 +0100
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20190111155555.8270-1-philmd@redhat.com>
+	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MKsWr-1gW6xC0c73-00LHzS; Thu, 17 Jan 2019 18:51:31 +0100
+To: David Gibson <david@gibson.dropbear.id.au>
+Cc: Jon Diekema <jon.diekema@gmail.com>, Roman Kapl <rka@sysgo.com>,
+	qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>,
+	Roman Kapl <roman.kapl@sysgo.com>, "qemu-ppc@nongnu.org"
+	<qemu-ppc@nongnu.org>
+References: <CALvuzg43uSodseEHjNaRcPFBKKPTY2mcppUbYgiLL=QO9RxX_Q@mail.gmail.com>
+	<e62bbdda-2ab9-b9a1-7843-0a3a40f56282@vivier.eu>
+	<4cfad0f8-1b66-b6be-693e-ba439e81f171@sysgo.com>
+	<f36c1752-98ad-7c44-4637-7186c7511f38@vivier.eu>
+	<20190111003527.GO6682@umbus.fritz.box>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <03f668ac-821b-7179-78e7-ce8c921d3dc0@vivier.eu>
-Date: Thu, 17 Jan 2019 18:44:14 +0100
+Message-ID: <1bbc0576-8371-3cd3-bce9-1374e852fc78@vivier.eu>
+Date: Thu, 17 Jan 2019 18:51:29 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190111155555.8270-1-philmd@redhat.com>
+In-Reply-To: <20190111003527.GO6682@umbus.fritz.box>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Mvn9OcU4iBb5ocAH/YSAyP4XMqfvYt9BNnUZR1fVGItpHYOVkcy
-	To3k8rCieaHx6tRw/NADnWV9VEpH9c7UcbL+UA3qqVgBC0td0rYnZuxHyIy3rzzyb3ZfLwa
-	qYBxnK/Xrnuucz7a/rQEftfuq53Kaz8iP+zHy5gMrkicXbhPt8TaSVc8g7XtlgyJa4RZO+0
-	HNx0uY2Ns2lGnnE+5an1g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:SiWyrPQQ9ik=:x597EOh//dynExQlBufA10
-	uOyAcpsJw7T6jxxwlsaNYAxIJ3V3ReOXtthle6hvhOGymvpLQni7p+SjktRyEfFUKmdo9VH//
-	EQhEOx9kQmzQo0Pbk44yX59JvGFwwSBEBdqGPmVVmcGd0jjskeSOzt5A0PPNJlUoKe0lpKmtb
-	vGD5JzZv0ga+o8GMX7DtWCgkO5PIUJTldHOJUd4COiqOPRaobVFiuwyijL8Whg0ALgcWp12jn
-	2MpA0zHsZ8/LEbMuN+hL/BsskV9smWbV32unlZ499Bv6M4M3/0+2yUOEmVl5/0D/RbIO2CkC5
-	HJxQgNWlQMsWetHTeUiaW2Ieu3F06pdnO8Vk3vU4w7GOOFd6+hEqSgHVDMyzQMdXlSMYyvivv
-	unE614wFXDc20oP57vvc36x3egN7zkiAsD2yL6ufZYxvJN2fuBDiEGGBs9aaXbfaPY4DNWfTW
-	B0Z7raMQUK2emnOZVVB9XnKqCh6AFJeRkHiXnCbNzPjiz1nLL5Hg6SDPvBbAN5Tnc0X/bSftz
-	xAVAb1SfQvBlKEth75atFyfqft8yyAgspZAcfQALIEWklsdL1WEY4TgaUe6LfZEnRA7Pclovl
-	Lv7M6MnWocT1S0ngidyq4yPEnO3P0OOtW99g+zGHk8HzMgkGsm89Ss+kqbtd+VK9vshe6WSBC
-	AG01n860B4kNZpaU2PWG7I8eBL3u0sA6GWHz7132OopcEjqdKBefFutFa3NvMajigmiIYZBrh
-	nUzSqhWy35PCFJRca9c67usOjLN2UqnPvXLL7xmvvwyGCSaWXKM4BcU3uEs=
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:u2FvfvBDQd6j20+iJFVo5Hw8rNUiSODsxUgpcXJL7XQL/S/KOBJ
+	MWQ7/12Mg5tmvRbc/6IQMHaPVib7k5mjocvA+Xv1vHbaU1GV0eyoBVDrkIiF7tRz1X1h0pt
+	rOpB5kb7PyRGZvgoSTDgCbqOcKSrd/KNabRoN3Z8GXXsgReN2moGHyqgPXufkVHSHxPtU/r
+	sIOxNMKKvzZTrD9NtIRBg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:LHjXfQWOSCk=:R1MvsBai7kr6rXo/WRw3fs
+	lZbTiWc9K+jFSLeDI6KwElBFygGq616xqGsmaFaKSyIiFD8QZ4UbPyD94942PhMkcrX3QJGHf
+	Cbv0mxvA95Yv4U+srBjiYTDxjlTNaaWiD78agywOLped3LFjPm6To+JI9yJYt+W9mcRQf07E/
+	Jt+qf3Ebp0q/jKQnG1YYYqo75UISEVftl7rU32HqULnnnZAl/soO3PI0WDMf9jBoHL/7dkY7K
+	7R+775L9qJlOQSo0i1EpQmJ7pgKUy++1WF2vUPUp9/82zto4ncwTiXXIsJN9UT1Mq6EOGkd6m
+	snrBIPG3lAS27nKAsv4vdic8pt906HEh5kmnw6jO/7WRmQvesd29mOGo2FeMzs7/75EpqvgXP
+	vS/M11D2+k8D1w3Drb/FBUNUaSOzL65ynVNsyARTxofgyh+n/Ex9qDFfowq4LJZe2zDxrlvra
+	c0aO5HUjNEp96QbQw2HCxTvi/oKwi7iGiB8pj2ZJq/OMt3f69odgHYat4J8eLhI4QYzOyt766
+	PXAo9dYKWgQ9+N76FPJz//Hpofvj0LGFcXOFSdT4nDlj8+7TMf3q3bRaOby8tq8d92Rq3zodo
+	PCp3vKXmeVocjqYQtMLoHWYmdcJoydQZj/X228uyIO5sp2716cs3e3zn2wUYM5oL4wfqRUlMX
+	kZszzWaZH/I+zT+08APdX/tA75hmeuYqi74fQCVMulF9HMDyXF/vDen7FHNw0hRQhKXjLGsjG
+	u0joqELZbUcYZls4S0ePTFRmadEUQqmJcMh4E/mqMuz9BuYFFdfwU4P44i8=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
-Subject: Re: [Qemu-trivial] [PATCH] contrib/gitdm: Fix a typo
+X-Received-From: 212.227.126.133
+Subject: Re: [Qemu-trivial] ppc: e6500 registers SPR 604 twice
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -59,32 +65,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Jan 2019 17:44:40 -0000
+X-List-Received-Date: Thu, 17 Jan 2019 17:51:47 -0000
 
-On 11/01/2019 16:55, Philippe Mathieu-Daudé wrote:
-> Typo comes from upstream git://git.lwn.net/gitdm.git.
+On 11/01/2019 01:35, David Gibson wrote:
+> On Wed, Jan 09, 2019 at 11:17:00AM +0100, Laurent Vivier wrote:
+>> David,
+>>
+>> will you take this through your ppc branch?
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->   contrib/gitdm/filetypes.txt | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/contrib/gitdm/filetypes.txt b/contrib/gitdm/filetypes.txt
-> index 15d6f803b9..165b71b3f9 100644
-> --- a/contrib/gitdm/filetypes.txt
-> +++ b/contrib/gitdm/filetypes.txt
-> @@ -4,7 +4,7 @@
->   # This program is free software; you can redistribute it and/or modify
->   # it under the terms of the GNU General Public License as published by
->   # the Free Software Foundation; either version 2 of the License, or
-> -# (at your option  any later version.
-> +# (at your option) any later version.
->   #
->   # This program is distributed in the hope that it will be useful,
->   # but WITHOUT ANY WARRANTY; without even the implied warranty of
-> 
+> Somehow I missed this one, sorry.  Even when I look back through my
+> mail archives I can't see the original message of this thread.  Can
+> you resend please?
 
-Applied to my trivial-patches branch.
+As it is in the qemu-trivial ML, I've applied this patch to the 
+trivial-patches branch.
 
 Thanks,
 Laurent
