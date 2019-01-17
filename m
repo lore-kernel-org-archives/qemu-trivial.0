@@ -1,104 +1,120 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gkBsJ-0007F6-OW
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Jan 2019 12:54:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47997)
+	id 1gkDLn-0000r0-Lu
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Jan 2019 14:29:15 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58466)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gkBsH-0007DF-CQ
-	for qemu-trivial@nongnu.org; Thu, 17 Jan 2019 12:54:42 -0500
+	(envelope-from <jsnow@redhat.com>) id 1gkDLl-0000kf-Hr
+	for qemu-trivial@nongnu.org; Thu, 17 Jan 2019 14:29:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gkBsG-0004qT-LM
-	for qemu-trivial@nongnu.org; Thu, 17 Jan 2019 12:54:41 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:50200)
+	(envelope-from <jsnow@redhat.com>) id 1gkDLk-0003vN-Rx
+	for qemu-trivial@nongnu.org; Thu, 17 Jan 2019 14:29:13 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:47658)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1gkBsF-0004mS-09; Thu, 17 Jan 2019 12:54:39 -0500
+	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
+	id 1gkDLg-0003oE-BZ; Thu, 17 Jan 2019 14:29:08 -0500
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3250B65984;
-	Thu, 17 Jan 2019 17:54:38 +0000 (UTC)
-Received: from [10.36.112.61] (ovpn-112-61.ams2.redhat.com [10.36.112.61])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 03EAC600C7;
-	Thu, 17 Jan 2019 17:54:27 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
-	<alex.bennee@linaro.org>
-References: <20190117161355.18204-1-philmd@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 12EC132B57E;
+	Thu, 17 Jan 2019 19:29:07 +0000 (UTC)
+Received: from [10.18.17.221] (dhcp-17-221.bos.redhat.com [10.18.17.221])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 546D4600C6;
+	Thu, 17 Jan 2019 19:29:06 +0000 (UTC)
+To: yuchenlin <npes87184@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-block@nongnu.org, stefanha@redhat.com
+References: <20181221135803.9583-1-npes87184@gmail.com>
+From: John Snow <jsnow@redhat.com>
 Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-	uUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <4549a7e4-2ef2-6a53-1b06-cb89913b6d06@redhat.com>
-Date: Thu, 17 Jan 2019 18:54:25 +0100
+Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
+	mQINBFTKefwBEAChvwqYC6saTzawbih87LqBYq0d5A8jXYXaiFMV/EvMSDqqY4EY6whXliNO
+	IYzhgrPEe7ZmPxbCSe4iMykjhwMh5byIHDoPGDU+FsQty2KXuoxto+ZdrP9gymAgmyqdk3aV
+	vzzmCa3cOppcqKvA0Kqr10UeX/z4OMVV390V+DVWUvzXpda45/Sxup57pk+hyY52wxxjIqef
+	rj8u5BN93s5uCVTus0oiVA6W+iXYzTvVDStMFVqnTxSxlpZoH5RGKvmoWV3uutByQyBPHW2U
+	1Y6n6iEZ9MlP3hcDqlo0S8jeP03HaD4gOqCuqLceWF5+2WyHzNfylpNMFVi+Hp0H/nSDtCvQ
+	ua7j+6Pt7q5rvqgHvRipkDDVsjqwasuNc3wyoHexrBeLU/iJBuDld5iLy+dHXoYMB3HmjMxj
+	3K5/8XhGrDx6BDFeO3HIpi3u2z1jniB7RtyVEtdupED6lqsDj0oSz9NxaOFZrS3Jf6z/kHIf
+	h42mM9Sx7+s4c07N2LieUxcfqhFTaa/voRibF4cmkBVUhOD1AKXNfhEsTvmcz9NbUchCkcvA
+	T9119CrsxfVsE7bXiGvdXnzyGLXdsoosjzwacKdOrVaDmN3Uy+SHiQXo6TlkSdV0XH2PUxTM
+	LsBFIO9qXO43Ai6J6iPAP/01l8fuZfpJE0/L/c25yyaND7xA3wARAQABtCpKb2huIFNub3cg
+	KEpvaG4gSHVzdG9uKSA8anNub3dAcmVkaGF0LmNvbT6JAj0EEwECACcCGwMCHgECF4AFCwkI
+	BwMFFQoJCAsFFgIDAQAFAlid5ikFCQeV0y0ACgkQiKkGTRg1YesAOw/8DLxVyLbPecXUbxLs
+	+TRhmkoxO5UHReTvmMefyBJxflKSNQQEV49rw0aQe5S4cfOh97K5XHMh2O3tJZS3+zwrRxaK
+	ZMdQrfeJ20acsOKkYuFYKCZuib4tAClf/lk/uF6TVdyDeY1AWf9lXWfwLnBetNpHVqY0C312
+	K9FC/l42+QEyDXHa2l0j0re1B1D8zScS5tHt9vj43t/VJTjJWHrlE3IAde6mNvM/wbvuFfYG
+	SuaxpRRbFuIDUVW9DinUGtawjtkvttTWUe4+XCtT5u48P4QXvtlgNlc8eEL4+SL3ABB8oepE
+	2J2LcMDn6QG7o3pKIqJrKvmKKH5BHzi02c0b+u0BrzsNhNSlxUB0cpHyfzlFpJGlaxdsvwC7
+	CQ85KMaCB8WsQIgwgFHRldCszr9LXU52V8Tib1tnxgvwBVDYaDQEWjTZB1725FooHuRJaCVU
+	+lthkjYoileOG0sNzTPHMXSTsKrNK9aVjg3Cs+D2hU2xi9BlG0Nzf4FqcHVxJg3tOI2f/EeR
+	Dc9UB88GH3yPLouCshz6tG3ftimTtpf5FH0IRTSupmBO3n2JnReyIJcYbmYgo1PucmDWQVgc
+	t+bXdgvRY8QB5EbTO1Etn5CXk3be0iUY7OE4XPRWbnEY8d9m6E4U/p083sW1kdki935XML17
+	WSHh0ChaSX07jREm3qS5Ag0EVMp5/AEQAMG4T+OQRHf8wDAT1dnZNlsCMCkUilCxJT95F6XL
+	og1mEKG91Dg1FKgpTvt2l1UZ3WjZmV/Vm8xmHsVaN+Y/glQQhq9w5VPAC/aadykN0iYoVnA3
+	ndS0plH/LUvtdHepnRsQ6oJ3fzllNteIrL4YFmbWRjDP14+3MeaRESIj/o6ruz09XIm3H3BC
+	oT42HcldUJy7SjRq04P1DCmi/qpFgVCP/LgaGtBy7DR+t217EbTQBvMOqhu4ornmGVCFynOC
+	ByDVILqmECVXUnvrvG9jeVzYQ0hFIXZahWK2ib1+nU48TE1uZc1Rtio87XxK0TUlJrtoHs28
+	NfwldM7Z4jigwO5pEIulCFA0YeC8UZuZn5Xyogsg0C+j/48RwcRb/rCII7i63zYSAtad8/a7
+	wofonQFSYLR7WJfKehgFaxfuMUFds2R+ObYJh6NvkibCz412bVlbFgDaXqV53rMmm1rTQFeK
+	kAe/0nwu+82cLFV9DjmNkHPoqIZl6PFOw4F1Q4Jf0f+UIH55b9P96znTLemT8uSya/A/SyZn
+	D9Eb1/fI8qATn9OkPULRMCbDSwjgqNiyjS+9QzY2a51xMI1B+ugl4kVw2wyqa7e9QYkk4rZB
+	YRhlPPFwra6fEfcgK1z3+DDfsDWAY30+ytvYFk88bfQ2ECLxH+vaGQ+Weah2BqdN9RPdABEB
+	AAGJAiUEGAECAA8CGwwFAlid5kgFCQeV00wACgkQiKkGTRg1YesKXg//VY/yAWFlhQulEDYW
+	agbOnok+gl57C5GH8p6s41mZsir4zN3wUE7KAYSV7O9rCXZQothIwG0ubpssiFqKStjcykf0
+	Mac/3x8GSZyciu6rXi+3+bGlOH0kJI/qJ1nUCQ1vwjVcqYYscQRw7zhKDtivZAk4dCHNE5WD
+	WyVvZh3Sw7EIEvXFLDPdWlAPL6BleI2LI/LJcA3biiJFGVvXhYh75e1NR+cVyi11URVxnWjR
+	L9QcXvM/srVzi1+YWIP8c/6ftgq/vicjovNvF5E34Rj2IW/fCKyU4ma00HOlXaCO4H2ngZuy
+	RpOYPXVt/Iohvzu8daKVRotOnCE1LsJ4MLN2Oi76Rw9UXHLCJ7eqw3A9MhGOuRSgA5d/8rn3
+	iy8SvhIIPJDCJDFwCwSX5i3E+AyH21Qf4Go3cz427PgE0HotDi2GEH8anxH/tkXn4i+sG9gy
+	JGCzKobXi1g2xCWdrMBkbl0J6HfdOG3IDIrVDO3LgUp2J3oZT9NlYewPd5wOERgtgqY8XvqX
+	NpDv9c/FgPnfrmD4A1wlUtbCr+UukOD0Ky3iW/0Ij2DJlw+KUFCKxwWhEmSAxTi2NAg5f5e5
+	A5d/clCwVeB3DXes5H6tdez4f/ai1eAB+FtItxT37i2KpUvUAdic37IoNRhibLIrSP2g5nqX
+	ONyQrFxb1HtVaoR+Nrm5Ag0EVMqKZQEQAMNsn6lDkzhAExaRpYiZGPtzn3zEhnfugozqsZpK
+	e4HVJVvtgKsKLYxPBBytCxwDaObzQ7xUWpaT79ewSnrZ23LjsZXBJ90aN7/fO/dVMfYqE4Io
+	6reg8/lldZivPZ3ZadO/H76jqVTscscMQLc0Ytg0uQvWXJXEuGeG9wzGR/UQYDUNugRwyCcm
+	s0HWkY/bvDBxJ+93I8ax5X6pllryS5WIOBrWjGadgPEUowYvGsKWoetG3yB5AvVaPkoUzmEW
+	0ZMrh1rmU+fAY13r8Ig0x4JPYBZljnJLPv+1Jl7kXba8+9Vkag+BCJxhZ01zdqnv7sgo/zok
+	2OZ5z/1ElzOO+tiMl2KoFWV1ei7vYK0PJ0pUtVIq/xzbAEMmCFhmK19ghovxxO9B9QdFhN+j
+	SfkopJ5zxWi+MO7GZ1s5QED5KRHGqad4/k7Eahn3ZW6yvBYKOvLwdGw11H7ZP4KUMI7pamKG
+	7hXcI+RDBPJ4K4wc8BPSRrmlpPAuudkjGx1+eNRr3pPXS/OZCADGltuJou+Aonz7vo490OeF
+	13LF3aV1h/BGQXk8QaDeapmdgo00G3CO9fj1IC+ARNC8vNDwgpWBlLSbjP2oce+1zUGxCcV9
+	74sk4WPNmvsKsM0kyqTUlMdixKLYlw3e9jfZYx7NdJDRPN4wriR2dyVJDKn+HbcZah3lABEB
+	AAGJBEQEGAECAA8CGwIFAlid5kgFCQeVwuMCKcFdIAQZAQIABgUCVMqKZQAKCRB974EGqvw5
+	DiJoEACLmuiRq9ifvOh5DyBFwRS7gvA14DsGQngmC57EzV0EFcfMXVi1jX5OtwUyUe0Az5r6
+	lHyyHDsDsIpLKBlWrYCeLpUhRR3oy181T7UNxvujGFeTkzvLAOo6Hs3b8Wv9ARg+7acRYkQR
+	NY7k0GIJ6YZz149tRyRKAy/vSjsaB9Lt0NOd1wf2EQMKwRVELwJDy0AazGn+0PRP7Bua2Ybt
+	xaBmhBBDb2tPpwn8U9xdckB4Vlft9lcWNsC/18Gi9bpjd9FSbdH/sOUI+3ToWYENeoT4IP09
+	wn6EkgWaJS3nAUN/MOycNej2i4Yhy2wDDSKyTAnVkSSSoXk+tK91HfqtokbDanB8daP+K5Lg
+	oiWHzjfWzsxA2jKisI4YCGjrYQzTyGOT6P6u6SEeoEx10865B/zc8/vN50kncdjYz2naacID
+	EKQNZlnGLsGkpCbfmfdi3Zg4vuWKNdWr0wGUzDUcpqW0y/lUXna+6uyQShX5e4JD2UPuf9WA
+	Q9HtgSAkaDd4O1I2J41sleePzZOVB3DmYgy+ECRJJ5nw3ihdxpgcy/v3lfcJaqiyCv0PF+K/
+	gSOvwhH7CbVqARmptT7yhhxqFdaYWo2Z2ksuKyoKSRMFCXQY5oacuTmyPIT4STFyUQFeqSCW
+	Dum/NFNoSKhmItw2Td+4VSJHShRVbg39KNFPZ7mXYAkQiKkGTRg1YeseURAAg8fqW8yI6TX9
+	JgSE7JJe1dt2xtyMgL1sYil5qNd3u1AfYLb4LD8AcHxgYGAt/WoJxiFaYGghhiU4jpJCyeRb
+	JFzvvrxZaWaD+TrmyMcDELFKZDZ0HgEmUB1NCvIAXdt8WFUJ4DcteAB78ZU1Vpdpt68HccaF
+	aFkl1Eo4Y9pKKXTLtN7d/Ni5qrXbMDp/gla0DhC1TSPP6JbQoZGxbbcVK2OMyIgSACWEtHy3
+	/mLOCOTvYCVprHhuf9Vl+Oj2rshCmpFqbbM4kXaQ6mlfr+S8bcbU3EcKuss149Em1WbNCHrO
+	jrvyEuvs3lrWNxGvg8uEFBp0oJSTlXNlLzXhIz/inLt5fhvePFndnQidAatGClPJLqm+AZ45
+	ujgkuoOTNV6BCCQb/8V4P8JOzcFhQOWyzgSKdz/f1hULiOeVg0zRWG8GPYZ1+FwOmrvq6xcZ
+	nxufiAajs75+oHSV7262DTWZPj0bP6CgKz/OqM/aLTlfa47abtOIBejLyWBko2dgnAKYyIrr
+	oDPBZSO4DU5aJR64N6rer9AmmgY2QT2yfK58VTVJOn0bgEhPTqYgBMJGJrnPrw1u+WgpRcjx
+	oS2PkZ2nz1UcV0kKqD3Z5rZ5cSOUM6T2ORDIWuKlC0SovkOk1ilgX6t1zppoZbYTNHZGUFGl
+	7/fPtaxuvJeIthhjv8Hwl3I=
+Message-ID: <8736abeb-60b6-e077-b6ad-0f01da4f8c0a@redhat.com>
+Date: Thu, 17 Jan 2019 14:29:05 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.3.1
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20190117161355.18204-1-philmd@redhat.com>
+In-Reply-To: <20181221135803.9583-1-npes87184@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Thu, 17 Jan 2019 17:54:38 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.29]);
+	Thu, 17 Jan 2019 19:29:07 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] MAINTAINERS: Fix utf-8 mangling
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] dmg: fix binary search
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -110,39 +126,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Jan 2019 17:54:42 -0000
+X-List-Received-Date: Thu, 17 Jan 2019 19:29:14 -0000
 
-On 17/01/19 17:13, Philippe Mathieu-Daud=C3=A9 wrote:
-> Patch incorrectly applied as 15ffb43cbf4.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+
+On 12/21/18 8:58 AM, yuchenlin wrote:
+> There is a possible hang in original binary searsh implemtation. That is
+> if chunk1 = 4, chunk2 = 5, chunk3 = 4, and we go else case.
+> 
+> The chunk1 will be still 4, and so on.
+> 
+> Signed-off-by: yuchenlin <npes87184@gmail.com>
+
+Generally we ask that people use their full names for their
+Signed-off-by (for legal and copyright reasons) and not an alias.
+
+If I am mistaken and your name is a mononym or written as a mononym,
+please forgive me and disregard.
+
 > ---
-> Paolo can this be a patchew bug?
+>  block/dmg.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/block/dmg.c b/block/dmg.c
+> index 50e91aef6d..0e05702f5d 100644
+> --- a/block/dmg.c
+> +++ b/block/dmg.c
+> @@ -572,14 +572,14 @@ static inline uint32_t search_chunk(BDRVDMGState *s, uint64_t sector_num)
+>  {
+>      /* binary search */
+>      uint32_t chunk1 = 0, chunk2 = s->n_chunks, chunk3;
+> -    while (chunk1 != chunk2) {
+> +    while (chunk1 <= chunk2) {
+>          chunk3 = (chunk1 + chunk2) / 2;
+>          if (s->sectors[chunk3] > sector_num) {
+> -            chunk2 = chunk3;
+> +            chunk2 = chunk3 - 1;
+>          } else if (s->sectors[chunk3] + s->sectorcounts[chunk3] > sector_num) {
+>              return chunk3;
+>          } else {
+> -            chunk1 = chunk3;
+> +            chunk1 = chunk3 + 1;
+>          }
+>      }
+>      return s->n_chunks; /* error */
+> 
 
-I tried reapplying the patch and it didn't have the issue, so it should
-be fine.
+yuchenlin, did you see Stefan's response to your patch? Do you have any
+plans to send a follow-up?
 
-Unicode is hard...
-
-Paolo
-
-> ---
->  MAINTAINERS | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index af339b86db..fd3d4de3fa 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1639,7 +1639,7 @@ F: include/hw/display/edid.h
->  F: qemu-edid.c
-> =20
->  Firmware configuration (fw_cfg)
-> -M: Philippe Mathieu-Daud=C3=83=C2=A9 <philmd@redhat.com>
-> +M: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->  R: Laszlo Ersek <lersek@redhat.com>
->  R: Gerd Hoffmann <kraxel@redhat.com>
->  S: Supported
->=20
-
+--js
 
