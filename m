@@ -1,30 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gkDLn-0000r0-Lu
-	for mharc-qemu-trivial@gnu.org; Thu, 17 Jan 2019 14:29:15 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:58466)
+	id 1gkDgk-0007zq-Vo
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Jan 2019 14:50:55 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39394)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1gkDLl-0000kf-Hr
-	for qemu-trivial@nongnu.org; Thu, 17 Jan 2019 14:29:14 -0500
+	(envelope-from <jsnow@redhat.com>) id 1gkDgi-0007xE-Ir
+	for qemu-trivial@nongnu.org; Thu, 17 Jan 2019 14:50:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1gkDLk-0003vN-Rx
-	for qemu-trivial@nongnu.org; Thu, 17 Jan 2019 14:29:13 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:47658)
+	(envelope-from <jsnow@redhat.com>) id 1gkDgh-0001du-VL
+	for qemu-trivial@nongnu.org; Thu, 17 Jan 2019 14:50:52 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52200)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1gkDLg-0003oE-BZ; Thu, 17 Jan 2019 14:29:08 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	id 1gkDge-0001ZD-RN; Thu, 17 Jan 2019 14:50:49 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 12EC132B57E;
-	Thu, 17 Jan 2019 19:29:07 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 863C0C0B200D;
+	Thu, 17 Jan 2019 19:50:46 +0000 (UTC)
 Received: from [10.18.17.221] (dhcp-17-221.bos.redhat.com [10.18.17.221])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 546D4600C6;
-	Thu, 17 Jan 2019 19:29:06 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D7D7E19741;
+	Thu, 17 Jan 2019 19:50:42 +0000 (UTC)
+From: John Snow <jsnow@redhat.com>
 To: yuchenlin <npes87184@gmail.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, qemu-block@nongnu.org, stefanha@redhat.com
 References: <20181221135803.9583-1-npes87184@gmail.com>
-From: John Snow <jsnow@redhat.com>
+	<8736abeb-60b6-e077-b6ad-0f01da4f8c0a@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
 	mQINBFTKefwBEAChvwqYC6saTzawbih87LqBYq0d5A8jXYXaiFMV/EvMSDqqY4EY6whXliNO
@@ -99,19 +100,19 @@ Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
 	oDPBZSO4DU5aJR64N6rer9AmmgY2QT2yfK58VTVJOn0bgEhPTqYgBMJGJrnPrw1u+WgpRcjx
 	oS2PkZ2nz1UcV0kKqD3Z5rZ5cSOUM6T2ORDIWuKlC0SovkOk1ilgX6t1zppoZbYTNHZGUFGl
 	7/fPtaxuvJeIthhjv8Hwl3I=
-Message-ID: <8736abeb-60b6-e077-b6ad-0f01da4f8c0a@redhat.com>
-Date: Thu, 17 Jan 2019 14:29:05 -0500
+Message-ID: <85ba040e-3e44-c8d5-568c-2b219939eb88@redhat.com>
+Date: Thu, 17 Jan 2019 14:50:42 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20181221135803.9583-1-npes87184@gmail.com>
+In-Reply-To: <8736abeb-60b6-e077-b6ad-0f01da4f8c0a@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Thu, 17 Jan 2019 19:29:07 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Thu, 17 Jan 2019 19:50:46 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] dmg: fix binary search
@@ -126,54 +127,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 17 Jan 2019 19:29:14 -0000
+X-List-Received-Date: Thu, 17 Jan 2019 19:50:53 -0000
 
 
 
-On 12/21/18 8:58 AM, yuchenlin wrote:
-> There is a possible hang in original binary searsh implemtation. That is
-> if chunk1 = 4, chunk2 = 5, chunk3 = 4, and we go else case.
+On 1/17/19 2:29 PM, John Snow wrote:
 > 
-> The chunk1 will be still 4, and so on.
 > 
-> Signed-off-by: yuchenlin <npes87184@gmail.com>
-
-Generally we ask that people use their full names for their
-Signed-off-by (for legal and copyright reasons) and not an alias.
-
-If I am mistaken and your name is a mononym or written as a mononym,
-please forgive me and disregard.
-
-> ---
->  block/dmg.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+> On 12/21/18 8:58 AM, yuchenlin wrote:
+>> There is a possible hang in original binary searsh implemtation. That is
+>> if chunk1 = 4, chunk2 = 5, chunk3 = 4, and we go else case.
+>>
+>> The chunk1 will be still 4, and so on.
+>>
+>> Signed-off-by: yuchenlin <npes87184@gmail.com>
 > 
-> diff --git a/block/dmg.c b/block/dmg.c
-> index 50e91aef6d..0e05702f5d 100644
-> --- a/block/dmg.c
-> +++ b/block/dmg.c
-> @@ -572,14 +572,14 @@ static inline uint32_t search_chunk(BDRVDMGState *s, uint64_t sector_num)
->  {
->      /* binary search */
->      uint32_t chunk1 = 0, chunk2 = s->n_chunks, chunk3;
-> -    while (chunk1 != chunk2) {
-> +    while (chunk1 <= chunk2) {
->          chunk3 = (chunk1 + chunk2) / 2;
->          if (s->sectors[chunk3] > sector_num) {
-> -            chunk2 = chunk3;
-> +            chunk2 = chunk3 - 1;
->          } else if (s->sectors[chunk3] + s->sectorcounts[chunk3] > sector_num) {
->              return chunk3;
->          } else {
-> -            chunk1 = chunk3;
-> +            chunk1 = chunk3 + 1;
->          }
->      }
->      return s->n_chunks; /* error */
+> Generally we ask that people use their full names for their
+> Signed-off-by (for legal and copyright reasons) and not an alias.
+> 
+> If I am mistaken and your name is a mononym or written as a mononym,
+> please forgive me and disregard.
 > 
 
-yuchenlin, did you see Stefan's response to your patch? Do you have any
-plans to send a follow-up?
-
---js
+ah, just found the later threads. Still email backlogged, disregard.
 
