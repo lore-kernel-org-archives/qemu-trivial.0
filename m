@@ -1,44 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gmNbx-0007ZR-Dp
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Jan 2019 13:50:53 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35722)
+	id 1gmbIj-0004Nl-7u
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Jan 2019 04:27:57 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53450)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gmNbv-0007XP-8q
-	for qemu-trivial@nongnu.org; Wed, 23 Jan 2019 13:50:52 -0500
+	(envelope-from <sgarzare@redhat.com>) id 1gmbIh-0004Jt-OW
+	for qemu-trivial@nongnu.org; Thu, 24 Jan 2019 04:27:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1gmNbu-0002wa-AM
-	for qemu-trivial@nongnu.org; Wed, 23 Jan 2019 13:50:51 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:51660)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1gmNbr-0002uo-Tr; Wed, 23 Jan 2019 13:50:48 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C2D333DE2C;
-	Wed, 23 Jan 2019 18:50:45 +0000 (UTC)
-Received: from localhost (ovpn-116-63.gru2.redhat.com [10.97.116.63])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 27EA2177D0;
-	Wed, 23 Jan 2019 18:50:44 +0000 (UTC)
-Date: Wed, 23 Jan 2019 16:50:43 -0200
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Nisarg Shah <nshah@disroot.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20190123185043.GV4136@habkost.net>
-References: <20190116183358.30287-1-nshah@disroot.org>
+	(envelope-from <sgarzare@redhat.com>) id 1gmbD6-0002a3-Bp
+	for qemu-trivial@nongnu.org; Thu, 24 Jan 2019 04:22:09 -0500
+Received: from mail-wr1-f65.google.com ([209.85.221.65]:37740)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1gmbD6-0002Y8-5i
+	for qemu-trivial@nongnu.org; Thu, 24 Jan 2019 04:22:08 -0500
+Received: by mail-wr1-f65.google.com with SMTP id s12so5624755wrt.4
+	for <qemu-trivial@nongnu.org>; Thu, 24 Jan 2019 01:22:08 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=SA924fYE8nn/MSZUkFF+w213CkyVLtdFR6SvbBo7GJM=;
+	b=A2DE/P42y8n6hT+f4uRzhctnBvLVQG/BBTUQu8VdMEFTKn0YLVLcqJ7Wb763aFU8e1
+	F8P8+xG0BMvYQFRK0WVocdoVUOeIo8kurQQXFNR9MvZbPMXv02mvp8gJXxv9FHg1wHM4
+	o9U2EvpwiGNq3/xOjqR+JlBU6TvbPoliYl9xnQaPGE4nki9iNet09LqvYNLLVJXNId3l
+	9jYZR12hQd12mbQFNtelep5vRpr+BuHdqSiLnuKkaQ0k9e/N0LtaOy5NhTWNj50pFJVM
+	htQlPzjHW0JKz73143cUEUFYFy5L+ebxtFoqyYt0CgwTsGhqKEYCU8syCWIRHYVISj0W
+	y3OA==
+X-Gm-Message-State: AJcUukd6B5LctMFihlHaSn0vpPfU20V6+EHp4r/hxO2rVd6eyV3TeY/+
+	AJnGlhKLBATBT7rFBiQOM/T1U2tlbTs=
+X-Google-Smtp-Source: ALg8bN74LGUVNA3rjAbEA8Bc1UP3slUja+uQEuADRLSRFhAdUleA9r3VSetKY/3bArEYVBWkr7OPHg==
+X-Received: by 2002:a5d:50c5:: with SMTP id f5mr6088357wrt.37.1548321727013;
+	Thu, 24 Jan 2019 01:22:07 -0800 (PST)
+Received: from steredhat (host29-26-dynamic.246-95-r.retail.telecomitalia.it.
+	[95.246.26.29]) by smtp.gmail.com with ESMTPSA id
+	w6sm58374147wme.46.2019.01.24.01.22.05
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 24 Jan 2019 01:22:06 -0800 (PST)
+Date: Thu, 24 Jan 2019 10:22:03 +0100
+From: Stefano Garzarella <sgarzare@redhat.com>
+To: Wei Yang <richardw.yang@linux.intel.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, pbonzini@redhat.com,
+	rth@twiddle.net
+Message-ID: <20190124092203.kvp2tlr3oxyks2wx@steredhat>
+References: <20190124073626.20534-1-richardw.yang@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190116183358.30287-1-nshah@disroot.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Wed, 23 Jan 2019 18:50:46 +0000 (UTC)
+In-Reply-To: <20190124073626.20534-1-richardw.yang@linux.intel.com>
+User-Agent: NeoMutt/20180716
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] device-crash-test: Convert to Python 3
+	[fuzzy]
+X-Received-From: 209.85.221.65
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/i386/pc.c: fix one typo
+ in function name
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,105 +63,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Jan 2019 18:50:52 -0000
+X-List-Received-Date: Thu, 24 Jan 2019 09:27:56 -0000
 
-On Thu, Jan 17, 2019 at 12:03:58AM +0530, Nisarg Shah wrote:
-> Apply 2to3 tool to scripts/device-crash-test.
-> Restrict whitelist entry stats in debug mode to be sorted only by "count", since Python 3 does
-> not implicitly support comparing dictionaries.
+CCing qemu-trivial@nongnu.org
 
-Thanks for the patch.  Comments below:
-
+On Thu, Jan 24, 2019 at 03:36:26PM +0800, Wei Yang wrote:
+> Rename pc_get_hotpug_handler to pc_get_hotplug_handler.
 > 
-> Signed-off-by: Nisarg Shah <nshah@disroot.org>
+> No functional change.
+> 
+> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
 > ---
->  scripts/device-crash-test | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
+>  hw/i386/pc.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/scripts/device-crash-test b/scripts/device-crash-test
-> index e93a7c0c84..ecdc9828c2 100755
-> --- a/scripts/device-crash-test
-> +++ b/scripts/device-crash-test
-> @@ -23,7 +23,7 @@
->  Run QEMU with all combinations of -machine and -device types,
->  check for crashes and unexpected errors.
->  """
-> -from __future__ import print_function
-> +
 
-This breaks Python 2 support:
-
-$ python2 scripts/device-crash-test
-  File "scripts/device-crash-test", line 534
-    print("No QEMU binary found", file=sys.stderr)
-                                      ^
-SyntaxError: invalid syntax
-
-
->  
->  import sys
->  import os
-> @@ -272,7 +272,7 @@ def qemuOptsEscape(s):
->  
->  def formatTestCase(t):
->      """Format test case info as "key=value key=value" for prettier logging output"""
-> -    return ' '.join('%s=%s' % (k, v) for k, v in t.items())
-> +    return ' '.join('%s=%s' % (k, v) for k, v in list(t.items()))
-
-Why is this necessary?
-
-
->  
->  
->  def qomListTypeNames(vm, **kwargs):
-> @@ -574,7 +574,8 @@ def main():
->          logger.info("Skipped %d test cases", skipped)
->  
->      if args.debug:
-> -        stats = sorted([(len(wl_stats.get(i, [])), wl) for i, wl in enumerate(ERROR_WHITELIST)])
-> +        stats = sorted([(len(wl_stats.get(i, [])), wl) for i, wl in
-> +                         enumerate(ERROR_WHITELIST)], key=lambda x: x[0])
-
-This seems to be the only change that is described in the commit
-message.  I'm applying this hunk after editing the commit message
-as shown below.
-
----
-From 9793d7e7874d944d115ab9ab933b02f8de793460 Mon Sep 17 00:00:00 2001
-From: Nisarg Shah <nshah@disroot.org>
-Date: Thu, 17 Jan 2019 00:03:58 +0530
-Subject: [PATCH] device-crash-test: Python 3 compatibility fix
-
-Restrict whitelist entry stats in debug mode to be sorted only by
-"count", since Python 3 does not implicitly support comparing
-dictionaries.
-
-Signed-off-by: Nisarg Shah <nshah@disroot.org>
-Message-Id: <20190116183358.30287-1-nshah@disroot.org>
-[ehabkost: removed 2 unnecessary hunks from patch]
-[ehabkost: edited commit message]
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
----
- scripts/device-crash-test | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/scripts/device-crash-test b/scripts/device-crash-test
-index 483dafb2fc..2a13fa4f84 100755
---- a/scripts/device-crash-test
-+++ b/scripts/device-crash-test
-@@ -557,7 +557,8 @@ def main():
-         logger.info("Skipped %d test cases", skipped)
- 
-     if args.debug:
--        stats = sorted([(len(wl_stats.get(i, [])), wl) for i, wl in enumerate(ERROR_WHITELIST)])
-+        stats = sorted([(len(wl_stats.get(i, [])), wl) for i, wl in
-+                         enumerate(ERROR_WHITELIST)], key=lambda x: x[0])
-         for count, wl in stats:
-             dbg("whitelist entry stats: %d: %r", count, wl)
- 
--- 
-2.18.0.rc1.1.g3f1ff2140
-
--- 
-Eduardo
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
 
