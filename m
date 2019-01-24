@@ -1,59 +1,90 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gmeSQ-0001KM-J4
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Jan 2019 07:50:10 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44361)
+	id 1gmgKF-0005Sh-VI
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Jan 2019 09:49:52 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51747)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gmeSO-0001Ei-2J
-	for qemu-trivial@nongnu.org; Thu, 24 Jan 2019 07:50:08 -0500
+	(envelope-from <thuth@redhat.com>) id 1gmgKC-0005Qp-Oc
+	for qemu-trivial@nongnu.org; Thu, 24 Jan 2019 09:49:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gmeSM-00017U-6V
-	for qemu-trivial@nongnu.org; Thu, 24 Jan 2019 07:50:08 -0500
-Received: from mout.kundenserver.de ([212.227.17.24]:47021)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gmeSD-0000tP-Dw; Thu, 24 Jan 2019 07:49:57 -0500
-Received: from localhost.localdomain ([78.238.229.36]) by
-	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
-	(Nemesis)
-	id 1MHWvH-1gzWcW2RO5-00DZIO; Thu, 24 Jan 2019 13:49:33 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
-	Richard Henderson <rth@twiddle.net>, Michael Tokarev <mjt@tls.msk.ru>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Wei Yang <richardw.yang@linux.intel.com>,
-	Stefano Garzarella <sgarzare@redhat.com>
-Date: Thu, 24 Jan 2019 13:49:06 +0100
-Message-Id: <20190124124906.16653-6-laurent@vivier.eu>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190124124906.16653-1-laurent@vivier.eu>
-References: <20190124124906.16653-1-laurent@vivier.eu>
+	(envelope-from <thuth@redhat.com>) id 1gmgKB-00005T-MW
+	for qemu-trivial@nongnu.org; Thu, 24 Jan 2019 09:49:48 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:35138)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gmgK9-0008Sp-QG; Thu, 24 Jan 2019 09:49:46 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B17EAC0E4D0A;
+	Thu, 24 Jan 2019 14:49:44 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-21.ams2.redhat.com [10.36.116.21])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 94C971A7CA;
+	Thu, 24 Jan 2019 14:49:43 +0000 (UTC)
+To: kumar sourav <sourav.jb1988@gmail.com>, qemu-trivial@nongnu.org
+Cc: jslaby@suse.cz, qemu-devel@nongnu.org
+References: <20190124144606.4352-1-sourav.jb1988@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <0cf9315e-ee03-92e4-a160-de8635d5cb6c@redhat.com>
+Date: Thu, 24 Jan 2019 15:49:42 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:1nVKMGmVPi9wuEGTdzvjddhUYretfOxqc3gepHZrUT7jSvv5uz6
-	9ClQSW/lQsVGCc+2VLOZA1V3DkgjtHqQqx0HUmW11X8bdtY4XU1Q2NYWhd6q6JUIl+lA7sP
-	9KyFwkpJowhZn1qPunenVVRp3gkqTTWlwGgWpgw0eo0K3pt0UdXZSh9Ovlyl7kCSybd/boC
-	z1tmcmC9CRhvmPyshdhJg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:kKrINX4gifE=:joRkIAlzg3Ah+M9bgyWvWb
-	4wOWY5B+L0a3+2fPy5JIAmxln7+cH2NvupVMjpwtGx77txrxAYlb2/48zFCmij7OmawDsnRRu
-	fPHQxmkCrBzUYZEC9BpQoUsUQKsyYZxWj6oDqi6/XJeJPP7NfiVx6hcpc1zmi3QxWMCtJAtwE
-	RavNXMW04luVmpyjUQ/ZT+4AmsZ2prmDxw/uYpD15oi2l+t90OTN8gWl3vAT+IZmsyTkGIufS
-	kxs8nKWUxLhwrJq7CBYLzM9eJXxCEC0DhasxtR2cYroy/Jv5qCV+BmfPZ7GD1kLzMvj7j5E/K
-	6xkW4AMHdJqFa29cdk0JT+EyGv7GAhFCJZzfpUiGSSH2oy18qbemVfG6KPCQIGcZsKHb2o0Wc
-	1FokmWHfRtU2rTiwO3aNqlBPvDu10wjpGP2wdigxTyLxCGnHJgz/Va1U+pdYkTM5281wSqztj
-	fJtzwUFeKP6sEjc8/VhMRFoKlNUFpwYgfO9KCX6JHVM5Ywjldg38QR9QvChZm0Wxojb8aa7Ep
-	eXE8zekOGPHRzz7921Zf7+7ayr2amY/yu1Dagm+XsLy4IbHJABaq4prFjlexpI965e194BZfE
-	dwz1bp2QD12W8zxY6pOFmL1ZnHuP/G+yNNNPhuNP8hLII9FjE/0uUrdazHbCenOy8ZZlfhGu2
-	xuC59K86WuYbetCSy5yqeg2bf7otkFW6o4XKMqhJy6q4rs7j0GQ0Gh/CErID3y4CLuWbWWOA7
-	U4P/NE3/YLcS5zIEBr+Uwv2ww8h+evgXa3wqvg==
+In-Reply-To: <20190124144606.4352-1-sourav.jb1988@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Thu, 24 Jan 2019 14:49:44 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: [Qemu-trivial] [PULL 5/5] hw/i386/pc.c: fix one typo in function
- name
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] hw: edu: set category of the edu device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,45 +96,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Jan 2019 12:50:09 -0000
+X-List-Received-Date: Thu, 24 Jan 2019 14:49:49 -0000
 
-From: Wei Yang <richardw.yang@linux.intel.com>
+On 2019-01-24 15:46, kumar sourav wrote:
+> Sets the category of edu device as DEVICE_CATEGORY_MISC.
+> Devices should be assigned to one of DEVICE_CATEGORY_XXXX.
+> 
+> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
+> ---
+>  hw/misc/edu.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/hw/misc/edu.c b/hw/misc/edu.c
+> index ceaf688bfb..91af452c9e 100644
+> --- a/hw/misc/edu.c
+> +++ b/hw/misc/edu.c
+> @@ -399,6 +399,7 @@ static void edu_instance_init(Object *obj)
+>  
+>  static void edu_class_init(ObjectClass *class, void *data)
+>  {
+> +    DeviceClass *dc = DEVICE_CLASS(class);
+>      PCIDeviceClass *k = PCI_DEVICE_CLASS(class);
+>  
+>      k->realize = pci_edu_realize;
+> @@ -407,6 +408,7 @@ static void edu_class_init(ObjectClass *class, void *data)
+>      k->device_id = 0x11e8;
+>      k->revision = 0x10;
+>      k->class_id = PCI_CLASS_OTHERS;
+> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+>  }
+>  
+>  static void pci_edu_register_types(void)
+> 
 
-Rename pc_get_hotpug_handler to pc_get_hotplug_handler.
+Looks fine.
 
-No functional change.
-
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Message-Id: <20190124073626.20534-1-richardw.yang@linux.intel.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/i386/pc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 73d688f842..747548b7aa 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -2285,7 +2285,7 @@ static void pc_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
-     }
- }
- 
--static HotplugHandler *pc_get_hotpug_handler(MachineState *machine,
-+static HotplugHandler *pc_get_hotplug_handler(MachineState *machine,
-                                              DeviceState *dev)
- {
-     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) ||
-@@ -2615,7 +2615,7 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
-     pcmc->save_tsc_khz = true;
-     pcmc->linuxboot_dma_enabled = true;
-     assert(!mc->get_hotplug_handler);
--    mc->get_hotplug_handler = pc_get_hotpug_handler;
-+    mc->get_hotplug_handler = pc_get_hotplug_handler;
-     mc->cpu_index_to_instance_props = pc_cpu_index_to_props;
-     mc->get_default_cpu_node_id = pc_get_default_cpu_node_id;
-     mc->possible_cpu_arch_ids = pc_possible_cpu_arch_ids;
--- 
-2.20.1
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
