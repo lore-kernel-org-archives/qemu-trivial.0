@@ -1,61 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gmhIA-0000oE-54
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Jan 2019 10:51:46 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50559)
+	id 1gmhn0-0002jP-Pc
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Jan 2019 11:23:38 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45198)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sourav.jb1988@gmail.com>) id 1gmgGy-0002NF-9O
-	for qemu-trivial@nongnu.org; Thu, 24 Jan 2019 09:46:28 -0500
+	(envelope-from <sourav.jb1988@gmail.com>) id 1gmhmx-0002c9-LQ
+	for qemu-trivial@nongnu.org; Thu, 24 Jan 2019 11:23:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sourav.jb1988@gmail.com>) id 1gmgGu-0004vO-HR
-	for qemu-trivial@nongnu.org; Thu, 24 Jan 2019 09:46:26 -0500
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:35647)
+	(envelope-from <sourav.jb1988@gmail.com>) id 1gmhkS-0002lP-HR
+	for qemu-trivial@nongnu.org; Thu, 24 Jan 2019 11:21:02 -0500
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:36087)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <sourav.jb1988@gmail.com>)
-	id 1gmgGq-0004ow-R7; Thu, 24 Jan 2019 09:46:22 -0500
-Received: by mail-pf1-x444.google.com with SMTP id z9so3100897pfi.2;
-	Thu, 24 Jan 2019 06:46:17 -0800 (PST)
+	id 1gmhkQ-0002hx-NL; Thu, 24 Jan 2019 11:21:00 -0500
+Received: by mail-pl1-x643.google.com with SMTP id g9so3115660plo.3;
+	Thu, 24 Jan 2019 08:20:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=from:to:cc:subject:date:message-id;
-	bh=KISbn7rbKb5H0+9dkmewOio+NsvUcosfIrDHKIZJRTk=;
-	b=R/SuVCjBOigHHCTidpnr6k0Pu3zUbK3xfuVxYFMuE9mCIfer6gTjr4gYK62cfxOOJY
-	0133YrOFSjMR6QuoQ2tdOq7POSqLlK+7sqODQAAfeLUb+emyUvNpdLyRmw9DgaEq3YvB
-	oY95C6dRJ88VuXHvcsnXIJBFGBlS+CtoaworGmFn0fDlWOKxvwZM9pdLrw74kd3TNNW9
-	98ULtxSEHopuxjxmLT3HLRWVoNzHpQtwLCctCUUax9W5x/kK7IbrvkQ+OB5pzFU5N1gs
-	2M5Qx06G6jcHky2froQN6QByLxZpYN2/bOff4Lze0O1IwwHXKmI+Ydq9aTthKzfqjrnJ
-	MCHQ==
+	bh=C1/OVx9jhzQY9srDTsbkiILPvLM0EPwbG6g6z79K6R0=;
+	b=YNoOalJ8sfOgAnxlwIGjBH93Z+pCf1/GzRtRILJUsmbCfZ1eYsllcDuTzW1x/Wfq+J
+	R52N3n019zSPFpGY/TibDRmzLhUB02OCCKbbtvfhZBjm1hjfX0613NfGyEGuZFN20oKr
+	JvASTnZuUPt9AyRUPQS8P/0hgKzUewrYLUpxAd05a3gBwlLUuxocrH9TBEKrX7kHimVP
+	bA102s+khhOVVEbwAMFNeUb3uHRkkIpUGqhvZXNnDf2+MJfvzgalvvAudDIYiG6PkKV4
+	Q+ml/e3F66Rn828CfUDX8x0uvTUXtae7AvB0X7Q9HPPYdbUIIxP8RJ+13twxsR4V0GAW
+	TL4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=KISbn7rbKb5H0+9dkmewOio+NsvUcosfIrDHKIZJRTk=;
-	b=o0/itdVeRFygvrm/X+ghbz6rrp8SgBB5CXgljISZjwZx3Uc9+Xfocs2YSqiqXOLlF7
-	WZNiRR3oNd3CcNi3Sd/rdKxUE/fIOims78unkvMWEbwG9/3kcMWUqQZEue3V1C3QFn5t
-	5EiWABIG3EKARMPtMPs45gzTP9OIm47PLlGL7O6cgHfkWdHkobrkhatRxhcec7pfNPDI
-	Xl//rLnCIcepUz0P7py/aSQwtueWiYSGYTj/mTPbMkjEeqJlqreXsQ6rMb4mQcykk5Gc
-	voJgbkqz2kdHYJ29LTepCoqY88VrgCr+jfDYACTdOb4kABq7dnxYpv8UTj7xtXVcXefK
-	imTQ==
-X-Gm-Message-State: AJcUukeBzseHKLuh54pM/l3uZJFLvrlkfJUekNPIiXHQnJBechqZA6yU
-	oBQh/BnmEui1hh8WPGspmtPM8Bk9Qaw=
-X-Google-Smtp-Source: ALg8bN5fOrd+20nb8alVYClg2ElO0dn/iYVHh1vqVIra5LxfBAUR7OtqwPBMmaXZcx9pDhsIv5ZPfw==
-X-Received: by 2002:a62:3603:: with SMTP id d3mr6989240pfa.146.1548341176519; 
-	Thu, 24 Jan 2019 06:46:16 -0800 (PST)
+	bh=C1/OVx9jhzQY9srDTsbkiILPvLM0EPwbG6g6z79K6R0=;
+	b=bcrhf53LW4GSkTrywOhdEo144B27r+ZzgCQVssqJKVYIddDP/AmEPhqLvY0qqbazY9
+	x3RQwexns8oWeM3y2xAynYoaNb0KdL17e9qZryXyHP+TwP59pi3jRfihEGR63buaQPL8
+	tk1VhhXKxQDNwatG4tvRQ7txVbIkNPL2cGs+qtMU4lGN3k18WHoBisldUCB76QvPq9tA
+	tsGG6qDUG9SwQTDeNV+T160evHpbXd7h6H8n1zUzXBiAYOOOHExT7zIp34d1z15aNcJH
+	KT3uC5auORuzbKIUpcLgpNaDW+eglHBxXK1l4sF2r0/LtZzBVbEIMkr9Fw5dBKS5kIcq
+	xZiA==
+X-Gm-Message-State: AJcUukc64doYOSJT3BIL6kmjSO5kctmXuUZprklZErxAr/k3dlcGv5As
+	fwg8S4e+o7GRXui9rY4BiYHgPbtFYa4=
+X-Google-Smtp-Source: ALg8bN4dGKXKW5JaDAwQzGEdS4yvTdR2TPazCWdQjGXV2I5354NQfEUyvAERKozqJMz1NnbPkqx6vA==
+X-Received: by 2002:a17:902:9047:: with SMTP id
+	w7mr7236359plz.270.1548346856617; 
+	Thu, 24 Jan 2019 08:20:56 -0800 (PST)
 Received: from localhost.localdomain ([27.7.213.28])
 	by smtp.gmail.com with ESMTPSA id
-	y29sm40972826pga.59.2019.01.24.06.46.14
+	n78sm45621244pfk.19.2019.01.24.08.20.54
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 24 Jan 2019 06:46:15 -0800 (PST)
+	Thu, 24 Jan 2019 08:20:56 -0800 (PST)
 From: kumar sourav <sourav.jb1988@gmail.com>
 To: qemu-trivial@nongnu.org
-Cc: jslaby@suse.cz,
+Cc: f4bug@amsat.org,
 	qemu-devel@nongnu.org,
 	thuth@redhat.com
-Date: Thu, 24 Jan 2019 20:16:06 +0530
-Message-Id: <20190124144606.4352-1-sourav.jb1988@gmail.com>
+Date: Thu, 24 Jan 2019 21:50:45 +0530
+Message-Id: <20190124162045.10474-1-sourav.jb1988@gmail.com>
 X-Mailer: git-send-email 2.17.1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::444
-X-Mailman-Approved-At: Thu, 24 Jan 2019 10:51:44 -0500
-Subject: [Qemu-trivial] [PATCH] hw: edu: set category of the edu device
+X-Received-From: 2607:f8b0:4864:20::643
+Subject: [Qemu-trivial] [PATCH] hw: sd: set category of the sd memory card
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,36 +67,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Jan 2019 14:46:29 -0000
+X-List-Received-Date: Thu, 24 Jan 2019 16:23:37 -0000
 
-Sets the category of edu device as DEVICE_CATEGORY_MISC.
+Sets the category of the sd memory card as DEVICE_CATEGORY_STORAGE.
 Devices should be assigned to one of DEVICE_CATEGORY_XXXX.
 
 Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
 ---
- hw/misc/edu.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/sd/sd.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/misc/edu.c b/hw/misc/edu.c
-index ceaf688bfb..91af452c9e 100644
---- a/hw/misc/edu.c
-+++ b/hw/misc/edu.c
-@@ -399,6 +399,7 @@ static void edu_instance_init(Object *obj)
+diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+index d4356e9b73..aaab15f386 100644
+--- a/hw/sd/sd.c
++++ b/hw/sd/sd.c
+@@ -2121,6 +2121,7 @@ static void sd_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &sd_vmstate;
+     dc->reset = sd_reset;
+     dc->bus_type = TYPE_SD_BUS;
++    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
  
- static void edu_class_init(ObjectClass *class, void *data)
- {
-+    DeviceClass *dc = DEVICE_CLASS(class);
-     PCIDeviceClass *k = PCI_DEVICE_CLASS(class);
- 
-     k->realize = pci_edu_realize;
-@@ -407,6 +408,7 @@ static void edu_class_init(ObjectClass *class, void *data)
-     k->device_id = 0x11e8;
-     k->revision = 0x10;
-     k->class_id = PCI_CLASS_OTHERS;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
- }
- 
- static void pci_edu_register_types(void)
+     sc->set_voltage = sd_set_voltage;
+     sc->get_dat_lines = sd_get_dat_lines;
 -- 
 2.17.1
 
