@@ -1,32 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gn2wH-0001uW-JA
+	id 1gn2wH-0001up-Ov
 	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2019 09:58:37 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47446)
+Received: from eggs.gnu.org ([209.51.188.92]:47448)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1gmuZf-0006l3-Od
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gmuZf-0006l5-Of
 	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 01:02:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1gmuZe-0006bY-Kr
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gmuZe-0006bS-Jw
 	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 01:02:43 -0500
-Received: from mga17.intel.com ([192.55.52.151]:45809)
+Received: from mga17.intel.com ([192.55.52.151]:45808)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1gmuZc-0006a6-U2; Fri, 25 Jan 2019 01:02:42 -0500
+	id 1gmuZc-0006ZF-HP; Fri, 25 Jan 2019 01:02:40 -0500
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
 	by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	24 Jan 2019 22:02:39 -0800
+	24 Jan 2019 22:02:37 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.56,520,1539673200"; d="scan'208";a="141192378"
+X-IronPort-AV: E=Sophos;i="5.56,520,1539673200"; d="scan'208";a="141192374"
 Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.37])
-	by fmsmga001.fm.intel.com with ESMTP; 24 Jan 2019 22:02:38 -0800
+	by fmsmga001.fm.intel.com with ESMTP; 24 Jan 2019 22:02:36 -0800
 From: Wei Yang <richardw.yang@linux.intel.com>
 To: qemu-trivial@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: mst@redhat.com, laurent@vivier.eu, Wei Yang <richardw.yang@linux.intel.com>
-Date: Fri, 25 Jan 2019 14:01:57 +0800
-Message-Id: <20190125060157.29935-3-richardw.yang@linux.intel.com>
+Date: Fri, 25 Jan 2019 14:01:56 +0800
+Message-Id: <20190125060157.29935-2-richardw.yang@linux.intel.com>
 X-Mailer: git-send-email 2.19.1
 In-Reply-To: <20190125060157.29935-1-richardw.yang@linux.intel.com>
 References: <20190125060157.29935-1-richardw.yang@linux.intel.com>
@@ -36,8 +36,8 @@ X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 192.55.52.151
 X-Mailman-Approved-At: Fri, 25 Jan 2019 09:58:36 -0500
-Subject: [Qemu-trivial] [PATCH 3/3] hw/acpi: remove unnecessary variable
- acpi_table_builtin
+Subject: [Qemu-trivial] [PATCH 2/3] hw/acpi: remove unused function
+ acpi_table_add_builtin()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,38 +51,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 25 Jan 2019 06:02:44 -0000
 
-acpi_table_builtin is now always false, it is not necessary to check it
-again.
+Function acpi_table_add_builtin() is now used in no place.
 
-This patch just removes it.
+Remove the definition and declaration.
 
 Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
 ---
- hw/acpi/core.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ hw/acpi/core.c         | 6 ------
+ include/hw/acpi/acpi.h | 1 -
+ 2 files changed, 7 deletions(-)
 
 diff --git a/hw/acpi/core.c b/hw/acpi/core.c
-index e9b1a85e54..f9c96535d1 100644
+index d6f0709691..e9b1a85e54 100644
 --- a/hw/acpi/core.c
 +++ b/hw/acpi/core.c
-@@ -303,8 +303,6 @@ out:
-     error_propagate(errp, err);
- }
+@@ -305,12 +305,6 @@ out:
  
--static bool acpi_table_builtin = false;
+ static bool acpi_table_builtin = false;
+ 
+-void acpi_table_add_builtin(const QemuOpts *opts, Error **errp)
+-{
+-    acpi_table_builtin = true;
+-    acpi_table_add(opts, errp);
+-}
 -
  unsigned acpi_table_len(void *current)
  {
      struct acpi_table_header *hdr = current - sizeof(hdr->_length);
-@@ -320,7 +318,7 @@ void *acpi_table_hdr(void *h)
+diff --git a/include/hw/acpi/acpi.h b/include/hw/acpi/acpi.h
+index c20ace0d0b..4a8bbaf1b5 100644
+--- a/include/hw/acpi/acpi.h
++++ b/include/hw/acpi/acpi.h
+@@ -190,7 +190,6 @@ uint8_t *acpi_table_first(void);
+ uint8_t *acpi_table_next(uint8_t *current);
+ unsigned acpi_table_len(void *current);
+ void acpi_table_add(const QemuOpts *opts, Error **errp);
+-void acpi_table_add_builtin(const QemuOpts *opts, Error **errp);
  
- uint8_t *acpi_table_first(void)
- {
--    if (acpi_table_builtin || !acpi_tables) {
-+    if (!acpi_tables) {
-         return NULL;
-     }
-     return acpi_table_hdr(acpi_tables + ACPI_TABLE_PFX_SIZE);
+ typedef struct AcpiSlicOem AcpiSlicOem;
+ struct AcpiSlicOem {
 -- 
 2.19.1
 
