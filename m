@@ -1,47 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gn1we-0008Ct-Um
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2019 08:54:56 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51079)
+	id 1gn2wH-0001uW-JA
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2019 09:58:37 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47446)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1gn1wd-0008Bp-Cc
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 08:54:56 -0500
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gmuZf-0006l3-Od
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 01:02:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <cohuck@redhat.com>) id 1gn1wb-00063M-Dn
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 08:54:55 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:59264)
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gmuZe-0006bY-Kr
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 01:02:43 -0500
+Received: from mga17.intel.com ([192.55.52.151]:45809)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
-	id 1gn1wN-0005aY-G0; Fri, 25 Jan 2019 08:54:41 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5C06B9FDCC;
-	Fri, 25 Jan 2019 13:54:18 +0000 (UTC)
-Received: from gondolin (dhcp-192-187.str.redhat.com [10.33.192.187])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 354B660C1C;
-	Fri, 25 Jan 2019 13:54:17 +0000 (UTC)
-Date: Fri, 25 Jan 2019 14:54:14 +0100
-From: Cornelia Huck <cohuck@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-trivial@nongnu.org, qemu-s390x@nongnu.org, Miroslav Rezanina
-	<mrezanin@redhat.com>
-Message-ID: <20190125145414.2a92177b.cohuck@redhat.com>
-In-Reply-To: <1548420960-5555-1-git-send-email-thuth@redhat.com>
-References: <1548420960-5555-1-git-send-email-thuth@redhat.com>
-Organization: Red Hat GmbH
+	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
+	id 1gmuZc-0006a6-U2; Fri, 25 Jan 2019 01:02:42 -0500
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+	by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	24 Jan 2019 22:02:39 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.56,520,1539673200"; d="scan'208";a="141192378"
+Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.37])
+	by fmsmga001.fm.intel.com with ESMTP; 24 Jan 2019 22:02:38 -0800
+From: Wei Yang <richardw.yang@linux.intel.com>
+To: qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: mst@redhat.com, laurent@vivier.eu, Wei Yang <richardw.yang@linux.intel.com>
+Date: Fri, 25 Jan 2019 14:01:57 +0800
+Message-Id: <20190125060157.29935-3-richardw.yang@linux.intel.com>
+X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20190125060157.29935-1-richardw.yang@linux.intel.com>
+References: <20190125060157.29935-1-richardw.yang@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Fri, 25 Jan 2019 13:54:18 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [qemu-s390x] [PATCH] hw/virtio: Use
- CONFIG_VIRTIO_PCI switch instead of CONFIG_PCI
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.151
+X-Mailman-Approved-At: Fri, 25 Jan 2019 09:58:36 -0500
+Subject: [Qemu-trivial] [PATCH 3/3] hw/acpi: remove unnecessary variable
+ acpi_table_builtin
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,39 +49,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Jan 2019 13:54:56 -0000
+X-List-Received-Date: Fri, 25 Jan 2019 06:02:44 -0000
 
-On Fri, 25 Jan 2019 13:56:00 +0100
-Thomas Huth <thuth@redhat.com> wrote:
+acpi_table_builtin is now always false, it is not necessary to check it
+again.
 
-> For downstream s390x builds, we'd like to be able to build QEMU with
-> CONFIG_VIRTIO_PCI disabled (since virtio-ccw is used here instead),
-> but still with CONFIG_PCI enabled. This currently fails since the
-> virtio-*-pci.o files are still included in the build, but virtio-pci.o
-> is missing. Use the right config switch CONFIG_VIRTIO_PCI to exclude
-> the virtio-*-pci.o files from the build.
-> 
-> Reported-by: Miroslav Rezanina <mrezanin@redhat.com>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/virtio/Makefile.objs | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/virtio/Makefile.objs b/hw/virtio/Makefile.objs
-> index ea7913d..d335dd0 100644
-> --- a/hw/virtio/Makefile.objs
-> +++ b/hw/virtio/Makefile.objs
-> @@ -11,7 +11,7 @@ obj-$(call land,$(CONFIG_VIRTIO_CRYPTO),$(CONFIG_VIRTIO_PCI)) += virtio-crypto-p
->  
->  obj-$(CONFIG_LINUX) += vhost.o vhost-backend.o vhost-user.o
->  obj-$(CONFIG_VHOST_VSOCK) += vhost-vsock.o
-> -ifeq ($(CONFIG_PCI),y)
-> +ifeq ($(CONFIG_VIRTIO_PCI),y)
->  obj-$(CONFIG_VHOST_VSOCK) += vhost-vsock-pci.o
->  obj-$(CONFIG_VHOST_USER_BLK) += vhost-user-blk-pci.o
->  obj-$(CONFIG_VHOST_USER_SCSI) += vhost-user-scsi-pci.o
+This patch just removes it.
 
-CONFIG_VIRTIO_PCI looks like the right knob.
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+---
+ hw/acpi/core.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+diff --git a/hw/acpi/core.c b/hw/acpi/core.c
+index e9b1a85e54..f9c96535d1 100644
+--- a/hw/acpi/core.c
++++ b/hw/acpi/core.c
+@@ -303,8 +303,6 @@ out:
+     error_propagate(errp, err);
+ }
+ 
+-static bool acpi_table_builtin = false;
+-
+ unsigned acpi_table_len(void *current)
+ {
+     struct acpi_table_header *hdr = current - sizeof(hdr->_length);
+@@ -320,7 +318,7 @@ void *acpi_table_hdr(void *h)
+ 
+ uint8_t *acpi_table_first(void)
+ {
+-    if (acpi_table_builtin || !acpi_tables) {
++    if (!acpi_tables) {
+         return NULL;
+     }
+     return acpi_table_hdr(acpi_tables + ACPI_TABLE_PFX_SIZE);
+-- 
+2.19.1
+
 
