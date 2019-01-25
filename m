@@ -1,62 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gn102-0007rF-Q4
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2019 07:54:22 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40168)
+	id 1gn129-0001Ck-FE
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2019 07:56:33 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41034)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gn0zv-0007OK-Nc
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 07:54:19 -0500
+	(envelope-from <thuth@redhat.com>) id 1gn127-0001As-68
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 07:56:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gn0r1-0006r3-L1
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 07:45:09 -0500
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:41803)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gn0r1-0006qf-FL
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 07:45:03 -0500
-Received: by mail-wr1-f67.google.com with SMTP id x10so10138959wrs.8
-	for <qemu-trivial@nongnu.org>; Fri, 25 Jan 2019 04:45:03 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=qAL3j1WJle+1kv6vGsCPvXvCwWyD8oGj0WdLnV2FDVg=;
-	b=JoJnh4tm/MtlVZ3JcnWRAqxdmWU3EBiLcwesuUn3EfzrCYEnN+PA29lzBPMet0aDA2
-	xQZWQIrwbiUcgNicYJwluqq85e0scrKp9XmFT8UkxySRSeezqckTdJ9SPPrtG+KzuMRA
-	f7iHS4My1W8/g37R+D8n3nvqamO2v+MaCqA8s4seqkfcbT/yD5qQNbqBRCBqsayYPFE0
-	mb0/KeDh1/rCZEKj6YZX98n3oG2ZBjoVWTjEhqndpYt75dTgO72cRYfflIesTPUu08ig
-	+wYmwP5oJEWI6jLQmDnRpfke61LdpVFWTmYYq0hjqf/F8h7CcnUmmHWjJDRxZEU97fPi
-	9PfA==
-X-Gm-Message-State: AJcUukfoeVhGjZtHAWGmHHOfuLuCRbiZVBNNxBIUXvXRRvlooR6tk/Yy
-	9nE5hTJ6k5mktPJsbUdnbU1huzFv3hE=
-X-Google-Smtp-Source: ALg8bN5fJIXZdct41vgnjDyTIZovOtak2cGCxSw3weVpBp6RgWDu3dzYxHUH69uJdNPidOQZDdXvXQ==
-X-Received: by 2002:adf:92c7:: with SMTP id 65mr10749428wrn.228.1548420302144; 
-	Fri, 25 Jan 2019 04:45:02 -0800 (PST)
-Received: from [192.168.1.33] (110.red-83-51-161.dynamicip.rima-tde.net.
-	[83.51.161.110]) by smtp.gmail.com with ESMTPSA id
-	a8sm39156750wme.23.2019.01.25.04.45.01
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Fri, 25 Jan 2019 04:45:01 -0800 (PST)
-To: Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost
-	<ehabkost@redhat.com>, Cleber Rosa <crosa@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <1548410602-16008-1-git-send-email-pbonzini@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <fa3b6ce0-0fc4-7ee8-653b-5c0aecfa6d30@redhat.com>
-Date: Fri, 25 Jan 2019 13:45:00 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
-MIME-Version: 1.0
-In-Reply-To: <1548410602-16008-1-git-send-email-pbonzini@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+	(envelope-from <thuth@redhat.com>) id 1gn11u-0003Tu-4y
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 07:56:20 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:33038)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gn11k-0003Mf-3B; Fri, 25 Jan 2019 07:56:09 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8E765C0C4265;
+	Fri, 25 Jan 2019 12:56:05 +0000 (UTC)
+Received: from thuth.com (ovpn-116-56.ams2.redhat.com [10.36.116.56])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 0130317B19;
+	Fri, 25 Jan 2019 12:56:03 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-s390x@nongnu.org,
+	Miroslav Rezanina <mrezanin@redhat.com>
+Date: Fri, 25 Jan 2019 13:56:00 +0100
+Message-Id: <1548420960-5555-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Fri, 25 Jan 2019 12:56:05 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] decodetree: re.fullmatch
- was added in 3.4
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] hw/virtio: Use CONFIG_VIRTIO_PCI switch
+ instead of CONFIG_PCI
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,38 +47,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Jan 2019 12:54:21 -0000
+X-List-Received-Date: Fri, 25 Jan 2019 12:56:32 -0000
 
-Cc'ing maintainers :P
+For downstream s390x builds, we'd like to be able to build QEMU with
+CONFIG_VIRTIO_PCI disabled (since virtio-ccw is used here instead),
+but still with CONFIG_PCI enabled. This currently fails since the
+virtio-*-pci.o files are still included in the build, but virtio-pci.o
+is missing. Use the right config switch CONFIG_VIRTIO_PCI to exclude
+the virtio-*-pci.o files from the build.
 
-$ ./scripts/get_maintainer.pl -f scripts/decodetree.py
-Eduardo Habkost <ehabkost@redhat.com> (odd fixer:Python scripts)
-Cleber Rosa <crosa@redhat.com> (odd fixer:Python scripts)
+Reported-by: Miroslav Rezanina <mrezanin@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/virtio/Makefile.objs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On 1/25/19 11:03 AM, Paolo Bonzini wrote:
-> Python 3 versions earlier than 3.4 do not have it, use the
-> same workaround that is in place for 3.0.
-> 
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+diff --git a/hw/virtio/Makefile.objs b/hw/virtio/Makefile.objs
+index ea7913d..d335dd0 100644
+--- a/hw/virtio/Makefile.objs
++++ b/hw/virtio/Makefile.objs
+@@ -11,7 +11,7 @@ obj-$(call land,$(CONFIG_VIRTIO_CRYPTO),$(CONFIG_VIRTIO_PCI)) += virtio-crypto-p
+ 
+ obj-$(CONFIG_LINUX) += vhost.o vhost-backend.o vhost-user.o
+ obj-$(CONFIG_VHOST_VSOCK) += vhost-vsock.o
+-ifeq ($(CONFIG_PCI),y)
++ifeq ($(CONFIG_VIRTIO_PCI),y)
+ obj-$(CONFIG_VHOST_VSOCK) += vhost-vsock-pci.o
+ obj-$(CONFIG_VHOST_USER_BLK) += vhost-user-blk-pci.o
+ obj-$(CONFIG_VHOST_USER_SCSI) += vhost-user-scsi-pci.o
+-- 
+1.8.3.1
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
-> ---
->  scripts/decodetree.py | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/scripts/decodetree.py b/scripts/decodetree.py
-> index 0bc73b5..e342d27 100755
-> --- a/scripts/decodetree.py
-> +++ b/scripts/decodetree.py
-> @@ -204,7 +204,7 @@ def output(*args):
->          output_fd.write(a)
->  
->  
-> -if sys.version_info >= (3, 0):
-> +if sys.version_info >= (3, 4):
->      re_fullmatch = re.fullmatch
->  else:
->      def re_fullmatch(pat, str):
-> 
 
