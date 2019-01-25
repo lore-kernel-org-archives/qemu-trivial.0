@@ -1,43 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gmygF-0005Yf-M4
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2019 05:25:47 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37596)
+	id 1gmysA-0006rK-RQ
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2019 05:38:06 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41176)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gmygD-0005W6-8t
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 05:25:46 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gmys8-0006pV-Ug
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 05:38:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1gmygC-0005h6-DG
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 05:25:45 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34658)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1gmyg9-0005Ok-AL; Fri, 25 Jan 2019 05:25:41 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 01D2BBAFE;
-	Fri, 25 Jan 2019 10:25:25 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 445C56BF83;
-	Fri, 25 Jan 2019 10:25:24 +0000 (UTC)
-Date: Fri, 25 Jan 2019 11:25:22 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20190125112522.0510ab64@redhat.com>
-In-Reply-To: <20190125094047.22276-1-dgilbert@redhat.com>
-References: <20190125094047.22276-1-dgilbert@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1gmys8-0003sm-3X
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 05:38:04 -0500
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b]:44578)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gmys7-0003s2-Uw
+	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 05:38:04 -0500
+Received: by mail-ot1-x32b.google.com with SMTP id g16so4086906otg.11
+	for <qemu-trivial@nongnu.org>; Fri, 25 Jan 2019 02:38:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=c05puAZBkWbs8q2yEQ5NL1LxTqdiKh0YN+nAq9OXwEM=;
+	b=cyrTUcCNgfLOCQ1feKdZFgKLY3WVOaSNxUxhtjHZPG7r+4rhHgC0KKkk0zNin/abmu
+	f4SsH0kh3GM9HFPXArXpF1W3Q4edmDUid+YzfUtGXGWBuisLUG4tOjvHokv5KFOPVVbE
+	DVxUAD0uH/KT2tFS/DN6o9lVuY7FAwZmZxAiI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=c05puAZBkWbs8q2yEQ5NL1LxTqdiKh0YN+nAq9OXwEM=;
+	b=DkLOt5HzxfMdvEmber8mX8odQ1X42pweNqKYOMieDW4oBbTNBsPUGj0xN81vm1uNr2
+	DhL3hDr7hhWux1ceA/mJI1hM5GeMFdbdEofvg35tUbOe89Dl7+6qL5ae0rouxJFg7AYh
+	bdwt2Ad3qqUUVPLAdeefJFSbovyKlq0u9m4f/Rw5KJLW4/GcKmeCXCl+9l2L8uZGkXfk
+	X/QwqFrXtx9ts1T+z0Jv8olD2adixh+ScVTI4TOmH1ocDuDAYWJCXi3fSUMpIrFJeIdC
+	VG7tTSgy2d2d88RX+Vm3kaIZgfVZyvzDor75ZIDTpNCrXFz4nsI5wm8LcUNOi+0Z3kAQ
+	AbHA==
+X-Gm-Message-State: AJcUukdI5Uglz6FiaI0q1fXqDv3JXk7dOKYY3sJjjJgY5vpx9mhX08uu
+	5PGLzWPi/a25FpyktWIyKYnFvRwOlRYcn/DIYLcAng==
+X-Google-Smtp-Source: ALg8bN7nVrHPaM/UcBhSUID6kuvQ7YL62keCoGE8zfgsl9StF3ZZrwh9ukOWH7Tuud6u/ua+ojHDX7y0krelsGCGPt0=
+X-Received: by 2002:a05:6830:1115:: with SMTP id
+	w21mr7218603otq.316.1548412682923; 
+	Fri, 25 Jan 2019 02:38:02 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Fri, 25 Jan 2019 10:25:25 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] typo: apci->acpi
+References: <20190124124906.16653-1-laurent@vivier.eu>
+In-Reply-To: <20190124124906.16653-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 25 Jan 2019 10:37:51 +0000
+Message-ID: <CAFEAcA_BRPpz3mz+J-iAduVCnKrC-WajTdFWHdg65EQr9Jspvw@mail.gmail.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, 
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Michael Tokarev <mjt@tls.msk.ru>, qemu-ppc <qemu-ppc@nongnu.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	David Gibson <david@gibson.dropbear.id.au>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::32b
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 0/5] Trivial patches patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,63 +69,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Jan 2019 10:25:46 -0000
+X-List-Received-Date: Fri, 25 Jan 2019 10:38:05 -0000
 
-On Fri, 25 Jan 2019 09:40:46 +0000
-"Dr. David Alan Gilbert (git)" <dgilbert@redhat.com> wrote:
+On Thu, 24 Jan 2019 at 12:52, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit 6d809e7da943bb4b95b408fbf3d80d097c0f7d38:
+>
+>   Merge remote-tracking branch 'remotes/xtensa/tags/20190122-xtensa' into staging (2019-01-23 21:50:49 +0000)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
+>
+> for you to fetch changes up to 285816d76f37c412f391fa14a2b28a35b7cb134e:
+>
+>   hw/i386/pc.c: fix one typo in function name (2019-01-24 13:34:20 +0100)
+>
+> ----------------------------------------------------------------
+> - Some typo and UTF-8 fixes
+> - a ppc e6500 fix to remove duplicate SPR registering
+>
+> ----------------------------------------------------------------
 
-> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-> 
-> apci_1_compatible should be acpi_1_compatible.
-> 
-> Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Applied, thanks.
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Please update the changelog at https://wiki.qemu.org/ChangeLog/4.0
+for any user-visible changes.
 
-> ---
->  hw/acpi/cpu.c         | 2 +-
->  hw/i386/acpi-build.c  | 2 +-
->  include/hw/acpi/cpu.h | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-> index f10b190019..a0a43fe6b5 100644
-> --- a/hw/acpi/cpu.c
-> +++ b/hw/acpi/cpu.c
-> @@ -508,7 +508,7 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
->              GArray *madt_buf = g_array_new(0, 1, 1);
->              int arch_id = arch_ids->cpus[i].arch_id;
->  
-> -            if (opts.apci_1_compatible && arch_id < 255) {
-> +            if (opts.acpi_1_compatible && arch_id < 255) {
->                  dev = aml_processor(i, 0, 0, CPU_NAME_FMT, i);
->              } else {
->                  dev = aml_device(CPU_NAME_FMT, i);
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 2e21a31f82..d60603abd7 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -1847,7 +1847,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->          build_legacy_cpu_hotplug_aml(dsdt, machine, pm->cpu_hp_io_base);
->      } else {
->          CPUHotplugFeatures opts = {
-> -            .apci_1_compatible = true, .has_legacy_cphp = true
-> +            .acpi_1_compatible = true, .has_legacy_cphp = true
->          };
->          build_cpus_aml(dsdt, machine, opts, pm->cpu_hp_io_base,
->                         "\\_SB.PCI0", "\\_GPE._E02");
-> diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h
-> index 89ce172941..62f0278ba2 100644
-> --- a/include/hw/acpi/cpu.h
-> +++ b/include/hw/acpi/cpu.h
-> @@ -48,7 +48,7 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
->                           CPUHotplugState *state, hwaddr base_addr);
->  
->  typedef struct CPUHotplugFeatures {
-> -    bool apci_1_compatible;
-> +    bool acpi_1_compatible;
->      bool has_legacy_cphp;
->  } CPUHotplugFeatures;
->  
-
+-- PMM
 
