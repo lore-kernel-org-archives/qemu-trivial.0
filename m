@@ -1,45 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gn7iy-000470-Bd
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Jan 2019 15:05:12 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44948)
+	id 1gnaoh-0008M5-6F
+	for mharc-qemu-trivial@gnu.org; Sat, 26 Jan 2019 22:09:03 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59114)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1gn7iw-00044v-87
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 15:05:11 -0500
+	(envelope-from <shorne@gmail.com>) id 1gnaoe-0008KC-Px
+	for qemu-trivial@nongnu.org; Sat, 26 Jan 2019 22:09:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1gn7iv-0007Xe-Jo
-	for qemu-trivial@nongnu.org; Fri, 25 Jan 2019 15:05:10 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34724)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mst@redhat.com>)
-	id 1gn7is-0007V8-HB; Fri, 25 Jan 2019 15:05:06 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9914A7FDEA;
-	Fri, 25 Jan 2019 20:05:05 +0000 (UTC)
-Received: from redhat.com (ovpn-122-46.rdu2.redhat.com [10.10.122.46])
-	by smtp.corp.redhat.com (Postfix) with SMTP id D5B6E1048125;
-	Fri, 25 Jan 2019 20:05:04 +0000 (UTC)
-Date: Fri, 25 Jan 2019 15:05:04 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
+	(envelope-from <shorne@gmail.com>) id 1gnaod-0001vm-LF
+	for qemu-trivial@nongnu.org; Sat, 26 Jan 2019 22:09:00 -0500
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:42497)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <shorne@gmail.com>)
+	id 1gnaob-0001tP-6F; Sat, 26 Jan 2019 22:08:57 -0500
+Received: by mail-pg1-x543.google.com with SMTP id d72so5756933pga.9;
+	Sat, 26 Jan 2019 19:08:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=NJQjBDh24q3u7PEex/fWKno2Ygk++Hh61OSAlzBytkg=;
+	b=QS9zIImiBZ6BuKNAl+zgJtPNAYYpt0/jIRmd41MPb58VjQNlJ+8eBa7oxqy26loHGv
+	SqPqyOgYAtw7uaCeI0mWN8GpL2NcBkXeeAJ4su2pYt1qVmC//9CJ1lm20GGvmJjr9Hoy
+	MxgLnnTZSp2KfRyB8FZahQW2EeTIdRUy8vOM3cwR3IQFqqbObE9fcOB7ztlF+cUSWEy9
+	W6ztrfsgNraQA5k8I57jNsDndOn/9WSWesV/q1mjBpXZhqEZSSAt+J/D9ymzSsIqozFP
+	3GQWaYYjWqIxa6Ky+RKDTyNKA0SWL/gcKbwTZ68se+5oaySI1iEAU1pVYBbzGqzdT8jc
+	/jhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=NJQjBDh24q3u7PEex/fWKno2Ygk++Hh61OSAlzBytkg=;
+	b=GQUyixExKSfeTqePQcMkvLA+xiTPcm5BGlQPi78mmApHf5aBz0Ne4pEeOivpls02DU
+	VVAMdMpklD5TAWv/J904pF2cLOYUD03sxnk5MgQnfNW33mbVScMFnKKAJ7VOHj0LWZpb
+	cFImgBHTm3xkG/wjGbjyU2kQb0/KipSdRvjZH8A0LcP3UdmR4+UirYfHDAbESdozPuww
+	pzS/j0XiMqaVD+h1jZuiViFE/0ZAKNi5jrYzCwFKsl5gm/KAggqgstIBuoxYteO0iMLz
+	tXgFNQAWKZk9dwLeO7AhviisybCswfo3Pr1jBiGKncyhf3KjU2RIZI+CS0JznsUy7miV
+	KBGg==
+X-Gm-Message-State: AJcUukcAA+CHXO5dEKnYNMOP90jkYLSb4DA4xPHaXvpXm8rnrXO9Aj7R
+	Emu6XnW8rokng/iqzwuDoN4=
+X-Google-Smtp-Source: ALg8bN71zzvg4gXzdUyim45+9k/ohqVQuUyKaweIbIgCe/YWBkWxUAACydTXyF6OmlfmsRx/xTU+DA==
+X-Received: by 2002:a63:ff62:: with SMTP id s34mr15374014pgk.325.1548558535502;
+	Sat, 26 Jan 2019 19:08:55 -0800 (PST)
+Received: from localhost (g206.124-44-15.ppp.wakwak.ne.jp. [124.44.15.206])
+	by smtp.gmail.com with ESMTPSA id
+	u87sm72480536pfi.2.2019.01.26.19.08.54
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Sat, 26 Jan 2019 19:08:55 -0800 (PST)
+Date: Sun, 27 Jan 2019 12:08:53 +0900
+From: Stafford Horne <shorne@gmail.com>
 To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-s390x@nongnu.org,
-	Miroslav Rezanina <mrezanin@redhat.com>
-Message-ID: <20190125150455-mutt-send-email-mst@kernel.org>
-References: <1548420960-5555-1-git-send-email-thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20190127030853.GV3235@lianli.shorne-pla.net>
+References: <1548252536-6242-1-git-send-email-thuth@redhat.com>
+	<1548252536-6242-3-git-send-email-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1548420960-5555-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Fri, 25 Jan 2019 20:05:05 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] hw/virtio: Use CONFIG_VIRTIO_PCI switch
- instead of CONFIG_PCI
+In-Reply-To: <1548252536-6242-3-git-send-email-thuth@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::543
+Subject: Re: [Qemu-trivial] [PATCH 2/4] target/openrisc: Fix LGPL version
+ number
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,38 +73,119 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Jan 2019 20:05:11 -0000
+X-List-Received-Date: Sun, 27 Jan 2019 03:09:02 -0000
 
-On Fri, Jan 25, 2019 at 01:56:00PM +0100, Thomas Huth wrote:
-> For downstream s390x builds, we'd like to be able to build QEMU with
-> CONFIG_VIRTIO_PCI disabled (since virtio-ccw is used here instead),
-> but still with CONFIG_PCI enabled. This currently fails since the
-> virtio-*-pci.o files are still included in the build, but virtio-pci.o
-> is missing. Use the right config switch CONFIG_VIRTIO_PCI to exclude
-> the virtio-*-pci.o files from the build.
+On Wed, Jan 23, 2019 at 03:08:54PM +0100, Thomas Huth wrote:
+> It's either "GNU *Library* General Public version 2" or "GNU Lesser
+> General Public version *2.1*", but there was no "version 2.0" of the
+> "Lesser" library. So assume that version 2.1 is meant here.
 > 
-> Reported-by: Miroslav Rezanina <mrezanin@redhat.com>
+> Cc: Stafford Horne <shorne@gmail.com>
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/virtio/Makefile.objs | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  target/openrisc/cpu.c              | 2 +-
+>  target/openrisc/exception.h        | 2 +-
+>  target/openrisc/gdbstub.c          | 2 +-
+>  target/openrisc/helper.h           | 2 +-
+>  target/openrisc/interrupt_helper.c | 2 +-
+>  target/openrisc/sys_helper.c       | 2 +-
+>  target/openrisc/translate.c        | 2 +-
+>  7 files changed, 7 insertions(+), 7 deletions(-)
 > 
-> diff --git a/hw/virtio/Makefile.objs b/hw/virtio/Makefile.objs
-> index ea7913d..d335dd0 100644
-> --- a/hw/virtio/Makefile.objs
-> +++ b/hw/virtio/Makefile.objs
-> @@ -11,7 +11,7 @@ obj-$(call land,$(CONFIG_VIRTIO_CRYPTO),$(CONFIG_VIRTIO_PCI)) += virtio-crypto-p
->  
->  obj-$(CONFIG_LINUX) += vhost.o vhost-backend.o vhost-user.o
->  obj-$(CONFIG_VHOST_VSOCK) += vhost-vsock.o
-> -ifeq ($(CONFIG_PCI),y)
-> +ifeq ($(CONFIG_VIRTIO_PCI),y)
->  obj-$(CONFIG_VHOST_VSOCK) += vhost-vsock-pci.o
->  obj-$(CONFIG_VHOST_USER_BLK) += vhost-user-blk-pci.o
->  obj-$(CONFIG_VHOST_USER_SCSI) += vhost-user-scsi-pci.o
+> diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+> index fb7cb5c..541b2a6 100644
+> --- a/target/openrisc/cpu.c
+> +++ b/target/openrisc/cpu.c
+> @@ -6,7 +6,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/openrisc/exception.h b/target/openrisc/exception.h
+> index 4ec56b4..c9c4e47 100644
+> --- a/target/openrisc/exception.h
+> +++ b/target/openrisc/exception.h
+> @@ -6,7 +6,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/openrisc/gdbstub.c b/target/openrisc/gdbstub.c
+> index f9af650..43b1a18 100644
+> --- a/target/openrisc/gdbstub.c
+> +++ b/target/openrisc/gdbstub.c
+> @@ -7,7 +7,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/openrisc/helper.h b/target/openrisc/helper.h
+> index 9db9bf3..96d79a8 100644
+> --- a/target/openrisc/helper.h
+> +++ b/target/openrisc/helper.h
+> @@ -6,7 +6,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/openrisc/interrupt_helper.c b/target/openrisc/interrupt_helper.c
+> index 9c5489f..ab4ea88 100644
+> --- a/target/openrisc/interrupt_helper.c
+> +++ b/target/openrisc/interrupt_helper.c
+> @@ -7,7 +7,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/openrisc/sys_helper.c b/target/openrisc/sys_helper.c
+> index b66a45c..05f66c4 100644
+> --- a/target/openrisc/sys_helper.c
+> +++ b/target/openrisc/sys_helper.c
+> @@ -7,7 +7,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
+> index c089914..89680f8 100644
+> --- a/target/openrisc/translate.c
+> +++ b/target/openrisc/translate.c
+> @@ -7,7 +7,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
 
-Makes sense will queue.
+All of this looks ok to me, though I didn't the licenses:
 
-> -- 
-> 1.8.3.1
+Acked-by: Stafford Horne <shorne@gmail.com>
+
 
