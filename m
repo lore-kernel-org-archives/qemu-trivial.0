@@ -1,60 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gnhWf-00045c-29
-	for mharc-qemu-trivial@gnu.org; Sun, 27 Jan 2019 05:18:53 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35795)
+	id 1gnpYu-0004Ux-Gt
+	for mharc-qemu-trivial@gnu.org; Sun, 27 Jan 2019 13:53:44 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36468)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sourav.jb1988@gmail.com>) id 1gnhWc-00044M-Nx
-	for qemu-trivial@nongnu.org; Sun, 27 Jan 2019 05:18:51 -0500
+	(envelope-from <richard.henderson@linaro.org>) id 1gnpYs-0004Sj-49
+	for qemu-trivial@nongnu.org; Sun, 27 Jan 2019 13:53:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sourav.jb1988@gmail.com>) id 1gnhWc-0008Qw-3i
-	for qemu-trivial@nongnu.org; Sun, 27 Jan 2019 05:18:50 -0500
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:43018)
+	(envelope-from <richard.henderson@linaro.org>) id 1gnpYp-0001ki-CL
+	for qemu-trivial@nongnu.org; Sun, 27 Jan 2019 13:53:41 -0500
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:43084)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sourav.jb1988@gmail.com>)
-	id 1gnhWb-0008Q5-Sy; Sun, 27 Jan 2019 05:18:50 -0500
-Received: by mail-pg1-x544.google.com with SMTP id v28so5983999pgk.10;
-	Sun, 27 Jan 2019 02:18:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id;
-	bh=1LkqHkWFxYZLLQ5/6p+blvTeA+TrR597emoIx0TQLmE=;
-	b=Ha4xbtkPY0fHRb3hDPPN0FKGGwtd2j1CmHYUHLq+lZXxBEH4MiEuiCanxvdzF7Hbff
-	5fk4llMHowCrCe82NmbGrJvGW7gRmRNGKsraLaBA1WbWd+C4IyD4B+xOQjb0hdcEznI9
-	6virEQn2ucmvsIg7mbnH3OZn4UM7iE2LhBineJ8PU7/aYnPCZ0MkwbGPQjGzVbfz1gWE
-	fzZQRWjhX9hS7lufNr43qLqbRQ+ra8pOEVDw4nUebu9oPBsdFCeLrxvoUKsGbsfZ9yh5
-	v7MIJUc3DHw+tTLcXphC4W/g7UMlnW5ed4LVXOeZWpWShWdo6laZ6Be/+VWB5GN8zM54
-	JIrw==
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1gnpYl-0001ZR-Iq
+	for qemu-trivial@nongnu.org; Sun, 27 Jan 2019 13:53:38 -0500
+Received: by mail-pl1-x643.google.com with SMTP id gn14so6736663plb.10
+	for <qemu-trivial@nongnu.org>; Sun, 27 Jan 2019 10:53:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=Go/7rC3agzjwHxfJlBpg2paIhU9FDdqtBuES5TAd3BY=;
+	b=VcdLz8VpOsQ442Vhi9crq7Q6KGo8ejnSQMwEwxFxb1ocDP47hsPUU/dFVzIYiX0c8d
+	rt2hKqhK2++ehAz9b0BrtBOT3kdFNPIEcy18MxClDTi4VVhRDWivBQPtJSt9lZEKUlLt
+	3zEfbtRERLk01zVaToekriSSUvfedRP09jr9Y=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=1LkqHkWFxYZLLQ5/6p+blvTeA+TrR597emoIx0TQLmE=;
-	b=sZDvzIQMR2B59NsQ0dWOEnzJUAiulUCEwus+jpP7T/vM81k+zjLeznTiR5S63X3iBU
-	5wcZG7+T42jEp05BatM+Je5QLL9ctFOHxEd0Cd6uS7B8ywIZEkelMwByOpwV72wMu2K3
-	LuHR3HHE1j2D6jjoitol4FVfKAqMgwD8naxfsxSqrvTbgSvzbf4pZKmmORys1yLmLqP8
-	XzIoMbhvugrL3tjdQ8IiKea9OnxmDJgPJ8KKJS+6RzF/IjFIQQ34Jk4snOye0Cu/h74S
-	p9T/zdz20SWYvMlhXn+tv4HJv4vuRVbkoLhV1bQT0/m5yqe5YiNCBZJXg9UF54AswXLN
-	Cqrw==
-X-Gm-Message-State: AJcUukfouUMtoghHg2YEwQSwBR//x9YpnerGsmcIMajT9pM6XKZ2aHTm
-	7k6GXFfbZ8v1nMHiLRvy5P4lfUpQZwg=
-X-Google-Smtp-Source: ALg8bN6yempHrN9qsPiP47NyVgrpR1sJnbI8leu3sre8IpEZRto0fzCLyTob6T4aUnm5KfJLqka3NQ==
-X-Received: by 2002:a62:7086:: with SMTP id l128mr17705200pfc.68.1548584327969;
-	Sun, 27 Jan 2019 02:18:47 -0800 (PST)
-Received: from localhost.localdomain ([27.7.213.28])
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=Go/7rC3agzjwHxfJlBpg2paIhU9FDdqtBuES5TAd3BY=;
+	b=Hl7g50LMwgHEVuHHB4aSIwm79CskYLg8f659lAm5x3DwAAgHg2re6tieTXCuYOArtQ
+	9gLm6jF0qoB4Qs9oKb48imyLz2uCbZueG5XC+tltIx/khNhJIyVy/z7go4cmaIOW9tbh
+	9MVcM4y881qe90I/tbQhhr2df0MDNLpRPFbQJxFvl67Zbx1yjEgB6Ayto8ZLpDCjvCMA
+	CHNm/5EezhxLUgzArDhNHZ/BkXMnoL8dFAQlXPErAYVC7BaiN2xgWxPHjUZknx5GZRP6
+	ojThvC8UjCzIbdgw24wXsw2nnY2Zq+iDw721tdgKXCSkoBNCjPl5w8WFAPa5T8jBiyJg
+	Uq+Q==
+X-Gm-Message-State: AJcUukcTDND0E8puCwtPyt8poaKSkWfXE8kV2aOqNvHzY5JmpdjjGoTs
+	uApV63Dvv9/TWfmKIsgV+AW/8nwupH8=
+X-Google-Smtp-Source: ALg8bN61yN22wNGV3lEy7rbg+Nez2WhThhEZJqIZq/FUeAyB8QKSIik2DVmiAaMiRvG6YsDNdqjELQ==
+X-Received: by 2002:a17:902:ab92:: with SMTP id
+	f18mr18280114plr.221.1548615201351; 
+	Sun, 27 Jan 2019 10:53:21 -0800 (PST)
+Received: from cloudburst.twiddle.net
+	(50-233-235-3-static.hfc.comcastbusiness.net. [50.233.235.3])
 	by smtp.gmail.com with ESMTPSA id
-	d6sm42723458pgc.89.2019.01.27.02.18.45
+	l11sm39401942pff.65.2019.01.27.10.53.19
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 27 Jan 2019 02:18:47 -0800 (PST)
-From: kumar sourav <sourav.jb1988@gmail.com>
-To: qemu-trivial@nongnu.org
-Cc: balrogg@gmail.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Date: Sun, 27 Jan 2019 15:48:36 +0530
-Message-Id: <20190127101836.15451-1-sourav.jb1988@gmail.com>
-X-Mailer: git-send-email 2.17.1
+	Sun, 27 Jan 2019 10:53:20 -0800 (PST)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <1548252536-6242-1-git-send-email-thuth@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <0d8758ef-cb62-61cb-db8e-ed4f75d94063@linaro.org>
+Date: Sun, 27 Jan 2019 10:53:18 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
+MIME-Version: 1.0
+In-Reply-To: <1548252536-6242-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::544
-Subject: [Qemu-trivial] [PATCH] hw/input/lm832x: set device category of
- lm832x
+X-Received-From: 2607:f8b0:4864:20::643
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/4] Clarify the LGPL
+ version in some files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,29 +76,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 27 Jan 2019 10:18:51 -0000
+X-List-Received-Date: Sun, 27 Jan 2019 18:53:43 -0000
 
-Sets the category of lm832x as DEVICE_CATEGORY_INPUT
-Devices should be assigned to one of DEVICE_CATEGORY_XXXX
+On 1/23/19 6:08 AM, Thomas Huth wrote:
+> Thomas Huth (4):
+>   COPYING.LIB: Synchronize the LGPL 2.1 with the version from gnu.org
+>   target/openrisc: Fix LGPL version number
+>   target/tricore: Fix LGPL version number
+>   tcg: Fix LGPL version number
 
-Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
----
- hw/input/lm832x.c | 1 +
- 1 file changed, 1 insertion(+)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c
-index cffbf586d4..07ae5e0aee 100644
---- a/hw/input/lm832x.c
-+++ b/hw/input/lm832x.c
-@@ -509,6 +509,7 @@ static void lm8323_class_init(ObjectClass *klass, void *data)
-     k->recv = lm_i2c_rx;
-     k->send = lm_i2c_tx;
-     dc->vmsd = &vmstate_lm_kbd;
-+    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
- }
- 
- static const TypeInfo lm8323_info = {
--- 
-2.17.1
+
+r~
 
 
