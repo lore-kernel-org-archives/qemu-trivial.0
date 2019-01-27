@@ -1,70 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gnpYu-0004Ux-Gt
-	for mharc-qemu-trivial@gnu.org; Sun, 27 Jan 2019 13:53:44 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36468)
+	id 1gnsEf-0001on-NM
+	for mharc-qemu-trivial@gnu.org; Sun, 27 Jan 2019 16:45:01 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35445)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gnpYs-0004Sj-49
-	for qemu-trivial@nongnu.org; Sun, 27 Jan 2019 13:53:42 -0500
+	(envelope-from <dgibson@ozlabs.org>) id 1gnsEe-0001nL-0B
+	for qemu-trivial@nongnu.org; Sun, 27 Jan 2019 16:45:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gnpYp-0001ki-CL
-	for qemu-trivial@nongnu.org; Sun, 27 Jan 2019 13:53:41 -0500
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:43084)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1gnpYl-0001ZR-Iq
-	for qemu-trivial@nongnu.org; Sun, 27 Jan 2019 13:53:38 -0500
-Received: by mail-pl1-x643.google.com with SMTP id gn14so6736663plb.10
-	for <qemu-trivial@nongnu.org>; Sun, 27 Jan 2019 10:53:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=Go/7rC3agzjwHxfJlBpg2paIhU9FDdqtBuES5TAd3BY=;
-	b=VcdLz8VpOsQ442Vhi9crq7Q6KGo8ejnSQMwEwxFxb1ocDP47hsPUU/dFVzIYiX0c8d
-	rt2hKqhK2++ehAz9b0BrtBOT3kdFNPIEcy18MxClDTi4VVhRDWivBQPtJSt9lZEKUlLt
-	3zEfbtRERLk01zVaToekriSSUvfedRP09jr9Y=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=Go/7rC3agzjwHxfJlBpg2paIhU9FDdqtBuES5TAd3BY=;
-	b=Hl7g50LMwgHEVuHHB4aSIwm79CskYLg8f659lAm5x3DwAAgHg2re6tieTXCuYOArtQ
-	9gLm6jF0qoB4Qs9oKb48imyLz2uCbZueG5XC+tltIx/khNhJIyVy/z7go4cmaIOW9tbh
-	9MVcM4y881qe90I/tbQhhr2df0MDNLpRPFbQJxFvl67Zbx1yjEgB6Ayto8ZLpDCjvCMA
-	CHNm/5EezhxLUgzArDhNHZ/BkXMnoL8dFAQlXPErAYVC7BaiN2xgWxPHjUZknx5GZRP6
-	ojThvC8UjCzIbdgw24wXsw2nnY2Zq+iDw721tdgKXCSkoBNCjPl5w8WFAPa5T8jBiyJg
-	Uq+Q==
-X-Gm-Message-State: AJcUukcTDND0E8puCwtPyt8poaKSkWfXE8kV2aOqNvHzY5JmpdjjGoTs
-	uApV63Dvv9/TWfmKIsgV+AW/8nwupH8=
-X-Google-Smtp-Source: ALg8bN61yN22wNGV3lEy7rbg+Nez2WhThhEZJqIZq/FUeAyB8QKSIik2DVmiAaMiRvG6YsDNdqjELQ==
-X-Received: by 2002:a17:902:ab92:: with SMTP id
-	f18mr18280114plr.221.1548615201351; 
-	Sun, 27 Jan 2019 10:53:21 -0800 (PST)
-Received: from cloudburst.twiddle.net
-	(50-233-235-3-static.hfc.comcastbusiness.net. [50.233.235.3])
-	by smtp.gmail.com with ESMTPSA id
-	l11sm39401942pff.65.2019.01.27.10.53.19
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 27 Jan 2019 10:53:20 -0800 (PST)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <1548252536-6242-1-git-send-email-thuth@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <0d8758ef-cb62-61cb-db8e-ed4f75d94063@linaro.org>
-Date: Sun, 27 Jan 2019 10:53:18 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <dgibson@ozlabs.org>) id 1gnsEb-0004vh-EU
+	for qemu-trivial@nongnu.org; Sun, 27 Jan 2019 16:44:59 -0500
+Received: from ozlabs.org ([203.11.71.1]:56801)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1gnsEV-0004oG-Qi; Sun, 27 Jan 2019 16:44:52 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 43nmWG1wljz9sBQ; Mon, 28 Jan 2019 08:44:42 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1548625482;
+	bh=cE5fR2pSQzuXfx5LrygZh0wJGsiaAnGg8Ok9bESNbYs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=orvR3u+zpItzw10GWpbjodW9e+scObyMIBeMZAnOfF3GMd8PxqQEvqWRW6LSnDZRY
+	FqKv3AaT9smIrJvAbw/sjxJibm6bknlMxTkDFXA2UNgfupBbS25De4DHYpZ3LlbSse
+	wKd5OWASUYv6OfZY1TJzsObz3eDImou5OfSZEFmU=
+Date: Mon, 28 Jan 2019 00:27:32 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: kumar sourav <sourav.jb1988@gmail.com>
+Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org
+Message-ID: <20190127132732.GB1870@umbus.fritz.box>
+References: <20190127100215.12584-1-sourav.jb1988@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <1548252536-6242-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::643
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/4] Clarify the LGPL
- version in some files
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="RASg3xLB4tUQ4RcS"
+Content-Disposition: inline
+In-Reply-To: <20190127100215.12584-1-sourav.jb1988@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 203.11.71.1
+Subject: Re: [Qemu-trivial] [PATCH] hw/input/adb.c: set device category of
+ adb
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,18 +48,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 27 Jan 2019 18:53:43 -0000
-
-On 1/23/19 6:08 AM, Thomas Huth wrote:
-> Thomas Huth (4):
->   COPYING.LIB: Synchronize the LGPL 2.1 with the version from gnu.org
->   target/openrisc: Fix LGPL version number
->   target/tricore: Fix LGPL version number
->   tcg: Fix LGPL version number
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+X-List-Received-Date: Sun, 27 Jan 2019 21:45:00 -0000
 
 
-r~
+--RASg3xLB4tUQ4RcS
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Sun, Jan 27, 2019 at 03:32:15PM +0530, kumar sourav wrote:
+> Sets the category of adb as DEVICE_CATEGORY_INPUT
+> Devices should be assigned to one of DEVICE_CATEGORY_XXXX
+>=20
+> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
+
+Applied, thanks.
+
+> ---
+>  hw/input/adb.c | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/hw/input/adb.c b/hw/input/adb.c
+> index bbb40aeef1..6ca7c5641c 100644
+> --- a/hw/input/adb.c
+> +++ b/hw/input/adb.c
+> @@ -126,6 +126,7 @@ static void adb_device_class_init(ObjectClass *oc, vo=
+id *data)
+>      dc->realize =3D adb_device_realizefn;
+>      dc->props =3D adb_device_properties;
+>      dc->bus_type =3D TYPE_ADB_BUS;
+> +    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
+>  }
+> =20
+>  static const TypeInfo adb_device_type_info =3D {
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--RASg3xLB4tUQ4RcS
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlxNscEACgkQbDjKyiDZ
+s5IgJRAA0ILqCo/JtJWtOJpAmLZL8JrBcBBj18I14svTvWzco6DME4opCDs1mAK2
+DELgQI5/vpwfZK5zCHLXNUE6R6nK7DzmDXwOsFNROr0k+XTZ3rmx4OfYaFVID15s
+bWwk36Gufcg7Eu0GFNAa+0XuIuQZunsow4Ru7hj+GV89cY32xuBWxpsAaZ2JR0Cv
+GCtrCbYk+ssAkMe4tw20HtynepQJYNc0CwhdgEhUCoUPVXfhPiG5qUOKpPtSfxl1
+jOyOVbpkQ2amOsg/ordtylkCgP/sIxEicnzjyLFbyY+miKVcbbeCiOgRRppul8jU
+H572Vr8jFy85YU4Sy5OjN0pLm4LklxDdZiLHqyYj4eB+tuGS9kvw/QwHYRtoVHr3
+kZCzSh6X84Q348CSiNoF6Ia+tXDif2oEuY0cwM+vaVgkybG//XMaISHNt7tW989Y
+VopKK0tjGM1un44+C8m3FYFND4b+cbjZ7bh2XdsbFP7jubCBPk0ujLIGpKUZNpoO
+llrUpHk6PqNBDAaDj2zVhi5jjHxvhxHCmkBGf6CKYT+e1ekEI2TmRvh4hJOKP32E
+5mmiF8hUzhFSoUkNe4afVFFMLtN1XGqv7Z5lGDBjhWaDw8CAk4fTdpyx9qBlDbel
+xsO+2SxSW4NxRhb4hhVKja0aXt8yKDHTswdk/sULIpk549S2hP4=
+=+MDI
+-----END PGP SIGNATURE-----
+
+--RASg3xLB4tUQ4RcS--
 
