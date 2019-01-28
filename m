@@ -1,32 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1go23c-0007wx-Ni
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 03:14:16 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45751)
+	id 1go2QP-0005SW-RL
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 03:37:51 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52516)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1go23a-0007wo-SM
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 03:14:15 -0500
+	(envelope-from <thuth@redhat.com>) id 1go2QN-0005R5-Fy
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 03:37:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1go23a-0004xt-6V
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 03:14:14 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:3470)
+	(envelope-from <thuth@redhat.com>) id 1go2QM-0003w1-Q1
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 03:37:47 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:37930)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>) id 1go23Z-0004wK-V8
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 03:14:14 -0500
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1go2QE-0003jW-LG; Mon, 28 Jan 2019 03:37:41 -0500
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
 	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 3014358E32;
-	Mon, 28 Jan 2019 08:14:11 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9A2623DDB8;
+	Mon, 28 Jan 2019 08:37:32 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-122.ams2.redhat.com [10.36.116.122])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EED5319751;
-	Mon, 28 Jan 2019 08:14:04 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	kumar sourav <sourav.jb1988@gmail.com>, qemu-trivial@nongnu.org
-Cc: pbonzini@redhat.com, qemu-devel@nongnu.org, mst@redhat.com
-References: <20190125151440.13794-1-sourav.jb1988@gmail.com>
-	<f9288ca3-1f07-3409-ac16-ce4dc958940e@redhat.com>
-	<cc09d469-56bc-9438-acc0-0d4ccf67e6a5@redhat.com>
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 09B1118539;
+	Mon, 28 Jan 2019 08:37:29 +0000 (UTC)
+To: kumar sourav <sourav.jb1988@gmail.com>, qemu-trivial@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20190127101836.15451-1-sourav.jb1988@gmail.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -72,23 +69,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <c3d19d18-3269-ff31-affb-68d38de7cc3e@redhat.com>
-Date: Mon, 28 Jan 2019 09:14:03 +0100
+Message-ID: <33a499ed-6f6a-ccd2-a1f8-48646b6be6c9@redhat.com>
+Date: Mon, 28 Jan 2019 09:37:29 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <cc09d469-56bc-9438-acc0-0d4ccf67e6a5@redhat.com>
+In-Reply-To: <20190127101836.15451-1-sourav.jb1988@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Mon, 28 Jan 2019 08:14:11 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Mon, 28 Jan 2019 08:37:32 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw: input: set category of
- the i8042 device
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/input/lm832x: set device
+ category of lm832x
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,38 +97,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Jan 2019 08:14:15 -0000
+X-List-Received-Date: Mon, 28 Jan 2019 08:37:48 -0000
 
-On 2019-01-25 17:44, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 1/25/19 4:24 PM, Thomas Huth wrote:
->> On 2019-01-25 16:14, kumar sourav wrote:
->>> Sets the category of i8042 device as DEVICE_CATEGORY_INPUT
->>> Devices should be assigned to one of DEVICE_CATEGORY_XXXX.
->>>
->>> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
->>> ---
->>>  hw/input/pckbd.c | 1 +
->=20
-> It seems we have other potential cases:
->=20
-> $ git grep -L 'set_bit(DEVICE_CATEGORY_INPUT' hw/input/*c
-> hw/input/adb.c
-> hw/input/hid.c
-> hw/input/lm832x.c
-> hw/input/milkymist-softusb.c
-> hw/input/pckbd.c
-> hw/input/pl050.c
-> hw/input/ps2.c
-> hw/input/pxa2xx_keypad.c
-> hw/input/stellaris_input.c
-> hw/input/tsc2005.c
-> hw/input/tsc210x.c
-> hw/input/virtio-input-hid.c
-> hw/input/virtio-input-host.c
+ Hi,
 
-Note that some of these are not even "qomified" yet (e.g. tsc2005),
-others are not creatable by the user (pl050) as far as I can see, so it
-does not make much sense to set a category for these devices yet.
+On 2019-01-27 11:18, kumar sourav wrote:
+> Sets the category of lm832x as DEVICE_CATEGORY_INPUT
+> Devices should be assigned to one of DEVICE_CATEGORY_XXXX
+>=20
+> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
+> ---
+>  hw/input/lm832x.c | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c
+> index cffbf586d4..07ae5e0aee 100644
+> --- a/hw/input/lm832x.c
+> +++ b/hw/input/lm832x.c
+> @@ -509,6 +509,7 @@ static void lm8323_class_init(ObjectClass *klass, v=
+oid *data)
+>      k->recv =3D lm_i2c_rx;
+>      k->send =3D lm_i2c_tx;
+>      dc->vmsd =3D &vmstate_lm_kbd;
+> +    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
+>  }
+
+This device already has DEVICE_CATEGORY_MISC set since it is derived
+from TYPE_I2C_SLAVE. If you now set another category bit here, the
+device shows up twice in the output of "-device help". That's not so nice=
+.
+
+I see multiple options here:
+
+1) Drop this patch since the device already has a category
+
+2) Make sure to clear_bit() the MISC category here again
+
+3) Remove the set_bit(DEVICE_CATEGORY_MISC, k->categories) in
+   hw/i2c/core.c - it does not make that much sense to set the
+   MISC category for an abstract parent class.
+
+4) Introduce a new DEVICE_CATEGORY_I2C which could be used
+   instead of the DEVICE_CATEGORY_MISC in hw/i2c/core.c
+
+One of the last two options sound most appealing to me.
 
  Thomas
 
