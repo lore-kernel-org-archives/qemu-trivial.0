@@ -1,61 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1go793-0004uE-Uj
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 08:40:13 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59527)
+	id 1go7Kg-0007HE-SQ
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 08:52:14 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33357)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1go792-0004tn-Sc
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 08:40:13 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1go7Ke-0007GR-T1
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 08:52:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1go791-0007hg-0S
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 08:40:12 -0500
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:41172)
+	(envelope-from <peter.maydell@linaro.org>) id 1go7Kd-0000eF-O2
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 08:52:12 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:36107)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1go790-0007bU-Pp
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 08:40:10 -0500
-Received: by mail-wr1-f68.google.com with SMTP id x10so18058639wrs.8
-	for <qemu-trivial@nongnu.org>; Mon, 28 Jan 2019 05:40:10 -0800 (PST)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1go7Kd-0000bz-Gw
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 08:52:11 -0500
+Received: by mail-ot1-x341.google.com with SMTP id k98so14656220otk.3
+	for <qemu-trivial@nongnu.org>; Mon, 28 Jan 2019 05:52:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=z6p53zyu1LL0Ngvj9FlXqaBzzHNHryGLrOMB5NJbzC8=;
+	b=U91ftXja24w7Cc0b9IfxmvmdJSF39oUSj0FDqM1uwnHc6C9v8uErzcCtJPI6UpivcG
+	SftzNKWcsx0pkM98GOIxnvBg8dhtLu2I4gP+//flEXempX41ZCcfGcrn5vTNOnO0KHwv
+	We5EgVaw3AtrlNeJyymSV+0AxjLeY0pTEnQSs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=MrpcMQ4hG6IXYFPbgwa1RHmhth5A0sxePNwj+fkLnkk=;
-	b=m2iw0rOsIiUKPSMIXfZYrGQko9D/XR+WIAmc5OgQjnX9nA7htKyrVrQtlFDt2ZSPsq
-	dyybwdVxtGzUsASIkf1nf/88PuUhdcxXh7qB19KnBI4aB+Tkho2TEOS09BcHznMbfrJi
-	UkwrKvwu96GASi6xbG5Cb2DKAn4F5OKaPeosJpMh3SCooWTH/tTWywJoi6fKkiZgH+Yt
-	W5AEgoJHLDIn9VK1toZhkLVFI9z2flqs48hOcD70Vt2r/mNb7jIIptRokWeUdITkT8Lg
-	5yBq9TwkoHuOWXD5NqIy0qb16q2KB4RnWuN4fl37IYwUsmoKJhq+kbfFve5cWbNlnO4Y
-	FQEg==
-X-Gm-Message-State: AJcUukcrUIw+QNsuuLF65/KkYxJuiOJtHshbBFP0on4GB2xpw0Lb69ar
-	VYkrdHcXjpqW/GSDfkpTr6qKWpCJbXo=
-X-Google-Smtp-Source: ALg8bN5P3vWLAST1hi+TvmRwLLIki5x3KUH/MOjeZOj4nOk0v2PJiHuimST6vGyjWODz84rL70FUkw==
-X-Received: by 2002:adf:ec50:: with SMTP id w16mr22544775wrn.171.1548682806940;
-	Mon, 28 Jan 2019 05:40:06 -0800 (PST)
-Received: from [192.168.1.40] (110.red-83-51-161.dynamicip.rima-tde.net.
-	[83.51.161.110]) by smtp.gmail.com with ESMTPSA id
-	124sm76975789wmh.22.2019.01.28.05.40.06
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Mon, 28 Jan 2019 05:40:06 -0800 (PST)
-To: Paul Durrant <paul.durrant@citrix.com>, qemu-devel@nongnu.org,
-	qemu-block@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20190122145132.12571-1-paul.durrant@citrix.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <57cd3429-41a3-48c5-4d06-5d203cf70f97@redhat.com>
-Date: Mon, 28 Jan 2019 14:40:05 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=z6p53zyu1LL0Ngvj9FlXqaBzzHNHryGLrOMB5NJbzC8=;
+	b=VGBDZkhmykZUxRlj6yzF4h6pMz036zMHrZajfdCgRDDTgexFCq0FImDhYs6G8obOrZ
+	cwpFVMZFEzM2ZhixNqRzeqloxcV1sOtH9i/25y/L1w04wclJ1WCuYuppffCOy9k55tLm
+	U+hdXkJtgtM1rCRhV1hZ7UeJHFD7Q6ClO6+G6aswue8ayUxS2i4xMVx4x3KIvWTWxErR
+	9KmWaij43isZS8jz96HCSovPIWc06eOB4G/hKvThKXqjVCOHv97JvaabPEvOkaEZBjkN
+	WeY7rdEt5ZBMssz1GpBsb8sTSyQbqatjDSUNItqXsgE1Qt0Ep2EFjnb+pKffZDHrCUaA
+	ygKw==
+X-Gm-Message-State: AJcUuke96Mf3M0v7X19Okfhh0CQZNDU1rLxA1GMio4bXDkYEWKS40/1l
+	1vtYQsI1DumgXK3+RARVh6AqYc2Ktu/SmotshsmWfA==
+X-Google-Smtp-Source: ALg8bN6ZwSPLf+gJEKVE3sLbjLpK29CpclT1JNBktVJ7HCRfYiOCKna6WqUtQtbsvbynG/P9wmpYX3GJyVeSmNMnPAo=
+X-Received: by 2002:a9d:5617:: with SMTP id e23mr15245582oti.151.1548683530327;
+	Mon, 28 Jan 2019 05:52:10 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20190122145132.12571-1-paul.durrant@citrix.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.68
+References: <20190122145132.12571-1-paul.durrant@citrix.com>
+	<57cd3429-41a3-48c5-4d06-5d203cf70f97@redhat.com>
+In-Reply-To: <57cd3429-41a3-48c5-4d06-5d203cf70f97@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 28 Jan 2019 13:51:57 +0000
+Message-ID: <CAFEAcA9Ne8=buW5FGr8AbuTdovrdAdFcZJG01N_zkQGrXJ85FA@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Paul Durrant <paul.durrant@citrix.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, 
+	Qemu-block <qemu-block@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>, Max Reitz <mreitz@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::341
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/block: clean up stake
  xen_disk trace entries
 X-BeenThere: qemu-trivial@nongnu.org
@@ -69,44 +68,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Jan 2019 13:40:13 -0000
+X-List-Received-Date: Mon, 28 Jan 2019 13:52:13 -0000
 
-Cc'ing QEMU Trivial.
+On Mon, 28 Jan 2019 at 13:41, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> Cc'ing QEMU Trivial.
+>
+> On 1/22/19 3:51 PM, Paul Durrant wrote:
+> > This should have been removed then xen_disk.c was removed but I missed =
+them.
+>
+> ... when xen_disk.c was removed (19f87870baa) ...
 
-On 1/22/19 3:51 PM, Paul Durrant wrote:
-> This should have been removed then xen_disk.c was removed but I missed them.
+also s/stake/stale/ in the subject line I guess ?
 
-... when xen_disk.c was removed (19f87870baa) ...
-
-> 
-> Signed-off-by: Paul Durrant <paul.durrant@citrix.com>
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
-> ---
-> Cc: Kevin Wolf <kwolf@redhat.com>
-> Cc: Max Reitz <mreitz@redhat.com>
-> ---
->  hw/block/trace-events | 7 -------
->  1 file changed, 7 deletions(-)
-> 
-> diff --git a/hw/block/trace-events b/hw/block/trace-events
-> index 55e5a5500c..d0851953c5 100644
-> --- a/hw/block/trace-events
-> +++ b/hw/block/trace-events
-> @@ -121,13 +121,6 @@ nvme_ub_db_wr_invalid_cqhead(uint32_t qid, uint16_t new_head) "completion queue
->  nvme_ub_db_wr_invalid_sq(uint32_t qid) "submission queue doorbell write for nonexistent queue, sqid=%"PRIu32", ignoring"
->  nvme_ub_db_wr_invalid_sqtail(uint32_t qid, uint16_t new_tail) "submission queue doorbell write value beyond queue size, sqid=%"PRIu32", new_head=%"PRIu16", ignoring"
->  
-> -# hw/block/xen_disk.c
-> -xen_disk_alloc(char *name) "%s"
-> -xen_disk_init(char *name) "%s"
-> -xen_disk_connect(char *name) "%s"
-> -xen_disk_disconnect(char *name) "%s"
-> -xen_disk_free(char *name) "%s"
-> -
->  # hw/block/xen-block.c
->  xen_block_realize(const char *type, uint32_t disk, uint32_t partition) "%s d%up%u"
->  xen_block_connect(const char *type, uint32_t disk, uint32_t partition) "%s d%up%u"
-> 
+thanks
+-- PMM
 
