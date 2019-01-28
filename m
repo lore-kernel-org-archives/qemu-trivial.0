@@ -1,62 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1go7Kg-0007HE-SQ
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 08:52:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33357)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1go7Ke-0007GR-T1
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 08:52:13 -0500
+	id 1goEDS-00035r-En
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 16:13:14 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58596)
+	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <n54@gmx.com>)
+	id 1goEDP-0002oV-A7
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 16:13:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1go7Kd-0000eF-O2
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 08:52:12 -0500
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:36107)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1go7Kd-0000bz-Gw
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 08:52:11 -0500
-Received: by mail-ot1-x341.google.com with SMTP id k98so14656220otk.3
-	for <qemu-trivial@nongnu.org>; Mon, 28 Jan 2019 05:52:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=z6p53zyu1LL0Ngvj9FlXqaBzzHNHryGLrOMB5NJbzC8=;
-	b=U91ftXja24w7Cc0b9IfxmvmdJSF39oUSj0FDqM1uwnHc6C9v8uErzcCtJPI6UpivcG
-	SftzNKWcsx0pkM98GOIxnvBg8dhtLu2I4gP+//flEXempX41ZCcfGcrn5vTNOnO0KHwv
-	We5EgVaw3AtrlNeJyymSV+0AxjLeY0pTEnQSs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=z6p53zyu1LL0Ngvj9FlXqaBzzHNHryGLrOMB5NJbzC8=;
-	b=VGBDZkhmykZUxRlj6yzF4h6pMz036zMHrZajfdCgRDDTgexFCq0FImDhYs6G8obOrZ
-	cwpFVMZFEzM2ZhixNqRzeqloxcV1sOtH9i/25y/L1w04wclJ1WCuYuppffCOy9k55tLm
-	U+hdXkJtgtM1rCRhV1hZ7UeJHFD7Q6ClO6+G6aswue8ayUxS2i4xMVx4x3KIvWTWxErR
-	9KmWaij43isZS8jz96HCSovPIWc06eOB4G/hKvThKXqjVCOHv97JvaabPEvOkaEZBjkN
-	WeY7rdEt5ZBMssz1GpBsb8sTSyQbqatjDSUNItqXsgE1Qt0Ep2EFjnb+pKffZDHrCUaA
-	ygKw==
-X-Gm-Message-State: AJcUuke96Mf3M0v7X19Okfhh0CQZNDU1rLxA1GMio4bXDkYEWKS40/1l
-	1vtYQsI1DumgXK3+RARVh6AqYc2Ktu/SmotshsmWfA==
-X-Google-Smtp-Source: ALg8bN6ZwSPLf+gJEKVE3sLbjLpK29CpclT1JNBktVJ7HCRfYiOCKna6WqUtQtbsvbynG/P9wmpYX3GJyVeSmNMnPAo=
-X-Received: by 2002:a9d:5617:: with SMTP id e23mr15245582oti.151.1548683530327;
-	Mon, 28 Jan 2019 05:52:10 -0800 (PST)
+	(envelope-from <n54@gmx.com>) id 1goE39-0005Ug-QS
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 16:02:38 -0500
+Received: from mout.gmx.net ([212.227.17.21]:57321)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <n54@gmx.com>) id 1goE35-0005PD-EE
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 16:02:32 -0500
+Received: from localhost.localdomain ([89.71.135.231]) by mail.gmx.com
+	(mrgmx102 [212.227.17.174]) with ESMTPSA (Nemesis) id
+	0MLR30-1gng521kt0-000YWR; Mon, 28 Jan 2019 22:02:18 +0100
+From: Kamil Rytarowski <n54@gmx.com>
+To: qemu-trivial@nongnu.org
+Cc: alexandro@phi.nz,
+	Kamil Rytarowski <n54@gmx.com>
+Date: Mon, 28 Jan 2019 22:01:08 +0100
+Message-Id: <20190128210108.21318-1-n54@gmx.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20190122145132.12571-1-paul.durrant@citrix.com>
-	<57cd3429-41a3-48c5-4d06-5d203cf70f97@redhat.com>
-In-Reply-To: <57cd3429-41a3-48c5-4d06-5d203cf70f97@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Jan 2019 13:51:57 +0000
-Message-ID: <CAFEAcA9Ne8=buW5FGr8AbuTdovrdAdFcZJG01N_zkQGrXJ85FA@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: Paul Durrant <paul.durrant@citrix.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, 
-	Qemu-block <qemu-block@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, Max Reitz <mreitz@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::341
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/block: clean up stake
- xen_disk trace entries
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:HzJ42l6kgmevxCBA4uceo88h2f/G0BnUyqqHovUiFKk77qAMTht
+	xJkSKR5XyLicLg7N/GvfVqh2X51+8PreU1eui10OAHQgngLRthsDeGx7VNtzGQ66OZZTpVg
+	emEaALKlhte2iGhVilLoOuqolctWWrce8Y8KZo44kktWJ/e4RItzy7w0L6LhsLiHxXS31ME
+	GgLsZUlHts05OYpAVHX0A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:WiUWOCTYeK0=:b9dJ19iXLXGIgqKo+lGwjH
+	pu46xfHPZ4yj9rYy1jpzj9dP4aIcdoWPvR5GkPHzoC/XQnuJUfl8at15nKBu+MCSz7ch4we5Z
+	1MxvCTbMz/yPimJJHkgvJx1L0pNX3PY0s4xEdywNpU+hMPB0kuW1oSwBbedzzYQ1P48y5278U
+	BYKAzJDmbnHxoldTATGWk5p92PNzO2NSCpSzqea5YBNaV94DhggraBWEFO4LQhKNZ1aSGEp5a
+	yCfV5OVvU7j89/QPVQZxaEg0hu38fo7WRtnf8g2cfq2MwvQSO9eVCI83ogsWm2raw+fEJqqx7
+	tWcUiXanRuhCN6oPaNWUy1oS0JUbMR8ulJ5MU9IL9UlQRiolN7cSbn5sfjbcJwBoOSLErnW/F
+	lW2UQMM/Z+GI7IIF9agvzexoYXny75m/D2y6Nk10aa14JboyTbE0QksDqYBYzcAzoC/30zH4Z
+	2bibKCdPh+fYKJ5C3CNt7feKJqWr7KT8/bNaRLCliDVL9KyqWyC/lx4ocQ6oCiMaVSICjGNI2
+	n76ZYtSJfIg24+lRt09tq+/I9PCW4eH9hoOcHKtMTaVgPXB4F9y5//a36PpvlSLMKhiKuR38F
+	LGAj7TleJ/k6OKmZVdEam4Z2W+ulTZQi+CwsDfsc3andbxLehEUyR4mWJQwkJTxPh4DJa5+XI
+	zILE54W4xbzmzaI+c5aXkOiHzKvYeb8tAdLKs4sP0Z3/v1esq5hxwzC4KGupbho82Ul1U419D
+	IqCQkyQ7Yu4mx6+rdW1f5QwXyHmgzJoMJex5QNh4hcShIwKKDfvV4M7CoBO9xaHpfkyOpg9XR
+	MUXtEi6joU72di4ARS8Ekw9ynmYb9TAqFYFGizGMqNL6C6pV3oHe5Df80i5oH1yzGxT6qXmQ2
+	bZpCQn+MT42aHfWwaudp4qrXLfNDzsmFlqUYH07OM=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.227.17.21
+Subject: [Qemu-trivial] [PATCH] configure: Add HAX support in NetBSD
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,21 +56,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Jan 2019 13:52:13 -0000
+X-List-Received-Date: Mon, 28 Jan 2019 21:13:12 -0000
 
-On Mon, 28 Jan 2019 at 13:41, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
->
-> Cc'ing QEMU Trivial.
->
-> On 1/22/19 3:51 PM, Paul Durrant wrote:
-> > This should have been removed then xen_disk.c was removed but I missed =
-them.
->
-> ... when xen_disk.c was removed (19f87870baa) ...
+The NetBSD support in Intel HAXM has beem merged upstream and is functional.
 
-also s/stake/stale/ in the subject line I guess ?
+Signed-off-by: Kamil Rytarowski <n54@gmx.com>
+---
+ configure | 1 +
+ 1 file changed, 1 insertion(+)
 
-thanks
--- PMM
+diff --git a/configure b/configure
+index b18281c61f..89b889072d 100755
+--- a/configure
++++ b/configure
+@@ -819,6 +819,7 @@ DragonFly)
+ ;;
+ NetBSD)
+   bsd="yes"
++  hax="yes"
+   make="${MAKE-gmake}"
+   audio_drv_list="oss try-sdl"
+   audio_possible_drivers="oss sdl"
+-- 
+2.20.1
+
 
