@@ -1,45 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1go3cL-0001yo-Bt
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 04:54:13 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40795)
+	id 1go4nu-0006Sy-Vw
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 06:10:15 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:56863)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1go3cG-0001wU-JN
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 04:54:11 -0500
+	(envelope-from <philmd@redhat.com>) id 1go4ns-0006QX-Du
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 06:10:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1go3cE-0001YX-Ov
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 04:54:07 -0500
-Received: from ozlabs.org ([2401:3900:2:1::2]:60603)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1go3cA-0001Sz-Cp; Mon, 28 Jan 2019 04:54:03 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 43p4hh0vDNz9sBb; Mon, 28 Jan 2019 20:53:55 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1548669236;
-	bh=BasufMgyQkgCk3Kt22pi8GEHptrygY95fa+I8n6KeAQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CQviNEIl+gDv31B3OREXSz3zvds0YAMGXcIfsNBAX6h/fqZKTuHYkdK6G/SEY61Nj
-	LO8IH9Fis2OjckJknOXZ65KJLy50pY/ERTzElEPygtKLN8SxmUkD8gM+t2t8yKHGd1
-	hw5vrLCXAdbs3kPSVjRq/vtcOcfS2UQvrCG42dT8=
-Date: Mon, 28 Jan 2019 20:17:50 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Thomas Huth <thuth@redhat.com>
-Cc: kumar sourav <sourav.jb1988@gmail.com>, qemu-trivial@nongnu.org,
-	qemu-ppc@nongnu.org, qemu-devel@nongnu.org
-Message-ID: <20190128091750.GC1870@umbus.fritz.box>
-References: <20190127100215.12584-1-sourav.jb1988@gmail.com>
-	<758ce56b-4a03-405f-b668-f81094bec147@redhat.com>
+	(envelope-from <philmd@redhat.com>) id 1go4nr-0005he-Kj
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 06:10:12 -0500
+Received: from mail-wr1-f66.google.com ([209.85.221.66]:40569)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1go4nq-0005h8-Pr
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 06:10:10 -0500
+Received: by mail-wr1-f66.google.com with SMTP id p4so17550058wrt.7
+	for <qemu-trivial@nongnu.org>; Mon, 28 Jan 2019 03:10:10 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=l4tenfaYhnUwlU6ZJ4c8+GdhStTt3X1eRvpanqxT3hg=;
+	b=UoUUJAfHp+CILU6or1gk+k6wI8qpc+3seg1epeVESkZxgAOCxLRAtO43A2PRisTVMQ
+	yaJt81ALXGE82+SLMwrFSw8Tg+5zkhd2RGJIo2nMIvLzS2Zsmb0aLIeQFGWNzj5D1wEP
+	plo4d5WWqedS14zV0mOONqL5v33PI4bUsvmRIX5tSj0MCICh97SM+0tCHbc7QTJ1VYFD
+	6IDevQAF7/WOyV9JiU/FivZq5UaxAbWf9M17G1l4p2UxmL2A0MHPQ5vAOB0AIe7zGb24
+	tmLvpJXnf1pGdVFNe/y0JpBwgQ52elEHfcE7gyk43vBekgChXGaktyvU0wJd57Ofmznw
+	NbzQ==
+X-Gm-Message-State: AJcUukfxUpS+gQqmXz9zJuf8e5StTWEYbzxqDwPfHeLlX61z05+xC/9I
+	WOysoQF9iS67gIm6DjPfbtI4JQ==
+X-Google-Smtp-Source: ALg8bN48aM+fK44aljOlVoykt1EZ1MC9zVFXAqcmPqLrkRXXkdXl7sTGpMwS2+pIgri2CZIoGmK8yw==
+X-Received: by 2002:adf:93e2:: with SMTP id 89mr22052193wrp.129.1548673809372; 
+	Mon, 28 Jan 2019 03:10:09 -0800 (PST)
+Received: from [192.168.1.40] (110.red-83-51-161.dynamicip.rima-tde.net.
+	[83.51.161.110]) by smtp.gmail.com with ESMTPSA id
+	o8sm109679915wrx.15.2019.01.28.03.10.08
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Mon, 28 Jan 2019 03:10:08 -0800 (PST)
+To: Thomas Huth <thuth@redhat.com>, kumar sourav <sourav.jb1988@gmail.com>,
+	qemu-trivial@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20190127101836.15451-1-sourav.jb1988@gmail.com>
+	<33a499ed-6f6a-ccd2-a1f8-48646b6be6c9@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <05c9ef91-39d7-0579-b007-443748559007@redhat.com>
+Date: Mon, 28 Jan 2019 12:10:07 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="pAwQNkOnpTn9IO2O"
-Content-Disposition: inline
-In-Reply-To: <758ce56b-4a03-405f-b668-f81094bec147@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH] hw/input/adb.c: set device
- category of adb
+In-Reply-To: <33a499ed-6f6a-ccd2-a1f8-48646b6be6c9@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.221.66
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/input/lm832x: set device
+ category of lm832x
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,78 +69,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Jan 2019 09:54:12 -0000
+X-List-Received-Date: Mon, 28 Jan 2019 11:10:13 -0000
 
+Hi Thomas,
 
---pAwQNkOnpTn9IO2O
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 1/28/19 9:37 AM, Thomas Huth wrote:
+>  Hi,
+> 
+> On 2019-01-27 11:18, kumar sourav wrote:
+>> Sets the category of lm832x as DEVICE_CATEGORY_INPUT
+>> Devices should be assigned to one of DEVICE_CATEGORY_XXXX
+>>
+>> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
+>> ---
+>>  hw/input/lm832x.c | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+>> diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c
+>> index cffbf586d4..07ae5e0aee 100644
+>> --- a/hw/input/lm832x.c
+>> +++ b/hw/input/lm832x.c
+>> @@ -509,6 +509,7 @@ static void lm8323_class_init(ObjectClass *klass, void *data)
+>>      k->recv = lm_i2c_rx;
+>>      k->send = lm_i2c_tx;
+>>      dc->vmsd = &vmstate_lm_kbd;
+>> +    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
+>>  }
+> 
+> This device already has DEVICE_CATEGORY_MISC set since it is derived
+> from TYPE_I2C_SLAVE. If you now set another category bit here, the
+> device shows up twice in the output of "-device help". That's not so nice.
+> 
+> I see multiple options here:
+> 
+> 1) Drop this patch since the device already has a category
+> 
+> 2) Make sure to clear_bit() the MISC category here again
+> 
+> 3) Remove the set_bit(DEVICE_CATEGORY_MISC, k->categories) in
+>    hw/i2c/core.c - it does not make that much sense to set the
+>    MISC category for an abstract parent class.
+> 
+> 4) Introduce a new DEVICE_CATEGORY_I2C which could be used
+>    instead of the DEVICE_CATEGORY_MISC in hw/i2c/core.c
+> 
+> One of the last two options sound most appealing to me.
 
-On Mon, Jan 28, 2019 at 10:06:03AM +0100, Thomas Huth wrote:
-> On 2019-01-27 11:02, kumar sourav wrote:
-> > Sets the category of adb as DEVICE_CATEGORY_INPUT
-> > Devices should be assigned to one of DEVICE_CATEGORY_XXXX
-> >=20
-> > Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
-> > ---
-> >  hw/input/adb.c | 1 +
-> >  1 file changed, 1 insertion(+)
-> >=20
-> > diff --git a/hw/input/adb.c b/hw/input/adb.c
-> > index bbb40aeef1..6ca7c5641c 100644
-> > --- a/hw/input/adb.c
-> > +++ b/hw/input/adb.c
-> > @@ -126,6 +126,7 @@ static void adb_device_class_init(ObjectClass *oc, =
-void *data)
-> >      dc->realize =3D adb_device_realizefn;
-> >      dc->props =3D adb_device_properties;
-> >      dc->bus_type =3D TYPE_ADB_BUS;
-> > +    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
-> >  }
->=20
-> This patch does not make too much sense in its current shape:
-> TYPE_ADB_DEVICE is an abstract device and does not show up in the output
-> of "-device help", so it is not necessary for this device itself.
->=20
-> Looking at the "child" devices adb-kdb and adb-mouse, they bother
-> already set DEVICE_CATEGORY_INPUT in their own, so they are already fine.
->=20
-> Thus please do one of the following:
->=20
-> 1) Simply drop this patch.
->=20
-> 2) Keep setting the category here in the abstract parent class, but then
-> also remove the DEVICE_CATEGORY_INPUT in the adb-kdb and adb-mouse child
-> classes.
+Can we go with 0/3/4 together? 0 being this patch:
 
-Ah, good point.  Dropped from ppc-for-4.0.
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---pAwQNkOnpTn9IO2O
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlxOyLoACgkQbDjKyiDZ
-s5LhVBAAyzmDPNHjnqwqiMmxxhT8ixjZMgm87JSVBCCysFlEj9c2zY4zRAEe8Tkb
-Ex1E0XohHcP2YuP+h7bzhLnDicy/KDR66amDU5M3tsorMMyFuU7kEzukX42lO/fb
-PE1lDWZEXxEIBwusGpZJWWTeHoHKx5N4pIc5JeC5uLwYbYR8cdTUSYdaS1PFgjPQ
-YesuLsUIzoI2O0ce3ulgRAzSD4qzc/ryfL5toBZ0biZfj0Cuv5ZgiV0xPszcXuY+
-ZIrPLY4Qonrlyedga843jE2FmBxXbV0dgk08LKzMYcvA382De4NCfRDRVgXeCe/T
-j+eWjahOj9uwlbZVQbMimRVpYIZipKTolqS/UBWE8ahlbLCGcl0yI1u/Tw9CKKoz
-AJNd4nVrsG7i5Hy1wtbsLBDIVjqeH5JFVOX9GMuVTufRLWcOHyVqv4IZwhT8lXFj
-cbSKGeZyBgdP3QTYd77ADZZkisCrt8Qeo8PI/ZFYw9cE5xmHGO9d7wfcENX5M7LN
-nmJqQmXwqZIvsUqDK+u016U1M/mDOf4TrPCQHfpuLgdmZ9G3wPi1yqCb9lPOb1RN
-HfLXu+z8iPx7bnQm74wOYc/R1Ak6+SKXTNEVeK45cqptFCrMcOWYnHBk+fMqXyM+
-7jThsAJLJCwCs3wiMM1drIIN17goD+vVdiTMfa5gVkZF9klXwhw=
-=dObv
------END PGP SIGNATURE-----
-
---pAwQNkOnpTn9IO2O--
+  0) This devices inherited DEVICE_CATEGORY_I2C from his
+     abstract parent, also select the DEVICE_CATEGORY_INPUT
+     bit.
 
