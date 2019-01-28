@@ -1,45 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1go71w-00010C-J3
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 08:32:52 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:57895)
+	id 1go793-0004uE-Uj
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 08:40:13 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:59527)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1go71u-0000yd-TP
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 08:32:51 -0500
+	(envelope-from <philmd@redhat.com>) id 1go792-0004tn-Sc
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 08:40:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1go71u-0001TA-4j
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 08:32:50 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:50522)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1go71k-00018S-74; Mon, 28 Jan 2019 08:32:41 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BC9C3750DA;
-	Mon, 28 Jan 2019 13:32:37 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 193FB5D98E;
-	Mon, 28 Jan 2019 13:32:31 +0000 (UTC)
-Date: Mon, 28 Jan 2019 14:32:30 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Wei Yang <richardw.yang@linux.intel.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, laurent@vivier.eu,
-	mst@redhat.com
-Message-ID: <20190128143230.3bda74a0@redhat.com>
-In-Reply-To: <20190125060157.29935-1-richardw.yang@linux.intel.com>
-References: <20190125060157.29935-1-richardw.yang@linux.intel.com>
+	(envelope-from <philmd@redhat.com>) id 1go791-0007hg-0S
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 08:40:12 -0500
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:41172)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1go790-0007bU-Pp
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 08:40:10 -0500
+Received: by mail-wr1-f68.google.com with SMTP id x10so18058639wrs.8
+	for <qemu-trivial@nongnu.org>; Mon, 28 Jan 2019 05:40:10 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=MrpcMQ4hG6IXYFPbgwa1RHmhth5A0sxePNwj+fkLnkk=;
+	b=m2iw0rOsIiUKPSMIXfZYrGQko9D/XR+WIAmc5OgQjnX9nA7htKyrVrQtlFDt2ZSPsq
+	dyybwdVxtGzUsASIkf1nf/88PuUhdcxXh7qB19KnBI4aB+Tkho2TEOS09BcHznMbfrJi
+	UkwrKvwu96GASi6xbG5Cb2DKAn4F5OKaPeosJpMh3SCooWTH/tTWywJoi6fKkiZgH+Yt
+	W5AEgoJHLDIn9VK1toZhkLVFI9z2flqs48hOcD70Vt2r/mNb7jIIptRokWeUdITkT8Lg
+	5yBq9TwkoHuOWXD5NqIy0qb16q2KB4RnWuN4fl37IYwUsmoKJhq+kbfFve5cWbNlnO4Y
+	FQEg==
+X-Gm-Message-State: AJcUukcrUIw+QNsuuLF65/KkYxJuiOJtHshbBFP0on4GB2xpw0Lb69ar
+	VYkrdHcXjpqW/GSDfkpTr6qKWpCJbXo=
+X-Google-Smtp-Source: ALg8bN5P3vWLAST1hi+TvmRwLLIki5x3KUH/MOjeZOj4nOk0v2PJiHuimST6vGyjWODz84rL70FUkw==
+X-Received: by 2002:adf:ec50:: with SMTP id w16mr22544775wrn.171.1548682806940;
+	Mon, 28 Jan 2019 05:40:06 -0800 (PST)
+Received: from [192.168.1.40] (110.red-83-51-161.dynamicip.rima-tde.net.
+	[83.51.161.110]) by smtp.gmail.com with ESMTPSA id
+	124sm76975789wmh.22.2019.01.28.05.40.06
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Mon, 28 Jan 2019 05:40:06 -0800 (PST)
+To: Paul Durrant <paul.durrant@citrix.com>, qemu-devel@nongnu.org,
+	qemu-block@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20190122145132.12571-1-paul.durrant@citrix.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <57cd3429-41a3-48c5-4d06-5d203cf70f97@redhat.com>
+Date: Mon, 28 Jan 2019 14:40:05 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Mon, 28 Jan 2019 13:32:37 +0000 (UTC)
+In-Reply-To: <20190122145132.12571-1-paul.durrant@citrix.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/3] hw/i386/pc.c: remove
- unused function pc_acpi_init()
+	[fuzzy]
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/block: clean up stake
+ xen_disk trace entries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,79 +69,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Jan 2019 13:32:51 -0000
+X-List-Received-Date: Mon, 28 Jan 2019 13:40:13 -0000
 
-On Fri, 25 Jan 2019 14:01:55 +0800
-Wei Yang <richardw.yang@linux.intel.com> wrote:
+Cc'ing QEMU Trivial.
 
-> Function pc_acpi_init() is now used in no place.
-s/is now used in no place./in not used anymore,/
+On 1/22/19 3:51 PM, Paul Durrant wrote:
+> This should have been removed then xen_disk.c was removed but I missed them.
 
-fixup the same phrase in other patches.
+... when xen_disk.c was removed (19f87870baa) ...
 
-otherwise series looks good, so fix commit messages and resubmit series.
-
-Also when sending  multi-patch series, pls use cover letter
-(see help for git format-patch --cover-letter)
-
- 
-> Remove the definition and declaration.
 > 
-> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+> Signed-off-by: Paul Durrant <paul.durrant@citrix.com>
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
 > ---
->  hw/i386/pc.c         | 27 ---------------------------
->  include/hw/i386/pc.h |  1 -
->  2 files changed, 28 deletions(-)
+> Cc: Kevin Wolf <kwolf@redhat.com>
+> Cc: Max Reitz <mreitz@redhat.com>
+> ---
+>  hw/block/trace-events | 7 -------
+>  1 file changed, 7 deletions(-)
 > 
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 5317e08f60..734d3268fa 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -1280,33 +1280,6 @@ void pc_pci_as_mapping_init(Object *owner, MemoryRegion *system_memory,
->                                          pci_address_space, -1);
->  }
+> diff --git a/hw/block/trace-events b/hw/block/trace-events
+> index 55e5a5500c..d0851953c5 100644
+> --- a/hw/block/trace-events
+> +++ b/hw/block/trace-events
+> @@ -121,13 +121,6 @@ nvme_ub_db_wr_invalid_cqhead(uint32_t qid, uint16_t new_head) "completion queue
+>  nvme_ub_db_wr_invalid_sq(uint32_t qid) "submission queue doorbell write for nonexistent queue, sqid=%"PRIu32", ignoring"
+>  nvme_ub_db_wr_invalid_sqtail(uint32_t qid, uint16_t new_tail) "submission queue doorbell write value beyond queue size, sqid=%"PRIu32", new_head=%"PRIu16", ignoring"
 >  
-> -void pc_acpi_init(const char *default_dsdt)
-> -{
-> -    char *filename;
+> -# hw/block/xen_disk.c
+> -xen_disk_alloc(char *name) "%s"
+> -xen_disk_init(char *name) "%s"
+> -xen_disk_connect(char *name) "%s"
+> -xen_disk_disconnect(char *name) "%s"
+> -xen_disk_free(char *name) "%s"
 > -
-> -    if (acpi_tables != NULL) {
-> -        /* manually set via -acpitable, leave it alone */
-> -        return;
-> -    }
-> -
-> -    filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, default_dsdt);
-> -    if (filename == NULL) {
-> -        warn_report("failed to find %s", default_dsdt);
-> -    } else {
-> -        QemuOpts *opts = qemu_opts_create(qemu_find_opts("acpi"), NULL, 0,
-> -                                          &error_abort);
-> -        Error *err = NULL;
-> -
-> -        qemu_opt_set(opts, "file", filename, &error_abort);
-> -
-> -        acpi_table_add_builtin(opts, &err);
-> -        if (err) {
-> -            warn_reportf_err(err, "failed to load %s: ", filename);
-> -        }
-> -        g_free(filename);
-> -    }
-> -}
-> -
->  void xen_load_linux(PCMachineState *pcms)
->  {
->      int i;
-> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index 9d29c4b1df..541124ba6d 100644
-> --- a/include/hw/i386/pc.h
-> +++ b/include/hw/i386/pc.h
-> @@ -187,7 +187,6 @@ void pc_acpi_smi_interrupt(void *opaque, int irq, int level);
->  
->  void pc_cpus_init(PCMachineState *pcms);
->  void pc_hot_add_cpu(const int64_t id, Error **errp);
-> -void pc_acpi_init(const char *default_dsdt);
->  
->  void pc_guest_info_init(PCMachineState *pcms);
->  
-
+>  # hw/block/xen-block.c
+>  xen_block_realize(const char *type, uint32_t disk, uint32_t partition) "%s d%up%u"
+>  xen_block_connect(const char *type, uint32_t disk, uint32_t partition) "%s d%up%u"
+> 
 
