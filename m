@@ -1,91 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1go2uo-0005g8-H1
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 04:09:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:59275)
+	id 1go3cL-0001yo-Bt
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 04:54:13 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40795)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1go2uk-0005e3-L6
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 04:09:13 -0500
+	(envelope-from <dgibson@ozlabs.org>) id 1go3cG-0001wU-JN
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 04:54:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1go2ue-0001d6-Pw
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 04:09:10 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:43814)
+	(envelope-from <dgibson@ozlabs.org>) id 1go3cE-0001YX-Ov
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 04:54:07 -0500
+Received: from ozlabs.org ([2401:3900:2:1::2]:60603)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1go2ua-0001Xv-Cb; Mon, 28 Jan 2019 04:09:00 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C9EE481F09;
-	Mon, 28 Jan 2019 09:08:54 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-122.ams2.redhat.com [10.36.116.122])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5655E60C6B;
-	Mon, 28 Jan 2019 09:08:53 +0000 (UTC)
-To: kumar sourav <sourav.jb1988@gmail.com>, qemu-trivial@nongnu.org
-Cc: f4bug@amsat.org, qemu-devel@nongnu.org
-References: <20190124162045.10474-1-sourav.jb1988@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <ad3a3e07-a598-a2b6-91f9-199ebd8b26bd@redhat.com>
-Date: Mon, 28 Jan 2019 10:08:52 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1go3cA-0001Sz-Cp; Mon, 28 Jan 2019 04:54:03 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 43p4hh0vDNz9sBb; Mon, 28 Jan 2019 20:53:55 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1548669236;
+	bh=BasufMgyQkgCk3Kt22pi8GEHptrygY95fa+I8n6KeAQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=CQviNEIl+gDv31B3OREXSz3zvds0YAMGXcIfsNBAX6h/fqZKTuHYkdK6G/SEY61Nj
+	LO8IH9Fis2OjckJknOXZ65KJLy50pY/ERTzElEPygtKLN8SxmUkD8gM+t2t8yKHGd1
+	hw5vrLCXAdbs3kPSVjRq/vtcOcfS2UQvrCG42dT8=
+Date: Mon, 28 Jan 2019 20:17:50 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Thomas Huth <thuth@redhat.com>
+Cc: kumar sourav <sourav.jb1988@gmail.com>, qemu-trivial@nongnu.org,
+	qemu-ppc@nongnu.org, qemu-devel@nongnu.org
+Message-ID: <20190128091750.GC1870@umbus.fritz.box>
+References: <20190127100215.12584-1-sourav.jb1988@gmail.com>
+	<758ce56b-4a03-405f-b668-f81094bec147@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190124162045.10474-1-sourav.jb1988@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Mon, 28 Jan 2019 09:08:54 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw: sd: set category of the
- sd memory card
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="pAwQNkOnpTn9IO2O"
+Content-Disposition: inline
+In-Reply-To: <758ce56b-4a03-405f-b668-f81094bec147@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2401:3900:2:1::2
+Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH] hw/input/adb.c: set device
+ category of adb
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -97,30 +51,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Jan 2019 09:09:13 -0000
+X-List-Received-Date: Mon, 28 Jan 2019 09:54:12 -0000
 
-On 2019-01-24 17:20, kumar sourav wrote:
-> Sets the category of the sd memory card as DEVICE_CATEGORY_STORAGE.
-> Devices should be assigned to one of DEVICE_CATEGORY_XXXX.
-> 
-> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
-> ---
->  hw/sd/sd.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-> index d4356e9b73..aaab15f386 100644
-> --- a/hw/sd/sd.c
-> +++ b/hw/sd/sd.c
-> @@ -2121,6 +2121,7 @@ static void sd_class_init(ObjectClass *klass, void *data)
->      dc->vmsd = &sd_vmstate;
->      dc->reset = sd_reset;
->      dc->bus_type = TYPE_SD_BUS;
-> +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
->  
->      sc->set_voltage = sd_set_voltage;
->      sc->get_dat_lines = sd_get_dat_lines;
-> 
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+--pAwQNkOnpTn9IO2O
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Jan 28, 2019 at 10:06:03AM +0100, Thomas Huth wrote:
+> On 2019-01-27 11:02, kumar sourav wrote:
+> > Sets the category of adb as DEVICE_CATEGORY_INPUT
+> > Devices should be assigned to one of DEVICE_CATEGORY_XXXX
+> >=20
+> > Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
+> > ---
+> >  hw/input/adb.c | 1 +
+> >  1 file changed, 1 insertion(+)
+> >=20
+> > diff --git a/hw/input/adb.c b/hw/input/adb.c
+> > index bbb40aeef1..6ca7c5641c 100644
+> > --- a/hw/input/adb.c
+> > +++ b/hw/input/adb.c
+> > @@ -126,6 +126,7 @@ static void adb_device_class_init(ObjectClass *oc, =
+void *data)
+> >      dc->realize =3D adb_device_realizefn;
+> >      dc->props =3D adb_device_properties;
+> >      dc->bus_type =3D TYPE_ADB_BUS;
+> > +    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
+> >  }
+>=20
+> This patch does not make too much sense in its current shape:
+> TYPE_ADB_DEVICE is an abstract device and does not show up in the output
+> of "-device help", so it is not necessary for this device itself.
+>=20
+> Looking at the "child" devices adb-kdb and adb-mouse, they bother
+> already set DEVICE_CATEGORY_INPUT in their own, so they are already fine.
+>=20
+> Thus please do one of the following:
+>=20
+> 1) Simply drop this patch.
+>=20
+> 2) Keep setting the category here in the abstract parent class, but then
+> also remove the DEVICE_CATEGORY_INPUT in the adb-kdb and adb-mouse child
+> classes.
+
+Ah, good point.  Dropped from ppc-for-4.0.
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--pAwQNkOnpTn9IO2O
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlxOyLoACgkQbDjKyiDZ
+s5LhVBAAyzmDPNHjnqwqiMmxxhT8ixjZMgm87JSVBCCysFlEj9c2zY4zRAEe8Tkb
+Ex1E0XohHcP2YuP+h7bzhLnDicy/KDR66amDU5M3tsorMMyFuU7kEzukX42lO/fb
+PE1lDWZEXxEIBwusGpZJWWTeHoHKx5N4pIc5JeC5uLwYbYR8cdTUSYdaS1PFgjPQ
+YesuLsUIzoI2O0ce3ulgRAzSD4qzc/ryfL5toBZ0biZfj0Cuv5ZgiV0xPszcXuY+
+ZIrPLY4Qonrlyedga843jE2FmBxXbV0dgk08LKzMYcvA382De4NCfRDRVgXeCe/T
+j+eWjahOj9uwlbZVQbMimRVpYIZipKTolqS/UBWE8ahlbLCGcl0yI1u/Tw9CKKoz
+AJNd4nVrsG7i5Hy1wtbsLBDIVjqeH5JFVOX9GMuVTufRLWcOHyVqv4IZwhT8lXFj
+cbSKGeZyBgdP3QTYd77ADZZkisCrt8Qeo8PI/ZFYw9cE5xmHGO9d7wfcENX5M7LN
+nmJqQmXwqZIvsUqDK+u016U1M/mDOf4TrPCQHfpuLgdmZ9G3wPi1yqCb9lPOb1RN
+HfLXu+z8iPx7bnQm74wOYc/R1Ak6+SKXTNEVeK45cqptFCrMcOWYnHBk+fMqXyM+
+7jThsAJLJCwCs3wiMM1drIIN17goD+vVdiTMfa5gVkZF9klXwhw=
+=dObv
+-----END PGP SIGNATURE-----
+
+--pAwQNkOnpTn9IO2O--
 
