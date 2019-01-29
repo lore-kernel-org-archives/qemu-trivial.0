@@ -1,62 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1goUyE-0002l3-TT
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Jan 2019 10:06:38 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51313)
+	id 1goV26-0005DB-Vm
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Jan 2019 10:10:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51865)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1goUy2-0002WQ-KP
-	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 10:06:37 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1goV1w-00053M-Jl
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 10:10:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1goUxg-00055S-9J
-	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 10:06:13 -0500
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:39034)
+	(envelope-from <peter.maydell@linaro.org>) id 1goV1b-0006Rp-IA
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 10:10:16 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:41141)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1goUxf-000506-KM
-	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 10:06:04 -0500
-Received: by mail-wm1-f67.google.com with SMTP id y8so18118148wmi.4
-	for <qemu-trivial@nongnu.org>; Tue, 29 Jan 2019 07:05:58 -0800 (PST)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1goV1b-0006Nh-Dt
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 10:10:07 -0500
+Received: by mail-ot1-x341.google.com with SMTP id u16so18131870otk.8
+	for <qemu-trivial@nongnu.org>; Tue, 29 Jan 2019 07:09:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=FXy/0xrxGUndw9cUjyJrDYX2PS81ENoDlIBK7WQ7S7s=;
+	b=doRt9sb/Cwd1EX/zRTFGU2jDCFuGJoL9lJ+iqm97nDBBdNpj1Tk6T+cmGVu/tkcxns
+	FAA+FMWvxETz4LyMUIAimS5h+NTjcZEvzIhgAopo6I7cH/mSXYmOz1FkhErxQast9Ypa
+	xCCLGp0flubvz7b0ec5K3lwQvTRNNlcsU0i+Q=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=7NsmYwHoSfWcp4bp4Wprjc5KbdcEjYB5QSSHqiLeHHo=;
-	b=WPMzI1zFasVZeSLjKqy9eLdPW+44XyKy13Vc+1oKz6SWSaXx83exwZgg+t1NTgt31X
-	joTPqTDrMlwVher9e1qgbHcF18+RmKp3sbY9kxof/QlaHtuqRksCfouEw3nllyIFelZ9
-	7WFeKImr1lO+5BYNEg1xBxzxw8Xj9WxlpaHdHa2IyA6+3tjn/AsO9soTz7lwxsuHPhZA
-	crCvNSaWfBCYu+lUC5AwLAnXzpsim6gZvPkhotktaAOvnYVOZwgQM+dudFgl+RMx+flx
-	mOeQXFHvQGMRrEPharZzn8JNJGSZBIMXxGypWGlfYACBoOWObdpeqzCHRQAgTz56yl66
-	NDZQ==
-X-Gm-Message-State: AJcUukfl0o+aEYdJ7BFIzf/CtZtDJjCFm/EkHKPzxOtjYElwxy4fD2T6
-	/QP0FvgZyCjXCL/h/CvuNvEdZw==
-X-Google-Smtp-Source: ALg8bN6Atn8EOgUts592zGvRQffgcOq2d+REOvQ/NrDy8mSiwCbycQCuVcEfeuSviYP+lIrw2Y8c9Q==
-X-Received: by 2002:a1c:df46:: with SMTP id w67mr22154463wmg.51.1548774348652; 
-	Tue, 29 Jan 2019 07:05:48 -0800 (PST)
-Received: from [192.168.1.33] (110.red-83-51-161.dynamicip.rima-tde.net.
-	[83.51.161.110]) by smtp.gmail.com with ESMTPSA id
-	n127sm4090664wmd.20.2019.01.29.07.05.47
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 29 Jan 2019 07:05:48 -0800 (PST)
-To: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org
-References: <1548769067-20792-1-git-send-email-thuth@redhat.com>
-	<20190129145156.6719b8a4.cohuck@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <f98acef2-90b7-6ae3-682a-504a29ad57b4@redhat.com>
-Date: Tue, 29 Jan 2019 16:05:41 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=FXy/0xrxGUndw9cUjyJrDYX2PS81ENoDlIBK7WQ7S7s=;
+	b=e6oDowDAFnWfr7G/OXe3ucY/1JwxUY6P2wwg1Kexn5nN+PlomC85fD3knFqcaShX2e
+	vWScyYWzzDGJd7thdenB10CyW8Typ40qYWRWcM3Rjiy5sZ8wrjNB7bqqh3yy9QEhtUF1
+	0Wsh4VFKzF6LvXLAKNtUjsM7Dj28fe7e51ZchvHQAtwOxhZ4BDv62Ci522pQDb+XvY5V
+	VIJNISc+0vEOg8zmC3773ey17sKFjE2S/cdfQwFBNbqLlJV9TlYziIy+ObYiBqB7gavc
+	bcPjmjTMzJqvILUElCcGJfkhySy8phucn3QordqJK0X/tEt6KThTYlzeBUNLf83lM6gn
+	JO+Q==
+X-Gm-Message-State: AJcUukctJYyHD9qODhREgiGVwHaHjD40UYt/bMpAj72dRMqKduxdJZAS
+	fss3lHtlN/fWw1XFxhhfSGImkBA1qjMgFNGbOWXa6g==
+X-Google-Smtp-Source: ALg8bN4jl8xy2Tc7vF8r/1LrlDTLkBLURCN9Expo2erxpOWv2zQJZI2uHonUK5e3SYWo8VBv95MXubmJSNaEmXlF40U=
+X-Received: by 2002:a9d:3a22:: with SMTP id j31mr20041441otc.238.1548774586798;
+	Tue, 29 Jan 2019 07:09:46 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20190129145156.6719b8a4.cohuck@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.67
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target/s390x: Fix LGPL
- version in the file header comments
+References: <20190125155630.17430-1-sourav.jb1988@gmail.com>
+In-Reply-To: <20190125155630.17430-1-sourav.jb1988@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 29 Jan 2019 15:09:34 +0000
+Message-ID: <CAFEAcA-E=-6H340nhA258GkCbM2YC4=CxCRsBicanKJtEc7SXA@mail.gmail.com>
+To: kumar sourav <sourav.jb1988@gmail.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Joel Stanley <joel@jms.id.au>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-trivial] [PATCH] hw/arm/nrf51_soc: set object owner in
+ memory_region_init_ram
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,45 +63,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Jan 2019 15:06:38 -0000
+X-List-Received-Date: Tue, 29 Jan 2019 15:10:38 -0000
 
-On 1/29/19 2:51 PM, Cornelia Huck wrote:
-> On Tue, 29 Jan 2019 14:37:47 +0100
-> Thomas Huth <thuth@redhat.com> wrote:
-> 
->> It's either "GNU *Library* General Public License version 2" or
->> "GNU Lesser General Public License version *2.1*", but there was
->> no "version 2.0" of the "Lesser" license. So assume that version
->> 2.1 is meant here.
-> 
-> I think we can assume that.
-> 
-> Given that there have been several of these cases (and that there's a
-> lot of boilerplate in general): Should we adopt SPDX license
-> identifiers for QEMU, as the Linux kernel did? They also discovered and
-> fixed some problems/oddities while at it.
+On Fri, 25 Jan 2019 at 15:56, kumar sourav <sourav.jb1988@gmail.com> wrote:
+>
+> set object owner in memory_region_init_ram() instead
+> of NULL.
+>
+> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
+> ---
+>  hw/arm/nrf51_soc.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
+> index 1630c27594..3a1c7e200c 100644
+> --- a/hw/arm/nrf51_soc.c
+> +++ b/hw/arm/nrf51_soc.c
+> @@ -89,7 +89,8 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+>      }
+>      memory_region_add_subregion(&s->container, NRF51_FLASH_BASE, &s->flash);
+>
+> -    memory_region_init_ram(&s->sram, NULL, "nrf51.sram", s->sram_size, &err);
+> +    memory_region_init_ram(&s->sram, OBJECT(s), "nrf51.sram", s->sram_size,
+> +                           &err);
+>      if (err) {
+>          error_propagate(errp, err);
+>          return;
 
-This might be cheaper than adding checkpatch rules to parse current
-licenses to avoid miswritten one coming back...
 
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  target/s390x/cc_helper.c   | 2 +-
->>  target/s390x/excp_helper.c | 2 +-
->>  target/s390x/fpu_helper.c  | 2 +-
->>  target/s390x/gdbstub.c     | 2 +-
->>  target/s390x/helper.c      | 2 +-
->>  target/s390x/int_helper.c  | 2 +-
->>  target/s390x/mem_helper.c  | 2 +-
->>  target/s390x/misc_helper.c | 2 +-
->>  target/s390x/translate.c   | 2 +-
->>  9 files changed, 9 insertions(+), 9 deletions(-)
-> 
-> Is this going through the trivial tree? If so,
-> 
-> Acked-by: Cornelia Huck <cohuck@redhat.com>
-> 
-> I can also take this through the s390x tree.
-> 
+Applied to target-arm.next, thanks.
+
+-- PMM
 
