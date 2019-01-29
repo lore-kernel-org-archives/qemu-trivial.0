@@ -1,50 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1goEDS-00035r-En
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 16:13:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:58596)
-	by lists.gnu.org with esmtp (Exim 4.71) (envelope-from <n54@gmx.com>)
-	id 1goEDP-0002oV-A7
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 16:13:11 -0500
+	id 1goGrO-0000wb-Ir
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 19:02:38 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37244)
+	by lists.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <richardw.yang@linux.intel.com>) id 1goGrM-0000wM-Tn
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 19:02:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <n54@gmx.com>) id 1goE39-0005Ug-QS
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 16:02:38 -0500
-Received: from mout.gmx.net ([212.227.17.21]:57321)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <n54@gmx.com>) id 1goE35-0005PD-EE
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 16:02:32 -0500
-Received: from localhost.localdomain ([89.71.135.231]) by mail.gmx.com
-	(mrgmx102 [212.227.17.174]) with ESMTPSA (Nemesis) id
-	0MLR30-1gng521kt0-000YWR; Mon, 28 Jan 2019 22:02:18 +0100
-From: Kamil Rytarowski <n54@gmx.com>
-To: qemu-trivial@nongnu.org
-Cc: alexandro@phi.nz,
-	Kamil Rytarowski <n54@gmx.com>
-Date: Mon, 28 Jan 2019 22:01:08 +0100
-Message-Id: <20190128210108.21318-1-n54@gmx.com>
-X-Mailer: git-send-email 2.20.1
+	(envelope-from <richardw.yang@linux.intel.com>) id 1goGrL-0005hA-L7
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 19:02:36 -0500
+Received: from mga07.intel.com ([134.134.136.100]:23324)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
+	id 1goGrK-0005ZY-WA; Mon, 28 Jan 2019 19:02:35 -0500
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+	by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	28 Jan 2019 16:02:27 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.56,535,1539673200"; d="scan'208";a="270657498"
+Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.37])
+	by orsmga004.jf.intel.com with ESMTP; 28 Jan 2019 16:02:26 -0800
+Date: Tue, 29 Jan 2019 08:01:57 +0800
+From: Wei Yang <richardw.yang@linux.intel.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Wei Yang <richardw.yang@linux.intel.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, laurent@vivier.eu, mst@redhat.com
+Message-ID: <20190129000157.GA30562@richard>
+Reply-To: Wei Yang <richardw.yang@linux.intel.com>
+References: <20190125060157.29935-1-richardw.yang@linux.intel.com>
+	<20190128143230.3bda74a0@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:HzJ42l6kgmevxCBA4uceo88h2f/G0BnUyqqHovUiFKk77qAMTht
-	xJkSKR5XyLicLg7N/GvfVqh2X51+8PreU1eui10OAHQgngLRthsDeGx7VNtzGQ66OZZTpVg
-	emEaALKlhte2iGhVilLoOuqolctWWrce8Y8KZo44kktWJ/e4RItzy7w0L6LhsLiHxXS31ME
-	GgLsZUlHts05OYpAVHX0A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:WiUWOCTYeK0=:b9dJ19iXLXGIgqKo+lGwjH
-	pu46xfHPZ4yj9rYy1jpzj9dP4aIcdoWPvR5GkPHzoC/XQnuJUfl8at15nKBu+MCSz7ch4we5Z
-	1MxvCTbMz/yPimJJHkgvJx1L0pNX3PY0s4xEdywNpU+hMPB0kuW1oSwBbedzzYQ1P48y5278U
-	BYKAzJDmbnHxoldTATGWk5p92PNzO2NSCpSzqea5YBNaV94DhggraBWEFO4LQhKNZ1aSGEp5a
-	yCfV5OVvU7j89/QPVQZxaEg0hu38fo7WRtnf8g2cfq2MwvQSO9eVCI83ogsWm2raw+fEJqqx7
-	tWcUiXanRuhCN6oPaNWUy1oS0JUbMR8ulJ5MU9IL9UlQRiolN7cSbn5sfjbcJwBoOSLErnW/F
-	lW2UQMM/Z+GI7IIF9agvzexoYXny75m/D2y6Nk10aa14JboyTbE0QksDqYBYzcAzoC/30zH4Z
-	2bibKCdPh+fYKJ5C3CNt7feKJqWr7KT8/bNaRLCliDVL9KyqWyC/lx4ocQ6oCiMaVSICjGNI2
-	n76ZYtSJfIg24+lRt09tq+/I9PCW4eH9hoOcHKtMTaVgPXB4F9y5//a36PpvlSLMKhiKuR38F
-	LGAj7TleJ/k6OKmZVdEam4Z2W+ulTZQi+CwsDfsc3andbxLehEUyR4mWJQwkJTxPh4DJa5+XI
-	zILE54W4xbzmzaI+c5aXkOiHzKvYeb8tAdLKs4sP0Z3/v1esq5hxwzC4KGupbho82Ul1U419D
-	IqCQkyQ7Yu4mx6+rdW1f5QwXyHmgzJoMJex5QNh4hcShIwKKDfvV4M7CoBO9xaHpfkyOpg9XR
-	MUXtEi6joU72di4ARS8Ekw9ynmYb9TAqFYFGizGMqNL6C6pV3oHe5Df80i5oH1yzGxT6qXmQ2
-	bZpCQn+MT42aHfWwaudp4qrXLfNDzsmFlqUYH07OM=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.21
-Subject: [Qemu-trivial] [PATCH] configure: Add HAX support in NetBSD
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190128143230.3bda74a0@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 134.134.136.100
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/3] hw/i386/pc.c: remove
+ unused function pc_acpi_init()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,28 +51,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Jan 2019 21:13:12 -0000
+X-List-Received-Date: Tue, 29 Jan 2019 00:02:37 -0000
 
-The NetBSD support in Intel HAXM has beem merged upstream and is functional.
+On Mon, Jan 28, 2019 at 02:32:30PM +0100, Igor Mammedov wrote:
+>On Fri, 25 Jan 2019 14:01:55 +0800
+>Wei Yang <richardw.yang@linux.intel.com> wrote:
+>
+>> Function pc_acpi_init() is now used in no place.
+>s/is now used in no place./in not used anymore,/
+>
+>fixup the same phrase in other patches.
+>
+>otherwise series looks good, so fix commit messages and resubmit series.
+>
+>Also when sending  multi-patch series, pls use cover letter
+>(see help for git format-patch --cover-letter)
 
-Signed-off-by: Kamil Rytarowski <n54@gmx.com>
----
- configure | 1 +
- 1 file changed, 1 insertion(+)
+Thanks :-)
 
-diff --git a/configure b/configure
-index b18281c61f..89b889072d 100755
---- a/configure
-+++ b/configure
-@@ -819,6 +819,7 @@ DragonFly)
- ;;
- NetBSD)
-   bsd="yes"
-+  hax="yes"
-   make="${MAKE-gmake}"
-   audio_drv_list="oss try-sdl"
-   audio_possible_drivers="oss sdl"
+Will change and re-submit.
+
+>
+> 
+>> Remove the definition and declaration.
+>> 
+>> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+>> ---
+>>  hw/i386/pc.c         | 27 ---------------------------
+>>  include/hw/i386/pc.h |  1 -
+>>  2 files changed, 28 deletions(-)
+>> 
+>> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+>> index 5317e08f60..734d3268fa 100644
+>> --- a/hw/i386/pc.c
+>> +++ b/hw/i386/pc.c
+>> @@ -1280,33 +1280,6 @@ void pc_pci_as_mapping_init(Object *owner, MemoryRegion *system_memory,
+>>                                          pci_address_space, -1);
+>>  }
+>>  
+>> -void pc_acpi_init(const char *default_dsdt)
+>> -{
+>> -    char *filename;
+>> -
+>> -    if (acpi_tables != NULL) {
+>> -        /* manually set via -acpitable, leave it alone */
+>> -        return;
+>> -    }
+>> -
+>> -    filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, default_dsdt);
+>> -    if (filename == NULL) {
+>> -        warn_report("failed to find %s", default_dsdt);
+>> -    } else {
+>> -        QemuOpts *opts = qemu_opts_create(qemu_find_opts("acpi"), NULL, 0,
+>> -                                          &error_abort);
+>> -        Error *err = NULL;
+>> -
+>> -        qemu_opt_set(opts, "file", filename, &error_abort);
+>> -
+>> -        acpi_table_add_builtin(opts, &err);
+>> -        if (err) {
+>> -            warn_reportf_err(err, "failed to load %s: ", filename);
+>> -        }
+>> -        g_free(filename);
+>> -    }
+>> -}
+>> -
+>>  void xen_load_linux(PCMachineState *pcms)
+>>  {
+>>      int i;
+>> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+>> index 9d29c4b1df..541124ba6d 100644
+>> --- a/include/hw/i386/pc.h
+>> +++ b/include/hw/i386/pc.h
+>> @@ -187,7 +187,6 @@ void pc_acpi_smi_interrupt(void *opaque, int irq, int level);
+>>  
+>>  void pc_cpus_init(PCMachineState *pcms);
+>>  void pc_hot_add_cpu(const int64_t id, Error **errp);
+>> -void pc_acpi_init(const char *default_dsdt);
+>>  
+>>  void pc_guest_info_init(PCMachineState *pcms);
+>>  
+
 -- 
-2.20.1
-
+Wei Yang
+Help you, Help me
 
