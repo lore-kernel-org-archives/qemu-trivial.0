@@ -1,64 +1,102 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1goOmk-0007eF-13
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Jan 2019 03:30:22 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:56410)
+	id 1goOzj-0002j7-6z
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Jan 2019 03:43:47 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58384)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1goOmh-0007dl-SF
-	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 03:30:20 -0500
+	(envelope-from <laurent@vivier.eu>) id 1goOzg-0002io-U3
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 03:43:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1goOmg-0006Yd-7x
-	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 03:30:19 -0500
-Received: from mail-wm1-f65.google.com ([209.85.128.65]:54505)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1goOmg-0006Y1-1c
-	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 03:30:18 -0500
-Received: by mail-wm1-f65.google.com with SMTP id a62so16784577wmh.4
-	for <qemu-trivial@nongnu.org>; Tue, 29 Jan 2019 00:30:17 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=ldthWg0OPuf2RRF6686tHM3ja8RAbsukXxTMe1FINaE=;
-	b=iehGS1gDfGoTQPM615qFGTQYc9hSN4QG6v96NqZCzoYR0ujL0n8tsyfO5X/gI5wnCw
-	dewRWjXcIfhlrR3D7twxhbC+CqsLQLyFKb88AVURdg3X7vrQiKpXHKuKLzXoJiliwFV8
-	x3pfyTXDmohSrph4FZYmgBxSojldGPXfDEiFqUhiFl1B16IV438HzkuCWJNZCnIsk7ii
-	ylAiubDVVAxii9R0kIrg8XsQyvq+VYgSrfPsS6Y/q8tno35mqpyG1RyL/HQQP66pzf7i
-	azpg9XpF1ru8RzXAJ/oSKYKu2/sVolMW2GV/VtqMaACJtxLi/pjTn7g+0rrGiidlAD10
-	a3UQ==
-X-Gm-Message-State: AJcUukdR169fdCtsn8kMm05NV8bACQ1kxtDEElnBO67KGQ8J3i92wAzM
-	3SauT0XatekCD2MromJtOoE1vA==
-X-Google-Smtp-Source: ALg8bN7RorR7TwJmDWYjyFjKxznn2TTfzN4DS1eMgPd+yakBmVfWwSuiuW/tXv/BeIocbXC1FA2DZA==
-X-Received: by 2002:a1c:99ce:: with SMTP id b197mr20808879wme.75.1548750617153;
-	Tue, 29 Jan 2019 00:30:17 -0800 (PST)
-Received: from [192.168.1.33] (110.red-83-51-161.dynamicip.rima-tde.net.
-	[83.51.161.110]) by smtp.gmail.com with ESMTPSA id
-	n5sm116142964wrr.94.2019.01.29.00.30.16
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 29 Jan 2019 00:30:16 -0800 (PST)
-To: Wei Yang <richardw.yang@linux.intel.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: imammedo@redhat.com, laurent@vivier.eu, mst@redhat.com
+	(envelope-from <laurent@vivier.eu>) id 1goOzg-0005Km-8M
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 03:43:44 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:49643)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1goOzf-0005IT-70; Tue, 29 Jan 2019 03:43:44 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MK3BO-1gajUF4B14-00LV9T; Tue, 29 Jan 2019 09:43:22 +0100
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Wei Yang <richardw.yang@linux.intel.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, imammedo@redhat.com,
+	mst@redhat.com
 References: <20190125060157.29935-1-richardw.yang@linux.intel.com>
 	<20190129000820.31190-1-richardw.yang@linux.intel.com>
-	<20190129000820.31190-4-richardw.yang@linux.intel.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <6226a33c-a72a-d7da-45ab-fadb5157e023@redhat.com>
-Date: Tue, 29 Jan 2019 09:30:15 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	<feb8687e-0d0c-a20a-9b37-c8284aaae9f5@redhat.com>
+	<20190129080455.GA10084@richard>
+	<91c53c72-8e9c-f68d-1dc8-f6320ed3dfc0@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <f6f1703e-1c77-055e-1906-300df3c79479@vivier.eu>
+Date: Tue, 29 Jan 2019 09:43:20 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190129000820.31190-4-richardw.yang@linux.intel.com>
+In-Reply-To: <91c53c72-8e9c-f68d-1dc8-f6320ed3dfc0@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:TFYjFwmDXGuEwMCNOyygdVKF1oXrE8jBiJot+8esRgSENM5qzsJ
+	QC284HshD4u/xQDRNLNhpEcIKIorxDVE0A5cO7cxdKdjO75vKS7TPIaGawqED0s2Za0QA0X
+	Wpii908Hh+ykyuUa6aJsCccGPFbK8ahxBjT5zDefZ0vzOddC/DlEXybc554vfnUhJNEdWNm
+	XHRpQg2XH2eNPqDJTlfqg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:HKpqilIZzgY=:NE1jllm7NcdtIsh1LP7Q+O
+	3vkmxjqNeBr2al0qndHeVkr6Fj9w9iQCNu9xM+S76CXV+WGcs4uPdk/9X5V2q622VoBSla3LG
+	b3cnDIVq3DGRLHaEDuK/znd6UMi1CdJh34EshfgUkHToPHFJSe9WUp5fhvrHsYzxBT6ylT4lQ
+	w+rvLhOcycpV4K4q3U5FsizTN88lU7F1EPrE+Kv3zFZw6e4LjkEAYxnFH/XAU47m5RilNbUbt
+	VPEAkLr6evLT3Tv3E/De1/oHy49FzmeAhe/eUnHScSwcBkzJMrb/HfE9PD+gofBjuw7aYIdNB
+	HDNgx+WUj9YiCPR8rRcMK4zazmfELrXzhh3PTW1EvY4rkwdQY77nRUMmMZMH0rHSUpM9AdKdn
+	qzs/elQzG9QjGFyCb/70xPA7MydO4J0idhwoHOsrCrQXcJTlJZtGvI+PuqT2oPfRBpfL/0gFM
+	I80GXFx2o76aMBf+eLiebOpj836WpnShHfLVLkM1UvrcxWRV8rYVjnBavlD42PZcv50GBXVTO
+	HRXG0TeURQ7e4m+nCA3Jkb6QwW/6W34TIAetfLpLjxTP2n/CvrLpnj5SlWfUOXzBr83sgbFCD
+	LLKKhD/v7ecj+SYdGofo13PrAzKTRlFLMZO1d1EQViRgCHmQToIvjLgzKFLpDJLwbrxnpYr9Z
+	t30++OhIoV7cqwO7LkF15hAZl1SqRcHB/Zl/JNY9YqVmTuoUYp42xc0Gav2uv/suQQ5vwipiP
+	BeZcJIxseqOeR8awEdpv1l87M0nzEMv2HkKbYn6TNfJZAZpYu8y5vWvCv4Y=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.65
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 3/3] hw/acpi: remove
- unnecessary variable acpi_table_builtin
+X-Received-From: 212.227.126.130
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 0/3] Trivial cleanup in
+ hw/acpi
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,44 +108,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Jan 2019 08:30:20 -0000
+X-List-Received-Date: Tue, 29 Jan 2019 08:43:45 -0000
 
-On 1/29/19 1:08 AM, Wei Yang wrote:
-> acpi_table_builtin is now always false, it is not necessary to check it
-> again.
+On 29/01/2019 09:23, Philippe Mathieu-Daudé wrote:
+> On 1/29/19 9:04 AM, Wei Yang wrote:
+>> On Tue, Jan 29, 2019 at 07:56:54AM +0100, Philippe Mathieu-Daudé wrote:
+>>> Hi Wei,
+>>>
+>>> On 1/29/19 1:08 AM, Wei Yang wrote:
+>>>> There are several functions/variable which are not used anymore.
+>>>>
+>>>> This serials just remove those without functional change.
+>>>>
+>>>> Wei Yang (3):
+>>>>   hw/i386/pc.c: remove unused function pc_acpi_init()
+>>>>   hw/acpi: remove unused function acpi_table_add_builtin()
+>>>>   hw/acpi: remove unnecessary variable acpi_table_builtin
+>>>>
+>>>>  hw/acpi/core.c         | 10 +---------
+>>>>  hw/i386/pc.c           | 27 ---------------------------
+>>>>  include/hw/acpi/acpi.h |  1 -
+>>>>  include/hw/i386/pc.h   |  1 -
+>>>>  4 files changed, 1 insertion(+), 38 deletions(-)
+>>>>
+>>>
+>>> Please do not post iterated series in reply to previous version, but as
+>>> new thread:
+>>> - patches are parsed by scripts
+>>> - some email clients can tag a thread as "reviewed, skip" and replies to
+>>> this thread will be masked.
+>>>
+>>
+>> Well, do I need to repost it in a new thread?
 > 
-> This patch just removes it.
+> It depends who will take this patchset and his mood :)
+> Let's wait and see.
 > 
-> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+No need to repost if they go through the trivial branch.
 
-> ---
->  hw/acpi/core.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/hw/acpi/core.c b/hw/acpi/core.c
-> index e9b1a85e54..f9c96535d1 100644
-> --- a/hw/acpi/core.c
-> +++ b/hw/acpi/core.c
-> @@ -303,8 +303,6 @@ out:
->      error_propagate(errp, err);
->  }
->  
-> -static bool acpi_table_builtin = false;
-> -
->  unsigned acpi_table_len(void *current)
->  {
->      struct acpi_table_header *hdr = current - sizeof(hdr->_length);
-> @@ -320,7 +318,7 @@ void *acpi_table_hdr(void *h)
->  
->  uint8_t *acpi_table_first(void)
->  {
-> -    if (acpi_table_builtin || !acpi_tables) {
-> +    if (!acpi_tables) {
->          return NULL;
->      }
->      return acpi_table_hdr(acpi_tables + ACPI_TABLE_PFX_SIZE);
-> 
+Thanks,
+Laurent
 
