@@ -1,65 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1goOfq-0004ru-AE
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Jan 2019 03:23:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55085)
+	id 1goOia-0005fA-LB
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Jan 2019 03:26:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55621)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1goOfo-0004rS-9C
-	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 03:23:12 -0500
+	(envelope-from <philmd@redhat.com>) id 1goOiY-0005f2-JJ
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 03:26:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1goOfn-0002yv-Gr
-	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 03:23:12 -0500
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:35214)
+	(envelope-from <philmd@redhat.com>) id 1goOiX-0004Pl-OQ
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 03:26:02 -0500
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:55124)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1goOfn-0002yN-9G
-	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 03:23:11 -0500
-Received: by mail-wr1-f67.google.com with SMTP id 96so20996366wrb.2
-	for <qemu-trivial@nongnu.org>; Tue, 29 Jan 2019 00:23:11 -0800 (PST)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1goOiX-0004P7-I2
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 03:26:01 -0500
+Received: by mail-wm1-f67.google.com with SMTP id a62so16771831wmh.4
+	for <qemu-trivial@nongnu.org>; Tue, 29 Jan 2019 00:26:01 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=ioNTFpSqasIuIUbyU9bZ25c2tMVbjnsE1DzeBimRaXM=;
-	b=bIXt7pyhVb6VXIoJDFvieTpNxgYO8F2gT6KX7Z8IcNyWXbAZERG5cX84Wwk2m+9wNy
-	ouzFhZEdA58Xw7JG6vKGchbw/NV/ET8N9fqL7W0BpWDCv6jpf+FyrSLGw/LvcuwlciAU
-	y0+66JqiTg/mcdSgz0KRC3gPM8oNXPBFJbGSlD6svZlvEOO3OlmOuUzE6WI0BAUG8aza
-	5teOG2NRJtKAzLHucvhvVCs2hLjrZDB6XduVZRmV/v/nAWGrfjzgKu79I79UtlYWbafL
-	f68PtV4sHlYFOdhh2CYB3op+0Fk2qZNwARr8eB+T1pn51AX2dZysY+6xG3s7IF3/TeOJ
-	C1Ew==
-X-Gm-Message-State: AJcUukdEEcdZp492WuWJG0binPaPxZ36Vw5N0sy/hDJB8Pxj7Br2dvOn
-	fav7yRAsJX6noEXhxLeWKLkQ8A==
-X-Google-Smtp-Source: ALg8bN7eDpCKJCPOSbj+dK3FyqQSCwlCQ5xtqFFQXsZ0a+4XRLvLUBRw/zx/OOMsNQGcGdZGQ683gQ==
-X-Received: by 2002:adf:97d1:: with SMTP id t17mr25077336wrb.283.1548750190156;
-	Tue, 29 Jan 2019 00:23:10 -0800 (PST)
+	bh=EnqG5mDu030tQl37+ITi8Al3urou9AfTygc6tZoFTd4=;
+	b=nNvOP6AkiiTZ0JBaSjhcvu45K2N/0i18tVgzMX8DtcIxLl0u/u9xMfcUx1skqYdTGa
+	pl65wtwcEZ30CyBTHVHzYtTrHN7Ag9IJ1QT2bEadGG/iiVz93kyNJatbzy9d7dIkcJpE
+	9ME1/ORtQK3eF5BeTq+tmwvlUWe3Lsl/5zQC3+hegnHJjDWciVHdl6PQauhl0wb2y6it
+	C0P2z8zVi2WzLt98R20oAYFzSax3b+1n3/fKsc8FV0Bta88f9Y271ccbC/RY8gVon980
+	VlzigHZE8rE8/uOdOchSFiLl34m9Wj5Ty2nEX0bLaZWcsDkBgIDf0C56KZpJZeNhyZ8C
+	+5Jw==
+X-Gm-Message-State: AJcUukfJk/qcjnrzoYCkHTPr6o/XOA/k3qeKqysY+tKDau1PZ1wnqY31
+	NP+hWL1vK2CWUcJzo4haRH6JblAChGs=
+X-Google-Smtp-Source: ALg8bN7O1tMHs3EdkCpNfawvflpt7MGb3ZQRnmf8BIHLT9xQdtg36KEFBehMyjtVENHYkz0IHH9jHw==
+X-Received: by 2002:a7b:c142:: with SMTP id z2mr21223042wmi.102.1548750360029; 
+	Tue, 29 Jan 2019 00:26:00 -0800 (PST)
 Received: from [192.168.1.33] (110.red-83-51-161.dynamicip.rima-tde.net.
 	[83.51.161.110]) by smtp.gmail.com with ESMTPSA id
-	z9sm125854328wrs.63.2019.01.29.00.23.09
+	a18sm141461557wrp.13.2019.01.29.00.25.59
 	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 29 Jan 2019 00:23:09 -0800 (PST)
-To: Wei Yang <richardw.yang@linux.intel.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, imammedo@redhat.com,
-	laurent@vivier.eu, mst@redhat.com
+	Tue, 29 Jan 2019 00:25:59 -0800 (PST)
+To: Wei Yang <richardw.yang@linux.intel.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: imammedo@redhat.com, laurent@vivier.eu, mst@redhat.com
 References: <20190125060157.29935-1-richardw.yang@linux.intel.com>
 	<20190129000820.31190-1-richardw.yang@linux.intel.com>
-	<feb8687e-0d0c-a20a-9b37-c8284aaae9f5@redhat.com>
-	<20190129080455.GA10084@richard>
+	<20190129000820.31190-2-richardw.yang@linux.intel.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <91c53c72-8e9c-f68d-1dc8-f6320ed3dfc0@redhat.com>
-Date: Tue, 29 Jan 2019 09:23:08 +0100
+Message-ID: <0f61313f-8a66-587e-b3b0-dc485923bf8d@redhat.com>
+Date: Tue, 29 Jan 2019 09:25:53 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20190129080455.GA10084@richard>
+In-Reply-To: <20190129000820.31190-2-richardw.yang@linux.intel.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 0/3] Trivial cleanup in
- hw/acpi
+X-Received-From: 209.85.128.67
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 1/3] hw/i386/pc.c: remove
+ unused function pc_acpi_init()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,38 +70,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Jan 2019 08:23:13 -0000
+X-List-Received-Date: Tue, 29 Jan 2019 08:26:03 -0000
 
-On 1/29/19 9:04 AM, Wei Yang wrote:
-> On Tue, Jan 29, 2019 at 07:56:54AM +0100, Philippe Mathieu-Daudé wrote:
->> Hi Wei,
->>
->> On 1/29/19 1:08 AM, Wei Yang wrote:
->>> There are several functions/variable which are not used anymore.
->>>
->>> This serials just remove those without functional change.
->>>
->>> Wei Yang (3):
->>>   hw/i386/pc.c: remove unused function pc_acpi_init()
->>>   hw/acpi: remove unused function acpi_table_add_builtin()
->>>   hw/acpi: remove unnecessary variable acpi_table_builtin
->>>
->>>  hw/acpi/core.c         | 10 +---------
->>>  hw/i386/pc.c           | 27 ---------------------------
->>>  include/hw/acpi/acpi.h |  1 -
->>>  include/hw/i386/pc.h   |  1 -
->>>  4 files changed, 1 insertion(+), 38 deletions(-)
->>>
->>
->> Please do not post iterated series in reply to previous version, but as
->> new thread:
->> - patches are parsed by scripts
->> - some email clients can tag a thread as "reviewed, skip" and replies to
->> this thread will be masked.
->>
+On 1/29/19 1:08 AM, Wei Yang wrote:
+> Function pc_acpi_init() is not used anymore.
 > 
-> Well, do I need to repost it in a new thread?
+> Remove the definition and declaration.
+> 
+> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
 
-It depends who will take this patchset and his mood :)
-Let's wait and see.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+> ---
+>  hw/i386/pc.c         | 27 ---------------------------
+>  include/hw/i386/pc.h |  1 -
+>  2 files changed, 28 deletions(-)
+> 
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 5317e08f60..734d3268fa 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -1280,33 +1280,6 @@ void pc_pci_as_mapping_init(Object *owner, MemoryRegion *system_memory,
+>                                          pci_address_space, -1);
+>  }
+>  
+> -void pc_acpi_init(const char *default_dsdt)
+> -{
+> -    char *filename;
+> -
+> -    if (acpi_tables != NULL) {
+> -        /* manually set via -acpitable, leave it alone */
+> -        return;
+> -    }
+> -
+> -    filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, default_dsdt);
+> -    if (filename == NULL) {
+> -        warn_report("failed to find %s", default_dsdt);
+> -    } else {
+> -        QemuOpts *opts = qemu_opts_create(qemu_find_opts("acpi"), NULL, 0,
+> -                                          &error_abort);
+> -        Error *err = NULL;
+> -
+> -        qemu_opt_set(opts, "file", filename, &error_abort);
+> -
+> -        acpi_table_add_builtin(opts, &err);
+> -        if (err) {
+> -            warn_reportf_err(err, "failed to load %s: ", filename);
+> -        }
+> -        g_free(filename);
+> -    }
+> -}
+> -
+>  void xen_load_linux(PCMachineState *pcms)
+>  {
+>      int i;
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 9d29c4b1df..541124ba6d 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -187,7 +187,6 @@ void pc_acpi_smi_interrupt(void *opaque, int irq, int level);
+>  
+>  void pc_cpus_init(PCMachineState *pcms);
+>  void pc_hot_add_cpu(const int64_t id, Error **errp);
+> -void pc_acpi_init(const char *default_dsdt);
+>  
+>  void pc_guest_info_init(PCMachineState *pcms);
+>  
+> 
 
