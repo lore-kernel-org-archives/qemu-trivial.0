@@ -1,67 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1goJZJ-0006Uy-Fe
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 21:56:09 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37132)
+	id 1goNKN-0004Ts-Fg
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Jan 2019 01:56:59 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41572)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1goJZI-0006UC-7E
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 21:56:08 -0500
+	(envelope-from <philmd@redhat.com>) id 1goNKL-0004Tg-U4
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 01:56:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1goJZH-0008Gk-LO
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 21:56:08 -0500
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:38045)
+	(envelope-from <philmd@redhat.com>) id 1goNKL-00072h-8C
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 01:56:57 -0500
+Received: from mail-wr1-f66.google.com ([209.85.221.66]:34063)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1goJZH-0008Fr-BU; Mon, 28 Jan 2019 21:56:07 -0500
-Received: by mail-pf1-x442.google.com with SMTP id q1so8962903pfi.5;
-	Mon, 28 Jan 2019 18:56:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=vjEVPyHPRdoV5XEg1WaN0K/tQZNORYxeU8bAkV3wVe0=;
-	b=cxzXu7Qmc/a+zxx5QCVhYqWbJ4kqA+oBg8bE05a3EVSgHw8yXLUFRAigwLvoA5RhCT
-	xpBHEE6/QfgOV9GgP2TxPX2H3W9doDAKaKIh3UwZEzhf6cQbS0MkU7agtQUOp056RgmE
-	yu2QgDh6ppKr0Ox+i7brWJCxxDOGKcfkJrWJaFf+toKJgtQvSOtH0K6g3qD3ZD3lzXp5
-	x92NwgnfubVmU4txyNSWgbant+0f8mGDeiCrjZwmFVhxRVr+Ns8YwzHeVdd5a/zHpSn7
-	TT3X72Xaz6A+F6ybAtr7je8LVeaqSo5L40W8zhRUy6QyYqTFh6QLVN+QaUDt7GDQbko3
-	aqgQ==
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1goNKL-00072D-24
+	for qemu-trivial@nongnu.org; Tue, 29 Jan 2019 01:56:57 -0500
+Received: by mail-wr1-f66.google.com with SMTP id f7so20805778wrp.1
+	for <qemu-trivial@nongnu.org>; Mon, 28 Jan 2019 22:56:56 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=vjEVPyHPRdoV5XEg1WaN0K/tQZNORYxeU8bAkV3wVe0=;
-	b=tFva+e4IjcMycdsAIkKDQpgYCW5VRlfpnuaWr5zdKwRlMM8q19RZF2x+MZW83U/e48
-	E+9f6lA6j6Wr7OGkIFHiDvx/6NcpNcT5ck+SFg7Zz9KiPr7czEVk8SOR57SRweYnAPbG
-	oaWYb2tMJ1olLXHZ5lOH4GcHPWzcQGPYdzKNHSogLhlKpQHQZGOSVBETTwZCEiGPaWtT
-	yj938rMYJ7acIXMNb2u4FVHpzVzXWnQ9Buv207zuGIkHnQF0/wOQIGG+q+92SR9/vEvI
-	YT3aXrEdE54LDzwBDCNus7bOpdFvIiMN1GOHZJw8g78WANjd1GknZ31NSyZUUfuFQ7Lx
-	DfDg==
-X-Gm-Message-State: AJcUukdVQWNNnvzy/f3lgB/WRNe9gNe7CiOC/+aIaZD12QVOAeSsTN4A
-	MEdgvHKt5wG/xycxzwRMD/0=
-X-Google-Smtp-Source: ALg8bN5VlIVcgcXGYEh2Li1YJOEoplvXlHgUFBFU2BUFaczX1m31tCFDSuSXTQN2DyUtvjj/0sMbpw==
-X-Received: by 2002:a63:fd53:: with SMTP id m19mr22350182pgj.340.1548730566544;
-	Mon, 28 Jan 2019 18:56:06 -0800 (PST)
-Received: from localhost (42-3-94-015.static.netvigator.com. [42.3.94.15])
-	by smtp.gmail.com with ESMTPSA id e9sm41444259pff.5.2019.01.28.18.56.05
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 28 Jan 2019 18:56:05 -0800 (PST)
-Date: Tue, 29 Jan 2019 10:56:03 +0800
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: kumar sourav <sourav.jb1988@gmail.com>
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org,
-	joel@jms.id.au, qemu-devel@nongnu.org
-Message-ID: <20190129025603.GC3264@stefanha-x1.localdomain>
-References: <20190125155630.17430-1-sourav.jb1988@gmail.com>
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=jFXQomLrFs1V1ypC9QQRWzSmpbr6wuuHbppcxN5fkoQ=;
+	b=MhPk7bYMt4EF9oZuUP2w7NkOUFDKKcsbbfH6VnMrtHYxHejA9JXvwu4a+w3uEeqcX5
+	Avw+KPUBKK8mOpTTTfQIQv8CAdOQ2ral+2aw5te75anlFGiCmIC9btE+u/4JUlSIiY9M
+	+RA4XnTUJWJVAbXpuwJA8P09bWCBUe5gczs53PdB25J6OJ6KQH+7nIOd7wWd/9YWl7m+
+	K2jPh+Jnc41SUh/7eZy6CATR9HIo9ahAljNRdL8KUH7DQTuz885jhyHJFJnL2ISfR7hL
+	8dEj/sFeorwIsoO+xFG4o16BevGgCo5hvWxhBqPPnBoSJkRWvBSZH/FIeGJjaPtpl/Fp
+	2hHA==
+X-Gm-Message-State: AJcUukcWQhAjk1YJUI7bmfYekHrHHQNHxUmPUVmGnSG59ez1CfVSaeeI
+	Nt9hxnRbgWLLwUTmCAsbhyv9RQ==
+X-Google-Smtp-Source: ALg8bN4s/5CcDUGNa07+31E4lKnTVuD6EqAULADmoRDidwz8DE8M6ChgHYxY95uiKMDlMzSgLoRZhQ==
+X-Received: by 2002:adf:9f10:: with SMTP id l16mr25611012wrf.206.1548745016030;
+	Mon, 28 Jan 2019 22:56:56 -0800 (PST)
+Received: from [192.168.1.33] (110.red-83-51-161.dynamicip.rima-tde.net.
+	[83.51.161.110]) by smtp.gmail.com with ESMTPSA id
+	x15sm158141320wrs.27.2019.01.28.22.56.55
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Mon, 28 Jan 2019 22:56:55 -0800 (PST)
+To: Wei Yang <richardw.yang@linux.intel.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: imammedo@redhat.com, laurent@vivier.eu, mst@redhat.com
+References: <20190125060157.29935-1-richardw.yang@linux.intel.com>
+	<20190129000820.31190-1-richardw.yang@linux.intel.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <feb8687e-0d0c-a20a-9b37-c8284aaae9f5@redhat.com>
+Date: Tue, 29 Jan 2019 07:56:54 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="/Uq4LBwYP4y1W6pO"
-Content-Disposition: inline
-In-Reply-To: <20190125155630.17430-1-sourav.jb1988@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::442
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/arm/nrf51_soc: set
- object owner in memory_region_init_ram
+In-Reply-To: <20190129000820.31190-1-richardw.yang@linux.intel.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.221.66
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 0/3] Trivial cleanup in
+ hw/acpi
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,38 +69,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Jan 2019 02:56:08 -0000
+X-List-Received-Date: Tue, 29 Jan 2019 06:56:58 -0000
 
+Hi Wei,
 
---/Uq4LBwYP4y1W6pO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 1/29/19 1:08 AM, Wei Yang wrote:
+> There are several functions/variable which are not used anymore.
+> 
+> This serials just remove those without functional change.
+> 
+> Wei Yang (3):
+>   hw/i386/pc.c: remove unused function pc_acpi_init()
+>   hw/acpi: remove unused function acpi_table_add_builtin()
+>   hw/acpi: remove unnecessary variable acpi_table_builtin
+> 
+>  hw/acpi/core.c         | 10 +---------
+>  hw/i386/pc.c           | 27 ---------------------------
+>  include/hw/acpi/acpi.h |  1 -
+>  include/hw/i386/pc.h   |  1 -
+>  4 files changed, 1 insertion(+), 38 deletions(-)
+> 
 
-On Fri, Jan 25, 2019 at 09:26:30PM +0530, kumar sourav wrote:
-> set object owner in memory_region_init_ram() instead
-> of NULL.
->=20
-> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
-> ---
->  hw/arm/nrf51_soc.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+Please do not post iterated series in reply to previous version, but as
+new thread:
+- patches are parsed by scripts
+- some email clients can tag a thread as "reviewed, skip" and replies to
+this thread will be masked.
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Regards,
 
---/Uq4LBwYP4y1W6pO
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJcT8DDAAoJEJykq7OBq3PIK+cH/0l8V9pfs307KCKinbjQ60dR
-F+qmqIPxXg6RTOnCQ5E5b5gNtxEtzR2xVu4l/E9WAnkeVe+6hrtD+SlI3Okx6WtL
-ARiOOF8mx+ouitE+abwha42U+a+8GkjJvfo59V8C7n/LjYFtcJtZh0o0X03/e7wj
-8vGSVnbYbYgRklVc3BkQf8OQXzIHFSlZDbYE+dEAaYFarB3IdvCpPoAKeEyPGAE9
-jpD3wXwq3dT6UErsvIxyzpsiaUa4+X8UuEotlwoNq2JLGPH10uDm9+OOIZK/44dE
-rvPJJcX8UzqcvYwae7/rmkSvPdZsVuEWePWgobCPEk8MNIV0x4sVo6SWYTkR0fM=
-=DADY
------END PGP SIGNATURE-----
-
---/Uq4LBwYP4y1W6pO--
+Phil.
 
