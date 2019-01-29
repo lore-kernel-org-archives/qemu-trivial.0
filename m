@@ -1,42 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1goHBD-0003cP-8f
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 19:23:07 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40213)
+	id 1goJZJ-0006Uy-Fe
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Jan 2019 21:56:09 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37132)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1goHB9-0003TM-CL
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 19:23:04 -0500
+	(envelope-from <stefanha@gmail.com>) id 1goJZI-0006UC-7E
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 21:56:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1goGxq-00008v-K9
-	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 19:09:19 -0500
-Received: from mga03.intel.com ([134.134.136.65]:3979)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1goGxq-00008S-Ci; Mon, 28 Jan 2019 19:09:18 -0500
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-	by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	28 Jan 2019 16:09:16 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.56,535,1539673200"; d="scan'208";a="110542221"
-Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.37])
-	by orsmga007.jf.intel.com with ESMTP; 28 Jan 2019 16:09:15 -0800
-From: Wei Yang <richardw.yang@linux.intel.com>
-To: qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: mst@redhat.com, laurent@vivier.eu, imammedo@redhat.com,
-	Wei Yang <richardw.yang@linux.intel.com>
-Date: Tue, 29 Jan 2019 08:08:17 +0800
-Message-Id: <20190129000820.31190-1-richardw.yang@linux.intel.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20190125060157.29935-1-richardw.yang@linux.intel.com>
-References: <20190125060157.29935-1-richardw.yang@linux.intel.com>
+	(envelope-from <stefanha@gmail.com>) id 1goJZH-0008Gk-LO
+	for qemu-trivial@nongnu.org; Mon, 28 Jan 2019 21:56:08 -0500
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:38045)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1goJZH-0008Fr-BU; Mon, 28 Jan 2019 21:56:07 -0500
+Received: by mail-pf1-x442.google.com with SMTP id q1so8962903pfi.5;
+	Mon, 28 Jan 2019 18:56:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=vjEVPyHPRdoV5XEg1WaN0K/tQZNORYxeU8bAkV3wVe0=;
+	b=cxzXu7Qmc/a+zxx5QCVhYqWbJ4kqA+oBg8bE05a3EVSgHw8yXLUFRAigwLvoA5RhCT
+	xpBHEE6/QfgOV9GgP2TxPX2H3W9doDAKaKIh3UwZEzhf6cQbS0MkU7agtQUOp056RgmE
+	yu2QgDh6ppKr0Ox+i7brWJCxxDOGKcfkJrWJaFf+toKJgtQvSOtH0K6g3qD3ZD3lzXp5
+	x92NwgnfubVmU4txyNSWgbant+0f8mGDeiCrjZwmFVhxRVr+Ns8YwzHeVdd5a/zHpSn7
+	TT3X72Xaz6A+F6ybAtr7je8LVeaqSo5L40W8zhRUy6QyYqTFh6QLVN+QaUDt7GDQbko3
+	aqgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=vjEVPyHPRdoV5XEg1WaN0K/tQZNORYxeU8bAkV3wVe0=;
+	b=tFva+e4IjcMycdsAIkKDQpgYCW5VRlfpnuaWr5zdKwRlMM8q19RZF2x+MZW83U/e48
+	E+9f6lA6j6Wr7OGkIFHiDvx/6NcpNcT5ck+SFg7Zz9KiPr7czEVk8SOR57SRweYnAPbG
+	oaWYb2tMJ1olLXHZ5lOH4GcHPWzcQGPYdzKNHSogLhlKpQHQZGOSVBETTwZCEiGPaWtT
+	yj938rMYJ7acIXMNb2u4FVHpzVzXWnQ9Buv207zuGIkHnQF0/wOQIGG+q+92SR9/vEvI
+	YT3aXrEdE54LDzwBDCNus7bOpdFvIiMN1GOHZJw8g78WANjd1GknZ31NSyZUUfuFQ7Lx
+	DfDg==
+X-Gm-Message-State: AJcUukdVQWNNnvzy/f3lgB/WRNe9gNe7CiOC/+aIaZD12QVOAeSsTN4A
+	MEdgvHKt5wG/xycxzwRMD/0=
+X-Google-Smtp-Source: ALg8bN5VlIVcgcXGYEh2Li1YJOEoplvXlHgUFBFU2BUFaczX1m31tCFDSuSXTQN2DyUtvjj/0sMbpw==
+X-Received: by 2002:a63:fd53:: with SMTP id m19mr22350182pgj.340.1548730566544;
+	Mon, 28 Jan 2019 18:56:06 -0800 (PST)
+Received: from localhost (42-3-94-015.static.netvigator.com. [42.3.94.15])
+	by smtp.gmail.com with ESMTPSA id e9sm41444259pff.5.2019.01.28.18.56.05
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 28 Jan 2019 18:56:05 -0800 (PST)
+Date: Tue, 29 Jan 2019 10:56:03 +0800
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: kumar sourav <sourav.jb1988@gmail.com>
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+	joel@jms.id.au, qemu-devel@nongnu.org
+Message-ID: <20190129025603.GC3264@stefanha-x1.localdomain>
+References: <20190125155630.17430-1-sourav.jb1988@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="/Uq4LBwYP4y1W6pO"
+Content-Disposition: inline
+In-Reply-To: <20190125155630.17430-1-sourav.jb1988@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 134.134.136.65
-Subject: [Qemu-trivial] [PATCH v2 0/3] Trivial cleanup in hw/acpi
+X-Received-From: 2607:f8b0:4864:20::442
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/arm/nrf51_soc: set
+ object owner in memory_region_init_ram
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,24 +73,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Jan 2019 00:23:04 -0000
+X-List-Received-Date: Tue, 29 Jan 2019 02:56:08 -0000
 
-There are several functions/variable which are not used anymore.
 
-This serials just remove those without functional change.
+--/Uq4LBwYP4y1W6pO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Wei Yang (3):
-  hw/i386/pc.c: remove unused function pc_acpi_init()
-  hw/acpi: remove unused function acpi_table_add_builtin()
-  hw/acpi: remove unnecessary variable acpi_table_builtin
+On Fri, Jan 25, 2019 at 09:26:30PM +0530, kumar sourav wrote:
+> set object owner in memory_region_init_ram() instead
+> of NULL.
+>=20
+> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
+> ---
+>  hw/arm/nrf51_soc.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 
- hw/acpi/core.c         | 10 +---------
- hw/i386/pc.c           | 27 ---------------------------
- include/hw/acpi/acpi.h |  1 -
- include/hw/i386/pc.h   |  1 -
- 4 files changed, 1 insertion(+), 38 deletions(-)
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
--- 
-2.19.1
+--/Uq4LBwYP4y1W6pO
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJcT8DDAAoJEJykq7OBq3PIK+cH/0l8V9pfs307KCKinbjQ60dR
+F+qmqIPxXg6RTOnCQ5E5b5gNtxEtzR2xVu4l/E9WAnkeVe+6hrtD+SlI3Okx6WtL
+ARiOOF8mx+ouitE+abwha42U+a+8GkjJvfo59V8C7n/LjYFtcJtZh0o0X03/e7wj
+8vGSVnbYbYgRklVc3BkQf8OQXzIHFSlZDbYE+dEAaYFarB3IdvCpPoAKeEyPGAE9
+jpD3wXwq3dT6UErsvIxyzpsiaUa4+X8UuEotlwoNq2JLGPH10uDm9+OOIZK/44dE
+rvPJJcX8UzqcvYwae7/rmkSvPdZsVuEWePWgobCPEk8MNIV0x4sVo6SWYTkR0fM=
+=DADY
+-----END PGP SIGNATURE-----
+
+--/Uq4LBwYP4y1W6pO--
 
