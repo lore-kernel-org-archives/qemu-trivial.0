@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gopqD-0001wI-QA
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 08:23:45 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37302)
+	id 1gopqE-0001we-1N
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 08:23:46 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37335)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gopq9-0001rH-E7
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:43 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gopqA-0001rv-2Z
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gopq7-0006v0-Ot
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:41 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:48705)
+	(envelope-from <laurent@vivier.eu>) id 1gopq8-0006vt-BJ
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:42 -0500
+Received: from mout.kundenserver.de ([212.227.126.133]:45317)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1goppp-0006LX-5i; Wed, 30 Jan 2019 08:23:21 -0500
+	id 1gopq0-0006nR-OA; Wed, 30 Jan 2019 08:23:33 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N79q8-1hE3JO2Vlk-017TqL; Wed, 30 Jan 2019 14:22:42 +0100
+	id 1N1fei-1hHL5k26rA-011zf3; Wed, 30 Jan 2019 14:22:48 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -33,34 +33,34 @@ Cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Thomas Huth <thuth@redhat.com>
-Date: Wed, 30 Jan 2019 14:22:06 +0100
-Message-Id: <20190130132214.25493-6-laurent@vivier.eu>
+	Thomas Huth <thuth@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>
+Date: Wed, 30 Jan 2019 14:22:09 +0100
+Message-Id: <20190130132214.25493-9-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190130132214.25493-1-laurent@vivier.eu>
 References: <20190130132214.25493-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:fQNQLgZ8LlxtRcaHA0PFLjK3elyyjVgzJvUuPzylsV1miAtZiFe
-	jBzx7gEuEEDo34A3SHdMSUUWn1gbVz5RzRzZZ1zajc4K+0bSgDfyaqGh47xfCMt2RFWBzsa
-	mnbqcD9jrf6DQsRNSCsiUrtGgPPvN8F1tGUiko+LP6AQkoFkvQoCcDN5pHP0gE0MVe+fiFY
-	FeUHsD4QCJAVMHhn7D0fw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ZlfFz/oy/N8=:HFyB22Ep1sQMQZNJfUkFDE
-	9zx8tvIGyCoPvZONt3jAvVhaluYydnG+IDIKQZQLt0sM9VO2eyHkTBjckkLJ3t36JFOvUE9Th
-	c3u9pusV9kIT5daHFX2JX21sqshqE0GpPyrMeVKpgaIcUO97WetBR8r9V3dOQQqUutMUHlpYD
-	Nfc7VbWSTHyUT+uclokDrEa2XaZy+s7AygVByZHLzMgEQFD5brOcu8ktRi/5wNJbImthWCcFW
-	Kjz3Kk7ivTQKI1rja4LSn0YzaM9Aj0WJaGQJIU6I37/eUe+aZpFjUqH1o02qbzPon91EUnNpA
-	xfE+dgFKxGq7XmF2G53akpAWWcYXMoeCsQs+0Mkc5aBA0HuM4wqmYos9DyiNqJ806mBLTBL04
-	6uLSlUSFY9bjkiQI6D7LEolU7SmCHzOxUOnrH08ERH5/0dGuKzr5ywcOxviVV8isl5tHv9/Cl
-	2YaI3ndInU/jsS9fKzjRFp/Cq7t/yJrO5CDySoSxIBNjtjTf8vSIS/ln4o4cTBqB1236wvbKy
-	zy9e5lhek0CLL3fg/ax9JPe5hHlkfzg8pDT/TOFhCOYbrtJiLP+xLuu0VYSXl4OG1tnyDiYAr
-	KRBnSc52PfKuL6jbjhA3jEc8OyLJ52pvs7q+8QKoqDybXlvWPaz0i6Eu+nJ1PYR3pwzw1fu0j
-	s1sZ2uNkygjlgZgO9hawYAmOa5H1PuH25xDVKllGOUIpncqxxotqkq2V3euV8pf6+7dEfUFq+
-	p9PQ2zfAE7J1g5LkNga80D9nX7ihnzKtTxohcA==
+X-Provags-ID: V03:K1:F3lU3uHqHdhZ0ljCLfZPtIBB/JoK8ak1qo+tcAQri4FL1l8q3DZ
+	1356I6gi4UUyNZqOluAl+c1DMjHAE6uLbs0kbDiSzNrcaxhPc8GKTSyVlLG7Ub0R4/gb6hh
+	6mjdoOxAUn+ui+jdgo0J5dT25/FdtWvzDdJ2SfeewoTvnQpwj+1P3oU8+sDiJjmsa/TYSS7
+	jdZy9+tRnVEhLf3s8cWeg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:XUjrLbazSgs=:mxvSkj9kTy7U+oWFPhSMSa
+	a6W5ZBhESown6sO5bPonIvGcpeXhbp5x31uyf0c2mmGvD0CzOYwHbrp+Vk6ckALiwWh2EVtEg
+	4u5HyTKE8rXdUHtWg/Kxo3rySbMLQRbcxvoWzln8Cc2tZ7OSVre6fygL8px3D1lpsVAnnBoJL
+	PEofX1VGmZvlRmhQKMNXxMOAeZiJ5A8jpjSi01xKmc+oWQ2/cYXi9jKE018V6xmORW8cgVhNR
+	rcr8gEbMeSacKA68GhaUms6a8KB8/eZ4NcUWTDp7MXx7B9WJ0e7z1a92IMkaSjalAY9EPqo6T
+	wPCPYOMh+2vvrWnCws4QgPqL7iXNQ/UsNwrptnfegBejYGk9oIUCi8qqtnfpwmEJWxmPUWRKS
+	WtatXz+qzoxyWKoeeNH/ueCWunpe6DIuxnyvr5SmOrpPD/bK5hzdFfwl2PBBJxqbQuwQ+16tY
+	XdJaQqGn4e78p9L0hJIDQ3eMS4n+TEGoum7+UuysiAXpyVMohZF7wfxkxLeyuZzXyyxSEzbb9
+	2fk/743AVGC6vpbQ/mh34m9kn7WJMZ8aBH6QS0y9gt+Egwb0a9VzC1Rh2/tFzHCVVghVL43+e
+	w9zjEJw9vOk51LvEoFc9MN4kY6a08nsFyxBQPJW3vpp7v0WL9UcJKOYcjw+93zyDodtg1FfSU
+	YLUE8alC64O9zPNQi4yBwL9ko+InN9gDfycrsSAudwhYCgZqXp2XJ5irHWBxHn8LuPzB9xrdB
+	wcgIjDzk9yMTVC+74p80MQ4KDucV9+8XtJPzNg==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: [Qemu-trivial] [PULL 05/13] Don't talk about the LGPL if the file
- is licensed under the GPL
+X-Received-From: 212.227.126.133
+Subject: [Qemu-trivial] [PULL 08/13] target/tricore: Fix LGPL version number
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,193 +72,163 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 13:23:43 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 13:23:44 -0000
 
 From: Thomas Huth <thuth@redhat.com>
 
-Some files claim that the code is licensed under the GPL, but then
-suddenly suggest that the user should have a look at the LGPL.
-That's of course non-sense, replace it with the correct GPL wording
-instead.
+It's either "GNU *Library* General Public version 2" or "GNU Lesser
+General Public version *2.1*", but there was no "version 2.0" of the
+"Lesser" library. So assume that version 2.1 is meant here.
 
+Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <1548255083-8190-1-git-send-email-thuth@redhat.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Acked-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <1548252536-6242-4-git-send-email-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- crypto/afsplit.c           | 11 +++++------
- include/crypto/afsplit.h   | 11 +++++------
- include/hw/pci-host/gpex.h |  4 ++--
- include/hw/pci-host/q35.h  |  4 ++--
- include/qemu/range.h       | 11 +++++------
- target/i386/hvf/hvf.c      |  6 +++---
- util/range.c               | 11 +++++------
- 7 files changed, 27 insertions(+), 31 deletions(-)
+ target/tricore/cpu-qom.h         | 2 +-
+ target/tricore/cpu.c             | 2 +-
+ target/tricore/cpu.h             | 2 +-
+ target/tricore/fpu_helper.c      | 2 +-
+ target/tricore/helper.c          | 2 +-
+ target/tricore/helper.h          | 2 +-
+ target/tricore/op_helper.c       | 2 +-
+ target/tricore/translate.c       | 2 +-
+ target/tricore/tricore-defs.h    | 2 +-
+ target/tricore/tricore-opcodes.h | 2 +-
+ 10 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/crypto/afsplit.c b/crypto/afsplit.c
-index 825e2cff26..328d68c96b 100644
---- a/crypto/afsplit.c
-+++ b/crypto/afsplit.c
-@@ -8,19 +8,18 @@
-  * Copyright (C) 2004, Clemens Fruhwirth <clemens@endorphin.org>
-  * Copyright (C) 2009-2012, Red Hat, Inc. All rights reserved.
-  *
-- * This library is free software; you can redistribute it and/or
-+ * This program is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU General Public License
-  * as published by the Free Software Foundation; either version 2
-  * of the License, or (at your option) any later version.
-  *
-- * This library is distributed in the hope that it will be useful,
-+ * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * Lesser General Public License for more details.
-- *
-- * You should have received a copy of the GNU Lesser General Public
-- * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ * General Public License for more details.
-  *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
-  */
- 
- #include "qemu/osdep.h"
-diff --git a/include/crypto/afsplit.h b/include/crypto/afsplit.h
-index 7dd21f0a67..4894d64330 100644
---- a/include/crypto/afsplit.h
-+++ b/include/crypto/afsplit.h
-@@ -3,19 +3,18 @@
-  *
-  * Copyright (c) 2015-2016 Red Hat, Inc.
-  *
-- * This library is free software; you can redistribute it and/or
-+ * This program is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU General Public License
-  * as published by the Free Software Foundation; either version 2
-  * of the License, or (at your option) any later version.
-  *
-- * This library is distributed in the hope that it will be useful,
-+ * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * Lesser General Public License for more details.
-- *
-- * You should have received a copy of the GNU Lesser General Public
-- * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ * General Public License for more details.
-  *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
-  */
- 
- #ifndef QCRYPTO_AFSPLIT_H
-diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
-index aef38b881b..2af1c4a37e 100644
---- a/include/hw/pci-host/gpex.h
-+++ b/include/hw/pci-host/gpex.h
-@@ -13,8 +13,8 @@
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  * GNU General Public License for more details.
-  *
-- * You should have received a copy of the GNU Lesser General Public
-- * License along with this library; if not, see <http://www.gnu.org/licenses/>
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, see <http://www.gnu.org/licenses/>
-  */
- 
- #ifndef HW_GPEX_H
-diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
-index 8f4ddde393..5ed77facd0 100644
---- a/include/hw/pci-host/q35.h
-+++ b/include/hw/pci-host/q35.h
-@@ -15,8 +15,8 @@
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  * GNU General Public License for more details.
-  *
-- * You should have received a copy of the GNU Lesser General Public
-- * License along with this library; if not, see <http://www.gnu.org/licenses/>
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, see <http://www.gnu.org/licenses/>
-  */
- 
- #ifndef HW_Q35_H
-diff --git a/include/qemu/range.h b/include/qemu/range.h
-index ba606c6bc0..71b8b215c6 100644
---- a/include/qemu/range.h
-+++ b/include/qemu/range.h
-@@ -3,19 +3,18 @@
-  *
-  * Copyright (c) 2015-2016 Red Hat, Inc.
-  *
-- * This library is free software; you can redistribute it and/or
-+ * This program is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU General Public
+diff --git a/target/tricore/cpu-qom.h b/target/tricore/cpu-qom.h
+index 6a69756126..93c9d77fe3 100644
+--- a/target/tricore/cpu-qom.h
++++ b/target/tricore/cpu-qom.h
+@@ -4,7 +4,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
   * License as published by the Free Software Foundation; either
-  * version 2 of the License, or (at your option) any later version.
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
   *
-- * This library is distributed in the hope that it will be useful,
-+ * This program is distributed in the hope that it will be useful,
+  * This library is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * Lesser General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public
-- * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ * General Public License for more details.
-  *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
-  */
- 
- #ifndef QEMU_RANGE_H
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index e193022c03..689b585027 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -13,10 +13,10 @@
-  * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * Lesser General Public License for more details.
-+ * General Public License for more details.
-  *
-- * You should have received a copy of the GNU Lesser General Public
-- * License along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
-  *
-  * This file contain code under public domain from the hvdos project:
-  * https://github.com/mist64/hvdos
-diff --git a/util/range.c b/util/range.c
-index 416df7cdae..098d9d2dc0 100644
---- a/util/range.c
-+++ b/util/range.c
-@@ -3,19 +3,18 @@
-  *
-  * Copyright (c) 2015-2016 Red Hat, Inc.
-  *
-- * This library is free software; you can redistribute it and/or
-+ * This program is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU General Public
+diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+index 2edaef1aef..e8d37e4040 100644
+--- a/target/tricore/cpu.c
++++ b/target/tricore/cpu.c
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
   * License as published by the Free Software Foundation; either
-  * version 2 of the License, or (at your option) any later version.
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
   *
-- * This library is distributed in the hope that it will be useful,
-+ * This program is distributed in the hope that it will be useful,
+  * This library is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * Lesser General Public License for more details.
-- *
-- * You should have received a copy of the GNU General Public
-- * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ * General Public License for more details.
+diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+index c3665c6ddd..00e69dc154 100644
+--- a/target/tricore/cpu.h
++++ b/target/tricore/cpu.h
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
   *
-+ * You should have received a copy of the GNU General Public License
-+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
-  */
- 
- #include "qemu/osdep.h"
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/tricore/fpu_helper.c b/target/tricore/fpu_helper.c
+index 31df462e4a..d8a6c0d25b 100644
+--- a/target/tricore/fpu_helper.c
++++ b/target/tricore/fpu_helper.c
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/tricore/helper.c b/target/tricore/helper.c
+index dad7eea085..0769046993 100644
+--- a/target/tricore/helper.c
++++ b/target/tricore/helper.c
+@@ -4,7 +4,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/tricore/helper.h b/target/tricore/helper.h
+index e634d0c680..f60e81096b 100644
+--- a/target/tricore/helper.h
++++ b/target/tricore/helper.h
+@@ -4,7 +4,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/tricore/op_helper.c b/target/tricore/op_helper.c
+index b57f35387d..ed9dc0c83e 100644
+--- a/target/tricore/op_helper.c
++++ b/target/tricore/op_helper.c
+@@ -4,7 +4,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/tricore/translate.c b/target/tricore/translate.c
+index b5ab40d4a2..14f0ddfa1e 100644
+--- a/target/tricore/translate.c
++++ b/target/tricore/translate.c
+@@ -6,7 +6,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/tricore/tricore-defs.h b/target/tricore/tricore-defs.h
+index 40abfaac14..e871aa1c6b 100644
+--- a/target/tricore/tricore-defs.h
++++ b/target/tricore/tricore-defs.h
+@@ -4,7 +4,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/tricore/tricore-opcodes.h b/target/tricore/tricore-opcodes.h
+index 2c3baab694..40bc121ba4 100644
+--- a/target/tricore/tricore-opcodes.h
++++ b/target/tricore/tricore-opcodes.h
+@@ -4,7 +4,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
 -- 
 2.20.1
 
