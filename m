@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gon19-0000T4-IN
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 05:22:51 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54737)
+	id 1gon3H-0001Y1-C7
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 05:25:03 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55218)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gon16-0000RN-Fz
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:22:49 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gon3F-0001Wg-2C
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:25:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gon15-0001xH-Hi
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:22:48 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:49055)
+	(envelope-from <laurent@vivier.eu>) id 1gon3C-0004uh-Ud
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:25:00 -0500
+Received: from mout.kundenserver.de ([212.227.126.133]:50419)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gon15-0001vd-8f; Wed, 30 Jan 2019 05:22:47 -0500
+	id 1gon2z-000434-Q7; Wed, 30 Jan 2019 05:24:47 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue009 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1M6lxe-1goDSF0QZy-008Kt2; Wed, 30 Jan 2019 11:22:29 +0100
+	(mreue011 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MHoAg-1gun421cF4-00EyPa; Wed, 30 Jan 2019 11:24:08 +0100
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	qemu-devel@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <thuth@redhat.com>,
@@ -27,7 +27,7 @@ Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <thuth@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Stefano Garzarella
 	<sgarzare@redhat.com>, Richard Henderson <rth@twiddle.net>
 References: <20190104181208.7809-1-philmd@redhat.com>
-	<20190104181208.7809-2-philmd@redhat.com>
+	<20190104181208.7809-3-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -72,35 +72,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <56ccdced-739b-49f9-7251-ec75aba01f92@vivier.eu>
-Date: Wed, 30 Jan 2019 11:22:25 +0100
+Message-ID: <77127630-f476-f134-30a9-9b2d1aaac36d@vivier.eu>
+Date: Wed, 30 Jan 2019 11:24:05 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190104181208.7809-2-philmd@redhat.com>
+In-Reply-To: <20190104181208.7809-3-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Nw/AOqZgxxk3FDWrazqYEYeZabMEg1MWN3TOdio7+YtAVTu2+MB
-	shjdaFM24tNFBUIkMH6HUA+w6HSjoXtl5AG777XoAi9Nzq0TipikLyPx8FSVHmVyBsQ5X+V
-	6E3HomccwLuFgydL9m+W7LFY/WC64PtstdqzD9FtLsDzI2Xtosxa8ROO614ZI67YAoUutMe
-	z/qXvPM1vNIosH0b6V4rQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:qaoqMuJz8Mk=:f3rv8jI3aw1AICRgpeR8FL
-	BVpL5fFSej1aOJlFhqOZom9KWz+IealAcK/HX4ggRg6h65TUm/k7Z1eOBUvzjxfwgNZrTWyws
-	E6/noaAsswokQ7XnNQFe+qZ5brWXOnK3/uX1G5TD7B4PqCBpT63o1JVAFTV/u1BeK4ou8TS5b
-	nO00OsJQSdaSEVXeqCl6NAs1eYwKw55W8Exdfdo2HHqqSZIQA2EHdBFiMiUKVFoVS04Bq9rT2
-	u/PUz8Y19iUwG1e3cOPgtf3n530KcgArrS8UknXoTZl6hfOEGVSUQSbQIszi9pXXagAgHz6++
-	dKWGcn5RnVnQVS70uDw5kXIPOrw3O9R3xNWnOAc5ep22Elmpm3HrNQvQgvmlZ2whHARMQ1DqJ
-	CbQdoIM0Cs73vG9oRZy9ElcL3Oq87INHoFSWBZOGz4os21Sb8Se7x+FVU42RSA3DEiGudqYpg
-	9Y42yN9WD04G2BELO7JMLIp466Vhi2ixo/OYKyj9kKmmAxAU+H6yjvnKWuGOK3uSGgXwaXeji
-	hMUaJp/GECtAy11bFraV4z4ijOhdsbBDiYfw5FHjlxwfvcqCc0pPVTq9C7jf2H+pqVwjkz2fY
-	Ujdg542R0pW9k2xvId/2jtdZlHlG8gh0s9/aukgyxYh8yFMcaHQqDDD1nUpObM225SlFQumtg
-	DtZiqEqbvRRE8OjoLNy4ryC+fiTGU7kyn+FiWfwGyVUoWL9dovcJRFv3RijxAIXkyM2+mjy8l
-	vUufBP7umcrRYozI+dBntoqWjYVPlTooAOXqTyXpxUM9FwzS+YkwnP8Ytv4=
+X-Provags-ID: V03:K1:3QV9ucXIO5rUCQ5Cpkr73V2mXYhtlNmDajEvcwsrnoPbdN8Yayj
+	enyXdZkOaXKtaD2pts8I2a6N/LEzBxQbumBN2xccxKUOhve7/6ClEEvJHvZPYLqqfXdphnp
+	ip2umlttG1A+AlEdkLQUCLd/DvtcDakdlWdTYRB8ohMfV+U5QsgcaPXY7N9dLooq4IImzWg
+	jgGOeQNndKTXOD60FnP3A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Ghtyd/91LR4=:x1CpopKysg4/fm3nC1BhCA
+	JfvD/rdQh5nCv2scoGO/AEW1BO8BMAz7BM0zbLvadK3YHHB/mAfmAdcOsLGDeJIYzaveTzgDP
+	GM8hV6Bs8t7gXqjhTEHkqlH1kZRdOolJgGvbYSYsn8VK/sHAlHnmyqxSYRuBvr9MWwxmEiIUw
+	TnqVI959KVlhiJhwy3OByLF/REmMBF927rviVz535E4Fp+lWln0AnHPrXn5g6WPU/4fh0eaj3
+	l753IksNhAwl3yCxVtXY4h18UvkjHR7yHo4I/G6k1vv5cSL93/imTRvbI3RlILwGic4gcWIA9
+	DXow5hcs/XKh1BuWxJpV+l8CTmKqE91R5mQlidj3aB2UQwiubgEngTIqJwsoFZX/U/+HnutXd
+	4yCsrby3UPGMVO0yaLsylCj2AqRpJjIHwoEEejG4kLcMbzL66raIya0iSeJB+ZFlNdkYUn2Yi
+	I7u4E4dtlxqVydNr527rbVA/1mVveLPsoTT04TYzFFIIBfFFGBcbO2xJDWGYt91HdZ6bc7S1X
+	j60HyLZ87LUSM8OMaWldq1Y75d2LN3b19z+RH3cCVxMb/0wnoa24nzaINLiz9qEAugm/gC6Wg
+	77ytHA/orm6QDS1qcBUs91MLNjtrRsbE8Qzp8zIIu9thxLBP0l0E3tOdK9eswFyVH8gmr1fR+
+	c6CNfnN4MNIq7T2s43H/cx5xq62o2HALghStQW3SdBtOzTH97X5tLHAEu3kfLnM9lGbhmB+99
+	ARKnN7GN+JX7D5VoYtbyLiMTBYSOEf4YkssSfPxeUEayopnZEQyMfRT869g=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: Re: [Qemu-trivial] [PATCH v2 1/3] util/cutils: Move size_to_str()
- from "qemu-common.h" to "cutils.h"
+X-Received-From: 212.227.126.133
+Subject: Re: [Qemu-trivial] [PATCH v2 2/3] util/cutils: Move ctype macros to
+ "cutils.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -112,97 +112,222 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 10:22:49 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 10:25:02 -0000
 
 On 04/01/2019 19:12, Philippe Mathieu-Daudé wrote:
-> The size_to_str() function doesn't need to be in a generic header.
+> Introduced in cd390083ad1, these macros don't need to be in
+> a generic header.
+> Add documentation to justify their use.
 > 
-> It makes also sens to find this function in the same header than
-> the opposite string to size functions: qemu_strtosz*().
-> Note than this function is already implemented in util/cutils.c.
-> 
-> Since we introduce a new function in a header, we document it,
-> using the previous comment from the source file.
-> 
+> Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  include/qemu-common.h        |  1 -
->  include/qemu/cutils.h        | 13 +++++++++++++
->  qapi/string-output-visitor.c |  2 +-
->  util/cutils.c                |  6 ------
->  4 files changed, 14 insertions(+), 8 deletions(-)
+> v2: Fixed checkpatch warnings (tabs)
+> ---
+>  hw/core/bus.c              |  2 +-
+>  hw/core/qdev-properties.c  |  1 +
+>  hw/s390x/s390-virtio-ccw.c |  1 +
+>  hw/scsi/scsi-generic.c     |  2 +-
+>  include/qemu-common.h      | 16 ----------------
+>  include/qemu/cutils.h      | 25 +++++++++++++++++++++++++
+>  qapi/qapi-util.c           |  2 +-
+>  qobject/json-parser.c      |  1 -
+>  target/ppc/monitor.c       |  1 +
+>  ui/keymaps.c               |  1 +
+>  util/id.c                  |  2 +-
+>  util/readline.c            |  1 -
+>  12 files changed, 33 insertions(+), 22 deletions(-)
 > 
-> diff --git a/include/qemu-common.h b/include/qemu-common.h
-> index ed60ba251d..760527294f 100644
-> --- a/include/qemu-common.h
-> +++ b/include/qemu-common.h
-> @@ -153,7 +153,6 @@ void qemu_hexdump(const char *buf, FILE *fp, const char *prefix, size_t size);
->  int parse_debug_env(const char *name, int max, int initial);
->  
->  const char *qemu_ether_ntoa(const MACAddr *mac);
-> -char *size_to_str(uint64_t val);
->  void page_size_init(void);
->  
->  /* returns non-zero if dump is in progress, otherwise zero is
-> diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
-> index d2dad3057c..9ee40470e3 100644
-> --- a/include/qemu/cutils.h
-> +++ b/include/qemu/cutils.h
-> @@ -157,6 +157,19 @@ int qemu_strtosz(const char *nptr, const char **end, uint64_t *result);
->  int qemu_strtosz_MiB(const char *nptr, const char **end, uint64_t *result);
->  int qemu_strtosz_metric(const char *nptr, const char **end, uint64_t *result);
->  
-> +/**
-> + * size_to_str:
-> + *
-> + * Return human readable string for size @val.
-> + * Use IEC binary units like KiB, MiB, and so forth.
-> + *
-> + * @val: The value to format.
-> + *       Can be anything that uint64_t allows (no more than "16 EiB").
-> + *
-> + * Caller is responsible for passing it to g_free().
-> + */
-> +char *size_to_str(uint64_t val);
-> +
->  /* used to print char* safely */
->  #define STR_OR_NULL(str) ((str) ? (str) : "null")
->  
-> diff --git a/qapi/string-output-visitor.c b/qapi/string-output-visitor.c
-> index 7ab64468d9..edf268b373 100644
-> --- a/qapi/string-output-visitor.c
-> +++ b/qapi/string-output-visitor.c
-> @@ -11,9 +11,9 @@
+> diff --git a/hw/core/bus.c b/hw/core/bus.c
+> index 4651f24486..dceb144075 100644
+> --- a/hw/core/bus.c
+> +++ b/hw/core/bus.c
+> @@ -18,7 +18,7 @@
 >   */
 >  
 >  #include "qemu/osdep.h"
 > -#include "qemu-common.h"
->  #include "qapi/string-output-visitor.h"
->  #include "qapi/visitor-impl.h"
 > +#include "qemu/cutils.h"
->  #include "qemu/host-utils.h"
->  #include <math.h>
->  #include "qemu/range.h"
-> diff --git a/util/cutils.c b/util/cutils.c
-> index e098debdc0..a8a3a3ba3b 100644
-> --- a/util/cutils.c
-> +++ b/util/cutils.c
-> @@ -816,12 +816,6 @@ const char *qemu_ether_ntoa(const MACAddr *mac)
->      return ret;
->  }
+>  #include "hw/qdev.h"
+>  #include "qapi/error.h"
 >  
-> -/*
-> - * Return human readable string for size @val.
-> - * @val can be anything that uint64_t allows (no more than "16 EiB").
-> - * Use IEC binary units like KiB, MiB, and so forth.
-> - * Caller is responsible for passing it to g_free().
-> - */
->  char *size_to_str(uint64_t val)
+> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+> index 943dc2654b..3bdebac361 100644
+> --- a/hw/core/qdev-properties.c
+> +++ b/hw/core/qdev-properties.c
+> @@ -1,4 +1,5 @@
+>  #include "qemu/osdep.h"
+> +#include "qemu/cutils.h"
+>  #include "net/net.h"
+>  #include "hw/qdev.h"
+>  #include "qapi/error.h"
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index fd9d0b0542..ed23bb7b3a 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -11,6 +11,7 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> +#include "qemu/cutils.h"
+>  #include "qapi/error.h"
+>  #include "cpu.h"
+>  #include "hw/boards.h"
+> diff --git a/hw/scsi/scsi-generic.c b/hw/scsi/scsi-generic.c
+> index 7237b4162e..86f65fd474 100644
+> --- a/hw/scsi/scsi-generic.c
+> +++ b/hw/scsi/scsi-generic.c
+> @@ -12,8 +12,8 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> +#include "qemu/cutils.h"
+>  #include "qapi/error.h"
+> -#include "qemu-common.h"
+>  #include "qemu/error-report.h"
+>  #include "hw/scsi/scsi.h"
+>  #include "hw/scsi/emulation.h"
+> diff --git a/include/qemu-common.h b/include/qemu-common.h
+> index 760527294f..ed43ae286d 100644
+> --- a/include/qemu-common.h
+> +++ b/include/qemu-common.h
+> @@ -33,22 +33,6 @@ int qemu_main(int argc, char **argv, char **envp);
+>  void qemu_get_timedate(struct tm *tm, int offset);
+>  int qemu_timedate_diff(struct tm *tm);
+>  
+> -#define qemu_isalnum(c)		isalnum((unsigned char)(c))
+> -#define qemu_isalpha(c)		isalpha((unsigned char)(c))
+> -#define qemu_iscntrl(c)		iscntrl((unsigned char)(c))
+> -#define qemu_isdigit(c)		isdigit((unsigned char)(c))
+> -#define qemu_isgraph(c)		isgraph((unsigned char)(c))
+> -#define qemu_islower(c)		islower((unsigned char)(c))
+> -#define qemu_isprint(c)		isprint((unsigned char)(c))
+> -#define qemu_ispunct(c)		ispunct((unsigned char)(c))
+> -#define qemu_isspace(c)		isspace((unsigned char)(c))
+> -#define qemu_isupper(c)		isupper((unsigned char)(c))
+> -#define qemu_isxdigit(c)	isxdigit((unsigned char)(c))
+> -#define qemu_tolower(c)		tolower((unsigned char)(c))
+> -#define qemu_toupper(c)		toupper((unsigned char)(c))
+> -#define qemu_isascii(c)		isascii((unsigned char)(c))
+> -#define qemu_toascii(c)		toascii((unsigned char)(c))
+> -
+>  void *qemu_oom_check(void *ptr);
+>  
+>  ssize_t qemu_write_full(int fd, const void *buf, size_t count)
+> diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
+> index 9ee40470e3..644f2d75bd 100644
+> --- a/include/qemu/cutils.h
+> +++ b/include/qemu/cutils.h
+> @@ -3,6 +3,31 @@
+>  
+>  #include "qemu/fprintf-fn.h"
+>  
+> +/**
+> + * unsigned ctype macros:
+> + *
+> + * The standards require that the argument for these functions
+> + * is either EOF or a value that is representable in the type
+> + * unsigned char. If the argument is of type char, it must be
+> + * cast to unsigned char. This is what these macros do,
+> + * avoiding 'signed to unsigned' conversion warnings.
+> + */
+> +#define qemu_isalnum(c)     isalnum((unsigned char)(c))
+> +#define qemu_isalpha(c)     isalpha((unsigned char)(c))
+> +#define qemu_iscntrl(c)     iscntrl((unsigned char)(c))
+> +#define qemu_isdigit(c)     isdigit((unsigned char)(c))
+> +#define qemu_isgraph(c)     isgraph((unsigned char)(c))
+> +#define qemu_islower(c)     islower((unsigned char)(c))
+> +#define qemu_isprint(c)     isprint((unsigned char)(c))
+> +#define qemu_ispunct(c)     ispunct((unsigned char)(c))
+> +#define qemu_isspace(c)     isspace((unsigned char)(c))
+> +#define qemu_isupper(c)     isupper((unsigned char)(c))
+> +#define qemu_isxdigit(c)    isxdigit((unsigned char)(c))
+> +#define qemu_tolower(c)     tolower((unsigned char)(c))
+> +#define qemu_toupper(c)     toupper((unsigned char)(c))
+> +#define qemu_isascii(c)     isascii((unsigned char)(c))
+> +#define qemu_toascii(c)     toascii((unsigned char)(c))
+> +
+>  /**
+>   * pstrcpy:
+>   * @buf: buffer to copy string into
+> diff --git a/qapi/qapi-util.c b/qapi/qapi-util.c
+> index e9b266bb70..ea93ae05d9 100644
+> --- a/qapi/qapi-util.c
+> +++ b/qapi/qapi-util.c
+> @@ -11,8 +11,8 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> +#include "qemu/cutils.h"
+>  #include "qapi/error.h"
+> -#include "qemu-common.h"
+>  
+>  const char *qapi_enum_lookup(const QEnumLookup *lookup, int val)
 >  {
->      static const char *suffixes[] = { "", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei" };
+> diff --git a/qobject/json-parser.c b/qobject/json-parser.c
+> index 7a7ae9e8d1..06316f3a53 100644
+> --- a/qobject/json-parser.c
+> +++ b/qobject/json-parser.c
+> @@ -15,7 +15,6 @@
+>  #include "qemu/cutils.h"
+>  #include "qemu/unicode.h"
+>  #include "qapi/error.h"
+> -#include "qemu-common.h"
+>  #include "qapi/qmp/qbool.h"
+>  #include "qapi/qmp/qdict.h"
+>  #include "qapi/qmp/qlist.h"
+> diff --git a/target/ppc/monitor.c b/target/ppc/monitor.c
+> index 14915119fc..dbcb921231 100644
+> --- a/target/ppc/monitor.c
+> +++ b/target/ppc/monitor.c
+> @@ -22,6 +22,7 @@
+>   * THE SOFTWARE.
+>   */
+>  #include "qemu/osdep.h"
+> +#include "qemu/cutils.h"
+>  #include "cpu.h"
+>  #include "monitor/monitor.h"
+>  #include "monitor/hmp-target.h"
+> diff --git a/ui/keymaps.c b/ui/keymaps.c
+> index 085889b555..00b52a6db3 100644
+> --- a/ui/keymaps.c
+> +++ b/ui/keymaps.c
+> @@ -23,6 +23,7 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> +#include "qemu/cutils.h"
+>  #include "keymaps.h"
+>  #include "sysemu/sysemu.h"
+>  #include "trace.h"
+> diff --git a/util/id.c b/util/id.c
+> index 6141352955..ca21a77522 100644
+> --- a/util/id.c
+> +++ b/util/id.c
+> @@ -11,7 +11,7 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> -#include "qemu-common.h"
+> +#include "qemu/cutils.h"
+>  #include "qemu/id.h"
+>  
+>  bool id_wellformed(const char *id)
+> diff --git a/util/readline.c b/util/readline.c
+> index ec91ee0fea..f3d8b0698a 100644
+> --- a/util/readline.c
+> +++ b/util/readline.c
+> @@ -23,7 +23,6 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> -#include "qemu-common.h"
+>  #include "qemu/readline.h"
+>  #include "qemu/cutils.h"
+>  
 > 
 
-Applied to my trivial-patches branch with updated patch description.
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
