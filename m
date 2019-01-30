@@ -1,24 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gomex-0003nR-TM
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:59:55 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48548)
+	id 1gomfN-00048q-8V
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 05:00:21 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48646)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomev-0003lv-Qs
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:59:54 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gomfF-00042J-MX
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:00:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomeu-0004bU-N2
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:59:53 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:58341)
+	(envelope-from <laurent@vivier.eu>) id 1gomf9-0004m6-BC
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:00:13 -0500
+Received: from mout.kundenserver.de ([212.227.126.131]:56073)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gomel-0004TM-W5; Wed, 30 Jan 2019 04:59:44 -0500
+	id 1gomf9-0004lO-0O; Wed, 30 Jan 2019 05:00:07 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue011 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1N4hex-1hGaWD2T27-011hGN; Wed, 30 Jan 2019 10:59:38 +0100
+	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MbAtM-1hQKKg4BpY-00bewK; Wed, 30 Jan 2019 10:59:55 +0100
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stafford Horne <shorne@gmail.com>
+Cc: qemu-trivial@nongnu.org,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
 References: <1548252536-6242-1-git-send-email-thuth@redhat.com>
-	<1548252536-6242-3-git-send-email-thuth@redhat.com>
+	<1548252536-6242-4-git-send-email-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -63,34 +64,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <e62b7f84-780c-6e4b-00da-a4fc7b33d474@vivier.eu>
-Date: Wed, 30 Jan 2019 10:59:37 +0100
+Message-ID: <eadb5ca9-213a-55b2-6f5d-4202375e5ff4@vivier.eu>
+Date: Wed, 30 Jan 2019 10:59:54 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <1548252536-6242-3-git-send-email-thuth@redhat.com>
+In-Reply-To: <1548252536-6242-4-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:a42HL/HTzI3q6ikYlizbC/dTz+fnyt4oV+o6S9r9NBqV8mJE0dy
-	JvHO8T1hjuTu5vQAY3PXAHcgOsLe4DLyBsAD4CkNrL3gfiDzwm2IMkMumN/6T+sfW/hphJv
-	YzfimpZrIzsmx+ilePdfBMyp4PnMKoO0gs2nxdWTzPatYoR38qkSBSUZuFnfxXtg1v4xFde
-	S2xl+ihZohXO9r2bAJDAQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:tVQjntKFWvs=:sRZTKztuE/KVzdEdcfdk55
-	AGp5moEciCQQFmiyJSV7D0btDDlEyuZpcXlvtCEMtCMEah43+k6eUw4igaBbNultzE4jZPl9r
-	oziNUOxVpIjsm7Ejsv0wrgYPMgoOSu9WgSEQq0ofaZ9M6K7GJjG4syJziNfcEvmxqIKpxt/oV
-	dSWEVy8wh0YNuAxx7Di/2J8gJkz1U6aD3y/tTmwLEzVjWK7u8pM9MGfsgz8/68jyeGtTO46UI
-	O9cmcYtMd29WFgXuhIF/4CrIbbSAGXf6c/vovpgP2pcaPbMCWvaTwxtc0lPOk2/3ANMzyf0TI
-	PWi09IoxoIc8Q3720XipCWKXRqT5fac+W/oeDwk/kfOmnXhZz3tH9tGdRWPGEsUgi4vEpwPFl
-	wry5MQCWrkSjmdsQfOhlaV8DWZoJs7OstYXBqRTcxXzYlmsXjkO803pyx3zM+8RMlUNmJHFsv
-	U9ZoWH16xk+x6c1nkKOdZUMGwdbnGmZME8VDQsa+Er0g12O0SxnpCk1OW0mKy7mEsasg9SQoy
-	kH++wxTcjh0rl9NC6QHro55hKGZayQckvAYmYGYjLAmxKuBNqLffFbzb/BOPCeSBZfkpoWCIL
-	iixE7oeXZ1yi6TO8rwNehqkPrHaiP/jfF3vtm+FxfuI3ASgFsMZt6ERlUA2H4wsnDXSbkI0Le
-	UgVCQJgnpw715NkEFu+z2jJ2swNopgUbucpsLg+ptqxe5WNl0p/HkZDnVAjzJQtHT9ikvR4vz
-	WpH0U3iQSFo9s3fxkMAOndBYCnHcvRYJuscNKHvF+xtadUNyD+FBQOlogO0=
+X-Provags-ID: V03:K1:x1nYBoA/cN+oSTFgyYXWMdFfzwsJo3s+Oc5Yf9NvTrHgudboVnm
+	ykq/XYcGDn/Rmhw+Fm8eMcUQU94I0+QtMcEo5ofhnKTmmuRPOFJZeiT+5Vf6JiMstkmla4V
+	JepEZII9X05Kiks77bnC7qAA5v5Osp4rofW+4DYrAP5D7trPT1yG/luejie7N+0yxoBshsD
+	AEIfNLeZRXq42wHw5dyoQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wIwsTm8YV0k=:o80Fdq3O3a9A1FUWHxlZVa
+	0mSn4d0jfV/hk3SrSg/y419dVY5w7sAKwc3gwlMbiap9XtQIlRgS4QL+2e8zfUyFCuASO19RL
+	rSD0mKfGXH2G049iai0+9vrj4KyBUEff6ZwxCF8s4Q4f2us4bH4DAAK//5pSpOfLR2XNxENoX
+	Meb4ykvWwghB1sNm7xNcCZrh+nfl+oWsn54d4LMWFWp6iGueoRr+Bp//pwPZGbDyH4TwtlNEj
+	BRUmLpOWqGnGrE4XvjKSCEh8kq0UQFxmutOUn1JSanFvuJ6RRAqHOswa2l/CqrCOf4+tFUMYm
+	v55QjjnQnWu4TL5RFUOru6RgasAngIcu/gc9I8HMvwlKwzgR84ML7h7n6YA6D/lJTNXyz2WG6
+	RTYZQb8qB/TH9auk6z67LMUkDeDz3GpJC5pmb7w94ufSxitZdsZLPCaHl29UU09RenIcgqki+
+	ibhtSTas2vVFtTIJnS59DYN7mwUavqjA3ozEL5ZRaQGfl9afqh2nRNSwuQgfnkdCP4u+iJJOh
+	CfZwjm6i522UQTigEhzw9onYpM0T+VmLJ+xVX+y2zuwKhHtGnb3Pvd8sXSDwWA6DfUMG15rdC
+	ne8RksyIJtUOEuwta5dv46T3M3eaZQGbWmE5RvYFP/4+3FC4aMgYt6UlxaDK9eaZUq1hozzay
+	VIlF5iVbriNMW1q6kxlVqtcmYVlL029NoD5H2PzpgQRx8IgZP7k8Qwlby+OJB6xO3UF6YurOD
+	2EgmXqFKGUGLuHLVxoSGxyLFgS4UFgTYMjxqZTyxpuQoVFaRm0Bp7rFozrk=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: Re: [Qemu-trivial] [PATCH 2/4] target/openrisc: Fix LGPL version
+X-Received-From: 212.227.126.131
+Subject: Re: [Qemu-trivial] [PATCH 3/4] target/tricore: Fix LGPL version
  number
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -103,29 +104,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 09:59:55 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 10:00:20 -0000
 
 On 23/01/2019 15:08, Thomas Huth wrote:
 > It's either "GNU *Library* General Public version 2" or "GNU Lesser
 > General Public version *2.1*", but there was no "version 2.0" of the
 > "Lesser" library. So assume that version 2.1 is meant here.
 > 
-> Cc: Stafford Horne <shorne@gmail.com>
+> Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  target/openrisc/cpu.c              | 2 +-
->  target/openrisc/exception.h        | 2 +-
->  target/openrisc/gdbstub.c          | 2 +-
->  target/openrisc/helper.h           | 2 +-
->  target/openrisc/interrupt_helper.c | 2 +-
->  target/openrisc/sys_helper.c       | 2 +-
->  target/openrisc/translate.c        | 2 +-
->  7 files changed, 7 insertions(+), 7 deletions(-)
+>  target/tricore/cpu-qom.h         | 2 +-
+>  target/tricore/cpu.c             | 2 +-
+>  target/tricore/cpu.h             | 2 +-
+>  target/tricore/fpu_helper.c      | 2 +-
+>  target/tricore/helper.c          | 2 +-
+>  target/tricore/helper.h          | 2 +-
+>  target/tricore/op_helper.c       | 2 +-
+>  target/tricore/translate.c       | 2 +-
+>  target/tricore/tricore-defs.h    | 2 +-
+>  target/tricore/tricore-opcodes.h | 2 +-
+>  10 files changed, 10 insertions(+), 10 deletions(-)
 > 
-> diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
-> index fb7cb5c..541b2a6 100644
-> --- a/target/openrisc/cpu.c
-> +++ b/target/openrisc/cpu.c
+> diff --git a/target/tricore/cpu-qom.h b/target/tricore/cpu-qom.h
+> index 6a69756..93c9d77 100644
+> --- a/target/tricore/cpu-qom.h
+> +++ b/target/tricore/cpu-qom.h
+> @@ -4,7 +4,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
+> index 2edaef1..e8d37e4 100644
+> --- a/target/tricore/cpu.c
+> +++ b/target/tricore/cpu.c
 > @@ -6,7 +6,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
@@ -135,10 +152,10 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/openrisc/exception.h b/target/openrisc/exception.h
-> index 4ec56b4..c9c4e47 100644
-> --- a/target/openrisc/exception.h
-> +++ b/target/openrisc/exception.h
+> diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
+> index c3665c6..00e69dc 100644
+> --- a/target/tricore/cpu.h
+> +++ b/target/tricore/cpu.h
 > @@ -6,7 +6,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
@@ -148,23 +165,10 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/openrisc/gdbstub.c b/target/openrisc/gdbstub.c
-> index f9af650..43b1a18 100644
-> --- a/target/openrisc/gdbstub.c
-> +++ b/target/openrisc/gdbstub.c
-> @@ -7,7 +7,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/openrisc/helper.h b/target/openrisc/helper.h
-> index 9db9bf3..96d79a8 100644
-> --- a/target/openrisc/helper.h
-> +++ b/target/openrisc/helper.h
+> diff --git a/target/tricore/fpu_helper.c b/target/tricore/fpu_helper.c
+> index 31df462..d8a6c0d 100644
+> --- a/target/tricore/fpu_helper.c
+> +++ b/target/tricore/fpu_helper.c
 > @@ -6,7 +6,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
@@ -174,11 +178,11 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/openrisc/interrupt_helper.c b/target/openrisc/interrupt_helper.c
-> index 9c5489f..ab4ea88 100644
-> --- a/target/openrisc/interrupt_helper.c
-> +++ b/target/openrisc/interrupt_helper.c
-> @@ -7,7 +7,7 @@
+> diff --git a/target/tricore/helper.c b/target/tricore/helper.c
+> index dad7eea..0769046 100644
+> --- a/target/tricore/helper.c
+> +++ b/target/tricore/helper.c
+> @@ -4,7 +4,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
@@ -187,11 +191,11 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/openrisc/sys_helper.c b/target/openrisc/sys_helper.c
-> index b66a45c..05f66c4 100644
-> --- a/target/openrisc/sys_helper.c
-> +++ b/target/openrisc/sys_helper.c
-> @@ -7,7 +7,7 @@
+> diff --git a/target/tricore/helper.h b/target/tricore/helper.h
+> index e634d0c..f60e810 100644
+> --- a/target/tricore/helper.h
+> +++ b/target/tricore/helper.h
+> @@ -4,7 +4,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
@@ -200,11 +204,50 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
-> index c089914..89680f8 100644
-> --- a/target/openrisc/translate.c
-> +++ b/target/openrisc/translate.c
-> @@ -7,7 +7,7 @@
+> diff --git a/target/tricore/op_helper.c b/target/tricore/op_helper.c
+> index b57f353..ed9dc0c 100644
+> --- a/target/tricore/op_helper.c
+> +++ b/target/tricore/op_helper.c
+> @@ -4,7 +4,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/tricore/translate.c b/target/tricore/translate.c
+> index b5ab40d..14f0ddf 100644
+> --- a/target/tricore/translate.c
+> +++ b/target/tricore/translate.c
+> @@ -6,7 +6,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/tricore/tricore-defs.h b/target/tricore/tricore-defs.h
+> index 40abfaa..e871aa1 100644
+> --- a/target/tricore/tricore-defs.h
+> +++ b/target/tricore/tricore-defs.h
+> @@ -4,7 +4,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/tricore/tricore-opcodes.h b/target/tricore/tricore-opcodes.h
+> index 2c3baab..40bc121 100644
+> --- a/target/tricore/tricore-opcodes.h
+> +++ b/target/tricore/tricore-opcodes.h
+> @@ -4,7 +4,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
