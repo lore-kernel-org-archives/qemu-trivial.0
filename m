@@ -1,24 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gomYH-00007Y-S7
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:53:01 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46586)
+	id 1gomde-0002rM-VX
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:58:34 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48026)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomYE-000054-Fd
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:53:00 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gomdc-0002pk-NM
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:58:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomYC-00010m-OM
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:52:58 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:44549)
+	(envelope-from <laurent@vivier.eu>) id 1gomda-0003dq-Lb
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:58:32 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:60079)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gomY9-0000z1-Gh; Wed, 30 Jan 2019 04:52:53 -0500
+	id 1gomdM-0003Uw-RF; Wed, 30 Jan 2019 04:58:18 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue012 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1MmQUL-1hWbbt0D1l-00iUei; Wed, 30 Jan 2019 10:52:48 +0100
+	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MHo6Y-1gumMm2BCo-00Evfy; Wed, 30 Jan 2019 10:58:10 +0100
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>
-References: <1548255083-8190-1-git-send-email-thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org
+References: <1548252536-6242-1-git-send-email-thuth@redhat.com>
+	<1548252536-6242-2-git-send-email-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -63,35 +63,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <ad237f21-f9f8-85f3-b444-3917fdcc0744@vivier.eu>
-Date: Wed, 30 Jan 2019 10:52:46 +0100
+Message-ID: <9b30d086-7006-1345-32d5-b998f96d67af@vivier.eu>
+Date: Wed, 30 Jan 2019 10:58:09 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <1548255083-8190-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <1548252536-6242-2-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:PTg4kdodl15vzK0TjBGwS62f/ShABpZS59RzEpbiDGGohVAKLO/
-	loXXUlrIqCY3tpwdkbt73jvZc6YBGyF5TzHFVMY8taxmfKaL0056JQi1khQtkAEHU5FecJl
-	V32rX48IpQ0RrehCDJBhDMEKyg6FYpcJRBT8wxQq6uG6LJk4B+T2V0qcwgp+zoUGQiNSjo6
-	lNgJGgneynhRwuYoSmHxw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:FxVoEh+Vry0=:mnT/pFh/O94klTqnA6koAK
-	e/rWMJBAc7UHMZhHSRd5jcOcUBnBH+tIQr4946JHtyb+UnYnaIGdTY8KDtIqq1hn9X+Bd1wf7
-	c7xBngGZUMKWH5VtqU0WRDK9/HsYKnCddbUZC+RMssvgsU8tT/cXbwX7mSMEz6tgg5Gs+OW3i
-	Z4ymSrA3gvX69P/sokZQKgtbnumNpyFHB1TUkudN0lmi9I0xyKfbyzaTbQVaOGsQS15+1/dJ8
-	qUWiFYzbZqOcdNFgmN9PoXUYRFDu+mOP/LWBALxdjOq/txWJRXuOWTPfWyOU1sd/tnjP4yFmv
-	dBlRHu+MmKUoU17AovKKV0fWtEIMVFa1hHfX0b7sondT244YYp35gbU9tgeZyhNHkdwya6oR9
-	LVBGgTvtpCvX7QZgBglJfiyBv4Vbd3JEpjTLeEVnTQoEMgpgEy78negmSMz7MCGe3kSYitTJc
-	bqHXRCbc4+xsuyNbgBM6S6ns75sSaq4qeBP3KQUkhZ7BLluDnekcazdZ31YdRifycbwQ/bzfQ
-	+2j05FLDWAz5EPbr3LSofpjsBoVAVZ4i9gmKiasRUsitNtqXmKnI63mokE01E3rQG7dXP6JlW
-	/UsVlJNWDTpDapHIKPXVAcXGn14vfpIedajgwIT2P4q6uZZA8vXhA3Xm/BHQvwBB2kD/SaPHl
-	YtD5STgNvX0FRHj2gygX8yPlcM6j/JAfownJE+k1yjVIKX4OPe1onVRS555OndlARnZblZUoS
-	5T0IXPIChUxLQ0CXdw/qh1dCWZfwbP4GfijHwDG2vb6VWAG810rOhIpGP+8=
+X-Provags-ID: V03:K1:VSrUspxB+b8sVA/2DMhka1fDmvqJQSvXbimyNKldKRxWU69K74u
+	QWzQ8tZX2ibJZ5QcvnZJ1LkRe0T4Nib3z7iNC6U8HMPmljKGSrpop77HbPpUj4ZL3bI7h1z
+	F7lp5o2hRfcIFHBYeo9qw+7aUBrTV60+wVXJFAzqbrr7mJ8kwUVN7SlCV1JZn9SCsadxzoC
+	SrEW4JyjhFc8VV4Q5OtOw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:0VgSHoae/1s=:nNlWxNLhU1E9yqqrKNMd8f
+	stvHp9sAcktmqMkRx0b9TL3gKYSpEiE3KeiAN6QLjyoPxsdRodj3xnNtsHqV9MEpSPn7++3LN
+	KgO3UTq218isO1YCdzE8sXNRLd60It8lJuu8QyG8SPDzH7NycNKl1jx63Z9cW9pmvneXllgoB
+	fCRw+68o7JvjjlbMazJJVseHZJHWfDWjbiesoaEiKNzI2GSn8OfRCuah8FGgQNgBpPylm63my
+	rHWbwNtfqw5HQIKvqIPx5B003FOp8qbHJOX3P8bv2fjikXmFsEUOryQyGeyKM8uRx2gGuUlR+
+	wtPZRhiftWqmTPxlkKecz8HcxeDWBjMzsqOsWv0ionMMRDYrBgfRjFSMKDtHkwswxaltVwcRB
+	nilBp/7lMu9Y1cf7Ktt7ZWNXDpdFjX5fMTu1U/VkVjMI/xTOlaoIz2bEMPjTW9cuVFdJOsISb
+	JsA/s4n3VMw+K603Mg4LFa12LVdJnL9L9Eqacqq6BX73iLkMC1ACz512jCm6Y8TMf2RliCPyf
+	2DoS3GeN67XaolL5JFbzxSnmQ9+fAZCDIcqBi5QWDudqAsjCHSqf8tRjXrDb7cB6NgM8b5XLc
+	OjniyrQkhedVEteYibNCsl4783UJZQ6Khi0et1KxygvPvSGhbiRadmE8dM4oAO4P4XdgIVj38
+	fV00KeiIne4AEn+TZaTgZXz6KaCuLhxLqieK3Z0WMSWM++8KZu9/8Gx/r4jtyaiXlxJS4UIXR
+	SqeChMN1cLbmqvMh/4edLMgcTerFyqIjOiG5qEoDpLQaOutstFCXS4t9rXw=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
-Subject: Re: [Qemu-trivial] [PATCH] Don't talk about the LGPL if the file is
- licensed under the GPL
+X-Received-From: 212.227.126.135
+Subject: Re: [Qemu-trivial] [PATCH 1/4] COPYING.LIB: Synchronize the LGPL
+ 2.1 with the version from gnu.org
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,189 +103,107 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 09:53:00 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 09:58:34 -0000
 
-On 23/01/2019 15:51, Thomas Huth wrote:
-> Some files claim that the code is licensed under the GPL, but then
-> suddenly suggest that the user should have a look at the LGPL.
-> That's of course non-sense, replace it with the correct GPL wording
-> instead.
+On 23/01/2019 15:08, Thomas Huth wrote:
+> The current version of the LGPL 2.1 from gnu.org (see the URL
+> https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt ) slightly
+> differs from the old one that we use in our repository. Especially
+> the recommendation to use "either version 2 of the License, or [...]
+> any later version" is somewhat misleading, since there was never a
+> "version 2" of the "Lesser GPL" license - the "version 2" was still
+> called "Library GPL" instead.
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  crypto/afsplit.c           | 11 +++++------
->  include/crypto/afsplit.h   | 11 +++++------
->  include/hw/pci-host/gpex.h |  4 ++--
->  include/hw/pci-host/q35.h  |  4 ++--
->  include/qemu/range.h       | 11 +++++------
->  target/i386/hvf/hvf.c      |  6 +++---
->  util/range.c               | 11 +++++------
->  7 files changed, 27 insertions(+), 31 deletions(-)
+>  COPYING.LIB | 22 ++++++++++------------
+>  1 file changed, 10 insertions(+), 12 deletions(-)
 > 
-> diff --git a/crypto/afsplit.c b/crypto/afsplit.c
-> index 825e2cf..328d68c 100644
-> --- a/crypto/afsplit.c
-> +++ b/crypto/afsplit.c
-> @@ -8,19 +8,18 @@
->   * Copyright (C) 2004, Clemens Fruhwirth <clemens@endorphin.org>
->   * Copyright (C) 2009-2012, Red Hat, Inc. All rights reserved.
->   *
-> - * This library is free software; you can redistribute it and/or
-> + * This program is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU General Public License
->   * as published by the Free Software Foundation; either version 2
->   * of the License, or (at your option) any later version.
->   *
-> - * This library is distributed in the hope that it will be useful,
-> + * This program is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
->   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> - * Lesser General Public License for more details.
-> - *
-> - * You should have received a copy of the GNU Lesser General Public
-> - * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-> + * General Public License for more details.
->   *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program; if not, see <http://www.gnu.org/licenses/>.
->   */
+> diff --git a/COPYING.LIB b/COPYING.LIB
+> index 48afc2e..4362b49 100644
+> --- a/COPYING.LIB
+> +++ b/COPYING.LIB
+> @@ -1,8 +1,8 @@
+> -		  GNU LESSER GENERAL PUBLIC LICENSE
+> -		       Version 2.1, February 1999
+> +                  GNU LESSER GENERAL PUBLIC LICENSE
+> +                       Version 2.1, February 1999
 >  
->  #include "qemu/osdep.h"
-> diff --git a/include/crypto/afsplit.h b/include/crypto/afsplit.h
-> index 7dd21f0..4894d64 100644
-> --- a/include/crypto/afsplit.h
-> +++ b/include/crypto/afsplit.h
-> @@ -3,19 +3,18 @@
->   *
->   * Copyright (c) 2015-2016 Red Hat, Inc.
->   *
-> - * This library is free software; you can redistribute it and/or
-> + * This program is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU General Public License
->   * as published by the Free Software Foundation; either version 2
->   * of the License, or (at your option) any later version.
->   *
-> - * This library is distributed in the hope that it will be useful,
-> + * This program is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
->   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> - * Lesser General Public License for more details.
-> - *
-> - * You should have received a copy of the GNU Lesser General Public
-> - * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-> + * General Public License for more details.
->   *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program; if not, see <http://www.gnu.org/licenses/>.
->   */
+>   Copyright (C) 1991, 1999 Free Software Foundation, Inc.
+> -	51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+> + 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+>   Everyone is permitted to copy and distribute verbatim copies
+>   of this license document, but changing it is not allowed.
 >  
->  #ifndef QCRYPTO_AFSPLIT_H
-> diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
-> index aef38b8..2af1c4a 100644
-> --- a/include/hw/pci-host/gpex.h
-> +++ b/include/hw/pci-host/gpex.h
-> @@ -13,8 +13,8 @@
->   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->   * GNU General Public License for more details.
->   *
-> - * You should have received a copy of the GNU Lesser General Public
-> - * License along with this library; if not, see <http://www.gnu.org/licenses/>
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program; if not, see <http://www.gnu.org/licenses/>
->   */
+> @@ -10,7 +10,7 @@
+>   as the successor of the GNU Library Public License, version 2, hence
+>   the version number 2.1.]
 >  
->  #ifndef HW_GPEX_H
-> diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
-> index 8f4ddde..5ed77fa 100644
-> --- a/include/hw/pci-host/q35.h
-> +++ b/include/hw/pci-host/q35.h
-> @@ -15,8 +15,8 @@
->   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
->   * GNU General Public License for more details.
->   *
-> - * You should have received a copy of the GNU Lesser General Public
-> - * License along with this library; if not, see <http://www.gnu.org/licenses/>
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program; if not, see <http://www.gnu.org/licenses/>
->   */
+> -			    Preamble
+> +                            Preamble
 >  
->  #ifndef HW_Q35_H
-> diff --git a/include/qemu/range.h b/include/qemu/range.h
-> index ba606c6..71b8b21 100644
-> --- a/include/qemu/range.h
-> +++ b/include/qemu/range.h
-> @@ -3,19 +3,18 @@
->   *
->   * Copyright (c) 2015-2016 Red Hat, Inc.
->   *
-> - * This library is free software; you can redistribute it and/or
-> + * This program is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU General Public
->   * License as published by the Free Software Foundation; either
->   * version 2 of the License, or (at your option) any later version.
->   *
-> - * This library is distributed in the hope that it will be useful,
-> + * This program is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
->   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> - * Lesser General Public License for more details.
-> - *
-> - * You should have received a copy of the GNU General Public
-> - * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-> + * General Public License for more details.
->   *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program; if not, see <http://www.gnu.org/licenses/>.
->   */
+>    The licenses for most software are designed to take away your
+>  freedom to share and change it.  By contrast, the GNU General Public
+> @@ -112,7 +112,7 @@ modification follow.  Pay close attention to the difference between a
+>  former contains code derived from the library, whereas the latter must
+>  be combined with the library in order to run.
+>  
+> -		  GNU LESSER GENERAL PUBLIC LICENSE
+> +                  GNU LESSER GENERAL PUBLIC LICENSE
+>     TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
 >  
->  #ifndef QEMU_RANGE_H
-> diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-> index e193022..689b585 100644
-> --- a/target/i386/hvf/hvf.c
-> +++ b/target/i386/hvf/hvf.c
-> @@ -13,10 +13,10 @@
->   * This program is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
->   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> - * Lesser General Public License for more details.
-> + * General Public License for more details.
->   *
-> - * You should have received a copy of the GNU Lesser General Public
-> - * License along with this program; if not, see <http://www.gnu.org/licenses/>.
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program; if not, see <http://www.gnu.org/licenses/>.
->   *
->   * This file contain code under public domain from the hvdos project:
->   * https://github.com/mist64/hvdos
-> diff --git a/util/range.c b/util/range.c
-> index 416df7c..098d9d2 100644
-> --- a/util/range.c
-> +++ b/util/range.c
-> @@ -3,19 +3,18 @@
->   *
->   * Copyright (c) 2015-2016 Red Hat, Inc.
->   *
-> - * This library is free software; you can redistribute it and/or
-> + * This program is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU General Public
->   * License as published by the Free Software Foundation; either
->   * version 2 of the License, or (at your option) any later version.
->   *
-> - * This library is distributed in the hope that it will be useful,
-> + * This program is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
->   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> - * Lesser General Public License for more details.
-> - *
-> - * You should have received a copy of the GNU General Public
-> - * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-> + * General Public License for more details.
->   *
-> + * You should have received a copy of the GNU General Public License
-> + * along with this program; if not, see <http://www.gnu.org/licenses/>.
->   */
+>    0. This License Agreement applies to any software library or other
+> @@ -146,7 +146,7 @@ such a program is covered only if its contents constitute a work based
+>  on the Library (independent of the use of the Library in a tool for
+>  writing it).  Whether that is true depends on what the Library does
+>  and what the program that uses the Library does.
+> -  
+> +
+>    1. You may copy and distribute verbatim copies of the Library's
+>  complete source code as you receive it, in any medium, provided that
+>  you conspicuously and appropriately publish on each copy an
+> @@ -432,7 +432,7 @@ decision will be guided by the two goals of preserving the free status
+>  of all derivatives of our free software and of promoting the sharing
+>  and reuse of software generally.
 >  
->  #include "qemu/osdep.h"
+> -			    NO WARRANTY
+> +                            NO WARRANTY
+>  
+>    15. BECAUSE THE LIBRARY IS LICENSED FREE OF CHARGE, THERE IS NO
+>  WARRANTY FOR THE LIBRARY, TO THE EXTENT PERMITTED BY APPLICABLE LAW.
+> @@ -455,7 +455,7 @@ FAILURE OF THE LIBRARY TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
+>  SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+>  DAMAGES.
+>  
+> -		     END OF TERMS AND CONDITIONS
+> +                     END OF TERMS AND CONDITIONS
+>  
+>             How to Apply These Terms to Your New Libraries
+>  
+> @@ -476,7 +476,7 @@ convey the exclusion of warranty; and each file should have at least the
+>      This library is free software; you can redistribute it and/or
+>      modify it under the terms of the GNU Lesser General Public
+>      License as published by the Free Software Foundation; either
+> -    version 2 of the License, or (at your option) any later version.
+> +    version 2.1 of the License, or (at your option) any later version.
+>  
+>      This library is distributed in the hope that it will be useful,
+>      but WITHOUT ANY WARRANTY; without even the implied warranty of
+> @@ -485,7 +485,7 @@ convey the exclusion of warranty; and each file should have at least the
+>  
+>      You should have received a copy of the GNU Lesser General Public
+>      License along with this library; if not, write to the Free Software
+> -    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+> +    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+>  
+>  Also add information on how to contact you by electronic and paper mail.
+>  
+> @@ -500,5 +500,3 @@ necessary.  Here is a sample; alter the names:
+>    Ty Coon, President of Vice
+>  
+>  That's all there is to it!
+> -
+> -
 > 
 
 Applied to my trivial-patches branch.
