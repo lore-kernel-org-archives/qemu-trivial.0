@@ -1,24 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gomhn-0005xt-GL
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 05:02:51 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49535)
+	id 1gomjs-0007eS-Ji
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 05:05:00 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50112)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomhk-0005vM-7k
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:02:49 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gomjo-0007dJ-MF
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:04:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomhd-000694-C0
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:02:48 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:59427)
+	(envelope-from <laurent@vivier.eu>) id 1gomjm-000716-Bx
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:04:56 -0500
+Received: from mout.kundenserver.de ([212.227.126.131]:48489)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gomhO-0005zQ-Gq; Wed, 30 Jan 2019 05:02:29 -0500
+	id 1gomjf-0006ue-5i; Wed, 30 Jan 2019 05:04:47 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue012 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1N3omW-1hFDYz3loW-00zkK6; Wed, 30 Jan 2019 11:02:14 +0100
+	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MLRI3-1gXOL43HbX-00IU4O; Wed, 30 Jan 2019 11:04:34 +0100
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Richard Henderson <rth@twiddle.net>
-References: <1548252536-6242-1-git-send-email-thuth@redhat.com>
-	<1548252536-6242-5-git-send-email-thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-s390x@nongnu.org, cohuck@redhat.com
+References: <1548769067-20792-1-git-send-email-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -63,34 +62,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <ed852bd9-b821-48f7-5eba-fab222f2fb30@vivier.eu>
-Date: Wed, 30 Jan 2019 11:02:11 +0100
+Message-ID: <50d1cba5-c759-9dd4-af28-52893d7b7e26@vivier.eu>
+Date: Wed, 30 Jan 2019 11:04:32 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <1548252536-6242-5-git-send-email-thuth@redhat.com>
+In-Reply-To: <1548769067-20792-1-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:Cm1ANkGzS7BGWLaHry3faVzIcnjaK6nJn7gbE07bTOJNvSxpUHu
-	XafEbbY+6t2bFtHDsniO8iOHM66Y2Grt45RmvifqK4EHLtkBAheb99YSMM+pljY1dXfxMcq
-	RNsjzJrDbslwhQZWS9WcMyvO5GS53fAHab7EQ4Q/iSBsH60uP/JqNU/aOUnp41W1XZzD6hD
-	/opKZC2M6enOA7LgcnDPw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:WyfwPGI8SZc=:p66qcaHwiBR2mrdNWjXe1T
-	LyAHA2V/gnguzJLdXrUlUwNGlrTiJAH2+WmIR0hr8BjZdiGZcfHVpIFwUCim+yPoBIFw2N4KR
-	/cts1tw2ZBUu3WR/97pxpUAxmMX4f8q2L8t/PlZ4c/O8MuTed0/6JDjXFXFrmeaBDiZpF2B09
-	atFVLH04vDENSBME+bqdFSHxOWbxcdsW+qFfLt5Q1XQCiRod56cxqfaa/+1brftFJdSc63tBC
-	bMbK9Av/npPIYX512z6f5nIQ3ruRQKd7hMeisAEj7kvTB9xOMvsR5PzQ305a+HCzPkzzPOkzD
-	OiNCIidoFbkC4FGv5PIUnyh5vEz5I5DHsHzdAEYNjTWPwuvA5xb7nobXxtF0lKT1Dzkx/df14
-	jsZ+3yK6At6OnwsKX8DxBwDpd6R4vnots/rcxFIxyfxxd/Nzm6Pjfc1+k3LOK1Y7OM2HLMC/i
-	uxByu6kFUB1tLFn6jF8ho+0qdOa6Ge5ZUmLN0SUIRPmdzclLO2+vghQEZ+0mQQVagLrJEzQ93
-	jXBgKl5R0PRc/UegFdox+an4qCTmEcSCq2LM3zAzcw3SIcmn+XYctpppAWdEmcIU3f61//290
-	74oYpvYg2b3teSUgkyC8RS7LESEGhLAto1dEd6yFktRri6jthbLKvIrbzIu9QEUuj5HbH4UZj
-	em6l7wmqL4Uek2DL98LLaLPddPzF4YT2q2Cc8LETpmO+b0ixG4gE89kkNR04xS2XT5LKfqt7v
-	BjJHKtT2Ru5HYSFMbpleZp6S9w0hSTyrfSoSV+iblCBxaaUHRwr5aktW1ac=
+X-Provags-ID: V03:K1:sAX0549SfX6OFD6vddnlMgrZjkx1eOeNGJCMc7FYYP8bRT7vhNN
+	M7iZXDkKgkL0ZHVrmFhu6OdlMQcDBXOcqN6G2uRxDO6CJ82b8QOFDf9jyUrxhFFuONS7tiH
+	UGaAd9/0vaxK1AEIJEXusfVW7FNN/XFyPrSPkPBIuuwWvw54CRwZR2IFhCigIoqVIStMjIM
+	hC7m111agegk/GF2YZsKQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Fhipr+mEMQ0=:fiZ+UNhcEpt6Z/SGJzWyTM
+	BYVBglIINfZR7B8cphHfQUHtvEutMvN70a6N0GC2mAjFJ40CixBd3X9RvQ32xX87p0H1m7Zs7
+	KBSDAOxMGk4q7YnrV3IT1lI/moWsWCnrI2o47PqdZGw78tOp9dc2rB0HzZ6jPqim1H/gMud73
+	j7mJRZvbdk0FEppdytzBSJhEy+214CWZ5D+iv/gRwfMtI832uiSkvg2Kat+Wra11k6BpZFT6W
+	mJEekWqt1OhdWosm8SwzTlx7M6TnidISvPYZwqkr077SYsd360+81k20SVC5PE5ZCcK5sDe7o
+	WZnqeCOSnAuhwKJzdtVWyFeTfzV0ZS0pPyFsOvMF9KF25ayDQZO/m0kSjAU+01zlN9kpf7VMD
+	KnRfCp1X+vfbaKSrjTUyu8kvik/1BJmsnwx8wIp+OKrJW2fZUbuj2tPubLNJ6ipwLldvGPv5N
+	19VmGzS+tbYB+z7erMi8VLcnpnEIAADPVVvjctPyTtJ4s6EfYCy6sOaxRuuBqPyDc2tt20xOK
+	vn7Y7Rf5SHv09ka/O97pu5WnWBTgRS47yGU3xBpvCIWWzbeUZc/8tA6+/K18RLCsTuLeCWpU+
+	1WqZNCdRdoL7Iv1TM4DfLcYdiX6EXCPFz2MsKy1QAeAY2At/QQE55keI1r3X8s/ECUq//mTyl
+	yCQqwFahSwqPxz+fmZXvSHpnIkTh3NLPatHWmBZ6z295IkLyyKvwWEhK14VVga6VpuiNRcIdf
+	8bovM/Nt+RCMSuliQg6QAlAxz9kNFhrspUiRirRZo1v5XMj99pN/hSpg2Rg=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: Re: [Qemu-trivial] [PATCH 4/4] tcg: Fix LGPL version number
+X-Received-From: 212.227.126.131
+Subject: Re: [Qemu-trivial] [PATCH] target/s390x: Fix LGPL version in the
+ file header comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,35 +102,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 10:02:49 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 10:04:59 -0000
 
-On 23/01/2019 15:08, Thomas Huth wrote:
-> It's either "GNU *Library* General Public version 2" or "GNU Lesser
-> General Public version *2.1*", but there was no "version 2.0" of the
-> "Lesser" library. So assume that version 2.1 is meant here.
+On 29/01/2019 14:37, Thomas Huth wrote:
+> It's either "GNU *Library* General Public License version 2" or
+> "GNU Lesser General Public License version *2.1*", but there was
+> no "version 2.0" of the "Lesser" license. So assume that version
+> 2.1 is meant here.
 > 
-> Cc: Richard Henderson <rth@twiddle.net>
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  accel/tcg/atomic_template.h  | 2 +-
->  accel/tcg/cpu-exec-common.c  | 2 +-
->  accel/tcg/cpu-exec.c         | 2 +-
->  accel/tcg/cputlb.c           | 2 +-
->  accel/tcg/softmmu_template.h | 2 +-
->  accel/tcg/tcg-runtime-gvec.c | 2 +-
->  accel/tcg/translate-all.c    | 2 +-
->  accel/tcg/translate-all.h    | 2 +-
->  accel/tcg/user-exec.c        | 2 +-
->  tcg/tcg-gvec-desc.h          | 2 +-
->  tcg/tcg-op-gvec.c            | 2 +-
->  tcg/tcg-op-gvec.h            | 2 +-
->  tcg/tcg-op-vec.c             | 2 +-
->  13 files changed, 13 insertions(+), 13 deletions(-)
+>  target/s390x/cc_helper.c   | 2 +-
+>  target/s390x/excp_helper.c | 2 +-
+>  target/s390x/fpu_helper.c  | 2 +-
+>  target/s390x/gdbstub.c     | 2 +-
+>  target/s390x/helper.c      | 2 +-
+>  target/s390x/int_helper.c  | 2 +-
+>  target/s390x/mem_helper.c  | 2 +-
+>  target/s390x/misc_helper.c | 2 +-
+>  target/s390x/translate.c   | 2 +-
+>  9 files changed, 9 insertions(+), 9 deletions(-)
 > 
-> diff --git a/accel/tcg/atomic_template.h b/accel/tcg/atomic_template.h
-> index efde12f..685602b 100644
-> --- a/accel/tcg/atomic_template.h
-> +++ b/accel/tcg/atomic_template.h
+> diff --git a/target/s390x/cc_helper.c b/target/s390x/cc_helper.c
+> index 5d91e45..307ad61 100644
+> --- a/target/s390x/cc_helper.c
+> +++ b/target/s390x/cc_helper.c
 > @@ -7,7 +7,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
@@ -140,11 +136,11 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/accel/tcg/cpu-exec-common.c b/accel/tcg/cpu-exec-common.c
-> index 2988fde..462a1f1 100644
-> --- a/accel/tcg/cpu-exec-common.c
-> +++ b/accel/tcg/cpu-exec-common.c
-> @@ -6,7 +6,7 @@
+> diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
+> index 2a33222..a758649 100644
+> --- a/target/s390x/excp_helper.c
+> +++ b/target/s390x/excp_helper.c
+> @@ -7,7 +7,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
@@ -153,11 +149,11 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-> index 870027d..60d87d5 100644
-> --- a/accel/tcg/cpu-exec.c
-> +++ b/accel/tcg/cpu-exec.c
-> @@ -6,7 +6,7 @@
+> diff --git a/target/s390x/fpu_helper.c b/target/s390x/fpu_helper.c
+> index 1b662d2..e921172 100644
+> --- a/target/s390x/fpu_helper.c
+> +++ b/target/s390x/fpu_helper.c
+> @@ -7,7 +7,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
@@ -166,11 +162,11 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-> index af6bd8c..ec27f3d 100644
-> --- a/accel/tcg/cputlb.c
-> +++ b/accel/tcg/cputlb.c
-> @@ -6,7 +6,7 @@
+> diff --git a/target/s390x/gdbstub.c b/target/s390x/gdbstub.c
+> index b8c81da..df14759 100644
+> --- a/target/s390x/gdbstub.c
+> +++ b/target/s390x/gdbstub.c
+> @@ -7,7 +7,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
@@ -179,11 +175,11 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/accel/tcg/softmmu_template.h b/accel/tcg/softmmu_template.h
-> index b0adea0..1fdd262 100644
-> --- a/accel/tcg/softmmu_template.h
-> +++ b/accel/tcg/softmmu_template.h
-> @@ -11,7 +11,7 @@
+> diff --git a/target/s390x/helper.c b/target/s390x/helper.c
+> index 2546316..3d74836 100644
+> --- a/target/s390x/helper.c
+> +++ b/target/s390x/helper.c
+> @@ -7,7 +7,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
@@ -192,11 +188,11 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/accel/tcg/tcg-runtime-gvec.c b/accel/tcg/tcg-runtime-gvec.c
-> index 90340e5..09424e9 100644
-> --- a/accel/tcg/tcg-runtime-gvec.c
-> +++ b/accel/tcg/tcg-runtime-gvec.c
-> @@ -6,7 +6,7 @@
+> diff --git a/target/s390x/int_helper.c b/target/s390x/int_helper.c
+> index abf77a9..abbbc20 100644
+> --- a/target/s390x/int_helper.c
+> +++ b/target/s390x/int_helper.c
+> @@ -7,7 +7,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
@@ -205,11 +201,11 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-> index 8cb8c88..1773d7e 100644
-> --- a/accel/tcg/translate-all.c
-> +++ b/accel/tcg/translate-all.c
-> @@ -6,7 +6,7 @@
+> diff --git a/target/s390x/mem_helper.c b/target/s390x/mem_helper.c
+> index 490c43e..a506d9e 100644
+> --- a/target/s390x/mem_helper.c
+> +++ b/target/s390x/mem_helper.c
+> @@ -7,7 +7,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
@@ -218,11 +214,11 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/accel/tcg/translate-all.h b/accel/tcg/translate-all.h
-> index 08e2f23..64f5fd9 100644
-> --- a/accel/tcg/translate-all.h
-> +++ b/accel/tcg/translate-all.h
-> @@ -6,7 +6,7 @@
+> diff --git a/target/s390x/misc_helper.c b/target/s390x/misc_helper.c
+> index 3f91579..52262f6 100644
+> --- a/target/s390x/misc_helper.c
+> +++ b/target/s390x/misc_helper.c
+> @@ -7,7 +7,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
@@ -231,63 +227,11 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
-> index 941295e..7741f5f 100644
-> --- a/accel/tcg/user-exec.c
-> +++ b/accel/tcg/user-exec.c
-> @@ -6,7 +6,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/tcg/tcg-gvec-desc.h b/tcg/tcg-gvec-desc.h
-> index 3b4c2d9..2dda7d6 100644
-> --- a/tcg/tcg-gvec-desc.h
-> +++ b/tcg/tcg-gvec-desc.h
-> @@ -6,7 +6,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
-> index 61c25f5..6d4207e 100644
-> --- a/tcg/tcg-op-gvec.c
-> +++ b/tcg/tcg-op-gvec.c
-> @@ -6,7 +6,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/tcg/tcg-op-gvec.h b/tcg/tcg-op-gvec.h
-> index ff43a29..b8b9fee 100644
-> --- a/tcg/tcg-op-gvec.h
-> +++ b/tcg/tcg-op-gvec.h
-> @@ -6,7 +6,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/tcg/tcg-op-vec.c b/tcg/tcg-op-vec.c
-> index cefba3d..0fbeaea 100644
-> --- a/tcg/tcg-op-vec.c
-> +++ b/tcg/tcg-op-vec.c
-> @@ -6,7 +6,7 @@
+> diff --git a/target/s390x/translate.c b/target/s390x/translate.c
+> index b5bd56b..6249c70 100644
+> --- a/target/s390x/translate.c
+> +++ b/target/s390x/translate.c
+> @@ -7,7 +7,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
