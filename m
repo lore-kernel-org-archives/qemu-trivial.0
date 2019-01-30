@@ -1,23 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gomAR-00071R-Ho
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:28:23 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39798)
+	id 1gomW7-000752-Ot
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:50:47 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45866)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomAL-0006uv-MX
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:28:23 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gomW5-00072S-4Z
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:50:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomAH-0004jc-TV
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:28:17 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:53985)
+	(envelope-from <laurent@vivier.eu>) id 1gomW3-0008Mn-KN
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:50:44 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:57183)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gom9t-0004RU-Dh; Wed, 30 Jan 2019 04:27:49 -0500
+	id 1gomVm-00089E-BF; Wed, 30 Jan 2019 04:50:32 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1N17l4-1hHwrU21f8-012VLt; Wed, 30 Jan 2019 10:27:42 +0100
-To: kumar sourav <sourav.jb1988@gmail.com>, qemu-trivial@nongnu.org
-Cc: thuth@redhat.com, f4bug@amsat.org, qemu-devel@nongnu.org
-References: <20190124162045.10474-1-sourav.jb1988@gmail.com>
+	(mreue009 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1N79q8-1hE6tW2eMO-017UAe; Wed, 30 Jan 2019 10:50:14 +0100
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>
+References: <1548255083-8190-1-git-send-email-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -62,35 +63,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <bec07d22-d33f-ed5b-8b96-deb431f2d189@vivier.eu>
-Date: Wed, 30 Jan 2019 10:27:40 +0100
+Message-ID: <224f9e1f-34c8-7b21-5cba-f21d92ad9415@vivier.eu>
+Date: Wed, 30 Jan 2019 10:50:13 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190124162045.10474-1-sourav.jb1988@gmail.com>
+In-Reply-To: <1548255083-8190-1-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:aBzlQzTtpq0qmZcYGQzo971GuxX203VR7X9tRnBYz+XwZjhGzb8
-	idPGK76VnDQs9Af5o23eIO6dinsS4bXdidjMGsMvWljvr8gssQKxR9zRvetQNLw3HB895rB
-	zgPdyag/SOq6QlICCNllV14lWPh9iZTzEaowJk6PZfwIYr3gsHCMPo1nb/pKSi9FHSrmJpZ
-	niGGG9tpPmzOZ/MfZ7tYw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:6QELaIDRtcA=:u7oGdFCrXwM/J1snx1yJTp
-	7DoLCwL3I3hTUZ++IMAHLXfyteKD5Yt5fB+d+PD7sAKqi20zqzQWvZN22pQlesnjmxeCyk0aW
-	gHCdsHIw5rn7dFE0oBpb+UrXKsrH7jRKVDetB2fe+pnFmbzutxjRhg5WO/ldrBUsE+rqYBesd
-	sjIhI/rZJvd+0rEJOYWv1F++5Z7IhJBOg/+M3ZEH8WymNcRF+ZZ+SFzB4Y3wrKVJizXGJYe+G
-	O3o436uudZ07On4VgAixpvLHi7p/OcpgJ/AHHOaJw8IFEZMF0rBENRWLQEDF/ePOxqjjrKVnl
-	NcSuASOGqCfcF2kH1xTKRpBYnaBLV1RR4BNx58AHhCZVdOZdt7Gi6T8ZTS/2O9kDb1Xf3sRgL
-	hm8gliSgDDXyLwwMEyntfrYrOtzE78AUkNtr87veT4SRMdF4j3ZISqAffSN0hu36QqDrAU4T1
-	evoPNtjLGZB/GVPGGecZUB2CLqTxmQiScbfs8QqUeMOwj2/KUwT+WYGCkn/gGvl4K9WAj3XWU
-	cMCiwLoDd73d8k3Kl5BxygBqhl5P/24QtxybAKG3jg4d+m4ATOgTQ/W/LP6CD6eGBNlMfTMyP
-	32nP3pAmnSBIUsf+BDFe3Wdse4GoVCdECrs91nJTP9Sm9JT1UrCjSM0zjqxTd2C4qxxuEl7Ln
-	obKLzP+XxIwoax8NCWrhoaOgPikphE7A6N6iglTTcFwrAE9qa226O2W3uIru8b19iT8r5g3Up
-	USzU/vLnuj61TgrwAc6DW1ufOdO41CCar3+4zblgZqWWqyCic8dxaY4DpQk=
+X-Provags-ID: V03:K1:dmAeQiQXJpbnAisuE6vYAZgXSwfs6oGggU5WIPh0+aEKWKdFZxn
+	Ab+u01yjgsHuA0cD3K0CPvJhNSr5UXLdBEAcds4mBUnj1W/wMiFRrjf1Y8hhJT0zmAsJz9c
+	Rs3wwiTjJxvcGTfdmMgeKliB+NAufbRtRVJDgASFgzP21AqlXUzL7yyReajQ3PICNF2rKgS
+	81VZoKojlsC/9pmn1WOQA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:K7HKLgtjAL8=:SGD52YOfjKNlES/7/qIb2p
+	ORPhIAlZrbm8yE2q7MEwXfjIR+mXVkCOIZ4jMFsRZIqxbh5kxcpYlCGAb9lEQFSfPxpzlb7sY
+	y0MKgxIx12jDbD1/D5/YMi2dWbHc0i7EaoGOy/9yXRuK92Z1Ozs3gWjY5IkBBdONm8/ybtwfQ
+	u9oelklPvaZAxCLmZx1k+0qJHkFBvEV5FYoYTB2ZqcsRc/vuUV1WhH2NI5fDhFIzYbclk/ZW3
+	XCez+K0xZOEB2WGJFquoBij9ZXSV6MIIzKm4ini3eHdFecLO2t0HIhK1vkrIlSTXlIMDjZVy8
+	jenlmWtV5bUN/kPRpMzPasYV4xh5WGrR6Fr6E0nwrwxeEF+W3RRGl96eZ5OXx12qJCNVMXQF0
+	zwDVHuFYkzigU6uVlWYm1CNrvZadB2dtO34zY4VZo9SrzQiyNvwqPQ0Og9onsV6fs2DDqWfAJ
+	w5vreoGSySiRub2eYjksCG/cpHC5IZrPjpTlbdYKkkFzqHoFOOVDptVSmS8l4pEVxYDeddR9O
+	Yoiom4tXRQMvryAjY0ZMV7Q/IQQ1mKynZaUpQCPeo2yaLitksZdnAWRMNYGd1BbOxivDc474m
+	mkapzww7HcwrNilHt0RmaFvGPKXjHmamS5wuJHFRE6fg9786yKEKSnG/EcJ22pPfKce8Brgdb
+	kiApiLqdqNTaL/CtQz55x0XhYvFRNqJCMraCNEvDAz8XkIgW+cYtGVrp51f7mrMRsMLTyZo6c
+	4xw9yJTqpK5zHZ3HELshK9ObgqzODJC6k1lyHe42gn8/buaUeKlEwVQDHFA=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: Re: [Qemu-trivial] [PATCH] hw: sd: set category of the sd memory
- card
+X-Received-From: 212.227.126.130
+Subject: Re: [Qemu-trivial] [PATCH] Don't talk about the LGPL if the file is
+ licensed under the GPL
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,33 +103,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 09:28:23 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 09:50:46 -0000
 
-On 24/01/2019 17:20, kumar sourav wrote:
-> Sets the category of the sd memory card as DEVICE_CATEGORY_STORAGE.
-> Devices should be assigned to one of DEVICE_CATEGORY_XXXX.
+On 23/01/2019 15:51, Thomas Huth wrote:
+> Some files claim that the code is licensed under the GPL, but then
+> suddenly suggest that the user should have a look at the LGPL.
+> That's of course non-sense, replace it with the correct GPL wording
+> instead.
 > 
-> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/sd/sd.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-> index d4356e9b73..aaab15f386 100644
-> --- a/hw/sd/sd.c
-> +++ b/hw/sd/sd.c
-> @@ -2121,6 +2121,7 @@ static void sd_class_init(ObjectClass *klass, void *data)
->      dc->vmsd = &sd_vmstate;
->      dc->reset = sd_reset;
->      dc->bus_type = TYPE_SD_BUS;
-> +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
->  
->      sc->set_voltage = sd_set_voltage;
->      sc->get_dat_lines = sd_get_dat_lines;
-> 
+>  crypto/afsplit.c           | 11 +++++------
+>  include/crypto/afsplit.h   | 11 +++++------
+>  include/hw/pci-host/gpex.h |  4 ++--
+>  include/hw/pci-host/q35.h  |  4 ++--
+>  include/qemu/range.h       | 11 +++++------
+>  target/i386/hvf/hvf.c      |  6 +++---
+>  util/range.c               | 11 +++++------
+>  7 files changed, 27 insertions(+), 31 deletions(-)
 
-Applied to my trivial-patches branch.
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
-Thanks,
-Laurent
 
