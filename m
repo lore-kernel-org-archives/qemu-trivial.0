@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gopqI-0001yZ-6Q
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 08:23:50 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37402)
+	id 1gopqJ-00020t-WA
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 08:23:52 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37418)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gopqC-0001uj-CI
+	(envelope-from <laurent@vivier.eu>) id 1gopqC-0001vR-Rv
 	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gopqA-00072X-GJ
+	(envelope-from <laurent@vivier.eu>) id 1gopqB-00074b-A2
 	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:44 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:39373)
+Received: from mout.kundenserver.de ([212.227.126.187]:45123)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gopq4-0006qC-7t; Wed, 30 Jan 2019 08:23:36 -0500
+	id 1goppw-0006g9-UU; Wed, 30 Jan 2019 08:23:29 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MatZr-1hQNdN472J-00cSQ2; Wed, 30 Jan 2019 14:22:55 +0100
+	id 1MQMm9-1gSe9F3XrF-00MH36; Wed, 30 Jan 2019 14:22:53 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -33,34 +33,34 @@ Cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Thomas Huth <thuth@redhat.com>, Liam Merwick <liam.merwick@oracle.com>
-Date: Wed, 30 Jan 2019 14:22:12 +0100
-Message-Id: <20190130132214.25493-12-laurent@vivier.eu>
+	Thomas Huth <thuth@redhat.com>
+Date: Wed, 30 Jan 2019 14:22:11 +0100
+Message-Id: <20190130132214.25493-11-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190130132214.25493-1-laurent@vivier.eu>
 References: <20190130132214.25493-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:3pNzAh0uy4xadtw2eVuagIEPb6ic17xXfQKtm5tp12Vr0fnGWKX
-	ZgRoTGQnCJYKkYgAQqq3fUj2TEGxYFoiXrk2K7NfjaL8uk18NIilZmVosaLUs46GsbRBSvj
-	pqYjapRqthRP+f3+tOMZCewGxgajqhuAbO7iVPeuyQG8YeymJcF7wYO3gSE0BOaljVXc5hT
-	9yqqhhk/3Xa/sRV19Tp2Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:20m8/7pfm54=:vTsrCfik7TjcPUotg5RUMb
-	rqn6qxB19IlTq5bd8EFuAg6u6LZbc0eWIQiyjQzZtNPDvRn/9r+vMTxkapJAfNUQCwRLtOnIZ
-	CKj4IikEuQQWceuyv/lINFLmOFAP2syq1ark2+5D9BnYSdMWeccgJUR+ucgZ9vDA/RQh2E88H
-	kx8n8yAIN59G7rbN9qNorlgNxG0BqFu4gyAe2/FWVXP/4/ZNq9cjnF9S0JRrkBygN0myCkhT9
-	3JStJNrL1HNHNPwKFrO/T5ug8SaxyDCesvfA3BWqBrwijwU/qixGR6lmaAbsQXcrkuAzG6bUO
-	4rJQThTsTRPtDIVWDFVFez4hLtKvrgqXLbgqCqzWP8oKpj0+HJzefPp2qKUhSlklM9j/OzbfJ
-	IoDxX+RdBtKrm4MF4D9gSSgCByuexJTS3QNXys83strJexb0ASlRrv1GDk/Byu88DHyLPgwJ9
-	8ehfeRgjiiHoar4cd3UFfA82X8/wzbTHJfsq9f915/f9X0DWo4lZfq/8ib61TQdWRzVZbuOdS
-	ufxHXgpjyEbma+ufYQc2t9OGjwEx3arP+8IVInQFIEsIiz/9jvAp2FjQp8wW0LUY7Cztrjq7J
-	2fKXeZvy0WU0k51KGlRm4hhj0U3wy1meqCDFVmpXvs2wlhjenXNj/z1ihLYinzaRouTA770TI
-	/+/SbULNCj5kxln/PTGVkbSHeFOktHLjXgK1g1a4hJhaoQBlHzbM9kxHb5mJdFsONeSBe+UxB
-	iBVRAh9Y4gvEEC1dldZV3AwYeoo9Dj9zNJaQvA==
+X-Provags-ID: V03:K1:PXtBMKPq235MqQZ1jRD3HmR47swwHGHj4EWlVZqZgm136fCSnwV
+	zXd2rsnQyzp0cxx2FL3ZTSYdxTFc5OBs3rYREEDow6+q/WoM80UO9T6YvoFLyAOKoS8KbzD
+	w6GbKI2BHcLpBguc63QBu6B9N6u1IFkiZRaPulA429B0ogQ5cyj1D26O92EQEwc07MoPQj8
+	pr6s/06gdFCsquqCTx6Hg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:OtvqaIpTHvg=:Trv4EKdWuVm+a6T8zpyIsn
+	BOg2ySVwyP0eLWS0R7j8tCChcGQFUPz6zS05f+9GQqnDL72X/TW6d5PaM8yGOR27x72C8kAcP
+	1bGwQXqS4wwTNPDsshdHRZ1n3CEfS7+20u62rc8jUARIVn6ILpk6/wlhA/iFAvhrICJJhtDcV
+	OQQIhZPOH4NvCKwy3KKLvrbr9yqDWsto01q5gevcH6mMjssZCXV8CGu0ZAc0J5YL9nlyHNw4H
+	Jytf6U2OSJY7JjDvcihnabwMBzc379RtULz0kzfz2WcnwBuj6HL25YoHvyKNNvChzQQyOkJmp
+	J/O/jticrz+UqfKLSSG0KZP+wAB1wNPAxtFd0qHdakBlx3MaXeRbLjphFFkfELzFl8SZWb9g9
+	FzlqW/I6MgxMVpjweZVnC2n1RcWg1BUwBWChj7fl1FPm8wnjQ6L/y2rzV02e8rb7Kw7OiJ+Q9
+	gdKZdDIBSYggt74OCqTJajVvSQBeLvpWWPLiyoSBmfg7MFmKefDHsyVaIvSisUy/dsNxzGobk
+	+xErravtRtAdZQ7xPf7NxGs9tDb0Bv/nq7YpRsqGm9xosepHtJSmJL39wtC73L9XMX/FhZfQe
+	eINCb0msEJmxElPyyY0t9WF2gsM5AJK214yFdS7xcXfLwFKJv9VQUp70fhmKW7StKkgkjPTZM
+	k7FtpghjXku+3v69n1n7Pc8IX0BZlURN6rAerpv74HiiuJ92my5iALqeFrIoBdAobrFnupTHF
+	x1QZREXTJunOad3CZKaAjIbt7ZVDIZVL+ZJE3g==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: [Qemu-trivial] [PULL 11/13] target/m68k: Fix LGPL information in
- the file headers
+X-Received-From: 212.227.126.187
+Subject: [Qemu-trivial] [PULL 10/13] target/s390x: Fix LGPL version in the
+ file header comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,99 +80,27 @@ It's either "GNU *Library* General Public License version 2" or
 "GNU Lesser General Public License version *2.1*", but there was
 no "version 2.0" of the "Lesser" license. So assume that version
 2.1 is meant here.
-Also some files mention the GPL instead of the LGPL after declaring
-that the files are licensed under the LGPL, so change these spots to
-use LGPL, too.
 
-Reviewed-by: Liam Merwick <liam.merwick@oracle.com>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <1548769438-28942-1-git-send-email-thuth@redhat.com>
+Acked-by: Cornelia Huck <cohuck@redhat.com>
+Message-Id: <1548769067-20792-1-git-send-email-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- linux-user/m68k/target_cpu.h     | 4 ++--
- linux-user/m68k/target_structs.h | 2 +-
- target/m68k/cpu.h                | 4 ++--
- target/m68k/fpu_helper.c         | 4 ++--
- target/m68k/gdbstub.c            | 2 +-
- target/m68k/helper.c             | 4 ++--
- target/m68k/op_helper.c          | 2 +-
- target/m68k/translate.c          | 4 ++--
- 8 files changed, 13 insertions(+), 13 deletions(-)
+ target/s390x/cc_helper.c   | 2 +-
+ target/s390x/excp_helper.c | 2 +-
+ target/s390x/fpu_helper.c  | 2 +-
+ target/s390x/gdbstub.c     | 2 +-
+ target/s390x/helper.c      | 2 +-
+ target/s390x/int_helper.c  | 2 +-
+ target/s390x/mem_helper.c  | 2 +-
+ target/s390x/misc_helper.c | 2 +-
+ target/s390x/translate.c   | 2 +-
+ 9 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/linux-user/m68k/target_cpu.h b/linux-user/m68k/target_cpu.h
-index 611df065ca..7a26f3c3fc 100644
---- a/linux-user/m68k/target_cpu.h
-+++ b/linux-user/m68k/target_cpu.h
-@@ -7,12 +7,12 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * General Public License for more details.
-+ * Lesser General Public License for more details.
-  *
-  * You should have received a copy of the GNU Lesser General Public
-  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-diff --git a/linux-user/m68k/target_structs.h b/linux-user/m68k/target_structs.h
-index a003676548..e373d481e1 100644
---- a/linux-user/m68k/target_structs.h
-+++ b/linux-user/m68k/target_structs.h
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
-index b288a3864e..f154565117 100644
---- a/target/m68k/cpu.h
-+++ b/target/m68k/cpu.h
-@@ -7,12 +7,12 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * General Public License for more details.
-+ * Lesser General Public License for more details.
-  *
-  * You should have received a copy of the GNU Lesser General Public
-  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-diff --git a/target/m68k/fpu_helper.c b/target/m68k/fpu_helper.c
-index 6eeffdf9bb..b35489ba4e 100644
---- a/target/m68k/fpu_helper.c
-+++ b/target/m68k/fpu_helper.c
-@@ -7,12 +7,12 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * General Public License for more details.
-+ * Lesser General Public License for more details.
-  *
-  * You should have received a copy of the GNU Lesser General Public
-  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-diff --git a/target/m68k/gdbstub.c b/target/m68k/gdbstub.c
-index 99e5be8132..fd2bb46c42 100644
---- a/target/m68k/gdbstub.c
-+++ b/target/m68k/gdbstub.c
+diff --git a/target/s390x/cc_helper.c b/target/s390x/cc_helper.c
+index 5d91e458a8..307ad61aee 100644
+--- a/target/s390x/cc_helper.c
++++ b/target/s390x/cc_helper.c
 @@ -7,7 +7,7 @@
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
@@ -182,11 +110,11 @@ index 99e5be8132..fd2bb46c42 100644
   *
   * This library is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/m68k/helper.c b/target/m68k/helper.c
-index 917d46efcc..3e26d337bf 100644
---- a/target/m68k/helper.c
-+++ b/target/m68k/helper.c
-@@ -7,12 +7,12 @@
+diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
+index 2a33222f7e..a758649f47 100644
+--- a/target/s390x/excp_helper.c
++++ b/target/s390x/excp_helper.c
+@@ -7,7 +7,7 @@
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
   * License as published by the Free Software Foundation; either
@@ -195,17 +123,11 @@ index 917d46efcc..3e26d337bf 100644
   *
   * This library is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * General Public License for more details.
-+ * Lesser General Public License for more details.
-  *
-  * You should have received a copy of the GNU Lesser General Public
-  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c
-index 8d09ed91c4..76f439985a 100644
---- a/target/m68k/op_helper.c
-+++ b/target/m68k/op_helper.c
-@@ -6,7 +6,7 @@
+diff --git a/target/s390x/fpu_helper.c b/target/s390x/fpu_helper.c
+index 1b662d2520..e921172bc4 100644
+--- a/target/s390x/fpu_helper.c
++++ b/target/s390x/fpu_helper.c
+@@ -7,7 +7,7 @@
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
   * License as published by the Free Software Foundation; either
@@ -214,11 +136,11 @@ index 8d09ed91c4..76f439985a 100644
   *
   * This library is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-index 752e46ef63..6217a683f1 100644
---- a/target/m68k/translate.c
-+++ b/target/m68k/translate.c
-@@ -7,12 +7,12 @@
+diff --git a/target/s390x/gdbstub.c b/target/s390x/gdbstub.c
+index b8c81dadcf..df147596ce 100644
+--- a/target/s390x/gdbstub.c
++++ b/target/s390x/gdbstub.c
+@@ -7,7 +7,7 @@
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
   * License as published by the Free Software Foundation; either
@@ -227,12 +149,71 @@ index 752e46ef63..6217a683f1 100644
   *
   * This library is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * General Public License for more details.
-+ * Lesser General Public License for more details.
+diff --git a/target/s390x/helper.c b/target/s390x/helper.c
+index 254631693d..3d74836a83 100644
+--- a/target/s390x/helper.c
++++ b/target/s390x/helper.c
+@@ -7,7 +7,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
   *
-  * You should have received a copy of the GNU Lesser General Public
-  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/s390x/int_helper.c b/target/s390x/int_helper.c
+index abf77a94e6..abbbc20d9c 100644
+--- a/target/s390x/int_helper.c
++++ b/target/s390x/int_helper.c
+@@ -7,7 +7,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/s390x/mem_helper.c b/target/s390x/mem_helper.c
+index 490c43e6e6..a506d9ef99 100644
+--- a/target/s390x/mem_helper.c
++++ b/target/s390x/mem_helper.c
+@@ -7,7 +7,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/s390x/misc_helper.c b/target/s390x/misc_helper.c
+index 3f91579570..52262f62df 100644
+--- a/target/s390x/misc_helper.c
++++ b/target/s390x/misc_helper.c
+@@ -7,7 +7,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/s390x/translate.c b/target/s390x/translate.c
+index b5bd56b7ee..6249c70d02 100644
+--- a/target/s390x/translate.c
++++ b/target/s390x/translate.c
+@@ -7,7 +7,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
 -- 
 2.20.1
 
