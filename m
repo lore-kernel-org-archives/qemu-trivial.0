@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gopq8-0001pz-GF
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 08:23:40 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37210)
+	id 1gopqC-0001v7-Ji
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 08:23:44 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37366)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gopq5-0001mg-NS
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:39 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gopqA-0001sl-Sm
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gopq2-0006qU-GD
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:36 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:48659)
+	(envelope-from <laurent@vivier.eu>) id 1gopq9-0006zd-RG
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:42 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:33043)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gopq2-0006pH-5m; Wed, 30 Jan 2019 08:23:34 -0500
+	id 1gopq4-0006rZ-Jt; Wed, 30 Jan 2019 08:23:36 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MatZr-1hQNdJ2H5X-00cSQ2; Wed, 30 Jan 2019 14:22:50 +0100
+	id 1Mr9OA-1hTvSp11a2-00oIGR; Wed, 30 Jan 2019 14:22:57 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -33,34 +33,36 @@ Cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Thomas Huth <thuth@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>
-Date: Wed, 30 Jan 2019 14:22:10 +0100
-Message-Id: <20190130132214.25493-10-laurent@vivier.eu>
+	Paul Durrant <paul.durrant@citrix.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Wed, 30 Jan 2019 14:22:13 +0100
+Message-Id: <20190130132214.25493-13-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190130132214.25493-1-laurent@vivier.eu>
 References: <20190130132214.25493-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:fmaab187ZqVUtPO50ga2ynq14m5SAqu6EQh5d9vriduf1zaJ36x
-	lGhoPzVL1tiKWSw9p/c7QH4QneAdurynwleX4vWClSCiwRU1HykoSfI6rOfujsBPA0vVwk4
-	D3ibrEUP3cuscagUtFvUwCfwWgJ0PzEQ3mNFGqCCNYregoqXIXO5Ri6GtCm/w7Jz4d9R947
-	kkGmv6WO9ElyL/wAOPeLQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:I504VHOaSxk=:uj6oPiHxXSosjtJnqXd4Kz
-	bLX/W8bLFVDsw6l7DERdQq0VKytqjnEi7ggU7KoqFlyCO7X4aCoVwnXasU//wrsEiKlVEtQAr
-	dXdq2grbyixAvVoieguBrC6N1ToWfFB1WjOJsUYhsU0heasIkx2yO4uJS3ni9EV6+8EC9IWwg
-	KsUltKreInsVvzyxpYX02fR6DcYkJofFJFQSqOBMs81DwzeXXTdJx+r59Y9oNjb8sa5xho0hN
-	rle0KbdNZDnkyDeMGUY9+9gRUV2KcHiMUOh0XE1mSacjZtBGh7JlpeuELfcKH+Yocg3TsRvXJ
-	6ZIbi+WGsoqWksbqvyWfvYMcQ0YhG9zpfGnyPByEEuFfH0kdcV1zihrjnBVVOZ9HDz0UAOKBM
-	5YAILxzzRWkJpJCQrm9veLSD2bk9/AJzcAe9xFKbpDvR86BYdH0ijIOE9EcjQ9Dm0U1v65c/y
-	WzpLzlMkJyHIH+Yv/n3vvu5cLgrn70h66ZTHJw4XuzHqffmzuUsQHWK/bLs40G7iQuJPqKSEl
-	cmz+QDBZ4VvNEXVMVNKe5jAXHouHMVRnGs9OIqdpEREz37IypUxNl6EUOsc01on778pm/84PW
-	zDZOdQsPvHk7WUcunVfTj1hhy0fXjgIF9vve8egZ3dE8e6UnfK+PlfnOUPOnrOnawgr+gyO+q
-	Bd08Qrqflvo7CoX+KyWOicxTmO5os6IK4ge4D5fASiNSq6tm+2TIFC7VjOfgFTwKhL4JHs5W2
-	HMGtWzRyPYxSzgN+ni8ieABqUA9VMW4uppiBtg==
+X-Provags-ID: V03:K1:SNFDgADADbm/fFXtSZNnqdB9BzRNRMwa2eNInnlQ3eUpqYxVq0Q
+	XVU9bIyp5poIPF/hE6jd3ytc1CmvHyr5zlei7Fr7Wrtbfh3NocdJwvnKXPj8Z+1rC9pxd+a
+	A44T6KxAOlXKnbvY4lRFK3Zdn7Uqxbf1djkpxXucMBmx39ZpAIKJ42kY5bYjxQ9J4J1EA/w
+	bnOZcftjQmGBIfNLuWZbg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:1sTaJX50/Aw=:QFO9PpXOn64oRj7rtl8TWX
+	UNtrM1eFarGw6fiGkLa8H83YnLmzLHXZB9h6M7frk7yhs69OjyJTaxgPCa7GD9w3djbjcXZMb
+	IoyHflNxDC6XxDs3qO68iYI2cnh36r8M3Eo8PLXZv33nFvsNihWVYuiJYRUl9uCuzb40J+vz0
+	t5ZdeVbRbbrZ1gKe0kCjzXnOxZlBIfTfKK9NoBGFL8yLAEG6gW7BBFL+N1GEWcZWgHKg6wXJJ
+	fFhVODcURQR4dlfTgX7GFaJMVaNB/297+xi1tOeEhTvi2PRs70ac7prUt0BhRqKS14j27mO9z
+	biwY7D1KY5REMXhQGDt4Yoe9pgGu6woygxRGYOiK/th0l48f1PSpAaGLcOZxGdUAS+C5IonlX
+	fKdyNthvRbelihpbAQIBD6CCtYDmABrwICmcatZnLrgSirJ5IyEOn28OnT+/EblgfQEkC3Lke
+	dzuudB0jpQqbE5gQW6ph6CibhTlkMPDoWXP/2aD4E4F/3hJgyoNLYxCyfC+f+Pik0sWcjmvOE
+	mXUKM+djiEiJYav41HB5IPAhTi/kl1Leyszt3+3LghEso2GC6EfZzADRBwY6H/HEc2INOeMKX
+	z49Bu/Xmh145tqnWWjng969Jt1Rz4TlfiMCPZ4GgZtnNp/JrCUTfNnQA8LpMb6qhI/uOd9wQV
+	5CN1o+qdmcZdHc/0c1xSPRNA7/oDDv3xA/StlstKaqE0kUaP+bJJDsbUXT/nnds2PiyHN2cL1
+	9mrHCnHLGpzEwVCGBJYK650hGtdOk2lkJ1rDXk1XrfCg0ACzMf7n/fbk/G8=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.187
-Subject: [Qemu-trivial] [PULL 09/13] tcg: Fix LGPL version number
+Subject: [Qemu-trivial] [PULL 12/13] hw/block: clean up stale xen_disk trace
+ entries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,204 +74,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 13:23:39 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 13:23:44 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Paul Durrant <paul.durrant@citrix.com>
 
-It's either "GNU *Library* General Public version 2" or "GNU Lesser
-General Public version *2.1*", but there was no "version 2.0" of the
-"Lesser" library. So assume that version 2.1 is meant here.
+This should have been removed then xen_disk.c was removed but I missed them.
 
-Cc: Richard Henderson <rth@twiddle.net>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <1548252536-6242-5-git-send-email-thuth@redhat.com>
+Fixes: 19f87870baa570bcd7e80e7657e030bf427f16be
+       xen: remove the legacy 'xen_disk' backend
+Signed-off-by: Paul Durrant <paul.durrant@citrix.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20190122145132.12571-1-paul.durrant@citrix.com>
+[lv: s/stake/stale/ and add "Fixes" tag]
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- accel/tcg/atomic_template.h  | 2 +-
- accel/tcg/cpu-exec-common.c  | 2 +-
- accel/tcg/cpu-exec.c         | 2 +-
- accel/tcg/cputlb.c           | 2 +-
- accel/tcg/softmmu_template.h | 2 +-
- accel/tcg/tcg-runtime-gvec.c | 2 +-
- accel/tcg/translate-all.c    | 2 +-
- accel/tcg/translate-all.h    | 2 +-
- accel/tcg/user-exec.c        | 2 +-
- tcg/tcg-gvec-desc.h          | 2 +-
- tcg/tcg-op-gvec.c            | 2 +-
- tcg/tcg-op-gvec.h            | 2 +-
- tcg/tcg-op-vec.c             | 2 +-
- 13 files changed, 13 insertions(+), 13 deletions(-)
+ hw/block/trace-events | 7 -------
+ 1 file changed, 7 deletions(-)
 
-diff --git a/accel/tcg/atomic_template.h b/accel/tcg/atomic_template.h
-index efde12fdb2..685602b076 100644
---- a/accel/tcg/atomic_template.h
-+++ b/accel/tcg/atomic_template.h
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/accel/tcg/cpu-exec-common.c b/accel/tcg/cpu-exec-common.c
-index 2988fde650..462a1f1865 100644
---- a/accel/tcg/cpu-exec-common.c
-+++ b/accel/tcg/cpu-exec-common.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 6c4a33262f..7cf1292546 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index dad9b7796c..f580e4dd7e 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/accel/tcg/softmmu_template.h b/accel/tcg/softmmu_template.h
-index b0adea045e..1fdd262ea4 100644
---- a/accel/tcg/softmmu_template.h
-+++ b/accel/tcg/softmmu_template.h
-@@ -11,7 +11,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/accel/tcg/tcg-runtime-gvec.c b/accel/tcg/tcg-runtime-gvec.c
-index 9358749741..e2c6f24262 100644
---- a/accel/tcg/tcg-runtime-gvec.c
-+++ b/accel/tcg/tcg-runtime-gvec.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index 7364e8a071..8f593b926f 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/accel/tcg/translate-all.h b/accel/tcg/translate-all.h
-index 08e2f23a46..64f5fd9a05 100644
---- a/accel/tcg/translate-all.h
-+++ b/accel/tcg/translate-all.h
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
-index 66cc818e3f..0789984fe6 100644
---- a/accel/tcg/user-exec.c
-+++ b/accel/tcg/user-exec.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/tcg/tcg-gvec-desc.h b/tcg/tcg-gvec-desc.h
-index 3b4c2d9c69..2dda7d6ba1 100644
---- a/tcg/tcg-gvec-desc.h
-+++ b/tcg/tcg-gvec-desc.h
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
-index 3ee44fcb75..0996ef0812 100644
---- a/tcg/tcg-op-gvec.c
-+++ b/tcg/tcg-op-gvec.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/tcg/tcg-op-gvec.h b/tcg/tcg-op-gvec.h
-index 4734eef7de..850da32ded 100644
---- a/tcg/tcg-op-gvec.h
-+++ b/tcg/tcg-op-gvec.h
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/tcg/tcg-op-vec.c b/tcg/tcg-op-vec.c
-index 36f35022ac..27f65600c3 100644
---- a/tcg/tcg-op-vec.c
-+++ b/tcg/tcg-op-vec.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/hw/block/trace-events b/hw/block/trace-events
+index 55e5a5500c..d0851953c5 100644
+--- a/hw/block/trace-events
++++ b/hw/block/trace-events
+@@ -121,13 +121,6 @@ nvme_ub_db_wr_invalid_cqhead(uint32_t qid, uint16_t new_head) "completion queue
+ nvme_ub_db_wr_invalid_sq(uint32_t qid) "submission queue doorbell write for nonexistent queue, sqid=%"PRIu32", ignoring"
+ nvme_ub_db_wr_invalid_sqtail(uint32_t qid, uint16_t new_tail) "submission queue doorbell write value beyond queue size, sqid=%"PRIu32", new_head=%"PRIu16", ignoring"
+ 
+-# hw/block/xen_disk.c
+-xen_disk_alloc(char *name) "%s"
+-xen_disk_init(char *name) "%s"
+-xen_disk_connect(char *name) "%s"
+-xen_disk_disconnect(char *name) "%s"
+-xen_disk_free(char *name) "%s"
+-
+ # hw/block/xen-block.c
+ xen_block_realize(const char *type, uint32_t disk, uint32_t partition) "%s d%up%u"
+ xen_block_connect(const char *type, uint32_t disk, uint32_t partition) "%s d%up%u"
 -- 
 2.20.1
 
