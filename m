@@ -1,24 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gom0F-0002hL-GN
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:17:51 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35669)
+	id 1gom2I-0004Bs-3x
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:19:58 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36170)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gom0D-0002fT-EM
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:17:50 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gom2F-00049U-Gw
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:19:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gom0A-0005DY-MU
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:17:48 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:35665)
+	(envelope-from <laurent@vivier.eu>) id 1gom2E-00072I-FO
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:19:55 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:50529)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1golzv-0004w6-V7; Wed, 30 Jan 2019 04:17:34 -0500
+	id 1gom2C-00070L-Jn; Wed, 30 Jan 2019 04:19:52 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue009 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1MF39M-1gvLZU3g6q-00FWR7; Wed, 30 Jan 2019 10:17:17 +0100
-To: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>,
-	qemu-devel@nongnu.org, imammedo@redhat.com
-Cc: qemu-trivial@nongnu.org
-References: <20190125094047.22276-1-dgilbert@redhat.com>
+	(mreue012 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MLAZe-1gXet71xgo-00ICNt; Wed, 30 Jan 2019 10:19:47 +0100
+To: kumar sourav <sourav.jb1988@gmail.com>, qemu-trivial@nongnu.org
+Cc: pbonzini@redhat.com, thuth@redhat.com, qemu-devel@nongnu.org,
+	mst@redhat.com
+References: <20190125151440.13794-1-sourav.jb1988@gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -63,34 +63,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <7c6b541c-ed1d-0de2-29fe-76ca56c05640@vivier.eu>
-Date: Wed, 30 Jan 2019 10:17:15 +0100
+Message-ID: <9a14a8b4-b0c5-c5bd-9563-c8e6f73e9c03@vivier.eu>
+Date: Wed, 30 Jan 2019 10:19:45 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190125094047.22276-1-dgilbert@redhat.com>
+In-Reply-To: <20190125151440.13794-1-sourav.jb1988@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:YhlQAKKHFmvPJe6l0YeI9mAkznOFBJDALV0YCyTVO9nyvND3cZx
-	u6+Fr9BL5sPdvOJoOMcbOr61OREXNxA+YVBpCudj7VbBFQcP4WL+3FIeh8Dms4DJHEULwMv
-	pwg14V1j1/SDs8X+L/0lxCCtXGRF6bYu/ZY9YslVH8sGEkUFcoRDCYJN6j3y11K8gDrD5j3
-	RcmwxVY4F08cx8N0oCEeA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Tw7btUIs+EM=:kYLhTj55yMlln0xWusWQp4
-	qAskedvx+rSSkNr5KXsHMdqAlg/eje46aT+7AlRq9Lb/P1lAt+5I08iu7tF8xSFPZ0scX/EzD
-	XfudOeUDND3WByq2IAs/jCY5rXZbVBj/fiB0BcWInpxBeAMU/x4r5CCnxCw8y4NE9W9CA8U3z
-	1SNAq8x58fiyH/GVl0jXwwOBg1KOFIE86xb8yat9cui+leZzYwwPHwbbSGiWMWtxtE0Rln4Yb
-	7SQ+UFj+pX2dgOh29gynZanDYTJY5VxuRgP4WdZIDaT2KJQINLpBqkdv9N7rKbkVwupoM3pFj
-	52oQhnJnWRnKqwMdR48iTjt8dubbN5WSVnbs7yH4Vfs5pYXqLHuQZTh5YkJVZ0SIvdD5Njzrf
-	aeaO/mfrdbu1UcBQRUMV+Mn1p8Iqsfjxi872bG9QZ25WHn4YqxHwpzAdWUY3g+zfF8vTnnXkY
-	B6P9xFCVevYW0StexKTVxGmQ8ty7dPK14/UIBqdjMYyIL3c/GZNfAYRAnoiKL6eqZfX8mqLfX
-	tkKdSSzjqs/idZgLZLRkM9BvKfDafuVw3jwpqGaVdmZj/T25BdBwMegpNdL/l0qG8rrN+AiLS
-	oZTjQQLjYNnVilkId0Lr8FrdVcsDeah40NWEIhW1jWypt8GjUGZRZC8OK3Y1qWzG7hecs5J52
-	k3jc8Z9WlW+AxG1ZHJ9LI1WvAl44+VTUlqITa1L3w/5dJyTUBXYQmvXlpUMZsA9ziFTg2HJr2
-	KfwgO+JMFT4Aq2mQbIWiPZZ0XROAw/G2Rqy4DEWFFTTFK/30vaZMsdGqemQ=
+X-Provags-ID: V03:K1:Z36UE8URXLrLqhuxTgWR6Q1UG2tosBS3T9Uy4e8r31uTTLilkh9
+	Q92IQq2Q2Xgjhsp2xj0LkpAyccQ+LL4s/ZpQwFIVuS4I8mn9qnUB0YR5iEnG+Y9OmHVASsf
+	pOHfIfcLO/lC+So3FgKyi7OtMWZJa4ksYexpbs3QuX2eWC6yuLDkWe/2p0XPPSjAEYkh6fl
+	IXvI47ekyHV0u/3FvmcNg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:heGzdy/iRII=:3v9twpljGeG7pwiuginSFt
+	E3GROr5Ue5fwRZEIqiTdrO+QsNHPgUPKnDVA+i3JLxDXWVSMky8dZAnoC3gK6TjgQshcNe9qJ
+	GmYrC8xLFkk3mj6oxlI015eLh92RtcZ42UjHZ1Y9xtLHI9tRg0VDw7NHc+F/jNbkuw7R0TJtF
+	CA4/DloTV/mgB/ksaNQ3stx3uflIlc9Y3q32EQPgfO48K+5Vq79erJ0yi4RXmAIf9faVe/1dA
+	61E0C0KAJMY/RTMQ9LjkuFqDeELIrELg3iwtt4A9gprnGq1w80WEcm1+0O/VpSHZziWk7tCi3
+	vM9xnNhGgG+pHjcjKmdBy9SuosQq0AjtXqxZNuAFYu5/v2sU7sWQ1yApO7JMW19IwlqjaQfKk
+	cu7snL0pX1jCWCJ0d5A77pM6yPnPGV7AyJQCY2TjSZgGA08/G7wnH46xNQ76jHlOBTclYmNQ/
+	8kminRfLgxa7tFGhe3AmRMqpsTbS3rhIlKvUjxjlSGCxG9MBQdh7WBI3qDI9MoPUN91VrjqwR
+	vLxC6uOgVe5igHLBKeF+nYE4bF400l6sRsTbu8B1kW6I7lhEpTeMz4FVrqLInA5mmkCgfEqEw
+	B2xZDLxXMrQ4DDaUHFrDbx8eoOTDap+N4UiRZuJD+m2d0vi7MZeoXwF+O82VNTw0XQwSquXlQ
+	nak29iavm6mdlmEN8Nfi4EEEevM9wWjGmI06CDOj+K9mOyrRXyy1N6lvJcQ+Kzh8RkTMNQxFn
+	bRmAOFByb9syCzVH0YTMk/fdp6xWwVbi9TY/Grd5ZiVbBrUqRUkkLUiJGHc=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-Subject: Re: [Qemu-trivial] [PATCH] typo: apci->acpi
+X-Received-From: 212.227.126.134
+Subject: Re: [Qemu-trivial] [PATCH] hw: input: set category of the i8042
+ device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,61 +103,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 09:17:50 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 09:19:56 -0000
 
-On 25/01/2019 10:40, Dr. David Alan Gilbert (git) wrote:
-> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+On 25/01/2019 16:14, kumar sourav wrote:
+> Sets the category of i8042 device as DEVICE_CATEGORY_INPUT
+> Devices should be assigned to one of DEVICE_CATEGORY_XXXX.
 > 
-> apci_1_compatible should be acpi_1_compatible.
-> 
-> Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
 > ---
->  hw/acpi/cpu.c         | 2 +-
->  hw/i386/acpi-build.c  | 2 +-
->  include/hw/acpi/cpu.h | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
+>  hw/input/pckbd.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-> index f10b190019..a0a43fe6b5 100644
-> --- a/hw/acpi/cpu.c
-> +++ b/hw/acpi/cpu.c
-> @@ -508,7 +508,7 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
->              GArray *madt_buf = g_array_new(0, 1, 1);
->              int arch_id = arch_ids->cpus[i].arch_id;
+> diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+> index 3e66713b47..72e7d5f6cc 100644
+> --- a/hw/input/pckbd.c
+> +++ b/hw/input/pckbd.c
+> @@ -574,6 +574,7 @@ static void i8042_class_initfn(ObjectClass *klass, void *data)
 >  
-> -            if (opts.apci_1_compatible && arch_id < 255) {
-> +            if (opts.acpi_1_compatible && arch_id < 255) {
->                  dev = aml_processor(i, 0, 0, CPU_NAME_FMT, i);
->              } else {
->                  dev = aml_device(CPU_NAME_FMT, i);
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 2e21a31f82..d60603abd7 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -1847,7 +1847,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
->          build_legacy_cpu_hotplug_aml(dsdt, machine, pm->cpu_hp_io_base);
->      } else {
->          CPUHotplugFeatures opts = {
-> -            .apci_1_compatible = true, .has_legacy_cphp = true
-> +            .acpi_1_compatible = true, .has_legacy_cphp = true
->          };
->          build_cpus_aml(dsdt, machine, opts, pm->cpu_hp_io_base,
->                         "\\_SB.PCI0", "\\_GPE._E02");
-> diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h
-> index 89ce172941..62f0278ba2 100644
-> --- a/include/hw/acpi/cpu.h
-> +++ b/include/hw/acpi/cpu.h
-> @@ -48,7 +48,7 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
->                           CPUHotplugState *state, hwaddr base_addr);
+>      dc->realize = i8042_realizefn;
+>      dc->vmsd = &vmstate_kbd_isa;
+> +    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
+>  }
 >  
->  typedef struct CPUHotplugFeatures {
-> -    bool apci_1_compatible;
-> +    bool acpi_1_compatible;
->      bool has_legacy_cphp;
->  } CPUHotplugFeatures;
->  
+>  static const TypeInfo i8042_info = {
 > 
-
 
 Applied to my trivial-patches branch.
 
