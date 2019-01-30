@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gopqE-0001we-1N
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 08:23:46 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37335)
+	id 1gopqI-0001yZ-6Q
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 08:23:50 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37402)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gopqA-0001rv-2Z
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:44 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gopqC-0001uj-CI
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gopq8-0006vt-BJ
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:42 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:45317)
+	(envelope-from <laurent@vivier.eu>) id 1gopqA-00072X-GJ
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:44 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:39373)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gopq0-0006nR-OA; Wed, 30 Jan 2019 08:23:33 -0500
+	id 1gopq4-0006qC-7t; Wed, 30 Jan 2019 08:23:36 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N1fei-1hHL5k26rA-011zf3; Wed, 30 Jan 2019 14:22:48 +0100
+	id 1MatZr-1hQNdN472J-00cSQ2; Wed, 30 Jan 2019 14:22:55 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -33,34 +33,34 @@ Cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Thomas Huth <thuth@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>
-Date: Wed, 30 Jan 2019 14:22:09 +0100
-Message-Id: <20190130132214.25493-9-laurent@vivier.eu>
+	Thomas Huth <thuth@redhat.com>, Liam Merwick <liam.merwick@oracle.com>
+Date: Wed, 30 Jan 2019 14:22:12 +0100
+Message-Id: <20190130132214.25493-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190130132214.25493-1-laurent@vivier.eu>
 References: <20190130132214.25493-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:F3lU3uHqHdhZ0ljCLfZPtIBB/JoK8ak1qo+tcAQri4FL1l8q3DZ
-	1356I6gi4UUyNZqOluAl+c1DMjHAE6uLbs0kbDiSzNrcaxhPc8GKTSyVlLG7Ub0R4/gb6hh
-	6mjdoOxAUn+ui+jdgo0J5dT25/FdtWvzDdJ2SfeewoTvnQpwj+1P3oU8+sDiJjmsa/TYSS7
-	jdZy9+tRnVEhLf3s8cWeg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:XUjrLbazSgs=:mxvSkj9kTy7U+oWFPhSMSa
-	a6W5ZBhESown6sO5bPonIvGcpeXhbp5x31uyf0c2mmGvD0CzOYwHbrp+Vk6ckALiwWh2EVtEg
-	4u5HyTKE8rXdUHtWg/Kxo3rySbMLQRbcxvoWzln8Cc2tZ7OSVre6fygL8px3D1lpsVAnnBoJL
-	PEofX1VGmZvlRmhQKMNXxMOAeZiJ5A8jpjSi01xKmc+oWQ2/cYXi9jKE018V6xmORW8cgVhNR
-	rcr8gEbMeSacKA68GhaUms6a8KB8/eZ4NcUWTDp7MXx7B9WJ0e7z1a92IMkaSjalAY9EPqo6T
-	wPCPYOMh+2vvrWnCws4QgPqL7iXNQ/UsNwrptnfegBejYGk9oIUCi8qqtnfpwmEJWxmPUWRKS
-	WtatXz+qzoxyWKoeeNH/ueCWunpe6DIuxnyvr5SmOrpPD/bK5hzdFfwl2PBBJxqbQuwQ+16tY
-	XdJaQqGn4e78p9L0hJIDQ3eMS4n+TEGoum7+UuysiAXpyVMohZF7wfxkxLeyuZzXyyxSEzbb9
-	2fk/743AVGC6vpbQ/mh34m9kn7WJMZ8aBH6QS0y9gt+Egwb0a9VzC1Rh2/tFzHCVVghVL43+e
-	w9zjEJw9vOk51LvEoFc9MN4kY6a08nsFyxBQPJW3vpp7v0WL9UcJKOYcjw+93zyDodtg1FfSU
-	YLUE8alC64O9zPNQi4yBwL9ko+InN9gDfycrsSAudwhYCgZqXp2XJ5irHWBxHn8LuPzB9xrdB
-	wcgIjDzk9yMTVC+74p80MQ4KDucV9+8XtJPzNg==
+X-Provags-ID: V03:K1:3pNzAh0uy4xadtw2eVuagIEPb6ic17xXfQKtm5tp12Vr0fnGWKX
+	ZgRoTGQnCJYKkYgAQqq3fUj2TEGxYFoiXrk2K7NfjaL8uk18NIilZmVosaLUs46GsbRBSvj
+	pqYjapRqthRP+f3+tOMZCewGxgajqhuAbO7iVPeuyQG8YeymJcF7wYO3gSE0BOaljVXc5hT
+	9yqqhhk/3Xa/sRV19Tp2Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:20m8/7pfm54=:vTsrCfik7TjcPUotg5RUMb
+	rqn6qxB19IlTq5bd8EFuAg6u6LZbc0eWIQiyjQzZtNPDvRn/9r+vMTxkapJAfNUQCwRLtOnIZ
+	CKj4IikEuQQWceuyv/lINFLmOFAP2syq1ark2+5D9BnYSdMWeccgJUR+ucgZ9vDA/RQh2E88H
+	kx8n8yAIN59G7rbN9qNorlgNxG0BqFu4gyAe2/FWVXP/4/ZNq9cjnF9S0JRrkBygN0myCkhT9
+	3JStJNrL1HNHNPwKFrO/T5ug8SaxyDCesvfA3BWqBrwijwU/qixGR6lmaAbsQXcrkuAzG6bUO
+	4rJQThTsTRPtDIVWDFVFez4hLtKvrgqXLbgqCqzWP8oKpj0+HJzefPp2qKUhSlklM9j/OzbfJ
+	IoDxX+RdBtKrm4MF4D9gSSgCByuexJTS3QNXys83strJexb0ASlRrv1GDk/Byu88DHyLPgwJ9
+	8ehfeRgjiiHoar4cd3UFfA82X8/wzbTHJfsq9f915/f9X0DWo4lZfq/8ib61TQdWRzVZbuOdS
+	ufxHXgpjyEbma+ufYQc2t9OGjwEx3arP+8IVInQFIEsIiz/9jvAp2FjQp8wW0LUY7Cztrjq7J
+	2fKXeZvy0WU0k51KGlRm4hhj0U3wy1meqCDFVmpXvs2wlhjenXNj/z1ihLYinzaRouTA770TI
+	/+/SbULNCj5kxln/PTGVkbSHeFOktHLjXgK1g1a4hJhaoQBlHzbM9kxHb5mJdFsONeSBe+UxB
+	iBVRAh9Y4gvEEC1dldZV3AwYeoo9Dj9zNJaQvA==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-Subject: [Qemu-trivial] [PULL 08/13] target/tricore: Fix LGPL version number
+X-Received-From: 212.227.126.135
+Subject: [Qemu-trivial] [PULL 11/13] target/m68k: Fix LGPL information in
+ the file headers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,38 +72,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 13:23:44 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 13:23:46 -0000
 
 From: Thomas Huth <thuth@redhat.com>
 
-It's either "GNU *Library* General Public version 2" or "GNU Lesser
-General Public version *2.1*", but there was no "version 2.0" of the
-"Lesser" library. So assume that version 2.1 is meant here.
+It's either "GNU *Library* General Public License version 2" or
+"GNU Lesser General Public License version *2.1*", but there was
+no "version 2.0" of the "Lesser" license. So assume that version
+2.1 is meant here.
+Also some files mention the GPL instead of the LGPL after declaring
+that the files are licensed under the LGPL, so change these spots to
+use LGPL, too.
 
-Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Reviewed-by: Liam Merwick <liam.merwick@oracle.com>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
-Acked-by: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <1548252536-6242-4-git-send-email-thuth@redhat.com>
+Message-Id: <1548769438-28942-1-git-send-email-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/tricore/cpu-qom.h         | 2 +-
- target/tricore/cpu.c             | 2 +-
- target/tricore/cpu.h             | 2 +-
- target/tricore/fpu_helper.c      | 2 +-
- target/tricore/helper.c          | 2 +-
- target/tricore/helper.h          | 2 +-
- target/tricore/op_helper.c       | 2 +-
- target/tricore/translate.c       | 2 +-
- target/tricore/tricore-defs.h    | 2 +-
- target/tricore/tricore-opcodes.h | 2 +-
- 10 files changed, 10 insertions(+), 10 deletions(-)
+ linux-user/m68k/target_cpu.h     | 4 ++--
+ linux-user/m68k/target_structs.h | 2 +-
+ target/m68k/cpu.h                | 4 ++--
+ target/m68k/fpu_helper.c         | 4 ++--
+ target/m68k/gdbstub.c            | 2 +-
+ target/m68k/helper.c             | 4 ++--
+ target/m68k/op_helper.c          | 2 +-
+ target/m68k/translate.c          | 4 ++--
+ 8 files changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/target/tricore/cpu-qom.h b/target/tricore/cpu-qom.h
-index 6a69756126..93c9d77fe3 100644
---- a/target/tricore/cpu-qom.h
-+++ b/target/tricore/cpu-qom.h
-@@ -4,7 +4,7 @@
+diff --git a/linux-user/m68k/target_cpu.h b/linux-user/m68k/target_cpu.h
+index 611df065ca..7a26f3c3fc 100644
+--- a/linux-user/m68k/target_cpu.h
++++ b/linux-user/m68k/target_cpu.h
+@@ -7,12 +7,12 @@
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
   * License as published by the Free Software Foundation; either
@@ -112,10 +112,16 @@ index 6a69756126..93c9d77fe3 100644
   *
   * This library is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
-index 2edaef1aef..e8d37e4040 100644
---- a/target/tricore/cpu.c
-+++ b/target/tricore/cpu.c
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * General Public License for more details.
++ * Lesser General Public License for more details.
+  *
+  * You should have received a copy of the GNU Lesser General Public
+  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+diff --git a/linux-user/m68k/target_structs.h b/linux-user/m68k/target_structs.h
+index a003676548..e373d481e1 100644
+--- a/linux-user/m68k/target_structs.h
++++ b/linux-user/m68k/target_structs.h
 @@ -6,7 +6,7 @@
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
@@ -125,10 +131,80 @@ index 2edaef1aef..e8d37e4040 100644
   *
   * This library is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
-index c3665c6ddd..00e69dc154 100644
---- a/target/tricore/cpu.h
-+++ b/target/tricore/cpu.h
+diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+index b288a3864e..f154565117 100644
+--- a/target/m68k/cpu.h
++++ b/target/m68k/cpu.h
+@@ -7,12 +7,12 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * General Public License for more details.
++ * Lesser General Public License for more details.
+  *
+  * You should have received a copy of the GNU Lesser General Public
+  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+diff --git a/target/m68k/fpu_helper.c b/target/m68k/fpu_helper.c
+index 6eeffdf9bb..b35489ba4e 100644
+--- a/target/m68k/fpu_helper.c
++++ b/target/m68k/fpu_helper.c
+@@ -7,12 +7,12 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * General Public License for more details.
++ * Lesser General Public License for more details.
+  *
+  * You should have received a copy of the GNU Lesser General Public
+  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+diff --git a/target/m68k/gdbstub.c b/target/m68k/gdbstub.c
+index 99e5be8132..fd2bb46c42 100644
+--- a/target/m68k/gdbstub.c
++++ b/target/m68k/gdbstub.c
+@@ -7,7 +7,7 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+diff --git a/target/m68k/helper.c b/target/m68k/helper.c
+index 917d46efcc..3e26d337bf 100644
+--- a/target/m68k/helper.c
++++ b/target/m68k/helper.c
+@@ -7,12 +7,12 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * General Public License for more details.
++ * Lesser General Public License for more details.
+  *
+  * You should have received a copy of the GNU Lesser General Public
+  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c
+index 8d09ed91c4..76f439985a 100644
+--- a/target/m68k/op_helper.c
++++ b/target/m68k/op_helper.c
 @@ -6,7 +6,7 @@
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
@@ -138,11 +214,11 @@ index c3665c6ddd..00e69dc154 100644
   *
   * This library is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/tricore/fpu_helper.c b/target/tricore/fpu_helper.c
-index 31df462e4a..d8a6c0d25b 100644
---- a/target/tricore/fpu_helper.c
-+++ b/target/tricore/fpu_helper.c
-@@ -6,7 +6,7 @@
+diff --git a/target/m68k/translate.c b/target/m68k/translate.c
+index 752e46ef63..6217a683f1 100644
+--- a/target/m68k/translate.c
++++ b/target/m68k/translate.c
+@@ -7,12 +7,12 @@
   * This library is free software; you can redistribute it and/or
   * modify it under the terms of the GNU Lesser General Public
   * License as published by the Free Software Foundation; either
@@ -151,84 +227,12 @@ index 31df462e4a..d8a6c0d25b 100644
   *
   * This library is distributed in the hope that it will be useful,
   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/tricore/helper.c b/target/tricore/helper.c
-index dad7eea085..0769046993 100644
---- a/target/tricore/helper.c
-+++ b/target/tricore/helper.c
-@@ -4,7 +4,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * General Public License for more details.
++ * Lesser General Public License for more details.
   *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/tricore/helper.h b/target/tricore/helper.h
-index e634d0c680..f60e81096b 100644
---- a/target/tricore/helper.h
-+++ b/target/tricore/helper.h
-@@ -4,7 +4,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/tricore/op_helper.c b/target/tricore/op_helper.c
-index b57f35387d..ed9dc0c83e 100644
---- a/target/tricore/op_helper.c
-+++ b/target/tricore/op_helper.c
-@@ -4,7 +4,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/tricore/translate.c b/target/tricore/translate.c
-index b5ab40d4a2..14f0ddfa1e 100644
---- a/target/tricore/translate.c
-+++ b/target/tricore/translate.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/tricore/tricore-defs.h b/target/tricore/tricore-defs.h
-index 40abfaac14..e871aa1c6b 100644
---- a/target/tricore/tricore-defs.h
-+++ b/target/tricore/tricore-defs.h
-@@ -4,7 +4,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/tricore/tricore-opcodes.h b/target/tricore/tricore-opcodes.h
-index 2c3baab694..40bc121ba4 100644
---- a/target/tricore/tricore-opcodes.h
-+++ b/target/tricore/tricore-opcodes.h
-@@ -4,7 +4,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * You should have received a copy of the GNU Lesser General Public
+  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
 -- 
 2.20.1
 
