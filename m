@@ -1,23 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gommO-0000s8-5y
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 05:07:36 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50803)
+	id 1gomsO-0003q7-7R
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 05:13:48 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52283)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gommL-0000pm-KO
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:07:35 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gomsL-0003oa-Oq
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:13:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gommJ-0008C9-NV
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:07:33 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:41819)
+	(envelope-from <laurent@vivier.eu>) id 1gomsL-0003c7-4F
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:13:45 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:50255)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gomm9-00087t-8h; Wed, 30 Jan 2019 05:07:21 -0500
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1gomsK-0003Ws-Ri
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:13:45 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue011 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1MEVJq-1gvtFw2iq2-00G4xU; Wed, 30 Jan 2019 11:07:06 +0100
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, liam.merwick@oracle.com
-References: <1548769438-28942-1-git-send-email-thuth@redhat.com>
+	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1N4hj5-1hGbMq3MqF-011gfl for <qemu-trivial@nongnu.org>; Wed, 30 Jan 2019
+	11:13:31 +0100
+To: qemu-trivial@nongnu.org
+References: <20190122145132.12571-1-paul.durrant@citrix.com>
+	<57cd3429-41a3-48c5-4d06-5d203cf70f97@redhat.com>
+	<CAFEAcA9Ne8=buW5FGr8AbuTdovrdAdFcZJG01N_zkQGrXJ85FA@mail.gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -62,35 +64,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <a726d274-800b-1529-f6ba-941e9a05fdfd@vivier.eu>
-Date: Wed, 30 Jan 2019 11:07:05 +0100
+Message-ID: <07ab9296-2e67-4193-ecfe-4a6d855c0633@vivier.eu>
+Date: Wed, 30 Jan 2019 11:13:31 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <1548769438-28942-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <CAFEAcA9Ne8=buW5FGr8AbuTdovrdAdFcZJG01N_zkQGrXJ85FA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:02hvWJ0KdRgWIujtRBK+T+dYfg3ZeF9skZ0m/Zb6pMciJ6/2S/T
-	hCVC64Z8mjAvoKnnnMBxZ1SqV3p+/k8VFTH8bi+BLexrhZJ1ErrtTYq1QRQdKM0oXIPTwZS
-	tDDWA92HKjEnVBpCSMf028VxXWUXglkBaAx8D4Dzm6enu9blnjVLDcuQNknjja8vyH1FKKS
-	eiyWv/3hs8bB6rywWgLWg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:7fK7qe+y0FI=:XhtFD5iMoCZL9wZfg2HzY9
-	usg1r+pSoyruWl0IeZGbvI21avNSbTqFflc5mAwURhFKitNLgW/nk/8ZEL/QXQXmh4JeFEPjx
-	7Ku9Ml3ePrrtcFm1g4YxlXQFzc/Hr+72HPMbq/zsUXOBN9Q7ZdtePUEMjT+vbqCsvQX3ESDVi
-	XzbzCPOF7eWSRh0US48aEoMbk5MpzkgLIUn+xOJ+kMtHqs6CYpE3no2bLzClROR6Iy/2znJwq
-	6WKoBSeQSPYWo+iXxEj69hHmYX02rJiEMVbvn7I5wlO8mP0TMJVsfd2mdA6fMX9br3LsMYEzC
-	YkdGm2fVCp0AmbHg+JfI9+s+4sO97lNjEE/3XurQu/+jU98MkrOmgUQd7qdNr5jarFd/El2sp
-	TWG4gyw4rqyRLMcbUxg1SDKUlcsAmD/xkQMMDvjT4p1eoNlKCWNXsNXWGUEhkIDQw0xcqhSzF
-	5R+V2EBj7/bHcfRZirTdf4V1bp8iJslHUaq0iio3EZLseOfvvQ8dXUarsGvF6OVeRcohJk5Mb
-	bgdWD5du6zluqR22zR94hredjVfbzBPMKPXVbMVvGO4X32DU9klpMx9pKO+BTiDXkuYto1zK8
-	gjS6qHvlvCMt1odUlGO7ZRdJfxQcDHgQrzjJhAI8gJP3fZDflKQIdFbanZgnx1vypn9ABoWOQ
-	Qn/nV0JF9Cg47d+xI/207dOCX0vAHEZM44n0ShnI+4ogYvHZAazGhVZogABeCps9qXS09LAX2
-	KUTHO5U0xvsW56ORAohA9NebeOhgJIQk8mlZ6CE/4VaoHKwGK7NtiLfyRnQ=
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:XrP7jZiQ6zOubC6l4gjcJEBThvZjoJC0aCcXrM6sMK7tumd+mEW
+	7XDbLjehIa5KD646X5qq6TeQx2OwMksZIc59gMpAKbthBe1bfSWdIY+h7LRLHb2y1ttW8r5
+	iccbEEOk4ZMfFoDbKaIiLdMYZC7IaKEoDOtsPaUveNqLfOwHk/JE9SNybd4q+Fa82nNyCBU
+	xX8mYWIGNbKU7rhoRMZDQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ZPA4FfxCWOw=:v4MlaM1HEU5sXKW7nRuED0
+	7GAQdZR+aKzj3+T+r5r4u5S/Lun/casMnag/irqU3+Ox6tEwXE1VSr84DIjVBX2VdzUiQn6hz
+	HtvbY5eb4Q1uhrwxj7j8IhX2oblXlWVvXrgq5/ws0P1/K1BCzHTIzgO6bEsbrQwPY0AIyvKYV
+	ncGubJiiczHHP4u+5Yu4llOQu+NKIkoI+rFIkHzqY095DE2Gcn5sT4klFVwQWWXyxOGiBvR8d
+	gwveflT2G9ySfNsZWeTGiDu2XywGjQ3GtBixxb2YWsHsvzUSNz0tbUEbOCrGHT3cHx93eYilC
+	fEPPwOjAoNS/Da72xk/ZqVusA9ZVSzay+sxWx+zokRAOPGJmCT3IQAiiWKEq6k8jlfEl9cCIA
+	HFTe9q38rUE3H4gt+y1ecKv3I+vyzWy1pPLk6u3pBqQy8597mYNYDTwlojcyHjj8HO/Pc6peN
+	kFCgeqN0rKa6kSREIhUUsS07Qxfl/39/Qkvv37sYmyAy6svG5kJDiKR1AZX9PYSKRYDFUKFzY
+	03I9so8kMGLeyUiNa0D3MW9vTS6Sv6fmrq2lmwmw4rZ7VJ2Pn5/AL5DyZjioNQxIxcqE6AVFi
+	ycFIbfeL2YvsvC0eqg4bA8xlW8kjfG0TmlmJKe3EyPJL6J9ittDnh9JG/n/i6has9Np8T0Mnh
+	aTRfFFQQ+YM3dEJTnLIhPRHLtNamA51M5v0AMhB5qLCojcBKlyiFuM2vMQ1hVNOf7MzsGWek3
+	vggz0gmvnS0g1vpIdX9p4NE4zv14XSkCM85h9OImK/ZQAthpxWu76+CfWFE=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-Subject: Re: [Qemu-trivial] [PATCH v2] target/m68k: Fix LGPL information in
- the file headers
+X-Received-From: 212.227.126.130
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/block: clean up stake
+ xen_disk trace entries
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,169 +104,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 10:07:35 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 10:13:46 -0000
 
-On 29/01/2019 14:43, Thomas Huth wrote:
-> It's either "GNU *Library* General Public License version 2" or
-> "GNU Lesser General Public License version *2.1*", but there was
-> no "version 2.0" of the "Lesser" license. So assume that version
-> 2.1 is meant here.
-> Also some files mention the GPL instead of the LGPL after declaring
-> that the files are licensed under the LGPL, so change these spots to
-> use LGPL, too.
+On 28/01/2019 14:51, Peter Maydell wrote:
+> On Mon, 28 Jan 2019 at 13:41, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
+>>
+>> Cc'ing QEMU Trivial.
+>>
+>> On 1/22/19 3:51 PM, Paul Durrant wrote:
+>>> This should have been removed then xen_disk.c was removed but I missed them.
+>>
+>> ... when xen_disk.c was removed (19f87870baa) ...
 > 
-> Reviewed-by: Liam Merwick <liam.merwick@oracle.com>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  v2: Fixed typos in the patch description
-> 
->  linux-user/m68k/target_cpu.h     | 4 ++--
->  linux-user/m68k/target_structs.h | 2 +-
->  target/m68k/cpu.h                | 4 ++--
->  target/m68k/fpu_helper.c         | 4 ++--
->  target/m68k/gdbstub.c            | 2 +-
->  target/m68k/helper.c             | 4 ++--
->  target/m68k/op_helper.c          | 2 +-
->  target/m68k/translate.c          | 4 ++--
->  8 files changed, 13 insertions(+), 13 deletions(-)
-> 
-> diff --git a/linux-user/m68k/target_cpu.h b/linux-user/m68k/target_cpu.h
-> index 611df06..7a26f3c 100644
-> --- a/linux-user/m68k/target_cpu.h
-> +++ b/linux-user/m68k/target_cpu.h
-> @@ -7,12 +7,12 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
->   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> - * General Public License for more details.
-> + * Lesser General Public License for more details.
->   *
->   * You should have received a copy of the GNU Lesser General Public
->   * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-> diff --git a/linux-user/m68k/target_structs.h b/linux-user/m68k/target_structs.h
-> index a003676..e373d48 100644
-> --- a/linux-user/m68k/target_structs.h
-> +++ b/linux-user/m68k/target_structs.h
-> @@ -6,7 +6,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
-> index b288a38..f154565 100644
-> --- a/target/m68k/cpu.h
-> +++ b/target/m68k/cpu.h
-> @@ -7,12 +7,12 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
->   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> - * General Public License for more details.
-> + * Lesser General Public License for more details.
->   *
->   * You should have received a copy of the GNU Lesser General Public
->   * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-> diff --git a/target/m68k/fpu_helper.c b/target/m68k/fpu_helper.c
-> index 6eeffdf..b35489b 100644
-> --- a/target/m68k/fpu_helper.c
-> +++ b/target/m68k/fpu_helper.c
-> @@ -7,12 +7,12 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
->   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> - * General Public License for more details.
-> + * Lesser General Public License for more details.
->   *
->   * You should have received a copy of the GNU Lesser General Public
->   * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-> diff --git a/target/m68k/gdbstub.c b/target/m68k/gdbstub.c
-> index 99e5be8..fd2bb46 100644
-> --- a/target/m68k/gdbstub.c
-> +++ b/target/m68k/gdbstub.c
-> @@ -7,7 +7,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/m68k/helper.c b/target/m68k/helper.c
-> index 917d46e..3e26d33 100644
-> --- a/target/m68k/helper.c
-> +++ b/target/m68k/helper.c
-> @@ -7,12 +7,12 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
->   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> - * General Public License for more details.
-> + * Lesser General Public License for more details.
->   *
->   * You should have received a copy of the GNU Lesser General Public
->   * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-> diff --git a/target/m68k/op_helper.c b/target/m68k/op_helper.c
-> index 8d09ed9..76f4399 100644
-> --- a/target/m68k/op_helper.c
-> +++ b/target/m68k/op_helper.c
-> @@ -6,7 +6,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/m68k/translate.c b/target/m68k/translate.c
-> index 752e46e..6217a68 100644
-> --- a/target/m68k/translate.c
-> +++ b/target/m68k/translate.c
-> @@ -7,12 +7,12 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
->   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> - * General Public License for more details.
-> + * Lesser General Public License for more details.
->   *
->   * You should have received a copy of the GNU Lesser General Public
->   * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+> also s/stake/stale/ in the subject line I guess ?
 > 
 
-Applied to my trivial-patches branch.
+Applied to my trivial-patches branch with changes above.
 
 Thanks,
 Laurent
