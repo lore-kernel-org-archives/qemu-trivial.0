@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1goppf-0001LT-K6
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 08:23:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36701)
+	id 1goppu-0001bX-4T
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 08:23:26 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36971)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1goppd-0001JV-O5
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:10 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gopps-0001XQ-G2
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1goppa-0006Kd-SF
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:08 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:34451)
+	(envelope-from <laurent@vivier.eu>) id 1goppr-0006aa-Ey
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:24 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:40919)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1goppS-0006BR-A5; Wed, 30 Jan 2019 08:23:00 -0500
+	id 1goppZ-0006Ex-TX; Wed, 30 Jan 2019 08:23:07 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MkpjD-1haF0B2LtP-00mOaI; Wed, 30 Jan 2019 14:22:32 +0100
+	id 1N8GIa-1hAkSk2DNw-014ASL; Wed, 30 Jan 2019 14:22:38 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -32,32 +32,37 @@ Cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
 	Michael Tokarev <mjt@tls.msk.ru>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-Date: Wed, 30 Jan 2019 14:22:01 +0100
-Message-Id: <20190130132214.25493-1-laurent@vivier.eu>
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	kumar sourav <sourav.jb1988@gmail.com>, Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Wed, 30 Jan 2019 14:22:04 +0100
+Message-Id: <20190130132214.25493-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190130132214.25493-1-laurent@vivier.eu>
+References: <20190130132214.25493-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:bvgwF1I/LfHhIYrDn9SsKX6yEo/Rn6PONwtLoU7ogERwtiZJtYX
-	QtUi5VUPbOnYPJXb8Vw50JXvsTnB3BTON2MKfmz8infzE6oRFKjd2AEzP3Npu7LXNX/T0+m
-	uoLkQdamhNyp2hwwe3qDPAYVRaeIm7Y79cjpjAN2DpM42yr7fqOabHv+pbqTxr41AIN4hSk
-	VQ0wbjGLHOhxXGDfkOO7w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:QsvPAhxyLLs=:DH4F2hFPABjaAlq0dgwn9z
-	LDMHMCh4ClvvIEos43UTd1RX7lthThGVy/ASj37lGT8R9hln/us4nFF6L+OYksp3qeQOjZxDn
-	bzikzbU2lDFdkzSqyrOlB1Y/FIW+3O4Xtan8eDCUcTNsSAjbcz8hF1nd4uOkC6EsgLyBwqO9D
-	3n2WC8FzF/9lNF8zRn/lazR4dWHP2wiltR8U12Wo29zw/kNNjJBX+fxfxk0ymICsE5vCqZvvs
-	CwCPi3gi9o0/IPQTQcOdU1FQwASHEnEVU5nQm7eje/5uJ7DhCWEPREbJuAqRQqPiCKURGEojW
-	DNoxrXg5mPw1l6xDnsktC0bxgL9k3oE7emez/5auOI0m7Ko2+iHN4areQtxyS5zWSCbgjbhzH
-	8YDfkSW5LujtIM8oFMJSRK+v5qAtrzzcxe4Jkd6fFyZ0j+nEYseo/eSDtY5/YHGPsz5BC9C76
-	uoh/nGDwots4A47Yg0DapQCYzXcj0I/BGOL+M8mXV+wH8uvroE2M+bSBiPxk4FVDbuCtJ6gqL
-	u8Ho5Z5R5Qd29e4ICZD1Hnl2Rufa98/CnTH1inIku7Gtd/p75B9FL/1KtoJVdg5/GJ+m7rKl1
-	cRtobz/KI7+PlOn1qf+wIhjHTCg3cDOATRoLIJQIUO66yA4+ooDuy1SLqnZ3vBdaNKlst/T9f
-	35KFCS9XZz8IZcOJusk7V+zuqk8Vl478L9CzozKQ5k+8W1aAX5TdWykUQeWRV16WyfgjG58+A
-	8ZArbUHQWJQ1/CNdjZI2kgO9J20ax6cIEc2O3OejiyR6pwFsIXo0EWNo3XM=
+X-Provags-ID: V03:K1:snUypJG3Jv6UdPUKdZjHdzbJN3MQE2HD/LeXCH/ASb+61viyd9i
+	VB4Ypxkdwge7p1IKUA+2GBwvh1+KUcJquqCTggPSr03hASLW7825UZSmOKNNVCc3ypZYSKT
+	aTqqMUus7ertxPehgy5lAXqriE7HWJsJfrYpCKVRPU/6JPcJMOoWceIIroEO+ZnkdsX0vNQ
+	28ZIb7x0dC7vihcxQ+WBg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:AhzrMwdN23I=:nDntWtZ1HElk7C1DYdwG+m
+	k0HFEPOiKOn7SfAkCkpJEE4P636Ict6tSj5CNdfP4QGPdFDgL8vY6ggL9eYVmi7OadtP2dDov
+	9dP9jT1JUwdGVG/vEaf99QtQHzARu+KlYV88ZlSoeo47NgFrNkIco1gou7L5qHZaC8UGvE1KI
+	0wXQD2u4bcYJ24W/DHnwnZcOioTg+vX/yP6rVzbuEAdSMwH238FslE97cZCZlaZHot36Q0EmD
+	pecgD0w/gEyRdXBmyWAdKVU+T5cX+bQ3TyB45jgmEEsdet3K97eo13c4aRMx/LeaCBHt1sTDw
+	NAhBxPCX0gminelmD7f4/Hr9vztje66PQYCgVeHPFH2yBoATvpPCWw/IisFVfmH3MYl9lcsQL
+	GOdA7yMmk0qxskUpgdKyajoIxAdTueI2FjzY1IfHuxaW5Y1cr0b63RRujUiIIrTO4fg43qZix
+	SSKAo9v5lDrZFTU5V7GCNHXO5vIackdHaOxjDq+cPEgSeMJDyxaoqXKy4oMNdWyEqrBfoWZ6g
+	GfQlRdpKkMYNXh+KZx1DYvBKyzljE2lkoVr3OoAc6RLjTX5BM9LJ0/HjF89BbCGlEeHCk9/OV
+	F+c5cH5jhYjBIC0YGNucNv4HYiUoLlV9MZv1oFVP7aUXdP2bY+UohjNwvxl/L0ye5/AzA0yda
+	u1Zgx6g1RDf9j5ROG9JHSxr/itkpdlABUeJ9HPtgbdgM+rRa0woRPe8GHRBsSjLGTWIA8Q48A
+	aPkp4csryUrx5Sx9CRILqh+OOFDv+jJXVZq6kMUxuZ+cmxb3/p+ns+JB2wg=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: [Qemu-trivial] [PULL 00/13] Trivial branch patches
+X-Received-From: 212.227.126.130
+Subject: [Qemu-trivial] [PULL 03/13] hw: input: set category of the i8042
+ device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,116 +74,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 13:23:10 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 13:23:25 -0000
 
-The following changes since commit b4fbe1f65a4769c09e6bf2d79fc84360f840f40e:
+From: kumar sourav <sourav.jb1988@gmail.com>
 
-  Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-20190129' into staging (2019-01-29 12:00:19 +0000)
+Sets the category of i8042 device as DEVICE_CATEGORY_INPUT
+Devices should be assigned to one of DEVICE_CATEGORY_XXXX.
 
-are available in the Git repository at:
+Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Message-Id: <20190125151440.13794-1-sourav.jb1988@gmail.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/input/pckbd.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
-
-for you to fetch changes up to 95b3c9cfd5eaaa4a2a4afa1eaf09612a94ade1da:
-
-  virtio-blk: remove duplicate definition of VirtIOBlock *s pointer (2019-01-30 14:20:18 +0100)
-
-----------------------------------------------------------------
-- add device category (edu, i8042, sd memory card)
-- code clean-up
-- LGPL information clean-up
-- fix typo (acpi)
-
-----------------------------------------------------------------
-
-Dr. David Alan Gilbert (1):
-  typo: apci->acpi
-
-Paul Durrant (1):
-  hw/block: clean up stale xen_disk trace entries
-
-Stefano Garzarella (1):
-  virtio-blk: remove duplicate definition of VirtIOBlock *s pointer
-
-Thomas Huth (7):
-  Don't talk about the LGPL if the file is licensed under the GPL
-  COPYING.LIB: Synchronize the LGPL 2.1 with the version from gnu.org
-  target/openrisc: Fix LGPL version number
-  target/tricore: Fix LGPL version number
-  tcg: Fix LGPL version number
-  target/s390x: Fix LGPL version in the file header comments
-  target/m68k: Fix LGPL information in the file headers
-
-kumar sourav (3):
-  hw: edu: set category of the edu device
-  hw: input: set category of the i8042 device
-  hw: sd: set category of the sd memory card
-
- COPYING.LIB                        | 22 ++++++++++------------
- accel/tcg/atomic_template.h        |  2 +-
- accel/tcg/cpu-exec-common.c        |  2 +-
- accel/tcg/cpu-exec.c               |  2 +-
- accel/tcg/cputlb.c                 |  2 +-
- accel/tcg/softmmu_template.h       |  2 +-
- accel/tcg/tcg-runtime-gvec.c       |  2 +-
- accel/tcg/translate-all.c          |  2 +-
- accel/tcg/translate-all.h          |  2 +-
- accel/tcg/user-exec.c              |  2 +-
- crypto/afsplit.c                   | 11 +++++------
- hw/acpi/cpu.c                      |  2 +-
- hw/block/trace-events              |  7 -------
- hw/block/virtio-blk.c              |  2 --
- hw/i386/acpi-build.c               |  2 +-
- hw/input/pckbd.c                   |  1 +
- hw/misc/edu.c                      |  2 ++
- hw/sd/sd.c                         |  1 +
- include/crypto/afsplit.h           | 11 +++++------
- include/hw/acpi/cpu.h              |  2 +-
- include/hw/pci-host/gpex.h         |  4 ++--
- include/hw/pci-host/q35.h          |  4 ++--
- include/qemu/range.h               | 11 +++++------
- linux-user/m68k/target_cpu.h       |  4 ++--
- linux-user/m68k/target_structs.h   |  2 +-
- target/i386/hvf/hvf.c              |  6 +++---
- target/m68k/cpu.h                  |  4 ++--
- target/m68k/fpu_helper.c           |  4 ++--
- target/m68k/gdbstub.c              |  2 +-
- target/m68k/helper.c               |  4 ++--
- target/m68k/op_helper.c            |  2 +-
- target/m68k/translate.c            |  4 ++--
- target/openrisc/cpu.c              |  2 +-
- target/openrisc/exception.h        |  2 +-
- target/openrisc/gdbstub.c          |  2 +-
- target/openrisc/helper.h           |  2 +-
- target/openrisc/interrupt_helper.c |  2 +-
- target/openrisc/sys_helper.c       |  2 +-
- target/openrisc/translate.c        |  2 +-
- target/s390x/cc_helper.c           |  2 +-
- target/s390x/excp_helper.c         |  2 +-
- target/s390x/fpu_helper.c          |  2 +-
- target/s390x/gdbstub.c             |  2 +-
- target/s390x/helper.c              |  2 +-
- target/s390x/int_helper.c          |  2 +-
- target/s390x/mem_helper.c          |  2 +-
- target/s390x/misc_helper.c         |  2 +-
- target/s390x/translate.c           |  2 +-
- target/tricore/cpu-qom.h           |  2 +-
- target/tricore/cpu.c               |  2 +-
- target/tricore/cpu.h               |  2 +-
- target/tricore/fpu_helper.c        |  2 +-
- target/tricore/helper.c            |  2 +-
- target/tricore/helper.h            |  2 +-
- target/tricore/op_helper.c         |  2 +-
- target/tricore/translate.c         |  2 +-
- target/tricore/tricore-defs.h      |  2 +-
- target/tricore/tricore-opcodes.h   |  2 +-
- tcg/tcg-gvec-desc.h                |  2 +-
- tcg/tcg-op-gvec.c                  |  2 +-
- tcg/tcg-op-gvec.h                  |  2 +-
- tcg/tcg-op-vec.c                   |  2 +-
- util/range.c                       | 11 +++++------
- 63 files changed, 96 insertions(+), 107 deletions(-)
-
+diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+index 3e66713b47..72e7d5f6cc 100644
+--- a/hw/input/pckbd.c
++++ b/hw/input/pckbd.c
+@@ -574,6 +574,7 @@ static void i8042_class_initfn(ObjectClass *klass, void *data)
+ 
+     dc->realize = i8042_realizefn;
+     dc->vmsd = &vmstate_kbd_isa;
++    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
+ }
+ 
+ static const TypeInfo i8042_info = {
 -- 
 2.20.1
 
