@@ -1,25 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gomsO-0003q7-7R
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 05:13:48 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52283)
+	id 1gomuo-0004z4-CT
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 05:16:18 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52947)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomsL-0003oa-Oq
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:13:46 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gomum-0004yA-Qn
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:16:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomsL-0003c7-4F
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:13:45 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:50255)
+	(envelope-from <laurent@vivier.eu>) id 1gomul-0005XD-Uq
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:16:16 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:39521)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1gomsK-0003Ws-Ri
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:13:45 -0500
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1gomul-0005VJ-Lv; Wed, 30 Jan 2019 05:16:15 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1N4hj5-1hGbMq3MqF-011gfl for <qemu-trivial@nongnu.org>; Wed, 30 Jan 2019
-	11:13:31 +0100
-To: qemu-trivial@nongnu.org
-References: <20190122145132.12571-1-paul.durrant@citrix.com>
-	<57cd3429-41a3-48c5-4d06-5d203cf70f97@redhat.com>
-	<CAFEAcA9Ne8=buW5FGr8AbuTdovrdAdFcZJG01N_zkQGrXJ85FA@mail.gmail.com>
+	1M3lsh-1gp41q0NJD-000xXh; Wed, 30 Jan 2019 11:16:09 +0100
+To: Stefano Garzarella <sgarzare@redhat.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
+	qemu-block@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>
+References: <20190130095231.42081-1-sgarzare@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -64,35 +65,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <07ab9296-2e67-4193-ecfe-4a6d855c0633@vivier.eu>
-Date: Wed, 30 Jan 2019 11:13:31 +0100
+Message-ID: <ba3d95a8-6b8c-5d94-f079-ca2899b150c4@vivier.eu>
+Date: Wed, 30 Jan 2019 11:16:07 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9Ne8=buW5FGr8AbuTdovrdAdFcZJG01N_zkQGrXJ85FA@mail.gmail.com>
+In-Reply-To: <20190130095231.42081-1-sgarzare@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:XrP7jZiQ6zOubC6l4gjcJEBThvZjoJC0aCcXrM6sMK7tumd+mEW
-	7XDbLjehIa5KD646X5qq6TeQx2OwMksZIc59gMpAKbthBe1bfSWdIY+h7LRLHb2y1ttW8r5
-	iccbEEOk4ZMfFoDbKaIiLdMYZC7IaKEoDOtsPaUveNqLfOwHk/JE9SNybd4q+Fa82nNyCBU
-	xX8mYWIGNbKU7rhoRMZDQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ZPA4FfxCWOw=:v4MlaM1HEU5sXKW7nRuED0
-	7GAQdZR+aKzj3+T+r5r4u5S/Lun/casMnag/irqU3+Ox6tEwXE1VSr84DIjVBX2VdzUiQn6hz
-	HtvbY5eb4Q1uhrwxj7j8IhX2oblXlWVvXrgq5/ws0P1/K1BCzHTIzgO6bEsbrQwPY0AIyvKYV
-	ncGubJiiczHHP4u+5Yu4llOQu+NKIkoI+rFIkHzqY095DE2Gcn5sT4klFVwQWWXyxOGiBvR8d
-	gwveflT2G9ySfNsZWeTGiDu2XywGjQ3GtBixxb2YWsHsvzUSNz0tbUEbOCrGHT3cHx93eYilC
-	fEPPwOjAoNS/Da72xk/ZqVusA9ZVSzay+sxWx+zokRAOPGJmCT3IQAiiWKEq6k8jlfEl9cCIA
-	HFTe9q38rUE3H4gt+y1ecKv3I+vyzWy1pPLk6u3pBqQy8597mYNYDTwlojcyHjj8HO/Pc6peN
-	kFCgeqN0rKa6kSREIhUUsS07Qxfl/39/Qkvv37sYmyAy6svG5kJDiKR1AZX9PYSKRYDFUKFzY
-	03I9so8kMGLeyUiNa0D3MW9vTS6Sv6fmrq2lmwmw4rZ7VJ2Pn5/AL5DyZjioNQxIxcqE6AVFi
-	ycFIbfeL2YvsvC0eqg4bA8xlW8kjfG0TmlmJKe3EyPJL6J9ittDnh9JG/n/i6has9Np8T0Mnh
-	aTRfFFQQ+YM3dEJTnLIhPRHLtNamA51M5v0AMhB5qLCojcBKlyiFuM2vMQ1hVNOf7MzsGWek3
-	vggz0gmvnS0g1vpIdX9p4NE4zv14XSkCM85h9OImK/ZQAthpxWu76+CfWFE=
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:liExGGTIdxDoU9XZyf7yTnhUkCYq1aG7eLeBtzUXiywKto0PENt
+	gM1v7alWIElY6eJ9UgKVEDyL2GmtDOo3WaQCQhNMdyajyAxxLxjyrIZoaMA5bHYEMRxAHg5
+	r1/mz/655iWsCf1khFeb6a91vHSbnwa8xbGJVLbOzK4CxkakBoWBVhltInI3xye320DooeT
+	4k0Nt2Eab1BUsGUAv3xGg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Ld/7p3V/wUw=:3rEwe9cm+OcTCbDztMlvnv
+	sX/HdJuPMgP1SxjYife296BK03YrO9UB1sqSRajnGAQrGB0xKM49TyF5HIRoOC7aRiAlqIWU0
+	z6Sa/HEI37cn9ol6677E3Jlx+srLcA3Uo9rdTQHT2Mi7uVGctnAdN4o3PSyoPOfokeIsGiCi9
+	Mp+EOSRoWO9XfxonvoY+ZUECk6CqCFRvI+Ey1FDYa7mOLQcL4vBD4XHzHApQMtjCtM32hx+7u
+	ewEnuDTJwLmqgZP72YXmBng756dKDl4fCcc7qORUHNDI5JCu3DTVB0Y4+RUZfRdxtoXMuSJH1
+	6crSV3YFuNUHvuU7nC0vCpcloGQGqzhUXNC+3VI6v6A/wLCDrUfVeQUYX2zQSMsH2Rrgd4+Gg
+	lWFz7AatMUS077kutLoGGfZUyd97vtBFmR1qMKoPkmeXm7J0mu82f15rxr6fdMaekZZE6fYYu
+	e6elzgZsXYCk9Pwe9jMmjhie3FXgD6QDGzjVdIN/VVSp64QZ++t0jDUD8QNkdk6RPqfAUT1DJ
+	7F1hn3x4AAoeKcgYOLI5NAXsE5ERe8aBHOuQGg9n/dtm9kf1O/Ax//1qG+sBIJipGDYCupodN
+	6a3ikYmG8nXv30YK/C8KcNt1eeQT2B3xLBTTy5kEd4QQTLgWVG5QIu3ycXYXEiTuXo97RHI7h
+	RC8U9Y/ljkqasS2PUuA9DD2lYztC6UXXE7ak1zDqCEv4NaXBUGByL4psFKgLNmIZowHvBIb1G
+	QHZmloJ4lDY3nK/C/YNXL82b8fcDQa1apXwppEyqCqt3iIqtED5K+FWgrlU=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.130
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/block: clean up stake
- xen_disk trace entries
+Subject: Re: [Qemu-trivial] [PATCH] virtio-blk: remove duplicate definition
+ of VirtIOBlock *s pointer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,22 +105,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 10:13:46 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 10:16:17 -0000
 
-On 28/01/2019 14:51, Peter Maydell wrote:
-> On Mon, 28 Jan 2019 at 13:41, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->>
->> Cc'ing QEMU Trivial.
->>
->> On 1/22/19 3:51 PM, Paul Durrant wrote:
->>> This should have been removed then xen_disk.c was removed but I missed them.
->>
->> ... when xen_disk.c was removed (19f87870baa) ...
+On 30/01/2019 10:52, Stefano Garzarella wrote:
+> VirtIOBlock *s is already defined and initialized with req->dev
+> on top of virtio_blk_handle_request(), so we can remove it from
+> the code block of VIRTIO_BLK_T_GET_ID case.
 > 
-> also s/stake/stale/ in the subject line I guess ?
+> Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
+> ---
+>  hw/block/virtio-blk.c | 2 --
+>  1 file changed, 2 deletions(-)
+> 
+> diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
+> index f208c6ddb9..9a87b3bfac 100644
+> --- a/hw/block/virtio-blk.c
+> +++ b/hw/block/virtio-blk.c
+> @@ -569,8 +569,6 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
+>          break;
+>      case VIRTIO_BLK_T_GET_ID:
+>      {
+> -        VirtIOBlock *s = req->dev;
+> -
+>          /*
+>           * NB: per existing s/n string convention the string is
+>           * terminated by '\0' only when shorter than buffer.
 > 
 
-Applied to my trivial-patches branch with changes above.
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
