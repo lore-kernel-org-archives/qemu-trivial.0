@@ -1,66 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gopqJ-00020t-WA
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 08:23:52 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37418)
+	id 1gorN1-0000U8-UA
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 10:01:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35035)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gopqC-0001vR-Rv
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:46 -0500
+	(envelope-from <eblake@redhat.com>) id 1gorMz-0000SK-Hs
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 10:01:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gopqB-00074b-A2
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 08:23:44 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:45123)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1goppw-0006g9-UU; Wed, 30 Jan 2019 08:23:29 -0500
-Received: from localhost.localdomain ([78.238.229.36]) by
-	mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA
-	(Nemesis)
-	id 1MQMm9-1gSe9F3XrF-00MH36; Wed, 30 Jan 2019 14:22:53 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Jiri Slaby <jslaby@suse.cz>, qemu-s390x@nongnu.org,
-	Cornelia Huck <cohuck@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
-	Richard Henderson <rth@twiddle.net>, Igor Mammedov <imammedo@redhat.com>,
-	Peter Crosthwaite <crosthwaite.peter@gmail.com>,
-	Riku Voipio <riku.voipio@iki.fi>, Stefan Hajnoczi <stefanha@redhat.com>,
-	Stafford Horne <shorne@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
-	qemu-trivial@nongnu.org, Max Reitz <mreitz@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	Michael Tokarev <mjt@tls.msk.ru>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Thomas Huth <thuth@redhat.com>
-Date: Wed, 30 Jan 2019 14:22:11 +0100
-Message-Id: <20190130132214.25493-11-laurent@vivier.eu>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190130132214.25493-1-laurent@vivier.eu>
-References: <20190130132214.25493-1-laurent@vivier.eu>
+	(envelope-from <eblake@redhat.com>) id 1gorMi-0001QN-MQ
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 10:01:30 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:24636)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1gorMW-0001H6-5P; Wed, 30 Jan 2019 10:01:13 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5D072AAA87;
+	Wed, 30 Jan 2019 15:01:03 +0000 (UTC)
+Received: from [10.3.117.44] (ovpn-117-44.phx2.redhat.com [10.3.117.44])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 98C2A600C6;
+	Wed, 30 Jan 2019 15:01:02 +0000 (UTC)
+To: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org
+References: <1548769067-20792-1-git-send-email-thuth@redhat.com>
+	<20190129145156.6719b8a4.cohuck@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=eblake@redhat.com; keydata=
+	xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
+	xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
+	TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
+	GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
+	sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
+	AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
+	CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
+	RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
+	wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
+	Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
+	gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
+	pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
+	zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
+	pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
+	3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
+	NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
+	cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
+	SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
+	I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
+	mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
+	Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
+	2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
+Organization: Red Hat, Inc.
+Message-ID: <e3dfae55-8733-bd01-1f13-422f343fb258@redhat.com>
+Date: Wed, 30 Jan 2019 09:01:01 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:PXtBMKPq235MqQZ1jRD3HmR47swwHGHj4EWlVZqZgm136fCSnwV
-	zXd2rsnQyzp0cxx2FL3ZTSYdxTFc5OBs3rYREEDow6+q/WoM80UO9T6YvoFLyAOKoS8KbzD
-	w6GbKI2BHcLpBguc63QBu6B9N6u1IFkiZRaPulA429B0ogQ5cyj1D26O92EQEwc07MoPQj8
-	pr6s/06gdFCsquqCTx6Hg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:OtvqaIpTHvg=:Trv4EKdWuVm+a6T8zpyIsn
-	BOg2ySVwyP0eLWS0R7j8tCChcGQFUPz6zS05f+9GQqnDL72X/TW6d5PaM8yGOR27x72C8kAcP
-	1bGwQXqS4wwTNPDsshdHRZ1n3CEfS7+20u62rc8jUARIVn6ILpk6/wlhA/iFAvhrICJJhtDcV
-	OQQIhZPOH4NvCKwy3KKLvrbr9yqDWsto01q5gevcH6mMjssZCXV8CGu0ZAc0J5YL9nlyHNw4H
-	Jytf6U2OSJY7JjDvcihnabwMBzc379RtULz0kzfz2WcnwBuj6HL25YoHvyKNNvChzQQyOkJmp
-	J/O/jticrz+UqfKLSSG0KZP+wAB1wNPAxtFd0qHdakBlx3MaXeRbLjphFFkfELzFl8SZWb9g9
-	FzlqW/I6MgxMVpjweZVnC2n1RcWg1BUwBWChj7fl1FPm8wnjQ6L/y2rzV02e8rb7Kw7OiJ+Q9
-	gdKZdDIBSYggt74OCqTJajVvSQBeLvpWWPLiyoSBmfg7MFmKefDHsyVaIvSisUy/dsNxzGobk
-	+xErravtRtAdZQ7xPf7NxGs9tDb0Bv/nq7YpRsqGm9xosepHtJSmJL39wtC73L9XMX/FhZfQe
-	eINCb0msEJmxElPyyY0t9WF2gsM5AJK214yFdS7xcXfLwFKJv9VQUp70fhmKW7StKkgkjPTZM
-	k7FtpghjXku+3v69n1n7Pc8IX0BZlURN6rAerpv74HiiuJ92my5iALqeFrIoBdAobrFnupTHF
-	x1QZREXTJunOad3CZKaAjIbt7ZVDIZVL+ZJE3g==
+In-Reply-To: <20190129145156.6719b8a4.cohuck@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="uJpQ5UZ3pVQDnBqqqV75RfYNJwrtZo6J4"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Wed, 30 Jan 2019 15:01:03 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: [Qemu-trivial] [PULL 10/13] target/s390x: Fix LGPL version in the
- file header comments
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target/s390x: Fix LGPL
+ version in the file header comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,149 +79,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 13:23:46 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 15:01:42 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--uJpQ5UZ3pVQDnBqqqV75RfYNJwrtZo6J4
+Content-Type: multipart/mixed; boundary="xQDyK04nJ91iNslD6KZuQWx4Se308jfMJ";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org
+Message-ID: <e3dfae55-8733-bd01-1f13-422f343fb258@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH] target/s390x: Fix LGPL version in the file
+ header comments
+References: <1548769067-20792-1-git-send-email-thuth@redhat.com>
+ <20190129145156.6719b8a4.cohuck@redhat.com>
+In-Reply-To: <20190129145156.6719b8a4.cohuck@redhat.com>
 
-It's either "GNU *Library* General Public License version 2" or
-"GNU Lesser General Public License version *2.1*", but there was
-no "version 2.0" of the "Lesser" license. So assume that version
-2.1 is meant here.
+--xQDyK04nJ91iNslD6KZuQWx4Se308jfMJ
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Acked-by: Cornelia Huck <cohuck@redhat.com>
-Message-Id: <1548769067-20792-1-git-send-email-thuth@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- target/s390x/cc_helper.c   | 2 +-
- target/s390x/excp_helper.c | 2 +-
- target/s390x/fpu_helper.c  | 2 +-
- target/s390x/gdbstub.c     | 2 +-
- target/s390x/helper.c      | 2 +-
- target/s390x/int_helper.c  | 2 +-
- target/s390x/mem_helper.c  | 2 +-
- target/s390x/misc_helper.c | 2 +-
- target/s390x/translate.c   | 2 +-
- 9 files changed, 9 insertions(+), 9 deletions(-)
+On 1/29/19 7:51 AM, Cornelia Huck wrote:
+> On Tue, 29 Jan 2019 14:37:47 +0100
+> Thomas Huth <thuth@redhat.com> wrote:
+>=20
+>> It's either "GNU *Library* General Public License version 2" or
+>> "GNU Lesser General Public License version *2.1*", but there was
+>> no "version 2.0" of the "Lesser" license. So assume that version
+>> 2.1 is meant here.
+>=20
+> I think we can assume that.
+>=20
+> Given that there have been several of these cases (and that there's a
+> lot of boilerplate in general): Should we adopt SPDX license
+> identifiers for QEMU, as the Linux kernel did? They also discovered and=
 
-diff --git a/target/s390x/cc_helper.c b/target/s390x/cc_helper.c
-index 5d91e458a8..307ad61aee 100644
---- a/target/s390x/cc_helper.c
-+++ b/target/s390x/cc_helper.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
-index 2a33222f7e..a758649f47 100644
---- a/target/s390x/excp_helper.c
-+++ b/target/s390x/excp_helper.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/s390x/fpu_helper.c b/target/s390x/fpu_helper.c
-index 1b662d2520..e921172bc4 100644
---- a/target/s390x/fpu_helper.c
-+++ b/target/s390x/fpu_helper.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/s390x/gdbstub.c b/target/s390x/gdbstub.c
-index b8c81dadcf..df147596ce 100644
---- a/target/s390x/gdbstub.c
-+++ b/target/s390x/gdbstub.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/s390x/helper.c b/target/s390x/helper.c
-index 254631693d..3d74836a83 100644
---- a/target/s390x/helper.c
-+++ b/target/s390x/helper.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/s390x/int_helper.c b/target/s390x/int_helper.c
-index abf77a94e6..abbbc20d9c 100644
---- a/target/s390x/int_helper.c
-+++ b/target/s390x/int_helper.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/s390x/mem_helper.c b/target/s390x/mem_helper.c
-index 490c43e6e6..a506d9ef99 100644
---- a/target/s390x/mem_helper.c
-+++ b/target/s390x/mem_helper.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/s390x/misc_helper.c b/target/s390x/misc_helper.c
-index 3f91579570..52262f62df 100644
---- a/target/s390x/misc_helper.c
-+++ b/target/s390x/misc_helper.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/s390x/translate.c b/target/s390x/translate.c
-index b5bd56b7ee..6249c70d02 100644
---- a/target/s390x/translate.c
-+++ b/target/s390x/translate.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
--- 
-2.20.1
+> fixed some problems/oddities while at it.
 
+I'm also in favor of SPDX license identifiers - their brevity and
+machine-parsability favors more accurate usage and fewer copy/paste
+mistake propagation.
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
+
+
+--xQDyK04nJ91iNslD6KZuQWx4Se308jfMJ--
+
+--uJpQ5UZ3pVQDnBqqqV75RfYNJwrtZo6J4
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlxRvC0ACgkQp6FrSiUn
+Q2pjyQf8CXc1r8WFH52ZnS4sAhopLr9EEQ+HPopE9PFv43DEj/Q2a3zRCHIYZrr4
+7QzOt5LioTM+IA9zzzOkWsFeznJTxzqrdaRxcStk+6d9fWXZaxhacdfrQ4UNcLaP
+JBJQwUWu1sc8yY093UyOOG6aJdskM/nHKx6/PX/+rQP185PClQYO8owrbyyAXDbo
+5q6lMcYynTdL5Uz5Et6dG0r7UcAsZ+sChZtsi40ubhzjyHCFvjiI7c2/0e9de8WK
+pt/euGLgnP48EsvRc6sauwfboJZPqdmPyL4mW2kjYO3GmbQaLofrPPKxyMeP0E90
+Zri4rP9IIXb5TuLpngVtCWjUTa4Ssg==
+=mzN6
+-----END PGP SIGNATURE-----
+
+--uJpQ5UZ3pVQDnBqqqV75RfYNJwrtZo6J4--
 
