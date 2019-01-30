@@ -1,23 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1golz6-00023Y-II
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:16:40 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35319)
+	id 1gom0F-0002hL-GN
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:17:51 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35669)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1golz4-000232-CQ
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:16:39 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gom0D-0002fT-EM
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:17:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1golz2-0004ad-Eg
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:16:38 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:56299)
+	(envelope-from <laurent@vivier.eu>) id 1gom0A-0005DY-MU
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:17:48 -0500
+Received: from mout.kundenserver.de ([212.227.126.133]:35665)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1golyy-0004Vq-JS; Wed, 30 Jan 2019 04:16:34 -0500
+	id 1golzv-0004w6-V7; Wed, 30 Jan 2019 04:17:34 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1M4roN-1gq9I52qgR-0023Pv; Wed, 30 Jan 2019 10:16:18 +0100
-To: kumar sourav <sourav.jb1988@gmail.com>, qemu-trivial@nongnu.org
-Cc: thuth@redhat.com, jslaby@suse.cz, qemu-devel@nongnu.org
-References: <20190124144606.4352-1-sourav.jb1988@gmail.com>
+	(mreue009 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1MF39M-1gvLZU3g6q-00FWR7; Wed, 30 Jan 2019 10:17:17 +0100
+To: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>,
+	qemu-devel@nongnu.org, imammedo@redhat.com
+Cc: qemu-trivial@nongnu.org
+References: <20190125094047.22276-1-dgilbert@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -62,34 +63,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <7363e637-7a98-31d9-c08a-3a829b7303bd@vivier.eu>
-Date: Wed, 30 Jan 2019 10:16:15 +0100
+Message-ID: <7c6b541c-ed1d-0de2-29fe-76ca56c05640@vivier.eu>
+Date: Wed, 30 Jan 2019 10:17:15 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190124144606.4352-1-sourav.jb1988@gmail.com>
+In-Reply-To: <20190125094047.22276-1-dgilbert@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:j5oQodGIvXCqgdv1Y1LOEm/X1Da3NIoqGrSHPfbvFu5bIp+ZTHn
-	YYXHxT2norfWi7Yv1v8GpZeQd9lnVdPUbwzXQVsDmCj6VtAiRjI3xmZa+68LGnNk5r3YSCa
-	1xiLzComkiwdt6eNBsXrJGdoBBqDNi3RCDOBYHBFi4zI9aWhu8DEeyQN4i2RqofYlZhh7WC
-	QchjVDSRIkSAQEY3DkXJg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Bh8aazadK6c=:S8nKgan5K28A8lyP1k38LF
-	WkVjmmKx0PQbf7zp9VF7gNX5C1x4+1qp/qjwmC8fWYPrk0KavuWFccS1gNMCNHAO5ueJmPIrR
-	QS3OZqc3x5b6gYi9w1E5adPMxt1BjIeQJapjM/bOeDekn7xL2SCUD/9IBoF3u/VgpdOm9ouu/
-	WSEPPQgvzMq/KG1tdh3D8MfWefrlBEIcAEiSilUOOR4YbGciGoWKMWNBJ8aRLj12a8ZlYRjfG
-	OQRCtK8X11geaZetQn3rMBDTSpF7y03BqrPywypnWbTPHZC4Xmxz34fg6bToUM+ApeEbBEcMl
-	BhRjqVwRziilm4jSb4tkQStH/g6NYuSsZQlyv6gXoPVE5sQMxXoBqIkJjl0yDVLeVW6CFlbkk
-	kyWupjUmlmz0KJkaOev0URvXL84Y4zXy/Vil3uR4tc8mK8PMyO7H1DoQ+7aMbsEX3fQbHuxnn
-	ijnsVlwLFN6o9SN0XMy8zAThjNxCXOSzQnaQiB+3EarhfxlzDiVD1IyC2nWmoFWxw/G0Na375
-	9+1SFkQ6NRACHVqeMxnvIxMFu8jG24kugwWoax2aNs4+lj6gHFeynM0Tu+sfKBI5kF6C5oA/u
-	QrKCSenfLax2wB8Z2die32b8BPI4aWAcwP1w/T47AcoS0W1Ew/tGsCtRfjVnoKMdZD+wKMhrU
-	PJjV8vfQfiJFPEseqo0ECCaj4APtB/Kr/6veNvK7QtWihIY1F7kHxAfCgNmvn4yYJ38/CglEB
-	IfNSpCjSfHjlxNU1sPUZXUQzSCp2TTKGDarcEGRGwh5YEba8prNA658XklI=
+X-Provags-ID: V03:K1:YhlQAKKHFmvPJe6l0YeI9mAkznOFBJDALV0YCyTVO9nyvND3cZx
+	u6+Fr9BL5sPdvOJoOMcbOr61OREXNxA+YVBpCudj7VbBFQcP4WL+3FIeh8Dms4DJHEULwMv
+	pwg14V1j1/SDs8X+L/0lxCCtXGRF6bYu/ZY9YslVH8sGEkUFcoRDCYJN6j3y11K8gDrD5j3
+	RcmwxVY4F08cx8N0oCEeA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Tw7btUIs+EM=:kYLhTj55yMlln0xWusWQp4
+	qAskedvx+rSSkNr5KXsHMdqAlg/eje46aT+7AlRq9Lb/P1lAt+5I08iu7tF8xSFPZ0scX/EzD
+	XfudOeUDND3WByq2IAs/jCY5rXZbVBj/fiB0BcWInpxBeAMU/x4r5CCnxCw8y4NE9W9CA8U3z
+	1SNAq8x58fiyH/GVl0jXwwOBg1KOFIE86xb8yat9cui+leZzYwwPHwbbSGiWMWtxtE0Rln4Yb
+	7SQ+UFj+pX2dgOh29gynZanDYTJY5VxuRgP4WdZIDaT2KJQINLpBqkdv9N7rKbkVwupoM3pFj
+	52oQhnJnWRnKqwMdR48iTjt8dubbN5WSVnbs7yH4Vfs5pYXqLHuQZTh5YkJVZ0SIvdD5Njzrf
+	aeaO/mfrdbu1UcBQRUMV+Mn1p8Iqsfjxi872bG9QZ25WHn4YqxHwpzAdWUY3g+zfF8vTnnXkY
+	B6P9xFCVevYW0StexKTVxGmQ8ty7dPK14/UIBqdjMYyIL3c/GZNfAYRAnoiKL6eqZfX8mqLfX
+	tkKdSSzjqs/idZgLZLRkM9BvKfDafuVw3jwpqGaVdmZj/T25BdBwMegpNdL/l0qG8rrN+AiLS
+	oZTjQQLjYNnVilkId0Lr8FrdVcsDeah40NWEIhW1jWypt8GjUGZRZC8OK3Y1qWzG7hecs5J52
+	k3jc8Z9WlW+AxG1ZHJ9LI1WvAl44+VTUlqITa1L3w/5dJyTUBXYQmvXlpUMZsA9ziFTg2HJr2
+	KfwgO+JMFT4Aq2mQbIWiPZZ0XROAw/G2Rqy4DEWFFTTFK/30vaZMsdGqemQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: Re: [Qemu-trivial] [PATCH] hw: edu: set category of the edu device
+X-Received-From: 212.227.126.133
+Subject: Re: [Qemu-trivial] [PATCH] typo: apci->acpi
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,37 +102,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 09:16:39 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 09:17:50 -0000
 
-On 24/01/2019 15:46, kumar sourav wrote:
-> Sets the category of edu device as DEVICE_CATEGORY_MISC.
-> Devices should be assigned to one of DEVICE_CATEGORY_XXXX.
+On 25/01/2019 10:40, Dr. David Alan Gilbert (git) wrote:
+> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 > 
-> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
+> apci_1_compatible should be acpi_1_compatible.
+> 
+> Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 > ---
->  hw/misc/edu.c | 2 ++
->  1 file changed, 2 insertions(+)
+>  hw/acpi/cpu.c         | 2 +-
+>  hw/i386/acpi-build.c  | 2 +-
+>  include/hw/acpi/cpu.h | 2 +-
+>  3 files changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/hw/misc/edu.c b/hw/misc/edu.c
-> index ceaf688bfb..91af452c9e 100644
-> --- a/hw/misc/edu.c
-> +++ b/hw/misc/edu.c
-> @@ -399,6 +399,7 @@ static void edu_instance_init(Object *obj)
+> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+> index f10b190019..a0a43fe6b5 100644
+> --- a/hw/acpi/cpu.c
+> +++ b/hw/acpi/cpu.c
+> @@ -508,7 +508,7 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+>              GArray *madt_buf = g_array_new(0, 1, 1);
+>              int arch_id = arch_ids->cpus[i].arch_id;
 >  
->  static void edu_class_init(ObjectClass *class, void *data)
->  {
-> +    DeviceClass *dc = DEVICE_CLASS(class);
->      PCIDeviceClass *k = PCI_DEVICE_CLASS(class);
+> -            if (opts.apci_1_compatible && arch_id < 255) {
+> +            if (opts.acpi_1_compatible && arch_id < 255) {
+>                  dev = aml_processor(i, 0, 0, CPU_NAME_FMT, i);
+>              } else {
+>                  dev = aml_device(CPU_NAME_FMT, i);
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 2e21a31f82..d60603abd7 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -1847,7 +1847,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>          build_legacy_cpu_hotplug_aml(dsdt, machine, pm->cpu_hp_io_base);
+>      } else {
+>          CPUHotplugFeatures opts = {
+> -            .apci_1_compatible = true, .has_legacy_cphp = true
+> +            .acpi_1_compatible = true, .has_legacy_cphp = true
+>          };
+>          build_cpus_aml(dsdt, machine, opts, pm->cpu_hp_io_base,
+>                         "\\_SB.PCI0", "\\_GPE._E02");
+> diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h
+> index 89ce172941..62f0278ba2 100644
+> --- a/include/hw/acpi/cpu.h
+> +++ b/include/hw/acpi/cpu.h
+> @@ -48,7 +48,7 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+>                           CPUHotplugState *state, hwaddr base_addr);
 >  
->      k->realize = pci_edu_realize;
-> @@ -407,6 +408,7 @@ static void edu_class_init(ObjectClass *class, void *data)
->      k->device_id = 0x11e8;
->      k->revision = 0x10;
->      k->class_id = PCI_CLASS_OTHERS;
-> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
->  }
+>  typedef struct CPUHotplugFeatures {
+> -    bool apci_1_compatible;
+> +    bool acpi_1_compatible;
+>      bool has_legacy_cphp;
+>  } CPUHotplugFeatures;
 >  
->  static void pci_edu_register_types(void)
 > 
 
 
