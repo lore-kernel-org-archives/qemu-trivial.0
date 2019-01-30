@@ -1,25 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gomfN-00048q-8V
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 05:00:21 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48646)
+	id 1gomhn-0005xt-GL
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 05:02:51 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49535)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomfF-00042J-MX
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:00:20 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gomhk-0005vM-7k
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:02:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomf9-0004m6-BC
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:00:13 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:56073)
+	(envelope-from <laurent@vivier.eu>) id 1gomhd-000694-C0
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:02:48 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:59427)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gomf9-0004lO-0O; Wed, 30 Jan 2019 05:00:07 -0500
+	id 1gomhO-0005zQ-Gq; Wed, 30 Jan 2019 05:02:29 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1MbAtM-1hQKKg4BpY-00bewK; Wed, 30 Jan 2019 10:59:55 +0100
+	(mreue012 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1N3omW-1hFDYz3loW-00zkK6; Wed, 30 Jan 2019 11:02:14 +0100
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Cc: qemu-trivial@nongnu.org, Richard Henderson <rth@twiddle.net>
 References: <1548252536-6242-1-git-send-email-thuth@redhat.com>
-	<1548252536-6242-4-git-send-email-thuth@redhat.com>
+	<1548252536-6242-5-git-send-email-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -64,35 +63,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <eadb5ca9-213a-55b2-6f5d-4202375e5ff4@vivier.eu>
-Date: Wed, 30 Jan 2019 10:59:54 +0100
+Message-ID: <ed852bd9-b821-48f7-5eba-fab222f2fb30@vivier.eu>
+Date: Wed, 30 Jan 2019 11:02:11 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <1548252536-6242-4-git-send-email-thuth@redhat.com>
+In-Reply-To: <1548252536-6242-5-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:x1nYBoA/cN+oSTFgyYXWMdFfzwsJo3s+Oc5Yf9NvTrHgudboVnm
-	ykq/XYcGDn/Rmhw+Fm8eMcUQU94I0+QtMcEo5ofhnKTmmuRPOFJZeiT+5Vf6JiMstkmla4V
-	JepEZII9X05Kiks77bnC7qAA5v5Osp4rofW+4DYrAP5D7trPT1yG/luejie7N+0yxoBshsD
-	AEIfNLeZRXq42wHw5dyoQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:wIwsTm8YV0k=:o80Fdq3O3a9A1FUWHxlZVa
-	0mSn4d0jfV/hk3SrSg/y419dVY5w7sAKwc3gwlMbiap9XtQIlRgS4QL+2e8zfUyFCuASO19RL
-	rSD0mKfGXH2G049iai0+9vrj4KyBUEff6ZwxCF8s4Q4f2us4bH4DAAK//5pSpOfLR2XNxENoX
-	Meb4ykvWwghB1sNm7xNcCZrh+nfl+oWsn54d4LMWFWp6iGueoRr+Bp//pwPZGbDyH4TwtlNEj
-	BRUmLpOWqGnGrE4XvjKSCEh8kq0UQFxmutOUn1JSanFvuJ6RRAqHOswa2l/CqrCOf4+tFUMYm
-	v55QjjnQnWu4TL5RFUOru6RgasAngIcu/gc9I8HMvwlKwzgR84ML7h7n6YA6D/lJTNXyz2WG6
-	RTYZQb8qB/TH9auk6z67LMUkDeDz3GpJC5pmb7w94ufSxitZdsZLPCaHl29UU09RenIcgqki+
-	ibhtSTas2vVFtTIJnS59DYN7mwUavqjA3ozEL5ZRaQGfl9afqh2nRNSwuQgfnkdCP4u+iJJOh
-	CfZwjm6i522UQTigEhzw9onYpM0T+VmLJ+xVX+y2zuwKhHtGnb3Pvd8sXSDwWA6DfUMG15rdC
-	ne8RksyIJtUOEuwta5dv46T3M3eaZQGbWmE5RvYFP/4+3FC4aMgYt6UlxaDK9eaZUq1hozzay
-	VIlF5iVbriNMW1q6kxlVqtcmYVlL029NoD5H2PzpgQRx8IgZP7k8Qwlby+OJB6xO3UF6YurOD
-	2EgmXqFKGUGLuHLVxoSGxyLFgS4UFgTYMjxqZTyxpuQoVFaRm0Bp7rFozrk=
+X-Provags-ID: V03:K1:Cm1ANkGzS7BGWLaHry3faVzIcnjaK6nJn7gbE07bTOJNvSxpUHu
+	XafEbbY+6t2bFtHDsniO8iOHM66Y2Grt45RmvifqK4EHLtkBAheb99YSMM+pljY1dXfxMcq
+	RNsjzJrDbslwhQZWS9WcMyvO5GS53fAHab7EQ4Q/iSBsH60uP/JqNU/aOUnp41W1XZzD6hD
+	/opKZC2M6enOA7LgcnDPw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:WyfwPGI8SZc=:p66qcaHwiBR2mrdNWjXe1T
+	LyAHA2V/gnguzJLdXrUlUwNGlrTiJAH2+WmIR0hr8BjZdiGZcfHVpIFwUCim+yPoBIFw2N4KR
+	/cts1tw2ZBUu3WR/97pxpUAxmMX4f8q2L8t/PlZ4c/O8MuTed0/6JDjXFXFrmeaBDiZpF2B09
+	atFVLH04vDENSBME+bqdFSHxOWbxcdsW+qFfLt5Q1XQCiRod56cxqfaa/+1brftFJdSc63tBC
+	bMbK9Av/npPIYX512z6f5nIQ3ruRQKd7hMeisAEj7kvTB9xOMvsR5PzQ305a+HCzPkzzPOkzD
+	OiNCIidoFbkC4FGv5PIUnyh5vEz5I5DHsHzdAEYNjTWPwuvA5xb7nobXxtF0lKT1Dzkx/df14
+	jsZ+3yK6At6OnwsKX8DxBwDpd6R4vnots/rcxFIxyfxxd/Nzm6Pjfc1+k3LOK1Y7OM2HLMC/i
+	uxByu6kFUB1tLFn6jF8ho+0qdOa6Ge5ZUmLN0SUIRPmdzclLO2+vghQEZ+0mQQVagLrJEzQ93
+	jXBgKl5R0PRc/UegFdox+an4qCTmEcSCq2LM3zAzcw3SIcmn+XYctpppAWdEmcIU3f61//290
+	74oYpvYg2b3teSUgkyC8RS7LESEGhLAto1dEd6yFktRri6jthbLKvIrbzIu9QEUuj5HbH4UZj
+	em6l7wmqL4Uek2DL98LLaLPddPzF4YT2q2Cc8LETpmO+b0ixG4gE89kkNR04xS2XT5LKfqt7v
+	BjJHKtT2Ru5HYSFMbpleZp6S9w0hSTyrfSoSV+iblCBxaaUHRwr5aktW1ac=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
-Subject: Re: [Qemu-trivial] [PATCH 3/4] target/tricore: Fix LGPL version
- number
+X-Received-From: 212.227.126.130
+Subject: Re: [Qemu-trivial] [PATCH 4/4] tcg: Fix LGPL version number
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,33 +102,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 10:00:20 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 10:02:49 -0000
 
 On 23/01/2019 15:08, Thomas Huth wrote:
 > It's either "GNU *Library* General Public version 2" or "GNU Lesser
 > General Public version *2.1*", but there was no "version 2.0" of the
 > "Lesser" library. So assume that version 2.1 is meant here.
 > 
-> Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+> Cc: Richard Henderson <rth@twiddle.net>
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  target/tricore/cpu-qom.h         | 2 +-
->  target/tricore/cpu.c             | 2 +-
->  target/tricore/cpu.h             | 2 +-
->  target/tricore/fpu_helper.c      | 2 +-
->  target/tricore/helper.c          | 2 +-
->  target/tricore/helper.h          | 2 +-
->  target/tricore/op_helper.c       | 2 +-
->  target/tricore/translate.c       | 2 +-
->  target/tricore/tricore-defs.h    | 2 +-
->  target/tricore/tricore-opcodes.h | 2 +-
->  10 files changed, 10 insertions(+), 10 deletions(-)
+>  accel/tcg/atomic_template.h  | 2 +-
+>  accel/tcg/cpu-exec-common.c  | 2 +-
+>  accel/tcg/cpu-exec.c         | 2 +-
+>  accel/tcg/cputlb.c           | 2 +-
+>  accel/tcg/softmmu_template.h | 2 +-
+>  accel/tcg/tcg-runtime-gvec.c | 2 +-
+>  accel/tcg/translate-all.c    | 2 +-
+>  accel/tcg/translate-all.h    | 2 +-
+>  accel/tcg/user-exec.c        | 2 +-
+>  tcg/tcg-gvec-desc.h          | 2 +-
+>  tcg/tcg-op-gvec.c            | 2 +-
+>  tcg/tcg-op-gvec.h            | 2 +-
+>  tcg/tcg-op-vec.c             | 2 +-
+>  13 files changed, 13 insertions(+), 13 deletions(-)
 > 
-> diff --git a/target/tricore/cpu-qom.h b/target/tricore/cpu-qom.h
-> index 6a69756..93c9d77 100644
-> --- a/target/tricore/cpu-qom.h
-> +++ b/target/tricore/cpu-qom.h
-> @@ -4,7 +4,7 @@
+> diff --git a/accel/tcg/atomic_template.h b/accel/tcg/atomic_template.h
+> index efde12f..685602b 100644
+> --- a/accel/tcg/atomic_template.h
+> +++ b/accel/tcg/atomic_template.h
+> @@ -7,7 +7,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
@@ -139,10 +140,10 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
-> index 2edaef1..e8d37e4 100644
-> --- a/target/tricore/cpu.c
-> +++ b/target/tricore/cpu.c
+> diff --git a/accel/tcg/cpu-exec-common.c b/accel/tcg/cpu-exec-common.c
+> index 2988fde..462a1f1 100644
+> --- a/accel/tcg/cpu-exec-common.c
+> +++ b/accel/tcg/cpu-exec-common.c
 > @@ -6,7 +6,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
@@ -152,10 +153,10 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
-> index c3665c6..00e69dc 100644
-> --- a/target/tricore/cpu.h
-> +++ b/target/tricore/cpu.h
+> diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+> index 870027d..60d87d5 100644
+> --- a/accel/tcg/cpu-exec.c
+> +++ b/accel/tcg/cpu-exec.c
 > @@ -6,7 +6,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
@@ -165,10 +166,10 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/tricore/fpu_helper.c b/target/tricore/fpu_helper.c
-> index 31df462..d8a6c0d 100644
-> --- a/target/tricore/fpu_helper.c
-> +++ b/target/tricore/fpu_helper.c
+> diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+> index af6bd8c..ec27f3d 100644
+> --- a/accel/tcg/cputlb.c
+> +++ b/accel/tcg/cputlb.c
 > @@ -6,7 +6,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
@@ -178,11 +179,11 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/tricore/helper.c b/target/tricore/helper.c
-> index dad7eea..0769046 100644
-> --- a/target/tricore/helper.c
-> +++ b/target/tricore/helper.c
-> @@ -4,7 +4,7 @@
+> diff --git a/accel/tcg/softmmu_template.h b/accel/tcg/softmmu_template.h
+> index b0adea0..1fdd262 100644
+> --- a/accel/tcg/softmmu_template.h
+> +++ b/accel/tcg/softmmu_template.h
+> @@ -11,7 +11,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
@@ -191,36 +192,10 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/tricore/helper.h b/target/tricore/helper.h
-> index e634d0c..f60e810 100644
-> --- a/target/tricore/helper.h
-> +++ b/target/tricore/helper.h
-> @@ -4,7 +4,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/tricore/op_helper.c b/target/tricore/op_helper.c
-> index b57f353..ed9dc0c 100644
-> --- a/target/tricore/op_helper.c
-> +++ b/target/tricore/op_helper.c
-> @@ -4,7 +4,7 @@
->   * This library is free software; you can redistribute it and/or
->   * modify it under the terms of the GNU Lesser General Public
->   * License as published by the Free Software Foundation; either
-> - * version 2 of the License, or (at your option) any later version.
-> + * version 2.1 of the License, or (at your option) any later version.
->   *
->   * This library is distributed in the hope that it will be useful,
->   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/tricore/translate.c b/target/tricore/translate.c
-> index b5ab40d..14f0ddf 100644
-> --- a/target/tricore/translate.c
-> +++ b/target/tricore/translate.c
+> diff --git a/accel/tcg/tcg-runtime-gvec.c b/accel/tcg/tcg-runtime-gvec.c
+> index 90340e5..09424e9 100644
+> --- a/accel/tcg/tcg-runtime-gvec.c
+> +++ b/accel/tcg/tcg-runtime-gvec.c
 > @@ -6,7 +6,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
@@ -230,11 +205,11 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/tricore/tricore-defs.h b/target/tricore/tricore-defs.h
-> index 40abfaa..e871aa1 100644
-> --- a/target/tricore/tricore-defs.h
-> +++ b/target/tricore/tricore-defs.h
-> @@ -4,7 +4,7 @@
+> diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+> index 8cb8c88..1773d7e 100644
+> --- a/accel/tcg/translate-all.c
+> +++ b/accel/tcg/translate-all.c
+> @@ -6,7 +6,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
@@ -243,11 +218,76 @@ On 23/01/2019 15:08, Thomas Huth wrote:
 >   *
 >   * This library is distributed in the hope that it will be useful,
 >   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> diff --git a/target/tricore/tricore-opcodes.h b/target/tricore/tricore-opcodes.h
-> index 2c3baab..40bc121 100644
-> --- a/target/tricore/tricore-opcodes.h
-> +++ b/target/tricore/tricore-opcodes.h
-> @@ -4,7 +4,7 @@
+> diff --git a/accel/tcg/translate-all.h b/accel/tcg/translate-all.h
+> index 08e2f23..64f5fd9 100644
+> --- a/accel/tcg/translate-all.h
+> +++ b/accel/tcg/translate-all.h
+> @@ -6,7 +6,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+> index 941295e..7741f5f 100644
+> --- a/accel/tcg/user-exec.c
+> +++ b/accel/tcg/user-exec.c
+> @@ -6,7 +6,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/tcg/tcg-gvec-desc.h b/tcg/tcg-gvec-desc.h
+> index 3b4c2d9..2dda7d6 100644
+> --- a/tcg/tcg-gvec-desc.h
+> +++ b/tcg/tcg-gvec-desc.h
+> @@ -6,7 +6,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
+> index 61c25f5..6d4207e 100644
+> --- a/tcg/tcg-op-gvec.c
+> +++ b/tcg/tcg-op-gvec.c
+> @@ -6,7 +6,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/tcg/tcg-op-gvec.h b/tcg/tcg-op-gvec.h
+> index ff43a29..b8b9fee 100644
+> --- a/tcg/tcg-op-gvec.h
+> +++ b/tcg/tcg-op-gvec.h
+> @@ -6,7 +6,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/tcg/tcg-op-vec.c b/tcg/tcg-op-vec.c
+> index cefba3d..0fbeaea 100644
+> --- a/tcg/tcg-op-vec.c
+> +++ b/tcg/tcg-op-vec.c
+> @@ -6,7 +6,7 @@
 >   * This library is free software; you can redistribute it and/or
 >   * modify it under the terms of the GNU Lesser General Public
 >   * License as published by the Free Software Foundation; either
