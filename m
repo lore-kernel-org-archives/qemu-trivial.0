@@ -1,93 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gomWE-0007BD-Fq
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:50:54 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45931)
+	id 1gomYB-0008Uf-L2
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:52:55 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46538)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gomWC-00079R-Az
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:50:53 -0500
+	(envelope-from <sgarzare@redhat.com>) id 1gomY9-0008Sm-Mm
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:52:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gomW6-0008Ps-CG
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:50:48 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:52924)
+	(envelope-from <sgarzare@redhat.com>) id 1gomY9-0000z9-0F
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:52:53 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:48444)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gomVz-0008HC-PM; Wed, 30 Jan 2019 04:50:40 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	(Exim 4.71) (envelope-from <sgarzare@redhat.com>)
+	id 1gomY5-0000t2-0t; Wed, 30 Jan 2019 04:52:49 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EDD7089AC2;
-	Wed, 30 Jan 2019 09:50:26 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-210.ams2.redhat.com [10.36.116.210])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 37F1C3786;
-	Wed, 30 Jan 2019 09:50:19 +0000 (UTC)
-To: Wei Yang <richardw.yang@linux.intel.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, philmd@redhat.com
-Cc: imammedo@redhat.com, laurent@vivier.eu, mst@redhat.com
-References: <20190130000653.16267-1-richardw.yang@linux.intel.com>
-	<20190130000653.16267-2-richardw.yang@linux.intel.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <69177d59-02c9-c6cd-be5a-092bf2476af1@redhat.com>
-Date: Wed, 30 Jan 2019 10:50:18 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	by mx1.redhat.com (Postfix) with ESMTPS id 225CAC057E2D;
+	Wed, 30 Jan 2019 09:52:42 +0000 (UTC)
+Received: from steredhat.redhat.com (ovpn-117-213.ams2.redhat.com
+	[10.36.117.213])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9E826600CC;
+	Wed, 30 Jan 2019 09:52:32 +0000 (UTC)
+From: Stefano Garzarella <sgarzare@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+	Max Reitz <mreitz@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+	qemu-block@nongnu.org
+Date: Wed, 30 Jan 2019 10:52:31 +0100
+Message-Id: <20190130095231.42081-1-sgarzare@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190130000653.16267-2-richardw.yang@linux.intel.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Wed, 30 Jan 2019 09:50:27 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Wed, 30 Jan 2019 09:52:42 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 1/3] hw/i386/pc.c: remove
- unused function pc_acpi_init()
+Subject: [Qemu-trivial] [PATCH] virtio-blk: remove duplicate definition of
+ VirtIOBlock *s pointer
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,25 +51,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 09:50:53 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 09:52:54 -0000
 
-On 2019-01-30 01:06, Wei Yang wrote:
-> Function pc_acpi_init() is not used anymore.
->=20
-> Remove the definition and declaration.
->=20
-> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-> Reviewed-by: Philippe Mathieu-Daud=E8=8C=85 <philmd@redhat.com>
-> Tested-by: Philippe Mathieu-Daud=E8=8C=85 <philmd@redhat.com>
+VirtIOBlock *s is already defined and initialized with req->dev
+on top of virtio_blk_handle_request(), so we can remove it from
+the code block of VIRTIO_BLK_T_GET_ID case.
 
- Hi,
+Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
+---
+ hw/block/virtio-blk.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-at least in my e-mail client here, it looks like Philippe's last name
-got mojibaked here. It should be "Daud=C3=A9", not "Daud=E8=8C=85", as fa=
-r as I know.
-Same thing also happened in patch 2 and 3.
+diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
+index f208c6ddb9..9a87b3bfac 100644
+--- a/hw/block/virtio-blk.c
++++ b/hw/block/virtio-blk.c
+@@ -569,8 +569,6 @@ static int virtio_blk_handle_request(VirtIOBlockReq *=
+req, MultiReqBuffer *mrb)
+         break;
+     case VIRTIO_BLK_T_GET_ID:
+     {
+-        VirtIOBlock *s =3D req->dev;
+-
+         /*
+          * NB: per existing s/n string convention the string is
+          * terminated by '\0' only when shorter than buffer.
+--=20
+2.20.1
 
-Apart from that:
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 
