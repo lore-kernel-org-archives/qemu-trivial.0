@@ -1,26 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gomuo-0004z4-CT
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 05:16:18 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52947)
+	id 1gon19-0000T4-IN
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 05:22:51 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54737)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomum-0004yA-Qn
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:16:17 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gon16-0000RN-Fz
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:22:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomul-0005XD-Uq
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:16:16 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:39521)
+	(envelope-from <laurent@vivier.eu>) id 1gon15-0001xH-Hi
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 05:22:48 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:49055)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gomul-0005VJ-Lv; Wed, 30 Jan 2019 05:16:15 -0500
+	id 1gon15-0001vd-8f; Wed, 30 Jan 2019 05:22:47 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1M3lsh-1gp41q0NJD-000xXh; Wed, 30 Jan 2019 11:16:09 +0100
-To: Stefano Garzarella <sgarzare@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
-	qemu-block@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-References: <20190130095231.42081-1-sgarzare@redhat.com>
+	(mreue009 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1M6lxe-1goDSF0QZy-008Kt2; Wed, 30 Jan 2019 11:22:29 +0100
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: Fam Zheng <fam@euphon.net>, Thomas Huth <thuth@redhat.com>,
+	David Hildenbrand <david@redhat.com>, qemu-trivial@nongnu.org,
+	Cornelia Huck <cohuck@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org, 
+	qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Paolo Bonzini <pbonzini@redhat.com>, Stefano Garzarella
+	<sgarzare@redhat.com>, Richard Henderson <rth@twiddle.net>
+References: <20190104181208.7809-1-philmd@redhat.com>
+	<20190104181208.7809-2-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -65,35 +72,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <ba3d95a8-6b8c-5d94-f079-ca2899b150c4@vivier.eu>
-Date: Wed, 30 Jan 2019 11:16:07 +0100
+Message-ID: <56ccdced-739b-49f9-7251-ec75aba01f92@vivier.eu>
+Date: Wed, 30 Jan 2019 11:22:25 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190130095231.42081-1-sgarzare@redhat.com>
+In-Reply-To: <20190104181208.7809-2-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:liExGGTIdxDoU9XZyf7yTnhUkCYq1aG7eLeBtzUXiywKto0PENt
-	gM1v7alWIElY6eJ9UgKVEDyL2GmtDOo3WaQCQhNMdyajyAxxLxjyrIZoaMA5bHYEMRxAHg5
-	r1/mz/655iWsCf1khFeb6a91vHSbnwa8xbGJVLbOzK4CxkakBoWBVhltInI3xye320DooeT
-	4k0Nt2Eab1BUsGUAv3xGg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Ld/7p3V/wUw=:3rEwe9cm+OcTCbDztMlvnv
-	sX/HdJuPMgP1SxjYife296BK03YrO9UB1sqSRajnGAQrGB0xKM49TyF5HIRoOC7aRiAlqIWU0
-	z6Sa/HEI37cn9ol6677E3Jlx+srLcA3Uo9rdTQHT2Mi7uVGctnAdN4o3PSyoPOfokeIsGiCi9
-	Mp+EOSRoWO9XfxonvoY+ZUECk6CqCFRvI+Ey1FDYa7mOLQcL4vBD4XHzHApQMtjCtM32hx+7u
-	ewEnuDTJwLmqgZP72YXmBng756dKDl4fCcc7qORUHNDI5JCu3DTVB0Y4+RUZfRdxtoXMuSJH1
-	6crSV3YFuNUHvuU7nC0vCpcloGQGqzhUXNC+3VI6v6A/wLCDrUfVeQUYX2zQSMsH2Rrgd4+Gg
-	lWFz7AatMUS077kutLoGGfZUyd97vtBFmR1qMKoPkmeXm7J0mu82f15rxr6fdMaekZZE6fYYu
-	e6elzgZsXYCk9Pwe9jMmjhie3FXgD6QDGzjVdIN/VVSp64QZ++t0jDUD8QNkdk6RPqfAUT1DJ
-	7F1hn3x4AAoeKcgYOLI5NAXsE5ERe8aBHOuQGg9n/dtm9kf1O/Ax//1qG+sBIJipGDYCupodN
-	6a3ikYmG8nXv30YK/C8KcNt1eeQT2B3xLBTTy5kEd4QQTLgWVG5QIu3ycXYXEiTuXo97RHI7h
-	RC8U9Y/ljkqasS2PUuA9DD2lYztC6UXXE7ak1zDqCEv4NaXBUGByL4psFKgLNmIZowHvBIb1G
-	QHZmloJ4lDY3nK/C/YNXL82b8fcDQa1apXwppEyqCqt3iIqtED5K+FWgrlU=
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:Nw/AOqZgxxk3FDWrazqYEYeZabMEg1MWN3TOdio7+YtAVTu2+MB
+	shjdaFM24tNFBUIkMH6HUA+w6HSjoXtl5AG777XoAi9Nzq0TipikLyPx8FSVHmVyBsQ5X+V
+	6E3HomccwLuFgydL9m+W7LFY/WC64PtstdqzD9FtLsDzI2Xtosxa8ROO614ZI67YAoUutMe
+	z/qXvPM1vNIosH0b6V4rQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:qaoqMuJz8Mk=:f3rv8jI3aw1AICRgpeR8FL
+	BVpL5fFSej1aOJlFhqOZom9KWz+IealAcK/HX4ggRg6h65TUm/k7Z1eOBUvzjxfwgNZrTWyws
+	E6/noaAsswokQ7XnNQFe+qZ5brWXOnK3/uX1G5TD7B4PqCBpT63o1JVAFTV/u1BeK4ou8TS5b
+	nO00OsJQSdaSEVXeqCl6NAs1eYwKw55W8Exdfdo2HHqqSZIQA2EHdBFiMiUKVFoVS04Bq9rT2
+	u/PUz8Y19iUwG1e3cOPgtf3n530KcgArrS8UknXoTZl6hfOEGVSUQSbQIszi9pXXagAgHz6++
+	dKWGcn5RnVnQVS70uDw5kXIPOrw3O9R3xNWnOAc5ep22Elmpm3HrNQvQgvmlZ2whHARMQ1DqJ
+	CbQdoIM0Cs73vG9oRZy9ElcL3Oq87INHoFSWBZOGz4os21Sb8Se7x+FVU42RSA3DEiGudqYpg
+	9Y42yN9WD04G2BELO7JMLIp466Vhi2ixo/OYKyj9kKmmAxAU+H6yjvnKWuGOK3uSGgXwaXeji
+	hMUaJp/GECtAy11bFraV4z4ijOhdsbBDiYfw5FHjlxwfvcqCc0pPVTq9C7jf2H+pqVwjkz2fY
+	Ujdg542R0pW9k2xvId/2jtdZlHlG8gh0s9/aukgyxYh8yFMcaHQqDDD1nUpObM225SlFQumtg
+	DtZiqEqbvRRE8OjoLNy4ryC+fiTGU7kyn+FiWfwGyVUoWL9dovcJRFv3RijxAIXkyM2+mjy8l
+	vUufBP7umcrRYozI+dBntoqWjYVPlTooAOXqTyXpxUM9FwzS+YkwnP8Ytv4=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: Re: [Qemu-trivial] [PATCH] virtio-blk: remove duplicate definition
- of VirtIOBlock *s pointer
+X-Received-From: 212.227.126.187
+Subject: Re: [Qemu-trivial] [PATCH v2 1/3] util/cutils: Move size_to_str()
+ from "qemu-common.h" to "cutils.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,34 +112,97 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 10:16:17 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 10:22:49 -0000
 
-On 30/01/2019 10:52, Stefano Garzarella wrote:
-> VirtIOBlock *s is already defined and initialized with req->dev
-> on top of virtio_blk_handle_request(), so we can remove it from
-> the code block of VIRTIO_BLK_T_GET_ID case.
+On 04/01/2019 19:12, Philippe Mathieu-Daudé wrote:
+> The size_to_str() function doesn't need to be in a generic header.
 > 
-> Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
+> It makes also sens to find this function in the same header than
+> the opposite string to size functions: qemu_strtosz*().
+> Note than this function is already implemented in util/cutils.c.
+> 
+> Since we introduce a new function in a header, we document it,
+> using the previous comment from the source file.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/block/virtio-blk.c | 2 --
->  1 file changed, 2 deletions(-)
+>  include/qemu-common.h        |  1 -
+>  include/qemu/cutils.h        | 13 +++++++++++++
+>  qapi/string-output-visitor.c |  2 +-
+>  util/cutils.c                |  6 ------
+>  4 files changed, 14 insertions(+), 8 deletions(-)
 > 
-> diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-> index f208c6ddb9..9a87b3bfac 100644
-> --- a/hw/block/virtio-blk.c
-> +++ b/hw/block/virtio-blk.c
-> @@ -569,8 +569,6 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
->          break;
->      case VIRTIO_BLK_T_GET_ID:
->      {
-> -        VirtIOBlock *s = req->dev;
-> -
->          /*
->           * NB: per existing s/n string convention the string is
->           * terminated by '\0' only when shorter than buffer.
+> diff --git a/include/qemu-common.h b/include/qemu-common.h
+> index ed60ba251d..760527294f 100644
+> --- a/include/qemu-common.h
+> +++ b/include/qemu-common.h
+> @@ -153,7 +153,6 @@ void qemu_hexdump(const char *buf, FILE *fp, const char *prefix, size_t size);
+>  int parse_debug_env(const char *name, int max, int initial);
+>  
+>  const char *qemu_ether_ntoa(const MACAddr *mac);
+> -char *size_to_str(uint64_t val);
+>  void page_size_init(void);
+>  
+>  /* returns non-zero if dump is in progress, otherwise zero is
+> diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
+> index d2dad3057c..9ee40470e3 100644
+> --- a/include/qemu/cutils.h
+> +++ b/include/qemu/cutils.h
+> @@ -157,6 +157,19 @@ int qemu_strtosz(const char *nptr, const char **end, uint64_t *result);
+>  int qemu_strtosz_MiB(const char *nptr, const char **end, uint64_t *result);
+>  int qemu_strtosz_metric(const char *nptr, const char **end, uint64_t *result);
+>  
+> +/**
+> + * size_to_str:
+> + *
+> + * Return human readable string for size @val.
+> + * Use IEC binary units like KiB, MiB, and so forth.
+> + *
+> + * @val: The value to format.
+> + *       Can be anything that uint64_t allows (no more than "16 EiB").
+> + *
+> + * Caller is responsible for passing it to g_free().
+> + */
+> +char *size_to_str(uint64_t val);
+> +
+>  /* used to print char* safely */
+>  #define STR_OR_NULL(str) ((str) ? (str) : "null")
+>  
+> diff --git a/qapi/string-output-visitor.c b/qapi/string-output-visitor.c
+> index 7ab64468d9..edf268b373 100644
+> --- a/qapi/string-output-visitor.c
+> +++ b/qapi/string-output-visitor.c
+> @@ -11,9 +11,9 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> -#include "qemu-common.h"
+>  #include "qapi/string-output-visitor.h"
+>  #include "qapi/visitor-impl.h"
+> +#include "qemu/cutils.h"
+>  #include "qemu/host-utils.h"
+>  #include <math.h>
+>  #include "qemu/range.h"
+> diff --git a/util/cutils.c b/util/cutils.c
+> index e098debdc0..a8a3a3ba3b 100644
+> --- a/util/cutils.c
+> +++ b/util/cutils.c
+> @@ -816,12 +816,6 @@ const char *qemu_ether_ntoa(const MACAddr *mac)
+>      return ret;
+>  }
+>  
+> -/*
+> - * Return human readable string for size @val.
+> - * @val can be anything that uint64_t allows (no more than "16 EiB").
+> - * Use IEC binary units like KiB, MiB, and so forth.
+> - * Caller is responsible for passing it to g_free().
+> - */
+>  char *size_to_str(uint64_t val)
+>  {
+>      static const char *suffixes[] = { "", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei" };
 > 
 
-Applied to my trivial-patches branch.
+Applied to my trivial-patches branch with updated patch description.
 
 Thanks,
 Laurent
