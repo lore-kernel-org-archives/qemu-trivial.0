@@ -1,97 +1,93 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gomW7-000752-Ot
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:50:47 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45866)
+	id 1gomWE-0007BD-Fq
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:50:54 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45931)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomW5-00072S-4Z
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:50:46 -0500
+	(envelope-from <thuth@redhat.com>) id 1gomWC-00079R-Az
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:50:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomW3-0008Mn-KN
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:50:44 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:57183)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gomVm-00089E-BF; Wed, 30 Jan 2019 04:50:32 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue009 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1N79q8-1hE6tW2eMO-017UAe; Wed, 30 Jan 2019 10:50:14 +0100
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>
-References: <1548255083-8190-1-git-send-email-thuth@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
+	(envelope-from <thuth@redhat.com>) id 1gomW6-0008Ps-CG
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:50:48 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52924)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gomVz-0008HC-PM; Wed, 30 Jan 2019 04:50:40 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id EDD7089AC2;
+	Wed, 30 Jan 2019 09:50:26 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-210.ams2.redhat.com [10.36.116.210])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 37F1C3786;
+	Wed, 30 Jan 2019 09:50:19 +0000 (UTC)
+To: Wei Yang <richardw.yang@linux.intel.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, philmd@redhat.com
+Cc: imammedo@redhat.com, laurent@vivier.eu, mst@redhat.com
+References: <20190130000653.16267-1-richardw.yang@linux.intel.com>
+	<20190130000653.16267-2-richardw.yang@linux.intel.com>
+From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <224f9e1f-34c8-7b21-5cba-f21d92ad9415@vivier.eu>
-Date: Wed, 30 Jan 2019 10:50:13 +0100
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <69177d59-02c9-c6cd-be5a-092bf2476af1@redhat.com>
+Date: Wed, 30 Jan 2019 10:50:18 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <1548255083-8190-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <20190130000653.16267-2-richardw.yang@linux.intel.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:dmAeQiQXJpbnAisuE6vYAZgXSwfs6oGggU5WIPh0+aEKWKdFZxn
-	Ab+u01yjgsHuA0cD3K0CPvJhNSr5UXLdBEAcds4mBUnj1W/wMiFRrjf1Y8hhJT0zmAsJz9c
-	Rs3wwiTjJxvcGTfdmMgeKliB+NAufbRtRVJDgASFgzP21AqlXUzL7yyReajQ3PICNF2rKgS
-	81VZoKojlsC/9pmn1WOQA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:K7HKLgtjAL8=:SGD52YOfjKNlES/7/qIb2p
-	ORPhIAlZrbm8yE2q7MEwXfjIR+mXVkCOIZ4jMFsRZIqxbh5kxcpYlCGAb9lEQFSfPxpzlb7sY
-	y0MKgxIx12jDbD1/D5/YMi2dWbHc0i7EaoGOy/9yXRuK92Z1Ozs3gWjY5IkBBdONm8/ybtwfQ
-	u9oelklPvaZAxCLmZx1k+0qJHkFBvEV5FYoYTB2ZqcsRc/vuUV1WhH2NI5fDhFIzYbclk/ZW3
-	XCez+K0xZOEB2WGJFquoBij9ZXSV6MIIzKm4ini3eHdFecLO2t0HIhK1vkrIlSTXlIMDjZVy8
-	jenlmWtV5bUN/kPRpMzPasYV4xh5WGrR6Fr6E0nwrwxeEF+W3RRGl96eZ5OXx12qJCNVMXQF0
-	zwDVHuFYkzigU6uVlWYm1CNrvZadB2dtO34zY4VZo9SrzQiyNvwqPQ0Og9onsV6fs2DDqWfAJ
-	w5vreoGSySiRub2eYjksCG/cpHC5IZrPjpTlbdYKkkFzqHoFOOVDptVSmS8l4pEVxYDeddR9O
-	Yoiom4tXRQMvryAjY0ZMV7Q/IQQ1mKynZaUpQCPeo2yaLitksZdnAWRMNYGd1BbOxivDc474m
-	mkapzww7HcwrNilHt0RmaFvGPKXjHmamS5wuJHFRE6fg9786yKEKSnG/EcJ22pPfKce8Brgdb
-	kiApiLqdqNTaL/CtQz55x0XhYvFRNqJCMraCNEvDAz8XkIgW+cYtGVrp51f7mrMRsMLTyZo6c
-	4xw9yJTqpK5zHZ3HELshK9ObgqzODJC6k1lyHe42gn8/buaUeKlEwVQDHFA=
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Wed, 30 Jan 2019 09:50:27 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: Re: [Qemu-trivial] [PATCH] Don't talk about the LGPL if the file is
- licensed under the GPL
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 1/3] hw/i386/pc.c: remove
+ unused function pc_acpi_init()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,25 +99,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 09:50:46 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 09:50:53 -0000
 
-On 23/01/2019 15:51, Thomas Huth wrote:
-> Some files claim that the code is licensed under the GPL, but then
-> suddenly suggest that the user should have a look at the LGPL.
-> That's of course non-sense, replace it with the correct GPL wording
-> instead.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  crypto/afsplit.c           | 11 +++++------
->  include/crypto/afsplit.h   | 11 +++++------
->  include/hw/pci-host/gpex.h |  4 ++--
->  include/hw/pci-host/q35.h  |  4 ++--
->  include/qemu/range.h       | 11 +++++------
->  target/i386/hvf/hvf.c      |  6 +++---
->  util/range.c               | 11 +++++------
->  7 files changed, 27 insertions(+), 31 deletions(-)
+On 2019-01-30 01:06, Wei Yang wrote:
+> Function pc_acpi_init() is not used anymore.
+>=20
+> Remove the definition and declaration.
+>=20
+> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+> Reviewed-by: Philippe Mathieu-Daud=E8=8C=85 <philmd@redhat.com>
+> Tested-by: Philippe Mathieu-Daud=E8=8C=85 <philmd@redhat.com>
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+ Hi,
 
+at least in my e-mail client here, it looks like Philippe's last name
+got mojibaked here. It should be "Daud=C3=A9", not "Daud=E8=8C=85", as fa=
+r as I know.
+Same thing also happened in patch 2 and 3.
+
+Apart from that:
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
