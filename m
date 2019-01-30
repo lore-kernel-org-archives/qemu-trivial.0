@@ -1,24 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gomde-0002rM-VX
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:58:34 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48026)
+	id 1gomex-0003nR-TM
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:59:55 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48548)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomdc-0002pk-NM
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:58:33 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gomev-0003lv-Qs
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:59:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gomda-0003dq-Lb
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:58:32 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:60079)
+	(envelope-from <laurent@vivier.eu>) id 1gomeu-0004bU-N2
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:59:53 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:58341)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gomdM-0003Uw-RF; Wed, 30 Jan 2019 04:58:18 -0500
+	id 1gomel-0004TM-W5; Wed, 30 Jan 2019 04:59:44 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1MHo6Y-1gumMm2BCo-00Evfy; Wed, 30 Jan 2019 10:58:10 +0100
+	(mreue011 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1N4hex-1hGaWD2T27-011hGN; Wed, 30 Jan 2019 10:59:38 +0100
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
+Cc: qemu-trivial@nongnu.org, Stafford Horne <shorne@gmail.com>
 References: <1548252536-6242-1-git-send-email-thuth@redhat.com>
-	<1548252536-6242-2-git-send-email-thuth@redhat.com>
+	<1548252536-6242-3-git-send-email-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -63,35 +63,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <9b30d086-7006-1345-32d5-b998f96d67af@vivier.eu>
-Date: Wed, 30 Jan 2019 10:58:09 +0100
+Message-ID: <e62b7f84-780c-6e4b-00da-a4fc7b33d474@vivier.eu>
+Date: Wed, 30 Jan 2019 10:59:37 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <1548252536-6242-2-git-send-email-thuth@redhat.com>
+In-Reply-To: <1548252536-6242-3-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:VSrUspxB+b8sVA/2DMhka1fDmvqJQSvXbimyNKldKRxWU69K74u
-	QWzQ8tZX2ibJZ5QcvnZJ1LkRe0T4Nib3z7iNC6U8HMPmljKGSrpop77HbPpUj4ZL3bI7h1z
-	F7lp5o2hRfcIFHBYeo9qw+7aUBrTV60+wVXJFAzqbrr7mJ8kwUVN7SlCV1JZn9SCsadxzoC
-	SrEW4JyjhFc8VV4Q5OtOw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:0VgSHoae/1s=:nNlWxNLhU1E9yqqrKNMd8f
-	stvHp9sAcktmqMkRx0b9TL3gKYSpEiE3KeiAN6QLjyoPxsdRodj3xnNtsHqV9MEpSPn7++3LN
-	KgO3UTq218isO1YCdzE8sXNRLd60It8lJuu8QyG8SPDzH7NycNKl1jx63Z9cW9pmvneXllgoB
-	fCRw+68o7JvjjlbMazJJVseHZJHWfDWjbiesoaEiKNzI2GSn8OfRCuah8FGgQNgBpPylm63my
-	rHWbwNtfqw5HQIKvqIPx5B003FOp8qbHJOX3P8bv2fjikXmFsEUOryQyGeyKM8uRx2gGuUlR+
-	wtPZRhiftWqmTPxlkKecz8HcxeDWBjMzsqOsWv0ionMMRDYrBgfRjFSMKDtHkwswxaltVwcRB
-	nilBp/7lMu9Y1cf7Ktt7ZWNXDpdFjX5fMTu1U/VkVjMI/xTOlaoIz2bEMPjTW9cuVFdJOsISb
-	JsA/s4n3VMw+K603Mg4LFa12LVdJnL9L9Eqacqq6BX73iLkMC1ACz512jCm6Y8TMf2RliCPyf
-	2DoS3GeN67XaolL5JFbzxSnmQ9+fAZCDIcqBi5QWDudqAsjCHSqf8tRjXrDb7cB6NgM8b5XLc
-	OjniyrQkhedVEteYibNCsl4783UJZQ6Khi0et1KxygvPvSGhbiRadmE8dM4oAO4P4XdgIVj38
-	fV00KeiIne4AEn+TZaTgZXz6KaCuLhxLqieK3Z0WMSWM++8KZu9/8Gx/r4jtyaiXlxJS4UIXR
-	SqeChMN1cLbmqvMh/4edLMgcTerFyqIjOiG5qEoDpLQaOutstFCXS4t9rXw=
+X-Provags-ID: V03:K1:a42HL/HTzI3q6ikYlizbC/dTz+fnyt4oV+o6S9r9NBqV8mJE0dy
+	JvHO8T1hjuTu5vQAY3PXAHcgOsLe4DLyBsAD4CkNrL3gfiDzwm2IMkMumN/6T+sfW/hphJv
+	YzfimpZrIzsmx+ilePdfBMyp4PnMKoO0gs2nxdWTzPatYoR38qkSBSUZuFnfxXtg1v4xFde
+	S2xl+ihZohXO9r2bAJDAQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:tVQjntKFWvs=:sRZTKztuE/KVzdEdcfdk55
+	AGp5moEciCQQFmiyJSV7D0btDDlEyuZpcXlvtCEMtCMEah43+k6eUw4igaBbNultzE4jZPl9r
+	oziNUOxVpIjsm7Ejsv0wrgYPMgoOSu9WgSEQq0ofaZ9M6K7GJjG4syJziNfcEvmxqIKpxt/oV
+	dSWEVy8wh0YNuAxx7Di/2J8gJkz1U6aD3y/tTmwLEzVjWK7u8pM9MGfsgz8/68jyeGtTO46UI
+	O9cmcYtMd29WFgXuhIF/4CrIbbSAGXf6c/vovpgP2pcaPbMCWvaTwxtc0lPOk2/3ANMzyf0TI
+	PWi09IoxoIc8Q3720XipCWKXRqT5fac+W/oeDwk/kfOmnXhZz3tH9tGdRWPGEsUgi4vEpwPFl
+	wry5MQCWrkSjmdsQfOhlaV8DWZoJs7OstYXBqRTcxXzYlmsXjkO803pyx3zM+8RMlUNmJHFsv
+	U9ZoWH16xk+x6c1nkKOdZUMGwdbnGmZME8VDQsa+Er0g12O0SxnpCk1OW0mKy7mEsasg9SQoy
+	kH++wxTcjh0rl9NC6QHro55hKGZayQckvAYmYGYjLAmxKuBNqLffFbzb/BOPCeSBZfkpoWCIL
+	iixE7oeXZ1yi6TO8rwNehqkPrHaiP/jfF3vtm+FxfuI3ASgFsMZt6ERlUA2H4wsnDXSbkI0Le
+	UgVCQJgnpw715NkEFu+z2jJ2swNopgUbucpsLg+ptqxe5WNl0p/HkZDnVAjzJQtHT9ikvR4vz
+	WpH0U3iQSFo9s3fxkMAOndBYCnHcvRYJuscNKHvF+xtadUNyD+FBQOlogO0=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: Re: [Qemu-trivial] [PATCH 1/4] COPYING.LIB: Synchronize the LGPL
- 2.1 with the version from gnu.org
+X-Received-From: 212.227.126.130
+Subject: Re: [Qemu-trivial] [PATCH 2/4] target/openrisc: Fix LGPL version
+ number
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,107 +103,116 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 09:58:34 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 09:59:55 -0000
 
 On 23/01/2019 15:08, Thomas Huth wrote:
-> The current version of the LGPL 2.1 from gnu.org (see the URL
-> https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt ) slightly
-> differs from the old one that we use in our repository. Especially
-> the recommendation to use "either version 2 of the License, or [...]
-> any later version" is somewhat misleading, since there was never a
-> "version 2" of the "Lesser GPL" license - the "version 2" was still
-> called "Library GPL" instead.
+> It's either "GNU *Library* General Public version 2" or "GNU Lesser
+> General Public version *2.1*", but there was no "version 2.0" of the
+> "Lesser" library. So assume that version 2.1 is meant here.
 > 
+> Cc: Stafford Horne <shorne@gmail.com>
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  COPYING.LIB | 22 ++++++++++------------
->  1 file changed, 10 insertions(+), 12 deletions(-)
+>  target/openrisc/cpu.c              | 2 +-
+>  target/openrisc/exception.h        | 2 +-
+>  target/openrisc/gdbstub.c          | 2 +-
+>  target/openrisc/helper.h           | 2 +-
+>  target/openrisc/interrupt_helper.c | 2 +-
+>  target/openrisc/sys_helper.c       | 2 +-
+>  target/openrisc/translate.c        | 2 +-
+>  7 files changed, 7 insertions(+), 7 deletions(-)
 > 
-> diff --git a/COPYING.LIB b/COPYING.LIB
-> index 48afc2e..4362b49 100644
-> --- a/COPYING.LIB
-> +++ b/COPYING.LIB
-> @@ -1,8 +1,8 @@
-> -		  GNU LESSER GENERAL PUBLIC LICENSE
-> -		       Version 2.1, February 1999
-> +                  GNU LESSER GENERAL PUBLIC LICENSE
-> +                       Version 2.1, February 1999
->  
->   Copyright (C) 1991, 1999 Free Software Foundation, Inc.
-> -	51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-> + 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
->   Everyone is permitted to copy and distribute verbatim copies
->   of this license document, but changing it is not allowed.
->  
-> @@ -10,7 +10,7 @@
->   as the successor of the GNU Library Public License, version 2, hence
->   the version number 2.1.]
->  
-> -			    Preamble
-> +                            Preamble
->  
->    The licenses for most software are designed to take away your
->  freedom to share and change it.  By contrast, the GNU General Public
-> @@ -112,7 +112,7 @@ modification follow.  Pay close attention to the difference between a
->  former contains code derived from the library, whereas the latter must
->  be combined with the library in order to run.
->  
-> -		  GNU LESSER GENERAL PUBLIC LICENSE
-> +                  GNU LESSER GENERAL PUBLIC LICENSE
->     TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
->  
->    0. This License Agreement applies to any software library or other
-> @@ -146,7 +146,7 @@ such a program is covered only if its contents constitute a work based
->  on the Library (independent of the use of the Library in a tool for
->  writing it).  Whether that is true depends on what the Library does
->  and what the program that uses the Library does.
-> -  
-> +
->    1. You may copy and distribute verbatim copies of the Library's
->  complete source code as you receive it, in any medium, provided that
->  you conspicuously and appropriately publish on each copy an
-> @@ -432,7 +432,7 @@ decision will be guided by the two goals of preserving the free status
->  of all derivatives of our free software and of promoting the sharing
->  and reuse of software generally.
->  
-> -			    NO WARRANTY
-> +                            NO WARRANTY
->  
->    15. BECAUSE THE LIBRARY IS LICENSED FREE OF CHARGE, THERE IS NO
->  WARRANTY FOR THE LIBRARY, TO THE EXTENT PERMITTED BY APPLICABLE LAW.
-> @@ -455,7 +455,7 @@ FAILURE OF THE LIBRARY TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
->  SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
->  DAMAGES.
->  
-> -		     END OF TERMS AND CONDITIONS
-> +                     END OF TERMS AND CONDITIONS
->  
->             How to Apply These Terms to Your New Libraries
->  
-> @@ -476,7 +476,7 @@ convey the exclusion of warranty; and each file should have at least the
->      This library is free software; you can redistribute it and/or
->      modify it under the terms of the GNU Lesser General Public
->      License as published by the Free Software Foundation; either
-> -    version 2 of the License, or (at your option) any later version.
-> +    version 2.1 of the License, or (at your option) any later version.
->  
->      This library is distributed in the hope that it will be useful,
->      but WITHOUT ANY WARRANTY; without even the implied warranty of
-> @@ -485,7 +485,7 @@ convey the exclusion of warranty; and each file should have at least the
->  
->      You should have received a copy of the GNU Lesser General Public
->      License along with this library; if not, write to the Free Software
-> -    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-> +    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
->  
->  Also add information on how to contact you by electronic and paper mail.
->  
-> @@ -500,5 +500,3 @@ necessary.  Here is a sample; alter the names:
->    Ty Coon, President of Vice
->  
->  That's all there is to it!
-> -
-> -
+> diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+> index fb7cb5c..541b2a6 100644
+> --- a/target/openrisc/cpu.c
+> +++ b/target/openrisc/cpu.c
+> @@ -6,7 +6,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/openrisc/exception.h b/target/openrisc/exception.h
+> index 4ec56b4..c9c4e47 100644
+> --- a/target/openrisc/exception.h
+> +++ b/target/openrisc/exception.h
+> @@ -6,7 +6,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/openrisc/gdbstub.c b/target/openrisc/gdbstub.c
+> index f9af650..43b1a18 100644
+> --- a/target/openrisc/gdbstub.c
+> +++ b/target/openrisc/gdbstub.c
+> @@ -7,7 +7,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/openrisc/helper.h b/target/openrisc/helper.h
+> index 9db9bf3..96d79a8 100644
+> --- a/target/openrisc/helper.h
+> +++ b/target/openrisc/helper.h
+> @@ -6,7 +6,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/openrisc/interrupt_helper.c b/target/openrisc/interrupt_helper.c
+> index 9c5489f..ab4ea88 100644
+> --- a/target/openrisc/interrupt_helper.c
+> +++ b/target/openrisc/interrupt_helper.c
+> @@ -7,7 +7,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/openrisc/sys_helper.c b/target/openrisc/sys_helper.c
+> index b66a45c..05f66c4 100644
+> --- a/target/openrisc/sys_helper.c
+> +++ b/target/openrisc/sys_helper.c
+> @@ -7,7 +7,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> diff --git a/target/openrisc/translate.c b/target/openrisc/translate.c
+> index c089914..89680f8 100644
+> --- a/target/openrisc/translate.c
+> +++ b/target/openrisc/translate.c
+> @@ -7,7 +7,7 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
 > 
 
 Applied to my trivial-patches branch.
