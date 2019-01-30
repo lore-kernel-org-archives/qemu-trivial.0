@@ -1,24 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gom2I-0004Bs-3x
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:19:58 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36170)
+	id 1gomAR-00071R-Ho
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Jan 2019 04:28:23 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39798)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gom2F-00049U-Gw
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:19:56 -0500
+	(envelope-from <laurent@vivier.eu>) id 1gomAL-0006uv-MX
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:28:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1gom2E-00072I-FO
-	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:19:55 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:50529)
+	(envelope-from <laurent@vivier.eu>) id 1gomAH-0004jc-TV
+	for qemu-trivial@nongnu.org; Wed, 30 Jan 2019 04:28:17 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:53985)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1gom2C-00070L-Jn; Wed, 30 Jan 2019 04:19:52 -0500
+	id 1gom9t-0004RU-Dh; Wed, 30 Jan 2019 04:27:49 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue012 [212.227.15.167]) with ESMTPSA (Nemesis) id
-	1MLAZe-1gXet71xgo-00ICNt; Wed, 30 Jan 2019 10:19:47 +0100
+	(mreue010 [212.227.15.167]) with ESMTPSA (Nemesis) id
+	1N17l4-1hHwrU21f8-012VLt; Wed, 30 Jan 2019 10:27:42 +0100
 To: kumar sourav <sourav.jb1988@gmail.com>, qemu-trivial@nongnu.org
-Cc: pbonzini@redhat.com, thuth@redhat.com, qemu-devel@nongnu.org,
-	mst@redhat.com
-References: <20190125151440.13794-1-sourav.jb1988@gmail.com>
+Cc: thuth@redhat.com, f4bug@amsat.org, qemu-devel@nongnu.org
+References: <20190124162045.10474-1-sourav.jb1988@gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -63,35 +62,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
 	FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
 	kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <9a14a8b4-b0c5-c5bd-9563-c8e6f73e9c03@vivier.eu>
-Date: Wed, 30 Jan 2019 10:19:45 +0100
+Message-ID: <bec07d22-d33f-ed5b-8b96-deb431f2d189@vivier.eu>
+Date: Wed, 30 Jan 2019 10:27:40 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190125151440.13794-1-sourav.jb1988@gmail.com>
+In-Reply-To: <20190124162045.10474-1-sourav.jb1988@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:Z36UE8URXLrLqhuxTgWR6Q1UG2tosBS3T9Uy4e8r31uTTLilkh9
-	Q92IQq2Q2Xgjhsp2xj0LkpAyccQ+LL4s/ZpQwFIVuS4I8mn9qnUB0YR5iEnG+Y9OmHVASsf
-	pOHfIfcLO/lC+So3FgKyi7OtMWZJa4ksYexpbs3QuX2eWC6yuLDkWe/2p0XPPSjAEYkh6fl
-	IXvI47ekyHV0u/3FvmcNg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:heGzdy/iRII=:3v9twpljGeG7pwiuginSFt
-	E3GROr5Ue5fwRZEIqiTdrO+QsNHPgUPKnDVA+i3JLxDXWVSMky8dZAnoC3gK6TjgQshcNe9qJ
-	GmYrC8xLFkk3mj6oxlI015eLh92RtcZ42UjHZ1Y9xtLHI9tRg0VDw7NHc+F/jNbkuw7R0TJtF
-	CA4/DloTV/mgB/ksaNQ3stx3uflIlc9Y3q32EQPgfO48K+5Vq79erJ0yi4RXmAIf9faVe/1dA
-	61E0C0KAJMY/RTMQ9LjkuFqDeELIrELg3iwtt4A9gprnGq1w80WEcm1+0O/VpSHZziWk7tCi3
-	vM9xnNhGgG+pHjcjKmdBy9SuosQq0AjtXqxZNuAFYu5/v2sU7sWQ1yApO7JMW19IwlqjaQfKk
-	cu7snL0pX1jCWCJ0d5A77pM6yPnPGV7AyJQCY2TjSZgGA08/G7wnH46xNQ76jHlOBTclYmNQ/
-	8kminRfLgxa7tFGhe3AmRMqpsTbS3rhIlKvUjxjlSGCxG9MBQdh7WBI3qDI9MoPUN91VrjqwR
-	vLxC6uOgVe5igHLBKeF+nYE4bF400l6sRsTbu8B1kW6I7lhEpTeMz4FVrqLInA5mmkCgfEqEw
-	B2xZDLxXMrQ4DDaUHFrDbx8eoOTDap+N4UiRZuJD+m2d0vi7MZeoXwF+O82VNTw0XQwSquXlQ
-	nak29iavm6mdlmEN8Nfi4EEEevM9wWjGmI06CDOj+K9mOyrRXyy1N6lvJcQ+Kzh8RkTMNQxFn
-	bRmAOFByb9syCzVH0YTMk/fdp6xWwVbi9TY/Grd5ZiVbBrUqRUkkLUiJGHc=
+X-Provags-ID: V03:K1:aBzlQzTtpq0qmZcYGQzo971GuxX203VR7X9tRnBYz+XwZjhGzb8
+	idPGK76VnDQs9Af5o23eIO6dinsS4bXdidjMGsMvWljvr8gssQKxR9zRvetQNLw3HB895rB
+	zgPdyag/SOq6QlICCNllV14lWPh9iZTzEaowJk6PZfwIYr3gsHCMPo1nb/pKSi9FHSrmJpZ
+	niGGG9tpPmzOZ/MfZ7tYw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6QELaIDRtcA=:u7oGdFCrXwM/J1snx1yJTp
+	7DoLCwL3I3hTUZ++IMAHLXfyteKD5Yt5fB+d+PD7sAKqi20zqzQWvZN22pQlesnjmxeCyk0aW
+	gHCdsHIw5rn7dFE0oBpb+UrXKsrH7jRKVDetB2fe+pnFmbzutxjRhg5WO/ldrBUsE+rqYBesd
+	sjIhI/rZJvd+0rEJOYWv1F++5Z7IhJBOg/+M3ZEH8WymNcRF+ZZ+SFzB4Y3wrKVJizXGJYe+G
+	O3o436uudZ07On4VgAixpvLHi7p/OcpgJ/AHHOaJw8IFEZMF0rBENRWLQEDF/ePOxqjjrKVnl
+	NcSuASOGqCfcF2kH1xTKRpBYnaBLV1RR4BNx58AHhCZVdOZdt7Gi6T8ZTS/2O9kDb1Xf3sRgL
+	hm8gliSgDDXyLwwMEyntfrYrOtzE78AUkNtr87veT4SRMdF4j3ZISqAffSN0hu36QqDrAU4T1
+	evoPNtjLGZB/GVPGGecZUB2CLqTxmQiScbfs8QqUeMOwj2/KUwT+WYGCkn/gGvl4K9WAj3XWU
+	cMCiwLoDd73d8k3Kl5BxygBqhl5P/24QtxybAKG3jg4d+m4ATOgTQ/W/LP6CD6eGBNlMfTMyP
+	32nP3pAmnSBIUsf+BDFe3Wdse4GoVCdECrs91nJTP9Sm9JT1UrCjSM0zjqxTd2C4qxxuEl7Ln
+	obKLzP+XxIwoax8NCWrhoaOgPikphE7A6N6iglTTcFwrAE9qa226O2W3uIru8b19iT8r5g3Up
+	USzU/vLnuj61TgrwAc6DW1ufOdO41CCar3+4zblgZqWWqyCic8dxaY4DpQk=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.134
-Subject: Re: [Qemu-trivial] [PATCH] hw: input: set category of the i8042
- device
+X-Received-From: 212.227.126.135
+Subject: Re: [Qemu-trivial] [PATCH] hw: sd: set category of the sd memory
+ card
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,29 +102,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Jan 2019 09:19:56 -0000
+X-List-Received-Date: Wed, 30 Jan 2019 09:28:23 -0000
 
-On 25/01/2019 16:14, kumar sourav wrote:
-> Sets the category of i8042 device as DEVICE_CATEGORY_INPUT
+On 24/01/2019 17:20, kumar sourav wrote:
+> Sets the category of the sd memory card as DEVICE_CATEGORY_STORAGE.
 > Devices should be assigned to one of DEVICE_CATEGORY_XXXX.
 > 
 > Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
 > ---
->  hw/input/pckbd.c | 1 +
+>  hw/sd/sd.c | 1 +
 >  1 file changed, 1 insertion(+)
 > 
-> diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
-> index 3e66713b47..72e7d5f6cc 100644
-> --- a/hw/input/pckbd.c
-> +++ b/hw/input/pckbd.c
-> @@ -574,6 +574,7 @@ static void i8042_class_initfn(ObjectClass *klass, void *data)
+> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+> index d4356e9b73..aaab15f386 100644
+> --- a/hw/sd/sd.c
+> +++ b/hw/sd/sd.c
+> @@ -2121,6 +2121,7 @@ static void sd_class_init(ObjectClass *klass, void *data)
+>      dc->vmsd = &sd_vmstate;
+>      dc->reset = sd_reset;
+>      dc->bus_type = TYPE_SD_BUS;
+> +    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
 >  
->      dc->realize = i8042_realizefn;
->      dc->vmsd = &vmstate_kbd_isa;
-> +    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
->  }
->  
->  static const TypeInfo i8042_info = {
+>      sc->set_voltage = sd_set_voltage;
+>      sc->get_dat_lines = sd_get_dat_lines;
 > 
 
 Applied to my trivial-patches branch.
