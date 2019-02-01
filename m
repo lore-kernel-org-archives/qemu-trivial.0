@@ -1,72 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gpKVH-00018T-D6
-	for mharc-qemu-trivial@gnu.org; Thu, 31 Jan 2019 17:08:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51781)
+	id 1gpPPd-0001Dn-TY
+	for mharc-qemu-trivial@gnu.org; Thu, 31 Jan 2019 22:22:41 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44171)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gpKVD-0000qT-9U
-	for qemu-trivial@nongnu.org; Thu, 31 Jan 2019 17:08:07 -0500
+	(envelope-from <dgibson@ozlabs.org>) id 1gpPPb-000192-Ui
+	for qemu-trivial@nongnu.org; Thu, 31 Jan 2019 22:22:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gpKIt-0001v4-IJ
-	for qemu-trivial@nongnu.org; Thu, 31 Jan 2019 16:55:24 -0500
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:41783)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1gpKIt-0001uT-BI
-	for qemu-trivial@nongnu.org; Thu, 31 Jan 2019 16:55:23 -0500
-Received: by mail-pl1-x641.google.com with SMTP id u6so2081574plm.8
-	for <qemu-trivial@nongnu.org>; Thu, 31 Jan 2019 13:55:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=ryNuwnvWxRgcl1EWV4bTPsxC4OYV30ZLsOur34oB/QA=;
-	b=O27LQKCJUILK0x2vRoF89P1RTONN24zUPl33xzC6ZYC8AIYkoNtYp/NMtaPrTAl6qP
-	AfGKYCBS9Od6bFBaRoZ3fPDJQ+2eUWIIeMDabDdu9yhbW+2oCBEtxBOG4YA9KQR3ByER
-	YjWoj58+xvGgFBChHy9WLNcUzBZXDHCQH0dbo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=ryNuwnvWxRgcl1EWV4bTPsxC4OYV30ZLsOur34oB/QA=;
-	b=tvmUuhxsipDpiS4ZbxaCuino3RdidZOZr9AR7TC77tGg18Y9Qu7iBWeo2huEOZMj6a
-	bPlQMYPIInpUnyhObo8aT2g52l1nv0k/OYay8oYtaCXe3hsQzpBt+sgc0i60Dxv/i+zp
-	pM4EFha2fSyXJVMwwDUEu7yXMlQJpJBu1K7JEuNE6WrY6YhZtobUL+YsW7A7yiZRnn0K
-	QSoNXkP8gvNU97Z9Gdl9+GrTyS7Q375yxHqM8fhJIm9EWeq/AJ/wQYFdpZ1yPiSW9jBU
-	zzYyVIiPHgwQ8MmsLkHCOUZdTxIaptjtEHsRIOUxb8zGwKsnj41/rbN2Nh29Mq3zNHvK
-	thDQ==
-X-Gm-Message-State: AJcUukfb8hqhQAcHaqGP2wabeDLFt6IemO7dlaxaJG5OKIJ7SI3ZyxNa
-	9n7hKIIWCkjdyUQVwweSTIbklw==
-X-Google-Smtp-Source: ALg8bN4CB7cdgeSpDvXn3hksAqnyAk6oQkt355ABex1IpddHlfBvHbZbh7Vh2hqg5UALXxH4Zps0Zw==
-X-Received: by 2002:a17:902:29a7:: with SMTP id
-	h36mr37054287plb.244.1548971722067; 
-	Thu, 31 Jan 2019 13:55:22 -0800 (PST)
-Received: from cloudburst.twiddle.net (97-126-115-157.tukw.qwest.net.
-	[97.126.115.157]) by smtp.gmail.com with ESMTPSA id
-	t29sm8425149pfa.158.2019.01.31.13.55.20
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 31 Jan 2019 13:55:21 -0800 (PST)
-To: Eric Blake <eblake@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
-	Thomas Huth <thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org
-References: <1548769067-20792-1-git-send-email-thuth@redhat.com>
-	<20190129145156.6719b8a4.cohuck@redhat.com>
-	<e3dfae55-8733-bd01-1f13-422f343fb258@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <509e6dca-8c78-947f-cf91-15ad02510bba@linaro.org>
-Date: Thu, 31 Jan 2019 13:55:19 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <dgibson@ozlabs.org>) id 1gpPIr-0000l4-ER
+	for qemu-trivial@nongnu.org; Thu, 31 Jan 2019 22:15:42 -0500
+Received: from ozlabs.org ([203.11.71.1]:35415)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+	id 1gpPIn-0000Ur-T4; Thu, 31 Jan 2019 22:15:39 -0500
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 43rMg23phkz9s9G; Fri,  1 Feb 2019 14:15:26 +1100 (AEDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1548990926;
+	bh=EQ4lgrrv5wbGrDLFTRfCyTRSxJPxeBH6WKCOpDKnZYo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Q98yGFO1K7n7SkoBMkoGLnijoWj0wT6kHmEY3oxQNGpN4U6ke7C+9X/IlFE9/ulg3
+	S1SjDOCbyNxuJx6GtfPI1taqrm4TgV1hFHAsxQH3xlL5EylPhCQOfkjXkYqGaB1La6
+	5GL4kymbVcC926cXSAQm2GS0huk26EhIRASBxQuA=
+Date: Fri, 1 Feb 2019 12:04:53 +1100
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+	qemu-ppc@nongnu.org, qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Message-ID: <20190201010453.GC26425@umbus.fritz.box>
+References: <1548866382-14488-1-git-send-email-thuth@redhat.com>
+	<4e8dcc26-7e62-c79d-c354-8ade5db33f26@redhat.com>
+	<3c30472b-bc7f-d3cc-cf1f-1e5127205984@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <e3dfae55-8733-bd01-1f13-422f343fb258@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::641
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target/s390x: Fix LGPL
- version in the file header comments
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="IrhDeMKUP4DT/M7F"
+Content-Disposition: inline
+In-Reply-To: <3c30472b-bc7f-d3cc-cf1f-1e5127205984@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 203.11.71.1
+Subject: Re: [Qemu-trivial] [Qemu-ppc] [Qemu-devel] [PATCH] hw/ppc: Don't
+ include m48t59.h if it is not necessary
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,21 +51,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 31 Jan 2019 22:08:08 -0000
-
-On 1/30/19 7:01 AM, Eric Blake wrote:
-> On 1/29/19 7:51 AM, Cornelia Huck wrote:
->> Given that there have been several of these cases (and that there's a
->> lot of boilerplate in general): Should we adopt SPDX license
->> identifiers for QEMU, as the Linux kernel did? They also discovered and
->> fixed some problems/oddities while at it.
-> 
-> I'm also in favor of SPDX license identifiers - their brevity and
-> machine-parsability favors more accurate usage and fewer copy/paste
-> mistake propagation.
-
-+1.
+X-List-Received-Date: Fri, 01 Feb 2019 03:22:40 -0000
 
 
-r~
+--IrhDeMKUP4DT/M7F
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Jan 31, 2019 at 03:12:48PM +0100, Thomas Huth wrote:
+> On 2019-01-30 18:21, Philippe Mathieu-Daud=E9 wrote:
+> > On 1/30/19 5:39 PM, Thomas Huth wrote:
+> >> These files don't use anything from m48t59.h, so no need to include
+> >> this header here.
+> >>
+> >> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> >> ---
+> >>  hw/ppc/mac_newworld.c | 1 -
+> >>  hw/ppc/mac_oldworld.c | 1 -
+> >>  hw/ppc/ppc.c          | 2 --
+> >>  hw/ppc/ppc_booke.c    | 1 -
+> >>  4 files changed, 5 deletions(-)
+> >>
+> >> diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
+> >> index bb19eab..f1c8400 100644
+> >> --- a/hw/ppc/mac_newworld.c
+> >> +++ b/hw/ppc/mac_newworld.c
+> >> @@ -53,7 +53,6 @@
+> >>  #include "hw/ppc/mac.h"
+> >>  #include "hw/input/adb.h"
+> >>  #include "hw/ppc/mac_dbdma.h"
+> >> -#include "hw/timer/m48t59.h"
+> >>  #include "hw/pci/pci.h"
+> >>  #include "net/net.h"
+> >>  #include "sysemu/sysemu.h"
+> >> diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
+> >> index 817f70e..98d531d 100644
+> >> --- a/hw/ppc/mac_oldworld.c
+> >> +++ b/hw/ppc/mac_oldworld.c
+> >> @@ -30,7 +30,6 @@
+> >>  #include "hw/ppc/ppc.h"
+> >>  #include "mac.h"
+> >>  #include "hw/input/adb.h"
+> >> -#include "hw/timer/m48t59.h"
+> >>  #include "sysemu/sysemu.h"
+> >>  #include "net/net.h"
+> >>  #include "hw/isa/isa.h"
+> >> diff --git a/hw/ppc/ppc.c b/hw/ppc/ppc.c
+> >> index 98b409f..cffdc39 100644
+> >> --- a/hw/ppc/ppc.c
+> >> +++ b/hw/ppc/ppc.c
+> >> @@ -30,10 +30,8 @@
+> >>  #include "qemu/timer.h"
+> >>  #include "sysemu/sysemu.h"
+> >>  #include "sysemu/cpus.h"
+> >> -#include "hw/timer/m48t59.h"
+> >>  #include "qemu/log.h"
+> >>  #include "qemu/error-report.h"
+> >> -#include "hw/loader.h"
+> >=20
+> > I supposed the "hw/loader.h" change slipped in by mistake.
+>=20
+> I should have mentioned it in the patch description, I guess. ppc.c also
+> compiles without this line, so it can be removed, too.
+
+Fair enough, applied to ppc-for-4.0.
+
+>=20
+>  Thomas
+>=20
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--IrhDeMKUP4DT/M7F
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlxTmzUACgkQbDjKyiDZ
+s5JzKg//QbZZtlG+qJ5iaImi6MxCDgn5sXPN/AKoJlZIgrG+YRZlWN18LZdkw+i7
+oKutmggFO+oMse4JT3doFxk/e2E0ItPX5QAV6HG+VGgnBoMQjIUSDwAP37F3aW6c
+1A+WLzmJApZlCI8qxn5AGYxn+m7/mwMVj+hKQVNtLcCPPVZ+WXH02Vi7982AcRaN
+QKDp8Ef4aLwNMzg0fwyu6dhnTQggojSO2GLdh39OrBKAeo6s1aOH4T7ZHchDgmbs
+lYP2327fPshYyzC+lMq9oysXnzt5ows9Lg5hKTk8U17vMOvfeC4aXR9KHAocNGYQ
+i3ouyIYycnWkAq4bLv/FhIgwDRoa7tW02xKi2U1PiOZ1X2bi8WODXcBAXGwxxlhf
+Fe/Ro8PcX0dmwrAEnYd3oMg1zd+O+K7/2aYoSgQ6ly3mxHf/usrDqvoboJGvM9DZ
+c7IuHs60LhbKnrvKC33pTELTAttMyhvO1lRetPzgYLwrOJ75iqK3uXpPCvE87jn2
+8zC+TlT3qZUizoOJvIZ/6ebW6Re7anjqvCfOKRyuiQQVwx75FXptuQf2cx1zUL2w
+nrBizo52Cf4AxLgEJxEIO6peT14HVP3Tk8HevbOXicF56PrRJCB9Sme5nctzD5kT
+MYyp8Xb/53PSNaXeFVtsdlneqdYn3WBeuEfTXEltenGXcOG143c=
+=QQ6+
+-----END PGP SIGNATURE-----
+
+--IrhDeMKUP4DT/M7F--
 
