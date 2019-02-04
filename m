@@ -1,50 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqZCc-0007HE-06
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 03:02:02 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50575)
+	id 1gqZOW-00027J-CG
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 03:14:20 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53063)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1gqZCZ-0007FY-C0
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 03:02:00 -0500
+	(envelope-from <thuth@redhat.com>) id 1gqZOU-000263-BC
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 03:14:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <no-reply@patchew.org>) id 1gqZCU-0001vE-Bu
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 03:01:59 -0500
-Resent-Date: Mon, 04 Feb 2019 03:01:59 -0500
-Resent-Message-Id: <E1gqZCU-0001vE-Bu@eggs.gnu.org>
-Received: from sender-of-o51.zoho.com ([135.84.80.216]:21034)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
-	id 1gqZCR-0001cE-7F; Mon, 04 Feb 2019 03:01:51 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1549267278; cv=none; d=zoho.com; s=zohoarc; 
-	b=l1GpElLFwQm1NB+y2ld0IClC7m+QG6ufaW7E06e0fBanv+oJ8FDlu2lw0hHVcBX1kexG6oOZEabdRa07oW7eZFDylRw6Qz6ZXneBMvomrvHzk1kpYBWRNt/vOj3cM0c9COLKQ5HWEpAOdvUpKVTJiNoYTHcXpPRGiYlYQ0ENSXE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
-	s=zohoarc; t=1549267278;
-	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
-	bh=kZ8c5jnABRcBrU3p532NQlyioiaxVwP5qPjOMKqKFEc=; 
-	b=FVn//aQEjRFoq1b+eDLBAdhxdLVzDbsvAOChFk3UVJj6BLkT5TonsF1uCgetqxYUHWFAFDxVPb3or1gYk06x3GqGQ5UFWjjKMhPnmk10OLvUhISxKqqn6Ax69ZjXFZerkULMd02lI3mZiv/APjynVTZw4OPPxdpOCS+kDT8WNaE=
-ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
-	spf=pass  smtp.mailfrom=no-reply@patchew.org;
-	dmarc=pass header.from=<no-reply@patchew.org>
-	header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
-	mx.zohomail.com with SMTPS id 1549267275991962.0218435613958;
-	Mon, 4 Feb 2019 00:01:15 -0800 (PST)
-Message-ID: <154926727487.29184.96870218730905830@ebba9967afc0>
-In-Reply-To: <1549266858-5043-1-git-send-email-thuth@redhat.com>
-Reply-To: <qemu-devel@nongnu.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: thuth@redhat.com
-Cc: fam@euphon.net, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	green@moxielogic.com
-Date: Mon, 4 Feb 2019 00:01:15 -0800 (PST)
-X-ZohoMailClient: External
+	(envelope-from <thuth@redhat.com>) id 1gqZOT-00049j-Kp
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 03:14:18 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:42326)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gqZOR-000483-O9; Mon, 04 Feb 2019 03:14:15 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id F41487F6A8;
+	Mon,  4 Feb 2019 08:14:14 +0000 (UTC)
+Received: from thuth.com (ovpn-117-5.ams2.redhat.com [10.36.117.5])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 31F958C06E;
+	Mon,  4 Feb 2019 08:14:08 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Gerd Hoffmann <kraxel@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Date: Mon,  4 Feb 2019 09:14:05 +0100
+Message-Id: <1549268045-11861-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 04 Feb 2019 08:14:15 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 135.84.80.216
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target/moxie: Fix LGPL
- information in the file headers
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] ui/sdl_keysym: Remove obsolete SDL1.2
+ related code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,69 +47,105 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Feb 2019 08:02:00 -0000
+X-List-Received-Date: Mon, 04 Feb 2019 08:14:19 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8xNTQ5MjY2ODU4LTUwNDMtMS1n
-aXQtc2VuZC1lbWFpbC10aHV0aEByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxl
-ZCB0aGUgZG9ja2VyLW1pbmd3QGZlZG9yYSBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVz
-dGluZyBjb21tYW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIg
-aW5zdGFsbGVkLCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRF
-U1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtbWlu
-Z3dAZmVkb3JhIFNIT1dfRU5WPTEgSj0xNAo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKCkNvbmZp
-Z3VyZSBvcHRpb25zOgotLWVuYWJsZS13ZXJyb3IgLS10YXJnZXQtbGlzdD14ODZfNjQtc29mdG1t
-dSxhYXJjaDY0LXNvZnRtbXUgLS1wcmVmaXg9L3RtcC9xZW11LXRlc3QvaW5zdGFsbCAtLXB5dGhv
-bj0vdXNyL2Jpbi9weXRob24zIC0tY3Jvc3MtcHJlZml4PXg4Nl82NC13NjQtbWluZ3czMi0gLS1l
-bmFibGUtdHJhY2UtYmFja2VuZHM9c2ltcGxlIC0tZW5hYmxlLWdudXRscyAtLWVuYWJsZS1uZXR0
-bGUgLS1lbmFibGUtY3VybCAtLWVuYWJsZS12bmMgLS1lbmFibGUtYnppcDIgLS1lbmFibGUtZ3Vl
-c3QtYWdlbnQgLS13aXRoLXNkbGFiaT0yLjAKRVJST1I6IHVua25vd24gb3B0aW9uIC0td2l0aC1z
-ZGxhYmk9Mi4wClRyeSAnL3RtcC9xZW11LXRlc3Qvc3JjL2NvbmZpZ3VyZSAtLWhlbHAnIGZvciBt
-b3JlIGluZm9ybWF0aW9uCiMgUUVNVSBjb25maWd1cmUgbG9nIE1vbiBGZWIgIDQgMDg6MDE6MDUg
-VVRDIDIwMTkKIyBDb25maWd1cmVkIHdpdGg6ICcvdG1wL3FlbXUtdGVzdC9zcmMvY29uZmlndXJl
-JyAnLS1lbmFibGUtd2Vycm9yJyAnLS10YXJnZXQtbGlzdD14ODZfNjQtc29mdG1tdSxhYXJjaDY0
-LXNvZnRtbXUnICctLXByZWZpeD0vdG1wL3FlbXUtdGVzdC9pbnN0YWxsJyAnLS1weXRob249L3Vz
-ci9iaW4vcHl0aG9uMycgJy0tY3Jvc3MtcHJlZml4PXg4Nl82NC13NjQtbWluZ3czMi0nICctLWVu
-YWJsZS10cmFjZS1iYWNrZW5kcz1zaW1wbGUnICctLWVuYWJsZS1nbnV0bHMnICctLWVuYWJsZS1u
-ZXR0bGUnICctLWVuYWJsZS1jdXJsJyAnLS1lbmFibGUtdm5jJyAnLS1lbmFibGUtYnppcDInICct
-LWVuYWJsZS1ndWVzdC1hZ2VudCcgJy0td2l0aC1zZGxhYmk9Mi4wJwotLS0KZnVuY3M6IGRvX2Nv
-bXBpbGVyIGRvX2NjIGNvbXBpbGVfb2JqZWN0IGNoZWNrX2RlZmluZSBtYWluCmxpbmVzOiA5MiAx
-MjIgNjE3IDYzNCAwCng4Nl82NC13NjQtbWluZ3czMi1nY2MgLURfR05VX1NPVVJDRSAtRF9GSUxF
-X09GRlNFVF9CSVRTPTY0IC1EX0xBUkdFRklMRV9TT1VSQ0UgLVdzdHJpY3QtcHJvdG90eXBlcyAt
-V3JlZHVuZGFudC1kZWNscyAtV2FsbCAtV3VuZGVmIC1Xd3JpdGUtc3RyaW5ncyAtV21pc3Npbmct
-cHJvdG90eXBlcyAtZm5vLXN0cmljdC1hbGlhc2luZyAtZm5vLWNvbW1vbiAtZndyYXB2IC1zdGQ9
-Z251OTkgLWMgLW8gY29uZmlnLXRlbXAvcWVtdS1jb25mLm8gY29uZmlnLXRlbXAvcWVtdS1jb25m
-LmMKY29uZmlnLXRlbXAvcWVtdS1jb25mLmM6MjoyOiBlcnJvcjogI2Vycm9yIF9fbGludXhfXyBu
-b3QgZGVmaW5lZAogI2Vycm9yIF9fbGludXhfXyBub3QgZGVmaW5lZAogIF5+fn5+CgotLS0KZnVu
-Y3M6IGRvX2NvbXBpbGVyIGRvX2NjIGNvbXBpbGVfb2JqZWN0IGNoZWNrX2RlZmluZSBtYWluCmxp
-bmVzOiA5MiAxMjIgNjE3IDY4NiAwCng4Nl82NC13NjQtbWluZ3czMi1nY2MgLURfR05VX1NPVVJD
-RSAtRF9GSUxFX09GRlNFVF9CSVRTPTY0IC1EX0xBUkdFRklMRV9TT1VSQ0UgLVdzdHJpY3QtcHJv
-dG90eXBlcyAtV3JlZHVuZGFudC1kZWNscyAtV2FsbCAtV3VuZGVmIC1Xd3JpdGUtc3RyaW5ncyAt
-V21pc3NpbmctcHJvdG90eXBlcyAtZm5vLXN0cmljdC1hbGlhc2luZyAtZm5vLWNvbW1vbiAtZndy
-YXB2IC1zdGQ9Z251OTkgLWMgLW8gY29uZmlnLXRlbXAvcWVtdS1jb25mLm8gY29uZmlnLXRlbXAv
-cWVtdS1jb25mLmMKY29uZmlnLXRlbXAvcWVtdS1jb25mLmM6MjoyOiBlcnJvcjogI2Vycm9yIF9f
-aTM4Nl9fIG5vdCBkZWZpbmVkCiAjZXJyb3IgX19pMzg2X18gbm90IGRlZmluZWQKICBefn5+fgoK
-LS0tCmZ1bmNzOiBkb19jb21waWxlciBkb19jYyBjb21waWxlX29iamVjdCBjaGVja19kZWZpbmUg
-bWFpbgpsaW5lczogOTIgMTIyIDYxNyA2ODkgMAp4ODZfNjQtdzY0LW1pbmd3MzItZ2NjIC1EX0dO
-VV9TT1VSQ0UgLURfRklMRV9PRkZTRVRfQklUUz02NCAtRF9MQVJHRUZJTEVfU09VUkNFIC1Xc3Ry
-aWN0LXByb3RvdHlwZXMgLVdyZWR1bmRhbnQtZGVjbHMgLVdhbGwgLVd1bmRlZiAtV3dyaXRlLXN0
-cmluZ3MgLVdtaXNzaW5nLXByb3RvdHlwZXMgLWZuby1zdHJpY3QtYWxpYXNpbmcgLWZuby1jb21t
-b24gLWZ3cmFwdiAtc3RkPWdudTk5IC1jIC1vIGNvbmZpZy10ZW1wL3FlbXUtY29uZi5vIGNvbmZp
-Zy10ZW1wL3FlbXUtY29uZi5jCmNvbmZpZy10ZW1wL3FlbXUtY29uZi5jOjI6MjogZXJyb3I6ICNl
-cnJvciBfX0lMUDMyX18gbm90IGRlZmluZWQKICNlcnJvciBfX0lMUDMyX18gbm90IGRlZmluZWQK
-ICBefn5+fgoKLS0tCmxpbmVzOiA5MiAxMjggOTIwIDAKeDg2XzY0LXc2NC1taW5ndzMyLWdjYyAt
-bXRocmVhZHMgLURfR05VX1NPVVJDRSAtRF9GSUxFX09GRlNFVF9CSVRTPTY0IC1EX0xBUkdFRklM
-RV9TT1VSQ0UgLVdzdHJpY3QtcHJvdG90eXBlcyAtV3JlZHVuZGFudC1kZWNscyAtV2FsbCAtV3Vu
-ZGVmIC1Xd3JpdGUtc3RyaW5ncyAtV21pc3NpbmctcHJvdG90eXBlcyAtZm5vLXN0cmljdC1hbGlh
-c2luZyAtZm5vLWNvbW1vbiAtZndyYXB2IC1zdGQ9Z251OTkgLW8gY29uZmlnLXRlbXAvcWVtdS1j
-b25mLmV4ZSBjb25maWctdGVtcC9xZW11LWNvbmYuYyAtZyAtbGliZXJ0eQovdXNyL2xpYi9nY2Mv
-eDg2XzY0LXc2NC1taW5ndzMyLzguMi4wLy4uLy4uLy4uLy4uL3g4Nl82NC13NjQtbWluZ3czMi9i
-aW4vbGQ6IGNhbm5vdCBmaW5kIC1saWJlcnR5CmNvbGxlY3QyOiBlcnJvcjogbGQgcmV0dXJuZWQg
-MSBleGl0IHN0YXR1cwpGYWlsZWQgdG8gcnVuICdjb25maWd1cmUnClRyYWNlYmFjayAobW9zdCBy
-ZWNlbnQgY2FsbCBsYXN0KToKICBGaWxlICIuL3Rlc3RzL2RvY2tlci9kb2NrZXIucHkiLCBsaW5l
-IDU2MywgaW4gPG1vZHVsZT4KCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9w
-YXRjaGV3Lm9yZy9sb2dzLzE1NDkyNjY4NTgtNTA0My0xLWdpdC1zZW5kLWVtYWlsLXRodXRoQHJl
-ZGhhdC5jb20vdGVzdGluZy5kb2NrZXItbWluZ3dAZmVkb3JhLz90eXBlPW1lc3NhZ2UuCi0tLQpF
-bWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwOi8vcGF0Y2hldy5v
-cmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5j
-b20=
+Support for SDL1.2 has been removed recently in commit:
+
+  0015ca5cbabe0b31d31610ddfaafd90a9e5911a4
+  ("ui: remove support for SDL1.2 in favour of SDL2")
+
+So we can drop the SDL1.2-specific code in sdl_keysym.h now, too.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ ui/sdl_keysym.h | 73 ---------------------------------------------------------
+ 1 file changed, 73 deletions(-)
+
+diff --git a/ui/sdl_keysym.h b/ui/sdl_keysym.h
+index 599d9fc..6994180 100644
+--- a/ui/sdl_keysym.h
++++ b/ui/sdl_keysym.h
+@@ -200,79 +200,6 @@ static const name2keysym_t name2keysym[]={
+ { "yacute",               0x0fd},
+ { "thorn",                0x0fe},
+ { "ydiaeresis",           0x0ff},
+-#if SDL_MAJOR_VERSION == 1
+-{"EuroSign", SDLK_EURO},
+ 
+-    /* modifiers */
+-{"Control_L", SDLK_LCTRL},
+-{"Control_R", SDLK_RCTRL},
+-{"Alt_L", SDLK_LALT},
+-{"Alt_R", SDLK_RALT},
+-{"Caps_Lock", SDLK_CAPSLOCK},
+-{"Meta_L", SDLK_LMETA},
+-{"Meta_R", SDLK_RMETA},
+-{"Shift_L", SDLK_LSHIFT},
+-{"Shift_R", SDLK_RSHIFT},
+-{"Super_L", SDLK_LSUPER},
+-{"Super_R", SDLK_RSUPER},
+-
+-    /* special keys */
+-{"BackSpace", SDLK_BACKSPACE},
+-{"Tab", SDLK_TAB},
+-{"Return", SDLK_RETURN},
+-{"Right", SDLK_RIGHT},
+-{"Left", SDLK_LEFT},
+-{"Up", SDLK_UP},
+-{"Down", SDLK_DOWN},
+-{"Page_Down", SDLK_PAGEDOWN},
+-{"Page_Up", SDLK_PAGEUP},
+-{"Insert", SDLK_INSERT},
+-{"Delete", SDLK_DELETE},
+-{"Home", SDLK_HOME},
+-{"End", SDLK_END},
+-{"Scroll_Lock", SDLK_SCROLLOCK},
+-{"F1", SDLK_F1},
+-{"F2", SDLK_F2},
+-{"F3", SDLK_F3},
+-{"F4", SDLK_F4},
+-{"F5", SDLK_F5},
+-{"F6", SDLK_F6},
+-{"F7", SDLK_F7},
+-{"F8", SDLK_F8},
+-{"F9", SDLK_F9},
+-{"F10", SDLK_F10},
+-{"F11", SDLK_F11},
+-{"F12", SDLK_F12},
+-{"F13", SDLK_F13},
+-{"F14", SDLK_F14},
+-{"F15", SDLK_F15},
+-{"Sys_Req", SDLK_SYSREQ},
+-{"KP_0", SDLK_KP0},
+-{"KP_1", SDLK_KP1},
+-{"KP_2", SDLK_KP2},
+-{"KP_3", SDLK_KP3},
+-{"KP_4", SDLK_KP4},
+-{"KP_5", SDLK_KP5},
+-{"KP_6", SDLK_KP6},
+-{"KP_7", SDLK_KP7},
+-{"KP_8", SDLK_KP8},
+-{"KP_9", SDLK_KP9},
+-{"KP_Add", SDLK_KP_PLUS},
+-{"KP_Decimal", SDLK_KP_PERIOD},
+-{"KP_Divide", SDLK_KP_DIVIDE},
+-{"KP_Enter", SDLK_KP_ENTER},
+-{"KP_Equal", SDLK_KP_EQUALS},
+-{"KP_Multiply", SDLK_KP_MULTIPLY},
+-{"KP_Subtract", SDLK_KP_MINUS},
+-{"help", SDLK_HELP},
+-{"Menu", SDLK_MENU},
+-{"Power", SDLK_POWER},
+-{"Print", SDLK_PRINT},
+-{"Mode_switch", SDLK_MODE},
+-{"Multi_Key", SDLK_COMPOSE},
+-{"Num_Lock", SDLK_NUMLOCK},
+-{"Pause", SDLK_PAUSE},
+-{"Escape", SDLK_ESCAPE},
+-#endif
+ {NULL, 0},
+ };
+-- 
+1.8.3.1
 
 
