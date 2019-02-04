@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqnXu-0002YK-BH
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 18:20:59 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50941)
+	id 1gqnY0-0002bz-8S
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 18:21:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50996)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gqnXs-0002Wj-11
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:20:56 -0500
+	(envelope-from <philmd@redhat.com>) id 1gqnXx-0002Zk-7C
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:21:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gqnXq-0002FN-0Y
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:20:55 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:51400)
+	(envelope-from <philmd@redhat.com>) id 1gqnXw-0002KI-8B
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:21:01 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:56278)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1gqnXZ-0001io-Tx; Mon, 04 Feb 2019 18:20:39 -0500
+	id 1gqnXh-0001rT-Jp; Mon, 04 Feb 2019 18:20:45 -0500
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C26EE80F6C;
-	Mon,  4 Feb 2019 23:20:18 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id F081AB218;
+	Mon,  4 Feb 2019 23:20:26 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-98.brq.redhat.com [10.40.204.98])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5FD8913AB9;
-	Mon,  4 Feb 2019 23:20:02 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 483FF63BA3;
+	Mon,  4 Feb 2019 23:20:19 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-trivial@nongnu.org,
 	qemu-devel@nongnu.org
@@ -40,21 +40,21 @@ Cc: Richard Henderson <rth@twiddle.net>, Andrew Jeffery <andrew@aj.id.au>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, qemu-arm@nongnu.org,
 	Jason Wang <jasowang@redhat.com>, Rob Herring <robh@kernel.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Tue,  5 Feb 2019 00:18:14 +0100
-Message-Id: <20190204231815.29661-11-philmd@redhat.com>
+Date: Tue,  5 Feb 2019 00:18:15 +0100
+Message-Id: <20190204231815.29661-12-philmd@redhat.com>
 In-Reply-To: <20190204231815.29661-1-philmd@redhat.com>
 References: <20190204231815.29661-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.27]);
-	Mon, 04 Feb 2019 23:20:19 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.28]);
+	Mon, 04 Feb 2019 23:20:27 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v2 10/11] hw/net/lan9118: Export TYPE_LAN9118
- and use it instead of hardcoded string
+Subject: [Qemu-trivial] [PATCH v2 11/11] hw/devices: Move SMSC 91C111
+ declaration into a new header
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,85 +66,149 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Feb 2019 23:20:57 -0000
+X-List-Received-Date: Mon, 04 Feb 2019 23:21:02 -0000
+
+This commit finally deletes "hw/devices.h".
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/arm/exynos4_boards.c  | 3 ++-
- hw/arm/mps2-tz.c         | 3 ++-
- hw/net/lan9118.c         | 1 -
- include/hw/net/lan9118.h | 2 ++
- 4 files changed, 6 insertions(+), 3 deletions(-)
+ hw/arm/gumstix.c           |  2 +-
+ hw/arm/integratorcp.c      |  2 +-
+ hw/arm/mainstone.c         |  2 +-
+ hw/arm/realview.c          |  2 +-
+ hw/arm/versatilepb.c       |  2 +-
+ hw/net/smc91c111.c         |  2 +-
+ include/hw/devices.h       | 11 -----------
+ include/hw/net/smc91c111.h | 19 +++++++++++++++++++
+ 8 files changed, 25 insertions(+), 17 deletions(-)
+ delete mode 100644 include/hw/devices.h
+ create mode 100644 include/hw/net/smc91c111.h
 
-diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
-index 750162cc95..ea8100f65a 100644
---- a/hw/arm/exynos4_boards.c
-+++ b/hw/arm/exynos4_boards.c
-@@ -32,6 +32,7 @@
- #include "hw/arm/arm.h"
- #include "exec/address-spaces.h"
- #include "hw/arm/exynos4210.h"
-+#include "hw/net/lan9118.h"
+diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
+index 56cb763c4e..98c3e6d41c 100644
+--- a/hw/arm/gumstix.c
++++ b/hw/arm/gumstix.c
+@@ -40,7 +40,7 @@
+ #include "hw/arm/pxa.h"
+ #include "net/net.h"
+ #include "hw/block/flash.h"
+-#include "hw/devices.h"
++#include "hw/net/smc91c111.h"
  #include "hw/boards.h"
-=20
- #undef DEBUG
-@@ -92,7 +93,7 @@ static void lan9215_init(uint32_t base, qemu_irq irq)
-     /* This should be a 9215 but the 9118 is close enough */
-     if (nd_table[0].used) {
-         qemu_check_nic_model(&nd_table[0], "lan9118");
--        dev =3D qdev_create(NULL, "lan9118");
-+        dev =3D qdev_create(NULL, TYPE_LAN9118);
-         qdev_set_nic_properties(dev, &nd_table[0]);
-         qdev_prop_set_uint32(dev, "mode_16bit", 1);
-         qdev_init_nofail(dev);
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index f79f090a4a..7832408bb7 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -56,6 +56,7 @@
- #include "hw/arm/armsse.h"
- #include "hw/dma/pl080.h"
- #include "hw/ssi/pl022.h"
-+#include "hw/net/lan9118.h"
+ #include "exec/address-spaces.h"
+ #include "sysemu/qtest.h"
+diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
+index 4eceebb9ea..0b6f24465e 100644
+--- a/hw/arm/integratorcp.c
++++ b/hw/arm/integratorcp.c
+@@ -12,10 +12,10 @@
+ #include "qemu-common.h"
+ #include "cpu.h"
+ #include "hw/sysbus.h"
+-#include "hw/devices.h"
+ #include "hw/boards.h"
+ #include "hw/arm/arm.h"
+ #include "hw/misc/arm_integrator_debug.h"
++#include "hw/net/smc91c111.h"
  #include "net/net.h"
- #include "hw/core/split-irq.h"
-=20
-@@ -244,7 +245,7 @@ static MemoryRegion *make_eth_dev(MPS2TZMachineState =
-*mms, void *opaque,
-      * except that it doesn't support the checksum-offload feature.
-      */
-     qemu_check_nic_model(nd, "lan9118");
--    mms->lan9118 =3D qdev_create(NULL, "lan9118");
-+    mms->lan9118 =3D qdev_create(NULL, TYPE_LAN9118);
-     qdev_set_nic_properties(mms->lan9118, nd);
-     qdev_init_nofail(mms->lan9118);
-=20
-diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
-index a428b16eda..b29e3fee49 100644
---- a/hw/net/lan9118.c
-+++ b/hw/net/lan9118.c
-@@ -175,7 +175,6 @@ static const VMStateDescription vmstate_lan9118_packe=
-t =3D {
-     }
- };
-=20
--#define TYPE_LAN9118 "lan9118"
- #define LAN9118(obj) OBJECT_CHECK(lan9118_state, (obj), TYPE_LAN9118)
-=20
- typedef struct {
-diff --git a/include/hw/net/lan9118.h b/include/hw/net/lan9118.h
-index d13d8cd3d2..500acb4c14 100644
---- a/include/hw/net/lan9118.h
-+++ b/include/hw/net/lan9118.h
-@@ -14,6 +14,8 @@
- #include "hw/irq.h"
+ #include "exec/address-spaces.h"
+ #include "sysemu/sysemu.h"
+diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
+index 0beb5c426b..fbe8d5cbd4 100644
+--- a/hw/arm/mainstone.c
++++ b/hw/arm/mainstone.c
+@@ -18,7 +18,7 @@
+ #include "hw/arm/pxa.h"
+ #include "hw/arm/arm.h"
  #include "net/net.h"
-=20
-+#define TYPE_LAN9118 "lan9118"
+-#include "hw/devices.h"
++#include "hw/net/smc91c111.h"
+ #include "hw/boards.h"
+ #include "hw/block/flash.h"
+ #include "hw/sysbus.h"
+diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+index e9983c8763..05a244df25 100644
+--- a/hw/arm/realview.c
++++ b/hw/arm/realview.c
+@@ -14,8 +14,8 @@
+ #include "hw/sysbus.h"
+ #include "hw/arm/arm.h"
+ #include "hw/arm/primecell.h"
+-#include "hw/devices.h"
+ #include "hw/net/lan9118.h"
++#include "hw/net/smc91c111.h"
+ #include "hw/pci/pci.h"
+ #include "net/net.h"
+ #include "sysemu/sysemu.h"
+diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
+index 22b09a1e61..70b5fda737 100644
+--- a/hw/arm/versatilepb.c
++++ b/hw/arm/versatilepb.c
+@@ -13,7 +13,7 @@
+ #include "cpu.h"
+ #include "hw/sysbus.h"
+ #include "hw/arm/arm.h"
+-#include "hw/devices.h"
++#include "hw/net/smc91c111.h"
+ #include "net/net.h"
+ #include "sysemu/sysemu.h"
+ #include "hw/pci/pci.h"
+diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
+index 99da2d9297..d19ea0750d 100644
+--- a/hw/net/smc91c111.c
++++ b/hw/net/smc91c111.c
+@@ -10,7 +10,7 @@
+ #include "qemu/osdep.h"
+ #include "hw/sysbus.h"
+ #include "net/net.h"
+-#include "hw/devices.h"
++#include "hw/net/smc91c111.h"
+ #include "qemu/log.h"
+ /* For crc32 */
+ #include <zlib.h>
+diff --git a/include/hw/devices.h b/include/hw/devices.h
+deleted file mode 100644
+index ebc45c8799..0000000000
+--- a/include/hw/devices.h
++++ /dev/null
+@@ -1,11 +0,0 @@
+-#ifndef QEMU_DEVICES_H
+-#define QEMU_DEVICES_H
+-
+-/* Devices that have nowhere better to go.  */
+-
+-#include "hw/hw.h"
+-
+-/* smc91c111.c */
+-void smc91c111_init(NICInfo *, uint32_t, qemu_irq);
+-
+-#endif
+diff --git a/include/hw/net/smc91c111.h b/include/hw/net/smc91c111.h
+new file mode 100644
+index 0000000000..a66ba4112f
+--- /dev/null
++++ b/include/hw/net/smc91c111.h
+@@ -0,0 +1,19 @@
++/*
++ * SMSC 91C111 Ethernet interface emulation
++ *
++ * Copyright (c) 2005 CodeSourcery, LLC.
++ * Written by Paul Brook
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
++ * See the COPYING file in the top-level directory.
++ */
 +
- void lan9118_init(NICInfo *, uint32_t, qemu_irq);
-=20
- #endif
++#ifndef HW_NET_SMC91C111_H
++#define HW_NET_SMC91C111_H
++
++#include "hw/irq.h"
++#include "net/net.h"
++
++void smc91c111_init(NICInfo *, uint32_t, qemu_irq);
++
++#endif
 --=20
 2.20.1
 
