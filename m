@@ -1,41 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqd5g-0007zs-Ea
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 07:11:08 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34213)
+	id 1gqdNn-00041p-9l
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 07:29:51 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38552)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gqd5Z-0007vS-9x
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 07:11:07 -0500
+	(envelope-from <no-reply@patchew.org>) id 1gqdNl-000416-Ez
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 07:29:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gqd5X-0006Sy-Pe
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 07:11:01 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:37698)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gqd5U-0006Ns-66; Mon, 04 Feb 2019 07:10:56 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id AE1DD89ACC;
-	Mon,  4 Feb 2019 12:10:51 +0000 (UTC)
-Received: from thuth.com (ovpn-117-5.ams2.redhat.com [10.36.117.5])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id DC97F91F91;
-	Mon,  4 Feb 2019 12:10:44 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Date: Mon,  4 Feb 2019 13:10:41 +0100
-Message-Id: <1549282241-23535-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Mon, 04 Feb 2019 12:10:51 +0000 (UTC)
+	(envelope-from <no-reply@patchew.org>) id 1gqdNk-0006w4-0x
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 07:29:49 -0500
+Resent-Date: Mon, 04 Feb 2019 07:29:49 -0500
+Resent-Message-Id: <E1gqdNk-0006w4-0x@eggs.gnu.org>
+Received: from sender-of-o51.zoho.com ([135.84.80.216]:21111)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1gqdNj-0006uZ-OD
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 07:29:47 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1549283347; cv=none; d=zoho.com; s=zohoarc; 
+	b=nyVtCbhJ6aywIPb+3/4u5XAp6mxb+MpFwqWi4e3xLzqMAdhMUQZTkTFWR66BY3FLBVhAvHvirTLC80bzazk9OfDV8XNLX/arQ4XE6JaQD/LSXVyfrIC4MlIavGYxXNEl6WIP+1VaBm88k7jp7KYkVf8Dy/4USG3qml+9tn6hWGs=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+	s=zohoarc; t=1549283347;
+	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+	bh=PydCvLSLkeNEucAkoqtPYO5uQULOQJoBIe8+xKzj08E=; 
+	b=jDcuQIHtYCtt45JQNQLScVAEjSATL9aW2kDfXR+N8wiAzSrcj49PlTca8ceCk+XH6GLZCVcB+AanYGYiquhb3pPIAUPJ74ZPSD2XIv//sYcfEGc6WNrhRYrPV4Ez5kM0nWmM0uhhbvPJMmNu/9p4EhWJ+BhaAROqSgioUPlkmwY=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org>
+	header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1549283345662413.33144606050894;
+	Mon, 4 Feb 2019 04:29:05 -0800 (PST)
+Message-ID: <154928334457.29184.13479577995288933355@ebba9967afc0>
+In-Reply-To: <1549282241-23535-1-git-send-email-thuth@redhat.com>
+Reply-To: <qemu-devel@nongnu.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: thuth@redhat.com
+Cc: fam@euphon.net, kraxel@redhat.com, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Date: Mon, 4 Feb 2019 04:29:05 -0800 (PST)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v2] ui/sdl_keysym: Remove obsolete SDL1.2
- related code
+X-Received-From: 135.84.80.216
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] ui/sdl_keysym: Remove
+ obsolete SDL1.2 related code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,309 +57,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Feb 2019 12:11:07 -0000
+X-List-Received-Date: Mon, 04 Feb 2019 12:29:50 -0000
 
-sdl_keysym.h has only been included by sdl.c which has recently been
-removed recently with this commit:
-
-  0015ca5cbabe0b31d31610ddfaafd90a9e5911a4
-  ("ui: remove support for SDL1.2 in favour of SDL2")
-
-So we can drop this header file now completely, too.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- v2: The file is now removed completely.
-
- ui/sdl_keysym.h | 278 --------------------------------------------------------
- 1 file changed, 278 deletions(-)
- delete mode 100644 ui/sdl_keysym.h
-
-diff --git a/ui/sdl_keysym.h b/ui/sdl_keysym.h
-deleted file mode 100644
-index 599d9fc..0000000
---- a/ui/sdl_keysym.h
-+++ /dev/null
-@@ -1,278 +0,0 @@
--
--#include "keymaps.h"
--
--static const name2keysym_t name2keysym[]={
--/* ascii */
--    { "space",                0x020},
--    { "exclam",               0x021},
--    { "quotedbl",             0x022},
--    { "numbersign",           0x023},
--    { "dollar",               0x024},
--    { "percent",              0x025},
--    { "ampersand",            0x026},
--    { "apostrophe",           0x027},
--    { "parenleft",            0x028},
--    { "parenright",           0x029},
--    { "asterisk",             0x02a},
--    { "plus",                 0x02b},
--    { "comma",                0x02c},
--    { "minus",                0x02d},
--    { "period",               0x02e},
--    { "slash",                0x02f},
--    { "0",                    0x030},
--    { "1",                    0x031},
--    { "2",                    0x032},
--    { "3",                    0x033},
--    { "4",                    0x034},
--    { "5",                    0x035},
--    { "6",                    0x036},
--    { "7",                    0x037},
--    { "8",                    0x038},
--    { "9",                    0x039},
--    { "colon",                0x03a},
--    { "semicolon",            0x03b},
--    { "less",                 0x03c},
--    { "equal",                0x03d},
--    { "greater",              0x03e},
--    { "question",             0x03f},
--    { "at",                   0x040},
--    { "A",                    0x041},
--    { "B",                    0x042},
--    { "C",                    0x043},
--    { "D",                    0x044},
--    { "E",                    0x045},
--    { "F",                    0x046},
--    { "G",                    0x047},
--    { "H",                    0x048},
--    { "I",                    0x049},
--    { "J",                    0x04a},
--    { "K",                    0x04b},
--    { "L",                    0x04c},
--    { "M",                    0x04d},
--    { "N",                    0x04e},
--    { "O",                    0x04f},
--    { "P",                    0x050},
--    { "Q",                    0x051},
--    { "R",                    0x052},
--    { "S",                    0x053},
--    { "T",                    0x054},
--    { "U",                    0x055},
--    { "V",                    0x056},
--    { "W",                    0x057},
--    { "X",                    0x058},
--    { "Y",                    0x059},
--    { "Z",                    0x05a},
--    { "bracketleft",          0x05b},
--    { "backslash",            0x05c},
--    { "bracketright",         0x05d},
--    { "asciicircum",          0x05e},
--    { "underscore",           0x05f},
--    { "grave",                0x060},
--    { "a",                    0x061},
--    { "b",                    0x062},
--    { "c",                    0x063},
--    { "d",                    0x064},
--    { "e",                    0x065},
--    { "f",                    0x066},
--    { "g",                    0x067},
--    { "h",                    0x068},
--    { "i",                    0x069},
--    { "j",                    0x06a},
--    { "k",                    0x06b},
--    { "l",                    0x06c},
--    { "m",                    0x06d},
--    { "n",                    0x06e},
--    { "o",                    0x06f},
--    { "p",                    0x070},
--    { "q",                    0x071},
--    { "r",                    0x072},
--    { "s",                    0x073},
--    { "t",                    0x074},
--    { "u",                    0x075},
--    { "v",                    0x076},
--    { "w",                    0x077},
--    { "x",                    0x078},
--    { "y",                    0x079},
--    { "z",                    0x07a},
--    { "braceleft",            0x07b},
--    { "bar",                  0x07c},
--    { "braceright",           0x07d},
--    { "asciitilde",           0x07e},
--
--/* latin 1 extensions */
--{ "nobreakspace",         0x0a0},
--{ "exclamdown",           0x0a1},
--{ "cent",         	  0x0a2},
--{ "sterling",             0x0a3},
--{ "currency",             0x0a4},
--{ "yen",                  0x0a5},
--{ "brokenbar",            0x0a6},
--{ "section",              0x0a7},
--{ "diaeresis",            0x0a8},
--{ "copyright",            0x0a9},
--{ "ordfeminine",          0x0aa},
--{ "guillemotleft",        0x0ab},
--{ "notsign",              0x0ac},
--{ "hyphen",               0x0ad},
--{ "registered",           0x0ae},
--{ "macron",               0x0af},
--{ "degree",               0x0b0},
--{ "plusminus",            0x0b1},
--{ "twosuperior",          0x0b2},
--{ "threesuperior",        0x0b3},
--{ "acute",                0x0b4},
--{ "mu",                   0x0b5},
--{ "paragraph",            0x0b6},
--{ "periodcentered",       0x0b7},
--{ "cedilla",              0x0b8},
--{ "onesuperior",          0x0b9},
--{ "masculine",            0x0ba},
--{ "guillemotright",       0x0bb},
--{ "onequarter",           0x0bc},
--{ "onehalf",              0x0bd},
--{ "threequarters",        0x0be},
--{ "questiondown",         0x0bf},
--{ "Agrave",               0x0c0},
--{ "Aacute",               0x0c1},
--{ "Acircumflex",          0x0c2},
--{ "Atilde",               0x0c3},
--{ "Adiaeresis",           0x0c4},
--{ "Aring",                0x0c5},
--{ "AE",                   0x0c6},
--{ "Ccedilla",             0x0c7},
--{ "Egrave",               0x0c8},
--{ "Eacute",               0x0c9},
--{ "Ecircumflex",          0x0ca},
--{ "Ediaeresis",           0x0cb},
--{ "Igrave",               0x0cc},
--{ "Iacute",               0x0cd},
--{ "Icircumflex",          0x0ce},
--{ "Idiaeresis",           0x0cf},
--{ "ETH",                  0x0d0},
--{ "Eth",                  0x0d0},
--{ "Ntilde",               0x0d1},
--{ "Ograve",               0x0d2},
--{ "Oacute",               0x0d3},
--{ "Ocircumflex",          0x0d4},
--{ "Otilde",               0x0d5},
--{ "Odiaeresis",           0x0d6},
--{ "multiply",             0x0d7},
--{ "Ooblique",             0x0d8},
--{ "Oslash",               0x0d8},
--{ "Ugrave",               0x0d9},
--{ "Uacute",               0x0da},
--{ "Ucircumflex",          0x0db},
--{ "Udiaeresis",           0x0dc},
--{ "Yacute",               0x0dd},
--{ "THORN",                0x0de},
--{ "Thorn",                0x0de},
--{ "ssharp",               0x0df},
--{ "agrave",               0x0e0},
--{ "aacute",               0x0e1},
--{ "acircumflex",          0x0e2},
--{ "atilde",               0x0e3},
--{ "adiaeresis",           0x0e4},
--{ "aring",                0x0e5},
--{ "ae",                   0x0e6},
--{ "ccedilla",             0x0e7},
--{ "egrave",               0x0e8},
--{ "eacute",               0x0e9},
--{ "ecircumflex",          0x0ea},
--{ "ediaeresis",           0x0eb},
--{ "igrave",               0x0ec},
--{ "iacute",               0x0ed},
--{ "icircumflex",          0x0ee},
--{ "idiaeresis",           0x0ef},
--{ "eth",                  0x0f0},
--{ "ntilde",               0x0f1},
--{ "ograve",               0x0f2},
--{ "oacute",               0x0f3},
--{ "ocircumflex",          0x0f4},
--{ "otilde",               0x0f5},
--{ "odiaeresis",           0x0f6},
--{ "division",             0x0f7},
--{ "oslash",               0x0f8},
--{ "ooblique",             0x0f8},
--{ "ugrave",               0x0f9},
--{ "uacute",               0x0fa},
--{ "ucircumflex",          0x0fb},
--{ "udiaeresis",           0x0fc},
--{ "yacute",               0x0fd},
--{ "thorn",                0x0fe},
--{ "ydiaeresis",           0x0ff},
--#if SDL_MAJOR_VERSION == 1
--{"EuroSign", SDLK_EURO},
--
--    /* modifiers */
--{"Control_L", SDLK_LCTRL},
--{"Control_R", SDLK_RCTRL},
--{"Alt_L", SDLK_LALT},
--{"Alt_R", SDLK_RALT},
--{"Caps_Lock", SDLK_CAPSLOCK},
--{"Meta_L", SDLK_LMETA},
--{"Meta_R", SDLK_RMETA},
--{"Shift_L", SDLK_LSHIFT},
--{"Shift_R", SDLK_RSHIFT},
--{"Super_L", SDLK_LSUPER},
--{"Super_R", SDLK_RSUPER},
--
--    /* special keys */
--{"BackSpace", SDLK_BACKSPACE},
--{"Tab", SDLK_TAB},
--{"Return", SDLK_RETURN},
--{"Right", SDLK_RIGHT},
--{"Left", SDLK_LEFT},
--{"Up", SDLK_UP},
--{"Down", SDLK_DOWN},
--{"Page_Down", SDLK_PAGEDOWN},
--{"Page_Up", SDLK_PAGEUP},
--{"Insert", SDLK_INSERT},
--{"Delete", SDLK_DELETE},
--{"Home", SDLK_HOME},
--{"End", SDLK_END},
--{"Scroll_Lock", SDLK_SCROLLOCK},
--{"F1", SDLK_F1},
--{"F2", SDLK_F2},
--{"F3", SDLK_F3},
--{"F4", SDLK_F4},
--{"F5", SDLK_F5},
--{"F6", SDLK_F6},
--{"F7", SDLK_F7},
--{"F8", SDLK_F8},
--{"F9", SDLK_F9},
--{"F10", SDLK_F10},
--{"F11", SDLK_F11},
--{"F12", SDLK_F12},
--{"F13", SDLK_F13},
--{"F14", SDLK_F14},
--{"F15", SDLK_F15},
--{"Sys_Req", SDLK_SYSREQ},
--{"KP_0", SDLK_KP0},
--{"KP_1", SDLK_KP1},
--{"KP_2", SDLK_KP2},
--{"KP_3", SDLK_KP3},
--{"KP_4", SDLK_KP4},
--{"KP_5", SDLK_KP5},
--{"KP_6", SDLK_KP6},
--{"KP_7", SDLK_KP7},
--{"KP_8", SDLK_KP8},
--{"KP_9", SDLK_KP9},
--{"KP_Add", SDLK_KP_PLUS},
--{"KP_Decimal", SDLK_KP_PERIOD},
--{"KP_Divide", SDLK_KP_DIVIDE},
--{"KP_Enter", SDLK_KP_ENTER},
--{"KP_Equal", SDLK_KP_EQUALS},
--{"KP_Multiply", SDLK_KP_MULTIPLY},
--{"KP_Subtract", SDLK_KP_MINUS},
--{"help", SDLK_HELP},
--{"Menu", SDLK_MENU},
--{"Power", SDLK_POWER},
--{"Print", SDLK_PRINT},
--{"Mode_switch", SDLK_MODE},
--{"Multi_Key", SDLK_COMPOSE},
--{"Num_Lock", SDLK_NUMLOCK},
--{"Pause", SDLK_PAUSE},
--{"Escape", SDLK_ESCAPE},
--#endif
--{NULL, 0},
--};
--- 
-1.8.3.1
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8xNTQ5MjgyMjQxLTIzNTM1LTEt
+Z2l0LXNlbmQtZW1haWwtdGh1dGhAcmVkaGF0LmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWls
+ZWQgdGhlIGRvY2tlci1taW5nd0BmZWRvcmEgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRl
+c3RpbmcgY29tbWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2Vy
+IGluc3RhbGxlZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBU
+RVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKdGltZSBtYWtlIGRvY2tlci10ZXN0LW1p
+bmd3QGZlZG9yYSBTSE9XX0VOVj0xIEo9MTQKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCgpDb25m
+aWd1cmUgb3B0aW9uczoKLS1lbmFibGUtd2Vycm9yIC0tdGFyZ2V0LWxpc3Q9eDg2XzY0LXNvZnRt
+bXUsYWFyY2g2NC1zb2Z0bW11IC0tcHJlZml4PS90bXAvcWVtdS10ZXN0L2luc3RhbGwgLS1weXRo
+b249L3Vzci9iaW4vcHl0aG9uMyAtLWNyb3NzLXByZWZpeD14ODZfNjQtdzY0LW1pbmd3MzItIC0t
+ZW5hYmxlLXRyYWNlLWJhY2tlbmRzPXNpbXBsZSAtLWVuYWJsZS1nbnV0bHMgLS1lbmFibGUtbmV0
+dGxlIC0tZW5hYmxlLWN1cmwgLS1lbmFibGUtdm5jIC0tZW5hYmxlLWJ6aXAyIC0tZW5hYmxlLWd1
+ZXN0LWFnZW50IC0td2l0aC1zZGxhYmk9Mi4wCkVSUk9SOiB1bmtub3duIG9wdGlvbiAtLXdpdGgt
+c2RsYWJpPTIuMApUcnkgJy90bXAvcWVtdS10ZXN0L3NyYy9jb25maWd1cmUgLS1oZWxwJyBmb3Ig
+bW9yZSBpbmZvcm1hdGlvbgojIFFFTVUgY29uZmlndXJlIGxvZyBNb24gRmViICA0IDEyOjI4OjU0
+IFVUQyAyMDE5CiMgQ29uZmlndXJlZCB3aXRoOiAnL3RtcC9xZW11LXRlc3Qvc3JjL2NvbmZpZ3Vy
+ZScgJy0tZW5hYmxlLXdlcnJvcicgJy0tdGFyZ2V0LWxpc3Q9eDg2XzY0LXNvZnRtbXUsYWFyY2g2
+NC1zb2Z0bW11JyAnLS1wcmVmaXg9L3RtcC9xZW11LXRlc3QvaW5zdGFsbCcgJy0tcHl0aG9uPS91
+c3IvYmluL3B5dGhvbjMnICctLWNyb3NzLXByZWZpeD14ODZfNjQtdzY0LW1pbmd3MzItJyAnLS1l
+bmFibGUtdHJhY2UtYmFja2VuZHM9c2ltcGxlJyAnLS1lbmFibGUtZ251dGxzJyAnLS1lbmFibGUt
+bmV0dGxlJyAnLS1lbmFibGUtY3VybCcgJy0tZW5hYmxlLXZuYycgJy0tZW5hYmxlLWJ6aXAyJyAn
+LS1lbmFibGUtZ3Vlc3QtYWdlbnQnICctLXdpdGgtc2RsYWJpPTIuMCcKLS0tCmZ1bmNzOiBkb19j
+b21waWxlciBkb19jYyBjb21waWxlX29iamVjdCBjaGVja19kZWZpbmUgbWFpbgpsaW5lczogOTIg
+MTIyIDYxNyA2MzQgMAp4ODZfNjQtdzY0LW1pbmd3MzItZ2NjIC1EX0dOVV9TT1VSQ0UgLURfRklM
+RV9PRkZTRVRfQklUUz02NCAtRF9MQVJHRUZJTEVfU09VUkNFIC1Xc3RyaWN0LXByb3RvdHlwZXMg
+LVdyZWR1bmRhbnQtZGVjbHMgLVdhbGwgLVd1bmRlZiAtV3dyaXRlLXN0cmluZ3MgLVdtaXNzaW5n
+LXByb3RvdHlwZXMgLWZuby1zdHJpY3QtYWxpYXNpbmcgLWZuby1jb21tb24gLWZ3cmFwdiAtc3Rk
+PWdudTk5IC1jIC1vIGNvbmZpZy10ZW1wL3FlbXUtY29uZi5vIGNvbmZpZy10ZW1wL3FlbXUtY29u
+Zi5jCmNvbmZpZy10ZW1wL3FlbXUtY29uZi5jOjI6MjogZXJyb3I6ICNlcnJvciBfX2xpbnV4X18g
+bm90IGRlZmluZWQKICNlcnJvciBfX2xpbnV4X18gbm90IGRlZmluZWQKICBefn5+fgoKLS0tCmZ1
+bmNzOiBkb19jb21waWxlciBkb19jYyBjb21waWxlX29iamVjdCBjaGVja19kZWZpbmUgbWFpbgps
+aW5lczogOTIgMTIyIDYxNyA2ODYgMAp4ODZfNjQtdzY0LW1pbmd3MzItZ2NjIC1EX0dOVV9TT1VS
+Q0UgLURfRklMRV9PRkZTRVRfQklUUz02NCAtRF9MQVJHRUZJTEVfU09VUkNFIC1Xc3RyaWN0LXBy
+b3RvdHlwZXMgLVdyZWR1bmRhbnQtZGVjbHMgLVdhbGwgLVd1bmRlZiAtV3dyaXRlLXN0cmluZ3Mg
+LVdtaXNzaW5nLXByb3RvdHlwZXMgLWZuby1zdHJpY3QtYWxpYXNpbmcgLWZuby1jb21tb24gLWZ3
+cmFwdiAtc3RkPWdudTk5IC1jIC1vIGNvbmZpZy10ZW1wL3FlbXUtY29uZi5vIGNvbmZpZy10ZW1w
+L3FlbXUtY29uZi5jCmNvbmZpZy10ZW1wL3FlbXUtY29uZi5jOjI6MjogZXJyb3I6ICNlcnJvciBf
+X2kzODZfXyBub3QgZGVmaW5lZAogI2Vycm9yIF9faTM4Nl9fIG5vdCBkZWZpbmVkCiAgXn5+fn4K
+Ci0tLQpmdW5jczogZG9fY29tcGlsZXIgZG9fY2MgY29tcGlsZV9vYmplY3QgY2hlY2tfZGVmaW5l
+IG1haW4KbGluZXM6IDkyIDEyMiA2MTcgNjg5IDAKeDg2XzY0LXc2NC1taW5ndzMyLWdjYyAtRF9H
+TlVfU09VUkNFIC1EX0ZJTEVfT0ZGU0VUX0JJVFM9NjQgLURfTEFSR0VGSUxFX1NPVVJDRSAtV3N0
+cmljdC1wcm90b3R5cGVzIC1XcmVkdW5kYW50LWRlY2xzIC1XYWxsIC1XdW5kZWYgLVd3cml0ZS1z
+dHJpbmdzIC1XbWlzc2luZy1wcm90b3R5cGVzIC1mbm8tc3RyaWN0LWFsaWFzaW5nIC1mbm8tY29t
+bW9uIC1md3JhcHYgLXN0ZD1nbnU5OSAtYyAtbyBjb25maWctdGVtcC9xZW11LWNvbmYubyBjb25m
+aWctdGVtcC9xZW11LWNvbmYuYwpjb25maWctdGVtcC9xZW11LWNvbmYuYzoyOjI6IGVycm9yOiAj
+ZXJyb3IgX19JTFAzMl9fIG5vdCBkZWZpbmVkCiAjZXJyb3IgX19JTFAzMl9fIG5vdCBkZWZpbmVk
+CiAgXn5+fn4KCi0tLQpsaW5lczogOTIgMTI4IDkyMCAwCng4Nl82NC13NjQtbWluZ3czMi1nY2Mg
+LW10aHJlYWRzIC1EX0dOVV9TT1VSQ0UgLURfRklMRV9PRkZTRVRfQklUUz02NCAtRF9MQVJHRUZJ
+TEVfU09VUkNFIC1Xc3RyaWN0LXByb3RvdHlwZXMgLVdyZWR1bmRhbnQtZGVjbHMgLVdhbGwgLVd1
+bmRlZiAtV3dyaXRlLXN0cmluZ3MgLVdtaXNzaW5nLXByb3RvdHlwZXMgLWZuby1zdHJpY3QtYWxp
+YXNpbmcgLWZuby1jb21tb24gLWZ3cmFwdiAtc3RkPWdudTk5IC1vIGNvbmZpZy10ZW1wL3FlbXUt
+Y29uZi5leGUgY29uZmlnLXRlbXAvcWVtdS1jb25mLmMgLWcgLWxpYmVydHkKL3Vzci9saWIvZ2Nj
+L3g4Nl82NC13NjQtbWluZ3czMi84LjIuMC8uLi8uLi8uLi8uLi94ODZfNjQtdzY0LW1pbmd3MzIv
+YmluL2xkOiBjYW5ub3QgZmluZCAtbGliZXJ0eQpjb2xsZWN0MjogZXJyb3I6IGxkIHJldHVybmVk
+IDEgZXhpdCBzdGF0dXMKRmFpbGVkIHRvIHJ1biAnY29uZmlndXJlJwpUcmFjZWJhY2sgKG1vc3Qg
+cmVjZW50IGNhbGwgbGFzdCk6CiAgRmlsZSAiLi90ZXN0cy9kb2NrZXIvZG9ja2VyLnB5IiwgbGlu
+ZSA1NjMsIGluIDxtb2R1bGU+CgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8v
+cGF0Y2hldy5vcmcvbG9ncy8xNTQ5MjgyMjQxLTIzNTM1LTEtZ2l0LXNlbmQtZW1haWwtdGh1dGhA
+cmVkaGF0LmNvbS90ZXN0aW5nLmRvY2tlci1taW5nd0BmZWRvcmEvP3R5cGU9bWVzc2FnZS4KLS0t
+CkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHA6Ly9wYXRjaGV3
+Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0
+LmNvbQ==
 
 
