@@ -1,42 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqnEn-0001kF-7U
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 18:01:13 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44779)
+	id 1gqnVv-0000h7-OM
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 18:18:55 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49912)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1gqnEj-0001iI-Ry
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:01:10 -0500
+	(envelope-from <philmd@redhat.com>) id 1gqnVt-0000dY-MA
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:18:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1gqnEi-0006hM-Rq
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:01:09 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:41582)
+	(envelope-from <philmd@redhat.com>) id 1gqnVs-0000W5-VL
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:18:53 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:54110)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1gqn9Z-0002cC-JP; Mon, 04 Feb 2019 17:55:49 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	(Exim 4.71) (envelope-from <philmd@redhat.com>)
+	id 1gqnVf-000071-LX; Mon, 04 Feb 2019 18:18:40 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EFFA059448;
-	Mon,  4 Feb 2019 22:55:45 +0000 (UTC)
-Received: from blue.redhat.com (ovpn-116-162.phx2.redhat.com [10.3.116.162])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 99A44608C5;
-	Mon,  4 Feb 2019 22:55:45 +0000 (UTC)
-From: Eric Blake <eblake@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org,
-	qemu-trivial@nongnu.org
-Date: Mon,  4 Feb 2019 16:55:42 -0600
-Message-Id: <20190204225542.5597-1-eblake@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 64C2E14AAB;
+	Mon,  4 Feb 2019 23:18:36 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-98.brq.redhat.com [10.40.204.98])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1D79017989;
+	Mon,  4 Feb 2019 23:18:29 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <rth@twiddle.net>, Andrew Jeffery <andrew@aj.id.au>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Jan Kiszka <jan.kiszka@web.de>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+	Michael Walle <michael@walle.cc>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org,
+	Peter Chubb <peter.chubb@nicta.com.au>,
+	Beniamino Galvani <b.galvani@gmail.com>,
+	BALATON Zoltan <balaton@eik.bme.hu>, Magnus Damm <magnus.damm@gmail.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+	Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, qemu-arm@nongnu.org,
+	Jason Wang <jasowang@redhat.com>, Rob Herring <robh@kernel.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Thomas Huth <thuth@redhat.com>
+Date: Tue,  5 Feb 2019 00:18:05 +0100
+Message-Id: <20190204231815.29661-2-philmd@redhat.com>
+In-Reply-To: <20190204231815.29661-1-philmd@redhat.com>
+References: <20190204231815.29661-1-philmd@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Mon, 04 Feb 2019 22:55:46 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.25]);
+	Mon, 04 Feb 2019 23:18:36 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v2] checkpatch: Flag suspicious attribution
- lines
+Subject: [Qemu-trivial] [PATCH v2 01/11] hw/arm/aspeed: Use
+ TYPE_TMP105/TYPE_PCA9552 instead of hardcoded string
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,62 +67,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Feb 2019 23:01:10 -0000
+X-List-Received-Date: Mon, 04 Feb 2019 23:18:54 -0000
 
-Flag commit attribution tags that are unusual (often because they
-were a typo), but only as a warning (because sometimes a humorous
-or otherwise useful tag is intentionally supplied).
-
-This picks the 6-most popular tags, each with 700 or more uses (well,
-S-o-b was already checked for case-sensitivity and typos, leaving
-only 5 new tags being checked), as determined by:
-$ git log | sed -n 's/^ *\([A-Za-z-]*-by:\).*/\1/p' | \
-  sort | uniq -c | sort -k1,1n | tail
-
-Most of the rejected lines were obvious typos (among others, we've
-had 4 cases of someone being burnt, based on Singed-off-by; and 2
-cases of list-reading via an e-reader, based on eviewed-by; there
-are also lines forgetting a space after the ':') or otherwise
-tongue-in-check (3 Approximately-suggested-by). A few lines not
-whitelisted here may be legitimate, but as they are orders of
-magnitude rarer, it is therefore not worth worrying about
-(7 Requested-by, 3 Co-authored-by, 1 Inspired-by, etc.).
-
-Signed-off-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
+ hw/arm/aspeed.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
-v2: fix regex
-
- scripts/checkpatch.pl | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index 88682cb0a9f..4962f74eec1 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -1456,7 +1456,7 @@ sub process {
- 		    ERROR("Author email address is mangled by the mailing list\n" . $h=
-erecurr);
- 		}
-
--#check the patch for a signoff:
-+#check the patch for a signoff, and that other attribution lines are typ=
-ical:
- 		if ($line =3D~ /^\s*signed-off-by:/i) {
- 			# This is a signoff, if ugly, so do not double report.
- 			$signoff++;
-@@ -1470,6 +1470,10 @@ sub process {
- 				ERROR("space required after Signed-off-by:\n" .
- 					$herecurr);
- 			}
-+		} elsif($line =3D~ /^\s*([A-Za-z-]*)-by:/ &&
-+			($1 !~ /(Suggest|Report|Test|Ack|Review)ed/ ||
-+			 $line !~ /^\s*[a-z-]*-by:\s/i)) {
-+		    WARN("suspicious attribution tag:\n" . $herecurr);
- 		}
-
- # Check if MAINTAINERS is being updated.  If so, there's probably no nee=
-d to
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 5158985482..e98ede5a86 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -19,6 +19,8 @@
+ #include "hw/arm/aspeed_soc.h"
+ #include "hw/boards.h"
+ #include "hw/i2c/smbus.h"
++#include "hw/misc/pca9552.h"
++#include "hw/misc/tmp105.h"
+ #include "qemu/log.h"
+ #include "sysemu/block-backend.h"
+ #include "hw/loader.h"
+@@ -267,7 +269,8 @@ static void ast2500_evb_i2c_init(AspeedBoardState *bm=
+c)
+                           eeprom_buf);
+=20
+     /* The AST2500 EVB expects a LM75 but a TMP105 is compatible */
+-    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 7), "tmp105",=
+ 0x4d);
++    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 7),
++                     TYPE_TMP105, 0x4d);
+=20
+     /* The AST2500 EVB does not have an RTC. Let's pretend that one is
+      * plugged on the I2C bus header */
+@@ -288,13 +291,15 @@ static void witherspoon_bmc_i2c_init(AspeedBoardSta=
+te *bmc)
+     AspeedSoCState *soc =3D &bmc->soc;
+     uint8_t *eeprom_buf =3D g_malloc0(8 * 1024);
+=20
+-    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3), "pca9552"=
+, 0x60);
++    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3), TYPE_PCA9=
+552,
++                     0x60);
+=20
+     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "tmp423",=
+ 0x4c);
+     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 5), "tmp423",=
+ 0x4c);
+=20
+     /* The Witherspoon expects a TMP275 but a TMP105 is compatible */
+-    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 9), "tmp105",=
+ 0x4a);
++    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 9), TYPE_TMP1=
+05,
++                     0x4a);
+=20
+     /* The witherspoon board expects Epson RX8900 I2C RTC but a ds1338 i=
+s
+      * good enough */
+@@ -302,7 +307,7 @@ static void witherspoon_bmc_i2c_init(AspeedBoardState=
+ *bmc)
+=20
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), 0x5=
+1,
+                           eeprom_buf);
+-    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "pca9552=
+",
++    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), TYPE_PCA=
+9552,
+                      0x60);
+ }
+=20
 --=20
 2.20.1
 
