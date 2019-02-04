@@ -1,60 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqnY0-0002bz-8S
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 18:21:04 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50996)
+	id 1gqngE-0001cr-QC
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 18:29:34 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53756)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gqnXx-0002Zk-7C
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:21:02 -0500
+	(envelope-from <philmd@redhat.com>) id 1gqngD-0001bL-7E
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:29:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gqnXw-0002KI-8B
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:21:01 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:56278)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1gqnXh-0001rT-Jp; Mon, 04 Feb 2019 18:20:45 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F081AB218;
-	Mon,  4 Feb 2019 23:20:26 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-98.brq.redhat.com [10.40.204.98])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 483FF63BA3;
-	Mon,  4 Feb 2019 23:20:19 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Richard Henderson <rth@twiddle.net>, Andrew Jeffery <andrew@aj.id.au>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Jan Kiszka <jan.kiszka@web.de>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Michael Walle <michael@walle.cc>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org,
-	Peter Chubb <peter.chubb@nicta.com.au>,
-	Beniamino Galvani <b.galvani@gmail.com>,
-	BALATON Zoltan <balaton@eik.bme.hu>, Magnus Damm <magnus.damm@gmail.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
-	Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, qemu-arm@nongnu.org,
-	Jason Wang <jasowang@redhat.com>, Rob Herring <robh@kernel.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Tue,  5 Feb 2019 00:18:15 +0100
-Message-Id: <20190204231815.29661-12-philmd@redhat.com>
-In-Reply-To: <20190204231815.29661-1-philmd@redhat.com>
-References: <20190204231815.29661-1-philmd@redhat.com>
+	(envelope-from <philmd@redhat.com>) id 1gqngB-0008PM-3z
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:29:33 -0500
+Received: from mail-wm1-f68.google.com ([209.85.128.68]:40580)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gqng6-0008GA-Ue
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:29:27 -0500
+Received: by mail-wm1-f68.google.com with SMTP id f188so1753773wmf.5
+	for <qemu-trivial@nongnu.org>; Mon, 04 Feb 2019 15:29:17 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=8aDKyKimHpXeL/8vwsDIEdUtWDO3BIsAbTTSDlVL0pc=;
+	b=AkqDRzmi0c3Pciv2tPa7gT8CF7HL20OVMQtgtvE3K2PBFkKXpcBusVC50WjEXbIhJj
+	0JZwFb1EbRSbWLGN3KAviSveQD5IJiRK0XK2G5eyTdcrWDRCeIkrkyoDwq2Ha7Dcgupg
+	mriThiq9fd47/jgViFWuuKG/LnxgpOUZtiKV5SZXVbwdNcwj2WM1dt+qLFbgyvcxWTaf
+	gzkczuGLzW9Qp/ogaDwz6e0GH7pkg8bkPaN+II14xJD8LwAgAFz65N3oD2D4QqJLnRY9
+	7WDpT4dHtKp5GmMFI0eT2ueb/56xahQownuvc3/Y357YM/DE4ZrROO3O+KboS8m2/KDZ
+	7lJw==
+X-Gm-Message-State: AHQUAuayqv1wDcKOVWnA0a/MzTAujGabeIsSfhC24j+vG/Si5ewB5xcM
+	bodoiVJV4jBpgLxYR/NLLbAtKA==
+X-Google-Smtp-Source: AHgI3IaFCQkh39uPHQjKXNzlfhPEo+GJp7k737bPA9F5vkYySIc0AKQ6WMKmHPgImz7TB4CX/NqLoQ==
+X-Received: by 2002:a1c:de57:: with SMTP id v84mr1231723wmg.55.1549322956590; 
+	Mon, 04 Feb 2019 15:29:16 -0800 (PST)
+Received: from [192.168.1.103] (10.red-83-35-153.dynamicip.rima-tde.net.
+	[83.35.153.10]) by smtp.gmail.com with ESMTPSA id
+	i186sm21028140wmd.19.2019.02.04.15.29.15
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Mon, 04 Feb 2019 15:29:15 -0800 (PST)
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org
+References: <20190204225542.5597-1-eblake@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <9a93a2a0-f352-1fb6-eb27-49f607cd0b97@redhat.com>
+Date: Tue, 5 Feb 2019 00:29:14 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Mon, 04 Feb 2019 23:20:27 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20190204225542.5597-1-eblake@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v2 11/11] hw/devices: Move SMSC 91C111
- declaration into a new header
+	[fuzzy]
+X-Received-From: 209.85.128.68
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] checkpatch: Flag
+ suspicious attribution lines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,150 +67,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Feb 2019 23:21:02 -0000
+X-List-Received-Date: Mon, 04 Feb 2019 23:29:34 -0000
 
-This commit finally deletes "hw/devices.h".
+On 2/4/19 11:55 PM, Eric Blake wrote:
+> Flag commit attribution tags that are unusual (often because they
+> were a typo), but only as a warning (because sometimes a humorous
+> or otherwise useful tag is intentionally supplied).
+> 
+> This picks the 6-most popular tags, each with 700 or more uses (well,
+> S-o-b was already checked for case-sensitivity and typos, leaving
+> only 5 new tags being checked), as determined by:
+> $ git log | sed -n 's/^ *\([A-Za-z-]*-by:\).*/\1/p' | \
+>   sort | uniq -c | sort -k1,1n | tail
+> 
+> Most of the rejected lines were obvious typos (among others, we've
+> had 4 cases of someone being burnt, based on Singed-off-by; and 2
+> cases of list-reading via an e-reader, based on eviewed-by; there
+> are also lines forgetting a space after the ':') or otherwise
+> tongue-in-check (3 Approximately-suggested-by). A few lines not
+> whitelisted here may be legitimate, but as they are orders of
+> magnitude rarer, it is therefore not worth worrying about
+> (7 Requested-by, 3 Co-authored-by, 1 Inspired-by, etc.).
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/arm/gumstix.c           |  2 +-
- hw/arm/integratorcp.c      |  2 +-
- hw/arm/mainstone.c         |  2 +-
- hw/arm/realview.c          |  2 +-
- hw/arm/versatilepb.c       |  2 +-
- hw/net/smc91c111.c         |  2 +-
- include/hw/devices.h       | 11 -----------
- include/hw/net/smc91c111.h | 19 +++++++++++++++++++
- 8 files changed, 25 insertions(+), 17 deletions(-)
- delete mode 100644 include/hw/devices.h
- create mode 100644 include/hw/net/smc91c111.h
+'Inspired-by' is kinda Zen :) And is from Peter!
 
-diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
-index 56cb763c4e..98c3e6d41c 100644
---- a/hw/arm/gumstix.c
-+++ b/hw/arm/gumstix.c
-@@ -40,7 +40,7 @@
- #include "hw/arm/pxa.h"
- #include "net/net.h"
- #include "hw/block/flash.h"
--#include "hw/devices.h"
-+#include "hw/net/smc91c111.h"
- #include "hw/boards.h"
- #include "exec/address-spaces.h"
- #include "sysemu/qtest.h"
-diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
-index 4eceebb9ea..0b6f24465e 100644
---- a/hw/arm/integratorcp.c
-+++ b/hw/arm/integratorcp.c
-@@ -12,10 +12,10 @@
- #include "qemu-common.h"
- #include "cpu.h"
- #include "hw/sysbus.h"
--#include "hw/devices.h"
- #include "hw/boards.h"
- #include "hw/arm/arm.h"
- #include "hw/misc/arm_integrator_debug.h"
-+#include "hw/net/smc91c111.h"
- #include "net/net.h"
- #include "exec/address-spaces.h"
- #include "sysemu/sysemu.h"
-diff --git a/hw/arm/mainstone.c b/hw/arm/mainstone.c
-index 0beb5c426b..fbe8d5cbd4 100644
---- a/hw/arm/mainstone.c
-+++ b/hw/arm/mainstone.c
-@@ -18,7 +18,7 @@
- #include "hw/arm/pxa.h"
- #include "hw/arm/arm.h"
- #include "net/net.h"
--#include "hw/devices.h"
-+#include "hw/net/smc91c111.h"
- #include "hw/boards.h"
- #include "hw/block/flash.h"
- #include "hw/sysbus.h"
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index e9983c8763..05a244df25 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -14,8 +14,8 @@
- #include "hw/sysbus.h"
- #include "hw/arm/arm.h"
- #include "hw/arm/primecell.h"
--#include "hw/devices.h"
- #include "hw/net/lan9118.h"
-+#include "hw/net/smc91c111.h"
- #include "hw/pci/pci.h"
- #include "net/net.h"
- #include "sysemu/sysemu.h"
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index 22b09a1e61..70b5fda737 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -13,7 +13,7 @@
- #include "cpu.h"
- #include "hw/sysbus.h"
- #include "hw/arm/arm.h"
--#include "hw/devices.h"
-+#include "hw/net/smc91c111.h"
- #include "net/net.h"
- #include "sysemu/sysemu.h"
- #include "hw/pci/pci.h"
-diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
-index 99da2d9297..d19ea0750d 100644
---- a/hw/net/smc91c111.c
-+++ b/hw/net/smc91c111.c
-@@ -10,7 +10,7 @@
- #include "qemu/osdep.h"
- #include "hw/sysbus.h"
- #include "net/net.h"
--#include "hw/devices.h"
-+#include "hw/net/smc91c111.h"
- #include "qemu/log.h"
- /* For crc32 */
- #include <zlib.h>
-diff --git a/include/hw/devices.h b/include/hw/devices.h
-deleted file mode 100644
-index ebc45c8799..0000000000
---- a/include/hw/devices.h
-+++ /dev/null
-@@ -1,11 +0,0 @@
--#ifndef QEMU_DEVICES_H
--#define QEMU_DEVICES_H
--
--/* Devices that have nowhere better to go.  */
--
--#include "hw/hw.h"
--
--/* smc91c111.c */
--void smc91c111_init(NICInfo *, uint32_t, qemu_irq);
--
--#endif
-diff --git a/include/hw/net/smc91c111.h b/include/hw/net/smc91c111.h
-new file mode 100644
-index 0000000000..a66ba4112f
---- /dev/null
-+++ b/include/hw/net/smc91c111.h
-@@ -0,0 +1,19 @@
-+/*
-+ * SMSC 91C111 Ethernet interface emulation
-+ *
-+ * Copyright (c) 2005 CodeSourcery, LLC.
-+ * Written by Paul Brook
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef HW_NET_SMC91C111_H
-+#define HW_NET_SMC91C111_H
-+
-+#include "hw/irq.h"
-+#include "net/net.h"
-+
-+void smc91c111_init(NICInfo *, uint32_t, qemu_irq);
-+
-+#endif
---=20
-2.20.1
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
+> 
+> v2: fix regex
+> 
+>  scripts/checkpatch.pl | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
+> 
+> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+> index 88682cb0a9f..4962f74eec1 100755
+> --- a/scripts/checkpatch.pl
+> +++ b/scripts/checkpatch.pl
+> @@ -1456,7 +1456,7 @@ sub process {
+>  		    ERROR("Author email address is mangled by the mailing list\n" . $herecurr);
+>  		}
+> 
+> -#check the patch for a signoff:
+> +#check the patch for a signoff, and that other attribution lines are typical:
+>  		if ($line =~ /^\s*signed-off-by:/i) {
+>  			# This is a signoff, if ugly, so do not double report.
+>  			$signoff++;
+> @@ -1470,6 +1470,10 @@ sub process {
+>  				ERROR("space required after Signed-off-by:\n" .
+>  					$herecurr);
+>  			}
+> +		} elsif($line =~ /^\s*([A-Za-z-]*)-by:/ &&
 
+I guess we don't mind about angry typewriters who Ack-BY ;)
+
+> +			($1 !~ /(Suggest|Report|Test|Ack|Review)ed/ ||
+> +			 $line !~ /^\s*[a-z-]*-by:\s/i)) {
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+> +		    WARN("suspicious attribution tag:\n" . $herecurr);
+>  		}
+> 
+>  # Check if MAINTAINERS is being updated.  If so, there's probably no need to
+> 
 
