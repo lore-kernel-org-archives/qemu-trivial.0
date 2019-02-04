@@ -1,68 +1,93 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqbui-0004id-Ls
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 05:55:44 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44296)
+	id 1gqc9i-00034M-NZ
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 06:11:14 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48849)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gqbud-0004gZ-Bd
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 05:55:43 -0500
+	(envelope-from <thuth@redhat.com>) id 1gqc9g-00033H-Kj
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 06:11:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gqbub-0000ZQ-Qz
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 05:55:39 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:43301)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1gqbub-0000Wg-Ag
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 05:55:37 -0500
-Received: by mail-wr1-x432.google.com with SMTP id r2so2151020wrv.10
-	for <qemu-trivial@nongnu.org>; Mon, 04 Feb 2019 02:55:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=P/1qe5jewFte44yripUBNfvoFR9KJAGEpFuCUBYrKDg=;
-	b=MoGHF6oLN1S2tW6xYzzdBGx5v+m1kpvptG0B/2a6acuFtrSeMgQhWaDL+u1vdezimk
-	Q5Hh4E+j+SIUNReIW4/25vXer5kDL2F5abA6tZCrDGol/p6e6jOwrZ01nvmSe+OFIf43
-	MKZ7ZwiBp0raBJv+4BBkPAC8Fwxw+3+I8n3gg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=P/1qe5jewFte44yripUBNfvoFR9KJAGEpFuCUBYrKDg=;
-	b=qGO7x3bH7iEzAp9J2jCCQVohTJ6Wk+b8K6JOP1UMKok+AIgbLgmAwt0wgJXVC/TtnG
-	2Yns4eMVHVJmZXyIqndAJUYpP6EKEoL77kHqEOQ/ymBGWcdcwqzmZ/sT8I1Y1z9h7WVw
-	XiLkLFFrbnnrfYqtfcqdlKC2ThYwpjjw4be40yipKu9YHWUIx25Ba2HHncR1lsYa0q31
-	vTKZL/06NadBIQxD9we5FXjxYhFIWf88+yYdtlSNGMOq3VWZFvpYE7hSXaRUlzBWW0Zr
-	Pnh25Lve2C0mjWxtwNoQC7r+yeagQjEg+jLcH+E90CJWJgCe36du8TYRKkGf0+FFO36J
-	8CCw==
-X-Gm-Message-State: AHQUAuYkShsBSbc7xlKG4J7ckr+3aU2HxAcUlRwqCK/uMTXFY/xrCQ8z
-	Ti3dyIgZeQ5kk3XCCCcXQEGmcQ==
-X-Google-Smtp-Source: AHgI3Iah80uTw+AEZBHOsGpAIJNMLMXiWXU0oaUlWlErOGvIqIPl3iGViL1q9io4fPd+9XLKdk2oew==
-X-Received: by 2002:adf:80a9:: with SMTP id 38mr33193781wrl.137.1549277733203; 
-	Mon, 04 Feb 2019 02:55:33 -0800 (PST)
-Received: from cloudburst.twiddle.net
-	(host81-133-38-158.in-addr.btopenworld.com. [81.133.38.158])
-	by smtp.gmail.com with ESMTPSA id t5sm8102382wmg.43.2019.02.04.02.55.31
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Mon, 04 Feb 2019 02:55:32 -0800 (PST)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Anthony Green <green@moxielogic.com>
-References: <1549266858-5043-1-git-send-email-thuth@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
+	(envelope-from <thuth@redhat.com>) id 1gqc9e-0004yu-Ri
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 06:11:12 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:41100)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gqc4h-0007kz-Oq; Mon, 04 Feb 2019 06:06:03 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id D65363C2CDA;
+	Mon,  4 Feb 2019 11:06:02 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-117-5.ams2.redhat.com [10.36.117.5])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9FA9F60564;
+	Mon,  4 Feb 2019 11:06:01 +0000 (UTC)
+To: =?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+References: <1549268045-11861-1-git-send-email-thuth@redhat.com>
+	<20190204102213.GF1905@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
-Message-ID: <61f149b0-0b67-c692-df9e-5f4c9a5e561c@linaro.org>
-Date: Mon, 4 Feb 2019 10:55:30 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <e9068f3c-d4a6-b3a7-d34a-c036e9be86e4@redhat.com>
+Date: Mon, 4 Feb 2019 12:06:00 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <1549266858-5043-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <20190204102213.GF1905@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::432
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target/moxie: Fix LGPL
- information in the file headers
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Mon, 04 Feb 2019 11:06:03 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] ui/sdl_keysym: Remove obsolete SDL1.2
+ related code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,27 +99,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Feb 2019 10:55:44 -0000
+X-List-Received-Date: Mon, 04 Feb 2019 11:11:13 -0000
 
-On 2/4/19 7:54 AM, Thomas Huth wrote:
-> It's either "GNU *Library* General Public License version 2" or "GNU
-> Lesser General Public License version *2.1*", but there was no "version
-> 2.0" of the "Lesser" license. So assume that version 2.1 is meant here.
-> Also the files mentioned the GPL instead of the LGPL after declaring
-> that the files are licensed under the LGPL, so change these spots to
-> use LGPL, too.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  target/moxie/cpu.c       | 2 +-
->  target/moxie/cpu.h       | 4 ++--
->  target/moxie/helper.c    | 4 ++--
->  target/moxie/mmu.c       | 4 ++--
->  target/moxie/translate.c | 4 ++--
->  5 files changed, 9 insertions(+), 9 deletions(-)
+On 2019-02-04 11:22, Daniel P. Berrang=C3=A9 wrote:
+> On Mon, Feb 04, 2019 at 09:14:05AM +0100, Thomas Huth wrote:
+>> Support for SDL1.2 has been removed recently in commit:
+>>
+>>   0015ca5cbabe0b31d31610ddfaafd90a9e5911a4
+>>   ("ui: remove support for SDL1.2 in favour of SDL2")
+>>
+>> So we can drop the SDL1.2-specific code in sdl_keysym.h now, too.
+>>
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>>  ui/sdl_keysym.h | 73 ------------------------------------------------=
+---------
+>>  1 file changed, 73 deletions(-)
+>>
+>> diff --git a/ui/sdl_keysym.h b/ui/sdl_keysym.h
+>> index 599d9fc..6994180 100644
+>> --- a/ui/sdl_keysym.h
+>> +++ b/ui/sdl_keysym.h
+>> @@ -200,79 +200,6 @@ static const name2keysym_t name2keysym[]=3D{
+>>  { "yacute",               0x0fd},
+>>  { "thorn",                0x0fe},
+>>  { "ydiaeresis",           0x0ff},
+>> -#if SDL_MAJOR_VERSION =3D=3D 1
+>=20
+> Don't why this was ever here, because this file is never used by SDL2.
+> SDL1 passed window system native scan codes, while SDL2 always passes
+> USB HID scancodes.
+>=20
+> IOW, you can delete this whole file.
 
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Right, seems like this file is not needed anymore. I'll send a v2...
 
-
-r~
+ Thanks,
+  Thomas
 
