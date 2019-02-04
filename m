@@ -1,68 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqXS4-0002tq-Sd
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 01:09:52 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52516)
+	id 1gqZ5P-0003XQ-IZ
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 02:54:35 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48518)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1gqXS2-0002sO-Nq
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 01:09:51 -0500
+	(envelope-from <thuth@redhat.com>) id 1gqZ5M-0003Vj-Ha
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 02:54:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1gqXS1-0006jq-Sm
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 01:09:50 -0500
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a]:41244)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1gqXRz-0006ZI-J3; Mon, 04 Feb 2019 01:09:47 -0500
-Received: by mail-pf1-x42a.google.com with SMTP id b7so6267109pfi.8;
-	Sun, 03 Feb 2019 22:09:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=po6D+ajiTz9qeqzs86Tz1PZKMa0pTcwN6A4PxCPSp3k=;
-	b=o3zOzYRJpt0eRwJBgTHB8SMYzms5dqT83zvLJqYgcN7/4VdLwD/F4NdQlwouzcN5to
-	5YzPLQLr20PFrmAmP2Vj0XlN3SkSARjpg/eIpFD4g24R2UMbpFjNZQI5ruuSK706d9Gc
-	sz4KK1fu9wu3HQAhaeEet8mudyyv027E9o0TgdFJlzwS+GNRY6HWj+NSou7o4hkpIca7
-	BG4OyhjtCnQPbzw2RpZtuB8rTfuJzJa+HeUtVEz6qjybt++Tw8QkSid0kqWZDKx+gLQQ
-	riQnYVoBVsu3va61polO4ZTGnSfXCs+o1+c05rIGrnq6WcYrOaAYU0q+2eK+FUgyOsHG
-	JfaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=po6D+ajiTz9qeqzs86Tz1PZKMa0pTcwN6A4PxCPSp3k=;
-	b=swFsGMTvmkKJ8E3NGPGah2eOjVKy/Jvtc3RxQEoqfUB+q+oWy9GiInZz05tqArIGWQ
-	l31elG4+4dcHwdnoGgILGCU2wcUu8v/eLvtmsEUqItzNhhs1Be9hFOnjTQEJMeCcQ+92
-	iwgNh1GBH0VJFFggqbJQUuaT+mz2y+8FMIrGYHhL5CQkrMLikdr7Zm2kYteTYdLKmNOm
-	hpgENI66m3HaclG4GT/hgZHIFuACR3Z9VHAEczQEnaQIqeCyR0zE5qEXq6VZSvxccdYW
-	/R0AZK3g6XcElIc97EAqxjw/bvjPDlEHCDwdXlN9dYR5j+QxHbJaJN+sJOYFfgPJIXOw
-	NvKA==
-X-Gm-Message-State: AHQUAua6WQW4xzTDp3ZCOSwsNCl1xb5hdM/OAdukCjisZTA+QqD77k4j
-	UKbjMzMSNNLzQ9handtBWw/t866gLbTFDw==
-X-Google-Smtp-Source: AHgI3IYXfurt2YiK6tygPTWPWwKaesYbLBhW5XOsBlZbqfBsHdVK1niaGKDdobKW1I+i790UEWHKRA==
-X-Received: by 2002:a65:63d3:: with SMTP id n19mr12015866pgv.179.1549260574220;
-	Sun, 03 Feb 2019 22:09:34 -0800 (PST)
-Received: from localhost (42-3-94-015.static.netvigator.com. [42.3.94.15])
-	by smtp.gmail.com with ESMTPSA id
-	d21sm18788262pfo.162.2019.02.03.22.09.32
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sun, 03 Feb 2019 22:09:33 -0800 (PST)
-Date: Mon, 4 Feb 2019 14:09:26 +0800
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Message-ID: <20190204060926.GG29758@stefanha-x1.localdomain>
-References: <20190201173655.4567-1-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="2NLGdgz3UMHa/lqP"
-Content-Disposition: inline
-In-Reply-To: <20190201173655.4567-1-peter.maydell@linaro.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::42a
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qemu-common.h: Update
- copyright string for 2019
+	(envelope-from <thuth@redhat.com>) id 1gqZ5K-0002LT-Lu
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 02:54:32 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:35072)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gqZ5G-0002Iw-Mt; Mon, 04 Feb 2019 02:54:26 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 25A582CD81B;
+	Mon,  4 Feb 2019 07:54:23 +0000 (UTC)
+Received: from thuth.com (ovpn-117-5.ams2.redhat.com [10.36.117.5])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 0F91B5D6A9;
+	Mon,  4 Feb 2019 07:54:21 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Anthony Green <green@moxielogic.com>
+Date: Mon,  4 Feb 2019 08:54:18 +0100
+Message-Id: <1549266858-5043-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Mon, 04 Feb 2019 07:54:23 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] target/moxie: Fix LGPL information in the
+ file headers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,41 +46,123 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Feb 2019 06:09:51 -0000
+X-List-Received-Date: Mon, 04 Feb 2019 07:54:33 -0000
 
+It's either "GNU *Library* General Public License version 2" or "GNU
+Lesser General Public License version *2.1*", but there was no "version
+2.0" of the "Lesser" license. So assume that version 2.1 is meant here.
+Also the files mentioned the GPL instead of the LGPL after declaring
+that the files are licensed under the LGPL, so change these spots to
+use LGPL, too.
 
---2NLGdgz3UMHa/lqP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ target/moxie/cpu.c       | 2 +-
+ target/moxie/cpu.h       | 4 ++--
+ target/moxie/helper.c    | 4 ++--
+ target/moxie/mmu.c       | 4 ++--
+ target/moxie/translate.c | 4 ++--
+ 5 files changed, 9 insertions(+), 9 deletions(-)
 
-On Fri, Feb 01, 2019 at 05:36:55PM +0000, Peter Maydell wrote:
-> Update the copyright string we use in version/help output,
-> since we're well into the new year now.
->=20
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> Better than last year, where we didn't get round to doing
-> the year bump until September :-)
-> ---
->  include/qemu-common.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+diff --git a/target/moxie/cpu.c b/target/moxie/cpu.c
+index 8d67eb6..46434e6 100644
+--- a/target/moxie/cpu.c
++++ b/target/moxie/cpu.c
+@@ -13,7 +13,7 @@
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  * Lesser General Public License for more details.
+  *
+- * You should have received a copy of the GNU General Public License
++ * You should have received a copy of the GNU Lesser General Public License
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+diff --git a/target/moxie/cpu.h b/target/moxie/cpu.h
+index d40f1e6..080df4e 100644
+--- a/target/moxie/cpu.h
++++ b/target/moxie/cpu.h
+@@ -6,14 +6,14 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  * Lesser General Public License for more details.
+  *
+- * You should have received a copy of the GNU General Public License
++ * You should have received a copy of the GNU Lesser General Public License
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+diff --git a/target/moxie/helper.c b/target/moxie/helper.c
+index 5b1532b..f3d8ee7 100644
+--- a/target/moxie/helper.c
++++ b/target/moxie/helper.c
+@@ -6,14 +6,14 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  * Lesser General Public License for more details.
+  *
+- * You should have received a copy of the GNU General Public License
++ * You should have received a copy of the GNU Lesser General Public License
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+diff --git a/target/moxie/mmu.c b/target/moxie/mmu.c
+index bd90b1e..87783a3 100644
+--- a/target/moxie/mmu.c
++++ b/target/moxie/mmu.c
+@@ -6,14 +6,14 @@
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+  * License as published by the Free Software Foundation; either
+- * version 2 of the License, or (at your option) any later version.
++ * version 2.1 of the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  * Lesser General Public License for more details.
+  *
+- * You should have received a copy of the GNU General Public License
++ * You should have received a copy of the GNU Lesser General Public License
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+diff --git a/target/moxie/translate.c b/target/moxie/translate.c
+index 29da02b..68ca223 100644
+--- a/target/moxie/translate.c
++++ b/target/moxie/translate.c
+@@ -5,7 +5,7 @@
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public License
+- * as published by the Free Software Foundation; either version 2 of
++ * as published by the Free Software Foundation; either version 2.1 of
+  * the License, or (at your option) any later version.
+  *
+  * This library is distributed in the hope that it will be useful, but
+@@ -13,7 +13,7 @@
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  * Lesser General Public License for more details.
+  *
+- * You should have received a copy of the GNU General Public License
++ * You should have received a copy of the GNU Lesser General Public License
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
+-- 
+1.8.3.1
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
---2NLGdgz3UMHa/lqP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEcBAEBAgAGBQJcV9cWAAoJEJykq7OBq3PI6zEH/1912mGp48wodlIZ8UGU72tN
-HmbHv2ue/UJDFfy/rKqoZomrRx9PQMNX6CAxvZN8LS3QXiJh7tAOkhePwYNtARwO
-4ROR2i2CvuzELwPPCZ5JlJVms07RhzkznrD1tf/J25bLRoiYtG7BEeXWixoGLxtr
-HU54xTa2jRbXIpyIyyNtjIKoq8K3sqgWYgmilfz4vdTxQDKifHkJxRvQzpZ4AQLV
-8wSdIS5X1HZ0OmdJR/V2CtmQhD+zlbqQWyhvjrYyoUW0tWmKBe/aAApFyUv+LPz4
-5VZJeRjtJ9armJhDIV2o3IioBmcgrpG0+ln/t0k/klxWrFN+fhDsOBlMinxAMz8=
-=JvNR
------END PGP SIGNATURE-----
-
---2NLGdgz3UMHa/lqP--
 
