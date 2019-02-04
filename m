@@ -1,65 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqcjw-0007YV-QY
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 06:48:40 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:56195)
+	id 1gqd5g-0007zs-Ea
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 07:11:08 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34213)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gqcju-00077C-O3
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 06:48:39 -0500
+	(envelope-from <thuth@redhat.com>) id 1gqd5Z-0007vS-9x
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 07:11:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gqcal-0007g0-KP
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 06:39:12 -0500
-Received: from mail-wr1-f65.google.com ([209.85.221.65]:37093)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gqcal-0007fH-9T
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 06:39:11 -0500
-Received: by mail-wr1-f65.google.com with SMTP id s12so14021582wrt.4
-	for <qemu-trivial@nongnu.org>; Mon, 04 Feb 2019 03:39:10 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=7hwSSBQlIC0rD/Wk2Kw2y+eyvk7tbfyLhDm9t+vo4JM=;
-	b=DoQ9+veEN+Bg0GByN8H45qd5Q9jUL1RX57qdWn3RKvA3kjC1th47fbZjvVi57XHNeC
-	Wx7TWyu5LQzPJFoBFogZ88vM1pJmF4eh8f6LP7qsY/gG6uJlHGABwYhP1EIZGoiRhagn
-	PENNAxl7f/eQH1/OMst9+a4Qkcs9yGLk6keQv6yD5B4ajJc5HI6mLXZN2TVHUDdY6UFq
-	5nAJnB8nJlc81yKRwX3Wibzvmi9sDvoz9AgMucWZw/60eFloavu8oqIsz4i6dGu4nqzt
-	NUoygvzbn9u6dayzqgsWORRk8t9StfdmUvOYDWdJ1dreD6S79h55YPPF0JFxxecosarc
-	zPaw==
-X-Gm-Message-State: AHQUAubkASXEWDouBhPzeBsi6SQP46x6L0S4lhG7JXF5gLMKYXCz3GWQ
-	i394lKMz8OxlC1NQS9YZe7ZSBfMeYzs=
-X-Google-Smtp-Source: AHgI3IZ+1ywuPGq9nCamzFC+iZ9dwKSp2nUIhnAGaoJbqbJCsuujq/IhPhSeC4+5WIfJIxgNuMnUMw==
-X-Received: by 2002:adf:f1c5:: with SMTP id z5mr6682193wro.118.1549280348915; 
-	Mon, 04 Feb 2019 03:39:08 -0800 (PST)
-Received: from [192.168.1.33] (110.red-83-51-161.dynamicip.rima-tde.net.
-	[83.51.161.110])
-	by smtp.gmail.com with ESMTPSA id h9sm2875668wrm.49.2019.02.04.03.39.07
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Mon, 04 Feb 2019 03:39:08 -0800 (PST)
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
-	Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
-	<alex.bennee@linaro.org>, Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
-	Gerd Hoffmann <kraxel@redhat.com>, qemu-trivial@nongnu.org
-References: <1549268743-18502-1-git-send-email-thuth@redhat.com>
-	<20190204101944.GE1905@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <483741c5-3b85-6690-282b-b715cf5ce3b8@redhat.com>
-Date: Mon, 4 Feb 2019 12:39:07 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
-MIME-Version: 1.0
-In-Reply-To: <20190204101944.GE1905@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+	(envelope-from <thuth@redhat.com>) id 1gqd5X-0006Sy-Pe
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 07:11:01 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:37698)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gqd5U-0006Ns-66; Mon, 04 Feb 2019 07:10:56 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id AE1DD89ACC;
+	Mon,  4 Feb 2019 12:10:51 +0000 (UTC)
+Received: from thuth.com (ovpn-117-5.ams2.redhat.com [10.36.117.5])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id DC97F91F91;
+	Mon,  4 Feb 2019 12:10:44 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Gerd Hoffmann <kraxel@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Date: Mon,  4 Feb 2019 13:10:41 +0100
+Message-Id: <1549282241-23535-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Mon, 04 Feb 2019 12:10:51 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.65
-Subject: Re: [Qemu-trivial] [PATCH] tests/docker/test-mingw and docs: Remove
- --with-sdlabi=2.0
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH v2] ui/sdl_keysym: Remove obsolete SDL1.2
+ related code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,31 +47,309 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Feb 2019 11:48:39 -0000
+X-List-Received-Date: Mon, 04 Feb 2019 12:11:07 -0000
 
-Hi Alex,
+sdl_keysym.h has only been included by sdl.c which has recently been
+removed recently with this commit:
 
-On 2/4/19 11:19 AM, Daniel P. Berrangé wrote:
-> On Mon, Feb 04, 2019 at 09:25:43AM +0100, Thomas Huth wrote:
->> Patchew currently reports failures with the mingw docker test - this
->> is due to --with-sdlabi=2.0 configure flag which does not exist anymore.
->> Remove this remainder from the docker test and the docs now.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  docs/multiseat.txt      | 2 +-
->>  tests/docker/test-mingw | 3 +--
->>  2 files changed, 2 insertions(+), 3 deletions(-)
-> 
-> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+  0015ca5cbabe0b31d31610ddfaafd90a9e5911a4
+  ("ui: remove support for SDL1.2 in favour of SDL2")
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+So we can drop this header file now completely, too.
 
-IMHO this patch can probably get directly applied as a build-fix, rather
-than going thru qemu-trivial. Alex is that OK with you?
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ v2: The file is now removed completely.
 
-Regards,
+ ui/sdl_keysym.h | 278 --------------------------------------------------------
+ 1 file changed, 278 deletions(-)
+ delete mode 100644 ui/sdl_keysym.h
 
-Phil.
+diff --git a/ui/sdl_keysym.h b/ui/sdl_keysym.h
+deleted file mode 100644
+index 599d9fc..0000000
+--- a/ui/sdl_keysym.h
++++ /dev/null
+@@ -1,278 +0,0 @@
+-
+-#include "keymaps.h"
+-
+-static const name2keysym_t name2keysym[]={
+-/* ascii */
+-    { "space",                0x020},
+-    { "exclam",               0x021},
+-    { "quotedbl",             0x022},
+-    { "numbersign",           0x023},
+-    { "dollar",               0x024},
+-    { "percent",              0x025},
+-    { "ampersand",            0x026},
+-    { "apostrophe",           0x027},
+-    { "parenleft",            0x028},
+-    { "parenright",           0x029},
+-    { "asterisk",             0x02a},
+-    { "plus",                 0x02b},
+-    { "comma",                0x02c},
+-    { "minus",                0x02d},
+-    { "period",               0x02e},
+-    { "slash",                0x02f},
+-    { "0",                    0x030},
+-    { "1",                    0x031},
+-    { "2",                    0x032},
+-    { "3",                    0x033},
+-    { "4",                    0x034},
+-    { "5",                    0x035},
+-    { "6",                    0x036},
+-    { "7",                    0x037},
+-    { "8",                    0x038},
+-    { "9",                    0x039},
+-    { "colon",                0x03a},
+-    { "semicolon",            0x03b},
+-    { "less",                 0x03c},
+-    { "equal",                0x03d},
+-    { "greater",              0x03e},
+-    { "question",             0x03f},
+-    { "at",                   0x040},
+-    { "A",                    0x041},
+-    { "B",                    0x042},
+-    { "C",                    0x043},
+-    { "D",                    0x044},
+-    { "E",                    0x045},
+-    { "F",                    0x046},
+-    { "G",                    0x047},
+-    { "H",                    0x048},
+-    { "I",                    0x049},
+-    { "J",                    0x04a},
+-    { "K",                    0x04b},
+-    { "L",                    0x04c},
+-    { "M",                    0x04d},
+-    { "N",                    0x04e},
+-    { "O",                    0x04f},
+-    { "P",                    0x050},
+-    { "Q",                    0x051},
+-    { "R",                    0x052},
+-    { "S",                    0x053},
+-    { "T",                    0x054},
+-    { "U",                    0x055},
+-    { "V",                    0x056},
+-    { "W",                    0x057},
+-    { "X",                    0x058},
+-    { "Y",                    0x059},
+-    { "Z",                    0x05a},
+-    { "bracketleft",          0x05b},
+-    { "backslash",            0x05c},
+-    { "bracketright",         0x05d},
+-    { "asciicircum",          0x05e},
+-    { "underscore",           0x05f},
+-    { "grave",                0x060},
+-    { "a",                    0x061},
+-    { "b",                    0x062},
+-    { "c",                    0x063},
+-    { "d",                    0x064},
+-    { "e",                    0x065},
+-    { "f",                    0x066},
+-    { "g",                    0x067},
+-    { "h",                    0x068},
+-    { "i",                    0x069},
+-    { "j",                    0x06a},
+-    { "k",                    0x06b},
+-    { "l",                    0x06c},
+-    { "m",                    0x06d},
+-    { "n",                    0x06e},
+-    { "o",                    0x06f},
+-    { "p",                    0x070},
+-    { "q",                    0x071},
+-    { "r",                    0x072},
+-    { "s",                    0x073},
+-    { "t",                    0x074},
+-    { "u",                    0x075},
+-    { "v",                    0x076},
+-    { "w",                    0x077},
+-    { "x",                    0x078},
+-    { "y",                    0x079},
+-    { "z",                    0x07a},
+-    { "braceleft",            0x07b},
+-    { "bar",                  0x07c},
+-    { "braceright",           0x07d},
+-    { "asciitilde",           0x07e},
+-
+-/* latin 1 extensions */
+-{ "nobreakspace",         0x0a0},
+-{ "exclamdown",           0x0a1},
+-{ "cent",         	  0x0a2},
+-{ "sterling",             0x0a3},
+-{ "currency",             0x0a4},
+-{ "yen",                  0x0a5},
+-{ "brokenbar",            0x0a6},
+-{ "section",              0x0a7},
+-{ "diaeresis",            0x0a8},
+-{ "copyright",            0x0a9},
+-{ "ordfeminine",          0x0aa},
+-{ "guillemotleft",        0x0ab},
+-{ "notsign",              0x0ac},
+-{ "hyphen",               0x0ad},
+-{ "registered",           0x0ae},
+-{ "macron",               0x0af},
+-{ "degree",               0x0b0},
+-{ "plusminus",            0x0b1},
+-{ "twosuperior",          0x0b2},
+-{ "threesuperior",        0x0b3},
+-{ "acute",                0x0b4},
+-{ "mu",                   0x0b5},
+-{ "paragraph",            0x0b6},
+-{ "periodcentered",       0x0b7},
+-{ "cedilla",              0x0b8},
+-{ "onesuperior",          0x0b9},
+-{ "masculine",            0x0ba},
+-{ "guillemotright",       0x0bb},
+-{ "onequarter",           0x0bc},
+-{ "onehalf",              0x0bd},
+-{ "threequarters",        0x0be},
+-{ "questiondown",         0x0bf},
+-{ "Agrave",               0x0c0},
+-{ "Aacute",               0x0c1},
+-{ "Acircumflex",          0x0c2},
+-{ "Atilde",               0x0c3},
+-{ "Adiaeresis",           0x0c4},
+-{ "Aring",                0x0c5},
+-{ "AE",                   0x0c6},
+-{ "Ccedilla",             0x0c7},
+-{ "Egrave",               0x0c8},
+-{ "Eacute",               0x0c9},
+-{ "Ecircumflex",          0x0ca},
+-{ "Ediaeresis",           0x0cb},
+-{ "Igrave",               0x0cc},
+-{ "Iacute",               0x0cd},
+-{ "Icircumflex",          0x0ce},
+-{ "Idiaeresis",           0x0cf},
+-{ "ETH",                  0x0d0},
+-{ "Eth",                  0x0d0},
+-{ "Ntilde",               0x0d1},
+-{ "Ograve",               0x0d2},
+-{ "Oacute",               0x0d3},
+-{ "Ocircumflex",          0x0d4},
+-{ "Otilde",               0x0d5},
+-{ "Odiaeresis",           0x0d6},
+-{ "multiply",             0x0d7},
+-{ "Ooblique",             0x0d8},
+-{ "Oslash",               0x0d8},
+-{ "Ugrave",               0x0d9},
+-{ "Uacute",               0x0da},
+-{ "Ucircumflex",          0x0db},
+-{ "Udiaeresis",           0x0dc},
+-{ "Yacute",               0x0dd},
+-{ "THORN",                0x0de},
+-{ "Thorn",                0x0de},
+-{ "ssharp",               0x0df},
+-{ "agrave",               0x0e0},
+-{ "aacute",               0x0e1},
+-{ "acircumflex",          0x0e2},
+-{ "atilde",               0x0e3},
+-{ "adiaeresis",           0x0e4},
+-{ "aring",                0x0e5},
+-{ "ae",                   0x0e6},
+-{ "ccedilla",             0x0e7},
+-{ "egrave",               0x0e8},
+-{ "eacute",               0x0e9},
+-{ "ecircumflex",          0x0ea},
+-{ "ediaeresis",           0x0eb},
+-{ "igrave",               0x0ec},
+-{ "iacute",               0x0ed},
+-{ "icircumflex",          0x0ee},
+-{ "idiaeresis",           0x0ef},
+-{ "eth",                  0x0f0},
+-{ "ntilde",               0x0f1},
+-{ "ograve",               0x0f2},
+-{ "oacute",               0x0f3},
+-{ "ocircumflex",          0x0f4},
+-{ "otilde",               0x0f5},
+-{ "odiaeresis",           0x0f6},
+-{ "division",             0x0f7},
+-{ "oslash",               0x0f8},
+-{ "ooblique",             0x0f8},
+-{ "ugrave",               0x0f9},
+-{ "uacute",               0x0fa},
+-{ "ucircumflex",          0x0fb},
+-{ "udiaeresis",           0x0fc},
+-{ "yacute",               0x0fd},
+-{ "thorn",                0x0fe},
+-{ "ydiaeresis",           0x0ff},
+-#if SDL_MAJOR_VERSION == 1
+-{"EuroSign", SDLK_EURO},
+-
+-    /* modifiers */
+-{"Control_L", SDLK_LCTRL},
+-{"Control_R", SDLK_RCTRL},
+-{"Alt_L", SDLK_LALT},
+-{"Alt_R", SDLK_RALT},
+-{"Caps_Lock", SDLK_CAPSLOCK},
+-{"Meta_L", SDLK_LMETA},
+-{"Meta_R", SDLK_RMETA},
+-{"Shift_L", SDLK_LSHIFT},
+-{"Shift_R", SDLK_RSHIFT},
+-{"Super_L", SDLK_LSUPER},
+-{"Super_R", SDLK_RSUPER},
+-
+-    /* special keys */
+-{"BackSpace", SDLK_BACKSPACE},
+-{"Tab", SDLK_TAB},
+-{"Return", SDLK_RETURN},
+-{"Right", SDLK_RIGHT},
+-{"Left", SDLK_LEFT},
+-{"Up", SDLK_UP},
+-{"Down", SDLK_DOWN},
+-{"Page_Down", SDLK_PAGEDOWN},
+-{"Page_Up", SDLK_PAGEUP},
+-{"Insert", SDLK_INSERT},
+-{"Delete", SDLK_DELETE},
+-{"Home", SDLK_HOME},
+-{"End", SDLK_END},
+-{"Scroll_Lock", SDLK_SCROLLOCK},
+-{"F1", SDLK_F1},
+-{"F2", SDLK_F2},
+-{"F3", SDLK_F3},
+-{"F4", SDLK_F4},
+-{"F5", SDLK_F5},
+-{"F6", SDLK_F6},
+-{"F7", SDLK_F7},
+-{"F8", SDLK_F8},
+-{"F9", SDLK_F9},
+-{"F10", SDLK_F10},
+-{"F11", SDLK_F11},
+-{"F12", SDLK_F12},
+-{"F13", SDLK_F13},
+-{"F14", SDLK_F14},
+-{"F15", SDLK_F15},
+-{"Sys_Req", SDLK_SYSREQ},
+-{"KP_0", SDLK_KP0},
+-{"KP_1", SDLK_KP1},
+-{"KP_2", SDLK_KP2},
+-{"KP_3", SDLK_KP3},
+-{"KP_4", SDLK_KP4},
+-{"KP_5", SDLK_KP5},
+-{"KP_6", SDLK_KP6},
+-{"KP_7", SDLK_KP7},
+-{"KP_8", SDLK_KP8},
+-{"KP_9", SDLK_KP9},
+-{"KP_Add", SDLK_KP_PLUS},
+-{"KP_Decimal", SDLK_KP_PERIOD},
+-{"KP_Divide", SDLK_KP_DIVIDE},
+-{"KP_Enter", SDLK_KP_ENTER},
+-{"KP_Equal", SDLK_KP_EQUALS},
+-{"KP_Multiply", SDLK_KP_MULTIPLY},
+-{"KP_Subtract", SDLK_KP_MINUS},
+-{"help", SDLK_HELP},
+-{"Menu", SDLK_MENU},
+-{"Power", SDLK_POWER},
+-{"Print", SDLK_PRINT},
+-{"Mode_switch", SDLK_MODE},
+-{"Multi_Key", SDLK_COMPOSE},
+-{"Num_Lock", SDLK_NUMLOCK},
+-{"Pause", SDLK_PAUSE},
+-{"Escape", SDLK_ESCAPE},
+-#endif
+-{NULL, 0},
+-};
+-- 
+1.8.3.1
+
 
