@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqnWN-0001BH-4g
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 18:19:23 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50179)
+	id 1gqnWv-0001dI-TS
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 18:19:57 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50343)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gqnWK-00018o-KZ
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:19:21 -0500
+	(envelope-from <philmd@redhat.com>) id 1gqnWt-0001an-J7
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:19:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gqnWJ-0000xK-En
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:19:20 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:49534)
+	(envelope-from <philmd@redhat.com>) id 1gqnWs-0001Jy-IL
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 18:19:55 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52848)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1gqnWD-0000t9-Fc; Mon, 04 Feb 2019 18:19:13 -0500
+	id 1gqnWf-00013Z-LX; Mon, 04 Feb 2019 18:19:44 -0500
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 365F4C058CBA;
-	Mon,  4 Feb 2019 23:19:12 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id B1682C05001B;
+	Mon,  4 Feb 2019 23:19:33 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-98.brq.redhat.com [10.40.204.98])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0D97187A5;
-	Mon,  4 Feb 2019 23:19:05 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id AA6C212A5D;
+	Mon,  4 Feb 2019 23:19:12 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-trivial@nongnu.org,
 	qemu-devel@nongnu.org
@@ -39,23 +39,22 @@ Cc: Richard Henderson <rth@twiddle.net>, Andrew Jeffery <andrew@aj.id.au>,
 	David Gibson <david@gibson.dropbear.id.au>,
 	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, qemu-arm@nongnu.org,
 	Jason Wang <jasowang@redhat.com>, Rob Herring <robh@kernel.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Thomas Huth <thuth@redhat.com>
-Date: Tue,  5 Feb 2019 00:18:09 +0100
-Message-Id: <20190204231815.29661-6-philmd@redhat.com>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Tue,  5 Feb 2019 00:18:10 +0100
+Message-Id: <20190204231815.29661-7-philmd@redhat.com>
 In-Reply-To: <20190204231815.29661-1-philmd@redhat.com>
 References: <20190204231815.29661-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Mon, 04 Feb 2019 23:19:12 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Mon, 04 Feb 2019 23:19:34 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v2 05/11] hw/devices: Move CBus declarations
- into a new header
+Subject: [Qemu-trivial] [PATCH v2 06/11] hw/devices: Move Gamepad
+ declarations into a new header
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,117 +66,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Feb 2019 23:19:21 -0000
+X-List-Received-Date: Mon, 04 Feb 2019 23:19:56 -0000
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- MAINTAINERS            |  1 +
- hw/arm/nseries.c       |  1 +
- hw/misc/cbus.c         |  2 +-
- include/hw/devices.h   | 14 --------------
- include/hw/misc/cbus.h | 32 ++++++++++++++++++++++++++++++++
- 5 files changed, 35 insertions(+), 15 deletions(-)
- create mode 100644 include/hw/misc/cbus.h
+ MAINTAINERS                |  1 +
+ hw/arm/stellaris.c         |  2 +-
+ hw/input/stellaris_input.c |  2 +-
+ include/hw/devices.h       |  3 ---
+ include/hw/input/gamepad.h | 21 +++++++++++++++++++++
+ 5 files changed, 24 insertions(+), 5 deletions(-)
+ create mode 100644 include/hw/input/gamepad.h
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index a21e7b546b..daae4a3beb 100644
+index daae4a3beb..a38086f767 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -654,6 +654,7 @@ F: hw/input/tsc2005.c
- F: hw/misc/cbus.c
- F: hw/timer/twl92230.c
- F: include/hw/display/blizzard.h
-+F: include/hw/misc/cbus.h
+@@ -729,6 +729,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
+ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/*/stellaris*
++F: include/hw/input/gamepad.h
 =20
- Palm
- M: Andrzej Zaborowski <balrogg@gmail.com>
-diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-index 9521be1cef..ac876b5878 100644
---- a/hw/arm/nseries.c
-+++ b/hw/arm/nseries.c
-@@ -32,6 +32,7 @@
+ Versatile Express
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index 442529cc65..24c20bf612 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -12,7 +12,6 @@
+ #include "hw/sysbus.h"
+ #include "hw/ssi/ssi.h"
+ #include "hw/arm/arm.h"
+-#include "hw/devices.h"
+ #include "qemu/timer.h"
  #include "hw/i2c/i2c.h"
- #include "hw/devices.h"
- #include "hw/display/blizzard.h"
-+#include "hw/misc/cbus.h"
- #include "hw/block/flash.h"
- #include "hw/hw.h"
- #include "hw/bt.h"
-diff --git a/hw/misc/cbus.c b/hw/misc/cbus.c
-index 25e337ea77..16ee704bca 100644
---- a/hw/misc/cbus.c
-+++ b/hw/misc/cbus.c
-@@ -23,7 +23,7 @@
+ #include "net/net.h"
+@@ -22,6 +21,7 @@
+ #include "sysemu/sysemu.h"
+ #include "hw/arm/armv7m.h"
+ #include "hw/char/pl011.h"
++#include "hw/input/gamepad.h"
+ #include "hw/misc/unimp.h"
+ #include "cpu.h"
+=20
+diff --git a/hw/input/stellaris_input.c b/hw/input/stellaris_input.c
+index 99168bfeef..20c87d86f4 100644
+--- a/hw/input/stellaris_input.c
++++ b/hw/input/stellaris_input.c
+@@ -8,7 +8,7 @@
+  */
  #include "qemu/osdep.h"
  #include "hw/hw.h"
- #include "hw/irq.h"
 -#include "hw/devices.h"
-+#include "hw/misc/cbus.h"
- #include "sysemu/sysemu.h"
++#include "hw/input/gamepad.h"
+ #include "ui/console.h"
 =20
- //#define DEBUG
+ typedef struct {
 diff --git a/include/hw/devices.h b/include/hw/devices.h
-index 77d6611302..e400f9eac0 100644
+index e400f9eac0..7a630da47f 100644
 --- a/include/hw/devices.h
 +++ b/include/hw/devices.h
-@@ -29,18 +29,4 @@ void tsc2005_set_transform(void *opaque, MouseTransfor=
-mInfo *info);
- /* stellaris_input.c */
- void stellaris_gamepad_init(int n, qemu_irq *irq, const int *keycode);
+@@ -26,7 +26,4 @@ void *tsc2005_init(qemu_irq pintdav);
+ uint32_t tsc2005_txrx(void *opaque, uint32_t value, int len);
+ void tsc2005_set_transform(void *opaque, MouseTransformInfo *info);
 =20
--/* cbus.c */
--typedef struct {
--    qemu_irq clk;
--    qemu_irq dat;
--    qemu_irq sel;
--} CBus;
--CBus *cbus_init(qemu_irq dat_out);
--void cbus_attach(CBus *bus, void *slave_opaque);
--
--void *retu_init(qemu_irq irq, int vilma);
--void *tahvo_init(qemu_irq irq, int betty);
--
--void retu_key_event(void *retu, int state);
+-/* stellaris_input.c */
+-void stellaris_gamepad_init(int n, qemu_irq *irq, const int *keycode);
 -
  #endif
-diff --git a/include/hw/misc/cbus.h b/include/hw/misc/cbus.h
+diff --git a/include/hw/input/gamepad.h b/include/hw/input/gamepad.h
 new file mode 100644
-index 0000000000..c899943e03
+index 0000000000..112bad5e4c
 --- /dev/null
-+++ b/include/hw/misc/cbus.h
-@@ -0,0 +1,32 @@
++++ b/include/hw/input/gamepad.h
+@@ -0,0 +1,21 @@
 +/*
-+ * CBUS three-pin bus and the Retu / Betty / Tahvo / Vilma / Avilma /
-+ * Hinku / Vinku / Ahne / Pihi chips used in various Nokia platforms.
-+ * Based on reverse-engineering of a linux driver.
++ * Gamepad style buttons connected to IRQ/GPIO lines
 + *
-+ * Copyright (C) 2008 Nokia Corporation
-+ * Written by Andrzej Zaborowski
++ * Copyright (c) 2007 CodeSourcery.
++ * Written by Paul Brook
 + *
 + * This work is licensed under the terms of the GNU GPL, version 2 or la=
 ter.
 + * See the COPYING file in the top-level directory.
 + */
 +
-+#ifndef HW_MISC_CBUS_H
-+#define HW_MISC_CBUS_H
++#ifndef HW_INPUT_GAMEPAD_H
++#define HW_INPUT_GAMEPAD_H
++
++/* Gamepad devices that have nowhere better to go.  */
 +
 +#include "hw/irq.h"
 +
-+typedef struct {
-+    qemu_irq clk;
-+    qemu_irq dat;
-+    qemu_irq sel;
-+} CBus;
-+
-+CBus *cbus_init(qemu_irq dat_out);
-+void cbus_attach(CBus *bus, void *slave_opaque);
-+
-+void *retu_init(qemu_irq irq, int vilma);
-+void *tahvo_init(qemu_irq irq, int betty);
-+
-+void retu_key_event(void *retu, int state);
++/* stellaris_input.c */
++void stellaris_gamepad_init(int n, qemu_irq *irq, const int *keycode);
 +
 +#endif
 --=20
