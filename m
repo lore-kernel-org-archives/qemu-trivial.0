@@ -1,70 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqeCH-0001KA-7O
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 08:22:01 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51512)
+	id 1gqghZ-0000ve-Gy
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 11:02:29 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44648)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1gqeCB-00011N-Uw
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 08:21:56 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gqghX-0000uQ-Ox
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 11:02:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1gqdyC-0008OH-QM
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 08:07:34 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:37765)
+	(envelope-from <peter.maydell@linaro.org>) id 1gqghQ-0005Jw-S7
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 11:02:27 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:44288)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
-	id 1gqdyB-00088K-AL
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 08:07:27 -0500
-Received: by mail-wr1-x441.google.com with SMTP id s12so14318706wrt.4
-	for <qemu-trivial@nongnu.org>; Mon, 04 Feb 2019 05:07:25 -0800 (PST)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gqghP-0004Ci-EL
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 11:02:19 -0500
+Received: by mail-ot1-x343.google.com with SMTP id g16so527690otg.11
+	for <qemu-trivial@nongnu.org>; Mon, 04 Feb 2019 08:01:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=references:user-agent:from:to:cc:subject:in-reply-to:date
-	:message-id:mime-version:content-transfer-encoding;
-	bh=3SsUp1mg1eJNnuHP4zlUdZNHlWzcEFFT9B9gCFodQKs=;
-	b=eFNVTtnwTLkY/GRsYYJtggM6XXnl2JXm8TAflq1otOPPtD3eZl4XoI1lf2VpHRklZc
-	50ckF18pHXISu9+npmiVg5l1zQbO38Z8OE44yQ60EgkTdm3KR8DjJMQ83Q1C4FEPhhf8
-	tqW2JH7ThqRRAHrvl0sjpwPBUg0VstcLMeLrY=
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=Qs5FRvyG4gm0FwbDZ0Oo7jGLVO5m7gSxsUBeG2aIkXE=;
+	b=fnX0CkmYcN1nvEBFm3TshgKV/opdl/mYScHeexRhXBtFhwzfAN31vycmLLM8qrd/0x
+	DlfO5t6ZYt3iGjkRJChqHXHC9SJumI2OCTt/J0QSWxYfd9B0LnM3iLqifgfIHHoIoP98
+	DwYatQ0E0d5sCqy1ps1np3H8HTUwf0ZLAsdos=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:references:user-agent:from:to:cc:subject
-	:in-reply-to:date:message-id:mime-version:content-transfer-encoding;
-	bh=3SsUp1mg1eJNnuHP4zlUdZNHlWzcEFFT9B9gCFodQKs=;
-	b=KEAZaJCUdrXIY2wjeWGjNlmemEB+TOcYNPy/MnyKB4OTyjNvGxUqEzYiQeXbMOa/Kd
-	+e5r8ZvylJgnMWRcRzu7k0E8QG3bDx1zRFqCb7ODDUKNIH/K1hEg/N3I2RmVk7GpePds
-	fyPjZxlfIvAS0Epvs0zG0r9YDCf5CQp20HmPtED4JhgtAehcaWr3RDxppgcoafscQe1r
-	TFaxtGJJlsyN5EGOzXLeiLxSsV8TXeo4E1x6ax0Z7i9gwSW4Bqfy+SG37QQkM6QBISfI
-	gr+mZi/TcGC0NsmHxDPxy+JQRHbfa4TFqz0ehHMttsCxzaijRVkbqfMhXc+I0fFonq7z
-	6zlw==
-X-Gm-Message-State: AJcUukeDZerbbbn/hn6bDdMuQixiEaxbS2/onFpSIujuGLxlhboXcx19
-	rGLdiArn1W6+S+dEcFDR4irYYQ==
-X-Google-Smtp-Source: ALg8bN5/SnOmnsxyMa0c6mda9NoCodyUpzdfCHvSUR8xym3ZJ0gIzaEAdKYPGiU6D+ZEYVFXZsxyjg==
-X-Received: by 2002:adf:f308:: with SMTP id i8mr47031777wro.219.1549285644251; 
-	Mon, 04 Feb 2019 05:07:24 -0800 (PST)
-Received: from zen.linaroharston ([81.128.185.34])
-	by smtp.gmail.com with ESMTPSA id
-	i184sm6413079wmd.26.2019.02.04.05.07.22
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Mon, 04 Feb 2019 05:07:22 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTPS id 47EF51FF7C;
-	Mon,  4 Feb 2019 13:07:22 +0000 (UTC)
-References: <1549268743-18502-1-git-send-email-thuth@redhat.com>
-User-agent: mu4e 1.0; emacs 26.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>, Gerd Hoffmann
-	<kraxel@redhat.com>, qemu-trivial@nongnu.org, Philippe =?utf-8?Q?Mathieu-?=
-	=?utf-8?Q?Daud=C3=A9?= <philmd@redhat.com>, =?utf-8?Q?Daniel_P=2E_Berrang?=
-	=?utf-8?Q?=C3=A9?= <berrange@redhat.com>
-In-reply-to: <1549268743-18502-1-git-send-email-thuth@redhat.com>
-Date: Mon, 04 Feb 2019 13:07:22 +0000
-Message-ID: <87o97r4s8l.fsf@zen.linaroharston>
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=Qs5FRvyG4gm0FwbDZ0Oo7jGLVO5m7gSxsUBeG2aIkXE=;
+	b=ZVW5ECk5HpkQTAKNIaBnBa33HOqil61CfRibs/OoT5F0VnvlTfywakXlXTo2CwwMYL
+	mhNYMnPrpWM0VHkmKDT7hB+qkC6/4iWWbVUOi38LmlBKVccZRPBreq9kIdTsiUz6qyIn
+	DpkI7qWQ40uqTn7+qyNpWJuf/Dzz4qd8uZjLfZSVLh2njX1NxSnMeEuDh7hUwOzc3972
+	LqWOrT6F6QoB8/+/w7SPa7B0RmB4LdsrZd3eLxfyqBbF6kLIvoQUgf0yfFYGCTntSUh+
+	GBCHTw4etTiFQxTiCjCyMOt9FcaXkH0rIqam/EI6x34SFC7Dp94lPWu2Uf1wH3ch+3Zd
+	yuvw==
+X-Gm-Message-State: AHQUAub42tIkxG14iCYW+6D7dGaJVFCN1dDHi0IBLag2cj3AxHSrmhcl
+	Vum1C96ogteQdYzBy9rE1O8J4C5DSy4CaCd5dcwdaQ==
+X-Google-Smtp-Source: AHgI3IalkUY4OHBfo0K5dMLhiFJUUDQWZ96xOy5KddNAuRSc64Vkniu4k+l9a79EWP1CFvWAerT75VdXDd51G5nPSV4=
+X-Received: by 2002:aca:2dc9:: with SMTP id t192mr7637oit.325.1549296097454;
+	Mon, 04 Feb 2019 08:01:37 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <1549268743-18502-1-git-send-email-thuth@redhat.com>
+	<87o97r4s8l.fsf@zen.linaroharston>
+In-Reply-To: <87o97r4s8l.fsf@zen.linaroharston>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Feb 2019 16:01:26 +0000
+Message-ID: <CAFEAcA9kiRkx0-MRTrvUcDQ+wGZ9KGS44-2+0tSsjgbJY83ieg@mail.gmail.com>
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, Fam Zheng <fam@euphon.net>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, 
+	Gerd Hoffmann <kraxel@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::441
-Subject: Re: [Qemu-trivial] [PATCH] tests/docker/test-mingw and docs: Remove
- --with-sdlabi=2.0
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/docker/test-mingw and
+ docs: Remove --with-sdlabi=2.0
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,55 +69,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Feb 2019 13:21:56 -0000
+X-List-Received-Date: Mon, 04 Feb 2019 16:02:28 -0000
 
-
-Thomas Huth <thuth@redhat.com> writes:
-
-> Patchew currently reports failures with the mingw docker test - this
-> is due to --with-sdlabi=3D2.0 configure flag which does not exist anymore.
-> Remove this remainder from the docker test and the docs now.
+On Mon, 4 Feb 2019 at 13:35, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
 >
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-
-Acked-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-I'm happy for this to be applied directly by Peter.
-
-> ---
->  docs/multiseat.txt      | 2 +-
->  tests/docker/test-mingw | 3 +--
->  2 files changed, 2 insertions(+), 3 deletions(-)
 >
-> diff --git a/docs/multiseat.txt b/docs/multiseat.txt
-> index 8dde36c..11850c9 100644
-> --- a/docs/multiseat.txt
-> +++ b/docs/multiseat.txt
-> @@ -9,7 +9,7 @@ First you must compile qemu with a user interface support=
-ing
->  multihead/multiseat and input event routing.  Right now this
->  list includes sdl2, gtk (both 2+3) and vnc:
+> Thomas Huth <thuth@redhat.com> writes:
 >
-> -  ./configure --enable-sdl --with-sdlabi=3D2.0
-> +  ./configure --enable-sdl
+> > Patchew currently reports failures with the mingw docker test - this
+> > is due to --with-sdlabi=3D2.0 configure flag which does not exist anymo=
+re.
+> > Remove this remainder from the docker test and the docs now.
+> >
+> > Signed-off-by: Thomas Huth <thuth@redhat.com>
 >
->  or
+> Acked-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 >
-> diff --git a/tests/docker/test-mingw b/tests/docker/test-mingw
-> index b078f22..4b84cfe 100755
-> --- a/tests/docker/test-mingw
-> +++ b/tests/docker/test-mingw
-> @@ -27,8 +27,7 @@ for prefix in x86_64-w64-mingw32- i686-w64-mingw32-; do
->          --enable-curl \
->          --enable-vnc \
->          --enable-bzip2 \
-> -        --enable-guest-agent \
-> -        --with-sdlabi=3D2.0
-> +        --enable-guest-agent
->      install_qemu
->      make clean
+> I'm happy for this to be applied directly by Peter.
 
+Applied to master as a buildfix, thanks.
 
---
-Alex Benn=C3=A9e
+-- PMM
 
