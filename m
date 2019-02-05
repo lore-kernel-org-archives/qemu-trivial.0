@@ -1,58 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqzsW-0004CM-6F
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Feb 2019 07:31:04 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35944)
+	id 1gr0V3-0002xo-Nb
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Feb 2019 08:10:53 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44735)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1gqzsS-0004BL-P1
-	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 07:31:03 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gr0V0-0002sS-TR
+	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 08:10:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1gqzsQ-0001JE-EX
-	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 07:31:00 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45746)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1gqzsC-00019Y-J6; Tue, 05 Feb 2019 07:30:45 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7278A3DBF8;
-	Tue,  5 Feb 2019 12:30:40 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-113.ams2.redhat.com
-	[10.36.116.113])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5AB3579C01;
-	Tue,  5 Feb 2019 12:30:18 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id D4FD211386C5; Tue,  5 Feb 2019 13:30:16 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,  qemu-riscv@nongnu.org,  QEMU
-	Trivial <qemu-trivial@nongnu.org>,  QEMU Developers
-	<qemu-devel@nongnu.org>,  Stefano Garzarella <sgarzare@redhat.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>, David Gibson
-	<david@gibson.dropbear.id.au>
-References: <20190204211204.27321-1-philmd@redhat.com>
-	<20190204211204.27321-4-philmd@redhat.com>
-	<87a7jaag7q.fsf@dusky.pond.sub.org>
-	<CAFEAcA8-YDTnszv7Mk+F+OAxGJSmdu4yEio1j-E477HNbh-SOQ@mail.gmail.com>
-	<20190205110417.GF20321@redhat.com>
-Date: Tue, 05 Feb 2019 13:30:16 +0100
-In-Reply-To: <20190205110417.GF20321@redhat.com> ("Daniel P. =?utf-8?Q?Ber?=
-	=?utf-8?Q?rang=C3=A9=22's?=
-	message of "Tue, 5 Feb 2019 11:04:17 +0000")
-Message-ID: <87bm3qto2v.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	(envelope-from <peter.maydell@linaro.org>) id 1gr0Tn-0004ij-GP
+	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 08:09:36 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:33409)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gr0Tn-0004eu-Ay
+	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 08:09:35 -0500
+Received: by mail-ot1-x343.google.com with SMTP id i20so5590205otl.0
+	for <qemu-trivial@nongnu.org>; Tue, 05 Feb 2019 05:09:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=Y7bvlR0OPUQvpwDi78s+Y1BnOKRmObf0M4vBSCVIPCg=;
+	b=QAf4j/jGytcvPJRQR1B9+wBP3PdCquUHgTO3YN13FqwQgDyqrLmAEiy3qCDh0Dr/G8
+	oGnAin2hpwSU2Zk4da1GKDgdZYryBEVTi/M1X3ZsIOVf9PPGacB9ODHduvfSgH9w5bP0
+	vZ6fR3CnUQedP4CddyTT26SaA2yDUhNjkRpvp3qc8XWwPPHP4gYPDi9WdDEqAIBlnWOn
+	+LCGC01+i5sjUF6GWkhKS/42UH9LDLhDkK8jpTzRUVE3SenKeCYMmb7uz4Wn838j1u/5
+	gonXt2UCmdJW4P69tbQbCc7GLc/kar1pZJIoLDYelO5SIy0M8G3T2+s80wr1d+Qx79bF
+	6GnQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=Y7bvlR0OPUQvpwDi78s+Y1BnOKRmObf0M4vBSCVIPCg=;
+	b=i039dBJp86IsiarNiB1/c9boHKi1gwueHER7SGlJSZ+eMIRis0gJwhZE98MrGME0Qk
+	318nxpFukK2AZpB4m+tBDV80al1ncvBhS+wUBHGMtoC9P+rbmrXadCot+I5xXGLvLJ5R
+	4oo6OtGFClMZz6W/fGrkuPpefQhCQZ9tEHh8sjOcUjJlp4ffg31RWbs1KR7+O0GKO6qI
+	TcCJVdsvEB5DHh0tP7uvgrMgDp5CusoZq2URpT+Mlv4BF+WrotExqxQY2+BncpoChCM5
+	TEHk0o03tQQNyEDA5IwMxhfBybq62E/hidlnBihv21HgmX3o7v/hiIQ+hEHhBb6PC6yL
+	bI4Q==
+X-Gm-Message-State: AHQUAuYh5woPBSoGBz20zJp/Om0dReV8NJ/qANAzosuVbWxceSeJaUiJ
+	LJGDABOSTRzYvm3QSc/a/yUoflbDhA5/DkC9eizgGQ==
+X-Google-Smtp-Source: AHgI3IY7Pz+OcCRTMQpqNEmhGhBp9yiyiG/PwHulARtO/0DDdLLohA1jtdBE+LpJu/gD459+eo4dk5catAxcLOq3gTk=
+X-Received: by 2002:a9d:3a22:: with SMTP id j31mr2588483otc.238.1549372163149; 
+	Tue, 05 Feb 2019 05:09:23 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Tue, 05 Feb 2019 12:30:40 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 3/3] util/cutils: Move
- function documentations to the header
+References: <1549371525-29899-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <1549371525-29899-1-git-send-email-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 5 Feb 2019 13:09:10 +0000
+Message-ID: <CAFEAcA9PKSW92GJO1KcBEQcbGY7TB4pqaW8qSe9j6JJZ7Z2MKA@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Luc Michel <luc.michel@greensocs.com>,
+	Alistair Francis <alistair.francis@wdc.com>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-trivial] [PATCH] hw/cpu/cluster: Mark the cpu-cluster
+ device with user_creatable = false
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,42 +70,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Feb 2019 12:31:03 -0000
+X-List-Received-Date: Tue, 05 Feb 2019 13:10:51 -0000
 
-Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
-
-> On Tue, Feb 05, 2019 at 10:56:51AM +0000, Peter Maydell wrote:
->> On Tue, 5 Feb 2019 at 06:44, Markus Armbruster <armbru@redhat.com> wrote:
->> > There are two justifiable function comment placement styles: (1) next =
-to
->> > definition, and (2) next to declaration if it's in a header, else next
->> > to definition.
->> >
->> > The rationale for the latter is having the headers do double-duty as
->> > interface documentation.
->> >
->> > The rationale for the former is consistently placing the function
->> > comments close to the code gives them a fighting chance to actually
->> > match the code.
->> >
->> > I'm in the "next to definition" camp.  If you want concise interface
->> > specification, use something like Sphinx.
->>=20
->> I'm in the "next to declaration" camp. I don't want to have
->> to wade into your implementation to find out what it does:
->> document it for me in the interface, please.
+On Tue, 5 Feb 2019 at 12:58, Thomas Huth <thuth@redhat.com> wrote:
 >
-> I'm already looking at the header file to identify the function signature,
-> having the explanation / docs at the same place is desirable, especially
-> when the C file name is completely different from the header file name
-> forcing me to go grepping the code base to find where it is implemented.
-
-If going to a definition of takes you more than a few keystrokes, your
-editor is grossly deficient.
-
-> The .c files are already volumous in size so not amenable to browsing
-> for the purpose of reading the docs.
+> The device can not be instantiated by the user and QEMU currently
+> aborts when you try to use it:
 >
-> Regards,
-> Daniel
+> $ x86_64-softmmu/qemu-system-x86_64 -device cpu-cluster
+> qemu-system-x86_64: hw/cpu/cluster.c:73: cpu_cluster_realize:
+>  Assertion `cbdata.cpu_count > 0' failed.
+> Aborted (core dumped)
+>
+> Since this is an internal device only, mark it with user_creatable = false.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/cpu/cluster.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/hw/cpu/cluster.c b/hw/cpu/cluster.c
+> index 25f9070..6f5f037 100644
+> --- a/hw/cpu/cluster.c
+> +++ b/hw/cpu/cluster.c
+> @@ -79,6 +79,9 @@ static void cpu_cluster_class_init(ObjectClass *klass, void *data)
+>
+>      dc->props = cpu_cluster_properties;
+>      dc->realize = cpu_cluster_realize;
+> +
+> +    /* This is not directly for users, CPU children must be attached by code */
+> +    dc->user_creatable = false;
+>  }
+>
+>  static const TypeInfo cpu_cluster_type_info = {
+> --
+
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+Would it be possible to add a 'make check' test that every device
+we claim to be user-creatable can be created without crashing ?
+
+thanks
+-- PMM
 
