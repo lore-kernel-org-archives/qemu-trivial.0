@@ -1,93 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqxFf-0003PO-6p
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Feb 2019 04:42:47 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49821)
+	id 1gqy2H-0002Gr-T5
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Feb 2019 05:33:01 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33905)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gqxFd-0003Ny-LE
-	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 04:42:46 -0500
+	(envelope-from <cohuck@redhat.com>) id 1gqy2F-0002GC-Qp
+	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 05:33:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gqxFc-0007QP-G6
-	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 04:42:45 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46296)
+	(envelope-from <cohuck@redhat.com>) id 1gqy2D-0001Pq-SI
+	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 05:32:59 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:52652)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gqxFU-0007Ls-3w; Tue, 05 Feb 2019 04:42:38 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
+	id 1gqy26-0007wZ-CW; Tue, 05 Feb 2019 05:32:50 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9B7C123E6C1;
-	Tue,  5 Feb 2019 09:42:33 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-166.ams2.redhat.com [10.36.116.166])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1B27560BEE;
-	Tue,  5 Feb 2019 09:42:27 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>
-References: <20190204210433.26088-1-philmd@redhat.com>
-	<20190204210433.26088-3-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <67868e05-4481-707a-0311-617a388c8b50@redhat.com>
-Date: Tue, 5 Feb 2019 10:42:26 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	by mx1.redhat.com (Postfix) with ESMTPS id 31F11A7E1;
+	Tue,  5 Feb 2019 10:32:32 +0000 (UTC)
+Received: from gondolin (dhcp-192-187.str.redhat.com [10.33.192.187])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 82C31183D4;
+	Tue,  5 Feb 2019 10:32:21 +0000 (UTC)
+Date: Tue, 5 Feb 2019 11:32:19 +0100
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
+	Stefano Garzarella <sgarzare@redhat.com>, David Gibson
+	<david@gibson.dropbear.id.au>, Halil Pasic <pasic@linux.ibm.com>, Christian
+	Borntraeger <borntraeger@de.ibm.com>, Richard Henderson <rth@twiddle.net>, 
+	David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Fam Zheng <fam@euphon.net>, Markus Armbruster <armbru@redhat.com>, Michael
+	Roth <mdroth@linux.vnet.ibm.com>, Michael Clark <mjc@sifive.com>, Palmer
+	Dabbelt <palmer@sifive.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>, Bastian Koppelmann
+	<kbastian@mail.uni-paderborn.de>, Gerd Hoffmann <kraxel@redhat.com>,
+	qemu-s390x@nongnu.org (open list:S390 Virtio-ccw), qemu-ppc@nongnu.org
+	(open list:PowerPC)
+Message-ID: <20190205113219.0c1311e0.cohuck@redhat.com>
+In-Reply-To: <20190204211204.27321-3-philmd@redhat.com>
+References: <20190204211204.27321-1-philmd@redhat.com>
+	<20190204211204.27321-3-philmd@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-In-Reply-To: <20190204210433.26088-3-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.29]);
-	Tue, 05 Feb 2019 09:42:33 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	Tue, 05 Feb 2019 10:32:33 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH 2/3] hw/unicore32/puv3: Drop
- useless inclusion of "hw/i386/pc.h"
+Subject: Re: [Qemu-trivial] [PATCH v3 2/3] util/cutils: Move ctype macros to
+ "cutils.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,31 +63,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Feb 2019 09:42:46 -0000
+X-List-Received-Date: Tue, 05 Feb 2019 10:33:00 -0000
 
-On 2019-02-04 22:04, Philippe Mathieu-Daud=C3=A9 wrote:
-> In 47973a2dbf we split the last generic chipset out of the PC
-> board, but forgot to remove the include of "hw/i386/pc.h".
-> Since it is now unused, remove it.
+On Mon,  4 Feb 2019 22:12:03 +0100
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+
+> Introduced in cd390083ad1, these macros don't need to be in
+> a generic header.
+> Add documentation to justify their use.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+> Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 > ---
->  hw/unicore32/puv3.c | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/hw/unicore32/puv3.c b/hw/unicore32/puv3.c
-> index 830fe3face..b42e600f74 100644
-> --- a/hw/unicore32/puv3.c
-> +++ b/hw/unicore32/puv3.c
-> @@ -15,7 +15,6 @@
->  #include "ui/console.h"
->  #include "hw/boards.h"
->  #include "hw/loader.h"
-> -#include "hw/i386/pc.h"
->  #include "sysemu/qtest.h"
-> =20
->  #undef DEBUG_PUV3
->=20
+> v2: Fixed checkpatch warnings (tabs)
+> ---
+>  hw/core/bus.c              |  2 +-
+>  hw/core/qdev-properties.c  |  1 +
+>  hw/s390x/s390-virtio-ccw.c |  1 +
+>  hw/scsi/scsi-generic.c     |  2 +-
+>  include/qemu-common.h      | 16 ----------------
+>  include/qemu/cutils.h      | 25 +++++++++++++++++++++++++
+>  qapi/qapi-util.c           |  2 +-
+>  qobject/json-parser.c      |  1 -
+>  target/ppc/monitor.c       |  1 +
+>  target/riscv/cpu.c         |  1 +
+>  ui/keymaps.c               |  1 +
+>  util/id.c                  |  2 +-
+>  util/readline.c            |  1 -
+>  13 files changed, 34 insertions(+), 22 deletions(-)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+> diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
+> index 9ee40470e3..644f2d75bd 100644
+> --- a/include/qemu/cutils.h
+> +++ b/include/qemu/cutils.h
+> @@ -3,6 +3,31 @@
+> =20
+>  #include "qemu/fprintf-fn.h"
+> =20
+> +/**
+> + * unsigned ctype macros:
+> + *
+> + * The standards require that the argument for these functions
+> + * is either EOF or a value that is representable in the type
+> + * unsigned char. If the argument is of type char, it must be
+> + * cast to unsigned char. This is what these macros do,
+> + * avoiding 'signed to unsigned' conversion warnings.
+
+I'd add
+
+"Note that these macros are intended for use with char arguments only,
+they cannot handle EOF."
+
+> + */
+> +#define qemu_isalnum(c)     isalnum((unsigned char)(c))
+> +#define qemu_isalpha(c)     isalpha((unsigned char)(c))
+> +#define qemu_iscntrl(c)     iscntrl((unsigned char)(c))
+> +#define qemu_isdigit(c)     isdigit((unsigned char)(c))
+> +#define qemu_isgraph(c)     isgraph((unsigned char)(c))
+> +#define qemu_islower(c)     islower((unsigned char)(c))
+> +#define qemu_isprint(c)     isprint((unsigned char)(c))
+> +#define qemu_ispunct(c)     ispunct((unsigned char)(c))
+> +#define qemu_isspace(c)     isspace((unsigned char)(c))
+> +#define qemu_isupper(c)     isupper((unsigned char)(c))
+> +#define qemu_isxdigit(c)    isxdigit((unsigned char)(c))
+> +#define qemu_tolower(c)     tolower((unsigned char)(c))
+> +#define qemu_toupper(c)     toupper((unsigned char)(c))
+> +#define qemu_isascii(c)     isascii((unsigned char)(c))
+> +#define qemu_toascii(c)     toascii((unsigned char)(c))
+> +
+>  /**
+>   * pstrcpy:
+>   * @buf: buffer to copy string into
+
+With that added,
+
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
