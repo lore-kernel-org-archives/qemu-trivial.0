@@ -1,43 +1,92 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqrEO-0007bV-7l
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 22:17:04 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42670)
+	id 1gqrN6-00033R-Pa
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 22:26:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44978)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gqrEM-0007Zr-6a
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 22:17:03 -0500
+	(envelope-from <thuth@redhat.com>) id 1gqrN4-00031T-Ic
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 22:26:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gqr6L-0002cE-GX
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 22:08:47 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:38246)
+	(envelope-from <thuth@redhat.com>) id 1gqrN3-0003HO-Ur
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 22:26:02 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:46376)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gqr6B-0002ZH-TR; Mon, 04 Feb 2019 22:08:37 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1gqrN0-0003EC-Qc; Mon, 04 Feb 2019 22:25:58 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 03E0886673;
-	Tue,  5 Feb 2019 03:08:35 +0000 (UTC)
-Received: from thuth.com (ovpn-116-65.phx2.redhat.com [10.3.116.65])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A7C8F60F8A;
-	Tue,  5 Feb 2019 03:08:33 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5E2674E93D;
+	Tue,  5 Feb 2019 03:25:57 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-65.phx2.redhat.com [10.3.116.65])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 507EA62699;
+	Tue,  5 Feb 2019 03:25:51 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+References: <20190204204517.23698-1-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	=?UTF-8?q?K=C5=91v=C3=A1g=C3=B3=20Zolt=C3=A1n?= <dirty.ice.hu@gmail.com>
-Date: Tue,  5 Feb 2019 04:08:20 +0100
-Message-Id: <1549336101-17623-2-git-send-email-thuth@redhat.com>
-In-Reply-To: <1549336101-17623-1-git-send-email-thuth@redhat.com>
-References: <1549336101-17623-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <db084f78-35f8-cc5f-4bf6-ffdcdce326bc@redhat.com>
+Date: Tue, 5 Feb 2019 04:25:50 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
+MIME-Version: 1.0
+In-Reply-To: <20190204204517.23698-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Tue, 05 Feb 2019 03:08:35 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Tue, 05 Feb 2019 03:25:57 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH 1/2] audio/sdlaudio: Remove the semaphore code
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/input/tsc210x: Fix
+ building with no verbosity
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,262 +98,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Feb 2019 03:17:03 -0000
+X-List-Received-Date: Tue, 05 Feb 2019 03:26:03 -0000
 
-The semaphore code was only working with SDL1.2 - with SDL2, it causes
-a deadlock. Since we've removed support for SDL1.2 recently, we can
-now completely remove the semaphore code from sdlaudio.c.
+On 2019-02-04 21:45, Philippe Mathieu-Daud=C3=A9 wrote:
+> When building with TSC_VERBOSE not defined, we get:
+>       CC      arm-softmmu/hw/input/tsc210x.o
+>     hw/input/tsc210x.c: In function =E2=80=98tsc2102_data_register_writ=
+e=E2=80=99:
+>     hw/input/tsc210x.c:554:5: error: label at end of compound statement
+>          default:
+>          ^~~~~~~
+>     hw/input/tsc210x.c: In function =E2=80=98tsc2102_control_register_w=
+rite=E2=80=99:
+>     hw/input/tsc210x.c:638:5: error: label at end of compound statement
+>          bad_reg:
+>          ^~~~~~~
+>     hw/input/tsc210x.c: In function =E2=80=98tsc2102_audio_register_wri=
+te=E2=80=99:
+>     hw/input/tsc210x.c:766:5: error: label at end of compound statement
+>          default:
+>          ^~~~~~~
+>     make[1]: *** [rules.mak:69: hw/input/tsc210x.o] Error 1
+>=20
+> Fix this by replacing the culprit fprintf(stderr) calls by a more
+> recent API: qemu_log_mask(LOG_GUEST_ERROR). Other fprintf() calls
+> are left untouched.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/input/tsc210x.c | 18 ++++++------------
+>  1 file changed, 6 insertions(+), 12 deletions(-)
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- audio/sdlaudio.c | 145 ++-----------------------------------------------------
- 1 file changed, 5 insertions(+), 140 deletions(-)
-
-diff --git a/audio/sdlaudio.c b/audio/sdlaudio.c
-index 9db5ac9..53bfdbf 100644
---- a/audio/sdlaudio.c
-+++ b/audio/sdlaudio.c
-@@ -38,14 +38,9 @@
- #define AUDIO_CAP "sdl"
- #include "audio_int.h"
- 
--#define USE_SEMAPHORE (SDL_MAJOR_VERSION < 2)
--
- typedef struct SDLVoiceOut {
-     HWVoiceOut hw;
-     int live;
--#if USE_SEMAPHORE
--    int rpos;
--#endif
-     int decr;
- } SDLVoiceOut;
- 
-@@ -57,10 +52,6 @@ static struct {
- 
- static struct SDLAudioState {
-     int exit;
--#if USE_SEMAPHORE
--    SDL_mutex *mutex;
--    SDL_sem *sem;
--#endif
-     int initialized;
-     bool driver_created;
- } glob_sdl;
-@@ -77,66 +68,6 @@ static void GCC_FMT_ATTR (1, 2) sdl_logerr (const char *fmt, ...)
-     AUD_log (AUDIO_CAP, "Reason: %s\n", SDL_GetError ());
- }
- 
--static int sdl_lock (SDLAudioState *s, const char *forfn)
--{
--#if USE_SEMAPHORE
--    if (SDL_LockMutex (s->mutex)) {
--        sdl_logerr ("SDL_LockMutex for %s failed\n", forfn);
--        return -1;
--    }
--#else
--    SDL_LockAudio();
--#endif
--
--    return 0;
--}
--
--static int sdl_unlock (SDLAudioState *s, const char *forfn)
--{
--#if USE_SEMAPHORE
--    if (SDL_UnlockMutex (s->mutex)) {
--        sdl_logerr ("SDL_UnlockMutex for %s failed\n", forfn);
--        return -1;
--    }
--#else
--    SDL_UnlockAudio();
--#endif
--
--    return 0;
--}
--
--static int sdl_post (SDLAudioState *s, const char *forfn)
--{
--#if USE_SEMAPHORE
--    if (SDL_SemPost (s->sem)) {
--        sdl_logerr ("SDL_SemPost for %s failed\n", forfn);
--        return -1;
--    }
--#endif
--
--    return 0;
--}
--
--#if USE_SEMAPHORE
--static int sdl_wait (SDLAudioState *s, const char *forfn)
--{
--    if (SDL_SemWait (s->sem)) {
--        sdl_logerr ("SDL_SemWait for %s failed\n", forfn);
--        return -1;
--    }
--    return 0;
--}
--#endif
--
--static int sdl_unlock_and_post (SDLAudioState *s, const char *forfn)
--{
--    if (sdl_unlock (s, forfn)) {
--        return -1;
--    }
--
--    return sdl_post (s, forfn);
--}
--
- static int aud_to_sdlfmt (audfmt_e fmt)
- {
-     switch (fmt) {
-@@ -243,9 +174,9 @@ static int sdl_open (SDL_AudioSpec *req, SDL_AudioSpec *obt)
- static void sdl_close (SDLAudioState *s)
- {
-     if (s->initialized) {
--        sdl_lock (s, "sdl_close");
-+        SDL_LockAudio();
-         s->exit = 1;
--        sdl_unlock_and_post (s, "sdl_close");
-+        SDL_UnlockAudio();
-         SDL_PauseAudio (1);
-         SDL_CloseAudio ();
-         s->initialized = 0;
-@@ -267,30 +198,10 @@ static void sdl_callback (void *opaque, Uint8 *buf, int len)
-         int to_mix, decr;
- 
-         /* dolog ("in callback samples=%d\n", samples); */
--#if USE_SEMAPHORE
--        sdl_wait (s, "sdl_callback");
--        if (s->exit) {
--            return;
--        }
--
--        if (sdl_lock (s, "sdl_callback")) {
--            return;
--        }
--
--        if (audio_bug(__func__, sdl->live < 0 || sdl->live > hw->samples)) {
--            dolog ("sdl->live=%d hw->samples=%d\n",
--                   sdl->live, hw->samples);
--            return;
--        }
- 
--        if (!sdl->live) {
--            goto again;
--        }
--#else
-         if (s->exit || !sdl->live) {
-             break;
-         }
--#endif
- 
-         /* dolog ("in callback live=%d\n", live); */
-         to_mix = audio_MIN (samples, sdl->live);
-@@ -301,33 +212,20 @@ static void sdl_callback (void *opaque, Uint8 *buf, int len)
- 
-             /* dolog ("in callback to_mix %d, chunk %d\n", to_mix, chunk); */
-             hw->clip (buf, src, chunk);
--#if USE_SEMAPHORE
--            sdl->rpos = (sdl->rpos + chunk) % hw->samples;
--#else
-             hw->rpos = (hw->rpos + chunk) % hw->samples;
--#endif
-             to_mix -= chunk;
-             buf += chunk << hw->info.shift;
-         }
-         samples -= decr;
-         sdl->live -= decr;
-         sdl->decr += decr;
--
--#if USE_SEMAPHORE
--    again:
--        if (sdl_unlock (s, "sdl_callback")) {
--            return;
--        }
--#endif
-     }
-     /* dolog ("done len=%d\n", len); */
- 
--#if (SDL_MAJOR_VERSION >= 2)
-     /* SDL2 does not clear the remaining buffer for us, so do it on our own */
-     if (samples) {
-         memset(buf, 0, samples << hw->info.shift);
-     }
--#endif
- }
- 
- static int sdl_write_out (SWVoiceOut *sw, void *buf, int len)
-@@ -339,11 +237,8 @@ static int sdl_run_out (HWVoiceOut *hw, int live)
- {
-     int decr;
-     SDLVoiceOut *sdl = (SDLVoiceOut *) hw;
--    SDLAudioState *s = &glob_sdl;
- 
--    if (sdl_lock (s, "sdl_run_out")) {
--        return 0;
--    }
-+    SDL_LockAudio();
- 
-     if (sdl->decr > live) {
-         ldebug ("sdl->decr %d live %d sdl->live %d\n",
-@@ -355,19 +250,10 @@ static int sdl_run_out (HWVoiceOut *hw, int live)
-     decr = audio_MIN (sdl->decr, live);
-     sdl->decr -= decr;
- 
--#if USE_SEMAPHORE
--    sdl->live = live - decr;
--    hw->rpos = sdl->rpos;
--#else
-     sdl->live = live;
--#endif
- 
--    if (sdl->live > 0) {
--        sdl_unlock_and_post (s, "sdl_run_out");
--    }
--    else {
--        sdl_unlock (s, "sdl_run_out");
--    }
-+    SDL_UnlockAudio();
-+
-     return decr;
- }
- 
-@@ -449,23 +335,6 @@ static void *sdl_audio_init (void)
-         return NULL;
-     }
- 
--#if USE_SEMAPHORE
--    s->mutex = SDL_CreateMutex ();
--    if (!s->mutex) {
--        sdl_logerr ("Failed to create SDL mutex\n");
--        SDL_QuitSubSystem (SDL_INIT_AUDIO);
--        return NULL;
--    }
--
--    s->sem = SDL_CreateSemaphore (0);
--    if (!s->sem) {
--        sdl_logerr ("Failed to create SDL semaphore\n");
--        SDL_DestroyMutex (s->mutex);
--        SDL_QuitSubSystem (SDL_INIT_AUDIO);
--        return NULL;
--    }
--#endif
--
-     s->driver_created = true;
-     return s;
- }
-@@ -474,10 +343,6 @@ static void sdl_audio_fini (void *opaque)
- {
-     SDLAudioState *s = opaque;
-     sdl_close (s);
--#if USE_SEMAPHORE
--    SDL_DestroySemaphore (s->sem);
--    SDL_DestroyMutex (s->mutex);
--#endif
-     SDL_QuitSubSystem (SDL_INIT_AUDIO);
-     s->driver_created = false;
- }
--- 
-1.8.3.1
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
