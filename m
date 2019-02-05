@@ -1,33 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqxEn-0002x3-Q0
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Feb 2019 04:41:53 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49614)
+	id 1gqxFf-0003PO-6p
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Feb 2019 04:42:47 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49821)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gqxEh-0002t4-Gz
-	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 04:41:51 -0500
+	(envelope-from <thuth@redhat.com>) id 1gqxFd-0003Ny-LE
+	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 04:42:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gqxEg-00071f-Qr
-	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 04:41:47 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:41964)
+	(envelope-from <thuth@redhat.com>) id 1gqxFc-0007QP-G6
+	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 04:42:45 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:46296)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gqxEd-0006zB-S3; Tue, 05 Feb 2019 04:41:44 -0500
+	id 1gqxFU-0007Ls-3w; Tue, 05 Feb 2019 04:42:38 -0500
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
 	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7AE54C01DDE9;
-	Tue,  5 Feb 2019 09:41:40 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9B7C123E6C1;
+	Tue,  5 Feb 2019 09:42:33 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-166.ams2.redhat.com [10.36.116.166])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7D24B60BEE;
-	Tue,  5 Feb 2019 09:41:34 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1B27560BEE;
+	Tue,  5 Feb 2019 09:42:27 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
-	qemu-ppc@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: Guan Xuetao <gxt@mprc.pku.edu.cn>
 References: <20190204210433.26088-1-philmd@redhat.com>
-	<20190204210433.26088-2-philmd@redhat.com>
+	<20190204210433.26088-3-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -73,22 +71,22 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <991bd70a-0587-20d2-edbb-f668884157a5@redhat.com>
-Date: Tue, 5 Feb 2019 10:41:32 +0100
+Message-ID: <67868e05-4481-707a-0311-617a388c8b50@redhat.com>
+Date: Tue, 5 Feb 2019 10:42:26 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <20190204210433.26088-2-philmd@redhat.com>
+In-Reply-To: <20190204210433.26088-3-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Tue, 05 Feb 2019 09:41:40 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 05 Feb 2019 09:42:33 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH 1/3] hw/sparc64/sun4u: Drop
+Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH 2/3] hw/unicore32/puv3: Drop
  useless inclusion of "hw/i386/pc.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -101,7 +99,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Feb 2019 09:41:51 -0000
+X-List-Received-Date: Tue, 05 Feb 2019 09:42:46 -0000
 
 On 2019-02-04 22:04, Philippe Mathieu-Daud=C3=A9 wrote:
 > In 47973a2dbf we split the last generic chipset out of the PC
@@ -110,21 +108,22 @@ On 2019-02-04 22:04, Philippe Mathieu-Daud=C3=A9 wrote:
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  hw/sparc64/sun4u.c | 1 -
+>  hw/unicore32/puv3.c | 1 -
 >  1 file changed, 1 deletion(-)
 >=20
-> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-> index f76b19e4e9..fdf3f14a29 100644
-> --- a/hw/sparc64/sun4u.c
-> +++ b/hw/sparc64/sun4u.c
-> @@ -33,7 +33,6 @@
->  #include "hw/pci/pci_bus.h"
->  #include "hw/pci/pci_host.h"
->  #include "hw/pci-host/sabre.h"
+> diff --git a/hw/unicore32/puv3.c b/hw/unicore32/puv3.c
+> index 830fe3face..b42e600f74 100644
+> --- a/hw/unicore32/puv3.c
+> +++ b/hw/unicore32/puv3.c
+> @@ -15,7 +15,6 @@
+>  #include "ui/console.h"
+>  #include "hw/boards.h"
+>  #include "hw/loader.h"
 > -#include "hw/i386/pc.h"
->  #include "hw/char/serial.h"
->  #include "hw/char/parallel.h"
->  #include "hw/timer/m48t59.h"
+>  #include "sysemu/qtest.h"
+> =20
+>  #undef DEBUG_PUV3
+>=20
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
