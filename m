@@ -1,59 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gqqmD-0002WH-9A
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 21:47:57 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38273)
+	id 1gqqoN-0003xS-SN
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Feb 2019 21:50:11 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:38850)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gqqmB-0002U9-5E
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 21:47:56 -0500
+	(envelope-from <eblake@redhat.com>) id 1gqqoL-0003tw-EJ
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 21:50:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1gqqm9-0001Gn-LH
-	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 21:47:55 -0500
-Received: from ozlabs.org ([2401:3900:2:1::2]:52809)
+	(envelope-from <eblake@redhat.com>) id 1gqqoK-00034y-Lv
+	for qemu-trivial@nongnu.org; Mon, 04 Feb 2019 21:50:09 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:38446)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1gqqlh-0000wk-4C; Mon, 04 Feb 2019 21:47:27 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 43tprd0zRcz9sN9; Tue,  5 Feb 2019 13:47:13 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1549334833;
-	bh=dEgJ+YZmoxaW+UdfBU/Z0sxquD82+I6jQ39zxTvc49I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=owWNUwNQJVuhQ3IGA/3jc/FxmwGa/z0GnHkUHso97TpKb6jd1q1CBlc1olgSdOkoo
-	8BkR7hZJXRIi0eB843id3Q22FhnZnCAaV7BVJD/VrMj8IUn6fVdoWZaZ5rL3bMc8jO
-	+2r8oR4S00mtWwjmOdpbEd1AQRtLXG2mvMNjZ9mA=
-Date: Tue, 5 Feb 2019 11:42:35 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Richard Henderson <rth@twiddle.net>, Andrew Jeffery <andrew@aj.id.au>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
-	Jan Kiszka <jan.kiszka@web.de>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
-	Michael Walle <michael@walle.cc>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org,
-	Peter Chubb <peter.chubb@nicta.com.au>,
-	Beniamino Galvani <b.galvani@gmail.com>,
-	BALATON Zoltan <balaton@eik.bme.hu>, Magnus Damm <magnus.damm@gmail.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
-	Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	qemu-arm@nongnu.org, Jason Wang <jasowang@redhat.com>,
-	Rob Herring <robh@kernel.org>, Thomas Huth <thuth@redhat.com>
-Message-ID: <20190205004235.GA22661@umbus.fritz.box>
-References: <20190204231815.29661-1-philmd@redhat.com>
-	<20190204231815.29661-3-philmd@redhat.com>
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1gqqoI-00032X-My; Mon, 04 Feb 2019 21:50:06 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5BF96C01DDE0;
+	Tue,  5 Feb 2019 02:50:05 +0000 (UTC)
+Received: from [10.3.116.162] (ovpn-116-162.phx2.redhat.com [10.3.116.162])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id CC84B6EA31;
+	Tue,  5 Feb 2019 02:50:02 +0000 (UTC)
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, philmd@redhat.com
+References: <20190205022502.11654-1-eblake@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=eblake@redhat.com; keydata=
+	xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
+	xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
+	TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
+	GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
+	sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
+	AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
+	CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
+	RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
+	wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
+	Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
+	gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
+	pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
+	zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
+	pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
+	3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
+	NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
+	cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
+	SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
+	I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
+	mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
+	Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
+	2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
+Organization: Red Hat, Inc.
+Message-ID: <0888ceaa-f0e0-7ffc-03e1-b223bb65fd69@redhat.com>
+Date: Mon, 4 Feb 2019 20:50:01 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
+In-Reply-To: <20190205022502.11654-1-eblake@redhat.com>
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="fdj2RfSjLxBAspz7"
-Content-Disposition: inline
-In-Reply-To: <20190204231815.29661-3-philmd@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-trivial] [PATCH v2 02/11] hw: Remove unused
- 'hw/devices.h' include
+	protocol="application/pgp-signature";
+	boundary="HDgKmNrdjzeRA4hmJXq4Yf8LG8bWSrCYu"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 05 Feb 2019 02:50:05 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] checkpatch: Flag
+ suspicious attribution lines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,353 +78,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Feb 2019 02:47:56 -0000
+X-List-Received-Date: Tue, 05 Feb 2019 02:50:10 -0000
 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--HDgKmNrdjzeRA4hmJXq4Yf8LG8bWSrCYu
+Content-Type: multipart/mixed; boundary="6yU97I4vNZMBvPnwtdrJVT2mft4MBZP4J";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, philmd@redhat.com
+Message-ID: <0888ceaa-f0e0-7ffc-03e1-b223bb65fd69@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH v3] checkpatch: Flag suspicious attribution
+ lines
+References: <20190205022502.11654-1-eblake@redhat.com>
+In-Reply-To: <20190205022502.11654-1-eblake@redhat.com>
 
---fdj2RfSjLxBAspz7
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+--6yU97I4vNZMBvPnwtdrJVT2mft4MBZP4J
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Feb 05, 2019 at 12:18:06AM +0100, Philippe Mathieu-Daud=E9 wrote:
-> Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
-> Tested-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-
-ppc parts
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
-> ---
->  hw/alpha/typhoon.c                       | 1 -
->  hw/arm/allwinner-a10.c                   | 1 -
->  hw/arm/collie.c                          | 1 -
->  hw/arm/cubieboard.c                      | 1 -
->  hw/arm/highbank.c                        | 1 -
->  hw/arm/mps2-tz.c                         | 1 -
->  hw/arm/musicpal.c                        | 1 -
->  hw/arm/nrf51_soc.c                       | 1 -
->  hw/arm/spitz.c                           | 1 -
->  hw/arm/virt.c                            | 1 -
->  hw/arm/z2.c                              | 1 -
->  hw/display/sm501.c                       | 1 -
->  hw/hppa/dino.c                           | 1 -
->  hw/intc/allwinner-a10-pic.c              | 1 -
->  hw/lm32/lm32_boards.c                    | 1 -
->  hw/lm32/milkymist.c                      | 1 -
->  hw/microblaze/petalogix_ml605_mmu.c      | 1 -
->  hw/microblaze/petalogix_s3adsp1800_mmu.c | 1 -
->  hw/net/dp8393x.c                         | 1 -
->  hw/ppc/virtex_ml507.c                    | 1 -
->  hw/sh4/r2d.c                             | 1 -
->  hw/tricore/tricore_testboard.c           | 1 -
->  hw/usb/tusb6010.c                        | 1 -
->  23 files changed, 23 deletions(-)
+On 2/4/19 8:25 PM, Eric Blake wrote:
+> Flag commit attribution tags that are unusual (often because they
+> were a typo), but only as a warning (because sometimes a humorous
+> or otherwise useful tag is intentionally supplied).
 >=20
-> diff --git a/hw/alpha/typhoon.c b/hw/alpha/typhoon.c
-> index 397e2dcdc7..9d57361c67 100644
-> --- a/hw/alpha/typhoon.c
-> +++ b/hw/alpha/typhoon.c
-> @@ -11,7 +11,6 @@
->  #include "qapi/error.h"
->  #include "cpu.h"
->  #include "hw/hw.h"
-> -#include "hw/devices.h"
->  #include "sysemu/sysemu.h"
->  #include "alpha_sys.h"
->  #include "exec/address-spaces.h"
-> diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-> index df0d079ad0..06ec6f4dc8 100644
-> --- a/hw/arm/allwinner-a10.c
-> +++ b/hw/arm/allwinner-a10.c
-> @@ -20,7 +20,6 @@
->  #include "qemu-common.h"
->  #include "cpu.h"
->  #include "hw/sysbus.h"
-> -#include "hw/devices.h"
->  #include "hw/arm/allwinner-a10.h"
->  #include "hw/misc/unimp.h"
-> =20
-> diff --git a/hw/arm/collie.c b/hw/arm/collie.c
-> index 48b732c176..3ca4e078fe 100644
-> --- a/hw/arm/collie.c
-> +++ b/hw/arm/collie.c
-> @@ -12,7 +12,6 @@
->  #include "hw/hw.h"
->  #include "hw/sysbus.h"
->  #include "hw/boards.h"
-> -#include "hw/devices.h"
->  #include "strongarm.h"
->  #include "hw/arm/arm.h"
->  #include "hw/block/flash.h"
-> diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-> index 32f1edd2fa..84187d3916 100644
-> --- a/hw/arm/cubieboard.c
-> +++ b/hw/arm/cubieboard.c
-> @@ -20,7 +20,6 @@
->  #include "qemu-common.h"
->  #include "cpu.h"
->  #include "hw/sysbus.h"
-> -#include "hw/devices.h"
->  #include "hw/boards.h"
->  #include "hw/arm/allwinner-a10.h"
-> =20
-> diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-> index fb9efa02c3..96ccf18d86 100644
-> --- a/hw/arm/highbank.c
-> +++ b/hw/arm/highbank.c
-> @@ -21,7 +21,6 @@
->  #include "qapi/error.h"
->  #include "hw/sysbus.h"
->  #include "hw/arm/arm.h"
-> -#include "hw/devices.h"
->  #include "hw/loader.h"
->  #include "net/net.h"
->  #include "sysemu/kvm.h"
-> diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-> index f5f0b0e0fa..f79f090a4a 100644
-> --- a/hw/arm/mps2-tz.c
-> +++ b/hw/arm/mps2-tz.c
-> @@ -56,7 +56,6 @@
->  #include "hw/arm/armsse.h"
->  #include "hw/dma/pl080.h"
->  #include "hw/ssi/pl022.h"
-> -#include "hw/devices.h"
->  #include "net/net.h"
->  #include "hw/core/split-irq.h"
-> =20
-> diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-> index d22532a11c..de4a12e496 100644
-> --- a/hw/arm/musicpal.c
-> +++ b/hw/arm/musicpal.c
-> @@ -15,7 +15,6 @@
->  #include "cpu.h"
->  #include "hw/sysbus.h"
->  #include "hw/arm/arm.h"
-> -#include "hw/devices.h"
->  #include "net/net.h"
->  #include "sysemu/sysemu.h"
->  #include "hw/boards.h"
-> diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
-> index bbaf050103..3e633d160e 100644
-> --- a/hw/arm/nrf51_soc.c
-> +++ b/hw/arm/nrf51_soc.c
-> @@ -14,7 +14,6 @@
->  #include "hw/arm/arm.h"
->  #include "hw/sysbus.h"
->  #include "hw/boards.h"
-> -#include "hw/devices.h"
->  #include "hw/misc/unimp.h"
->  #include "exec/address-spaces.h"
->  #include "sysemu/sysemu.h"
-> diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-> index c4bc3deedf..22f5958b9d 100644
-> --- a/hw/arm/spitz.c
-> +++ b/hw/arm/spitz.c
-> @@ -21,7 +21,6 @@
->  #include "hw/ssi/ssi.h"
->  #include "hw/block/flash.h"
->  #include "qemu/timer.h"
-> -#include "hw/devices.h"
->  #include "hw/arm/sharpsl.h"
->  #include "ui/console.h"
->  #include "hw/audio/wm8750.h"
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 99c2b6e60d..396804f0e5 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -37,7 +37,6 @@
->  #include "hw/vfio/vfio-calxeda-xgmac.h"
->  #include "hw/vfio/vfio-amd-xgbe.h"
->  #include "hw/display/ramfb.h"
-> -#include "hw/devices.h"
->  #include "net/net.h"
->  #include "sysemu/device_tree.h"
->  #include "sysemu/numa.h"
-> diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-> index 697a822f1e..7afa352a96 100644
-> --- a/hw/arm/z2.c
-> +++ b/hw/arm/z2.c
-> @@ -15,7 +15,6 @@
->  #include "hw/hw.h"
->  #include "hw/arm/pxa.h"
->  #include "hw/arm/arm.h"
-> -#include "hw/devices.h"
->  #include "hw/i2c/i2c.h"
->  #include "hw/ssi/ssi.h"
->  #include "hw/boards.h"
-> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-> index 4a8686f0f5..2122291308 100644
-> --- a/hw/display/sm501.c
-> +++ b/hw/display/sm501.c
-> @@ -32,7 +32,6 @@
->  #include "hw/hw.h"
->  #include "hw/char/serial.h"
->  #include "ui/console.h"
-> -#include "hw/devices.h"
->  #include "hw/sysbus.h"
->  #include "hw/pci/pci.h"
->  #include "hw/i2c/i2c.h"
-> diff --git a/hw/hppa/dino.c b/hw/hppa/dino.c
-> index 31e09942b5..25c3178097 100644
-> --- a/hw/hppa/dino.c
-> +++ b/hw/hppa/dino.c
-> @@ -15,7 +15,6 @@
->  #include "qapi/error.h"
->  #include "cpu.h"
->  #include "hw/hw.h"
-> -#include "hw/devices.h"
->  #include "sysemu/sysemu.h"
->  #include "hw/pci/pci.h"
->  #include "hw/pci/pci_bus.h"
-> diff --git a/hw/intc/allwinner-a10-pic.c b/hw/intc/allwinner-a10-pic.c
-> index 11f13663c8..1aa628cbbb 100644
-> --- a/hw/intc/allwinner-a10-pic.c
-> +++ b/hw/intc/allwinner-a10-pic.c
-> @@ -17,7 +17,6 @@
-> =20
->  #include "qemu/osdep.h"
->  #include "hw/sysbus.h"
-> -#include "hw/devices.h"
->  #include "sysemu/sysemu.h"
->  #include "hw/intc/allwinner-a10-pic.h"
->  #include "qemu/log.h"
-> diff --git a/hw/lm32/lm32_boards.c b/hw/lm32/lm32_boards.c
-> index fd8eccca14..6b2fac55fb 100644
-> --- a/hw/lm32/lm32_boards.c
-> +++ b/hw/lm32/lm32_boards.c
-> @@ -25,7 +25,6 @@
->  #include "hw/sysbus.h"
->  #include "hw/hw.h"
->  #include "hw/block/flash.h"
-> -#include "hw/devices.h"
->  #include "hw/boards.h"
->  #include "hw/loader.h"
->  #include "elf.h"
-> diff --git a/hw/lm32/milkymist.c b/hw/lm32/milkymist.c
-> index 26a2398354..be351d96dc 100644
-> --- a/hw/lm32/milkymist.c
-> +++ b/hw/lm32/milkymist.c
-> @@ -27,7 +27,6 @@
->  #include "hw/block/flash.h"
->  #include "sysemu/sysemu.h"
->  #include "sysemu/qtest.h"
-> -#include "hw/devices.h"
->  #include "hw/boards.h"
->  #include "hw/loader.h"
->  #include "elf.h"
-> diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogi=
-x_ml605_mmu.c
-> index c730878d25..18048d3555 100644
-> --- a/hw/microblaze/petalogix_ml605_mmu.c
-> +++ b/hw/microblaze/petalogix_ml605_mmu.c
-> @@ -35,7 +35,6 @@
->  #include "net/net.h"
->  #include "hw/block/flash.h"
->  #include "sysemu/sysemu.h"
-> -#include "hw/devices.h"
->  #include "hw/boards.h"
->  #include "hw/char/serial.h"
->  #include "exec/address-spaces.h"
-> diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/pet=
-alogix_s3adsp1800_mmu.c
-> index b9f0b0d06e..a0edaf867c 100644
-> --- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
-> +++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-> @@ -33,7 +33,6 @@
->  #include "net/net.h"
->  #include "hw/block/flash.h"
->  #include "sysemu/sysemu.h"
-> -#include "hw/devices.h"
->  #include "hw/boards.h"
->  #include "hw/misc/unimp.h"
->  #include "exec/address-spaces.h"
-> diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
-> index b53fcaa8bc..98cb4e58c7 100644
-> --- a/hw/net/dp8393x.c
-> +++ b/hw/net/dp8393x.c
-> @@ -19,7 +19,6 @@
-> =20
->  #include "qemu/osdep.h"
->  #include "hw/sysbus.h"
-> -#include "hw/devices.h"
->  #include "net/net.h"
->  #include "qapi/error.h"
->  #include "qemu/timer.h"
-> diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
-> index 5177120574..8142d68ca2 100644
-> --- a/hw/ppc/virtex_ml507.c
-> +++ b/hw/ppc/virtex_ml507.c
-> @@ -31,7 +31,6 @@
->  #include "hw/block/flash.h"
->  #include "sysemu/sysemu.h"
->  #include "sysemu/qtest.h"
-> -#include "hw/devices.h"
->  #include "hw/boards.h"
->  #include "sysemu/device_tree.h"
->  #include "hw/loader.h"
-> diff --git a/hw/sh4/r2d.c b/hw/sh4/r2d.c
-> index 5b399e7161..bbcf3eda33 100644
-> --- a/hw/sh4/r2d.c
-> +++ b/hw/sh4/r2d.c
-> @@ -31,7 +31,6 @@
->  #include "hw/sysbus.h"
->  #include "hw/hw.h"
->  #include "hw/sh4/sh.h"
-> -#include "hw/devices.h"
->  #include "sysemu/sysemu.h"
->  #include "hw/boards.h"
->  #include "hw/pci/pci.h"
-> diff --git a/hw/tricore/tricore_testboard.c b/hw/tricore/tricore_testboar=
-d.c
-> index a58096f05e..364321735a 100644
-> --- a/hw/tricore/tricore_testboard.c
-> +++ b/hw/tricore/tricore_testboard.c
-> @@ -24,7 +24,6 @@
->  #include "qemu-common.h"
->  #include "cpu.h"
->  #include "hw/hw.h"
-> -#include "hw/devices.h"
->  #include "net/net.h"
->  #include "sysemu/sysemu.h"
->  #include "hw/boards.h"
-> diff --git a/hw/usb/tusb6010.c b/hw/usb/tusb6010.c
-> index 501706e2b2..f76b59afe8 100644
-> --- a/hw/usb/tusb6010.c
-> +++ b/hw/usb/tusb6010.c
-> @@ -24,7 +24,6 @@
->  #include "hw/usb.h"
->  #include "hw/arm/omap.h"
->  #include "hw/irq.h"
-> -#include "hw/devices.h"
->  #include "hw/sysbus.h"
-> =20
->  #define TYPE_TUSB6010 "tusb6010"
+> This picks the 6 most popular tags, each with 700 or more uses (well,
+> S-o-b was already checked for case-sensitivity and typos, leaving
+> only 5 new tags being checked), as determined by:
+> $ git log | sed -n 's/^ *\([A-Za-z-]*-[bB][yY]:\).*/\1/p' | \
+>   sort | uniq -c | sort -k1,1n | tail
+
+[-_][bB][yY] finds an additional:
+
+      2 Reviewed_by:
+
+Should I try to flag those as well, in v4 (note - the current
+Signed-off-by tests do not flag Signed_off_by as invalid, so the patch
+does get a bit bigger if we want to catch it)
 
 --=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
---fdj2RfSjLxBAspz7
+
+--6yU97I4vNZMBvPnwtdrJVT2mft4MBZP4J--
+
+--HDgKmNrdjzeRA4hmJXq4Yf8LG8bWSrCYu
 Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlxY2/gACgkQbDjKyiDZ
-s5JdWA/+IEYIr0DWMavtahX/Oxtu6SEt1c93jeQCsCmzQtTKPuQyFHKnYPQRqBVu
-nljffHOqG0bqK+RbBTJAE9emtTRzczmHiRXDtHd9RlIrR0jWCA6A5k9LUzDXXleK
-VhNs8kjd7SpDKHRMSdgOekQkJGeBHwKfBwgZQPshep53wmQXA5DYu5iAxQERmw2f
-SwtRdXRl/xw3SZkSErs7ua7W0C7p8JmM7jaE86gCOFVNF/Q+ORKYdCmC9Cyl965w
-wmiuIJyrL0+APlbUOAzPL4WcspsVN/R7R93oqqOEUkJvsE+DMi2fj0TBAdcfNQH3
-sd4AYx2yzH5s570qXcYXnK54fJrBrAJZkym0dtbRHXnBOmcgLGFl4hNpQ2GOtiNL
-E0z2ZG5kXg+qrXwuRFVSSKUOwBM+8Jcz9PghB8p139ZmwyuH1hwAibTf/Us24ZeO
-bQTETItg6xbLJN+P9ZhNMTdimmcu40ZnOngdfqQjtGZp8rBhGhvjZXzlu4uzg3Fn
-RvR8wVHyh4wssW2jc65HFK0SW+etJkPe3r6AmHPabGRy+4ijVKjLIxqRJnanyx24
-t7eqYfULCDtDLl7t0evy4z1+d9C8axhfFw/bf260OUR46pCzNf+qFZfA6dHVKcjp
-KyA5N4jFduH/Y1Z7KU4a2eTFRaGvVs20Iqjp0iHYQPeeCLY59+Y=
-=Q3C7
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlxY+dkACgkQp6FrSiUn
+Q2rglAf/d2VkThRJfXBsMBr0/kQCTfKiiQixDxG58ouCJb0KKpryY9AptLWBqTYH
+X1fUCfqZMEy27Wv5Bx6PAfISedRtDruracKmEeaHdcj5YWXL5HVbM0QX3gVA0qHn
+R1fgKWRM53ge4zYGcovKQJafLDh8PmLGFTY0ALLuMldiqvnkB1WCKRN0Ixzb0csd
+oEoU+xEPsY8nL9BTJJqQF7R7Par3+NPSRtb08KAM34NPhphkm9hRbAUkSgE7+fab
+715R1SFZKNGY7voxL3Jq74rhc/Fcy7hpdOQiZydHZ8D/2qI2wP1eKGpSGa4wqq2u
+SR3aGND8lQv7oOqHxFMX5XwBEiAOXg==
+=5ggp
 -----END PGP SIGNATURE-----
 
---fdj2RfSjLxBAspz7--
+--HDgKmNrdjzeRA4hmJXq4Yf8LG8bWSrCYu--
 
