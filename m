@@ -1,75 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gr4HA-0007h8-OT
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Feb 2019 12:12:48 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:38904)
+	id 1gr6DT-0002af-Jt
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Feb 2019 14:17:07 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57423)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1gr4H8-0007dq-7A
-	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 12:12:47 -0500
+	(envelope-from <alistair23@gmail.com>) id 1gr6DR-0002YI-Dq
+	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 14:17:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1gr4H6-00036X-U5
-	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 12:12:46 -0500
-Received: from chuckie.co.uk ([82.165.15.123]:38535
-	helo=s16892447.onlinehome-server.info)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1gr4H2-00031U-2E; Tue, 05 Feb 2019 12:12:40 -0500
-Received: from host86-138-240-60.range86-138.btcentralplus.com
-	([86.138.240.60] helo=[192.168.1.65])
-	by s16892447.onlinehome-server.info with esmtpsa
-	(TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1gr4H0-0004NQ-2A; Tue, 05 Feb 2019 17:12:39 +0000
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
-	qemu-ppc@nongnu.org, Guan Xuetao <gxt@mprc.pku.edu.cn>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	David Gibson <david@gibson.dropbear.id.au>
-References: <20190204210433.26088-1-philmd@redhat.com>
-	<20190204210433.26088-2-philmd@redhat.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Openpgp: preference=signencrypt
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
-	mQENBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
-	3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
-	E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
-	PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
-	PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
-	AAG0ME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPokB
-	OAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
-	NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
-	mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
-	z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
-	T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
-	DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63LkBDQRUCbs8AQgA
-	y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
-	2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
-	14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
-	YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
-	Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABiQEfBBgBAgAJ
-	BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
-	opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
-	NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
-	Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
-	KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
-	imgcU9TTGC5qd9g=
-Message-ID: <6ebdde6b-57d0-f597-d76b-2953f8da093b@ilande.co.uk>
-Date: Tue, 5 Feb 2019 17:12:17 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <alistair23@gmail.com>) id 1gr6DQ-0002Us-Jl
+	for qemu-trivial@nongnu.org; Tue, 05 Feb 2019 14:17:05 -0500
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:36899)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1gr6DO-0002Sn-LH; Tue, 05 Feb 2019 14:17:02 -0500
+Received: by mail-lj1-x244.google.com with SMTP id t18-v6so3895957ljd.4;
+	Tue, 05 Feb 2019 11:17:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=nrws9AXUBL35xch6ekr1OlNl7FySMn16fqUNYApuLy4=;
+	b=MluQUDLT71zYhKcFiZBJbOj9DsG6It0X3YTeHeXBtu9OOci8ZZadEgFSrR0PYCRVng
+	HQhAwPW7AEoA4VEsENgDAxJQZnlQvEcx9V82Tr0rLW4wyoACFbiRIDM6+Gqn4Exx4jyJ
+	kSPLnuLRoCyhP4YS0g74p4+Rnl3JsX12MiFqlreQYH2YEhOB+K7zRVsDeTd1XhR8CpP2
+	7hpwmCkahUnvWxIDcFL4O0XYFwzjKLYN88rjhII5Fmq7BAQOIdUFUYlCE332XbqGwTyl
+	cey0/b653YZAzLIUyTSmVrd52cjT+YLlncm4yxrtAPl4QRhnZWPY+RjEE3FmVE6jfoT6
+	3yVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=nrws9AXUBL35xch6ekr1OlNl7FySMn16fqUNYApuLy4=;
+	b=XdSO9kSkncW3S+DCK+wo2axENkG20qgWzKYhGrqgoApLyCwP+Ye6L1LjFU7v6pfZ8b
+	bFpz9fVz/QjhBNrOQxH3eIZ1O2/V0XjXGIFmoz59GA9d4RzYfk5OWOKbUjglj8pW87ns
+	b8VsGE8ADtLbA+3E8W978tZIXZgc0Qh+JTYbdkBLPPWvWhcBs4SV8lf26c3eK78+ZoF4
+	26bCI2BoEwdjc7sh5CI/cvNJ1kdecaYSukttVI38q+AraIpCMQrBaeRwOghftbpUQ+4u
+	OgbRNMeExXJkGFMMwHFh2LzJc+dHdJHcYhqPtNy3FMvbK9R2xd6t2CktGwrSBToc8pOh
+	S5Ug==
+X-Gm-Message-State: AHQUAuY9l+34IPdHIN5Rb1S8B8b6FD4/DFR+zcOFmxY6bU9/TYlsYpBU
+	x7lthGpDtolL1Jb1Kxs7CM0h9DrcLEiBAN8k0Q0=
+X-Google-Smtp-Source: AHgI3IZ0CLMr6MFW4cVaiMQO+C2WyxtblncKMZKeLEdOXsAxEm5RP+zHoXg9j9jRT2N03ziozasgcQiME/YYysrIh3o=
+X-Received: by 2002:a2e:3308:: with SMTP id d8-v6mr3867958ljc.38.1549394220312;
+	Tue, 05 Feb 2019 11:17:00 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20190204210433.26088-2-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-GB
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 86.138.240.60
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
-X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 82.165.15.123
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/3] hw/sparc64/sun4u: Drop
- useless inclusion of "hw/i386/pc.h"
+References: <1549371525-29899-1-git-send-email-thuth@redhat.com>
+	<50ea8b3e-cd8e-c6e9-86dc-2e50b78646c5@greensocs.com>
+In-Reply-To: <50ea8b3e-cd8e-c6e9-86dc-2e50b78646c5@greensocs.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 5 Feb 2019 11:16:22 -0800
+Message-ID: <CAKmqyKNgj=u5vKgR1F_fMKs8NLq2ze1OamgUxZOqzN1jytF3qQ@mail.gmail.com>
+To: Luc Michel <luc.michel@greensocs.com>
+Cc: Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>, 
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+	Alistair Francis <alistair.francis@wdc.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/cpu/cluster: Mark the
+ cpu-cluster device with user_creatable = false
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,37 +70,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Feb 2019 17:12:47 -0000
+X-List-Received-Date: Tue, 05 Feb 2019 19:17:06 -0000
 
-On 04/02/2019 21:04, Philippe Mathieu-Daudé wrote:
+On Tue, Feb 5, 2019 at 7:22 AM Luc Michel <luc.michel@greensocs.com> wrote:
+>
+>
+>
+> On 2/5/19 1:58 PM, Thomas Huth wrote:
+> > The device can not be instantiated by the user and QEMU currently
+> > aborts when you try to use it:
+> >
+> > $ x86_64-softmmu/qemu-system-x86_64 -device cpu-cluster
+> > qemu-system-x86_64: hw/cpu/cluster.c:73: cpu_cluster_realize:
+> >  Assertion `cbdata.cpu_count > 0' failed.
+> > Aborted (core dumped)
+> >
+> > Since this is an internal device only, mark it with user_creatable = false.
+> >
+> > Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
-> In 47973a2dbf we split the last generic chipset out of the PC
-> board, but forgot to remove the include of "hw/i386/pc.h".
-> Since it is now unused, remove it.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  hw/sparc64/sun4u.c | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-> index f76b19e4e9..fdf3f14a29 100644
-> --- a/hw/sparc64/sun4u.c
-> +++ b/hw/sparc64/sun4u.c
-> @@ -33,7 +33,6 @@
->  #include "hw/pci/pci_bus.h"
->  #include "hw/pci/pci_host.h"
->  #include "hw/pci-host/sabre.h"
-> -#include "hw/i386/pc.h"
->  #include "hw/char/serial.h"
->  #include "hw/char/parallel.h"
->  #include "hw/timer/m48t59.h"
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Alistair
 
-
-ATB,
-
-Mark.
-
+>
+> > ---
+> >  hw/cpu/cluster.c | 3 +++
+> >  1 file changed, 3 insertions(+)
+> >
+> > diff --git a/hw/cpu/cluster.c b/hw/cpu/cluster.c
+> > index 25f9070..6f5f037 100644
+> > --- a/hw/cpu/cluster.c
+> > +++ b/hw/cpu/cluster.c
+> > @@ -79,6 +79,9 @@ static void cpu_cluster_class_init(ObjectClass *klass, void *data)
+> >
+> >      dc->props = cpu_cluster_properties;
+> >      dc->realize = cpu_cluster_realize;
+> > +
+> > +    /* This is not directly for users, CPU children must be attached by code */
+> > +    dc->user_creatable = false;
+> >  }
+> >
+> >  static const TypeInfo cpu_cluster_type_info = {
+> >
+>
 
