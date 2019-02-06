@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1grP84-0000CU-5F
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 10:28:48 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55866)
+	id 1grP8A-0000Il-Sf
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 10:28:54 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55979)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grP81-00009M-TF
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 10:28:46 -0500
+	(envelope-from <laurent@vivier.eu>) id 1grP87-0000Dy-Le
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 10:28:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grP80-0004Q0-7w
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 10:28:45 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:36805)
+	(envelope-from <laurent@vivier.eu>) id 1grP84-0004SL-0l
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 10:28:49 -0500
+Received: from mout.kundenserver.de ([212.227.126.133]:38107)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1grP7y-0004LY-83; Wed, 06 Feb 2019 10:28:43 -0500
+	id 1grP7k-0004Kk-SZ; Wed, 06 Feb 2019 10:28:30 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MCbMx-1gztaB3u5b-009hc7; Wed, 06 Feb 2019 16:28:21 +0100
+	id 1MKsaz-1gYtjh21YT-00LDQP; Wed, 06 Feb 2019 16:28:16 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Eduardo Habkost <ehabkost@redhat.com>,
@@ -25,36 +25,36 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Eduardo Habkost <ehabkost@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Thomas Huth <thuth@redhat.com>
-Date: Wed,  6 Feb 2019 16:28:04 +0100
-Message-Id: <20190206152807.31896-5-laurent@vivier.eu>
+	Eric Blake <eblake@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Date: Wed,  6 Feb 2019 16:28:01 +0100
+Message-Id: <20190206152807.31896-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190206152807.31896-1-laurent@vivier.eu>
 References: <20190206152807.31896-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:bKdTrc9mrqwbl4GZgE3NVIEcluiPnApM95YC1fDj/QTrRmobN3V
-	dG/u2K7a8HyTQSrJ7i7/2XFSkjyptgLIABjl+mop/XjG8gToRxQ1od0o1YVRB9B7codCT2s
-	jidWk50pWxiR6DDFjiLGSwncbdu1dH9/lNuwjSYCARDKByUR83mTILmyXrR949YIBoshGCU
-	1ReVSvdCaliIIhG/71dSQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:yb+Fau6AAYc=:4+LU9Pxf1yPfBVZp8wygvM
-	ZUeH/yZJOPT52Wfe0YeCj8rv7ZF6PN6DggaeshwXc5fki++BJwakvE6g587D5GvpmEPp4MAzg
-	jj9VWNTF+ACSWjLYI/h86NR0DuoEBvFLEHSGa4tzgU0ZtDupXECqCX5MbDJPymU+hdIRps2Rd
-	KaHiSrRCWwZ2Keswf9yiGW7AApiHDgrWxZWAYEiXYVq0jlN509H1urKfnWcMMLQsPL6GDAI+c
-	9z+AXVudbx4IrB6a2DdciOY8zFOVkj5uLNqMPycpeDMYwCz0mAC3Zpx2+x1I9cq+Dr+sD3cjZ
-	gtkck+YEe/au6bOT2h3LNysmXnTsYa1P5n0Zuxomd831uChrOqEIWJ8YCR4m4nwsjQyWfJhVz
-	RkyJ87J+D1ZEGRe4+jHtvfU0eUp+Oq1HK/tE7NBOZE65+QBXmO0ByTrKgwWb6u2KmqEA9MDAo
-	nxgKDfjP6sm6roJL8IMo78cY7gmqOZx8lb9mUztGb/s50XxvzGwnLi7t4tq7TxVEnEbgMZXtH
-	dnrwOt7vDeKfk7qV187bAMEFaZpNRHdd7tyQBIhq3fRGdAu+82i10K75VXrH6VAlfzu+zfpWn
-	ZnOGKSRQcaXNQWFmhod9wyy80bb+E4/hkVt18PQbOo80OKzmKNvJ9j/K/eLetqorrmJUAVp8w
-	VUFEf8h1a5VfMiA55W91z0UTS0u1kkP7D7vNSv4KEvKaO0pgd444OUDKRVGMQmynm5Py9T4BT
-	sJua+27b6Quy1ObLl2VtbCX3DnsCNlUrzEJzMnjHfN2f64/LLzjy6sJMijQ=
+X-Provags-ID: V03:K1:FxcW8Sbtvzn7pG9lhKTO7bT45vhL3DRvt26w18Fw9BB+hhujV4d
+	4YEout9mI8xg6+/zoKBmhkvhD/XPdNDcO2B7djPEe7YM3acTIaHwF53qdSiCYwymEMfI3tC
+	+W2MwbJLhQ012RfqK9TbXQM20XRWqIXbmY28xe9XkKczdgzn6jijXRqiWzMSx83lu9euZmc
+	UMCSTvVY6cloBBDgDYbzw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:gXltWkK9geg=:Ro4Ih6JrW9jLPYEFHmFtWJ
+	BX0Z6E8mpQs2NwRda3C3eEDnYu1zH2MJZ1rbhuSm6jQbA9Tufd18zDwMiHD6jUorQob2wjG65
+	CQq/MRTHTTpeot/lqVZguhhhD/Sbr6TCwz88LGx7eCRfpYsLWsaAJ3hTnfFP2YKeqqWveg63k
+	kCy/I0Rs6dgV6hQpnfGC5gEiyx5854/DZwigh+Af8NkbTUlt4TwPKpddle2L30g8xjTsGhBf7
+	srTx244hD5GC9tF0ho3KkBQKyGaUArM37PgyjYjUTyYQ7X+9PFEM7TAaGh1PVc9M1vpJm3vZY
+	fWLm198BKAHgd6dBNkz/Hy9AscAT6z4RS+MM5jysETWcEl3r9geg6GfT8X+ElKBcBsEufrM1c
+	PrECp28Cdz6nSwi0f6Yv8Uzi89mq9UkmKqieLG/PmV8ISNTMiFDkCCcyoTNwEW2AkrXYny0fo
+	oggDhPHjX9G+0so03lE48A8wrbAvjK2ApBKb+b7KxWQNyVvCRVwXW+uci6Ec9Uk49PDiMgg7u
+	9oCjoAH57424PfdbtwQF96rBh5ecdP1cc5GiiVvWbUVvHL4kGVwdnf9Jl3uGcoCPJAH3US5c+
+	tA2W/QUo9iA03L8NUlOspbX8f/lt/FJ4JyyI2Kvxik3uwMF3PlLrU29wYppgazUZfWLslmq3O
+	JFStrbLAR8htN0NFjGTFxisOcDIH/RdalPGwrQ+M8/PLn7G1YiuraYbefAEYOTsKUCdOHCobY
+	vHPKaUZUN72V4wRg4GDl0f7OACiEFh7HLdPCXC4002up/0Ew2K3FN9EedN4=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: [Qemu-trivial] [PULL 4/7] hw/sparc64/sun4u: Drop useless inclusion
- of "hw/i386/pc.h"
+X-Received-From: 212.227.126.133
+Subject: [Qemu-trivial] [PULL 1/7] qemu-common.h: Update copyright string
+ for 2019
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,35 +66,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Feb 2019 15:28:47 -0000
+X-List-Received-Date: Wed, 06 Feb 2019 15:28:52 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
 
-In 47973a2dbf we split the last generic chipset out of the PC
-board, but forgot to remove the include of "hw/i386/pc.h".
-Since it is now unused, remove it.
+Update the copyright string we use in version/help output,
+since we're well into the new year now.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Message-Id: <20190204210433.26088-2-philmd@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20190201173655.4567-1-peter.maydell@linaro.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/sparc64/sun4u.c | 1 -
- 1 file changed, 1 deletion(-)
+ include/qemu-common.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-index f76b19e4e9..fdf3f14a29 100644
---- a/hw/sparc64/sun4u.c
-+++ b/hw/sparc64/sun4u.c
-@@ -33,7 +33,6 @@
- #include "hw/pci/pci_bus.h"
- #include "hw/pci/pci_host.h"
- #include "hw/pci-host/sabre.h"
--#include "hw/i386/pc.h"
- #include "hw/char/serial.h"
- #include "hw/char/parallel.h"
- #include "hw/timer/m48t59.h"
+diff --git a/include/qemu-common.h b/include/qemu-common.h
+index ed60ba251d..a102245519 100644
+--- a/include/qemu-common.h
++++ b/include/qemu-common.h
+@@ -17,7 +17,7 @@
+ #define TFR(expr) do { if ((expr) != -1) break; } while (errno == EINTR)
+ 
+ /* Copyright string for -version arguments, About dialogs, etc */
+-#define QEMU_COPYRIGHT "Copyright (c) 2003-2018 " \
++#define QEMU_COPYRIGHT "Copyright (c) 2003-2019 " \
+     "Fabrice Bellard and the QEMU Project developers"
+ 
+ /* Bug reporting information for --help arguments, About dialogs, etc */
 -- 
 2.20.1
 
