@@ -1,24 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1grOSl-0000ah-2r
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 09:46:07 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46957)
+	id 1grOTC-0000qh-T7
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 09:46:34 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:47133)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grOSj-0000Zm-ET
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:46:06 -0500
+	(envelope-from <laurent@vivier.eu>) id 1grOTA-0000pU-Gl
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:46:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grOST-000070-Jd
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:45:58 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:58639)
+	(envelope-from <laurent@vivier.eu>) id 1grOT7-0000XE-5l
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:46:32 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:32849)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1grOST-0008Ti-8n; Wed, 06 Feb 2019 09:45:49 -0500
+	id 1grOT5-0000Ti-Ez; Wed, 06 Feb 2019 09:46:28 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1MLR5h-1gZRpW2d2x-00IWjd; Wed, 06 Feb 2019 15:45:33 +0100
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20190201173655.4567-1-peter.maydell@linaro.org>
+	1MCKO4-1gzbez3nQg-009Lpy; Wed, 06 Feb 2019 15:46:20 +0100
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Anthony Green <green@moxielogic.com>
+References: <1549266858-5043-1-git-send-email-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -63,35 +62,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <0c4d4eab-ef3e-3490-f9d3-dee31f5d3be6@vivier.eu>
-Date: Wed, 6 Feb 2019 15:45:32 +0100
+Message-ID: <c05e38ac-0f28-c968-42e2-d8e748325af0@vivier.eu>
+Date: Wed, 6 Feb 2019 15:46:18 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190201173655.4567-1-peter.maydell@linaro.org>
+In-Reply-To: <1549266858-5043-1-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:RlDNWy1eNv+kmeF4dZEECX+ew+RHgtOmabs7w7JgBo0iITJqt2E
-	dYJlF2gdqUG5GQzgK6m7oLIgdmUaJoP6LJl+GsDUYUPQNFGmOdOZ0CdeEYB1Qjof4GoVefF
-	B24+vtIBUsmGgLazcTNZbSUJ/NIv2KQUz2/MTMZhJHkLR5gGCZQTXZRvFr/Ng8dnRpIBQsl
-	JHe9Q8LzX/P7xiQCvU6nQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:RYXIRtH3Fpc=:4r1ALOWFFwnWYyLwup22qw
-	Mc8jNdxqSs/+m3586khtnRx8tTYU0jcJ1ZfKvuBeGAtzKY4RZtcGq6DLO5XaskPZbtvWQVwdK
-	jVkYnnHU1f+EeKnSOd6J1nU17+39i/R1T/woMXbQJy2FNSq0vSJI6BJ9v5dxYAftHDyFWg4Os
-	J62y7Wos1nFe/YBjaIK7tw3WgIuff16FZ0n0jlf+hjxjV/tDDp5+2o0+/TdV9rA7R5+a7+moW
-	zYgjutx13rnqcCAn0UrYGdv7/3VJyE2Ca843k0JEk1T/N+UnPmeuK3TckoOqQNe1hpm4mq3Xv
-	dF19Sqgb62XXep08MP/iPdMgl7SD51VELWtrkdzihM6lCwgY9Fv+KDQZHNFLvCeZEoYai0Bz8
-	neX2Q2TdrIhghBOwphewKSKKiE3lGMKww2n2/gOHfiByt5fircAo/oGeH3SIbsZClRIMu8lCx
-	druLkwIlKdrngbthphEmjtqfkTX2OL0b6BTNclN6XgHWpHZAGvKWsZV5xNQujg1C3nmHTIcIh
-	KJUBNThjPUphZIfGFEuyuqT/4jiKC71t28Q2RMxwPpzJW5tRZ9Jjq7NeyA4glalChIPXr/TAB
-	/MZUJxBNOlE1Du5fcDGBlXUJhg/Q1zmfNmuPhOTNFBawfgmlAlTwJb0WtXZNZw2dmR53GkFEw
-	UJyYK8K8iG5tQD35BoorYUm7+GdZyWtRsgqb7mqO84TmhmQdPgAsJgOONVzbYAlyfNaHJh31N
-	kXf75CKRJjXz3gIZ8ZxpFZ3372WX0MrhTZarpbN8JvP355lChzPIK1xg8OM=
+X-Provags-ID: V03:K1:AfXWiYXXmyG8eXcP1KFADYd7BuGKwSIBrRTJ85TPFR9+1MwqGrr
+	IfPfCcmFmAAATled0Lu2nK28Xa4Y9JkRKQiUfcA00JVcpOF/W2KoDZFdKiuRGG6twDCiQRs
+	no/+tSAU5K+RLRuve9ew0DCwwIEe4FPiLHHDE71Eq1Y3NW/O8sGzBugpgAAj8AjxExYVWai
+	3AU+Hbcq5XIICExj6B3Vw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:yd6Zm9Oi4iI=:TcPDVydh9TO7RtHwokcrUn
+	7ZZM1BdKEJTXjg2XTodxFNAWSsN/UNJ9DTEOOZWI4XGAHvTOwmH0GQTF3J9skl7AqmajpMaBZ
+	Nu+nNOQyIAz/jk4/9pT5AyoQOjb6tqR57tz6T25qTutKyu5MtnQWdbhlJuemXnIWbr/i0RGYE
+	kx4Gi2ZJYZOcxLBiBqIjRMGgoer1Jn4X8iJQC8HixkCReCsI0mltsJocc5C40WfN0YlrWDqpV
+	JQ7m971KGtEmWLDS/f564lzINfBgxtVAQp341eZeASxiQeSQW1+e74i07hoLo4qr9l5LEFSec
+	8B6GVUgHDKr9t8lMdBWWZVAI8/5u9G4cbZWLHQUmM3e5UyUR6gVDXjZwElTUOcjhZ4RNddE2J
+	/L9W0k8SPcTkmuV7N7BINIGMOynRTrkXAUiufFcaQbK3j17aTjWokg1jFB9lvPndVdYINGIoe
+	DD0rywK178+iakFgS8F8ZrCII5bs+z+nJJwZLZJPiApY5KbKtDwyJwG82VNC0yZWi11ehuzWN
+	FrmKWZJmyiQdbQZM7axGiLpn8gt9IcEs2qJ5sxYxzocYgJ2NYHnlUl5f0k+cVuIpiRUOCmcCF
+	SpvpE4vPXZD1Nh+3ys1j6ZtQovFEtf5QKxhJoau0+/xwdWfip91J84zIxThB9YbBk9HfWv6Ci
+	TbNmPj5UzDfklRCUMOfiFCCJiALgZeJqGpBgWdnZj/DwlTjpg84m1DDc5ZVSXWjSI/yf1rot9
+	EVx93TFVtsdlfThZ0wm0KW9zjU7LsPNrW6LA0+QqsecR23RSX26bi2bvR3w=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.13
-Subject: Re: [Qemu-trivial] [PATCH] qemu-common.h: Update copyright string
- for 2019
+Subject: Re: [Qemu-trivial] [PATCH] target/moxie: Fix LGPL information in
+ the file headers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,33 +102,123 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Feb 2019 14:46:06 -0000
+X-List-Received-Date: Wed, 06 Feb 2019 14:46:33 -0000
 
-On 01/02/2019 18:36, Peter Maydell wrote:
-> Update the copyright string we use in version/help output,
-> since we're well into the new year now.
+On 04/02/2019 08:54, Thomas Huth wrote:
+> It's either "GNU *Library* General Public License version 2" or "GNU
+> Lesser General Public License version *2.1*", but there was no "version
+> 2.0" of the "Lesser" license. So assume that version 2.1 is meant here.
+> Also the files mentioned the GPL instead of the LGPL after declaring
+> that the files are licensed under the LGPL, so change these spots to
+> use LGPL, too.
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
-> Better than last year, where we didn't get round to doing
-> the year bump until September :-)
-> ---
->  include/qemu-common.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  target/moxie/cpu.c       | 2 +-
+>  target/moxie/cpu.h       | 4 ++--
+>  target/moxie/helper.c    | 4 ++--
+>  target/moxie/mmu.c       | 4 ++--
+>  target/moxie/translate.c | 4 ++--
+>  5 files changed, 9 insertions(+), 9 deletions(-)
 > 
-> diff --git a/include/qemu-common.h b/include/qemu-common.h
-> index ed60ba251d8..a1022455199 100644
-> --- a/include/qemu-common.h
-> +++ b/include/qemu-common.h
-> @@ -17,7 +17,7 @@
->  #define TFR(expr) do { if ((expr) != -1) break; } while (errno == EINTR)
+> diff --git a/target/moxie/cpu.c b/target/moxie/cpu.c
+> index 8d67eb6..46434e6 100644
+> --- a/target/moxie/cpu.c
+> +++ b/target/moxie/cpu.c
+> @@ -13,7 +13,7 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+>   * Lesser General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> + * You should have received a copy of the GNU Lesser General Public License
+>   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+>   */
 >  
->  /* Copyright string for -version arguments, About dialogs, etc */
-> -#define QEMU_COPYRIGHT "Copyright (c) 2003-2018 " \
-> +#define QEMU_COPYRIGHT "Copyright (c) 2003-2019 " \
->      "Fabrice Bellard and the QEMU Project developers"
+> diff --git a/target/moxie/cpu.h b/target/moxie/cpu.h
+> index d40f1e6..080df4e 100644
+> --- a/target/moxie/cpu.h
+> +++ b/target/moxie/cpu.h
+> @@ -6,14 +6,14 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+>   * Lesser General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> + * You should have received a copy of the GNU Lesser General Public License
+>   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+>   */
 >  
->  /* Bug reporting information for --help arguments, About dialogs, etc */
+> diff --git a/target/moxie/helper.c b/target/moxie/helper.c
+> index 5b1532b..f3d8ee7 100644
+> --- a/target/moxie/helper.c
+> +++ b/target/moxie/helper.c
+> @@ -6,14 +6,14 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+>   * Lesser General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> + * You should have received a copy of the GNU Lesser General Public License
+>   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+>   */
+>  
+> diff --git a/target/moxie/mmu.c b/target/moxie/mmu.c
+> index bd90b1e..87783a3 100644
+> --- a/target/moxie/mmu.c
+> +++ b/target/moxie/mmu.c
+> @@ -6,14 +6,14 @@
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public
+>   * License as published by the Free Software Foundation; either
+> - * version 2 of the License, or (at your option) any later version.
+> + * version 2.1 of the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+>   * Lesser General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> + * You should have received a copy of the GNU Lesser General Public License
+>   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+>   */
+>  
+> diff --git a/target/moxie/translate.c b/target/moxie/translate.c
+> index 29da02b..68ca223 100644
+> --- a/target/moxie/translate.c
+> +++ b/target/moxie/translate.c
+> @@ -5,7 +5,7 @@
+>   *
+>   * This library is free software; you can redistribute it and/or
+>   * modify it under the terms of the GNU Lesser General Public License
+> - * as published by the Free Software Foundation; either version 2 of
+> + * as published by the Free Software Foundation; either version 2.1 of
+>   * the License, or (at your option) any later version.
+>   *
+>   * This library is distributed in the hope that it will be useful, but
+> @@ -13,7 +13,7 @@
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+>   * Lesser General Public License for more details.
+>   *
+> - * You should have received a copy of the GNU General Public License
+> + * You should have received a copy of the GNU Lesser General Public License
+>   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+>   */
+>  
 > 
 
 Applied to my trivial-patches branch.
