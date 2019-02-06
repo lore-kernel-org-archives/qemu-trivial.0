@@ -1,23 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1grOPP-0007X2-5w
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 09:42:39 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:46286)
+	id 1grOSl-0000ah-2r
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 09:46:07 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46957)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grOPM-0007WU-Vd
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:42:37 -0500
+	(envelope-from <laurent@vivier.eu>) id 1grOSj-0000Zm-ET
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:46:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grOPI-00073I-26
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:42:32 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:44267)
+	(envelope-from <laurent@vivier.eu>) id 1grOST-000070-Jd
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:45:58 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:58639)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1grOPH-00072t-HU
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:42:31 -0500
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1grOST-0008Ti-8n; Wed, 06 Feb 2019 09:45:49 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue108 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1MNKqC-1gSZ3e34ME-00OpG6; Wed, 06 Feb 2019 15:42:28 +0100
-To: Kamil Rytarowski <n54@gmx.com>, qemu-trivial@nongnu.org
-Cc: alexandro@phi.nz
-References: <20190128210108.21318-1-n54@gmx.com>
+	(mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1MLR5h-1gZRpW2d2x-00IWjd; Wed, 06 Feb 2019 15:45:33 +0100
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20190201173655.4567-1-peter.maydell@linaro.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -62,34 +63,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <46891498-8f6d-a5d9-cd87-ee04862e88de@vivier.eu>
-Date: Wed, 6 Feb 2019 15:42:27 +0100
+Message-ID: <0c4d4eab-ef3e-3490-f9d3-dee31f5d3be6@vivier.eu>
+Date: Wed, 6 Feb 2019 15:45:32 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190128210108.21318-1-n54@gmx.com>
+In-Reply-To: <20190201173655.4567-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:tQs0Jn17TxznVHF/0LX68aJ3PERR8Kse9IWZZEFkibe9neqJHNz
-	cff1obVBbFzLEMWiNbBJL6wrKcZ602vkH4n1DHge9u5ERaYB+qhngo7IJw/RBsgqbd9QC4f
-	T9/PJamcahuZ1QIbMJsCXFPZZ1IjoPQ8HnTnhi3UHKACykrrUfTGtFB0pnSJW6RowmrhwB0
-	PcUl2xgisy1Z7beQDmzWg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:TxKl8Jy7kEs=:Ep2qKSb+R5v096zViY5/2d
-	F0Q57J73MldSUhZpJPjm7Qyewld352hWCe20jD22m4cthbsbEuRt4WUwoE/gI9k/7IvoKRojO
-	F9sTeu1aZy7K0uv3LGIJ6emaXLcl7DEr1+2t85VukdW4t3cWYV1dEmEh798yVkgC30cylRuVo
-	xWaenA6IuD4V2RWYlnw5mlTCiI+U04F0I7ClGITvSdw8DNvtOI3gChH8y2qQTq2JB8LD7CDGn
-	jErfjROQQ2AMJHIrV9EXkZcAmOy3zB1TqsiSfAcCSaqag5N9pqfTRSOLr65g+jF7JDkzzMzri
-	tDXLtxJlr0xn8NtFdhMbIgXkxVtxMNwe17yMInPwzMFekSR5K1RKXW0J7W602xes5YZFOfzPB
-	w9vC2fFJDzb/h79k2Ru1cG+MJdn0/8CfndT5za/oM92LVL3HMkQ+Xf6kkjP3668xPQFWwdwx6
-	9yooXiqKScvEfgrs917sNWYxSa+G+JGII9A2opiyvXi+GZ+FoZCjTVv9tROIH2jvMcFI/968/
-	EfMW5tUYgqgFiEwXqLGLSuLpxXjsXSc7VtXhtVXgIiWBgWTPo/q4o32PGHeHl59xW/uvhVHkI
-	eyPE/O2wclcOTmU71a+pGfiNQM8ITl8n2F/ZWupAsA02KulI4GTTd07UHNb8WL2IWRBfJcLdK
-	3oIPY64yWwmdyi52qt5jGBOOjrSkcsb+42cp4gLcCIK4i8qA3R1it0OO72plPl/Ea/LJr1gYQ
-	w+4O3t5jIaZNjAG5AZ16F99MlvDFb6WinGd5J78hHrJ0UM8PYGwAHf5Glzk=
+X-Provags-ID: V03:K1:RlDNWy1eNv+kmeF4dZEECX+ew+RHgtOmabs7w7JgBo0iITJqt2E
+	dYJlF2gdqUG5GQzgK6m7oLIgdmUaJoP6LJl+GsDUYUPQNFGmOdOZ0CdeEYB1Qjof4GoVefF
+	B24+vtIBUsmGgLazcTNZbSUJ/NIv2KQUz2/MTMZhJHkLR5gGCZQTXZRvFr/Ng8dnRpIBQsl
+	JHe9Q8LzX/P7xiQCvU6nQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:RYXIRtH3Fpc=:4r1ALOWFFwnWYyLwup22qw
+	Mc8jNdxqSs/+m3586khtnRx8tTYU0jcJ1ZfKvuBeGAtzKY4RZtcGq6DLO5XaskPZbtvWQVwdK
+	jVkYnnHU1f+EeKnSOd6J1nU17+39i/R1T/woMXbQJy2FNSq0vSJI6BJ9v5dxYAftHDyFWg4Os
+	J62y7Wos1nFe/YBjaIK7tw3WgIuff16FZ0n0jlf+hjxjV/tDDp5+2o0+/TdV9rA7R5+a7+moW
+	zYgjutx13rnqcCAn0UrYGdv7/3VJyE2Ca843k0JEk1T/N+UnPmeuK3TckoOqQNe1hpm4mq3Xv
+	dF19Sqgb62XXep08MP/iPdMgl7SD51VELWtrkdzihM6lCwgY9Fv+KDQZHNFLvCeZEoYai0Bz8
+	neX2Q2TdrIhghBOwphewKSKKiE3lGMKww2n2/gOHfiByt5fircAo/oGeH3SIbsZClRIMu8lCx
+	druLkwIlKdrngbthphEmjtqfkTX2OL0b6BTNclN6XgHWpHZAGvKWsZV5xNQujg1C3nmHTIcIh
+	KJUBNThjPUphZIfGFEuyuqT/4jiKC71t28Q2RMxwPpzJW5tRZ9Jjq7NeyA4glalChIPXr/TAB
+	/MZUJxBNOlE1Du5fcDGBlXUJhg/Q1zmfNmuPhOTNFBawfgmlAlTwJb0WtXZNZw2dmR53GkFEw
+	UJyYK8K8iG5tQD35BoorYUm7+GdZyWtRsgqb7mqO84TmhmQdPgAsJgOONVzbYAlyfNaHJh31N
+	kXf75CKRJjXz3gIZ8ZxpFZ3372WX0MrhTZarpbN8JvP355lChzPIK1xg8OM=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.10
-Subject: Re: [Qemu-trivial] [PATCH] configure: Add HAX support in NetBSD
+X-Received-From: 212.227.17.13
+Subject: Re: [Qemu-trivial] [PATCH] qemu-common.h: Update copyright string
+ for 2019
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,31 +103,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Feb 2019 14:42:37 -0000
+X-List-Received-Date: Wed, 06 Feb 2019 14:46:06 -0000
 
-On 28/01/2019 22:01, Kamil Rytarowski wrote:
-> The NetBSD support in Intel HAXM has beem merged upstream and is functional.
+On 01/02/2019 18:36, Peter Maydell wrote:
+> Update the copyright string we use in version/help output,
+> since we're well into the new year now.
 > 
-> Signed-off-by: Kamil Rytarowski <n54@gmx.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  configure | 1 +
->  1 file changed, 1 insertion(+)
+> Better than last year, where we didn't get round to doing
+> the year bump until September :-)
+> ---
+>  include/qemu-common.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/configure b/configure
-> index b18281c61f..89b889072d 100755
-> --- a/configure
-> +++ b/configure
-> @@ -819,6 +819,7 @@ DragonFly)
->  ;;
->  NetBSD)
->    bsd="yes"
-> +  hax="yes"
->    make="${MAKE-gmake}"
->    audio_drv_list="oss try-sdl"
->    audio_possible_drivers="oss sdl"
+> diff --git a/include/qemu-common.h b/include/qemu-common.h
+> index ed60ba251d8..a1022455199 100644
+> --- a/include/qemu-common.h
+> +++ b/include/qemu-common.h
+> @@ -17,7 +17,7 @@
+>  #define TFR(expr) do { if ((expr) != -1) break; } while (errno == EINTR)
+>  
+>  /* Copyright string for -version arguments, About dialogs, etc */
+> -#define QEMU_COPYRIGHT "Copyright (c) 2003-2018 " \
+> +#define QEMU_COPYRIGHT "Copyright (c) 2003-2019 " \
+>      "Fabrice Bellard and the QEMU Project developers"
+>  
+>  /* Bug reporting information for --help arguments, About dialogs, etc */
 > 
 
-Please re-send you patch cc'ing qemu-devel@nongnu.org
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
