@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1grP81-00008z-Kq
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 10:28:45 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55816)
+	id 1grP84-0000CU-5F
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 10:28:48 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55866)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grP80-00007B-4U
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 10:28:44 -0500
+	(envelope-from <laurent@vivier.eu>) id 1grP81-00009M-TF
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 10:28:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grP7x-0004OM-K2
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 10:28:43 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:46841)
+	(envelope-from <laurent@vivier.eu>) id 1grP80-0004Q0-7w
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 10:28:45 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:36805)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1grP7i-0004KE-TE; Wed, 06 Feb 2019 10:28:27 -0500
+	id 1grP7y-0004LY-83; Wed, 06 Feb 2019 10:28:43 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MLi4W-1gZjkF0OWW-00HdzY; Wed, 06 Feb 2019 16:28:15 +0100
+	id 1MCbMx-1gztaB3u5b-009hc7; Wed, 06 Feb 2019 16:28:21 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Eduardo Habkost <ehabkost@redhat.com>,
@@ -24,32 +24,37 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Eduardo Habkost <ehabkost@redhat.com>,
 	Andrzej Zaborowski <balrogg@gmail.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
 	Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Date: Wed,  6 Feb 2019 16:28:00 +0100
-Message-Id: <20190206152807.31896-1-laurent@vivier.eu>
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Thomas Huth <thuth@redhat.com>
+Date: Wed,  6 Feb 2019 16:28:04 +0100
+Message-Id: <20190206152807.31896-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190206152807.31896-1-laurent@vivier.eu>
+References: <20190206152807.31896-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:1WV4LHov9H9VzI4geQyG7/VDJuvJVIT/0FzqbTmcyY13bJiZHhz
-	FZhMyT1Ljm8EZC+9WvHBArpxWSJ3TpLr0WFLCpoDiVt6wvf7Uu6cf3KW3KUV9Ak5yjPjPiD
-	JXZmGyJI1zhvYcKF8/4ftClR7TAi1pqnkcxShBirgoksjzWJQt/2K7utqC6GzjEZuyceqFG
-	YzJfzR2gBbQ0mf/dy3Zgg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:gls5uUnZpsc=:KWtERISnbZ4ih/3Cex+Vlz
-	e88sTUcug9qjF9LLvTi8ZjRPkqRobfDmUr8ol0GiuX82XujUckv8pI7g4aFAcIOR3EQ8xAcnZ
-	v5lF6OA7tATQQfV/Ls31NxoE41oI0Cn0Xb9x0fdA7Mym5kk4RdxLOBfsfk+xWk3wWMU13AadV
-	lGm1b1r/XSzGgIcI+X6WnJfAeeLet4WsThobg8fR1s9TLy5gSMxyxtgbLgAOWzfRUGZAqSBA9
-	WDgt6GqH8zkXvzbTeZ89fszq4oLbs18b4+Y0/VSKZVC56JDYoPNwovZAGRNiKzi8ywR6oddf1
-	znLPTjlkEXwaj2RZlIgXWIFh4yWQRCypEz3ENJSyFnV3TN/uk1k3BQQgDmvkJO7YRouBLrxSO
-	XA84nhHp6zVU2R+VHHU3ERlf/exouljAYR3VKwQAX4VSF8XNSNsl7G8rHC2gCtpbpIm/BJDu3
-	VN1gCKEFE+XynYkLZqJ+5QPPEqTZCmZvJyu1Br1ce5owBJ8y+lKl6aLJl4CENmFSo4QJzlr5/
-	pYWQhOmChKg2z/qEGodHT+iXWX74dYbrbCGPBXs/Pqkg2XosmzH9AckGye5eFJH+XIgmz/KVk
-	nhDF3anEEH2/jzSWRIHLWn8OsiEzZl2NpVfNiFM4dZOnS9E0ekgrbJYEU42srWSo8+w9CeWbb
-	HDCiSEWewyg38qxHXhi9sesMrk3tJ7Pc2QFIiTDuhvrjZJCqKJNtADai+PJ4XFqJVqAJNIb55
-	uIgFkRNqCv23sLeDy52GXBxhaDB7ta8RevVemw+IKpfCq+rQ9SHsxZJuOWg=
+X-Provags-ID: V03:K1:bKdTrc9mrqwbl4GZgE3NVIEcluiPnApM95YC1fDj/QTrRmobN3V
+	dG/u2K7a8HyTQSrJ7i7/2XFSkjyptgLIABjl+mop/XjG8gToRxQ1od0o1YVRB9B7codCT2s
+	jidWk50pWxiR6DDFjiLGSwncbdu1dH9/lNuwjSYCARDKByUR83mTILmyXrR949YIBoshGCU
+	1ReVSvdCaliIIhG/71dSQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:yb+Fau6AAYc=:4+LU9Pxf1yPfBVZp8wygvM
+	ZUeH/yZJOPT52Wfe0YeCj8rv7ZF6PN6DggaeshwXc5fki++BJwakvE6g587D5GvpmEPp4MAzg
+	jj9VWNTF+ACSWjLYI/h86NR0DuoEBvFLEHSGa4tzgU0ZtDupXECqCX5MbDJPymU+hdIRps2Rd
+	KaHiSrRCWwZ2Keswf9yiGW7AApiHDgrWxZWAYEiXYVq0jlN509H1urKfnWcMMLQsPL6GDAI+c
+	9z+AXVudbx4IrB6a2DdciOY8zFOVkj5uLNqMPycpeDMYwCz0mAC3Zpx2+x1I9cq+Dr+sD3cjZ
+	gtkck+YEe/au6bOT2h3LNysmXnTsYa1P5n0Zuxomd831uChrOqEIWJ8YCR4m4nwsjQyWfJhVz
+	RkyJ87J+D1ZEGRe4+jHtvfU0eUp+Oq1HK/tE7NBOZE65+QBXmO0ByTrKgwWb6u2KmqEA9MDAo
+	nxgKDfjP6sm6roJL8IMo78cY7gmqOZx8lb9mUztGb/s50XxvzGwnLi7t4tq7TxVEnEbgMZXtH
+	dnrwOt7vDeKfk7qV187bAMEFaZpNRHdd7tyQBIhq3fRGdAu+82i10K75VXrH6VAlfzu+zfpWn
+	ZnOGKSRQcaXNQWFmhod9wyy80bb+E4/hkVt18PQbOo80OKzmKNvJ9j/K/eLetqorrmJUAVp8w
+	VUFEf8h1a5VfMiA55W91z0UTS0u1kkP7D7vNSv4KEvKaO0pgd444OUDKRVGMQmynm5Py9T4BT
+	sJua+27b6Quy1ObLl2VtbCX3DnsCNlUrzEJzMnjHfN2f64/LLzjy6sJMijQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: [Qemu-trivial] [PULL 0/7] Trivial patches patches
+X-Received-From: 212.227.126.135
+Subject: [Qemu-trivial] [PULL 4/7] hw/sparc64/sun4u: Drop useless inclusion
+ of "hw/i386/pc.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,60 +66,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Feb 2019 15:28:45 -0000
+X-List-Received-Date: Wed, 06 Feb 2019 15:28:47 -0000
 
-The following changes since commit 47994e16b1d66411953623e7c0bf0cdcd50bd507:
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-  Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-20190205' into staging (2019-02-05 18:25:07 +0000)
+In 47973a2dbf we split the last generic chipset out of the PC
+board, but forgot to remove the include of "hw/i386/pc.h".
+Since it is now unused, remove it.
 
-are available in the Git repository at:
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Message-Id: <20190204210433.26088-2-philmd@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/sparc64/sun4u.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-  git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
-
-for you to fetch changes up to e67e91b4b55331973f783ca89790ee9f7861ced1:
-
-  hw/input/tsc210x: Fix building with no verbosity (2019-02-06 15:57:06 +0100)
-
-----------------------------------------------------------------
-Trivial patches:
-* Update copyright
-* Fix LGPL in target/moxie
-* configure portability fix
-* Drop useless inclusion of "hw/i386/pc.h"
-* Mark the cpu-cluster device with user_creatable = false
-* tsc210x: Fix building with no verbosity
-
-----------------------------------------------------------------
-
-Eric Blake (1):
-  configure: Avoid non-portable 'test -o/-a'
-
-Peter Maydell (1):
-  qemu-common.h: Update copyright string for 2019
-
-Philippe Mathieu-Daudé (3):
-  hw/sparc64/sun4u: Drop useless inclusion of "hw/i386/pc.h"
-  hw/unicore32/puv3: Drop useless inclusion of "hw/i386/pc.h"
-  hw/input/tsc210x: Fix building with no verbosity
-
-Thomas Huth (2):
-  target/moxie: Fix LGPL information in the file headers
-  hw/cpu/cluster: Mark the cpu-cluster device with user_creatable =
-    false
-
- configure                | 63 +++++++++++++++++++++-------------------
- hw/cpu/cluster.c         |  3 ++
- hw/input/tsc210x.c       | 18 ++++--------
- hw/sparc64/sun4u.c       |  1 -
- hw/unicore32/puv3.c      |  1 -
- include/qemu-common.h    |  2 +-
- target/moxie/cpu.c       |  2 +-
- target/moxie/cpu.h       |  4 +--
- target/moxie/helper.c    |  4 +--
- target/moxie/mmu.c       |  4 +--
- target/moxie/translate.c |  4 +--
- 11 files changed, 52 insertions(+), 54 deletions(-)
-
+diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+index f76b19e4e9..fdf3f14a29 100644
+--- a/hw/sparc64/sun4u.c
++++ b/hw/sparc64/sun4u.c
+@@ -33,7 +33,6 @@
+ #include "hw/pci/pci_bus.h"
+ #include "hw/pci/pci_host.h"
+ #include "hw/pci-host/sabre.h"
+-#include "hw/i386/pc.h"
+ #include "hw/char/serial.h"
+ #include "hw/char/parallel.h"
+ #include "hw/timer/m48t59.h"
 -- 
 2.20.1
 
