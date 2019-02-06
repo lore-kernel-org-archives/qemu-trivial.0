@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1grOdm-0006aL-2D
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 09:57:30 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49750)
+	id 1grP81-00008z-Kq
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 10:28:45 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55816)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grOdj-0006YD-6c
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:57:28 -0500
+	(envelope-from <laurent@vivier.eu>) id 1grP80-00007B-4U
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 10:28:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grOdi-0007lP-BQ
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:57:27 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:45703)
+	(envelope-from <laurent@vivier.eu>) id 1grP7x-0004OM-K2
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 10:28:43 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:46841)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1grOdg-0007j4-8s; Wed, 06 Feb 2019 09:57:24 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue107 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1MmkjY-1hZlkG0W0c-00jqlD; Wed, 06 Feb 2019 15:57:18 +0100
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-	Andrzej Zaborowski <balrogg@gmail.com>
-References: <20190204204517.23698-1-philmd@redhat.com>
+	id 1grP7i-0004KE-TE; Wed, 06 Feb 2019 10:28:27 -0500
+Received: from localhost.localdomain ([78.238.229.36]) by
+	mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA
+	(Nemesis)
+	id 1MLi4W-1gZjkF0OWW-00HdzY; Wed, 06 Feb 2019 16:28:15 +0100
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <3448f4d1-da76-ef9c-bc87-dfab59a5415b@vivier.eu>
-Date: Wed, 6 Feb 2019 15:57:17 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, Eduardo Habkost <ehabkost@redhat.com>,
+	qemu-trivial@nongnu.org, Anthony Green <green@moxielogic.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
+	Andrzej Zaborowski <balrogg@gmail.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+	Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Date: Wed,  6 Feb 2019 16:28:00 +0100
+Message-Id: <20190206152807.31896-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <20190204204517.23698-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:BJN9v8qb0SYSLwyiIptj8SMggLtViFnuQH25pBc9l/e1Ncvc0HI
-	3UadxJscLVEQknKmd+BLfqcdfJk0lQRFscAu4x/D5uHi8k7CWcEygNz1do5SMIkvOD/ProY
-	0LTzV/CIeRV7bZrW0bvM3FQ9uLL7/8kjmbZGjM5YuwlD1fYukOe+tMwmSv49LIfANE3r3XI
-	6KkpQx8dTmSh0yPjRYbFw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:xNoMlBwY4EU=:r1uLej0U62vpeJxbCWMeSQ
-	qr5SvkDA2tSKpUJr9d8SXhXorXxs9o9OdQXdGBDmlGUvbPuY+b5viD5YKm27JyzE10i9FRgET
-	IPlw4cqMFUCprdWcAxs9ULM3t6sdNPuBTRdNTp0hQ4AsVeUEZpjQ1UI/4Oe/AWbTk59zbffKJ
-	P7kFOyaaLs9o/CdmoCDXvTnlRXtGq1VEpVPi8uC8SmNCSanz0E7Sg6WlcaM75a3dWFZ8DuYl+
-	Kz07cKG4vryvwTYUMFvHrKfABuG44u8lLWeunXd7JOAeE8hTIx4RiKdqNcKyMh8fwkIiWk8LZ
-	sKcsYnd8qdDhKOosxzI9h0eem1ke4C0zGDDXTCC5iwSg1OavOydBWhq37pzdxsjCu5cYADNOL
-	EPKaTrjgv7j+ckB23S2MXirZYCv+uHjtZaOdAA3RK3MXgx4j/mIcLVdWxSSA7UT9hFMUj2cdW
-	8kMIR2Cm79MXdlzgaOJEl2CNvl4vg1MDoCkgzTo6XFTfrA+DZvgM5q9crMfB84adkwYHtWRui
-	o/pj7XUmaNeScb2Ke7KtPin8DjuBVjl0Mt1ooktxUJ3GFnON7aT2WOyfvy35QEUYNUUZ2k7ne
-	Ing0GmKmpcg6+l2epsG1ZzoSoOd+uO5+mHnrFwjMUqziYAtd420SDmklQ6/NvO/KBUFRd5qH9
-	Elm18jFLVCcKe+169ZwGuI/jTSyioQ5WMtEsrEof/1QF7stij5TMF2RIjraqsgkopXR1p9DA0
-	gOnUjV7Q7JTEsAVjgtsTowq1/6gQt3xTARIEmvoYXlIkGUYujw3Vx/i3ruE=
+X-Provags-ID: V03:K1:1WV4LHov9H9VzI4geQyG7/VDJuvJVIT/0FzqbTmcyY13bJiZHhz
+	FZhMyT1Ljm8EZC+9WvHBArpxWSJ3TpLr0WFLCpoDiVt6wvf7Uu6cf3KW3KUV9Ak5yjPjPiD
+	JXZmGyJI1zhvYcKF8/4ftClR7TAi1pqnkcxShBirgoksjzWJQt/2K7utqC6GzjEZuyceqFG
+	YzJfzR2gBbQ0mf/dy3Zgg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:gls5uUnZpsc=:KWtERISnbZ4ih/3Cex+Vlz
+	e88sTUcug9qjF9LLvTi8ZjRPkqRobfDmUr8ol0GiuX82XujUckv8pI7g4aFAcIOR3EQ8xAcnZ
+	v5lF6OA7tATQQfV/Ls31NxoE41oI0Cn0Xb9x0fdA7Mym5kk4RdxLOBfsfk+xWk3wWMU13AadV
+	lGm1b1r/XSzGgIcI+X6WnJfAeeLet4WsThobg8fR1s9TLy5gSMxyxtgbLgAOWzfRUGZAqSBA9
+	WDgt6GqH8zkXvzbTeZ89fszq4oLbs18b4+Y0/VSKZVC56JDYoPNwovZAGRNiKzi8ywR6oddf1
+	znLPTjlkEXwaj2RZlIgXWIFh4yWQRCypEz3ENJSyFnV3TN/uk1k3BQQgDmvkJO7YRouBLrxSO
+	XA84nhHp6zVU2R+VHHU3ERlf/exouljAYR3VKwQAX4VSF8XNSNsl7G8rHC2gCtpbpIm/BJDu3
+	VN1gCKEFE+XynYkLZqJ+5QPPEqTZCmZvJyu1Br1ce5owBJ8y+lKl6aLJl4CENmFSo4QJzlr5/
+	pYWQhOmChKg2z/qEGodHT+iXWX74dYbrbCGPBXs/Pqkg2XosmzH9AckGye5eFJH+XIgmz/KVk
+	nhDF3anEEH2/jzSWRIHLWn8OsiEzZl2NpVfNiFM4dZOnS9E0ekgrbJYEU42srWSo8+w9CeWbb
+	HDCiSEWewyg38qxHXhi9sesMrk3tJ7Pc2QFIiTDuhvrjZJCqKJNtADai+PJ4XFqJVqAJNIb55
+	uIgFkRNqCv23sLeDy52GXBxhaDB7ta8RevVemw+IKpfCq+rQ9SHsxZJuOWg=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.73
-Subject: Re: [Qemu-trivial] [PATCH] hw/input/tsc210x: Fix building with no
- verbosity
+X-Received-From: 212.227.126.130
+Subject: [Qemu-trivial] [PULL 0/7] Trivial patches patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,81 +61,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Feb 2019 14:57:28 -0000
+X-List-Received-Date: Wed, 06 Feb 2019 15:28:45 -0000
 
-On 04/02/2019 21:45, Philippe Mathieu-Daudé wrote:
-> When building with TSC_VERBOSE not defined, we get:
->       CC      arm-softmmu/hw/input/tsc210x.o
->     hw/input/tsc210x.c: In function ‘tsc2102_data_register_write’:
->     hw/input/tsc210x.c:554:5: error: label at end of compound statement
->          default:
->          ^~~~~~~
->     hw/input/tsc210x.c: In function ‘tsc2102_control_register_write’:
->     hw/input/tsc210x.c:638:5: error: label at end of compound statement
->          bad_reg:
->          ^~~~~~~
->     hw/input/tsc210x.c: In function ‘tsc2102_audio_register_write’:
->     hw/input/tsc210x.c:766:5: error: label at end of compound statement
->          default:
->          ^~~~~~~
->     make[1]: *** [rules.mak:69: hw/input/tsc210x.o] Error 1
-> 
-> Fix this by replacing the culprit fprintf(stderr) calls by a more
-> recent API: qemu_log_mask(LOG_GUEST_ERROR). Other fprintf() calls
-> are left untouched.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  hw/input/tsc210x.c | 18 ++++++------------
->  1 file changed, 6 insertions(+), 12 deletions(-)
-> 
-> diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
-> index ded0db9351..2eb3cb9518 100644
-> --- a/hw/input/tsc210x.c
-> +++ b/hw/input/tsc210x.c
-> @@ -552,10 +552,8 @@ static void tsc2102_data_register_write(
->          return;
->  
->      default:
-> -#ifdef TSC_VERBOSE
-> -        fprintf(stderr, "tsc2102_data_register_write: "
-> -                        "no such register: 0x%02x\n", reg);
-> -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR, "tsc2102_data_register_write: "
-> +                                       "no such register: 0x%02x\n", reg);
->      }
->  }
->  
-> @@ -636,10 +634,8 @@ static void tsc2102_control_register_write(
->  
->      default:
->      bad_reg:
-> -#ifdef TSC_VERBOSE
-> -        fprintf(stderr, "tsc2102_control_register_write: "
-> -                        "no such register: 0x%02x\n", reg);
-> -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR, "tsc2102_control_register_write: "
-> +                                       "no such register: 0x%02x\n", reg);
->      }
->  }
->  
-> @@ -764,10 +760,8 @@ static void tsc2102_audio_register_write(
->          return;
->  
->      default:
-> -#ifdef TSC_VERBOSE
-> -        fprintf(stderr, "tsc2102_audio_register_write: "
-> -                        "no such register: 0x%02x\n", reg);
-> -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR, "tsc2102_audio_register_write: "
-> +                                       "no such register: 0x%02x\n", reg);
->      }
->  }
->  
-> 
+The following changes since commit 47994e16b1d66411953623e7c0bf0cdcd50bd507:
 
-Applied to my trivial-patches branch.
+  Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-20190205' into staging (2019-02-05 18:25:07 +0000)
 
-Thanks,
-Laurent
+are available in the Git repository at:
+
+  git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
+
+for you to fetch changes up to e67e91b4b55331973f783ca89790ee9f7861ced1:
+
+  hw/input/tsc210x: Fix building with no verbosity (2019-02-06 15:57:06 +0100)
+
+----------------------------------------------------------------
+Trivial patches:
+* Update copyright
+* Fix LGPL in target/moxie
+* configure portability fix
+* Drop useless inclusion of "hw/i386/pc.h"
+* Mark the cpu-cluster device with user_creatable = false
+* tsc210x: Fix building with no verbosity
+
+----------------------------------------------------------------
+
+Eric Blake (1):
+  configure: Avoid non-portable 'test -o/-a'
+
+Peter Maydell (1):
+  qemu-common.h: Update copyright string for 2019
+
+Philippe Mathieu-Daudé (3):
+  hw/sparc64/sun4u: Drop useless inclusion of "hw/i386/pc.h"
+  hw/unicore32/puv3: Drop useless inclusion of "hw/i386/pc.h"
+  hw/input/tsc210x: Fix building with no verbosity
+
+Thomas Huth (2):
+  target/moxie: Fix LGPL information in the file headers
+  hw/cpu/cluster: Mark the cpu-cluster device with user_creatable =
+    false
+
+ configure                | 63 +++++++++++++++++++++-------------------
+ hw/cpu/cluster.c         |  3 ++
+ hw/input/tsc210x.c       | 18 ++++--------
+ hw/sparc64/sun4u.c       |  1 -
+ hw/unicore32/puv3.c      |  1 -
+ include/qemu-common.h    |  2 +-
+ target/moxie/cpu.c       |  2 +-
+ target/moxie/cpu.h       |  4 +--
+ target/moxie/helper.c    |  4 +--
+ target/moxie/mmu.c       |  4 +--
+ target/moxie/translate.c |  4 +--
+ 11 files changed, 52 insertions(+), 54 deletions(-)
+
+-- 
+2.20.1
+
 
