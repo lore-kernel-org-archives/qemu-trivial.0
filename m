@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1grOaO-0004DY-Hr
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 09:54:00 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48756)
+	id 1grObM-0004vf-Ob
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 09:55:00 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49026)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grOaM-0004Ca-UB
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:53:59 -0500
+	(envelope-from <laurent@vivier.eu>) id 1grObL-0004uV-7D
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:54:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grOaM-00063i-37
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:53:58 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:34245)
+	(envelope-from <laurent@vivier.eu>) id 1grObJ-0006TJ-Vr
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:54:59 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:42263)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1grOaJ-0005z3-VE; Wed, 06 Feb 2019 09:53:56 -0500
+	id 1grObB-0006KP-Iz; Wed, 06 Feb 2019 09:54:50 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue107 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1Mc0Aj-1hP5VS2qz9-00dTyz; Wed, 06 Feb 2019 15:53:41 +0100
+	(mreue106 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1MsZif-1h6K9E2Pxj-00u3ER; Wed, 06 Feb 2019 15:54:31 +0100
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
@@ -23,36 +23,36 @@ Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	David Gibson <david@gibson.dropbear.id.au>
 References: <20190204210433.26088-1-philmd@redhat.com>
-	<20190204210433.26088-2-philmd@redhat.com>
+	<20190204210433.26088-3-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <9b5cdbdd-4d54-88e5-ecad-2c08c89fcd5f@vivier.eu>
-Date: Wed, 6 Feb 2019 15:53:36 +0100
+Message-ID: <a131c869-cc90-eb4c-1a21-746cc9b29b33@vivier.eu>
+Date: Wed, 6 Feb 2019 15:54:29 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190204210433.26088-2-philmd@redhat.com>
+In-Reply-To: <20190204210433.26088-3-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:8UQLVMpBw1iA2Kp6Cv7qhLvims1NMFndW6xasUUnxJLvMD5ZSqt
-	TucyjgOzb5EVU1U2D0mW99Yk3wsufOsinGkABTtLl5SsRZQmiAQgVPbZopRzXdemYMDs0FU
-	3mmVsECRaTCWAv3lUwCdrkOv9gaUKo6KrTeEMQjAni90Q3rykTuft23jgDQj4/5lDk5c8qG
-	NDgHQ70k954UtH2K6mdPg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:S6B/pWBp4II=:eh9rqHKa483//btUa4btdg
-	BW1rsLP6SMpMKeoFB+85o53SudaKTXqLKq/cYIC67iLCBQF9QuBO5E+poIrg1SMa9mi1lXl8k
-	kGBvoeQpThcyCU0ATJ6J9Crn03xQ1rpJOjY3csWckUuye7UzN2FqnKgci0ZDZOnKK7bQY41YF
-	QY+3zpi9+eMUs4jCZMW2754KQE7XwwGxwOTN35uQ3XX8wtV8dfZYaDA2Zzw3LlmXVqW90afbp
-	GXLtDLEjjEflfKGVfBRUqqW9H5WqWpWEeRROaNoqzKfS14Kwjj3eujoXkWLP1UjfihB6tbYXE
-	OExi5EEid60OwJRIP0Paw+YoCfnE8LSOUAglWTAaeFWAp41TWJmHiVlNTt6+tiXHNDASD6zXM
-	OtN+ZWtDRZZTUCfy/zLTg7F2NtQqV3XmuQHgeX4AbyziOc0yakdQzCCcM7PenLqWUEIZymPdq
-	3b0oHAa9lOJokJHUQMxFoA0OGUuKb2Wzn9rdMk0QAcK7xmLPGoKTqz0Gn2GJVoasm4V0Kn1oy
-	nwbfxJ4GidJNjIu6siYQzAI4YnPOnxO6NKJRg2nzsrt5CeYC/3gqqeBz0tqN0nY4gDXoOgMcY
-	wteCtSNvgUnaLSq9qem5AtGHhUnioRAaYlWufHBEN6SeGXpk2QOA2wC0r7oCt6dp+5EzXeKXu
-	0Q6LTpHmZG/lILLzXJRCzO0x9x8SvC8HTKZUGG5IVnML5l66Lutb8lP35YJCWovZOxRcW31aX
-	NdOdvHQvgG1zwXaFIRQvDes+pvSj0zc28RvKZmfm+27LGhsIgn6yxQjb6aE=
+X-Provags-ID: V03:K1:1Z62lFfow/hTyu6tj8Tt9qf2BRv6J8+btfTTBW3lh72uJL3iNvG
+	PqKRfgZGqoFt9UVMAMd+GC12tdrvvJBYfQ4/zo7iiRe02fmclo1ay3Fe3ON4TkJYKVeg88f
+	zlOaAOjPsPU+vqYs+IbJx77yI7Z86IUdCke7zZ3KSNRY2FsnuPQDyP6YRzM/m8Q/Cjg4SA1
+	Q9JA5GH6IlN+rtRzji6FQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:AF+K1ekEhPg=:AaQA9C/HNljALrYjsLr1IH
+	Nc3B8L6GqiESE7h4tIMDwDWfyqcQjOauyNLdHKqyKSsKsWMERQWciNbLgjVziAaaZ7r1DWzOI
+	606gU1WgSImBxcA95HXpm7SoRrEFeXWtFOuASL/KVYWPr5+WE6R7207nXTadwvcun/AR5Ani7
+	HUsSMsigcYi3AB63Zf43yxowTh0LPHlEECdgRR6Ns1E8Ycorqc96+47L04UeeJBK21QxEq0KY
+	/DLaKYbzE7eg1PnGaArachxHYwZfy74Zuf0ciOf+xI5I+ysrrT6V7MB33h0PtLxXq49mkaS1A
+	Ajn2NtmgAdWaEtuy+AM7eNlINZUkF+sguLvof1GBYvRlFwGJ0WO7Rp5LuYfPzQjih6KYfTc+Y
+	+MrcYRSOWR1d1sslKIUO2Na7b4jwRe84g+Ztw7jX23BnfcJQ8cMdKMOH/uNXZXjm8M8KPli8a
+	t/KpSc14bjS4w1Rv7L5CYxt6QlK8fxmzs7VH4V4KBL8fFhBzkPBnl5I3eMBEf9rKfPZPOeT2E
+	nCAXNUayR4Z0SeoZ8DPQszFRNPMb/0hPcGe+EM0mng9VNeKFMDh+1KFXxQbWwMKZ4FJy199gz
+	xYmVq3BVkvjC/jODptX1ktfwiNn2iZpm39VskSETqzWEnMWY5oCP4qheSk89hvv/tZOnKLWR6
+	9Kif9N2fjGLL3YTskT7VmpwrEcAeT0zxqHmKJOW14QqycQ98f6b8qSPoPErW23OZDZ3gAnWtQ
+	RSUciqS6kA726xWbHq8MIfx5KdMr3UGWSDIAmHCjgi0cwAARjaTCEuF3DdM=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-Subject: Re: [Qemu-trivial] [PATCH 1/3] hw/sparc64/sun4u: Drop useless
+X-Received-From: 217.72.192.75
+Subject: Re: [Qemu-trivial] [PATCH 2/3] hw/unicore32/puv3: Drop useless
  inclusion of "hw/i386/pc.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -65,7 +65,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Feb 2019 14:53:59 -0000
+X-List-Received-Date: Wed, 06 Feb 2019 14:55:00 -0000
 
 On 04/02/2019 22:04, Philippe Mathieu-Daudé wrote:
 > In 47973a2dbf we split the last generic chipset out of the PC
@@ -74,21 +74,21 @@ On 04/02/2019 22:04, Philippe Mathieu-Daudé wrote:
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/sparc64/sun4u.c | 1 -
+>  hw/unicore32/puv3.c | 1 -
 >  1 file changed, 1 deletion(-)
 > 
-> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-> index f76b19e4e9..fdf3f14a29 100644
-> --- a/hw/sparc64/sun4u.c
-> +++ b/hw/sparc64/sun4u.c
-> @@ -33,7 +33,6 @@
->  #include "hw/pci/pci_bus.h"
->  #include "hw/pci/pci_host.h"
->  #include "hw/pci-host/sabre.h"
+> diff --git a/hw/unicore32/puv3.c b/hw/unicore32/puv3.c
+> index 830fe3face..b42e600f74 100644
+> --- a/hw/unicore32/puv3.c
+> +++ b/hw/unicore32/puv3.c
+> @@ -15,7 +15,6 @@
+>  #include "ui/console.h"
+>  #include "hw/boards.h"
+>  #include "hw/loader.h"
 > -#include "hw/i386/pc.h"
->  #include "hw/char/serial.h"
->  #include "hw/char/parallel.h"
->  #include "hw/timer/m48t59.h"
+>  #include "sysemu/qtest.h"
+>  
+>  #undef DEBUG_PUV3
 > 
 
 Applied to my trivial-patches branch.
