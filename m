@@ -1,95 +1,95 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1grKx2-0007qb-Sh
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 06:01:08 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48852)
+	id 1grOPP-0007X2-5w
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 09:42:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46286)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1grKx0-0007p5-TL
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 06:01:07 -0500
+	(envelope-from <laurent@vivier.eu>) id 1grOPM-0007WU-Vd
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:42:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1grKwu-0003eL-NK
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 06:01:06 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:47388)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1grKwf-0003Qk-0i; Wed, 06 Feb 2019 06:00:46 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 805C4C074110;
-	Wed,  6 Feb 2019 11:00:27 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-96.ams2.redhat.com [10.36.116.96])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2C9D963BAF;
-	Wed,  6 Feb 2019 11:00:06 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	kumar sourav <sourav.jb1988@gmail.com>, qemu-trivial@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-References: <20190127101836.15451-1-sourav.jb1988@gmail.com>
-	<33a499ed-6f6a-ccd2-a1f8-48646b6be6c9@redhat.com>
-	<05c9ef91-39d7-0579-b007-443748559007@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
+	(envelope-from <laurent@vivier.eu>) id 1grOPI-00073I-26
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:42:32 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:44267)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1grOPH-00072t-HU
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:42:31 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue108 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1MNKqC-1gSZ3e34ME-00OpG6; Wed, 06 Feb 2019 15:42:28 +0100
+To: Kamil Rytarowski <n54@gmx.com>, qemu-trivial@nongnu.org
+Cc: alexandro@phi.nz
+References: <20190128210108.21318-1-n54@gmx.com>
+From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <fd1de933-9547-3ccb-97e4-090820d2ff31@redhat.com>
-Date: Wed, 6 Feb 2019 12:00:05 +0100
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <46891498-8f6d-a5d9-cd87-ee04862e88de@vivier.eu>
+Date: Wed, 6 Feb 2019 15:42:27 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <05c9ef91-39d7-0579-b007-443748559007@redhat.com>
+In-Reply-To: <20190128210108.21318-1-n54@gmx.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Wed, 06 Feb 2019 11:00:27 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:tQs0Jn17TxznVHF/0LX68aJ3PERR8Kse9IWZZEFkibe9neqJHNz
+	cff1obVBbFzLEMWiNbBJL6wrKcZ602vkH4n1DHge9u5ERaYB+qhngo7IJw/RBsgqbd9QC4f
+	T9/PJamcahuZ1QIbMJsCXFPZZ1IjoPQ8HnTnhi3UHKACykrrUfTGtFB0pnSJW6RowmrhwB0
+	PcUl2xgisy1Z7beQDmzWg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:TxKl8Jy7kEs=:Ep2qKSb+R5v096zViY5/2d
+	F0Q57J73MldSUhZpJPjm7Qyewld352hWCe20jD22m4cthbsbEuRt4WUwoE/gI9k/7IvoKRojO
+	F9sTeu1aZy7K0uv3LGIJ6emaXLcl7DEr1+2t85VukdW4t3cWYV1dEmEh798yVkgC30cylRuVo
+	xWaenA6IuD4V2RWYlnw5mlTCiI+U04F0I7ClGITvSdw8DNvtOI3gChH8y2qQTq2JB8LD7CDGn
+	jErfjROQQ2AMJHIrV9EXkZcAmOy3zB1TqsiSfAcCSaqag5N9pqfTRSOLr65g+jF7JDkzzMzri
+	tDXLtxJlr0xn8NtFdhMbIgXkxVtxMNwe17yMInPwzMFekSR5K1RKXW0J7W602xes5YZFOfzPB
+	w9vC2fFJDzb/h79k2Ru1cG+MJdn0/8CfndT5za/oM92LVL3HMkQ+Xf6kkjP3668xPQFWwdwx6
+	9yooXiqKScvEfgrs917sNWYxSa+G+JGII9A2opiyvXi+GZ+FoZCjTVv9tROIH2jvMcFI/968/
+	EfMW5tUYgqgFiEwXqLGLSuLpxXjsXSc7VtXhtVXgIiWBgWTPo/q4o32PGHeHl59xW/uvhVHkI
+	eyPE/O2wclcOTmU71a+pGfiNQM8ITl8n2F/ZWupAsA02KulI4GTTd07UHNb8WL2IWRBfJcLdK
+	3oIPY64yWwmdyi52qt5jGBOOjrSkcsb+42cp4gLcCIK4i8qA3R1it0OO72plPl/Ea/LJr1gYQ
+	w+4O3t5jIaZNjAG5AZ16F99MlvDFb6WinGd5J78hHrJ0UM8PYGwAHf5Glzk=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/input/lm832x: set device
- category of lm832x
+X-Received-From: 212.227.17.10
+Subject: Re: [Qemu-trivial] [PATCH] configure: Add HAX support in NetBSD
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,71 +101,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Feb 2019 11:01:07 -0000
+X-List-Received-Date: Wed, 06 Feb 2019 14:42:37 -0000
 
-On 2019-01-28 12:10, Philippe Mathieu-Daud=C3=A9 wrote:
-> Hi Thomas,
->=20
-> On 1/28/19 9:37 AM, Thomas Huth wrote:
->>  Hi,
->>
->> On 2019-01-27 11:18, kumar sourav wrote:
->>> Sets the category of lm832x as DEVICE_CATEGORY_INPUT
->>> Devices should be assigned to one of DEVICE_CATEGORY_XXXX
->>>
->>> Signed-off-by: kumar sourav <sourav.jb1988@gmail.com>
->>> ---
->>>  hw/input/lm832x.c | 1 +
->>>  1 file changed, 1 insertion(+)
->>>
->>> diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c
->>> index cffbf586d4..07ae5e0aee 100644
->>> --- a/hw/input/lm832x.c
->>> +++ b/hw/input/lm832x.c
->>> @@ -509,6 +509,7 @@ static void lm8323_class_init(ObjectClass *klass,=
- void *data)
->>>      k->recv =3D lm_i2c_rx;
->>>      k->send =3D lm_i2c_tx;
->>>      dc->vmsd =3D &vmstate_lm_kbd;
->>> +    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
->>>  }
->>
->> This device already has DEVICE_CATEGORY_MISC set since it is derived
->> from TYPE_I2C_SLAVE. If you now set another category bit here, the
->> device shows up twice in the output of "-device help". That's not so n=
-ice.
->>
->> I see multiple options here:
->>
->> 1) Drop this patch since the device already has a category
->>
->> 2) Make sure to clear_bit() the MISC category here again
->>
->> 3) Remove the set_bit(DEVICE_CATEGORY_MISC, k->categories) in
->>    hw/i2c/core.c - it does not make that much sense to set the
->>    MISC category for an abstract parent class.
->>
->> 4) Introduce a new DEVICE_CATEGORY_I2C which could be used
->>    instead of the DEVICE_CATEGORY_MISC in hw/i2c/core.c
->>
->> One of the last two options sound most appealing to me.
->=20
-> Can we go with 0/3/4 together? 0 being this patch:
->=20
->   0) This devices inherited DEVICE_CATEGORY_I2C from his
->      abstract parent, also select the DEVICE_CATEGORY_INPUT
->      bit.
+On 28/01/2019 22:01, Kamil Rytarowski wrote:
+> The NetBSD support in Intel HAXM has beem merged upstream and is functional.
+> 
+> Signed-off-by: Kamil Rytarowski <n54@gmx.com>
+> ---
+>  configure | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/configure b/configure
+> index b18281c61f..89b889072d 100755
+> --- a/configure
+> +++ b/configure
+> @@ -819,6 +819,7 @@ DragonFly)
+>  ;;
+>  NetBSD)
+>    bsd="yes"
+> +  hax="yes"
+>    make="${MAKE-gmake}"
+>    audio_drv_list="oss try-sdl"
+>    audio_possible_drivers="oss sdl"
+> 
 
-Yes, I guess... Thinking about this again ... dc->categories is a
-bitfield, so there is or at least was the original intention that a
-device can go into multiple categories. Question: Is this what we want,
-and if yes, is everybody fine with the fact that a device shows up
-multiple times in the output of "-device help" ? If not, shall we change
-the bitfield into a normal enum value?
+Please re-send you patch cc'ing qemu-devel@nongnu.org
 
-Anyway, a DEVICE_CATEGORY_I2C is likely a good idea, at least it's
-better than MISC here (and we already have DEVICE_CATOGORY_USB, too).
-Anybody want to send a patch?
-
- Thomas
+Thanks,
+Laurent
 
