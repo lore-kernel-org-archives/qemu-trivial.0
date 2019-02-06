@@ -1,56 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1grOcf-0005q6-7s
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 09:56:21 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49397)
+	id 1grOdm-0006aL-2D
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 09:57:30 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49750)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grOcc-0005oP-AH
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:56:19 -0500
+	(envelope-from <laurent@vivier.eu>) id 1grOdj-0006YD-6c
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:57:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grOcb-00079l-JT
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:56:18 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:41237)
+	(envelope-from <laurent@vivier.eu>) id 1grOdi-0007lP-BQ
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 09:57:27 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:45703)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1grOcb-00079S-AC; Wed, 06 Feb 2019 09:56:17 -0500
+	id 1grOdg-0007j4-8s; Wed, 06 Feb 2019 09:57:24 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue107 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1M2fM1-1gq1hy2uLf-0049ST; Wed, 06 Feb 2019 15:56:05 +0100
-To: Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
-	Luc Michel <luc.michel@greensocs.com>
-References: <1549371525-29899-1-git-send-email-thuth@redhat.com>
+	1MmkjY-1hZlkG0W0c-00jqlD; Wed, 06 Feb 2019 15:57:18 +0100
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	Andrzej Zaborowski <balrogg@gmail.com>
+References: <20190204204517.23698-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <36af6cca-59aa-3c6d-3be9-71c2e26a2135@vivier.eu>
-Date: Wed, 6 Feb 2019 15:56:04 +0100
+Message-ID: <3448f4d1-da76-ef9c-bc87-dfab59a5415b@vivier.eu>
+Date: Wed, 6 Feb 2019 15:57:17 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <1549371525-29899-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <20190204204517.23698-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:Ub6EC2I0ilIyqAn0RUrNgpTb1z33ozW7IOIYALXEm0ZJThraLq/
-	NRtd7oOATcJQ/iBcbQpIiE+MAJTChUWUEFZJ+7XU5QcjUGT6VFwZBvTxWhrbtSsYL/uI6Hg
-	pw79LfQgKW+Icc/meV6BhFpSOPDQI9dbSZQ/v0tmW06PCVr8jTnqNPZ/KF1X5jrZojxbNuD
-	h/XqLco+FGE5m5ZWth2Mg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:mafpiJHBWSM=:L8YGbHs3e6GNVGM1SQG1Uw
-	hRu05vBEi5fR2+aYMyWldY0XyUgqb+WYCHZE3RHPAVleDC4zdMinWNPVJ/oKaENR/s+qsnEyt
-	c44YsXtgQl32FVjxYS5lNooIJ23E5fFLFwKrUWl4vhEn2iTlfVFrrX3UmuhmuaKYnJFzITIbp
-	vTqFJ9xvZP5JYnou0276cRcgCDSn9tyRVWJkGPnRKRGM1LgOeAsd/eIAUScnpwplpmUrXF3pi
-	KAOEZdZ2loNFNXeG3u5OGknnUN1LCYFxSLP0M/NPsuNSmbSQ5smrXhrfvb2H3Z1T8BlTOdUvg
-	3o1N7fHeV93IcB4KTckm7oQ88AQG8ZCI42OZ9/GXe0e2yxxrt+g4//XdGTZemAUJeG/YYCxRZ
-	RrtCWE+GfhvBR6sxMSRzNZpYfwrt34MxViCgA0E04aFa+VcsTbjh56Sl0GMujP0J4YekZxHrj
-	lT2oOpYIDzPnOSJDTQNBVrQjBaM3SJ2t72R99t1V+K0aAMh3+englxcqBPABIEvCZdnxKobUe
-	e4rAYsW3qV9mpIQ4cIT1Lf/9X54zgOEB4960RlM2Nug3DhGZosU3IhiKOpwvNiqF/gSCeL+1O
-	MRpKflZIL1Jbki5/YVyzXqqAJD25Va8zkfL9uraDsxeBs+XrKWOQlvUpWXOPJwe62JLnu7gwy
-	5V3Na9oM1oDI74gM2U/t5yu7p6T2yvTm1maqOSTTbB+L5i7JvURL/kpG6b3rAKwt0l+seIuzB
-	lDhNHfQkKPe1tFHECkQJ52p6GMTJ0ETMT+GjQR4eYqdcYmdLE3cEbnJFKlY=
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:BJN9v8qb0SYSLwyiIptj8SMggLtViFnuQH25pBc9l/e1Ncvc0HI
+	3UadxJscLVEQknKmd+BLfqcdfJk0lQRFscAu4x/D5uHi8k7CWcEygNz1do5SMIkvOD/ProY
+	0LTzV/CIeRV7bZrW0bvM3FQ9uLL7/8kjmbZGjM5YuwlD1fYukOe+tMwmSv49LIfANE3r3XI
+	6KkpQx8dTmSh0yPjRYbFw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:xNoMlBwY4EU=:r1uLej0U62vpeJxbCWMeSQ
+	qr5SvkDA2tSKpUJr9d8SXhXorXxs9o9OdQXdGBDmlGUvbPuY+b5viD5YKm27JyzE10i9FRgET
+	IPlw4cqMFUCprdWcAxs9ULM3t6sdNPuBTRdNTp0hQ4AsVeUEZpjQ1UI/4Oe/AWbTk59zbffKJ
+	P7kFOyaaLs9o/CdmoCDXvTnlRXtGq1VEpVPi8uC8SmNCSanz0E7Sg6WlcaM75a3dWFZ8DuYl+
+	Kz07cKG4vryvwTYUMFvHrKfABuG44u8lLWeunXd7JOAeE8hTIx4RiKdqNcKyMh8fwkIiWk8LZ
+	sKcsYnd8qdDhKOosxzI9h0eem1ke4C0zGDDXTCC5iwSg1OavOydBWhq37pzdxsjCu5cYADNOL
+	EPKaTrjgv7j+ckB23S2MXirZYCv+uHjtZaOdAA3RK3MXgx4j/mIcLVdWxSSA7UT9hFMUj2cdW
+	8kMIR2Cm79MXdlzgaOJEl2CNvl4vg1MDoCkgzTo6XFTfrA+DZvgM5q9crMfB84adkwYHtWRui
+	o/pj7XUmaNeScb2Ke7KtPin8DjuBVjl0Mt1ooktxUJ3GFnON7aT2WOyfvy35QEUYNUUZ2k7ne
+	Ing0GmKmpcg6+l2epsG1ZzoSoOd+uO5+mHnrFwjMUqziYAtd420SDmklQ6/NvO/KBUFRd5qH9
+	Elm18jFLVCcKe+169ZwGuI/jTSyioQ5WMtEsrEof/1QF7stij5TMF2RIjraqsgkopXR1p9DA0
+	gOnUjV7Q7JTEsAVjgtsTowq1/6gQt3xTARIEmvoYXlIkGUYujw3Vx/i3ruE=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
-Subject: Re: [Qemu-trivial] [PATCH] hw/cpu/cluster: Mark the cpu-cluster
- device with user_creatable = false
+X-Received-From: 217.72.192.73
+Subject: Re: [Qemu-trivial] [PATCH] hw/input/tsc210x: Fix building with no
+ verbosity
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,38 +61,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Feb 2019 14:56:19 -0000
+X-List-Received-Date: Wed, 06 Feb 2019 14:57:28 -0000
 
-On 05/02/2019 13:58, Thomas Huth wrote:
-> The device can not be instantiated by the user and QEMU currently
-> aborts when you try to use it:
+On 04/02/2019 21:45, Philippe Mathieu-Daudé wrote:
+> When building with TSC_VERBOSE not defined, we get:
+>       CC      arm-softmmu/hw/input/tsc210x.o
+>     hw/input/tsc210x.c: In function ‘tsc2102_data_register_write’:
+>     hw/input/tsc210x.c:554:5: error: label at end of compound statement
+>          default:
+>          ^~~~~~~
+>     hw/input/tsc210x.c: In function ‘tsc2102_control_register_write’:
+>     hw/input/tsc210x.c:638:5: error: label at end of compound statement
+>          bad_reg:
+>          ^~~~~~~
+>     hw/input/tsc210x.c: In function ‘tsc2102_audio_register_write’:
+>     hw/input/tsc210x.c:766:5: error: label at end of compound statement
+>          default:
+>          ^~~~~~~
+>     make[1]: *** [rules.mak:69: hw/input/tsc210x.o] Error 1
 > 
-> $ x86_64-softmmu/qemu-system-x86_64 -device cpu-cluster
-> qemu-system-x86_64: hw/cpu/cluster.c:73: cpu_cluster_realize:
->  Assertion `cbdata.cpu_count > 0' failed.
-> Aborted (core dumped)
+> Fix this by replacing the culprit fprintf(stderr) calls by a more
+> recent API: qemu_log_mask(LOG_GUEST_ERROR). Other fprintf() calls
+> are left untouched.
 > 
-> Since this is an internal device only, mark it with user_creatable = false.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/cpu/cluster.c | 3 +++
->  1 file changed, 3 insertions(+)
+>  hw/input/tsc210x.c | 18 ++++++------------
+>  1 file changed, 6 insertions(+), 12 deletions(-)
 > 
-> diff --git a/hw/cpu/cluster.c b/hw/cpu/cluster.c
-> index 25f9070..6f5f037 100644
-> --- a/hw/cpu/cluster.c
-> +++ b/hw/cpu/cluster.c
-> @@ -79,6 +79,9 @@ static void cpu_cluster_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
+> index ded0db9351..2eb3cb9518 100644
+> --- a/hw/input/tsc210x.c
+> +++ b/hw/input/tsc210x.c
+> @@ -552,10 +552,8 @@ static void tsc2102_data_register_write(
+>          return;
 >  
->      dc->props = cpu_cluster_properties;
->      dc->realize = cpu_cluster_realize;
-> +
-> +    /* This is not directly for users, CPU children must be attached by code */
-> +    dc->user_creatable = false;
+>      default:
+> -#ifdef TSC_VERBOSE
+> -        fprintf(stderr, "tsc2102_data_register_write: "
+> -                        "no such register: 0x%02x\n", reg);
+> -#endif
+> +        qemu_log_mask(LOG_GUEST_ERROR, "tsc2102_data_register_write: "
+> +                                       "no such register: 0x%02x\n", reg);
+>      }
 >  }
 >  
->  static const TypeInfo cpu_cluster_type_info = {
+> @@ -636,10 +634,8 @@ static void tsc2102_control_register_write(
+>  
+>      default:
+>      bad_reg:
+> -#ifdef TSC_VERBOSE
+> -        fprintf(stderr, "tsc2102_control_register_write: "
+> -                        "no such register: 0x%02x\n", reg);
+> -#endif
+> +        qemu_log_mask(LOG_GUEST_ERROR, "tsc2102_control_register_write: "
+> +                                       "no such register: 0x%02x\n", reg);
+>      }
+>  }
+>  
+> @@ -764,10 +760,8 @@ static void tsc2102_audio_register_write(
+>          return;
+>  
+>      default:
+> -#ifdef TSC_VERBOSE
+> -        fprintf(stderr, "tsc2102_audio_register_write: "
+> -                        "no such register: 0x%02x\n", reg);
+> -#endif
+> +        qemu_log_mask(LOG_GUEST_ERROR, "tsc2102_audio_register_write: "
+> +                                       "no such register: 0x%02x\n", reg);
+>      }
+>  }
+>  
 > 
 
 Applied to my trivial-patches branch.
