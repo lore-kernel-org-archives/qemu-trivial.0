@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1grP8B-0000Iz-3E
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 10:28:55 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:55977)
+	id 1grP8C-0000NZ-SS
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Feb 2019 10:28:56 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:56038)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grP87-0000Dv-Ld
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 10:28:53 -0500
+	(envelope-from <laurent@vivier.eu>) id 1grP8A-0000Ig-Rp
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 10:28:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grP84-0004Sb-1k
-	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 10:28:49 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:52543)
+	(envelope-from <laurent@vivier.eu>) id 1grP88-0004Wh-OW
+	for qemu-trivial@nongnu.org; Wed, 06 Feb 2019 10:28:54 -0500
+Received: from mout.kundenserver.de ([212.227.126.133]:54505)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1grP7k-0004L1-T9; Wed, 06 Feb 2019 10:28:30 -0500
+	id 1grP7y-0004MF-7T; Wed, 06 Feb 2019 10:28:43 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N49Yn-1hHpwG3hQ1-0101Hh; Wed, 06 Feb 2019 16:28:18 +0100
+	id 1Mdvyo-1hR0rH2Ah4-00b6Hi; Wed, 06 Feb 2019 16:28:25 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Eduardo Habkost <ehabkost@redhat.com>,
@@ -25,35 +25,36 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Eduardo Habkost <ehabkost@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Thomas Huth <thuth@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>
-Date: Wed,  6 Feb 2019 16:28:02 +0100
-Message-Id: <20190206152807.31896-3-laurent@vivier.eu>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Thomas Huth <thuth@redhat.com>, Stefano Garzarella <sgarzare@redhat.com>
+Date: Wed,  6 Feb 2019 16:28:07 +0100
+Message-Id: <20190206152807.31896-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190206152807.31896-1-laurent@vivier.eu>
 References: <20190206152807.31896-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:50GsQBkRs00UIdjKznqXiDUEnSYc3iLcB1QYRVJJtiPsDy0LKGi
-	W6NqyJRP/m7xfmm3M/+Meig9bn/JJqJyJ0Yn8kloK4ahy1hUJgtWq3/KGX04DO/LZcoJkGa
-	06uVe1j7USFPDszs79WjohXWU5daUAkK0tNKTL1pAqYDg/AbCpHuwNjKVu5eKMVXdb99Tkh
-	u1lurMbwWV+Shs05xQ21g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:2oBQh1yUJ3I=:0Tk4D5/7ClhGCJ1fQX8Ebk
-	+3Bd0rgm7iHGI6ANmF0X1kkIurdI1wkN6QFQoGepjwFztcdba1Yy5S4E2eEVXaQbZ7EXe1LTj
-	cv0bmdan0R5nR/rSc9GzCAnll4KbHVkTGn5WgPNrXS+SwhjLrD2US6547IEsLi6nCVuiMbp4x
-	F4tuwR2i1ZpFV+qZ65RGZlYJh9hhlGskIN1OEABdIL7edu7eMmGW2lU1hJcNLv+QGC86VIEQF
-	+hH/AWYF2WXSxwBNxJR1a4//vS4UJDverlJti6p7yvZw6eJeZmvQ8HhF5DQRW7J1425yPOWpH
-	a0rTFJO2Q+hHyOXQvPXrZlXsIJZEq7et6ASBs3CLhWiFVYmhPkpPEu/ZB++h9qvY/DZlxsM4H
-	4dfrjJ4N5BM7qVIHehxffzxYvqqJ4151mwwsHWVg0QYfu2HpWhJDss7gzOti712zixUyZTveP
-	8e/g76YQg5taWIh0MTeclOcGfWG1WGJ8/PPw9Y6+/pEt4gOtoAq5ScyK62m3KMamyBP5hPURF
-	lmzJ8g2RHd2757lDDzQ8jH5AwjI1EJ1yxtaYyonJwOhgap1Uy3U15chK/7aA5qbwA5iC+wrGR
-	g27N4fNydiiU77PbJioFmRMrkCOdrjV/2ZByZ5VzZctlCKBG37RA9SGYSZqSZgPd3Yn7/uiPs
-	dF/GAaTz6+Qr1auiLyCDjNcX9R8jCZhmgAEzsYsXgT3I9TPCeCqTSffl1TheL89rCUqkAtfAw
-	p8vJdxxRkDw0pj0GxH0Hb8ulUPq/D7Ie4HYafA==
+X-Provags-ID: V03:K1:phOavywWNVsBXnFLU/hFHxIScoTktw3Qh/cVYO372smu4BBlmfV
+	XUNo2yZVTe/BsPKV/y/aH3A1JX7WQsx93NvEXfuTAokUN9QkxOjXSMiHwTivcYWdExj9NNL
+	QhLIH23R1KLOyamY7xPolasgu52p2sSMZli94sXl6a2e3giG6pxSGx+GOoy2zkfXF6L/HIA
+	oMKqUfAGcp9J5XK+7WS4g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:sdjldisaT/0=:X/4oGKqGeTTdlov8fhN/Ke
+	IQoqbwXHMiJ6v1ywy/NiLpo7nc9u3+DF730xIpzqcMgWQMAfn2GGpcW96t/c5UHbSMcK+8R/i
+	omziyUBz7sCmpGnjOnOIEeMW7Xtx3uZBlP4zzlhxq0QBfFFMRI0I1T5ua97bNThgR8h4O+wMY
+	SKB/8WQyqkyflj5/B25SUt/1NVSRuKD1CoA3ioL6m8tL33hnajgTtvA/mys1UdUb2CCZ/GZLD
+	u1OqevcVVcSbloRxh7nYX/3a8+zTT3fBiDe1dhxtA3FhNFhA8gE4VaeAtIwQGrNxuDI4XH69M
+	LqVyawOZZy522PClRruNp7JF8Hf+69WpcUNIgdieDdNmaHVi/YuzZeaR/kwTiLmpkF5eNNh81
+	W7tclnk0kySxybCXxK29zQTLuyWaV6BNgPy6z2Pt5Nz+2vzCpLCjU4IFgjBeOmcmJ2nS3v6BD
+	tzNC+Ph8DHifE/A55TYFuOneYBNmjoDrBOpC86q/wel5OMfzP9qmG7y9gB9RfQVt1gu7kmC65
+	vWmwMmQIey4W0PxgyKzWAkyTeW5An4bs9ri7gKXQSBjw1DqUY9UL4Rw3a0hNzJWvUc/SmFTbw
+	nlOBKXrUuQSwr0H+yWtR5qhj0Lyvt2RVVmDEVDpzkIMyimyRMhucwQSPZNjSiFBMTMHUeBonQ
+	8K3gsFc8ACZqTPhK1lFbxM28uLnxOJWZllnYkhL9zKj1jV9g5qd+DH5zWPcU6YBhN+wwlE0DM
+	9sJwB9o+sFQZopacDLDAhmj6OXrvfRHnEVr3e4ellcRCBAxAyJQmSvYPYj4=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.133
-Subject: [Qemu-trivial] [PULL 2/7] target/moxie: Fix LGPL information in the
- file headers
+Subject: [Qemu-trivial] [PULL 7/7] hw/input/tsc210x: Fix building with no
+ verbosity
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,126 +66,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Feb 2019 15:28:53 -0000
+X-List-Received-Date: Wed, 06 Feb 2019 15:28:55 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-It's either "GNU *Library* General Public License version 2" or "GNU
-Lesser General Public License version *2.1*", but there was no "version
-2.0" of the "Lesser" license. So assume that version 2.1 is meant here.
-Also the files mentioned the GPL instead of the LGPL after declaring
-that the files are licensed under the LGPL, so change these spots to
-use LGPL, too.
+When building with TSC_VERBOSE not defined, we get:
+      CC      arm-softmmu/hw/input/tsc210x.o
+    hw/input/tsc210x.c: In function ‘tsc2102_data_register_write’:
+    hw/input/tsc210x.c:554:5: error: label at end of compound statement
+         default:
+         ^~~~~~~
+    hw/input/tsc210x.c: In function ‘tsc2102_control_register_write’:
+    hw/input/tsc210x.c:638:5: error: label at end of compound statement
+         bad_reg:
+         ^~~~~~~
+    hw/input/tsc210x.c: In function ‘tsc2102_audio_register_write’:
+    hw/input/tsc210x.c:766:5: error: label at end of compound statement
+         default:
+         ^~~~~~~
+    make[1]: *** [rules.mak:69: hw/input/tsc210x.o] Error 1
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <1549266858-5043-1-git-send-email-thuth@redhat.com>
+Fix this by replacing the culprit fprintf(stderr) calls by a more
+recent API: qemu_log_mask(LOG_GUEST_ERROR). Other fprintf() calls
+are left untouched.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20190204204517.23698-1-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/moxie/cpu.c       | 2 +-
- target/moxie/cpu.h       | 4 ++--
- target/moxie/helper.c    | 4 ++--
- target/moxie/mmu.c       | 4 ++--
- target/moxie/translate.c | 4 ++--
- 5 files changed, 9 insertions(+), 9 deletions(-)
+ hw/input/tsc210x.c | 18 ++++++------------
+ 1 file changed, 6 insertions(+), 12 deletions(-)
 
-diff --git a/target/moxie/cpu.c b/target/moxie/cpu.c
-index 8d67eb6727..46434e65ba 100644
---- a/target/moxie/cpu.c
-+++ b/target/moxie/cpu.c
-@@ -13,7 +13,7 @@
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-  * Lesser General Public License for more details.
-  *
-- * You should have received a copy of the GNU General Public License
-+ * You should have received a copy of the GNU Lesser General Public License
-  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  */
+diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
+index ded0db9351..2eb3cb9518 100644
+--- a/hw/input/tsc210x.c
++++ b/hw/input/tsc210x.c
+@@ -552,10 +552,8 @@ static void tsc2102_data_register_write(
+         return;
  
-diff --git a/target/moxie/cpu.h b/target/moxie/cpu.h
-index d40f1e6c45..080df4ee6f 100644
---- a/target/moxie/cpu.h
-+++ b/target/moxie/cpu.h
-@@ -6,14 +6,14 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-  * Lesser General Public License for more details.
-  *
-- * You should have received a copy of the GNU General Public License
-+ * You should have received a copy of the GNU Lesser General Public License
-  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  */
+     default:
+-#ifdef TSC_VERBOSE
+-        fprintf(stderr, "tsc2102_data_register_write: "
+-                        "no such register: 0x%02x\n", reg);
+-#endif
++        qemu_log_mask(LOG_GUEST_ERROR, "tsc2102_data_register_write: "
++                                       "no such register: 0x%02x\n", reg);
+     }
+ }
  
-diff --git a/target/moxie/helper.c b/target/moxie/helper.c
-index 5b1532b837..f3d8ee7d6b 100644
---- a/target/moxie/helper.c
-+++ b/target/moxie/helper.c
-@@ -6,14 +6,14 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-  * Lesser General Public License for more details.
-  *
-- * You should have received a copy of the GNU General Public License
-+ * You should have received a copy of the GNU Lesser General Public License
-  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  */
+@@ -636,10 +634,8 @@ static void tsc2102_control_register_write(
  
-diff --git a/target/moxie/mmu.c b/target/moxie/mmu.c
-index bd90b1eebc..87783a36f8 100644
---- a/target/moxie/mmu.c
-+++ b/target/moxie/mmu.c
-@@ -6,14 +6,14 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-  * Lesser General Public License for more details.
-  *
-- * You should have received a copy of the GNU General Public License
-+ * You should have received a copy of the GNU Lesser General Public License
-  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  */
+     default:
+     bad_reg:
+-#ifdef TSC_VERBOSE
+-        fprintf(stderr, "tsc2102_control_register_write: "
+-                        "no such register: 0x%02x\n", reg);
+-#endif
++        qemu_log_mask(LOG_GUEST_ERROR, "tsc2102_control_register_write: "
++                                       "no such register: 0x%02x\n", reg);
+     }
+ }
  
-diff --git a/target/moxie/translate.c b/target/moxie/translate.c
-index 29da02bc05..68ca223e22 100644
---- a/target/moxie/translate.c
-+++ b/target/moxie/translate.c
-@@ -5,7 +5,7 @@
-  *
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public License
-- * as published by the Free Software Foundation; either version 2 of
-+ * as published by the Free Software Foundation; either version 2.1 of
-  * the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful, but
-@@ -13,7 +13,7 @@
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-  * Lesser General Public License for more details.
-  *
-- * You should have received a copy of the GNU General Public License
-+ * You should have received a copy of the GNU Lesser General Public License
-  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  */
+@@ -764,10 +760,8 @@ static void tsc2102_audio_register_write(
+         return;
+ 
+     default:
+-#ifdef TSC_VERBOSE
+-        fprintf(stderr, "tsc2102_audio_register_write: "
+-                        "no such register: 0x%02x\n", reg);
+-#endif
++        qemu_log_mask(LOG_GUEST_ERROR, "tsc2102_audio_register_write: "
++                                       "no such register: 0x%02x\n", reg);
+     }
+ }
  
 -- 
 2.20.1
