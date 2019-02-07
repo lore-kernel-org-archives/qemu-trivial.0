@@ -1,65 +1,88 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1grrLa-0001dn-HE
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Feb 2019 16:36:38 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:48807)
+	id 1grrTt-00032L-1w
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Feb 2019 16:45:13 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:42596)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1grrLX-0001da-Ox
-	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 16:36:36 -0500
+	(envelope-from <muriloo@linux.ibm.com>) id 1grof2-0005kz-42
+	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 13:44:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1grrLW-0007jg-Sm
-	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 16:36:35 -0500
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:55443)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1grrLW-0007ee-Hm
-	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 16:36:34 -0500
-Received: by mail-wm1-f68.google.com with SMTP id r17so1395930wmh.5
-	for <qemu-trivial@nongnu.org>; Thu, 07 Feb 2019 13:36:27 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=dSg9sRXgF5rPjmc3yqnnm24jTZkwnsGei7OGtmzL04I=;
-	b=cbBY0r2dtpE68KtHWLwl+SpZVNdl+DQahG50K7dS1X0z9kH4+2bY83HVjyN1BqBKzD
-	soe5hgzvrMHEraq/Y3rQnEAFYGWCZmITuAuInU+sbSRiTEYPg7VkDvNExGuHI9FrfWlm
-	0BdM+aq0egm9ifRQ75Yz+UqlapRozWNdBHOQystDjjxlGRNdKUnNYLHiRIKImy98v0Ue
-	SxgByqw5qQePa4xux8qn6Z/uMe69FmEwvWSSHTi10gD/z4fDYuS9d6r8rHf+6RjcN93V
-	QvBV4Rs04nrQ8SWlNtAlE0rzhalEkKbBPSulgSh694FOH8yxTpPL6Sw288QlOnG3JuHR
-	ikPA==
-X-Gm-Message-State: AHQUAuZl5jMED/alp9vZagnKujMBgOAcCcziNa2gvN96X5e89egCnnTy
-	+LMnc/bN8pPUfjsS25jfsbk6mw==
-X-Google-Smtp-Source: AHgI3IYLHAElWpJ67v7LhZAmHSzUVfh2KKhiEJEBR9oK3Koy94P/bvn/FMqXnF9NtIU4lOwYhO8MkQ==
-X-Received: by 2002:a1c:c303:: with SMTP id t3mr8439133wmf.94.1549575386334;
-	Thu, 07 Feb 2019 13:36:26 -0800 (PST)
-Received: from [192.168.1.103] (10.red-83-35-153.dynamicip.rima-tde.net.
-	[83.35.153.10])
-	by smtp.gmail.com with ESMTPSA id f15sm169481wrt.10.2019.02.07.13.36.25
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Thu, 07 Feb 2019 13:36:25 -0800 (PST)
-To: Laurent Vivier <laurent@vivier.eu>, Cleber Rosa <crosa@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
-	Eduardo Habkost <ehabkost@redhat.com>
-References: <20190207193605.25676-1-crosa@redhat.com>
-	<20190207193605.25676-3-crosa@redhat.com>
-	<eb52ed3a-e2fb-d5d2-5d7e-ceb41e8a7987@vivier.eu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <ae5fa4e8-24aa-4d00-8d74-21f6539dc59f@redhat.com>
-Date: Thu, 7 Feb 2019 22:36:24 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <muriloo@linux.ibm.com>) id 1groez-0004hw-Cc
+	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 13:44:30 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:34826
+	helo=mx0a-001b2d01.pphosted.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <muriloo@linux.ibm.com>)
+	id 1groez-0004g8-7D
+	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 13:44:29 -0500
+Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
+	by mx0b-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+	x17IdUiq138166
+	for <qemu-trivial@nongnu.org>; Thu, 7 Feb 2019 13:44:27 -0500
+Received: from e35.co.us.ibm.com (e35.co.us.ibm.com [32.97.110.153])
+	by mx0b-001b2d01.pphosted.com with ESMTP id 2qgt4brb3t-1
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <qemu-trivial@nongnu.org>; Thu, 07 Feb 2019 13:44:26 -0500
+Received: from localhost
+	by e35.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <muriloo@linux.ibm.com>;
+	Thu, 7 Feb 2019 18:44:25 -0000
+Received: from b03cxnp07029.gho.boulder.ibm.com (9.17.130.16)
+	by e35.co.us.ibm.com (192.168.1.135) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	(version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+	Thu, 7 Feb 2019 18:44:22 -0000
+Received: from b03ledav005.gho.boulder.ibm.com
+	(b03ledav005.gho.boulder.ibm.com [9.17.130.236])
+	by b03cxnp07029.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id x17IiLGn22020112
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Thu, 7 Feb 2019 18:44:21 GMT
+Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 8D5FBBE058;
+	Thu,  7 Feb 2019 18:44:21 +0000 (GMT)
+Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 93986BE051;
+	Thu,  7 Feb 2019 18:44:19 +0000 (GMT)
+Received: from kermit.br.ibm.com (unknown [9.18.235.184])
+	by b03ledav005.gho.boulder.ibm.com (Postfix) with ESMTP;
+	Thu,  7 Feb 2019 18:44:19 +0000 (GMT)
+From: Murilo Opsfelder Araujo <muriloo@linux.ibm.com>
+To: qemu-devel@nongnu.org
+Cc: mopsfelder@gmail.com, Murilo Opsfelder Araujo <muriloo@linux.ibm.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Fam Zheng <famz@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Cleber Rosa <crosa@redhat.com>, qemu-trivial@nongnu.org
+Date: Thu,  7 Feb 2019 16:43:46 -0200
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <eb52ed3a-e2fb-d5d2-5d7e-ceb41e8a7987@vivier.eu>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/4] configure: fix qemu-img
- name
+X-TM-AS-GCONF: 00
+x-cbid: 19020718-0012-0000-0000-00001706AE33
+X-IBM-SpamModules-Scores: 
+X-IBM-SpamModules-Versions: BY=3.00010555; HX=3.00000242; KW=3.00000007;
+	PH=3.00000004; SC=3.00000279; SDB=6.01157713; UDB=6.00604011;
+	IPR=6.00938244; 
+	MB=3.00025481; MTD=3.00000008; XFM=3.00000015; UTC=2019-02-07 18:44:25
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 19020718-0013-0000-0000-0000561DD57E
+Message-Id: <20190207184346.6840-1-muriloo@linux.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+	definitions=2019-02-07_12:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	priorityscore=1501
+	malwarescore=0 suspectscore=1 phishscore=0 bulkscore=0 spamscore=0
+	clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
+	mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+	scancount=1 engine=8.0.1-1810050000 definitions=main-1902070140
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.158.5
+X-Mailman-Approved-At: Thu, 07 Feb 2019 16:45:11 -0500
+Subject: [Qemu-trivial] [PATCH] docs/devel/testing: Add -a option to usermod
+ command on docker setup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,41 +94,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Feb 2019 21:36:36 -0000
+X-List-Received-Date: Thu, 07 Feb 2019 18:44:33 -0000
 
-On 2/7/19 9:11 PM, Laurent Vivier wrote:
-> On 07/02/2019 20:36, Cleber Rosa wrote:
->> Signed-off-by: Cleber Rosa <crosa@redhat.com>
->> ---
->>  configure | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/configure b/configure
->> index ff55e2273e..c8fc1647fe 100755
->> --- a/configure
->> +++ b/configure
->> @@ -1768,7 +1768,7 @@ disabled with --disable-FEATURE, default is enabled if available:
->>    virglrenderer   virgl rendering support
->>    xfsctl          xfsctl support
->>    qom-cast-debug  cast debugging support
->> -  tools           build qemu-io, qemu-nbd and qemu-image tools
->> +  tools           build qemu-io, qemu-nbd and qemu-img tools
->>    vxhs            Veritas HyperScale vDisk backend support
->>    bochs           bochs image format support
->>    cloop           cloop image format support
->>
-> 
-> Fixes: c12d66aac1aa ("configure: add the missing help output for
-> optional features")
-> 
-> Perhaps the list can be updated with qemu-edid, ivshmem-client and elf2dmp?
+The option -G of usermod command will remove user from other groups
+not listed, i.e.: $USER will belong only to group 'docker' after
+following the documentation as is.
 
-Good idea! Eventually the trivial@ maintainer is willing to fulfil your
-request if he takes this patch :D
+From usermod(8) manual page:
 
-> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+    If the user is currently a member of a group which is not listed,
+    the user will be removed from the group. This behaviour can be
+    changed via the -a option, which appends the user to the current
+    supplementary group list.
 
-As it or with Laurent's suggestion:
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+This patch improves the situation by adding the -a option to the
+usermod command, which will just append user to the supplementary
+group list.
+
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Murilo Opsfelder Araujo <muriloo@linux.ibm.com>
+---
+ docs/devel/testing.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index 18e2c0868a..135743a2bf 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -301,7 +301,7 @@ An alternative method to set up permissions is by adding the current user to
+ .. code::
+ 
+   $ sudo groupadd docker
+-  $ sudo usermod $USER -G docker
++  $ sudo usermod $USER -a -G docker
+   $ sudo chown :docker /var/run/docker.sock
+ 
+ Note that any one of above configurations makes it possible for the user to
+-- 
+2.20.1
 
 
