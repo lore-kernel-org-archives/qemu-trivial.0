@@ -1,66 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1grmru-0000jw-FU
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Feb 2019 11:49:42 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42177)
+	id 1grp7k-0004o7-QR
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Feb 2019 14:14:12 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:49986)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1grmrs-0000iP-Hs
-	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 11:49:41 -0500
+	(envelope-from <eblake@redhat.com>) id 1grp7j-0004ms-LN
+	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 14:14:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1grmrm-0007S9-Bw
-	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 11:49:36 -0500
-Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a]:38697)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1grmrf-0007Kw-Ff
-	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 11:49:30 -0500
-Received: by mail-ot1-x32a.google.com with SMTP id e12so900366otl.5
-	for <qemu-trivial@nongnu.org>; Thu, 07 Feb 2019 08:49:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=8tdurLVJgzQy4ZfwP6PUFCcWaYFLJDK7RlRdRcsu55g=;
-	b=Yql/nwNvnbpoyXHiZSvT7XO62QUBsLjhyceBsA02XNe+RSwFnF7hQX5zB7RojdGZei
-	oE8HFDVblRnUbhG85xHeMpqgydi5XWijfY82qaOEOidL9787WWuspdmZ5yYBOoKXY5dO
-	PAvtqjsggc/FOxSLgLPI9xpY5CN88THwdANsWSJD6nqhLPt01vJnPRUf3jzYbYKfv38D
-	JD42cMG2Z9549KqW73k5bPrwBAX3MbBx/R2qMNj2EtRXrhoRIYfCYkDNRjM6CzkEU4Wb
-	uVJ5IWi/pkEmHlWGHGQjOOR82Z9BXC8gm8Gp1osgDJuZKzoV/BAXl0GuCAi6S1qkVfju
-	ruKA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=8tdurLVJgzQy4ZfwP6PUFCcWaYFLJDK7RlRdRcsu55g=;
-	b=DU1h3PsfC9aN6Rh1T/0I2Aa56YBWuHjB99g3al0DljBjaAw9jDuzMsETphvogvfnwH
-	ejuO/MawK9ZwSyO+HKZf8jM6IKIM84LukMhE46pTCQhuB5CYYtVf5qaJpKQlOkkXIWIX
-	Qe+9JLn2OEOTJulCazsTmwY2CgB2Tp1HW2LJ5nss28aQqKIBatxDLW2HK81KIWV0kjB/
-	LnHBYlPFKbRDCDvzf+xwy0kby/RFBMNA/OO81kyIjsN+a6otpe2M91po35k/S+F52GfC
-	JhMWUYeLPmeD01aX/4Pg/PKF2ZY+vxEtjg0074zzpWwP4hITQuhx7YYXWCOSUs0gCvvz
-	2fIw==
-X-Gm-Message-State: AHQUAuYr2iUjP6Y557Vh18xQKKF9+eMeJMygwDjEtyijEEK5mTOto6DT
-	Af6T6tFSWW4zQrMvVcHfjUyMWTPf+Sj+eZr2c2SVcA==
-X-Google-Smtp-Source: AHgI3IZkaLZFvwSN7ZBI9Sc4ikBrr2Ulcm1rWxDmop2eNFx6ivpt3jg3nT3aictV4sQHA87eW1drj1zDXx6Wkf1QUOY=
-X-Received: by 2002:aca:bf82:: with SMTP id p124mr783886oif.48.1549558161797; 
-	Thu, 07 Feb 2019 08:49:21 -0800 (PST)
+	(envelope-from <eblake@redhat.com>) id 1grp7i-0007Vd-V4
+	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 14:14:11 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:50022)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1grp7b-0007Qd-BD; Thu, 07 Feb 2019 14:14:03 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 62EB77AE8B;
+	Thu,  7 Feb 2019 19:14:02 +0000 (UTC)
+Received: from blue.redhat.com (ovpn-116-162.phx2.redhat.com [10.3.116.162])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id EDF9917A62;
+	Thu,  7 Feb 2019 19:14:01 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	qemu-block@nongnu.org (open list:Network Block Dev...)
+Date: Thu,  7 Feb 2019 13:13:57 -0600
+Message-Id: <20190207191357.6665-1-eblake@redhat.com>
 MIME-Version: 1.0
-References: <20190206152807.31896-1-laurent@vivier.eu>
-In-Reply-To: <20190206152807.31896-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 7 Feb 2019 16:49:10 +0000
-Message-ID: <CAFEAcA_-peVcup1ARQmKyxyxPQwSYWswO6tDhGcvNENW3ceRhA@mail.gmail.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Anthony Green <green@moxielogic.com>, 
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	qemu-arm <qemu-arm@nongnu.org>, Andrzej Zaborowski <balrogg@gmail.com>,
-	Guan Xuetao <gxt@mprc.pku.edu.cn>, 
-	Michael Tokarev <mjt@tls.msk.ru>, Artyom Tarasenko <atar4qemu@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::32a
-Subject: Re: [Qemu-trivial] [PULL 0/7] Trivial patches patches
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.25]);
+	Thu, 07 Feb 2019 19:14:02 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] nbd/server: Kill pointless shadowed variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,35 +47,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Feb 2019 16:49:41 -0000
+X-List-Received-Date: Thu, 07 Feb 2019 19:14:12 -0000
 
-On Wed, 6 Feb 2019 at 15:28, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit 47994e16b1d66411953623e7c0bf0cdcd50bd507:
->
->   Merge remote-tracking branch 'remotes/pmaydell/tags/pull-target-arm-20190205' into staging (2019-02-05 18:25:07 +0000)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
->
-> for you to fetch changes up to e67e91b4b55331973f783ca89790ee9f7861ced1:
->
->   hw/input/tsc210x: Fix building with no verbosity (2019-02-06 15:57:06 +0100)
->
-> ----------------------------------------------------------------
-> Trivial patches:
-> * Update copyright
-> * Fix LGPL in target/moxie
-> * configure portability fix
-> * Drop useless inclusion of "hw/i386/pc.h"
-> * Mark the cpu-cluster device with user_creatable = false
-> * tsc210x: Fix building with no verbosity
->
-Applied, thanks.
+lgtm.com pointed out that commit 678ba275 introduced a shadowed
+declaration of local variable 'bs'; thankfully, the inner 'bs'
+obtained by 'blk_bs(blk)' matches the outer one given that we had
+'blk_insert_bs(blk, bs, errp)' a few lines earlier, and there are
+no later uses of 'bs' beyond the scope of the 'if (bitmap)' to
+care if we change the value stored in 'bs' while traveling the
+backing chain to find a bitmap.  So simply get rid of the extra
+declaration.
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/4.0
-for any user-visible changes.
+Reported-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
 
--- PMM
+I plan to queue this through my NBD tree, unless the trivial
+tree happens to do a pull request first.
+
+ nbd/server.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/nbd/server.c b/nbd/server.c
+index 838c150d8ca..0910d09a6d4 100644
+--- a/nbd/server.c
++++ b/nbd/server.c
+@@ -1495,7 +1495,6 @@ NBDExport *nbd_export_new(BlockDriverState *bs, uin=
+t64_t dev_offset,
+
+     if (bitmap) {
+         BdrvDirtyBitmap *bm =3D NULL;
+-        BlockDriverState *bs =3D blk_bs(blk);
+
+         while (true) {
+             bm =3D bdrv_find_dirty_bitmap(bs, bitmap);
+--=20
+2.20.1
+
 
