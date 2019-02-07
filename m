@@ -1,55 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1grpvo-0005Ya-TJ
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Feb 2019 15:05:56 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60493)
+	id 1grq1f-0006jZ-Ez
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Feb 2019 15:11:59 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33267)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grpvm-0005YG-GC
-	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 15:05:55 -0500
+	(envelope-from <laurent@vivier.eu>) id 1grq1e-0006j8-8z
+	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 15:11:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1grpvl-0006B0-CL
-	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 15:05:54 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:50681)
+	(envelope-from <laurent@vivier.eu>) id 1grq1d-000165-Mi
+	for qemu-trivial@nongnu.org; Thu, 07 Feb 2019 15:11:58 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:59387)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1grpvi-00067m-LD; Thu, 07 Feb 2019 15:05:51 -0500
+	id 1grq1b-00014B-UN; Thu, 07 Feb 2019 15:11:56 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue108 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1MvbJw-1h8oHL1c0s-00sbNg; Thu, 07 Feb 2019 21:05:33 +0100
+	(mreue106 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1Mk178-1hXXdl2Usi-00kQMx; Thu, 07 Feb 2019 21:11:49 +0100
 To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
 	Eduardo Habkost <ehabkost@redhat.com>
 References: <20190207193605.25676-1-crosa@redhat.com>
-	<20190207193605.25676-2-crosa@redhat.com>
+	<20190207193605.25676-3-crosa@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <77fbc9cf-8587-66b3-b50d-3a1a9b8c0122@vivier.eu>
-Date: Thu, 7 Feb 2019 21:05:30 +0100
+Message-ID: <eb52ed3a-e2fb-d5d2-5d7e-ceb41e8a7987@vivier.eu>
+Date: Thu, 7 Feb 2019 21:11:47 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190207193605.25676-2-crosa@redhat.com>
+In-Reply-To: <20190207193605.25676-3-crosa@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:i27/C8t66ej/eSEMfxxDxHnlSjKRwWQGVgX3jkj+tkJ5g8lH+AH
-	/aXX8459IiumIAc1F3584IOWWttySKLrObuTp/VQbbRZk2iRQ0dOhx0lqtw9knNeCe/fig9
-	bsH49ntk7j4uXT5pU4ox8gEfN6LesLn/a1LAZX3xTWaglPLjUG1iRBlS4f1CedqUKoMpfU3
-	VWedHljGC1ogcBeOpe/cw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:5ta47jFVGIo=:O95+3WXTvPVkwzlAZp9nPd
-	CKNka+nXYvd8rkNKermXyqPppfHgH6ix3Nr0YJdSbcQhHoLmnw3AwoazJe+16kmmT9sgPO1VZ
-	3GJn8wuJ+suI/BckFTfdUu7Q/nbesE4SU6lUEat/HWgTNldBwunMEX+o/2yRKhmbiJLiPdIdf
-	QgyyMbXaqN7vA5EdNY/lskQlmk6EZ8D8NunEh4ZrKyim+viT1t1FFjdQMjqyCwdbKwkHoVJ1g
-	ULKaNLfS9ijRQmnlnso2mvr336n73y0b4io3lsDXUFQC0/QjxiG08o3wNgsOSlP9sxAlnxCxc
-	EyITJ1KGl/hlJtSMMt7+itPy+6yQ75zjMgqfFpFZBVfGTiPMqU1z5RP4jFiUe7MZY0r8iDCPT
-	aytPa8EmN53lT8boxrOyyJKwOMCGzeSrsvYmiucxmHutqR0wOK53KOq5D8wLox998maJc2eqb
-	SwgIXE634jaDSrq0zoG+jKQ9kNVwTDpm4FdsIBkMpSQTwLURl88nJeSU87cEpVZU0rNntRs5h
-	RfFw1zegF72AQV4Bt+uIDhbiD3eL0Oqv7Nra24iB7cbMznfpmdBA9rNCuPfzVTSg+PzHuKuYM
-	ZC+VhR56sw2FA+GN13NmkPbs+zzT6F1alFhTyRN8ycQaTrRV3jAPdgV8t8coONBEBuY9+cThr
-	Q3GGcVVF76DAYAi3Z+Bnm4MuDRBw83+P5U/7e2kPBqWW4LREkOJlzgZxqIE+ySXiyEC4SJMrc
-	TlQdzMi4sIOUJh0QLKTJGwFrNXSJXzIs3CvDL0dKuxwpnOFwXcocmdfrPH0=
+X-Provags-ID: V03:K1:NFqbcv4JGVCdmAnbdtaZzkDL+PY4ZyVgqenr2hzKHespDJC6Qjm
+	/hYDIqjkvvgM7V8Ys/kKMCe26tWhujC9sHt1G77MGlKe80nfey+wWf4Rsk0QFWczj3sa3g0
+	v/SsdC41Vh1Uc6xmVKq0Vr6X8f3zI85EucA0LrQKWXmBEFSyIdiEzp+4SImQLlWGfOP34yo
+	gl9TUMmO0YYVIyAhm1xdg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:mizlD7wvpbA=:sQNtRKsonoU/Kczr7oPSGw
+	iVZNdQuG9wJkGNn13HFH5Bmbz5IiACOIJW06CwrUvmSwML0/JMqZwo4apaG7UynSAWRGqoZdJ
+	Gdn7KvmYN2Pm7F3ygl/gsbBbuZC9ehQst5IiYGRIckBlna6xh6Uky4eG09x8jrg1wHFl/OVlC
+	oSvQpL5XhuCkabaH+K27XAwNh5dOTsdVgROB2l+pEJSq/Zq2GacN/hasg8Mi03lVUd8iXv56L
+	mRu0LaT7ADBX8+1zCNA8PzUOjz4l9Pb4iS0XwqMRaMDPPTq3PB4lvboTuI4EIsYKv7cmpIuu/
+	TkXA0ILx0ZqsPY2/ss5KUBbOmrGfJIj/KYvjq371sZEsakEATOhDPm6E4wYZ+9MNOHjsdK4dZ
+	kM5WxrdbiYNgAjMJ7HMwPCNmwk8dSAinB7ozmgZ89NhJOEV/n6gl6q80dkxj5GNKXL4krrcdc
+	zZD8die4V8Sk1KIfmAVxO3Er8VqCFmvFdsRDhiQ8xSsRGzClgzQ1aQ0GOB46B1cR+kZ9Hwhk9
+	ZDhS5K3jQ6H4ZYZDzso1hesQPuWJVE+g4nOwWN3zgFf4tmEXwUuohGXv9mKcqK/33zn8/CCyN
+	HzHBrtWZwbulOdenWXrkuVqifXEmyJTT/zLWPOOVkEXxXfGKNNxezjbWF6mYFO5CBI5ieZOvz
+	dY6Dzzj1KimGwyr79FF8rQr/p8gWA21i/PxnoAArh3SD67ojTZKqGbXIgJIJesgakkzoIe92Z
+	j8FpshrZHIu7wpzW2pFMYB3CXEvnqqM9ccdsgwWPdV9MjY+8j2B9flQzSvo=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
-Subject: Re: [Qemu-trivial] [PATCH 1/4] configure: remove handling of "wav"
- audio driver
+X-Received-From: 212.227.17.13
+Subject: Re: [Qemu-trivial] [PATCH 2/4] configure: fix qemu-img name
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,32 +60,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Feb 2019 20:05:55 -0000
+X-List-Received-Date: Thu, 07 Feb 2019 20:11:59 -0000
 
 On 07/02/2019 20:36, Cleber Rosa wrote:
-> This looks like a leftover that was never implemented.
-> 
 > Signed-off-by: Cleber Rosa <crosa@redhat.com>
 > ---
->  configure | 4 ----
->  1 file changed, 4 deletions(-)
+>  configure | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 > diff --git a/configure b/configure
-> index fbd0825488..ff55e2273e 100755
+> index ff55e2273e..c8fc1647fe 100755
 > --- a/configure
 > +++ b/configure
-> @@ -3350,10 +3350,6 @@ for drv in $audio_drv_list; do
->        oss_libs="$oss_lib"
->      ;;
->  
-> -    wav)
-> -    # XXX: Probes for CoreAudio, DirectSound
-> -    ;;
-> -
->      *)
->      echo "$audio_possible_drivers" | grep -q "\<$drv\>" || {
->          error_exit "Unknown driver '$drv' selected" \
+> @@ -1768,7 +1768,7 @@ disabled with --disable-FEATURE, default is enabled if available:
+>    virglrenderer   virgl rendering support
+>    xfsctl          xfsctl support
+>    qom-cast-debug  cast debugging support
+> -  tools           build qemu-io, qemu-nbd and qemu-image tools
+> +  tools           build qemu-io, qemu-nbd and qemu-img tools
+>    vxhs            Veritas HyperScale vDisk backend support
+>    bochs           bochs image format support
+>    cloop           cloop image format support
 > 
+
+Fixes: c12d66aac1aa ("configure: add the missing help output for
+optional features")
+
+Perhaps the list can be updated with qemu-edid, ivshmem-client and elf2dmp?
 
 Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
