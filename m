@@ -1,71 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gt2ek-0004tE-7w
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Feb 2019 22:53:18 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60396)
+	id 1gtBHl-0007d0-0T
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Feb 2019 08:06:09 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50704)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1gt2eh-0004r6-ND
-	for qemu-trivial@nongnu.org; Sun, 10 Feb 2019 22:53:16 -0500
+	(envelope-from <alex.bennee@linaro.org>) id 1gtBHi-0007aW-Sn
+	for qemu-trivial@nongnu.org; Mon, 11 Feb 2019 08:06:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1gt2eh-0000oh-2p
-	for qemu-trivial@nongnu.org; Sun, 10 Feb 2019 22:53:15 -0500
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636]:38014)
+	(envelope-from <alex.bennee@linaro.org>) id 1gtBHd-0004DO-8t
+	for qemu-trivial@nongnu.org; Mon, 11 Feb 2019 08:06:06 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:40113)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1gt2ec-0000lf-Q6; Sun, 10 Feb 2019 22:53:10 -0500
-Received: by mail-pl1-x636.google.com with SMTP id e5so4680138plb.5;
-	Sun, 10 Feb 2019 19:53:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=amSb7hFlYl5ZK/6b8imOGSJdx4reSxi0iyYyc0vTlfQ=;
-	b=KAxssSTiFTqgLkK6ffyaBz9yJD6e3/xy8XcD635WZP1AOL0EgUVbdEI9M/SNMFwm/j
-	z2/C9CpHjd+9lMBYC9fjv2F6CXBKiGLacb7rDWQZqqKsvy74ZbqxPpfoUACPe+6mHMu2
-	2tN9MOr1dGS800KWQG3FbP9bTf+xjh5pHtCNWUfplMciAn8GFzNpbIp0WcyNHf2mdt25
-	RS8gF+IcRQsyiUQteJnqT8H3POId7Pf6TFEd36mPxu8GpZFgZgjptNb8kJ0jUb+eFnzA
-	/NH4MG0yk6+7VD0Wz01g6gDenFhCdoyQCkkOJLft56L1dqYoFWbAZxGBa7kBdrpK1L30
-	/AxQ==
+	(Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+	id 1gtBHc-0003rU-VX
+	for qemu-trivial@nongnu.org; Mon, 11 Feb 2019 08:06:01 -0500
+Received: by mail-wm1-x336.google.com with SMTP id q21so17152080wmc.5
+	for <qemu-trivial@nongnu.org>; Mon, 11 Feb 2019 05:05:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=from:to:cc:subject:date:message-id:in-reply-to:references
+	:mime-version:content-transfer-encoding;
+	bh=GzWjQ/ZFc5riiSufmyolljmsAwA5/pdBwRd25HGBN8c=;
+	b=VVTOyD3XRBv0xICob574R88ZA+QtHgLYFhkk9XmaRv+ZaOtNP1E6zx1rHDOxKgGdJf
+	Lcau5kDH/g1aZ3C2xGFoI8TeIQ4GAvYYUA7FiLEfarc8RUq78l/mWLmTXO+g07RLFgkf
+	bOrCfiLKknHHvyBh2JJvkuAJZ0wE8a9ei6Krr8VMtnE5zbFOhD1wSY1P0Yi8F6yJI+9c
+	WR1Kg4AlJpQuu0P9qYVo6LuOityjhLTRQ8OZPC0QVatSP0S2XWeolhA/eEWJpsnyRS/Z
+	N17e5UIDccRm4TiUeQ76BCg7EUw6euxEqgOiXFaRUWCzAacrJQOwGUuuAMiWEOqnEW9g
+	Qc+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=amSb7hFlYl5ZK/6b8imOGSJdx4reSxi0iyYyc0vTlfQ=;
-	b=hJLZUMQfJVio9A19f2NNhDQKLwlGlpCmSwfv4fZto1POKFTPTLjuZca2mXvy2YppZT
-	K1fxwmEwAvZYU8Hd63ZaAiAnh+ntB0HRkQv+VhXPrSSCAn6qfeTaHPFg5ekhRxhZ8o3B
-	qfVy2KxpX+fi/31yjod+pGed07hnF8Q8nGb0nXhGmL+9JEVLoGlUmHcddmlAIN5I1QRG
-	F8d5Nzx/M0iRhrX/3H7aKFeRGNVT8NwYB4QFHAUlL7BqhjtHxIvGgEwHuSzu1EoguQfd
-	3PdumlS+zWDTIhpnDSCRzQIglmInKlM2B80zkT8rUO9htCOgRhl3KBBxEyhCCMw5tbg1
-	hcmQ==
-X-Gm-Message-State: AHQUAua8ay6FNnIvmw0/LxBkTSpk+zdNYP3MTFfBK/f2RjDRjyXE2oVr
-	IVSKqnvIOlbh0yl9hUTDxGt7OU4KKajhPQ==
-X-Google-Smtp-Source: AHgI3Ia8XHhs7vpTSTp5qsy4yRaeSpb6MvaSvGGENSWrWeX+Ur+UWT1295ToSza3iysfNaaA4Ni5gA==
-X-Received: by 2002:a17:902:e486:: with SMTP id
-	cj6mr21964404plb.86.1549857189167; 
-	Sun, 10 Feb 2019 19:53:09 -0800 (PST)
-Received: from localhost (42-3-94-015.static.netvigator.com. [42.3.94.15])
-	by smtp.gmail.com with ESMTPSA id
-	s9sm10720369pgl.88.2019.02.10.19.53.07
+	h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+	:references:mime-version:content-transfer-encoding;
+	bh=GzWjQ/ZFc5riiSufmyolljmsAwA5/pdBwRd25HGBN8c=;
+	b=V2o6lizmQNl66HBbjUKuNcNEHneAkupT2lGCGcxdGC9GluYEvGPAJlseURBa+EJJNS
+	Csg729CYJ+/8i2lT5Qvbnv894vHTcTbWIw1pUKpf9vVM/Dry43NES/LfoHqumYOkxiPc
+	ZKBz0ljcoE+rXfvzo1qtsBfoi5sVxceh47/TugDwMksiCPWOvO2I1l/593jz94vt8rA5
+	YtlLAntGn1/A9DpjollECVY6Bp72im69wuAnVmSXhQZSDFa12ByRlAQ/lOEzcgmFUR5F
+	NM97c/mkMZuxJC+kOim44HPK3GYA22q0KREHBlxaTlMteL4yA5AFjTzMDS28azmb3G/c
+	BsdA==
+X-Gm-Message-State: AHQUAuZM0M3pST+eZlahbpQqH72VuFws3ytyrQ3yZdsTmw8RzDDjQ7Gp
+	QksmoCr3H8nhyCpxHP7EVuiRXQ==
+X-Google-Smtp-Source: AHgI3IZbT7bPv+89LFLpQXlGzB6GDQzffzxJZ6oJjwjTdLpCCfpWX9Dw8GlbBOpfpzxT+QP82v05BA==
+X-Received: by 2002:a1c:2c6:: with SMTP id 189mr9032125wmc.21.1549890323299;
+	Mon, 11 Feb 2019 05:05:23 -0800 (PST)
+Received: from zen.linaroharston ([81.128.185.34])
+	by smtp.gmail.com with ESMTPSA id k2sm1132861wmj.45.2019.02.11.05.05.14
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Sun, 10 Feb 2019 19:53:08 -0800 (PST)
-Date: Mon, 11 Feb 2019 11:53:05 +0800
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Stefano Garzarella <sgarzare@redhat.com>
-Cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
-	qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
-	qemu-trivial@nongnu.org, Max Reitz <mreitz@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Message-ID: <20190211035305.GE18083@stefanha-x1.localdomain>
-References: <20190208142347.214815-1-sgarzare@redhat.com>
+	Mon, 11 Feb 2019 05:05:21 -0800 (PST)
+Received: from zen.linaroharston. (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id DA2771FF91;
+	Mon, 11 Feb 2019 13:05:07 +0000 (UTC)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org, Murilo Opsfelder Araujo <muriloo@linux.ibm.com>,
+	qemu-trivial@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Date: Mon, 11 Feb 2019 13:05:06 +0000
+Message-Id: <20190211130507.8710-18-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190211130507.8710-1-alex.bennee@linaro.org>
+References: <20190211130507.8710-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="idY8LE8SD6/8DnRI"
-Content-Disposition: inline
-In-Reply-To: <20190208142347.214815-1-sgarzare@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::636
-Subject: Re: [Qemu-trivial] [Qemu-block] [PATCH] virtio-blk: cleanup using
- VirtIOBlock *s and VirtIODevice *vdev
+X-Received-From: 2a00:1450:4864:20::336
+Subject: [Qemu-trivial] [PULL 17/18] docs/devel/testing: Add -a option to
+ usermod command on docker setup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,43 +77,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Feb 2019 03:53:16 -0000
+X-List-Received-Date: Mon, 11 Feb 2019 13:06:07 -0000
 
+From: Murilo Opsfelder Araujo <muriloo@linux.ibm.com>
 
---idY8LE8SD6/8DnRI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The option -G of usermod command will remove user from other groups
+not listed, i.e.: $USER will belong only to group 'docker' after
+following the documentation as is.
 
-On Fri, Feb 08, 2019 at 03:23:47PM +0100, Stefano Garzarella wrote:
-> In several part we still using req->dev or VIRTIO_DEVICE(req->dev)
-> when we have already defined s and vdev pointers:
->     VirtIOBlock *s =3D req->dev;
->     VirtIODevice *vdev =3D VIRTIO_DEVICE(s);
->=20
-> Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
-> ---
->  hw/block/virtio-blk.c | 22 +++++++++-------------
->  1 file changed, 9 insertions(+), 13 deletions(-)
+From usermod(8) manual page:
 
-Thanks, applied to my block tree:
-https://github.com/stefanha/qemu/commits/block
+    If the user is currently a member of a group which is not listed,
+    the user will be removed from the group. This behaviour can be
+    changed via the -a option, which appends the user to the current
+    supplementary group list.
 
-Stefan
+This patch improves the situation by adding the -a option to the
+usermod command, which will just append user to the supplementary
+group list.
 
---idY8LE8SD6/8DnRI
-Content-Type: application/pgp-signature; name="signature.asc"
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Murilo Opsfelder Araujo <muriloo@linux.ibm.com>
+Message-Id: <20190207184346.6840-1-muriloo@linux.ibm.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
------BEGIN PGP SIGNATURE-----
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index 18e2c0868a..135743a2bf 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -301,7 +301,7 @@ An alternative method to set up permissions is by adding the current user to
+ .. code::
+ 
+   $ sudo groupadd docker
+-  $ sudo usermod $USER -G docker
++  $ sudo usermod $USER -a -G docker
+   $ sudo chown :docker /var/run/docker.sock
+ 
+ Note that any one of above configurations makes it possible for the user to
+-- 
+2.20.1
 
-iQEcBAEBAgAGBQJcYPGhAAoJEJykq7OBq3PIgmkH/i/VWN6/Knu7ifMjwq+fCLwb
-uimSurwV1dmvgAHQk8XsiqgeiBY9moKW/pICUldMZ7J1kwK7EVXaty13scV72YQp
-i9IgImmhmhWxZ64yM0Z3dl7wq79eg7mmwSnS+23eNSEPzOgdxwbmYSm0CIC5PVjE
-YWg+SbTD18+DS8wWOzS5rLr4SfFDNsv7Y4RRqNR5PjFaSvGISXbB5PvVuQj1cyHh
-eIIOrlWAFc7Efwh2QcMxE+lKCUh7LVfWXvwSdwat4Hd4BLENEGUoCsM8Na83gMEM
-FTRPhaINTlLRrBPgi0qvqrh/Z7R0e4+MO5LYW+AEA/WJ5nC10p6ZXI8KDGMs2cQ=
-=PPJb
------END PGP SIGNATURE-----
-
---idY8LE8SD6/8DnRI--
 
