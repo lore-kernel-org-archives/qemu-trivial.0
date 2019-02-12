@@ -1,73 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gtX0t-0002qG-Dw
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Feb 2019 07:18:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34300)
+	id 1gtYQ7-00021g-NJ
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Feb 2019 08:48:19 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45118)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gtX0q-0002q6-UM
-	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 07:18:10 -0500
+	(envelope-from <dgilbert@redhat.com>) id 1gtYQ6-00020f-0B
+	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 08:48:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gtX0n-00010d-3G
-	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 07:18:06 -0500
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:37582)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gtX0k-0000w1-W7
-	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 07:18:03 -0500
-Received: by mail-wm1-f68.google.com with SMTP id x10so2768591wmg.2
-	for <qemu-trivial@nongnu.org>; Tue, 12 Feb 2019 04:18:02 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=94FMUhROVSL7ss+VoBQ5p7HqGvhZfzS2s68kaBwpprk=;
-	b=TtYlhTVuuoDir8YiF4cPO0R2W6n22YA+J2GAzXe4IWnXEzkKQ5K1YGBRcmcAZ0NSnG
-	iUuw+nCBjIZyuaKNa/X3qbgtqkVD2nHE2ic8DUCs63hASLP7UB0AkEBZnlS6KB75iemn
-	xw0A/jOXzk9+Jl1MTRumtCVaK/qcx0RGIfMEW0o8HYh1iWth6Dn7dQ2cZ4xTngrDw3j7
-	DndzGxBZt7YZ9GKMG0t2IxZsIWg50h/txbZPAzIhweAHliJs7V9lXLQNQFJ0M8CWuyBa
-	nAZsXLGd4ZfMrOEjdSPqYnoctyvs6SQ01R93LKDJZRoGTbz9QYbWNacHekMA5vIXgPXn
-	6F6g==
-X-Gm-Message-State: AHQUAuY8MUMyTIlmNJ3ro8f6jHakBJl3bX/1XBhyX7ViumSD/1p4aFPj
-	xUo2P/2G6zYk9CqQW75Qm9fQrQ==
-X-Google-Smtp-Source: AHgI3IbLkIEgWrmu3NbLSOW/rsJ3HvFf6W/oPw0h/pKzelOFhRDJ/wRtITKmnpbch+ysvXEAeGT+Ig==
-X-Received: by 2002:a1c:9cce:: with SMTP id f197mr2699420wme.135.1549973881405;
-	Tue, 12 Feb 2019 04:18:01 -0800 (PST)
-Received: from [192.168.1.103] (10.red-83-35-153.dynamicip.rima-tde.net.
-	[83.35.153.10])
-	by smtp.gmail.com with ESMTPSA id o2sm4233449wmo.33.2019.02.12.04.17.59
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 12 Feb 2019 04:18:00 -0800 (PST)
-To: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Cc: Richard Henderson <rth@twiddle.net>, Andrew Jeffery <andrew@aj.id.au>,
-	=?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-	Jan Kiszka <jan.kiszka@web.de>, Igor Mitsyanko <i.mitsyanko@gmail.com>, 
-	Michael Walle <michael@walle.cc>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
-	<f4bug@amsat.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	qemu-ppc@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
-	Beniamino Galvani <b.galvani@gmail.com>, BALATON Zoltan
-	<balaton@eik.bme.hu>, Magnus Damm <magnus.damm@gmail.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
-	Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>, 
-	David Gibson <david@gibson.dropbear.id.au>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, qemu-arm@nongnu.org,
-	Jason Wang <jasowang@redhat.com>, Rob Herring <robh@kernel.org>
-References: <20190204231815.29661-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <e3dc8b86-6f4e-97e9-3ae2-81d996850fbe@redhat.com>
-Date: Tue, 12 Feb 2019 13:17:59 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <dgilbert@redhat.com>) id 1gtYQ5-000698-3t
+	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 08:48:17 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:46622)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
+	id 1gtYQ3-00063z-2L; Tue, 12 Feb 2019 08:48:15 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E3544C0578F8;
+	Tue, 12 Feb 2019 13:48:12 +0000 (UTC)
+Received: from dgilbert-t580.localhost (ovpn-116-178.ams2.redhat.com
+	[10.36.116.178])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6B22F6019F;
+	Tue, 12 Feb 2019 13:48:00 +0000 (UTC)
+From: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
+To: qemu-devel@nongnu.org, pbonzini@redhat.com, kraxel@redhat.com,
+	mst@redhat.com
+Cc: qemu-trivial@nongnu.org
+Date: Tue, 12 Feb 2019 13:47:54 +0000
+Message-Id: <20190212134758.10514-1-dgilbert@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190204231815.29661-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 12 Feb 2019 13:48:12 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-trivial] [PATCH v2 00/11] hw: Remove "hw/devices.h"
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH 0/4] a few trivials
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,31 +48,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Feb 2019 12:18:10 -0000
+X-List-Received-Date: Tue, 12 Feb 2019 13:48:18 -0000
 
-On 2/5/19 12:18 AM, Philippe Mathieu-Daudé wrote:
-> Hi,
-> 
-> As his first comment describes itself, the "hw/devices.h" contains
-> declarations for "Devices that have nowhere better to go."
-> This series remove it, creating new headers for devices covered there.
-> MAINTAINERS is updated.
-> I also included 2 cleanups while working on this, in "qemu/typedefs.h"
-> and "hw/net/ne2000-isa.h" header guard.
-> 
-> v2:
-> - added R-b, T-b tags
-> - addressed many review comments from Thomas
-> 
-> v1: https://lists.gnu.org/archive/html/qemu-devel/2019-01/msg00611.html
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
-ping?
+Just cleaning out my trivial pile; a few more traces and
+a couple of error reporting tweaks.
 
-Since it is mostly touch (old) ARM boards, Peter can you do a quick
-review and give your Ack-by, so it can go via the Trivial/Misc tree?
-Half of the series is already reviewed by Thomas.
+Dave
 
-Thanks,
 
-Phil.
+Dr. David Alan Gilbert (4):
+  pckbd: Convert DPRINTF->trace
+  HMP: Prepend errors with 'Error:'
+  kvm: Add kvm_set_ioeventfd* traces
+  wavcapture: Convert to error_report
+
+ accel/kvm/kvm-all.c    |  3 +++
+ accel/kvm/trace-events |  2 ++
+ audio/wavcapture.c     | 39 +++++++++++++++++----------------------
+ hmp.c                  |  2 +-
+ hw/input/pckbd.c       | 19 ++++++-------------
+ hw/input/trace-events  |  7 +++++++
+ 6 files changed, 36 insertions(+), 36 deletions(-)
+
+--=20
+2.20.1
+
 
