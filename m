@@ -1,64 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gtYn2-0006Vp-GA
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Feb 2019 09:12:00 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53119)
+	id 1gtYoD-0007Wv-ME
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Feb 2019 09:13:13 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53779)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gtYmv-0006QK-6L
-	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 09:11:59 -0500
+	(envelope-from <philmd@redhat.com>) id 1gtYoA-0007UD-RS
+	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 09:13:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gtYme-0003Ws-3O
-	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 09:11:43 -0500
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:33860)
+	(envelope-from <philmd@redhat.com>) id 1gtYo4-0005gG-V7
+	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 09:13:10 -0500
+Received: from mail-wr1-f66.google.com ([209.85.221.66]:46051)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gtYmc-0003JY-RZ
-	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 09:11:35 -0500
-Received: by mail-wm1-f66.google.com with SMTP id y185so1465338wmd.1
-	for <qemu-trivial@nongnu.org>; Tue, 12 Feb 2019 06:11:26 -0800 (PST)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gtYo4-0004zG-GS
+	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 09:13:04 -0500
+Received: by mail-wr1-f66.google.com with SMTP id w17so2806469wrn.12
+	for <qemu-trivial@nongnu.org>; Tue, 12 Feb 2019 06:12:44 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=If08xoxw62yBhUYzNPMEg3aqSLM+IBT5klL43QF3Uts=;
-	b=W4004ghhnAEyaYDQAMqRRP65SKbPFO7EZXtDAEHVJksOy3GdCddc1kDUxi0XgBhk/k
-	+fkC0uzBeAEL8j4huY+RVyt3hoQJHdwwwKxtSgfmOulQO0tbJKsnYB2oB1lo/1tLiscP
-	pXMTWoV1VtAJRAqgxX7GhMi8XXD2n9Mffnyd6K2o2ro6lSxLQmhQQ/yQxD9rpyDAsb+Q
-	J+SV2lynf64d5lFm53Fb2vmJLqznbmGlJ+Ge70K/13SceR3cbXJdZt+5T98vBMFPVQaT
-	f8GeRF/qu/1wzHNa0MLwO+RacjY4ZIDRprMq7ivWcRsQLdhEuLpLy35KddiviVdIyAdS
-	9vzw==
-X-Gm-Message-State: AHQUAuZJgXL36xXLGV44I22mjAr6fIyjS+JGHHqnTGREaTHtV3pM2llw
-	v1NrlgOIZSSuTaEUWgkL1+9l03cRR8w=
-X-Google-Smtp-Source: AHgI3IZodyQ0UvhyC4tjTlLwiSaN5zycYA5Hw3KsDxUGD8XXil9umntImTRR23vpMYXGFOwUcuzrag==
-X-Received: by 2002:a1c:2944:: with SMTP id p65mr3015923wmp.20.1549980685186; 
-	Tue, 12 Feb 2019 06:11:25 -0800 (PST)
+	bh=gEGZd/lEU+jcsWM+RZcCDX9++ga69Rslthjs1IHB1xk=;
+	b=FnplmLt3W3gY7KbTTrg8Spy0GjDy05tId9KqSgaLYbLDYJdWTWhY811FV4M7bMD41j
+	GIpORaEUN1Em9E1+lQQKK4WcEA6h81nwR3lhO/0esvk0XhQq+4bTr7rRx88RQNDO2MLv
+	qPw44znQz/TzxHoJgHFlsrGh/lAiZuh0VfW3F6TvcUTf1LckzmQMUj1r0g5ceVwoE1EY
+	zVIeE7hcWKdrQjcGSDz8dXFPQ0go9R0oqR4j+a/gVO68QgVoYZiH7ic9nO2fwBAsSG3A
+	1KpaCvBmziTyQF8NzQRJy/vIDF4aqOI4xnNaf9ns58Lxsn8nJFvdxXUhG/AcTyG1OF8G
+	IP7A==
+X-Gm-Message-State: AHQUAuZi3zYPQgGIx6yWBUT430nxhe/+4Fl17bD+T6kX8xBeHOGW0U+I
+	DLJiI3Av4zzzz0kv0ExFpYAyHu5/Zv8=
+X-Google-Smtp-Source: AHgI3IZHDlBdj8Q5yxDqkTJDbBgb3gU9i4938wK3q3P7l2LK6t2XtxjHTmg7s16eJ7TVtN/a7k4tMg==
+X-Received: by 2002:adf:ee8e:: with SMTP id b14mr2973179wro.71.1549980763286; 
+	Tue, 12 Feb 2019 06:12:43 -0800 (PST)
 Received: from [192.168.1.103] (10.red-83-35-153.dynamicip.rima-tde.net.
-	[83.35.153.10])
-	by smtp.gmail.com with ESMTPSA id v4sm3687762wme.6.2019.02.12.06.11.24
+	[83.35.153.10]) by smtp.gmail.com with ESMTPSA id
+	t14sm6802878wrr.49.2019.02.12.06.12.42
 	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 12 Feb 2019 06:11:24 -0800 (PST)
+	Tue, 12 Feb 2019 06:12:42 -0800 (PST)
 To: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>,
 	qemu-devel@nongnu.org, pbonzini@redhat.com, kraxel@redhat.com,
 	mst@redhat.com
 Cc: qemu-trivial@nongnu.org
 References: <20190212134758.10514-1-dgilbert@redhat.com>
-	<20190212134758.10514-3-dgilbert@redhat.com>
+	<20190212134758.10514-4-dgilbert@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <fa71e7e8-b5b4-2d30-2914-a79b15ba1bf3@redhat.com>
-Date: Tue, 12 Feb 2019 15:11:23 +0100
+Message-ID: <727257ce-45fb-82f9-8e0b-d11e6d48b179@redhat.com>
+Date: Tue, 12 Feb 2019 15:12:41 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20190212134758.10514-3-dgilbert@redhat.com>
+In-Reply-To: <20190212134758.10514-4-dgilbert@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/4] HMP: Prepend errors
- with 'Error:'
+X-Received-From: 209.85.221.66
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/4] kvm: Add
+ kvm_set_ioeventfd* traces
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,36 +70,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Feb 2019 14:11:59 -0000
+X-List-Received-Date: Tue, 12 Feb 2019 14:13:12 -0000
 
 On 2/12/19 2:47 PM, Dr. David Alan Gilbert (git) wrote:
 > From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 > 
-> Always make error messages start with 'Error:' as a fallback
-> to make sure that anything parsing them can tell it failed.
-> 
-> Note: Some places don't use hmp_handle_error
+> Add a couple of traces around the kvm_set_ioeventfd* calls.
 > 
 > Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 > ---
->  hmp.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  accel/kvm/kvm-all.c    | 3 +++
+>  accel/kvm/trace-events | 2 ++
+>  2 files changed, 5 insertions(+)
 > 
-> diff --git a/hmp.c b/hmp.c
-> index b2a2b1f84e..4d14718fea 100644
-> --- a/hmp.c
-> +++ b/hmp.c
-> @@ -62,7 +62,7 @@ static void hmp_handle_error(Monitor *mon, Error **errp)
->  {
->      assert(errp);
->      if (*errp) {
-> -        error_report_err(*errp);
-> +        error_reportf_err(*errp, "Error: ");
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index 4e1de942ce..fd92b6f375 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -657,6 +657,8 @@ static int kvm_set_ioeventfd_mmio(int fd, hwaddr addr, uint32_t val,
+>          .fd = fd,
+>      };
+>  
+> +    trace_kvm_set_ioeventfd_mmio(fd, (uint64_t)addr, val, assign, size,
+> +                                 datamatch);
+>      if (!kvm_enabled()) {
+>          return -ENOSYS;
 >      }
->  }
+> @@ -688,6 +690,7 @@ static int kvm_set_ioeventfd_pio(int fd, uint16_t addr, uint16_t val,
+>          .fd = fd,
+>      };
+>      int r;
+> +    trace_kvm_set_ioeventfd_pio(fd, addr, val, assign, size, datamatch);
+>      if (!kvm_enabled()) {
+>          return -ENOSYS;
+>      }
+> diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
+> index 58e98efe5d..8841025d68 100644
+> --- a/accel/kvm/trace-events
+> +++ b/accel/kvm/trace-events
+> @@ -12,5 +12,7 @@ kvm_irqchip_commit_routes(void) ""
+>  kvm_irqchip_add_msi_route(char *name, int vector, int virq) "dev %s vector %d virq %d"
+>  kvm_irqchip_update_msi_route(int virq) "Updating MSI route virq=%d"
+>  kvm_irqchip_release_virq(int virq) "virq %d"
+> +kvm_set_ioeventfd_mmio(int fd, uint64_t addr, uint32_t val, bool assign, uint32_t size, bool datamatch) "fd: %d @0x%" PRIx64 " val=0x%x assign: %d size: %d match: %d"
+> +kvm_set_ioeventfd_pio(int fd, uint16_t addr, uint32_t val, bool assign, uint32_t size, bool datamatch) "fd: %d @0x%x val=0x%x assign: %d size: %d match: %d"
+>  kvm_set_user_memory(uint32_t slot, uint32_t flags, uint64_t guest_phys_addr, uint64_t memory_size, uint64_t userspace_addr, int ret) "Slot#%d flags=0x%x gpa=0x%"PRIx64 " size=0x%"PRIx64 " ua=0x%"PRIx64 " ret=%d"
 >  
 > 
 
