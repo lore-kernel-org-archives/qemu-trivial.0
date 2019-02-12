@@ -1,64 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gtKNr-0008Ec-VN
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Feb 2019 17:49:03 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35595)
+	id 1gtQiQ-0004gv-8k
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Feb 2019 00:34:42 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:46281)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gtKNo-0008Du-Ft
-	for qemu-trivial@nongnu.org; Mon, 11 Feb 2019 17:49:02 -0500
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gtQiL-0004NM-Qo
+	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 00:34:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gtKNn-0000X5-5G
-	for qemu-trivial@nongnu.org; Mon, 11 Feb 2019 17:49:00 -0500
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:35884)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gtKNm-0000Rv-S0
-	for qemu-trivial@nongnu.org; Mon, 11 Feb 2019 17:48:58 -0500
-Received: by mail-wm1-f67.google.com with SMTP id j125so976185wmj.1
-	for <qemu-trivial@nongnu.org>; Mon, 11 Feb 2019 14:48:51 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=GvcD3KwBhle/+8AlGTgIW/a9F+4tl5aWPAwGvzfoX18=;
-	b=WMCi+FtkQLttlZwSxBU6qCnKHnq+GKA6VUaj12b96GxqTDuyLWa1gbD2lFgKj86f+E
-	CEkpGVKGFfZ8K2+mUSSZfMGLnQiPcRvItsh5NdcRgdfnkbwgGjxjpf98WEqinEdoe238
-	EGr0QXkpdSEFCEzrmXXJ3T7ACIfKJErVzPHn6qCtapRfih+ykJf8HoabDjFS9TFLVXej
-	MKR7ttHyaViIZCgBkHKVMBES8cnWi9KyrPrsC0t2JKOz9/zswlcsbaNp18lWrlBDHwno
-	uM3gnZzfhna9FnjS2B9H1E5ru3hDEXr6o+Q2BkYYDIK6zraBPTUE/4Xvk1eacV0kvX5+
-	fNsg==
-X-Gm-Message-State: AHQUAub6rFE7WxeFRQ3gjJstSphnnwg0v4/7pHKAcx/LOX39e3cme1lC
-	dnSPXXg/5DCNjoNRlaftiBEVjQ==
-X-Google-Smtp-Source: AHgI3IaPAWfFo36lXlZPL1xFn4YIlPdUvkRa6fB9w6vGF1b162q8GCj6ncou37DKSeHoITw0gUCLhg==
-X-Received: by 2002:a7b:c396:: with SMTP id s22mr434830wmj.100.1549925330238; 
-	Mon, 11 Feb 2019 14:48:50 -0800 (PST)
-Received: from [192.168.1.103] (10.red-83-35-153.dynamicip.rima-tde.net.
-	[83.35.153.10]) by smtp.gmail.com with ESMTPSA id
-	c65sm1045960wma.24.2019.02.11.14.48.49
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Mon, 11 Feb 2019 14:48:49 -0800 (PST)
-To: Thomas Huth <thuth@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?B?S8WRdsOhZ8OzIFpvbHTDoW4=?=
-	<dirty.ice.hu@gmail.com>
-References: <1549336101-17623-1-git-send-email-thuth@redhat.com>
-	<1549336101-17623-2-git-send-email-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <cc4f3b8e-44f6-d157-362d-976bfbbd5a44@redhat.com>
-Date: Mon, 11 Feb 2019 23:48:48 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gtQX8-0002Y4-BD
+	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 00:23:07 -0500
+Received: from mga04.intel.com ([192.55.52.120]:47756)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
+	id 1gtQX5-0002Fp-47; Tue, 12 Feb 2019 00:22:59 -0500
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+	by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	11 Feb 2019 21:22:49 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.58,361,1544515200"; d="scan'208";a="318238537"
+Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
+	by fmsmga006.fm.intel.com with ESMTP; 11 Feb 2019 21:22:48 -0800
+Date: Tue, 12 Feb 2019 13:22:24 +0800
+From: Wei Yang <richardw.yang@linux.intel.com>
+To: Wei Yang <richardw.yang@linux.intel.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
+	laurent@vivier.eu, imammedo@redhat.com, philmd@redhat.com
+Message-ID: <20190212052224.GA4839@richard>
+Reply-To: Wei Yang <richardw.yang@linux.intel.com>
+References: <20190130000653.16267-1-richardw.yang@linux.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <1549336101-17623-2-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.67
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] audio/sdlaudio: Remove
- the semaphore code
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190130000653.16267-1-richardw.yang@linux.intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.120
+Subject: Re: [Qemu-trivial] [PATCH v3 0/3] Trivial cleanup in hw/acpi
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,264 +50,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Feb 2019 22:49:02 -0000
+X-List-Received-Date: Tue, 12 Feb 2019 05:34:39 -0000
 
-On 2/5/19 4:08 AM, Thomas Huth wrote:
-> The semaphore code was only working with SDL1.2 - with SDL2, it causes
-> a deadlock. Since we've removed support for SDL1.2 recently, we can
-> now completely remove the semaphore code from sdlaudio.c.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On Wed, Jan 30, 2019 at 08:06:50AM +0800, Wei Yang wrote:
+>There are several functions/variable which are not used anymore.
+>
+>This serials just remove those without functional change.
+>
+>v3: add ack and repost in a new thread
+>v2: change commit log from "is now used in no place" to "in not used anymore"
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Michael,
 
-> ---
->  audio/sdlaudio.c | 145 ++-----------------------------------------------------
->  1 file changed, 5 insertions(+), 140 deletions(-)
-> 
-> diff --git a/audio/sdlaudio.c b/audio/sdlaudio.c
-> index 9db5ac9..53bfdbf 100644
-> --- a/audio/sdlaudio.c
-> +++ b/audio/sdlaudio.c
-> @@ -38,14 +38,9 @@
->  #define AUDIO_CAP "sdl"
->  #include "audio_int.h"
->  
-> -#define USE_SEMAPHORE (SDL_MAJOR_VERSION < 2)
-> -
->  typedef struct SDLVoiceOut {
->      HWVoiceOut hw;
->      int live;
-> -#if USE_SEMAPHORE
-> -    int rpos;
-> -#endif
->      int decr;
->  } SDLVoiceOut;
->  
-> @@ -57,10 +52,6 @@ static struct {
->  
->  static struct SDLAudioState {
->      int exit;
-> -#if USE_SEMAPHORE
-> -    SDL_mutex *mutex;
-> -    SDL_sem *sem;
-> -#endif
->      int initialized;
->      bool driver_created;
->  } glob_sdl;
-> @@ -77,66 +68,6 @@ static void GCC_FMT_ATTR (1, 2) sdl_logerr (const char *fmt, ...)
->      AUD_log (AUDIO_CAP, "Reason: %s\n", SDL_GetError ());
->  }
->  
-> -static int sdl_lock (SDLAudioState *s, const char *forfn)
-> -{
-> -#if USE_SEMAPHORE
-> -    if (SDL_LockMutex (s->mutex)) {
-> -        sdl_logerr ("SDL_LockMutex for %s failed\n", forfn);
-> -        return -1;
-> -    }
-> -#else
-> -    SDL_LockAudio();
-> -#endif
-> -
-> -    return 0;
-> -}
-> -
-> -static int sdl_unlock (SDLAudioState *s, const char *forfn)
-> -{
-> -#if USE_SEMAPHORE
-> -    if (SDL_UnlockMutex (s->mutex)) {
-> -        sdl_logerr ("SDL_UnlockMutex for %s failed\n", forfn);
-> -        return -1;
-> -    }
-> -#else
-> -    SDL_UnlockAudio();
-> -#endif
-> -
-> -    return 0;
-> -}
-> -
-> -static int sdl_post (SDLAudioState *s, const char *forfn)
-> -{
-> -#if USE_SEMAPHORE
-> -    if (SDL_SemPost (s->sem)) {
-> -        sdl_logerr ("SDL_SemPost for %s failed\n", forfn);
-> -        return -1;
-> -    }
-> -#endif
-> -
-> -    return 0;
-> -}
-> -
-> -#if USE_SEMAPHORE
-> -static int sdl_wait (SDLAudioState *s, const char *forfn)
-> -{
-> -    if (SDL_SemWait (s->sem)) {
-> -        sdl_logerr ("SDL_SemWait for %s failed\n", forfn);
-> -        return -1;
-> -    }
-> -    return 0;
-> -}
-> -#endif
-> -
-> -static int sdl_unlock_and_post (SDLAudioState *s, const char *forfn)
-> -{
-> -    if (sdl_unlock (s, forfn)) {
-> -        return -1;
-> -    }
-> -
-> -    return sdl_post (s, forfn);
-> -}
-> -
->  static int aud_to_sdlfmt (audfmt_e fmt)
->  {
->      switch (fmt) {
-> @@ -243,9 +174,9 @@ static int sdl_open (SDL_AudioSpec *req, SDL_AudioSpec *obt)
->  static void sdl_close (SDLAudioState *s)
->  {
->      if (s->initialized) {
-> -        sdl_lock (s, "sdl_close");
-> +        SDL_LockAudio();
->          s->exit = 1;
-> -        sdl_unlock_and_post (s, "sdl_close");
-> +        SDL_UnlockAudio();
->          SDL_PauseAudio (1);
->          SDL_CloseAudio ();
->          s->initialized = 0;
-> @@ -267,30 +198,10 @@ static void sdl_callback (void *opaque, Uint8 *buf, int len)
->          int to_mix, decr;
->  
->          /* dolog ("in callback samples=%d\n", samples); */
-> -#if USE_SEMAPHORE
-> -        sdl_wait (s, "sdl_callback");
-> -        if (s->exit) {
-> -            return;
-> -        }
-> -
-> -        if (sdl_lock (s, "sdl_callback")) {
-> -            return;
-> -        }
-> -
-> -        if (audio_bug(__func__, sdl->live < 0 || sdl->live > hw->samples)) {
-> -            dolog ("sdl->live=%d hw->samples=%d\n",
-> -                   sdl->live, hw->samples);
-> -            return;
-> -        }
->  
-> -        if (!sdl->live) {
-> -            goto again;
-> -        }
-> -#else
->          if (s->exit || !sdl->live) {
->              break;
->          }
-> -#endif
->  
->          /* dolog ("in callback live=%d\n", live); */
->          to_mix = audio_MIN (samples, sdl->live);
-> @@ -301,33 +212,20 @@ static void sdl_callback (void *opaque, Uint8 *buf, int len)
->  
->              /* dolog ("in callback to_mix %d, chunk %d\n", to_mix, chunk); */
->              hw->clip (buf, src, chunk);
-> -#if USE_SEMAPHORE
-> -            sdl->rpos = (sdl->rpos + chunk) % hw->samples;
-> -#else
->              hw->rpos = (hw->rpos + chunk) % hw->samples;
-> -#endif
->              to_mix -= chunk;
->              buf += chunk << hw->info.shift;
->          }
->          samples -= decr;
->          sdl->live -= decr;
->          sdl->decr += decr;
-> -
-> -#if USE_SEMAPHORE
-> -    again:
-> -        if (sdl_unlock (s, "sdl_callback")) {
-> -            return;
-> -        }
-> -#endif
->      }
->      /* dolog ("done len=%d\n", len); */
->  
-> -#if (SDL_MAJOR_VERSION >= 2)
->      /* SDL2 does not clear the remaining buffer for us, so do it on our own */
->      if (samples) {
->          memset(buf, 0, samples << hw->info.shift);
->      }
-> -#endif
->  }
->  
->  static int sdl_write_out (SWVoiceOut *sw, void *buf, int len)
-> @@ -339,11 +237,8 @@ static int sdl_run_out (HWVoiceOut *hw, int live)
->  {
->      int decr;
->      SDLVoiceOut *sdl = (SDLVoiceOut *) hw;
-> -    SDLAudioState *s = &glob_sdl;
->  
-> -    if (sdl_lock (s, "sdl_run_out")) {
-> -        return 0;
-> -    }
-> +    SDL_LockAudio();
->  
->      if (sdl->decr > live) {
->          ldebug ("sdl->decr %d live %d sdl->live %d\n",
-> @@ -355,19 +250,10 @@ static int sdl_run_out (HWVoiceOut *hw, int live)
->      decr = audio_MIN (sdl->decr, live);
->      sdl->decr -= decr;
->  
-> -#if USE_SEMAPHORE
-> -    sdl->live = live - decr;
-> -    hw->rpos = sdl->rpos;
-> -#else
->      sdl->live = live;
-> -#endif
->  
-> -    if (sdl->live > 0) {
-> -        sdl_unlock_and_post (s, "sdl_run_out");
-> -    }
-> -    else {
-> -        sdl_unlock (s, "sdl_run_out");
-> -    }
-> +    SDL_UnlockAudio();
-> +
->      return decr;
->  }
->  
-> @@ -449,23 +335,6 @@ static void *sdl_audio_init (void)
->          return NULL;
->      }
->  
-> -#if USE_SEMAPHORE
-> -    s->mutex = SDL_CreateMutex ();
-> -    if (!s->mutex) {
-> -        sdl_logerr ("Failed to create SDL mutex\n");
-> -        SDL_QuitSubSystem (SDL_INIT_AUDIO);
-> -        return NULL;
-> -    }
-> -
-> -    s->sem = SDL_CreateSemaphore (0);
-> -    if (!s->sem) {
-> -        sdl_logerr ("Failed to create SDL semaphore\n");
-> -        SDL_DestroyMutex (s->mutex);
-> -        SDL_QuitSubSystem (SDL_INIT_AUDIO);
-> -        return NULL;
-> -    }
-> -#endif
-> -
->      s->driver_created = true;
->      return s;
->  }
-> @@ -474,10 +343,6 @@ static void sdl_audio_fini (void *opaque)
->  {
->      SDLAudioState *s = opaque;
->      sdl_close (s);
-> -#if USE_SEMAPHORE
-> -    SDL_DestroySemaphore (s->sem);
-> -    SDL_DestroyMutex (s->mutex);
-> -#endif
->      SDL_QuitSubSystem (SDL_INIT_AUDIO);
->      s->driver_created = false;
->  }
-> 
+Looks this serials is not merged yet.
+
+Is there any problem I need to fix?
+
+>
+>Wei Yang (3):
+>  hw/i386/pc.c: remove unused function pc_acpi_init()
+>  hw/acpi: remove unused function acpi_table_add_builtin()
+>  hw/acpi: remove unnecessary variable acpi_table_builtin
+>
+> hw/acpi/core.c         | 10 +---------
+> hw/i386/pc.c           | 27 ---------------------------
+> include/hw/acpi/acpi.h |  1 -
+> include/hw/i386/pc.h   |  1 -
+> 4 files changed, 1 insertion(+), 38 deletions(-)
+>
+>-- 
+>2.19.1
+
+-- 
+Wei Yang
+Help you, Help me
 
