@@ -1,51 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gtuVR-0003nc-LJ
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 08:23:17 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49572)
+	id 1gtudG-0007kY-5J
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 08:31:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51082)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mlureau@redhat.com>) id 1gtuVJ-0003lf-EZ
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 08:23:16 -0500
+	(envelope-from <richard.weiyang@gmail.com>) id 1gtudD-0007jd-G2
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 08:31:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mlureau@redhat.com>) id 1gtuVF-0002r6-L8
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 08:23:07 -0500
-Received: from mail-qk1-f196.google.com ([209.85.222.196]:43404)
+	(envelope-from <richard.weiyang@gmail.com>) id 1gtudB-0005r6-Km
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 08:31:19 -0500
+Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:40076)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mlureau@redhat.com>) id 1gtuVF-0002or-Fb
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 08:23:05 -0500
-Received: by mail-qk1-f196.google.com with SMTP id f196so1273553qke.10
-	for <qemu-trivial@nongnu.org>; Wed, 13 Feb 2019 05:23:02 -0800 (PST)
+	(Exim 4.71) (envelope-from <richard.weiyang@gmail.com>)
+	id 1gtud9-0005YC-Do; Wed, 13 Feb 2019 08:31:17 -0500
+Received: by mail-ed1-x541.google.com with SMTP id 10so1919259eds.7;
+	Wed, 13 Feb 2019 05:31:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+	:content-disposition:content-transfer-encoding:in-reply-to
+	:user-agent; bh=k/YY6dc+sT9aS+rnD0yr6vFShhKAutobaV0rWv5i4fc=;
+	b=a8UB9gFJzCWOb2WptLdeO2fNBQZboY/DnC0rBAv/OVg2sVmS3ucA31Mh12T861ApDz
+	dSJhvweKBTXrMEQEUGjv3AlCDFV8r58yF3sFvmCVVR4PHu5ZQ0PA8VV99rswRt/7TTBv
+	77G08aPR8o8ju1xmc5hjDf1CPSDGR7lbQqnl0qZcQnjegWJWdwLiXF+/VjFeuKEzXrMN
+	0GxC//2+wcV7p7dZMy8wOjl6BlBSvuu6y/wrgS35lYBNZ5T1wSkcPWBAV8whq2k+OHnA
+	GsAZ1TGdOFF8+ryxM2KEIFMK7nBH/pyh4Z002h3r+iRp1MsMlXib2QkkwAmDGqWDBMAF
+	v9pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=b6uaCVQyjfk2cZpO1DBi6+5h+xlT8lNpbn9UpP1WQys=;
-	b=eDy61bKbPygZ1zH+wydyIVGwQYGBVw5RBUqSjli3wWgN8NZHnsxFDL4p1AQswTrZUD
-	riPNS/788xhNTXYPoDeHvCWQF+RNVo6dl2IC2G1ga/j8GM/kVnxAWezuvbpGDtLpKbcv
-	JXGLkYxvjwjbfWEz1QXbwg/KhXDh0Mqw9CGPHKcsnJtw0Q4rN3V55Od6wQON1yluq646
-	LGaUaxbkBLlvhcTqF9xBKJnIwGyKfKLVSV4r438+eH9scF07HwcSoBcwmmUqsCzB7UK3
-	hmujRCcmgkTg/1s1DzVNJMCCV2WUPMurQbPm7Gbg0z+0hwbwXqabUQWiGGT9KwhPtVoh
-	3GUw==
-X-Gm-Message-State: AHQUAuZfgMdfAD6A9DKfK628YOWMRC5rhZWL64ltpipKtSj+DM3F46Wr
-	TLYSgLkRvWAhqhkxWbQKxy3cBf5xTqk37bX0lZL4Iw==
-X-Google-Smtp-Source: AHgI3IZgxLDPQ+CM7fDABGpxblyBtUez0/et6gLqxQ8cTljz27gILg0j4LHpvqGGLbRZAT5fNKFcjRtuacMIOmdWnZw=
-X-Received: by 2002:a37:dcc1:: with SMTP id v184mr373592qki.212.1550064181743; 
-	Wed, 13 Feb 2019 05:23:01 -0800 (PST)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+	:references:mime-version:content-disposition
+	:content-transfer-encoding:in-reply-to:user-agent;
+	bh=k/YY6dc+sT9aS+rnD0yr6vFShhKAutobaV0rWv5i4fc=;
+	b=ONLAdQaeYigRvZN6nLZqqvi+IvUEgYUV8Bl4pw8/xu9LyAz+xF8tz7+J8zxEqXdP79
+	sRzpEnCEqTyZcOuyF9Wh7wYXIn5rutMDaEyxNQn2T0pEvnd86a1Ow73NbeXl/sfAox/s
+	leYo1xVvZoc6EBmYj7a5Z56lY89A5vtJ0vzWNg5FhyZwWgSd2LOnOGnlmVns9WG8Hhag
+	khRQJKT4aSf54igvtxwsYz5dW179wCOYxUHI6/n7r5FeeJxgMIyY90atfsgvxsHmADAr
+	SS+rRPLLLq9JIKWhwaXkhGk72ONCXOmZU7sk5RK2NGjr4GUTJEYcmgwUPR+oHrrEq2kR
+	ZhdA==
+X-Gm-Message-State: AHQUAuYvbl5229cNe2RNXRq6FLtmN2tiFxwkvNQYmLudVg+uejii31sY
+	kaxwAtJU0UoAVNK/9VbOffE=
+X-Google-Smtp-Source: AHgI3IaLqzGVvSD5t2+RNRRzQ+QuZOlniiX1Hn97mqDaWuB8BfmKgiGmW6N18fCYh8g+0wdWe44awg==
+X-Received: by 2002:a17:906:3290:: with SMTP id
+	16mr381754ejw.166.1550064665208; 
+	Wed, 13 Feb 2019 05:31:05 -0800 (PST)
+Received: from localhost ([185.92.221.13]) by smtp.gmail.com with ESMTPSA id
+	h21sm3615413edq.80.2019.02.13.05.31.03
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Wed, 13 Feb 2019 05:31:03 -0800 (PST)
+Date: Wed, 13 Feb 2019 13:31:03 +0000
+From: Wei Yang <richard.weiyang@gmail.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>,
+	Wei Yang <richardw.yang@linux.intel.com>, qemu-trivial@nongnu.org,
+	imammedo@redhat.com, qemu-devel@nongnu.org
+Message-ID: <20190213133103.rrkqryspehgeotly@master>
+Reply-To: Wei Yang <richard.weiyang@gmail.com>
+References: <20190130000653.16267-1-richardw.yang@linux.intel.com>
+	<20190212052224.GA4839@richard>
+	<20190212003414-mutt-send-email-mst@kernel.org>
+	<4d6f639b-fe11-7048-3975-ee1c1875b8d3@vivier.eu>
+	<3d700eed-5637-b05a-63c2-9f73a465bcb5@redhat.com>
 MIME-Version: 1.0
-References: <20190213123446.1768-1-philmd@redhat.com>
-In-Reply-To: <20190213123446.1768-1-philmd@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Wed, 13 Feb 2019 14:22:50 +0100
-Message-ID: <CAMxuvaxbiwiJUGSD=RjKGqPxH=9tGL-0VUKvRNLwR+Kn2_VKCw@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
-	Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, 
-	Anatoli Huseu1 <avg.tolik@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.222.196
-Subject: Re: [Qemu-trivial] [PATCH v2] chardev/wctablet: Fix a typo
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <3d700eed-5637-b05a-63c2-9f73a465bcb5@redhat.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::541
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 0/3] Trivial cleanup in
+ hw/acpi
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,41 +81,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Feb 2019 13:23:16 -0000
+X-List-Received-Date: Wed, 13 Feb 2019 13:31:21 -0000
 
-Hi
+On Wed, Feb 13, 2019 at 09:56:38AM +0100, Philippe Mathieu-Daudé wrote:
+>Hi Laurent,
+>
+>On 2/13/19 9:49 AM, Laurent Vivier wrote:
+>> On 12/02/2019 06:34, Michael S. Tsirkin wrote:
+>>> On Tue, Feb 12, 2019 at 01:22:24PM +0800, Wei Yang wrote:
+>>>> On Wed, Jan 30, 2019 at 08:06:50AM +0800, Wei Yang wrote:
+>>>>> There are several functions/variable which are not used anymore.
+>>>>>
+>>>>> This serials just remove those without functional change.
+>>>>>
+>>>>> v3: add ack and repost in a new thread
+>>>>> v2: change commit log from "is now used in no place" to "in not used anymore"
+>>>>
+>>>> Michael,
+>>>>
+>>>> Looks this serials is not merged yet.
+>>>>
+>>>> Is there any problem I need to fix?
+>>>
+>>> Yes pls repost with fixed reviewed-by tags.
+>> 
+>> Or I can take the series through the trivial branch and update manually
+>> Philippe's lastname?
+>
+>I appreciate the help with manual update, however Wei is not the only
+>one having this problem (other developpers has non-ASCII in their name,
+>and use such tags).
+>I'd rather prefer we find a proper configuration setup to help the
+>community.
+>
 
-On Wed, Feb 13, 2019 at 1:34 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> The correct name is Wacom.
-> Fix the typo which is present since 378af96155d.
->
-> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> v2: Use correct English in description
+How you configure your git send-email? or related facility?
 
-thanks, I'll queue the patch in next chardev PR.
+>Another (fair) approach is to forbid non-ASCII chars in all part of patches.
+>
+>Regards,
+>
+>Phil.
 
-> ---
->  chardev/wctablet.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/chardev/wctablet.c b/chardev/wctablet.c
-> index 969d014574..35dbd29a33 100644
-> --- a/chardev/wctablet.c
-> +++ b/chardev/wctablet.c
-> @@ -177,7 +177,7 @@ static void wctablet_input_sync(DeviceState *dev)
->  }
->
->  static QemuInputHandler wctablet_handler =3D {
-> -    .name  =3D "QEMU Wacome Pen Tablet",
-> +    .name  =3D "QEMU Wacom Pen Tablet",
->      .mask  =3D INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_ABS,
->      .event =3D wctablet_input_event,
->      .sync  =3D wctablet_input_sync,
-> --
-> 2.20.1
->
+-- 
+Wei Yang
+Help you, Help me
 
