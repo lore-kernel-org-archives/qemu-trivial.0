@@ -1,40 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gtwx8-0005Wy-Ok
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 11:00:02 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33171)
+	id 1gtxKz-0008Qa-5c
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 11:24:41 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40862)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gtwx6-0005UL-3b
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 11:00:01 -0500
+	(envelope-from <philmd@redhat.com>) id 1gtxKx-0008OS-4v
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 11:24:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gtwx4-0006SH-DU
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 11:00:00 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:2763)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gtwx0-00068n-HA; Wed, 13 Feb 2019 10:59:54 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 7BAF9C0669C2;
-	Wed, 13 Feb 2019 15:59:40 +0000 (UTC)
-Received: from thuth.com (ovpn-116-45.ams2.redhat.com [10.36.116.45])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2D0FC5D9C6;
-	Wed, 13 Feb 2019 15:59:38 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Stafford Horne <shorne@gmail.com>,
-	Jia Liu <proljc@gmail.com>
+	(envelope-from <philmd@redhat.com>) id 1gtxKr-000232-VY
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 11:24:37 -0500
+Received: from mail-wm1-f68.google.com ([209.85.128.68]:35944)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gtxKf-0001pC-P0
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 11:24:24 -0500
+Received: by mail-wm1-f68.google.com with SMTP id j125so3090512wmj.1
+	for <qemu-trivial@nongnu.org>; Wed, 13 Feb 2019 08:24:15 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=kaR3SBxKQ7aFSUOR/5ytaxCgi3OedtpRecogbKGc0HA=;
+	b=aIXBy1Ryzhnj5Gu3E2wJ5zK9QsHvHJAXfcV+rzoWAt8FzRfiIF2N7AiyTMz6KZ971s
+	cQgcUT9QXVCIkulwD9I6oRXua4DPBXh51EhsDhbWs7ZuthHV5eCQd3GxjNw8bEbBgK74
+	mW3D4P2L+90LyVlycWK8gF7vu7jKqHLAknqy9HOZiuHODgH7TZ5obyb8RtmQhEnAk2dG
+	ybrDNP2AdImn5CFENZAR+7pcqs+qwWh8vazAhFr8c7fWUMg7TmprUrZxR4eq0IQLN29y
+	DtDViTox/LwqlW4LNilL7mY8xCBwtuYnZoNlhMuHuHqgCSCZgYrnJxcIWSgMzuXvyjVD
+	J+Sg==
+X-Gm-Message-State: AHQUAubIBKqT70+5bkQjAcYP1sRnWuHBdE8SUp6C0P252uKX3NuTX9IE
+	hOcrKXwr5ir8wN4J4/vAiHPBiC5ZnCM=
+X-Google-Smtp-Source: AHgI3IZSreEKFw+riOWC349EdMYJ8Fi5GmrwFTLIRmpFCtX35FgwrjbE8v6+m0QTviAdL9kXgMxfbg==
+X-Received: by 2002:a1c:c303:: with SMTP id t3mr912183wmf.94.1550075054124;
+	Wed, 13 Feb 2019 08:24:14 -0800 (PST)
+Received: from [192.168.1.103] (10.red-83-35-153.dynamicip.rima-tde.net.
+	[83.35.153.10]) by smtp.gmail.com with ESMTPSA id
+	j124sm8028831wmb.48.2019.02.13.08.24.13
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Wed, 13 Feb 2019 08:24:13 -0800 (PST)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	=?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
 Cc: qemu-trivial@nongnu.org
-Date: Wed, 13 Feb 2019 16:59:37 +0100
-Message-Id: <1550073577-4248-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Wed, 13 Feb 2019 15:59:40 +0000 (UTC)
+References: <1550073299-3647-1-git-send-email-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <1cbe8721-ea9e-f17f-f27d-910fece2858d@redhat.com>
+Date: Wed, 13 Feb 2019 17:24:12 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
+MIME-Version: 1.0
+In-Reply-To: <1550073299-3647-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] target/openrisc: Fix LGPL information in the
- file headers
+	[fuzzy]
+X-Received-From: 209.85.128.68
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] crypto: Fix LGPL
+ information in the file headers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,199 +68,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Feb 2019 16:00:01 -0000
+X-List-Received-Date: Wed, 13 Feb 2019 16:24:40 -0000
 
-It's either "GNU *Library* General Public License version 2" or "GNU
-Lesser General Public License version *2.1*", but there was no "version
-2.0" of the "Lesser" license. So assume that version 2.1 is meant here.
+On 2/13/19 4:54 PM, Thomas Huth wrote:
+> It's either "GNU *Library* General Public License version 2" or "GNU
+> Lesser General Public License version *2.1*", but there was no "version
+> 2.0" of the "Lesser" license. So assume that version 2.1 is meant here.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  crypto/block-luks.c           | 2 +-
+>  crypto/block-luks.h           | 2 +-
+>  crypto/block-qcow.c           | 2 +-
+>  crypto/block-qcow.h           | 2 +-
+>  crypto/block.c                | 2 +-
+>  crypto/blockpriv.h            | 2 +-
+>  crypto/cipher-builtin.c       | 2 +-
+>  crypto/cipher-gcrypt.c        | 2 +-
+>  crypto/cipher-nettle.c        | 2 +-
+>  crypto/cipher.c               | 2 +-
+>  crypto/hash-gcrypt.c          | 2 +-
+>  crypto/hash-glib.c            | 2 +-
+>  crypto/hash-nettle.c          | 2 +-
+>  crypto/hash.c                 | 2 +-
+>  crypto/init.c                 | 2 +-
+>  crypto/ivgen-essiv.c          | 2 +-
+>  crypto/ivgen-essiv.h          | 2 +-
+>  crypto/ivgen-plain.c          | 2 +-
+>  crypto/ivgen-plain.h          | 2 +-
+>  crypto/ivgen-plain64.c        | 2 +-
+>  crypto/ivgen-plain64.h        | 2 +-
+>  crypto/ivgen.c                | 2 +-
+>  crypto/ivgenpriv.h            | 2 +-
+>  crypto/pbkdf-gcrypt.c         | 2 +-
+>  crypto/pbkdf-nettle.c         | 2 +-
+>  crypto/pbkdf-stub.c           | 2 +-
+>  crypto/pbkdf.c                | 2 +-
+>  crypto/random-gcrypt.c        | 2 +-
+>  crypto/random-gnutls.c        | 2 +-
+>  crypto/random-platform.c      | 2 +-
+>  crypto/secret.c               | 2 +-
+>  crypto/tlscreds.c             | 2 +-
+>  crypto/tlscredsanon.c         | 2 +-
+>  crypto/tlscredspriv.h         | 2 +-
+>  crypto/tlscredspsk.c          | 2 +-
+>  crypto/tlscredsx509.c         | 2 +-
+>  crypto/tlssession.c           | 2 +-
+>  crypto/xts.c                  | 2 +-
+>  include/crypto/block.h        | 2 +-
+>  include/crypto/cipher.h       | 2 +-
+>  include/crypto/hash.h         | 2 +-
+>  include/crypto/init.h         | 2 +-
+>  include/crypto/ivgen.h        | 2 +-
+>  include/crypto/pbkdf.h        | 2 +-
+>  include/crypto/random.h       | 2 +-
+>  include/crypto/secret.h       | 2 +-
+>  include/crypto/tlscreds.h     | 2 +-
+>  include/crypto/tlscredsanon.h | 2 +-
+>  include/crypto/tlscredspsk.h  | 2 +-
+>  include/crypto/tlscredsx509.h | 2 +-
+>  include/crypto/tlssession.h   | 2 +-
+>  include/crypto/xts.h          | 2 +-
+>  52 files changed, 52 insertions(+), 52 deletions(-)
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/openrisc/cputimer.c               | 2 +-
- hw/openrisc/openrisc_sim.c           | 2 +-
- hw/openrisc/pic_cpu.c                | 2 +-
- linux-user/openrisc/target_cpu.h     | 2 +-
- linux-user/openrisc/target_structs.h | 2 +-
- target/openrisc/cpu.h                | 2 +-
- target/openrisc/exception.c          | 2 +-
- target/openrisc/exception_helper.c   | 2 +-
- target/openrisc/fpu_helper.c         | 2 +-
- target/openrisc/insns.decode         | 2 +-
- target/openrisc/interrupt.c          | 2 +-
- target/openrisc/machine.c            | 2 +-
- target/openrisc/mmu.c                | 2 +-
- 13 files changed, 13 insertions(+), 13 deletions(-)
-
-diff --git a/hw/openrisc/cputimer.c b/hw/openrisc/cputimer.c
-index 850f887..fe95efc 100644
---- a/hw/openrisc/cputimer.c
-+++ b/hw/openrisc/cputimer.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/hw/openrisc/openrisc_sim.c b/hw/openrisc/openrisc_sim.c
-index 7d3b734..0a906d8 100644
---- a/hw/openrisc/openrisc_sim.c
-+++ b/hw/openrisc/openrisc_sim.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/hw/openrisc/pic_cpu.c b/hw/openrisc/pic_cpu.c
-index 569b443..2f53cfc 100644
---- a/hw/openrisc/pic_cpu.c
-+++ b/hw/openrisc/pic_cpu.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/linux-user/openrisc/target_cpu.h b/linux-user/openrisc/target_cpu.h
-index d1ea450..32ff135 100644
---- a/linux-user/openrisc/target_cpu.h
-+++ b/linux-user/openrisc/target_cpu.h
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/linux-user/openrisc/target_structs.h b/linux-user/openrisc/target_structs.h
-index afbb7ad..e98e2bc 100644
---- a/linux-user/openrisc/target_structs.h
-+++ b/linux-user/openrisc/target_structs.h
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
-index f1b31bc..c104a4b 100644
---- a/target/openrisc/cpu.h
-+++ b/target/openrisc/cpu.h
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/openrisc/exception.c b/target/openrisc/exception.c
-index 49470be..28c1fce 100644
---- a/target/openrisc/exception.c
-+++ b/target/openrisc/exception.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/openrisc/exception_helper.c b/target/openrisc/exception_helper.c
-index 6073a5b..0797cc9 100644
---- a/target/openrisc/exception_helper.c
-+++ b/target/openrisc/exception_helper.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/openrisc/fpu_helper.c b/target/openrisc/fpu_helper.c
-index 265ce13..b9d2ebb 100644
---- a/target/openrisc/fpu_helper.c
-+++ b/target/openrisc/fpu_helper.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/openrisc/insns.decode b/target/openrisc/insns.decode
-index dad68c8..7df81c1 100644
---- a/target/openrisc/insns.decode
-+++ b/target/openrisc/insns.decode
-@@ -6,7 +6,7 @@
- # This library is free software; you can redistribute it and/or
- # modify it under the terms of the GNU Lesser General Public
- # License as published by the Free Software Foundation; either
--# version 2 of the License, or (at your option) any later version.
-+# version 2.1 of the License, or (at your option) any later version.
- #
- # This library is distributed in the hope that it will be useful,
- # but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/openrisc/interrupt.c b/target/openrisc/interrupt.c
-index bbae956..ee280df 100644
---- a/target/openrisc/interrupt.c
-+++ b/target/openrisc/interrupt.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/openrisc/machine.c b/target/openrisc/machine.c
-index 5d822f7..c9e0848 100644
---- a/target/openrisc/machine.c
-+++ b/target/openrisc/machine.c
-@@ -6,7 +6,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/target/openrisc/mmu.c b/target/openrisc/mmu.c
-index e7d5219..5dec68d 100644
---- a/target/openrisc/mmu.c
-+++ b/target/openrisc/mmu.c
-@@ -7,7 +7,7 @@
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-  * License as published by the Free Software Foundation; either
-- * version 2 of the License, or (at your option) any later version.
-+ * version 2.1 of the License, or (at your option) any later version.
-  *
-  * This library is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
--- 
-1.8.3.1
-
+Still not convinced to use SPDX-License-Identifiers?
 
