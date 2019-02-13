@@ -1,45 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gttkg-0004re-S8
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 07:34:58 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39842)
+	id 1gtuAJ-0004pt-Tt
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 08:01:28 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44614)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gttkf-0004qh-Fk
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 07:34:58 -0500
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1gtuA5-0004QS-7w
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 08:01:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gttke-00048D-S4
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 07:34:57 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:51258)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1gttkc-00040j-Sx; Wed, 13 Feb 2019 07:34:55 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E2F4858E40;
-	Wed, 13 Feb 2019 12:34:51 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-106.brq.redhat.com [10.40.204.106])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 11B3F5D6B3;
-	Wed, 13 Feb 2019 12:34:48 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Anatoli Huseu1 <avg.tolik@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Wed, 13 Feb 2019 13:34:45 +0100
-Message-Id: <20190213123446.1768-1-philmd@redhat.com>
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1gttuG-0003HV-3e
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 07:44:55 -0500
+Received: from chuckie.co.uk ([82.165.15.123]:32856
+	helo=s16892447.onlinehome-server.info)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1gttuF-0003Ez-Nr; Wed, 13 Feb 2019 07:44:52 -0500
+Received: from [86.188.254.49] (helo=[172.30.1.185])
+	by s16892447.onlinehome-server.info with esmtpsa
+	(TLS1.0:RSA_AES_128_CBC_SHA1:16) (Exim 4.76)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1gttuM-0006G8-V3; Wed, 13 Feb 2019 12:45:00 +0000
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: Artyom Tarasenko <atar4qemu@gmail.com>, pbonzini@redhat.com,
+	yang.zhong@intel.com, philmd@redhat.com, qemu-trivial@nongnu.org
+References: <1550041639-10232-1-git-send-email-thuth@redhat.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Openpgp: preference=signencrypt
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+	mQENBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+	3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+	E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+	PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+	PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+	AAG0ME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPokB
+	OAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+	NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+	mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+	z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+	T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+	DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63LkBDQRUCbs8AQgA
+	y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+	2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+	14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+	YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+	Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABiQEfBBgBAgAJ
+	BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+	opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+	NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+	Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+	KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+	imgcU9TTGC5qd9g=
+Message-ID: <72ad411d-d955-0988-f873-86322494b124@ilande.co.uk>
+Date: Wed, 13 Feb 2019 12:44:35 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Wed, 13 Feb 2019 12:34:51 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v2] chardev/wctablet: Fix a typo
+In-Reply-To: <1550041639-10232-1-git-send-email-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-GB
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 86.188.254.49
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+X-SA-Exim-Version: 4.2.1 (built Sun, 08 Jan 2012 02:45:44 +0000)
+X-SA-Exim-Scanned: Yes (on s16892447.onlinehome-server.info)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 82.165.15.123
+Subject: Re: [Qemu-trivial] [PATCH] hw/sparc64: Explicitly set
+ default_display = "std"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,33 +76,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Feb 2019 12:34:58 -0000
+X-List-Received-Date: Wed, 13 Feb 2019 13:01:26 -0000
 
-The correct name is Wacom.
-Fix the typo which is present since 378af96155d.
+On 13/02/2019 07:07, Thomas Huth wrote:
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
-v2: Use correct English in description
----
- chardev/wctablet.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> The sun4uv_init() function expects vga_interface_type to be either
+> VGA_STD or VGA_NONE and sets up a stdvga device or no vga card
+> accordingly.
+> However, the code in vl.c prefers the Cirrus VGA card to stdvga if
+> it is available and the user and the machine did not specify anything
+> else.
+> So far this has not been a problem, since the Cirrus VGA was not linked
+> into the sparc64 target. But with the upcoming Kconfig build system,
+> all theoretically possible PCI cards will be enabled by default, so the
+> Cirrus VGA card might become available on the sparc64 target, too. vl.c
+> then picks the wrong card, causing sun4uv_init() to abort.
+> Thus let's make it explicit that we always want stdvga for sparc64 and
+> so set default_display = "std" for these machines.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/sparc64/sun4u.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+> index ff24d9b..399f2d7 100644
+> --- a/hw/sparc64/sun4u.c
+> +++ b/hw/sparc64/sun4u.c
+> @@ -797,6 +797,7 @@ static void sun4u_class_init(ObjectClass *oc, void *data)
+>      mc->default_boot_order = "c";
+>      mc->default_cpu_type = SPARC_CPU_TYPE_NAME("TI-UltraSparc-IIi");
+>      mc->ignore_boot_device_suffixes = true;
+> +    mc->default_display = "std";
+>      fwc->get_dev_path = sun4u_fw_dev_path;
+>  }
+>  
+> @@ -820,6 +821,7 @@ static void sun4v_class_init(ObjectClass *oc, void *data)
+>      mc->max_cpus = 1; /* XXX for now */
+>      mc->default_boot_order = "c";
+>      mc->default_cpu_type = SPARC_CPU_TYPE_NAME("Sun-UltraSparc-T1");
+> +    mc->default_display = "std";
+>  }
+>  
+>  static const TypeInfo sun4v_type = {
 
-diff --git a/chardev/wctablet.c b/chardev/wctablet.c
-index 969d014574..35dbd29a33 100644
---- a/chardev/wctablet.c
-+++ b/chardev/wctablet.c
-@@ -177,7 +177,7 @@ static void wctablet_input_sync(DeviceState *dev)
- }
-=20
- static QemuInputHandler wctablet_handler =3D {
--    .name  =3D "QEMU Wacome Pen Tablet",
-+    .name  =3D "QEMU Wacom Pen Tablet",
-     .mask  =3D INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_ABS,
-     .event =3D wctablet_input_event,
-     .sync  =3D wctablet_input_sync,
---=20
-2.20.1
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
+
+ATB,
+
+Mark.
 
