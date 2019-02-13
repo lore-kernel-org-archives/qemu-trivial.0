@@ -1,49 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gtodJ-0003Ub-Jv
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 02:07:01 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33309)
+	id 1gtoe8-0004BQ-SJ
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 02:07:52 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33918)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1gtodI-0003Ky-0e
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 02:07:00 -0500
+	(envelope-from <thuth@redhat.com>) id 1gtoe6-00047v-2O
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 02:07:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1gtoYN-0003do-Tg
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 02:01:56 -0500
-Received: from mga18.intel.com ([134.134.136.126]:3563)
+	(envelope-from <thuth@redhat.com>) id 1gtodt-0000XU-H2
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 02:07:41 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:58398)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1gtoYN-0003bc-KE; Wed, 13 Feb 2019 02:01:55 -0500
-X-Amp-Result: UNSCANNABLE
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-	by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	12 Feb 2019 23:01:53 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.58,364,1544515200"; d="scan'208";a="124089932"
-Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
-	by fmsmga008.fm.intel.com with ESMTP; 12 Feb 2019 23:01:51 -0800
-Date: Wed, 13 Feb 2019 15:01:27 +0800
-From: Wei Yang <richardw.yang@linux.intel.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: Wei Yang <richardw.yang@linux.intel.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, laurent@vivier.eu, imammedo@redhat.com
-Message-ID: <20190213070127.GA9131@richard>
-Reply-To: Wei Yang <richardw.yang@linux.intel.com>
-References: <20190130000653.16267-1-richardw.yang@linux.intel.com>
-	<20190212052224.GA4839@richard>
-	<20190212003414-mutt-send-email-mst@kernel.org>
-	<20190213062638.GA8835@richard>
-	<49b44562-8d21-29de-f979-0b491fc7dc99@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <49b44562-8d21-29de-f979-0b491fc7dc99@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 134.134.136.126
-Subject: Re: [Qemu-trivial] [PATCH v3 0/3] Trivial cleanup in hw/acpi
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gtodq-0000OZ-IB; Wed, 13 Feb 2019 02:07:34 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 5BC4B15553;
+	Wed, 13 Feb 2019 07:07:27 +0000 (UTC)
+Received: from thuth.com (ovpn-116-45.ams2.redhat.com [10.36.116.45])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 103FE5D9C5;
+	Wed, 13 Feb 2019 07:07:22 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: Artyom Tarasenko <atar4qemu@gmail.com>, pbonzini@redhat.com,
+	yang.zhong@intel.com, philmd@redhat.com, qemu-trivial@nongnu.org
+Date: Wed, 13 Feb 2019 08:07:19 +0100
+Message-Id: <1550041639-10232-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Wed, 13 Feb 2019 07:07:27 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] hw/sparc64: Explicitly set default_display =
+ "std"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,87 +47,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Feb 2019 07:07:01 -0000
+X-List-Received-Date: Wed, 13 Feb 2019 07:07:51 -0000
 
-On Wed, Feb 13, 2019 at 07:32:23AM +0100, Philippe Mathieu-Daudé wrote:
->Hi Wei,
->
->On 2/13/19 7:26 AM, Wei Yang wrote:
->> On Tue, Feb 12, 2019 at 12:34:31AM -0500, Michael S. Tsirkin wrote:
->>> On Tue, Feb 12, 2019 at 01:22:24PM +0800, Wei Yang wrote:
->>>> On Wed, Jan 30, 2019 at 08:06:50AM +0800, Wei Yang wrote:
->>>>> There are several functions/variable which are not used anymore.
->>>>>
->>>>> This serials just remove those without functional change.
->>>>>
->>>>> v3: add ack and repost in a new thread
->>>>> v2: change commit log from "is now used in no place" to "in not used anymore"
->>>>
->>>> Michael,
->>>>
->>>> Looks this serials is not merged yet.
->>>>
->>>> Is there any problem I need to fix?
->>>
->>> Yes pls repost with fixed reviewed-by tags.
->>>
->> 
->> I tried to use git-sendemail to send those patches again.
->> 
->> The character 茅 looks good in patch file, while after git-sendemail this is
->> changed.
->> 
->> My encoding property in mail is :
->> 
->>     MIME-Version: 1.0
->>     Content-Type: text/plain; charset=UTF-8
->>     Content-Language: en-US
->>     Content-Transfer-Encoding: 8bit
->
->I'm not sure but you can try:
->
->      Content-Transfer-Encoding: base64
->
+The sun4uv_init() function expects vga_interface_type to be either
+VGA_STD or VGA_NONE and sets up a stdvga device or no vga card
+accordingly.
+However, the code in vl.c prefers the Cirrus VGA card to stdvga if
+it is available and the user and the machine did not specify anything
+else.
+So far this has not been a problem, since the Cirrus VGA was not linked
+into the sparc64 target. But with the upcoming Kconfig build system,
+all theoretically possible PCI cards will be enabled by default, so the
+Cirrus VGA card might become available on the sparc64 target, too. vl.c
+then picks the wrong card, causing sun4uv_init() to abort.
+Thus let's make it explicit that we always want stdvga for sparc64 and
+so set default_display = "std" for these machines.
 
-Looks not work.
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/sparc64/sun4u.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-git send-email will detect the file's encoding is 8bit, so manually change to
-base64 doesn't work.
-
->> 
->> Looks the same as Philippe's.
->> 
->> Any hint on how to send out a correct character with git-sendemail?
->
->If it doesn't work, then use my ASCII-reduced lastname, I can live with
->that:
->
->"Reviewed-by: Philippe Mathieu-Daude <philmd@redhat.com>"
->
->Thanks for trying,
-
-Thanks :-)
-
-Let's wait a while to see whether someone else has an idea on that.
-
->
->Phil.
->
->> 
->>>
->>>>>
->>>>> Wei Yang (3):
->>>>>  hw/i386/pc.c: remove unused function pc_acpi_init()
->>>>>  hw/acpi: remove unused function acpi_table_add_builtin()
->>>>>  hw/acpi: remove unnecessary variable acpi_table_builtin
->>>>>
->>>>> hw/acpi/core.c         | 10 +---------
->>>>> hw/i386/pc.c           | 27 ---------------------------
->>>>> include/hw/acpi/acpi.h |  1 -
->>>>> include/hw/i386/pc.h   |  1 -
->>>>> 4 files changed, 1 insertion(+), 38 deletions(-)
-
+diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+index ff24d9b..399f2d7 100644
+--- a/hw/sparc64/sun4u.c
++++ b/hw/sparc64/sun4u.c
+@@ -797,6 +797,7 @@ static void sun4u_class_init(ObjectClass *oc, void *data)
+     mc->default_boot_order = "c";
+     mc->default_cpu_type = SPARC_CPU_TYPE_NAME("TI-UltraSparc-IIi");
+     mc->ignore_boot_device_suffixes = true;
++    mc->default_display = "std";
+     fwc->get_dev_path = sun4u_fw_dev_path;
+ }
+ 
+@@ -820,6 +821,7 @@ static void sun4v_class_init(ObjectClass *oc, void *data)
+     mc->max_cpus = 1; /* XXX for now */
+     mc->default_boot_order = "c";
+     mc->default_cpu_type = SPARC_CPU_TYPE_NAME("Sun-UltraSparc-T1");
++    mc->default_display = "std";
+ }
+ 
+ static const TypeInfo sun4v_type = {
 -- 
-Wei Yang
-Help you, Help me
+1.8.3.1
+
 
