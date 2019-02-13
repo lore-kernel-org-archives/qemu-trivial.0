@@ -1,63 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gtscj-0004SZ-Is
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 06:22:41 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54667)
+	id 1gttkg-0004re-S8
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 07:34:58 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39842)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gtsch-0004ST-AR
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 06:22:40 -0500
+	(envelope-from <philmd@redhat.com>) id 1gttkf-0004qh-Fk
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 07:34:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gtscd-0005Ba-0n
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 06:22:38 -0500
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:40351)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gtscX-00055t-TZ
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 06:22:31 -0500
-Received: by mail-wr1-f68.google.com with SMTP id q1so2034981wrp.7
-	for <qemu-trivial@nongnu.org>; Wed, 13 Feb 2019 03:22:26 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=4Gn4jcBb7nr9tKRwaIYKT6OVxHFbH22OgWwsrWsxCgY=;
-	b=b0LUignsduiKgIROdqyNjEUIcdglkAZvoo4NrYr5hUMgi9HXgVGYgGETlcf9TcycMd
-	gvGvhnyjLT2RKfFWIgJ8W1tWrWIJYPpWs8T5Wpoleqw3gmU75M0O029IV3LRhSBF7rmc
-	3CGKhNnC0S8OLZZGmiFFovGN0/2wJ+3+DQEFhGWkk3rfBHnyvXSIn71nyyLtv0wILjG2
-	1EXendmhIYRmKxK2dkHsGxU0w4FNg5zEOqc7Wveg0s7iFUQogg64mRT7UOwKJvH7RY4C
-	os6KG/DYnsTYGMorgsGy7UgNkIsEd1vByU4QeKg6C0KLpktw5rikpluXz4yVYUXk3Ttw
-	SRxg==
-X-Gm-Message-State: AHQUAuYPk5nI7p/R+mgM9t2Yw5TfW0jDqy+brQnRsUb/vauI/CsJsuXe
-	NdMRMnmztN2j32TrAQrSa+8f9kN2ifw=
-X-Google-Smtp-Source: AHgI3IYgHIEkpB4EdA8w1c2ANcWa/NC3RCAzH8RzT/lEpKnprx/UbtSxF/iyCvqnaj7p6KK/B5L0Mg==
-X-Received: by 2002:adf:fb0d:: with SMTP id c13mr7260738wrr.285.1550056944998; 
-	Wed, 13 Feb 2019 03:22:24 -0800 (PST)
-Received: from [10.32.224.152] (red-hat-inc.vlan560.asr1.mad1.gblx.net.
-	[159.63.51.90]) by smtp.gmail.com with ESMTPSA id
-	r70sm2570167wme.46.2019.02.13.03.22.23
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Wed, 13 Feb 2019 03:22:24 -0800 (PST)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>, pbonzini@redhat.com,
-	yang.zhong@intel.com, qemu-trivial@nongnu.org
-References: <1550041639-10232-1-git-send-email-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <baa367e4-459c-98cd-6a50-2a656a52ff54@redhat.com>
-Date: Wed, 13 Feb 2019 12:22:22 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <philmd@redhat.com>) id 1gttke-00048D-S4
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 07:34:57 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:51258)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>)
+	id 1gttkc-00040j-Sx; Wed, 13 Feb 2019 07:34:55 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E2F4858E40;
+	Wed, 13 Feb 2019 12:34:51 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-106.brq.redhat.com [10.40.204.106])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 11B3F5D6B3;
+	Wed, 13 Feb 2019 12:34:48 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Anatoli Huseu1 <avg.tolik@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Wed, 13 Feb 2019 13:34:45 +0100
+Message-Id: <20190213123446.1768-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <1550041639-10232-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 13 Feb 2019 12:34:51 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-trivial] [PATCH] hw/sparc64: Explicitly set
- default_display = "std"
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH v2] chardev/wctablet: Fix a typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,50 +51,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Feb 2019 11:22:40 -0000
+X-List-Received-Date: Wed, 13 Feb 2019 12:34:58 -0000
 
-On 2/13/19 8:07 AM, Thomas Huth wrote:
-> The sun4uv_init() function expects vga_interface_type to be either
-> VGA_STD or VGA_NONE and sets up a stdvga device or no vga card
-> accordingly.
-> However, the code in vl.c prefers the Cirrus VGA card to stdvga if
-> it is available and the user and the machine did not specify anything
-> else.
-> So far this has not been a problem, since the Cirrus VGA was not linked
-> into the sparc64 target. But with the upcoming Kconfig build system,
-> all theoretically possible PCI cards will be enabled by default, so the
-> Cirrus VGA card might become available on the sparc64 target, too. vl.c
-> then picks the wrong card, causing sun4uv_init() to abort.
-> Thus let's make it explicit that we always want stdvga for sparc64 and
-> so set default_display = "std" for these machines.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+The correct name is Wacom.
+Fix the typo which is present since 378af96155d.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+v2: Use correct English in description
+---
+ chardev/wctablet.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> ---
->  hw/sparc64/sun4u.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-> index ff24d9b..399f2d7 100644
-> --- a/hw/sparc64/sun4u.c
-> +++ b/hw/sparc64/sun4u.c
-> @@ -797,6 +797,7 @@ static void sun4u_class_init(ObjectClass *oc, void *data)
->      mc->default_boot_order = "c";
->      mc->default_cpu_type = SPARC_CPU_TYPE_NAME("TI-UltraSparc-IIi");
->      mc->ignore_boot_device_suffixes = true;
-> +    mc->default_display = "std";
->      fwc->get_dev_path = sun4u_fw_dev_path;
->  }
->  
-> @@ -820,6 +821,7 @@ static void sun4v_class_init(ObjectClass *oc, void *data)
->      mc->max_cpus = 1; /* XXX for now */
->      mc->default_boot_order = "c";
->      mc->default_cpu_type = SPARC_CPU_TYPE_NAME("Sun-UltraSparc-T1");
-> +    mc->default_display = "std";
->  }
->  
->  static const TypeInfo sun4v_type = {
-> 
+diff --git a/chardev/wctablet.c b/chardev/wctablet.c
+index 969d014574..35dbd29a33 100644
+--- a/chardev/wctablet.c
++++ b/chardev/wctablet.c
+@@ -177,7 +177,7 @@ static void wctablet_input_sync(DeviceState *dev)
+ }
+=20
+ static QemuInputHandler wctablet_handler =3D {
+-    .name  =3D "QEMU Wacome Pen Tablet",
++    .name  =3D "QEMU Wacom Pen Tablet",
+     .mask  =3D INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_ABS,
+     .event =3D wctablet_input_event,
+     .sync  =3D wctablet_input_sync,
+--=20
+2.20.1
+
 
