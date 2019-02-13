@@ -1,39 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gtjbE-0005la-94
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Feb 2019 20:44:32 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41019)
+	id 1gto0j-0006Yo-KF
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 01:27:09 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55433)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <Sandra_Loosemore@mentor.com>) id 1gtfuF-0005ZR-FW
-	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 16:47:56 -0500
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gto0h-0006YE-Kq
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 01:27:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <Sandra_Loosemore@mentor.com>) id 1gtfuD-0004dj-AU
-	for qemu-trivial@nongnu.org; Tue, 12 Feb 2019 16:47:55 -0500
-Received: from relay1.mentorg.com ([192.94.38.131]:63008)
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gto0g-0001ln-VS
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 01:27:07 -0500
+Received: from mga09.intel.com ([134.134.136.24]:33852)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <Sandra_Loosemore@mentor.com>)
-	id 1gtfu9-00047A-Es; Tue, 12 Feb 2019 16:47:53 -0500
-Received: from svr-orw-mbx-03.mgc.mentorg.com ([147.34.90.203])
-	by relay1.mentorg.com with esmtps (TLSv1.2:ECDHE-RSA-AES256-SHA384:256)
-	id 1gtftk-0004R3-1J from Sandra_Loosemore@mentor.com ;
-	Tue, 12 Feb 2019 13:47:24 -0800
-Received: from anura.Home (147.34.91.1) by svr-orw-mbx-03.mgc.mentorg.com
-	(147.34.90.203) with Microsoft SMTP Server (TLS) id 15.0.1320.4;
-	Tue, 12 Feb 2019 13:47:21 -0800
-From: Sandra Loosemore <sandra@codesourcery.com>
-To: <qemu-devel@nongnu.org>
-CC: <qemu-trivial@nongnu.org>
-Date: Tue, 12 Feb 2019 14:47:13 -0700
-Message-ID: <1550008033-26540-1-git-send-email-sandra@codesourcery.com>
-X-Mailer: git-send-email 2.7.4
+	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
+	id 1gto0g-0001jf-LE; Wed, 13 Feb 2019 01:27:06 -0500
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+	by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	12 Feb 2019 22:27:03 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.58,364,1544515200"; d="scan'208";a="117498617"
+Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
+	by orsmga008.jf.intel.com with ESMTP; 12 Feb 2019 22:27:02 -0800
+Date: Wed, 13 Feb 2019 14:26:38 +0800
+From: Wei Yang <richardw.yang@linux.intel.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Wei Yang <richardw.yang@linux.intel.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, laurent@vivier.eu, imammedo@redhat.com,
+	philmd@redhat.com
+Message-ID: <20190213062638.GA8835@richard>
+Reply-To: Wei Yang <richardw.yang@linux.intel.com>
+References: <20190130000653.16267-1-richardw.yang@linux.intel.com>
+	<20190212052224.GA4839@richard>
+	<20190212003414-mutt-send-email-mst@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-ClientProxiedBy: SVR-ORW-MBX-07.mgc.mentorg.com (147.34.90.207) To
-	svr-orw-mbx-03.mgc.mentorg.com (147.34.90.203)
-X-detected-operating-system: by eggs.gnu.org: Windows NT kernel [generic]
-	[fuzzy]
-X-Received-From: 192.94.38.131
-X-Mailman-Approved-At: Tue, 12 Feb 2019 20:44:31 -0500
-Subject: [Qemu-trivial] [PATCH] gdbstub: Send a reply to the vKill packet.
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20190212003414-mutt-send-email-mst@kernel.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 134.134.136.24
+Subject: Re: [Qemu-trivial] [PATCH v3 0/3] Trivial cleanup in hw/acpi
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -45,39 +53,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Feb 2019 21:47:56 -0000
+X-List-Received-Date: Wed, 13 Feb 2019 06:27:08 -0000
 
-Per the GDB remote protocol documentation
+On Tue, Feb 12, 2019 at 12:34:31AM -0500, Michael S. Tsirkin wrote:
+>On Tue, Feb 12, 2019 at 01:22:24PM +0800, Wei Yang wrote:
+>> On Wed, Jan 30, 2019 at 08:06:50AM +0800, Wei Yang wrote:
+>> >There are several functions/variable which are not used anymore.
+>> >
+>> >This serials just remove those without functional change.
+>> >
+>> >v3: add ack and repost in a new thread
+>> >v2: change commit log from "is now used in no place" to "in not used anymore"
+>> 
+>> Michael,
+>> 
+>> Looks this serials is not merged yet.
+>> 
+>> Is there any problem I need to fix?
+>
+>Yes pls repost with fixed reviewed-by tags.
+>
 
-https://sourceware.org/gdb/current/onlinedocs/gdb/Packets.html#index-vKill-packet
+I tried to use git-sendemail to send those patches again.
 
-the debug stub is expected to send a reply to the 'vKill' packet.  At
-least some versions of GDB crash if the gdb stub simply exits without
-sending a reply.  This patch fixes QEMU's gdb stub to conform to the
-expected behavior.
+The character 茅 looks good in patch file, while after git-sendemail this is
+changed.
 
-Note that QEMU's existing handling of the legacy 'k' packet is
-correct: in that case GDB does not expect a reply, and QEMU does not
-send one.
+My encoding property in mail is :
 
-Signed-off-by: Sandra Loosemore <sandra@codesourcery.com>
----
- gdbstub.c | 1 +
- 1 file changed, 1 insertion(+)
+    MIME-Version: 1.0
+    Content-Type: text/plain; charset=UTF-8
+    Content-Language: en-US
+    Content-Transfer-Encoding: 8bit
 
-diff --git a/gdbstub.c b/gdbstub.c
-index 70cf330..eb129f6 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -1363,6 +1363,7 @@ static int gdb_handle_packet(GDBState *s, const char *line_buf)
-             break;
-         } else if (strncmp(p, "Kill;", 5) == 0) {
-             /* Kill the target */
-+            put_packet(s, "OK");
-             error_report("QEMU: Terminated via GDBstub");
-             exit(0);
-         } else {
+Looks the same as Philippe's.
+
+Any hint on how to send out a correct character with git-sendemail?
+
+>
+>> >
+>> >Wei Yang (3):
+>> >  hw/i386/pc.c: remove unused function pc_acpi_init()
+>> >  hw/acpi: remove unused function acpi_table_add_builtin()
+>> >  hw/acpi: remove unnecessary variable acpi_table_builtin
+>> >
+>> > hw/acpi/core.c         | 10 +---------
+>> > hw/i386/pc.c           | 27 ---------------------------
+>> > include/hw/acpi/acpi.h |  1 -
+>> > include/hw/i386/pc.h   |  1 -
+>> > 4 files changed, 1 insertion(+), 38 deletions(-)
+>> >
+>> >-- 
+>> >2.19.1
+>> 
+>> -- 
+>> Wei Yang
+>> Help you, Help me
+
 -- 
-2.8.1
-
+Wei Yang
+Help you, Help me
 
