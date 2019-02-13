@@ -1,60 +1,92 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gtxKz-0008Qa-5c
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 11:24:41 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40862)
+	id 1gtzJI-0004gA-EJ
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 13:31:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44344)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gtxKx-0008OS-4v
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 11:24:40 -0500
+	(envelope-from <thuth@redhat.com>) id 1gtzJF-0004ed-V3
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 13:31:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gtxKr-000232-VY
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 11:24:37 -0500
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:35944)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gtxKf-0001pC-P0
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 11:24:24 -0500
-Received: by mail-wm1-f68.google.com with SMTP id j125so3090512wmj.1
-	for <qemu-trivial@nongnu.org>; Wed, 13 Feb 2019 08:24:15 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=kaR3SBxKQ7aFSUOR/5ytaxCgi3OedtpRecogbKGc0HA=;
-	b=aIXBy1Ryzhnj5Gu3E2wJ5zK9QsHvHJAXfcV+rzoWAt8FzRfiIF2N7AiyTMz6KZ971s
-	cQgcUT9QXVCIkulwD9I6oRXua4DPBXh51EhsDhbWs7ZuthHV5eCQd3GxjNw8bEbBgK74
-	mW3D4P2L+90LyVlycWK8gF7vu7jKqHLAknqy9HOZiuHODgH7TZ5obyb8RtmQhEnAk2dG
-	ybrDNP2AdImn5CFENZAR+7pcqs+qwWh8vazAhFr8c7fWUMg7TmprUrZxR4eq0IQLN29y
-	DtDViTox/LwqlW4LNilL7mY8xCBwtuYnZoNlhMuHuHqgCSCZgYrnJxcIWSgMzuXvyjVD
-	J+Sg==
-X-Gm-Message-State: AHQUAubIBKqT70+5bkQjAcYP1sRnWuHBdE8SUp6C0P252uKX3NuTX9IE
-	hOcrKXwr5ir8wN4J4/vAiHPBiC5ZnCM=
-X-Google-Smtp-Source: AHgI3IZSreEKFw+riOWC349EdMYJ8Fi5GmrwFTLIRmpFCtX35FgwrjbE8v6+m0QTviAdL9kXgMxfbg==
-X-Received: by 2002:a1c:c303:: with SMTP id t3mr912183wmf.94.1550075054124;
-	Wed, 13 Feb 2019 08:24:14 -0800 (PST)
-Received: from [192.168.1.103] (10.red-83-35-153.dynamicip.rima-tde.net.
-	[83.35.153.10]) by smtp.gmail.com with ESMTPSA id
-	j124sm8028831wmb.48.2019.02.13.08.24.13
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Wed, 13 Feb 2019 08:24:13 -0800 (PST)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	=?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
+	(envelope-from <thuth@redhat.com>) id 1gtzJE-0007kB-3V
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 13:31:01 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:55268)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gtzJA-0007OM-18; Wed, 13 Feb 2019 13:30:57 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id ABB08C044CC5;
+	Wed, 13 Feb 2019 18:30:46 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-98.ams2.redhat.com [10.36.116.98])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BD80E5D9C5;
+	Wed, 13 Feb 2019 18:30:44 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P._Berrang=c3=a9?=
+	<berrange@redhat.com>
 Cc: qemu-trivial@nongnu.org
 References: <1550073299-3647-1-git-send-email-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <1cbe8721-ea9e-f17f-f27d-910fece2858d@redhat.com>
-Date: Wed, 13 Feb 2019 17:24:12 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	<1cbe8721-ea9e-f17f-f27d-910fece2858d@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <9518f0a6-2a89-ab4f-a431-d4e4741db8e5@redhat.com>
+Date: Wed, 13 Feb 2019 19:30:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <1550073299-3647-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <1cbe8721-ea9e-f17f-f27d-910fece2858d@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.32]);
+	Wed, 13 Feb 2019 18:30:46 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.68
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] crypto: Fix LGPL
  information in the file headers
 X-BeenThere: qemu-trivial@nongnu.org
@@ -68,68 +100,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Feb 2019 16:24:40 -0000
+X-List-Received-Date: Wed, 13 Feb 2019 18:31:03 -0000
 
-On 2/13/19 4:54 PM, Thomas Huth wrote:
-> It's either "GNU *Library* General Public License version 2" or "GNU
-> Lesser General Public License version *2.1*", but there was no "version
-> 2.0" of the "Lesser" license. So assume that version 2.1 is meant here.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  crypto/block-luks.c           | 2 +-
->  crypto/block-luks.h           | 2 +-
->  crypto/block-qcow.c           | 2 +-
->  crypto/block-qcow.h           | 2 +-
->  crypto/block.c                | 2 +-
->  crypto/blockpriv.h            | 2 +-
->  crypto/cipher-builtin.c       | 2 +-
->  crypto/cipher-gcrypt.c        | 2 +-
->  crypto/cipher-nettle.c        | 2 +-
->  crypto/cipher.c               | 2 +-
->  crypto/hash-gcrypt.c          | 2 +-
->  crypto/hash-glib.c            | 2 +-
->  crypto/hash-nettle.c          | 2 +-
->  crypto/hash.c                 | 2 +-
->  crypto/init.c                 | 2 +-
->  crypto/ivgen-essiv.c          | 2 +-
->  crypto/ivgen-essiv.h          | 2 +-
->  crypto/ivgen-plain.c          | 2 +-
->  crypto/ivgen-plain.h          | 2 +-
->  crypto/ivgen-plain64.c        | 2 +-
->  crypto/ivgen-plain64.h        | 2 +-
->  crypto/ivgen.c                | 2 +-
->  crypto/ivgenpriv.h            | 2 +-
->  crypto/pbkdf-gcrypt.c         | 2 +-
->  crypto/pbkdf-nettle.c         | 2 +-
->  crypto/pbkdf-stub.c           | 2 +-
->  crypto/pbkdf.c                | 2 +-
->  crypto/random-gcrypt.c        | 2 +-
->  crypto/random-gnutls.c        | 2 +-
->  crypto/random-platform.c      | 2 +-
->  crypto/secret.c               | 2 +-
->  crypto/tlscreds.c             | 2 +-
->  crypto/tlscredsanon.c         | 2 +-
->  crypto/tlscredspriv.h         | 2 +-
->  crypto/tlscredspsk.c          | 2 +-
->  crypto/tlscredsx509.c         | 2 +-
->  crypto/tlssession.c           | 2 +-
->  crypto/xts.c                  | 2 +-
->  include/crypto/block.h        | 2 +-
->  include/crypto/cipher.h       | 2 +-
->  include/crypto/hash.h         | 2 +-
->  include/crypto/init.h         | 2 +-
->  include/crypto/ivgen.h        | 2 +-
->  include/crypto/pbkdf.h        | 2 +-
->  include/crypto/random.h       | 2 +-
->  include/crypto/secret.h       | 2 +-
->  include/crypto/tlscreds.h     | 2 +-
->  include/crypto/tlscredsanon.h | 2 +-
->  include/crypto/tlscredspsk.h  | 2 +-
->  include/crypto/tlscredsx509.h | 2 +-
->  include/crypto/tlssession.h   | 2 +-
->  include/crypto/xts.h          | 2 +-
->  52 files changed, 52 insertions(+), 52 deletions(-)
+On 2019-02-13 17:24, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 2/13/19 4:54 PM, Thomas Huth wrote:
+>> It's either "GNU *Library* General Public License version 2" or "GNU
+>> Lesser General Public License version *2.1*", but there was no "versio=
+n
+>> 2.0" of the "Lesser" license. So assume that version 2.1 is meant here=
+.
+>>
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>>  crypto/block-luks.c           | 2 +-
+>>  crypto/block-luks.h           | 2 +-
+>>  crypto/block-qcow.c           | 2 +-
+>>  crypto/block-qcow.h           | 2 +-
+>>  crypto/block.c                | 2 +-
+>>  crypto/blockpriv.h            | 2 +-
+>>  crypto/cipher-builtin.c       | 2 +-
+>>  crypto/cipher-gcrypt.c        | 2 +-
+>>  crypto/cipher-nettle.c        | 2 +-
+>>  crypto/cipher.c               | 2 +-
+>>  crypto/hash-gcrypt.c          | 2 +-
+>>  crypto/hash-glib.c            | 2 +-
+>>  crypto/hash-nettle.c          | 2 +-
+>>  crypto/hash.c                 | 2 +-
+>>  crypto/init.c                 | 2 +-
+>>  crypto/ivgen-essiv.c          | 2 +-
+>>  crypto/ivgen-essiv.h          | 2 +-
+>>  crypto/ivgen-plain.c          | 2 +-
+>>  crypto/ivgen-plain.h          | 2 +-
+>>  crypto/ivgen-plain64.c        | 2 +-
+>>  crypto/ivgen-plain64.h        | 2 +-
+>>  crypto/ivgen.c                | 2 +-
+>>  crypto/ivgenpriv.h            | 2 +-
+>>  crypto/pbkdf-gcrypt.c         | 2 +-
+>>  crypto/pbkdf-nettle.c         | 2 +-
+>>  crypto/pbkdf-stub.c           | 2 +-
+>>  crypto/pbkdf.c                | 2 +-
+>>  crypto/random-gcrypt.c        | 2 +-
+>>  crypto/random-gnutls.c        | 2 +-
+>>  crypto/random-platform.c      | 2 +-
+>>  crypto/secret.c               | 2 +-
+>>  crypto/tlscreds.c             | 2 +-
+>>  crypto/tlscredsanon.c         | 2 +-
+>>  crypto/tlscredspriv.h         | 2 +-
+>>  crypto/tlscredspsk.c          | 2 +-
+>>  crypto/tlscredsx509.c         | 2 +-
+>>  crypto/tlssession.c           | 2 +-
+>>  crypto/xts.c                  | 2 +-
+>>  include/crypto/block.h        | 2 +-
+>>  include/crypto/cipher.h       | 2 +-
+>>  include/crypto/hash.h         | 2 +-
+>>  include/crypto/init.h         | 2 +-
+>>  include/crypto/ivgen.h        | 2 +-
+>>  include/crypto/pbkdf.h        | 2 +-
+>>  include/crypto/random.h       | 2 +-
+>>  include/crypto/secret.h       | 2 +-
+>>  include/crypto/tlscreds.h     | 2 +-
+>>  include/crypto/tlscredsanon.h | 2 +-
+>>  include/crypto/tlscredspsk.h  | 2 +-
+>>  include/crypto/tlscredsx509.h | 2 +-
+>>  include/crypto/tlssession.h   | 2 +-
+>>  include/crypto/xts.h          | 2 +-
+>>  52 files changed, 52 insertions(+), 52 deletions(-)
+>=20
+> Still not convinced to use SPDX-License-Identifiers?
 
-Still not convinced to use SPDX-License-Identifiers?
+SPDX sounds fine to me personally, but so far nobody came up with a
+proper official description if and how this can legally be done, so
+until we are at that point, fixing the current statements sounds like
+the best solution to me.
+
+ Thomas
 
