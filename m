@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guEYk-0002H6-9L
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:02 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50101)
+	id 1guEYn-0002J9-NR
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:05 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50166)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYh-0002Gx-Ob
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:00 -0500
+	(envelope-from <laurent@vivier.eu>) id 1guEYj-0002H3-Nd
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYf-0002c6-Nx
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:47:59 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:38971)
+	(envelope-from <laurent@vivier.eu>) id 1guEYi-0002hZ-Gq
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:01 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:57451)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1guEYf-0002Ox-A1; Thu, 14 Feb 2019 05:47:57 -0500
+	id 1guEYi-0002QJ-3Z; Thu, 14 Feb 2019 05:48:00 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MOAJt-1giuno3dWL-00OV8J; Thu, 14 Feb 2019 11:47:38 +0100
+	id 1MmDVA-1hKnwi1Lt2-00iExa; Thu, 14 Feb 2019 11:47:40 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -26,36 +26,33 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Cleber Rosa <crosa@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Thu, 14 Feb 2019 11:47:07 +0100
-Message-Id: <20190214104717.3543-5-laurent@vivier.eu>
+	Kamil Rytarowski <n54@gmx.com>
+Date: Thu, 14 Feb 2019 11:47:09 +0100
+Message-Id: <20190214104717.3543-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190214104717.3543-1-laurent@vivier.eu>
 References: <20190214104717.3543-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:FmmfoOelMXqUzvgQsrVszvn6/zKDiCufRwYfyb+DICJPCQNBHQL
-	kvc2R81pW4ZFGJ9hXekaLa9RR+JQ/F1Vh7VZARq8z2Yj/7DIOl7FSDwT1AwrfxewuC2avSr
-	5LXdBG6sR9kRvmp3U4g7wu8s6fKhvvfRxth9HhRkqe2rdL4yuolrlFSsDKhX5kpimjjat32
-	8tOtCZslhxYwMl01K+tKw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:VANOha2S0q8=:qiBkKT13CfCu3HdYBV9baI
-	XwHRSG0GhQFMxnkFOGb5MNq966CAOVxK836j8JMUDyXtubnsfrfhBfYa3nhpohE/iUF1BmsWX
-	8HGSQDDClJpFFVirOnydbtFaoBoq+hWvZa/M9SOjoZ7CVcnbt/G9KamGFgfal1d3uHb412tzn
-	pUQtUCH0B+LU5P3lvyrh9KEAxm9jkrZ32EDA54neU2xMw4Pt8aUSrVhT7LDN4ycNvy7yW/Gao
-	/l+y/ANfJZ9Aj0oIPU8XvmvUGgYAVGxh8Qd/myoYA2uno7DdhtAyi67syx9JadbpnWGWR/WKq
-	cRo7+1KlE1uerWQiXx97TIS056zkJasnja92IPdIF6v0HGllOu5CPZESqT2p4YT9lQXFL4k5E
-	f2iL+azt15Gqs2Fdl0fjHhSS2SNvtt3FrK8HErdPoIJQcuk+oveHS8LuC6tj998tqtz8cxBTe
-	FnPWlKfqQEkPTLWL+f+YeUIaBKyegfXmwDD67IV0NODoGU18cRNF9f1DuIVZlkX+OAjIDXWkX
-	EdK/xxZi7OQpfcRIjWOJXxLXFRSimFjnRlT6R6Fn+hycqXLgdqudMclwZMT0J19LyjGq6Dh6D
-	7J3FH4jCmev3pc6xjQyM1lwMYd40NaMfz1YJc/2Oe+Rg2xKvpqlMjrSwznZjR85BpSv075QOs
-	A9u1tFod7XX/3Su6zsS/vdmPjV+romqTzu58/3Q+aiBD8/7uWnoRh5wEc26h2DdGBnFbrnzQH
-	UX6S2OKCcZGplw5l+nZ8KN3V8HVyzxL4qUTqOCXHshcppoiqIwpn1jD1XZg=
+X-Provags-ID: V03:K1:LybyNIzL5PtJPYuxTsW6vJRXiHRfDatM9TBDBQYLmYe156TCeeS
+	YYBn5noBCb0Y/NC4pJyzsZOvAu7jIjs/7VVKx8zip5t6vE5z30JT4bC8AgDgeUn5C34lTwh
+	mvdxCA4fA2PgYM/IYamwvYaGS8qB24rkbCATnO2qwS9ZXUqYGmH/IgTAiuNC+7QQrEV7U2j
+	Nb1mnM1leCn/vpxqJ5U/Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:XgyjFiGsFus=:x0oWvUqLdg/3czLC9FyQCG
+	RUH1c2Nzwj61CSLdBcTOQs4stuVX23iCbwsNuuVCKVomEhAOjkvsiKHj1M6T5suHfctz8qj/a
+	0pE5QdxvCCO5Ul4DwglDkokSBgjALfzdadTDEF57+DN51Hcz3g8X0m7Uq8aMWYb/BZ1OnvQKw
+	kPz7RY8AB3akAjLWAR7b66j2FuQl/hwuF1IHg1I7fELtbLgSVT/hKXDWt58J2nhXuInFNBzp7
+	jEydQNAloBktTW8q1NfQNlrJaYrOpH/XhHrwvEqSyfS6p7vLr2Mm6gp0xQfAHSpzFU4MPyyAd
+	hsUZaEO2HLU79L9x0dDlm0wSgOQNB6EHujunGbPTDfeNr+f6TVaQI/wzuC+0nXNFVQY0NEvyj
+	3S01L5lIzezIWJ3SGnhNlTgIZ7sv6RZTPUEMQaWUcgZ5Pd5aJgB6+OCdt3+OIcsb3VrWY1lqR
+	eq4JXQTBMb/QuCHz5C7rqY94BJlr3b3hNirbOpBVTsmx1uKfl6b/JVbi76uHT5eMZCIGW9LLc
+	oBCHT7prK8y0xGYvGOMZdkZ6aYd/0P92sqUCGZiMp0Cy331EXtns0Y7xICQmI2Rsi2EQHIpiK
+	9paQK+UOPrbYEDmMSPxAs/Ult2NSdkvyExg1lVLOCGp9cGBbrqEVFAkIbGoTYKNNtdAjAxxNh
+	3t+qUHTKGty5bOOr1oAIG3hLtEaC9sYW4OOnG3pZ9JSYc/QR4/gz/aN/ZIs+7pTpLC+EQPF7+
+	u8FXVrLZL+u08/cj1qazWE8qUfbToeCZuXTygw==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.134
-Subject: [Qemu-trivial] [PULL 04/14] configure: remove handling of "wav"
- audio driver
+Subject: [Qemu-trivial] [PULL 06/14] configure: Add HAX support in NetBSD
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,36 +64,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Feb 2019 10:48:00 -0000
+X-List-Received-Date: Thu, 14 Feb 2019 10:48:03 -0000
 
-From: Cleber Rosa <crosa@redhat.com>
+From: Kamil Rytarowski <n54@gmx.com>
 
-This looks like a leftover that was never implemented.
+The NetBSD support in Intel HAXM has beem merged upstream and is functional.
 
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20190207193605.25676-2-crosa@redhat.com>
+Signed-off-by: Kamil Rytarowski <n54@gmx.com>
+Message-Id: <20190207233704.29978-1-n54@gmx.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure | 4 ----
- 1 file changed, 4 deletions(-)
+ configure | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/configure b/configure
-index fbd0825488c6..ff55e2273e9a 100755
+index c8fc1647fe69..649ef1b158d1 100755
 --- a/configure
 +++ b/configure
-@@ -3350,10 +3350,6 @@ for drv in $audio_drv_list; do
-       oss_libs="$oss_lib"
-     ;;
- 
--    wav)
--    # XXX: Probes for CoreAudio, DirectSound
--    ;;
--
-     *)
-     echo "$audio_possible_drivers" | grep -q "\<$drv\>" || {
-         error_exit "Unknown driver '$drv' selected" \
+@@ -817,6 +817,7 @@ DragonFly)
+ ;;
+ NetBSD)
+   bsd="yes"
++  hax="yes"
+   make="${MAKE-gmake}"
+   audio_drv_list="oss try-sdl"
+   audio_possible_drivers="oss sdl"
 -- 
 2.20.1
 
