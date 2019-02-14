@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guEYn-0002J9-NR
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:05 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50166)
+	id 1guEYv-0002OJ-VF
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:14 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50187)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYj-0002H3-Nd
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:03 -0500
+	(envelope-from <laurent@vivier.eu>) id 1guEYk-0002H7-9W
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYi-0002hZ-Gq
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:01 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:57451)
+	(envelope-from <laurent@vivier.eu>) id 1guEYi-0002hy-Mt
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:02 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:47223)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1guEYi-0002QJ-3Z; Thu, 14 Feb 2019 05:48:00 -0500
+	id 1guEYi-0002MZ-8e; Thu, 14 Feb 2019 05:48:00 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MmDVA-1hKnwi1Lt2-00iExa; Thu, 14 Feb 2019 11:47:40 +0100
+	id 1MvavG-1hBLSk3WI2-00saY4; Thu, 14 Feb 2019 11:47:33 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -25,34 +25,32 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-trivial@nongnu.org,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Kamil Rytarowski <n54@gmx.com>
-Date: Thu, 14 Feb 2019 11:47:09 +0100
-Message-Id: <20190214104717.3543-7-laurent@vivier.eu>
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Date: Thu, 14 Feb 2019 11:47:03 +0100
+Message-Id: <20190214104717.3543-1-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190214104717.3543-1-laurent@vivier.eu>
-References: <20190214104717.3543-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:LybyNIzL5PtJPYuxTsW6vJRXiHRfDatM9TBDBQYLmYe156TCeeS
-	YYBn5noBCb0Y/NC4pJyzsZOvAu7jIjs/7VVKx8zip5t6vE5z30JT4bC8AgDgeUn5C34lTwh
-	mvdxCA4fA2PgYM/IYamwvYaGS8qB24rkbCATnO2qwS9ZXUqYGmH/IgTAiuNC+7QQrEV7U2j
-	Nb1mnM1leCn/vpxqJ5U/Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:XgyjFiGsFus=:x0oWvUqLdg/3czLC9FyQCG
-	RUH1c2Nzwj61CSLdBcTOQs4stuVX23iCbwsNuuVCKVomEhAOjkvsiKHj1M6T5suHfctz8qj/a
-	0pE5QdxvCCO5Ul4DwglDkokSBgjALfzdadTDEF57+DN51Hcz3g8X0m7Uq8aMWYb/BZ1OnvQKw
-	kPz7RY8AB3akAjLWAR7b66j2FuQl/hwuF1IHg1I7fELtbLgSVT/hKXDWt58J2nhXuInFNBzp7
-	jEydQNAloBktTW8q1NfQNlrJaYrOpH/XhHrwvEqSyfS6p7vLr2Mm6gp0xQfAHSpzFU4MPyyAd
-	hsUZaEO2HLU79L9x0dDlm0wSgOQNB6EHujunGbPTDfeNr+f6TVaQI/wzuC+0nXNFVQY0NEvyj
-	3S01L5lIzezIWJ3SGnhNlTgIZ7sv6RZTPUEMQaWUcgZ5Pd5aJgB6+OCdt3+OIcsb3VrWY1lqR
-	eq4JXQTBMb/QuCHz5C7rqY94BJlr3b3hNirbOpBVTsmx1uKfl6b/JVbi76uHT5eMZCIGW9LLc
-	oBCHT7prK8y0xGYvGOMZdkZ6aYd/0P92sqUCGZiMp0Cy331EXtns0Y7xICQmI2Rsi2EQHIpiK
-	9paQK+UOPrbYEDmMSPxAs/Ult2NSdkvyExg1lVLOCGp9cGBbrqEVFAkIbGoTYKNNtdAjAxxNh
-	3t+qUHTKGty5bOOr1oAIG3hLtEaC9sYW4OOnG3pZ9JSYc/QR4/gz/aN/ZIs+7pTpLC+EQPF7+
-	u8FXVrLZL+u08/cj1qazWE8qUfbToeCZuXTygw==
+X-Provags-ID: V03:K1:n1jh0LRV+grQemX1PJo7wfvubfvl8nJMFPVY3NIe/sG21DbNCdH
+	y61dfkd562y3SQJlx0sIDTo4Gp6UrL8JEhY6QpKcKUvAjbWdCcadGx18JMoz7oKRieDMzQm
+	lgMZKXbG0hipfwRmaWptO3nN4acIkIlkdevG2h8+F0zwyKUDl4+O5Flf1YrFP6DqZ/fuCeX
+	BY6531NZlkgvgdDnYVjmw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:0EUVkKfHpJM=:xVWqezR4Vpkc/Z03dE6B19
+	S73iynmC2jB/68P8aM/9jHUH3EzszhzuMckCFNdyrnKwIsYWI17LRXDeNoX2bDl7fpsNMDqGF
+	G1MRY6gCQsBWKR4r60p+k5EG2EMDPFUr3YE3EIdlwQTkwpNIm0SUR7HMYXpne3l/gAROkpoSR
+	tDqPFjT5gDUB2JFpUt+UmVgknZgaPFoRnBhUmSScNFQmyjfHtdNiX+h7rXcmbhoMuI4sReku6
+	HQeD3t8D1OtnKIbesDnYHd+tactFGaDfdM44A69e1HxdaJdqkktuxVI+4wuB+xk+apMpXymwd
+	UHSkMVO48cwngxFVOD5J9fyrssS8adns8jj3H2WHRDv5EyKEckyXjMBQ3AF7TCHjl27wy7j+9
+	wbvvgGJsmYCZ8t4otd1iCiv2eYgQ1RO2betMStGninvJXB/T7X4R8Gpvke1AzW4MCnV0jjG60
+	fxR6voqaDbxkS5Nk+E5a379Wpu2Js2xHhKGv0k9mnZdszA5XQQZwMo2NrJ3HCUax8z0E71V0l
+	4eyszN55EYCyzJggulTsl/5lqDk4IMZLbgcVDMNxclHajymPh82l+vlgwlTk5pkzGDlm+MloI
+	VCdjj1EcGXpntm1x5lWEHPl9mEqaYeU1hrlUocvFOOusoB3da07mVpQWA4jGNs1zoxXmb07ok
+	xeE1j7RcT6N3NhZdvx+cvIOAk7fEQevyrtbN8qyPA1nhoXFZkXCii0GYClZCkrisbeCtcS3M1
+	OJ1DJJ+ecIwcStYG5FbO5P6/jG4O0HNZvvdJ+E+tuAR3Q+zKu9fLxBt/s/c=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.134
-Subject: [Qemu-trivial] [PULL 06/14] configure: Add HAX support in NetBSD
+Subject: [Qemu-trivial] [PULL 00/14] Trivial branch patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,31 +62,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Feb 2019 10:48:03 -0000
+X-List-Received-Date: Thu, 14 Feb 2019 10:48:06 -0000
 
-From: Kamil Rytarowski <n54@gmx.com>
+The following changes since commit 0b5e750bea635b167eb03d86c3d9a09bbd43bc06:
 
-The NetBSD support in Intel HAXM has beem merged upstream and is functional.
+  Merge remote-tracking branch 'remotes/stefanha/tags/block-pull-request' into staging (2019-02-12 10:53:37 +0000)
 
-Signed-off-by: Kamil Rytarowski <n54@gmx.com>
-Message-Id: <20190207233704.29978-1-n54@gmx.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- configure | 1 +
- 1 file changed, 1 insertion(+)
+are available in the Git repository at:
 
-diff --git a/configure b/configure
-index c8fc1647fe69..649ef1b158d1 100755
---- a/configure
-+++ b/configure
-@@ -817,6 +817,7 @@ DragonFly)
- ;;
- NetBSD)
-   bsd="yes"
-+  hax="yes"
-   make="${MAKE-gmake}"
-   audio_drv_list="oss try-sdl"
-   audio_possible_drivers="oss sdl"
+  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+
+for you to fetch changes up to 96566d09aa105ee04cbc1c9539cf8a9a40e8e422:
+
+  configure: improve usbfs check (2019-02-14 11:46:30 +0100)
+
+----------------------------------------------------------------
+- some configure updates (HAX/NetBSD, remove "wav", -Waddress-of-packed-member)
+- remove deprecated options
+- some trace and error cleanup
+- typo fixes
+
+----------------------------------------------------------------
+
+Cleber Rosa (2):
+  configure: remove handling of "wav" audio driver
+  configure: fix qemu-img name
+
+Dr. David Alan Gilbert (4):
+  pckbd: Convert DPRINTF->trace
+  HMP: Prepend errors with 'Error:'
+  kvm: Add kvm_set_ioeventfd* traces
+  wavcapture: Convert to error_report
+
+Eric Blake (1):
+  qapi: Fix qcow2 encryption doc typo
+
+Kamil Rytarowski (1):
+  configure: Add HAX support in NetBSD
+
+Peter Maydell (1):
+  configure: Make -Waddress-of-packed-member warnings be errors
+
+Philippe Mathieu-Daudé (1):
+  hw/dma/i8257: Use qemu_log_mask(UNIMP) instead of fprintf
+
+Thomas Huth (3):
+  qemu-deprecated: Remove -virtioconsole and -no-frame for good
+  qemu-options: Remove deprecated option -clock
+  hw/sparc64: Explicitly set default_display = "std"
+
+Thomas Petazzoni (1):
+  configure: improve usbfs check
+
+ accel/kvm/kvm-all.c    |  3 +++
+ accel/kvm/trace-events |  2 ++
+ audio/wavcapture.c     | 39 +++++++++++++++++----------------------
+ configure              | 27 +++++++++++++++++++--------
+ hmp.c                  |  2 +-
+ hw/dma/i8257.c         |  4 +++-
+ hw/input/pckbd.c       | 19 ++++++-------------
+ hw/input/trace-events  |  7 +++++++
+ hw/sparc64/sun4u.c     |  2 ++
+ qapi/block-core.json   |  2 +-
+ qemu-deprecated.texi   | 17 -----------------
+ qemu-options.hx        |  3 ---
+ vl.c                   |  6 ------
+ 13 files changed, 61 insertions(+), 72 deletions(-)
+
 -- 
 2.20.1
 
