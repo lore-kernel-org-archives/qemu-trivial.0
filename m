@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guDrm-0002Cr-9I
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:03:38 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39262)
+	id 1guDsB-0002Sd-04
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:04:03 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39416)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guDrj-00024B-Q7
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:03:36 -0500
+	(envelope-from <laurent@vivier.eu>) id 1guDs4-0002Ny-HS
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:03:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guDqX-0005IE-54
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:02:26 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:54693)
+	(envelope-from <laurent@vivier.eu>) id 1guDs3-0006bs-Fd
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:03:56 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:44291)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1guDqS-0005Ba-D7; Thu, 14 Feb 2019 05:02:16 -0500
+	id 1guDs1-0006Ut-Ce; Thu, 14 Feb 2019 05:03:55 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue106 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1MfqGN-1hZrBH18Ib-00gJSZ; Thu, 14 Feb 2019 11:02:06 +0100
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>
-References: <20190212145322.30974-1-philmd@redhat.com>
+	1Mo7if-1hRZjY2coN-00pdJ1; Thu, 14 Feb 2019 11:03:35 +0100
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: yang.zhong@intel.com, pbonzini@redhat.com, qemu-trivial@nongnu.org,
+	philmd@redhat.com, Artyom Tarasenko <atar4qemu@gmail.com>
+References: <1550041639-10232-1-git-send-email-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <3490f4fd-3e91-8494-8580-97a005174507@vivier.eu>
-Date: Thu, 14 Feb 2019 11:02:03 +0100
+Message-ID: <bbc17545-9038-6a21-e322-765ef5790053@vivier.eu>
+Date: Thu, 14 Feb 2019 11:03:34 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190212145322.30974-1-philmd@redhat.com>
+In-Reply-To: <1550041639-10232-1-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Q8awcFdk5jGgnND5k8v6FNXIkdqWv6pa9SGCuVfmFFaJyLY4Cqc
-	UiMJLxmiklaRjD6qU00eMfw0fwQS6s2i94T24Gb8Wm7OVkj7WkXKEgWO0UJs9PVTXMbhkOT
-	SC74MfJEjamiQA8PpJp4GNT3W3lFc7PRhvAwCTUjUJuA2ygYd236/Awayvs1RPHUjeADgfe
-	lBH4UGAeWwKuZBiXh2vFA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Qk2w/N13nj0=:+rBD7+WstqjStCHMwnvLQu
-	5PpF4UpOfCt2kTOcqwjCoUHYnKBK7GW+IXLYfs2DsadTCTZf2QCP1IyElrXD8Ecgt//29zuTk
-	pyCx/1R9RsTBUGjFSAVufDBAxBb9q2oMdKFCKGhJYxAWU0fy6DHRgc720nXFv0Zye9X7JDYgR
-	FpSm68QXOVe5hNFxoDExGTf7RREUOyRkwQqQq9Gi7flpPflueX6JbKtVrm47RWOluTjr590vm
-	NvD2FiisR4wAqHz+Rjs1sdTFHELIlqzQRoL2ObblxDAHoCA5H9k4s5EZafLlbaDib3tQk6GMH
-	h74mxrPzlNFDNGnGc2ZnOYVstLsfcNJ+66/nyRRplF0dslU/bRCmjGF5HuTO0miFrlPBjtRQF
-	2h5B+NL1DM/8xIhECe3yj/P7QpUPq7C+mhWcnfAHukFuzKdpgliA2MrufcE/hJeUfnOJBnrq6
-	ghth2dhNwx7IxT+UNlb+J+vhOQDWkDJE7ewq9O2oVv3xSehFTKlJeNeyZkx6Kco8QlXHTy3bN
-	m+PtnXtYx2apiWN0X0yO3mbqQegnM0hHt37yQrd3cBwd15vobXr5SNfgsjdjl+8epM+pxT6nG
-	P16aJTcVUjpnIdYBIql9yzNp2XfbyHKb+hmbO6Y0SgBpV/alGRFVdb2zW/BS7wHrRYV1rbBBc
-	Q7+U/3V3rB/qLTe72AfZCkresIk1JdPs8sb6UuPjNq3mjHYHdrqfvgIRTo+QbVj35cpAdTI+I
-	QCbzYDfNIHBm4VGy67f7pIXSPq5ilRYmq8EEoRXY2A0dKTg2+iCo1vTjGok=
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:S5z2hD9w2t6mgXXxYplc6hU22jMgY9NUD8/9yiF5IA4jVCPFehn
+	wS69LgRgaM/T8xjijvdVHH+y8zxjugscMJhQvIX0AqlG/K8TMexZ8gBntPB9r5q4nZSnfTr
+	eNWgWhbbVEpJAdPC2lW0QjUC4qOJ4/UvQXFJKjqhD7UJln3558tdmR0zUSeYSFxbZ3HQnVq
+	l71pgNT38EZnF8xDbIQpw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:D2KK8IKpRmA=:std6CRYf0VFGyNeAhuHx6l
+	x1CjCMZFJYRusKIeGPrJuswk12Kxrm32F0cPL6V0IyL1pzFuHNdJLlgECbUVccC5nC6GKCKYO
+	xPyzd17YFguC5qv9xdaPd50wkfiJCO/83BLQkFHH1pBLq53NfbD265f4BcbBZnNhYVErIzRVE
+	ei4x2qxech0b5+9rgk7ds8tn1yuSx0sxvxFITKS43WAu1hsxwgm79oZtd6dOvRFxInIPAtTLT
+	cSlkYyjMN+hG1QAsd8B81w3oX74xYVsGchyWOqxAxi0FGIVxDUHhyXyTgOZBC5aZqBoJnPlJN
+	RATlbWF5NzBGRrCKdmtU8SrebELnd0BLowJIv0AsZmJtGMYuzQWJbxThLr69YnmaEIHrdfZmr
+	YiyuWVCRZU52OiUdXeDK7lvYlEdA4E8DkUAzykORYMJLcV0EVxdfEikg5m+Wn6NE33OQEbJiz
+	bEC6Y67TZkOmnlRLuRiOt3O5rtpk2aATt+1mo3i2muGgHRAWkrdtjlzpnZO0ArwveftaGHQqW
+	Xh56xh7w6MBz6XWfopXu1DiHANG7yKsN2WO69OQV4HLTtSEFlLoUWAY0TyQihofCE+cdvuRvD
+	V08lU2Ay7agNDl5rjOPCWaAWe+4npF7WRuYpTRIY0sJwvhifB1HQtgL2DdU5zDsPJCh3we/ZK
+	45/aJIc/6dGgaYpb71Ivs/j4TyI3eg2ds7Wr6SRbD0YyQHXi7+yO8nRORgQwkDGJiLGO56jsG
+	7vsBH74e+EOgZtDzJ4uzU+rxS3U3Swec/2yKJXRqIvNJW5MhTgX5Mgoz2aM=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 217.72.192.74
-Subject: Re: [Qemu-trivial] [PATCH] hw/dma/i8257: Use qemu_log_mask(UNIMP)
- instead of fprintf
+Subject: Re: [Qemu-trivial] [PATCH] hw/sparc64: Explicitly set
+ default_display = "std"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,46 +61,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Feb 2019 10:03:36 -0000
+X-List-Received-Date: Thu, 14 Feb 2019 10:03:58 -0000
 
-On 12/02/2019 15:53, Philippe Mathieu-Daudé wrote:
-> Avoid to clutter stdout until explicitly requested (with -d unimp):
+On 13/02/2019 08:07, Thomas Huth wrote:
+> The sun4uv_init() function expects vga_interface_type to be either
+> VGA_STD or VGA_NONE and sets up a stdvga device or no vga card
+> accordingly.
+> However, the code in vl.c prefers the Cirrus VGA card to stdvga if
+> it is available and the user and the machine did not specify anything
+> else.
+> So far this has not been a problem, since the Cirrus VGA was not linked
+> into the sparc64 target. But with the upcoming Kconfig build system,
+> all theoretically possible PCI cards will be enabled by default, so the
+> Cirrus VGA card might become available on the sparc64 target, too. vl.c
+> then picks the wrong card, causing sun4uv_init() to abort.
+> Thus let's make it explicit that we always want stdvga for sparc64 and
+> so set default_display = "std" for these machines.
 > 
->   $ qemu-system-mips64el -M fulong2e -bios pmon_2e.bin
->   dma: command df not supported
->   dma: command df not supported
->   dma: command df not supported
->   dma: command df not supported
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/dma/i8257.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+>  hw/sparc64/sun4u.c | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> diff --git a/hw/dma/i8257.c b/hw/dma/i8257.c
-> index 52675e97c9..3e1f13a4aa 100644
-> --- a/hw/dma/i8257.c
-> +++ b/hw/dma/i8257.c
-> @@ -26,6 +26,7 @@
->  #include "hw/isa/isa.h"
->  #include "hw/dma/i8257.h"
->  #include "qemu/main-loop.h"
-> +#include "qemu/log.h"
->  #include "trace.h"
+> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+> index ff24d9b..399f2d7 100644
+> --- a/hw/sparc64/sun4u.c
+> +++ b/hw/sparc64/sun4u.c
+> @@ -797,6 +797,7 @@ static void sun4u_class_init(ObjectClass *oc, void *data)
+>      mc->default_boot_order = "c";
+>      mc->default_cpu_type = SPARC_CPU_TYPE_NAME("TI-UltraSparc-IIi");
+>      mc->ignore_boot_device_suffixes = true;
+> +    mc->default_display = "std";
+>      fwc->get_dev_path = sun4u_fw_dev_path;
+>  }
 >  
->  #define I8257(obj) \
-> @@ -185,7 +186,8 @@ static void i8257_write_cont(void *opaque, hwaddr nport, uint64_t data,
->      switch (iport) {
->      case 0x00:                  /* command */
->          if ((data != 0) && (data & CMD_NOT_SUPPORTED)) {
-> -            dolog("command %"PRIx64" not supported\n", data);
-> +            qemu_log_mask(LOG_UNIMP, "%s: cmd 0x%02"PRIx64" not supported\n",
-> +                          __func__, data);
->              return;
->          }
->          d->command = data;
+> @@ -820,6 +821,7 @@ static void sun4v_class_init(ObjectClass *oc, void *data)
+>      mc->max_cpus = 1; /* XXX for now */
+>      mc->default_boot_order = "c";
+>      mc->default_cpu_type = SPARC_CPU_TYPE_NAME("Sun-UltraSparc-T1");
+> +    mc->default_display = "std";
+>  }
+>  
+>  static const TypeInfo sun4v_type = {
 > 
-
 
 Applied to my trivial-patches branch.
 
