@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guEYy-0002R9-2X
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:16 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50261)
+	id 1guEYz-0002TC-DA
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50311)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYl-0002IL-W0
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:10 -0500
+	(envelope-from <laurent@vivier.eu>) id 1guEYn-0002JD-Q7
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYj-0002kH-OR
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:03 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:36237)
+	(envelope-from <laurent@vivier.eu>) id 1guEYj-0002kl-QL
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:05 -0500
+Received: from mout.kundenserver.de ([212.227.126.133]:42293)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1guEYj-0002Ry-7r; Thu, 14 Feb 2019 05:48:01 -0500
+	id 1guEYj-0002VK-C4; Thu, 14 Feb 2019 05:48:01 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MNc5b-1gjSli2iJX-00P365; Thu, 14 Feb 2019 11:47:41 +0100
+	id 1MX00X-1ga9NL2AtF-00XKox; Thu, 14 Feb 2019 11:47:46 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -26,36 +26,33 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Thu, 14 Feb 2019 11:47:10 +0100
-Message-Id: <20190214104717.3543-8-laurent@vivier.eu>
+	Gerd Hoffmann <kraxel@gmail.com>
+Date: Thu, 14 Feb 2019 11:47:14 +0100
+Message-Id: <20190214104717.3543-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190214104717.3543-1-laurent@vivier.eu>
 References: <20190214104717.3543-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:LEi8iVxFcJaDz5gPX+ZYRsQHg8ggi6pDPEYJihnlM//Ea2EfxQf
-	MXIu+Owh299+SlKSlPDUtDhp6h4hzmKOry2VR8vyOYiR8Zz8GhEohi+XurXKvPd/nimwOIV
-	3XLrWX+BHj2TlfLcj2SeYIlib8koa+G+n/VW4X/Gr6brYg8txoTRq9euRSgKOpyA9KSjSgb
-	icTMcofZxRsRIBoAQvoRA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:iRDg/sQmhhY=:5Mf6c0zaNWdiG/LfBsIjhb
-	QOwMbSZ7e+78N8R1v3EFtcQW/ZgEss0pxfB1bd9GYtbb9vv0tjmZftMQoiqbqwCDP3OvHTYfN
-	uqg3AMQT++G6UZcOwUSOSaYNfbJmX3YEFFKoriPFRJwunvs3oSizX1ANtXI/rRUQ3gEsjApXp
-	H+FMKCApEQFTmAJeqpqEdc1zKtrdimYPApCjiXoruZKT+yJj9k37XyTuhKQjQ8wWdwR6JGIgL
-	cNZ7lhKYWv2l78Cm9Vq8itYGP8kCJDqqYnpYBZl+dbQj/095+mNlZNy2X1QDj21iWtX6aTksB
-	nl2ciEYDHgw1A7llGU54YKubOKFIXO1SENEbAcy0uwcJ02XDld5mZMds0HRkOIWuy9zgOxCuZ
-	w08VuhMmMDC80Hiwe+kTceOnU1YPxEdPD+g/s+KaojJ44pK56KJhmBbn0jF9Ir4u/pvJGyMYg
-	byj4+K5T2MIIvmRt4EMMgKzw9SN2g8wOhw2oEFeNPvro98vy4Ed6OUGclEmLH7mw55+CXcq3y
-	m/saOiwnrkCzRRJzscRkStpAh8FE28Py5XpEIaWd3I9OHCV5Coz4ZPIYiLoO8BXw0ul9klQ66
-	yvZVDbyAydjSShWQ0vgPd9oqYq5sYh8fhRyZMoG5ZJj7dE8l6hr0VSxUpxrHS/bEjniHTqbZa
-	KzclpyxMU3HMkLBitKwzDmT1gBgZzUfo703YnXF5T7loz2SIqhqssIPmtsKRqB4VCn7pLLAEG
-	WTYv6jgnwwZBDOkoOt0soKBo+vLu+lW/nV4InkcLiUPC9aD35OwF6iTrPrg=
+X-Provags-ID: V03:K1:d+kNLakKyr+Vr+dBEmmNfauzVYZSbZwhd6bUBwfm1SgYlljxwXL
+	pM5b0w26z+dQtOJSwbYI12ZZ04mhHq6xJODKScFzr7iZsJQrzNDGfHiEcFmIIozvBROjVqb
+	95eGF0NzTt17p6pwp4VIAsFPgj5h2wa9xF18vMwwim/g4p0W3dGYGVYk4SUez110h4WSuHL
+	pm8JqutBZOs/qPrt+TKOQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:iwLeW2vOwPc=:z6DP5FR9UkIL0fAHw2nB0I
+	HqbrjeSyTWv5QvEV8uXDEhuNrE8Vy4F4O9cqehk5C+5HIbAbV8LZZlD/DdaARKQzTu1y0bga0
+	PXz0Yek7M86qLBqltRFvX8AXxsienT0lyVEH/5lJ2S5PVDhHfTiH1VSM6b3Gu8qTN718pYeBX
+	wjmnFdg8f6xxL/pJGSIZrsw2Mn5dFyZQwSANW5obsmlZJRuTKfGJ+vmq+F9ETEilUBnx99sZ8
+	R4+XfrxAMVyiw58M/V2z50WEkyYJ4yqUIxuD5MhVW1ztkTkb9dVJaLsG3vQznmRiswY5iMi9Q
+	EKZYQv+W+0nbX6XWHNfW89V5gyyqzaGCIit4sQVxIJl0QX1uKVr4KikNhxi12DFMF2JivOkL5
+	LznJ0goERbvgTRGrpxnw8EmK+mUxtbGc7gFGv70wTDPXyhViu7qtUxXSF4qCBfwzEuJS5gZOI
+	CJc6VBCyiET11Ou6pebSNvwBwgSpvnVd8qWUS7krTiRGdJejPn1T2WGGxo+dDuIPcRWLq+41t
+	E8+YMAgb/sXCJXRnG1fP3sKU1txSGq/j9d/FhxW6C/fPmJB8fzxj8QgIINHMdt6sOscEhFkfv
+	0RIuJWhUUoQCzRrsDmgbKPZeIQ0EI1HwkvMtPEZadN2EoKMz5IVyeDGjN6g1dSgp6Aljc32bQ
+	2nnYldVcuR46JTRAGlLvIo+49vAEI4L7NASTLP/D+hGFrOktEh1hm02hF9N2uDHpkBGK17F79
+	tdrjOzdBKGQ+g6sbsk1IZlECx7d3rSHfEQICkw==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.133
-Subject: [Qemu-trivial] [PULL 07/14] configure: Make
- -Waddress-of-packed-member warnings be errors
+Subject: [Qemu-trivial] [PULL 11/14] wavcapture: Convert to error_report
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,36 +64,138 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Feb 2019 10:48:11 -0000
+X-List-Received-Date: Thu, 14 Feb 2019 10:48:12 -0000
 
-From: Peter Maydell <peter.maydell@linaro.org>
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
-We have now managed to eradicate all the places in the codebase
-that triggered clang's -Waddress-of-packed-member warning. Remove
-the compiler flag that exempted it from our usual -Werror policy.
-This will prevent any new problematic code being added in future.
+Kill off a pile of monitor_printf's and cur_mon usage.
+The only one left in wavcapture.c is the info case.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20190208132112.31493-1-peter.maydell@linaro.org>
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Gerd Hoffmann <kraxel@gmail.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Message-Id: <20170320173840.3626-3-dgilbert@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure | 1 -
- 1 file changed, 1 deletion(-)
+ audio/wavcapture.c | 39 +++++++++++++++++----------------------
+ 1 file changed, 17 insertions(+), 22 deletions(-)
 
-diff --git a/configure b/configure
-index 649ef1b158d1..c0f278141823 100755
---- a/configure
-+++ b/configure
-@@ -1882,7 +1882,6 @@ gcc_flags="-Wno-missing-include-dirs -Wempty-body -Wnested-externs $gcc_flags"
- gcc_flags="-Wendif-labels -Wno-shift-negative-value $gcc_flags"
- gcc_flags="-Wno-initializer-overrides -Wexpansion-to-defined $gcc_flags"
- gcc_flags="-Wno-string-plus-int $gcc_flags"
--gcc_flags="-Wno-error=address-of-packed-member $gcc_flags"
- # Note that we do not add -Werror to gcc_flags here, because that would
- # enable it for all configure tests. If a configure test failed due
- # to -Werror this would just silently disable some features,
+diff --git a/audio/wavcapture.c b/audio/wavcapture.c
+index cf31ed652c2b..cd24570aa70c 100644
+--- a/audio/wavcapture.c
++++ b/audio/wavcapture.c
+@@ -38,30 +38,29 @@ static void wav_destroy (void *opaque)
+     uint8_t dlen[4];
+     uint32_t datalen = wav->bytes;
+     uint32_t rifflen = datalen + 36;
+-    Monitor *mon = cur_mon;
+ 
+     if (wav->f) {
+         le_store (rlen, rifflen, 4);
+         le_store (dlen, datalen, 4);
+ 
+         if (fseek (wav->f, 4, SEEK_SET)) {
+-            monitor_printf (mon, "wav_destroy: rlen fseek failed\nReason: %s\n",
+-                            strerror (errno));
++            error_report("wav_destroy: rlen fseek failed: %s",
++                         strerror(errno));
+             goto doclose;
+         }
+         if (fwrite (rlen, 4, 1, wav->f) != 1) {
+-            monitor_printf (mon, "wav_destroy: rlen fwrite failed\nReason %s\n",
+-                            strerror (errno));
++            error_report("wav_destroy: rlen fwrite failed: %s",
++                         strerror(errno));
+             goto doclose;
+         }
+         if (fseek (wav->f, 32, SEEK_CUR)) {
+-            monitor_printf (mon, "wav_destroy: dlen fseek failed\nReason %s\n",
+-                            strerror (errno));
++            error_report("wav_destroy: dlen fseek failed: %s",
++                         strerror(errno));
+             goto doclose;
+         }
+         if (fwrite (dlen, 1, 4, wav->f) != 4) {
+-            monitor_printf (mon, "wav_destroy: dlen fwrite failed\nReason %s\n",
+-                            strerror (errno));
++            error_report("wav_destroy: dlen fwrite failed: %s",
++                         strerror(errno));
+             goto doclose;
+         }
+     doclose:
+@@ -78,8 +77,7 @@ static void wav_capture (void *opaque, void *buf, int size)
+     WAVState *wav = opaque;
+ 
+     if (fwrite (buf, size, 1, wav->f) != 1) {
+-        monitor_printf (cur_mon, "wav_capture: fwrite error\nReason: %s",
+-                        strerror (errno));
++        error_report("wav_capture: fwrite error: %s", strerror(errno));
+     }
+     wav->bytes += size;
+ }
+@@ -110,7 +108,6 @@ static struct capture_ops wav_capture_ops = {
+ int wav_start_capture (CaptureState *s, const char *path, int freq,
+                        int bits, int nchannels)
+ {
+-    Monitor *mon = cur_mon;
+     WAVState *wav;
+     uint8_t hdr[] = {
+         0x52, 0x49, 0x46, 0x46, 0x00, 0x00, 0x00, 0x00, 0x57, 0x41, 0x56,
+@@ -124,13 +121,13 @@ int wav_start_capture (CaptureState *s, const char *path, int freq,
+     CaptureVoiceOut *cap;
+ 
+     if (bits != 8 && bits != 16) {
+-        monitor_printf (mon, "incorrect bit count %d, must be 8 or 16\n", bits);
++        error_report("incorrect bit count %d, must be 8 or 16", bits);
+         return -1;
+     }
+ 
+     if (nchannels != 1 && nchannels != 2) {
+-        monitor_printf (mon, "incorrect channel count %d, must be 1 or 2\n",
+-                        nchannels);
++        error_report("incorrect channel count %d, must be 1 or 2",
++                     nchannels);
+         return -1;
+     }
+ 
+@@ -158,8 +155,8 @@ int wav_start_capture (CaptureState *s, const char *path, int freq,
+ 
+     wav->f = fopen (path, "wb");
+     if (!wav->f) {
+-        monitor_printf (mon, "Failed to open wave file `%s'\nReason: %s\n",
+-                        path, strerror (errno));
++        error_report("Failed to open wave file `%s': %s",
++                     path, strerror(errno));
+         g_free (wav);
+         return -1;
+     }
+@@ -170,14 +167,13 @@ int wav_start_capture (CaptureState *s, const char *path, int freq,
+     wav->freq = freq;
+ 
+     if (fwrite (hdr, sizeof (hdr), 1, wav->f) != 1) {
+-        monitor_printf (mon, "Failed to write header\nReason: %s\n",
+-                        strerror (errno));
++        error_report("Failed to write header: %s", strerror(errno));
+         goto error_free;
+     }
+ 
+     cap = AUD_add_capture (&as, &ops, wav);
+     if (!cap) {
+-        monitor_printf (mon, "Failed to add audio capture\n");
++        error_report("Failed to add audio capture");
+         goto error_free;
+     }
+ 
+@@ -189,8 +185,7 @@ int wav_start_capture (CaptureState *s, const char *path, int freq,
+ error_free:
+     g_free (wav->path);
+     if (fclose (wav->f)) {
+-        monitor_printf (mon, "Failed to close wave file\nReason: %s\n",
+-                        strerror (errno));
++        error_report("Failed to close wave file: %s", strerror(errno));
+     }
+     g_free (wav);
+     return -1;
 -- 
 2.20.1
 
