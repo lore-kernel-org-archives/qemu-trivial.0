@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guEZ5-0002Zs-NU
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:23 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50575)
+	id 1guEZ6-0002bB-TP
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:24 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50538)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYy-0002RS-9M
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:17 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYv-00030e-H7
+	(envelope-from <laurent@vivier.eu>) id 1guEYw-0002P9-Gu
 	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:16 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:39937)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <laurent@vivier.eu>) id 1guEYs-0002wI-V4
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:14 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:60613)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1guEYi-0002LY-PJ; Thu, 14 Feb 2019 05:48:01 -0500
+	id 1guEYj-0002bS-JM; Thu, 14 Feb 2019 05:48:01 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MRC3Y-1gfsX40CwO-00N7gY; Thu, 14 Feb 2019 11:47:34 +0100
+	id 1Mk0a0-1hN0sI1cTI-00kRt0; Thu, 14 Feb 2019 11:47:50 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -26,33 +26,34 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
 	Thomas Huth <thuth@redhat.com>
-Date: Thu, 14 Feb 2019 11:47:04 +0100
-Message-Id: <20190214104717.3543-2-laurent@vivier.eu>
+Date: Thu, 14 Feb 2019 11:47:17 +0100
+Message-Id: <20190214104717.3543-15-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190214104717.3543-1-laurent@vivier.eu>
 References: <20190214104717.3543-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:/ADes+TtlmAqBmdFM1Uz6oQLrqd8W0xOgUiFL4z6HhSg57lFgcP
-	fw2kSmR+EyiN1io3Ub4+PmnalH9eRqiRcONE2nbAgIHbXEsL9aXVIpdnQHu/iGO2s+h1I/O
-	pnfwylKkoAz+jUws/IDC/jDRVYS2qXWKjaO8knpboV5I1Efspjc9DrFh096Xu9txVzrnQ2o
-	yPS1L4z3UJqjVAWzc1Okg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:+G4vGsQSh2A=:z0NjIXQm4yKPXDPBMdEhQw
-	T5KTRSzTnZE5XuNB6V7Jv6MZuGkFDzeml3pUablhtvj1eG7hVbtLSz5IJptxHTw20sUlWAQ2p
-	csElDh9T5PZomSzuI/p/q4AI1XsSeCHmbtyScL4Y3LZqhoBXsMWKrB4V52nUDarlYIS+SMye/
-	GksxD7wizxgscDjUigAW1eF3dgFmsAOfMT0IAbzSrC/dF/zGh6ITP8yR48GYHZYlJyV3daigG
-	x30HOdpMzXkhWIxdK5ki/Yk1HLlnjCtO/9gvO8uUxWG2JkOZ2lh3kDQWDXnn9liBkOHq0Zbb4
-	IBBsJDQBuXAJcQ2jT94lTtJYCxAk6j66UH65ELd2w5SNwZeEZqKWJpOI/7Tl0fm8LG2hQcUaP
-	sw9HDvPAONi+bWHkFwQ7XtNTUo5WEKafvmkzxH63FGoedcOz3AbeG8i004h0GRabmcyRNWaz3
-	HK6i9KWcNUbxvRPToEx7aHoa6JeqWHgKQ4jmIBtaFCUwsd655w5UPx1mbW1qtaotYJdvtfNAl
-	jVg+/o56Bfnps6GVTD47rVW80xBPjA1DvopRRf31KVFlrXngROblrc38IT+/54OP3qqK31onv
-	CVhJPY9f1JMZNzAJFQ1f8+QsAO4X1ffrz3v50n/dfYXpTcyLrkzukdtk8oP1X7cGfPXsu9PBh
-	3n4HG+gbVWB/uKtMKI5lBI6LziD3ZD9Ff7hdDt9og/Gtua7fyKXTlGoLwyj0tSD+0iYbXVtec
-	JHVhywGPBs6bhW9V57ONF1cuEh6lrg1m9U3oog==
+X-Provags-ID: V03:K1:oEJO8vGs3P/U5J3a0d60Q6qpUGstg5SafroEl9jicDD4f7bYeme
+	VPeirvNOb8XH4PEm4hROIBVH4YfiF2jJQkAPLIk9amm2l9daSMhqCSfiRf+WCzmB1Yg3ixs
+	Nzh8PS2boU8SgpuEuw7SO+r+GS04dO+JvRJIwZWJYGOGgnr2143cY576KETkHxviicW3KeJ
+	uQNg5hA5RB3kGJzlENE/g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:jZ25PKVJrfk=:bHMGy/muyHN+uH7VJOLnYa
+	pv1GWHEZAtyiC84Hp4LfGzh1rh20yCw2+L3p03Fq8DJcSLtSoa8jQfysNq2azSKVLJ/B4V5Dm
+	RinX/O+xTx08s7S6wqV8tdecS/qAjufNrWgd9Glwtf1+BF3SHCRqj9It6jKPmU7z4MTbZprbe
+	KLE4tDXGIn3fG83vgvnXHa9tMfu8fsUR5jQL4TeYVjFcGvEx1KZEW+Qfm03h1Rgiqa+X0Dj91
+	13kkj+Skffq7G1I0O5Ht+B06dPuKm0Oj8T7IBVSShOzOBLmB4iurnlG5LbXJv9TI62wiGcSVn
+	C/WII6eBdKcXx84cMt7SAF6AvnrpG4Tl6/z5p5bnYd0H9CFSynGkkgpMPQqY3DZCWjwPfsBzn
+	bj3s25lr6pnxdRuIh3X1vYhqmQRW1FtPku7S3nDl0XO84pzPP3y3YqNv7FvjcC+d9x+SGixsX
+	Kl9EFzBBMFKnv6jzsWI7nX9tFn3M79PbMWADwmm/ej9c8JN5888WcTMSmN5wcn4fkJTgELqz6
+	l631OJ7VfUXWprTO0jEPC9viWx2QJ4Vlg1BExzCkZrcfLwjcmGrBpIPL+9lQb+EoAYHIwzEua
+	HTNL3poD+Ou6ImDLrY/ovkPVCTMoCLIX+cltMQmpubZ2CNk0/c1HOflOnvz9Y6Ctwl81zjqSj
+	Oa3qQGm8uTXAzsxnssnSNjG0CNr5ETfFjzWCGZJITL3VA7lJMQBOU6q1nhWujlMl/eu1Xi4ug
+	HQwWdWVYHHFgb0jDoiHPP/DR1EEdfZU+f6UrIQ==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.134
-Subject: [Qemu-trivial] [PULL 01/14] qapi: Fix qcow2 encryption doc typo
+X-Received-From: 212.227.126.130
+Subject: [Qemu-trivial] [PULL 14/14] configure: improve usbfs check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,31 +67,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 14 Feb 2019 10:48:17 -0000
 
-From: Eric Blake <eblake@redhat.com>
+From: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
 
-Present since commit b25b387f (2.10).
+The current check to test if usbfs support should be compiled or not
+solely relies on the presence of <linux/usbdevice_fs.h>, without
+actually checking that all definition used by Qemu are provided by
+this header file.
 
-Signed-off-by: Eric Blake <eblake@redhat.com>
+With sufficiently old kernel headers, <linux/usbdevice_fs.h> may be
+present, but some of the definitions needed by Qemu may not be
+available.
+
+This commit improves the check by building a small program that
+actually tests whether the necessary definitions are available.
+
+In addition, it fixes a bug where have_usbfs was set to "yes"
+regardless of the result of the test.
+
+Signed-off-by: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20190206202848.16999-1-eblake@redhat.com>
+Message-Id: <20190213211827.20300-1-thomas.petazzoni@bootlin.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qapi/block-core.json | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ configure | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
 
-diff --git a/qapi/block-core.json b/qapi/block-core.json
-index 0f349d460336..ee1ab7a8a259 100644
---- a/qapi/block-core.json
-+++ b/qapi/block-core.json
-@@ -2998,7 +2998,7 @@
+diff --git a/configure b/configure
+index c0f278141823..90b9e2fa3c05 100755
+--- a/configure
++++ b/configure
+@@ -4262,10 +4262,25 @@ fi
+ # check for usbfs
+ have_usbfs=no
+ if test "$linux_user" = "yes"; then
+-  if check_include linux/usbdevice_fs.h; then
++  cat > $TMPC << EOF
++#include <linux/usbdevice_fs.h>
++
++#ifndef USBDEVFS_GET_CAPABILITIES
++#error "USBDEVFS_GET_CAPABILITIES undefined"
++#endif
++
++#ifndef USBDEVFS_DISCONNECT_CLAIM
++#error "USBDEVFS_DISCONNECT_CLAIM undefined"
++#endif
++
++int main(void)
++{
++    return 0;
++}
++EOF
++  if compile_prog "" ""; then
+     have_usbfs=yes
+   fi
+-  have_usbfs=yes
+ fi
  
- ##
- # @BlockdevQcow2EncryptionFormat:
--# @aes: AES-CBC with plain64 initialization venctors
-+# @aes: AES-CBC with plain64 initialization vectors
- #
- # Since: 2.10
- ##
+ # check for fallocate
 -- 
 2.20.1
 
