@@ -1,94 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gtzJI-0004gA-EJ
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 13:31:04 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44344)
+	id 1gu4VY-00084O-6w
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Feb 2019 19:04:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52893)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gtzJF-0004ed-V3
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 13:31:03 -0500
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gu4VV-00083u-Vb
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 19:04:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gtzJE-0007kB-3V
-	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 13:31:01 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:55268)
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gu4VT-0006Ti-7i
+	for qemu-trivial@nongnu.org; Wed, 13 Feb 2019 19:04:01 -0500
+Received: from mga14.intel.com ([192.55.52.115]:37634)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gtzJA-0007OM-18; Wed, 13 Feb 2019 13:30:57 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ABB08C044CC5;
-	Wed, 13 Feb 2019 18:30:46 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-98.ams2.redhat.com [10.36.116.98])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BD80E5D9C5;
-	Wed, 13 Feb 2019 18:30:44 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P._Berrang=c3=a9?=
-	<berrange@redhat.com>
-Cc: qemu-trivial@nongnu.org
-References: <1550073299-3647-1-git-send-email-thuth@redhat.com>
-	<1cbe8721-ea9e-f17f-f27d-910fece2858d@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <9518f0a6-2a89-ab4f-a431-d4e4741db8e5@redhat.com>
-Date: Wed, 13 Feb 2019 19:30:43 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
+	id 1gu4VR-0006Eb-T2; Wed, 13 Feb 2019 19:03:58 -0500
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+	by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	13 Feb 2019 16:03:43 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.58,367,1544515200"; d="scan'208";a="274888959"
+Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
+	by orsmga004.jf.intel.com with ESMTP; 13 Feb 2019 16:03:41 -0800
+Date: Thu, 14 Feb 2019 08:03:17 +0800
+From: Wei Yang <richardw.yang@linux.intel.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Wei Yang <richardw.yang@linux.intel.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, imammedo@redhat.com
+Message-ID: <20190214000317.GA19899@richard>
+Reply-To: Wei Yang <richardw.yang@linux.intel.com>
+References: <20190130000653.16267-1-richardw.yang@linux.intel.com>
+	<20190212052224.GA4839@richard>
+	<20190212003414-mutt-send-email-mst@kernel.org>
+	<4d6f639b-fe11-7048-3975-ee1c1875b8d3@vivier.eu>
+	<3d700eed-5637-b05a-63c2-9f73a465bcb5@redhat.com>
+	<af33ffd7-a134-4d61-40ee-b128f5104153@vivier.eu>
 MIME-Version: 1.0
-In-Reply-To: <1cbe8721-ea9e-f17f-f27d-910fece2858d@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Wed, 13 Feb 2019 18:30:46 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] crypto: Fix LGPL
- information in the file headers
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <af33ffd7-a134-4d61-40ee-b128f5104153@vivier.eu>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.115
+Subject: Re: [Qemu-trivial] [PATCH v3 0/3] Trivial cleanup in hw/acpi
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,78 +58,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Feb 2019 18:31:03 -0000
+X-List-Received-Date: Thu, 14 Feb 2019 00:04:02 -0000
 
-On 2019-02-13 17:24, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 2/13/19 4:54 PM, Thomas Huth wrote:
->> It's either "GNU *Library* General Public License version 2" or "GNU
->> Lesser General Public License version *2.1*", but there was no "versio=
-n
->> 2.0" of the "Lesser" license. So assume that version 2.1 is meant here=
-.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  crypto/block-luks.c           | 2 +-
->>  crypto/block-luks.h           | 2 +-
->>  crypto/block-qcow.c           | 2 +-
->>  crypto/block-qcow.h           | 2 +-
->>  crypto/block.c                | 2 +-
->>  crypto/blockpriv.h            | 2 +-
->>  crypto/cipher-builtin.c       | 2 +-
->>  crypto/cipher-gcrypt.c        | 2 +-
->>  crypto/cipher-nettle.c        | 2 +-
->>  crypto/cipher.c               | 2 +-
->>  crypto/hash-gcrypt.c          | 2 +-
->>  crypto/hash-glib.c            | 2 +-
->>  crypto/hash-nettle.c          | 2 +-
->>  crypto/hash.c                 | 2 +-
->>  crypto/init.c                 | 2 +-
->>  crypto/ivgen-essiv.c          | 2 +-
->>  crypto/ivgen-essiv.h          | 2 +-
->>  crypto/ivgen-plain.c          | 2 +-
->>  crypto/ivgen-plain.h          | 2 +-
->>  crypto/ivgen-plain64.c        | 2 +-
->>  crypto/ivgen-plain64.h        | 2 +-
->>  crypto/ivgen.c                | 2 +-
->>  crypto/ivgenpriv.h            | 2 +-
->>  crypto/pbkdf-gcrypt.c         | 2 +-
->>  crypto/pbkdf-nettle.c         | 2 +-
->>  crypto/pbkdf-stub.c           | 2 +-
->>  crypto/pbkdf.c                | 2 +-
->>  crypto/random-gcrypt.c        | 2 +-
->>  crypto/random-gnutls.c        | 2 +-
->>  crypto/random-platform.c      | 2 +-
->>  crypto/secret.c               | 2 +-
->>  crypto/tlscreds.c             | 2 +-
->>  crypto/tlscredsanon.c         | 2 +-
->>  crypto/tlscredspriv.h         | 2 +-
->>  crypto/tlscredspsk.c          | 2 +-
->>  crypto/tlscredsx509.c         | 2 +-
->>  crypto/tlssession.c           | 2 +-
->>  crypto/xts.c                  | 2 +-
->>  include/crypto/block.h        | 2 +-
->>  include/crypto/cipher.h       | 2 +-
->>  include/crypto/hash.h         | 2 +-
->>  include/crypto/init.h         | 2 +-
->>  include/crypto/ivgen.h        | 2 +-
->>  include/crypto/pbkdf.h        | 2 +-
->>  include/crypto/random.h       | 2 +-
->>  include/crypto/secret.h       | 2 +-
->>  include/crypto/tlscreds.h     | 2 +-
->>  include/crypto/tlscredsanon.h | 2 +-
->>  include/crypto/tlscredspsk.h  | 2 +-
->>  include/crypto/tlscredsx509.h | 2 +-
->>  include/crypto/tlssession.h   | 2 +-
->>  include/crypto/xts.h          | 2 +-
->>  52 files changed, 52 insertions(+), 52 deletions(-)
->=20
-> Still not convinced to use SPDX-License-Identifiers?
+On Wed, Feb 13, 2019 at 02:45:01PM +0100, Laurent Vivier wrote:
+>On 13/02/2019 09:56, Philippe Mathieu-Daudé wrote:
+>> Hi Laurent,
+>> 
+>> On 2/13/19 9:49 AM, Laurent Vivier wrote:
+>>> On 12/02/2019 06:34, Michael S. Tsirkin wrote:
+>>>> On Tue, Feb 12, 2019 at 01:22:24PM +0800, Wei Yang wrote:
+>>>>> On Wed, Jan 30, 2019 at 08:06:50AM +0800, Wei Yang wrote:
+>>>>>> There are several functions/variable which are not used anymore.
+>>>>>>
+>>>>>> This serials just remove those without functional change.
+>>>>>>
+>>>>>> v3: add ack and repost in a new thread
+>>>>>> v2: change commit log from "is now used in no place" to "in not used anymore"
+>>>>>
+>>>>> Michael,
+>>>>>
+>>>>> Looks this serials is not merged yet.
+>>>>>
+>>>>> Is there any problem I need to fix?
+>>>>
+>>>> Yes pls repost with fixed reviewed-by tags.
+>>>
+>>> Or I can take the series through the trivial branch and update manually
+>>> Philippe's lastname?
+>> 
+>> I appreciate the help with manual update, however Wei is not the only
+>> one having this problem (other developpers has non-ASCII in their name,
+>> and use such tags).
+>> I'd rather prefer we find a proper configuration setup to help the
+>> community.
+>
+>I'm wondering if it can be a problem with cut'n'paste rather than with
+>git-sendemail.
+>
+>I think the following tags should cover Latin and Chinese characters:
+>
+>Content-Type: text/plain; charset=UTF-8
+>Content-Transfer-Encoding: 8bit
+>
 
-SPDX sounds fine to me personally, but so far nobody came up with a
-proper official description if and how this can legally be done, so
-until we are at that point, fixing the current statements sounds like
-the best solution to me.
+Looks not work.
 
- Thomas
+I have tried this and also with 
+
+Content-Language: en-US
+
+
+The character would be modified after git send-email.
+
+>Thanks,
+>Laurent
+
+-- 
+Wei Yang
+Help you, Help me
 
