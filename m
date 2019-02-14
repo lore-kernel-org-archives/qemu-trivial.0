@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guEZ1-0002VF-2R
+	id 1guEZ1-0002VR-8L
 	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:19 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50394)
+Received: from eggs.gnu.org ([209.51.188.92]:50446)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYs-0002Ky-GH
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:13 -0500
+	(envelope-from <laurent@vivier.eu>) id 1guEYt-0002MT-RN
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYn-0002rF-UK
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:10 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:57421)
+	(envelope-from <laurent@vivier.eu>) id 1guEYp-0002sy-Ci
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:11 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:40345)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1guEYi-0002Vk-IO; Thu, 14 Feb 2019 05:48:00 -0500
+	id 1guEYi-0002TQ-Nd; Thu, 14 Feb 2019 05:48:00 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N8oKc-1h6zsz3YhS-015q5Y; Thu, 14 Feb 2019 11:47:48 +0100
+	id 1MQ67s-1ggyzQ0KCO-00M1Dy; Thu, 14 Feb 2019 11:47:44 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -26,36 +26,34 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Thomas Huth <thuth@redhat.com>, Stefano Garzarella <sgarzare@redhat.com>
-Date: Thu, 14 Feb 2019 11:47:15 +0100
-Message-Id: <20190214104717.3543-13-laurent@vivier.eu>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Thu, 14 Feb 2019 11:47:12 +0100
+Message-Id: <20190214104717.3543-10-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190214104717.3543-1-laurent@vivier.eu>
 References: <20190214104717.3543-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:J7mRyDYOD38Kb3OrYj08T2sfYhUIjMhl4UqoH6czZ6hT9NXGNtt
-	kqXDpIeez85B2GBLctlGjNTnGUOcTE7p0VADhje7S+yvOebE9THy/yajPyR9zjRE+UXC4yk
-	7CrrF8kLILUsfRSr/Bn8xDBRbNU3KL7yu4nVPJ4K4KRx0cvSZoXJ0OcqMHX3SJQu1EBKRmG
-	eTu7l4QVztPUdmGdjXiNw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:rISYavrEtlY=:tpboYl/9rmZkb376tj8du/
-	o5WeGRlCXorHltLufOp7j1P7cYCigSHkirttjVuBhh6OiQRqG1WW2xfK6K929BZXTVx0FA9TT
-	PTSRXWVP1CwhR6IFgH1+qros9O7igXeiqK1ThH4RipccdhYJVIYHIdO/GK8VWNw0334fbWAT8
-	CcXV/iQoB6qNavh66Osz2f9FHL8rIRbL2+mdwiXskxZqPwflEVWkMCb13nMPlXnqO8JALA4Qc
-	+ZIjcleMJcxVGB9OkunACDGkocLlv+fiHGBjYRmB5CP6M8H3Q1AxkYprjIw3EhlTUgiO43OEP
-	AB2WCjwox3A+INJ3CDjrTFlXXlzoOuPDiJDeYNpp4HF7jrTktxTxNWsUek3BSzDC13StPJPx+
-	PYV14Q53wpCpWCu1hIy/Sv6cLyq9qIbZ7SjTZTwF3frqs6loe0ISesDQBO3/WXasFiPZpjDSQ
-	mhmOQrt4TsmYYCUTmVd1avjCVJiZLAlt6MrovXXuLWTRndbD63mdkeq97kUAGpoDIvEiJPMPL
-	D7X9iBvheEaS+dq9pJj3ksrrjUhQvO4T+xId4xau9YU26R+NkVMldPzQV6slfegbXDV/HMXDa
-	PkkyowGwBLl4Z8IvQgfEGJ4OMtVYPrmKm6dH0ljFXMXzmPo+eCPB7zCf6M6+fBJyEBcfdfI6B
-	56Kd0tc1FmKDT9PJWFWOPE3M9hfgHVVilFHeCkFqB9u7p6RLkOHRJl1gSv5egDc5CJRfZQWrF
-	UMWhdIAczpMkHsoeKd4/lrTccP1QGk8nThhCtEW07xgXkRkPo2kDZhAOhJo=
+X-Provags-ID: V03:K1:oGbypwVScPHHEzj9ZvWC6uTpZ9QmKHA9ZweDcvFgFw4KlmgeF8J
+	GfyBD//AVbHoQWFRz3qgJQZDYxqzpURK0p6SshkWcLpjcIZHqgZrE3FFOKLrzFqgEXo1z9N
+	iBljts6IW9ZspTZA2yy23QX+NajCsJ1clua3S9BU+t89D/7og3oCA9zO+cBAWf8daDfgdZG
+	QMNSNnOBEQ/re1PzApEVw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:dtU9daHTNIw=:GnukZdjyBffmVVs7hKGk4M
+	CAco6FUK5YZH1oIr46EhswAghQ5H+YKJYg9zo5n7JTClJ6NwiBX7fvxOjfWdxT4U4GFhKZ+b6
+	GeDRWaPQ36yJOnw9pILnnhMYwMZDSN9reCV0Gir5BsBng6hPNIGjHU9OkgZTlmZd/cgJzrM9d
+	n8bWMCbfs9DBrV8TtTkI3rlUqYbGHIjAO+JlyjVmgFXBjM10Ixogw4HHGaVIKa/Y75a7GxBpd
+	LTeVDp3ubc8yvy84gThS/FbZTrubgOcfnfJfwL08RG7XUIksp88mnJ/M1DcLcN4F0y3u34w69
+	xJ8uUKnF1+fLsDZTnkqL+7W0MzPYR63gcClMzEfsn+8sdre02Vs3Onc1cwHAj2R6vGYQxxJeL
+	+WJ0VEIw2NjXVjB/1LY3tFLW7aVlJ8T4UuhzrOhXhrwWn9WjyXJupeOyjJMjjlOE1AMk/5EWh
+	67dqBM0ZKSh63R3yjWCsGfr6OTWOCYJzr2uaMxgAZriq89sz0nP0J4FG2kaNy68FC6hX9P5sL
+	Ew0RoIbiGYSXXzrdHHpdrTqwCWYoqTOc73R61daSYih2f/WZh+gtrcI0qiipeW6gJ5ty+3XDm
+	74cCl6hLgiFKPXeHgFshleFR2jHTAZb0avIkuWzRSvuSlNDJ95EwIz40rfG2MNmeRfxTleRDn
+	K86kUpA7RVrt0DS/bWZqAa2ERITToUW2ypO7/2a12oS6nIR6hceN0E9AyNtx2qOahthZ5th74
+	6jDKX5OwSaapcgdG0gbcOkT4j1nh1AdzYeBaZNMN0ylURpFqeLJuX2QcU+c=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: [Qemu-trivial] [PULL 12/14] hw/dma/i8257: Use qemu_log_mask(UNIMP)
- instead of fprintf
+X-Received-From: 212.227.126.130
+Subject: [Qemu-trivial] [PULL 09/14] HMP: Prepend errors with 'Error:'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,49 +65,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Feb 2019 10:48:13 -0000
+X-List-Received-Date: Thu, 14 Feb 2019 10:48:15 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
-Avoid to clutter stdout until explicitly requested (with -d unimp):
+Always make error messages start with 'Error:' as a fallback
+to make sure that anything parsing them can tell it failed.
 
-  $ qemu-system-mips64el -M fulong2e -bios pmon_2e.bin
-  dma: command df not supported
-  dma: command df not supported
-  dma: command df not supported
-  dma: command df not supported
+Note: Some places don't use hmp_handle_error
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Message-Id: <20190212145322.30974-1-philmd@redhat.com>
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Message-Id: <20190212134758.10514-3-dgilbert@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/dma/i8257.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ hmp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/dma/i8257.c b/hw/dma/i8257.c
-index 52675e97c9e7..3e1f13a4aaf4 100644
---- a/hw/dma/i8257.c
-+++ b/hw/dma/i8257.c
-@@ -26,6 +26,7 @@
- #include "hw/isa/isa.h"
- #include "hw/dma/i8257.h"
- #include "qemu/main-loop.h"
-+#include "qemu/log.h"
- #include "trace.h"
+diff --git a/hmp.c b/hmp.c
+index b2a2b1f84e33..4d14718fea4a 100644
+--- a/hmp.c
++++ b/hmp.c
+@@ -62,7 +62,7 @@ static void hmp_handle_error(Monitor *mon, Error **errp)
+ {
+     assert(errp);
+     if (*errp) {
+-        error_report_err(*errp);
++        error_reportf_err(*errp, "Error: ");
+     }
+ }
  
- #define I8257(obj) \
-@@ -185,7 +186,8 @@ static void i8257_write_cont(void *opaque, hwaddr nport, uint64_t data,
-     switch (iport) {
-     case 0x00:                  /* command */
-         if ((data != 0) && (data & CMD_NOT_SUPPORTED)) {
--            dolog("command %"PRIx64" not supported\n", data);
-+            qemu_log_mask(LOG_UNIMP, "%s: cmd 0x%02"PRIx64" not supported\n",
-+                          __func__, data);
-             return;
-         }
-         d->command = data;
 -- 
 2.20.1
 
