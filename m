@@ -1,55 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guDdQ-0000ZA-CP
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 04:48:48 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35784)
+	id 1guDii-0004VU-62
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 04:54:16 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36991)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guDdO-0000Xc-Jg
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 04:48:47 -0500
+	(envelope-from <armbru@redhat.com>) id 1guDie-0004Ts-Oa
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 04:54:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guDdK-00043B-Id
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 04:48:44 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:46901)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1guDdG-0003fE-Kx; Thu, 14 Feb 2019 04:48:38 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue108 [212.227.15.183]) with ESMTPSA (Nemesis) id
-	1MvsR7-1hBCkT0n03-00stLw; Thu, 14 Feb 2019 10:48:30 +0100
-To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
-	qemu-devel@nongnu.org
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, patches@linaro.org
-References: <20190208132112.31493-1-peter.maydell@linaro.org>
-	<5b9474b0-7ce7-3efb-253e-4be7f1918281@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <e1577929-4e16-9971-0686-5b3dadfc6ef7@vivier.eu>
-Date: Thu, 14 Feb 2019 10:48:29 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <armbru@redhat.com>) id 1guDid-00006J-5t
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 04:54:12 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:59042)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1guDiZ-0008Lb-FL; Thu, 14 Feb 2019 04:54:07 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id ABEA83E2B7;
+	Thu, 14 Feb 2019 09:54:05 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-92.ams2.redhat.com
+	[10.36.116.92])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id EB2B05C226;
+	Thu, 14 Feb 2019 09:53:59 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 7A65211386C5; Thu, 14 Feb 2019 10:53:58 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: "Dr. David Alan Gilbert \(git\)" <dgilbert@redhat.com>
+Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, kraxel@redhat.com,
+	mst@redhat.com, qemu-trivial@nongnu.org
+References: <20190212134758.10514-1-dgilbert@redhat.com>
+	<20190212134758.10514-3-dgilbert@redhat.com>
+Date: Thu, 14 Feb 2019 10:53:58 +0100
+In-Reply-To: <20190212134758.10514-3-dgilbert@redhat.com> (David Alan
+	Gilbert's message of "Tue, 12 Feb 2019 13:47:56 +0000")
+Message-ID: <87o97eae6h.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <5b9474b0-7ce7-3efb-253e-4be7f1918281@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:9RGCOn+Wl+64/+MSef5WpX+vDZ5TpqB3AihGRF1JRSIsG6k8HGn
-	yg0cvHMmvbhGDhAWpu10IUt7/drIO9a4x56LvmfqxTaoabhI7myoPG7cLO+jwptEz++ogtM
-	SIBOVy60tpSfSdP2QcirK2JV9WX5cOe2DLGt8IfQ2M+dmW38HNoAILN+3yPGygx6P5Lr8Ct
-	vC3cCWoMMUPhhisJMsxyA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:lQDRQLy6pE8=:/05ZOMgrU96uOibUlPHPvS
-	1VScEOmqW0xveiDLNUpF5M8xk5IOAStbw3QgBVZ15SLut4U+YrHtvN1cgJFK6YgAoL8aTVaZs
-	hgmi/8IeHTe7Q4bZUXjOqm9ndx5dM3JrEGdqXK97UAYxvAtBr6xOm+Kq3A9WUOj4rPf1csEC/
-	7Y8Zxn0MLVCI1UBLBjSZGQdEfdp2A3ARM8NzJCTt4LplUhv53QF4Y/KweX03Gn0iXAh0RyIxN
-	mitJOm2vu50g6TejESe6T4hbpVPWbgM3GBYSfcu+bBk5yz03hTsJuJ6CoCQvjRJY2C5m7/vYv
-	G4DIbAL40VEWAg6o4A9jNQHKEOgRGw45ogTUrvwK1T1I2WxJLnDWabJ/T9RsGMYsBYZWtZG6W
-	YgW9bGlBa/qZDznXfm3Sp1PHLDobQtS35JkIAfjqbBd5q6gzEz4DHmVbBZ26wpwCuY/hZ6Z+W
-	WKVxV8mYFTlV1l/LpFstKuIYTOR0V39/uXFGx33rNUhucTEjvRTGy3vF9wT7PiQ5+JPDUZTW/
-	bgO+Wyaqgd5s9tGK7Q5y3VTRSmAHGjQl8zuV2zEqemqe/MO0b+1gJq63781m1EfBHMPFQ1L1P
-	lNbaYTxhUixOD+JaI6wUpWKME90byijNxW0jSo7xH56s09UH49Sfl2EH6B6abhAWYwO8DP2cz
-	lXp6ftj3F337ioRYQ8pHrq03RuzcCq2c1qLKyv5TIVycOL7tu54gd5tCO/C6wyu6RciQLhxr1
-	k/yArjBeq9gPIJC8t8SJpPK2Icaz3RvL5b30la/MqOTA1kQF6zdfAdVHmaE=
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Thu, 14 Feb 2019 09:54:05 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: Make
- -Waddress-of-packed-member warnings be errors
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/4] HMP: Prepend errors
+ with 'Error:'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,40 +56,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Feb 2019 09:48:47 -0000
+X-List-Received-Date: Thu, 14 Feb 2019 09:54:13 -0000
 
-On 08/02/2019 14:33, Thomas Huth wrote:
-> On 2019-02-08 14:21, Peter Maydell wrote:
->> We have now managed to eradicate all the places in the codebase
->> that triggered clang's -Waddress-of-packed-member warning. Remove
->> the compiler flag that exempted it from our usual -Werror policy.
->> This will prevent any new problematic code being added in future.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->>  configure | 1 -
->>  1 file changed, 1 deletion(-)
->>
->> diff --git a/configure b/configure
->> index fbd0825488c..50ac5d90f2e 100755
->> --- a/configure
->> +++ b/configure
->> @@ -1881,7 +1881,6 @@ gcc_flags="-Wno-missing-include-dirs -Wempty-body -Wnested-externs $gcc_flags"
->>  gcc_flags="-Wendif-labels -Wno-shift-negative-value $gcc_flags"
->>  gcc_flags="-Wno-initializer-overrides -Wexpansion-to-defined $gcc_flags"
->>  gcc_flags="-Wno-string-plus-int $gcc_flags"
->> -gcc_flags="-Wno-error=address-of-packed-member $gcc_flags"
->>  # Note that we do not add -Werror to gcc_flags here, because that would
->>  # enable it for all configure tests. If a configure test failed due
->>  # to -Werror this would just silently disable some features,
-> 
-> Great!
-> 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> 
+"Dr. David Alan Gilbert (git)" <dgilbert@redhat.com> writes:
 
-Applied to my trivial-patches branch.
+> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+>
+> Always make error messages start with 'Error:' as a fallback
+> to make sure that anything parsing them can tell it failed.
 
-Thanks,
-Laurent
+Feeding HMP output to programs is a bad idea to begin with.  
+
+> Note: Some places don't use hmp_handle_error
+
+True.  A more honest subject would be "HMP: Prepend some errors with
+'Error:'".
+
+Several distinct reasons for not using hmp_handle_error():
+
+* Handling an error that isn't transmitted as an Error object
+
+  HMP command handlers generally wrap around QMP command handlers, which
+  always use Error objects.  Still, there are other sources of errors
+  when the HMP command does more than the wrapped QMP command (typically
+  convenience features for humans), or there is no wrapped QMP command.
+
+* Augmenting the error message
+
+  Reporting with error_reportf_err() is easier than first messing with
+  the Error object, then passing it to hmp_handle_error().  Example:
+  hmp_delvm().
+
+* hmp_handle_error() is static, and we're outside hmp.c
+
+  Tolerable as long as hmp_handle_error() is trivial.  Your patch makes
+  it a bit less trivial.
+
+If we truly want to "Prepend errors with 'Error:'", then we should make
+hmp command handlers take an Error ** argument, and leave the reporting
+to the HMP core.
+
+If you think prepending some errors is useful (and I guess you do), go
+right ahead with this patch.  I'd recommend to use the more honest
+subject, though.
 
