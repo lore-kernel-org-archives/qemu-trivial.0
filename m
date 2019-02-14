@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guEYx-0002Qv-RB
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:15 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50250)
+	id 1guEYy-0002R9-2X
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:16 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50261)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYl-0002I5-LY
+	(envelope-from <laurent@vivier.eu>) id 1guEYl-0002IL-W0
 	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYj-0002jG-Bu
+	(envelope-from <laurent@vivier.eu>) id 1guEYj-0002kH-OR
 	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:03 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:45785)
+Received: from mout.kundenserver.de ([212.227.126.133]:36237)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1guEYi-0002Qs-U4; Thu, 14 Feb 2019 05:48:01 -0500
+	id 1guEYj-0002Ry-7r; Thu, 14 Feb 2019 05:48:01 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MFKbB-1gromo0Tur-00FnyB; Thu, 14 Feb 2019 11:47:39 +0100
+	id 1MNc5b-1gjSli2iJX-00P365; Thu, 14 Feb 2019 11:47:41 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -26,35 +26,36 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Cleber Rosa <crosa@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Thu, 14 Feb 2019 11:47:08 +0100
-Message-Id: <20190214104717.3543-6-laurent@vivier.eu>
+Date: Thu, 14 Feb 2019 11:47:10 +0100
+Message-Id: <20190214104717.3543-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190214104717.3543-1-laurent@vivier.eu>
 References: <20190214104717.3543-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:G6beaHq4Do7Rtym5Ov/cf+L4w+QN4pQnn2pIgj9nDQn1zg4P+wY
-	w0ruR2VNdDJMhogsglfXcw/WQb+/ha0CT7aQmef5A9SuD3F19Ci9RbgYsKuMvyzpqGYEEZf
-	nbdBmAsVDJe4ZPemZ7lKnUKmA66FW47JsM8iapRovkIqQC8xN91AkojLs82VOYrfcrxWFWT
-	L9Ow5zBL93473bGKifvng==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ixSXCtuTd7w=:8QtMcCXviHZiZk0qLhO0UQ
-	QcsMtdr0EN5ygskIUlAYgPQ0Cjrwl53Hn7xWHupsBZgMyxfWmT/Iaeyl3gDhXuNUUB9jV70f7
-	tz1j6vVASG3Y+1HUXBf136Re04nvqrr47KKmFEMR/yJa5apZazk4/+VB14gYNqZiYwcw8L+1I
-	CppXea22FshDoCucdGkLz5iaaY8MuNCWncBeNvLRXcLeRc/9T2dn1PYUVJdrozSp95SiP4Eru
-	KaUhBZtO2s6u33r0kmAr6+wfGTIGWDAO9JCIu6hFNcn2P6M/lqxl7GhUSBdMAbjLeH/87fPIL
-	ch26m1VHoUF7KutqSjmScW8fW08cyiRajcKQV36zI2xu/vtRvs1cDC0UTHVqLqERlkISzzXCJ
-	nl4lJquwp1vbJiGFjGj89CHzHk8RhfL0ipGJ9qpaaSszBJuXcixOHoL9dhus4KSO7XgX6OXgc
-	O/HO7vegU6Gib3fb8C19cw6UoOixY8rXR7ILajlV0rNWoIkQHzwhg4b7Hds5bMPlvoxYCg3s1
-	c0R+VResVtvHtBEbB6fQJr3AM/sqNMIl9RaragWGju3iWYXtWgDxwjqHA2cG31uSoRj0HMals
-	610B/I9sGFQyC1Oq7pn94O/HyT5AInN8STpHcpVwtKQ5cyWUh4R/7qotuqw4uVee96T3MEHA+
-	5ohzOj4bbmoSAdmFjnQ68TJdXLfK5uyh20ZDwBlE6cfwJpQ1uVnJS5RL2ciuFwi/GbJY/wX9F
-	Qg9AYlhvve3XA4o+CHc1uRyeNnoJhgf1BmR3bB8ZOSPOTc8jgvCDtdvlOC8=
+X-Provags-ID: V03:K1:LEi8iVxFcJaDz5gPX+ZYRsQHg8ggi6pDPEYJihnlM//Ea2EfxQf
+	MXIu+Owh299+SlKSlPDUtDhp6h4hzmKOry2VR8vyOYiR8Zz8GhEohi+XurXKvPd/nimwOIV
+	3XLrWX+BHj2TlfLcj2SeYIlib8koa+G+n/VW4X/Gr6brYg8txoTRq9euRSgKOpyA9KSjSgb
+	icTMcofZxRsRIBoAQvoRA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:iRDg/sQmhhY=:5Mf6c0zaNWdiG/LfBsIjhb
+	QOwMbSZ7e+78N8R1v3EFtcQW/ZgEss0pxfB1bd9GYtbb9vv0tjmZftMQoiqbqwCDP3OvHTYfN
+	uqg3AMQT++G6UZcOwUSOSaYNfbJmX3YEFFKoriPFRJwunvs3oSizX1ANtXI/rRUQ3gEsjApXp
+	H+FMKCApEQFTmAJeqpqEdc1zKtrdimYPApCjiXoruZKT+yJj9k37XyTuhKQjQ8wWdwR6JGIgL
+	cNZ7lhKYWv2l78Cm9Vq8itYGP8kCJDqqYnpYBZl+dbQj/095+mNlZNy2X1QDj21iWtX6aTksB
+	nl2ciEYDHgw1A7llGU54YKubOKFIXO1SENEbAcy0uwcJ02XDld5mZMds0HRkOIWuy9zgOxCuZ
+	w08VuhMmMDC80Hiwe+kTceOnU1YPxEdPD+g/s+KaojJ44pK56KJhmBbn0jF9Ir4u/pvJGyMYg
+	byj4+K5T2MIIvmRt4EMMgKzw9SN2g8wOhw2oEFeNPvro98vy4Ed6OUGclEmLH7mw55+CXcq3y
+	m/saOiwnrkCzRRJzscRkStpAh8FE28Py5XpEIaWd3I9OHCV5Coz4ZPIYiLoO8BXw0ul9klQ66
+	yvZVDbyAydjSShWQ0vgPd9oqYq5sYh8fhRyZMoG5ZJj7dE8l6hr0VSxUpxrHS/bEjniHTqbZa
+	KzclpyxMU3HMkLBitKwzDmT1gBgZzUfo703YnXF5T7loz2SIqhqssIPmtsKRqB4VCn7pLLAEG
+	WTYv6jgnwwZBDOkoOt0soKBo+vLu+lW/nV4InkcLiUPC9aD35OwF6iTrPrg=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: [Qemu-trivial] [PULL 05/14] configure: fix qemu-img name
+X-Received-From: 212.227.126.133
+Subject: [Qemu-trivial] [PULL 07/14] configure: Make
+ -Waddress-of-packed-member warnings be errors
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,30 +69,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 14 Feb 2019 10:48:11 -0000
 
-From: Cleber Rosa <crosa@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+We have now managed to eradicate all the places in the codebase
+that triggered clang's -Waddress-of-packed-member warning. Remove
+the compiler flag that exempted it from our usual -Werror policy.
+This will prevent any new problematic code being added in future.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20190207193605.25676-3-crosa@redhat.com>
+Message-Id: <20190208132112.31493-1-peter.maydell@linaro.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ configure | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/configure b/configure
-index ff55e2273e9a..c8fc1647fe69 100755
+index 649ef1b158d1..c0f278141823 100755
 --- a/configure
 +++ b/configure
-@@ -1768,7 +1768,7 @@ disabled with --disable-FEATURE, default is enabled if available:
-   virglrenderer   virgl rendering support
-   xfsctl          xfsctl support
-   qom-cast-debug  cast debugging support
--  tools           build qemu-io, qemu-nbd and qemu-image tools
-+  tools           build qemu-io, qemu-nbd and qemu-img tools
-   vxhs            Veritas HyperScale vDisk backend support
-   bochs           bochs image format support
-   cloop           cloop image format support
+@@ -1882,7 +1882,6 @@ gcc_flags="-Wno-missing-include-dirs -Wempty-body -Wnested-externs $gcc_flags"
+ gcc_flags="-Wendif-labels -Wno-shift-negative-value $gcc_flags"
+ gcc_flags="-Wno-initializer-overrides -Wexpansion-to-defined $gcc_flags"
+ gcc_flags="-Wno-string-plus-int $gcc_flags"
+-gcc_flags="-Wno-error=address-of-packed-member $gcc_flags"
+ # Note that we do not add -Werror to gcc_flags here, because that would
+ # enable it for all configure tests. If a configure test failed due
+ # to -Werror this would just silently disable some features,
 -- 
 2.20.1
 
