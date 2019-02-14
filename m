@@ -1,92 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guB1K-0006sQ-BT
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 02:01:18 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:47543)
+	id 1guC0A-00022U-84
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 03:04:11 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:32926)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1guB1C-0006qW-4A
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 02:01:15 -0500
+	(envelope-from <laurent@vivier.eu>) id 1guC08-0001jr-E8
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 03:04:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1guB15-0004Mw-Bv
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 02:01:09 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:52038)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1guB0f-00043I-7c; Thu, 14 Feb 2019 02:00:37 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C4020C0BEABC;
-	Thu, 14 Feb 2019 07:00:30 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-166.ams2.redhat.com [10.36.116.166])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id F082360C62;
-	Thu, 14 Feb 2019 07:00:27 +0000 (UTC)
-To: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, qemu-devel@nongnu.org
-References: <20190213211827.20300-1-thomas.petazzoni@bootlin.com>
-Cc: Laurent Vivier <laurent@vivier.eu>, Riku Voipio <riku.voipio@iki.fi>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, qemu-stable@nongnu.org
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <8defa16a-2af8-a1a7-0e3e-cb281f9a477d@redhat.com>
-Date: Thu, 14 Feb 2019 08:00:26 +0100
+	(envelope-from <laurent@vivier.eu>) id 1guBuH-0007BD-NG
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 02:58:06 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:52191)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1guBuH-00078d-D0; Thu, 14 Feb 2019 02:58:05 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1MBUuP-1gmmhh2TaJ-00Cvka; Thu, 14 Feb 2019 08:57:46 +0100
+To: Wei Yang <richardw.yang@linux.intel.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, imammedo@redhat.com
+References: <20190130000653.16267-1-richardw.yang@linux.intel.com>
+	<20190212052224.GA4839@richard>
+	<20190212003414-mutt-send-email-mst@kernel.org>
+	<4d6f639b-fe11-7048-3975-ee1c1875b8d3@vivier.eu>
+	<3d700eed-5637-b05a-63c2-9f73a465bcb5@redhat.com>
+	<af33ffd7-a134-4d61-40ee-b128f5104153@vivier.eu>
+	<20190214000317.GA19899@richard>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <3dd545f2-5346-2b01-8725-5f35cbaa0ae5@vivier.eu>
+Date: Thu, 14 Feb 2019 08:57:44 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190213211827.20300-1-thomas.petazzoni@bootlin.com>
+In-Reply-To: <20190214000317.GA19899@richard>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Thu, 14 Feb 2019 07:00:31 +0000 (UTC)
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:W1W6z3u8dZF6cbNAauN+vI2bIzMrQAmFWG0ZNAhvjnLl0Fg8ual
+	0mo/TQaYgylgxierAKH2pvxX3iHVkounLALx6T9AnrsUZbSj7aTHpBD4NQM/c7rLBvkqdQE
+	XDsUY1zAlbcJjwW44SBGZuaYINL9ug8S5Z6Q6EqW29dW9ahuwm/bII5lEf/LKLcAiF3ovFW
+	XSeW4epsnhtoU9lvfwmrg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:A+iSazH73iQ=:88NX9v1tqDoEEZZV36lQZ1
+	ZNjszAk9IcBhAP3B9SkH40OCC8S99Ichk6M4rvfZApGkG4FXzin8qko1vcHp8VViA6E2coAEQ
+	ofa8zSvZmuv/FZUX9k/GIJ8c2B3X2hshPkIzo0q9u+n7lUzpLU0HYAmNiQc4K1lRZZbp88fdi
+	60XLigh5+Q0EuCYmjtfg5+8S+sN37YyRv7cY0ugFQinF9Di2WaDpRPl6iD4By4zBNGRieO8mx
+	y8YYX/xe5GZJ0+9WidMXg0mwKwtZH0sH0xChnB9Y7mn6WKZKCASAsnjm2E0yqlxkjNob3wxLC
+	ntp64ARLa/hLX6ezKyd2eXUUPkaqQdOL5/VUQoGv0EQ60ThBmeXL0kZm8xc0MClpr6A8bwVj6
+	UwOnZsW1MI0Ug6563kj+wbPJf1gbyvU408ks6qKpMc7gn/WsNbGdEjTaF7pHkXsYsDzze3++i
+	NDTreZxIBZjIEN/2ExS4htv0RmZdJagGjGfUiJl2ERZzqdWzVblRdr/PJj78BDvaA6cxAnmcN
+	yBgeJZ9HTBVtdUSGkuzMai9/170dszBWWE9tkWK360s5wxJhBUaxnKWkSbm9JlGcXPXJCm/+K
+	oD3YlKCO+t1sFFeuJxfnYueW/8VthlXhr7150GJKuw8u+mqz0yUTpnMgN9Xtr5JLY6I/VtJ5j
+	c/sQdgX1k74CRh7WVHmM7bxwWXpTjnfaezEgb3ihHUmCvfe9f5PCeKEs6dfmOBB8YJvQKPFo4
+	wO4WFosomg2f7VSPJaeyM4+PWD+aImHUU5m3aKFCmi0Xvy19moWgXKdj1Gw=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: improve usbfs
- check
+X-Received-From: 217.72.192.75
+Subject: Re: [Qemu-trivial] [PATCH v3 0/3] Trivial cleanup in hw/acpi
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,61 +66,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Feb 2019 07:01:15 -0000
+X-List-Received-Date: Thu, 14 Feb 2019 08:04:09 -0000
 
-On 2019-02-13 22:18, Thomas Petazzoni wrote:
-> The current check to test if usbfs support should be compiled or not
-> solely relies on the presence of <linux/usbdevice_fs.h>, without
-> actually checking that all definition used by Qemu are provided by
-> this header file.
+On 14/02/2019 01:03, Wei Yang wrote:
+> On Wed, Feb 13, 2019 at 02:45:01PM +0100, Laurent Vivier wrote:
+>> On 13/02/2019 09:56, Philippe Mathieu-Daudé wrote:
+>>> Hi Laurent,
+>>>
+>>> On 2/13/19 9:49 AM, Laurent Vivier wrote:
+>>>> On 12/02/2019 06:34, Michael S. Tsirkin wrote:
+>>>>> On Tue, Feb 12, 2019 at 01:22:24PM +0800, Wei Yang wrote:
+>>>>>> On Wed, Jan 30, 2019 at 08:06:50AM +0800, Wei Yang wrote:
+>>>>>>> There are several functions/variable which are not used anymore.
+>>>>>>>
+>>>>>>> This serials just remove those without functional change.
+>>>>>>>
+>>>>>>> v3: add ack and repost in a new thread
+>>>>>>> v2: change commit log from "is now used in no place" to "in not used anymore"
+>>>>>>
+>>>>>> Michael,
+>>>>>>
+>>>>>> Looks this serials is not merged yet.
+>>>>>>
+>>>>>> Is there any problem I need to fix?
+>>>>>
+>>>>> Yes pls repost with fixed reviewed-by tags.
+>>>>
+>>>> Or I can take the series through the trivial branch and update manually
+>>>> Philippe's lastname?
+>>>
+>>> I appreciate the help with manual update, however Wei is not the only
+>>> one having this problem (other developpers has non-ASCII in their name,
+>>> and use such tags).
+>>> I'd rather prefer we find a proper configuration setup to help the
+>>> community.
+>>
+>> I'm wondering if it can be a problem with cut'n'paste rather than with
+>> git-sendemail.
+>>
+>> I think the following tags should cover Latin and Chinese characters:
+>>
+>> Content-Type: text/plain; charset=UTF-8
+>> Content-Transfer-Encoding: 8bit
+>>
 > 
-> With sufficiently old kernel headers, <linux/usbdevice_fs.h> may be
-> present, but some of the definitions needed by Qemu may not be
-> available.
+> Looks not work.
 > 
-> This commit improves the check by building a small program that
-> actually tests whether the necessary definitions are available.
+> I have tried this and also with 
 > 
-> In addition, it fixes a bug where have_usbfs was set to "yes"
-> regardless of the result of the test.
-> 
-> Signed-off-by: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
-> ---
->  configure | 19 +++++++++++++++++--
->  1 file changed, 17 insertions(+), 2 deletions(-)
-> 
-> diff --git a/configure b/configure
-> index 3d89870d99..799c8e3b08 100755
-> --- a/configure
-> +++ b/configure
-> @@ -4266,10 +4266,25 @@ fi
->  # check for usbfs
->  have_usbfs=no
->  if test "$linux_user" = "yes"; then
-> -  if check_include linux/usbdevice_fs.h; then
-> +  cat > $TMPC << EOF
-> +#include <linux/usbdevice_fs.h>
-> +
-> +#ifndef USBDEVFS_GET_CAPABILITIES
-> +#error "USBDEVFS_GET_CAPABILITIES undefined"
-> +#endif
-> +
-> +#ifndef USBDEVFS_DISCONNECT_CLAIM
-> +#error "USBDEVFS_DISCONNECT_CLAIM undefined"
-> +#endif
-> +
-> +int main(void)
-> +{
-> +    return 0;
-> +}
-> +EOF
-> +  if compile_prog "" ""; then
->      have_usbfs=yes
->    fi
-> -  have_usbfs=yes
->  fi
->  
->  # check for fallocate
+> Content-Language: en-US
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Could  you send me a gzipped version of the 0001-XXX.patch in attachment
+so I could see the real content before git-send-email?
+
+Thansk,
+Laurent
+
 
