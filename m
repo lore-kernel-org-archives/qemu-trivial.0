@@ -1,50 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guDsE-0002WN-7K
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:04:06 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39266)
+	id 1guDuz-0004m6-88
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:06:57 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40242)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1guDs3-00024t-Ac
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:04:04 -0500
+	(envelope-from <laurent@vivier.eu>) id 1guDur-0004hz-Ty
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:06:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1guDqG-0004z5-Io
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:02:05 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:30328)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1guDqA-0004g2-Hh; Thu, 14 Feb 2019 05:01:58 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5C266A5DBB;
-	Thu, 14 Feb 2019 10:01:42 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-92.ams2.redhat.com
-	[10.36.116.92])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 75DCF1024905;
-	Thu, 14 Feb 2019 10:01:17 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id F245311386C5; Thu, 14 Feb 2019 11:01:15 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: "Dr. David Alan Gilbert \(git\)" <dgilbert@redhat.com>
-Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, kraxel@redhat.com,
-	mst@redhat.com, qemu-trivial@nongnu.org
-References: <20190212134758.10514-1-dgilbert@redhat.com>
-	<20190212134758.10514-5-dgilbert@redhat.com>
-Date: Thu, 14 Feb 2019 11:01:15 +0100
-In-Reply-To: <20190212134758.10514-5-dgilbert@redhat.com> (David Alan
-	Gilbert's message of "Tue, 12 Feb 2019 13:47:58 +0000")
-Message-ID: <87k1i2aduc.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	(envelope-from <laurent@vivier.eu>) id 1guDuq-0000pn-1Z
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:06:49 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:47241)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1guDue-0000eF-DO; Thu, 14 Feb 2019 05:06:38 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue106 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1MUGRh-1gU8QT2WKR-00RFgO; Thu, 14 Feb 2019 11:05:46 +0100
+To: Thomas Huth <thuth@redhat.com>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, qemu-devel@nongnu.org
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Riku Voipio <riku.voipio@iki.fi>, 
+	qemu-stable@nongnu.org
+References: <20190213211827.20300-1-thomas.petazzoni@bootlin.com>
+	<8defa16a-2af8-a1a7-0e3e-cb281f9a477d@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <07ad6417-eb6f-b35d-06b4-168c5090c95b@vivier.eu>
+Date: Thu, 14 Feb 2019 11:05:45 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Thu, 14 Feb 2019 10:01:42 +0000 (UTC)
+In-Reply-To: <8defa16a-2af8-a1a7-0e3e-cb281f9a477d@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:qpWYGa/WxT+7OX6R6ixbAtbcqUoMl8l+vcUNr+4mq+8vZZpmt9Z
+	Jz3oBnYzai4ABC6KIkeg1aJ7bp/W0jGXCKf99io4ddcH05gUVgXo8WHaxcQnGAq4uJgmK/3
+	iMqDdbfSLTf7gwAPXybXy7N891868y0UOmkfoUWSmX2xKLLY48fKnVF3POtZcmyt1ntKeso
+	zPl+6X5N/nRxyclGrKPkA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:J3HEYQTGKts=:Eb/TpMREZi3AS7vT8pPIIo
+	quM+28JfS0GYYSmnr3vwMOc3ayj25pzU4nwjmIaLmV8xLkiyCVnVfJ0Pvq4a+PdX6GfoAD6QU
+	0EFqDlUWi1th0GdFI3pTLfgAoNvf0FlnUX2gfrWYTrIM2majfS4fLFDUKbuKBrnpDNduERADI
+	TmQzgJJsXZwWjTzD7ZjcsrHoFzdj8rVWx4xDFGefwYQ423QFE1FAAJZRpi45m8uGnzgdz7++S
+	JmvQze6MdhRGWixONsmkzhEaiBdNOc03Lx4MLE1LylRAUDpGLmIG/s+C+JAsY+dfj5elJsYDD
+	tyuVPul4EjwZPvXG/rJOT7ltvRjTtcAPxhK6rNYSFxpceGMp9bYu6DMgbrQxSOwMzqVYXjIC2
+	lLpOrvBGpmMpWvqVWywwIuAT4vrL1Lqid3EC2rgb7oXLiQvQzFBv3pgrDqWIVATFzzd47uH6G
+	nkUmEUJ2WQu3IShgYHxvAM0pJpOQKmpKTYwyB0WtpByIpqONy7Ahcdm7zbp10XebUHp47BIBK
+	JK0ww5Qu+h249FkLDtKkn0OJdx7Le4NtOdBQ5oR5zN2xCgsNGZklu1gyqBAEOeplCAah2t2tE
+	SWZ97pn2mxSs53ftdjzwcVM6HukbCResBEsNKTddtExUwWQ81x0VYGqA45uAtDJpJdys4Ls/k
+	vuO4F8Pvb9YUmcEzweFpp3trCJMdAu2jPK1rr+pqxULDs6KNXLzGxyWKsh2/PKPa98GJrnVEO
+	Pnlp9gEvLHio2P+P94qemPX4TtU5UjGz4jNkn/IwSGRez7UNGMexrt92avw=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/4] wavcapture: Convert to
- error_report
+X-Received-From: 212.227.17.10
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: improve usbfs
+ check
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,29 +62,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Feb 2019 10:04:04 -0000
+X-List-Received-Date: Thu, 14 Feb 2019 10:06:57 -0000
 
-"Dr. David Alan Gilbert (git)" <dgilbert@redhat.com> writes:
+On 14/02/2019 08:00, Thomas Huth wrote:
+> On 2019-02-13 22:18, Thomas Petazzoni wrote:
+>> The current check to test if usbfs support should be compiled or not
+>> solely relies on the presence of <linux/usbdevice_fs.h>, without
+>> actually checking that all definition used by Qemu are provided by
+>> this header file.
+>>
+>> With sufficiently old kernel headers, <linux/usbdevice_fs.h> may be
+>> present, but some of the definitions needed by Qemu may not be
+>> available.
+>>
+>> This commit improves the check by building a small program that
+>> actually tests whether the necessary definitions are available.
+>>
+>> In addition, it fixes a bug where have_usbfs was set to "yes"
+>> regardless of the result of the test.
+>>
+>> Signed-off-by: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+>> ---
+>>  configure | 19 +++++++++++++++++--
+>>  1 file changed, 17 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/configure b/configure
+>> index 3d89870d99..799c8e3b08 100755
+>> --- a/configure
+>> +++ b/configure
+>> @@ -4266,10 +4266,25 @@ fi
+>>  # check for usbfs
+>>  have_usbfs=no
+>>  if test "$linux_user" = "yes"; then
+>> -  if check_include linux/usbdevice_fs.h; then
+>> +  cat > $TMPC << EOF
+>> +#include <linux/usbdevice_fs.h>
+>> +
+>> +#ifndef USBDEVFS_GET_CAPABILITIES
+>> +#error "USBDEVFS_GET_CAPABILITIES undefined"
+>> +#endif
+>> +
+>> +#ifndef USBDEVFS_DISCONNECT_CLAIM
+>> +#error "USBDEVFS_DISCONNECT_CLAIM undefined"
+>> +#endif
+>> +
+>> +int main(void)
+>> +{
+>> +    return 0;
+>> +}
+>> +EOF
+>> +  if compile_prog "" ""; then
+>>      have_usbfs=yes
+>>    fi
+>> -  have_usbfs=yes
+>>  fi
+>>  
+>>  # check for fallocate
+> 
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> 
 
-> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
->
-> Kill off a pile of monitor_printf's and cur_mon usage.
 
-You also switch from the two line error format
+Applied to my trivial-patches branch.
 
-    <error message>
-    Reason: <strerror(errno)>
-
-to the more common
-
-    <error message>: <strerror(errno)>
-
-Suggest to mention that you're changing error messages in the commit
-message.
-
-> The only one left in wavcapture.c is the info case.
->
-> Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Thanks,
+Laurent
 
