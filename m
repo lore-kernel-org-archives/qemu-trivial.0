@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guEZ4-0002YV-5A
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:22 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50524)
+	id 1guEZ5-0002Zs-NU
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:23 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50575)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYw-0002Om-7u
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:16 -0500
+	(envelope-from <laurent@vivier.eu>) id 1guEYy-0002RS-9M
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYt-0002wa-2c
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:14 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:49387)
+	(envelope-from <laurent@vivier.eu>) id 1guEYv-00030e-H7
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:16 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:39937)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1guEYi-0002Nm-7l; Thu, 14 Feb 2019 05:48:00 -0500
+	id 1guEYi-0002LY-PJ; Thu, 14 Feb 2019 05:48:01 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1M5Q2f-1gsqyQ1MRh-001Rxr; Thu, 14 Feb 2019 11:47:35 +0100
+	id 1MRC3Y-1gfsX40CwO-00N7gY; Thu, 14 Feb 2019 11:47:34 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -26,34 +26,33 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 14 Feb 2019 11:47:05 +0100
-Message-Id: <20190214104717.3543-3-laurent@vivier.eu>
+	Thomas Huth <thuth@redhat.com>
+Date: Thu, 14 Feb 2019 11:47:04 +0100
+Message-Id: <20190214104717.3543-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190214104717.3543-1-laurent@vivier.eu>
 References: <20190214104717.3543-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:QF78azORv0wvVxM7jiTEXMMiFSvQ1oiB3VlThMMO6pvauyqaXEv
-	MqBRhELUnAjqOX15TWBaS3ZBeaHB3a0798SV9S2Oip7wobwjm3oRGimoHal3sP9qB7UqraZ
-	10ardED7BSnq/Hh3Xzs98Ln5Ra+B/eaSw8BrdZvmntLsPVUdEE/TQt9eEZrucKopCCcdZ41
-	k1kCRLzTeWm3tpXPhcPLA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:1c8XzALaI5o=:r4S2hp7pAVFOeMPR93XUon
-	sTKpkfQxSLdWjxl/lcyh+iY+5DcO7p6/OxZZCHcIWc8DiiGP4VSVJQanBpnsANprr5rTuuqT1
-	DGKzzfb1pBRyfYq5sXAtJK9lux6mXCOnsm8D5kka3HKlHv/PmvFau+gE5sium58R42E2f58Qz
-	uEsp87RiFChChrRGoUuzfieoWIKDhcj62Xt4oB2pXfRm7HK0AtWcausVz2tvlvW61hVSEdHso
-	tt16AX8eGJEGi5394sApf1WWpLL3fKFKVSh7PC5pj7xRyZNW2w5VcIesA9BCNTz6ufGzKyEwx
-	RqW2dwEYe8XTPwjhkHJyPETNXHr8kOIj9LYUXUSZ92N+sywQ1RSIMyAp9w+chqrYdYjuAW4mo
-	MpTIRIyHt1ZSwKJ8aeijES04yFmWC5Pgz5GYPk4AbNsSGfCzLfA8HN5BavFvPz8/MX1cDLbZ3
-	N88TccAP86eCpkyFiwEmLPNVat56NbXDZ/3RpXgGccstkZ1FFJBsrito/gS0yKPHDKGxl3beS
-	DSncp0bIHav5ZSL0UyvhfuLRZeXMXWqWrl6ZeXjloZki4lu8ZVb6SYHT+0ya1rXxbs5djmNcu
-	nr4DPAKtCzJCy12EbAKpyRSeI3b2Wgu9vpnl5P/LneRPGCjqj+m4GaX7fE2IvHUksuUehToyu
-	ejKJKRx+DcoojLFb4FEMblLTTVYJZWhXuqSfKuoKbcOeirVegrDbPHgpMEvmGEZNcan0y0EQ2
-	188KHoWqbkfVnCiI4TCFQbEseY+roK/SKC/0rg==
+X-Provags-ID: V03:K1:/ADes+TtlmAqBmdFM1Uz6oQLrqd8W0xOgUiFL4z6HhSg57lFgcP
+	fw2kSmR+EyiN1io3Ub4+PmnalH9eRqiRcONE2nbAgIHbXEsL9aXVIpdnQHu/iGO2s+h1I/O
+	pnfwylKkoAz+jUws/IDC/jDRVYS2qXWKjaO8knpboV5I1Efspjc9DrFh096Xu9txVzrnQ2o
+	yPS1L4z3UJqjVAWzc1Okg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+G4vGsQSh2A=:z0NjIXQm4yKPXDPBMdEhQw
+	T5KTRSzTnZE5XuNB6V7Jv6MZuGkFDzeml3pUablhtvj1eG7hVbtLSz5IJptxHTw20sUlWAQ2p
+	csElDh9T5PZomSzuI/p/q4AI1XsSeCHmbtyScL4Y3LZqhoBXsMWKrB4V52nUDarlYIS+SMye/
+	GksxD7wizxgscDjUigAW1eF3dgFmsAOfMT0IAbzSrC/dF/zGh6ITP8yR48GYHZYlJyV3daigG
+	x30HOdpMzXkhWIxdK5ki/Yk1HLlnjCtO/9gvO8uUxWG2JkOZ2lh3kDQWDXnn9liBkOHq0Zbb4
+	IBBsJDQBuXAJcQ2jT94lTtJYCxAk6j66UH65ELd2w5SNwZeEZqKWJpOI/7Tl0fm8LG2hQcUaP
+	sw9HDvPAONi+bWHkFwQ7XtNTUo5WEKafvmkzxH63FGoedcOz3AbeG8i004h0GRabmcyRNWaz3
+	HK6i9KWcNUbxvRPToEx7aHoa6JeqWHgKQ4jmIBtaFCUwsd655w5UPx1mbW1qtaotYJdvtfNAl
+	jVg+/o56Bfnps6GVTD47rVW80xBPjA1DvopRRf31KVFlrXngROblrc38IT+/54OP3qqK31onv
+	CVhJPY9f1JMZNzAJFQ1f8+QsAO4X1ffrz3v50n/dfYXpTcyLrkzukdtk8oP1X7cGfPXsu9PBh
+	3n4HG+gbVWB/uKtMKI5lBI6LziD3ZD9Ff7hdDt9og/Gtua7fyKXTlGoLwyj0tSD+0iYbXVtec
+	JHVhywGPBs6bhW9V57ONF1cuEh6lrg1m9U3oog==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-Subject: [Qemu-trivial] [PULL 02/14] qemu-deprecated: Remove -virtioconsole
- and -no-frame for good
+X-Received-From: 212.227.126.134
+Subject: [Qemu-trivial] [PULL 01/14] qapi: Fix qcow2 encryption doc typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,45 +64,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Feb 2019 10:48:16 -0000
+X-List-Received-Date: Thu, 14 Feb 2019 10:48:17 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Eric Blake <eblake@redhat.com>
 
-The two sections have accidentally been added again during the
-merge of Paolo's and Gerd's trees.
+Present since commit b25b387f (2.10).
 
-Fixes: 3e29da9fd81002a0c03041aaa26dea6d9dd9bd65
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <1549545296-18903-2-git-send-email-thuth@redhat.com>
+Signed-off-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20190206202848.16999-1-eblake@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qemu-deprecated.texi | 12 ------------
- 1 file changed, 12 deletions(-)
+ qapi/block-core.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
-index 80b0702ad5b2..90e5860fd1a6 100644
---- a/qemu-deprecated.texi
-+++ b/qemu-deprecated.texi
-@@ -37,18 +37,6 @@ would automatically enable USB support on the machine type.
- If using the new syntax, USB support must be explicitly
- enabled via the ``-machine usb=on'' argument.
+diff --git a/qapi/block-core.json b/qapi/block-core.json
+index 0f349d460336..ee1ab7a8a259 100644
+--- a/qapi/block-core.json
++++ b/qapi/block-core.json
+@@ -2998,7 +2998,7 @@
  
--@subsection -virtioconsole (since 3.0.0)
--
--Option @option{-virtioconsole} has been replaced by
--@option{-device virtconsole}.
--
--@subsection -no-frame (since 2.12.0)
--
--The @code{--no-frame} argument works with SDL 1.2 only. The other user
--interfaces never implemented this in the first place. So this will be
--removed together with SDL 1.2 support.
-->>>>>>> remotes/bonzini/tags/for-upstream
--
- @subsection -clock (since 3.0.0)
- 
- The @code{-clock} option is ignored since QEMU version 1.7.0. There is no
+ ##
+ # @BlockdevQcow2EncryptionFormat:
+-# @aes: AES-CBC with plain64 initialization venctors
++# @aes: AES-CBC with plain64 initialization vectors
+ #
+ # Since: 2.10
+ ##
 -- 
 2.20.1
 
