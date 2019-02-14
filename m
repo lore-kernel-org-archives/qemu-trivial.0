@@ -1,50 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guDii-0004VU-62
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 04:54:16 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36991)
+	id 1guDii-0004WE-Uq
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 04:54:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37013)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1guDie-0004Ts-Oa
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 04:54:13 -0500
+	(envelope-from <laurent@vivier.eu>) id 1guDif-0004Uq-Qj
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 04:54:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1guDid-00006J-5t
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 04:54:12 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:59042)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1guDiZ-0008Lb-FL; Thu, 14 Feb 2019 04:54:07 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ABEA83E2B7;
-	Thu, 14 Feb 2019 09:54:05 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-92.ams2.redhat.com
-	[10.36.116.92])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EB2B05C226;
-	Thu, 14 Feb 2019 09:53:59 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 7A65211386C5; Thu, 14 Feb 2019 10:53:58 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: "Dr. David Alan Gilbert \(git\)" <dgilbert@redhat.com>
-Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, kraxel@redhat.com,
-	mst@redhat.com, qemu-trivial@nongnu.org
+	(envelope-from <laurent@vivier.eu>) id 1guDie-00009t-Pd
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 04:54:13 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:40995)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1guDie-0008SZ-9J; Thu, 14 Feb 2019 04:54:12 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue109 [212.227.15.183]) with ESMTPSA (Nemesis) id
+	1MlwBh-1hKzkN0THH-00j45q; Thu, 14 Feb 2019 10:54:04 +0100
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	"Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>,
+	qemu-devel@nongnu.org, 
+	pbonzini@redhat.com, kraxel@redhat.com, mst@redhat.com
+Cc: qemu-trivial@nongnu.org
 References: <20190212134758.10514-1-dgilbert@redhat.com>
-	<20190212134758.10514-3-dgilbert@redhat.com>
-Date: Thu, 14 Feb 2019 10:53:58 +0100
-In-Reply-To: <20190212134758.10514-3-dgilbert@redhat.com> (David Alan
-	Gilbert's message of "Tue, 12 Feb 2019 13:47:56 +0000")
-Message-ID: <87o97eae6h.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	<20190212134758.10514-2-dgilbert@redhat.com>
+	<87e9683c-1363-3777-f92a-af73e1ed3748@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <f71ebf01-c653-dea9-4cb6-3743e91fc990@vivier.eu>
+Date: Thu, 14 Feb 2019 10:54:02 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 14 Feb 2019 09:54:05 +0000 (UTC)
+In-Reply-To: <87e9683c-1363-3777-f92a-af73e1ed3748@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:vSUauR3ur/n9jcntLzdnNNzuWF2uiqF99YHqh0L1uPCdWTwGSRu
+	hrML7SIEdnq9XwXFTDwPHv20IbYedQOS4JCPL58/K9Gt4yhP26cY0pJEiuKj4skduBOQnjb
+	xUDbE/+KnXCklbBVLzM9EQNfDsPlIXqwwIREiaDSkNqUI9G9j6Qee5bc/bCwxAf233XpYwH
+	sn+HViR/JRfteW0pWVY9g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:oFTEU9T9U7U=:LL2mE8ukvcVd/paVKjCqV0
+	z+5YYGrRPp9+rvayXeNpFQ0S/cqjqErqliOWeL9opS2Cbb84Tb82jXJ8HdvvAGZ35Crmoo23K
+	6cOiRPQMyffh5qSO3VOuatMG27MbiKcV5coMW9LJpbhziU73fCyMBDhhwwPyDV6Ht/AkbF5LC
+	wA8Rf0TSd1GGfpfyDIsBreuieEYDGpdyn7JzUL58hHAsZDMd59sRAg/dDb8gQCp14TSm8vTDK
+	m6KLCTic7ty+RTAXM47UfOHj+UHmGeuvsRdKx0Qc6H6pLHULwbZw0+pOlQtLgKcFr9w+ODihp
+	uqqyGwSS2zLP40Z8eGCD5cXeeiOs5EroLGgfl2Z8UJ5ilmwRcprGmMJSLp/Sa4cKDW0hgg7+I
+	z4Vrt88I0YGd1oGSo6QBQt9FBbhyU6m/Dwv2/QWSx2oshzVSvtbwjwYFuD3VBRpSZIXbiKpd6
+	r0MK5C9Vh4t6LCsbVmyE79DgxtGbJBCSCjW/k20bqrNkvHwHQ46afS65nXoulitA15AI7V3Nx
+	bTNTMpb3G4ZqffT5/b3gJPa7aVj5IhFzWzmD/NorukVHfmcPKW0hL4vT7FxWZmeKH4uwSUkxT
+	+hFa3v7Xo37OwwKVs7lp2s6HlYdYGlGs3f6Eq1mAM+N/1uHayO5u8tl8FkKoWIp1TYI3n4Mt6
+	VS2q+tBn61X2KvnS5PP4huiQbjljFRRcYSlDYCxHVusNkJ+kI+ZW7wuEq2k1j7dzAQsJMoGWO
+	0W/IoAXJE49dtXbIVrGav6i6VrhJjjzoZoPsIOfRDnS/wue4p2MxE43w6DQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/4] HMP: Prepend errors
- with 'Error:'
+X-Received-From: 217.72.192.74
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/4] pckbd: Convert
+ DPRINTF->trace
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,47 +64,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Feb 2019 09:54:13 -0000
+X-List-Received-Date: Thu, 14 Feb 2019 09:54:16 -0000
 
-"Dr. David Alan Gilbert (git)" <dgilbert@redhat.com> writes:
+On 12/02/2019 15:10, Philippe Mathieu-Daudé wrote:
+> On 2/12/19 2:47 PM, Dr. David Alan Gilbert (git) wrote:
+>> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+>>
+>> Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> 
+> Per https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg03186.html
+> this one already has:
+> 
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+> 
 
-> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
->
-> Always make error messages start with 'Error:' as a fallback
-> to make sure that anything parsing them can tell it failed.
 
-Feeding HMP output to programs is a bad idea to begin with.  
+Applied the one from 2018-10
+(20181016112232.23241-1-dgilbert@redhat.com), as it is identical and has
+the R-b, to my trivial-patches branch.
 
-> Note: Some places don't use hmp_handle_error
+Thanks,
+Laurent
 
-True.  A more honest subject would be "HMP: Prepend some errors with
-'Error:'".
-
-Several distinct reasons for not using hmp_handle_error():
-
-* Handling an error that isn't transmitted as an Error object
-
-  HMP command handlers generally wrap around QMP command handlers, which
-  always use Error objects.  Still, there are other sources of errors
-  when the HMP command does more than the wrapped QMP command (typically
-  convenience features for humans), or there is no wrapped QMP command.
-
-* Augmenting the error message
-
-  Reporting with error_reportf_err() is easier than first messing with
-  the Error object, then passing it to hmp_handle_error().  Example:
-  hmp_delvm().
-
-* hmp_handle_error() is static, and we're outside hmp.c
-
-  Tolerable as long as hmp_handle_error() is trivial.  Your patch makes
-  it a bit less trivial.
-
-If we truly want to "Prepend errors with 'Error:'", then we should make
-hmp command handlers take an Error ** argument, and leave the reporting
-to the HMP core.
-
-If you think prepending some errors is useful (and I guess you do), go
-right ahead with this patch.  I'd recommend to use the more honest
-subject, though.
 
