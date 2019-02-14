@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guEZ6-0002bB-TP
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:24 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50538)
+	id 1guEZ7-0002bm-BR
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 05:48:25 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:50519)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYw-0002P9-Gu
+	(envelope-from <laurent@vivier.eu>) id 1guEYw-0002OT-3k
 	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1guEYs-0002wI-V4
+	(envelope-from <laurent@vivier.eu>) id 1guEYs-0002w6-Ti
 	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 05:48:14 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:60613)
+Received: from mout.kundenserver.de ([212.227.126.135]:45023)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1guEYj-0002bS-JM; Thu, 14 Feb 2019 05:48:01 -0500
+	id 1guEYj-0002Ui-31; Thu, 14 Feb 2019 05:48:01 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1Mk0a0-1hN0sI1cTI-00kRt0; Thu, 14 Feb 2019 11:47:50 +0100
+	id 1Macf4-1hWKGR1PXm-00cAA8; Thu, 14 Feb 2019 11:47:45 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -26,34 +26,35 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Kamil Rytarowski <kamil@netbsd.org>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Thomas Huth <thuth@redhat.com>
-Date: Thu, 14 Feb 2019 11:47:17 +0100
-Message-Id: <20190214104717.3543-15-laurent@vivier.eu>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>
+Date: Thu, 14 Feb 2019 11:47:13 +0100
+Message-Id: <20190214104717.3543-11-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190214104717.3543-1-laurent@vivier.eu>
 References: <20190214104717.3543-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:oEJO8vGs3P/U5J3a0d60Q6qpUGstg5SafroEl9jicDD4f7bYeme
-	VPeirvNOb8XH4PEm4hROIBVH4YfiF2jJQkAPLIk9amm2l9daSMhqCSfiRf+WCzmB1Yg3ixs
-	Nzh8PS2boU8SgpuEuw7SO+r+GS04dO+JvRJIwZWJYGOGgnr2143cY576KETkHxviicW3KeJ
-	uQNg5hA5RB3kGJzlENE/g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:jZ25PKVJrfk=:bHMGy/muyHN+uH7VJOLnYa
-	pv1GWHEZAtyiC84Hp4LfGzh1rh20yCw2+L3p03Fq8DJcSLtSoa8jQfysNq2azSKVLJ/B4V5Dm
-	RinX/O+xTx08s7S6wqV8tdecS/qAjufNrWgd9Glwtf1+BF3SHCRqj9It6jKPmU7z4MTbZprbe
-	KLE4tDXGIn3fG83vgvnXHa9tMfu8fsUR5jQL4TeYVjFcGvEx1KZEW+Qfm03h1Rgiqa+X0Dj91
-	13kkj+Skffq7G1I0O5Ht+B06dPuKm0Oj8T7IBVSShOzOBLmB4iurnlG5LbXJv9TI62wiGcSVn
-	C/WII6eBdKcXx84cMt7SAF6AvnrpG4Tl6/z5p5bnYd0H9CFSynGkkgpMPQqY3DZCWjwPfsBzn
-	bj3s25lr6pnxdRuIh3X1vYhqmQRW1FtPku7S3nDl0XO84pzPP3y3YqNv7FvjcC+d9x+SGixsX
-	Kl9EFzBBMFKnv6jzsWI7nX9tFn3M79PbMWADwmm/ej9c8JN5888WcTMSmN5wcn4fkJTgELqz6
-	l631OJ7VfUXWprTO0jEPC9viWx2QJ4Vlg1BExzCkZrcfLwjcmGrBpIPL+9lQb+EoAYHIwzEua
-	HTNL3poD+Ou6ImDLrY/ovkPVCTMoCLIX+cltMQmpubZ2CNk0/c1HOflOnvz9Y6Ctwl81zjqSj
-	Oa3qQGm8uTXAzsxnssnSNjG0CNr5ETfFjzWCGZJITL3VA7lJMQBOU6q1nhWujlMl/eu1Xi4ug
-	HQwWdWVYHHFgb0jDoiHPP/DR1EEdfZU+f6UrIQ==
+X-Provags-ID: V03:K1:bn7cnTR+eiZqq/aJtEMxDtq3cvIV45cRfkXMqTtT6HyPuRIMM/0
+	doczfiGvxhpwHIp0S+DIT2g3QKjdm7mLVRW84orkdkUp1kc/imDBIvSNmFo92maXOCULrWt
+	u/obgNZgjiIweAKgG9QimHwG4JUVJ1PomhAfg/vSTRSvupOdTRpBt+oKGw1vtocB3S5HpAs
+	7fSXE9WrNkVfjsf57p9/Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:LzwBIm6mYS4=:G9glWamBRQMrNFzjY0Mozv
+	6MTLf8x01VKCKhk8OGu7r0ROQfe1s0xOjUx4XIj8qG0gS4mAqEvyIZw+DlSn/pAAQ27bQQVfA
+	7W0nn/h6OdaHOiDUcmAb7e3j5khkwqFALQ166DCdfG3vlz6a0Aq38sbLSHEAvdPCOKFPgf88k
+	xjXMjwY+ucexOVmccU6wT/43aBp2Bi6mJ2vXX9RkLtqi08aLkaWUDSc6/yUiwL+/LOZONr4W/
+	UI+bw9ERLfW9NmIAa0ZGIIRY9mQaVcOzNPdRjN9Kb0Xzn20IMqyF3muXsunwiCKCdOCUm3TXV
+	bfuy2WSyb17LapseAk9UeFY6rhI4AZiZjUo/oHZEsoWPlpHbksH7DZR5CoEvajdYTCMuec/ew
+	9rA3zEKhSYth/hjrwGF8Xypb/d4wI+GXvVMISstVDfUukh/XNQANwlkJscwGshBSGLxvtFJtB
+	GwVikWbbBrMk+CLFln3ajA67ksFvQriHLb0uK/8str4BrmHYGDgAw+LNFLzoDWISq9KN1Eupa
+	Uji6L5eJDYJ5BEheTycErwz+pItzVIE9LHxXGzixPxozIz2P6luycrFzz48VjGMOp1fL4FykR
+	YTbxrOSwkSOSBIj4nU5x77yMCBhmhjsYZGWYMTq5qUgRcTk5g14jH6hFJxyEr7uAFy6hy5ZEn
+	FX9D+qx9k8zcBlRHPSYSZjxErLW7ff4TApubGNA961MqWLttynS9HaaEk79VmL21egPlybmTD
+	jPRm4SUV8Pm7QKYbYBB6hK51+anfNBGF5ztDH7iMEBWyf09usVcDBgpzOzA=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: [Qemu-trivial] [PULL 14/14] configure: improve usbfs check
+X-Received-From: 212.227.126.135
+Subject: [Qemu-trivial] [PULL 10/14] kvm: Add kvm_set_ioeventfd* traces
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,65 +66,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Feb 2019 10:48:17 -0000
+X-List-Received-Date: Thu, 14 Feb 2019 10:48:16 -0000
 
-From: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
-The current check to test if usbfs support should be compiled or not
-solely relies on the presence of <linux/usbdevice_fs.h>, without
-actually checking that all definition used by Qemu are provided by
-this header file.
+Add a couple of traces around the kvm_set_ioeventfd* calls.
 
-With sufficiently old kernel headers, <linux/usbdevice_fs.h> may be
-present, but some of the definitions needed by Qemu may not be
-available.
-
-This commit improves the check by building a small program that
-actually tests whether the necessary definitions are available.
-
-In addition, it fixes a bug where have_usbfs was set to "yes"
-regardless of the result of the test.
-
-Signed-off-by: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20190213211827.20300-1-thomas.petazzoni@bootlin.com>
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Message-Id: <20190212134758.10514-4-dgilbert@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure | 19 +++++++++++++++++--
- 1 file changed, 17 insertions(+), 2 deletions(-)
+ accel/kvm/kvm-all.c    | 3 +++
+ accel/kvm/trace-events | 2 ++
+ 2 files changed, 5 insertions(+)
 
-diff --git a/configure b/configure
-index c0f278141823..90b9e2fa3c05 100755
---- a/configure
-+++ b/configure
-@@ -4262,10 +4262,25 @@ fi
- # check for usbfs
- have_usbfs=no
- if test "$linux_user" = "yes"; then
--  if check_include linux/usbdevice_fs.h; then
-+  cat > $TMPC << EOF
-+#include <linux/usbdevice_fs.h>
-+
-+#ifndef USBDEVFS_GET_CAPABILITIES
-+#error "USBDEVFS_GET_CAPABILITIES undefined"
-+#endif
-+
-+#ifndef USBDEVFS_DISCONNECT_CLAIM
-+#error "USBDEVFS_DISCONNECT_CLAIM undefined"
-+#endif
-+
-+int main(void)
-+{
-+    return 0;
-+}
-+EOF
-+  if compile_prog "" ""; then
-     have_usbfs=yes
-   fi
--  have_usbfs=yes
- fi
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 4e1de942ce55..fd92b6f37547 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -657,6 +657,8 @@ static int kvm_set_ioeventfd_mmio(int fd, hwaddr addr, uint32_t val,
+         .fd = fd,
+     };
  
- # check for fallocate
++    trace_kvm_set_ioeventfd_mmio(fd, (uint64_t)addr, val, assign, size,
++                                 datamatch);
+     if (!kvm_enabled()) {
+         return -ENOSYS;
+     }
+@@ -688,6 +690,7 @@ static int kvm_set_ioeventfd_pio(int fd, uint16_t addr, uint16_t val,
+         .fd = fd,
+     };
+     int r;
++    trace_kvm_set_ioeventfd_pio(fd, addr, val, assign, size, datamatch);
+     if (!kvm_enabled()) {
+         return -ENOSYS;
+     }
+diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
+index 58e98efe5dea..8841025d6895 100644
+--- a/accel/kvm/trace-events
++++ b/accel/kvm/trace-events
+@@ -12,5 +12,7 @@ kvm_irqchip_commit_routes(void) ""
+ kvm_irqchip_add_msi_route(char *name, int vector, int virq) "dev %s vector %d virq %d"
+ kvm_irqchip_update_msi_route(int virq) "Updating MSI route virq=%d"
+ kvm_irqchip_release_virq(int virq) "virq %d"
++kvm_set_ioeventfd_mmio(int fd, uint64_t addr, uint32_t val, bool assign, uint32_t size, bool datamatch) "fd: %d @0x%" PRIx64 " val=0x%x assign: %d size: %d match: %d"
++kvm_set_ioeventfd_pio(int fd, uint16_t addr, uint32_t val, bool assign, uint32_t size, bool datamatch) "fd: %d @0x%x val=0x%x assign: %d size: %d match: %d"
+ kvm_set_user_memory(uint32_t slot, uint32_t flags, uint64_t guest_phys_addr, uint64_t memory_size, uint64_t userspace_addr, int ret) "Slot#%d flags=0x%x gpa=0x%"PRIx64 " size=0x%"PRIx64 " ua=0x%"PRIx64 " ret=%d"
+ 
 -- 
 2.20.1
 
