@@ -1,56 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guCZV-0005KY-Nd
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 03:40:41 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42371)
+	id 1guCjC-0000Q1-Gf
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Feb 2019 03:50:42 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:45389)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1guCZS-0005HU-TC
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 03:40:39 -0500
+	(envelope-from <richardw.yang@linux.intel.com>) id 1guCjA-0000Ob-8i
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 03:50:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1guCZQ-0000h6-Rb
-	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 03:40:38 -0500
-Received: from mga05.intel.com ([192.55.52.43]:41261)
+	(envelope-from <richardw.yang@linux.intel.com>) id 1guCj5-0002Wr-1f
+	for qemu-trivial@nongnu.org; Thu, 14 Feb 2019 03:50:37 -0500
+Received: from mga05.intel.com ([192.55.52.43]:41876)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1guCZQ-0000UN-Cy; Thu, 14 Feb 2019 03:40:36 -0500
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+	id 1guCj1-0002QD-R0; Thu, 14 Feb 2019 03:50:33 -0500
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
 	by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	14 Feb 2019 00:40:22 -0800
+	14 Feb 2019 00:50:21 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.58,368,1544515200"; d="scan'208";a="299662662"
+X-IronPort-AV: E=Sophos;i="5.58,368,1544515200"; d="scan'208";a="126382329"
 Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
-	by orsmga005.jf.intel.com with ESMTP; 14 Feb 2019 00:40:19 -0800
-Date: Thu, 14 Feb 2019 16:39:55 +0800
+	by orsmga003.jf.intel.com with ESMTP; 14 Feb 2019 00:50:19 -0800
 From: Wei Yang <richardw.yang@linux.intel.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: Wei Yang <richardw.yang@linux.intel.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, imammedo@redhat.com
-Message-ID: <20190214083955.GA20090@richard>
-Reply-To: Wei Yang <richardw.yang@linux.intel.com>
-References: <20190212052224.GA4839@richard>
-	<20190212003414-mutt-send-email-mst@kernel.org>
-	<4d6f639b-fe11-7048-3975-ee1c1875b8d3@vivier.eu>
-	<3d700eed-5637-b05a-63c2-9f73a465bcb5@redhat.com>
-	<af33ffd7-a134-4d61-40ee-b128f5104153@vivier.eu>
-	<20190214000317.GA19899@richard>
-	<3dd545f2-5346-2b01-8725-5f35cbaa0ae5@vivier.eu>
-	<d69dd1c9-aa58-4b03-6b9c-1cde7bed83cb@vivier.eu>
-	<20190214081828.GA19789@richard>
-	<33fc1da2-144b-22b5-bcb1-f85fab64b623@vivier.eu>
+To: qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: mst@redhat.com, laurent@vivier.eu, imammedo@redhat.com, philmd@redhat.com,
+	thuth@redhat.com, Wei Yang <richardw.yang@linux.intel.com>
+Date: Thu, 14 Feb 2019 16:49:36 +0800
+Message-Id: <20190214084939.20640-1-richardw.yang@linux.intel.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <33fc1da2-144b-22b5-bcb1-f85fab64b623@vivier.eu>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 192.55.52.43
-Subject: Re: [Qemu-trivial] [PATCH v3 0/3] Trivial cleanup in hw/acpi
+Subject: [Qemu-trivial] [Patch v4 0/3] Trivial cleanup in hw/acpi
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,117 +47,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Feb 2019 08:40:40 -0000
+X-List-Received-Date: Thu, 14 Feb 2019 08:50:41 -0000
 
-On Thu, Feb 14, 2019 at 09:23:39AM +0100, Laurent Vivier wrote:
->On 14/02/2019 09:18, Wei Yang wrote:
->> On Thu, Feb 14, 2019 at 09:10:14AM +0100, Laurent Vivier wrote:
->>> On 14/02/2019 08:57, Laurent Vivier wrote:
->>>> On 14/02/2019 01:03, Wei Yang wrote:
->>>>> On Wed, Feb 13, 2019 at 02:45:01PM +0100, Laurent Vivier wrote:
->>>>>> On 13/02/2019 09:56, Philippe Mathieu-Daudé wrote:
->>>>>>> Hi Laurent,
->>>>>>>
->>>>>>> On 2/13/19 9:49 AM, Laurent Vivier wrote:
->>>>>>>> On 12/02/2019 06:34, Michael S. Tsirkin wrote:
->>>>>>>>> On Tue, Feb 12, 2019 at 01:22:24PM +0800, Wei Yang wrote:
->>>>>>>>>> On Wed, Jan 30, 2019 at 08:06:50AM +0800, Wei Yang wrote:
->>>>>>>>>>> There are several functions/variable which are not used anymore.
->>>>>>>>>>>
->>>>>>>>>>> This serials just remove those without functional change.
->>>>>>>>>>>
->>>>>>>>>>> v3: add ack and repost in a new thread
->>>>>>>>>>> v2: change commit log from "is now used in no place" to "in not used anymore"
->>>>>>>>>>
->>>>>>>>>> Michael,
->>>>>>>>>>
->>>>>>>>>> Looks this serials is not merged yet.
->>>>>>>>>>
->>>>>>>>>> Is there any problem I need to fix?
->>>>>>>>>
->>>>>>>>> Yes pls repost with fixed reviewed-by tags.
->>>>>>>>
->>>>>>>> Or I can take the series through the trivial branch and update manually
->>>>>>>> Philippe's lastname?
->>>>>>>
->>>>>>> I appreciate the help with manual update, however Wei is not the only
->>>>>>> one having this problem (other developpers has non-ASCII in their name,
->>>>>>> and use such tags).
->>>>>>> I'd rather prefer we find a proper configuration setup to help the
->>>>>>> community.
->>>>>>
->>>>>> I'm wondering if it can be a problem with cut'n'paste rather than with
->>>>>> git-sendemail.
->>>>>>
->>>>>> I think the following tags should cover Latin and Chinese characters:
->>>>>>
->>>>>> Content-Type: text/plain; charset=UTF-8
->>>>>> Content-Transfer-Encoding: 8bit
->>>>>>
->>>>>
->>>>> Looks not work.
->>>>>
->>>>> I have tried this and also with 
->>>>>
->>>>> Content-Language: en-US
->>>>
->>>> Could  you send me a gzipped version of the 0001-XXX.patch in attachment
->>>> so I could see the real content before git-send-email?
->>>
->>> OK, I've got it.
->>>
->>> What I see is it is already corrupted, thus the problem is not with
->>> git-send-email.
->>>
->>> So either it is corrupted by git-format-patch (which is very unlikely,
->>> we could see that if you push it to a public git repo) or it has been
->>> corrupted when you have added it to the commit message.
->>>
->> 
->> Hmm... maybe you are right.
->> 
->> But I found confused how to fix this.
->> 
->> When I use git commit --amend to fix it, the character looks good in my
->> editor. I use vim as my git editor.
->> 
->> But when I use git show, it display an unknown character.
->> 
->> And if I use git format-patch, the patch file looks good in my vim editor. But
->> corrupted if I use another editor.
->> 
->> Do you have any idea on this?
->
->What is the result of command "locale" in your terminal?
->How do you copy the characters to vim?
->
+There are several functions/variable which are not used anymore.
 
-My locale output:
+This serials just remove those without functional change.
 
-    $ locale
-    LANG=en_US.UTF-8
-    LANGUAGE=
-    LC_CTYPE="en_US.UTF-8"
-    LC_NUMERIC=zh_CN.UTF-8
-    LC_TIME=zh_CN.UTF-8
-    LC_COLLATE="en_US.UTF-8"
-    LC_MONETARY=zh_CN.UTF-8
-    LC_MESSAGES="en_US.UTF-8"
-    LC_PAPER=zh_CN.UTF-8
-    LC_NAME=zh_CN.UTF-8
-    LC_ADDRESS=zh_CN.UTF-8
-    LC_TELEPHONE=zh_CN.UTF-8
-    LC_MEASUREMENT=zh_CN.UTF-8
-    LC_IDENTIFICATION=zh_CN.UTF-8
-    LC_ALL=
+v4: fix reviewed-by tags
+v3: add ack and repost in a new thread
+v2: change commit log from "is now used in no place" to "in not used anymore"
 
-I copy&paste the character from mutt to vim. Let me see if it would work if I
-save the character from mutt mail itself.
+Wei Yang (3):
+  hw/i386/pc.c: remove unused function pc_acpi_init()
+  hw/acpi: remove unused function acpi_table_add_builtin()
+  hw/acpi: remove unnecessary variable acpi_table_builtin
 
->Thanks,
->Laurent
+ hw/acpi/core.c         | 10 +---------
+ hw/i386/pc.c           | 27 ---------------------------
+ include/hw/acpi/acpi.h |  1 -
+ include/hw/i386/pc.h   |  1 -
+ 4 files changed, 1 insertion(+), 38 deletions(-)
 
 -- 
-Wei Yang
-Help you, Help me
+2.19.1
+
 
