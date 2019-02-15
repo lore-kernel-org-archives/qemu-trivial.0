@@ -1,39 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1guhHL-0005kV-KJ
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Feb 2019 12:27:59 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:40178)
+	id 1guhJ3-00073P-3c
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Feb 2019 12:29:45 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:40586)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1guhHJ-0005i0-LG
-	for qemu-trivial@nongnu.org; Fri, 15 Feb 2019 12:27:58 -0500
+	(envelope-from <thuth@redhat.com>) id 1guhJ1-000721-KU
+	for qemu-trivial@nongnu.org; Fri, 15 Feb 2019 12:29:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1guhHH-0007EF-DB
-	for qemu-trivial@nongnu.org; Fri, 15 Feb 2019 12:27:57 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:39690)
+	(envelope-from <thuth@redhat.com>) id 1guhIz-0000Lz-Qt
+	for qemu-trivial@nongnu.org; Fri, 15 Feb 2019 12:29:43 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:41214)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1guhGz-0006rq-K1; Fri, 15 Feb 2019 12:27:37 -0500
+	id 1guhIv-0000Bp-7d; Fri, 15 Feb 2019 12:29:39 -0500
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
 	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 948B9C0AD438;
-	Fri, 15 Feb 2019 17:27:25 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8B09DC074F00;
+	Fri, 15 Feb 2019 17:29:34 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-73.ams2.redhat.com [10.36.116.73])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 29A0E600C5;
-	Fri, 15 Feb 2019 17:27:08 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9ACC0600C7;
+	Fri, 15 Feb 2019 17:29:20 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org
+	qemu-devel@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>
 Cc: Eduardo Habkost <ehabkost@redhat.com>,
 	"Michael S . Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
-	Helge Deller <deller@gmx.de>, Cornelia Huck <cohuck@redhat.com>,
+	Helge Deller <deller@gmx.de>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Markus Armbruster <armbru@redhat.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Luc Michel <luc.michel@greensocs.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, 
+	Markus Armbruster <armbru@redhat.com>, Luc Michel
+	<luc.michel@greensocs.com>, Paolo Bonzini <pbonzini@redhat.com>,
 	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
 References: <20181218115615.1499-1-philmd@redhat.com>
-	<20181218115615.1499-2-philmd@redhat.com>
+	<20181218115615.1499-5-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -79,23 +78,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <a6acfd6f-52f2-1e45-52e4-81920f5949ee@redhat.com>
-Date: Fri, 15 Feb 2019 18:27:08 +0100
+Message-ID: <e692c549-ae11-bd08-d494-96dff03dab6e@redhat.com>
+Date: Fri, 15 Feb 2019 18:29:19 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.5.0
 MIME-Version: 1.0
-In-Reply-To: <20181218115615.1499-2-philmd@redhat.com>
+In-Reply-To: <20181218115615.1499-5-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
 	(mx1.redhat.com [10.5.110.31]);
-	Fri, 15 Feb 2019 17:27:25 +0000 (UTC)
+	Fri, 15 Feb 2019 17:29:34 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 01/12] MAINTAINERS: Add
- missing entries to the X86 section (AMD SEV)
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 04/12] MAINTAINERS: Add
+ missing entries to VFIO and NVMe
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,30 +106,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Feb 2019 17:27:58 -0000
+X-List-Received-Date: Fri, 15 Feb 2019 17:29:44 -0000
 
 On 18/12/2018 12.56, Philippe Mathieu-Daud=C3=A9 wrote:
+> The VFIO helpers are used by the NVMe block driver, add the
+> entries to both sections.
+>=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
-> v2: Moved from TCG to KVM section
+> v2: add util/vfio-helpers.c, add entries to NVMe section
 > ---
->  MAINTAINERS | 2 ++
->  1 file changed, 2 insertions(+)
+>  MAINTAINERS | 5 +++++
+>  1 file changed, 5 insertions(+)
 >=20
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 83c127f0d6..771b1c7b94 100644
+> index f3305a65b6..7a94b0dab3 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -392,7 +392,9 @@ M: Marcelo Tosatti <mtosatti@redhat.com>
->  L: kvm@vger.kernel.org
+> @@ -1365,7 +1365,10 @@ VFIO
+>  M: Alex Williamson <alex.williamson@redhat.com>
 >  S: Supported
->  F: target/i386/kvm.c
-> +F: include/sysemu/sev.h
+>  F: hw/vfio/*
+> +F: util/vfio-helpers.c
+>  F: include/hw/vfio/
+> +F: include/qemu/vfio-helpers.h
+> +F: docs/igd-assign.txt
+> =20
+>  vfio-ccw
+>  M: Cornelia Huck <cohuck@redhat.com>
+> @@ -2290,6 +2293,8 @@ M: Fam Zheng <fam@euphon.net>
+>  L: qemu-block@nongnu.org
+>  S: Supported
+>  F: block/nvme*
+> +F: util/vfio-helpers.c
+> +F: include/qemu/vfio-helpers.h
+> =20
+>  Bootdevice
+>  M: Gonglei <arei.gonglei@huawei.com>
+>=20
 
-Shouldn't this then include target/i386/sev.c, too?
-
->  F: scripts/kvm/vmxcap
-> +F: docs/amd-memory-encryption.txt
+Cornelia? Alex? ... Ack? NAck?
 
  Thomas
 
