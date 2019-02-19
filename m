@@ -1,67 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gwDaw-0000ii-V4
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 17:10:30 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41787)
+	id 1gwDbG-0000v5-GA
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 17:10:50 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41834)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1gwDav-0000TE-LK
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 17:10:30 -0500
+	(envelope-from <richard.weiyang@gmail.com>) id 1gwDbE-0000V5-9Z
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 17:10:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1gwDV6-0002vD-BO
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 17:04:32 -0500
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:42670)
+	(envelope-from <richard.weiyang@gmail.com>) id 1gwDTw-0002TL-Ej
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 17:03:18 -0500
+Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:41747)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.weiyang@gmail.com>)
-	id 1gwDUy-0002tg-DS; Tue, 19 Feb 2019 17:04:22 -0500
-Received: by mail-ed1-x544.google.com with SMTP id j89so8738375edb.9;
-	Tue, 19 Feb 2019 14:04:20 -0800 (PST)
+	id 1gwDTs-00027N-6n; Tue, 19 Feb 2019 17:03:12 -0500
+Received: by mail-ed1-x541.google.com with SMTP id x7so18126285eds.8;
+	Tue, 19 Feb 2019 14:03:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=5zNCoLmtbd0RlX8/I0PC0aMRQpSWhn2lAFmZA/SfAl4=;
-	b=QzwROhjRzsMu+msa05RXdZ8AZzl40zsosp6I8eXFpR59Vi4kO/MGzQ7BJ+o7ZB1mRz
-	dimG/29NOLlUfaQxUblaZQiu4XnZCURa2qtSGQyxjFV7QIV3RjQpXdVrfq5go8lweFev
-	mIhXYynaK0W/DUXQKkR2eMnKGjCARsN5Dg3ktZZoF3S94dqP6t9IfQzKxvs++6+8feOS
-	6AMSF2Da97eAj9pN9e8U5u2Sl0tHt8xImee+uFQsZ1tcRuyXPDZWwyrW1QRdAgRz4el0
-	46Kyy+p+sCX4rFaozupx6IDHFNBtPrs9J81I5/6qhyVVlSniiFhA2GUFu29M2iLeFZsr
-	+pzw==
+	:content-disposition:content-transfer-encoding:in-reply-to
+	:user-agent; bh=CdvrOKqF/VdSub6a48SrsOVhU4vQkGhwxL6/SiwN+cA=;
+	b=SQ7bLbw9t/4enaDOQ0kfLAzE7NcVGgy3TobHQQ1EhQMpoT6FRfsWvWuM8E0ATzjqVZ
+	HNcjcjf4SOKJ1Yfo0DskiTrA9hiXe+XWJ+J3rOccBOxDOdqNhYuKdlHGLEfskxHduTUi
+	cxT36m/aE76eiy+neKK0zGqnL39Lo5bDovVU7iYyEFMr9e6Gea244yXBfC5ORWAC3xHU
+	6VKVIzCsCRm/+YWAcqUe9TD+1HRM2XTjwnjOHU9bvL4YJsDy2wJjkFFomwpXaK/D3THj
+	reok1Hkq/TDcbefJWlvvIwI1WyJec40Qfbv7qR50tXVRYtE3SR+xVTLw9kim0bEoEU33
+	q4Dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
-	:references:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=5zNCoLmtbd0RlX8/I0PC0aMRQpSWhn2lAFmZA/SfAl4=;
-	b=ntLRsvVDs4gzS036JnmS8f0gj6a7EOlCToECmk7XQ6SegjXQs/MADtkrYWmIPYvU8B
-	liek0PNLWyTX6hx5MhIWDJqsURLzG8gVeO30V8yOVvOHpIKtvI6TKssEcoo/6AJYoSQm
-	2jtXkW82dRdMRPbhyZaxH4o9qyU2D5LH5vM4MLsoJUbhfgmtTmGprBa98qQn1DxMX6E/
-	78n1IZ6HEhKtlilOVk27useC07bbheMu60P3Xi+Vi0RL9v615FL4F2y65TAO/JoEBtbJ
-	RmZvKBVkUxu3VH8OCdJIymRoCCgAFzI527rMf4652Tz1OPUDTMLLnCkVKHd/6qhHZ5vS
-	BiOg==
-X-Gm-Message-State: AHQUAubcpWIbK2I7AcQ+C50Yougx65EhJIODE5KTYv3t/VENAViscMTb
-	RT1KQ58CYDHnx6myKOLEACHboHVC
-X-Google-Smtp-Source: AHgI3IZv9t7v6xAv9SduTnKXzz2lqmsoOGPcjS3JL39OkNWpB/sk+aO374bxMVMEAMfmH0e33acpmA==
-X-Received: by 2002:a50:bb0f:: with SMTP id y15mr6561317ede.107.1550613859210; 
-	Tue, 19 Feb 2019 14:04:19 -0800 (PST)
-Received: from localhost ([185.92.221.13])
-	by smtp.gmail.com with ESMTPSA id z7sm123571edl.59.2019.02.19.14.04.18
+	:references:mime-version:content-disposition
+	:content-transfer-encoding:in-reply-to:user-agent;
+	bh=CdvrOKqF/VdSub6a48SrsOVhU4vQkGhwxL6/SiwN+cA=;
+	b=okw/g9CgnAOVnbJrIpTIGcaozFqhwvX8tnKsxc/AStaMKdPnnEJrBMJO71aLJVhY4r
+	hSF83WAUbbmSdGlj/TFirj8LvaoX6XzW8SZrL9PDNGkH7uqEQGKsL2u9yDJyYKOE5HMW
+	sedHTyo3hLZK8LA3+7QA2JG3EbKqJjf/STkzeeuKvVYhsrjqzL8RmW48UFO6aKc/gtd0
+	53lp2+MfhyTVwknWFQo0krDMAAO9r5NK7/+d+U+TVyriw32k43gYmL7KH+BqKpvV6oTm
+	52fWhkxTJLoIISkx/mz1Q3KXSRzX0BYqqaxQnaiuHm+HepvlzkRfDeDrNh+Ue9Kn0gWB
+	RNVA==
+X-Gm-Message-State: AHQUAuYJrAwX9Ekt0bUDQTxO1JyZTR8vLDHenWoOBZLaVPzDrdX18p1q
+	AQdS67kP3Ja/7LV1VS2WgL0=
+X-Google-Smtp-Source: AHgI3IYgxBYt/BOqHbUp4V3mezxcZ3M3IiB4d6NAc5ylEMdgELu6aqQJXqLOYCBvWck5eH7dxGOk2g==
+X-Received: by 2002:a17:906:8cf:: with SMTP id
+	o15mr22285551eje.124.1550613786395; 
+	Tue, 19 Feb 2019 14:03:06 -0800 (PST)
+Received: from localhost ([185.92.221.13]) by smtp.gmail.com with ESMTPSA id
+	gf3sm3926558ejb.51.2019.02.19.14.03.05
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 19 Feb 2019 14:04:18 -0800 (PST)
-Date: Tue, 19 Feb 2019 22:04:18 +0000
+	Tue, 19 Feb 2019 14:03:05 -0800 (PST)
+Date: Tue, 19 Feb 2019 22:03:04 +0000
 From: Wei Yang <richard.weiyang@gmail.com>
 To: Eric Blake <eblake@redhat.com>
-Cc: Wei Yang <richardw.yang@linux.intel.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, imammedo@redhat.com, mjt@tls.msk.ru
-Message-ID: <20190219220418.qle4kfetwcdagr4q@master>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+	Wei Yang <richardw.yang@linux.intel.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	imammedo@redhat.com, mjt@tls.msk.ru
+Message-ID: <20190219220304.6mtpg44yry252glj@master>
 Reply-To: Wei Yang <richard.weiyang@gmail.com>
 References: <20190219013106.17538-1-richardw.yang@linux.intel.com>
 	<20190219013106.17538-2-richardw.yang@linux.intel.com>
-	<baff8fc6-8d22-02c8-6bea-5b1ede1d4bfa@redhat.com>
+	<e59b0920-4698-a0d1-7990-77d9e2202f9b@redhat.com>
+	<83037dad-5d57-2ebd-0038-27dd38975d3f@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <baff8fc6-8d22-02c8-6bea-5b1ede1d4bfa@redhat.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <83037dad-5d57-2ebd-0038-27dd38975d3f@redhat.com>
 User-Agent: NeoMutt/20170113 (1.7.2)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::544
+X-Received-From: 2a00:1450:4864:20::541
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] CODING_STYLE: specify
  the indent rule for multiline code
 X-BeenThere: qemu-trivial@nongnu.org
@@ -75,94 +81,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Feb 2019 22:10:30 -0000
+X-List-Received-Date: Tue, 19 Feb 2019 22:10:49 -0000
 
-On Tue, Feb 19, 2019 at 11:52:29AM -0600, Eric Blake wrote:
->On 2/18/19 7:31 PM, Wei Yang wrote:
->> We didn't specify the indent rule for multiline code here, which may
->> misleading users. And in current code, the code use different rules.
+On Tue, Feb 19, 2019 at 11:55:04AM -0600, Eric Blake wrote:
+>On 2/19/19 11:34 AM, Philippe Mathieu-Daudé wrote:
+>
 >> 
->> Add this rule in CODING_STYLE to make sure this is clear to every one.
+>> What is still unclear is what to do when a function name is over 60
+>> characters (you follow a library/API and can not shorten it), for example:
 >> 
->> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
->> Suggested-by: Igor Mammedov <imammedo@redhat.com>
->> ---
->>  CODING_STYLE | 26 ++++++++++++++++++++++++++
->>  1 file changed, 26 insertions(+)
+>> static void ccid_card_vscard_handle_message(PassthruState *card,
+>>     const VSCMsgHeader *scr_msg_header);
 >> 
->> diff --git a/CODING_STYLE b/CODING_STYLE
->> index ec075dedc4..73f66ca185 100644
->> --- a/CODING_STYLE
->> +++ b/CODING_STYLE
->> @@ -29,6 +29,32 @@ Spaces of course are superior to tabs because:
->>  
->>  Do not leave whitespace dangling off the ends of lines.
->>  
->> +1.1 Multiline Indent
->> +
->> +There are several places where indent is necessary:
->> +
->> + - struct definition
->> + - if/else
->> + - while/for
->> + - function definition & call
->> +
->> +All the above cases apply the same rule: indent with four spaces.
+>> What is the project guideline in this case?
 >
->Is this redundant with the earlier statement that "QEMU indents are four
->spaces."?
+>I don't know that we have an official guideline, but I've seen enough
+>code doing that. I've also seen this style:
 >
->> +
->> +While the last three case may face another situation: code should spread into
->> +several lines. In this case the rule is align the new line with first
->> +parentheses.
+>static void long_func_name(
+>    parameter one, parameter two)
+>{
+>    if (condition) {
+>        call_some_really_long_name(
+>            arg1,
+>            arg2);
+>    }
 >
->Grammar is awkward - the leading 'while' makes it sound like that you
->have a dependent clause, but then never provide the independent clause.
->Maybe a completely different wording is better:
->
->When breaking up a long line to fit within line widths, align the
->secondary lines just after the opening parenthesis of the first.
->
+>where even the first argument is put at an indentation of 4 from the
+>primary line.
 
-Sounds better.
+We should put this style in the example too?
 
->> +
->> +For example:
->> +
->> +    if (a == 1 &&
->> +        b == 2)
->> +
->
->Maybe:
->
->if (a == 1 &&
->    b == 2) {
->
->to match our later recommendations on always using {}.
->
-
-Yep.
-
->> +    while (a == 1 &&
->> +           b == 2)
->> +
->
->Similar.
->
->> +    do_something(arg1, arg2
->> +                 arg3)
->> +
->
->and here, I'd include the ';' to make it a valid statement.
->
-
-Reasonable.
-
->>  2. Line width
->>  
->>  Lines should be 80 characters; try not to make them longer.
->> 
 >
 >-- 
 >Eric Blake, Principal Software Engineer
