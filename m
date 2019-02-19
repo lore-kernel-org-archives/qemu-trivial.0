@@ -1,104 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gwA6N-0002hF-EV
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 13:26:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52787)
+	id 1gwAYL-0002Pr-K9
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 13:55:37 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:58559)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gwA6L-0002fT-CV
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 13:26:42 -0500
+	(envelope-from <philmd@redhat.com>) id 1gwAYJ-0002OM-EN
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 13:55:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gwA6J-0002mL-Av
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 13:26:41 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:28184)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1gwA5r-0002dc-Hq; Tue, 19 Feb 2019 13:26:13 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 618932FE568;
-	Tue, 19 Feb 2019 18:18:06 +0000 (UTC)
-Received: from [10.36.112.65] (ovpn-112-65.ams2.redhat.com [10.36.112.65])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 659D760139;
-	Tue, 19 Feb 2019 18:18:04 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
-	qemu-block@nongnu.org
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, yang.zhong@intel.com
-References: <1550591757-6192-1-git-send-email-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-	uUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <482a82e6-ce89-bb04-7a0f-a674397827a8@redhat.com>
-Date: Tue, 19 Feb 2019 19:18:02 +0100
+	(envelope-from <philmd@redhat.com>) id 1gwAYI-0008Mj-QE
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 13:55:35 -0500
+Received: from mail-wr1-f65.google.com ([209.85.221.65]:39323)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gwAYI-0008ML-K4
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 13:55:34 -0500
+Received: by mail-wr1-f65.google.com with SMTP id l5so22077852wrw.6
+	for <qemu-trivial@nongnu.org>; Tue, 19 Feb 2019 10:55:34 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=K1wOLINBQ1xKNOEotQ3RweNYiqU6CPGpjrMEUuJmD0w=;
+	b=s0s1w8CBuZlyWB3pFC7JXeBKqvPgXDc6l7WbM5GTqr7ajORMnrcu4gWymIwi3y2W4V
+	M0giO+m3OFBH/5drKiPygMi52RNKYTiosMAnOdnwYqPKejf2BAcZU8Khb5y9KkaQLRcg
+	w+bWtIvCgXRjcgMFOT5Ik9aTFu+KLKKaujpWtzHYSHFxfORU08eCMw4bxe1lxPKg8KT5
+	8ZbLcKscEwJE3EfDxgyAxf3v6tmwx+hvjnBP0k26PXUvD3KxtjS0ltKxjcw6HzuShBZ8
+	jvZj+ic25IeTnRxkNnaX/C/D3+c8O8m8dTgXcL7/o6muXcz0N890KlkZXO8GreVf34FX
+	FB5g==
+X-Gm-Message-State: AHQUAubdjz50JVHNV/vQ9Nm+fiCaBtLdG2WdpuiXocLtom4zQOmX1In/
+	k27A6m4AfpYPAnqOeVImWWWGFw==
+X-Google-Smtp-Source: AHgI3IazZrQnStWOksoNSKcADCmcJKVrD2ri62wQ4UUMUgi1RMvgBoP8ic4b4CcPitL4eSZYS/+BHw==
+X-Received: by 2002:a5d:5544:: with SMTP id g4mr21352431wrw.269.1550602533162; 
+	Tue, 19 Feb 2019 10:55:33 -0800 (PST)
+Received: from [192.168.1.37] (109.red-83-53-160.dynamicip.rima-tde.net.
+	[83.53.160.109]) by smtp.gmail.com with ESMTPSA id
+	y1sm17650605wrh.65.2019.02.19.10.55.31
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Tue, 19 Feb 2019 10:55:32 -0800 (PST)
+To: Eric Blake <eblake@redhat.com>, Wei Yang <richardw.yang@linux.intel.com>, 
+	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: imammedo@redhat.com, mjt@tls.msk.ru
+References: <20190219013106.17538-1-richardw.yang@linux.intel.com>
+	<20190219013106.17538-3-richardw.yang@linux.intel.com>
+	<ba83c335-c0f1-5190-33a9-f2f7f44c55f0@redhat.com>
+	<77cf32b1-6a4a-33c5-4b3c-8ba3245a4b23@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <2e584c55-5b40-4a29-b0ae-e53039e38a7d@redhat.com>
+Date: Tue, 19 Feb 2019 19:55:31 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	Thunderbird/60.5.0
 MIME-Version: 1.0
-In-Reply-To: <1550591757-6192-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <77cf32b1-6a4a-33c5-4b3c-8ba3245a4b23@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Tue, 19 Feb 2019 18:18:06 +0000 (UTC)
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] hw/ide/ich: Compile ich.c only if
- CONFIG_PCI is also set
+	[fuzzy]
+X-Received-From: 209.85.221.65
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] CODING_STYLE: indent
+ example code as all others
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -110,48 +71,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Feb 2019 18:26:42 -0000
+X-List-Received-Date: Tue, 19 Feb 2019 18:55:36 -0000
 
-On 19/02/19 16:55, Thomas Huth wrote:
-> With the upcoming Kconfig-like build system, it will be easy to
-> build also version of QEMU that only contain a single machine. Some
-> of these machines (like the ARM cubieboard) use CONFIG_AHCI for an
-> AHCI sysbus device, but do not use CONFIG_PCI since they do not feature
-> a PCI bus. In this case linking fails:
+On 2/19/19 6:56 PM, Eric Blake wrote:
+> On 2/19/19 11:38 AM, Philippe Mathieu-Daudé wrote:
 > 
-> ../hw/ide/ich.o: In function `pci_ich9_ahci_realize':
-> hw/ide/ich.c:124: undefined reference to `pci_allocate_irq'
-> hw/ide/ich.c:126: undefined reference to `pci_register_bar'
-> hw/ide/ich.c:128: undefined reference to `pci_register_bar'
-> hw/ide/ich.c:131: undefined reference to `pci_add_capability'
-> hw/ide/ich.c:147: undefined reference to `msi_init'
-> ../hw/ide/ich.o: In function `pci_ich9_uninit':
-> hw/ide/ich.c:158: undefined reference to `msi_uninit'
-> ../hw/ide/ich.o:(.data.rel+0x50): undefined reference to `vmstate_pci_device'
+>>> +    if (a == 1) {
+>>> +        /* Reads like: "If a equals 1" */
+>>
+>> I guess you found a bug in the documentation :)
+>>
+>> Since 8c06fbdf36bf4d the style asked is:
+>>
+>>     We now require Linux-kernel-style multiline comments:
+>>         /*
+>>          * line one
+>>          * line two
+>>          */
+>>
+>>> +        do_something();
 > 
-> Thus we must only compile ich.c if CONFIG_PCI is also set.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/ide/Makefile.objs | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/ide/Makefile.objs b/hw/ide/Makefile.objs
-> index a142add..dfe53af 100644
-> --- a/hw/ide/Makefile.objs
-> +++ b/hw/ide/Makefile.objs
-> @@ -9,6 +9,6 @@ common-obj-$(CONFIG_IDE_MMIO) += mmio.o
->  common-obj-$(CONFIG_IDE_VIA) += via.o
->  common-obj-$(CONFIG_MICRODRIVE) += microdrive.o
->  common-obj-$(CONFIG_AHCI) += ahci.o
-> -common-obj-$(CONFIG_AHCI) += ich.o
-> +common-obj-$(call land,$(CONFIG_AHCI),$(CONFIG_PCI)) += ich.o
->  common-obj-$(CONFIG_ALLWINNER_A10) += ahci-allwinner.o
->  common-obj-$(CONFIG_IDE_SII3112) += sii3112.o
+> We only require winged multiline comments when the comment is actually
+> multiline.  In this case, the comment is a one-liner, and is just fine
+> as written.
 
-What about defining CONFIG_AHCI_ICH instead?  It can wait until after
-Kconfig is merged.
+Hmm I have a series where I moved code and changed from /* one line */
+to the multi-line style, I wonder why and remember checkpatch errors.
+Maybe a side-effect from what b94e809d3e fixed.
 
-Paolo
+Anyway, Wei do you mind adding a multi-line example here too?
 
+With/without multi-line example:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+Thanks!
+
+Phil.
 
