@@ -1,64 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gw97I-0006dW-Hh
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 12:23:36 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36507)
+	id 1gw9IP-000888-TH
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 12:35:05 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41252)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gw97D-0006bC-1M
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 12:23:34 -0500
+	(envelope-from <philmd@redhat.com>) id 1gw9IM-000859-IE
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 12:35:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gw97B-0003IY-6b
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 12:23:30 -0500
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:38844)
+	(envelope-from <philmd@redhat.com>) id 1gw9IL-00037s-FR
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 12:35:02 -0500
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:51336)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gw97A-0003Fq-BD
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 12:23:29 -0500
-Received: by mail-wr1-f68.google.com with SMTP id v13so22860483wrw.5
-	for <qemu-trivial@nongnu.org>; Tue, 19 Feb 2019 09:23:27 -0800 (PST)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gw9IL-00035G-4h
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 12:35:01 -0500
+Received: by mail-wm1-f67.google.com with SMTP id n19so3705061wmi.1
+	for <qemu-trivial@nongnu.org>; Tue, 19 Feb 2019 09:35:01 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=WrafdI/nja7YZSyZd+KooMk+zhi7M85vwtjxStYANIE=;
-	b=dxHg9fqHP4LEhZiCD+4O3XR2ToLWelleVRRs/NUL2kHWpmGvaNHQQ4NTU8aAywXgsu
-	AHg8W4NsIKMPq/6taKtFTIAy6WlCW84sGymfCitXLfEn0QerTuEx0INn4Ww6eK24a4le
-	wE2xGAv0cUmouGJ0lVjYewtkDNU/wpFncTSyf5Gg1PazLQsHR9rEAuHL7ZnZYRn6T+PQ
-	QNGanI6DePP6Jdvzvg9PaIAcum7ZMh6ZrNI8hHOeaFObVoIAohG//IZby4/etMp5sl2f
-	rOo780fexVi/ZkscXZPux8v5QMcN4fRCq0uQ9F0yzrQTRiWCeZK3fpUn8m8kLi+0RkFB
-	oUEQ==
-X-Gm-Message-State: AHQUAuZCbtaD54jC6yVBwxRGQdaLs+UW9fdEsgbTYvZ3D35YHYjEdTzd
-	HA7ukrnSr4v62IVGdCMcKy1ueA==
-X-Google-Smtp-Source: AHgI3IY/VomAquuHwuH72Qvrt9gl3plDASJ5dYICJ92U6IMxpAX5NBJ+1d57BVjKbhFlBxkt/vswtg==
-X-Received: by 2002:a5d:604d:: with SMTP id j13mr14064011wrt.194.1550597006581;
-	Tue, 19 Feb 2019 09:23:26 -0800 (PST)
+	bh=5dZbDcoQLNC8uu3Lwi4qTguhttHiPbyvSNx7FTjQj5g=;
+	b=dMiKodpkLVpNaovgULzsLUqgRPddSXIrzMzbijSo03+FEp4F7DhOcge7E+9HlaM42G
+	Pr3y/qUKXFE5bIITrBklu80iflpR7//vJ1m/P1GeMbnlQhxN12hO1gMkObddtpWuFS6k
+	p3i7p/cddDemLYmi/IxMu2ZkNRkscg1poG4PujY94inTRU/Qryzp6vhduBAXL74reF9R
+	apjaZcoA1qIii/0krc8GysbU7GAYGcd/a8o5kAXIgZRhZS0AJFoL+O6cAHKfbOXYUbK6
+	/ITeXeKnVQuk6xxwDx+gGTV+uU9dXZL0w9UwsdpvNMfq2PqkFnSxL2+0F9mxbwo9u1zN
+	MiEA==
+X-Gm-Message-State: AHQUAubqg/rMrvJnyL1rFwQF1e67ocjHtZXnEmxhAnBvAeHMtgOZCvv8
+	A0cFHdxH+Lf3GnuaD+O/sVaZqg==
+X-Google-Smtp-Source: AHgI3IZANszGy1sBf7ALs6PrWwWHvdIS/xHkhhiy70kaeTdfPM/oO/tYLHhxnRNJmiRHmDBdyEzFQw==
+X-Received: by 2002:a1c:f50a:: with SMTP id t10mr3727062wmh.126.1550597699959; 
+	Tue, 19 Feb 2019 09:34:59 -0800 (PST)
 Received: from [192.168.1.37] (109.red-83-53-160.dynamicip.rima-tde.net.
 	[83.53.160.109]) by smtp.gmail.com with ESMTPSA id
-	e6sm19520072wrt.14.2019.02.19.09.23.25
+	d24sm53670168wrb.47.2019.02.19.09.34.58
 	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 19 Feb 2019 09:23:26 -0800 (PST)
-To: Thomas Huth <thuth@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-trivial@nongnu.org, yang.zhong@intel.com, qemu-devel@nongnu.org,
-	pbonzini@redhat.com
-References: <1550592459-7286-1-git-send-email-thuth@redhat.com>
+	Tue, 19 Feb 2019 09:34:59 -0800 (PST)
+To: Wei Yang <richardw.yang@linux.intel.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Cc: imammedo@redhat.com, mjt@tls.msk.ru
+References: <20190219013106.17538-1-richardw.yang@linux.intel.com>
+	<20190219013106.17538-2-richardw.yang@linux.intel.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <c633e9de-7219-57a8-0530-079034e4e6f2@redhat.com>
-Date: Tue, 19 Feb 2019 18:23:25 +0100
+Message-ID: <e59b0920-4698-a0d1-7990-77d9e2202f9b@redhat.com>
+Date: Tue, 19 Feb 2019 18:34:58 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.5.0
 MIME-Version: 1.0
-In-Reply-To: <1550592459-7286-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <20190219013106.17538-2-richardw.yang@linux.intel.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/pci/pci-stub: Add
- msi_enabled() and msi_notify() to the pci stubs
+X-Received-From: 209.85.128.67
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] CODING_STYLE: specify
+ the indent rule for multiline code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,42 +69,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Feb 2019 17:23:34 -0000
+X-List-Received-Date: Tue, 19 Feb 2019 17:35:04 -0000
 
-On 2/19/19 5:07 PM, Thomas Huth wrote:
-> Some machines have an AHCI adapter, but no PCI. To be able to
-> compile hw/ide/ahci.c without CONFIG_PCI, we still need the two
-> functions msi_enabled() and msi_notify() for linking.
-> This is required for the upcoming Kconfig-like build system, if
-> a user wants to compile a QEMU binary with just one machine that
-> has AHCI, but no PCI, like the ARM "cubieboard" for example.
+Hi,
+
+On 2/19/19 2:31 AM, Wei Yang wrote:
+> We didn't specify the indent rule for multiline code here, which may
+> misleading users. And in current code, the code use different rules.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
+> Add this rule in CODING_STYLE to make sure this is clear to every one.
+> 
+> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+> Suggested-by: Igor Mammedov <imammedo@redhat.com>
 > ---
->  hw/pci/pci-stub.c | 11 +++++++++++
->  1 file changed, 11 insertions(+)
+>  CODING_STYLE | 26 ++++++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
 > 
-> diff --git a/hw/pci/pci-stub.c b/hw/pci/pci-stub.c
-> index b941a0e..c04a5df 100644
-> --- a/hw/pci/pci-stub.c
-> +++ b/hw/pci/pci-stub.c
-> @@ -53,3 +53,14 @@ uint16_t pci_requester_id(PCIDevice *dev)
->      g_assert(false);
->      return 0;
->  }
+> diff --git a/CODING_STYLE b/CODING_STYLE
+> index ec075dedc4..73f66ca185 100644
+> --- a/CODING_STYLE
+> +++ b/CODING_STYLE
+> @@ -29,6 +29,32 @@ Spaces of course are superior to tabs because:
+>  
+>  Do not leave whitespace dangling off the ends of lines.
+>  
+> +1.1 Multiline Indent
 > +
-> +/* Required by ahci.c */
-> +bool msi_enabled(const PCIDevice *dev)
-> +{
-> +    return false;
-> +}
+> +There are several places where indent is necessary:
 > +
-> +void msi_notify(PCIDevice *dev, unsigned int vector)
-> +{
-> +    g_assert_not_reached();
-> +}
+> + - struct definition
+> + - if/else
+> + - while/for
+> + - function definition & call
+> +
+> +All the above cases apply the same rule: indent with four spaces.
+> +
+> +While the last three case may face another situation: code should spread into
+> +several lines. In this case the rule is align the new line with first
+> +parentheses.
+> +
+> +For example:
+> +
+> +    if (a == 1 &&
+> +        b == 2)
+> +
+> +    while (a == 1 &&
+> +           b == 2)
+> +
+> +    do_something(arg1, arg2
+> +                 arg3)
+
+Thanks for clearing this.
+
+What is still unclear is what to do when a function name is over 60
+characters (you follow a library/API and can not shorten it), for example:
+
+static void ccid_card_vscard_handle_message(PassthruState *card,
+    const VSCMsgHeader *scr_msg_header);
+
+What is the project guideline in this case?
+(Cc'ed Peter).
+
+> +
+>  2. Line width
+>  
+>  Lines should be 80 characters; try not to make them longer.
 > 
 
