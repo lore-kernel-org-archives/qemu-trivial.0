@@ -1,31 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gwA4o-0001OV-Pe
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 13:25:06 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52456)
+	id 1gwA6N-0002hF-EV
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 13:26:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52787)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gwA4m-0001Ms-Px
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 13:25:05 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1gwA6L-0002fT-CV
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 13:26:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1gwA4m-0001e3-0a
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 13:25:04 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34996)
+	(envelope-from <pbonzini@redhat.com>) id 1gwA6J-0002mL-Av
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 13:26:41 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:28184)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1gwA4j-0001Zo-NH; Tue, 19 Feb 2019 13:25:01 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	id 1gwA5r-0002dc-Hq; Tue, 19 Feb 2019 13:26:13 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 33C3EC1047D5;
-	Tue, 19 Feb 2019 18:24:50 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 618932FE568;
+	Tue, 19 Feb 2019 18:18:06 +0000 (UTC)
 Received: from [10.36.112.65] (ovpn-112-65.ams2.redhat.com [10.36.112.65])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0D98861460;
-	Tue, 19 Feb 2019 18:24:42 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 659D760139;
+	Tue, 19 Feb 2019 18:18:04 +0000 (UTC)
+To: Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
+	qemu-block@nongnu.org
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, yang.zhong@intel.com
-References: <1550592459-7286-1-git-send-email-thuth@redhat.com>
+References: <1550591757-6192-1-git-send-email-thuth@redhat.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
@@ -83,23 +82,23 @@ Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
 	DduC0U3xYkfbGAUvbxeepjgzp0uEnBXfPTy09JGpgWbg0w91GyfT/ujKaGd4vxG2Ei+MMNDm
 	S1SMx7wu0evvQ5kT9NPzyq8R2GIhVSiAd2jioGuTjX6AZCFv3ToO53DliFMkVTecLptsXaes
 	uUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <a7eb2932-c72d-f9cf-c3c4-010f967ca743@redhat.com>
-Date: Tue, 19 Feb 2019 19:24:40 +0100
+Message-ID: <482a82e6-ce89-bb04-7a0f-a674397827a8@redhat.com>
+Date: Tue, 19 Feb 2019 19:18:02 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <1550592459-7286-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <1550591757-6192-1-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 19 Feb 2019 18:24:50 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 19 Feb 2019 18:18:06 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] hw/pci/pci-stub: Add msi_enabled() and
- msi_notify() to the pci stubs
+Subject: Re: [Qemu-trivial] [PATCH] hw/ide/ich: Compile ich.c only if
+ CONFIG_PCI is also set
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -111,56 +110,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Feb 2019 18:25:05 -0000
+X-List-Received-Date: Tue, 19 Feb 2019 18:26:42 -0000
 
-On 19/02/19 17:07, Thomas Huth wrote:
-> Some machines have an AHCI adapter, but no PCI. To be able to
-> compile hw/ide/ahci.c without CONFIG_PCI, we still need the two
-> functions msi_enabled() and msi_notify() for linking.
-> This is required for the upcoming Kconfig-like build system, if
-> a user wants to compile a QEMU binary with just one machine that
-> has AHCI, but no PCI, like the ARM "cubieboard" for example.
->=20
+On 19/02/19 16:55, Thomas Huth wrote:
+> With the upcoming Kconfig-like build system, it will be easy to
+> build also version of QEMU that only contain a single machine. Some
+> of these machines (like the ARM cubieboard) use CONFIG_AHCI for an
+> AHCI sysbus device, but do not use CONFIG_PCI since they do not feature
+> a PCI bus. In this case linking fails:
+> 
+> ../hw/ide/ich.o: In function `pci_ich9_ahci_realize':
+> hw/ide/ich.c:124: undefined reference to `pci_allocate_irq'
+> hw/ide/ich.c:126: undefined reference to `pci_register_bar'
+> hw/ide/ich.c:128: undefined reference to `pci_register_bar'
+> hw/ide/ich.c:131: undefined reference to `pci_add_capability'
+> hw/ide/ich.c:147: undefined reference to `msi_init'
+> ../hw/ide/ich.o: In function `pci_ich9_uninit':
+> hw/ide/ich.c:158: undefined reference to `msi_uninit'
+> ../hw/ide/ich.o:(.data.rel+0x50): undefined reference to `vmstate_pci_device'
+> 
+> Thus we must only compile ich.c if CONFIG_PCI is also set.
+> 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/pci/pci-stub.c | 11 +++++++++++
->  1 file changed, 11 insertions(+)
->=20
-> diff --git a/hw/pci/pci-stub.c b/hw/pci/pci-stub.c
-> index b941a0e..c04a5df 100644
-> --- a/hw/pci/pci-stub.c
-> +++ b/hw/pci/pci-stub.c
-> @@ -53,3 +53,14 @@ uint16_t pci_requester_id(PCIDevice *dev)
->      g_assert(false);
->      return 0;
->  }
-> +
-> +/* Required by ahci.c */
-> +bool msi_enabled(const PCIDevice *dev)
-> +{
-> +    return false;
-> +}
-> +
-> +void msi_notify(PCIDevice *dev, unsigned int vector)
-> +{
-> +    g_assert_not_reached();
-> +}
->=20
+>  hw/ide/Makefile.objs | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/ide/Makefile.objs b/hw/ide/Makefile.objs
+> index a142add..dfe53af 100644
+> --- a/hw/ide/Makefile.objs
+> +++ b/hw/ide/Makefile.objs
+> @@ -9,6 +9,6 @@ common-obj-$(CONFIG_IDE_MMIO) += mmio.o
+>  common-obj-$(CONFIG_IDE_VIA) += via.o
+>  common-obj-$(CONFIG_MICRODRIVE) += microdrive.o
+>  common-obj-$(CONFIG_AHCI) += ahci.o
+> -common-obj-$(CONFIG_AHCI) += ich.o
+> +common-obj-$(call land,$(CONFIG_AHCI),$(CONFIG_PCI)) += ich.o
+>  common-obj-$(CONFIG_ALLWINNER_A10) += ahci-allwinner.o
+>  common-obj-$(CONFIG_IDE_SII3112) += sii3112.o
 
-Makes sense, but it is also abstraction time. :)  What if instead there
-was a function
-
-void msi_allocate_irqs(PCIDevice *pdev, int num, bool fallback_to_intx);
-
-and then ich.c did
-
-    irqs =3D msi_allocate_irqs(pdev, 1, true);
-    s->irq =3D irqs[0];
-    g_free(irqs);
-
-?  "if msi_enabled raise MSI else raise INTX" is really a common idiom.
-
-Thanks,
+What about defining CONFIG_AHCI_ICH instead?  It can wait until after
+Kconfig is merged.
 
 Paolo
+
 
