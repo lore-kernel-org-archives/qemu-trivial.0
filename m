@@ -1,74 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gwDkr-0006Bx-Ei
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 17:20:45 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:44218)
+	id 1gwEg3-0004X3-TQ
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 18:19:51 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55009)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1gwDkp-0006Ak-7P
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 17:20:44 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1gwEg2-0004WA-6q
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 18:19:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1gwDko-0006UN-Hl
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 17:20:43 -0500
-Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:39910)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.weiyang@gmail.com>)
-	id 1gwDkk-0006Pd-Bo; Tue, 19 Feb 2019 17:20:40 -0500
-Received: by mail-ed1-x543.google.com with SMTP id p27so10618619edc.6;
-	Tue, 19 Feb 2019 14:20:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
-	:content-disposition:content-transfer-encoding:in-reply-to
-	:user-agent; bh=7ULve1EEwfa6MZIXA5DBi0S6rioKyDUp1ZiMc45G6zw=;
-	b=sEe0ex0kQf8gFtoXm93Hy0axs3t8ivOoyyPJ21M+P3TSKAEZRL+1sgG/uIj7F8WjQ+
-	0BBm/9kj95QZveQf/dVoGTqmMId9AaevNCLKIghP3ryyiE0ecq2UItlGpPmOnOWlb3kI
-	KtW82uQNPQge+P2HTWhgNL8r+2L2gGXNqb8g7KXjeFNJmdk6HgME21a0ME1t3Udukq+Z
-	Yiojrrfe8C/+szMmRl1APkOvbbTQrHNYKPQ0COD8NIKO3RLTxR6eAgqXeM8vOVtA9x3W
-	/VCksHaPzjY+R0i1LW6DRXFQC3p4o6CZVeej6USj7FvEMXKvWrMfulxOiEFI9kuTtGBZ
-	zKYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
-	:references:mime-version:content-disposition
-	:content-transfer-encoding:in-reply-to:user-agent;
-	bh=7ULve1EEwfa6MZIXA5DBi0S6rioKyDUp1ZiMc45G6zw=;
-	b=J3cV0I9tgzKAIeE2fQBIODCjNJI8+a8ecXUy1n++dZwjoOafsQnlX9Onp6uQvOMuA5
-	3j11GT/Q10Z/a/cNvQy5DeiUU8DtsRHLYmeWN2CjMCRSuB2UwJSO4hhmcj+E6799syKy
-	vVT+5A1+VFgN60lyG2wPNPuC5zm7cQIOOdVrg+saz2p5CV7wBtTH2rgsYIMACR6jSJje
-	YxsoNbKK91OWRjUanbS/cjBMUt2uVhr1Dg+X1B7VFXYj8GyTkJEIT3Xm9MqdpVwMSzxs
-	Xk3mPU0zAEMJr3wJeFyVaZCoFTQyeYwjQ86VyyuNErPzfKqs1CrOJD/UNOhZLpDqOhAD
-	Rv6Q==
-X-Gm-Message-State: AHQUAub79CqCxqzeao75IM4WQphLAqbv6SRe2cRYjQPhlAYXtRiTpuIz
-	NbkGJThp8RQd6qcXfFUV4eg=
-X-Google-Smtp-Source: AHgI3IYmtjgebV/DFHnbEnu8YMj08qGO1Z1op4Ezr9daVkRyrceYwjehfySU33B3ohH30CtgScYtuw==
-X-Received: by 2002:a50:a8c6:: with SMTP id k64mr24052137edc.138.1550614829164;
-	Tue, 19 Feb 2019 14:20:29 -0800 (PST)
-Received: from localhost ([185.92.221.13])
-	by smtp.gmail.com with ESMTPSA id j6sm5256818edd.43.2019.02.19.14.20.28
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 19 Feb 2019 14:20:28 -0800 (PST)
-Date: Tue, 19 Feb 2019 22:20:28 +0000
-From: Wei Yang <richard.weiyang@gmail.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: Eric Blake <eblake@redhat.com>,
-	Wei Yang <richardw.yang@linux.intel.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, imammedo@redhat.com, mjt@tls.msk.ru
-Message-ID: <20190219222028.y3wt6bgihmx73ptw@master>
-Reply-To: Wei Yang <richard.weiyang@gmail.com>
-References: <20190219013106.17538-1-richardw.yang@linux.intel.com>
-	<20190219013106.17538-3-richardw.yang@linux.intel.com>
-	<ba83c335-c0f1-5190-33a9-f2f7f44c55f0@redhat.com>
-	<77cf32b1-6a4a-33c5-4b3c-8ba3245a4b23@redhat.com>
-	<2e584c55-5b40-4a29-b0ae-e53039e38a7d@redhat.com>
+	(envelope-from <pbonzini@redhat.com>) id 1gwEft-0002p3-IZ
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 18:19:44 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:54426)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1gwEfl-0002mY-3M; Tue, 19 Feb 2019 18:19:34 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2127C821C3;
+	Tue, 19 Feb 2019 23:19:31 +0000 (UTC)
+Received: from colo-mx.corp.redhat.com
+	(colo-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.20])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id D979C5D6AA;
+	Tue, 19 Feb 2019 23:19:30 +0000 (UTC)
+Received: from zmail18.collab.prod.int.phx2.redhat.com
+	(zmail18.collab.prod.int.phx2.redhat.com [10.5.83.21])
+	by colo-mx.corp.redhat.com (Postfix) with ESMTP id 8C0B5181A000;
+	Tue, 19 Feb 2019 23:19:30 +0000 (UTC)
+Date: Tue, 19 Feb 2019 18:19:30 -0500 (EST)
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, 
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-devel@nongnu.org, 
+	qemu-trivial@nongnu.org, yang zhong <yang.zhong@intel.com>
+Message-ID: <1590333482.2281318.1550618370282.JavaMail.zimbra@redhat.com>
+In-Reply-To: <20190219152040-mutt-send-email-mst@kernel.org>
+References: <1550592459-7286-1-git-send-email-thuth@redhat.com>
+	<a7eb2932-c72d-f9cf-c3c4-010f967ca743@redhat.com>
+	<20190219152040-mutt-send-email-mst@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <2e584c55-5b40-4a29-b0ae-e53039e38a7d@redhat.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::543
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] CODING_STYLE: indent
- example code as all others
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [93.56.166.5, 10.4.196.6, 10.5.101.130, 10.4.195.6]
+Thread-Topic: hw/pci/pci-stub: Add msi_enabled() and msi_notify() to the pci
+	stubs
+Thread-Index: ElSzIYlDwW1SDslcZRNJBK2K9PWgqA==
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Tue, 19 Feb 2019 23:19:31 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] hw/pci/pci-stub: Add msi_enabled() and
+ msi_notify() to the pci stubs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,51 +63,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Feb 2019 22:20:44 -0000
+X-List-Received-Date: Tue, 19 Feb 2019 23:19:51 -0000
 
-On Tue, Feb 19, 2019 at 07:55:31PM +0100, Philippe Mathieu-Daudé wrote:
->On 2/19/19 6:56 PM, Eric Blake wrote:
->> On 2/19/19 11:38 AM, Philippe Mathieu-Daudé wrote:
->> 
->>>> +    if (a == 1) {
->>>> +        /* Reads like: "If a equals 1" */
->>>
->>> I guess you found a bug in the documentation :)
->>>
->>> Since 8c06fbdf36bf4d the style asked is:
->>>
->>>     We now require Linux-kernel-style multiline comments:
->>>         /*
->>>          * line one
->>>          * line two
->>>          */
->>>
->>>> +        do_something();
->> 
->> We only require winged multiline comments when the comment is actually
->> multiline.  In this case, the comment is a one-liner, and is just fine
->> as written.
->
->Hmm I have a series where I moved code and changed from /* one line */
->to the multi-line style, I wonder why and remember checkpatch errors.
->Maybe a side-effect from what b94e809d3e fixed.
->
->Anyway, Wei do you mind adding a multi-line example here too?
->
 
-A multi-line example for multiline comments?
+> > Makes sense, but it is also abstraction time. :)  What if instead there
+> > was a function
+> > 
+> > void msi_allocate_irqs(PCIDevice *pdev, int num, bool fallback_to_intx);
+> > 
+> > and then ich.c did
+> > 
+> >     irqs = msi_allocate_irqs(pdev, 1, true);
+> >     s->irq = irqs[0];
+> >     g_free(irqs);
+> > 
+> > ?  "if msi_enabled raise MSI else raise INTX" is really a common idiom.
+> > 
+> > Thanks,
+> > 
+> > Paolo
+> 
+> Maybe it is but the specific issue is not about fallback to INTX of PCI
+> (is the fallback broken for ahci? I don't know).
 
-This looks not relavant to this sectioin. I am afraid I will not add
-this example here. Sorry for that.
+It works, the above is just a new abstraction.
 
->With/without multi-line example:
->Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->
->Thanks!
->
->Phil.
+> The trick is there's no pdev at all.
 
--- 
-Wei Yang
-Help you, Help me
+The trick :) is that in ich.c there is a pdev.  Right now we are assigning to
+s->irq either the INTX irq (if PCI) or a sysbus irq (if sysbus), but then
+we need to know about MSI with a wrapper around s->irq.
+
+Instead, my suggestion is to put the wrapper in the PCI core as a qemu_irq
+callback---or perhaps in ich.c, but anyway ahci.c should not care that there
+could be a PCI AHCI device and it would have two different interrupt modes.
+In fact, doing this would also remove the need for s->container, I think.
+
+Paolo
 
