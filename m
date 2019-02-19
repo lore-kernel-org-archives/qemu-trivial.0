@@ -1,75 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gwDbG-0000v5-GA
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 17:10:50 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41834)
+	id 1gwDkr-0006Bx-Ei
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 17:20:45 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:44218)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1gwDbE-0000V5-9Z
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 17:10:49 -0500
+	(envelope-from <richard.weiyang@gmail.com>) id 1gwDkp-0006Ak-7P
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 17:20:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.weiyang@gmail.com>) id 1gwDTw-0002TL-Ej
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 17:03:18 -0500
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:41747)
+	(envelope-from <richard.weiyang@gmail.com>) id 1gwDko-0006UN-Hl
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 17:20:43 -0500
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:39910)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.weiyang@gmail.com>)
-	id 1gwDTs-00027N-6n; Tue, 19 Feb 2019 17:03:12 -0500
-Received: by mail-ed1-x541.google.com with SMTP id x7so18126285eds.8;
-	Tue, 19 Feb 2019 14:03:07 -0800 (PST)
+	id 1gwDkk-0006Pd-Bo; Tue, 19 Feb 2019 17:20:40 -0500
+Received: by mail-ed1-x543.google.com with SMTP id p27so10618619edc.6;
+	Tue, 19 Feb 2019 14:20:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
 	:content-disposition:content-transfer-encoding:in-reply-to
-	:user-agent; bh=CdvrOKqF/VdSub6a48SrsOVhU4vQkGhwxL6/SiwN+cA=;
-	b=SQ7bLbw9t/4enaDOQ0kfLAzE7NcVGgy3TobHQQ1EhQMpoT6FRfsWvWuM8E0ATzjqVZ
-	HNcjcjf4SOKJ1Yfo0DskiTrA9hiXe+XWJ+J3rOccBOxDOdqNhYuKdlHGLEfskxHduTUi
-	cxT36m/aE76eiy+neKK0zGqnL39Lo5bDovVU7iYyEFMr9e6Gea244yXBfC5ORWAC3xHU
-	6VKVIzCsCRm/+YWAcqUe9TD+1HRM2XTjwnjOHU9bvL4YJsDy2wJjkFFomwpXaK/D3THj
-	reok1Hkq/TDcbefJWlvvIwI1WyJec40Qfbv7qR50tXVRYtE3SR+xVTLw9kim0bEoEU33
-	q4Dg==
+	:user-agent; bh=7ULve1EEwfa6MZIXA5DBi0S6rioKyDUp1ZiMc45G6zw=;
+	b=sEe0ex0kQf8gFtoXm93Hy0axs3t8ivOoyyPJ21M+P3TSKAEZRL+1sgG/uIj7F8WjQ+
+	0BBm/9kj95QZveQf/dVoGTqmMId9AaevNCLKIghP3ryyiE0ecq2UItlGpPmOnOWlb3kI
+	KtW82uQNPQge+P2HTWhgNL8r+2L2gGXNqb8g7KXjeFNJmdk6HgME21a0ME1t3Udukq+Z
+	Yiojrrfe8C/+szMmRl1APkOvbbTQrHNYKPQ0COD8NIKO3RLTxR6eAgqXeM8vOVtA9x3W
+	/VCksHaPzjY+R0i1LW6DRXFQC3p4o6CZVeej6USj7FvEMXKvWrMfulxOiEFI9kuTtGBZ
+	zKYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
 	:references:mime-version:content-disposition
 	:content-transfer-encoding:in-reply-to:user-agent;
-	bh=CdvrOKqF/VdSub6a48SrsOVhU4vQkGhwxL6/SiwN+cA=;
-	b=okw/g9CgnAOVnbJrIpTIGcaozFqhwvX8tnKsxc/AStaMKdPnnEJrBMJO71aLJVhY4r
-	hSF83WAUbbmSdGlj/TFirj8LvaoX6XzW8SZrL9PDNGkH7uqEQGKsL2u9yDJyYKOE5HMW
-	sedHTyo3hLZK8LA3+7QA2JG3EbKqJjf/STkzeeuKvVYhsrjqzL8RmW48UFO6aKc/gtd0
-	53lp2+MfhyTVwknWFQo0krDMAAO9r5NK7/+d+U+TVyriw32k43gYmL7KH+BqKpvV6oTm
-	52fWhkxTJLoIISkx/mz1Q3KXSRzX0BYqqaxQnaiuHm+HepvlzkRfDeDrNh+Ue9Kn0gWB
-	RNVA==
-X-Gm-Message-State: AHQUAuYJrAwX9Ekt0bUDQTxO1JyZTR8vLDHenWoOBZLaVPzDrdX18p1q
-	AQdS67kP3Ja/7LV1VS2WgL0=
-X-Google-Smtp-Source: AHgI3IYgxBYt/BOqHbUp4V3mezxcZ3M3IiB4d6NAc5ylEMdgELu6aqQJXqLOYCBvWck5eH7dxGOk2g==
-X-Received: by 2002:a17:906:8cf:: with SMTP id
-	o15mr22285551eje.124.1550613786395; 
-	Tue, 19 Feb 2019 14:03:06 -0800 (PST)
-Received: from localhost ([185.92.221.13]) by smtp.gmail.com with ESMTPSA id
-	gf3sm3926558ejb.51.2019.02.19.14.03.05
+	bh=7ULve1EEwfa6MZIXA5DBi0S6rioKyDUp1ZiMc45G6zw=;
+	b=J3cV0I9tgzKAIeE2fQBIODCjNJI8+a8ecXUy1n++dZwjoOafsQnlX9Onp6uQvOMuA5
+	3j11GT/Q10Z/a/cNvQy5DeiUU8DtsRHLYmeWN2CjMCRSuB2UwJSO4hhmcj+E6799syKy
+	vVT+5A1+VFgN60lyG2wPNPuC5zm7cQIOOdVrg+saz2p5CV7wBtTH2rgsYIMACR6jSJje
+	YxsoNbKK91OWRjUanbS/cjBMUt2uVhr1Dg+X1B7VFXYj8GyTkJEIT3Xm9MqdpVwMSzxs
+	Xk3mPU0zAEMJr3wJeFyVaZCoFTQyeYwjQ86VyyuNErPzfKqs1CrOJD/UNOhZLpDqOhAD
+	Rv6Q==
+X-Gm-Message-State: AHQUAub79CqCxqzeao75IM4WQphLAqbv6SRe2cRYjQPhlAYXtRiTpuIz
+	NbkGJThp8RQd6qcXfFUV4eg=
+X-Google-Smtp-Source: AHgI3IYmtjgebV/DFHnbEnu8YMj08qGO1Z1op4Ezr9daVkRyrceYwjehfySU33B3ohH30CtgScYtuw==
+X-Received: by 2002:a50:a8c6:: with SMTP id k64mr24052137edc.138.1550614829164;
+	Tue, 19 Feb 2019 14:20:29 -0800 (PST)
+Received: from localhost ([185.92.221.13])
+	by smtp.gmail.com with ESMTPSA id j6sm5256818edd.43.2019.02.19.14.20.28
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 19 Feb 2019 14:03:05 -0800 (PST)
-Date: Tue, 19 Feb 2019 22:03:04 +0000
+	Tue, 19 Feb 2019 14:20:28 -0800 (PST)
+Date: Tue, 19 Feb 2019 22:20:28 +0000
 From: Wei Yang <richard.weiyang@gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: Eric Blake <eblake@redhat.com>,
 	Wei Yang <richardw.yang@linux.intel.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	imammedo@redhat.com, mjt@tls.msk.ru
-Message-ID: <20190219220304.6mtpg44yry252glj@master>
+	qemu-trivial@nongnu.org, imammedo@redhat.com, mjt@tls.msk.ru
+Message-ID: <20190219222028.y3wt6bgihmx73ptw@master>
 Reply-To: Wei Yang <richard.weiyang@gmail.com>
 References: <20190219013106.17538-1-richardw.yang@linux.intel.com>
-	<20190219013106.17538-2-richardw.yang@linux.intel.com>
-	<e59b0920-4698-a0d1-7990-77d9e2202f9b@redhat.com>
-	<83037dad-5d57-2ebd-0038-27dd38975d3f@redhat.com>
+	<20190219013106.17538-3-richardw.yang@linux.intel.com>
+	<ba83c335-c0f1-5190-33a9-f2f7f44c55f0@redhat.com>
+	<77cf32b1-6a4a-33c5-4b3c-8ba3245a4b23@redhat.com>
+	<2e584c55-5b40-4a29-b0ae-e53039e38a7d@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <83037dad-5d57-2ebd-0038-27dd38975d3f@redhat.com>
+In-Reply-To: <2e584c55-5b40-4a29-b0ae-e53039e38a7d@redhat.com>
 User-Agent: NeoMutt/20170113 (1.7.2)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::541
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] CODING_STYLE: specify
- the indent rule for multiline code
+X-Received-From: 2a00:1450:4864:20::543
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] CODING_STYLE: indent
+ example code as all others
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,42 +80,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Feb 2019 22:10:49 -0000
+X-List-Received-Date: Tue, 19 Feb 2019 22:20:44 -0000
 
-On Tue, Feb 19, 2019 at 11:55:04AM -0600, Eric Blake wrote:
->On 2/19/19 11:34 AM, Philippe Mathieu-Daudé wrote:
->
+On Tue, Feb 19, 2019 at 07:55:31PM +0100, Philippe Mathieu-Daudé wrote:
+>On 2/19/19 6:56 PM, Eric Blake wrote:
+>> On 2/19/19 11:38 AM, Philippe Mathieu-Daudé wrote:
 >> 
->> What is still unclear is what to do when a function name is over 60
->> characters (you follow a library/API and can not shorten it), for example:
+>>>> +    if (a == 1) {
+>>>> +        /* Reads like: "If a equals 1" */
+>>>
+>>> I guess you found a bug in the documentation :)
+>>>
+>>> Since 8c06fbdf36bf4d the style asked is:
+>>>
+>>>     We now require Linux-kernel-style multiline comments:
+>>>         /*
+>>>          * line one
+>>>          * line two
+>>>          */
+>>>
+>>>> +        do_something();
 >> 
->> static void ccid_card_vscard_handle_message(PassthruState *card,
->>     const VSCMsgHeader *scr_msg_header);
->> 
->> What is the project guideline in this case?
+>> We only require winged multiline comments when the comment is actually
+>> multiline.  In this case, the comment is a one-liner, and is just fine
+>> as written.
 >
->I don't know that we have an official guideline, but I've seen enough
->code doing that. I've also seen this style:
+>Hmm I have a series where I moved code and changed from /* one line */
+>to the multi-line style, I wonder why and remember checkpatch errors.
+>Maybe a side-effect from what b94e809d3e fixed.
 >
->static void long_func_name(
->    parameter one, parameter two)
->{
->    if (condition) {
->        call_some_really_long_name(
->            arg1,
->            arg2);
->    }
+>Anyway, Wei do you mind adding a multi-line example here too?
 >
->where even the first argument is put at an indentation of 4 from the
->primary line.
 
-We should put this style in the example too?
+A multi-line example for multiline comments?
 
+This looks not relavant to this sectioin. I am afraid I will not add
+this example here. Sorry for that.
+
+>With/without multi-line example:
+>Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 >
->-- 
->Eric Blake, Principal Software Engineer
->Red Hat, Inc.           +1-919-301-3226
->Virtualization:  qemu.org | libvirt.org
+>Thanks!
+>
+>Phil.
 
 -- 
 Wei Yang
