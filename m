@@ -1,58 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gwBvb-0006ye-W5
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 15:23:44 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50168)
+	id 1gwDal-0000YM-MM
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 17:10:19 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41834)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1gwBvZ-0006y3-UH
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 15:23:42 -0500
+	(envelope-from <richard.weiyang@gmail.com>) id 1gwDaj-0000V5-Oh
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 17:10:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1gwBvZ-0002jf-4X
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 15:23:41 -0500
-Received: from mail-qt1-f193.google.com ([209.85.160.193]:44371)
+	(envelope-from <richard.weiyang@gmail.com>) id 1gwDWg-0004PT-5J
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 17:06:06 -0500
+Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:34639)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mst@redhat.com>) id 1gwBvY-0002hK-VK
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 15:23:41 -0500
-Received: by mail-qt1-f193.google.com with SMTP id n32so24678162qte.11
-	for <qemu-trivial@nongnu.org>; Tue, 19 Feb 2019 12:23:35 -0800 (PST)
+	(Exim 4.71) (envelope-from <richard.weiyang@gmail.com>)
+	id 1gwDWe-0004KD-V1; Tue, 19 Feb 2019 17:06:05 -0500
+Received: by mail-ed1-x541.google.com with SMTP id b3so18199138ede.1;
+	Tue, 19 Feb 2019 14:05:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+	:content-disposition:content-transfer-encoding:in-reply-to
+	:user-agent; bh=pkPb1FfgvFeqz3Igzw3bt1zuUSLkxTReB8rhM6ZWcGk=;
+	b=XFVZsCEZ/fP9vmrnAIXoGZuVAkwW9qxHfpp24MdkDzKVebbwxd1epApgNUkPrZvaS+
+	ntMriNQP75Bf6huefOFikCS9Tcg7WqfT9iI47meKo31AxJAKKIusZgDVY5phqTzkAnv6
+	vxZV0lfU0Hl1K//L9Ift2AjyPSSlYt43PmNTKeNgDryGkh3kCpdFmHmAnAd39IP/VM+S
+	oWhKCtbbWjpfruquqbaNKnlJ0LeojU28EpTD4GxVl8/KNupW+gl96sD7NhirGej16U/w
+	GrPEb/JiW8alQLYCiqZqYn2KMELHZHKevDTXTHNcKnmjCV57oEGp/mY1VW7Jmi1g+J/3
+	A/Sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to;
-	bh=BApRYbieqMmHFHxzhuO740ugInRsuWpLe4g5OoKioXE=;
-	b=ePQCWlfGw248WBiYKtvjg7+k0hF8s7gW2P8TFMrgTnFi6o3MTlfIENxh8q3QNMJXjM
-	XqTxNWrqWSUZ1/3GDF9gziTCg6ncwFZf2usv/siDy27HXLDDbCAtirrYtJFc2OwByiOy
-	sP4UrEO0JHEfWK6WtwA/Go8mgHAK5Ykj7126/SARR/Lu1e209onnmJCxYGaSNjlti0V4
-	lSlMmNn76HC4Rde9pvc/EOM09Q3X73F/nHtp1fBgNbeIPhvgLYjB90q2p4dD5v6YNzg0
-	4yshK2frWC3SJ9iOB1uUsf3l9X4o1NU7oxUUlN3GeJpUlSbx6BP5RmcOgwjDLViwntBC
-	25ng==
-X-Gm-Message-State: AHQUAuZk03hPwR/WYeRgtiy3PyKC715lSDODBJavxd8v5xqAcYPYfluz
-	93Z8NEPMhX8Jk3XK91teEJPhxg==
-X-Google-Smtp-Source: AHgI3Ib8VUMeFEA6aRGTD4AjMW1tgvJuAjB3kBwEvPYjXGmGTysPSUfhq4PK1dUPF1hSDkXL6h2oWw==
-X-Received: by 2002:aed:23ae:: with SMTP id j43mr23832987qtc.318.1550607811025;
-	Tue, 19 Feb 2019 12:23:31 -0800 (PST)
-Received: from redhat.com (pool-173-76-246-42.bstnma.fios.verizon.net.
-	[173.76.246.42]) by smtp.gmail.com with ESMTPSA id
-	s72sm9691498qka.10.2019.02.19.12.23.29
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+	:references:mime-version:content-disposition
+	:content-transfer-encoding:in-reply-to:user-agent;
+	bh=pkPb1FfgvFeqz3Igzw3bt1zuUSLkxTReB8rhM6ZWcGk=;
+	b=m5HeG68jTMGAPDbJIIDmUNy7A18owy0vMbkef7DTC/19T4ieQO1xNSE5v3lYWDoMjJ
+	xPJvZTw1csW06g9SRWmFuY2oKOlFxVS3zGyu7h9/CyzDdv45uHcbyh/AeIJezKlqnPSZ
+	TNPJCb7VUbQa3wl2EZymTv043eT4qIjhewp5yFvgK/A8c/171wLRhcAJu8M2ZPRmUkKR
+	zXQmgqINH3hVHaRRLYRoiLORyreHAxWo5t7gnb1LFlm2EOpDehrxv8zYkW4ygwO4LlnV
+	loLNMvwch/ko01kHiPeaNX01EKk9lRFgjWgGwoUMaM7/OOhCK5uVBOgI99y58bN3iGsY
+	Ms6Q==
+X-Gm-Message-State: AHQUAuYN2QBogg9gNjjFbBpLzVkSlcH+oLpeXrMgi38/+R+vWRsRfiLW
+	3TgXnXWejy1BcOo1AY5gFus=
+X-Google-Smtp-Source: AHgI3Ib04HC0M8+p7FP3dyEx/g7mmr52We2vLPAFJkkIjXwpkRhaiw16SWvARwkowrdPWW8Lj0dsjQ==
+X-Received: by 2002:a50:9753:: with SMTP id d19mr16828861edb.143.1550613945300;
+	Tue, 19 Feb 2019 14:05:45 -0800 (PST)
+Received: from localhost ([185.92.221.13]) by smtp.gmail.com with ESMTPSA id
+	n60sm5008710edc.90.2019.02.19.14.05.44
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 19 Feb 2019 12:23:30 -0800 (PST)
-Date: Tue, 19 Feb 2019 15:23:28 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, yang.zhong@intel.com
-Message-ID: <20190219152040-mutt-send-email-mst@kernel.org>
-References: <1550592459-7286-1-git-send-email-thuth@redhat.com>
-	<a7eb2932-c72d-f9cf-c3c4-010f967ca743@redhat.com>
+	Tue, 19 Feb 2019 14:05:44 -0800 (PST)
+Date: Tue, 19 Feb 2019 22:05:44 +0000
+From: Wei Yang <richard.weiyang@gmail.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: Wei Yang <richardw.yang@linux.intel.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, imammedo@redhat.com, mjt@tls.msk.ru
+Message-ID: <20190219220544.g5uyxxxedmjuzfm3@master>
+Reply-To: Wei Yang <richard.weiyang@gmail.com>
+References: <20190219013106.17538-1-richardw.yang@linux.intel.com>
+	<20190219013106.17538-3-richardw.yang@linux.intel.com>
+	<ba83c335-c0f1-5190-33a9-f2f7f44c55f0@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <a7eb2932-c72d-f9cf-c3c4-010f967ca743@redhat.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.160.193
-Subject: Re: [Qemu-trivial] [PATCH] hw/pci/pci-stub: Add msi_enabled() and
- msi_notify() to the pci stubs
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ba83c335-c0f1-5190-33a9-f2f7f44c55f0@redhat.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::541
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] CODING_STYLE: indent
+ example code as all others
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,64 +77,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Feb 2019 20:23:42 -0000
+X-List-Received-Date: Tue, 19 Feb 2019 22:10:18 -0000
 
-On Tue, Feb 19, 2019 at 07:24:40PM +0100, Paolo Bonzini wrote:
-> On 19/02/19 17:07, Thomas Huth wrote:
-> > Some machines have an AHCI adapter, but no PCI. To be able to
-> > compile hw/ide/ahci.c without CONFIG_PCI, we still need the two
-> > functions msi_enabled() and msi_notify() for linking.
-> > This is required for the upcoming Kconfig-like build system, if
-> > a user wants to compile a QEMU binary with just one machine that
-> > has AHCI, but no PCI, like the ARM "cubieboard" for example.
-> > 
-> > Signed-off-by: Thomas Huth <thuth@redhat.com>
-> > ---
-> >  hw/pci/pci-stub.c | 11 +++++++++++
-> >  1 file changed, 11 insertions(+)
-> > 
-> > diff --git a/hw/pci/pci-stub.c b/hw/pci/pci-stub.c
-> > index b941a0e..c04a5df 100644
-> > --- a/hw/pci/pci-stub.c
-> > +++ b/hw/pci/pci-stub.c
-> > @@ -53,3 +53,14 @@ uint16_t pci_requester_id(PCIDevice *dev)
-> >      g_assert(false);
-> >      return 0;
-> >  }
-> > +
-> > +/* Required by ahci.c */
-> > +bool msi_enabled(const PCIDevice *dev)
-> > +{
-> > +    return false;
-> > +}
-> > +
-> > +void msi_notify(PCIDevice *dev, unsigned int vector)
-> > +{
-> > +    g_assert_not_reached();
-> > +}
-> > 
-> 
-> Makes sense, but it is also abstraction time. :)  What if instead there
-> was a function
-> 
-> void msi_allocate_irqs(PCIDevice *pdev, int num, bool fallback_to_intx);
-> 
-> and then ich.c did
-> 
->     irqs = msi_allocate_irqs(pdev, 1, true);
->     s->irq = irqs[0];
->     g_free(irqs);
-> 
-> ?  "if msi_enabled raise MSI else raise INTX" is really a common idiom.
-> 
-> Thanks,
-> 
-> Paolo
+On Tue, Feb 19, 2019 at 06:38:54PM +0100, Philippe Mathieu-Daudé wrote:
+>On 2/19/19 2:31 AM, Wei Yang wrote:
+>> All the example code are indented with four spaces except this one.
+>> 
+>> Fix this by adding four spaces here.
+>> 
+>> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+>> ---
+>>  CODING_STYLE | 8 ++++----
+>>  1 file changed, 4 insertions(+), 4 deletions(-)
+>> 
+>> diff --git a/CODING_STYLE b/CODING_STYLE
+>> index 73f66ca185..27581d80c1 100644
+>> --- a/CODING_STYLE
+>> +++ b/CODING_STYLE
+>> @@ -134,10 +134,10 @@ block to a separate function altogether.
+>>  When comparing a variable for (in)equality with a constant, list the
+>>  constant on the right, as in:
+>>  
+>> -if (a == 1) {
+>> -    /* Reads like: "If a equals 1" */
+>> -    do_something();
+>> -}
+>> +    if (a == 1) {
+>> +        /* Reads like: "If a equals 1" */
 
-Maybe it is but the specific issue is not about fallback to INTX of PCI
-(is the fallback broken for ahci? I don't know).
-The trick is there's no pdev at all.
+I don't get your point.
+
+You mean to put it into multiline comments?
+
+>
+>I guess you found a bug in the documentation :)
+>
+>Since 8c06fbdf36bf4d the style asked is:
+>
+>    We now require Linux-kernel-style multiline comments:
+>        /*
+>         * line one
+>         * line two
+>         */
+>
+>> +        do_something();
+>> +    }
+>>  
+>>  Rationale: Yoda conditions (as in 'if (1 == a)') are awkward to read.
+>>  Besides, good compilers already warn users when '==' is mis-typed as '=',
+>> 
 
 -- 
-MST
+Wei Yang
+Help you, Help me
 
