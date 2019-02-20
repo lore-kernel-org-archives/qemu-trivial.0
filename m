@@ -1,44 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gwFqy-0003sC-3i
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 19:35:12 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36620)
+	id 1gwFst-0004vY-Tu
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 19:37:11 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36857)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1gwFqu-0003rM-Np
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 19:35:11 -0500
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gwFsr-0004tr-Of
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 19:37:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1gwFqh-0007Du-Pr
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 19:34:59 -0500
-Received: from mga01.intel.com ([192.55.52.88]:28232)
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gwFsa-0007mB-PH
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 19:37:00 -0500
+Received: from mga17.intel.com ([192.55.52.151]:2567)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1gwFq9-0006Zn-Hl; Tue, 19 Feb 2019 19:34:26 -0500
+	id 1gwFrz-0006Yp-Hk; Tue, 19 Feb 2019 19:36:17 -0500
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-	by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	19 Feb 2019 16:32:21 -0800
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+	by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	19 Feb 2019 16:32:17 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.58,388,1544515200"; d="scan'208";a="148209999"
+X-IronPort-AV: E=Sophos;i="5.58,388,1544515200"; d="scan'208";a="144877114"
 Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
-	by fmsmga001.fm.intel.com with ESMTP; 19 Feb 2019 16:32:20 -0800
+	by fmsmga002.fm.intel.com with ESMTP; 19 Feb 2019 16:32:16 -0800
 From: Wei Yang <richardw.yang@linux.intel.com>
 To: qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
 Cc: mjt@tls.msk.ru, imammedo@redhat.com, philmd@redhat.com, eblake@redhat.com,
 	peter.maydell@linaro.org, Wei Yang <richardw.yang@linux.intel.com>
-Date: Wed, 20 Feb 2019 08:31:13 +0800
-Message-Id: <20190220003113.20746-3-richardw.yang@linux.intel.com>
+Date: Wed, 20 Feb 2019 08:31:11 +0800
+Message-Id: <20190220003113.20746-1-richardw.yang@linux.intel.com>
 X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20190220003113.20746-1-richardw.yang@linux.intel.com>
-References: <20190220003113.20746-1-richardw.yang@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 192.55.52.88
-Subject: [Qemu-trivial] [PATCH v2 2/2] CODING_STYLE: indent example code as
- all others
+X-Received-From: 192.55.52.151
+Subject: [Qemu-trivial] [PATCH v2 0/2] CODING_STYLE: trivial update
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,38 +47,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Feb 2019 00:35:11 -0000
+X-List-Received-Date: Wed, 20 Feb 2019 00:37:10 -0000
 
-All the example code are indented with four spaces except this one.
+The first one is suggested by Igor Mammedov to provide rule for multiline
+code.
 
-Fix this by adding four spaces here.
+The second is a trivial fix to make example code all indented with 4 spaces.
 
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- CODING_STYLE | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+v2:
+  * adjust Patch 1 as suggested by Eric
 
-diff --git a/CODING_STYLE b/CODING_STYLE
-index 403904667a..5679b2fd69 100644
---- a/CODING_STYLE
-+++ b/CODING_STYLE
-@@ -131,10 +131,10 @@ block to a separate function altogether.
- When comparing a variable for (in)equality with a constant, list the
- constant on the right, as in:
- 
--if (a == 1) {
--    /* Reads like: "If a equals 1" */
--    do_something();
--}
-+    if (a == 1) {
-+        /* Reads like: "If a equals 1" */
-+        do_something();
-+    }
- 
- Rationale: Yoda conditions (as in 'if (1 == a)') are awkward to read.
- Besides, good compilers already warn users when '==' is mis-typed as '=',
+Wei Yang (2):
+  CODING_STYLE: specify the indent rule for multiline code
+  CODING_STYLE: indent example code as all others
+
+ CODING_STYLE | 31 +++++++++++++++++++++++++++----
+ 1 file changed, 27 insertions(+), 4 deletions(-)
+
 -- 
 2.19.1
 
