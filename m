@@ -1,43 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gwFut-0005y2-Hy
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 19:39:15 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:37107)
+	id 1gwHSM-0000wn-Bo
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 21:17:54 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:42426)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1gwFus-0005w9-5P
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 19:39:14 -0500
+	(envelope-from <like.xu@linux.intel.com>) id 1gwGV2-0001TF-5B
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 20:16:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1gwFue-0008Gy-Pr
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 19:39:02 -0500
-Received: from mga01.intel.com ([192.55.52.88]:28230)
+	(envelope-from <like.xu@linux.intel.com>) id 1gwGUg-00065h-SY
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 20:16:21 -0500
+Received: from mga12.intel.com ([192.55.52.136]:26964)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1gwFu1-0006ZL-5B; Tue, 19 Feb 2019 19:38:27 -0500
+	(Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
+	id 1gwGUO-0003x7-UD; Tue, 19 Feb 2019 20:15:59 -0500
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-	by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	19 Feb 2019 16:32:19 -0800
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+	by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	19 Feb 2019 17:08:45 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.58,388,1544515200"; d="scan'208";a="148209996"
-Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
-	by fmsmga001.fm.intel.com with ESMTP; 19 Feb 2019 16:32:18 -0800
-From: Wei Yang <richardw.yang@linux.intel.com>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: mjt@tls.msk.ru, imammedo@redhat.com, philmd@redhat.com, eblake@redhat.com,
-	peter.maydell@linaro.org, Wei Yang <richardw.yang@linux.intel.com>
-Date: Wed, 20 Feb 2019 08:31:12 +0800
-Message-Id: <20190220003113.20746-2-richardw.yang@linux.intel.com>
-X-Mailer: git-send-email 2.19.1
-In-Reply-To: <20190220003113.20746-1-richardw.yang@linux.intel.com>
-References: <20190220003113.20746-1-richardw.yang@linux.intel.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-IronPort-AV: E=Sophos;i="5.58,388,1544515200"; d="scan'208";a="276342165"
+Received: from xulike-server.sh.intel.com ([10.239.48.134])
+	by orsmga004.jf.intel.com with ESMTP; 19 Feb 2019 17:08:42 -0800
+From: Like Xu <like.xu@linux.intel.com>
+To: qemu-trivial@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>,
+	qemu-devel@nongnu.org
+Date: Wed, 20 Feb 2019 16:55:53 +0800
+Message-Id: <1550652953-24393-1-git-send-email-like.xu@linux.intel.com>
+X-Mailer: git-send-email 1.8.3.1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 192.55.52.88
-Subject: [Qemu-trivial] [PATCH v2 1/2] CODING_STYLE: specify the indent rule
- for multiline code
+X-Received-From: 192.55.52.136
+X-Mailman-Approved-At: Tue, 19 Feb 2019 21:17:53 -0500
+Subject: [Qemu-trivial] [Qemu-devel] [PATCH] doc: update .gitignore and fix
+ typos for docs in tree
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,61 +45,220 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Feb 2019 00:39:15 -0000
+X-List-Received-Date: Wed, 20 Feb 2019 01:16:37 -0000
 
-We didn't specify the indent rule for multiline code here, which may
-misleading users. And in current code, the code use different rules.
-
-Add this rule in CODING_STYLE to make sure this is clear to every one.
-
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-Suggested-by: Igor Mammedov <imammedo@redhat.com>
-
+Signed-off-by: Like Xu <like.xu@linux.intel.com>
 ---
-v2:
-   * rephrase changelog suggested by Eric Blake
-     - remove one redundant line
-     - fix some awkward grammar
-     - add { ; at the end of example
----
- CODING_STYLE | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+ .gitignore                     | 1 +
+ docs/COLO-FT.txt               | 2 +-
+ docs/amd-memory-encryption.txt | 2 +-
+ docs/can.txt                   | 2 +-
+ docs/colo-proxy.txt            | 6 +++---
+ docs/cpu-hotplug.rst           | 2 +-
+ docs/qcow2-cache.txt           | 2 +-
+ docs/qemu-block-drivers.texi   | 2 +-
+ docs/qemu-cpu-models.texi      | 4 ++--
+ docs/rdma.txt                  | 2 +-
+ docs/replay.txt                | 2 +-
+ docs/usb-storage.txt           | 2 +-
+ docs/vfio-ap.txt               | 2 +-
+ 13 files changed, 16 insertions(+), 15 deletions(-)
 
-diff --git a/CODING_STYLE b/CODING_STYLE
-index ec075dedc4..403904667a 100644
---- a/CODING_STYLE
-+++ b/CODING_STYLE
-@@ -29,6 +29,29 @@ Spaces of course are superior to tabs because:
+diff --git a/.gitignore b/.gitignore
+index b66b772..6cb0016 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -90,6 +90,7 @@
+ *.d
+ !/scripts/qemu-guest-agent/fsfreeze-hook.d
+ *.o
++*.patch
+ .sdk
+ *.gcda
+ *.gcno
+diff --git a/docs/COLO-FT.txt b/docs/COLO-FT.txt
+index e2686bb..ad24680 100644
+--- a/docs/COLO-FT.txt
++++ b/docs/COLO-FT.txt
+@@ -102,7 +102,7 @@ to make sure the state of VM in Secondary side is always consistent with VM in
+ Primary side.
  
- Do not leave whitespace dangling off the ends of lines.
+ COLO Proxy:
+-Delivers packets to Primary and Seconday, and then compare the responses from
++Delivers packets to Primary and Secondary, and then compare the responses from
+ both side. Then decide whether to start a checkpoint according to some rules.
+ Please refer to docs/colo-proxy.txt for more information.
  
-+1.1 Multiline Indent
-+
-+There are several places where indent is necessary:
-+
-+ - struct definition
-+ - if/else
-+ - while/for
-+ - function definition & call
-+
-+When breaking up a long line to fit within line widths, align the secondary
-+lines just after the opening parenthesis of the first.
-+
-+For example:
-+
-+    if (a == 1 &&
-+        b == 2) {
-+
-+    while (a == 1 &&
-+           b == 2) {
-+
-+    do_something(arg1, arg2
-+                 arg3);
-+
- 2. Line width
+diff --git a/docs/amd-memory-encryption.txt b/docs/amd-memory-encryption.txt
+index f483795..43bf3ee 100644
+--- a/docs/amd-memory-encryption.txt
++++ b/docs/amd-memory-encryption.txt
+@@ -97,7 +97,7 @@ References
+ AMD Memory Encryption whitepaper:
+ http://amd-dev.wpengine.netdna-cdn.com/wordpress/media/2013/12/AMD_Memory_Encryption_Whitepaper_v7-Public.pdf
  
- Lines should be 80 characters; try not to make them longer.
+-Secure Encrypted Virutualization Key Management:
++Secure Encrypted Virtualization Key Management:
+ [1] http://support.amd.com/TechDocs/55766_SEV-KM API_Specification.pdf
+ 
+ KVM Forum slides:
+diff --git a/docs/can.txt b/docs/can.txt
+index 7ba23b2..9fa6ed5 100644
+--- a/docs/can.txt
++++ b/docs/can.txt
+@@ -99,7 +99,7 @@ Links to other resources
+      https://gitlab.fel.cvut.cz/canbus/qemu-canbus
+  (3) RTEMS page describing project
+      https://devel.rtems.org/wiki/Developer/Simulators/QEMU/CANEmulation
+- (4) RTLWS 2015 article about the projevt and its use with CANopen emulation
++ (4) RTLWS 2015 article about the project and its use with CANopen emulation
+      http://rtime.felk.cvut.cz/publications/public/rtlws2015-qemu-can.pdf
+      Slides
+      http://rtime.felk.cvut.cz/publications/public/rtlws2015-qemu-can-slides.pdf
+diff --git a/docs/colo-proxy.txt b/docs/colo-proxy.txt
+index 1f8e4b4..7074da7 100644
+--- a/docs/colo-proxy.txt
++++ b/docs/colo-proxy.txt
+@@ -41,7 +41,7 @@ Below is a COLO proxy ascii figure:
+ |         |  +------------------------------------------------------+  |                        |        |                              |
+ |netfilter|  |                       |                         |    |  |   netfilter            |        |                              |
+ | +----------+ +----------------------------+                  |    |  |  +-----------------------------------------------------------+ |
+-| |       |  |                       |      |        out       |    |  |  |                     |        |  filter excute order       | |
++| |       |  |                       |      |        out       |    |  |  |                     |        |  filter execute order       | |
+ | |       |  |          +-----------------------------+        |    |  |  |                     |        | +------------------->      | |
+ | |       |  |          |            |      |         |        |    |  |  |                     |        |   TCP                      | |
+ | | +-----+--+-+  +-----v----+ +-----v----+ |pri +----+----+sec|    |  |  | +------------+  +---+----+---v+rewriter++  +------------+ | |
+@@ -53,7 +53,7 @@ Below is a COLO proxy ascii figure:
+ | |      |   tx        |   rx           rx  |                  |  |    |  |            tx                        all       |  rx      | |
+ | |      |             |                    |                  |  |    |  +-----------------------------------------------------------+ |
+ | |      |             +--------------+     |                  |  |    |                                                   |            |
+-| |      |   filter excute order      |     |                  |  |    |                                                   |            |
++| |      |   filter execute order      |     |                  |  |    |                                                   |            |
+ | |      |  +---------------->        |     |                  |  +--------------------------------------------------------+            |
+ | +-----------------------------------------+                  |       |                                                                |
+ |        |                            |                        |       |                                                                |
+@@ -92,7 +92,7 @@ but do nothing, just pass to next filter.
+ 
+ Redirect Server Filter --> COLO-Compare
+ COLO-compare receive primary guest packet then
+-waiting scondary redirect packet to compare it.
++waiting secondary redirect packet to compare it.
+ If packet same,send queued primary packet and clear
+ queued secondary packet, Otherwise send primary packet
+ and do checkpoint.
+diff --git a/docs/cpu-hotplug.rst b/docs/cpu-hotplug.rst
+index 1c268e0..cfeb79f 100644
+--- a/docs/cpu-hotplug.rst
++++ b/docs/cpu-hotplug.rst
+@@ -137,6 +137,6 @@ From the 'qmp-shell', invoke the QMP ``device_del`` command::
+     vCPU hot-unplug requires guest cooperation; so the ``device_del``
+     command above does not guarantee vCPU removal -- it's a "request to
+     unplug".  At this point, the guest will get a System Control
+-    Interupt (SCI) and calls the ACPI handler for the affected vCPU
++    Interrupt (SCI) and calls the ACPI handler for the affected vCPU
+     device.  Then the guest kernel will bring the vCPU offline and tell
+     QEMU to unplug it.
+diff --git a/docs/qcow2-cache.txt b/docs/qcow2-cache.txt
+index c459bf5..c1e7751 100644
+--- a/docs/qcow2-cache.txt
++++ b/docs/qcow2-cache.txt
+@@ -55,7 +55,7 @@ value can improve the I/O performance significantly.
+ 
+ The refcount blocks
+ -------------------
+-The qcow2 format also mantains a reference count for each cluster.
++The qcow2 format also maintains a reference count for each cluster.
+ Reference counts are used for cluster allocation and internal
+ snapshots. The data is stored in a two-level structure similar to the
+ L1/L2 tables described above.
+diff --git a/docs/qemu-block-drivers.texi b/docs/qemu-block-drivers.texi
+index 38e9f34..1b1ac19 100644
+--- a/docs/qemu-block-drivers.texi
++++ b/docs/qemu-block-drivers.texi
+@@ -632,7 +632,7 @@ qemu-system-i386 -drive file=iscsi://127.0.0.1/iqn.qemu.test/1 \
+ @end example
+ 
+ 
+-Howto set up a simple iSCSI target on loopback and accessing it via QEMU:
++How to set up a simple iSCSI target on loopback and accessing it via QEMU:
+ @example
+ This example shows how to set up an iSCSI target with one CDROM and one DISK
+ using the Linux STGT software target. This target is available on Red Hat based
+diff --git a/docs/qemu-cpu-models.texi b/docs/qemu-cpu-models.texi
+index 475d434..4354fe8 100644
+--- a/docs/qemu-cpu-models.texi
++++ b/docs/qemu-cpu-models.texi
+@@ -287,7 +287,7 @@ Must be explicitly turned on for all AMD CPU models.
+ This provides higher performance than virt-ssbd so should be
+ exposed to guests whenever available in the host. virt-ssbd
+ should none the less also be exposed for maximum guest
+-compatability as some kernels only know about virt-ssbd.
++compatibility as some kernels only know about virt-ssbd.
+ 
+ 
+ @item @code{amd-no-ssb}
+@@ -296,7 +296,7 @@ Recommended to indicate the host is not vulnerable CVE-2018-3639
+ 
+ Not included by default in any AMD CPU model.
+ 
+-Future hardware genarations of CPU will not be vulnerable to
++Future hardware generations of CPU will not be vulnerable to
+ CVE-2018-3639, and thus the guest should be told not to enable
+ its mitigations, by exposing amd-no-ssb. This is mutually
+ exclusive with virt-ssbd and amd-ssbd.
+diff --git a/docs/rdma.txt b/docs/rdma.txt
+index e6f9902..1e6f23e 100644
+--- a/docs/rdma.txt
++++ b/docs/rdma.txt
+@@ -30,7 +30,7 @@ of the significantly lower latency and higher throughput over TCP/IP. This is
+ because the RDMA I/O architecture reduces the number of interrupts and
+ data copies by bypassing the host networking stack. In particular, a TCP-based
+ migration, under certain types of memory-bound workloads, may take a more
+-unpredicatable amount of time to complete the migration if the amount of
++unpredictable amount of time to complete the migration if the amount of
+ memory tracked during each live migration iteration round cannot keep pace
+ with the rate of dirty memory produced by the workload.
+ 
+diff --git a/docs/replay.txt b/docs/replay.txt
+index 3497585..ee6aee9 100644
+--- a/docs/replay.txt
++++ b/docs/replay.txt
+@@ -290,7 +290,7 @@ E.g., '-serial stdio' in record mode, and '-serial null' in replay mode.
+ Replay log format
+ -----------------
+ 
+-Record/replay log consits of the header and the sequence of execution
++Record/replay log consists of the header and the sequence of execution
+ events. The header includes 4-byte replay version id and 8-byte reserved
+ field. Version is updated every time replay log format changes to prevent
+ using replay log created by another build of qemu.
+diff --git a/docs/usb-storage.txt b/docs/usb-storage.txt
+index 551af6f..3df6d05 100644
+--- a/docs/usb-storage.txt
++++ b/docs/usb-storage.txt
+@@ -16,7 +16,7 @@ too):
+ 
+ 
+ Number two is the newer usb attached scsi transport.  This one doesn't
+-automagically create a scsi disk, so you have to explicitly attach one
++automatically create a scsi disk, so you have to explicitly attach one
+ manually.  Multiple logical units are supported.  Here is an example
+ with tree logical units:
+ 
+diff --git a/docs/vfio-ap.txt b/docs/vfio-ap.txt
+index 1233968..30f3c66 100644
+--- a/docs/vfio-ap.txt
++++ b/docs/vfio-ap.txt
+@@ -624,7 +624,7 @@ These are the steps:
+       -> IOMMU Hardware Support
+          select S390 AP IOMMU Support
+       -> VFIO Non-Privileged userspace driver framework
+-         -> Mediated device driver frramework
++         -> Mediated device driver framework
+             -> VFIO driver for Mediated devices
+    -> I/O subsystem
+       -> VFIO support for AP devices
 -- 
-2.19.1
+1.8.3.1
 
 
