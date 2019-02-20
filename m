@@ -1,68 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gwFEE-00040A-MK
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 18:55:10 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60845)
+	id 1gwFqy-0003sC-3i
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 19:35:12 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36620)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gwFED-0003zx-2d
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 18:55:09 -0500
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gwFqu-0003rM-Np
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 19:35:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gwFEB-00046k-92
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 18:55:08 -0500
-Received: from mail-wm1-f65.google.com ([209.85.128.65]:35105)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gwFEA-00046G-SC
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 18:55:07 -0500
-Received: by mail-wm1-f65.google.com with SMTP id y15so4596208wma.0
-	for <qemu-trivial@nongnu.org>; Tue, 19 Feb 2019 15:55:05 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=e9wVLzDcirlvJd0Da8Dz3L6hjaZZsUmf+jlYJVlKf8s=;
-	b=NY5D0XCeEIDUoZ0vdUf3VpQI7pLVb7jhbeFwft65AoYsv5XVlsmC7oT7Qbm/NMoEGG
-	b0tU85nRUjOSvtQk5SEjw5DvB4nlcH2Gt4jUy1Vrlk6rKheGjeHDfsnaqcAz995kWpqX
-	mWbeoLFdnLVa/oDh2vC1qD72i2P1nKEeHTA9OyK37fp66bJqTwuPV1QLjlbYab9oV9xN
-	3SKsGfoybgQYcpljpzWqRRYryO8Wwo7aXXL2ebhcM8irDBAATL4OKgs8pFipPZSOOc0e
-	co3MJhYK35DmNxwqXCabi0CjK5D+WfCGYaBJ/OuKmp1C/cTpjm8X3BU99EIUyIyCLvN9
-	JO6w==
-X-Gm-Message-State: AHQUAuaY4sfWAukBMsPNaxtah2wvIXsrvDjiqCNpEI+BEayX+WI8iEsK
-	vleymAXJR5uMobLN5KL4aa+t6Q==
-X-Google-Smtp-Source: AHgI3IboorBza0oSljLIc88ipV1t0+GO5u0caKWRWcyuvA8qzodnpqDwzrVnouDO4BnuYuBq68Qzmw==
-X-Received: by 2002:a1c:23c4:: with SMTP id j187mr4347852wmj.13.1550620504182; 
-	Tue, 19 Feb 2019 15:55:04 -0800 (PST)
-Received: from [192.168.1.37] (109.red-83-53-160.dynamicip.rima-tde.net.
-	[83.53.160.109]) by smtp.gmail.com with ESMTPSA id
-	c18sm21354040wre.32.2019.02.19.15.55.03
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 19 Feb 2019 15:55:03 -0800 (PST)
-To: Wei Yang <richard.weiyang@gmail.com>
-Cc: Eric Blake <eblake@redhat.com>, Wei Yang <richardw.yang@linux.intel.com>, 
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, imammedo@redhat.com,
-	mjt@tls.msk.ru
-References: <20190219013106.17538-1-richardw.yang@linux.intel.com>
-	<20190219013106.17538-3-richardw.yang@linux.intel.com>
-	<ba83c335-c0f1-5190-33a9-f2f7f44c55f0@redhat.com>
-	<77cf32b1-6a4a-33c5-4b3c-8ba3245a4b23@redhat.com>
-	<2e584c55-5b40-4a29-b0ae-e53039e38a7d@redhat.com>
-	<20190219222028.y3wt6bgihmx73ptw@master>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <58531fe2-edd9-0be9-6136-074a7226e8b5@redhat.com>
-Date: Wed, 20 Feb 2019 00:55:02 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.5.0
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gwFqh-0007Du-Pr
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 19:34:59 -0500
+Received: from mga01.intel.com ([192.55.52.88]:28232)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
+	id 1gwFq9-0006Zn-Hl; Tue, 19 Feb 2019 19:34:26 -0500
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+	by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	19 Feb 2019 16:32:21 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.58,388,1544515200"; d="scan'208";a="148209999"
+Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
+	by fmsmga001.fm.intel.com with ESMTP; 19 Feb 2019 16:32:20 -0800
+From: Wei Yang <richardw.yang@linux.intel.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: mjt@tls.msk.ru, imammedo@redhat.com, philmd@redhat.com, eblake@redhat.com,
+	peter.maydell@linaro.org, Wei Yang <richardw.yang@linux.intel.com>
+Date: Wed, 20 Feb 2019 08:31:13 +0800
+Message-Id: <20190220003113.20746-3-richardw.yang@linux.intel.com>
+X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20190220003113.20746-1-richardw.yang@linux.intel.com>
+References: <20190220003113.20746-1-richardw.yang@linux.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20190219222028.y3wt6bgihmx73ptw@master>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.65
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/2] CODING_STYLE: indent
- example code as all others
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.88
+Subject: [Qemu-trivial] [PATCH v2 2/2] CODING_STYLE: indent example code as
+ all others
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,51 +50,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Feb 2019 23:55:10 -0000
+X-List-Received-Date: Wed, 20 Feb 2019 00:35:11 -0000
 
-On 2/19/19 11:20 PM, Wei Yang wrote:
-> On Tue, Feb 19, 2019 at 07:55:31PM +0100, Philippe Mathieu-Daudé wrote:
->> On 2/19/19 6:56 PM, Eric Blake wrote:
->>> On 2/19/19 11:38 AM, Philippe Mathieu-Daudé wrote:
->>>
->>>>> +    if (a == 1) {
->>>>> +        /* Reads like: "If a equals 1" */
->>>>
->>>> I guess you found a bug in the documentation :)
->>>>
->>>> Since 8c06fbdf36bf4d the style asked is:
->>>>
->>>>     We now require Linux-kernel-style multiline comments:
->>>>         /*
->>>>          * line one
->>>>          * line two
->>>>          */
->>>>
->>>>> +        do_something();
->>>
->>> We only require winged multiline comments when the comment is actually
->>> multiline.  In this case, the comment is a one-liner, and is just fine
->>> as written.
->>
->> Hmm I have a series where I moved code and changed from /* one line */
->> to the multi-line style, I wonder why and remember checkpatch errors.
->> Maybe a side-effect from what b94e809d3e fixed.
->>
->> Anyway, Wei do you mind adding a multi-line example here too?
->>
-> 
-> A multi-line example for multiline comments?
-> 
-> This looks not relavant to this sectioin. I am afraid I will not add
-> this example here. Sorry for that.
+All the example code are indented with four spaces except this one.
 
-No worries, R-b stands.
+Fix this by adding four spaces here.
 
->> With/without multi-line example:
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->>
->> Thanks!
->>
->> Phil.
-> 
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ CODING_STYLE | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CODING_STYLE b/CODING_STYLE
+index 403904667a..5679b2fd69 100644
+--- a/CODING_STYLE
++++ b/CODING_STYLE
+@@ -131,10 +131,10 @@ block to a separate function altogether.
+ When comparing a variable for (in)equality with a constant, list the
+ constant on the right, as in:
+ 
+-if (a == 1) {
+-    /* Reads like: "If a equals 1" */
+-    do_something();
+-}
++    if (a == 1) {
++        /* Reads like: "If a equals 1" */
++        do_something();
++    }
+ 
+ Rationale: Yoda conditions (as in 'if (1 == a)') are awkward to read.
+ Besides, good compilers already warn users when '==' is mis-typed as '=',
+-- 
+2.19.1
+
 
