@@ -1,41 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gwFst-0004vY-Tu
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 19:37:11 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36857)
+	id 1gwFut-0005y2-Hy
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Feb 2019 19:39:15 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37107)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1gwFsr-0004tr-Of
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 19:37:10 -0500
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gwFus-0005w9-5P
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 19:39:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1gwFsa-0007mB-PH
-	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 19:37:00 -0500
-Received: from mga17.intel.com ([192.55.52.151]:2567)
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gwFue-0008Gy-Pr
+	for qemu-trivial@nongnu.org; Tue, 19 Feb 2019 19:39:02 -0500
+Received: from mga01.intel.com ([192.55.52.88]:28230)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1gwFrz-0006Yp-Hk; Tue, 19 Feb 2019 19:36:17 -0500
+	id 1gwFu1-0006ZL-5B; Tue, 19 Feb 2019 19:38:27 -0500
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
-	by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	19 Feb 2019 16:32:17 -0800
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+	by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	19 Feb 2019 16:32:19 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.58,388,1544515200"; d="scan'208";a="144877114"
+X-IronPort-AV: E=Sophos;i="5.58,388,1544515200"; d="scan'208";a="148209996"
 Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
-	by fmsmga002.fm.intel.com with ESMTP; 19 Feb 2019 16:32:16 -0800
+	by fmsmga001.fm.intel.com with ESMTP; 19 Feb 2019 16:32:18 -0800
 From: Wei Yang <richardw.yang@linux.intel.com>
 To: qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
 Cc: mjt@tls.msk.ru, imammedo@redhat.com, philmd@redhat.com, eblake@redhat.com,
 	peter.maydell@linaro.org, Wei Yang <richardw.yang@linux.intel.com>
-Date: Wed, 20 Feb 2019 08:31:11 +0800
-Message-Id: <20190220003113.20746-1-richardw.yang@linux.intel.com>
+Date: Wed, 20 Feb 2019 08:31:12 +0800
+Message-Id: <20190220003113.20746-2-richardw.yang@linux.intel.com>
 X-Mailer: git-send-email 2.19.1
+In-Reply-To: <20190220003113.20746-1-richardw.yang@linux.intel.com>
+References: <20190220003113.20746-1-richardw.yang@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 192.55.52.151
-Subject: [Qemu-trivial] [PATCH v2 0/2] CODING_STYLE: trivial update
+X-Received-From: 192.55.52.88
+Subject: [Qemu-trivial] [PATCH v2 1/2] CODING_STYLE: specify the indent rule
+ for multiline code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,23 +49,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Feb 2019 00:37:10 -0000
+X-List-Received-Date: Wed, 20 Feb 2019 00:39:15 -0000
 
-The first one is suggested by Igor Mammedov to provide rule for multiline
-code.
+We didn't specify the indent rule for multiline code here, which may
+misleading users. And in current code, the code use different rules.
 
-The second is a trivial fix to make example code all indented with 4 spaces.
+Add this rule in CODING_STYLE to make sure this is clear to every one.
 
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
+
+---
 v2:
-  * adjust Patch 1 as suggested by Eric
+   * rephrase changelog suggested by Eric Blake
+     - remove one redundant line
+     - fix some awkward grammar
+     - add { ; at the end of example
+---
+ CODING_STYLE | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-Wei Yang (2):
-  CODING_STYLE: specify the indent rule for multiline code
-  CODING_STYLE: indent example code as all others
-
- CODING_STYLE | 31 +++++++++++++++++++++++++++----
- 1 file changed, 27 insertions(+), 4 deletions(-)
-
+diff --git a/CODING_STYLE b/CODING_STYLE
+index ec075dedc4..403904667a 100644
+--- a/CODING_STYLE
++++ b/CODING_STYLE
+@@ -29,6 +29,29 @@ Spaces of course are superior to tabs because:
+ 
+ Do not leave whitespace dangling off the ends of lines.
+ 
++1.1 Multiline Indent
++
++There are several places where indent is necessary:
++
++ - struct definition
++ - if/else
++ - while/for
++ - function definition & call
++
++When breaking up a long line to fit within line widths, align the secondary
++lines just after the opening parenthesis of the first.
++
++For example:
++
++    if (a == 1 &&
++        b == 2) {
++
++    while (a == 1 &&
++           b == 2) {
++
++    do_something(arg1, arg2
++                 arg3);
++
+ 2. Line width
+ 
+ Lines should be 80 characters; try not to make them longer.
 -- 
 2.19.1
 
