@@ -1,58 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gwrdG-0003wy-4b
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Feb 2019 11:55:34 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54671)
+	id 1gws3T-0005Be-FW
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Feb 2019 12:22:39 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:60655)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1gwrdE-0003t3-8w
-	for qemu-trivial@nongnu.org; Thu, 21 Feb 2019 11:55:32 -0500
+	(envelope-from <thuth@redhat.com>) id 1gws3Q-00059K-Ag
+	for qemu-trivial@nongnu.org; Thu, 21 Feb 2019 12:22:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <mst@redhat.com>) id 1gwrdC-0004Oc-6K
-	for qemu-trivial@nongnu.org; Thu, 21 Feb 2019 11:55:31 -0500
-Received: from mail-qt1-f193.google.com ([209.85.160.193]:37172)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <mst@redhat.com>) id 1gwrdA-0004La-IV
-	for qemu-trivial@nongnu.org; Thu, 21 Feb 2019 11:55:28 -0500
-Received: by mail-qt1-f193.google.com with SMTP id a48so32277955qtb.4
-	for <qemu-trivial@nongnu.org>; Thu, 21 Feb 2019 08:55:24 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to;
-	bh=RiIIbndCzbJyJ2ojAb35twvkfjLdmOEJvtzQc0HEe7A=;
-	b=SNt+o+H3suLnKVihCyHaOth8GDBYUz70OT+v0oL5iJf+G++yDUgTlgJ0S6ZdwJO4Hb
-	4WDGum9UEXPl9lmWC1cs83N0zmCfY/GWiXGppN0J0wDWrrPA/BhrFI2Ad3OVWzlfLQtt
-	WurK8tAx/lugOoo8T1ixvPjMRDNBNoQRWuNLidsJdfZxyLeQWqQv5Y1QMot9m48f00Gj
-	RWSvVQvMB3wb0swquK5q2KOJu71ViS3mPMu1z1+SI/aRz1U4FFmpEbhaHMH5sJRwk6Xd
-	Arq8O740Cjb+tDjCE2WNI5A8lXSDmtWF0wC/rPuKi4l+pwryCAFF7eqh9NBaKiS+lfhb
-	BICQ==
-X-Gm-Message-State: AHQUAuaFGeJXxT6dMBGyM5WP1v6EkMU8WbLO/hcsNMuUT7oV0yNCnKFB
-	EvdA2HCDGV9YcJeuOhfcgyk2rw==
-X-Google-Smtp-Source: AHgI3IaCltI/ua4JdjCsVJZcgquPlomRCbSJy4uCmLAX5v3YbLjHevk9kzDOgyhfnVdx1yw+dCxMqw==
-X-Received: by 2002:ac8:1102:: with SMTP id c2mr32593153qtj.195.1550768124276; 
-	Thu, 21 Feb 2019 08:55:24 -0800 (PST)
-Received: from redhat.com (pool-173-76-246-42.bstnma.fios.verizon.net.
-	[173.76.246.42]) by smtp.gmail.com with ESMTPSA id
-	g189sm12562767qkb.3.2019.02.21.08.55.22
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 21 Feb 2019 08:55:23 -0800 (PST)
-Date: Thu, 21 Feb 2019 11:55:20 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, yang.zhong@intel.com, pbonzini@redhat.com
-Message-ID: <20190221115446-mutt-send-email-mst@kernel.org>
-References: <1550592459-7286-1-git-send-email-thuth@redhat.com>
-	<20190219151825-mutt-send-email-mst@kernel.org>
-	<bfdc4037-4017-a501-4e1f-e8da8949e672@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <bfdc4037-4017-a501-4e1f-e8da8949e672@redhat.com>
+	(envelope-from <thuth@redhat.com>) id 1gws3O-0002WG-A4
+	for qemu-trivial@nongnu.org; Thu, 21 Feb 2019 12:22:36 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:46356)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1gws3H-0002Tm-SD; Thu, 21 Feb 2019 12:22:28 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0EB255947F;
+	Thu, 21 Feb 2019 17:22:26 +0000 (UTC)
+Received: from thuth.com (ovpn-116-144.ams2.redhat.com [10.36.116.144])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7A6BC5D9D4;
+	Thu, 21 Feb 2019 17:22:21 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Cc: Paul Burton <pburton@wavecomp.com>,
+	Aleksandar Rikalo <arikalo@wavecomp.com>,
+	Andrey Smirnov <andrew.smirnov@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org
+Date: Thu, 21 Feb 2019 18:22:16 +0100
+Message-Id: <1550769736-22498-1-git-send-email-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Thu, 21 Feb 2019 17:22:26 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.160.193
-Subject: Re: [Qemu-trivial] [PATCH] hw/pci/pci-stub: Add msi_enabled() and
- msi_notify() to the pci stubs
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] hw/pci-host: Use object_initialize_child for
+ correct reference counting
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,37 +50,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Feb 2019 16:55:33 -0000
+X-List-Received-Date: Thu, 21 Feb 2019 17:22:37 -0000
 
-On Wed, Feb 20, 2019 at 07:24:00AM +0100, Thomas Huth wrote:
-> On 19/02/2019 21.19, Michael S. Tsirkin wrote:
-> > On Tue, Feb 19, 2019 at 05:07:39PM +0100, Thomas Huth wrote:
-> >> Some machines have an AHCI adapter, but no PCI. To be able to
-> >> compile hw/ide/ahci.c without CONFIG_PCI, we still need the two
-> >> functions msi_enabled() and msi_notify() for linking.
-> >> This is required for the upcoming Kconfig-like build system, if
-> >> a user wants to compile a QEMU binary with just one machine that
-> >> has AHCI, but no PCI, like the ARM "cubieboard" for example.
-> >>
-> >> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> > 
-> > Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> 
-> Thanks!
-> 
-> > Do you want me to merge this or do you prefer to
-> > merge it with kconfig patches?
-> 
-> If you plan a pci pull request soon, feel free to take it. Otherwise, I
-> can also add it to my Kconfig-for-arm patch series where I need it.
-> 
->  Thomas
+Both functions, object_initialize() and object_property_add_child() increase
+the reference counter of the new object, so one of the references has to be
+dropped afterwards to get the reference counting right. Otherwise the child
+object might not be properly cleaned up when the parent gets destroyed.
+Some functions of the pci-host devices miss to drop one of the references.
+Fix it by using object_initialize_child() instead, which takes care of
+calling object_initialize(), object_property_add_child() and object_unref()
+in the right order.
 
-Feel free to include but please talk to Paolo about his
-ideas for abstracting it out.
+Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/pci-host/designware.c  | 4 ++--
+ hw/pci-host/gpex.c        | 5 +++--
+ hw/pci-host/q35.c         | 4 ++--
+ hw/pci-host/xilinx-pcie.c | 4 ++--
+ 4 files changed, 9 insertions(+), 8 deletions(-)
 
-Thanks!
-
+diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
+index 29ea313..64ad21d 100644
+--- a/hw/pci-host/designware.c
++++ b/hw/pci-host/designware.c
+@@ -721,8 +721,8 @@ static void designware_pcie_host_init(Object *obj)
+     DesignwarePCIEHost *s = DESIGNWARE_PCIE_HOST(obj);
+     DesignwarePCIERoot *root = &s->root;
+ 
+-    object_initialize(root, sizeof(*root), TYPE_DESIGNWARE_PCIE_ROOT);
+-    object_property_add_child(obj, "root", OBJECT(root), NULL);
++    object_initialize_child(obj, "root",  root, sizeof(*root),
++                            TYPE_DESIGNWARE_PCIE_ROOT, &error_abort, NULL);
+     qdev_prop_set_int32(DEVICE(root), "addr", PCI_DEVFN(0, 0));
+     qdev_prop_set_bit(DEVICE(root), "multifunction", false);
+ }
+diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+index 2583b15..1bafffc 100644
+--- a/hw/pci-host/gpex.c
++++ b/hw/pci-host/gpex.c
+@@ -29,6 +29,7 @@
+  * http://www.firmware.org/1275/practice/imap/imap0_9d.pdf
+  */
+ #include "qemu/osdep.h"
++#include "qapi/error.h"
+ #include "hw/hw.h"
+ #include "hw/pci-host/gpex.h"
+ 
+@@ -120,8 +121,8 @@ static void gpex_host_initfn(Object *obj)
+     GPEXHost *s = GPEX_HOST(obj);
+     GPEXRootState *root = &s->gpex_root;
+ 
+-    object_initialize(root, sizeof(*root), TYPE_GPEX_ROOT_DEVICE);
+-    object_property_add_child(obj, "gpex_root", OBJECT(root), NULL);
++    object_initialize_child(obj, "gpex_root",  root, sizeof(*root),
++                            TYPE_GPEX_ROOT_DEVICE, &error_abort, NULL);
+     qdev_prop_set_int32(DEVICE(root), "addr", PCI_DEVFN(0, 0));
+     qdev_prop_set_bit(DEVICE(root), "multifunction", false);
+ }
+diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+index 7b871b5..960939f 100644
+--- a/hw/pci-host/q35.c
++++ b/hw/pci-host/q35.c
+@@ -216,8 +216,8 @@ static void q35_host_initfn(Object *obj)
+     memory_region_init_io(&phb->data_mem, obj, &pci_host_data_le_ops, phb,
+                           "pci-conf-data", 4);
+ 
+-    object_initialize(&s->mch, sizeof(s->mch), TYPE_MCH_PCI_DEVICE);
+-    object_property_add_child(OBJECT(s), "mch", OBJECT(&s->mch), NULL);
++    object_initialize_child(OBJECT(s), "mch",  &s->mch, sizeof(s->mch),
++                            TYPE_MCH_PCI_DEVICE, &error_abort, NULL);
+     qdev_prop_set_int32(DEVICE(&s->mch), "addr", PCI_DEVFN(0, 0));
+     qdev_prop_set_bit(DEVICE(&s->mch), "multifunction", false);
+     /* mch's object_initialize resets the default value, set it again */
+diff --git a/hw/pci-host/xilinx-pcie.c b/hw/pci-host/xilinx-pcie.c
+index 60309af..f82d3f3 100644
+--- a/hw/pci-host/xilinx-pcie.c
++++ b/hw/pci-host/xilinx-pcie.c
+@@ -149,8 +149,8 @@ static void xilinx_pcie_host_init(Object *obj)
+     XilinxPCIEHost *s = XILINX_PCIE_HOST(obj);
+     XilinxPCIERoot *root = &s->root;
+ 
+-    object_initialize(root, sizeof(*root), TYPE_XILINX_PCIE_ROOT);
+-    object_property_add_child(obj, "root", OBJECT(root), NULL);
++    object_initialize_child(obj, "root",  root, sizeof(*root),
++                            TYPE_XILINX_PCIE_ROOT, NULL);
+     qdev_prop_set_int32(DEVICE(root), "addr", PCI_DEVFN(0, 0));
+     qdev_prop_set_bit(DEVICE(root), "multifunction", false);
+ }
 -- 
-MST
+1.8.3.1
+
 
