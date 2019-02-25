@@ -1,47 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gyGx1-0006aa-OL
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Feb 2019 09:09:47 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50353)
+	id 1gyHHU-0007AV-0U
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Feb 2019 09:30:56 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54941)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1gyGx0-0006ZV-6o
-	for qemu-trivial@nongnu.org; Mon, 25 Feb 2019 09:09:46 -0500
+	(envelope-from <peter.maydell@linaro.org>) id 1gyHHJ-00076Y-H2
+	for qemu-trivial@nongnu.org; Mon, 25 Feb 2019 09:30:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1gyGwy-0002JF-3R
-	for qemu-trivial@nongnu.org; Mon, 25 Feb 2019 09:09:46 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:50262)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kwolf@redhat.com>)
-	id 1gyGwu-0002Gk-40; Mon, 25 Feb 2019 09:09:40 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 441483091755;
-	Mon, 25 Feb 2019 14:09:39 +0000 (UTC)
-Received: from linux.fritz.box (ovpn-117-243.ams2.redhat.com [10.36.117.243])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id AC38A60BF4;
-	Mon, 25 Feb 2019 14:09:36 +0000 (UTC)
-Date: Mon, 25 Feb 2019 15:09:35 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
-	qemu-block@nongnu.org, qemu-trivial@nongnu.org,
-	Max Reitz <mreitz@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
-	Satheesh Rajendran <sathnaga@linux.vnet.ibm.com>
-Message-ID: <20190225140935.GE6320@linux.fritz.box>
-References: <1551095970-14645-1-git-send-email-thuth@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1gyHHI-0006sN-Pn
+	for qemu-trivial@nongnu.org; Mon, 25 Feb 2019 09:30:45 -0500
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:43257)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1gyHHH-0006cC-F8
+	for qemu-trivial@nongnu.org; Mon, 25 Feb 2019 09:30:44 -0500
+Received: by mail-ot1-x342.google.com with SMTP id n71so7945794ota.10
+	for <qemu-trivial@nongnu.org>; Mon, 25 Feb 2019 06:30:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=3tLPL+RDArLLOi+6onnfeL7AR0gVeczh8GwMBCpn1Is=;
+	b=RT6aZL51+KCnHQ5EuH9wL1DmXEP5MpcG/OZkgCmJiJsXt0TuMp+NcsO7lX2OQa3zkP
+	qlVovlqlnqsdJj6w0orvKSANMMId+efUgPy+RMZh91GdOBRpbex/GNIR/xVJ3N3ZeQ5C
+	uHyLRtXXt6U1YpOVAyvhWrQScarboS+cn7pSkaf0m6jUJcCUNDPTgr+hHnYrUSkqYqm1
+	sJ8p50Ry3eRj6th/a1vclXBBOAIDAVdYxs+H1seT+7tmQlagHCi7BwwfOXnwBk2AYLj8
+	9OwsGj0OzgK+XlHGsioiqtpxBnzkAUdiS00HKLBkpMYP2PmHpFuYn9kFJkg0DEKckt9b
+	wlbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=3tLPL+RDArLLOi+6onnfeL7AR0gVeczh8GwMBCpn1Is=;
+	b=BaDWFJebtxgLdMU+91O4gRBdO2yi098sk9gpezH5XH2MRgMDYjzmr+UhigTYkns41v
+	lGo52jK7kV8IOjgSXcPX+dO2NPyNlNM9YBOnTfTUVp1bYD8znH8lNrIS3793Lgh/k/sL
+	B5xOhiMPznyMCpQkXpjVii6VvI9m2KGXZwqvSbfUjBKe8qd1xayl46q8cvgM8hD8tCbX
+	GuHwvNI0VsakH2wgwZ32y6DdwmuCO7SHR0PquGlnPFkJZEhZliBT9pHqt2s5cxnsQp31
+	5QkRXZ2YLYB2yYlyg4SUMMD/Oq50KppWgua91xww+o/+4pFdbzexaZbqmfDF20W28tCP
+	xK5g==
+X-Gm-Message-State: AHQUAubs5d2yx4xKh2KP1Hm6D+a5LXWtTphElNMDJGmOu/W6YXepMWOu
+	VxHntDPQvrUbc0uOFSC/DIb+cn+hbomcZsEH01VC0Q==
+X-Google-Smtp-Source: AHgI3IZRIvTHRfWxZVA5/fer8wwRgZFkBJyYGCDlvA6kSPbxiSz+BkwMJSbGNlCMG/E4HB7Qdx1scuIa5K6j1onSbc0=
+X-Received: by 2002:a9d:7d05:: with SMTP id v5mr12031324otn.201.1551105019361; 
+	Mon, 25 Feb 2019 06:30:19 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <1551095970-14645-1-git-send-email-thuth@redhat.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Mon, 25 Feb 2019 14:09:39 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+References: <1551095970-14645-1-git-send-email-thuth@redhat.com>
+	<20190225140935.GE6320@linux.fritz.box>
+In-Reply-To: <20190225140935.GE6320@linux.fritz.box>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 25 Feb 2019 14:30:08 +0000
+Message-ID: <CAFEAcA9bbZKeM=-P7mh90-QH35Kn_oR-D0yTUbteKg8JEV+Tgw@mail.gmail.com>
+To: Kevin Wolf <kwolf@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	Fam Zheng <fam@euphon.net>, Qemu-block <qemu-block@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, Max Reitz <mreitz@redhat.com>,
+	Satheesh Rajendran <sathnaga@linux.vnet.ibm.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::342
 Subject: Re: [Qemu-trivial] [PATCH] block/nvme: Remove QEMU_PACKED from
  naturally aligned NVMeRegs struct
 X-BeenThere: qemu-trivial@nongnu.org
@@ -55,35 +69,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Feb 2019 14:09:47 -0000
+X-List-Received-Date: Mon, 25 Feb 2019 14:30:54 -0000
 
-Am 25.02.2019 um 12:59 hat Thomas Huth geschrieben:
-> The QEMU_PACKED is causing a compiler warning/error with GCC 9:
->=20
->   CC      block/nvme.o
-> block/nvme.c: In function =E2=80=98nvme_create_queue_pair=E2=80=99:
-> block/nvme.c:209:22: error: taking address of packed member of
->  =E2=80=98struct <anonymous>=E2=80=99 may result in an unaligned pointe=
-r value
->  [-Werror=3Daddress-of-packed-member]
->   209 |     q->sq.doorbell =3D &s->regs->doorbells[idx * 2 * s->doorbel=
-l_scale];
->=20
-> All members of the struct are naturally aligned, so there should
-> not be the need for QEMU_PACKED here, and the following QEMU_BUILD_BUG_=
-ON
-> also ensures that there is no padding. Thus simply remove the QEMU_PACK=
-ED
-> here.
->=20
-> Buglink: https://bugs.launchpad.net/qemu/+bug/1817525
-> Reported-by: Satheesh Rajendran <sathnaga@linux.vnet.ibm.com>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On Mon, 25 Feb 2019 at 14:09, Kevin Wolf <kwolf@redhat.com> wrote:
+> Though I'm not sure why a compiler should warn if packed and non-packed
+> result in the exact same layout anyway...
 
-Thanks, applied to the block branch.
+Packed implies "and any time you see a pointer to this struct
+it might not be aligned". Non-packed implies "you can assume
+that the base of the struct is aligned".
 
-Though I'm not sure why a compiler should warn if packed and non-packed
-result in the exact same layout anyway...
-
-Kevin
+thanks
+-- PMM
 
