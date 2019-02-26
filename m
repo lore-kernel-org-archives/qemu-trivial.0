@@ -1,70 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gygNB-0000Nb-Pv
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Feb 2019 12:18:29 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:41264)
+	id 1gyhaX-00070q-0W
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Feb 2019 13:36:21 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34411)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gygN9-0000NU-Rh
-	for qemu-trivial@nongnu.org; Tue, 26 Feb 2019 12:18:28 -0500
+	(envelope-from <philmd@redhat.com>) id 1gyhaU-00070U-Lx
+	for qemu-trivial@nongnu.org; Tue, 26 Feb 2019 13:36:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1gygN6-0003AU-46
-	for qemu-trivial@nongnu.org; Tue, 26 Feb 2019 12:18:26 -0500
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c]:42453)
+	(envelope-from <philmd@redhat.com>) id 1gyhaT-0000rx-J9
+	for qemu-trivial@nongnu.org; Tue, 26 Feb 2019 13:36:18 -0500
+Received: from mail-wm1-f66.google.com ([209.85.128.66]:52144)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1gygN2-000376-RU
-	for qemu-trivial@nongnu.org; Tue, 26 Feb 2019 12:18:21 -0500
-Received: by mail-pf1-x42c.google.com with SMTP id n74so6543416pfi.9
-	for <qemu-trivial@nongnu.org>; Tue, 26 Feb 2019 09:18:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=K3NpLjts9s/2ahZtZuQkiyVhH7m5HxJDx0hKfFMbOGE=;
-	b=M5eSzvelhiPV13VSWM0JuL61iSPyLhW6dZCelokjcuyBJNlUxftcgELv/MsKO1O/L9
-	K0v+x8b8kpy3jE2AlZxuuqgz6VrxxPZr4UpDxUlY3SdlpVwzpRxvR87rHee2ZnotOt/J
-	60HkoC5Uca6rXoKlEzNYXzY+GD9enX6BbxAUpm3tO4FcfcHAtvi9AXSOTIbLlXulvXcy
-	V76ZOqibJrZlMnn08Imo08gTz8FuwMZpof3J+8i1iATn92C+wJgjpz3pIYx3BSd8a6y9
-	DYKOBU7AFualv+cF+ns8Tkn6RnbuJI1MmZv7cUCbpT+Nez3gG2O4WIOUoknFIjQeoeap
-	oM5Q==
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gyhaT-0000oQ-AL
+	for qemu-trivial@nongnu.org; Tue, 26 Feb 2019 13:36:17 -0500
+Received: by mail-wm1-f66.google.com with SMTP id n19so3415777wmi.1
+	for <qemu-trivial@nongnu.org>; Tue, 26 Feb 2019 10:36:16 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=K3NpLjts9s/2ahZtZuQkiyVhH7m5HxJDx0hKfFMbOGE=;
-	b=AyD15sgaZJif0pPKhdmzvg68jE7EbMAj9CvV6xWFyzevwoEmk8HRdg02gyUZVNB2Rl
-	aONYLQRuHNOoRGOzh1iJobUqxi5sJIp6i7jzIDUariFNxpjqfch+apRL9RP4YHM01GN1
-	5wGFN3ytjPX14j4JiynKRjjGql/wZqNRvCr2wN4QlifUpr88EHRsISSClW48xvL6u6Eu
-	gP9O593bbpbyefrijbcMZMIPkqpAsvschvmV/7mt81+STX0qDoo5U206Ix0BPXlJXOf1
-	7VIk/bAEHGhNSArVCs7lkzMYmuAl43lTIQxj334fiz8lEyR9fJgs5JZiyCE1UzXza5r5
-	JKdw==
-X-Gm-Message-State: AHQUAua7r/xxaBQgVLG6Av6262fwJQcVzYFuP+Oh5ohWvI2ZQAdJywKp
-	JuRgNQiIF0tTTFObLWZBa8jrGZoylk8=
-X-Google-Smtp-Source: AHgI3IbXkqSAmUG+DweYNBMa9jEdowrI9g+t7hfFVD3Vp9u+vMXTRos50ZcU98zuM25dMD+a4FV6fw==
-X-Received: by 2002:a63:e553:: with SMTP id z19mr25224354pgj.331.1551201499285;
-	Tue, 26 Feb 2019 09:18:19 -0800 (PST)
-Received: from cloudburst.twiddle.net (97-113-188-82.tukw.qwest.net.
-	[97.113.188.82]) by smtp.gmail.com with ESMTPSA id
-	a4sm23433880pga.52.2019.02.26.09.18.18
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 26 Feb 2019 09:18:18 -0800 (PST)
+	bh=90kB0p17FsuY2A/CfNKFuoVXR9x3rdM0ahSNbS3aJcU=;
+	b=nFP3dBdoKIryFgUpIxjeYhGcF7eko0RRvvk9E4ecp39sQnyQni/5AnCKewvVGcUP2Z
+	KV1uIMAbfHKU1xcqMqrl7XM6q8vLdkLZge7UXPmSrJTm60vEmvuhmSxNGAnFWWZu87kw
+	ES6T4hFPLuJnAgITNRecJTpWQhEQCCR+ZjW+Uk75jDKhnn+xIVgfQdiR8u5hBG2byZMH
+	JU7Sv5SjYwOzH2aEocYFhFiRXI8Ld+067vqETVyZPZqrZzIGey6iz4uuMw+IAKEvbjLV
+	6kjncl9zDcpNVriQqsNu849tCzAkRh3JH3edRG8hdE01BtcMKasWrwYulMEs/rR0chdd
+	/5Ig==
+X-Gm-Message-State: AHQUAuYZbQ/0GEzAc3Vl5LcJtq3Zlz8bKM3ZNfEDt5M40+Rr73xvrOVe
+	AcHyt4yjARFi2hGxWFZ/W+eckA==
+X-Google-Smtp-Source: AHgI3Ialn1mM4IkWRjF0h9/ZqeAztmivW8mSUm+BNnDK/81D+z46jbPMNM+H+9ykwDgiOm1zy9ZBAA==
+X-Received: by 2002:a7b:c392:: with SMTP id s18mr3550836wmj.152.1551206175421; 
+	Tue, 26 Feb 2019 10:36:15 -0800 (PST)
+Received: from [192.168.1.37] (43.red-88-25-181.staticip.rima-tde.net.
+	[88.25.181.43])
+	by smtp.gmail.com with ESMTPSA id a8sm275166wmh.26.2019.02.26.10.36.14
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Tue, 26 Feb 2019 10:36:14 -0800 (PST)
 To: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	Laurent Vivier <lvivier@redhat.com>
 References: <155119086741.1037569.12734854713022304642.stgit@bahia.lan>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <6559ab4e-abc1-5c48-80a9-3787ae95fda1@linaro.org>
-Date: Tue, 26 Feb 2019 09:18:16 -0800
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <6e2fa68d-2d4b-d0ee-bc03-c1cd1c7a8cc6@redhat.com>
+Date: Tue, 26 Feb 2019 19:36:13 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	Thunderbird/60.5.1
 MIME-Version: 1.0
 In-Reply-To: <155119086741.1037569.12734854713022304642.stgit@bahia.lan>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::42c
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+	[fuzzy]
+X-Received-From: 209.85.128.66
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] bswap: Fix accessors syntax
  in comment
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,19 +68,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Feb 2019 17:18:28 -0000
+X-List-Received-Date: Tue, 26 Feb 2019 18:36:19 -0000
 
-On 2/26/19 6:21 AM, Greg Kurz wrote:
+On 2/26/19 3:21 PM, Greg Kurz wrote:
 > All accessors that have an endian infix DO have an underscore between
 > {size} and {endian}.
 > 
 > Signed-off-by: Greg Kurz <groug@kaod.org>
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
 > ---
 >  include/qemu/bswap.h |    8 ++++----
 >  1 file changed, 4 insertions(+), 4 deletions(-)
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~
+> 
+> diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
+> index a684c1a7a298..5a70f78c0ba4 100644
+> --- a/include/qemu/bswap.h
+> +++ b/include/qemu/bswap.h
+> @@ -255,9 +255,9 @@ typedef union {
+>  /*
+>   * the generic syntax is:
+>   *
+> - * load: ld{type}{sign}{size}{endian}_p(ptr)
+> + * load: ld{type}{sign}{size}_{endian}_p(ptr)
+>   *
+> - * store: st{type}{size}{endian}_p(ptr, val)
+> + * store: st{type}{size}_{endian}_p(ptr, val)
+>   *
+>   * Note there are small differences with the softmmu access API!
+>   *
+> @@ -293,10 +293,10 @@ typedef union {
+>   *
+>   * For cases where the size to be used is not fixed at compile time,
+>   * there are
+> - *  stn{endian}_p(ptr, sz, val)
+> + *  stn_{endian}_p(ptr, sz, val)
+>   * which stores @val to @ptr as an @endian-order number @sz bytes in size
+>   * and
+> - *  ldn{endian}_p(ptr, sz)
+> + *  ldn_{endian}_p(ptr, sz)
+>   * which loads @sz bytes from @ptr as an unsigned @endian-order number
+>   * and returns it in a uint64_t.
+>   */
+> 
+> 
 
