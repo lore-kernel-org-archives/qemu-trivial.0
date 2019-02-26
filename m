@@ -1,50 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gyL8M-0006iZ-Hv
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Feb 2019 13:37:46 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:58405)
+	id 1gydbr-0007C7-3m
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Feb 2019 09:21:27 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55517)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1gyL8K-0006h9-41
-	for qemu-trivial@nongnu.org; Mon, 25 Feb 2019 13:37:45 -0500
+	(envelope-from <groug@kaod.org>) id 1gydbp-0007AQ-4C
+	for qemu-trivial@nongnu.org; Tue, 26 Feb 2019 09:21:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <lersek@redhat.com>) id 1gyL8J-0004xm-4w
-	for qemu-trivial@nongnu.org; Mon, 25 Feb 2019 13:37:44 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34694)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <lersek@redhat.com>)
-	id 1gyL8G-0004r0-NT; Mon, 25 Feb 2019 13:37:40 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 766B1300206F;
-	Mon, 25 Feb 2019 18:32:04 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-217.rdu2.redhat.com
-	[10.10.120.217])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 64CBC5D71C;
-	Mon, 25 Feb 2019 18:31:53 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
-	<philmd@redhat.com>, qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-trivial@nongnu.org
-References: <1551111298-8445-1-git-send-email-thuth@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <2da5f950-ab74-355a-6019-add964ddb43c@redhat.com>
-Date: Mon, 25 Feb 2019 19:31:52 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.9.1
+	(envelope-from <groug@kaod.org>) id 1gydbn-000308-Kb
+	for qemu-trivial@nongnu.org; Tue, 26 Feb 2019 09:21:25 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:42112
+	helo=mx0a-001b2d01.pphosted.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1gydbn-0002wX-9M
+	for qemu-trivial@nongnu.org; Tue, 26 Feb 2019 09:21:23 -0500
+Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+	x1QEEY2A011634
+	for <qemu-trivial@nongnu.org>; Tue, 26 Feb 2019 09:21:13 -0500
+Received: from e06smtp03.uk.ibm.com (e06smtp03.uk.ibm.com [195.75.94.99])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 2qw6bb3h08-1
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <qemu-trivial@nongnu.org>; Tue, 26 Feb 2019 09:21:13 -0500
+Received: from localhost
+	by e06smtp03.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <groug@kaod.org>;
+	Tue, 26 Feb 2019 14:21:12 -0000
+Received: from b06cxnps4075.portsmouth.uk.ibm.com (9.149.109.197)
+	by e06smtp03.uk.ibm.com (192.168.101.133) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	(version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+	Tue, 26 Feb 2019 14:21:09 -0000
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com
+	(b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
+	by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id x1QEL86232112776
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Tue, 26 Feb 2019 14:21:08 GMT
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id B3C85A4064;
+	Tue, 26 Feb 2019 14:21:08 +0000 (GMT)
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id A17E1A4054;
+	Tue, 26 Feb 2019 14:21:08 +0000 (GMT)
+Received: from smtp.lab.toulouse-stg.fr.ibm.com (unknown [9.101.4.1])
+	by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+	Tue, 26 Feb 2019 14:21:08 +0000 (GMT)
+Received: from bahia.lan (sig-9-145-71-26.uk.ibm.com [9.145.71.26])
+	by smtp.lab.toulouse-stg.fr.ibm.com (Postfix) with ESMTP id F31862201C6;
+	Tue, 26 Feb 2019 15:21:07 +0100 (CET)
+From: Greg Kurz <groug@kaod.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Laurent Vivier <lvivier@redhat.com>
+Date: Tue, 26 Feb 2019 15:21:07 +0100
+User-Agent: StGit/unknown-version
 MIME-Version: 1.0
-In-Reply-To: <1551111298-8445-1-git-send-email-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.42]);
-	Mon, 25 Feb 2019 18:32:04 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] hw/nvram/fw_cfg: Move
- boot_splash_filedata variables into fw_cfg.c
+X-TM-AS-GCONF: 00
+x-cbid: 19022614-0012-0000-0000-000002FA63D7
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 19022614-0013-0000-0000-000021320837
+Message-Id: <155119086741.1037569.12734854713022304642.stgit@bahia.lan>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+	definitions=2019-02-26_09:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	priorityscore=1501
+	malwarescore=0 suspectscore=4 phishscore=0 bulkscore=0 spamscore=0
+	clxscore=1034 lowpriorityscore=0 mlxscore=0 impostorscore=0
+	mlxlogscore=659 adultscore=0 classifier=spam adjust=0 reason=mlx
+	scancount=1 engine=8.0.1-1810050000 definitions=main-1902260105
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.158.5
+Subject: [Qemu-trivial] [PATCH] bswap: Fix accessors syntax in comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,125 +85,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Feb 2019 18:37:45 -0000
+X-List-Received-Date: Tue, 26 Feb 2019 14:21:26 -0000
 
-Hi Thomas,
+All accessors that have an endian infix DO have an underscore between
+{size} and {endian}.
 
-On 02/25/19 17:14, Thomas Huth wrote:
-> The global boot_splash_filedata and boot_splash_filedata_size variables
-> are only used in fw_cfg.c. So there is really no need that these need
-> to be global and reside in vl.c. Move them to fw_cfg.c instead.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/nvram/fw_cfg.c         |  9 +++++++++
->  include/hw/nvram/fw_cfg.h |  1 +
->  include/sysemu/sysemu.h   |  2 --
->  vl.c                      | 10 +---------
->  4 files changed, 11 insertions(+), 11 deletions(-)
-> 
-> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-> index 7fdf04a..15f0023 100644
-> --- a/hw/nvram/fw_cfg.c
-> +++ b/hw/nvram/fw_cfg.c
-> @@ -63,6 +63,9 @@ struct FWCfgEntry {
->  #define JPG_FILE 0
->  #define BMP_FILE 1
->  
-> +static uint8_t *boot_splash_filedata;
-> +static size_t boot_splash_filedata_size;
-> +
->  static char *read_splashfile(char *filename, gsize *file_sizep,
->                               int *file_typep)
->  {
-> @@ -175,6 +178,12 @@ static void fw_cfg_bootsplash(FWCfgState *s)
->      }
->  }
->  
-> +void fw_cfg_res_free(void)
-> +{
-> +    g_free(boot_splash_filedata);
-> +    boot_splash_filedata = NULL;
-> +}
-> +
->  static void fw_cfg_reboot(FWCfgState *s)
->  {
->      const char *reboot_timeout = NULL;
-> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
-> index f5a6895..16d237c 100644
-> --- a/include/hw/nvram/fw_cfg.h
-> +++ b/include/hw/nvram/fw_cfg.h
-> @@ -225,5 +225,6 @@ FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
->  
->  FWCfgState *fw_cfg_find(void);
->  bool fw_cfg_dma_enabled(void *opaque);
-> +void fw_cfg_res_free(void);
->  
->  #endif
-> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
-> index 4b5a6b7..63a5eed 100644
-> --- a/include/sysemu/sysemu.h
-> +++ b/include/sysemu/sysemu.h
-> @@ -111,8 +111,6 @@ extern int no_shutdown;
->  extern int old_param;
->  extern int boot_menu;
->  extern bool boot_strict;
-> -extern uint8_t *boot_splash_filedata;
-> -extern size_t boot_splash_filedata_size;
->  extern bool enable_mlock;
->  extern bool enable_cpu_pm;
->  extern QEMUClockType rtc_clock;
-> diff --git a/vl.c b/vl.c
-> index 502857a..f769cce 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -187,8 +187,6 @@ unsigned int nb_prom_envs = 0;
->  const char *prom_envs[MAX_PROM_ENVS];
->  int boot_menu;
->  bool boot_strict;
-> -uint8_t *boot_splash_filedata;
-> -size_t boot_splash_filedata_size;
->  bool wakeup_suspend_enabled;
->  
->  int icount_align_option;
-> @@ -559,12 +557,6 @@ const char *qemu_get_vm_name(void)
->      return qemu_name;
->  }
->  
-> -static void res_free(void)
-> -{
-> -    g_free(boot_splash_filedata);
-> -    boot_splash_filedata = NULL;
-> -}
-> -
->  static int default_driver_check(void *opaque, QemuOpts *opts, Error **errp)
->  {
->      const char *driver = qemu_opt_get(opts, "driver");
-> @@ -4585,7 +4577,7 @@ int main(int argc, char **argv, char **envp)
->      job_cancel_sync_all();
->      bdrv_close_all();
->  
-> -    res_free();
-> +    fw_cfg_res_free();
->  
->      /* vhost-user must be cleaned up before chardevs.  */
->      tpm_cleanup();
-> 
+Signed-off-by: Greg Kurz <groug@kaod.org>
+---
+ include/qemu/bswap.h |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-The res_free() function call in main() goes back to commit 3d3b8303c6f8
-("showing a splash picture when start", 2011-07-29). That seems to be
-the original addition of the bootsplash feature. And, res_free() appears
-to simply release dynamic memory before the QEMU process exits.
+diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
+index a684c1a7a298..5a70f78c0ba4 100644
+--- a/include/qemu/bswap.h
++++ b/include/qemu/bswap.h
+@@ -255,9 +255,9 @@ typedef union {
+ /*
+  * the generic syntax is:
+  *
+- * load: ld{type}{sign}{size}{endian}_p(ptr)
++ * load: ld{type}{sign}{size}_{endian}_p(ptr)
+  *
+- * store: st{type}{size}{endian}_p(ptr, val)
++ * store: st{type}{size}_{endian}_p(ptr, val)
+  *
+  * Note there are small differences with the softmmu access API!
+  *
+@@ -293,10 +293,10 @@ typedef union {
+  *
+  * For cases where the size to be used is not fixed at compile time,
+  * there are
+- *  stn{endian}_p(ptr, sz, val)
++ *  stn_{endian}_p(ptr, sz, val)
+  * which stores @val to @ptr as an @endian-order number @sz bytes in size
+  * and
+- *  ldn{endian}_p(ptr, sz)
++ *  ldn_{endian}_p(ptr, sz)
+  * which loads @sz bytes from @ptr as an unsigned @endian-order number
+  * and returns it in a uint64_t.
+  */
 
-Do we release malloc'd memory, as a general rule, before we exit the
-QEMU process (with exit status 0)? My impression has been that we don't
-care; we just let the kernel forget about all memory that the QEMU
-process used to own.
-
-If that's the case, I suggest to respin this patch, deleting res_free()
-completely. AFAICS there are no other call sites. That would be a nice
-improvement IMO (we wouldn't have to extend "include/hw/nvram/fw_cfg.h").
-
-Thanks!
-Laszlo
 
