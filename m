@@ -1,43 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gzM5a-00084G-V8
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Feb 2019 08:51:07 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:39743)
+	id 1gzMDi-00030F-9i
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Feb 2019 08:59:30 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:41146)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1gzM5Y-00082s-SS
-	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 08:51:05 -0500
+	(envelope-from <eblake@redhat.com>) id 1gzMDf-0002yn-Ra
+	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 08:59:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1gzM5W-000154-FQ
-	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 08:51:03 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:11200)
+	(envelope-from <eblake@redhat.com>) id 1gzMDa-0004Qg-39
+	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 08:59:27 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:33828)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1gzM5T-00013I-7S; Thu, 28 Feb 2019 08:50:59 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1gzMDR-0004OH-Sg; Thu, 28 Feb 2019 08:59:14 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 454F1315B661;
-	Thu, 28 Feb 2019 13:50:58 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.17.75])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1FA4418012;
-	Thu, 28 Feb 2019 13:50:56 +0000 (UTC)
-Date: Thu, 28 Feb 2019 13:50:54 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Aarushi Mehta <mehta.aaru20@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Stefan Hajnoczi <stefanha@gmail.com>, Julia Suvorova <jusual@mail.ru>
-Message-ID: <20190228135054.GE9217@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 0539330F279D;
+	Thu, 28 Feb 2019 13:59:13 +0000 (UTC)
+Received: from [10.3.116.222] (ovpn-116-222.phx2.redhat.com [10.3.116.222])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 847EA5D70D;
+	Thu, 28 Feb 2019 13:59:08 +0000 (UTC)
+To: Aarushi Mehta <mehta.aaru20@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@gmail.com>,
+	Julia Suvorova <jusual@mail.ru>
 References: <4817f5c3b20aedba869608c06e76d11a722f4864.camel@gmail.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <3aaecc9d-d03b-a754-0ef0-a65609777b2e@redhat.com>
+Date: Thu, 28 Feb 2019 07:59:02 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 In-Reply-To: <4817f5c3b20aedba869608c06e76d11a722f4864.camel@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.49]);
-	Thu, 28 Feb 2019 13:50:58 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.48]);
+	Thu, 28 Feb 2019 13:59:13 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] trivial malloc to g_malloc
@@ -53,28 +55,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Feb 2019 13:51:05 -0000
+X-List-Received-Date: Thu, 28 Feb 2019 13:59:28 -0000
 
-On Thu, Feb 28, 2019 at 07:12:45PM +0530, Aarushi Mehta wrote:
+On 2/28/19 7:42 AM, Aarushi Mehta wrote:
 > Hi
 > 
 > This is a trivial contribution part of the BiteSizedTasks on the wiki.
 > I found this discussion http://git.corpit.ru/?p=qemu.git;a=commit;h=b45c03f585ea9bb1af76c73e82195418c294919d
 > on migrating even g_malloc to g_new, is this not appropriate for the same? 
 > The wiki can presumably use an update regarding this.
-
-This kind of question should not be in the commit message - it shoudl
-go below the '---'
-
 > 
 > Signed-off-by: Aarushi <mehta.aaru20@gmail.com>
 > ---
-
-....here....
-
-This lets people answer the question, without the question becoming
-part of the git history.
-
 >  thunk.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
@@ -89,21 +81,15 @@ part of the git history.
 > -        se->field_offsets[i] = malloc(nb_fields * sizeof(int));
 > +        se->field_offsets[i] = g_malloc(nb_fields * sizeof(int));
 
-Yes, this should use g_new0
+Where is the counterpart free() that needs to be changed to g_free()?
 
->          type_ptr = se->field_types;
->          for(j = 0;j < nb_fields; j++) {
->              size = thunk_type_size(type_ptr, i);
-> -- 
-> 2.17.1
-> 
-> 
-> 
+Also, you absolutely want g_new() or some other variant that separates
+the number of elements from the size of the element as two separate
+arguments, to avoid the possibility of integer overflow when using * in
+a single argument.
 
-Regards,
-Daniel
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
