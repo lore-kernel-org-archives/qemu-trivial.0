@@ -1,62 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gyhaX-00070q-0W
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Feb 2019 13:36:21 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34411)
+	id 1gzM5a-00084G-V8
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Feb 2019 08:51:07 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39743)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gyhaU-00070U-Lx
-	for qemu-trivial@nongnu.org; Tue, 26 Feb 2019 13:36:19 -0500
+	(envelope-from <berrange@redhat.com>) id 1gzM5Y-00082s-SS
+	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 08:51:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gyhaT-0000rx-J9
-	for qemu-trivial@nongnu.org; Tue, 26 Feb 2019 13:36:18 -0500
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:52144)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gyhaT-0000oQ-AL
-	for qemu-trivial@nongnu.org; Tue, 26 Feb 2019 13:36:17 -0500
-Received: by mail-wm1-f66.google.com with SMTP id n19so3415777wmi.1
-	for <qemu-trivial@nongnu.org>; Tue, 26 Feb 2019 10:36:16 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=90kB0p17FsuY2A/CfNKFuoVXR9x3rdM0ahSNbS3aJcU=;
-	b=nFP3dBdoKIryFgUpIxjeYhGcF7eko0RRvvk9E4ecp39sQnyQni/5AnCKewvVGcUP2Z
-	KV1uIMAbfHKU1xcqMqrl7XM6q8vLdkLZge7UXPmSrJTm60vEmvuhmSxNGAnFWWZu87kw
-	ES6T4hFPLuJnAgITNRecJTpWQhEQCCR+ZjW+Uk75jDKhnn+xIVgfQdiR8u5hBG2byZMH
-	JU7Sv5SjYwOzH2aEocYFhFiRXI8Ld+067vqETVyZPZqrZzIGey6iz4uuMw+IAKEvbjLV
-	6kjncl9zDcpNVriQqsNu849tCzAkRh3JH3edRG8hdE01BtcMKasWrwYulMEs/rR0chdd
-	/5Ig==
-X-Gm-Message-State: AHQUAuYZbQ/0GEzAc3Vl5LcJtq3Zlz8bKM3ZNfEDt5M40+Rr73xvrOVe
-	AcHyt4yjARFi2hGxWFZ/W+eckA==
-X-Google-Smtp-Source: AHgI3Ialn1mM4IkWRjF0h9/ZqeAztmivW8mSUm+BNnDK/81D+z46jbPMNM+H+9ykwDgiOm1zy9ZBAA==
-X-Received: by 2002:a7b:c392:: with SMTP id s18mr3550836wmj.152.1551206175421; 
-	Tue, 26 Feb 2019 10:36:15 -0800 (PST)
-Received: from [192.168.1.37] (43.red-88-25-181.staticip.rima-tde.net.
-	[88.25.181.43])
-	by smtp.gmail.com with ESMTPSA id a8sm275166wmh.26.2019.02.26.10.36.14
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 26 Feb 2019 10:36:14 -0800 (PST)
-To: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Laurent Vivier <lvivier@redhat.com>
-References: <155119086741.1037569.12734854713022304642.stgit@bahia.lan>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <6e2fa68d-2d4b-d0ee-bc03-c1cd1c7a8cc6@redhat.com>
-Date: Tue, 26 Feb 2019 19:36:13 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.5.1
+	(envelope-from <berrange@redhat.com>) id 1gzM5W-000154-FQ
+	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 08:51:03 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:11200)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <berrange@redhat.com>)
+	id 1gzM5T-00013I-7S; Thu, 28 Feb 2019 08:50:59 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 454F1315B661;
+	Thu, 28 Feb 2019 13:50:58 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.17.75])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1FA4418012;
+	Thu, 28 Feb 2019 13:50:56 +0000 (UTC)
+Date: Thu, 28 Feb 2019 13:50:54 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Aarushi Mehta <mehta.aaru20@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	Stefan Hajnoczi <stefanha@gmail.com>, Julia Suvorova <jusual@mail.ru>
+Message-ID: <20190228135054.GE9217@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <4817f5c3b20aedba869608c06e76d11a722f4864.camel@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <155119086741.1037569.12734854713022304642.stgit@bahia.lan>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Disposition: inline
+In-Reply-To: <4817f5c3b20aedba869608c06e76d11a722f4864.camel@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.49]);
+	Thu, 28 Feb 2019 13:50:58 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] bswap: Fix accessors syntax
- in comment
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] trivial malloc to g_malloc
+ in thunk
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,49 +53,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Feb 2019 18:36:19 -0000
+X-List-Received-Date: Thu, 28 Feb 2019 13:51:05 -0000
 
-On 2/26/19 3:21 PM, Greg Kurz wrote:
-> All accessors that have an endian infix DO have an underscore between
-> {size} and {endian}.
+On Thu, Feb 28, 2019 at 07:12:45PM +0530, Aarushi Mehta wrote:
+> Hi
 > 
-> Signed-off-by: Greg Kurz <groug@kaod.org>
+> This is a trivial contribution part of the BiteSizedTasks on the wiki.
+> I found this discussion http://git.corpit.ru/?p=qemu.git;a=commit;h=b45c03f585ea9bb1af76c73e82195418c294919d
+> on migrating even g_malloc to g_new, is this not appropriate for the same? 
+> The wiki can presumably use an update regarding this.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+This kind of question should not be in the commit message - it shoudl
+go below the '---'
 
+> 
+> Signed-off-by: Aarushi <mehta.aaru20@gmail.com>
 > ---
->  include/qemu/bswap.h |    8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+
+....here....
+
+This lets people answer the question, without the question becoming
+part of the git history.
+
+>  thunk.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
-> index a684c1a7a298..5a70f78c0ba4 100644
-> --- a/include/qemu/bswap.h
-> +++ b/include/qemu/bswap.h
-> @@ -255,9 +255,9 @@ typedef union {
->  /*
->   * the generic syntax is:
->   *
-> - * load: ld{type}{sign}{size}{endian}_p(ptr)
-> + * load: ld{type}{sign}{size}_{endian}_p(ptr)
->   *
-> - * store: st{type}{size}{endian}_p(ptr, val)
-> + * store: st{type}{size}_{endian}_p(ptr, val)
->   *
->   * Note there are small differences with the softmmu access API!
->   *
-> @@ -293,10 +293,10 @@ typedef union {
->   *
->   * For cases where the size to be used is not fixed at compile time,
->   * there are
-> - *  stn{endian}_p(ptr, sz, val)
-> + *  stn_{endian}_p(ptr, sz, val)
->   * which stores @val to @ptr as an @endian-order number @sz bytes in size
->   * and
-> - *  ldn{endian}_p(ptr, sz)
-> + *  ldn_{endian}_p(ptr, sz)
->   * which loads @sz bytes from @ptr as an unsigned @endian-order number
->   * and returns it in a uint64_t.
->   */
+> diff --git a/thunk.c b/thunk.c
+> index d5d8645cd4..03fb2abab7 100644
+> --- a/thunk.c
+> +++ b/thunk.c
+> @@ -89,7 +89,7 @@ void thunk_register_struct(int id, const char *name, const argtype *types)
+>      for(i = 0;i < 2; i++) {
+>          offset = 0;
+>          max_align = 1;
+> -        se->field_offsets[i] = malloc(nb_fields * sizeof(int));
+> +        se->field_offsets[i] = g_malloc(nb_fields * sizeof(int));
+
+Yes, this should use g_new0
+
+>          type_ptr = se->field_types;
+>          for(j = 0;j < nb_fields; j++) {
+>              size = thunk_type_size(type_ptr, i);
+> -- 
+> 2.17.1
 > 
 > 
+> 
+
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
