@@ -1,43 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gzkuv-0007KO-KC
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2019 11:21:45 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:60616)
+	id 1gzlGf-0000eH-HX
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2019 11:44:13 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37843)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gzkuq-0007J5-Pw
-	for qemu-trivial@nongnu.org; Fri, 01 Mar 2019 11:21:44 -0500
+	(envelope-from <stefanha@gmail.com>) id 1gzlGd-0000cu-L4
+	for qemu-trivial@nongnu.org; Fri, 01 Mar 2019 11:44:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gzkuo-0005w3-M2
-	for qemu-trivial@nongnu.org; Fri, 01 Mar 2019 11:21:40 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:52498)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gzkug-0005mm-7n; Fri, 01 Mar 2019 11:21:32 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 85B9A306D35F;
-	Fri,  1 Mar 2019 16:21:28 +0000 (UTC)
-Received: from thuth.com (ovpn-116-112.ams2.redhat.com [10.36.116.112])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 0C75660143;
-	Fri,  1 Mar 2019 16:21:19 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Juan Quintela <quintela@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Kevin Wolf <kwolf@redhat.com>
-Date: Fri,  1 Mar 2019 17:21:17 +0100
-Message-Id: <1551457277-884-1-git-send-email-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.47]);
-	Fri, 01 Mar 2019 16:21:28 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] tests: Do not use "\n" in g_test_message()
- strings
+	(envelope-from <stefanha@gmail.com>) id 1gzlGb-0005Uw-HN
+	for qemu-trivial@nongnu.org; Fri, 01 Mar 2019 11:44:11 -0500
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:42604)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1gzlGZ-0005TP-OV; Fri, 01 Mar 2019 11:44:07 -0500
+Received: by mail-wr1-x443.google.com with SMTP id r5so26557667wrg.9;
+	Fri, 01 Mar 2019 08:44:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=7uuja/D0mjdrKq8yMxC6qIsAfnDeG1BOm/7NIJsTW+Y=;
+	b=PRyTPF1gF7Y5Nzo2YCOMiiZAK8zIfq2E9LTIxKzPw5OHW0ku/4oPp2eYLfQOjQ1Wzh
+	Dy0xY5ruxEaGR01J4va1lph9VcnFBwLFtBSE17WbiQr4FaWPnq6K4I3kq/EshIvvDwLM
+	/1Xbz5jvQjxJ2DGqzo0gPVyUXVIDnkbz1zGlLo9kg7BULTWQqiLfO2TryPfMILO9QDbS
+	GC5ncee389StHsbChZHitc5FmauBLeo7XjNcY1rpuuU1SsD9Nw+suSD6OF97bjUVSt4A
+	C3uMIqktKaglxuPpFFzpssuN7T1hR5XgqMAdL5sEULuDYOFAwr/h2JHp69TBBbtqVkcI
+	serA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=7uuja/D0mjdrKq8yMxC6qIsAfnDeG1BOm/7NIJsTW+Y=;
+	b=EYEv4qg1W816ofVX0N7oCrhDQos1YbKa6duTN+FMJke9YD6x+xtd49KWZ2ToegJBQ8
+	cS/2pNYnI1puZhq/Ao3jQweDxVy+oZQJ53p8opZ9IPHUduhkfirijhwq1Iw5Pwe3QQpM
+	rXofBWmOf5rTdQHj2p8qoAAgklpN9rLc/HpjQiQzQAOc1EbX/dPApjXileD0T+paP0o7
+	ZmIru/Lx+4fbc55f1DC97gUeMT/MylERD7xdn57tovwPaO1+tamN9ZLIOWAmVWSwmIjR
+	RuyL8MLACzUSEWzBjWI30xQsRX9IAlONKQKmtvTkTTpX5XVVXh3x9jKcaKWOLvPb4AJ1
+	7dXw==
+X-Gm-Message-State: APjAAAWAPA3dTw3nKgLPQJgMclqrInHyNXpOq5ZkUU+xKaU8QBCpdd29
+	Mos9UwSPPKrZMC0V/n0jRHo=
+X-Google-Smtp-Source: APXvYqxLLKrLy/XpkL4D3Kn03+UCZ5GAKfVgL38EKMeEhwkbB1DnA//Zl8X0rdNeSWFgmgw7uV1t6Q==
+X-Received: by 2002:adf:e487:: with SMTP id i7mr3973625wrm.202.1551458646509; 
+	Fri, 01 Mar 2019 08:44:06 -0800 (PST)
+Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
+	d21sm62810586wrc.44.2019.03.01.08.44.05
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Fri, 01 Mar 2019 08:44:05 -0800 (PST)
+Date: Fri, 1 Mar 2019 16:44:05 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Aarushi Mehta <mehta.aaru20@gmail.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	Julia Suvorova <jusual@mail.ru>, eblake@redhat.com
+Message-ID: <20190301164405.GD18260@stefanha-x1.localdomain>
+References: <63559cf027d4ebd95a844b73b1f20444fb72fb2c.camel@gmail.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="SO98HVl1bnMOfKZd"
+Content-Disposition: inline
+In-Reply-To: <63559cf027d4ebd95a844b73b1f20444fb72fb2c.camel@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::443
+Subject: Re: [Qemu-trivial] [PATCH v3] trivial fix of malloc to g_new in
+ thunk
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,274 +74,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Mar 2019 16:21:44 -0000
+X-List-Received-Date: Fri, 01 Mar 2019 16:44:12 -0000
 
-g_test_message() takes care of the newline on its own, so we
-should not use \n in the strings here.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- tests/ivshmem-test.c         |  4 ++--
- tests/m48t59-test.c          |  4 ++--
- tests/migration-test.c       |  4 ++--
- tests/rtc-test.c             |  4 ++--
- tests/rtl8139-test.c         |  6 +++---
- tests/test-aio-multithread.c |  8 ++++----
- tests/test-coroutine.c       | 10 ++++------
- tests/vhost-user-test.c      | 14 +++++++-------
- 8 files changed, 26 insertions(+), 28 deletions(-)
+--SO98HVl1bnMOfKZd
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/tests/ivshmem-test.c b/tests/ivshmem-test.c
-index 942ddc9..227561f 100644
---- a/tests/ivshmem-test.c
-+++ b/tests/ivshmem-test.c
-@@ -74,7 +74,7 @@ static inline unsigned in_reg(IVState *s, enum Reg reg)
-     unsigned res;
- 
-     res = qpci_io_readl(s->dev, s->reg_bar, reg);
--    g_test_message("*%s -> %x\n", name, res);
-+    g_test_message("*%s -> %x", name, res);
- 
-     return res;
- }
-@@ -83,7 +83,7 @@ static inline void out_reg(IVState *s, enum Reg reg, unsigned v)
- {
-     const char *name = reg2str(reg);
- 
--    g_test_message("%x -> *%s\n", v, name);
-+    g_test_message("%x -> *%s", v, name);
-     qpci_io_writel(s->dev, s->reg_bar, reg, v);
- }
- 
-diff --git a/tests/m48t59-test.c b/tests/m48t59-test.c
-index 4abf9c6..b94a123 100644
---- a/tests/m48t59-test.c
-+++ b/tests/m48t59-test.c
-@@ -199,9 +199,9 @@ static void bcd_check_time(void)
-         t = (long)mktime(datep);
-         s = (long)mktime(&start);
-         if (t < s) {
--            g_test_message("RTC is %ld second(s) behind wall-clock\n", (s - t));
-+            g_test_message("RTC is %ld second(s) behind wall-clock", (s - t));
-         } else {
--            g_test_message("RTC is %ld second(s) ahead of wall-clock\n", (t - s));
-+            g_test_message("RTC is %ld second(s) ahead of wall-clock", (t - s));
-         }
- 
-         g_assert_cmpint(ABS(t - s), <=, wiggle);
-diff --git a/tests/migration-test.c b/tests/migration-test.c
-index 8352612..905d545 100644
---- a/tests/migration-test.c
-+++ b/tests/migration-test.c
-@@ -821,7 +821,7 @@ int main(int argc, char **argv)
- 
-     tmpfs = mkdtemp(template);
-     if (!tmpfs) {
--        g_test_message("mkdtemp on path (%s): %s\n", template, strerror(errno));
-+        g_test_message("mkdtemp on path (%s): %s", template, strerror(errno));
-     }
-     g_assert(tmpfs);
- 
-@@ -839,7 +839,7 @@ int main(int argc, char **argv)
- 
-     ret = rmdir(tmpfs);
-     if (ret != 0) {
--        g_test_message("unable to rmdir: path (%s): %s\n",
-+        g_test_message("unable to rmdir: path (%s): %s",
-                        tmpfs, strerror(errno));
-     }
- 
-diff --git a/tests/rtc-test.c b/tests/rtc-test.c
-index d7a96cb..509be70 100644
---- a/tests/rtc-test.c
-+++ b/tests/rtc-test.c
-@@ -165,9 +165,9 @@ static void check_time(int wiggle)
-         t = (long)mktime(datep);
-         s = (long)mktime(&start);
-         if (t < s) {
--            g_test_message("RTC is %ld second(s) behind wall-clock\n", (s - t));
-+            g_test_message("RTC is %ld second(s) behind wall-clock", (s - t));
-         } else {
--            g_test_message("RTC is %ld second(s) ahead of wall-clock\n", (t - s));
-+            g_test_message("RTC is %ld second(s) ahead of wall-clock", (t - s));
-         }
- 
-         g_assert_cmpint(ABS(t - s), <=, wiggle);
-diff --git a/tests/rtl8139-test.c b/tests/rtl8139-test.c
-index 68bfc42..49e3f03 100644
---- a/tests/rtl8139-test.c
-+++ b/tests/rtl8139-test.c
-@@ -46,12 +46,12 @@ static QPCIDevice *get_device(void)
- static unsigned __attribute__((unused)) in_##name(void) \
- { \
-     unsigned res = qpci_io_read##len(dev, dev_bar, (val));     \
--    g_test_message("*%s -> %x\n", #name, res); \
-+    g_test_message("*%s -> %x", #name, res); \
-     return res; \
- } \
- static void out_##name(unsigned v) \
- { \
--    g_test_message("%x -> *%s\n", v, #name); \
-+    g_test_message("%x -> *%s", v, #name); \
-     qpci_io_write##len(dev, dev_bar, (val), v);        \
- }
- 
-@@ -176,7 +176,7 @@ static void test_timer(void)
-         }
-     }
- 
--    g_test_message("Everythink is ok!\n");
-+    g_test_message("Everythink is ok!");
- }
- 
- 
-diff --git a/tests/test-aio-multithread.c b/tests/test-aio-multithread.c
-index 6440d54..d3144be 100644
---- a/tests/test-aio-multithread.c
-+++ b/tests/test-aio-multithread.c
-@@ -178,7 +178,7 @@ static void test_multi_co_schedule(int seconds)
-     }
- 
-     join_aio_contexts();
--    g_test_message("scheduled %d, queued %d, retry %d, total %d\n",
-+    g_test_message("scheduled %d, queued %d, retry %d, total %d",
-                   count_other, count_here, count_retry,
-                   count_here + count_other + count_retry);
- }
-@@ -242,7 +242,7 @@ static void test_multi_co_mutex(int threads, int seconds)
-     }
- 
-     join_aio_contexts();
--    g_test_message("%d iterations/second\n", counter / seconds);
-+    g_test_message("%d iterations/second", counter / seconds);
-     g_assert_cmpint(counter, ==, atomic_counter);
- }
- 
-@@ -361,7 +361,7 @@ static void test_multi_fair_mutex(int threads, int seconds)
-     }
- 
-     join_aio_contexts();
--    g_test_message("%d iterations/second\n", counter / seconds);
-+    g_test_message("%d iterations/second", counter / seconds);
-     g_assert_cmpint(counter, ==, atomic_counter);
- }
- 
-@@ -417,7 +417,7 @@ static void test_multi_mutex(int threads, int seconds)
-     }
- 
-     join_aio_contexts();
--    g_test_message("%d iterations/second\n", counter / seconds);
-+    g_test_message("%d iterations/second", counter / seconds);
-     g_assert_cmpint(counter, ==, atomic_counter);
- }
- 
-diff --git a/tests/test-coroutine.c b/tests/test-coroutine.c
-index 28e79b3..e946d93 100644
---- a/tests/test-coroutine.c
-+++ b/tests/test-coroutine.c
-@@ -369,7 +369,7 @@ static void perf_lifecycle(void)
-     }
-     duration = g_test_timer_elapsed();
- 
--    g_test_message("Lifecycle %u iterations: %f s\n", max, duration);
-+    g_test_message("Lifecycle %u iterations: %f s", max, duration);
- }
- 
- static void perf_nesting(void)
-@@ -393,7 +393,7 @@ static void perf_nesting(void)
-     }
-     duration = g_test_timer_elapsed();
- 
--    g_test_message("Nesting %u iterations of %u depth each: %f s\n",
-+    g_test_message("Nesting %u iterations of %u depth each: %f s",
-         maxcycles, maxnesting, duration);
- }
- 
-@@ -426,8 +426,7 @@ static void perf_yield(void)
-     }
-     duration = g_test_timer_elapsed();
- 
--    g_test_message("Yield %u iterations: %f s\n",
--        maxcycles, duration);
-+    g_test_message("Yield %u iterations: %f s", maxcycles, duration);
- }
- 
- static __attribute__((noinline)) void dummy(unsigned *i)
-@@ -449,8 +448,7 @@ static void perf_baseline(void)
-     }
-     duration = g_test_timer_elapsed();
- 
--    g_test_message("Function call %u iterations: %f s\n",
--        maxcycles, duration);
-+    g_test_message("Function call %u iterations: %f s", maxcycles, duration);
- }
- 
- static __attribute__((noinline)) void perf_cost_func(void *opaque)
-diff --git a/tests/vhost-user-test.c b/tests/vhost-user-test.c
-index d961bd0..b5af8c3 100644
---- a/tests/vhost-user-test.c
-+++ b/tests/vhost-user-test.c
-@@ -332,7 +332,7 @@ static void chr_read(void *opaque, const uint8_t *buf, int size)
-     }
- 
-     if (size != VHOST_USER_HDR_SIZE) {
--        g_test_message("Wrong message size received %d\n", size);
-+        g_test_message("Wrong message size received %d", size);
-         return;
-     }
- 
-@@ -343,7 +343,7 @@ static void chr_read(void *opaque, const uint8_t *buf, int size)
-         p += VHOST_USER_HDR_SIZE;
-         size = qemu_chr_fe_read_all(chr, p, msg.size);
-         if (size != msg.size) {
--            g_test_message("Wrong message size received %d != %d\n",
-+            g_test_message("Wrong message size received %d != %d",
-                            size, msg.size);
-             return;
-         }
-@@ -465,7 +465,7 @@ static const char *init_hugepagefs(const char *path)
-     int ret;
- 
-     if (access(path, R_OK | W_OK | X_OK)) {
--        g_test_message("access on path (%s): %s\n", path, strerror(errno));
-+        g_test_message("access on path (%s): %s", path, strerror(errno));
-         return NULL;
-     }
- 
-@@ -474,12 +474,12 @@ static const char *init_hugepagefs(const char *path)
-     } while (ret != 0 && errno == EINTR);
- 
-     if (ret != 0) {
--        g_test_message("statfs on path (%s): %s\n", path, strerror(errno));
-+        g_test_message("statfs on path (%s): %s", path, strerror(errno));
-         return NULL;
-     }
- 
-     if (fs.f_type != HUGETLBFS_MAGIC) {
--        g_test_message("Warning: path not on HugeTLBFS: %s\n", path);
-+        g_test_message("Warning: path not on HugeTLBFS: %s", path);
-         return NULL;
-     }
- 
-@@ -979,7 +979,7 @@ int main(int argc, char **argv)
- 
-     tmpfs = mkdtemp(template);
-     if (!tmpfs) {
--        g_test_message("mkdtemp on path (%s): %s\n", template, strerror(errno));
-+        g_test_message("mkdtemp on path (%s): %s", template, strerror(errno));
-     }
-     g_assert(tmpfs);
- 
-@@ -1032,7 +1032,7 @@ int main(int argc, char **argv)
- 
-     ret = rmdir(tmpfs);
-     if (ret != 0) {
--        g_test_message("unable to rmdir: path (%s): %s\n",
-+        g_test_message("unable to rmdir: path (%s): %s",
-                        tmpfs, strerror(errno));
-     }
-     g_assert_cmpint(ret, ==, 0);
--- 
-1.8.3.1
+On Thu, Feb 28, 2019 at 10:16:57PM +0530, Aarushi Mehta wrote:
+> Signed-off-by: Aarushi Mehta <mehta.aaru20@gmail.com>
+> Reviewed-by: Eric Blake <eblake@redhat.com>
+>=20
+> Note that since thunking occurs throughout the lifetime of the QEMU
+> instance, there is no matching 'free' to correct.
+>=20
+> ---
 
+Hi Aarushi,
+The following formatting is commonly used:
+
+  Subject: [PATCH v3] thunk: fix of malloc to g_new
+
+  Note that since thunking occurs throughout the lifetime of the QEMU
+  instance, there is no matching 'free' to correct.
+
+  Signed-off-by: Aarushi Mehta <mehta.aaru20@gmail.com>
+  Reviewed-by: Eric Blake <eblake@redhat.com>
+
+I changed the subject to include the prefix of the component being
+modified.  You can look up the preferred prefix using "git log thunk.c"
+to see what other commits have used.
+
+The Signed-off-by: goes at the bottom of the commit description.
+
+Don't worry if it takes a few tries to get the formatting conventions.
+There is scripts/checkpatch.pl for scanning patches for coding style
+violations but I think it wouldn't have detected these things.
+
+The code change itself looks good:
+
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--SO98HVl1bnMOfKZd
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJceWFVAAoJEJykq7OBq3PIXL0IAKzztJnOQH0wMHMkHZmbGxyJ
+TCYFOyxYS5w0fSTv9m14e2n4CsRwvh5XAsUGqtP638FnNcWuwv+gh9FF64NS0G7v
+mOzqvCzOULi5NIHmejF4x8Zt7VOMmaB5m5a4Ujaxb6VUzdiFcHiAfqZoIHx3/2U7
+9g6nZdnKA31PlCMXxTUSydAJP56OuQC6IW8bGLCMEBSchaTV3pz9UFWZAI4J0vRK
+/AljZkBn5zAa5AuB/z5fGSOf2o4+7LUYtVWrP1mongeXvsnP6oKBgtmd+OGnlQiU
+J1iYuftoz6FzFAVVNz0GFwVV8qt55ZbPuhOjgW/zhWL3yuLk/PxF6N/S9cQQD6E=
+=7B5C
+-----END PGP SIGNATURE-----
+
+--SO98HVl1bnMOfKZd--
 
