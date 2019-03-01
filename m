@@ -1,63 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gzQAG-0006Ti-Fn
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Feb 2019 13:12:12 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45426)
+	id 1gzX4o-0004ZS-Qk
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Feb 2019 20:35:02 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:52870)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gzQAD-0006S3-U9
-	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 13:12:10 -0500
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gzX4n-0004Yq-7h
+	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 20:35:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1gzQAB-0007zt-U1
-	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 13:12:09 -0500
-Received: from mail-wr1-f66.google.com ([209.85.221.66]:45424)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1gzQAA-0007vj-1z
-	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 13:12:07 -0500
-Received: by mail-wr1-f66.google.com with SMTP id w17so23010197wrn.12
-	for <qemu-trivial@nongnu.org>; Thu, 28 Feb 2019 10:11:53 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=UN7tL4+X4kY0BynhofcJjeHedcJWKbxe1/qzTcLYE2w=;
-	b=RaWVXqiuPoB3ykz8Ft7s4rBSMwtmotHmzbwqNVhLSvuKgc+UCK9wVRR8/pXYNPRIRI
-	+8X6WzFWawIF9P/ZMrdSGdZB3i5hjUXc5K7Hpw0gzrz6+SyfNB4rLpEKKVFYbp4BqRtf
-	8TIaS66bFAYEHzCDjVBdk5sDNb6VlbXm+fKdIbHVK8VwBT+5E+gQdV0bO5Uc+lz6Jbtj
-	YSW7vjY7BtgavqRHHZiX8jWFFgVFw+bgOuk1BN5qOHXxXx8KbAuRklmFpHyp5kkS3/xO
-	Jd+r5ccp3/JTWvrdSywXbSCtXs+va19FmAeK36NGW0cWD2yqSzbV+IeHewMLtu2CmS2r
-	/sEA==
-X-Gm-Message-State: APjAAAXj+gP7SDxDq3dr7vkGGLMkdnGUB8Ti8p2XXKrxGQ9wbRpRfsyd
-	2zG9M/rk87yYm+vAwd31qW6FUw==
-X-Google-Smtp-Source: APXvYqzzsSzMtabgjPVhO/1wKHAHVXABdO8eMu3s+VsemUUfiw1pz1WBAMDXfkLHxkZxjgyJZUZnrQ==
-X-Received: by 2002:adf:f4c8:: with SMTP id h8mr563292wrp.6.1551377512901;
-	Thu, 28 Feb 2019 10:11:52 -0800 (PST)
-Received: from [192.168.1.37] (43.red-88-25-181.staticip.rima-tde.net.
-	[88.25.181.43]) by smtp.gmail.com with ESMTPSA id
-	h184sm2887228wmf.0.2019.02.28.10.11.51
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Thu, 28 Feb 2019 10:11:52 -0800 (PST)
-To: Aarushi Mehta <mehta.aaru20@gmail.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Stefan Hajnoczi <stefanha@gmail.com>, Julia Suvorova <jusual@mail.ru>
-References: <63559cf027d4ebd95a844b73b1f20444fb72fb2c.camel@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <62cddadf-8327-fdd1-baa9-c4ade791b8ee@redhat.com>
-Date: Thu, 28 Feb 2019 19:11:51 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.5.1
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gzWxq-0008DJ-9a
+	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 20:27:51 -0500
+Received: from mga12.intel.com ([192.55.52.136]:44045)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
+	id 1gzWxn-0008CY-GO; Thu, 28 Feb 2019 20:27:47 -0500
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+	by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	28 Feb 2019 17:27:45 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.58,425,1544515200"; d="scan'208";a="303442681"
+Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
+	by orsmga005.jf.intel.com with ESMTP; 28 Feb 2019 17:27:43 -0800
+Date: Fri, 1 Mar 2019 09:27:15 +0800
+From: Wei Yang <richardw.yang@linux.intel.com>
+To: Igor Mammedov <imammedo@redhat.com>, g@richard
+Cc: Wei Yang <richardw.yang@linux.intel.com>, qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org, mjt@tls.msk.ru, philmd@redhat.com,
+	eblake@redhat.com, peter.maydell@linaro.org
+Message-ID: <20190301012715.GB17080@richard>
+Reply-To: Wei Yang <richardw.yang@linux.intel.com>
+References: <20190225012530.28225-1-richardw.yang@linux.intel.com>
+	<20190225012530.28225-2-richardw.yang@linux.intel.com>
+	<20190228153614.2d6a2a43@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <63559cf027d4ebd95a844b73b1f20444fb72fb2c.camel@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.66
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] trivial fix of malloc to
- g_new in thunk
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190228153614.2d6a2a43@redhat.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.136
+Subject: Re: [Qemu-trivial] [PATCH v4 1/2] CODING_STYLE: specify the indent
+ rule for multiline code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,45 +54,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Feb 2019 18:12:10 -0000
+X-List-Received-Date: Fri, 01 Mar 2019 01:35:02 -0000
 
-On 2/28/19 5:46 PM, Aarushi Mehta wrote:
-> Signed-off-by: Aarushi Mehta <mehta.aaru20@gmail.com>
-> Reviewed-by: Eric Blake <eblake@redhat.com>
-> 
-> Note that since thunking occurs throughout the lifetime of the QEMU
-> instance, there is no matching 'free' to correct.
-> 
-> ---
->  thunk.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/thunk.c b/thunk.c
-> index d5d8645cd4..17f3d320bb 100644
-> --- a/thunk.c
-> +++ b/thunk.c
-> @@ -89,7 +89,7 @@ void thunk_register_struct(int id, const char *name,
-> const argtype *types)
+On Thu, Feb 28, 2019 at 03:36:14PM +0100, Igor Mammedov wrote:
+>On Mon, 25 Feb 2019 09:25:29 +0800
+>Wei Yang <richardw.yang@linux.intel.com> wrote:
+>
+>> We didn't specify the indent rule for multiline code here, which may
+>> mislead users. And in current code, the code use different rules.
+>diffrent from what? I'd use "various styles"
+>
+>> 
+>> Add this rule in CODING_STYLE to make sure this is clear to every one.
+>> 
+>> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+>> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+>> 
+>> ---
+>> v4:
+>>    * widths -> width
+>>    * add an exception example for function
+>> v3:
+>>    * misleading -> mislead
+>>    * add comma after arg2 in example
+>> v2:
+>>    * rephrase changelog suggested by Eric Blake
+>>      - remove one redundant line
+>>      - fix some awkward grammar
+>>      - add { ; at the end of example
+>> ---
+>>  CODING_STYLE | 29 +++++++++++++++++++++++++++++
+>>  1 file changed, 29 insertions(+)
+>> 
+>> diff --git a/CODING_STYLE b/CODING_STYLE
+>> index ec075dedc4..1bccf4f865 100644
+>> --- a/CODING_STYLE
+>> +++ b/CODING_STYLE
+>> @@ -29,6 +29,35 @@ Spaces of course are superior to tabs because:
+>>  
+>>  Do not leave whitespace dangling off the ends of lines.
+>>  
+>> +1.1 Multiline Indent
+>> +
+>> +There are several places where indent is necessary:
+>> +
+>> + - struct definition
+>> + - if/else
+>> + - while/for
+>> + - function definition & call
+>> +
+>> +When breaking up a long line to fit within line width, align the secondary
+>> +lines just after the opening parenthesis of the first.
+> Probably it's not true for struct/function, they could use 4 spaces indent
+> relative to previous line. I'd drop struct as it just follow generic block
+> 4 spaces rule. And describe possible function variants separately
+>
 
-Clearer than using a single:
+That sounds reasonable. Let me adjust this.
 
-       se->field_offsets = g_new(int *, nb_fields * 2);
+>
+>> +
+>> +For example:
+>> +
+>> +    if (a == 1 &&
+>> +        b == 2) {
+>> +
+>> +    while (a == 1 &&
+>> +           b == 2) {
+>> +
+>> +    do_something(arg1, arg2,
+>> +                 arg3);
+>> +
+>> +One exception for function is indenting following lines relative to function
+>> +name start:
+>it's not really exception and used not only with functions, it's basically
+>generic 4 spaces indent. Another variant I've seen used is
+>    foo(x, y(z,
+>             h);
+>and variations of that
+>
+>
+>> +
+>> +    do_something(arg1, arg2,
+>> +        arg3);
+>> +
+>>  2. Line width
+>>  
+>>  Lines should be 80 characters; try not to make them longer.
 
-So:
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
->      for(i = 0;i < 2; i++) {
-
-BTW we can replace here by:
-
-       for (i = 0; i < ARRAY_SIZE(se->field_offsets); i++) {
-
->          offset = 0;
->          max_align = 1;
-> -        se->field_offsets[i] = malloc(nb_fields * sizeof(int));
-> +        se->field_offsets[i] = g_new(int, nb_fields);
->          type_ptr = se->field_types;
->          for(j = 0;j < nb_fields; j++) {
->              size = thunk_type_size(type_ptr, i);
-> 
+-- 
+Wei Yang
+Help you, Help me
 
