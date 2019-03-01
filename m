@@ -1,48 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gzX4o-0004ZS-Qk
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Feb 2019 20:35:02 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:52870)
+	id 1gzXVO-0001cA-EM
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Feb 2019 21:02:30 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:57000)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1gzX4n-0004Yq-7h
-	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 20:35:02 -0500
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gzXVM-0001b5-Ce
+	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 21:02:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richardw.yang@linux.intel.com>) id 1gzWxq-0008DJ-9a
-	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 20:27:51 -0500
-Received: from mga12.intel.com ([192.55.52.136]:44045)
+	(envelope-from <richardw.yang@linux.intel.com>) id 1gzXVL-0002tZ-NA
+	for qemu-trivial@nongnu.org; Thu, 28 Feb 2019 21:02:28 -0500
+Received: from mga14.intel.com ([192.55.52.115]:42252)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
-	id 1gzWxn-0008CY-GO; Thu, 28 Feb 2019 20:27:47 -0500
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+	id 1gzXVH-0002rO-Os; Thu, 28 Feb 2019 21:02:25 -0500
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-	by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	28 Feb 2019 17:27:45 -0800
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+	by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	28 Feb 2019 18:02:21 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.58,425,1544515200"; d="scan'208";a="303442681"
+X-IronPort-AV: E=Sophos;i="5.58,425,1544515200"; d="scan'208";a="150992326"
 Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
-	by orsmga005.jf.intel.com with ESMTP; 28 Feb 2019 17:27:43 -0800
-Date: Fri, 1 Mar 2019 09:27:15 +0800
+	by fmsmga001.fm.intel.com with ESMTP; 28 Feb 2019 18:02:20 -0800
 From: Wei Yang <richardw.yang@linux.intel.com>
-To: Igor Mammedov <imammedo@redhat.com>, g@richard
-Cc: Wei Yang <richardw.yang@linux.intel.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, mjt@tls.msk.ru, philmd@redhat.com,
-	eblake@redhat.com, peter.maydell@linaro.org
-Message-ID: <20190301012715.GB17080@richard>
-Reply-To: Wei Yang <richardw.yang@linux.intel.com>
-References: <20190225012530.28225-1-richardw.yang@linux.intel.com>
-	<20190225012530.28225-2-richardw.yang@linux.intel.com>
-	<20190228153614.2d6a2a43@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: mjt@tls.msk.ru, imammedo@redhat.com, philmd@redhat.com, eblake@redhat.com,
+	peter.maydell@linaro.org, Wei Yang <richardw.yang@linux.intel.com>
+Date: Fri,  1 Mar 2019 10:01:45 +0800
+Message-Id: <20190301020147.18567-1-richardw.yang@linux.intel.com>
+X-Mailer: git-send-email 2.19.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190228153614.2d6a2a43@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 192.55.52.136
-Subject: Re: [Qemu-trivial] [PATCH v4 1/2] CODING_STYLE: specify the indent
- rule for multiline code
+X-Received-From: 192.55.52.115
+Subject: [Qemu-trivial] [PATCH v5 0/2] CODING_STYLE: trivial update
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,95 +47,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Mar 2019 01:35:02 -0000
+X-List-Received-Date: Fri, 01 Mar 2019 02:02:29 -0000
 
-On Thu, Feb 28, 2019 at 03:36:14PM +0100, Igor Mammedov wrote:
->On Mon, 25 Feb 2019 09:25:29 +0800
->Wei Yang <richardw.yang@linux.intel.com> wrote:
->
->> We didn't specify the indent rule for multiline code here, which may
->> mislead users. And in current code, the code use different rules.
->diffrent from what? I'd use "various styles"
->
->> 
->> Add this rule in CODING_STYLE to make sure this is clear to every one.
->> 
->> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
->> Suggested-by: Igor Mammedov <imammedo@redhat.com>
->> 
->> ---
->> v4:
->>    * widths -> width
->>    * add an exception example for function
->> v3:
->>    * misleading -> mislead
->>    * add comma after arg2 in example
->> v2:
->>    * rephrase changelog suggested by Eric Blake
->>      - remove one redundant line
->>      - fix some awkward grammar
->>      - add { ; at the end of example
->> ---
->>  CODING_STYLE | 29 +++++++++++++++++++++++++++++
->>  1 file changed, 29 insertions(+)
->> 
->> diff --git a/CODING_STYLE b/CODING_STYLE
->> index ec075dedc4..1bccf4f865 100644
->> --- a/CODING_STYLE
->> +++ b/CODING_STYLE
->> @@ -29,6 +29,35 @@ Spaces of course are superior to tabs because:
->>  
->>  Do not leave whitespace dangling off the ends of lines.
->>  
->> +1.1 Multiline Indent
->> +
->> +There are several places where indent is necessary:
->> +
->> + - struct definition
->> + - if/else
->> + - while/for
->> + - function definition & call
->> +
->> +When breaking up a long line to fit within line width, align the secondary
->> +lines just after the opening parenthesis of the first.
-> Probably it's not true for struct/function, they could use 4 spaces indent
-> relative to previous line. I'd drop struct as it just follow generic block
-> 4 spaces rule. And describe possible function variants separately
->
+The first one is suggested by Igor Mammedov to provide rule for multiline
+code.
 
-That sounds reasonable. Let me adjust this.
+The second is a trivial fix to make example code all indented with 4 spaces.
 
->
->> +
->> +For example:
->> +
->> +    if (a == 1 &&
->> +        b == 2) {
->> +
->> +    while (a == 1 &&
->> +           b == 2) {
->> +
->> +    do_something(arg1, arg2,
->> +                 arg3);
->> +
->> +One exception for function is indenting following lines relative to function
->> +name start:
->it's not really exception and used not only with functions, it's basically
->generic 4 spaces indent. Another variant I've seen used is
->    foo(x, y(z,
->             h);
->and variations of that
->
->
->> +
->> +    do_something(arg1, arg2,
->> +        arg3);
->> +
->>  2. Line width
->>  
->>  Lines should be 80 characters; try not to make them longer.
+v5:
+  * mostly address function variants
+v4:
+  * one exception case for function
+v3:
+  * fix typo in both changelog and example
+v2:
+  * adjust Patch 1 as suggested by Eric
+
+Wei Yang (2):
+  CODING_STYLE: specify the indent rule for multiline code
+  CODING_STYLE: indent example code as all others
+
+ CODING_STYLE | 47 +++++++++++++++++++++++++++++++++++++++++++----
+ 1 file changed, 43 insertions(+), 4 deletions(-)
 
 -- 
-Wei Yang
-Help you, Help me
+2.19.1
+
 
