@@ -1,33 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1gzgL0-0004IG-Un
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2019 06:28:22 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:34927)
+	id 1gzhTF-0005AD-RK
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2019 07:40:57 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:48922)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gzgKy-0004Gg-0y
-	for qemu-trivial@nongnu.org; Fri, 01 Mar 2019 06:28:21 -0500
+	(envelope-from <thuth@redhat.com>) id 1gzhTD-00057x-Hu
+	for qemu-trivial@nongnu.org; Fri, 01 Mar 2019 07:40:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1gzgKx-0000gU-2j
-	for qemu-trivial@nongnu.org; Fri, 01 Mar 2019 06:28:20 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:60812)
+	(envelope-from <thuth@redhat.com>) id 1gzhSX-0002Uh-NX
+	for qemu-trivial@nongnu.org; Fri, 01 Mar 2019 07:40:14 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:53824)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1gzgKu-0000d9-O0; Fri, 01 Mar 2019 06:28:17 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
+	id 1gzhSW-0002PL-77; Fri, 01 Mar 2019 07:40:12 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D34FA3175582;
-	Fri,  1 Mar 2019 11:28:15 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 6AA3C314E27A;
+	Fri,  1 Mar 2019 12:40:11 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-112.ams2.redhat.com [10.36.116.112])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 79A075D707;
-	Fri,  1 Mar 2019 11:28:09 +0000 (UTC)
-To: Laszlo Ersek <lersek@redhat.com>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 3DE0D5D9C8;
+	Fri,  1 Mar 2019 12:40:00 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Laszlo Ersek <lersek@redhat.com>, qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-trivial@nongnu.org
 References: <1551111298-8445-1-git-send-email-thuth@redhat.com>
 	<2da5f950-ab74-355a-6019-add964ddb43c@redhat.com>
+	<7883d30d-6ecc-7206-8636-b9c920268319@redhat.com>
+	<2c2adf9f-01c6-613b-889b-40aa48c42578@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -73,19 +74,19 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <7883d30d-6ecc-7206-8636-b9c920268319@redhat.com>
-Date: Fri, 1 Mar 2019 12:28:08 +0100
+Message-ID: <abf0380b-7ee3-20c4-515d-221cfc410640@redhat.com>
+Date: Fri, 1 Mar 2019 13:39:59 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.5.0
 MIME-Version: 1.0
-In-Reply-To: <2da5f950-ab74-355a-6019-add964ddb43c@redhat.com>
+In-Reply-To: <2c2adf9f-01c6-613b-889b-40aa48c42578@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Fri, 01 Mar 2019 11:28:16 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.49]);
+	Fri, 01 Mar 2019 12:40:11 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [PATCH] hw/nvram/fw_cfg: Move
@@ -101,130 +102,150 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Mar 2019 11:28:21 -0000
+X-List-Received-Date: Fri, 01 Mar 2019 12:40:56 -0000
 
-On 25/02/2019 19.31, Laszlo Ersek wrote:
+On 01/03/2019 13.32, Philippe Mathieu-Daud=C3=A9 wrote:
 > Hi Thomas,
-> 
-> On 02/25/19 17:14, Thomas Huth wrote:
->> The global boot_splash_filedata and boot_splash_filedata_size variables
->> are only used in fw_cfg.c. So there is really no need that these need
->> to be global and reside in vl.c. Move them to fw_cfg.c instead.
+>=20
+> On 3/1/19 12:28 PM, Thomas Huth wrote:
+>> On 25/02/2019 19.31, Laszlo Ersek wrote:
+>>> Hi Thomas,
+>>>
+>>> On 02/25/19 17:14, Thomas Huth wrote:
+>>>> The global boot_splash_filedata and boot_splash_filedata_size variab=
+les
+>>>> are only used in fw_cfg.c. So there is really no need that these nee=
+d
+>>>> to be global and reside in vl.c. Move them to fw_cfg.c instead.
+>>>>
+>>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>>> ---
+>>>>  hw/nvram/fw_cfg.c         |  9 +++++++++
+>>>>  include/hw/nvram/fw_cfg.h |  1 +
+>>>>  include/sysemu/sysemu.h   |  2 --
+>>>>  vl.c                      | 10 +---------
+>>>>  4 files changed, 11 insertions(+), 11 deletions(-)
+>>>>
+>>>> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+>>>> index 7fdf04a..15f0023 100644
+>>>> --- a/hw/nvram/fw_cfg.c
+>>>> +++ b/hw/nvram/fw_cfg.c
+>>>> @@ -63,6 +63,9 @@ struct FWCfgEntry {
+>>>>  #define JPG_FILE 0
+>>>>  #define BMP_FILE 1
+>>>> =20
+>>>> +static uint8_t *boot_splash_filedata;
+>>>> +static size_t boot_splash_filedata_size;
+>>>> +
+>>>>  static char *read_splashfile(char *filename, gsize *file_sizep,
+>>>>                               int *file_typep)
+>>>>  {
+>>>> @@ -175,6 +178,12 @@ static void fw_cfg_bootsplash(FWCfgState *s)
+>>>>      }
+>>>>  }
+>>>> =20
+>>>> +void fw_cfg_res_free(void)
+>>>> +{
+>>>> +    g_free(boot_splash_filedata);
+>>>> +    boot_splash_filedata =3D NULL;
+>>>> +}
+>>>> +
+>>>>  static void fw_cfg_reboot(FWCfgState *s)
+>>>>  {
+>>>>      const char *reboot_timeout =3D NULL;
+>>>> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+>>>> index f5a6895..16d237c 100644
+>>>> --- a/include/hw/nvram/fw_cfg.h
+>>>> +++ b/include/hw/nvram/fw_cfg.h
+>>>> @@ -225,5 +225,6 @@ FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr=
+,
+>>>> =20
+>>>>  FWCfgState *fw_cfg_find(void);
+>>>>  bool fw_cfg_dma_enabled(void *opaque);
+>>>> +void fw_cfg_res_free(void);
+>>>> =20
+>>>>  #endif
+>>>> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
+>>>> index 4b5a6b7..63a5eed 100644
+>>>> --- a/include/sysemu/sysemu.h
+>>>> +++ b/include/sysemu/sysemu.h
+>>>> @@ -111,8 +111,6 @@ extern int no_shutdown;
+>>>>  extern int old_param;
+>>>>  extern int boot_menu;
+>>>>  extern bool boot_strict;
+>>>> -extern uint8_t *boot_splash_filedata;
+>>>> -extern size_t boot_splash_filedata_size;
+>>>>  extern bool enable_mlock;
+>>>>  extern bool enable_cpu_pm;
+>>>>  extern QEMUClockType rtc_clock;
+>>>> diff --git a/vl.c b/vl.c
+>>>> index 502857a..f769cce 100644
+>>>> --- a/vl.c
+>>>> +++ b/vl.c
+>>>> @@ -187,8 +187,6 @@ unsigned int nb_prom_envs =3D 0;
+>>>>  const char *prom_envs[MAX_PROM_ENVS];
+>>>>  int boot_menu;
+>>>>  bool boot_strict;
+>>>> -uint8_t *boot_splash_filedata;
+>>>> -size_t boot_splash_filedata_size;
+>>>>  bool wakeup_suspend_enabled;
+>>>> =20
+>>>>  int icount_align_option;
+>>>> @@ -559,12 +557,6 @@ const char *qemu_get_vm_name(void)
+>>>>      return qemu_name;
+>>>>  }
+>>>> =20
+>>>> -static void res_free(void)
+>>>> -{
+>>>> -    g_free(boot_splash_filedata);
+>>>> -    boot_splash_filedata =3D NULL;
+>>>> -}
+>>>> -
+>>>>  static int default_driver_check(void *opaque, QemuOpts *opts, Error=
+ **errp)
+>>>>  {
+>>>>      const char *driver =3D qemu_opt_get(opts, "driver");
+>>>> @@ -4585,7 +4577,7 @@ int main(int argc, char **argv, char **envp)
+>>>>      job_cancel_sync_all();
+>>>>      bdrv_close_all();
+>>>> =20
+>>>> -    res_free();
+>>>> +    fw_cfg_res_free();
+>>>> =20
+>>>>      /* vhost-user must be cleaned up before chardevs.  */
+>>>>      tpm_cleanup();
+>>>>
+>>>
+>>> The res_free() function call in main() goes back to commit 3d3b8303c6=
+f8
+>>> ("showing a splash picture when start", 2011-07-29). That seems to be
+>>> the original addition of the bootsplash feature. And, res_free() appe=
+ars
+>>> to simply release dynamic memory before the QEMU process exits.
+>>>
+>>> Do we release malloc'd memory, as a general rule, before we exit the
+>>> QEMU process (with exit status 0)? My impression has been that we don=
+'t
+>>> care; we just let the kernel forget about all memory that the QEMU
+>>> process used to own.
+>>>
+>>> If that's the case, I suggest to respin this patch, deleting res_free=
+()
+>>> completely. AFAICS there are no other call sites. That would be a nic=
+e
+>>> improvement IMO (we wouldn't have to extend "include/hw/nvram/fw_cfg.=
+h").
 >>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  hw/nvram/fw_cfg.c         |  9 +++++++++
->>  include/hw/nvram/fw_cfg.h |  1 +
->>  include/sysemu/sysemu.h   |  2 --
->>  vl.c                      | 10 +---------
->>  4 files changed, 11 insertions(+), 11 deletions(-)
->>
->> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
->> index 7fdf04a..15f0023 100644
->> --- a/hw/nvram/fw_cfg.c
->> +++ b/hw/nvram/fw_cfg.c
->> @@ -63,6 +63,9 @@ struct FWCfgEntry {
->>  #define JPG_FILE 0
->>  #define BMP_FILE 1
->>  
->> +static uint8_t *boot_splash_filedata;
->> +static size_t boot_splash_filedata_size;
->> +
->>  static char *read_splashfile(char *filename, gsize *file_sizep,
->>                               int *file_typep)
->>  {
->> @@ -175,6 +178,12 @@ static void fw_cfg_bootsplash(FWCfgState *s)
->>      }
->>  }
->>  
->> +void fw_cfg_res_free(void)
->> +{
->> +    g_free(boot_splash_filedata);
->> +    boot_splash_filedata = NULL;
->> +}
->> +
->>  static void fw_cfg_reboot(FWCfgState *s)
->>  {
->>      const char *reboot_timeout = NULL;
->> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
->> index f5a6895..16d237c 100644
->> --- a/include/hw/nvram/fw_cfg.h
->> +++ b/include/hw/nvram/fw_cfg.h
->> @@ -225,5 +225,6 @@ FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
->>  
->>  FWCfgState *fw_cfg_find(void);
->>  bool fw_cfg_dma_enabled(void *opaque);
->> +void fw_cfg_res_free(void);
->>  
->>  #endif
->> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
->> index 4b5a6b7..63a5eed 100644
->> --- a/include/sysemu/sysemu.h
->> +++ b/include/sysemu/sysemu.h
->> @@ -111,8 +111,6 @@ extern int no_shutdown;
->>  extern int old_param;
->>  extern int boot_menu;
->>  extern bool boot_strict;
->> -extern uint8_t *boot_splash_filedata;
->> -extern size_t boot_splash_filedata_size;
->>  extern bool enable_mlock;
->>  extern bool enable_cpu_pm;
->>  extern QEMUClockType rtc_clock;
->> diff --git a/vl.c b/vl.c
->> index 502857a..f769cce 100644
->> --- a/vl.c
->> +++ b/vl.c
->> @@ -187,8 +187,6 @@ unsigned int nb_prom_envs = 0;
->>  const char *prom_envs[MAX_PROM_ENVS];
->>  int boot_menu;
->>  bool boot_strict;
->> -uint8_t *boot_splash_filedata;
->> -size_t boot_splash_filedata_size;
->>  bool wakeup_suspend_enabled;
->>  
->>  int icount_align_option;
->> @@ -559,12 +557,6 @@ const char *qemu_get_vm_name(void)
->>      return qemu_name;
->>  }
->>  
->> -static void res_free(void)
->> -{
->> -    g_free(boot_splash_filedata);
->> -    boot_splash_filedata = NULL;
->> -}
->> -
->>  static int default_driver_check(void *opaque, QemuOpts *opts, Error **errp)
->>  {
->>      const char *driver = qemu_opt_get(opts, "driver");
->> @@ -4585,7 +4577,7 @@ int main(int argc, char **argv, char **envp)
->>      job_cancel_sync_all();
->>      bdrv_close_all();
->>  
->> -    res_free();
->> +    fw_cfg_res_free();
->>  
->>      /* vhost-user must be cleaned up before chardevs.  */
->>      tpm_cleanup();
->>
-> 
-> The res_free() function call in main() goes back to commit 3d3b8303c6f8
-> ("showing a splash picture when start", 2011-07-29). That seems to be
-> the original addition of the bootsplash feature. And, res_free() appears
-> to simply release dynamic memory before the QEMU process exits.
-> 
-> Do we release malloc'd memory, as a general rule, before we exit the
-> QEMU process (with exit status 0)? My impression has been that we don't
-> care; we just let the kernel forget about all memory that the QEMU
-> process used to own.
-> 
-> If that's the case, I suggest to respin this patch, deleting res_free()
-> completely. AFAICS there are no other call sites. That would be a nice
-> improvement IMO (we wouldn't have to extend "include/hw/nvram/fw_cfg.h").
+>> Hmm, thinking about this for a while, the fw_cfg is a qdev device, so =
+I
+>> think we should at least add an unrealize() function where we clean up
+>> the allocated memory, even if the unrealize function is currently not
+>> called yet, since the device never gets destroyed...
+>=20
+> I worked on a similar cleanup last month, I can submit it this
+> afternoon. Do you mind having a look at it before reworking this patch?
 
-Hmm, thinking about this for a while, the fw_cfg is a qdev device, so I
-think we should at least add an unrealize() function where we clean up
-the allocated memory, even if the unrealize function is currently not
-called yet, since the device never gets destroyed...
+Sure, just put me on CC: so that I don't miss it.
 
  Thomas
 
