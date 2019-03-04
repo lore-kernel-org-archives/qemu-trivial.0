@@ -1,112 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h0m28-0002NR-3O
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Mar 2019 06:45:24 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:42352)
+	id 1h0mpA-0005o4-0o
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Mar 2019 07:36:04 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:55539)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1h0m25-0002M8-WA
-	for qemu-trivial@nongnu.org; Mon, 04 Mar 2019 06:45:22 -0500
+	(envelope-from <philmd@redhat.com>) id 1h0mp8-0005n5-4s
+	for qemu-trivial@nongnu.org; Mon, 04 Mar 2019 07:36:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1h0m25-0005aU-8o
-	for qemu-trivial@nongnu.org; Mon, 04 Mar 2019 06:45:21 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:45036)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1h0m23-0005XS-CP; Mon, 04 Mar 2019 06:45:19 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 89F06368A5;
-	Mon,  4 Mar 2019 11:45:12 +0000 (UTC)
-Received: from [10.36.112.48] (ovpn-112-48.ams2.redhat.com [10.36.112.48])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9F9EF1FBC7;
-	Mon,  4 Mar 2019 11:44:59 +0000 (UTC)
-To: David Kiarie <davidkiarie4@gmail.com>,
-	=?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin"
-	<mst@redhat.com>, Jan Kiszka <jan.kiszka@siemens.com>,
-	Peter Xu <peterx@redhat.com>, =?UTF-8?Q?Alexandro_S=c3=a1nchez_Bach?=
-	<alexaltea123@gmail.com>, Richard Henderson <rth@twiddle.net>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20190223105421.1290-1-davidkiarie4@gmail.com>
-	<20190223105421.1290-2-davidkiarie4@gmail.com>
-	<20190225103856.GE29260@redhat.com>
-	<CABdVeAA0f9ra1RnJDQfvuecSwmYLKiTNoMTSLEfkysV+KjedTw@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-	uUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <fb6d8090-baa3-cb78-c975-2c5383874e19@redhat.com>
-Date: Mon, 4 Mar 2019 12:44:57 +0100
+	(envelope-from <philmd@redhat.com>) id 1h0mp7-0006DV-4D
+	for qemu-trivial@nongnu.org; Mon, 04 Mar 2019 07:36:02 -0500
+Received: from mail-wm1-f68.google.com ([209.85.128.68]:51459)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1h0mp6-0006Bx-Tb
+	for qemu-trivial@nongnu.org; Mon, 04 Mar 2019 07:36:01 -0500
+Received: by mail-wm1-f68.google.com with SMTP id n19so4431785wmi.1
+	for <qemu-trivial@nongnu.org>; Mon, 04 Mar 2019 04:36:00 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=25Iw1Z+oscJoOoClUkF5FXHuSpLmFyoKwBTg45Cvh1g=;
+	b=nziN93ZZ53gwGC6K9MORgKsAh37fErnIyprvm6cC09lt3ubgDKiVDts0+BdBehgmkm
+	Ca1GlmTsanzCsF8ApyPA9+/o0QSezCzZ604mIV4mxTm4TLAok6H6VYnBDsgJtSHLlcwV
+	wIBUPl69i89j7s777XuyEryUbRGnRsxNInTTO4uhSpPuzoAWZpIfDIg/Zu4KHS7s0G+H
+	vv7nD3e53EOInFArtlF2i+gKhw5w5EYA5wigjlL77kXX7PQ24nbcY0Cp0xbzzvuweVcA
+	9q7SDHpDNsHneX3sIv4+ywaRZq7ZsOkVQndmjEA7lgfPk3h1d9dyo3Z0tZOLhpaVxWDt
+	VwGA==
+X-Gm-Message-State: AHQUAubg4+09o49CHZ81UsX57WzcYk9XVuju2Qy5YgH/JcIhbMXvgj5c
+	asIogwzqF1Sx4oWIEUKZbRk3Qg==
+X-Google-Smtp-Source: APXvYqy63e1zX7Gw3Eqzf0CiKqKyrjUUZhHAFymdgikiYod7gIUhhcb5GxOrsFZ/LeGZLAUb3ntvww==
+X-Received: by 2002:a7b:cf3a:: with SMTP id m26mr11260077wmg.144.1551702959362;
+	Mon, 04 Mar 2019 04:35:59 -0800 (PST)
+Received: from [192.168.1.40] (43.red-88-25-181.staticip.rima-tde.net.
+	[88.25.181.43]) by smtp.gmail.com with ESMTPSA id
+	m16sm5785262wro.78.2019.03.04.04.35.58
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Mon, 04 Mar 2019 04:35:58 -0800 (PST)
+To: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+References: <20181218113717.29130-1-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <68d432c9-4cd2-acc0-57d7-209aebc62e82@redhat.com>
+Date: Mon, 4 Mar 2019 13:35:57 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	Thunderbird/60.5.1
 MIME-Version: 1.0
-In-Reply-To: <CABdVeAA0f9ra1RnJDQfvuecSwmYLKiTNoMTSLEfkysV+KjedTw@mail.gmail.com>
+In-Reply-To: <20181218113717.29130-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Mon, 04 Mar 2019 11:45:12 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/1] hw/i386: update
- copyright notice
+	[fuzzy]
+X-Received-From: 209.85.128.68
+Subject: Re: [Qemu-trivial] [PATCH] tests: Move qdict-test-data.txt to
+ tests/data/qobject/
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -118,40 +68,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Mar 2019 11:45:22 -0000
+X-List-Received-Date: Mon, 04 Mar 2019 12:36:03 -0000
 
-On 04/03/19 12:22, David Kiarie wrote:
->=20
->=20
->=20
-> On Mon, Feb 25, 2019 at 1:39 PM Daniel P. Berrang=C3=A9 <berrange@redha=
-t.com
-> <mailto:berrange@redhat.com>> wrote:
->=20
->     On Sat, Feb 23, 2019 at 01:54:21PM +0300, David Kiarie wrote:
->     > Signed-off-by: David Kiarie <davidkiarie4@gmail.com
->     <mailto:davidkiarie4@gmail.com>>
->     > ---
->     >=C2=A0 hw/i386/amd_iommu.c | 2 +-
->     >=C2=A0 hw/i386/amd_iommu.h | 2 +-
->     >=C2=A0 2 files changed, 2 insertions(+), 2 deletions(-)
->=20
->     Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com
->     <mailto:berrange@redhat.com>>
->=20
->=20
-> hello,=C2=A0
->=20
-> i expected this really simple patch to probably get merged right away.
+Cc'ing qemu-trivial@
 
-Patches are usually bundled by maintainers, they do not get merged right
-away unless they fix a broken build.
-
-In any case I've queued the patch now.
-
-Paolo
-
-> i don't have time to follow up on old issues and not in the mood to be
-> losing any of my=C2=A0work to sluggishness.=C2=A0
-
+On 12/18/18 12:37 PM, Philippe Mathieu-Daudé wrote:
+> Move qdict-test-data.txt to the tests/data/qobject/ subdirectory,
+> and remove the unnecessary symlinking.
+> (See 4b2ff65a1f3 for similar test-data cleanup).
+> 
+> Suggested-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  MAINTAINERS                                         | 1 +
+>  configure                                           | 2 +-
+>  tests/check-qdict.c                                 | 2 +-
+>  qdict-test-data.txt => tests/data/qobject/qdict.txt | 0
+>  4 files changed, 3 insertions(+), 2 deletions(-)
+>  rename qdict-test-data.txt => tests/data/qobject/qdict.txt (100%)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 83c127f0d6..269427c3f3 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1891,6 +1891,7 @@ F: tests/check-qnum.c
+>  F: tests/check-qjson.c
+>  F: tests/check-qlist.c
+>  F: tests/check-qstring.c
+> +F: tests/data/qobject/qdict.txt
+>  T: git https://repo.or.cz/qemu/armbru.git qapi-next
+>  
+>  QEMU Guest Agent
+> diff --git a/configure b/configure
+> index 224d3071ac..8022f4b999 100755
+> --- a/configure
+> +++ b/configure
+> @@ -7534,7 +7534,7 @@ DIRS="$DIRS tests/fp"
+>  DIRS="$DIRS docs docs/interop fsdev scsi"
+>  DIRS="$DIRS pc-bios/optionrom pc-bios/spapr-rtas pc-bios/s390-ccw"
+>  DIRS="$DIRS roms/seabios roms/vgabios"
+> -LINKS="Makefile tests/tcg/Makefile qdict-test-data.txt"
+> +LINKS="Makefile tests/tcg/Makefile"
+>  LINKS="$LINKS tests/tcg/cris/Makefile tests/tcg/cris/.gdbinit"
+>  LINKS="$LINKS tests/tcg/lm32/Makefile tests/tcg/xtensa/Makefile po/Makefile"
+>  LINKS="$LINKS tests/fp/Makefile"
+> diff --git a/tests/check-qdict.c b/tests/check-qdict.c
+> index a1e8305066..b5efa859b0 100644
+> --- a/tests/check-qdict.c
+> +++ b/tests/check-qdict.c
+> @@ -291,7 +291,7 @@ static void qdict_stress_test(void)
+>      FILE *test_file;
+>      QDict *qdict;
+>      QString *value;
+> -    const char *test_file_path = "qdict-test-data.txt";
+> +    const char *test_file_path = "tests/data/qobject/qdict.txt";
+>  
+>      test_file = fopen(test_file_path, "r");
+>      g_assert(test_file != NULL);
+> diff --git a/qdict-test-data.txt b/tests/data/qobject/qdict.txt
+> similarity index 100%
+> rename from qdict-test-data.txt
+> rename to tests/data/qobject/qdict.txt
+> 
 
