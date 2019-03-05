@@ -1,63 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h12LV-0000X4-K0
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Mar 2019 00:10:29 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:54258)
+	id 1h1Dxu-0004EM-QM
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Mar 2019 12:34:54 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:39125)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stephen.checkoway@oberlin.edu>) id 1h12LT-0000Wl-GY
-	for qemu-trivial@nongnu.org; Tue, 05 Mar 2019 00:10:28 -0500
+	(envelope-from <stefanha@redhat.com>) id 1h1Dxt-0004D5-EY
+	for qemu-trivial@nongnu.org; Tue, 05 Mar 2019 12:34:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stephen.checkoway@oberlin.edu>) id 1h12LS-0004kU-LS
-	for qemu-trivial@nongnu.org; Tue, 05 Mar 2019 00:10:27 -0500
-Received: from mail-it1-x144.google.com ([2607:f8b0:4864:20::144]:37043)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stephen.checkoway@oberlin.edu>)
-	id 1h12LS-0004hP-B7
-	for qemu-trivial@nongnu.org; Tue, 05 Mar 2019 00:10:26 -0500
-Received: by mail-it1-x144.google.com with SMTP id z124so2513388itc.2
-	for <qemu-trivial@nongnu.org>; Mon, 04 Mar 2019 21:10:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=oberlin-edu.20150623.gappssmtp.com; s=20150623;
-	h=from:to:cc:subject:date:message-id;
-	bh=PK7QaXcW2z3RLKlFr1TIfOFVNgtL+K1a3H3n3C2YYkM=;
-	b=G48hdU9oikaG2h2oS2OZ/J6UGIzG+oS6/ky5kItGoKFeW3B8RgbdSZvWtMCgX9Uqou
-	2TdtnEY6FQsv49LTnUY3UvFLCsZZtWpW9qPq4jO0HvLkn4ccgBcDC4qzb576GVNnF5uC
-	GkdWiu+RxVlXDEXb1M1MaguRBmlmFidhphPcUaE9Q2BIW6vqq05VZNFYC89CtRzzR58q
-	FcaqHA1Dx4Zkwfxp229YVF80yPkKIYMza0j/1ZNRKm6CHGj+nQQY2aWBZ5FwIFrmY7vm
-	xulokV1gOHWjptWGexkQgk8F0oH9gZB4XKx+YiESSuteg4VDC3GJDSuKFT9Dgmk+CW3I
-	IgfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=PK7QaXcW2z3RLKlFr1TIfOFVNgtL+K1a3H3n3C2YYkM=;
-	b=BMONwOPr4oYhfeYZ+aXEE9b70NYYuqeh86PylPXN/bLcEFwJ/ufMT5MwlgVcZwawOl
-	dKDorhAoEWWzRSXjEoxdFUPofgH+JFd678GXxuYTXeDdLyCT+LkKOK76uJMpMKFsL46N
-	Niwmr3G1qb4e117dA+KOnp+8pl+dnMOb07ybfbsEBdJxfu7AFdPttDqrTzb2q5f2Tb/c
-	wNWoXK9K//m7anraFGAEXy1zaz2iTJwG5KMVb63aRVPdBWqHoGSdwWTnfFiZOFO1vefo
-	OKVNg6R2uLT4cWX2Bf0wgVVBUAyssX9crTPnLvED04zGKbS7fIkdbmfm6VWy6GuVemVh
-	W7Cw==
-X-Gm-Message-State: APjAAAVYU0bb17TyF0Z9XCuhOuEg/lpl4M+9HUltRPxYGUayRk4E6FUo
-	w3ed/BdsrZCyS/DvHu4jKNu/MA==
-X-Google-Smtp-Source: APXvYqxXA3bzbg6ryyzNIEnEqiavtI2b+PpmvhfvSJKkQhgpOvgTAwQwvnyBtOEaD+jwe46XDpMBWA==
-X-Received: by 2002:a02:228f:: with SMTP id o137mr168736jao.76.1551762623849; 
-	Mon, 04 Mar 2019 21:10:23 -0800 (PST)
-Received: from worksec.oberlin.net (ip-210-181.oberlin.net. [208.66.210.181])
-	by smtp.gmail.com with ESMTPSA id
-	b16sm4231545itb.26.2019.03.04.21.10.22
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Mon, 04 Mar 2019 21:10:23 -0800 (PST)
-From: Stephen Checkoway <stephen.checkoway@oberlin.edu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stephen Checkoway <stephen.checkoway@oberlin.edu>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Date: Tue,  5 Mar 2019 00:10:07 -0500
-Message-Id: <20190305051007.56009-1-stephen.checkoway@oberlin.edu>
-X-Mailer: git-send-email 2.17.2 (Apple Git-113)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::144
-Subject: [Qemu-trivial] [PATCH] hw/char/escc: Lower irq when transmit buffer
- is filled
+	(envelope-from <stefanha@redhat.com>) id 1h1Dxs-00039h-Rp
+	for qemu-trivial@nongnu.org; Tue, 05 Mar 2019 12:34:53 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:58230)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <stefanha@redhat.com>)
+	id 1h1Dxr-00035m-4t; Tue, 05 Mar 2019 12:34:51 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 63DC4307D852;
+	Tue,  5 Mar 2019 17:25:15 +0000 (UTC)
+Received: from localhost (ovpn-117-253.ams2.redhat.com [10.36.117.253])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id EA6D060F8D;
+	Tue,  5 Mar 2019 17:25:14 +0000 (UTC)
+Date: Tue, 5 Mar 2019 17:25:13 +0000
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+	qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Juan Quintela <quintela@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Kevin Wolf <kwolf@redhat.com>
+Message-ID: <20190305172513.GC13806@stefanha-x1.localdomain>
+References: <1551457277-884-1-git-send-email-thuth@redhat.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="t0UkRYy7tHLRMCai"
+Content-Disposition: inline
+In-Reply-To: <1551457277-884-1-git-send-email-thuth@redhat.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.48]);
+	Tue, 05 Mar 2019 17:25:15 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] tests: Do not use "\n" in
+ g_test_message() strings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,50 +56,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Mar 2019 05:10:28 -0000
+X-List-Received-Date: Tue, 05 Mar 2019 17:34:54 -0000
 
-The SCC/ESCC will briefly stop asserting an interrupt when the
-transmit FIFO is filled.
 
-This code doesn't model the transmit FIFO/shift register so the
-pending transmit interrupt is never deasserted which means that an
-edge-triggered interrupt controller will never see the low-to-high
-transition it needs to raise another interrupt. The practical
-consequence of this is that guest firmware with an interrupt service
-routine for the ESCC that does not send all of the data it has
-immediately will stop sending data if the following sequence of
-events occurs:
-1. Disable processor interrupts
-2. Write a character to the ESCC
-3. Add additional characters to a buffer which is drained by the ISR
-4. Enable processor interrupts
+--t0UkRYy7tHLRMCai
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-In this case, the first character will be sent, the interrupt will
-fire and the ISR will output the second character. Since the pending
-transmit interrupt remains asserted, no additional interrupts will
-ever fire.
+On Fri, Mar 01, 2019 at 05:21:17PM +0100, Thomas Huth wrote:
+> g_test_message() takes care of the newline on its own, so we
+> should not use \n in the strings here.
+>=20
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  tests/ivshmem-test.c         |  4 ++--
+>  tests/m48t59-test.c          |  4 ++--
+>  tests/migration-test.c       |  4 ++--
+>  tests/rtc-test.c             |  4 ++--
+>  tests/rtl8139-test.c         |  6 +++---
+>  tests/test-aio-multithread.c |  8 ++++----
+>  tests/test-coroutine.c       | 10 ++++------
+>  tests/vhost-user-test.c      | 14 +++++++-------
+>  8 files changed, 26 insertions(+), 28 deletions(-)
 
-This fixes that situation by explicitly lowering the IRQ when a
-character is written to the buffer.
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-Signed-off-by: Stephen Checkoway <stephen.checkoway@oberlin.edu>
----
- hw/char/escc.c | 1 +
- 1 file changed, 1 insertion(+)
+--t0UkRYy7tHLRMCai
+Content-Type: application/pgp-signature; name="signature.asc"
 
-diff --git a/hw/char/escc.c b/hw/char/escc.c
-index 628f5f81f7..bea55ad8da 100644
---- a/hw/char/escc.c
-+++ b/hw/char/escc.c
-@@ -509,6 +509,7 @@ static void escc_mem_write(void *opaque, hwaddr addr,
-         break;
-     case SERIAL_DATA:
-         trace_escc_mem_writeb_data(CHN_C(s), val);
-+        qemu_irq_lower(s->irq);
-         s->tx = val;
-         if (s->wregs[W_TXCTRL2] & TXCTRL2_TXEN) { // tx enabled
-             if (qemu_chr_fe_backend_connected(&s->chr)) {
--- 
-2.17.2 (Apple Git-113)
+-----BEGIN PGP SIGNATURE-----
 
+iQEcBAEBAgAGBQJcfrD5AAoJEJykq7OBq3PIGpYH/ikCAYAW4TOKAQt42VCeUXq4
+W4isCPukg2LBEthp8ArGT5kwAek08F9w8tHQZuETFjcp2hxU+nZcESOPfsDetEXj
+QpPjV/0rOwQsfrwpSs68tUPBbPLt95H8vLHaxk7TuhIOKJW52u1mce84Ixf3qe/z
+ohI9WTcZ2PywVMtYH23yq/7znjXgWvQnSXZiqW3UYqWbhbAzALWIF0BaFWpSZc7E
+s2ax8p6mSlHVnZLaFu4cyKxtiorQZsaizrYtT5Fo36tNoqVIgN6FfqBU0MRtFc65
+UwCgdhyD8nkgX5FVwDCDmbAWhKWEroltDzsuF0rM75kYGHTvKN39lqrtx1EBYIg=
+=w0Cp
+-----END PGP SIGNATURE-----
+
+--t0UkRYy7tHLRMCai--
 
