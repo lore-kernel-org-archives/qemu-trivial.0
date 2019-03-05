@@ -1,126 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h0sC5-0001Ru-Oe
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Mar 2019 13:20:05 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:45489)
+	id 1h12LV-0000X4-K0
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Mar 2019 00:10:29 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:54258)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1h0sC3-0001Pc-De
-	for qemu-trivial@nongnu.org; Mon, 04 Mar 2019 13:20:04 -0500
+	(envelope-from <stephen.checkoway@oberlin.edu>) id 1h12LT-0000Wl-GY
+	for qemu-trivial@nongnu.org; Tue, 05 Mar 2019 00:10:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1h0sC1-0003AP-Eg
-	for qemu-trivial@nongnu.org; Mon, 04 Mar 2019 13:20:03 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:51646)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1h0sBv-0002mt-Fo; Mon, 04 Mar 2019 13:19:57 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 806A159455;
-	Mon,  4 Mar 2019 18:13:15 +0000 (UTC)
-Received: from [10.10.126.6] (ovpn-126-6.rdu2.redhat.com [10.10.126.6])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 80016600D7;
-	Mon,  4 Mar 2019 18:13:13 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Corey Minyard <minyard@acm.org>
-References: <1551456970-463-1-git-send-email-thuth@redhat.com>
-	<74a6796e-1242-69dd-a74d-74525955f100@redhat.com>
-	<257d080a-27f9-52e5-76e4-d6929b80cad5@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <33777032-b737-6ece-02f5-ec62f44e7a8d@redhat.com>
-Date: Mon, 4 Mar 2019 13:13:12 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
-MIME-Version: 1.0
-In-Reply-To: <257d080a-27f9-52e5-76e4-d6929b80cad5@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Mon, 04 Mar 2019 18:13:15 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests: Remove (mostly)
- useless architecture checks
+	(envelope-from <stephen.checkoway@oberlin.edu>) id 1h12LS-0004kU-LS
+	for qemu-trivial@nongnu.org; Tue, 05 Mar 2019 00:10:27 -0500
+Received: from mail-it1-x144.google.com ([2607:f8b0:4864:20::144]:37043)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <stephen.checkoway@oberlin.edu>)
+	id 1h12LS-0004hP-B7
+	for qemu-trivial@nongnu.org; Tue, 05 Mar 2019 00:10:26 -0500
+Received: by mail-it1-x144.google.com with SMTP id z124so2513388itc.2
+	for <qemu-trivial@nongnu.org>; Mon, 04 Mar 2019 21:10:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=oberlin-edu.20150623.gappssmtp.com; s=20150623;
+	h=from:to:cc:subject:date:message-id;
+	bh=PK7QaXcW2z3RLKlFr1TIfOFVNgtL+K1a3H3n3C2YYkM=;
+	b=G48hdU9oikaG2h2oS2OZ/J6UGIzG+oS6/ky5kItGoKFeW3B8RgbdSZvWtMCgX9Uqou
+	2TdtnEY6FQsv49LTnUY3UvFLCsZZtWpW9qPq4jO0HvLkn4ccgBcDC4qzb576GVNnF5uC
+	GkdWiu+RxVlXDEXb1M1MaguRBmlmFidhphPcUaE9Q2BIW6vqq05VZNFYC89CtRzzR58q
+	FcaqHA1Dx4Zkwfxp229YVF80yPkKIYMza0j/1ZNRKm6CHGj+nQQY2aWBZ5FwIFrmY7vm
+	xulokV1gOHWjptWGexkQgk8F0oH9gZB4XKx+YiESSuteg4VDC3GJDSuKFT9Dgmk+CW3I
+	IgfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=PK7QaXcW2z3RLKlFr1TIfOFVNgtL+K1a3H3n3C2YYkM=;
+	b=BMONwOPr4oYhfeYZ+aXEE9b70NYYuqeh86PylPXN/bLcEFwJ/ufMT5MwlgVcZwawOl
+	dKDorhAoEWWzRSXjEoxdFUPofgH+JFd678GXxuYTXeDdLyCT+LkKOK76uJMpMKFsL46N
+	Niwmr3G1qb4e117dA+KOnp+8pl+dnMOb07ybfbsEBdJxfu7AFdPttDqrTzb2q5f2Tb/c
+	wNWoXK9K//m7anraFGAEXy1zaz2iTJwG5KMVb63aRVPdBWqHoGSdwWTnfFiZOFO1vefo
+	OKVNg6R2uLT4cWX2Bf0wgVVBUAyssX9crTPnLvED04zGKbS7fIkdbmfm6VWy6GuVemVh
+	W7Cw==
+X-Gm-Message-State: APjAAAVYU0bb17TyF0Z9XCuhOuEg/lpl4M+9HUltRPxYGUayRk4E6FUo
+	w3ed/BdsrZCyS/DvHu4jKNu/MA==
+X-Google-Smtp-Source: APXvYqxXA3bzbg6ryyzNIEnEqiavtI2b+PpmvhfvSJKkQhgpOvgTAwQwvnyBtOEaD+jwe46XDpMBWA==
+X-Received: by 2002:a02:228f:: with SMTP id o137mr168736jao.76.1551762623849; 
+	Mon, 04 Mar 2019 21:10:23 -0800 (PST)
+Received: from worksec.oberlin.net (ip-210-181.oberlin.net. [208.66.210.181])
+	by smtp.gmail.com with ESMTPSA id
+	b16sm4231545itb.26.2019.03.04.21.10.22
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Mon, 04 Mar 2019 21:10:23 -0800 (PST)
+From: Stephen Checkoway <stephen.checkoway@oberlin.edu>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Stephen Checkoway <stephen.checkoway@oberlin.edu>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Date: Tue,  5 Mar 2019 00:10:07 -0500
+Message-Id: <20190305051007.56009-1-stephen.checkoway@oberlin.edu>
+X-Mailer: git-send-email 2.17.2 (Apple Git-113)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::144
+Subject: [Qemu-trivial] [PATCH] hw/char/escc: Lower irq when transmit buffer
+ is filled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -132,139 +69,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Mar 2019 18:20:04 -0000
+X-List-Received-Date: Tue, 05 Mar 2019 05:10:28 -0000
 
+The SCC/ESCC will briefly stop asserting an interrupt when the
+transmit FIFO is filled.
 
+This code doesn't model the transmit FIFO/shift register so the
+pending transmit interrupt is never deasserted which means that an
+edge-triggered interrupt controller will never see the low-to-high
+transition it needs to raise another interrupt. The practical
+consequence of this is that guest firmware with an interrupt service
+routine for the ESCC that does not send all of the data it has
+immediately will stop sending data if the following sequence of
+events occurs:
+1. Disable processor interrupts
+2. Write a character to the ESCC
+3. Add additional characters to a buffer which is drained by the ISR
+4. Enable processor interrupts
 
-On 3/3/19 9:15 AM, Thomas Huth wrote:
-> On 01/03/2019 18.57, John Snow wrote:
->>
->>
->> On 3/1/19 11:16 AM, Thomas Huth wrote:
->>> These checks at the beginning of some of the tests are mostly useless:
->>> We only run the tests on x86 anyway, and g_test_message() does not
->>> print anything unless you call g_test_init() first.
->>>
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>>  tests/fdc-test.c      | 7 -------
->>>  tests/ide-test.c      | 7 -------
->>>  tests/ipmi-bt-test.c  | 7 -------
->>>  tests/ipmi-kcs-test.c | 7 -------
->>>  4 files changed, 28 deletions(-)
->>>
->>> diff --git a/tests/fdc-test.c b/tests/fdc-test.c
->>> index 88f1abf..31cd329 100644
->>> --- a/tests/fdc-test.c
->>> +++ b/tests/fdc-test.c
->>> @@ -548,16 +548,9 @@ static void fuzz_registers(void)
->>>  
->>>  int main(int argc, char **argv)
->>>  {
->>> -    const char *arch = qtest_get_arch();
->>>      int fd;
->>>      int ret;
->>>  
->>> -    /* Check architecture */
->>> -    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
->>> -        g_test_message("Skipping test for non-x86\n");
->>> -        return 0;
->>> -    }
->>> -
->>>      /* Create a temporary raw image */
->>>      fd = mkstemp(test_image);
->>>      g_assert(fd >= 0);
->>> diff --git a/tests/ide-test.c b/tests/ide-test.c
->>> index f0280e6..300d64e 100644
->>> --- a/tests/ide-test.c
->>> +++ b/tests/ide-test.c
->>> @@ -1009,16 +1009,9 @@ static void test_cdrom_dma(void)
->>>  
->>>  int main(int argc, char **argv)
->>>  {
->>> -    const char *arch = qtest_get_arch();
->>>      int fd;
->>>      int ret;
->>>  
->>> -    /* Check architecture */
->>> -    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
->>> -        g_test_message("Skipping test for non-x86\n");
->>> -        return 0;
->>> -    }
->>> -
->>>      /* Create temporary blkdebug instructions */
->>>      fd = mkstemp(debug_path);
->>>      g_assert(fd >= 0);
->>> diff --git a/tests/ipmi-bt-test.c b/tests/ipmi-bt-test.c
->>> index f4a81b5..fc4c83b 100644
->>> --- a/tests/ipmi-bt-test.c
->>> +++ b/tests/ipmi-bt-test.c
->>> @@ -400,15 +400,8 @@ static void open_socket(void)
->>>  
->>>  int main(int argc, char **argv)
->>>  {
->>> -    const char *arch = qtest_get_arch();
->>>      int ret;
->>>  
->>> -    /* Check architecture */
->>> -    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
->>> -        g_test_message("Skipping test for non-x86\n");
->>> -        return 0;
->>> -    }
->>> -
->>>      open_socket();
->>>  
->>>      /* Run the tests */
->>> diff --git a/tests/ipmi-kcs-test.c b/tests/ipmi-kcs-test.c
->>> index 178ffc1..a2354c1 100644
->>> --- a/tests/ipmi-kcs-test.c
->>> +++ b/tests/ipmi-kcs-test.c
->>> @@ -263,16 +263,9 @@ static void test_enable_irq(void)
->>>  
->>>  int main(int argc, char **argv)
->>>  {
->>> -    const char *arch = qtest_get_arch();
->>>      char *cmdline;
->>>      int ret;
->>>  
->>> -    /* Check architecture */
->>> -    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
->>> -        g_test_message("Skipping test for non-x86\n");
->>> -        return 0;
->>> -    }
->>> -
->>>      /* Run the tests */
->>>      g_test_init(&argc, &argv, NULL);
->>>  
->>>
->>
->> Hm, if you insist. I have no strong feelings... Do we plan to split
->> tests out by architecture eventually? Clearly x86 only tests don't
->> really need to each individually check the arch, but I'm not sure what
->> the vision is.
-> 
-> We could also fix the g_test_message() output by moving it after the
-> g_test_init() ... I don't mind too much which way we go, but at least
-> the current state is bad.
-> 
-> Looking at other tests, we seem to be pretty inconsistent in checking
-> the architecture at the beginning. For example q35-test.c,
-> pvpanic-test.c and test-x86-cpuid.c do not check for x86, while
-> rtas-test.c has a check for ppc64...
-> 
->> Either way, since I have no horse in the race:
->>
->> Acked-by: John Snow <jsnow@redhat.com>
-> 
-> Thanks!
-> 
->  Thomas
-> 
+In this case, the first character will be sent, the interrupt will
+fire and the ISR will output the second character. Since the pending
+transmit interrupt remains asserted, no additional interrupts will
+ever fire.
 
-In that case, might as well be consistent first and we can refactor our
-test suite when we have a reason to want to do that.
+This fixes that situation by explicitly lowering the IRQ when a
+character is written to the buffer.
 
-Thanks for the explanation!
+Signed-off-by: Stephen Checkoway <stephen.checkoway@oberlin.edu>
+---
+ hw/char/escc.c | 1 +
+ 1 file changed, 1 insertion(+)
 
---js
+diff --git a/hw/char/escc.c b/hw/char/escc.c
+index 628f5f81f7..bea55ad8da 100644
+--- a/hw/char/escc.c
++++ b/hw/char/escc.c
+@@ -509,6 +509,7 @@ static void escc_mem_write(void *opaque, hwaddr addr,
+         break;
+     case SERIAL_DATA:
+         trace_escc_mem_writeb_data(CHN_C(s), val);
++        qemu_irq_lower(s->irq);
+         s->tx = val;
+         if (s->wregs[W_TXCTRL2] & TXCTRL2_TXEN) { // tx enabled
+             if (qemu_chr_fe_backend_connected(&s->chr)) {
+-- 
+2.17.2 (Apple Git-113)
+
 
