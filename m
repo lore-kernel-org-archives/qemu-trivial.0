@@ -1,26 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h1Sf6-0000f7-3X
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 04:16:28 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:33890)
+	id 1h1SlL-00051c-8q
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 04:22:55 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36165)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1Sf4-0000dw-H0
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:16:27 -0500
+	(envelope-from <laurent@vivier.eu>) id 1h1SlJ-00050U-Kr
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:22:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1Sf3-0006r2-KX
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:16:26 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:42645)
+	(envelope-from <laurent@vivier.eu>) id 1h1SlI-0005fs-TM
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:22:53 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:42485)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h1Sf3-0006QR-5u; Wed, 06 Mar 2019 04:16:25 -0500
+	id 1h1SlH-0005Rs-6U; Wed, 06 Mar 2019 04:22:52 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
-	1M277h-1gyycB0xTN-002YM8; Wed, 06 Mar 2019 10:15:50 +0100
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	Laurent Vivier <lvivier@redhat.com>
-Cc: Kevin Wolf <kwolf@redhat.com>, Juan Quintela <quintela@redhat.com>,
-	qemu-trivial@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <1551457277-884-1-git-send-email-thuth@redhat.com>
+	(mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+	1Mk0FM-1hPZEs1NxA-00kN1L; Wed, 06 Mar 2019 10:22:14 +0100
+To: Wei Yang <richardw.yang@linux.intel.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: thuth@redhat.com, mst@redhat.com, imammedo@redhat.com, philmd@redhat.com
+References: <20190214084939.20640-1-richardw.yang@linux.intel.com>
+	<20190214084939.20640-2-richardw.yang@linux.intel.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -65,35 +64,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <3b4ca6e3-f1dc-e99c-c0f9-866608e5da3b@vivier.eu>
-Date: Wed, 6 Mar 2019 10:15:48 +0100
+Message-ID: <e57b08c7-72d2-17d7-565c-4f8cbf5dd1bf@vivier.eu>
+Date: Wed, 6 Mar 2019 10:22:11 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <1551457277-884-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <20190214084939.20640-2-richardw.yang@linux.intel.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:nzXgV6hjKM25DnZMhdC1OkKd2ufwvBlsJmOB1jPloLBUFyoIHFQ
-	BHaCnS93xI+q8AiQiwL2/c5NLB1CnNKd0QgUs6Yu6fkVOu0So8LZu5wGwo+n+5u9a+4faMB
-	+oPTJllEoE2DwtZccH/IJwYqYUfvoh1Qpe6L2wJV4M9Ai8teHKgZSUgbuwKIfwf0cPkuKcr
-	Sl7IHawwP5iBXgla4uYNg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:JEvYPG0d1Zw=:mlBRatQxun0a4PHVOz3+KU
-	J2ARcFj+7X2ZQL4OlD2ITH6Sx+itZsFhqV0iDiWwT1o1rMbhC85L8ekKX2ZtUXGzLE1aLZaXF
-	T/LJiADjWAtlCu/gMy6ch2epvVTWTcpr88ULfl0QmJHFSxmZsDC/ljJvkO/COgjfNRr/dR+KX
-	YIRJp9C7eoKerkxu4HJWvgcv+mxyHX87MPBDGd13I/izmi1JvzNyUx0VfT/41cZDqoNdAqYKb
-	FMPfr5jaMxPaaqHJ/eMZt5nAKtNygRxAK+Vs4cgBlbJWNiKSfmdwcEY0NJKOYr3IzQkOWRWrG
-	AQFS0tjBIb7HlIN92PLdwPK8e5Y8LjJKK091PDdlli9UCn7Y91TXOt6cnuVQrQs1rNyafxTDO
-	K5Cwg5SXzhjPCoN0SOTii0MrRx1/WRBSs3OxxihItD6JUN4BWn7ztiabCHnQ+UDf0V2TZP0Qy
-	ZkZbcm3DBwZbXot+1T6Y8Yu+lB/qB4ccQxIaCQO2uPIPQepJtu9HF0FOhHxG7+681UZn41FwK
-	+WCV7rcLVbHcuJrxLebQU7rnToQV+hALSWjsdt4QAtWeKkqSf3XNt1mrYNHDeXuxv+7kDrz9Z
-	oIFrNl8UwAQYTx45poDgPecpCKvDlSdu40H0degO3CA8SpOanSbc+Uk7sxnsIp686/7cqsNQS
-	taaFqxuMadhQpYtc17fOWXJQC8DJApCBFXXCykwnOBFnttsdrdCkfMFzGDMwC/PlldUdwKMj5
-	stDigSJDdm7yVEujaMDV4aveHhvO9v+yK/Qa485oRoxkUp5RpfLP/u3Wm1I=
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:TBi3NYuxcdgVfxvS4JSs+Yhem6Z0gl6HHkFEqLljM7SVtz5Ywvc
+	s/Kv/PvfF80QXqxWBYKGoEXkB3+oKbwSE9opcR+geB1dl9zxhJGiMd8XRBWtnLtnMHzVCqA
+	xQIGvJ5EXA/bvq4sd00M8WYyofzbhXcioMe/GVwRP5EVqg4JRoTtmvHddW61TFIDjHA/TGn
+	yX74gxu1tR6tYnExqHAfg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:nAimonv75Wo=:MAA/HUUw1qKkr59m2Ev3PK
+	OKby0ExdLArS5hQK2eOc9RbIPoC1leOTBnGS1CcJ0b/Q0E0HqUhQLbxXpsXjPXxI6ZlxeRxFP
+	R3orp9clMqTAPf54e1kURuswWKCg0JNf0/pAl9PkZh+ywENrqkAu6DIBmTDKIN3ldMamsgsu3
+	iZiCJTILPrQqlf4MY0CZMjCuPJXlBfDer5Sbso6vRg1lDp4h8ZYyLMB0+wmCzS9+InzAH6XFl
+	148Ho9uXfsbsbgXAtiwkqeOCHZdSZgPp8qT80FbO/n/nMeqyHnidr9suQ/F1qVkwEResnWBrE
+	+EHf7nJqDfoA9qmFRptPkbn+xpTEr6ycoI+zMw2tevPyHhVK1IYJZwWr+xVceB+iCG3bdTxpk
+	9sQgP5LpKau08RiSyGAASvQ7kqQlMvgjvByTuTjWNHvUhYgZw1QE3JBwk4HaueXf+MUZ0/FM3
+	65b0pV2c67Eur8Pv1rJ+AWXStenfl4ETzGbe4ys7poXtYn56XYKZ+dHxH5LEqk824D9+SyC11
+	1ol+HZ+QcYW/35Vi0+MT+6xlVoRPLrFkxDHIPiOBs9BjFQljR0N4zQBFWUheiiwwXwJeK8LLE
+	Evp73h9MCg8xP1DmaBvad/WbKMOdzHBoVdiFGqtrcx1ZRuJRgtHmmd/Q63wd2E6CQ2ALjgHsK
+	Oe6IWizA0fCEimhRfJ2b+16I1E3nhloW8PTvZ0lnzuQi2HDtLn/sxTpxQQ9mD47l0nqjub3uH
+	oyzOhl/lHg51tmHaQAl2S3TBOZg75g96qqV4W7JndWmFJD+9kasICZjRUnE=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.187
-Subject: Re: [Qemu-trivial] [PATCH] tests: Do not use "\n" in
- g_test_message() strings
+Subject: Re: [Qemu-trivial] [Patch v4 1/3] hw/i386/pc.c: remove unused
+ function pc_acpi_init()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,28 +104,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Mar 2019 09:16:27 -0000
+X-List-Received-Date: Wed, 06 Mar 2019 09:22:54 -0000
 
-On 01/03/2019 17:21, Thomas Huth wrote:
-> g_test_message() takes care of the newline on its own, so we
-> should not use \n in the strings here.
+On 14/02/2019 09:49, Wei Yang wrote:
+> Function pc_acpi_init() is not used anymore.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Remove the definition and declaration.
+> 
+> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 > ---
->  tests/ivshmem-test.c         |  4 ++--
->  tests/m48t59-test.c          |  4 ++--
->  tests/migration-test.c       |  4 ++--
->  tests/rtc-test.c             |  4 ++--
->  tests/rtl8139-test.c         |  6 +++---
->  tests/test-aio-multithread.c |  8 ++++----
->  tests/test-coroutine.c       | 10 ++++------
->  tests/vhost-user-test.c      | 14 +++++++-------
->  8 files changed, 26 insertions(+), 28 deletions(-)
+>  hw/i386/pc.c         | 27 ---------------------------
+>  include/hw/i386/pc.h |  1 -
+>  2 files changed, 28 deletions(-)
+> 
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 5317e08f60..734d3268fa 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -1280,33 +1280,6 @@ void pc_pci_as_mapping_init(Object *owner, MemoryRegion *system_memory,
+>                                          pci_address_space, -1);
+>  }
+>  
+> -void pc_acpi_init(const char *default_dsdt)
+> -{
+> -    char *filename;
+> -
+> -    if (acpi_tables != NULL) {
+> -        /* manually set via -acpitable, leave it alone */
+> -        return;
+> -    }
+> -
+> -    filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, default_dsdt);
+> -    if (filename == NULL) {
+> -        warn_report("failed to find %s", default_dsdt);
+> -    } else {
+> -        QemuOpts *opts = qemu_opts_create(qemu_find_opts("acpi"), NULL, 0,
+> -                                          &error_abort);
+> -        Error *err = NULL;
+> -
+> -        qemu_opt_set(opts, "file", filename, &error_abort);
+> -
+> -        acpi_table_add_builtin(opts, &err);
+> -        if (err) {
+> -            warn_reportf_err(err, "failed to load %s: ", filename);
+> -        }
+> -        g_free(filename);
+> -    }
+> -}
+> -
+>  void xen_load_linux(PCMachineState *pcms)
+>  {
+>      int i;
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 9d29c4b1df..541124ba6d 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -187,7 +187,6 @@ void pc_acpi_smi_interrupt(void *opaque, int irq, int level);
+>  
+>  void pc_cpus_init(PCMachineState *pcms);
+>  void pc_hot_add_cpu(const int64_t id, Error **errp);
+> -void pc_acpi_init(const char *default_dsdt);
+>  
+>  void pc_guest_info_init(PCMachineState *pcms);
+>  
+> 
 
-The tests/vhost-user-test.c part doesn't apply cleanly on top of master.
-Could you resend?
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
 
