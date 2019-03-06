@@ -1,27 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h1TNG-0000Fm-Fy
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 05:02:06 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:49308)
+	id 1h1TZ4-0003qA-Pe
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 05:14:18 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:51771)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1TND-0000FY-MU
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 05:02:05 -0500
+	(envelope-from <laurent@vivier.eu>) id 1h1TZ2-0003oZ-9r
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 05:14:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1TNA-0006as-Qb
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 05:02:03 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:35653)
+	(envelope-from <laurent@vivier.eu>) id 1h1TZ1-0007k4-IA
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 05:14:16 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:58299)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h1TN7-0006XS-Nl; Wed, 06 Mar 2019 05:01:58 -0500
+	id 1h1TYx-0007QO-97; Wed, 06 Mar 2019 05:14:11 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
-	1N9dbx-1h4S2W3fcr-015aOi; Wed, 06 Mar 2019 11:01:46 +0100
-To: Stefan Hajnoczi <stefanha@gmail.com>, Riku Voipio <riku.voipio@iki.fi>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	Peter Maydell <peter.maydell@linaro.org>, Julia Suvorova <jusual@mail.ru>, 
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	Aarushi Mehta <mehta.aaru20@gmail.com>
-References: <5310bd5d152fa36c1828a7cbd19fc893739d1609.camel@gmail.com>
-	<20190306095615.GG22159@stefanha-x1.localdomain>
+	(mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+	1M9qYn-1gvg7v1TF7-005snf; Wed, 06 Mar 2019 11:13:50 +0100
+To: Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
+Cc: Fam Zheng <fam@euphon.net>, qemu-devel@nongnu.org
+References: <20190213130240.15492-1-armbru@redhat.com>
+	<87o96r3q5d.fsf@dusky.pond.sub.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -66,34 +63,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <6b3cfcb7-747e-1dc7-6987-1ad9d1fde2a3@vivier.eu>
-Date: Wed, 6 Mar 2019 11:01:43 +0100
+Message-ID: <a17c244f-e75a-cac5-4a56-5c2fdee7262f@vivier.eu>
+Date: Wed, 6 Mar 2019 11:13:48 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190306095615.GG22159@stefanha-x1.localdomain>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="wHed6j1HSAw0QV7eT6VQ6HgJEMHkbcQmK"
-X-Provags-ID: V03:K1:LRdgoRNVzYy1uRt44H3NeCTRrYXttUZ6bgmbsgeVnuwxAsBlrfJ
-	O/dif/M+h2yxQuG9W7dYpsdy/Liy4c5zGlX3jiT0g9r8HYpY2AaavreyfTD+4jYmMZapN2K
-	pKVJVL2EA6Vee9xoqIV57NK6xtM8u0kH4K2qgVBcdUMsjs8ksbR5tM1wc+Tun0gaTBoUjyT
-	ENmylzdtLRdIiKBsfCPPw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:7CN3piqXpPQ=:rms8qaVmcfsw3z9NYa5LWI
-	MJM9/iwHnD/hWEa2R5TZwyMXTwRi3qMu0W7tScbyEmHAkgQxTeUTu9GX0D7pfxXcKeuoaQix/
-	azPnojJdAjJl6WOXFl4yJB5qWV5agRrWvkgJS0NcaybkFr03Jfb1ivpQGcjX77xGq7loZjuZY
-	zzAnHqPzmzZM21X/AeMNfsTP6/VPXvXTcWXiKAKtHq8W+vyscKpTK9r/jL3dKzY8awLPTq2sL
-	QzfcQReyXGcl/49fQpuRVlwQvIIYBd9IyXDYDmZEc6qH44SzZCtRhbS3YLIWf6mrvQ8EUlZVb
-	dadElJ6q0dYBO8n0S+c+GYbrOjh+3MPyjAy4Lc/dL7rx5ALQ7MNlRu1fvyH7WIeBMD5fsNaGO
-	9BCgK/TpzcslaT6vytXjCLmO66CTns0DSlR9vD6l2GHEsfwptRLFywHIUSv6/hRh5OptL4Oi1
-	UT5T7UWfyU4NW/skGDuUcRexsCAPi0Ma4cYVKV56d9+7UarutUkk59Nz7lhQcVdJJJf3u456y
-	uvv68Lz4PxF3hWWkRKdag+akDuFeGdN7mreuhnwT2JV6KZ8+vNdjn8GqQ00Eh8yKg82TdcSGT
-	dn4Qt4qR868JEHnRhYZFvCl/3YitlZ0LTsehWgjfbxu0rNn/YEF9Bnj6vh54zk92qdugoD8mX
-	G6tHV4oTzHBuCd8eafXa0ThdrzG7EAW+f/6bLTj0whyTaty0VURCpvGBcT3A1cirhAn6Zj9oF
-	SJJlZVTJSvxI0s2I1UDUEbks8tuP5t54xyDZbQ==
+In-Reply-To: <87o96r3q5d.fsf@dusky.pond.sub.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:gANwhNVootnlYr2tu/2E8I9WJ2QH6gsXHuM1SrzfQCGdDv1vpA0
+	Nw+ydj9Nq+rndehkj7a/T2PIY4Z5crphs+omuIGKwsx1jyrWaEagVu1EN4zUaK1oOUJHZoe
+	2ZpOH7qhxx60A4uSD0vsyVW8xCCPngJ5Af4J0Ck2fcC99NUvtV82bVIJytSb9UJn7fnskXN
+	3rk0VIWyAzOHQp0pXv9QQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:PxJ5KpIwwzs=:MI3t9cCl1sMuQNdSR5kJYr
+	XrfkS6Z6hPl0ZYgvLDDaJqxxoBtfuBmNo7Yg2bq7G2/1hZEGVJl57B4zJ435nBC4I0205fPjZ
+	PpHUUNQ4sAiuK+CQgOmDBf4qtlJKvq/cVrvKa9FhdlDc/ty0HOa6jV9S5JuD+ZxFft2hwCjaf
+	JndiddvGMC07AV3Y8LZQNX1z/+/mB/zjl17/mWCJv1S1zVoBBYndb6hLePK21wWULNaCbHmgz
+	XJO7p1QHqlKK9vG/a4soGWWx8eQ8DaHjG16+vPitQTpGV0XiBPhpcDOGQ5g9Ekn96tU9nnlCs
+	iic0FCKIhRpDKMum4zcZq2P8Z/VmAFKdbBriqN9kkY8SBxALZVuADfsLcmyGn8BziykArU/nh
+	aTZi0PNtvE0Z9haVMaaCl6A92/kQshSNqB+4azadxytaTgUBgKoE1jULjgW+AeE9V8cul9/Jw
+	A8M67lThowIuK9mQZ+hLJ8hubeFAeT43kkpux8Q5H2Uisj49OJdF+hUD+A9VTjH6HiHf0+q4Q
+	zGUaAwIVUl0bHG1VhNsE6scBR2zZm808T9mj0mbKOX4frl4pBr+0AJzsN98/mGIERtw2kkWlE
+	FhVVkU3zRz72PyHze9tlj2REcmujd2O0JCsXotbYzFMGEV4g8lK2LhAcRuzYyygv6iKn9X4h2
+	HC3npCqdCiinREtRkktVjEk0wf9gWVMMk4cM0Pj6HXH6XP2o/pgbxkRwG3xS88YtqfJQAaABD
+	N6m3RNH39GFHOkE0SwNBek9JhcBeSZ4e1qCKDhKDVEkcF95etFrFEWs5rRk=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.134
-Subject: Re: [Qemu-trivial] [PATCH v4] thunk: fix of malloc to g_new
+Subject: Re: [Qemu-trivial] [PATCH] build: Correct explanation of
+ unnest-vars example
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -105,82 +103,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Mar 2019 10:02:05 -0000
+X-List-Received-Date: Wed, 06 Mar 2019 10:14:17 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---wHed6j1HSAw0QV7eT6VQ6HgJEMHkbcQmK
-Content-Type: multipart/mixed; boundary="YzpPQSZJEaety7aMrdjUgcwddwBztw0UP";
- protected-headers="v1"
-From: Laurent Vivier <laurent@vivier.eu>
-To: Stefan Hajnoczi <stefanha@gmail.com>, Riku Voipio <riku.voipio@iki.fi>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, Julia Suvorova <jusual@mail.ru>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Aarushi Mehta <mehta.aaru20@gmail.com>
-Message-ID: <6b3cfcb7-747e-1dc7-6987-1ad9d1fde2a3@vivier.eu>
-Subject: Re: [Qemu-trivial] [PATCH v4] thunk: fix of malloc to g_new
-References: <5310bd5d152fa36c1828a7cbd19fc893739d1609.camel@gmail.com>
- <20190306095615.GG22159@stefanha-x1.localdomain>
-In-Reply-To: <20190306095615.GG22159@stefanha-x1.localdomain>
-
---YzpPQSZJEaety7aMrdjUgcwddwBztw0UP
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-On 06/03/2019 10:56, Stefan Hajnoczi wrote:
-> On Sat, Mar 02, 2019 at 01:22:29AM +0530, Aarushi Mehta wrote:
->> From 3c1cba63dc5070ab559a126e206557f27fbaea59 Mon Sep 17 00:00:00 2001=
-
->> From: Aarushi Mehta <mehta.aaru20@gmail.com>
->> Date: Sat, 2 Mar 2019 01:11:42 +0530
->> Subject: [PATCH v4] thunk: fix of malloc to g_new
->>
->> Note that since thunking occurs throughout the lifetime of the QEMU
->> instance, there is no matching 'free' to correct.
->>
->> Signed-off-by: Aarushi Mehta <mehta.aaru20@gmail.com>
->> Reviewed-by: Eric Blake <eblake@redhat.com>
->> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+On 04/03/2019 11:11, Markus Armbruster wrote:
+> I guess this could go via -trivial.
+> 
+> Markus Armbruster <armbru@redhat.com> writes:
+> 
+>> Cc: Fam Zheng <fam@euphon.net>
+>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 >> ---
->>  thunk.c | 2 +-
+>>  rules.mak | 2 +-
 >>  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> Riku: Will you send a pull request?  Otherwise Peter might be willing t=
-o
-> merge this patch through his tree.
->=20
+>>
+>> diff --git a/rules.mak b/rules.mak
+>> index 86e033d815..19f3d2c126 100644
+>> --- a/rules.mak
+>> +++ b/rules.mak
+>> @@ -327,7 +327,7 @@ endef
+>>  #     ../water/ice.mo-libs = -licemaker
+>>  #     ../water/ice.mo-objs = ../water/ice1.o ../water/ice2.o
+>>  #
+>> -# Note that 'hot' didn't include 'season/' in the input, so 'summer.o' is not
+>> +# Note that 'hot' didn't include 'water/' in the input, so 'steam.o' is not
+>>  # included.
+>>  #
+>>  define unnest-vars
+> 
 
-I can take this through the trivial patches branch.
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
-
-
---YzpPQSZJEaety7aMrdjUgcwddwBztw0UP--
-
---wHed6j1HSAw0QV7eT6VQ6HgJEMHkbcQmK
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEzS913cjjpNwuT1Fz8ww4vT8vvjwFAlx/mocACgkQ8ww4vT8v
-vjyTJQ//dwFqbfExOnl4MfM9/d2he+DPRMcoGngG996z0VYYRue+6M85zLGHuKIp
-mmHxSvwqceASMTvSuapXFw7NgYSEKQBAzHJYDpfma8/BBpVeFkYWgu6Rv6v6jzYP
-4hIcLqLpA72HjM+8aNgx4ea2GkAv2LDVH0DmbiP1w68vZEVY4aMVGTviqw7HjXlh
-xkc9Z10spaR02lK59sAA/bcy1E6lFSvg6NzdJnv+Ww/F/Ac3BUaMmUxhQGARVOXo
-C5oezTWmVSl+NLm3QO2kbkfycy1B5etOBcqUsa2q8joaBLfeHdY9C/Smcvefgtle
-2KjHNf0AaeJCsQ7B+YuN9wBY/bXLPLvc2AgqjJtRR5bOh1+zaW71TIu4M8HyTwlo
-NWdwgXt0ctpI7GKAZe4RPmvFvf6spbGnl1AvFCs092wS8Q2B5Q8OtRW32ZqGKopi
-d3cgsWstZzvHmTtfJXDM9EWh4rICEALW9ZaPk1J4l5HzOvYDLMe5hH9Ru9PFzSe/
-AsUB7GmlRT3bgirn95bQES6+P2IOAAfZ1KlUkQ/3129zpISIseMhInlycy17qWFG
-PHFmuZWedCg4FH1hqODSKqESGA1ba807HHyHft7h4vQ00OZaKtON0rRQ5tjN/ilF
-jStcFSmnrpGi4VrSEPM22XnMXaLTOEQT69eMniyiKflzD7RmUB8=
-=tX4C
------END PGP SIGNATURE-----
-
---wHed6j1HSAw0QV7eT6VQ6HgJEMHkbcQmK--
 
