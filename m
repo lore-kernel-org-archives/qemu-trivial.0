@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h1Sm9-0005hH-4s
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 04:23:45 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36470)
+	id 1h1T0d-0007Gl-7G
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 04:38:43 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:43332)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1Sm7-0005fW-1x
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:23:43 -0500
+	(envelope-from <laurent@vivier.eu>) id 1h1T0b-0007Fv-QH
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:38:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1Sm6-0006D2-9T
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:23:43 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:54615)
+	(envelope-from <laurent@vivier.eu>) id 1h1T0a-0000RZ-Uz
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:38:41 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:60047)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h1Sm5-0006C3-VK; Wed, 06 Mar 2019 04:23:42 -0500
+	id 1h1T0W-0000G9-Df; Wed, 06 Mar 2019 04:38:36 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
-	1N6Kl7-1h3LNG0wnp-016gST; Wed, 06 Mar 2019 10:23:35 +0100
-To: Wei Yang <richardw.yang@linux.intel.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: thuth@redhat.com, mst@redhat.com, imammedo@redhat.com, philmd@redhat.com
-References: <20190214084939.20640-1-richardw.yang@linux.intel.com>
-	<20190214084939.20640-4-richardw.yang@linux.intel.com>
+	1MQNAv-1gfFBY3XvN-00MOK6; Wed, 06 Mar 2019 10:38:26 +0100
+To: Stephen Checkoway <stephen.checkoway@oberlin.edu>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+	"open list:Block layer core" <qemu-block@nongnu.org>,
+	Max Reitz <mreitz@redhat.com>
+References: <20190219153727.62279-1-stephen.checkoway@oberlin.edu>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -64,35 +64,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <8a961366-89d2-bdde-9fa2-8ae95bc4275b@vivier.eu>
-Date: Wed, 6 Mar 2019 10:23:34 +0100
+Message-ID: <f08e6be0-68c5-a7fe-8877-7dad0eb5929d@vivier.eu>
+Date: Wed, 6 Mar 2019 10:38:24 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190214084939.20640-4-richardw.yang@linux.intel.com>
+In-Reply-To: <20190219153727.62279-1-stephen.checkoway@oberlin.edu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:T/T9GeP0tu5PC5CJJHQPMn6R9WBOXtYY2Wy/jXhqdxHbe/P4eol
-	q5TZW1rZidkiJOcfgnk11mRWvi3FyuP+pLbl8EwkCProAw+VvVvrN28RK9ZXhCsAeaFGxrN
-	VzXAP/5NYFihamwDokYG3uxnu91unonYFa/0/p0bm0wFLS3+Z50l1QewAT+cQhp5cCZpow5
-	bOtbgdgmQf9P4VxhKCLZA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:M5A3otzG0EQ=:PTj5xmmgve5DSiljE/GpLi
-	wyp1kL6+Ca/F51Vg1ZH1j94bTnEi5NpfQgKzT/NlNSWK7esCsfuLKZYzrxohI42ybnLUjhWbb
-	t54zw1eHbtrGyar+zc+6rTxZpPOJxmf0FTQ0SQfrKV/PfS3F4fPS1p5gNS6TRsxqsgoXXbObP
-	atV8GeNpyOI1EezZPeSIRzY1ZDGezBRzOY9LaBH8EesnchrxtAZeDMf1u/N9MRU8zIOc2yjcQ
-	J/LuAjrtgVJbC14OdeSfq71kCOxGNXJ35ONXrE418qwMFV7TxZ0ccCJ/aOJjHQpJVAyCBxBlp
-	vsE5qUnlUzDPZ4wqZAb1E6nryc7rvvZ2MM9PzzFnKeEPL4bRMOrRglE/QJ17Xw3qIGSJ4MPJG
-	oPoXScnAPMlv/Ft5hLymzPI6KECR5u9cSweIUk7dvv5D5esd73R1Ja4apSW1SAF4kdK8PEr8G
-	6HVhwqwPPJa2cwFwJ3lF75S6MRex3cVfXylX1d6TWpXCjOiWAOtuYzyksuboteCmfu3tfF1S6
-	hY+TLZyrKPKoouunBRNs9jSzyHCJScxboY7gKQT07kpitooDpspMRaG+OLx8KnSabLDlOuJB1
-	r7AU6c08OBs6TmeuCRJ5LK5iPqw5AYAMFp/FzEp2FPTDfCtyDyaRueTlEmIWMg0mV1NOdZsW0
-	xmlmS72w2Eu7l5dgiG3YapV/VT0Ou+4kVFUyuBRsbzHHQoar+V+NnNph27X4vqrgzkmBshWOZ
-	NylNYUGfoxfFW38lsENy+w6ed/+diTdtaCdCueJz4JFTFnA6nK/40rSbQBM=
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:Bo3mdSiFs0XMHjgMgGuWoJPIyupcx9RoYSNyHNWKPVs8UspLCuL
+	xFKITlzBc83UVAkHFrMcCnAeHLijIeBYS+i6PmpCeBIQMyV+Z6l7wJ8HEUQAl3E1rK81IM1
+	fvvDSTomZ0MDVLIdwixInTeCzS3f2+ydSAqQqdM+FicSKjo1IGOzVFvUZeZMQohPE72NM06
+	E7Iw/hER32jAVbu18Uz/g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:p0JPZCRVwew=:gTXPoBxRgzEe5J1se1L2dH
+	XK8p9I3wk7stBGkhKraIEtA67CVlJlAbeUIFeiNaLKWng+O503xBqOvu2nGD/o40q875NZVyj
+	+5Vgy/M0fbw3WE+Gg9x4Zt3pFcFTHebwlpSRtFSI7ncdz7N505UB6sA7ynsgZ6BQXL9a9ey0i
+	2Gm+8AKOMkW/mkTLlNOxPXZdQPyJMbypkoSd7Yhv9B6w8Rc8kzN0IiX+ASE5aR1wnFzILYdAo
+	H7q8r8vt71SjT0xnV/zxrGBrpzDo3Jev777RrJcGioHBChJ7o6Wi92bf/JeFjQS3tVVpqIrqc
+	NQcwp5abYpPxxBQ2vKSftJaVTLwbQNP461oDagvvoDZwGg3dLFrzTrsYqs5dRU7+QMFEAkeg4
+	nR4YNc3pNBDxHiG4PIOF+d6HuNuEVUYL6qLm/A2jxl7tnu6+W1etJikV/8hX9yPsZmKfJwY69
+	lmdr8Vp1t8EYHWe6Qb7D7vj1G3vbeOAgcZ8Nsmb0C5w79LCY4V3kNDApZ156ZuGa/G91s063W
+	g/nFFDCSGJrEhF4wZ1+bB3Cbfc0zh4oFGS2Gw0SG1jbEqwkYhI8OQvAdUEGRZR2DlxNskw/Z6
+	1Mk5dZAexTAY+62QeY0h/8CWTe+IJEzBdCfSgN8Q5QtSAXEFbKW8sxBEYbu3X3JXzHt2Tz84L
+	xb7bR7PLC3U3NxwgTw2WUxZlYECGBn1pNP2TsoaMiyA7RRFQnElov8lmemMG3ivWQ8EEnwh9T
+	TElz8pneoQLG3iS2S3+9VfEgPEnuQHBzJbTtw2cS/i/M7UazLIta0ZRwHBo=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
-Subject: Re: [Qemu-trivial] [Patch v4 3/3] hw/acpi: remove unnecessary
- variable acpi_table_builtin
+X-Received-From: 212.227.126.187
+Subject: Re: [Qemu-trivial] [PATCH] block/pflash_cfi02: Fix memory leak and
+ potential use-after-free
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,44 +104,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Mar 2019 09:23:43 -0000
+X-List-Received-Date: Wed, 06 Mar 2019 09:38:42 -0000
 
-On 14/02/2019 09:49, Wei Yang wrote:
-> acpi_table_builtin is now always false, it is not necessary to check it
-> again.
+On 19/02/2019 16:37, Stephen Checkoway wrote:
+> Don't dynamically allocate the pflash's timer. But do use timer_del in
+> an unrealize function to make sure that the timer can't fire after the
+> pflash_t has been freed.
 > 
-> This patch just removes it.
-> 
-> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: Stephen Checkoway <stephen.checkoway@oberlin.edu>
 > ---
->  hw/acpi/core.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
+>  hw/block/pflash_cfi02.c | 15 +++++++++++----
+>  1 file changed, 11 insertions(+), 4 deletions(-)
 > 
-> diff --git a/hw/acpi/core.c b/hw/acpi/core.c
-> index e9b1a85e54..f9c96535d1 100644
-> --- a/hw/acpi/core.c
-> +++ b/hw/acpi/core.c
-> @@ -303,8 +303,6 @@ out:
->      error_propagate(errp, err);
+> diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
+> index 0f8b7b8c7b..1588aeff5a 100644
+> --- a/hw/block/pflash_cfi02.c
+> +++ b/hw/block/pflash_cfi02.c
+> @@ -84,7 +84,7 @@ struct pflash_t {
+>      uint16_t unlock_addr0;
+>      uint16_t unlock_addr1;
+>      uint8_t cfi_table[0x52];
+> -    QEMUTimer *timer;
+> +    QEMUTimer timer;
+>      /* The device replicates the flash memory across its memory space.  Emulate
+>       * that by having a container (.mem) filled with an array of aliases
+>       * (.mem_mappings) pointing to the flash memory (.orig_mem).
+> @@ -429,7 +429,7 @@ static void pflash_write (pflash_t *pfl, hwaddr offset,
+>              }
+>              pfl->status = 0x00;
+>              /* Let's wait 5 seconds before chip erase is done */
+> -            timer_mod(pfl->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+> +            timer_mod(&pfl->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+>                        (NANOSECONDS_PER_SECOND * 5));
+>              break;
+>          case 0x30:
+> @@ -444,7 +444,7 @@ static void pflash_write (pflash_t *pfl, hwaddr offset,
+>              }
+>              pfl->status = 0x00;
+>              /* Let's wait 1/2 second before sector erase is done */
+> -            timer_mod(pfl->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+> +            timer_mod(&pfl->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+>                        (NANOSECONDS_PER_SECOND / 2));
+>              break;
+>          default:
+> @@ -596,7 +596,7 @@ static void pflash_cfi02_realize(DeviceState *dev, Error **errp)
+>      pfl->rom_mode = 1;
+>      sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem);
+>  
+> -    pfl->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, pflash_timer, pfl);
+> +    timer_init_ns(&pfl->timer, QEMU_CLOCK_VIRTUAL, pflash_timer, pfl);
+>      pfl->wcycle = 0;
+>      pfl->cmd = 0;
+>      pfl->status = 0;
+> @@ -695,11 +695,18 @@ static Property pflash_cfi02_properties[] = {
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+>  
+> +static void pflash_cfi02_unrealize(DeviceState *dev, Error **errp)
+> +{
+> +    pflash_t *pfl = CFI_PFLASH02(dev);
+> +    timer_del(&pfl->timer);
+> +}
+> +
+>  static void pflash_cfi02_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+>  
+>      dc->realize = pflash_cfi02_realize;
+> +    dc->unrealize = pflash_cfi02_unrealize;
+>      dc->props = pflash_cfi02_properties;
+>      set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
 >  }
->  
-> -static bool acpi_table_builtin = false;
-> -
->  unsigned acpi_table_len(void *current)
->  {
->      struct acpi_table_header *hdr = current - sizeof(hdr->_length);
-> @@ -320,7 +318,7 @@ void *acpi_table_hdr(void *h)
->  
->  uint8_t *acpi_table_first(void)
->  {
-> -    if (acpi_table_builtin || !acpi_tables) {
-> +    if (!acpi_tables) {
->          return NULL;
->      }
->      return acpi_table_hdr(acpi_tables + ACPI_TABLE_PFX_SIZE);
 > 
 
 Applied to my trivial-patches branch.
