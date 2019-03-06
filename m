@@ -1,25 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h1Sb4-0005l1-Il
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 04:12:18 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:32803)
+	id 1h1Sf6-0000f7-3X
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 04:16:28 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:33890)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1Sb2-0005jY-Gs
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:12:17 -0500
+	(envelope-from <laurent@vivier.eu>) id 1h1Sf4-0000dw-H0
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:16:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1Sb1-0003Kj-Hp
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:12:16 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:36159)
+	(envelope-from <laurent@vivier.eu>) id 1h1Sf3-0006r2-KX
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:16:26 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:42645)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h1Sb1-0003JE-52; Wed, 06 Mar 2019 04:12:15 -0500
+	id 1h1Sf3-0006QR-5u; Wed, 06 Mar 2019 04:16:25 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
-	1MWiYo-1gUZdE39h2-00X3ff; Wed, 06 Mar 2019 10:12:04 +0100
+	(mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+	1M277h-1gyycB0xTN-002YM8; Wed, 06 Mar 2019 10:15:50 +0100
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
 	Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	John Snow <jsnow@redhat.com>, Corey Minyard <minyard@acm.org>
-References: <1551456970-463-1-git-send-email-thuth@redhat.com>
+Cc: Kevin Wolf <kwolf@redhat.com>, Juan Quintela <quintela@redhat.com>,
+	qemu-trivial@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+References: <1551457277-884-1-git-send-email-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -64,35 +65,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <57cb47b1-9783-6f3d-a4d2-a150029b286a@vivier.eu>
-Date: Wed, 6 Mar 2019 10:12:02 +0100
+Message-ID: <3b4ca6e3-f1dc-e99c-c0f9-866608e5da3b@vivier.eu>
+Date: Wed, 6 Mar 2019 10:15:48 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <1551456970-463-1-git-send-email-thuth@redhat.com>
+In-Reply-To: <1551457277-884-1-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:1B5tQtFjxLzEnKEUpz/M69ARMCyE4VtfJsmsfZLNUlI4zarB+mL
-	5frF9nR/WbmTp0oBNN4xR+4P2wCJTwpmN9Y5gbgzHSKaJnXgEVQaf8hZPdyA47uIK3sojHN
-	DOHeqOP7K2SfeAx4IhuawaWNzYcGGZ0fRZcxzvhrGikqx+wU4yzWrdBLNx93oxfpuZgzMYV
-	aBgrYXFoAda5PbehDzryA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Q8HbBoxM4YM=:ZLHWOApEgCC0N5dMITzDWE
-	wEQGyoExCDSFpRxAitIVijClGwnMRHKhDksn44hCZeZ2K6meLtPqIDGquy7ds3/LOm1DbEsYH
-	Xgrl2pLqips7UjQQ6sg+mGouNkIwTXsY69nyB7gXL4vxYmJaptyzN62GQsHKfrxazUn5YBedb
-	P11BQtvFP96aveibTzj+VIWWLXm6JrYbc1m3NhU8Ph9YEYkjRj6q5E8adygI0tVpoScwENcvb
-	nLJdMGIXzHD8d1cRhdYZsE8pa7SEaUo4f9hV6+IRxtWHPeVYumLngYS1HiHGwr58gM1kUNGXC
-	hdm5B8yA7lTLPBb8zjKN2ch73UvLkc6T77V0r9n5igcoL8jrEMFKC1qU56Ku8PtlJHqS3MBZ9
-	ncnLCmHHv2kd050yJdRQv1MZW3XPqMhaC+9oW5D0x4+cBcL2q5LEMdb9wp3VPfasSerdjE957
-	dE7qNs92aAS3dXHzE/V1jf+ydLNKvqSAAe/qA0IA38br03T+HUKNMiK1U9PAT5bkcG/nxSuoj
-	iyT0xMRWOD0VAIpl5L8hVO50zooNdIDSUY4+n9fXtFgffNaMhRt1OzFcBGIUNpoE7h6ZmY37V
-	5ADdbpoTUsdepspH8wTxvx9jydYM2AHsyC8qCwSYQdSG58VQimRGTkzQJCu6WbAAcAQXRLrc2
-	pZO1pC77Ar4ONs8PpH3+qlV0rsB5d0zCM869OrPB1AUDaHXrzfegQRC/K6hrqQTWie1lwh7tE
-	MrmyICJ0ZsHNp6Yoa6MRMYf06m0K8lRYLaXFqdOuBp3xfzk12nyNE0jIn/o=
+X-Provags-ID: V03:K1:nzXgV6hjKM25DnZMhdC1OkKd2ufwvBlsJmOB1jPloLBUFyoIHFQ
+	BHaCnS93xI+q8AiQiwL2/c5NLB1CnNKd0QgUs6Yu6fkVOu0So8LZu5wGwo+n+5u9a+4faMB
+	+oPTJllEoE2DwtZccH/IJwYqYUfvoh1Qpe6L2wJV4M9Ai8teHKgZSUgbuwKIfwf0cPkuKcr
+	Sl7IHawwP5iBXgla4uYNg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:JEvYPG0d1Zw=:mlBRatQxun0a4PHVOz3+KU
+	J2ARcFj+7X2ZQL4OlD2ITH6Sx+itZsFhqV0iDiWwT1o1rMbhC85L8ekKX2ZtUXGzLE1aLZaXF
+	T/LJiADjWAtlCu/gMy6ch2epvVTWTcpr88ULfl0QmJHFSxmZsDC/ljJvkO/COgjfNRr/dR+KX
+	YIRJp9C7eoKerkxu4HJWvgcv+mxyHX87MPBDGd13I/izmi1JvzNyUx0VfT/41cZDqoNdAqYKb
+	FMPfr5jaMxPaaqHJ/eMZt5nAKtNygRxAK+Vs4cgBlbJWNiKSfmdwcEY0NJKOYr3IzQkOWRWrG
+	AQFS0tjBIb7HlIN92PLdwPK8e5Y8LjJKK091PDdlli9UCn7Y91TXOt6cnuVQrQs1rNyafxTDO
+	K5Cwg5SXzhjPCoN0SOTii0MrRx1/WRBSs3OxxihItD6JUN4BWn7ztiabCHnQ+UDf0V2TZP0Qy
+	ZkZbcm3DBwZbXot+1T6Y8Yu+lB/qB4ccQxIaCQO2uPIPQepJtu9HF0FOhHxG7+681UZn41FwK
+	+WCV7rcLVbHcuJrxLebQU7rnToQV+hALSWjsdt4QAtWeKkqSf3XNt1mrYNHDeXuxv+7kDrz9Z
+	oIFrNl8UwAQYTx45poDgPecpCKvDlSdu40H0degO3CA8SpOanSbc+Uk7sxnsIp686/7cqsNQS
+	taaFqxuMadhQpYtc17fOWXJQC8DJApCBFXXCykwnOBFnttsdrdCkfMFzGDMwC/PlldUdwKMj5
+	stDigSJDdm7yVEujaMDV4aveHhvO9v+yK/Qa485oRoxkUp5RpfLP/u3Wm1I=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.10
-Subject: Re: [Qemu-trivial] [PATCH] tests: Remove (mostly) useless
- architecture checks
+X-Received-From: 212.227.126.187
+Subject: Re: [Qemu-trivial] [PATCH] tests: Do not use "\n" in
+ g_test_message() strings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,108 +105,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Mar 2019 09:12:17 -0000
+X-List-Received-Date: Wed, 06 Mar 2019 09:16:27 -0000
 
-On 01/03/2019 17:16, Thomas Huth wrote:
-> These checks at the beginning of some of the tests are mostly useless:
-> We only run the tests on x86 anyway, and g_test_message() does not
-> print anything unless you call g_test_init() first.
+On 01/03/2019 17:21, Thomas Huth wrote:
+> g_test_message() takes care of the newline on its own, so we
+> should not use \n in the strings here.
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  tests/fdc-test.c      | 7 -------
->  tests/ide-test.c      | 7 -------
->  tests/ipmi-bt-test.c  | 7 -------
->  tests/ipmi-kcs-test.c | 7 -------
->  4 files changed, 28 deletions(-)
-> 
-> diff --git a/tests/fdc-test.c b/tests/fdc-test.c
-> index 88f1abf..31cd329 100644
-> --- a/tests/fdc-test.c
-> +++ b/tests/fdc-test.c
-> @@ -548,16 +548,9 @@ static void fuzz_registers(void)
->  
->  int main(int argc, char **argv)
->  {
-> -    const char *arch = qtest_get_arch();
->      int fd;
->      int ret;
->  
-> -    /* Check architecture */
-> -    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
-> -        g_test_message("Skipping test for non-x86\n");
-> -        return 0;
-> -    }
-> -
->      /* Create a temporary raw image */
->      fd = mkstemp(test_image);
->      g_assert(fd >= 0);
-> diff --git a/tests/ide-test.c b/tests/ide-test.c
-> index f0280e6..300d64e 100644
-> --- a/tests/ide-test.c
-> +++ b/tests/ide-test.c
-> @@ -1009,16 +1009,9 @@ static void test_cdrom_dma(void)
->  
->  int main(int argc, char **argv)
->  {
-> -    const char *arch = qtest_get_arch();
->      int fd;
->      int ret;
->  
-> -    /* Check architecture */
-> -    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
-> -        g_test_message("Skipping test for non-x86\n");
-> -        return 0;
-> -    }
-> -
->      /* Create temporary blkdebug instructions */
->      fd = mkstemp(debug_path);
->      g_assert(fd >= 0);
-> diff --git a/tests/ipmi-bt-test.c b/tests/ipmi-bt-test.c
-> index f4a81b5..fc4c83b 100644
-> --- a/tests/ipmi-bt-test.c
-> +++ b/tests/ipmi-bt-test.c
-> @@ -400,15 +400,8 @@ static void open_socket(void)
->  
->  int main(int argc, char **argv)
->  {
-> -    const char *arch = qtest_get_arch();
->      int ret;
->  
-> -    /* Check architecture */
-> -    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
-> -        g_test_message("Skipping test for non-x86\n");
-> -        return 0;
-> -    }
-> -
->      open_socket();
->  
->      /* Run the tests */
-> diff --git a/tests/ipmi-kcs-test.c b/tests/ipmi-kcs-test.c
-> index 178ffc1..a2354c1 100644
-> --- a/tests/ipmi-kcs-test.c
-> +++ b/tests/ipmi-kcs-test.c
-> @@ -263,16 +263,9 @@ static void test_enable_irq(void)
->  
->  int main(int argc, char **argv)
->  {
-> -    const char *arch = qtest_get_arch();
->      char *cmdline;
->      int ret;
->  
-> -    /* Check architecture */
-> -    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
-> -        g_test_message("Skipping test for non-x86\n");
-> -        return 0;
-> -    }
-> -
->      /* Run the tests */
->      g_test_init(&argc, &argv, NULL);
->  
-> 
+>  tests/ivshmem-test.c         |  4 ++--
+>  tests/m48t59-test.c          |  4 ++--
+>  tests/migration-test.c       |  4 ++--
+>  tests/rtc-test.c             |  4 ++--
+>  tests/rtl8139-test.c         |  6 +++---
+>  tests/test-aio-multithread.c |  8 ++++----
+>  tests/test-coroutine.c       | 10 ++++------
+>  tests/vhost-user-test.c      | 14 +++++++-------
+>  8 files changed, 26 insertions(+), 28 deletions(-)
 
-Applied to my trivial-patches branch.
+The tests/vhost-user-test.c part doesn't apply cleanly on top of master.
+Could you resend?
 
 Thanks,
 Laurent
+
 
