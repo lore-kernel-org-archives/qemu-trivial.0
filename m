@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h1UPY-0005D3-N9
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 06:08:32 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35527)
+	id 1h1UPb-0005Fx-AH
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 06:08:35 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35588)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1UPV-000566-8Z
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 06:08:30 -0500
+	(envelope-from <laurent@vivier.eu>) id 1h1UPW-00057y-Ku
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 06:08:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1UPU-0002L3-Ek
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 06:08:29 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:44943)
+	(envelope-from <laurent@vivier.eu>) id 1h1UPU-0002LG-L0
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 06:08:30 -0500
+Received: from mout.kundenserver.de ([212.227.17.24]:50677)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h1UP7-00025X-23; Wed, 06 Mar 2019 06:08:05 -0500
+	id 1h1UPU-0002KE-9V; Wed, 06 Mar 2019 06:08:28 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1N2E9Y-1h6Kgw3aIQ-013fhD; Wed, 06 Mar 2019 12:07:37 +0100
+	id 1MRmsG-1gYMv629UI-00TF15; Wed, 06 Mar 2019 12:07:35 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
@@ -33,36 +33,34 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
 	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
 	Laurent Vivier <lvivier@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-s390x@nongnu.org, Corey Minyard <minyard@acm.org>,
-	Pierre Morel <pmorel@linux.ibm.com>, Greg Kurz <groug@kaod.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Wed,  6 Mar 2019 12:07:08 +0100
-Message-Id: <20190306110711.309-8-laurent@vivier.eu>
+	Pierre Morel <pmorel@linux.ibm.com>, Like Xu <like.xu@linux.intel.com>,
+	Eric Blake <eblake@redhat.com>
+Date: Wed,  6 Mar 2019 12:07:07 +0100
+Message-Id: <20190306110711.309-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190306110711.309-1-laurent@vivier.eu>
 References: <20190306110711.309-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:iy9Fh4p9H/qBwx7KAA3FjBD/7mcP34RChIlch90zwVuNjpMHBiR
-	VpyRCXmdKUUhW8/x4XWCFI5DVMeTKyM76C+5ut5aCOsSsQRXM2i2AH0BL3JTsVmlDp/976a
-	iy85M1UuDtWYgmq8NwzYvUVYm/q8MKpEYuMey095OFgAikjulSvrk1ejgWp0dW3YuZn9VN+
-	ZDdZ9hHXKcvkGotEiXJGw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:zkhO5HToiJE=:htkmcj3pW7ulyvj2jdrrV6
-	FJW28DBRH2+ifVJKKz/wBolclcr0OSCbJ0BjAhY9N1ucSH0+grPm9VXAg4Wkzmz+IVmHnRsLF
-	dFxXn4IsRHgnCqJC4GrAlLxWl7zPb2BTsw8iKID2bjwpIDlNSWJv04fujrus3NCcCKT6+zmyg
-	A4jYNlsL7pBHkVOyW7siCsgFbewX19hOHM0ECyEKldUrLIEejhG7rnajGZDRc9dWuHdQNGWlf
-	so4NiAd0niVpCAtqjxfrl2p+6uT+QDbp8kUJ7d8TEoRdtYYJkKLTWYrt7JqV+XbVJpYLEbKh0
-	G4DnAfX7wAg5keBJ5gg+erakooBV+83OP2aKYdYx7bPVNdubVKyHt1sPNIvzqjs2dPr6ZDscJ
-	LzESynRko1Fv0Of/OIP65IKo9fChFfIGRGMMTvc8G+Ch87ySSnWlszQYboOzBHarLKQ4sxbwN
-	wU8HOn19h9y4FhkHzs5u+NpQBFf0ampLz7imaUQtIIGn23U8QG12GZ/2S2d0adGdLioks2Q2n
-	k36PFt41NBh/YLjKKBGNlQVZG0o+bRxhnfhv34+a/48bX9ongLuxE8Dyo7/yfRsI/5WtFWY2v
-	V/ePs463vZKKwr+Ewfy3zmr+rTpn/oaxB12+s0ZXYExRMVIrYuutYs/llgZhwHfF2jXgbnwQ5
-	WKjXFDev+7QUQfwS8ci7Dt9NFlPRYXHSBRuqX3LUwgwf5ZoEKNcd+xmDHgV+UUBUGFJ/f1y1K
-	7zI38N0ElM5H75NtVYBpGyY+n+zmCvu7Rx/1XqNUHNyB9CySyuXS4Xt3snY=
+X-Provags-ID: V03:K1:MXo0nWgczG8hFMjAG+m9lolAhqLup/TW4UKIlZExh0IDaqcZ+DM
+	BfL51ZR4iLLpAXO4zYKFK8Tpsqgn8XbzP9ntS8/G8Sv+IVKOzlfTJmO1b/DYERPqiD5NSFZ
+	eWxnw2Zaj6WaGX73yg1+AW8RqWkid+ZxbSUMNrDf//OMgBliRXCGHFVgWJoaETqe0QArF/T
+	53qygLzP0KMaKl16bojuQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:t1zTfUrOd4w=:GM+RaEqSjP8STNxN/PnapQ
+	qlDiqm+uVZSyRgxWqdHNeukaNkOEqEFzOxLsQx3+ELHagyaY/ZKWPFK2wBuEf7UX7/EAjiwc9
+	Q8/ssmv+lOTuDB+0HFWrBJ8PRmIJftjh+lSy390srKfIIbg57NnOyYMy9PVY30ctr5K7i32eZ
+	a8p2hFY6VirPdewTTb69VOlr+V1ZhZDFaiqCrFR7sV2NkBa196xBKc5I211s2YugehquezZdY
+	drXvrB78XdiS9+xOH5reczUOjjNS1xbkq4vOOTKTP9s1uOnlajcXOUJAOdZSGBvEtKNsuRlfS
+	QOiMdGqCNCA5Ezze4Z9mE0lTUmFuzSfzAI5IexbymnuBJfTYS86kBEUjq9KuBV+Ge06XL419P
+	7JKOplR9/pr0aSURujSNaFAzqBi66xkrdY1PrguhSSfmDXQumjwH2gGmjwep4F//0DI8JZluS
+	ytyXvyfxQXjFGehrx504McbAwZBM9TSZMgKpk9BwxhMTZxsMbMQ6/BxslsiFxLLaEsA1pfnvw
+	2ccCHbwwtX2UEiCT7/rToeySRvYyh4+tIqyB6CeLaxy7zFtwjlPONG/e81rsWsy8T3pd7Nb8G
+	p/zRbKuTKEwYaR8fkvLwzU68hyphxiHYj7lQ0vpMd8ufkeuFE2/Xfo8DWuujYEyIDQUFQYtrh
+	CGbEFrNR3K/4JQmF7fCSG8U8RuQK4Tzkt8ltWetFRpyIHi7zbMQII6NI3nTkQkwYX4HlNMWfk
+	imcEtcRDzDlnRUzayoxSo8iVHBlwofEseyUScQ==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.10
-Subject: [Qemu-trivial] [PULL 07/10] bswap: Fix accessors syntax in comment
+X-Received-From: 212.227.17.24
+Subject: [Qemu-trivial] [PULL 06/10] doc: fix typos for documents in tree
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,51 +72,224 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Mar 2019 11:08:30 -0000
+X-List-Received-Date: Wed, 06 Mar 2019 11:08:32 -0000
 
-From: Greg Kurz <groug@kaod.org>
+From: Like Xu <like.xu@linux.intel.com>
 
-All accessors that have an endian infix DO have an underscore between
-{size} and {endian}.
-
-Signed-off-by: Greg Kurz <groug@kaod.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <155119086741.1037569.12734854713022304642.stgit@bahia.lan>
+Signed-off-by: Like Xu <like.xu@linux.intel.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Message-Id: <1550640446-18788-1-git-send-email-like.xu@linux.intel.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- include/qemu/bswap.h | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ docs/COLO-FT.txt               | 2 +-
+ docs/amd-memory-encryption.txt | 2 +-
+ docs/can.txt                   | 2 +-
+ docs/colo-proxy.txt            | 6 +++---
+ docs/cpu-hotplug.rst           | 2 +-
+ docs/qcow2-cache.txt           | 2 +-
+ docs/qemu-block-drivers.texi   | 2 +-
+ docs/qemu-cpu-models.texi      | 8 ++++----
+ docs/rdma.txt                  | 4 ++--
+ docs/replay.txt                | 2 +-
+ docs/vfio-ap.txt               | 2 +-
+ 11 files changed, 17 insertions(+), 17 deletions(-)
 
-diff --git a/include/qemu/bswap.h b/include/qemu/bswap.h
-index a684c1a7a298..5a70f78c0ba4 100644
---- a/include/qemu/bswap.h
-+++ b/include/qemu/bswap.h
-@@ -255,9 +255,9 @@ typedef union {
- /*
-  * the generic syntax is:
-  *
-- * load: ld{type}{sign}{size}{endian}_p(ptr)
-+ * load: ld{type}{sign}{size}_{endian}_p(ptr)
-  *
-- * store: st{type}{size}{endian}_p(ptr, val)
-+ * store: st{type}{size}_{endian}_p(ptr, val)
-  *
-  * Note there are small differences with the softmmu access API!
-  *
-@@ -293,10 +293,10 @@ typedef union {
-  *
-  * For cases where the size to be used is not fixed at compile time,
-  * there are
-- *  stn{endian}_p(ptr, sz, val)
-+ *  stn_{endian}_p(ptr, sz, val)
-  * which stores @val to @ptr as an @endian-order number @sz bytes in size
-  * and
-- *  ldn{endian}_p(ptr, sz)
-+ *  ldn_{endian}_p(ptr, sz)
-  * which loads @sz bytes from @ptr as an unsigned @endian-order number
-  * and returns it in a uint64_t.
-  */
+diff --git a/docs/COLO-FT.txt b/docs/COLO-FT.txt
+index e2686bb33882..ad24680d130e 100644
+--- a/docs/COLO-FT.txt
++++ b/docs/COLO-FT.txt
+@@ -102,7 +102,7 @@ to make sure the state of VM in Secondary side is always consistent with VM in
+ Primary side.
+ 
+ COLO Proxy:
+-Delivers packets to Primary and Seconday, and then compare the responses from
++Delivers packets to Primary and Secondary, and then compare the responses from
+ both side. Then decide whether to start a checkpoint according to some rules.
+ Please refer to docs/colo-proxy.txt for more information.
+ 
+diff --git a/docs/amd-memory-encryption.txt b/docs/amd-memory-encryption.txt
+index f483795eaafe..43bf3ee6a5a9 100644
+--- a/docs/amd-memory-encryption.txt
++++ b/docs/amd-memory-encryption.txt
+@@ -97,7 +97,7 @@ References
+ AMD Memory Encryption whitepaper:
+ http://amd-dev.wpengine.netdna-cdn.com/wordpress/media/2013/12/AMD_Memory_Encryption_Whitepaper_v7-Public.pdf
+ 
+-Secure Encrypted Virutualization Key Management:
++Secure Encrypted Virtualization Key Management:
+ [1] http://support.amd.com/TechDocs/55766_SEV-KM API_Specification.pdf
+ 
+ KVM Forum slides:
+diff --git a/docs/can.txt b/docs/can.txt
+index 7ba23b259a48..9fa6ed51c823 100644
+--- a/docs/can.txt
++++ b/docs/can.txt
+@@ -99,7 +99,7 @@ Links to other resources
+      https://gitlab.fel.cvut.cz/canbus/qemu-canbus
+  (3) RTEMS page describing project
+      https://devel.rtems.org/wiki/Developer/Simulators/QEMU/CANEmulation
+- (4) RTLWS 2015 article about the projevt and its use with CANopen emulation
++ (4) RTLWS 2015 article about the project and its use with CANopen emulation
+      http://rtime.felk.cvut.cz/publications/public/rtlws2015-qemu-can.pdf
+      Slides
+      http://rtime.felk.cvut.cz/publications/public/rtlws2015-qemu-can-slides.pdf
+diff --git a/docs/colo-proxy.txt b/docs/colo-proxy.txt
+index 1f8e4b4e7716..fa1cef0278a5 100644
+--- a/docs/colo-proxy.txt
++++ b/docs/colo-proxy.txt
+@@ -41,7 +41,7 @@ Below is a COLO proxy ascii figure:
+ |         |  +------------------------------------------------------+  |                        |        |                              |
+ |netfilter|  |                       |                         |    |  |   netfilter            |        |                              |
+ | +----------+ +----------------------------+                  |    |  |  +-----------------------------------------------------------+ |
+-| |       |  |                       |      |        out       |    |  |  |                     |        |  filter excute order       | |
++| |       |  |                       |      |        out       |    |  |  |                     |        |  filter execute order      | |
+ | |       |  |          +-----------------------------+        |    |  |  |                     |        | +------------------->      | |
+ | |       |  |          |            |      |         |        |    |  |  |                     |        |   TCP                      | |
+ | | +-----+--+-+  +-----v----+ +-----v----+ |pri +----+----+sec|    |  |  | +------------+  +---+----+---v+rewriter++  +------------+ | |
+@@ -53,7 +53,7 @@ Below is a COLO proxy ascii figure:
+ | |      |   tx        |   rx           rx  |                  |  |    |  |            tx                        all       |  rx      | |
+ | |      |             |                    |                  |  |    |  +-----------------------------------------------------------+ |
+ | |      |             +--------------+     |                  |  |    |                                                   |            |
+-| |      |   filter excute order      |     |                  |  |    |                                                   |            |
++| |      |   filter execute order     |     |                  |  |    |                                                   |            |
+ | |      |  +---------------->        |     |                  |  +--------------------------------------------------------+            |
+ | +-----------------------------------------+                  |       |                                                                |
+ |        |                            |                        |       |                                                                |
+@@ -92,7 +92,7 @@ but do nothing, just pass to next filter.
+ 
+ Redirect Server Filter --> COLO-Compare
+ COLO-compare receive primary guest packet then
+-waiting scondary redirect packet to compare it.
++waiting secondary redirect packet to compare it.
+ If packet same,send queued primary packet and clear
+ queued secondary packet, Otherwise send primary packet
+ and do checkpoint.
+diff --git a/docs/cpu-hotplug.rst b/docs/cpu-hotplug.rst
+index 1c268e00b41a..cfeb79f57111 100644
+--- a/docs/cpu-hotplug.rst
++++ b/docs/cpu-hotplug.rst
+@@ -137,6 +137,6 @@ From the 'qmp-shell', invoke the QMP ``device_del`` command::
+     vCPU hot-unplug requires guest cooperation; so the ``device_del``
+     command above does not guarantee vCPU removal -- it's a "request to
+     unplug".  At this point, the guest will get a System Control
+-    Interupt (SCI) and calls the ACPI handler for the affected vCPU
++    Interrupt (SCI) and calls the ACPI handler for the affected vCPU
+     device.  Then the guest kernel will bring the vCPU offline and tell
+     QEMU to unplug it.
+diff --git a/docs/qcow2-cache.txt b/docs/qcow2-cache.txt
+index c459bf5dd3b5..c1e7751feae6 100644
+--- a/docs/qcow2-cache.txt
++++ b/docs/qcow2-cache.txt
+@@ -55,7 +55,7 @@ value can improve the I/O performance significantly.
+ 
+ The refcount blocks
+ -------------------
+-The qcow2 format also mantains a reference count for each cluster.
++The qcow2 format also maintains a reference count for each cluster.
+ Reference counts are used for cluster allocation and internal
+ snapshots. The data is stored in a two-level structure similar to the
+ L1/L2 tables described above.
+diff --git a/docs/qemu-block-drivers.texi b/docs/qemu-block-drivers.texi
+index 38e9f34cc9b8..da06a9bc838d 100644
+--- a/docs/qemu-block-drivers.texi
++++ b/docs/qemu-block-drivers.texi
+@@ -632,7 +632,7 @@ qemu-system-i386 -drive file=iscsi://127.0.0.1/iqn.qemu.test/1 \
+ @end example
+ 
+ 
+-Howto set up a simple iSCSI target on loopback and accessing it via QEMU:
++How to set up a simple iSCSI target on loopback and access it via QEMU:
+ @example
+ This example shows how to set up an iSCSI target with one CDROM and one DISK
+ using the Linux STGT software target. This target is available on Red Hat based
+diff --git a/docs/qemu-cpu-models.texi b/docs/qemu-cpu-models.texi
+index 475d434d52f3..1b725841616b 100644
+--- a/docs/qemu-cpu-models.texi
++++ b/docs/qemu-cpu-models.texi
+@@ -49,7 +49,7 @@ live migration safe.
+ The information that follows provides recommendations for configuring
+ CPU models on x86 hosts. The goals are to maximise performance, while
+ protecting guest OS against various CPU hardware flaws, and optionally
+-enabling live migration between hosts with hetergeneous CPU models.
++enabling live migration between hosts with heterogeneous CPU models.
+ 
+ @menu
+ * preferred_cpu_models_intel_x86::       Preferred CPU models for Intel x86 hosts
+@@ -287,7 +287,7 @@ Must be explicitly turned on for all AMD CPU models.
+ This provides higher performance than virt-ssbd so should be
+ exposed to guests whenever available in the host. virt-ssbd
+ should none the less also be exposed for maximum guest
+-compatability as some kernels only know about virt-ssbd.
++compatibility as some kernels only know about virt-ssbd.
+ 
+ 
+ @item @code{amd-no-ssb}
+@@ -296,7 +296,7 @@ Recommended to indicate the host is not vulnerable CVE-2018-3639
+ 
+ Not included by default in any AMD CPU model.
+ 
+-Future hardware genarations of CPU will not be vulnerable to
++Future hardware generations of CPU will not be vulnerable to
+ CVE-2018-3639, and thus the guest should be told not to enable
+ its mitigations, by exposing amd-no-ssb. This is mutually
+ exclusive with virt-ssbd and amd-ssbd.
+@@ -451,7 +451,7 @@ MIPS64 Processor (Release 6, 2014)
+ 
+ @item @code{Loongson-2F}
+ 
+-MIPS64 Processor (Longsoon 2, 2008)
++MIPS64 Processor (Loongson 2, 2008)
+ 
+ 
+ @item @code{Loongson-2E}
+diff --git a/docs/rdma.txt b/docs/rdma.txt
+index e6f990261751..a86e992c8453 100644
+--- a/docs/rdma.txt
++++ b/docs/rdma.txt
+@@ -30,7 +30,7 @@ of the significantly lower latency and higher throughput over TCP/IP. This is
+ because the RDMA I/O architecture reduces the number of interrupts and
+ data copies by bypassing the host networking stack. In particular, a TCP-based
+ migration, under certain types of memory-bound workloads, may take a more
+-unpredicatable amount of time to complete the migration if the amount of
++unpredictable amount of time to complete the migration if the amount of
+ memory tracked during each live migration iteration round cannot keep pace
+ with the rate of dirty memory produced by the workload.
+ 
+@@ -408,7 +408,7 @@ socket is broken during a non-RDMA based migration.
+ TODO:
+ =====
+ 1. Currently, 'ulimit -l' mlock() limits as well as cgroups swap limits
+-   are not compatible with infinband memory pinning and will result in
++   are not compatible with infiniband memory pinning and will result in
+    an aborted migration (but with the source VM left unaffected).
+ 2. Use of the recent /proc/<pid>/pagemap would likely speed up
+    the use of KSM and ballooning while using RDMA.
+diff --git a/docs/replay.txt b/docs/replay.txt
+index 3497585f5a39..ee6aee9861e7 100644
+--- a/docs/replay.txt
++++ b/docs/replay.txt
+@@ -290,7 +290,7 @@ E.g., '-serial stdio' in record mode, and '-serial null' in replay mode.
+ Replay log format
+ -----------------
+ 
+-Record/replay log consits of the header and the sequence of execution
++Record/replay log consists of the header and the sequence of execution
+ events. The header includes 4-byte replay version id and 8-byte reserved
+ field. Version is updated every time replay log format changes to prevent
+ using replay log created by another build of qemu.
+diff --git a/docs/vfio-ap.txt b/docs/vfio-ap.txt
+index 8cd060a01e10..b1eb2deeaf2f 100644
+--- a/docs/vfio-ap.txt
++++ b/docs/vfio-ap.txt
+@@ -671,7 +671,7 @@ These are the steps:
+       -> IOMMU Hardware Support
+          select S390 AP IOMMU Support
+       -> VFIO Non-Privileged userspace driver framework
+-         -> Mediated device driver frramework
++         -> Mediated device driver framework
+             -> VFIO driver for Mediated devices
+    -> I/O subsystem
+       -> VFIO support for AP devices
 -- 
 2.20.1
 
