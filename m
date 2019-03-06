@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h1SlL-00051c-8q
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 04:22:55 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36165)
+	id 1h1SlS-0005AE-Hy
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 04:23:02 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36242)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1SlJ-00050U-Kr
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:22:54 -0500
+	(envelope-from <laurent@vivier.eu>) id 1h1SlP-00055z-0s
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:22:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1SlI-0005fs-TM
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:22:53 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:42485)
+	(envelope-from <laurent@vivier.eu>) id 1h1SlN-0005jU-M7
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:22:58 -0500
+Received: from mout.kundenserver.de ([212.227.126.131]:41625)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h1SlH-0005Rs-6U; Wed, 06 Mar 2019 04:22:52 -0500
+	id 1h1SlN-0005io-A2; Wed, 06 Mar 2019 04:22:57 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
-	1Mk0FM-1hPZEs1NxA-00kN1L; Wed, 06 Mar 2019 10:22:14 +0100
+	(mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+	1Mfpf7-1hTdi71WH3-00gFS4; Wed, 06 Mar 2019 10:22:50 +0100
 To: Wei Yang <richardw.yang@linux.intel.com>, qemu-trivial@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: thuth@redhat.com, mst@redhat.com, imammedo@redhat.com, philmd@redhat.com
 References: <20190214084939.20640-1-richardw.yang@linux.intel.com>
-	<20190214084939.20640-2-richardw.yang@linux.intel.com>
+	<20190214084939.20640-3-richardw.yang@linux.intel.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -64,35 +64,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <e57b08c7-72d2-17d7-565c-4f8cbf5dd1bf@vivier.eu>
-Date: Wed, 6 Mar 2019 10:22:11 +0100
+Message-ID: <058cabac-89cb-c414-4e63-ff3264cf88dc@vivier.eu>
+Date: Wed, 6 Mar 2019 10:22:48 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190214084939.20640-2-richardw.yang@linux.intel.com>
+In-Reply-To: <20190214084939.20640-3-richardw.yang@linux.intel.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:TBi3NYuxcdgVfxvS4JSs+Yhem6Z0gl6HHkFEqLljM7SVtz5Ywvc
-	s/Kv/PvfF80QXqxWBYKGoEXkB3+oKbwSE9opcR+geB1dl9zxhJGiMd8XRBWtnLtnMHzVCqA
-	xQIGvJ5EXA/bvq4sd00M8WYyofzbhXcioMe/GVwRP5EVqg4JRoTtmvHddW61TFIDjHA/TGn
-	yX74gxu1tR6tYnExqHAfg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:nAimonv75Wo=:MAA/HUUw1qKkr59m2Ev3PK
-	OKby0ExdLArS5hQK2eOc9RbIPoC1leOTBnGS1CcJ0b/Q0E0HqUhQLbxXpsXjPXxI6ZlxeRxFP
-	R3orp9clMqTAPf54e1kURuswWKCg0JNf0/pAl9PkZh+ywENrqkAu6DIBmTDKIN3ldMamsgsu3
-	iZiCJTILPrQqlf4MY0CZMjCuPJXlBfDer5Sbso6vRg1lDp4h8ZYyLMB0+wmCzS9+InzAH6XFl
-	148Ho9uXfsbsbgXAtiwkqeOCHZdSZgPp8qT80FbO/n/nMeqyHnidr9suQ/F1qVkwEResnWBrE
-	+EHf7nJqDfoA9qmFRptPkbn+xpTEr6ycoI+zMw2tevPyHhVK1IYJZwWr+xVceB+iCG3bdTxpk
-	9sQgP5LpKau08RiSyGAASvQ7kqQlMvgjvByTuTjWNHvUhYgZw1QE3JBwk4HaueXf+MUZ0/FM3
-	65b0pV2c67Eur8Pv1rJ+AWXStenfl4ETzGbe4ys7poXtYn56XYKZ+dHxH5LEqk824D9+SyC11
-	1ol+HZ+QcYW/35Vi0+MT+6xlVoRPLrFkxDHIPiOBs9BjFQljR0N4zQBFWUheiiwwXwJeK8LLE
-	Evp73h9MCg8xP1DmaBvad/WbKMOdzHBoVdiFGqtrcx1ZRuJRgtHmmd/Q63wd2E6CQ2ALjgHsK
-	Oe6IWizA0fCEimhRfJ2b+16I1E3nhloW8PTvZ0lnzuQi2HDtLn/sxTpxQQ9mD47l0nqjub3uH
-	oyzOhl/lHg51tmHaQAl2S3TBOZg75g96qqV4W7JndWmFJD+9kasICZjRUnE=
+X-Provags-ID: V03:K1:x3N0vLl4Fwp6NT8j/X79BkOm/9V86onvc6rf4xaCz8gOBZb5Pp2
+	f3aucLXji2E26mnwR0PH2WiVIK0Y/z/bkMRDPP2Ai+e7WuD1O/7GeVCe8RtStzw79FjXu3R
+	RvEdXIZwxPHA5Xz2XHpR469mYbcuAozPytFa33p4xOrme6VktXJTZMyuZP0tef0ZVTQgeOA
+	W91GMfnoToWako/axKC2g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:tUbgskHqbXo=:60ufMVkayKUbzmRKDiVcoF
+	xFCCh52c42wTd/jmuIkALdm0VY/hINzvymZ4r6hPvBZeRu57LSra+4OXm7PLZNMoF/iRnMU1e
+	RRb6d8sTfNV3Zznd7T2A/N9hPBBk4W42z12IL2Ejfy6e18RvzgE6cBgS252LG1j0hMjbG0xdE
+	EHvj3K84I7fFaMZ1pff07+AbN7OKQ+2+RDI5DqzRqi7jd+aAaZk+VAKzJtIPDoothsaO7Eq5p
+	7I6ZTHe5KoyQQ0rKHGTRaij5kvNhNPCQpvOP6bLyUeB9bAptMN+CR9iIki6f/LU+jIkex82O+
+	5U35YjWkvBSthPvOHIby6S5ksrFjvstyj2/XUmVI388s/1XRvtXhHJn41vnCqY0dBktfb+Tnd
+	/xxZJvkwLzJnqUR/ayMGtr52mZKUrRDf28fDcjn2GAyNudOeHhmLZwpCRl4GhN+fMEE82QJwR
+	joemfVGVr0gTz5Y/M+jjwl/1VnQ5VcNb9xYeMEeNumNSI0ezhXvlt66p8GE0JhOJKU2Q8m/Rl
+	5tAbnLWaL6B6UDI8rZHX2mwNChJ5ayRGW7HpAOAlO9abwHPkCZsMeJm2//NJHbVY/hckLHZq9
+	NdI3YMIQ3Un/KiL+jVukr16p/LWFK1Pz1FIRhn67GadOzsxnn+MA5E8LxKilyKh2io2QDA2LW
+	DoJkg6nWKPecvXCtNRmVFHv/JjAk91/fy/K3J4gk9+0orMFl67aOZ65XBXF8s/K35vzadJGgb
+	7i3phk/z1FrVoapRpDpRrexlXeHghu9/TQSf3DxneJQBdNO0lyIR3RYtpsU=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: Re: [Qemu-trivial] [Patch v4 1/3] hw/i386/pc.c: remove unused
- function pc_acpi_init()
+X-Received-From: 212.227.126.131
+Subject: Re: [Qemu-trivial] [Patch v4 2/3] hw/acpi: remove unused function
+ acpi_table_add_builtin()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,10 +104,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Mar 2019 09:22:54 -0000
+X-List-Received-Date: Wed, 06 Mar 2019 09:22:59 -0000
 
 On 14/02/2019 09:49, Wei Yang wrote:
-> Function pc_acpi_init() is not used anymore.
+> Function acpi_table_add_builtin() is not used anymore.
 > 
 > Remove the definition and declaration.
 > 
@@ -115,62 +115,40 @@ On 14/02/2019 09:49, Wei Yang wrote:
 > Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/i386/pc.c         | 27 ---------------------------
->  include/hw/i386/pc.h |  1 -
->  2 files changed, 28 deletions(-)
+>  hw/acpi/core.c         | 6 ------
+>  include/hw/acpi/acpi.h | 1 -
+>  2 files changed, 7 deletions(-)
 > 
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 5317e08f60..734d3268fa 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -1280,33 +1280,6 @@ void pc_pci_as_mapping_init(Object *owner, MemoryRegion *system_memory,
->                                          pci_address_space, -1);
->  }
+> diff --git a/hw/acpi/core.c b/hw/acpi/core.c
+> index d6f0709691..e9b1a85e54 100644
+> --- a/hw/acpi/core.c
+> +++ b/hw/acpi/core.c
+> @@ -305,12 +305,6 @@ out:
 >  
-> -void pc_acpi_init(const char *default_dsdt)
+>  static bool acpi_table_builtin = false;
+>  
+> -void acpi_table_add_builtin(const QemuOpts *opts, Error **errp)
 > -{
-> -    char *filename;
-> -
-> -    if (acpi_tables != NULL) {
-> -        /* manually set via -acpitable, leave it alone */
-> -        return;
-> -    }
-> -
-> -    filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, default_dsdt);
-> -    if (filename == NULL) {
-> -        warn_report("failed to find %s", default_dsdt);
-> -    } else {
-> -        QemuOpts *opts = qemu_opts_create(qemu_find_opts("acpi"), NULL, 0,
-> -                                          &error_abort);
-> -        Error *err = NULL;
-> -
-> -        qemu_opt_set(opts, "file", filename, &error_abort);
-> -
-> -        acpi_table_add_builtin(opts, &err);
-> -        if (err) {
-> -            warn_reportf_err(err, "failed to load %s: ", filename);
-> -        }
-> -        g_free(filename);
-> -    }
+> -    acpi_table_builtin = true;
+> -    acpi_table_add(opts, errp);
 > -}
 > -
->  void xen_load_linux(PCMachineState *pcms)
+>  unsigned acpi_table_len(void *current)
 >  {
->      int i;
-> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index 9d29c4b1df..541124ba6d 100644
-> --- a/include/hw/i386/pc.h
-> +++ b/include/hw/i386/pc.h
-> @@ -187,7 +187,6 @@ void pc_acpi_smi_interrupt(void *opaque, int irq, int level);
+>      struct acpi_table_header *hdr = current - sizeof(hdr->_length);
+> diff --git a/include/hw/acpi/acpi.h b/include/hw/acpi/acpi.h
+> index c20ace0d0b..4a8bbaf1b5 100644
+> --- a/include/hw/acpi/acpi.h
+> +++ b/include/hw/acpi/acpi.h
+> @@ -190,7 +190,6 @@ uint8_t *acpi_table_first(void);
+>  uint8_t *acpi_table_next(uint8_t *current);
+>  unsigned acpi_table_len(void *current);
+>  void acpi_table_add(const QemuOpts *opts, Error **errp);
+> -void acpi_table_add_builtin(const QemuOpts *opts, Error **errp);
 >  
->  void pc_cpus_init(PCMachineState *pcms);
->  void pc_hot_add_cpu(const int64_t id, Error **errp);
-> -void pc_acpi_init(const char *default_dsdt);
->  
->  void pc_guest_info_init(PCMachineState *pcms);
->  
+>  typedef struct AcpiSlicOem AcpiSlicOem;
+>  struct AcpiSlicOem {
 > 
 
 Applied to my trivial-patches branch.
