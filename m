@@ -1,97 +1,105 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h1TZ4-0003qA-Pe
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 05:14:18 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:51771)
+	id 1h1UJV-0002Pa-Iu
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 06:02:17 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:34107)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1TZ2-0003oZ-9r
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 05:14:16 -0500
+	(envelope-from <pbonzini@redhat.com>) id 1h1UJT-0002Oj-Vc
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 06:02:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1TZ1-0007k4-IA
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 05:14:16 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:58299)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h1TYx-0007QO-97; Wed, 06 Mar 2019 05:14:11 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
-	1M9qYn-1gvg7v1TF7-005snf; Wed, 06 Mar 2019 11:13:50 +0100
-To: Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
-Cc: Fam Zheng <fam@euphon.net>, qemu-devel@nongnu.org
-References: <20190213130240.15492-1-armbru@redhat.com>
-	<87o96r3q5d.fsf@dusky.pond.sub.org>
-From: Laurent Vivier <laurent@vivier.eu>
+	(envelope-from <pbonzini@redhat.com>) id 1h1UJH-0005Ia-H9
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 06:02:07 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:40616)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1h1UJC-0005EZ-Ds; Wed, 06 Mar 2019 06:01:59 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id CB79C753F6;
+	Wed,  6 Mar 2019 11:01:56 +0000 (UTC)
+Received: from [10.36.112.70] (ovpn-112-70.ams2.redhat.com [10.36.112.70])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C909469298;
+	Wed,  6 Mar 2019 11:01:52 +0000 (UTC)
+To: Stephen Checkoway <stephen.checkoway@oberlin.edu>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+	<marcandre.lureau@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+References: <20190305051007.56009-1-stephen.checkoway@oberlin.edu>
+From: Paolo Bonzini <pbonzini@redhat.com>
 Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <a17c244f-e75a-cac5-4a56-5c2fdee7262f@vivier.eu>
-Date: Wed, 6 Mar 2019 11:13:48 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+	uUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
+Message-ID: <52a82d3a-3b79-c61d-93fa-f087af45f6fb@redhat.com>
+Date: Wed, 6 Mar 2019 12:01:50 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <87o96r3q5d.fsf@dusky.pond.sub.org>
+In-Reply-To: <20190305051007.56009-1-stephen.checkoway@oberlin.edu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:gANwhNVootnlYr2tu/2E8I9WJ2QH6gsXHuM1SrzfQCGdDv1vpA0
-	Nw+ydj9Nq+rndehkj7a/T2PIY4Z5crphs+omuIGKwsx1jyrWaEagVu1EN4zUaK1oOUJHZoe
-	2ZpOH7qhxx60A4uSD0vsyVW8xCCPngJ5Af4J0Ck2fcC99NUvtV82bVIJytSb9UJn7fnskXN
-	3rk0VIWyAzOHQp0pXv9QQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:PxJ5KpIwwzs=:MI3t9cCl1sMuQNdSR5kJYr
-	XrfkS6Z6hPl0ZYgvLDDaJqxxoBtfuBmNo7Yg2bq7G2/1hZEGVJl57B4zJ435nBC4I0205fPjZ
-	PpHUUNQ4sAiuK+CQgOmDBf4qtlJKvq/cVrvKa9FhdlDc/ty0HOa6jV9S5JuD+ZxFft2hwCjaf
-	JndiddvGMC07AV3Y8LZQNX1z/+/mB/zjl17/mWCJv1S1zVoBBYndb6hLePK21wWULNaCbHmgz
-	XJO7p1QHqlKK9vG/a4soGWWx8eQ8DaHjG16+vPitQTpGV0XiBPhpcDOGQ5g9Ekn96tU9nnlCs
-	iic0FCKIhRpDKMum4zcZq2P8Z/VmAFKdbBriqN9kkY8SBxALZVuADfsLcmyGn8BziykArU/nh
-	aTZi0PNtvE0Z9haVMaaCl6A92/kQshSNqB+4azadxytaTgUBgKoE1jULjgW+AeE9V8cul9/Jw
-	A8M67lThowIuK9mQZ+hLJ8hubeFAeT43kkpux8Q5H2Uisj49OJdF+hUD+A9VTjH6HiHf0+q4Q
-	zGUaAwIVUl0bHG1VhNsE6scBR2zZm808T9mj0mbKOX4frl4pBr+0AJzsN98/mGIERtw2kkWlE
-	FhVVkU3zRz72PyHze9tlj2REcmujd2O0JCsXotbYzFMGEV4g8lK2LhAcRuzYyygv6iKn9X4h2
-	HC3npCqdCiinREtRkktVjEk0wf9gWVMMk4cM0Pj6HXH6XP2o/pgbxkRwG3xS88YtqfJQAaABD
-	N6m3RNH39GFHOkE0SwNBek9JhcBeSZ4e1qCKDhKDVEkcF95etFrFEWs5rRk=
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Wed, 06 Mar 2019 11:01:57 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.134
-Subject: Re: [Qemu-trivial] [PATCH] build: Correct explanation of
- unnest-vars example
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] hw/char/escc: Lower irq when transmit
+ buffer is filled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,36 +111,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Mar 2019 10:14:17 -0000
+X-List-Received-Date: Wed, 06 Mar 2019 11:02:16 -0000
 
-On 04/03/2019 11:11, Markus Armbruster wrote:
-> I guess this could go via -trivial.
+On 05/03/19 06:10, Stephen Checkoway wrote:
+> The SCC/ESCC will briefly stop asserting an interrupt when the
+> transmit FIFO is filled.
 > 
-> Markus Armbruster <armbru@redhat.com> writes:
+> This code doesn't model the transmit FIFO/shift register so the
+> pending transmit interrupt is never deasserted which means that an
+> edge-triggered interrupt controller will never see the low-to-high
+> transition it needs to raise another interrupt. The practical
+> consequence of this is that guest firmware with an interrupt service
+> routine for the ESCC that does not send all of the data it has
+> immediately will stop sending data if the following sequence of
+> events occurs:
+> 1. Disable processor interrupts
+> 2. Write a character to the ESCC
+> 3. Add additional characters to a buffer which is drained by the ISR
+> 4. Enable processor interrupts
 > 
->> Cc: Fam Zheng <fam@euphon.net>
->> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->> ---
->>  rules.mak | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/rules.mak b/rules.mak
->> index 86e033d815..19f3d2c126 100644
->> --- a/rules.mak
->> +++ b/rules.mak
->> @@ -327,7 +327,7 @@ endef
->>  #     ../water/ice.mo-libs = -licemaker
->>  #     ../water/ice.mo-objs = ../water/ice1.o ../water/ice2.o
->>  #
->> -# Note that 'hot' didn't include 'season/' in the input, so 'summer.o' is not
->> +# Note that 'hot' didn't include 'water/' in the input, so 'steam.o' is not
->>  # included.
->>  #
->>  define unnest-vars
+> In this case, the first character will be sent, the interrupt will
+> fire and the ISR will output the second character. Since the pending
+> transmit interrupt remains asserted, no additional interrupts will
+> ever fire.
 > 
+> This fixes that situation by explicitly lowering the IRQ when a
+> character is written to the buffer.
+> 
+> Signed-off-by: Stephen Checkoway <stephen.checkoway@oberlin.edu>
 
-Applied to my trivial-patches branch.
+Looks good but I would like Mark to give his ack as well.
+
+Mark, could you also add hw/char/escc.c to both SPARC and Mac sections
+of MAINTAINERS?
 
 Thanks,
-Laurent
+
+Paolo
+
+> ---
+>  hw/char/escc.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/hw/char/escc.c b/hw/char/escc.c
+> index 628f5f81f7..bea55ad8da 100644
+> --- a/hw/char/escc.c
+> +++ b/hw/char/escc.c
+> @@ -509,6 +509,7 @@ static void escc_mem_write(void *opaque, hwaddr addr,
+>          break;
+>      case SERIAL_DATA:
+>          trace_escc_mem_writeb_data(CHN_C(s), val);
+> +        qemu_irq_lower(s->irq);
+>          s->tx = val;
+>          if (s->wregs[W_TXCTRL2] & TXCTRL2_TXEN) { // tx enabled
+>              if (qemu_chr_fe_backend_connected(&s->chr)) {
+> 
+
 
