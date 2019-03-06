@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h1SlS-0005AE-Hy
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 04:23:02 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:36242)
+	id 1h1Sm9-0005hH-4s
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 04:23:45 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:36470)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1SlP-00055z-0s
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:22:59 -0500
+	(envelope-from <laurent@vivier.eu>) id 1h1Sm7-0005fW-1x
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:23:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1SlN-0005jU-M7
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:22:58 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:41625)
+	(envelope-from <laurent@vivier.eu>) id 1h1Sm6-0006D2-9T
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 04:23:43 -0500
+Received: from mout.kundenserver.de ([212.227.126.131]:54615)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h1SlN-0005io-A2; Wed, 06 Mar 2019 04:22:57 -0500
+	id 1h1Sm5-0006C3-VK; Wed, 06 Mar 2019 04:23:42 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
-	1Mfpf7-1hTdi71WH3-00gFS4; Wed, 06 Mar 2019 10:22:50 +0100
+	1N6Kl7-1h3LNG0wnp-016gST; Wed, 06 Mar 2019 10:23:35 +0100
 To: Wei Yang <richardw.yang@linux.intel.com>, qemu-trivial@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: thuth@redhat.com, mst@redhat.com, imammedo@redhat.com, philmd@redhat.com
 References: <20190214084939.20640-1-richardw.yang@linux.intel.com>
-	<20190214084939.20640-3-richardw.yang@linux.intel.com>
+	<20190214084939.20640-4-richardw.yang@linux.intel.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -64,35 +64,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <058cabac-89cb-c414-4e63-ff3264cf88dc@vivier.eu>
-Date: Wed, 6 Mar 2019 10:22:48 +0100
+Message-ID: <8a961366-89d2-bdde-9fa2-8ae95bc4275b@vivier.eu>
+Date: Wed, 6 Mar 2019 10:23:34 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190214084939.20640-3-richardw.yang@linux.intel.com>
+In-Reply-To: <20190214084939.20640-4-richardw.yang@linux.intel.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:x3N0vLl4Fwp6NT8j/X79BkOm/9V86onvc6rf4xaCz8gOBZb5Pp2
-	f3aucLXji2E26mnwR0PH2WiVIK0Y/z/bkMRDPP2Ai+e7WuD1O/7GeVCe8RtStzw79FjXu3R
-	RvEdXIZwxPHA5Xz2XHpR469mYbcuAozPytFa33p4xOrme6VktXJTZMyuZP0tef0ZVTQgeOA
-	W91GMfnoToWako/axKC2g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:tUbgskHqbXo=:60ufMVkayKUbzmRKDiVcoF
-	xFCCh52c42wTd/jmuIkALdm0VY/hINzvymZ4r6hPvBZeRu57LSra+4OXm7PLZNMoF/iRnMU1e
-	RRb6d8sTfNV3Zznd7T2A/N9hPBBk4W42z12IL2Ejfy6e18RvzgE6cBgS252LG1j0hMjbG0xdE
-	EHvj3K84I7fFaMZ1pff07+AbN7OKQ+2+RDI5DqzRqi7jd+aAaZk+VAKzJtIPDoothsaO7Eq5p
-	7I6ZTHe5KoyQQ0rKHGTRaij5kvNhNPCQpvOP6bLyUeB9bAptMN+CR9iIki6f/LU+jIkex82O+
-	5U35YjWkvBSthPvOHIby6S5ksrFjvstyj2/XUmVI388s/1XRvtXhHJn41vnCqY0dBktfb+Tnd
-	/xxZJvkwLzJnqUR/ayMGtr52mZKUrRDf28fDcjn2GAyNudOeHhmLZwpCRl4GhN+fMEE82QJwR
-	joemfVGVr0gTz5Y/M+jjwl/1VnQ5VcNb9xYeMEeNumNSI0ezhXvlt66p8GE0JhOJKU2Q8m/Rl
-	5tAbnLWaL6B6UDI8rZHX2mwNChJ5ayRGW7HpAOAlO9abwHPkCZsMeJm2//NJHbVY/hckLHZq9
-	NdI3YMIQ3Un/KiL+jVukr16p/LWFK1Pz1FIRhn67GadOzsxnn+MA5E8LxKilyKh2io2QDA2LW
-	DoJkg6nWKPecvXCtNRmVFHv/JjAk91/fy/K3J4gk9+0orMFl67aOZ65XBXF8s/K35vzadJGgb
-	7i3phk/z1FrVoapRpDpRrexlXeHghu9/TQSf3DxneJQBdNO0lyIR3RYtpsU=
+X-Provags-ID: V03:K1:T/T9GeP0tu5PC5CJJHQPMn6R9WBOXtYY2Wy/jXhqdxHbe/P4eol
+	q5TZW1rZidkiJOcfgnk11mRWvi3FyuP+pLbl8EwkCProAw+VvVvrN28RK9ZXhCsAeaFGxrN
+	VzXAP/5NYFihamwDokYG3uxnu91unonYFa/0/p0bm0wFLS3+Z50l1QewAT+cQhp5cCZpow5
+	bOtbgdgmQf9P4VxhKCLZA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:M5A3otzG0EQ=:PTj5xmmgve5DSiljE/GpLi
+	wyp1kL6+Ca/F51Vg1ZH1j94bTnEi5NpfQgKzT/NlNSWK7esCsfuLKZYzrxohI42ybnLUjhWbb
+	t54zw1eHbtrGyar+zc+6rTxZpPOJxmf0FTQ0SQfrKV/PfS3F4fPS1p5gNS6TRsxqsgoXXbObP
+	atV8GeNpyOI1EezZPeSIRzY1ZDGezBRzOY9LaBH8EesnchrxtAZeDMf1u/N9MRU8zIOc2yjcQ
+	J/LuAjrtgVJbC14OdeSfq71kCOxGNXJ35ONXrE418qwMFV7TxZ0ccCJ/aOJjHQpJVAyCBxBlp
+	vsE5qUnlUzDPZ4wqZAb1E6nryc7rvvZ2MM9PzzFnKeEPL4bRMOrRglE/QJ17Xw3qIGSJ4MPJG
+	oPoXScnAPMlv/Ft5hLymzPI6KECR5u9cSweIUk7dvv5D5esd73R1Ja4apSW1SAF4kdK8PEr8G
+	6HVhwqwPPJa2cwFwJ3lF75S6MRex3cVfXylX1d6TWpXCjOiWAOtuYzyksuboteCmfu3tfF1S6
+	hY+TLZyrKPKoouunBRNs9jSzyHCJScxboY7gKQT07kpitooDpspMRaG+OLx8KnSabLDlOuJB1
+	r7AU6c08OBs6TmeuCRJ5LK5iPqw5AYAMFp/FzEp2FPTDfCtyDyaRueTlEmIWMg0mV1NOdZsW0
+	xmlmS72w2Eu7l5dgiG3YapV/VT0Ou+4kVFUyuBRsbzHHQoar+V+NnNph27X4vqrgzkmBshWOZ
+	NylNYUGfoxfFW38lsENy+w6ed/+diTdtaCdCueJz4JFTFnA6nK/40rSbQBM=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.131
-Subject: Re: [Qemu-trivial] [Patch v4 2/3] hw/acpi: remove unused function
- acpi_table_add_builtin()
+Subject: Re: [Qemu-trivial] [Patch v4 3/3] hw/acpi: remove unnecessary
+ variable acpi_table_builtin
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -104,51 +104,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Mar 2019 09:22:59 -0000
+X-List-Received-Date: Wed, 06 Mar 2019 09:23:43 -0000
 
 On 14/02/2019 09:49, Wei Yang wrote:
-> Function acpi_table_add_builtin() is not used anymore.
+> acpi_table_builtin is now always false, it is not necessary to check it
+> again.
 > 
-> Remove the definition and declaration.
+> This patch just removes it.
 > 
 > Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
 > Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 > ---
->  hw/acpi/core.c         | 6 ------
->  include/hw/acpi/acpi.h | 1 -
->  2 files changed, 7 deletions(-)
+>  hw/acpi/core.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
 > 
 > diff --git a/hw/acpi/core.c b/hw/acpi/core.c
-> index d6f0709691..e9b1a85e54 100644
+> index e9b1a85e54..f9c96535d1 100644
 > --- a/hw/acpi/core.c
 > +++ b/hw/acpi/core.c
-> @@ -305,12 +305,6 @@ out:
+> @@ -303,8 +303,6 @@ out:
+>      error_propagate(errp, err);
+>  }
 >  
->  static bool acpi_table_builtin = false;
->  
-> -void acpi_table_add_builtin(const QemuOpts *opts, Error **errp)
-> -{
-> -    acpi_table_builtin = true;
-> -    acpi_table_add(opts, errp);
-> -}
+> -static bool acpi_table_builtin = false;
 > -
 >  unsigned acpi_table_len(void *current)
 >  {
 >      struct acpi_table_header *hdr = current - sizeof(hdr->_length);
-> diff --git a/include/hw/acpi/acpi.h b/include/hw/acpi/acpi.h
-> index c20ace0d0b..4a8bbaf1b5 100644
-> --- a/include/hw/acpi/acpi.h
-> +++ b/include/hw/acpi/acpi.h
-> @@ -190,7 +190,6 @@ uint8_t *acpi_table_first(void);
->  uint8_t *acpi_table_next(uint8_t *current);
->  unsigned acpi_table_len(void *current);
->  void acpi_table_add(const QemuOpts *opts, Error **errp);
-> -void acpi_table_add_builtin(const QemuOpts *opts, Error **errp);
+> @@ -320,7 +318,7 @@ void *acpi_table_hdr(void *h)
 >  
->  typedef struct AcpiSlicOem AcpiSlicOem;
->  struct AcpiSlicOem {
+>  uint8_t *acpi_table_first(void)
+>  {
+> -    if (acpi_table_builtin || !acpi_tables) {
+> +    if (!acpi_tables) {
+>          return NULL;
+>      }
+>      return acpi_table_hdr(acpi_tables + ACPI_TABLE_PFX_SIZE);
 > 
 
 Applied to my trivial-patches branch.
