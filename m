@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h1UPG-0004wt-R3
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 06:08:14 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35311)
+	id 1h1UPO-00051u-Bx
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 06:08:22 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35348)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1UPD-0004uE-D7
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 06:08:13 -0500
+	(envelope-from <laurent@vivier.eu>) id 1h1UPM-00050b-MZ
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 06:08:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1UPA-000294-MC
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 06:08:11 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:53903)
+	(envelope-from <laurent@vivier.eu>) id 1h1UPH-0002CL-5H
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 06:08:18 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:52477)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h1UP1-00020G-4k; Wed, 06 Mar 2019 06:08:00 -0500
+	id 1h1UP8-00027U-Py; Wed, 06 Mar 2019 06:08:07 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1M42fG-1h1UOO1oTw-00047x; Wed, 06 Mar 2019 12:07:20 +0100
+	id 1MlNgx-1hO8QT1yyz-00lj4S; Wed, 06 Mar 2019 12:07:32 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
@@ -33,32 +33,38 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
 	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
 	Laurent Vivier <lvivier@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-s390x@nongnu.org, Corey Minyard <minyard@acm.org>,
-	Pierre Morel <pmorel@linux.ibm.com>
-Date: Wed,  6 Mar 2019 12:07:01 +0100
-Message-Id: <20190306110711.309-1-laurent@vivier.eu>
+	Pierre Morel <pmorel@linux.ibm.com>,
+	Stephen Checkoway <stephen.checkoway@oberlin.edu>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Wei Yang <richardw.yang@linux.intel.com>
+Date: Wed,  6 Mar 2019 12:07:06 +0100
+Message-Id: <20190306110711.309-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190306110711.309-1-laurent@vivier.eu>
+References: <20190306110711.309-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:huWJROD/LnAr4fe3Kn4dbUHLRTsf78ubzIb9JdRNkYjpgPTTX7h
-	V8HutwgUVSyM9mk9OMi8yq/6c8bqZzJup/rW3W+Xv1O4bIy+aYFMQ9JBgYg2Rfd8vzyW69t
-	mQRrjMbBIXAr/5SvJSbT7mYbOjHQthvNYw7vSzL7XeeaiktaiYtQglkr8t59gzHdKFOkFrp
-	8xF/IeUpmzx5ZJ9ml0l+w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:iryj+e7+eHU=:Pm0r+XO+YdVc3+ydKRjSFg
-	xjJ3E7kRbX5eRSDc4EKXwuVS0QW1Xr6d+LilAnfRZZA2zkXZnF80adM2tljys68KD04VLm2AQ
-	k4iaqNTJoG2PONCvVuZJkmnV6XINnLRFFAIM7CohGRZVXVRQW1nhALQ4EkSBkJyVb9gI53aDN
-	t4ftGpTS1DUOhpOauguTSrnNquyw0FNosNhoJvJYzxixWR53Pr4wjKMd7ufPtWy7g62KyYul4
-	1Vrg7iCjoWcr5/H04e7cd/wslDcGKe2uNIKItB0ZtLlZKoBUFBQtt7ujCWiuUdHVaamexH1x8
-	mI5kDXiVVeVoKPyUCu80VpEQ35azUpmtdqQtK/kHyBXjI2YLWej3J9iMCKQ3LwUGtUeaYQcNh
-	62+NQQLp0Y8n8lOKhIofcEE6NYGznueyZgwZ1eIFPqxVzTol5dDCZw0b52dnxtG/8dqnTFZyE
-	2EbEFyu3/iWM2BNseZjRyqVJGhngzfMLhZgMmTfx+HsS+Cb4jRURexjPUYs1utDHxAqW+EdnM
-	7VmxBljZmYNVtZ3uK/6yNZqfqT3iVRdTu5NNq7cBkWpHRQfdJobExWdcRptB7k2lZ7QV9SrET
-	RxLf6lcZwqK6KNEiQS0cUqYCV9qMn/mvddpxx9QsUl7jkpHi00elzbz6M4t8HvNjAD4sXs/da
-	J3MbxzzWJZASkP0PKKIfORZQq6wFypZpW5hovcAjunQHETMx0/wlOHff6nBhNwJ+OBNpnSdF1
-	SdxHrlGdTAs4fR/Ih8kt7N77C77UssKdp7/MjWhvvdjNk5kQHb+GQFVsmo4=
+X-Provags-ID: V03:K1:s071umxow7gW3bvndjA7oh42MFeQuqJhqDtONzEWjTpO/qN/ykg
+	iKC6R+Jo8hBEhR37tckqu/fSHwvJ33/xkvo/ErRhZa/LWeqCoOsIEUgoO3PVg4Yeu8TCb/F
+	5AWiyU7iFTj6EdpqMu6TL7npMtVcOwEB33ANvjKalvKUBy+h5a6GU+RUnszrzGLICNcZ9fq
+	EJtzh6iZWV8zk/HzF42LA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:r9JSroEDBPw=:E63HMxcj/JCD427e3URLqA
+	plene3L/E/zw7OxUACamFbq3TTqL7TcNHVkLHTFhD+Vh5OwoPow0F1zbjGs1RV5yZ9igF1cYF
+	OKh6nTP88HgmzU1TJIg2yoeIuM9ewsYdGDjK3wIr9p/GtA8F46GaR+9U0fXi8ZOXMnnfKbU5z
+	gv4i3Ct+DMlOLZpZWoylJH2CEI5ZQNwUPUzXdH2UbQmqe4hiJBPBIdgRURWYYKQntnYr2bNP7
+	nvRWnxi5IsSYWQA4qJ+Qx+Sx/RXwXvDHR1EjBqWqbhX4RQ0Dw6ZysBHgiPXGvVTFk3e6vcq2j
+	tEm6eiBsU4tYJ/sHvkMJHhFWCSbQXCKLkkUvSk/tMgz92dWg0jHFM1DWSCNeOeuUWBJ5WvX94
+	l1/L2a5y52niX0URUMnrUsFEUm9GtcDtBc/puLBXllHLd/tvqvnfOwemzyrc48rg3n75PxXYe
+	NDPGQ9AHtJ8uk24n3iU1zz8NxquA4CgxVAaMlHQJpMRGPPfYSBaF4inIkfBbAjH9lvSZygF7y
+	qa8NP7Vfqs5tJ5wh76KwJvWxar2NfnGnUPf9eQ+238uyjvUQSLaK2NgIECw07EMFZNdC2Jb16
+	91vHbuSeKxvKJiv9Z7+D7iXVs3helO2of/bNPOCErIiRvGzYKHFJcsis9M3AS9whz77aSYQjs
+	7zEOS4WT4siZR5NPNWD+1jUBZd5IqttedqCuVoyGyYA7MoWO4VjV4hJ1OJc5A28usHvf5yKHP
+	ejSy2r7okbP7qFXQ9vH4oU8wJ4wuxD/h8CklURPVkbJEX3Wk62mfeQ6p6v4=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.10
-Subject: [Qemu-trivial] [PULL 00/10] Trivial branch patches
+Subject: [Qemu-trivial] [PULL 05/10] block/pflash_cfi02: Fix memory leak and
+ potential use-after-free
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,82 +76,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Mar 2019 11:08:13 -0000
+X-List-Received-Date: Wed, 06 Mar 2019 11:08:21 -0000
 
-The following changes since commit a3e3b0a7bd5de211a62cdf2d6c12b96d3c403560:
+From: Stephen Checkoway <stephen.checkoway@oberlin.edu>
 
-  Merge remote-tracking branch 'remotes/armbru/tags/pull-qapi-2019-03-05' into staging (2019-03-05 19:23:45 +0000)
+Don't dynamically allocate the pflash's timer. But do use timer_del in
+an unrealize function to make sure that the timer can't fire after the
+pflash_t has been freed.
 
-are available in the Git repository at:
+Signed-off-by: Stephen Checkoway <stephen.checkoway@oberlin.edu>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Wei Yang <richardw.yang@linux.intel.com>
+Message-Id: <20190219153727.62279-1-stephen.checkoway@oberlin.edu>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/block/pflash_cfi02.c | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
 
-  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
-
-for you to fetch changes up to 0e081fde8a3d80383adf2e802fc0c03af44c5436:
-
-  thunk: fix of malloc to g_new (2019-03-06 11:27:32 +0100)
-
-----------------------------------------------------------------
-trivial patches pull request (20190206)
-
-- acpi: remove unused functions/variables
-- tests: remove useless architecture checks
-- some typo fixes and documentation update
-- flash_cfi02: fix memory leak
-
-----------------------------------------------------------------
-
-Aarushi Mehta (1):
-  thunk: fix of malloc to g_new
-
-Greg Kurz (1):
-  bswap: Fix accessors syntax in comment
-
-Igor Mammedov (1):
-  hostmem-file: simplify ifdef-s in file_backend_memory_alloc()
-
-Like Xu (1):
-  doc: fix typos for documents in tree
-
-Markus Armbruster (1):
-  build: Correct explanation of unnest-vars example
-
-Stephen Checkoway (1):
-  block/pflash_cfi02: Fix memory leak and potential use-after-free
-
-Thomas Huth (1):
-  tests: Remove (mostly) useless architecture checks
-
-Wei Yang (3):
-  hw/i386/pc.c: remove unused function pc_acpi_init()
-  hw/acpi: remove unused function acpi_table_add_builtin()
-  hw/acpi: remove unnecessary variable acpi_table_builtin
-
- backends/hostmem-file.c        |  9 ++++-----
- docs/COLO-FT.txt               |  2 +-
- docs/amd-memory-encryption.txt |  2 +-
- docs/can.txt                   |  2 +-
- docs/colo-proxy.txt            |  6 +++---
- docs/cpu-hotplug.rst           |  2 +-
- docs/qcow2-cache.txt           |  2 +-
- docs/qemu-block-drivers.texi   |  2 +-
- docs/qemu-cpu-models.texi      |  8 ++++----
- docs/rdma.txt                  |  4 ++--
- docs/replay.txt                |  2 +-
- docs/vfio-ap.txt               |  2 +-
- hw/acpi/core.c                 | 10 +---------
- hw/block/pflash_cfi02.c        | 15 +++++++++++----
- hw/i386/pc.c                   | 27 ---------------------------
- include/hw/acpi/acpi.h         |  1 -
- include/hw/i386/pc.h           |  1 -
- include/qemu/bswap.h           |  8 ++++----
- rules.mak                      |  2 +-
- tests/fdc-test.c               |  7 -------
- tests/ide-test.c               |  7 -------
- tests/ipmi-bt-test.c           |  7 -------
- tests/ipmi-kcs-test.c          |  7 -------
- thunk.c                        |  2 +-
- 24 files changed, 39 insertions(+), 98 deletions(-)
-
+diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
+index 0f8b7b8c7b36..1588aeff5a95 100644
+--- a/hw/block/pflash_cfi02.c
++++ b/hw/block/pflash_cfi02.c
+@@ -84,7 +84,7 @@ struct pflash_t {
+     uint16_t unlock_addr0;
+     uint16_t unlock_addr1;
+     uint8_t cfi_table[0x52];
+-    QEMUTimer *timer;
++    QEMUTimer timer;
+     /* The device replicates the flash memory across its memory space.  Emulate
+      * that by having a container (.mem) filled with an array of aliases
+      * (.mem_mappings) pointing to the flash memory (.orig_mem).
+@@ -429,7 +429,7 @@ static void pflash_write (pflash_t *pfl, hwaddr offset,
+             }
+             pfl->status = 0x00;
+             /* Let's wait 5 seconds before chip erase is done */
+-            timer_mod(pfl->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
++            timer_mod(&pfl->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+                       (NANOSECONDS_PER_SECOND * 5));
+             break;
+         case 0x30:
+@@ -444,7 +444,7 @@ static void pflash_write (pflash_t *pfl, hwaddr offset,
+             }
+             pfl->status = 0x00;
+             /* Let's wait 1/2 second before sector erase is done */
+-            timer_mod(pfl->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
++            timer_mod(&pfl->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+                       (NANOSECONDS_PER_SECOND / 2));
+             break;
+         default:
+@@ -596,7 +596,7 @@ static void pflash_cfi02_realize(DeviceState *dev, Error **errp)
+     pfl->rom_mode = 1;
+     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &pfl->mem);
+ 
+-    pfl->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, pflash_timer, pfl);
++    timer_init_ns(&pfl->timer, QEMU_CLOCK_VIRTUAL, pflash_timer, pfl);
+     pfl->wcycle = 0;
+     pfl->cmd = 0;
+     pfl->status = 0;
+@@ -695,11 +695,18 @@ static Property pflash_cfi02_properties[] = {
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
++static void pflash_cfi02_unrealize(DeviceState *dev, Error **errp)
++{
++    pflash_t *pfl = CFI_PFLASH02(dev);
++    timer_del(&pfl->timer);
++}
++
+ static void pflash_cfi02_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+     dc->realize = pflash_cfi02_realize;
++    dc->unrealize = pflash_cfi02_unrealize;
+     dc->props = pflash_cfi02_properties;
+     set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
+ }
 -- 
 2.20.1
 
