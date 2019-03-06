@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h1UPj-0005O4-3H
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 06:08:43 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35699)
+	id 1h1UQW-00066g-16
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 06:09:32 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35956)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1UPf-0005KV-Ho
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 06:08:40 -0500
+	(envelope-from <laurent@vivier.eu>) id 1h1UQO-0005yv-5D
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 06:09:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h1UPZ-0002Ql-KO
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 06:08:35 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:34575)
+	(envelope-from <laurent@vivier.eu>) id 1h1UQE-0002mc-8d
+	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 06:09:22 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:45211)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h1UPU-0002Kh-T6; Wed, 06 Mar 2019 06:08:29 -0500
+	id 1h1UPQ-0002DB-6B; Wed, 06 Mar 2019 06:08:24 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1MYNW8-1gWC7j0UWw-00VQsB; Wed, 06 Mar 2019 12:07:41 +0100
+	id 1Mg6mG-1hSJYz1dCY-00hcbj; Wed, 06 Mar 2019 12:07:23 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
@@ -33,36 +33,34 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
 	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
 	Laurent Vivier <lvivier@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-s390x@nongnu.org, Corey Minyard <minyard@acm.org>,
-	Pierre Morel <pmorel@linux.ibm.com>,
-	Wei Yang <richardw.yang@linux.intel.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Date: Wed,  6 Mar 2019 12:07:10 +0100
-Message-Id: <20190306110711.309-10-laurent@vivier.eu>
+	Pierre Morel <pmorel@linux.ibm.com>, Corey Minyard <cminyard@mvista.com>
+Date: Wed,  6 Mar 2019 12:07:02 +0100
+Message-Id: <20190306110711.309-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190306110711.309-1-laurent@vivier.eu>
 References: <20190306110711.309-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:EIQ2MrmTkDMjQDlxKKFoQHKCip2VxS79yw3nG/bZ7V1n5Rr+kLE
-	HTEMToeoh2ik437K2rRTUXpWRZMoMPU5Iww1wszPUi2/lZLJI9rcv8v6VOuK0JC0q5ozGOz
-	f/o3RI9aruUlmKK4zxMCa17jwGNUGLkxdDD1mJPXM/y0IvvcB1fCOmVwZNHdvEX3NeeRWmT
-	414lPK51Mi7sruoUoY7bA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:8SWa3ZNamPQ=:rc0koxLwhQkQA8WoouhueW
-	IseJO9a4QVonALTfNzYmNkrW7BiSMKrlOhp17GI197eUEz/sI4pFnlO+l6T8LhLUZUvAxQX9u
-	9kaOAX1E23iIsAImBwSBwCtXrrtcFlxp7UvuydGAMFI00/AreFcW8r7DPRnzg0EYYfBFhGIIN
-	3Gg4I9gfNETKF7AqF8cfYDvCEcufFDRijudLU3w1loaG6NNxp/od8JSHGtaSuycc5AxXcYWJ8
-	o6Hk/PG3jIjjr7quHJslvianQjewrD6EQmdYCGWSzGxAC0HoTlHFxpYKzppTyBHsUQx+zaf0w
-	gd3PaQhvYb7uIXASbcnS+WyzTgfZH8WBgM1U/KQ9AU1eYAs+NdDLRMPsYdgOwCtpyEfmvL2Oy
-	imku7StHcguVt7ZaQFuvZTSfzjRJ1tPqXX6I18mnz9+zgCY+Tzkn35Puw2U3nXn/dEmIuOTG2
-	XnaB7cmqpUMoK7gp7e8xQrIdfAuuXnWujq1sEp7qc9qhC9uI/ftJKSAKIyyUWMUxtzoyOVJq8
-	bS+/NtIJkKbARdEHzH/OSxmjAs/lGK+Pah9vk0uflUDaD0KoK5AxlvhbpF5GZOiBZgxJ2xdAs
-	BQAaY6Qlx+8z2L8KpgrgaFr3J1mA7pgEFvP18NNykHlNms5iphiu19Y9DFkPT9mBvtNefiqqg
-	e7eZAxGvsg8hntb+lVoMC6te5NsKXmTWMwMIycKgP8738UWVLfYJ0bF42j2mVar1Gt7istfwC
-	9oCUmpMchm1lJvsDjzxIDSnrOW8+mgT81HrO1Q==
+X-Provags-ID: V03:K1:Q3hk8qijD5KUlzCX23w0FWN0YpKiKd/7xr6qFZcEo8PLB8u8yfX
+	vwCU01TcPv4ex5BZ7A+BddktVxYRMFof/lQqi/2RhrLTxAZExppSELttcY/aR4S88vFEbA8
+	gwsmlRgnqlsBBOxTx0F0eLIsSbkKUgkWyHOixueqLu3CfMbhpd8yC4ww1zAgFBVfhrfL3np
+	usahS5fOCRRfPavkpW29A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:qpDPq41EuXc=:8F4TerVI713vWXfl+T7WWE
+	KvuD7Suq9FYNPM0fBIYJUX45lmGIY5/Brj9PeshcFybRtT1VN+FoV3KHJNxP1bpVxTm3XsnPT
+	XxyMXVLilr0Z/iou/CD1Gwf0ZDhjgKNW65TsIUoRVjEPxXxLG25QxSR48QlY+vw5pfRtAkQOp
+	V2wyxoYZlWYLMWyVlBfIoUuv4ko6NxmapVeqUcTJpcxzuTAvTEOSDlsxEgDeTOlNmJt1aWHIs
+	q+s2dyEIIVfTrC0EeZ4ZuVcmarkwVg3jXlnMych1msYbfjgLWnFhdeNSpwU8iUFup5qp/Bp1l
+	ELp9JG8FO/51hDHWNPhAiA9yD8A6uJvtpTmw4HGGsctWuGSizRRFRRdSeCT4LxB7SY75CKWwm
+	MS5rb4lnJcuBKK9wVfleu093GCz6mHSJDLomCaSh+B0I/8YtNLKv4o6wkbQikWBdXcY/XDQXB
+	R/ZaI/N54Z5eVy5F72mDLaDbAksMEbg0SOJZduSItLBZa66N5BSY9sAN/ZVY6WriUDlVlUDlL
+	YHeAthu9gSxQsWz9XpsF6HX+NZQaqVq2i/4L1tHxkUZgHqtnLC/KjxCmdVOkPLBkANEzzjTgV
+	IWwmftVZZZXePgkGGtBBtf4P4sYHPnZEHyHwy2N8zQZFrRSzuKPEKpQgg1h5kDHczZO9U1V2a
+	N/EHWaB2b4PruEFoF0N/kH495/TySkmCNMgMfSFf81cKlWNUOfalb/CLeADAhExbHCB0q3EfM
+	7iJ/5mGRpno964KYVum9ueWkof9lwVqME7DhKQ==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-Subject: [Qemu-trivial] [PULL 09/10] hostmem-file: simplify ifdef-s in
- file_backend_memory_alloc()
+X-Received-From: 217.72.192.73
+Subject: [Qemu-trivial] [PULL 01/10] tests: Remove (mostly) useless
+ architecture checks
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,54 +72,109 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Mar 2019 11:08:40 -0000
+X-List-Received-Date: Wed, 06 Mar 2019 11:09:31 -0000
 
-From: Igor Mammedov <imammedo@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
 
-cleanup file_backend_memory_alloc() by using one CONFIG_POSIX ifdef
-instead of several ones within the function to make it simpler to follow.
+These checks at the beginning of some of the tests are mostly useless:
+We only run the tests on x86 anyway, and g_test_message() does not
+print anything unless you call g_test_init() first.
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-Suggested-by: Wei Yang <richardw.yang@linux.intel.com>
-Reviewed-by: Wei Yang <richardw.yang@linux.intel.com>
-Message-Id: <20190213123858.24620-1-imammedo@redhat.com>
-Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-Id: <20190214031004.32522-2-stefanha@redhat.com>
-[lv: s/hostmem/hostmem-file/]
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Acked-by: John Snow <jsnow@redhat.com>
+Acked-by: Corey Minyard <cminyard@mvista.com>
+Message-Id: <1551456970-463-1-git-send-email-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- backends/hostmem-file.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+ tests/fdc-test.c      | 7 -------
+ tests/ide-test.c      | 7 -------
+ tests/ipmi-bt-test.c  | 7 -------
+ tests/ipmi-kcs-test.c | 7 -------
+ 4 files changed, 28 deletions(-)
 
-diff --git a/backends/hostmem-file.c b/backends/hostmem-file.c
-index ba601ce94088..ce5478804804 100644
---- a/backends/hostmem-file.c
-+++ b/backends/hostmem-file.c
-@@ -41,10 +41,12 @@ struct HostMemoryBackendFile {
- static void
- file_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
- {
-+#ifndef CONFIG_POSIX
-+    error_setg(errp, "backend '%s' not supported on this host",
-+               object_get_typename(OBJECT(backend)));
-+#else
-     HostMemoryBackendFile *fb = MEMORY_BACKEND_FILE(backend);
--#ifdef CONFIG_POSIX
-     gchar *name;
--#endif
+diff --git a/tests/fdc-test.c b/tests/fdc-test.c
+index 88f1abfa10e2..31cd3295c102 100644
+--- a/tests/fdc-test.c
++++ b/tests/fdc-test.c
+@@ -548,16 +548,9 @@ static void fuzz_registers(void)
  
-     if (!backend->size) {
-         error_setg(errp, "can't create backend with size 0");
-@@ -54,9 +56,6 @@ file_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
-         error_setg(errp, "mem-path property not set");
-         return;
-     }
--#ifndef CONFIG_POSIX
--    error_setg(errp, "-mem-path not supported on this host");
--#else
-     backend->force_prealloc = mem_prealloc;
-     name = host_memory_backend_get_name(backend);
-     memory_region_init_ram_from_file(&backend->mr, OBJECT(backend),
+ int main(int argc, char **argv)
+ {
+-    const char *arch = qtest_get_arch();
+     int fd;
+     int ret;
+ 
+-    /* Check architecture */
+-    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
+-        g_test_message("Skipping test for non-x86\n");
+-        return 0;
+-    }
+-
+     /* Create a temporary raw image */
+     fd = mkstemp(test_image);
+     g_assert(fd >= 0);
+diff --git a/tests/ide-test.c b/tests/ide-test.c
+index f0280e636b5d..300d64e77ddf 100644
+--- a/tests/ide-test.c
++++ b/tests/ide-test.c
+@@ -1009,16 +1009,9 @@ static void test_cdrom_dma(void)
+ 
+ int main(int argc, char **argv)
+ {
+-    const char *arch = qtest_get_arch();
+     int fd;
+     int ret;
+ 
+-    /* Check architecture */
+-    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
+-        g_test_message("Skipping test for non-x86\n");
+-        return 0;
+-    }
+-
+     /* Create temporary blkdebug instructions */
+     fd = mkstemp(debug_path);
+     g_assert(fd >= 0);
+diff --git a/tests/ipmi-bt-test.c b/tests/ipmi-bt-test.c
+index f4a81b526505..fc4c83b5db7c 100644
+--- a/tests/ipmi-bt-test.c
++++ b/tests/ipmi-bt-test.c
+@@ -400,15 +400,8 @@ static void open_socket(void)
+ 
+ int main(int argc, char **argv)
+ {
+-    const char *arch = qtest_get_arch();
+     int ret;
+ 
+-    /* Check architecture */
+-    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
+-        g_test_message("Skipping test for non-x86\n");
+-        return 0;
+-    }
+-
+     open_socket();
+ 
+     /* Run the tests */
+diff --git a/tests/ipmi-kcs-test.c b/tests/ipmi-kcs-test.c
+index 178ffc179734..a2354c10c7fe 100644
+--- a/tests/ipmi-kcs-test.c
++++ b/tests/ipmi-kcs-test.c
+@@ -263,16 +263,9 @@ static void test_enable_irq(void)
+ 
+ int main(int argc, char **argv)
+ {
+-    const char *arch = qtest_get_arch();
+     char *cmdline;
+     int ret;
+ 
+-    /* Check architecture */
+-    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
+-        g_test_message("Skipping test for non-x86\n");
+-        return 0;
+-    }
+-
+     /* Run the tests */
+     g_test_init(&argc, &argv, NULL);
+ 
 -- 
 2.20.1
 
