@@ -1,75 +1,104 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h1XsY-0001tA-Ig
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2019 09:50:42 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:50013)
+	id 1h29Ke-0006ZG-Nv
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Mar 2019 01:50:12 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:35720)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h1XsW-0001so-Ge
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 09:50:41 -0500
+	(envelope-from <thuth@redhat.com>) id 1h29Kb-0006XQ-32
+	for qemu-trivial@nongnu.org; Fri, 08 Mar 2019 01:50:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1h1XsV-0005GC-MB
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 09:50:40 -0500
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:43042)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1h1XsV-00054E-EY
-	for qemu-trivial@nongnu.org; Wed, 06 Mar 2019 09:50:39 -0500
-Received: by mail-oi1-x243.google.com with SMTP id i8so10037197oib.10
-	for <qemu-trivial@nongnu.org>; Wed, 06 Mar 2019 06:50:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=sHZlULoRuYjVTqUi3QR3Iu1vfhnR2lvzEmjlzIl5ky0=;
-	b=I9Z86hdvKMmapjL90qkkoVgSGqS9Tm9iP0P0wW9o8xFC+nUEoMTPuFJwKkTYSg+nCP
-	mq/A9mCmDR2ifCp4UQkZnPRGVSkkcxhLkXGGnOeHx5043KR56zdSuwL1kcVSVyxJHlmG
-	AlgNbxcnm11P2GKoFSv3ylEeACXuqxfMEBcIdSLKnxyFPXwRmjp1IPJ9mOtQ/fDMr9Qr
-	fRKRi/YAcyURJMQPnkVVZOqQcQZQuVTLqmlQRpUhPLDsk32IWL64RtmzCED0Zc7JXkTW
-	+ZIGVJy9UcbARznVMEntAiOwUrqBc4ztUFauxATR9rkXaNJef9Bvr9+CN9AX4jbKrOOd
-	/JKA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=sHZlULoRuYjVTqUi3QR3Iu1vfhnR2lvzEmjlzIl5ky0=;
-	b=PZOEZNsyfGoAbYiXGZu07D+y7RL2uYDzXTA4DOXfv6c+LNzB6rLtuDEHBUwAFMsd2a
-	4sn7gY5Mknm7gV0zcFooxetQJZLitBts1ABUYKu4qBPuxxxaVlaBQZXgxiGwOsAG3Rza
-	/5BFes7opJsnga6uDaVd7NabtNA/QfUCm7Q1p+elSSP3ETcKPgz4UQe0BnCgWSNBEpkN
-	PPHNbfni86kZc/1kPV+7qC0YNOFN9wns9kcLywG3QZVXDEu3uTKMELVN3p3dUebCHYyc
-	WNYDb48qv52arekIf3iLb1XlKOETRJWy22Rl1md5klHHbpZqHhiLpAPJGnSMiMWMRRgW
-	2iRQ==
-X-Gm-Message-State: APjAAAUf1dgPcJYi9eTZAd/4SMc4NeqdZ1l4KdTvRvUDDaUpib4vmTGw
-	OsQ/S9rSQMvmJsMl/zu7RFJ/wLVqfOJILZhrt6zFiQ==
-X-Google-Smtp-Source: APXvYqzE/aP+mVgKOIFzB91+UxQVBPq+4FTfEg9TWOyl4B/XJ41pBt2fyF4UVDIIus+d2CdR65i6DiR6lYF3+z5X65E=
-X-Received: by 2002:aca:fd91:: with SMTP id b139mr1894258oii.170.1551883824139;
-	Wed, 06 Mar 2019 06:50:24 -0800 (PST)
+	(envelope-from <thuth@redhat.com>) id 1h29Ka-0000Q1-8X
+	for qemu-trivial@nongnu.org; Fri, 08 Mar 2019 01:50:09 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:46672)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1h29KU-00007a-CM; Fri, 08 Mar 2019 01:50:02 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B912B3082134;
+	Fri,  8 Mar 2019 06:50:00 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-147.ams2.redhat.com [10.36.116.147])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id EE6845C1B5;
+	Fri,  8 Mar 2019 06:49:49 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Laszlo Ersek <lersek@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org
+Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+	Artyom Tarasenko <atar4qemu@gmail.com>, 
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	Igor Mammedov <imammedo@redhat.com>, 
+	Eric Blake <eblake@redhat.com>, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	"Daniel P . Berrange" <berrange@redhat.com>
+References: <20190308013222.12524-1-philmd@redhat.com>
+	<20190308013222.12524-7-philmd@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <37ef3c6b-e99e-859e-2324-9c59ff6bc1f8@redhat.com>
+Date: Fri, 8 Mar 2019 07:49:48 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.5.0
 MIME-Version: 1.0
-References: <20190306110711.309-1-laurent@vivier.eu>
-In-Reply-To: <20190306110711.309-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 6 Mar 2019 14:50:12 +0000
-Message-ID: <CAFEAcA9pjHpqtBCXZGDXEnzW8=FvnGER_MZkNC0NxZX6ORtwzQ@mail.gmail.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	Li Zhijian <lizhijian@cn.fujitsu.com>, 
-	"Michael S. Tsirkin" <mst@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	Paolo Bonzini <pbonzini@redhat.com>, 
-	zhanghailiang <zhang.zhanghailiang@huawei.com>,
-	Qemu-block <qemu-block@nongnu.org>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>, Halil Pasic <pasic@linux.ibm.com>, 
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Laurent Vivier <lvivier@redhat.com>, 
-	Tony Krowiak <akrowiak@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
-	Eduardo Habkost <ehabkost@redhat.com>, Corey Minyard <minyard@acm.org>,
-	Riku Voipio <riku.voipio@iki.fi>, qemu-s390x <qemu-s390x@nongnu.org>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, 
-	Zhang Chen <zhangckid@gmail.com>, John Snow <jsnow@redhat.com>, 
-	Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
-	Pierre Morel <pmorel@linux.ibm.com>, 
-	Cornelia Huck <cohuck@redhat.com>, Max Reitz <mreitz@redhat.com>, 
-	Igor Mammedov <imammedo@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/10] Trivial branch patches
+In-Reply-To: <20190308013222.12524-7-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.42]);
+	Fri, 08 Mar 2019 06:50:01 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH v2 06/18] hw/nvram/fw_cfg: Remove the
+ unnecessary boot_splash_filedata_size
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,35 +110,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Mar 2019 14:50:41 -0000
+X-List-Received-Date: Fri, 08 Mar 2019 06:50:10 -0000
 
-On Wed, 6 Mar 2019 at 11:09, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit a3e3b0a7bd5de211a62cdf2d6c12b96d3c403560:
->
->   Merge remote-tracking branch 'remotes/armbru/tags/pull-qapi-2019-03-05' into staging (2019-03-05 19:23:45 +0000)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
->
-> for you to fetch changes up to 0e081fde8a3d80383adf2e802fc0c03af44c5436:
->
->   thunk: fix of malloc to g_new (2019-03-06 11:27:32 +0100)
->
-> ----------------------------------------------------------------
-> trivial patches pull request (20190206)
->
-> - acpi: remove unused functions/variables
-> - tests: remove useless architecture checks
-> - some typo fixes and documentation update
-> - flash_cfi02: fix memory leak
->
+On 08/03/2019 02.32, Philippe Mathieu-Daud=C3=A9 wrote:
+> The 'boot_splash_filedata_size' was introduced as a global variable
+> in 3d3b8303c6f. This variable is used as a 'size' argument to the
+> fw_cfg_add_file(). This function has an interface contract with his
+> 'data' argument, but there is no such contract for 'size' (this is
+> not a referenced pointer).  We can simply remove it.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/nvram/fw_cfg.c       | 5 ++---
+>  include/sysemu/sysemu.h | 1 -
+>  vl.c                    | 1 -
+>  3 files changed, 2 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> index 8eb76a382c..b2dc0a80cb 100644
+> --- a/hw/nvram/fw_cfg.c
+> +++ b/hw/nvram/fw_cfg.c
+> @@ -217,15 +217,14 @@ static void fw_cfg_bootsplash(FWCfgState *s)
+>          }
+>          g_free(boot_splash_filedata);
+>          boot_splash_filedata =3D (uint8_t *)file_data;
+> -        boot_splash_filedata_size =3D file_size;
+> =20
+>          /* insert data */
+>          if (file_type =3D=3D JPG_FILE) {
+>              fw_cfg_add_file(s, "bootsplash.jpg",
+> -                    boot_splash_filedata, boot_splash_filedata_size);
+> +                            boot_splash_filedata, file_size);
+>          } else {
+>              fw_cfg_add_file(s, "bootsplash.bmp",
+> -                    boot_splash_filedata, boot_splash_filedata_size);
+> +                            boot_splash_filedata, file_size);
+>          }
+>          g_free(filename);
+>      }
+> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
+> index 89604a8328..6065d9e420 100644
+> --- a/include/sysemu/sysemu.h
+> +++ b/include/sysemu/sysemu.h
+> @@ -110,7 +110,6 @@ extern int old_param;
+>  extern int boot_menu;
+>  extern bool boot_strict;
+>  extern uint8_t *boot_splash_filedata;
+> -extern size_t boot_splash_filedata_size;
+>  extern bool enable_mlock;
+>  extern bool enable_cpu_pm;
+>  extern QEMUClockType rtc_clock;
+> diff --git a/vl.c b/vl.c
+> index 4c5cc0d8ad..fad6fec38c 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -188,7 +188,6 @@ const char *prom_envs[MAX_PROM_ENVS];
+>  int boot_menu;
+>  bool boot_strict;
+>  uint8_t *boot_splash_filedata;
+> -size_t boot_splash_filedata_size;
+>  bool wakeup_suspend_enabled;
+> =20
+>  int icount_align_option;
+>=20
 
-Applied, thanks.
+Nice, one global variable less!
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/4.0
-for any user-visible changes.
-
--- PMM
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
