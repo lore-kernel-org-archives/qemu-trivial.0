@@ -1,42 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h29Ke-0006ZG-Nv
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Mar 2019 01:50:12 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:35720)
+	id 1h2DkN-00041n-Sq
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Mar 2019 06:33:03 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:37821)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h29Kb-0006XQ-32
-	for qemu-trivial@nongnu.org; Fri, 08 Mar 2019 01:50:09 -0500
+	(envelope-from <thuth@redhat.com>) id 1h2DkI-0003zx-Lu
+	for qemu-trivial@nongnu.org; Fri, 08 Mar 2019 06:33:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h29Ka-0000Q1-8X
-	for qemu-trivial@nongnu.org; Fri, 08 Mar 2019 01:50:09 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:46672)
+	(envelope-from <thuth@redhat.com>) id 1h2DkG-0000t4-GK
+	for qemu-trivial@nongnu.org; Fri, 08 Mar 2019 06:32:57 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:58496)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1h29KU-00007a-CM; Fri, 08 Mar 2019 01:50:02 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	id 1h2Dk8-00088p-S7; Fri, 08 Mar 2019 06:32:49 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B912B3082134;
-	Fri,  8 Mar 2019 06:50:00 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1667059466;
+	Fri,  8 Mar 2019 11:32:44 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-147.ams2.redhat.com [10.36.116.147])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EE6845C1B5;
-	Fri,  8 Mar 2019 06:49:49 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 160A61A924;
+	Fri,  8 Mar 2019 11:32:32 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	Laszlo Ersek <lersek@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org
-Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
 	Eduardo Habkost <ehabkost@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, 
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Igor Mammedov <imammedo@redhat.com>, 
-	Eric Blake <eblake@redhat.com>, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	"Daniel P . Berrange" <berrange@redhat.com>
+	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 References: <20190308013222.12524-1-philmd@redhat.com>
-	<20190308013222.12524-7-philmd@redhat.com>
+	<20190308013222.12524-3-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -82,23 +74,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <37ef3c6b-e99e-859e-2324-9c59ff6bc1f8@redhat.com>
-Date: Fri, 8 Mar 2019 07:49:48 +0100
+Message-ID: <e95c7422-c52e-2105-e314-ea19778f8d8c@redhat.com>
+Date: Fri, 8 Mar 2019 12:32:32 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.5.0
 MIME-Version: 1.0
-In-Reply-To: <20190308013222.12524-7-philmd@redhat.com>
+In-Reply-To: <20190308013222.12524-3-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.42]);
-	Fri, 08 Mar 2019 06:50:01 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Fri, 08 Mar 2019 11:32:44 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2 06/18] hw/nvram/fw_cfg: Remove the
- unnecessary boot_splash_filedata_size
+Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH v2 02/18] hw/i386: Remove
+ unused include
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -110,71 +102,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Mar 2019 06:50:10 -0000
+X-List-Received-Date: Fri, 08 Mar 2019 11:33:01 -0000
 
 On 08/03/2019 02.32, Philippe Mathieu-Daud=C3=A9 wrote:
-> The 'boot_splash_filedata_size' was introduced as a global variable
-> in 3d3b8303c6f. This variable is used as a 'size' argument to the
-> fw_cfg_add_file(). This function has an interface contract with his
-> 'data' argument, but there is no such contract for 'size' (this is
-> not a referenced pointer).  We can simply remove it.
->=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  hw/nvram/fw_cfg.c       | 5 ++---
->  include/sysemu/sysemu.h | 1 -
->  vl.c                    | 1 -
->  3 files changed, 2 insertions(+), 5 deletions(-)
+> v2: Drop files that do use fw_cfg (Michael):
+> - hw/i386/acpi-build.c
+> - hw/i386/pc.c
+> ---
+>  hw/acpi/piix4.c | 1 -
+>  1 file changed, 1 deletion(-)
 >=20
-> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-> index 8eb76a382c..b2dc0a80cb 100644
-> --- a/hw/nvram/fw_cfg.c
-> +++ b/hw/nvram/fw_cfg.c
-> @@ -217,15 +217,14 @@ static void fw_cfg_bootsplash(FWCfgState *s)
->          }
->          g_free(boot_splash_filedata);
->          boot_splash_filedata =3D (uint8_t *)file_data;
-> -        boot_splash_filedata_size =3D file_size;
-> =20
->          /* insert data */
->          if (file_type =3D=3D JPG_FILE) {
->              fw_cfg_add_file(s, "bootsplash.jpg",
-> -                    boot_splash_filedata, boot_splash_filedata_size);
-> +                            boot_splash_filedata, file_size);
->          } else {
->              fw_cfg_add_file(s, "bootsplash.bmp",
-> -                    boot_splash_filedata, boot_splash_filedata_size);
-> +                            boot_splash_filedata, file_size);
->          }
->          g_free(filename);
->      }
-> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
-> index 89604a8328..6065d9e420 100644
-> --- a/include/sysemu/sysemu.h
-> +++ b/include/sysemu/sysemu.h
-> @@ -110,7 +110,6 @@ extern int old_param;
->  extern int boot_menu;
->  extern bool boot_strict;
->  extern uint8_t *boot_splash_filedata;
-> -extern size_t boot_splash_filedata_size;
->  extern bool enable_mlock;
->  extern bool enable_cpu_pm;
->  extern QEMUClockType rtc_clock;
-> diff --git a/vl.c b/vl.c
-> index 4c5cc0d8ad..fad6fec38c 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -188,7 +188,6 @@ const char *prom_envs[MAX_PROM_ENVS];
->  int boot_menu;
->  bool boot_strict;
->  uint8_t *boot_splash_filedata;
-> -size_t boot_splash_filedata_size;
->  bool wakeup_suspend_enabled;
-> =20
->  int icount_align_option;
+> diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+> index 8fd25a5926..7b98121070 100644
+> --- a/hw/acpi/piix4.c
+> +++ b/hw/acpi/piix4.c
+> @@ -28,7 +28,6 @@
+>  #include "sysemu/sysemu.h"
+>  #include "qapi/error.h"
+>  #include "qemu/range.h"
+> -#include "hw/nvram/fw_cfg.h"
+>  #include "exec/address-spaces.h"
+>  #include "hw/acpi/piix4.h"
+>  #include "hw/acpi/pcihp.h"
 >=20
-
-Nice, one global variable less!
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
