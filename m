@@ -1,37 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h2dOk-0002UU-VK
-	for mharc-qemu-trivial@gnu.org; Sat, 09 Mar 2019 09:56:27 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53944)
+	id 1h2dOu-0002cD-JG
+	for mharc-qemu-trivial@gnu.org; Sat, 09 Mar 2019 09:56:36 -0500
+Received: from eggs.gnu.org ([209.51.188.92]:53999)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h2dOj-0002TP-Dj
-	for qemu-trivial@nongnu.org; Sat, 09 Mar 2019 09:56:26 -0500
+	(envelope-from <laurent@vivier.eu>) id 1h2dOs-0002Zz-87
+	for qemu-trivial@nongnu.org; Sat, 09 Mar 2019 09:56:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h2dOi-0007PC-Jd
-	for qemu-trivial@nongnu.org; Sat, 09 Mar 2019 09:56:25 -0500
-Received: from mout.kundenserver.de ([212.227.17.24]:33915)
+	(envelope-from <laurent@vivier.eu>) id 1h2dOr-0007VX-HS
+	for qemu-trivial@nongnu.org; Sat, 09 Mar 2019 09:56:34 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:34313)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h2dOg-0007NF-MJ; Sat, 09 Mar 2019 09:56:22 -0500
+	id 1h2dOp-0007TV-NA; Sat, 09 Mar 2019 09:56:31 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
-	1N5VPg-1gzhXt1dE2-016xL0; Sat, 09 Mar 2019 15:53:55 +0100
+	(mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+	1N3sVq-1gtf7q0N6G-00zrOI; Sat, 09 Mar 2019 15:54:42 +0100
 To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
 	<philmd@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
 	qemu-devel@nongnu.org
-Cc: "Daniel P . Berrange" <berrange@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, QEMU Trivial
-	<qemu-trivial@nongnu.org>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	Eric Blake <eblake@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>, 
-	Richard Henderson <rth@twiddle.net>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 References: <20190308013222.12524-1-philmd@redhat.com>
-	<20190308013222.12524-7-philmd@redhat.com>
-	<37ef3c6b-e99e-859e-2324-9c59ff6bc1f8@redhat.com>
+	<20190308013222.12524-3-philmd@redhat.com>
+	<e95c7422-c52e-2105-e314-ea19778f8d8c@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -76,35 +69,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <596ed94c-5121-06d5-e3e4-b4270bdf660b@vivier.eu>
-Date: Sat, 9 Mar 2019 15:53:49 +0100
+Message-ID: <18d16b8e-01b3-2bc1-be98-67329e4437cc@vivier.eu>
+Date: Sat, 9 Mar 2019 15:54:38 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <37ef3c6b-e99e-859e-2324-9c59ff6bc1f8@redhat.com>
+In-Reply-To: <e95c7422-c52e-2105-e314-ea19778f8d8c@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:3LFYYRldEB4QLremQC0nMhuIaGgAWbUcm1dao5lWFxQFin3Kf2V
-	E63KCAUr0O8dl0GN8Am5A6ymAMGRvQoSkeM6LXa/oLFQDr2MyCLvsj8ywXGd3gE2ByxoF2a
-	0Zw1aVX1bdTrmpO6ra9UtirZZ1OWAwIAX7Jqix5jPP5oh1AA4LVhC/onSND1JZ6HOPuVSA/
-	JlA4CsZdvQjbTQoBsoW9g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:UGKXZ/BBkdU=:/DPjl3oPjHv3Z+g2f/OflL
-	WX4otcfpYVyss5kvaf9bl5SxQYDK4hbWX2jjoSnFpCHre+kq02X9j2mOFA23z2D9Mb1ZB2ve/
-	H8tQd7N44dDUFrLCwfRkXsAWtoBrAZKDQHk/0XKOzvOj76VIaJu1+zG129MB7ZeCejwUnAsyT
-	d4EqRSNZXzOw2mVURx2KKLo2wV7MJjMaqwsFoVgjFVb4Z40t8DN5rqw0eDnIb4KCWhNVwdaUA
-	T6qReFqUEs2p58oMILWrreDriAMvlTYj0ie4zV/dmI+YRDED+ndtgXM4WvRTxOG+yq+olyzxI
-	cT02rBAUWoo7IOg8rcNbXTscLy+SbxAwxLjHiV0KvYr/Bus/cu+mKLFI3hMChmKTciaQPSjGh
-	0T+9iji5Pl/m6UnJi1yP22xrc0i3cPTKRK+ZjpamtFGkHX2F/EfX9qbdvkZUpBPXJQMfSzZ2u
-	XQPYFPHK9X7EnGdLswduELGYOEUJydcRNA30uG3jDG4FpQwsvbddg6qbG6dxJi1gNZTPAVwGN
-	V9VSHqP7ZGBoRCEyJ+MR4aC3hfI3E2YaOilHjIdHuZJymGbzY6Kw09jgYXqG0EW44ImCUlYLs
-	v55z1f5VIBz4h+co9io3aIGGYr45eey+KqqyASjYfAzuMgD8nlNqZH0Ns72eMnRL6M9xllUj+
-	wFbVM2bm/a+k1HAaB1bx8VgSZcK+KAVaIYP67TfnFSypH/oX31Zg5Ub514HsJiEnT+dxtfa7C
-	vO9F6a9Um7+U7D7srg39ACxYiDKSGCXCgr7zjtfX8dQYlqoad3c2LurxHR0=
+X-Provags-ID: V03:K1:AocXO5cwl2osY83SL5ct4rgP2PVwxIDnNtux2AfRcTNi4gHoGH3
+	xMz9xhyM5Rq0Y80kz/NhRc2YnIphSOfYqf+BUIbTHN6LsrdfgkRG6hSVL7tJKFeftb2YqKg
+	AOcOkwFkOrtt7fWdeBFoBGT11rH7Bpd/FCCLQVrAmt7lR3zh+Anol26HcuKWSx8ihCGc8Vy
+	aPnyfr14WmnqLehwhKS/w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:x5lvhef1GgI=:yN6ojwAK8jSAlsngH7i/Oa
+	rOmMO59TMYYrV+CcRyQDUdBo05clZeRcP67b1h3ksLL3uen4zNITDIXxLZTHMrUW5gf92OjXW
+	h7EWuECWWLRGbjkFFxT+0pZAY3DT4UtEVhQ1w+wG+oeuvmDMZXLk1KeVue/NI1AWohVNNy0rb
+	pwcPqsGf/S+hpO7TioEOQihQWxleF7xb/zhDEtdEJMfWKik846gNV0IM+RtK+Nfv/xHTgFMHM
+	NEPkqgGsBF1JfO4Lb7Vtc2xMKzfUiibWBzvIt5s4GEQR+L6g+rG/x4sVHCdxZzeh/9qHhHMNQ
+	Xt9807bg2EJczUrS6nddzKbNn+MivQUjOpsV19woUVEficu942Zw1TmKGMcrKI0cm6r1uO6gn
+	qPfzS9uLTqOalOt0B4D47+Q5AUMQUZc8z5tJGIX7sY0RGk88fgFl7ndwRZzE37gkAgG+2z0EP
+	QQdQ9mkM/VHzC0kPe8se6ZGMP0S3Qdc21HA36CchmUpBOOACi7zZ3rCdOtBI8P/N/PecpacOA
+	hZ2loxDJnbbANqKk69OTOm/HLbbfMzgki3/A/CsY8zSLtvUC15zOL2Js8LOpUX7JdynPbZ3F7
+	GX2FH7vdbcaMtCIlG6Yc+DfFSUh8XsJqPAB9daCoEwdi8hjjMDuT6e/vQPzaQlO1FPwBaLe2P
+	epk1QUlyc+Pbu2ZutCJm1p+KBEm94AHgCI1yuED7k+VD/cgFUMZQFWCaPXUqjGn23kWpIR7se
+	DHlTjsbil79Phjf8cm801zw0WmmuQV6JFY7bUz3v6ZBe9asmfFDKDvrIYPQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: Re: [Qemu-trivial] [PATCH v2 06/18] hw/nvram/fw_cfg: Remove the
- unnecessary boot_splash_filedata_size
+X-Received-From: 217.72.192.74
+Subject: Re: [Qemu-trivial] [Qemu-ppc] [PATCH v2 02/18] hw/i386: Remove
+ unused include
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,72 +109,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 09 Mar 2019 14:56:26 -0000
+X-List-Received-Date: Sat, 09 Mar 2019 14:56:35 -0000
 
-On 08/03/2019 07:49, Thomas Huth wrote:
+On 08/03/2019 12:32, Thomas Huth wrote:
 > On 08/03/2019 02.32, Philippe Mathieu-Daudé wrote:
->> The 'boot_splash_filedata_size' was introduced as a global variable
->> in 3d3b8303c6f. This variable is used as a 'size' argument to the
->> fw_cfg_add_file(). This function has an interface contract with his
->> 'data' argument, but there is no such contract for 'size' (this is
->> not a referenced pointer).  We can simply remove it.
->>
 >> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 >> ---
->>  hw/nvram/fw_cfg.c       | 5 ++---
->>  include/sysemu/sysemu.h | 1 -
->>  vl.c                    | 1 -
->>  3 files changed, 2 insertions(+), 5 deletions(-)
+>> v2: Drop files that do use fw_cfg (Michael):
+>> - hw/i386/acpi-build.c
+>> - hw/i386/pc.c
+>> ---
+>>  hw/acpi/piix4.c | 1 -
+>>  1 file changed, 1 deletion(-)
 >>
->> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
->> index 8eb76a382c..b2dc0a80cb 100644
->> --- a/hw/nvram/fw_cfg.c
->> +++ b/hw/nvram/fw_cfg.c
->> @@ -217,15 +217,14 @@ static void fw_cfg_bootsplash(FWCfgState *s)
->>          }
->>          g_free(boot_splash_filedata);
->>          boot_splash_filedata = (uint8_t *)file_data;
->> -        boot_splash_filedata_size = file_size;
->>  
->>          /* insert data */
->>          if (file_type == JPG_FILE) {
->>              fw_cfg_add_file(s, "bootsplash.jpg",
->> -                    boot_splash_filedata, boot_splash_filedata_size);
->> +                            boot_splash_filedata, file_size);
->>          } else {
->>              fw_cfg_add_file(s, "bootsplash.bmp",
->> -                    boot_splash_filedata, boot_splash_filedata_size);
->> +                            boot_splash_filedata, file_size);
->>          }
->>          g_free(filename);
->>      }
->> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
->> index 89604a8328..6065d9e420 100644
->> --- a/include/sysemu/sysemu.h
->> +++ b/include/sysemu/sysemu.h
->> @@ -110,7 +110,6 @@ extern int old_param;
->>  extern int boot_menu;
->>  extern bool boot_strict;
->>  extern uint8_t *boot_splash_filedata;
->> -extern size_t boot_splash_filedata_size;
->>  extern bool enable_mlock;
->>  extern bool enable_cpu_pm;
->>  extern QEMUClockType rtc_clock;
->> diff --git a/vl.c b/vl.c
->> index 4c5cc0d8ad..fad6fec38c 100644
->> --- a/vl.c
->> +++ b/vl.c
->> @@ -188,7 +188,6 @@ const char *prom_envs[MAX_PROM_ENVS];
->>  int boot_menu;
->>  bool boot_strict;
->>  uint8_t *boot_splash_filedata;
->> -size_t boot_splash_filedata_size;
->>  bool wakeup_suspend_enabled;
->>  
->>  int icount_align_option;
+>> diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+>> index 8fd25a5926..7b98121070 100644
+>> --- a/hw/acpi/piix4.c
+>> +++ b/hw/acpi/piix4.c
+>> @@ -28,7 +28,6 @@
+>>  #include "sysemu/sysemu.h"
+>>  #include "qapi/error.h"
+>>  #include "qemu/range.h"
+>> -#include "hw/nvram/fw_cfg.h"
+>>  #include "exec/address-spaces.h"
+>>  #include "hw/acpi/piix4.h"
+>>  #include "hw/acpi/pcihp.h"
 >>
-> 
-> Nice, one global variable less!
 > 
 > Reviewed-by: Thomas Huth <thuth@redhat.com>
 > 
