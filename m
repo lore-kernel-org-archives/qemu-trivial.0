@@ -1,48 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h2gZZ-0001Ab-2u
-	for mharc-qemu-trivial@gnu.org; Sat, 09 Mar 2019 13:19:49 -0500
-Received: from eggs.gnu.org ([209.51.188.92]:53144)
+	id 1h2w78-0006xN-GT
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2019 06:55:30 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:40283)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1h2gZV-000170-US
-	for qemu-trivial@nongnu.org; Sat, 09 Mar 2019 13:19:47 -0500
+	(envelope-from <laurent@vivier.eu>) id 1h2w6z-0006vr-Ve
+	for qemu-trivial@nongnu.org; Sun, 10 Mar 2019 06:55:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1h2gZU-0004G2-9Z
-	for qemu-trivial@nongnu.org; Sat, 09 Mar 2019 13:19:45 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:60178)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1h2gZK-00049F-3K; Sat, 09 Mar 2019 13:19:34 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 59613C057E68;
-	Sat,  9 Mar 2019 18:19:33 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-28.brq.redhat.com [10.40.204.28])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id AB28060A9F;
-	Sat,  9 Mar 2019 18:19:30 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, Laszlo Ersek <lersek@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	qemu-arm@nongnu.org, Markus Armbruster <armbru@redhat.com>
-Date: Sat,  9 Mar 2019 19:19:19 +0100
-Message-Id: <20190309181920.30553-2-philmd@redhat.com>
-In-Reply-To: <20190309181920.30553-1-philmd@redhat.com>
+	(envelope-from <laurent@vivier.eu>) id 1h2w6z-0003v7-70
+	for qemu-trivial@nongnu.org; Sun, 10 Mar 2019 06:55:21 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:55373)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1h2w6u-0003rU-HL; Sun, 10 Mar 2019 06:55:16 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+	1MUXlG-1hTEQz1zYu-00QUwm; Sun, 10 Mar 2019 11:55:05 +0100
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: Laszlo Ersek <lersek@redhat.com>, Peter Maydell
+	<peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
+	Gerd Hoffmann <kraxel@redhat.com>, qemu-arm@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>
 References: <20190309181920.30553-1-philmd@redhat.com>
+	<20190309181920.30553-2-philmd@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <33a2a087-1552-dbbc-ba62-470046e31ff9@vivier.eu>
+Date: Sun, 10 Mar 2019 11:55:01 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Sat, 09 Mar 2019 18:19:33 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20190309181920.30553-2-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:qVojMqhIuIdtwpAWDILQLedB6JQjrP/C9PQydpF66Gf8SJeP5Xu
+	+1ONjnf/8lWMmOO7o8vmXjZwOuOPzGr7oUr9I6hBx4leKomN1RGvlKreuZeRT2ZBYvmch5j
+	U4daWWwoPK05/d6I1Btj/DeCZmr82gSr9YVxp0R3RYiwRUJuxfnfDqn+TwLTWNUbTa3Xdkn
+	0vh615sSipGIsC053IuFg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:vMwbJAX52yk=:EB1DVug9ZVoHv3EkpL5MYp
+	xDPrUgDxuFkWczKNW/IpffuwewXr0qapQ/5g36fSw9DmIzZ+zFfVo7UAXpb1wdEf3N/rQOO47
+	xZ59J036ML+qdZwHBeTCWNqbQMKENlv0qgj6LyBML5n9WM0JNjxpyz1cgVvQyUMmqUad723nu
+	Ec36DQwWeSBuyRsy71W4uDx3+fQnkaqyWFxmnBoSMvgwnzl7R4Bra1NMapmN5RGzN7TFOSdBo
+	pLtq6TCFAj1Zew5gWTqz2RXOrJDG/H1pL3FH2x9htx6v4IYP9p/jTeU/wstn97o3qVzQCYUH8
+	XDyFD75BirCKjgJNG94xijZ9KoBjAnVzrjy30wuIovgoU0/s0m6WLs3pqlT/LrW3iWV9O6/jO
+	ops2PjfPaDTYmfD5wgNxywWdvl79Us13iJnQXulAMItGLTV8OFkpUPKDfTilcWCJvDF+zU2ie
+	n/hIv9z0+69z/g+tlJV5dmP/IaSgeRTVLVE6z1fKZJihTFPQG+GUXTITyFCxs4cUOqpo7ScZs
+	Ghs1LD/GGQnvIA+/bbC6+aPvRsWPYHhXqfWm+fG3avkHSltvE1F7ZnRhox+WwhGWgduMcDJWy
+	8kLz/qI2yyfXHx5yJ+nHdklnUtOUZ62j6/yYP6tjTbWZaSKzOfIozdySAahm8rRT+IFbCI+Zl
+	Iw256W7ZyVZTkdH0BfCYbxZ/zTc+6/8FCH8iqnJKx/GDNfKO0qqhgaYL7y5MvigpB6NpqK5S7
+	rfrDK88zhKKJMO8U8MQVnmrUzrqwQe+fbW+HntoJverQ6ILWu7J4ZwZZBHo=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v3 1/2] hw/arm/virt: Remove null-check in
+X-Received-From: 217.72.192.75
+Subject: Re: [Qemu-trivial] [PATCH v3 1/2] hw/arm/virt: Remove null-check in
  virt_build_smbios()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -55,42 +64,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 09 Mar 2019 18:19:48 -0000
+X-List-Received-Date: Sun, 10 Mar 2019 10:55:22 -0000
 
-Since commit 578f3c7b0835 ("arm: add fw_cfg to "virt" board",
-2014-12-22), the machvirt_init() unconditionally creates the
-fw_cfg object.  Later, commit c30e15658b1b ("smbios: implement
-smbios support for mach-virt", 2015-09-07) added a superfluous
-null-check on it.
-Remove this superfluous check.
+On 09/03/2019 19:19, Philippe Mathieu-Daudé wrote:
+> Since commit 578f3c7b0835 ("arm: add fw_cfg to "virt" board",
+> 2014-12-22), the machvirt_init() unconditionally creates the
+> fw_cfg object.  Later, commit c30e15658b1b ("smbios: implement
+> smbios support for mach-virt", 2015-09-07) added a superfluous
+> null-check on it.
+> Remove this superfluous check.
+> 
+> Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+> v2: Corrected commit reference (Laszlo)
+> v3: Dropped 'Fixes:' (Markus)
+> ---
+>  hw/arm/virt.c | 4 ----
+>  1 file changed, 4 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 7f66ddad89..377e95a4cd 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1281,10 +1281,6 @@ static void virt_build_smbios(VirtMachineState *vms)
+>      size_t smbios_tables_len, smbios_anchor_len;
+>      const char *product = "QEMU Virtual Machine";
+>  
+> -    if (!vms->fw_cfg) {
+> -        return;
+> -    }
+> -
+>      if (kvm_enabled()) {
+>          product = "KVM Virtual Machine";
+>      }
+> 
 
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
-v2: Corrected commit reference (Laszlo)
-v3: Dropped 'Fixes:' (Markus)
----
- hw/arm/virt.c | 4 ----
- 1 file changed, 4 deletions(-)
+Applied to my trivial-patches branch.
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 7f66ddad89..377e95a4cd 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1281,10 +1281,6 @@ static void virt_build_smbios(VirtMachineState *vm=
-s)
-     size_t smbios_tables_len, smbios_anchor_len;
-     const char *product =3D "QEMU Virtual Machine";
-=20
--    if (!vms->fw_cfg) {
--        return;
--    }
--
-     if (kvm_enabled()) {
-         product =3D "KVM Virtual Machine";
-     }
---=20
-2.20.1
-
+Thanks,
+Laurent
 
