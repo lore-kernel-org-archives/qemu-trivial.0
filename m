@@ -1,58 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h2w78-0006xN-GT
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2019 06:55:30 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:40283)
+	id 1h2w8i-0007xE-Q9
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2019 06:57:08 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:40534)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h2w6z-0006vr-Ve
-	for qemu-trivial@nongnu.org; Sun, 10 Mar 2019 06:55:22 -0400
+	(envelope-from <laurent@vivier.eu>) id 1h2w8g-0007w5-2g
+	for qemu-trivial@nongnu.org; Sun, 10 Mar 2019 06:57:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h2w6z-0003v7-70
-	for qemu-trivial@nongnu.org; Sun, 10 Mar 2019 06:55:21 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:55373)
+	(envelope-from <laurent@vivier.eu>) id 1h2w8e-0004lk-38
+	for qemu-trivial@nongnu.org; Sun, 10 Mar 2019 06:57:05 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:44017)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h2w6u-0003rU-HL; Sun, 10 Mar 2019 06:55:16 -0400
+	id 1h2w8d-0004lN-Pn; Sun, 10 Mar 2019 06:57:04 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
-	1MUXlG-1hTEQz1zYu-00QUwm; Sun, 10 Mar 2019 11:55:05 +0100
+	(mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+	1MOiYD-1hQnRO1mNL-00QFaw; Sun, 10 Mar 2019 11:56:57 +0100
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 Cc: Laszlo Ersek <lersek@redhat.com>, Peter Maydell
 	<peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
-	Gerd Hoffmann <kraxel@redhat.com>, qemu-arm@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>
+	Gerd Hoffmann <kraxel@redhat.com>, qemu-arm@nongnu.org
 References: <20190309181920.30553-1-philmd@redhat.com>
-	<20190309181920.30553-2-philmd@redhat.com>
+	<20190309181920.30553-3-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <33a2a087-1552-dbbc-ba62-470046e31ff9@vivier.eu>
-Date: Sun, 10 Mar 2019 11:55:01 +0100
+Message-ID: <f5c474da-1a8c-6b8d-0027-cff9c7bf974f@vivier.eu>
+Date: Sun, 10 Mar 2019 11:56:55 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190309181920.30553-2-philmd@redhat.com>
+In-Reply-To: <20190309181920.30553-3-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:qVojMqhIuIdtwpAWDILQLedB6JQjrP/C9PQydpF66Gf8SJeP5Xu
-	+1ONjnf/8lWMmOO7o8vmXjZwOuOPzGr7oUr9I6hBx4leKomN1RGvlKreuZeRT2ZBYvmch5j
-	U4daWWwoPK05/d6I1Btj/DeCZmr82gSr9YVxp0R3RYiwRUJuxfnfDqn+TwLTWNUbTa3Xdkn
-	0vh615sSipGIsC053IuFg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:vMwbJAX52yk=:EB1DVug9ZVoHv3EkpL5MYp
-	xDPrUgDxuFkWczKNW/IpffuwewXr0qapQ/5g36fSw9DmIzZ+zFfVo7UAXpb1wdEf3N/rQOO47
-	xZ59J036ML+qdZwHBeTCWNqbQMKENlv0qgj6LyBML5n9WM0JNjxpyz1cgVvQyUMmqUad723nu
-	Ec36DQwWeSBuyRsy71W4uDx3+fQnkaqyWFxmnBoSMvgwnzl7R4Bra1NMapmN5RGzN7TFOSdBo
-	pLtq6TCFAj1Zew5gWTqz2RXOrJDG/H1pL3FH2x9htx6v4IYP9p/jTeU/wstn97o3qVzQCYUH8
-	XDyFD75BirCKjgJNG94xijZ9KoBjAnVzrjy30wuIovgoU0/s0m6WLs3pqlT/LrW3iWV9O6/jO
-	ops2PjfPaDTYmfD5wgNxywWdvl79Us13iJnQXulAMItGLTV8OFkpUPKDfTilcWCJvDF+zU2ie
-	n/hIv9z0+69z/g+tlJV5dmP/IaSgeRTVLVE6z1fKZJihTFPQG+GUXTITyFCxs4cUOqpo7ScZs
-	Ghs1LD/GGQnvIA+/bbC6+aPvRsWPYHhXqfWm+fG3avkHSltvE1F7ZnRhox+WwhGWgduMcDJWy
-	8kLz/qI2yyfXHx5yJ+nHdklnUtOUZ62j6/yYP6tjTbWZaSKzOfIozdySAahm8rRT+IFbCI+Zl
-	Iw256W7ZyVZTkdH0BfCYbxZ/zTc+6/8FCH8iqnJKx/GDNfKO0qqhgaYL7y5MvigpB6NpqK5S7
-	rfrDK88zhKKJMO8U8MQVnmrUzrqwQe+fbW+HntoJverQ6ILWu7J4ZwZZBHo=
+X-Provags-ID: V03:K1:BmmpZcUsSug+pAGASCrBLUQLUDe1i64NwfZrl5fK/jh3Yfwg5I0
+	kLA7T6riym/6p8lwWI3WbhzKSlgljeZOBIjo7M9Yzl+wjMzRExtm7CSBN61QUSfg1pGFYEq
+	r5krPbaL4/sBI7EvtWEBL0Ck7askxT+XkREN+nt0yXvwwNgC/Vp5uw0EGOpZab39PR+gPs4
+	8HGH7WACVhhaARDojXTJQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:V0fPkH8KMjQ=:P7VyK5OFd7Ih80nPw6rWt8
+	bmAjx23170nCPIFfY1qcCIWOnNmS7QA+RMlBXagB+Jfme6S5uqXm5JSNKSSjEsSPmj0h9+5CD
+	ezAjiig8aoNwU/aHbpE25XvdD68ySSDBXXia6JmlMiV88Y+FyrFY/tuCq7LtIhBAvRRlP7bBJ
+	Pr2nTVRQ3AK7nRtSPTMaNiLsVLqOrVoHS7AJsLyVHNefriVdFIP1mC4pJ3UAjKOWZkDjW5dVe
+	j6Y8j0FhIqR5NdVj0N7s/NE9qRWVOUGKZRABakHXLhySDsEPRwGEdfvDnaPqyxMff1JIbJvUk
+	+KsGQmhiOfcQVI0Kf71E8VCt58beFwZpIRbhH0CD4tf+Lv51tqoEdwwVlIjJPxSBWAIMX5v9y
+	2APu4l6S1PI57pzVllYjieJIpQIpbw8USphxYYdJtJJu2L0swQQsruEbQguK3IQ247h5kOwmi
+	IP293VOdRqfoiUckFo579d9XeYDkRF/aIQgZ4te7sC3aUZOV7VApGnj4Nbv+I43ZIoa0tAUkM
+	ZmQBGoizGdC8gXBt9NZ7/mgpyOXnrOLqhG473vvwHTQKyhJf9hgeupbVO5sr/7zDWzc2jglaL
+	nECSTSMv+t0cMVZE/LIJpRzvsAPxe66MmJwgIINGooTdnvbTJVVZQW1Aeg5fwmirjjgoxrhBX
+	v2Qqtm1vXvgscinBU8DUDTJTYpojoy+1HYQKgDgVDhBBEbECe3+iA03MTdwEQM0XOE8MB0F0y
+	nv+wwAAamczA0QHR4+YLlnB4qyqslH71YgaDLxPEi1j69q6naa8qsg8rC7Q=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
-Subject: Re: [Qemu-trivial] [PATCH v3 1/2] hw/arm/virt: Remove null-check in
- virt_build_smbios()
+X-Received-From: 212.227.17.24
+Subject: Re: [Qemu-trivial] [PATCH v3 2/2] hw/nvram/fw_cfg: Use the ldst API
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,41 +62,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 10 Mar 2019 10:55:22 -0000
+X-List-Received-Date: Sun, 10 Mar 2019 10:57:07 -0000
 
 On 09/03/2019 19:19, Philippe Mathieu-Daudé wrote:
-> Since commit 578f3c7b0835 ("arm: add fw_cfg to "virt" board",
-> 2014-12-22), the machvirt_init() unconditionally creates the
-> fw_cfg object.  Later, commit c30e15658b1b ("smbios: implement
-> smbios support for mach-virt", 2015-09-07) added a superfluous
-> null-check on it.
-> Remove this superfluous check.
+> The load/store API eases code review.
 > 
 > Reviewed-by: Laszlo Ersek <lersek@redhat.com>
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
-> v2: Corrected commit reference (Laszlo)
-> v3: Dropped 'Fixes:' (Markus)
-> ---
->  hw/arm/virt.c | 4 ----
->  1 file changed, 4 deletions(-)
+>  hw/nvram/fw_cfg.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 7f66ddad89..377e95a4cd 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1281,10 +1281,6 @@ static void virt_build_smbios(VirtMachineState *vms)
->      size_t smbios_tables_len, smbios_anchor_len;
->      const char *product = "QEMU Virtual Machine";
->  
-> -    if (!vms->fw_cfg) {
-> -        return;
-> -    }
-> -
->      if (kvm_enabled()) {
->          product = "KVM Virtual Machine";
+> diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+> index 7fdf04adc9..3d8859e333 100644
+> --- a/hw/nvram/fw_cfg.c
+> +++ b/hw/nvram/fw_cfg.c
+> @@ -85,7 +85,7 @@ static char *read_splashfile(char *filename, gsize *file_sizep,
 >      }
+>  
+>      /* check magic ID */
+> -    filehead = ((content[0] & 0xff) + (content[1] << 8)) & 0xffff;
+> +    filehead = lduw_le_p(content);
+>      if (filehead == 0xd8ff) {
+>          file_type = JPG_FILE;
+>      } else if (filehead == 0x4d42) {
+> @@ -96,7 +96,7 @@ static char *read_splashfile(char *filename, gsize *file_sizep,
+>  
+>      /* check BMP bpp */
+>      if (file_type == BMP_FILE) {
+> -        bmp_bpp = (content[28] + (content[29] << 8)) & 0xffff;
+> +        bmp_bpp = lduw_le_p(&content[28]);
+>          if (bmp_bpp != 24) {
+>              goto error;
+>          }
 > 
 
 Applied to my trivial-patches branch.
