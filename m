@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h3QL2-0005Ku-Vh
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2019 15:11:53 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60001)
+	id 1h3QL5-0005NY-JC
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2019 15:11:55 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60071)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h3QL0-0005Hs-Bv
-	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 15:11:51 -0400
+	(envelope-from <laurent@vivier.eu>) id 1h3QL3-0005Lb-If
+	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 15:11:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h3QKz-0003Qx-PG
-	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 15:11:50 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:45687)
+	(envelope-from <laurent@vivier.eu>) id 1h3QL2-0003Tr-PL
+	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 15:11:53 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:35901)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h3QKz-0003PF-EW; Mon, 11 Mar 2019 15:11:49 -0400
+	id 1h3QKz-0003PA-Eh; Mon, 11 Mar 2019 15:11:49 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1McpW8-1gTXHg42J0-00ZxL0; Mon, 11 Mar 2019 20:11:35 +0100
+	id 1MV6G0-1hSCyc0iqU-00S5WQ; Mon, 11 Mar 2019 20:11:36 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Laszlo Ersek <lersek@redhat.com>,
@@ -25,32 +25,35 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Laszlo Ersek <lersek@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>,
-	Gerd Hoffmann <kraxel@redhat.com>
-Date: Mon, 11 Mar 2019 20:11:23 +0100
-Message-Id: <20190311191128.30562-1-laurent@vivier.eu>
+	Gerd Hoffmann <kraxel@redhat.com>, Aarushi Mehta <mehta.aaru20@gmail.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>
+Date: Mon, 11 Mar 2019 20:11:24 +0100
+Message-Id: <20190311191128.30562-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190311191128.30562-1-laurent@vivier.eu>
+References: <20190311191128.30562-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:uiggGIFE87+5Ro86d2bMo0VnUBp95H9mK+y59bi/ruNY/bG2eWF
-	smvx/WpiH3TKo7c2eC+LCkIhKP45PQKHZtziai0Wa1eKnY0Ahb0BG7lGEbOOF6B9nDROjU/
-	Y/yRObodqZyCHw+CAm98a2qgmGTVgEYvwnuoM4v1Vmdtu6/iBYMbWWpavchK2xvRXUuqRxw
-	4iIgIHV1rEse2lhSn1qlA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:jXYyqVadXbE=:3W5fVw1FVWyKosngBRcka8
-	yLveP20m8YprKPH6slqrsXbFW/9Gs8xUGJzfCXesmAmuxhi2UZHJfBCJh8Mh6laNxd0TYdgZY
-	7GTcVnsV7+iof0XGC76maq70KslVm3iXqxAYNFRUDuPJEqxLrc2D6p+LjuHlC+V/AxeZgmO17
-	7x1Nj0LWKn8cfYUaDQtzfeFDE5ySgENc0qxKr5JJFLCMMZogFg92SbObdkSyMqgtLahjFvZ4P
-	bQVSYJ5sIE5RkbsyAc2pBucFuxGUmbQwQpGiGkV+DBOzbMFYB6oZmLo4VWMnjU+k3JWb9liay
-	DdfZ2uMFy2MGDv54k9WgkNfggBN737yuc0yQTjbYmh82BLpvc0/mzNiEd8bys5+kfK/OZUm9R
-	NyplwUXyhBi97g7m9joiSwKN55Gi1vjAMHzmkD1JXEw0wG5baS8iTDfF93FPzkbg4PA3B6sh0
-	Q2Vh3S+UzN1VjvtEa5JiO5J3lnp3HBjjmm5JaQLunCnr4tcokfAs82+OfqT7VSN/O41FL+Pad
-	JyOP58/FzoIdfrB5T1eJpy1IEpLyJho6OeSXruxrlOqUQUkKYvz0UAJf0SXndJJxt4p3Mlf1N
-	1h2Lwi87eeo69xxnwtkgBb3rfyTCWCLeTD6NIlKnqF/wPZPiA+XLW4OBgF25PrtvSFSUBJn5Z
-	AiYe0B6Ghimq7YX9dOYUlcSB7gSTaC6niWu3Sf/QfDk6d+SyIyU8nU3h62gaCO3DVcLnOVy29
-	gA1mOFziZCXSa1EaX4XUIXd0zzCLjwp8e7ROjbXYcleq2OG0FFh1Dm3kePk=
+X-Provags-ID: V03:K1:V3rV00znpLrw2EPDqF8QZ1krrSFLot7j6A2eDzXgF0rILoCbU+U
+	XZ7i9XUUoLPB8A64OD4YwS2bllQxHDP/gom8khwhau+FDP+eXbbnIgFD2OJdn9k7Qm/WoI+
+	+v/LK0pmToMzEbs74NYHQmRV48DN9GN9ftu5m5Xz5omHtthS1U+8k0zZe7QmqUu3kTDgxr0
+	OlF2lK5fsyS1nn+Zv5hIw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:keO88pR/iVE=:HKErR4ObzhAp0fky+vXTD/
+	e+Ob1NGKRRpEYDweZvzmr4341GRfTXb9KWeK8j259ae92cVrvPW9tGSbHjcrvqfK+FhQB5sND
+	QN7pEvZDXTj3mDvvYiL+7Xn6fnBrimwBJMQFPGZpAfV7gzpUWvYAjI2qIyUJyZR99+PFk02G4
+	B99K/bK34XH0qnoL7G3Ubo+xy45CSR+lmurO5Sz+wGqE6mMYDK11iTrTUCGfQJCMsh7vunUjD
+	3D2JEKJZGAnbnvkDsqtyrbkQfGkTcTdFXXJYVDXWtiiAguKMNLwu9z677+lPithZKsN786VNG
+	ZuE6ZcH/7IL6f6N05zpCz2xr/jsJQUzTtv8QsRz4bSKl3mC0//TIFAAsBNeSdA4Bd4PFhXatE
+	3vxT+Up5mT/eheFc53Qm+x9R+dMsCRlsThP0kLcH46CWVbrdldgb5r6BrXpVM7GGqk4lzMd7T
+	iWg7iKoj9wn3V67UGrmvAVYZr/wllU3kJz2sYm2mrlSzeynIH9K0sP2xYlUg/oG1iO8n/Cz+M
+	ZligjUQ/UusyoLHOpWAFicyEwEhlg/8n3sOouerifnqknV6cL9/VVoFPO4th1fukCspFhs/Ow
+	H6HC+FQMVeTwCM+QNLzlIdgmh6A+wns4pw/epyUOVZXrdCwyUNx2UsA+S3y3ReLx+HOEhYO0i
+	e+t3TAghcLfvCKoQ3HClg+GI51hLxIMcU7lE1OwVrstEJIWHCkPe2m2VZToeXMV4kqOj41D16
+	Na+VyLWth8eAGiE2GSyCC7PUuQe60/1mmnykHQ==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.13
-Subject: [Qemu-trivial] [PULL 0/5] Trivial branch patches
+Subject: [Qemu-trivial] [PULL 1/5] thunk: improve readability of allocation
+ loop
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,42 +65,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2019 19:11:51 -0000
+X-List-Received-Date: Mon, 11 Mar 2019 19:11:54 -0000
 
-The following changes since commit 208d92df447bde0f1f810fae8a2c523cdeb7a28f:
+From: Aarushi Mehta <mehta.aaru20@gmail.com>
 
-  Merge remote-tracking branch 'remotes/cohuck/tags/s390x-20190311' into staging (2019-03-11 16:27:14 +0000)
+Signed-off-by: Aarushi Mehta <mehta.aaru20@gmail.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Message-Id: <a09acf9e093c09a70896bb9886370cf7f049f941.camel@gmail.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ thunk.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-are available in the Git repository at:
-
-  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
-
-for you to fetch changes up to 3b777a79c1cfa40f39f96220bc733eccd7392c9c:
-
-  hw/nvram/fw_cfg: Use the ldst API (2019-03-11 18:48:20 +0100)
-
-----------------------------------------------------------------
-fw_cfg and thunk code clean up
-
-----------------------------------------------------------------
-
-Aarushi Mehta (1):
-  thunk: improve readability of allocation loop
-
-Philippe Mathieu-Daudé (4):
-  hw/nvram/fw_cfg: Remove the unnecessary boot_splash_filedata_size
-  hw/i386: Remove unused include
-  hw/arm/virt: Remove null-check in virt_build_smbios()
-  hw/nvram/fw_cfg: Use the ldst API
-
- hw/acpi/piix4.c         | 1 -
- hw/arm/virt.c           | 4 ----
- hw/nvram/fw_cfg.c       | 9 ++++-----
- include/sysemu/sysemu.h | 1 -
- thunk.c                 | 2 +-
- vl.c                    | 1 -
- 6 files changed, 5 insertions(+), 13 deletions(-)
-
+diff --git a/thunk.c b/thunk.c
+index 17f3d320bb8e..7f31cffe0968 100644
+--- a/thunk.c
++++ b/thunk.c
+@@ -86,7 +86,7 @@ void thunk_register_struct(int id, const char *name, const argtype *types)
+ #endif
+     /* now we can alloc the data */
+ 
+-    for(i = 0;i < 2; i++) {
++    for (i = 0; i < ARRAY_SIZE(se->field_offsets); i++) {
+         offset = 0;
+         max_align = 1;
+         se->field_offsets[i] = g_new(int, nb_fields);
 -- 
 2.20.1
 
