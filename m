@@ -1,104 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h3PCN-0007T1-HD
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2019 13:58:51 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45636)
+	id 1h3QL2-0005Ku-Vh
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2019 15:11:53 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60001)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1h3PCL-0007Ey-2A
-	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 13:58:49 -0400
+	(envelope-from <laurent@vivier.eu>) id 1h3QL0-0005Hs-Bv
+	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 15:11:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1h3P8v-00024K-DO
-	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 13:55:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38948)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
-	id 1h3P8u-000238-9V; Mon, 11 Mar 2019 13:55:16 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4F4B130832CF;
-	Mon, 11 Mar 2019 17:55:15 +0000 (UTC)
-Received: from [10.36.112.64] (ovpn-112-64.ams2.redhat.com [10.36.112.64])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id CFA665D706;
-	Mon, 11 Mar 2019 17:55:13 +0000 (UTC)
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Greg Kurz <groug@kaod.org>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20190311165538.6623-1-alex.bennee@linaro.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
-	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
-	uUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
-Message-ID: <532e5c6d-b93e-7fb3-f987-22e9b0362acb@redhat.com>
-Date: Mon, 11 Mar 2019 18:55:11 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.4.0
+	(envelope-from <laurent@vivier.eu>) id 1h3QKz-0003Qx-PG
+	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 15:11:50 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:45687)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1h3QKz-0003PF-EW; Mon, 11 Mar 2019 15:11:49 -0400
+Received: from localhost.localdomain ([78.238.229.36]) by
+	mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA
+	(Nemesis)
+	id 1McpW8-1gTXHg42J0-00ZxL0; Mon, 11 Mar 2019 20:11:35 +0100
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, Laszlo Ersek <lersek@redhat.com>,
+	Riku Voipio <riku.voipio@iki.fi>, Paolo Bonzini <pbonzini@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>,
+	Gerd Hoffmann <kraxel@redhat.com>
+Date: Mon, 11 Mar 2019 20:11:23 +0100
+Message-Id: <20190311191128.30562-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <20190311165538.6623-1-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.44]);
-	Mon, 11 Mar 2019 17:55:15 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:uiggGIFE87+5Ro86d2bMo0VnUBp95H9mK+y59bi/ruNY/bG2eWF
+	smvx/WpiH3TKo7c2eC+LCkIhKP45PQKHZtziai0Wa1eKnY0Ahb0BG7lGEbOOF6B9nDROjU/
+	Y/yRObodqZyCHw+CAm98a2qgmGTVgEYvwnuoM4v1Vmdtu6/iBYMbWWpavchK2xvRXUuqRxw
+	4iIgIHV1rEse2lhSn1qlA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:jXYyqVadXbE=:3W5fVw1FVWyKosngBRcka8
+	yLveP20m8YprKPH6slqrsXbFW/9Gs8xUGJzfCXesmAmuxhi2UZHJfBCJh8Mh6laNxd0TYdgZY
+	7GTcVnsV7+iof0XGC76maq70KslVm3iXqxAYNFRUDuPJEqxLrc2D6p+LjuHlC+V/AxeZgmO17
+	7x1Nj0LWKn8cfYUaDQtzfeFDE5ySgENc0qxKr5JJFLCMMZogFg92SbObdkSyMqgtLahjFvZ4P
+	bQVSYJ5sIE5RkbsyAc2pBucFuxGUmbQwQpGiGkV+DBOzbMFYB6oZmLo4VWMnjU+k3JWb9liay
+	DdfZ2uMFy2MGDv54k9WgkNfggBN737yuc0yQTjbYmh82BLpvc0/mzNiEd8bys5+kfK/OZUm9R
+	NyplwUXyhBi97g7m9joiSwKN55Gi1vjAMHzmkD1JXEw0wG5baS8iTDfF93FPzkbg4PA3B6sh0
+	Q2Vh3S+UzN1VjvtEa5JiO5J3lnp3HBjjmm5JaQLunCnr4tcokfAs82+OfqT7VSN/O41FL+Pad
+	JyOP58/FzoIdfrB5T1eJpy1IEpLyJho6OeSXruxrlOqUQUkKYvz0UAJf0SXndJJxt4p3Mlf1N
+	1h2Lwi87eeo69xxnwtkgBb3rfyTCWCLeTD6NIlKnqF/wPZPiA+XLW4OBgF25PrtvSFSUBJn5Z
+	AiYe0B6Ghimq7YX9dOYUlcSB7gSTaC6niWu3Sf/QfDk6d+SyIyU8nU3h62gaCO3DVcLnOVy29
+	gA1mOFziZCXSa1EaX4XUIXd0zzCLjwp8e7ROjbXYcleq2OG0FFh1Dm3kePk=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] scripts/qemugdb: re-license timers.py to
- GPLv2 or later
+X-Received-From: 212.227.17.13
+Subject: [Qemu-trivial] [PULL 0/5] Trivial branch patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -110,39 +62,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2019 17:58:50 -0000
+X-List-Received-Date: Mon, 11 Mar 2019 19:11:51 -0000
 
-On 11/03/19 17:55, Alex Benn=C3=A9e wrote:
-> I'm the sole author (aside from a one line by Greg fixing encoding)
-> and I was asked nicely on IRC to bring it into line with the rest of
-> the files.
->=20
-> Cc: Greg Kurz <groug@kaod.org>
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> ---
->  scripts/qemugdb/timers.py | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
->=20
-> diff --git a/scripts/qemugdb/timers.py b/scripts/qemugdb/timers.py
-> index 51ea04b5e2..f0e132d27a 100644
-> --- a/scripts/qemugdb/timers.py
-> +++ b/scripts/qemugdb/timers.py
-> @@ -6,8 +6,10 @@
->  #
->  # Author: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->  #
-> -# This work is licensed under the terms of the GNU GPL, version 2.  Se=
-e
-> -# the COPYING file in the top-level directory.
-> +# This work is licensed under the terms of the GNU GPL, version 2 or l=
-ater.
-> +# See the COPYING file in the top-level directory.
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> =20
->  # 'qemu timers' -- display the current timerlists
-> =20
->=20
+The following changes since commit 208d92df447bde0f1f810fae8a2c523cdeb7a28f:
 
-+qemu-trivial
+  Merge remote-tracking branch 'remotes/cohuck/tags/s390x-20190311' into staging (2019-03-11 16:27:14 +0000)
+
+are available in the Git repository at:
+
+  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+
+for you to fetch changes up to 3b777a79c1cfa40f39f96220bc733eccd7392c9c:
+
+  hw/nvram/fw_cfg: Use the ldst API (2019-03-11 18:48:20 +0100)
+
+----------------------------------------------------------------
+fw_cfg and thunk code clean up
+
+----------------------------------------------------------------
+
+Aarushi Mehta (1):
+  thunk: improve readability of allocation loop
+
+Philippe Mathieu-Daudé (4):
+  hw/nvram/fw_cfg: Remove the unnecessary boot_splash_filedata_size
+  hw/i386: Remove unused include
+  hw/arm/virt: Remove null-check in virt_build_smbios()
+  hw/nvram/fw_cfg: Use the ldst API
+
+ hw/acpi/piix4.c         | 1 -
+ hw/arm/virt.c           | 4 ----
+ hw/nvram/fw_cfg.c       | 9 ++++-----
+ include/sysemu/sysemu.h | 1 -
+ thunk.c                 | 2 +-
+ vl.c                    | 1 -
+ 6 files changed, 5 insertions(+), 13 deletions(-)
+
+-- 
+2.20.1
+
 
