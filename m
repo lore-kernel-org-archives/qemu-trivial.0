@@ -1,74 +1,104 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h3NgH-0001aN-0T
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2019 12:21:37 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:53446)
+	id 1h3PCN-0007T1-HD
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2019 13:58:51 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:45636)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1h3NgF-0001Ya-1t
-	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 12:21:35 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1h3PCL-0007Ey-2A
+	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 13:58:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1h3NgE-0002Rq-8r
-	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 12:21:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36244)
+	(envelope-from <pbonzini@redhat.com>) id 1h3P8v-00024K-DO
+	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 13:55:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38948)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1h3NgC-0002PC-0p; Mon, 11 Mar 2019 12:21:32 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>)
+	id 1h3P8u-000238-9V; Mon, 11 Mar 2019 13:55:16 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 391AD308FB9D;
-	Mon, 11 Mar 2019 16:21:31 +0000 (UTC)
-Received: from [10.3.118.35] (ovpn-118-35.phx2.redhat.com [10.3.118.35])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9555560123;
-	Mon, 11 Mar 2019 16:21:28 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
-	<philmd@redhat.com>
-References: <1552300145-12526-1-git-send-email-thuth@redhat.com>
-From: Eric Blake <eblake@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 4F4B130832CF;
+	Mon, 11 Mar 2019 17:55:15 +0000 (UTC)
+Received: from [10.36.112.64] (ovpn-112-64.ams2.redhat.com [10.36.112.64])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id CFA665D706;
+	Mon, 11 Mar 2019 17:55:13 +0000 (UTC)
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Greg Kurz <groug@kaod.org>,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <20190311165538.6623-1-alex.bennee@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
 Openpgp: preference=signencrypt
-Autocrypt: addr=eblake@redhat.com; keydata=
-	xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
-	xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
-	TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
-	GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
-	sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
-	AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
-	CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
-	RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
-	wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
-	Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
-	gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
-	pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
-	zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
-	pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
-	3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
-	NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
-	cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
-	SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
-	I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
-	mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
-	Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
-	2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
-Organization: Red Hat, Inc.
-Message-ID: <6d46de0f-a443-2c90-334b-edd34325ac16@redhat.com>
-Date: Mon, 11 Mar 2019 11:21:27 -0500
+Autocrypt: addr=pbonzini@redhat.com; prefer-encrypt=mutual; keydata=
+	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
+	uUHgL9dKIfvpm+rNXRn9wAwGjk0X/A==
+Message-ID: <532e5c6d-b93e-7fb3-f987-22e9b0362acb@redhat.com>
+Date: Mon, 11 Mar 2019 18:55:11 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.5.1
+	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <1552300145-12526-1-git-send-email-thuth@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="3NYOdmDI1QFfX0zYfAGB1voUcH6HJV7K1"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+In-Reply-To: <20190311165538.6623-1-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.43]);
-	Mon, 11 Mar 2019 16:21:31 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.44]);
+	Mon, 11 Mar 2019 17:55:15 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] configure: Remove old
- *-config-devices.mak.d files when running configure
+Subject: Re: [Qemu-trivial] [PATCH] scripts/qemugdb: re-license timers.py to
+ GPLv2 or later
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,95 +110,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2019 16:21:36 -0000
+X-List-Received-Date: Mon, 11 Mar 2019 17:58:50 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---3NYOdmDI1QFfX0zYfAGB1voUcH6HJV7K1
-Content-Type: multipart/mixed; boundary="Ai0J8rrq78vGQcQwhIcRM172fTZY1VoOM";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>
-Message-ID: <6d46de0f-a443-2c90-334b-edd34325ac16@redhat.com>
-Subject: Re: [PATCH] configure: Remove old *-config-devices.mak.d files when
- running configure
-References: <1552300145-12526-1-git-send-email-thuth@redhat.com>
-In-Reply-To: <1552300145-12526-1-git-send-email-thuth@redhat.com>
-
---Ai0J8rrq78vGQcQwhIcRM172fTZY1VoOM
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-On 3/11/19 5:29 AM, Thomas Huth wrote:
-> When running "make" in a build directory from the pre-Kconfig merge tim=
-e,
-> the build process currently fails with:
+On 11/03/19 17:55, Alex Benn=C3=A9e wrote:
+> I'm the sole author (aside from a one line by Greg fixing encoding)
+> and I was asked nicely on IRC to bring it into line with the rest of
+> the files.
 >=20
->  make: *** No rule to make target `.../default-configs/pci.mak',
->   needed by `aarch64-softmmu/config-devices.mak'.  Stop.
->=20
-> To make sure that this problem at least goes away when the user runs
-> "configure" (or "sh config.status") again, we have to make sure that
-> we re-generate the .mak.d files. Thus remove the old stale files
-> while running the configure script.
->=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Cc: Greg Kurz <groug@kaod.org>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 > ---
->  configure | 3 +++
->  1 file changed, 3 insertions(+)
-
-What are the conditions for make deciding it needs to rerun
-config.status? Are end users still going to get 'make' failing with the
-cryptic message (where we just advise on-list and on-wiki to
-'./config.status' to fix it), or is there a way to build in a dependency
-so that the makefile itself knows that if config.status has to be rerun,
-that takes priority over any other rule that depends on .mak files?
-
+>  scripts/qemugdb/timers.py | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 >=20
-> diff --git a/configure b/configure
-> index b354e74..32c847f 100755
-> --- a/configure
-> +++ b/configure
-> @@ -1792,6 +1792,9 @@ EOF
->  exit 0
->  fi
+> diff --git a/scripts/qemugdb/timers.py b/scripts/qemugdb/timers.py
+> index 51ea04b5e2..f0e132d27a 100644
+> --- a/scripts/qemugdb/timers.py
+> +++ b/scripts/qemugdb/timers.py
+> @@ -6,8 +6,10 @@
+>  #
+>  # Author: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>  #
+> -# This work is licensed under the terms of the GNU GPL, version 2.  Se=
+e
+> -# the COPYING file in the top-level directory.
+> +# This work is licensed under the terms of the GNU GPL, version 2 or l=
+ater.
+> +# See the COPYING file in the top-level directory.
+> +#
+> +# SPDX-License-Identifier: GPL-2.0-or-later
 > =20
-> +# Remove old dependency files to make sure that they get properly rege=
-nerated
-> +rm -f *-config-devices.mak.d
-> +
->  if ! has $python; then
->    error_exit "Python not found. Use --python=3D/path/to/python"
->  fi
+>  # 'qemu timers' -- display the current timerlists
+> =20
 >=20
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
-
---Ai0J8rrq78vGQcQwhIcRM172fTZY1VoOM--
-
---3NYOdmDI1QFfX0zYfAGB1voUcH6HJV7K1
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlyGiwcACgkQp6FrSiUn
-Q2r86Af/VRJDF3RUpBcpcETmr4Xbb9lGe8m+lHqXP4I7R05e4Fvckxwrc523PDoX
-JtEBRZzJn9aUtdjdj9teN7xevsMHoMK/g8+ZZ8YBYZEiWuIJXEqvWdQkjQwDBCb4
-nWu/6BHqCz9TVs2mhVZ3am5/q8aLw76Lkr/N2+9Ya+C4+liRrpQEUvmb+bsL0orQ
-Y2HM1/8Yw377uF6JXIYGMB+tiyZ46u6XTIi93S1Cis+BZAcKLDJtEycZe7WeyLDo
-HzQzKV724WbKQ7QgJbcG/xt3jbysJbCUCIb54fl+oZ8lkiZd2AGewgi0fl0hUZDt
-IHDOOiO9mVfDSB1aTMYIP6dehirNJQ==
-=25cx
------END PGP SIGNATURE-----
-
---3NYOdmDI1QFfX0zYfAGB1voUcH6HJV7K1--
++qemu-trivial
 
