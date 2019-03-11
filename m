@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h3QL5-0005NY-JC
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2019 15:11:55 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60071)
+	id 1h3QL7-0005QB-QY
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2019 15:11:57 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60127)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h3QL3-0005Lb-If
-	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 15:11:54 -0400
+	(envelope-from <laurent@vivier.eu>) id 1h3QL5-0005NT-HC
+	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 15:11:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h3QL2-0003Tr-PL
-	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 15:11:53 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:35901)
+	(envelope-from <laurent@vivier.eu>) id 1h3QL4-0003WR-Qd
+	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 15:11:55 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:46901)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h3QKz-0003PA-Eh; Mon, 11 Mar 2019 15:11:49 -0400
+	id 1h3QL4-0003Uo-Du; Mon, 11 Mar 2019 15:11:54 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1MV6G0-1hSCyc0iqU-00S5WQ; Mon, 11 Mar 2019 20:11:36 +0100
+	id 1MkYkC-1gdPhl2LxW-00m6PW; Mon, 11 Mar 2019 20:11:39 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Laszlo Ersek <lersek@redhat.com>,
@@ -25,35 +25,35 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Laszlo Ersek <lersek@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>,
-	Gerd Hoffmann <kraxel@redhat.com>, Aarushi Mehta <mehta.aaru20@gmail.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>
-Date: Mon, 11 Mar 2019 20:11:24 +0100
-Message-Id: <20190311191128.30562-2-laurent@vivier.eu>
+	Gerd Hoffmann <kraxel@redhat.com>, Markus Armbruster <armbru@redhat.com>
+Date: Mon, 11 Mar 2019 20:11:27 +0100
+Message-Id: <20190311191128.30562-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190311191128.30562-1-laurent@vivier.eu>
 References: <20190311191128.30562-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:V3rV00znpLrw2EPDqF8QZ1krrSFLot7j6A2eDzXgF0rILoCbU+U
-	XZ7i9XUUoLPB8A64OD4YwS2bllQxHDP/gom8khwhau+FDP+eXbbnIgFD2OJdn9k7Qm/WoI+
-	+v/LK0pmToMzEbs74NYHQmRV48DN9GN9ftu5m5Xz5omHtthS1U+8k0zZe7QmqUu3kTDgxr0
-	OlF2lK5fsyS1nn+Zv5hIw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:keO88pR/iVE=:HKErR4ObzhAp0fky+vXTD/
-	e+Ob1NGKRRpEYDweZvzmr4341GRfTXb9KWeK8j259ae92cVrvPW9tGSbHjcrvqfK+FhQB5sND
-	QN7pEvZDXTj3mDvvYiL+7Xn6fnBrimwBJMQFPGZpAfV7gzpUWvYAjI2qIyUJyZR99+PFk02G4
-	B99K/bK34XH0qnoL7G3Ubo+xy45CSR+lmurO5Sz+wGqE6mMYDK11iTrTUCGfQJCMsh7vunUjD
-	3D2JEKJZGAnbnvkDsqtyrbkQfGkTcTdFXXJYVDXWtiiAguKMNLwu9z677+lPithZKsN786VNG
-	ZuE6ZcH/7IL6f6N05zpCz2xr/jsJQUzTtv8QsRz4bSKl3mC0//TIFAAsBNeSdA4Bd4PFhXatE
-	3vxT+Up5mT/eheFc53Qm+x9R+dMsCRlsThP0kLcH46CWVbrdldgb5r6BrXpVM7GGqk4lzMd7T
-	iWg7iKoj9wn3V67UGrmvAVYZr/wllU3kJz2sYm2mrlSzeynIH9K0sP2xYlUg/oG1iO8n/Cz+M
-	ZligjUQ/UusyoLHOpWAFicyEwEhlg/8n3sOouerifnqknV6cL9/VVoFPO4th1fukCspFhs/Ow
-	H6HC+FQMVeTwCM+QNLzlIdgmh6A+wns4pw/epyUOVZXrdCwyUNx2UsA+S3y3ReLx+HOEhYO0i
-	e+t3TAghcLfvCKoQ3HClg+GI51hLxIMcU7lE1OwVrstEJIWHCkPe2m2VZToeXMV4kqOj41D16
-	Na+VyLWth8eAGiE2GSyCC7PUuQe60/1mmnykHQ==
+X-Provags-ID: V03:K1:ixxF0H+MoBCgnQiepnZhCOBCG3pviUjJCeH8j2JQGbKgx2eaGVl
+	FfZZ2KOYE8VVbH8sg+C+7FX8I2yC3up0z/7IHObzUu2Mh8DAycUe5luCSvcSG4+Z8BBXdxI
+	4HRxvo+cZNwO87v0ztJAsXSKUZxKPbcIjEK6Sen3N4R3QSGfBrZ3+P9F8b2KfULVZoZDdY3
+	kaBt4sem+ldeMER1yac5w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:0mxlzMy3Pso=:LOy2L9wK+lq+U1aevPq0II
+	N8rQyYujvQaOioGRaU35FCGPRpIPhkyaVwWJbvDfNb6QbQzsUjwxNhFb+hSby68y/gthN2ObO
+	TskrqDDJupodKDhfCbMwcznFmpa88ecjL5WdFdKsdFUTkchIUQCuwtUNQzP02gA9UY0jlyuzB
+	DF4uBnw/DUM8vknjm3T1sphTeGVHDfXu27o5Xca1gDRgolEhwkYp3PIIUlf37f4Uu29Txzvhk
+	3ADvMnvuIneTvLSsqTPTa+oRziJbqLZoYEJ7smP3n5x5V/nALydo8kntrStcauTlYuzZTqMuC
+	T5R2X3p3bByV1mMv2mKao2MIm1Kuv9jjqsNcrcvQEvy8x5f0zqOvGPkQnT33MXxmlytSgjPC+
+	9LtdL/Jr/wW9Knb6UZdxP53Sp/1Fdl4AkappQnENYP08h8Nt2EMjr4PYHsDUSXUOwM5+ugm07
+	+g6btYWQRgwxbRFKLcCF29kgAgx8/CTddnVuTo+mLoeXPwk4/sGDSh6rBN4KDulZ0Ljgzrlm+
+	fdrhY4/c4sXUAAj8G/ibjggCT8STomOpYZewczOaIizUfXN0b5MjOeFpL7+YmWyKNy/IBHCiO
+	6JucCkdfaeTkvUs59J9xmEVOI87k2M+dd12uHuhYAGicm6abOAD8Pz4uDgDtHOqtsgMqwzJVQ
+	MosRjL9TyMSuxXZEjlEOqcUHopuO0+bNSmryX+dZC+hEE184ZCUifhpIL72qmJlXQJs1CY4vE
+	osHY/1YYIffyo7RGl1gTMTvHERR149VKOyKz31R30+DED0KYHXUEZUG9Y8k=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
-Subject: [Qemu-trivial] [PULL 1/5] thunk: improve readability of allocation
- loop
+X-Received-From: 217.72.192.74
+Subject: [Qemu-trivial] [PULL 4/5] hw/arm/virt: Remove null-check in
+ virt_build_smbios()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,31 +65,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2019 19:11:54 -0000
+X-List-Received-Date: Mon, 11 Mar 2019 19:11:56 -0000
 
-From: Aarushi Mehta <mehta.aaru20@gmail.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Signed-off-by: Aarushi Mehta <mehta.aaru20@gmail.com>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-Id: <a09acf9e093c09a70896bb9886370cf7f049f941.camel@gmail.com>
+Since commit 578f3c7b0835 ("arm: add fw_cfg to "virt" board",
+2014-12-22), the machvirt_init() unconditionally creates the
+fw_cfg object.  Later, commit c30e15658b1b ("smbios: implement
+smbios support for mach-virt", 2015-09-07) added a superfluous
+null-check on it.
+Remove this superfluous check.
+
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20190309181920.30553-2-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- thunk.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/virt.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/thunk.c b/thunk.c
-index 17f3d320bb8e..7f31cffe0968 100644
---- a/thunk.c
-+++ b/thunk.c
-@@ -86,7 +86,7 @@ void thunk_register_struct(int id, const char *name, const argtype *types)
- #endif
-     /* now we can alloc the data */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 7f66ddad89f6..377e95a4cdb0 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1281,10 +1281,6 @@ static void virt_build_smbios(VirtMachineState *vms)
+     size_t smbios_tables_len, smbios_anchor_len;
+     const char *product = "QEMU Virtual Machine";
  
--    for(i = 0;i < 2; i++) {
-+    for (i = 0; i < ARRAY_SIZE(se->field_offsets); i++) {
-         offset = 0;
-         max_align = 1;
-         se->field_offsets[i] = g_new(int, nb_fields);
+-    if (!vms->fw_cfg) {
+-        return;
+-    }
+-
+     if (kvm_enabled()) {
+         product = "KVM Virtual Machine";
+     }
 -- 
 2.20.1
 
