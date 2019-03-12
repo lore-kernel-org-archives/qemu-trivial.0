@@ -1,58 +1,94 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h3QLC-0005TR-MY
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2019 15:12:02 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60228)
+	id 1h3bRG-0002oA-9p
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Mar 2019 03:03:02 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56461)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h3QL9-0005Re-7C
-	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 15:12:01 -0400
+	(envelope-from <thuth@redhat.com>) id 1h3bRD-0002nf-V3
+	for qemu-trivial@nongnu.org; Tue, 12 Mar 2019 03:03:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h3QL8-0003aZ-FE
-	for qemu-trivial@nongnu.org; Mon, 11 Mar 2019 15:11:59 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:35411)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h3QL4-0003VY-PP; Mon, 11 Mar 2019 15:11:55 -0400
-Received: from localhost.localdomain ([78.238.229.36]) by
-	mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA
-	(Nemesis)
-	id 1Mk0FS-1gf3rg2hGi-00kRiS; Mon, 11 Mar 2019 20:11:40 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, Laszlo Ersek <lersek@redhat.com>,
-	Riku Voipio <riku.voipio@iki.fi>, Paolo Bonzini <pbonzini@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
-	Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>,
-	Gerd Hoffmann <kraxel@redhat.com>
-Date: Mon, 11 Mar 2019 20:11:28 +0100
-Message-Id: <20190311191128.30562-6-laurent@vivier.eu>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190311191128.30562-1-laurent@vivier.eu>
-References: <20190311191128.30562-1-laurent@vivier.eu>
+	(envelope-from <thuth@redhat.com>) id 1h3bPq-00009E-Pu
+	for qemu-trivial@nongnu.org; Tue, 12 Mar 2019 03:01:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60554)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1h3bPo-00004y-Tn; Tue, 12 Mar 2019 03:01:33 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 096D63DDB8;
+	Tue, 12 Mar 2019 07:01:31 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-84.ams2.redhat.com [10.36.116.84])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 92FB55D70E;
+	Tue, 12 Mar 2019 07:01:29 +0000 (UTC)
+To: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+	<alex.bennee@linaro.org>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	qemu-devel@nongnu.org, Greg Kurz <groug@kaod.org>
+References: <20190311165538.6623-1-alex.bennee@linaro.org>
+	<532e5c6d-b93e-7fb3-f987-22e9b0362acb@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <fdbdeb73-032b-229b-c25b-aeb60770c38c@redhat.com>
+Date: Tue, 12 Mar 2019 08:01:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:O3d1O9PL+YJpFY83VOHpBzFgNXCjBqdqt5u3eRlfFznZeVE4Mlj
-	oDJK6z3/pDMNuDsD+XYt2iCmUtD74mO5x3QW1vnY2aE8QZgDVPMcbHIqpUYYXWnjz7Sro3j
-	6ZVm7Jq75cNNMdVY4dQwmSRUolGai6eeMg44TUhUDyvgOZVDxkysynOH9iXWtyA2Tf9pYjU
-	dz4Re0AjxR7R4lR3m0XFA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:5O++kXf8Qqo=:y2vymZd5uMYCXpFpD4lpnS
-	DVp24k4XUpqgwNrfiUl8aX72EIKjvsVTDe84jVPp1Ks2V7ffOXwDi7S/6Zs5ooNseQ54pqwfQ
-	eyKV/yyHnVsahhdo6FWvpqw1bMNq4BWha/5wEnC8bfOG0ZHu5jn+91vMOJTKtOMaXemY21AxH
-	CtnOiuz+H8amg2BgN18BpdpANFzmu39Q+l5XVSP7WYjPcq/1rWGa0LdJGEDQ+HMoI+lomxfzV
-	673qH4C5ANUzx/b64hNtXJsewOxPJ1V7ELUKrWTP/niCnNKjl/9/yy61zd/u9FbRgm4qqtw7o
-	vwFALaxaYtiPXsyGK5VbM338xRnZ97rtKhapRDCGiirYQrbM+MBCAduQB8BDkIB2TMiVo8GHb
-	PCSEcydy9NBSiGqP+Bkf698d6ZRHQwy7ZJpl7JVU3d4HE0rMAMjHThsFECkM4N/9xifbdYhmx
-	gAp6itDjtdsHodXiF9MMK91+Xmjorx3GXFBzSF/k8ZLEpcUZKepbz0Q8Oaqk+2LuLQdEV5XZ2
-	Hs+rzMJD+4QhwiCeKd+uQNJSmE364CRITKATAC066+B7opTHtINr3ZSztCxwz8fcB4yjPirL5
-	9fI8afEJXrHYYLZIFu75IbWVpMr5HRC7ep9KyDJgtlBck+MoM/G2ysnQKrrIX83xl+tDn6yBK
-	F1sQDUC47hloQRcnOJZhQQeQpkq9qkIxHYDNMGHz1+O9qTiimaTr0eGek70V2+GPGXAWT5z0y
-	V6/bxdwQPRaXJB00Vsw0ZxAwu4Fc9BzHeOxS/zgNvasbx2Lka1xGTLeuDvY=
+In-Reply-To: <532e5c6d-b93e-7fb3-f987-22e9b0362acb@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.29]);
+	Tue, 12 Mar 2019 07:01:31 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.10
-Subject: [Qemu-trivial] [PULL 5/5] hw/nvram/fw_cfg: Use the ldst API
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] scripts/qemugdb: re-license
+ timers.py to GPLv2 or later
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,43 +100,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2019 19:12:01 -0000
+X-List-Received-Date: Tue, 12 Mar 2019 07:03:01 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+On 11/03/2019 18.55, Paolo Bonzini wrote:
+> On 11/03/19 17:55, Alex Benn=C3=A9e wrote:
+>> I'm the sole author (aside from a one line by Greg fixing encoding)
+>> and I was asked nicely on IRC to bring it into line with the rest of
+>> the files.
+>>
+>> Cc: Greg Kurz <groug@kaod.org>
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> ---
+>>  scripts/qemugdb/timers.py | 6 ++++--
+>>  1 file changed, 4 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/scripts/qemugdb/timers.py b/scripts/qemugdb/timers.py
+>> index 51ea04b5e2..f0e132d27a 100644
+>> --- a/scripts/qemugdb/timers.py
+>> +++ b/scripts/qemugdb/timers.py
+>> @@ -6,8 +6,10 @@
+>>  #
+>>  # Author: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>>  #
+>> -# This work is licensed under the terms of the GNU GPL, version 2.  S=
+ee
+>> -# the COPYING file in the top-level directory.
+>> +# This work is licensed under the terms of the GNU GPL, version 2 or =
+later.
+>> +# See the COPYING file in the top-level directory.
+>> +#
+>> +# SPDX-License-Identifier: GPL-2.0-or-later
+>> =20
+>>  # 'qemu timers' -- display the current timerlists
+>=20
+> +qemu-trivial
 
-The load/store API eases code review.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20190309181920.30553-3-philmd@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/nvram/fw_cfg.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-index 13aab122889d..5c3a46ce6f2a 100644
---- a/hw/nvram/fw_cfg.c
-+++ b/hw/nvram/fw_cfg.c
-@@ -85,7 +85,7 @@ static char *read_splashfile(char *filename, gsize *file_sizep,
-     }
- 
-     /* check magic ID */
--    filehead = ((content[0] & 0xff) + (content[1] << 8)) & 0xffff;
-+    filehead = lduw_le_p(content);
-     if (filehead == 0xd8ff) {
-         file_type = JPG_FILE;
-     } else if (filehead == 0x4d42) {
-@@ -96,7 +96,7 @@ static char *read_splashfile(char *filename, gsize *file_sizep,
- 
-     /* check BMP bpp */
-     if (file_type == BMP_FILE) {
--        bmp_bpp = (content[28] + (content[29] << 8)) & 0xffff;
-+        bmp_bpp = lduw_le_p(&content[28]);
-         if (bmp_bpp != 24) {
-             goto error;
-         }
--- 
-2.20.1
-
+... I think Laurent just sent his trivial PULL request for soft-freeze
+already ... I still plan to send another PULL request today, so if
+nobody else wants to pick it up for soft-freeze today, I can add it to
+my queue if you like.
 
