@@ -1,73 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h4PSn-00032A-Pm
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Mar 2019 08:27:57 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37182)
+	id 1h4RvQ-0002PH-J6
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Mar 2019 11:05:40 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:41736)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1h4PSl-00030J-OZ
-	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 08:27:56 -0400
+	(envelope-from <laurent@vivier.eu>) id 1h4RvJ-0002M4-TA
+	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 11:05:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1h4PSk-0001yM-OD
-	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 08:27:55 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51448)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1h4PSi-0001xh-Tg; Thu, 14 Mar 2019 08:27:53 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 30FF34024D;
-	Thu, 14 Mar 2019 12:27:52 +0000 (UTC)
-Received: from [10.3.118.35] (ovpn-118-35.phx2.redhat.com [10.3.118.35])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A189D6B8F4;
-	Thu, 14 Mar 2019 12:27:51 +0000 (UTC)
-To: Stefano Garzarella <sgarzare@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Markus Armbruster <armbru@redhat.com>
-References: <20190314104622.101715-1-sgarzare@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=eblake@redhat.com; keydata=
-	xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
-	xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
-	TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
-	GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
-	sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
-	AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
-	CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
-	RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
-	wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
-	Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
-	gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
-	pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
-	zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
-	pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
-	3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
-	NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
-	cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
-	SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
-	I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
-	mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
-	Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
-	2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
-Organization: Red Hat, Inc.
-Message-ID: <30b41a92-66da-2fe4-b550-1c1db2ab5189@redhat.com>
-Date: Thu, 14 Mar 2019 07:27:50 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.5.1
+	(envelope-from <laurent@vivier.eu>) id 1h4RvH-0004fm-Uv
+	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 11:05:33 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:51461)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1h4RvA-0004Mq-A6; Thu, 14 Mar 2019 11:05:26 -0400
+Received: from localhost.localdomain ([78.238.229.36]) by
+	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
+	(Nemesis)
+	id 1MdwRi-1gVw753iSc-00b61y; Thu, 14 Mar 2019 16:05:06 +0100
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>, Stefano Garzarella <sgarzare@redhat.com>,
+	Eric Blake <eblake@redhat.com>
+Date: Thu, 14 Mar 2019 16:04:53 +0100
+Message-Id: <20190314150454.15960-3-laurent@vivier.eu>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190314150454.15960-1-laurent@vivier.eu>
+References: <20190314150454.15960-1-laurent@vivier.eu>
 MIME-Version: 1.0
-In-Reply-To: <20190314104622.101715-1-sgarzare@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="aMro0jdKVe6VjhhRaP1pljJ9YxjpJjnJe"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.30]);
-	Thu, 14 Mar 2019 12:27:52 +0000 (UTC)
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:QOzHV2Z0jql5HMXU4ECXNmO2puJkC22XGj7botvetuJwvSmHVv7
+	Ld5dK6GjyC64yi60q4kCUfVmqRjZPEpsU1+De2dGkFnPpnduOXCg04FvKiPio5XWFJd0xfS
+	R8d8LXfHD7sAomk6Ij9Fes6iWNqzkNN4wxJXNwNMhxhpNyyUaLkpQvboUdYhvSQOfCaue5G
+	KwElc540ICvMgufgVmQYg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:4NtJuCq56Yc=:Hy5MCW9w7UKMByiw//Sk0i
+	J23F8Bikf8b+XJjsMRTfrEjhtev480T6YB4OomoeeMovzjBgms74049032OkW+5ctQAKn2Qln
+	EnWCIRkluZHhsfsjEbf7Sjnjqfj7vXvitY4/ecppvptkZRivLcJmvZeBHrC+zgpIAhJkVXeAJ
+	/Z76lGFRCgdy1tyq5ys95SyCsQGM/YY//1vRE2m53ShYgwqdUy1TNrfB1t7PA64FfytF/nVTC
+	EN8M+zhiZAH43Qrsk5saYKWnIBCC75EpeTfHxLQ0wqgQQwxBbNMLylkx0hspdUHaXdsVBcQEC
+	5wHdLdIJcrKKeLT30SmGlsLQGZ5CM7GjrR+fcDj9zP9+Q7l/SvgnXhqGKuin147sTKvEErErW
+	goxsjYwgLdw6yhjqqkaNVZ+Up4Rdds2W3cjvmAJaaz2D1xFn1D78MeF7OW4bV7EoSAnzhYNBD
+	7tw1PWJ7PbYRT1qrMNRX9wDUHi4SKvMMArrDXuMPLs0Ex2PCO/kUUzrqfHuBGP1Shfm4bwdvM
+	JGniSLP5Bz44Gb6dUXKAMCGSp6UOqsZrmVBgq7VhV5+HneVoRuMWO8378yivNvcTCOIHCqajn
+	ZVHiMWhC6LwNdJuVSW4IfetqC4a//cE8nnqi0Dl/E1uHTGnjN4fE6WDeVuUVvPaAyWrFzoVBp
+	Z6dQKHPWXo8gWlTWtiurz1x8kasMbq/hPwgeg9eLtajo+4Qco5tsTc4WUDGmUq/mUGVA8V/+x
+	7OUJ+HKhlId5+F5tCOoEQA58T7XSNI6xzlEueA==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-4.0 0/2] Update
- .gitignore and tests/.gitignore for in-tree builds
+X-Received-From: 212.227.126.187
+Subject: [Qemu-trivial] [PULL 2/3] .gitignore: ignore docs/built created for
+ in-tree builds
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,70 +59,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Mar 2019 12:27:56 -0000
+X-List-Received-Date: Thu, 14 Mar 2019 15:05:39 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---aMro0jdKVe6VjhhRaP1pljJ9YxjpJjnJe
-Content-Type: multipart/mixed; boundary="2jXjC7vrn3RwU2sZjnAumRcfrdXUZ2vBZ";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Stefano Garzarella <sgarzare@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>
-Message-ID: <30b41a92-66da-2fe4-b550-1c1db2ab5189@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH for-4.0 0/2] Update .gitignore and
- tests/.gitignore for in-tree builds
-References: <20190314104622.101715-1-sgarzare@redhat.com>
-In-Reply-To: <20190314104622.101715-1-sgarzare@redhat.com>
+From: Stefano Garzarella <sgarzare@redhat.com>
 
---2jXjC7vrn3RwU2sZjnAumRcfrdXUZ2vBZ
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Commit 1290e6711 creates 'docs/built' for in-tree builds of
+Sphinx manuals but did not ignore it.
 
-On 3/14/19 5:46 AM, Stefano Garzarella wrote:
-> This series could be useless when we will no longer support in-tree bui=
-lds,
-> but for 4.0 I think it's useful to ignore these files.
-
-series:
+Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
 Reviewed-by: Eric Blake <eblake@redhat.com>
+Message-Id: <20190314104622.101715-2-sgarzare@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ .gitignore | 1 +
+ 1 file changed, 1 insertion(+)
 
->=20
-> Stefano Garzarella (2):
->   .gitignore: ignore docs/built created for in-tree builds
->   tests/.gitignore: ignore test-qapi-emit-events.[ch] for in-tree build=
-s
->=20
->  .gitignore       | 1 +
->  tests/.gitignore | 1 +
->  2 files changed, 2 insertions(+)
->=20
+diff --git a/.gitignore b/.gitignore
+index 42d2d473559d..8f782218044e 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -120,6 +120,7 @@
+ /pc-bios/optionrom/kvmvapic.img
+ /pc-bios/s390-ccw/s390-ccw.elf
+ /pc-bios/s390-ccw/s390-ccw.img
++/docs/built
+ /docs/interop/qemu-ga-qapi.texi
+ /docs/interop/qemu-ga-ref.html
+ /docs/interop/qemu-ga-ref.info*
+-- 
+2.20.1
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
-
---2jXjC7vrn3RwU2sZjnAumRcfrdXUZ2vBZ--
-
---aMro0jdKVe6VjhhRaP1pljJ9YxjpJjnJe
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlyKSMYACgkQp6FrSiUn
-Q2p1iQgAgG8UhHLd1ALJkJwyX9jCqDRdHfKZieD0VrirsEW/6ynXLEH3PfI3+33R
-7Qv1UHAIxdoxo6QdQElxx75n2VWvgH+njEqFB1MGAZd7tgyDh52xWiMTfYvtgMhK
-avdojC/YXdxP3I21qmbAMpeaufU4thDooWrY46RCV0M5t2g/PfPIxF5mLjsGGgEv
-zmLGnbUmgg8sHMNnj/utoTQQ+8Nouy+uoPEBGtkMVXEw13E9Qd4jz+Yr4pn3fZ3D
-t3SG9L4LIIwETZrXkMOSf6twKo8XOKOLiSP2QBGFFsYF1LdLDo2V34HTRdwjST4v
-PNklk/AQIDkM6wJz1wQIV5GejkGK0A==
-=agWz
------END PGP SIGNATURE-----
-
---aMro0jdKVe6VjhhRaP1pljJ9YxjpJjnJe--
 
