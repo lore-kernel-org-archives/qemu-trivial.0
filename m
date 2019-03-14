@@ -1,52 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h4SBv-0007fv-QC
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Mar 2019 11:22:43 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44783)
+	id 1h4TzI-0004qX-C3
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Mar 2019 13:17:48 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:45337)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h4SBt-0007Cx-21
-	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 11:22:42 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1h4TzE-0004nV-MM
+	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 13:17:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1h4RxO-0005m4-Us
-	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 11:07:46 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:52859)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1h4RsQ-0002be-Si; Thu, 14 Mar 2019 11:02:35 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
-	1MavF5-1gSuIu0Mwd-00cSzF; Thu, 14 Mar 2019 16:00:47 +0100
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20190313144557.8845-1-eblake@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <07c6415e-bda3-e01c-57a6-1aaae9db6e89@vivier.eu>
-Date: Thu, 14 Mar 2019 16:00:46 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <peter.maydell@linaro.org>) id 1h4TzC-0003nC-Jx
+	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 13:17:44 -0400
+Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34]:42042)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1h4TzC-0003mU-9U
+	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 13:17:42 -0400
+Received: by mail-io1-xd34.google.com with SMTP id c4so5792073ioh.9
+	for <qemu-trivial@nongnu.org>; Thu, 14 Mar 2019 10:17:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=h/PJij9K3MmjGih50MAaUbGQbCDVLYASCjZbjz+1L5E=;
+	b=MGbAeTmh4KF0KwjXOUZn1WG7b5HP/slJVRcj4kB5BUdphNXKSZva6t+tNMz1wJqZzO
+	8E1Awa/MmPbF0kuDP3WA+YNBk3AV1I64goziopTO3bz5Mk7pv68ux1CdJfH99GCnxy9R
+	r+NfEjvLHrIVveh4Iou/PkR/1H5wVvKAWWAcMIEGe5h21MSbeV1SB8rQr3FUcFoZfmLR
+	y7wsFN8Ens8/a8ror9eQQbgwEaP6INyru7h8dTG33pqhZcgOnZawZtAjV29uCssNcYuM
+	lL8T2xMQ63vzXypLT0RbS2T3AQ4qTr0glIaAGVtZyCkhYzjcDlMSsWI0YNg1qx7qOLMp
+	pqiQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=h/PJij9K3MmjGih50MAaUbGQbCDVLYASCjZbjz+1L5E=;
+	b=bgl1JOBs80ZHuQTml5L7RcnXEUzgRrBXXYRqswFKyGkAI4ov6VaDNHLYn7OHqjm1qo
+	q4uesT42W4cxTqpeWA/0gnmQhTKdF6vnJEHcma1ZKbHZo6Bhn0S5DL7UP6D4XHP1XtHo
+	GiEQQkHR6LRfX5wFLikVFLTfkzeUNM1CaZpHKGN/Sg4e+ZCPhAzBKfifC5x6muzAKDOy
+	HS8D/Irfj/jNtdE9GZod795tUkMytUuqvKQBtostepjXEc49E4Gw3i7TKQnLL+plENa2
+	gTDlkNER0j1867LSrw4ThFkuU/de0HsAPpzi1zLZhoFMkuzmDNakD1DT1MrcGnT9gSs9
+	PeOw==
+X-Gm-Message-State: APjAAAWYnpKutLBurAiFAEBUOvsfJWyczSNJ0CnpWM3WISS8VYj7WWEs
+	6EWtjD9C0TiTZzVUcGWj8TstPM9ooaX0Cjb/sYyseg==
+X-Google-Smtp-Source: APXvYqwgWPW5LrkwfXRCL9MbIP0vPk5K0xbjfs5hKcDuApWR14EyS4xmWeB52k95oSBopRX4OFh17/d767NxNLLiOh0=
+X-Received: by 2002:a6b:7202:: with SMTP id n2mr13905795ioc.82.1552583861162; 
+	Thu, 14 Mar 2019 10:17:41 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190313144557.8845-1-eblake@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:8AHoqyx+qHQ3T/uL3QoxQacaLotdI4j5tsG+VYWnWAXt2vbHHvQ
-	sW/WdWIQlhZVteQV5qhEV7nL//zKTjwFYD2AYVHX9RizCsZckio7blouNnhvpZwwwuy7UW3
-	52syyYTJZOxxRvuPiZwI4em9kZjTaentDgDo9cwvo4vIf0dJKZDEVq0O9tKhfMjJ81vrWJT
-	zqPJ1lRh7kP/vXUaKRfsg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:NYpnbdGc/R8=:AbsafgBqYhtsGaBtytJSJJ
-	cHaj5XNnGuj8LpzbwcZcOq1joabRMw66KLpOipl8HW4ebvIVsL8h88zufw+whkSrDskGaRmjB
-	GF6R7Ct4uB0IzVqt1bC/f76pO05xVHVhJ7n2DyU1RKKiFVqc4Ww3cCaeEjIUSQAKLdHMQzTtd
-	fSR0/wf0cKRYFPdd6Dv/XELIaoi1amO5IsVqOY3y6w158pKTOaZCBgjBOaaPI1m17HOOLWo88
-	0giJlAmGgofsoD/CvXp8TXg06xo2WvS/NNJanyfwCmWk+3Mq2g2Sr3DiKqnsRfDlbbOEvrlwd
-	UyE4ZxNl7+ZLx586qOxmfLPAbPVDdXz7GnLZ1VAqIg0oVpTfBuFKL3zG18LG7WmTaDxjv6enw
-	otVvrdRbVX3uHAvpEYiELJ4GHNVO7sfiXYuMLjlK6phULIX83dbY9zC2pjKpVy7eQpSrpnWZn
-	hDRUnQ0pvnFdzqiNROpIEcSLSEwZGjoPZu7l/tUUHMjIcpjUorWNMB6EUlTQ4KkHZnu7fLAAZ
-	uumBoh8pXTOx1nOZSN+jl8iNNVKH+mZG912bv2/YSFCS9QXtKsYsSPtH0aBO3/C3rqAnvBpfl
-	hj0+rx3GAEmEjnhIas+1Xx12AKR7fKnrOwfNLMVOw86gQBb7Y7NynHax53LnYjS87UeKlDzMC
-	5qWYwr5efUzbtZGPW+mFiYKfH6i981w5eeomme49IW1vZg/yFalDsrVN9byccwd7plxZpI/6k
-	Fag0nmyWgVuk8h9s6pMPcjiT4YAGgulxLooRoa9WylpN0UctSvdRP2q22Ck=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: Re: [Qemu-trivial] [PATCH for-4.0] maint: Ignore built elf2dmp
+References: <20190314150454.15960-1-laurent@vivier.eu>
+In-Reply-To: <20190314150454.15960-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 14 Mar 2019 17:17:29 +0000
+Message-ID: <CAFEAcA8WNnt+JFy2Gh+aPmuaKOXMOgse0KuToZyrJr5R_vwRiQ@mail.gmail.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::d34
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 0/3] Trivial branch patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,38 +65,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Mar 2019 15:22:42 -0000
+X-List-Received-Date: Thu, 14 Mar 2019 17:17:47 -0000
 
-On 13/03/2019 15:45, Eric Blake wrote:
-> Commit 3fa2d384 added a binary 'elf2dmp' but did not ignore it
-> during an in-tree build.
-> 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> ---
-> 
-> Yes, I know we want to get rid of in-tree builds for 4.1; but
-> for 4.0, this patch may still make sense.
-> 
->   .gitignore | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/.gitignore b/.gitignore
-> index 77522561b8e..42d2d473559 100644
-> --- a/.gitignore
-> +++ b/.gitignore
-> @@ -6,6 +6,7 @@
->   /config-target.*
->   /config.status
->   /config-temp
-> +/elf2dmp
->   /trace-events-all
->   /trace/generated-events.h
->   /trace/generated-events.c
-> 
+On Thu, 14 Mar 2019 at 15:09, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit 9164add701788075f229b560bc3e92f6562ff857:
+>
+>   Merge remote-tracking branch 'remotes/stsquad/tags/pull-gitdm-next-120319-1' into staging (2019-03-14 13:48:48 +0000)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+>
+> for you to fetch changes up to a0af8cee3cf6c2fc08fee5b69820c2f91d5b0b44:
+>
+>   tests/.gitignore: ignore test-qapi-emit-events.[ch] for in-tree builds (2019-03-14 16:02:13 +0100)
+>
+> ----------------------------------------------------------------
+> .gitignore updates for v4.0
+>
+> ----------------------------------------------------------------
+>
+> Eric Blake (1):
+>   maint: Ignore built elf2dmp
+>
+> Stefano Garzarella (2):
+>   .gitignore: ignore docs/built created for in-tree builds
+>   tests/.gitignore: ignore test-qapi-emit-events.[ch] for in-tree builds
+>
+>  .gitignore       | 2 ++
+>  tests/.gitignore | 1 +
+>  2 files changed, 3 insertions(+)
 
 
-Applied to my trivial-patches branch.
+Applied, thanks.
 
-Thanks,
-Laurent
+Please update the changelog at https://wiki.qemu.org/ChangeLog/4.0
+for any user-visible changes.
+
+-- PMM
 
