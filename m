@@ -1,40 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h459A-0003Za-B3
-	for mharc-qemu-trivial@gnu.org; Wed, 13 Mar 2019 10:46:20 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34327)
+	id 1h4Mgn-0004ac-TA
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Mar 2019 05:30:13 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:33411)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1h4593-0003VZ-UI
-	for qemu-trivial@nongnu.org; Wed, 13 Mar 2019 10:46:19 -0400
+	(envelope-from <sgarzare@redhat.com>) id 1h4MgT-00048H-Qd
+	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 05:29:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1h4591-0004sQ-1F
-	for qemu-trivial@nongnu.org; Wed, 13 Mar 2019 10:46:13 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39518)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1h458t-0004Zu-VB; Wed, 13 Mar 2019 10:46:06 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 56F89C06644D;
-	Wed, 13 Mar 2019 14:46:00 +0000 (UTC)
-Received: from blue.redhat.com (ovpn-118-35.phx2.redhat.com [10.3.118.35])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 026966B8D0;
-	Wed, 13 Mar 2019 14:45:59 +0000 (UTC)
-From: Eric Blake <eblake@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Date: Wed, 13 Mar 2019 09:45:57 -0500
-Message-Id: <20190313144557.8845-1-eblake@redhat.com>
+	(envelope-from <sgarzare@redhat.com>) id 1h4MYM-0005ri-Jb
+	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 05:21:31 -0400
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:36526)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1h4MYM-0005qv-BY
+	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 05:21:30 -0400
+Received: by mail-wm1-f67.google.com with SMTP id e16so1945993wme.1
+	for <qemu-trivial@nongnu.org>; Thu, 14 Mar 2019 02:21:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=j7s7X9X2ePUlY8AWlCh0mv8lKPQ0fYIgWJNbiO8XFF0=;
+	b=FnMYAqdHDWutcbsunDgXEnoXdyPuItKHwmwvfbAHSPzc7B5KOaQAdaJXv9Je3gcKH8
+	egPqO7V40e/+Ie2JXjr+xtTNHVDrhA8LaIYS9foNqiMsjkvVdNQHcCXosbqBuptPFBbU
+	VdMl5oe5+kK9H00oJdhjLihgh8tTn1NXNTkN92KtMri1OrGTE2A3p/qmUNFNiJwcjd0k
+	JNNAlXUN+89kopdm2gKxhgTQGhOWL0K+1E4/C9SOYm4B9IWP8dqjdJgwUnPu348SFses
+	vjVR+aZGLvybMZJGJhAv4RF1OhvY1TYfrCEOgBoaz3BFCyYcCjX9VzEkym+SmNzXwiuM
+	YY8Q==
+X-Gm-Message-State: APjAAAXkMQ+5SXxVGYKrfdo/9cZOJkgUGTga2iAVyZpEiCWZYe1hXUOw
+	X0w6+oOvlc6RozFkJuLiszql3x1aYek=
+X-Google-Smtp-Source: APXvYqz6X8Bbj9wMlu7cC4uvCeJK4MnlWmBc/EPGzcjlU/VBk1xSTopIRQqZG9eZI4abt1aDIYsjhw==
+X-Received: by 2002:a1c:234d:: with SMTP id j74mr1636487wmj.130.1552555289258; 
+	Thu, 14 Mar 2019 02:21:29 -0700 (PDT)
+Received: from steredhat (host104-127-dynamic.53-79-r.retail.telecomitalia.it.
+	[79.53.127.104])
+	by smtp.gmail.com with ESMTPSA id c3sm2296179wrt.56.2019.03.14.02.21.28
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Thu, 14 Mar 2019 02:21:28 -0700 (PDT)
+Date: Thu, 14 Mar 2019 10:21:26 +0100
+From: Stefano Garzarella <sgarzare@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20190314092126.pias3yogznjzoblr@steredhat>
+References: <20190313144557.8845-1-eblake@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Wed, 13 Mar 2019 14:46:00 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190313144557.8845-1-eblake@redhat.com>
+User-Agent: NeoMutt/20180716
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH for-4.0] maint: Ignore built elf2dmp
+	[fuzzy]
+X-Received-From: 209.85.128.67
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-4.0] maint: Ignore built
+ elf2dmp
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -46,33 +62,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 13 Mar 2019 14:46:19 -0000
+X-List-Received-Date: Thu, 14 Mar 2019 09:29:55 -0000
 
-Commit 3fa2d384 added a binary 'elf2dmp' but did not ignore it
-during an in-tree build.
+On Wed, Mar 13, 2019 at 09:45:57AM -0500, Eric Blake wrote:
+> Commit 3fa2d384 added a binary 'elf2dmp' but did not ignore it
+> during an in-tree build.
+> 
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
+> 
+> Yes, I know we want to get rid of in-tree builds for 4.1; but
+> for 4.0, this patch may still make sense.
+> 
+>  .gitignore | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-Signed-off-by: Eric Blake <eblake@redhat.com>
----
-
-Yes, I know we want to get rid of in-tree builds for 4.1; but
-for 4.0, this patch may still make sense.
-
- .gitignore | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/.gitignore b/.gitignore
-index 77522561b8e..42d2d473559 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -6,6 +6,7 @@
- /config-target.*
- /config.status
- /config-temp
-+/elf2dmp
- /trace-events-all
- /trace/generated-events.h
- /trace/generated-events.c
---=20
-2.20.1
-
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
 
