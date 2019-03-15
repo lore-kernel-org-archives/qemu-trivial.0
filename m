@@ -1,61 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h4XoR-0003Jc-4I
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Mar 2019 17:22:51 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51869)
+	id 1h4bRf-000811-Kl
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Mar 2019 21:15:35 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56472)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1h4XoO-0003J5-Pa
-	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 17:22:49 -0400
+	(envelope-from <richardw.yang@linux.intel.com>) id 1h4bRd-0007uD-Jd
+	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 21:15:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1h4XoM-00070X-Ro
-	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 17:22:48 -0400
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:51809)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1h4XoL-0006zK-7p
-	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 17:22:46 -0400
-Received: by mail-wm1-f67.google.com with SMTP id n19so4553002wmi.1
-	for <qemu-trivial@nongnu.org>; Thu, 14 Mar 2019 14:22:44 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=amjbID1fKon3aQLM6i6cr7/txC+8WfBeKhZHP2B/eRM=;
-	b=uOveHeRvGeESKb2pLNERzzXi/VLOsaSywpJKGfM2IJO9sUDVpeEePyMowE5Oaq1ar/
-	sEUryFc5DpPFFPFghCJVokXZ1YZhkhVS/8KERMYmp7McOA9UIx+G8ZbZX3TakEtRP80J
-	le1DAtRis/wMSlt/rahBSdPoiqsabCRD3lwDzciZ/+OdrWtsQlOgfv2WwqJdBoHqNPoO
-	oI1F4hQwR/KwN5unRLDXyzx+sp/HZlzGoKIL++cXjeYi6EA3GOCh++ddQdjWlJnh7cu5
-	jYKO1uz3OViykl0MxU3HUGffr4TAulVZmoaXKqN+b5KEnw9SjTujmExwxzGLFYqjC85G
-	aVmQ==
-X-Gm-Message-State: APjAAAX26SCNaDXwlN9n4L6ON/9NsjSNHfjZEXB/n5EA5Y6+Im4E6aqZ
-	TaoYi5p058MISIn2F1yRlEZacpnCWVUV1A==
-X-Google-Smtp-Source: APXvYqzDlsnpLVvlrCAkzSIXOHunrMl8tUNCk8rMaR4r20JkGhQsz1nFjnk9BJ8WX30/RljiO2kxSg==
-X-Received: by 2002:a7b:c309:: with SMTP id k9mr324042wmj.62.1552598563465;
-	Thu, 14 Mar 2019 14:22:43 -0700 (PDT)
-Received: from [192.168.1.44] (43.red-88-25-181.staticip.rima-tde.net.
-	[88.25.181.43])
-	by smtp.gmail.com with ESMTPSA id z12sm12518wrt.10.2019.03.14.14.22.42
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Thu, 14 Mar 2019 14:22:42 -0700 (PDT)
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20190313144557.8845-1-eblake@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <cbae5b50-300e-fb53-f133-dd61480545f0@redhat.com>
-Date: Thu, 14 Mar 2019 22:22:42 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.5.1
+	(envelope-from <richardw.yang@linux.intel.com>) id 1h4bME-0003rw-5Z
+	for qemu-trivial@nongnu.org; Thu, 14 Mar 2019 21:09:58 -0400
+Received: from mga09.intel.com ([134.134.136.24]:8752)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <richardw.yang@linux.intel.com>)
+	id 1h4bMC-0003qK-TM; Thu, 14 Mar 2019 21:09:57 -0400
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+	by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	14 Mar 2019 18:09:54 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.58,480,1544515200"; d="scan'208";a="155186349"
+Received: from richard.sh.intel.com (HELO localhost) ([10.239.159.54])
+	by fmsmga001.fm.intel.com with ESMTP; 14 Mar 2019 18:09:52 -0700
+Date: Fri, 15 Mar 2019 09:09:29 +0800
+From: Wei Yang <richardw.yang@linux.intel.com>
+To: Wei Yang <richardw.yang@linux.intel.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, mjt@tls.msk.ru,
+	imammedo@redhat.com, philmd@redhat.com, eblake@redhat.com,
+	peter.maydell@linaro.org, sgarzare@redhat.com
+Message-ID: <20190315010929.GA3696@richard>
+Reply-To: Wei Yang <richardw.yang@linux.intel.com>
+References: <20190304071631.27567-1-richardw.yang@linux.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20190313144557.8845-1-eblake@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.67
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH for-4.0] maint: Ignore built
- elf2dmp
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190304071631.27567-1-richardw.yang@linux.intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 134.134.136.24
+Subject: Re: [Qemu-trivial] [PATCH v6 0/2] CODING_STYLE: trivial update
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,38 +50,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Mar 2019 21:22:49 -0000
+X-List-Received-Date: Fri, 15 Mar 2019 01:15:34 -0000
 
-On 3/13/19 3:45 PM, Eric Blake wrote:
-> Commit 3fa2d384 added a binary 'elf2dmp' but did not ignore it
-> during an in-tree build.
+Is this patch set picked up by someone?
 
-I'd use ".gitignore" or "elf2dmp" prefix in subject rather than "maint".
+On Mon, Mar 04, 2019 at 03:16:29PM +0800, Wei Yang wrote:
+>The first one is suggested by Igor Mammedov to provide rule for multiline
+>code.
+>
+>The second is a trivial fix to make example code all indented with 4 spaces.
+>
+>v6:
+>  * add ) for last example of function
+>v5:
+>  * mostly address function variants
+>v4:
+>  * one exception case for function
+>v3:
+>  * fix typo in both changelog and example
+>v2:
+>  * adjust Patch 1 as suggested by Eric
+>
+>Wei Yang (2):
+>  CODING_STYLE: specify the indent rule for multiline code
+>  CODING_STYLE: indent example code as all others
+>
+> CODING_STYLE | 47 +++++++++++++++++++++++++++++++++++++++++++----
+> 1 file changed, 43 insertions(+), 4 deletions(-)
+>
+>-- 
+>2.19.1
 
-> 
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
-> ---
-> 
-> Yes, I know we want to get rid of in-tree builds for 4.1; but
-> for 4.0, this patch may still make sense.
-> 
->  .gitignore | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/.gitignore b/.gitignore
-> index 77522561b8e..42d2d473559 100644
-> --- a/.gitignore
-> +++ b/.gitignore
-> @@ -6,6 +6,7 @@
->  /config-target.*
->  /config.status
->  /config-temp
-> +/elf2dmp
->  /trace-events-all
->  /trace/generated-events.h
->  /trace/generated-events.c
-> 
+-- 
+Wei Yang
+Help you, Help me
 
