@@ -1,94 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h6ttr-0006sR-0T
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Mar 2019 05:22:11 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58482)
+	id 1h6uNP-0005Ot-JL
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Mar 2019 05:52:43 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:35892)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h6ttp-0006qe-9T
-	for qemu-trivial@nongnu.org; Thu, 21 Mar 2019 05:22:10 -0400
+	(envelope-from <sgarzare@redhat.com>) id 1h6uNM-0005CY-9S
+	for qemu-trivial@nongnu.org; Thu, 21 Mar 2019 05:52:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h6tto-0007JA-6J
-	for qemu-trivial@nongnu.org; Thu, 21 Mar 2019 05:22:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57646)
+	(envelope-from <sgarzare@redhat.com>) id 1h6uBe-00044P-Jg
+	for qemu-trivial@nongnu.org; Thu, 21 Mar 2019 05:40:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47390)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1h6ttk-0007ER-9u; Thu, 21 Mar 2019 05:22:04 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	(Exim 4.71) (envelope-from <sgarzare@redhat.com>)
+	id 1h6uBR-0003of-Ff; Thu, 21 Mar 2019 05:40:24 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 12E223082E4B;
-	Thu, 21 Mar 2019 09:22:03 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-47.ams2.redhat.com [10.36.116.47])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 301F760BF4;
-	Thu, 21 Mar 2019 09:21:56 +0000 (UTC)
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-Cc: viktor.prutyanov@phystech.edu, ehabkost@redhat.com,
-	marcel.apfelbaum@gmail.com, aurelien@aurel32.net,
-	peter.maydell@linaro.org, 
-	alex.bennee@linaro.org, lvivier@redhat.com, kraxel@redhat.com,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20190313162812.8885-1-armbru@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <8cd63797-76f6-9ba8-0113-13a4bf04e6ed@redhat.com>
-Date: Thu, 21 Mar 2019 10:21:55 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.5.0
+	by mx1.redhat.com (Postfix) with ESMTPS id E307931688FA;
+	Thu, 21 Mar 2019 09:40:15 +0000 (UTC)
+Received: from steredhat.redhat.com (ovpn-116-238.ams2.redhat.com
+	[10.36.116.238])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id DF9B419C57;
+	Thu, 21 Mar 2019 09:40:13 +0000 (UTC)
+From: Stefano Garzarella <sgarzare@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Max Reitz <mreitz@redhat.com>, qemu-block@nongnu.org,
+	Jeff Cody <codyprime@gmail.com>, Kevin Wolf <kwolf@redhat.com>,
+	qemu-trivial@nongnu.org
+Date: Thu, 21 Mar 2019 10:40:12 +0100
+Message-Id: <20190321094012.36541-1-sgarzare@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190313162812.8885-1-armbru@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Thu, 21 Mar 2019 09:22:03 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.41]);
+	Thu, 21 Mar 2019 09:40:16 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] Clean up includes
+Subject: [Qemu-trivial] [PATCH] block/vhdx: Use IEC binary prefixes from
+ "qemu/units.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,48 +50,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Mar 2019 09:22:10 -0000
+X-List-Received-Date: Thu, 21 Mar 2019 09:52:41 -0000
 
-On 13/03/2019 17.28, Markus Armbruster wrote:
-> Clean up includes so that osdep.h is included first and headers
-> which it implies are not included manually.
-> 
-> This commit was created with scripts/clean-includes, with the changes
-> to the following files manually reverted:
-> 
->     contrib/libvhost-user/libvhost-user-glib.h
->     contrib/libvhost-user/libvhost-user.c
->     contrib/libvhost-user/libvhost-user.h
->     linux-user/mips64/cpu_loop.c
->     linux-user/mips64/signal.c
->     linux-user/sparc64/cpu_loop.c
->     linux-user/sparc64/signal.c
->     linux-user/x86_64/cpu_loop.c
->     linux-user/x86_64/signal.c
->     slirp/src/*
->     target/s390x/gen-features.c
->     tests/migration/s390x/a-b-bios.c
->     tests/test-rcu-simpleq.c
->     tests/test-rcu-tailq.c
->     tests/uefi-test-tools/UefiTestToolsPkg/BiosTablesTest/BiosTablesTest.c
-> 
-> We're in the process of spinning out slirp/.  tests/uefi-test-tools/
-> is guest software.  The remaining reverts are the same as in commit
-> b7d89466dde.
-> 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
->  contrib/elf2dmp/main.c   | 3 +--
->  contrib/elf2dmp/pdb.c    | 3 +--
->  hw/display/ati.c         | 1 +
->  hw/display/ati_2d.c      | 1 +
->  hw/display/ati_dbg.c     | 1 +
->  hw/display/ati_int.h     | 1 -
->  include/hw/cpu/cluster.h | 1 -
->  tests/fp/platform.h      | 1 -
->  tests/libqos/qgraph.h    | 4 ----
->  tests/qos-test.c         | 2 +-
->  10 files changed, 6 insertions(+), 12 deletions(-)
+IEC binary prefixes are defined in "qemu/units.h", so we
+can remove redundant definitions in "block/vhdx.h".
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
+---
+ block/vhdx-log.c | 1 +
+ block/vhdx.c     | 4 +++-
+ block/vhdx.h     | 5 -----
+ 3 files changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/block/vhdx-log.c b/block/vhdx-log.c
+index 3149ff08d8..ad9905eb6d 100644
+--- a/block/vhdx-log.c
++++ b/block/vhdx-log.c
+@@ -18,6 +18,7 @@
+  *
+  */
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "qemu-common.h"
+ #include "block/block_int.h"
+diff --git a/block/vhdx.c b/block/vhdx.c
+index b785aef4b7..e9b16c5ef6 100644
+--- a/block/vhdx.c
++++ b/block/vhdx.c
+@@ -16,6 +16,7 @@
+  */
+=20
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
+ #include "qapi/error.h"
+ #include "block/block_int.h"
+ #include "block/qdict.h"
+@@ -1889,7 +1890,8 @@ static int coroutine_fn vhdx_co_create(BlockdevCrea=
+teOptions *opts,
+         return -EINVAL;
+     }
+     if (block_size > VHDX_BLOCK_SIZE_MAX) {
+-        error_setg(errp, "Block size must not exceed %d", VHDX_BLOCK_SIZ=
+E_MAX);
++        error_setg(errp, "Block size must not exceed %" PRId64,
++                   VHDX_BLOCK_SIZE_MAX);
+         return -EINVAL;
+     }
+=20
+diff --git a/block/vhdx.h b/block/vhdx.h
+index 1bfb4e4f73..deb6e362ad 100644
+--- a/block/vhdx.h
++++ b/block/vhdx.h
+@@ -18,11 +18,6 @@
+ #ifndef BLOCK_VHDX_H
+ #define BLOCK_VHDX_H
+=20
+-#define KiB              (1 * 1024)
+-#define MiB            (KiB * 1024)
+-#define GiB            (MiB * 1024)
+-#define TiB ((uint64_t) GiB * 1024)
+-
+ #define DEFAULT_LOG_SIZE 1048576 /* 1MiB */
+ /* Structures and fields present in the VHDX file */
+=20
+--=20
+2.20.1
+
 
