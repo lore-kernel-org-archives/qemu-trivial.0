@@ -1,34 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h88z3-0005S6-Nv
-	for mharc-qemu-trivial@gnu.org; Sun, 24 Mar 2019 15:40:41 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34792)
+	id 1h88zk-0005u5-OY
+	for mharc-qemu-trivial@gnu.org; Sun, 24 Mar 2019 15:41:27 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34985)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h88z1-0005Q4-9H
-	for qemu-trivial@nongnu.org; Sun, 24 Mar 2019 15:40:40 -0400
+	(envelope-from <thuth@redhat.com>) id 1h88zi-0005t2-Ty
+	for qemu-trivial@nongnu.org; Sun, 24 Mar 2019 15:41:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h88z0-0007Rv-9u
-	for qemu-trivial@nongnu.org; Sun, 24 Mar 2019 15:40:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57056)
+	(envelope-from <thuth@redhat.com>) id 1h88zh-0007m3-OU
+	for qemu-trivial@nongnu.org; Sun, 24 Mar 2019 15:41:22 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56464)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1h88yw-0007Q0-2Q; Sun, 24 Mar 2019 15:40:34 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	id 1h88zf-0007kg-BI; Sun, 24 Mar 2019 15:41:19 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 41ADE307CDF0;
-	Sun, 24 Mar 2019 19:40:33 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 987E659441;
+	Sun, 24 Mar 2019 19:41:18 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-53.ams2.redhat.com [10.36.116.53])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8D7505C241;
-	Sun, 24 Mar 2019 19:40:30 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id EB6265D9D3;
+	Sun, 24 Mar 2019 19:41:16 +0000 (UTC)
 To: Jafar Abdi <cafer.abdi@gmail.com>, qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>, stefanha@gmail.com,
-	"open list:sPAPR" <qemu-ppc@nongnu.org>, Paolo Bonzini
-	<pbonzini@redhat.com>, jusual@mail.ru,
-	David Gibson <david@gibson.dropbear.id.au>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: stefanha@gmail.com, jusual@mail.ru, Stefan Berger
+	<stefanb@linux.ibm.com>, QEMU Trivial <qemu-trivial@nongnu.org>
 References: <1553351197-14581-1-git-send-email-cafer.abdi@gmail.com>
-	<1553351197-14581-4-git-send-email-cafer.abdi@gmail.com>
+	<1553351197-14581-5-git-send-email-cafer.abdi@gmail.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -74,23 +71,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <ff03addb-4384-48b4-88ec-35c5a4b3836c@redhat.com>
-Date: Sun, 24 Mar 2019 20:40:29 +0100
+Message-ID: <a467e1f5-b104-ae69-8ea0-10c05f1263cf@redhat.com>
+Date: Sun, 24 Mar 2019 20:41:15 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.5.0
 MIME-Version: 1.0
-In-Reply-To: <1553351197-14581-4-git-send-email-cafer.abdi@gmail.com>
+In-Reply-To: <1553351197-14581-5-git-send-email-cafer.abdi@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.49]);
-	Sun, 24 Mar 2019 19:40:33 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.39]);
+	Sun, 24 Mar 2019 19:41:18 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH V2 3/4] tests/libqos: fix
- usage of bool in pci-spapr.c
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH V2 4/4] hw/tpm: fix usage of
+ bool in tpm-tis.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,7 +99,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 Mar 2019 19:40:40 -0000
+X-List-Received-Date: Sun, 24 Mar 2019 19:41:24 -0000
 
 On 23/03/2019 15.26, Jafar Abdi wrote:
 > Clean up wrong usage of FALSE and TRUE in places that use "bool" from stdbool.h.
@@ -112,23 +109,33 @@ On 23/03/2019 15.26, Jafar Abdi wrote:
 > TRUE and FALSE for variables that are declared as "bool" (the type from <stdbool.h>).
 > 
 > Signed-off-by: Jafar Abdi <cafer.abdi@gmail.com>
-> Reviewed-by: Eric Blake <eblake@redhat.com>
 > ---
->  tests/libqos/pci-spapr.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/tpm/tpm_tis.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/tests/libqos/pci-spapr.c b/tests/libqos/pci-spapr.c
-> index 6925925..58ba27a 100644
-> --- a/tests/libqos/pci-spapr.c
-> +++ b/tests/libqos/pci-spapr.c
-> @@ -156,7 +156,7 @@ void qpci_init_spapr(QPCIBusSPAPR *qpci, QTestState *qts,
->      assert(qts);
+> diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
+> index fd183e8..c1eb094 100644
+> --- a/hw/tpm/tpm_tis.c
+> +++ b/hw/tpm/tpm_tis.c
+> @@ -611,7 +611,7 @@ static void tpm_tis_mmio_write(void *opaque, hwaddr addr,
+>              while ((TPM_TIS_IS_VALID_LOCTY(s->active_locty) &&
+>                      locty > s->active_locty) ||
+>                      !TPM_TIS_IS_VALID_LOCTY(s->active_locty)) {
+> -                bool higher_seize = FALSE;
+> +                bool higher_seize = false;
 >  
->      /* tests cannot use spapr, needs to be fixed first */
-> -    qpci->bus.has_buggy_msi = TRUE;
-> +    qpci->bus.has_buggy_msi = true;
->  
->      qpci->alloc = alloc;
+>                  /* already a pending SEIZE ? */
+>                  if ((s->loc[locty].access & TPM_TIS_ACCESS_SEIZE)) {
+> @@ -621,7 +621,7 @@ static void tpm_tis_mmio_write(void *opaque, hwaddr addr,
+>                  /* check for ongoing seize by a higher locality */
+>                  for (l = locty + 1; l < TPM_TIS_NUM_LOCALITIES; l++) {
+>                      if ((s->loc[l].access & TPM_TIS_ACCESS_SEIZE)) {
+> -                        higher_seize = TRUE;
+> +                        higher_seize = true;
+>                          break;
+>                      }
+>                  }
+> 
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
