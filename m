@@ -1,31 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h88zk-0005u5-OY
-	for mharc-qemu-trivial@gnu.org; Sun, 24 Mar 2019 15:41:27 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34985)
+	id 1h891G-0006o9-Eg
+	for mharc-qemu-trivial@gnu.org; Sun, 24 Mar 2019 15:42:58 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:35342)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h88zi-0005t2-Ty
-	for qemu-trivial@nongnu.org; Sun, 24 Mar 2019 15:41:23 -0400
+	(envelope-from <thuth@redhat.com>) id 1h891E-0006mC-24
+	for qemu-trivial@nongnu.org; Sun, 24 Mar 2019 15:42:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h88zh-0007m3-OU
-	for qemu-trivial@nongnu.org; Sun, 24 Mar 2019 15:41:22 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56464)
+	(envelope-from <thuth@redhat.com>) id 1h891C-0008DL-Tj
+	for qemu-trivial@nongnu.org; Sun, 24 Mar 2019 15:42:55 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36678)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1h88zf-0007kg-BI; Sun, 24 Mar 2019 15:41:19 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	id 1h88wK-0006GC-Cz; Sun, 24 Mar 2019 15:37:52 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 987E659441;
-	Sun, 24 Mar 2019 19:41:18 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3BBC4C049E1F;
+	Sun, 24 Mar 2019 19:37:50 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-53.ams2.redhat.com [10.36.116.53])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EB6265D9D3;
-	Sun, 24 Mar 2019 19:41:16 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7470E60C05;
+	Sun, 24 Mar 2019 19:37:48 +0000 (UTC)
 To: Jafar Abdi <cafer.abdi@gmail.com>, qemu-devel@nongnu.org
-Cc: stefanha@gmail.com, jusual@mail.ru, Stefan Berger
-	<stefanb@linux.ibm.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: stefanha@gmail.com, jusual@mail.ru,
+	"Daniel P. Berrange" <berrange@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
 References: <1553351197-14581-1-git-send-email-cafer.abdi@gmail.com>
-	<1553351197-14581-5-git-send-email-cafer.abdi@gmail.com>
+	<1553351197-14581-2-git-send-email-cafer.abdi@gmail.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -71,23 +72,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <a467e1f5-b104-ae69-8ea0-10c05f1263cf@redhat.com>
-Date: Sun, 24 Mar 2019 20:41:15 +0100
+Message-ID: <a8aa25db-e322-43a5-f5a9-8bf505e8b7d7@redhat.com>
+Date: Sun, 24 Mar 2019 20:37:47 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.5.0
 MIME-Version: 1.0
-In-Reply-To: <1553351197-14581-5-git-send-email-cafer.abdi@gmail.com>
+In-Reply-To: <1553351197-14581-2-git-send-email-cafer.abdi@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Sun, 24 Mar 2019 19:41:18 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Sun, 24 Mar 2019 19:37:50 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH V2 4/4] hw/tpm: fix usage of
- bool in tpm-tis.c
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH V2 1/4] authz: fix usage of
+ bool in listfile.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,7 +100,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 Mar 2019 19:41:24 -0000
+X-List-Received-Date: Sun, 24 Mar 2019 19:42:57 -0000
 
 On 23/03/2019 15.26, Jafar Abdi wrote:
 > Clean up wrong usage of FALSE and TRUE in places that use "bool" from stdbool.h.
@@ -109,33 +110,23 @@ On 23/03/2019 15.26, Jafar Abdi wrote:
 > TRUE and FALSE for variables that are declared as "bool" (the type from <stdbool.h>).
 > 
 > Signed-off-by: Jafar Abdi <cafer.abdi@gmail.com>
+> Reviewed-by: Eric Blake <eblake@redhat.com>
 > ---
->  hw/tpm/tpm_tis.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  authz/listfile.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
-> index fd183e8..c1eb094 100644
-> --- a/hw/tpm/tpm_tis.c
-> +++ b/hw/tpm/tpm_tis.c
-> @@ -611,7 +611,7 @@ static void tpm_tis_mmio_write(void *opaque, hwaddr addr,
->              while ((TPM_TIS_IS_VALID_LOCTY(s->active_locty) &&
->                      locty > s->active_locty) ||
->                      !TPM_TIS_IS_VALID_LOCTY(s->active_locty)) {
-> -                bool higher_seize = FALSE;
-> +                bool higher_seize = false;
+> diff --git a/authz/listfile.c b/authz/listfile.c
+> index d457976..03eaf46 100644
+> --- a/authz/listfile.c
+> +++ b/authz/listfile.c
+> @@ -238,7 +238,7 @@ qauthz_list_file_init(Object *obj)
 >  
->                  /* already a pending SEIZE ? */
->                  if ((s->loc[locty].access & TPM_TIS_ACCESS_SEIZE)) {
-> @@ -621,7 +621,7 @@ static void tpm_tis_mmio_write(void *opaque, hwaddr addr,
->                  /* check for ongoing seize by a higher locality */
->                  for (l = locty + 1; l < TPM_TIS_NUM_LOCALITIES; l++) {
->                      if ((s->loc[l].access & TPM_TIS_ACCESS_SEIZE)) {
-> -                        higher_seize = TRUE;
-> +                        higher_seize = true;
->                          break;
->                      }
->                  }
-> 
+>      authz->file_watch = -1;
+>  #ifdef CONFIG_INOTIFY1
+> -    authz->refresh = TRUE;
+> +    authz->refresh = true;
+>  #endif
+>  }
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
