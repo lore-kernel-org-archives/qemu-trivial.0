@@ -1,32 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h88y8-000400-27
-	for mharc-qemu-trivial@gnu.org; Sun, 24 Mar 2019 15:39:44 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34624)
+	id 1h88z3-0005S6-Nv
+	for mharc-qemu-trivial@gnu.org; Sun, 24 Mar 2019 15:40:41 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34792)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h88y6-0003pn-1w
-	for qemu-trivial@nongnu.org; Sun, 24 Mar 2019 15:39:42 -0400
+	(envelope-from <thuth@redhat.com>) id 1h88z1-0005Q4-9H
+	for qemu-trivial@nongnu.org; Sun, 24 Mar 2019 15:40:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h88y5-00073n-41
-	for qemu-trivial@nongnu.org; Sun, 24 Mar 2019 15:39:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:11359)
+	(envelope-from <thuth@redhat.com>) id 1h88z0-0007Rv-9u
+	for qemu-trivial@nongnu.org; Sun, 24 Mar 2019 15:40:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57056)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1h88y0-00071i-BP; Sun, 24 Mar 2019 15:39:36 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+	id 1h88yw-0007Q0-2Q; Sun, 24 Mar 2019 15:40:34 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 82B652DA98A;
-	Sun, 24 Mar 2019 19:39:35 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 41ADE307CDF0;
+	Sun, 24 Mar 2019 19:40:33 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-53.ams2.redhat.com [10.36.116.53])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B48E919C59;
-	Sun, 24 Mar 2019 19:39:33 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8D7505C241;
+	Sun, 24 Mar 2019 19:40:30 +0000 (UTC)
 To: Jafar Abdi <cafer.abdi@gmail.com>, qemu-devel@nongnu.org
 Cc: Laurent Vivier <lvivier@redhat.com>, stefanha@gmail.com,
-	Paolo Bonzini <pbonzini@redhat.com>, jusual@mail.ru,
+	"open list:sPAPR" <qemu-ppc@nongnu.org>, Paolo Bonzini
+	<pbonzini@redhat.com>, jusual@mail.ru,
+	David Gibson <david@gibson.dropbear.id.au>,
 	QEMU Trivial <qemu-trivial@nongnu.org>
 References: <1553351197-14581-1-git-send-email-cafer.abdi@gmail.com>
-	<1553351197-14581-3-git-send-email-cafer.abdi@gmail.com>
+	<1553351197-14581-4-git-send-email-cafer.abdi@gmail.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -72,23 +74,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <12da0ce6-9520-0c46-bc65-c8dc361d33bf@redhat.com>
-Date: Sun, 24 Mar 2019 20:39:32 +0100
+Message-ID: <ff03addb-4384-48b4-88ec-35c5a4b3836c@redhat.com>
+Date: Sun, 24 Mar 2019 20:40:29 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.5.0
 MIME-Version: 1.0
-In-Reply-To: <1553351197-14581-3-git-send-email-cafer.abdi@gmail.com>
+In-Reply-To: <1553351197-14581-4-git-send-email-cafer.abdi@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.29]);
-	Sun, 24 Mar 2019 19:39:35 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.49]);
+	Sun, 24 Mar 2019 19:40:33 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH V2 2/4] tests/libqos: fix
- usage of bool in pci-pc.c
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH V2 3/4] tests/libqos: fix
+ usage of bool in pci-spapr.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,7 +102,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 Mar 2019 19:39:43 -0000
+X-List-Received-Date: Sun, 24 Mar 2019 19:40:40 -0000
 
 On 23/03/2019 15.26, Jafar Abdi wrote:
 > Clean up wrong usage of FALSE and TRUE in places that use "bool" from stdbool.h.
@@ -112,22 +114,21 @@ On 23/03/2019 15.26, Jafar Abdi wrote:
 > Signed-off-by: Jafar Abdi <cafer.abdi@gmail.com>
 > Reviewed-by: Eric Blake <eblake@redhat.com>
 > ---
->  tests/libqos/pci-pc.c | 2 +-
+>  tests/libqos/pci-spapr.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/tests/libqos/pci-pc.c b/tests/libqos/pci-pc.c
-> index 4ab16fa..407d8af 100644
-> --- a/tests/libqos/pci-pc.c
-> +++ b/tests/libqos/pci-pc.c
-> @@ -125,7 +125,7 @@ void qpci_init_pc(QPCIBusPC *qpci, QTestState *qts, QGuestAllocator *alloc)
+> diff --git a/tests/libqos/pci-spapr.c b/tests/libqos/pci-spapr.c
+> index 6925925..58ba27a 100644
+> --- a/tests/libqos/pci-spapr.c
+> +++ b/tests/libqos/pci-spapr.c
+> @@ -156,7 +156,7 @@ void qpci_init_spapr(QPCIBusSPAPR *qpci, QTestState *qts,
 >      assert(qts);
 >  
->      /* tests can use pci-bus */
-> -    qpci->bus.has_buggy_msi = FALSE;
-> +    qpci->bus.has_buggy_msi = false;
+>      /* tests cannot use spapr, needs to be fixed first */
+> -    qpci->bus.has_buggy_msi = TRUE;
+> +    qpci->bus.has_buggy_msi = true;
 >  
->      qpci->bus.pio_readb = qpci_pc_pio_readb;
->      qpci->bus.pio_readw = qpci_pc_pio_readw;
+>      qpci->alloc = alloc;
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
