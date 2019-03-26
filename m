@@ -1,66 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h8iwZ-00049k-GQ
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Mar 2019 06:04:31 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51467)
+	id 1h8mq1-0005pv-BB
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Mar 2019 10:14:01 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52825)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sgarzare@redhat.com>) id 1h8iwX-00048v-AC
-	for qemu-trivial@nongnu.org; Tue, 26 Mar 2019 06:04:30 -0400
+	(envelope-from <stefanb@linux.ibm.com>) id 1h8mcc-00038V-7H
+	for qemu-trivial@nongnu.org; Tue, 26 Mar 2019 10:00:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sgarzare@redhat.com>) id 1h8ivW-0002Ea-Qg
-	for qemu-trivial@nongnu.org; Tue, 26 Mar 2019 06:03:27 -0400
-Received: from mail-wr1-f43.google.com ([209.85.221.43]:35675)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1h8ivW-0002Dp-Hb
-	for qemu-trivial@nongnu.org; Tue, 26 Mar 2019 06:03:26 -0400
-Received: by mail-wr1-f43.google.com with SMTP id w1so13598436wrp.2
-	for <qemu-trivial@nongnu.org>; Tue, 26 Mar 2019 03:03:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=nDBWb02tjkLNaDw9Q9YmfxAJHcpR4bnXduKc8tV9BcU=;
-	b=STtN8VNa/OOZZ5xc03jJvtg6IA7QZ+FeuAyxVMP391HYQHxU2LSRmXU3vb5xmUhKoC
-	1ner6ApfDYJ/g8/XqdXQ5iGw3IzYejn42RcP44FMd0YY04bkLlp83WoclHfNGHH5u51a
-	6S9+0viDwc/c2nhJB0tMt5GwPG1gNyt1w7USSb5yyseRLwdm7s3UeY2Hej9+4PsGczmB
-	t9neq1xg+vRZu69pLOI2QzGXzJGidPY1LVxgbORuReLLP7QW6fCfAEvMsTH3In6fJ5mV
-	d6wl0Cugdv0PUtDBe8ibGsSafmCbK7s0mW4eZ5AX2E6J3JvwXf4sNMzNeRtIsIMgeH5z
-	2fKQ==
-X-Gm-Message-State: APjAAAXFnIoC2i4ZQl/q4wea5RyIES6mrzgQ7+Tn6dL22KPwZY9+KIPE
-	W7HNnYRb/gGAKlHCwtxhwolAFA==
-X-Google-Smtp-Source: APXvYqwinW1o52j7HK/b87JXiLEFc4lTWtiNTGLde6OVl3ngp698EVoZqhje+YRZO5Ue+DGH7/oV0g==
-X-Received: by 2002:adf:e610:: with SMTP id p16mr18681114wrm.64.1553594603738; 
-	Tue, 26 Mar 2019 03:03:23 -0700 (PDT)
-Received: from steredhat (host40-210-static.34-79-b.business.telecomitalia.it.
-	[79.34.210.40]) by smtp.gmail.com with ESMTPSA id
-	a14sm18435811wrx.96.2019.03.26.03.03.22
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 26 Mar 2019 03:03:23 -0700 (PDT)
-Date: Tue, 26 Mar 2019 11:03:20 +0100
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: Kevin Wolf <kwolf@redhat.com>
-Cc: John Snow <jsnow@redhat.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	qemu-trivial@nongnu.org, qemu-block@nongnu.org,
-	Max Reitz <mreitz@redhat.com>
-Message-ID: <20190326100320.khiy62ytdu5jlhvk@steredhat>
-References: <20190321094012.36541-1-sgarzare@redhat.com>
-	<7c89c032-7160-32d6-90ad-f5dafbdb211d@redhat.com>
-	<CAAdtpL75dz-2ZSBJWwN_HA28-p8GxuV_HqRC7_QYaQp-yzRSpw@mail.gmail.com>
-	<20190326075524.qvlakskoee3phywp@steredhat>
-	<20190326091354.GC7075@localhost.localdomain>
+	(envelope-from <stefanb@linux.ibm.com>) id 1h8mY8-0005bp-Oj
+	for qemu-trivial@nongnu.org; Tue, 26 Mar 2019 09:55:33 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:41918)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <stefanb@linux.ibm.com>)
+	id 1h8mY8-0005b1-D7
+	for qemu-trivial@nongnu.org; Tue, 26 Mar 2019 09:55:32 -0400
+Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+	x2QDsIEE145892
+	for <qemu-trivial@nongnu.org>; Tue, 26 Mar 2019 09:55:30 -0400
+Received: from e13.ny.us.ibm.com (e13.ny.us.ibm.com [129.33.205.203])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 2rfm7gkva8-1
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <qemu-trivial@nongnu.org>; Tue, 26 Mar 2019 09:55:30 -0400
+Received: from localhost
+	by e13.ny.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+	Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <stefanb@linux.ibm.com>;
+	Tue, 26 Mar 2019 13:55:28 -0000
+Received: from b01cxnp22033.gho.pok.ibm.com (9.57.198.23)
+	by e13.ny.us.ibm.com (146.89.104.200) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	(version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+	Tue, 26 Mar 2019 13:55:25 -0000
+Received: from b01ledav002.gho.pok.ibm.com (b01ledav002.gho.pok.ibm.com
+	[9.57.199.107])
+	by b01cxnp22033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+	x2QDtOoV22675488
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Tue, 26 Mar 2019 13:55:25 GMT
+Received: from b01ledav002.gho.pok.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id D64C412405A;
+	Tue, 26 Mar 2019 13:55:24 +0000 (GMT)
+Received: from b01ledav002.gho.pok.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id BC998124053;
+	Tue, 26 Mar 2019 13:55:24 +0000 (GMT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+	by b01ledav002.gho.pok.ibm.com (Postfix) with ESMTP;
+	Tue, 26 Mar 2019 13:55:24 +0000 (GMT)
+To: Thomas Huth <thuth@redhat.com>, Jafar Abdi <cafer.abdi@gmail.com>,
+	qemu-devel@nongnu.org
+Cc: stefanha@gmail.com, jusual@mail.ru, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <1553351197-14581-1-git-send-email-cafer.abdi@gmail.com>
+	<1553351197-14581-5-git-send-email-cafer.abdi@gmail.com>
+	<a467e1f5-b104-ae69-8ea0-10c05f1263cf@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+Date: Tue, 26 Mar 2019 09:55:24 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20190326091354.GC7075@localhost.localdomain>
-User-Agent: NeoMutt/20180716
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.43
-Subject: Re: [Qemu-trivial] [Qemu-devel] [Qemu-block] [PATCH] block/vhdx:
- Use IEC binary prefixes from "qemu/units.h"
+In-Reply-To: <a467e1f5-b104-ae69-8ea0-10c05f1263cf@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-MW
+X-TM-AS-GCONF: 00
+x-cbid: 19032613-0064-0000-0000-000003C03A96
+X-IBM-SpamModules-Scores: 
+X-IBM-SpamModules-Versions: BY=3.00010817; HX=3.00000242; KW=3.00000007;
+	PH=3.00000004; SC=3.00000282; SDB=6.01179947; UDB=6.00617460;
+	IPR=6.00960662; 
+	MB=3.00026164; MTD=3.00000008; XFM=3.00000015; UTC=2019-03-26 13:55:27
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 19032613-0065-0000-0000-00003CD79A09
+Message-Id: <471c060c-2abc-50e9-1a51-871ab62185ea@linux.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+	definitions=2019-03-26_10:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	priorityscore=1501
+	malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+	clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
+	mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+	scancount=1 engine=8.0.1-1810050000 definitions=main-1903260098
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.156.1
+X-Mailman-Approved-At: Tue, 26 Mar 2019 10:13:58 -0400
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH V2 4/4] hw/tpm: fix usage of
+ bool in tpm-tis.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,36 +95,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Mar 2019 10:04:30 -0000
+X-List-Received-Date: Tue, 26 Mar 2019 14:00:11 -0000
 
-On Tue, Mar 26, 2019 at 10:13:54AM +0100, Kevin Wolf wrote:
-> Am 26.03.2019 um 08:55 hat Stefano Garzarella geschrieben:
-> > On Mon, Mar 25, 2019 at 10:56:57PM +0100, Philippe Mathieu-Daudé wrote:
-> > > Le lun. 25 mars 2019 21:53, John Snow <jsnow@redhat.com> a écrit :
-> > > > On 3/21/19 5:40 AM, Stefano Garzarella wrote:
-> > > > >  #define DEFAULT_LOG_SIZE 1048576 /* 1MiB */
-> > > >
-> > > 
-> > > Can we also update this definition?
-> > > 
-> > 
-> > Sure, I'll update it in v2.
-> 
-> This is used in vhdx_create_opts:
-> 
->     .def_value_str = stringify(DEFAULT_LOG_SIZE),
-> 
-> You want the default size to be a number, not an expression, so you'd
-> have to change the default string to retain the number. Probably better
-> to just leave the #define alone.
-> 
-> We could, however, put a comment next to the define lik vdi.c has:
-> 
->     /* Note: can't use 1 * MiB, because it's passed to stringify() */
+On 3/24/19 3:41 PM, Thomas Huth wrote:
+> On 23/03/2019 15.26, Jafar Abdi wrote:
+>> Clean up wrong usage of FALSE and TRUE in places that use "bool" from stdbool.h.
+>>
+>> FALSE and TRUE (with capital letters) are the constants defined by glib for
+>> being used with the "gboolean" type of glib. But some parts of the code also use
+>> TRUE and FALSE for variables that are declared as "bool" (the type from <stdbool.h>).
+>>
+>> Signed-off-by: Jafar Abdi <cafer.abdi@gmail.com>
+>> ---
+>>   hw/tpm/tpm_tis.c | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/tpm/tpm_tis.c b/hw/tpm/tpm_tis.c
+>> index fd183e8..c1eb094 100644
+>> --- a/hw/tpm/tpm_tis.c
+>> +++ b/hw/tpm/tpm_tis.c
+>> @@ -611,7 +611,7 @@ static void tpm_tis_mmio_write(void *opaque, hwaddr addr,
+>>               while ((TPM_TIS_IS_VALID_LOCTY(s->active_locty) &&
+>>                       locty > s->active_locty) ||
+>>                       !TPM_TIS_IS_VALID_LOCTY(s->active_locty)) {
+>> -                bool higher_seize = FALSE;
+>> +                bool higher_seize = false;
+>>   
+>>                   /* already a pending SEIZE ? */
+>>                   if ((s->loc[locty].access & TPM_TIS_ACCESS_SEIZE)) {
+>> @@ -621,7 +621,7 @@ static void tpm_tis_mmio_write(void *opaque, hwaddr addr,
+>>                   /* check for ongoing seize by a higher locality */
+>>                   for (l = locty + 1; l < TPM_TIS_NUM_LOCALITIES; l++) {
+>>                       if ((s->loc[l].access & TPM_TIS_ACCESS_SEIZE)) {
+>> -                        higher_seize = TRUE;
+>> +                        higher_seize = true;
+>>                           break;
+>>                       }
+>>                   }
+>>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+>
 
-Many thanks for this suggestion!
-I'll put the comment next to the define.
-
-Thanks,
-Stefano
 
