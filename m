@@ -1,63 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h8gvn-0006v2-Fw
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Mar 2019 03:55:35 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:55249)
+	id 1h8hIh-00028a-L2
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Mar 2019 04:19:15 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58787)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sgarzare@redhat.com>) id 1h8gvl-0006uQ-1u
-	for qemu-trivial@nongnu.org; Tue, 26 Mar 2019 03:55:34 -0400
+	(envelope-from <stefanha@gmail.com>) id 1h8hId-000201-Gl
+	for qemu-trivial@nongnu.org; Tue, 26 Mar 2019 04:19:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sgarzare@redhat.com>) id 1h8gvj-0000B0-OM
-	for qemu-trivial@nongnu.org; Tue, 26 Mar 2019 03:55:32 -0400
-Received: from mail-wr1-f65.google.com ([209.85.221.65]:46020)
+	(envelope-from <stefanha@gmail.com>) id 1h8hHo-0004c5-8e
+	for qemu-trivial@nongnu.org; Tue, 26 Mar 2019 04:18:21 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:37445)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1h8gvh-00009Q-MC
-	for qemu-trivial@nongnu.org; Tue, 26 Mar 2019 03:55:31 -0400
-Received: by mail-wr1-f65.google.com with SMTP id s15so13069015wra.12
-	for <qemu-trivial@nongnu.org>; Tue, 26 Mar 2019 00:55:28 -0700 (PDT)
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1h8hHm-0004bV-UV; Tue, 26 Mar 2019 04:18:19 -0400
+Received: by mail-wm1-x344.google.com with SMTP id v14so11807099wmf.2;
+	Tue, 26 Mar 2019 01:18:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=ol2Z5lr7/k60c8Jy1gdlKAAf0k0ifaDTPrG17y3vnBQ=;
+	b=oLiDH02F79skWrUf8TqHEAU+JqgWkR2OSXnC7IT3kUQkWhcIGex96LrTSdKMe3pMBc
+	BRIzPTVO5P0DCMLcgs/bcomoBLFkOnboKTa9xO1EkXif3tmMFHrPKPiyu8y6oQZN6nVp
+	IMIaYVaxHavYFubjE0ywQ+GzWHH8rhpUZhgD5NhHpfkLdPKoL3CYeVPxw0pWIeqsWW6a
+	rx62pgZFSux/GBW2Wt7tRIOeQNilwTxut7/TyZc0dRxOwoRI3cADpcWuPdLxKIzCd3KS
+	7ua8/BvMZQcSuwZS7Brr8WYZ8Xs13oNEPsXpMbcKHJQmRZMvDOSOrfxAWLdbX3kJ8KrS
+	9cfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:content-transfer-encoding
-	:in-reply-to:user-agent;
-	bh=aGai54mwNx1RZRM4cwAQ4szJqGpGf/FOD5Vls6Emo4w=;
-	b=Hby77cIyIlZIEQnPY2dDuqtv5zESO370WjixQu0SbHDObnuFkpe2zbWH7Z33B6+bOY
-	8QBqOIn6kQUCLOlAy99bZPsLM2Yk1/k+qopbqoEdvTn5AhNN5eqUxe8/c7bSuemw6JXl
-	GcQyFvX3vja4LdplWvksD6+fBaa0lwxWQ9/kmGw5LFOFVf8x5QIqD0v4HGlrUagGAuJw
-	8Aew1K+uEHONQCK74xlKal3Ar53qAMKiSMmDrWTmE9zauS8RVdO18QE/8wKwNjYD1qnm
-	7TaubDqdPk31ZuSGlt6yiRW94kOTBqcxG8LIwcpmn/7/aB8tGXvj8L0WUt3OfLeWy+/e
-	GNLA==
-X-Gm-Message-State: APjAAAV0sJes9+lRjU/Sd0Ryi+EFJqaxTRvhr+5U+GRgcLFa5k1jMZ18
-	TCn0DuQgn2+f+TkB/Ic9uYClkQ==
-X-Google-Smtp-Source: APXvYqxuRk/iiUiQRaqTXhXImWYeq6wcP+AkIwgbZQG6g2a6sYRRS+eHyyjwcacldgaR+DYWTyXNmA==
-X-Received: by 2002:adf:dd8c:: with SMTP id x12mr19329947wrl.262.1553586927581;
-	Tue, 26 Mar 2019 00:55:27 -0700 (PDT)
-Received: from steredhat (host40-210-static.34-79-b.business.telecomitalia.it.
-	[79.34.210.40])
-	by smtp.gmail.com with ESMTPSA id z74sm3713518wmc.2.2019.03.26.00.55.26
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=ol2Z5lr7/k60c8Jy1gdlKAAf0k0ifaDTPrG17y3vnBQ=;
+	b=M/E7jJ1hxGNtNIPb3jLwSbJyrdahvwqd0DmFum9A8B5wzCRGVhdLzQT0B1nEUQ8txD
+	sJgDcHO5VquebSiyqWa58vNUgb07eLvZh/alRA3PO3uEGnGXBCT+KI80SIr7XvGDvjWL
+	OVXC19A3a1QoCNi+tcGWXbPeN3VNPI3jL1eL5IYrphmz8lWeYYXvfO85SfIeV43nx6XH
+	PJ4bQVWjn0CrYZJySn3x9EfpTjMFTDHCO6XH9G2x0NioHZWSRwzg0S2JZ+0VaY4ZLn3N
+	JhI7S/R1mac2aQy4AHYdeCWEXrJHywLBGJTDc7FpSEorU7mhoRB1oloxZEiF/8akMSLi
+	bNaw==
+X-Gm-Message-State: APjAAAUqENpgBL9CdNOi9L2clQExBhWNQjDoNQt5Gs+/rbOC2pCCeGH+
+	7+aWRP7Obry97hNvE0V8v8I=
+X-Google-Smtp-Source: APXvYqy7mfln+fSUdN9V6ZHRKy7OuGTiAtG97G9wG+/oAFR0Vex+zGSmAjRf9pRB5vVkO9wFWVM2lw==
+X-Received: by 2002:a1c:4e0a:: with SMTP id g10mr5432632wmh.128.1553588296892; 
+	Tue, 26 Mar 2019 01:18:16 -0700 (PDT)
+Received: from localhost ([51.15.41.238])
+	by smtp.gmail.com with ESMTPSA id 66sm1923501wmd.3.2019.03.26.01.18.15
 	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 26 Mar 2019 00:55:26 -0700 (PDT)
-Date: Tue, 26 Mar 2019 08:55:24 +0100
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: John Snow <jsnow@redhat.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
-	Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>
-Message-ID: <20190326075524.qvlakskoee3phywp@steredhat>
-References: <20190321094012.36541-1-sgarzare@redhat.com>
-	<7c89c032-7160-32d6-90ad-f5dafbdb211d@redhat.com>
-	<CAAdtpL75dz-2ZSBJWwN_HA28-p8GxuV_HqRC7_QYaQp-yzRSpw@mail.gmail.com>
+	Tue, 26 Mar 2019 01:18:15 -0700 (PDT)
+Date: Tue, 26 Mar 2019 08:18:14 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Jafar Abdi <cafer.abdi@gmail.com>
+Cc: qemu-devel@nongnu.org, jusual@mail.ru, qemu-trivial@nongnu.org
+Message-ID: <20190326081814.GF21018@stefanha-x1.localdomain>
+References: <1553351197-14581-1-git-send-email-cafer.abdi@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="b8GWCKCLzrXbuNet"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAAdtpL75dz-2ZSBJWwN_HA28-p8GxuV_HqRC7_QYaQp-yzRSpw@mail.gmail.com>
-User-Agent: NeoMutt/20180716
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.65
-Subject: Re: [Qemu-trivial] [Qemu-devel] [Qemu-block] [PATCH] block/vhdx:
- Use IEC binary prefixes from "qemu/units.h"
+In-Reply-To: <1553351197-14581-1-git-send-email-cafer.abdi@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::344
+Subject: Re: [Qemu-trivial] [PATCH V2 0/4] fix usage of bool
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,104 +71,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Mar 2019 07:55:34 -0000
-
-On Mon, Mar 25, 2019 at 10:56:57PM +0100, Philippe Mathieu-Daudé wrote:
-> Le lun. 25 mars 2019 21:53, John Snow <jsnow@redhat.com> a écrit :
-> > On 3/21/19 5:40 AM, Stefano Garzarella wrote:
-> > > IEC binary prefixes are defined in "qemu/units.h", so we
-> > > can remove redundant definitions in "block/vhdx.h".
-> > >
-> > > Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
-> > > ---
-> > >  block/vhdx-log.c | 1 +
-> > >  block/vhdx.c     | 4 +++-
-> > >  block/vhdx.h     | 5 -----
-> > >  3 files changed, 4 insertions(+), 6 deletions(-)
-> > >
-> > > diff --git a/block/vhdx-log.c b/block/vhdx-log.c
-> > > index 3149ff08d8..ad9905eb6d 100644
-> > > --- a/block/vhdx-log.c
-> > > +++ b/block/vhdx-log.c
-> > > @@ -18,6 +18,7 @@
-> > >   *
-> > >   */
-> > >  #include "qemu/osdep.h"
-> > > +#include "qemu/units.h"
-> > >  #include "qapi/error.h"
-> > >  #include "qemu-common.h"
-> > >  #include "block/block_int.h"
-> > > diff --git a/block/vhdx.c b/block/vhdx.c
-> > > index b785aef4b7..e9b16c5ef6 100644
-> > > --- a/block/vhdx.c
-> > > +++ b/block/vhdx.c
-> > > @@ -16,6 +16,7 @@
-> > >   */
-> > >
-> > >  #include "qemu/osdep.h"
-> > > +#include "qemu/units.h"
-> > >  #include "qapi/error.h"
-> > >  #include "block/block_int.h"
-> > >  #include "block/qdict.h"
-> > > @@ -1889,7 +1890,8 @@ static int coroutine_fn
-> > vhdx_co_create(BlockdevCreateOptions *opts,
-> > >          return -EINVAL;
-> > >      }
-> > >      if (block_size > VHDX_BLOCK_SIZE_MAX) {
-> > > -        error_setg(errp, "Block size must not exceed %d",
-> > VHDX_BLOCK_SIZE_MAX);
-> > > +        error_setg(errp, "Block size must not exceed %" PRId64,
-> > > +                   VHDX_BLOCK_SIZE_MAX);
-> >
-> > Oh, changing the constants changes the inferred type of this constant,
-> > correct?
-> >
-> 
-
-Yes, in "units.h" all the constants are int64_t.
-
-> Yes.
-> 
-> 
-> > >          return -EINVAL;
-> > >      }
-> > >
-> > > diff --git a/block/vhdx.h b/block/vhdx.h
-> > > index 1bfb4e4f73..deb6e362ad 100644
-> > > --- a/block/vhdx.h
-> > > +++ b/block/vhdx.h
-> > > @@ -18,11 +18,6 @@
-> > >  #ifndef BLOCK_VHDX_H
-> > >  #define BLOCK_VHDX_H
-> > >
-> > > -#define KiB              (1 * 1024)
-> > > -#define MiB            (KiB * 1024)
-> > > -#define GiB            (MiB * 1024)
-> > > -#define TiB ((uint64_t) GiB * 1024)
-> > > -
-> >
-> > I'd include units.h here because there are other references to
-> > KiB/MiB/GiB and so on throughout the rest of this header file.
-> >
-> > I think it's bad form to have a header that cannot be included unless
-> > you include other headers manually alongside it.
-> >
-> 
-> Agreed.
-
-Okay, I'll include units.h here.
-
-> 
-> 
-> > >  #define DEFAULT_LOG_SIZE 1048576 /* 1MiB */
-> >
-> 
-> Can we also update this definition?
-> 
-
-Sure, I'll update it in v2.
+X-List-Received-Date: Tue, 26 Mar 2019 08:19:12 -0000
 
 
-Thanks for the review,
-Stefano
+--b8GWCKCLzrXbuNet
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sat, Mar 23, 2019 at 05:26:33PM +0300, Jafar Abdi wrote:
+> Clean up wrong usage of FALSE and TRUE in places that use "bool" from std=
+bool.h.
+>=20
+> FALSE and TRUE (with capital letters) are the constants defined by glib f=
+or
+> being used with the "gboolean" type of glib. But some parts of the code a=
+lso use
+> TRUE and FALSE for variables that are declared as "bool" (the type from <=
+stdbool.h>).
+
+CCing qemu-trivial
+
+> Jafar Abdi (4):
+>   authz: fix usage of bool in listfile.c
+>   tests/libqos: fix usage of bool in pci-pc.c
+>   tests/libqos: fix usage of bool in pci-spapr.c
+>   hw/tpm: fix usage of bool in tpm-tis.c
+>=20
+>  authz/listfile.c         | 2 +-
+>  hw/tpm/tpm_tis.c         | 4 ++--
+>  tests/libqos/pci-pc.c    | 2 +-
+>  tests/libqos/pci-spapr.c | 2 +-
+>  4 files changed, 5 insertions(+), 5 deletions(-)
+>=20
+> --=20
+> 2.7.4
+>=20
+
+--b8GWCKCLzrXbuNet
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJcmeBGAAoJEJykq7OBq3PIIg4H+QEMB/51G42n4ARf2R2S+wD7
+fDdly5LX56kF6hcTheq6PGmBr6DGNtKVDS1PtrAfuKJ0dcZK6RDxoIZD6fpwsVag
+jeI1KVLeGkRS+yZv4/WGIA3SFrNvbKht+AONKvZB+oXW1x/aEjrjjNMWfUYs9S7d
+7onzBLndz2qy8sJ2Mk3O/djC7p45UoUalmZS/GjMQwWyHfkkZUKLM2Pc9/PvFSZf
+xT01xhp6NNJHCpKoqBLMkBmh41h44zfshZhBWvl+p3Bk+Q2xQ4bUGxnAMp4eDLS3
+gdbiap/8d2Q0PnHhGaKQswDTsmI6GeUVy6DXrKRRdLzSOeVL+ewKa/h8A52ngPk=
+=qCg8
+-----END PGP SIGNATURE-----
+
+--b8GWCKCLzrXbuNet--
 
