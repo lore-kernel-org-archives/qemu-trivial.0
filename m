@@ -1,33 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h9CAs-0001U4-5X
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Mar 2019 13:17:14 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:43831)
+	id 1h9CBk-0001qm-PW
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Mar 2019 13:18:11 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44015)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1h9CAo-0001SD-PO
-	for qemu-trivial@nongnu.org; Wed, 27 Mar 2019 13:17:12 -0400
+	(envelope-from <jsnow@redhat.com>) id 1h9CBi-0001of-CS
+	for qemu-trivial@nongnu.org; Wed, 27 Mar 2019 13:18:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jsnow@redhat.com>) id 1h9CAi-0006wL-QH
-	for qemu-trivial@nongnu.org; Wed, 27 Mar 2019 13:17:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49969)
+	(envelope-from <jsnow@redhat.com>) id 1h9CBh-0007Sq-D1
+	for qemu-trivial@nongnu.org; Wed, 27 Mar 2019 13:18:06 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38624)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <jsnow@redhat.com>)
-	id 1h9CAY-0006qT-F3; Wed, 27 Mar 2019 13:16:54 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	id 1h9CBa-0007Oc-Om; Wed, 27 Mar 2019 13:17:59 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B833D30EBB38;
-	Wed, 27 Mar 2019 17:16:51 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 0F08BC057F4F;
+	Wed, 27 Mar 2019 17:17:58 +0000 (UTC)
 Received: from [10.10.123.210] (ovpn-123-210.rdu2.redhat.com [10.10.123.210])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 532909CC0;
-	Wed, 27 Mar 2019 17:16:50 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1B83162660;
+	Wed, 27 Mar 2019 17:17:57 +0000 (UTC)
 To: Stefano Garzarella <sgarzare@redhat.com>, qemu-devel@nongnu.org
-Cc: Max Reitz <mreitz@redhat.com>, qemu-trivial@nongnu.org,
-	Jeff Cody <codyprime@gmail.com>, qemu-block@nongnu.org,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Kevin Wolf <kwolf@redhat.com>
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+	qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+	<f4bug@amsat.org>, Max Reitz <mreitz@redhat.com>,
+	Jeff Cody <codyprime@gmail.com>
 References: <20190327095634.53038-1-sgarzare@redhat.com>
-	<20190327095634.53038-2-sgarzare@redhat.com>
+	<20190327095634.53038-3-sgarzare@redhat.com>
 From: John Snow <jsnow@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
@@ -104,23 +104,23 @@ Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
 	i0HjnLoJP5jDcoMTabZTIazXmJz3pKM11HYJ5/ZsTIf3ZRJJKIvXJpbmcAPVwTZII6XxiJdh
 	RSSX4Mvd5pL/+5WI6NTdW6DMfigTtdd85fe6PwBNVJL2ZvBfsBJZ5rxg1TOH3KLsYBqBTgW2
 	glQofxhkJhDEcvjLhe3Y2BlbCWKOmvM8XS9TRt0OwUs=
-Message-ID: <517394f7-5a9e-2d3e-9f92-8dcd5c0363f6@redhat.com>
-Date: Wed, 27 Mar 2019 13:16:49 -0400
+Message-ID: <5950ecf9-eabc-a361-eab8-49333b60085a@redhat.com>
+Date: Wed, 27 Mar 2019 13:17:56 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20190327095634.53038-2-sgarzare@redhat.com>
+In-Reply-To: <20190327095634.53038-3-sgarzare@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.49]);
-	Wed, 27 Mar 2019 17:16:51 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.32]);
+	Wed, 27 Mar 2019 17:17:58 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2 1/2] block/vhdx: Remove redundant IEC
- binary prefixes definition
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 2/2] block/vhdx: Use IEC
+ binary prefixes for size constants
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -132,59 +132,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Mar 2019 17:17:13 -0000
+X-List-Received-Date: Wed, 27 Mar 2019 17:18:07 -0000
 
 
 
 On 3/27/19 5:56 AM, Stefano Garzarella wrote:
-> IEC binary prefixes are already defined in "qemu/units.h",
-> so we can remove redundant definitions in "block/vhdx.h".
+> Using IEC binary prefixes in order to make the code more readable,
+> with the exception of DEFAULT_LOG_SIZE because it's passed to
+> stringify().
 > 
 > Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
-> ---
->  block/vhdx.c | 3 ++-
->  block/vhdx.h | 6 +-----
->  2 files changed, 3 insertions(+), 6 deletions(-)
-> 
-> diff --git a/block/vhdx.c b/block/vhdx.c
-> index b785aef4b7..7cd1fc3731 100644
-> --- a/block/vhdx.c
-> +++ b/block/vhdx.c
-> @@ -1889,7 +1889,8 @@ static int coroutine_fn vhdx_co_create(BlockdevCreateOptions *opts,
->          return -EINVAL;
->      }
->      if (block_size > VHDX_BLOCK_SIZE_MAX) {
-> -        error_setg(errp, "Block size must not exceed %d", VHDX_BLOCK_SIZE_MAX);
-> +        error_setg(errp, "Block size must not exceed %" PRId64,
-> +                   VHDX_BLOCK_SIZE_MAX);
->          return -EINVAL;
->      }
->  
-> diff --git a/block/vhdx.h b/block/vhdx.h
-> index 1bfb4e4f73..bf72090c8f 100644
-> --- a/block/vhdx.h
-> +++ b/block/vhdx.h
-> @@ -17,11 +17,7 @@
->  
->  #ifndef BLOCK_VHDX_H
->  #define BLOCK_VHDX_H
-> -
-> -#define KiB              (1 * 1024)
-> -#define MiB            (KiB * 1024)
-> -#define GiB            (MiB * 1024)
-> -#define TiB ((uint64_t) GiB * 1024)
-> +#include "qemu/units.h"
->  
->  #define DEFAULT_LOG_SIZE 1048576 /* 1MiB */
->  /* Structures and fields present in the VHDX file */
-> 
 
-Looks good. By the way, you may want to consider adding to your git
-config rules that put the .h file diff changes above the .c file.
-
-Look at qemu/scripts/git.orderfile
-
-(I know I'm one to talk, I still haven't set mine up...)
+Looks good to me;
 
 Reviewed-by: John Snow <jsnow@redhat.com>
 
