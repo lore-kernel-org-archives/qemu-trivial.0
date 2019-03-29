@@ -1,33 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h9n4N-0001dn-45
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Mar 2019 04:40:59 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:46025)
+	id 1h9n6R-0002lF-Ja
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Mar 2019 04:43:07 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:46520)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h9n4L-0001cX-Ie
-	for qemu-trivial@nongnu.org; Fri, 29 Mar 2019 04:40:58 -0400
+	(envelope-from <thuth@redhat.com>) id 1h9n6P-0002iy-3a
+	for qemu-trivial@nongnu.org; Fri, 29 Mar 2019 04:43:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1h9n4K-0002N5-LU
-	for qemu-trivial@nongnu.org; Fri, 29 Mar 2019 04:40:57 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48068)
+	(envelope-from <thuth@redhat.com>) id 1h9n6N-0003Tk-QO
+	for qemu-trivial@nongnu.org; Fri, 29 Mar 2019 04:43:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49116)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1h9n4G-0002KE-8C; Fri, 29 Mar 2019 04:40:52 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1h9n6J-0003PC-Iz; Fri, 29 Mar 2019 04:42:59 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6FD4031688E1;
-	Fri, 29 Mar 2019 08:40:51 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id DA47B3082E4B;
+	Fri, 29 Mar 2019 08:42:58 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-117-7.ams2.redhat.com [10.36.117.7])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B7F786B473;
-	Fri, 29 Mar 2019 08:40:46 +0000 (UTC)
-To: Max Reitz <mreitz@redhat.com>, qemu-devel@nongnu.org,
-	Kevin Wolf <kwolf@redhat.com>
-Cc: qemu-block@nongnu.org, Eric Blake <eblake@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1549378185-7970-1-git-send-email-thuth@redhat.com>
-	<5b987596-37e5-242f-2ee3-f7e66f2a56f3@redhat.com>
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BB78610018F9;
+	Fri, 29 Mar 2019 08:42:53 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+References: <1549471435-21887-1-git-send-email-thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
 	xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -72,23 +70,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <b107122d-ba4b-8705-33b7-b2bec4e87fbf@redhat.com>
-Date: Fri, 29 Mar 2019 09:40:45 +0100
+Message-ID: <5a21d28a-fcb5-305c-d44f-158e69411b28@redhat.com>
+Date: Fri, 29 Mar 2019 09:42:52 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.5.0
 MIME-Version: 1.0
-In-Reply-To: <5b987596-37e5-242f-2ee3-f7e66f2a56f3@redhat.com>
+In-Reply-To: <1549471435-21887-1-git-send-email-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Fri, 29 Mar 2019 08:40:51 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.46]);
+	Fri, 29 Mar 2019 08:42:58 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] tests/qemu-iotests: Remove redundant
- COPYING file
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/i2c/smbus_ich9: Fix the
+ confusing contributions-after-2012 statement
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,27 +98,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Mar 2019 08:40:58 -0000
+X-List-Received-Date: Fri, 29 Mar 2019 08:43:06 -0000
 
-On 27/02/2019 14.42, Max Reitz wrote:
-> On 05.02.19 15:49, Thomas Huth wrote:
->> The file tests/qemu-iotests/COPYING is the same text as in the
->> COPYING file in the main directory. So as far as I can see, we don't
->> need the duplicate here.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  tests/qemu-iotests/COPYING | 339 ------------------------------------=
----------
->>  1 file changed, 339 deletions(-)
->>  delete mode 100644 tests/qemu-iotests/COPYING
->=20
-> Reviewed-by: Max Reitz <mreitz@redhat.com>
+On 06/02/2019 17.43, Thomas Huth wrote:
+> The license information in this file is rather confusing. The text
+> declares LGPL first, but then says that contributions after Jan 2012
+> are licensed under the GPL instead. How should the average user who
+> just downloaded the release tarball know which part is now GPL and
+> which is LGPL? Also, as far as I can see, the file has been added to
+> QEMU *after* January in 2012, so the whole file should be GPL by
+> default instead.
+> 
+> Furthermore, looking at the text of the LGPL (see COPYING.LIB in the
+> top directory), the license clearly states in section "3." that one
+> should rather replace the license information in such a case instead.
+> Thus let's clean up the confusing statements and use the proper GPL
+> text only.
+> 
+> While we're at it, also remove the comment about acpi.c, since that
+> file does not exist under this name in the QEMU tree anymore.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/i2c/smbus_ich9.c | 21 ++++++++-------------
+>  1 file changed, 8 insertions(+), 13 deletions(-)
+> 
+> diff --git a/hw/i2c/smbus_ich9.c b/hw/i2c/smbus_ich9.c
+> index 2a8b49e..484aef5 100644
+> --- a/hw/i2c/smbus_ich9.c
+> +++ b/hw/i2c/smbus_ich9.c
+> @@ -6,23 +6,18 @@
+>   *               VA Linux Systems Japan K.K.
+>   * Copyright (C) 2012 Jason Baron <jbaron@redhat.com>
+>   *
+> - * This is based on acpi.c, but heavily rewritten.
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+>   *
+> - * This library is free software; you can redistribute it and/or
+> - * modify it under the terms of the GNU Lesser General Public
+> - * License version 2 as published by the Free Software Foundation.
+> - *
+> - * This library is distributed in the hope that it will be useful,
+> + * This program is distributed in the hope that it will be useful,
+>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+> - * Lesser General Public License for more details.
+> - *
+> - * You should have received a copy of the GNU Lesser General Public
+> - * License along with this library; if not, see <http://www.gnu.org/licenses/>
+> - *
+> - * Contributions after 2012-01-13 are licensed under the terms of the
+> - * GNU GPL, version 2 or (at your option) any later version.
+> + * General Public License for more details.
+>   *
+> + * You should have received a copy of the GNU General Public License
+> + * along with this program; if not, see <http://www.gnu.org/licenses/>
+>   */
+>  #include "qemu/osdep.h"
+>  #include "hw/hw.h"
+> 
 
 Ping?
 
-Kevin, Max, I think this should go via the block tree? Or is this rather
-something for the trivial queue?
-
  Thomas
+
 
