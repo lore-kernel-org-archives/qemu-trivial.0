@@ -1,49 +1,94 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h9UMM-0000t7-8T
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Mar 2019 08:42:18 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38420)
+	id 1h9n4N-0001dn-45
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Mar 2019 04:40:59 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:46025)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1h9UMK-0000V1-3Y
-	for qemu-trivial@nongnu.org; Thu, 28 Mar 2019 08:42:17 -0400
+	(envelope-from <thuth@redhat.com>) id 1h9n4L-0001cX-Ie
+	for qemu-trivial@nongnu.org; Fri, 29 Mar 2019 04:40:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <kwolf@redhat.com>) id 1h9U9v-0006uI-P4
-	for qemu-trivial@nongnu.org; Thu, 28 Mar 2019 08:29:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58506)
+	(envelope-from <thuth@redhat.com>) id 1h9n4K-0002N5-LU
+	for qemu-trivial@nongnu.org; Fri, 29 Mar 2019 04:40:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48068)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <kwolf@redhat.com>)
-	id 1h9U9g-0006jq-1H; Thu, 28 Mar 2019 08:29:13 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1h9n4G-0002KE-8C; Fri, 29 Mar 2019 04:40:52 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CA43770008;
-	Thu, 28 Mar 2019 12:29:08 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-148.ams2.redhat.com
-	[10.36.116.148])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id BEFD619C77;
-	Thu, 28 Mar 2019 12:29:04 +0000 (UTC)
-Date: Thu, 28 Mar 2019 13:29:03 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: Stefano Garzarella <sgarzare@redhat.com>
-Cc: qemu-devel@nongnu.org, Max Reitz <mreitz@redhat.com>,
-	John Snow <jsnow@redhat.com>, qemu-trivial@nongnu.org,
-	Jeff Cody <codyprime@gmail.com>, qemu-block@nongnu.org,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Message-ID: <20190328122903.GH4857@localhost.localdomain>
-References: <20190327095634.53038-1-sgarzare@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 6FD4031688E1;
+	Fri, 29 Mar 2019 08:40:51 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-117-7.ams2.redhat.com [10.36.117.7])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B7F786B473;
+	Fri, 29 Mar 2019 08:40:46 +0000 (UTC)
+To: Max Reitz <mreitz@redhat.com>, qemu-devel@nongnu.org,
+	Kevin Wolf <kwolf@redhat.com>
+Cc: qemu-block@nongnu.org, Eric Blake <eblake@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+References: <1549378185-7970-1-git-send-email-thuth@redhat.com>
+	<5b987596-37e5-242f-2ee3-f7e66f2a56f3@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <b107122d-ba4b-8705-33b7-b2bec4e87fbf@redhat.com>
+Date: Fri, 29 Mar 2019 09:40:45 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190327095634.53038-1-sgarzare@redhat.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+In-Reply-To: <5b987596-37e5-242f-2ee3-f7e66f2a56f3@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Thu, 28 Mar 2019 12:29:08 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.41]);
+	Fri, 29 Mar 2019 08:40:51 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2 0/2] block/vhdx: Use IEC binary
- prefixes from "qemu/units.h"
+Subject: Re: [Qemu-trivial] [PATCH] tests/qemu-iotests: Remove redundant
+ COPYING file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,18 +100,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Mar 2019 12:42:17 -0000
+X-List-Received-Date: Fri, 29 Mar 2019 08:40:58 -0000
 
-Am 27.03.2019 um 10:56 hat Stefano Garzarella geschrieben:
-> v2:
-> - Included units.h directly in the vhdx.h header file (John, Philippe)
-> - Added a comment next to DEFAULT_LOG_SIZE definition (Kevin)
-> - Added a second patch where I fixed some size constants using IEC
->   binary prefixes.
->   Note: checkpatch is not happy about a change in vhdx.h but all the comments
->   in that file doesn't respect the new coding style so I left the comment as is
+On 27/02/2019 14.42, Max Reitz wrote:
+> On 05.02.19 15:49, Thomas Huth wrote:
+>> The file tests/qemu-iotests/COPYING is the same text as in the
+>> COPYING file in the main directory. So as far as I can see, we don't
+>> need the duplicate here.
+>>
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>>  tests/qemu-iotests/COPYING | 339 ------------------------------------=
+---------
+>>  1 file changed, 339 deletions(-)
+>>  delete mode 100644 tests/qemu-iotests/COPYING
+>=20
+> Reviewed-by: Max Reitz <mreitz@redhat.com>
 
-Thanks, applied to the block-next branch for 4.1.
+Ping?
 
-Kevin
+Kevin, Max, I think this should go via the block tree? Or is this rather
+something for the trivial queue?
+
+ Thomas
 
