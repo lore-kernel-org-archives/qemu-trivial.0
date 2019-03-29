@@ -1,42 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h9nCu-0007j2-LG
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Mar 2019 04:49:48 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:48150)
+	id 1h9nCv-0007kG-Rh
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Mar 2019 04:49:49 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:48175)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <like.xu@linux.intel.com>) id 1h9nCq-0007eg-Kh
-	for qemu-trivial@nongnu.org; Fri, 29 Mar 2019 04:49:45 -0400
+	(envelope-from <like.xu@linux.intel.com>) id 1h9nCs-0007fI-T8
+	for qemu-trivial@nongnu.org; Fri, 29 Mar 2019 04:49:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <like.xu@linux.intel.com>) id 1h9nCo-0006Vh-RX
-	for qemu-trivial@nongnu.org; Fri, 29 Mar 2019 04:49:44 -0400
+	(envelope-from <like.xu@linux.intel.com>) id 1h9nCp-0006WU-UG
+	for qemu-trivial@nongnu.org; Fri, 29 Mar 2019 04:49:46 -0400
 Received: from mga06.intel.com ([134.134.136.31]:30613)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
-	id 1h9nCo-0006TI-EZ; Fri, 29 Mar 2019 04:49:42 -0400
+	id 1h9nCp-0006TI-5W; Fri, 29 Mar 2019 04:49:43 -0400
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
 	by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	29 Mar 2019 01:49:39 -0700
+	29 Mar 2019 01:49:42 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,283,1549958400"; d="scan'208";a="129706914"
+X-IronPort-AV: E=Sophos;i="5.60,283,1549958400"; d="scan'208";a="129706927"
 Received: from xulike-server.sh.intel.com ([10.239.48.134])
-	by orsmga008.jf.intel.com with ESMTP; 29 Mar 2019 01:49:37 -0700
+	by orsmga008.jf.intel.com with ESMTP; 29 Mar 2019 01:49:40 -0700
 From: Like Xu <like.xu@linux.intel.com>
 To: qemu-trivial@nongnu.org
 Cc: qemu-devel@nongnu.org,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Eduardo Habkost <ehabkost@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, like.xu@intel.com
-Date: Fri, 29 Mar 2019 16:48:39 +0800
-Message-Id: <1553849325-44201-4-git-send-email-like.xu@linux.intel.com>
+Date: Fri, 29 Mar 2019 16:48:41 +0800
+Message-Id: <1553849325-44201-6-git-send-email-like.xu@linux.intel.com>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1553849325-44201-1-git-send-email-like.xu@linux.intel.com>
 References: <1553849325-44201-1-git-send-email-like.xu@linux.intel.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 134.134.136.31
-Subject: [Qemu-trivial] [Qemu-devel] [PATCH 3/9] cpu/topology: add uncommon
- arch support for smp machine properties
+Subject: [Qemu-trivial] [Qemu-devel] [PATCH 5/9] cpu/topology: add i386
+ support for smp machine properties
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,169 +48,140 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Mar 2019 08:49:46 -0000
+X-List-Received-Date: Fri, 29 Mar 2019 08:49:48 -0000
 
 Signed-off-by: Like Xu <like.xu@linux.intel.com>
 ---
- hw/alpha/dp264.c     | 1 +
- hw/hppa/machine.c    | 4 ++++
- hw/mips/boston.c     | 1 +
- hw/mips/mips_malta.c | 9 +++++++++
- hw/sparc/sun4m.c     | 2 ++
- hw/sparc64/sun4u.c   | 2 ++
- hw/xtensa/sim.c      | 1 +
- hw/xtensa/xtfpga.c   | 1 +
- 8 files changed, 21 insertions(+)
+ hw/i386/acpi-build.c |  3 +++
+ hw/i386/kvmvapic.c   |  5 +++++
+ hw/i386/pc.c         | 12 ++++++++++++
+ target/i386/cpu.c    |  4 ++++
+ 4 files changed, 24 insertions(+)
 
-diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
-index 0347eb8..ee5d432 100644
---- a/hw/alpha/dp264.c
-+++ b/hw/alpha/dp264.c
-@@ -63,6 +63,7 @@ static void clipper_init(MachineState *machine)
-     char *palcode_filename;
-     uint64_t palcode_entry, palcode_low, palcode_high;
-     uint64_t kernel_entry, kernel_low, kernel_high;
-+    unsigned int smp_cpus = machine->topo.smp_cpus;
- 
-     /* Create up to 4 cpus.  */
-     memset(cpus, 0, sizeof(cpus));
-diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
-index d1b1d3c..f652891 100644
---- a/hw/hppa/machine.c
-+++ b/hw/hppa/machine.c
-@@ -16,6 +16,7 @@
- #include "hw/ide.h"
- #include "hw/timer/i8254.h"
- #include "hw/char/serial.h"
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 416da31..3813c28 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -44,6 +44,7 @@
+ #include "sysemu/tpm.h"
+ #include "hw/acpi/tpm.h"
+ #include "hw/acpi/vmgenid.h"
 +#include "hw/boards.h"
- #include "hppa_sys.h"
- #include "qemu/units.h"
- #include "qapi/error.h"
-@@ -72,6 +73,7 @@ static void machine_hppa_init(MachineState *machine)
-     MemoryRegion *ram_region;
-     MemoryRegion *cpu_region;
-     long i;
-+    unsigned int smp_cpus = machine->topo.smp_cpus;
+ #include "sysemu/tpm_backend.h"
+ #include "hw/timer/mc146818rtc_regs.h"
+ #include "hw/mem/memory-device.h"
+@@ -127,6 +128,8 @@ typedef struct FwCfgTPMConfig {
  
-     ram_size = machine->ram_size;
- 
-@@ -242,7 +244,9 @@ static void machine_hppa_init(MachineState *machine)
- 
- static void hppa_machine_reset(void)
+ static void init_common_fadt_data(Object *o, AcpiFadtData *data)
  {
 +    MachineState *ms = MACHINE(qdev_get_machine());
-     int i;
-+    unsigned int smp_cpus = ms->topo.smp_cpus;
++    unsigned int max_cpus = ms->topo.max_cpus;
+     uint32_t io = object_property_get_uint(o, ACPI_PM_PROP_PM_IO_BASE, NULL);
+     AmlAddressSpace as = AML_AS_SYSTEM_IO;
+     AcpiFadtData fadt = {
+diff --git a/hw/i386/kvmvapic.c b/hw/i386/kvmvapic.c
+index 70f6f26..2463f8a 100644
+--- a/hw/i386/kvmvapic.c
++++ b/hw/i386/kvmvapic.c
+@@ -17,6 +17,7 @@
+ #include "sysemu/kvm.h"
+ #include "hw/i386/apic_internal.h"
+ #include "hw/sysbus.h"
++#include "hw/boards.h"
+ #include "tcg/tcg.h"
  
-     qemu_devices_reset();
+ #define VAPIC_IO_PORT           0x7e
+@@ -441,6 +442,8 @@ static void do_patch_instruction(CPUState *cs, run_on_cpu_data data)
  
-diff --git a/hw/mips/boston.c b/hw/mips/boston.c
-index e5bab3c..7752c10 100644
---- a/hw/mips/boston.c
-+++ b/hw/mips/boston.c
-@@ -434,6 +434,7 @@ static void boston_mach_init(MachineState *machine)
-     DriveInfo *hd[6];
-     Chardev *chr;
-     int fw_size, fit_err;
-+    unsigned int smp_cpus = machine->topo.smp_cpus;
-     bool is_64b;
- 
-     if ((machine->ram_size % GiB) ||
-diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
-index 439665a..d595375 100644
---- a/hw/mips/mips_malta.c
-+++ b/hw/mips/mips_malta.c
-@@ -1095,6 +1095,8 @@ static int64_t load_kernel (void)
- 
- static void malta_mips_config(MIPSCPU *cpu)
+ static void patch_instruction(VAPICROMState *s, X86CPU *cpu, target_ulong ip)
  {
 +    MachineState *ms = MACHINE(qdev_get_machine());
 +    unsigned int smp_cpus = ms->topo.smp_cpus;
-     CPUMIPSState *env = &cpu->env;
      CPUState *cs = CPU(cpu);
- 
-@@ -1127,9 +1129,11 @@ static void main_cpu_reset(void *opaque)
- static void create_cpu_without_cps(const char *cpu_type,
-                                    qemu_irq *cbus_irq, qemu_irq *i8259_irq)
+     VAPICHandlers *handlers;
+     PatchInfo *info;
+@@ -746,6 +749,8 @@ static void do_vapic_enable(CPUState *cs, run_on_cpu_data data)
+ static void kvmvapic_vm_state_change(void *opaque, int running,
+                                      RunState state)
  {
 +    MachineState *ms = MACHINE(qdev_get_machine());
-     CPUMIPSState *env;
-     MIPSCPU *cpu;
++    unsigned int smp_cpus = ms->topo.smp_cpus;
+     VAPICROMState *s = opaque;
+     uint8_t *zero;
+ 
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 6077d27..2816bfd 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -931,6 +931,9 @@ void enable_compat_apic_id_mode(void)
+  */
+ static uint32_t x86_cpu_apic_id_from_index(unsigned int cpu_index)
+ {
++    MachineState *ms = MACHINE(qdev_get_machine());
++    unsigned int smp_cores = ms->topo.smp_cores;
++    unsigned int smp_threads = ms->topo.smp_threads;
+     uint32_t correct_id;
+     static bool warned;
+ 
+@@ -1562,6 +1565,7 @@ void pc_cpus_init(PCMachineState *pcms)
+     const CPUArchIdList *possible_cpus;
+     MachineState *ms = MACHINE(pcms);
+     MachineClass *mc = MACHINE_GET_CLASS(pcms);
++    unsigned int smp_cpus = ms->topo.smp_cpus, max_cpus = ms->topo.max_cpus;
+ 
+     /* Calculates the limit to CPU APIC ID values
+      *
+@@ -2291,6 +2295,9 @@ static void pc_cpu_pre_plug(HotplugHandler *hotplug_dev,
+     X86CPU *cpu = X86_CPU(dev);
+     MachineState *ms = MACHINE(hotplug_dev);
+     PCMachineState *pcms = PC_MACHINE(hotplug_dev);
++    unsigned int smp_cores = ms->topo.smp_cores;
++    unsigned int smp_threads = ms->topo.smp_threads;
++    unsigned int max_cpus = ms->topo.max_cpus;
+ 
+     if(!object_dynamic_cast(OBJECT(cpu), ms->cpu_type)) {
+         error_setg(errp, "Invalid CPU type, expected cpu type: '%s'",
+@@ -2646,6 +2653,8 @@ pc_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
+ static int64_t pc_get_default_cpu_node_id(const MachineState *ms, int idx)
+ {
+    X86CPUTopoInfo topo;
++   unsigned int smp_cores = ms->topo.smp_cores;
++   unsigned int smp_threads = ms->topo.smp_threads;
+ 
+    assert(idx < ms->possible_cpus->len);
+    x86_topo_ids_from_apicid(ms->possible_cpus->cpus[idx].arch_id,
+@@ -2656,6 +2665,9 @@ static int64_t pc_get_default_cpu_node_id(const MachineState *ms, int idx)
+ static const CPUArchIdList *pc_possible_cpu_arch_ids(MachineState *ms)
+ {
      int i;
-+    unsigned int smp_cpus = ms->topo.smp_cpus;
++    unsigned int max_cpus = ms->topo.max_cpus;
++    unsigned int smp_cores = ms->topo.smp_cores;
++    unsigned int smp_threads = ms->topo.smp_threads;
  
-     for (i = 0; i < smp_cpus; i++) {
-         cpu = MIPS_CPU(cpu_create(cpu_type));
-@@ -1149,7 +1153,9 @@ static void create_cpu_without_cps(const char *cpu_type,
- static void create_cps(MaltaState *s, const char *cpu_type,
-                        qemu_irq *cbus_irq, qemu_irq *i8259_irq)
- {
-+    MachineState *ms = MACHINE(qdev_get_machine());
-     Error *err = NULL;
-+    unsigned int smp_cpus = ms->topo.smp_cpus;
+     if (ms->possible_cpus) {
+         /*
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index d6bb57d..6dcdad4 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -53,6 +53,7 @@
+ #include "hw/hw.h"
+ #include "hw/xen/xen.h"
+ #include "hw/i386/apic_internal.h"
++#include "hw/boards.h"
+ #endif
  
-     s->cps = MIPS_CPS(object_new(TYPE_MIPS_CPS));
-     qdev_set_parent_bus(DEVICE(s->cps), sysbus_get_default());
-@@ -1171,6 +1177,9 @@ static void create_cps(MaltaState *s, const char *cpu_type,
- static void mips_create_cpu(MaltaState *s, const char *cpu_type,
-                             qemu_irq *cbus_irq, qemu_irq *i8259_irq)
- {
+ #include "disas/capstone.h"
+@@ -5291,6 +5292,9 @@ static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
+     }
+ 
+ #ifndef CONFIG_USER_ONLY
 +    MachineState *ms = MACHINE(qdev_get_machine());
 +    unsigned int smp_cpus = ms->topo.smp_cpus;
 +
-     if ((smp_cpus > 1) && cpu_supports_cps_smp(cpu_type)) {
-         create_cps(s, cpu_type, cbus_irq, i8259_irq);
-     } else {
-diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-index ca1e382..2321cfb 100644
---- a/hw/sparc/sun4m.c
-+++ b/hw/sparc/sun4m.c
-@@ -853,6 +853,8 @@ static void sun4m_hw_init(const struct sun4m_hwdef *hwdef,
-     unsigned int num_vsimms;
-     DeviceState *dev;
-     SysBusDevice *s;
-+    unsigned int smp_cpus = machine->topo.smp_cpus;
-+    unsigned int max_cpus = machine->topo.max_cpus;
+     qemu_register_reset(x86_cpu_machine_reset_cb, cpu);
  
-     /* init CPUs */
-     for(i = 0; i < smp_cpus; i++) {
-diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-index 399f2d7..d089c4d 100644
---- a/hw/sparc64/sun4u.c
-+++ b/hw/sparc64/sun4u.c
-@@ -546,6 +546,8 @@ static void sun4uv_init(MemoryRegion *address_space_mem,
-     NICInfo *nd;
-     MACAddr macaddr;
-     bool onboard_nic;
-+    unsigned int smp_cpus = machine->topo.smp_cpus;
-+    unsigned int max_cpus = machine->topo.max_cpus;
- 
-     /* init CPUs */
-     cpu = sparc64_cpu_devinit(machine->cpu_type, hwdef->prom_addr);
-diff --git a/hw/xtensa/sim.c b/hw/xtensa/sim.c
-index 12c7437..cc0396b 100644
---- a/hw/xtensa/sim.c
-+++ b/hw/xtensa/sim.c
-@@ -59,6 +59,7 @@ static void xtensa_sim_init(MachineState *machine)
-     ram_addr_t ram_size = machine->ram_size;
-     const char *kernel_filename = machine->kernel_filename;
-     int n;
-+    unsigned int smp_cpus = machine->topo.smp_cpus;
- 
-     for (n = 0; n < smp_cpus; n++) {
-         cpu = XTENSA_CPU(cpu_create(machine->cpu_type));
-diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
-index e05ef75..f71a15e 100644
---- a/hw/xtensa/xtfpga.c
-+++ b/hw/xtensa/xtfpga.c
-@@ -238,6 +238,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
-     const unsigned system_io_size = 224 * MiB;
-     uint32_t freq = 10000000;
-     int n;
-+    unsigned int smp_cpus = machine->topo.smp_cpus;
- 
-     if (smp_cpus > 1) {
-         mx_pic = xtensa_mx_pic_init(31);
+     if (cpu->env.features[FEAT_1_EDX] & CPUID_APIC || smp_cpus > 1) {
 -- 
 1.8.3.1
 
