@@ -1,39 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1h9nDn-0000Vj-IL
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Mar 2019 04:50:43 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:48535)
+	id 1h9nUI-0003GX-Rb
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Mar 2019 05:07:46 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52086)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <like.xu@linux.intel.com>) id 1h9nDj-0000Tq-D3
-	for qemu-trivial@nongnu.org; Fri, 29 Mar 2019 04:50:40 -0400
+	(envelope-from <no-reply@patchew.org>) id 1h9nUH-0003GL-Fs
+	for qemu-trivial@nongnu.org; Fri, 29 Mar 2019 05:07:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <like.xu@linux.intel.com>) id 1h9nDi-0006ym-8A
-	for qemu-trivial@nongnu.org; Fri, 29 Mar 2019 04:50:39 -0400
-Received: from mga06.intel.com ([134.134.136.31]:30610)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
-	id 1h9nDh-0006Sh-UQ; Fri, 29 Mar 2019 04:50:38 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-	by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	29 Mar 2019 01:49:34 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,283,1549958400"; d="scan'208";a="129706902"
-Received: from xulike-server.sh.intel.com ([10.239.48.134])
-	by orsmga008.jf.intel.com with ESMTP; 29 Mar 2019 01:49:32 -0700
-From: Like Xu <like.xu@linux.intel.com>
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, like.xu@intel.com
-Date: Fri, 29 Mar 2019 16:48:36 +0800
-Message-Id: <1553849325-44201-1-git-send-email-like.xu@linux.intel.com>
-X-Mailer: git-send-email 1.8.3.1
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 134.134.136.31
-Subject: [Qemu-trivial] [Qemu-devel] [PATCH 0/9] refactor cpu topo into
+	(envelope-from <no-reply@patchew.org>) id 1h9nUG-00015i-6B
+	for qemu-trivial@nongnu.org; Fri, 29 Mar 2019 05:07:45 -0400
+Resent-Date: Fri, 29 Mar 2019 05:07:45 -0400
+Resent-Message-Id: <E1h9nUG-00015i-6B@eggs.gnu.org>
+Received: from sender-of-o52.zoho.com ([135.84.80.217]:21433)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1h9nUF-00014G-TJ; Fri, 29 Mar 2019 05:07:44 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1553850443; cv=none; d=zoho.com; s=zohoarc; 
+	b=MAvUilSkkBNc/uh8p+zB7fwK/3iJoYkwZ40+t3L0VPZZQoOcMJ3KIjZ7u+3o6piyyI5gCgvZJbaObP3McAEjaTqhEUtKRH19eoNpCWGjBcgWCQZN5i1nIFOgpGbESOnrns+5ZaZNSUwnYbLX4tIYmkBmAOT3P1+WjDyi8tIuScI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+	s=zohoarc; t=1553850443;
+	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+	bh=qADwfL6dq1m3/hxj3ddwvXbLzXmSdulPdWS7Kd+1rb0=; 
+	b=oJLF9LqzXesun0BSTTyggTkeu6x2ugL4+bVZ/IeoouXCAyQqGOSbIR0tSVFqsJjOEie+y64TjMEX85rLAPQ6Cjqzfn3Z6JYQ2es8qtJPKHy90jnsf0aOTy/No1Z97GZuaksCaAulVRm6CRR8UATjdKd0NnkQXTmsiP+lNAhmJt8=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org>
+	header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1553850442668515.4018425937603;
+	Fri, 29 Mar 2019 02:07:22 -0700 (PDT)
+Message-ID: <155385044112.24.7332354302715369091@76452e4e88f2>
+In-Reply-To: <1553849325-44201-1-git-send-email-like.xu@linux.intel.com>
+Reply-To: <qemu-devel@nongnu.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: like.xu@linux.intel.com
+Cc: fam@euphon.net, qemu-trivial@nongnu.org, ehabkost@redhat.com,
+	like.xu@intel.com, qemu-devel@nongnu.org, pbonzini@redhat.com,
+	imammedo@redhat.com
+Date: Fri, 29 Mar 2019 02:07:22 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 135.84.80.217
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/9] refactor cpu topo into
  machine properties
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -46,82 +57,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Mar 2019 08:50:40 -0000
+X-List-Received-Date: Fri, 29 Mar 2019 09:07:46 -0000
 
-This patch series make existing cores/threads/sockets into machine
-properties and get rid of global variables they use currently.
-
-Like Xu (9):
-  cpu/topology: add struct CpuTopology to MachineState
-  cpu/topology: add general support for machine properties
-  cpu/topology: add uncommon arch support for smp machine properties
-  cpu/topology: add ARM support for smp machine properties
-  cpu/topology: add i386 support for smp machine properties
-  cpu/topology: add PPC support for smp machine properties
-  cpu/topology: add riscv support for smp machine properties
-  cpu/topology: add s390x support for smp machine properties
-  cpu/topology: replace smp global variables with machine propertie
-
- accel/kvm/kvm-all.c          |  3 +++
- backends/hostmem.c           |  4 ++++
- cpus.c                       |  4 ++++
- exec.c                       |  2 ++
- gdbstub.c                    |  7 ++++++-
- hw/alpha/dp264.c             |  1 +
- hw/arm/fsl-imx6.c            |  5 +++++
- hw/arm/fsl-imx6ul.c          |  5 +++++
- hw/arm/fsl-imx7.c            |  5 +++++
- hw/arm/highbank.c            |  1 +
- hw/arm/mcimx6ul-evk.c        |  1 +
- hw/arm/mcimx7d-sabre.c       |  3 +++
- hw/arm/raspi.c               |  2 ++
- hw/arm/realview.c            |  1 +
- hw/arm/sabrelite.c           |  1 +
- hw/arm/vexpress.c            |  3 +++
- hw/arm/virt.c                |  7 +++++++
- hw/arm/xlnx-zynqmp.c         |  7 +++++++
- hw/cpu/core.c                |  3 +++
- hw/hppa/machine.c            |  4 ++++
- hw/i386/acpi-build.c         |  3 +++
- hw/i386/kvmvapic.c           |  5 +++++
- hw/i386/pc.c                 | 12 +++++++++++
- hw/mips/boston.c             |  1 +
- hw/mips/mips_malta.c         |  9 +++++++++
- hw/openrisc/openrisc_sim.c   |  1 +
- hw/ppc/e500.c                |  3 +++
- hw/ppc/mac_newworld.c        |  2 ++
- hw/ppc/mac_oldworld.c        |  2 ++
- hw/ppc/pnv.c                 |  3 +++
- hw/ppc/prep.c                |  2 ++
- hw/ppc/spapr.c               | 29 ++++++++++++++++++++++++++
- hw/ppc/spapr_rtas.c          |  3 +++
- hw/riscv/sifive_e.c          |  4 ++++
- hw/riscv/sifive_plic.c       |  3 +++
- hw/riscv/sifive_u.c          |  4 ++++
- hw/riscv/spike.c             |  2 ++
- hw/riscv/virt.c              |  1 +
- hw/s390x/s390-virtio-ccw.c   |  2 ++
- hw/s390x/sclp.c              |  1 +
- hw/smbios/smbios.c           | 11 ++++++++++
- hw/sparc/sun4m.c             |  2 ++
- hw/sparc64/sun4u.c           |  2 ++
- hw/xtensa/sim.c              |  1 +
- hw/xtensa/xtfpga.c           |  1 +
- include/hw/arm/virt.h        |  2 +-
- include/hw/boards.h          |  8 ++++++++
- include/sysemu/sysemu.h      |  2 +-
- migration/postcopy-ram.c     |  7 +++++++
- numa.c                       |  1 +
- target/arm/cpu.c             |  7 +++++++
- target/i386/cpu.c            |  4 ++++
- target/openrisc/sys_helper.c |  5 +++++
- target/s390x/cpu.c           |  3 +++
- target/s390x/excp_helper.c   |  6 ++++++
- tcg/tcg.c                    | 15 ++++++++++++++
- vl.c                         | 48 ++++++++++++++++++++++++--------------------
- 57 files changed, 261 insertions(+), 25 deletions(-)
-
--- 
-1.8.3.1
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8xNTUzODQ5MzI1LTQ0MjAxLTEt
+Z2l0LXNlbmQtZW1haWwtbGlrZS54dUBsaW51eC5pbnRlbC5jb20vCgoKCkhpLAoKVGhpcyBzZXJp
+ZXMgZmFpbGVkIHRoZSBhc2FuIGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5nIGNv
+bW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0YWxs
+ZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBTQ1JJ
+UFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1kZWJ1Z0BmZWRv
+cmEgVEFSR0VUX0xJU1Q9eDg2XzY0LXNvZnRtbXUgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NS
+SVBUIEVORCA9PT0KCi91c3IvYmluL2xkOiAvdG1wL3FlbXUtdGVzdC9zcmMvaHcvaTM4Ni94ZW4v
+eGVuLWh2bS5jOigudGV4dCsweDE3ZjcpOiB1bmRlZmluZWQgcmVmZXJlbmNlIHRvIGBtYXhfY3B1
+cycKL3Vzci9iaW4vbGQ6IC90bXAvcWVtdS10ZXN0L3NyYy9ody9pMzg2L3hlbi94ZW4taHZtLmM6
+KC50ZXh0KzB4MWIxZSk6IHVuZGVmaW5lZCByZWZlcmVuY2UgdG8gYG1heF9jcHVzJwovdXNyL2Jp
+bi9sZDogaHcvaTM4Ni94ZW4veGVuLWh2bS5vOi90bXAvcWVtdS10ZXN0L3NyYy9ody9pMzg2L3hl
+bi94ZW4taHZtLmM6KC50ZXh0KzB4MWIzZSk6IG1vcmUgdW5kZWZpbmVkIHJlZmVyZW5jZXMgdG8g
+YG1heF9jcHVzJyBmb2xsb3cKY2xhbmctNzogZXJyb3I6IGxpbmtlciBjb21tYW5kIGZhaWxlZCB3
+aXRoIGV4aXQgY29kZSAxICh1c2UgLXYgdG8gc2VlIGludm9jYXRpb24pCm1ha2VbMV06ICoqKiBb
+TWFrZWZpbGU6MjA0OiBxZW11LXN5c3RlbS14ODZfNjRdIEVycm9yIDEKbWFrZTogKioqIFtNYWtl
+ZmlsZTo0NTA6IHN1YmRpci14ODZfNjQtc29mdG1tdV0gRXJyb3IgMgpUcmFjZWJhY2sgKG1vc3Qg
+cmVjZW50IGNhbGwgbGFzdCk6CgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8v
+cGF0Y2hldy5vcmcvbG9ncy8xNTUzODQ5MzI1LTQ0MjAxLTEtZ2l0LXNlbmQtZW1haWwtbGlrZS54
+dUBsaW51eC5pbnRlbC5jb20vdGVzdGluZy5hc2FuLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBn
+ZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10u
+ClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
 
 
