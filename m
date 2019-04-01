@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hAn7o-0001bR-Ri
-	for mharc-qemu-trivial@gnu.org; Sun, 31 Mar 2019 22:56:40 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36275)
+	id 1hAnGp-0004D1-Uf
+	for mharc-qemu-trivial@gnu.org; Sun, 31 Mar 2019 23:05:59 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:37635)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <like.xu@linux.intel.com>) id 1hAn7m-0001bK-CK
-	for qemu-trivial@nongnu.org; Sun, 31 Mar 2019 22:56:40 -0400
+	(envelope-from <no-reply@patchew.org>) id 1hAnGn-0004Cn-Qh
+	for qemu-trivial@nongnu.org; Sun, 31 Mar 2019 23:05:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <like.xu@linux.intel.com>) id 1hAn7k-0005FE-AD
-	for qemu-trivial@nongnu.org; Sun, 31 Mar 2019 22:56:38 -0400
-Received: from mga02.intel.com ([134.134.136.20]:28457)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
-	id 1hAn7j-0005F3-TV; Sun, 31 Mar 2019 22:56:36 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-	by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	31 Mar 2019 19:56:33 -0700
-X-IronPort-AV: E=Sophos;i="5.60,295,1549958400"; d="scan'208";a="131813941"
-Received: from likexu-mobl1.ccr.corp.intel.com (HELO [10.239.196.174])
-	([10.239.196.174])
-	by orsmga006-auth.jf.intel.com with ESMTP/TLS/AES128-SHA;
-	31 Mar 2019 19:56:31 -0700
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, like.xu@intel.com,
-	Igor Mammedov <imammedo@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <1553849325-44201-1-git-send-email-like.xu@linux.intel.com>
-	<1553849325-44201-5-git-send-email-like.xu@linux.intel.com>
-	<87h8bmuj2d.fsf@zen.linaroharston>
-From: Like Xu <like.xu@linux.intel.com>
-Organization: Intel OTC
-Message-ID: <2546bf3e-2009-5a76-bc63-0ad73d333a78@linux.intel.com>
-Date: Mon, 1 Apr 2019 10:56:30 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(envelope-from <no-reply@patchew.org>) id 1hAnGm-00088X-JR
+	for qemu-trivial@nongnu.org; Sun, 31 Mar 2019 23:05:57 -0400
+Resent-Date: Sun, 31 Mar 2019 23:05:57 -0400
+Resent-Message-Id: <E1hAnGm-00088X-JR@eggs.gnu.org>
+Received: from sender4-of-o55.zoho.com ([136.143.188.55]:21569)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <no-reply@patchew.org>)
+	id 1hAnGm-00088F-9x
+	for qemu-trivial@nongnu.org; Sun, 31 Mar 2019 23:05:56 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1554087033; cv=none; d=zoho.com; s=zohoarc; 
+	b=ko1oiKrXlaS8zozK3IyZ714x3M9uNyzeIXSQ27bo0nkdOTkRHNmvupq3rdbggb7KfmzQjZkovD0FBOlbuKPiR98636krOD8DnFTNZIok28sGZl2Uzi6fWmYRaKgeZ4vivZhfwjJumh3fV17k8taqsJQ0ELcC0RJHIPR+40E4vPA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+	s=zohoarc; t=1554087033;
+	h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+	bh=psxZSmGb8ACpSyxc2c9JOt/hfYwhx4zFX1eyDWyCX3Q=; 
+	b=PXmZI8ueykPjrc8bEKQwCavsLMGS3FFeBo/B600RE7zKIFdET5wawpqq51FfejVeWxWhgSNGoXk9Fg+cWaho88RSjna8a9hMtKPy2JDTqZnM6R5icfVC70SONO6YUx2YWmJ6rD7s+uSDh2IMbz23NdswGDJYKp+upG48k70Yxzw=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org>
+	header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+	mx.zohomail.com with SMTPS id 1554087032047481.9503293627289;
+	Sun, 31 Mar 2019 19:50:32 -0700 (PDT)
+Message-ID: <155408703083.12882.7004955887204402098@76452e4e88f2>
+In-Reply-To: <20190401024406.10819-1-jbi.octave@gmail.com>
+Reply-To: <qemu-devel@nongnu.org>
 MIME-Version: 1.0
-In-Reply-To: <87h8bmuj2d.fsf@zen.linaroharston>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 134.134.136.20
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/9] cpu/topology: add ARM
- support for smp machine properties
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: jbi.octave@gmail.com
+Cc: fam@euphon.net, qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Date: Sun, 31 Mar 2019 19:50:32 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 136.143.188.55
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 0/2] util/readline:
+ errors clean-ups
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,397 +56,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Apr 2019 02:56:40 -0000
+X-List-Received-Date: Mon, 01 Apr 2019 03:05:59 -0000
 
-On 2019/3/29 17:27, Alex Bennée wrote:
-> 
-> Like Xu <like.xu@linux.intel.com> writes:
-> 
->> Signed-off-by: Like Xu <like.xu@linux.intel.com>
->> ---
->>   hw/arm/fsl-imx6.c      | 5 +++++
->>   hw/arm/fsl-imx6ul.c    | 5 +++++
->>   hw/arm/fsl-imx7.c      | 5 +++++
->>   hw/arm/highbank.c      | 1 +
->>   hw/arm/mcimx6ul-evk.c  | 1 +
->>   hw/arm/mcimx7d-sabre.c | 3 +++
->>   hw/arm/raspi.c         | 2 ++
->>   hw/arm/realview.c      | 1 +
->>   hw/arm/sabrelite.c     | 1 +
->>   hw/arm/vexpress.c      | 3 +++
->>   hw/arm/virt.c          | 7 +++++++
->>   hw/arm/xlnx-zynqmp.c   | 7 +++++++
->>   target/arm/cpu.c       | 7 +++++++
->>   13 files changed, 48 insertions(+)
->>
->> diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
->> index 7b7b97f..efed3a4 100644
->> --- a/hw/arm/fsl-imx6.c
->> +++ b/hw/arm/fsl-imx6.c
->> @@ -23,6 +23,7 @@
->>   #include "qapi/error.h"
->>   #include "qemu-common.h"
->>   #include "hw/arm/fsl-imx6.h"
->> +#include "hw/boards.h"
->>   #include "sysemu/sysemu.h"
->>   #include "chardev/char.h"
->>   #include "qemu/error-report.h"
->> @@ -33,9 +34,11 @@
->>
->>   static void fsl_imx6_init(Object *obj)
->>   {
->> +    MachineState *ms = MACHINE(qdev_get_machine());
->>       FslIMX6State *s = FSL_IMX6(obj);
->>       char name[NAME_SIZE];
->>       int i;
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->>
->>       for (i = 0; i < MIN(smp_cpus, FSL_IMX6_NUM_CPUS); i++) {
->>           snprintf(name, NAME_SIZE, "cpu%d", i);
->> @@ -93,9 +96,11 @@ static void fsl_imx6_init(Object *obj)
->>
->>   static void fsl_imx6_realize(DeviceState *dev, Error **errp)
->>   {
->> +    MachineState *ms = MACHINE(qdev_get_machine());
->>       FslIMX6State *s = FSL_IMX6(dev);
->>       uint16_t i;
->>       Error *err = NULL;
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->>
->>       if (smp_cpus > FSL_IMX6_NUM_CPUS) {
->>           error_setg(errp, "%s: Only %d CPUs are supported (%d requested)",
->> diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
->> index 4b56bfa..426bf8e 100644
->> --- a/hw/arm/fsl-imx6ul.c
->> +++ b/hw/arm/fsl-imx6ul.c
->> @@ -23,14 +23,17 @@
->>   #include "hw/misc/unimp.h"
->>   #include "sysemu/sysemu.h"
->>   #include "qemu/error-report.h"
->> +#include "hw/boards.h"
->>
->>   #define NAME_SIZE 20
->>
->>   static void fsl_imx6ul_init(Object *obj)
->>   {
->> +    MachineState *ms = MACHINE(qdev_get_machine());
->>       FslIMX6ULState *s = FSL_IMX6UL(obj);
->>       char name[NAME_SIZE];
->>       int i;
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->>
->>       for (i = 0; i < MIN(smp_cpus, FSL_IMX6UL_NUM_CPUS); i++) {
->>           snprintf(name, NAME_SIZE, "cpu%d", i);
->> @@ -156,10 +159,12 @@ static void fsl_imx6ul_init(Object *obj)
->>
->>   static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
->>   {
->> +    MachineState *ms = MACHINE(qdev_get_machine());
->>       FslIMX6ULState *s = FSL_IMX6UL(dev);
->>       int i;
->>       qemu_irq irq;
->>       char name[NAME_SIZE];
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->>
->>       if (smp_cpus > FSL_IMX6UL_NUM_CPUS) {
->>           error_setg(errp, "%s: Only %d CPUs are supported (%d requested)",
->> diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
->> index 7663ad6..b759f7b 100644
->> --- a/hw/arm/fsl-imx7.c
->> +++ b/hw/arm/fsl-imx7.c
->> @@ -25,11 +25,14 @@
->>   #include "hw/misc/unimp.h"
->>   #include "sysemu/sysemu.h"
->>   #include "qemu/error-report.h"
->> +#include "hw/boards.h"
->>
->>   #define NAME_SIZE 20
->>
->>   static void fsl_imx7_init(Object *obj)
->>   {
->> +    MachineState *ms = MACHINE(qdev_get_machine());
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->>       FslIMX7State *s = FSL_IMX7(obj);
->>       char name[NAME_SIZE];
->>       int i;
->> @@ -155,11 +158,13 @@ static void fsl_imx7_init(Object *obj)
->>
->>   static void fsl_imx7_realize(DeviceState *dev, Error **errp)
->>   {
->> +    MachineState *ms = MACHINE(qdev_get_machine());
->>       FslIMX7State *s = FSL_IMX7(dev);
->>       Object *o;
->>       int i;
->>       qemu_irq irq;
->>       char name[NAME_SIZE];
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->>
->>       if (smp_cpus > FSL_IMX7_NUM_CPUS) {
->>           error_setg(errp, "%s: Only %d CPUs are supported (%d requested)",
->> diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
->> index 96ccf18..58c77f6 100644
->> --- a/hw/arm/highbank.c
->> +++ b/hw/arm/highbank.c
->> @@ -240,6 +240,7 @@ static void calxeda_init(MachineState *machine, enum cxmachines machine_id)
->>       SysBusDevice *busdev;
->>       qemu_irq pic[128];
->>       int n;
->> +    unsigned int smp_cpus = machine->topo.smp_cpus;
->>       qemu_irq cpu_irq[4];
->>       qemu_irq cpu_fiq[4];
->>       qemu_irq cpu_virq[4];
->> diff --git a/hw/arm/mcimx6ul-evk.c b/hw/arm/mcimx6ul-evk.c
->> index fb2b015..29fb706 100644
->> --- a/hw/arm/mcimx6ul-evk.c
->> +++ b/hw/arm/mcimx6ul-evk.c
->> @@ -29,6 +29,7 @@ static void mcimx6ul_evk_init(MachineState *machine)
->>       static struct arm_boot_info boot_info;
->>       MCIMX6ULEVK *s = g_new0(MCIMX6ULEVK, 1);
->>       int i;
->> +    unsigned int smp_cpus = machine->topo.smp_cpus;
->>
->>       if (machine->ram_size > FSL_IMX6UL_MMDC_SIZE) {
->>           error_report("RAM size " RAM_ADDR_FMT " above max supported (%08x)",
->> diff --git a/hw/arm/mcimx7d-sabre.c b/hw/arm/mcimx7d-sabre.c
->> index 9c5f0e7..c2cdaf9 100644
->> --- a/hw/arm/mcimx7d-sabre.c
->> +++ b/hw/arm/mcimx7d-sabre.c
->> @@ -20,6 +20,7 @@
->>   #include "sysemu/sysemu.h"
->>   #include "qemu/error-report.h"
->>   #include "sysemu/qtest.h"
->> +#include "hw/boards.h"
->>
->>   typedef struct {
->>       FslIMX7State soc;
->> @@ -28,10 +29,12 @@ typedef struct {
->>
->>   static void mcimx7d_sabre_init(MachineState *machine)
->>   {
->> +    MachineState *ms = MACHINE(qdev_get_machine());
-> 
-> Isn't this redundant? Doesn't ms == machine?
-
-You're right and thanks.
-
-> 
->>       static struct arm_boot_info boot_info;
->>       MCIMX7Sabre *s = g_new0(MCIMX7Sabre, 1);
->>       Object *soc;
->>       int i;
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->>
->>       if (machine->ram_size > FSL_IMX7_MMDC_SIZE) {
->>           error_report("RAM size " RAM_ADDR_FMT " above max supported (%08x)",
->> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
->> index 66899c2..8ab8e10 100644
->> --- a/hw/arm/raspi.c
->> +++ b/hw/arm/raspi.c
->> @@ -113,6 +113,7 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
->>   {
->>       static struct arm_boot_info binfo;
->>       int r;
->> +    unsigned int smp_cpus = machine->topo.smp_cpus;
->>
->>       binfo.board_id = raspi_boardid[version];
->>       binfo.ram_size = ram_size;
->> @@ -174,6 +175,7 @@ static void raspi_init(MachineState *machine, int version)
->>       BlockBackend *blk;
->>       BusState *bus;
->>       DeviceState *carddev;
->> +    unsigned int smp_cpus = machine->topo.smp_cpus;
->>
->>       object_initialize(&s->soc, sizeof(s->soc),
->>                         version == 3 ? TYPE_BCM2837 : TYPE_BCM2836);
->> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
->> index 242f5a8..517c275 100644
->> --- a/hw/arm/realview.c
->> +++ b/hw/arm/realview.c
->> @@ -69,6 +69,7 @@ static void realview_init(MachineState *machine,
->>       NICInfo *nd;
->>       I2CBus *i2c;
->>       int n;
->> +    unsigned int smp_cpus = machine->topo.smp_cpus;
->>       int done_nic = 0;
->>       qemu_irq cpu_irq[4];
->>       int is_mpcore = 0;
->> diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
->> index ee140e5..108faab 100644
->> --- a/hw/arm/sabrelite.c
->> +++ b/hw/arm/sabrelite.c
->> @@ -47,6 +47,7 @@ static void sabrelite_init(MachineState *machine)
->>   {
->>       IMX6Sabrelite *s = g_new0(IMX6Sabrelite, 1);
->>       Error *err = NULL;
->> +    unsigned int smp_cpus = machine->topo.smp_cpus;
->>
->>       /* Check the amount of memory is compatible with the SOC */
->>       if (machine->ram_size > FSL_IMX6_MMDC_SIZE) {
->> diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
->> index f07134c..1927d12 100644
->> --- a/hw/arm/vexpress.c
->> +++ b/hw/arm/vexpress.c
->> @@ -206,9 +206,11 @@ struct VEDBoardInfo {
->>   static void init_cpus(const char *cpu_type, const char *privdev,
->>                         hwaddr periphbase, qemu_irq *pic, bool secure, bool virt)
->>   {
->> +    MachineState *ms = MACHINE(qdev_get_machine());
->>       DeviceState *dev;
->>       SysBusDevice *busdev;
->>       int n;
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->>
->>       /* Create the actual CPUs */
->>       for (n = 0; n < smp_cpus; n++) {
->> @@ -558,6 +560,7 @@ static void vexpress_common_init(MachineState *machine)
->>       MemoryRegion *flash0mem;
->>       const hwaddr *map = daughterboard->motherboard_map;
->>       int i;
->> +    unsigned int smp_cpus = machine->topo.smp_cpus;
->>
->>       daughterboard->init(vms, machine->ram_size, machine->cpu_type, pic);
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index ce2664a..ff1dff3 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -555,11 +555,13 @@ static void create_v2m(VirtMachineState *vms, qemu_irq *pic)
->>
->>   static void create_gic(VirtMachineState *vms, qemu_irq *pic)
->>   {
->> +    MachineState *ms = MACHINE(vms);
->>       /* We create a standalone GIC */
->>       DeviceState *gicdev;
->>       SysBusDevice *gicbusdev;
->>       const char *gictype;
->>       int type = vms->gic_version, i;
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->>       uint32_t nb_redist_regions = 0;
->>
->>       gictype = (type == 3) ? gicv3_class_name() : gic_class_name();
->> @@ -984,10 +986,12 @@ static void create_flash(const VirtMachineState *vms,
->>
->>   static FWCfgState *create_fw_cfg(const VirtMachineState *vms, AddressSpace *as)
->>   {
->> +    MachineState *ms = MACHINE(vms);
->>       hwaddr base = vms->memmap[VIRT_FW_CFG].base;
->>       hwaddr size = vms->memmap[VIRT_FW_CFG].size;
->>       FWCfgState *fw_cfg;
->>       char *nodename;
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->>
->>       fw_cfg = fw_cfg_init_mem_wide(base + 8, base, 8, base + 16, as);
->>       fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, (uint16_t)smp_cpus);
->> @@ -1423,6 +1427,8 @@ static void machvirt_init(MachineState *machine)
->>       MemoryRegion *ram = g_new(MemoryRegion, 1);
->>       bool firmware_loaded = bios_name || drive_get(IF_PFLASH, 0, 0);
->>       bool aarch64 = true;
->> +    unsigned int smp_cpus = machine->topo.smp_cpus;
->> +    unsigned int max_cpus = machine->topo.max_cpus;
->>
->>       /*
->>        * In accelerated mode, the memory map is computed earlier in kvm_type()
->> @@ -1786,6 +1792,7 @@ static int64_t virt_get_default_cpu_node_id(const MachineState *ms, int idx)
->>   static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
->>   {
->>       int n;
->> +    unsigned int max_cpus = ms->topo.max_cpus;
->>       VirtMachineState *vms = VIRT_MACHINE(ms);
->>
->>       if (ms->possible_cpus) {
->> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
->> index 4f8bc41..29b9427 100644
->> --- a/hw/arm/xlnx-zynqmp.c
->> +++ b/hw/arm/xlnx-zynqmp.c
->> @@ -19,6 +19,7 @@
->>   #include "qapi/error.h"
->>   #include "qemu-common.h"
->>   #include "cpu.h"
->> +#include "hw/boards.h"
->>   #include "hw/arm/xlnx-zynqmp.h"
->>   #include "hw/intc/arm_gic_common.h"
->>   #include "exec/address-spaces.h"
->> @@ -174,8 +175,10 @@ static inline int arm_gic_ppi_index(int cpu_nr, int ppi_index)
->>   static void xlnx_zynqmp_create_rpu(XlnxZynqMPState *s, const char *boot_cpu,
->>                                      Error **errp)
->>   {
->> +    MachineState *ms = MACHINE(qdev_get_machine());
->>       Error *err = NULL;
->>       int i;
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->>       int num_rpus = MIN(smp_cpus - XLNX_ZYNQMP_NUM_APU_CPUS, XLNX_ZYNQMP_NUM_RPU_CPUS);
->>
->>       if (num_rpus <= 0) {
->> @@ -221,8 +224,10 @@ static void xlnx_zynqmp_create_rpu(XlnxZynqMPState *s, const char *boot_cpu,
->>
->>   static void xlnx_zynqmp_init(Object *obj)
->>   {
->> +    MachineState *ms = MACHINE(qdev_get_machine());
->>       XlnxZynqMPState *s = XLNX_ZYNQMP(obj);
->>       int i;
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->>       int num_apus = MIN(smp_cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
->>
->>       object_initialize_child(obj, "apu-cluster", &s->apu_cluster,
->> @@ -290,10 +295,12 @@ static void xlnx_zynqmp_init(Object *obj)
->>
->>   static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->>   {
->> +    MachineState *ms = MACHINE(qdev_get_machine());
->>       XlnxZynqMPState *s = XLNX_ZYNQMP(dev);
->>       MemoryRegion *system_memory = get_system_memory();
->>       uint8_t i;
->>       uint64_t ram_size;
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->>       int num_apus = MIN(smp_cpus, XLNX_ZYNQMP_NUM_APU_CPUS);
->>       const char *boot_cpu = s->boot_cpu ? s->boot_cpu : "apu-cpu[0]";
->>       ram_addr_t ddr_low_size, ddr_high_size;
->> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->> index 4155782..e5d7e3b 100644
->> --- a/target/arm/cpu.c
->> +++ b/target/arm/cpu.c
->> @@ -30,6 +30,7 @@
->>   #include "hw/qdev-properties.h"
->>   #if !defined(CONFIG_USER_ONLY)
->>   #include "hw/loader.h"
->> +#include "hw/boards.h"
->>   #endif
->>   #include "hw/arm/arm.h"
->>   #include "sysemu/sysemu.h"
->> @@ -1183,6 +1184,9 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->>       init_cpreg_list(cpu);
->>
->>   #ifndef CONFIG_USER_ONLY
->> +    MachineState *ms = MACHINE(qdev_get_machine());
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->> +
->>       if (cpu->has_el3 || arm_feature(env, ARM_FEATURE_M_SECURITY)) {
->>           cs->num_ases = 2;
->>
->> @@ -1713,6 +1717,9 @@ static void cortex_a9_initfn(Object *obj)
->>   #ifndef CONFIG_USER_ONLY
->>   static uint64_t a15_l2ctlr_read(CPUARMState *env, const ARMCPRegInfo *ri)
->>   {
->> +    MachineState *ms = MACHINE(qdev_get_machine());
-> 
-> How expensive is qdev_get_machine? This could potentially be a
-> performance issue if this register is read a lot.
-
-It may not bother us cause the MachineState object would be feteched 
-from qemu QOM at its first requested time and save it as static variable 
-for incoming requests.
-
-> 
->> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->> +
->>       /* Linux wants the number of processors from here.
->>        * Might as well set the interrupt-controller bit too.
->>        */
-> 
-> 
-> --
-> Alex Bennée
-> 
-> 
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDQwMTAyNDQwNi4xMDgx
+OS0xLWpiaS5vY3RhdmVAZ21haWwuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhh
+dmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUg
+aW5mb3JtYXRpb246CgpNZXNzYWdlLWlkOiAyMDE5MDQwMTAyNDQwNi4xMDgxOS0xLWpiaS5vY3Rh
+dmVAZ21haWwuY29tClN1YmplY3Q6IFtRZW11LWRldmVsXSBbUEFUQ0ggdjIgMC8yXSB1dGlsL3Jl
+YWRsaW5lOiBlcnJvcnMgY2xlYW4tdXBzClR5cGU6IHNlcmllcwoKPT09IFRFU1QgU0NSSVBUIEJF
+R0lOID09PQojIS9iaW4vYmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2L251bGwgfHwgZXhp
+dCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxv
+Y2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBo
+aXN0b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRF
+U1QgU0NSSVBUIEVORCA9PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0
+YmQ4ODg3MTMzODQKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUK
+ICogW25ldyB0YWddICAgICAgICAgICAgICAgcGF0Y2hldy8yMDE5MDQwMTAyNDQwNi4xMDgxOS0x
+LWpiaS5vY3RhdmVAZ21haWwuY29tIC0+IHBhdGNoZXcvMjAxOTA0MDEwMjQ0MDYuMTA4MTktMS1q
+Ymkub2N0YXZlQGdtYWlsLmNvbQogKiBbbmV3IHRhZ10gICAgICAgICAgICAgICBwYXRjaGV3Lzg3
+eTM0djQyejAuZnNmXy1fQGR1c2t5LnBvbmQuc3ViLm9yZyAtPiBwYXRjaGV3Lzg3eTM0djQyejAu
+ZnNmXy1fQGR1c2t5LnBvbmQuc3ViLm9yZwpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3Qn
+CjJlNzViMjA5YWYgdXRpbDogcmVhZGxpbmU6IHJlcGxhY2UgdGFiIGluZGVudCBieSBmb3VyIHNw
+YWNlcyB0byBmaXggY2hlY2twYXRjaCBlcnJvcnMKZDc5NzUyNDI3NiB1dGlsL3JlYWRsaW5lOiBh
+ZGQgYSBzcGFjZSB0byBmaXggZXJyb3JzIGJ5IGNoZWNrcGF0Y2ggdG9vbAoKPT09IE9VVFBVVCBC
+RUdJTiA9PT0KMS8yIENoZWNraW5nIGNvbW1pdCBkNzk3NTI0Mjc2NzAgKHV0aWwvcmVhZGxpbmU6
+IGFkZCBhIHNwYWNlIHRvIGZpeCBlcnJvcnMgYnkgY2hlY2twYXRjaCB0b29sKQpFUlJPUjogYnJh
+Y2VzIHt9IGFyZSBuZWNlc3NhcnkgZm9yIGFsbCBhcm1zIG9mIHRoaXMgc3RhdGVtZW50CiMzMTog
+RklMRTogdXRpbC9yZWFkbGluZS5jOjU3OgorICAgICAgICAgICAgZm9yIChpID0gMDsgaSA8IGxl
+bjsgaSsrKQpbLi4uXQoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCAxMDkgbGluZXMgY2hl
+Y2tlZAoKUGF0Y2ggMS8yIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFu
+eSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUg
+bWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgoyLzIgQ2hlY2tpbmcg
+Y29tbWl0IDJlNzViMjA5YWY0ZiAodXRpbDogcmVhZGxpbmU6IHJlcGxhY2UgdGFiIGluZGVudCBi
+eSBmb3VyIHNwYWNlcyB0byBmaXggY2hlY2twYXRjaCBlcnJvcnMpCkVSUk9SOiBicmFjZXMge30g
+YXJlIG5lY2Vzc2FyeSBmb3IgYWxsIGFybXMgb2YgdGhpcyBzdGF0ZW1lbnQKIzMyOiBGSUxFOiB1
+dGlsL3JlYWRsaW5lLmM6MTg2OgorICAgICAgICAgICAgaWYgKHJzLT5oaXN0b3J5W2lkeF0gPT0g
+TlVMTCkKWy4uLl0KCkVSUk9SOiBicmFjZXMge30gYXJlIG5lY2Vzc2FyeSBmb3IgYWxsIGFybXMg
+b2YgdGhpcyBzdGF0ZW1lbnQKIzEwMTogRklMRTogdXRpbC9yZWFkbGluZS5jOjIzMzoKKyAgICAg
+ICAgaWYgKGhpc3RfZW50cnkgPT0gTlVMTCkKWy4uLl0KCkVSUk9SOiBicmFjZXMge30gYXJlIG5l
+Y2Vzc2FyeSBmb3IgYWxsIGFybXMgb2YgdGhpcyBzdGF0ZW1lbnQKIzExMTogRklMRTogdXRpbC9y
+ZWFkbGluZS5jOjI0MzoKKyAgICAgICAgICAgICAgICBpZiAocnMtPmhpc3RvcnlbaWR4XSA9PSBO
+VUxMKQpbLi4uXQoKdG90YWw6IDMgZXJyb3JzLCAwIHdhcm5pbmdzLCAxNDUgbGluZXMgY2hlY2tl
+ZAoKUGF0Y2ggMi8yIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBv
+ZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFp
+bnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9
+PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2
+YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MDQwMTAyNDQwNi4xMDgxOS0x
+LWpiaS5vY3RhdmVAZ21haWwuY29tL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgot
+LS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRj
+aGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVk
+aGF0LmNvbQ==
 
 
