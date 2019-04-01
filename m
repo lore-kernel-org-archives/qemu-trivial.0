@@ -1,30 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hApPo-0006DG-Qg
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Apr 2019 01:23:24 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:55947)
+	id 1hApSe-0007hE-7M
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Apr 2019 01:26:20 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56548)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hApPm-0006BX-Nl
-	for qemu-trivial@nongnu.org; Mon, 01 Apr 2019 01:23:23 -0400
+	(envelope-from <thuth@redhat.com>) id 1hApSc-0007gH-Mn
+	for qemu-trivial@nongnu.org; Mon, 01 Apr 2019 01:26:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hApPl-00013G-SI
-	for qemu-trivial@nongnu.org; Mon, 01 Apr 2019 01:23:22 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36856)
+	(envelope-from <thuth@redhat.com>) id 1hApSb-0002fw-O2
+	for qemu-trivial@nongnu.org; Mon, 01 Apr 2019 01:26:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54640)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hApPj-00010w-Jj; Mon, 01 Apr 2019 01:23:19 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1hApSZ-0002d2-4x; Mon, 01 Apr 2019 01:26:15 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4EA1B3082B0F;
-	Mon,  1 Apr 2019 05:23:17 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id E744AC0495A1;
+	Mon,  1 Apr 2019 05:26:12 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-21.ams2.redhat.com [10.36.116.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D79A860BE5;
-	Mon,  1 Apr 2019 05:23:13 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D9C941001E65;
+	Mon,  1 Apr 2019 05:26:11 +0000 (UTC)
 To: Jules Irenge <jbi.octave@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>
+Cc: qemu-trivial@nongnu.org
 References: <20190401024406.10819-1-jbi.octave@gmail.com>
-	<20190401024406.10819-2-jbi.octave@gmail.com>
+	<20190401024406.10819-3-jbi.octave@gmail.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -70,23 +70,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <acd65b38-9a74-cd43-0841-b5da0f5fcc5b@redhat.com>
-Date: Mon, 1 Apr 2019 07:23:12 +0200
+Message-ID: <255e505d-56c3-cd02-8061-491be5783342@redhat.com>
+Date: Mon, 1 Apr 2019 07:26:10 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.5.0
 MIME-Version: 1.0
-In-Reply-To: <20190401024406.10819-2-jbi.octave@gmail.com>
+In-Reply-To: <20190401024406.10819-3-jbi.octave@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.45]);
-	Mon, 01 Apr 2019 05:23:17 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Mon, 01 Apr 2019 05:26:12 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 1/2] util/readline: add a
- space to fix errors by checkpatch tool
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 2/2] util: readline:
+ replace tab indent by four spaces to fix checkpatch errors
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,18 +98,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Apr 2019 05:23:23 -0000
+X-List-Received-Date: Mon, 01 Apr 2019 05:26:19 -0000
 
 On 01/04/2019 04.44, Jules Irenge wrote:
-> util/readline: add a space to fix errors reported by checkpatch.pl tool
-> "ERROR: space required before the open parenthesis"
-> "ERROR: space required after that ..."
-> within "util/redline.c" file
+> Replace tab indent by four spaces to fix errors issued by checkpatch.pl tool
+> "ERROR: code indent should never use tabs" within "util/readline.c" file.
 > 
 > Signed-off-by: Jules Irenge <jbi.octave@gmail.com>
 > ---
->  util/readline.c | 34 +++++++++++++++++-----------------
->  1 file changed, 17 insertions(+), 17 deletions(-)
-
+>  util/readline.c | 98 ++++++++++++++++++++++++-------------------------
+>  1 file changed, 49 insertions(+), 49 deletions(-)
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
