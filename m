@@ -1,49 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hB6fQ-0003dc-1l
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Apr 2019 19:48:40 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:52022)
+	id 1hB9P3-0003K3-Fu
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Apr 2019 22:43:57 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:50048)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1hB6fN-0003cH-Mi
-	for qemu-trivial@nongnu.org; Mon, 01 Apr 2019 19:48:38 -0400
+	(envelope-from <like.xu@linux.intel.com>) id 1hB9P0-0003A9-KQ
+	for qemu-trivial@nongnu.org; Mon, 01 Apr 2019 22:43:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1hB6fL-0002cG-Rg
-	for qemu-trivial@nongnu.org; Mon, 01 Apr 2019 19:48:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43020)
+	(envelope-from <like.xu@linux.intel.com>) id 1hB9H9-0007Gm-Vw
+	for qemu-trivial@nongnu.org; Mon, 01 Apr 2019 22:35:49 -0400
+Received: from mga05.intel.com ([192.55.52.43]:6170)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1hB6fG-0002VF-W2; Mon, 01 Apr 2019 19:48:31 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 79889308626F;
-	Mon,  1 Apr 2019 23:38:24 +0000 (UTC)
-Received: from localhost (ovpn-116-20.gru2.redhat.com [10.97.116.20])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BCFFE1001DE1;
-	Mon,  1 Apr 2019 23:38:23 +0000 (UTC)
-Date: Mon, 1 Apr 2019 20:38:18 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Like Xu <like.xu@linux.intel.com>
-Cc: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org, like.xu@intel.com,
-	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20190401233818.GA22884@habkost.net>
+	(Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
+	id 1hB9H9-000770-2p; Mon, 01 Apr 2019 22:35:47 -0400
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+	by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	01 Apr 2019 19:35:34 -0700
+X-IronPort-AV: E=Sophos;i="5.60,298,1549958400"; d="scan'208";a="130649729"
+Received: from likexu-mobl1.ccr.corp.intel.com (HELO [10.239.196.69])
+	([10.239.196.69])
+	by orsmga008-auth.jf.intel.com with ESMTP/TLS/AES128-SHA;
+	01 Apr 2019 19:35:32 -0700
+To: Eduardo Habkost <ehabkost@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, like.xu@intel.com,
+	Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <1553849325-44201-1-git-send-email-like.xu@linux.intel.com>
 	<1553849325-44201-5-git-send-email-like.xu@linux.intel.com>
 	<87h8bmuj2d.fsf@zen.linaroharston>
 	<2546bf3e-2009-5a76-bc63-0ad73d333a78@linux.intel.com>
+	<20190401233818.GA22884@habkost.net>
+From: Like Xu <like.xu@linux.intel.com>
+Organization: Intel OTC
+Message-ID: <965d5d2f-1717-dcd0-8707-f6629f54e504@linux.intel.com>
+Date: Tue, 2 Apr 2019 10:35:30 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <2546bf3e-2009-5a76-bc63-0ad73d333a78@linux.intel.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.49]);
-	Mon, 01 Apr 2019 23:38:24 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+In-Reply-To: <20190401233818.GA22884@habkost.net>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.43
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/9] cpu/topology: add ARM
  support for smp machine properties
 X-BeenThere: qemu-trivial@nongnu.org
@@ -57,30 +58,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Apr 2019 23:48:38 -0000
+X-List-Received-Date: Tue, 02 Apr 2019 02:43:55 -0000
 
-On Mon, Apr 01, 2019 at 10:56:30AM +0800, Like Xu wrote:
-> On 2019/3/29 17:27, Alex Benn=E9e wrote:
-[...]
-> > > @@ -1713,6 +1717,9 @@ static void cortex_a9_initfn(Object *obj)
-> > >   #ifndef CONFIG_USER_ONLY
-> > >   static uint64_t a15_l2ctlr_read(CPUARMState *env, const ARMCPRegI=
-nfo *ri)
-> > >   {
-> > > +    MachineState *ms =3D MACHINE(qdev_get_machine());
-> >=20
-> > How expensive is qdev_get_machine? This could potentially be a
-> > performance issue if this register is read a lot.
->=20
-> It may not bother us cause the MachineState object would be feteched fr=
-om
-> qemu QOM at its first requested time and save it as static variable for
-> incoming requests.
-
-We already have a current_machine variable declared in
-include/hw/boards.h.  We normally avoid using it and use
-MACHINE(qdev_get_machine()) instead, but I never understood why.
-
---=20
-Eduardo
+On 2019/4/2 7:38, Eduardo Habkost wrote:
+> On Mon, Apr 01, 2019 at 10:56:30AM +0800, Like Xu wrote:
+>> On 2019/3/29 17:27, Alex Bennée wrote:
+> [...]
+>>>> @@ -1713,6 +1717,9 @@ static void cortex_a9_initfn(Object *obj)
+>>>>    #ifndef CONFIG_USER_ONLY
+>>>>    static uint64_t a15_l2ctlr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+>>>>    {
+>>>> +    MachineState *ms = MACHINE(qdev_get_machine());
+>>>
+>>> How expensive is qdev_get_machine? This could potentially be a
+>>> performance issue if this register is read a lot.
+>>
+>> It may not bother us cause the MachineState object would be feteched from
+>> qemu QOM at its first requested time and save it as static variable for
+>> incoming requests.
+> 
+> We already have a current_machine variable declared in
+> include/hw/boards.h.  We normally avoid using it and use
+> MACHINE(qdev_get_machine()) instead, but I never understood why.
+>
+Which one do you prefer to access smp machine properties?
 
