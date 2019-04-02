@@ -1,52 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hBM2L-0004CG-KD
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2019 12:13:21 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:32865)
+	id 1hBMPv-0006Zo-Q6
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2019 12:37:43 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:39254)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hBM2F-0004Ab-WC
-	for qemu-trivial@nongnu.org; Tue, 02 Apr 2019 12:13:16 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hBMPt-0006Tk-M6
+	for qemu-trivial@nongnu.org; Tue, 02 Apr 2019 12:37:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hBM2F-0005DX-14
-	for qemu-trivial@nongnu.org; Tue, 02 Apr 2019 12:13:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44448)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1hBM2B-0004vh-6r; Tue, 02 Apr 2019 12:13:11 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A672B59445;
-	Tue,  2 Apr 2019 16:13:09 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-116.ams2.redhat.com
-	[10.36.116.116])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7137E1001E6D;
-	Tue,  2 Apr 2019 16:13:09 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id E91561138648; Tue,  2 Apr 2019 18:13:07 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Like Xu <like.xu@linux.intel.com>, Peter Maydell <peter.maydell@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1hBMCc-0006wB-Fy
+	for qemu-trivial@nongnu.org; Tue, 02 Apr 2019 12:23:59 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:33461)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hBMCZ-0006nb-Ij
+	for qemu-trivial@nongnu.org; Tue, 02 Apr 2019 12:23:57 -0400
+Received: by mail-oi1-x242.google.com with SMTP id e5so11021611oii.0
+	for <qemu-trivial@nongnu.org>; Tue, 02 Apr 2019 09:23:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=rfHLC9dbsXIxqoU3Fd5K9XCxDKHkDDVWrneeKBg7xn0=;
+	b=wywk5LkCCBae0Ipl+bJRAx5E/4K4p/xntsfEDtVf6bK/XqKgaf331EJaooNR0xWM36
+	lvdis02MMeo4Nlu1wG+X3Pm4fnmXlCz10PqIr7bwREU5CHtTHs4r6maeVNxixuwgb4ez
+	M+vput3YavOQ6OM+fdF9Eza386D5SwmtejyFZ7YJ4HYZUTR8Fmlm4J/K0rpF9d8zWlT+
+	byvJQ5f1WLSdFuTy+yyyxCV8bqCL7f7SkHJp6UAqlWlM7M1Pz2rATMaPerKzb9LKxunp
+	CLmKqXGpTI/HaqCwXdmA7rNn4wOqROWzAeDECFwq7K1597V/pkZLApv1lMrKjdqh+7Uj
+	iCqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=rfHLC9dbsXIxqoU3Fd5K9XCxDKHkDDVWrneeKBg7xn0=;
+	b=lcKxdoK+GhWFSxbb+yAVrQIwiH48z8NwSeyvzOhDQNV4pSlbpxvf4u/5diBrrRQSSL
+	0ggegKuJV+kcqe4kfl+m+Dwqyrgj9kWldhzEfwVNehDujPiiAiho+zC68I3OJ6CdLbDi
+	AcFriRENu4qZtOo1jeQYDO/b1+EFVntM+9DqZUg90+z5782jqqhmbRV8/utnu3TvMNmA
+	6kUkG634opjpKjjHcNBPZuQY1NcjzbSK+g4B5Zyu1P/j1jgU/n/72NREnnzrh8rP3QK8
+	ZyS1P6/ePLyIc6Xnf+NAqKEjzp58NSlbEjZjbNLIdxhU22g9V6v1SXtW25XKPs+mLQbW
+	yzCQ==
+X-Gm-Message-State: APjAAAVJX3uGWyjEEj9kUOyu5fQkW8GitpyMo4gVs7bp2nJs1YpXEhsE
+	MfvxE2pBWtJ41UHPbQwxh9DiOjTBKrT9MqTDRzwlGw==
+X-Google-Smtp-Source: APXvYqycK092b/h1P1IUl8tQHy6fgtHYHoXKUTCKWMsREuA0uqi62KfP87YZEUEr/ap1IIijeYCTIqNE27t/Lq3sJAA=
+X-Received: by 2002:aca:e84c:: with SMTP id f73mr17668313oih.163.1554222233911;
+	Tue, 02 Apr 2019 09:23:53 -0700 (PDT)
+MIME-Version: 1.0
 References: <1554194900-22817-1-git-send-email-like.xu@linux.intel.com>
 	<871s2kejg1.fsf@dusky.pond.sub.org>
 	<e72befe5-c931-5c80-6769-12e1a8e7d4fa@linux.intel.com>
 	<20190402174749.71da1efe@redhat.com>
-Date: Tue, 02 Apr 2019 18:13:07 +0200
-In-Reply-To: <20190402174749.71da1efe@redhat.com> (Igor Mammedov's message of
-	"Tue, 2 Apr 2019 17:47:49 +0200")
-Message-ID: <871s2k8jxo.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
-MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Tue, 02 Apr 2019 16:13:09 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+	<871s2k8jxo.fsf@dusky.pond.sub.org>
+In-Reply-To: <871s2k8jxo.fsf@dusky.pond.sub.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 2 Apr 2019 23:23:42 +0700
+Message-ID: <CAFEAcA8ogWn50wWBttM2QpfQoZ8UYnXfG3NSkuSc8j8WOWt6FA@mail.gmail.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Igor Mammedov <imammedo@redhat.com>, Like Xu <like.xu@linux.intel.com>, 
+	Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>, 
+	Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::242
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] vl.c: make
  current_machine as non-global variable
 X-BeenThere: qemu-trivial@nongnu.org
@@ -60,55 +73,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Apr 2019 16:13:17 -0000
+X-List-Received-Date: Tue, 02 Apr 2019 16:37:42 -0000
 
-Igor Mammedov <imammedo@redhat.com> writes:
-
-> On Tue, 2 Apr 2019 21:09:39 +0800
-> Like Xu <like.xu@linux.intel.com> wrote:
+On Tue, 2 Apr 2019 at 23:13, Markus Armbruster <armbru@redhat.com> wrote:
 >
->> On 2019/4/2 19:27, Markus Armbruster wrote:
->> > Like Xu <like.xu@linux.intel.com> writes:
->> >   
->> >> This patch makes the remaining dozen or so uses of the global
->> >> current_machine outside vl.c use qdev_get_machine() instead,
->> >> and then make current_machine local to vl.c instead of global.
->> >>
->> >> Signed-off-by: Like Xu <like.xu@linux.intel.com>  
->> > 
->> > You effectively replace
->> > 
->> >      current_machine
->> > 
->> > by
->> > 
->> >      MACHINE(qdev_get_machine())
->> > 
->> > qdev_get_machine() uses container_get(), which has a side effect: any
->> > path component that doesn't exist already gets created as "container"
->> > object.  In case of qdev_get_machine(), that's just "/machine".
->> > 
->> > Creating "/machine" as "container" is of course wrong.  You therefore
->> > must not use qdev_get_machine() before main() creates "/machine".  It
->> > does like this:
->> > 
->> >      object_property_add_child(object_get_root(), "machine",
->> >                                OBJECT(current_machine), &error_abort);
->> > 
->> > I recently had several cases of code rearrangements explode because the
->> > reordered code called qdev_get_machine() too early.  Makes me rather
->> > skeptical about this patch.  To be frank, I consider qdev_get_machine()
->> > a trap for the unwary.  container_get(), too.
->> > 
->> > If we decide using it to make current_machine static a good idea anyway,
->> > we need to check the new uses carefully to make sure they can't run
->> > before main() creates "/machine".
+> Igor Mammedov <imammedo@redhat.com> writes:
+> > maybe we can assert in qdev_get_machine() if machine hasn't been created yet?
+> > with this at least it will be hard to misuse function or catch invalid users.
+> > (but it still might miss some use cases/CLI options which are not tested)
 >
-> maybe we can assert in qdev_get_machine() if machine hasn't been created yet?
-> with this at least it will be hard to misuse function or catch invalid users.
-> (but it still might miss some use cases/CLI options which are not tested)
+> Good idea.  When my code created "/machine" as a container, debugging
+> the resulting crash took me a bit of time.  The assertion you propose
+> would've saved me some.
 
-Good idea.  When my code created "/machine" as a container, debugging
-the resulting crash took me a bit of time.  The assertion you propose
-would've saved me some.
+One wrinkle to watch out for is code paths that are used in the
+linux-user emulator, where there is no machine at all... For instance
+cpu_common_realizefn() handles this case by explicitly checking
+whether the thing it gets back from qdev_get_machine() is a
+TYPE_MACHINE or not.
+
+thanks
+-- PMM
 
