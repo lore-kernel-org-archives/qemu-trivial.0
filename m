@@ -1,70 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hBBxc-0004YS-8J
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2019 01:27:48 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:56426)
+	id 1hBCUo-0000GE-BQ
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2019 02:02:09 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36156)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hBBxZ-0004X6-OE
-	for qemu-trivial@nongnu.org; Tue, 02 Apr 2019 01:27:46 -0400
+	(envelope-from <like.xu@linux.intel.com>) id 1hBCUk-000891-In
+	for qemu-trivial@nongnu.org; Tue, 02 Apr 2019 02:02:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hBBxY-0002a0-TH
-	for qemu-trivial@nongnu.org; Tue, 02 Apr 2019 01:27:45 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:37898)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hBBxY-0002Zc-K3
-	for qemu-trivial@nongnu.org; Tue, 02 Apr 2019 01:27:44 -0400
-Received: by mail-oi1-x244.google.com with SMTP id a6so6039640oie.5
-	for <qemu-trivial@nongnu.org>; Mon, 01 Apr 2019 22:27:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=YqIKaIfqSNEWoDOMPy7gMeNmf/XmxzovfQL7Wfy4/BI=;
-	b=kirIQJBX7N1jrDrYZgfRr1wtRdSjXNxy9OK7aoi79v5DsJ9WZmY2aegIlnwO3cEVxK
-	js0fhovAL2kMdTW0jRtJShV2porlGyTIG8PTtMWva61gOhUhNm6KiU/tf13V61wRsPo2
-	Sp2uYP7cqY2H8eU7fk4LdkV9QMUrQGpn2XNnZVgo1L3a1oNRJW6xuM7NOt6q2DyRGlxq
-	fqUYQ5L2HdXoqypIAy5XkkgtnFaLecBJLe0UpNOGc326zUv/K7juceUBVI879xz+qkD8
-	iasECQQRMjlDSXRgyq1hQWa8UQZXvSzzCFgL4IE94Rrgd5bZ0v1nt/ZZd8Be3UwihLHO
-	4aMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=YqIKaIfqSNEWoDOMPy7gMeNmf/XmxzovfQL7Wfy4/BI=;
-	b=JKGRSNToMZmPEByB5eghRQjAwXBbs2kH1A8zVEMPZ0gCzuf8tyy3oOqgZvPYeq0UEb
-	0eHg0ZPQ/WcXwogiutuZghXzzc1FYvQuFLGvU1CqhDx6yx94w/04u7lfDIpsF+onCSeN
-	ou1xVmmRCbiAQ+lmUj+KF7TINF45nQVVuM43A3MgAHGQEgIKAya1y354/nHg9Y/6DUWt
-	ADZatd4ZxrlldkHuINRiboO5a8UVA1RwIbC95N5QDmjs2K86lbNGWVs06EXQ7MRAD/eO
-	lezPB6j9LuhGR2Q+Fh0kxKgO65FEPrQbb+iwhF2DEAJZUX/h47IhHVvX7coAqssVSZ32
-	ZQgg==
-X-Gm-Message-State: APjAAAVTfFkgzpCZcn7gjN55YDVYEJIQyoTld/MWZQv4+Fydp2wM0TbP
-	RVmYLlOSZIv0ZTgeDoBlM3vAad9Xw0PErRkbo7rY1A==
-X-Google-Smtp-Source: APXvYqyXhzUx6mbXmbRZV87FMJF9zAPGbTuTKXEbOwaQS0bECorf7mYXKtPOYPlxjr5xmXEWkpay+PxepGLzuOQ5L2k=
-X-Received: by 2002:aca:b3c2:: with SMTP id c185mr10672401oif.98.1554182863682;
-	Mon, 01 Apr 2019 22:27:43 -0700 (PDT)
-MIME-Version: 1.0
-References: <1553849325-44201-1-git-send-email-like.xu@linux.intel.com>
-	<1553849325-44201-5-git-send-email-like.xu@linux.intel.com>
-	<87h8bmuj2d.fsf@zen.linaroharston>
-	<2546bf3e-2009-5a76-bc63-0ad73d333a78@linux.intel.com>
-	<20190401233818.GA22884@habkost.net>
-	<965d5d2f-1717-dcd0-8707-f6629f54e504@linux.intel.com>
-	<CAFEAcA_i9Te5Gs9GWnqH+JvTPFbp80+n2D=VAoC0e2DS7OfSeg@mail.gmail.com>
-	<ca73da94-df07-ac0e-67a4-8c9b18b7dc20@linux.intel.com>
-In-Reply-To: <ca73da94-df07-ac0e-67a4-8c9b18b7dc20@linux.intel.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Apr 2019 05:27:32 +0000
-Message-ID: <CAFEAcA__F84deXVLxTp4PCBtGD-8sr1nKz9cvQx4=QsV1ttnfw@mail.gmail.com>
-To: Like Xu <like.xu@linux.intel.com>
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, like.xu@intel.com, 
-	Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+	(envelope-from <like.xu@linux.intel.com>) id 1hBCPb-0001ZI-OT
+	for qemu-trivial@nongnu.org; Tue, 02 Apr 2019 01:56:45 -0400
+Received: from mga11.intel.com ([192.55.52.93]:51789)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
+	id 1hBCPY-0001WN-II; Tue, 02 Apr 2019 01:56:41 -0400
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+	by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	01 Apr 2019 22:56:38 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.60,298,1549958400"; d="scan'208";a="139379327"
+Received: from xulike-server.sh.intel.com ([10.239.48.134])
+	by fmsmga007.fm.intel.com with ESMTP; 01 Apr 2019 22:56:36 -0700
+From: Like Xu <like.xu@linux.intel.com>
+To: qemu-trivial@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+	qemu-devel@nongnu.org, like.xu@linux.intel.com
+Date: Tue,  2 Apr 2019 13:55:37 +0800
+Message-Id: <1554184537-35011-1-git-send-email-like.xu@linux.intel.com>
+X-Mailer: git-send-email 1.8.3.1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 4/9] cpu/topology: add ARM
- support for smp machine properties
+X-Received-From: 192.55.52.93
+Subject: [Qemu-trivial] [PATCH] vl.c: make current_machine as non-global
+ variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,23 +45,258 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Apr 2019 05:27:46 -0000
+X-List-Received-Date: Tue, 02 Apr 2019 06:02:04 -0000
 
-On Tue, 2 Apr 2019 at 12:20, Like Xu <like.xu@linux.intel.com> wrote:
->
-> On 2019/4/2 12:45, Peter Maydell wrote:
-> > My suggestion would be that we use qdev_get_machine(). I think
-> > it would be nice to make the remaining dozen or so uses of
-> > the global current_machine outside vl.c use qdev_get_machine()
-> > instead, and then make current_machine local to vl.c instead
-> > of global.
+This patch makes the remaining dozen or so uses of the global
+current_machine outside vl.c use qdev_get_machine() instead,
+and then make current_machine local to vl.c instead of global.
 
-> It looks good to me and I am not sure if this refactoring should be
-> added in next patch series or as a separate patch.
+Signed-off-by: Like Xu <like.xu@linux.intel.com>
+---
+ accel/kvm/kvm-all.c | 6 ++++--
+ device-hotplug.c    | 3 ++-
+ device_tree.c       | 3 ++-
+ exec.c              | 6 ++++--
+ hw/ppc/spapr_rtas.c | 3 ++-
+ include/hw/boards.h | 1 -
+ migration/savevm.c  | 9 ++++++---
+ qmp.c               | 3 ++-
+ target/i386/kvm.c   | 3 ++-
+ target/ppc/kvm.c    | 3 ++-
+ vl.c                | 4 ++--
+ 11 files changed, 28 insertions(+), 16 deletions(-)
 
-Changing the other uses of current_machine is definitely a
-refactoring that should be a separate patch series.
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 241db49..d103de2 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -140,7 +140,8 @@ static const KVMCapabilityInfo kvm_required_capabilites[] = {
+ 
+ int kvm_get_max_memslots(void)
+ {
+-    KVMState *s = KVM_STATE(current_machine->accelerator);
++    MachineState *ms = MACHINE(qdev_get_machine());
++    KVMState *s = KVM_STATE(ms->accelerator);
+ 
+     return s->nr_slots;
+ }
+@@ -1519,7 +1520,8 @@ static int kvm_max_vcpu_id(KVMState *s)
+ 
+ bool kvm_vcpu_id_is_valid(int vcpu_id)
+ {
+-    KVMState *s = KVM_STATE(current_machine->accelerator);
++    MachineState *ms = MACHINE(qdev_get_machine());
++    KVMState *s = KVM_STATE(ms->accelerator);
+     return vcpu_id >= 0 && vcpu_id < kvm_max_vcpu_id(s);
+ }
+ 
+diff --git a/device-hotplug.c b/device-hotplug.c
+index 6090d5f..3d033f5 100644
+--- a/device-hotplug.c
++++ b/device-hotplug.c
+@@ -37,6 +37,7 @@
+ 
+ static DriveInfo *add_init_drive(const char *optstr)
+ {
++    MachineState *ms = MACHINE(qdev_get_machine());
+     Error *err = NULL;
+     DriveInfo *dinfo;
+     QemuOpts *opts;
+@@ -46,7 +47,7 @@ static DriveInfo *add_init_drive(const char *optstr)
+     if (!opts)
+         return NULL;
+ 
+-    mc = MACHINE_GET_CLASS(current_machine);
++    mc = MACHINE_GET_CLASS(ms);
+     dinfo = drive_new(opts, mc->block_default_type, &err);
+     if (!dinfo) {
+         error_report_err(err);
+diff --git a/device_tree.c b/device_tree.c
+index 296278e..370b74e 100644
+--- a/device_tree.c
++++ b/device_tree.c
+@@ -455,6 +455,7 @@ int qemu_fdt_setprop_phandle(void *fdt, const char *node_path,
+ 
+ uint32_t qemu_fdt_alloc_phandle(void *fdt)
+ {
++    MachineState *ms = MACHINE(qdev_get_machine());
+     static int phandle = 0x0;
+ 
+     /*
+@@ -462,7 +463,7 @@ uint32_t qemu_fdt_alloc_phandle(void *fdt)
+      * which phandle id to start allocating phandles.
+      */
+     if (!phandle) {
+-        phandle = machine_phandle_start(current_machine);
++        phandle = machine_phandle_start(ms);
+     }
+ 
+     if (!phandle) {
+diff --git a/exec.c b/exec.c
+index 6ab62f4..15ff2b1 100644
+--- a/exec.c
++++ b/exec.c
+@@ -1969,10 +1969,11 @@ static unsigned long last_ram_page(void)
+ 
+ static void qemu_ram_setup_dump(void *addr, ram_addr_t size)
+ {
++    MachineState *ms = MACHINE(qdev_get_machine());
+     int ret;
+ 
+     /* Use MADV_DONTDUMP, if user doesn't want the guest memory in the core */
+-    if (!machine_dump_guest_core(current_machine)) {
++    if (!machine_dump_guest_core(ms)) {
+         ret = qemu_madvise(addr, size, QEMU_MADV_DONTDUMP);
+         if (ret) {
+             perror("qemu_madvise");
+@@ -2094,7 +2095,8 @@ size_t qemu_ram_pagesize_largest(void)
+ 
+ static int memory_try_enable_merging(void *addr, size_t len)
+ {
+-    if (!machine_mem_merge(current_machine)) {
++    MachineState *ms = MACHINE(qdev_get_machine());
++    if (!machine_mem_merge(ms)) {
+         /* disabled by the user */
+         return 0;
+     }
+diff --git a/hw/ppc/spapr_rtas.c b/hw/ppc/spapr_rtas.c
+index 24c45b1..51e320d 100644
+--- a/hw/ppc/spapr_rtas.c
++++ b/hw/ppc/spapr_rtas.c
+@@ -231,6 +231,7 @@ static void rtas_ibm_get_system_parameter(PowerPCCPU *cpu,
+                                           target_ulong args,
+                                           uint32_t nret, target_ulong rets)
+ {
++    MachineState *ms = MACHINE(spapr);
+     target_ulong parameter = rtas_ld(args, 0);
+     target_ulong buffer = rtas_ld(args, 1);
+     target_ulong length = rtas_ld(args, 2);
+@@ -243,7 +244,7 @@ static void rtas_ibm_get_system_parameter(PowerPCCPU *cpu,
+                                           "DesProcs=%d,"
+                                           "MaxPlatProcs=%d",
+                                           max_cpus,
+-                                          current_machine->ram_size / MiB,
++                                          ms->ram_size / MiB,
+                                           smp_cpus,
+                                           max_cpus);
+         ret = sysparm_st(buffer, length, param_val, strlen(param_val) + 1);
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index e231860..1d598c8 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -58,7 +58,6 @@ void memory_region_allocate_system_memory(MemoryRegion *mr, Object *owner,
+     OBJECT_CLASS_CHECK(MachineClass, (klass), TYPE_MACHINE)
+ 
+ MachineClass *find_default_machine(void);
+-extern MachineState *current_machine;
+ 
+ void machine_run_board_init(MachineState *machine);
+ bool machine_usb(MachineState *machine);
+diff --git a/migration/savevm.c b/migration/savevm.c
+index 1415001..8077ac5 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -286,8 +286,9 @@ static uint32_t get_validatable_capabilities_count(void)
+ 
+ static int configuration_pre_save(void *opaque)
+ {
++    MachineState *ms = MACHINE(qdev_get_machine());
+     SaveState *state = opaque;
+-    const char *current_name = MACHINE_GET_CLASS(current_machine)->name;
++    const char *current_name = MACHINE_GET_CLASS(ms)->name;
+     MigrationState *s = migrate_get_current();
+     int i, j;
+ 
+@@ -355,8 +356,9 @@ static bool configuration_validate_capabilities(SaveState *state)
+ 
+ static int configuration_post_load(void *opaque, int version_id)
+ {
++    MachineState *ms = MACHINE(qdev_get_machine());
+     SaveState *state = opaque;
+-    const char *current_name = MACHINE_GET_CLASS(current_machine)->name;
++    const char *current_name = MACHINE_GET_CLASS(ms)->name;
+ 
+     if (strncmp(state->name, current_name, state->len) != 0) {
+         error_report("Machine type received is '%.*s' and local is '%s'",
+@@ -566,9 +568,10 @@ static void dump_vmstate_vmsd(FILE *out_file,
+ 
+ static void dump_machine_type(FILE *out_file)
+ {
++    MachineState *ms = MACHINE(qdev_get_machine());
+     MachineClass *mc;
+ 
+-    mc = MACHINE_GET_CLASS(current_machine);
++    mc = MACHINE_GET_CLASS(ms);
+ 
+     fprintf(out_file, "  \"vmschkmachine\": {\n");
+     fprintf(out_file, "    \"Name\": \"%s\"\n", mc->name);
+diff --git a/qmp.c b/qmp.c
+index b92d62c..f2a5473 100644
+--- a/qmp.c
++++ b/qmp.c
+@@ -119,9 +119,10 @@ void qmp_system_powerdown(Error **erp)
+ 
+ void qmp_cpu_add(int64_t id, Error **errp)
+ {
++    MachineState *ms = MACHINE(qdev_get_machine());
+     MachineClass *mc;
+ 
+-    mc = MACHINE_GET_CLASS(current_machine);
++    mc = MACHINE_GET_CLASS(ms);
+     if (mc->hot_add_cpu) {
+         mc->hot_add_cpu(id, errp);
+     } else {
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index 3b29ce5..b25d766 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -134,7 +134,8 @@ bool kvm_allows_irq0_override(void)
+ 
+ static bool kvm_x2apic_api_set_flags(uint64_t flags)
+ {
+-    KVMState *s = KVM_STATE(current_machine->accelerator);
++    MachineState *ms = MACHINE(qdev_get_machine());
++    KVMState *s = KVM_STATE(ms->accelerator);
+ 
+     return !kvm_vm_enable_cap(s, KVM_CAP_X2APIC_API, 0, flags);
+ }
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index 2427c8e..c3bea37 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -276,7 +276,8 @@ static void kvm_get_smmu_info(struct kvm_ppc_smmu_info *info, Error **errp)
+ 
+ struct ppc_radix_page_info *kvm_get_radix_page_info(void)
+ {
+-    KVMState *s = KVM_STATE(current_machine->accelerator);
++    MachineState *ms = MACHINE(qdev_get_machine());
++    KVMState *s = KVM_STATE(ms->accelerator);
+     struct ppc_radix_page_info *radix_page_info;
+     struct kvm_ppc_rmmu_info rmmu_info;
+     int i;
+diff --git a/vl.c b/vl.c
+index d61d560..98d1e1e1f 100644
+--- a/vl.c
++++ b/vl.c
+@@ -1265,6 +1265,8 @@ static QemuOptsList qemu_smp_opts = {
+     },
+ };
+ 
++MachineState *current_machine;
++
+ static void smp_parse(QemuOpts *opts)
+ {
+     if (opts) {
+@@ -1462,8 +1464,6 @@ static int usb_parse(const char *cmdline)
+ /***********************************************************/
+ /* machine registration */
+ 
+-MachineState *current_machine;
+-
+ static MachineClass *find_machine(const char *name)
+ {
+     GSList *el, *machines = object_class_get_list(TYPE_MACHINE, false);
+-- 
+1.8.3.1
 
-thanks
--- PMM
 
