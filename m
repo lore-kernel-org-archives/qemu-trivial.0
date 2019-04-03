@@ -1,44 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hBeoo-0008Py-8b
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Apr 2019 08:16:38 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:35623)
+	id 1hBevj-0002cX-AY
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Apr 2019 08:23:47 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:37236)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hBeol-0008PV-0u
-	for qemu-trivial@nongnu.org; Wed, 03 Apr 2019 08:16:37 -0400
+	(envelope-from <berrange@redhat.com>) id 1hBevg-0002ax-Ia
+	for qemu-trivial@nongnu.org; Wed, 03 Apr 2019 08:23:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hBeok-0001ES-2b
-	for qemu-trivial@nongnu.org; Wed, 03 Apr 2019 08:16:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48476)
+	(envelope-from <berrange@redhat.com>) id 1hBevf-0000wi-Fq
+	for qemu-trivial@nongnu.org; Wed, 03 Apr 2019 08:23:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35106)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1hBeoh-0001AQ-Li; Wed, 03 Apr 2019 08:16:31 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <berrange@redhat.com>)
+	id 1hBevc-0000qz-H2; Wed, 03 Apr 2019 08:23:40 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 71737307D984;
-	Wed,  3 Apr 2019 12:16:30 +0000 (UTC)
-Received: from x1w.redhat.com (unknown [10.40.205.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5B09D6014E;
-	Wed,  3 Apr 2019 12:16:23 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Wed,  3 Apr 2019 14:16:20 +0200
-Message-Id: <20190403121620.5228-1-philmd@redhat.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 323397D7D5;
+	Wed,  3 Apr 2019 12:23:39 +0000 (UTC)
+Received: from redhat.com (ovpn-112-56.ams2.redhat.com [10.36.112.56])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 76BEE18B84;
+	Wed,  3 Apr 2019 12:23:31 +0000 (UTC)
+Date: Wed, 3 Apr 2019 13:23:28 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>
+Message-ID: <20190403122328.GQ25150@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20190403121620.5228-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20190403121620.5228-1-philmd@redhat.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.48]);
-	Wed, 03 Apr 2019 12:16:30 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Wed, 03 Apr 2019 12:23:39 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] sockets: Fix stringop-truncation warning
+Subject: Re: [Qemu-trivial] [PATCH] sockets: Fix stringop-truncation warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -50,93 +53,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Apr 2019 12:16:37 -0000
+X-List-Received-Date: Wed, 03 Apr 2019 12:23:45 -0000
 
-Compiling with clang-8 fails with:
+On Wed, Apr 03, 2019 at 02:16:20PM +0200, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+> Compiling with clang-8 fails with:
+>=20
+>     CC      util/qemu-sockets.o
+>   util/qemu-sockets.c: In function 'unix_connect_saddr':
+>   util/qemu-sockets.c:925:5: error: 'strncpy' specified bound 108 equal=
+s destination size [-Werror=3Dstringop-truncation]
+>        strncpy(un.sun_path, saddr->path, sizeof(un.sun_path));
+>        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>   util/qemu-sockets.c: In function 'unix_listen_saddr':
+>   util/qemu-sockets.c:880:5: error: 'strncpy' specified bound 108 equal=
+s destination size [-Werror=3Dstringop-truncation]
+>        strncpy(un.sun_path, path, sizeof(un.sun_path));
+>        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>=20
+> Per the unix socket manpage:
+>=20
+>   UNIX(7)
+>=20
+>   Pathname sockets
+>   When binding a socket to a pathname, a few rules should be observed f=
+or maximum portability and ease of coding:
+>   *  The pathname in sun_path should be null-terminated.
+>   *  The length of the pathname, including the terminating null byte, s=
+hould not exceed the size of sun_path.
+>=20
+> Reduce the length of the unix socket path by 1 to hold the NUL byte.
 
-    CC      util/qemu-sockets.o
-  util/qemu-sockets.c: In function 'unix_connect_saddr':
-  util/qemu-sockets.c:925:5: error: 'strncpy' specified bound 108 equals =
-destination size [-Werror=3Dstringop-truncation]
-       strncpy(un.sun_path, saddr->path, sizeof(un.sun_path));
-       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  util/qemu-sockets.c: In function 'unix_listen_saddr':
-  util/qemu-sockets.c:880:5: error: 'strncpy' specified bound 108 equals =
-destination size [-Werror=3Dstringop-truncation]
-       strncpy(un.sun_path, path, sizeof(un.sun_path));
-       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Note it just says "should", not "must" here. IOW, there is no requirement
+to NUL terminate and so we should not artifically require that at QEMU
+level either. If mgmt apps want to have NUL termination then they can
+just pass a shorter path to QEMU to start with.
 
-Per the unix socket manpage:
+I've proposed the fix for the warning you mention here:
 
-  UNIX(7)
+  https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg07759.html
 
-  Pathname sockets
-  When binding a socket to a pathname, a few rules should be observed for=
- maximum portability and ease of coding:
-  *  The pathname in sun_path should be null-terminated.
-  *  The length of the pathname, including the terminating null byte, sho=
-uld not exceed the size of sun_path.
 
-Reduce the length of the unix socket path by 1 to hold the NUL byte.
-
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- util/qemu-sockets.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-index 97050516900..935271d58c0 100644
---- a/util/qemu-sockets.c
-+++ b/util/qemu-sockets.c
-@@ -845,10 +845,10 @@ static int unix_listen_saddr(UnixSocketAddress *sad=
-dr,
-         path =3D pathbuf =3D g_strdup_printf("%s/qemu-socket-XXXXXX", tm=
-pdir);
-     }
-=20
--    if (strlen(path) > sizeof(un.sun_path)) {
-+    if (strlen(path) > sizeof(un.sun_path) - 1) {
-         error_setg(errp, "UNIX socket path '%s' is too long", path);
-         error_append_hint(errp, "Path must be less than %zu bytes\n",
--                          sizeof(un.sun_path));
-+                          sizeof(un.sun_path) - 1);
-         goto err;
-     }
-=20
-@@ -877,7 +877,7 @@ static int unix_listen_saddr(UnixSocketAddress *saddr=
-,
-=20
-     memset(&un, 0, sizeof(un));
-     un.sun_family =3D AF_UNIX;
--    strncpy(un.sun_path, path, sizeof(un.sun_path));
-+    strncpy(un.sun_path, path, sizeof(un.sun_path) - 1);
-=20
-     if (bind(sock, (struct sockaddr*) &un, sizeof(un)) < 0) {
-         error_setg_errno(errp, errno, "Failed to bind socket to %s", pat=
-h);
-@@ -913,16 +913,16 @@ static int unix_connect_saddr(UnixSocketAddress *sa=
-ddr, Error **errp)
-         return -1;
-     }
-=20
--    if (strlen(saddr->path) > sizeof(un.sun_path)) {
-+    if (strlen(saddr->path) > sizeof(un.sun_path) - 1) {
-         error_setg(errp, "UNIX socket path '%s' is too long", saddr->pat=
-h);
-         error_append_hint(errp, "Path must be less than %zu bytes\n",
--                          sizeof(un.sun_path));
-+                          sizeof(un.sun_path) - 1);
-         goto err;
-     }
-=20
-     memset(&un, 0, sizeof(un));
-     un.sun_family =3D AF_UNIX;
--    strncpy(un.sun_path, saddr->path, sizeof(un.sun_path));
-+    strncpy(un.sun_path, saddr->path, sizeof(un.sun_path) - 1);
-=20
-     /* connect to peer */
-     do {
+Regards,
+Daniel
 --=20
-2.20.1
-
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
+ge :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.c=
+om :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
+ge :|
 
