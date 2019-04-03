@@ -1,70 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hBTNr-00032G-5Z
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2019 20:04:03 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:42431)
+	id 1hBear-0006gp-Gy
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Apr 2019 08:02:13 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60240)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hBTNp-00031w-5O
-	for qemu-trivial@nongnu.org; Tue, 02 Apr 2019 20:04:01 -0400
+	(envelope-from <stefanha@gmail.com>) id 1hBeai-0006cF-JJ
+	for qemu-trivial@nongnu.org; Wed, 03 Apr 2019 08:02:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hBTNo-0004FO-9K
-	for qemu-trivial@nongnu.org; Tue, 02 Apr 2019 20:04:01 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:32983)
+	(envelope-from <stefanha@gmail.com>) id 1hBeaa-00013s-00
+	for qemu-trivial@nongnu.org; Wed, 03 Apr 2019 08:02:02 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:44588)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hBTNn-0004FA-QJ
-	for qemu-trivial@nongnu.org; Tue, 02 Apr 2019 20:04:00 -0400
-Received: by mail-ot1-x342.google.com with SMTP id j10so13859306otq.0
-	for <qemu-trivial@nongnu.org>; Tue, 02 Apr 2019 17:03:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=wJ/7RtCSVaJ1h/ehWHV3oGHpDK0g9WZGK0WBprOQ5F8=;
-	b=NV7hR9oXNYaSLfvMTV19zP1Vm2aqFFSzGYFISjqBHfA+I0vJOQQ7UEQIOBsNrR8Nt1
-	BG5xjdYXCD9SicY8axDC9Z7mMMQgEfGUN8Z5hOsmLVMeBNVEtRkkxzFBdpmaoxe6hEjI
-	rDzMB81mvU1HK0gspQ3dP3hQog6t9Bh+jlCc9Qi5qo8Nw7bQlsbsQqrCuhHhYAKzf+F8
-	Q97lvkuY90SihR7rO5fm+3mOoNvpDi4rty6ekTZ5Pde2ElUzow5P79M0iCLQIEeJQy3R
-	RfoGVgX1uwKKLBhWFDUOZ3QFoEDe8dRSO9CFEw9QbzfToijln+6wN4MwlsqeRzM8EHee
-	ouVw==
+	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
+	id 1hBeaW-0000VK-HB; Wed, 03 Apr 2019 08:01:52 -0400
+Received: by mail-wr1-x432.google.com with SMTP id y7so20923798wrn.11;
+	Wed, 03 Apr 2019 05:01:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=date:from:to:cc:subject:message-id:references:mime-version
+	:content-disposition:in-reply-to:user-agent;
+	bh=QnrZkudwOW2IVpWcMPnPce4ucDXaQcojfcvcK7TF4Og=;
+	b=aEq0R356+o5e55Cqfk8SGOXaBOIVuUrHrvNAFUmXWHcm5T/D+rMXGw8fvHN8eFIMZF
+	kSERqHmVuRplBnS5sa5Ua2OOMgqRv36mbJog243oeTRGhwVSvcYRnIAJdOXEsV+WXt5/
+	FPaTYbLPDXWOmywSG+AT33bPCP6b6OY8RBf/9wfQvh0cU+aw6J1tabqkTH+sj4Yp2RY9
+	zeeKEQuZHDdwqHNvPgBcTn78goDExYCCNi46+8JEA/tagcA8dJplkTdOzX+8MMk3mKOA
+	zoq7VpGWmIP65E+pq4HORf6mSVq0/mh+0QhJRWN3VM79bg8oJkykt9jLsEVU1Ewq2Lsa
+	KxqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=wJ/7RtCSVaJ1h/ehWHV3oGHpDK0g9WZGK0WBprOQ5F8=;
-	b=BBPUVts2vIaQ8AT2CK47lH0ocx6YwtPPgk0Tc5uPhHxuYTZ0leCMNDWU0Gs6PSMQYb
-	UrG0hkJQk1cJtxl+0H2AD+Wk0r+mo1s8VAmBJjVSiPZUIe0/BFJe/WHrkMtb+N6dLK8H
-	RJpSmvakQcPuR5JU6HinZMppn36fP8O3RIXHCrUQ8IfJ1PCTEf1F4CtW+WqnygPtMuJY
-	fozJ+X8N6jIE0BYJn+G48glkKU0NcRfmpFXGbOkQ2ZSeiYteoZFsuDtdHDV9MNxV2bOV
-	tsHsHxQ0sSC+LK83LWaLe5rtrC0BlRCfuFRW2fJfR31EP/zYmTb+DCTRR9Me1W4mGogw
-	Pqfg==
-X-Gm-Message-State: APjAAAWijJwBmwNFFHv1Sm/qzxpbondpxIeIRkeCQZ9mK+MzDjD1+cFP
-	m/jqDhH2XfBnqsmiIa9yiNl7Amtdigib3jMYmBTlxA==
-X-Google-Smtp-Source: APXvYqwsdkMgIXUf5R7BIDyEV0oKWn8EMg1RHCFN0C2avBfprtfjPgFNR+5/7OvZpp3J2pMLGTnglFZuJaIIQ2bjnDE=
-X-Received: by 2002:a05:6830:1497:: with SMTP id
-	s23mr51267513otq.236.1554249838735; 
-	Tue, 02 Apr 2019 17:03:58 -0700 (PDT)
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=QnrZkudwOW2IVpWcMPnPce4ucDXaQcojfcvcK7TF4Og=;
+	b=cVQ7dDnxAaybTBng+OAAuw/sGEqcgGlbDKD80Bl031dGW58YDd9y+bprS2W3TcLcnL
+	1Zq/pZGARW/ytQ/VtOVGUc4Q8Ge+IHjp+sG+zozvha2Zl7JqMo84wi3hw2B4+n5zFlTq
+	s+bgP8p1ZAmqXfULITm5AtXUiRwglMnjRGpp71AynvtARw6RSWey/e+55LI/d0XUtoeH
+	kkibpyiB9udSHBeDFjCG2ImCJbHQwrIHWcseXDVQaoGVC/0gCnamdMLqyzwCIyHnGjCH
+	CQjSTR0zMKb6GjUz6wEn2r1qlwA02g8vHX9g8QmAkLAa0+31fVexMjsvhSQ9fNQEwpzM
+	fgIw==
+X-Gm-Message-State: APjAAAVX6zDYpa9L+t/yPbnzuHEVInh1jYN8MrVWjE4RFkEgTrddvw4H
+	xRfrxyuwwQ9gA1afZAD3w7U=
+X-Google-Smtp-Source: APXvYqxWCG6wX+I3k6KqqQhz6x5A0cAAkOSkY9ZOVUvRa3l5USgyq+JhbqmeTNY8GURODZz08NmcnA==
+X-Received: by 2002:adf:e94d:: with SMTP id m13mr25933928wrn.141.1554292904966;
+	Wed, 03 Apr 2019 05:01:44 -0700 (PDT)
+Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
+	w16sm20162940wrt.84.2019.04.03.05.01.43
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Wed, 03 Apr 2019 05:01:44 -0700 (PDT)
+Date: Wed, 3 Apr 2019 13:01:43 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Jules Irenge <jbi.octave@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20190403120143.GA32425@stefanha-x1.localdomain>
+References: <20190330112142.14082-1-jbi.octave@gmail.com>
 MIME-Version: 1.0
-References: <1554194900-22817-1-git-send-email-like.xu@linux.intel.com>
-	<871s2kejg1.fsf@dusky.pond.sub.org>
-	<e72befe5-c931-5c80-6769-12e1a8e7d4fa@linux.intel.com>
-	<20190402174749.71da1efe@redhat.com>
-	<871s2k8jxo.fsf@dusky.pond.sub.org>
-	<CAFEAcA8ogWn50wWBttM2QpfQoZ8UYnXfG3NSkuSc8j8WOWt6FA@mail.gmail.com>
-	<20190402191602.GE22884@habkost.net>
-In-Reply-To: <20190402191602.GE22884@habkost.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 3 Apr 2019 07:03:47 +0700
-Message-ID: <CAFEAcA_qtqE_N-JOZn=M-NqHg4GjohU44R7A6hOXTxbOCqjrtA@mail.gmail.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
-	Like Xu <like.xu@linux.intel.com>, Thomas Huth <thuth@redhat.com>, 
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="Dxnq1zWXvFF0Q93v"
+Content-Disposition: inline
+In-Reply-To: <20190330112142.14082-1-jbi.octave@gmail.com>
+User-Agent: Mutt/1.11.3 (2019-02-01)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::342
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] vl.c: make
- current_machine as non-global variable
+X-Received-From: 2a00:1450:4864:20::432
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] util/readline: Add braces
+ to fix checkpatch errors
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,25 +72,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Apr 2019 00:04:02 -0000
+X-List-Received-Date: Wed, 03 Apr 2019 12:02:09 -0000
 
-On Wed, 3 Apr 2019 at 02:16, Eduardo Habkost <ehabkost@redhat.com> wrote:
->
-> On Tue, Apr 02, 2019 at 11:23:42PM +0700, Peter Maydell wrote:
-> > One wrinkle to watch out for is code paths that are used in the
-> > linux-user emulator, where there is no machine at all... For instance
-> > cpu_common_realizefn() handles this case by explicitly checking
-> > whether the thing it gets back from qdev_get_machine() is a
-> > TYPE_MACHINE or not.
->
-> Is there a real use case for calling qdev_get_machine() in user
-> mode?
 
-In this case it's "I'm in a function which is in obj-common (so shared
-between user-only and system-emulation) and I need to do something
-if we're in system emulation mode". It could probably be restructured
-somehow.
+--Dxnq1zWXvFF0Q93v
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-thanks
--- PMM
+On Sat, Mar 30, 2019 at 11:21:42AM +0000, Jules Irenge wrote:
+> Add braces to fix errors issued by checkpatch.pl tool
+> "ERROR: braces {} are necessary for all arms of this statement"
+> Within "util/readline.c" file
+> ---
+>  util/readline.c | 50 ++++++++++++++++++++++++++++++++-----------------
+>  1 file changed, 33 insertions(+), 17 deletions(-)
+
+This file is unmaintained, I'll take this patch through my tree.
+
+Thanks, applied to my block-next tree:
+https://github.com/stefanha/qemu/commits/block-next
+
+Stefan
+
+--Dxnq1zWXvFF0Q93v
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEcBAEBAgAGBQJcpKCnAAoJEJykq7OBq3PIpRoH/2/nrzeVuPzcFDyYiYlPG00F
+Y/veZ3CJb7az8QK0f5q4eqsLpXDR1UsBR2HHvOB09TwbMh/3ZkD62zZrU0bQnMJZ
+mH/mzQE4zowTZuYRR4v96ALRoOyD8fYihG06FNN+wBZ1sJgg2fWIyVuIrUwxw8zZ
+p7dwu0b/yfv1HkqnY34Ssrm4imlpgQdKHQnO9tt1p+7X1k4Umts18QVBWKPd3S9q
+RaNy2BXVkPS9BXPNCOKh3c163zx74vnSKftbiZwdY3UcyGjsRlGf2Xc3jUbXEb4w
+DoPDz04SyLorwsM5fSBGveqGrfxcXdHgHRF57tc8EWJo2ueuIJOvo8cELZrNztg=
+=zwh/
+-----END PGP SIGNATURE-----
+
+--Dxnq1zWXvFF0Q93v--
 
