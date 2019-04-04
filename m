@@ -1,48 +1,95 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hC3PG-0004vx-Ku
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Apr 2019 10:31:54 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:42237)
+	id 1hC3PY-0005DW-Ud
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Apr 2019 10:32:12 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:42395)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1hC3PC-0004rv-Gj
-	for qemu-trivial@nongnu.org; Thu, 04 Apr 2019 10:31:52 -0400
+	(envelope-from <thuth@redhat.com>) id 1hC3PW-00051K-Pe
+	for qemu-trivial@nongnu.org; Thu, 04 Apr 2019 10:32:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1hC3Jc-0008AH-KE
-	for qemu-trivial@nongnu.org; Thu, 04 Apr 2019 10:26:06 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40052)
+	(envelope-from <thuth@redhat.com>) id 1hC3Df-00029a-8F
+	for qemu-trivial@nongnu.org; Thu, 04 Apr 2019 10:19:56 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38526)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1hC3Ja-00086e-Ba; Thu, 04 Apr 2019 10:26:02 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1hC3Dd-00025P-SD; Thu, 04 Apr 2019 10:19:54 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 84AB680496;
-	Thu,  4 Apr 2019 14:26:01 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 6ACBE1001E65;
-	Thu,  4 Apr 2019 14:25:59 +0000 (UTC)
-Date: Thu, 4 Apr 2019 16:25:55 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Like Xu <like.xu@linux.intel.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, "Daniel P.
-	=?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>, Eduardo Habkost
-	<ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	like.xu@intel.com, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Message-ID: <20190404162555.0a2267ee@redhat.com>
-In-Reply-To: <1553849325-44201-3-git-send-email-like.xu@linux.intel.com>
-References: <1553849325-44201-1-git-send-email-like.xu@linux.intel.com>
-	<1553849325-44201-3-git-send-email-like.xu@linux.intel.com>
+	by mx1.redhat.com (Postfix) with ESMTPS id 923A5C0798FA;
+	Thu,  4 Apr 2019 14:19:52 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-76.ams2.redhat.com [10.36.116.76])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id EB7B4838DB;
+	Thu,  4 Apr 2019 14:19:28 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-trivial@nongnu.org
+References: <20190404071421.4891-1-thuth@redhat.com>
+	<298ccbd7-9af5-8303-e42b-33dd1cb94b9e@redhat.com>
+	<158fe22a-5781-73e5-5955-2fe9db019236@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <3ba3c765-589f-4c0a-38dc-d9126f515e7b@redhat.com>
+Date: Thu, 4 Apr 2019 16:19:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <158fe22a-5781-73e5-5955-2fe9db019236@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Thu, 04 Apr 2019 14:26:01 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Thu, 04 Apr 2019 14:19:52 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/9] cpu/topology: add
- general support for machine properties
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/input/pckbd: The i8042
+ device should not be user_creatable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -54,326 +101,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Apr 2019 14:31:52 -0000
+X-List-Received-Date: Thu, 04 Apr 2019 14:32:11 -0000
 
-On Fri, 29 Mar 2019 16:48:38 +0800
-Like Xu <like.xu@linux.intel.com> wrote:
+On 04/04/2019 15.29, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 4/4/19 12:07 PM, Paolo Bonzini wrote:
+>> On 04/04/19 09:14, Thomas Huth wrote:
+>>> The i8042 PS/2 controller is part of the chipset on the motherboard.
+>>> It is instantiated by the machine init code, and it does not make sen=
+se
+>>> to allow the user to plug an additional i8042 in any of the free ISA =
+slots.
+>>> Thus let's mark the device with user_creatable =3D false.
+>>>
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>> ---
+>>>  hw/input/pckbd.c | 2 ++
+>>>  1 file changed, 2 insertions(+)
+>>
+>> user_creatable is not for devices that are not pluggable in real life;
+>> it is for devices that crash QEMU (!) or always fail if plugged by the=
+ user.
 
-> Signed-off-by: Like Xu <like.xu@linux.intel.com>
-> ---
->  accel/kvm/kvm-all.c      |  3 +++
->  backends/hostmem.c       |  4 ++++
->  cpus.c                   |  4 ++++
->  exec.c                   |  2 ++
->  gdbstub.c                |  7 ++++++-
->  hw/cpu/core.c            |  3 +++
->  hw/smbios/smbios.c       | 11 +++++++++++
->  migration/postcopy-ram.c |  7 +++++++
->  numa.c                   |  1 +
->  tcg/tcg.c                | 15 +++++++++++++++
->  10 files changed, 56 insertions(+), 1 deletion(-)
-> 
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index 241db49..5385218 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -1526,6 +1526,9 @@ bool kvm_vcpu_id_is_valid(int vcpu_id)
->  static int kvm_init(MachineState *ms)
->  {
->      MachineClass *mc = MACHINE_GET_CLASS(ms);
-> +    unsigned int smp_cpus = ms->topo.smp_cpus;
-> +    unsigned int max_cpus = ms->topo.max_cpus;
-> +
->      static const char upgrade_note[] =
->          "Please upgrade to at least kernel 2.6.29 or recent kvm-kmod\n"
->          "(see http://sourceforge.net/projects/kvm).\n";
+... hmm, but presenting devices to the user that are clearly not
+intended for direct use is also not very nice, is it?
 
-> diff --git a/backends/hostmem.c b/backends/hostmem.c
-> index 04baf47..cecdfd5 100644
-> --- a/backends/hostmem.c
-> +++ b/backends/hostmem.c
-> @@ -222,6 +222,8 @@ static void host_memory_backend_set_prealloc(Object *obj, bool value,
->  {
->      Error *local_err = NULL;
->      HostMemoryBackend *backend = MEMORY_BACKEND(obj);
-> +    MachineState *ms = MACHINE(qdev_get_machine());
-> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->  
->      if (backend->force_prealloc) {
->          if (value) {
-> @@ -311,6 +313,8 @@ host_memory_backend_memory_complete(UserCreatable *uc, Error **errp)
->  {
->      HostMemoryBackend *backend = MEMORY_BACKEND(uc);
->      HostMemoryBackendClass *bc = MEMORY_BACKEND_GET_CLASS(uc);
-> +    MachineState *ms = MACHINE(qdev_get_machine());
-> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->      Error *local_err = NULL;
->      void *ptr;
->      uint64_t sz;
-I don't like us abusing smp_cpus for os_mem_prealloc in here as
-it doesn't really have to do anything with machine and just adds
-non necessary machine dependency to hostmem. And probably should
-be a separate option for backend to specify a number of threads
-to use for allocation.
+>> So the question to ask is: would it make sense, and especially work, t=
+o
+>> add an i8042 to machines that do have an ISA bridge (for example the A=
+lpha?)
 
-But that's out of scope of this series, so it's fine is for now
-and later we should get rid of it (which I suspect would be easier
-once initial memoy also allocated by backends).
+I don't think so. It is a device that is supposed to be part of the
+chipset on the motherboard, so operating systems certainly don't know
+how to use this device on other machines.
 
-> diff --git a/cpus.c b/cpus.c
-> index e83f72b..834a697 100644
-> --- a/cpus.c
-> +++ b/cpus.c
-> @@ -2067,6 +2067,10 @@ static void qemu_dummy_start_vcpu(CPUState *cpu)
->  
->  void qemu_init_vcpu(CPUState *cpu)
->  {
-> +    MachineState *ms = MACHINE(qdev_get_machine());
-> +    unsigned int smp_cores = ms->topo.smp_cores;
-> +    unsigned int smp_threads = ms->topo.smp_threads;
+And at least some part of the device have to be set up in source code
+(see e.g. i8042_setup_a20_line() ...).
 
-(***)
-for once it probably will crash *-user builds
-and secondly the purpose of getting rid of smp_foo globals
-is disentangle layer violations and not replace it with another global
-(qdev_get_machine()).
+> Correct me if I'm wrong but it seems no machine directly use a 8042 on =
+a
+> ISA bus, it is always part of a SuperIO chipset. It is not reflected in
+> the code (in particular the X86 machines, but I'm working on cleaning t=
+his).
 
-What should be done is to make a properties of nr_cores/nr_threads and set
-them from the parent object that creates CPUs. The point is CPUs shouldn't
-reach out outside itself to fish out data bits it needs, it's responsibility
-of creator to feed to being create CPU needed properties.
+What about the "isa_create_simple(isa_bus, TYPE_I8042)" in mips_r4k.c ?
 
-This kind of refactoring probably deserves its own series and should precede
--smp refactoring as it doesn't depend on CpuTopology at all.
+>>> diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+>>> index 47a606f5e3..af393818fc 100644
+>>> --- a/hw/input/pckbd.c
+>>> +++ b/hw/input/pckbd.c
+>>> @@ -568,6 +568,8 @@ static void i8042_class_initfn(ObjectClass *klass=
+, void *data)
+>>>      dc->realize =3D i8042_realizefn;
+>>>      dc->vmsd =3D &vmstate_kbd_isa;
+>>>      set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
+>>> +    /* i8042 is a device on the motherboard, and not pluggable by th=
+e user */
+>=20
+> I'm not sure the comment is accurate, maybe "ISA i8042 are provided by
+> Super I/O devices"?
 
-> +
->      cpu->nr_cores = smp_cores;
->      cpu->nr_threads = smp_threads;
->      cpu->stopped = true;
-> diff --git a/exec.c b/exec.c
-> index 86a38d3..a3c3db7 100644
-> --- a/exec.c
-> +++ b/exec.c
-> @@ -1829,6 +1829,8 @@ static void *file_ram_alloc(RAMBlock *block,
->                              bool truncate,
->                              Error **errp)
->  {
-> +    MachineState *ms = MACHINE(qdev_get_machine());
-> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->      void *area;
->  
->      block->page_size = qemu_fd_getpagesize(fd);
-> diff --git a/gdbstub.c b/gdbstub.c
-> index d54abd1..35f6bbc 100644
-> --- a/gdbstub.c
-> +++ b/gdbstub.c
-> @@ -30,6 +30,7 @@
->  #include "sysemu/sysemu.h"
->  #include "exec/gdbstub.h"
->  #include "hw/cpu/cluster.h"
-> +#include "hw/boards.h"
->  #endif
->  
->  #define MAX_PACKET_LENGTH 4096
-> @@ -1154,11 +1155,15 @@ static int gdb_handle_vcont(GDBState *s, const char *p)
->      CPUState *cpu;
->      GDBThreadIdKind kind;
->  #ifdef CONFIG_USER_ONLY
-> -    int max_cpus = 1; /* global variable max_cpus exists only in system mode */
-> +    /* global variable max_cpus exists only in system mode */
-> +    unsigned int max_cpus = 1;
-not related change
+Fine for me, too ... but what about mips_r4k in that case?
 
->  
->      CPU_FOREACH(cpu) {
->          max_cpus = max_cpus <= cpu->cpu_index ? cpu->cpu_index + 1 : max_cpus;
->      }
-> +#else
-> +    MachineState *ms = MACHINE(qdev_get_machine());
-> +    unsigned int max_cpus = ms->topo.max_cpus;
->  #endif
->      /* uninitialised CPUs stay 0 */
->      newstates = g_new0(char, max_cpus);
-> diff --git a/hw/cpu/core.c b/hw/cpu/core.c
-> index 7e42e2c..b75ffbb 100644
-> --- a/hw/cpu/core.c
-> +++ b/hw/cpu/core.c
-> @@ -11,6 +11,7 @@
->  #include "qapi/visitor.h"
->  #include "qapi/error.h"
->  #include "sysemu/cpus.h"
-> +#include "hw/boards.h"
->  
->  static void core_prop_get_core_id(Object *obj, Visitor *v, const char *name,
->                                    void *opaque, Error **errp)
-> @@ -69,6 +70,8 @@ static void core_prop_set_nr_threads(Object *obj, Visitor *v, const char *name,
->  
->  static void cpu_core_instance_init(Object *obj)
->  {
-> +    MachineState *ms = MACHINE(qdev_get_machine());
-> +    unsigned int smp_threads = ms->topo.smp_threads;
-the same as [***]
-
->      CPUCore *core = CPU_CORE(obj);
->  
->      object_property_add(obj, "core-id", "int", core_prop_get_core_id,
-> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-> index 47be907..a5eabe7 100644
-> --- a/hw/smbios/smbios.c
-> +++ b/hw/smbios/smbios.c
-> @@ -28,6 +28,7 @@
->  #include "hw/loader.h"
->  #include "exec/cpu-common.h"
->  #include "smbios_build.h"
-> +#include "hw/boards.h"
->  
->  /* legacy structures and constants for <= 2.0 machines */
->  struct smbios_header {
-> @@ -342,6 +343,9 @@ opts_init(smbios_register_config);
->  
->  static void smbios_validate_table(void)
->  {
-> +    MachineState *ms = MACHINE(qdev_get_machine());
-> +    unsigned int smp_cpus = ms->topo.smp_cpus;
-> +
->      uint32_t expect_t4_count = smbios_legacy ? smp_cpus : smbios_smp_sockets;
->  
->      if (smbios_type4_count && smbios_type4_count != expect_t4_count) {
-> @@ -571,6 +575,9 @@ static void smbios_build_type_3_table(void)
->  
->  static void smbios_build_type_4_table(unsigned instance)
->  {
-> +    MachineState *ms = MACHINE(qdev_get_machine());
-> +    unsigned int smp_threads = ms->topo.smp_threads;
-> +    unsigned int smp_cores = ms->topo.smp_cores;
->      char sock_str[128];
->  
->      SMBIOS_BUILD_TABLE_PRE(4, 0x400 + instance, true); /* required */
-> @@ -843,7 +850,11 @@ void smbios_get_tables(const struct smbios_phys_mem_area *mem_array,
->                         uint8_t **tables, size_t *tables_len,
->                         uint8_t **anchor, size_t *anchor_len)
->  {
-> +    MachineState *ms = MACHINE(qdev_get_machine());
->      unsigned i, dimm_cnt;
-> +    unsigned int smp_cpus = ms->topo.smp_cpus;
-> +    unsigned int smp_cores = ms->topo.smp_cores;
-> +    unsigned int smp_threads = ms->topo.smp_threads;
->  
-wrt whole smbios changes:
-instead of accessing machine directly, I suggest to pass necessary values
-as arguments and modify callers to provide them
-
->      if (smbios_legacy) {
->          *tables = *anchor = NULL;
-> diff --git a/migration/postcopy-ram.c b/migration/postcopy-ram.c
-> index e2aa57a..ae92f6e 100644
-> --- a/migration/postcopy-ram.c
-> +++ b/migration/postcopy-ram.c
-> @@ -29,6 +29,7 @@
->  #include "sysemu/balloon.h"
->  #include "qemu/error-report.h"
->  #include "trace.h"
-> +#include "hw/boards.h"
->  
->  /* Arbitrary limit on size of each discard command,
->   * keeps them around ~200 bytes
-> @@ -128,6 +129,8 @@ static void migration_exit_cb(Notifier *n, void *data)
->  
->  static struct PostcopyBlocktimeContext *blocktime_context_new(void)
->  {
-> +    MachineState *ms = MACHINE(qdev_get_machine());
-> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->      PostcopyBlocktimeContext *ctx = g_new0(PostcopyBlocktimeContext, 1);
->      ctx->page_fault_vcpu_time = g_new0(uint32_t, smp_cpus);
->      ctx->vcpu_addr = g_new0(uintptr_t, smp_cpus);
-> @@ -141,6 +144,8 @@ static struct PostcopyBlocktimeContext *blocktime_context_new(void)
->  
->  static uint32List *get_vcpu_blocktime_list(PostcopyBlocktimeContext *ctx)
->  {
-> +    MachineState *ms = MACHINE(qdev_get_machine());
-> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->      uint32List *list = NULL, *entry = NULL;
->      int i;
->  
-> @@ -806,8 +811,10 @@ static void mark_postcopy_blocktime_begin(uintptr_t addr, uint32_t ptid,
->  static void mark_postcopy_blocktime_end(uintptr_t addr)
->  {
->      MigrationIncomingState *mis = migration_incoming_get_current();
-> +    MachineState *ms = MACHINE(qdev_get_machine());
->      PostcopyBlocktimeContext *dc = mis->blocktime_ctx;
->      int i, affected_cpu = 0;
-> +    unsigned int smp_cpus = ms->topo.smp_cpus;
->      bool vcpu_total_blocktime = false;
->      uint32_t read_vcpu_time, low_time_offset;
-
-I don't know enough about migration to say some thing useful here,
-CCin David for comments.
-
->  
-> diff --git a/numa.c b/numa.c
-> index 3875e1e..127ddbe 100644
-> --- a/numa.c
-> +++ b/numa.c
-> @@ -64,6 +64,7 @@ static void parse_numa_node(MachineState *ms, NumaNodeOptions *node,
->      uint16_t nodenr;
->      uint16List *cpus = NULL;
->      MachineClass *mc = MACHINE_GET_CLASS(ms);
-> +    unsigned int max_cpus = ms->topo.max_cpus;
->  
->      if (node->has_nodeid) {
->          nodenr = node->nodeid;
-> diff --git a/tcg/tcg.c b/tcg/tcg.c
-> index 9b2bf7f..d1501eb 100644
-> --- a/tcg/tcg.c
-> +++ b/tcg/tcg.c
-> @@ -44,6 +44,10 @@
->  #include "exec/cpu-common.h"
->  #include "exec/exec-all.h"
->  
-> +#if !defined(CONFIG_USER_ONLY)
-> +#include "hw/boards.h"
-> +#endif
-> +
->  #include "tcg-op.h"
->  
->  #if UINTPTR_MAX == UINT32_MAX
-> @@ -602,6 +606,10 @@ static size_t tcg_n_regions(void)
->      size_t i;
->  
->      /* Use a single region if all we have is one vCPU thread */
-> +#if !defined(CONFIG_USER_ONLY)
-> +    MachineState *ms = MACHINE(qdev_get_machine());
-> +    unsigned int max_cpus = ms->topo.max_cpus;
-> +#endif
->      if (max_cpus == 1 || !qemu_tcg_mttcg_enabled()) {
->          return 1;
->      }
-> @@ -751,7 +759,12 @@ void tcg_register_thread(void)
->  
->      /* Claim an entry in tcg_ctxs */
->      n = atomic_fetch_inc(&n_tcg_ctxs);
-> +#if !defined(CONFIG_USER_ONLY)
-> +    MachineState *ms = MACHINE(qdev_get_machine());
-> +    g_assert(n < ms->topo.max_cpus);
-> +#elif
->      g_assert(n < max_cpus);
-> +#endif
->      atomic_set(&tcg_ctxs[n], s);
->  
->      tcg_ctx = s;
-> @@ -961,6 +974,8 @@ void tcg_context_init(TCGContext *s)
->      tcg_ctxs = &tcg_ctx;
->      n_tcg_ctxs = 1;
->  #else
-> +    MachineState *ms = MACHINE(qdev_get_machine());
-> +    unsigned int max_cpus = ms->topo.max_cpus;
->      tcg_ctxs = g_new(TCGContext *, max_cpus);
->  #endif
-
-not sure what to in case of accelerators (TCG/KVM/...), as their code
-eventually endups being used by cpus. Passing smp information down
-from CPU would be a pain and might not work in every case. Maybe
-we should pass it as part of configure_accelerator()
-
-
+ Thomas
 
