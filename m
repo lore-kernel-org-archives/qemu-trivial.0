@@ -1,51 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hBfwN-00033f-ED
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Apr 2019 09:28:31 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:52623)
+	id 1hBt4E-0006AE-6k
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Apr 2019 23:29:30 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:55037)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pmathieu@redhat.com>) id 1hBfwL-00033D-4d
-	for qemu-trivial@nongnu.org; Wed, 03 Apr 2019 09:28:30 -0400
+	(envelope-from <like.xu@linux.intel.com>) id 1hBt4C-00069n-Az
+	for qemu-trivial@nongnu.org; Wed, 03 Apr 2019 23:29:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pmathieu@redhat.com>) id 1hBfwK-0002wm-6u
-	for qemu-trivial@nongnu.org; Wed, 03 Apr 2019 09:28:29 -0400
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:34111)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pmathieu@redhat.com>) id 1hBfwJ-0002vu-Tz
-	for qemu-trivial@nongnu.org; Wed, 03 Apr 2019 09:28:28 -0400
-Received: by mail-wr1-f67.google.com with SMTP id p10so21391763wrq.1
-	for <qemu-trivial@nongnu.org>; Wed, 03 Apr 2019 06:28:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=lpreuDSoBZS6Obue/dZIe4DhGyEC/AexRLPyWuz+GZ8=;
-	b=LadFwFbLYXqOUDAKh9CJkxzenTe7R5ZVR5PnFPig89aQqBx6kZcuGA7nbK9c/MqjLY
-	Zo4bu6bK6JUuJynEfdFncZc0k4l0WXPbnoHytBOt11dqdggxd4j2VQI19UxYPm2GYnYJ
-	jodB/XTxDUuySI6tGhiz2pr5ELsXMn2xI8IGuMJSmpKU2ix6+LPKzKzEqbYpbUrD7Ui3
-	pXBLTs7WQI731A0qDbiXQPhpwauUN224zkrhmVAIW5V2y11QYzx+WWWAoRnzP5z970jU
-	F5YY1Ukn49QYOScOJhMXa/g1ST5/uXETaE81QD01NHqr3zBn8QZp1g4IQ4ohxnnbcCHB
-	9/ng==
-X-Gm-Message-State: APjAAAUujWQ7vgyIBovJeVf9ghJnsTmwOZmU70/aeuThTKPO/BL6PlKO
-	X7aZugg65Ct8rx2QKTJM3Gm/xnUUMZtdIaBK2NMxRA==
-X-Google-Smtp-Source: APXvYqws2APGIAJSyoJEBFhXLtrqnXsKzsobny+NSI3yj7ZsrMYNPhyIjBI3mQhHXm2AGQ8ZIinzq/YPKSDdo2GHvlo=
-X-Received: by 2002:a5d:494c:: with SMTP id r12mr38047941wrs.250.1554298105825;
-	Wed, 03 Apr 2019 06:28:25 -0700 (PDT)
+	(envelope-from <like.xu@linux.intel.com>) id 1hBt1A-0002QK-Lg
+	for qemu-trivial@nongnu.org; Wed, 03 Apr 2019 23:26:21 -0400
+Received: from mga12.intel.com ([192.55.52.136]:36436)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
+	id 1hBt1A-000298-7v; Wed, 03 Apr 2019 23:26:20 -0400
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+	by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	03 Apr 2019 20:26:12 -0700
+X-IronPort-AV: E=Sophos;i="5.60,306,1549958400"; d="scan'208";a="131309659"
+Received: from likexu-mobl1.ccr.corp.intel.com (HELO [10.239.196.104])
+	([10.239.196.104])
+	by orsmga008-auth.jf.intel.com with ESMTP/TLS/AES128-SHA;
+	03 Apr 2019 20:26:11 -0700
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-trivial@nongnu.org, like.xu@intel.com,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org
+References: <1553849325-44201-1-git-send-email-like.xu@linux.intel.com>
+	<20190329112152.0c7ad147@redhat.com>
+From: Like Xu <like.xu@linux.intel.com>
+Organization: Intel OTC
+Message-ID: <7b902f2b-64b9-9c73-eeb0-1be33f1f2b07@linux.intel.com>
+Date: Thu, 4 Apr 2019 11:26:09 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-References: <20190403121620.5228-1-philmd@redhat.com>
-	<20190403122328.GQ25150@redhat.com>
-In-Reply-To: <20190403122328.GQ25150@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Date: Wed, 3 Apr 2019 15:28:14 +0200
-Message-ID: <CAP+75-UwjDEciweEeAdxYUw_gZFjjSxXkyBX_oq_RCE+Axm4Hg@mail.gmail.com>
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-trivial] [PATCH] sockets: Fix stringop-truncation warning
+In-Reply-To: <20190329112152.0c7ad147@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.136
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/9] refactor cpu topo into
+ machine properties
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,51 +55,97 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Apr 2019 13:28:30 -0000
+X-List-Received-Date: Thu, 04 Apr 2019 03:29:29 -0000
 
-On Wed, Apr 3, 2019 at 2:23 PM Daniel P. Berrang=C3=A9 <berrange@redhat.com=
-> wrote:
-> On Wed, Apr 03, 2019 at 02:16:20PM +0200, Philippe Mathieu-Daud=C3=A9 wro=
-te:
-> > Compiling with clang-8 fails with:
-> >
-> >     CC      util/qemu-sockets.o
-> >   util/qemu-sockets.c: In function 'unix_connect_saddr':
-> >   util/qemu-sockets.c:925:5: error: 'strncpy' specified bound 108 equal=
-s destination size [-Werror=3Dstringop-truncation]
-> >        strncpy(un.sun_path, saddr->path, sizeof(un.sun_path));
-> >        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> >   util/qemu-sockets.c: In function 'unix_listen_saddr':
-> >   util/qemu-sockets.c:880:5: error: 'strncpy' specified bound 108 equal=
-s destination size [-Werror=3Dstringop-truncation]
-> >        strncpy(un.sun_path, path, sizeof(un.sun_path));
-> >        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> >
-> > Per the unix socket manpage:
-> >
-> >   UNIX(7)
-> >
-> >   Pathname sockets
-> >   When binding a socket to a pathname, a few rules should be observed f=
-or maximum portability and ease of coding:
-> >   *  The pathname in sun_path should be null-terminated.
-> >   *  The length of the pathname, including the terminating null byte, s=
-hould not exceed the size of sun_path.
-> >
-> > Reduce the length of the unix socket path by 1 to hold the NUL byte.
->
-> Note it just says "should", not "must" here. IOW, there is no requirement
-> to NUL terminate and so we should not artifically require that at QEMU
-> level either. If mgmt apps want to have NUL termination then they can
-> just pass a shorter path to QEMU to start with.
->
-> I've proposed the fix for the warning you mention here:
->
->   https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg07759.html
+On 2019/3/29 18:21, Igor Mammedov wrote:
+> On Fri, 29 Mar 2019 16:48:36 +0800
+> Like Xu <like.xu@linux.intel.com> wrote:
+> 
+>> This patch series make existing cores/threads/sockets into machine
+>> properties and get rid of global variables they use currently.
+> Thanks for looking into it!
+> Its long overdue and rather desired conversion (albeit naive one,
+> but this series is a good starting point). I'll go over your patches
+> next week with comments and concrete suggestions how to implement
+> particular things.
 
-Oh I missed it, thanks for pointing it.
+Hi Igor, any comments and suggestions on smp machine properties
+in this patch considering we may add die topology for PCMachine as an 
+extension?
 
-Regards,
+> 
+>> Like Xu (9):
+>>    cpu/topology: add struct CpuTopology to MachineState
+>>    cpu/topology: add general support for machine properties
+>>    cpu/topology: add uncommon arch support for smp machine properties
+>>    cpu/topology: add ARM support for smp machine properties
+>>    cpu/topology: add i386 support for smp machine properties
+>>    cpu/topology: add PPC support for smp machine properties
+>>    cpu/topology: add riscv support for smp machine properties
+>>    cpu/topology: add s390x support for smp machine properties
+>>    cpu/topology: replace smp global variables with machine propertie
+>>
+>>   accel/kvm/kvm-all.c          |  3 +++
+>>   backends/hostmem.c           |  4 ++++
+>>   cpus.c                       |  4 ++++
+>>   exec.c                       |  2 ++
+>>   gdbstub.c                    |  7 ++++++-
+>>   hw/alpha/dp264.c             |  1 +
+>>   hw/arm/fsl-imx6.c            |  5 +++++
+>>   hw/arm/fsl-imx6ul.c          |  5 +++++
+>>   hw/arm/fsl-imx7.c            |  5 +++++
+>>   hw/arm/highbank.c            |  1 +
+>>   hw/arm/mcimx6ul-evk.c        |  1 +
+>>   hw/arm/mcimx7d-sabre.c       |  3 +++
+>>   hw/arm/raspi.c               |  2 ++
+>>   hw/arm/realview.c            |  1 +
+>>   hw/arm/sabrelite.c           |  1 +
+>>   hw/arm/vexpress.c            |  3 +++
+>>   hw/arm/virt.c                |  7 +++++++
+>>   hw/arm/xlnx-zynqmp.c         |  7 +++++++
+>>   hw/cpu/core.c                |  3 +++
+>>   hw/hppa/machine.c            |  4 ++++
+>>   hw/i386/acpi-build.c         |  3 +++
+>>   hw/i386/kvmvapic.c           |  5 +++++
+>>   hw/i386/pc.c                 | 12 +++++++++++
+>>   hw/mips/boston.c             |  1 +
+>>   hw/mips/mips_malta.c         |  9 +++++++++
+>>   hw/openrisc/openrisc_sim.c   |  1 +
+>>   hw/ppc/e500.c                |  3 +++
+>>   hw/ppc/mac_newworld.c        |  2 ++
+>>   hw/ppc/mac_oldworld.c        |  2 ++
+>>   hw/ppc/pnv.c                 |  3 +++
+>>   hw/ppc/prep.c                |  2 ++
+>>   hw/ppc/spapr.c               | 29 ++++++++++++++++++++++++++
+>>   hw/ppc/spapr_rtas.c          |  3 +++
+>>   hw/riscv/sifive_e.c          |  4 ++++
+>>   hw/riscv/sifive_plic.c       |  3 +++
+>>   hw/riscv/sifive_u.c          |  4 ++++
+>>   hw/riscv/spike.c             |  2 ++
+>>   hw/riscv/virt.c              |  1 +
+>>   hw/s390x/s390-virtio-ccw.c   |  2 ++
+>>   hw/s390x/sclp.c              |  1 +
+>>   hw/smbios/smbios.c           | 11 ++++++++++
+>>   hw/sparc/sun4m.c             |  2 ++
+>>   hw/sparc64/sun4u.c           |  2 ++
+>>   hw/xtensa/sim.c              |  1 +
+>>   hw/xtensa/xtfpga.c           |  1 +
+>>   include/hw/arm/virt.h        |  2 +-
+>>   include/hw/boards.h          |  8 ++++++++
+>>   include/sysemu/sysemu.h      |  2 +-
+>>   migration/postcopy-ram.c     |  7 +++++++
+>>   numa.c                       |  1 +
+>>   target/arm/cpu.c             |  7 +++++++
+>>   target/i386/cpu.c            |  4 ++++
+>>   target/openrisc/sys_helper.c |  5 +++++
+>>   target/s390x/cpu.c           |  3 +++
+>>   target/s390x/excp_helper.c   |  6 ++++++
+>>   tcg/tcg.c                    | 15 ++++++++++++++
+>>   vl.c                         | 48 ++++++++++++++++++++++++--------------------
+>>   57 files changed, 261 insertions(+), 25 deletions(-)
+>>
+> 
+> 
+> 
 
-Phil.
 
