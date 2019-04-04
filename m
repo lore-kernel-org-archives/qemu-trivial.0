@@ -1,69 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hC01T-0004OO-6N
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Apr 2019 06:55:07 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60818)
+	id 1hC0h9-0000f2-8B
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Apr 2019 07:38:11 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:42580)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hC01Q-00047T-5F
-	for qemu-trivial@nongnu.org; Thu, 04 Apr 2019 06:55:05 -0400
+	(envelope-from <imammedo@redhat.com>) id 1hC0h6-0000dY-6U
+	for qemu-trivial@nongnu.org; Thu, 04 Apr 2019 07:38:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hBzot-00020Q-Po
-	for qemu-trivial@nongnu.org; Thu, 04 Apr 2019 06:42:08 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:37879)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hBzot-0001nW-Ja
-	for qemu-trivial@nongnu.org; Thu, 04 Apr 2019 06:42:07 -0400
-Received: by mail-oi1-x243.google.com with SMTP id v84so1473136oif.4
-	for <qemu-trivial@nongnu.org>; Thu, 04 Apr 2019 03:42:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=GgFOympQFWoqM4zM1WK4nEgnhwNcl8i+FG3MzGWSNR8=;
-	b=oba0VFJY55h1h4ZxysX19GUXmDvdyJsh5oKx1mEwHXhwTpLuZUu9GL18jkoF5Q+6My
-	lHOQTkXeI68nAjSGb5P/UHqKOXa/nLae6L7oajNlg64zrILIVD5nw6dSQvTSIX2a+DFj
-	TGzZMssyzM1JBR9MLJsRiOCW2KfA+GuwPocDMYrW1ShbEPg6EVKrAZ2gOxUnKC6ECyrB
-	Tzqs5pFj+I+R7ig4zR25/px98EDB1SpZv3HWRcR40naLPG4nIdtHgCu7UQ3ENDYUT401
-	pZuIwt/c8dLRG8jMAm5YzCgNajIEM0YDxGdCDJNzxlSzlRCJPfN3SnrQiCBZI4mZC+R1
-	mcOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=GgFOympQFWoqM4zM1WK4nEgnhwNcl8i+FG3MzGWSNR8=;
-	b=pZ/XHl3egiQwSgpLPzJ2wirTCoGYW/QEc2kFO3BukUUJfC61hWb8/BHVeZAyVkW7/0
-	Pp9ltImB5DczXS9aXxdWJYkm2hG+CeBk5QwrXHpooi8rnK4y4v8k7Og4Oy8zBozKrkeF
-	K7H75eoXIEtT8M3QXhFOS1fyFmEAdIWrp7nmbzfCsgEYs6lQU6D6HOx3Dwa6RQWiCBZL
-	ZVQQV07S7bF1O1kkSLZ3RaxxCxIifm3w32Ndlrm5i3RpeD4vo4rCSntkW79It5hvZA9o
-	IHd6qHfvGkP0/cExhrWjv3mzCclbIs3nlY3uzy1uAo8iErdydEkUq4eyh9dhDH8JHFxi
-	2xkA==
-X-Gm-Message-State: APjAAAU71bGXGSBrWHfBmfSc/ti2C3ZLABXULJ/dvpVHVIyQ6l/mhwaj
-	1kxv7qrf22ETWn7NdHCAsxtKEPm3N3NaRYLJn0d8DA==
-X-Google-Smtp-Source: APXvYqxupGZbJYOur2kFO1a2Pe345vHRPC7jPG2b0+FuExZJNqtBBygGRvAc611+wTU3v46XV/pGuMZhwYZc2n/1e1c=
-X-Received: by 2002:aca:b3c2:: with SMTP id c185mr2995384oif.98.1554374525384; 
-	Thu, 04 Apr 2019 03:42:05 -0700 (PDT)
+	(envelope-from <imammedo@redhat.com>) id 1hC0h5-0005xV-1A
+	for qemu-trivial@nongnu.org; Thu, 04 Apr 2019 07:38:08 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43302)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1hC0h2-0005gg-8g; Thu, 04 Apr 2019 07:38:04 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3CBC0307EAB6;
+	Thu,  4 Apr 2019 11:38:03 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1AB9284D95;
+	Thu,  4 Apr 2019 11:37:59 +0000 (UTC)
+Date: Thu, 4 Apr 2019 13:37:55 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Like Xu <like.xu@linux.intel.com>
+Cc: qemu-trivial@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
+	like.xu@intel.com, qemu-devel@nongnu.org, Paolo Bonzini
+	<pbonzini@redhat.com>
+Message-ID: <20190404133755.02e3683c@redhat.com>
+In-Reply-To: <1553849325-44201-2-git-send-email-like.xu@linux.intel.com>
+References: <1553849325-44201-1-git-send-email-like.xu@linux.intel.com>
+	<1553849325-44201-2-git-send-email-like.xu@linux.intel.com>
 MIME-Version: 1.0
-References: <1554194900-22817-1-git-send-email-like.xu@linux.intel.com>
-	<871s2kejg1.fsf@dusky.pond.sub.org>
-	<e72befe5-c931-5c80-6769-12e1a8e7d4fa@linux.intel.com>
-	<20190402174749.71da1efe@redhat.com>
-	<871s2k8jxo.fsf@dusky.pond.sub.org>
-	<CAFEAcA8ogWn50wWBttM2QpfQoZ8UYnXfG3NSkuSc8j8WOWt6FA@mail.gmail.com>
-	<20190404120533.427a2beb@redhat.com>
-In-Reply-To: <20190404120533.427a2beb@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 4 Apr 2019 17:41:54 +0700
-Message-ID: <CAFEAcA_Z5YDLW9HWx-FcL_qNefTsg6WSKayrNSDsEv2fZHgn3g@mail.gmail.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>, 
-	Eduardo Habkost <ehabkost@redhat.com>, Like Xu <like.xu@linux.intel.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,
-	QEMU Developers <qemu-devel@nongnu.org>, 
-	Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::243
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] vl.c: make
- current_machine as non-global variable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.44]);
+	Thu, 04 Apr 2019 11:38:03 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/9] cpu/topology: add
+ struct CpuTopology to MachineState
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,30 +53,101 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Apr 2019 10:55:05 -0000
+X-List-Received-Date: Thu, 04 Apr 2019 11:38:09 -0000
 
-On Thu, 4 Apr 2019 at 17:05, Igor Mammedov <imammedo@redhat.com> wrote:
-> On Tue, 2 Apr 2019 23:23:42 +0700
-> Peter Maydell <peter.maydell@linaro.org> wrote:
-> > One wrinkle to watch out for is code paths that are used in the
-> > linux-user emulator, where there is no machine at all... For instance
-> > cpu_common_realizefn() handles this case by explicitly checking
-> > whether the thing it gets back from qdev_get_machine() is a
-> > TYPE_MACHINE or not.
-> this one can be solved by adding 'ignore_memory_transaction_failures'
-> property to the CPU class where it applies (I'm not sure why it's
-> in generic cpu code instead of ARM only) and then setting compat
-> property in affected boards code.
+On Fri, 29 Mar 2019 16:48:37 +0800
+Like Xu <like.xu@linux.intel.com> wrote:
 
-It is not arm-specific, it just happens that all the current users
-are arm boards. It is a generic thing that can apply to
-any CPU for any target architecture, but only if the board
-requests it. The current code seemed a reasonable way to
-implement this that didn't involve having to write too much
-invasive plumbing code to get the behaviour to apply in the
-cases where it needed to be applied, but if there's a better
-way to do this I'm happy to review/test patches.
+> Signed-off-by: Like Xu <like.xu@linux.intel.com>
+> ---
+>  include/hw/arm/virt.h   | 2 +-
+>  include/hw/boards.h     | 8 ++++++++
+>  include/sysemu/sysemu.h | 2 +-
+>  vl.c                    | 7 ++++++-
+>  4 files changed, 16 insertions(+), 3 deletions(-)
+> 
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 507517c..724da0c 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -123,7 +123,7 @@ typedef struct {
+>      struct arm_boot_info bootinfo;
+>      MemMapEntry *memmap;
+>      const int *irqmap;
+> -    int smp_cpus;
+> +    unsigned int smp_cpus;
+As Alex pointed out it's unrelated cleanup
+(with other similar hunks in this patch),
+it's better to split it out into separate patch
 
-thanks
--- PMM
+>      void *fdt;
+>      int fdt_size;
+>      uint32_t clock_phandle;
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index e231860..cbde276 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -231,6 +231,13 @@ typedef struct DeviceMemoryState {
+>      MemoryRegion mr;
+>  } DeviceMemoryState;
+>  
+> +typedef struct CpuTopology {
+> +    unsigned int smp_cpus;
+> +    unsigned int smp_cores;
+> +    unsigned int smp_threads;
+> +    unsigned int max_cpus;
+> +} CpuTopology;
+> +
+>  /**
+>   * MachineState:
+>   */
+> @@ -273,6 +280,7 @@ struct MachineState {
+>      const char *cpu_type;
+>      AccelState *accelerator;
+>      CPUArchIdList *possible_cpus;
+> +    CpuTopology topo;
+maybe s/topo/smp/ and drop smp_ prefix inside CpuTopology structure
+
+>      struct NVDIMMState *nvdimms_state;
+>  };
+>  
+> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
+> index 6065d9e..c0d7d7c 100644
+> --- a/include/sysemu/sysemu.h
+> +++ b/include/sysemu/sysemu.h
+> @@ -100,7 +100,7 @@ extern const char *keyboard_layout;
+>  extern int win2k_install_hack;
+>  extern int alt_grab;
+>  extern int ctrl_grab;
+> -extern int smp_cpus;
+> +extern unsigned int smp_cpus;
+>  extern unsigned int max_cpus;
+>  extern int cursor_hide;
+>  extern int graphic_rotate;
+> diff --git a/vl.c b/vl.c
+> index d61d560..9089253 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -162,7 +162,7 @@ static Chardev **serial_hds;
+>  Chardev *parallel_hds[MAX_PARALLEL_PORTS];
+>  int win2k_install_hack = 0;
+>  int singlestep = 0;
+> -int smp_cpus;
+> +unsigned int smp_cpus;
+>  unsigned int max_cpus;
+>  int smp_cores = 1;
+>  int smp_threads = 1;
+> @@ -4116,6 +4116,11 @@ int main(int argc, char **argv, char **envp)
+>  
+>      smp_parse(qemu_opts_find(qemu_find_opts("smp-opts"), NULL));
+>  
+> +    current_machine->topo.smp_cpus = smp_cpus;
+> +    current_machine->topo.max_cpus = max_cpus;
+> +    current_machine->topo.smp_cores = smp_cores;
+> +    current_machine->topo.smp_threads = smp_threads;
+> +
+>      /* sanity-check smp_cpus and max_cpus against machine_class */
+>      if (smp_cpus < machine_class->min_cpus) {
+>          error_report("Invalid SMP CPUs %d. The min CPUs "
+
 
