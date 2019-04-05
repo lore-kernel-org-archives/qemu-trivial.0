@@ -1,55 +1,98 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hC6aG-0003bW-21
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Apr 2019 13:55:28 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59394)
+	id 1hCMXy-0006Kv-Ku
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Apr 2019 06:58:10 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:48079)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <jaydevjha123@gmail.com>) id 1hC6Jb-0006Sv-BC
-	for qemu-trivial@nongnu.org; Thu, 04 Apr 2019 13:38:16 -0400
+	(envelope-from <thuth@redhat.com>) id 1hCMXv-0006KG-Mp
+	for qemu-trivial@nongnu.org; Fri, 05 Apr 2019 06:58:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <jaydevjha123@gmail.com>) id 1hC6JX-0005ma-Vy
-	for qemu-trivial@nongnu.org; Thu, 04 Apr 2019 13:38:13 -0400
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c]:34975)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <jaydevjha123@gmail.com>)
-	id 1hC6JX-0005lT-IS
-	for qemu-trivial@nongnu.org; Thu, 04 Apr 2019 13:38:11 -0400
-Received: by mail-pf1-x42c.google.com with SMTP id t21so1719427pfe.2
-	for <qemu-trivial@nongnu.org>; Thu, 04 Apr 2019 10:38:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:from:date:message-id:subject:to;
-	bh=qitfG0lTbgKlXFOHHnQ0grWSU09oOGmd8Usvl3rJ9gU=;
-	b=V/QM8+O9QwZRt2+HYNK7cX94huvuCmxNzFve/YZOH9rHBldbhpFMJwG/qO4Tf+5LAt
-	n2zOPj3ML2OF/FYEHm0T4blOZxvk0hSqFXu6NfUU0BzvCoXlVl2FvXaGNulE+yo5RM6W
-	XqHkScHnqCiGDTZ+gafyZOK4Z4/WxRFI/nYB2yGy5vrxSeNQ5iodyKDB88UjS3DUJDtL
-	1itAr7eeBxBcK26C0vVfecxSeDO6crLyrCnGeVTyhNlBwVsDuz+4t3XNSv1fYirnwzLG
-	fvjPM7pkzNNsj12PH3gd3FGDvLpggJhy0PM3x+6ioWOStjQrdGdM6cm55NWzKZTmtPeJ
-	C1NA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-	bh=qitfG0lTbgKlXFOHHnQ0grWSU09oOGmd8Usvl3rJ9gU=;
-	b=ugYDdXKtvDQtInGiUEZNWtwijnSrUN8CRmRtUCsIeSKX7tuMBUl3m4GP8pm274iqPT
-	J/LzfQH50SOQoHDOqD3D+68UliaNXmA0xrfCfm1avpxyBUeeiFUt+lK2uvjAr4WQ6UUV
-	ULGwLbxmeB8WKmLh0qh0RFgI7pjU61zM9s+viTuI49EYRT9T+aVgBeymF+Pl5EX0HV0l
-	NXmit0DBs/DKYYpaWJiC15abIgHt+zFEncV4+q+urK+V1T7+JdrSE7iPgzTUhL2CDJux
-	UVrLfXVfoMSqHJdN0fV6k1iUdpUS6F7eId5VXraCs8SrdcqZ3kEI25in8oUYNsOC4atQ
-	/1mQ==
-X-Gm-Message-State: APjAAAUMQ/iym+qnNQ1XqusfUtCDLOg+jVGzOMLcpoii86QE6JAI09uM
-	IHPcMWgQ3AOcI3dW8p7r757U9/6skCIpJMKv8+kl/0cV
-X-Google-Smtp-Source: APXvYqwFlfIARix86GAZlYxyZAU1AabmnhdZSLZ/CPrHQgIiLPTJNalG1oO89xDbwKARta1mdvSBjUhG8dO4ZXAynXc=
-X-Received: by 2002:a65:6108:: with SMTP id z8mr7200919pgu.106.1554399489831; 
-	Thu, 04 Apr 2019 10:38:09 -0700 (PDT)
+	(envelope-from <thuth@redhat.com>) id 1hCMXu-0004CJ-DA
+	for qemu-trivial@nongnu.org; Fri, 05 Apr 2019 06:58:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50544)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1hCMXr-00042L-GN; Fri, 05 Apr 2019 06:58:04 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 07E9A4902D;
+	Fri,  5 Apr 2019 10:58:02 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-62.ams2.redhat.com [10.36.116.62])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E35875D707;
+	Fri,  5 Apr 2019 10:57:54 +0000 (UTC)
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+	Eduardo Habkost <ehabkost@redhat.com>
+References: <20190404071421.4891-1-thuth@redhat.com>
+	<298ccbd7-9af5-8303-e42b-33dd1cb94b9e@redhat.com>
+	<158fe22a-5781-73e5-5955-2fe9db019236@redhat.com>
+	<3ba3c765-589f-4c0a-38dc-d9126f515e7b@redhat.com>
+	<87lg0p4tsc.fsf@dusky.pond.sub.org>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <8e8d5b15-57ad-95ff-c328-557c617d93b6@redhat.com>
+Date: Fri, 5 Apr 2019 12:57:54 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-From: Jay dev Jha <jaydevjha123@gmail.com>
-Date: Thu, 4 Apr 2019 23:09:35 +0530
-Message-ID: <CAG+6neuY31yO2NaPY5Rk1hYLYnnCPb12kc+QgsYeN-gZwK48ZQ@mail.gmail.com>
-To: qemu-trivial@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000006e36ea0585b7d59a"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::42c
-X-Mailman-Approved-At: Thu, 04 Apr 2019 13:55:27 -0400
-Subject: [Qemu-trivial] PATCH : Live Migration Support for PVRDMA Device
+In-Reply-To: <87lg0p4tsc.fsf@dusky.pond.sub.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Fri, 05 Apr 2019 10:58:02 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/input/pckbd: The i8042
+ device should not be user_creatable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,440 +104,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Apr 2019 17:38:17 -0000
+X-List-Received-Date: Fri, 05 Apr 2019 10:58:09 -0000
 
---0000000000006e36ea0585b7d59a
-Content-Type: text/plain; charset="UTF-8"
+On 04/04/2019 18.30, Markus Armbruster wrote:
+> Thomas Huth <thuth@redhat.com> writes:
+>=20
+>> On 04/04/2019 15.29, Philippe Mathieu-Daud=C3=A9 wrote:
+>>> On 4/4/19 12:07 PM, Paolo Bonzini wrote:
+>>>> On 04/04/19 09:14, Thomas Huth wrote:
+>>>>> The i8042 PS/2 controller is part of the chipset on the motherboard=
+.
+>>>>> It is instantiated by the machine init code, and it does not make s=
+ense
+>>>>> to allow the user to plug an additional i8042 in any of the free IS=
+A slots.
+>>>>> Thus let's mark the device with user_creatable =3D false.
+>>>>>
+>>>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>>>> ---
+>>>>>  hw/input/pckbd.c | 2 ++
+>>>>>  1 file changed, 2 insertions(+)
+>>>>
+>>>> user_creatable is not for devices that are not pluggable in real lif=
+e;
+>>>> it is for devices that crash QEMU (!) or always fail if plugged by t=
+he user.
+>>
+>> ... hmm, but presenting devices to the user that are clearly not
+>> intended for direct use is also not very nice, is it?
+>=20
+> Maybe, but hiding them should be separate from marking devices that
+> still defeat device_add.
+>=20
+> In the ideal world, we'd be able to start with an empty board, then
+> build a machine with by wiring together devices.  Say like use
+> device_add to create and plug into parent bus, qom-set link properties
+> to create additional wires.
 
-1. Sample host scripts1.1. reset_vf_on_212_46.sh
+I agree with you on the vision of creating a machine dynamically - but I
+doubt that we will ever do it with the "high level" -device option or
+device_add HMP/QMP command. You'd likely rather need to introduce a new
+interface / commands for this anyway, which then simply ignore the
+normal user_creatable flag.
 
-#!/bin/sh# This script is run on the host 10.237.212.46 to reset SRIOV
-# BDF for Fortville NIC is 0000:02:00.0
-cat /sys/bus/pci/devices/0000\:02\:00.0/max_vfsecho 0 >
-/sys/bus/pci/devices/0000\:02\:00.0/max_vfs
-cat /sys/bus/pci/devices/0000\:02\:00.0/max_vfs
-# BDF for Niantic NIC is 0000:09:00.0
-cat /sys/bus/pci/devices/0000\:09\:00.0/max_vfsecho 0 >
-/sys/bus/pci/devices/0000\:09\:00.0/max_vfs
-cat /sys/bus/pci/devices/0000\:09\:00.0/max_vfs
+> Plenty of devices fail at the device_add stage, or require additional
+> wiring by code.  These are marked not user_creatable.
 
-1.2. vm_virtio_vhost_user.sh
+Sure, I think we all agree on these kind of devices.
 
-#/bin/sh# Script for use with vhost_user sample application# The host
-system has 8 cpu's (0-7)
-# Path to KVM toolKVM_PATH="/usr/bin/qemu-system-x86_64"
-# Guest Disk imageDISK_IMG="/home/user/disk_image/virt1_sml.disk"
-# Number of guest cpusVCPUS_NR="6"
-# MemoryMEM=1024
-VIRTIO_OPTIONS="csum=off,gso=off,guest_tso4=off,guest_tso6=off,guest_ecn=off"
-# Socket PathSOCKET_PATH="/root/dpdk/host_scripts/usvhost"
+But what about these devices which obviously don't crash QEMU, but are
+completely useless with "-device", since they can not be used in any
+meaningful way? Presenting them to the average user e.g. in the "-device
+help" output is somewhat gruesome, isn't it?
 
-taskset -c 2-7 $KVM_PATH \
- -enable-kvm \
- -m $MEM \
- -smp $VCPUS_NR \
- -object memory-backend-file,id=mem,size=1024M,mem-path=/mnt/huge,share=on \
- -numa node,memdev=mem,nodeid=0 \
- -cpu host \
- -name VM1 \
- -no-reboot \
- -net none \
- -vnc none \
- -nographic \
- -hda $DISK_IMG \
- -chardev socket,id=chr0,path=$SOCKET_PATH \
- -netdev type=vhost-user,id=net1,chardev=chr0,vhostforce \
- -device virtio-net-pci,netdev=net1,mac=CC:BB:BB:BB:BB:BB,$VIRTIO_OPTIONS \
- -chardev socket,id=chr1,path=$SOCKET_PATH \
- -netdev type=vhost-user,id=net2,chardev=chr1,vhostforce \
- -device virtio-net-pci,netdev=net2,mac=DD:BB:BB:BB:BB:BB,$VIRTIO_OPTIONS \
- -monitor telnet::3333,server,nowait
+>>>> So the question to ask is: would it make sense, and especially work,=
+ to
+>>>> add an i8042 to machines that do have an ISA bridge (for example the=
+ Alpha?)
+>=20
+> Scratch the "would it make sense" part, keep the "would it work" part.
 
-1.3. connect_to_qemu_mon_on_host.sh
+I don't see a way how this could really work (in the sense of being
+usable, not in the sense of not crashing QEMU). The device is only
+expected to be there on certain chipssets, the guest does not have a
+possibility to detect this device on systems that do not feature one of
+these chipssets. So you get a device in such a case that simply does
+nothing. How is that useful for you?
 
-#!/bin/sh# This script is run on both hosts when the VM is up,# to
-connect to the Qemu Monitor.
-
-telnet 0 3333
-
-1.4. reset_vf_on_212_131.sh
-
-#!/bin/sh# This script is run on the host 10.237.212.131 to reset SRIOV
-# BDF for Ninatic NIC is 0000:06:00.0
-cat /sys/bus/pci/devices/0000\:06\:00.0/max_vfsecho 0 >
-/sys/bus/pci/devices/0000\:06\:00.0/max_vfs
-cat /sys/bus/pci/devices/0000\:06\:00.0/max_vfs
-# BDF for Fortville NIC is 0000:03:00.0
-cat /sys/bus/pci/devices/0000\:03\:00.0/max_vfsecho 0 >
-/sys/bus/pci/devices/0000\:03\:00.0/max_vfs
-cat /sys/bus/pci/devices/0000\:03\:00.0/max_vfs
-
-1.5. vm_virtio_vhost_user_migrate.sh
-
-#/bin/sh# Script for use with vhost user sample application# The host
-system has 8 cpu's (0-7)
-# Path to KVM toolKVM_PATH="/usr/bin/qemu-system-x86_64"
-# Guest Disk imageDISK_IMG="/home/user/disk_image/virt1_sml.disk"
-
-
-# Number of guest cpusVCPUS_NR="6"
-# MemoryMEM=1024
-VIRTIO_OPTIONS="csum=off,gso=off,guest_tso4=off,guest_tso6=off,guest_ecn=off"
-# Socket PathSOCKET_PATH="/root/dpdk/host_scripts/usvhost"
-
-taskset -c 2-7 $KVM_PATH \
- -enable-kvm \
- -m $MEM \
- -smp $VCPUS_NR \
- -object memory-backend-file,id=mem,size=1024M,mem-path=/mnt/huge,share=on \
- -numa node,memdev=mem,nodeid=0 \
- -cpu host \
- -name VM1 \
- -no-reboot \
- -net none \
- -vnc none \
- -nographic \
- -hda $DISK_IMG \
- -chardev socket,id=chr0,path=$SOCKET_PATH \
- -netdev type=vhost-user,id=net1,chardev=chr0,vhostforce \
- -device virtio-net-pci,netdev=net1,mac=CC:BB:BB:BB:BB:BB,$VIRTIO_OPTIONS \
- -chardev socket,id=chr1,path=$SOCKET_PATH \
- -netdev type=vhost-user,id=net2,chardev=chr1,vhostforce \
- -device virtio-net-pci,netdev=net2,mac=DD:BB:BB:BB:BB:BB,$VIRTIO_OPTIONS \
- -incoming tcp:0:5555 \
- -monitor telnet::3333,server,nowait
-
-2. Sample VM scripts
-2.1. setup_dpdk_virtio_in_vm.sh
-
-#!/bin/sh# this script matches the vm_virtio_vhost_user script# virtio
-port is 03# virtio port is 04
-
-cat  /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepagesecho 1024 >
-/sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
-cat  /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
-
-ifconfig -a
-/root/dpdk/usertools/dpdk-devbind.py --status
-
-rmmod virtio-pci
-
-modprobe uio
-insmod /root/dpdk/x86_64-default-linuxapp-gcc/kmod/igb_uio.ko
-
-/root/dpdk/usertools/dpdk-devbind.py -b igb_uio 0000:00:03.0
-/root/dpdk/usertools/dpdk-devbind.py -b igb_uio 0000:00:04.0
-
-/root/dpdk/usertools/dpdk-devbind.py --status
-
-2.2. run_testpmd_in_vm.sh
-
-#!/bin/sh# Run testpmd for use with vhost_user sample app.# test
-system has 8 cpus (0-7), use cpus 2-7 for VM
-
-/root/dpdk/x86_64-default-linuxapp-gcc/app/testpmd \
--l 0-5 -n 4 --socket-mem 350 -- --burst=64 --i
-
---0000000000006e36ea0585b7d59a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div class=3D"gmail-section" id=3D"gmail-reset-vf-on-212-4=
-6-sh">
-<h3><br></h3><h2><font size=3D"4">1. Sample host scripts</font></h2><h3><fo=
-nt size=3D"4">1.1. reset_vf_on_212_46.sh</font></h3><font size=3D"4">
-</font><div class=3D"gmail-highlight-sh"><div class=3D"gmail-highlight"><pr=
-e><font size=3D"4"><span class=3D"gmail-c">#!/bin/sh</span>
-<span class=3D"gmail-c"># This script is run on the host 10.237.212.46 to r=
-eset SRIOV</span>
-
-<span class=3D"gmail-c"># BDF for Fortville NIC is 0000:02:00.0</span>
-cat /sys/bus/pci/devices/0000<span class=3D"gmail-se">\:</span>02<span clas=
-s=3D"gmail-se">\:</span>00.0/max_vfs
-<span class=3D"gmail-nb">echo </span><span class=3D"gmail-m">0</span> &gt; =
-/sys/bus/pci/devices/0000<span class=3D"gmail-se">\:</span>02<span class=3D=
-"gmail-se">\:</span>00.0/max_vfs
-cat /sys/bus/pci/devices/0000<span class=3D"gmail-se">\:</span>02<span clas=
-s=3D"gmail-se">\:</span>00.0/max_vfs
-
-<span class=3D"gmail-c"># BDF for Niantic NIC is 0000:09:00.0</span>
-cat /sys/bus/pci/devices/0000<span class=3D"gmail-se">\:</span>09<span clas=
-s=3D"gmail-se">\:</span>00.0/max_vfs
-<span class=3D"gmail-nb">echo </span><span class=3D"gmail-m">0</span> &gt; =
-/sys/bus/pci/devices/0000<span class=3D"gmail-se">\:</span>09<span class=3D=
-"gmail-se">\:</span>00.0/max_vfs
-cat /sys/bus/pci/devices/0000<span class=3D"gmail-se">\:</span>09<span clas=
-s=3D"gmail-se">\:</span>00.0/max_vfs
-</font></pre></div>
-</div><font size=3D"4">
-</font></div><font size=3D"4">
-</font><div class=3D"gmail-section" id=3D"gmail-vm-virtio-vhost-user-sh">
-<h3><font size=3D"4">1.2. vm_virtio_vhost_user.sh</font></h3>
-<div class=3D"gmail-highlight-sh"><div class=3D"gmail-highlight"><pre><font=
- size=3D"4"><span class=3D"gmail-c">#/bin/sh</span>
-<span class=3D"gmail-c"># Script for use with vhost_user sample application=
-</span>
-<span class=3D"gmail-c"># The host system has 8 cpu&#39;s (0-7)</span>
-
-<span class=3D"gmail-c"># Path to KVM tool</span>
-<span class=3D"gmail-nv">KVM_PATH</span><span class=3D"gmail-o">=3D</span><=
-span class=3D"gmail-s2">&quot;/usr/bin/qemu-system-x86_64&quot;</span>
-
-<span class=3D"gmail-c"># Guest Disk image</span>
-<span class=3D"gmail-nv">DISK_IMG</span><span class=3D"gmail-o">=3D</span><=
-span class=3D"gmail-s2">&quot;/home/user/disk_image/virt1_sml.disk&quot;</s=
-pan>
-
-<span class=3D"gmail-c"># Number of guest cpus</span>
-<span class=3D"gmail-nv">VCPUS_NR</span><span class=3D"gmail-o">=3D</span><=
-span class=3D"gmail-s2">&quot;6&quot;</span>
-
-<span class=3D"gmail-c"># Memory</span>
-<span class=3D"gmail-nv">MEM</span><span class=3D"gmail-o">=3D</span>1024
-
-<span class=3D"gmail-nv">VIRTIO_OPTIONS</span><span class=3D"gmail-o">=3D</=
-span><span class=3D"gmail-s2">&quot;csum=3Doff,gso=3Doff,guest_tso4=3Doff,g=
-uest_tso6=3Doff,guest_ecn=3Doff&quot;</span>
-
-<span class=3D"gmail-c"># Socket Path</span>
-<span class=3D"gmail-nv">SOCKET_PATH</span><span class=3D"gmail-o">=3D</spa=
-n><span class=3D"gmail-s2">&quot;/root/dpdk/host_scripts/usvhost&quot;</spa=
-n>
-
-taskset -c 2-7 <span class=3D"gmail-nv">$KVM_PATH</span> <span class=3D"gma=
-il-se">\</span>
- -enable-kvm <span class=3D"gmail-se">\</span>
- -m <span class=3D"gmail-nv">$MEM</span> <span class=3D"gmail-se">\</span>
- -smp <span class=3D"gmail-nv">$VCPUS_NR</span> <span class=3D"gmail-se">\<=
-/span>
- -object memory-backend-file,id<span class=3D"gmail-o">=3D</span>mem,size<s=
-pan class=3D"gmail-o">=3D</span>1024M,mem-path<span class=3D"gmail-o">=3D</=
-span>/mnt/huge,share<span class=3D"gmail-o">=3D</span>on <span class=3D"gma=
-il-se">\</span>
- -numa node,memdev<span class=3D"gmail-o">=3D</span>mem,nodeid<span class=
-=3D"gmail-o">=3D</span><span class=3D"gmail-m">0</span> <span class=3D"gmai=
-l-se">\</span>
- -cpu host <span class=3D"gmail-se">\</span>
- -name VM1 <span class=3D"gmail-se">\</span>
- -no-reboot <span class=3D"gmail-se">\</span>
- -net none <span class=3D"gmail-se">\</span>
- -vnc none <span class=3D"gmail-se">\</span>
- -nographic <span class=3D"gmail-se">\</span>
- -hda <span class=3D"gmail-nv">$DISK_IMG</span> <span class=3D"gmail-se">\<=
-/span>
- -chardev socket,id<span class=3D"gmail-o">=3D</span>chr0,path<span class=
-=3D"gmail-o">=3D</span><span class=3D"gmail-nv">$SOCKET_PATH</span> <span c=
-lass=3D"gmail-se">\</span>
- -netdev <span class=3D"gmail-nb">type</span><span class=3D"gmail-o">=3D</s=
-pan>vhost-user,id<span class=3D"gmail-o">=3D</span>net1,chardev<span class=
-=3D"gmail-o">=3D</span>chr0,vhostforce <span class=3D"gmail-se">\</span>
- -device virtio-net-pci,netdev<span class=3D"gmail-o">=3D</span>net1,mac<sp=
-an class=3D"gmail-o">=3D</span>CC:BB:BB:BB:BB:BB,<span class=3D"gmail-nv">$=
-VIRTIO_OPTIONS</span> <span class=3D"gmail-se">\</span>
- -chardev socket,id<span class=3D"gmail-o">=3D</span>chr1,path<span class=
-=3D"gmail-o">=3D</span><span class=3D"gmail-nv">$SOCKET_PATH</span> <span c=
-lass=3D"gmail-se">\</span>
- -netdev <span class=3D"gmail-nb">type</span><span class=3D"gmail-o">=3D</s=
-pan>vhost-user,id<span class=3D"gmail-o">=3D</span>net2,chardev<span class=
-=3D"gmail-o">=3D</span>chr1,vhostforce <span class=3D"gmail-se">\</span>
- -device virtio-net-pci,netdev<span class=3D"gmail-o">=3D</span>net2,mac<sp=
-an class=3D"gmail-o">=3D</span>DD:BB:BB:BB:BB:BB,<span class=3D"gmail-nv">$=
-VIRTIO_OPTIONS</span> <span class=3D"gmail-se">\</span>
- -monitor telnet::3333,server,nowait
-</font></pre></div>
-</div>
-</div><font size=3D"4">
-</font><div class=3D"gmail-section" id=3D"gmail-connect-to-qemu-mon-on-host=
--sh">
-<h3><font size=3D"4">1.3. connect_to_qemu_mon_on_host.sh</font></h3>
-<div class=3D"gmail-highlight-sh"><div class=3D"gmail-highlight"><pre><font=
- size=3D"4"><span class=3D"gmail-c">#!/bin/sh</span>
-<span class=3D"gmail-c"># This script is run on both hosts when the VM is u=
-p,</span>
-<span class=3D"gmail-c"># to connect to the Qemu Monitor.</span>
-
-telnet <span class=3D"gmail-m">0</span> 3333
-</font></pre></div>
-</div>
-</div><font size=3D"4">
-</font><div class=3D"gmail-section" id=3D"gmail-reset-vf-on-212-131-sh">
-<h3><font size=3D"4">1.4. reset_vf_on_212_131.sh</font></h3>
-<div class=3D"gmail-highlight-sh"><div class=3D"gmail-highlight"><pre><font=
- size=3D"4"><span class=3D"gmail-c">#!/bin/sh</span>
-<span class=3D"gmail-c"># This script is run on the host 10.237.212.131 to =
-reset SRIOV</span>
-
-<span class=3D"gmail-c"># BDF for Ninatic NIC is 0000:06:00.0</span>
-cat /sys/bus/pci/devices/0000<span class=3D"gmail-se">\:</span>06<span clas=
-s=3D"gmail-se">\:</span>00.0/max_vfs
-<span class=3D"gmail-nb">echo </span><span class=3D"gmail-m">0</span> &gt; =
-/sys/bus/pci/devices/0000<span class=3D"gmail-se">\:</span>06<span class=3D=
-"gmail-se">\:</span>00.0/max_vfs
-cat /sys/bus/pci/devices/0000<span class=3D"gmail-se">\:</span>06<span clas=
-s=3D"gmail-se">\:</span>00.0/max_vfs
-
-<span class=3D"gmail-c"># BDF for Fortville NIC is 0000:03:00.0</span>
-cat /sys/bus/pci/devices/0000<span class=3D"gmail-se">\:</span>03<span clas=
-s=3D"gmail-se">\:</span>00.0/max_vfs
-<span class=3D"gmail-nb">echo </span><span class=3D"gmail-m">0</span> &gt; =
-/sys/bus/pci/devices/0000<span class=3D"gmail-se">\:</span>03<span class=3D=
-"gmail-se">\:</span>00.0/max_vfs
-cat /sys/bus/pci/devices/0000<span class=3D"gmail-se">\:</span>03<span clas=
-s=3D"gmail-se">\:</span>00.0/max_vfs
-</font></pre></div>
-</div>
-</div><font size=3D"4">
-</font><div class=3D"gmail-section" id=3D"gmail-vm-virtio-vhost-user-migrat=
-e-sh">
-<h3><font size=3D"4">1.5. vm_virtio_vhost_user_migrate.sh</font></h3>
-<div class=3D"gmail-highlight-sh"><div class=3D"gmail-highlight"><pre><font=
- size=3D"4"><span class=3D"gmail-c">#/bin/sh</span>
-<span class=3D"gmail-c"># Script for use with vhost user sample application=
-</span>
-<span class=3D"gmail-c"># The host system has 8 cpu&#39;s (0-7)</span>
-
-<span class=3D"gmail-c"># Path to KVM tool</span>
-<span class=3D"gmail-nv">KVM_PATH</span><span class=3D"gmail-o">=3D</span><=
-span class=3D"gmail-s2">&quot;/usr/bin/qemu-system-x86_64&quot;</span>
-
-<span class=3D"gmail-c"># Guest Disk image</span>
-<span class=3D"gmail-nv">DISK_IMG</span><span class=3D"gmail-o">=3D</span><=
-span class=3D"gmail-s2">&quot;/home/user/disk_image/virt1_sml.disk&quot;</s=
-pan></font></pre></div></div></div><div class=3D"gmail-document"><div><div =
-class=3D"gmail-section" id=3D"gmail-live-migration-of-vm-with-virtio-on-hos=
-t-running-vhost-user"><div class=3D"gmail-section" id=3D"gmail-sample-host-=
-scripts"><div class=3D"gmail-section" id=3D"gmail-vm-virtio-vhost-user-migr=
-ate-sh"><div class=3D"gmail-highlight-sh"><div class=3D"gmail-highlight"><p=
-re><font size=3D"4"><span class=3D"gmail-s2"></span>
-
-<span class=3D"gmail-c"># Number of guest cpus</span>
-<span class=3D"gmail-nv">VCPUS_NR</span><span class=3D"gmail-o">=3D</span><=
-span class=3D"gmail-s2">&quot;6&quot;</span>
-
-<span class=3D"gmail-c"># Memory</span>
-<span class=3D"gmail-nv">MEM</span><span class=3D"gmail-o">=3D</span>1024
-
-<span class=3D"gmail-nv">VIRTIO_OPTIONS</span><span class=3D"gmail-o">=3D</=
-span><span class=3D"gmail-s2">&quot;csum=3Doff,gso=3Doff,guest_tso4=3Doff,g=
-uest_tso6=3Doff,guest_ecn=3Doff&quot;</span>
-
-<span class=3D"gmail-c"># Socket Path</span>
-<span class=3D"gmail-nv">SOCKET_PATH</span><span class=3D"gmail-o">=3D</spa=
-n><span class=3D"gmail-s2">&quot;/root/dpdk/host_scripts/usvhost&quot;</spa=
-n>
-
-taskset -c 2-7 <span class=3D"gmail-nv">$KVM_PATH</span> <span class=3D"gma=
-il-se">\</span>
- -enable-kvm <span class=3D"gmail-se">\</span>
- -m <span class=3D"gmail-nv">$MEM</span> <span class=3D"gmail-se">\</span>
- -smp <span class=3D"gmail-nv">$VCPUS_NR</span> <span class=3D"gmail-se">\<=
-/span>
- -object memory-backend-file,id<span class=3D"gmail-o">=3D</span>mem,size<s=
-pan class=3D"gmail-o">=3D</span>1024M,mem-path<span class=3D"gmail-o">=3D</=
-span>/mnt/huge,share<span class=3D"gmail-o">=3D</span>on <span class=3D"gma=
-il-se">\</span>
- -numa node,memdev<span class=3D"gmail-o">=3D</span>mem,nodeid<span class=
-=3D"gmail-o">=3D</span><span class=3D"gmail-m">0</span> <span class=3D"gmai=
-l-se">\</span>
- -cpu host <span class=3D"gmail-se">\</span>
- -name VM1 <span class=3D"gmail-se">\</span>
- -no-reboot <span class=3D"gmail-se">\</span>
- -net none <span class=3D"gmail-se">\</span>
- -vnc none <span class=3D"gmail-se">\</span>
- -nographic <span class=3D"gmail-se">\</span>
- -hda <span class=3D"gmail-nv">$DISK_IMG</span> <span class=3D"gmail-se">\<=
-/span>
- -chardev socket,id<span class=3D"gmail-o">=3D</span>chr0,path<span class=
-=3D"gmail-o">=3D</span><span class=3D"gmail-nv">$SOCKET_PATH</span> <span c=
-lass=3D"gmail-se">\</span>
- -netdev <span class=3D"gmail-nb">type</span><span class=3D"gmail-o">=3D</s=
-pan>vhost-user,id<span class=3D"gmail-o">=3D</span>net1,chardev<span class=
-=3D"gmail-o">=3D</span>chr0,vhostforce <span class=3D"gmail-se">\</span>
- -device virtio-net-pci,netdev<span class=3D"gmail-o">=3D</span>net1,mac<sp=
-an class=3D"gmail-o">=3D</span>CC:BB:BB:BB:BB:BB,<span class=3D"gmail-nv">$=
-VIRTIO_OPTIONS</span> <span class=3D"gmail-se">\</span>
- -chardev socket,id<span class=3D"gmail-o">=3D</span>chr1,path<span class=
-=3D"gmail-o">=3D</span><span class=3D"gmail-nv">$SOCKET_PATH</span> <span c=
-lass=3D"gmail-se">\</span>
- -netdev <span class=3D"gmail-nb">type</span><span class=3D"gmail-o">=3D</s=
-pan>vhost-user,id<span class=3D"gmail-o">=3D</span>net2,chardev<span class=
-=3D"gmail-o">=3D</span>chr1,vhostforce <span class=3D"gmail-se">\</span>
- -device virtio-net-pci,netdev<span class=3D"gmail-o">=3D</span>net2,mac<sp=
-an class=3D"gmail-o">=3D</span>DD:BB:BB:BB:BB:BB,<span class=3D"gmail-nv">$=
-VIRTIO_OPTIONS</span> <span class=3D"gmail-se">\</span>
- -incoming tcp:0:5555 <span class=3D"gmail-se">\</span>
- -monitor telnet::3333,server,nowait
-</font></pre></div>
-</div>
-</div>
-</div><font size=3D"4">
-</font><div class=3D"gmail-section" id=3D"gmail-sample-vm-scripts"><font si=
-ze=3D"4">
-<span id=3D"gmail-lm-virtio-vhost-user-vm-scripts"></span></font><h2><font =
-size=3D"4">2. Sample VM scripts</font></h2><font size=3D"4">
-</font><div class=3D"gmail-section" id=3D"gmail-setup-dpdk-virtio-in-vm-sh"=
->
-<h3><font size=3D"4">2.1. setup_dpdk_virtio_in_vm.sh</font></h3>
-<div class=3D"gmail-highlight-sh"><div class=3D"gmail-highlight"><pre><font=
- size=3D"4"><span class=3D"gmail-c">#!/bin/sh</span>
-<span class=3D"gmail-c"># this script matches the vm_virtio_vhost_user scri=
-pt</span>
-<span class=3D"gmail-c"># virtio port is 03</span>
-<span class=3D"gmail-c"># virtio port is 04</span>
-
-cat  /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
-<span class=3D"gmail-nb">echo </span><span class=3D"gmail-m">1024</span> &g=
-t; /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
-cat  /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
-
-ifconfig -a
-/root/dpdk/usertools/dpdk-devbind.py --status
-
-rmmod virtio-pci
-
-modprobe uio
-insmod /root/dpdk/x86_64-default-linuxapp-gcc/kmod/igb_uio.ko
-
-/root/dpdk/usertools/dpdk-devbind.py -b igb_uio 0000:00:03.0
-/root/dpdk/usertools/dpdk-devbind.py -b igb_uio 0000:00:04.0
-
-/root/dpdk/usertools/dpdk-devbind.py --status
-</font></pre></div>
-</div>
-</div><font size=3D"4">
-</font><div class=3D"gmail-section" id=3D"gmail-run-testpmd-in-vm-sh"><font=
- size=3D"4">
-</font><h3><font size=3D"4">2.2. run_testpmd_in_vm.sh</font></h3><font size=
-=3D"4">
-</font><div class=3D"gmail-highlight-sh"><div class=3D"gmail-highlight"><pr=
-e><font size=3D"4"><span class=3D"gmail-c">#!/bin/sh</span>
-<span class=3D"gmail-c"># Run testpmd for use with vhost_user sample app.</=
-span>
-<span class=3D"gmail-c"># test system has 8 cpus (0-7), use cpus 2-7 for VM=
-</span>
-
-/root/dpdk/x86_64-default-linuxapp-gcc/app/testpmd <span class=3D"gmail-se"=
->\</span>
--l 0-5 -n <span class=3D"gmail-m">4</span> --socket-mem <span class=3D"gmai=
-l-m">350</span> -- --burst<span class=3D"gmail-o">=3D</span><span class=3D"=
-gmail-m">64</span> --i
-</font></pre></div>
-</div>
-</div>
-</div>
-</div>
-
-
-           </div>
-          </div>
-         =20
- =20
-    <div class=3D"gmail-rst-footer-buttons">
-     =20
-        </div>
-     =20
-     =20
-        </div>
-
---0000000000006e36ea0585b7d59a--
+ Thomas
 
