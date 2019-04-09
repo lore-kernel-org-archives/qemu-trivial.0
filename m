@@ -1,73 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hDki4-0003Lg-B5
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Apr 2019 02:58:20 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:52418)
+	id 1hDnIg-0005CE-0O
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Apr 2019 05:44:18 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60487)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1hDki2-0003J8-38
-	for qemu-trivial@nongnu.org; Tue, 09 Apr 2019 02:58:18 -0400
+	(envelope-from <imammedo@redhat.com>) id 1hDnIe-0005Au-4g
+	for qemu-trivial@nongnu.org; Tue, 09 Apr 2019 05:44:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1hDki1-0008G0-6O
-	for qemu-trivial@nongnu.org; Tue, 09 Apr 2019 02:58:18 -0400
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531]:43132)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1hDki0-0008FY-QI
-	for qemu-trivial@nongnu.org; Tue, 09 Apr 2019 02:58:17 -0400
-Received: by mail-pg1-x531.google.com with SMTP id z9so5818416pgu.10
-	for <qemu-trivial@nongnu.org>; Mon, 08 Apr 2019 23:58:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=xLIW+9yrr4b5bnsgGOL/nvK8hLj+LD4cpg6r32kRl1I=;
-	b=OOTJx6RCIcgRfgk83g0DPxrS4vD5cXPnR72JO1knX4hAaZxPFls/pMhyLjmqB+F/N2
-	v5EZrO26AvTtdXE9QPCp2LBaO3B/FTR2ph+NMLwmHsLnTnoe8s4s2KNs7ROzmtkv2WVb
-	GmKdl99OtI7CUjRX+hJkp70Nr28BJbefDniIieWs+NGW57TpbsjmGObEHZJ6+9FeqstC
-	VUmtSqeG0THL56byboqMmHqsH0ZGG8aEblKzKFoiBaxS6dUeusiPNmMLXsVMdgBN2fO+
-	fCaluR8ldZJ6xmStfUtFJkxsVIOYIo+HcJQ6MfFZaBsAzjJoGq0sfQzhMlP/CgPPaAes
-	3mgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=xLIW+9yrr4b5bnsgGOL/nvK8hLj+LD4cpg6r32kRl1I=;
-	b=ZO5L3Shw7zg4k5oj4vgnUxhLxh/wRhV+b5VkjmI3vq8CDkhIa6XxedAPYE6yu7nA+l
-	PgakcqazpbuMJrZ94Z6+yFXHd7QXGt5OjCndfEtk+WmtPqQqgC4v7od+uYYOspgOnJJs
-	iX9AHmS1tEcKv64SzpgWxjUD0JTgyJ+8fzWoebjNrCmtGDvZGgU63TO0RzukASde9eQY
-	VuqYfIHvnoJmlz1kITqEA+nYcQ7miU1XTD3rrhtpQbBocPQsdAtLq0+jU7QgSnwxHQ1N
-	IqvpjL/6PhSX/ioaZafkemlJzD0hgkC+FM4yBPkusgdK/GOdBq2obru7QOQ6WmKLxj9E
-	kGCA==
-X-Gm-Message-State: APjAAAVfQkdaTjTK22/2om6Y23VA1CZNhE7LLCIP3o6U+SOtcEymZL4f
-	M3fde260JYH3fjjwcn2K2cj6lQ==
-X-Google-Smtp-Source: APXvYqzkpfu1Qqz/i/rQwwX8pMYKu03/O5qFVQ0hxNdYfvzl51amVYHLiCo93nuQ6pTIBzQ1Uh1hFg==
-X-Received: by 2002:a63:61d7:: with SMTP id
-	v206mr33504445pgb.349.1554793095245; 
-	Mon, 08 Apr 2019 23:58:15 -0700 (PDT)
-Received: from [192.168.3.43] (rrcs-173-198-79-114.west.biz.rr.com.
-	[173.198.79.114]) by smtp.gmail.com with ESMTPSA id
-	j5sm25503944pfe.15.2019.04.08.23.58.13
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Mon, 08 Apr 2019 23:58:14 -0700 (PDT)
-To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: Richard Henderson <rth@twiddle.net>
-References: <20190409060435.22801-1-sw@weilnetz.de>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <4a16a810-9806-3a76-7d17-1b6282296502@linaro.org>
-Date: Mon, 8 Apr 2019 20:58:10 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(envelope-from <imammedo@redhat.com>) id 1hDnId-0001hi-AH
+	for qemu-trivial@nongnu.org; Tue, 09 Apr 2019 05:44:16 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49862)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1hDnIb-0001ek-2P; Tue, 09 Apr 2019 05:44:13 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 73BA4C049E22;
+	Tue,  9 Apr 2019 09:44:11 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 938DB19C7B;
+	Tue,  9 Apr 2019 09:44:01 +0000 (UTC)
+Date: Tue, 9 Apr 2019 11:44:00 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Gerd Hoffmann
+	<kraxel@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
+Message-ID: <20190409114400.12258e41@redhat.com>
+In-Reply-To: <20190409053320.14612-1-sw@weilnetz.de>
+References: <20190409053320.14612-1-sw@weilnetz.de>
 MIME-Version: 1.0
-In-Reply-To: <20190409060435.22801-1-sw@weilnetz.de>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::531
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tci: Fix some unaligned
- memory accesses
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 09 Apr 2019 09:44:11 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] Update configure
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,16 +50,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Apr 2019 06:58:18 -0000
+X-List-Received-Date: Tue, 09 Apr 2019 09:44:17 -0000
 
-On 4/8/19 8:04 PM, Stefan Weil wrote:
->  static tcg_target_ulong tci_read_i(uint8_t **tb_ptr)
->  {
-> -    tcg_target_ulong value = *(tcg_target_ulong *)(*tb_ptr);
-> +    tcg_target_ulong value;
+On Tue,  9 Apr 2019 07:33:20 +0200
+Stefan Weil <sw@weilnetz.de> wrote:
 
-Ideally these would use the helpers from "qemu/bswap.h", ldl_he_p(), etc.
+> The last *.aml file was removed in commit 13b1881aacc7e5018773bd545bbaf8d5476699ee.
+> 
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-r~
+> ---
+>  configure | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/configure b/configure
+> index 1c563a7027..9c5d9a8c96 100755
+> --- a/configure
+> +++ b/configure
+> @@ -7886,7 +7886,6 @@ LINKS="$LINKS python"
+>  for bios_file in \
+>      $source_path/pc-bios/*.bin \
+>      $source_path/pc-bios/*.lid \
+> -    $source_path/pc-bios/*.aml \
+>      $source_path/pc-bios/*.rom \
+>      $source_path/pc-bios/*.dtb \
+>      $source_path/pc-bios/*.img \
+
 
