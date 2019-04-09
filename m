@@ -1,41 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hDjgx-0000qD-QM
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Apr 2019 01:53:07 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38532)
+	id 1hDjlu-0002cA-Nv
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Apr 2019 01:58:14 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:39409)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1hDjgw-0000pD-E3
-	for qemu-trivial@nongnu.org; Tue, 09 Apr 2019 01:53:07 -0400
+	(envelope-from <stefan@weilnetz.de>) id 1hDjls-0002b4-N3
+	for qemu-trivial@nongnu.org; Tue, 09 Apr 2019 01:58:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1hDjgv-0007pz-JV
-	for qemu-trivial@nongnu.org; Tue, 09 Apr 2019 01:53:06 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]:43046
+	(envelope-from <stefan@weilnetz.de>) id 1hDjlq-0003uh-Pg
+	for qemu-trivial@nongnu.org; Tue, 09 Apr 2019 01:58:12 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:43272
 	helo=v2201612906741603.powersrv.de)
 	by eggs.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <stefan@weilnetz.de>)
-	id 1hDjgs-0007nK-TT; Tue, 09 Apr 2019 01:53:03 -0400
+	id 1hDjlk-0003sR-45; Tue, 09 Apr 2019 01:58:04 -0400
 Received: from localhost (localhost [127.0.0.1])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id EC62EDA062F;
-	Tue,  9 Apr 2019 07:43:31 +0200 (CEST)
+	by v2201612906741603.powersrv.de (Postfix) with ESMTP id 8D2F1DB6049;
+	Tue,  9 Apr 2019 07:49:05 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
 Received: from v2201612906741603.powersrv.de ([127.0.0.1])
 	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
 	port 10024)
-	with ESMTP id Osi-OF68DGjv; Tue,  9 Apr 2019 07:43:31 +0200 (CEST)
+	with ESMTP id 9HxXChr5P8uJ; Tue,  9 Apr 2019 07:49:04 +0200 (CEST)
 Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id 17CD3DA0606;
-	Tue,  9 Apr 2019 07:43:31 +0200 (CEST)
+	by v2201612906741603.powersrv.de (Postfix) with ESMTP id B169DDB6046;
+	Tue,  9 Apr 2019 07:49:04 +0200 (CEST)
 Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id DBE5F46000F; Tue,  9 Apr 2019 07:43:30 +0200 (CEST)
+	id A90C946000F; Tue,  9 Apr 2019 07:49:04 +0200 (CEST)
 From: Stefan Weil <sw@weilnetz.de>
 To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Cc: Stefan Weil <stweil@ub-cluster-01.bib.uni-mannheim.de>
-Date: Tue,  9 Apr 2019 07:43:25 +0200
-Message-Id: <20190409054325.22427-1-sw@weilnetz.de>
+Cc: Stefan Weil <sw@weilnetz.de>
+Date: Tue,  9 Apr 2019 07:48:52 +0200
+Message-Id: <20190409054852.22547-1-sw@weilnetz.de>
 X-Mailer: git-send-email 2.11.0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 37.120.169.71
-Subject: [Qemu-trivial] [PATCH] Fix type of cluster_index
+Subject: [Qemu-trivial] [PATCH v2] Fix type of cluster_index
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -47,9 +47,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Apr 2019 05:53:07 -0000
-
-From: Stefan Weil <stweil@ub-cluster-01.bib.uni-mannheim.de>
+X-List-Received-Date: Tue, 09 Apr 2019 05:58:13 -0000
 
 The type should be the same as the type of cluster_id.
 
@@ -58,8 +56,11 @@ This fixed a runtime error reported by sanitizers:
     /qemu/include/exec/tb-lookup.h:33:35: runtime error: left shift of negative value -1
     /qemu/accel/tcg/translate-all.c:1692:34: runtime error: left shift of negative value -1
 
-Signed-off-by: Stefan Weil <stweil@ub-cluster-01.bib.uni-mannheim.de>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
+
+v2: Fixed my e-mail address.
+
  include/qom/cpu.h | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
