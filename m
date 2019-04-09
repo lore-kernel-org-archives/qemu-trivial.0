@@ -1,42 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hDk0M-0001g5-21
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Apr 2019 02:13:10 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:43277)
+	id 1hDki4-0003Lg-B5
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Apr 2019 02:58:20 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52418)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1hDk0J-0001dn-LV
-	for qemu-trivial@nongnu.org; Tue, 09 Apr 2019 02:13:08 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1hDki2-0003J8-38
+	for qemu-trivial@nongnu.org; Tue, 09 Apr 2019 02:58:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>) id 1hDk0I-0005Nt-M6
-	for qemu-trivial@nongnu.org; Tue, 09 Apr 2019 02:13:07 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]:43718
-	helo=v2201612906741603.powersrv.de)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefan@weilnetz.de>)
-	id 1hDk0G-0005Ml-DG; Tue, 09 Apr 2019 02:13:04 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id B1AD4DB6050;
-	Tue,  9 Apr 2019 08:04:39 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
-Received: from v2201612906741603.powersrv.de ([127.0.0.1])
-	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
-	port 10024)
-	with ESMTP id 0hL-XRLQcPSb; Tue,  9 Apr 2019 08:04:38 +0200 (CEST)
-Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id E83CFDB604C;
-	Tue,  9 Apr 2019 08:04:38 +0200 (CEST)
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
-	id DD47A46000F; Tue,  9 Apr 2019 08:04:38 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: qemu-devel@nongnu.org,
+	(envelope-from <richard.henderson@linaro.org>) id 1hDki1-0008G0-6O
+	for qemu-trivial@nongnu.org; Tue, 09 Apr 2019 02:58:18 -0400
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531]:43132)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1hDki0-0008FY-QI
+	for qemu-trivial@nongnu.org; Tue, 09 Apr 2019 02:58:17 -0400
+Received: by mail-pg1-x531.google.com with SMTP id z9so5818416pgu.10
+	for <qemu-trivial@nongnu.org>; Mon, 08 Apr 2019 23:58:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=xLIW+9yrr4b5bnsgGOL/nvK8hLj+LD4cpg6r32kRl1I=;
+	b=OOTJx6RCIcgRfgk83g0DPxrS4vD5cXPnR72JO1knX4hAaZxPFls/pMhyLjmqB+F/N2
+	v5EZrO26AvTtdXE9QPCp2LBaO3B/FTR2ph+NMLwmHsLnTnoe8s4s2KNs7ROzmtkv2WVb
+	GmKdl99OtI7CUjRX+hJkp70Nr28BJbefDniIieWs+NGW57TpbsjmGObEHZJ6+9FeqstC
+	VUmtSqeG0THL56byboqMmHqsH0ZGG8aEblKzKFoiBaxS6dUeusiPNmMLXsVMdgBN2fO+
+	fCaluR8ldZJ6xmStfUtFJkxsVIOYIo+HcJQ6MfFZaBsAzjJoGq0sfQzhMlP/CgPPaAes
+	3mgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=xLIW+9yrr4b5bnsgGOL/nvK8hLj+LD4cpg6r32kRl1I=;
+	b=ZO5L3Shw7zg4k5oj4vgnUxhLxh/wRhV+b5VkjmI3vq8CDkhIa6XxedAPYE6yu7nA+l
+	PgakcqazpbuMJrZ94Z6+yFXHd7QXGt5OjCndfEtk+WmtPqQqgC4v7od+uYYOspgOnJJs
+	iX9AHmS1tEcKv64SzpgWxjUD0JTgyJ+8fzWoebjNrCmtGDvZGgU63TO0RzukASde9eQY
+	VuqYfIHvnoJmlz1kITqEA+nYcQ7miU1XTD3rrhtpQbBocPQsdAtLq0+jU7QgSnwxHQ1N
+	IqvpjL/6PhSX/ioaZafkemlJzD0hgkC+FM4yBPkusgdK/GOdBq2obru7QOQ6WmKLxj9E
+	kGCA==
+X-Gm-Message-State: APjAAAVfQkdaTjTK22/2om6Y23VA1CZNhE7LLCIP3o6U+SOtcEymZL4f
+	M3fde260JYH3fjjwcn2K2cj6lQ==
+X-Google-Smtp-Source: APXvYqzkpfu1Qqz/i/rQwwX8pMYKu03/O5qFVQ0hxNdYfvzl51amVYHLiCo93nuQ6pTIBzQ1Uh1hFg==
+X-Received: by 2002:a63:61d7:: with SMTP id
+	v206mr33504445pgb.349.1554793095245; 
+	Mon, 08 Apr 2019 23:58:15 -0700 (PDT)
+Received: from [192.168.3.43] (rrcs-173-198-79-114.west.biz.rr.com.
+	[173.198.79.114]) by smtp.gmail.com with ESMTPSA id
+	j5sm25503944pfe.15.2019.04.08.23.58.13
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Mon, 08 Apr 2019 23:58:14 -0700 (PDT)
+To: Stefan Weil <sw@weilnetz.de>, qemu-devel@nongnu.org,
 	qemu-trivial@nongnu.org
-Cc: Richard Henderson <rth@twiddle.net>,
-	Stefan Weil <sw@weilnetz.de>
-Date: Tue,  9 Apr 2019 08:04:35 +0200
-Message-Id: <20190409060435.22801-1-sw@weilnetz.de>
-X-Mailer: git-send-email 2.11.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 37.120.169.71
-Subject: [Qemu-trivial] [PATCH] tci: Fix some unaligned memory accesses
+Cc: Richard Henderson <rth@twiddle.net>
+References: <20190409060435.22801-1-sw@weilnetz.de>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <4a16a810-9806-3a76-7d17-1b6282296502@linaro.org>
+Date: Mon, 8 Apr 2019 20:58:10 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
+MIME-Version: 1.0
+In-Reply-To: <20190409060435.22801-1-sw@weilnetz.de>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::531
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tci: Fix some unaligned
+ memory accesses
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,85 +79,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Apr 2019 06:13:08 -0000
+X-List-Received-Date: Tue, 09 Apr 2019 06:58:18 -0000
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- tcg/tci.c | 18 +++++++++++-------
- 1 file changed, 11 insertions(+), 7 deletions(-)
+On 4/8/19 8:04 PM, Stefan Weil wrote:
+>  static tcg_target_ulong tci_read_i(uint8_t **tb_ptr)
+>  {
+> -    tcg_target_ulong value = *(tcg_target_ulong *)(*tb_ptr);
+> +    tcg_target_ulong value;
 
-diff --git a/tcg/tci.c b/tcg/tci.c
-index 33edca1903..20b0715b6e 100644
---- a/tcg/tci.c
-+++ b/tcg/tci.c
-@@ -1,7 +1,7 @@
- /*
-  * Tiny Code Interpreter for QEMU
-  *
-- * Copyright (c) 2009, 2011, 2016 Stefan Weil
-+ * Copyright (c) 2009, 2011, 2016, 2019 Stefan Weil
-  *
-  * This program is free software: you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-@@ -159,7 +159,8 @@ static uint64_t tci_uint64(uint32_t high, uint32_t low)
- /* Read constant (native size) from bytecode. */
- static tcg_target_ulong tci_read_i(uint8_t **tb_ptr)
- {
--    tcg_target_ulong value = *(tcg_target_ulong *)(*tb_ptr);
-+    tcg_target_ulong value;
-+    memcpy(&value, *tb_ptr, sizeof(value));
-     *tb_ptr += sizeof(value);
-     return value;
- }
-@@ -167,7 +168,8 @@ static tcg_target_ulong tci_read_i(uint8_t **tb_ptr)
- /* Read unsigned constant (32 bit) from bytecode. */
- static uint32_t tci_read_i32(uint8_t **tb_ptr)
- {
--    uint32_t value = *(uint32_t *)(*tb_ptr);
-+    uint32_t value;
-+    memcpy(&value, *tb_ptr, sizeof(value));
-     *tb_ptr += sizeof(value);
-     return value;
- }
-@@ -175,7 +177,8 @@ static uint32_t tci_read_i32(uint8_t **tb_ptr)
- /* Read signed constant (32 bit) from bytecode. */
- static int32_t tci_read_s32(uint8_t **tb_ptr)
- {
--    int32_t value = *(int32_t *)(*tb_ptr);
-+    int32_t value;
-+    memcpy(&value, *tb_ptr, sizeof(value));
-     *tb_ptr += sizeof(value);
-     return value;
- }
-@@ -184,7 +187,8 @@ static int32_t tci_read_s32(uint8_t **tb_ptr)
- /* Read constant (64 bit) from bytecode. */
- static uint64_t tci_read_i64(uint8_t **tb_ptr)
- {
--    uint64_t value = *(uint64_t *)(*tb_ptr);
-+    uint64_t value;
-+    memcpy(&value, *tb_ptr, sizeof(value));
-     *tb_ptr += sizeof(value);
-     return value;
- }
-@@ -474,7 +478,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-     tcg_target_ulong regs[TCG_TARGET_NB_REGS];
-     long tcg_temps[CPU_TEMP_BUF_NLONGS];
-     uintptr_t sp_value = (uintptr_t)(tcg_temps + CPU_TEMP_BUF_NLONGS);
--    uintptr_t ret = 0;
-+    uint64_t ret = 0;
- 
-     regs[TCG_AREG0] = (tcg_target_ulong)env;
-     regs[TCG_REG_CALL_STACK] = sp_value;
-@@ -1094,7 +1098,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t *tb_ptr)
-             /* QEMU specific operations. */
- 
-         case INDEX_op_exit_tb:
--            ret = *(uint64_t *)tb_ptr;
-+            memcpy(&ret, tb_ptr, sizeof(uint64_t));
-             goto exit;
-             break;
-         case INDEX_op_goto_tb:
--- 
-2.11.0
+Ideally these would use the helpers from "qemu/bswap.h", ldl_he_p(), etc.
 
+
+r~
 
