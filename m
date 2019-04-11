@@ -1,54 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hEfvo-0007Af-OU
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Apr 2019 16:04:20 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:35581)
+	id 1hEfyC-0000kM-LK
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Apr 2019 16:06:48 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36463)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hEfvj-00079Y-FN
-	for qemu-trivial@nongnu.org; Thu, 11 Apr 2019 16:04:16 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hEfyA-0000ih-8O
+	for qemu-trivial@nongnu.org; Thu, 11 Apr 2019 16:06:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hEfvh-0002RY-FB
-	for qemu-trivial@nongnu.org; Thu, 11 Apr 2019 16:04:15 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:41939)
+	(envelope-from <laurent@vivier.eu>) id 1hEfy9-0003qO-9P
+	for qemu-trivial@nongnu.org; Thu, 11 Apr 2019 16:06:46 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:48421)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hEfvf-0002N1-Bd; Thu, 11 Apr 2019 16:04:12 -0400
+	id 1hEfy8-0003jj-Oy; Thu, 11 Apr 2019 16:06:45 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
-	1MTzve-1hN1vZ0k2k-00R4Sl; Thu, 11 Apr 2019 22:03:59 +0200
-To: =?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>,
-	"Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <20190404091725.20595-1-dgilbert@redhat.com>
-	<20190404091957.GL10471@redhat.com>
+	1MeCYx-1gdPaw3s7L-00bHiM; Thu, 11 Apr 2019 22:01:30 +0200
+To: Markus Armbruster <armbru@redhat.com>,
+	Stefano Garzarella <sgarzare@redhat.com>
+Cc: qemu-trivial@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>,
+	afaerber@suse.de, qemu-devel@nongnu.org
+References: <20190311083234.20841-1-richardw.yang@linux.intel.com>
+	<20190312084313.webcenp43tk3yfmm@steredhat>
+	<87tvfghqg7.fsf@dusky.pond.sub.org>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <87f831be-0707-2820-8378-e0cf617fa3c7@vivier.eu>
-Date: Thu, 11 Apr 2019 22:03:58 +0200
+Message-ID: <51367507-2b5a-151d-af0f-5404448bbdad@vivier.eu>
+Date: Thu, 11 Apr 2019 22:01:28 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190404091957.GL10471@redhat.com>
+In-Reply-To: <87tvfghqg7.fsf@dusky.pond.sub.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:3E3VDz7H7qP8iFnfTU6vQ0p3mrGQOkKBta7N+r7lPQ7z5pT6+NO
-	t9y4rigtMQQT2yhm5hZZKoQjxSEGXtRY2EzsuQJiUzJxOnrK/BPrc8p/+vJhkrKotysTUaI
-	a3damowbRlxY44lkk9hvVnzEbjV4/SZkGHDTSfaEYETgq6BKjITCQPPqCFNqOZhxgXMOtkt
-	tTFjOEn7cYwU6J+F9qLUQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:EHAI84xBQ6E=:Lt7t3pgUjLpQLlNW+q4Ert
-	FzXyhpfLt3AW5KeSRNkpllzD21W1uSH6P1CtTV4mjSm1ZAI31XMcd3Kb9IDk0MICrXDZnfeYS
-	V13Vn2xmAurT0cqQQn7WGJA6FlKv5DE5ZpbsiE7ch29Ju9kqtFF2K+fesnQTTNFQETiLzOV0Z
-	jIIQ+//7Xn5gh/IXUNh+8YWB2cIqwB8Vuu8xlJ3mYRMRRauwh0N3SkhAb+kymg/Hflg7oHAI4
-	HD8s44NN2DNLhn/xhVetHBTuqXdjs9hDQxQZQ1Q8kVCyV7NUXiW/gsZe2aYI+C8j6w2AQ/ocL
-	n3nvx8XeRtJvagjo8LGF47xoqUCLJAvyYQ6cNWwy2CqpL2OsxmtI57eMrnsOYijT+2jh78Bpd
-	nmqNl4ZbCJweD81YfEJv+ir6hwN6x4RIAAnS5x+V7pz8wko9ScWgoJsHenp8u/MJ2WnrHV51k
-	BgLD42OTDbHlQ6G4HBKDBwIHz0rVhrTz7Q57sR1Ck7GhsvziHlj6WtREPR0OLuXB2FgdUFKpM
-	mY6erWYW3r7P38Cx1dXEVLlbXSrllYFlJHsv5NghexbDzqHX1IJE4avWNz0jDmB5or3UE8beB
-	i0dlG3knkuJ1akI7B13d51arSFCiW/zTnHR+KsnrtnXGvQcPpnZmg+OsVLX9AQk2okptUxCWL
-	OhMkmIMVySPCs8PeMlZraWhn8PnkVNFn7ecM4kqS8f3/qV4QnmxuEtZ97fhKxPoUDKR5dzPtw
-	npRJCAe1GS8bqHZ/jF3duMRmAtV4uC6JrFUYdhKrhwNaWJp8nMmA4k5yn7M=
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:23VmX65z7zcw3eA8ma19KipOHGAOQ/RGNYlSOeDq70vxdPniDFS
+	nuTbIdrtCzMjOUVcX2Qfg0q1Bps+e5biIntQwjxd0ic4VA5C0e0CFakBLJDllRHC+RYJYlX
+	hlBXS3Ms01x47ddHHPbugm8fZgBesc7DhnRRb5eTuBoAsYjuZq7UZDrw85Ro9p6z8PgbDeB
+	YGy8DbuRj9wevWUFjeRzQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:mgSHuX1mVUs=:AYO5QZJVe+2+iithowgRVz
+	2F4YQbaGNLKOKPmR9e2Ot6xLuclCILlj9Ja3R+srIwzGrrJTltJaO85UnJYSNRW/xlE1PZV8X
+	HXxPeqTNrgMbg5EWTaSaRReGMHuV8aBA+iPTUq/7P1ojOh3P5pCC/pqhSAI3h9UBNHBx5C3Y/
+	tFJ2XnSJ8ceK6+nLnbAEseFZvYtK8Agf8rRhvQnn0O4l4qdObVmi+Q/UohvpvRsbfuPayBltb
+	2eakvrlf7+A2tCSg2mPT+c/aOGUfzYQfzXYKKPdTXJNBexR1qiBen/TewCDpmwm6NztHkc2aL
+	lDUz639UvIloMpgBcJ3FzgeLEjNpIA+93AMJ6WnxkQs1Bv29pWVAyMWUh1U9CoOdVy+4IKEVq
+	UmKTAKJ/vn5sWBXIfz1r7VFGX+TW+DBeIhXRvXs0X9nLx7rkwsWEkPEmkv7KMXLRm50DzwwSM
+	BQ7RUSxud0LXCGlxJxn8difmevE0QrhiWRjggYFhbcs1k2MPgE7+GgWm+TDI6f3IiXTVr/+7P
+	DJ7f+UUqEgFTh2O0owcz1wMPVtepngTAOZ5Y6agzXB55aYjNthvHVSbddRAQK5QtZ5S9r5xBK
+	eYd7045dNiZrdnR0XYLldTt/Uwse+il3rqISe1PVqnOgk+C3svRovSv3MeXkK3vAXheJE3F3T
+	33HngOyzZ8g3F+bUhNQLMizSpAEfbN9Ub6vTK38SVB0dvwCJjFGoS9OoDLjpNYI+vCDUYXUEZ
+	CwuiEDQVb9w9HK6SDgQHeQR5d1OKciitMTU5ytYu+30YKwWf71iu+HNg71g=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.130
-Subject: Re: [Qemu-trivial] [PATCH] configure: fix pam test warning
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] qom: use
+ object_new_with_type in object_new_with_propv
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,49 +63,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Apr 2019 20:04:16 -0000
+X-List-Received-Date: Thu, 11 Apr 2019 20:06:47 -0000
 
-On 04/04/2019 11:19, Daniel P. Berrangé wrote:
-> CC trivial
+On 02/04/2019 08:27, Markus Armbruster wrote:
+> Stefano Garzarella <sgarzare@redhat.com> writes:
 > 
-> On Thu, Apr 04, 2019 at 10:17:25AM +0100, Dr. David Alan Gilbert (git) wrote:
->> From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+>> On Mon, Mar 11, 2019 at 04:32:34PM +0800, Wei Yang wrote:
+>>> Function object_new_with_propv already get the Type of the object, so we
+>>> could leverage object_new_with_type here.
+>>>
+>>> [make check test pass]
+>>>
+>>> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+>>> ---
+>>>  qom/object.c | 2 +-
+>>>  1 file changed, 1 insertion(+), 1 deletion(-)
 >>
->> The pam test generates a warning on Fedora 29 with -O3 compilation
->> because the headers declare that the pam_conversation pointer to
->> pam_start must be non-NULL.  Change it to use the same 0 initialised
->> structure as we actually use in qauthz.
->>
->> Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
->> ---
->>  configure | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
+>> LGTM. Just a note for future patches:
+>> I think that info like "[make check test pass]" should go after the
+>> three dashes to avoid to store it in the commit message.
 > 
-> Acked-by: Daniel P. Berrangé <berrange@redhat.com>
+> Yes.  Whoever applies  should delete this line.
 > 
->>
->> diff --git a/configure b/configure
->> index 1c563a7027..73f7ad2be0 100755
->> --- a/configure
->> +++ b/configure
->> @@ -2946,9 +2946,9 @@ if test "$auth_pam" != "no"; then
->>  int main(void) {
->>     const char *service_name = "qemu";
->>     const char *user = "frank";
->> -   const struct pam_conv *pam_conv = NULL;
->> +   const struct pam_conv pam_conv = { 0 };
->>     pam_handle_t *pamh = NULL;
->> -   pam_start(service_name, user, pam_conv, &pamh);
->> +   pam_start(service_name, user, &pam_conv, &pamh);
->>     return 0;
->>  }
->>  EOF
+>> Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
 > 
-> Regards,
-> Daniel
+> Cc: qemu-trivial for merging.
 > 
 
-Applied to my trivial-patches branch.
+Applied to my trivial-patches branch with updated commit message.
 
 Thanks,
 Laurent
