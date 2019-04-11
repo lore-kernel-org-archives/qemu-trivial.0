@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hEfb2-0004ll-Va
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Apr 2019 15:42:53 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58526)
+	id 1hEffE-0007G9-CY
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Apr 2019 15:47:12 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59629)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hEfb1-0004lc-03
-	for qemu-trivial@nongnu.org; Thu, 11 Apr 2019 15:42:51 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hEffC-0007Es-5i
+	for qemu-trivial@nongnu.org; Thu, 11 Apr 2019 15:47:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hEfaz-0007xj-Tg
-	for qemu-trivial@nongnu.org; Thu, 11 Apr 2019 15:42:50 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:37057)
+	(envelope-from <laurent@vivier.eu>) id 1hEffB-0001jI-9M
+	for qemu-trivial@nongnu.org; Thu, 11 Apr 2019 15:47:10 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:60001)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hEfaz-0007wb-Fo; Thu, 11 Apr 2019 15:42:49 -0400
+	id 1hEff8-0001h2-SI; Thu, 11 Apr 2019 15:47:07 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
-	1MjPYI-1gToRY0gzy-00ktOB; Thu, 11 Apr 2019 21:42:30 +0200
-To: Wei Yang <richardw.yang@linux.intel.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: peter.maydell@linaro.org, philmd@redhat.com, mjt@tls.msk.ru,
-	imammedo@redhat.com, eblake@redhat.com, sgarzare@redhat.com
-References: <20190304071631.27567-1-richardw.yang@linux.intel.com>
-	<20190304071631.27567-2-richardw.yang@linux.intel.com>
+	(mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+	1M4K6z-1hEOXs1pTt-000OvG; Thu, 11 Apr 2019 21:47:01 +0200
+To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: lvivier@redhat.com, peter.maydell@linaro.org, ehabkost@redhat.com,
+	viktor.prutyanov@phystech.edu, QEMU Trivial <qemu-trivial@nongnu.org>, 
+	kraxel@redhat.com, marcel.apfelbaum@gmail.com, alex.bennee@linaro.org
+References: <20190313162812.8885-1-armbru@redhat.com>
+	<8cd63797-76f6-9ba8-0113-13a4bf04e6ed@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <4cd402a1-4da3-dc2e-82ad-64249c5fddc0@vivier.eu>
-Date: Thu, 11 Apr 2019 21:42:26 +0200
+Message-ID: <9585a1fc-fc7c-d3f4-06be-46d1a544a0ce@vivier.eu>
+Date: Thu, 11 Apr 2019 21:46:59 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190304071631.27567-2-richardw.yang@linux.intel.com>
+In-Reply-To: <8cd63797-76f6-9ba8-0113-13a4bf04e6ed@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:DGvzF2MUh6/4IttUnWwEwhdKCoxVcHIfGD1tcJ6eGL2HHMnjpYw
-	QfqfGLUqXfww6rbkG5juDXjIgQF9EDe+d4P7S3vpTjY4KM9PNsrzetM+TsLNq/5oxknES9b
-	R3nV+SX5e5f4tJC54GypdOZLN3CcdSg3mzdm7OdGZTHVG5fpsTm1rMxjg5y7+AEmuXVZuvx
-	N5ksJ2rRYAYuRCnHas3vg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:G9LdzMCpeZs=:p+39jBTTEAoYyWJrKY4Hti
-	NrY3gUFee0EFPz/4xUL+WToE12mWsy1C0uaK8t+Gra7ut4pAuPF7LFq9NokIbVpJvKR2xBAwB
-	8jbOpQi2kk1R5hEavibFAu0ICsNlTNS8EZj5HFXpY5KubBwcdZmTkof5AEPVRV7pCapfOrgTQ
-	5JQqHeTplT1xGvr0sYIzBDhYb4PF1xDFme9vjEeuSGSXSn1ptYtIl7G/0tP6zobqSBWeym5nS
-	xu/tajB3Wcthqf86QNWAZXNJijidiqKMsKJOl/QyAWxpAqC2WaObnOCj1O0DaAc60cjn97xv0
-	22kP1l2SJvNFzNAKVsLICfuEGAIEmswPFDxqD36wk1ulIsezKgkO7AJb8FwsXzSxAI6NfzLr0
-	3lfj+b5Xfqi9MuXqu53J7RrIfYoKAh7r6k9CjIZ0w25/YIXbJ3uZglFICbNAsgCGIvQkqa3a7
-	hK4dm7bVqeRB6zQcceChYFGJ9bqAUMd5n4ItF/9FAnrW/ZflBa+xsddsRoBIR8EcsarsQMiS5
-	tFnsvBqXmmfhM6LcjKrazUngXTACcdPlItu/iHHmUn3H/d8q2ICeFq3a9XHz0Dg4sY7HQctPS
-	57paCaLe75Daz9FSFQQIBqXLhW8IGDGOHbhMFf39RHA3/bCagaCzkT+tOwJ2Bj70/5Rj5CaIS
-	GEYyacg1oNSCX9tKZAp85GZ1EDtrzV6fcAuxadchIP74R6KAxqeWSRkDGyzruleRuKehLS0dE
-	+L6FH9aqhLOpebYEW9tqr1Zi3DkqqAYv/3TaNYjGP42UxxWORzvuIwL+SpE=
+X-Provags-ID: V03:K1:BsLtIAyNBcvpkz0AYDgdIQuMWkHGIaA34Ha9Is1vN4UrNPMPdec
+	Qzxu+CcMoWehvY3NEN0GgrQ+EwltCm8vpgeHGYDwkdRgXTdeMC3ZbtcKRPoqm54pzPnLhiP
+	GOWZzKx+8uVayCm+9NACbUTZRbVXQ3B/UKHncNHqNBSk6gofkhUO0t71uY5R27WqmoGu/Gb
+	OhTz3eqTvM6s1X43Z6+7w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:EPUUrfK9nQw=:SlXxgXllZLsU09YiH9DPRv
+	B53iyGKKkNr/7tyntouA2JAhyzgC9+CzE3du5RPTxdkJ5SEEbZGHD/yqrJkxX5MhJjD4e9oAv
+	zF8HEitLAZF34XEggMTHmqWxt6A7RhnB0RI/jsla7K1qKyFvXNGC+a+CTs6ExUulAjO5Vt9uL
+	hH/GURcH6L4wB0APzR5oeXHO36MmX4DOUlYwWXGS/iXbDHz6OQz4WIyu43fx4ks1i07jilCmI
+	2ZkZ6Z+Maem2GDdWX1q9YGh46wNiRGZeukXWxzQc+FIkCdQXziI4URYYOTKgsSNzar2/prCxm
+	ceroTzXvnaNE+yHXFlb2992CHPfHisIwlQWCpTABCX8L8se0h0Lgv70aIf1yrMkScSWkbmmPI
+	2RqTGSD42FijU+nogV0tjLrg367NherGV81Mq1S68H4qcitbQ9SP4cH/f5d5M67u0/7NTIDrQ
+	NHp6FVIM+SeoZGuWDQeYy5VO2hJV2i/zsiS1+qjqlvolzocd+sSTUP0YFRoEqZ0VvvBCZ1E55
+	2X3ARRY0d9lbrwqZHyppOBlQQQ1sTX15QRfFov6iEC51ba71Xy1zzI89wGEY8Do6WJgnBls+Q
+	VEjfMx6Ou+kX4n+UVE7miNUVHmbo5pT0jrgDkV1GmlxvbZd9Y6VJ7mimZ1gWIrLuV1zki1xtT
+	kbIF0RtTfI+hvuvbI8XFSE4cmaEk0WRknf/j4FZrMFYAC5b75gAsYaAtnLkFzX7+y1rb72dVT
+	D8OeQlmqmkTuJrXlpVjl3U0S04ACbHnBwUAAs/CFOfpqavjWt3zx9RU4cQk=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: Re: [Qemu-trivial] [PATCH v6 1/2] CODING_STYLE: specify the indent
- rule for multiline code
+X-Received-From: 212.227.126.134
+Subject: Re: [Qemu-trivial] [PATCH] Clean up includes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,90 +62,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Apr 2019 19:42:52 -0000
+X-List-Received-Date: Thu, 11 Apr 2019 19:47:11 -0000
 
-On 04/03/2019 08:16, Wei Yang wrote:
-> We didn't specify the indent rule for multiline code here, which may
-> mislead users. And in current code, the code use various styles.
+On 21/03/2019 10:21, Thomas Huth wrote:
+> On 13/03/2019 17.28, Markus Armbruster wrote:
+>> Clean up includes so that osdep.h is included first and headers
+>> which it implies are not included manually.
+>>
+>> This commit was created with scripts/clean-includes, with the changes
+>> to the following files manually reverted:
+>>
+>>     contrib/libvhost-user/libvhost-user-glib.h
+>>     contrib/libvhost-user/libvhost-user.c
+>>     contrib/libvhost-user/libvhost-user.h
+>>     linux-user/mips64/cpu_loop.c
+>>     linux-user/mips64/signal.c
+>>     linux-user/sparc64/cpu_loop.c
+>>     linux-user/sparc64/signal.c
+>>     linux-user/x86_64/cpu_loop.c
+>>     linux-user/x86_64/signal.c
+>>     slirp/src/*
+>>     target/s390x/gen-features.c
+>>     tests/migration/s390x/a-b-bios.c
+>>     tests/test-rcu-simpleq.c
+>>     tests/test-rcu-tailq.c
+>>     tests/uefi-test-tools/UefiTestToolsPkg/BiosTablesTest/BiosTablesTest.c
+>>
+>> We're in the process of spinning out slirp/.  tests/uefi-test-tools/
+>> is guest software.  The remaining reverts are the same as in commit
+>> b7d89466dde.
+>>
+>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>> ---
+>>  contrib/elf2dmp/main.c   | 3 +--
+>>  contrib/elf2dmp/pdb.c    | 3 +--
+>>  hw/display/ati.c         | 1 +
+>>  hw/display/ati_2d.c      | 1 +
+>>  hw/display/ati_dbg.c     | 1 +
+>>  hw/display/ati_int.h     | 1 -
+>>  include/hw/cpu/cluster.h | 1 -
+>>  tests/fp/platform.h      | 1 -
+>>  tests/libqos/qgraph.h    | 4 ----
+>>  tests/qos-test.c         | 2 +-
+>>  10 files changed, 6 insertions(+), 12 deletions(-)
 > 
-> Add this rule in CODING_STYLE to make sure this is clear to every one.
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 > 
-> Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-> Suggested-by: Igor Mammedov <imammedo@redhat.com>
-> 
-> ---
-> v6:
->    * add ) for last example of function
-> v5:
->    * different rules -> various styles
->    * describe function variants separately
->    * take struct out
-> v4:
->    * widths -> width
->    * add an exception example for function
-> v3:
->    * misleading -> mislead
->    * add comma after arg2 in example
-> v2:
->    * rephrase changelog suggested by Eric Blake
->      - remove one redundant line
->      - fix some awkward grammar
->      - add { ; at the end of example
-> ---
->  CODING_STYLE | 39 +++++++++++++++++++++++++++++++++++++++
->  1 file changed, 39 insertions(+)
-> 
-> diff --git a/CODING_STYLE b/CODING_STYLE
-> index ec075dedc4..90321e9c28 100644
-> --- a/CODING_STYLE
-> +++ b/CODING_STYLE
-> @@ -29,6 +29,45 @@ Spaces of course are superior to tabs because:
->  
->  Do not leave whitespace dangling off the ends of lines.
->  
-> +1.1 Multiline Indent
-> +
-> +There are several places where indent is necessary:
-> +
-> + - if/else
-> + - while/for
-> + - function definition & call
-> +
-> +When breaking up a long line to fit within line width, we need a proper indent
-> +for the following lines.
-> +
-> +In case of if/else, while/for, align the secondary lines just after the
-> +opening parenthesis of the first.
-> +
-> +For example:
-> +
-> +    if (a == 1 &&
-> +        b == 2) {
-> +
-> +    while (a == 1 &&
-> +           b == 2) {
-> +
-> +In case of function, there are several variants:
-> +
-> +    * 4 spaces indent from the beginning
-> +    * align the secondary lines just after the opening parenthesis of the
-> +      first
-> +
-> +For example:
-> +
-> +    do_something(x, y,
-> +        z);
-> +
-> +    do_something(x, y,
-> +                 z);
-> +
-> +    do_something(x, do_another(y,
-> +                               z));
-> +
->  2. Line width
->  
->  Lines should be 80 characters; try not to make them longer.
-> 
+
 
 Applied to my trivial-patches branch.
 
