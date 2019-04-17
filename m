@@ -1,50 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hGo0p-0005Oy-Mx
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Apr 2019 13:06:19 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58168)
+	id 1hGo5T-0007Xc-R5
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Apr 2019 13:11:07 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59389)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1hGo0n-0005Nm-Rl
-	for qemu-trivial@nongnu.org; Wed, 17 Apr 2019 13:06:18 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1hGo5R-0007V8-V5
+	for qemu-trivial@nongnu.org; Wed, 17 Apr 2019 13:11:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ehabkost@redhat.com>) id 1hGo0l-000371-Qo
-	for qemu-trivial@nongnu.org; Wed, 17 Apr 2019 13:06:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40092)
+	(envelope-from <ehabkost@redhat.com>) id 1hGo5Q-0007Qk-UR
+	for qemu-trivial@nongnu.org; Wed, 17 Apr 2019 13:11:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34730)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
-	id 1hGo0W-0002pJ-7R; Wed, 17 Apr 2019 13:06:00 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
+	id 1hGo5O-0007N7-KW; Wed, 17 Apr 2019 13:11:02 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E8511C05001C;
-	Wed, 17 Apr 2019 17:05:53 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id B989C88AAA;
+	Wed, 17 Apr 2019 17:11:01 +0000 (UTC)
 Received: from localhost (ovpn-116-9.gru2.redhat.com [10.97.116.9])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id F3C345C207;
-	Wed, 17 Apr 2019 17:05:50 +0000 (UTC)
-Date: Wed, 17 Apr 2019 14:05:49 -0300
+	by smtp.corp.redhat.com (Postfix) with ESMTP id F1C0B1001DCC;
+	Wed, 17 Apr 2019 17:11:00 +0000 (UTC)
+Date: Wed, 17 Apr 2019 14:10:59 -0300
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>
-Cc: Like Xu <like.xu@linux.intel.com>, qemu-trivial@nongnu.org,
+Cc: Like Xu <like.xu@linux.intel.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Thomas Huth <thuth@redhat.com>, like.xu@intel.com,
-	qemu-devel@nongnu.org, Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20190417170549.GB25134@habkost.net>
+	Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, like.xu@intel.com,
+	Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20190417171059.GC25134@habkost.net>
 References: <1555315185-16414-1-git-send-email-like.xu@linux.intel.com>
-	<1555315185-16414-2-git-send-email-like.xu@linux.intel.com>
-	<87bm1519u1.fsf@dusky.pond.sub.org>
+	<1555315185-16414-3-git-send-email-like.xu@linux.intel.com>
+	<20190416212003.GB2272@habkost.net>
+	<87ftqh1ae5.fsf@dusky.pond.sub.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <87bm1519u1.fsf@dusky.pond.sub.org>
+In-Reply-To: <87ftqh1ae5.fsf@dusky.pond.sub.org>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Wed, 17 Apr 2019 17:05:54 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Wed, 17 Apr 2019 17:11:01 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 1/2] vl.c: refactor
- current_machine as non-global variable
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 2/2] core/qdev: refactor
+ qdev_get_machine() with type assertion
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,51 +58,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Apr 2019 17:06:19 -0000
+X-List-Received-Date: Wed, 17 Apr 2019 17:11:07 -0000
 
-On Wed, Apr 17, 2019 at 07:26:14AM +0200, Markus Armbruster wrote:
-> Like Xu <like.xu@linux.intel.com> writes:
+On Wed, Apr 17, 2019 at 07:14:10AM +0200, Markus Armbruster wrote:
+> Eduardo Habkost <ehabkost@redhat.com> writes:
 > 
-> > This patch makes the remaining dozen or so uses of the global
-> > current_machine outside vl.c use qdev_get_machine() instead,
-> > and then make current_machine local to vl.c instead of global.
+> > On Mon, Apr 15, 2019 at 03:59:45PM +0800, Like Xu wrote:
+> >> To avoid the misuse of qdev_get_machine() if machine hasn't been created yet,
+> >> this patch uses qdev_get_machine_uncheck() for obj-common (share with user-only
+> >> mode) and adds type assertion to qdev_get_machine() in system-emulation mode.
+> >> 
+> >> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+> >> Signed-off-by: Like Xu <like.xu@linux.intel.com>
 > >
-> > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> > Signed-off-by: Like Xu <like.xu@linux.intel.com>
+> > Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+> >
+> > I'm queueing the series on machine-next, thanks!
 > 
-> I'm afraid I dislike this one, too.
+> Hold your horses, please.
 > 
-> The patch does not reduce global state, it's merely MICAHI (make it
-> complicated and hide it).
+> I dislike the name qdev_get_machine_uncheck().  I could live with
+> qdev_get_machine_unchecked().
 > 
-> It does not improve safety, it merely turns dereferences of null
-> current_machine into unwanted creation of "/machine" as container (ugh),
-> which the next patch then fixes up to assertion failure.
+> However, I doubt this is the right approach.
 > 
-> The only benefit I can see is you can't assign to current_machine
-> outside vl.c anymore.  Nobody ever did, thus complete non-issue.
+> The issue at hand is undisciplined creation of QOM object /machine.
+> 
+> This patch adds an asseertion "undisciplined creation of /machine didn't
+> create crap", but only in some places.
+> 
+> I think we should never create /machine as (surprising!) side effect of
+> qdev_get_machine().  Create it explicitly instead, and have
+> qdev_get_machine() use object_resolve_path("/machine", NULL) to get it.
+> Look ma, no side effects.
 
-The benefit I see is that we now have a single way to access the
-existing global state instead of two.
+OK, I'm dropping this one while we discuss it.
 
-> 
-> If you want to hide global state without actually reducing it, create an
-> accessor function.  You can then use that to replace qdev_get_machine(),
-> getting rid of its surprising side effect.  *That* would be an
-> improvement I could get behind.
-> 
-> Better that *hiding* use of global state would be *eliminating* use of
-> global state: pass current_machine around.  This isn't always practical.
-> But where it is, the dependence on "machine created" becomes obvious in
-> the code.
+I really miss a good explanation why qdev_get_machine_unchecked()
+needs to exist.  When exactly do we want /machine to exist but
+not be TYPE_MACHINE?  Why?
 
-I agree qdev_get_machine() has many issues.  I dislike
-qdev_get_machine() a lot, and I think I had suggested we stop
-using it and use current_machine instead.
-
-But at least now we have one imperfect API instead of two
-imperfect APIs.  I do think this makes future clean up work
-easier.
+Once the expectations and use cases are explained, we can choose
+a better name for qdev_get_machine_unchecked() and document it
+properly.
 
 -- 
 Eduardo
