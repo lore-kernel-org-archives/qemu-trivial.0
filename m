@@ -1,48 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hGd5V-0006m4-Ka
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Apr 2019 01:26:25 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50175)
+	id 1hGo0p-0005Oy-Mx
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Apr 2019 13:06:19 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58168)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hGd5T-0006iy-AA
-	for qemu-trivial@nongnu.org; Wed, 17 Apr 2019 01:26:24 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1hGo0n-0005Nm-Rl
+	for qemu-trivial@nongnu.org; Wed, 17 Apr 2019 13:06:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hGd5S-0006S3-EC
-	for qemu-trivial@nongnu.org; Wed, 17 Apr 2019 01:26:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56610)
+	(envelope-from <ehabkost@redhat.com>) id 1hGo0l-000371-Qo
+	for qemu-trivial@nongnu.org; Wed, 17 Apr 2019 13:06:17 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40092)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1hGd5N-0006Nb-KT; Wed, 17 Apr 2019 01:26:17 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1hGo0W-0002pJ-7R; Wed, 17 Apr 2019 13:06:00 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4A205307EA82;
-	Wed, 17 Apr 2019 05:26:16 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-116.ams2.redhat.com
-	[10.36.116.116])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EFBFB608C1;
-	Wed, 17 Apr 2019 05:26:15 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 8375F1138648; Wed, 17 Apr 2019 07:26:14 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Like Xu <like.xu@linux.intel.com>
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Eduardo Habkost <ehabkost@redhat.com>, like.xu@intel.com,
+	by mx1.redhat.com (Postfix) with ESMTPS id E8511C05001C;
+	Wed, 17 Apr 2019 17:05:53 +0000 (UTC)
+Received: from localhost (ovpn-116-9.gru2.redhat.com [10.97.116.9])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id F3C345C207;
+	Wed, 17 Apr 2019 17:05:50 +0000 (UTC)
+Date: Wed, 17 Apr 2019 14:05:49 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Like Xu <like.xu@linux.intel.com>, qemu-trivial@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, like.xu@intel.com,
 	qemu-devel@nongnu.org, Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20190417170549.GB25134@habkost.net>
 References: <1555315185-16414-1-git-send-email-like.xu@linux.intel.com>
 	<1555315185-16414-2-git-send-email-like.xu@linux.intel.com>
-Date: Wed, 17 Apr 2019 07:26:14 +0200
-In-Reply-To: <1555315185-16414-2-git-send-email-like.xu@linux.intel.com> (Like
-	Xu's message of "Mon, 15 Apr 2019 15:59:44 +0800")
-Message-ID: <87bm1519u1.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	<87bm1519u1.fsf@dusky.pond.sub.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87bm1519u1.fsf@dusky.pond.sub.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.44]);
-	Wed, 17 Apr 2019 05:26:16 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Wed, 17 Apr 2019 17:05:54 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 1/2] vl.c: refactor
@@ -58,36 +56,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Apr 2019 05:26:24 -0000
+X-List-Received-Date: Wed, 17 Apr 2019 17:06:19 -0000
 
-Like Xu <like.xu@linux.intel.com> writes:
+On Wed, Apr 17, 2019 at 07:26:14AM +0200, Markus Armbruster wrote:
+> Like Xu <like.xu@linux.intel.com> writes:
+> 
+> > This patch makes the remaining dozen or so uses of the global
+> > current_machine outside vl.c use qdev_get_machine() instead,
+> > and then make current_machine local to vl.c instead of global.
+> >
+> > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> > Signed-off-by: Like Xu <like.xu@linux.intel.com>
+> 
+> I'm afraid I dislike this one, too.
+> 
+> The patch does not reduce global state, it's merely MICAHI (make it
+> complicated and hide it).
+> 
+> It does not improve safety, it merely turns dereferences of null
+> current_machine into unwanted creation of "/machine" as container (ugh),
+> which the next patch then fixes up to assertion failure.
+> 
+> The only benefit I can see is you can't assign to current_machine
+> outside vl.c anymore.  Nobody ever did, thus complete non-issue.
 
-> This patch makes the remaining dozen or so uses of the global
-> current_machine outside vl.c use qdev_get_machine() instead,
-> and then make current_machine local to vl.c instead of global.
->
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Like Xu <like.xu@linux.intel.com>
+The benefit I see is that we now have a single way to access the
+existing global state instead of two.
 
-I'm afraid I dislike this one, too.
+> 
+> If you want to hide global state without actually reducing it, create an
+> accessor function.  You can then use that to replace qdev_get_machine(),
+> getting rid of its surprising side effect.  *That* would be an
+> improvement I could get behind.
+> 
+> Better that *hiding* use of global state would be *eliminating* use of
+> global state: pass current_machine around.  This isn't always practical.
+> But where it is, the dependence on "machine created" becomes obvious in
+> the code.
 
-The patch does not reduce global state, it's merely MICAHI (make it
-complicated and hide it).
+I agree qdev_get_machine() has many issues.  I dislike
+qdev_get_machine() a lot, and I think I had suggested we stop
+using it and use current_machine instead.
 
-It does not improve safety, it merely turns dereferences of null
-current_machine into unwanted creation of "/machine" as container (ugh),
-which the next patch then fixes up to assertion failure.
+But at least now we have one imperfect API instead of two
+imperfect APIs.  I do think this makes future clean up work
+easier.
 
-The only benefit I can see is you can't assign to current_machine
-outside vl.c anymore.  Nobody ever did, thus complete non-issue.
-
-If you want to hide global state without actually reducing it, create an
-accessor function.  You can then use that to replace qdev_get_machine(),
-getting rid of its surprising side effect.  *That* would be an
-improvement I could get behind.
-
-Better that *hiding* use of global state would be *eliminating* use of
-global state: pass current_machine around.  This isn't always practical.
-But where it is, the dependence on "machine created" becomes obvious in
-the code.
+-- 
+Eduardo
 
