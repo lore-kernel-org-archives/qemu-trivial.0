@@ -1,76 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hGYrT-0000NK-R2
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Apr 2019 20:55:39 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:41440)
+	id 1hGctm-00056G-TK
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Apr 2019 01:14:18 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:48452)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stephen.checkoway@oberlin.edu>) id 1hGYrR-0000MK-Jz
-	for qemu-trivial@nongnu.org; Tue, 16 Apr 2019 20:55:38 -0400
+	(envelope-from <armbru@redhat.com>) id 1hGctl-000550-1l
+	for qemu-trivial@nongnu.org; Wed, 17 Apr 2019 01:14:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stephen.checkoway@oberlin.edu>) id 1hGYrQ-0001nj-Ln
-	for qemu-trivial@nongnu.org; Tue, 16 Apr 2019 20:55:37 -0400
-Received: from mail-it1-x129.google.com ([2607:f8b0:4864:20::129]:39053)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stephen.checkoway@oberlin.edu>)
-	id 1hGYrQ-0001nO-GP
-	for qemu-trivial@nongnu.org; Tue, 16 Apr 2019 20:55:36 -0400
-Received: by mail-it1-x129.google.com with SMTP id 139so1762725ita.4
-	for <qemu-trivial@nongnu.org>; Tue, 16 Apr 2019 17:55:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=oberlin-edu.20150623.gappssmtp.com; s=20150623;
-	h=mime-version:subject:from:in-reply-to:date:cc
-	:content-transfer-encoding:message-id:references:to;
-	bh=+BQ4ulsEbegWudLY6CiTHTPm8mbvLyuYR8uCnW5CktM=;
-	b=cx3H55bJ+IyGWKPxu23IUKE5bb2JwOM5y4chwWRCzISprgeUm41BHYpgYPc1iIRvMC
-	+3nFnkcw6+eX8NBaiuOoEwtfPVGtgCpiZADSoJu6NWyh2JqGGH24TO7c5rCLXBPcWbZA
-	CcuJB1jD+M3IASy2uxFnLmrmqK5MRFWeeQoRtjczZK6gPLtnOPoJxgHrBB54KLqHfvql
-	UrBFqjGxRy8iZ1m5ej5pAxgt+mbSfjnbLVAlYRCh2opBa2nk7As24IeXWQmlHxQFNO3l
-	hWRbjGcN0UAcZQyYTBxfz3Nges8Rvoz9ev0S2Xee44wAIS839KpGx5LHOeKbv3keAIh5
-	EVmw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
-	:content-transfer-encoding:message-id:references:to;
-	bh=+BQ4ulsEbegWudLY6CiTHTPm8mbvLyuYR8uCnW5CktM=;
-	b=Th3cm2EUCcWDhiCwEaRpWRZYlfwAxh0BiSxgQ1DxeWsbJF0CRw7jYyNK/hw/tDrnhZ
-	UavWxFK3OqfKjxR16EJBASJzNGgpeQBjW2cEwKEskGCJwwK4QI67dMKU2LLrx5I5Oh+O
-	0iZxa6cE8X0VtWaZGjPnM0QH6O5tf9DHSfXVq5Dx1u+opapHgQy3jYpceeTaA64s6iZx
-	WeJgGLMwXB3KdY6b6wFaHL5tAabTrRZCKUWTC12xRZD7cifx9MX/eBAyFceFeBHQHpki
-	c7Xgkbvzbf8OUiL+W0Fi4Urzm9ZtOemrfUpaoEys8C4K2CT5hafkwYHtUaAhPgCjkRjU
-	yKgQ==
-X-Gm-Message-State: APjAAAW0EXlVspJnsn3vFd/4dQjIr5LuZQHEbIA9uDDLNnchSAtFh29P
-	AfWf2Y5XKHPh8T2hSSQOhvObAw==
-X-Google-Smtp-Source: APXvYqy4xf7QoaQ2126adGE2bQCYCySLuxw6k2p3qbndMgmSyZc/R3WSTxvFPuaLUoXwJ+9b+zK5Gg==
-X-Received: by 2002:a02:b097:: with SMTP id v23mr58410904jah.42.1555462534968; 
-	Tue, 16 Apr 2019 17:55:34 -0700 (PDT)
-Received: from worksec.oberlin.net (ip-210-181.oberlin.net. [208.66.210.181])
-	by smtp.gmail.com with ESMTPSA id
-	w184sm577780ita.9.2019.04.16.17.55.34
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 16 Apr 2019 17:55:34 -0700 (PDT)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 12.2 \(3445.102.3\))
-From: Stephen Checkoway <stephen.checkoway@oberlin.edu>
-In-Reply-To: <1328f591-897f-8762-d324-cccb5f63a360@redhat.com>
-Date: Tue, 16 Apr 2019 20:55:33 -0400
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
-	qemu-trivial@nongnu.org,
-	=?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <3BCE3056-7CA2-4DAB-8F7F-87E9E1F481D4@oberlin.edu>
-References: <20190305051007.56009-1-stephen.checkoway@oberlin.edu>
-	<52a82d3a-3b79-c61d-93fa-f087af45f6fb@redhat.com>
-	<1328f591-897f-8762-d324-cccb5f63a360@redhat.com>
-To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-X-Mailer: Apple Mail (2.3445.102.3)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::129
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/char/escc: Lower irq
- when transmit buffer is filled
+	(envelope-from <armbru@redhat.com>) id 1hGctk-0007VM-8s
+	for qemu-trivial@nongnu.org; Wed, 17 Apr 2019 01:14:17 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40842)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1hGcti-0007T7-4G; Wed, 17 Apr 2019 01:14:14 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4AEEB3084213;
+	Wed, 17 Apr 2019 05:14:12 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-116.ams2.redhat.com
+	[10.36.116.116])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id DC81A5C220;
+	Wed, 17 Apr 2019 05:14:11 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 66F721138648; Wed, 17 Apr 2019 07:14:10 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Like Xu <like.xu@linux.intel.com>, Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, like.xu@intel.com,
+	Igor Mammedov <imammedo@redhat.com>
+References: <1555315185-16414-1-git-send-email-like.xu@linux.intel.com>
+	<1555315185-16414-3-git-send-email-like.xu@linux.intel.com>
+	<20190416212003.GB2272@habkost.net>
+Date: Wed, 17 Apr 2019 07:14:10 +0200
+In-Reply-To: <20190416212003.GB2272@habkost.net> (Eduardo Habkost's message of
+	"Tue, 16 Apr 2019 18:20:03 -0300")
+Message-ID: <87ftqh1ae5.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.40]);
+	Wed, 17 Apr 2019 05:14:12 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 2/2] core/qdev: refactor
+ qdev_get_machine() with type assertion
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -82,44 +59,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Apr 2019 00:55:38 -0000
+X-List-Received-Date: Wed, 17 Apr 2019 05:14:18 -0000
 
+Eduardo Habkost <ehabkost@redhat.com> writes:
 
+> On Mon, Apr 15, 2019 at 03:59:45PM +0800, Like Xu wrote:
+>> To avoid the misuse of qdev_get_machine() if machine hasn't been created yet,
+>> this patch uses qdev_get_machine_uncheck() for obj-common (share with user-only
+>> mode) and adds type assertion to qdev_get_machine() in system-emulation mode.
+>> 
+>> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+>> Signed-off-by: Like Xu <like.xu@linux.intel.com>
+>
+> Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+>
+> I'm queueing the series on machine-next, thanks!
 
-> On Apr 10, 2019, at 16:01, Philippe Mathieu-Daud=C3=A9 =
-<philmd@redhat.com> wrote:
->=20
-> So your description and patch makes sens.
-> What worries me is the controller could have other pending IRQs to
-> deliver and you are clearing them. Shouldn't we only clear the
-> INTR_TXINT bit, and call escc_update_irq() which should lower the IRQ =
-if
-> no bits are pending?
->=20
-> Maybe as:
->=20
->    s->wregs[W_INTR] &=3D ~INTR_TXINT;
->    escc_update_irq(s);
+Hold your horses, please.
 
-I just sent a v2 patch (but it looks like I failed to include Philippe, =
-sorry about that!)
+I dislike the name qdev_get_machine_uncheck().  I could live with
+qdev_get_machine_unchecked().
 
-I used
+However, I doubt this is the right approach.
 
-    s->txint =3D 0;
-    escc_update_irq(s);
+The issue at hand is undisciplined creation of QOM object /machine.
 
-which appears to do the right thing in my tests.
+This patch adds an asseertion "undisciplined creation of /machine didn't
+create crap", but only in some places.
 
-Thank you,
-
-Steve
-
---=20
-Stephen Checkoway
-
-
-
-
-
+I think we should never create /machine as (surprising!) side effect of
+qdev_get_machine().  Create it explicitly instead, and have
+qdev_get_machine() use object_resolve_path("/machine", NULL) to get it.
+Look ma, no side effects.
 
