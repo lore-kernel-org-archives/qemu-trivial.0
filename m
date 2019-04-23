@@ -1,71 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hIzas-0007Z6-2T
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Apr 2019 13:52:34 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60721)
+	id 1hJ45b-0004rt-QW
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Apr 2019 18:40:35 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43995)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1hIzap-0007XZ-MH
-	for qemu-trivial@nongnu.org; Tue, 23 Apr 2019 13:52:32 -0400
+	(envelope-from <philmd@redhat.com>) id 1hJ45Z-0004iA-AS
+	for qemu-trivial@nongnu.org; Tue, 23 Apr 2019 18:40:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1hIzao-0005wk-FA
-	for qemu-trivial@nongnu.org; Tue, 23 Apr 2019 13:52:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39838)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1hIzal-0005hx-Bc; Tue, 23 Apr 2019 13:52:27 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ECBB930ADBA2;
-	Tue, 23 Apr 2019 17:52:20 +0000 (UTC)
-Received: from [10.3.116.149] (ovpn-116-149.phx2.redhat.com [10.3.116.149])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1DB0B1001E71;
-	Tue, 23 Apr 2019 17:52:19 +0000 (UTC)
+	(envelope-from <philmd@redhat.com>) id 1hJ3zo-0004En-KA
+	for qemu-trivial@nongnu.org; Tue, 23 Apr 2019 18:34:37 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:46362)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hJ3zo-0004DQ-Ds
+	for qemu-trivial@nongnu.org; Tue, 23 Apr 2019 18:34:36 -0400
+Received: by mail-wr1-f68.google.com with SMTP id t17so22185611wrw.13
+	for <qemu-trivial@nongnu.org>; Tue, 23 Apr 2019 15:34:36 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=QunzcbZ8nTWCmoiv3jqVBQGDo7+nt4uraJUdNozr4Zs=;
+	b=I5mAxieoN69cHW2IpZJF7+3X2i6DXhNMzAEI5vHukbCYODA0OJhdnFTYUmfa+1Lt++
+	EQZfcoGRObhOXSyebLvP4MnYl4gpHoc7wx3eykzG9E60DrK0VtTl1PPzcWc6ymf0SnVm
+	8ZBnPHW60sc9B8tcUe+dXOUHYDZP3f5vdfdfr64mnXZ1hXc67daPALlMCvhqHgjMkaZH
+	h7hNrd/ww0P5XIR1Y9N1yNTorQLwbtaqE74PdW2fx7XHF29godqu0vQF8UFQ/lpKs1lx
+	oO1OGW/MIM7d3ovzvof8hnaCrcl3OsOME3vk7cGDNLkIUDD2EWQXBShPGZ/K/jQsP2tI
+	iwnw==
+X-Gm-Message-State: APjAAAUqjaHRwSHTr/FSZ2Z3veQzeV5HJZZRkYyFWxVmeW89FyRwMo5t
+	GfDAmjYdxLjJjgVH8SSPfyymlROU3Ew=
+X-Google-Smtp-Source: APXvYqwMiEPsQF9zoXmt7WNqFkrbKOAjYf+Mg07gPUqo7QsEcbdTfVpCR8ebtDj48Dt5+uNiT7FF0w==
+X-Received: by 2002:a05:6000:11cf:: with SMTP id
+	i15mr18182693wrx.287.1556058875239; 
+	Tue, 23 Apr 2019 15:34:35 -0700 (PDT)
+Received: from [192.168.1.25] (atoulouse-656-1-803-163.w86-221.abo.wanadoo.fr.
+	[86.221.12.163]) by smtp.gmail.com with ESMTPSA id
+	t15sm15469016wrx.22.2019.04.23.15.34.34
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Tue, 23 Apr 2019 15:34:34 -0700 (PDT)
 To: Thomas Huth <thuth@redhat.com>, Jason Wang <jasowang@redhat.com>,
 	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
+Cc: qemu-trivial@nongnu.org
 References: <20190423160608.7519-1-thuth@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=eblake@redhat.com; keydata=
-	xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
-	xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
-	TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
-	GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
-	sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
-	AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
-	CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
-	RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
-	wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
-	Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
-	gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
-	pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
-	zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
-	pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
-	3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
-	NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
-	cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
-	SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
-	I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
-	mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
-	Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
-	2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
-Organization: Red Hat, Inc.
-Message-ID: <f1db3bb5-6028-e8a4-f56b-fdd22215688f@redhat.com>
-Date: Tue, 23 Apr 2019 12:52:18 -0500
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <319f3544-a107-416f-ff8a-3501943f1821@redhat.com>
+Date: Wed, 24 Apr 2019 00:34:33 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
 In-Reply-To: <20190423160608.7519-1-thuth@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="oG3L6d2PSVZYkVCaZcW6WzX09EPqdzahr"
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.47]);
-	Tue, 23 Apr 2019 17:52:22 +0000 (UTC)
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+	[fuzzy]
+X-Received-From: 209.85.221.68
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] net: Print output of "-net
  nic, model=help" to stdout instead of stderr
 X-BeenThere: qemu-trivial@nongnu.org
@@ -79,91 +69,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Apr 2019 17:52:33 -0000
+X-List-Received-Date: Tue, 23 Apr 2019 22:40:34 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---oG3L6d2PSVZYkVCaZcW6WzX09EPqdzahr
-Content-Type: multipart/mixed; boundary="ut8U1YViuMknA7CKWQUSht61ht3j9P86V";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: Thomas Huth <thuth@redhat.com>, Jason Wang <jasowang@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
-Message-ID: <f1db3bb5-6028-e8a4-f56b-fdd22215688f@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH] net: Print output of "-net nic, model=help"
- to stdout instead of stderr
-References: <20190423160608.7519-1-thuth@redhat.com>
-In-Reply-To: <20190423160608.7519-1-thuth@redhat.com>
-
---ut8U1YViuMknA7CKWQUSht61ht3j9P86V
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-[adding Markus, as he send a recent batch of similar patches]
-
-On 4/23/19 11:06 AM, Thomas Huth wrote:
+On 4/23/19 6:06 PM, Thomas Huth wrote:
 > We are printing all other help output to stdout already (e.g. "-help",
-> "-cpu help" and "-machine help" output). So the "-net nic,model=3Dhelp"=
-
+> "-cpu help" and "-machine help" output). So the "-net nic,model=help"
 > output should go to stdout instead of stderr, too. And while we're at
 > it, also print the NICs line by line, like we do it e.g. with the
 > "-cpu help" or "-M help" output, too.
->=20
+> 
 > Buglink: https://bugs.launchpad.net/qemu/+bug/1574327
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
 >  net/net.c | 7 ++++---
 >  1 file changed, 4 insertions(+), 3 deletions(-)
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
->=20
+> 
 > diff --git a/net/net.c b/net/net.c
 > index f3a3c5444c..2cf5e76469 100644
 > --- a/net/net.c
 > +++ b/net/net.c
-> @@ -837,9 +837,10 @@ int qemu_show_nic_models(const char *arg, const ch=
-ar *const *models)
+> @@ -837,9 +837,10 @@ int qemu_show_nic_models(const char *arg, const char *const *models)
 >          return 0;
 >      }
-> =20
+>  
 > -    fprintf(stderr, "qemu: Supported NIC models: ");
-> -    for (i =3D 0 ; models[i]; i++)
+> -    for (i = 0 ; models[i]; i++)
 > -        fprintf(stderr, "%s%c", models[i], models[i+1] ? ',' : '\n');
 > +    printf("Supported NIC models:\n");
-> +    for (i =3D 0 ; models[i]; i++) {
+> +    for (i = 0 ; models[i]; i++) {
 > +        printf("%s\n", models[i]);
 > +    }
 >      return 1;
 >  }
-> =20
->=20
+>  
+> 
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
-
---ut8U1YViuMknA7CKWQUSht61ht3j9P86V--
-
---oG3L6d2PSVZYkVCaZcW6WzX09EPqdzahr
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAly/UNIACgkQp6FrSiUn
-Q2pLsggAoZ110sQJBNhz05OBWHy7JQ9Fa1S7rcjEfhDM7BA68oj3X3VzxcPVVsv0
-jo+mBKTVryVMqKpv1RCziPWbo/tHJvMnERHHqX+24zXeztLaxD0H/JjxvrA/I2EA
-nPqARjEFpTtwKLBx5+j/+A6W5z66GZy3goqWor17Bs9nyVPa811N9LhsCGNVT//M
-1IMASrN1dE0k8R4d+0xwbJdt7COZHP8UJv41zG+TRFEyZcIO8EbgoE4QVoxQYSIy
-Ounyiz5t9gXKSHWdTxuc0U7LTNTxMf49920wIdunddj/7ZqIG4NTZTlDSt7MPnbg
-1yzTX7IZRVYg4KLiquREl86qyo/uzA==
-=/CYd
------END PGP SIGNATURE-----
-
---oG3L6d2PSVZYkVCaZcW6WzX09EPqdzahr--
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
