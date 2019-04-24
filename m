@@ -1,63 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hJ45b-0004rt-QW
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Apr 2019 18:40:35 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:43995)
+	id 1hJLh1-0001Iy-22
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Apr 2019 13:28:23 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56639)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hJ45Z-0004iA-AS
-	for qemu-trivial@nongnu.org; Tue, 23 Apr 2019 18:40:34 -0400
+	(envelope-from <ehabkost@redhat.com>) id 1hJLgw-00017W-Rr
+	for qemu-trivial@nongnu.org; Wed, 24 Apr 2019 13:28:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hJ3zo-0004En-KA
-	for qemu-trivial@nongnu.org; Tue, 23 Apr 2019 18:34:37 -0400
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:46362)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hJ3zo-0004DQ-Ds
-	for qemu-trivial@nongnu.org; Tue, 23 Apr 2019 18:34:36 -0400
-Received: by mail-wr1-f68.google.com with SMTP id t17so22185611wrw.13
-	for <qemu-trivial@nongnu.org>; Tue, 23 Apr 2019 15:34:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=QunzcbZ8nTWCmoiv3jqVBQGDo7+nt4uraJUdNozr4Zs=;
-	b=I5mAxieoN69cHW2IpZJF7+3X2i6DXhNMzAEI5vHukbCYODA0OJhdnFTYUmfa+1Lt++
-	EQZfcoGRObhOXSyebLvP4MnYl4gpHoc7wx3eykzG9E60DrK0VtTl1PPzcWc6ymf0SnVm
-	8ZBnPHW60sc9B8tcUe+dXOUHYDZP3f5vdfdfr64mnXZ1hXc67daPALlMCvhqHgjMkaZH
-	h7hNrd/ww0P5XIR1Y9N1yNTorQLwbtaqE74PdW2fx7XHF29godqu0vQF8UFQ/lpKs1lx
-	oO1OGW/MIM7d3ovzvof8hnaCrcl3OsOME3vk7cGDNLkIUDD2EWQXBShPGZ/K/jQsP2tI
-	iwnw==
-X-Gm-Message-State: APjAAAUqjaHRwSHTr/FSZ2Z3veQzeV5HJZZRkYyFWxVmeW89FyRwMo5t
-	GfDAmjYdxLjJjgVH8SSPfyymlROU3Ew=
-X-Google-Smtp-Source: APXvYqwMiEPsQF9zoXmt7WNqFkrbKOAjYf+Mg07gPUqo7QsEcbdTfVpCR8ebtDj48Dt5+uNiT7FF0w==
-X-Received: by 2002:a05:6000:11cf:: with SMTP id
-	i15mr18182693wrx.287.1556058875239; 
-	Tue, 23 Apr 2019 15:34:35 -0700 (PDT)
-Received: from [192.168.1.25] (atoulouse-656-1-803-163.w86-221.abo.wanadoo.fr.
-	[86.221.12.163]) by smtp.gmail.com with ESMTPSA id
-	t15sm15469016wrx.22.2019.04.23.15.34.34
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 23 Apr 2019 15:34:34 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20190423160608.7519-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <319f3544-a107-416f-ff8a-3501943f1821@redhat.com>
-Date: Wed, 24 Apr 2019 00:34:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(envelope-from <ehabkost@redhat.com>) id 1hJLaw-0001E0-2P
+	for qemu-trivial@nongnu.org; Wed, 24 Apr 2019 13:22:08 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36898)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+	id 1hJLaf-00011k-NO; Wed, 24 Apr 2019 13:21:50 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C04E64CE89;
+	Wed, 24 Apr 2019 17:21:45 +0000 (UTC)
+Received: from localhost (ovpn-116-9.gru2.redhat.com [10.97.116.9])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 329935C28D;
+	Wed, 24 Apr 2019 17:21:44 +0000 (UTC)
+Date: Wed, 24 Apr 2019 14:21:43 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Like Xu <like.xu@linux.intel.com>
+Cc: Markus Armbruster <armbru@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, like.xu@intel.com,
+	Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20190424172143.GC18406@habkost.net>
+References: <1555315185-16414-1-git-send-email-like.xu@linux.intel.com>
+	<1555315185-16414-3-git-send-email-like.xu@linux.intel.com>
+	<20190416212003.GB2272@habkost.net>
+	<87ftqh1ae5.fsf@dusky.pond.sub.org>
+	<20190417171059.GC25134@habkost.net>
+	<3fc39df9-9c4e-219c-e7dc-c93754fd1315@linux.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20190423160608.7519-1-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <3fc39df9-9c4e-219c-e7dc-c93754fd1315@linux.intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.30]);
+	Wed, 24 Apr 2019 17:21:46 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] net: Print output of "-net
- nic, model=help" to stdout instead of stderr
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 2/2] core/qdev: refactor
+ qdev_get_machine() with type assertion
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,40 +60,111 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Apr 2019 22:40:34 -0000
+X-List-Received-Date: Wed, 24 Apr 2019 17:28:20 -0000
 
-On 4/23/19 6:06 PM, Thomas Huth wrote:
-> We are printing all other help output to stdout already (e.g. "-help",
-> "-cpu help" and "-machine help" output). So the "-net nic,model=help"
-> output should go to stdout instead of stderr, too. And while we're at
-> it, also print the NICs line by line, like we do it e.g. with the
-> "-cpu help" or "-M help" output, too.
+On Tue, Apr 23, 2019 at 03:59:31PM +0800, Like Xu wrote:
+> On 2019/4/18 1:10, Eduardo Habkost wrote:
+> > On Wed, Apr 17, 2019 at 07:14:10AM +0200, Markus Armbruster wrote:
+> > > Eduardo Habkost <ehabkost@redhat.com> writes:
+> > > 
+> > > > On Mon, Apr 15, 2019 at 03:59:45PM +0800, Like Xu wrote:
+> > > > > To avoid the misuse of qdev_get_machine() if machine hasn't been created yet,
+> > > > > this patch uses qdev_get_machine_uncheck() for obj-common (share with user-only
+> > > > > mode) and adds type assertion to qdev_get_machine() in system-emulation mode.
+> > > > > 
+> > > > > Suggested-by: Igor Mammedov <imammedo@redhat.com>
+> > > > > Signed-off-by: Like Xu <like.xu@linux.intel.com>
+> > > > 
+> > > > Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
+> > > > 
+> > > > I'm queueing the series on machine-next, thanks!
+> > > 
+> > > Hold your horses, please.
+> > > 
+> > > I dislike the name qdev_get_machine_uncheck().  I could live with
+> > > qdev_get_machine_unchecked().
+> > > 
+> > > However, I doubt this is the right approach.
+> > > 
+> > > The issue at hand is undisciplined creation of QOM object /machine.
+> > > 
+> > > This patch adds an asseertion "undisciplined creation of /machine didn't
+> > > create crap", but only in some places.
+> > > 
+> > > I think we should never create /machine as (surprising!) side effect of
+> > > qdev_get_machine().  Create it explicitly instead, and have
+> > > qdev_get_machine() use object_resolve_path("/machine", NULL) to get it.
+> > > Look ma, no side effects.
+> > 
+> > OK, I'm dropping this one while we discuss it.
+> > 
+> > I really miss a good explanation why qdev_get_machine_unchecked()
+> > needs to exist.  When exactly do we want /machine to exist but
+> > not be TYPE_MACHINE?  Why?
 > 
-> Buglink: https://bugs.launchpad.net/qemu/+bug/1574327
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  net/net.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
+> AFAICT, there is no such "/machine" that is not of type TYPE_MACHINE.
 > 
-> diff --git a/net/net.c b/net/net.c
-> index f3a3c5444c..2cf5e76469 100644
-> --- a/net/net.c
-> +++ b/net/net.c
-> @@ -837,9 +837,10 @@ int qemu_show_nic_models(const char *arg, const char *const *models)
->          return 0;
->      }
->  
-> -    fprintf(stderr, "qemu: Supported NIC models: ");
-> -    for (i = 0 ; models[i]; i++)
-> -        fprintf(stderr, "%s%c", models[i], models[i+1] ? ',' : '\n');
-> +    printf("Supported NIC models:\n");
-> +    for (i = 0 ; models[i]; i++) {
-> +        printf("%s\n", models[i]);
-> +    }
->      return 1;
->  }
->  
+> The original qdev_get_machine() would always return a "/container" object in
+> user-only mode and there is none TYPE_MACHINE object.
+
+I'm confused.  Both qdev_get_machine() and
+qdev_get_machine_unchecked() still return the object at
+"/machine".  On softmmu, /machine will be of type TYPE_MACHINE.
+On user-only, /machine will be of type "container".
+
+
+> 
+> In system emulation mode, it returns the same "/container" object at the
+> beginning, until we initialize and add a TYPE_MACHINE object to the
+> "/container" as a child and it would return OBJECT(current_machine)
+> for later usages.
+> 
+> The starting point is to avoid using the legacy qdev_get_machine()
+> in system emulation mode when we haven't added the "/machine" object.
+> As a result, we introduced type checking assertions to avoid premature
+> invocations.
+
+I believe Markus is suggesting that avoiding unwanted side
+effects is even better than doing type checking after it's
+already too late.  In other words, it doesn't make sense to call
+container_get("/machine") on system emulation mode.
+
+
+> 
+> In this proposal, the qdev_get_machine_unchecked() is only used
+> in user-only mode, part of which shares with system emulation mode
+> (such as device_set_realized, cpu_common_realizefn). The new
+> qdev_get_machine() is only used in system emulation mode and type checking
+> assertion does reduce the irrational use of this function (if any in the
+> future).
+
+This part confuses me as well.  qdev_get_machine_unchecked() is
+used in both user-only and softmmu, isn't?  Thus we can't say it
+is only used in user-only mode.
+
+I think we all agree that qdev_get_machine() should eventually be
+available in softmmu only.
+
+But I don't think we agree when it would be appropriate to call
+qdev_get_machine_unchecked() instead of qdev_get_machine().
+
+On both examples in your patch, the code checks for TYPE_MACHINE
+immediately after calling qdev_get_machine_unchecked().  If that
+code is only useful in softmmu mode, when would anybody want to
+call qdev_get_machine_unchecked() in user-only mode?
+
+
+> 
+> We all agree to use this qdev_get_machine() as little as possible
+> and this patch could make future clean up work easier.
+> 
+> > 
+> > Once the expectations and use cases are explained, we can choose
+> > a better name for qdev_get_machine_unchecked() and document it
+> > properly.
+> > 
 > 
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+-- 
+Eduardo
 
