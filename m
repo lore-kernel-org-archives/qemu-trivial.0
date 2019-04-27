@@ -1,97 +1,93 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hKQxf-0007gV-RL
-	for mharc-qemu-trivial@gnu.org; Sat, 27 Apr 2019 13:18:03 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:41134)
+	id 1hKS2A-0007Gk-E6
+	for mharc-qemu-trivial@gnu.org; Sat, 27 Apr 2019 14:26:46 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52108)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1hKQxb-0007g8-8z
-	for qemu-trivial@nongnu.org; Sat, 27 Apr 2019 13:18:00 -0400
+	(envelope-from <sw@weilnetz.de>) id 1hKS27-0007Em-2j
+	for qemu-trivial@nongnu.org; Sat, 27 Apr 2019 14:26:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <rth7680@gmail.com>) id 1hKQxa-0005vC-BF
-	for qemu-trivial@nongnu.org; Sat, 27 Apr 2019 13:17:59 -0400
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:38320)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
-	id 1hKQxa-0005u4-39; Sat, 27 Apr 2019 13:17:58 -0400
-Received: by mail-pg1-x543.google.com with SMTP id j26so3104660pgl.5;
-	Sat, 27 Apr 2019 10:17:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=ndmDw5GF7Gy0cUdTRq5wruYjRgnT9v9b/B51Ixp1Zyc=;
-	b=Feqk6PbDdvWu7tWblpqH8vlMV049I/MJ0MmMhIjreNCCEBBrjzKgdIpm0uHi/TE7Ye
-	ZQugqNK8WPqG5jzR49aN93ql87OuH0R2sMHXJxAuYQ10HRDlHXeTILYJGz+ah0CEAfep
-	PINrlFmpTLX5dfxDVyHGp3lDwBauKSCK8Dax+DyIBlhCYgcaJrJns8aRcq0izSaExnCe
-	FyFgXCeNOC3CwUvTf/koeGtBIORmdmDnk8+vfdvNfWkRog+HBOIFwk80R29K5cAg1MYh
-	FD9J8tehf0knAHBhq6pYR6SAsAFSSpTn78ad2XavXp6zg83mkxamZkcXDuCYeaFgtMIw
-	F4nw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
-	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
-	:content-language:content-transfer-encoding;
-	bh=ndmDw5GF7Gy0cUdTRq5wruYjRgnT9v9b/B51Ixp1Zyc=;
-	b=UKrd6aYzQuHbrWOu/HSD0hQm6qWA6PTRTH+uHM8DvFHurWTcN3VbsYNaHAN7bFf9q5
-	ER9NTzE4gtRHiN2inVver9L/lnStJVijK88AFQZFAgJv+xXa13K17nXNEzmbrLocZR6G
-	H6Aj0N7aifPaTT5I49e0SJ7wUvIJ28IDkjkDAh+cJjRHRy+shIzcghRvzzBptrSAMdHf
-	OwbJyau3JgU7naCwAWnP7suf/i2IqbFUypeQit14evGSGXdv3i6GGVOABpyXQrBlqOy9
-	So/lssc5nn7OTF6YDFheLg/Rudxg5BdArciMr8huQmnkF3R976R3yorCQ+ckw6Vvqwnm
-	sujA==
-X-Gm-Message-State: APjAAAUQKGoINNqgM4fM3N1YLADSL/Z9rr9bnr6CEL6QAEm5AvCAahzf
-	MGQeTBnJYVCDB9RTsI87Kb4Xy2/v
-X-Google-Smtp-Source: APXvYqxcjcyIlWa6jSBUEAMGWDm547oxfhM/jmSF/p4MYG4J4NMM/pSLo8GKYQkZs9mp7P1FtGs6Sw==
-X-Received: by 2002:a63:da51:: with SMTP id l17mr8343072pgj.115.1556385475660; 
-	Sat, 27 Apr 2019 10:17:55 -0700 (PDT)
-Received: from [192.168.1.11] (97-113-179-147.tukw.qwest.net. [97.113.179.147])
-	by smtp.googlemail.com with ESMTPSA id
-	q78sm24626600pfi.76.2019.04.27.10.17.53
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 27 Apr 2019 10:17:54 -0700 (PDT)
-Sender: Richard Henderson <rth7680@gmail.com>
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-trivial@nongnu.org
-References: <20190427154539.11336-1-thuth@redhat.com>
-From: Richard Henderson <rth@twiddle.net>
+	(envelope-from <sw@weilnetz.de>) id 1hKS24-00051Z-WD
+	for qemu-trivial@nongnu.org; Sat, 27 Apr 2019 14:26:42 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:60430
+	helo=v2201612906741603.powersrv.de)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sw@weilnetz.de>)
+	id 1hKS1x-0004VW-4q; Sat, 27 Apr 2019 14:26:34 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by v2201612906741603.powersrv.de (Postfix) with ESMTP id 1D45CDAD847;
+	Sat, 27 Apr 2019 20:26:28 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id M1BinkcFnZni; Sat, 27 Apr 2019 20:26:27 +0200 (CEST)
+Received: from [192.168.178.24] (p57B42786.dip0.t-ipconnect.de [87.180.39.134])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest
+	SHA256) (No client certificate requested)
+	by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 285AEDA3367; 
+	Sat, 27 Apr 2019 20:26:27 +0200 (CEST)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: Michael Roth <mdroth@linux.vnet.ibm.com>, qemu-trivial@nongnu.org
+References: <20190427161322.24642-1-philmd@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
 Openpgp: preference=signencrypt
-Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
-	mQENBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
-	n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
-	rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
-	Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
-	n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
-	AAG0I1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+iQFBBBMBAgArAhsDBgsJ
-	CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
-	cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
-	Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
-	eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
-	LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
-	Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVuQENBFGuLC8BCACyEx3x
-	94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
-	86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
-	I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
-	VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
-	+PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAGJASUEGAECAA8CGwwF
-	AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
-	Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
-	prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
-	/E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
-	jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
-	VcROBqvtH3ecaIL9iw==
-Message-ID: <82672e3e-b7e4-4b07-a31b-c600e1374607@twiddle.net>
-Date: Sat, 27 Apr 2019 10:17:51 -0700
+Autocrypt: addr=sw@weilnetz.de; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <3f85f099-c650-b9d2-53cd-9c17f97708d7@weilnetz.de>
+Date: Sat, 27 Apr 2019 20:26:26 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190427154539.11336-1-thuth@redhat.com>
+In-Reply-To: <20190427161322.24642-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::543
-Subject: Re: [Qemu-trivial] [PATCH] configure: Add -Wno-typedef-redefinition
- to CFLAGS (for Clang)
+Content-Language: de-DE
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 37.120.169.71
+Subject: Re: [Qemu-trivial] [PATCH] Makefile: Let the 'clean' rule remove
+ qemu-ga.exe on Windows hosts
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -103,29 +99,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 27 Apr 2019 17:18:00 -0000
+X-List-Received-Date: Sat, 27 Apr 2019 18:26:44 -0000
 
-On 4/27/19 8:45 AM, Thomas Huth wrote:
-> Without the -Wno-typedef-redefinition option, clang complains if a typedef
-> gets redefined in gnu99 mode (since this is officially a C11 feature). This
-> used to also happen with older versions of GCC, but since we've bumped our
-> minimum GCC version to 4.8, all versions of GCC that we support do not seem
-> to issue this warning in gnu99 mode anymore. So this has become a common
-> problem for people who only test their code with GCC - they do not notice
-> the issue until they submit their patches and suddenly patchew or a
-> maintainer complains.
-> 
-> Now that we do not urgently need to keep the code clean from typedef
-> redefintions anymore with recent versions of GCC, we can ease the
-> situation with clang, too, and simply shut these warnings off for good.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On 27.04.19 18:13, Philippe Mathieu-Daud=C3=A9 wrote:
+> Commit 48ff7a625b36 added the QEMU Guest Agent tool with the
+> optional ".exe" suffix for Windows hosts, but forgot to use
+> this suffix in the 'clean' rule. Calling this rule let a dangling
+> executable in the build directory.
+> Correct this by using the proper optional suffix.
+>=20
+> Fixes: 48ff7a625b36
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  configure | 2 +-
+>  Makefile | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/Makefile b/Makefile
+> index 626a04d305c..07bfa26536a 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -639,7 +639,7 @@ clean:
+>  		! -path ./roms/edk2/BaseTools/Source/Python/UPT/Dll/sqlite3.dll \
+>  		-exec rm {} +
+>  	rm -f $(edk2-decompressed)
+> -	rm -f $(filter-out %.tlb,$(TOOLS)) $(HELPERS-y) qemu-ga TAGS cscope.*=
+ *.pod *~ */*~
+> +	rm -f $(filter-out %.tlb,$(TOOLS)) $(HELPERS-y) qemu-ga$(EXESUF) TAGS=
+ cscope.* *.pod *~ */*~
+>  	rm -f fsdev/*.pod scsi/*.pod
+>  	rm -f qemu-img-cmds.h
+>  	rm -f ui/shader/*-vert.h ui/shader/*-frag.h
+>=20
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 
+Thank you!
 
-r~
+Stefan
 
