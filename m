@@ -1,75 +1,97 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hKQL8-0001iJ-NW
-	for mharc-qemu-trivial@gnu.org; Sat, 27 Apr 2019 12:38:14 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34125)
+	id 1hKQxf-0007gV-RL
+	for mharc-qemu-trivial@gnu.org; Sat, 27 Apr 2019 13:18:03 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:41134)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1hKQL5-0001bR-TV
-	for qemu-trivial@nongnu.org; Sat, 27 Apr 2019 12:38:13 -0400
+	(envelope-from <rth7680@gmail.com>) id 1hKQxb-0007g8-8z
+	for qemu-trivial@nongnu.org; Sat, 27 Apr 2019 13:18:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1hKQ7t-0000mf-JX
-	for qemu-trivial@nongnu.org; Sat, 27 Apr 2019 12:24:35 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:44801)
+	(envelope-from <rth7680@gmail.com>) id 1hKQxa-0005vC-BF
+	for qemu-trivial@nongnu.org; Sat, 27 Apr 2019 13:17:59 -0400
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:38320)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
-	id 1hKQ7t-0000k8-AT; Sat, 27 Apr 2019 12:24:33 -0400
-Received: by mail-wr1-x442.google.com with SMTP id c5so8859007wrs.11;
-	Sat, 27 Apr 2019 09:24:32 -0700 (PDT)
+	(Exim 4.71) (envelope-from <rth7680@gmail.com>)
+	id 1hKQxa-0005u4-39; Sat, 27 Apr 2019 13:17:58 -0400
+Received: by mail-pg1-x543.google.com with SMTP id j26so3104660pgl.5;
+	Sat, 27 Apr 2019 10:17:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=sender:from:to:cc:subject:date:message-id:mime-version
+	h=sender:subject:to:cc:references:from:openpgp:autocrypt:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=UFl3d6OROUfKX72fgu6kYlFsyoEb1nmfkEro+y9FYv8=;
-	b=Kkh4NTGRUQxWdkrGVUckXkwkA8qEKjBoBuNR7mBL3kjuhxjM60ly3mKdP3r3gKGEbz
-	OGCsXSEg4qkg3HKDuD3Kp+EMqfG8/PT6I6KPr6zaq1XIpAmLvvZ1JQMWdp9b39eyHv29
-	utNe8bAu8MEga9filOfdAh/M/o9lC7fwMVyc7juzF6wXl9VIhpkRKxlYybdw+Dux613h
-	c9Od20Y3iEHRgjFGv0LHwD27HqKB5w/G2eNxbbpMXE9UaZkW5flKoFXowJtxR8mGM0zh
-	dcgERG3oQdw1FTIqHAJyYzto4sPuSQ8rcip5pyoXJ5UzK6r135TjcM30NEOaCZBKNzpE
-	sccA==
+	bh=ndmDw5GF7Gy0cUdTRq5wruYjRgnT9v9b/B51Ixp1Zyc=;
+	b=Feqk6PbDdvWu7tWblpqH8vlMV049I/MJ0MmMhIjreNCCEBBrjzKgdIpm0uHi/TE7Ye
+	ZQugqNK8WPqG5jzR49aN93ql87OuH0R2sMHXJxAuYQ10HRDlHXeTILYJGz+ah0CEAfep
+	PINrlFmpTLX5dfxDVyHGp3lDwBauKSCK8Dax+DyIBlhCYgcaJrJns8aRcq0izSaExnCe
+	FyFgXCeNOC3CwUvTf/koeGtBIORmdmDnk8+vfdvNfWkRog+HBOIFwk80R29K5cAg1MYh
+	FD9J8tehf0knAHBhq6pYR6SAsAFSSpTn78ad2XavXp6zg83mkxamZkcXDuCYeaFgtMIw
+	F4nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-	:mime-version:content-transfer-encoding;
-	bh=UFl3d6OROUfKX72fgu6kYlFsyoEb1nmfkEro+y9FYv8=;
-	b=VCQQ3O+5ajlmo+Mc65eWZCz4SRlBiSeHd47g1U8jVSlo8UuPZ5+MJT3abkwlcMr0Ld
-	02SetCvvetkTf8m/UzWyWPlpz2gzWu1QzpDGumqT4ILL6NnTgp0SJuPHxxsxj5zzkyyC
-	vhPFDL94gSiShiiya3BQl5Jb3I/uFe3ft8DRvshAJ44r4o2MBYY3jmuvoT8p3YMp/4wv
-	wRsGUwkWoq0iEHKuoi5vySp4FUuQcXZd762u+WF4DIpDwVrXrVAXAlgu+OBvMZOwA3WM
-	wG/shQBUhlFviXFDvNA+0IkLqmg/p0VYzm9myfcpzrqCA27rl5nO/Z5KrLgAsMNyp7E4
-	N7Hg==
-X-Gm-Message-State: APjAAAV31FHLxpP7X1v5fKXHvzNFBPf4E8Shjd5dcF5SeCT2xTPgTze8
-	Q5Ik5SP2PomNVuWffezpd25sv3xK/44=
-X-Google-Smtp-Source: APXvYqwb3SKFKF3q/QCHx6JDDpPUk3RTZsB4Awzk7MulCoz611m2Cb1nD36hSDy1BU82IJ5vU+mZGQ==
-X-Received: by 2002:a5d:4111:: with SMTP id l17mr14603244wrp.242.1556382271115;
-	Sat, 27 Apr 2019 09:24:31 -0700 (PDT)
-Received: from x1.local (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	t76sm39420036wmt.8.2019.04.27.09.24.29
+	h=x-gm-message-state:sender:subject:to:cc:references:from:openpgp
+	:autocrypt:message-id:date:user-agent:mime-version:in-reply-to
+	:content-language:content-transfer-encoding;
+	bh=ndmDw5GF7Gy0cUdTRq5wruYjRgnT9v9b/B51Ixp1Zyc=;
+	b=UKrd6aYzQuHbrWOu/HSD0hQm6qWA6PTRTH+uHM8DvFHurWTcN3VbsYNaHAN7bFf9q5
+	ER9NTzE4gtRHiN2inVver9L/lnStJVijK88AFQZFAgJv+xXa13K17nXNEzmbrLocZR6G
+	H6Aj0N7aifPaTT5I49e0SJ7wUvIJ28IDkjkDAh+cJjRHRy+shIzcghRvzzBptrSAMdHf
+	OwbJyau3JgU7naCwAWnP7suf/i2IqbFUypeQit14evGSGXdv3i6GGVOABpyXQrBlqOy9
+	So/lssc5nn7OTF6YDFheLg/Rudxg5BdArciMr8huQmnkF3R976R3yorCQ+ckw6Vvqwnm
+	sujA==
+X-Gm-Message-State: APjAAAUQKGoINNqgM4fM3N1YLADSL/Z9rr9bnr6CEL6QAEm5AvCAahzf
+	MGQeTBnJYVCDB9RTsI87Kb4Xy2/v
+X-Google-Smtp-Source: APXvYqxcjcyIlWa6jSBUEAMGWDm547oxfhM/jmSF/p4MYG4J4NMM/pSLo8GKYQkZs9mp7P1FtGs6Sw==
+X-Received: by 2002:a63:da51:: with SMTP id l17mr8343072pgj.115.1556385475660; 
+	Sat, 27 Apr 2019 10:17:55 -0700 (PDT)
+Received: from [192.168.1.11] (97-113-179-147.tukw.qwest.net. [97.113.179.147])
+	by smtp.googlemail.com with ESMTPSA id
+	q78sm24626600pfi.76.2019.04.27.10.17.53
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sat, 27 Apr 2019 09:24:30 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
-	<philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: KONRAD Frederic <frederic.konrad@adacore.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Fabien Chouteau <chouteau@adacore.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Date: Sat, 27 Apr 2019 18:24:29 +0200
-Message-Id: <20190427162429.3617-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.19.1
+	Sat, 27 Apr 2019 10:17:54 -0700 (PDT)
+Sender: Richard Henderson <rth7680@gmail.com>
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org
+References: <20190427154539.11336-1-thuth@redhat.com>
+From: Richard Henderson <rth@twiddle.net>
+Openpgp: preference=signencrypt
+Autocrypt: addr=rth@twiddle.net; prefer-encrypt=mutual; keydata=
+	mQENBFGuLC8BCADcAoWcnW9lTsDMzbO3MBU+KbiGaj5JPatEUscRDkQYM2fyNjJp2tIWDK5a
+	n4yngeXB3eX61WbYR3QraRK8mlYLGxyAdHMEQfPipbqf3TmN043fssT2bc82ApJcs1zvLYgI
+	rhMht7Dck7A0wNC1jo+ZjVVFig5gDTN7gOzaAdBtV8tVNUddwkLzzaGpfihhSD6U46NdqKOG
+	Wlnn6TrkMy0QGdQ5NaXHkRlUjnnUTSW/nKfoxD+EI+A9V4sYOd8mc/TL4aJh/i/AiU57eLbo
+	n17uQI6/VTWDUWl8USiz4x9c8vmqlywLx00tAFxxoRWqk4KVJlj+Sh0up/D/sJ+vPpgBABEB
+	AAG0I1JpY2hhcmQgSGVuZGVyc29uIDxydGhAdHdpZGRsZS5uZXQ+iQFBBBMBAgArAhsDBgsJ
+	CAcDAgYVCAIJCgsEFgIDAQIeAQIXgAUJC7UHogUCWaDNVgIZAQAKCRCtEnDMTdAnm9N5CADO
+	cB8F/SudJ72IupxQf40hbJdBK176+gb3sHMsixyLtrU59lee+lIM1OZmlNjsnCYmiSnbA5ks
+	Q7p0HfO7DgdmfLzcK6xsHZukqSZy5LByw348Y913ZyjOrJZFdPP7kDg1MnqRqH4+3ZdzxV4y
+	eYBWFU9GYMIF06JbUubossOOO4ArNVZbnIPu8Vn2tDZVVqsCBqkoCSBMj519xrvyOu5z4mHS
+	LkCglXmVDOXMbqLuNAC3rfNXSnyM4hYkLUyfALJlAAy1Ro+jUqYhu7XUFV/MiwRuFMh5GbtY
+	Urkx7tqsWQXLT3GeDk/LqvpWJQwk4cHHckYjRih+70CHIenm81PVuQENBFGuLC8BCACyEx3x
+	94HIkTX0CHu2sA0w75+h9wuoA8ggJ7+S4ri0y2YsijWad5TTt6z6MMiqxk9kSA5bppaj4HXh
+	86hBF/dWCtMpNr3Rb8FNOKyeA/qkYHVD6HiAiw9c6D8Dr9hWmOk3/HSmGrNURxeUFOckDXsv
+	I+yGGKBNshj59j7QZr7ZiuIi2rWlBL8dFN/OWa/o3x7HKsE4k6K8ngwvCKP/QbDLwLLBOWH+
+	VEUtpyeyxTr3OJ47ECTxdYvXoAV2iJaKr+6doVQiiR5eVFiMYrUPUECJeolOCwqc/JlWE18L
+	+PCAFaW1H+/mpPVfSpN4wnkJ5cQiQVB41IaCM4p20iRzx7ZJABEBAAGJASUEGAECAA8CGwwF
+	AlmgzYEFCQu1CEoACgkQrRJwzE3QJ5s7rggAwABzDAGrZ6uWsMxg5PeiiAYPy6LBnCBJSpB5
+	Tfy5jH8QTmLfXW+u4Ib4sWXG7PYNR7sIrtqUHjRqXLVXrSnBX9ASGcYw/Xil45khW6LsRpO1
+	prHv9gkwQfa6fTiWXVfSfm2Nant6u02q+MaYtQpCVTiz/9ki4FfftUwUHFLU0MhIQogjd11y
+	/E08RJsqBwaHQdt14PwU1HphDOzSkhOXRXQLSd3ysyeGUXvL+gqQoXl5XYdvk8IId4PoJRo4
+	jcyJ4VbnldvXh5gdGhFA/f9JgkLk9tPW+C3wNtNWyRUq8azR9hF2fg2HJUf4IXQlIu8OOgh1
+	VcROBqvtH3ecaIL9iw==
+Message-ID: <82672e3e-b7e4-4b07-a31b-c600e1374607@twiddle.net>
+Date: Sat, 27 Apr 2019 10:17:51 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20190427154539.11336-1-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::442
-Subject: [Qemu-trivial] [PATCH] hw/sparc/leon3: Allow load of uImage
- firmwares
+X-Received-From: 2607:f8b0:4864:20::543
+Subject: Re: [Qemu-trivial] [PATCH] configure: Add -Wno-typedef-redefinition
+ to CFLAGS (for Clang)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -81,63 +103,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 27 Apr 2019 16:38:13 -0000
+X-List-Received-Date: Sat, 27 Apr 2019 17:18:00 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+On 4/27/19 8:45 AM, Thomas Huth wrote:
+> Without the -Wno-typedef-redefinition option, clang complains if a typedef
+> gets redefined in gnu99 mode (since this is officially a C11 feature). This
+> used to also happen with older versions of GCC, but since we've bumped our
+> minimum GCC version to 4.8, all versions of GCC that we support do not seem
+> to issue this warning in gnu99 mode anymore. So this has become a common
+> problem for people who only test their code with GCC - they do not notice
+> the issue until they submit their patches and suddenly patchew or a
+> maintainer complains.
+> 
+> Now that we do not urgently need to keep the code clean from typedef
+> redefintions anymore with recent versions of GCC, we can ease the
+> situation with clang, too, and simply shut these warnings off for good.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  configure | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Currently the Leon3 machine doesn't allow to load legacy u-boot images:
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-  $ qemu-system-sparc -M leon3_generic -d in_asm \
-      -kernel HelenOS-0.6.0-sparc32-leon3.bin
-  qemu-system-sparc: could not load kernel 'HelenOS-0.6.0-sparc32-leon3.bin'
 
-  $ file HelenOS-0.6.0-sparc32-leon3.bin
-  HelenOS-0.6.0-sparc32-leon3.bin: u-boot legacy uImage, HelenOS-0.6.0,\
-    Linux/ARM, OS Kernel Image (Not compressed), 2424229 bytes,\
-    Sun Dec 21 19:18:09 2014,\
-    Load Address: 0x40000000, Entry Point: 0x40000000,\
-    Header CRC: 0x8BCFA236, Data CRC: 0x37AD87DF
-
-Since QEMU can load uImages, add the necessary code,
-so the Leon3 machine can load these images:
-
-  $ qemu-system-sparc -M leon3_generic -d in_asm \
-      -kernel HelenOS-0.6.0-sparc32-leon3.bin
-  ----------------
-  IN:
-  0x40000000:  b  0x400007a8
-  0x40000004:  nop
-  ----------------
-  IN:
-  0x400007a8:  save  %sp, -136, %sp
-  0x400007ac:  call  0x40000020
-  0x400007b0:  sethi  %hi(0x4000b800), %i1
-  ...
-
-Tested with the following firmware:
-http://www.helenos.org/releases/HelenOS-0.6.0-sparc32-leon3.bin
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/sparc/leon3.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
-index 774639af33..0383b17c29 100644
---- a/hw/sparc/leon3.c
-+++ b/hw/sparc/leon3.c
-@@ -193,6 +193,10 @@ static void leon3_generic_hw_init(MachineState *machine)
-         kernel_size = load_elf(kernel_filename, NULL, NULL, NULL,
-                                &entry, NULL, NULL,
-                                1 /* big endian */, EM_SPARC, 0, 0);
-+        if (kernel_size < 0) {
-+            kernel_size = load_uimage(kernel_filename, NULL, &entry,
-+                                      NULL, NULL, NULL);
-+        }
-         if (kernel_size < 0) {
-             error_report("could not load kernel '%s'", kernel_filename);
-             exit(1);
--- 
-2.19.1
-
+r~
 
