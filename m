@@ -1,93 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hKS2A-0007Gk-E6
-	for mharc-qemu-trivial@gnu.org; Sat, 27 Apr 2019 14:26:46 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:52108)
+	id 1hKkiQ-000141-QM
+	for mharc-qemu-trivial@gnu.org; Sun, 28 Apr 2019 10:23:38 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60940)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1hKS27-0007Em-2j
-	for qemu-trivial@nongnu.org; Sat, 27 Apr 2019 14:26:43 -0400
+	(envelope-from <liboxuan@connect.hku.hk>) id 1hKhp1-0003K5-EH
+	for qemu-trivial@nongnu.org; Sun, 28 Apr 2019 07:18:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sw@weilnetz.de>) id 1hKS24-00051Z-WD
-	for qemu-trivial@nongnu.org; Sat, 27 Apr 2019 14:26:42 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]:60430
-	helo=v2201612906741603.powersrv.de)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <sw@weilnetz.de>)
-	id 1hKS1x-0004VW-4q; Sat, 27 Apr 2019 14:26:34 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by v2201612906741603.powersrv.de (Postfix) with ESMTP id 1D45CDAD847;
-	Sat, 27 Apr 2019 20:26:28 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
-Received: from v2201612906741603.powersrv.de ([127.0.0.1])
-	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
-	port 10024)
-	with ESMTP id M1BinkcFnZni; Sat, 27 Apr 2019 20:26:27 +0200 (CEST)
-Received: from [192.168.178.24] (p57B42786.dip0.t-ipconnect.de [87.180.39.134])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest
-	SHA256) (No client certificate requested)
-	by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 285AEDA3367; 
-	Sat, 27 Apr 2019 20:26:27 +0200 (CEST)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: Michael Roth <mdroth@linux.vnet.ibm.com>, qemu-trivial@nongnu.org
-References: <20190427161322.24642-1-philmd@redhat.com>
-From: Stefan Weil <sw@weilnetz.de>
-Openpgp: preference=signencrypt
-Autocrypt: addr=sw@weilnetz.de; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <3f85f099-c650-b9d2-53cd-9c17f97708d7@weilnetz.de>
-Date: Sat, 27 Apr 2019 20:26:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
-MIME-Version: 1.0
-In-Reply-To: <20190427161322.24642-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: de-DE
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 37.120.169.71
-Subject: Re: [Qemu-trivial] [PATCH] Makefile: Let the 'clean' rule remove
- qemu-ga.exe on Windows hosts
+	(envelope-from <liboxuan@connect.hku.hk>) id 1hKhc1-00020U-6f
+	for qemu-trivial@nongnu.org; Sun, 28 Apr 2019 07:04:50 -0400
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:41012)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <liboxuan@connect.hku.hk>)
+	id 1hKhc0-0001yJ-RY
+	for qemu-trivial@nongnu.org; Sun, 28 Apr 2019 07:04:49 -0400
+Received: by mail-pl1-x642.google.com with SMTP id d9so3711671pls.8
+	for <qemu-trivial@nongnu.org>; Sun, 28 Apr 2019 04:04:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=connect-hku-hk.20150623.gappssmtp.com; s=20150623;
+	h=from:to:cc:subject:date:message-id;
+	bh=AMRBSKPedQ/vao53wTQts4yAXAMhd5iduqdqKtH2vi0=;
+	b=tY7SWKCGI4nvwv6XBmywg/wziBked8W6bZJgiVPY7BcbwdXPIXlunxLbAR6Rgeg2Hu
+	/g5lwBZ5LuJMeDriIG5KDDxVzcMKl5y7q5kpb2+bmbP/w51fj3T4Tdzz+yLkBuqJ0Uv7
+	IEO48cTIa+j2GcztWsmGtoYShuGK4nKSrEMkTTlhfXfc5xvoJ4moW0DTP0tvuH0JZXzn
+	gW5JXLmuqDL9iQJ7w61NnmU3UF3+a51+BzQA0bnXLDVtTOQ56S8n/rqYFIYD2SCiqXAY
+	J1WdgSaiQMmtdeoL00WcyoLrd1by+99azT+BtUYS3RANdAmhhBQUgJWwipxiiH/EXFbY
+	n1xw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=AMRBSKPedQ/vao53wTQts4yAXAMhd5iduqdqKtH2vi0=;
+	b=ffntaUjn+u0zMBFreJDLu8jdnjcoroqjAA44ZHX8wH/lRKh2DGWE5uQk5rsT6qT5FE
+	QLyaKZGPDxV4E8e6qvbZpu+WmWzqvYNlf/4fPyume6UesJRvEr50kdCPvWrkepRFRNTQ
+	RdEu203uZEpsGDa+M7ZfOQmAz7wu7DOa8cdBcwwpJ+9gJdj1VcOVvKNBjeaJFUBwl8s0
+	OwX5Y+bnKSI2CnpaQ0+v7xKxJ3TqinSvcvCH6186jugfekqYbsR4rl3PHdMMLVvbM+93
+	h9IU+GrsFhCEzT2CuLhs+2V40v2D9oDhYbdkgYzDn2/NfU0TTvQeP+R5um46V28NzxAe
+	isVQ==
+X-Gm-Message-State: APjAAAWTiLVJ5lQpriTCQpbDxart79HShl0KBlat7jUO3CYjfFoJlTrh
+	lDfU/AkLD1dQH+wu5pB0xi3cOw==
+X-Google-Smtp-Source: APXvYqw4nsWImWPBjHXMzmzoyQbEjYkogFsZ8Z5CltAI6PYZmzgwB+NEgg5vTx555ohOmb8+VWUeXA==
+X-Received: by 2002:a17:902:e793:: with SMTP id
+	cp19mr50673035plb.65.1556449485991; 
+	Sun, 28 Apr 2019 04:04:45 -0700 (PDT)
+Received: from MBP.local.hk ([202.189.108.96])
+	by smtp.gmail.com with ESMTPSA id
+	s198sm18386461pfs.34.2019.04.28.04.04.44
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Sun, 28 Apr 2019 04:04:45 -0700 (PDT)
+From: Boxuan Li <liboxuan@connect.hku.hk>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, eblake@redhat.com,
+	Boxuan Li <liboxuan@connect.hku.hk>
+Date: Sun, 28 Apr 2019 19:02:58 +0800
+Message-Id: <20190428110258.86681-1-liboxuan@connect.hku.hk>
+X-Mailer: git-send-email 2.13.2
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::642
+X-Mailman-Approved-At: Sun, 28 Apr 2019 10:23:37 -0400
+Subject: [Qemu-trivial] [PATCH] virtio-mmio: Always compile debug prints
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,41 +69,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 27 Apr 2019 18:26:44 -0000
+X-List-Received-Date: Sun, 28 Apr 2019 11:18:16 -0000
 
-On 27.04.19 18:13, Philippe Mathieu-Daud=C3=A9 wrote:
-> Commit 48ff7a625b36 added the QEMU Guest Agent tool with the
-> optional ".exe" suffix for Windows hosts, but forgot to use
-> this suffix in the 'clean' rule. Calling this rule let a dangling
-> executable in the build directory.
-> Correct this by using the proper optional suffix.
->=20
-> Fixes: 48ff7a625b36
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  Makefile | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/Makefile b/Makefile
-> index 626a04d305c..07bfa26536a 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -639,7 +639,7 @@ clean:
->  		! -path ./roms/edk2/BaseTools/Source/Python/UPT/Dll/sqlite3.dll \
->  		-exec rm {} +
->  	rm -f $(edk2-decompressed)
-> -	rm -f $(filter-out %.tlb,$(TOOLS)) $(HELPERS-y) qemu-ga TAGS cscope.*=
- *.pod *~ */*~
-> +	rm -f $(filter-out %.tlb,$(TOOLS)) $(HELPERS-y) qemu-ga$(EXESUF) TAGS=
- cscope.* *.pod *~ */*~
->  	rm -f fsdev/*.pod scsi/*.pod
->  	rm -f qemu-img-cmds.h
->  	rm -f ui/shader/*-vert.h ui/shader/*-frag.h
->=20
+Wrap printf calls inside debug macros (DPRINTF) in `if` statement, and
+change output to stderr as well. This will ensure that printf function
+will always compile and prevent bitrot of the format strings.
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Boxuan Li <liboxuan@connect.hku.hk>
+---
+ hw/virtio/virtio-mmio.c | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
 
-Thank you!
+diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
+index 5807aa87fe..693b3c9eb4 100644
+--- a/hw/virtio/virtio-mmio.c
++++ b/hw/virtio/virtio-mmio.c
+@@ -28,15 +28,14 @@
+ #include "hw/virtio/virtio-bus.h"
+ #include "qemu/error-report.h"
+ 
+-/* #define DEBUG_VIRTIO_MMIO */
+-
+-#ifdef DEBUG_VIRTIO_MMIO
+-
+-#define DPRINTF(fmt, ...) \
+-do { printf("virtio_mmio: " fmt , ## __VA_ARGS__); } while (0)
+-#else
+-#define DPRINTF(fmt, ...) do {} while (0)
+-#endif
++#define DEBUG_VIRTIO_MMIO 0
++
++#define DPRINTF(fmt, ...)                                            \
++    do {                                                             \
++        if (DEBUG_VIRTIO_MMIO) {                                     \
++            fprintf(stderr, "virtio_mmio: " fmt , ## __VA_ARGS__);   \
++        }                                                            \
++    } while (0)
+ 
+ /* QOM macros */
+ /* virtio-mmio-bus */
+-- 
+2.13.2
 
-Stefan
 
