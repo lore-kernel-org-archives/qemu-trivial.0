@@ -1,63 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hKkiQ-000141-QM
-	for mharc-qemu-trivial@gnu.org; Sun, 28 Apr 2019 10:23:38 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60940)
+	id 1hL1rr-0004gR-PC
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Apr 2019 04:42:31 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:57124)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <liboxuan@connect.hku.hk>) id 1hKhp1-0003K5-EH
-	for qemu-trivial@nongnu.org; Sun, 28 Apr 2019 07:18:16 -0400
+	(envelope-from <frederic.konrad@adacore.com>) id 1hL1ro-0004ec-Vo
+	for qemu-trivial@nongnu.org; Mon, 29 Apr 2019 04:42:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <liboxuan@connect.hku.hk>) id 1hKhc1-00020U-6f
-	for qemu-trivial@nongnu.org; Sun, 28 Apr 2019 07:04:50 -0400
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:41012)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <liboxuan@connect.hku.hk>)
-	id 1hKhc0-0001yJ-RY
-	for qemu-trivial@nongnu.org; Sun, 28 Apr 2019 07:04:49 -0400
-Received: by mail-pl1-x642.google.com with SMTP id d9so3711671pls.8
-	for <qemu-trivial@nongnu.org>; Sun, 28 Apr 2019 04:04:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=connect-hku-hk.20150623.gappssmtp.com; s=20150623;
-	h=from:to:cc:subject:date:message-id;
-	bh=AMRBSKPedQ/vao53wTQts4yAXAMhd5iduqdqKtH2vi0=;
-	b=tY7SWKCGI4nvwv6XBmywg/wziBked8W6bZJgiVPY7BcbwdXPIXlunxLbAR6Rgeg2Hu
-	/g5lwBZ5LuJMeDriIG5KDDxVzcMKl5y7q5kpb2+bmbP/w51fj3T4Tdzz+yLkBuqJ0Uv7
-	IEO48cTIa+j2GcztWsmGtoYShuGK4nKSrEMkTTlhfXfc5xvoJ4moW0DTP0tvuH0JZXzn
-	gW5JXLmuqDL9iQJ7w61NnmU3UF3+a51+BzQA0bnXLDVtTOQ56S8n/rqYFIYD2SCiqXAY
-	J1WdgSaiQMmtdeoL00WcyoLrd1by+99azT+BtUYS3RANdAmhhBQUgJWwipxiiH/EXFbY
-	n1xw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=AMRBSKPedQ/vao53wTQts4yAXAMhd5iduqdqKtH2vi0=;
-	b=ffntaUjn+u0zMBFreJDLu8jdnjcoroqjAA44ZHX8wH/lRKh2DGWE5uQk5rsT6qT5FE
-	QLyaKZGPDxV4E8e6qvbZpu+WmWzqvYNlf/4fPyume6UesJRvEr50kdCPvWrkepRFRNTQ
-	RdEu203uZEpsGDa+M7ZfOQmAz7wu7DOa8cdBcwwpJ+9gJdj1VcOVvKNBjeaJFUBwl8s0
-	OwX5Y+bnKSI2CnpaQ0+v7xKxJ3TqinSvcvCH6186jugfekqYbsR4rl3PHdMMLVvbM+93
-	h9IU+GrsFhCEzT2CuLhs+2V40v2D9oDhYbdkgYzDn2/NfU0TTvQeP+R5um46V28NzxAe
-	isVQ==
-X-Gm-Message-State: APjAAAWTiLVJ5lQpriTCQpbDxart79HShl0KBlat7jUO3CYjfFoJlTrh
-	lDfU/AkLD1dQH+wu5pB0xi3cOw==
-X-Google-Smtp-Source: APXvYqw4nsWImWPBjHXMzmzoyQbEjYkogFsZ8Z5CltAI6PYZmzgwB+NEgg5vTx555ohOmb8+VWUeXA==
-X-Received: by 2002:a17:902:e793:: with SMTP id
-	cp19mr50673035plb.65.1556449485991; 
-	Sun, 28 Apr 2019 04:04:45 -0700 (PDT)
-Received: from MBP.local.hk ([202.189.108.96])
-	by smtp.gmail.com with ESMTPSA id
-	s198sm18386461pfs.34.2019.04.28.04.04.44
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Sun, 28 Apr 2019 04:04:45 -0700 (PDT)
-From: Boxuan Li <liboxuan@connect.hku.hk>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, eblake@redhat.com,
-	Boxuan Li <liboxuan@connect.hku.hk>
-Date: Sun, 28 Apr 2019 19:02:58 +0800
-Message-Id: <20190428110258.86681-1-liboxuan@connect.hku.hk>
-X-Mailer: git-send-email 2.13.2
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::642
-X-Mailman-Approved-At: Sun, 28 Apr 2019 10:23:37 -0400
-Subject: [Qemu-trivial] [PATCH] virtio-mmio: Always compile debug prints
+	(envelope-from <frederic.konrad@adacore.com>) id 1hL1rn-0000cF-5f
+	for qemu-trivial@nongnu.org; Mon, 29 Apr 2019 04:42:28 -0400
+Received: from mel.act-europe.fr ([194.98.77.210]:40062
+	helo=smtp.eu.adacore.com)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <frederic.konrad@adacore.com>)
+	id 1hL1ri-0000NB-OE; Mon, 29 Apr 2019 04:42:23 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 7863181380;
+	Mon, 29 Apr 2019 10:42:20 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at eu.adacore.com
+Received: from smtp.eu.adacore.com ([127.0.0.1])
+	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id R5aYVgMI3gsU; Mon, 29 Apr 2019 10:42:20 +0200 (CEST)
+Received: from localhost.localdomain
+	(apoitiers-155-1-191-106.w109-220.abo.wanadoo.fr [109.220.154.106])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.eu.adacore.com (Postfix) with ESMTPSA id C29498137F;
+	Mon, 29 Apr 2019 10:42:19 +0200 (CEST)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: Fabien Chouteau <chouteau@adacore.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>, Artyom Tarasenko
+	<atar4qemu@gmail.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+References: <20190427162922.4207-1-f4bug@amsat.org>
+From: KONRAD Frederic <frederic.konrad@adacore.com>
+Message-ID: <50dfb24e-4944-6bae-4591-64a3a2747870@adacore.com>
+Date: Mon, 29 Apr 2019 10:42:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
+MIME-Version: 1.0
+In-Reply-To: <20190427162922.4207-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: fr
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 194.98.77.210
+Subject: Re: [Qemu-trivial] [PATCH v2] hw/sparc/leon3: Allow load of uImage
+ firmwares
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,46 +57,100 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 28 Apr 2019 11:18:16 -0000
+X-List-Received-Date: Mon, 29 Apr 2019 08:42:30 -0000
 
-Wrap printf calls inside debug macros (DPRINTF) in `if` statement, and
-change output to stderr as well. This will ensure that printf function
-will always compile and prevent bitrot of the format strings.
+Hi Philippe,
 
-Signed-off-by: Boxuan Li <liboxuan@connect.hku.hk>
----
- hw/virtio/virtio-mmio.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
+Le 4/27/19 =C3=A0 6:29 PM, Philippe Mathieu-Daud=C3=A9 a =C3=A9crit=C2=A0=
+:
+> Currently the Leon3 machine doesn't allow to load legacy u-boot images:
+>=20
+>    $ qemu-system-sparc -M leon3_generic -d in_asm \
+>        -kernel HelenOS-0.6.0-sparc32-leon3.bin
+>    qemu-system-sparc: could not load kernel 'HelenOS-0.6.0-sparc32-leon=
+3.bin'
+>=20
+>    $ file HelenOS-0.6.0-sparc32-leon3.bin
+>    HelenOS-0.6.0-sparc32-leon3.bin: u-boot legacy uImage, HelenOS-0.6.0=
+,\
+>      Linux/ARM, OS Kernel Image (Not compressed), 2424229 bytes,\
+>      Sun Dec 21 19:18:09 2014,\
+>      Load Address: 0x40000000, Entry Point: 0x40000000,\
+>      Header CRC: 0x8BCFA236, Data CRC: 0x37AD87DF
+>=20
+> Since QEMU can load uImages, add the necessary code,
+> so the Leon3 machine can load these images:
+>=20
+>    $ qemu-system-sparc -M leon3_generic -d in_asm \
+>        -kernel HelenOS-0.6.0-sparc32-leon3.bin
+>    ----------------
+>    IN:
+>    0x40000000:  b  0x400007a8
+>    0x40000004:  nop
+>    ----------------
+>    IN:
+>    0x400007a8:  save  %sp, -136, %sp
+>    0x400007ac:  call  0x40000020
+>    0x400007b0:  sethi  %hi(0x4000b800), %i1
+>    ...
+>=20
+> Tested with the following firmware:
+> http://www.helenos.org/releases/HelenOS-0.6.0-sparc32-leon3.bin
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
-index 5807aa87fe..693b3c9eb4 100644
---- a/hw/virtio/virtio-mmio.c
-+++ b/hw/virtio/virtio-mmio.c
-@@ -28,15 +28,14 @@
- #include "hw/virtio/virtio-bus.h"
- #include "qemu/error-report.h"
- 
--/* #define DEBUG_VIRTIO_MMIO */
--
--#ifdef DEBUG_VIRTIO_MMIO
--
--#define DPRINTF(fmt, ...) \
--do { printf("virtio_mmio: " fmt , ## __VA_ARGS__); } while (0)
--#else
--#define DPRINTF(fmt, ...) do {} while (0)
--#endif
-+#define DEBUG_VIRTIO_MMIO 0
-+
-+#define DPRINTF(fmt, ...)                                            \
-+    do {                                                             \
-+        if (DEBUG_VIRTIO_MMIO) {                                     \
-+            fprintf(stderr, "virtio_mmio: " fmt , ## __VA_ARGS__);   \
-+        }                                                            \
-+    } while (0)
- 
- /* QOM macros */
- /* virtio-mmio-bus */
--- 
-2.13.2
+It doesn't go through the whole boot of this HelenOS but we have the same=
+ wrong
+behavior with the Linux *SMP* kernel.
 
+qemu: fatal: Trap 0x06 while interrupts disabled, Error state
+pc: 400009e4  npc: 40000010
+%g0-7: 00000000 00000018 80000000 00000018 4000a548 00000000 00000000 000=
+00000
+%o0-7: 00000018 00000000 000000e2 4000a0a8 4000a0a0 0000ffff 47ffff78 400=
+009e0
+%l0-7: 4000a000 00000024 47ffffd8 80a00000 00000000 00000000 00000000 000=
+00000
+%i0-7: 80a00000 4000ba00 47ffffd4 80a00000 00000000 4000a000 48000000 000=
+00000
+%f00:  0000000000000000 0000000000000000 0000000000000000 000000000000000=
+0
+%f08:  0000000000000000 0000000000000000 0000000000000000 000000000000000=
+0
+%f16:  0000000000000000 0000000000000000 0000000000000000 000000000000000=
+0
+%f24:  0000000000000000 0000000000000000 0000000000000000 000000000000000=
+0
+psr: f30000c7 (icc: ---- SPE: SP-) wim: 00000001
+fsr: 00000000 y: 00000000
+
+But this has nothing to do with the uImage loading so it seems ok to me.
+
+Reviewed-by: KONRAD Frederic <frederic.konrad@adacore.com>
+Tested-by: KONRAD Frederic <frederic.konrad@adacore.com>
+
+> ---
+> v2: Fixed GIT_AUTHOR_EMAIL
+> ---
+>   hw/sparc/leon3.c | 4 ++++
+>   1 file changed, 4 insertions(+)
+>=20
+> diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
+> index 774639af33..0383b17c29 100644
+> --- a/hw/sparc/leon3.c
+> +++ b/hw/sparc/leon3.c
+> @@ -193,6 +193,10 @@ static void leon3_generic_hw_init(MachineState *ma=
+chine)
+>           kernel_size =3D load_elf(kernel_filename, NULL, NULL, NULL,
+>                                  &entry, NULL, NULL,
+>                                  1 /* big endian */, EM_SPARC, 0, 0);
+> +        if (kernel_size < 0) {
+> +            kernel_size =3D load_uimage(kernel_filename, NULL, &entry,
+> +                                      NULL, NULL, NULL);
+> +        }
+>           if (kernel_size < 0) {
+>               error_report("could not load kernel '%s'", kernel_filenam=
+e);
+>               exit(1);
+>=20
 
