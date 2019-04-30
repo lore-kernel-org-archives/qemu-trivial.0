@@ -1,67 +1,107 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hLZf0-0002mF-8R
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 16:47:30 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:55853)
+	id 1hLZhd-0004cj-0M
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 16:50:13 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:49084)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hLZey-0002kR-GC
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 16:47:29 -0400
+	(envelope-from <prvs=01690f4a8=Alistair.Francis@wdc.com>)
+	id 1hLZ3i-0002KO-8t
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 16:08:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hLZex-00007G-Ey
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 16:47:28 -0400
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:39248)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hLZeq-0008Ox-9I; Tue, 30 Apr 2019 16:47:21 -0400
-Received: by mail-lf1-x144.google.com with SMTP id d12so11886568lfk.6;
-	Tue, 30 Apr 2019 13:47:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=y7xfoofEm4PAoHQaMXpXigT2S2f6wMz1mt7eVkQs2Sw=;
-	b=hWbylTdKEQ9a861h6nsAFe7S7u7+cfpXDZHcAMySg4gVg9AZIXhsxtyeHpQlSQ24HD
-	0WKY5m5rW4/Lm9/QYvgGB9nGNySx/kB9KbSMHebNcik9Z8fF6B4lExipTt2LUfelZToZ
-	nBKT+oVNmq+Ki0VAL5tqjfhzyULDq0XOoAXjqkRUPa3d23fEav2aYXieeXWzBsB50MRb
-	wJ5UkbQet2I2Qj2CmG+SImTZqFR0HRRTqhdS37huNhvcX7tlpLGfFjDkBVJt2ztvVNp1
-	psoT3s06bmZhj38JardeplnuyW8p9xY08oWbvUXeWBvZfBtxhx/HarPgpMTsW9hpu8hS
-	i4Pw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=y7xfoofEm4PAoHQaMXpXigT2S2f6wMz1mt7eVkQs2Sw=;
-	b=fZl5w1D0LfsgxTcSUMSH0A7avV5RX5XtRN4IdGlOUUcq89JjPJoJsS0efT+RVD5gr5
-	ElHTmNmWh/9KlgEyUIryPM81O+HCn8F9pRT0qcTLV1+CyGTZQzE5aSs5Ev2QEYpkee2o
-	kr+iX9U2+2DMHFEfAierh9gyRhh0nrTZUS5O/cSPJqAZarvYy+HoVgqVjSqxHFIKekib
-	0zzs2ntBmrIYdIPFvVP/UC44g/RV6q7BXHXcCELgrCIlGZmHHOdKQAMcxGrW5/85J9C+
-	QLXhRGkhwea6HeOCCI4PTIdWoxFRKlSFohf3XLRwHJZwxbN9x6uD3oUwApwjvgxEQoN8
-	RpGQ==
-X-Gm-Message-State: APjAAAXDSBuD3Sk7TH5wYzx4ocznuM2aJ3F4xI6Qaw41G1/5jfaKsMQA
-	CTjnKGZnTzXdG67mj0kHeZJJaxVbaApnDkpeqmc=
-X-Google-Smtp-Source: APXvYqz9iXkzAzZmiA95VuA9Ydg4ZqCGyVXCiIq8qGHtVXRhEnc0GlMOmqUpe6A9mL/cOPFntcKWqp/cwa2yb8pNQsQ=
-X-Received: by 2002:a19:4a04:: with SMTP id x4mr355974lfa.124.1556657236454;
-	Tue, 30 Apr 2019 13:47:16 -0700 (PDT)
+	(envelope-from <prvs=01690f4a8=Alistair.Francis@wdc.com>)
+	id 1hLZ3h-0006yp-Ch
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 16:08:58 -0400
+Received: from esa2.hgst.iphmx.com ([68.232.143.124]:40728)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <prvs=01690f4a8=Alistair.Francis@wdc.com>)
+	id 1hLZ3g-0006x4-IB; Tue, 30 Apr 2019 16:08:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+	d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+	t=1556654957; x=1588190957;
+	h=from:to:cc:subject:date:message-id:content-id:
+	content-transfer-encoding:mime-version;
+	bh=RyYTPhB4Jg33CLBqxfFmZhjvr5CIq3Og+MpdEMJCpXk=;
+	b=MOAWksyLKh0ojkdMN49j4fqTWgf2ofnx8iBEtRuPDzO+ujIYMEQBHBFb
+	nYiAx4SfKIyTHaDkWJgr6trlRgU2wSSes9vtSoQ+XjJ0OUPSwvaHGdmTg
+	2+QNSZkHwOtw+D9DGDo3MSBygo/KUXMXQ7lEONBOx9lwNf2Z0FxRBxrQt
+	GfB8xajMwLIofh40oJWBIYrKrTXh4tOO2oP+u0UMRYfSfkjgW0wHBSmpQ
+	rPBS4HdrRnUBfwxD7xOJ4bjVPDaVK7C3dQYV8ngDDEdr3Y8wfi4h3O/A6
+	Sni/CXZGvuWGeAdYF7Ca5q/bUkAjNyhLnQ+T9+MWoOFAYCHc9ZAV7DJbL w==;
+X-IronPort-AV: E=Sophos;i="5.60,414,1549900800"; d="scan'208";a="206404305"
+Received: from mail-sn1nam04lp2055.outbound.protection.outlook.com (HELO
+	NAM04-SN1-obe.outbound.protection.outlook.com) ([104.47.44.55])
+	by ob1.hgst.iphmx.com with ESMTP; 01 May 2019 04:09:06 +0800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=sharedspace.onmicrosoft.com; s=selector1-wdc-com;
+	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+	bh=RyYTPhB4Jg33CLBqxfFmZhjvr5CIq3Og+MpdEMJCpXk=;
+	b=SWFC4c0K4yvRqdAmzw+scc0sk+C3uksCnNc3peLsi6YJCspe0yAVtQ6BDb5/AxUEj9ibMCfXdlYgLa2CKynZ1qNHblRGFTrOfZWzvrmFcNsVUnZX+S7PpVoQ/d8SwpsSc/QTWNzNAWaviC/52Bpq53V2WjQqGyOqaRFSg+8DzGo=
+Received: from BYAPR04MB4901.namprd04.prod.outlook.com (52.135.232.206) by
+	BYAPR04MB5672.namprd04.prod.outlook.com (20.179.57.22) with Microsoft
+	SMTP
+	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+	15.20.1856.10; Tue, 30 Apr 2019 20:08:48 +0000
+Received: from BYAPR04MB4901.namprd04.prod.outlook.com
+	([fe80::4d89:bbf8:952c:3d66]) by
+	BYAPR04MB4901.namprd04.prod.outlook.com
+	([fe80::4d89:bbf8:952c:3d66%5]) with mapi id 15.20.1835.018;
+	Tue, 30 Apr 2019 20:08:48 +0000
+From: Alistair Francis <Alistair.Francis@wdc.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: Alistair Francis <Alistair.Francis@wdc.com>, "alistair23@gmail.com"
+	<alistair23@gmail.com>, "kraxel@redhat.com" <kraxel@redhat.com>,
+	"berrange@redhat.com" <berrange@redhat.com>, "riku.voipio@iki.fi"
+	<riku.voipio@iki.fi>, "laurent@vivier.eu" <laurent@vivier.eu>,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Thread-Topic: [PATCH v1 0/5]  Fix some GCC 9 build warnings
+Thread-Index: AQHU/5CF98rOkh8qNE20R4ARsjTsUQ==
+Date: Tue, 30 Apr 2019 20:08:48 +0000
+Message-ID: <cover.1556650594.git.alistair.francis@wdc.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: git-send-email 2.21.0
+x-clientproxiedby: BYAPR01CA0004.prod.exchangelabs.com (2603:10b6:a02:80::17)
+	To BYAPR04MB4901.namprd04.prod.outlook.com
+	(2603:10b6:a03:4f::14)
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=Alistair.Francis@wdc.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-originating-ip: [199.255.44.172]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: de486422-1b4f-4f18-91d8-08d6cda7a7b7
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: BCL:0; PCL:0;
+	RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
+	SRVR:BYAPR04MB5672; 
+x-ms-traffictypediagnostic: BYAPR04MB5672:
+wdcipoutbound: EOP-TRUE
+x-microsoft-antispam-prvs: <BYAPR04MB56725ED8CE331734A70F8B0E903A0@BYAPR04MB5672.namprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:1728;
+x-forefront-prvs: 00235A1EEF
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(136003)(346002)(396003)(366004)(376002)(39860400002)(189003)(199004)(99286004)(4326008)(50226002)(71190400001)(71200400001)(7736002)(305945005)(4744005)(316002)(14444005)(256004)(44832011)(186003)(36756003)(8936002)(6436002)(54906003)(2501003)(102836004)(2906002)(26005)(6486002)(486006)(476003)(2616005)(5660300002)(8676002)(25786009)(6116002)(81156014)(81166006)(72206003)(3846002)(86362001)(66066001)(478600001)(73956011)(6512007)(66556008)(66446008)(14454004)(66476007)(66946007)(64756008)(68736007)(53936002)(97736004)(52116002)(2351001)(386003)(6506007)(5640700003)(6916009);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5672;
+	H:BYAPR04MB4901.namprd04.prod.outlook.com; FPR:; SPF:None;
+	LANG:en; PTR:InfoNoRecords; MX:1; A:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: 7XPiGO0ZYBv/TSIV2vXUSSjAUMb8Fgoegk6Wt8OSac4nI0jOi6Vci/0UAsn+et+gO+OCcnnW9fy+6/MYetBtYlPqZciUaXbVMRua7vFYTVp/jRjLJADDrbfEH23ihr2l740WIo5ZMNakYHfREqbxJA+vONtkU9X+FTOB5Ocikv4aSPd/YEwFPij9qT3VNUQ+LnnBQW6r4XLx4zj5I0Esdf4z7ZNhWaV69EEHjdlR1OwPh6JyqnNBfJCcSRK8swmv44daJzbCyP4S/qUP2e8Heg9/Bj40xFW8n0YuaKUH+3e+cHpo8boFREDHLWR+QzlCJSYwQMMPDxqzuyDT8mv4kLrCrmmcWWtoL2cmQ1D9Hjtp4irWnAUJoFqwVp3R6WeJs3bgpBg09suiNmoj6TMXZibG7IuRcH4AG1ZU1qhBoJI=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <6A8AA2ACCF27F947A1EDB119EA6FF4F9@namprd04.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <cover.1556650594.git.alistair.francis@wdc.com>
-	<f2aaec5b3c12a8512cd7078f3a5d1230906d80ea.1556650594.git.alistair.francis@wdc.com>
-	<6650d0b8-1c5c-a8ea-ef92-a69ad50f7d8b@redhat.com>
-In-Reply-To: <6650d0b8-1c5c-a8ea-ef92-a69ad50f7d8b@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 30 Apr 2019 13:45:23 -0700
-Message-ID: <CAKmqyKP0-Aikd3+fF-u=be_2ZaRtfa6Sx-Cxu49uFtXgN9C_Ew@mail.gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Alistair Francis <Alistair.Francis@wdc.com>, 
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, 
-	"riku.voipio@iki.fi" <riku.voipio@iki.fi>,
-	"laurent@vivier.eu" <laurent@vivier.eu>, 
-	"kraxel@redhat.com" <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: de486422-1b4f-4f18-91d8-08d6cda7a7b7
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Apr 2019 20:08:48.0314 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5672
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::144
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1 3/5] hw/usb/dev-mtp: Fix
- GCC 9 build warning
+X-Received-From: 68.232.143.124
+X-Mailman-Approved-At: Tue, 30 Apr 2019 16:50:12 -0400
+Subject: [Qemu-trivial] [PATCH v1 0/5]  Fix some GCC 9 build warnings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,74 +113,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Apr 2019 20:47:29 -0000
+X-List-Received-Date: Tue, 30 Apr 2019 20:08:59 -0000
 
-On Tue, Apr 30, 2019 at 1:37 PM Eric Blake <eblake@redhat.com> wrote:
->
-> On 4/30/19 3:09 PM, Alistair Francis wrote:
-> > Fix this warning with GCC 9 on Fedora 30:
-> > hw/usb/dev-mtp.c:1715:36: error: taking address of packed member of =E2=
-=80=98struct <anonymous>=E2=80=99 may result in an unaligned pointer value =
-[-Werror=3Daddress-of-packed-member]
-> >  1715 |                             dataset->filename);
-> >       |                             ~~~~~~~^~~~~~~~~~
-> >
-> > Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
-> > ---
-> >  hw/usb/dev-mtp.c | 13 +++++++++++++
-> >  1 file changed, 13 insertions(+)
-> >
-> > diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
-> > index 99548b012d..6de85d99e6 100644
-> > --- a/hw/usb/dev-mtp.c
-> > +++ b/hw/usb/dev-mtp.c
-> > @@ -1711,9 +1711,22 @@ static void usb_mtp_write_metadata(MTPState *s, =
-uint64_t dlen)
-> >      assert(!s->write_pending);
-> >      assert(p !=3D NULL);
-> >
-> > +/*
-> > + * We are about to access a packed struct. We are confident that the p=
-ointer
-> > + * address won't be unalligned, so we ignore GCC warnings.
->
-> unaligned
-
-Fixed.
-
->
-> Aren't there other potential proposed patches floating around for this
-> issue that do not involve messing with pragmas?
-
-I'm not sure, I haven't seen anything. I'm more then open to a better
-fix, this is the best option I could think of.
-
-Alistair
-
->
-> > + */
-> > +#if defined(CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE) && QEMU_GNUC_PREREQ(9,=
- 0)
-> > +#pragma GCC diagnostic push
-> > +#pragma GCC diagnostic ignored "-Waddress-of-packed-member"
-> > +#endif
-> > +
-> >      filename =3D utf16_to_str(MIN(dataset->length, filename_chars),
-> >                              dataset->filename);
-> >
-> > +#if defined(CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE) && QEMU_GNUC_PREREQ(9,=
- 0)
-> > +#pragma GCC diagnostic pop
-> > +#endif
-> > +
-> >      if (strchr(filename, '/')) {
-> >          usb_mtp_queue_result(s, RES_PARAMETER_NOT_SUPPORTED, d->trans,
-> >                               0, 0, 0, 0);
-> >
->
-> --
-> Eric Blake, Principal Software Engineer
-> Red Hat, Inc.           +1-919-301-3226
-> Virtualization:  qemu.org | libvirt.org
->
+DQpBbGlzdGFpciBGcmFuY2lzICg1KToNCiAgdXRpbC9xZW11LXNvY2tldHM6IEZpeCBHQ0MgOSBi
+dWlsZCB3YXJuaW5ncw0KICBody91c2IvaGNkLXhoY2k6IEZpeCBHQ0MgOSBidWlsZCB3YXJuaW5n
+DQogIGh3L3VzYi9kZXYtbXRwOiBGaXggR0NDIDkgYnVpbGQgd2FybmluZw0KICBsaW51eC11c2Vy
+L3VuYW1lOiBGaXggR0NDIDkgYnVpbGQgd2FybmluZ3MNCiAgbGludXgtdXNlci9lbGZsb2FkOiBG
+aXggR0NDIDkgYnVpbGQgd2FybmluZ3MNCg0KIGh3L3VzYi9kZXYtbXRwLmMgICAgIHwgMTMgKysr
+KysrKysrKysrKw0KIGh3L3VzYi9oY2QteGhjaS5oICAgIHwgIDIgKy0NCiBsaW51eC11c2VyL2Vs
+ZmxvYWQuYyB8ICA0ICsrLS0NCiBsaW51eC11c2VyL3VuYW1lLmMgICB8ICA4ICsrKysrKysrDQog
+dXRpbC9xZW11LXNvY2tldHMuYyAgfCAgNCArKy0tDQogNSBmaWxlcyBjaGFuZ2VkLCAyNiBpbnNl
+cnRpb25zKCspLCA1IGRlbGV0aW9ucygtKQ0KDQotLSANCjIuMjEuMA0KDQo=
 
