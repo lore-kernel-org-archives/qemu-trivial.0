@@ -1,74 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hLUHx-0007V0-BN
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 11:03:21 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39153)
+	id 1hLWag-000832-NW
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 13:30:50 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:49122)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1hLUHv-0007U0-B8
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 11:03:20 -0400
+	(envelope-from <liboxuan@connect.hku.hk>) id 1hLWad-0007zj-PR
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 13:30:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <eblake@redhat.com>) id 1hLUHu-0004sl-7i
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 11:03:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47946)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <eblake@redhat.com>)
-	id 1hLUHn-0004lj-V9; Tue, 30 Apr 2019 11:03:12 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id D1ECCC059B7A;
-	Tue, 30 Apr 2019 15:03:09 +0000 (UTC)
-Received: from [10.3.116.15] (ovpn-116-15.phx2.redhat.com [10.3.116.15])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9B7611001E66;
-	Tue, 30 Apr 2019 15:03:06 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Boxuan Li <liboxuan@connect.hku.hk>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20190428110258.86681-1-liboxuan@connect.hku.hk>
-	<a683a29f-ea7b-aaf9-258f-68f4ffcd9b96@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=eblake@redhat.com; keydata=
-	xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
-	xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
-	TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
-	GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
-	sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
-	AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
-	CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
-	RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
-	wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
-	Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
-	gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
-	pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
-	zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
-	pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
-	3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
-	NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
-	cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
-	SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
-	I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
-	mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
-	Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
-	2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
-Organization: Red Hat, Inc.
-Message-ID: <5fe13664-cabc-6fc9-7437-285cc1452944@redhat.com>
-Date: Tue, 30 Apr 2019 10:03:05 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
-MIME-Version: 1.0
-In-Reply-To: <a683a29f-ea7b-aaf9-258f-68f4ffcd9b96@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature";
-	boundary="2MqIhRHehvafaaPeCANYMcdExHqA49PDl"
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.32]);
-	Tue, 30 Apr 2019 15:03:10 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] virtio-mmio: Always compile
- debug prints
+	(envelope-from <liboxuan@connect.hku.hk>) id 1hLWab-0005ot-PM
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 13:30:47 -0400
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:42582)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <liboxuan@connect.hku.hk>)
+	id 1hLWab-0005mI-DT
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 13:30:45 -0400
+Received: by mail-pl1-x642.google.com with SMTP id x15so7051219pln.9
+	for <qemu-trivial@nongnu.org>; Tue, 30 Apr 2019 10:30:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=connect-hku-hk.20150623.gappssmtp.com; s=20150623;
+	h=from:to:cc:subject:date:message-id;
+	bh=uihYHrYj3HakLhRkBBdSUDTDHGZaCyGKyU0mzSpESvQ=;
+	b=mCDQBdunO0hUngRO5ZFWMRAjbF81vr8Bgn/0CTyWhREDYSg451LHElqXYoX9LqR/Tx
+	72O+yUOHH1XIAMZztm3MzrIkJi2Ay3MT1xV1q4B8PlvR3Z9zPjE2ncs/EXovH1hidaju
+	Nl8+DaTTshFZ36ftBLGA1JV27PhbYnz2/cRjaud+rFto0iaO0tfZOv901S3fDezVNwiu
+	bigZsA2l277flNS3XhgkYGD4Z4kt0ZMIQkR28fw29of2jN1kHMmo0DDdkVw2eVorzx2d
+	oPnhxjSRlse+3T7qGwn01OvFdhT87jOzbVVJ1nylQ2hGQB1+V/Vtsr2Th09I6T+EDeyd
+	3JJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=uihYHrYj3HakLhRkBBdSUDTDHGZaCyGKyU0mzSpESvQ=;
+	b=rWsnsoX023GJ7sxY0vn61kAvritanBAIGZBVp/x+BWhnT7tGQNtbAvxrkJuX0G6JWj
+	kgBeruugkgs5C7DyziG9Bxq4zkeb0dHgPLRkXDqjRIMrKNU0b8ZPed1gmyzL0SYDbqMD
+	amtLsA7P03w3G4iXavHkzyT4DM6Gpdm1E1P438pDIY+H+sNx4yiEu1IjWdk2iaxq47qh
+	8y1H7kBv4CDNwJJT8WV67Yq4SAe4qaOEkFKQMAj4Y+yHq9J+kdIQxmrqacY4XPuCaokn
+	K4lqUKvfRqCFio+bx14xLkHN+bJj++TkCPEWul/NPunAgSFpIbj9ZBN84vKjuX/rqUOi
+	2/1Q==
+X-Gm-Message-State: APjAAAVzTyVx3rRn4ETWlfZ3+UdJBu3zBJqx/Nfk9a+y/dR8/6zkxbmk
+	Gdj0W4NEZkwqKF4xRi82QxLehQ==
+X-Google-Smtp-Source: APXvYqx6/LFfPEs0Dp5RlilHCosSrXJ38nNHAZ4al6ZrPwF3s57vL3GxCnkJ4dpv2ncX7/uTttysLA==
+X-Received: by 2002:a17:902:26b:: with SMTP id
+	98mr41541345plc.30.1556645442060; 
+	Tue, 30 Apr 2019 10:30:42 -0700 (PDT)
+Received: from MBP.local.hk ([175.159.180.1]) by smtp.gmail.com with ESMTPSA id
+	y23sm52407101pfn.25.2019.04.30.10.30.39
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Tue, 30 Apr 2019 10:30:41 -0700 (PDT)
+From: Boxuan Li <liboxuan@connect.hku.hk>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Boxuan Li <liboxuan@connect.hku.hk>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	qemu-ppc@nongnu.org (open list:PowerPC)
+Date: Wed,  1 May 2019 01:28:42 +0800
+Message-Id: <20190430172842.27369-1-liboxuan@connect.hku.hk>
+X-Mailer: git-send-email 2.13.2
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::642
+Subject: [Qemu-trivial] [PATCH] target/ppc/kvm: Fix trace typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,129 +68,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Apr 2019 15:03:20 -0000
+X-List-Received-Date: Tue, 30 Apr 2019 17:30:48 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---2MqIhRHehvafaaPeCANYMcdExHqA49PDl
-Content-Type: multipart/mixed; boundary="xqAEEQsMY4N9F6GiTssC5EO3FdGCELxBd";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Boxuan Li <liboxuan@connect.hku.hk>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Message-ID: <5fe13664-cabc-6fc9-7437-285cc1452944@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH] virtio-mmio: Always compile debug prints
-References: <20190428110258.86681-1-liboxuan@connect.hku.hk>
- <a683a29f-ea7b-aaf9-258f-68f4ffcd9b96@redhat.com>
-In-Reply-To: <a683a29f-ea7b-aaf9-258f-68f4ffcd9b96@redhat.com>
+Signed-off-by: Boxuan Li <liboxuan@connect.hku.hk>
+---
+ target/ppc/kvm.c        | 2 +-
+ target/ppc/trace-events | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
---xqAEEQsMY4N9F6GiTssC5EO3FdGCELxBd
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index 02e22e2017..1a9caf8f40 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -1721,7 +1721,7 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+             trace_kvm_handle_dcr_write();
+             ret = kvmppc_handle_dcr_write(env, run->dcr.dcrn, run->dcr.data);
+         } else {
+-            trace_kvm_handle_drc_read();
++            trace_kvm_handle_dcr_read();
+             ret = kvmppc_handle_dcr_read(env, run->dcr.dcrn, &run->dcr.data);
+         }
+         break;
+diff --git a/target/ppc/trace-events b/target/ppc/trace-events
+index 7b3cfe11fd..3dc6740706 100644
+--- a/target/ppc/trace-events
++++ b/target/ppc/trace-events
+@@ -22,7 +22,7 @@ kvm_failed_put_vpa(void) "Warning: Unable to set VPA information to KVM"
+ kvm_failed_get_vpa(void) "Warning: Unable to get VPA information from KVM"
+ kvm_injected_interrupt(int irq) "injected interrupt %d"
+ kvm_handle_dcr_write(void) "handle dcr write"
+-kvm_handle_drc_read(void) "handle dcr read"
++kvm_handle_dcr_read(void) "handle dcr read"
+ kvm_handle_halt(void) "handle halt"
+ kvm_handle_papr_hcall(void) "handle PAPR hypercall"
+ kvm_handle_epr(void) "handle epr"
+-- 
+2.13.2
 
-On 4/30/19 5:15 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Hi Li,
->=20
-> On 4/28/19 1:02 PM, Boxuan Li wrote:
->> Wrap printf calls inside debug macros (DPRINTF) in `if` statement, and=
-
->> change output to stderr as well. This will ensure that printf function=
-
->> will always compile and prevent bitrot of the format strings.
->=20
-> There is an effort in QEMU to replace the obsolete DPRINTF() macros by
-> trace events (which prevent format strings bitroting).
-
-Trace events are even more powerful than conditional debugs (in that you
-can turn them on or off at runtime, instead of compile time). But
-incremental improvements are still better than nothing.
-
-
->>
->> diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
->> index 5807aa87fe..693b3c9eb4 100644
->> --- a/hw/virtio/virtio-mmio.c
->> +++ b/hw/virtio/virtio-mmio.c
->> @@ -28,15 +28,14 @@
->>  #include "hw/virtio/virtio-bus.h"
->>  #include "qemu/error-report.h"
->> =20
->> -/* #define DEBUG_VIRTIO_MMIO */
->> -
->> -#ifdef DEBUG_VIRTIO_MMIO
-
-The old code let a user pass CFLAGS=3D-DDEBUG_VIRTIO_MMIO to turn things =
-on...
-
->> -
->> -#define DPRINTF(fmt, ...) \
->> -do { printf("virtio_mmio: " fmt , ## __VA_ARGS__); } while (0)
->> -#else
->> -#define DPRINTF(fmt, ...) do {} while (0)
->> -#endif
->> +#define DEBUG_VIRTIO_MMIO 0
-
-=2E..the new code requires a source code edit. This can be considered a
-step backwards in developer friendliness.  Better might be:
-
-#ifdef DEBUG_VIRTIO_MMIO
-#define DEBUG_VIRTIO_MMIO_PRINT 1
-#else
-#define DEBUG_VIRTIO_MMIO_PRINT 0
-#endif
-
->> +
->> +#define DPRINTF(fmt, ...)                                            =
-\
->> +    do {                                                             =
-\
->> +        if (DEBUG_VIRTIO_MMIO) {                                     =
-\
-
-and the corresponding use of DEBUG_VIRTIO_MMIO_PRINT here, so that you
-preserve the ability to do a command-line CFLAGS=3D-D override, rather
-than forcing a source code edit.
-
->> +            fprintf(stderr, "virtio_mmio: " fmt , ## __VA_ARGS__);   =
-\
-
-No space before ,
-
->> +        }                                                            =
-\
->> +    } while (0)
->> =20
->>  /* QOM macros */
->>  /* virtio-mmio-bus */
->>
->=20
->=20
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
-
---xqAEEQsMY4N9F6GiTssC5EO3FdGCELxBd--
-
---2MqIhRHehvafaaPeCANYMcdExHqA49PDl
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlzIY6kACgkQp6FrSiUn
-Q2ohCAf+O2qzgwj4/OP37+rMmBJK9d1ZYizKAcHPgFU3kvzcvnkQRz8hs+FEWo7H
-qN4R/RGqSiP7T+o/xqymHltFFumqegI1aG11IZf38qohr7j4MWVxdhWxFBwsgqXx
-rcMe7pV/XroFXS2RlMi05Lp3uUIDFRq0DmL0L+xm+82eMveNlqJv6SRQIeV1idwm
-ZPehg9LpWsTQvL4QhEwX7zsJ+EvXUMBtuGxaPX98hmE2euqo40CCi3D5tISdfIrN
-W3PjG7MxMML7RJqupcatJ0DRr1FkKXAQRtml0LTpLjL7X7NYKxEYEHQQITA6+Ea9
-P7Q4zhns+hMmoJYjEaOTppyIZft15w==
-=DNmD
------END PGP SIGNATURE-----
-
---2MqIhRHehvafaaPeCANYMcdExHqA49PDl--
 
