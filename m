@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hL1rr-0004gR-PC
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Apr 2019 04:42:31 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57124)
+	id 1hLNEy-0004DD-Ab
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 03:31:48 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60042)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <frederic.konrad@adacore.com>) id 1hL1ro-0004ec-Vo
-	for qemu-trivial@nongnu.org; Mon, 29 Apr 2019 04:42:30 -0400
+	(envelope-from <like.xu@linux.intel.com>) id 1hLNEv-0004AE-DP
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 03:31:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <frederic.konrad@adacore.com>) id 1hL1rn-0000cF-5f
-	for qemu-trivial@nongnu.org; Mon, 29 Apr 2019 04:42:28 -0400
-Received: from mel.act-europe.fr ([194.98.77.210]:40062
-	helo=smtp.eu.adacore.com)
+	(envelope-from <like.xu@linux.intel.com>) id 1hLNEu-0004LN-Dh
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 03:31:45 -0400
+Received: from mga12.intel.com ([192.55.52.136]:59079)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <frederic.konrad@adacore.com>)
-	id 1hL1ri-0000NB-OE; Mon, 29 Apr 2019 04:42:23 -0400
-Received: from localhost (localhost [127.0.0.1])
-	by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 7863181380;
-	Mon, 29 Apr 2019 10:42:20 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at eu.adacore.com
-Received: from smtp.eu.adacore.com ([127.0.0.1])
-	by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R5aYVgMI3gsU; Mon, 29 Apr 2019 10:42:20 +0200 (CEST)
-Received: from localhost.localdomain
-	(apoitiers-155-1-191-106.w109-220.abo.wanadoo.fr [109.220.154.106])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.eu.adacore.com (Postfix) with ESMTPSA id C29498137F;
-	Mon, 29 Apr 2019 10:42:19 +0200 (CEST)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Cc: Fabien Chouteau <chouteau@adacore.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>, Artyom Tarasenko
-	<atar4qemu@gmail.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-References: <20190427162922.4207-1-f4bug@amsat.org>
-From: KONRAD Frederic <frederic.konrad@adacore.com>
-Message-ID: <50dfb24e-4944-6bae-4591-64a3a2747870@adacore.com>
-Date: Mon, 29 Apr 2019 10:42:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	(Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
+	id 1hLNEu-0003Tt-4X; Tue, 30 Apr 2019 03:31:44 -0400
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+	by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	30 Apr 2019 00:30:36 -0700
+X-IronPort-AV: E=Sophos;i="5.60,412,1549958400"; d="scan'208";a="138643799"
+Received: from likexu-mobl1.ccr.corp.intel.com (HELO [10.239.196.97])
+	([10.239.196.97])
+	by orsmga008-auth.jf.intel.com with ESMTP/TLS/AES128-SHA;
+	30 Apr 2019 00:30:33 -0700
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>, 
+	like.xu@intel.com, Paolo Bonzini <pbonzini@redhat.com>
+References: <1553849325-44201-1-git-send-email-like.xu@linux.intel.com>
+	<1553849325-44201-3-git-send-email-like.xu@linux.intel.com>
+	<20190404162555.0a2267ee@redhat.com>
+From: Like Xu <like.xu@linux.intel.com>
+Organization: Intel OTC
+Message-ID: <a765e3ac-45e6-310e-aa66-7036b5717a26@linux.intel.com>
+Date: Tue, 30 Apr 2019 15:30:31 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190427162922.4207-1-f4bug@amsat.org>
+In-Reply-To: <20190404162555.0a2267ee@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: fr
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 194.98.77.210
-Subject: Re: [Qemu-trivial] [PATCH v2] hw/sparc/leon3: Allow load of uImage
- firmwares
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.136
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/9] cpu/topology: add
+ general support for machine properties
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -57,100 +56,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Apr 2019 08:42:30 -0000
+X-List-Received-Date: Tue, 30 Apr 2019 07:31:46 -0000
 
-Hi Philippe,
+On 2019/4/4 22:25, Igor Mammedov wrote:
+> On Fri, 29 Mar 2019 16:48:38 +0800
+> Like Xu <like.xu@linux.intel.com> wrote:
+> 
 
-Le 4/27/19 =C3=A0 6:29 PM, Philippe Mathieu-Daud=C3=A9 a =C3=A9crit=C2=A0=
-:
-> Currently the Leon3 machine doesn't allow to load legacy u-boot images:
->=20
->    $ qemu-system-sparc -M leon3_generic -d in_asm \
->        -kernel HelenOS-0.6.0-sparc32-leon3.bin
->    qemu-system-sparc: could not load kernel 'HelenOS-0.6.0-sparc32-leon=
-3.bin'
->=20
->    $ file HelenOS-0.6.0-sparc32-leon3.bin
->    HelenOS-0.6.0-sparc32-leon3.bin: u-boot legacy uImage, HelenOS-0.6.0=
-,\
->      Linux/ARM, OS Kernel Image (Not compressed), 2424229 bytes,\
->      Sun Dec 21 19:18:09 2014,\
->      Load Address: 0x40000000, Entry Point: 0x40000000,\
->      Header CRC: 0x8BCFA236, Data CRC: 0x37AD87DF
->=20
-> Since QEMU can load uImages, add the necessary code,
-> so the Leon3 machine can load these images:
->=20
->    $ qemu-system-sparc -M leon3_generic -d in_asm \
->        -kernel HelenOS-0.6.0-sparc32-leon3.bin
->    ----------------
->    IN:
->    0x40000000:  b  0x400007a8
->    0x40000004:  nop
->    ----------------
->    IN:
->    0x400007a8:  save  %sp, -136, %sp
->    0x400007ac:  call  0x40000020
->    0x400007b0:  sethi  %hi(0x4000b800), %i1
->    ...
->=20
-> Tested with the following firmware:
-> http://www.helenos.org/releases/HelenOS-0.6.0-sparc32-leon3.bin
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+<snipp>
+> 
+>> diff --git a/cpus.c b/cpus.c
+>> index e83f72b..834a697 100644
+>> --- a/cpus.c
+>> +++ b/cpus.c
+>> @@ -2067,6 +2067,10 @@ static void qemu_dummy_start_vcpu(CPUState *cpu)
+>>   
+>>   void qemu_init_vcpu(CPUState *cpu)
+>>   {
+>> +    MachineState *ms = MACHINE(qdev_get_machine());
+>> +    unsigned int smp_cores = ms->topo.smp_cores;
+>> +    unsigned int smp_threads = ms->topo.smp_threads;
+> 
+> (***)
+> for once it probably will crash *-user builds
+> and secondly the purpose of getting rid of smp_foo globals
+> is disentangle layer violations and not replace it with another global
+> (qdev_get_machine()).
 
-It doesn't go through the whole boot of this HelenOS but we have the same=
- wrong
-behavior with the Linux *SMP* kernel.
+I am happy to follow this rule on cpu-topo refactoring work, but 
+sometimes calling qdev_get_machine() is inevitable.
 
-qemu: fatal: Trap 0x06 while interrupts disabled, Error state
-pc: 400009e4  npc: 40000010
-%g0-7: 00000000 00000018 80000000 00000018 4000a548 00000000 00000000 000=
-00000
-%o0-7: 00000018 00000000 000000e2 4000a0a8 4000a0a0 0000ffff 47ffff78 400=
-009e0
-%l0-7: 4000a000 00000024 47ffffd8 80a00000 00000000 00000000 00000000 000=
-00000
-%i0-7: 80a00000 4000ba00 47ffffd4 80a00000 00000000 4000a000 48000000 000=
-00000
-%f00:  0000000000000000 0000000000000000 0000000000000000 000000000000000=
-0
-%f08:  0000000000000000 0000000000000000 0000000000000000 000000000000000=
-0
-%f16:  0000000000000000 0000000000000000 0000000000000000 000000000000000=
-0
-%f24:  0000000000000000 0000000000000000 0000000000000000 000000000000000=
-0
-psr: f30000c7 (icc: ---- SPE: SP-) wim: 00000001
-fsr: 00000000 y: 00000000
+> 
+> What should be done is to make a properties of nr_cores/nr_threads and set
+> them from the parent object that creates CPUs. The point is CPUs shouldn't
+> reach out outside itself to fish out data bits it needs, it's responsibility
+> of creator to feed to being create CPU needed properties.
+> 
+> This kind of refactoring probably deserves its own series and should precede
+> -smp refactoring as it doesn't depend on CpuTopology at all.
+> 
 
-But this has nothing to do with the uImage loading so it seems ok to me.
+The division of responsibility for this case (refactoring 
+qemu_init_vcpu) seems to be a poisonous apple.
 
-Reviewed-by: KONRAD Frederic <frederic.konrad@adacore.com>
-Tested-by: KONRAD Frederic <frederic.konrad@adacore.com>
+The prerequisite for setting cpu-> nr_cores / nr_threads from the parent 
+is that the CPU has been created, so if any process during 
+initialization needs this topo information, it will use the default 
+values form cpu_common_initfn() instead of user-configured parameters.
 
-> ---
-> v2: Fixed GIT_AUTHOR_EMAIL
-> ---
->   hw/sparc/leon3.c | 4 ++++
->   1 file changed, 4 insertions(+)
->=20
-> diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
-> index 774639af33..0383b17c29 100644
-> --- a/hw/sparc/leon3.c
-> +++ b/hw/sparc/leon3.c
-> @@ -193,6 +193,10 @@ static void leon3_generic_hw_init(MachineState *ma=
-chine)
->           kernel_size =3D load_elf(kernel_filename, NULL, NULL, NULL,
->                                  &entry, NULL, NULL,
->                                  1 /* big endian */, EM_SPARC, 0, 0);
-> +        if (kernel_size < 0) {
-> +            kernel_size =3D load_uimage(kernel_filename, NULL, &entry,
-> +                                      NULL, NULL, NULL);
-> +        }
->           if (kernel_size < 0) {
->               error_report("could not load kernel '%s'", kernel_filenam=
-e);
->               exit(1);
->=20
+We may not want to repeat those assignment operations using the new 
+values and what do you think, Igor?
+
+<snipp>
 
