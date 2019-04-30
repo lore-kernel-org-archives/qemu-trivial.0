@@ -1,110 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hLZhj-0004hh-V0
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 16:50:20 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:49105)
+	id 1hLZuY-0002lV-Mh
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 17:03:34 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58630)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <prvs=01690f4a8=Alistair.Francis@wdc.com>)
-	id 1hLZ3k-0002Kc-I7
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 16:09:01 -0400
+	(envelope-from <alistair23@gmail.com>) id 1hLZuV-0002iY-QJ
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 17:03:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <prvs=01690f4a8=Alistair.Francis@wdc.com>)
-	id 1hLZ3j-0006zP-IW
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 16:09:00 -0400
-Received: from esa2.hgst.iphmx.com ([68.232.143.124]:40728)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <prvs=01690f4a8=Alistair.Francis@wdc.com>)
-	id 1hLZ3j-0006x4-AQ; Tue, 30 Apr 2019 16:08:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
-	d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
-	t=1556654961; x=1588190961;
-	h=from:to:cc:subject:date:message-id:references:
-	in-reply-to:content-id:content-transfer-encoding: mime-version;
-	bh=3hk22IXiPanYCVCAORHPd9Ou1I5+RlgHyiylTOqL6Fc=;
-	b=nihU214Da6cvVraf5J9g9WnsjeDekSNoRyaJcXnYqTammYCTQ9mkXwIS
-	GG4oGhd7w3HgUXwgAzT9ATosbUaB0V+UWC9by3DHaBBuuKabruEUS7eHa
-	xcMGJdjX8KIDwY0GimIfKFgMMdDkicwVOmlSGNuiG4T6nH2ofmjvcEzka
-	/RzpMDroTXcD5up7a2neGHMRFL/cZCZyjXdBAKbtzUWkXc6ib49B40cFh
-	CrwTJp2rpetv6mRdkMlqvK1ltHpC8fzRhRLC2SFuUr25bGVJk6aUsu/wj
-	/KOtPQmBaCij9hM4SOWs0wnC+OO3Caz5rUVn8fPBi4OFXokh2LBkrNdZL Q==;
-X-IronPort-AV: E=Sophos;i="5.60,414,1549900800"; d="scan'208";a="206404325"
-Received: from mail-sn1nam04lp2059.outbound.protection.outlook.com (HELO
-	NAM04-SN1-obe.outbound.protection.outlook.com) ([104.47.44.59])
-	by ob1.hgst.iphmx.com with ESMTP; 01 May 2019 04:09:19 +0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=sharedspace.onmicrosoft.com; s=selector1-wdc-com;
-	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=3hk22IXiPanYCVCAORHPd9Ou1I5+RlgHyiylTOqL6Fc=;
-	b=j4lhoz2fhTC7xzgAlZw42uTrM1K8lQyUalbFDZqLelOVijileO2rwXgj7MsesLDzVgYYpLkB9bgHLtyPAYojOHPWkDiG4lK8rz6cv+Hp0KZfU2K9wX89WqW2pUBBwwjJkEqTTd5t0zSpQL0H3MIQRsHi9R5K0alUZx75YdBDofk=
-Received: from BYAPR04MB4901.namprd04.prod.outlook.com (52.135.232.206) by
-	BYAPR04MB5672.namprd04.prod.outlook.com (20.179.57.22) with Microsoft
-	SMTP
-	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
-	15.20.1856.10; Tue, 30 Apr 2019 20:08:56 +0000
-Received: from BYAPR04MB4901.namprd04.prod.outlook.com
-	([fe80::4d89:bbf8:952c:3d66]) by
-	BYAPR04MB4901.namprd04.prod.outlook.com
-	([fe80::4d89:bbf8:952c:3d66%5]) with mapi id 15.20.1835.018;
-	Tue, 30 Apr 2019 20:08:56 +0000
-From: Alistair Francis <Alistair.Francis@wdc.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: Alistair Francis <Alistair.Francis@wdc.com>, "alistair23@gmail.com"
-	<alistair23@gmail.com>, "kraxel@redhat.com" <kraxel@redhat.com>,
-	"berrange@redhat.com" <berrange@redhat.com>, "riku.voipio@iki.fi"
-	<riku.voipio@iki.fi>, "laurent@vivier.eu" <laurent@vivier.eu>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Thread-Topic: [PATCH v1 1/5] util/qemu-sockets: Fix GCC 9 build warnings
-Thread-Index: AQHU/5CKMl0GweNxUkGP2/9h0Xa6UA==
-Date: Tue, 30 Apr 2019 20:08:56 +0000
-Message-ID: <81a342ee886cf0f63cdbfc8573b14dd2d41de42d.1556650594.git.alistair.francis@wdc.com>
-References: <cover.1556650594.git.alistair.francis@wdc.com>
-In-Reply-To: <cover.1556650594.git.alistair.francis@wdc.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: git-send-email 2.21.0
-x-clientproxiedby: BYAPR01CA0021.prod.exchangelabs.com (2603:10b6:a02:80::34)
-	To BYAPR04MB4901.namprd04.prod.outlook.com
-	(2603:10b6:a03:4f::14)
-authentication-results: spf=none (sender IP is )
-	smtp.mailfrom=Alistair.Francis@wdc.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [199.255.44.172]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 6b89b123-5382-46d6-108b-08d6cda7aca4
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
-	RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
-	SRVR:BYAPR04MB5672; 
-x-ms-traffictypediagnostic: BYAPR04MB5672:
-wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <BYAPR04MB56725DDF071D9370DABB7198903A0@BYAPR04MB5672.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1303;
-x-forefront-prvs: 00235A1EEF
-x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(136003)(346002)(396003)(366004)(376002)(39860400002)(189003)(199004)(99286004)(4326008)(50226002)(71190400001)(71200400001)(7736002)(305945005)(316002)(14444005)(256004)(44832011)(186003)(36756003)(8936002)(6436002)(54906003)(2501003)(11346002)(102836004)(2906002)(26005)(6486002)(446003)(486006)(476003)(2616005)(5660300002)(8676002)(25786009)(6116002)(81156014)(81166006)(72206003)(3846002)(86362001)(66066001)(478600001)(73956011)(6512007)(66556008)(118296001)(66446008)(14454004)(66476007)(66946007)(64756008)(68736007)(53936002)(76176011)(97736004)(52116002)(2351001)(386003)(6506007)(5640700003)(6916009);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR04MB5672;
-	H:BYAPR04MB4901.namprd04.prod.outlook.com; FPR:; SPF:None;
-	LANG:en; PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: 2O42GKT+to90woIdiQOfhNgavJ++bevtANJIgysVRLEVri3fcJvkyQNQ8EVZVT/K5riPp9k09mcfXE+sD+c4EY5EbcQBhQkJXzI9bePbWYr0qXxq6giIorfol1I530EChBOCVWlJtYCWyYTugIX3XQ25VTcjyVBwDEXv0YHGfQcRy0aNfeh1cpqJIl+zg8qkhpjUs7j35ybyT6hAibMsG1HO6LnfdAcaMllPIUs0e0nkiM9FeVA3Ms4RsrrM18QybPM175zjvrv4ztwofG50RlOsnIINYOs2IP6ZdGegRN1AfJcwXlxweNOz9POZrMDig3SH+gMkz8C5nd7ERk7i2q+VpvzaGyiwOqyFHPwpd7JYVp09bU0jnDuM3TTMidyAWwwV7opieGbAX2IHy3PR+1QvHUJB4Mj9QpPMM3H08dQ=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <488EE58CF61ABB40A8A18DC96C8835D1@namprd04.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	(envelope-from <alistair23@gmail.com>) id 1hLZs7-0000Rr-TD
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 17:01:04 -0400
+Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:35238)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1hLZs6-0000Pw-Lp; Tue, 30 Apr 2019 17:01:02 -0400
+Received: by mail-lf1-x141.google.com with SMTP id j20so11959749lfh.2;
+	Tue, 30 Apr 2019 14:01:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=05LJbDiyXnwkAcbMIJxpRQIyxurjkjMdMF29cuB89K8=;
+	b=tEh3qQNPRvO3PW+wMD0zZhtCeCXWUQN8rhxkT/sIBUb9/lt10IEQ6Rro0EIeKi7gY3
+	VoQEBW63qfWqKcTNYYooO/8pGExppWAd6zQEzf//+XP/hpy5LVS+HZORFSramMN6arI0
+	JGOJVsmgr77igqWfB+exh8YUCu9wIinH11j512T4+3P/2yU/Y7WydI2Sa4rhNkChWKcL
+	nJa6dgDD9qnOppnlx7L/0FraQb481J8jKkvZNoFHO7ZOrIEKlDzfi+GLgyPDFFikW0w4
+	YhwHH7SwMdyjc7Oszee6NAchQohNdMd/VWQTDuXct5kqgu0UBGt+1xLScftclU4oKNxf
+	pP6A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=05LJbDiyXnwkAcbMIJxpRQIyxurjkjMdMF29cuB89K8=;
+	b=UZXpTSLMgNOmp+8kcoSO6seHXZh1qB6yJMvenmzz6kLZmAWl9OCCJgV2CSlBbpGJy6
+	5Cl9EePyjYuyfXy59c2OLnevExrPf9m5i/ypsjwdV57m1t+g7m9Gs2HIyZvCDedB/QYV
+	KgoML7iUQUnXhE0l4MiUd472em/KKXqv4PccXgY/b+6lXEKq8XBavurC5/qL1rTBi3nk
+	cSS8gIIGzp8ZKcLWBx3/IbnfISdnu/SqSevpUfG9qfRraFrNUsQzeo2w4WIBLOMLbQA1
+	1jObcPh28pwnPsvkDoN4GL5hToKX/qve6Row19EdlNbBgzFn1KkmqoYhiMhv1GrkxsFv
+	v3VA==
+X-Gm-Message-State: APjAAAWeVWd9j7IPyRsSftSsqmEbLkKgrlIS55l8P1cZTQBOy++hnpBA
+	MDTREVR/LI5qnbg5s7zrh21cqxq9xp3zahhNgNc=
+X-Google-Smtp-Source: APXvYqzmnlnPHMIP048CAjD0sDZKNE/a9CApOcdMrGHS5BOIia7EP7V40BAY+buhKM4kHtgdWJs0YFST+QzNNMHtrJ8=
+X-Received: by 2002:a19:1949:: with SMTP id 70mr28585768lfz.103.1556658059595; 
+	Tue, 30 Apr 2019 14:00:59 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6b89b123-5382-46d6-108b-08d6cda7aca4
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Apr 2019 20:08:56.2261 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5672
+References: <cover.1556650594.git.alistair.francis@wdc.com>
+	<c4768a18309b3918715f96a1f5b2a9a264a5a9e4.1556650594.git.alistair.francis@wdc.com>
+	<8ca522c7-d1dd-fe05-f8ab-031b72a9fbef@vivier.eu>
+In-Reply-To: <8ca522c7-d1dd-fe05-f8ab-031b72a9fbef@vivier.eu>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 30 Apr 2019 13:59:06 -0700
+Message-ID: <CAKmqyKNRO7ESNmngtV3b8EjZfiuuu9QQm6avfwUuGe=NtpS46A@mail.gmail.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: Alistair Francis <Alistair.Francis@wdc.com>, 
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"kraxel@redhat.com" <kraxel@redhat.com>, 
+	"berrange@redhat.com" <berrange@redhat.com>,
+	"riku.voipio@iki.fi" <riku.voipio@iki.fi>, 
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 68.232.143.124
-X-Mailman-Approved-At: Tue, 30 Apr 2019 16:50:12 -0400
-Subject: [Qemu-trivial] [PATCH v1 1/5] util/qemu-sockets: Fix GCC 9 build
- warnings
+X-Received-From: 2a00:1450:4864:20::141
+Subject: Re: [Qemu-trivial] [PATCH v1 2/5] hw/usb/hcd-xhci: Fix GCC 9 build
+ warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -116,35 +73,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Apr 2019 20:09:01 -0000
+X-List-Received-Date: Tue, 30 Apr 2019 21:03:33 -0000
 
-Rml4IHRoaXMgd2FybmluZyB3aGVuIGJ1aWxkaW5nIHdpdGggR0NDOSBvbiBGZWRvcmEgMzA6DQpJ
-biBmdW5jdGlvbiDigJhzdHJuY3B54oCZLA0KICAgIGlubGluZWQgZnJvbSDigJh1bml4X2Nvbm5l
-Y3Rfc2FkZHIuaXNyYS4w4oCZIGF0IHV0aWwvcWVtdS1zb2NrZXRzLmM6OTI1OjU6DQovdXNyL2lu
-Y2x1ZGUvYml0cy9zdHJpbmdfZm9ydGlmaWVkLmg6MTA2OjEwOiBlcnJvcjog4oCYX19idWlsdGlu
-X3N0cm5jcHnigJkgc3BlY2lmaWVkIGJvdW5kIDEwOCBlcXVhbHMgZGVzdGluYXRpb24gc2l6ZSBb
-LVdlcnJvcj1zdHJpbmdvcC10cnVuY2F0aW9uXQ0KICAxMDYgfCAgIHJldHVybiBfX2J1aWx0aW5f
-X19zdHJuY3B5X2NoayAoX19kZXN0LCBfX3NyYywgX19sZW4sIF9fYm9zIChfX2Rlc3QpKTsNCiAg
-ICAgIHwgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fn5+fn5+fn5+fn4NCkluIGZ1bmN0aW9uIOKAmHN0cm5jcHnigJksDQogICAgaW5s
-aW5lZCBmcm9tIOKAmHVuaXhfbGlzdGVuX3NhZGRyLmlzcmEuMOKAmSBhdCB1dGlsL3FlbXUtc29j
-a2V0cy5jOjg4MDo1Og0KDQpTaWduZWQtb2ZmLWJ5OiBBbGlzdGFpciBGcmFuY2lzIDxhbGlzdGFp
-ci5mcmFuY2lzQHdkYy5jb20+DQotLS0NCiB1dGlsL3FlbXUtc29ja2V0cy5jIHwgNCArKy0tDQog
-MSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkNCg0KZGlmZiAt
-LWdpdCBhL3V0aWwvcWVtdS1zb2NrZXRzLmMgYi91dGlsL3FlbXUtc29ja2V0cy5jDQppbmRleCA5
-NzA1MDUxNjkwLi40MzIyNjUyNDI4IDEwMDY0NA0KLS0tIGEvdXRpbC9xZW11LXNvY2tldHMuYw0K
-KysrIGIvdXRpbC9xZW11LXNvY2tldHMuYw0KQEAgLTg3Nyw3ICs4NzcsNyBAQCBzdGF0aWMgaW50
-IHVuaXhfbGlzdGVuX3NhZGRyKFVuaXhTb2NrZXRBZGRyZXNzICpzYWRkciwNCiANCiAgICAgbWVt
-c2V0KCZ1biwgMCwgc2l6ZW9mKHVuKSk7DQogICAgIHVuLnN1bl9mYW1pbHkgPSBBRl9VTklYOw0K
-LSAgICBzdHJuY3B5KHVuLnN1bl9wYXRoLCBwYXRoLCBzaXplb2YodW4uc3VuX3BhdGgpKTsNCisg
-ICAgc3RybmNweSh1bi5zdW5fcGF0aCwgcGF0aCwgc2l6ZW9mKHVuLnN1bl9wYXRoKSAtIDEpOw0K
-IA0KICAgICBpZiAoYmluZChzb2NrLCAoc3RydWN0IHNvY2thZGRyKikgJnVuLCBzaXplb2YodW4p
-KSA8IDApIHsNCiAgICAgICAgIGVycm9yX3NldGdfZXJybm8oZXJycCwgZXJybm8sICJGYWlsZWQg
-dG8gYmluZCBzb2NrZXQgdG8gJXMiLCBwYXRoKTsNCkBAIC05MjIsNyArOTIyLDcgQEAgc3RhdGlj
-IGludCB1bml4X2Nvbm5lY3Rfc2FkZHIoVW5peFNvY2tldEFkZHJlc3MgKnNhZGRyLCBFcnJvciAq
-KmVycnApDQogDQogICAgIG1lbXNldCgmdW4sIDAsIHNpemVvZih1bikpOw0KICAgICB1bi5zdW5f
-ZmFtaWx5ID0gQUZfVU5JWDsNCi0gICAgc3RybmNweSh1bi5zdW5fcGF0aCwgc2FkZHItPnBhdGgs
-IHNpemVvZih1bi5zdW5fcGF0aCkpOw0KKyAgICBzdHJuY3B5KHVuLnN1bl9wYXRoLCBzYWRkci0+
-cGF0aCwgc2l6ZW9mKHVuLnN1bl9wYXRoKSAtIDEpOw0KIA0KICAgICAvKiBjb25uZWN0IHRvIHBl
-ZXIgKi8NCiAgICAgZG8gew0KLS0gDQoyLjIxLjANCg0K
+On Tue, Apr 30, 2019 at 1:24 PM Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> Le 30/04/2019 =C3=A0 22:09, Alistair Francis a =C3=A9crit :
+> > Fix this build warning with GCC 9 on Fedora 30:
+> > hw/usb/hcd-xhci.c:3339:66: error: =E2=80=98%d=E2=80=99 directive output=
+ may be truncated writing between 1 and 10 bytes into a region of size 5 [-=
+Werror=3Dformat-truncation=3D]
+> >  3339 |             snprintf(port->name, sizeof(port->name), "usb2 port=
+ #%d", i+1);
+> >       |                                                                =
+  ^~
+> > hw/usb/hcd-xhci.c:3339:54: note: directive argument in the range [1, 21=
+47483647]
+> >  3339 |             snprintf(port->name, sizeof(port->name), "usb2 port=
+ #%d", i+1);
+>
+> "i" cannot be greater than 15.
+>
+> perhaps an "assert(i <=3D MAX(MAXPORTS_2, MAXPORTS_3))" can fix the warni=
+ng ?
+
+It does seem to stop the warnings, I'll change this patch to use a g_assert=
+().
+
+Alistair
+
+>
+> Thanks,
+> Laurent
+>
+> >       |                                                      ^~~~~~~~~~=
+~~~~~
+> > In file included from /usr/include/stdio.h:867,
+> >                  from /home/alistair/qemu/include/qemu/osdep.h:99,
+> >                  from hw/usb/hcd-xhci.c:21:
+> > /usr/include/bits/stdio2.h:67:10: note: =E2=80=98__builtin___snprintf_c=
+hk=E2=80=99 output between 13 and 22 bytes into a destination of size 16
+> >    67 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVE=
+L - 1,
+> >       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~
+> >    68 |        __bos (__s), __fmt, __va_arg_pack ());
+> >       |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> >
+> > Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+> > ---
+> >  hw/usb/hcd-xhci.h | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/hw/usb/hcd-xhci.h b/hw/usb/hcd-xhci.h
+> > index 240caa4e51..9e4988abb6 100644
+> > --- a/hw/usb/hcd-xhci.h
+> > +++ b/hw/usb/hcd-xhci.h
+> > @@ -133,7 +133,7 @@ typedef struct XHCIPort {
+> >      uint32_t portnr;
+> >      USBPort  *uport;
+> >      uint32_t speedmask;
+> > -    char name[16];
+> > +    char name[24];
+> >      MemoryRegion mem;
+> >  } XHCIPort;
+> >
+> >
+>
 
