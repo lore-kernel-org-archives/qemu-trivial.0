@@ -1,68 +1,108 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hLaTh-0002bg-31
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 17:39:53 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38836)
+	id 1hLcB1-0002mn-96
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 19:28:43 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34334)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hLaTe-0002a9-Lv
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 17:39:51 -0400
+	(envelope-from <prvs=01690f4a8=Alistair.Francis@wdc.com>)
+	id 1hLcAy-0002jz-RX
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 19:28:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hLaTd-0008E5-KC
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 17:39:50 -0400
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:33429)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hLaTb-0008Ck-4n; Tue, 30 Apr 2019 17:39:47 -0400
-Received: by mail-lf1-x144.google.com with SMTP id j11so12028690lfm.0;
-	Tue, 30 Apr 2019 14:39:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=/EnJjfQru62WxSl+IcAnUF/CWCtyj07gupeydBsUevs=;
-	b=WXsNpuo94mNKWJJAG0MkrxWXIoCJ2YCakjyQIrOdmofkamEiDuIvhT4Qf29hSq5B0Z
-	6OHBh/iVHrkreBNCx2YKkOz/YIeSD/OEEAB8rSmmiR1YgD7oWcizdLBVi8077JvQ+g15
-	vO7J9xWkFJETC6ZmZYYE2ZDBWNgem00aCypPmKiQoseLxG/ZmCL/LNzAy7nYmX5U9VJz
-	nUahVkTOLYbM+dxPnI7PiLByY+q4K2DzGhHcbmTHQ18ydXttqlLv43/8Ehu298b2c6Ps
-	cTvvJ2SATZNNuPaMA6vw2MeNMdnrHwSFi1QcETMzWbrxbEpJnYs3fynn4uXYqlh10x9D
-	opcA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=/EnJjfQru62WxSl+IcAnUF/CWCtyj07gupeydBsUevs=;
-	b=d7cORnkAGXD/Dft4nqekQO4d4uvVhcX3UJMxUWX4/iPUbRi4CykKeM0pualI+kFKhQ
-	knkHUv1wq9fqBTL4kOoTKiq+RCQLtjs8vJaccgO3m6YyYMTEUJNMZdFF/5IG11Xs9iwy
-	luKSSQx7BJdl0Z6YCm3VZm+XvDmZQbYAcn3PHX7z21P/fiz6rfS4T1Rwd841AQdK3oqO
-	GBvVnkkehXfssEV3G39v7rCvLqfibAV5zq9GgOvY9fjh6H/BPspDGulOKu59F4Kf/b7K
-	CRhGxf4uB+f60cgG+mDf79sJ9r7VBoZNdqZkhe4v1wFILHJ6oJRcaguTl6EnXmPWbc+a
-	daGQ==
-X-Gm-Message-State: APjAAAUt69SL4O3wIc8oIfNvZe90Fk2D9EHV9dJct7nQlmx0ydXrS18K
-	tWRUlmmykvzTTRZ5DlFlGomrNFvwlGRAMAfJzDE=
-X-Google-Smtp-Source: APXvYqxxo8/t7qaBhHh8Hazx4JkXU4Iij0M26AuUwGaEBqAYtJ/BAN3s016S4b6uTX8g61sSo9oh04K2At/OzX6VKT4=
-X-Received: by 2002:ac2:523a:: with SMTP id i26mr32115461lfl.118.1556660385752;
-	Tue, 30 Apr 2019 14:39:45 -0700 (PDT)
+	(envelope-from <prvs=01690f4a8=Alistair.Francis@wdc.com>)
+	id 1hLcAn-0005wb-E1
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 19:28:30 -0400
+Received: from esa4.hgst.iphmx.com ([216.71.154.42]:16200)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <prvs=01690f4a8=Alistair.Francis@wdc.com>)
+	id 1hLcAm-0005vC-KC; Tue, 30 Apr 2019 19:28:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+	d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+	t=1556666909; x=1588202909;
+	h=from:to:cc:subject:date:message-id:references:
+	in-reply-to:content-id:content-transfer-encoding: mime-version;
+	bh=93qqYGoM2ecY5vFl0HSJ9ujc3avEN9JpEd+kFvUyPv0=;
+	b=KrnD4gc3Pggh8nwiqbd5+64/itujhTW1MUWdfdrXYrKwjaTN9Z5gQTSy
+	Xml+oMvNDGLCjN3+df0Gv02CLQ9jL9LlEXrgpJVwYT60R1xg1gqGzPFmf
+	lpPiMTZkB9pFfg1Zc7cSwtrBir6ex900fu6XMpNe3RcnYnQR+lL+4/swl
+	7uDNYdP5ABZa/2Cg68oyRqcHZX+hGzDV11a/6OeDKexjSUrV0FdhSwqG/
+	BxAfnN0Fb081f45neknc4u+OSWXb27LDcVCb8ijbtv00zHRt8gG92aTst
+	JeuJyOQ22YA2sdDbaoFMne8B0oYzqlUj5nCU3L5LtNhpvppVNQMjs7HI1 A==;
+X-IronPort-AV: E=Sophos;i="5.60,415,1549900800"; d="scan'208";a="107219009"
+Received: from mail-bn3nam01lp2051.outbound.protection.outlook.com (HELO
+	NAM01-BN3-obe.outbound.protection.outlook.com) ([104.47.33.51])
+	by ob1.hgst.iphmx.com with ESMTP; 01 May 2019 07:28:24 +0800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=sharedspace.onmicrosoft.com; s=selector1-wdc-com;
+	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+	bh=93qqYGoM2ecY5vFl0HSJ9ujc3avEN9JpEd+kFvUyPv0=;
+	b=FY1uu/Hmqbq16ipgOMxmXyHAOHhodPJbXDEuCXja3das8sCwDwtKIFvA14JAmo0NMSysXZYIAQe70Uzm3rH/O7+RnixDXn8RHVIsbBxCll/A0nwOjMMIZPBq7WPZgcoxAhlF94vDGJmgV7lpJ3j1aMDOBvYrXnd8julscmpQayk=
+Received: from DM6PR04MB4908.namprd04.prod.outlook.com (20.176.109.81) by
+	DM6PR04MB6217.namprd04.prod.outlook.com (20.178.224.88) with Microsoft
+	SMTP
+	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+	15.20.1856.10; Tue, 30 Apr 2019 23:28:22 +0000
+Received: from DM6PR04MB4908.namprd04.prod.outlook.com
+	([fe80::9ba:6028:ae27:7d2]) by DM6PR04MB4908.namprd04.prod.outlook.com
+	([fe80::9ba:6028:ae27:7d2%2]) with mapi id 15.20.1835.015;
+	Tue, 30 Apr 2019 23:28:22 +0000
+From: Alistair Francis <Alistair.Francis@wdc.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: Alistair Francis <Alistair.Francis@wdc.com>, "alistair23@gmail.com"
+	<alistair23@gmail.com>, "kraxel@redhat.com" <kraxel@redhat.com>,
+	"berrange@redhat.com" <berrange@redhat.com>, "riku.voipio@iki.fi"
+	<riku.voipio@iki.fi>, "laurent@vivier.eu" <laurent@vivier.eu>,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Thread-Topic: [PATCH v2 1/5] util/qemu-sockets: Fix GCC 9 build warnings
+Thread-Index: AQHU/6xmI5QzeU/lqky3NVrWQUvreA==
+Date: Tue, 30 Apr 2019 23:28:22 +0000
+Message-ID: <002f222d86322a66276de39cb29796acffe384c1.1556666645.git.alistair.francis@wdc.com>
+References: <cover.1556666645.git.alistair.francis@wdc.com>
+In-Reply-To: <cover.1556666645.git.alistair.francis@wdc.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: git-send-email 2.21.0
+x-clientproxiedby: BYAPR05CA0076.namprd05.prod.outlook.com
+	(2603:10b6:a03:e0::17) To DM6PR04MB4908.namprd04.prod.outlook.com
+	(2603:10b6:5:19::17)
+authentication-results: spf=none (sender IP is )
+	smtp.mailfrom=Alistair.Francis@wdc.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-originating-ip: [199.255.44.250]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 368f992b-0752-47f1-f154-08d6cdc38928
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: BCL:0; PCL:0;
+	RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
+	SRVR:DM6PR04MB6217; 
+x-ms-traffictypediagnostic: DM6PR04MB6217:
+wdcipoutbound: EOP-TRUE
+x-microsoft-antispam-prvs: <DM6PR04MB6217B3B7A69A1C14A91B4417903A0@DM6PR04MB6217.namprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:1107;
+x-forefront-prvs: 00235A1EEF
+x-forefront-antispam-report: SFV:NSPM;
+	SFS:(10019020)(366004)(39860400002)(136003)(346002)(376002)(396003)(199004)(189003)(5640700003)(8936002)(6436002)(53936002)(73956011)(316002)(54906003)(14454004)(81156014)(6486002)(6916009)(81166006)(68736007)(8676002)(186003)(26005)(3846002)(66446008)(6116002)(66476007)(64756008)(7736002)(6512007)(66946007)(305945005)(102836004)(2906002)(66556008)(5660300002)(386003)(446003)(6506007)(66066001)(44832011)(2501003)(2351001)(11346002)(50226002)(478600001)(36756003)(486006)(476003)(2616005)(76176011)(4326008)(52116002)(14444005)(99286004)(71190400001)(71200400001)(256004)(118296001)(72206003)(86362001)(25786009);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR04MB6217;
+	H:DM6PR04MB4908.namprd04.prod.outlook.com; FPR:; SPF:None;
+	LANG:en; PTR:InfoNoRecords; A:1; MX:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: IasIo6pJU0qD4goeCIbpGv9qkgjefuslzSMH9zpJbYQZz3Gyjqu8Qtlj7Rr/HPLFbVS2Jj69XSTHkIbCn83ZsIOMkeHEHLnzIST8nund1cGrSPkRc3DxpBcsirjQjOtmouPn066EBM/GjVGkh6P/wWzj58y/OL6FtG49wbE+fZqJDig+dEy2gAJaHTpzVscjFnpG62r2byS24L+MqOu6RAs6h9o1VvMgdeE63hNbKPPur28JmP8dnJqJTsm4WSWCtR6rWajDySGjTqoqXKUB3T6jlOhVLiDG6cAoVtTdmbyTHk8OkI50lXJOF0IvAPBtQPZB9/ptJ7rkdofHOyq7oYN8ux5q2elEhs0zJQw8DMUcpjVUBeBIOPs3+fVKQZl3MrSmopJ9iru+ptnOjEXxsC8o2DNxEQR2X8J0wzhYClc=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <7DACA981F99FAD42A18EF4D27F084E13@namprd04.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <cover.1556650594.git.alistair.francis@wdc.com>
-	<81a342ee886cf0f63cdbfc8573b14dd2d41de42d.1556650594.git.alistair.francis@wdc.com>
-	<c95d2923-45b2-9acf-9cc6-aa4b9e102e48@redhat.com>
-	<4f41ed2c-b49b-e1f5-e9a3-ad08e16ac77e@redhat.com>
-In-Reply-To: <4f41ed2c-b49b-e1f5-e9a3-ad08e16ac77e@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 30 Apr 2019 14:37:51 -0700
-Message-ID: <CAKmqyKOxQZAX2grABD5=YFAK=G-TGFRWbJ=PmgutNeosF7M7Mw@mail.gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Alistair Francis <Alistair.Francis@wdc.com>, 
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, 
-	"riku.voipio@iki.fi" <riku.voipio@iki.fi>,
-	"laurent@vivier.eu" <laurent@vivier.eu>, 
-	"kraxel@redhat.com" <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 368f992b-0752-47f1-f154-08d6cdc38928
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Apr 2019 23:28:22.4673 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR04MB6217
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::144
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v1 1/5] util/qemu-sockets:
- Fix GCC 9 build warnings
+X-Received-From: 216.71.154.42
+Subject: [Qemu-trivial] [PATCH v2 1/5] util/qemu-sockets: Fix GCC 9 build
+ warnings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,62 +114,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Apr 2019 21:39:51 -0000
+X-List-Received-Date: Tue, 30 Apr 2019 23:28:41 -0000
 
-On Tue, Apr 30, 2019 at 2:16 PM Eric Blake <eblake@redhat.com> wrote:
->
-> On 4/30/19 3:25 PM, Eric Blake wrote:
-> > On 4/30/19 3:08 PM, Alistair Francis wrote:
-> >> Fix this warning when building with GCC9 on Fedora 30:
-> >> In function =E2=80=98strncpy=E2=80=99,
-> >>     inlined from =E2=80=98unix_connect_saddr.isra.0=E2=80=99 at util/q=
-emu-sockets.c:925:5:
-> >> /usr/include/bits/string_fortified.h:106:10: error: =E2=80=98__builtin=
-_strncpy=E2=80=99 specified bound 108 equals destination size [-Werror=3Dst=
-ringop-truncation]
-> >>   106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos =
-(__dest));
-> >>       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
-~~~~~~~~~
-> >> In function =E2=80=98strncpy=E2=80=99,
-> >>     inlined from =E2=80=98unix_listen_saddr.isra.0=E2=80=99 at util/qe=
-mu-sockets.c:880:5:
-> >>
->
-> >> -    strncpy(un.sun_path, path, sizeof(un.sun_path));
-> >> +    strncpy(un.sun_path, path, sizeof(un.sun_path) - 1);
-> >
-> > NACK. Linux allows you to use the full width of un.sun_path (a NUL
-> > terminator is required if you copy less than that, but not if you use
-> > the full width). Rather, we may need to mark path as a potential
-> > nonstring to silence the warning, or use memcpy instead of strncpy, or
-> > some other workaround.  (Sadly, this is one of those odd places where
-> > strncpy is actually the right function to use, but there are so many
-> > other places where strncpy is used incorrectly that it has turned into =
-a
-> > battle to use it here)
->
-> We don't have control over un (that's from the libc system headers), but
-> does adding the QEMU_NONSTRING attribute to our declaration of path
-> serve to silence the warning?
-
-I don't think that would fix it, I'll double check though.
-
->
-> In short, I think most of this series should look at the use of the
-> QEMU_NONSTRING macro, as that macro goes hand-in-hand with strncpy() for
-> informing the compiler exactly when we know that we are copying
-> something that has fixed length and may or may not be NUL-terminated.
-
-I have changed the series to use memcpy() and QEMU_NONSTRING. I'll
-send a v2 out soon with all your comments addressed.
-
-Alistair
-
->
-> --
-> Eric Blake, Principal Software Engineer
-> Red Hat, Inc.           +1-919-301-3226
-> Virtualization:  qemu.org | libvirt.org
->
+Rml4IHRoaXMgd2FybmluZyB3aGVuIGJ1aWxkaW5nIHdpdGggR0NDOSBvbiBGZWRvcmEgMzA6DQpJ
+biBmdW5jdGlvbiDigJhzdHJuY3B54oCZLA0KICAgIGlubGluZWQgZnJvbSDigJh1bml4X2Nvbm5l
+Y3Rfc2FkZHIuaXNyYS4w4oCZIGF0IHV0aWwvcWVtdS1zb2NrZXRzLmM6OTI1OjU6DQovdXNyL2lu
+Y2x1ZGUvYml0cy9zdHJpbmdfZm9ydGlmaWVkLmg6MTA2OjEwOiBlcnJvcjog4oCYX19idWlsdGlu
+X3N0cm5jcHnigJkgc3BlY2lmaWVkIGJvdW5kIDEwOCBlcXVhbHMgZGVzdGluYXRpb24gc2l6ZSBb
+LVdlcnJvcj1zdHJpbmdvcC10cnVuY2F0aW9uXQ0KICAxMDYgfCAgIHJldHVybiBfX2J1aWx0aW5f
+X19zdHJuY3B5X2NoayAoX19kZXN0LCBfX3NyYywgX19sZW4sIF9fYm9zIChfX2Rlc3QpKTsNCiAg
+ICAgIHwgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
+fn5+fn5+fn5+fn5+fn5+fn5+fn4NCkluIGZ1bmN0aW9uIOKAmHN0cm5jcHnigJksDQogICAgaW5s
+aW5lZCBmcm9tIOKAmHVuaXhfbGlzdGVuX3NhZGRyLmlzcmEuMOKAmSBhdCB1dGlsL3FlbXUtc29j
+a2V0cy5jOjg4MDo1Og0KDQpTaWduZWQtb2ZmLWJ5OiBBbGlzdGFpciBGcmFuY2lzIDxhbGlzdGFp
+ci5mcmFuY2lzQHdkYy5jb20+DQotLS0NCiB1dGlsL3FlbXUtc29ja2V0cy5jIHwgNCArKy0tDQog
+MSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkNCg0KZGlmZiAt
+LWdpdCBhL3V0aWwvcWVtdS1zb2NrZXRzLmMgYi91dGlsL3FlbXUtc29ja2V0cy5jDQppbmRleCA5
+NzA1MDUxNjkwLi44YzMzMjI5NThmIDEwMDY0NA0KLS0tIGEvdXRpbC9xZW11LXNvY2tldHMuYw0K
+KysrIGIvdXRpbC9xZW11LXNvY2tldHMuYw0KQEAgLTgyOSw3ICs4MjksNyBAQCBzdGF0aWMgaW50
+IHVuaXhfbGlzdGVuX3NhZGRyKFVuaXhTb2NrZXRBZGRyZXNzICpzYWRkciwNCiAgICAgc3RydWN0
+IHNvY2thZGRyX3VuIHVuOw0KICAgICBpbnQgc29jaywgZmQ7DQogICAgIGNoYXIgKnBhdGhidWYg
+PSBOVUxMOw0KLSAgICBjb25zdCBjaGFyICpwYXRoOw0KKyAgICBjb25zdCBjaGFyICpwYXRoIFFF
+TVVfTk9OU1RSSU5HOw0KIA0KICAgICBzb2NrID0gcWVtdV9zb2NrZXQoUEZfVU5JWCwgU09DS19T
+VFJFQU0sIDApOw0KICAgICBpZiAoc29jayA8IDApIHsNCkBAIC05MjIsNyArOTIyLDcgQEAgc3Rh
+dGljIGludCB1bml4X2Nvbm5lY3Rfc2FkZHIoVW5peFNvY2tldEFkZHJlc3MgKnNhZGRyLCBFcnJv
+ciAqKmVycnApDQogDQogICAgIG1lbXNldCgmdW4sIDAsIHNpemVvZih1bikpOw0KICAgICB1bi5z
+dW5fZmFtaWx5ID0gQUZfVU5JWDsNCi0gICAgc3RybmNweSh1bi5zdW5fcGF0aCwgc2FkZHItPnBh
+dGgsIHNpemVvZih1bi5zdW5fcGF0aCkpOw0KKyAgICBtZW1jcHkodW4uc3VuX3BhdGgsIHNhZGRy
+LT5wYXRoLCBNSU4oc3RybGVuKHNhZGRyLT5wYXRoKSwgc2l6ZW9mKHVuLnN1bl9wYXRoKSkpOw0K
+IA0KICAgICAvKiBjb25uZWN0IHRvIHBlZXIgKi8NCiAgICAgZG8gew0KLS0gDQoyLjIxLjANCg0K
 
