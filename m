@@ -1,62 +1,94 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hLWag-000832-NW
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 13:30:50 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:49122)
+	id 1hLXwp-0003Bq-I7
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 14:57:47 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:35819)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <liboxuan@connect.hku.hk>) id 1hLWad-0007zj-PR
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 13:30:48 -0400
+	(envelope-from <thuth@redhat.com>) id 1hLXwk-00038Q-Fr
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 14:57:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <liboxuan@connect.hku.hk>) id 1hLWab-0005ot-PM
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 13:30:47 -0400
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:42582)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <liboxuan@connect.hku.hk>)
-	id 1hLWab-0005mI-DT
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 13:30:45 -0400
-Received: by mail-pl1-x642.google.com with SMTP id x15so7051219pln.9
-	for <qemu-trivial@nongnu.org>; Tue, 30 Apr 2019 10:30:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=connect-hku-hk.20150623.gappssmtp.com; s=20150623;
-	h=from:to:cc:subject:date:message-id;
-	bh=uihYHrYj3HakLhRkBBdSUDTDHGZaCyGKyU0mzSpESvQ=;
-	b=mCDQBdunO0hUngRO5ZFWMRAjbF81vr8Bgn/0CTyWhREDYSg451LHElqXYoX9LqR/Tx
-	72O+yUOHH1XIAMZztm3MzrIkJi2Ay3MT1xV1q4B8PlvR3Z9zPjE2ncs/EXovH1hidaju
-	Nl8+DaTTshFZ36ftBLGA1JV27PhbYnz2/cRjaud+rFto0iaO0tfZOv901S3fDezVNwiu
-	bigZsA2l277flNS3XhgkYGD4Z4kt0ZMIQkR28fw29of2jN1kHMmo0DDdkVw2eVorzx2d
-	oPnhxjSRlse+3T7qGwn01OvFdhT87jOzbVVJ1nylQ2hGQB1+V/Vtsr2Th09I6T+EDeyd
-	3JJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=uihYHrYj3HakLhRkBBdSUDTDHGZaCyGKyU0mzSpESvQ=;
-	b=rWsnsoX023GJ7sxY0vn61kAvritanBAIGZBVp/x+BWhnT7tGQNtbAvxrkJuX0G6JWj
-	kgBeruugkgs5C7DyziG9Bxq4zkeb0dHgPLRkXDqjRIMrKNU0b8ZPed1gmyzL0SYDbqMD
-	amtLsA7P03w3G4iXavHkzyT4DM6Gpdm1E1P438pDIY+H+sNx4yiEu1IjWdk2iaxq47qh
-	8y1H7kBv4CDNwJJT8WV67Yq4SAe4qaOEkFKQMAj4Y+yHq9J+kdIQxmrqacY4XPuCaokn
-	K4lqUKvfRqCFio+bx14xLkHN+bJj++TkCPEWul/NPunAgSFpIbj9ZBN84vKjuX/rqUOi
-	2/1Q==
-X-Gm-Message-State: APjAAAVzTyVx3rRn4ETWlfZ3+UdJBu3zBJqx/Nfk9a+y/dR8/6zkxbmk
-	Gdj0W4NEZkwqKF4xRi82QxLehQ==
-X-Google-Smtp-Source: APXvYqx6/LFfPEs0Dp5RlilHCosSrXJ38nNHAZ4al6ZrPwF3s57vL3GxCnkJ4dpv2ncX7/uTttysLA==
-X-Received: by 2002:a17:902:26b:: with SMTP id
-	98mr41541345plc.30.1556645442060; 
-	Tue, 30 Apr 2019 10:30:42 -0700 (PDT)
-Received: from MBP.local.hk ([175.159.180.1]) by smtp.gmail.com with ESMTPSA id
-	y23sm52407101pfn.25.2019.04.30.10.30.39
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-	Tue, 30 Apr 2019 10:30:41 -0700 (PDT)
-From: Boxuan Li <liboxuan@connect.hku.hk>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Boxuan Li <liboxuan@connect.hku.hk>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	qemu-ppc@nongnu.org (open list:PowerPC)
-Date: Wed,  1 May 2019 01:28:42 +0800
-Message-Id: <20190430172842.27369-1-liboxuan@connect.hku.hk>
-X-Mailer: git-send-email 2.13.2
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::642
-Subject: [Qemu-trivial] [PATCH] target/ppc/kvm: Fix trace typo
+	(envelope-from <thuth@redhat.com>) id 1hLXuA-0001Ez-9x
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 14:55:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45550)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1hLXu8-0001Dl-TI; Tue, 30 Apr 2019 14:55:01 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 16088883A2;
+	Tue, 30 Apr 2019 18:54:59 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-21.ams2.redhat.com [10.36.116.21])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BF12F7DF40;
+	Tue, 30 Apr 2019 18:54:52 +0000 (UTC)
+To: Eric Blake <eblake@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+	<philmd@redhat.com>
+References: <1552300145-12526-1-git-send-email-thuth@redhat.com>
+	<6d46de0f-a443-2c90-334b-edd34325ac16@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <817b41fa-063e-7008-af0a-6758112bca67@redhat.com>
+Date: Tue, 30 Apr 2019 20:54:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
+MIME-Version: 1.0
+In-Reply-To: <6d46de0f-a443-2c90-334b-edd34325ac16@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.26]);
+	Tue, 30 Apr 2019 18:54:59 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] configure: Remove old
+ *-config-devices.mak.d files when running configure
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,41 +100,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Apr 2019 17:30:48 -0000
+X-List-Received-Date: Tue, 30 Apr 2019 18:57:46 -0000
 
-Signed-off-by: Boxuan Li <liboxuan@connect.hku.hk>
----
- target/ppc/kvm.c        | 2 +-
- target/ppc/trace-events | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+On 11/03/2019 17.21, Eric Blake wrote:
+> On 3/11/19 5:29 AM, Thomas Huth wrote:
+>> When running "make" in a build directory from the pre-Kconfig merge ti=
+me,
+>> the build process currently fails with:
+>>
+>>  make: *** No rule to make target `.../default-configs/pci.mak',
+>>   needed by `aarch64-softmmu/config-devices.mak'.  Stop.
+>>
+>> To make sure that this problem at least goes away when the user runs
+>> "configure" (or "sh config.status") again, we have to make sure that
+>> we re-generate the .mak.d files. Thus remove the old stale files
+>> while running the configure script.
+>>
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>>  configure | 3 +++
+>>  1 file changed, 3 insertions(+)
+>=20
+> What are the conditions for make deciding it needs to rerun
+> config.status? Are end users still going to get 'make' failing with the
+> cryptic message (where we just advise on-list and on-wiki to
+> './config.status' to fix it), or is there a way to build in a dependenc=
+y
+> so that the makefile itself knows that if config.status has to be rerun=
+,
+> that takes priority over any other rule that depends on .mak files?
 
-diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-index 02e22e2017..1a9caf8f40 100644
---- a/target/ppc/kvm.c
-+++ b/target/ppc/kvm.c
-@@ -1721,7 +1721,7 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
-             trace_kvm_handle_dcr_write();
-             ret = kvmppc_handle_dcr_write(env, run->dcr.dcrn, run->dcr.data);
-         } else {
--            trace_kvm_handle_drc_read();
-+            trace_kvm_handle_dcr_read();
-             ret = kvmppc_handle_dcr_read(env, run->dcr.dcrn, &run->dcr.data);
-         }
-         break;
-diff --git a/target/ppc/trace-events b/target/ppc/trace-events
-index 7b3cfe11fd..3dc6740706 100644
---- a/target/ppc/trace-events
-+++ b/target/ppc/trace-events
-@@ -22,7 +22,7 @@ kvm_failed_put_vpa(void) "Warning: Unable to set VPA information to KVM"
- kvm_failed_get_vpa(void) "Warning: Unable to get VPA information from KVM"
- kvm_injected_interrupt(int irq) "injected interrupt %d"
- kvm_handle_dcr_write(void) "handle dcr write"
--kvm_handle_drc_read(void) "handle dcr read"
-+kvm_handle_dcr_read(void) "handle dcr read"
- kvm_handle_halt(void) "handle halt"
- kvm_handle_papr_hcall(void) "handle PAPR hypercall"
- kvm_handle_epr(void) "handle epr"
--- 
-2.13.2
+I just noticed that I never replied to this mail so far, sorry!
 
+The conditions for rerunning config.status can be found in the Makefile:
+
+config-host.mak: $(SRC_PATH)/configure $(SRC_PATH)/pc-bios $(SRC_PATH)/VE=
+RSION
+        @echo $@ is out-of-date, running configure
+	...
+
+At least we change VERSION regularly, so while not being perfect, the pro=
+blem
+should go away after a while with this patch. Not sure whether there is a=
+ better
+way to do this - maybe depend on the files in default-configs/, too? Or m=
+aybe we
+could simply bump VERSION from x.y.50 to x.y.51 the next time when we eve=
+r hit
+such a problem again...?
+
+ Thomas
 
