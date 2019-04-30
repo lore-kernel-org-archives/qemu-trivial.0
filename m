@@ -1,47 +1,102 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hLYN9-0003ZL-F5
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 15:24:59 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:40721)
+	id 1hLZVD-0002Ju-KA
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 16:37:23 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52932)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hLYN2-0003AH-EE
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 15:24:53 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hLZVB-0002Jh-FQ
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 16:37:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hLYEc-00076J-N4
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 15:16:12 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44672)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hLYEU-0006t1-P7; Tue, 30 Apr 2019 15:16:03 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E4F2230842A1;
-	Tue, 30 Apr 2019 19:16:01 +0000 (UTC)
-Received: from thuth.com (ovpn-116-21.ams2.redhat.com [10.36.116.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 33861438A;
-	Tue, 30 Apr 2019 19:15:55 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-devel@nongnu.org
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>,
-	Paul Burton <pburton@wavecomp.com>,
-	Aleksandar Rikalo <arikalo@wavecomp.com>, qemu-arm@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	qemu-trivial@nongnu.org
-Date: Tue, 30 Apr 2019 21:15:52 +0200
-Message-Id: <20190430191552.4027-1-thuth@redhat.com>
+	(envelope-from <laurent@vivier.eu>) id 1hLZUy-0003qj-2m
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 16:37:09 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:34833)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1hLZUw-0003pp-8F; Tue, 30 Apr 2019 16:37:06 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+	1MlNl5-1guBhT36dx-00lo0t; Tue, 30 Apr 2019 22:36:46 +0200
+To: Alistair Francis <Alistair.Francis@wdc.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "alistair23@gmail.com" <alistair23@gmail.com>,
+	"kraxel@redhat.com" <kraxel@redhat.com>,
+	"berrange@redhat.com" <berrange@redhat.com>,
+	"riku.voipio@iki.fi" <riku.voipio@iki.fi>,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <cover.1556650594.git.alistair.francis@wdc.com>
+	<6bfa446eb7c351b5d867eb4158198231af724b11.1556650594.git.alistair.francis@wdc.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <d4dd0758-64af-e249-1f1b-b52af014b404@vivier.eu>
+Date: Tue, 30 Apr 2019 22:36:44 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.40]);
-	Tue, 30 Apr 2019 19:16:02 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <6bfa446eb7c351b5d867eb4158198231af724b11.1556650594.git.alistair.francis@wdc.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:BHdSY5TgBdqLll+pRTQR/lnauQwyBlHiNbfGXIPtc6xRvhzTdZb
+	WlqGCbkoUma5AEiejapMzH/1mxp4TyV+JKjJjio336NXBKKvnK6yh0ksJrqLmzCGfgLH2o6
+	fmD1Mi9Ej8qSC8i8jwTxCWfxWgNMvL/M5MDxj8erEU+hqX1BUtQD2a2eGTtBtcYLvyxyNHr
+	trbxDh7dQnGTYX0F8VvuQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:WNPtVJ/m6D8=:EieDAfJLMuiNzYRJikwv6V
+	Ycel46fqyGMyBOa6p86dh7IHrYV61vs3ENX6vxc3YoBvMROpPcQrDx7uH9HpvUaYUUfVKCxo+
+	12lDQtFpLAe5aNmkOjPSExRitXuWGjzh37BPqM+O7Kb/91MQKFeWxYZ8H2bhKNP/LT2WOMYrp
+	gKD45NBDOseaxNjCWwoUAFBZj8umycXLAqzgFR6BINpIIrw0vLqoBkknmi3ASYQ+CJneWAVme
+	0IDj07AQguSvCclNXA4DBhFi6DVFklxrsiRoOL1YnTO5NIe5+ajQ1JvOJrzVyPgHTTU57ztks
+	Ow4wXHxdpZk2oJJ1opG3TsxdDlQtpVeLY//3oN9LZvUCaTewlxuPVrw972MAxqJzRdTzK5uYg
+	kbuJ3c1qYcF9bPWgoBCpAsRGFbRanjwlvrFTwmc3PmfT9PRbu+4/6hSspTwBCinquSm7K58OO
+	S+TcW00Ot8IHCCJJNXoK8dCB78Sf8EpdvhfkDW6mcNuheWQkxa/aBakS8DhsnpXg1F6dv/sxn
+	2CVzsTScC5UF+KEwaZMpBiic+AA6Q0uN89ToQpHWx/qqACo6VybXcRQUcjW0COQkeWb4UgLLg
+	yBOR2jCE58uogDzZgCAx3mop5SvbHhL4XM2EamsT2/XFmdGwdOsGm25tFnEaEw6J/whsXvSQV
+	MvxQlVtCW1pouYMS4SL4vAoQFm8c5XWMcT28SrGBKTSTuZU0DBZzSq/mTx1tPd5N1GLe4Eja0
+	niYBcmNyipSBqFjDwDKFlrj3z64lw0u6tKBCBNcuGR9e1VEE4iiVN3GYoBc=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v2] hw/pci-host: Use object_initialize_child
- for correct reference counting
+X-Received-From: 217.72.192.74
+Subject: Re: [Qemu-trivial] [PATCH v1 5/5] linux-user/elfload: Fix GCC 9
+ build warnings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,104 +108,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Apr 2019 19:24:53 -0000
+X-List-Received-Date: Tue, 30 Apr 2019 20:37:22 -0000
 
-Both functions, object_initialize() and object_property_add_child() incre=
-ase
-the reference counter of the new object, so one of the references has to =
-be
-dropped afterwards to get the reference counting right. Otherwise the chi=
-ld
-object might not be properly cleaned up when the parent gets destroyed.
-Some functions of the pci-host devices miss to drop one of the references=
-.
-Fix it by using object_initialize_child() instead, which takes care of
-calling object_initialize(), object_property_add_child() and object_unref=
-()
-in the right order.
+Le 30/04/2019 à 22:09, Alistair Francis a écrit :
+> Fix this warning when building with GCC9 on Fedora 30:
+> In function ‘strncpy’,
+>     inlined from ‘fill_psinfo’ at /home/alistair/qemu/linux-user/elfload.c:3208:12,
+>     inlined from ‘fill_note_info’ at /home/alistair/qemu/linux-user/elfload.c:3390:5,
+>     inlined from ‘elf_core_dump’ at /home/alistair/qemu/linux-user/elfload.c:3539:9:
+> /usr/include/bits/string_fortified.h:106:10: error: ‘__builtin_strncpy’ specified bound 16 equals destination size [-Werror=stringop-truncation]
+>   106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
+>       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> 
+> Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+> ---
+>  linux-user/elfload.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+> index c1a26021f8..cbb7fc10fa 100644
+> --- a/linux-user/elfload.c
+> +++ b/linux-user/elfload.c
+> @@ -3206,7 +3206,7 @@ static int fill_psinfo(struct target_elf_prpsinfo *psinfo, const TaskState *ts)
 
-Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- v2: Added missing &error_abort parameter in xilinx-pcie.c
+       /*
+        * Using strncpy here is fine: at max-length,
+>       * this field is not NUL-terminated.
+>       */>      (void) strncpy(psinfo->pr_fname, base_filename,
+> -                   sizeof(psinfo->pr_fname));
+> +                   sizeof(psinfo->pr_fname) - 1);
 
- hw/pci-host/designware.c  | 4 ++--
- hw/pci-host/gpex.c        | 5 +++--
- hw/pci-host/q35.c         | 4 ++--
- hw/pci-host/xilinx-pcie.c | 4 ++--
- 4 files changed, 9 insertions(+), 8 deletions(-)
+Read the comment above :)
 
-diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-index 29ea313798..64ad21d295 100644
---- a/hw/pci-host/designware.c
-+++ b/hw/pci-host/designware.c
-@@ -721,8 +721,8 @@ static void designware_pcie_host_init(Object *obj)
-     DesignwarePCIEHost *s =3D DESIGNWARE_PCIE_HOST(obj);
-     DesignwarePCIERoot *root =3D &s->root;
-=20
--    object_initialize(root, sizeof(*root), TYPE_DESIGNWARE_PCIE_ROOT);
--    object_property_add_child(obj, "root", OBJECT(root), NULL);
-+    object_initialize_child(obj, "root",  root, sizeof(*root),
-+                            TYPE_DESIGNWARE_PCIE_ROOT, &error_abort, NUL=
-L);
-     qdev_prop_set_int32(DEVICE(root), "addr", PCI_DEVFN(0, 0));
-     qdev_prop_set_bit(DEVICE(root), "multifunction", false);
- }
-diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
-index 2583b151a4..1bafffcc34 100644
---- a/hw/pci-host/gpex.c
-+++ b/hw/pci-host/gpex.c
-@@ -29,6 +29,7 @@
-  * http://www.firmware.org/1275/practice/imap/imap0_9d.pdf
-  */
- #include "qemu/osdep.h"
-+#include "qapi/error.h"
- #include "hw/hw.h"
- #include "hw/pci-host/gpex.h"
-=20
-@@ -120,8 +121,8 @@ static void gpex_host_initfn(Object *obj)
-     GPEXHost *s =3D GPEX_HOST(obj);
-     GPEXRootState *root =3D &s->gpex_root;
-=20
--    object_initialize(root, sizeof(*root), TYPE_GPEX_ROOT_DEVICE);
--    object_property_add_child(obj, "gpex_root", OBJECT(root), NULL);
-+    object_initialize_child(obj, "gpex_root",  root, sizeof(*root),
-+                            TYPE_GPEX_ROOT_DEVICE, &error_abort, NULL);
-     qdev_prop_set_int32(DEVICE(root), "addr", PCI_DEVFN(0, 0));
-     qdev_prop_set_bit(DEVICE(root), "multifunction", false);
- }
-diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-index 7b871b5734..960939f5ed 100644
---- a/hw/pci-host/q35.c
-+++ b/hw/pci-host/q35.c
-@@ -216,8 +216,8 @@ static void q35_host_initfn(Object *obj)
-     memory_region_init_io(&phb->data_mem, obj, &pci_host_data_le_ops, ph=
-b,
-                           "pci-conf-data", 4);
-=20
--    object_initialize(&s->mch, sizeof(s->mch), TYPE_MCH_PCI_DEVICE);
--    object_property_add_child(OBJECT(s), "mch", OBJECT(&s->mch), NULL);
-+    object_initialize_child(OBJECT(s), "mch",  &s->mch, sizeof(s->mch),
-+                            TYPE_MCH_PCI_DEVICE, &error_abort, NULL);
-     qdev_prop_set_int32(DEVICE(&s->mch), "addr", PCI_DEVFN(0, 0));
-     qdev_prop_set_bit(DEVICE(&s->mch), "multifunction", false);
-     /* mch's object_initialize resets the default value, set it again */
-diff --git a/hw/pci-host/xilinx-pcie.c b/hw/pci-host/xilinx-pcie.c
-index 60309afe9e..ceb00e23e6 100644
---- a/hw/pci-host/xilinx-pcie.c
-+++ b/hw/pci-host/xilinx-pcie.c
-@@ -149,8 +149,8 @@ static void xilinx_pcie_host_init(Object *obj)
-     XilinxPCIEHost *s =3D XILINX_PCIE_HOST(obj);
-     XilinxPCIERoot *root =3D &s->root;
-=20
--    object_initialize(root, sizeof(*root), TYPE_XILINX_PCIE_ROOT);
--    object_property_add_child(obj, "root", OBJECT(root), NULL);
-+    object_initialize_child(obj, "root",  root, sizeof(*root),
-+                            TYPE_XILINX_PCIE_ROOT, &error_abort, NULL);
-     qdev_prop_set_int32(DEVICE(root), "addr", PCI_DEVFN(0, 0));
-     qdev_prop_set_bit(DEVICE(root), "multifunction", false);
- }
---=20
-2.21.0
+>  
+>      g_free(base_filename);
+>      bswap_psinfo(psinfo);
+> @@ -3389,7 +3389,7 @@ static int fill_note_info(struct elf_note_info *info,
+>                sizeof (*info->prstatus), info->prstatus);
+>      fill_psinfo(info->psinfo, ts);
+>      fill_note(&info->notes[1], "CORE", NT_PRPSINFO,
+> -              sizeof (*info->psinfo), info->psinfo);
+> +              sizeof(*info->psinfo) - 1, info->psinfo);
 
+Why?
+
+>      fill_auxv_note(&info->notes[2], ts);
+>      info->numnote = 3;
+>  
+> 
+
+Thanks,
+Laurent
 
