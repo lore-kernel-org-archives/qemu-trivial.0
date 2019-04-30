@@ -1,49 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hLcB3-0002ou-7E
+	id 1hLcB3-0002p5-Cq
 	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 19:28:45 -0400
 Received: from eggs.gnu.org ([209.51.188.92]:34334)
 	by lists.gnu.org with esmtp (Exim 4.71)
 	(envelope-from <prvs=01690f4a8=Alistair.Francis@wdc.com>)
-	id 1hLcAw-0002jz-Qp
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 19:28:39 -0400
+	id 1hLcAx-0002jz-RP
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 19:28:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
 	(envelope-from <prvs=01690f4a8=Alistair.Francis@wdc.com>)
-	id 1hLcAv-00060E-ON
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 19:28:38 -0400
-Received: from esa5.hgst.iphmx.com ([216.71.153.144]:58260)
+	id 1hLcAq-0005xn-W2
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 19:28:33 -0400
+Received: from esa6.hgst.iphmx.com ([216.71.154.45]:26534)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <prvs=01690f4a8=Alistair.Francis@wdc.com>)
-	id 1hLcAv-0005zQ-DT; Tue, 30 Apr 2019 19:28:37 -0400
+	id 1hLcAq-0005xT-OI; Tue, 30 Apr 2019 19:28:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
 	d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
-	t=1556666918; x=1588202918;
-	h=from:to:cc:subject:date:message-id:references:
-	in-reply-to:content-id:content-transfer-encoding: mime-version;
-	bh=xA3pbxiImBevyHhA8XuRcJTiyv2JoAMsxaYs6g7wvcc=;
-	b=ezu4kxmO0cX7PqfqJdVhDDG4vgDk/E/T9hlguhQjBnYS7A9n/q/s/m++
-	kImuZGd57Snm4BC8zL8f9u4hEpoP7o5bEmC3EoAx3w77IMhYK4deFYjeY
-	HvBWxiZDn//zHiy8RqmjWWFI7/R1XHsoAQLT9Mlh+xCoT5KA7cZhSE5aQ
-	8vXGWlDK6LObt1JRqzgCHyVp2wtg9ie4Hgpqf//qB6Olq89+KjmShbn7w
-	x4UOp3flQ39AUcIQg+pY/ZNDN8FKX+4Su9EAAwRc78fKMl1Rr1i4rOCBS
-	CFffYlxY0BayPHYgO/qoyHz+VqaOOWdVt1J8D/dTiNSkSh4SK/5k80Idh Q==;
-X-IronPort-AV: E=Sophos;i="5.60,415,1549900800"; d="scan'208";a="108426282"
-Received: from mail-bl2nam02lp2058.outbound.protection.outlook.com (HELO
-	NAM02-BL2-obe.outbound.protection.outlook.com) ([104.47.38.58])
-	by ob1.hgst.iphmx.com with ESMTP; 01 May 2019 07:28:35 +0800
+	t=1556666913; x=1588202913;
+	h=from:to:cc:subject:date:message-id:content-id:
+	content-transfer-encoding:mime-version;
+	bh=T/xKn24vyC5Aela/AlZ64lI9aov5QIYgrPEQ2JKy+s8=;
+	b=qqzhfUapR8sZCgrUXtACYAoE3I4C5DGf38WZlc7h2pIda7dzNQLFJl6v
+	D2NGobUpsD7hZNy7WubdBDd2UDYyirK/g1EiVKDk+JjiE58m/Qzgy4AsA
+	mG0miZ/RabGuMescGpomRYILpWNFMwbceWULDm6U2grlrt7R0NZgY0Khq
+	KGG2X5vfqQVbXz3hjtl/mNPRiyzPkvBTwOqNxmHFBQivuYJs6cqc0yQOJ
+	wOFdxVcvhpYjo/LWnIyT3KmLSNJp42802ckbjvPN5pQ5TaR3bsfECmcRs
+	Muv4gDcvQ4YVrzFnyY0cuxO4C5H8G4W+9PAwUC4/Z6Zj9dNfMMfKEXknL Q==;
+X-IronPort-AV: E=Sophos;i="5.60,415,1549900800"; d="scan'208";a="108938896"
+Received: from mail-bn3nam01lp2056.outbound.protection.outlook.com (HELO
+	NAM01-BN3-obe.outbound.protection.outlook.com) ([104.47.33.56])
+	by ob1.hgst.iphmx.com with ESMTP; 01 May 2019 07:28:14 +0800
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=sharedspace.onmicrosoft.com; s=selector1-wdc-com;
 	h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
-	bh=xA3pbxiImBevyHhA8XuRcJTiyv2JoAMsxaYs6g7wvcc=;
-	b=gBrOXZ5HjdagQXqPzu/+QH265VaARcLfMo9+bfpbjX+cZJYfT1w2nQR52tlvoeoygmqh4friXEKHRk5jHqql5htUpUDE/56g2OxCHipNoeMTnPSS8lF5H7LHqWXqCLiYTr0bgUXv8pI8DcOsY/UGSupz2fTga83DmkcgQ7Tlb6A=
+	bh=T/xKn24vyC5Aela/AlZ64lI9aov5QIYgrPEQ2JKy+s8=;
+	b=aPG3FC0IT6nZCyBsSQe55+pZc+k/yEJJeZ3K2w01BG1UFYx21P0Soc6fySiQtAsfO2spRLhcWDkinPbiYD0eGgJfGswcNWF2VkYasJforHCIFEfEgyLprWePBTAjQ9o5chOT2+e/JE5Bm5EbJoXEjwg5PIiA3veXiNT5FgUM5hc=
 Received: from DM6PR04MB4908.namprd04.prod.outlook.com (20.176.109.81) by
-	DM6PR04MB5402.namprd04.prod.outlook.com (20.178.27.87) with Microsoft
+	DM6PR04MB6217.namprd04.prod.outlook.com (20.178.224.88) with Microsoft
 	SMTP
 	Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
-	15.20.1835.12; Tue, 30 Apr 2019 23:28:32 +0000
+	15.20.1856.10; Tue, 30 Apr 2019 23:28:12 +0000
 Received: from DM6PR04MB4908.namprd04.prod.outlook.com
 	([fe80::9ba:6028:ae27:7d2]) by DM6PR04MB4908.namprd04.prod.outlook.com
 	([fe80::9ba:6028:ae27:7d2%2]) with mapi id 15.20.1835.015;
-	Tue, 30 Apr 2019 23:28:32 +0000
+	Tue, 30 Apr 2019 23:28:12 +0000
 From: Alistair Francis <Alistair.Francis@wdc.com>
 To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 CC: Alistair Francis <Alistair.Francis@wdc.com>, "alistair23@gmail.com"
@@ -51,18 +51,16 @@ CC: Alistair Francis <Alistair.Francis@wdc.com>, "alistair23@gmail.com"
 	"berrange@redhat.com" <berrange@redhat.com>, "riku.voipio@iki.fi"
 	<riku.voipio@iki.fi>, "laurent@vivier.eu" <laurent@vivier.eu>,
 	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Thread-Topic: [PATCH v2 2/5] hw/usb/hcd-xhci: Fix GCC 9 build warning
-Thread-Index: AQHU/6xs8MY4iO8AKkC1lf7A3j3a/Q==
-Date: Tue, 30 Apr 2019 23:28:31 +0000
-Message-ID: <ff51c73e3095fa503d14aafece54f8565fe99900.1556666645.git.alistair.francis@wdc.com>
-References: <cover.1556666645.git.alistair.francis@wdc.com>
-In-Reply-To: <cover.1556666645.git.alistair.francis@wdc.com>
+Thread-Topic: [PATCH v2 0/5]  Fix some GCC 9 build warnings
+Thread-Index: AQHU/6xgW3B+r1/gpUmA4yLC4ecMXg==
+Date: Tue, 30 Apr 2019 23:28:11 +0000
+Message-ID: <cover.1556666645.git.alistair.francis@wdc.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-mailer: git-send-email 2.21.0
-x-clientproxiedby: BYAPR01CA0046.prod.exchangelabs.com (2603:10b6:a03:94::23)
+x-clientproxiedby: BYAPR01CA0038.prod.exchangelabs.com (2603:10b6:a03:94::15)
 	To DM6PR04MB4908.namprd04.prod.outlook.com
 	(2603:10b6:5:19::17)
 authentication-results: spf=none (sender IP is )
@@ -70,39 +68,38 @@ authentication-results: spf=none (sender IP is )
 x-ms-exchange-messagesentrepresentingtype: 1
 x-originating-ip: [199.255.44.250]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 87fd24ec-dd2a-4038-9822-08d6cdc38ec4
+x-ms-office365-filtering-correlation-id: b66b7234-f4da-4da7-f59f-08d6cdc382b9
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: BCL:0; PCL:0;
 	RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);
-	SRVR:DM6PR04MB5402; 
-x-ms-traffictypediagnostic: DM6PR04MB5402:
+	SRVR:DM6PR04MB6217; 
+x-ms-traffictypediagnostic: DM6PR04MB6217:
 wdcipoutbound: EOP-TRUE
-x-microsoft-antispam-prvs: <DM6PR04MB54027678A12450A4D1E93203903A0@DM6PR04MB5402.namprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1923;
+x-microsoft-antispam-prvs: <DM6PR04MB6217A3D95CBBB74168BB9416903A0@DM6PR04MB6217.namprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:3968;
 x-forefront-prvs: 00235A1EEF
 x-forefront-antispam-report: SFV:NSPM;
-	SFS:(10019020)(979002)(366004)(376002)(136003)(396003)(39860400002)(346002)(199004)(189003)(72206003)(54906003)(6506007)(386003)(76176011)(446003)(14444005)(256004)(36756003)(4326008)(11346002)(102836004)(99286004)(66066001)(5660300002)(86362001)(44832011)(486006)(316002)(26005)(186003)(476003)(66476007)(2616005)(52116002)(66556008)(64756008)(73956011)(66946007)(66446008)(2906002)(6116002)(3846002)(50226002)(2351001)(6512007)(8936002)(6436002)(14454004)(71200400001)(71190400001)(6916009)(53936002)(6486002)(118296001)(81156014)(81166006)(2501003)(478600001)(68736007)(25786009)(5640700003)(8676002)(7736002)(305945005)(969003)(989001)(999001)(1009001)(1019001);
-	DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR04MB5402;
+	SFS:(10019020)(366004)(39860400002)(136003)(346002)(376002)(396003)(199004)(189003)(5640700003)(8936002)(6436002)(53936002)(73956011)(316002)(4744005)(54906003)(14454004)(81156014)(6486002)(6916009)(81166006)(68736007)(8676002)(186003)(26005)(3846002)(66446008)(6116002)(66476007)(64756008)(7736002)(6512007)(66946007)(305945005)(102836004)(2906002)(66556008)(5660300002)(386003)(6506007)(66066001)(44832011)(2501003)(2351001)(50226002)(478600001)(36756003)(486006)(476003)(2616005)(4326008)(52116002)(14444005)(99286004)(71190400001)(71200400001)(256004)(72206003)(86362001)(25786009);
+	DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR04MB6217;
 	H:DM6PR04MB4908.namprd04.prod.outlook.com; FPR:; SPF:None;
 	LANG:en; PTR:InfoNoRecords; A:1; MX:1; 
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: uUDALsqKXjmNEDqZkLUIT8+Edm+/HKFHKbKgBXldkHJu1C18gi0ASg0nct15dyhb7xAu3NqUsU5ziQnQXx68pVEn7lWexG/wsw9XSXor6u1c3372OE9AhlupqeP9tp2e9lCSVZhAIU1FdXRQdDwsNIOybSYX1Khn3IUlLQEFda40rB892OICGTHEu/c+XFg9HApzRGZTpHAbEtP+yQTIE35hmwet1a/sXqpPliMD53/JxG3I7hi4EyF2hiGf6bgrE7FKAS5X/JNMuhDyQBJ383QCQUthKOQf1Xe8JB1qH/nBJpIVPswnsB2SSJFdW+vTUwP2qj/hyHR7w7Vh4wSqxAI9Jw2DfY5e2jcwGHtljz9rDp8UwOjbK5qt2pmHuZRrjiCnwQcJn6fRRUPpewUj1b248hMJfR4mDIggfwqKW8Y=
+x-microsoft-antispam-message-info: DIoeynHlIB4AAznrcIY+kDHrbgEYbDJ2pU0jj/9sA5IEOoZwqC2Y46ueKr/18FQIzvBsK/+v/sXaMM74e2T0Fu63Y4wf5HI4kfgAIHY7tzz/IzQr+VsbnvD+jXLN8FotSdoVw8ipmJ1VZc7DartBUDE1Io6hGowj9CPdESd50EEs9OvUwxWbL7x953E+VQqebkdhaj0ma1k7fBUusvRpE/xxjRNW4q3n1cpDQiQflFTx35aEo2JeLtawKGWygxCQgzxI3L9t7snSDOvt1w9fYEjLdji5MZFIU8QoJKQ48ieV8vKH4XMFKR7w+LuT6NodIR1xTIfx88a6+be14KFSGBXQuaA9dCclRh0g5vQRo+l2z86trDd3fjvAnLRLhUzHzERspIg3aWVOMmdr0xA4jcGpd2stfQk5tk5E00ZSBNE=
 Content-Type: text/plain; charset="utf-8"
-Content-ID: <F5CC77A795856C4BB7501572F80D9079@namprd04.prod.outlook.com>
+Content-ID: <65FD29ACA569E7458772696939AF5CB4@namprd04.prod.outlook.com>
 Content-Transfer-Encoding: base64
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 87fd24ec-dd2a-4038-9822-08d6cdc38ec4
-X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Apr 2019 23:28:31.8700 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: b66b7234-f4da-4da7-f59f-08d6cdc382b9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Apr 2019 23:28:11.8908 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR04MB5402
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR04MB6217
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 216.71.153.144
-Subject: [Qemu-trivial] [PATCH v2 2/5] hw/usb/hcd-xhci: Fix GCC 9 build
- warning
+X-Received-From: 216.71.154.45
+Subject: [Qemu-trivial] [PATCH v2 0/5]  Fix some GCC 9 build warnings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -114,38 +111,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Apr 2019 23:28:39 -0000
+X-List-Received-Date: Tue, 30 Apr 2019 23:28:40 -0000
 
-Rml4IHRoaXMgYnVpbGQgd2FybmluZyB3aXRoIEdDQyA5IG9uIEZlZG9yYSAzMDoNCmh3L3VzYi9o
-Y2QteGhjaS5jOjMzMzk6NjY6IGVycm9yOiDigJglZOKAmSBkaXJlY3RpdmUgb3V0cHV0IG1heSBi
-ZSB0cnVuY2F0ZWQgd3JpdGluZyBiZXR3ZWVuIDEgYW5kIDEwIGJ5dGVzIGludG8gYSByZWdpb24g
-b2Ygc2l6ZSA1IFstV2Vycm9yPWZvcm1hdC10cnVuY2F0aW9uPV0NCiAzMzM5IHwgICAgICAgICAg
-ICAgc25wcmludGYocG9ydC0+bmFtZSwgc2l6ZW9mKHBvcnQtPm5hbWUpLCAidXNiMiBwb3J0ICMl
-ZCIsIGkrMSk7DQogICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgXn4NCmh3L3VzYi9oY2QteGhjaS5jOjMzMzk6NTQ6
-IG5vdGU6IGRpcmVjdGl2ZSBhcmd1bWVudCBpbiB0aGUgcmFuZ2UgWzEsIDIxNDc0ODM2NDddDQog
-MzMzOSB8ICAgICAgICAgICAgIHNucHJpbnRmKHBvcnQtPm5hbWUsIHNpemVvZihwb3J0LT5uYW1l
-KSwgInVzYjIgcG9ydCAjJWQiLCBpKzEpOw0KICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fg0KSW4gZmlsZSBp
-bmNsdWRlZCBmcm9tIC91c3IvaW5jbHVkZS9zdGRpby5oOjg2NywNCiAgICAgICAgICAgICAgICAg
-ZnJvbSAvaG9tZS9hbGlzdGFpci9xZW11L2luY2x1ZGUvcWVtdS9vc2RlcC5oOjk5LA0KICAgICAg
-ICAgICAgICAgICBmcm9tIGh3L3VzYi9oY2QteGhjaS5jOjIxOg0KL3Vzci9pbmNsdWRlL2JpdHMv
-c3RkaW8yLmg6Njc6MTA6IG5vdGU6IOKAmF9fYnVpbHRpbl9fX3NucHJpbnRmX2Noa+KAmSBvdXRw
-dXQgYmV0d2VlbiAxMyBhbmQgMjIgYnl0ZXMgaW50byBhIGRlc3RpbmF0aW9uIG9mIHNpemUgMTYN
-CiAgIDY3IHwgICByZXR1cm4gX19idWlsdGluX19fc25wcmludGZfY2hrIChfX3MsIF9fbiwgX19V
-U0VfRk9SVElGWV9MRVZFTCAtIDEsDQogICAgICB8ICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fg0KICAgNjggfCAgICAg
-ICAgX19ib3MgKF9fcyksIF9fZm10LCBfX3ZhX2FyZ19wYWNrICgpKTsNCiAgICAgIHwgICAgICAg
-IH5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn4NCg0KU2lnbmVkLW9mZi1ieTog
-QWxpc3RhaXIgRnJhbmNpcyA8YWxpc3RhaXIuZnJhbmNpc0B3ZGMuY29tPg0KLS0tDQogaHcvdXNi
-L2hjZC14aGNpLmMgfCAxICsNCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykNCg0KZGlm
-ZiAtLWdpdCBhL2h3L3VzYi9oY2QteGhjaS5jIGIvaHcvdXNiL2hjZC14aGNpLmMNCmluZGV4IGVj
-MjhiZWUzMTkuLjJiMDYxNzcyYjIgMTAwNjQ0DQotLS0gYS9ody91c2IvaGNkLXhoY2kuYw0KKysr
-IGIvaHcvdXNiL2hjZC14aGNpLmMNCkBAIC0zMzIyLDYgKzMzMjIsNyBAQCBzdGF0aWMgdm9pZCB1
-c2JfeGhjaV9pbml0KFhIQ0lTdGF0ZSAqeGhjaSkNCiAgICAgdXNiX2J1c19uZXcoJnhoY2ktPmJ1
-cywgc2l6ZW9mKHhoY2ktPmJ1cyksICZ4aGNpX2J1c19vcHMsIGRldik7DQogDQogICAgIGZvciAo
-aSA9IDA7IGkgPCB1c2Jwb3J0czsgaSsrKSB7DQorICAgICAgICBnX2Fzc2VydChpIDwgTUFYKE1B
-WFBPUlRTXzIsIE1BWFBPUlRTXzMpKTsNCiAgICAgICAgIHNwZWVkbWFzayA9IDA7DQogICAgICAg
-ICBpZiAoaSA8IHhoY2ktPm51bXBvcnRzXzIpIHsNCiAgICAgICAgICAgICBpZiAoeGhjaV9nZXRf
-ZmxhZyh4aGNpLCBYSENJX0ZMQUdfU1NfRklSU1QpKSB7DQotLSANCjIuMjEuMA0KDQo=
+djI6DQogLSBSZXdyaXRlIG1vc3QgcGF0Y2hlcyBiYXNlZCBvbiB0aGUgZmVlZGJhY2sgZnJvbSB2
+MQ0KDQpBbGlzdGFpciBGcmFuY2lzICg1KToNCiAgdXRpbC9xZW11LXNvY2tldHM6IEZpeCBHQ0Mg
+OSBidWlsZCB3YXJuaW5ncw0KICBody91c2IvaGNkLXhoY2k6IEZpeCBHQ0MgOSBidWlsZCB3YXJu
+aW5nDQogIGh3L3VzYi9kZXYtbXRwOiBGaXggR0NDIDkgYnVpbGQgd2FybmluZw0KICBsaW51eC11
+c2VyL3VuYW1lOiBGaXggR0NDIDkgYnVpbGQgd2FybmluZ3MNCiAgbGludXgtdXNlci9lbGZsb2Fk
+OiBGaXggR0NDIDkgYnVpbGQgd2FybmluZ3MNCg0KIGh3L3VzYi9kZXYtbXRwLmMgICAgIHwgMTMg
+KysrKysrKysrKysrKw0KIGh3L3VzYi9oY2QteGhjaS5jICAgIHwgIDEgKw0KIGxpbnV4LXVzZXIv
+ZWxmbG9hZC5jIHwgIDIgKy0NCiBsaW51eC11c2VyL3VuYW1lLmMgICB8ICAyICstDQogdXRpbC9x
+ZW11LXNvY2tldHMuYyAgfCAgNCArKy0tDQogNSBmaWxlcyBjaGFuZ2VkLCAxOCBpbnNlcnRpb25z
+KCspLCA0IGRlbGV0aW9ucygtKQ0KDQotLSANCjIuMjEuMA0KDQo=
 
