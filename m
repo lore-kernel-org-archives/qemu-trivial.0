@@ -1,82 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hLpkt-0002mM-2v
-	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2019 09:58:39 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:45591)
+	id 1hLpyA-0008KM-W1
+	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2019 10:12:23 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:48122)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <yuval.shaia@oracle.com>) id 1hLpko-0002k4-10
-	for qemu-trivial@nongnu.org; Wed, 01 May 2019 09:58:37 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1hLpy7-0008I0-0F
+	for qemu-trivial@nongnu.org; Wed, 01 May 2019 10:12:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <yuval.shaia@oracle.com>) id 1hLpkk-0001eH-V0
-	for qemu-trivial@nongnu.org; Wed, 01 May 2019 09:58:33 -0400
-Received: from aserp2130.oracle.com ([141.146.126.79]:39972)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <yuval.shaia@oracle.com>)
-	id 1hLpkk-0001bo-LH; Wed, 01 May 2019 09:58:30 -0400
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
-	by aserp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id
-	x41DmY0C105972; Wed, 1 May 2019 13:58:24 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
-	h=date : from : to : cc
-	: subject : message-id : references : mime-version : content-type :
-	in-reply-to; s=corp-2018-07-02;
-	bh=nBUzvhOJKoTRRuTGppC+qJb+vAFbLgeexOiGlaguYiE=;
-	b=3T1l//nhcLiySKqGoQYSmfBjNM+dgkIgIia/coyi1JwntyxjRuREEXPpL0DJ3UI++BZL
-	14klfVylG2N+ySeP0iwlxWlE81KJwOYvPdW2pnaDc9cdfuDcgk6kEG1eKRXdV98dLz/i
-	0f7mIK1Cs88TvncifCx9pHwxqJRSR5RK4RbUO9V/XYUDoLwy2xRxwRgRdKOaqFFtkLwq
-	bfCpwcGK0g9Bc6FUy6RLBez/k2hwB16rxtD4X2nibd0u1PcJF6Drl/g1lQuOjEb4Icur
-	YZH99mMy1TkdbOY7AFcWR2oNQrAeDNiXGIc8Za9CxBh74vq3GgC9yuKbFbVFsTYe6s2j
-	Dw== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
-	by aserp2130.oracle.com with ESMTP id 2s6xhyaqjd-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 01 May 2019 13:58:24 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
-	by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id
-	x41Dv5oj173857; Wed, 1 May 2019 13:58:23 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
-	by userp3020.oracle.com with ESMTP id 2s6xhgh765-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 01 May 2019 13:58:22 +0000
-Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
-	by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x41DwDYE013258;
-	Wed, 1 May 2019 13:58:15 GMT
-Received: from lap1 (/77.138.183.59) by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Wed, 01 May 2019 06:58:12 -0700
-Date: Wed, 1 May 2019 16:58:08 +0300
-From: Yuval Shaia <yuval.shaia@oracle.com>
-To: "LI, BO XUAN" <liboxuan@connect.hku.hk>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Eric Blake <eblake@redhat.com>
-Message-ID: <20190501135807.GA11932@lap1>
-References: <20190501081039.58938-1-liboxuan@connect.hku.hk>
-	<20190501085805.GA8174@lap1>
-	<CALM0=-=cbHTajGz8R4Who9eKh=sfa19H_nMuH4PFO8vVq2=drQ@mail.gmail.com>
+	(envelope-from <richard.henderson@linaro.org>) id 1hLpy3-0003xm-3l
+	for qemu-trivial@nongnu.org; Wed, 01 May 2019 10:12:18 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:44539)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+	id 1hLpy2-0003x8-Jl
+	for qemu-trivial@nongnu.org; Wed, 01 May 2019 10:12:15 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id l2so5481532plt.11
+	for <qemu-trivial@nongnu.org>; Wed, 01 May 2019 07:12:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+	:mime-version:in-reply-to:content-language:content-transfer-encoding;
+	bh=4kQDhN4NfcJBF1zjhcmoNb8ChmBiTpVGRwYChVDGMjI=;
+	b=srM7ZBe8Zw0DfinvlSvYIhB4E7D1RwepaUfUtAsRpLBecIh65i1Hsb2qMIQzBLAdHh
+	Yv8HfMJoGIiCXK+6HGLQs/fjmR55Zjf96kPytC7tO0OYCuF3m+RYwyKWX1pOPRK8yeHg
+	ZYoZSuaDSEr/WN+6E1q0d7ZgO01fLjIWo63MT3Q7wyzR2wP5fLpIHXgNKZczRDqdPOav
+	zwR42Ayj0qOcSsSX5y6j0DIlBpogO881CoeOKKa/qkdVPVkFAr0DjaavWKIzkhAbI2ks
+	jue9ujCXAw/kfHrHE1EoKcavktWabqGuM9HPhKfVT5QR99MIgTenatc0o31Wce/r15R/
+	buxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=4kQDhN4NfcJBF1zjhcmoNb8ChmBiTpVGRwYChVDGMjI=;
+	b=EsYWci/989A898myIijNvmQs+JM7k3kyFVKp0B7IwuZijLa24lJJ6oso4I6+OplUl/
+	ubeA9Ev8Xl1tzHEmgr2bTWRLEWkfshKcJIXplb0TjXcrNtdYEATlbrwddA27DYFK1jcS
+	De2uOyY3+gu387Y1uiSi/WR/s1MRcsWyyWnlTFT0yrF9xoKiW5WOzQUF+efSueBvTCdw
+	Jamj4RoBVDVj8JW8pL9G0cx7ft4MHyt2U4s2d4/8Gxk3mZuMJm5d13LfjCIRlrw6LY8x
+	zC7CfmJTA9gFsxzlHgaFef0v//R0Rx69XqIREY8YM+oaWGrlv4FazWJDJYZKu9Zk1cXD
+	JUow==
+X-Gm-Message-State: APjAAAU1YrY0eNPI9BsyPHKL7mvwNAYiMkDRZerNB1q4nx2PenXJtRIt
+	291rIoQp30ghxz+fp2lnxYHvnw==
+X-Google-Smtp-Source: APXvYqyZzZZIH4hhL8sXByYEejO6rlQMe98XGUZrIsnQu71RB1XTNt2IaqtPZmBRvLi+0jtzvftHng==
+X-Received: by 2002:a17:902:28e9:: with SMTP id
+	f96mr5708519plb.37.1556719933212; 
+	Wed, 01 May 2019 07:12:13 -0700 (PDT)
+Received: from [192.168.1.11] (97-113-189-189.tukw.qwest.net. [97.113.189.189])
+	by smtp.gmail.com with ESMTPSA id
+	e6sm41948353pfe.158.2019.05.01.07.12.11
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+	Wed, 01 May 2019 07:12:12 -0700 (PDT)
+To: Alistair Francis <Alistair.Francis@wdc.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+	"riku.voipio@iki.fi" <riku.voipio@iki.fi>,
+	"laurent@vivier.eu" <laurent@vivier.eu>,
+	"kraxel@redhat.com" <kraxel@redhat.com>,
+	"alistair23@gmail.com" <alistair23@gmail.com>
+References: <cover.1556666645.git.alistair.francis@wdc.com>
+	<ff51c73e3095fa503d14aafece54f8565fe99900.1556666645.git.alistair.francis@wdc.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <0d585793-20a8-8dc8-98fa-13789113f672@linaro.org>
+Date: Wed, 1 May 2019 07:12:10 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CALM0=-=cbHTajGz8R4Who9eKh=sfa19H_nMuH4PFO8vVq2=drQ@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9243
-	signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
-	malwarescore=0
-	phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
-	adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
-	engine=8.0.1-1810050000 definitions=main-1905010089
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9243
-	signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
-	priorityscore=1501 malwarescore=0
-	suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
-	lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999
-	adultscore=0
-	classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
-	definitions=main-1905010089
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 141.146.126.79
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] hw/virtio/virtio-mmio:
- Convert DPRINTF to traces
+In-Reply-To: <ff51c73e3095fa503d14aafece54f8565fe99900.1556666645.git.alistair.francis@wdc.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::62e
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 2/5] hw/usb/hcd-xhci: Fix
+ GCC 9 build warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,203 +84,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 May 2019 13:58:37 -0000
+X-List-Received-Date: Wed, 01 May 2019 14:12:22 -0000
 
-On Wed, May 01, 2019 at 08:42:35PM +0800, LI, BO XUAN wrote:
->    On Wed, May 1, 2019 at 4:58 PM Yuval Shaia <[1]yuval.shaia@oracle.com>
->    wrote:
-> 
->      On Wed, May 01, 2019 at 04:10:39PM +0800, Boxuan Li wrote:
->      > Signed-off-by: Boxuan Li <[2]liboxuan@connect.hku.hk>
->      > ---
->      > v2: Instead of using conditional debugs, convert DPRINTF to traces
->      > ---
->      >  hw/virtio/trace-events  | 13 +++++++++++++
->      >  hw/virtio/virtio-mmio.c | 35 ++++++++++++-----------------------
->      >  2 files changed, 25 insertions(+), 23 deletions(-)
->      >
->      > diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
->      > index 60c649c4bc..37c781b487 100644
->      > --- a/hw/virtio/trace-events
->      > +++ b/hw/virtio/trace-events
->      > @@ -46,3 +46,16 @@ virtio_balloon_handle_output(const char *name,
->      uint64_t gpa) "section name: %s g
->      >  virtio_balloon_get_config(uint32_t num_pages, uint32_t actual)
->      "num_pages: %d actual: %d"
->      >  virtio_balloon_set_config(uint32_t actual, uint32_t oldactual)
->      "actual: %d oldactual: %d"
->      >  virtio_balloon_to_target(uint64_t target, uint32_t num_pages)
->      "balloon target: 0x%"PRIx64" num_pages: %d"
->      > +
->      > +# virtio-mmio.c
->      > +virtio_mmio_read(int offset) "virtio_mmio_read offset 0x%x"
->      > +virtio_mmio_wrong_size_read(void) "wrong size access to
->      register!"
->      > +virtio_mmio_read_interrupt(void) "read of write-only register"
->      > +virtio_mmio_bad_read_offset(void) "bad register offset"
->      > +virtio_mmio_write_offset(int offset, uint64_t value)
->      "virtio_mmio_write offset 0x%x value 0x%" PRIx64
->      > +virtio_mmio_wrong_size_write(void) "wrong size access to
->      register!"
->      > +virtio_mmio_guest_page(uint64_t size, int shift) "guest page size
->      0x%" PRIx64 " shift %d"
->      > +virtio_mmio_queue_write(int value, int max_size) "mmio_queue
->      write %d max %d"
->      > +virtio_mmio_write_interrupt(void) "write to readonly register"
->      > +virtio_mmio_bad_write_offset(void) "bad register offset"
->      > +virtio_mmio_setting_irq(int level) "virtio_mmio setting IRQ %d"
->      > diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
->      > index 5807aa87fe..4251df399d 100644
->      > --- a/hw/virtio/virtio-mmio.c
->      > +++ b/hw/virtio/virtio-mmio.c
->      > @@ -27,16 +27,7 @@
->      >  #include "sysemu/kvm.h"
->      >  #include "hw/virtio/virtio-bus.h"
->      >  #include "qemu/error-report.h"
->      > -
->      > -/* #define DEBUG_VIRTIO_MMIO */
->      > -
->      > -#ifdef DEBUG_VIRTIO_MMIO
->      > -
->      > -#define DPRINTF(fmt, ...) \
->      > -do { printf("virtio_mmio: " fmt , ## __VA_ARGS__); } while (0)
->      > -#else
->      > -#define DPRINTF(fmt, ...) do {} while (0)
->      > -#endif
->      > +#include "trace.h"
->      >
->      >  /* QOM macros */
->      >  /* virtio-mmio-bus */
->      > @@ -107,7 +98,7 @@ static uint64_t virtio_mmio_read(void *opaque,
->      hwaddr offset, unsigned size)
->      >      VirtIOMMIOProxy *proxy = (VirtIOMMIOProxy *)opaque;
->      >      VirtIODevice *vdev = virtio_bus_get_device(&proxy->bus);
->      >
->      > -    DPRINTF("virtio_mmio_read offset 0x%x\n", (int)offset);
->      > +    trace_virtio_mmio_read((int)offset);
->      >
->      >      if (!vdev) {
->      >          /* If no backend is present, we treat most registers as
->      > @@ -144,7 +135,7 @@ static uint64_t virtio_mmio_read(void *opaque,
->      hwaddr offset, unsigned size)
->      >          }
->      >      }
->      >      if (size != 4) {
->      > -        DPRINTF("wrong size access to register!\n");
->      > +        trace_virtio_mmio_wrong_size_read();
->      Have you considered using qemu_error_report to report such errors?
-> 
->    Thanks for the suggestion. I am a newcomer here so my question might be
->    a bit dumb: I thought they are warnings instead of errors since return
->    values are 0. Do you suggest using error_report function and changing
->    return values from 0 to -1?
->    Best regards,
->    Boxuan Li
+On 4/30/19 4:28 PM, Alistair Francis wrote:
+>      for (i = 0; i < usbports; i++) {
+> +        g_assert(i < MAX(MAXPORTS_2, MAXPORTS_3));
 
-I think that when driver store invalid data in device register it is an
-error but the best is to check what other devices do.
+I would hope that it works to move this out of the loop:
 
-> 
->      >          return 0;
->      >      }
->      >      switch (offset) {
->      > @@ -182,10 +173,10 @@ static uint64_t virtio_mmio_read(void
->      *opaque, hwaddr offset, unsigned size)
->      >      case VIRTIO_MMIO_QUEUE_ALIGN:
->      >      case VIRTIO_MMIO_QUEUE_NOTIFY:
->      >      case VIRTIO_MMIO_INTERRUPT_ACK:
->      > -        DPRINTF("read of write-only register\n");
->      > +        trace_virtio_mmio_read_interrupt();
->      >          return 0;
->      >      default:
->      > -        DPRINTF("bad register offset\n");
->      > +        trace_virtio_mmio_bad_read_offset();
->      Ditto to all other errors.
->      >          return 0;
->      >      }
->      >      return 0;
->      > @@ -197,8 +188,7 @@ static void virtio_mmio_write(void *opaque,
->      hwaddr offset, uint64_t value,
->      >      VirtIOMMIOProxy *proxy = (VirtIOMMIOProxy *)opaque;
->      >      VirtIODevice *vdev = virtio_bus_get_device(&proxy->bus);
->      >
->      > -    DPRINTF("virtio_mmio_write offset 0x%x value 0x%" PRIx64
->      "\n",
->      > -            (int)offset, value);
->      > +    trace_virtio_mmio_write_offset((int)offset, value);
->      >
->      >      if (!vdev) {
->      >          /* If no backend is present, we just make all registers
->      > @@ -226,7 +216,7 @@ static void virtio_mmio_write(void *opaque,
->      hwaddr offset, uint64_t value,
->      >          return;
->      >      }
->      >      if (size != 4) {
->      > -        DPRINTF("wrong size access to register!\n");
->      > +        trace_virtio_mmio_wrong_size_write();
->      >          return;
->      >      }
->      >      switch (offset) {
->      > @@ -246,8 +236,7 @@ static void virtio_mmio_write(void *opaque,
->      hwaddr offset, uint64_t value,
->      >          if (proxy->guest_page_shift > 31) {
->      >              proxy->guest_page_shift = 0;
->      >          }
->      > -        DPRINTF("guest page size %" PRIx64 " shift %d\n", value,
->      > -                proxy->guest_page_shift);
->      > +        trace_virtio_mmio_guest_page(value,
->      proxy->guest_page_shift);
->      >          break;
->      >      case VIRTIO_MMIO_QUEUE_SEL:
->      >          if (value < VIRTIO_QUEUE_MAX) {
->      > @@ -255,7 +244,7 @@ static void virtio_mmio_write(void *opaque,
->      hwaddr offset, uint64_t value,
->      >          }
->      >          break;
->      >      case VIRTIO_MMIO_QUEUE_NUM:
->      > -        DPRINTF("mmio_queue write %d max %d\n", (int)value,
->      VIRTQUEUE_MAX_SIZE);
->      > +        trace_virtio_mmio_queue_write((int)value,
->      VIRTQUEUE_MAX_SIZE);
->      >          virtio_queue_set_num(vdev, vdev->queue_sel, value);
->      >          /* Note: only call this function for legacy devices */
->      >          virtio_queue_update_rings(vdev, vdev->queue_sel);
->      > @@ -303,11 +292,11 @@ static void virtio_mmio_write(void *opaque,
->      hwaddr offset, uint64_t value,
->      >      case VIRTIO_MMIO_DEVICE_FEATURES:
->      >      case VIRTIO_MMIO_QUEUE_NUM_MAX:
->      >      case VIRTIO_MMIO_INTERRUPT_STATUS:
->      > -        DPRINTF("write to readonly register\n");
->      > +        trace_virtio_mmio_write_interrupt();
->      >          break;
->      >
->      >      default:
->      > -        DPRINTF("bad register offset\n");
->      > +        trace_virtio_mmio_bad_write_offset();
->      >      }
->      >  }
->      >
->      > @@ -327,7 +316,7 @@ static void virtio_mmio_update_irq(DeviceState
->      *opaque, uint16_t vector)
->      >          return;
->      >      }
->      >      level = (atomic_read(&vdev->isr) != 0);
->      > -    DPRINTF("virtio_mmio setting IRQ %d\n", level);
->      > +    trace_virtio_mmio_setting_irq(level);
->      >      qemu_set_irq(proxy->irq, level);
->      >  }
->      I went through all code changes and found no mistakes but suggesting
->      to
->      turn errors to errors and not just threat them as traces.
->      If you already considered it then fine.
->      >
->      > --
->      > 2.13.2
->      >
->      >
-> 
-> References
-> 
->    1. mailto:yuval.shaia@oracle.com
->    2. mailto:liboxuan@connect.hku.hk
+  g_assert(usbports <= MAX(MAXPORTS_2, MAXPORTS_3));
+
+
+r~
 
