@@ -1,53 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hLpyA-0008KM-W1
-	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2019 10:12:23 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:48122)
+	id 1hLq1A-0001uY-W1
+	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2019 10:15:29 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:48658)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1hLpy7-0008I0-0F
-	for qemu-trivial@nongnu.org; Wed, 01 May 2019 10:12:22 -0400
+	(envelope-from <richard.henderson@linaro.org>) id 1hLq16-0001rb-Ox
+	for qemu-trivial@nongnu.org; Wed, 01 May 2019 10:15:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1hLpy3-0003xm-3l
-	for qemu-trivial@nongnu.org; Wed, 01 May 2019 10:12:18 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e]:44539)
+	(envelope-from <richard.henderson@linaro.org>) id 1hLq10-0006fG-A8
+	for qemu-trivial@nongnu.org; Wed, 01 May 2019 10:15:22 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629]:45991)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1hLpy2-0003x8-Jl
-	for qemu-trivial@nongnu.org; Wed, 01 May 2019 10:12:15 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id l2so5481532plt.11
-	for <qemu-trivial@nongnu.org>; Wed, 01 May 2019 07:12:14 -0700 (PDT)
+	id 1hLq0y-0006eh-MZ
+	for qemu-trivial@nongnu.org; Wed, 01 May 2019 10:15:18 -0400
+Received: by mail-pl1-x629.google.com with SMTP id o5so8238424pls.12
+	for <qemu-trivial@nongnu.org>; Wed, 01 May 2019 07:15:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
 	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=4kQDhN4NfcJBF1zjhcmoNb8ChmBiTpVGRwYChVDGMjI=;
-	b=srM7ZBe8Zw0DfinvlSvYIhB4E7D1RwepaUfUtAsRpLBecIh65i1Hsb2qMIQzBLAdHh
-	Yv8HfMJoGIiCXK+6HGLQs/fjmR55Zjf96kPytC7tO0OYCuF3m+RYwyKWX1pOPRK8yeHg
-	ZYoZSuaDSEr/WN+6E1q0d7ZgO01fLjIWo63MT3Q7wyzR2wP5fLpIHXgNKZczRDqdPOav
-	zwR42Ayj0qOcSsSX5y6j0DIlBpogO881CoeOKKa/qkdVPVkFAr0DjaavWKIzkhAbI2ks
-	jue9ujCXAw/kfHrHE1EoKcavktWabqGuM9HPhKfVT5QR99MIgTenatc0o31Wce/r15R/
-	buxg==
+	bh=AaR/jWZxbFEORr7Pg8KcRpvGmry5QEQL1q30DXO3fCE=;
+	b=yisvstR0Xv9+2lCuJ7UOkhC3H/nyy2XcjEjhpx2z9K/NVhP/3HAMO/Ce+dHYTovXb3
+	39iv8EUqbw78qNDEEXrCShzTt9C4KQjtFUUvd+t5V2nQEg+7O7jDONqzRQQd8glrIr3D
+	bZMTYxODYYZ2g3OrrZ0XS1JDfdEYjIZHxck3EIkCfHZTVZ+Ra0ZSXzuZmEDcv7fEzBz8
+	mkQYU/QeKSZOJx1NzBVGfeYX8FgKneOnFBMNEqTX1ohnNv8cDXUfoXIiXrSol49Gt32j
+	E0LFzC64Os8xjpymBy0RQ2tvo9WNLVOrdkph1homdFOexk8rL2WdLThHJh1Bv/xyc6t6
+	dCJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=4kQDhN4NfcJBF1zjhcmoNb8ChmBiTpVGRwYChVDGMjI=;
-	b=EsYWci/989A898myIijNvmQs+JM7k3kyFVKp0B7IwuZijLa24lJJ6oso4I6+OplUl/
-	ubeA9Ev8Xl1tzHEmgr2bTWRLEWkfshKcJIXplb0TjXcrNtdYEATlbrwddA27DYFK1jcS
-	De2uOyY3+gu387Y1uiSi/WR/s1MRcsWyyWnlTFT0yrF9xoKiW5WOzQUF+efSueBvTCdw
-	Jamj4RoBVDVj8JW8pL9G0cx7ft4MHyt2U4s2d4/8Gxk3mZuMJm5d13LfjCIRlrw6LY8x
-	zC7CfmJTA9gFsxzlHgaFef0v//R0Rx69XqIREY8YM+oaWGrlv4FazWJDJYZKu9Zk1cXD
-	JUow==
-X-Gm-Message-State: APjAAAU1YrY0eNPI9BsyPHKL7mvwNAYiMkDRZerNB1q4nx2PenXJtRIt
-	291rIoQp30ghxz+fp2lnxYHvnw==
-X-Google-Smtp-Source: APXvYqyZzZZIH4hhL8sXByYEejO6rlQMe98XGUZrIsnQu71RB1XTNt2IaqtPZmBRvLi+0jtzvftHng==
-X-Received: by 2002:a17:902:28e9:: with SMTP id
-	f96mr5708519plb.37.1556719933212; 
-	Wed, 01 May 2019 07:12:13 -0700 (PDT)
+	bh=AaR/jWZxbFEORr7Pg8KcRpvGmry5QEQL1q30DXO3fCE=;
+	b=MQOrpFcUOeBJTvUL7EUorNpnbCy0+AMCQS4pDONZ4CzLYwMQCJUCz7YjQn039GjLfa
+	1Med6gYwmO2yBITVTQBdSsq7dElOAFOm7DRYblFfSRXbYPATuja1rvJULkwbAGKrw4db
+	zt95974KD5qc5KbfGQXy4+sdinNNG08MdC6NdIU6SjhJjuR3lYfoQOW5/TafC8clfSz5
+	SZdfc2zE1eqyvokjZqMclPxGUzQuyxr3VDCDIfrLwBp+3tcEP0XWCpB75QUaphxqcen3
+	94MFzikD5fg5/NZET5UzPJ8DIZsTkVc8Us6c6kZoWLBL4pVcPlbl65echu41U4PCfDMu
+	Letw==
+X-Gm-Message-State: APjAAAVYIj5HL49rh7lAzz04mt6uJeJ2rJqXqeooLkMhemXLYS2wcSTB
+	ZTie7D85UcbdtUilD8okF7X/Cw==
+X-Google-Smtp-Source: APXvYqyXs5wsZyEL1g/pKKOaz2QktcJKDIWocVZOHQweP1CKQ70bXkdRin5kQvMD6cAq4MP6qAPnmQ==
+X-Received: by 2002:a17:902:5a03:: with SMTP id
+	q3mr22132793pli.209.1556720115469; 
+	Wed, 01 May 2019 07:15:15 -0700 (PDT)
 Received: from [192.168.1.11] (97-113-189-189.tukw.qwest.net. [97.113.189.189])
 	by smtp.gmail.com with ESMTPSA id
-	e6sm41948353pfe.158.2019.05.01.07.12.11
+	e23sm8666087pfi.159.2019.05.01.07.15.14
 	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 01 May 2019 07:12:12 -0700 (PDT)
+	Wed, 01 May 2019 07:15:14 -0700 (PDT)
 To: Alistair Francis <Alistair.Francis@wdc.com>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
@@ -56,23 +56,23 @@ Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
 	"kraxel@redhat.com" <kraxel@redhat.com>,
 	"alistair23@gmail.com" <alistair23@gmail.com>
 References: <cover.1556666645.git.alistair.francis@wdc.com>
-	<ff51c73e3095fa503d14aafece54f8565fe99900.1556666645.git.alistair.francis@wdc.com>
+	<c4d2b1de9efadcf1c900b91361af9302823a72a9.1556666645.git.alistair.francis@wdc.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <0d585793-20a8-8dc8-98fa-13789113f672@linaro.org>
-Date: Wed, 1 May 2019 07:12:10 -0700
+Message-ID: <035c917e-be1c-1cda-6b1b-337fa804a69b@linaro.org>
+Date: Wed, 1 May 2019 07:15:12 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <ff51c73e3095fa503d14aafece54f8565fe99900.1556666645.git.alistair.francis@wdc.com>
+In-Reply-To: <c4d2b1de9efadcf1c900b91361af9302823a72a9.1556666645.git.alistair.francis@wdc.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::62e
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 2/5] hw/usb/hcd-xhci: Fix
- GCC 9 build warning
+X-Received-From: 2607:f8b0:4864:20::629
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 5/5] linux-user/elfload:
+ Fix GCC 9 build warnings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,15 +84,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 May 2019 14:12:22 -0000
+X-List-Received-Date: Wed, 01 May 2019 14:15:28 -0000
 
-On 4/30/19 4:28 PM, Alistair Francis wrote:
->      for (i = 0; i < usbports; i++) {
-> +        g_assert(i < MAX(MAXPORTS_2, MAXPORTS_3));
+On 4/30/19 4:29 PM, Alistair Francis wrote:
+> @@ -2872,7 +2872,7 @@ struct target_elf_prpsinfo {
+>      target_gid_t pr_gid;
+>      target_pid_t pr_pid, pr_ppid, pr_pgrp, pr_sid;
+>      /* Lots missing */
+> -    char    pr_fname[16];           /* filename of executable */
+> +    char    pr_fname[16] QEMU_NONSTRING; /* filename of executable */
 
-I would hope that it works to move this out of the loop:
-
-  g_assert(usbports <= MAX(MAXPORTS_2, MAXPORTS_3));
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~
