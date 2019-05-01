@@ -1,78 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hLq1A-0001uY-W1
-	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2019 10:15:29 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:48658)
+	id 1hLqzC-0008HE-D0
+	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2019 11:17:30 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60162)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1hLq16-0001rb-Ox
-	for qemu-trivial@nongnu.org; Wed, 01 May 2019 10:15:27 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1hLqz3-0008Gj-LB
+	for qemu-trivial@nongnu.org; Wed, 01 May 2019 11:17:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1hLq10-0006fG-A8
-	for qemu-trivial@nongnu.org; Wed, 01 May 2019 10:15:22 -0400
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629]:45991)
+	(envelope-from <alex.bennee@linaro.org>) id 1hLqyz-0004Rc-NM
+	for qemu-trivial@nongnu.org; Wed, 01 May 2019 11:17:21 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:35143)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1hLq0y-0006eh-MZ
-	for qemu-trivial@nongnu.org; Wed, 01 May 2019 10:15:18 -0400
-Received: by mail-pl1-x629.google.com with SMTP id o5so8238424pls.12
-	for <qemu-trivial@nongnu.org>; Wed, 01 May 2019 07:15:16 -0700 (PDT)
+	(Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+	id 1hLqyx-0004PX-V8
+	for qemu-trivial@nongnu.org; Wed, 01 May 2019 11:17:17 -0400
+Received: by mail-wr1-x444.google.com with SMTP id f7so16425866wrs.2
+	for <qemu-trivial@nongnu.org>; Wed, 01 May 2019 08:17:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-	:mime-version:in-reply-to:content-language:content-transfer-encoding;
-	bh=AaR/jWZxbFEORr7Pg8KcRpvGmry5QEQL1q30DXO3fCE=;
-	b=yisvstR0Xv9+2lCuJ7UOkhC3H/nyy2XcjEjhpx2z9K/NVhP/3HAMO/Ce+dHYTovXb3
-	39iv8EUqbw78qNDEEXrCShzTt9C4KQjtFUUvd+t5V2nQEg+7O7jDONqzRQQd8glrIr3D
-	bZMTYxODYYZ2g3OrrZ0XS1JDfdEYjIZHxck3EIkCfHZTVZ+Ra0ZSXzuZmEDcv7fEzBz8
-	mkQYU/QeKSZOJx1NzBVGfeYX8FgKneOnFBMNEqTX1ohnNv8cDXUfoXIiXrSol49Gt32j
-	E0LFzC64Os8xjpymBy0RQ2tvo9WNLVOrdkph1homdFOexk8rL2WdLThHJh1Bv/xyc6t6
-	dCJQ==
+	h=references:user-agent:from:to:cc:subject:in-reply-to:date
+	:message-id:mime-version:content-transfer-encoding;
+	bh=5p1L9AFWCebl88Olx4jMoDtNG2V39GUQG7dGse8qncM=;
+	b=lfkoOz4oEg98WRfbwOh1hFQKRUsJgUH8j887KO0e5wKT8SpR9tiibown6lVexMKVUH
+	sJ0Sh6Wimkq7uZZ1YqJK5hn5xT5Ow8UyI8GDwx71DHQN+l+P+d1n98mUSHhH5eGYOp/5
+	jmipigVZYeSrCblDcLKK28nxbJ5/mY5DhBI0q56hAQICfR3+kF9tljVq2bPXRNVsjXPj
+	XpiiHQxvkSBJlc9Ww5BQLCQiU/DRj0+PGNu6iP2e8EVT7CtZVkE1jAMkgozsyyJAE3Oq
+	2u0t4WYOIomWyw0FBSKP/7NubGdjX99R+Yqku36FCId0hzm69BjFohnh26INRbPnyOFE
+	4ZDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=AaR/jWZxbFEORr7Pg8KcRpvGmry5QEQL1q30DXO3fCE=;
-	b=MQOrpFcUOeBJTvUL7EUorNpnbCy0+AMCQS4pDONZ4CzLYwMQCJUCz7YjQn039GjLfa
-	1Med6gYwmO2yBITVTQBdSsq7dElOAFOm7DRYblFfSRXbYPATuja1rvJULkwbAGKrw4db
-	zt95974KD5qc5KbfGQXy4+sdinNNG08MdC6NdIU6SjhJjuR3lYfoQOW5/TafC8clfSz5
-	SZdfc2zE1eqyvokjZqMclPxGUzQuyxr3VDCDIfrLwBp+3tcEP0XWCpB75QUaphxqcen3
-	94MFzikD5fg5/NZET5UzPJ8DIZsTkVc8Us6c6kZoWLBL4pVcPlbl65echu41U4PCfDMu
-	Letw==
-X-Gm-Message-State: APjAAAVYIj5HL49rh7lAzz04mt6uJeJ2rJqXqeooLkMhemXLYS2wcSTB
-	ZTie7D85UcbdtUilD8okF7X/Cw==
-X-Google-Smtp-Source: APXvYqyXs5wsZyEL1g/pKKOaz2QktcJKDIWocVZOHQweP1CKQ70bXkdRin5kQvMD6cAq4MP6qAPnmQ==
-X-Received: by 2002:a17:902:5a03:: with SMTP id
-	q3mr22132793pli.209.1556720115469; 
-	Wed, 01 May 2019 07:15:15 -0700 (PDT)
-Received: from [192.168.1.11] (97-113-189-189.tukw.qwest.net. [97.113.189.189])
+	h=x-gm-message-state:references:user-agent:from:to:cc:subject
+	:in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+	bh=5p1L9AFWCebl88Olx4jMoDtNG2V39GUQG7dGse8qncM=;
+	b=DIQ+atgK81sBNgdqC/HF2MQvnMMETXp7ifHIM07wL2fwpHlARTv3xeA9H+kSIhWMYb
+	tC/a5sFtdKlMK34last5yZzGDaNbIayoh2owPs0LGnCCeTKLw9Z3n5Xmq8BY/vL3SMMB
+	WMNRsKw9ooVio8iGoxQWXAznrH2tknPehlzy6LNugkp9ZR57HcWPj4+Ia2ZCg2Qbvq65
+	WqFXUz29VCzSxjZk1NKQHZpQUAYqzyTP+MCqP/7SCv7zUiMvBRUdKxnbUcvOa7GXzOTG
+	xl7ZL1fITXFo69nUZAFgfMv9On0uSVbhqjUr0lS6UHQEzpIChbkp/DLy07Ea3JWOaZ6U
+	seMg==
+X-Gm-Message-State: APjAAAVgROK5NqSvC4XokwZ+uh5EUKfqjB1UFlOEOvymEXAUHfLGSOAH
+	JyfAc/Bjw6vXnm1n6v1n1v1fzQ==
+X-Google-Smtp-Source: APXvYqyEp93xBi3LzhvL0KGq05QeN0hCaugmJ4INRwGbj27WiM64GOq0bGMQX5RVG82Wee0nMT4H0g==
+X-Received: by 2002:adf:e3c8:: with SMTP id k8mr104453wrm.329.1556723832834;
+	Wed, 01 May 2019 08:17:12 -0700 (PDT)
+Received: from zen.linaroharston ([81.128.185.34])
 	by smtp.gmail.com with ESMTPSA id
-	e23sm8666087pfi.159.2019.05.01.07.15.14
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Wed, 01 May 2019 07:15:14 -0700 (PDT)
-To: Alistair Francis <Alistair.Francis@wdc.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"riku.voipio@iki.fi" <riku.voipio@iki.fi>,
-	"laurent@vivier.eu" <laurent@vivier.eu>,
-	"kraxel@redhat.com" <kraxel@redhat.com>,
-	"alistair23@gmail.com" <alistair23@gmail.com>
-References: <cover.1556666645.git.alistair.francis@wdc.com>
-	<c4d2b1de9efadcf1c900b91361af9302823a72a9.1556666645.git.alistair.francis@wdc.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <035c917e-be1c-1cda-6b1b-337fa804a69b@linaro.org>
-Date: Wed, 1 May 2019 07:15:12 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	b184sm8154149wmh.17.2019.05.01.08.17.12
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Wed, 01 May 2019 08:17:12 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id CEBDB1FF87;
+	Wed,  1 May 2019 16:17:11 +0100 (BST)
+References: <20190501081039.58938-1-liboxuan@connect.hku.hk>
+	<20190501085805.GA8174@lap1>
+	<CALM0=-=cbHTajGz8R4Who9eKh=sfa19H_nMuH4PFO8vVq2=drQ@mail.gmail.com>
+	<20190501135807.GA11932@lap1>
+User-agent: mu4e 1.3.1; emacs 26.1
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: "LI\, BO XUAN" <liboxuan@connect.hku.hk>, qemu-trivial@nongnu.org,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>, "Michael S.
+	Tsirkin" <mst@redhat.com>
+In-reply-to: <20190501135807.GA11932@lap1>
+Date: Wed, 01 May 2019 16:17:11 +0100
+Message-ID: <87y33q5hmw.fsf@zen.linaroharston>
 MIME-Version: 1.0
-In-Reply-To: <c4d2b1de9efadcf1c900b91361af9302823a72a9.1556666645.git.alistair.francis@wdc.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::629
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 5/5] linux-user/elfload:
- Fix GCC 9 build warnings
+X-Received-From: 2a00:1450:4864:20::444
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] hw/virtio/virtio-mmio:
+ Convert DPRINTF to traces
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,18 +81,111 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 May 2019 14:15:28 -0000
-
-On 4/30/19 4:29 PM, Alistair Francis wrote:
-> @@ -2872,7 +2872,7 @@ struct target_elf_prpsinfo {
->      target_gid_t pr_gid;
->      target_pid_t pr_pid, pr_ppid, pr_pgrp, pr_sid;
->      /* Lots missing */
-> -    char    pr_fname[16];           /* filename of executable */
-> +    char    pr_fname[16] QEMU_NONSTRING; /* filename of executable */
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+X-List-Received-Date: Wed, 01 May 2019 15:17:28 -0000
 
 
-r~
+Yuval Shaia <yuval.shaia@oracle.com> writes:
+
+> On Wed, May 01, 2019 at 08:42:35PM +0800, LI, BO XUAN wrote:
+>>    On Wed, May 1, 2019 at 4:58 PM Yuval Shaia <[1]yuval.shaia@oracle.com>
+>>    wrote:
+>>
+>>      On Wed, May 01, 2019 at 04:10:39PM +0800, Boxuan Li wrote:
+>>      > Signed-off-by: Boxuan Li <[2]liboxuan@connect.hku.hk>
+>>      > ---
+>>      > v2: Instead of using conditional debugs, convert DPRINTF to traces
+>>      > ---
+>>      >  hw/virtio/trace-events  | 13 +++++++++++++
+>>      >  hw/virtio/virtio-mmio.c | 35 ++++++++++++-----------------------
+>>      >  2 files changed, 25 insertions(+), 23 deletions(-)
+>>      >
+>>      > diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+>>      > index 60c649c4bc..37c781b487 100644
+>>      > --- a/hw/virtio/trace-events
+>>      > +++ b/hw/virtio/trace-events
+>>      > @@ -46,3 +46,16 @@ virtio_balloon_handle_output(const char *name,
+>>      uint64_t gpa) "section name: %s g
+>>      >  virtio_balloon_get_config(uint32_t num_pages, uint32_t actual)
+>>      "num_pages: %d actual: %d"
+>>      >  virtio_balloon_set_config(uint32_t actual, uint32_t oldactual)
+>>      "actual: %d oldactual: %d"
+>>      >  virtio_balloon_to_target(uint64_t target, uint32_t num_pages)
+>>      "balloon target: 0x%"PRIx64" num_pages: %d"
+>>      > +
+>>      > +# virtio-mmio.c
+>>      > +virtio_mmio_read(int offset) "virtio_mmio_read offset 0x%x"
+>>      > +virtio_mmio_wrong_size_read(void) "wrong size access to
+>>      register!"
+>>      > +virtio_mmio_read_interrupt(void) "read of write-only register"
+>>      > +virtio_mmio_bad_read_offset(void) "bad register offset"
+>>      > +virtio_mmio_write_offset(int offset, uint64_t value)
+>>      "virtio_mmio_write offset 0x%x value 0x%" PRIx64
+>>      > +virtio_mmio_wrong_size_write(void) "wrong size access to
+>>      register!"
+>>      > +virtio_mmio_guest_page(uint64_t size, int shift) "guest page size
+>>      0x%" PRIx64 " shift %d"
+>>      > +virtio_mmio_queue_write(int value, int max_size) "mmio_queue
+>>      write %d max %d"
+>>      > +virtio_mmio_write_interrupt(void) "write to readonly register"
+>>      > +virtio_mmio_bad_write_offset(void) "bad register offset"
+>>      > +virtio_mmio_setting_irq(int level) "virtio_mmio setting IRQ %d"
+>>      > diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
+>>      > index 5807aa87fe..4251df399d 100644
+>>      > --- a/hw/virtio/virtio-mmio.c
+>>      > +++ b/hw/virtio/virtio-mmio.c
+>>      > @@ -27,16 +27,7 @@
+>>      >  #include "sysemu/kvm.h"
+>>      >  #include "hw/virtio/virtio-bus.h"
+>>      >  #include "qemu/error-report.h"
+>>      > -
+>>      > -/* #define DEBUG_VIRTIO_MMIO */
+>>      > -
+>>      > -#ifdef DEBUG_VIRTIO_MMIO
+>>      > -
+>>      > -#define DPRINTF(fmt, ...) \
+>>      > -do { printf("virtio_mmio: " fmt , ## __VA_ARGS__); } while (0)
+>>      > -#else
+>>      > -#define DPRINTF(fmt, ...) do {} while (0)
+>>      > -#endif
+>>      > +#include "trace.h"
+>>      >
+>>      >  /* QOM macros */
+>>      >  /* virtio-mmio-bus */
+>>      > @@ -107,7 +98,7 @@ static uint64_t virtio_mmio_read(void *opaque,
+>>      hwaddr offset, unsigned size)
+>>      >      VirtIOMMIOProxy *proxy =3D (VirtIOMMIOProxy *)opaque;
+>>      >      VirtIODevice *vdev =3D virtio_bus_get_device(&proxy->bus);
+>>      >
+>>      > -    DPRINTF("virtio_mmio_read offset 0x%x\n", (int)offset);
+>>      > +    trace_virtio_mmio_read((int)offset);
+>>      >
+>>      >      if (!vdev) {
+>>      >          /* If no backend is present, we treat most registers as
+>>      > @@ -144,7 +135,7 @@ static uint64_t virtio_mmio_read(void *opaque,
+>>      hwaddr offset, unsigned size)
+>>      >          }
+>>      >      }
+>>      >      if (size !=3D 4) {
+>>      > -        DPRINTF("wrong size access to register!\n");
+>>      > +        trace_virtio_mmio_wrong_size_read();
+>>      Have you considered using qemu_error_report to report such errors?
+>>
+>>    Thanks for the suggestion. I am a newcomer here so my question might =
+be
+>>    a bit dumb: I thought they are warnings instead of errors since return
+>>    values are 0. Do you suggest using error_report function and changing
+>>    return values from 0 to -1?
+>>    Best regards,
+>>    Boxuan Li
+>
+> I think that when driver store invalid data in device register it is an
+> error but the best is to check what other devices do.
+
+We could have:
+
+        qemu_log_mask(LOG_GUEST_ERROR, "%s: wrong size access to register!\=
+n". __func__);
+
+--
+Alex Benn=C3=A9e
 
