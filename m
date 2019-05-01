@@ -1,20 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hLlf5-0002OW-TP
-	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2019 05:36:23 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:49313)
+	id 1hLlhB-0003ND-9K
+	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2019 05:38:33 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:49723)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hLlf1-0002O1-2K
-	for qemu-trivial@nongnu.org; Wed, 01 May 2019 05:36:22 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hLlh7-0003Mz-Bv
+	for qemu-trivial@nongnu.org; Wed, 01 May 2019 05:38:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hLlev-0003Qj-3a
-	for qemu-trivial@nongnu.org; Wed, 01 May 2019 05:36:17 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:45067)
+	(envelope-from <laurent@vivier.eu>) id 1hLlh3-0004SK-F3
+	for qemu-trivial@nongnu.org; Wed, 01 May 2019 05:38:29 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:40479)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hLlet-0003Nc-9k; Wed, 01 May 2019 05:36:13 -0400
+	id 1hLlh1-0004RA-Ij; Wed, 01 May 2019 05:38:24 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
 	(mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
-	1MWBC8-1hFcot1jic-00XZBN; Wed, 01 May 2019 11:35:53 +0200
+	1MfZ9C-1goups3xuq-00g3Qi; Wed, 01 May 2019 11:38:01 +0200
+From: Laurent Vivier <laurent@vivier.eu>
 To: Alistair Francis <Alistair.Francis@wdc.com>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Cc: "alistair23@gmail.com" <alistair23@gmail.com>,
@@ -23,8 +24,7 @@ Cc: "alistair23@gmail.com" <alistair23@gmail.com>,
 	"riku.voipio@iki.fi" <riku.voipio@iki.fi>,
 	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
 References: <cover.1556666645.git.alistair.francis@wdc.com>
-	<002f222d86322a66276de39cb29796acffe384c1.1556666645.git.alistair.francis@wdc.com>
-From: Laurent Vivier <laurent@vivier.eu>
+	<ff51c73e3095fa503d14aafece54f8565fe99900.1556666645.git.alistair.francis@wdc.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -68,35 +68,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <3ff5539c-ee8c-336e-9a15-182834f1686c@vivier.eu>
-Date: Wed, 1 May 2019 11:35:50 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+Message-ID: <74fcaa14-6e80-9d7b-bcd6-9c951a4f46de@vivier.eu>
+Date: Wed, 1 May 2019 11:37:58 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <002f222d86322a66276de39cb29796acffe384c1.1556666645.git.alistair.francis@wdc.com>
+In-Reply-To: <ff51c73e3095fa503d14aafece54f8565fe99900.1556666645.git.alistair.francis@wdc.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:/Ax492oVRCtB0F5RrgD+Cgt9FgqFGMeX9cQMdazjk1gb+M06J04
-	v832np2/817nOcJdMmJOpmqM2PuZuxd8NJpp4ChnPt04+0J+8Nsk7PPk2wgl5kmw/xFkhWD
-	HPFi95ja1zwwJ6M+YKlt3TZUy8R3CcmnALpLk6+tqfKpRK401Lgs0Jttv3g+G4s+VMSUXbB
-	kJImBKzpBQicefLsnnZ/Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:z5YTz9ZxG4E=:VtVb/L4czJXkhWPLjUyaLd
-	p8WzPeIqxoGxMRhkEPX34P4VRBgwr3sbRgP1T4eVL8ri6w+lvDsCUOxxTYwsIQ3kE0Sd6DBJF
-	uNa2EyBJHugVWijfvEWep3bNyvLZ0c+xOAI3EK3Qs6LPS5LT0KyGPJoIe32M+jz9oRcVu+PCI
-	P5iznA9J8cG8ePXGFvy7Stodn7aZUKLBGXyzNoM8F8E7/3voLgC/OkmBbRCcJVGC+TFaxJ2Mf
-	WwuEg0P8ctSisrmSZUT4fS1cHiJDVlvqVYKfXGsAOeA99977fD6ODqLzFXYyO+4vS2TN8RD0+
-	8NmL3iOxOvGpVe5ZCMDmKctxfVmMnBcjh9gioC2mOO2eGcOT3dL9018be4v5PgQHGopqzd0uG
-	5hY/grhpCXb4pDY+O85otFyCuCGNXs/o1Rf4O57Lj/KT3u+FhAxBoMIUG4SyVRSRD20YdYPFc
-	cgA0xTsPLMbtlADwzBit/y1O8oGyyyu6vYDgB2iDvGIlrIXEpiD9VvP1PTnfrLCTI4OFmqnTG
-	a3syN2k11udxOs69aW5eKj52DFLxMgEjAhplFcNZTeE2jr4+eoo5x+i0acdzm5QYmX+GOipfZ
-	u9D6MQJT90beONuv3103g/wpDYIJmv74Db90P9nEFZ4CdLeCWV93qc0xuIaUoetMfcv2zLlM/
-	n+gMrUmsV7so6kYmaJ/47fDgs+BcR55qoruonAe/uH9eK/L2CJTu9Sbom0v//wvGM4ENOYsMt
-	+JJKM/tOSm1RUhD18KJgZhWYHeTYmzBeshkBfDdNmDDP15HpQ4JOVRdC6Bk=
+X-Provags-ID: V03:K1:IZxBcBlsJLYvrvTAxFKqPPRMO7uxy/VSPuOlbycQq7a6wwrHxGn
+	B3RHNMHvygfRfCz+yhvw7KQvx1c8fZ9E4F2uUFJZk47ZO7czpdbfpnNrx+7PNvb+ouKuKbd
+	ooVuPRzZLR5NYdvf3n3+czcaoXOXGmgZ9aBfH0JtWCcPIbAf8UMiHCRpaq/gpaVhXjsGjb2
+	F7zW4hFDUfSmShaDfTW5g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Iyne2eBd160=:NTz2q4pQKxnzGAZ6pk6wpn
+	BfBWyZfU4RDG/9o/4yxYpxdnE+RZ9Qp5aVJTd9RbrZoHc4UXo6g94GiyiqKVhu3uT7iwqB/f5
+	sh4jJqIfSISaymzHgE38WIzMLCwkoQJIoYGf9dSGLWpFTg9LWVh7w3e6nlVIRonYBFKgsDgZf
+	kHAbLaK+VysN9JOe9aBBztQMuBJZGoKZVHGQLNGreJY3k2SXjgRu4QOjwNhMBYbScSytAHqt2
+	9Ojzfjeljz3Gcaot5rMy12dR/uoKZytFbHOadsxCsgg4R8apmCJYFUY2s048PJ4tVYFRQQj0Q
+	gBYKu7AD6nrnOpWHUUgxapW8CIdVYf5OUXUhzLPHuMisjWaqdYF5/VXQnWRQCwKMlINTmNqi6
+	tKDLVqPQQvnYe7tC9EOkgLoyTvEsfKrFIRfLNroaUFfMOdz2Hr9oDfi9RTbO2+7vMm8u6iwY/
+	SDygNrVtBq+qqProtxhjsdTDe4Uo8t7P64OwuLhCEJzYD8Pz7wHHjbgHjEcs0bdqmJ+iS67Ug
+	9YVVmml3qk1Rqg7YjTWWPmSgSsne3vv8NiUkB5o2ef1VUs0m9T6qIQoXK7n1ujQ5Y/nFpy3Z5
+	Amh5trEc3pYMfGsDME0LxpH5RqejToOgl9EXn33pL7RKV6Zub6uyozYJiIlgyph2RLZHgP2fS
+	DmGLOMCP7Xhb7dKBOG8Vhiw5Rdi3Tck0T30VitQK4dFhtKQVAgjWFM2fnUTYrBjWNjAEtJGZT
+	uKNpTMLps5DvOAt+WatJMJYRZr9NljDYPYXeXAUHeOvGFFRjetIZUHirtcM=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-Subject: Re: [Qemu-trivial] [PATCH v2 1/5] util/qemu-sockets: Fix GCC 9
- build warnings
+X-Received-From: 212.227.17.10
+Subject: Re: [Qemu-trivial] [PATCH v2 2/5] hw/usb/hcd-xhci: Fix GCC 9 build
+ warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -108,36 +108,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 May 2019 09:36:22 -0000
+X-List-Received-Date: Wed, 01 May 2019 09:38:32 -0000
 
 Le 01/05/2019 à 01:28, Alistair Francis a écrit :
-> Fix this warning when building with GCC9 on Fedora 30:
-> In function ‘strncpy’,
->     inlined from ‘unix_connect_saddr.isra.0’ at util/qemu-sockets.c:925:5:
-> /usr/include/bits/string_fortified.h:106:10: error: ‘__builtin_strncpy’ specified bound 108 equals destination size [-Werror=stringop-truncation]
->   106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
->       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> In function ‘strncpy’,
->     inlined from ‘unix_listen_saddr.isra.0’ at util/qemu-sockets.c:880:5:
+> Fix this build warning with GCC 9 on Fedora 30:
+> hw/usb/hcd-xhci.c:3339:66: error: ‘%d’ directive output may be truncated writing between 1 and 10 bytes into a region of size 5 [-Werror=format-truncation=]
+>  3339 |             snprintf(port->name, sizeof(port->name), "usb2 port #%d", i+1);
+>       |                                                                  ^~
+> hw/usb/hcd-xhci.c:3339:54: note: directive argument in the range [1, 2147483647]
+>  3339 |             snprintf(port->name, sizeof(port->name), "usb2 port #%d", i+1);
+>       |                                                      ^~~~~~~~~~~~~~~
+> In file included from /usr/include/stdio.h:867,
+>                  from /home/alistair/qemu/include/qemu/osdep.h:99,
+>                  from hw/usb/hcd-xhci.c:21:
+> /usr/include/bits/stdio2.h:67:10: note: ‘__builtin___snprintf_chk’ output between 13 and 22 bytes into a destination of size 16
+>    67 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+>       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>    68 |        __bos (__s), __fmt, __va_arg_pack ());
+>       |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > 
 > Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
 > ---
->  util/qemu-sockets.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  hw/usb/hcd-xhci.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-> index 9705051690..8c3322958f 100644
-> --- a/util/qemu-sockets.c
-> +++ b/util/qemu-sockets.c
-> @@ -829,7 +829,7 @@ static int unix_listen_saddr(UnixSocketAddress *saddr,
->      struct sockaddr_un un;
->      int sock, fd;
->      char *pathbuf = NULL;
-> -    const char *path;
-> +    const char *path QEMU_NONSTRING;
+> diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
+> index ec28bee319..2b061772b2 100644
+> --- a/hw/usb/hcd-xhci.c
+> +++ b/hw/usb/hcd-xhci.c
+> @@ -3322,6 +3322,7 @@ static void usb_xhci_init(XHCIState *xhci)
+>      usb_bus_new(&xhci->bus, sizeof(xhci->bus), &xhci_bus_ops, dev);
+>  
+>      for (i = 0; i < usbports; i++) {
+> +        g_assert(i < MAX(MAXPORTS_2, MAXPORTS_3));
+>          speedmask = 0;
+>          if (i < xhci->numports_2) {
+>              if (xhci_get_flag(xhci, XHCI_FLAG_SS_FIRST)) {
+> 
 
-Do we need this with memcpy()?
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
-Thanks,
-Laurent
+
 
