@@ -1,43 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hLeX4-0005Uc-Oq
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 21:59:38 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34889)
+	id 1hLfk1-00021a-Rl
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Apr 2019 23:17:05 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47405)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1hLeX0-0005Rc-Jm
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 21:59:37 -0400
+	(envelope-from <liboxuan@connect.hku.hk>) id 1hLfjx-00021I-HT
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 23:17:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1hLeWx-0005mh-HM
-	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 21:59:34 -0400
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:53845 helo=ozlabs.org)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1hLeWi-0005cE-PA; Tue, 30 Apr 2019 21:59:19 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 44v1lj6x4wz9s9N; Wed,  1 May 2019 11:58:57 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1556675937;
-	bh=6ZcpSWW3dCogdpECGBwIyNz09/M3HcnMoXdc8alE/Uo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ELicVMB6ERXLbiAdDzBSO0Uz2fcDc5a/3aR2ae4j519YS48bet4gz6eEMAYp1GqTz
-	il4lkjd0pXEzZ759s9vokS2VVuVgGoFjZEBIOhiLgGPFZj42YMWCMq3U/4N+CyL/1R
-	QaQZfZgypqSlfkKk3kosn5Xe4+GyoRXF9lKJWmaA=
-Date: Wed, 1 May 2019 11:39:11 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Boxuan Li <liboxuan@connect.hku.hk>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	"open list:PowerPC" <qemu-ppc@nongnu.org>
-Message-ID: <20190501013910.GA13618@umbus.fritz.box>
-References: <20190430172842.27369-1-liboxuan@connect.hku.hk>
+	(envelope-from <liboxuan@connect.hku.hk>) id 1hLfju-0000Uf-Gy
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 23:17:01 -0400
+Received: from mail-yw1-xc43.google.com ([2607:f8b0:4864:20::c43]:35716)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <liboxuan@connect.hku.hk>)
+	id 1hLfju-0000Tr-3t
+	for qemu-trivial@nongnu.org; Tue, 30 Apr 2019 23:16:58 -0400
+Received: by mail-yw1-xc43.google.com with SMTP id n188so4919756ywe.2
+	for <qemu-trivial@nongnu.org>; Tue, 30 Apr 2019 20:16:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=connect-hku-hk.20150623.gappssmtp.com; s=20150623;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=1YqRuH2R8B5aXHMnRryW3QIvT3FJY0yab9JQob5LiBU=;
+	b=Js5eez6OodSVmS3ImNbqBgC49NXCteVNfpjT61/UXaSGdNp+q3uEetG1MGMVH6aVcI
+	0U8nfgxtFR3dvyzIkyyuDqdKxMT1vywF0hfsVo/rIquM3e9LM5umboxsBfM+AaFrZJFW
+	VbMglOxm2jLCSZoARg+nZaI2k1Yoz5hXYM0rpQCkUTvo4qQMegY1pZYy92KQ0x8IAvSo
+	s5WE5HW6jtfAk/P7ufUumF4hN1Sia1k1D7byfiVefskQHN1TMOELv/FLflIQnWzPgHmV
+	Z7INKpnO8VSTEQLK0yK6o2IvTo4VL74g/ucmuT8dMirjGHYB5j1qGpSOIrHJ/DFyhv2i
+	TlUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=1YqRuH2R8B5aXHMnRryW3QIvT3FJY0yab9JQob5LiBU=;
+	b=qy2F2ckV1OzabsvSWiaMbA+oJ8sN/7DeTRPDnqhAjeUalHb9GsUE1SLmWXvX4tSY3W
+	YSXd5cEVcT8SOAPTw4RTe/AiCqEBjU54Y+KBlL+ns5a6GpXon0suvuG6V/32XJ7cDaOY
+	CESXMluCEqCueLSFGHYLHCsrE9fPyoUNslG2CrILGbK87axRsX3m1wX7usgGZZH5bMn1
+	1Vx2sRT+WjgbKd7BvZa80VGKvFhv+kYw4MX4EJfJx8WKiqkGeTVh9EqVn7obi4xbbSj6
+	0qbDC7Ydq9xekb0qFQUszkDQZcIVh4XWJm1VY7Po5FhTceVmgzqcu/n51y+BgqA+JIpF
+	qmgg==
+X-Gm-Message-State: APjAAAXhmL9Ul9O4fPI+lOgtH18UTRlD9oyl9XguZyKq5C/yp09yTtT3
+	T2DP3eCWH7fPLyTE278WWreyuMsiZNkipo3F5nF3VQ==
+X-Google-Smtp-Source: APXvYqxbXCJIWRxAGOF++ZxmMlrsJVzg/4zwRCmVsk1NGO9j4j9pPGtEhpylmXR1co2ZytMhVkzB6KBr8Lzr0Nlm724=
+X-Received: by 2002:a25:c694:: with SMTP id k142mr18984969ybf.67.1556680616187;
+	Tue, 30 Apr 2019 20:16:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="h31gzZEtNLTqOjlF"
-Content-Disposition: inline
-In-Reply-To: <20190430172842.27369-1-liboxuan@connect.hku.hk>
-User-Agent: Mutt/1.11.3 (2019-02-01)
+References: <20190428110258.86681-1-liboxuan@connect.hku.hk>
+	<a683a29f-ea7b-aaf9-258f-68f4ffcd9b96@redhat.com>
+	<5fe13664-cabc-6fc9-7437-285cc1452944@redhat.com>
+In-Reply-To: <5fe13664-cabc-6fc9-7437-285cc1452944@redhat.com>
+From: "LI, BO XUAN" <liboxuan@connect.hku.hk>
+Date: Wed, 1 May 2019 11:16:20 +0800
+Message-ID: <CALM0=-msXgYqraKzKcxCZgH-+VM7=MUvGLRAjP_r2im_Oj2Spw@mail.gmail.com>
+To: Eric Blake <eblake@redhat.com>,
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000282cc00587caf35e"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-trivial] [PATCH] target/ppc/kvm: Fix trace typo
+X-Received-From: 2607:f8b0:4864:20::c43
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] virtio-mmio: Always compile
+ debug prints
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,81 +69,229 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 May 2019 01:59:37 -0000
+X-List-Received-Date: Wed, 01 May 2019 03:17:04 -0000
 
-
---h31gzZEtNLTqOjlF
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+--000000000000282cc00587caf35e
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, May 01, 2019 at 01:28:42AM +0800, Boxuan Li wrote:
-> Signed-off-by: Boxuan Li <liboxuan@connect.hku.hk>
+Hi Eric and Phil,
 
-Applied to ppc-for-4.1, thanks.
+Thanks for your reviews. I am looking into trace events and I'll send a
+patch v2 soon.
 
-> ---
->  target/ppc/kvm.c        | 2 +-
->  target/ppc/trace-events | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-> index 02e22e2017..1a9caf8f40 100644
-> --- a/target/ppc/kvm.c
-> +++ b/target/ppc/kvm.c
-> @@ -1721,7 +1721,7 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_r=
-un *run)
->              trace_kvm_handle_dcr_write();
->              ret =3D kvmppc_handle_dcr_write(env, run->dcr.dcrn, run->dcr=
-=2Edata);
->          } else {
-> -            trace_kvm_handle_drc_read();
-> +            trace_kvm_handle_dcr_read();
->              ret =3D kvmppc_handle_dcr_read(env, run->dcr.dcrn, &run->dcr=
-=2Edata);
->          }
->          break;
-> diff --git a/target/ppc/trace-events b/target/ppc/trace-events
-> index 7b3cfe11fd..3dc6740706 100644
-> --- a/target/ppc/trace-events
-> +++ b/target/ppc/trace-events
-> @@ -22,7 +22,7 @@ kvm_failed_put_vpa(void) "Warning: Unable to set VPA in=
-formation to KVM"
->  kvm_failed_get_vpa(void) "Warning: Unable to get VPA information from KV=
-M"
->  kvm_injected_interrupt(int irq) "injected interrupt %d"
->  kvm_handle_dcr_write(void) "handle dcr write"
-> -kvm_handle_drc_read(void) "handle dcr read"
-> +kvm_handle_dcr_read(void) "handle dcr read"
->  kvm_handle_halt(void) "handle halt"
->  kvm_handle_papr_hcall(void) "handle PAPR hypercall"
->  kvm_handle_epr(void) "handle epr"
+Eric Blake <eblake@redhat.com> =E6=96=BC 2019=E5=B9=B44=E6=9C=8830=E6=97=A5=
+=E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=8811:03=E5=AF=AB=E9=81=93=EF=BC=9A
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+> On 4/30/19 5:15 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > Hi Li,
+> >
+> > On 4/28/19 1:02 PM, Boxuan Li wrote:
+> >> Wrap printf calls inside debug macros (DPRINTF) in `if` statement, and
+> >> change output to stderr as well. This will ensure that printf function
+> >> will always compile and prevent bitrot of the format strings.
+> >
+> > There is an effort in QEMU to replace the obsolete DPRINTF() macros by
+> > trace events (which prevent format strings bitroting).
+>
+> Trace events are even more powerful than conditional debugs (in that you
+> can turn them on or off at runtime, instead of compile time). But
+> incremental improvements are still better than nothing.
 
---h31gzZEtNLTqOjlF
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
+> >>
+> >> diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
+> >> index 5807aa87fe..693b3c9eb4 100644
+> >> --- a/hw/virtio/virtio-mmio.c
+> >> +++ b/hw/virtio/virtio-mmio.c
+> >> @@ -28,15 +28,14 @@
+> >>  #include "hw/virtio/virtio-bus.h"
+> >>  #include "qemu/error-report.h"
+> >>
+> >> -/* #define DEBUG_VIRTIO_MMIO */
+> >> -
+> >> -#ifdef DEBUG_VIRTIO_MMIO
+>
+The old code let a user pass CFLAGS=3D-DDEBUG_VIRTIO_MMIO to turn things on=
+...
+>
+> >> -
+> >> -#define DPRINTF(fmt, ...) \
+> >> -do { printf("virtio_mmio: " fmt , ## __VA_ARGS__); } while (0)
+> >> -#else
+> >> -#define DPRINTF(fmt, ...) do {} while (0)
+> >> -#endif
+> >> +#define DEBUG_VIRTIO_MMIO 0
+>
+> ...the new code requires a source code edit. This can be considered a
+> step backwards in developer friendliness.  Better might be:
+>
+> #ifdef DEBUG_VIRTIO_MMIO
+> #define DEBUG_VIRTIO_MMIO_PRINT 1
+> #else
+> #define DEBUG_VIRTIO_MMIO_PRINT 0
+> #endif
+>
+> >> +
+> >> +#define DPRINTF(fmt, ...)                                            =
+\
+> >> +    do {                                                             =
+\
+> >> +        if (DEBUG_VIRTIO_MMIO) {                                     =
+\
+>
+> and the corresponding use of DEBUG_VIRTIO_MMIO_PRINT here, so that you
+> preserve the ability to do a command-line CFLAGS=3D-D override, rather
+> than forcing a source code edit.
+>
+>
+Got it. Actually, I learned from
+https://git.qemu.org/?p=3Dqemu.git;a=3Dcommitdiff;h=3Dc691320faa6, which is=
+ used
+as an example of Bitrot prevention part in
+https://wiki.qemu.org/Contribute/BiteSizedTasks. Maybe the wiki page can be
+updated.
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlzI+LwACgkQbDjKyiDZ
-s5Lzqg/+ORBCrLY882RwAMJSx7nE/WQpZbXx7RA3Bl5O9fLrY7QWq1Yy0k3KkNOG
-iF1nUHpl8lTnrtPcvrwPBx0Szj7w9ezOELA5nMTPbpVRQoBIzoxhToIM8mPPUOT8
-2VqtbS3y4anIOjLh/yxVBXJ/BY6d+iTTzORgTBQ5iBS1YPBpCwFLgJHhS4uSJv+2
-PcFQ+MHziZqSKAgaynaz19uj/dmeAntF7ROHCzZgPveS5/eensS4VaUHda+0F1wu
-hohPTFWym9QNLyOUmzskaF5GSl+hSvK25MNZjSqCU6xXouaI3BllYv8JN8+9hqZg
-0HuIjfdIbXeYO2ZJ7jKs7HZmQEbO9HhpageyRenY3GxFaYSlwRQrd5jV7J05nn2I
-xEpwG2feE165+sxBtCe1viuMz366k0Gs65VLXvLDWgQ6J7u1iuehQ6SOoinVSn57
-Q6XrV4tEyc/bIzzMT8skQwZcIlm5wwQ+v7sU1vQtnfCWRdNctwgVGwLYmPISM3LK
-9HHEgw+XBJVx24keTP1g5/leYkZ/ePqPVEHHdE51brJ8zoEQjECUOm0mWJhoVMxf
-xYOrwY5HnXcFJd6V7ZFZmBKQwN1VXB502bPbPG7/6c1kJQwXifr5OfdVg00hC++R
-JWf8XxbB57YEqUrFWlevz3CkQ2Z2/7/VgdyQ43qBdBxvKFH42Gc=
-=ac0E
------END PGP SIGNATURE-----
 
---h31gzZEtNLTqOjlF--
+> >> +            fprintf(stderr, "virtio_mmio: " fmt , ## __VA_ARGS__);   =
+\
+>
+> No space before ,
+>
+> >> +        }                                                            =
+\
+> >> +    } while (0)
+> >>
+> >>  /* QOM macros */
+> >>  /* virtio-mmio-bus */
+> >>
+> >
+> >
+>
+> --
+> Eric Blake, Principal Software Engineer
+> Red Hat, Inc.           +1-919-301-3226
+> Virtualization:  qemu.org | libvirt.org
+>
+>
+Best regards,
+Boxuan Li
+
+--000000000000282cc00587caf35e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Eric and Phil,</div><div><br></div><div>Thanks for=
+ your reviews. I am looking into trace events and I&#39;ll send a patch v2 =
+soon.</div><div><br></div><div>Eric Blake &lt;<a href=3D"mailto:eblake@redh=
+at.com">eblake@redhat.com</a>&gt; =E6=96=BC 2019=E5=B9=B44=E6=9C=8830=E6=97=
+=A5=E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=8811:03=E5=AF=AB=E9=81=93=EF=BC=9A<br=
+></div><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex">On 4/30/19 5:15 AM, Philippe Mathieu-Daud=C3=A9 wrote:<br>
+&gt; Hi Li,<br>
+&gt; <br>
+&gt; On 4/28/19 1:02 PM, Boxuan Li wrote:<br>
+&gt;&gt; Wrap printf calls inside debug macros (DPRINTF) in `if` statement,=
+ and<br>
+&gt;&gt; change output to stderr as well. This will ensure that printf func=
+tion<br>
+&gt;&gt; will always compile and prevent bitrot of the format strings.<br>
+&gt; <br>
+&gt; There is an effort in QEMU to replace the obsolete DPRINTF() macros by=
+<br>
+&gt; trace events (which prevent format strings bitroting).<br>
+<br>
+Trace events are even more powerful than conditional debugs (in that you<br=
+>
+can turn them on or off at runtime, instead of compile time). But<br>
+incremental improvements are still better than nothing.</blockquote><blockq=
+uote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1p=
+x solid rgb(204,204,204);padding-left:1ex">
+<br>
+&gt;&gt;<br>
+&gt;&gt; diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c<br>
+&gt;&gt; index 5807aa87fe..693b3c9eb4 100644<br>
+&gt;&gt; --- a/hw/virtio/virtio-mmio.c<br>
+&gt;&gt; +++ b/hw/virtio/virtio-mmio.c<br>
+&gt;&gt; @@ -28,15 +28,14 @@<br>
+&gt;&gt;=C2=A0 #include &quot;hw/virtio/virtio-bus.h&quot;<br>
+&gt;&gt;=C2=A0 #include &quot;qemu/error-report.h&quot;<br>
+&gt;&gt;=C2=A0 <br>
+&gt;&gt; -/* #define DEBUG_VIRTIO_MMIO */<br>
+&gt;&gt; -<br>
+&gt;&gt; -#ifdef DEBUG_VIRTIO_MMIO=C2=A0<br></blockquote><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex">
+The old code let a user pass CFLAGS=3D-DDEBUG_VIRTIO_MMIO to turn things on=
+...<br>
+<br>
+&gt;&gt; -<br>
+&gt;&gt; -#define DPRINTF(fmt, ...) \<br>
+&gt;&gt; -do { printf(&quot;virtio_mmio: &quot; fmt , ## __VA_ARGS__); } wh=
+ile (0)<br>
+&gt;&gt; -#else<br>
+&gt;&gt; -#define DPRINTF(fmt, ...) do {} while (0)<br>
+&gt;&gt; -#endif<br>
+&gt;&gt; +#define DEBUG_VIRTIO_MMIO 0<br>
+<br>
+...the new code requires a source code edit. This can be considered a<br>
+step backwards in developer friendliness.=C2=A0 Better might be:<br>
+<br>
+#ifdef DEBUG_VIRTIO_MMIO<br>
+#define DEBUG_VIRTIO_MMIO_PRINT 1<br>
+#else<br>
+#define DEBUG_VIRTIO_MMIO_PRINT 0<br>
+#endif<br>
+<br>
+&gt;&gt; +<br>
+&gt;&gt; +#define DPRINTF(fmt, ...)=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 \<br>
+&gt;&gt; +=C2=A0 =C2=A0 do {=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0\<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (DEBUG_VIRTIO_MMIO) {=C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0\<br>
+<br>
+and the corresponding use of DEBUG_VIRTIO_MMIO_PRINT here, so that you<br>
+preserve the ability to do a command-line CFLAGS=3D-D override, rather<br>
+than forcing a source code edit.<br>
+<br></blockquote><div><br></div><div>Got it. Actually, I learned from=C2=A0=
+<a href=3D"https://git.qemu.org/?p=3Dqemu.git;a=3Dcommitdiff;h=3Dc691320faa=
+6">https://git.qemu.org/?p=3Dqemu.git;a=3Dcommitdiff;h=3Dc691320faa6</a>, w=
+hich is used as an example of Bitrot prevention part in=C2=A0<a href=3D"htt=
+ps://wiki.qemu.org/Contribute/BiteSizedTasks">https://wiki.qemu.org/Contrib=
+ute/BiteSizedTasks</a>. Maybe the wiki page can be updated.</div><div>=C2=
+=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 fprintf(stderr, &quot;v=
+irtio_mmio: &quot; fmt , ## __VA_ARGS__);=C2=A0 =C2=A0\<br>
+<br>
+No space before ,<br>
+<br>
+&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 \<br>
+&gt;&gt; +=C2=A0 =C2=A0 } while (0)<br>
+&gt;&gt;=C2=A0 <br>
+&gt;&gt;=C2=A0 /* QOM macros */<br>
+&gt;&gt;=C2=A0 /* virtio-mmio-bus */<br>
+&gt;&gt;<br>
+&gt; <br>
+&gt; <br>
+<br>
+-- <br>
+Eric Blake, Principal Software Engineer<br>
+Red Hat, Inc.=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0+1-919-301-3226<br>
+Virtualization:=C2=A0 <a href=3D"http://qemu.org" rel=3D"noreferrer" target=
+=3D"_blank">qemu.org</a> | <a href=3D"http://libvirt.org" rel=3D"noreferrer=
+" target=3D"_blank">libvirt.org</a><br>
+<br></blockquote><div><br></div><div>Best regards,</div><div>Boxuan Li=C2=
+=A0</div></div></div>
+
+--000000000000282cc00587caf35e--
 
