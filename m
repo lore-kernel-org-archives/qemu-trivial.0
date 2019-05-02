@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMGw0-0003zy-ER
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:56 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36524)
+	id 1hMGw2-00041z-DL
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:58 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36472)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMGvx-0003xC-N4
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:54 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMGvv-0003uG-7w
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMGvw-0003Jn-Hf
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:53 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:48925)
+	(envelope-from <laurent@vivier.eu>) id 1hMGvt-0003Ap-Ud
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:51 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:35597)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMGvr-00037l-RF; Thu, 02 May 2019 14:59:49 -0400
+	id 1hMGvr-00037s-Ux; Thu, 02 May 2019 14:59:49 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1MeTHG-1goJ5D2reG-00aWOX; Thu, 02 May 2019 20:59:07 +0200
+	id 1N18MG-1gbgno05v8-012YBD; Thu, 02 May 2019 20:59:06 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -33,36 +33,37 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Gerd Hoffmann <kraxel@redhat.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>, Eric Blake <eblake@redhat.com>,
-	Stefano Garzarella <sgarzare@redhat.com>
-Date: Thu,  2 May 2019 20:58:35 +0200
-Message-Id: <20190502185835.15185-14-laurent@vivier.eu>
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	KONRAD Frederic <frederic.konrad@adacore.com>
+Date: Thu,  2 May 2019 20:58:34 +0200
+Message-Id: <20190502185835.15185-13-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190502185835.15185-1-laurent@vivier.eu>
 References: <20190502185835.15185-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:johlun5VbqcFFeXrYbcsP3qULCYtVfsxhJ0z39MAyC1YkfTLvrZ
-	7zip1xJrieVu35UEQ+V5YlcsBmCskkF3JMsMbUEdTAJuzmepg0GifQn0+/c9WinCoLhoSSq
-	EWCQLcv1zj+w+ZryTUSgTuJ1yBc4P36BZX3s086YICNmsv15IwxY99KI/kSNuCbNhluUJ3B
-	sV+cw+Lq78WCz1dLoAk2A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:AyS5xkSKc/4=:dYbQfipr5uRL0uioQB0yuJ
-	ZANmGH/T/igME9DASM/EyL+8+YxkZHBExlwzb04daIuzzF0D9aM26oqt1sTZKwZcga6ny84l8
-	Lbd4CkqQmc6whFK+XyKRyFUFSYv/ntw9Tx8NyZDuJMaJvefahYJmuBNFKZgegz2baZVhBlzY7
-	zrrjboUxwhP2DBYp0r27VGnCHGLKUw+hWs7w/tGJqsgSstMvzGuddaElmpKoa7skKAJBqpOF0
-	nnyCCTIk9kSCU4Fe3tXozFQqiKnBQcd4ADjbh6RS7DqG99bDyoXAvbgSmyh+B8TnJxGJU8DTr
-	lYZDl1WSitSfwhJW8VGEG6SFzzyNlcfpaTD73/wXVqasI67xIop+8wnZA6ZW7fX7jehB7USbf
-	5tEMM+thJ/QohdVXOegleBXHLem15kFXbzVI4VcnUc8NbTw3OnUp3TTGMoxzEURd44A2kDd76
-	QalIz6PZW4qkL0EhioROIPeqUs1mgJZJE2GEJhGEmYWbUKmifTaFfE/W+Hzzo23ya/CaV9N1N
-	ZQ3Ip5I0Vtv+jaQfX0ADfDEu72vnFc7WMUU93qoM/g1gzY9PknypJUlZVhWqmdk+c9vBbOAiW
-	eY0RUjw1zXYedBwrUIlxX8rIJo9dd8lQU5VkPKpf9J05SE42xoSiiT4GR5TEnKEs1VYD/a2Ys
-	moi1oxuXJP4kn/mCouAhDvULVNeilE/ZRja/dgdr+jAxawTMSp+elgFy3aa/ZYciRRMR2sDJH
-	UrRgWhoN5wILjoT8xLveez9KfIZFZakRrOqjAk+0/0Z/LKcdcZ0Tjpdk8XQ=
+X-Provags-ID: V03:K1:etxrxyk3g6X+Z5FhH+RnYk0C83SJR5qHK8q7N9KYUZGb8a4tPZb
+	iq/Y3sgd6Vw9JLD+pMqFifrsR+HUK9sk8TkF6KsxSD9uOY+7f7JLvbxtOl8hih1WYRZFOdZ
+	zlGy7X3Y7iQM+IXG/OqMHyjKYXSmfXaLBpVT2d7Gvp60WBgSKXp+WRE8R3ESjDHoa3iEmft
+	m3h5SOrU/lZwHa3Z/fHbQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wWgyZLtQSP8=:i5VQcNGCsivLO7nHSV/6Hw
+	lGumRQn5vy4nlg8RtkOiFj8SOkRRUP7TCfGFL4HPT6JGrzHdpwyLjQR84T2sE59+rf4XPsH5M
+	FbEssvsyoBAXb6auDYZXdgqXNWUkaokgwMAlQjeNX8WlEWvrXOM/D4mtbBkCC0mWAH4kBB2cb
+	OfLMVi1lMqQcuRn8hNB/743Xhplb1SYSR2oi7Nrag1D6A47NLjSkGd0cks2oK2Z2aD4ue+ZVD
+	pooITY9NtF/5zwmJItsHgo3g6zpoznm4Md1ZeVp00l3FRZNTIP5KbLoEKJ/AXD1EhTJr7pERK
+	t0KIkwZ/C50Oz1+OnOO3GeJgm3F8tHcuXBYSpHS6lkDAeN3t17HSeBQXnUS78XnLMN+UvNq19
+	/YaFjr3EAsLac3AxAWV+IBBEg0f89OAqDvHaxG2/vmUkZCipjCA59SLvDRZwwNj7MQpbVzVbS
+	3IJYDze40tXPW5s0YEb4ZTtY8FyzoCwbt+Q+7EecKCiglkyP4kvcogfpdKTOIwRobSCDta6lE
+	Uvc9OukuRxBU+5YR/w8fS1szBZtaPRks/55io4DK3peim/6ZNDVpqhlxEWY0uh427FG5wOT6z
+	JwdFZiz0LXsPAgNWbOEFD8E7IoisaOeb00iJlcBsY2nENXPj6kzRDmx2jD63F2fhW5hD0uA1i
+	qrkwlUK05igTP/vgC1K7hgWak6uVExaT8nNBW2UuAUsr/LSvl5KLKWHBQqem/kBxC5VqfQFE+
+	sjUHdmyQ2q+4knY6NUITACjvMwpDZIVIZ5WjlB7rgNLxHVKeJ7nA3YwtRZ8=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: [Qemu-trivial] [PULL 13/13] sockets: avoid string truncation
- warnings when copying UNIX path
+X-Received-From: 217.72.192.75
+Subject: [Qemu-trivial] [PULL 12/13] hw/sparc/leon3: Allow load of uImage
+ firmwares
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,96 +75,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2019 18:59:54 -0000
+X-List-Received-Date: Thu, 02 May 2019 18:59:52 -0000
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-In file included from /usr/include/string.h:494,
-                 from include/qemu/osdep.h:101,
-                 from util/qemu-sockets.c:18:
-In function ‘strncpy’,
-    inlined from ‘unix_connect_saddr.isra.0’ at util/qemu-sockets.c:925:5:
-/usr/include/bits/string_fortified.h:106:10: warning: ‘__builtin_strncpy’ specified bound 108 equals destination size [-Wstringop-truncation]
-  106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
-      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In function ‘strncpy’,
-    inlined from ‘unix_listen_saddr.isra.0’ at util/qemu-sockets.c:880:5:
-/usr/include/bits/string_fortified.h:106:10: warning: ‘__builtin_strncpy’ specified bound 108 equals destination size [-Wstringop-truncation]
-  106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
-      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Currently the Leon3 machine doesn't allow to load legacy u-boot images:
 
-We are already validating the UNIX socket path length earlier in
-the functions. If we save this string length when we first check
-it, then we can simply use memcpy instead of strcpy later, avoiding
-the gcc truncation warnings.
+  $ qemu-system-sparc -M leon3_generic -d in_asm \
+      -kernel HelenOS-0.6.0-sparc32-leon3.bin
+  qemu-system-sparc: could not load kernel 'HelenOS-0.6.0-sparc32-leon3.bin'
 
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Message-Id: <20190501145052.12579-1-berrange@redhat.com>
+  $ file HelenOS-0.6.0-sparc32-leon3.bin
+  HelenOS-0.6.0-sparc32-leon3.bin: u-boot legacy uImage, HelenOS-0.6.0,\
+    Linux/ARM, OS Kernel Image (Not compressed), 2424229 bytes,\
+    Sun Dec 21 19:18:09 2014,\
+    Load Address: 0x40000000, Entry Point: 0x40000000,\
+    Header CRC: 0x8BCFA236, Data CRC: 0x37AD87DF
+
+Since QEMU can load uImages, add the necessary code,
+so the Leon3 machine can load these images:
+
+  $ qemu-system-sparc -M leon3_generic -d in_asm \
+      -kernel HelenOS-0.6.0-sparc32-leon3.bin
+  ----------------
+  IN:
+  0x40000000:  b  0x400007a8
+  0x40000004:  nop
+  ----------------
+  IN:
+  0x400007a8:  save  %sp, -136, %sp
+  0x400007ac:  call  0x40000020
+  0x400007b0:  sethi  %hi(0x4000b800), %i1
+  ...
+
+Tested with the following firmware:
+http://www.helenos.org/releases/HelenOS-0.6.0-sparc32-leon3.bin
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: KONRAD Frederic <frederic.konrad@adacore.com>
+Tested-by: KONRAD Frederic <frederic.konrad@adacore.com>
+Message-Id: <20190427162922.4207-1-f4bug@amsat.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- util/qemu-sockets.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ hw/sparc/leon3.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-index 970505169000..ba6335e71a95 100644
---- a/util/qemu-sockets.c
-+++ b/util/qemu-sockets.c
-@@ -830,6 +830,7 @@ static int unix_listen_saddr(UnixSocketAddress *saddr,
-     int sock, fd;
-     char *pathbuf = NULL;
-     const char *path;
-+    size_t pathlen;
- 
-     sock = qemu_socket(PF_UNIX, SOCK_STREAM, 0);
-     if (sock < 0) {
-@@ -845,7 +846,8 @@ static int unix_listen_saddr(UnixSocketAddress *saddr,
-         path = pathbuf = g_strdup_printf("%s/qemu-socket-XXXXXX", tmpdir);
-     }
- 
--    if (strlen(path) > sizeof(un.sun_path)) {
-+    pathlen = strlen(path);
-+    if (pathlen > sizeof(un.sun_path)) {
-         error_setg(errp, "UNIX socket path '%s' is too long", path);
-         error_append_hint(errp, "Path must be less than %zu bytes\n",
-                           sizeof(un.sun_path));
-@@ -877,7 +879,7 @@ static int unix_listen_saddr(UnixSocketAddress *saddr,
- 
-     memset(&un, 0, sizeof(un));
-     un.sun_family = AF_UNIX;
--    strncpy(un.sun_path, path, sizeof(un.sun_path));
-+    memcpy(un.sun_path, path, pathlen);
- 
-     if (bind(sock, (struct sockaddr*) &un, sizeof(un)) < 0) {
-         error_setg_errno(errp, errno, "Failed to bind socket to %s", path);
-@@ -901,6 +903,7 @@ static int unix_connect_saddr(UnixSocketAddress *saddr, Error **errp)
- {
-     struct sockaddr_un un;
-     int sock, rc;
-+    size_t pathlen;
- 
-     if (saddr->path == NULL) {
-         error_setg(errp, "unix connect: no path specified");
-@@ -913,7 +916,8 @@ static int unix_connect_saddr(UnixSocketAddress *saddr, Error **errp)
-         return -1;
-     }
- 
--    if (strlen(saddr->path) > sizeof(un.sun_path)) {
-+    pathlen = strlen(saddr->path);
-+    if (pathlen > sizeof(un.sun_path)) {
-         error_setg(errp, "UNIX socket path '%s' is too long", saddr->path);
-         error_append_hint(errp, "Path must be less than %zu bytes\n",
-                           sizeof(un.sun_path));
-@@ -922,7 +926,7 @@ static int unix_connect_saddr(UnixSocketAddress *saddr, Error **errp)
- 
-     memset(&un, 0, sizeof(un));
-     un.sun_family = AF_UNIX;
--    strncpy(un.sun_path, saddr->path, sizeof(un.sun_path));
-+    memcpy(un.sun_path, saddr->path, pathlen);
- 
-     /* connect to peer */
-     do {
+diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
+index 774639af3393..0383b17c298f 100644
+--- a/hw/sparc/leon3.c
++++ b/hw/sparc/leon3.c
+@@ -193,6 +193,10 @@ static void leon3_generic_hw_init(MachineState *machine)
+         kernel_size = load_elf(kernel_filename, NULL, NULL, NULL,
+                                &entry, NULL, NULL,
+                                1 /* big endian */, EM_SPARC, 0, 0);
++        if (kernel_size < 0) {
++            kernel_size = load_uimage(kernel_filename, NULL, &entry,
++                                      NULL, NULL, NULL);
++        }
+         if (kernel_size < 0) {
+             error_report("could not load kernel '%s'", kernel_filename);
+             exit(1);
 -- 
 2.20.1
 
