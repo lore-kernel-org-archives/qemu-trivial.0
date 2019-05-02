@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMGvR-0003Va-AA
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:21 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36131)
+	id 1hMGva-0003bH-4X
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:30 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36196)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMGvO-0003UO-Q3
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:19 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMGvY-0003Zc-7S
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMGvN-0002wX-Sh
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:18 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:48011)
+	(envelope-from <laurent@vivier.eu>) id 1hMGvX-0002zM-9O
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:28 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:60421)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMGvL-0002u6-Ou; Thu, 02 May 2019 14:59:15 -0400
+	id 1hMGvT-0002xl-4y; Thu, 02 May 2019 14:59:23 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1Mrggc-1h1SDp3B6i-00njoP; Thu, 02 May 2019 20:58:46 +0200
+	id 1MCJzI-1hUUNc0Puk-009TeR; Thu, 02 May 2019 20:58:58 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -33,36 +33,36 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Gerd Hoffmann <kraxel@redhat.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>, Stefan Weil <sw@weilnetz.de>,
+	Igor Mammedov <imammedo@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Thu,  2 May 2019 20:58:23 +0200
-Message-Id: <20190502185835.15185-2-laurent@vivier.eu>
+Date: Thu,  2 May 2019 20:58:30 +0200
+Message-Id: <20190502185835.15185-9-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190502185835.15185-1-laurent@vivier.eu>
 References: <20190502185835.15185-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:oR1ObyDzheuCsJYSoWaCS0YXv/NblZRyYkeYRMY0/IHirEPRzri
-	GQXfKFKKG9YdybfH3SpL6eYzYkK9mFXumKxJQTv0q1cQBaqrQMhyktlVL0s6VwPUDSU4MhJ
-	1Jd9SZjuV/y7XvD0yCzxIjxCyvxmFjN//Pt+pbNlYTaUwO8tz5J6hIjOk6/p+wo80kXInYu
-	WfDwKuUR287HlzGOE9AWg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:q4IYYtPfPiw=:Px5YNL/p0EsP4zXvcDDciV
-	AoULs0Vh4aeJ/26Qj0VVpEfiUngffXUGM23tfJS5Oe1ft7K4zfiLCGtZrypNwA2JcT5n4faXC
-	ve3+TZUl9vtbpg3Yb/bekle9nDMRqgMVsh6UwHl4K5TQsI42JalrI/E0OHej/KO9Akkkvl/rE
-	h7EkKsXZiFPmNIgmo4HBmr20/PlLHfKcAsQoUNJnYafwZDiyzNPucyQ49udPFwtBo+qE4cNoa
-	uvaEAcYzrWiTB3U9sgMkTzranaE0yUagJeiYa4g50l83PmK4hxy8X2R75UNzY0EbTGNOWvnM7
-	8lDn3s1OyuOtwpqKsltat+tExVkRnLsL346jgPfShShezryWKzoNff2leq/2rrRyaiIVlSRPF
-	UvldwMAXcqIRFnmB4u5hkTE1oGhUNs7o6WFYRV1SJMGk5iGDPBmD3lLr+WAaV/BHjhGoTqwjZ
-	ASDk9U5HLB19xv5WfKdItVb5CbW4zsGQl9YxGUB42T3Sai0jm996RS4ODAlIJa57fHmMdoP8Z
-	B6wNfZas+mKD7PB072oGRmM1gMe5kf0xqNBCkmUnREIKmtbWNEbbXewinlNq9j2bo5b9kajVN
-	1S2OBtEmvcMXHfZASvyeCavoznqkVfHUQAA9mCngja0w5aof6gslv/oZQtiO4kWhwe5Kz+s3B
-	5drosIK3ErzNOaMcMMiUNqPV3wbca1MS/BPLgUWr5KKIu/1Le/ha22sx1cw7IvlUTvVG6wn6v
-	v2DctFfxZkzhU4JhaSJi3wrqENTBawkKN2J/LTqft6+t2uR9b62wIoff9wo=
+X-Provags-ID: V03:K1:/E9PJ8wbSag3h+mggOHhfRYm3tDrSS9uN8E8fxK4PJ8y8ov7hkq
+	pz6L43/G7pw9ScQ4R824iVA9mGysIYRlFXQPNaGymqb83wGbDrBRRlwxno0+Ml+HAGxot/h
+	3FPenIk+eEoI8tg6Rt7fc4Tt8c9WAdNVRzoDcZwRoEHbHY2QuzjoyHdDj6SMzVIHAz/RS4Q
+	nOEtHLCS5qipvZffAW29Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:xASIYm1eMQk=:77XxnSLJxTNgLzGbLODGDD
+	zLW8dCp11d5R93/sdrFMriQ4M/IynBcyKeO/TitxQAF+qzybjBQo1F8UXdStALaCWPDt0dLh7
+	O5/yO8JhErQqSOzTtBjPknbXdxNab173drG2PQtPnYh45v88gwOEUaM5DDzLjUrWMXL4rKJxr
+	Tn6/ef2bez261jeggziznHOHqD5r6dUrbRky8DRE61RyMPzBN9+Vu15dIjDpbjJ8xrmUl4ukU
+	8QPm6wJLT6CdD0/aF5Kq6MHkMI0+jCA5SGmuNivFJAxFUJ4tHPKkS1du8dP92xAmQkatUUe8U
+	ukaSRioYcNY2+Nfus/4Z2MW+gAHttsnPPFHSbpH2bxY/rrR4njE0tFKcQjgaUx3/7Qm2Sm4mH
+	KR6oOPyylW3DcXTnMULNrcigo6jIdHZ0AZEF6A8/n1iXJH0MzaTh1087w8v8Ugar+eeB80S3M
+	6QqzwhNx5MvkzGVNDgrtHsSF2uIpU2aRqN6YuTGKb0J+Im46RfxEv1pt+rJvylgXli2T2XgfX
+	c7tcI4LW2y6Db4Hox7Dq1bRv+k82VVdTfMqKQAvoI+EVyxtyeLyWyNIpwi1yv1qt/v9y6Kcso
+	XlnHDeQ4bUp1gUgF+QoLo8gPz3Sb+DmGDgUfdSbxUq42INPR7W+P3cxu8DtQBdtzxUmWuKJvR
+	AfO6YI75GR8BSYjyHw5D57pK6QZgC06iVYCg4Nvo/UwRX931JyHey4mvwV6W0bcE6fwIeK4O3
+	c+AtwgXfZtpmK4CshcVVDBW3U3KfjwcYaj0nvpugupROI4aBQn4RLwYarRY=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: [Qemu-trivial] [PULL 01/13] hw/net/pcnet: Use
- qemu_log_mask(GUEST_ERROR) instead of printf
+X-Received-From: 217.72.192.74
+Subject: [Qemu-trivial] [PULL 08/13] Update configure
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,46 +74,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2019 18:59:19 -0000
+X-List-Received-Date: Thu, 02 May 2019 18:59:29 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-Avoid to clutter stdout until explicitly requested
-(with -d guest_errors):
+The last *.aml file was removed in commit 13b1881aacc7e5018773bd545bbaf8d5476699ee.
 
-  $ qemu-system-mips -M malta -m 512 -kernel vmlinux-3.2.0-4-4kc-malta
-  Bad SWSTYLE=0x04
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20190311102712.8572-1-philmd@redhat.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20190409053320.14612-1-sw@weilnetz.de>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/net/pcnet.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ configure | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/net/pcnet.c b/hw/net/pcnet.c
-index d9ba04bdfc62..16683091c939 100644
---- a/hw/net/pcnet.c
-+++ b/hw/net/pcnet.c
-@@ -36,6 +36,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/log.h"
- #include "hw/qdev.h"
- #include "net/net.h"
- #include "net/eth.h"
-@@ -1501,7 +1502,8 @@ static void pcnet_bcr_writew(PCNetState *s, uint32_t rap, uint32_t val)
-             val |= 0x0300;
-             break;
-         default:
--            printf("Bad SWSTYLE=0x%02x\n", val & 0xff);
-+            qemu_log_mask(LOG_GUEST_ERROR, "pcnet: Bad SWSTYLE=0x%02x\n",
-+                          val & 0xff);
-             val = 0x0200;
-             break;
-         }
+diff --git a/configure b/configure
+index a2607afb3408..14f02452f9d4 100755
+--- a/configure
++++ b/configure
+@@ -7880,7 +7880,6 @@ LINKS="$LINKS python"
+ for bios_file in \
+     $source_path/pc-bios/*.bin \
+     $source_path/pc-bios/*.lid \
+-    $source_path/pc-bios/*.aml \
+     $source_path/pc-bios/*.rom \
+     $source_path/pc-bios/*.dtb \
+     $source_path/pc-bios/*.img \
 -- 
 2.20.1
 
