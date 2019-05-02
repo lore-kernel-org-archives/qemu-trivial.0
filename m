@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMGvQ-0003Ui-6Z
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:20 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36117)
+	id 1hMGvR-0003Va-AA
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:21 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36131)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMGvN-0003UF-OD
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:18 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMGvO-0003UO-Q3
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMGvM-0002w7-KL
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:17 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:49287)
+	(envelope-from <laurent@vivier.eu>) id 1hMGvN-0002wX-Sh
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:18 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:48011)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMGvM-0002vi-Bn; Thu, 02 May 2019 14:59:16 -0400
+	id 1hMGvL-0002u6-Ou; Thu, 02 May 2019 14:59:15 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1Mo7eX-1gxKIB0fbX-00pg1W; Thu, 02 May 2019 20:58:44 +0200
+	id 1Mrggc-1h1SDp3B6i-00njoP; Thu, 02 May 2019 20:58:46 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -32,32 +32,37 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Gerd Hoffmann <kraxel@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>
-Date: Thu,  2 May 2019 20:58:22 +0200
-Message-Id: <20190502185835.15185-1-laurent@vivier.eu>
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Thu,  2 May 2019 20:58:23 +0200
+Message-Id: <20190502185835.15185-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190502185835.15185-1-laurent@vivier.eu>
+References: <20190502185835.15185-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ZiwlMP6ohhS4/VzeHCBcCrMlxpj9iMlR9KSuv8WP3iijR7zULNr
-	hB4mlB0Y/hV3yGNc3c/ixi2ivS9a5C4bGGpLzsAoRO18CnJ8PyYjyiIu3bhgJ/F0RKMjyjl
-	vpcqWILOn4+EN8VuXNb4HN0w0zCb0VQvQNXApIZgq1cIDzqn7g4Pj8pMDoMl50gdFJS0lTR
-	AgEvzWyHzG3HrjBKzCYZQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:uk4i9kj0Vs4=:vtHhtuIOSCANDdZdPnV6ae
-	OvwRsZzrSzyLbUYbCdfio9WuJb6DBBNIOc0NdDCgnwZiLWCEyF1wjKRZIIj4BnAhIGgYq13oI
-	yGDB0zeFgFZn47aIdTaWiWOyCkTP/0yLiz6poWWkdteyOvPAPuLq+XjwTeeS96NzBaNzLn7/W
-	zRWUI3km7ooR5nzZwOvCx1uxCqu6kr1ycRGJuCtirFPTN+dpBuc0n5mteVvKaH4Rrx2hfiXvU
-	xfhOnYTv2QhBmsgUbiXGuFjTvd2223ZsEqStvgdV3VheJVdaVjKEru8XQkILz/trt8J2TWfg9
-	FqfX+fwU+22erWqB0o7tNWKOMJ0pswYkpWbxcOFIpx+WfOzRgz7mQOB1n6he3BvUigxtJKrAi
-	E3BSUE9SzDYySFcFoYc7mzRkhaFv4Ck2oZAuu5Fh5E6NqWruu7xqBMArLoEhqiERHnMpyAsxD
-	kQhDXU3QriGkcWfOK95DONpmHdoRwKt69Cc2vFf0hMBWWVg1LlrZjNu224oTbSWdiO47z90QE
-	/Jrw+1GJsH8cAyBcGUHLIX4cwXrFSOcTeUu0fLT2T+Pu7NS9eqARyE4p9QOU62VVAJQ0Gflvg
-	ySsoPEmMj7+zj2Pq0w1c+O5OfTUm7MqXPoqFMrjgSMaxZTbcnY9SjBFpHWTXLd7i+cpK4K7Ap
-	0Ud4G1vGyVwMlz8wp1+10GDWlWbvUcYhFwTjBWhWhYRH9PlwHPx8CNVRwXTM/5HvnBSkHbClR
-	/HnGo2t7vqcX+TvA+YMV4Fnr0nhQjYcr2FV49B2FfrXLU1cRV8+x3bsccsQ=
+X-Provags-ID: V03:K1:oR1ObyDzheuCsJYSoWaCS0YXv/NblZRyYkeYRMY0/IHirEPRzri
+	GQXfKFKKG9YdybfH3SpL6eYzYkK9mFXumKxJQTv0q1cQBaqrQMhyktlVL0s6VwPUDSU4MhJ
+	1Jd9SZjuV/y7XvD0yCzxIjxCyvxmFjN//Pt+pbNlYTaUwO8tz5J6hIjOk6/p+wo80kXInYu
+	WfDwKuUR287HlzGOE9AWg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:q4IYYtPfPiw=:Px5YNL/p0EsP4zXvcDDciV
+	AoULs0Vh4aeJ/26Qj0VVpEfiUngffXUGM23tfJS5Oe1ft7K4zfiLCGtZrypNwA2JcT5n4faXC
+	ve3+TZUl9vtbpg3Yb/bekle9nDMRqgMVsh6UwHl4K5TQsI42JalrI/E0OHej/KO9Akkkvl/rE
+	h7EkKsXZiFPmNIgmo4HBmr20/PlLHfKcAsQoUNJnYafwZDiyzNPucyQ49udPFwtBo+qE4cNoa
+	uvaEAcYzrWiTB3U9sgMkTzranaE0yUagJeiYa4g50l83PmK4hxy8X2R75UNzY0EbTGNOWvnM7
+	8lDn3s1OyuOtwpqKsltat+tExVkRnLsL346jgPfShShezryWKzoNff2leq/2rrRyaiIVlSRPF
+	UvldwMAXcqIRFnmB4u5hkTE1oGhUNs7o6WFYRV1SJMGk5iGDPBmD3lLr+WAaV/BHjhGoTqwjZ
+	ASDk9U5HLB19xv5WfKdItVb5CbW4zsGQl9YxGUB42T3Sai0jm996RS4ODAlIJa57fHmMdoP8Z
+	B6wNfZas+mKD7PB072oGRmM1gMe5kf0xqNBCkmUnREIKmtbWNEbbXewinlNq9j2bo5b9kajVN
+	1S2OBtEmvcMXHfZASvyeCavoznqkVfHUQAA9mCngja0w5aof6gslv/oZQtiO4kWhwe5Kz+s3B
+	5drosIK3ErzNOaMcMMiUNqPV3wbca1MS/BPLgUWr5KKIu/1Le/ha22sx1cw7IvlUTvVG6wn6v
+	v2DctFfxZkzhU4JhaSJi3wrqENTBawkKN2J/LTqft6+t2uR9b62wIoff9wo=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.24
-Subject: [Qemu-trivial] [PULL 00/13] Trivial branch patches
+Subject: [Qemu-trivial] [PULL 01/13] hw/net/pcnet: Use
+ qemu_log_mask(GUEST_ERROR) instead of printf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,79 +74,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2019 18:59:18 -0000
+X-List-Received-Date: Thu, 02 May 2019 18:59:19 -0000
 
-The following changes since commit 8482ff2eb3bb95020eb2f370a9b3ea26511e41df:
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-  Merge remote-tracking branch 'remotes/jnsnow/tags/bitmaps-pull-request' into staging (2019-05-02 12:04:51 +0100)
+Avoid to clutter stdout until explicitly requested
+(with -d guest_errors):
 
-are available in the Git repository at:
+  $ qemu-system-mips -M malta -m 512 -kernel vmlinux-3.2.0-4-4kc-malta
+  Bad SWSTYLE=0x04
 
-  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20190311102712.8572-1-philmd@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/net/pcnet.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-for you to fetch changes up to f7c03a68b814254df414977ff299468fbf0fa1c0:
-
-  sockets: avoid string truncation warnings when copying UNIX path (2019-05-02 20:50:47 +0200)
-
-----------------------------------------------------------------
-Pull request trivial branch 2019-05-02
-
-----------------------------------------------------------------
-
-Aruna Jayasena (1):
-  Header cleanups
-
-Daniel P. Berrangé (1):
-  sockets: avoid string truncation warnings when copying UNIX path
-
-Dr. David Alan Gilbert (1):
-  configure: fix pam test warning
-
-Marc-André Lureau (1):
-  doc: fix the configuration path
-
-Markus Armbruster (1):
-  Clean up includes
-
-Philippe Mathieu-Daudé (3):
-  hw/net/pcnet: Use qemu_log_mask(GUEST_ERROR) instead of printf
-  Makefile: Let the 'clean' rule remove qemu-ga.exe on Windows hosts
-  hw/sparc/leon3: Allow load of uImage firmwares
-
-Stefan Weil (1):
-  Update configure
-
-Thomas Huth (1):
-  net: Print output of "-net nic, model=help" to stdout instead of
-    stderr
-
-Wei Yang (3):
-  CODING_STYLE: specify the indent rule for multiline code
-  CODING_STYLE: indent example code as all others
-  qom: use object_new_with_type in object_new_with_propv
-
- qemu-ga.texi              |  4 ++--
- configure                 |  5 ++---
- Makefile                  | 11 +++++----
- hw/display/ati_int.h      |  1 -
- include/exec/cpu-common.h |  3 ---
- include/hw/cpu/cluster.h  |  1 -
- tests/fp/platform.h       |  1 -
- tests/libqos/qgraph.h     |  4 ----
- contrib/elf2dmp/main.c    |  3 +--
- contrib/elf2dmp/pdb.c     |  3 +--
- hw/display/ati.c          |  1 +
- hw/display/ati_2d.c       |  1 +
- hw/display/ati_dbg.c      |  1 +
- hw/net/pcnet.c            |  4 +++-
- hw/sparc/leon3.c          |  4 ++++
- net/net.c                 |  7 +++---
- qom/object.c              |  2 +-
- tests/qos-test.c          |  2 +-
- util/qemu-sockets.c       | 12 ++++++----
- CODING_STYLE              | 47 +++++++++++++++++++++++++++++++++++----
- 20 files changed, 80 insertions(+), 37 deletions(-)
-
+diff --git a/hw/net/pcnet.c b/hw/net/pcnet.c
+index d9ba04bdfc62..16683091c939 100644
+--- a/hw/net/pcnet.c
++++ b/hw/net/pcnet.c
+@@ -36,6 +36,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/log.h"
+ #include "hw/qdev.h"
+ #include "net/net.h"
+ #include "net/eth.h"
+@@ -1501,7 +1502,8 @@ static void pcnet_bcr_writew(PCNetState *s, uint32_t rap, uint32_t val)
+             val |= 0x0300;
+             break;
+         default:
+-            printf("Bad SWSTYLE=0x%02x\n", val & 0xff);
++            qemu_log_mask(LOG_GUEST_ERROR, "pcnet: Bad SWSTYLE=0x%02x\n",
++                          val & 0xff);
+             val = 0x0200;
+             break;
+         }
 -- 
 2.20.1
 
