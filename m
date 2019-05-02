@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMGw2-00041z-DL
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:58 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36472)
+	id 1hMGw3-000430-88
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:59 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36462)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMGvv-0003uG-7w
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:52 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMGvt-0003Ap-Ud
+	(envelope-from <laurent@vivier.eu>) id 1hMGvu-0003tk-T0
 	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:51 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:35597)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <laurent@vivier.eu>) id 1hMGvt-0003AM-Sw
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:50 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:49225)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMGvr-00037s-Ux; Thu, 02 May 2019 14:59:49 -0400
+	id 1hMGvo-00036L-63; Thu, 02 May 2019 14:59:45 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1N18MG-1gbgno05v8-012YBD; Thu, 02 May 2019 20:59:06 +0200
+	id 1MulVd-1gUrBS2fkB-00rmX0; Thu, 02 May 2019 20:58:49 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -34,36 +34,38 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Gerd Hoffmann <kraxel@redhat.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	KONRAD Frederic <frederic.konrad@adacore.com>
-Date: Thu,  2 May 2019 20:58:34 +0200
-Message-Id: <20190502185835.15185-13-laurent@vivier.eu>
+	Wei Yang <richardw.yang@linux.intel.com>, Eric Blake <eblake@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Stefano Garzarella <sgarzare@redhat.com>
+Date: Thu,  2 May 2019 20:58:25 +0200
+Message-Id: <20190502185835.15185-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190502185835.15185-1-laurent@vivier.eu>
 References: <20190502185835.15185-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:etxrxyk3g6X+Z5FhH+RnYk0C83SJR5qHK8q7N9KYUZGb8a4tPZb
-	iq/Y3sgd6Vw9JLD+pMqFifrsR+HUK9sk8TkF6KsxSD9uOY+7f7JLvbxtOl8hih1WYRZFOdZ
-	zlGy7X3Y7iQM+IXG/OqMHyjKYXSmfXaLBpVT2d7Gvp60WBgSKXp+WRE8R3ESjDHoa3iEmft
-	m3h5SOrU/lZwHa3Z/fHbQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:wWgyZLtQSP8=:i5VQcNGCsivLO7nHSV/6Hw
-	lGumRQn5vy4nlg8RtkOiFj8SOkRRUP7TCfGFL4HPT6JGrzHdpwyLjQR84T2sE59+rf4XPsH5M
-	FbEssvsyoBAXb6auDYZXdgqXNWUkaokgwMAlQjeNX8WlEWvrXOM/D4mtbBkCC0mWAH4kBB2cb
-	OfLMVi1lMqQcuRn8hNB/743Xhplb1SYSR2oi7Nrag1D6A47NLjSkGd0cks2oK2Z2aD4ue+ZVD
-	pooITY9NtF/5zwmJItsHgo3g6zpoznm4Md1ZeVp00l3FRZNTIP5KbLoEKJ/AXD1EhTJr7pERK
-	t0KIkwZ/C50Oz1+OnOO3GeJgm3F8tHcuXBYSpHS6lkDAeN3t17HSeBQXnUS78XnLMN+UvNq19
-	/YaFjr3EAsLac3AxAWV+IBBEg0f89OAqDvHaxG2/vmUkZCipjCA59SLvDRZwwNj7MQpbVzVbS
-	3IJYDze40tXPW5s0YEb4ZTtY8FyzoCwbt+Q+7EecKCiglkyP4kvcogfpdKTOIwRobSCDta6lE
-	Uvc9OukuRxBU+5YR/w8fS1szBZtaPRks/55io4DK3peim/6ZNDVpqhlxEWY0uh427FG5wOT6z
-	JwdFZiz0LXsPAgNWbOEFD8E7IoisaOeb00iJlcBsY2nENXPj6kzRDmx2jD63F2fhW5hD0uA1i
-	qrkwlUK05igTP/vgC1K7hgWak6uVExaT8nNBW2UuAUsr/LSvl5KLKWHBQqem/kBxC5VqfQFE+
-	sjUHdmyQ2q+4knY6NUITACjvMwpDZIVIZ5WjlB7rgNLxHVKeJ7nA3YwtRZ8=
+X-Provags-ID: V03:K1:i8N48vf6fYeQrXRpmliB1WbbQePfY7u70TUSvgRUwugwD4qm+PH
+	LPLdWWdX/TDJimYRhNRBrRbClzUyzlva6Nl7/bjaKkIQE3lof3IU0/YS8P8/+PONtT11Syl
+	puSoX5vr5YsnSU6lmTMBdhipO++qof5PiWsTDF5xbKXHVrB5t6PL8768pcWZCagmNyxF4jP
+	veBVFUtq+nADNt8DlQzdA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:hdmbE3AA+90=:UDPPnU0TVO8VM3YtriMX0F
+	3iK+TZOru1Qh/OtPoueav0a4Mx5ann9iSjpNNAm3TNFdDkqss0y5N4GZdlYS6AI0ooKhNVAc7
+	IjH8QL6RQJxA6/RIk0F+7PlZrgwfeynR+ruM/i2tnvsrosKAFpUc1c4oVPc+oaZ6W/3LcqRLy
+	zy5DBVSisyvv9jhjRJy5rAwydyToYUguJqO5jf3egxy6x2j5VUYEOQGp13VHyC5PE0i21Hk7+
+	Vh9qfdsdVyJK7W4i2CUNPwr+1SOKGu4sWhHhykgQlgDBBCqtfbCal+RPYstygrUNh85fk54qo
+	7+PbXlqm0ppYD79DWuzdBAi2LDEXBAAfpMY5BOMiuNEaWa21fka7a/x/nDrK+n4phKvXTYwtE
+	UtrRQIKK1jdxevERlL9cH2/hxoQYGGGur8cMMFkmvreHn+eEyIgq8BuG84KJydvEvM+XQ3iJU
+	LtW/zrLsb74xTgOVyItUK+iV2tKf2H2cAT5wc0TIzYBEkMLBgVP0uUwjfeEEsKz5CK3Q0LPT8
+	pe3EGWdoNvNme8me/lBiuVkGwAwAXXY+rlNPQS4PmLuWOjSNojy02VRd/pt9v3m6HNcnChG7i
+	wK6MVcbaW3Q2pHzt3SciZ1kD9rrttjiPUbkkxjPz89H3V6CXRpOpRrunjOaT+CiCPjTG69a7W
+	VLc/lM/s/aNfmrlXAcPkfkvrKw0hhXGEhKdGAMmZzMI3OIHGO7CalWb3xxqsORflC2udqUqFJ
+	TgxkZie0JRESHcq+K/AtvwutGNowcFHhRm3obFs5Jvyp5E14DGE6hFaXjMU=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
-Subject: [Qemu-trivial] [PULL 12/13] hw/sparc/leon3: Allow load of uImage
- firmwares
+X-Received-From: 217.72.192.73
+Subject: [Qemu-trivial] [PULL 03/13] CODING_STYLE: indent example code as
+ all others
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,64 +79,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 02 May 2019 18:59:52 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: Wei Yang <richardw.yang@linux.intel.com>
 
-Currently the Leon3 machine doesn't allow to load legacy u-boot images:
+All the example code are indented with four spaces except this one.
 
-  $ qemu-system-sparc -M leon3_generic -d in_asm \
-      -kernel HelenOS-0.6.0-sparc32-leon3.bin
-  qemu-system-sparc: could not load kernel 'HelenOS-0.6.0-sparc32-leon3.bin'
+Fix this by adding four spaces here.
 
-  $ file HelenOS-0.6.0-sparc32-leon3.bin
-  HelenOS-0.6.0-sparc32-leon3.bin: u-boot legacy uImage, HelenOS-0.6.0,\
-    Linux/ARM, OS Kernel Image (Not compressed), 2424229 bytes,\
-    Sun Dec 21 19:18:09 2014,\
-    Load Address: 0x40000000, Entry Point: 0x40000000,\
-    Header CRC: 0x8BCFA236, Data CRC: 0x37AD87DF
-
-Since QEMU can load uImages, add the necessary code,
-so the Leon3 machine can load these images:
-
-  $ qemu-system-sparc -M leon3_generic -d in_asm \
-      -kernel HelenOS-0.6.0-sparc32-leon3.bin
-  ----------------
-  IN:
-  0x40000000:  b  0x400007a8
-  0x40000004:  nop
-  ----------------
-  IN:
-  0x400007a8:  save  %sp, -136, %sp
-  0x400007ac:  call  0x40000020
-  0x400007b0:  sethi  %hi(0x4000b800), %i1
-  ...
-
-Tested with the following firmware:
-http://www.helenos.org/releases/HelenOS-0.6.0-sparc32-leon3.bin
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: KONRAD Frederic <frederic.konrad@adacore.com>
-Tested-by: KONRAD Frederic <frederic.konrad@adacore.com>
-Message-Id: <20190427162922.4207-1-f4bug@amsat.org>
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20190304071631.27567-3-richardw.yang@linux.intel.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/sparc/leon3.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ CODING_STYLE | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
-index 774639af3393..0383b17c298f 100644
---- a/hw/sparc/leon3.c
-+++ b/hw/sparc/leon3.c
-@@ -193,6 +193,10 @@ static void leon3_generic_hw_init(MachineState *machine)
-         kernel_size = load_elf(kernel_filename, NULL, NULL, NULL,
-                                &entry, NULL, NULL,
-                                1 /* big endian */, EM_SPARC, 0, 0);
-+        if (kernel_size < 0) {
-+            kernel_size = load_uimage(kernel_filename, NULL, &entry,
-+                                      NULL, NULL, NULL);
-+        }
-         if (kernel_size < 0) {
-             error_report("could not load kernel '%s'", kernel_filename);
-             exit(1);
+diff --git a/CODING_STYLE b/CODING_STYLE
+index 90321e9c2821..cb8edcbb3692 100644
+--- a/CODING_STYLE
++++ b/CODING_STYLE
+@@ -147,10 +147,10 @@ block to a separate function altogether.
+ When comparing a variable for (in)equality with a constant, list the
+ constant on the right, as in:
+ 
+-if (a == 1) {
+-    /* Reads like: "If a equals 1" */
+-    do_something();
+-}
++    if (a == 1) {
++        /* Reads like: "If a equals 1" */
++        do_something();
++    }
+ 
+ Rationale: Yoda conditions (as in 'if (1 == a)') are awkward to read.
+ Besides, good compilers already warn users when '==' is mis-typed as '=',
 -- 
 2.20.1
 
