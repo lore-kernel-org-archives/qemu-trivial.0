@@ -1,49 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMDLO-0003ri-7t
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 11:09:54 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:54943)
+	id 1hMFU2-0004fe-3l
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 13:26:58 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44634)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1hMDLM-0003q9-8H
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 11:09:53 -0400
+	(envelope-from <alistair23@gmail.com>) id 1hMFTz-0004db-Ir
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 13:26:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <imammedo@redhat.com>) id 1hMDLL-0002cX-Ch
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 11:09:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43166)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
-	id 1hMDLD-0002Uk-0L; Thu, 02 May 2019 11:09:44 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 004D33082E72;
-	Thu,  2 May 2019 15:09:36 +0000 (UTC)
-Received: from Igors-MacBook-Pro (unknown [10.40.205.168])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 7764B174B1;
-	Thu,  2 May 2019 15:09:34 +0000 (UTC)
-Date: Thu, 2 May 2019 17:09:28 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Like Xu <like.xu@linux.intel.com>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org, "Dr.
-	David Alan Gilbert" <dgilbert@redhat.com>, qemu-devel@nongnu.org,
-	like.xu@intel.com, Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20190502170928.001c01df@Igors-MacBook-Pro>
-In-Reply-To: <a765e3ac-45e6-310e-aa66-7036b5717a26@linux.intel.com>
-References: <1553849325-44201-1-git-send-email-like.xu@linux.intel.com>
-	<1553849325-44201-3-git-send-email-like.xu@linux.intel.com>
-	<20190404162555.0a2267ee@redhat.com>
-	<a765e3ac-45e6-310e-aa66-7036b5717a26@linux.intel.com>
+	(envelope-from <alistair23@gmail.com>) id 1hMFTy-0002Av-Kz
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 13:26:55 -0400
+Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:45764)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1hMFTw-00027t-7K; Thu, 02 May 2019 13:26:52 -0400
+Received: by mail-lj1-x241.google.com with SMTP id w12so2896748ljh.12;
+	Thu, 02 May 2019 10:26:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=yL6hsLLHLUnpmjBqOuiRzGyVC4wKuA+peggResZAqGo=;
+	b=EcOB6e8LZhtdCHNCNAVpkun58Fj8wuVNlsngFzQQPXiuL6MoPiV/orOopYyYvRqbUu
+	n/Q9lG5eIVV4NEaHpy1pM+uOA6KFBYxAFzv3TdSBPZq7F61ezyl0H5qbuuO6RA+O4/vw
+	+9LBZB8MBfo1FB+KoRveQw6dbA20++Won9falCmzr/JlF7eLlPAzISAv3ydgMYblHij8
+	oz1tMzRHuROkbC29WS8wiaz+YP7+rqGXvcq4rDI7ix519H9ZtnhEzDRi6FM5KIhw1jZV
+	S9bnjmM2Zcf0xNosFGMDWiferMg9yFSmMZMJdzdrwjn+MDlXpaYDJ+FhqQ6gVPCneLnT
+	H8qA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=yL6hsLLHLUnpmjBqOuiRzGyVC4wKuA+peggResZAqGo=;
+	b=XAEaGPz1QnZRh3xWxxCnIdZOvHkHLt9p0bmrwP3Bpjg1LGLZSVvMtpE99Euzkd0jsI
+	b2ptY7dZAUqqhsFGjrrgBqqMoVXJbFSASalHooZfjuFwxFdZhdItD1g88KommXcrcdKE
+	0O3eX14IBs3oe0qAcd6uUbs+k2b5Ti2i6Y+FNQzWOLIZfb90xQ1e6epVfFje0Zw4T4Zk
+	1ZZ1VVVl0X/ZPbN6DU+dOIDo/iIaFpBClDfDX3nLbBlvDIUzXQHvzz/ZMzWGXX/X4Ahk
+	2Nsi99T5/yS718yUohjngI4OBAnixO64eXQoGhSPq9b8U3Ra4cNMpuRc1sUjDCy5if47
+	jvyw==
+X-Gm-Message-State: APjAAAXkRSwMCkdTX4csScuWtPdxUM1bur0zqVF9ytsRjy+GnrC4Idik
+	xyxgpd8AcxIfpn6L/zp97g8jRUa5tsxwcUTLjfE=
+X-Google-Smtp-Source: APXvYqwYMo9uY/sMg2UrGD3vPvPUQxMTZYsbF16rFUWKvi08P6a9TU9tRi4TZs9IO6UIOiURXv2e4LoIzGpNhRQK2kY=
+X-Received: by 2002:a2e:2b8c:: with SMTP id r12mr2743802ljr.115.1556818010621; 
+	Thu, 02 May 2019 10:26:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Thu, 02 May 2019 15:09:36 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/9] cpu/topology: add
- general support for machine properties
+References: <cover.1556666645.git.alistair.francis@wdc.com>
+	<14aab381eaa678eca875d0b8bd456feb22a21bd8.1556666645.git.alistair.francis@wdc.com>
+	<503a1f5f-7dad-1e4e-e1b1-aaeeeac9739f@vivier.eu>
+	<af19377f-4874-0374-99b6-ee9ab5b0f446@redhat.com>
+In-Reply-To: <af19377f-4874-0374-99b6-ee9ab5b0f446@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 2 May 2019 10:24:53 -0700
+Message-ID: <CAKmqyKP+o6MfqBQfkOmSXvoj-BX43KJD+ayzxZA6t-N-DucD5w@mail.gmail.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: Laurent Vivier <laurent@vivier.eu>,
+	Alistair Francis <Alistair.Francis@wdc.com>, 
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, 
+	"riku.voipio@iki.fi" <riku.voipio@iki.fi>,
+	"kraxel@redhat.com" <kraxel@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 4/5] linux-user/uname:
+ Fix GCC 9 build warnings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,35 +74,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2019 15:09:53 -0000
+X-List-Received-Date: Thu, 02 May 2019 17:26:56 -0000
 
-On Tue, 30 Apr 2019 15:30:31 +0800
-Like Xu <like.xu@linux.intel.com> wrote:
+On Wed, May 1, 2019 at 5:00 AM Eric Blake <eblake@redhat.com> wrote:
+>
+> On 5/1/19 4:40 AM, Laurent Vivier wrote:
+> > On 01/05/2019 01:28, Alistair Francis wrote:
+> >> Fix this warning when building with GCC9 on Fedora 30:
+> >> In function =E2=80=98strncpy=E2=80=99,
+> >>     inlined from =E2=80=98sys_uname=E2=80=99 at /home/alistair/qemu/li=
+nux-user/uname.c:94:3:
+> >> /usr/include/bits/string_fortified.h:106:10: error: =E2=80=98__builtin=
+_strncpy=E2=80=99 output may be truncated copying 64 bytes from a string of=
+ length 64 [-Werror=3Dstringop-truncation]
+> >>   106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos =
+(__dest));
+> >>       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~
+> >>
+> >> Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
 
-> On 2019/4/4 22:25, Igor Mammedov wrote:
-> > On Fri, 29 Mar 2019 16:48:38 +0800
-> > Like Xu <like.xu@linux.intel.com> wrote:
-> > 
+I'm dropping this patch in favour of the other one.
 
-[...]
+Alistair
 
-> 
-> The division of responsibility for this case (refactoring 
-> qemu_init_vcpu) seems to be a poisonous apple.
-> 
-> The prerequisite for setting cpu-> nr_cores / nr_threads from the parent 
-> is that the CPU has been created, so if any process during 
-> initialization needs this topo information, it will use the default 
-> values form cpu_common_initfn() instead of user-configured parameters.
-
-can you point to concrete place that needs access to nr_cores / nr_threads
-before cpu is 'realized'?
-
- 
-> We may not want to repeat those assignment operations using the new 
-> values and what do you think, Igor?
-> 
-> <snipp>
-> 
-
+> >> ---
+> >>  linux-user/uname.c | 2 +-
+> >>  1 file changed, 1 insertion(+), 1 deletion(-)
+> >>
+> >> diff --git a/linux-user/uname.c b/linux-user/uname.c
+> >> index 313b79dbad..2fc6096a5b 100644
+> >> --- a/linux-user/uname.c
+> >> +++ b/linux-user/uname.c
+> >> @@ -73,7 +73,7 @@ const char *cpu_to_uname_machine(void *cpu_env)
+> >>  #define COPY_UTSNAME_FIELD(dest, src) \
+> >>    do { \
+> >>        /* __NEW_UTS_LEN doesn't include terminating null */ \
+> >> -      (void) strncpy((dest), (src), __NEW_UTS_LEN); \
+> >> +      (void) memcpy((dest), (src), MIN(strlen(src), __NEW_UTS_LEN)); =
+\
+> >
+> > You should use MIN(strlen(src) + 1, __NEW_UTS_LEN) to copy the NUL
+> > character if it is present and fit in __NEW_UTS_LEN.
+>
+> No, the NUL character is already present, due to the memset() prior to
+> any use of COPY_UTSNAME_FIELD().  However, the commit message should
+> call that out, as it is not part of the default 3-line diff.
+>
+> --
+> Eric Blake, Principal Software Engineer
+> Red Hat, Inc.           +1-919-301-3226
+> Virtualization:  qemu.org | libvirt.org
+>
 
