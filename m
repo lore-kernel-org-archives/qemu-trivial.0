@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMGvo-0003m3-MC
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:44 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36267)
+	id 1hMGvq-0003o5-7R
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:46 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36300)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMGvm-0003jk-Aa
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:43 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMGvo-0003lK-1n
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMGvk-00034z-1D
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:41 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:51429)
+	(envelope-from <laurent@vivier.eu>) id 1hMGvm-00035u-2V
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:43 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:60361)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMGvi-000345-00; Thu, 02 May 2019 14:59:39 -0400
+	id 1hMGvk-00034c-34; Thu, 02 May 2019 14:59:41 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1MbjBo-1glYC01KHe-00dHYJ; Thu, 02 May 2019 20:59:02 +0200
+	id 1M27ep-1hJmsj1MmP-002Zci; Thu, 02 May 2019 20:58:56 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -33,36 +33,36 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Gerd Hoffmann <kraxel@redhat.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>, Eric Blake <eblake@redhat.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Thu,  2 May 2019 20:58:32 +0200
-Message-Id: <20190502185835.15185-11-laurent@vivier.eu>
+Date: Thu,  2 May 2019 20:58:29 +0200
+Message-Id: <20190502185835.15185-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190502185835.15185-1-laurent@vivier.eu>
 References: <20190502185835.15185-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:emdVrM76Q9ZEwCt3gx+FcPMEVNlFoFdGjNYiDdUfivFiNUywUmo
-	Pdm93O77b65iwG8WV78xD0AOErIyYJek7OJKojo8+TDeBLZsV+aLxMDL9Mm82nDhEeiNsiP
-	ficUJejGofvek/lDs7yvaOygFoMjShIcNFToa+y1fbYIwpeCVef1R8koBbBb2A2B4uEFpjk
-	eWXrl06DqhqnSdM36vljQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:un3pcgT1kvc=:Ee2aYE/fsfQN4vI90Ph2Ut
-	Eq2QcByaDVoRJCK+dRQsZg6yt04d2dgJVNTDnJkz9YIw62S6rM9lK4mbZfjgW3Fq1QLT9x3rs
-	pgiFgXXqhP6fu755rVnzGIAZPrhk7zkgLln8SVU7EjVPY1DXJOWL8BWKRhfZJkDhp6dWyhKFE
-	CkRIMBPtHlFuFg+PEZPtz8hbrO+/1E2ETa2xQ7B795T/EDLEUDyPv1RLma6VR9wlNZW60dvqi
-	uxvTvJUKbXTRcGDX/ZwtCgkImGvcD6sSuB8dPZieg5lGDtmUQ2rUZ2zn4+OZzVncSozbOlYSb
-	2KBdjEYDFrC/WwsLzbLPCWWsMLHaLXfLye33fDocHkOVcL68zd3ZU3ANjDXNSSWt2IsUw1liq
-	ny63RRxP8lMDImZj0Jpa8w+4l6j2HRFm7uSWwCtXf4WLSB88Mfg6aTHB9aXUtywBB2KFrNqkN
-	pSasz/xVu1Erb+emN8YCuttjPvM3mYeIXdn6fs/j/l+4nAofjnRiQwE6MsedaqDFwimszSwcK
-	KQV0eOdfT6xtFBdKYgAJz/1sb0lCvX1NMG34VMY7EptGh7H+Ppt51Yey4mWJ1qmI2Pcg94mxR
-	N29KuI3QoMtLwhd2ULna9VimbM7KOsSlwbYJ2cPRVb4TK85qo4qJuYehRehzIoJPc0ywX+5fX
-	sTMi1lIuqm83hbEUAciuDBhr9wIJx6mwXk65XJVxzvDYCYeZ+LvsoKGoroaT+z2vClaVJaZxO
-	pWzfOaMvLCfijWIGR3Tw0dsXf9Uewqc2cYfjBBRbWDCRTM56IwIBSDQhDqE=
+X-Provags-ID: V03:K1:H2H9MCyc2DmTRCDkaDfCsZnR9i4GjOwsHzexMHM4iJ4N79E0Nrz
+	z7VLPeXiOB609DA8DfrC4ik8IZKVf5d0MSqPEVo8crqjMwQtJ2dLc7KJ4uzbNzIeUxEHYIT
+	aAHqXjt5T1S3dbTLuarmRJGDIhGzLC3tnP9d03slfkvQiN9iO0VHNRy/Dp2ppNvbsxwNH5g
+	lZDDJJAUOP3QsDr/bl+kQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:RDClypQPHAo=:nkd5Cm1c8uUMu35oJ6Scbl
+	qJa7kaujlR7g86WeB4W+yFqLlJaZryPcQi1BWS+UmUXFfkqQehSwzMkrod8cwu/13TqeFPg1l
+	GIFyhRttLWCOV3lVuKu5bunRWXw9HrtnQn68cdqa2Iq6XCrNkDFRLPNYQTHn6uRVl/OyZEqbb
+	zOaIHQ2kL8Ac7cDkNg3GAIrakAsVsWDtmlDD5l3XcFv24fTIY90G+68qopEwHsXCixjqSOnNS
+	b8no5/NLsV8ylr+2REYvuN7x9wNT9LYoA2bRaXT2Fyl9gVAfmGOECDyNA6FPG5h3P+k8aThFr
+	+MWV/cSs9u5P68jOTO5M5KMIek76PyCLvR6GKzYAswksPAqM3ufCjTWGHBU2PjK6vehTY+FJt
+	4w0QqHIwxVaeY3PnqfQA/C4N6ciyo2T//TLhtQ3W9zLQB5X/GMFJyPHbKaD0Jdrd5g3UqgUAq
+	TVWSsznG8kqaETVBsMI7e2jj0uOguqQjC2mkLTOeMSQT19YDs/WBC7cZpzGGb/A9YiZcZP+MA
+	7G1SseI2/Ek/0+QBEP5ousAehPmAuggCof4C6x3eKYvnsKsAmsBonV7SG5kDSt3beQJtPldOB
+	3Q5HkUmXCbBFYvcydFaTB9KX/KsS7eEogR5WVlCK10dSBFKjlp65aZbFNKkosJyEOTQ/Diqaj
+	JgpZowm8HLLBMisbJ0wLVmZXrNTq9PC+gASNUXVjCx4K7p8+zDVBqJNgikmFG/oQ315vCoXCn
+	ZwbZGN+SHB6yLzxNg6yzHMxNNqOVN2hXYNh7Hvi1PZMttsXbjTlyZ1XEauw=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
-Subject: [Qemu-trivial] [PULL 10/13] net: Print output of "-net nic,
- model=help" to stdout instead of stderr
+X-Received-From: 212.227.17.10
+Subject: [Qemu-trivial] [PULL 07/13] configure: fix pam test warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,44 +74,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2019 18:59:43 -0000
+X-List-Received-Date: Thu, 02 May 2019 18:59:45 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
-We are printing all other help output to stdout already (e.g. "-help",
-"-cpu help" and "-machine help" output). So the "-net nic,model=help"
-output should go to stdout instead of stderr, too. And while we're at
-it, also print the NICs line by line, like we do it e.g. with the
-"-cpu help" or "-M help" output, too.
+The pam test generates a warning on Fedora 29 with -O3 compilation
+because the headers declare that the pam_conversation pointer to
+pam_start must be non-NULL.  Change it to use the same 0 initialised
+structure as we actually use in qauthz.
 
-Buglink: https://bugs.launchpad.net/qemu/+bug/1574327
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Acked-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20190423160608.7519-1-thuth@redhat.com>
+Message-Id: <20190404091725.20595-1-dgilbert@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- net/net.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ configure | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/net/net.c b/net/net.c
-index f3a3c5444cc3..2cf5e7646997 100644
---- a/net/net.c
-+++ b/net/net.c
-@@ -837,9 +837,10 @@ int qemu_show_nic_models(const char *arg, const char *const *models)
-         return 0;
-     }
- 
--    fprintf(stderr, "qemu: Supported NIC models: ");
--    for (i = 0 ; models[i]; i++)
--        fprintf(stderr, "%s%c", models[i], models[i+1] ? ',' : '\n');
-+    printf("Supported NIC models:\n");
-+    for (i = 0 ; models[i]; i++) {
-+        printf("%s\n", models[i]);
-+    }
-     return 1;
+diff --git a/configure b/configure
+index 60719ddcc5b0..a2607afb3408 100755
+--- a/configure
++++ b/configure
+@@ -2940,9 +2940,9 @@ if test "$auth_pam" != "no"; then
+ int main(void) {
+    const char *service_name = "qemu";
+    const char *user = "frank";
+-   const struct pam_conv *pam_conv = NULL;
++   const struct pam_conv pam_conv = { 0 };
+    pam_handle_t *pamh = NULL;
+-   pam_start(service_name, user, pam_conv, &pamh);
++   pam_start(service_name, user, &pam_conv, &pamh);
+    return 0;
  }
- 
+ EOF
 -- 
 2.20.1
 
