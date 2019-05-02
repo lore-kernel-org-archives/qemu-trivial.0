@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMGvt-0003sI-Pp
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:49 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36356)
+	id 1hMGvu-0003tb-N2
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:50 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36403)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMGvq-0003ng-0U
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:47 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMGvs-0003qF-1B
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMGvo-00036q-0u
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:45 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:43023)
+	(envelope-from <laurent@vivier.eu>) id 1hMGvp-000386-VR
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:47 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:58473)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMGvf-00033M-UL; Thu, 02 May 2019 14:59:37 -0400
+	id 1hMGvn-000369-Vm; Thu, 02 May 2019 14:59:44 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1MploR-1gyyBN4BJN-00qDii; Thu, 02 May 2019 20:58:53 +0200
+	id 1MNcYX-1h65kT2sN1-00P2Q2; Thu, 02 May 2019 20:58:54 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -34,35 +34,37 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Gerd Hoffmann <kraxel@redhat.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Wei Yang <richardw.yang@linux.intel.com>,
 	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Thu,  2 May 2019 20:58:27 +0200
-Message-Id: <20190502185835.15185-6-laurent@vivier.eu>
+	Stefano Garzarella <sgarzare@redhat.com>
+Date: Thu,  2 May 2019 20:58:28 +0200
+Message-Id: <20190502185835.15185-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190502185835.15185-1-laurent@vivier.eu>
 References: <20190502185835.15185-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:EuFW6QXXDhfSBoO1sW1/UpU4tStfXqkjNUl5Qim3N6zbnDiHy/K
-	SCms3QSP2GMuS5W5tH7CR8vYoLgxir32oTn5V2PGKPe8JMCeVyccG4YTxyH9aaDcRDaXCCO
-	0hq8TtP3h67eyp1cRVOn0pQZOf0H/g+ctEIOwNllIgd1SUgjBJAa62BRkI1Te+5b0GhOLoe
-	D4Rg9TokUeFWw8D300Wsw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:hoDHAHMzAj4=:SWm2wVIyRvcOI1GsCp0Bj0
-	tOywv8KcH+ASk1Fws3BFCQ552mzcict0QUMUFW890qKpJhespBSt8dEo4tUm5F1ysXpnngoy6
-	hDOGLUzz12DZQrBMKVn/vraCcssnVMf9oKZKfryF4y+39E+URCFTH1BeBBHGMhqSyyk0dWr59
-	ZPSQHKEqnXb/SLR0z8/TAv08rfiMvWBXEVPlI/vgc+FmL8Pm8YSlgTeMBYCOgMw+BzWEYE15b
-	D9sO99LpRoSISfUVwXABWGpoF/Xm1L7x1grInXqOt48gu0qsnEHmRR3xyx61CXEd52GYEr3RQ
-	9FZ+edObcxDiml59lDJDtBRUB1mb3a9v3YBvMJO82OXOZAI7cvMfHutu/UVL1wZL3JPjgCnlt
-	V/tDyluGZ0JpDMo8Vq94EoYh5duVCgOdVQBcxGdUdqKZxUBnp1v/TXDN4Zx8ClFR5LtMYiQWg
-	SHAo9fhHh8wHwS8CV0rMAofHCoxPovwCCd/A8Otrf0fgD6jc3GJpaDSfD/s8yCrf4YA13VNJe
-	JifLnjaBU2wwwJN5V9MQGO2AhCQNzPKiuyQvJbFY/BYS0B4at3X0aO6vpPClC1yF69+TM0tvg
-	615Jdn33PiGnOZmzD3dnBpOZuTWcS0pS50dUPMrYAiXew4t8tjBtYYQ+oqQkqeSAgoy0EJt40
-	SDE/Q4Mp1kRNLSHhj3zhQ6QgzgI2hueHU/oCihnbItioVRXBFWmlXxN+ohBC2F6E4mQ8PRKJg
-	ZYzMzNlQ6VvNVJnWw5JGLqNpQSDmGFjeIE0kH69BlJTgPIQ/FNdN8A0rLPQ=
+X-Provags-ID: V03:K1:ur/Wju8uHKEhby/1Bd7kRz2oP+WPX2g2aOyNZSbku383Jx7XDj/
+	2gQN9Bgozg3RGKscB8lIGhiWqY0Wz56RIHJkHCqd7709G70D1H1b03cS4Cx6AUMfcLBk/K8
+	/7mdtp5ZRF6KyP2UKCLoryDWmaFCMr8ukZWOcLCC24aEVF9a8dXTeXTnbaM/XDk9fZKNlzA
+	lcLQz3X7a59XdpN/LMRog==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:rc3vUDtaI6Q=:3NtnypnZDcRZWrct7S1Ek2
+	sbrvRdWLr6jVKAgIt9LI+WgXJ7fZ/+cR4hsvqhS+ZiUEFkLKaFtsS3hWn0BnsZXnuapykTWWQ
+	O0KOqrCQjBYoIjogYG7d/hF009G8/zzNYYyvNNvIuVtXn/HQo6DjrS9KOrkg23glEhHi00I1W
+	ftTLh8NhbnMEpzKP6auQmkf0PydnpovTK8VHDNxltY7vAIulDFaQVRZB54dwXsjG9rw8isHEI
+	DVfHZGDmwKoNJ0Fs0n2sh1dUFjyl2gRIE6G5Q1+K6ca9Xlxzon2bTuANpMVGQY28amTS2fNBy
+	dB2V/g/jl4xADMv7mK7zBjfeIio7ovBngNCFMYZaGhZl6lQ71qVRmcE7WFkfkGbIkGapxmLm4
+	kuEW/kpa1wiLdBl8cSCNWv+GS3bX/G7eOJXxlZzPhWYjKjvKLdebju8Or8RvE+0sHRWFO4zUA
+	KomQa1Xp390Z+Riy1GmM+IGwwIWb3lRr4g+5KTuRHB6SchWLhVFQewOniMMayovD84FfeaUca
+	TXG7pazDNUdZJ8HUyM5sVgfMQg9iJK+aj/I1BDw3VmqnwJRxoSW8huBnQMCPGmBi2RVAZsk2e
+	cWoV90pao3oGw0lZGbc/sal2HIII+fKz52URt0kD56IvbmvZW263PSdnBRxoXcVcf1kxpxffP
+	7MXbcJCqjCr2a7MU83IUnmM9lgXFzIKaYegS5L+Mmo4/vOnx1uHCRReFIJMYs0C4ObRQbBy8F
+	hA1zEhIYKCzZDWGYZEtJwnxTy0/v6x2ymCM4qq5FbZ+fFZjUTDS47bLxWJo=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: [Qemu-trivial] [PULL 05/13] doc: fix the configuration path
+X-Received-From: 217.72.192.75
+Subject: [Qemu-trivial] [PULL 06/13] qom: use object_new_with_type in
+ object_new_with_propv
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,69 +76,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2019 18:59:47 -0000
+X-List-Received-Date: Thu, 02 May 2019 18:59:49 -0000
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+From: Wei Yang <richardw.yang@linux.intel.com>
 
-Use a CONFDIR variable to show the configured sysconf path in the
-generated documentations (html, man pages etc).
+Function object_new_with_propv already get the Type of the object, so we
+could leverage object_new_with_type here.
 
-Related to:
-https://bugzilla.redhat.com/show_bug.cgi?id=1644985
-
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20181126105125.30973-1-marcandre.lureau@redhat.com>
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20190311083234.20841-1-richardw.yang@linux.intel.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qemu-ga.texi | 4 ++--
- Makefile     | 9 ++++++---
- 2 files changed, 8 insertions(+), 5 deletions(-)
+ qom/object.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/qemu-ga.texi b/qemu-ga.texi
-index 4c7a8fd16329..f00ad830f283 100644
---- a/qemu-ga.texi
-+++ b/qemu-ga.texi
-@@ -30,7 +30,7 @@ set user's password
- @end itemize
+diff --git a/qom/object.c b/qom/object.c
+index e3206d6799ee..d3412e7fdca6 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -679,7 +679,7 @@ Object *object_new_with_propv(const char *typename,
+         error_setg(errp, "object type '%s' is abstract", typename);
+         return NULL;
+     }
+-    obj = object_new(typename);
++    obj = object_new_with_type(klass->type);
  
- qemu-ga will read a system configuration file on startup (located at
--@file{/etc/qemu/qemu-ga.conf} by default), then parse remaining
-+@file{@value{CONFDIR}/qemu-ga.conf} by default), then parse remaining
- configuration options on the command line. For the same key, the last
- option wins, but the lists accumulate (see below for configuration
- file format).
-@@ -58,7 +58,7 @@ file format).
-   Enable fsfreeze hook. Accepts an optional argument that specifies
-   script to run on freeze/thaw. Script will be called with
-   'freeze'/'thaw' arguments accordingly (default is
--  @samp{/etc/qemu/fsfreeze-hook}). If using -F with an argument, do
-+  @samp{@value{CONFDIR}/fsfreeze-hook}). If using -F with an argument, do
-   not follow -F with a space (for example:
-   @samp{-F/var/run/fsfreezehook.sh}).
- 
-diff --git a/Makefile b/Makefile
-index 1211e78c91ed..43a7a047b452 100644
---- a/Makefile
-+++ b/Makefile
-@@ -899,11 +899,14 @@ ui/shader.o: $(SRC_PATH)/ui/shader.c \
- MAKEINFO=makeinfo
- MAKEINFOINCLUDES= -I docs -I $(<D) -I $(@D)
- MAKEINFOFLAGS=--no-split --number-sections $(MAKEINFOINCLUDES)
--TEXI2PODFLAGS=$(MAKEINFOINCLUDES) "-DVERSION=$(VERSION)"
-+TEXI2PODFLAGS=$(MAKEINFOINCLUDES) -DVERSION="$(VERSION)" -DCONFDIR="$(qemu_confdir)"
- TEXI2PDFFLAGS=$(if $(V),,--quiet) -I $(SRC_PATH) $(MAKEINFOINCLUDES)
- 
--docs/version.texi: $(SRC_PATH)/VERSION
--	$(call quiet-command,echo "@set VERSION $(VERSION)" > $@,"GEN","$@")
-+docs/version.texi: $(SRC_PATH)/VERSION config-host.mak
-+	$(call quiet-command,(\
-+		echo "@set VERSION $(VERSION)" && \
-+		echo "@set CONFDIR $(qemu_confdir)" \
-+	)> $@,"GEN","$@")
- 
- %.html: %.texi docs/version.texi
- 	$(call quiet-command,LC_ALL=C $(MAKEINFO) $(MAKEINFOFLAGS) --no-headers \
+     if (object_set_propv(obj, &local_err, vargs) < 0) {
+         goto error;
 -- 
 2.20.1
 
