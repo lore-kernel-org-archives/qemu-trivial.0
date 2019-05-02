@@ -1,68 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMFU2-0004fe-3l
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 13:26:58 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44634)
+	id 1hMFr4-0001q8-FJ
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 13:50:46 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:49056)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hMFTz-0004db-Ir
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 13:26:56 -0400
+	(envelope-from <alistair23@gmail.com>) id 1hMFqz-0001o0-MY
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 13:50:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hMFTy-0002Av-Kz
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 13:26:55 -0400
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:45764)
+	(envelope-from <alistair23@gmail.com>) id 1hMFqy-0008T6-IH
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 13:50:41 -0400
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:38963)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hMFTw-00027t-7K; Thu, 02 May 2019 13:26:52 -0400
-Received: by mail-lj1-x241.google.com with SMTP id w12so2896748ljh.12;
-	Thu, 02 May 2019 10:26:52 -0700 (PDT)
+	id 1hMFqv-0008Qz-Te; Thu, 02 May 2019 13:50:38 -0400
+Received: by mail-lf1-x142.google.com with SMTP id d12so2539726lfk.6;
+	Thu, 02 May 2019 10:50:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
 	:cc:content-transfer-encoding;
-	bh=yL6hsLLHLUnpmjBqOuiRzGyVC4wKuA+peggResZAqGo=;
-	b=EcOB6e8LZhtdCHNCNAVpkun58Fj8wuVNlsngFzQQPXiuL6MoPiV/orOopYyYvRqbUu
-	n/Q9lG5eIVV4NEaHpy1pM+uOA6KFBYxAFzv3TdSBPZq7F61ezyl0H5qbuuO6RA+O4/vw
-	+9LBZB8MBfo1FB+KoRveQw6dbA20++Won9falCmzr/JlF7eLlPAzISAv3ydgMYblHij8
-	oz1tMzRHuROkbC29WS8wiaz+YP7+rqGXvcq4rDI7ix519H9ZtnhEzDRi6FM5KIhw1jZV
-	S9bnjmM2Zcf0xNosFGMDWiferMg9yFSmMZMJdzdrwjn+MDlXpaYDJ+FhqQ6gVPCneLnT
-	H8qA==
+	bh=S0HcZYmG35XwM3FB6c/bLgB9OB0qv2fbqqJQy3dSZUY=;
+	b=KxHrW0D+mcunpIG0R4LcBRpuuTZGBpWNzNb2YCaK0a3MUg6vexmGfYmRLfMKpfs8kM
+	tbcouZF4Yryl6z5fpu2nJanExmdH4NbZdo5pJxw+Xj1y3fw59W12CMoKOqpSCp9eQvhu
+	AsPvMd2I9EXLy7FgTsRVv6eKOtW0U2Gn3BT2C0oSD6g9qIEX2t4Qv/K+1miutF9Pe296
+	KnibS7NAzEh7opm7+XSyx+mL6WBPQbaCxpTOJDALw+AOFCb2qcOTU+usM5qv4bYqIHVp
+	WxctIbDjek2p59KMoArIqonVJQ1J0/IKXl6tF6o3T+0BqbL+h2dC0fTEdO5a0iaNm+ds
+	grjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=yL6hsLLHLUnpmjBqOuiRzGyVC4wKuA+peggResZAqGo=;
-	b=XAEaGPz1QnZRh3xWxxCnIdZOvHkHLt9p0bmrwP3Bpjg1LGLZSVvMtpE99Euzkd0jsI
-	b2ptY7dZAUqqhsFGjrrgBqqMoVXJbFSASalHooZfjuFwxFdZhdItD1g88KommXcrcdKE
-	0O3eX14IBs3oe0qAcd6uUbs+k2b5Ti2i6Y+FNQzWOLIZfb90xQ1e6epVfFje0Zw4T4Zk
-	1ZZ1VVVl0X/ZPbN6DU+dOIDo/iIaFpBClDfDX3nLbBlvDIUzXQHvzz/ZMzWGXX/X4Ahk
-	2Nsi99T5/yS718yUohjngI4OBAnixO64eXQoGhSPq9b8U3Ra4cNMpuRc1sUjDCy5if47
-	jvyw==
-X-Gm-Message-State: APjAAAXkRSwMCkdTX4csScuWtPdxUM1bur0zqVF9ytsRjy+GnrC4Idik
-	xyxgpd8AcxIfpn6L/zp97g8jRUa5tsxwcUTLjfE=
-X-Google-Smtp-Source: APXvYqwYMo9uY/sMg2UrGD3vPvPUQxMTZYsbF16rFUWKvi08P6a9TU9tRi4TZs9IO6UIOiURXv2e4LoIzGpNhRQK2kY=
-X-Received: by 2002:a2e:2b8c:: with SMTP id r12mr2743802ljr.115.1556818010621; 
-	Thu, 02 May 2019 10:26:50 -0700 (PDT)
+	bh=S0HcZYmG35XwM3FB6c/bLgB9OB0qv2fbqqJQy3dSZUY=;
+	b=GBwXXsBFxvQZyyOz+gZ8D80xJF0OE2y41uC+tzJIgOiIdTiwV8iVA85aA5Bfj1YqBA
+	1h7HZpyV+P1fnBBPnyXr6SRx23/hJvw8h8eK+Y9X7RWbBUmYt22joB7X4BtbTYU5x7fO
+	PoC5xSGXqWUEHfbspOIFUup0B6nRm+0PBsgZBmk/c5tBM4F+rKNCFu68SpQiDyHf/v9J
+	ACpvmB/KwGXkAQxTXQ6A1kcb3W1MPApTip5fYPi1uP6aTQ3gn8vWBjfo1LUHfhwLohLX
+	yIiUIfFHDHy3N8zDfw5NS2pPhsJcCDYNoBZ0npPsFdZGf/bEpynHT44mf0TfKeos2hzh
+	bp7A==
+X-Gm-Message-State: APjAAAUM3utKNIesjX+HueSc13hS8DHBoEXT+7dLiTjnzrkAGKH3CwUK
+	u8GZiJ0qaTw40YO05kN24yNKHpNHMfkWQO7IXHo=
+X-Google-Smtp-Source: APXvYqxAdEkh3A3wZ910t1wUbE6KLTdNyCxyv81ZypOMgen+94wTJB4yMlUfCWVqFA1Dpwa7iqvTj7e8YRk3C0Q+934=
+X-Received: by 2002:a19:a40f:: with SMTP id q15mr2482037lfc.121.1556819436262; 
+	Thu, 02 May 2019 10:50:36 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1556666645.git.alistair.francis@wdc.com>
-	<14aab381eaa678eca875d0b8bd456feb22a21bd8.1556666645.git.alistair.francis@wdc.com>
-	<503a1f5f-7dad-1e4e-e1b1-aaeeeac9739f@vivier.eu>
-	<af19377f-4874-0374-99b6-ee9ab5b0f446@redhat.com>
-In-Reply-To: <af19377f-4874-0374-99b6-ee9ab5b0f446@redhat.com>
+	<aeb0e851e027a591eaba99c175011158b1012876.1556666645.git.alistair.francis@wdc.com>
+	<20190501094006.GN29808@redhat.com>
+In-Reply-To: <20190501094006.GN29808@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 2 May 2019 10:24:53 -0700
-Message-ID: <CAKmqyKP+o6MfqBQfkOmSXvoj-BX43KJD+ayzxZA6t-N-DucD5w@mail.gmail.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Laurent Vivier <laurent@vivier.eu>,
-	Alistair Francis <Alistair.Francis@wdc.com>, 
+Date: Thu, 2 May 2019 10:48:39 -0700
+Message-ID: <CAKmqyKP_r_Cq7_sZkMovVwfi++nMDCQEkF-XNh95LVW5ONQPYw@mail.gmail.com>
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Alistair Francis <Alistair.Francis@wdc.com>, 
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, 
+	"kraxel@redhat.com" <kraxel@redhat.com>, 
 	"riku.voipio@iki.fi" <riku.voipio@iki.fi>,
-	"kraxel@redhat.com" <kraxel@redhat.com>
+	"laurent@vivier.eu" <laurent@vivier.eu>, 
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::241
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 4/5] linux-user/uname:
- Fix GCC 9 build warnings
+X-Received-From: 2a00:1450:4864:20::142
+Subject: Re: [Qemu-trivial] [PATCH v2 3/5] hw/usb/dev-mtp: Fix GCC 9 build
+ warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,56 +73,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2019 17:26:56 -0000
+X-List-Received-Date: Thu, 02 May 2019 17:50:43 -0000
 
-On Wed, May 1, 2019 at 5:00 AM Eric Blake <eblake@redhat.com> wrote:
+On Wed, May 1, 2019 at 2:40 AM Daniel P. Berrang=C3=A9 <berrange@redhat.com=
+> wrote:
 >
-> On 5/1/19 4:40 AM, Laurent Vivier wrote:
-> > On 01/05/2019 01:28, Alistair Francis wrote:
-> >> Fix this warning when building with GCC9 on Fedora 30:
-> >> In function =E2=80=98strncpy=E2=80=99,
-> >>     inlined from =E2=80=98sys_uname=E2=80=99 at /home/alistair/qemu/li=
-nux-user/uname.c:94:3:
-> >> /usr/include/bits/string_fortified.h:106:10: error: =E2=80=98__builtin=
-_strncpy=E2=80=99 output may be truncated copying 64 bytes from a string of=
- length 64 [-Werror=3Dstringop-truncation]
-> >>   106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos =
-(__dest));
-> >>       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
-~~~~~~~~~
-> >>
-> >> Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+> On Tue, Apr 30, 2019 at 11:28:41PM +0000, Alistair Francis wrote:
+> > Fix this warning with GCC 9 on Fedora 30:
+> > hw/usb/dev-mtp.c:1715:36: error: taking address of packed member of =E2=
+=80=98struct <anonymous>=E2=80=99 may result in an unaligned pointer value =
+[-Werror=3Daddress-of-packed-member]
+> >  1715 |                             dataset->filename);
+> >       |                             ~~~~~~~^~~~~~~~~~
+> >
+> > Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+> > ---
+> >  hw/usb/dev-mtp.c | 13 +++++++++++++
+> >  1 file changed, 13 insertions(+)
+> >
+> > diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
+> > index 99548b012d..8233beacab 100644
+> > --- a/hw/usb/dev-mtp.c
+> > +++ b/hw/usb/dev-mtp.c
+> > @@ -1711,9 +1711,22 @@ static void usb_mtp_write_metadata(MTPState *s, =
+uint64_t dlen)
+> >      assert(!s->write_pending);
+> >      assert(p !=3D NULL);
+> >
+> > +/*
+> > + * We are about to access a packed struct. We are confident that the p=
+ointer
+> > + * address won't be unaligned, so we ignore GCC warnings.
+> > + */
+>
+> The data is mis-aligned as we're accessing an int16 array that
+> is immediately following an int8 field in a packed struct
+>
+> This problem is fixed by the following series which Gerd has in the
+> USB queue:
+>
+>   https://lists.gnu.org/archive/html/qemu-devel/2019-04/msg02524.html
 
-I'm dropping this patch in favour of the other one.
+Great, that fixes the build issues. Dropping this patch.
 
 Alistair
 
-> >> ---
-> >>  linux-user/uname.c | 2 +-
-> >>  1 file changed, 1 insertion(+), 1 deletion(-)
-> >>
-> >> diff --git a/linux-user/uname.c b/linux-user/uname.c
-> >> index 313b79dbad..2fc6096a5b 100644
-> >> --- a/linux-user/uname.c
-> >> +++ b/linux-user/uname.c
-> >> @@ -73,7 +73,7 @@ const char *cpu_to_uname_machine(void *cpu_env)
-> >>  #define COPY_UTSNAME_FIELD(dest, src) \
-> >>    do { \
-> >>        /* __NEW_UTS_LEN doesn't include terminating null */ \
-> >> -      (void) strncpy((dest), (src), __NEW_UTS_LEN); \
-> >> +      (void) memcpy((dest), (src), MIN(strlen(src), __NEW_UTS_LEN)); =
-\
+>
+> > +#if defined(CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE) && QEMU_GNUC_PREREQ(9,=
+ 0)
+> > +#pragma GCC diagnostic push
+> > +#pragma GCC diagnostic ignored "-Waddress-of-packed-member"
+> > +#endif
+> > +
+> >      filename =3D utf16_to_str(MIN(dataset->length, filename_chars),
+> >                              dataset->filename);
 > >
-> > You should use MIN(strlen(src) + 1, __NEW_UTS_LEN) to copy the NUL
-> > character if it is present and fit in __NEW_UTS_LEN.
+> > +#if defined(CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE) && QEMU_GNUC_PREREQ(9,=
+ 0)
+> > +#pragma GCC diagnostic pop
+> > +#endif
+> > +
+> >      if (strchr(filename, '/')) {
+> >          usb_mtp_queue_result(s, RES_PARAMETER_NOT_SUPPORTED, d->trans,
+> >                               0, 0, 0, 0);
 >
-> No, the NUL character is already present, due to the memset() prior to
-> any use of COPY_UTSNAME_FIELD().  However, the commit message should
-> call that out, as it is not part of the default 3-line diff.
->
+> Regards,
+> Daniel
 > --
-> Eric Blake, Principal Software Engineer
-> Red Hat, Inc.           +1-919-301-3226
-> Virtualization:  qemu.org | libvirt.org
->
+> |: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
+ge :|
+> |: https://libvirt.org         -o-            https://fstop138.berrange.c=
+om :|
+> |: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
+ge :|
 
