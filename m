@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMGvq-0003o5-7R
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:46 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:36300)
+	id 1hMGvt-0003rL-1F
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:49 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36353)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMGvo-0003lK-1n
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:45 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMGvq-0003ne-0G
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMGvm-00035u-2V
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:43 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:60361)
+	(envelope-from <laurent@vivier.eu>) id 1hMGvo-00036i-0E
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:45 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:54335)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMGvk-00034c-34; Thu, 02 May 2019 14:59:41 -0400
+	id 1hMGvg-00033d-0R; Thu, 02 May 2019 14:59:37 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1M27ep-1hJmsj1MmP-002Zci; Thu, 02 May 2019 20:58:56 +0200
+	id 1MQ5f4-1h97kp1GwC-00M0HN; Thu, 02 May 2019 20:58:51 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -34,35 +34,33 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Gerd Hoffmann <kraxel@redhat.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Thu,  2 May 2019 20:58:29 +0200
-Message-Id: <20190502185835.15185-8-laurent@vivier.eu>
+	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>
+Date: Thu,  2 May 2019 20:58:26 +0200
+Message-Id: <20190502185835.15185-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190502185835.15185-1-laurent@vivier.eu>
 References: <20190502185835.15185-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:H2H9MCyc2DmTRCDkaDfCsZnR9i4GjOwsHzexMHM4iJ4N79E0Nrz
-	z7VLPeXiOB609DA8DfrC4ik8IZKVf5d0MSqPEVo8crqjMwQtJ2dLc7KJ4uzbNzIeUxEHYIT
-	aAHqXjt5T1S3dbTLuarmRJGDIhGzLC3tnP9d03slfkvQiN9iO0VHNRy/Dp2ppNvbsxwNH5g
-	lZDDJJAUOP3QsDr/bl+kQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:RDClypQPHAo=:nkd5Cm1c8uUMu35oJ6Scbl
-	qJa7kaujlR7g86WeB4W+yFqLlJaZryPcQi1BWS+UmUXFfkqQehSwzMkrod8cwu/13TqeFPg1l
-	GIFyhRttLWCOV3lVuKu5bunRWXw9HrtnQn68cdqa2Iq6XCrNkDFRLPNYQTHn6uRVl/OyZEqbb
-	zOaIHQ2kL8Ac7cDkNg3GAIrakAsVsWDtmlDD5l3XcFv24fTIY90G+68qopEwHsXCixjqSOnNS
-	b8no5/NLsV8ylr+2REYvuN7x9wNT9LYoA2bRaXT2Fyl9gVAfmGOECDyNA6FPG5h3P+k8aThFr
-	+MWV/cSs9u5P68jOTO5M5KMIek76PyCLvR6GKzYAswksPAqM3ufCjTWGHBU2PjK6vehTY+FJt
-	4w0QqHIwxVaeY3PnqfQA/C4N6ciyo2T//TLhtQ3W9zLQB5X/GMFJyPHbKaD0Jdrd5g3UqgUAq
-	TVWSsznG8kqaETVBsMI7e2jj0uOguqQjC2mkLTOeMSQT19YDs/WBC7cZpzGGb/A9YiZcZP+MA
-	7G1SseI2/Ek/0+QBEP5ousAehPmAuggCof4C6x3eKYvnsKsAmsBonV7SG5kDSt3beQJtPldOB
-	3Q5HkUmXCbBFYvcydFaTB9KX/KsS7eEogR5WVlCK10dSBFKjlp65aZbFNKkosJyEOTQ/Diqaj
-	JgpZowm8HLLBMisbJ0wLVmZXrNTq9PC+gASNUXVjCx4K7p8+zDVBqJNgikmFG/oQ315vCoXCn
-	ZwbZGN+SHB6yLzxNg6yzHMxNNqOVN2hXYNh7Hvi1PZMttsXbjTlyZ1XEauw=
+X-Provags-ID: V03:K1:xVhJC29hi64K8Mo9KwgOZ8dLwMyyjb7cCfI8WpjTj+J/1NYL+Qm
+	Voo0cOPqv1EUxVYbM/VRS/Bs7RZpK3EZ/gMsUB9Xs9FPXlvA3pRs6HIds7fO3wjVeuqGDTP
+	Omc5HWKWoTNY1g/NWXMbPA5arCrFvmZTB+nPplx+kdp6xiOKd7NqRMNL5XYEUBAFzHHM3d9
+	gQ0hK8lqpVG4jHiVusFXw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:oSm8HSqA+gY=:XwAhgy9L85c3CyL1iSZyyX
+	jELqtg/xXpnnrP7tz/BHAUkvE8vAW9qMQW2v1pR0mBRwh1stHyIDKGSGEmIkRgeD6wwitjVBm
+	dG0A4asqc4Be4g50w7cZhnBXlTFVXLfY5IbTCbpDT71fCquvcYRFCF9wz2/19AB4vQL9qCIJ7
+	+M2qX6VELbnfO3OgaJ4hMd2z1YJXJ8F4lrQmP/NWUolETkIMEN8Axav1SaW+L/xbnAMcslN/k
+	SKPP3m6o1Zo1XC8qYFFH03lknOQouvxzRC1TpGq2DMy3jU9gsRfriXpTqXFVpJBodsjui2+aB
+	xfotr5NB9Y9Rcm29m78XyqDqHOWLCKFjUI/81ClbJa2M1qxo1DUYixdvLyE03J0kzr4HBWS99
+	weAkaD3yYhxJ7IBjGi6K20doj1OjBq85Fa8d6g5oV1hIvK6EOXRwbixH12LHgg3B+1p3Bqhgb
+	Tau0Em0K26WqaMIBIQsSY4JvUKMIPU5TK9jhL+DH9y6OMd0qfAajYi2Lx2ODObEClbyXHqRlW
+	Qs82h7We6fASG4AxxR8QfW0CoRPNHmEUmd5Zma7nUZwy6jX010wz872KOhF7TggtWYGzX+CTJ
+	x1Vlj9AbEykJDPky2FX0fRU9g/lfxb4Yg2EAdYRFU/YYN7TihCwwwxH7g/kr2aDkvXA+/etk7
+	2EQrc3roOKCej5/qlQKbhC3eHOliLMUo3IrMCmkR+zaE2npgw8+HB+wniP9oYLd8mvlSxk+R6
+	i2hjXVCCZdO/9aAR7HBqshv0lp0zY42mYXdbmA==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.10
-Subject: [Qemu-trivial] [PULL 07/13] configure: fix pam test warning
+X-Received-From: 212.227.17.24
+Subject: [Qemu-trivial] [PULL 04/13] Clean up includes
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,40 +72,183 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2019 18:59:45 -0000
+X-List-Received-Date: Thu, 02 May 2019 18:59:47 -0000
 
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+From: Markus Armbruster <armbru@redhat.com>
 
-The pam test generates a warning on Fedora 29 with -O3 compilation
-because the headers declare that the pam_conversation pointer to
-pam_start must be non-NULL.  Change it to use the same 0 initialised
-structure as we actually use in qauthz.
+Clean up includes so that osdep.h is included first and headers
+which it implies are not included manually.
 
-Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Acked-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20190404091725.20595-1-dgilbert@redhat.com>
+This commit was created with scripts/clean-includes, with the changes
+to the following files manually reverted:
+
+    contrib/libvhost-user/libvhost-user-glib.h
+    contrib/libvhost-user/libvhost-user.c
+    contrib/libvhost-user/libvhost-user.h
+    linux-user/mips64/cpu_loop.c
+    linux-user/mips64/signal.c
+    linux-user/sparc64/cpu_loop.c
+    linux-user/sparc64/signal.c
+    linux-user/x86_64/cpu_loop.c
+    linux-user/x86_64/signal.c
+    slirp/src/*
+    target/s390x/gen-features.c
+    tests/migration/s390x/a-b-bios.c
+    tests/test-rcu-simpleq.c
+    tests/test-rcu-tailq.c
+    tests/uefi-test-tools/UefiTestToolsPkg/BiosTablesTest/BiosTablesTest.c
+
+We're in the process of spinning out slirp/.  tests/uefi-test-tools/
+is guest software.  The remaining reverts are the same as in commit
+b7d89466dde.
+
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20190313162812.8885-1-armbru@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/display/ati_int.h     | 1 -
+ include/hw/cpu/cluster.h | 1 -
+ tests/fp/platform.h      | 1 -
+ tests/libqos/qgraph.h    | 4 ----
+ contrib/elf2dmp/main.c   | 3 +--
+ contrib/elf2dmp/pdb.c    | 3 +--
+ hw/display/ati.c         | 1 +
+ hw/display/ati_2d.c      | 1 +
+ hw/display/ati_dbg.c     | 1 +
+ tests/qos-test.c         | 2 +-
+ 10 files changed, 6 insertions(+), 12 deletions(-)
 
-diff --git a/configure b/configure
-index 60719ddcc5b0..a2607afb3408 100755
---- a/configure
-+++ b/configure
-@@ -2940,9 +2940,9 @@ if test "$auth_pam" != "no"; then
- int main(void) {
-    const char *service_name = "qemu";
-    const char *user = "frank";
--   const struct pam_conv *pam_conv = NULL;
-+   const struct pam_conv pam_conv = { 0 };
-    pam_handle_t *pamh = NULL;
--   pam_start(service_name, user, pam_conv, &pamh);
-+   pam_start(service_name, user, &pam_conv, &pamh);
-    return 0;
- }
- EOF
+diff --git a/hw/display/ati_int.h b/hw/display/ati_int.h
+index a6f3e20e6319..2f426064cf7d 100644
+--- a/hw/display/ati_int.h
++++ b/hw/display/ati_int.h
+@@ -9,7 +9,6 @@
+ #ifndef ATI_INT_H
+ #define ATI_INT_H
+ 
+-#include "qemu/osdep.h"
+ #include "hw/pci/pci.h"
+ #include "vga_int.h"
+ 
+diff --git a/include/hw/cpu/cluster.h b/include/hw/cpu/cluster.h
+index 549c2d31d438..01c1e50cd221 100644
+--- a/include/hw/cpu/cluster.h
++++ b/include/hw/cpu/cluster.h
+@@ -20,7 +20,6 @@
+ #ifndef HW_CPU_CLUSTER_H
+ #define HW_CPU_CLUSTER_H
+ 
+-#include "qemu/osdep.h"
+ #include "hw/qdev.h"
+ 
+ /*
+diff --git a/tests/fp/platform.h b/tests/fp/platform.h
+index c20ba70baa07..f8c423dde3dc 100644
+--- a/tests/fp/platform.h
++++ b/tests/fp/platform.h
+@@ -29,7 +29,6 @@
+  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
+-#include "config-host.h"
+ 
+ #ifndef HOST_WORDS_BIGENDIAN
+ #define LITTLEENDIAN 1
+diff --git a/tests/libqos/qgraph.h b/tests/libqos/qgraph.h
+index ef0c73837a60..e799095b308a 100644
+--- a/tests/libqos/qgraph.h
++++ b/tests/libqos/qgraph.h
+@@ -19,11 +19,7 @@
+ #ifndef QGRAPH_H
+ #define QGRAPH_H
+ 
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <stdbool.h>
+ #include <gmodule.h>
+-#include <glib.h>
+ #include "qemu/module.h"
+ #include "malloc.h"
+ 
+diff --git a/contrib/elf2dmp/main.c b/contrib/elf2dmp/main.c
+index 1bfeb89ba7bd..9a2dbc290214 100644
+--- a/contrib/elf2dmp/main.c
++++ b/contrib/elf2dmp/main.c
+@@ -5,9 +5,8 @@
+  *
+  */
+ 
+-#include <inttypes.h>
+-
+ #include "qemu/osdep.h"
++
+ #include "err.h"
+ #include "addrspace.h"
+ #include "pe.h"
+diff --git a/contrib/elf2dmp/pdb.c b/contrib/elf2dmp/pdb.c
+index 64af20f5842e..a5bd40c99dca 100644
+--- a/contrib/elf2dmp/pdb.c
++++ b/contrib/elf2dmp/pdb.c
+@@ -18,9 +18,8 @@
+  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
+  */
+ 
+-#include <inttypes.h>
+-
+ #include "qemu/osdep.h"
++
+ #include "pdb.h"
+ #include "err.h"
+ 
+diff --git a/hw/display/ati.c b/hw/display/ati.c
+index db409be3c958..75716dd944ec 100644
+--- a/hw/display/ati.c
++++ b/hw/display/ati.c
+@@ -16,6 +16,7 @@
+  * No 3D at all yet (maybe after 2D works, but feel free to improve it)
+  */
+ 
++#include "qemu/osdep.h"
+ #include "ati_int.h"
+ #include "ati_regs.h"
+ #include "vga_regs.h"
+diff --git a/hw/display/ati_2d.c b/hw/display/ati_2d.c
+index bc98ba6eebf6..f31b3c27c7d8 100644
+--- a/hw/display/ati_2d.c
++++ b/hw/display/ati_2d.c
+@@ -7,6 +7,7 @@
+  * This work is licensed under the GNU GPL license version 2 or later.
+  */
+ 
++#include "qemu/osdep.h"
+ #include "ati_int.h"
+ #include "ati_regs.h"
+ #include "qemu/log.h"
+diff --git a/hw/display/ati_dbg.c b/hw/display/ati_dbg.c
+index 1e6c32624e5a..b045f81d0602 100644
+--- a/hw/display/ati_dbg.c
++++ b/hw/display/ati_dbg.c
+@@ -1,3 +1,4 @@
++#include "qemu/osdep.h"
+ #include "ati_int.h"
+ 
+ #ifdef DEBUG_ATI
+diff --git a/tests/qos-test.c b/tests/qos-test.c
+index 6b1145ecccff..ae2fb5de1c9b 100644
+--- a/tests/qos-test.c
++++ b/tests/qos-test.c
+@@ -16,8 +16,8 @@
+  * License along with this library; if not, see <http://www.gnu.org/licenses/>
+  */
+ 
+-#include <getopt.h>
+ #include "qemu/osdep.h"
++#include <getopt.h>
+ #include "libqtest.h"
+ #include "qapi/qmp/qdict.h"
+ #include "qapi/qmp/qbool.h"
 -- 
 2.20.1
 
