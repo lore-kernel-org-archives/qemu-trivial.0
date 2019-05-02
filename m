@@ -1,54 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hM7j1-0002xI-28
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 05:09:55 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:55998)
+	id 1hM7oN-0005EC-3E
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 05:15:27 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56860)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hM7iz-0002xB-5R
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 05:09:54 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hM7oK-0005CL-Cb
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 05:15:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hM7ip-0005fG-6C
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 05:09:46 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:58615)
+	(envelope-from <laurent@vivier.eu>) id 1hM7oI-0008E4-Ml
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 05:15:24 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:49441)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hM7if-0004Nu-QN; Thu, 02 May 2019 05:09:40 -0400
+	id 1hM7oE-0006yX-JB; Thu, 02 May 2019 05:15:20 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
-	1MIMXC-1haNJ8374u-00EKiG; Thu, 02 May 2019 11:07:38 +0200
-To: Thomas Huth <thuth@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20190423160608.7519-1-thuth@redhat.com>
+	(mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+	1MI4gb-1ha5zK2AwJ-00FDFv; Thu, 02 May 2019 11:12:09 +0200
+To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+	<philmd@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+References: <20190427141459.19728-1-philmd@redhat.com>
+	<20190427141459.19728-4-philmd@redhat.com>
+	<bb31dd2a-8cd6-0dfe-a71f-4c47ec3d9687@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <33e682e0-59e3-14f6-8f87-471ceea2657f@vivier.eu>
-Date: Thu, 2 May 2019 11:07:37 +0200
+Message-ID: <65906ce9-944a-0845-5126-2355b1a2f150@vivier.eu>
+Date: Thu, 2 May 2019 11:12:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190423160608.7519-1-thuth@redhat.com>
+In-Reply-To: <bb31dd2a-8cd6-0dfe-a71f-4c47ec3d9687@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:zzQojMkdvaKX1eEHph0pSp1zzUuaMLwtE51B+yWtc6t4ZYR6eFy
-	FG99pSjhjgCEaf5bP0G+hWdRWezuVUORWjbbR3FXpYENbSH+h74WFPP/fGBcGyXa6vCHxuB
-	Ihe1MCaF013aym25T8B4LAZ0rbyixoxIeX26L7PE7uvetoAhpssCu4zcBebFLuP1CgL7PJA
-	pD0PMtsyH5vAsag3OeLIA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:WnEJj1PidDk=:swGZwuySFEfpdxjE+7ZqAE
-	1Vyikr2hizVPa0mW+i2l5ZuUmcOxhe4dLLXCXKzj0wbNlCz628FWH1Xy9vNeujVobB8dTBZMV
-	RChnmmuJZjFCji8bzWU7YbneOy4sSf7dG6dB4gwdPx3iht296kg5dwWuV2v+FrOOCk4c/Y75S
-	3GuvkX223DmfjCHltC9TMpJ76fA0hAEOE4TS0ucdwnNKK5yj+wnD0CX8mZ7fjuo4AwOCHojw3
-	c6L0Nkms6ee4f8OJ1eMe3Bg6gUn4K4eiT42LoeU61vqOEGEGOF93py4K5zw72Ylb+gghkBtot
-	gkhuiAM513RC40z5T69PMyuMQz3NfHQk73N2pHKin69O6ILjqMlC2MXHlQemXb8kRWFA1rFm9
-	MAABoGMuzPGz13+hBTP96XYVpVt8CiJUE7YnaxA+PLRgKSlIBl3Q+sv8woPOlqiCloHy0vWMs
-	wStQpjNA0kwZ0qg/ep8PVAPbfZWDAyYjifKXW/d1V+vkDrTJk6Z3FmEjoZEk9rGtYBUVlfT/r
-	J4hdTrfLALZz8nspHakjUR7NjCnzreaiGB5voSxj59n0TZJ31d550TcAlKeqy+51wpC+Txeda
-	KsyawV4mCXkenYnaRRFF4WyDh0vQ7EowaDy1qHW7oMENAwYD1+SB1mVrdRiNxwROUvOK/ce7P
-	cb1U33ynFKMSk2R+QVWo7z1oEl9SHmU+FE/hpPNO4t+xjYIMKOilG+547uNse01uzQ9YEy3hH
-	4nS8xx3jdeOGeP+FActUBVaVr9HgRugoNYqEZtvWaf/oftUSxjNGci3vFO8=
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:/q9Tv0oureixicFJ1lTQcd4rLDvlZmO/T9rSCmAQVxUOwNHBbn8
+	GcaJVq+sLynv6AneP6qKgebMB6AUcpOVMDIR7w2ae5NRfjlwz3XtkiMorrhDhLXd8N3vAHC
+	t0zY0uUyPN6vG5viaU938/620Ufdh4nCnfbvMo422+ssBuu1VnP3JT6ZZbpcIL04/NFTmKE
+	5NPB7RbA/M/YTikdWgxTw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:FLL73RMG2rE=:BBNdAeIKr6GHiMchOffGql
+	4M7TESNYwCTQdRKCVlK/BvMc7jNooE2cL0PGT5IUPKOzz/kbpu+iFPaCBt54jMVVl43KbMrtx
+	TUiVADpgGFZy0hv5Tp85chW5AyDDrkmZo8iildKYXsvK8E2ueZIgJDTF9kzfRgrXn+eU+f6jc
+	oM/PhzJEvs/yGBzFRWUTPgRqodNaJRsO2COgEtk2accXxdK0RXlr/4CNHW9SKPwynlxEuQI03
+	SA6EBCobyCDUUhi/0MqDInFD7k/zP8I+zvsYdCQSqayuRYvBsqxmrWNjEbQCNfUMLxfvUIB9Q
+	QUs05oqMJZ0yMA3vwtfOCcdkETjZjYclMIxj5GvxE5NVmfOF0GWoVS3SeycSCYLaV1ZH12LMV
+	kEGBJsnXG23hBBcKRavC8fWMq5X3hvxC7VNEayqLtGDmltwixiX69XnxxsiAcLI/P/nV1zFU5
+	zK6nSw70kk6oN2NbwtKh6dNrIN1xesUrwBJVeoOZ72h6fGUKQ4EmenaGwVGNxpR+inGcProIz
+	kr9BzaCpsW7RCaIDVmfJWOEWgiRmG8bv9ZJ/p3OKCSFOL0LZCjPDTSvYgoxHm/gy8KHFKwqjk
+	oy/WMdifgyTbawra6amOpxDfhNVLtiCa8yJ5i1+Ub7mSFEtkdqKz6Ow6DdsM/f3Jy7mn5mDDP
+	+zAsXq/E8zZjXU7f/LsiU3zFWpqY7psg86eXTsUDlpcHzXBTrWCef3FHQyCZl1/rJ+rP8yvSh
+	P4FG4kvLUNcs2/Rhe1mlBXGL6Pb9fogB16UDlzJYHdIpSXfzAvleeHhuUdw=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
-Subject: Re: [Qemu-trivial] [PATCH] net: Print output of "-net nic,
- model=help" to stdout instead of stderr
+X-Received-From: 212.227.17.13
+Subject: Re: [Qemu-trivial] [PATCH 3/3] hw/dma: Do not build the xlnx_dpdma
+ device for the MicroBlaze machines
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,39 +66,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2019 09:09:54 -0000
+X-List-Received-Date: Thu, 02 May 2019 09:15:25 -0000
 
-On 23/04/2019 18:06, Thomas Huth wrote:
-> We are printing all other help output to stdout already (e.g. "-help",
-> "-cpu help" and "-machine help" output). So the "-net nic,model=help"
-> output should go to stdout instead of stderr, too. And while we're at
-> it, also print the NICs line by line, like we do it e.g. with the
-> "-cpu help" or "-M help" output, too.
+On 27/04/2019 16:46, Thomas Huth wrote:
+> On 27/04/2019 16.14, Philippe Mathieu-Daudé wrote:
+>> The xlnx_dpdma device is only used by the ZynqMP AArch64 machine
+>> (not the MicroBlaze PMU). Remove it from the ZynqMP generic objects.
+>> (Note, this entry was duplicated for the AArch64).
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  hw/dma/Makefile.objs | 1 -
+>>  1 file changed, 1 deletion(-)
+>>
+>> diff --git a/hw/dma/Makefile.objs b/hw/dma/Makefile.objs
+>> index 79affecc390..a5b1276f52a 100644
+>> --- a/hw/dma/Makefile.objs
+>> +++ b/hw/dma/Makefile.objs
+>> @@ -8,7 +8,6 @@ common-obj-$(CONFIG_XILINX_AXI) += xilinx_axidma.o
+>>  common-obj-$(CONFIG_ZYNQ_DEVCFG) += xlnx-zynq-devcfg.o
+>>  common-obj-$(CONFIG_ETRAXFS) += etraxfs_dma.o
+>>  common-obj-$(CONFIG_STP2000) += sparc32_dma.o
+>> -obj-$(CONFIG_XLNX_ZYNQMP) += xlnx_dpdma.o
+>>  obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx_dpdma.o
+>>  common-obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx-zdma.o
+>>  
+>>
 > 
-> Buglink: https://bugs.launchpad.net/qemu/+bug/1574327
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  net/net.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
-> 
-> diff --git a/net/net.c b/net/net.c
-> index f3a3c5444c..2cf5e76469 100644
-> --- a/net/net.c
-> +++ b/net/net.c
-> @@ -837,9 +837,10 @@ int qemu_show_nic_models(const char *arg, const char *const *models)
->          return 0;
->      }
->  
-> -    fprintf(stderr, "qemu: Supported NIC models: ");
-> -    for (i = 0 ; models[i]; i++)
-> -        fprintf(stderr, "%s%c", models[i], models[i+1] ? ',' : '\n');
-> +    printf("Supported NIC models:\n");
-> +    for (i = 0 ; models[i]; i++) {
-> +        printf("%s\n", models[i]);
-> +    }
->      return 1;
->  }
->  
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 > 
 
 Applied to my trivial-patches branch.
