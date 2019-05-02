@@ -1,65 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMFvh-0005LL-G8
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 13:55:33 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50488)
+	id 1hMFzw-0006fP-7o
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 13:59:56 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51716)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hMFvf-0005K7-Ey
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 13:55:32 -0400
+	(envelope-from <alistair23@gmail.com>) id 1hMFzt-0006dZ-3s
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 13:59:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hMFve-0003kh-FS
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 13:55:31 -0400
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:39263)
+	(envelope-from <alistair23@gmail.com>) id 1hMFzr-0007H4-U4
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 13:59:53 -0400
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:44119)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hMFva-0003eG-EQ; Thu, 02 May 2019 13:55:28 -0400
-Received: by mail-lj1-x242.google.com with SMTP id q10so3011400ljc.6;
-	Thu, 02 May 2019 10:55:25 -0700 (PDT)
+	id 1hMFzp-0007Eg-DU; Thu, 02 May 2019 13:59:49 -0400
+Received: by mail-lj1-x243.google.com with SMTP id c6so3000386lji.11;
+	Thu, 02 May 2019 10:59:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=KswWI8+pfLiwNgYhU2PtnZM9a908yJwPs/eQ/QEyeAE=;
-	b=jpxnTTgwW1wh9w7QtcBMnM/4xhY6GZLqlgXkbXuPTeLVzkHY4wBJDuP7G9z0fbfAW9
-	gWRflwkyKcWpj/zTgZKjKFmqpysdscuaalmBqsbT6exBXjPQUN5r5foFaYMXXwxzwa0c
-	jOMMs1y6h1lFUiaM8Rvg3odHF8++TD2+CNoTJFfTE9TMH6vC3ugW/b/Td3I6b10BmFof
-	6tSqzGLbwbi/gDmf7yE675rkvkriw4Rtk1/jFL+mHDbAnDj58qeX6mYySuY55IGMK004
-	kur4tUSf4CZAFlGWncRLgY/5ABOwrmLq5vik2AdzL/iWPhKaIjwkftnuwGEUYg5FxUi8
-	SMNw==
+	:cc:content-transfer-encoding;
+	bh=0VjxVOcl1MoOa25ngfW6povCoOwAh1Uz2h223Jsfveg=;
+	b=o+bZE39uTlc3z4OBMv1o/SG4EajNPpCx6SaJRA4Typg0QxWULGDG1zO3RFAC4F53IO
+	/TzkJrLnLsWyszvDXafdFuGQ5JwlmMBsbR699JI5VEekFKptQ3iGLjekpBoDFsjUy1vr
+	O2aoXm/k/MwKFCTI4WEhW4deO8omTvoL/SqG+lqY+1+NTEYE0f9I9oEV+muRZhCJAXNT
+	HPCZw6ZAe4YfQmI0hmVGVdUK2w0Oyt0V9HBySRY6xN6Lar7uzeK4J0LWNuQVNJgVEgHL
+	dtROrS1/vkikVNGsyWhUYEjc6ZZqzd6viNEMdaWAZdHCG3X+Mz89J8fc34bfaFvRRUAd
+	pFvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=KswWI8+pfLiwNgYhU2PtnZM9a908yJwPs/eQ/QEyeAE=;
-	b=eNvrcYMCFI1QGqPJdg6+vhXuMsXtG/N3KrrJF4GWroX1uKIoJMUovd2wmLib8PMA9Y
-	AIkn2w3VsdoSxLFXCS+ZW2cukJrwTiavh/bg7LRBPFWv1HMkE3Pw41JheKGXxyX/h/1Q
-	LNUy5Vo2sikrUc9GwIIj2blcxZ1OnmNkFCGLDIwEJN40P3u64h8P6Oci9Unnpx00BBG6
-	gVEU/I5kW9H6xrJPUY6ZzHPN5Hv+BeCiiZ53RqCwDoHXOAuwbA5oAuprxVIXSqcUQEcW
-	gwElZcIbDeww48GMErEczCrOAugE263Yv+oIPnpvtnYnTlxiZO9IUWoLmJzb9hjpyoB0
-	oZZg==
-X-Gm-Message-State: APjAAAXJdJqAQWjWGtgAtwmbWZoMiGODuunsEStFZv6AeQ5X5ToK/33n
-	o8In31HtmcspB5f/XjgMiAyM5sCDUfv647nlk7Q=
-X-Google-Smtp-Source: APXvYqx1J6WesXbPLWdTf1bqw1Ks9xcHlMSVSqJ+NHDQ3DjwrAsjkCFIqUVA+ny+Xrj16eHM/KzkB94nSvfwjgjOJ64=
-X-Received: by 2002:a2e:2b8c:: with SMTP id r12mr2819123ljr.115.1556819723870; 
-	Thu, 02 May 2019 10:55:23 -0700 (PDT)
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=0VjxVOcl1MoOa25ngfW6povCoOwAh1Uz2h223Jsfveg=;
+	b=XJfkf8HA+ajuBzsevUyHdwTbxmyFVuFAg6dY0MKLe7C2Ow6YHzty+ta419HvfySrRR
+	3Sn2KaOTjksKr6AMxWuqf5asN0VawHQGcuVTePfUJ6Sakc/iyH+cGOBIuTtglIC+YYID
+	NUVjUjk3h9l1WyniB6tYDxLK8+lsgY76HgtveJtGYosPJJJEJX5pboZ7AVMRKhUR+Qdf
+	o649z/odVLb3kPvDgkc8hm0DRhxbYOdUxFBh/GdkRZFVlnL6Thp5TpFj1IeI3OgzURg0
+	n1Jy8uLB6AKgK0Te0oxWTZzGy1Vnt4aEJ+CKx77pZK0l4KJo9fxYw3tHv95MzxFsj5Qb
+	m3CA==
+X-Gm-Message-State: APjAAAVyOuxznE/ROqrBEOKubGFMA4X9XBGbdlHtuQ+7hLfDdkIIZbNn
+	fajbvTondCT/l1VcLjpXcRnop3Nr0Bw/7aivtGM=
+X-Google-Smtp-Source: APXvYqwFP3CS4RNu6cOUDOqvInOQYFk6IRMQv4yb+MZTlzSXwQw7uCRsNUKgw07gJnpA/fwD3hMw5ZUNPJp1HKk1tRk=
+X-Received: by 2002:a2e:2b8c:: with SMTP id r12mr2829457ljr.115.1556819987480; 
+	Thu, 02 May 2019 10:59:47 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1556666645.git.alistair.francis@wdc.com>
-	<ff51c73e3095fa503d14aafece54f8565fe99900.1556666645.git.alistair.francis@wdc.com>
-	<0d585793-20a8-8dc8-98fa-13789113f672@linaro.org>
-In-Reply-To: <0d585793-20a8-8dc8-98fa-13789113f672@linaro.org>
+	<002f222d86322a66276de39cb29796acffe384c1.1556666645.git.alistair.francis@wdc.com>
+	<20190501094140.GO29808@redhat.com>
+In-Reply-To: <20190501094140.GO29808@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 2 May 2019 10:53:26 -0700
-Message-ID: <CAKmqyKNFxWDd1f-87+fODFP363Ttb3AvixLv=EWQNZj38XCjaw@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
+Date: Thu, 2 May 2019 10:57:51 -0700
+Message-ID: <CAKmqyKOOw5A24vmrv7x5z8jiRMRBYdqPL5udbUk4NHEbDTBksQ@mail.gmail.com>
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
 Cc: Alistair Francis <Alistair.Francis@wdc.com>, 
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, 
+	"kraxel@redhat.com" <kraxel@redhat.com>, 
 	"riku.voipio@iki.fi" <riku.voipio@iki.fi>,
 	"laurent@vivier.eu" <laurent@vivier.eu>, 
-	"kraxel@redhat.com" <kraxel@redhat.com>
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 2/5] hw/usb/hcd-xhci: Fix
- GCC 9 build warning
+X-Received-From: 2a00:1450:4864:20::243
+Subject: Re: [Qemu-trivial] [PATCH v2 1/5] util/qemu-sockets: Fix GCC 9
+ build warnings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,24 +73,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2019 17:55:32 -0000
+X-List-Received-Date: Thu, 02 May 2019 17:59:54 -0000
 
-On Wed, May 1, 2019 at 7:12 AM Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Wed, May 1, 2019 at 2:41 AM Daniel P. Berrang=C3=A9 <berrange@redhat.com=
+> wrote:
 >
-> On 4/30/19 4:28 PM, Alistair Francis wrote:
-> >      for (i = 0; i < usbports; i++) {
-> > +        g_assert(i < MAX(MAXPORTS_2, MAXPORTS_3));
+> On Tue, Apr 30, 2019 at 11:28:22PM +0000, Alistair Francis wrote:
+> > Fix this warning when building with GCC9 on Fedora 30:
+> > In function =E2=80=98strncpy=E2=80=99,
+> >     inlined from =E2=80=98unix_connect_saddr.isra.0=E2=80=99 at util/qe=
+mu-sockets.c:925:5:
+> > /usr/include/bits/string_fortified.h:106:10: error: =E2=80=98__builtin_=
+strncpy=E2=80=99 specified bound 108 equals destination size [-Werror=3Dstr=
+ingop-truncation]
+> >   106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (=
+__dest));
+> >       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~
+> > In function =E2=80=98strncpy=E2=80=99,
+> >     inlined from =E2=80=98unix_listen_saddr.isra.0=E2=80=99 at util/qem=
+u-sockets.c:880:5:
+> >
+> > Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+> > ---
+> >  util/qemu-sockets.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+> > index 9705051690..8c3322958f 100644
+> > --- a/util/qemu-sockets.c
+> > +++ b/util/qemu-sockets.c
+> > @@ -829,7 +829,7 @@ static int unix_listen_saddr(UnixSocketAddress *sad=
+dr,
+> >      struct sockaddr_un un;
+> >      int sock, fd;
+> >      char *pathbuf =3D NULL;
+> > -    const char *path;
+> > +    const char *path QEMU_NONSTRING;
+> >
+> >      sock =3D qemu_socket(PF_UNIX, SOCK_STREAM, 0);
+> >      if (sock < 0) {
+> > @@ -922,7 +922,7 @@ static int unix_connect_saddr(UnixSocketAddress *sa=
+ddr, Error **errp)
+> >
+> >      memset(&un, 0, sizeof(un));
+> >      un.sun_family =3D AF_UNIX;
+> > -    strncpy(un.sun_path, saddr->path, sizeof(un.sun_path));
+> > +    memcpy(un.sun_path, saddr->path, MIN(strlen(saddr->path), sizeof(u=
+n.sun_path)));
+> >
+> >      /* connect to peer */
+> >      do {
 >
-> I would hope that it works to move this out of the loop:
+> I think my proposed fix for this file is preferrable as it avoids
+> repeated strlen calls
 >
->   g_assert(usbports <= MAX(MAXPORTS_2, MAXPORTS_3));
+>   https://lists.gnu.org/archive/html/qemu-devel/2019-04/msg02124.html
 
-Yes, that also works. I have updated the patch.
+That's fine with me, I have dropped this patch.
 
 Alistair
 
 >
 >
-> r~
+> Regards,
+> Daniel
+> --
+> |: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
+ge :|
+> |: https://libvirt.org         -o-            https://fstop138.berrange.c=
+om :|
+> |: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
+ge :|
 
