@@ -1,67 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMAZJ-0005Xa-3v
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 08:12:05 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39599)
+	id 1hMDLO-0003ri-7t
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 11:09:54 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:54943)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hMAZG-0005Vj-Lp
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 08:12:03 -0400
+	(envelope-from <imammedo@redhat.com>) id 1hMDLM-0003q9-8H
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 11:09:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hMAZE-0004Wi-M0
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 08:12:02 -0400
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:33226)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hMAZC-0004V6-LV
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 08:11:58 -0400
-Received: by mail-wm1-f66.google.com with SMTP id b188so3381710wmb.0
-	for <qemu-trivial@nongnu.org>; Thu, 02 May 2019 05:11:56 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=8ibxnsl1k7mOd8u+30nF9rFetxOQh/taXjr+yKGxL+g=;
-	b=UuG2UXrLdGRVWDeuGX7ix52qtcJAXofNBpPk3iLu7DgCSyF3v5TE7w053h38g5H8Jc
-	/eGWZDM/QtQfwYBBXRDT/n7v4LYeLZR9NT3c8/CQTKGhdQywUhDcdVk0CnAdTrrxtD3p
-	HLMVKMnjMrEQSayhLzhaKZ7Yrr83uvJT7ahh49Pb9uZ7pHWBr8oRhx1et7zvLWfWCKd3
-	AnaXbwo6wxJPzCwWXv9N6+VyApMX8YQN7/aDcSlCuw/F88GkxqQks0aMEMd6VtAFHgek
-	rWcULNgQHTmq82+YrkHeTtEujr+Ldc7k+j2evYJIhjZNnxDwfEdhF5DUhDes1k1oMI4l
-	PQpg==
-X-Gm-Message-State: APjAAAV6hnkaO9m0mvljDp+7lGjG1YpxuChneLN3G2cgtSwmYsjJ9Gyy
-	PFR7TthUL2HUTkdXk7b8De/2Ug==
-X-Google-Smtp-Source: APXvYqxmUk+djEyljZXX+nNR7cxfgkO+yIsBCzxTKfbhqKtFtcp7A6t9eSjcz+baRZ55jgI5QW/fbA==
-X-Received: by 2002:a1c:a00f:: with SMTP id j15mr2068837wme.148.1556799114983; 
-	Thu, 02 May 2019 05:11:54 -0700 (PDT)
-Received: from [192.168.1.37] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	h81sm13923519wmf.33.2019.05.02.05.11.53
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Thu, 02 May 2019 05:11:54 -0700 (PDT)
-To: Laurent Vivier <laurent@vivier.eu>,
-	Stephen Checkoway <stephen.checkoway@oberlin.edu>,
-	Paolo Bonzini <pbonzini@redhat.com>, QEMU Developers
-	<qemu-devel@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
-	qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
-	<marcandre.lureau@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-References: <20190419154041.77802-1-stephen.checkoway@oberlin.edu>
-	<45e6247e-cddb-2185-7f7b-503be00bd453@vivier.eu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <f61fc519-da75-5b41-21d0-508cf89016f2@redhat.com>
-Date: Thu, 2 May 2019 14:11:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(envelope-from <imammedo@redhat.com>) id 1hMDLL-0002cX-Ch
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 11:09:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43166)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <imammedo@redhat.com>)
+	id 1hMDLD-0002Uk-0L; Thu, 02 May 2019 11:09:44 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 004D33082E72;
+	Thu,  2 May 2019 15:09:36 +0000 (UTC)
+Received: from Igors-MacBook-Pro (unknown [10.40.205.168])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 7764B174B1;
+	Thu,  2 May 2019 15:09:34 +0000 (UTC)
+Date: Thu, 2 May 2019 17:09:28 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Like Xu <like.xu@linux.intel.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org, "Dr.
+	David Alan Gilbert" <dgilbert@redhat.com>, qemu-devel@nongnu.org,
+	like.xu@intel.com, Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <20190502170928.001c01df@Igors-MacBook-Pro>
+In-Reply-To: <a765e3ac-45e6-310e-aa66-7036b5717a26@linux.intel.com>
+References: <1553849325-44201-1-git-send-email-like.xu@linux.intel.com>
+	<1553849325-44201-3-git-send-email-like.xu@linux.intel.com>
+	<20190404162555.0a2267ee@redhat.com>
+	<a765e3ac-45e6-310e-aa66-7036b5717a26@linux.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <45e6247e-cddb-2185-7f7b-503be00bd453@vivier.eu>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.46]);
+	Thu, 02 May 2019 15:09:36 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-trivial] [PATCH v3] hw/char/escc: Lower irq when transmit
- buffer is filled
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 2/9] cpu/topology: add
+ general support for machine properties
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,78 +55,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2019 12:12:04 -0000
+X-List-Received-Date: Thu, 02 May 2019 15:09:53 -0000
 
-On 5/2/19 11:04 AM, Laurent Vivier wrote:
-> On 19/04/2019 17:40, Stephen Checkoway wrote:
->> The SCC/ESCC will briefly stop asserting an interrupt when the
->> transmit FIFO is filled.
->>
->> This code doesn't model the transmit FIFO/shift register so the
->> pending transmit interrupt is never deasserted which means that an
->> edge-triggered interrupt controller will never see the low-to-high
->> transition it needs to raise another interrupt. The practical
->> consequence of this is that guest firmware with an interrupt service
->> routine for the ESCC that does not send all of the data it has
->> immediately will stop sending data if the following sequence of
->> events occurs:
->> 1. Disable processor interrupts
->> 2. Write a character to the ESCC
->> 3. Add additional characters to a buffer which is drained by the ISR
->> 4. Enable processor interrupts
->>
->> In this case, the first character will be sent, the interrupt will
->> fire and the ISR will output the second character. Since the pending
->> transmit interrupt remains asserted, no additional interrupts will
->> ever fire.
->>
->> This behavior was triggered by firmware for an embedded system with a
->> Z85C30 which necessitated this patch.
->>
->> This patch fixes that situation by explicitly lowering the IRQ when a
->> character is written to the buffer and no other interrupts are currently
->> pending.
->>
->> Signed-off-by: Stephen Checkoway <stephen.checkoway@oberlin.edu>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>
->> I added a sentence about the Z85C30 necessitating this to the commit message.
->>
->>  hw/char/escc.c | 7 +++++++
->>  1 file changed, 7 insertions(+)
->>
->> diff --git a/hw/char/escc.c b/hw/char/escc.c
->> index 628f5f81f7..c5b05a63f1 100644
->> --- a/hw/char/escc.c
->> +++ b/hw/char/escc.c
->> @@ -509,6 +509,13 @@ static void escc_mem_write(void *opaque, hwaddr addr,
->>          break;
->>      case SERIAL_DATA:
->>          trace_escc_mem_writeb_data(CHN_C(s), val);
->> +        /*
->> +         * Lower the irq when data is written to the Tx buffer and no other
->> +         * interrupts are currently pending. The irq will be raised again once
->> +         * the Tx buffer becomes empty below.
->> +         */
->> +        s->txint = 0;
->> +        escc_update_irq(s);
->>          s->tx = val;
->>          if (s->wregs[W_TXCTRL2] & TXCTRL2_TXEN) { // tx enabled
->>              if (qemu_chr_fe_backend_connected(&s->chr)) {
->>
-> 
-> 
-> Applied to my trivial-patches branch.
+On Tue, 30 Apr 2019 15:30:31 +0800
+Like Xu <like.xu@linux.intel.com> wrote:
 
-Mark, Artyom, are you OK with this patch?
+> On 2019/4/4 22:25, Igor Mammedov wrote:
+> > On Fri, 29 Mar 2019 16:48:38 +0800
+> > Like Xu <like.xu@linux.intel.com> wrote:
+> > 
+
+[...]
 
 > 
-> Paolo, Marc-André, if you disagree with this change or prefer to take it
-> through one of your queues, I can remove it from mine. Let me know.
+> The division of responsibility for this case (refactoring 
+> qemu_init_vcpu) seems to be a poisonous apple.
 > 
+> The prerequisite for setting cpu-> nr_cores / nr_threads from the parent 
+> is that the CPU has been created, so if any process during 
+> initialization needs this topo information, it will use the default 
+> values form cpu_common_initfn() instead of user-configured parameters.
+
+can you point to concrete place that needs access to nr_cores / nr_threads
+before cpu is 'realized'?
+
+ 
+> We may not want to repeat those assignment operations using the new 
+> values and what do you think, Igor?
 > 
-> Thanks,
-> Laurent
+> <snipp>
 > 
+
 
