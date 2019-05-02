@@ -1,67 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMFzw-0006fP-7o
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 13:59:56 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51716)
+	id 1hMGvQ-0003Ui-6Z
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 14:59:20 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36117)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hMFzt-0006dZ-3s
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 13:59:54 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMGvN-0003UF-OD
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hMFzr-0007H4-U4
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 13:59:53 -0400
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:44119)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hMFzp-0007Eg-DU; Thu, 02 May 2019 13:59:49 -0400
-Received: by mail-lj1-x243.google.com with SMTP id c6so3000386lji.11;
-	Thu, 02 May 2019 10:59:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=0VjxVOcl1MoOa25ngfW6povCoOwAh1Uz2h223Jsfveg=;
-	b=o+bZE39uTlc3z4OBMv1o/SG4EajNPpCx6SaJRA4Typg0QxWULGDG1zO3RFAC4F53IO
-	/TzkJrLnLsWyszvDXafdFuGQ5JwlmMBsbR699JI5VEekFKptQ3iGLjekpBoDFsjUy1vr
-	O2aoXm/k/MwKFCTI4WEhW4deO8omTvoL/SqG+lqY+1+NTEYE0f9I9oEV+muRZhCJAXNT
-	HPCZw6ZAe4YfQmI0hmVGVdUK2w0Oyt0V9HBySRY6xN6Lar7uzeK4J0LWNuQVNJgVEgHL
-	dtROrS1/vkikVNGsyWhUYEjc6ZZqzd6viNEMdaWAZdHCG3X+Mz89J8fc34bfaFvRRUAd
-	pFvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=0VjxVOcl1MoOa25ngfW6povCoOwAh1Uz2h223Jsfveg=;
-	b=XJfkf8HA+ajuBzsevUyHdwTbxmyFVuFAg6dY0MKLe7C2Ow6YHzty+ta419HvfySrRR
-	3Sn2KaOTjksKr6AMxWuqf5asN0VawHQGcuVTePfUJ6Sakc/iyH+cGOBIuTtglIC+YYID
-	NUVjUjk3h9l1WyniB6tYDxLK8+lsgY76HgtveJtGYosPJJJEJX5pboZ7AVMRKhUR+Qdf
-	o649z/odVLb3kPvDgkc8hm0DRhxbYOdUxFBh/GdkRZFVlnL6Thp5TpFj1IeI3OgzURg0
-	n1Jy8uLB6AKgK0Te0oxWTZzGy1Vnt4aEJ+CKx77pZK0l4KJo9fxYw3tHv95MzxFsj5Qb
-	m3CA==
-X-Gm-Message-State: APjAAAVyOuxznE/ROqrBEOKubGFMA4X9XBGbdlHtuQ+7hLfDdkIIZbNn
-	fajbvTondCT/l1VcLjpXcRnop3Nr0Bw/7aivtGM=
-X-Google-Smtp-Source: APXvYqwFP3CS4RNu6cOUDOqvInOQYFk6IRMQv4yb+MZTlzSXwQw7uCRsNUKgw07gJnpA/fwD3hMw5ZUNPJp1HKk1tRk=
-X-Received: by 2002:a2e:2b8c:: with SMTP id r12mr2829457ljr.115.1556819987480; 
-	Thu, 02 May 2019 10:59:47 -0700 (PDT)
+	(envelope-from <laurent@vivier.eu>) id 1hMGvM-0002w7-KL
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 14:59:17 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:49287)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1hMGvM-0002vi-Bn; Thu, 02 May 2019 14:59:16 -0400
+Received: from localhost.localdomain ([78.238.229.36]) by
+	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
+	(Nemesis)
+	id 1Mo7eX-1gxKIB0fbX-00pg1W; Thu, 02 May 2019 20:58:44 +0200
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	Fabien Chouteau <chouteau@adacore.com>,
+	Viktor Prutyanov <viktor.prutyanov@phystech.edu>,
+	Richard Henderson <rth@twiddle.net>, Thomas Huth <thuth@redhat.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Laurent Vivier <laurent@vivier.eu>, Eduardo Habkost <ehabkost@redhat.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>, Jason Wang <jasowang@redhat.com>,
+	qemu-trivial@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Gerd Hoffmann <kraxel@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>
+Date: Thu,  2 May 2019 20:58:22 +0200
+Message-Id: <20190502185835.15185-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <cover.1556666645.git.alistair.francis@wdc.com>
-	<002f222d86322a66276de39cb29796acffe384c1.1556666645.git.alistair.francis@wdc.com>
-	<20190501094140.GO29808@redhat.com>
-In-Reply-To: <20190501094140.GO29808@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 2 May 2019 10:57:51 -0700
-Message-ID: <CAKmqyKOOw5A24vmrv7x5z8jiRMRBYdqPL5udbUk4NHEbDTBksQ@mail.gmail.com>
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Alistair Francis <Alistair.Francis@wdc.com>, 
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"kraxel@redhat.com" <kraxel@redhat.com>, 
-	"riku.voipio@iki.fi" <riku.voipio@iki.fi>,
-	"laurent@vivier.eu" <laurent@vivier.eu>, 
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::243
-Subject: Re: [Qemu-trivial] [PATCH v2 1/5] util/qemu-sockets: Fix GCC 9
- build warnings
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:ZiwlMP6ohhS4/VzeHCBcCrMlxpj9iMlR9KSuv8WP3iijR7zULNr
+	hB4mlB0Y/hV3yGNc3c/ixi2ivS9a5C4bGGpLzsAoRO18CnJ8PyYjyiIu3bhgJ/F0RKMjyjl
+	vpcqWILOn4+EN8VuXNb4HN0w0zCb0VQvQNXApIZgq1cIDzqn7g4Pj8pMDoMl50gdFJS0lTR
+	AgEvzWyHzG3HrjBKzCYZQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:uk4i9kj0Vs4=:vtHhtuIOSCANDdZdPnV6ae
+	OvwRsZzrSzyLbUYbCdfio9WuJb6DBBNIOc0NdDCgnwZiLWCEyF1wjKRZIIj4BnAhIGgYq13oI
+	yGDB0zeFgFZn47aIdTaWiWOyCkTP/0yLiz6poWWkdteyOvPAPuLq+XjwTeeS96NzBaNzLn7/W
+	zRWUI3km7ooR5nzZwOvCx1uxCqu6kr1ycRGJuCtirFPTN+dpBuc0n5mteVvKaH4Rrx2hfiXvU
+	xfhOnYTv2QhBmsgUbiXGuFjTvd2223ZsEqStvgdV3VheJVdaVjKEru8XQkILz/trt8J2TWfg9
+	FqfX+fwU+22erWqB0o7tNWKOMJ0pswYkpWbxcOFIpx+WfOzRgz7mQOB1n6he3BvUigxtJKrAi
+	E3BSUE9SzDYySFcFoYc7mzRkhaFv4Ck2oZAuu5Fh5E6NqWruu7xqBMArLoEhqiERHnMpyAsxD
+	kQhDXU3QriGkcWfOK95DONpmHdoRwKt69Cc2vFf0hMBWWVg1LlrZjNu224oTbSWdiO47z90QE
+	/Jrw+1GJsH8cAyBcGUHLIX4cwXrFSOcTeUu0fLT2T+Pu7NS9eqARyE4p9QOU62VVAJQ0Gflvg
+	ySsoPEmMj7+zj2Pq0w1c+O5OfTUm7MqXPoqFMrjgSMaxZTbcnY9SjBFpHWTXLd7i+cpK4K7Ap
+	0Ud4G1vGyVwMlz8wp1+10GDWlWbvUcYhFwTjBWhWhYRH9PlwHPx8CNVRwXTM/5HvnBSkHbClR
+	/HnGo2t7vqcX+TvA+YMV4Fnr0nhQjYcr2FV49B2FfrXLU1cRV8+x3bsccsQ=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.227.17.24
+Subject: [Qemu-trivial] [PULL 00/13] Trivial branch patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,76 +69,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2019 17:59:54 -0000
+X-List-Received-Date: Thu, 02 May 2019 18:59:18 -0000
 
-On Wed, May 1, 2019 at 2:41 AM Daniel P. Berrang=C3=A9 <berrange@redhat.com=
-> wrote:
->
-> On Tue, Apr 30, 2019 at 11:28:22PM +0000, Alistair Francis wrote:
-> > Fix this warning when building with GCC9 on Fedora 30:
-> > In function =E2=80=98strncpy=E2=80=99,
-> >     inlined from =E2=80=98unix_connect_saddr.isra.0=E2=80=99 at util/qe=
-mu-sockets.c:925:5:
-> > /usr/include/bits/string_fortified.h:106:10: error: =E2=80=98__builtin_=
-strncpy=E2=80=99 specified bound 108 equals destination size [-Werror=3Dstr=
-ingop-truncation]
-> >   106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (=
-__dest));
-> >       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
-~~~~~~~~
-> > In function =E2=80=98strncpy=E2=80=99,
-> >     inlined from =E2=80=98unix_listen_saddr.isra.0=E2=80=99 at util/qem=
-u-sockets.c:880:5:
-> >
-> > Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
-> > ---
-> >  util/qemu-sockets.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-> > index 9705051690..8c3322958f 100644
-> > --- a/util/qemu-sockets.c
-> > +++ b/util/qemu-sockets.c
-> > @@ -829,7 +829,7 @@ static int unix_listen_saddr(UnixSocketAddress *sad=
-dr,
-> >      struct sockaddr_un un;
-> >      int sock, fd;
-> >      char *pathbuf =3D NULL;
-> > -    const char *path;
-> > +    const char *path QEMU_NONSTRING;
-> >
-> >      sock =3D qemu_socket(PF_UNIX, SOCK_STREAM, 0);
-> >      if (sock < 0) {
-> > @@ -922,7 +922,7 @@ static int unix_connect_saddr(UnixSocketAddress *sa=
-ddr, Error **errp)
-> >
-> >      memset(&un, 0, sizeof(un));
-> >      un.sun_family =3D AF_UNIX;
-> > -    strncpy(un.sun_path, saddr->path, sizeof(un.sun_path));
-> > +    memcpy(un.sun_path, saddr->path, MIN(strlen(saddr->path), sizeof(u=
-n.sun_path)));
-> >
-> >      /* connect to peer */
-> >      do {
->
-> I think my proposed fix for this file is preferrable as it avoids
-> repeated strlen calls
->
->   https://lists.gnu.org/archive/html/qemu-devel/2019-04/msg02124.html
+The following changes since commit 8482ff2eb3bb95020eb2f370a9b3ea26511e41df:
 
-That's fine with me, I have dropped this patch.
+  Merge remote-tracking branch 'remotes/jnsnow/tags/bitmaps-pull-request' into staging (2019-05-02 12:04:51 +0100)
 
-Alistair
+are available in the Git repository at:
 
->
->
-> Regards,
-> Daniel
-> --
-> |: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
-ge :|
-> |: https://libvirt.org         -o-            https://fstop138.berrange.c=
-om :|
-> |: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
-ge :|
+  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+
+for you to fetch changes up to f7c03a68b814254df414977ff299468fbf0fa1c0:
+
+  sockets: avoid string truncation warnings when copying UNIX path (2019-05-02 20:50:47 +0200)
+
+----------------------------------------------------------------
+Pull request trivial branch 2019-05-02
+
+----------------------------------------------------------------
+
+Aruna Jayasena (1):
+  Header cleanups
+
+Daniel P. Berrangé (1):
+  sockets: avoid string truncation warnings when copying UNIX path
+
+Dr. David Alan Gilbert (1):
+  configure: fix pam test warning
+
+Marc-André Lureau (1):
+  doc: fix the configuration path
+
+Markus Armbruster (1):
+  Clean up includes
+
+Philippe Mathieu-Daudé (3):
+  hw/net/pcnet: Use qemu_log_mask(GUEST_ERROR) instead of printf
+  Makefile: Let the 'clean' rule remove qemu-ga.exe on Windows hosts
+  hw/sparc/leon3: Allow load of uImage firmwares
+
+Stefan Weil (1):
+  Update configure
+
+Thomas Huth (1):
+  net: Print output of "-net nic, model=help" to stdout instead of
+    stderr
+
+Wei Yang (3):
+  CODING_STYLE: specify the indent rule for multiline code
+  CODING_STYLE: indent example code as all others
+  qom: use object_new_with_type in object_new_with_propv
+
+ qemu-ga.texi              |  4 ++--
+ configure                 |  5 ++---
+ Makefile                  | 11 +++++----
+ hw/display/ati_int.h      |  1 -
+ include/exec/cpu-common.h |  3 ---
+ include/hw/cpu/cluster.h  |  1 -
+ tests/fp/platform.h       |  1 -
+ tests/libqos/qgraph.h     |  4 ----
+ contrib/elf2dmp/main.c    |  3 +--
+ contrib/elf2dmp/pdb.c     |  3 +--
+ hw/display/ati.c          |  1 +
+ hw/display/ati_2d.c       |  1 +
+ hw/display/ati_dbg.c      |  1 +
+ hw/net/pcnet.c            |  4 +++-
+ hw/sparc/leon3.c          |  4 ++++
+ net/net.c                 |  7 +++---
+ qom/object.c              |  2 +-
+ tests/qos-test.c          |  2 +-
+ util/qemu-sockets.c       | 12 ++++++----
+ CODING_STYLE              | 47 +++++++++++++++++++++++++++++++++++----
+ 20 files changed, 80 insertions(+), 37 deletions(-)
+
+-- 
+2.20.1
+
 
