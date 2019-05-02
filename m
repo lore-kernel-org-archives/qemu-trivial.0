@@ -1,57 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hM7qr-00077r-JE
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 05:18:01 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57590)
+	id 1hMAZJ-0005Xa-3v
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 08:12:05 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:39599)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hM7qo-00075y-La
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 05:17:59 -0400
+	(envelope-from <philmd@redhat.com>) id 1hMAZG-0005Vj-Lp
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 08:12:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hM7qk-0001QZ-8g
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 05:17:57 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:48243)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hM7qi-0001Kn-5f; Thu, 02 May 2019 05:17:54 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
-	1MC3H1-1hU4Jt3IjN-00CVDX; Thu, 02 May 2019 11:17:32 +0200
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>
-References: <20190427162922.4207-1-f4bug@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <fc2aab1e-b709-2f1b-f357-3a027e499309@vivier.eu>
-Date: Thu, 2 May 2019 11:17:30 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <philmd@redhat.com>) id 1hMAZE-0004Wi-M0
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 08:12:02 -0400
+Received: from mail-wm1-f66.google.com ([209.85.128.66]:33226)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hMAZC-0004V6-LV
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 08:11:58 -0400
+Received: by mail-wm1-f66.google.com with SMTP id b188so3381710wmb.0
+	for <qemu-trivial@nongnu.org>; Thu, 02 May 2019 05:11:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=8ibxnsl1k7mOd8u+30nF9rFetxOQh/taXjr+yKGxL+g=;
+	b=UuG2UXrLdGRVWDeuGX7ix52qtcJAXofNBpPk3iLu7DgCSyF3v5TE7w053h38g5H8Jc
+	/eGWZDM/QtQfwYBBXRDT/n7v4LYeLZR9NT3c8/CQTKGhdQywUhDcdVk0CnAdTrrxtD3p
+	HLMVKMnjMrEQSayhLzhaKZ7Yrr83uvJT7ahh49Pb9uZ7pHWBr8oRhx1et7zvLWfWCKd3
+	AnaXbwo6wxJPzCwWXv9N6+VyApMX8YQN7/aDcSlCuw/F88GkxqQks0aMEMd6VtAFHgek
+	rWcULNgQHTmq82+YrkHeTtEujr+Ldc7k+j2evYJIhjZNnxDwfEdhF5DUhDes1k1oMI4l
+	PQpg==
+X-Gm-Message-State: APjAAAV6hnkaO9m0mvljDp+7lGjG1YpxuChneLN3G2cgtSwmYsjJ9Gyy
+	PFR7TthUL2HUTkdXk7b8De/2Ug==
+X-Google-Smtp-Source: APXvYqxmUk+djEyljZXX+nNR7cxfgkO+yIsBCzxTKfbhqKtFtcp7A6t9eSjcz+baRZ55jgI5QW/fbA==
+X-Received: by 2002:a1c:a00f:: with SMTP id j15mr2068837wme.148.1556799114983; 
+	Thu, 02 May 2019 05:11:54 -0700 (PDT)
+Received: from [192.168.1.37] (193.red-88-21-103.staticip.rima-tde.net.
+	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
+	h81sm13923519wmf.33.2019.05.02.05.11.53
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Thu, 02 May 2019 05:11:54 -0700 (PDT)
+To: Laurent Vivier <laurent@vivier.eu>,
+	Stephen Checkoway <stephen.checkoway@oberlin.edu>,
+	Paolo Bonzini <pbonzini@redhat.com>, QEMU Developers
+	<qemu-devel@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
+	qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+	<marcandre.lureau@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+References: <20190419154041.77802-1-stephen.checkoway@oberlin.edu>
+	<45e6247e-cddb-2185-7f7b-503be00bd453@vivier.eu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <f61fc519-da75-5b41-21d0-508cf89016f2@redhat.com>
+Date: Thu, 2 May 2019 14:11:53 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190427162922.4207-1-f4bug@amsat.org>
+In-Reply-To: <45e6247e-cddb-2185-7f7b-503be00bd453@vivier.eu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:mb4Qb7CWye0F/VsRPXLZ9OCeVa2RQQnuOF7OfA5sV8WP9TN18gC
-	cfhDYekC8foQHsZrJhBP7xX4Mtpt93EpuXcTkUmqnV8w5pBNbUUG6LFf4KKz4bs+qxjajA9
-	xKNKKIT6DIl7gFd9uy4MJ9tgv1KMPFqnD6SOkHJ+VGrZ0Z5M1ADpeXegaSrXCv/S3KQhm2U
-	QI2jowsm9seA6Qze+Mz4Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:hUdJfFwA2To=:Orcgg9Bd5nezXsHp4CqVcl
-	tdU4sFRby5FrX5VFRa9WAU3nFKtiTZZMj/Il5Vkws6xlQWj7XlD2HwtDFWD2xXZAW25+S8rMa
-	QCtyjk7QPoqt2nnodLIaIgPLWKTWupJP7MCY0PJk+MUNoE7iIilatMKXY1/GjFu0+iRc3JaR2
-	quD+jQ0tn42zfUtOFAFrKHYUAejECMvC9W1UH6UWyguAt0aq3uKJvrxklJW1UwaEa1apPvnnj
-	T36vsBa9s/PhT+AHBdTVtC1JznNOAMGe8PgZZEMYOH8hwihaL4tD/eue9Onu2PH9unJumM8Rn
-	V5qc1jz0z2Tpqm5WdZ+u8s73FivhYbWCPFBNOa5x8se8qXFdoOOnTJlx797Num24QobkiPeum
-	k9xINTXVq55egAvVrmLaYJF3+sM8DELnKdluDsxKkSX80xuKFUSTMl8U7BgIHNMjm1djGC439
-	faDZzdArrTStuccfBgtZYGrjfXQSgICDoAUxcNyYNxgdQHZ+lW950drB0XioqsqcohuyPFFHF
-	frcpELWOcxcVrPez+29MW4+YXMLe56HiGEYwvvybmwubmwnE9nBRYf+gXI+whVIBVgAZSQPC6
-	jDSj3bYnSStHqRvU+UeulerqU63rz4c48GK00NsdsBSOcGJmPFmrQ7NPxH1n6yguV6KKdkRA4
-	57OouM4Szs2WImGl2tGrxAIud0cxV9V1hJzOvIOVgN5lPYM6AiHu9ZIV7qlWc3IfPmp9KGOjS
-	Q8ZEKHoAUA9mUsT43KzIk9cMqgqhz7ZBd4PHGuMus/bTEJKICtgb4LEyPtk=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
-Subject: Re: [Qemu-trivial] [PATCH v2] hw/sparc/leon3: Allow load of uImage
- firmwares
+	[fuzzy]
+X-Received-From: 209.85.128.66
+Subject: Re: [Qemu-trivial] [PATCH v3] hw/char/escc: Lower irq when transmit
+ buffer is filled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,67 +73,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2019 09:18:00 -0000
+X-List-Received-Date: Thu, 02 May 2019 12:12:04 -0000
 
-On 27/04/2019 18:29, Philippe Mathieu-Daudé wrote:
-> Currently the Leon3 machine doesn't allow to load legacy u-boot images:
+On 5/2/19 11:04 AM, Laurent Vivier wrote:
+> On 19/04/2019 17:40, Stephen Checkoway wrote:
+>> The SCC/ESCC will briefly stop asserting an interrupt when the
+>> transmit FIFO is filled.
+>>
+>> This code doesn't model the transmit FIFO/shift register so the
+>> pending transmit interrupt is never deasserted which means that an
+>> edge-triggered interrupt controller will never see the low-to-high
+>> transition it needs to raise another interrupt. The practical
+>> consequence of this is that guest firmware with an interrupt service
+>> routine for the ESCC that does not send all of the data it has
+>> immediately will stop sending data if the following sequence of
+>> events occurs:
+>> 1. Disable processor interrupts
+>> 2. Write a character to the ESCC
+>> 3. Add additional characters to a buffer which is drained by the ISR
+>> 4. Enable processor interrupts
+>>
+>> In this case, the first character will be sent, the interrupt will
+>> fire and the ISR will output the second character. Since the pending
+>> transmit interrupt remains asserted, no additional interrupts will
+>> ever fire.
+>>
+>> This behavior was triggered by firmware for an embedded system with a
+>> Z85C30 which necessitated this patch.
+>>
+>> This patch fixes that situation by explicitly lowering the IRQ when a
+>> character is written to the buffer and no other interrupts are currently
+>> pending.
+>>
+>> Signed-off-by: Stephen Checkoway <stephen.checkoway@oberlin.edu>
+>> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>
+>> I added a sentence about the Z85C30 necessitating this to the commit message.
+>>
+>>  hw/char/escc.c | 7 +++++++
+>>  1 file changed, 7 insertions(+)
+>>
+>> diff --git a/hw/char/escc.c b/hw/char/escc.c
+>> index 628f5f81f7..c5b05a63f1 100644
+>> --- a/hw/char/escc.c
+>> +++ b/hw/char/escc.c
+>> @@ -509,6 +509,13 @@ static void escc_mem_write(void *opaque, hwaddr addr,
+>>          break;
+>>      case SERIAL_DATA:
+>>          trace_escc_mem_writeb_data(CHN_C(s), val);
+>> +        /*
+>> +         * Lower the irq when data is written to the Tx buffer and no other
+>> +         * interrupts are currently pending. The irq will be raised again once
+>> +         * the Tx buffer becomes empty below.
+>> +         */
+>> +        s->txint = 0;
+>> +        escc_update_irq(s);
+>>          s->tx = val;
+>>          if (s->wregs[W_TXCTRL2] & TXCTRL2_TXEN) { // tx enabled
+>>              if (qemu_chr_fe_backend_connected(&s->chr)) {
+>>
 > 
->   $ qemu-system-sparc -M leon3_generic -d in_asm \
->       -kernel HelenOS-0.6.0-sparc32-leon3.bin
->   qemu-system-sparc: could not load kernel 'HelenOS-0.6.0-sparc32-leon3.bin'
 > 
->   $ file HelenOS-0.6.0-sparc32-leon3.bin
->   HelenOS-0.6.0-sparc32-leon3.bin: u-boot legacy uImage, HelenOS-0.6.0,\
->     Linux/ARM, OS Kernel Image (Not compressed), 2424229 bytes,\
->     Sun Dec 21 19:18:09 2014,\
->     Load Address: 0x40000000, Entry Point: 0x40000000,\
->     Header CRC: 0x8BCFA236, Data CRC: 0x37AD87DF
-> 
-> Since QEMU can load uImages, add the necessary code,
-> so the Leon3 machine can load these images:
-> 
->   $ qemu-system-sparc -M leon3_generic -d in_asm \
->       -kernel HelenOS-0.6.0-sparc32-leon3.bin
->   ----------------
->   IN:
->   0x40000000:  b  0x400007a8
->   0x40000004:  nop
->   ----------------
->   IN:
->   0x400007a8:  save  %sp, -136, %sp
->   0x400007ac:  call  0x40000020
->   0x400007b0:  sethi  %hi(0x4000b800), %i1
->   ...
-> 
-> Tested with the following firmware:
-> http://www.helenos.org/releases/HelenOS-0.6.0-sparc32-leon3.bin
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
-> v2: Fixed GIT_AUTHOR_EMAIL
-> ---
->  hw/sparc/leon3.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
-> index 774639af33..0383b17c29 100644
-> --- a/hw/sparc/leon3.c
-> +++ b/hw/sparc/leon3.c
-> @@ -193,6 +193,10 @@ static void leon3_generic_hw_init(MachineState *machine)
->          kernel_size = load_elf(kernel_filename, NULL, NULL, NULL,
->                                 &entry, NULL, NULL,
->                                 1 /* big endian */, EM_SPARC, 0, 0);
-> +        if (kernel_size < 0) {
-> +            kernel_size = load_uimage(kernel_filename, NULL, &entry,
-> +                                      NULL, NULL, NULL);
-> +        }
->          if (kernel_size < 0) {
->              error_report("could not load kernel '%s'", kernel_filename);
->              exit(1);
-> 
+> Applied to my trivial-patches branch.
 
-Applied to my trivial-patches branch.
+Mark, Artyom, are you OK with this patch?
 
-Thanks,
-Laurent
+> 
+> Paolo, Marc-André, if you disagree with this change or prefer to take it
+> through one of your queues, I can remove it from mine. Let me know.
+> 
+> 
+> Thanks,
+> Laurent
+> 
 
