@@ -1,70 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hLr35-0002Gv-B5
-	for mharc-qemu-trivial@gnu.org; Wed, 01 May 2019 11:21:31 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60920)
+	id 1hM6s5-0002Vz-0H
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 04:15:13 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:42145)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hLr31-0002GK-8w
-	for qemu-trivial@nongnu.org; Wed, 01 May 2019 11:21:30 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hM6ry-0002Q8-II
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 04:15:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hLr2x-0007I9-O7
-	for qemu-trivial@nongnu.org; Wed, 01 May 2019 11:21:26 -0400
-Received: from mail-wr1-f66.google.com ([209.85.221.66]:44823)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hLr2x-0007HV-Hz
-	for qemu-trivial@nongnu.org; Wed, 01 May 2019 11:21:23 -0400
-Received: by mail-wr1-f66.google.com with SMTP id c5so24919397wrs.11
-	for <qemu-trivial@nongnu.org>; Wed, 01 May 2019 08:21:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=sBs20C05q7Q4dXs5W3ZxCu8LQI6WkJBlf/BuMXV4l7U=;
-	b=IJnjq5CTLnYr4j5Y2gh+LRtIYTZkIK1mWRMeSRHeOLrgxCZxurYDb8n9i8l5DCkKIG
-	+5hBuFYizUE54aGbbbpjVj/VcKB/Co5pbLm/k5v9Avr0QVQ5UX5m+SjkOlJfthfIP5Qo
-	MB42v6IEtASE0XI1QVzsP5tR1mmzLRGtiWoJDZwZzPL04QxE4jUElj1eXW+rEjPWo3mv
-	5i2dqYhu0MRqM2393b+eqZuAri0A+4sOi6AqbzWvAJYvwkSytG28cF+4x5GY+f5DAUg1
-	nrDjzHImDs3rrROUCe99LvQVAvBC7cdcPoj41z8wA1CrMe5NOuILJ61Wum5w3r0hB49T
-	rtKg==
-X-Gm-Message-State: APjAAAXBFBWC2H99GbnHT0/XMYpjenPz/xljeMnD4QwKWWlw7fY8q+o/
-	ZpIVApPa1e/bUz7jgdKYF0Ia8w==
-X-Google-Smtp-Source: APXvYqxtEk0zhywY8z7NRjfcTz9EAXK4PySquk7UaUMt5G66ZiFA7p15NiAj1xlWgt0sYqjuXNGDjQ==
-X-Received: by 2002:a05:6000:c2:: with SMTP id
-	q2mr11346983wrx.324.1556724082674; 
-	Wed, 01 May 2019 08:21:22 -0700 (PDT)
-Received: from [192.168.1.37] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	c131sm5754821wma.31.2019.05.01.08.21.21
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Wed, 01 May 2019 08:21:22 -0700 (PDT)
-To: Richard Henderson <richard.henderson@linaro.org>,
-	Alistair Francis <Alistair.Francis@wdc.com>,
+	(envelope-from <laurent@vivier.eu>) id 1hM6rg-0005kh-Vt
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 04:14:55 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:40047)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1hM6rY-0005aT-7M; Thu, 02 May 2019 04:14:40 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+	1N7hw4-1ghsD944X4-014imF; Thu, 02 May 2019 10:14:22 +0200
+To: Alistair Francis <Alistair.Francis@wdc.com>,
 	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	"alistair23@gmail.com" <alistair23@gmail.com>,
+Cc: "alistair23@gmail.com" <alistair23@gmail.com>,
+	"kraxel@redhat.com" <kraxel@redhat.com>,
+	"berrange@redhat.com" <berrange@redhat.com>,
 	"riku.voipio@iki.fi" <riku.voipio@iki.fi>,
-	"laurent@vivier.eu" <laurent@vivier.eu>,
-	"kraxel@redhat.com" <kraxel@redhat.com>
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
 References: <cover.1556666645.git.alistair.francis@wdc.com>
-	<ff51c73e3095fa503d14aafece54f8565fe99900.1556666645.git.alistair.francis@wdc.com>
-	<0d585793-20a8-8dc8-98fa-13789113f672@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <9abcc3db-0749-e092-ab59-8144de027ba6@redhat.com>
-Date: Wed, 1 May 2019 17:21:21 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	<c4d2b1de9efadcf1c900b91361af9302823a72a9.1556666645.git.alistair.francis@wdc.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <a5dcdddb-a243-a657-c054-6d46964ebeb6@vivier.eu>
+Date: Thu, 2 May 2019 10:14:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <0d585793-20a8-8dc8-98fa-13789113f672@linaro.org>
+In-Reply-To: <c4d2b1de9efadcf1c900b91361af9302823a72a9.1556666645.git.alistair.francis@wdc.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:w8YsW3msqOvJ+oqfdOxI8zH9nKrK9tDJINAvsNA+Iyw8nM26Z7h
+	m+x1JkNCXaxkivqRspOpCIv6y8VmjmMI6pQJOhWXHEV2WsadlzRRzVsL9sDCEC2843d6+2D
+	mdj34JatILOVfl9v7MmHTrmsUarP5RvCbCWsHqgin7bPyz+3vK0y+3AHExizevOijhiGQxv
+	lW2SpwVXB7QnlekfqMCZg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:25S53eKCRLY=:KjPPXVBpH4L2QP21CqIYcz
+	nDylwlhBAx/y2yVJlHBgdKtBEXynJjaZo09PX6VQz7LljJI7Py20CO+oIw7UQERlNAwzd8suW
+	0CM3109dhJuBTQnbR8iSNxLRx8AwC0l8Yw2JpyPb61gU7uEhR7RQU2QE90TGIhJqR9gp8JeLf
+	/zuqZTUYQnKgyqgzm8cu5U5v8mHt3uibetKcpMogpUKiynuBN4ae6Fggb+PiaDPkm6p1KIKO/
+	tTYzgIejEKpoKkIZgtnisr2OlcJF/wq5/GUT0kpSeRl3tSy2G1cbBSbjCuHP2i174k3EpRqQS
+	pYX609RtFn6XXUnrq0YOBAVJak7dKLys68jH+SLMiip//WhcdnurHl2nDcrLduUKgJq+KqioE
+	gtXo+9HMc4twlZn9UoFRQrKD2oKvyTgiEdu2G0V9mkUyuvIzrklUNomBJr+92/5IzEYyQBEAG
+	/v3+Ub/1szp2AC4N4Amy882FFEkmhbw6GWsC0T4xFqm1L4hRqQWkbW3ghoyzSbh6aG22uhypf
+	sDJ1SbVcvAJQ/VVAec5LPk8OjZLrSbbbtFaL6qpwByW3pYa2ylk6Gc6/dPU0fPjn19Xt/1Wsm
+	wl8s0rR5pHXq3SccUBpcVwPIzuIkEbdnM5r9ntHDzx0DHyC3mOAOrIhE0l8lcBHd/cdKGF2f9
+	u/X+cQ6hRPAWYfB8rNVqR6VJaoPfFaXUu4tFcKKM6//pxYj61D+2642Nb6NkfjUxk5Eq7awar
+	qVjIEOztmY3lOs2ixUsT/WXUnywNpbE6gAFSeyPhgITiTH/45WooOpz5SSo=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.66
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2 2/5] hw/usb/hcd-xhci: Fix
- GCC 9 build warning
+X-Received-From: 212.227.17.24
+Subject: Re: [Qemu-trivial] [PATCH v2 5/5] linux-user/elfload: Fix GCC 9
+ build warnings
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,18 +65,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 01 May 2019 15:21:30 -0000
+X-List-Received-Date: Thu, 02 May 2019 08:15:11 -0000
 
-On 5/1/19 4:12 PM, Richard Henderson wrote:
-> On 4/30/19 4:28 PM, Alistair Francis wrote:
->>      for (i = 0; i < usbports; i++) {
->> +        g_assert(i < MAX(MAXPORTS_2, MAXPORTS_3));
+On 01/05/2019 01:29, Alistair Francis wrote:
+> Fix this warning when building with GCC9 on Fedora 30:
+> In function ‘strncpy’,
+>     inlined from ‘fill_psinfo’ at /home/alistair/qemu/linux-user/elfload.c:3208:12,
+>     inlined from ‘fill_note_info’ at /home/alistair/qemu/linux-user/elfload.c:3390:5,
+>     inlined from ‘elf_core_dump’ at /home/alistair/qemu/linux-user/elfload.c:3539:9:
+> /usr/include/bits/string_fortified.h:106:10: error: ‘__builtin_strncpy’ specified bound 16 equals destination size [-Werror=stringop-truncation]
+>   106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
+>       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > 
-> I would hope that it works to move this out of the loop:
+> Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+> ---
+>  linux-user/elfload.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
->   g_assert(usbports <= MAX(MAXPORTS_2, MAXPORTS_3));
+> diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+> index c1a26021f8..d08fe23466 100644
+> --- a/linux-user/elfload.c
+> +++ b/linux-user/elfload.c
+> @@ -2872,7 +2872,7 @@ struct target_elf_prpsinfo {
+>      target_gid_t pr_gid;
+>      target_pid_t pr_pid, pr_ppid, pr_pgrp, pr_sid;
+>      /* Lots missing */
+> -    char    pr_fname[16];           /* filename of executable */
+> +    char    pr_fname[16] QEMU_NONSTRING; /* filename of executable */
+>      char    pr_psargs[ELF_PRARGSZ]; /* initial part of arg list */
+>  };
+>  
+> 
 
-With Richard suggestion:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Applied to my linux-user branch.
+
+Thanks,
+Laurent
 
