@@ -1,59 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hM6s5-0002Vz-0H
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 04:15:13 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:42145)
+	id 1hM7eq-0001Aa-TP
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2019 05:05:36 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:55157)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hM6ry-0002Q8-II
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 04:15:11 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hM7eo-00016d-BI
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 05:05:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hM6rg-0005kh-Vt
-	for qemu-trivial@nongnu.org; Thu, 02 May 2019 04:14:55 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:40047)
+	(envelope-from <laurent@vivier.eu>) id 1hM7em-0002uK-DO
+	for qemu-trivial@nongnu.org; Thu, 02 May 2019 05:05:34 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:50883)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hM6rY-0005aT-7M; Thu, 02 May 2019 04:14:40 -0400
+	id 1hM7ei-0001lm-OT; Thu, 02 May 2019 05:05:30 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
-	1N7hw4-1ghsD944X4-014imF; Thu, 02 May 2019 10:14:22 +0200
-To: Alistair Francis <Alistair.Francis@wdc.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "alistair23@gmail.com" <alistair23@gmail.com>,
-	"kraxel@redhat.com" <kraxel@redhat.com>,
-	"berrange@redhat.com" <berrange@redhat.com>,
-	"riku.voipio@iki.fi" <riku.voipio@iki.fi>,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <cover.1556666645.git.alistair.francis@wdc.com>
-	<c4d2b1de9efadcf1c900b91361af9302823a72a9.1556666645.git.alistair.francis@wdc.com>
+	(mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+	1Mof1D-1gy1EI046r-00p5iu; Thu, 02 May 2019 11:04:35 +0200
+To: Stephen Checkoway <stephen.checkoway@oberlin.edu>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, QEMU Developers
+	<qemu-devel@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
+	qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+	<marcandre.lureau@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+References: <20190419154041.77802-1-stephen.checkoway@oberlin.edu>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <a5dcdddb-a243-a657-c054-6d46964ebeb6@vivier.eu>
-Date: Thu, 2 May 2019 10:14:18 +0200
+Message-ID: <45e6247e-cddb-2185-7f7b-503be00bd453@vivier.eu>
+Date: Thu, 2 May 2019 11:04:33 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <c4d2b1de9efadcf1c900b91361af9302823a72a9.1556666645.git.alistair.francis@wdc.com>
+In-Reply-To: <20190419154041.77802-1-stephen.checkoway@oberlin.edu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:w8YsW3msqOvJ+oqfdOxI8zH9nKrK9tDJINAvsNA+Iyw8nM26Z7h
-	m+x1JkNCXaxkivqRspOpCIv6y8VmjmMI6pQJOhWXHEV2WsadlzRRzVsL9sDCEC2843d6+2D
-	mdj34JatILOVfl9v7MmHTrmsUarP5RvCbCWsHqgin7bPyz+3vK0y+3AHExizevOijhiGQxv
-	lW2SpwVXB7QnlekfqMCZg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:25S53eKCRLY=:KjPPXVBpH4L2QP21CqIYcz
-	nDylwlhBAx/y2yVJlHBgdKtBEXynJjaZo09PX6VQz7LljJI7Py20CO+oIw7UQERlNAwzd8suW
-	0CM3109dhJuBTQnbR8iSNxLRx8AwC0l8Yw2JpyPb61gU7uEhR7RQU2QE90TGIhJqR9gp8JeLf
-	/zuqZTUYQnKgyqgzm8cu5U5v8mHt3uibetKcpMogpUKiynuBN4ae6Fggb+PiaDPkm6p1KIKO/
-	tTYzgIejEKpoKkIZgtnisr2OlcJF/wq5/GUT0kpSeRl3tSy2G1cbBSbjCuHP2i174k3EpRqQS
-	pYX609RtFn6XXUnrq0YOBAVJak7dKLys68jH+SLMiip//WhcdnurHl2nDcrLduUKgJq+KqioE
-	gtXo+9HMc4twlZn9UoFRQrKD2oKvyTgiEdu2G0V9mkUyuvIzrklUNomBJr+92/5IzEYyQBEAG
-	/v3+Ub/1szp2AC4N4Amy882FFEkmhbw6GWsC0T4xFqm1L4hRqQWkbW3ghoyzSbh6aG22uhypf
-	sDJ1SbVcvAJQ/VVAec5LPk8OjZLrSbbbtFaL6qpwByW3pYa2ylk6Gc6/dPU0fPjn19Xt/1Wsm
-	wl8s0rR5pHXq3SccUBpcVwPIzuIkEbdnM5r9ntHDzx0DHyC3mOAOrIhE0l8lcBHd/cdKGF2f9
-	u/X+cQ6hRPAWYfB8rNVqR6VJaoPfFaXUu4tFcKKM6//pxYj61D+2642Nb6NkfjUxk5Eq7awar
-	qVjIEOztmY3lOs2ixUsT/WXUnywNpbE6gAFSeyPhgITiTH/45WooOpz5SSo=
+X-Provags-ID: V03:K1:K/XF6stn8BMcZvX/doC5zSKfa1n7bx2uxJ0kOFmbjL9p2XnYdtk
+	hA/1kTcDlG4kGG22wN9vjIYz3SeCUiqTR/DwU+XKxlCbr6GkuFQABga3TtIqZs5YW8zofN5
+	PqGlMZ5jbStSummOfv6G27EnPz4fj4AL3UEGFFNp+GAT1HuVs2tIraF5lvoqvyTsXQuFjy7
+	78BQFx7prmbRbz2OZpJdQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:vtjwTng5OGo=:ZJIKji/GNFiJua2NnTa1iw
+	tQHKJR/ZPYjr2m+7woXYXla/OHdT7okFZHmgXxOEgUFoXNvYnarPgFbWiGaYzH4cQ2/7EfF29
+	qJZZsqx4SPRJmh7eI0shCBtVWBZ29E4jLyaXQiLkT5JNC6i3GOQkgasaxfWqM0k9xLLVb0sB3
+	z4XPo8A/WfHDQW2DGghNcyHF8r5ES8JOVr72XIgzrQfQOw/9Qy1zJlef/uEN9GZp/g6JMDEIL
+	CFVUBYHmCh3wrm7mhZYh/+xtUCzJDoGOwOK4LrhXyK4x9QfVwsFcNbVXT1IEQu0g0ceBTSn/z
+	y2tBclrjNWL7a9Kc5vR6U3+hrDBXs9Cdrcn3nQxJ96laZwNgTGln/Fy6U8nPWwc5/LVwAppgo
+	aOg4h/x3AvaQh6i75zti5OTx88RtWMMWpMvpJvwOulGAhoeJNhyT2LJB4pNdwK77oNgAI78VJ
+	qXkxH2HCBLMrHfMOqmj3KwZwi01v760gE7z8ZNm0cXvUJWaGjnRBRSlhlnXftBggB0mc0bapg
+	YBqtN725t+8aFaCPaOX+s6k+AXSsmsOjqXbW2nsgqAPQ/vHIK6vVZzq9pCOrHt4HLo3iXY8fC
+	F0lsTtknJ+IgXlGGnpbp97x5i571iTIua07s3X5Wy8dG1eyLPK9ka+75eIJ4Tr9ytG60TuRfQ
+	zrhRa6rExbwWi3+RQ+jrTFSe5kiFrYCpjiTtPNzVRHcK4A4kpWDpoy0un+E6HftU0jV4ijELm
+	d8TVJkJVxI2UDRSVypEq8hMdb4IjRN/2QMFPS6Z9ReX/R8cBAjcoJbWYf7s=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: Re: [Qemu-trivial] [PATCH v2 5/5] linux-user/elfload: Fix GCC 9
- build warnings
+X-Received-From: 217.72.192.75
+Subject: Re: [Qemu-trivial] [PATCH v3] hw/char/escc: Lower irq when transmit
+ buffer is filled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,40 +64,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2019 08:15:11 -0000
+X-List-Received-Date: Thu, 02 May 2019 09:05:35 -0000
 
-On 01/05/2019 01:29, Alistair Francis wrote:
-> Fix this warning when building with GCC9 on Fedora 30:
-> In function ‘strncpy’,
->     inlined from ‘fill_psinfo’ at /home/alistair/qemu/linux-user/elfload.c:3208:12,
->     inlined from ‘fill_note_info’ at /home/alistair/qemu/linux-user/elfload.c:3390:5,
->     inlined from ‘elf_core_dump’ at /home/alistair/qemu/linux-user/elfload.c:3539:9:
-> /usr/include/bits/string_fortified.h:106:10: error: ‘__builtin_strncpy’ specified bound 16 equals destination size [-Werror=stringop-truncation]
->   106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
->       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+On 19/04/2019 17:40, Stephen Checkoway wrote:
+> The SCC/ESCC will briefly stop asserting an interrupt when the
+> transmit FIFO is filled.
 > 
-> Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+> This code doesn't model the transmit FIFO/shift register so the
+> pending transmit interrupt is never deasserted which means that an
+> edge-triggered interrupt controller will never see the low-to-high
+> transition it needs to raise another interrupt. The practical
+> consequence of this is that guest firmware with an interrupt service
+> routine for the ESCC that does not send all of the data it has
+> immediately will stop sending data if the following sequence of
+> events occurs:
+> 1. Disable processor interrupts
+> 2. Write a character to the ESCC
+> 3. Add additional characters to a buffer which is drained by the ISR
+> 4. Enable processor interrupts
+> 
+> In this case, the first character will be sent, the interrupt will
+> fire and the ISR will output the second character. Since the pending
+> transmit interrupt remains asserted, no additional interrupts will
+> ever fire.
+> 
+> This behavior was triggered by firmware for an embedded system with a
+> Z85C30 which necessitated this patch.
+> 
+> This patch fixes that situation by explicitly lowering the IRQ when a
+> character is written to the buffer and no other interrupts are currently
+> pending.
+> 
+> Signed-off-by: Stephen Checkoway <stephen.checkoway@oberlin.edu>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  linux-user/elfload.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-> index c1a26021f8..d08fe23466 100644
-> --- a/linux-user/elfload.c
-> +++ b/linux-user/elfload.c
-> @@ -2872,7 +2872,7 @@ struct target_elf_prpsinfo {
->      target_gid_t pr_gid;
->      target_pid_t pr_pid, pr_ppid, pr_pgrp, pr_sid;
->      /* Lots missing */
-> -    char    pr_fname[16];           /* filename of executable */
-> +    char    pr_fname[16] QEMU_NONSTRING; /* filename of executable */
->      char    pr_psargs[ELF_PRARGSZ]; /* initial part of arg list */
->  };
->  
+> I added a sentence about the Z85C30 necessitating this to the commit message.
+> 
+>  hw/char/escc.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+> diff --git a/hw/char/escc.c b/hw/char/escc.c
+> index 628f5f81f7..c5b05a63f1 100644
+> --- a/hw/char/escc.c
+> +++ b/hw/char/escc.c
+> @@ -509,6 +509,13 @@ static void escc_mem_write(void *opaque, hwaddr addr,
+>          break;
+>      case SERIAL_DATA:
+>          trace_escc_mem_writeb_data(CHN_C(s), val);
+> +        /*
+> +         * Lower the irq when data is written to the Tx buffer and no other
+> +         * interrupts are currently pending. The irq will be raised again once
+> +         * the Tx buffer becomes empty below.
+> +         */
+> +        s->txint = 0;
+> +        escc_update_irq(s);
+>          s->tx = val;
+>          if (s->wregs[W_TXCTRL2] & TXCTRL2_TXEN) { // tx enabled
+>              if (qemu_chr_fe_backend_connected(&s->chr)) {
 > 
 
 
-Applied to my linux-user branch.
+Applied to my trivial-patches branch.
+
+Paolo, Marc-André, if you disagree with this change or prefer to take it
+through one of your queues, I can remove it from mine. Let me know.
+
 
 Thanks,
 Laurent
