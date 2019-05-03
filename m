@@ -1,82 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWBu-0007KX-6C
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:17:22 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58993)
+	id 1hMWDu-00084s-G0
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:19:26 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59356)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1hMWBs-0007K3-8f
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:17:21 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMWDr-000839-RN
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:19:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.bennee@linaro.org>) id 1hMWBr-0007Jb-7j
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:17:20 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:50406)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
-	id 1hMWBr-0007IX-06
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:17:19 -0400
-Received: by mail-wm1-x342.google.com with SMTP id p21so6647649wmc.0
-	for <qemu-trivial@nongnu.org>; Fri, 03 May 2019 04:17:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=references:user-agent:from:to:cc:subject:in-reply-to:date
-	:message-id:mime-version:content-transfer-encoding;
-	bh=LDnTsG5ltzP6WaSpBgYWCuVdvbx94yyTbk2ZcTENVLU=;
-	b=QAi1Mg13bfBeCPnwf222gzrVn0Um/yXCRqZivLNrA4b9VNRSYHV5oKtlGBQZO8h7du
-	3DT5d+eUBDibigQqbnZ7UuSwfLIlPIh9DayFzTcdce2Bcnlsb2dz0bL71ag3euNARNch
-	lGEijUPM5FgYGuBxmCUeHc9IUYaEEhNLUWXB/pUqlJfvcG8L8Rda99wAKhkHq3qBD+A7
-	Ln/rf96kYlKeWSv16c42ZyNLjUJ77qNkLJyoT2PU6r/BNDa2XLZ2/fSapNtpY5n2nus3
-	GNsAambdmqQtW1SWWhu6I7OPs8jJ166tBlHJmROCViL+ig07l6gsM3XDWV3XD73PeR+u
-	b6pA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:references:user-agent:from:to:cc:subject
-	:in-reply-to:date:message-id:mime-version:content-transfer-encoding;
-	bh=LDnTsG5ltzP6WaSpBgYWCuVdvbx94yyTbk2ZcTENVLU=;
-	b=Iav3LmHCtc3zXPGeGAJkz6sk1JA7t5KmOnwXIKmyDTy+hSHD690yDnmoZJAwtSgxBw
-	4dQKNY8amXqQrpQfPUGqe8xKEo0z9pys39DmG2thXuMnN/+EgbP8p0a2j8RP9abDZjuV
-	gfKkg4okg63riSm7pZQSSOtq/DPuH9jpjLfN331ZmGueKVv0ADPldhlpY4kcOdfzCv3E
-	EIsEmPawYCOY/GrFzCsTanPi/E4YQkkQouptjvLWTbw/FoEsVWa12vb9xc6KjMqelYt6
-	C+iYkjwBzUdp3znv8zhGX/ZpsKQGqQPIW6COlLjFQ0CzHLnJYl1GoWD284RlJ17PzRdQ
-	HjWA==
-X-Gm-Message-State: APjAAAWHwjRJJ+RYxaNGhyMig8kjGaj1HrYL8jbwAU0Xju50uGUDxkya
-	rVwCukLd39R7xhuK+XRRUkRAww==
-X-Google-Smtp-Source: APXvYqxYD8TDL0xiELYOnxfokP4V7ComCvUrFEXxy8zVExnIyLyDcP6BbYTCwgeBoMoZkO4tH7Hmew==
-X-Received: by 2002:a1c:a103:: with SMTP id k3mr6022549wme.8.1556882237038;
-	Fri, 03 May 2019 04:17:17 -0700 (PDT)
-Received: from zen.linaroharston ([81.128.185.34])
-	by smtp.gmail.com with ESMTPSA id
-	p67sm2000681wmp.22.2019.05.03.04.17.16
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Fri, 03 May 2019 04:17:16 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A97B81FF87;
-	Fri,  3 May 2019 12:17:15 +0100 (BST)
-References: <20190502185835.15185-1-laurent@vivier.eu>
-	<CAFEAcA9-hAU5dxUmSWtbvrPEXE-nCP1uLvLbOby-_EXZ27o+8g@mail.gmail.com>
-User-agent: mu4e 1.3.1; emacs 26.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Laurent Vivier <laurent@vivier.eu>, QEMU Developers
-	<qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, Fabien
-	Chouteau <chouteau@adacore.com>, Viktor Prutyanov
-	<viktor.prutyanov@phystech.edu>, Richard Henderson <rth@twiddle.net>,
-	Thomas Huth <thuth@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>, 
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Eduardo Habkost
-	<ehabkost@redhat.com>, Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>, 
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Aurelien Jarno
-	<aurelien@aurel32.net>, Jason Wang <jasowang@redhat.com>, QEMU Trivial
-	<qemu-trivial@nongnu.org>, Laurent Vivier <lvivier@redhat.com>, Michael
-	Tokarev <mjt@tls.msk.ru>, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
-	<berrange@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, Michael Roth
-	<mdroth@linux.vnet.ibm.com>
-In-reply-to: <CAFEAcA9-hAU5dxUmSWtbvrPEXE-nCP1uLvLbOby-_EXZ27o+8g@mail.gmail.com>
-Date: Fri, 03 May 2019 12:17:15 +0100
-Message-ID: <87sgtv4wjo.fsf@zen.linaroharston>
+	(envelope-from <laurent@vivier.eu>) id 1hMWDq-00015T-Sr
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:19:23 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:39871)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1hMWDo-00010S-Is; Fri, 03 May 2019 07:19:20 -0400
+Received: from localhost.localdomain ([78.238.229.36]) by
+	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
+	(Nemesis)
+	id 1M4384-1hMWDQ3I3M-0006tJ; Fri, 03 May 2019 13:18:57 +0200
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
+	Fabien Chouteau <chouteau@adacore.com>, qemu-trivial@nongnu.org,
+	Richard Henderson <rth@twiddle.net>, Jason Wang <jasowang@redhat.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	Michael Tokarev <mjt@tls.msk.ru>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Date: Fri,  3 May 2019 13:18:20 +0200
+Message-Id: <20190503111832.30316-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: Re: [Qemu-trivial] [PULL 00/13] Trivial branch patches
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:oF4eB/eiUU74kK7uJJHtrGiB6zVz+E7dOmC5/9PXAC0QCkSa7nS
+	Rt5WCpOz1Nv3JetaLJ09lpB8Wkaj7tMqqBK8UCtVLxr/PwLtfxWKyGQJVL764e+A3lFTSEE
+	2Twh88F5MdXcy+io2jg21sK1ZyDPjnpmCHw2E71htSJkjaLnEqIdCgMRy9y1ZStP/+IHeOZ
+	ZKbDGY92Q4pOM5a3FMS2Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:eQdT8VKM/OY=:PX1p5N04E4WSpf+iRLcsD6
+	npl95+0WcDG0x/ZjHU0Th7x+gfOulIAo7yaoTzPZNMroiqiuYIvexhReHgFLfDnNFv/4p8L2l
+	Uph2GVHsub316HXlYtx05uUp1I1b4wkT10QSpYkci30pLJrQo/o3tE0L3AjzgOwt7LxTVAIYK
+	i7IODN+fjBC94Hpeu7Id/fH527HsK0gH5veln1UW9QDFuZ+sFInAFZj+07Z+fHpOELW/s0yER
+	7jRWFAf5xJvR9nlIvcMbizBl8EY20DvmiV+1TJvNceQBK1kVCzs8dS3ecvzP9bQsGeWsTSiek
+	0LHT41Lp/VvvLewwFc4z7cnBvFPtFjXlQbqQ5XfMHK0QeYKP/Tqwj8MC6DhLehRslNYH6qp+V
+	trcJ5SR2ykwovGNHBOwRFUkUIL7xPvTYWmkayQZ9P2HO0RLNnElN+tfrWpiXkYmuKBeutM/dg
+	bc48qLLQuFEVEAgOP1HU7nJBqBvWHykH7UheE3yA0vtuFwCsrZDFUkHynIuLj9pfPlLWPcnxa
+	570ELq21yjPlt2BbEu3TZcYaNT+jCqUOU1HQBEoeov8tr3NRh21Qzb915W+G4wcIXTvJTb518
+	mlVec4sAbZAZHcguvdbXHSRE6vNLmspq0WfSFHA/q6gYxjIUHD3qTXqi06a8PBquQrnpD0UQe
+	GZGuVKQcyZQomLXN3dNvROT1UVHeP2u3x1WZpyaxPfo3D/OkfHcbh4Ko1d91qO6Q4Ka8/0S7O
+	uDlOVdQpa41+n6N8de8P2fK2e0PJKTHj9rRUULUqRGVvDgLmDmvFy/NzHU8=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.227.126.187
+Subject: [Qemu-trivial] [PULL v2 00/12] Trivial branch patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,83 +63,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 11:17:21 -0000
+X-List-Received-Date: Fri, 03 May 2019 11:19:24 -0000
 
+The following changes since commit 8482ff2eb3bb95020eb2f370a9b3ea26511e41df:
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+  Merge remote-tracking branch 'remotes/jnsnow/tags/bitmaps-pull-request' into staging (2019-05-02 12:04:51 +0100)
 
-> On Thu, 2 May 2019 at 19:58, Laurent Vivier <laurent@vivier.eu> wrote:
->>
->> The following changes since commit 8482ff2eb3bb95020eb2f370a9b3ea26511e4=
-1df:
->>
->>   Merge remote-tracking branch 'remotes/jnsnow/tags/bitmaps-pull-request=
-' into staging (2019-05-02 12:04:51 +0100)
->>
->> are available in the Git repository at:
->>
->>   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
->>
->> for you to fetch changes up to f7c03a68b814254df414977ff299468fbf0fa1c0:
->>
->>   sockets: avoid string truncation warnings when copying UNIX path (2019=
--05-02 20:50:47 +0200)
->>
->> ----------------------------------------------------------------
->> Pull request trivial branch 2019-05-02
->>
->> ----------------------------------------------------------------
->
-> Markus's "Clean up includes" patch breaks 'make check' on
-> big-endian hosts:
-> cd /home/pm215/qemu/build/all/tests/fp && ./fp-test -s -l 1 -r all  i32_t=
-o_f16 i
-> 64_to_f16 i32_to_f32 i64_to_f32 i32_to_f64 i64_to_f64 i32_to_f128 i64_to_=
-f128 >
->  int-to-float.out 2>&1 || (cat  int-to-float.out && exit 1;)
->>> Testing i32_to_f16, rounding near_even
-> ^M372 tests total.
-> ^M372 tests performed.
-> In 372 tests, no errors found in i32_to_f16, rounding near_even.
->>> Testing i32_to_f16, rounding minMag
-> [...]
-> ^MErrors found in i32_to_f128:
-> 1006FFFF  =3D> +0000.000000000000401B006FFFF00000 .....
->         expected +401B.006FFFF000000000000000000000 .....
-> ^M0001DDEB  =3D> +0000.000000000000400FDDEB00000000 .....
->         expected +400F.DDEB000000000000000000000000 .....
-> ^MFFF6FFFC  =3D> +0000.000000000000C012200080000000 .....
->         expected -4012.2000800000000000000000000000 .....
-> ^MFFFFFFF8  =3D> +0000.000000000000C002000000000000 .....
->         expected -4002.0000000000000000000000000000 .....
-> [etc]
+are available in the Git repository at:
 
-Considering the header clean-ups moved bswap related stuff and the
-patterns look incorrectly swapped something has gone fishy.
+  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
 
-If it's just stuff touching f128 then we have some magic in
-softfloat-types:
+for you to fetch changes up to 2d2023c3b99edb33ad4bb9791f70456ea1a1c049:
 
- typedef struct {
- #ifdef HOST_WORDS_BIGENDIAN
-     uint64_t high, low;
- #else
-     uint64_t low, high;
- #endif
- } float128;
+  sockets: avoid string truncation warnings when copying UNIX path (2019-05-03 13:03:04 +0200)
 
-but I would have though HOST_WORDS_BIGENDIAN is in the config. I shall
-have a poke once I get onto the s390 machine.
+----------------------------------------------------------------
+Pull request trivial branch 2019-05-03
 
->
-> (I had to bounce Markus' own pullreq from a week or
-> so back because it had this patch in too and also failed
-> for this reason.)
->
-> thanks
-> -- PMM
+----------------------------------------------------------------
 
+Aruna Jayasena (1):
+  Header cleanups
 
---
-Alex Benn=C3=A9e
+Daniel P. Berrangé (1):
+  sockets: avoid string truncation warnings when copying UNIX path
+
+Dr. David Alan Gilbert (1):
+  configure: fix pam test warning
+
+Marc-André Lureau (1):
+  doc: fix the configuration path
+
+Philippe Mathieu-Daudé (3):
+  hw/net/pcnet: Use qemu_log_mask(GUEST_ERROR) instead of printf
+  Makefile: Let the 'clean' rule remove qemu-ga.exe on Windows hosts
+  hw/sparc/leon3: Allow load of uImage firmwares
+
+Stefan Weil (1):
+  Update configure
+
+Thomas Huth (1):
+  net: Print output of "-net nic, model=help" to stdout instead of
+    stderr
+
+Wei Yang (3):
+  CODING_STYLE: specify the indent rule for multiline code
+  CODING_STYLE: indent example code as all others
+  qom: use object_new_with_type in object_new_with_propv
+
+ qemu-ga.texi              |  4 ++--
+ configure                 |  5 ++---
+ Makefile                  | 11 +++++----
+ include/exec/cpu-common.h |  3 ---
+ hw/net/pcnet.c            |  4 +++-
+ hw/sparc/leon3.c          |  4 ++++
+ net/net.c                 |  7 +++---
+ qom/object.c              |  2 +-
+ util/qemu-sockets.c       | 12 ++++++----
+ CODING_STYLE              | 47 +++++++++++++++++++++++++++++++++++----
+ 10 files changed, 74 insertions(+), 25 deletions(-)
+
+-- 
+2.20.1
+
 
