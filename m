@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWEF-0008Kr-3Y
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:19:47 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59581)
+	id 1hMWEu-0000UP-0O
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:20:28 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59768)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWE9-0008H2-19
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:19:41 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMWEr-0000Rn-4i
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:20:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWE8-0001P7-4a
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:19:41 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:44665)
+	(envelope-from <laurent@vivier.eu>) id 1hMWEq-0002F0-34
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:20:25 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:52041)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMWE5-0001L8-9E; Fri, 03 May 2019 07:19:37 -0400
+	id 1hMWEp-0002Bt-RB; Fri, 03 May 2019 07:20:24 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
-	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
+	mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1Mt8cD-1gU0if2kXZ-00tSSq; Fri, 03 May 2019 13:19:04 +0200
+	id 1MVe9i-1hCeqR1kiC-00RWMA; Fri, 03 May 2019 13:20:07 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -27,35 +27,36 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Fri,  3 May 2019 13:18:26 +0200
-Message-Id: <20190503111832.30316-7-laurent@vivier.eu>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Thomas Huth <thuth@redhat.com>
+Date: Fri,  3 May 2019 13:19:47 +0200
+Message-Id: <20190503111958.30825-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190503111832.30316-1-laurent@vivier.eu>
-References: <20190503111832.30316-1-laurent@vivier.eu>
+In-Reply-To: <20190503111958.30825-1-laurent@vivier.eu>
+References: <20190503111958.30825-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:/giShaB3q6BMKEIJ47bzB6xzi03fHl0BlHkOGMzhH0r9PGQ47hB
-	XnPw3K4OJdg1QGaxH8z8ziqKVpRfIF8y6zfR3iFN7UVhWX1ZQyTsmKvgyEjqNP7lp4UpPtp
-	gSXUDRJYbuWLk7Edy2mRwSOcXAMOO0wWrYK0nAUNkjwr9hLr573VQiT9EBDIW7I7F9H6RMX
-	Ue7/klX2cvd1aEg+++w+Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:TCZFDqBeCW0=:dyIoieh8JqKGlJq1fyQLx8
-	jvt63rayJMaP7KZqO45jAogpix+6BCkFy7b0WwyCx2EBGsTmw++4IHdGCLDXVrB9Afqix5+3R
-	ou+Yiye42IqyXow1o2gBWWGyfhaAy8qppG7q/0DQpJ8TuoBfOB7eA45+q/ztWrH+1BFeg+Obu
-	kP4Cr85vDimXT3UdnCfcbx0501XPm8b2nUWWaw3ddao9YF9Q2NojNFYtcdx52a7hSaEcE7iZ3
-	gOJ/CRmj6tIk+0DfGCXfXo76GiHz1mjulMEUmzQkGMFsz2+mkhk9QZqkZ269p+D96fxotLVOX
-	wdJRM4arWtRHBqgNN0Ax1bzW/QulLAozw7z0AH5xTFZGC32uCd971Jrq+hWSdXCIpw9iy6nV7
-	s7cRE3sT+1G6POe1D24t/yywhUW5DH5aQNysWIEdqT1k/ZS+dncoWq61Ep6SjU1od6PydfzEn
-	Gc5Y1ba79B9VOt7xAt8KMsaDfZq8Nd/DSrtNW1HKb7D+3pgglGQFbwt1GqKdMXH5sNf8ZjBIO
-	ojGtrGG+ub8bpp5zE01pBo8eE8xX6OaTlirZjduceZPgwETsI+sDrwF8Rc0myXHTv6UWlfCyR
-	7j52CWVjQZ6xCSoMk4JlHoHZ47c0P9pt5W+DFeick0bPEJlvqmNjygmmoY/yzj3SYjs1nebEM
-	6hjsFOeo8BUwP7HtGoiiPpXmP904jqt/5g2MLTT8v2lnz2DXpSIutdXZO4KUIUYfm5nzRTVxd
-	uyWl76ZQWBtSKgr8N4BNCXL8SDapKFnC9ZaIW/MzJTQV+ta1KvDrOM3XR50=
+X-Provags-ID: V03:K1:qpa8yx0JkaEtHqArsVLvP6OIZR1vdefw/Mlo2DZ7y9ukZm1QMXD
+	vWv8cXmO4N0jqrMrPwgdEgMKHbm4zrvZFEKoO+VtiJpE2hyf93QtGkPLiCJCpxdAtyExUBp
+	cxobzyNyMvofRcEHqt9OGrdECjnqpV6XeeIeSE9fYSXQvIU9EpwzlKMiub+LzeeGZluhNDF
+	wDmI3MLFjekxUsgCHySPg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:aUJGjar5Cbo=:7Z1T9/bt/CJfrWGVZlgn8a
+	rinF9f0Ue6yxi8kERTvRdPIGGmeWo/QfJIHTCjA73fKiAgE49RA6TxKANIpfB7bGPG5iZiRCw
+	gk9Z7e8syCQcgSq9STFE5zblpMN9EjI06Q/w/usftbOESYy6TQ9zMiaCVwXhHVNdSECQ3Nm2/
+	QVeW+846GE1bF5YRCtWN3yHrj0rw2NtdiEE7UGvKxKLeFggH2hjS8y//uTaRUu0fl53O8MnOK
+	a12HFFVXVC1F9DmglCFgDyf630dS3WJ0itjq/5FsPViKGYty02ycXGltOBefaYzn1h9OzIQZz
+	Nj8i32AKO/ATCUB+ILjRuGDXlvzmcfPZhvFP5GyHvXVgZdF0FulJ5iHoGCDcrKzWUe/jZrwxJ
+	Y7y8azzXf5dj3JM/EncASxDsbQKupJ0qkLww9oEZ/0GPmT5845GsGQx0SXGrDJpW2cxOVmWev
+	F80wdofyA/GbtuW95nW6yPXDbo6C64e9uWBfQ1jhC/T5yJEhoWxdGbiZzb+tTn2QpC0zfCrJ6
+	Or9DfkZ72gdyIFGLcQ0OM1G3oxPCU9fOtwVz0OHsfwZvRghPfOaQGhPR/yBp0iCyykbblpadJ
+	KHB+/5EczM1FH4dJdj+qWYe98IMHR40QHJgdIqvvCIJr8BY0wE0y4UiEOQ5xvq8IpDDlk6IWq
+	nsydj26PGSyLbSVMEmIBsZraw32/gFZOlGh2OPhtAOdAb1nfM7BqR0JgFX14h95Hm63kYKKh1
+	Z1xkX5QNE63k7eE9gJfjcphGQpNGpxfaTqe7zbMbbXEoSzj2NHOm0/0qU5E=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-Subject: [Qemu-trivial] [PULL v2 06/12] configure: fix pam test warning
+X-Received-From: 217.72.192.74
+Subject: [Qemu-trivial] [PULL v2 01/12] hw/net/pcnet: Use
+ qemu_log_mask(GUEST_ERROR) instead of printf
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,40 +68,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 11:19:42 -0000
+X-List-Received-Date: Fri, 03 May 2019 11:20:26 -0000
 
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The pam test generates a warning on Fedora 29 with -O3 compilation
-because the headers declare that the pam_conversation pointer to
-pam_start must be non-NULL.  Change it to use the same 0 initialised
-structure as we actually use in qauthz.
+Avoid to clutter stdout until explicitly requested
+(with -d guest_errors):
 
-Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Acked-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20190404091725.20595-1-dgilbert@redhat.com>
+  $ qemu-system-mips -M malta -m 512 -kernel vmlinux-3.2.0-4-4kc-malta
+  Bad SWSTYLE=0x04
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20190311102712.8572-1-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/net/pcnet.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/configure b/configure
-index 60719ddcc5b0..a2607afb3408 100755
---- a/configure
-+++ b/configure
-@@ -2940,9 +2940,9 @@ if test "$auth_pam" != "no"; then
- int main(void) {
-    const char *service_name = "qemu";
-    const char *user = "frank";
--   const struct pam_conv *pam_conv = NULL;
-+   const struct pam_conv pam_conv = { 0 };
-    pam_handle_t *pamh = NULL;
--   pam_start(service_name, user, pam_conv, &pamh);
-+   pam_start(service_name, user, &pam_conv, &pamh);
-    return 0;
- }
- EOF
+diff --git a/hw/net/pcnet.c b/hw/net/pcnet.c
+index d9ba04bdfc62..16683091c939 100644
+--- a/hw/net/pcnet.c
++++ b/hw/net/pcnet.c
+@@ -36,6 +36,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/log.h"
+ #include "hw/qdev.h"
+ #include "net/net.h"
+ #include "net/eth.h"
+@@ -1501,7 +1502,8 @@ static void pcnet_bcr_writew(PCNetState *s, uint32_t rap, uint32_t val)
+             val |= 0x0300;
+             break;
+         default:
+-            printf("Bad SWSTYLE=0x%02x\n", val & 0xff);
++            qemu_log_mask(LOG_GUEST_ERROR, "pcnet: Bad SWSTYLE=0x%02x\n",
++                          val & 0xff);
+             val = 0x0200;
+             break;
+         }
 -- 
 2.20.1
 
