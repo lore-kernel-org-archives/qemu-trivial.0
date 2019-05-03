@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWLl-0007pe-4r
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:27:33 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:33911)
+	id 1hMWLm-0007qx-D0
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:27:34 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:33929)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWLi-0007nL-MU
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:31 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMWLj-0007oN-QF
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWLh-0003RS-O9
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:30 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:39291)
+	(envelope-from <laurent@vivier.eu>) id 1hMWLi-0003SM-SS
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:31 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:47779)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMWLe-0003JV-DL; Fri, 03 May 2019 07:27:26 -0400
+	id 1hMWLg-0003O2-Ki; Fri, 03 May 2019 07:27:28 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MWhxY-1hFyvU3tqS-00X13A; Fri, 03 May 2019 13:27:09 +0200
+	id 1MXGSU-1hFQhI3qRy-00YfkE; Fri, 03 May 2019 13:26:59 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -26,35 +26,35 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Aruna Jayasena <aruna.15@cse.mrt.ac.lk>,
-	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>
-Date: Fri,  3 May 2019 13:26:50 +0200
-Message-Id: <20190503112654.4393-9-laurent@vivier.eu>
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Date: Fri,  3 May 2019 13:26:42 +0200
+Message-Id: <20190503112654.4393-1-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190503112654.4393-1-laurent@vivier.eu>
-References: <20190503112654.4393-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:G2yBrV7EeKrN/+ppX66Q4YSPLjd/pin9EJ9LPnkhhk4KBEsXU0S
-	18qNg1leysXag1GayfOmJqH5Yu6CwlUZvOo+2WAl5aC52MbuY3KqpDcbGUnCbmwmO2+iyRU
-	7cMaCBrq14EQNjFnR+L0w/Eo0dcP/QBOTMrF7B4UJrnFY+ANXYlRnmM2syN7sRb5xrfjDoZ
-	m+haxnDDdOydQMjaiapLg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:iuZKCtrbyDY=:7B1a4EN08eXbwEmHWnhbga
-	J3tOIhdeKPujwgVl6T1TxJtCaw/g8aiujYZYi0kCal9zXJpI/JbdA9aHBGIPspW7uu6Y+uZSb
-	kLraZ40mD+Cd9CqDL39ipPOFhg9hOI2T5z0o8vs6MqwP+LRDFox5jKCo7aaKfZuDOuGQB0lHt
-	I5kLXX/ANZ8auYPeIzpx/0JCjjcCb8FrLXc+e4S1q5/ldNnK1RCRH+aNaw0PDOI8sQHCWgcUg
-	EQpr0Tcy+YqyeIwaUEN0I3YCoNQFFoHx98cCZ2FtjkMi0ssDhE+Rs9kNIAHfK3oTSfIZuWSfD
-	wD5nLQTgYYk4nCkn7Mbl0YtUobIvto0/9qh2evss2ySQf/1bxMmYUHTRCoEOYtlnQz5/yOoZ8
-	wlIBe++/u+ox1Pz0S9KwT1UkUPCFFq7kiBXspPfnFStzb0kbiu/ls16CuLpd1MY6o6tKHrBOE
-	pce4GLsFj0AJxoH03aDKKtKuZUDNb4qwkUIoyGgEUQBszsDc1qNF7d3bqTXwsfHnMCHnQvFeN
-	2hbe/+AdXecPbu4kBGfw2i0Q5eJ56op2CUdmuGamTVaa8WUyUx4/k0d1Rr5vG1l9N4bsMAndF
-	pKCHvbT5lPylBtkOE4ERaQ9v2+1eiWyy3rYk6oJKlqqRaO04uz4cWJ1bZfWx8p1Kextd53msP
-	PlJ1/5VKkT92vS9N7C6NGd2DMraImBqKHrn91QEThtMiWAc0/iO/AZvB7KXtl1LIIH6pAKPkD
-	wVqx0vDbS3V0LHvHm+LdrtxrBm7KY4pFOWDD4g==
+X-Provags-ID: V03:K1:eZoFLMZ7GqJFJ1m+Y3F3OnKfxyRTXYIwRXKhmH354kfOD7VPQyc
+	GuPK472pHtvfYGZmk1KKGZMUsMv+oMyas4b7QxprT4xXbOyVCETL8nf0Q2h9hkJbtAMAGjZ
+	3pQAZu+trsolZe7TxnkM12h2aKTyB2JoIaYRtPZBbBXRQyxIyIHTRyHFwN6BjhkzP78eGc8
+	nz0+C2IxsZC3vfQtjfrlQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:vg346CyVjY8=:i5JReBCE3tbstLOeIGsvqK
+	a/wQLbUAwbH+zm1eEhWUYxorQNWKVxfGEyCg6Nh18ZhFXimtQUrfWZRmdYNzPMQNJ7aoj+bNQ
+	mC3eLnjSsspQqHjs2nc+atGmAvTDc4IDeieYoGINTvbMwKxK9i35rtrbk7IQJk7JdSKkg19rw
+	YUEg3erp07KlMv7bcqt6GBdyjACjASSAzQmZY1go2jZeRz8V4DLQeMmCU2ZB6pNAeIIkhc6J0
+	qUdYpiPj6/PLpwEOdavQuc3E54xIVgwS3c4AuC3G5vSbYmvZpZ95PYTU0Jtz0bwh/l/lHCEf7
+	9nfkP5N4lABPUETHhD9ytyK7PoCxWlwMT/MfWlQLSnaFic78PMUoc2PL4m5XSRWa+K9a4rpYQ
+	Mawhk+X8PFag3GLtqHzYuinvjF3q5zOGLNkbzH028z72IGobROiy5YJP2HFx4sUJxU8JUiGTU
+	hl/BUPc1yC4Vxnnu81GGBHg22klUOE6xukGJUa5FQdvvncLWVp1vq9tmy3iTZNkVQYvRvHnYk
+	UQEHxh7i5ZJDOubGJ2it5DtMJ4aTkV6gS9/L9kR2IFNlTchh28/SDSHFtBCz24EzKwStVNQMu
+	ZbXAPeU7wZdKUruaDGSHq2o9JoEqKQtSK8hYIjkaExNuXCDv8XSJUrZVs4Xmkbko4262/4VS0
+	6yDteDQO+y3kZjukSXjWw4nQTUGHjR6v3xjAYjDHEXioRUMyzmaJuEUnfj/yO42aicOse02eU
+	SKRCmk5rpzr4HFOdXaqIuJGwzAn22ZNiNZfHuHKaLe2GWMsYtMTSiDqfAq4Eyyxo9lMwmuMuM
+	XE1PC8MKKSvRxIBgpuNW9RtlrjlXgWVbz6ifKWKHXGLO5GJFR1MPyG+D1AENG6Z/aVYcgh1c1
+	bCVa/XcIEaArl+qUeoV2r3L08Ey7T7CfseEMs6e3lNEvYuQZzoaVK/pO2E/ymYmfP774RzP+c
+	B9+vGZ/uu1w==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
-Subject: [Qemu-trivial] [PULL v2 08/12] Header cleanups
+X-Received-From: 212.227.126.187
+Subject: [Qemu-trivial] [PULL v2 00/12] Trivial branch patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -66,37 +66,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 11:27:31 -0000
+X-List-Received-Date: Fri, 03 May 2019 11:27:32 -0000
 
-From: Aruna Jayasena <aruna.15@cse.mrt.ac.lk>
+The following changes since commit 8482ff2eb3bb95020eb2f370a9b3ea26511e41df:
 
-Removed unwanted includes from cpu-common.h
-This task was under https://wiki.qemu.org/Contribute/BiteSizedTasks
+  Merge remote-tracking branch 'remotes/jnsnow/tags/bitmaps-pull-request' into staging (2019-05-02 12:04:51 +0100)
 
-Signed-off-by: Aruna Jayasena <aruna.15@cse.mrt.ac.lk>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20190409155635.10276-1-aruna.15@cse.mrt.ac.lk>
-[lv: fix conflict on rebase]
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- include/exec/cpu-common.h | 3 ---
- 1 file changed, 3 deletions(-)
+are available in the Git repository at:
 
-diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
-index 848a4b94ab73..f7dbe75fbc38 100644
---- a/include/exec/cpu-common.h
-+++ b/include/exec/cpu-common.h
-@@ -7,9 +7,6 @@
- #include "exec/hwaddr.h"
- #endif
- 
--#include "qemu/bswap.h"
--#include "qemu/queue.h"
--
- /* The CPU list lock nests outside page_(un)lock or mmap_(un)lock */
- void qemu_init_cpu_list(void);
- void cpu_list_lock(void);
+  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+
+for you to fetch changes up to 2d2023c3b99edb33ad4bb9791f70456ea1a1c049:
+
+  sockets: avoid string truncation warnings when copying UNIX path (2019-05-03 13:03:04 +0200)
+
+----------------------------------------------------------------
+Pull request trivial branch 2019-05-03
+
+----------------------------------------------------------------
+
+Aruna Jayasena (1):
+  Header cleanups
+
+Daniel P. Berrangé (1):
+  sockets: avoid string truncation warnings when copying UNIX path
+
+Dr. David Alan Gilbert (1):
+  configure: fix pam test warning
+
+Marc-André Lureau (1):
+  doc: fix the configuration path
+
+Philippe Mathieu-Daudé (3):
+  hw/net/pcnet: Use qemu_log_mask(GUEST_ERROR) instead of printf
+  Makefile: Let the 'clean' rule remove qemu-ga.exe on Windows hosts
+  hw/sparc/leon3: Allow load of uImage firmwares
+
+Stefan Weil (1):
+  Update configure
+
+Thomas Huth (1):
+  net: Print output of "-net nic, model=help" to stdout instead of
+    stderr
+
+Wei Yang (3):
+  CODING_STYLE: specify the indent rule for multiline code
+  CODING_STYLE: indent example code as all others
+  qom: use object_new_with_type in object_new_with_propv
+
+ qemu-ga.texi              |  4 ++--
+ configure                 |  5 ++---
+ Makefile                  | 11 +++++----
+ include/exec/cpu-common.h |  3 ---
+ hw/net/pcnet.c            |  4 +++-
+ hw/sparc/leon3.c          |  4 ++++
+ net/net.c                 |  7 +++---
+ qom/object.c              |  2 +-
+ util/qemu-sockets.c       | 12 ++++++----
+ CODING_STYLE              | 47 +++++++++++++++++++++++++++++++++++----
+ 10 files changed, 74 insertions(+), 25 deletions(-)
+
 -- 
 2.20.1
 
