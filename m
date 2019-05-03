@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWF4-0000dp-8Q
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:20:38 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59935)
+	id 1hMWFF-0000po-TM
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:20:50 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60029)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWF1-0000ai-Ox
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:20:36 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMWFD-0000n6-Ga
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:20:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWF0-0002S7-OY
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:20:35 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:33045)
+	(envelope-from <laurent@vivier.eu>) id 1hMWFC-0002fF-Ip
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:20:47 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:59437)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMWEy-0002OG-HQ; Fri, 03 May 2019 07:20:32 -0400
+	id 1hMWFB-0002d6-8m; Fri, 03 May 2019 07:20:46 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1MmD6U-1gwDtP3RcO-00iDrO; Fri, 03 May 2019 13:20:16 +0200
+	id 1MuUrM-1gWTXz0yJu-00rXFY; Fri, 03 May 2019 13:20:13 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -27,35 +27,37 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Stefan Weil <sw@weilnetz.de>, Igor Mammedov <imammedo@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Fri,  3 May 2019 13:19:53 +0200
-Message-Id: <20190503111958.30825-8-laurent@vivier.eu>
+	Wei Yang <richardw.yang@linux.intel.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Stefano Garzarella <sgarzare@redhat.com>
+Date: Fri,  3 May 2019 13:19:51 +0200
+Message-Id: <20190503111958.30825-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190503111958.30825-1-laurent@vivier.eu>
 References: <20190503111958.30825-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:WVENs8aRRHdh926/GOI50v7+7FsI2RMUfj5W4u8niyT+lnGMKmk
-	ROSFvnfwdYfkW4xsdL68TdI6Bpiuf1NyJ18z4fWaq0nc/CVZL3+POUAiHXLGV6HHHJ84Kc7
-	pSqlXGCPlM/VPae1KDk96C42veb6rV9NLsC5NZvkXSodQ2Yf1kbbgjwXTdKDACxqoVP0Zzd
-	CO9CZJMYoTb0T4WRuIZgA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:O9C7hKXj8yk=:Hws+ek0Agkb4v1o48Vxu5V
-	eQO8BYP6pg8Wb8sutSn/C35wJh3kQfkdCyD6sC6jHjY1fCyQkUuMBJ/+FxJ1/ixhQpN9UAIHT
-	J+rpAV1hMDbnpJmeSPbsI+VN4snNqseedBeT81+HRxy/9P2xbNcQgiM/G5ZyiYVhQNJoZgOa1
-	K+smrwvc/EvN/19rtchj/prjZ4CrSQwoWix7Y29aHewHoXr5/ljNqFq2TOJBv5WJblbb0i/Ur
-	m42GAup2mBHDtBnqjGCSG0rhCQmO2/tJs+jfL+eg9QBuNQzQKGlM9rSElgzJTM/GtSrwufqmY
-	1G3+fe0wDWVJRq+ofqFNzGA0Fizv1j/hW4ueu1BOdOVfVB74HN8MLlxTROwtyYwn8rYvK8SRl
-	pxR3AO4z00+3Za8E6hU02TWZ061cm6RTNNFcxTxvwhJWHgW3bkE2g+tOXBnnZxRu/j7XBc+1h
-	SeujFhw3b/IlOX08x7Y33u+jh8WTGNgx9agzz8SFX9aBJ1dkAe4rRpMv5jVb5IRuCSMOmRNtI
-	LLydemXlmWwMluR2fATs96T/lNUwH/KaavfxFAzPk4rY9JAxWsPJ6KowRCihHemiBBmhhSiKp
-	sUaXi9GGfp8B+ssT3x5PqGKNYfhOWbU8PCt6L0iKI7RFfqJkPxfvFBDJsTZ3i9JWzugDtCnnS
-	3crUWMEPc2fcxiJoqYm8tmLvAIchoj8KysD2I0Nf137jFK4EQdSoTZR4YBkWHhHVxDfySvf/s
-	oKkCW1MD9gMN4tPntPG/psQ6czpbBeE4cr4Tnj2wX6QmETSS5jbRv8/tHfU=
+X-Provags-ID: V03:K1:ZeB29zT0oOs3OsLRmJuQ1prcSE/VXnf7d0USHLaAjAFvb1KYcPZ
+	nmiOwO7zs4KanW6YP8AKgXM0xXJIRzPiLiDNtar0jb8HFx9QzwFgW4UwwXiXQ6qpWnKftZZ
+	yYWD7BsxJU+slapMO8RMXG+zfKaYSw6SKS+uUotm0ruxC0T4BSNHrMCyb/t6I7ABPi8kWZV
+	1IGRR1vJmcE9Yu2GzLBNw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:GXTuGl2qoO8=:iza5ngT5lN6sUaPqF28whd
+	JjpqrF1jnaEMKUjoiOwTxTxZ6eT5z3FU7gs8tTC07ug8f1ND0BME9tvcFU9lV3gJnmrav3XPm
+	/sT8ZUkAdsAA8/sbGqUngjGFsyXO2B5g2geMEQMwn0TZSygsJnhG2shgjdOkiFGmXvBzGH73W
+	RzTz37703MZU/sD1QMdAIRpLYq2dUvYHdPRtPJpQOMsENDPydGvdukkIUFlE8zE1F9aZfsj7m
+	ghoMPFsgp0xUO3z8ngCEYfP5EU6Ar3bCGMDMv1pNcjAWPQrAbS3Qq5JMPmxuZtsztz3QiV8Ph
+	0EXkh5aqNyLhAWlORrxc2+pc1zV/kRk/LAaGRlXTN/6tlhQJenfE+XRmlFkwFMsCnAW6r7Bhe
+	Wq9lPlnmgfcGKiRO4rXYt+jJ/Ks80HnKEhM75QwrofALxV49biOvyq69wN9b82vGseOF7HL2B
+	ApGu01oAKbdpfiZxv3G8oXhTz7lzR42OBqkD/wB6DZRkCdquBo+QWGpghZmcpb2p908vVCMd9
+	ynEbRGgAnEoswOzkfLeI5h4IS9sR98bhfPW9HLb8YvK6Od1u0a4q5AP/dttuH7n+FES1wzH4O
+	oJ+7AQh2xUIGcGY6qYZy0Wj5k45xvoG1sR6Ej93y2XopZDexhtkH2eD4XDgMAHU9ex2harg4i
+	LDrfyGfd0ejS7wJboRqaO7nxzJuxG60a08nHvsBO8t26jUPykAsJJj6trt3LTURZ6WUPnMwpb
+	YzCDpi87CIEMA+gd04soVaCTDSyJKFMQepUblGxdBwh+HX/IfEuUwC+3bdY=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.10
-Subject: [Qemu-trivial] [PULL v2 07/12] Update configure
+X-Received-From: 217.72.192.74
+Subject: [Qemu-trivial] [PULL v2 05/12] qom: use object_new_with_type in
+ object_new_with_propv
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,33 +69,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 11:20:36 -0000
+X-List-Received-Date: Fri, 03 May 2019 11:20:48 -0000
 
-From: Stefan Weil <sw@weilnetz.de>
+From: Wei Yang <richardw.yang@linux.intel.com>
 
-The last *.aml file was removed in commit 13b1881aacc7e5018773bd545bbaf8d5476699ee.
+Function object_new_with_propv already get the Type of the object, so we
+could leverage object_new_with_type here.
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20190409053320.14612-1-sw@weilnetz.de>
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20190311083234.20841-1-richardw.yang@linux.intel.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure | 1 -
- 1 file changed, 1 deletion(-)
+ qom/object.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/configure b/configure
-index a2607afb3408..14f02452f9d4 100755
---- a/configure
-+++ b/configure
-@@ -7880,7 +7880,6 @@ LINKS="$LINKS python"
- for bios_file in \
-     $source_path/pc-bios/*.bin \
-     $source_path/pc-bios/*.lid \
--    $source_path/pc-bios/*.aml \
-     $source_path/pc-bios/*.rom \
-     $source_path/pc-bios/*.dtb \
-     $source_path/pc-bios/*.img \
+diff --git a/qom/object.c b/qom/object.c
+index e3206d6799ee..d3412e7fdca6 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -679,7 +679,7 @@ Object *object_new_with_propv(const char *typename,
+         error_setg(errp, "object type '%s' is abstract", typename);
+         return NULL;
+     }
+-    obj = object_new(typename);
++    obj = object_new_with_type(klass->type);
+ 
+     if (object_set_propv(obj, &local_err, vargs) < 0) {
+         goto error;
 -- 
 2.20.1
 
