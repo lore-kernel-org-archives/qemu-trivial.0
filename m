@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWGi-00029B-Ij
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:22:20 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60614)
+	id 1hMWGv-0002LX-Ta
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:22:34 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60685)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWGd-000251-8n
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:22:16 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMWGu-0002KH-El
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:22:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWGc-00050d-8e
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:22:15 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:47709)
+	(envelope-from <laurent@vivier.eu>) id 1hMWGr-0005Uo-Rf
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:22:30 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:50957)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMWGZ-0004uk-LO; Fri, 03 May 2019 07:22:11 -0400
+	id 1hMWGq-0005Qa-Bt; Fri, 03 May 2019 07:22:29 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
-	1Mt71D-1gU0vy43WT-00tTDe; Fri, 03 May 2019 13:21:56 +0200
+	(mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+	1My3Mv-1gXsYg3Qtz-00zWM0; Fri, 03 May 2019 13:22:18 +0200
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	Fabien Chouteau <chouteau@adacore.com>, qemu-trivial@nongnu.org,
@@ -25,33 +25,33 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-References: <20190503111832.30316-1-laurent@vivier.eu>
+References: <20190503111958.30825-1-laurent@vivier.eu>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <c2a39c3c-c9df-12d1-7dac-5ffe14a64ad7@vivier.eu>
-Date: Fri, 3 May 2019 13:21:54 +0200
+Message-ID: <ae6af5a5-e007-c7b3-4d52-e40a1b5ce9bd@vivier.eu>
+Date: Fri, 3 May 2019 13:22:15 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190503111832.30316-1-laurent@vivier.eu>
+In-Reply-To: <20190503111958.30825-1-laurent@vivier.eu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:AFfU9T91hKdlrA3ZReUoWPrNPRd01sMOK9UNtrHjeM4nkg4tDtR
-	kE/AwdBKodOwr4+/BFJ9OAhcBj5XPi8uI9nCFulmFBIR1yj0j6MuZJXMbmyAs/VepUAqLwl
-	XR46je7pmTvmRuJbRJGUK3F+oTzvJjhXYPdYwg2N1l4eV58qjSe2jTC33vA/kUx1xbEts4i
-	+OJQc/QCsXIHLqfMB2Hkg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:DdzfAstBuoc=:BpAm9TND6rYC0RqcacCmw8
-	iVqKHjbK4i+npwyE3yOdFDZ79qBR7A2akhOvV25y2bdoPz5MGpwzg7pn+y2mtBNHZ4mP22hv/
-	AHpejVR/11TUcVT1lATXORLdROzzy1yXnb2SGdUFVCrB5OUj3VCwQnDS9BvboFt7f4ak3JBQB
-	DOF56ZWAJ3xsN9vBy+4kiQfa1LP/2YvbUPpqDAIZRJ4IkGu5J4Pd9mX0N/zIpsOQOrb4QQMxK
-	0J/2lL6h2A84csBDhjnJtyBh0ntGG1SLC1y5zVTwd84/0YCjG6WTi4TuMR7ldzd2VqH9IqKXU
-	XGbxJfxBXQJf4MTI4wqG3Lc43bVRKjw/97seMT6sJ8rzoR1aGaZTwjXRZTrpvJsginFM82LS8
-	Ld8le1eiTlswwVHAphMzfljHD0IoCiX1DfUjVwPsmqVUpIdDCdqF63FktUU6dW975caM6nRMK
-	Q3z3HG2tkBr8Gv7ABSWoIAIoL01eEurDTWS9fTbCehZn84OWPR6evrpplFnEF5eLMzbhcYDSq
-	ey8TmLElnRSKGGrAj6KND2HGAt2JUQUKfekQZscuNVwLprUw5CGOOXuQGUeEh5bLfrKK/rEEB
-	ORZ7QgrNkTVnjzbn5BhNwKTmJbrJ2yn0BQ51XNm4OmIdDf3bhnneuwB5BX0mh6pdQmKeNtw2r
-	W1lZ8DGIDvgZwis+ja5NtR2nE1W2v2DB8ZKbAzYWWS3G8u8T2IeXQI0JXdGj3icntbFbVv44F
-	l/WyvAsj5ORWMj6w0Q1DmiPKLtUCGhFHQUaLh9u/hPR9IKH7I6C3hIhYU+0=
+X-Provags-ID: V03:K1:spxBM8O8aXQNUOAemCKjjQt+pPdTAS+JI3VwDpTW39J4cGiciGL
+	feNN4FnkTvDFD2xkMCu8WOTfqw368rm0wiexh470hivYVq7zcRZqFyduD//wNUVgOnnZe/S
+	a5SL2bY2sFYnCCov8kPbJCtuy9WJMTnVllSAywDE3+F7rbxTKXfQPIhHa26/OMx4A8MsFP0
+	/Ej0GDXUrZBB27+waNyYA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ekvgk/YOvSA=:dL+BVddG8UTHr6LWgnGUqm
+	bFTuqdF1hkNZj0lgYs4a7cmOC7+YAUhrHJ8H3UMspB1ryAjsgrh/M3JllUQaMp4bnj2tzE9ID
+	nWcwifRGq6TRQfhATpm9xwTwTmwClASWh3PBU+xEj2ir98ZZxzI2k+B7T3HryWuu6kzAjA5MP
+	25fV+Erizp4d27RuxBPSb2mxB9ICSFXj7CIMbKbV8amgifz1hHDn7AS7Z5kCJKS69QggSY00n
+	2ClD6kpIM0kbTnr4PH4rDNnBmzk3AWqPbszUEuK1PMDznw20YcHhFWnnvo/yqdU8FfVUaIHl/
+	z0fm29KBYYFKt5ynYLvSDOMVUsDh+wUvmgNtaz2o4DkStoOAQ0/YrghxuE0rgBWkX3PiD2/bu
+	UCYyD+1/RhtlLRPsvX9PgnDhPYjomtP4xlGV/GSoxvnKwpxDGzu5D/UW6oJx6cp9TtqspvAnq
+	NGyG4erDnQEeC/LnzuSyVMh+Infk4F7j1GffgQ8SN3uI2DbEBI4sN/sxQJ0vIGbb4FEXlsVOJ
+	fXG9l0YDUPMwUT6fZri0tQJMF+ChUW6tIZMfPOD8k+KW4hLV6rYrXxJ3OvhHJL07vXdxkQlGe
+	7SHeD2vJibtSNxColHesYLcPQnxoY9CE3LlaSW8aP1WFUxDXoedOd6zQE28Ie7apVYWXQd7bD
+	KTxu9lUflGa7GpO+kF+s2GtZvKIeaAJhpXsepiwt70ioOK/hi0UE+Cx8XdpLhQDs6/3GivkKx
+	/E4ji4ioWqXV1tmNsk+eIx2oGZa8YxEtyW8m0jvvYW10Fn3OJQ/f5IWFo/g=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.24
 Subject: Re: [Qemu-trivial] [PULL v2 00/12] Trivial branch patches
@@ -66,9 +66,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 11:22:16 -0000
+X-List-Received-Date: Fri, 03 May 2019 11:22:33 -0000
 
-On 03/05/2019 13:18, Laurent Vivier wrote:
+On 03/05/2019 13:19, Laurent Vivier wrote:
 > The following changes since commit 8482ff2eb3bb95020eb2f370a9b3ea26511e41df:
 > 
 >   Merge remote-tracking branch 'remotes/jnsnow/tags/bitmaps-pull-request' into staging (2019-05-02 12:04:51 +0100)
@@ -128,8 +128,10 @@ On 03/05/2019 13:18, Laurent Vivier wrote:
 >  10 files changed, 74 insertions(+), 25 deletions(-)
 > 
 
+
 Forget this series, the send has been aborted for an unknown reason.
 
 Thanks,
 Laurent
+
 
