@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWDw-00087P-Tj
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:19:28 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59396)
+	id 1hMWE0-0008B7-2w
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:19:32 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59440)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWDu-00085F-Pk
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:19:27 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMWDx-00087z-CQ
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:19:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWDt-00019u-TI
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:19:26 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:58607)
+	(envelope-from <laurent@vivier.eu>) id 1hMWDw-0001Cq-F8
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:19:29 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:40219)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMWDt-00018e-LB; Fri, 03 May 2019 07:19:25 -0400
+	id 1hMWDu-00019Q-8x; Fri, 03 May 2019 07:19:26 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1My6xz-1gXsbu3vP5-00zWCY; Fri, 03 May 2019 13:18:58 +0200
+	id 1M8C8J-1hRl140LeF-005LgM; Fri, 03 May 2019 13:19:01 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -27,36 +27,38 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Wei Yang <richardw.yang@linux.intel.com>, Eric Blake <eblake@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Thomas Huth <thuth@redhat.com>
-Date: Fri,  3 May 2019 13:18:21 +0200
-Message-Id: <20190503111832.30316-2-laurent@vivier.eu>
+	Igor Mammedov <imammedo@redhat.com>,
+	Stefano Garzarella <sgarzare@redhat.com>
+Date: Fri,  3 May 2019 13:18:23 +0200
+Message-Id: <20190503111832.30316-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190503111832.30316-1-laurent@vivier.eu>
 References: <20190503111832.30316-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:0QU5eNHOBHQ37BR4B1E92mAHxrTiY4zvXiPU0hADaB4iQHXA5Sq
-	h5sMHrvos8z0p1koLJgZvY2tWviBHmb5SW/oHK0UhoaXD2jGKfGG9jjfgsZ3XK/UqFPZpXI
-	Cd+hK8P0WOxNt3dMABVm1W4lmURetT0gupaxVN7SF56eOEXu8Os9g3lY4IVhzMgXGAcGwEk
-	DYMEj1G77xshBWiWOe5zA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:0ncdUtw6OE8=:uj5jldxlgdU53qEM3jkdLO
-	rzTpLd0dmXC50Nku4aEYxYsSS5fRWu48VNFKC0XRPqMYfzw5kJegh8LA7j6iQdbGAhtcmN+Zn
-	kJwSDvWze0miT1GQ/dRn7RrxZW+k3cc0ygOBOzOesJM7rbLQM9XsIi38eX3iO2GAKq2EmzuJo
-	IG8U68jBtmNiFygjGtVCs57AuvdyHp99+bjv/j4zaCnkel2CE3jlOj5yS08RVZ4iu+4B1+iXS
-	ZbQqVxkxc297DjBReYpPDbSE/eJxHtpK3Q5RvNHpNg2S6NcrfqAidFuc0mL+AuvOzq5ZQYogV
-	5ESI+Wg1HdfEINdb7uUn5M7GVortHobiwdbvXlIKnFV5cUGaC+gDBb/lPfkpby8W6YaV5wkn+
-	lKVdpid5/H8JaK+W8cTYxxzPtCvuiibKlfrDSk4tNhTwAwmw43xYY0vmtT4zT95RaYNQD+wl2
-	89whLqbZZIpYA+7DUXvdx9JME/eYjdEZ3CGgzqu4RvPZ7AG3lFCZ3uecNzjGB/7gKhbCfzk3Z
-	TZheb+t4FRT4xlAeEYOkrzRDsL5wsdyru5c4/qrhPSzAUczNuhcXNV/xR7ycYSPsDO2FkcE2m
-	Iu5Mx3n9MFgVXOnZy9cpjNSxr1I1yDOThPAxautNo6viqhvwTi2WM9/wFxi3T3d+34eI9wKXC
-	zd8l6lWAvvk8wPh3C61eJ0/saUIvy0p3BpWW7WfX5nBtj64U+/4t+s3xIko0P8+mWY/ES5zpG
-	fwbeatyzhu7jKRvLxlU3gCDTbPd26c4j+h+CwdRMk0O5+ieOH1InDOy2T+4=
+X-Provags-ID: V03:K1:r+Vs6CZi8JNSFr8YokVIJ911RTcHv7fk6gLBqkk4BiIkk0vPIv/
+	mYR7ejTgx0HvCDNHZ+QwH5uUenYpyzUk8DtnaewHB4MSr2V9IcoeHNtCUnOnpodFIDnpAcX
+	NOErDHKNHS5kGTl7YcQc82uqj+P58pF5Ok4TfqQ1a2tom9fuNTAWuUZLA5AmWAV9CdiR6uJ
+	OxjczUFGJFB7Nhd801n8A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:zM+h+jotzoA=:ajt76nf5ZJpNMR5fH3HiEy
+	020n9ugWQ2TVITlQpm37Wy68gDZ1wsQ7fxxd7KgDKa7ocrXrlIkfrHT/CCZyJEWS8WrqoOx69
+	DFGJRgmywtED+JfUaa4v3F7xOgRI6Ef+5RVesr1rhysfQKbG6IboI43m/oxjFiay4oheKxcA4
+	3wZdYnVGrNj6ycAZFXBdK82eDXkV4A3tYQdBNTHOyoBQSPcDA0m0XWUxfGhUYTxDSVwfLTHE7
+	nDVYYdcuEWsagw30aAMQwcbscq4TMm6JpRIClAtl+F1jvZdEMQc0640ra/7OqzeYQwLWIzr55
+	zrcI5v3ILsRbomqOSD/aumnqbdjhwWeB7bGXbyikhqRgfDtMxqT+E6L0XyTV+oSxJAzhMBaZ9
+	vRkYeEvBzq/1JKMN5na5DxLpAjS9x8H3mDpV7jrfwALJsQD8m9gG/Sys2Ct/QaxkBsbwbrtuA
+	Y863va83QAHQt85IWBUpQQGPGjz1F5EhRWs5IkyUcB9R/pPn6s7BzqcqaWGlbOXJsTV4GWZUj
+	Ou3Gx7ETeofKzgQNyAvJVmHm8rzju082XYxciHth/XAlzCC6TnK8uJPTSBiOFsGZYULXhxqBU
+	Xs0tohtHA/ieXf4ck2xJ1zq6fqpBij9CTBGaktP9pANhnfOCNyl2lW0nfGmnTmvWPPxEO/1az
+	A8zI9icavVfpq8awdrX8jaZEREbIUD8vorunmsE3palp0eqLi4ssYVT0fszRbi8sqtuqVGXkq
+	U85BeS3qqR3kEDQxInraYa8sof3AOMyNsvr4+NqvbtFB2QPFVwJJIiP0OUQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: [Qemu-trivial] [PULL v2 01/12] hw/net/pcnet: Use
- qemu_log_mask(GUEST_ERROR) instead of printf
+X-Received-From: 212.227.126.134
+Subject: [Qemu-trivial] [PULL v2 03/12] CODING_STYLE: indent example code as
+ all others
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,46 +70,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 11:19:27 -0000
+X-List-Received-Date: Fri, 03 May 2019 11:19:30 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Wei Yang <richardw.yang@linux.intel.com>
 
-Avoid to clutter stdout until explicitly requested
-(with -d guest_errors):
+All the example code are indented with four spaces except this one.
 
-  $ qemu-system-mips -M malta -m 512 -kernel vmlinux-3.2.0-4-4kc-malta
-  Bad SWSTYLE=0x04
+Fix this by adding four spaces here.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20190311102712.8572-1-philmd@redhat.com>
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20190304071631.27567-3-richardw.yang@linux.intel.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/net/pcnet.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ CODING_STYLE | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/net/pcnet.c b/hw/net/pcnet.c
-index d9ba04bdfc62..16683091c939 100644
---- a/hw/net/pcnet.c
-+++ b/hw/net/pcnet.c
-@@ -36,6 +36,7 @@
-  */
+diff --git a/CODING_STYLE b/CODING_STYLE
+index 90321e9c2821..cb8edcbb3692 100644
+--- a/CODING_STYLE
++++ b/CODING_STYLE
+@@ -147,10 +147,10 @@ block to a separate function altogether.
+ When comparing a variable for (in)equality with a constant, list the
+ constant on the right, as in:
  
- #include "qemu/osdep.h"
-+#include "qemu/log.h"
- #include "hw/qdev.h"
- #include "net/net.h"
- #include "net/eth.h"
-@@ -1501,7 +1502,8 @@ static void pcnet_bcr_writew(PCNetState *s, uint32_t rap, uint32_t val)
-             val |= 0x0300;
-             break;
-         default:
--            printf("Bad SWSTYLE=0x%02x\n", val & 0xff);
-+            qemu_log_mask(LOG_GUEST_ERROR, "pcnet: Bad SWSTYLE=0x%02x\n",
-+                          val & 0xff);
-             val = 0x0200;
-             break;
-         }
+-if (a == 1) {
+-    /* Reads like: "If a equals 1" */
+-    do_something();
+-}
++    if (a == 1) {
++        /* Reads like: "If a equals 1" */
++        do_something();
++    }
+ 
+ Rationale: Yoda conditions (as in 'if (1 == a)') are awkward to read.
+ Besides, good compilers already warn users when '==' is mis-typed as '=',
 -- 
 2.20.1
 
