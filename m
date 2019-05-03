@@ -1,67 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMbF3-00024V-Bg
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 12:40:57 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:53553)
+	id 1hMbXz-0005sJ-I4
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 13:00:31 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59132)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hMbF0-0001zm-Kq
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 12:40:55 -0400
+	(envelope-from <alex.bennee@linaro.org>) id 1hMbXx-0005oW-24
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 13:00:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alistair23@gmail.com>) id 1hMbEz-0000wq-EX
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 12:40:54 -0400
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:43496)
+	(envelope-from <alex.bennee@linaro.org>) id 1hMbXw-0002FG-0e
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 13:00:28 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:35446)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
-	id 1hMbEw-0000ox-S0; Fri, 03 May 2019 12:40:51 -0400
-Received: by mail-lf1-x141.google.com with SMTP id u27so4584547lfg.10;
-	Fri, 03 May 2019 09:40:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=ripvz1kd5CwIb/AtX0NS4Ufbgm5ZvRnjen61yerimug=;
-	b=bKxPvSgyzDlmPwPjaiGatqqq0ygnikxQtk5qweFA7p4uihXx4JWqSElJviBfhQXh8n
-	jbidI3fVjgqeVM2+p1Fmvvavgtho1pMcl0ZWmLSCLYoPpg8pnrs7YrBFLi2w/Fa6Mo7G
-	DxhUSU/to4Vdmlwodypseg28O+EnJWeylD5HfnLzCYSw29HV12wL1QEZTCb9yUvcS9cH
-	kpd2p7936P3JCHuc3vrM7pyKE6VtRhC/W89B7K9lSZXUlWkv3Zn1YnoIaKvTt1v1+umw
-	00FldOhaHTPgvW+NbsIFht0X3gDgBF2bOX849tqodyIZkSjCS6nRurn8hdWrGoBxIe10
-	TCFA==
+	(Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+	id 1hMbXv-0002DD-Nf
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 13:00:27 -0400
+Received: by mail-wr1-x443.google.com with SMTP id h15so3025005wrb.2
+	for <qemu-trivial@nongnu.org>; Fri, 03 May 2019 10:00:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=references:user-agent:from:to:cc:subject:in-reply-to:date
+	:message-id:mime-version:content-transfer-encoding;
+	bh=EIi4K2dkSBbuhfS2t70Kzgd4m/ZSCWhAQBd5+AA+hJM=;
+	b=asgfMBOtomdN8aCDKZAOO2DEUwKq6iVGJhawyklo26ErrHVll+FJ2+FRuBNNkVXEGB
+	sU3QFqn3uUQoDWtagpo+UJhXTXRIt88XswZWOAay+ZuGxQyYvmq83smE5X1yBHIKXkB7
+	BO2wzFFhJpcSMsuC6FpzS/DZmgTykz6+hAuyzWYbsH8N1pokdlha1FrTigJVMxm3R199
+	1JdZgYPv9SNVfEy3WG3cXe2jW34hHZeK+Ixg4KHrymekq7nrYa9Xl6wZbNkagLzftekh
+	rADFpkxonWLnYTs4o/K71pgPajX7UdPCk0WLsxAkBPGWlVhk1IzauXK4Qc+FemG/em8x
+	hTAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=ripvz1kd5CwIb/AtX0NS4Ufbgm5ZvRnjen61yerimug=;
-	b=LqRHRCX1/pcDBHwBaIgEYS9qw+ZH57T2hmGnm+C7Y/x4j0dy6Q0LPah+yK+HTV1umv
-	5OLBhS3oDt0QlJ/JaIQU8WxyoDrX9/12pCtsy1CuapAPFVUu9gLgcZKsM3PcFE6/nvle
-	qKkdi31APnLenIYyPtnL46ktls8MVKZSeeXiXxzw5Dmi7HUtrFHPSSOdZfunIrX/e+YS
-	gj6Xs+QldGddEtekiI9c6VkgWqWhp3osiuR6bXyHgffII5EC0PlWdwpjvBRJY2X2D6q6
-	JhCAd9hopPfp9q9kRE5JLtdLVN8sSxgGNa53zxvhhtN3HSYpYn9aSN15qxkRz83FqXID
-	yfJg==
-X-Gm-Message-State: APjAAAVHUAE+NkxRxHT9yr5T+mCr0BXe3B46LI39VljkHyXphlrtsSgV
-	yskNMCZ8azCEqAMdgQsFuWPd0GQYtQjmp26mKr0=
-X-Google-Smtp-Source: APXvYqy8K1jfrzBRYYG2lRAxsSabCM+VK3sfeUO+SIMSc7Yrt7BEzUjeu4B0q3ucZa0JF1NDyCw0GhfUrmyjwyNxZE0=
-X-Received: by 2002:a19:a40f:: with SMTP id q15mr5132312lfc.121.1556901648564; 
-	Fri, 03 May 2019 09:40:48 -0700 (PDT)
+	h=x-gm-message-state:references:user-agent:from:to:cc:subject
+	:in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+	bh=EIi4K2dkSBbuhfS2t70Kzgd4m/ZSCWhAQBd5+AA+hJM=;
+	b=fgNqG9n8nQ9Gd2H7wZNT/hXlF7Fs+h8G+dQbfpKIZAjgLV5QwXpatm3QyzaXfpwfow
+	7c6udimgfYRuhwWT/RyHSjSF+QAkZmr4H34bC4Ow9vDwHrNPWsZwWFtsopq8Exkkh2I5
+	5+4+4S6FQBgQ9cuELzmLMi/9xMt8auDwisrqctOoXb37U6At4jE4VNoRaDW26XW8X+2e
+	c+4FKZS7cBSvFzm5yyEw/3pAHL6ZbGJ0a2y9TC+/mubRfukSXl17cU1+1iLTTM+L8PIl
+	EOlr2ADX7undslY9NrvdgRuhlmZ0jp0aj6Fflujkn0Ha6TjG+PTzAxyMJJFYaSVKWEQG
+	HoMw==
+X-Gm-Message-State: APjAAAUAYZCCZCvHu9KGcjwADKZXqpCmqBWg5hkYk2tchtPhws5OL+Us
+	pnvhTpnzgnXKHzpPIa0aLhiZuw==
+X-Google-Smtp-Source: APXvYqxB3Erbn6n5CoH9GnWhM9Q3MK2m5U0VE1h4JogAF+x0D2VP4DpbSNtj3FYRo/dcJJpZF5Y6nQ==
+X-Received: by 2002:adf:e74b:: with SMTP id c11mr1351828wrn.221.1556902826282; 
+	Fri, 03 May 2019 10:00:26 -0700 (PDT)
+Received: from zen.linaroharston ([81.128.185.34])
+	by smtp.gmail.com with ESMTPSA id t67sm3935497wmg.0.2019.05.03.10.00.25
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Fri, 03 May 2019 10:00:25 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 5DDBD1FF87;
+	Fri,  3 May 2019 18:00:25 +0100 (BST)
+References: <20190503154424.73933-1-liboxuan@connect.hku.hk>
+	<87bm0j4im0.fsf@zen.linaroharston>
+	<CALM0=-=b+z2aW-cuM=hmk3_oKG7w3ianMo_ZA7gj8zMgCOfC3g@mail.gmail.com>
+User-agent: mu4e 1.3.1; emacs 26.1
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: "LI\, BO XUAN" <liboxuan@connect.hku.hk>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Eric Blake
+	<eblake@redhat.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+	<philmd@redhat.com>, Yuval Shaia <yuval.shaia@oracle.com>, "Michael S.
+	Tsirkin" <mst@redhat.com>
+In-reply-to: <CALM0=-=b+z2aW-cuM=hmk3_oKG7w3ianMo_ZA7gj8zMgCOfC3g@mail.gmail.com>
+Date: Fri, 03 May 2019 18:00:25 +0100
+Message-ID: <878svn4gnq.fsf@zen.linaroharston>
 MIME-Version: 1.0
-References: <20190503004021.13814-1-alistair.francis@wdc.com>
-	<20190503092424.GB17905@redhat.com>
-In-Reply-To: <20190503092424.GB17905@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 3 May 2019 09:38:50 -0700
-Message-ID: <CAKmqyKO5Mhb5RyA13isjMJY2a6uUOLCmPtcK_HRt3uyWgm9XGw@mail.gmail.com>
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Alistair Francis <Alistair.Francis@wdc.com>, 
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"kraxel@redhat.com" <kraxel@redhat.com>, 
-	"riku.voipio@iki.fi" <riku.voipio@iki.fi>,
-	"laurent@vivier.eu" <laurent@vivier.eu>, 
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::141
-Subject: Re: [Qemu-trivial] [PATCH v3] hw/usb/hcd-xhci: Fix GCC 9 build
- warning
+X-Received-From: 2a00:1450:4864:20::443
+Subject: Re: [Qemu-trivial] [PATCH v4] hw/virtio/virtio-mmio: Convert
+ DPRINTF to trace and log
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,83 +80,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 16:40:55 -0000
+X-List-Received-Date: Fri, 03 May 2019 17:00:30 -0000
 
-On Fri, May 3, 2019 at 2:24 AM Daniel P. Berrang=C3=A9 <berrange@redhat.com=
-> wrote:
->
-> On Fri, May 03, 2019 at 12:42:04AM +0000, Alistair Francis wrote:
-> > Fix this build warning with GCC 9 on Fedora 30:
-> > hw/usb/hcd-xhci.c:3339:66: error: =E2=80=98%d=E2=80=99 directive output=
- may be truncated writing between 1 and 10 bytes into a region of size 5 [-=
-Werror=3Dformat-truncation=3D]
-> >  3339 |             snprintf(port->name, sizeof(port->name), "usb2 port=
- #%d", i+1);
-> >       |                                                                =
-  ^~
-> > hw/usb/hcd-xhci.c:3339:54: note: directive argument in the range [1, 21=
-47483647]
-> >  3339 |             snprintf(port->name, sizeof(port->name), "usb2 port=
- #%d", i+1);
-> >       |                                                      ^~~~~~~~~~=
-~~~~~
-> > In file included from /usr/include/stdio.h:867,
-> >                  from /home/alistair/qemu/include/qemu/osdep.h:99,
-> >                  from hw/usb/hcd-xhci.c:21:
-> > /usr/include/bits/stdio2.h:67:10: note: =E2=80=98__builtin___snprintf_c=
-hk=E2=80=99 output between 13 and 22 bytes into a destination of size 16
-> >    67 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVE=
-L - 1,
-> >       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
-~~~~~~
-> >    68 |        __bos (__s), __fmt, __va_arg_pack ());
-> >       |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> >
-> > Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
-> > Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-> > Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-> > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> > ---
-> > This is the onl patch left if my original series "Fix some GCC 9 build
-> > warnings" that hasn't either been accepeted into a maintainers tree or
-> > fixed by someone else.
-> >
-> >  hw/usb/hcd-xhci.c | 2 ++
-> >  1 file changed, 2 insertions(+)
-> >
-> > diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
-> > index ec28bee319..a15b103b65 100644
-> > --- a/hw/usb/hcd-xhci.c
-> > +++ b/hw/usb/hcd-xhci.c
-> > @@ -3321,6 +3321,8 @@ static void usb_xhci_init(XHCIState *xhci)
-> >
-> >      usb_bus_new(&xhci->bus, sizeof(xhci->bus), &xhci_bus_ops, dev);
-> >
-> > +    g_assert(usbports <=3D MAX(MAXPORTS_2, MAXPORTS_3));
-> > +
-> >      for (i =3D 0; i < usbports; i++) {
-> >          speedmask =3D 0;
-> >          if (i < xhci->numports_2) {
->
-> Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
->
-> but it looks like Gerd already sent a pull request with my patch for
-> this from a few weeks back
->
-> https://lists.gnu.org/archive/html/qemu-devel/2019-05/msg00543.html
 
-No worries, I'm just glad it's fixed.
+LI, BO XUAN <liboxuan@connect.hku.hk> writes:
 
-Alistair
-
+> Hi Alex,
 >
-> Regards,
-> Daniel
-> --
-> |: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
-ge :|
-> |: https://libvirt.org         -o-            https://fstop138.berrange.c=
-om :|
-> |: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
-ge :|
+> Sorry about that, I am still trying to get familiar with the patch
+> submission process. Since my patch has been changed from your last review,
+> I thought it would be safe to not include the r-b tag from last time. Will
+> take care next time!
+
+That's ok. As a general rule as long as you haven't substantially
+changed a patch it's safe to keep previous r-b tags. You can always
+mention it in your cover letter if you are unsure.
+
+--
+Alex Benn=C3=A9e
 
