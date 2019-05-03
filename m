@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWF4-0000dU-3s
+	id 1hMWF4-0000dp-8Q
 	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:20:38 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59922)
+Received: from eggs.gnu.org ([209.51.188.92]:59935)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWF1-0000aB-90
+	(envelope-from <laurent@vivier.eu>) id 1hMWF1-0000ai-Ox
 	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:20:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWF0-0002R0-83
+	(envelope-from <laurent@vivier.eu>) id 1hMWF0-0002S7-OY
 	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:20:35 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:52677)
+Received: from mout.kundenserver.de ([212.227.17.10]:33045)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMWEz-0002Pv-Vy; Fri, 03 May 2019 07:20:34 -0400
+	id 1hMWEy-0002OG-HQ; Fri, 03 May 2019 07:20:32 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1MiakT-1grbKw1aCd-00flhN; Fri, 03 May 2019 13:20:09 +0200
+	id 1MmD6U-1gwDtP3RcO-00iDrO; Fri, 03 May 2019 13:20:16 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -27,36 +27,35 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Wei Yang <richardw.yang@linux.intel.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Stefano Garzarella <sgarzare@redhat.com>
-Date: Fri,  3 May 2019 13:19:48 +0200
-Message-Id: <20190503111958.30825-3-laurent@vivier.eu>
+	Stefan Weil <sw@weilnetz.de>, Igor Mammedov <imammedo@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Fri,  3 May 2019 13:19:53 +0200
+Message-Id: <20190503111958.30825-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190503111958.30825-1-laurent@vivier.eu>
 References: <20190503111958.30825-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Mo0DHmSk3NXOQ39/99q/lX9tdbs4b1ZFlo11KKPGiKVH2+VmJKa
-	0Cd0YVYHpijJ3+gDGvWdA0yaN1yOXchrDhi8R9TF0CpCtKQZ74J+3AZ5sSFtOJ11UyNDoWk
-	ovvZ4wElGnjhzG0t26GioGcRU0sXQNHtRlBX8+iFUv4Hux2QGV7e8Wu9ApYcvwVBtbqNQ5X
-	xMBShRn2O39O56lK53mKQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:4D1AAZDHlv0=:xIB9Y2RHqtxeTDvzVQnygV
-	+2vQhicwVLUHTHmfF5DqI3Sc/7CBJIYl3CxGx/K6FDd/hLrnckHr67zsMOB9THNQC8cANZnzD
-	Qut8GjSpgd+FszRd9HRcisewgw3YmSay2ZIbTK3Elw7a8/F/vmHg5zf8q0YVVToAZRw+6bQd/
-	YEtC20znLRW6V7FryjeC1WxYE/mCKWMflbk9GV7V85c4KmA4sTsYfM4lwhp5190mS5IVNvSt+
-	VM9NTdDLxVYyrinqkSvRwMf79cp33mXiB1MqVNNyV8V9/buKXqak1F61hCqA8Xw+pxsSX0gnX
-	zmKQuXQokWS6KIS7roXuCGRAGPtH89rmR5q7T7rpm8yx1DIvVD9JJbwBABHtstc83VaCtLyTl
-	Y5NkTV44IqtMLy/tpypxjuLeZ/zEd3LvoaR1LiaclGdHXsw3Uz/aIBlCI76iRL7r0DW5WyzAM
-	BKAhFSJCCmeIyJyRHmjM7JIWOnNewyTfObMHD8OWs6TzrKbA4WKt09a7tbbNFRGINScpItAl2
-	HXwgiVvjE8jqfXEJiXzGE1VIv/cEjUti4Deoq5gz3bGOANawGRKmbcE7sVQV8T4bexTDJ0Bjb
-	dPGpSOtnIJew2LXd7fmH8awH7joTXOC29zre5BI8OE4/i9wWalx5nxlhOQkRR0VbbaMthwEwO
-	hvvoV8jfIpVgO3GcFJFfooVAld/acsYPH1C/iP/8ZjbP1GDNY3cOfXE6/7PphPCO3IRUyTdP/
-	xrpXRnNzrYuDN5TcFNfZZpCp/GoK1V5WQ0k23w==
+X-Provags-ID: V03:K1:WVENs8aRRHdh926/GOI50v7+7FsI2RMUfj5W4u8niyT+lnGMKmk
+	ROSFvnfwdYfkW4xsdL68TdI6Bpiuf1NyJ18z4fWaq0nc/CVZL3+POUAiHXLGV6HHHJ84Kc7
+	pSqlXGCPlM/VPae1KDk96C42veb6rV9NLsC5NZvkXSodQ2Yf1kbbgjwXTdKDACxqoVP0Zzd
+	CO9CZJMYoTb0T4WRuIZgA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:O9C7hKXj8yk=:Hws+ek0Agkb4v1o48Vxu5V
+	eQO8BYP6pg8Wb8sutSn/C35wJh3kQfkdCyD6sC6jHjY1fCyQkUuMBJ/+FxJ1/ixhQpN9UAIHT
+	J+rpAV1hMDbnpJmeSPbsI+VN4snNqseedBeT81+HRxy/9P2xbNcQgiM/G5ZyiYVhQNJoZgOa1
+	K+smrwvc/EvN/19rtchj/prjZ4CrSQwoWix7Y29aHewHoXr5/ljNqFq2TOJBv5WJblbb0i/Ur
+	m42GAup2mBHDtBnqjGCSG0rhCQmO2/tJs+jfL+eg9QBuNQzQKGlM9rSElgzJTM/GtSrwufqmY
+	1G3+fe0wDWVJRq+ofqFNzGA0Fizv1j/hW4ueu1BOdOVfVB74HN8MLlxTROwtyYwn8rYvK8SRl
+	pxR3AO4z00+3Za8E6hU02TWZ061cm6RTNNFcxTxvwhJWHgW3bkE2g+tOXBnnZxRu/j7XBc+1h
+	SeujFhw3b/IlOX08x7Y33u+jh8WTGNgx9agzz8SFX9aBJ1dkAe4rRpMv5jVb5IRuCSMOmRNtI
+	LLydemXlmWwMluR2fATs96T/lNUwH/KaavfxFAzPk4rY9JAxWsPJ6KowRCihHemiBBmhhSiKp
+	sUaXi9GGfp8B+ssT3x5PqGKNYfhOWbU8PCt6L0iKI7RFfqJkPxfvFBDJsTZ3i9JWzugDtCnnS
+	3crUWMEPc2fcxiJoqYm8tmLvAIchoj8KysD2I0Nf137jFK4EQdSoTZR4YBkWHhHVxDfySvf/s
+	oKkCW1MD9gMN4tPntPG/psQ6czpbBeE4cr4Tnj2wX6QmETSS5jbRv8/tHfU=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-Subject: [Qemu-trivial] [PULL v2 02/12] CODING_STYLE: specify the indent
- rule for multiline code
+X-Received-From: 212.227.17.10
+Subject: [Qemu-trivial] [PULL v2 07/12] Update configure
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,73 +69,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 03 May 2019 11:20:36 -0000
 
-From: Wei Yang <richardw.yang@linux.intel.com>
+From: Stefan Weil <sw@weilnetz.de>
 
-We didn't specify the indent rule for multiline code here, which may
-mislead users. And in current code, the code use various styles.
+The last *.aml file was removed in commit 13b1881aacc7e5018773bd545bbaf8d5476699ee.
 
-Add this rule in CODING_STYLE to make sure this is clear to every one.
-
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-Suggested-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Message-Id: <20190304071631.27567-2-richardw.yang@linux.intel.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20190409053320.14612-1-sw@weilnetz.de>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- CODING_STYLE | 39 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
+ configure | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/CODING_STYLE b/CODING_STYLE
-index ec075dedc4a8..90321e9c2821 100644
---- a/CODING_STYLE
-+++ b/CODING_STYLE
-@@ -29,6 +29,45 @@ Spaces of course are superior to tabs because:
- 
- Do not leave whitespace dangling off the ends of lines.
- 
-+1.1 Multiline Indent
-+
-+There are several places where indent is necessary:
-+
-+ - if/else
-+ - while/for
-+ - function definition & call
-+
-+When breaking up a long line to fit within line width, we need a proper indent
-+for the following lines.
-+
-+In case of if/else, while/for, align the secondary lines just after the
-+opening parenthesis of the first.
-+
-+For example:
-+
-+    if (a == 1 &&
-+        b == 2) {
-+
-+    while (a == 1 &&
-+           b == 2) {
-+
-+In case of function, there are several variants:
-+
-+    * 4 spaces indent from the beginning
-+    * align the secondary lines just after the opening parenthesis of the
-+      first
-+
-+For example:
-+
-+    do_something(x, y,
-+        z);
-+
-+    do_something(x, y,
-+                 z);
-+
-+    do_something(x, do_another(y,
-+                               z));
-+
- 2. Line width
- 
- Lines should be 80 characters; try not to make them longer.
+diff --git a/configure b/configure
+index a2607afb3408..14f02452f9d4 100755
+--- a/configure
++++ b/configure
+@@ -7880,7 +7880,6 @@ LINKS="$LINKS python"
+ for bios_file in \
+     $source_path/pc-bios/*.bin \
+     $source_path/pc-bios/*.lid \
+-    $source_path/pc-bios/*.aml \
+     $source_path/pc-bios/*.rom \
+     $source_path/pc-bios/*.dtb \
+     $source_path/pc-bios/*.img \
 -- 
 2.20.1
 
