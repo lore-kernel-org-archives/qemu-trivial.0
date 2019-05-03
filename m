@@ -1,62 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWLy-000849-6o
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:27:46 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34138)
+	id 1hMa1w-0005Zc-3H
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 11:23:20 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59273)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWLv-00081W-Jl
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:44 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hMa1t-0005Vd-9I
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 11:23:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWLu-0003bz-Gg
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:43 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:51901)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMWLr-0003Yq-IV; Fri, 03 May 2019 07:27:39 -0400
-Received: from localhost.localdomain ([78.238.229.36]) by
-	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
-	(Nemesis)
-	id 1Mmhs6-1gvfmw3Cty-00jruY; Fri, 03 May 2019 13:27:13 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
-	Fabien Chouteau <chouteau@adacore.com>, qemu-trivial@nongnu.org,
-	Richard Henderson <rth@twiddle.net>, Jason Wang <jasowang@redhat.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
-	Michael Tokarev <mjt@tls.msk.ru>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
-	KONRAD Frederic <frederic.konrad@adacore.com>
-Date: Fri,  3 May 2019 13:26:53 +0200
-Message-Id: <20190503112654.4393-12-laurent@vivier.eu>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190503112654.4393-1-laurent@vivier.eu>
-References: <20190503112654.4393-1-laurent@vivier.eu>
+	(envelope-from <peter.maydell@linaro.org>) id 1hMa1s-0002rs-BT
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 11:23:17 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:36991)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hMa1s-0002pR-5q
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 11:23:16 -0400
+Received: by mail-ot1-x343.google.com with SMTP id u3so168466otq.4
+	for <qemu-trivial@nongnu.org>; Fri, 03 May 2019 08:23:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=MM3r1FelcMy7Ge5cg7T3YTSEvPOSts9EPRJNBOPlTmg=;
+	b=kZfWUY6FnY+FRcBI9clf0qi/U3MRWXsTd6iRehwoAxXqS+nO4afv5fYqekk4AYIGAM
+	EooPwYKjydTNWwyaqKJs8k2cYqN7FXOtDHW63hAJ+1pSIAQVN/zG7MS5FR3avHQOdELi
+	aPyPM2ml3Ljz+qnRzKuX8fTSvzOAb5IGZJ5DN9yVihsfBY5nZR4UGbgyyFrMZU2v3Ghy
+	QqFWv7ieVdzk8pzogrfkGqdFmyNwQi0ije1OKoBtn4lg43zGBjxgPDS+5Dd72DPFjoTR
+	FpGI1CpaZHk4ft5azaoZJQI7N4YEFUc01uqLVSogC7pnR2s6FyakbhCAu8lu72jWYNiD
+	XdOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=MM3r1FelcMy7Ge5cg7T3YTSEvPOSts9EPRJNBOPlTmg=;
+	b=aRGF8OupLVEeoO+7vxck4+3vW9XYsZW29z6td1ZNOva9FMl//MU1gwkGkmB4jXINcH
+	rKO8Hn92ykSYGdXywbMfLo7+17JAz0ErURklnyeJXQm05BBx4Q3A7cSXxShtdsmjY+Iu
+	/6LgMRiV1tyaLbXe3wyKpxhBdnIQz0dgZSBspHG3W4hYkPGyJkn2swj7kTIM34Pw0S/4
+	gY/bYAZSXsroFxDmlafi6x2ea2qGICjJmyt3PpngFvT8gppIeUaDjgS1e1ORnUMaCPJF
+	jbgdNehoQtdPDsQZAncIrPYhv3IrmDMRiS5F5FJBrTNzqQWETdrKxtUbggIzpulqr8GK
+	ggIg==
+X-Gm-Message-State: APjAAAU3D9JMXrnUBrZNyYWVmulNGrFvzhn11p1TyxfavzVoU9QEDeaR
+	PAJ3lhjXU1xDBD4w4NfVbAh0ZDfQvu/o7y5uW2uw5A==
+X-Google-Smtp-Source: APXvYqzzvTNktCTxIr0vU40qrF958g7SdvBaGaRJTHuyn7+Hx0TwfbMXpiqSO55yp4iUKrOl6+AOyPbZBG6HZAz09UM=
+X-Received: by 2002:a9d:6d19:: with SMTP id o25mr6355124otp.151.1556896992360; 
+	Fri, 03 May 2019 08:23:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Yr6N8DVUuZAek6d2wIuyKkCulINgbzvSwJs77413ZEOeSlYO+1k
-	DhJEgZCCHuvHdyBsNqrx1P7P+RuElo0e3mL8i15Gd1gLR73wZ9+dbABkcKjIm/y9DZbjDk6
-	cxlNzWYvaigJwrL5xY83Z8Kl5AZP8jQV5ezLDuZytdBFhnvgSE+YVWos1DHHCmbjLFRpkrt
-	FKJ26tniVeGz9Q8zqWKRg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ldkHbtITqlE=:CCU2hx6y84NcCvOwpyx2jG
-	4M188hiX8HxLd5cscIXGiAcRVb7K+pGc7NCfKl378rJJKji7i4aG5474D+MymO9llCeM8c7vT
-	JLcLvJeHs4edYHxmiRreylmYnDQx8uqLZ9mGubxZAdWwhkpmPP00Rrd6woM/GVaq8NQ/k/fnt
-	mYJoSvLe1h8Ftrmc4lqdCfH9TH+AcCBo8HUpvk+Qq7wCZmqu+ZNAEO37wmBj2IW21rN2RUr9S
-	o9iF9ncZnjDPuuL0bqSlguMPJrmoyRyWNggS7CX8R6nD/r0/N4VplToVv2+VW9CvE9cj33DLX
-	7IQYFjQgOb6/lQsziYcfF/cxzvAKN/UAMICurHFY/tskF2mnvfYAqFU9mp8SCIYeTa1L7yeYQ
-	wOPO13LK+y8gt8n+tppZDUCEqeokJrZAFD/lXglGzedDFhObbO9ayfnT5yTze9gunxVxOevCJ
-	uNr6YYm8XY10y5esEVD1kB8yFT8N6KWt7Si4xQ83Qp76KrPTtCabMkQ22GHLiB2FKdTHErGfc
-	qJpbJqSRiEwffFtvaufk9EE/CPYTF/CMS3IMLAlgHy/9U04yN5aCSMGJjWVDxta6N2SWb7/kM
-	bV+SLp7U3MlR4RBcFALNxBpkM8pZaSes+GdYjrm6SXxUYk1az6I9BYPHFrQyOh2iA74HPKCK2
-	JkfFc9vI/+N9w1pOGJJjjU5G0ena3XVK16NwkLwYVynVl1SCfL5Vy7Rrbc7JU3haazOxccJLV
-	uPp0n7d2R1HqR205EH9x/RVM4YnbYYE+No/1ANO5D4ySLcZpbR4cPtuBN8g=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: [Qemu-trivial] [PULL v2 11/12] hw/sparc/leon3: Allow load of uImage
- firmwares
+References: <20190503002206.9751-1-driver1998@foxmail.com>
+	<20190503003618.10089-1-driver1998@foxmail.com>
+	<aa0dce0b-1be0-7247-8f81-c4f265ba0009@redhat.com>
+In-Reply-To: <aa0dce0b-1be0-7247-8f81-c4f265ba0009@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 3 May 2019 16:23:01 +0100
+Message-ID: <CAFEAcA9a8oQHe+cbSotO+BR2-iqgKOBV5Pg4n1aOBY7_tnvqFg@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Cao Jiaxi <driver1998@foxmail.com>, QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>, 
+	=?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+	Samuel Thibault <samuel.thibault@ens-lyon.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 1/4] QEMU_PACKED: Remove
+ gcc_struct attribute in Windows non x86 targets
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,67 +72,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 11:27:44 -0000
+X-List-Received-Date: Fri, 03 May 2019 15:23:18 -0000
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+On Fri, 3 May 2019 at 06:07, Thomas Huth <thuth@redhat.com> wrote:
+>
+> On 03/05/2019 02.36, Cao Jiaxi wrote:
+> > gcc_struct is for x86 only, and it generates an warning on ARM64 Clang/=
+MinGW targets.
+> >
+> > Signed-off-by: Cao Jiaxi <driver1998@foxmail.com>
+> > ---
+> >  contrib/libvhost-user/libvhost-user.h | 2 +-
+> >  include/qemu/compiler.h               | 2 +-
+> >  scripts/cocci-macro-file.h            | 7 ++++++-
+> >  slirp/src/util.h                      | 2 +-
+> >  4 files changed, 9 insertions(+), 4 deletions(-)
 
-Currently the Leon3 machine doesn't allow to load legacy u-boot images:
+> > diff --git a/slirp/src/util.h b/slirp/src/util.h
+> > index 01f1e0e068..278828fe3f 100644
+> > --- a/slirp/src/util.h
+> > +++ b/slirp/src/util.h
+> > @@ -43,7 +43,7 @@
+> >  #include <netinet/in.h>
+> >  #endif
+> >
+> > -#if defined(_WIN32)
+> > +#if defined(_WIN32) && (defined(__x86_64__) || defined(__i386__))
+> >  # define SLIRP_PACKED __attribute__((gcc_struct, packed))
+> >  #else
+> >  # define SLIRP_PACKED __attribute__((packed))
+> >
+>
+> The slirp code is currently on its way into a separate module, so you
+> might need to provide that hunk to the libslirp folks again... I'm
+> putting the slirp maintainers on CC:, maybe they can pick it up from here=
+.
 
-  $ qemu-system-sparc -M leon3_generic -d in_asm \
-      -kernel HelenOS-0.6.0-sparc32-leon3.bin
-  qemu-system-sparc: could not load kernel 'HelenOS-0.6.0-sparc32-leon3.bin'
+Yes, the slirp module has now landed in master, so this patch
+definitely needs to be split into two. I've kept in my
+target-arm.next tree the parts which are applicable to
+the QEMU repo itself (ie everything except the slirp/ change),
+so we just need a new patch for the slirp submodule part.
 
-  $ file HelenOS-0.6.0-sparc32-leon3.bin
-  HelenOS-0.6.0-sparc32-leon3.bin: u-boot legacy uImage, HelenOS-0.6.0,\
-    Linux/ARM, OS Kernel Image (Not compressed), 2424229 bytes,\
-    Sun Dec 21 19:18:09 2014,\
-    Load Address: 0x40000000, Entry Point: 0x40000000,\
-    Header CRC: 0x8BCFA236, Data CRC: 0x37AD87DF
+Marc-Andr=C3=A9, Samuel -- what's the process for submitting and
+getting reviewed changes to the slirp submodule now it's a
+separate project ?
 
-Since QEMU can load uImages, add the necessary code,
-so the Leon3 machine can load these images:
-
-  $ qemu-system-sparc -M leon3_generic -d in_asm \
-      -kernel HelenOS-0.6.0-sparc32-leon3.bin
-  ----------------
-  IN:
-  0x40000000:  b  0x400007a8
-  0x40000004:  nop
-  ----------------
-  IN:
-  0x400007a8:  save  %sp, -136, %sp
-  0x400007ac:  call  0x40000020
-  0x400007b0:  sethi  %hi(0x4000b800), %i1
-  ...
-
-Tested with the following firmware:
-http://www.helenos.org/releases/HelenOS-0.6.0-sparc32-leon3.bin
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: KONRAD Frederic <frederic.konrad@adacore.com>
-Tested-by: KONRAD Frederic <frederic.konrad@adacore.com>
-Message-Id: <20190427162922.4207-1-f4bug@amsat.org>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/sparc/leon3.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
-index 774639af3393..0383b17c298f 100644
---- a/hw/sparc/leon3.c
-+++ b/hw/sparc/leon3.c
-@@ -193,6 +193,10 @@ static void leon3_generic_hw_init(MachineState *machine)
-         kernel_size = load_elf(kernel_filename, NULL, NULL, NULL,
-                                &entry, NULL, NULL,
-                                1 /* big endian */, EM_SPARC, 0, 0);
-+        if (kernel_size < 0) {
-+            kernel_size = load_uimage(kernel_filename, NULL, &entry,
-+                                      NULL, NULL, NULL);
-+        }
-         if (kernel_size < 0) {
-             error_report("could not load kernel '%s'", kernel_filename);
-             exit(1);
--- 
-2.20.1
-
+thanks
+-- PMM
 
