@@ -1,63 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWFF-0000po-TM
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:20:50 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60029)
+	id 1hMWGd-000258-Ag
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:22:15 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60594)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWFD-0000n6-Ga
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:20:48 -0400
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1hMWGb-00023Z-LF
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:22:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWFC-0002fF-Ip
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:20:47 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:59437)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMWFB-0002d6-8m; Fri, 03 May 2019 07:20:46 -0400
-Received: from localhost.localdomain ([78.238.229.36]) by
-	mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA
-	(Nemesis)
-	id 1MuUrM-1gWTXz0yJu-00rXFY; Fri, 03 May 2019 13:20:13 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
-	Fabien Chouteau <chouteau@adacore.com>, qemu-trivial@nongnu.org,
-	Richard Henderson <rth@twiddle.net>, Jason Wang <jasowang@redhat.com>,
-	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
-	Michael Tokarev <mjt@tls.msk.ru>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Wei Yang <richardw.yang@linux.intel.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Stefano Garzarella <sgarzare@redhat.com>
-Date: Fri,  3 May 2019 13:19:51 +0200
-Message-Id: <20190503111958.30825-6-laurent@vivier.eu>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190503111958.30825-1-laurent@vivier.eu>
-References: <20190503111958.30825-1-laurent@vivier.eu>
+	(envelope-from <mark.cave-ayland@ilande.co.uk>) id 1hMWGa-0004xh-NK
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:22:13 -0400
+Received: from mail.ilande.co.uk ([46.43.2.167]:34918
+	helo=mail.default.ilande.uk0.bigv.io)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1hMWGa-0004ul-Gq; Fri, 03 May 2019 07:22:12 -0400
+Received: from host109-149-60-255.range109-149.btcentralplus.com
+	([109.149.60.255] helo=[192.168.1.65])
+	by mail.default.ilande.uk0.bigv.io with esmtpsa
+	(TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.89)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1hMWG0-0006ex-GY; Fri, 03 May 2019 12:21:36 +0100
+To: Laurent Vivier <laurent@vivier.eu>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Stephen Checkoway <stephen.checkoway@oberlin.edu>,
+	Paolo Bonzini <pbonzini@redhat.com>, QEMU Developers
+	<qemu-devel@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
+	qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+	<marcandre.lureau@redhat.com>
+References: <20190419154041.77802-1-stephen.checkoway@oberlin.edu>
+	<45e6247e-cddb-2185-7f7b-503be00bd453@vivier.eu>
+	<f61fc519-da75-5b41-21d0-508cf89016f2@redhat.com>
+	<fc4a45ba-08d0-59ba-80eb-10a08cda3b7d@ilande.co.uk>
+	<af92f288-7159-b7ad-3360-5c2bb9b392f6@vivier.eu>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Openpgp: preference=signencrypt
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+	mQENBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+	3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+	E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+	PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+	PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+	AAG0ME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPokB
+	OAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+	NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+	mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+	z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+	T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+	DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63LkBDQRUCbs8AQgA
+	y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+	2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+	14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+	YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+	Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABiQEfBBgBAgAJ
+	BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+	opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+	NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+	Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+	KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+	imgcU9TTGC5qd9g=
+Message-ID: <9920c883-741a-76e9-8d97-f68b65dbcff6@ilande.co.uk>
+Date: Fri, 3 May 2019 12:22:08 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ZeB29zT0oOs3OsLRmJuQ1prcSE/VXnf7d0USHLaAjAFvb1KYcPZ
-	nmiOwO7zs4KanW6YP8AKgXM0xXJIRzPiLiDNtar0jb8HFx9QzwFgW4UwwXiXQ6qpWnKftZZ
-	yYWD7BsxJU+slapMO8RMXG+zfKaYSw6SKS+uUotm0ruxC0T4BSNHrMCyb/t6I7ABPi8kWZV
-	1IGRR1vJmcE9Yu2GzLBNw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:GXTuGl2qoO8=:iza5ngT5lN6sUaPqF28whd
-	JjpqrF1jnaEMKUjoiOwTxTxZ6eT5z3FU7gs8tTC07ug8f1ND0BME9tvcFU9lV3gJnmrav3XPm
-	/sT8ZUkAdsAA8/sbGqUngjGFsyXO2B5g2geMEQMwn0TZSygsJnhG2shgjdOkiFGmXvBzGH73W
-	RzTz37703MZU/sD1QMdAIRpLYq2dUvYHdPRtPJpQOMsENDPydGvdukkIUFlE8zE1F9aZfsj7m
-	ghoMPFsgp0xUO3z8ngCEYfP5EU6Ar3bCGMDMv1pNcjAWPQrAbS3Qq5JMPmxuZtsztz3QiV8Ph
-	0EXkh5aqNyLhAWlORrxc2+pc1zV/kRk/LAaGRlXTN/6tlhQJenfE+XRmlFkwFMsCnAW6r7Bhe
-	Wq9lPlnmgfcGKiRO4rXYt+jJ/Ks80HnKEhM75QwrofALxV49biOvyq69wN9b82vGseOF7HL2B
-	ApGu01oAKbdpfiZxv3G8oXhTz7lzR42OBqkD/wB6DZRkCdquBo+QWGpghZmcpb2p908vVCMd9
-	ynEbRGgAnEoswOzkfLeI5h4IS9sR98bhfPW9HLb8YvK6Od1u0a4q5AP/dttuH7n+FES1wzH4O
-	oJ+7AQh2xUIGcGY6qYZy0Wj5k45xvoG1sR6Ej93y2XopZDexhtkH2eD4XDgMAHU9ex2harg4i
-	LDrfyGfd0ejS7wJboRqaO7nxzJuxG60a08nHvsBO8t26jUPykAsJJj6trt3LTURZ6WUPnMwpb
-	YzCDpi87CIEMA+gd04soVaCTDSyJKFMQepUblGxdBwh+HX/IfEuUwC+3bdY=
+In-Reply-To: <af92f288-7159-b7ad-3360-5c2bb9b392f6@vivier.eu>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-GB
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 109.149.60.255
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on mail.default.ilande.uk0.bigv.io)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-Subject: [Qemu-trivial] [PULL v2 05/12] qom: use object_new_with_type in
- object_new_with_propv
+X-Received-From: 46.43.2.167
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] hw/char/escc: Lower irq
+ when transmit buffer is filled
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,36 +85,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 11:20:48 -0000
+X-List-Received-Date: Fri, 03 May 2019 11:22:14 -0000
 
-From: Wei Yang <richardw.yang@linux.intel.com>
+On 03/05/2019 08:21, Laurent Vivier wrote:
 
-Function object_new_with_propv already get the Type of the object, so we
-could leverage object_new_with_type here.
+>>> Mark, Artyom, are you OK with this patch?
+>>
+>> I started testing this with my OpenBIOS test images at the start of the week, but
+>> unfortunately got distracted by real life :)
+>>
+>> I've now finished and confirmed there are no regressions in my local tests, so I'll
+>> include this in the PR I am planning to send shortly containing the leon3 updates.
+> 
+> Hi Mark,
+> 
+> I've already included a leon3 patch ("hw/sparc/leon3: Allow load of
+> uImage firmwares") in the PR I sent yesterday for the trivial branch.
+> I've removed from my PR this patch about the ESCC, so you can take it.
 
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Message-Id: <20190311083234.20841-1-richardw.yang@linux.intel.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- qom/object.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hi Laurent,
 
-diff --git a/qom/object.c b/qom/object.c
-index e3206d6799ee..d3412e7fdca6 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -679,7 +679,7 @@ Object *object_new_with_propv(const char *typename,
-         error_setg(errp, "object type '%s' is abstract", typename);
-         return NULL;
-     }
--    obj = object_new(typename);
-+    obj = object_new_with_type(klass->type);
- 
-     if (object_set_propv(obj, &local_err, vargs) < 0) {
-         goto error;
--- 
-2.20.1
+Understood, and thanks for looking out for the patch. My first week back has been
+quite busy so I'm still playing catch-up here...
 
+
+ATB,
+
+Mark.
 
