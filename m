@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWLs-0007xs-Rj
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:27:40 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34040)
+	id 1hMWLu-00080F-Dc
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:27:42 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34059)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWLq-0007vm-TU
+	(envelope-from <laurent@vivier.eu>) id 1hMWLr-0007wL-I3
 	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWLp-0003Xv-Ob
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:38 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:58167)
+	(envelope-from <laurent@vivier.eu>) id 1hMWLq-0003Yf-Hi
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:39 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:40459)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMWLp-0003X8-FM; Fri, 03 May 2019 07:27:37 -0400
+	id 1hMWLo-0003Vz-AA; Fri, 03 May 2019 07:27:36 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1Movrq-1gxtmB3xWg-00qTby; Fri, 03 May 2019 13:27:14 +0200
+	id 1MHEPI-1hZhdZ17PE-00DIJE; Fri, 03 May 2019 13:27:05 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -27,35 +27,37 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Eric Blake <eblake@redhat.com>, Stefano Garzarella <sgarzare@redhat.com>
-Date: Fri,  3 May 2019 13:26:54 +0200
-Message-Id: <20190503112654.4393-13-laurent@vivier.eu>
+	Wei Yang <richardw.yang@linux.intel.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Stefano Garzarella <sgarzare@redhat.com>
+Date: Fri,  3 May 2019 13:26:47 +0200
+Message-Id: <20190503112654.4393-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190503112654.4393-1-laurent@vivier.eu>
 References: <20190503112654.4393-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ttwLbHfjFvzQwfNO9cPzyHDWHibyiGxX3ChUL76EYHycmw6EnmQ
-	kx4FPyw+19atBvv9rTvmGMzWtnRB2Nw8LpG3BT7UsJRdIGZppMUoPxmfCku0TYi4WxRrpc2
-	gcC4yxJY5WaFH2jsPA0++zT7nbzpXMsAr25W1rV5bf4PAkkPXiFCAytwX+5eeT1n+pRGQ46
-	iBYBR40gUDShIbw4z18QQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:8DdFuGzYnG0=:Cz+Bl1L/hYJ+YNd2i6eG0t
-	37PibROpijR6jsht4R6cKPt2uQ1t8+Ak3RII7DCZy/fUpyN/LDaEbukfbq4p3FzAdyaHyAjUH
-	YJwWT23oTMom+/552ujZEHEv6LO8KO7qM2eQ2sghrEuJFCMPIVYdK5Df4ntxWhWTYtWX8gKfF
-	7pScW0UZxYQikQSVUskv62EmbLTTJGWhXXPrvOuzKGtWXM+HxEQcmFPM6JZemz/kBX0gRZuM9
-	ztrHpLzJ2Y44iX2A6YxzgxeHNvmH6OkLfdTIuTkfWhFDlNReG29GIQvsnswBZj9OvcvuwvtWp
-	H3/+XJZGO3/EzJ1QTTPFyeJCnAB3972CUTfswf6s+uH5MTAW9xdLUZEHkgfb6SAiATGvhGdtZ
-	zaD3utatdFMyB4Z6LLDaPUP0aptg2Ou/dXSQ3DbRTURc0UvGHV90NkDQOOku6FzNAFGHRRN1Y
-	BqhCeinaag4avNPCqqdpI3WkuZRp+WEqVZspx/h+Hx3EwuKO9EEO2VnF0NbQgbwJjZkeXTrl0
-	qJGZUMzW598nOk6InZVcSpxAwM7OZWhKnn8h5MAPcVch0p3rBS6oyIErsl/9teeBdmKWWsnuk
-	suOCoLu5K/I8IDVyoLDITF8dTHmhl65A7CMWLYRfTI8lsKGjnYRGmrHU+oY2XpHN2Hz3M6YMd
-	ppLr+1DnBbL2vNimNVp/rjtvpSvWC5H0wyDbBjOskjg2Z7UDLXZa3d7W3fILc3du3UQRmZC5r
-	jtXI7EBExZulsJsnEUV/wgnupFfnvMIn1yq7kuJ9+GTqH3cxcgL398syCVM=
+X-Provags-ID: V03:K1:9mJ0MGscqZRGBssB4WUsQFl3MyEohYKw0+nYDypOHB4kljMeWOr
+	KTiOz0xelByBCjut1qimUyzh6sXudAvBob1yQWVckkkrw19qTk9bhb5WR5LlrfCRs/JQVB1
+	1o1Uch6d5qRKmpDRcqEe0qrOCr5NuKZUfkEviGQ2310xahDE8xPNHw0dfcsaHREWU4MqWJ2
+	zabRRwLY0JJZ+M6nI69Ug==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:mYlqkDd0v18=:VbHbjz+SXh//p930qlIPaE
+	b461DT1hqvMJ6lWXroidtbye3ZdnfVKNkdYq3sbgFD8N9PEsbcW67NwopU3w+o1RkW2XLiJiw
+	nOCLmT7JGsUmbdHOZDx5KMu2hG8i7QMPKtphdf6t9EpK6ipuYMneBfxViNW182lbo6idKOBq/
+	DYIwhmf8rTGKMM0PTVZ5WVtiG2KM6xOwU0+b+ibZGY/FWiTRmGm0dMLtYEWkLQTi4IiHyvJyB
+	ozL4+ZJfi/USWSdOqMinDSDWwULQX2j5juwqNOKNPUssVWuGzV+jDBixVpcV7u+eRLgXaDLIL
+	jN8ZIHyD4Wi8BgdFU595Tl2G7VThb+CFWoRy65QEgWiO7YGyUCAl52n9qehABrbWOx/RurABP
+	B+P9xxLN3KhDhC/alidAgjp2vSffotWCk+04STjixAETaEwzSWBceT4KM2RK8sbbdIHUYCyQ1
+	WhL/0bWuCqWFVpsvoBvWbO4S5hTxlZX7AA41HlkvtzNEMoqXBUo5QIwO3Bxtbc+MQwhVDSaSC
+	kfBRMG4HjwUsQr31qsoLryHV3rQXwbuEcV4qKv7Kos6y1Aee2+T1Ex7MMBjB62l2Xs3Ah+zLH
+	lZd7oSU4hofN21Uq3CHU4MvP+wcFscifUmiS7SGJt8HZsGUCFLs7RNUCNhm/3Zro53ERvsY2/
+	0hNrjuUONttR3jQuBSjU3l8jPKd6h/WRk6oebPi+nuwVi7uDxHSi7oQSuPvGxFhliRJyJd040
+	ke4ICX5ZkecedWV02FBW1iy0S2IvGGjt1vtP5wGOeBU4gwF5YwpQ3MC++4A=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: [Qemu-trivial] [PULL v2 12/12] sockets: avoid string truncation
- warnings when copying UNIX path
+X-Received-From: 212.227.126.135
+Subject: [Qemu-trivial] [PULL v2 05/12] qom: use object_new_with_type in
+ object_new_with_propv
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,94 +71,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 03 May 2019 11:27:40 -0000
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+From: Wei Yang <richardw.yang@linux.intel.com>
 
-In file included from /usr/include/string.h:494,
-                 from include/qemu/osdep.h:101,
-                 from util/qemu-sockets.c:18:
-In function ‘strncpy’,
-    inlined from ‘unix_connect_saddr.isra.0’ at util/qemu-sockets.c:925:5:
-/usr/include/bits/string_fortified.h:106:10: warning: ‘__builtin_strncpy’ specified bound 108 equals destination size [-Wstringop-truncation]
-  106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
-      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In function ‘strncpy’,
-    inlined from ‘unix_listen_saddr.isra.0’ at util/qemu-sockets.c:880:5:
-/usr/include/bits/string_fortified.h:106:10: warning: ‘__builtin_strncpy’ specified bound 108 equals destination size [-Wstringop-truncation]
-  106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
-      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Function object_new_with_propv already get the Type of the object, so we
+could leverage object_new_with_type here.
 
-We are already validating the UNIX socket path length earlier in
-the functions. If we save this string length when we first check
-it, then we can simply use memcpy instead of strcpy later, avoiding
-the gcc truncation warnings.
-
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Message-Id: <20190501145052.12579-1-berrange@redhat.com>
+Message-Id: <20190311083234.20841-1-richardw.yang@linux.intel.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- util/qemu-sockets.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ qom/object.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
-index 970505169000..ba6335e71a95 100644
---- a/util/qemu-sockets.c
-+++ b/util/qemu-sockets.c
-@@ -830,6 +830,7 @@ static int unix_listen_saddr(UnixSocketAddress *saddr,
-     int sock, fd;
-     char *pathbuf = NULL;
-     const char *path;
-+    size_t pathlen;
- 
-     sock = qemu_socket(PF_UNIX, SOCK_STREAM, 0);
-     if (sock < 0) {
-@@ -845,7 +846,8 @@ static int unix_listen_saddr(UnixSocketAddress *saddr,
-         path = pathbuf = g_strdup_printf("%s/qemu-socket-XXXXXX", tmpdir);
+diff --git a/qom/object.c b/qom/object.c
+index e3206d6799ee..d3412e7fdca6 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -679,7 +679,7 @@ Object *object_new_with_propv(const char *typename,
+         error_setg(errp, "object type '%s' is abstract", typename);
+         return NULL;
      }
+-    obj = object_new(typename);
++    obj = object_new_with_type(klass->type);
  
--    if (strlen(path) > sizeof(un.sun_path)) {
-+    pathlen = strlen(path);
-+    if (pathlen > sizeof(un.sun_path)) {
-         error_setg(errp, "UNIX socket path '%s' is too long", path);
-         error_append_hint(errp, "Path must be less than %zu bytes\n",
-                           sizeof(un.sun_path));
-@@ -877,7 +879,7 @@ static int unix_listen_saddr(UnixSocketAddress *saddr,
- 
-     memset(&un, 0, sizeof(un));
-     un.sun_family = AF_UNIX;
--    strncpy(un.sun_path, path, sizeof(un.sun_path));
-+    memcpy(un.sun_path, path, pathlen);
- 
-     if (bind(sock, (struct sockaddr*) &un, sizeof(un)) < 0) {
-         error_setg_errno(errp, errno, "Failed to bind socket to %s", path);
-@@ -901,6 +903,7 @@ static int unix_connect_saddr(UnixSocketAddress *saddr, Error **errp)
- {
-     struct sockaddr_un un;
-     int sock, rc;
-+    size_t pathlen;
- 
-     if (saddr->path == NULL) {
-         error_setg(errp, "unix connect: no path specified");
-@@ -913,7 +916,8 @@ static int unix_connect_saddr(UnixSocketAddress *saddr, Error **errp)
-         return -1;
-     }
- 
--    if (strlen(saddr->path) > sizeof(un.sun_path)) {
-+    pathlen = strlen(saddr->path);
-+    if (pathlen > sizeof(un.sun_path)) {
-         error_setg(errp, "UNIX socket path '%s' is too long", saddr->path);
-         error_append_hint(errp, "Path must be less than %zu bytes\n",
-                           sizeof(un.sun_path));
-@@ -922,7 +926,7 @@ static int unix_connect_saddr(UnixSocketAddress *saddr, Error **errp)
- 
-     memset(&un, 0, sizeof(un));
-     un.sun_family = AF_UNIX;
--    strncpy(un.sun_path, saddr->path, sizeof(un.sun_path));
-+    memcpy(un.sun_path, saddr->path, pathlen);
- 
-     /* connect to peer */
-     do {
+     if (object_set_propv(obj, &local_err, vargs) < 0) {
+         goto error;
 -- 
 2.20.1
 
