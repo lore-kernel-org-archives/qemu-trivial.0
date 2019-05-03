@@ -1,61 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMSVf-0006rs-Bm
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 03:21:31 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:43272)
+	id 1hMTqv-0007Y9-2o
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 04:47:33 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58404)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMSVd-0006re-4z
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 03:21:30 -0400
+	(envelope-from <liboxuan@connect.hku.hk>) id 1hMTqs-0007Xu-70
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 04:47:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMSVb-0004qa-5h
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 03:21:28 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:34649)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMSVZ-0004pL-9r; Fri, 03 May 2019 03:21:27 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
-	1MA88C-1hSSm51NJy-00BfhQ; Fri, 03 May 2019 09:21:19 +0200
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Stephen Checkoway <stephen.checkoway@oberlin.edu>,
-	Paolo Bonzini <pbonzini@redhat.com>, QEMU Developers
-	<qemu-devel@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
-	qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
-	<marcandre.lureau@redhat.com>
-References: <20190419154041.77802-1-stephen.checkoway@oberlin.edu>
-	<45e6247e-cddb-2185-7f7b-503be00bd453@vivier.eu>
-	<f61fc519-da75-5b41-21d0-508cf89016f2@redhat.com>
-	<fc4a45ba-08d0-59ba-80eb-10a08cda3b7d@ilande.co.uk>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <af92f288-7159-b7ad-3360-5c2bb9b392f6@vivier.eu>
-Date: Fri, 3 May 2019 09:21:16 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
-MIME-Version: 1.0
-In-Reply-To: <fc4a45ba-08d0-59ba-80eb-10a08cda3b7d@ilande.co.uk>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:IaRGgoXUbowM2FyeOKOLzDzVjVYD6YnOcBE1mUntBVoX7+58ASg
-	Wm7v2fo3bQnTcWKSMELhfpKlH2o3F3XpntBkfLyps8eyy4jh7Ue0DC5d/pPWiC/kxGXBEMX
-	vOgwiof6GPVHlZ7z5xth+4kxrSsScAPuFck1JDPF+RGOa2e3qglA+yaqGXM800AEhYOCkY9
-	0oQmFYU9qQPK7qQSTDkLA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:/NL1IKTiwQA=:zTOgbwKkBmuHhLUiyuMAMl
-	8mRa79ceknQTZJF3hPNhcX7C5aql1b/Zqtse1v7P7qW8IPUG71pB17syrBhYJFDj67btXnCOu
-	Ph7XSE0ch7/UAW/yFbjNQqFjDa1YCl9KwAg0JnyxP1n8APkcvBJRwOwKvlzSrpbH7ytSiWLRM
-	YPOej0KJTlGkhfeMhfhJJnoUUTvPLndfw8mlphd4GdCRhAT4fy0J2N08bEA7asM6+TBOFi3Z5
-	U7GzQebQK5rKQsDCoUhb23cGRRVLL1lMw6zwYuHuqvb/Y0J6CUOrq6L5LpXBeWKfoPNYF3r+E
-	zRQOUHiCEHyjwhudg9Vj0FQzSuIltDET4peSaB98SivsqH4eHVNzFUuo75QwpghyhXceTxw7j
-	J+/eB3xdveTD1bAKIo4wW1mp8T32MNf6fwNVOIcRL9nRQ29xrqSmS7Pup0TVP9rCTrVEtEmdW
-	wy+xoqRI1eT5fJRwma2xOxNcB0oiiAksQbF50OyzjZm3kmFmvBu0JIfpc9FokJJ1/DFL6yX9l
-	WLFdTcS9JSB70x4asuMXrhvw8TXLLZ1yTxPtsgfF+WUBqdPU3ojbe9PF64WdujTQubAVWPlMH
-	2sYz5qf/1C5noacl615AnWE5EfL/ibG54KwOGh5GDm8wrxr+20B6q8h3nmZQZ3NlMBiiqfQsg
-	2UX5Iv4RHWaqihLeFD2ZRr3la/g7HCU2bLh/Mw3lyiKCG39FSa4az72dGxHLA2Dz0RgIcnt3q
-	oeJ8jY020aMsL5xoJ0tidt0AT9xz0s6kBRp2rSID3QJdhszGpprcm0k5jV8=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] hw/char/escc: Lower irq
- when transmit buffer is filled
+	(envelope-from <liboxuan@connect.hku.hk>) id 1hMTqo-0005Cf-A2
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 04:47:29 -0400
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:40161)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <liboxuan@connect.hku.hk>)
+	id 1hMTql-0005BM-5D
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 04:47:24 -0400
+Received: by mail-pg1-x543.google.com with SMTP id d31so2407525pgl.7
+	for <qemu-trivial@nongnu.org>; Fri, 03 May 2019 01:47:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=connect-hku-hk.20150623.gappssmtp.com; s=20150623;
+	h=from:to:cc:subject:date:message-id;
+	bh=8owxu74GQscfy+KDdA+EV/u1JwaAWme0ev7CAE/LPZs=;
+	b=sRDZqjxhpWDynXbv4x4KXaqPM9tM7rSRHvDsh143QZ66HMboVVXnTrBm3e0RuGnLji
+	//2vTT674viSgchypGPmlW41+ChJvkWVCay7cVlyr/B2mi7n4Z+78Nc486uyk0Ovzkgm
+	RDH8PSWXOg2bO2ipZyd/TesuhmVjrH5SF0YU8WtqIvSooOMgAOoT1sz7ScZU6bywkeYk
+	CxI0msEUE9Xb/5Nz31Py8oEA9u6iammXaipqVESq2uM1jiTFRPCHyhjZ8AV2goEx649b
+	VHTFVt3x2BSR6stxBbnU12LmKfNO7qDWiutIW4lWdIPgySGD8Rzol+IskUFBTSBYK9A8
+	2faw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:from:to:cc:subject:date:message-id;
+	bh=8owxu74GQscfy+KDdA+EV/u1JwaAWme0ev7CAE/LPZs=;
+	b=G6GycGloXG+JhQYzbBZfA1ui5kMsOZrTWHtrDMWNBcnhv1Nyi65t7yBp5FHEVfnrdj
+	+fGRwLGbxN5PUSajMACi2wFx/GyjQCC9zbElZdgBWvsA88t5+OSgqTUVDYjJDN5jvtdo
+	2wHOm8K1hfo9nMe9ZsAUhLbBAMu/Rgo1AMHC26gB1jyWldxDl9xDpjeMHIIk6qdagI4V
+	KefJU9qb0r8oufKdiRqFyCfS0WiDKOiE9QteJry49KOD+XRCoHQz0p04atG3XaKsFup3
+	EvMQab/JUyFZznFP6PJx9sFI4DYLiC50u+WhXB/bt/HvV1KEnebK6DoufwjfOMLD5KEv
+	hqoA==
+X-Gm-Message-State: APjAAAUsleb3COIYtJzCMLLkumkvP8uYZSjr8XGbcgfU69GIM8kTFcxA
+	0h1EQX4r1pKcoQQc10ybI5Fihw==
+X-Google-Smtp-Source: APXvYqxlMR+vy7sIgeQGascmD01ZF4DpoOSl2t9DS/G2T9T3ELMPT8qvZfpnO+j51VKsREvWQZHxMg==
+X-Received: by 2002:a62:4e86:: with SMTP id c128mr9125752pfb.39.1556873241152; 
+	Fri, 03 May 2019 01:47:21 -0700 (PDT)
+Received: from MBP.local.hk ([175.159.180.1]) by smtp.gmail.com with ESMTPSA id
+	l26sm1980273pfb.20.2019.05.03.01.47.18
+	(version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+	Fri, 03 May 2019 01:47:20 -0700 (PDT)
+From: Boxuan Li <liboxuan@connect.hku.hk>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, eblake@redhat.com, philmd@redhat.com,
+	yuval.shaia@oracle.com, alex.bennee@linaro.org,
+	Boxuan Li <liboxuan@connect.hku.hk>, "Michael S. Tsirkin" <mst@redhat.com>
+Date: Fri,  3 May 2019 16:46:54 +0800
+Message-Id: <20190503084654.18413-1-liboxuan@connect.hku.hk>
+X-Mailer: git-send-email 2.13.2
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::543
+Subject: [Qemu-trivial] [PATCH v3] hw/virtio/virtio-mmio: Convert DPRINTF to
+ trace and log
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,87 +68,159 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 07:21:30 -0000
+X-List-Received-Date: Fri, 03 May 2019 08:47:31 -0000
 
-On 03/05/2019 09:14, Mark Cave-Ayland wrote:
-> On 02/05/2019 13:11, Philippe Mathieu-Daudé wrote:
-> 
->> On 5/2/19 11:04 AM, Laurent Vivier wrote:
->>> On 19/04/2019 17:40, Stephen Checkoway wrote:
->>>> The SCC/ESCC will briefly stop asserting an interrupt when the
->>>> transmit FIFO is filled.
->>>>
->>>> This code doesn't model the transmit FIFO/shift register so the
->>>> pending transmit interrupt is never deasserted which means that an
->>>> edge-triggered interrupt controller will never see the low-to-high
->>>> transition it needs to raise another interrupt. The practical
->>>> consequence of this is that guest firmware with an interrupt service
->>>> routine for the ESCC that does not send all of the data it has
->>>> immediately will stop sending data if the following sequence of
->>>> events occurs:
->>>> 1. Disable processor interrupts
->>>> 2. Write a character to the ESCC
->>>> 3. Add additional characters to a buffer which is drained by the ISR
->>>> 4. Enable processor interrupts
->>>>
->>>> In this case, the first character will be sent, the interrupt will
->>>> fire and the ISR will output the second character. Since the pending
->>>> transmit interrupt remains asserted, no additional interrupts will
->>>> ever fire.
->>>>
->>>> This behavior was triggered by firmware for an embedded system with a
->>>> Z85C30 which necessitated this patch.
->>>>
->>>> This patch fixes that situation by explicitly lowering the IRQ when a
->>>> character is written to the buffer and no other interrupts are currently
->>>> pending.
->>>>
->>>> Signed-off-by: Stephen Checkoway <stephen.checkoway@oberlin.edu>
->>>> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->>>> ---
->>>>
->>>> I added a sentence about the Z85C30 necessitating this to the commit message.
->>>>
->>>>  hw/char/escc.c | 7 +++++++
->>>>  1 file changed, 7 insertions(+)
->>>>
->>>> diff --git a/hw/char/escc.c b/hw/char/escc.c
->>>> index 628f5f81f7..c5b05a63f1 100644
->>>> --- a/hw/char/escc.c
->>>> +++ b/hw/char/escc.c
->>>> @@ -509,6 +509,13 @@ static void escc_mem_write(void *opaque, hwaddr addr,
->>>>          break;
->>>>      case SERIAL_DATA:
->>>>          trace_escc_mem_writeb_data(CHN_C(s), val);
->>>> +        /*
->>>> +         * Lower the irq when data is written to the Tx buffer and no other
->>>> +         * interrupts are currently pending. The irq will be raised again once
->>>> +         * the Tx buffer becomes empty below.
->>>> +         */
->>>> +        s->txint = 0;
->>>> +        escc_update_irq(s);
->>>>          s->tx = val;
->>>>          if (s->wregs[W_TXCTRL2] & TXCTRL2_TXEN) { // tx enabled
->>>>              if (qemu_chr_fe_backend_connected(&s->chr)) {
->>>>
->>>
->>>
->>> Applied to my trivial-patches branch.
->>
->> Mark, Artyom, are you OK with this patch?
-> 
-> I started testing this with my OpenBIOS test images at the start of the week, but
-> unfortunately got distracted by real life :)
-> 
-> I've now finished and confirmed there are no regressions in my local tests, so I'll
-> include this in the PR I am planning to send shortly containing the leon3 updates.
+Use traces for debug message and qemu_log_mask for errors.
 
-Hi Mark,
+Signed-off-by: Boxuan Li <liboxuan@connect.hku.hk>
+---
+v1: https://patchew.org/QEMU/20190428110258.86681-1-liboxuan@connect.hku.hk/
+v2: https://patchew.org/QEMU/20190501081039.58938-1-liboxuan@connect.hku.hk/
+v3: Use qemu_log_mask for errors
+---
+ hw/virtio/trace-events  |  7 +++++++
+ hw/virtio/virtio-mmio.c | 44 +++++++++++++++++++++-----------------------
+ 2 files changed, 28 insertions(+), 23 deletions(-)
 
-I've already included a leon3 patch ("hw/sparc/leon3: Allow load of
-uImage firmwares") in the PR I sent yesterday for the trivial branch.
-I've removed from my PR this patch about the ESCC, so you can take it.
+diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+index 60c649c4bc..81cbe1c4b2 100644
+--- a/hw/virtio/trace-events
++++ b/hw/virtio/trace-events
+@@ -46,3 +46,10 @@ virtio_balloon_handle_output(const char *name, uint64_t gpa) "section name: %s g
+ virtio_balloon_get_config(uint32_t num_pages, uint32_t actual) "num_pages: %d actual: %d"
+ virtio_balloon_set_config(uint32_t actual, uint32_t oldactual) "actual: %d oldactual: %d"
+ virtio_balloon_to_target(uint64_t target, uint32_t num_pages) "balloon target: 0x%"PRIx64" num_pages: %d"
++
++# virtio-mmio.c
++virtio_mmio_read(int offset) "virtio_mmio_read offset 0x%x"
++virtio_mmio_write_offset(int offset, uint64_t value) "virtio_mmio_write offset 0x%x value 0x%" PRIx64
++virtio_mmio_guest_page(uint64_t size, int shift) "guest page size 0x%" PRIx64 " shift %d"
++virtio_mmio_queue_write(int value, int max_size) "mmio_queue write %d max %d"
++virtio_mmio_setting_irq(int level) "virtio_mmio setting IRQ %d"
+diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
+index 5807aa87fe..c8a9d974b3 100644
+--- a/hw/virtio/virtio-mmio.c
++++ b/hw/virtio/virtio-mmio.c
+@@ -27,16 +27,8 @@
+ #include "sysemu/kvm.h"
+ #include "hw/virtio/virtio-bus.h"
+ #include "qemu/error-report.h"
+-
+-/* #define DEBUG_VIRTIO_MMIO */
+-
+-#ifdef DEBUG_VIRTIO_MMIO
+-
+-#define DPRINTF(fmt, ...) \
+-do { printf("virtio_mmio: " fmt , ## __VA_ARGS__); } while (0)
+-#else
+-#define DPRINTF(fmt, ...) do {} while (0)
+-#endif
++#include "qemu/log.h"
++#include "trace.h"
+ 
+ /* QOM macros */
+ /* virtio-mmio-bus */
+@@ -107,7 +99,7 @@ static uint64_t virtio_mmio_read(void *opaque, hwaddr offset, unsigned size)
+     VirtIOMMIOProxy *proxy = (VirtIOMMIOProxy *)opaque;
+     VirtIODevice *vdev = virtio_bus_get_device(&proxy->bus);
+ 
+-    DPRINTF("virtio_mmio_read offset 0x%x\n", (int)offset);
++    trace_virtio_mmio_read((int)offset);
+ 
+     if (!vdev) {
+         /* If no backend is present, we treat most registers as
+@@ -144,7 +136,9 @@ static uint64_t virtio_mmio_read(void *opaque, hwaddr offset, unsigned size)
+         }
+     }
+     if (size != 4) {
+-        DPRINTF("wrong size access to register!\n");
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "%s: wrong size access to register!\n",
++                __func__);
+         return 0;
+     }
+     switch (offset) {
+@@ -182,10 +176,12 @@ static uint64_t virtio_mmio_read(void *opaque, hwaddr offset, unsigned size)
+     case VIRTIO_MMIO_QUEUE_ALIGN:
+     case VIRTIO_MMIO_QUEUE_NOTIFY:
+     case VIRTIO_MMIO_INTERRUPT_ACK:
+-        DPRINTF("read of write-only register\n");
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "%s: read of write-only register\n",
++                __func__);
+         return 0;
+     default:
+-        DPRINTF("bad register offset\n");
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad register offset\n", __func__);
+         return 0;
+     }
+     return 0;
+@@ -197,8 +193,7 @@ static void virtio_mmio_write(void *opaque, hwaddr offset, uint64_t value,
+     VirtIOMMIOProxy *proxy = (VirtIOMMIOProxy *)opaque;
+     VirtIODevice *vdev = virtio_bus_get_device(&proxy->bus);
+ 
+-    DPRINTF("virtio_mmio_write offset 0x%x value 0x%" PRIx64 "\n",
+-            (int)offset, value);
++    trace_virtio_mmio_write_offset((int)offset, value);
+ 
+     if (!vdev) {
+         /* If no backend is present, we just make all registers
+@@ -226,7 +221,9 @@ static void virtio_mmio_write(void *opaque, hwaddr offset, uint64_t value,
+         return;
+     }
+     if (size != 4) {
+-        DPRINTF("wrong size access to register!\n");
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "%s: wrong size access to register!\n",
++                __func__);
+         return;
+     }
+     switch (offset) {
+@@ -246,8 +243,7 @@ static void virtio_mmio_write(void *opaque, hwaddr offset, uint64_t value,
+         if (proxy->guest_page_shift > 31) {
+             proxy->guest_page_shift = 0;
+         }
+-        DPRINTF("guest page size %" PRIx64 " shift %d\n", value,
+-                proxy->guest_page_shift);
++        trace_virtio_mmio_guest_page(value, proxy->guest_page_shift);
+         break;
+     case VIRTIO_MMIO_QUEUE_SEL:
+         if (value < VIRTIO_QUEUE_MAX) {
+@@ -255,7 +251,7 @@ static void virtio_mmio_write(void *opaque, hwaddr offset, uint64_t value,
+         }
+         break;
+     case VIRTIO_MMIO_QUEUE_NUM:
+-        DPRINTF("mmio_queue write %d max %d\n", (int)value, VIRTQUEUE_MAX_SIZE);
++        trace_virtio_mmio_queue_write((int)value, VIRTQUEUE_MAX_SIZE);
+         virtio_queue_set_num(vdev, vdev->queue_sel, value);
+         /* Note: only call this function for legacy devices */
+         virtio_queue_update_rings(vdev, vdev->queue_sel);
+@@ -303,11 +299,13 @@ static void virtio_mmio_write(void *opaque, hwaddr offset, uint64_t value,
+     case VIRTIO_MMIO_DEVICE_FEATURES:
+     case VIRTIO_MMIO_QUEUE_NUM_MAX:
+     case VIRTIO_MMIO_INTERRUPT_STATUS:
+-        DPRINTF("write to readonly register\n");
++        qemu_log_mask(LOG_GUEST_ERROR,
++                "%s: write to readonly register\n",
++                __func__);
+         break;
+ 
+     default:
+-        DPRINTF("bad register offset\n");
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad register offset\n", __func__);
+     }
+ }
+ 
+@@ -327,7 +325,7 @@ static void virtio_mmio_update_irq(DeviceState *opaque, uint16_t vector)
+         return;
+     }
+     level = (atomic_read(&vdev->isr) != 0);
+-    DPRINTF("virtio_mmio setting IRQ %d\n", level);
++    trace_virtio_mmio_setting_irq(level);
+     qemu_set_irq(proxy->irq, level);
+ }
+ 
+-- 
+2.13.2
 
-Thanks,
-Laurent
 
