@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWLu-00080F-Dc
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:27:42 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34059)
+	id 1hMWLv-00081K-Bn
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:27:43 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34107)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWLr-0007wL-I3
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:40 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMWLt-0007yn-FH
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWLq-0003Yf-Hi
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:39 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:40459)
+	(envelope-from <laurent@vivier.eu>) id 1hMWLs-0003aa-GX
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:41 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:43839)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMWLo-0003Vz-AA; Fri, 03 May 2019 07:27:36 -0400
+	id 1hMWLq-0003Xd-2g; Fri, 03 May 2019 07:27:38 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MHEPI-1hZhdZ17PE-00DIJE; Fri, 03 May 2019 13:27:05 +0200
+	id 1Mtxxk-1gSdOt1Hps-00uGzk; Fri, 03 May 2019 13:27:11 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -27,37 +27,36 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Wei Yang <richardw.yang@linux.intel.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Stefano Garzarella <sgarzare@redhat.com>
-Date: Fri,  3 May 2019 13:26:47 +0200
-Message-Id: <20190503112654.4393-6-laurent@vivier.eu>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Stefan Weil <sw@weilnetz.de>
+Date: Fri,  3 May 2019 13:26:52 +0200
+Message-Id: <20190503112654.4393-11-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190503112654.4393-1-laurent@vivier.eu>
 References: <20190503112654.4393-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:9mJ0MGscqZRGBssB4WUsQFl3MyEohYKw0+nYDypOHB4kljMeWOr
-	KTiOz0xelByBCjut1qimUyzh6sXudAvBob1yQWVckkkrw19qTk9bhb5WR5LlrfCRs/JQVB1
-	1o1Uch6d5qRKmpDRcqEe0qrOCr5NuKZUfkEviGQ2310xahDE8xPNHw0dfcsaHREWU4MqWJ2
-	zabRRwLY0JJZ+M6nI69Ug==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:mYlqkDd0v18=:VbHbjz+SXh//p930qlIPaE
-	b461DT1hqvMJ6lWXroidtbye3ZdnfVKNkdYq3sbgFD8N9PEsbcW67NwopU3w+o1RkW2XLiJiw
-	nOCLmT7JGsUmbdHOZDx5KMu2hG8i7QMPKtphdf6t9EpK6ipuYMneBfxViNW182lbo6idKOBq/
-	DYIwhmf8rTGKMM0PTVZ5WVtiG2KM6xOwU0+b+ibZGY/FWiTRmGm0dMLtYEWkLQTi4IiHyvJyB
-	ozL4+ZJfi/USWSdOqMinDSDWwULQX2j5juwqNOKNPUssVWuGzV+jDBixVpcV7u+eRLgXaDLIL
-	jN8ZIHyD4Wi8BgdFU595Tl2G7VThb+CFWoRy65QEgWiO7YGyUCAl52n9qehABrbWOx/RurABP
-	B+P9xxLN3KhDhC/alidAgjp2vSffotWCk+04STjixAETaEwzSWBceT4KM2RK8sbbdIHUYCyQ1
-	WhL/0bWuCqWFVpsvoBvWbO4S5hTxlZX7AA41HlkvtzNEMoqXBUo5QIwO3Bxtbc+MQwhVDSaSC
-	kfBRMG4HjwUsQr31qsoLryHV3rQXwbuEcV4qKv7Kos6y1Aee2+T1Ex7MMBjB62l2Xs3Ah+zLH
-	lZd7oSU4hofN21Uq3CHU4MvP+wcFscifUmiS7SGJt8HZsGUCFLs7RNUCNhm/3Zro53ERvsY2/
-	0hNrjuUONttR3jQuBSjU3l8jPKd6h/WRk6oebPi+nuwVi7uDxHSi7oQSuPvGxFhliRJyJd040
-	ke4ICX5ZkecedWV02FBW1iy0S2IvGGjt1vtP5wGOeBU4gwF5YwpQ3MC++4A=
+X-Provags-ID: V03:K1:qP3adIP8oXcIdsE+hQ0KIyGDDIVh4OUeNCt5i1VwQjrqCox6CcY
+	3gsM6PwyJza9PLzSMPGSpBDXxmO56aj/o61VkOE/lqJiKmMBxmtr2hucOE8MIZuwdfTKHKC
+	ic6ic/KICzhDxtb4AHxR73Chpbqy8tQUGr9NkYBoA0Hdy0SRXVuQZ6NOWo1Ev2J2m8A6tQE
+	610C/XiyL+ayDbH733YAA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:njiNo2w2ei4=:/yYLlsDIBnnpFbCiD5f051
+	sgsumgGjoB0Nc2oGtXH+BZJ9pzSf3YGBxT4C/LPJAIa0Sjh8AAnvomf6InLWghSrrCc2GG2n+
+	10K7gWeWjHik7cxwKLVsf/k0Pmk6omn8M/m1HlNX1cT7eNGFCG4RP0EXyCebXY7FA9+1rImG9
+	lL/dckIAfN23Mu8qJCOHMCLPY0lE9fXZ56cAW8tPZroB6dOy6HWMjDnuOswYaAoAvJ+LJOgKM
+	X0L3czCB2hjHKgF1b4w7oFhm4gTkrw5csqMcSzJLyXKxkPIjMNFsm3CIJpRZM+MiGwCmQpTv5
+	+ug6rTS2d9Vst3hE46ZYoxKemyeMWjkLhLREfpO8+rzB6bxiyS3ck6sBgznAzKw1x2W8cSJEP
+	6llsSGB6YuILslXoCDH3fKRFUN7Hq2u3nI651G5MkOw626JuJzPd/8SforuTYimW4QYjRCJD7
+	qp+W9Bv1bYivolfI8h+vYvRGMKnkjX73rbdZvMRctvstFLaycc1U72qQgAObwUsGxettb4llQ
+	5GkQ8Qwn222LATD2GKR0UNxqw2lXHNTf9LnluSh1sQzMJIm0mMSnIU26iedpZGIzx+WbgP5h8
+	SzwhPazQK128M903GrpTefKyeuu/wB9dF8iWghhoaUkb7vwIK58RNV4TV1Q1rJrrri7mEkEkU
+	Eq4pLYrRfJAdhWhDZuPF76yCnq9oWUa07qErAxFwsLPHEkks5P93YaFaNgcphg+oZPAoObOA/
+	5YQUgR9Ecy5KU/wmSo3lP0mt0oVVQ1a4qoYtHrufNkYLBtZR22sCLK7BHsY=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: [Qemu-trivial] [PULL v2 05/12] qom: use object_new_with_type in
- object_new_with_propv
+X-Received-From: 212.227.126.131
+Subject: [Qemu-trivial] [PULL v2 10/12] Makefile: Let the 'clean' rule
+ remove qemu-ga.exe on Windows hosts
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,35 +68,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 11:27:40 -0000
+X-List-Received-Date: Fri, 03 May 2019 11:27:42 -0000
 
-From: Wei Yang <richardw.yang@linux.intel.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Function object_new_with_propv already get the Type of the object, so we
-could leverage object_new_with_type here.
+Commit 48ff7a625b36 added the QEMU Guest Agent tool with the
+optional ".exe" suffix for Windows hosts, but forgot to use
+this suffix in the 'clean' rule. Calling this rule let a dangling
+executable in the build directory.
+Correct this by using the proper optional suffix.
 
-Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Message-Id: <20190311083234.20841-1-richardw.yang@linux.intel.com>
+Fixes: 48ff7a625b36
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Message-Id: <20190427161322.24642-1-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qom/object.c | 2 +-
+ Makefile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/qom/object.c b/qom/object.c
-index e3206d6799ee..d3412e7fdca6 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -679,7 +679,7 @@ Object *object_new_with_propv(const char *typename,
-         error_setg(errp, "object type '%s' is abstract", typename);
-         return NULL;
-     }
--    obj = object_new(typename);
-+    obj = object_new_with_type(klass->type);
- 
-     if (object_set_propv(obj, &local_err, vargs) < 0) {
-         goto error;
+diff --git a/Makefile b/Makefile
+index 43a7a047b452..e223bfe2a3a1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -639,7 +639,7 @@ clean:
+ 		! -path ./roms/edk2/BaseTools/Source/Python/UPT/Dll/sqlite3.dll \
+ 		-exec rm {} +
+ 	rm -f $(edk2-decompressed)
+-	rm -f $(filter-out %.tlb,$(TOOLS)) $(HELPERS-y) qemu-ga TAGS cscope.* *.pod *~ */*~
++	rm -f $(filter-out %.tlb,$(TOOLS)) $(HELPERS-y) qemu-ga$(EXESUF) TAGS cscope.* *.pod *~ */*~
+ 	rm -f fsdev/*.pod scsi/*.pod
+ 	rm -f qemu-img-cmds.h
+ 	rm -f ui/shader/*-vert.h ui/shader/*-frag.h
 -- 
 2.20.1
 
