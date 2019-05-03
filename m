@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWF0-0000ZB-K5
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:20:34 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59870)
+	id 1hMWF2-0000c3-T0
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:20:36 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59907)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWEw-0000Xc-Vm
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:20:33 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMWF0-0000ZC-Kq
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:20:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWEw-0002M0-14
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:20:30 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:40855)
+	(envelope-from <laurent@vivier.eu>) id 1hMWEz-0002QF-Lp
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:20:34 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:36083)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMWEt-0002Hb-JH; Fri, 03 May 2019 07:20:27 -0400
+	id 1hMWEv-0002KB-C9; Fri, 03 May 2019 07:20:29 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1M5wY1-1hPZAr1p9f-007XLN; Fri, 03 May 2019 13:20:14 +0200
+	id 1N2m3G-1gbPDa3EFg-01346I; Fri, 03 May 2019 13:20:11 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -27,35 +27,38 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Fri,  3 May 2019 13:19:52 +0200
-Message-Id: <20190503111958.30825-7-laurent@vivier.eu>
+	Wei Yang <richardw.yang@linux.intel.com>, Eric Blake <eblake@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Stefano Garzarella <sgarzare@redhat.com>
+Date: Fri,  3 May 2019 13:19:49 +0200
+Message-Id: <20190503111958.30825-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190503111958.30825-1-laurent@vivier.eu>
 References: <20190503111958.30825-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:5c8cLYEFEaCDa2jxSETb9VyU7iiN0xkqspb7BfYpEQy7Ya5mkLm
-	zkjyVZB3ZGxwEbhwIumSoR7NurB6u/Bf/FMqQ4vXa84eex94kNDNhU/wDVzi2zVlJarrHwf
-	8T2YBuIXgCegw07VIvxwW7jlwJ/7BT5TI/KkAQsm7PvUQOC9YsuuPJNFTDBSQNtj3Al1ECC
-	XulYxwgxA1EUdHtchJTXw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:g0W8zismQL0=:pxkC4prXYU02nw5rSx6QwC
-	j46GK6ArIz/WRVoPcSdATvxyF89Pvqf+eXpuEKp7MQIejRYJ0vdE17Ro/sF8YY3kpVkI2NrPB
-	/E8TgKeJ2PsVzpEsTGIWb3QhH6k3tRmaPCF+vymnifewUZ1jwDskPnR6UlJCz0laxkMcyHn8h
-	atQXW1aL4gfq4jhx6AKZfR+2XSvizRrbZ/HV6NU78ksTkGG2VbJJX23uxPWZRVrJxht4UMMGv
-	29vZMveVyXU6GoAfdr8Do7FMAje2LcSIaK50qmQRXghFJAfnG3CSruhUzBLLbc3TauqUwt1N/
-	mGdpDt7NMYKU6rhdVEVPpuT/Fz1lk7sOPX2whYPiEi57+dHin87ZghZsJwqWb2oXFkQsu2Zxu
-	4+bLqEeGl4s23e9dshPm/o6pUc8E/UOMDcwyogPjIxYWxh5+cQ6bCOdy53x2zGHMGeYfAbRnI
-	gH134i0BKvsOHNwBS1Dm1VeYl8+6EoAaczqvHIlFED3TTFa5xOI/xzFjaIJZ39mvlCscsLfa2
-	75fZ7iIR1nsBlEsoA4CbGC0oZzwAsTWRUGIRvMbXbsJLNDqFLtFfNTpFdwC+d8CfEjoyfMVpH
-	NDs4i6KTu0z14nFgD87qdWUNesHBHHdScOuNLmo8AY/UBgv5vrNMKvNMTgeW+qfv0PB8Oy1KY
-	WcHkqI23sdw6uWJoZ39ksM8K4C+jjEk7/RdzSAMKo/Avi/4/u6nCVBEWXrCJ0mPHOSMo1Xi77
-	UVi9cn96XZ/cTmllIW+F1JsiiihdK16qwOgu7ptU274fjA3EwCyvkOAj1W4=
+X-Provags-ID: V03:K1:pKsN4+cluC+r1rmhDvMgjMvs/XYsPlaoMp8SyHySKqZejIZkDA9
+	TYrZgIRGOhIV2jswJ2BAEajyAJk1hFDUJwGnCv801u/lOk4zyAQmBQDTYm04ZqNL5mDE90p
+	m0clE4IdV3ENr/FvsYb6bsNyCXupboqIKsovooVmp9WAn+lvziFm1aZYcRPLT4X04UGxyZG
+	0bkXBO0oD4i9d822EZ9lQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:7pjqB3X4dFY=:NWCUEDvJCZHyzQSMg2SBiw
+	1fHilwJ/onNDhoF/rwSx1l1z/P567pSI+cwGVzmgxRdXvhrcNSvygoltiHLbuRAqKDdNP5eDL
+	MLnhKRqIa5GwuwG3dXJuEpekGxJ2N6UzleCY6iH4WRlVty09IoGK4itn4mqV/FaOd91suI7Fn
+	JsZ8SBnkM5nRQVxKRT1NGkybNQHvYTrZlX87Jh5e3nLPTMKdYYbk3tmxHbNUoYLJafcVZgbjC
+	3Oz7qduSEX4yGqRoEfrN6mNrPVbmIcisseDZpaeg5kETLxX5wQ4LvPKf8Drv0CISzjLRnKa7m
+	mdAmSJ0g2ZhxjXomdnlBoWSScEapTfkwJxwMXPOTXAL6V+B26GlEavceTIIB0SprgHdr+Ft05
+	Gd7JeqIBz3kp5dMDEp1cEI/M/lhRveWpAGNTlWE5MDARBQVOPtkOpHzppw/5b3y6wQFpSkO3r
+	L9EjJ6KXlMpTcZGE6RINu7xj6ohsQGps7/kVSHIXTv3R6Ii4+I6HVMuZAuVNb6VLIDf9yEIzQ
+	QnohH1T4f7ZYGp1a/xkILd+2AsfjsrOzcXooOKOO8+IQLeveLrDznSsin6gpXjbOJ4xGJN4mM
+	tmdlqjsK/4szs6pc2DM3Z6LpNskLefU6acleGU6DSjBowymGK2FK2MIv7/OIcnxD8usPi19Gi
+	hqqF/qtr+hUHl1b1aSoGzAm+jWBt00EHA+OKRjqhxSEex0bssSiSNe1D4pOMJSyCVTCsYehaF
+	mfO8lJAJkflSpTHK6+d59JCtDto0dbt+Gvf3KWirpLrXXBL+PiN3FJ/2+vY=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
-Subject: [Qemu-trivial] [PULL v2 06/12] configure: fix pam test warning
+X-Received-From: 217.72.192.73
+Subject: [Qemu-trivial] [PULL v2 03/12] CODING_STYLE: indent example code as
+ all others
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,40 +70,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 11:20:33 -0000
+X-List-Received-Date: Fri, 03 May 2019 11:20:35 -0000
 
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+From: Wei Yang <richardw.yang@linux.intel.com>
 
-The pam test generates a warning on Fedora 29 with -O3 compilation
-because the headers declare that the pam_conversation pointer to
-pam_start must be non-NULL.  Change it to use the same 0 initialised
-structure as we actually use in qauthz.
+All the example code are indented with four spaces except this one.
 
-Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Acked-by: Daniel P. Berrangé <berrange@redhat.com>
+Fix this by adding four spaces here.
+
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20190404091725.20595-1-dgilbert@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20190304071631.27567-3-richardw.yang@linux.intel.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ CODING_STYLE | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/configure b/configure
-index 60719ddcc5b0..a2607afb3408 100755
---- a/configure
-+++ b/configure
-@@ -2940,9 +2940,9 @@ if test "$auth_pam" != "no"; then
- int main(void) {
-    const char *service_name = "qemu";
-    const char *user = "frank";
--   const struct pam_conv *pam_conv = NULL;
-+   const struct pam_conv pam_conv = { 0 };
-    pam_handle_t *pamh = NULL;
--   pam_start(service_name, user, pam_conv, &pamh);
-+   pam_start(service_name, user, &pam_conv, &pamh);
-    return 0;
- }
- EOF
+diff --git a/CODING_STYLE b/CODING_STYLE
+index 90321e9c2821..cb8edcbb3692 100644
+--- a/CODING_STYLE
++++ b/CODING_STYLE
+@@ -147,10 +147,10 @@ block to a separate function altogether.
+ When comparing a variable for (in)equality with a constant, list the
+ constant on the right, as in:
+ 
+-if (a == 1) {
+-    /* Reads like: "If a equals 1" */
+-    do_something();
+-}
++    if (a == 1) {
++        /* Reads like: "If a equals 1" */
++        do_something();
++    }
+ 
+ Rationale: Yoda conditions (as in 'if (1 == a)') are awkward to read.
+ Besides, good compilers already warn users when '==' is mis-typed as '=',
 -- 
 2.20.1
 
