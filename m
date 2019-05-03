@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWEE-0008KJ-PW
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:19:46 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:59594)
+	id 1hMWEF-0008Kr-3Y
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:19:47 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:59581)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWE9-0008Hf-KA
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:19:45 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWE8-0001PV-DN
+	(envelope-from <laurent@vivier.eu>) id 1hMWE9-0008H2-19
 	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:19:41 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:33711)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+	(envelope-from <laurent@vivier.eu>) id 1hMWE8-0001P7-4a
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:19:41 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:44665)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMWE5-0001LU-I0; Fri, 03 May 2019 07:19:37 -0400
+	id 1hMWE5-0001L8-9E; Fri, 03 May 2019 07:19:37 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MpTpc-1gxLwI16Zo-00pvpR; Fri, 03 May 2019 13:19:02 +0200
+	id 1Mt8cD-1gU0if2kXZ-00tSSq; Fri, 03 May 2019 13:19:04 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -27,35 +27,35 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Fri,  3 May 2019 13:18:24 +0200
-Message-Id: <20190503111832.30316-5-laurent@vivier.eu>
+Date: Fri,  3 May 2019 13:18:26 +0200
+Message-Id: <20190503111832.30316-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190503111832.30316-1-laurent@vivier.eu>
 References: <20190503111832.30316-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:kQidRAwX+nEUtN5LjRA4H/Hdt+9usEawtxJdIRgViv3F0CKj1JB
-	vinfpS7A4P8c5DOIBbh+rV8G2cTP4J74P20+DzcLmOB09QcB39PBFKzO4vtTkuGGiEEznVD
-	kgwVQnJwZfy1/U8W7xam9XP/RvRyE6zUYql1VkT9wcxG9F5GsTd3iELYSCkx++Dcddq37uD
-	gdDfGFOw64p6he8fssirg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:X9nH/tQuPGs=:C1LL8LnFT8MkNILgqiwUXN
-	W7DNYRebgYdCDJtGQS11r5vOSdk3sukkOiuDcKuCBV213lZPuqWUDxP5n0oGO849Zq5QwlbD5
-	rtxUzxCznqARyLegKq3TBP6s1CZm3kMGNCJhpJr9hGh2rpsMUgWAjoq2LcHUCLckqTY1XvhEN
-	I9TDg7L7XiWAVWuIl5SxLSn2k2DNIUWyZL/tHgBsP3rDPeWpTVm6XMiycgSFvoo11bhlwsDi3
-	9/tiCYtWD/yHAxPOMxzKfE6ngOz0sJaSffd2UWw2i/jTu4i+A7d2HvTKdd1f95nA0gPGE2JWl
-	mgTNk0HR49U/PSQHVqnq2JYhdrMSwkPz8oxAj46qeyZJwHy5P7E6sfOZF64670L5UPRA23Bs9
-	jdjsy5QpI3fffl7DifYYr+AhyCwBpSVqwVr/Ev2rZIWhlDTDiuEhH7f6b98FspJP2JFPT0Pn/
-	8AOcBSaoN9IBRbv4bu+fIA/ZWr350VUOf3ZoHiERadZ0CnRpR6rTCFJ18N+DLpFKFM69v5tDd
-	2U0ADVjXNXvCakCS6hXrgp1/SNcINwyC/d3jMt46l8LaXeLELsRy9EDXnuyQ/itcf3x2rdQir
-	cqUgcnE+LPZFodISnNpGlbx554adys6RUUTIak96vR+NMmtVfjXwp0SqeomIVCH7cVyig57xn
-	ZjArBDwEfQM7NWRwFByIjvmugW+AMyoP4FhA+LAYVR9ZCyntxSwHqa7kC2w8LeDqbMXa5IZ1Z
-	Gp8Ni2XjGbscEBW72U5r3o+77CxVkMkMam5q9HTbnWzILsCpVx+kw2jiask=
+X-Provags-ID: V03:K1:/giShaB3q6BMKEIJ47bzB6xzi03fHl0BlHkOGMzhH0r9PGQ47hB
+	XnPw3K4OJdg1QGaxH8z8ziqKVpRfIF8y6zfR3iFN7UVhWX1ZQyTsmKvgyEjqNP7lp4UpPtp
+	gSXUDRJYbuWLk7Edy2mRwSOcXAMOO0wWrYK0nAUNkjwr9hLr573VQiT9EBDIW7I7F9H6RMX
+	Ue7/klX2cvd1aEg+++w+Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:TCZFDqBeCW0=:dyIoieh8JqKGlJq1fyQLx8
+	jvt63rayJMaP7KZqO45jAogpix+6BCkFy7b0WwyCx2EBGsTmw++4IHdGCLDXVrB9Afqix5+3R
+	ou+Yiye42IqyXow1o2gBWWGyfhaAy8qppG7q/0DQpJ8TuoBfOB7eA45+q/ztWrH+1BFeg+Obu
+	kP4Cr85vDimXT3UdnCfcbx0501XPm8b2nUWWaw3ddao9YF9Q2NojNFYtcdx52a7hSaEcE7iZ3
+	gOJ/CRmj6tIk+0DfGCXfXo76GiHz1mjulMEUmzQkGMFsz2+mkhk9QZqkZ269p+D96fxotLVOX
+	wdJRM4arWtRHBqgNN0Ax1bzW/QulLAozw7z0AH5xTFZGC32uCd971Jrq+hWSdXCIpw9iy6nV7
+	s7cRE3sT+1G6POe1D24t/yywhUW5DH5aQNysWIEdqT1k/ZS+dncoWq61Ep6SjU1od6PydfzEn
+	Gc5Y1ba79B9VOt7xAt8KMsaDfZq8Nd/DSrtNW1HKb7D+3pgglGQFbwt1GqKdMXH5sNf8ZjBIO
+	ojGtrGG+ub8bpp5zE01pBo8eE8xX6OaTlirZjduceZPgwETsI+sDrwF8Rc0myXHTv6UWlfCyR
+	7j52CWVjQZ6xCSoMk4JlHoHZ47c0P9pt5W+DFeick0bPEJlvqmNjygmmoY/yzj3SYjs1nebEM
+	6hjsFOeo8BUwP7HtGoiiPpXmP904jqt/5g2MLTT8v2lnz2DXpSIutdXZO4KUIUYfm5nzRTVxd
+	uyWl76ZQWBtSKgr8N4BNCXL8SDapKFnC9ZaIW/MzJTQV+ta1KvDrOM3XR50=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: [Qemu-trivial] [PULL v2 04/12] doc: fix the configuration path
+X-Received-From: 212.227.126.133
+Subject: [Qemu-trivial] [PULL v2 06/12] configure: fix pam test warning
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,69 +67,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 11:19:45 -0000
+X-List-Received-Date: Fri, 03 May 2019 11:19:42 -0000
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
-Use a CONFDIR variable to show the configured sysconf path in the
-generated documentations (html, man pages etc).
+The pam test generates a warning on Fedora 29 with -O3 compilation
+because the headers declare that the pam_conversation pointer to
+pam_start must be non-NULL.  Change it to use the same 0 initialised
+structure as we actually use in qauthz.
 
-Related to:
-https://bugzilla.redhat.com/show_bug.cgi?id=1644985
-
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Acked-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20181126105125.30973-1-marcandre.lureau@redhat.com>
+Message-Id: <20190404091725.20595-1-dgilbert@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qemu-ga.texi | 4 ++--
- Makefile     | 9 ++++++---
- 2 files changed, 8 insertions(+), 5 deletions(-)
+ configure | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/qemu-ga.texi b/qemu-ga.texi
-index 4c7a8fd16329..f00ad830f283 100644
---- a/qemu-ga.texi
-+++ b/qemu-ga.texi
-@@ -30,7 +30,7 @@ set user's password
- @end itemize
- 
- qemu-ga will read a system configuration file on startup (located at
--@file{/etc/qemu/qemu-ga.conf} by default), then parse remaining
-+@file{@value{CONFDIR}/qemu-ga.conf} by default), then parse remaining
- configuration options on the command line. For the same key, the last
- option wins, but the lists accumulate (see below for configuration
- file format).
-@@ -58,7 +58,7 @@ file format).
-   Enable fsfreeze hook. Accepts an optional argument that specifies
-   script to run on freeze/thaw. Script will be called with
-   'freeze'/'thaw' arguments accordingly (default is
--  @samp{/etc/qemu/fsfreeze-hook}). If using -F with an argument, do
-+  @samp{@value{CONFDIR}/fsfreeze-hook}). If using -F with an argument, do
-   not follow -F with a space (for example:
-   @samp{-F/var/run/fsfreezehook.sh}).
- 
-diff --git a/Makefile b/Makefile
-index 1211e78c91ed..43a7a047b452 100644
---- a/Makefile
-+++ b/Makefile
-@@ -899,11 +899,14 @@ ui/shader.o: $(SRC_PATH)/ui/shader.c \
- MAKEINFO=makeinfo
- MAKEINFOINCLUDES= -I docs -I $(<D) -I $(@D)
- MAKEINFOFLAGS=--no-split --number-sections $(MAKEINFOINCLUDES)
--TEXI2PODFLAGS=$(MAKEINFOINCLUDES) "-DVERSION=$(VERSION)"
-+TEXI2PODFLAGS=$(MAKEINFOINCLUDES) -DVERSION="$(VERSION)" -DCONFDIR="$(qemu_confdir)"
- TEXI2PDFFLAGS=$(if $(V),,--quiet) -I $(SRC_PATH) $(MAKEINFOINCLUDES)
- 
--docs/version.texi: $(SRC_PATH)/VERSION
--	$(call quiet-command,echo "@set VERSION $(VERSION)" > $@,"GEN","$@")
-+docs/version.texi: $(SRC_PATH)/VERSION config-host.mak
-+	$(call quiet-command,(\
-+		echo "@set VERSION $(VERSION)" && \
-+		echo "@set CONFDIR $(qemu_confdir)" \
-+	)> $@,"GEN","$@")
- 
- %.html: %.texi docs/version.texi
- 	$(call quiet-command,LC_ALL=C $(MAKEINFO) $(MAKEINFOFLAGS) --no-headers \
+diff --git a/configure b/configure
+index 60719ddcc5b0..a2607afb3408 100755
+--- a/configure
++++ b/configure
+@@ -2940,9 +2940,9 @@ if test "$auth_pam" != "no"; then
+ int main(void) {
+    const char *service_name = "qemu";
+    const char *user = "frank";
+-   const struct pam_conv *pam_conv = NULL;
++   const struct pam_conv pam_conv = { 0 };
+    pam_handle_t *pamh = NULL;
+-   pam_start(service_name, user, pam_conv, &pamh);
++   pam_start(service_name, user, &pam_conv, &pamh);
+    return 0;
+ }
+ EOF
 -- 
 2.20.1
 
