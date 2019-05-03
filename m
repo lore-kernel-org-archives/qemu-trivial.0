@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWLr-0007wf-T3
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:27:39 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:33991)
+	id 1hMWLs-0007xs-Rj
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:27:40 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34040)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWLo-0007to-TP
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:38 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMWLq-0007vm-TU
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWLn-0003WH-Qv
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:36 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:48721)
+	(envelope-from <laurent@vivier.eu>) id 1hMWLp-0003Xv-Ob
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:38 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:58167)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMWLl-0003Te-11; Fri, 03 May 2019 07:27:33 -0400
+	id 1hMWLp-0003X8-FM; Fri, 03 May 2019 07:27:37 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1N14xe-1gd3XG0BiM-012UBm; Fri, 03 May 2019 13:27:04 +0200
+	id 1Movrq-1gxtmB3xWg-00qTby; Fri, 03 May 2019 13:27:14 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -27,35 +27,35 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Fri,  3 May 2019 13:26:46 +0200
-Message-Id: <20190503112654.4393-5-laurent@vivier.eu>
+	Eric Blake <eblake@redhat.com>, Stefano Garzarella <sgarzare@redhat.com>
+Date: Fri,  3 May 2019 13:26:54 +0200
+Message-Id: <20190503112654.4393-13-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190503112654.4393-1-laurent@vivier.eu>
 References: <20190503112654.4393-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:/exoKr2G8amIMJOf8rY8yNH4VKXqwLNcO4mlaKtG33M69xL87BX
-	6G7CQnal/Hv4gaAajGW3fQTfFA3z4r1FwPuLkyeKNiixwp73yANVwUMFuF9fD9slE16QZyT
-	2F0fuzvvrm0P7I97AO8vvVBmJgXIxyZaL3jmE62cDIaaN5K1LV6Z/TK5ViYvmJWOcVcsDr3
-	EtEuVmO4ABblJP5dfXkMg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:cvr4RbMvxyU=:+opHoDA9oED1oZIISzlzOR
-	Z4x9mHeowNmjzNGLvffRLYF21eq8lFnt8YJh2G0aVCCRvdKaFyWUdi171xdKqbrvkNMZwT8/R
-	g6VkSOGIKDxlToPAX3lUNSXDHocJyxgWB3rRMTVXIF2YsAONQxlz6Xv6wNiscNGwiCEvxm6BY
-	dZYv8pPSjrBm4p8sqDfpbR75NH7NVwLQmFoe55bCceLA33YiwdNlRurCXa7sBK2GkagSsQwHJ
-	w1adFjod8dUqRufS3Z/7oppN4n0KJNjH8+SN9vXa1jvPzTeFM4MDlUbCKqSZ1i5xdcJtv0Jp0
-	HsmSkYrZkGug7GmfyPWUxJJU+CnR93t0zuuHCKZQQQdb2SKpZ/VsXqPr7zwQ3SeVDuxRMRYCB
-	W949pJcqcg8/eWt+SWql+8sJys6ZPUGUAoutEGpBgxhwtT7PiSb9lKT8k0kaIdHpmtMKWF0JQ
-	5s/RxEmjR0yYm/O5F/Ni/l1lC4dAb6wKaCm5WQJTrDYJeOazlr7c8EFavS9CAjkG4s1MQR0Rn
-	Jgy85G4HHHEP4tqGZFbZ9x2dKs2EYqLwOOJmMG2ed3T5u/yKUcJ1+yCntDokkGMsSthlBdbjc
-	edsd/6xqCReOkNpD33JGrCK4ndOL90fi4lhN5sEENSwMC0fmghVK/QqOFuLxsW/QAzKId9vQl
-	wC7GoRPm9g+q3jJqy88hm/8gDkpOQ6+fl/FTudEHIkDiIErvvanVHVc+7Jux+oNroiKfLjxKa
-	l0yC6+ZGh8/6Rnt+pd4KauO6nU/GLo664L5PP3HZPLf+MYfirgJ/pASROWI=
+X-Provags-ID: V03:K1:ttwLbHfjFvzQwfNO9cPzyHDWHibyiGxX3ChUL76EYHycmw6EnmQ
+	kx4FPyw+19atBvv9rTvmGMzWtnRB2Nw8LpG3BT7UsJRdIGZppMUoPxmfCku0TYi4WxRrpc2
+	gcC4yxJY5WaFH2jsPA0++zT7nbzpXMsAr25W1rV5bf4PAkkPXiFCAytwX+5eeT1n+pRGQ46
+	iBYBR40gUDShIbw4z18QQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:8DdFuGzYnG0=:Cz+Bl1L/hYJ+YNd2i6eG0t
+	37PibROpijR6jsht4R6cKPt2uQ1t8+Ak3RII7DCZy/fUpyN/LDaEbukfbq4p3FzAdyaHyAjUH
+	YJwWT23oTMom+/552ujZEHEv6LO8KO7qM2eQ2sghrEuJFCMPIVYdK5Df4ntxWhWTYtWX8gKfF
+	7pScW0UZxYQikQSVUskv62EmbLTTJGWhXXPrvOuzKGtWXM+HxEQcmFPM6JZemz/kBX0gRZuM9
+	ztrHpLzJ2Y44iX2A6YxzgxeHNvmH6OkLfdTIuTkfWhFDlNReG29GIQvsnswBZj9OvcvuwvtWp
+	H3/+XJZGO3/EzJ1QTTPFyeJCnAB3972CUTfswf6s+uH5MTAW9xdLUZEHkgfb6SAiATGvhGdtZ
+	zaD3utatdFMyB4Z6LLDaPUP0aptg2Ou/dXSQ3DbRTURc0UvGHV90NkDQOOku6FzNAFGHRRN1Y
+	BqhCeinaag4avNPCqqdpI3WkuZRp+WEqVZspx/h+Hx3EwuKO9EEO2VnF0NbQgbwJjZkeXTrl0
+	qJGZUMzW598nOk6InZVcSpxAwM7OZWhKnn8h5MAPcVch0p3rBS6oyIErsl/9teeBdmKWWsnuk
+	suOCoLu5K/I8IDVyoLDITF8dTHmhl65A7CMWLYRfTI8lsKGjnYRGmrHU+oY2XpHN2Hz3M6YMd
+	ppLr+1DnBbL2vNimNVp/rjtvpSvWC5H0wyDbBjOskjg2Z7UDLXZa3d7W3fILc3du3UQRmZC5r
+	jtXI7EBExZulsJsnEUV/wgnupFfnvMIn1yq7kuJ9+GTqH3cxcgL398syCVM=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-Subject: [Qemu-trivial] [PULL v2 04/12] doc: fix the configuration path
+X-Received-From: 212.227.126.187
+Subject: [Qemu-trivial] [PULL v2 12/12] sockets: avoid string truncation
+ warnings when copying UNIX path
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,69 +67,96 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 11:27:38 -0000
+X-List-Received-Date: Fri, 03 May 2019 11:27:40 -0000
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+From: Daniel P. Berrangé <berrange@redhat.com>
 
-Use a CONFDIR variable to show the configured sysconf path in the
-generated documentations (html, man pages etc).
+In file included from /usr/include/string.h:494,
+                 from include/qemu/osdep.h:101,
+                 from util/qemu-sockets.c:18:
+In function ‘strncpy’,
+    inlined from ‘unix_connect_saddr.isra.0’ at util/qemu-sockets.c:925:5:
+/usr/include/bits/string_fortified.h:106:10: warning: ‘__builtin_strncpy’ specified bound 108 equals destination size [-Wstringop-truncation]
+  106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In function ‘strncpy’,
+    inlined from ‘unix_listen_saddr.isra.0’ at util/qemu-sockets.c:880:5:
+/usr/include/bits/string_fortified.h:106:10: warning: ‘__builtin_strncpy’ specified bound 108 equals destination size [-Wstringop-truncation]
+  106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Related to:
-https://bugzilla.redhat.com/show_bug.cgi?id=1644985
+We are already validating the UNIX socket path length earlier in
+the functions. If we save this string length when we first check
+it, then we can simply use memcpy instead of strcpy later, avoiding
+the gcc truncation warnings.
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20181126105125.30973-1-marcandre.lureau@redhat.com>
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20190501145052.12579-1-berrange@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qemu-ga.texi | 4 ++--
- Makefile     | 9 ++++++---
- 2 files changed, 8 insertions(+), 5 deletions(-)
+ util/qemu-sockets.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/qemu-ga.texi b/qemu-ga.texi
-index 4c7a8fd16329..f00ad830f283 100644
---- a/qemu-ga.texi
-+++ b/qemu-ga.texi
-@@ -30,7 +30,7 @@ set user's password
- @end itemize
+diff --git a/util/qemu-sockets.c b/util/qemu-sockets.c
+index 970505169000..ba6335e71a95 100644
+--- a/util/qemu-sockets.c
++++ b/util/qemu-sockets.c
+@@ -830,6 +830,7 @@ static int unix_listen_saddr(UnixSocketAddress *saddr,
+     int sock, fd;
+     char *pathbuf = NULL;
+     const char *path;
++    size_t pathlen;
  
- qemu-ga will read a system configuration file on startup (located at
--@file{/etc/qemu/qemu-ga.conf} by default), then parse remaining
-+@file{@value{CONFDIR}/qemu-ga.conf} by default), then parse remaining
- configuration options on the command line. For the same key, the last
- option wins, but the lists accumulate (see below for configuration
- file format).
-@@ -58,7 +58,7 @@ file format).
-   Enable fsfreeze hook. Accepts an optional argument that specifies
-   script to run on freeze/thaw. Script will be called with
-   'freeze'/'thaw' arguments accordingly (default is
--  @samp{/etc/qemu/fsfreeze-hook}). If using -F with an argument, do
-+  @samp{@value{CONFDIR}/fsfreeze-hook}). If using -F with an argument, do
-   not follow -F with a space (for example:
-   @samp{-F/var/run/fsfreezehook.sh}).
+     sock = qemu_socket(PF_UNIX, SOCK_STREAM, 0);
+     if (sock < 0) {
+@@ -845,7 +846,8 @@ static int unix_listen_saddr(UnixSocketAddress *saddr,
+         path = pathbuf = g_strdup_printf("%s/qemu-socket-XXXXXX", tmpdir);
+     }
  
-diff --git a/Makefile b/Makefile
-index 1211e78c91ed..43a7a047b452 100644
---- a/Makefile
-+++ b/Makefile
-@@ -899,11 +899,14 @@ ui/shader.o: $(SRC_PATH)/ui/shader.c \
- MAKEINFO=makeinfo
- MAKEINFOINCLUDES= -I docs -I $(<D) -I $(@D)
- MAKEINFOFLAGS=--no-split --number-sections $(MAKEINFOINCLUDES)
--TEXI2PODFLAGS=$(MAKEINFOINCLUDES) "-DVERSION=$(VERSION)"
-+TEXI2PODFLAGS=$(MAKEINFOINCLUDES) -DVERSION="$(VERSION)" -DCONFDIR="$(qemu_confdir)"
- TEXI2PDFFLAGS=$(if $(V),,--quiet) -I $(SRC_PATH) $(MAKEINFOINCLUDES)
+-    if (strlen(path) > sizeof(un.sun_path)) {
++    pathlen = strlen(path);
++    if (pathlen > sizeof(un.sun_path)) {
+         error_setg(errp, "UNIX socket path '%s' is too long", path);
+         error_append_hint(errp, "Path must be less than %zu bytes\n",
+                           sizeof(un.sun_path));
+@@ -877,7 +879,7 @@ static int unix_listen_saddr(UnixSocketAddress *saddr,
  
--docs/version.texi: $(SRC_PATH)/VERSION
--	$(call quiet-command,echo "@set VERSION $(VERSION)" > $@,"GEN","$@")
-+docs/version.texi: $(SRC_PATH)/VERSION config-host.mak
-+	$(call quiet-command,(\
-+		echo "@set VERSION $(VERSION)" && \
-+		echo "@set CONFDIR $(qemu_confdir)" \
-+	)> $@,"GEN","$@")
+     memset(&un, 0, sizeof(un));
+     un.sun_family = AF_UNIX;
+-    strncpy(un.sun_path, path, sizeof(un.sun_path));
++    memcpy(un.sun_path, path, pathlen);
  
- %.html: %.texi docs/version.texi
- 	$(call quiet-command,LC_ALL=C $(MAKEINFO) $(MAKEINFOFLAGS) --no-headers \
+     if (bind(sock, (struct sockaddr*) &un, sizeof(un)) < 0) {
+         error_setg_errno(errp, errno, "Failed to bind socket to %s", path);
+@@ -901,6 +903,7 @@ static int unix_connect_saddr(UnixSocketAddress *saddr, Error **errp)
+ {
+     struct sockaddr_un un;
+     int sock, rc;
++    size_t pathlen;
+ 
+     if (saddr->path == NULL) {
+         error_setg(errp, "unix connect: no path specified");
+@@ -913,7 +916,8 @@ static int unix_connect_saddr(UnixSocketAddress *saddr, Error **errp)
+         return -1;
+     }
+ 
+-    if (strlen(saddr->path) > sizeof(un.sun_path)) {
++    pathlen = strlen(saddr->path);
++    if (pathlen > sizeof(un.sun_path)) {
+         error_setg(errp, "UNIX socket path '%s' is too long", saddr->path);
+         error_append_hint(errp, "Path must be less than %zu bytes\n",
+                           sizeof(un.sun_path));
+@@ -922,7 +926,7 @@ static int unix_connect_saddr(UnixSocketAddress *saddr, Error **errp)
+ 
+     memset(&un, 0, sizeof(un));
+     un.sun_family = AF_UNIX;
+-    strncpy(un.sun_path, saddr->path, sizeof(un.sun_path));
++    memcpy(un.sun_path, saddr->path, pathlen);
+ 
+     /* connect to peer */
+     do {
 -- 
 2.20.1
 
