@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMWLa-0007fO-NV
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:27:22 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:33791)
+	id 1hMWLb-0007fv-8M
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 07:27:23 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:33807)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWLY-0007dB-9d
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:21 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hMWLZ-0007du-4u
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hMWLX-0003Cc-7n
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:20 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:42163)
+	(envelope-from <laurent@vivier.eu>) id 1hMWLY-0003E5-6b
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 07:27:21 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:47175)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hMWLU-00031r-U8; Fri, 03 May 2019 07:27:17 -0400
+	id 1hMWLX-0003CW-Ua; Fri, 03 May 2019 07:27:20 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA
 	(Nemesis)
-	id 1MOm9H-1h6wEf1pdf-00QBIl; Fri, 03 May 2019 13:27:06 +0200
+	id 1MAchM-1hT5vZ258q-00B4K0; Fri, 03 May 2019 13:27:01 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -27,38 +27,36 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
 	Gerd Hoffmann <kraxel@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Fri,  3 May 2019 13:26:48 +0200
-Message-Id: <20190503112654.4393-7-laurent@vivier.eu>
+	Wei Yang <richardw.yang@linux.intel.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Stefano Garzarella <sgarzare@redhat.com>
+Date: Fri,  3 May 2019 13:26:44 +0200
+Message-Id: <20190503112654.4393-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190503112654.4393-1-laurent@vivier.eu>
 References: <20190503112654.4393-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:G1g65eP0H0efAzs12qRn+BsXmZsM6nBMNv988fXaIK8J+tSGW82
-	x/mm6jEzXirjjJMyjGFnzZHomDgnhAAgsHzRik++tROZHcZIWW7WR7jab50thSRto2+UXtq
-	y3CkIDFNe+ZWRf06/FQHv2OmXRt28Z/BekpnvyOQIP7Ll5rGoNbRaSnUqjca+7wPN+Rxr7g
-	UrsXZSYh8Cg63JVMNa41g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:jBCT4kIxxXA=:dIYgJ9udYmEvgucowX0j5c
-	93H4TENxoYhgVxAVIkCM2/8MZ/3+ednL6QdoJZUJy6HTQBrGYvnv/zTWcF7STs3vp3UoMfAei
-	VwnKAQ7CCbz501+FruwQgpBWQ0DQq7PsyKCweBn4GZaF7HMTYNOieIlTbOe2/YB5qZjIWQcmY
-	VEZlOdoa99faf5VViRytZYClX6VhYllpIIFfN5a2QjNsLnPd0rioNIu6h++84+e9oSLnHaDVV
-	eaoVEKHX44QZZXPCCSLBWR4WSCr6ozTNf1VLpYREJ+2GLQFwOOPRt2e4sYUS9JMDbZOK0aoSx
-	NVP46EiWfomjZ4UPwQ4ZxN6kzK5xwLnMP9uEcWxB1BjsJ24B3daiqrN98I3sbQ/PA3Kyg1New
-	N/JtZnqStUc1VIN4u7LLv+vTnlozCt9INS2OzdYzhWx6EurevjNh2awn5Fc2+35istb5s2III
-	o/ZKSQpY622EUnALMVdKB0oo0QxzX0vLAmFJ1ZHZ1Nrv4Qdtr0bxtWt7uLsls0gd8I/+fgXeP
-	lkqLe7EcYeMisHRdYG5/4mkmTjCrc3WlJylYH8dW8xJts1ST24q5hOxG4fdzTGhYhjSzgrxfd
-	Xhkcbnj2HmRNHE3AUfKzWUExrg1kNgU0PTEvRF+3uZGF9aNPr23kVRQkJPgkcg1DMe8mKH8Qi
-	AZ52J969q7IjVKg8SDFrsWtZBMPBq/eG7hwTuUF0YZ1HomV1gAxnmoshN3oyxD0SMWRFM1NAZ
-	yraX/I+fkCxyMwv8x/VBpui4DPaOfcfgVSQXDvGOpgIO/8P+rR2kZjBeCZeo6zxj/lRz2gUVt
-	Do2yRDyqjUCCCZzzbO7RdyRIOi6DaG3ctIveGLDnpTskjVEvhDY3NgfGUckP8gPw8aBfhKhBq
-	J4uKGFwrxbmcoq6N5rIPz67OI7BzKh2Z2n+SfdjJQth44e53yCWDaSDB+ouSD+I1AhnPM/s/g
-	bR/Gpab9sHw==
+X-Provags-ID: V03:K1:8SpV5q+wuYzAk9ypmqbApsD5yPUlesepmLhhH0Wesf46hT4PjrH
+	63DLXxROIpeIrnMMLvoic81JGuRHJDvZlKR+5HC8M1kwZCojtpG57sTrkELWILiisw3B8OZ
+	0KIr81YsL10QL3OeOqFB6s+A7ZQ3VgPKdd6tHdhpJFSZrspCqG50XTccLkO5hWw85IqCsYG
+	uNlPx6EMD0m9yp9sK44bw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:CNCT3k0LTiE=:mRpjnw/f8AHTlQR1hwcNBO
+	MwCJvMSwg6eqJa2lx7mm+mwKmJgLbzq7v/rEx2NJk5sANBAUMpJ7RkEBIFW/pkCRzzRTnsN9G
+	khOLByfBfaT2OeTsCNNZA1+mrdGEGpuuadS5dpK44VFWUrQlQTSfMfa92YwzMVzxBPTh0aF9R
+	pYKBFjqLDhBs0sb5o3OCHamnVoslq2bxbdj055enId7ny5/Bzi4yWoGc1NgcKEP0m0Ax2hC4A
+	cZhC9uBfNIRCf1X+wriaIn4yj46orU6hsvKXnD9RZ/3h1VfmmSnY9cbgLoVVp09XxxK7/RQWA
+	XGClr6A1NQ2vkw5ZetMENXpoIQVFiwftVgS3TTu+qAEV/Q2LoS/sGk7/KjQvGpaetn6+Jl6fp
+	h19Ht6f/Fa05cccuVN4PFIjxwMEmvfvrAfxt8xEHuldYyNsLV4g+CmS0qbWpydNx7MkHoSt9V
+	vfm3ZWByn3QS8AOt5DAzGDZAJIDt8w1K20TOY7ERbRFQ1rqGiEVD1LgKGnNcx+/kj6/GaSuo+
+	HHQ5kKeh8fu2f2jn1gnR4v1ZDKefc+ApUwh4rnQSjehbvnc8oqHvlJ1y1jxP9QwyJ8+SmXVjh
+	6KlF5j2xUi/SJCAHjS2n0mHOghIpY0+UbkzeKo8l87CBeSqxk6Nj7Ag20Jw6xelmZ3qmcfFmO
+	p72l8U+/2p6OTdg8nsyT87LTRRyTdAO9Z+xyOgtzaJjjVu8gobj/NLOUPMvxZl8VxDOr721F/
+	hmMMBAMbKSYEXKBa0uvwJzYnU2qQe8jYFuxNBg==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: [Qemu-trivial] [PULL v2 06/12] configure: fix pam test warning
+X-Received-From: 212.227.126.131
+Subject: [Qemu-trivial] [PULL v2 02/12] CODING_STYLE: specify the indent
+ rule for multiline code
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,40 +68,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 11:27:21 -0000
+X-List-Received-Date: Fri, 03 May 2019 11:27:22 -0000
 
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+From: Wei Yang <richardw.yang@linux.intel.com>
 
-The pam test generates a warning on Fedora 29 with -O3 compilation
-because the headers declare that the pam_conversation pointer to
-pam_start must be non-NULL.  Change it to use the same 0 initialised
-structure as we actually use in qauthz.
+We didn't specify the indent rule for multiline code here, which may
+mislead users. And in current code, the code use various styles.
 
-Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Acked-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20190404091725.20595-1-dgilbert@redhat.com>
+Add this rule in CODING_STYLE to make sure this is clear to every one.
+
+Signed-off-by: Wei Yang <richardw.yang@linux.intel.com>
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20190304071631.27567-2-richardw.yang@linux.intel.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- configure | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ CODING_STYLE | 39 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
-diff --git a/configure b/configure
-index 60719ddcc5b0..a2607afb3408 100755
---- a/configure
-+++ b/configure
-@@ -2940,9 +2940,9 @@ if test "$auth_pam" != "no"; then
- int main(void) {
-    const char *service_name = "qemu";
-    const char *user = "frank";
--   const struct pam_conv *pam_conv = NULL;
-+   const struct pam_conv pam_conv = { 0 };
-    pam_handle_t *pamh = NULL;
--   pam_start(service_name, user, pam_conv, &pamh);
-+   pam_start(service_name, user, &pam_conv, &pamh);
-    return 0;
- }
- EOF
+diff --git a/CODING_STYLE b/CODING_STYLE
+index ec075dedc4a8..90321e9c2821 100644
+--- a/CODING_STYLE
++++ b/CODING_STYLE
+@@ -29,6 +29,45 @@ Spaces of course are superior to tabs because:
+ 
+ Do not leave whitespace dangling off the ends of lines.
+ 
++1.1 Multiline Indent
++
++There are several places where indent is necessary:
++
++ - if/else
++ - while/for
++ - function definition & call
++
++When breaking up a long line to fit within line width, we need a proper indent
++for the following lines.
++
++In case of if/else, while/for, align the secondary lines just after the
++opening parenthesis of the first.
++
++For example:
++
++    if (a == 1 &&
++        b == 2) {
++
++    while (a == 1 &&
++           b == 2) {
++
++In case of function, there are several variants:
++
++    * 4 spaces indent from the beginning
++    * align the secondary lines just after the opening parenthesis of the
++      first
++
++For example:
++
++    do_something(x, y,
++        z);
++
++    do_something(x, y,
++                 z);
++
++    do_something(x, do_another(y,
++                               z));
++
+ 2. Line width
+ 
+ Lines should be 80 characters; try not to make them longer.
 -- 
 2.20.1
 
