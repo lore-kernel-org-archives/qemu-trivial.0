@@ -1,90 +1,93 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMQUE-0003DA-Gf
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 01:11:54 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:48097)
+	id 1hMQkQ-0007ZN-GV
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 01:28:38 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:50384)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hMQUC-0003Bg-Be
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 01:11:53 -0400
+	(envelope-from <sw@weilnetz.de>) id 1hMQkO-0007Xs-GD
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 01:28:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hMQUB-0007mn-GM
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 01:11:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37374)
+	(envelope-from <sw@weilnetz.de>) id 1hMQkN-0000gL-H1
+	for qemu-trivial@nongnu.org; Fri, 03 May 2019 01:28:36 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:51346
+	helo=v2201612906741603.powersrv.de)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hMQU6-0007lP-EN; Fri, 03 May 2019 01:11:46 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(Exim 4.71) (envelope-from <sw@weilnetz.de>)
+	id 1hMQkL-0000eC-2o; Fri, 03 May 2019 01:28:33 -0400
+Received: from localhost (localhost [127.0.0.1])
+	by v2201612906741603.powersrv.de (Postfix) with ESMTP id F287CDB6250;
+	Fri,  3 May 2019 07:28:30 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+	by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+	port 10024)
+	with ESMTP id Yv3w1FEJ0mOs; Fri,  3 May 2019 07:28:29 +0200 (CEST)
+Received: from [192.168.178.24] (p57B42786.dip0.t-ipconnect.de [87.180.39.134])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	key-exchange X25519 server-signature RSA-PSS (2048 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BF6C2305B16F;
-	Fri,  3 May 2019 05:11:45 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-70.ams2.redhat.com [10.36.116.70])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D28725C28E;
-	Fri,  3 May 2019 05:11:43 +0000 (UTC)
-To: Cao Jiaxi <driver1998@foxmail.com>, qemu-devel@nongnu.org
+	by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id BFC6DDB6163; 
+	Fri,  3 May 2019 07:28:29 +0200 (CEST)
+To: Thomas Huth <thuth@redhat.com>, Cao Jiaxi <driver1998@foxmail.com>,
+	qemu-devel@nongnu.org
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>
 References: <20190503002206.9751-1-driver1998@foxmail.com>
 	<20190503003719.10233-1-driver1998@foxmail.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Weil <sw@weilnetz.de>
-From: Thomas Huth <thuth@redhat.com>
+	<db80e5ca-ab98-9c0b-a8c5-8e0c88c58638@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
 Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <db80e5ca-ab98-9c0b-a8c5-8e0c88c58638@redhat.com>
-Date: Fri, 3 May 2019 07:11:43 +0200
+Autocrypt: addr=sw@weilnetz.de; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <8b04e42b-fdf7-4a9a-b36c-8a60bace27fe@weilnetz.de>
+Date: Fri, 3 May 2019 07:28:21 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190503003719.10233-1-driver1998@foxmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.49]);
-	Fri, 03 May 2019 05:11:45 +0000 (UTC)
+In-Reply-To: <db80e5ca-ab98-9c0b-a8c5-8e0c88c58638@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="79E37so4yXGw8zLXAQ8jl8XTF3dybt9eo"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-Received-From: 37.120.169.71
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 4/4] osdep: Fix mingw
  compilation regarding stdio formats
 X-BeenThere: qemu-trivial@nongnu.org
@@ -98,53 +101,109 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 05:11:53 -0000
+X-List-Received-Date: Fri, 03 May 2019 05:28:37 -0000
 
-On 03/05/2019 02.37, Cao Jiaxi wrote:
-> I encountered the following compilation error on mingw:
-> 
-> /mnt/d/qemu/include/qemu/osdep.h:97:9: error: '__USE_MINGW_ANSI_STDIO' macro redefined [-Werror,-Wmacro-redefined]
->  #define __USE_MINGW_ANSI_STDIO 1
->         ^
-> /mnt/d/llvm-mingw/aarch64-w64-mingw32/include/_mingw.h:433:9: note: previous definition is here
->  #define __USE_MINGW_ANSI_STDIO 0      /* was not defined so it should be 0 */
-> 
-> It turns out that __USE_MINGW_ANSI_STDIO must be set before any
-> system headers are included, not just before stdio.h.
-> 
-> Signed-off-by: Cao Jiaxi <driver1998@foxmail.com>
-> ---
->  include/qemu/osdep.h | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-> index 303d315c5d..af2b91f0b8 100644
-> --- a/include/qemu/osdep.h
-> +++ b/include/qemu/osdep.h
-> @@ -85,17 +85,17 @@ extern int daemon(int, int);
->  #endif
->  #endif
->  
-> +/* enable C99/POSIX format strings (needs mingw32-runtime 3.15 or later) */
-> +#ifdef __MINGW32__
-> +#define __USE_MINGW_ANSI_STDIO 1
-> +#endif
-> +
->  #include <stdarg.h>
->  #include <stddef.h>
->  #include <stdbool.h>
->  #include <stdint.h>
->  #include <sys/types.h>
->  #include <stdlib.h>
-> -
-> -/* enable C99/POSIX format strings (needs mingw32-runtime 3.15 or later) */
-> -#ifdef __MINGW32__
-> -#define __USE_MINGW_ANSI_STDIO 1
-> -#endif
->  #include <stdio.h>
->  
->  #include <string.h>
-> 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--79E37so4yXGw8zLXAQ8jl8XTF3dybt9eo
+Content-Type: multipart/mixed; boundary="eWnh6C8QXJrOMB8lCSqTGA37VILTrt58i";
+ protected-headers="v1"
+From: Stefan Weil <sw@weilnetz.de>
+To: Thomas Huth <thuth@redhat.com>, Cao Jiaxi <driver1998@foxmail.com>,
+ qemu-devel@nongnu.org
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>
+Message-ID: <8b04e42b-fdf7-4a9a-b36c-8a60bace27fe@weilnetz.de>
+Subject: Re: [Qemu-devel] [PATCH v3 4/4] osdep: Fix mingw compilation
+ regarding stdio formats
+References: <20190503002206.9751-1-driver1998@foxmail.com>
+ <20190503003719.10233-1-driver1998@foxmail.com>
+ <db80e5ca-ab98-9c0b-a8c5-8e0c88c58638@redhat.com>
+In-Reply-To: <db80e5ca-ab98-9c0b-a8c5-8e0c88c58638@redhat.com>
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+--eWnh6C8QXJrOMB8lCSqTGA37VILTrt58i
+Content-Type: text/plain; charset=utf-8
+Content-Language: de-DE
+Content-Transfer-Encoding: quoted-printable
+
+On 03.05.19 07:11, Thomas Huth wrote:
+> On 03/05/2019 02.37, Cao Jiaxi wrote:
+>> I encountered the following compilation error on mingw:
+>>
+>> /mnt/d/qemu/include/qemu/osdep.h:97:9: error: '__USE_MINGW_ANSI_STDIO'=
+ macro redefined [-Werror,-Wmacro-redefined]
+>>  #define __USE_MINGW_ANSI_STDIO 1
+>>         ^
+>> /mnt/d/llvm-mingw/aarch64-w64-mingw32/include/_mingw.h:433:9: note: pr=
+evious definition is here
+>>  #define __USE_MINGW_ANSI_STDIO 0      /* was not defined so it should=
+ be 0 */
+>>
+>> It turns out that __USE_MINGW_ANSI_STDIO must be set before any
+>> system headers are included, not just before stdio.h.
+>>
+>> Signed-off-by: Cao Jiaxi <driver1998@foxmail.com>
+>> ---
+>>  include/qemu/osdep.h | 10 +++++-----
+>>  1 file changed, 5 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+>> index 303d315c5d..af2b91f0b8 100644
+>> --- a/include/qemu/osdep.h
+>> +++ b/include/qemu/osdep.h
+>> @@ -85,17 +85,17 @@ extern int daemon(int, int);
+>>  #endif
+>>  #endif
+>> =20
+>> +/* enable C99/POSIX format strings (needs mingw32-runtime 3.15 or lat=
+er) */
+>> +#ifdef __MINGW32__
+>> +#define __USE_MINGW_ANSI_STDIO 1
+>> +#endif
+>> +
+>>  #include <stdarg.h>
+>>  #include <stddef.h>
+>>  #include <stdbool.h>
+>>  #include <stdint.h>
+>>  #include <sys/types.h>
+>>  #include <stdlib.h>
+>> -
+>> -/* enable C99/POSIX format strings (needs mingw32-runtime 3.15 or lat=
+er) */
+>> -#ifdef __MINGW32__
+>> -#define __USE_MINGW_ANSI_STDIO 1
+>> -#endif
+>>  #include <stdio.h>
+>> =20
+>>  #include <string.h>
+>>
+>=20
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+
+
+--eWnh6C8QXJrOMB8lCSqTGA37VILTrt58i--
+
+--79E37so4yXGw8zLXAQ8jl8XTF3dybt9eo
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEESSNv6nXJXWmOwreK4Iwh1Wd0UK0FAlzL0X0ACgkQ4Iwh1Wd0
+UK2R9g/9Gw+96R8Ut9N214NusnvjhbwqVDflZV3Js0pTz8ny1kM6wGP5aZEtqR8d
+A1CZlA7rwLeGmF0Bz9uTwd/d4amsxvLLz5qM3XVAr6vqcyiyYiKk4fJ8ATv6IQID
+rL0U3u1dgP3IFl8J4GCJsv9kX/BZyiOTJZ1Y+xX9ZJosOlrQG/Zx8D5cdNtz/svQ
+vczbe+dU2buYUpvYNnMr4zB5lPrXqapDJYeFbdTYofrFn6UVZYiUAqXRPabk6c5X
+R/UJHpYq8DkPpupAFwRSAvlfaeKgSCq3uNBt/i0UJ7cuSZjjdn+i1eREdps7bbBg
+aowCio8GzN6q2P6GFatYe+N65pMRCfS5kd3e0fJN29DdeAL69sQHF056M0djOqV2
++wJCYQwbiLLmWR4JFuF+8owayq/BZTqxlYqv3MuY/Ho2Oh+OcZ6NVtITjP5OYWHM
+xkLAo+cHIl7mN1pfCcQUs2FEoxbo8n0zhAP4swPkqqtbdT2S9zQXlYfOOcz99aDW
+nMkKtSY6gHQqP5gBWBOHQwQFa2AYL4clDqVJeAx5KqRRgWluiyjsXm30kEqw0FWn
+YzZboYa8PaBmDdIacTOGQ6XCkPgDAR+L0aPuEAIZ2UohAXTDyLEHO83xkDa7985H
+9UbUfrM5v86ftcnUfELb2q++ohRFLysaDKO6gRIxEGHE7RfqPbQ=
+=1+BK
+-----END PGP SIGNATURE-----
+
+--79E37so4yXGw8zLXAQ8jl8XTF3dybt9eo--
 
