@@ -1,66 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMblQ-0007Ew-17
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2019 13:14:24 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34246)
+	id 1hMtbG-00089d-4c
+	for mharc-qemu-trivial@gnu.org; Sat, 04 May 2019 08:17:06 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:53714)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <liboxuan@connect.hku.hk>) id 1hMblN-0007Cz-RT
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 13:14:22 -0400
+	(envelope-from <philmd@redhat.com>) id 1hMtbE-00087b-8r
+	for qemu-trivial@nongnu.org; Sat, 04 May 2019 08:17:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <liboxuan@connect.hku.hk>) id 1hMblM-0001RI-TB
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 13:14:21 -0400
-Received: from mail-yw1-xc41.google.com ([2607:f8b0:4864:20::c41]:34840)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <liboxuan@connect.hku.hk>)
-	id 1hMblM-0001QM-Ih
-	for qemu-trivial@nongnu.org; Fri, 03 May 2019 13:14:20 -0400
-Received: by mail-yw1-xc41.google.com with SMTP id n188so4870980ywe.2
-	for <qemu-trivial@nongnu.org>; Fri, 03 May 2019 10:14:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=connect-hku-hk.20150623.gappssmtp.com; s=20150623;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=x0aCQ5qBwgt9DWvdLtyGVrRtiZ9Wk6BDR2oeCRD0tww=;
-	b=XwtuNLM+QPBiu6YJ/ZgNHJn/Eu2EJkRlxi6ienrnS73Za5YMQTvOL/HVprpf1pSvUK
-	eUz223PwF8i3d7OClAUgh/xok25X9VLDlQG0qRcPiTnQRE01VEzJwJFywwV5ekGdU+RP
-	pbxMf7W5lwGql3JMXsomcD1iuIcKzwA5zoap6K64j/4WBHLMS+RekfIOELv1S/WM9WJk
-	onsZoVAIvZYcZvH0jERocokWN53s1rxWt7hMhOfkRw27cPB0lMB3SrjX03sR6gk5rLZv
-	jWwyEVZDss7ATwXoslqygXSFwoFv6p/cNmjAEnwRY7aBM4+WulYrUEuQ9O4g0fUo8cOQ
-	Orxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=x0aCQ5qBwgt9DWvdLtyGVrRtiZ9Wk6BDR2oeCRD0tww=;
-	b=DAa5I9PPTKK/wnTcVBO3pLiRmwTI6IPELrB7hs9uCSU/3Bk45ztSyTLIQMcG/0NLRE
-	YcU6cJxohxjIetZqZ3TfyU+KKqjrf8ldDE+KOY/3/DrY5MXdz3Azmh5nwZQUvDRsmQUf
-	OJC2NdnZ6v5WuhR9iklwTiIwVbskBOT5f5s6S4Vla/ESdAeHXm/g4zwV4ex/XBjEJj8x
-	N4wYELNRhw/7060uK3InQ0Y347AhHWEvAz+RW0OEszUtGxJojMbq0YFbl0QD+P/ArR9z
-	9rF/jmZ21kvosl7wjFiDLiXYbsqRPBfZWEucrwf84uYHyf3Go/s1ml3vISynrN8qOd+s
-	997g==
-X-Gm-Message-State: APjAAAVjzN0geG19dg9YRSqS+YFmK9ctTmbVvRYyr5K7gLRtUczzchTt
-	MR6kOZdHNaguFES6kQG9ExdZAWXjTJSSrX8f5NWGbw==
-X-Google-Smtp-Source: APXvYqyEmXs627YIjRRJIileqa6wgZqCKVFv1HFs7FjEv24cZY7EBgZIYi6j8qc90R+Dm8CQtSkM+vWmI7myYUJsrow=
-X-Received: by 2002:a81:e0d:: with SMTP id 13mr8357280ywo.336.1556903659437;
-	Fri, 03 May 2019 10:14:19 -0700 (PDT)
+	(envelope-from <philmd@redhat.com>) id 1hMtbC-0001sW-IZ
+	for qemu-trivial@nongnu.org; Sat, 04 May 2019 08:17:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57766)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>)
+	id 1hMtb9-0001q4-LU; Sat, 04 May 2019 08:16:59 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E096C30821A5;
+	Sat,  4 May 2019 12:16:57 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-35.brq.redhat.com [10.40.204.35])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5FBFF5D9C4;
+	Sat,  4 May 2019 12:16:52 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Sat,  4 May 2019 14:16:50 +0200
+Message-Id: <20190504121650.12651-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20190503154424.73933-1-liboxuan@connect.hku.hk>
-	<87bm0j4im0.fsf@zen.linaroharston>
-	<CALM0=-=b+z2aW-cuM=hmk3_oKG7w3ianMo_ZA7gj8zMgCOfC3g@mail.gmail.com>
-	<878svn4gnq.fsf@zen.linaroharston>
-In-Reply-To: <878svn4gnq.fsf@zen.linaroharston>
-From: "LI, BO XUAN" <liboxuan@connect.hku.hk>
-Date: Sat, 4 May 2019 01:13:43 +0800
-Message-ID: <CALM0=-m0Vd1YMn6s36oRbsqFCwjPwdga5Q0XRoO41dq6iw1Lzg@mail.gmail.com>
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
-	Eric Blake <eblake@redhat.com>,
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	Yuval Shaia <yuval.shaia@oracle.com>, "Michael S. Tsirkin" <mst@redhat.com>
-Content-Type: multipart/alternative; boundary="00000000000092175c0587fee1cb"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::c41
-Subject: Re: [Qemu-trivial] [PATCH v4] hw/virtio/virtio-mmio: Convert
- DPRINTF to trace and log
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.47]);
+	Sat, 04 May 2019 12:16:58 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] hw/display/cirrus_vga: Update the
+ documentation URL
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -72,71 +50,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2019 17:14:23 -0000
+X-List-Received-Date: Sat, 04 May 2019 12:17:05 -0000
 
---00000000000092175c0587fee1cb
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The documentation URL is not working, but is backed up by the
+Wayback Machine on the Internet Archive.
+Replace the outdated link by a captured one.
+Add another link to the VGADOC4b.ZIP archive content.
 
-Gotcha, thanks for the tip!
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/display/cirrus_vga.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-Best regards,
-Boxuan Li
+diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
+index a0e71469f4d..a04440b3748 100644
+--- a/hw/display/cirrus_vga.c
++++ b/hw/display/cirrus_vga.c
+@@ -23,8 +23,13 @@
+  * THE SOFTWARE.
+  */
+ /*
+- * Reference: Finn Thogersons' VGADOC4b
+- *   available at http://home.worldonline.dk/~finth/
++ * Reference: Finn Thogersons' VGADOC4b:
++ *
++ *  http://web.archive.org/web/20021019054927/http://home.worldonline.dk=
+/finth/
++ *
++ * VGADOC4b.ZIP content available at:
++ *
++ *  https://pdos.csail.mit.edu/6.828/2005/readings/hardware/vgadoc
+  */
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
+--=20
+2.20.1
 
-On Sat, May 4, 2019 at 1:00 AM Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
-ote:
-
->
-> LI, BO XUAN <liboxuan@connect.hku.hk> writes:
->
-> > Hi Alex,
-> >
-> > Sorry about that, I am still trying to get familiar with the patch
-> > submission process. Since my patch has been changed from your last
-> review,
-> > I thought it would be safe to not include the r-b tag from last time.
-> Will
-> > take care next time!
->
-> That's ok. As a general rule as long as you haven't substantially
-> changed a patch it's safe to keep previous r-b tags. You can always
-> mention it in your cover letter if you are unsure.
->
-> --
-> Alex Benn=C3=A9e
->
-
---00000000000092175c0587fee1cb
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Gotcha, thanks for the tip!=C2=A0<br><div><br></div><div>B=
-est regards,</div><div>Boxuan Li</div></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Sat, May 4, 2019 at 1:00 AM Alex B=
-enn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.org">alex.bennee@linaro=
-.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"mar=
-gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
-ex"><br>
-LI, BO XUAN &lt;<a href=3D"mailto:liboxuan@connect.hku.hk" target=3D"_blank=
-">liboxuan@connect.hku.hk</a>&gt; writes:<br>
-<br>
-&gt; Hi Alex,<br>
-&gt;<br>
-&gt; Sorry about that, I am still trying to get familiar with the patch<br>
-&gt; submission process. Since my patch has been changed from your last rev=
-iew,<br>
-&gt; I thought it would be safe to not include the r-b tag from last time. =
-Will<br>
-&gt; take care next time!<br>
-<br>
-That&#39;s ok. As a general rule as long as you haven&#39;t substantially<b=
-r>
-changed a patch it&#39;s safe to keep previous r-b tags. You can always<br>
-mention it in your cover letter if you are unsure.<br>
-<br>
---<br>
-Alex Benn=C3=A9e<br>
-</blockquote></div>
-
---00000000000092175c0587fee1cb--
 
