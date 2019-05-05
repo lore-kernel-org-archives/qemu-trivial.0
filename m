@@ -1,63 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hMvU5-0005Kg-N8
-	for mharc-qemu-trivial@gnu.org; Sat, 04 May 2019 10:17:49 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51072)
+	id 1hNEpk-0005uZ-OF
+	for mharc-qemu-trivial@gnu.org; Sun, 05 May 2019 06:57:28 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:53523)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hMvU0-0005IH-Fe
-	for qemu-trivial@nongnu.org; Sat, 04 May 2019 10:17:45 -0400
+	(envelope-from <yuval.shaia@oracle.com>) id 1hNEph-0005uS-SO
+	for qemu-trivial@nongnu.org; Sun, 05 May 2019 06:57:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hMvTz-0006Ns-0H
-	for qemu-trivial@nongnu.org; Sat, 04 May 2019 10:17:44 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:39071)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hMvTy-0006NE-R2
-	for qemu-trivial@nongnu.org; Sat, 04 May 2019 10:17:42 -0400
-Received: by mail-wm1-f68.google.com with SMTP id n25so9838836wmk.4
-	for <qemu-trivial@nongnu.org>; Sat, 04 May 2019 07:17:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=V8JCfOXytt3Wb5bbw6Fx43wj8nhFahWQodb/zSt5jJw=;
-	b=f9oOs+J+M7QvV6OK4SOYzma6MkK7WiFMMLu0BtCr+0lkkyQbY1eUjdpnYdEjcxBkUj
-	KIVWnc0Z5v6r/J2cS9BEzSB7I888RTfJUtl7s8m/J2hRqtn5RaXRc7JlKU2RpfVGkRs0
-	iITs372pfIdpuhF4e3trQDhOUMg60xM/fKHAO+2KpljAMMvKa39eeoUHciT3zCGRXtfC
-	92okImi1VRJZ/RaM+fkqu1uFWrUJGx0jLvK8Ach5hN4gyPTlqtxlr7iEifbZQRuKL3IP
-	QTZA1T5Cpkdnmsk+tZm8IBWVk/DWvRHfxWXjg/gaxGR3dSk33Uk6anj7Enikni0Bomqi
-	PGFw==
-X-Gm-Message-State: APjAAAXusXYvLcWkbXRSdxBhO2tpvroQUYuh7bqNzqHoykyvACQUan3j
-	IXTUAIyiTwtgaCxMvC8Myf+9K3KNnSE=
-X-Google-Smtp-Source: APXvYqxK1k2fIUEfEBMDbSHWQpmGHdm/cZ/Q302oPVYDRWdxjbTWVsTyCOumDXqcG15Ojbvoc4PLGQ==
-X-Received: by 2002:a1c:4c09:: with SMTP id z9mr9986631wmf.87.1556979460797;
-	Sat, 04 May 2019 07:17:40 -0700 (PDT)
-Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	z140sm7657501wmc.27.2019.05.04.07.17.39
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Sat, 04 May 2019 07:17:40 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: Jason Wang <jasowang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20190504123538.14952-1-philmd@redhat.com>
-	<ffe3d73d-b9a2-a0e3-6dee-222a3d87cc28@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <b10a02d5-e54a-7dd5-4e7e-3a39b3fd0b1a@redhat.com>
-Date: Sat, 4 May 2019 16:17:39 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(envelope-from <yuval.shaia@oracle.com>) id 1hNEpf-00035A-Tm
+	for qemu-trivial@nongnu.org; Sun, 05 May 2019 06:57:25 -0400
+Received: from aserp2130.oracle.com ([141.146.126.79]:32784)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <yuval.shaia@oracle.com>)
+	id 1hNEpf-00034j-K4; Sun, 05 May 2019 06:57:23 -0400
+Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
+	by aserp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id
+	x45Asieu139170; Sun, 5 May 2019 10:57:19 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+	h=date : from : to : cc
+	: subject : message-id : references : mime-version : content-type :
+	in-reply-to; s=corp-2018-07-02;
+	bh=0bWTbKfABVAr5N+twtd1oJ1+vchJ3rkejxd1DkXvgfY=;
+	b=IuWm92dOqIfXBwYGX73NbPHlzaCbyG2oTmL5uAbOP8io0kYEVwU0zofn+GrfXmO/Dkbs
+	WK7wZS66c+Y7JzY2TeLjNhBJuzlKErT8CqNF54DQdPLckvutHt6Tn61vz02ulklo2OZB
+	kNnCOmLTT9MkUzVRhSIIN7Xjr2Ng8YO3XimdN1P2yxG+nvoLJ6BuHl8RBDwH069zLLUa
+	KIAn7dhvXQm191eEjPk1kUtx3llwyHCDFj9T1u/q0bU7AlFf9aZhpXuoKsKltJ90SvFc
+	GBUQtHDmDvOp/RycgdJde0lUz8tKgDmAyWyCsAUBz5WYA2ck7ZwudvkMfmDJ7dO8IReL
+	kg== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+	by aserp2130.oracle.com with ESMTP id 2s94b5jnxn-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sun, 05 May 2019 10:57:19 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+	by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id
+	x45Au2Ww144710; Sun, 5 May 2019 10:57:19 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+	by userp3030.oracle.com with ESMTP id 2s94aqt8ba-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sun, 05 May 2019 10:57:18 +0000
+Received: from abhmp0002.oracle.com (abhmp0002.oracle.com [141.146.116.8])
+	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x45AvAX3017611;
+	Sun, 5 May 2019 10:57:10 GMT
+Received: from lap1 (/77.138.183.59) by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Sun, 05 May 2019 10:57:10 +0000
+Date: Sun, 5 May 2019 13:57:04 +0300
+From: Yuval Shaia <yuval.shaia@oracle.com>
+To: Boxuan Li <liboxuan@connect.hku.hk>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, eblake@redhat.com,
+	philmd@redhat.com, alex.bennee@linaro.org,
+	"Michael S. Tsirkin" <mst@redhat.com>
+Message-ID: <20190505105703.GA9490@lap1>
+References: <20190503154424.73933-1-liboxuan@connect.hku.hk>
 MIME-Version: 1.0
-In-Reply-To: <ffe3d73d-b9a2-a0e3-6dee-222a3d87cc28@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-trivial] [PATCH] hw/net/ne2000: Extract the PCI device
- from the chipset common code
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190503154424.73933-1-liboxuan@connect.hku.hk>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9247
+	signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+	malwarescore=0
+	phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+	adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+	engine=8.0.1-1810050000 definitions=main-1905050099
+X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9247
+	signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+	priorityscore=1501 malwarescore=0
+	suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+	lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999
+	adultscore=0
+	classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+	definitions=main-1905050099
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 141.146.126.79
+Subject: Re: [Qemu-trivial] [PATCH v4] hw/virtio/virtio-mmio: Convert
+ DPRINTF to trace and log
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,51 +86,164 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 04 May 2019 14:17:45 -0000
+X-List-Received-Date: Sun, 05 May 2019 10:57:27 -0000
 
-On 5/4/19 4:09 PM, Thomas Huth wrote:
-> On 04/05/2019 14.35, Philippe Mathieu-Daudé wrote:
->> The ne2000.c file contains functions common the the ISA and PCI
->> devices. To allow to build with one or another, extract the PCI
->> specific part into a new file.
->>
->> This fix an issue where the NE2000_ISA Kconfig had to pull the
->> full PCI core objects.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  hw/net/Kconfig       |   7 ++-
->>  hw/net/Makefile.objs |   3 +-
->>  hw/net/ne2000-pci.c  | 132 +++++++++++++++++++++++++++++++++++++++++++
->>  hw/net/ne2000.c      | 105 ----------------------------------
->>  4 files changed, 139 insertions(+), 108 deletions(-)
->>  create mode 100644 hw/net/ne2000-pci.c
->>
->> diff --git a/hw/net/Kconfig b/hw/net/Kconfig
->> index 7d7bbc5d7c9..4ef86dc3a53 100644
->> --- a/hw/net/Kconfig
->> +++ b/hw/net/Kconfig
->> @@ -1,10 +1,14 @@
->>  config DP8393X
->>      bool
->>  
->> +config NE2000_COMMON
->> +    bool
+On Fri, May 03, 2019 at 11:44:24PM +0800, Boxuan Li wrote:
+> Use traces for debug message and qemu_log_mask for errors.
 > 
-> I'd maybe rather simply name it "NE2000" instead of "NE2000_COMMON", but
-> that's just a matter of taste.
-
-I started using this name, but then realized it is confuse and someone
-could enable CONFIG_NE2000=y expecting a network device, but none would
-be linked.
-
-Paolo, would it be useful to add some 'internal' Kconfig property (like
-"default")? So that config is not user-selectable, but only
-dependency-selectable. CONFIG_ARM_V7M might be a similar example (we
-don't want the user to unselect it).
-
+> Signed-off-by: Boxuan Li <liboxuan@connect.hku.hk>
+> ---
+> v1: https://patchew.org/QEMU/20190428110258.86681-1-liboxuan@connect.hku.hk/
+> v2: https://patchew.org/QEMU/20190501081039.58938-1-liboxuan@connect.hku.hk/
+> v3: https://patchew.org/QEMU/20190503084654.18413-1-liboxuan@connect.hku.hk/
+> v4: Fix indentation and do not convert uint64_t to int
+> ---
+>  hw/virtio/trace-events  |  7 +++++++
+>  hw/virtio/virtio-mmio.c | 44 +++++++++++++++++++++-----------------------
+>  2 files changed, 28 insertions(+), 23 deletions(-)
 > 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+> index 60c649c4bc..e28ba48da6 100644
+> --- a/hw/virtio/trace-events
+> +++ b/hw/virtio/trace-events
+> @@ -46,3 +46,10 @@ virtio_balloon_handle_output(const char *name, uint64_t gpa) "section name: %s g
+>  virtio_balloon_get_config(uint32_t num_pages, uint32_t actual) "num_pages: %d actual: %d"
+>  virtio_balloon_set_config(uint32_t actual, uint32_t oldactual) "actual: %d oldactual: %d"
+>  virtio_balloon_to_target(uint64_t target, uint32_t num_pages) "balloon target: 0x%"PRIx64" num_pages: %d"
+> +
+> +# virtio-mmio.c
+> +virtio_mmio_read(uint64_t offset) "virtio_mmio_read offset 0x%" PRIx64
+> +virtio_mmio_write_offset(uint64_t offset, uint64_t value) "virtio_mmio_write offset 0x%" PRIx64 " value 0x%" PRIx64
+> +virtio_mmio_guest_page(uint64_t size, int shift) "guest page size 0x%" PRIx64 " shift %d"
+> +virtio_mmio_queue_write(uint64_t value, int max_size) "mmio_queue write 0x%" PRIx64 " max %d"
+> +virtio_mmio_setting_irq(int level) "virtio_mmio setting IRQ %d"
+> diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
+> index 5807aa87fe..96c762f0bf 100644
+> --- a/hw/virtio/virtio-mmio.c
+> +++ b/hw/virtio/virtio-mmio.c
+> @@ -27,16 +27,8 @@
+>  #include "sysemu/kvm.h"
+>  #include "hw/virtio/virtio-bus.h"
+>  #include "qemu/error-report.h"
+> -
+> -/* #define DEBUG_VIRTIO_MMIO */
+> -
+> -#ifdef DEBUG_VIRTIO_MMIO
+> -
+> -#define DPRINTF(fmt, ...) \
+> -do { printf("virtio_mmio: " fmt , ## __VA_ARGS__); } while (0)
+> -#else
+> -#define DPRINTF(fmt, ...) do {} while (0)
+> -#endif
+> +#include "qemu/log.h"
+> +#include "trace.h"
+>  
+>  /* QOM macros */
+>  /* virtio-mmio-bus */
+> @@ -107,7 +99,7 @@ static uint64_t virtio_mmio_read(void *opaque, hwaddr offset, unsigned size)
+>      VirtIOMMIOProxy *proxy = (VirtIOMMIOProxy *)opaque;
+>      VirtIODevice *vdev = virtio_bus_get_device(&proxy->bus);
+>  
+> -    DPRINTF("virtio_mmio_read offset 0x%x\n", (int)offset);
+> +    trace_virtio_mmio_read(offset);
+>  
+>      if (!vdev) {
+>          /* If no backend is present, we treat most registers as
+> @@ -144,7 +136,9 @@ static uint64_t virtio_mmio_read(void *opaque, hwaddr offset, unsigned size)
+>          }
+>      }
+>      if (size != 4) {
+> -        DPRINTF("wrong size access to register!\n");
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: wrong size access to register!\n",
+> +                      __func__);
+>          return 0;
+>      }
+>      switch (offset) {
+> @@ -182,10 +176,12 @@ static uint64_t virtio_mmio_read(void *opaque, hwaddr offset, unsigned size)
+>      case VIRTIO_MMIO_QUEUE_ALIGN:
+>      case VIRTIO_MMIO_QUEUE_NOTIFY:
+>      case VIRTIO_MMIO_INTERRUPT_ACK:
+> -        DPRINTF("read of write-only register\n");
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: read of write-only register\n",
+> +                      __func__);
+>          return 0;
+>      default:
+> -        DPRINTF("bad register offset\n");
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad register offset\n", __func__);
+>          return 0;
+>      }
+>      return 0;
+> @@ -197,8 +193,7 @@ static void virtio_mmio_write(void *opaque, hwaddr offset, uint64_t value,
+>      VirtIOMMIOProxy *proxy = (VirtIOMMIOProxy *)opaque;
+>      VirtIODevice *vdev = virtio_bus_get_device(&proxy->bus);
+>  
+> -    DPRINTF("virtio_mmio_write offset 0x%x value 0x%" PRIx64 "\n",
+> -            (int)offset, value);
+> +    trace_virtio_mmio_write_offset(offset, value);
+>  
+>      if (!vdev) {
+>          /* If no backend is present, we just make all registers
+> @@ -226,7 +221,9 @@ static void virtio_mmio_write(void *opaque, hwaddr offset, uint64_t value,
+>          return;
+>      }
+>      if (size != 4) {
+> -        DPRINTF("wrong size access to register!\n");
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: wrong size access to register!\n",
+> +                      __func__);
+>          return;
+>      }
+>      switch (offset) {
+> @@ -246,8 +243,7 @@ static void virtio_mmio_write(void *opaque, hwaddr offset, uint64_t value,
+>          if (proxy->guest_page_shift > 31) {
+>              proxy->guest_page_shift = 0;
+>          }
+> -        DPRINTF("guest page size %" PRIx64 " shift %d\n", value,
+> -                proxy->guest_page_shift);
+> +        trace_virtio_mmio_guest_page(value, proxy->guest_page_shift);
+>          break;
+>      case VIRTIO_MMIO_QUEUE_SEL:
+>          if (value < VIRTIO_QUEUE_MAX) {
+> @@ -255,7 +251,7 @@ static void virtio_mmio_write(void *opaque, hwaddr offset, uint64_t value,
+>          }
+>          break;
+>      case VIRTIO_MMIO_QUEUE_NUM:
+> -        DPRINTF("mmio_queue write %d max %d\n", (int)value, VIRTQUEUE_MAX_SIZE);
+> +        trace_virtio_mmio_queue_write(value, VIRTQUEUE_MAX_SIZE);
+>          virtio_queue_set_num(vdev, vdev->queue_sel, value);
+>          /* Note: only call this function for legacy devices */
+>          virtio_queue_update_rings(vdev, vdev->queue_sel);
+> @@ -303,11 +299,13 @@ static void virtio_mmio_write(void *opaque, hwaddr offset, uint64_t value,
+>      case VIRTIO_MMIO_DEVICE_FEATURES:
+>      case VIRTIO_MMIO_QUEUE_NUM_MAX:
+>      case VIRTIO_MMIO_INTERRUPT_STATUS:
+> -        DPRINTF("write to readonly register\n");
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: write to readonly register\n",
+> +                      __func__);
+>          break;
+>  
+>      default:
+> -        DPRINTF("bad register offset\n");
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad register offset\n", __func__);
+>      }
+>  }
+>  
+> @@ -327,7 +325,7 @@ static void virtio_mmio_update_irq(DeviceState *opaque, uint16_t vector)
+>          return;
+>      }
+>      level = (atomic_read(&vdev->isr) != 0);
+> -    DPRINTF("virtio_mmio setting IRQ %d\n", level);
+> +    trace_virtio_mmio_setting_irq(level);
+>      qemu_set_irq(proxy->irq, level);
+>  }
 
-Thanks!
+Reviewed-by: Yuval Shaia <yuval.shaia@oracle.com>
+
+>  
+> -- 
+> 2.13.2
+> 
 
