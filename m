@@ -1,42 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hNIOc-00005n-Mu
-	for mharc-qemu-trivial@gnu.org; Sun, 05 May 2019 10:45:42 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37969)
+	id 1hNLY3-0005qG-UC
+	for mharc-qemu-trivial@gnu.org; Sun, 05 May 2019 14:07:39 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:45083)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hNIOY-0008W9-Cm
-	for qemu-trivial@nongnu.org; Sun, 05 May 2019 10:45:39 -0400
+	(envelope-from <philmd@redhat.com>) id 1hNLY1-0005oa-AI
+	for qemu-trivial@nongnu.org; Sun, 05 May 2019 14:07:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hNIOX-0004vx-Dy
-	for qemu-trivial@nongnu.org; Sun, 05 May 2019 10:45:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52514)
+	(envelope-from <philmd@redhat.com>) id 1hNLY0-0002bm-DI
+	for qemu-trivial@nongnu.org; Sun, 05 May 2019 14:07:37 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39734)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hNIOU-0004sQ-RH; Sun, 05 May 2019 10:45:34 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
+	(Exim 4.71) (envelope-from <philmd@redhat.com>)
+	id 1hNLXw-0002VP-8H; Sun, 05 May 2019 14:07:32 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DBA29308FE8F;
-	Sun,  5 May 2019 14:45:31 +0000 (UTC)
-Received: from thuth.com (ovpn-116-27.ams2.redhat.com [10.36.116.27])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D086860851;
-	Sun,  5 May 2019 14:45:30 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Greg Kurz <groug@kaod.org>,
+	by mx1.redhat.com (Postfix) with ESMTPS id C5F823086220;
+	Sun,  5 May 2019 18:07:30 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-58.brq.redhat.com [10.40.204.58])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id B74B45C28D;
+	Sun,  5 May 2019 18:07:22 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
 	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Date: Sun,  5 May 2019 16:45:27 +0200
-Message-Id: <20190505144527.27926-1-thuth@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Aleksandar Rikalo <arikalo@wavecomp.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
+	Beniamino Galvani <b.galvani@gmail.com>,
+	Antony Pavlov <antonynpavlov@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Sun,  5 May 2019 20:07:18 +0200
+Message-Id: <20190505180719.31913-1-philmd@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.49]);
-	Sun, 05 May 2019 14:45:32 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.42]);
+	Sun, 05 May 2019 18:07:30 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] virtfs: Add missing "id" parameter in
- documentation
+Subject: [Qemu-trivial] [PATCH] hw/timer: Compile devices not
+ target-dependent as common objects
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -48,37 +58,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 May 2019 14:45:39 -0000
+X-List-Received-Date: Sun, 05 May 2019 18:07:38 -0000
 
-... and remove the square brackets from "path" and "security_model",
-since these parameters are not optional.
+All these devices do not contain any target-specific code. While
+most of them are arch-specific, they are shared between different
+targets of the same arch family (ARM and AArch64, MIPS32/MIPS64,
+multiple endianess, ...).
+Put them into common-obj-y to compile them once for all targets.
 
-Buglink: https://bugs.launchpad.net/qemu/+bug/1581976
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- qemu-options.hx | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/timer/Makefile.objs | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 51802cbb26..9571ddd141 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -1311,7 +1311,7 @@ DEF("virtfs", HAS_ARG, QEMU_OPTION_virtfs,
+diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+index 0e9a4530f84..a92e22938cb 100644
+--- a/hw/timer/Makefile.objs
++++ b/hw/timer/Makefile.objs
+@@ -25,20 +25,20 @@ common-obj-$(CONFIG_MILKYMIST) +=3D milkymist-sysctl.=
+o
+ common-obj-$(CONFIG_XLNX_ZYNQMP) +=3D xlnx-zynqmp-rtc.o
+ common-obj-$(CONFIG_NRF51_SOC) +=3D nrf51_timer.o
 =20
- STEXI
+-obj-$(CONFIG_ALTERA_TIMER) +=3D altera_timer.o
+-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_mct.o
+-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_pwm.o
+-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_rtc.o
+-obj-$(CONFIG_OMAP) +=3D omap_gptimer.o
+-obj-$(CONFIG_OMAP) +=3D omap_synctimer.o
+-obj-$(CONFIG_PXA2XX) +=3D pxa2xx_timer.o
+-obj-$(CONFIG_SH4) +=3D sh_timer.o
+-obj-$(CONFIG_DIGIC) +=3D digic-timer.o
+-obj-$(CONFIG_MIPS_CPS) +=3D mips_gictimer.o
++common-obj-$(CONFIG_ALTERA_TIMER) +=3D altera_timer.o
++common-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_mct.o
++common-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_pwm.o
++common-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_rtc.o
++common-obj-$(CONFIG_OMAP) +=3D omap_gptimer.o
++common-obj-$(CONFIG_OMAP) +=3D omap_synctimer.o
++common-obj-$(CONFIG_PXA2XX) +=3D pxa2xx_timer.o
++common-obj-$(CONFIG_SH4) +=3D sh_timer.o
++common-obj-$(CONFIG_DIGIC) +=3D digic-timer.o
++common-obj-$(CONFIG_MIPS_CPS) +=3D mips_gictimer.o
 =20
--@item -virtfs @var{fsdriver}[,path=3D@var{path}],mount_tag=3D@var{mount_=
-tag}[,security_model=3D@var{security_model}][,writeout=3D@var{writeout}][=
-,readonly][,socket=3D@var{socket}|sock_fd=3D@var{sock_fd}][,fmode=3D@var{=
-fmode}][,dmode=3D@var{dmode}]
-+@item -virtfs @var{fsdriver},path=3D@var{path},mount_tag=3D@var{mount_ta=
-g},security_model=3D@var{security_model}[,id=3D@var{id}][,writeout=3D@var=
-{writeout}][,readonly][,socket=3D@var{socket}|sock_fd=3D@var{sock_fd}][,f=
-mode=3D@var{fmode}][,dmode=3D@var{dmode}]
- @findex -virtfs
+ obj-$(CONFIG_MC146818RTC) +=3D mc146818rtc.o
 =20
- The general form of a Virtual File system pass-through options are:
+-obj-$(CONFIG_ALLWINNER_A10_PIT) +=3D allwinner-a10-pit.o
++common-obj-$(CONFIG_ALLWINNER_A10_PIT) +=3D allwinner-a10-pit.o
+=20
+ common-obj-$(CONFIG_STM32F2XX_TIMER) +=3D stm32f2xx_timer.o
+ common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_timer.o
 --=20
-2.21.0
+2.20.1
 
 
