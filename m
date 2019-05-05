@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hNLvw-0003Xm-1Y
-	for mharc-qemu-trivial@gnu.org; Sun, 05 May 2019 14:32:20 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:48646)
+	id 1hNQ43-0000VG-Bk
+	for mharc-qemu-trivial@gnu.org; Sun, 05 May 2019 18:56:59 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44892)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1hNLvt-0003Vo-Gc
-	for qemu-trivial@nongnu.org; Sun, 05 May 2019 14:32:18 -0400
+	(envelope-from <philmd@redhat.com>) id 1hNQ41-0000U7-6J
+	for qemu-trivial@nongnu.org; Sun, 05 May 2019 18:56:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1hNLvs-0006b1-Et
-	for qemu-trivial@nongnu.org; Sun, 05 May 2019 14:32:17 -0400
-Received: from 20.mo4.mail-out.ovh.net ([46.105.33.73]:49444)
+	(envelope-from <philmd@redhat.com>) id 1hNQ40-0008Hu-9r
+	for qemu-trivial@nongnu.org; Sun, 05 May 2019 18:56:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42584)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1hNLvs-0006UZ-82
-	for qemu-trivial@nongnu.org; Sun, 05 May 2019 14:32:16 -0400
-Received: from player779.ha.ovh.net (unknown [10.108.42.228])
-	by mo4.mail-out.ovh.net (Postfix) with ESMTP id EC34A1E62F0
-	for <qemu-trivial@nongnu.org>; Sun,  5 May 2019 20:32:12 +0200 (CEST)
-Received: from kaod.org (lns-bzn-46-82-253-208-248.adsl.proxad.net
-	[82.253.208.248]) (Authenticated sender: groug@kaod.org)
-	by player779.ha.ovh.net (Postfix) with ESMTPSA id 4A944550F33C;
-	Sun,  5 May 2019 18:32:10 +0000 (UTC)
-Date: Sun, 5 May 2019 20:32:08 +0200
-From: Greg Kurz <groug@kaod.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20190505203208.684776c0@bahia.lan>
-In-Reply-To: <20190505144527.27926-1-thuth@redhat.com>
-References: <20190505144527.27926-1-thuth@redhat.com>
-X-Mailer: Claws Mail 3.16.0 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>)
+	id 1hNQ3x-0008GH-Uv; Sun, 05 May 2019 18:56:54 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4F3F830820E4;
+	Sun,  5 May 2019 22:56:52 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-58.brq.redhat.com [10.40.204.58])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 012255DA5B;
+	Sun,  5 May 2019 22:56:43 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Mon,  6 May 2019 00:56:40 +0200
+Message-Id: <20190505225640.4592-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 3182919040220830002
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduuddrjeehgddufeefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.47]);
+	Sun, 05 May 2019 22:56:52 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.33.73
-Subject: Re: [Qemu-trivial] [PATCH] virtfs: Add missing "id" parameter in
- documentation
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] hw/display/cirrus_vga: Remove unused include
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,50 +49,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 May 2019 18:32:18 -0000
+X-List-Received-Date: Sun, 05 May 2019 22:56:58 -0000
 
-Hi Thomas,
+Commit ce3cf70edaaf split the ISA device out of the PCI one,
+but forgot to remove the "hw/loader.h" header inclusion (the ISA
+device calls rom_add_vga()).  Remove the now unused include.
 
-Thanks for the janitoring :)
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/display/cirrus_vga.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-On Sun,  5 May 2019 16:45:27 +0200
-Thomas Huth <thuth@redhat.com> wrote:
-
-> ... and remove the square brackets from "path" and "security_model",
-> since these parameters are not optional.
-> 
-
-Well this is only true when fsdriver == local, but the other fs drivers,
-ie. proxy and synth, don't need it at all. Each driver has its own set of
-options actually. This should better be described with separate lines IMHO.
-
-Also, it should be stated that "id" relates to the fs backend, ie. it
-belongs to the -fsdev "id" space, not to the device that gets exposed
-to the guest.
-
-Cheers,
-
---
-Greg
-
-> Buglink: https://bugs.launchpad.net/qemu/+bug/1581976
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  qemu-options.hx | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 51802cbb26..9571ddd141 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -1311,7 +1311,7 @@ DEF("virtfs", HAS_ARG, QEMU_OPTION_virtfs,
->  
->  STEXI
->  
-> -@item -virtfs @var{fsdriver}[,path=@var{path}],mount_tag=@var{mount_tag}[,security_model=@var{security_model}][,writeout=@var{writeout}][,readonly][,socket=@var{socket}|sock_fd=@var{sock_fd}][,fmode=@var{fmode}][,dmode=@var{dmode}]
-> +@item -virtfs @var{fsdriver},path=@var{path},mount_tag=@var{mount_tag},security_model=@var{security_model}[,id=@var{id}][,writeout=@var{writeout}][,readonly][,socket=@var{socket}|sock_fd=@var{sock_fd}][,fmode=@var{fmode}][,dmode=@var{dmode}]
->  @findex -virtfs
->  
->  The general form of a Virtual File system pass-through options are:
+diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
+index a0e71469f4d..f67df3c1f6f 100644
+--- a/hw/display/cirrus_vga.c
++++ b/hw/display/cirrus_vga.c
+@@ -33,7 +33,6 @@
+ #include "hw/hw.h"
+ #include "hw/pci/pci.h"
+ #include "ui/pixel_ops.h"
+-#include "hw/loader.h"
+ #include "cirrus_vga_internal.h"
+=20
+ /*
+--=20
+2.20.1
 
 
