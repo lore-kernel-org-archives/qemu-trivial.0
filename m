@@ -1,30 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hNUdR-0004Or-7G
-	for mharc-qemu-trivial@gnu.org; Sun, 05 May 2019 23:49:49 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34516)
+	id 1hNUls-00081A-CL
+	for mharc-qemu-trivial@gnu.org; Sun, 05 May 2019 23:58:32 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36006)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hNUdO-0004N7-NB
-	for qemu-trivial@nongnu.org; Sun, 05 May 2019 23:49:47 -0400
+	(envelope-from <thuth@redhat.com>) id 1hNUlq-000804-D9
+	for qemu-trivial@nongnu.org; Sun, 05 May 2019 23:58:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hNUdN-0004Ai-Ra
-	for qemu-trivial@nongnu.org; Sun, 05 May 2019 23:49:46 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57250)
+	(envelope-from <thuth@redhat.com>) id 1hNUlp-0007la-HU
+	for qemu-trivial@nongnu.org; Sun, 05 May 2019 23:58:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37266)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hNUdL-00049U-B3; Sun, 05 May 2019 23:49:43 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	id 1hNUln-0007gn-Gr; Sun, 05 May 2019 23:58:27 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 28FFA308FE8D;
-	Mon,  6 May 2019 03:49:42 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9C43D86671;
+	Mon,  6 May 2019 03:58:26 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-74.ams2.redhat.com [10.36.116.74])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 38BD75D965;
-	Mon,  6 May 2019 03:49:40 +0000 (UTC)
-To: Greg Kurz <groug@kaod.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20190505144527.27926-1-thuth@redhat.com>
-	<20190505203208.684776c0@bahia.lan>
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 2EB995C70A;
+	Mon,  6 May 2019 03:58:20 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+References: <20190505225640.4592-1-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -70,23 +70,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <3189f4fe-d712-5903-8c42-97d72ddb4131@redhat.com>
-Date: Mon, 6 May 2019 05:49:40 +0200
+Message-ID: <fbc4eade-c474-cb0d-0eb8-2e9b9dc3ca24@redhat.com>
+Date: Mon, 6 May 2019 05:58:20 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190505203208.684776c0@bahia.lan>
+In-Reply-To: <20190505225640.4592-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.49]);
-	Mon, 06 May 2019 03:49:42 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.26]);
+	Mon, 06 May 2019 03:58:26 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] virtfs: Add missing "id" parameter in
- documentation
+Subject: Re: [Qemu-trivial] [PATCH] hw/display/cirrus_vga: Remove unused
+ include
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -98,35 +98,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 May 2019 03:49:47 -0000
+X-List-Received-Date: Mon, 06 May 2019 03:58:31 -0000
 
-On 05/05/2019 20.32, Greg Kurz wrote:
-> Hi Thomas,
-> 
-> Thanks for the janitoring :)
-> 
-> On Sun,  5 May 2019 16:45:27 +0200
-> Thomas Huth <thuth@redhat.com> wrote:
-> 
->> ... and remove the square brackets from "path" and "security_model",
->> since these parameters are not optional.
->>
-> 
-> Well this is only true when fsdriver == local, but the other fs drivers,
-> ie. proxy and synth, don't need it at all.
+On 06/05/2019 00.56, Philippe Mathieu-Daud=C3=A9 wrote:
+> Commit ce3cf70edaaf split the ISA device out of the PCI one,
+> but forgot to remove the "hw/loader.h" header inclusion (the ISA
+> device calls rom_add_vga()).  Remove the now unused include.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/display/cirrus_vga.c | 1 -
+>  1 file changed, 1 deletion(-)
+>=20
+> diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
+> index a0e71469f4d..f67df3c1f6f 100644
+> --- a/hw/display/cirrus_vga.c
+> +++ b/hw/display/cirrus_vga.c
+> @@ -33,7 +33,6 @@
+>  #include "hw/hw.h"
+>  #include "hw/pci/pci.h"
+>  #include "ui/pixel_ops.h"
+> -#include "hw/loader.h"
+>  #include "cirrus_vga_internal.h"
 
-Ok, then this is wrong in the output of "--help" instead.
-
-> Each driver has its own set of
-> options actually. This should better be described with separate lines IMHO.
-> 
-> Also, it should be stated that "id" relates to the fs backend, ie. it
-> belongs to the -fsdev "id" space, not to the device that gets exposed
-> to the guest.
-
-Hmm, maybe it would be better if you do this patch, since you've
-definitely got way more knowledge here than I do... Otherwise, I can
-have a try, but it might take a while till I get back to this...
-
- Thomas
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
