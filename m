@@ -1,59 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hNbcf-0003Zo-2E
-	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2019 07:17:29 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:33774)
+	id 1hNc7b-0004o1-8G
+	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2019 07:49:27 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:40664)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hNbcd-0003YB-FA
-	for qemu-trivial@nongnu.org; Mon, 06 May 2019 07:17:28 -0400
+	(envelope-from <philmd@redhat.com>) id 1hNc7Z-0004nk-0V
+	for qemu-trivial@nongnu.org; Mon, 06 May 2019 07:49:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hNbcc-0006IV-M8
-	for qemu-trivial@nongnu.org; Mon, 06 May 2019 07:17:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53628)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1hNbca-0006FM-E5; Mon, 06 May 2019 07:17:24 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5AB94301E11B;
-	Mon,  6 May 2019 11:17:22 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-28.ams2.redhat.com
-	[10.36.116.28])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 27078611C5;
-	Mon,  6 May 2019 11:17:22 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id BF0971132B35; Mon,  6 May 2019 13:17:20 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Cc: Like Xu <like.xu@linux.intel.com>, Peter Maydell <peter.maydell@linaro.org>,
-	Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org, like.xu@intel.com,
-	Igor Mammedov <imammedo@redhat.com>
-References: <1555315185-16414-1-git-send-email-like.xu@linux.intel.com>
-	<1555315185-16414-3-git-send-email-like.xu@linux.intel.com>
-	<20190416212003.GB2272@habkost.net>
-	<87ftqh1ae5.fsf@dusky.pond.sub.org>
-	<20190417171059.GC25134@habkost.net>
-	<3fc39df9-9c4e-219c-e7dc-c93754fd1315@linux.intel.com>
-	<20190424172143.GC18406@habkost.net>
-	<a8aa414d-b393-83a7-61dd-01b15b27d93d@linux.intel.com>
-	<20190425174802.GQ18406@habkost.net>
-Date: Mon, 06 May 2019 13:17:20 +0200
-In-Reply-To: <20190425174802.GQ18406@habkost.net> (Eduardo Habkost's message
-	of "Thu, 25 Apr 2019 14:48:02 -0300")
-Message-ID: <878svjsugv.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	(envelope-from <philmd@redhat.com>) id 1hNc7Y-0006mn-2F
+	for qemu-trivial@nongnu.org; Mon, 06 May 2019 07:49:24 -0400
+Received: from mail-wr1-f66.google.com ([209.85.221.66]:44147)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hNc7X-0006mX-SR
+	for qemu-trivial@nongnu.org; Mon, 06 May 2019 07:49:24 -0400
+Received: by mail-wr1-f66.google.com with SMTP id c5so16830053wrs.11
+	for <qemu-trivial@nongnu.org>; Mon, 06 May 2019 04:49:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+	:date:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=TF+ZuYNSnAl9+exbTdISnc0EMQWLLHOcY27jWaK9Law=;
+	b=rC+xuMrMBYsUbe3zlVCvZWLpenhpW2KYtgt3lQQ1QkVwpNGtIs08rDsLlcU/+LW6Ti
+	mTpDSmQS6V7fSzizFTxLlR0dPdHQbGs0FQEIDrCkPEEdWfsDr4FOzlGPhpvfWsxHBJFH
+	quoKPISITO1ein3Yw6kPIk3zIoCciVq99M/Z64nRkDB2EC2WOKSywXIxUAhUEq99m26b
+	ZPFRomQh2UwAxx2IIquLzTdYWHETMv0KS796/pb4fAmH8VBNqIZleSLEDUCwbz1uaaqV
+	oqkNeAU0PfAwVKmsmB/z6PjIIjd7Auff241NWD9V2hhC88ZWYKrobw862I1dTQy02jiS
+	K9Nw==
+X-Gm-Message-State: APjAAAW5PVAZFv7D+l0nVylm7wVc3EQxoBz7Vw30g4ZZqTxLNhLHYwUA
+	bjKxVSRtHL0aM23AQOKL4G00gA==
+X-Google-Smtp-Source: APXvYqwsgdOjxgrGl7oSJezac22PZE5ZV4HonsButnkZlesjvYWYLh73vEaK6NdFM/GNkcHA1a34PQ==
+X-Received: by 2002:adf:ce90:: with SMTP id r16mr17488900wrn.156.1557143362872;
+	Mon, 06 May 2019 04:49:22 -0700 (PDT)
+Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
+	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
+	z5sm25047798wre.70.2019.05.06.04.49.21
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Mon, 06 May 2019 04:49:22 -0700 (PDT)
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+	Juan Quintela <quintela@redhat.com>,
+	David Alan Gilbert <dgilbert@redhat.com>
+References: <20190505230140.5661-1-philmd@redhat.com>
+	<87sgtsrmh3.fsf@dusky.pond.sub.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <11e46093-4562-0f0c-e5fd-190b0edf6d29@redhat.com>
+Date: Mon, 6 May 2019 13:49:20 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Mon, 06 May 2019 11:17:22 +0000 (UTC)
+In-Reply-To: <87sgtsrmh3.fsf@dusky.pond.sub.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 2/2] core/qdev: refactor
- qdev_get_machine() with type assertion
+	[fuzzy]
+X-Received-From: 209.85.221.66
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/sd/sdcard: Use the
+ available enums
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,25 +71,90 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 May 2019 11:17:28 -0000
+X-List-Received-Date: Mon, 06 May 2019 11:49:26 -0000
 
-Eduardo Habkost <ehabkost@redhat.com> writes:
+On 5/6/19 10:55 AM, Markus Armbruster wrote:
+> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
+> 
+>> We already define SDCardModes/SDCardStates as enums. Declare
+>> the mode/state as enums too, this make gdb debugging sessions
+>> friendlier: instead of numbers, the mode/state name is displayed.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  hw/sd/sd.c | 6 +++---
+>>  1 file changed, 3 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+>> index aaab15f3868..a66b3d5b45e 100644
+>> --- a/hw/sd/sd.c
+>> +++ b/hw/sd/sd.c
+>> @@ -96,8 +96,8 @@ struct SDState {
+>>      BlockBackend *blk;
+>>      bool spi;
+>>  
+>> -    uint32_t mode;    /* current card mode, one of SDCardModes */
+>> -    int32_t state;    /* current card state, one of SDCardStates */
+>> +    enum SDCardModes mode;
+>> +    enum SDCardStates state;
+>>      uint32_t vhs;
+>>      bool wp_switch;
+>>      unsigned long *wp_groups;
+>> @@ -1640,7 +1640,7 @@ static int cmd_valid_while_locked(SDState *sd, SDRequest *req)
+>>  
+>>  int sd_do_command(SDState *sd, SDRequest *req,
+>>                    uint8_t *response) {
+>> -    int last_state;
+>> +    enum SDCardStates last_state;
+>>      sd_rsp_type_t rtype;
+>>      int rsplen;
+> 
+> These guys are part of the migration state:
+> 
+>    static const VMStateDescription sd_vmstate = {
+>        .name = "sd-card",
+>        .version_id = 1,
+>        .minimum_version_id = 1,
+>        .pre_load = sd_vmstate_pre_load,
+>        .fields = (VMStateField[]) {
+>            VMSTATE_UINT32(mode, SDState),
+>            VMSTATE_INT32(state, SDState),
+>    [...]
 
-> On Thu, Apr 25, 2019 at 11:12:29AM +0800, Like Xu wrote:
->> On 2019/4/25 1:21, Eduardo Habkost wrote:
-> [...]
->> > 
->> > I think we all agree that qdev_get_machine() should eventually be
->> > available in softmmu only.
->> 
->> I think we need to make it happen to avoid calling qdev_get_machine()
->> in user-only mode.
+Oh good point, I missed that.
 
-That would be ideal.
+> Juan, David, are VMSTATE_UINT32() and VMSTATE_INT32() safe to use with
+> enums?
 
-> Agreed.  My point is that we we shouldn't need a
-> qdev_get_machine_unchecked() function at all if we first get rid
-> of all user-only qdev_get_machine() calls.
+I'll wait Juan/Dave to enlighten us, else I can use anonymous union to
+ease my debugging sessions:
 
-Concur.
+-- >8 --
+diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+@@ -96,7 +96,10 @@ struct SDState {
+     BlockBackend *blk;
+     bool spi;
+
+-    uint32_t mode;    /* current card mode, one of SDCardModes */
++    union {
++        uint32_t migratable_mode;
++        enum SDCardModes mode;
++    };
+     int32_t state;    /* current card state, one of SDCardStates */
+     uint32_t vhs;
+     bool wp_switch;
+@@ -659,7 +662,7 @@ static const VMStateDescription sd_vmstate = {
+     .minimum_version_id = 1,
+     .pre_load = sd_vmstate_pre_load,
+     .fields = (VMStateField[]) {
+-        VMSTATE_UINT32(mode, SDState),
++        VMSTATE_UINT32(migratable_mode, SDState),
+         VMSTATE_INT32(state, SDState),
+         VMSTATE_UINT8_ARRAY(cid, SDState, 16),
+         VMSTATE_UINT8_ARRAY(csd, SDState, 16),
+---
+
+Thanks for the review!
+
+Phil.
 
