@@ -1,47 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hNXPs-0004rN-1i
-	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2019 02:48:00 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57357)
+	id 1hNYMJ-0005KF-2p
+	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2019 03:48:23 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43017)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ndevos@redhat.com>) id 1hNXBd-0001xc-TI
-	for qemu-trivial@nongnu.org; Mon, 06 May 2019 02:33:19 -0400
+	(envelope-from <sgarzare@redhat.com>) id 1hNYMG-0005IG-63
+	for qemu-trivial@nongnu.org; Mon, 06 May 2019 03:48:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ndevos@redhat.com>) id 1hNXBc-0003Ck-Tv
-	for qemu-trivial@nongnu.org; Mon, 06 May 2019 02:33:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49408)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <ndevos@redhat.com>)
-	id 1hNXBY-00034C-GD; Mon, 06 May 2019 02:33:12 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
-	[10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8B44B308622C;
-	Mon,  6 May 2019 06:33:10 +0000 (UTC)
-Received: from localhost (ovpn-116-67.ams2.redhat.com [10.36.116.67])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id BB85398B0;
-	Mon,  6 May 2019 06:33:09 +0000 (UTC)
-Date: Mon, 6 May 2019 08:33:08 +0200
-From: Niels de Vos <ndevos@redhat.com>
+	(envelope-from <sgarzare@redhat.com>) id 1hNYMD-0006te-Od
+	for qemu-trivial@nongnu.org; Mon, 06 May 2019 03:48:20 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:45329)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1hNYMB-0006s1-Uh
+	for qemu-trivial@nongnu.org; Mon, 06 May 2019 03:48:16 -0400
+Received: by mail-wr1-f68.google.com with SMTP id s15so15897372wra.12
+	for <qemu-trivial@nongnu.org>; Mon, 06 May 2019 00:48:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+	:mime-version:content-disposition:in-reply-to:user-agent;
+	bh=HN87jlVhtMwHVGXfqotp5rW3Ay9RJMDpyehyqTtwDT4=;
+	b=n0KFJD2fe3aqstThik5WW+55HILq507Yp8vf+/tOxM/m7ZkDmUlfWv64OMmv8jCfNg
+	HSNewoyWaT3pV14Mx9S2SHDGDAOo3houf84ZSTVpX22bsivJ00+aia9x0LcrnOTeikRJ
+	+Prspt/FQkeDPthEclSLx04DJEbC4n3QIiBU0kOx/CXNSwJA1pP8vA0g4Wuc9Fpe7h3W
+	TbVx+zgakof7iMmPUuPNpoQXzwc0JyJ6dvEeodZ5ZOBt7Ez8427nvF8HYs26n6udBK6o
+	0vzj6LERv6olo/reb664ESfllkjqTYzGQmZC9bXSbXmyt6Xo2l6+z78LSWksPOADV3R5
+	FYew==
+X-Gm-Message-State: APjAAAXsMp2usViRV26Dps4CeR+2CuoLOFxlkUgzxE9JFdHFCDCy6Iho
+	ZTGRTCDFFv90qoKN+qkCLW9+zA==
+X-Google-Smtp-Source: APXvYqw9wNer+gc6DebyQ63ntetecepYfMVAkYJYtX7WL7MtFCHhJD/ELRatPTCYfoBQoKs6zNqngA==
+X-Received: by 2002:a5d:51cf:: with SMTP id n15mr16130323wrv.104.1557128892388;
+	Mon, 06 May 2019 00:48:12 -0700 (PDT)
+Received: from steredhat (host103-125-dynamic.46-79-r.retail.telecomitalia.it.
+	[79.46.125.103]) by smtp.gmail.com with ESMTPSA id
+	k206sm19580202wmk.16.2019.05.06.00.48.11
+	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+	Mon, 06 May 2019 00:48:11 -0700 (PDT)
+Date: Mon, 6 May 2019 09:48:09 +0200
+From: Stefano Garzarella <sgarzare@redhat.com>
 To: Thomas Huth <thuth@redhat.com>
 Cc: qemu-block@nongnu.org, qemu-devel@nongnu.org, kwolf@redhat.com,
-	qemu-trivial@nongnu.org, integration@gluster.org
-Message-ID: <20190506063308.GA5209@ndevos-x270>
+	qemu-trivial@nongnu.org
+Message-ID: <20190506074809.skltdcczbbu3isll@steredhat>
 References: <20190506061854.22207-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20190506061854.22207-1-thuth@redhat.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.42]);
-	Mon, 06 May 2019 06:33:10 +0000 (UTC)
+User-Agent: NeoMutt/20180716
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Mon, 06 May 2019 02:47:58 -0400
-Subject: Re: [Qemu-trivial] [QEMU PATCH] MAINTAINERS: Downgrade status of
- block sections without "M:" to "Odd Fixes"
+	[fuzzy]
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-trivial] [Qemu-block] [QEMU PATCH] MAINTAINERS: Downgrade
+ status of block sections without "M:" to "Odd Fixes"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,7 +63,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 May 2019 06:33:20 -0000
+X-List-Received-Date: Mon, 06 May 2019 07:48:21 -0000
+
+Hi Thomas,
 
 On Mon, May 06, 2019 at 08:18:54AM +0200, Thomas Huth wrote:
 > Fixes might still get picked up via the qemu-block mailing list,
@@ -63,11 +75,6 @@ On Mon, May 06, 2019 at 08:18:54AM +0200, Thomas Huth wrote:
 >  https://patchwork.kernel.org/patch/10613297/#22409943
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
-
-Thanks, this counts for the Gluster part:
-Reviewed-by: Niels de Vos <ndevos@redhat.com>
-
-
 > ---
 >  MAINTAINERS | 5 +++--
 >  1 file changed, 3 insertions(+), 2 deletions(-)
@@ -90,9 +97,15 @@ Reviewed-by: Niels de Vos <ndevos@redhat.com>
 > +L: integration@gluster.org
 > +S: Odd Fixes
 >  F: block/gluster.c
->  
->  Null Block Driver
-> -- 
-> 2.21.0
-> 
+
+I'm currently trying to get more experience on Gluster (and also on RBD).
+I'd add myself as a reviewer since I'm trying to review all patches in these
+areas and I'm working on some fixes.
+I could also become a maintainer, but I'm not sure I have the right experience
+you want.
+
+Should I send a new patch to add myself as reviewer (or maintainer)?
+
+Thanks,
+Stefano
 
