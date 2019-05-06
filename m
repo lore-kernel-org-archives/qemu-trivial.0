@@ -1,65 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hNc7b-0004o1-8G
-	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2019 07:49:27 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:40664)
+	id 1hNeFF-0002xQ-Ng
+	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2019 10:05:29 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44038)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hNc7Z-0004nk-0V
-	for qemu-trivial@nongnu.org; Mon, 06 May 2019 07:49:25 -0400
+	(envelope-from <lersek@redhat.com>) id 1hNeFD-0002uQ-Jp
+	for qemu-trivial@nongnu.org; Mon, 06 May 2019 10:05:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hNc7Y-0006mn-2F
-	for qemu-trivial@nongnu.org; Mon, 06 May 2019 07:49:24 -0400
-Received: from mail-wr1-f66.google.com ([209.85.221.66]:44147)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hNc7X-0006mX-SR
-	for qemu-trivial@nongnu.org; Mon, 06 May 2019 07:49:24 -0400
-Received: by mail-wr1-f66.google.com with SMTP id c5so16830053wrs.11
-	for <qemu-trivial@nongnu.org>; Mon, 06 May 2019 04:49:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=TF+ZuYNSnAl9+exbTdISnc0EMQWLLHOcY27jWaK9Law=;
-	b=rC+xuMrMBYsUbe3zlVCvZWLpenhpW2KYtgt3lQQ1QkVwpNGtIs08rDsLlcU/+LW6Ti
-	mTpDSmQS6V7fSzizFTxLlR0dPdHQbGs0FQEIDrCkPEEdWfsDr4FOzlGPhpvfWsxHBJFH
-	quoKPISITO1ein3Yw6kPIk3zIoCciVq99M/Z64nRkDB2EC2WOKSywXIxUAhUEq99m26b
-	ZPFRomQh2UwAxx2IIquLzTdYWHETMv0KS796/pb4fAmH8VBNqIZleSLEDUCwbz1uaaqV
-	oqkNeAU0PfAwVKmsmB/z6PjIIjd7Auff241NWD9V2hhC88ZWYKrobw862I1dTQy02jiS
-	K9Nw==
-X-Gm-Message-State: APjAAAW5PVAZFv7D+l0nVylm7wVc3EQxoBz7Vw30g4ZZqTxLNhLHYwUA
-	bjKxVSRtHL0aM23AQOKL4G00gA==
-X-Google-Smtp-Source: APXvYqwsgdOjxgrGl7oSJezac22PZE5ZV4HonsButnkZlesjvYWYLh73vEaK6NdFM/GNkcHA1a34PQ==
-X-Received: by 2002:adf:ce90:: with SMTP id r16mr17488900wrn.156.1557143362872;
-	Mon, 06 May 2019 04:49:22 -0700 (PDT)
-Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	z5sm25047798wre.70.2019.05.06.04.49.21
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Mon, 06 May 2019 04:49:22 -0700 (PDT)
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	Juan Quintela <quintela@redhat.com>,
-	David Alan Gilbert <dgilbert@redhat.com>
-References: <20190505230140.5661-1-philmd@redhat.com>
-	<87sgtsrmh3.fsf@dusky.pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <11e46093-4562-0f0c-e5fd-190b0edf6d29@redhat.com>
-Date: Mon, 6 May 2019 13:49:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(envelope-from <lersek@redhat.com>) id 1hNeF7-0001vY-7P
+	for qemu-trivial@nongnu.org; Mon, 06 May 2019 10:05:27 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43194)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <lersek@redhat.com>)
+	id 1hNeEz-0001nc-KY; Mon, 06 May 2019 10:05:13 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C7766307C942;
+	Mon,  6 May 2019 14:05:00 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-124-221.rdu2.redhat.com
+	[10.10.124.221])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E85F4100194A;
+	Mon,  6 May 2019 14:04:52 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>
+References: <20190504133540.19758-1-philmd@redhat.com>
+	<20190504133540.19758-2-philmd@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <d6f9cf07-daf5-273d-ca41-1b450b29b38d@redhat.com>
+Date: Mon, 6 May 2019 16:04:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <87sgtsrmh3.fsf@dusky.pond.sub.org>
+In-Reply-To: <20190504133540.19758-2-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.46]);
+	Mon, 06 May 2019 14:05:06 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.66
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/sd/sdcard: Use the
- available enums
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH v2 1/2] roms: Correct the
+ EDK2_BASETOOLS_OPTFLAGS variable description
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,90 +56,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 May 2019 11:49:26 -0000
+X-List-Received-Date: Mon, 06 May 2019 14:05:28 -0000
 
-On 5/6/19 10:55 AM, Markus Armbruster wrote:
-> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
-> 
->> We already define SDCardModes/SDCardStates as enums. Declare
->> the mode/state as enums too, this make gdb debugging sessions
->> friendlier: instead of numbers, the mode/state name is displayed.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  hw/sd/sd.c | 6 +++---
->>  1 file changed, 3 insertions(+), 3 deletions(-)
->>
->> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
->> index aaab15f3868..a66b3d5b45e 100644
->> --- a/hw/sd/sd.c
->> +++ b/hw/sd/sd.c
->> @@ -96,8 +96,8 @@ struct SDState {
->>      BlockBackend *blk;
->>      bool spi;
->>  
->> -    uint32_t mode;    /* current card mode, one of SDCardModes */
->> -    int32_t state;    /* current card state, one of SDCardStates */
->> +    enum SDCardModes mode;
->> +    enum SDCardStates state;
->>      uint32_t vhs;
->>      bool wp_switch;
->>      unsigned long *wp_groups;
->> @@ -1640,7 +1640,7 @@ static int cmd_valid_while_locked(SDState *sd, SDRequest *req)
->>  
->>  int sd_do_command(SDState *sd, SDRequest *req,
->>                    uint8_t *response) {
->> -    int last_state;
->> +    enum SDCardStates last_state;
->>      sd_rsp_type_t rtype;
->>      int rsplen;
-> 
-> These guys are part of the migration state:
-> 
->    static const VMStateDescription sd_vmstate = {
->        .name = "sd-card",
->        .version_id = 1,
->        .minimum_version_id = 1,
->        .pre_load = sd_vmstate_pre_load,
->        .fields = (VMStateField[]) {
->            VMSTATE_UINT32(mode, SDState),
->            VMSTATE_INT32(state, SDState),
->    [...]
+On 05/04/19 15:35, Philippe Mathieu-Daud=C3=A9 wrote:
+> In commit 1cab464136b4 we incorrectly described the
+> EDK2_BASETOOLS_OPTFLAGS can pass CPPFLAGS and CFLAGS
+> options to the EDK2 build tools, but it only expands
+> the CFLAGS (not to the CPPFLAGS).
+> Update the description to be more accurate.
+>=20
+> Reported-by: Laszlo Ersek <lersek@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  roms/Makefile | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/roms/Makefile b/roms/Makefile
+> index 0ce84a45ad5..f020102c866 100644
+> --- a/roms/Makefile
+> +++ b/roms/Makefile
+> @@ -121,8 +121,8 @@ build-efi-roms: build-pxe-roms
+>  		$(patsubst %,bin-i386-efi/%.efidrv,$(pxerom_targets)) \
+>  		$(patsubst %,bin-x86_64-efi/%.efidrv,$(pxerom_targets))
+> =20
+> -# Build scripts can pass compiler/linker flags to the EDK2 build tools
+> -# via the EDK2_BASETOOLS_OPTFLAGS (CPPFLAGS and CFLAGS) and
+> +# Build scripts can pass compiler/linker flags to the EDK2
+> +# build  tools via the EDK2_BASETOOLS_OPTFLAGS (CFLAGS) and
 
-Oh good point, I missed that.
+please 'tr -s " "' in the above.
 
-> Juan, David, are VMSTATE_UINT32() and VMSTATE_INT32() safe to use with
-> enums?
+With that:
 
-I'll wait Juan/Dave to enlighten us, else I can use anonymous union to
-ease my debugging sessions:
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
 
--- >8 --
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-@@ -96,7 +96,10 @@ struct SDState {
-     BlockBackend *blk;
-     bool spi;
+Thanks
+Laszlo
 
--    uint32_t mode;    /* current card mode, one of SDCardModes */
-+    union {
-+        uint32_t migratable_mode;
-+        enum SDCardModes mode;
-+    };
-     int32_t state;    /* current card state, one of SDCardStates */
-     uint32_t vhs;
-     bool wp_switch;
-@@ -659,7 +662,7 @@ static const VMStateDescription sd_vmstate = {
-     .minimum_version_id = 1,
-     .pre_load = sd_vmstate_pre_load,
-     .fields = (VMStateField[]) {
--        VMSTATE_UINT32(mode, SDState),
-+        VMSTATE_UINT32(migratable_mode, SDState),
-         VMSTATE_INT32(state, SDState),
-         VMSTATE_UINT8_ARRAY(cid, SDState, 16),
-         VMSTATE_UINT8_ARRAY(csd, SDState, 16),
----
+>  # EDK2_BASETOOLS_LDFLAGS (LDFLAGS) environment variables.
+>  #
+>  # Example:
+>=20
 
-Thanks for the review!
-
-Phil.
 
