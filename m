@@ -1,73 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hNYeD-00014K-2N
-	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2019 04:06:53 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:46291)
+	id 1hNYgg-0002dd-A6
+	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2019 04:09:26 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:46922)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hNYeA-000143-My
-	for qemu-trivial@nongnu.org; Mon, 06 May 2019 04:06:51 -0400
+	(envelope-from <philmd@redhat.com>) id 1hNYgd-0002co-Mm
+	for qemu-trivial@nongnu.org; Mon, 06 May 2019 04:09:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hNYe9-0007eP-Ln
-	for qemu-trivial@nongnu.org; Mon, 06 May 2019 04:06:50 -0400
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:35308)
+	(envelope-from <philmd@redhat.com>) id 1hNYgc-0000JA-NX
+	for qemu-trivial@nongnu.org; Mon, 06 May 2019 04:09:23 -0400
+Received: from mail-wr1-f66.google.com ([209.85.221.66]:40015)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hNYe9-0007dr-Fa
-	for qemu-trivial@nongnu.org; Mon, 06 May 2019 04:06:49 -0400
-Received: by mail-wm1-f67.google.com with SMTP id y197so13970048wmd.0
-	for <qemu-trivial@nongnu.org>; Mon, 06 May 2019 01:06:49 -0700 (PDT)
+	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hNYgc-0000IY-HN
+	for qemu-trivial@nongnu.org; Mon, 06 May 2019 04:09:22 -0400
+Received: by mail-wr1-f66.google.com with SMTP id h4so16017272wre.7
+	for <qemu-trivial@nongnu.org>; Mon, 06 May 2019 01:09:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
 	:date:user-agent:mime-version:in-reply-to:content-language
 	:content-transfer-encoding;
-	bh=kQHvt/xxDanBYyt85LcmxkRedLVpXr1l/7j3kfOCYKQ=;
-	b=msRDD9mRDbimrbZbP0UAgcMHjvgAf16/2M0RUkypFwa0kG4JY5ZLeq+keHNtv7uJWl
-	EOr79PX3dHz24RtKkTrhZiJPFTnAQCQR30NU/F4PqRBqwc0j7ehmXYta0oERzzD7p1os
-	EHJn0dAr09c7sI6GivHRdxs/+m2QcFt7VNtv0LKpJCBYSk4JtTJFDr+4HOUQGjPO7LSC
-	XyDhblCeImVKNSbddiFWrddosZARidS1dNwYaMpL9vdypLdSFGa1w9hQkHM6SeFvSygO
-	bkEDaI3bXHt8VMFv2BaLzsZB9UiKt4c190E3wXK43HqCft3WDIabNzY2SUUBGvVfVFH4
-	kvGw==
-X-Gm-Message-State: APjAAAVEK6khHPCmAMown7WPp7ch6wJ/llR9IUOzPRGQi9S8ExrzNJ+U
-	eL6ElBBkiNRJXf8bkC6Y5fJlyg==
-X-Google-Smtp-Source: APXvYqxprQgTN5SSn1QBYZWiYk5hFUOyhRyMaWkyerGxTM8Vh+5bzX93vpPvcAny01stSxpQTLUbyA==
-X-Received: by 2002:a05:600c:2206:: with SMTP id
-	z6mr16433120wml.80.1557130008365; 
-	Mon, 06 May 2019 01:06:48 -0700 (PDT)
+	bh=DJyW7hzwFfLhLUH1Z1bIcC2OS5qVEQgXup+qB9MtToM=;
+	b=bGE4vECgA29gTWW3q2jZClGY5CtXniIy11B5x0vSsOG47eJ2FY+DG6Y/EpDKY37uGN
+	ensFjyGBsY5IcV9EumrecIWrFwObICt6sv9RV9pM1uesSlDtdPyn30onwRZ4W+auD7Ii
+	ji5F1s/2K6yIosdT/hVu1JgUH9OkhpjHCzG5L5guskWDLEMMorXKVwjj/KxXLlvgo29g
+	RU8AJpDrpW5S2hx9jHbN00dxLrWs4JZ0ZrS5L4Fk+e9PSgE1YQFAPAhuHjQbogJShFc5
+	yWnujviBddtIR/yXQni6L6h9zRv0PHV1SLC+0zmZHo17gCB6ErmghYoY81hbSfygzNfG
+	wIYA==
+X-Gm-Message-State: APjAAAWEVs56XujR0fmhACyMFGEwpHJRBpeV5ET7q4Sb+VTBKUlIJ9c6
+	uejCIt6b5nfjihEx6PGXJOJGqg==
+X-Google-Smtp-Source: APXvYqxDu5XbP09ttBHAofmhIiiuAwrv032FQLjMQY3aYOnRW3ImiHhuPKKqn2bqskgWQ+17Qk+Q6Q==
+X-Received: by 2002:adf:ef49:: with SMTP id c9mr14398786wrp.240.1557130161592; 
+	Mon, 06 May 2019 01:09:21 -0700 (PDT)
 Received: from [192.168.1.37] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193])
-	by smtp.gmail.com with ESMTPSA id f1sm8671989wrc.93.2019.05.06.01.06.47
+	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
+	t81sm13682173wmb.47.2019.05.06.01.09.20
 	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Mon, 06 May 2019 01:06:47 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+	Mon, 06 May 2019 01:09:21 -0700 (PDT)
+To: Thomas Huth <thuth@redhat.com>, qemu-block@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Magnus Damm <magnus.damm@gmail.com>, 
-	Aleksandar Rikalo <arikalo@wavecomp.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
-	Beniamino Galvani <b.galvani@gmail.com>,
-	Antony Pavlov <antonynpavlov@gmail.com>, Paolo Bonzini
-	<pbonzini@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>
-References: <20190505180719.31913-1-philmd@redhat.com>
-	<02ce0766-4464-2c71-6085-7e164d4405af@redhat.com>
+Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, Niels de Vos <ndevos@redhat.com>
+References: <20190506061854.22207-1-thuth@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
 	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <ffaa93ed-f790-8aba-3683-d1e11e2ac59c@redhat.com>
-Date: Mon, 6 May 2019 10:06:46 +0200
+Message-ID: <a0785ba5-2cf9-6aca-b468-35c67520afb7@redhat.com>
+Date: Mon, 6 May 2019 10:09:15 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <02ce0766-4464-2c71-6085-7e164d4405af@redhat.com>
+In-Reply-To: <20190506061854.22207-1-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 	[fuzzy]
-X-Received-From: 209.85.128.67
-Subject: Re: [Qemu-trivial] [PATCH] hw/timer: Compile devices not
- target-dependent as common objects
+X-Received-From: 209.85.221.66
+Subject: Re: [Qemu-trivial] [Qemu-devel] [QEMU PATCH] MAINTAINERS: Downgrade
+ status of block sections without "M:" to "Odd Fixes"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,70 +68,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 May 2019 08:06:51 -0000
+X-List-Received-Date: Mon, 06 May 2019 08:09:24 -0000
 
-On 5/6/19 6:10 AM, Thomas Huth wrote:
-> On 05/05/2019 20.07, Philippe Mathieu-Daudé wrote:
->> All these devices do not contain any target-specific code. While
->> most of them are arch-specific, they are shared between different
->> targets of the same arch family (ARM and AArch64, MIPS32/MIPS64,
->> multiple endianess, ...).
->> Put them into common-obj-y to compile them once for all targets.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  hw/timer/Makefile.objs | 22 +++++++++++-----------
->>  1 file changed, 11 insertions(+), 11 deletions(-)
->>
->> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
->> index 0e9a4530f84..a92e22938cb 100644
->> --- a/hw/timer/Makefile.objs
->> +++ b/hw/timer/Makefile.objs
->> @@ -25,20 +25,20 @@ common-obj-$(CONFIG_MILKYMIST) += milkymist-sysctl.o
->>  common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
->>  common-obj-$(CONFIG_NRF51_SOC) += nrf51_timer.o
->>  
->> -obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
->> -obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
->> -obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
->> -obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
->> -obj-$(CONFIG_OMAP) += omap_gptimer.o
->> -obj-$(CONFIG_OMAP) += omap_synctimer.o
->> -obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
->> -obj-$(CONFIG_SH4) += sh_timer.o
->> -obj-$(CONFIG_DIGIC) += digic-timer.o
->> -obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
->> +common-obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
->> +common-obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
->> +common-obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
->> +common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
->> +common-obj-$(CONFIG_OMAP) += omap_gptimer.o
->> +common-obj-$(CONFIG_OMAP) += omap_synctimer.o
->> +common-obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
->> +common-obj-$(CONFIG_SH4) += sh_timer.o
->> +common-obj-$(CONFIG_DIGIC) += digic-timer.o
->> +common-obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
->>  
->>  obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
->>  
->> -obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
->> +common-obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
->>  
->>  common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
->>  common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o
+On 5/6/19 8:18 AM, Thomas Huth wrote:
+> Fixes might still get picked up via the qemu-block mailing list,
+> so the status is not "Orphan" yet.
+> Also add the gluster mailing list as suggested by Niels here:
 > 
-> I've checked
+>  https://patchwork.kernel.org/patch/10613297/#22409943
 > 
->  grep -r TARGET hw/timer/
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  MAINTAINERS | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 > 
-> and this looks good to me, so:
-> 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> 
-> By the way, I was surprised to see TARGET_FMT_plx there, since I first
-> thought that this would be a target-specific define, too. But apparently
-> it is not. Very confusing. I'd suggest to rename that to HWADDR_FMT_plx
-> instead, what do you think?
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 66ddbda9c9..899a4cd572 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -2404,12 +2404,13 @@ F: block/ssh.c
+>  
+>  CURL
+>  L: qemu-block@nongnu.org
+> -S: Supported
+> +S: Odd Fixes
+>  F: block/curl.c
 
-I'd rather use HWADDR_PRIx and slowly kill TARGET_FMT_plx...
+Fair enough.
+
+>  GLUSTER
+>  L: qemu-block@nongnu.org
+> -S: Supported
+> +L: integration@gluster.org
+> +S: Odd Fixes
+>  F: block/gluster.c
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
