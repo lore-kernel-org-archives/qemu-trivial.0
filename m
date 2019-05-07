@@ -1,62 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hNz2M-0004c0-FR
-	for mharc-qemu-trivial@gnu.org; Tue, 07 May 2019 08:17:34 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:49968)
+	id 1hO5Sq-0005vc-VS
+	for mharc-qemu-trivial@gnu.org; Tue, 07 May 2019 15:09:20 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:53407)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hNz2H-0004aV-F4
-	for qemu-trivial@nongnu.org; Tue, 07 May 2019 08:17:30 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hO5Sn-0005vJ-V3
+	for qemu-trivial@nongnu.org; Tue, 07 May 2019 15:09:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hNz2G-0006kP-HB
-	for qemu-trivial@nongnu.org; Tue, 07 May 2019 08:17:29 -0400
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:35566)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hNz2G-0006jX-BC
-	for qemu-trivial@nongnu.org; Tue, 07 May 2019 08:17:28 -0400
-Received: by mail-wm1-f67.google.com with SMTP id y197so19715748wmd.0
-	for <qemu-trivial@nongnu.org>; Tue, 07 May 2019 05:17:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=wtAOQ44i8ItsYRj++6bN+njSZRVY/UHVJci6HQ5foCc=;
-	b=KnC+pUWiy5SGeeQPlSSF/AVJwa+ZDWJ5U6D4HLsnrmY1djtqLBmrkD/kGX0zYrYyNN
-	6EEkfdYII2oPaL04Kx7/TvjH7PrT5p1oQZYPOZeCwNKTJgYGG0HR0+B/6joB+CNC8INn
-	5rRlCvE3HE/CcR80CNR5YiZBaQl/Slt1kK0TYYn2x8LjLGbMZbrWW8A0VlwDGVF7osVh
-	5jvaXHrv2SLZrEZY5WxhYA12oqbXJ2WvNjFthHvmNdCCV3qKtWO5jqUrNJwbf6/Gszy9
-	1aIP8kOexeGGXA27YgP+23r6luHgF4vzwZs0rKvBUMhe2XFk6MKiq4WkwFhhSzSFu1dE
-	3Tzw==
-X-Gm-Message-State: APjAAAUj46Zrnps2W7fGJc36s2b2hUCGec6rob1/8Wj5GWheTiXxVnvC
-	3t0TvJaiyPsfg230vOG5ygI+MDz6BLg=
-X-Google-Smtp-Source: APXvYqz+vdPvB59R9GC7sb4BBdPMuV+KWke0p7xLgXPLfiBfZpwrOWuilvJ+lI9DxgHhNSusA0dX2A==
-X-Received: by 2002:a1c:4087:: with SMTP id n129mr2171839wma.14.1557231446836; 
-	Tue, 07 May 2019 05:17:26 -0700 (PDT)
-Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	a6sm12656798wrp.49.2019.05.07.05.17.25
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 07 May 2019 05:17:25 -0700 (PDT)
-To: Laszlo Ersek <lersek@redhat.com>, qemu-devel@nongnu.org,
-	QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20190506141923.12183-1-philmd@redhat.com>
-	<fcf6d003-36b2-9e8c-4708-58293a610a6e@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <acff1361-31c1-9379-21e4-3c9867360e79@redhat.com>
-Date: Tue, 7 May 2019 14:17:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(envelope-from <laurent@vivier.eu>) id 1hO5Sl-00051j-Vw
+	for qemu-trivial@nongnu.org; Tue, 07 May 2019 15:09:17 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:35909)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1hO5Sl-0004yH-GI; Tue, 07 May 2019 15:09:15 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+	1MJm8H-1h8Lsy3Dg1-00K8WB; Tue, 07 May 2019 21:08:45 +0200
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Mark Cave-Ayland
+	<mark.cave-ayland@ilande.co.uk>, Jason Wang <jasowang@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, Fabien Chouteau <chouteau@adacore.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Gerd Hoffmann <kraxel@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Andreas_F=c3=a4rber?=
+	<afaerber@suse.de>, Artyom Tarasenko <atar4qemu@gmail.com>,
+	Richard Henderson <rth@twiddle.net>
+References: <20190503112654.4393-1-laurent@vivier.eu>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <80fb3313-239a-5828-94fa-d27137bfcb05@vivier.eu>
+Date: Tue, 7 May 2019 21:08:41 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <fcf6d003-36b2-9e8c-4708-58293a610a6e@redhat.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20190503112654.4393-1-laurent@vivier.eu>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:19uv/PyUpnAaUSFgO1xFRIbpN12+eA6tZWRyX8ajFFOxkTFw0MK
+	958DOmGDEsQ0mgV1tcWjKhjPXtKPs3ooNmkk23Bu/hfMGvxXwG/7B2LaVEjDNECkfv3y3Og
+	o+nPyvER53Zru8fetdGmgs6+9pxHAfR4GRXROWx/quShnPE3bLs6dibPa/reNBIYvSSa5Xq
+	vbyHQFN93wouTZ1Uz6YrQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:XfTBrHepZDE=:mPBrwhmI53e69bYdfCploG
+	CwnUaztfib7o2qhkwHPkc4gjjkiRDGHn1O9xP0NqcCczlH98Zs1H94MgBM/VTnrQAZb8+5Yw2
+	Rwv7YJ1SHeJrloB4T59ddTqeszMkmPxsRcrAzfB9qTqdREaWZ/A7zY86NXvWML06HoLgGzguc
+	3ZK+IcXauXv9octUtFm1GGe0LAM8DX6VMkGGGlS1VRLRkGq3ZyeY3ww7MmEMne3SUdPLV8HDT
+	cWUW6eG0t2vYlkGMCsGSpEaq07TcBwceNFLhP/Lbm6xtxkY+iejstmWMQI5wF85EKysdcsLAA
+	5PrZV0Mm+gSi3UmdMj5uY2sCK6t+ZTpHB7UU0berg8OXq/Ms8UlY39fpXnk5L3KYSjnkLfJHK
+	Cdpu0NtctbbO05aY/gxtxXuQLOT6mKh7QgFrifc/LPqbv0uaMoTnZ8bo+Ohk/JUxNbBLPRDIO
+	v8+4QsthF2v3WOzB7j3q9h63DK74o0VOZcmIDPC8h9uILyRJGNG/qJ73i1nWDsf0uBwbsqhPT
+	Ox2dV2NjZbBDxhaaHMPO1cRHqUhfuUQvMIoJSzxqHQybhPVBUkMB2n6V/apkiYL1Gm3G7x4cw
+	XYWuVf1E05MzHbcTfqhJKUUua7CrjU1yyFRTZt0mSEHnINeGiYnxXczVLnRAjEi4NTRoxABkK
+	YlMlZppaYIWBGXW2UNe/wml0yaTb/IkXtZpPJq/6f/8BwrztDrvlvKjMtzBjjNEro64Scaxx5
+	oMIYNAUbpO4NvnNtdSSR7DWwAKYh60nTv+le01hpoeW4lGwa/dF0Es/9i2o=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.67
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 0/2] roms: Add 'clean'
- make rule and EDK2 documentation fix
+X-Received-From: 212.227.126.135
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL v2 00/12] Trivial branch
+ patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -68,33 +66,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 May 2019 12:17:30 -0000
+X-List-Received-Date: Tue, 07 May 2019 19:09:19 -0000
 
-On 5/7/19 12:56 PM, Laszlo Ersek wrote:
-> On 05/06/19 16:19, Philippe Mathieu-Daudé wrote:
->> Hi,
->>
->> Two trivial patches waiting Laszlo's series to land.
+Ping ?
+
+
+On 03/05/2019 13:26, Laurent Vivier wrote:
+> The following changes since commit 8482ff2eb3bb95020eb2f370a9b3ea26511e41df:
 > 
-> ... I think you can submit a pullreq with these two patches now --
-> because I believe that you refer to
+>    Merge remote-tracking branch 'remotes/jnsnow/tags/bitmaps-pull-request' into staging (2019-05-02 12:04:51 +0100)
 > 
->   [Qemu-devel] [PULL 00/12] bundle edk2 platform firmware with QEMU
+> are available in the Git repository at:
 > 
-> above, and that's been merged for a while now.
+>    git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+> 
+> for you to fetch changes up to 2d2023c3b99edb33ad4bb9791f70456ea1a1c049:
+> 
+>    sockets: avoid string truncation warnings when copying UNIX path (2019-05-03 13:03:04 +0200)
+> 
+> ----------------------------------------------------------------
+> Pull request trivial branch 2019-05-03
+> 
+> ----------------------------------------------------------------
+> 
+> Aruna Jayasena (1):
+>    Header cleanups
+> 
+> Daniel P. Berrangé (1):
+>    sockets: avoid string truncation warnings when copying UNIX path
+> 
+> Dr. David Alan Gilbert (1):
+>    configure: fix pam test warning
+> 
+> Marc-André Lureau (1):
+>    doc: fix the configuration path
+> 
+> Philippe Mathieu-Daudé (3):
+>    hw/net/pcnet: Use qemu_log_mask(GUEST_ERROR) instead of printf
+>    Makefile: Let the 'clean' rule remove qemu-ga.exe on Windows hosts
+>    hw/sparc/leon3: Allow load of uImage firmwares
+> 
+> Stefan Weil (1):
+>    Update configure
+> 
+> Thomas Huth (1):
+>    net: Print output of "-net nic, model=help" to stdout instead of
+>      stderr
+> 
+> Wei Yang (3):
+>    CODING_STYLE: specify the indent rule for multiline code
+>    CODING_STYLE: indent example code as all others
+>    qom: use object_new_with_type in object_new_with_propv
+> 
+>   qemu-ga.texi              |  4 ++--
+>   configure                 |  5 ++---
+>   Makefile                  | 11 +++++----
+>   include/exec/cpu-common.h |  3 ---
+>   hw/net/pcnet.c            |  4 +++-
+>   hw/sparc/leon3.c          |  4 ++++
+>   net/net.c                 |  7 +++---
+>   qom/object.c              |  2 +-
+>   util/qemu-sockets.c       | 12 ++++++----
+>   CODING_STYLE              | 47 +++++++++++++++++++++++++++++++++++----
+>   10 files changed, 74 insertions(+), 25 deletions(-)
+> 
 
-Hmm I sent the previous series Cc'ing qemu-trivial@nongnu.org, but not
-this one. That's odd (because I use git-publish which takes care of
-keeping the same destinataries since the previous version), I probably
-messed something.
-
-I won't submit a PR that keeps Peter's test setup busy a while for 2
-lines of documentation changes =)
-
-Cc'ing qemu-trivial@nongnu.org again, hoping they can queue this, since
-there is no rush.
-
-Thanks!
-
-Phil.
 
