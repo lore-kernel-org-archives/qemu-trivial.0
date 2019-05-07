@@ -1,65 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hO68p-00012d-Hp
-	for mharc-qemu-trivial@gnu.org; Tue, 07 May 2019 15:52:43 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:48612)
+	id 1hO71J-0001Cc-As
+	for mharc-qemu-trivial@gnu.org; Tue, 07 May 2019 16:49:01 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:38694)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <ramirose@gmail.com>) id 1hO524-0004FJ-Bo
-	for qemu-trivial@nongnu.org; Tue, 07 May 2019 14:41:41 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hO71F-0001Bw-3b
+	for qemu-trivial@nongnu.org; Tue, 07 May 2019 16:48:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <ramirose@gmail.com>) id 1hO523-0001jo-CF
-	for qemu-trivial@nongnu.org; Tue, 07 May 2019 14:41:40 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:46525)
+	(envelope-from <peter.maydell@linaro.org>) id 1hO71D-0004rO-8T
+	for qemu-trivial@nongnu.org; Tue, 07 May 2019 16:48:57 -0400
+Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330]:38232)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <ramirose@gmail.com>) id 1hO523-0001h5-5h
-	for qemu-trivial@nongnu.org; Tue, 07 May 2019 14:41:39 -0400
-Received: by mail-wr1-x443.google.com with SMTP id r7so23686118wrr.13
-	for <qemu-trivial@nongnu.org>; Tue, 07 May 2019 11:41:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=qA6m0zxtlI55+GoJPK2BmvdH5Onhm1PGA43KFFA58Hk=;
-	b=kxWxjCpu9RoeIudWSJyCDH+NRY9jIJpzo7vMjfMKhaK3hadzJyc97/UipTdaMSsICh
-	lzmXRR4Ur0etjJI6/IMUq650HwTsDrsiDdyZY1LkSmGWECMbPm8n62dCAoWn9XU1P3Qo
-	iTt05IQ6+zkdBPbRiQVnQchdZ8FKTHjjCsrCPp4n/S9PcWX0nJIRJgrdnQI24AaH8Pbf
-	woM9CDSErmq2rwSsxvbbaCsy0fcgv3YzjATh0dJtFFa5xMED29dgF3FC9h6G7aXy2Hhv
-	RaDJowPbiikazQgl0X0Nr+oHjVmrngQN6cq5yWHN9V5wCHbBV3q84KPe4oQUm10qCWag
-	HqOw==
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hO71C-0004oN-35
+	for qemu-trivial@nongnu.org; Tue, 07 May 2019 16:48:55 -0400
+Received: by mail-ot1-x330.google.com with SMTP id b1so16336470otp.5
+	for <qemu-trivial@nongnu.org>; Tue, 07 May 2019 13:48:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=X2bzEXwhoqBgBx5Fz8GIgVWU1fWEI1ArFuUV+AksY94=;
+	b=pFgmd8nrqhVgstEBX4aTOTbV3L0WS7I+vZ475poMJ8nZwqTen7HCqlW6r17uELMgjm
+	SmjelXPidvSX//HNMHVUJC1QrWt9IT2illPo5ktCi9qW6iBAYZQdhVfNgaKnnvjstcls
+	oDr6g4l13cgbe+xsS4Od8hSfAcfx4Eyy/TlKPbYcE3vc5nVXmN3BzC/g14R5os6CAcuA
+	ZC5py7t8DzQDb5xp0am2+tzdr3KpM6mIHAJlC2Z3u/eqDGf1Ipddo+7AqIXKJxcqUsEK
+	7ZWcvEEM8/D3PZF7LBzToaf0I/OwGazLXHCN1CAlb9YdPhxYiD5LumvIua/RfCREhwhY
+	KVNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-	:content-transfer-encoding;
-	bh=qA6m0zxtlI55+GoJPK2BmvdH5Onhm1PGA43KFFA58Hk=;
-	b=OeE8mD7Z1h41Y49SC852aRpSwuji2+8L9+wlTsa8XARjTMjoM35b6YNi7IVIY/CFnk
-	dYlTBgyKDJYlevf2oGIzdgFRvdE/abgWZRgruVq9HUEszlVFZKE/CTJFjjvkIw2fGz97
-	f2YF85Kha+A9K2bQ3dIz9pK9w2N6TeE1BPSsXHgRa1SZ0vGa6DMZ7CV8yvBZQnyig8I8
-	WlpR4U/tw6dRJKrh8ma5fkuq80KW04HYmHjR2bj0+VUZ4uZwmTyqdvpfom2YxovKrmqf
-	RQngJD29oSSqOlZq2Rni32hYdI3VC2P/C35ysB1WvWq0m19E4VhVMwuF5LFq/T53D661
-	EGWQ==
-X-Gm-Message-State: APjAAAXf+tTtazJawSqpjhe7jI8qXyg3bYmA02M13+rSEumqNNg1EUvU
-	w+zE36w/YX1+U05k/5IcvWZKLc3w9xQ=
-X-Google-Smtp-Source: APXvYqw+JRQ/OLCjNk9L/IiXan3/G+iTA0Rx5xjuQuqzAZMtmZ0uAzxffySNMoGS8UYfSl8D0r9zxA==
-X-Received: by 2002:a05:6000:1201:: with SMTP id
-	e1mr7725956wrx.136.1557254497260; 
-	Tue, 07 May 2019 11:41:37 -0700 (PDT)
-Received: from localhost.localdomain (bzq-79-179-9-126.red.bezeqint.net.
-	[79.179.9.126]) by smtp.gmail.com with ESMTPSA id
-	v184sm21382113wma.6.2019.05.07.11.41.36
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Tue, 07 May 2019 11:41:36 -0700 (PDT)
-From: Rami Rosen <ramirose@gmail.com>
-To: qemu-trivial@nongnu.org
-Cc: Rami Rosen <ramirose@gmail.com>
-Date: Tue,  7 May 2019 21:41:02 +0300
-Message-Id: <20190507184102.4258-1-ramirose@gmail.com>
-X-Mailer: git-send-email 2.19.2
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=X2bzEXwhoqBgBx5Fz8GIgVWU1fWEI1ArFuUV+AksY94=;
+	b=Q+7e3hGNZJNQvnFh3AHScwm0lVcRkcqY+NqDK3LhJiaUVR73x3iospRQvrn6dzxGTj
+	u3yQ3ddBbbmPaNcXrhl959o/LmvBxYFsOKhsQ2mxPsyL28yx8hj5h9yb0CroGpWJoK9v
+	8VVl0DqzKbWcR/vQCp6suQDwcuuNHOCwvq2Wo0rSJZOxlHU20ZCaxs3/P8IAAwZMzaV2
+	hSYWy5EzmaAC4OU/edJvu+gp9DOSjJbD1/A4mNPJANOnb/SYwGembkPTNTHqtDPotJjX
+	4938jPpr1H3EO/0jfusdyZPUn1c5DW+Lv0MooUA1jSmjx8YjLVbL1ewms8dkrYpdf/Ez
+	9mew==
+X-Gm-Message-State: APjAAAWup1F1/oY2Y8vh3W1E6EdzC2s/zyr+Do/RHL+Lc0JPzGJr7ajh
+	vqEYdPPPCKdWNn+QHrp4qDHYXLfeBX8Myb4nc7efMQ==
+X-Google-Smtp-Source: APXvYqySAYC8o+uZUDrnfIPpwl+RwiB7QsosKVTkB2x0vLOUaWFDnF0/pfL1y6jkvfIsh+gm3OJlqzTh9hJKoCuSrBs=
+X-Received: by 2002:a9d:404:: with SMTP id 4mr13624743otc.352.1557262132825;
+	Tue, 07 May 2019 13:48:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20190503112654.4393-1-laurent@vivier.eu>
+	<80fb3313-239a-5828-94fa-d27137bfcb05@vivier.eu>
+In-Reply-To: <80fb3313-239a-5828-94fa-d27137bfcb05@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 7 May 2019 21:48:40 +0100
+Message-ID: <CAFEAcA_y24gpugttDTR-QrJ0fA7JCQeC0XXsR6pjm2rQ19rfCA@mail.gmail.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Jason Wang <jasowang@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>, 
+	Fabien Chouteau <chouteau@adacore.com>, Gerd Hoffmann <kraxel@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2a00:1450:4864:20::443
-X-Mailman-Approved-At: Tue, 07 May 2019 15:52:42 -0400
-Subject: [Qemu-trivial] [PATCH] scripts/qmp: fix deleted link in
- qemu-ga-client script
+X-Received-From: 2607:f8b0:4864:20::330
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL v2 00/12] Trivial branch
+ patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,31 +74,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 May 2019 18:41:41 -0000
+X-List-Received-Date: Tue, 07 May 2019 20:48:58 -0000
 
-This patch fixes a deleted link in qemu-ga-client script.
-According to the old link, the page moved to 
-https://wiki.qemu.org/Features/QAPI/GuestAgent.
+On Tue, 7 May 2019 at 20:10, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> Ping ?
 
-Signed-off-by: Rami Rosen <ramirose@gmail.com>
----
- scripts/qmp/qemu-ga-client | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This is in my queue to process, but there are still a bunch of
+other pullreqs in the queue too; I am working through them.
 
-diff --git a/scripts/qmp/qemu-ga-client b/scripts/qmp/qemu-ga-client
-index 30cf8a9..50efc21 100755
---- a/scripts/qmp/qemu-ga-client
-+++ b/scripts/qmp/qemu-ga-client
-@@ -33,7 +33,7 @@
- # $ qemu-ga-client fsfreeze freeze
- # 2 filesystems frozen
- #
--# See also: https://wiki.qemu.org/Features/QAPI/GuestAgent
-+# See also: https://wiki.qemu.org/Features/GuestAgent
- #
- 
- from __future__ import print_function
--- 
-1.8.3.1
-
+thanks
+-- PMM
 
