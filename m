@@ -1,64 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hNeRA-0007Ow-DI
-	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2019 10:17:48 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:46861)
+	id 1hNuFq-0004XJ-5V
+	for mharc-qemu-trivial@gnu.org; Tue, 07 May 2019 03:11:10 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:45698)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hNeR8-0007ON-6F
-	for qemu-trivial@nongnu.org; Mon, 06 May 2019 10:17:47 -0400
+	(envelope-from <kraxel@redhat.com>) id 1hNuFn-0004W1-HN
+	for qemu-trivial@nongnu.org; Tue, 07 May 2019 03:11:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hNeR7-00019C-7Z
-	for qemu-trivial@nongnu.org; Mon, 06 May 2019 10:17:46 -0400
-Received: from mail-wm1-f65.google.com ([209.85.128.65]:50834)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hNeR7-00017e-0X
-	for qemu-trivial@nongnu.org; Mon, 06 May 2019 10:17:45 -0400
-Received: by mail-wm1-f65.google.com with SMTP id p21so15989482wmc.0
-	for <qemu-trivial@nongnu.org>; Mon, 06 May 2019 07:17:44 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=BbAYpGnYmGCIxc3wLgRtBvcRejoqR/aDepbw1efWNgc=;
-	b=FNwQF4oq1XOONZV8mzEc8Etm8xLBNxjajwNhrVaK0SwVBKn59H9C8lRmGIhXZEO7E5
-	9/U12FXoAtCW5gvbpYGhM+mV0dgHB95TyfBA4j3BPmnd+28HWqstV5sT01+L6sR7SCpe
-	4Wk1i3Y+DuxNHAwPfORmdl6B4eJvq33+qfH5w/LRV+xxm0kL7UYokGQI8L9dgxxFpwSR
-	LQXBqxvPJ5l5lFoX9JXWJsYLs4UbdigAojT1yqV7DGsnFausFU2PCnbSGg7FFj6rorSM
-	pGDHnmRzn7vXoCIjV8V6uhEgcayydihMZAbjlcPN5hK7sqzIZyEf3iqBWWSah0we0mAu
-	5e2w==
-X-Gm-Message-State: APjAAAVsVDTvF0syzxEcqvIoCWfMs3Bk8ZkQgrOPhGXuhjMPEZSKYnYg
-	XTJcBclDQ1V/N1CdI8kIUSbh0A==
-X-Google-Smtp-Source: APXvYqy92u/RA7iwJKtwrjg9IKXErlriamS0Tu5WhAowuY2+Myg68TkmR1eYd1QWRBFe1snOu/6Lng==
-X-Received: by 2002:a1c:6a0d:: with SMTP id f13mr16250849wmc.1.1557152263732; 
-	Mon, 06 May 2019 07:17:43 -0700 (PDT)
-Received: from [192.168.1.33] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	v184sm15370123wma.6.2019.05.06.07.17.42
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Mon, 06 May 2019 07:17:42 -0700 (PDT)
-To: Laszlo Ersek <lersek@redhat.com>, qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>
-References: <20190504133540.19758-1-philmd@redhat.com>
-	<20190504133540.19758-2-philmd@redhat.com>
-	<d6f9cf07-daf5-273d-ca41-1b450b29b38d@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <c8927f28-4203-ebb4-b4b6-550fbe511f2e@redhat.com>
-Date: Mon, 6 May 2019 16:17:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(envelope-from <kraxel@redhat.com>) id 1hNuFm-0008Sy-Na
+	for qemu-trivial@nongnu.org; Tue, 07 May 2019 03:11:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55382)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <kraxel@redhat.com>)
+	id 1hNuFk-0008R0-Jf; Tue, 07 May 2019 03:11:04 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E4C72C1306EC;
+	Tue,  7 May 2019 07:11:03 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-45.ams2.redhat.com
+	[10.36.116.45])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 77483377F;
+	Tue,  7 May 2019 07:10:59 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+	id 9BDBB11AA3; Tue,  7 May 2019 09:10:58 +0200 (CEST)
+Date: Tue, 7 May 2019 09:10:58 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Message-ID: <20190507071058.r7ifrw4bytprcsu5@sirius.home.kraxel.org>
+References: <20190504121650.12651-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <d6f9cf07-daf5-273d-ca41-1b450b29b38d@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20190504121650.12651-1-philmd@redhat.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 07 May 2019 07:11:03 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.65
-Subject: Re: [Qemu-trivial] [PATCH v2 1/2] roms: Correct the
- EDK2_BASETOOLS_OPTFLAGS variable description
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] hw/display/cirrus_vga: Update the
+ documentation URL
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,53 +55,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 May 2019 14:17:47 -0000
+X-List-Received-Date: Tue, 07 May 2019 07:11:08 -0000
 
-On 5/6/19 4:04 PM, Laszlo Ersek wrote:
-> On 05/04/19 15:35, Philippe Mathieu-Daudé wrote:
->> In commit 1cab464136b4 we incorrectly described the
->> EDK2_BASETOOLS_OPTFLAGS can pass CPPFLAGS and CFLAGS
->> options to the EDK2 build tools, but it only expands
->> the CFLAGS (not to the CPPFLAGS).
->> Update the description to be more accurate.
->>
->> Reported-by: Laszlo Ersek <lersek@redhat.com>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  roms/Makefile | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/roms/Makefile b/roms/Makefile
->> index 0ce84a45ad5..f020102c866 100644
->> --- a/roms/Makefile
->> +++ b/roms/Makefile
->> @@ -121,8 +121,8 @@ build-efi-roms: build-pxe-roms
->>  		$(patsubst %,bin-i386-efi/%.efidrv,$(pxerom_targets)) \
->>  		$(patsubst %,bin-x86_64-efi/%.efidrv,$(pxerom_targets))
->>  
->> -# Build scripts can pass compiler/linker flags to the EDK2 build tools
->> -# via the EDK2_BASETOOLS_OPTFLAGS (CPPFLAGS and CFLAGS) and
->> +# Build scripts can pass compiler/linker flags to the EDK2
->> +# build  tools via the EDK2_BASETOOLS_OPTFLAGS (CFLAGS) and
-> 
-> please 'tr -s " "' in the above.
+On Sat, May 04, 2019 at 02:16:50PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> The documentation URL is not working, but is backed up by the
+> Wayback Machine on the Internet Archive.
+> Replace the outdated link by a captured one.
+> Add another link to the VGADOC4b.ZIP archive content.
 
-Sharp eagle eye!
+Added to vga patch queue.
 
-> 
-> With that:
-> 
-> Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+thanks,
+  Gerd
 
-Thanks :)
-
-> 
-> Thanks
-> Laszlo
-> 
->>  # EDK2_BASETOOLS_LDFLAGS (LDFLAGS) environment variables.
->>  #
->>  # Example:
->>
-> 
 
