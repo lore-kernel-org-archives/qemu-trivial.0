@@ -1,93 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hNx3C-0000Ko-Vy
-	for mharc-qemu-trivial@gnu.org; Tue, 07 May 2019 06:10:19 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:53369)
+	id 1hNxHz-0007Bt-7Q
+	for mharc-qemu-trivial@gnu.org; Tue, 07 May 2019 06:25:35 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56290)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hNx3A-0000I9-33
-	for qemu-trivial@nongnu.org; Tue, 07 May 2019 06:10:17 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1hNxHw-00079V-0T
+	for qemu-trivial@nongnu.org; Tue, 07 May 2019 06:25:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hNx35-0001Tp-7B
-	for qemu-trivial@nongnu.org; Tue, 07 May 2019 06:10:16 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60166)
+	(envelope-from <dgilbert@redhat.com>) id 1hNxHu-0002PH-11
+	for qemu-trivial@nongnu.org; Tue, 07 May 2019 06:25:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55252)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hNx2s-0001Pb-MD; Tue, 07 May 2019 06:09:58 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
-	[10.5.11.22])
+	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
+	id 1hNxHm-0002E7-LU; Tue, 07 May 2019 06:25:24 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F289A301989A;
-	Tue,  7 May 2019 10:09:57 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-130.ams2.redhat.com [10.36.116.130])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BE4511001E60;
-	Tue,  7 May 2019 10:09:56 +0000 (UTC)
-To: Stefano Garzarella <sgarzare@redhat.com>
-Cc: kwolf@redhat.com, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
-	qemu-block@nongnu.org
-References: <20190506061854.22207-1-thuth@redhat.com>
-	<20190506074809.skltdcczbbu3isll@steredhat>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
-	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
-Organization: Red Hat
-Message-ID: <7f4ff95e-ba69-07fd-b052-0454b9a683a2@redhat.com>
-Date: Tue, 7 May 2019 12:09:55 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	by mx1.redhat.com (Postfix) with ESMTPS id 27B4281F19;
+	Tue,  7 May 2019 10:25:17 +0000 (UTC)
+Received: from work-vm (ovpn-116-183.ams2.redhat.com [10.36.116.183])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3AEDC2854E;
+	Tue,  7 May 2019 10:25:13 +0000 (UTC)
+Date: Tue, 7 May 2019 11:25:10 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+	qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+	Juan Quintela <quintela@redhat.com>
+Message-ID: <20190507102510.GA2752@work-vm>
+References: <20190505230140.5661-1-philmd@redhat.com>
+	<87sgtsrmh3.fsf@dusky.pond.sub.org>
 MIME-Version: 1.0
-In-Reply-To: <20190506074809.skltdcczbbu3isll@steredhat>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <87sgtsrmh3.fsf@dusky.pond.sub.org>
+User-Agent: Mutt/1.11.4 (2019-03-13)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.47]);
-	Tue, 07 May 2019 10:09:58 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 07 May 2019 10:25:17 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [Qemu-block] [QEMU PATCH]
- MAINTAINERS: Downgrade status of block sections without "M:" to "Odd Fixes"
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/sd/sdcard: Use the
+ available enums
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -99,52 +56,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 May 2019 10:10:17 -0000
+X-List-Received-Date: Tue, 07 May 2019 10:25:33 -0000
 
-On 06/05/2019 09.48, Stefano Garzarella wrote:
-> Hi Thomas,
-> 
-> On Mon, May 06, 2019 at 08:18:54AM +0200, Thomas Huth wrote:
->> Fixes might still get picked up via the qemu-block mailing list,
->> so the status is not "Orphan" yet.
->> Also add the gluster mailing list as suggested by Niels here:
->>
->>  https://patchwork.kernel.org/patch/10613297/#22409943
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  MAINTAINERS | 5 +++--
->>  1 file changed, 3 insertions(+), 2 deletions(-)
->>
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index 66ddbda9c9..899a4cd572 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -2404,12 +2404,13 @@ F: block/ssh.c
->>  
->>  CURL
->>  L: qemu-block@nongnu.org
->> -S: Supported
->> +S: Odd Fixes
->>  F: block/curl.c
->>  
->>  GLUSTER
->>  L: qemu-block@nongnu.org
->> -S: Supported
->> +L: integration@gluster.org
->> +S: Odd Fixes
->>  F: block/gluster.c
-> 
-> I'm currently trying to get more experience on Gluster (and also on RBD).
-> I'd add myself as a reviewer since I'm trying to review all patches in these
-> areas and I'm working on some fixes.
-> I could also become a maintainer, but I'm not sure I have the right experience
-> you want.
-> 
-> Should I send a new patch to add myself as reviewer (or maintainer)?
+* Markus Armbruster (armbru@redhat.com) wrote:
+> Philippe Mathieu-Daud=E9 <philmd@redhat.com> writes:
+>=20
+> > We already define SDCardModes/SDCardStates as enums. Declare
+> > the mode/state as enums too, this make gdb debugging sessions
+> > friendlier: instead of numbers, the mode/state name is displayed.
+> >
+> > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> > ---
+> >  hw/sd/sd.c | 6 +++---
+> >  1 file changed, 3 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+> > index aaab15f3868..a66b3d5b45e 100644
+> > --- a/hw/sd/sd.c
+> > +++ b/hw/sd/sd.c
+> > @@ -96,8 +96,8 @@ struct SDState {
+> >      BlockBackend *blk;
+> >      bool spi;
+> > =20
+> > -    uint32_t mode;    /* current card mode, one of SDCardModes */
+> > -    int32_t state;    /* current card state, one of SDCardStates */
+> > +    enum SDCardModes mode;
+> > +    enum SDCardStates state;
+> >      uint32_t vhs;
+> >      bool wp_switch;
+> >      unsigned long *wp_groups;
+> > @@ -1640,7 +1640,7 @@ static int cmd_valid_while_locked(SDState *sd, =
+SDRequest *req)
+> > =20
+> >  int sd_do_command(SDState *sd, SDRequest *req,
+> >                    uint8_t *response) {
+> > -    int last_state;
+> > +    enum SDCardStates last_state;
+> >      sd_rsp_type_t rtype;
+> >      int rsplen;
+>=20
+> These guys are part of the migration state:
+>=20
+>    static const VMStateDescription sd_vmstate =3D {
+>        .name =3D "sd-card",
+>        .version_id =3D 1,
+>        .minimum_version_id =3D 1,
+>        .pre_load =3D sd_vmstate_pre_load,
+>        .fields =3D (VMStateField[]) {
+>            VMSTATE_UINT32(mode, SDState),
+>            VMSTATE_INT32(state, SDState),
+>    [...]
+>=20
+> Juan, David, are VMSTATE_UINT32() and VMSTATE_INT32() safe to use with
+> enums?
 
-Yes, I think it's best if you send a separate patch for this, so that it
-also has a proper "Signed-off-by" line in the changelog history later.
+I think that is compiler dependent, so no.
 
- Thomas
+Dave
+
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
