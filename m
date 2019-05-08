@@ -1,61 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hONrs-0005pR-Ml
-	for mharc-qemu-trivial@gnu.org; Wed, 08 May 2019 10:48:24 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57923)
+	id 1hOO9I-0002n2-KY
+	for mharc-qemu-trivial@gnu.org; Wed, 08 May 2019 11:06:24 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36382)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hONrp-0005nA-Sy
-	for qemu-trivial@nongnu.org; Wed, 08 May 2019 10:48:23 -0400
+	(envelope-from <thuth@redhat.com>) id 1hOO9E-0002jl-L0
+	for qemu-trivial@nongnu.org; Wed, 08 May 2019 11:06:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hONro-0004SR-RW
-	for qemu-trivial@nongnu.org; Wed, 08 May 2019 10:48:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54801)
+	(envelope-from <thuth@redhat.com>) id 1hOO9C-0007GL-O9
+	for qemu-trivial@nongnu.org; Wed, 08 May 2019 11:06:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47121)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1hONrm-0004RM-Dj; Wed, 08 May 2019 10:48:18 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1hOO97-0007Cn-7W; Wed, 08 May 2019 11:06:13 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 91B65C0578FA;
-	Wed,  8 May 2019 14:48:17 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-28.ams2.redhat.com
-	[10.36.116.28])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id ED42C5DD8A;
-	Wed,  8 May 2019 14:48:14 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 7141F1132B35; Wed,  8 May 2019 16:48:13 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,  Laurent Vivier
-	<lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>, Eduardo Habkost
-	<ehabkost@redhat.com>, Viktor Prutyanov <viktor.prutyanov@phystech.edu>,
-	QEMU Trivial <qemu-trivial@nongnu.org>,  Michael Tokarev
-	<mjt@tls.msk.ru>, Jason Wang <jasowang@redhat.com>, Mark Cave-Ayland
-	<mark.cave-ayland@ilande.co.uk>,  Laurent Vivier <laurent@vivier.eu>,
-	Fabien Chouteau <chouteau@adacore.com>,  QEMU Developers
-	<qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>, Aurelien
-	Jarno <aurelien@aurel32.net>,  Paolo Bonzini <pbonzini@redhat.com>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>, Andreas =?utf-8?Q?F=C3=A4rber?=
-	<afaerber@suse.de>,  Artyom Tarasenko <atar4qemu@gmail.com>,  Richard
-	Henderson <rth@twiddle.net>
-References: <20190502185835.15185-1-laurent@vivier.eu>
-	<CAFEAcA9-hAU5dxUmSWtbvrPEXE-nCP1uLvLbOby-_EXZ27o+8g@mail.gmail.com>
-	<87sgtv4wjo.fsf@zen.linaroharston> <87imulaude.fsf@dusky.pond.sub.org>
-Date: Wed, 08 May 2019 16:48:13 +0200
-In-Reply-To: <87imulaude.fsf@dusky.pond.sub.org> (Markus Armbruster's message
-	of "Wed, 08 May 2019 16:33:33 +0200")
-Message-ID: <87ftpp9f4i.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3534A19DD1;
+	Wed,  8 May 2019 15:06:12 +0000 (UTC)
+Received: from thuth.com (ovpn-116-100.ams2.redhat.com [10.36.116.100])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5C0DB50A63;
+	Wed,  8 May 2019 15:06:11 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	pbonzini@redhat.com
+Date: Wed,  8 May 2019 17:06:08 +0200
+Message-Id: <20190508150608.3311-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.31]);
-	Wed, 08 May 2019 14:48:17 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 08 May 2019 15:06:12 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/13] Trivial branch patches
+Subject: [Qemu-trivial] [PATCH] include/exec/poison: Mark TARGET_FMT_lu as
+ poisoned, too
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,93 +48,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 May 2019 14:48:23 -0000
+X-List-Received-Date: Wed, 08 May 2019 15:06:21 -0000
 
-Markus Armbruster <armbru@redhat.com> writes:
+We already poison TARGET_FMT_lx and TARGET_FMT_ld, but apparently
+forgot to poison TARGET_FMT_lu, too. Do it now.
 
-> Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
->
->> Peter Maydell <peter.maydell@linaro.org> writes:
->>
->>> On Thu, 2 May 2019 at 19:58, Laurent Vivier <laurent@vivier.eu> wrote:
->>>>
->>>> The following changes since commit 8482ff2eb3bb95020eb2f370a9b3ea26511=
-e41df:
->>>>
->>>>   Merge remote-tracking branch 'remotes/jnsnow/tags/bitmaps-pull-reque=
-st' into staging (2019-05-02 12:04:51 +0100)
->>>>
->>>> are available in the Git repository at:
->>>>
->>>>   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
->>>>
->>>> for you to fetch changes up to f7c03a68b814254df414977ff299468fbf0fa1c=
-0:
->>>>
->>>>   sockets: avoid string truncation warnings when copying UNIX path (20=
-19-05-02 20:50:47 +0200)
->>>>
->>>> ----------------------------------------------------------------
->>>> Pull request trivial branch 2019-05-02
->>>>
->>>> ----------------------------------------------------------------
->>>
->>> Markus's "Clean up includes" patch breaks 'make check' on
->>> big-endian hosts:
->>> cd /home/pm215/qemu/build/all/tests/fp && ./fp-test -s -l 1 -r all  i32=
-_to_f16 i
->>> 64_to_f16 i32_to_f32 i64_to_f32 i32_to_f64 i64_to_f64 i32_to_f128 i64_t=
-o_f128 >
->>>  int-to-float.out 2>&1 || (cat  int-to-float.out && exit 1;)
->>>>> Testing i32_to_f16, rounding near_even
->>> ^M372 tests total.
->>> ^M372 tests performed.
->>> In 372 tests, no errors found in i32_to_f16, rounding near_even.
->>>>> Testing i32_to_f16, rounding minMag
->>> [...]
->>> ^MErrors found in i32_to_f128:
->>> 1006FFFF  =3D> +0000.000000000000401B006FFFF00000 .....
->>>         expected +401B.006FFFF000000000000000000000 .....
->>> ^M0001DDEB  =3D> +0000.000000000000400FDDEB00000000 .....
->>>         expected +400F.DDEB000000000000000000000000 .....
->>> ^MFFF6FFFC  =3D> +0000.000000000000C012200080000000 .....
->>>         expected -4012.2000800000000000000000000000 .....
->>> ^MFFFFFFF8  =3D> +0000.000000000000C002000000000000 .....
->>>         expected -4002.0000000000000000000000000000 .....
->>> [etc]
->>
->> Considering the header clean-ups moved bswap related stuff and the
->> patterns look incorrectly swapped something has gone fishy.
->>
->> If it's just stuff touching f128 then we have some magic in
->> softfloat-types:
->>
->>  typedef struct {
->>  #ifdef HOST_WORDS_BIGENDIAN
->>      uint64_t high, low;
->>  #else
->>      uint64_t low, high;
->>  #endif
->>  } float128;
->>
->> but I would have though HOST_WORDS_BIGENDIAN is in the config. I shall
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ include/exec/poison.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-Me too; qemu/osdep.h should pull it in.
+diff --git a/include/exec/poison.h b/include/exec/poison.h
+index 1a7a57baae..b862320fa6 100644
+--- a/include/exec/poison.h
++++ b/include/exec/poison.h
+@@ -44,6 +44,7 @@
+ #pragma GCC poison TARGET_LONG_BITS
+ #pragma GCC poison TARGET_FMT_lx
+ #pragma GCC poison TARGET_FMT_ld
++#pragma GCC poison TARGET_FMT_lu
+=20
+ #pragma GCC poison TARGET_PAGE_SIZE
+ #pragma GCC poison TARGET_PAGE_MASK
+--=20
+2.21.0
 
->> have a poke once I get onto the s390 machine.
->
-> Any luck?
->
-> In my own poking, I stumbled over
->
->     #ifndef HOST_WORDS_BIGENDIAN
->     #define LITTLEENDIAN 1
->     /* otherwise do not define it */
->     #endif
->
-> in platform.h.  Is LITTLEENDIAN unused, or am I confused?
-
-INLINE appears just as unused.
-
-> [...]
 
