@@ -1,50 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hOMOD-00006t-2x
-	for mharc-qemu-trivial@gnu.org; Wed, 08 May 2019 09:13:41 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:32944)
+	id 1hONdi-00067q-MT
+	for mharc-qemu-trivial@gnu.org; Wed, 08 May 2019 10:33:46 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:54243)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hOMOA-000054-O5
-	for qemu-trivial@nongnu.org; Wed, 08 May 2019 09:13:39 -0400
+	(envelope-from <armbru@redhat.com>) id 1hONdg-00066C-IP
+	for qemu-trivial@nongnu.org; Wed, 08 May 2019 10:33:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hOMO9-0000LY-Rp
-	for qemu-trivial@nongnu.org; Wed, 08 May 2019 09:13:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51096)
+	(envelope-from <armbru@redhat.com>) id 1hONdf-0004Tr-DQ
+	for qemu-trivial@nongnu.org; Wed, 08 May 2019 10:33:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:63006)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1hOMO3-0000Fi-Eq; Wed, 08 May 2019 09:13:32 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
-	[10.5.11.23])
+	id 1hONdc-0004Sj-OL; Wed, 08 May 2019 10:33:40 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 74FF9309B167;
-	Wed,  8 May 2019 13:13:30 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 26C2B11DBA8;
+	Wed,  8 May 2019 14:33:39 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-116-28.ams2.redhat.com
 	[10.36.116.28])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1B39419729;
-	Wed,  8 May 2019 13:13:28 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5684E1001DFA;
+	Wed,  8 May 2019 14:33:35 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 89C771132B35; Wed,  8 May 2019 15:13:25 +0200 (CEST)
+	id C0A641132B35; Wed,  8 May 2019 16:33:33 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org,  Paolo Bonzini
-	<pbonzini@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
-	<philmd@redhat.com>
-References: <20190508075527.32164-1-thuth@redhat.com>
-Date: Wed, 08 May 2019 15:13:25 +0200
-In-Reply-To: <20190508075527.32164-1-thuth@redhat.com> (Thomas Huth's message
-	of "Wed, 8 May 2019 09:55:27 +0200")
-Message-ID: <87lfzh143u.fsf@dusky.pond.sub.org>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,  Laurent Vivier
+	<lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>, Eduardo Habkost
+	<ehabkost@redhat.com>, Viktor Prutyanov <viktor.prutyanov@phystech.edu>,
+	QEMU Trivial <qemu-trivial@nongnu.org>,  Michael Tokarev
+	<mjt@tls.msk.ru>, Jason Wang <jasowang@redhat.com>, Mark Cave-Ayland
+	<mark.cave-ayland@ilande.co.uk>,  Laurent Vivier <laurent@vivier.eu>,
+	Fabien Chouteau <chouteau@adacore.com>,  QEMU Developers
+	<qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>, Aurelien
+	Jarno <aurelien@aurel32.net>,  Paolo Bonzini <pbonzini@redhat.com>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>, Andreas =?utf-8?Q?F=C3=A4rber?=
+	<afaerber@suse.de>,  Artyom Tarasenko <atar4qemu@gmail.com>,  Richard
+	Henderson <rth@twiddle.net>
+References: <20190502185835.15185-1-laurent@vivier.eu>
+	<CAFEAcA9-hAU5dxUmSWtbvrPEXE-nCP1uLvLbOby-_EXZ27o+8g@mail.gmail.com>
+	<87sgtv4wjo.fsf@zen.linaroharston>
+Date: Wed, 08 May 2019 16:33:33 +0200
+In-Reply-To: <87sgtv4wjo.fsf@zen.linaroharston> ("Alex =?utf-8?Q?Benn?=
+	=?utf-8?Q?=C3=A9e=22's?= message of
+	"Fri, 03 May 2019 12:17:15 +0100")
+Message-ID: <87imulaude.fsf@dusky.pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.49]);
-	Wed, 08 May 2019 13:13:30 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 08 May 2019 14:33:40 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] tests/Makefile: Remove
- unused test-obj-y variable
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/13] Trivial branch patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,19 +68,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 May 2019 13:13:40 -0000
+X-List-Received-Date: Wed, 08 May 2019 14:33:45 -0000
 
-Thomas Huth <thuth@redhat.com> writes:
+Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
 
-> I recently noticed that test-obj-y contains a file called
-> tests/check-block-qtest.o which simply does not belong to any .c
-> file and thus wondered why this is not causing any trouble. It is
-> only used to add -Itests to the command line (which refers to the
-> build directory). However, it is not needed because "-iquote $(@D)"
-> already sets this up in rules.mak. Thus we can simply remove this
-> variable.
+> Peter Maydell <peter.maydell@linaro.org> writes:
 >
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> On Thu, 2 May 2019 at 19:58, Laurent Vivier <laurent@vivier.eu> wrote:
+>>>
+>>> The following changes since commit 8482ff2eb3bb95020eb2f370a9b3ea26511e=
+41df:
+>>>
+>>>   Merge remote-tracking branch 'remotes/jnsnow/tags/bitmaps-pull-reques=
+t' into staging (2019-05-02 12:04:51 +0100)
+>>>
+>>> are available in the Git repository at:
+>>>
+>>>   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+>>>
+>>> for you to fetch changes up to f7c03a68b814254df414977ff299468fbf0fa1c0:
+>>>
+>>>   sockets: avoid string truncation warnings when copying UNIX path (201=
+9-05-02 20:50:47 +0200)
+>>>
+>>> ----------------------------------------------------------------
+>>> Pull request trivial branch 2019-05-02
+>>>
+>>> ----------------------------------------------------------------
+>>
+>> Markus's "Clean up includes" patch breaks 'make check' on
+>> big-endian hosts:
+>> cd /home/pm215/qemu/build/all/tests/fp && ./fp-test -s -l 1 -r all  i32_=
+to_f16 i
+>> 64_to_f16 i32_to_f32 i64_to_f32 i32_to_f64 i64_to_f64 i32_to_f128 i64_to=
+_f128 >
+>>  int-to-float.out 2>&1 || (cat  int-to-float.out && exit 1;)
+>>>> Testing i32_to_f16, rounding near_even
+>> ^M372 tests total.
+>> ^M372 tests performed.
+>> In 372 tests, no errors found in i32_to_f16, rounding near_even.
+>>>> Testing i32_to_f16, rounding minMag
+>> [...]
+>> ^MErrors found in i32_to_f128:
+>> 1006FFFF  =3D> +0000.000000000000401B006FFFF00000 .....
+>>         expected +401B.006FFFF000000000000000000000 .....
+>> ^M0001DDEB  =3D> +0000.000000000000400FDDEB00000000 .....
+>>         expected +400F.DDEB000000000000000000000000 .....
+>> ^MFFF6FFFC  =3D> +0000.000000000000C012200080000000 .....
+>>         expected -4012.2000800000000000000000000000 .....
+>> ^MFFFFFFF8  =3D> +0000.000000000000C002000000000000 .....
+>>         expected -4002.0000000000000000000000000000 .....
+>> [etc]
+>
+> Considering the header clean-ups moved bswap related stuff and the
+> patterns look incorrectly swapped something has gone fishy.
+>
+> If it's just stuff touching f128 then we have some magic in
+> softfloat-types:
+>
+>  typedef struct {
+>  #ifdef HOST_WORDS_BIGENDIAN
+>      uint64_t high, low;
+>  #else
+>      uint64_t low, high;
+>  #endif
+>  } float128;
+>
+> but I would have though HOST_WORDS_BIGENDIAN is in the config. I shall
+> have a poke once I get onto the s390 machine.
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Any luck?
+
+In my own poking, I stumbled over
+
+    #ifndef HOST_WORDS_BIGENDIAN
+    #define LITTLEENDIAN 1
+    /* otherwise do not define it */
+    #endif
+
+in platform.h.  Is LITTLEENDIAN unused, or am I confused?
+
+[...]
 
