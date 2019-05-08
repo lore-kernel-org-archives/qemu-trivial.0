@@ -1,52 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hOFSg-0004Gm-0g
-	for mharc-qemu-trivial@gnu.org; Wed, 08 May 2019 01:49:50 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:35649)
+	id 1hOHQU-0003X8-VZ
+	for mharc-qemu-trivial@gnu.org; Wed, 08 May 2019 03:55:42 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:55897)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hOFSd-0004EX-Rl
-	for qemu-trivial@nongnu.org; Wed, 08 May 2019 01:49:49 -0400
+	(envelope-from <thuth@redhat.com>) id 1hOHQT-0003Vs-3G
+	for qemu-trivial@nongnu.org; Wed, 08 May 2019 03:55:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hOFSc-0007x2-LI
-	for qemu-trivial@nongnu.org; Wed, 08 May 2019 01:49:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44490)
+	(envelope-from <thuth@redhat.com>) id 1hOHQS-0004M4-41
+	for qemu-trivial@nongnu.org; Wed, 08 May 2019 03:55:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38646)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1hOFSa-0007vr-0y; Wed, 08 May 2019 01:49:44 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1hOHQQ-0004FP-0F; Wed, 08 May 2019 03:55:38 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 49F5ADC8EF;
-	Wed,  8 May 2019 05:49:43 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-28.ams2.redhat.com
-	[10.36.116.28])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B5D98600D4;
-	Wed,  8 May 2019 05:49:39 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 356331132B35; Wed,  8 May 2019 07:49:37 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-References: <1549471435-21887-1-git-send-email-thuth@redhat.com>
-	<5a21d28a-fcb5-305c-d44f-158e69411b28@redhat.com>
-	<de25b04f-eb0a-a59c-3a6a-535e2ad67c49@redhat.com>
-Date: Wed, 08 May 2019 07:49:37 +0200
-In-Reply-To: <de25b04f-eb0a-a59c-3a6a-535e2ad67c49@redhat.com> (Thomas Huth's
-	message of "Mon, 6 May 2019 07:52:24 +0200")
-Message-ID: <874l658phq.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	by mx1.redhat.com (Postfix) with ESMTPS id AEFA2307D850;
+	Wed,  8 May 2019 07:55:36 +0000 (UTC)
+Received: from thuth.com (ovpn-116-100.ams2.redhat.com [10.36.116.100])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A346760BF3;
+	Wed,  8 May 2019 07:55:30 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
+Date: Wed,  8 May 2019 09:55:27 +0200
+Message-Id: <20190508075527.32164-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.38]);
-	Wed, 08 May 2019 05:49:43 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.48]);
+	Wed, 08 May 2019 07:55:36 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/i2c/smbus_ich9: Fix the
- confusing contributions-after-2012 statement
+Subject: [Qemu-trivial] [PATCH v2] tests/Makefile: Remove unused test-obj-y
+ variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -58,77 +49,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 May 2019 05:49:49 -0000
+X-List-Received-Date: Wed, 08 May 2019 07:55:42 -0000
 
-Cc: Marcel in the hope of getting a pong.
+I recently noticed that test-obj-y contains a file called
+tests/check-block-qtest.o which simply does not belong to any .c
+file and thus wondered why this is not causing any trouble. It is
+only used to add -Itests to the command line (which refers to the
+build directory). However, it is not needed because "-iquote $(@D)"
+already sets this up in rules.mak. Thus we can simply remove this
+variable.
 
-Thomas Huth <thuth@redhat.com> writes:
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ v2: Fixed patch description with the information that Paolo provided.
 
-> On 29/03/2019 09.42, Thomas Huth wrote:
->> On 06/02/2019 17.43, Thomas Huth wrote:
->>> The license information in this file is rather confusing. The text
->>> declares LGPL first, but then says that contributions after Jan 2012
->>> are licensed under the GPL instead. How should the average user who
->>> just downloaded the release tarball know which part is now GPL and
->>> which is LGPL? Also, as far as I can see, the file has been added to
->>> QEMU *after* January in 2012, so the whole file should be GPL by
->>> default instead.
->>>
->>> Furthermore, looking at the text of the LGPL (see COPYING.LIB in the
->>> top directory), the license clearly states in section "3." that one
->>> should rather replace the license information in such a case instead.
->>> Thus let's clean up the confusing statements and use the proper GPL
->>> text only.
->>>
->>> While we're at it, also remove the comment about acpi.c, since that
->>> file does not exist under this name in the QEMU tree anymore.
->>>
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>>  hw/i2c/smbus_ich9.c | 21 ++++++++-------------
->>>  1 file changed, 8 insertions(+), 13 deletions(-)
->>>
->>> diff --git a/hw/i2c/smbus_ich9.c b/hw/i2c/smbus_ich9.c
->>> index 2a8b49e..484aef5 100644
->>> --- a/hw/i2c/smbus_ich9.c
->>> +++ b/hw/i2c/smbus_ich9.c
->>> @@ -6,23 +6,18 @@
->>>   *               VA Linux Systems Japan K.K.
->>>   * Copyright (C) 2012 Jason Baron <jbaron@redhat.com>
->>>   *
->>> - * This is based on acpi.c, but heavily rewritten.
->>> + * This program is free software; you can redistribute it and/or modify
->>> + * it under the terms of the GNU General Public License as published by
->>> + * the Free Software Foundation; either version 2 of the License, or
->>> + * (at your option) any later version.
->>>   *
->>> - * This library is free software; you can redistribute it and/or
->>> - * modify it under the terms of the GNU Lesser General Public
->>> - * License version 2 as published by the Free Software Foundation.
->>> - *
->>> - * This library is distributed in the hope that it will be useful,
->>> + * This program is distributed in the hope that it will be useful,
->>>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
->>>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
->>> - * Lesser General Public License for more details.
->>> - *
->>> - * You should have received a copy of the GNU Lesser General Public
->>> - * License along with this library; if not, see <http://www.gnu.org/licenses/>
->>> - *
->>> - * Contributions after 2012-01-13 are licensed under the terms of the
->>> - * GNU GPL, version 2 or (at your option) any later version.
->>> + * General Public License for more details.
->>>   *
->>> + * You should have received a copy of the GNU General Public License
->>> + * along with this program; if not, see <http://www.gnu.org/licenses/>
->>>   */
->>>  #include "qemu/osdep.h"
->>>  #include "hw/hw.h"
->>>
->> 
->> Ping?
->
-> Ping^2
->
->  Thomas
+ tests/Makefile.include | 19 -------------------
+ 1 file changed, 19 deletions(-)
+
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index 7c8b9c84b2..dfc4b7746f 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -482,25 +482,6 @@ GENERATED_FILES +=3D tests/test-qapi-types.h \
+ 	tests/test-qapi-events-sub-sub-module.h \
+ 	tests/test-qapi-introspect.h
+=20
+-test-obj-y =3D tests/check-qnum.o tests/check-qstring.o tests/check-qdic=
+t.o \
+-	tests/check-qlist.o tests/check-qnull.o tests/check-qobject.o \
+-	tests/check-qjson.o tests/check-qlit.o \
+-	tests/check-block-qtest.o \
+-	tests/test-coroutine.o tests/test-string-output-visitor.o \
+-	tests/test-string-input-visitor.o tests/test-qobject-output-visitor.o \
+-	tests/test-clone-visitor.o \
+-	tests/test-qobject-input-visitor.o \
+-	tests/test-qmp-cmds.o tests/test-visitor-serialization.o \
+-	tests/test-x86-cpuid.o tests/test-mul64.o tests/test-int128.o \
+-	tests/test-opts-visitor.o tests/test-qmp-event.o \
+-	tests/rcutorture.o tests/test-rcu-list.o \
+-	tests/test-rcu-simpleq.o \
+-	tests/test-rcu-tailq.o \
+-	tests/test-qdist.o tests/test-shift128.o \
+-	tests/test-qht.o tests/qht-bench.o tests/test-qht-par.o \
+-	tests/atomic_add-bench.o tests/atomic64-bench.o
+-
+-$(test-obj-y): QEMU_INCLUDES +=3D -Itests
+ QEMU_CFLAGS +=3D -I$(SRC_PATH)/tests
+=20
+=20
+--=20
+2.21.0
+
 
