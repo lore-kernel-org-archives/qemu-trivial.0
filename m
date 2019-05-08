@@ -1,68 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hO71J-0001Cc-As
-	for mharc-qemu-trivial@gnu.org; Tue, 07 May 2019 16:49:01 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38694)
+	id 1hOFSg-0004Gm-0g
+	for mharc-qemu-trivial@gnu.org; Wed, 08 May 2019 01:49:50 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:35649)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hO71F-0001Bw-3b
-	for qemu-trivial@nongnu.org; Tue, 07 May 2019 16:48:57 -0400
+	(envelope-from <armbru@redhat.com>) id 1hOFSd-0004EX-Rl
+	for qemu-trivial@nongnu.org; Wed, 08 May 2019 01:49:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hO71D-0004rO-8T
-	for qemu-trivial@nongnu.org; Tue, 07 May 2019 16:48:57 -0400
-Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330]:38232)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hO71C-0004oN-35
-	for qemu-trivial@nongnu.org; Tue, 07 May 2019 16:48:55 -0400
-Received: by mail-ot1-x330.google.com with SMTP id b1so16336470otp.5
-	for <qemu-trivial@nongnu.org>; Tue, 07 May 2019 13:48:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=X2bzEXwhoqBgBx5Fz8GIgVWU1fWEI1ArFuUV+AksY94=;
-	b=pFgmd8nrqhVgstEBX4aTOTbV3L0WS7I+vZ475poMJ8nZwqTen7HCqlW6r17uELMgjm
-	SmjelXPidvSX//HNMHVUJC1QrWt9IT2illPo5ktCi9qW6iBAYZQdhVfNgaKnnvjstcls
-	oDr6g4l13cgbe+xsS4Od8hSfAcfx4Eyy/TlKPbYcE3vc5nVXmN3BzC/g14R5os6CAcuA
-	ZC5py7t8DzQDb5xp0am2+tzdr3KpM6mIHAJlC2Z3u/eqDGf1Ipddo+7AqIXKJxcqUsEK
-	7ZWcvEEM8/D3PZF7LBzToaf0I/OwGazLXHCN1CAlb9YdPhxYiD5LumvIua/RfCREhwhY
-	KVNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc;
-	bh=X2bzEXwhoqBgBx5Fz8GIgVWU1fWEI1ArFuUV+AksY94=;
-	b=Q+7e3hGNZJNQvnFh3AHScwm0lVcRkcqY+NqDK3LhJiaUVR73x3iospRQvrn6dzxGTj
-	u3yQ3ddBbbmPaNcXrhl959o/LmvBxYFsOKhsQ2mxPsyL28yx8hj5h9yb0CroGpWJoK9v
-	8VVl0DqzKbWcR/vQCp6suQDwcuuNHOCwvq2Wo0rSJZOxlHU20ZCaxs3/P8IAAwZMzaV2
-	hSYWy5EzmaAC4OU/edJvu+gp9DOSjJbD1/A4mNPJANOnb/SYwGembkPTNTHqtDPotJjX
-	4938jPpr1H3EO/0jfusdyZPUn1c5DW+Lv0MooUA1jSmjx8YjLVbL1ewms8dkrYpdf/Ez
-	9mew==
-X-Gm-Message-State: APjAAAWup1F1/oY2Y8vh3W1E6EdzC2s/zyr+Do/RHL+Lc0JPzGJr7ajh
-	vqEYdPPPCKdWNn+QHrp4qDHYXLfeBX8Myb4nc7efMQ==
-X-Google-Smtp-Source: APXvYqySAYC8o+uZUDrnfIPpwl+RwiB7QsosKVTkB2x0vLOUaWFDnF0/pfL1y6jkvfIsh+gm3OJlqzTh9hJKoCuSrBs=
-X-Received: by 2002:a9d:404:: with SMTP id 4mr13624743otc.352.1557262132825;
-	Tue, 07 May 2019 13:48:52 -0700 (PDT)
+	(envelope-from <armbru@redhat.com>) id 1hOFSc-0007x2-LI
+	for qemu-trivial@nongnu.org; Wed, 08 May 2019 01:49:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44490)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1hOFSa-0007vr-0y; Wed, 08 May 2019 01:49:44 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 49F5ADC8EF;
+	Wed,  8 May 2019 05:49:43 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-28.ams2.redhat.com
+	[10.36.116.28])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id B5D98600D4;
+	Wed,  8 May 2019 05:49:39 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 356331132B35; Wed,  8 May 2019 07:49:37 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+References: <1549471435-21887-1-git-send-email-thuth@redhat.com>
+	<5a21d28a-fcb5-305c-d44f-158e69411b28@redhat.com>
+	<de25b04f-eb0a-a59c-3a6a-535e2ad67c49@redhat.com>
+Date: Wed, 08 May 2019 07:49:37 +0200
+In-Reply-To: <de25b04f-eb0a-a59c-3a6a-535e2ad67c49@redhat.com> (Thomas Huth's
+	message of "Mon, 6 May 2019 07:52:24 +0200")
+Message-ID: <874l658phq.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-References: <20190503112654.4393-1-laurent@vivier.eu>
-	<80fb3313-239a-5828-94fa-d27137bfcb05@vivier.eu>
-In-Reply-To: <80fb3313-239a-5828-94fa-d27137bfcb05@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 7 May 2019 21:48:40 +0100
-Message-ID: <CAFEAcA_y24gpugttDTR-QrJ0fA7JCQeC0XXsR6pjm2rQ19rfCA@mail.gmail.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Jason Wang <jasowang@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>, 
-	Fabien Chouteau <chouteau@adacore.com>, Gerd Hoffmann <kraxel@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::330
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL v2 00/12] Trivial branch
- patches
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 08 May 2019 05:49:43 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/i2c/smbus_ich9: Fix the
+ confusing contributions-after-2012 statement
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -74,15 +58,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 May 2019 20:48:58 -0000
+X-List-Received-Date: Wed, 08 May 2019 05:49:49 -0000
 
-On Tue, 7 May 2019 at 20:10, Laurent Vivier <laurent@vivier.eu> wrote:
+Cc: Marcel in the hope of getting a pong.
+
+Thomas Huth <thuth@redhat.com> writes:
+
+> On 29/03/2019 09.42, Thomas Huth wrote:
+>> On 06/02/2019 17.43, Thomas Huth wrote:
+>>> The license information in this file is rather confusing. The text
+>>> declares LGPL first, but then says that contributions after Jan 2012
+>>> are licensed under the GPL instead. How should the average user who
+>>> just downloaded the release tarball know which part is now GPL and
+>>> which is LGPL? Also, as far as I can see, the file has been added to
+>>> QEMU *after* January in 2012, so the whole file should be GPL by
+>>> default instead.
+>>>
+>>> Furthermore, looking at the text of the LGPL (see COPYING.LIB in the
+>>> top directory), the license clearly states in section "3." that one
+>>> should rather replace the license information in such a case instead.
+>>> Thus let's clean up the confusing statements and use the proper GPL
+>>> text only.
+>>>
+>>> While we're at it, also remove the comment about acpi.c, since that
+>>> file does not exist under this name in the QEMU tree anymore.
+>>>
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>> ---
+>>>  hw/i2c/smbus_ich9.c | 21 ++++++++-------------
+>>>  1 file changed, 8 insertions(+), 13 deletions(-)
+>>>
+>>> diff --git a/hw/i2c/smbus_ich9.c b/hw/i2c/smbus_ich9.c
+>>> index 2a8b49e..484aef5 100644
+>>> --- a/hw/i2c/smbus_ich9.c
+>>> +++ b/hw/i2c/smbus_ich9.c
+>>> @@ -6,23 +6,18 @@
+>>>   *               VA Linux Systems Japan K.K.
+>>>   * Copyright (C) 2012 Jason Baron <jbaron@redhat.com>
+>>>   *
+>>> - * This is based on acpi.c, but heavily rewritten.
+>>> + * This program is free software; you can redistribute it and/or modify
+>>> + * it under the terms of the GNU General Public License as published by
+>>> + * the Free Software Foundation; either version 2 of the License, or
+>>> + * (at your option) any later version.
+>>>   *
+>>> - * This library is free software; you can redistribute it and/or
+>>> - * modify it under the terms of the GNU Lesser General Public
+>>> - * License version 2 as published by the Free Software Foundation.
+>>> - *
+>>> - * This library is distributed in the hope that it will be useful,
+>>> + * This program is distributed in the hope that it will be useful,
+>>>   * but WITHOUT ANY WARRANTY; without even the implied warranty of
+>>>   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+>>> - * Lesser General Public License for more details.
+>>> - *
+>>> - * You should have received a copy of the GNU Lesser General Public
+>>> - * License along with this library; if not, see <http://www.gnu.org/licenses/>
+>>> - *
+>>> - * Contributions after 2012-01-13 are licensed under the terms of the
+>>> - * GNU GPL, version 2 or (at your option) any later version.
+>>> + * General Public License for more details.
+>>>   *
+>>> + * You should have received a copy of the GNU General Public License
+>>> + * along with this program; if not, see <http://www.gnu.org/licenses/>
+>>>   */
+>>>  #include "qemu/osdep.h"
+>>>  #include "hw/hw.h"
+>>>
+>> 
+>> Ping?
 >
-> Ping ?
-
-This is in my queue to process, but there are still a bunch of
-other pullreqs in the queue too; I am working through them.
-
-thanks
--- PMM
+> Ping^2
+>
+>  Thomas
 
