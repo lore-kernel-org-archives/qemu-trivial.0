@@ -1,78 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hOeo4-0008Iy-5B
-	for mharc-qemu-trivial@gnu.org; Thu, 09 May 2019 04:53:36 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:52774)
+	id 1hOet9-0003sj-HY
+	for mharc-qemu-trivial@gnu.org; Thu, 09 May 2019 04:58:51 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:54279)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hOeo1-0008Gx-Fr
-	for qemu-trivial@nongnu.org; Thu, 09 May 2019 04:53:34 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hOet7-0003sH-JL
+	for qemu-trivial@nongnu.org; Thu, 09 May 2019 04:58:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hOeo0-00077N-KK
-	for qemu-trivial@nongnu.org; Thu, 09 May 2019 04:53:33 -0400
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d]:42996)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hOeo0-00076l-F7
-	for qemu-trivial@nongnu.org; Thu, 09 May 2019 04:53:32 -0400
-Received: by mail-ot1-x32d.google.com with SMTP id f23so1564041otl.9
-	for <qemu-trivial@nongnu.org>; Thu, 09 May 2019 01:53:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc:content-transfer-encoding;
-	bh=9tgr5jOglCE79HDmTY6YwZ6spoWQSi5fVFVTFdu7qls=;
-	b=f2Be26l8j3hnR/LVlMO0rybI4kGtEWkoL8yEiZFUaLUjb1zxgT0mnxQTudpp/dyHab
-	KaPpjUagVQOZxLSCBrU7M9DAPswk4+clysciS8Jjlf26ZmfaPbwtwjrn9ZFjyHPpREl1
-	LJu07kagdFEE29MWgU4xPEDYkX17VmDeLkR4elYHQmMO9v4s31oH188AbZQgOK4JVEef
-	FTjnoh6AKR0YUSLfMxGHrRoMU1Y/xJhDsfbgDW/Dmv6Jy9lYZRO5wjL6I2ZKnmZrPcJ1
-	zzEtZebBdOW63gLLIYahPlhmOq02YbxSxBmFgkmTXArRB1AfgBG9ML3rjrZzNmafpSr8
-	Rx8g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-	:message-id:subject:to:cc:content-transfer-encoding;
-	bh=9tgr5jOglCE79HDmTY6YwZ6spoWQSi5fVFVTFdu7qls=;
-	b=FNDZBoyrtmyzRRXDhmdcQAlDX40lzV31KMR9ZMeXXJFUkvOyNBL540J98eG2TE+bVi
-	efMO6GTsMG1dTJuQgvn+QpmqeOChrexHIWrkSrcE5y1hFAqWcyF7/3Okz2NsaGwSZzY3
-	/iLBJqdqnKWK43U77Ux0T5prjLmv1CcJtWsbV/Mt9WbqISNfyGWYiUpKzXuOeGXrHNEk
-	NmwQIxsR1HRItoZWlhTGqe2PJuw0aeG3b7kGPYneQju7PhisFK3Rrk94y/IqgrJWD9u/
-	l/mJSL1P+fmUdefvBnixlGKn6rMt3bHvatie72UD/gyGlzjZPx/Zm5SN+cjuGPPhuWg0
-	gTsg==
-X-Gm-Message-State: APjAAAU6mCeCR/VgziV+hzxf1KLLv6ea75ZMrV1cLcyh/0aoxNLjoIOC
-	6JMAEltySxW15fxBMABrj2vOWiQentui3gE5iuq9mQ==
-X-Google-Smtp-Source: APXvYqwRuP6Eh3oB7IcvNccUE5TaR2e60SOpnmm/ITefMFxN7cHLNlQBhH9syrJiGfa4gBLPtlxPvC3EyIgpCL8YxFE=
-X-Received: by 2002:a9d:6855:: with SMTP id c21mr820371oto.151.1557392011274; 
-	Thu, 09 May 2019 01:53:31 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190502185835.15185-1-laurent@vivier.eu>
-	<CAFEAcA9-hAU5dxUmSWtbvrPEXE-nCP1uLvLbOby-_EXZ27o+8g@mail.gmail.com>
-	<87sgtv4wjo.fsf@zen.linaroharston> <87imulaude.fsf@dusky.pond.sub.org>
-	<87tve53sy7.fsf@zen.linaroharston> <87zhnw58pa.fsf@dusky.pond.sub.org>
-In-Reply-To: <87zhnw58pa.fsf@dusky.pond.sub.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 May 2019 09:53:20 +0100
-Message-ID: <CAFEAcA-s0UYr0VW3ccG07r=BiGCVtDHkRb6yW0X_ev-zAkOxvw@mail.gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>, 
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Viktor Prutyanov <viktor.prutyanov@phystech.edu>, 
+	(envelope-from <laurent@vivier.eu>) id 1hOet6-0002J6-LZ
+	for qemu-trivial@nongnu.org; Thu, 09 May 2019 04:58:49 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:43935)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1hOet6-0002GP-CC; Thu, 09 May 2019 04:58:48 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+	1N336L-1gjRJt27zR-013Pnz; Thu, 09 May 2019 10:58:32 +0200
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
 	QEMU Trivial <qemu-trivial@nongnu.org>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Jason Wang <jasowang@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	Laurent Vivier <laurent@vivier.eu>, 
-	Fabien Chouteau <chouteau@adacore.com>,
-	QEMU Developers <qemu-devel@nongnu.org>, 
-	Gerd Hoffmann <kraxel@redhat.com>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
 	Michael Roth <mdroth@linux.vnet.ibm.com>,
-	Aurelien Jarno <aurelien@aurel32.net>, 
-	Artyom Tarasenko <atar4qemu@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2607:f8b0:4864:20::32d
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/13] Trivial branch patches
+	Fabien Chouteau <chouteau@adacore.com>, Gerd Hoffmann <kraxel@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Andreas_F=c3=a4rber?=
+	<afaerber@suse.de>, Artyom Tarasenko <atar4qemu@gmail.com>,
+	Richard Henderson <rth@twiddle.net>
+References: <20190503112654.4393-1-laurent@vivier.eu>
+	<80fb3313-239a-5828-94fa-d27137bfcb05@vivier.eu>
+	<CAFEAcA_y24gpugttDTR-QrJ0fA7JCQeC0XXsR6pjm2rQ19rfCA@mail.gmail.com>
+	<CAFEAcA9ZRSxPK17Zgx0WuhvjyVATL5-0Mp7LvBtv5O4+UGRVyg@mail.gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <2ada4cde-cece-4855-8499-90183a30fb0c@vivier.eu>
+Date: Thu, 9 May 2019 10:58:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9ZRSxPK17Zgx0WuhvjyVATL5-0Mp7LvBtv5O4+UGRVyg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:hD//g/G0xO7zOIplj7ylmP/XovAfqD6TemsDEQUCDjpoQry5z69
+	hVtBCxW6ALlSSgw4SI+Y17NKgQp1tjK4I5gXW14QggzSRVWOnZnpsx6uXHMS68HhyiCgHIz
+	nCxJlD1aL47RoABSDg4Qa7LolzMlBET2DJ/qJwnO3xtuMhCNd3/J1dJ/HN1tePWVUe53kYd
+	X9pCmhKzb9z+9GC0u+Epw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:lSlFZALYAOw=:UxjWZCKLPPQ4oHRl83T5T7
+	NaVAAN+XExsc3IilnmXW2jE7SjDuPYUjtyCnTWDTk2M0iWGE886TgxN1ESntg2TI3ldjX88MZ
+	kFBd+idAy9ektmhNPy8UM2fCm3o11mdglN0yrVG79moMEmbJkAD7+BXit/0eaOZqveSVQoWog
+	Q8rkcMo+g11JQB7ex8ss5QyeDk8aHv7p0u62nMx9wcTZYvu534v9s50CbSTLV8Bg+a94UDPMH
+	frojwnXTm6kP1CSEx4nk+XC+mqORQs1xI3YTABw95lGWcRePc/WkORiaII/gwvPy5fd2zWKCg
+	GReYeppKejgUoCesG8fTw5oJyY1DfRFLAkmgt4mnKoUEoTvILO4h48EJrKC8c2Li+JmnfWRQl
+	REFZEQgjuaSWS+6czwaZO+Zy7AODX4J8Owdp4JQDEkGF/rIo+KuZ2mXdDTsTIEF80QzSB+Rjm
+	WY6Fk29sV5zhVXKPmPAfDeqnMkCB6uji/ogbW0Sajaj1FgqtHW4jDmTIKohVwActaDxPQYp61
+	ta3oMD6PpGdLBXCN08AXUdS4+V6YOn2lyLH5jX+XoYTVfnJjOkbqsLcxfdeSqCcpw+/JwcB4c
+	EtGXAokvVWJ/fQLlva0c59fDSltunlvtUyqotNHwTQ0KshQsMAk6gAHEEXspINx3Do399RKwq
+	MGwu6F1esK/DVzTNiAFQ+ZQ1t3JvcbTulC/PNUg1ygIXhWv5w0sMNRhNm8IMZJsCQs50fqhQ7
+	sXzfM0Cq3dEMZ49O5d4/etjASP0ICwNTCIHTZedk2f+zGJME3HAo+FDlfmU=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.227.126.134
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL v2 00/12] Trivial branch
+ patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -84,22 +70,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 May 2019 08:53:34 -0000
+X-List-Received-Date: Thu, 09 May 2019 08:58:50 -0000
 
-On Thu, 9 May 2019 at 09:32, Markus Armbruster <armbru@redhat.com> wrote:
->
-> Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
-> > I couldn't replicate the bug with access to my s390 account so I think
-> > it might be existing build artefact related which is odd.
->
-> Any ideas on how to debug this further?
+On 09/05/2019 10:51, Peter Maydell wrote:
+> On Tue, 7 May 2019 at 21:48, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>
+>> On Tue, 7 May 2019 at 20:10, Laurent Vivier <laurent@vivier.eu> wrote:
+>>>
+>>> Ping ?
+>>
+>> This is in my queue to process, but there are still a bunch of
+>> other pullreqs in the queue too; I am working through them.
+> 
+> Wait, I'm confused now. Looking back through my emails you
+> said "Forget this series, the send has been aborted for an
+> unknown reason.". So should I be applying something ?
 
-It's consistently failed for me both times I've tried
-to merge the pullreq, on both s390 and ppc (which is
-doing a straightforward 'git merge, then do an incremental
-build out-of-tree'). Alex has access to the s390 box,
-and there's a ppc box in the gcc compile farm...
+Yes, it's why I pinged.
 
-thanks
--- PMM
+I sent the v2 three times because the sent was aborted for an known 
+reason two times. The third is the good one.
+
+You must apply this series.
+
+I can send a v3 if your prefer.
+
+Thanks,
+Laurent
 
