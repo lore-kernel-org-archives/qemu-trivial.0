@@ -1,63 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hOfzc-0002Dn-0j
-	for mharc-qemu-trivial@gnu.org; Thu, 09 May 2019 06:09:36 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:39981)
+	id 1hOjF4-0002yg-0k
+	for mharc-qemu-trivial@gnu.org; Thu, 09 May 2019 09:37:46 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51316)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hOfzZ-0002CF-A0
-	for qemu-trivial@nongnu.org; Thu, 09 May 2019 06:09:34 -0400
+	(envelope-from <sgarzare@redhat.com>) id 1hOjF1-0002uw-Qf
+	for qemu-trivial@nongnu.org; Thu, 09 May 2019 09:37:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hOfzY-0001lb-FR
-	for qemu-trivial@nongnu.org; Thu, 09 May 2019 06:09:33 -0400
-Received: from mail-wm1-f41.google.com ([209.85.128.41]:52171)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hOfzY-0001lH-AM
-	for qemu-trivial@nongnu.org; Thu, 09 May 2019 06:09:32 -0400
-Received: by mail-wm1-f41.google.com with SMTP id o189so2524028wmb.1
-	for <qemu-trivial@nongnu.org>; Thu, 09 May 2019 03:09:32 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=3BicAukpMKaKuEWZ1ijQDw/rRr87otZDmaqoSFNoo/g=;
-	b=CEQsGbFLhndb0hSjsku5uxeD03uXUeW6tEqkWNYSEAhoQ92cGRdmrJ3/rdvZdUgJcq
-	5koNuUGu9oPt758gLZ0YCAl1NcOo5+jpjKOG7+DyykFgrws6ylvl2J4Pvae/+OpHu1eY
-	vrWxja7qaQMJeV9enEIyfVzPlmiGvEUBTLgxdpqzJ7/RoVK1zg6d6g0rA7l1rjGqhdqq
-	pAc6zzt2Vw68tdynG8cSNh0EnxCgG7dD9ZWXDuvj7s9GcSrO4dCjHll/oY7xqPtfsUB7
-	/RsnsAzdBYLfCPrW9KnVgxtzgDPdyC5DeYOTkI422WogpePjmxBU1u45l56QSrh3joJv
-	Axcw==
-X-Gm-Message-State: APjAAAXrZiNaup2DpVf5lOB4ogvOc0xl60Q8roQDsqEmRCPqmmqm4pK2
-	SP8zMQC4q/88a4lbu6zd/2Mwb5yY0IY=
-X-Google-Smtp-Source: APXvYqzA+NvhSavVykjoxpahuiAtzHmZLHsSVOJv763cam9Nv6v4/P9WYg0vBc2h2TkpB+EB1zb4pg==
-X-Received: by 2002:a1c:24c2:: with SMTP id k185mr2247244wmk.115.1557396570075;
-	Thu, 09 May 2019 03:09:30 -0700 (PDT)
-Received: from [192.168.1.37] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193]) by smtp.gmail.com with ESMTPSA id
-	c11sm1144234wrs.86.2019.05.09.03.09.28
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Thu, 09 May 2019 03:09:29 -0700 (PDT)
-To: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20190508150608.3311-1-thuth@redhat.com>
-	<6cb2ea74-b3f8-09f3-90cb-e3b8344e67bd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <7e7f01a6-f5a6-52bf-d4ce-c183257b0c72@redhat.com>
-Date: Thu, 9 May 2019 12:09:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(envelope-from <sgarzare@redhat.com>) id 1hOjF1-0001x6-1B
+	for qemu-trivial@nongnu.org; Thu, 09 May 2019 09:37:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48920)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sgarzare@redhat.com>)
+	id 1hOjEy-0001wU-Nn; Thu, 09 May 2019 09:37:40 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+	[10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 002D9307EA9F;
+	Thu,  9 May 2019 13:37:40 +0000 (UTC)
+Received: from steredhat.redhat.com (ovpn-116-227.ams2.redhat.com
+	[10.36.116.227])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5067217989;
+	Thu,  9 May 2019 13:37:38 +0000 (UTC)
+From: Stefano Garzarella <sgarzare@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Jan Kiszka <jan.kiszka@siemens.com>, qemu-trivial@nongnu.org,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	Jason Wang <jasowang@redhat.com>
+Date: Thu,  9 May 2019 15:37:37 +0200
+Message-Id: <20190509133737.242548-1-sgarzare@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <6cb2ea74-b3f8-09f3-90cb-e3b8344e67bd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.44]);
+	Thu, 09 May 2019 13:37:40 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.41
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] include/exec/poison: Mark
- TARGET_FMT_lu as poisoned, too
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] net/slirp: fix the error message when the
+ prefix len is invalid
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,18 +50,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 May 2019 10:09:34 -0000
+X-List-Received-Date: Thu, 09 May 2019 13:37:44 -0000
 
-On 5/9/19 11:10 AM, Paolo Bonzini wrote:
-> On 08/05/19 10:06, Thomas Huth wrote:
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  include/exec/poison.h | 1 +
->>  1 file changed, 1 insertion(+)
-> 
-> Queued, thanks.
+Add a missing parentheses at the end of the error message,
+when we have an invalid prefix len.
 
-Thomas already included it in his "qtests, copyright statement
-clarifications and misc patches" pull request.
+Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
+---
+ net/slirp.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/net/slirp.c b/net/slirp.c
+index 95934fb36d..0f4ae0abc0 100644
+--- a/net/slirp.c
++++ b/net/slirp.c
+@@ -498,7 +498,8 @@ static int net_slirp_init(NetClientState *peer, const=
+ char *model,
+     }
+     if (vprefix6_len < 0 || vprefix6_len > 126) {
+         error_setg(errp,
+-                   "Invalid prefix provided (prefix len must be in range=
+ 0-126");
++                   "Invalid prefix provided "
++                   "(prefix len must be in range 0-126)");
+         return -1;
+     }
+=20
+--=20
+2.20.1
+
 
