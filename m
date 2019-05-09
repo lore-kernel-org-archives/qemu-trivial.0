@@ -1,57 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hOjjG-0007OP-1b
-	for mharc-qemu-trivial@gnu.org; Thu, 09 May 2019 10:08:58 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57172)
+	id 1hOk1M-0006ra-5K
+	for mharc-qemu-trivial@gnu.org; Thu, 09 May 2019 10:27:40 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:33287)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sgarzare@redhat.com>) id 1hOjj9-0007ML-IQ
-	for qemu-trivial@nongnu.org; Thu, 09 May 2019 10:08:56 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hOk1K-0006qm-IP
+	for qemu-trivial@nongnu.org; Thu, 09 May 2019 10:27:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sgarzare@redhat.com>) id 1hOjj5-0008Di-R9
-	for qemu-trivial@nongnu.org; Thu, 09 May 2019 10:08:51 -0400
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:43078)
+	(envelope-from <peter.maydell@linaro.org>) id 1hOk1F-0001RX-3R
+	for qemu-trivial@nongnu.org; Thu, 09 May 2019 10:27:36 -0400
+Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e]:42127)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1hOjj3-0008CZ-PI
-	for qemu-trivial@nongnu.org; Thu, 09 May 2019 10:08:47 -0400
-Received: by mail-wr1-f68.google.com with SMTP id r4so3235674wro.10
-	for <qemu-trivial@nongnu.org>; Thu, 09 May 2019 07:08:44 -0700 (PDT)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hOk1B-0001Pv-Fm
+	for qemu-trivial@nongnu.org; Thu, 09 May 2019 10:27:31 -0400
+Received: by mail-ot1-x32e.google.com with SMTP id f23so2443505otl.9
+	for <qemu-trivial@nongnu.org>; Thu, 09 May 2019 07:27:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=6LJyyErWpleJNO3piNiSstINguX+qYjhgSHzysSFEsc=;
+	b=ymQNgseSTD7IsNFO6WmwM6s4AmETujq/N/Y4B14FGhnbmVkn04FG/XaqSwzrUwIRkG
+	riYC6qj629MvlWGzJOmVK+p5AYlRI1uZxzNbnf1vc9QGc0XtcWmsQeUh5RrxssGm0pJM
+	+rjY7W/Rb0bOEGCeDoNFSscTSXFuXQa4r9CIqoqq0AMjpfHCi8+ylsRc0QW4VBT9t/FL
+	r9cideb7t3cnQfU5LLx3Z0D4I0bxnVHCRiLZDKqUJhRNoBphVsVJw4nuJdB5guGJPpF7
+	yQCtSYuQw7yeTSV36aKE9AqTXHM1E7hrred2S9h+X68aItb41xpGnnFGppAixuCpR/N2
+	pCLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=oCgS1eH188Q5DGWyoi9EZ3m3kTi0+OF0meINDLHBpTc=;
-	b=hzClZGoYpvQof43uI/+BEroruWywoFnHzIT7EY4gC28j4Oc+c8uTdSUZJrZ1qBqXbu
-	VEKk6cbMCCdNT1pYJoaLRpVIZqsH5tsOCafSfvUI5Sfo9bttSSeKYVFi5GKqXJwndApz
-	wD49DfuR/bytk4fEgD6VqZiSwpIxJK5n40/BOvA7f3StFSRCj32H9jY8IdQvZP2TQfMG
-	toz2B+ZTzDzi7YVnKJx5ackfCZd6gLbvzQS3nW+uilRiqqxsl+EEy9e2qVC0UKGeyoyl
-	DCw2YKFMeNfkh7plzq0lofWH02BGkoQmYwGvb96hchPFtmf1jyTkiTElUVS/AFC/Efog
-	Ri5A==
-X-Gm-Message-State: APjAAAWHjgSELkLLqpCbYz3JAHSZYv7zaJgtjzVG3IQtoNjxEqQugUIc
-	Ng2mYGCtllUJ62wEagBY+Oinvg==
-X-Google-Smtp-Source: APXvYqx4RJTB3Tuj/ipNQMGsAOU+ZEe4/1z67vMK7T6BUqA53Zjjphs6hOuJ7npOkWKCy/GkA7cl+g==
-X-Received: by 2002:a5d:4704:: with SMTP id y4mr3191860wrq.86.1557410923162;
-	Thu, 09 May 2019 07:08:43 -0700 (PDT)
-Received: from steredhat (host151-251-static.12-87-b.business.telecomitalia.it.
-	[87.12.251.151]) by smtp.gmail.com with ESMTPSA id
-	v23sm1427455wmj.43.2019.05.09.07.08.42
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Thu, 09 May 2019 07:08:42 -0700 (PDT)
-Date: Thu, 9 May 2019 16:08:40 +0200
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: sathnaga@linux.vnet.ibm.com
-Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
-	clg@kaod.org, david@gibson.dropbear.id.au
-Message-ID: <20190509140840.oawbvmouw3x2wdok@steredhat>
-References: <20190509080750.21999-1-sathnaga@linux.vnet.ibm.com>
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=6LJyyErWpleJNO3piNiSstINguX+qYjhgSHzysSFEsc=;
+	b=aaRiMjVWTK00BxZD/cV9O/70UfOQZfpKCHge8oMkQHMJ5QJlRJ4LN/MDddbTUhoJE0
+	b4cKMtaT6kMGsUNWTcw1UTwrYJCp0IkDjtRud3+HCwiH8vZbwjJ0ZuuI4O3Ecg48DtFo
+	e5CFP2p+9LJ0jXgYHLhOgQG2dX3QAwUq2Oh/td/ksoeNEJ0E//2skclEbT7gFF0VzCsw
+	jEu0CXgd/1GdCMTQWZABE5JnhV5PoUjSwTdOo8M5dXRNLi4yXiQjNEffJhdfknnhUoCC
+	HGkg/UkSYAea0XOWOnDukyEMleAnIgG7+egjncWvLQRj+VzzPvH+6EX6vxGFTuFgqyLV
+	Yy1g==
+X-Gm-Message-State: APjAAAVrQIY5skO/u47pJ6uabtCA61sbcS6GKokCAEfbNvgGxfaDAtCJ
+	oTgNE2YOa22uzNq5NG8iKC5u6esW4UYsnF1DNiv5vQ==
+X-Google-Smtp-Source: APXvYqxug6RbA8/NU0haF7VjVXSRmFQPOGZ8qh/JQ6WJZ5XjtE0nZ1ThSxR62nx57W9goKHcTr7LWwa8zRtb5tMa8mI=
+X-Received: by 2002:a05:6830:1258:: with SMTP id
+	s24mr2744486otp.238.1557412047216; 
+	Thu, 09 May 2019 07:27:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190509080750.21999-1-sathnaga@linux.vnet.ibm.com>
-User-Agent: NeoMutt/20180716
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Fix typo on "info pic"
- monitor cmd output for xive
+References: <20190503112654.4393-1-laurent@vivier.eu>
+	<80fb3313-239a-5828-94fa-d27137bfcb05@vivier.eu>
+	<CAFEAcA_y24gpugttDTR-QrJ0fA7JCQeC0XXsR6pjm2rQ19rfCA@mail.gmail.com>
+	<CAFEAcA9ZRSxPK17Zgx0WuhvjyVATL5-0Mp7LvBtv5O4+UGRVyg@mail.gmail.com>
+	<2ada4cde-cece-4855-8499-90183a30fb0c@vivier.eu>
+In-Reply-To: <2ada4cde-cece-4855-8499-90183a30fb0c@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 9 May 2019 15:27:16 +0100
+Message-ID: <CAFEAcA9dyNWQ=Jes8xB5ZgmGhZ+c3ryiUOP2Uwe1GcWdDi-5DA@mail.gmail.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Jason Wang <jasowang@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>, 
+	Fabien Chouteau <chouteau@adacore.com>, Gerd Hoffmann <kraxel@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::32e
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL v2 00/12] Trivial branch
+ patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -63,24 +78,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 May 2019 14:08:56 -0000
+X-List-Received-Date: Thu, 09 May 2019 14:27:39 -0000
 
-On Thu, May 09, 2019 at 01:37:50PM +0530, sathnaga@linux.vnet.ibm.com wrote:
-> From: Satheesh Rajendran <sathnaga@linux.vnet.ibm.com>
-> 
-> Instead of LISN i.e "Logical Interrupt Source Number" as per
-> Xive PAPR document "info pic" prints as LSIN, let's fix it.
-> 
-> Signed-off-by: Satheesh Rajendran <sathnaga@linux.vnet.ibm.com>
-> ---
->  hw/intc/spapr_xive.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+On Thu, 9 May 2019 at 09:58, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> On 09/05/2019 10:51, Peter Maydell wrote:
+> > On Tue, 7 May 2019 at 21:48, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >>
+> >> On Tue, 7 May 2019 at 20:10, Laurent Vivier <laurent@vivier.eu> wrote:
+> >>>
+> >>> Ping ?
+> >>
+> >> This is in my queue to process, but there are still a bunch of
+> >> other pullreqs in the queue too; I am working through them.
+> >
+> > Wait, I'm confused now. Looking back through my emails you
+> > said "Forget this series, the send has been aborted for an
+> > unknown reason.". So should I be applying something ?
+>
+> Yes, it's why I pinged.
+>
+> I sent the v2 three times because the sent was aborted for an known
+> reason two times. The third is the good one.
+>
+> You must apply this series.
 
-CCing qemu-trivial
+Applied, thanks.
 
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-
-Thanks,
-Stefano
+-- PMM
 
