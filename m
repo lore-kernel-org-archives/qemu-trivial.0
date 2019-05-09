@@ -1,72 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hOk1M-0006ra-5K
-	for mharc-qemu-trivial@gnu.org; Thu, 09 May 2019 10:27:40 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:33287)
+	id 1hOkFt-00057V-62
+	for mharc-qemu-trivial@gnu.org; Thu, 09 May 2019 10:42:41 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:37413)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hOk1K-0006qm-IP
-	for qemu-trivial@nongnu.org; Thu, 09 May 2019 10:27:39 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hOkFq-00056e-AT
+	for qemu-trivial@nongnu.org; Thu, 09 May 2019 10:42:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <peter.maydell@linaro.org>) id 1hOk1F-0001RX-3R
-	for qemu-trivial@nongnu.org; Thu, 09 May 2019 10:27:36 -0400
-Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e]:42127)
+	(envelope-from <peter.maydell@linaro.org>) id 1hOkFo-00035f-Sj
+	for qemu-trivial@nongnu.org; Thu, 09 May 2019 10:42:38 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:33484)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
-	id 1hOk1B-0001Pv-Fm
-	for qemu-trivial@nongnu.org; Thu, 09 May 2019 10:27:31 -0400
-Received: by mail-ot1-x32e.google.com with SMTP id f23so2443505otl.9
-	for <qemu-trivial@nongnu.org>; Thu, 09 May 2019 07:27:28 -0700 (PDT)
+	id 1hOkFo-00035C-M5
+	for qemu-trivial@nongnu.org; Thu, 09 May 2019 10:42:36 -0400
+Received: by mail-ot1-x344.google.com with SMTP id 66so2535376otq.0
+	for <qemu-trivial@nongnu.org>; Thu, 09 May 2019 07:42:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
 	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-	:cc; bh=6LJyyErWpleJNO3piNiSstINguX+qYjhgSHzysSFEsc=;
-	b=ymQNgseSTD7IsNFO6WmwM6s4AmETujq/N/Y4B14FGhnbmVkn04FG/XaqSwzrUwIRkG
-	riYC6qj629MvlWGzJOmVK+p5AYlRI1uZxzNbnf1vc9QGc0XtcWmsQeUh5RrxssGm0pJM
-	+rjY7W/Rb0bOEGCeDoNFSscTSXFuXQa4r9CIqoqq0AMjpfHCi8+ylsRc0QW4VBT9t/FL
-	r9cideb7t3cnQfU5LLx3Z0D4I0bxnVHCRiLZDKqUJhRNoBphVsVJw4nuJdB5guGJPpF7
-	yQCtSYuQw7yeTSV36aKE9AqTXHM1E7hrred2S9h+X68aItb41xpGnnFGppAixuCpR/N2
-	pCLQ==
+	:cc; bh=O6m3IXwg6vCfQkt0Baoa8IrX9DyythtztZcrJxNudz8=;
+	b=fQGfaOXlnnR9/9VfJ3kGudEozxXcQGSib7oK7AVRt0WH0h2Is5snEjNiWcw5d6gRwG
+	DKu9S9oeJANdLqBwRw4BGVfdqm8YAeLN+N5b37HC3mxR4Zf+TXuyPH6bTEzlVD1I5hhA
+	yvVh7J4V0gRyELCcqikJAN+hVC0iitJ45yNJVvBgmtLLEazUoWnXxufRBBgjqwzXQ0bN
+	/jSiGLpPILIOUP1ojqA4YzEpnF2xmqfV5DqnGs0zGE2NEdC6v3Ndxc0mzqDMirO4Y/aE
+	8A9mPGf9egWrLMgPB6/zA1z0HefpEH682H3tIac5p3Y+TwDiGkSb5kBvbjAwGLbheJtR
+	SucA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
 	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
 	:message-id:subject:to:cc;
-	bh=6LJyyErWpleJNO3piNiSstINguX+qYjhgSHzysSFEsc=;
-	b=aaRiMjVWTK00BxZD/cV9O/70UfOQZfpKCHge8oMkQHMJ5QJlRJ4LN/MDddbTUhoJE0
-	b4cKMtaT6kMGsUNWTcw1UTwrYJCp0IkDjtRud3+HCwiH8vZbwjJ0ZuuI4O3Ecg48DtFo
-	e5CFP2p+9LJ0jXgYHLhOgQG2dX3QAwUq2Oh/td/ksoeNEJ0E//2skclEbT7gFF0VzCsw
-	jEu0CXgd/1GdCMTQWZABE5JnhV5PoUjSwTdOo8M5dXRNLi4yXiQjNEffJhdfknnhUoCC
-	HGkg/UkSYAea0XOWOnDukyEMleAnIgG7+egjncWvLQRj+VzzPvH+6EX6vxGFTuFgqyLV
-	Yy1g==
-X-Gm-Message-State: APjAAAVrQIY5skO/u47pJ6uabtCA61sbcS6GKokCAEfbNvgGxfaDAtCJ
-	oTgNE2YOa22uzNq5NG8iKC5u6esW4UYsnF1DNiv5vQ==
-X-Google-Smtp-Source: APXvYqxug6RbA8/NU0haF7VjVXSRmFQPOGZ8qh/JQ6WJZ5XjtE0nZ1ThSxR62nx57W9goKHcTr7LWwa8zRtb5tMa8mI=
-X-Received: by 2002:a05:6830:1258:: with SMTP id
-	s24mr2744486otp.238.1557412047216; 
-	Thu, 09 May 2019 07:27:27 -0700 (PDT)
+	bh=O6m3IXwg6vCfQkt0Baoa8IrX9DyythtztZcrJxNudz8=;
+	b=gqBCYUeaVA9QlJXsPHtDP5dtTLBYHcKM38lwU2b6PW3R7f5wYojFQ4V0ZUY41M2NyQ
+	NqpbDg2M0ShLRwrmNsLXDRMulMqK3eE5tNa4K4h+sEe6nonNf0NB+87ZfOBI6MPHdWkV
+	KC2onlhuopGRnl9xFfnj26IOMKRNHTcA+fXjPQ73OuYbPPciklLhmGSlYaHq/1+2quJB
+	lv+Nz5Hgro+ybx/WdRDl6L5Rk4EPPaMiV1M1H+m1WPgkip5DaKzROFuvxR4sbYVScAZq
+	+pqH90w6daNfQiOJAG3xQvnjVvIhhQYs1vZsnUeEqcui2WOzHVWS4LvYLQjvX9rMEqhP
+	kkxg==
+X-Gm-Message-State: APjAAAUBJrdWy268nvD0S4w9371EIQVJ7TpPz30mI+5T9SnSkqT1tz29
+	qie7L9+0Z81He3qwcmZjMFcFex6TIWPyWT2L35ApKg==
+X-Google-Smtp-Source: APXvYqzVlFuSy58r6XomBEhrCKT+r+i9pHkWZ/C3NhK++0FRzdD09Xh0RMXDCbxICZC2BJK0DjG9QGYbfs4pyJ7QS/c=
+X-Received: by 2002:a9d:404:: with SMTP id 4mr2755296otc.352.1557412956005;
+	Thu, 09 May 2019 07:42:36 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190503112654.4393-1-laurent@vivier.eu>
-	<80fb3313-239a-5828-94fa-d27137bfcb05@vivier.eu>
-	<CAFEAcA_y24gpugttDTR-QrJ0fA7JCQeC0XXsR6pjm2rQ19rfCA@mail.gmail.com>
-	<CAFEAcA9ZRSxPK17Zgx0WuhvjyVATL5-0Mp7LvBtv5O4+UGRVyg@mail.gmail.com>
-	<2ada4cde-cece-4855-8499-90183a30fb0c@vivier.eu>
-In-Reply-To: <2ada4cde-cece-4855-8499-90183a30fb0c@vivier.eu>
+References: <20190503082728.16485-1-ao2@ao2.it>
+	<20190503082728.16485-3-ao2@ao2.it>
+	<541bfc5c-0e45-58e6-f0b1-81e9b0c8881d@redhat.com>
+In-Reply-To: <541bfc5c-0e45-58e6-f0b1-81e9b0c8881d@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 May 2019 15:27:16 +0100
-Message-ID: <CAFEAcA9dyNWQ=Jes8xB5ZgmGhZ+c3ryiUOP2Uwe1GcWdDi-5DA@mail.gmail.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
-	QEMU Trivial <qemu-trivial@nongnu.org>, 
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Jason Wang <jasowang@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
-	Michael Roth <mdroth@linux.vnet.ibm.com>, 
-	Fabien Chouteau <chouteau@adacore.com>, Gerd Hoffmann <kraxel@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
+Date: Thu, 9 May 2019 15:42:25 +0100
+Message-ID: <CAFEAcA8An-KWOc3gOz2=45eCHCmUJEJw_bTrrCW6bYO23H8TPw@mail.gmail.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: Antonio Ospite <ao2@ao2.it>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Antonio Ospite <antonio.ospite@collabora.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
-X-Received-From: 2607:f8b0:4864:20::32e
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL v2 00/12] Trivial branch
- patches
+X-Received-From: 2607:f8b0:4864:20::344
+Subject: Re: [Qemu-trivial] [PATCH v2 2/2] configure: disallow spaces and
+ colons in source path and build path
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,32 +69,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 May 2019 14:27:39 -0000
+X-List-Received-Date: Thu, 09 May 2019 14:42:39 -0000
 
-On Thu, 9 May 2019 at 09:58, Laurent Vivier <laurent@vivier.eu> wrote:
+On Mon, 6 May 2019 at 18:27, Eric Blake <eblake@redhat.com> wrote:
 >
-> On 09/05/2019 10:51, Peter Maydell wrote:
-> > On Tue, 7 May 2019 at 21:48, Peter Maydell <peter.maydell@linaro.org> wrote:
-> >>
-> >> On Tue, 7 May 2019 at 20:10, Laurent Vivier <laurent@vivier.eu> wrote:
-> >>>
-> >>> Ping ?
-> >>
-> >> This is in my queue to process, but there are still a bunch of
-> >> other pullreqs in the queue too; I am working through them.
+> On 5/3/19 3:27 AM, Antonio Ospite wrote:
+> > From: Antonio Ospite <antonio.ospite@collabora.com>
 > >
-> > Wait, I'm confused now. Looking back through my emails you
-> > said "Forget this series, the send has been aborted for an
-> > unknown reason.". So should I be applying something ?
+> > The configure script breaks when the qemu source directory is in a path
+> > containing white spaces, in particular the list of targets is not
+> > correctly generated when calling "./configure --help" because of how the
+> > default_target_list variable is built.
+> >
+> > In addition to that, *building* qemu from a directory with spaces breaks
+> > some assumptions in the Makefiles, even if the original source path does
+> > not contain spaces like in the case of an out-of-tree build, or when
+> > symlinks are involved.
+> >
+> > To avoid these issues, refuse to run the configure script and the
+> > Makefile if there are spaces or colons in the source path or the build
+> > path, taking as inspiration what the kbuild system in linux does.
+> >
+> > Buglink: https://bugs.launchpad.net/qemu/+bug/1817345
+> >
+> > Signed-off-by: Antonio Ospite <antonio.ospite@collabora.com>
+> > ---
+> >  Makefile  | 4 ++++
+> >  configure | 6 ++++++
+> >  2 files changed, 10 insertions(+)
+> >
 >
-> Yes, it's why I pinged.
+> > +++ b/Makefile
+> > @@ -1,5 +1,9 @@
+> >  # Makefile for QEMU.
+> >
+> > +ifneq ($(words $(subst :, ,$(CURDIR))), 1)
+> > +  $(error main directory cannot contain spaces nor colons)
+> > +endif
+> > +
+> >  # Always point to the root of the build tree (needs GNU make).
+> >  BUILD_DIR=$(CURDIR)
+> >
+> > diff --git a/configure b/configure
+> > index 9832cbca5c..f7ad4381bd 100755
+> > --- a/configure
+> > +++ b/configure
+> > @@ -279,6 +279,12 @@ ld_has() {
+> >  # make source path absolute
+> >  source_path=$(cd "$(dirname -- "$0")"; pwd)
+> >
+> > +if printf "%s\n" "$source_path" | grep -q "[[:space:]:]" ||
+> > +  printf "%s\n" "$PWD" | grep -q "[[:space:]:]";
 >
-> I sent the v2 three times because the sent was aborted for an known
-> reason two times. The third is the good one.
+> For less typing and fewer processes, you could shorten this to:
 >
-> You must apply this series.
+> if printf %s\\n "$source_path" "$PWD" | grep -q "[[:space:]:]";
+>
+> but that's trivial enough for a maintainer to fold in if desired.
+>
+> Reviewed-by: Eric Blake <eblake@redhat.com>
 
-Applied, thanks.
+What tree is this going to go in via? I suggest the
+-trivial tree.
 
+thanks
 -- PMM
 
