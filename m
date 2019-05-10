@@ -1,47 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hP7nC-00023G-R6
-	for mharc-qemu-trivial@gnu.org; Fri, 10 May 2019 11:50:38 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34773)
+	id 1hP8Ll-0006AE-R9
+	for mharc-qemu-trivial@gnu.org; Fri, 10 May 2019 12:26:21 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:42715)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1hP7n9-000219-S0
-	for qemu-trivial@nongnu.org; Fri, 10 May 2019 11:50:36 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hP8Lg-00067h-Pj
+	for qemu-trivial@nongnu.org; Fri, 10 May 2019 12:26:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <berrange@redhat.com>) id 1hP7n8-0005pw-7X
-	for qemu-trivial@nongnu.org; Fri, 10 May 2019 11:50:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36478)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <berrange@redhat.com>)
-	id 1hP7n4-0005gt-JW; Fri, 10 May 2019 11:50:31 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C851788309;
-	Fri, 10 May 2019 15:50:28 +0000 (UTC)
-Received: from redhat.com (ovpn-112-68.ams2.redhat.com [10.36.112.68])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A30DD5C69A;
-	Fri, 10 May 2019 15:50:27 +0000 (UTC)
-Date: Fri, 10 May 2019 16:50:24 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Message-ID: <20190510155024.GA19218@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <1550073299-3647-1-git-send-email-thuth@redhat.com>
+	(envelope-from <peter.maydell@linaro.org>) id 1hP8Le-0001kY-W1
+	for qemu-trivial@nongnu.org; Fri, 10 May 2019 12:26:16 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:41779)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hP8Le-0001a9-RO
+	for qemu-trivial@nongnu.org; Fri, 10 May 2019 12:26:14 -0400
+Received: by mail-ot1-x344.google.com with SMTP id g8so6088834otl.8
+	for <qemu-trivial@nongnu.org>; Fri, 10 May 2019 09:26:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=sPfzql6A26Y7SGTwPH39Gt8yMgNkTb9ZzSWCy7itmZk=;
+	b=GCfhutfp51798vAFOvO7Zy3D1XU5IoY9JwH5ezuclDJcECt6Ld+bufQt/u1I0OUcwd
+	FvwCVy/TCqJhd7YsCTIszh2DPgSAiwdS2LtysJlZTTDikG8BaKkxb5Sm1QAw19oUl5yc
+	WTpPSqqOYauAnRRob8KUBRVNhM89vcOMTft0ML0GfEe9NHZCHcbwNyMqvRKGt35r9lV+
+	AMFigQbiy3kwI9rbhpKMt5ulnGnWpdNVuBOJBCbhZgAOgYTHj/qdaR8q074T2WeSIAsN
+	p2yW5ckleUW1wkGThIXbE3bFVFgtZOkCpwCVI00lGuKNECVbxGONNiOJ+GTmUQZz+v74
+	/u/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=sPfzql6A26Y7SGTwPH39Gt8yMgNkTb9ZzSWCy7itmZk=;
+	b=P0TKNbaG9yl1aEJEKKmSw9VtVGoTiqhYyQTDzSeHrQj7l+iBpJqy37zfUDlymAyj6r
+	WvJSpURGlfi47dEq5uqt6ptEVSrqCTaappCr5mpr/2sx81GmfU94TXRziJto/+76wdcg
+	tUpg6l9ciR0mxph0aTnQNhcE3GnT5yct3/6zt2cyZnMpcAqTtp5TzxGvlTg4XoFQI3nD
+	FgJm8Q60QC5lwyyseuPXYgqHjegVofpgKuvMc5f7lTWfAUP7zyGhwG9NYDM0U0ZWuyZ9
+	wbfwS/4QD1kGhCMbt29xEBW8WniK1Gm1R2Hgf6UvXWHHYKnjiUu8USiJ91PBCEQoZUDN
+	SLiw==
+X-Gm-Message-State: APjAAAXp0ry1C4q3fEUrieQw3HO3E/vk0ew0bbiCP+UjPZfY5m2zUXNr
+	j7r455ms+j8vTXF1A4VvyYB3k3zQMpRKPeP9U6ZY8A==
+X-Google-Smtp-Source: APXvYqyG1UinZ5zsgWCI4aoeysMgy9qNIN/HkXdKKDs0hQeA/iHpnsrFosQl+0jArC32IOqdT79ICfb1DxRvFYGYj/k=
+X-Received: by 2002:a9d:61c6:: with SMTP id h6mr7368004otk.316.1557505568390; 
+	Fri, 10 May 2019 09:26:08 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <1550073299-3647-1-git-send-email-thuth@redhat.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Fri, 10 May 2019 15:50:28 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] crypto: Fix LGPL information in the file
- headers
+References: <20190502185835.15185-1-laurent@vivier.eu>
+	<CAFEAcA9-hAU5dxUmSWtbvrPEXE-nCP1uLvLbOby-_EXZ27o+8g@mail.gmail.com>
+	<87sgtv4wjo.fsf@zen.linaroharston> <87imulaude.fsf@dusky.pond.sub.org>
+	<87tve53sy7.fsf@zen.linaroharston> <87zhnw58pa.fsf@dusky.pond.sub.org>
+	<CAFEAcA-s0UYr0VW3ccG07r=BiGCVtDHkRb6yW0X_ev-zAkOxvw@mail.gmail.com>
+	<87o94amjud.fsf@dusky.pond.sub.org>
+In-Reply-To: <87o94amjud.fsf@dusky.pond.sub.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 10 May 2019 17:25:57 +0100
+Message-ID: <CAFEAcA8h8ry3XiT1dUOZknTYK78_W=_b3R4CzfFNnS_Z1G9Bww@mail.gmail.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>, 
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Viktor Prutyanov <viktor.prutyanov@phystech.edu>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
+	Jason Wang <jasowang@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+	Laurent Vivier <laurent@vivier.eu>,
+	Fabien Chouteau <chouteau@adacore.com>, 
+	QEMU Developers <qemu-devel@nongnu.org>,
+	Aurelien Jarno <aurelien@aurel32.net>, Gerd Hoffmann <kraxel@redhat.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	=?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Michael Roth <mdroth@linux.vnet.ibm.com>,
+	Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::344
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 00/13] Trivial branch patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,80 +84,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 May 2019 15:50:37 -0000
+X-List-Received-Date: Fri, 10 May 2019 16:26:20 -0000
 
-On Wed, Feb 13, 2019 at 04:54:59PM +0100, Thomas Huth wrote:
-> It's either "GNU *Library* General Public License version 2" or "GNU
-> Lesser General Public License version *2.1*", but there was no "version
-> 2.0" of the "Lesser" license. So assume that version 2.1 is meant here.
->=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  crypto/block-luks.c           | 2 +-
->  crypto/block-luks.h           | 2 +-
->  crypto/block-qcow.c           | 2 +-
->  crypto/block-qcow.h           | 2 +-
->  crypto/block.c                | 2 +-
->  crypto/blockpriv.h            | 2 +-
->  crypto/cipher-builtin.c       | 2 +-
->  crypto/cipher-gcrypt.c        | 2 +-
->  crypto/cipher-nettle.c        | 2 +-
->  crypto/cipher.c               | 2 +-
->  crypto/hash-gcrypt.c          | 2 +-
->  crypto/hash-glib.c            | 2 +-
->  crypto/hash-nettle.c          | 2 +-
->  crypto/hash.c                 | 2 +-
->  crypto/init.c                 | 2 +-
->  crypto/ivgen-essiv.c          | 2 +-
->  crypto/ivgen-essiv.h          | 2 +-
->  crypto/ivgen-plain.c          | 2 +-
->  crypto/ivgen-plain.h          | 2 +-
->  crypto/ivgen-plain64.c        | 2 +-
->  crypto/ivgen-plain64.h        | 2 +-
->  crypto/ivgen.c                | 2 +-
->  crypto/ivgenpriv.h            | 2 +-
->  crypto/pbkdf-gcrypt.c         | 2 +-
->  crypto/pbkdf-nettle.c         | 2 +-
->  crypto/pbkdf-stub.c           | 2 +-
->  crypto/pbkdf.c                | 2 +-
->  crypto/random-gcrypt.c        | 2 +-
->  crypto/random-gnutls.c        | 2 +-
->  crypto/random-platform.c      | 2 +-
->  crypto/secret.c               | 2 +-
->  crypto/tlscreds.c             | 2 +-
->  crypto/tlscredsanon.c         | 2 +-
->  crypto/tlscredspriv.h         | 2 +-
->  crypto/tlscredspsk.c          | 2 +-
->  crypto/tlscredsx509.c         | 2 +-
->  crypto/tlssession.c           | 2 +-
->  crypto/xts.c                  | 2 +-
->  include/crypto/block.h        | 2 +-
->  include/crypto/cipher.h       | 2 +-
->  include/crypto/hash.h         | 2 +-
->  include/crypto/init.h         | 2 +-
->  include/crypto/ivgen.h        | 2 +-
->  include/crypto/pbkdf.h        | 2 +-
->  include/crypto/random.h       | 2 +-
->  include/crypto/secret.h       | 2 +-
->  include/crypto/tlscreds.h     | 2 +-
->  include/crypto/tlscredsanon.h | 2 +-
->  include/crypto/tlscredspsk.h  | 2 +-
->  include/crypto/tlscredsx509.h | 2 +-
->  include/crypto/tlssession.h   | 2 +-
->  include/crypto/xts.h          | 2 +-
->  52 files changed, 52 insertions(+), 52 deletions(-)
+On Fri, 10 May 2019 at 16:05, Markus Armbruster <armbru@redhat.com> wrote:
+> I tried to reproduce on a ppc64 box in the gcc compile farm, no dice.  I
+> double-checked config-host.h has #define HOST_WORDS_BIGENDIAN 1.
 
-Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+On s390:
+ git clone git://git.qemu.org/qemu.git qemu-tmp
+ cd qemu-tmp
+ mkdir build
+ cd build
+ ../configure
+ make -j3
+ make -j3 check V=1  # passes
+ wget https://patchew.org/QEMU/20190313162812.8885-1-armbru@redhat.com/mbox
+ git am mbox
+ make -j3
+ make -j3 check V=1 # fails
 
-I'll queue this.
-
-Regards,
-Daniel
---=20
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
-ge :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.c=
-om :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
-ge :|
+thanks
+-- PMM
 
