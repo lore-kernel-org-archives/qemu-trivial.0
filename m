@@ -1,43 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hQDK7-0005QQ-SJ
-	for mharc-qemu-trivial@gnu.org; Mon, 13 May 2019 11:57:07 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:56393)
+	id 1hQDte-0004nI-DA
+	for mharc-qemu-trivial@gnu.org; Mon, 13 May 2019 12:33:50 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36005)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hQDK5-00057T-8v
-	for qemu-trivial@nongnu.org; Mon, 13 May 2019 11:57:06 -0400
+	(envelope-from <eblake@redhat.com>) id 1hQDtb-0004lh-NW
+	for qemu-trivial@nongnu.org; Mon, 13 May 2019 12:33:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hQDBO-0008B6-OL
-	for qemu-trivial@nongnu.org; Mon, 13 May 2019 11:48:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48358)
+	(envelope-from <eblake@redhat.com>) id 1hQDta-0002a4-K9
+	for qemu-trivial@nongnu.org; Mon, 13 May 2019 12:33:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34592)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hQDBN-00089x-K3; Mon, 13 May 2019 11:48:05 -0400
+	(Exim 4.71) (envelope-from <eblake@redhat.com>)
+	id 1hQDoi-0006wj-HZ; Mon, 13 May 2019 12:28:44 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
 	[10.5.11.23])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 13541308A968;
-	Mon, 13 May 2019 15:48:04 +0000 (UTC)
-Received: from thuth.com (ovpn-116-122.ams2.redhat.com [10.36.116.122])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EB87819C6A;
-	Mon, 13 May 2019 15:48:02 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
+	by mx1.redhat.com (Postfix) with ESMTPS id 5247F3092667;
+	Mon, 13 May 2019 16:28:43 +0000 (UTC)
+Received: from [10.3.116.15] (ovpn-116-15.phx2.redhat.com [10.3.116.15])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 7E8EE19C67;
+	Mon, 13 May 2019 16:28:42 +0000 (UTC)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
 	Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-trivial@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Date: Mon, 13 May 2019 17:47:59 +0200
-Message-Id: <20190513154759.24973-1-thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+References: <20190513154759.24973-1-thuth@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=eblake@redhat.com; keydata=
+	xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
+	xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
+	TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
+	GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
+	sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
+	AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
+	CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
+	RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
+	wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
+	Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
+	gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
+	pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
+	zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
+	pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
+	3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
+	NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
+	cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
+	SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
+	I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
+	mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
+	Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
+	2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
+Organization: Red Hat, Inc.
+Message-ID: <3a589750-737c-23b4-0334-9eeb03441726@redhat.com>
+Date: Mon, 13 May 2019 11:28:41 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
+In-Reply-To: <20190513154759.24973-1-thuth@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature";
+	boundary="HjPYksuTRJjVDvUJqFEoKjb1f0MZnpY8g"
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Mon, 13 May 2019 15:48:04 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.43]);
+	Mon, 13 May 2019 16:28:43 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] tests/libqtest: Fix description of
- qtest_vinitf() and qtest_initf()
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/libqtest: Fix
+ description of qtest_vinitf() and qtest_initf()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -49,41 +79,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 May 2019 15:57:06 -0000
+X-List-Received-Date: Mon, 13 May 2019 16:33:48 -0000
 
-These functions are convenience wrappers of qtest_init() and not of
-qtest_start().
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--HjPYksuTRJjVDvUJqFEoKjb1f0MZnpY8g
+Content-Type: multipart/mixed; boundary="eAuwSOrgqFmhAU24seZSC25jrN3LZfuIw";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Laurent Vivier <lvivier@redhat.com>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <3a589750-737c-23b4-0334-9eeb03441726@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH] tests/libqtest: Fix description of
+ qtest_vinitf() and qtest_initf()
+References: <20190513154759.24973-1-thuth@redhat.com>
+In-Reply-To: <20190513154759.24973-1-thuth@redhat.com>
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- tests/libqtest.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+--eAuwSOrgqFmhAU24seZSC25jrN3LZfuIw
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/tests/libqtest.h b/tests/libqtest.h
-index 3f7675fcf0..a98ea15b7d 100644
---- a/tests/libqtest.h
-+++ b/tests/libqtest.h
-@@ -29,7 +29,7 @@ extern QTestState *global_qtest;
-  * @fmt...: Format for creating other arguments to pass to QEMU, formatt=
-ed
-  * like sprintf().
-  *
-- * Convenience wrapper around qtest_start().
-+ * Convenience wrapper around qtest_init().
-  *
-  * Returns: #QTestState instance.
-  */
-@@ -41,7 +41,7 @@ QTestState *qtest_initf(const char *fmt, ...) GCC_FMT_A=
-TTR(1, 2);
-  * like vsprintf().
-  * @ap: Format arguments.
-  *
-- * Convenience wrapper around qtest_start().
-+ * Convenience wrapper around qtest_init().
-  *
-  * Returns: #QTestState instance.
-  */
+On 5/13/19 10:47 AM, Thomas Huth wrote:
+> These functions are convenience wrappers of qtest_init() and not of
+> qtest_start().
+>=20
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  tests/libqtest.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
 --=20
-2.21.0
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
+
+--eAuwSOrgqFmhAU24seZSC25jrN3LZfuIw--
+
+--HjPYksuTRJjVDvUJqFEoKjb1f0MZnpY8g
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAlzZmzkACgkQp6FrSiUn
+Q2rRdwf+NBy/+Te1WHMnCtutJHKFF4Jj59Dx9wrYz7mXamHsli0KVniLGktXvehG
+6J8xQHt3nfO0BwLHTStH8667bXjm6fMzdxVExaAw78g+vID0cN05EA5se70ui9QO
+DLi3J8A5FVxqpKuKmdSvESM7xbSTE+hiq/wwYg0feZIxhzHA/NRZ1n5kupiLQP80
+j+9n6bsOxdutEY/CvuRpMp8E2C3q6TFT3VJAr4HiyAOe1YQeqwe5JdTPHhlK569B
+X3+uRiMUn+a50Fk6XLIamaNOx+K521KrSSeGhTD2w8/7ZR2BSYrwwKXsnqYwSzOH
+pMDwFE763S2E1UnubiMBgX0sTU1KCA==
+=nnYF
+-----END PGP SIGNATURE-----
+
+--HjPYksuTRJjVDvUJqFEoKjb1f0MZnpY8g--
 
