@@ -1,32 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hQUrU-0004u7-9C
-	for mharc-qemu-trivial@gnu.org; Tue, 14 May 2019 06:40:44 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:35597)
+	id 1hQUuk-0007Yw-QU
+	for mharc-qemu-trivial@gnu.org; Tue, 14 May 2019 06:44:06 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36968)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hQUrS-0004sa-Vw
-	for qemu-trivial@nongnu.org; Tue, 14 May 2019 06:40:43 -0400
+	(envelope-from <thuth@redhat.com>) id 1hQUuj-0007Wq-0t
+	for qemu-trivial@nongnu.org; Tue, 14 May 2019 06:44:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hQUrS-0008AF-0o
-	for qemu-trivial@nongnu.org; Tue, 14 May 2019 06:40:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56896)
+	(envelope-from <thuth@redhat.com>) id 1hQUui-0004ew-1p
+	for qemu-trivial@nongnu.org; Tue, 14 May 2019 06:44:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50174)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hQUrN-00080I-Gp; Tue, 14 May 2019 06:40:37 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
-	[10.5.11.12])
+	id 1hQUuU-0004Gw-Md; Tue, 14 May 2019 06:43:54 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id BA5F959468;
-	Tue, 14 May 2019 10:40:36 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2C1103001802;
+	Tue, 14 May 2019 10:43:45 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-85.ams2.redhat.com [10.36.116.85])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2300661995;
-	Tue, 14 May 2019 10:40:32 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E21D55C578;
+	Tue, 14 May 2019 10:43:39 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 References: <20190514100019.13263-1-thuth@redhat.com>
-	<20190514100019.13263-3-thuth@redhat.com>
-	<aabf08dd-0c9f-63dd-1c49-f31f6c150392@redhat.com>
+	<20190514100019.13263-5-thuth@redhat.com>
+	<CAFEAcA_WVjE5hZh0EibxiqV+NtqY0VsMPs-tqC3Y=GRCbvhEpg@mail.gmail.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -72,23 +74,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
 	rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
 	WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <6b38c9ea-e022-eac8-d19f-39f17956da49@redhat.com>
-Date: Tue, 14 May 2019 12:40:32 +0200
+Message-ID: <afef0851-9f02-bdf9-2fce-cd53136411d3@redhat.com>
+Date: Tue, 14 May 2019 12:43:38 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <aabf08dd-0c9f-63dd-1c49-f31f6c150392@redhat.com>
+In-Reply-To: <CAFEAcA_WVjE5hZh0EibxiqV+NtqY0VsMPs-tqC3Y=GRCbvhEpg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Tue, 14 May 2019 10:40:36 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+	(mx1.redhat.com [10.5.110.40]);
+	Tue, 14 May 2019 10:43:45 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH 2/4] hw/core: Add a config switch for the
- "or-irq" device
+Subject: Re: [Qemu-trivial] [Qemu-arm] [PATCH 4/4] hw/misc: Add a config
+ switch for the "unimplemented" device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -100,48 +102,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 May 2019 10:40:44 -0000
+X-List-Received-Date: Tue, 14 May 2019 10:44:06 -0000
 
-On 14/05/2019 12.35, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 5/14/19 12:00 PM, Thomas Huth wrote:
->> The "or-irq" device is only used by certain machines. Let's add
->> a proper config switch for it so that it only gets compiled when we
->> really need it.
+On 14/05/2019 12.08, Peter Maydell wrote:
+> On Tue, 14 May 2019 at 11:02, Thomas Huth <thuth@redhat.com> wrote:
+>>
+>> The device is only used by certain Arm boards. Now that we have
+>> fine-grained Kconfig for these machines, too, we can enable the
+>> "unimplemented" devices only for the machines that really need it.
 >>
 >> Signed-off-by: Thomas Huth <thuth@redhat.com>
 >> ---
->>  hw/arm/Kconfig        | 2 ++
->>  hw/core/Kconfig       | 3 +++
->>  hw/core/Makefile.objs | 2 +-
->>  hw/pci-host/Kconfig   | 3 ++-
->>  4 files changed, 8 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->> index af8cffde9c..0bb3bbe9d3 100644
->> --- a/hw/arm/Kconfig
->> +++ b/hw/arm/Kconfig
->> @@ -277,6 +277,7 @@ config RASPI
->>  config STM32F205_SOC
->>      bool
->>      select ARM_V7M
->> +    select OR_IRQ
->>      select STM32F2XX_TIMER
->>      select STM32F2XX_USART
->>      select STM32F2XX_SYSCFG
->> @@ -424,6 +425,7 @@ config ARMSSE
->>      select IOTKIT_SECCTL
->>      select IOTKIT_SYSCTL
->>      select IOTKIT_SYSINFO
->> +    select OR_IRQ
->>      select TZ_MPC
->>      select TZ_MSC
->>      select TZ_PPC
->=20
-> You missed the MPS2* boards
+>>  hw/arm/Kconfig        | 9 +++++++++
+>>  hw/microblaze/Kconfig | 1 +
+>>  hw/misc/Kconfig       | 3 +++
+>>  hw/misc/Makefile.objs | 2 +-
+>>  hw/sparc64/Kconfig    | 1 +
+>>  5 files changed, 15 insertions(+), 1 deletion(-)
+> 
+> Commit message says "only Arm" but code change changes
+> sparc and microblaze Kconfigs too :-)
 
-No, the MPS2 boards "select ARMSSE", so this gets added via the above
-hunk there. But as mentioned in the reply to Peter, it's likely better
-to add it there, too.
+D'oh! ... I started with grep'ing for TYPE_UNIMPLEMENTED_DEVICE and only
+saw Arm boards there. When I tested my patches, I noticed that I must
+also add the machines that use the create_unimplemented_device()
+function, but apparently forgot to fix up the commit message
+accordingly. I'll fix it in v2.
 
  Thomas
 
