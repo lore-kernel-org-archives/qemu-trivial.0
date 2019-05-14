@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hQUF4-0006u9-Fn
-	for mharc-qemu-trivial@gnu.org; Tue, 14 May 2019 06:01:02 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:49356)
+	id 1hQUF8-0006wp-MM
+	for mharc-qemu-trivial@gnu.org; Tue, 14 May 2019 06:01:06 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:49389)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hQUEy-0006lu-Ts
-	for qemu-trivial@nongnu.org; Tue, 14 May 2019 06:01:01 -0400
+	(envelope-from <thuth@redhat.com>) id 1hQUF5-0006va-T2
+	for qemu-trivial@nongnu.org; Tue, 14 May 2019 06:01:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <thuth@redhat.com>) id 1hQUEu-000499-22
-	for qemu-trivial@nongnu.org; Tue, 14 May 2019 06:00:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44300)
+	(envelope-from <thuth@redhat.com>) id 1hQUEz-0004ST-W1
+	for qemu-trivial@nongnu.org; Tue, 14 May 2019 06:01:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46548)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
 	(Exim 4.71) (envelope-from <thuth@redhat.com>)
-	id 1hQUEa-0003PZ-QA; Tue, 14 May 2019 06:00:32 -0400
+	id 1hQUEj-0003sa-SW; Tue, 14 May 2019 06:00:42 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
 	[10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 16A29883B8;
-	Tue, 14 May 2019 10:00:32 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2BF0889C3A;
+	Tue, 14 May 2019 10:00:41 +0000 (UTC)
 Received: from thuth.com (ovpn-116-85.ams2.redhat.com [10.36.116.85])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 2790E5C207;
-	Tue, 14 May 2019 10:00:27 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 621545C54A;
+	Tue, 14 May 2019 10:00:36 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
 	qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	qemu-trivial@nongnu.org,
 	philmd@redhat.com
-Date: Tue, 14 May 2019 12:00:16 +0200
-Message-Id: <20190514100019.13263-2-thuth@redhat.com>
+Date: Tue, 14 May 2019 12:00:18 +0200
+Message-Id: <20190514100019.13263-4-thuth@redhat.com>
 In-Reply-To: <20190514100019.13263-1-thuth@redhat.com>
 References: <20190514100019.13263-1-thuth@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Tue, 14 May 2019 10:00:32 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.27]);
+	Tue, 14 May 2019 10:00:41 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH 1/4] hw/core: Add a config switch for the
- "register" device
+Subject: [Qemu-trivial] [PATCH 3/4] hw/core: Add a config switch for the
+ "split-irq" device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,68 +52,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 May 2019 10:01:01 -0000
+X-List-Received-Date: Tue, 14 May 2019 10:01:05 -0000
 
-The "register" device is only used by certain machines. Let's add
-a proper config switch for it so that it only gets compiled when we
-really need it.
+The "split-irq" device is currently only used by machines that use
+CONFIG_ARMSSE. Let's add a proper CONFIG_SPLIT_IRQ switch for this
+so that it only gets compiled when we really need it.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
+ hw/arm/Kconfig        | 1 +
  hw/core/Kconfig       | 3 +++
  hw/core/Makefile.objs | 2 +-
- hw/dma/Kconfig        | 1 +
- hw/timer/Kconfig      | 1 +
- 4 files changed, 6 insertions(+), 1 deletion(-)
+ 3 files changed, 5 insertions(+), 1 deletion(-)
 
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 0bb3bbe9d3..ac1e94f63a 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -426,6 +426,7 @@ config ARMSSE
+     select IOTKIT_SYSCTL
+     select IOTKIT_SYSINFO
+     select OR_IRQ
++    select SPLIT_IRQ
+     select TZ_MPC
+     select TZ_MSC
+     select TZ_PPC
 diff --git a/hw/core/Kconfig b/hw/core/Kconfig
-index c2a1ae8122..d11920fcb3 100644
+index 984143456a..fffb3d62b2 100644
 --- a/hw/core/Kconfig
 +++ b/hw/core/Kconfig
-@@ -9,3 +9,6 @@ config FITLOADER
+@@ -15,3 +15,6 @@ config PLATFORM_BUS
 =20
- config PLATFORM_BUS
+ config REGISTER
      bool
 +
-+config REGISTER
++config SPLIT_IRQ
 +    bool
 diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
-index a799c83815..d493a051ee 100644
+index dd2c2ca812..d8c908da14 100644
 --- a/hw/core/Makefile.objs
 +++ b/hw/core/Makefile.objs
-@@ -16,7 +16,7 @@ common-obj-$(CONFIG_SOFTMMU) +=3D machine.o
- common-obj-$(CONFIG_SOFTMMU) +=3D loader.o
- common-obj-$(CONFIG_FITLOADER) +=3D loader-fit.o
+@@ -18,7 +18,7 @@ common-obj-$(CONFIG_FITLOADER) +=3D loader-fit.o
  common-obj-$(CONFIG_SOFTMMU) +=3D qdev-properties-system.o
--common-obj-$(CONFIG_SOFTMMU) +=3D register.o
-+common-obj-$(CONFIG_REGISTER) +=3D register.o
- common-obj-$(CONFIG_SOFTMMU) +=3D or-irq.o
- common-obj-$(CONFIG_SOFTMMU) +=3D split-irq.o
+ common-obj-$(CONFIG_REGISTER) +=3D register.o
+ common-obj-$(CONFIG_OR_IRQ) +=3D or-irq.o
+-common-obj-$(CONFIG_SOFTMMU) +=3D split-irq.o
++common-obj-$(CONFIG_SPLIT_IRQ) +=3D split-irq.o
  common-obj-$(CONFIG_PLATFORM_BUS) +=3D platform-bus.o
-diff --git a/hw/dma/Kconfig b/hw/dma/Kconfig
-index 751dec5426..5c61b67bc0 100644
---- a/hw/dma/Kconfig
-+++ b/hw/dma/Kconfig
-@@ -16,6 +16,7 @@ config I8257
-=20
- config ZYNQ_DEVCFG
-     bool
-+    select REGISTER
-=20
- config STP2000
-     bool
-diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-index 51921eb63f..f575481210 100644
---- a/hw/timer/Kconfig
-+++ b/hw/timer/Kconfig
-@@ -36,6 +36,7 @@ config TWL92230
-=20
- config XLNX_ZYNQMP
-     bool
-+    select REGISTER
-=20
- config ALTERA_TIMER
-     bool
+ common-obj-$(CONFIG_SOFTMMU) +=3D generic-loader.o
+ common-obj-$(CONFIG_SOFTMMU) +=3D null-machine.o
 --=20
 2.21.0
 
