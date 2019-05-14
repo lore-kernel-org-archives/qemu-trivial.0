@@ -1,59 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hQULE-00034i-RP
-	for mharc-qemu-trivial@gnu.org; Tue, 14 May 2019 06:07:24 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51761)
+	id 1hQUMp-00044j-Vp
+	for mharc-qemu-trivial@gnu.org; Tue, 14 May 2019 06:09:04 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52379)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1hQULC-00032S-IR
-	for qemu-trivial@nongnu.org; Tue, 14 May 2019 06:07:23 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hQUMn-00042W-7N
+	for qemu-trivial@nongnu.org; Tue, 14 May 2019 06:09:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <pbonzini@redhat.com>) id 1hQULB-0008TI-MD
-	for qemu-trivial@nongnu.org; Tue, 14 May 2019 06:07:22 -0400
-Received: from mail-ot1-f68.google.com ([209.85.210.68]:35547)
+	(envelope-from <peter.maydell@linaro.org>) id 1hQUMm-0003xm-3W
+	for qemu-trivial@nongnu.org; Tue, 14 May 2019 06:09:01 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:40425)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hQULB-0008SB-Gg
-	for qemu-trivial@nongnu.org; Tue, 14 May 2019 06:07:21 -0400
-Received: by mail-ot1-f68.google.com with SMTP id n14so7736371otk.2
-	for <qemu-trivial@nongnu.org>; Tue, 14 May 2019 03:07:21 -0700 (PDT)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hQUMl-0003iL-NU
+	for qemu-trivial@nongnu.org; Tue, 14 May 2019 06:09:00 -0400
+Received: by mail-oi1-x241.google.com with SMTP id r136so11658145oie.7
+	for <qemu-trivial@nongnu.org>; Tue, 14 May 2019 03:08:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=ieeBAjC7rpZuKx1Vo4jU6/Nl1XP+QTqXW/y6IG+o4pc=;
+	b=B0xJnxhq1R5cxGp1jHWjFsh1nZBukb3pqwtpRvb+wRBqp4tuPL20yENIH5UIdGgSKe
+	TjLmt74fl8aLmfHvZKJL53FiE18akQ0c8YOUwfnLGtVvtGoLb/Tj3RIOVBq0EsgGEEHO
+	cH41m3Oy/SVZRjCJaNYh8RUinmTOawdxY7c+aOts1eH4kdTJEhc4Il0QlYP2/g+RkZEc
+	bXNITqGgI+EZwtf9oku1ZvpfWyQl8QN4Z9OBRLQCmSMSUP7C5qM0POaqPL5dzhFde/ns
+	Ut/Tox2xFhVDi3L05luAQNCFkbO1ci7RL9mdwkRUNdIuCcnCXRR4kySYMWuEoXJI1tgQ
+	ZL4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=chIQv9D9N4cd7WaO9xjFgQmQm3EB1lvib6fmJ39p2nI=;
-	b=Cl3uK1OUKyjHJrfL+4iOINBEspd370/q+wQzLNAjUSLJjyI7IsbEN+vRItuwyMQURE
-	fKZP1pcuxlYyrq2fvGw9pfDWqX9F6w45dM3BnMurroZkHClgl1HlkL86Tp1xeaOtJU/O
-	wVPD5O2NbDxCi/DkUQrgtY6Sr43robcu8p2wIxASwsjoCJMxMk2HC8gEs7OpM1CdaEjT
-	uV0I+tZQVnbkmws0Y7qVofH30DT6LvyVgCwvDN75B7cWWWEbHlYPyTMfQg/fEhMF7pfJ
-	+IYd0Qpd73Iu1NOg9+A569o92Cp6eiEByEV/4MfTAQsyzmOY6EvB1nMyGivpTqvPvjiT
-	JmcA==
-X-Gm-Message-State: APjAAAUzduI0g70TTHBNHtSBWGiZcNfqjOsbpbsXJtpIlAgkD/z3j/nP
-	QVLyVXcb+OwZiZwXw1/UxhrztQ==
-X-Google-Smtp-Source: APXvYqzxX1cmi9LYja9te+FqmysKN+0+jaAB9XOqF3BSvhFapDRBnKfTBOei3YPMF0wJ+3fNb90xBA==
-X-Received: by 2002:a9d:64:: with SMTP id 91mr3449996ota.19.1557828440213;
-	Tue, 14 May 2019 03:07:20 -0700 (PDT)
-Received: from [172.20.7.146] ([12.187.203.94])
-	by smtp.gmail.com with ESMTPSA id
-	z20sm5532532otm.33.2019.05.14.03.07.19
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Tue, 14 May 2019 03:07:19 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org, philmd@redhat.com
-References: <20190514100019.13263-1-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <6fdd74ed-f226-1c69-6afe-6b1f2c88c59a@redhat.com>
-Date: Tue, 14 May 2019 12:07:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=ieeBAjC7rpZuKx1Vo4jU6/Nl1XP+QTqXW/y6IG+o4pc=;
+	b=YK+HpKoLSEFgoIO9X7/R99FhYn8H1RhDngAkzykyqkRjMdf2FJBrCRnTgP3jZ8bT59
+	dx6OQFpowVrXByIGUe9gW4Mw5G6bl3q3vhp4ui1WJaQbHP6lwYRiItr6ObDK/+k0IttP
+	4ee/vUcHLLGEtg2vjk4O45TISY1mzPXZqKZXO2sliPpV96uTJNnoyae/nf8qxvbNwX1N
+	Y8T5xw1Blu6njW9KaEFm0cZ9h6Z21r4hC8uOstDvGIeaH0tIc4Arqv0sZXIMGxMHKTSp
+	B0UQWLkmzTZp1jq3RmDWFfTHFEzk0NTVntO9nTBxRl0nYfHekSpg3b7UzEOt3vOIbIwb
+	x1Mw==
+X-Gm-Message-State: APjAAAXSF8Xs6JcNfQpNPX9C74yYi0SVkap3aThVBeYQJ5CTi5H5ga+L
+	66gCGEGBsGq2vM3KnVN/tU7MsGS2zgq3zE+xBfuGyg==
+X-Google-Smtp-Source: APXvYqxg9Hv8LjlRUigO2PmtU444YGhXU31fLs8EVrvXrA2sm+FsxqyLFLl6dpOX6QkpeFRiSArNt2ljAS/WsiOPy6o=
+X-Received: by 2002:aca:5785:: with SMTP id l127mr2203222oib.48.1557828532815; 
+	Tue, 14 May 2019 03:08:52 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190514100019.13263-1-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.210.68
-Subject: Re: [Qemu-trivial] [PATCH 0/4] Kconfig switches for core / misc
- devices
+References: <20190514100019.13263-1-thuth@redhat.com>
+	<20190514100019.13263-5-thuth@redhat.com>
+In-Reply-To: <20190514100019.13263-5-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 14 May 2019 11:08:41 +0100
+Message-ID: <CAFEAcA_WVjE5hZh0EibxiqV+NtqY0VsMPs-tqC3Y=GRCbvhEpg@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	QEMU Developers <qemu-devel@nongnu.org>, 
+	QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::241
+Subject: Re: [Qemu-trivial] [Qemu-arm] [PATCH 4/4] hw/misc: Add a config
+ switch for the "unimplemented" device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -65,32 +69,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 May 2019 10:07:23 -0000
+X-List-Received-Date: Tue, 14 May 2019 10:09:02 -0000
 
-On 14/05/19 12:00, Thomas Huth wrote:
-> Here are some more Kconfig patches that introduce proper config
-> switches for some devices in the hw/core and hw/misc directories.
-> 
-> Thomas Huth (4):
->   hw/core: Add a config switch for the "register" device
->   hw/core: Add a config switch for the "or-irq" device
->   hw/core: Add a config switch for the "split-irq" device
->   hw/misc: Add a config switch for the "unimplemented" device
-> 
->  hw/arm/Kconfig        | 12 ++++++++++++
->  hw/core/Kconfig       |  9 +++++++++
->  hw/core/Makefile.objs |  6 +++---
->  hw/dma/Kconfig        |  1 +
->  hw/microblaze/Kconfig |  1 +
->  hw/misc/Kconfig       |  3 +++
->  hw/misc/Makefile.objs |  2 +-
->  hw/pci-host/Kconfig   |  3 ++-
->  hw/sparc64/Kconfig    |  1 +
->  hw/timer/Kconfig      |  1 +
->  10 files changed, 34 insertions(+), 5 deletions(-)
-> 
+On Tue, 14 May 2019 at 11:02, Thomas Huth <thuth@redhat.com> wrote:
+>
+> The device is only used by certain Arm boards. Now that we have
+> fine-grained Kconfig for these machines, too, we can enable the
+> "unimplemented" devices only for the machines that really need it.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/arm/Kconfig        | 9 +++++++++
+>  hw/microblaze/Kconfig | 1 +
+>  hw/misc/Kconfig       | 3 +++
+>  hw/misc/Makefile.objs | 2 +-
+>  hw/sparc64/Kconfig    | 1 +
+>  5 files changed, 15 insertions(+), 1 deletion(-)
 
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+Commit message says "only Arm" but code change changes
+sparc and microblaze Kconfigs too :-)
 
-Paolo
+thanks
+-- PMM
 
