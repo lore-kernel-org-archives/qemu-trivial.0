@@ -1,63 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hQoEW-0005M5-NJ
-	for mharc-qemu-trivial@gnu.org; Wed, 15 May 2019 03:21:48 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:56184)
+	id 1hQpvM-0006F9-Qh
+	for mharc-qemu-trivial@gnu.org; Wed, 15 May 2019 05:10:08 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:46755)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hQoEU-0005Ls-LK
-	for qemu-trivial@nongnu.org; Wed, 15 May 2019 03:21:47 -0400
+	(envelope-from <sgarzare@redhat.com>) id 1hQpvK-0006DO-DG
+	for qemu-trivial@nongnu.org; Wed, 15 May 2019 05:10:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hQoES-00026t-Iw
-	for qemu-trivial@nongnu.org; Wed, 15 May 2019 03:21:46 -0400
-Received: from mail-wr1-f66.google.com ([209.85.221.66]:45563)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hQoER-00021V-CJ
-	for qemu-trivial@nongnu.org; Wed, 15 May 2019 03:21:43 -0400
-Received: by mail-wr1-f66.google.com with SMTP id b18so1350768wrq.12
-	for <qemu-trivial@nongnu.org>; Wed, 15 May 2019 00:21:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=DHU7btz1CbthsCNrHK5WKuk0ODkg7vTcDEeYx/un5e8=;
-	b=k6A1yE7EES9tEWeWjp1Opt9B49eQlbBqwHpQedp7nAbW7POSO6ZgLmPNHnNj9CvkoX
-	gwM1eak4REoIYUvC/omqrR7jwSWOIKO7q3m3j/4Yt6hCTDSAfRhCyDni0/DVSCD0aa4/
-	JBzDQmRbdrlUK2whVtwySpb3oz5edw9zR/Wut5NVFcgH/aOMgBGVwNOUsLwtjz9OItii
-	AjDIbWTURpE3W2bWOcG77oc7z9vp8pizyccChc5HSqNoPJUbVF84pNdYblm9pL88z+Sq
-	o3fqo9fwKxlQktUPQiTNycxU2ve//qIbeEvuKWdT4xDcsSMFMqol9npLmjm1/VycccIE
-	1AGA==
-X-Gm-Message-State: APjAAAW7KKs6fOgNzmIdUPEMeDJLNoYBef2njgA4I5D0/wOUUM7UYcGX
-	6gQG0R98CylrL5EOoNZjjhQGTg==
-X-Google-Smtp-Source: APXvYqxZJHsU/UUuvLDWEt6o0aTmJ1QmsEUe1zwhcWGF6nV3TxMLqVd3kAW5HEogGMbZaJbTKuDy6g==
-X-Received: by 2002:adf:e8d2:: with SMTP id k18mr17744917wrn.329.1557904901123;
-	Wed, 15 May 2019 00:21:41 -0700 (PDT)
-Received: from [192.168.1.43] (193.red-88-21-103.staticip.rima-tde.net.
-	[88.21.103.193])
-	by smtp.gmail.com with ESMTPSA id 7sm1160221wro.85.2019.05.15.00.21.40
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Wed, 15 May 2019 00:21:40 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
-	<berrange@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20190515070357.882-1-philmd@redhat.com>
-	<552b024d-39bd-dd3f-bf44-3c3e0a9f1198@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <b9ca67e7-e9d4-0f7c-1ec6-166643d4c5cb@redhat.com>
-Date: Wed, 15 May 2019 09:21:39 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(envelope-from <sgarzare@redhat.com>) id 1hQptT-000269-S0
+	for qemu-trivial@nongnu.org; Wed, 15 May 2019 05:08:12 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53800)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <sgarzare@redhat.com>)
+	id 1hQptS-00021u-Lf; Wed, 15 May 2019 05:08:10 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id C68BC89C3D;
+	Wed, 15 May 2019 09:08:08 +0000 (UTC)
+Received: from steredhat.redhat.com (ovpn-117-2.ams2.redhat.com [10.36.117.2])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6B37F5D9DE;
+	Wed, 15 May 2019 09:08:06 +0000 (UTC)
+From: Stefano Garzarella <sgarzare@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Jan Kiszka <jan.kiszka@siemens.com>, qemu-trivial@nongnu.org,
+	Jason Wang <jasowang@redhat.com>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>
+Date: Wed, 15 May 2019 11:08:05 +0200
+Message-Id: <20190515090805.44785-1-sgarzare@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <552b024d-39bd-dd3f-bf44-3c3e0a9f1198@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.27]);
+	Wed, 15 May 2019 09:08:09 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.221.66
-Subject: Re: [Qemu-trivial] [PATCH] docs/devel/build-system: Update an
- example
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH v2] net/slirp: fix the IPv6 prefix length
+ error message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,67 +52,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 May 2019 07:21:47 -0000
+X-List-Received-Date: Wed, 15 May 2019 09:10:07 -0000
 
-On 5/15/19 9:16 AM, Thomas Huth wrote:
-> On 15/05/2019 09.03, Philippe Mathieu-Daudé wrote:
->> The default-configs/ example added in 717171bd2025 is no
->> more accurate since fa212a2b8b60 (and various further other
->> commits).
->>
->> The Kconfig build system is now in place.
->> Use the aarch64-softmmu config as example.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  docs/devel/build-system.txt | 15 +++++----------
->>  1 file changed, 5 insertions(+), 10 deletions(-)
->>
->> diff --git a/docs/devel/build-system.txt b/docs/devel/build-system.txt
->> index addd274eebd..79a85bfba06 100644
->> --- a/docs/devel/build-system.txt
->> +++ b/docs/devel/build-system.txt
->> @@ -415,16 +415,11 @@ context.
->>  The files under default-configs/ control what emulated hardware is built
->>  into each QEMU system and userspace emulator targets. They merely
->>  contain a long list of config variable definitions. For example,
-> 
-> "long list" is now often also not very accurate anymore. Maybe rephrase
+Reword and add a missing parentheses at the end of the
+error message.
 
-Still accurate for MIPS :(
+Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+---
+v2:
+  - Reworded the error message (Markus)
+  - Added Marc-Andr=C3=A9's R-b
+    I made a little change to the error message, let me now
+    if I should remove yuor R-b.
+---
+ net/slirp.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-> that sentence à la: "contain a list of config variable definitions like
-> the machines that should be included" ?
+diff --git a/net/slirp.c b/net/slirp.c
+index 95934fb36d..b34cb29276 100644
+--- a/net/slirp.c
++++ b/net/slirp.c
+@@ -498,7 +498,8 @@ static int net_slirp_init(NetClientState *peer, const=
+ char *model,
+     }
+     if (vprefix6_len < 0 || vprefix6_len > 126) {
+         error_setg(errp,
+-                   "Invalid prefix provided (prefix len must be in range=
+ 0-126");
++                   "Invalid IPv6 prefix provided "
++                   "(IPv6 prefix length must be between 0 and 126)");
+         return -1;
+     }
+=20
+--=20
+2.20.1
 
-Good idea.
-
-> 
->> -default-configs/x86_64-softmmu.mak has:
->> -
->> -  include sound.mak
->> -  include usb.mak
->> -  CONFIG_QXL=$(CONFIG_SPICE)
->> -  CONFIG_VGA_ISA=y
->> -  CONFIG_VGA_CIRRUS=y
->> -  CONFIG_VMWARE_VGA=y
->> -  CONFIG_VIRTIO_VGA=y
->> -  ...snip...
->> +default-configs/aarch64-softmmu.mak has:
->> +
->> +  include arm-softmmu.mak
->> +  CONFIG_XLNX_ZYNQMP_ARM=y
->> +  CONFIG_XLNX_VERSAL=y
->>  
->>  These files rarely need changing unless new devices / hardware need to
->>  be enabled for a particular system/userspace emulation target
->>
-> 
-> Anyway,
-> 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> 
-
-Thanks!
-
-Phil.
 
