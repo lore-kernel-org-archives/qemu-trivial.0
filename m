@@ -1,50 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hQau1-0001PH-Fh
-	for mharc-qemu-trivial@gnu.org; Tue, 14 May 2019 13:07:45 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50270)
+	id 1hQo9L-0001dO-2L
+	for mharc-qemu-trivial@gnu.org; Wed, 15 May 2019 03:16:27 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:54658)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hQatz-000152-Pj
-	for qemu-trivial@nongnu.org; Tue, 14 May 2019 13:07:44 -0400
+	(envelope-from <philmd@redhat.com>) id 1hQo9I-0001RF-P3
+	for qemu-trivial@nongnu.org; Wed, 15 May 2019 03:16:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hQanp-00058k-V1
-	for qemu-trivial@nongnu.org; Tue, 14 May 2019 13:01:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59273)
+	(envelope-from <philmd@redhat.com>) id 1hQnxQ-0005Ma-80
+	for qemu-trivial@nongnu.org; Wed, 15 May 2019 03:04:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43052)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1hQano-00052A-Ax; Tue, 14 May 2019 13:01:20 -0400
+	(Exim 4.71) (envelope-from <philmd@redhat.com>)
+	id 1hQnxP-0005G5-0s; Wed, 15 May 2019 03:04:07 -0400
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
 	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ED016883BA;
-	Tue, 14 May 2019 17:01:17 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-28.ams2.redhat.com
-	[10.36.116.28])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 3F06562723;
-	Tue, 14 May 2019 17:01:17 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 9E19311385E4; Tue, 14 May 2019 19:01:11 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Yury Kotov <yury-kotov@yandex-team.ru>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-References: <20190514131552.15832-1-yury-kotov@yandex-team.ru>
-	<4e2eabbd-f404-fa61-f23b-e862d7f20b3e@redhat.com>
-Date: Tue, 14 May 2019 19:01:11 +0200
-In-Reply-To: <4e2eabbd-f404-fa61-f23b-e862d7f20b3e@redhat.com> (Eric Blake's
-	message of "Tue, 14 May 2019 09:05:34 -0500")
-Message-ID: <878sv9c6nc.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	by mx1.redhat.com (Postfix) with ESMTPS id 02D913001C3D;
+	Wed, 15 May 2019 07:04:06 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-225.brq.redhat.com [10.40.204.225])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9E45C60BE5;
+	Wed, 15 May 2019 07:04:00 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Wed, 15 May 2019 09:03:57 +0200
+Message-Id: <20190515070357.882-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.26]);
-	Tue, 14 May 2019 17:01:18 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.47]);
+	Wed, 15 May 2019 07:04:06 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH RESEND] monitor: Fix return
- type of monitor_fdset_dup_fd_find
+Subject: [Qemu-trivial] [PATCH] docs/devel/build-system: Update an example
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,59 +50,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 May 2019 17:07:44 -0000
+X-List-Received-Date: Wed, 15 May 2019 07:16:25 -0000
 
-Eric Blake <eblake@redhat.com> writes:
+The default-configs/ example added in 717171bd2025 is no
+more accurate since fa212a2b8b60 (and various further other
+commits).
 
-> On 5/14/19 8:15 AM, Yury Kotov wrote:
->> monitor_fdset_dup_fd_find_remove() and monitor_fdset_dup_fd_find()
->> returns mon_fdset->id which is int64_t. Downcast from int64_t to int leads to
->> a bug with removing fd from fdset which id >= 2^32.
->> So, fix return types for these function.
->
-> fd's cannot exceed 2^32. We should instead be fixing anything that uses
-> int64_t with an fd to be properly limited to 32 bits.  That is, I think
-> the real problem is in qapi/misc.json:
->
->  { 'struct': 'AddfdInfo', 'data': {'fdset-id': 'int', 'fd': 'int'} }
-> instead of 'fd':'int32'.
+The Kconfig build system is now in place.
+Use the aarch64-softmmu config as example.
 
-This is actually not related to the patch.  It doesn't touch
-file-descriptors at all, only fdset IDs.
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ docs/devel/build-system.txt | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
 
-But let's discuss file descriptors briefly.
+diff --git a/docs/devel/build-system.txt b/docs/devel/build-system.txt
+index addd274eebd..79a85bfba06 100644
+--- a/docs/devel/build-system.txt
++++ b/docs/devel/build-system.txt
+@@ -415,16 +415,11 @@ context.
+ The files under default-configs/ control what emulated hardware is built
+ into each QEMU system and userspace emulator targets. They merely
+ contain a long list of config variable definitions. For example,
+-default-configs/x86_64-softmmu.mak has:
+-
+-  include sound.mak
+-  include usb.mak
+-  CONFIG_QXL=3D$(CONFIG_SPICE)
+-  CONFIG_VGA_ISA=3Dy
+-  CONFIG_VGA_CIRRUS=3Dy
+-  CONFIG_VMWARE_VGA=3Dy
+-  CONFIG_VIRTIO_VGA=3Dy
+-  ...snip...
++default-configs/aarch64-softmmu.mak has:
++
++  include arm-softmmu.mak
++  CONFIG_XLNX_ZYNQMP_ARM=3Dy
++  CONFIG_XLNX_VERSAL=3Dy
+=20
+ These files rarely need changing unless new devices / hardware need to
+ be enabled for a particular system/userspace emulation target
+--=20
+2.20.1
 
-File descriptors are plain int.  There is no QAPI type corresponding to
-plain int.
-
-I guess plain int is 32 bits wide on all hosts we support.  Narrower int
-(permitted by the standard) wouldn't fly with QEMU.  Wider int should,
-and are theoretically possible.
-
-I'm not sure we want to change the QAPI schema.
-
->                           For that matter, 'fdset-id' larger than 32
-> bits is unlikely to be useful (there's no reason to have more fdsets
-> than you can have possible fds to put in those sets).
-
-Even if we had wider file descriptors: a billion fdsets should be enough
-for anyone.
-
-> NACK to this version, but a v2 that addresses the real problem is
-> worthwhile.
-
-What exactly is wrong with the patch?
-
-It changes the return value of monitor_fdset_dup_fd_find_remove() and
-monitor_fdset_dup_fd_find() from int to int64_t.  Both return an fdset
-ID (a MonFdset member @id, of type int64_t) on success, -1 on error.
-The change removes a truncation from int64_t to int in
-monitor_fdset_dup_fd_find_remove(), and a widening from int to int64_t
-in qemu_close().
-
-I believe the patch is fine as is.  Another patch that changes fdset IDs
-from int64_t to int32_t would also be fine, but it would Require
-tracking down all the places to change.
-
-[...]
 
