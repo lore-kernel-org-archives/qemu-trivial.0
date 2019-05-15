@@ -1,67 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hQr8Y-00059K-Oj
-	for mharc-qemu-trivial@gnu.org; Wed, 15 May 2019 06:27:50 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38710)
+	id 1hQt5t-0002Pw-Lt
+	for mharc-qemu-trivial@gnu.org; Wed, 15 May 2019 08:33:13 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:32994)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1hQr8W-00057I-AP
-	for qemu-trivial@nongnu.org; Wed, 15 May 2019 06:27:49 -0400
+	(envelope-from <armbru@redhat.com>) id 1hQt5r-0002O6-Qw
+	for qemu-trivial@nongnu.org; Wed, 15 May 2019 08:33:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <stefanha@gmail.com>) id 1hQr8V-0007YE-HA
-	for qemu-trivial@nongnu.org; Wed, 15 May 2019 06:27:48 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:51069)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <stefanha@gmail.com>)
-	id 1hQr8T-0007WA-9g; Wed, 15 May 2019 06:27:45 -0400
-Received: by mail-wm1-x334.google.com with SMTP id f204so2092444wme.0;
-	Wed, 15 May 2019 03:27:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=date:from:to:cc:subject:message-id:references:mime-version
-	:content-disposition:in-reply-to:user-agent;
-	bh=hIrqSTt1Hx+dJyTXINmE+v6ezJPmaJkLgI8CJvvMU0U=;
-	b=GreAe/mPvFmJaTGrMB0MERX3GAsaZt+b3BxAnoLA+7el1gKvns3ioLTB1PFYcc+ZeE
-	7gEb6y095ifgmv/THg5kG0R5afG0kZjU66kfKgmDngO/I5/B726ofaEQUQPhw1jkwxgU
-	nmRqIWOrrj1RAg31jJYcLNJcb+xJyKCEUnAuAIBGPIFp3qld05025GjxGx9Ix5XFZHBO
-	mRzwxnrzgYo/Sjmb1kgvKXh/fgOPfpxqNE3ZGlaiZJtIkTfe6MV6HgNtUSo0z28V1/vo
-	rHHjhb32j78dlNj5BuKl8Ej0x44D9HQNPQueeQ/L4sWkphtwzERYktb4q15EoJI03yF/
-	nOsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=hIrqSTt1Hx+dJyTXINmE+v6ezJPmaJkLgI8CJvvMU0U=;
-	b=OqaBBV1GdeECDs1BcjGs3PP840R55cRy0yBiQbL3hxKzYskV/qEo57d7xkWc3MZXyf
-	P9CZdwbd2N2KGK4B7F310qRgirEjASadbdRdP0eED5rfNL6bwnlIzd2j5A04ihYw1oRe
-	+nvKylnQ3VAv4dzjdpvQKagaoMrMizjYbWg5vRF/l1DfG+Fs1HEdpgkpGuQgkBjwlcfq
-	uFfECW5vXAokwk0JK3AEh83/bZ4uFUOx/ZRHweZvo6W6eoUbT/35KCwOEvACLD90b5xa
-	8bhimOyFv+Xji5nn/o5KP+J8UPHJbstGDiA1NqlbtLG30MfLWNrDB7GkTBizvWlaGz2Z
-	2NXg==
-X-Gm-Message-State: APjAAAX1+wQ3oRSBuEBYWI3K3BU0ihso31LN6npck45rP7Hk0G0UwKAD
-	hzjp53aUNd4Ytituy5YJ5YueGobcLtw=
-X-Google-Smtp-Source: APXvYqyy3XUa3tWEaluUoT7tESU878RKV3eU0OU8Gloqzo9L63CZi5/FuqJdHO1MRfqpcmp2gmwYuw==
-X-Received: by 2002:a1c:1b49:: with SMTP id b70mr13959180wmb.50.1557916064127; 
-	Wed, 15 May 2019 03:27:44 -0700 (PDT)
-Received: from localhost ([51.15.41.238]) by smtp.gmail.com with ESMTPSA id
-	i17sm1890268wrr.46.2019.05.15.03.27.43
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Wed, 15 May 2019 03:27:43 -0700 (PDT)
-Date: Wed, 15 May 2019 11:27:42 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20190515102742.GD29507@stefanha-x1.localdomain>
-References: <20190510052239.21947-1-thuth@redhat.com>
+	(envelope-from <armbru@redhat.com>) id 1hQt5q-0008AL-U4
+	for qemu-trivial@nongnu.org; Wed, 15 May 2019 08:33:11 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:24447)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1hQt5o-00085p-Ud; Wed, 15 May 2019 08:33:09 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A3D1CA405A;
+	Wed, 15 May 2019 12:33:07 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-28.ams2.redhat.com
+	[10.36.116.28])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2662A60BE5;
+	Wed, 15 May 2019 12:33:04 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 775F511385E4; Wed, 15 May 2019 14:33:03 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Stefano Garzarella <sgarzare@redhat.com>
+Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org,  Jan Kiszka
+	<jan.kiszka@siemens.com>,  Jason Wang <jasowang@redhat.com>,  Samuel
+	Thibault <samuel.thibault@ens-lyon.org>,  =?utf-8?Q?Marc-Andr=C3=A9?=
+	Lureau <marcandre.lureau@redhat.com>
+References: <20190515090805.44785-1-sgarzare@redhat.com>
+Date: Wed, 15 May 2019 14:33:03 +0200
+In-Reply-To: <20190515090805.44785-1-sgarzare@redhat.com> (Stefano
+	Garzarella's message of "Wed, 15 May 2019 11:08:05 +0200")
+Message-ID: <875zqb7v9c.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="C+ts3FVlLX8+P6JN"
-Content-Disposition: inline
-In-Reply-To: <20190510052239.21947-1-thuth@redhat.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::334
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/libqtest: Remove
- unused global_qtest-related wrapper functions
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.38]);
+	Wed, 15 May 2019 12:33:07 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] net/slirp: fix the IPv6
+ prefix length error message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -73,40 +58,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 May 2019 10:27:49 -0000
+X-List-Received-Date: Wed, 15 May 2019 12:33:12 -0000
 
+Stefano Garzarella <sgarzare@redhat.com> writes:
 
---C+ts3FVlLX8+P6JN
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, May 10, 2019 at 07:22:39AM +0200, Thomas Huth wrote:
-> A bunch of the wrapper functions that use global_qtest are not used
-> anymore. Remove them to avoid that they are used in new code again.
->=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Reword and add a missing parentheses at the end of the
+> error message.
+>
+> Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
+> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > ---
->  tests/libqtest.c |  11 +----
->  tests/libqtest.h | 108 -----------------------------------------------
->  2 files changed, 1 insertion(+), 118 deletions(-)
+> v2:
+>   - Reworded the error message (Markus)
+>   - Added Marc-Andr=C3=A9's R-b
+>     I made a little change to the error message, let me now
+>     if I should remove yuor R-b.
+> ---
+>  net/slirp.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/net/slirp.c b/net/slirp.c
+> index 95934fb36d..b34cb29276 100644
+> --- a/net/slirp.c
+> +++ b/net/slirp.c
+> @@ -498,7 +498,8 @@ static int net_slirp_init(NetClientState *peer, const=
+ char *model,
+>      }
+>      if (vprefix6_len < 0 || vprefix6_len > 126) {
+>          error_setg(errp,
+> -                   "Invalid prefix provided (prefix len must be in range=
+ 0-126");
+> +                   "Invalid IPv6 prefix provided "
+> +                   "(IPv6 prefix length must be between 0 and 126)");
+>          return -1;
+>      }
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+"Parameter 'ipv6-prefixlen' expects a value between 0 and 126" would be
+closer to how we report similar errors elsewhere.
 
---C+ts3FVlLX8+P6JN
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAlzb6Z4ACgkQnKSrs4Gr
-c8iVvwf/VqAjYooJcBvZm/qNr3h5JUlKiyE5pGfaUSs36sRfM9CykM44zk6f3K+z
-TWoNIQqfTegYRPxP/gJFHFXefy+o+zSsrZsM3nPmKd3sq9N6dbAD5D9VHexzCo5A
-i48FpROu+vT50zxer5V5ifydmiF8ztsy3QhxvKoyVeCrenEQJePYOuNLJ2hklMkn
-HDISQ5Z14UdZF3DVIny3ou6R+eIHX7RbUz3ObzHsm+FoHSvNdchSNjjaCEsxWLo2
-v6sCqBmo68u0/8ntfDcNfBdLxBwS1C+IE4Xn1dMXxMQMWv90Y6aQwq3Nz0N2Hylg
-Wi9RZufGI9pYLmhBt2DJXtBf/VYcFA==
-=NqMN
------END PGP SIGNATURE-----
-
---C+ts3FVlLX8+P6JN--
+Regardless:
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
