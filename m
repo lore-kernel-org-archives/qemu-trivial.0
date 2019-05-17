@@ -1,73 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hRE5d-00024E-9C
-	for mharc-qemu-trivial@gnu.org; Thu, 16 May 2019 06:58:21 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:56834)
+	id 1hRYF2-0001Dg-5N
+	for mharc-qemu-trivial@gnu.org; Fri, 17 May 2019 04:29:24 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:57390)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1hRE5b-00021u-L5
-	for qemu-trivial@nongnu.org; Thu, 16 May 2019 06:58:20 -0400
+	(envelope-from <jasowang@redhat.com>) id 1hRYEz-0001C6-77
+	for qemu-trivial@nongnu.org; Fri, 17 May 2019 04:29:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <groug@kaod.org>) id 1hRE5W-0002BB-Lf
-	for qemu-trivial@nongnu.org; Thu, 16 May 2019 06:58:19 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:37472)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <groug@kaod.org>) id 1hRE5W-000278-AX
-	for qemu-trivial@nongnu.org; Thu, 16 May 2019 06:58:14 -0400
-Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
-	x4GAvpVi026287
-	for <qemu-trivial@nongnu.org>; Thu, 16 May 2019 06:58:12 -0400
-Received: from e06smtp02.uk.ibm.com (e06smtp02.uk.ibm.com [195.75.94.98])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 2sh5493u8g-1
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
-	for <qemu-trivial@nongnu.org>; Thu, 16 May 2019 06:58:11 -0400
-Received: from localhost
-	by e06smtp02.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
-	Only! Violators will be prosecuted
-	for <qemu-trivial@nongnu.org> from <groug@kaod.org>;
-	Thu, 16 May 2019 11:58:09 +0100
-Received: from b06cxnps3074.portsmouth.uk.ibm.com (9.149.109.194)
-	by e06smtp02.uk.ibm.com (192.168.101.132) with IBM ESMTP SMTP Gateway:
-	Authorized Use Only! Violators will be prosecuted; 
-	(version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
-	Thu, 16 May 2019 11:58:06 +0100
-Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com
-	[9.149.105.232])
-	by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
-	ESMTP id x4GAw5Ao23199850
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
-	verify=OK); Thu, 16 May 2019 10:58:05 GMT
-Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 970AB52050;
-	Thu, 16 May 2019 10:58:05 +0000 (GMT)
-Received: from bahia.lan (unknown [9.145.156.103])
-	by d06av21.portsmouth.uk.ibm.com (Postfix) with ESMTP id 720ED52051;
-	Thu, 16 May 2019 10:58:05 +0000 (GMT)
-From: Greg Kurz <groug@kaod.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Juan Quintela <quintela@redhat.com>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Date: Thu, 16 May 2019 12:58:05 +0200
-User-Agent: StGit/unknown-version
+	(envelope-from <jasowang@redhat.com>) id 1hRYEy-0006sX-Ag
+	for qemu-trivial@nongnu.org; Fri, 17 May 2019 04:29:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42270)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <jasowang@redhat.com>)
+	id 1hRYEw-0006hi-7x; Fri, 17 May 2019 04:29:18 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1BE7785546;
+	Fri, 17 May 2019 08:29:10 +0000 (UTC)
+Received: from [10.72.12.168] (ovpn-12-168.pek2.redhat.com [10.72.12.168])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5A74E5D9DC;
+	Fri, 17 May 2019 08:28:59 +0000 (UTC)
+To: Stefano Garzarella <sgarzare@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Jan Kiszka <jan.kiszka@siemens.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Samuel Thibault <samuel.thibault@ens-lyon.org>,
+	=?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
+References: <20190515090805.44785-1-sgarzare@redhat.com>
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <8ff8f283-fa8f-acc1-9f31-414339a54d4d@redhat.com>
+Date: Fri, 17 May 2019 16:28:59 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-x-cbid: 19051610-0008-0000-0000-000002E74844
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19051610-0009-0000-0000-00002253ECCA
-Message-Id: <155800428514.543845.17558475870097990036.stgit@bahia.lan>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
-	definitions=2019-05-16_09:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
-	priorityscore=1501
-	malwarescore=0 suspectscore=1 phishscore=0 bulkscore=0 spamscore=0
-	clxscore=1034 lowpriorityscore=0 mlxscore=0 impostorscore=0
-	mlxlogscore=659 adultscore=0 classifier=spam adjust=0 reason=mlx
-	scancount=1 engine=8.0.1-1810050000 definitions=main-1905160074
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 148.163.156.1
-Subject: [Qemu-trivial] [PATCH] migration: Fix typo in migrate_add_blocker()
- error message
+In-Reply-To: <20190515090805.44785-1-sgarzare@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.28]);
+	Fri, 17 May 2019 08:29:16 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] net/slirp: fix the IPv6
+ prefix length error message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -79,25 +56,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 May 2019 10:58:20 -0000
+X-List-Received-Date: Fri, 17 May 2019 08:29:22 -0000
 
-Signed-off-by: Greg Kurz <groug@kaod.org>
----
- migration/migration.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/migration/migration.c b/migration/migration.c
-index 609e0df5d0c0..c15e75e0eebe 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -1714,7 +1714,7 @@ int migrate_add_blocker(Error *reason, Error **errp)
-     if (only_migratable) {
-         error_propagate_prepend(errp, error_copy(reason),
-                                 "disallowing migration blocker "
--                                "(--only_migratable) for: ");
-+                                "(--only-migratable) for: ");
-         return -EACCES;
-     }
- 
+On 2019/5/15 =E4=B8=8B=E5=8D=885:08, Stefano Garzarella wrote:
+> Reword and add a missing parentheses at the end of the
+> error message.
+>
+> Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
+> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+> v2:
+>    - Reworded the error message (Markus)
+>    - Added Marc-Andr=C3=A9's R-b
+>      I made a little change to the error message, let me now
+>      if I should remove yuor R-b.
+> ---
+>   net/slirp.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/net/slirp.c b/net/slirp.c
+> index 95934fb36d..b34cb29276 100644
+> --- a/net/slirp.c
+> +++ b/net/slirp.c
+> @@ -498,7 +498,8 @@ static int net_slirp_init(NetClientState *peer, con=
+st char *model,
+>       }
+>       if (vprefix6_len < 0 || vprefix6_len > 126) {
+>           error_setg(errp,
+> -                   "Invalid prefix provided (prefix len must be in ran=
+ge 0-126");
+> +                   "Invalid IPv6 prefix provided "
+> +                   "(IPv6 prefix length must be between 0 and 126)");
+>           return -1;
+>       }
+>  =20
+
+
+Applied.
+
+Thanks
+
 
 
