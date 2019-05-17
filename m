@@ -1,57 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hRYcA-0006V0-Fg
-	for mharc-qemu-trivial@gnu.org; Fri, 17 May 2019 04:53:18 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60969)
+	id 1hReDt-0000rv-7e
+	for mharc-qemu-trivial@gnu.org; Fri, 17 May 2019 10:52:37 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47832)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <sgarzare@redhat.com>) id 1hRYc8-0006Tf-FR
-	for qemu-trivial@nongnu.org; Fri, 17 May 2019 04:53:17 -0400
+	(envelope-from <dgilbert@redhat.com>) id 1hReDr-0000rD-FF
+	for qemu-trivial@nongnu.org; Fri, 17 May 2019 10:52:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <sgarzare@redhat.com>) id 1hRYc6-0004KU-F2
-	for qemu-trivial@nongnu.org; Fri, 17 May 2019 04:53:16 -0400
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:38821)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1hRYc4-0004Gt-FK
-	for qemu-trivial@nongnu.org; Fri, 17 May 2019 04:53:12 -0400
-Received: by mail-wm1-f66.google.com with SMTP id t5so4586415wmh.3
-	for <qemu-trivial@nongnu.org>; Fri, 17 May 2019 01:53:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-	:mime-version:content-disposition:in-reply-to:user-agent;
-	bh=oOd5lsW+s33mNgpgerYCMx4ubO3sCKAzqMa2TV10bNU=;
-	b=hiEtC+Odc/t+p9wH+HcVi4xqkYbVFEhPBcxI3hA1ROCtkfUhdqVAfPB3MWFK+4mstL
-	5Mx1J6dAZ7tNwU0IH7gkqU08k7AnRvmCtGlV6e66fUPNYNQTTBCHmKJ4RzN0Aq2aevMc
-	23euJJEUa+FWA2r5wppzAkn5w0B+pttz0rhn4W3STDO27gFp+nfz+7A6ztvwnyUbaSCq
-	ibcCDgr1f4J2TO9+ocXAL0iLGM62pC8FxPfCn5EIci9s5uryQrNnyBOFsoJ01o9PfNp4
-	sluONGPjLom0Yn/OW+BaoZ3SIEXGDm3tZPgHfj4uYBdIZwUN/+FOrmzwgvvIF5BFtRjh
-	W4jQ==
-X-Gm-Message-State: APjAAAXJQJwu8HS2H3pTr5LPXbRqm8dYJAiPUxHwSsK48PQDZpgzd0mU
-	Iqw20uzgDzQUlQESxpCUrNt8DA==
-X-Google-Smtp-Source: APXvYqyjVqz2FfzbmCAlv/7tKNJa/P9Q0tGUzW+xTFHy7vQPGLlpX6QkqqT559R09cHQAEn2tXBHYg==
-X-Received: by 2002:a1c:1d09:: with SMTP id d9mr1420480wmd.55.1558083188151;
-	Fri, 17 May 2019 01:53:08 -0700 (PDT)
-Received: from steredhat (host151-251-static.12-87-b.business.telecomitalia.it.
-	[87.12.251.151]) by smtp.gmail.com with ESMTPSA id
-	y132sm12976137wmd.35.2019.05.17.01.53.07
-	(version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-	Fri, 17 May 2019 01:53:07 -0700 (PDT)
-Date: Fri, 17 May 2019 10:53:05 +0200
-From: Stefano Garzarella <sgarzare@redhat.com>
+	(envelope-from <dgilbert@redhat.com>) id 1hReDp-0000sR-Pi
+	for qemu-trivial@nongnu.org; Fri, 17 May 2019 10:52:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:8712)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
+	id 1hReDj-0000Ya-Nj; Fri, 17 May 2019 10:52:27 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+	[10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id CA88F3097053;
+	Fri, 17 May 2019 14:52:18 +0000 (UTC)
+Received: from work-vm (unknown [10.36.118.28])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C4ADD600C4;
+	Fri, 17 May 2019 14:52:17 +0000 (UTC)
+Date: Fri, 17 May 2019 15:52:15 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 To: Greg Kurz <groug@kaod.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
 	Juan Quintela <quintela@redhat.com>
-Message-ID: <20190517085305.l5hjm4zd5qys3grs@steredhat>
+Message-ID: <20190517145214.GG3596@work-vm>
 References: <155800428514.543845.17558475870097990036.stgit@bahia.lan>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <155800428514.543845.17558475870097990036.stgit@bahia.lan>
-User-Agent: NeoMutt/20180716
+User-Agent: Mutt/1.11.4 (2019-03-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.43]);
+	Fri, 17 May 2019 14:52:18 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] migration: Fix typo in
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] migration: Fix typo in
  migrate_add_blocker() error message
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -64,9 +52,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 May 2019 08:53:17 -0000
+X-List-Received-Date: Fri, 17 May 2019 14:52:36 -0000
 
-On Thu, May 16, 2019 at 12:58:05PM +0200, Greg Kurz wrote:
+* Greg Kurz (groug@kaod.org) wrote:
 > Signed-off-by: Greg Kurz <groug@kaod.org>
 > ---
 >  migration/migration.c |    2 +-
@@ -82,8 +70,17 @@ On Thu, May 16, 2019 at 12:58:05PM +0200, Greg Kurz wrote:
 >                                  "disallowing migration blocker "
 > -                                "(--only_migratable) for: ");
 > +                                "(--only-migratable) for: ");
+
+Thanks.
+Trivial: Please take this.
+
+
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+
 >          return -EACCES;
 >      }
-
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+>  
+> 
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
