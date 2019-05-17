@@ -1,46 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hReDt-0000rv-7e
-	for mharc-qemu-trivial@gnu.org; Fri, 17 May 2019 10:52:37 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47832)
+	id 1hRhf4-0003z0-1Z
+	for mharc-qemu-trivial@gnu.org; Fri, 17 May 2019 14:32:56 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56230)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1hReDr-0000rD-FF
-	for qemu-trivial@nongnu.org; Fri, 17 May 2019 10:52:36 -0400
+	(envelope-from <armbru@redhat.com>) id 1hRhf2-0003xi-1O
+	for qemu-trivial@nongnu.org; Fri, 17 May 2019 14:32:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgilbert@redhat.com>) id 1hReDp-0000sR-Pi
-	for qemu-trivial@nongnu.org; Fri, 17 May 2019 10:52:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:8712)
+	(envelope-from <armbru@redhat.com>) id 1hRhf1-000613-70
+	for qemu-trivial@nongnu.org; Fri, 17 May 2019 14:32:52 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48398)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgilbert@redhat.com>)
-	id 1hReDj-0000Ya-Nj; Fri, 17 May 2019 10:52:27 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <armbru@redhat.com>)
+	id 1hRhez-0005v5-7P; Fri, 17 May 2019 14:32:49 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id CA88F3097053;
-	Fri, 17 May 2019 14:52:18 +0000 (UTC)
-Received: from work-vm (unknown [10.36.118.28])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C4ADD600C4;
-	Fri, 17 May 2019 14:52:17 +0000 (UTC)
-Date: Fri, 17 May 2019 15:52:15 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Greg Kurz <groug@kaod.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	Juan Quintela <quintela@redhat.com>
-Message-ID: <20190517145214.GG3596@work-vm>
-References: <155800428514.543845.17558475870097990036.stgit@bahia.lan>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <155800428514.543845.17558475870097990036.stgit@bahia.lan>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+	by mx1.redhat.com (Postfix) with ESMTPS id DD413308218D;
+	Fri, 17 May 2019 18:32:47 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-28.ams2.redhat.com
+	[10.36.116.28])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id ABFDB5D9CD;
+	Fri, 17 May 2019 18:32:47 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 310B811385E4; Fri, 17 May 2019 20:32:46 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Date: Fri, 17 May 2019 20:32:46 +0200
+Message-Id: <20190517183246.11933-1-armbru@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.43]);
-	Fri, 17 May 2019 14:52:18 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.47]);
+	Fri, 17 May 2019 18:32:47 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] migration: Fix typo in
- migrate_add_blocker() error message
+Subject: [Qemu-trivial] [PATCH] configure: Fix spelling of sdl-image in
+ --help
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -52,35 +48,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 May 2019 14:52:36 -0000
+X-List-Received-Date: Fri, 17 May 2019 18:32:53 -0000
 
-* Greg Kurz (groug@kaod.org) wrote:
-> Signed-off-by: Greg Kurz <groug@kaod.org>
-> ---
->  migration/migration.c |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/migration/migration.c b/migration/migration.c
-> index 609e0df5d0c0..c15e75e0eebe 100644
-> --- a/migration/migration.c
-> +++ b/migration/migration.c
-> @@ -1714,7 +1714,7 @@ int migrate_add_blocker(Error *reason, Error **errp)
->      if (only_migratable) {
->          error_propagate_prepend(errp, error_copy(reason),
->                                  "disallowing migration blocker "
-> -                                "(--only_migratable) for: ");
-> +                                "(--only-migratable) for: ");
+Fixes: a442fe2f2b2f20e7be0934277e9400b844b11999
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks.
-Trivial: Please take this.
+diff --git a/configure b/configure
+index d2fc346302..cef51b2a0b 100755
+--- a/configure
++++ b/configure
+@@ -1745,7 +1745,7 @@ disabled with --disable-FEATURE, default is enabled if available:
+   gcrypt          libgcrypt cryptography support
+   auth-pam        PAM access control
+   sdl             SDL UI
+-  sdl_image       SDL Image support for icons
++  sdl-image       SDL Image support for icons
+   gtk             gtk UI
+   vte             vte support for the gtk UI
+   curses          curses UI
+-- 
+2.17.2
 
-
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-
->          return -EACCES;
->      }
->  
-> 
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
