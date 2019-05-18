@@ -1,47 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hS0HB-00047X-Oy
-	for mharc-qemu-trivial@gnu.org; Sat, 18 May 2019 10:25:29 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:54424)
+	id 1hSLMc-0007qw-Qs
+	for mharc-qemu-trivial@gnu.org; Sun, 19 May 2019 08:56:30 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:44413)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1hS0H9-00047E-Nm
-	for qemu-trivial@nongnu.org; Sat, 18 May 2019 10:25:28 -0400
+	(envelope-from <like.xu@linux.intel.com>) id 1hSLMZ-0007qM-O3
+	for qemu-trivial@nongnu.org; Sun, 19 May 2019 08:56:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1hS0H8-0000lZ-Ol
-	for qemu-trivial@nongnu.org; Sat, 18 May 2019 10:25:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45978)
+	(envelope-from <like.xu@linux.intel.com>) id 1hSLMY-0002FC-JO
+	for qemu-trivial@nongnu.org; Sun, 19 May 2019 08:56:27 -0400
+Received: from mga14.intel.com ([192.55.52.115]:2556)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
-	id 1hS0CG-0006uB-Ea; Sat, 18 May 2019 10:20:24 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
-	[10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id ABC453082E4E;
-	Sat, 18 May 2019 14:20:23 +0000 (UTC)
-Received: from x1.home (ovpn-117-92.phx2.redhat.com [10.3.117.92])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 349A3183C4;
-	Sat, 18 May 2019 14:20:21 +0000 (UTC)
-Date: Sat, 18 May 2019 08:20:20 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Li Qiang <liq3ea@163.com>
-Cc: lvivier@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	liq3ea@gmail.com, philmd@redhat.com
-Message-ID: <20190518082020.6b223ab0@x1.home>
-In-Reply-To: <20190518032811.60341-2-liq3ea@163.com>
-References: <20190518032811.60341-1-liq3ea@163.com>
-	<20190518032811.60341-2-liq3ea@163.com>
-Organization: Red Hat
+	(Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
+	id 1hSLMY-0002DS-Ak; Sun, 19 May 2019 08:56:26 -0400
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+	by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+	19 May 2019 05:56:18 -0700
+X-ExtLoop1: 1
+Received: from clx-ap-likexu.sh.intel.com ([10.239.48.98])
+	by fmsmga001.fm.intel.com with ESMTP; 19 May 2019 05:56:17 -0700
+From: Like Xu <like.xu@linux.intel.com>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+	Alistair Francis <alistair23@gmail.com>
+Date: Sun, 19 May 2019 04:54:19 +0800
+Message-Id: <20190518205428.90532-2-like.xu@linux.intel.com>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190518205428.90532-1-like.xu@linux.intel.com>
+References: <20190518205428.90532-1-like.xu@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.46]);
-	Sat, 18 May 2019 14:20:23 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH 2/4] hw: vfio: drop TYPE_FOO MACRO in
- VMStateDescription
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 192.55.52.115
+Subject: [Qemu-trivial] [Qemu-devel] [PATCH v3 01/10] hw/boards: Add struct
+ CpuTopology to MachineState
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -53,90 +50,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 18 May 2019 14:25:28 -0000
+X-List-Received-Date: Sun, 19 May 2019 12:56:29 -0000
 
-On Fri, 17 May 2019 20:28:09 -0700
-Li Qiang <liq3ea@163.com> wrote:
+The cpu topology property CpuTopology is added to the MachineState
+and its members are initialized with the leagcy global smp variables.
 
-> As the vmstate structure names aren't related with
-> the QOM type names.
+From this commit, the code in the system emulation mode is supposed to
+use cpu topology variables from MachineState instead of the global ones
+defined in vl.c and there is no semantic change.
 
-Seems contrary to the first patch in the series.
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
+Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+Signed-off-by: Like Xu <like.xu@linux.intel.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+---
+ include/hw/boards.h | 15 +++++++++++++++
+ vl.c                |  5 +++++
+ 2 files changed, 20 insertions(+)
+
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index 6f7916f88f..bc23b5db1d 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -230,6 +230,20 @@ typedef struct DeviceMemoryState {
+     MemoryRegion mr;
+ } DeviceMemoryState;
  
-> CC: qemu-trivial@nongnu.org
-> Signed-off-by: Li Qiang <liq3ea@163.com>
-> ---
->  hw/vfio/amd-xgbe.c      | 2 +-
->  hw/vfio/ap.c            | 2 +-
->  hw/vfio/calxeda-xgmac.c | 2 +-
->  hw/vfio/ccw.c           | 2 +-
->  hw/vfio/platform.c      | 2 +-
->  5 files changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/vfio/amd-xgbe.c b/hw/vfio/amd-xgbe.c
-> index ee64a3b4a2..1b06c0f3ea 100644
-> --- a/hw/vfio/amd-xgbe.c
-> +++ b/hw/vfio/amd-xgbe.c
-> @@ -26,7 +26,7 @@ static void amd_xgbe_realize(DeviceState *dev, Error **errp)
->  }
->  
->  static const VMStateDescription vfio_platform_amd_xgbe_vmstate = {
-> -    .name = TYPE_VFIO_AMD_XGBE,
-> +    .name = "vfio-amd-xgbe",
->      .unmigratable = 1,
->  };
->  
-> diff --git a/hw/vfio/ap.c b/hw/vfio/ap.c
-> index d8b79ebe53..564751650f 100644
-> --- a/hw/vfio/ap.c
-> +++ b/hw/vfio/ap.c
-> @@ -155,7 +155,7 @@ static void vfio_ap_reset(DeviceState *dev)
->  }
->  
->  static const VMStateDescription vfio_ap_vmstate = {
-> -    .name = VFIO_AP_DEVICE_TYPE,
-> +    .name = "vfio-ap",
->      .unmigratable = 1,
->  };
->  
-> diff --git a/hw/vfio/calxeda-xgmac.c b/hw/vfio/calxeda-xgmac.c
-> index e7767c4b02..6cc608b6ca 100644
-> --- a/hw/vfio/calxeda-xgmac.c
-> +++ b/hw/vfio/calxeda-xgmac.c
-> @@ -26,7 +26,7 @@ static void calxeda_xgmac_realize(DeviceState *dev, Error **errp)
->  }
->  
->  static const VMStateDescription vfio_platform_calxeda_xgmac_vmstate = {
-> -    .name = TYPE_VFIO_CALXEDA_XGMAC,
-> +    .name = "vfio-calxeda-xgmac",
->      .unmigratable = 1,
->  };
->  
-> diff --git a/hw/vfio/ccw.c b/hw/vfio/ccw.c
-> index 31dd3a2a87..d9e39552e2 100644
-> --- a/hw/vfio/ccw.c
-> +++ b/hw/vfio/ccw.c
-> @@ -468,7 +468,7 @@ static Property vfio_ccw_properties[] = {
->  };
->  
->  static const VMStateDescription vfio_ccw_vmstate = {
-> -    .name = TYPE_VFIO_CCW,
-> +    .name = "vfio-ccw",
->      .unmigratable = 1,
->  };
->  
-> diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
-> index 398db38f14..e59a0234dd 100644
-> --- a/hw/vfio/platform.c
-> +++ b/hw/vfio/platform.c
-> @@ -697,7 +697,7 @@ out:
->  }
->  
->  static const VMStateDescription vfio_platform_vmstate = {
-> -    .name = TYPE_VFIO_PLATFORM,
-> +    .name = "vfio-platform",
->      .unmigratable = 1,
->  };
->  
++/**
++ * CpuTopology:
++ * @cpus: the number of present logical processors on the machine
++ * @cores: the number of cores in one package
++ * @threads: the number of threads in one core
++ * @max_cpus: the maximum number of logical processors on the machine
++ */
++typedef struct CpuTopology {
++    unsigned int cpus;
++    unsigned int cores;
++    unsigned int threads;
++    unsigned int max_cpus;
++} CpuTopology;
++
+ /**
+  * MachineState:
+  */
+@@ -272,6 +286,7 @@ struct MachineState {
+     const char *cpu_type;
+     AccelState *accelerator;
+     CPUArchIdList *possible_cpus;
++    CpuTopology smp;
+     struct NVDIMMState *nvdimms_state;
+ };
+ 
+diff --git a/vl.c b/vl.c
+index c8ca9ff6ff..40b006577b 100644
+--- a/vl.c
++++ b/vl.c
+@@ -4133,6 +4133,11 @@ int main(int argc, char **argv, char **envp)
+ 
+     smp_parse(qemu_opts_find(qemu_find_opts("smp-opts"), NULL));
+ 
++    current_machine->smp.cpus = smp_cpus;
++    current_machine->smp.max_cpus = max_cpus;
++    current_machine->smp.cores = smp_cores;
++    current_machine->smp.threads = smp_threads;
++
+     /* sanity-check smp_cpus and max_cpus against machine_class */
+     if (smp_cpus < machine_class->min_cpus) {
+         error_report("Invalid SMP CPUs %d. The min CPUs "
+-- 
+2.21.0
 
 
