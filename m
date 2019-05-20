@@ -1,50 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hSoer-0008DP-9Q
-	for mharc-qemu-trivial@gnu.org; Mon, 20 May 2019 16:13:17 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:41220)
+	id 1hSq8E-0001qs-3E
+	for mharc-qemu-trivial@gnu.org; Mon, 20 May 2019 17:47:42 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58862)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1hSoeo-0008Bq-Ih
-	for qemu-trivial@nongnu.org; Mon, 20 May 2019 16:13:15 -0400
+	(envelope-from <alistair23@gmail.com>) id 1hSq88-0001pL-VS
+	for qemu-trivial@nongnu.org; Mon, 20 May 2019 17:47:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1hSoem-0001me-LW
-	for qemu-trivial@nongnu.org; Mon, 20 May 2019 16:13:14 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52092)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
-	id 1hSoeg-0001ex-Pl; Mon, 20 May 2019 16:13:08 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
-	[10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4CFBB8830F;
-	Mon, 20 May 2019 20:13:01 +0000 (UTC)
-Received: from x1.home (ovpn-117-92.phx2.redhat.com [10.3.117.92])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A837518793;
-	Mon, 20 May 2019 20:12:54 +0000 (UTC)
-Date: Mon, 20 May 2019 14:12:54 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Li Qiang <liq3ea@gmail.com>
-Cc: Li Qiang <liq3ea@163.com>, lvivier@redhat.com, Qemu Developers
-	<qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, Philippe =?UTF-8?B?TWF0?=
-	=?UTF-8?B?aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Message-ID: <20190520141254.1c97a9aa@x1.home>
-In-Reply-To: <CAKXe6SLsoyCh=O1yyOFOukYdFoeySpSS1H8QG7fhp1ZQ35vD+g@mail.gmail.com>
-References: <20190518032811.60341-1-liq3ea@163.com>
-	<20190518032811.60341-2-liq3ea@163.com>
-	<20190518082020.6b223ab0@x1.home>
-	<CAKXe6SLsoyCh=O1yyOFOukYdFoeySpSS1H8QG7fhp1ZQ35vD+g@mail.gmail.com>
-Organization: Red Hat
+	(envelope-from <alistair23@gmail.com>) id 1hSq87-0003O7-Mi
+	for qemu-trivial@nongnu.org; Mon, 20 May 2019 17:47:36 -0400
+Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:37791)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <alistair23@gmail.com>)
+	id 1hSq87-0003Mm-Es; Mon, 20 May 2019 17:47:35 -0400
+Received: by mail-lj1-x241.google.com with SMTP id h19so13943350ljj.4;
+	Mon, 20 May 2019 14:47:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=RWYOWsOrlOdSwuuzSXCEp/onxa8x9C68sMRTN0zTses=;
+	b=P/iISkJNUP1MuOB0WqG7Xsieo3W2D7CJ695NRq4UiEFDm9T8ffNoVsKox+1sKh/Lfd
+	CAiIwfbf1WuBXmEEWJFHN0k8/w4vnN21lf+f4JWp1oEBo59+uffHsaa4nJQNouWEA6IY
+	+OauPZtLE4LgXbcve5CrWbDmt8EEnwG0t75mP+Yqo/8mHbjx8HHkNvnQmuhl2BjIJ/Tg
+	buCQKmnB/SlerCHYgYnd9OWn8BafWu9E/R3qbzWwtGNzRZmEJYW7CRVwZysIw8h8ZsYE
+	lD75NwnMUH502d4Sqi92wDuRqzUOKjZxN4SO5sZX/zhBa4fzakjur3B22hBDzRtcnLwo
+	Ylgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=RWYOWsOrlOdSwuuzSXCEp/onxa8x9C68sMRTN0zTses=;
+	b=nCpUgwYbnh4NGunUYlyXb6BQfFdL+4dgETX3v0J819vRSaacGgLSiQ2KO79Pg/fiEp
+	PHYx5A/QUtJOv+FLvt6g0rD2QuW73E0K5zZZZ+9X3N6xCcJtgcSfXaafuykpERTOzKQi
+	guVa6KzZqc8aUdx0qKATWRp9nF49aXVDFQeHyOofmD1GVyNM6ctBYQSa6RgzQcrBlWgx
+	RkffOf8pgHYbX1jH6Y4XCVxbZje22U2g2orhcuMiUIdUGgJA3LU27es5g4Vo9RHCc/vm
+	5XUJJOTFjTLWg2J/L8i+n5zfWqTcHXruVAXd1ndwDNrT2G0A/JPaKqGMlmVzI6OM/3m+
+	3Nkg==
+X-Gm-Message-State: APjAAAWeQdON/49c4OAj4hb+C85rdJRGdHQ8jGIcvMJFewJwgnC+wRrz
+	fsrbItB9jozejWvaPxlJ2fwMHtBbe0h8j3z59Is=
+X-Google-Smtp-Source: APXvYqxUSTE0qojR8wkDHnN6cmFd32m7jYvOJ8UDW36QUjUQe9pMMqHYg5UnMjVbPBIrxh/RgyVjKWf8eoK6s8G4wjY=
+X-Received: by 2002:a2e:9a4f:: with SMTP id k15mr32951788ljj.159.1558388853245;
+	Mon, 20 May 2019 14:47:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.28]);
-	Mon, 20 May 2019 20:13:04 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH 2/4] hw: vfio: drop TYPE_FOO MACRO in
- VMStateDescription
+References: <20190518205428.90532-1-like.xu@linux.intel.com>
+	<20190518205428.90532-6-like.xu@linux.intel.com>
+In-Reply-To: <20190518205428.90532-6-like.xu@linux.intel.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 20 May 2019 14:45:18 -0700
+Message-ID: <CAKmqyKO93cWjh88sHMDmBHmOTrxB5Dwgz=goLOb2xoMLQ_GP8A@mail.gmail.com>
+To: Like Xu <like.xu@linux.intel.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, 
+	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+	Eduardo Habkost <ehabkost@redhat.com>, 
+	Igor Mammedov <imammedo@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>, 
+	"Dr . David Alan Gilbert" <dgilbert@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::241
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 05/10] hw/riscv: Replace
+ global smp variables with machine smp properties
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -56,121 +70,157 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 May 2019 20:13:16 -0000
+X-List-Received-Date: Mon, 20 May 2019 21:47:40 -0000
 
-On Mon, 20 May 2019 09:29:21 +0800
-Li Qiang <liq3ea@gmail.com> wrote:
+On Sun, May 19, 2019 at 5:56 AM Like Xu <like.xu@linux.intel.com> wrote:
+>
+> The global smp variables in riscv are replaced with smp machine properties.
+>
+> A local variable of the same name would be introduced in the declaration
+> phase if it's used widely in the context OR replace it on the spot if it's
+> only used once. No semantic changes.
+>
+> Signed-off-by: Like Xu <like.xu@linux.intel.com>
 
-> Alex Williamson <alex.williamson@redhat.com> =E4=BA=8E2019=E5=B9=B45=E6=
-=9C=8818=E6=97=A5=E5=91=A8=E5=85=AD =E4=B8=8B=E5=8D=8810:20=E5=86=99=E9=81=
-=93=EF=BC=9A
->=20
-> > On Fri, 17 May 2019 20:28:09 -0700
-> > Li Qiang <liq3ea@163.com> wrote:
-> > =20
-> > > As the vmstate structure names aren't related with
-> > > the QOM type names. =20
-> >
-> > Seems contrary to the first patch in the series.
-> >
-> > =20
-> No, once there is a discussion of this:
-> -->https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg02175.html =20
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Ok, then rather than the commit log above, it would be more useful (at
-least to me) to state:
+Alistair
 
-  It's recommended that VMStateDescription names are decoupled from QOM
-  type names as the latter may freely change without consideration of
-  migration compatibility.
-
-  Link: https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg02175.html
-
-Otherwise this appears as a rather arbitrary change.  Thanks,
-
-Alex
-
-> > > CC: qemu-trivial@nongnu.org
-> > > Signed-off-by: Li Qiang <liq3ea@163.com>
-> > > ---
-> > >  hw/vfio/amd-xgbe.c      | 2 +-
-> > >  hw/vfio/ap.c            | 2 +-
-> > >  hw/vfio/calxeda-xgmac.c | 2 +-
-> > >  hw/vfio/ccw.c           | 2 +-
-> > >  hw/vfio/platform.c      | 2 +-
-> > >  5 files changed, 5 insertions(+), 5 deletions(-)
-> > >
-> > > diff --git a/hw/vfio/amd-xgbe.c b/hw/vfio/amd-xgbe.c
-> > > index ee64a3b4a2..1b06c0f3ea 100644
-> > > --- a/hw/vfio/amd-xgbe.c
-> > > +++ b/hw/vfio/amd-xgbe.c
-> > > @@ -26,7 +26,7 @@ static void amd_xgbe_realize(DeviceState *dev, Erro=
-r =20
-> > **errp) =20
-> > >  }
-> > >
-> > >  static const VMStateDescription vfio_platform_amd_xgbe_vmstate =3D {
-> > > -    .name =3D TYPE_VFIO_AMD_XGBE,
-> > > +    .name =3D "vfio-amd-xgbe",
-> > >      .unmigratable =3D 1,
-> > >  };
-> > >
-> > > diff --git a/hw/vfio/ap.c b/hw/vfio/ap.c
-> > > index d8b79ebe53..564751650f 100644
-> > > --- a/hw/vfio/ap.c
-> > > +++ b/hw/vfio/ap.c
-> > > @@ -155,7 +155,7 @@ static void vfio_ap_reset(DeviceState *dev)
-> > >  }
-> > >
-> > >  static const VMStateDescription vfio_ap_vmstate =3D {
-> > > -    .name =3D VFIO_AP_DEVICE_TYPE,
-> > > +    .name =3D "vfio-ap",
-> > >      .unmigratable =3D 1,
-> > >  };
-> > >
-> > > diff --git a/hw/vfio/calxeda-xgmac.c b/hw/vfio/calxeda-xgmac.c
-> > > index e7767c4b02..6cc608b6ca 100644
-> > > --- a/hw/vfio/calxeda-xgmac.c
-> > > +++ b/hw/vfio/calxeda-xgmac.c
-> > > @@ -26,7 +26,7 @@ static void calxeda_xgmac_realize(DeviceState *dev,=
- =20
-> > Error **errp) =20
-> > >  }
-> > >
-> > >  static const VMStateDescription vfio_platform_calxeda_xgmac_vmstate =
-=3D {
-> > > -    .name =3D TYPE_VFIO_CALXEDA_XGMAC,
-> > > +    .name =3D "vfio-calxeda-xgmac",
-> > >      .unmigratable =3D 1,
-> > >  };
-> > >
-> > > diff --git a/hw/vfio/ccw.c b/hw/vfio/ccw.c
-> > > index 31dd3a2a87..d9e39552e2 100644
-> > > --- a/hw/vfio/ccw.c
-> > > +++ b/hw/vfio/ccw.c
-> > > @@ -468,7 +468,7 @@ static Property vfio_ccw_properties[] =3D {
-> > >  };
-> > >
-> > >  static const VMStateDescription vfio_ccw_vmstate =3D {
-> > > -    .name =3D TYPE_VFIO_CCW,
-> > > +    .name =3D "vfio-ccw",
-> > >      .unmigratable =3D 1,
-> > >  };
-> > >
-> > > diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
-> > > index 398db38f14..e59a0234dd 100644
-> > > --- a/hw/vfio/platform.c
-> > > +++ b/hw/vfio/platform.c
-> > > @@ -697,7 +697,7 @@ out:
-> > >  }
-> > >
-> > >  static const VMStateDescription vfio_platform_vmstate =3D {
-> > > -    .name =3D TYPE_VFIO_PLATFORM,
-> > > +    .name =3D "vfio-platform",
-> > >      .unmigratable =3D 1,
-> > >  };
-> > > =20
-> >
-> > =20
-
+> ---
+>  hw/riscv/sifive_e.c    | 6 ++++--
+>  hw/riscv/sifive_plic.c | 3 +++
+>  hw/riscv/sifive_u.c    | 6 ++++--
+>  hw/riscv/spike.c       | 2 ++
+>  hw/riscv/virt.c        | 1 +
+>  5 files changed, 14 insertions(+), 4 deletions(-)
+>
+> diff --git a/hw/riscv/sifive_e.c b/hw/riscv/sifive_e.c
+> index b1cd11363c..ae86a63c04 100644
+> --- a/hw/riscv/sifive_e.c
+> +++ b/hw/riscv/sifive_e.c
+> @@ -137,6 +137,7 @@ static void riscv_sifive_e_init(MachineState *machine)
+>
+>  static void riscv_sifive_e_soc_init(Object *obj)
+>  {
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+>      SiFiveESoCState *s = RISCV_E_SOC(obj);
+>
+>      object_initialize_child(obj, "cpus", &s->cpus,
+> @@ -144,12 +145,13 @@ static void riscv_sifive_e_soc_init(Object *obj)
+>                              &error_abort, NULL);
+>      object_property_set_str(OBJECT(&s->cpus), SIFIVE_E_CPU, "cpu-type",
+>                              &error_abort);
+> -    object_property_set_int(OBJECT(&s->cpus), smp_cpus, "num-harts",
+> +    object_property_set_int(OBJECT(&s->cpus), ms->smp.cpus, "num-harts",
+>                              &error_abort);
+>  }
+>
+>  static void riscv_sifive_e_soc_realize(DeviceState *dev, Error **errp)
+>  {
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+>      const struct MemmapEntry *memmap = sifive_e_memmap;
+>
+>      SiFiveESoCState *s = RISCV_E_SOC(dev);
+> @@ -179,7 +181,7 @@ static void riscv_sifive_e_soc_realize(DeviceState *dev, Error **errp)
+>          SIFIVE_E_PLIC_CONTEXT_STRIDE,
+>          memmap[SIFIVE_E_PLIC].size);
+>      sifive_clint_create(memmap[SIFIVE_E_CLINT].base,
+> -        memmap[SIFIVE_E_CLINT].size, smp_cpus,
+> +        memmap[SIFIVE_E_CLINT].size, ms->smp.cpus,
+>          SIFIVE_SIP_BASE, SIFIVE_TIMECMP_BASE, SIFIVE_TIME_BASE);
+>      sifive_mmio_emulate(sys_mem, "riscv.sifive.e.aon",
+>          memmap[SIFIVE_E_AON].base, memmap[SIFIVE_E_AON].size);
+> diff --git a/hw/riscv/sifive_plic.c b/hw/riscv/sifive_plic.c
+> index 07a032d93d..d4010a1f39 100644
+> --- a/hw/riscv/sifive_plic.c
+> +++ b/hw/riscv/sifive_plic.c
+> @@ -23,6 +23,7 @@
+>  #include "qemu/error-report.h"
+>  #include "hw/sysbus.h"
+>  #include "hw/pci/msi.h"
+> +#include "hw/boards.h"
+>  #include "target/riscv/cpu.h"
+>  #include "sysemu/sysemu.h"
+>  #include "hw/riscv/sifive_plic.h"
+> @@ -438,6 +439,8 @@ static void sifive_plic_irq_request(void *opaque, int irq, int level)
+>
+>  static void sifive_plic_realize(DeviceState *dev, Error **errp)
+>  {
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+> +    unsigned int smp_cpus = ms->smp.cpus;
+>      SiFivePLICState *plic = SIFIVE_PLIC(dev);
+>      int i;
+>
+> diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
+> index 5ecc47cea3..43bf256946 100644
+> --- a/hw/riscv/sifive_u.c
+> +++ b/hw/riscv/sifive_u.c
+> @@ -321,13 +321,14 @@ static void riscv_sifive_u_init(MachineState *machine)
+>
+>  static void riscv_sifive_u_soc_init(Object *obj)
+>  {
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+>      SiFiveUSoCState *s = RISCV_U_SOC(obj);
+>
+>      object_initialize_child(obj, "cpus", &s->cpus, sizeof(s->cpus),
+>                              TYPE_RISCV_HART_ARRAY, &error_abort, NULL);
+>      object_property_set_str(OBJECT(&s->cpus), SIFIVE_U_CPU, "cpu-type",
+>                              &error_abort);
+> -    object_property_set_int(OBJECT(&s->cpus), smp_cpus, "num-harts",
+> +    object_property_set_int(OBJECT(&s->cpus), ms->smp.cpus, "num-harts",
+>                              &error_abort);
+>
+>      sysbus_init_child_obj(obj, "gem", &s->gem, sizeof(s->gem),
+> @@ -336,6 +337,7 @@ static void riscv_sifive_u_soc_init(Object *obj)
+>
+>  static void riscv_sifive_u_soc_realize(DeviceState *dev, Error **errp)
+>  {
+> +    MachineState *ms = MACHINE(qdev_get_machine());
+>      SiFiveUSoCState *s = RISCV_U_SOC(dev);
+>      const struct MemmapEntry *memmap = sifive_u_memmap;
+>      MemoryRegion *system_memory = get_system_memory();
+> @@ -371,7 +373,7 @@ static void riscv_sifive_u_soc_realize(DeviceState *dev, Error **errp)
+>      sifive_uart_create(system_memory, memmap[SIFIVE_U_UART1].base,
+>          serial_hd(1), qdev_get_gpio_in(DEVICE(s->plic), SIFIVE_U_UART1_IRQ));
+>      sifive_clint_create(memmap[SIFIVE_U_CLINT].base,
+> -        memmap[SIFIVE_U_CLINT].size, smp_cpus,
+> +        memmap[SIFIVE_U_CLINT].size, ms->smp.cpus,
+>          SIFIVE_SIP_BASE, SIFIVE_TIMECMP_BASE, SIFIVE_TIME_BASE);
+>
+>      for (i = 0; i < SIFIVE_U_PLIC_NUM_SOURCES; i++) {
+> diff --git a/hw/riscv/spike.c b/hw/riscv/spike.c
+> index 2a000a5800..6a747ff22e 100644
+> --- a/hw/riscv/spike.c
+> +++ b/hw/riscv/spike.c
+> @@ -171,6 +171,7 @@ static void spike_v1_10_0_board_init(MachineState *machine)
+>      MemoryRegion *main_mem = g_new(MemoryRegion, 1);
+>      MemoryRegion *mask_rom = g_new(MemoryRegion, 1);
+>      int i;
+> +    unsigned int smp_cpus = machine->smp.cpus;
+>
+>      /* Initialize SOC */
+>      object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->soc),
+> @@ -253,6 +254,7 @@ static void spike_v1_09_1_board_init(MachineState *machine)
+>      MemoryRegion *main_mem = g_new(MemoryRegion, 1);
+>      MemoryRegion *mask_rom = g_new(MemoryRegion, 1);
+>      int i;
+> +    unsigned int smp_cpus = machine->smp.cpus;
+>
+>      /* Initialize SOC */
+>      object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->soc),
+> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+> index fc4c6b306e..b3f1962384 100644
+> --- a/hw/riscv/virt.c
+> +++ b/hw/riscv/virt.c
+> @@ -395,6 +395,7 @@ static void riscv_virt_board_init(MachineState *machine)
+>      char *plic_hart_config;
+>      size_t plic_hart_config_len;
+>      int i;
+> +    unsigned int smp_cpus = machine->smp.cpus;
+>      void *fdt;
+>
+>      /* Initialize SOC */
+> --
+> 2.21.0
+>
 
