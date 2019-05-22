@@ -1,63 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hTTL7-0006YJ-UR
-	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2019 11:39:37 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47497)
+	id 1hTTM8-0007cc-Li
+	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2019 11:40:40 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:48062)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hTTL3-0006Ra-0Z
-	for qemu-trivial@nongnu.org; Wed, 22 May 2019 11:39:36 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hTTM6-0007Yy-9s
+	for qemu-trivial@nongnu.org; Wed, 22 May 2019 11:40:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hTTJJ-0001d6-Rz
-	for qemu-trivial@nongnu.org; Wed, 22 May 2019 11:37:47 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:34747)
+	(envelope-from <laurent@vivier.eu>) id 1hTTAS-0003eD-MM
+	for qemu-trivial@nongnu.org; Wed, 22 May 2019 11:28:38 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:37321)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hTTJJ-0001YH-G9; Wed, 22 May 2019 11:37:45 -0400
+	id 1hTTAQ-0003Qf-IH; Wed, 22 May 2019 11:28:34 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
-	1MYvPq-1h7O4g3eam-00Unup; Wed, 22 May 2019 17:37:15 +0200
-To: Antonio Ospite <antonio.ospite@collabora.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Eric Blake <eblake@redhat.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Antonio Ospite <ao2@ao2.it>,
-	QEMU Developers <qemu-devel@nongnu.org>
-References: <20190503082728.16485-1-ao2@ao2.it>
-	<20190503082728.16485-3-ao2@ao2.it>
-	<541bfc5c-0e45-58e6-f0b1-81e9b0c8881d@redhat.com>
-	<CAFEAcA8An-KWOc3gOz2=45eCHCmUJEJw_bTrrCW6bYO23H8TPw@mail.gmail.com>
-	<a5f95284-2883-e6c0-54ad-d0ff018f68d7@vivier.eu>
-	<9349da74-b4a1-932d-227a-a63df1bb63a5@collabora.com>
-	<87d49db7-68c7-7c2e-7464-47e335013e58@vivier.eu>
-	<ef62c3b1-c01d-8480-20c0-36dd38bb6c8c@collabora.com>
+	(mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+	1MA88C-1hNNIj19je-00BgYr; Wed, 22 May 2019 17:28:23 +0200
+To: Li Qiang <liq3ea@163.com>, alex.williamson@redhat.com, lvivier@redhat.com
+Cc: qemu-trivial@nongnu.org, philmd@redhat.com, liq3ea@gmail.com,
+	qemu-devel@nongnu.org
+References: <20190521151543.92274-1-liq3ea@163.com>
+	<20190521151543.92274-5-liq3ea@163.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <ab8fc3ae-cb39-e032-eccf-e6ffface13dc@vivier.eu>
-Date: Wed, 22 May 2019 17:37:11 +0200
+Message-ID: <79fbe9f0-9e9c-e336-6d8c-ace70910def8@vivier.eu>
+Date: Wed, 22 May 2019 17:28:22 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <ef62c3b1-c01d-8480-20c0-36dd38bb6c8c@collabora.com>
+In-Reply-To: <20190521151543.92274-5-liq3ea@163.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:gkAdrMjluT1UmBRE/jO+3J9yiMH5oMpkzfRE88nUY/a9conYZec
-	pH/ns7NeHQjy87V56mxwn1tBaaVg75htq0vDiHA8ZA/B8efhOpvDdVxvNAs2AZFdAUpdfRU
-	QdaV5Hb4OfN7RhBBYHycr3cdeJzqCePeopyI4iT/yRFKSWhpmB3V6LYb65axB/yWVGo7uRf
-	ugXGTXjvZfX8iywmlIaAg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:z4Zy7+03s4Q=:hFWP9u9wIwvVs0yK30Ise1
-	i14XWBqVKp87LVamZZULjMh5egXu26zIFa4bIQ12w5aaPLPG+9EuyVEDXPSxvZ9ZZlEbNH+xP
-	USYwPGqEzVXtZObhVSEbEKKpHat6uT1TCRv1tyZ6IOHDkZEaWaoFCNe+HlWSup8YjtNT3Xeey
-	HpDcs/lhLBeus0Jma3FTgdWwtCenA5zQ4W/3lheaB0XtouqfbO38o5jYJYQLkzVL9QlcQvNJ6
-	tSOaFxUquaqZrvIGxygrqGarP46CsOUwDQGSi0SBp6ZzuX7OFQl84gGA2HSFkFxLbRtnOG3A6
-	5nckb98UTVAPD3SDyamvYHUIPDLtdjSUHwA0HdrMoPYTAV55+xSKgi3FkFCWW7Zs2upQj4Lpj
-	3ruQcV04H5XLe+b3FLJ2K8uguN6nYyyTw7SuDtqYp3Y5E0skIF1i9Vp1MnOT5oX3IV1d2r0b0
-	Crhj/QBHxsIsvP5Bb5lrA+2tm5qjiDic15EhiJAEMK42/+3nyLxBonqT9UD2ZeaaYhtXRkK38
-	fJm0dpOizkAVoreKvf6QPLELpLjIyYuUZwaokfziFDpCzBPegVZGgzip1UXN6ovBebJMYDfWd
-	Q3ffrZveglSFrb6pizQ912uSLfQrdtniGn6xG1OS805vOWBPkD2CbJALhrrYpof9UEx/FNO7W
-	7uONUpqBik2YcbaWadgvU6LnSjOkaSKUhs4dLHfrk5gXafVOK8n45KlxCxToqj5vMXlwGY/8+
-	k3o0YdEerAWARudbdC+LWQVdc7FOZKXF6d2JeAnxNBj7VTMCBhPic+wocxqK6BJvvwZ4m/ryR
-	clHUlbqJKsHz4K42g/PDRz4+00Mfzz+6JESaJuMnmK92RvZnJXqedbjSui9N0jbfi773QXC
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:47S8TV6j+NyPoexXxIrNiMRl+f69Ut2upVf0LZ/I+GRojZOpPVG
+	uR2mCzp4iYcx303UJmdh/TcNDpglsj4pmrojftXFCKsh/HSNUAFA24jfJe6ieXKwcml5nte
+	PBzxfbSa/hBS0vEQLRp7sc1cMGlfVLzpEZIxtNP7APaVFfwq7nToChS/FSLuDe3boyzLkQb
+	7/U2uqw3Glynrz1XmMf2g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:bhrVebz6tMo=:43BxW8/E8POmQ7p6HYI6+5
+	CiwEB/KB5wxBh0gMRmWsJauMi9PFicADfgai5Tw60rtFPr3hi9FVnEK3IUvUQaJDdEBg+juBB
+	waK/nVCpfmdixs84B1bZ1FWaUpbCJCRkTdG+l82aKCbKV17C6rS455eKAfzQyutybT+FfPpGc
+	fA50KsQuKauq4o1A5WeJSWJknxohwDryCQ3+QaseHZHRSLuTl1G4X9d7MpTmOF5sgjpiV3/bk
+	HkCYeMNtJzBE+Q4+5fetZ6hmdp0ZQVbrULHNlxf3j4fUdE3yEvO1Dztu9sXQyofJ3jypX1TMQ
+	lOckBdOJuCig3Gz55HgZ4Dnz85YAELujWpdLYZgXAr6keyfKBBY9KQnKSt1G6PidiYo2aWyUn
+	Sfz8xjsGB69ff53lCYTPbIUNY18cKMnGveBCCUYq8lUXInaFxYFSmt3ZMBDXWNMwdVs+FHOrW
+	opAXFo/bFxcnDigCVNiZlaxBar98NPpNKXO4wh23KW+u1wcpChvwZSAwI/ymRm1VrtcM3oHB+
+	hkfvW/cqHr4iOKEZwDkxOrraprgjRR4enkzdlPxsnAkTvpptvWBGG26v+iaagos8lmOEqHK+h
+	Hpd+tfa9otnFldbCRk961z31EDJRCYquOqADvHRB9jqo+AidnFTrl9ELCpV2XPS7KB8PhWFmR
+	5Ir9WmmaRPY9I4DpOTIBS2CCWE9zCE3juBJkRAq+VKzN6hkqMaXKlMgyvEAnda7Anjan3BaKa
+	BKvFp9EpoehG0GASeGzVHa4v5DpUeRI6pFDlSeTHckkVoQbcXhE91lavJu4=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.73
-Subject: Re: [Qemu-trivial] [PATCH v2 2/2] configure: disallow spaces and
- colons in source path and build path
+X-Received-From: 212.227.17.10
+Subject: Re: [Qemu-trivial] [PATCH v2 4/4] pci: msix: move 'MSIX_CAP_LENGTH'
+ to header file
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -69,95 +61,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 May 2019 15:39:36 -0000
+X-List-Received-Date: Wed, 22 May 2019 15:40:39 -0000
 
-On 22/05/2019 17:26, Antonio Ospite wrote:
-> On 22/05/19 17:21, Laurent Vivier wrote:
->> On 22/05/2019 17:01, Antonio Ospite wrote:
->>> On 22/05/19 15:57, Laurent Vivier wrote:
->>>> On 09/05/2019 16:42, Peter Maydell wrote:
->>>>> On Mon, 6 May 2019 at 18:27, Eric Blake <eblake@redhat.com> wrote:
->>>>>>
->>>>>> On 5/3/19 3:27 AM, Antonio Ospite wrote:
->>>>>>> From: Antonio Ospite <antonio.ospite@collabora.com>
->>>>>>>
->>>>>>> The configure script breaks when the qemu source directory is in 
->>>>>>> a path
->>>>>>> containing white spaces, in particular the list of targets is not
->>>>>>> correctly generated when calling "./configure --help" because of 
->>>>>>> how the
->>>>>>> default_target_list variable is built.
->>>>>>>
->>>>>>> In addition to that, *building* qemu from a directory with spaces 
->>>>>>> breaks
->>>>>>> some assumptions in the Makefiles, even if the original source 
->>>>>>> path does
->>>>>>> not contain spaces like in the case of an out-of-tree build, or when
->>>>>>> symlinks are involved.
->>>>>>>
->>>>>>> To avoid these issues, refuse to run the configure script and the
->>>>>>> Makefile if there are spaces or colons in the source path or the 
->>>>>>> build
->>>>>>> path, taking as inspiration what the kbuild system in linux does.
->>>>>>>
->>>>>>> Buglink: https://bugs.launchpad.net/qemu/+bug/1817345
->>>>>>>
->>>>>>> Signed-off-by: Antonio Ospite <antonio.ospite@collabora.com>
->>>>>>> ---
->>>>>>>   Makefile  | 4 ++++
->>>>>>>   configure | 6 ++++++
->>>>>>>   2 files changed, 10 insertions(+)
->>>>>>>
->>>>>>
->>>>>>> +++ b/Makefile
->>>>>>> @@ -1,5 +1,9 @@
->>>>>>>   # Makefile for QEMU.
->>>>>>>
->>>>>>> +ifneq ($(words $(subst :, ,$(CURDIR))), 1)
->>>>>>> +  $(error main directory cannot contain spaces nor colons)
->>>>>>> +endif
->>>>>>> +
->>>>>>>   # Always point to the root of the build tree (needs GNU make).
->>>>>>>   BUILD_DIR=$(CURDIR)
->>>>>>>
->>>>>>> diff --git a/configure b/configure
->>>>>>> index 9832cbca5c..f7ad4381bd 100755
->>>>>>> --- a/configure
->>>>>>> +++ b/configure
->>>>>>> @@ -279,6 +279,12 @@ ld_has() {
->>>>>>>   # make source path absolute
->>>>>>>   source_path=$(cd "$(dirname -- "$0")"; pwd)
->>>>>>>
->>>>>>> +if printf "%s\n" "$source_path" | grep -q "[[:space:]:]" ||
->>>>>>> +  printf "%s\n" "$PWD" | grep -q "[[:space:]:]";
->>>>>>
->>>>>> For less typing and fewer processes, you could shorten this to:
->>>>>>
->>>>>> if printf %s\\n "$source_path" "$PWD" | grep -q "[[:space:]:]";
->>>>>>
->>>>>> but that's trivial enough for a maintainer to fold in if desired.
->>>>>>
->>>>>> Reviewed-by: Eric Blake <eblake@redhat.com>
->>>>>
->>>>> What tree is this going to go in via? I suggest the
->>>>> -trivial tree.
->>>>
->>>>
->>>> Applied (unchanged) to my trivial-patches branch.
->>>>
->>>
->>> Thank you Laurent.
->>>
->>> I'll think about sending a followup patch with the changes proposed 
->>> by Eric and I'll CC you if I do.
->>
->> If you want to send a v3 of this patch to update it, I can wait.
+On 21/05/2019 17:15, Li Qiang wrote:
+> 'MSIX_CAP_LENGTH' is defined in two .c file. Move it
+> to hw/pci/msix.h file to reduce duplicated code.
 > 
-> That works too, I was waiting for the maintainers to decide what to do.
+> CC: qemu-trivial@nongnu.org
+> Signed-off-by: Li Qiang <liq3ea@163.com>
+> ---
+>   hw/pci/msix.c         | 2 --
+>   hw/vfio/pci.c         | 2 --
+>   include/hw/pci/msix.h | 2 ++
+>   3 files changed, 2 insertions(+), 4 deletions(-)
 > 
-> I'll try to send a v3 before Monday then.
+> diff --git a/hw/pci/msix.c b/hw/pci/msix.c
+> index 4e336416a7..d39dcf32e8 100644
+> --- a/hw/pci/msix.c
+> +++ b/hw/pci/msix.c
+> @@ -24,8 +24,6 @@
+>   #include "qapi/error.h"
+>   #include "trace.h"
+>   
+> -#define MSIX_CAP_LENGTH 12
+> -
+>   /* MSI enable bit and maskall bit are in byte 1 in FLAGS register */
+>   #define MSIX_CONTROL_OFFSET (PCI_MSIX_FLAGS + 1)
+>   #define MSIX_ENABLE_MASK (PCI_MSIX_FLAGS_ENABLE >> 8)
+> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> index 08729e5875..8e555db12e 100644
+> --- a/hw/vfio/pci.c
+> +++ b/hw/vfio/pci.c
+> @@ -35,8 +35,6 @@
+>   #include "trace.h"
+>   #include "qapi/error.h"
+>   
+> -#define MSIX_CAP_LENGTH 12
+> -
+>   #define TYPE_VFIO_PCI "vfio-pci"
+>   #define PCI_VFIO(obj)    OBJECT_CHECK(VFIOPCIDevice, obj, TYPE_VFIO_PCI)
+>   
+> diff --git a/include/hw/pci/msix.h b/include/hw/pci/msix.h
+> index 1f27658d35..08acfa836e 100644
+> --- a/include/hw/pci/msix.h
+> +++ b/include/hw/pci/msix.h
+> @@ -4,6 +4,8 @@
+>   #include "qemu-common.h"
+>   #include "hw/pci/pci.h"
+>   
+> +#define MSIX_CAP_LENGTH 12
+> +
+>   void msix_set_message(PCIDevice *dev, int vector, MSIMessage msg);
+>   MSIMessage msix_get_message(PCIDevice *dev, unsigned int vector);
+>   int msix_init(PCIDevice *dev, unsigned short nentries,
+> 
 
-OK, I will queue your v3 in the pull-request of the next week.
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
