@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hTTMC-0007h6-HS
-	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2019 11:40:44 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47497)
+	id 1hTTMF-0007l9-Tg
+	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2019 11:40:47 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:47642)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hTTM9-0006Ra-TE
-	for qemu-trivial@nongnu.org; Wed, 22 May 2019 11:40:43 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hTTMB-0006e9-RO
+	for qemu-trivial@nongnu.org; Wed, 22 May 2019 11:40:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hTT8P-0004vP-AY
-	for qemu-trivial@nongnu.org; Wed, 22 May 2019 11:26:30 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:42411)
+	(envelope-from <laurent@vivier.eu>) id 1hTT7m-0002j8-Jy
+	for qemu-trivial@nongnu.org; Wed, 22 May 2019 11:25:52 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:36681)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hTT8N-0004lq-Nj; Wed, 22 May 2019 11:26:27 -0400
+	id 1hTT7m-0001lp-3q; Wed, 22 May 2019 11:25:50 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
-	1M6EKU-1ha4pz2bVI-006jSm; Wed, 22 May 2019 17:26:07 +0200
+	(mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+	1MmU1H-1glIXQ3zBR-00iXHu; Wed, 22 May 2019 17:24:58 +0200
 To: Li Qiang <liq3ea@163.com>, alex.williamson@redhat.com, lvivier@redhat.com
 Cc: qemu-trivial@nongnu.org, philmd@redhat.com, liq3ea@gmail.com,
 	qemu-devel@nongnu.org
 References: <20190521151543.92274-1-liq3ea@163.com>
-	<20190521151543.92274-3-liq3ea@163.com>
+	<20190521151543.92274-2-liq3ea@163.com>
 From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <cb0d777b-a3eb-fb43-2a9a-55655a0b35ee@vivier.eu>
-Date: Wed, 22 May 2019 17:26:06 +0200
+Message-ID: <95569030-88c3-bc93-3ca2-0df3cacfa87c@vivier.eu>
+Date: Wed, 22 May 2019 17:24:56 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
 	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190521151543.92274-3-liq3ea@163.com>
+In-Reply-To: <20190521151543.92274-2-liq3ea@163.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:7WrvvgV94uA25ZHf2HEgKkiArIwL0biyNwI+uy5Z/+Rd8LadMR+
-	pbCQXsI/qGSRZmJ6DHc/xnPnP/ytvpKxlI2hejBEbmBZZWyg2zIHVVEPveJRN63aseAgXNY
-	NeIeBbrhYS1isFkQA7xoulSVRHN0JCC76jWD+ShBW+nPWHjhpl0hphgh14QAmliQINxdQ8l
-	jCkIsVgviWU+F4vagF/2Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:7gtSL0HsaNk=:g/eFMPUbj4BLoA+NR34IE+
-	50hRY6EvZYPTACIEB3UZ20vHKC052sXhid5Uul06spJGBu+vT/Q53nj9cv7+JXhZTo2qwbluK
-	eXyCEsIyL01PNc2uHdFSmjos9EO3qhQtKOprBbSsnxFwEfKk9dlQccVzuxLbgC8/POGyhPwH8
-	I19UOXMuzxz2LmLRiRCxz+lCTxDPVXqcPj1Jv5uafEgPrWt9JlRgbFh/MTyUuVwT8ghyQIudB
-	Wiie/4fDug+MmiJMsVhbP6Fu5DS9CyXSCGw28XTph2I7LruiFCaakgv5hu7Fa8ryD+5ONVpfz
-	LarsQGTcQG1eXs3hwuf9CSqdIzAh9eDC2rncaY+rASgI14fATx5Pn1tAroQnHCjbw3vrkMdKx
-	j44owWOWLDUDuV0O2zcTT+85qe+Bv5hD1ytELUluIE3/1GSN1EpOYiba7SlLGVmG8x/phdgqU
-	lzhJpE1hA8aYn1FfYkpBO8lfOKgh12l348R/09Vsq6pjrQLkqTWzcmlLZb80sCaoR3UFEJXxy
-	KAUrStUTh2sXDVvWg7sHSZjgjgoSdlp/hSEWfOPGhglGj99ibduDKaWf1vu2ZIRNZ6EpkIf1k
-	uvTjKAIazUBKgPJGVB2YKt7/W5q+jDwpkWN3Aa+4GMSWGZEeMXOQbuKTDY5SzS6DF3mrpo+0C
-	hf2fnXs3piPcd7aeWAOc6A2DXVVFEzVQGaJ6xFvByrD53AFz8IIhKeTbjD26PVfvvWQ8T6Sli
-	Gnk3rR4y8U0KaYm10eFQH4354AkPDX2Q2pLQAjISFjKb/SC14NN/0cOOYNM=
+X-Provags-ID: V03:K1:YYxbT559wrmEiZSJXIiVTlz4XEHXiwJmOK1UTWuFTaGOwN+1KFO
+	wNgJvJ99l5T0GEnNhNmdJW8bEmz0/dxMjwQ/h7qeH9kZG+FZmz1K4KlFEq72bmNCQGfvkC8
+	hSBxou2f6cf8w/EupdmuzMP3USpf0tH7LuVxybJGcuJQVoWSfZLQNd0dbzz0jlq96OGUXsP
+	jBQ5TZj3o6J9mwRictxKw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:QdWpZOooA34=:lbNjkF3IW9KFWZMyR9kbre
+	T9GuLeL69crLGUMqYDeGYRNNupR6jun7L4fmAohQhw4v/PhE1MudV1i17RM1k8j6LxC2VJI1A
+	Zv0qaGsx/wlDx9PPfze4v1v8TFZ2Xn1Z0UXEuOP/BOxclRQVMeyeUbQIEPtsIxziHoToEoVfu
+	mv8HwlO4z6+IqgAPioUxpSmPKoHmDCJdgTOOaEcvyVI7tQLDC2324QLYKOltHGqUhJM8wl6Uv
+	6ntE/juQXxzhz0kjqZkL+lFZhhegEo9vS1CFtrMeLZx86PBTCE7upKV3bZyrv8uKTUbhUNh5c
+	xmy1fCHEjHJ/HDM8uV+/dLTcjXcEgsJIp+Zc3S+EVouL2P5aGghea81PLTbd1sHcr/WQ61SDQ
+	jX3tq9EzzmTF6HX3QO2CYvBW7VsNi7d9WOQzjeKkKMDYE7l26Uc5JvwzRAQQqln4kGbxf88FB
+	2KR/ACmHS0MrYSIEF4JrUSaxkUZC3hjwAowv4Otuf1KOW60ApLkRQdP2aXJYcD93SFYyZ8RCb
+	U4S6rBjPTNYojMXv6lKCSLssFoBNZhQI0s7gjYHD8YSfJjXut8fSwA/ooN0FyeQbAHhXxwizH
+	bFderINdVIstOr73JHrZX/SgkVeQAgEp49PYE7EDqonKp6HBgnI8QpS1yXahilSKaI+/kd+T/
+	3YXVtn/j5nsYM1qPCQVgRp+tS3zK6frZoO+BosCsUxHZPbeL/jJxNH2s8Cbao7qAY36ddP/Zj
+	skQEF4cVCdBcaSpkHR84rf4agpm1X7pYzN02s2HDVSmjbxtIQNZEatEvmxc=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: Re: [Qemu-trivial] [PATCH v2 2/4] hw: vfio: drop TYPE_FOO MACRO in
- VMStateDescription
+X-Received-From: 217.72.192.74
+Subject: Re: [Qemu-trivial] [PATCH v2 1/4] vfio: pci: make
+ "vfio-pci-nohotplug" as MACRO
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -61,90 +61,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 May 2019 15:40:43 -0000
+X-List-Received-Date: Wed, 22 May 2019 15:40:45 -0000
 
 On 21/05/2019 17:15, Li Qiang wrote:
-> It's recommended that VMStateDescription names are decoupled from QOM
-> type names as the latter may freely change without consideration of
-> migration compatibility.
-> 
-> Link: https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg02175.html
+> The QOMConventions recommends we should use TYPE_FOO
+> for a TypeInfo's name. Though "vfio-pci-nohotplug" is not
+> used in other parts, for consistency we should make this change.
 > 
 > CC: qemu-trivial@nongnu.org
 > Signed-off-by: Li Qiang <liq3ea@163.com>
 > ---
->   hw/vfio/amd-xgbe.c      | 2 +-
->   hw/vfio/ap.c            | 2 +-
->   hw/vfio/calxeda-xgmac.c | 2 +-
->   hw/vfio/ccw.c           | 2 +-
->   hw/vfio/platform.c      | 2 +-
->   5 files changed, 5 insertions(+), 5 deletions(-)
+>   hw/vfio/pci.c | 6 ++++--
+>   1 file changed, 4 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/vfio/amd-xgbe.c b/hw/vfio/amd-xgbe.c
-> index ee64a3b4a2..1b06c0f3ea 100644
-> --- a/hw/vfio/amd-xgbe.c
-> +++ b/hw/vfio/amd-xgbe.c
-> @@ -26,7 +26,7 @@ static void amd_xgbe_realize(DeviceState *dev, Error **errp)
+> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> index 8cecb53d5c..08729e5875 100644
+> --- a/hw/vfio/pci.c
+> +++ b/hw/vfio/pci.c
+> @@ -40,6 +40,8 @@
+>   #define TYPE_VFIO_PCI "vfio-pci"
+>   #define PCI_VFIO(obj)    OBJECT_CHECK(VFIOPCIDevice, obj, TYPE_VFIO_PCI)
+>   
+> +#define TYPE_VIFO_PCI_NOHOTPLUG "vfio-pci-nohotplug"
+> +
+>   static void vfio_disable_interrupts(VFIOPCIDevice *vdev);
+>   static void vfio_mmap_set_enabled(VFIOPCIDevice *vdev, bool enabled);
+>   
+> @@ -3304,8 +3306,8 @@ static void vfio_pci_nohotplug_dev_class_init(ObjectClass *klass, void *data)
 >   }
 >   
->   static const VMStateDescription vfio_platform_amd_xgbe_vmstate = {
-> -    .name = TYPE_VFIO_AMD_XGBE,
-> +    .name = "vfio-amd-xgbe",
->       .unmigratable = 1,
+>   static const TypeInfo vfio_pci_nohotplug_dev_info = {
+> -    .name = "vfio-pci-nohotplug",
+> -    .parent = "vfio-pci",
+> +    .name = TYPE_VIFO_PCI_NOHOTPLUG,
+> +    .parent = TYPE_VFIO_PCI,
+>       .instance_size = sizeof(VFIOPCIDevice),
+>       .class_init = vfio_pci_nohotplug_dev_class_init,
 >   };
->   
-> diff --git a/hw/vfio/ap.c b/hw/vfio/ap.c
-> index d8b79ebe53..564751650f 100644
-> --- a/hw/vfio/ap.c
-> +++ b/hw/vfio/ap.c
-> @@ -155,7 +155,7 @@ static void vfio_ap_reset(DeviceState *dev)
->   }
->   
->   static const VMStateDescription vfio_ap_vmstate = {
-> -    .name = VFIO_AP_DEVICE_TYPE,
-> +    .name = "vfio-ap",
->       .unmigratable = 1,
->   };
->   
-> diff --git a/hw/vfio/calxeda-xgmac.c b/hw/vfio/calxeda-xgmac.c
-> index e7767c4b02..6cc608b6ca 100644
-> --- a/hw/vfio/calxeda-xgmac.c
-> +++ b/hw/vfio/calxeda-xgmac.c
-> @@ -26,7 +26,7 @@ static void calxeda_xgmac_realize(DeviceState *dev, Error **errp)
->   }
->   
->   static const VMStateDescription vfio_platform_calxeda_xgmac_vmstate = {
-> -    .name = TYPE_VFIO_CALXEDA_XGMAC,
-> +    .name = "vfio-calxeda-xgmac",
->       .unmigratable = 1,
->   };
->   
-> diff --git a/hw/vfio/ccw.c b/hw/vfio/ccw.c
-> index 31dd3a2a87..d9e39552e2 100644
-> --- a/hw/vfio/ccw.c
-> +++ b/hw/vfio/ccw.c
-> @@ -468,7 +468,7 @@ static Property vfio_ccw_properties[] = {
->   };
->   
->   static const VMStateDescription vfio_ccw_vmstate = {
-> -    .name = TYPE_VFIO_CCW,
-> +    .name = "vfio-ccw",
->       .unmigratable = 1,
->   };
->   
-> diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
-> index 398db38f14..e59a0234dd 100644
-> --- a/hw/vfio/platform.c
-> +++ b/hw/vfio/platform.c
-> @@ -697,7 +697,7 @@ out:
->   }
->   
->   static const VMStateDescription vfio_platform_vmstate = {
-> -    .name = TYPE_VFIO_PLATFORM,
-> +    .name = "vfio-platform",
->       .unmigratable = 1,
->   };
->   
 > 
 
 Applied to my trivial-patches branch.
