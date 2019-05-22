@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hTTmz-0002Dh-8V
+	id 1hTTmz-0002EA-IV
 	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2019 12:08:25 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57546)
+Received: from eggs.gnu.org ([209.51.188.92]:57476)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hTTmw-0002Ag-Ue
-	for qemu-trivial@nongnu.org; Wed, 22 May 2019 12:08:23 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hTTmu-00029P-B3
+	for qemu-trivial@nongnu.org; Wed, 22 May 2019 12:08:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hTTmw-0003ye-1X
-	for qemu-trivial@nongnu.org; Wed, 22 May 2019 12:08:22 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:45063)
+	(envelope-from <laurent@vivier.eu>) id 1hTTms-0003mx-6G
+	for qemu-trivial@nongnu.org; Wed, 22 May 2019 12:08:19 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:51061)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hTTmr-0003b0-8C; Wed, 22 May 2019 12:08:17 -0400
+	id 1hTTmr-0003jo-TB; Wed, 22 May 2019 12:08:18 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1MZTua-1h6oR11uZa-00WRq1; Wed, 22 May 2019 18:07:33 +0200
+	id 1MPGNn-1hH1yB1VvR-00PcMA; Wed, 22 May 2019 18:07:30 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Tony Krowiak <akrowiak@linux.ibm.com>,
@@ -29,37 +29,32 @@ Cc: Tony Krowiak <akrowiak@linux.ibm.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Michael Tokarev <mjt@tls.msk.ru>,
 	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Pierre Morel <pmorel@linux.ibm.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Laszlo Ersek <lersek@redhat.com>
-Date: Wed, 22 May 2019 18:07:16 +0200
-Message-Id: <20190522160723.31484-3-laurent@vivier.eu>
+	Pierre Morel <pmorel@linux.ibm.com>
+Date: Wed, 22 May 2019 18:07:14 +0200
+Message-Id: <20190522160723.31484-1-laurent@vivier.eu>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190522160723.31484-1-laurent@vivier.eu>
-References: <20190522160723.31484-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:jljocFWONHU390H0jNzDJadl4tUZ4KnZQsilBGFp50u0xC8Xc4w
-	H2zUlzVa6E5/9/OQFsK3po0aAitkWEvRGFZV8FPmsXJl4qtZrY68k+LE+HkZ4se90ETqmq4
-	AOUiI4wbp4InOBH912tWnuWGQJxOTqmkCcSuK3U1HfbXMj2G+nooNjcnL2UDZMxkY6YFTm2
-	P0Cf88U7/k/HQ1TVSqgNA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:U6HlSEZRSVU=:kkXsYqQMRrO15L7XkI9nyK
-	KhwP0ogsHg0nmpLlI+1WJW5+2cbPFD7NT4oN/ukk4duMC1bxOogfmnSvu8k/nnImoFCtMGpwm
-	bWfa1em/WuQeeSuVh/rVWvKBf//+S8rutgdBnT3ucsWbA5uRKRfPRVzGS8nW2E3VJJJ7NHMY7
-	XbcdrJN5b4H/q3d47ofJcB9qQvgP1nIV7KKBrq1DRt751JklRrc2ebLbskJB+WPrgWAk3ezqV
-	QYJyUwclLZvlBYiBVwCFjuy+TMwPy+xr235r5Z1lEKLFRKNPENZY1wCOPWyPaZutCJlpdN9t8
-	SA+zROC/VXNVzMkJ61njtWfu2NoXAEX/xaebI2IoKP2OiRZL0PvGb2SZa34ibBw5khSEzVymS
-	PX++Zum+Fv7yQ34xaGCacvF2CAIMnpXeuaWhoM66cByoqYvI47aqSJ3e8Yfd/VPfwL287q5Lw
-	JnM6h4qqonBe9UnUqct5J1A5Hod9hCoQdxdTrYK0b38acqFdEctYW/kQoHhjkgo5klvQsQU1Q
-	VenIOFbk0oUP9M/eLRVDmLtV3xEywNin+yurJzo/YjGNJyd+Jh+6UIPGmThqbypGJTIXwqcB1
-	ttdNYX6tDFCHs3YYDp2+Jf3OWTmaYLZdic5Gq7AjZcWub4Pd8rQpbYEgJcVAIa2pbjMDaUSx/
-	qHMSKz0l1TBRFC12HLtLKM4W4ObQ5o8blNSihcW/StD2IF9nogw5bZ7hUyshoHkVUQnQ0/Vfs
-	LtVe3m2SxQiTrkAJ/R0OXVzqaxJgUB3cj8uCxD1HPj3H2w0CcKrhgyqEHD0=
+X-Provags-ID: V03:K1:Bc2EQXWxgmeghpRKB3zkJhvJEjMpMfWWLtnCIuVfcpGVVQ23w3/
+	6Ygxh3oFk4y5KXx83nvOwSsqyoFGtv6L35Uc9K8xP8Ji8Dam/IhOIODRNDRLd6CLCqV7kyd
+	CXZVTINNcXkO+HVydsLrmdjh33kbbH3NF6ydYPwS3+MXxPYvzBO9xJB8KjE98LCFjYLYbUJ
+	ffEbxE+wU7DBLlHlrFDqA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:UwZULjNLaGI=:IHDUcH55imgHeAkqXc7ZyR
+	2KHfWpAsF+CrGUExkRPByKMZLF9M3kHYCrUanGjoQidXGGLe6poZfFrVRi133xDC2dE3w6b7G
+	mkztjfeZHUH52+yNMxB+NM+CkwUr8juloK7VulgQFvGDjPeVA37Xrv+ZsAu16Fg4n2vDnwSsn
+	hqPGnzMIXDstswnwoZZT52kMu6Lq87GZOT9rzKt9Zj3KQhbnFznOzvQQZa3hkhTcTCXkMiaOL
+	R75hPhZctqclNFt8/7R2EnphSMdFuf56xKQMgo8P1ON9JCDa9k82BsfPFvUFvGta62ROj7S01
+	UG5SQJpXT4xNUW+fIp5+PqKLxjPcQeKuFj/pq+wm7mSqqhV/16xX0QHWVLg+fCs19mMWZtZTe
+	huZXBzRZBTy6VzDsobQ/7Gmp3GP3AdmaW4InyDi4Xwd88PYFB8sm3fR/6BntZTEqBF+rwWsSX
+	zGiACA4//Agxmw6BuWwoMQFmbseo+q4yN7TfGCcx9ADN9SY+wm+i1JbyInvGpRTyCX8OjOWyu
+	1EirDMpZ6bnW6f1gXzWKIVBjVuk+pcN5qrsFP/N53FI2eoqB9bcyxLgrZGpAXo9OmZ/qQVsTy
+	fYFRGhIhrMk2pi/iTWCksrc5N3gm5mxrtzXPXP5PE6fo71mvmhNJDPBLGP+PbdD3nYbwzzNG6
+	ZQqz8+FQBxA/L9E8ipoIAUkmNZHws1G3mNcaANwh/sEDBqsl/oSF0XoUMecnl1yVVAzdTVAxW
+	hA2CeV6tHt2KIYn6qhXYZAZrf+ie3Yz3vtT86MukcBpo2cmef+1p6zI6FtQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.24
-Subject: [Qemu-trivial] [PULL 2/9] roms: Correct the EDK2_BASETOOLS_OPTFLAGS
- variable description
+Subject: [Qemu-trivial] [PULL 0/9] Trivial branch patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,40 +66,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 May 2019 16:08:24 -0000
+X-List-Received-Date: Wed, 22 May 2019 16:08:21 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+The following changes since commit a4f667b6714916683408b983cfe0a615a725775f:
 
-In commit 1cab464136b4 we incorrectly described the
-EDK2_BASETOOLS_OPTFLAGS can pass CPPFLAGS and CFLAGS
-options to the EDK2 build tools, but it only expands
-the CFLAGS (not to the CPPFLAGS).
-Update the description to be more accurate.
+  Merge remote-tracking branch 'remotes/cohuck/tags/s390x-20190521-3' into staging (2019-05-21 16:30:13 +0100)
 
-Reported-by: Laszlo Ersek <lersek@redhat.com>
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20190506141923.12183-2-philmd@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- roms/Makefile | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+are available in the Git repository at:
 
-diff --git a/roms/Makefile b/roms/Makefile
-index 0ce84a45ad57..ea6aec56abdd 100644
---- a/roms/Makefile
-+++ b/roms/Makefile
-@@ -121,8 +121,8 @@ build-efi-roms: build-pxe-roms
- 		$(patsubst %,bin-i386-efi/%.efidrv,$(pxerom_targets)) \
- 		$(patsubst %,bin-x86_64-efi/%.efidrv,$(pxerom_targets))
- 
--# Build scripts can pass compiler/linker flags to the EDK2 build tools
--# via the EDK2_BASETOOLS_OPTFLAGS (CPPFLAGS and CFLAGS) and
-+# Build scripts can pass compiler/linker flags to the EDK2
-+# build tools via the EDK2_BASETOOLS_OPTFLAGS (CFLAGS) and
- # EDK2_BASETOOLS_LDFLAGS (LDFLAGS) environment variables.
- #
- # Example:
+  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+
+for you to fetch changes up to 2d9574bdbed69b374116c59259f6bd14f7dfad7f:
+
+  pci: msix: move 'MSIX_CAP_LENGTH' to header file (2019-05-22 17:35:27 +0200)
+
+----------------------------------------------------------------
+typo fixes, TYPE_XXX usage cleanup, comments update,
+virtio-mmio trace functions cleanup
+
+----------------------------------------------------------------
+
+Boxuan Li (1):
+  hw/virtio/virtio-mmio: Convert DPRINTF to trace and log
+
+Greg Kurz (1):
+  migration: Fix typo in migrate_add_blocker() error message
+
+Li Qiang (4):
+  vfio: pci: make "vfio-pci-nohotplug" as MACRO
+  hw: vfio: drop TYPE_FOO MACRO in VMStateDescription
+  vfio: platform: fix a typo
+  pci: msix: move 'MSIX_CAP_LENGTH' to header file
+
+Markus Armbruster (1):
+  configure: Fix spelling of sdl-image in --help
+
+Philippe Mathieu-Daudé (2):
+  roms: Correct the EDK2_BASETOOLS_OPTFLAGS variable description
+  roms: List and describe the Makefile 'clean' rule
+
+ configure               |  2 +-
+ hw/pci/msix.c           |  2 --
+ hw/vfio/amd-xgbe.c      |  2 +-
+ hw/vfio/ap.c            |  2 +-
+ hw/vfio/calxeda-xgmac.c |  2 +-
+ hw/vfio/ccw.c           |  2 +-
+ hw/vfio/pci.c           |  8 ++++----
+ hw/vfio/platform.c      |  6 +++---
+ hw/virtio/trace-events  |  7 +++++++
+ hw/virtio/virtio-mmio.c | 44 ++++++++++++++++++++---------------------
+ include/hw/pci/msix.h   |  2 ++
+ migration/migration.c   |  2 +-
+ roms/Makefile           |  6 ++++--
+ 13 files changed, 47 insertions(+), 40 deletions(-)
+
 -- 
 2.20.1
 
