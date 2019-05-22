@@ -1,58 +1,95 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hTRpJ-0007kd-Pi
-	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2019 10:02:41 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:47523)
+	id 1hTSAK-00057s-9s
+	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2019 10:24:24 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51772)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hTRpH-0007jH-6D
-	for qemu-trivial@nongnu.org; Wed, 22 May 2019 10:02:40 -0400
+	(envelope-from <thuth@redhat.com>) id 1hTSAH-00055I-9K
+	for qemu-trivial@nongnu.org; Wed, 22 May 2019 10:24:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hTRpF-0002h9-VV
-	for qemu-trivial@nongnu.org; Wed, 22 May 2019 10:02:39 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:42059)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hTRkM-0008L2-ET; Wed, 22 May 2019 09:57:34 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
-	1MrPVJ-1gpAxe1rKJ-00oXuT; Wed, 22 May 2019 15:57:09 +0200
-To: Peter Maydell <peter.maydell@linaro.org>, Eric Blake <eblake@redhat.com>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, Antonio Ospite <ao2@ao2.it>,
-	Antonio Ospite <antonio.ospite@collabora.com>,
-	QEMU Developers <qemu-devel@nongnu.org>
-References: <20190503082728.16485-1-ao2@ao2.it>
-	<20190503082728.16485-3-ao2@ao2.it>
-	<541bfc5c-0e45-58e6-f0b1-81e9b0c8881d@redhat.com>
-	<CAFEAcA8An-KWOc3gOz2=45eCHCmUJEJw_bTrrCW6bYO23H8TPw@mail.gmail.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <a5f95284-2883-e6c0-54ad-d0ff018f68d7@vivier.eu>
-Date: Wed, 22 May 2019 15:57:06 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
-	Thunderbird/52.8.0
+	(envelope-from <thuth@redhat.com>) id 1hTSAG-0006rY-3k
+	for qemu-trivial@nongnu.org; Wed, 22 May 2019 10:24:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36802)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <thuth@redhat.com>)
+	id 1hTSAA-0006EO-FQ; Wed, 22 May 2019 10:24:14 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+	[10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id BFCC0307D945;
+	Wed, 22 May 2019 14:24:08 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-162.ams2.redhat.com [10.36.116.162])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 5B4A55427C;
+	Wed, 22 May 2019 14:24:05 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org
+References: <20190514100019.13263-1-thuth@redhat.com>
+	<20190514100019.13263-2-thuth@redhat.com>
+	<b8cd670b-7a76-6197-1949-3600a8d1dbe0@redhat.com>
+	<1d0b60e6-2d0c-3d91-eaad-ccb076064ac9@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+	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
+Organization: Red Hat
+Message-ID: <311455f4-6760-2383-6222-b1341c5d307e@redhat.com>
+Date: Wed, 22 May 2019 16:24:04 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8An-KWOc3gOz2=45eCHCmUJEJw_bTrrCW6bYO23H8TPw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <1d0b60e6-2d0c-3d91-eaad-ccb076064ac9@redhat.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:7mnKqv+mccePQYCbVgI0nG/6TExsTjtBiFk/mNSC+UJjIA8xttw
-	tf4kdcxX+QIHk4tyDt4AkbwwBywjoJbC/uBcccj/yR0iRN3vlEy9FMuyAD0P1WZZa6IdzK+
-	u6VrvBuz66ArioGGoUj5HqTtAECHhhKLsowecB4LhChW+fReoihV/lsZvT7ujUWKMDoVLrl
-	pJzaHE1rvlIHxZiwayGEw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:4IV3NIeEpoU=:qBD0hJzLMjnlrG0weM8J5P
-	pEkZoDcF6iqLlNh24j16i1zGdOxYhQb4dUuFIad2L8K3lg27ufjkylo05hFHyYErI/lWVZ+RV
-	6hCTFPDkdVwRLuQ9tN9oC5ljLzjnxemVjkA5hBaAXYjKV6v9DHr3lzFaAixtGrXObjvISENF3
-	nXdfEiHDsev3SwWJttRsrk88N3Ix/9UlBLaetjg99icCwONiVfCWbLKB94cjbsBYC0ObbqB+8
-	u96W93Sm42I7JzPNh3S324ujjZ6Q+sSRJNos/11Plou4YMZPl55MJGbIprgGXe3Mg/b5K23FV
-	y9wb13ot6le9cPjNJksIpr2MRoce+d+9cPMYUeVpsLhOtsCLBBkSXFul3pzhEsuZyEqNjxv1g
-	2IqMwu2B5PEgIfjjqqTLDDqOW3jpLgMist9L/Pu06QrcPWvOtNUGnhjg00MeZP104SgPJZdFM
-	1FpqR/XDkZLrowWrxknpYnhyrNJOOLmx1J4igugAfKrQVFwYXRpaUf4q7cYp4os4mtCwTKrxf
-	Rn+N6nnDLJpeeY+iGsqES2oyyGobTQB395HZORzEQpHbsToOa6RhB6vRHq3j1JVM5JuCbgF8V
-	traokJ1OUDIOLMRvZXMLeXVXO662bDBo9Xtz+SrSD7mC3ZG2zdos0KwYMVEaQ62Ja2Xfwn/ya
-	i+Y20z52G+uSCyMcGTHoXn85nlnTNhbE9CB7o816N94Lepb9Pd61is89hVhIabJx7Pm6hU1/5
-	WohX4UOih+dcmBa1fhQ1DCplFzfpB1EcsDNx61dU8VUVi7b5JmevXTfGxNY=
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.48]);
+	Wed, 22 May 2019 14:24:08 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
-Subject: Re: [Qemu-trivial] [PATCH v2 2/2] configure: disallow spaces and
- colons in source path and build path
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/4] hw/core: Add a config
+ switch for the "register" device
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,74 +101,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 May 2019 14:02:40 -0000
+X-List-Received-Date: Wed, 22 May 2019 14:24:22 -0000
 
-On 09/05/2019 16:42, Peter Maydell wrote:
-> On Mon, 6 May 2019 at 18:27, Eric Blake <eblake@redhat.com> wrote:
->>
->> On 5/3/19 3:27 AM, Antonio Ospite wrote:
->>> From: Antonio Ospite <antonio.ospite@collabora.com>
+On 14/05/2019 12.38, Thomas Huth wrote:
+> On 14/05/2019 12.31, Philippe Mathieu-Daud=C3=A9 wrote:
+>> On 5/14/19 12:00 PM, Thomas Huth wrote:
+>>> The "register" device is only used by certain machines. Let's add
+>>> a proper config switch for it so that it only gets compiled when we
+>>> really need it.
 >>>
->>> The configure script breaks when the qemu source directory is in a path
->>> containing white spaces, in particular the list of targets is not
->>> correctly generated when calling "./configure --help" because of how the
->>> default_target_list variable is built.
->>>
->>> In addition to that, *building* qemu from a directory with spaces breaks
->>> some assumptions in the Makefiles, even if the original source path does
->>> not contain spaces like in the case of an out-of-tree build, or when
->>> symlinks are involved.
->>>
->>> To avoid these issues, refuse to run the configure script and the
->>> Makefile if there are spaces or colons in the source path or the build
->>> path, taking as inspiration what the kbuild system in linux does.
->>>
->>> Buglink: https://bugs.launchpad.net/qemu/+bug/1817345
->>>
->>> Signed-off-by: Antonio Ospite <antonio.ospite@collabora.com>
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
 >>> ---
->>>   Makefile  | 4 ++++
->>>   configure | 6 ++++++
->>>   2 files changed, 10 insertions(+)
+>>>  hw/core/Kconfig       | 3 +++
+>>>  hw/core/Makefile.objs | 2 +-
+>>>  hw/dma/Kconfig        | 1 +
+>>>  hw/timer/Kconfig      | 1 +
+>>>  4 files changed, 6 insertions(+), 1 deletion(-)
 >>>
->>
->>> +++ b/Makefile
->>> @@ -1,5 +1,9 @@
->>>   # Makefile for QEMU.
->>>
->>> +ifneq ($(words $(subst :, ,$(CURDIR))), 1)
->>> +  $(error main directory cannot contain spaces nor colons)
->>> +endif
+>>> diff --git a/hw/core/Kconfig b/hw/core/Kconfig
+>>> index c2a1ae8122..d11920fcb3 100644
+>>> --- a/hw/core/Kconfig
+>>> +++ b/hw/core/Kconfig
+>>> @@ -9,3 +9,6 @@ config FITLOADER
+>>> =20
+>>>  config PLATFORM_BUS
+>>>      bool
 >>> +
->>>   # Always point to the root of the build tree (needs GNU make).
->>>   BUILD_DIR=$(CURDIR)
+>>> +config REGISTER
+>>> +    bool
+>>> diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+>>> index a799c83815..d493a051ee 100644
+>>> --- a/hw/core/Makefile.objs
+>>> +++ b/hw/core/Makefile.objs
+>>> @@ -16,7 +16,7 @@ common-obj-$(CONFIG_SOFTMMU) +=3D machine.o
+>>>  common-obj-$(CONFIG_SOFTMMU) +=3D loader.o
+>>>  common-obj-$(CONFIG_FITLOADER) +=3D loader-fit.o
+>>>  common-obj-$(CONFIG_SOFTMMU) +=3D qdev-properties-system.o
+>>> -common-obj-$(CONFIG_SOFTMMU) +=3D register.o
+>>> +common-obj-$(CONFIG_REGISTER) +=3D register.o
+>>>  common-obj-$(CONFIG_SOFTMMU) +=3D or-irq.o
+>>>  common-obj-$(CONFIG_SOFTMMU) +=3D split-irq.o
+>>>  common-obj-$(CONFIG_PLATFORM_BUS) +=3D platform-bus.o
+>>> diff --git a/hw/dma/Kconfig b/hw/dma/Kconfig
+>>> index 751dec5426..5c61b67bc0 100644
+>>> --- a/hw/dma/Kconfig
+>>> +++ b/hw/dma/Kconfig
+>>> @@ -16,6 +16,7 @@ config I8257
+>>> =20
+>>>  config ZYNQ_DEVCFG
+>>>      bool
+>>> +    select REGISTER
+>>> =20
+>>>  config STP2000
+>>>      bool
+>>> diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
+>>> index 51921eb63f..f575481210 100644
+>>> --- a/hw/timer/Kconfig
+>>> +++ b/hw/timer/Kconfig
+>>> @@ -36,6 +36,7 @@ config TWL92230
+>>> =20
+>>>  config XLNX_ZYNQMP
+>>>      bool
+>>> +    select REGISTER
+>>> =20
+>>>  config ALTERA_TIMER
+>>>      bool
 >>>
->>> diff --git a/configure b/configure
->>> index 9832cbca5c..f7ad4381bd 100755
->>> --- a/configure
->>> +++ b/configure
->>> @@ -279,6 +279,12 @@ ld_has() {
->>>   # make source path absolute
->>>   source_path=$(cd "$(dirname -- "$0")"; pwd)
->>>
->>> +if printf "%s\n" "$source_path" | grep -q "[[:space:]:]" ||
->>> +  printf "%s\n" "$PWD" | grep -q "[[:space:]:]";
 >>
->> For less typing and fewer processes, you could shorten this to:
->>
->> if printf %s\\n "$source_path" "$PWD" | grep -q "[[:space:]:]";
->>
->> but that's trivial enough for a maintainer to fold in if desired.
->>
->> Reviewed-by: Eric Blake <eblake@redhat.com>
-> 
-> What tree is this going to go in via? I suggest the
-> -trivial tree.
+>> Annoying, this clashes with "hw/microblaze: Kconfig cleanup" which is
+>> already queued by Paolo:
+>> https://lists.gnu.org/archive/html/qemu-devel/2019-04/msg04669.html
+>=20
+> Ok, I'll wait for the merge of Paolo's next PULL request before sending
+> the v2 of my series.
 
+Looks like your patches were not included in Paolo's last PULL request?
+Did the patches fall through the cracks?
 
-Applied (unchanged) to my trivial-patches branch.
-
-Thanks,
-Laurent
-
+ Thomas
 
