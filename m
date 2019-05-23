@@ -1,65 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hTTnV-0002kC-0S
-	for mharc-qemu-trivial@gnu.org; Wed, 22 May 2019 12:08:57 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57873)
+	id 1hTmLG-0004GJ-9T
+	for mharc-qemu-trivial@gnu.org; Thu, 23 May 2019 07:57:02 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:40174)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hTTnS-0002hl-CG
-	for qemu-trivial@nongnu.org; Wed, 22 May 2019 12:08:55 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hTmLE-0004F1-8E
+	for qemu-trivial@nongnu.org; Thu, 23 May 2019 07:57:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hTTnM-0005CJ-Kh
-	for qemu-trivial@nongnu.org; Wed, 22 May 2019 12:08:52 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:41293)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hTTnC-0004ap-QZ; Wed, 22 May 2019 12:08:40 -0400
-Received: from localhost.localdomain ([78.238.229.36]) by
-	mrelayeu.kundenserver.de (mreue108 [212.227.15.183]) with ESMTPSA
-	(Nemesis)
-	id 1MrhHm-1gos6y1rvQ-00nhqB; Wed, 22 May 2019 18:07:40 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Tony Krowiak <akrowiak@linux.ibm.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Cornelia Huck <cohuck@redhat.com>, Farhan Ali <alifm@linux.ibm.com>,
-	qemu-s390x@nongnu.org, Eric Farman <farman@linux.ibm.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Halil Pasic <pasic@linux.ibm.com>, Laurent Vivier <laurent@vivier.eu>,
-	qemu-trivial@nongnu.org, Juan Quintela <quintela@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Michael Tokarev <mjt@tls.msk.ru>,
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-	Pierre Morel <pmorel@linux.ibm.com>, Li Qiang <liq3ea@163.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Eric Auger <eric.auger@redhat.com>
-Date: Wed, 22 May 2019 18:07:21 +0200
-Message-Id: <20190522160723.31484-8-laurent@vivier.eu>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190522160723.31484-1-laurent@vivier.eu>
-References: <20190522160723.31484-1-laurent@vivier.eu>
+	(envelope-from <peter.maydell@linaro.org>) id 1hTmLD-00024T-BY
+	for qemu-trivial@nongnu.org; Thu, 23 May 2019 07:57:00 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:44116)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hTmLD-00023y-71
+	for qemu-trivial@nongnu.org; Thu, 23 May 2019 07:56:59 -0400
+Received: by mail-oi1-x244.google.com with SMTP id z65so4113029oia.11
+	for <qemu-trivial@nongnu.org>; Thu, 23 May 2019 04:56:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=NZDEYEz5nD7XS3id+akGIIH+Yn6baWTOmRiQPpPliAM=;
+	b=B7IqlLLrYVFEDJEBzBf57E56eW+EnSDVdyLi0xapbXFWIyo+Ye0sEBfC2h21aO5qOz
+	mQW5gmxDHSmCCsNBsgwijKlwhvWC53+5Xd3xgm0C+gmwkFwqrIAnRH3NrGwdABScrCFX
+	kat2p1fzv6coZbfDxIE7gxAqRypFqP7i0yxIaitRVNORzyVy/+uBvLOY3PdkgCZ2XnAf
+	7VNRAfgMxg1oQBS/Bjvy9uBfvuFNLvhUteB/Qr3RHe/ePiGJTpyEXI9Dptya+xlVyU/s
+	DydKeg/dejbOHQ673ZbInhsW2ZW4h4crcarGPtFaUMGt3SpPnZQIa+mroxb9n/MVxNxT
+	TvJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=NZDEYEz5nD7XS3id+akGIIH+Yn6baWTOmRiQPpPliAM=;
+	b=peJ5uBICOoRP1QeLTbl/yPhuHSjFZ8V+eVK60WL33pOHceM+1mm7zceLrji6Z7tWqn
+	45+m+SF2/wKwzhtR3j7uY0yGz7PLxP34AZEx9nCt7jCjzKACM8qXrArPDpdV6p8keWoM
+	1s8vd5E36/WOfSjk9GV4KZnGWGN9nA42ryBowp7Pax9tMKaCMPXcgh4bk21F3VU8QZ1e
+	nUdje77j4RswrUQ4FKs5/5xdqiE+d4cbZMwV4OWIU6d5noXhAaw3h90EhCZcrVQMdE/v
+	ueglagkAxb+9xHmZjbM6ff03vqVVgiZicjVg/KfG5J6G2eCqHe8FjEVlMWkaLiJirKTb
+	4T2A==
+X-Gm-Message-State: APjAAAVn6yu6tstgFc1Mi02fwRAdTcLkYmEe/syRszDM39xSlDHprIZd
+	wsKEwEhOxccYofVvjzYoTTtNvJWcVLEhGSG5vm66kQ==
+X-Google-Smtp-Source: APXvYqx8TShlZQ7WnClyodAMyAeiO8vmzd5+CFcsE1NtRZEMP2/LmgAmb82s9aSLT0HAmBHdXOsMEFu4KIERXqvItVE=
+X-Received: by 2002:aca:5785:: with SMTP id l127mr2344269oib.48.1558612618333; 
+	Thu, 23 May 2019 04:56:58 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ISkYsZZcLEhBQxePiuhedggg9+OK6RS/cKPT7v9zPW9vmVCDPZB
-	B1nWbPLOfZY+hDFDy4SqutQaiXoZ+r1vI4va8y/MwC86FKQFZeivWyaWlpQyOl4xqm+S/3S
-	4nPoaZZKzilkWo65bSrzUKsyk5bPhahTQooJ/fIo1df7Y3h7S2C2Bk4csTYxBvSSr88Vkg6
-	gg52exdX5uY7fcZro2q1g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:6NK3qLo6RIU=:2Kdr/3X4iNL8kDM9kQk8uP
-	hMOz/2CGDoJVuTOoRQG2WyqZyofomhNhXJFE2DUh7hlKKYqYigNjH2xWb45zVjbE98PVJTiF8
-	/w5ZODp2qA4bdUfs9jqEp1fUkTBkuH6tD6ULCsPLfQNg8hViCpOby3X+zjMso1zudjeIEqFOn
-	gZ7v3yAsub8uGfoj6vCiPBaYi0qsX+tlrJlQItVT/OAk2s9cJJCo/Dsqo0l+wV97cs+5ireOk
-	shZIM1YjN7SEsDJ7/A8dDp89Izvr9jrrSZV7WWK+DMVdSpfN+hqDSEnpmLLM4YAeFZG2DWQTw
-	WpHEvGKPzeszZGhATJK+5AcqgCWqo9v6rQdHE4I6BqJ9Cy9wqIX+GQq2migENf0Srv+qW0WuT
-	a6PW5BCP0PCXhYfFInBKc2wn+l+XpTvhV5FFYxD4HU47DiYtXfd5pVho2dWFeFN77SNfxHLFS
-	LQiQ7ajFSVrmjs+tHG7bKs4cz6dEQcfN8LBX0xdkeBXBO5FQmPmPKsOlO1WfxmGNyOP9+JFQh
-	5jdzC/Xe5p2PZc2MNpWCLHcQGpedXW9aQeebRemTIX2s2sBjclyz4RIPNHlxBS7uxEFMppQBB
-	m0FgBO27O7E2qesXngPmpVuTIMGBjR+/6UA5boJPo79xnVeetEjSPMvehxOo0OmbhDQ21RLoT
-	NNmRyDCs3lJsqFYA92jkZkEUvz0XmqGw247l629avq6IjXyeEu0v9hyN4GCRkwdBXfDZRv5MZ
-	t437ROw62YNSGU74fB19dFiIzy3UIvm/KeooB6Fr83Z/7KYr4aMfn7DewjE=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.73
-Subject: [Qemu-trivial] [PULL 7/9] hw: vfio: drop TYPE_FOO MACRO in
- VMStateDescription
+References: <20190522160723.31484-1-laurent@vivier.eu>
+In-Reply-To: <20190522160723.31484-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 23 May 2019 12:56:47 +0100
+Message-ID: <CAFEAcA9LtfvZOgqSN=b19kprFL_6CEfBcXynqbfn1LniGHdPhQ@mail.gmail.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	Tony Krowiak <akrowiak@linux.ibm.com>, 
+	Eric Farman <farman@linux.ibm.com>, Farhan Ali <alifm@linux.ibm.com>, 
+	Pierre Morel <pmorel@linux.ibm.com>, Juan Quintela <quintela@redhat.com>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, Cornelia Huck <cohuck@redhat.com>, 
+	Michael Tokarev <mjt@tls.msk.ru>,
+	Alex Williamson <alex.williamson@redhat.com>, 
+	Halil Pasic <pasic@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@de.ibm.com>, 
+	qemu-s390x <qemu-s390x@nongnu.org>, "Michael S. Tsirkin" <mst@redhat.com>, 
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::244
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PULL 0/9] Trivial branch patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,97 +74,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 May 2019 16:08:55 -0000
+X-List-Received-Date: Thu, 23 May 2019 11:57:01 -0000
 
-From: Li Qiang <liq3ea@163.com>
+On Wed, 22 May 2019 at 17:13, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit a4f667b6714916683408b983cfe0a615a725775f:
+>
+>   Merge remote-tracking branch 'remotes/cohuck/tags/s390x-20190521-3' into staging (2019-05-21 16:30:13 +0100)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+>
+> for you to fetch changes up to 2d9574bdbed69b374116c59259f6bd14f7dfad7f:
+>
+>   pci: msix: move 'MSIX_CAP_LENGTH' to header file (2019-05-22 17:35:27 +0200)
+>
+> ----------------------------------------------------------------
+> typo fixes, TYPE_XXX usage cleanup, comments update,
+> virtio-mmio trace functions cleanup
+>
 
-It's recommended that VMStateDescription names are decoupled from QOM
-type names as the latter may freely change without consideration of
-migration compatibility.
 
-Link: https://lists.gnu.org/archive/html/qemu-devel/2018-10/msg02175.html
+Applied, thanks.
 
-CC: qemu-trivial@nongnu.org
-Signed-off-by: Li Qiang <liq3ea@163.com>
-Message-Id: <20190521151543.92274-3-liq3ea@163.com>
-Acked-by: Alex Williamson <alex.williamson@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/vfio/amd-xgbe.c      | 2 +-
- hw/vfio/ap.c            | 2 +-
- hw/vfio/calxeda-xgmac.c | 2 +-
- hw/vfio/ccw.c           | 2 +-
- hw/vfio/platform.c      | 2 +-
- 5 files changed, 5 insertions(+), 5 deletions(-)
+Please update the changelog at https://wiki.qemu.org/ChangeLog/4.1
+for any user-visible changes.
 
-diff --git a/hw/vfio/amd-xgbe.c b/hw/vfio/amd-xgbe.c
-index ee64a3b4a2e4..1b06c0f3ea9d 100644
---- a/hw/vfio/amd-xgbe.c
-+++ b/hw/vfio/amd-xgbe.c
-@@ -26,7 +26,7 @@ static void amd_xgbe_realize(DeviceState *dev, Error **errp)
- }
- 
- static const VMStateDescription vfio_platform_amd_xgbe_vmstate = {
--    .name = TYPE_VFIO_AMD_XGBE,
-+    .name = "vfio-amd-xgbe",
-     .unmigratable = 1,
- };
- 
-diff --git a/hw/vfio/ap.c b/hw/vfio/ap.c
-index d8b79ebe53ae..564751650fc1 100644
---- a/hw/vfio/ap.c
-+++ b/hw/vfio/ap.c
-@@ -155,7 +155,7 @@ static void vfio_ap_reset(DeviceState *dev)
- }
- 
- static const VMStateDescription vfio_ap_vmstate = {
--    .name = VFIO_AP_DEVICE_TYPE,
-+    .name = "vfio-ap",
-     .unmigratable = 1,
- };
- 
-diff --git a/hw/vfio/calxeda-xgmac.c b/hw/vfio/calxeda-xgmac.c
-index e7767c4b021b..6cc608b6cabd 100644
---- a/hw/vfio/calxeda-xgmac.c
-+++ b/hw/vfio/calxeda-xgmac.c
-@@ -26,7 +26,7 @@ static void calxeda_xgmac_realize(DeviceState *dev, Error **errp)
- }
- 
- static const VMStateDescription vfio_platform_calxeda_xgmac_vmstate = {
--    .name = TYPE_VFIO_CALXEDA_XGMAC,
-+    .name = "vfio-calxeda-xgmac",
-     .unmigratable = 1,
- };
- 
-diff --git a/hw/vfio/ccw.c b/hw/vfio/ccw.c
-index 31dd3a2a87b6..d9e39552e237 100644
---- a/hw/vfio/ccw.c
-+++ b/hw/vfio/ccw.c
-@@ -468,7 +468,7 @@ static Property vfio_ccw_properties[] = {
- };
- 
- static const VMStateDescription vfio_ccw_vmstate = {
--    .name = TYPE_VFIO_CCW,
-+    .name = "vfio-ccw",
-     .unmigratable = 1,
- };
- 
-diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
-index 398db38f14d9..e59a0234dd87 100644
---- a/hw/vfio/platform.c
-+++ b/hw/vfio/platform.c
-@@ -697,7 +697,7 @@ out:
- }
- 
- static const VMStateDescription vfio_platform_vmstate = {
--    .name = TYPE_VFIO_PLATFORM,
-+    .name = "vfio-platform",
-     .unmigratable = 1,
- };
- 
--- 
-2.20.1
-
+-- PMM
 
