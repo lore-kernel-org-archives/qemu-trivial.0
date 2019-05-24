@@ -1,46 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hTpZy-0003fC-Kb
-	for mharc-qemu-trivial@gnu.org; Thu, 23 May 2019 11:24:26 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44660)
+	id 1hU2lm-0005ap-Ev
+	for mharc-qemu-trivial@gnu.org; Fri, 24 May 2019 01:29:30 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58998)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hTpZw-0003cr-26
-	for qemu-trivial@nongnu.org; Thu, 23 May 2019 11:24:24 -0400
+	(envelope-from <marcel.apfelbaum@gmail.com>) id 1hU2lk-0005Zp-Lp
+	for qemu-trivial@nongnu.org; Fri, 24 May 2019 01:29:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <armbru@redhat.com>) id 1hTpZv-0007IK-4O
-	for qemu-trivial@nongnu.org; Thu, 23 May 2019 11:24:24 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52934)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <armbru@redhat.com>)
-	id 1hTpZt-0007GR-1S; Thu, 23 May 2019 11:24:21 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 569DF51145;
-	Thu, 23 May 2019 15:24:20 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-117-250.ams2.redhat.com
-	[10.36.117.250])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 248ED7BE78;
-	Thu, 23 May 2019 15:24:20 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id AAA881138648; Thu, 23 May 2019 17:24:18 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Yuval Shaia <yuval.shaia@oracle.com>
-Cc: marcel.apfelbaum@gmail.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+	(envelope-from <marcel.apfelbaum@gmail.com>) id 1hU2lj-00038s-Kn
+	for qemu-trivial@nongnu.org; Fri, 24 May 2019 01:29:28 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:38028)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <marcel.apfelbaum@gmail.com>)
+	id 1hU2lj-00036O-8I; Fri, 24 May 2019 01:29:27 -0400
+Received: by mail-wr1-x444.google.com with SMTP id d18so8548000wrs.5;
+	Thu, 23 May 2019 22:29:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+	h=subject:to:cc:references:from:message-id:date:user-agent
+	:mime-version:in-reply-to:content-transfer-encoding:content-language;
+	bh=8xL9hLKjHeqBCqWPzXp7cxDLN+8Q/AhnQdJHy3G+juY=;
+	b=YMloG0pbd3V1Sunn1y+OmoDVL2S57KxNmAlXCqCzN/XIjjCgiOc9lVG4dDQ0VTtqpE
+	mJ/dfA3lRNYy8D3HIBFLIig7fI5y40e/XOSipJk1jswfR+I5+BW8fKS/Qa1sZ/4gIzGh
+	gwRic6PcpMo2TMMr+4Rc0C7Z6ibWBBdut8RKdk1LVXTthdXrCSMZNl/x+ItLAP4QoHIc
+	Hv2UCm5ExopEfdeHyOnOm3F0f4V3Ul3DlSL63bF9mDQEH73RORRdSW5gUAMtUUr+WRFX
+	cuwtaxI0sNRmbmaH0L8tFmGLXxFL2m4fgEhPpqv9GBdzIsWMktE5hQ1uuvPcC4c+mzPk
+	OwsQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-transfer-encoding
+	:content-language;
+	bh=8xL9hLKjHeqBCqWPzXp7cxDLN+8Q/AhnQdJHy3G+juY=;
+	b=qDa9P1nM2GU4S0dEJPr+q5zkXCkYqFeAQS5dpsNQ7kLwiJba1Nl6kXu3Gc0MPVpaYt
+	+EaGUB+gvMM2kgn1yBdBoIAONfIzHtxPrfFFZRWHB/X64n9v9sB0Ofci+Zsh/tHIBDCW
+	usHM/jR3TeR0rGklojNZfQtuGy4Vdyv3dXPx+jA1U6zRjrhgv4g6MsQf8S53RobJFT+2
+	Tu9MbbqP3HlOURIf7xkKlBD5Ds5utHDR9vhEih6j2K16/nOwPPoRERcNvCf75mlXQfVw
+	XbydLk+aQj42zkcOl4v7ORu0kOcs5THyrsiXZacb6sxHccdOCK74YDQp/GKWuoaaWyFH
+	ncCg==
+X-Gm-Message-State: APjAAAUk8IByeyAX7IZgtScCOLSjT/bRUOMFe8iazSwK87xFwoMj55pW
+	pLo+l4lizjgE7QIyeZRXQ7rDW9CJ
+X-Google-Smtp-Source: APXvYqwz4cNvoSg4tbyg2pELU9iv/pbc1QS3fpwQmEbWrx0NyvDrAldlrxcgs3vDaomjtZZf38Tt2g==
+X-Received: by 2002:a5d:65d1:: with SMTP id e17mr3687297wrw.65.1558675765524; 
+	Thu, 23 May 2019 22:29:25 -0700 (PDT)
+Received: from localhost.localdomain ([37.142.144.27])
+	by smtp.gmail.com with ESMTPSA id o8sm2739063wra.4.2019.05.23.22.29.24
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Thu, 23 May 2019 22:29:24 -0700 (PDT)
+To: Markus Armbruster <armbru@redhat.com>, Yuval Shaia <yuval.shaia@oracle.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 References: <20190505105112.22691-1-yuval.shaia@oracle.com>
-Date: Thu, 23 May 2019 17:24:18 +0200
-In-Reply-To: <20190505105112.22691-1-yuval.shaia@oracle.com> (Yuval Shaia's
-	message of "Sun, 5 May 2019 13:51:12 +0300")
-Message-ID: <871s0pjisd.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+	<871s0pjisd.fsf@dusky.pond.sub.org>
+From: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Message-ID: <89805e43-4bbe-1a4b-1fd4-2c042aa979bf@gmail.com>
+Date: Fri, 24 May 2019 08:29:22 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.39]);
-	Thu, 23 May 2019 15:24:20 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+In-Reply-To: <871s0pjisd.fsf@dusky.pond.sub.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2a00:1450:4864:20::444
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/rdma: Delete unused
  headers inclusion
 X-BeenThere: qemu-trivial@nongnu.org
@@ -54,38 +75,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 May 2019 15:24:25 -0000
+X-List-Received-Date: Fri, 24 May 2019 05:29:29 -0000
 
-Looks stuck.  Let's try qemu-trivial.
+Hi Markus,
 
-Yuval Shaia <yuval.shaia@oracle.com> writes:
+On 5/23/19 6:24 PM, Markus Armbruster wrote:
+> Looks stuck.  Let's try qemu-trivial.
 
-> This is a trivial cleanup patch.
+Thanks, that is a great idea.
+
+I didn't want to send a single-patch pull request,
+especially while another is waiting for reviews.
+Anyway, trivial queue can be used indeed.
+
+Thanks,
+Marcel
+
 >
-> Signed-off-by: Yuval Shaia <yuval.shaia@oracle.com>
-> ---
->  hw/rdma/rdma_backend.c | 7 -------
->  1 file changed, 7 deletions(-)
+> Yuval Shaia <yuval.shaia@oracle.com> writes:
 >
-> diff --git a/hw/rdma/rdma_backend.c b/hw/rdma/rdma_backend.c
-> index d1660b6474..05f6b03221 100644
-> --- a/hw/rdma/rdma_backend.c
-> +++ b/hw/rdma/rdma_backend.c
-> @@ -14,16 +14,9 @@
->   */
->  
->  #include "qemu/osdep.h"
-> -#include "sysemu/sysemu.h"
-> -#include "qapi/error.h"
-> -#include "qapi/qmp/qlist.h"
-> -#include "qapi/qmp/qnum.h"
->  #include "qapi/qapi-events-rdma.h"
->  
->  #include <infiniband/verbs.h>
-> -#include <infiniband/umad_types.h>
-> -#include <infiniband/umad.h>
-> -#include <rdma/rdma_user_cm.h>
->  
->  #include "contrib/rdmacm-mux/rdmacm-mux.h"
->  #include "trace.h"
+>> This is a trivial cleanup patch.
+>>
+>> Signed-off-by: Yuval Shaia <yuval.shaia@oracle.com>
+>> ---
+>>   hw/rdma/rdma_backend.c | 7 -------
+>>   1 file changed, 7 deletions(-)
+>>
+>> diff --git a/hw/rdma/rdma_backend.c b/hw/rdma/rdma_backend.c
+>> index d1660b6474..05f6b03221 100644
+>> --- a/hw/rdma/rdma_backend.c
+>> +++ b/hw/rdma/rdma_backend.c
+>> @@ -14,16 +14,9 @@
+>>    */
+>>   
+>>   #include "qemu/osdep.h"
+>> -#include "sysemu/sysemu.h"
+>> -#include "qapi/error.h"
+>> -#include "qapi/qmp/qlist.h"
+>> -#include "qapi/qmp/qnum.h"
+>>   #include "qapi/qapi-events-rdma.h"
+>>   
+>>   #include <infiniband/verbs.h>
+>> -#include <infiniband/umad_types.h>
+>> -#include <infiniband/umad.h>
+>> -#include <rdma/rdma_user_cm.h>
+>>   
+>>   #include "contrib/rdmacm-mux/rdmacm-mux.h"
+>>   #include "trace.h"
+
 
