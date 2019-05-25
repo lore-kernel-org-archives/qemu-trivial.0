@@ -1,69 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hU2lm-0005ap-Ev
-	for mharc-qemu-trivial@gnu.org; Fri, 24 May 2019 01:29:30 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:58998)
+	id 1hUQO5-0002u6-JQ
+	for mharc-qemu-trivial@gnu.org; Sat, 25 May 2019 02:42:37 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:52311)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel.apfelbaum@gmail.com>) id 1hU2lk-0005Zp-Lp
-	for qemu-trivial@nongnu.org; Fri, 24 May 2019 01:29:29 -0400
+	(envelope-from <liq3ea@163.com>) id 1hUQO3-0002os-KG
+	for qemu-trivial@nongnu.org; Sat, 25 May 2019 02:42:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcel.apfelbaum@gmail.com>) id 1hU2lj-00038s-Kn
-	for qemu-trivial@nongnu.org; Fri, 24 May 2019 01:29:28 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:38028)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <marcel.apfelbaum@gmail.com>)
-	id 1hU2lj-00036O-8I; Fri, 24 May 2019 01:29:27 -0400
-Received: by mail-wr1-x444.google.com with SMTP id d18so8548000wrs.5;
-	Thu, 23 May 2019 22:29:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding:content-language;
-	bh=8xL9hLKjHeqBCqWPzXp7cxDLN+8Q/AhnQdJHy3G+juY=;
-	b=YMloG0pbd3V1Sunn1y+OmoDVL2S57KxNmAlXCqCzN/XIjjCgiOc9lVG4dDQ0VTtqpE
-	mJ/dfA3lRNYy8D3HIBFLIig7fI5y40e/XOSipJk1jswfR+I5+BW8fKS/Qa1sZ/4gIzGh
-	gwRic6PcpMo2TMMr+4Rc0C7Z6ibWBBdut8RKdk1LVXTthdXrCSMZNl/x+ItLAP4QoHIc
-	Hv2UCm5ExopEfdeHyOnOm3F0f4V3Ul3DlSL63bF9mDQEH73RORRdSW5gUAMtUUr+WRFX
-	cuwtaxI0sNRmbmaH0L8tFmGLXxFL2m4fgEhPpqv9GBdzIsWMktE5hQ1uuvPcC4c+mzPk
-	OwsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding
-	:content-language;
-	bh=8xL9hLKjHeqBCqWPzXp7cxDLN+8Q/AhnQdJHy3G+juY=;
-	b=qDa9P1nM2GU4S0dEJPr+q5zkXCkYqFeAQS5dpsNQ7kLwiJba1Nl6kXu3Gc0MPVpaYt
-	+EaGUB+gvMM2kgn1yBdBoIAONfIzHtxPrfFFZRWHB/X64n9v9sB0Ofci+Zsh/tHIBDCW
-	usHM/jR3TeR0rGklojNZfQtuGy4Vdyv3dXPx+jA1U6zRjrhgv4g6MsQf8S53RobJFT+2
-	Tu9MbbqP3HlOURIf7xkKlBD5Ds5utHDR9vhEih6j2K16/nOwPPoRERcNvCf75mlXQfVw
-	XbydLk+aQj42zkcOl4v7ORu0kOcs5THyrsiXZacb6sxHccdOCK74YDQp/GKWuoaaWyFH
-	ncCg==
-X-Gm-Message-State: APjAAAUk8IByeyAX7IZgtScCOLSjT/bRUOMFe8iazSwK87xFwoMj55pW
-	pLo+l4lizjgE7QIyeZRXQ7rDW9CJ
-X-Google-Smtp-Source: APXvYqwz4cNvoSg4tbyg2pELU9iv/pbc1QS3fpwQmEbWrx0NyvDrAldlrxcgs3vDaomjtZZf38Tt2g==
-X-Received: by 2002:a5d:65d1:: with SMTP id e17mr3687297wrw.65.1558675765524; 
-	Thu, 23 May 2019 22:29:25 -0700 (PDT)
-Received: from localhost.localdomain ([37.142.144.27])
-	by smtp.gmail.com with ESMTPSA id o8sm2739063wra.4.2019.05.23.22.29.24
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Thu, 23 May 2019 22:29:24 -0700 (PDT)
-To: Markus Armbruster <armbru@redhat.com>, Yuval Shaia <yuval.shaia@oracle.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20190505105112.22691-1-yuval.shaia@oracle.com>
-	<871s0pjisd.fsf@dusky.pond.sub.org>
-From: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Message-ID: <89805e43-4bbe-1a4b-1fd4-2c042aa979bf@gmail.com>
-Date: Fri, 24 May 2019 08:29:22 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
-MIME-Version: 1.0
-In-Reply-To: <871s0pjisd.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::444
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/rdma: Delete unused
- headers inclusion
+	(envelope-from <liq3ea@163.com>) id 1hUQBJ-0003B1-6f
+	for qemu-trivial@nongnu.org; Sat, 25 May 2019 02:29:25 -0400
+Received: from m12-17.163.com ([220.181.12.17]:41503)
+	by eggs.gnu.org with esmtp (Exim 4.71)
+	(envelope-from <liq3ea@163.com>)
+	id 1hUQBG-00032I-VG; Sat, 25 May 2019 02:29:24 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id; bh=qpW5ne0augMm/uJBAJ
+	7MnqYEgl6mluJDLveJO/8sKcw=; b=PSV6cAHsqOEMOQrzjeNC24hqu553u2Y6kg
+	kNLXsFioH50uuA1lLkgb26qfQHa0Q4PNLVQ2OKaNkNKklNH2dK2bA0h96wSkQoL0
+	JgknsnvkwhVVuisjp7GMLepwJhC1FuTuN4OZaINMrAb72SZhO+VLZCnbUcVxYzxP
+	nMuR7aUZc=
+Received: from localhost.localdomain (unknown [122.233.130.146])
+	by smtp13 (Coremail) with SMTP id EcCowABnbx+64OhcgoagHw--.19765S2;
+	Sat, 25 May 2019 14:29:15 +0800 (CST)
+From: Li Qiang <liq3ea@163.com>
+To: quintela@redhat.com,
+	dgilbert@redhat.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Li Qiang <liq3ea@163.com>
+Date: Fri, 24 May 2019 23:28:32 -0700
+Message-Id: <20190525062832.18009-1-liq3ea@163.com>
+X-Mailer: git-send-email 2.17.1
+X-CM-TRANSID: EcCowABnbx+64OhcgoagHw--.19765S2
+X-Coremail-Antispam: 1Uf129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73
+	VFW2AGmfu7bjvjm3AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvj4R_a9aDUUUU
+X-Originating-IP: [122.233.130.146]
+X-CM-SenderInfo: 5oltjvrd6rljoofrz/xtbBZg6-bVaD1p8IOAABsX
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 220.181.12.17
+Subject: [Qemu-trivial] [PATCH] migration: fix a typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,52 +47,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 May 2019 05:29:29 -0000
+X-List-Received-Date: Sat, 25 May 2019 06:42:36 -0000
 
-Hi Markus,
+'postocpy' should be 'postcopy'.
 
-On 5/23/19 6:24 PM, Markus Armbruster wrote:
-> Looks stuck.  Let's try qemu-trivial.
+CC: qemu-trivial@nongnu.org
+Signed-off-by: Li Qiang <liq3ea@163.com>
+---
+ migration/ram.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks, that is a great idea.
+diff --git a/migration/ram.c b/migration/ram.c
+index 4c60869226..359dc8f1bc 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -2236,7 +2236,7 @@ static RAMBlock *unqueue_page(RAMState *rs, ram_addr_t *offset)
+ }
+ 
+ /**
+- * get_queued_page: unqueue a page from the postocpy requests
++ * get_queued_page: unqueue a page from the postcopy requests
+  *
+  * Skips pages that are already sent (!dirty)
+  *
+-- 
+2.17.1
 
-I didn't want to send a single-patch pull request,
-especially while another is waiting for reviews.
-Anyway, trivial queue can be used indeed.
-
-Thanks,
-Marcel
-
->
-> Yuval Shaia <yuval.shaia@oracle.com> writes:
->
->> This is a trivial cleanup patch.
->>
->> Signed-off-by: Yuval Shaia <yuval.shaia@oracle.com>
->> ---
->>   hw/rdma/rdma_backend.c | 7 -------
->>   1 file changed, 7 deletions(-)
->>
->> diff --git a/hw/rdma/rdma_backend.c b/hw/rdma/rdma_backend.c
->> index d1660b6474..05f6b03221 100644
->> --- a/hw/rdma/rdma_backend.c
->> +++ b/hw/rdma/rdma_backend.c
->> @@ -14,16 +14,9 @@
->>    */
->>   
->>   #include "qemu/osdep.h"
->> -#include "sysemu/sysemu.h"
->> -#include "qapi/error.h"
->> -#include "qapi/qmp/qlist.h"
->> -#include "qapi/qmp/qnum.h"
->>   #include "qapi/qapi-events-rdma.h"
->>   
->>   #include <infiniband/verbs.h>
->> -#include <infiniband/umad_types.h>
->> -#include <infiniband/umad.h>
->> -#include <rdma/rdma_user_cm.h>
->>   
->>   #include "contrib/rdmacm-mux/rdmacm-mux.h"
->>   #include "trace.h"
 
 
