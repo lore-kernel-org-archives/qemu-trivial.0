@@ -1,45 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hVXLu-0005QY-OB
-	for mharc-qemu-trivial@gnu.org; Tue, 28 May 2019 04:20:58 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:52996)
+	id 1hVclz-0000vy-Cr
+	for mharc-qemu-trivial@gnu.org; Tue, 28 May 2019 10:08:15 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:43931)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1hVXLt-0005LV-1P
-	for qemu-trivial@nongnu.org; Tue, 28 May 2019 04:20:57 -0400
+	(envelope-from <philmd@redhat.com>) id 1hVclx-0000uP-AR
+	for qemu-trivial@nongnu.org; Tue, 28 May 2019 10:08:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <quintela@redhat.com>) id 1hVXLr-00011h-1d
-	for qemu-trivial@nongnu.org; Tue, 28 May 2019 04:20:57 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57688)
+	(envelope-from <philmd@redhat.com>) id 1hVclw-0005tj-Hz
+	for qemu-trivial@nongnu.org; Tue, 28 May 2019 10:08:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52952)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <quintela@redhat.com>)
-	id 1hVXLf-0000eU-BZ; Tue, 28 May 2019 04:20:43 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
+	(Exim 4.71) (envelope-from <philmd@redhat.com>)
+	id 1hVclu-0005rj-I1; Tue, 28 May 2019 10:08:10 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+	[10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 745E93099FC5;
-	Tue, 28 May 2019 08:20:40 +0000 (UTC)
-Received: from redhat.com (unknown [10.36.118.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DE55C6C35B;
-	Tue, 28 May 2019 08:20:39 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
-To: Li Qiang <liq3ea@163.com>
-Cc: dgilbert@redhat.com,  qemu-devel@nongnu.org,  qemu-trivial@nongnu.org
-In-Reply-To: <20190525062832.18009-1-liq3ea@163.com> (Li Qiang's message of
-	"Fri, 24 May 2019 23:28:32 -0700")
-References: <20190525062832.18009-1-liq3ea@163.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
-Reply-To: quintela@redhat.com
-Date: Tue, 28 May 2019 10:20:37 +0200
-Message-ID: <8736kz7zxm.fsf@trasno.org>
+	by mx1.redhat.com (Postfix) with ESMTPS id 60BF0C070E3A;
+	Tue, 28 May 2019 14:08:02 +0000 (UTC)
+Received: from x1w.redhat.com (unknown [10.40.206.32])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2C4E37DF60;
+	Tue, 28 May 2019 14:07:53 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
+	Markus Armbruster <armbru@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Tue, 28 May 2019 16:07:50 +0200
+Message-Id: <20190528140750.28036-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.41]);
-	Tue, 28 May 2019 08:20:40 +0000 (UTC)
+	(mx1.redhat.com [10.5.110.31]);
+	Tue, 28 May 2019 14:08:04 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] migration: fix a typo
+Subject: [Qemu-trivial] [PATCH] hw/scsi/vmw_pvscsi: Use qbus_reset_all()
+ directly
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -51,16 +53,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 May 2019 08:20:58 -0000
+X-List-Received-Date: Tue, 28 May 2019 14:08:14 -0000
 
-Li Qiang <liq3ea@163.com> wrote:
-> 'postocpy' should be 'postcopy'.
->
-> CC: qemu-trivial@nongnu.org
-> Signed-off-by: Li Qiang <liq3ea@163.com>
+Since the BusState is accesible from the SCSIBus object,
+it is pointless to use qbus_reset_all_fn.
+Use qbus_reset_all() directly.
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+One step toward removing qbus_reset_all_fn()
+---
+ hw/scsi/vmw_pvscsi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Already in through trivial patches.
+diff --git a/hw/scsi/vmw_pvscsi.c b/hw/scsi/vmw_pvscsi.c
+index 584b4be07e..6f571d0d19 100644
+--- a/hw/scsi/vmw_pvscsi.c
++++ b/hw/scsi/vmw_pvscsi.c
+@@ -440,7 +440,7 @@ static void
+ pvscsi_reset_adapter(PVSCSIState *s)
+ {
+     s->resetting++;
+-    qbus_reset_all_fn(&s->bus);
++    qbus_reset_all(&s->bus.qbus);
+     s->resetting--;
+     pvscsi_process_completion_queue(s);
+     assert(QTAILQ_EMPTY(&s->pending_queue));
+@@ -848,7 +848,7 @@ pvscsi_on_cmd_reset_bus(PVSCSIState *s)
+     trace_pvscsi_on_cmd_arrived("PVSCSI_CMD_RESET_BUS");
+=20
+     s->resetting++;
+-    qbus_reset_all_fn(&s->bus);
++    qbus_reset_all(&s->bus.qbus);
+     s->resetting--;
+     return PVSCSI_COMMAND_PROCESSING_SUCCEEDED;
+ }
+--=20
+2.20.1
 
 
