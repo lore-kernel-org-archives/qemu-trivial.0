@@ -1,58 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hVfDB-0003SC-PF
-	for mharc-qemu-trivial@gnu.org; Tue, 28 May 2019 12:44:29 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:57843)
+	id 1hVfFv-0005gZ-GX
+	for mharc-qemu-trivial@gnu.org; Tue, 28 May 2019 12:47:19 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:58219)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hVfD9-0003Pe-9g
-	for qemu-trivial@nongnu.org; Tue, 28 May 2019 12:44:28 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hVfFt-0005ed-Es
+	for qemu-trivial@nongnu.org; Tue, 28 May 2019 12:47:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hVfD6-0003J0-AC
-	for qemu-trivial@nongnu.org; Tue, 28 May 2019 12:44:26 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42932)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>)
-	id 1hVfCt-0001AQ-JM; Tue, 28 May 2019 12:44:11 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
-	[10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 572CE3092661;
-	Tue, 28 May 2019 16:42:49 +0000 (UTC)
-Received: from x1w.redhat.com (unknown [10.40.206.32])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DD63060BDF;
-	Tue, 28 May 2019 16:42:31 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
+	(envelope-from <peter.maydell@linaro.org>) id 1hVfFn-00069U-M3
+	for qemu-trivial@nongnu.org; Tue, 28 May 2019 12:47:13 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:43491)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hVfFn-00054l-Fj
+	for qemu-trivial@nongnu.org; Tue, 28 May 2019 12:47:11 -0400
+Received: by mail-ot1-x341.google.com with SMTP id i8so18379004oth.10
+	for <qemu-trivial@nongnu.org>; Tue, 28 May 2019 09:46:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc:content-transfer-encoding;
+	bh=f6uPhcbzc3DGZEUHWi2LR+ruO0xWV4ctUDghO+B7y18=;
+	b=dwG1SZBxq0Tiqd632YAxcmV4FIs939mIbEzcBiu/bFssMKeGlFdMlXoZeuOHNRtS+K
+	+kxpg37Rq5P/2i7A2jh6D8A6qiTrXvTUNxyNmlagH8Lv4QW8KXObOfA3hkHHNWa5ikZF
+	fI4Hrrc4PTo4TEnseNnyrB72b//zzErJ8TDX004RzRPIcvez4/3MDu+4X0z59RkrNgrj
+	oO9nYq8DUsVx42dGU5BAVk1OAZ440XthR+zeOd0lGMZ9QRsmzmHCq/vdp1OkYIw/AbYJ
+	UjpzE7Da1C+VOnsQwhW/Q5j7omAVolY1AdLxTvUkMmrlN5PnxTHj1Q0KH639IqXpgoef
+	6srQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc:content-transfer-encoding;
+	bh=f6uPhcbzc3DGZEUHWi2LR+ruO0xWV4ctUDghO+B7y18=;
+	b=bkc3V3DrLCZPtpVaASL6F3NC8de/LcUlAtrvGtOzKCeO8dkSaB5H0LYMEAD5RZB+LX
+	Yj7fwulA/B2rQbXQBYiDWa/57M0wUrbEfU1xY8EgU9m+FqMTqj3fp3li8bj3XV2wVA7K
+	yW91bJUc0LWS+5B3p6KUTnYiQ4FYHekYfJof4vgbW/afwALj+ukdUu7HHGlcgiKIdFmA
+	R9pGT0dSF5Ofu/SELaBmVat5p4mB1XKiLo97i7bHVwB8SuN7SmPrJ3nqBcy0mEjZq0yg
+	stLoyV8FNz/Y8aseeenEpKkub+361ojpPr/e42pTBWKpC2BdWB56lyMY6WKlCKz3+rwX
+	aw/A==
+X-Gm-Message-State: APjAAAWiJN4786k0+IOkEl7iXYX267iDDqoN+QsU5V7NazJ5VI5LVAlv
+	ZnNGruOb7Bx5k+fXTp1uiuWscxvRxdSXPHocv6v0Hw==
+X-Google-Smtp-Source: APXvYqwg4QBMnd0xwsxxrLWAMF5gZIyx4nL5uKGxdpOPiQBWJ+dtfH7tacG0hCW/vkYh9Sq2SS9WXXVmDQEYB3NBk6k=
+X-Received: by 2002:a05:6830:209a:: with SMTP id
+	y26mr47405395otq.232.1559061977945; 
+	Tue, 28 May 2019 09:46:17 -0700 (PDT)
+MIME-Version: 1.0
+References: <20190528164020.32250-1-philmd@redhat.com>
+	<20190528164020.32250-7-philmd@redhat.com>
+In-Reply-To: <20190528164020.32250-7-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 28 May 2019 17:46:06 +0100
+Message-ID: <CAFEAcA-eGUW096e2Y6vinPHvF74ogwXBaP+orxYEoRhB-mhGFw@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>, 
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, 
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	Aleksandar Rikalo <arikalo@wavecomp.com>,
+	Aleksandar Rikalo <arikalo@wavecomp.com>, 
 	Halil Pasic <pasic@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
 	Christian Borntraeger <borntraeger@de.ibm.com>,
 	Michael Walle <michael@walle.cc>, Richard Henderson <rth@twiddle.net>,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Aleksandar Markovic <amarkovic@wavecomp.com>, 
 	Cornelia Huck <cohuck@redhat.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Fam Zheng <fam@euphon.net>,
-	qemu-s390x@nongnu.org, Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Tue, 28 May 2019 18:40:19 +0200
-Message-Id: <20190528164020.32250-10-philmd@redhat.com>
-In-Reply-To: <20190528164020.32250-1-philmd@redhat.com>
-References: <20190528164020.32250-1-philmd@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.43]);
-	Tue, 28 May 2019 16:42:49 +0000 (UTC)
+	Alex Williamson <alex.williamson@redhat.com>, 
+	Fam Zheng <fam@euphon.net>, qemu-s390x <qemu-s390x@nongnu.org>, 
+	Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH v2 09/10] hw/vfio/pci: Use the QOM DEVICE()
- macro to access DeviceState.qdev
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+	recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-trivial] [PATCH v2 06/10] hw/audio/ac97: Use the QOM
+ DEVICE() macro to access DeviceState.qdev
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -64,52 +83,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 May 2019 16:44:28 -0000
+X-List-Received-Date: Tue, 28 May 2019 16:47:18 -0000
 
-Rather than looking inside the definition of a DeviceState with
-"s->qdev", use the QOM prefered style: "DEVICE(s)".
-
-This patch was generated using the following Coccinelle script:
-
-    // Use DEVICE() macros to access DeviceState.qdev
-    @use_device_macro_to_access_qdev@
-    expression obj;
-    identifier dev;
-    @@
-    -&obj->dev.qdev
-    +DEVICE(obj)
-
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/vfio/pci.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index 8e555db12e..2a4091d216 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -2717,7 +2717,7 @@ static void vfio_req_notifier_handler(void *opaque)
-         return;
-     }
-=20
--    qdev_unplug(&vdev->pdev.qdev, &err);
-+    qdev_unplug(DEVICE(vdev), &err);
-     if (err) {
-         warn_reportf_err(err, VFIO_MSG_PREFIX, vdev->vbasedev.name);
-     }
-@@ -2839,7 +2839,7 @@ static void vfio_realize(PCIDevice *pdev, Error **e=
-rrp)
-     vdev->vbasedev.name =3D g_path_get_basename(vdev->vbasedev.sysfsdev)=
+On Tue, 28 May 2019 at 17:42, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> Rather than looking inside the definition of a DeviceState with
+> "s->qdev", use the QOM prefered style: "DEVICE(s)".
+>
+> This patch was generated using the following Coccinelle script
+> (with a bit of manual fix-up, removing an extra space to please
+> checkpatch.pl):
+>
+>     // Use DEVICE() macros to access DeviceState.qdev
+>     @use_device_macro_to_access_qdev@
+>     expression obj;
+>     identifier dev;
+>     @@
+>     -&obj->dev.qdev
+>     +DEVICE(obj)
+>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/audio/ac97.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
+> index 2265622d44..a4e8d99e77 100644
+> --- a/hw/audio/ac97.c
+> +++ b/hw/audio/ac97.c
+> @@ -1388,7 +1388,7 @@ static void ac97_realize(PCIDevice *dev, Error **er=
+rp)
+>      pci_register_bar (&s->dev, 0, PCI_BASE_ADDRESS_SPACE_IO, &s->io_nam)=
 ;
-     vdev->vbasedev.ops =3D &vfio_pci_ops;
-     vdev->vbasedev.type =3D VFIO_DEVICE_TYPE_PCI;
--    vdev->vbasedev.dev =3D &vdev->pdev.qdev;
-+    vdev->vbasedev.dev =3D DEVICE(vdev);
-=20
-     tmp =3D g_strdup_printf("%s/iommu_group", vdev->vbasedev.sysfsdev);
-     len =3D readlink(tmp, group_path, sizeof(group_path));
---=20
-2.20.1
+>      pci_register_bar (&s->dev, 1, PCI_BASE_ADDRESS_SPACE_IO, &s->io_nabm=
+);
+>      AUD_register_card ("ac97", &s->card);
+> -    ac97_on_reset (&s->dev.qdev);
+> +    ac97_on_reset(DEVICE(s));
+>  }
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>.
+
+As an aside, this function has a lot of uses of "&s->dev" to
+get the PCIDevice* given an AC97LinkState*. This isn't
+necessary as the function has been passed the PCIDevice*
+as its argument, so all the uses of "&s->dev" here could
+just be written as "dev".
+
+thanks
+-- PMM
 
