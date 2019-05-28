@@ -1,82 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hVfLu-0002MU-Hw
-	for mharc-qemu-trivial@gnu.org; Tue, 28 May 2019 12:53:30 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60888)
+	id 1hVfT9-0007Zt-7O
+	for mharc-qemu-trivial@gnu.org; Tue, 28 May 2019 13:00:59 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:35033)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <marcel.apfelbaum@gmail.com>) id 1hVfLs-0002Kl-Dn
-	for qemu-trivial@nongnu.org; Tue, 28 May 2019 12:53:29 -0400
+	(envelope-from <cohuck@redhat.com>) id 1hVfT6-0007WB-MM
+	for qemu-trivial@nongnu.org; Tue, 28 May 2019 13:00:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <marcel.apfelbaum@gmail.com>) id 1hVfLn-0001T5-3h
-	for qemu-trivial@nongnu.org; Tue, 28 May 2019 12:53:24 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:36048)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <marcel.apfelbaum@gmail.com>)
-	id 1hVfLX-0001Mw-It; Tue, 28 May 2019 12:53:09 -0400
-Received: by mail-wr1-x441.google.com with SMTP id s17so21037067wru.3;
-	Tue, 28 May 2019 09:53:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=subject:to:cc:references:from:message-id:date:user-agent
-	:mime-version:in-reply-to:content-transfer-encoding:content-language;
-	bh=o1Rh6aAz7/4cgvDMz1Ecw+CCDWO53nq22FgF1mLIcWQ=;
-	b=agdoOOaNC9/nfIlJcLGjGMkNPuLNoZgT+k0cymTinZwa4gU65JwrgQQNgCzQEnvW5z
-	DVXsCjHFXTUBmMd4jh+j3XOEE8Mf44ZYZJwc6fYJUi+NRIn4dkYwmGbdgcxUg72u7VAQ
-	ZRvEcjaCGl13phXVDOC4aUY5BCJbdJWp4tqA7zzM1Z4QtAh4hcYFcWCYclwiEntoSxVk
-	ZPJ0sItXDGny33aqDC+3inNt9sb1hF8KGxOf6B4zUfH5yHRIWyX4GecUm3kzUQx7ZqeJ
-	8EJsjOFF19QkQ+hTWkAiCttYDC0xL9uygdN/U7T09ov1whw6FIBJXMMbM4cexzXj/Pui
-	OR3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-	:user-agent:mime-version:in-reply-to:content-transfer-encoding
-	:content-language;
-	bh=o1Rh6aAz7/4cgvDMz1Ecw+CCDWO53nq22FgF1mLIcWQ=;
-	b=PqX9pUn3j8eNg+QVa2DGqA6TFK7oNJ1/lzDxg+yrB+5ut8CWuEZt/GfZJNAhccyt8A
-	iTcjScTvBR+DMmTg4Vp2cUGhp71M24kBqGHVApHEeB0gQ087YLEU/v1UK89Tl79A8M3u
-	KumCHJnke4XK6TR+IOB7ppLT6rTHc/7Y8EjR/lNziFIX0Wf9vcM7su0POxBZWKFZuP2L
-	lULLgeK7bkJ6GaWjj4dOj1o6cIlyTptxsm5Zpzx5+ERQU6+TcIWhl4jYOSX1tmAVy6Sh
-	a3qKUy0JQ+0vJzdaAWNvPuY07j0sldFoa0Jdejp+rcTzMxuxL0j4rPtU8fE2sh/H5n3G
-	bYkA==
-X-Gm-Message-State: APjAAAVgbuFht28zGTqt2oFKUKMVJWpJdp/1yPrQ53D1QkNOJxFwhlz0
-	Xfjl8zvgTgdW9DYLNrfeINc=
-X-Google-Smtp-Source: APXvYqwu/EUzjYtiB+Gpx9oMDQTXN9PK/KPhItPIr+m0N6CbU9sV0c0pJO6Ji04OhMz8IPL3kQMqPQ==
-X-Received: by 2002:a5d:6108:: with SMTP id v8mr23321286wrt.150.1559062385960; 
-	Tue, 28 May 2019 09:53:05 -0700 (PDT)
-Received: from localhost.localdomain ([37.142.144.27])
-	by smtp.gmail.com with ESMTPSA id
-	a10sm17015781wrm.94.2019.05.28.09.53.03
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 28 May 2019 09:53:05 -0700 (PDT)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	Aleksandar Rikalo <arikalo@wavecomp.com>, 
-	Halil Pasic <pasic@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Michael Walle <michael@walle.cc>, Richard Henderson <rth@twiddle.net>, 
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Fam Zheng <fam@euphon.net>,
+	(envelope-from <cohuck@redhat.com>) id 1hVfT5-0008UJ-PR
+	for qemu-trivial@nongnu.org; Tue, 28 May 2019 13:00:56 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59204)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <cohuck@redhat.com>)
+	id 1hVfSn-0007ve-Sn; Tue, 28 May 2019 13:00:40 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+	[10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 50EB76147C;
+	Tue, 28 May 2019 17:00:26 +0000 (UTC)
+Received: from gondolin (dhcp-192-222.str.redhat.com [10.33.192.222])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id B873F8082;
+	Tue, 28 May 2019 17:00:03 +0000 (UTC)
+Date: Tue, 28 May 2019 19:00:01 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Dmitry Fleytman
+	<dmitry.fleytman@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>, Marcel
+	Apfelbaum <marcel.apfelbaum@gmail.com>, Paolo Bonzini
+	<pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, Aleksandar Rikalo
+	<arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>, David
+	Hildenbrand <david@redhat.com>, Christian Borntraeger
+	<borntraeger@de.ibm.com>, Michael Walle <michael@walle.cc>, Richard
+	Henderson <rth@twiddle.net>, Aleksandar Markovic <amarkovic@wavecomp.com>, 
+	Alex Williamson <alex.williamson@redhat.com>, Peter Maydell
+	<peter.maydell@linaro.org>, Fam Zheng <fam@euphon.net>,
 	qemu-s390x@nongnu.org, Markus Armbruster <armbru@redhat.com>
+Message-ID: <20190528190001.17d7cdf0.cohuck@redhat.com>
+In-Reply-To: <20190528164020.32250-5-philmd@redhat.com>
 References: <20190528164020.32250-1-philmd@redhat.com>
-	<20190528164020.32250-8-philmd@redhat.com>
-From: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Message-ID: <003b3855-8180-b808-03c6-1e3fb160a1a7@gmail.com>
-Date: Tue, 28 May 2019 19:53:01 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	<20190528164020.32250-5-philmd@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-In-Reply-To: <20190528164020.32250-8-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::441
-Subject: Re: [Qemu-trivial] [PATCH v2 07/10] hw/isa: Use the QOM DEVICE()
- macro to access DeviceState.qdev
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.39]);
+	Tue, 28 May 2019 17:00:26 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH v2 04/10] hw/s390x/event-facility: Use
+ the QOM BUS() macro to access BusState.qbus
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -88,61 +62,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 May 2019 16:53:29 -0000
+X-List-Received-Date: Tue, 28 May 2019 17:00:57 -0000
 
+On Tue, 28 May 2019 18:40:14 +0200
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
-
-On 5/28/19 7:40 PM, Philippe Mathieu-Daudé wrote:
-> Rather than looking inside the definition of a DeviceState with
-> "s->qdev", use the QOM prefered style: "DEVICE(s)".
->
+> Rather than looking inside the definition of a BusState with "s->bus.qbus=
+",
+> use the QOM prefered style: "BUS(&s->bus)".
+>=20
 > This patch was generated using the following Coccinelle script:
->
->      // Use DEVICE() macros to access DeviceState.qdev
->      @use_device_macro_to_access_qdev@
->      expression obj;
->      identifier dev;
->      @@
->      -&obj->dev.qdev
->      +DEVICE(obj)
->
+>=20
+>     // Use BUS() macros to access BusState.qbus
+>     @use_bus_macro_to_access_qbus@
+>     expression obj;
+>     identifier bus;
+>     @@
+>     -&obj->bus.qbus
+>     +BUS(&obj->bus)
+>=20
 > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->   hw/isa/lpc_ich9.c | 2 +-
->   hw/isa/vt82c686.c | 2 +-
->   2 files changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
-> index 031ee9cd93..35d17246e9 100644
-> --- a/hw/isa/lpc_ich9.c
-> +++ b/hw/isa/lpc_ich9.c
-> @@ -412,7 +412,7 @@ void ich9_lpc_pm_init(PCIDevice *lpc_pci, bool smm_enabled)
->                                    true);
->       }
->   
-> -    ich9_lpc_reset(&lpc->d.qdev);
-> +    ich9_lpc_reset(DEVICE(lpc));
->   }
->   
->   /* APM */
-> diff --git a/hw/isa/vt82c686.c b/hw/isa/vt82c686.c
-> index 85d0532dd5..d46754f61c 100644
-> --- a/hw/isa/vt82c686.c
-> +++ b/hw/isa/vt82c686.c
-> @@ -369,7 +369,7 @@ static void vt82c686b_pm_realize(PCIDevice *dev, Error **errp)
->       pci_conf[0x90] = s->smb_io_base | 1;
->       pci_conf[0x91] = s->smb_io_base >> 8;
->       pci_conf[0xd2] = 0x90;
-> -    pm_smbus_init(&s->dev.qdev, &s->smb, false);
-> +    pm_smbus_init(DEVICE(s), &s->smb, false);
->       memory_region_add_subregion(get_system_io(), s->smb_io_base, &s->smb.io);
->   
->       apm_init(dev, &s->apm, NULL, s);
+>  hw/s390x/event-facility.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Marcel Apfelbaum<marcel.apfelbaum@gmail.com>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
-Thanks,
-Marcel
-
+(I assume this will go through the trivial tree?)
 
