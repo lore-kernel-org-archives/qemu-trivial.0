@@ -1,49 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hUtYu-0000aM-Vf
-	for mharc-qemu-trivial@gnu.org; Sun, 26 May 2019 09:51:45 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:50454)
+	id 1hVW63-0006PP-VL
+	for mharc-qemu-trivial@gnu.org; Tue, 28 May 2019 03:00:31 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:37967)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <like.xu@linux.intel.com>) id 1hUtYq-0000YV-Db
-	for qemu-trivial@nongnu.org; Sun, 26 May 2019 09:51:41 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hVW60-0006Ox-F8
+	for qemu-trivial@nongnu.org; Tue, 28 May 2019 03:00:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <like.xu@linux.intel.com>) id 1hUtYp-00022V-9F
-	for qemu-trivial@nongnu.org; Sun, 26 May 2019 09:51:40 -0400
-Received: from mga02.intel.com ([134.134.136.20]:2242)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
-	id 1hUtYe-0001BL-3J; Sun, 26 May 2019 09:51:28 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-	by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	26 May 2019 06:51:15 -0700
-Received: from likexu-mobl1.ccr.corp.intel.com (HELO [10.255.31.212])
-	([10.255.31.212])
-	by orsmga008-auth.jf.intel.com with ESMTP/TLS/AES256-SHA;
-	26 May 2019 06:51:13 -0700
-From: Like Xu <like.xu@linux.intel.com>
-To: qemu-trivial@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
-	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
-	Alistair Francis <alistair23@gmail.com>,
-	Igor Mammedov <imammedo@redhat.com>
-References: <20190518205428.90532-1-like.xu@linux.intel.com>
-Organization: Intel OTC
-Message-ID: <a4acdca8-a060-1db5-a155-1b9ae7512f75@linux.intel.com>
-Date: Sun, 26 May 2019 21:51:11 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
-	Thunderbird/60.7.0
+	(envelope-from <laurent@vivier.eu>) id 1hVW5y-00074G-9R
+	for qemu-trivial@nongnu.org; Tue, 28 May 2019 03:00:28 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:53943)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1hVW5w-0006zQ-Ek
+	for qemu-trivial@nongnu.org; Tue, 28 May 2019 03:00:26 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+	1M26j1-1hTaHa2usb-002ZLY; Tue, 28 May 2019 09:00:03 +0200
+To: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Markus Armbruster <armbru@redhat.com>, Yuval Shaia <yuval.shaia@oracle.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <20190505105112.22691-1-yuval.shaia@oracle.com>
+	<871s0pjisd.fsf@dusky.pond.sub.org>
+	<89805e43-4bbe-1a4b-1fd4-2c042aa979bf@gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <4508df6d-cb54-26e9-1603-09ef9ff87a0b@vivier.eu>
+Date: Tue, 28 May 2019 09:00:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+	Thunderbird/52.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190518205428.90532-1-like.xu@linux.intel.com>
+In-Reply-To: <89805e43-4bbe-1a4b-1fd4-2c042aa979bf@gmail.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 134.134.136.20
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 00/10] Refactor cpu topo
- into machine properties
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:vuuUMc/2cWgLfw03eeHBxTXVx/Y41ECip2Z5iVVZYXnQrN94UHt
+	1X3n+lstJovlyJf2jbHd9XGf/RcXgck0kw87c+ASarzHc8MAFomXXsQoUiFspE0VvfXUQYO
+	W69igIzKiCkhdVtGFqkkFVfmETR8UxNSkGW9XMha+R/+nAFM6tlhHx85AJn35Oqj13qZ/J3
+	CCC1X69/AqYQIKTjo0xAw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:m5iFgOqP4wg=:r4JQfP79VMDy3rv37IK1+n
+	7/fj7bpyrvBjThhuZiLacy5nhdyaiswxGQiv7uDyW8QLyLYL3w/cxZyrrdY762cNw5johT/TC
+	VCFUAYpnRk9nNyIRRmZ/Gpvm1LrDSzodhXPiatjM2Nu7bEDDMJBjHVMi027Hd+BBCQPRxyipj
+	zcsfwC2yGs0usaCI50xmE4CTR3vcpraMU5dRm2QB81iB/QARx5d6GzFXN2/gwBj4Xhd89FKCd
+	bMeeoV13dfdg9KsFUaerEp20XSOSGzg0ZMP1FxlMJu2xx0bCzifhFmk8KLz8UgjZACTZs37Cu
+	8oZ5JBwSnYNLz/wulZzz3MOnkOg90ItjJp/bKD0Fb37j4adeOGZutZeLjWpybqYDUKD7yTAS2
+	BIZQAbhtZLY8wMJKOQbWDQ0Ke6dnYJH3eOhPB3M6Ui3mbZp8xvPDvC5l0KJDCrjwaPmhduBKZ
+	xOy7aZyuW6ZAFBcNjTRJ4xGheZCiQnw0nqIDiyXK/wmsHl7/djEke55g95DCRCvBhBSHNhp1g
+	zJTVrgLrOv2bHTo508Eaj1i/dWQb+Uxow3kRNc0tOddENrkwr7EDFwxz/BmX5ZSkHSrFU+SUF
+	uriOwINpEw74luWY7+IAr7fsgm14gYOdaohW2cEPci/yrIcSOsk9uTZLCnKJ8asXHPQMmQZRW
+	uV96ku0YcTrcXZR7OJ5SSwI9s7A7kJ1zAnQYjCUbT0tPxcxh+ZzGO+O3Oh/nF6haLrZ09FDe+
+	IRlW3IvPDjwzLD9vr2mtIpj1l/iNDBeIsUlFILIY/xHbaskgTUtZ93fKPaY=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 217.72.192.75
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/rdma: Delete unused
+ headers inclusion
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -55,36 +62,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 26 May 2019 13:51:41 -0000
+X-List-Received-Date: Tue, 28 May 2019 07:00:30 -0000
 
-On 2019/5/19 4:54, Like Xu wrote:
-> This patch series make existing cores/threads/sockets into machine
-> properties and get rid of global smp_* variables they use currently.
+On 24/05/2019 07:29, Marcel Apfelbaum wrote:
+> Hi Markus,
 > 
-> The purpose of getting rid of globals is disentangle layer violations and
-> let's do it one step at a time by replacing the smp_foo with qdev_get_machine()
-> as few calls as possible and delay other related refactoring efforts.
+> On 5/23/19 6:24 PM, Markus Armbruster wrote:
+>> Looks stuck.  Let's try qemu-trivial.
 > 
+> Thanks, that is a great idea.
+> 
+> I didn't want to send a single-patch pull request,
+> especially while another is waiting for reviews.
+> Anyway, trivial queue can be used indeed.
 
-Hi Eduardo & Igor,
-Do you have any comments on this new version of CpuTopology refactoring?
-
-With this series of patch, we may move forward to review [Qemu-devel] 
-[PATCH v2 0/5] Introduce cpu die topology and enable CPUID.1F for i386.
+Applied to my trivial-patches branch.
 
 Thanks,
-Like Xu
+Laurent
 
-> ==changelog==
+> Thanks,
+> Marcel
 > 
-> v3:
+>>
+>> Yuval Shaia <yuval.shaia@oracle.com> writes:
+>>
+>>> This is a trivial cleanup patch.
+>>>
+>>> Signed-off-by: Yuval Shaia <yuval.shaia@oracle.com>
+>>> ---
+>>>   hw/rdma/rdma_backend.c | 7 -------
+>>>   1 file changed, 7 deletions(-)
+>>>
+>>> diff --git a/hw/rdma/rdma_backend.c b/hw/rdma/rdma_backend.c
+>>> index d1660b6474..05f6b03221 100644
+>>> --- a/hw/rdma/rdma_backend.c
+>>> +++ b/hw/rdma/rdma_backend.c
+>>> @@ -14,16 +14,9 @@
+>>>    */
+>>>   #include "qemu/osdep.h"
+>>> -#include "sysemu/sysemu.h"
+>>> -#include "qapi/error.h"
+>>> -#include "qapi/qmp/qlist.h"
+>>> -#include "qapi/qmp/qnum.h"
+>>>   #include "qapi/qapi-events-rdma.h"
+>>>   #include <infiniband/verbs.h>
+>>> -#include <infiniband/umad_types.h>
+>>> -#include <infiniband/umad.h>
+>>> -#include <rdma/rdma_user_cm.h>
+>>>   #include "contrib/rdmacm-mux/rdmacm-mux.h"
+>>>   #include "trace.h"
 > 
-> - rephrase commit messages
-> - s/of/of present/ for CpuTopology comment
-> - drop reduanct arguments such as cpu_type
-> - use ms instead of macs in migration context
-> - rebase to commit 1b46b4daa6
 > 
 
-<snip>
 
