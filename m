@@ -1,61 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hWP0i-0000R9-Gk
-	for mharc-qemu-trivial@gnu.org; Thu, 30 May 2019 13:38:40 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44078)
+	id 1hWdPL-0008DX-3Q
+	for mharc-qemu-trivial@gnu.org; Fri, 31 May 2019 05:01:03 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34166)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1hWP0h-0000Qy-8l
-	for qemu-trivial@nongnu.org; Thu, 30 May 2019 13:38:40 -0400
+	(envelope-from <peter.maydell@linaro.org>) id 1hWdPI-0008CY-Sd
+	for qemu-trivial@nongnu.org; Fri, 31 May 2019 05:01:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <richard.henderson@linaro.org>) id 1hWP0Z-0000gd-N9
-	for qemu-trivial@nongnu.org; Thu, 30 May 2019 13:38:35 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:34422)
+	(envelope-from <peter.maydell@linaro.org>) id 1hWdPI-00076A-0G
+	for qemu-trivial@nongnu.org; Fri, 31 May 2019 05:01:00 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:45152)
 	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
-	id 1hWP0X-0000dE-IX
-	for qemu-trivial@nongnu.org; Thu, 30 May 2019 13:38:29 -0400
-Received: by mail-ot1-x341.google.com with SMTP id l17so6463476otq.1
-	for <qemu-trivial@nongnu.org>; Thu, 30 May 2019 10:38:29 -0700 (PDT)
+	(Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+	id 1hWdPH-00074T-PC
+	for qemu-trivial@nongnu.org; Fri, 31 May 2019 05:00:59 -0400
+Received: by mail-ot1-x341.google.com with SMTP id t24so8423297otl.12
+	for <qemu-trivial@nongnu.org>; Fri, 31 May 2019 02:00:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
-	h=from:to:cc:subject:date:message-id;
-	bh=NlfGiAAlPDQtelzDRN9s5s54Y74DMuOJ6VJbYlSv7zo=;
-	b=SgD79CyqD8o2D+fOKp0hfXAazxGXFauY/FcGUCiFJ4Xr3IA6yKF5cuPKncSk19Yz8A
-	DOKjJ8ijd2/cVBtMMRR+HjMKjJbVdpsanlh5GQ0TXuedE1gitY9r9ERlCGrOjv+mh3bl
-	YW8rkHJQs0wZl1ynTUb5uSqpLVyMQF9q6uDweM/ktNCtiY0H9BjWKb3ViKrzQ4Nna3Gw
-	wsMvVxAmriZFGLweM65amhcOWDLh9OQrqKeRyO96Va2D1v7rd3RV5TJAifwg1sFjhGyS
-	5efmvy3XTIG/LWDvpE8AY2DQrVm8Ng9mK5Fj4r43bbPBv7nXgWQiUKJYgSFTwlG3xJQd
-	Nong==
+	h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+	:cc; bh=q6pv/FQFsCWJI7vYgX4n9cwOf3W3UOWrJeFAt5iBe6A=;
+	b=oNKh0T0J8j2rqelCFaprkANrXdREw0B+sEM08h4k7ZRC7o0EzRjKsMGu/2ywiWsp2V
+	acJryvisC1D+0ND4orOVoaYtv6X1+zGt9k3KWM+cu6cSa/yGddJQ3xuvkZK+yQzZIvC7
+	a9r6JjjhEEc52/9FF8a+MxATf0dFDHNQUH+QPH7+IpFCyUT66o2JbfqqnT9BT4MBvEjt
+	IyLPFMqAOeNTPPogD9R+GMT23Cvcrfek84+Kn9bs2Yxs1sblxJbIVWayp1eThgsGIztw
+	OIMdCauxJKkilgdIKQX5UVcnHy8fCeXTtik7rvPKBETku4b33b0Q9FCfipw/hVIbZBpZ
+	HF8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
 	d=1e100.net; s=20161025;
-	h=x-gm-message-state:from:to:cc:subject:date:message-id;
-	bh=NlfGiAAlPDQtelzDRN9s5s54Y74DMuOJ6VJbYlSv7zo=;
-	b=BQ9ZNH5XSwoGN3k+Uj8yqU0BUJNYLRSXSP38Xjr/CcKTRyE59Tifu6fzKncXT2PjCQ
-	nhLgEmtVd1wjZFp5Pb/Nea7j499h2U982ezNPFOnceEtlTv3Xu77WPVc/TpHsOjokuqH
-	6ob4flbNnwP5e3mbYhcttuMnKaf6xkchcZga8a7W1L4Ti3aAkLSfOrZP3p2qeUs0p2TY
-	YH1asAxuw7bkOKHkZaN/2APdTa4UlVXmVyk7u2MQZlCAi7HgYBFpxne18sT5AcfMVBRO
-	ZrP6ihHVSLRa1ihA4RVvBfXJ9J0Qez6bieM3rF465dvSKQNsEJxk0fWxMFb74IlRc5zP
-	F2/Q==
-X-Gm-Message-State: APjAAAWQaSXDAHDOUzfls6L9h7azvTnsbFc4ekj8A2rmj2boqMVs0+Dx
-	oJ7OsCr8ZWx51u0hmHFtlauDYQ==
-X-Google-Smtp-Source: APXvYqzgjBZv+L3ZfNk9vTxuurkKGvmM/EYYknR2zNcbu19ghGWkZVIyewk/Jawj8P9DdaP6BU2lag==
-X-Received: by 2002:a9d:694a:: with SMTP id p10mr3649933oto.61.1559237908397; 
-	Thu, 30 May 2019 10:38:28 -0700 (PDT)
-Received: from localhost.localdomain (168.189-204-159.bestelclientes.com.mx.
-	[189.204.159.168])
-	by smtp.gmail.com with ESMTPSA id i12sm1124466otk.2.2019.05.30.10.38.26
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Thu, 30 May 2019 10:38:27 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	peter.maydell@linaro.org
-Date: Thu, 30 May 2019 12:38:24 -0500
-Message-Id: <20190530173824.30699-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.1
+	h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+	:message-id:subject:to:cc;
+	bh=q6pv/FQFsCWJI7vYgX4n9cwOf3W3UOWrJeFAt5iBe6A=;
+	b=kM7q3X+K0P4UJhJMwBXsSrywXR3Gvg6s4BusJU09FQFgvmOM3bENa4JGVifhGbntG7
+	vpPWCqf4ynRcCO4Sa/RMj2gM64fBmnNc7+D34WhuSy75E1xwoICDYR/hd6rHjJZXQYHi
+	r6uGrpba+8VE6gRpfSZiLp2oh1vyZQ8vVLqsT3wCy5lL8xknSPt11sOc1A2Z7lz4xwRh
+	x7A1tvmudeeZHmR7K1sxEb2ikyaRS91vgTdYfoF6S+6d0LBbf66v+/oCgHdJ+KrfwhxJ
+	4fQf6upd4xd3avyWZMxDoNy/9ckOBxkvwjJpZdVr4t7R28WbM2NRk8HHMRmp24Bm5cEU
+	1YEA==
+X-Gm-Message-State: APjAAAU6J/0l0CMHu450QRvFVZkivfPCn+nb4RITYt+kUut4RM8k6ZO4
+	FQUIkoqHcHmIMWCC6gCKOZ3IWic43xZsgZI/Yvu4rg==
+X-Google-Smtp-Source: APXvYqw0mXSocs1klp9c9f6dPwH9I94qOzoz8P3RxBIXhgLWVXwjesxYhFBqLS8FAfSq7xcHH3tW2e5i1rQI+qJ89vs=
+X-Received: by 2002:a9d:2c29:: with SMTP id f38mr879996otb.97.1559293258702;
+	Fri, 31 May 2019 02:00:58 -0700 (PDT)
+MIME-Version: 1.0
+References: <20190530173824.30699-1-richard.henderson@linaro.org>
+In-Reply-To: <20190530173824.30699-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 31 May 2019 10:00:47 +0100
+Message-ID: <CAFEAcA8QoncdF-rQt7LDHx3B09xSgzrOjZGxb7L71Jh4h3vM1g@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+	QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
 	recognized.
 X-Received-From: 2607:f8b0:4864:20::341
-Subject: [Qemu-trivial] [PATCH] util: Adjust qemu_guest_getrandom_nofail for
- Coverity
+Subject: Re: [Qemu-trivial] [PATCH] util: Adjust qemu_guest_getrandom_nofail
+ for Coverity
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -67,31 +66,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 May 2019 17:38:40 -0000
+X-List-Received-Date: Fri, 31 May 2019 09:01:02 -0000
 
-Explicitly ignore the return value of qemu_guest_getrandom.
-Because we use error_fatal, all errors are already caught.
+On Thu, 30 May 2019 at 18:38, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Explicitly ignore the return value of qemu_guest_getrandom.
+> Because we use error_fatal, all errors are already caught.
+>
+> Fixes: CID 1401701
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  util/guest-random.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Fixes: CID 1401701
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- util/guest-random.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/util/guest-random.c b/util/guest-random.c
-index e8124a3cad..00a08fd981 100644
---- a/util/guest-random.c
-+++ b/util/guest-random.c
-@@ -56,7 +56,7 @@ int qemu_guest_getrandom(void *buf, size_t len, Error **errp)
- 
- void qemu_guest_getrandom_nofail(void *buf, size_t len)
- {
--    qemu_guest_getrandom(buf, len, &error_fatal);
-+    (void)qemu_guest_getrandom(buf, len, &error_fatal);
- }
- 
- uint64_t qemu_guest_random_seed_thread_part1(void)
--- 
-2.17.1
-
+thanks
+-- PMM
 
