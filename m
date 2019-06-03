@@ -1,79 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hXKaQ-0002l5-MT
-	for mharc-qemu-trivial@gnu.org; Sun, 02 Jun 2019 03:07:22 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37677)
+	id 1hXs8u-0002l8-HF
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Jun 2019 14:57:12 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:40221)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dmitry.fleytman@gmail.com>) id 1hXKaO-0002iL-Em
-	for qemu-trivial@nongnu.org; Sun, 02 Jun 2019 03:07:21 -0400
+	(envelope-from <alex.williamson@redhat.com>) id 1hXs8r-0002jV-RT
+	for qemu-trivial@nongnu.org; Mon, 03 Jun 2019 14:57:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dmitry.fleytman@gmail.com>) id 1hXKaM-00083U-H9
-	for qemu-trivial@nongnu.org; Sun, 02 Jun 2019 03:07:20 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:53917)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <dmitry.fleytman@gmail.com>)
-	id 1hXKVQ-00040q-Ha; Sun, 02 Jun 2019 03:02:12 -0400
-Received: by mail-wm1-x343.google.com with SMTP id d17so743425wmb.3;
-	Sun, 02 Jun 2019 00:02:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
-	h=mime-version:subject:from:in-reply-to:date:cc
-	:content-transfer-encoding:message-id:references:to;
-	bh=Ff3SbIC2oYbwKyRMp8wOI3tAidWWzOi9ekCP5dP+dDI=;
-	b=IBqtlwvZRsOuoL3Cb8c1omXdgQlxtXXawawuAK078MZR9OB48xnEcIaSkDGccSmyXa
-	DZZhSDeffei6JrsgHshoIdeoHh3c9IoaodVJ9FLCFE9g/bFBApf+45zd4CiXdtrzja88
-	hgZif5ERllHLtSQcYG1wcWuHCmjdmwQUpYVtoJFdPGenNMFPn0imH/GTPPMMq+kOsHVb
-	28hd1Xbmatem+at1GrymuDoL/OBiwTNadwbF3Dn3Q02G9+zVAzX6x1+/ZPY0rYXdJy6u
-	yw93o+Z6Scth5uKgaAqIAaPsahg1DfOt6R7T4OGbF4onCow4zHFf3HWtX3X+QRxkqXcF
-	N+YA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
-	:content-transfer-encoding:message-id:references:to;
-	bh=Ff3SbIC2oYbwKyRMp8wOI3tAidWWzOi9ekCP5dP+dDI=;
-	b=QfjjNK5vA3PNaFR2NR2TBgQMLo58YvZywGHmRiASQN+aIdAK9AVg01p9km+z+8SP9h
-	3TTMvhJcpW8x+KLSp/4h8qKtxI3WKghUIDFUg6hzGZrkwDrKSKDbjdFxWo5uccQp5T/F
-	Qsm2ACAYtoCrVJJ3m1VW+5w9GYTtv9tki7QAW5zBM43UsztBqIY5/yabVaUoYXIOG3Vi
-	x3PI9hvaSE/fIxc8jJQBqbr/EIdtxZwPJmOAtTwQ+u/NCLTCY5G/xVlSPOZRS2OaTXUp
-	dNcDulW4qoHuhYaxPQwBQWQgeBRhkcHf2DfJZw2Dyq1X+3LCPXIJRTd1YYAcNFKE4T/8
-	0psQ==
-X-Gm-Message-State: APjAAAUaa8HcdrbkRIidpiZB2BcdbbVoqd9xys7Dp3aJEV+dmtURZ/ya
-	NfPFazlTVBOo+7cWWAxxiHU=
-X-Google-Smtp-Source: APXvYqx0AfilS4n7flrjI5uIU6RPXTWI9ueenfIUJjCy+952OyROoMPDyQxv4UY2DRI9MdNEK5v/jg==
-X-Received: by 2002:a7b:cb94:: with SMTP id m20mr10174059wmi.144.1559458930361;
-	Sun, 02 Jun 2019 00:02:10 -0700 (PDT)
-Received: from [10.0.1.34] ([141.226.29.227])
-	by smtp.gmail.com with ESMTPSA id d2sm8579330wmb.9.2019.06.02.00.02.07
-	(version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-	Sun, 02 Jun 2019 00:02:09 -0700 (PDT)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
-From: Dmitry Fleytman <dmitry.fleytman@gmail.com>
-In-Reply-To: <20190528164020.32250-2-philmd@redhat.com>
-Date: Sun, 2 Jun 2019 10:02:06 +0300
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
-	Aleksandar Rikalo <arikalo@wavecomp.com>,
-	Halil Pasic <pasic@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Michael Walle <michael@walle.cc>, Richard Henderson <rth@twiddle.net>,
-	Aleksandar Markovic <amarkovic@wavecomp.com>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>, Fam Zheng <fam@euphon.net>,
+	(envelope-from <alex.williamson@redhat.com>) id 1hXs8q-0000ls-Sv
+	for qemu-trivial@nongnu.org; Mon, 03 Jun 2019 14:57:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43510)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
+	id 1hXs8m-0000aR-EG; Mon, 03 Jun 2019 14:57:04 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+	[10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A32D8300144F;
+	Mon,  3 Jun 2019 18:57:01 +0000 (UTC)
+Received: from x1.home (ovpn-116-22.phx2.redhat.com [10.3.116.22])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BB07F5D9D2;
+	Mon,  3 Jun 2019 18:56:48 +0000 (UTC)
+Date: Mon, 3 Jun 2019 12:56:47 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Dmitry Fleytman
+	<dmitry.fleytman@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>, Marcel
+	Apfelbaum <marcel.apfelbaum@gmail.com>, Paolo Bonzini
+	<pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, Aleksandar Rikalo
+	<arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>, David
+	Hildenbrand <david@redhat.com>, Christian Borntraeger
+	<borntraeger@de.ibm.com>, Michael Walle <michael@walle.cc>, Richard
+	Henderson <rth@twiddle.net>, Aleksandar Markovic <amarkovic@wavecomp.com>, 
+	Cornelia Huck <cohuck@redhat.com>, Peter Maydell
+	<peter.maydell@linaro.org>, Fam Zheng <fam@euphon.net>,
 	qemu-s390x@nongnu.org, Markus Armbruster <armbru@redhat.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <7E6AA829-F9C0-4C03-AF5A-E0E115D626C1@gmail.com>
+Message-ID: <20190603125647.160a7a7c@x1.home>
+In-Reply-To: <20190528164020.32250-10-philmd@redhat.com>
 References: <20190528164020.32250-1-philmd@redhat.com>
-	<20190528164020.32250-2-philmd@redhat.com>
-To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-X-Mailer: Apple Mail (2.3445.104.11)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2a00:1450:4864:20::343
-Subject: Re: [Qemu-trivial] [PATCH v2 01/10] hw/scsi/vmw_pvscsi: Use
- qbus_reset_all() directly
+	<20190528164020.32250-10-philmd@redhat.com>
+Organization: Red Hat
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.43]);
+	Mon, 03 Jun 2019 18:57:03 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH v2 09/10] hw/vfio/pci: Use the QOM
+ DEVICE() macro to access DeviceState.qdev
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -85,50 +62,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 02 Jun 2019 07:07:21 -0000
+X-List-Received-Date: Mon, 03 Jun 2019 18:57:11 -0000
 
-Reviewed-by: Dmitry Fleytman <dmitry.fleytman@gmail.com>
+On Tue, 28 May 2019 18:40:19 +0200
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
-> On 28 May 2019, at 19:40, Philippe Mathieu-Daud=C3=A9 =
-<philmd@redhat.com> wrote:
+> Rather than looking inside the definition of a DeviceState with
+> "s->qdev", use the QOM prefered style: "DEVICE(s)".
 >=20
-> Since the BusState is accesible from the SCSIBus object,
-> it is pointless to use qbus_reset_all_fn.
-> Use qbus_reset_all() directly.
+> This patch was generated using the following Coccinelle script:
 >=20
+>     // Use DEVICE() macros to access DeviceState.qdev
+>     @use_device_macro_to_access_qdev@
+>     expression obj;
+>     identifier dev;
+>     @@
+>     -&obj->dev.qdev
+>     +DEVICE(obj)
+>=20
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
-> v2: Use BUS() macro (Peter Maydell)
->=20
-> One step toward removing qbus_reset_all_fn()
-> ---
-> hw/scsi/vmw_pvscsi.c | 4 ++--
-> 1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/hw/scsi/vmw_pvscsi.c b/hw/scsi/vmw_pvscsi.c
-> index 584b4be07e..c39e33fa35 100644
-> --- a/hw/scsi/vmw_pvscsi.c
-> +++ b/hw/scsi/vmw_pvscsi.c
-> @@ -440,7 +440,7 @@ static void
-> pvscsi_reset_adapter(PVSCSIState *s)
-> {
->     s->resetting++;
-> -    qbus_reset_all_fn(&s->bus);
-> +    qbus_reset_all(BUS(&s->bus));
->     s->resetting--;
->     pvscsi_process_completion_queue(s);
->     assert(QTAILQ_EMPTY(&s->pending_queue));
-> @@ -848,7 +848,7 @@ pvscsi_on_cmd_reset_bus(PVSCSIState *s)
->     trace_pvscsi_on_cmd_arrived("PVSCSI_CMD_RESET_BUS");
->=20
->     s->resetting++;
-> -    qbus_reset_all_fn(&s->bus);
-> +    qbus_reset_all(BUS(&s->bus));
->     s->resetting--;
->     return PVSCSI_COMMAND_PROCESSING_SUCCEEDED;
-> }
-> --=20
-> 2.20.1
->=20
+>  hw/vfio/pci.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+
+
+Acked-by: Alex Williamson <alex.williamson@redhat.com>
+
+
+> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> index 8e555db12e..2a4091d216 100644
+> --- a/hw/vfio/pci.c
+> +++ b/hw/vfio/pci.c
+> @@ -2717,7 +2717,7 @@ static void vfio_req_notifier_handler(void *opaque)
+>          return;
+>      }
+> =20
+> -    qdev_unplug(&vdev->pdev.qdev, &err);
+> +    qdev_unplug(DEVICE(vdev), &err);
+>      if (err) {
+>          warn_reportf_err(err, VFIO_MSG_PREFIX, vdev->vbasedev.name);
+>      }
+> @@ -2839,7 +2839,7 @@ static void vfio_realize(PCIDevice *pdev, Error **e=
+rrp)
+>      vdev->vbasedev.name =3D g_path_get_basename(vdev->vbasedev.sysfsdev);
+>      vdev->vbasedev.ops =3D &vfio_pci_ops;
+>      vdev->vbasedev.type =3D VFIO_DEVICE_TYPE_PCI;
+> -    vdev->vbasedev.dev =3D &vdev->pdev.qdev;
+> +    vdev->vbasedev.dev =3D DEVICE(vdev);
+> =20
+>      tmp =3D g_strdup_printf("%s/iommu_group", vdev->vbasedev.sysfsdev);
+>      len =3D readlink(tmp, group_path, sizeof(group_path));
 
 
