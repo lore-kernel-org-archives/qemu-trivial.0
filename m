@@ -1,56 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hXs8u-0002l8-HF
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Jun 2019 14:57:12 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:40221)
+	id 1hY4oc-0005gL-9B
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2019 04:29:06 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:33964)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1hXs8r-0002jV-RT
-	for qemu-trivial@nongnu.org; Mon, 03 Jun 2019 14:57:10 -0400
+	(envelope-from <pbonzini@redhat.com>) id 1hY4oa-0005f7-EU
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2019 04:29:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <alex.williamson@redhat.com>) id 1hXs8q-0000ls-Sv
-	for qemu-trivial@nongnu.org; Mon, 03 Jun 2019 14:57:09 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43510)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
-	id 1hXs8m-0000aR-EG; Mon, 03 Jun 2019 14:57:04 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
-	[10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A32D8300144F;
-	Mon,  3 Jun 2019 18:57:01 +0000 (UTC)
-Received: from x1.home (ovpn-116-22.phx2.redhat.com [10.3.116.22])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BB07F5D9D2;
-	Mon,  3 Jun 2019 18:56:48 +0000 (UTC)
-Date: Mon, 3 Jun 2019 12:56:47 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Dmitry Fleytman
-	<dmitry.fleytman@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>, Marcel
-	Apfelbaum <marcel.apfelbaum@gmail.com>, Paolo Bonzini
-	<pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, Aleksandar Rikalo
-	<arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>, David
-	Hildenbrand <david@redhat.com>, Christian Borntraeger
-	<borntraeger@de.ibm.com>, Michael Walle <michael@walle.cc>, Richard
-	Henderson <rth@twiddle.net>, Aleksandar Markovic <amarkovic@wavecomp.com>, 
-	Cornelia Huck <cohuck@redhat.com>, Peter Maydell
-	<peter.maydell@linaro.org>, Fam Zheng <fam@euphon.net>,
-	qemu-s390x@nongnu.org, Markus Armbruster <armbru@redhat.com>
-Message-ID: <20190603125647.160a7a7c@x1.home>
-In-Reply-To: <20190528164020.32250-10-philmd@redhat.com>
-References: <20190528164020.32250-1-philmd@redhat.com>
-	<20190528164020.32250-10-philmd@redhat.com>
-Organization: Red Hat
+	(envelope-from <pbonzini@redhat.com>) id 1hY4oZ-0005a1-Kd
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2019 04:29:04 -0400
+Received: from mail-wm1-f68.google.com ([209.85.128.68]:39230)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hY4oZ-0005Xw-Dk
+	for qemu-trivial@nongnu.org; Tue, 04 Jun 2019 04:29:03 -0400
+Received: by mail-wm1-f68.google.com with SMTP id z23so13716352wma.4
+	for <qemu-trivial@nongnu.org>; Tue, 04 Jun 2019 01:28:59 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=1e100.net; s=20161025;
+	h=x-gm-message-state:subject:to:references:from:message-id:date
+	:user-agent:mime-version:in-reply-to:content-language
+	:content-transfer-encoding;
+	bh=L5bqbG5HeCipJkmbOGScph3N/xxSyKFrQkKFnfq3AlI=;
+	b=DNfH/VpLLrLMSpFQ+RNuGWOpm1nuYDI6eDsbq2VebgOMBXOI+x4Ki1v5fBzve7zle1
+	v5+ETfiZbdTtOokfi22TULcT3b2dkSwnH8X40Cnv8U5oVH457lPlEThRxii9SVD2EEBk
+	Ak12/1C2zs3YcPXzcY57prlebKqkdHzy590XULD3fAfeQfLihpy+mbGfydCoiGFWXmZP
+	VxKBkrfjLCouqPzWE+V6D9oNT62z6KOYbpOqvOxpytYLgQ80ZYJfZGMWhYCYtttPZT3F
+	Dc2j0uSCh/Tx+7eFN4kNAquhsmXF8+Nk24t2IGOWlTRdAairdu1aebZjzEAyjPfjCWkN
+	WvzA==
+X-Gm-Message-State: APjAAAWekWxJ1bDx5tbDlrK3s79Amin1s8TZNRJRONM27XRG5zRJX5Am
+	wU/S80yA1wQkjm0cU6ceG1vqEuUXqAI=
+X-Google-Smtp-Source: APXvYqw6eOFNQ02/QmPrYOFzUMkfFNexue2mmo1sNA7etUUuz7/GuYpab3ldfhVChSbDmBqh50hoVg==
+X-Received: by 2002:a1c:f60d:: with SMTP id w13mr16924671wmc.40.1559636938292; 
+	Tue, 04 Jun 2019 01:28:58 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:657f:501:149f:5617?
+	([2001:b07:6468:f312:657f:501:149f:5617])
+	by smtp.gmail.com with ESMTPSA id
+	q15sm12676440wrr.19.2019.06.04.01.28.57
+	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+	Tue, 04 Jun 2019 01:28:57 -0700 (PDT)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
+	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <20190604080010.23186-1-armbru@redhat.com>
+	<ff72b9fc-003f-275a-d382-860f2a483d60@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <803fdb35-f28e-c033-b5ac-02d230dacf94@redhat.com>
+Date: Tue, 4 Jun 2019 10:28:57 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
-	(mx1.redhat.com [10.5.110.43]);
-	Mon, 03 Jun 2019 18:57:03 +0000 (UTC)
+In-Reply-To: <ff72b9fc-003f-275a-d382-860f2a483d60@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2 09/10] hw/vfio/pci: Use the QOM
- DEVICE() macro to access DeviceState.qdev
+	[fuzzy]
+X-Received-From: 209.85.128.68
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] test: Fix make target
+ check-report.tap
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,56 +68,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Jun 2019 18:57:11 -0000
+X-List-Received-Date: Tue, 04 Jun 2019 08:29:05 -0000
 
-On Tue, 28 May 2019 18:40:19 +0200
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+On 04/06/19 10:09, Philippe Mathieu-Daudé wrote:
+>>  check-report.tap: $(patsubst %,check-report-qtest-%.tap, $(QTEST_TARGETS)) check-report-unit.tap
+>> -	$(call quiet-command,./scripts/tap-merge.py $^ > $@,"GEN","$@")
+>> +	$(call quiet-command, cat $^ | scripts/tap-merge.pl >$@,"GEN","$@")
+> Paolo, did you intend to submit a new tap-merge.py script in commit
+> 9df43317b82?
+> 
 
-> Rather than looking inside the definition of a DeviceState with
-> "s->qdev", use the QOM prefered style: "DEVICE(s)".
->=20
-> This patch was generated using the following Coccinelle script:
->=20
->     // Use DEVICE() macros to access DeviceState.qdev
->     @use_device_macro_to_access_qdev@
->     expression obj;
->     identifier dev;
->     @@
->     -&obj->dev.qdev
->     +DEVICE(obj)
->=20
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/vfio/pci.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+No, it's really just y vs l.
 
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org
 
-Acked-by: Alex Williamson <alex.williamson@redhat.com>
-
-
-> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-> index 8e555db12e..2a4091d216 100644
-> --- a/hw/vfio/pci.c
-> +++ b/hw/vfio/pci.c
-> @@ -2717,7 +2717,7 @@ static void vfio_req_notifier_handler(void *opaque)
->          return;
->      }
-> =20
-> -    qdev_unplug(&vdev->pdev.qdev, &err);
-> +    qdev_unplug(DEVICE(vdev), &err);
->      if (err) {
->          warn_reportf_err(err, VFIO_MSG_PREFIX, vdev->vbasedev.name);
->      }
-> @@ -2839,7 +2839,7 @@ static void vfio_realize(PCIDevice *pdev, Error **e=
-rrp)
->      vdev->vbasedev.name =3D g_path_get_basename(vdev->vbasedev.sysfsdev);
->      vdev->vbasedev.ops =3D &vfio_pci_ops;
->      vdev->vbasedev.type =3D VFIO_DEVICE_TYPE_PCI;
-> -    vdev->vbasedev.dev =3D &vdev->pdev.qdev;
-> +    vdev->vbasedev.dev =3D DEVICE(vdev);
-> =20
->      tmp =3D g_strdup_printf("%s/iommu_group", vdev->vbasedev.sysfsdev);
->      len =3D readlink(tmp, group_path, sizeof(group_path));
-
+Paolo
 
