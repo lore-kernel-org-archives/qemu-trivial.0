@@ -1,64 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hY52T-0002v5-B0
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2019 04:43:25 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38080)
+	id 1hYVjM-00034d-Ku
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Jun 2019 09:13:28 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:56440)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hY52R-0002ug-3I
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2019 04:43:24 -0400
+	(envelope-from <marcandre.lureau@redhat.com>) id 1hYVjK-00032I-N9
+	for qemu-trivial@nongnu.org; Wed, 05 Jun 2019 09:13:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <philmd@redhat.com>) id 1hY52O-0005DC-Bi
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2019 04:43:22 -0400
-Received: from mail-wm1-f65.google.com ([209.85.128.65]:39679)
-	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hY52D-0004vP-Uy
-	for qemu-trivial@nongnu.org; Tue, 04 Jun 2019 04:43:13 -0400
-Received: by mail-wm1-f65.google.com with SMTP id z23so13763940wma.4
-	for <qemu-trivial@nongnu.org>; Tue, 04 Jun 2019 01:42:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=1e100.net; s=20161025;
-	h=x-gm-message-state:subject:to:references:from:openpgp:message-id
-	:date:user-agent:mime-version:in-reply-to:content-language
-	:content-transfer-encoding;
-	bh=qPoEKbMGuvU9BnLXJ9hZZI4+cC8xO+pYsGVRctwfA48=;
-	b=bWVTwWnbby0UmtqR+kozLvwoIA0JpNrPypM0r+b3/mTN5PHyxngcfP5Zs5Grmz6ipE
-	aEmDpwlOW/Mc9/9s3OClRcx+iq1aGsIbh0A3UqvkLQimNWYTK+C19ihfcrOd5GXMvScF
-	/xTjq5mxD75A2fF/U3T+37Kr+XCb8ZZvvYEFLHbggY9UINDnmn6IdBMyB7JnXTI4jLni
-	heeFWYjI3cchPrho67kDGjMCI875HKIqPdK05RwHh8BqtijvC+vsdrBmHBdjssmlneDP
-	KWvtQRkCIoznQIhrGeRokF3lpI0jnMPgAiwPj1HkwHO9Wm6F4fpfaraXpbPZhX7dP5XC
-	8FJQ==
-X-Gm-Message-State: APjAAAUX9cbJ92kzEgGJ06Cp11AD/ii9UoEg2wSF/b6tImwG7ZvHtxmD
-	fRdwgGtEnftZh31DMuTYuAg63p9/5O8=
-X-Google-Smtp-Source: APXvYqxsD1upUD2ZAyiNPGJo8hj6T/ciAwUwZAm8OI5qzx3BjzWSAo+yKuuIIpQ8C7CBkh4v4TsjZA==
-X-Received: by 2002:a7b:c933:: with SMTP id h19mr17879429wml.52.1559637773256; 
-	Tue, 04 Jun 2019 01:42:53 -0700 (PDT)
-Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net.
-	[88.21.202.183])
-	by smtp.gmail.com with ESMTPSA id l1sm5952310wmg.13.2019.06.04.01.42.52
-	(version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-	Tue, 04 Jun 2019 01:42:52 -0700 (PDT)
-To: Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster
-	<armbru@redhat.com>, qemu-devel@nongnu.org,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20190604080010.23186-1-armbru@redhat.com>
-	<ff72b9fc-003f-275a-d382-860f2a483d60@redhat.com>
-	<803fdb35-f28e-c033-b5ac-02d230dacf94@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
-	url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <56d043be-efd0-cfb5-2c68-30855eb42d03@redhat.com>
-Date: Tue, 4 Jun 2019 10:42:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.6.1
+	(envelope-from <marcandre.lureau@redhat.com>) id 1hYVjJ-0002md-TB
+	for qemu-trivial@nongnu.org; Wed, 05 Jun 2019 09:13:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53604)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
+	id 1hYVjH-0001lp-Ju; Wed, 05 Jun 2019 09:13:23 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+	[10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id E13CD30BBE7A;
+	Wed,  5 Jun 2019 13:12:28 +0000 (UTC)
+Received: from localhost (ovpn-112-54.ams2.redhat.com [10.36.112.54])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 285E4101F96D;
+	Wed,  5 Jun 2019 13:12:21 +0000 (UTC)
+From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, mst@redhat.com,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Date: Wed,  5 Jun 2019 15:12:21 +0200
+Message-Id: <20190605131221.29432-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <803fdb35-f28e-c033-b5ac-02d230dacf94@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+	(mx1.redhat.com [10.5.110.49]);
+	Wed, 05 Jun 2019 13:12:38 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-	[fuzzy]
-X-Received-From: 209.85.128.65
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] test: Fix make target
- check-report.tap
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] docs/vhost-user.json: some firmware.json
+ copy leftovers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -70,25 +49,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jun 2019 08:43:24 -0000
+X-List-Received-Date: Wed, 05 Jun 2019 13:13:27 -0000
 
-On 6/4/19 10:28 AM, Paolo Bonzini wrote:
-> On 04/06/19 10:09, Philippe Mathieu-Daudé wrote:
->>>  check-report.tap: $(patsubst %,check-report-qtest-%.tap, $(QTEST_TARGETS)) check-report-unit.tap
->>> -	$(call quiet-command,./scripts/tap-merge.py $^ > $@,"GEN","$@")
->>> +	$(call quiet-command, cat $^ | scripts/tap-merge.pl >$@,"GEN","$@")
->> Paolo, did you intend to submit a new tap-merge.py script in commit
->> 9df43317b82?
->>
-> 
-> No, it's really just y vs l.
+Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+---
+ docs/interop/vhost-user.json | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-OK!
+diff --git a/docs/interop/vhost-user.json b/docs/interop/vhost-user.json
+index ae88c03117..da6aaf51c8 100644
+--- a/docs/interop/vhost-user.json
++++ b/docs/interop/vhost-user.json
+@@ -178,11 +178,11 @@
+ #
+ #   - /usr/share/qemu/vhost-user/50-crosvm-gpu.json
+ #
+-# then the sysadmin can prevent the default QEMU being used at all with
++# then the sysadmin can prevent the default QEMU GPU being used at all w=
+ith
+ #
+ #   $ touch /etc/qemu/vhost-user/50-qemu-gpu.json
+ #
+-# The sysadmin can replace/alter the distro default OVMF with
++# The sysadmin can replace/alter the distro default QEMU GPU with
+ #
+ #   $ vim /etc/qemu/vhost-user/50-qemu-gpu.json
+ #
+@@ -190,7 +190,7 @@
+ #
+ #   $ vim /etc/qemu/vhost-user/10-qemu-gpu.json
+ #
+-# or they can provide a parallel OVMF with lower priority
++# or they can provide a parallel QEMU GPU with lower priority
+ #
+ #   $ vim /etc/qemu/vhost-user/99-qemu-gpu.json
+ #
+--=20
+2.22.0.rc2.384.g1a9a72ea1d
 
-> 
-> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: qemu-trivial@nongnu.org
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
