@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYqFc-0000bZ-Iw
+	id 1hYqFc-0000bl-Rk
 	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:08:08 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60617)
+Received: from eggs.gnu.org ([209.51.188.92]:60704)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFT-0000VF-GU
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:08:00 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hYqFX-0000Yk-Mb
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:08:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFS-0003lJ-Ej
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:59 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:60497)
+	(envelope-from <laurent@vivier.eu>) id 1hYqFW-0003sE-QW
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:08:03 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:40829)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hYqFM-0003W7-7N; Thu, 06 Jun 2019 07:07:52 -0400
+	id 1hYqFS-0003kp-WE; Thu, 06 Jun 2019 07:07:59 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1N3KDM-1gZYHX0OdG-010LEk; Thu, 06 Jun 2019 13:06:53 +0200
+	id 1Mjjvp-1gpIoc0oep-00lIOV; Thu, 06 Jun 2019 13:07:05 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -37,34 +37,34 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>
-Date: Thu,  6 Jun 2019 13:06:18 +0200
-Message-Id: <20190606110625.32127-10-laurent@vivier.eu>
+Date: Thu,  6 Jun 2019 13:06:25 +0200
+Message-Id: <20190606110625.32127-17-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190606110625.32127-1-laurent@vivier.eu>
 References: <20190606110625.32127-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:8FmYLJqd6nXvaOA8F8eP5aRFDi4xgKrj8Ckn7so07AqnFefxKJf
-	bufSPAvf+aYwQgR9cG5GMvWhk1VEnOVUWd0r0yy8RSAQEFd+XSPDnGH2YOHjoODZstbDNBP
-	hfir2+Nxzizz1I6FPy4HeD4KhyTRzZQpBeTn7NODDPVZ6v91buO68l2eGYdtrRQKQARrDoj
-	ZwU3gVtBTmY/hY52GKerQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:TXGh83A+BFc=:ZlfeUp7i3lWhZ1IXQbS3vy
-	U2Bk0DiMUdTX8F+CvMczxQV8EQC+3NNdMMqRxki0S8iDZUb7knNsz+RY0/MWSRcL3sFAH2Qgs
-	iTMU5zsY/fRk++iZpKBsLf/77weaz/JLdHmuebICDCZr88+/f1h7z4njGpe2gMQQkbBXxDmiD
-	43VVnlr0AYXNUYcFubTEJHg1W+eBnaupuHDVbH5pKKfiKVZzYNukgrCyPJZHBSyC+o9dZMyh6
-	oZwo60W8Fh6nQ8NjKCYhVZq00OE9wAjuDOwxZbhrIMqBl4EfQ9e5XWXjBKIEP1erub0XdDOuq
-	PtMRlIP+O4osYQ0btM/Enw+jNZreHIjHP1MOfomcLVY0rzBra3aRUmEAuxmN2ziLaarW5pBQ1
-	HnQYhQQ77S9QPuHVM/wHaeSQwgcWhW16lSy069RS9SHri6NHt4zNg21Xr+OSCuQo1YbbYjrnV
-	BLXvD3MY2J3kPBmm+2lhDvjrxhKQajcLpQvHm72Ej49J7OXGtmD6UqPrlGxEM/Ny4hdVCZnSW
-	9NJULwNw9yPSrmCbPtK9Lvzxl/pstrBQ/0FRU3QxVF0kDCbQwTl8ORd5+gjT5lNq2s64yejtt
-	AWDONfS94OE1iPefipkTyvEtgQ/CCP3exZKiMuGSWVsaj/iMrHAJWqSU89Jiez3PyUzEOu+GC
-	ld7sutLLk9ni1LAGO0pUVF3YimlAScZs5LEFeM0miGuK+hAI3DPbw6/8Od+kPeNuTsuoTcjUn
-	UegRD73Qo5OO0CgaqpZPVkLwc1zfqhKugZUSxEQK5r2x0aqrFOI8d/4r0c8=
+X-Provags-ID: V03:K1:bl0xDPOBLSFyaA6yuciGO6yWHbSUzI/Taafs3MPVPDjQvSPq2FO
+	n6XAL3not5uDhjPw7QdREwMHMqCv3HP2WfHkrW3kJZ0ay6L9pndG/dp1Dt4pPzTs5EeJw6u
+	1V+u6VXkuVastSw4iolcMlezkMrmvDF5WnpikF+fvoqBLA+wyljyEMTK3E9u4SO4wdbfSy3
+	XnHHHxVxZ1g5nQ0Uka1fQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:B/2HZW/kxEQ=:IBY9o2em4spVu6pcr0bD5N
+	4qbMMRjgEyOBMgFfTs8RKny4+saGSRYEv1xWFSYqFG5c13q0jtDJdNc1lDvFgk/wxM9G75xVu
+	1MzOz7WbfU35OEX8xX4SGzALQ1gBajW97yxYyX2HUfFUhTPgqPeHEOiHp7wbqEaG3yNBBZugy
+	+FltJC6MifGu8Ebu8uHTliWZtsqmsxxB1cOzRVLwo++swCivYQsz9PS+bs9sUL6XmAa9EDACp
+	I4gI2i5hWbmtWISlim8JXm2rVqpxqKMN54KHL2hwbys7e7wsil/54oUEBQJPu4gdVylrq0Nqy
+	Ov1owG4ToUZOGq8iOce0wTHpcY16y1bywwLRLAfpBML42UHHlcvBMxVDwkSHar65sg3uvtKMi
+	YtU5+GpjVmeaelGyfY43SNQCDXVWy+hRlCxo/vWM3EVIj3hf0qtxHx3EssyOD51iZ9kmstQgj
+	qk+S+MEBV9/+cWr8Z90TZ4EixwcbpliQlyGCaSlvudNAgo9FuRsHd0p7lz2NCMRwYsyz2TsKN
+	+flqumUZQnv3GhLb2M4D1em2avUDq3PCTXSX+0Tfe3+QnCCSwuV8VaRqz+uM+J6kQXP/YQaTz
+	TnrdStmsQnynmKN3dWjmA2WfBAe82kIgiqTV8WfaA+d/U+2HSnt3ieRjs3YmDY4pNvppbOUr1
+	7oagnQw4SODMvXVuBxJVFlu+plQymHQX4iOCsC2uAcH+FJeE3BYbrlO1JF4B2DAA5IVowEdE6
+	EiR3ncUqoE/SMYsiect/LdiFieqFj8omHC6H+HJ2CAgchrjwbRiAGlGH1/c=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
-Subject: [Qemu-trivial] [PULL 09/16] hw/s390x/event-facility: Use the QOM
- BUS() macro to access BusState.qbus
+X-Received-From: 212.227.17.10
+Subject: [Qemu-trivial] [PULL 16/16] hw/watchdog/wdt_i6300esb: Use DEVICE()
+ macro to access DeviceState.qdev
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,51 +76,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 11:08:00 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 11:08:04 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Rather than looking inside the definition of a BusState with "s->bus.qbus",
-use the QOM prefered style: "BUS(&s->bus)".
+Rather than looking inside the definition of a DeviceState with
+"s->qdev", use the QOM prefered style: "DEVICE(s)".
 
 This patch was generated using the following Coccinelle script:
 
-    // Use BUS() macros to access BusState.qbus
-    @use_bus_macro_to_access_qbus@
+    // Use DEVICE() macros to access DeviceState.qdev
+    @use_device_macro_to_access_qdev@
     expression obj;
-    identifier bus;
+    identifier dev;
     @@
-    -&obj->bus.qbus
-    +BUS(&obj->bus)
+    -&obj->dev.qdev
+    +DEVICE(obj)
 
 Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-Message-Id: <20190528164020.32250-5-philmd@redhat.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20190528164020.32250-11-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/s390x/event-facility.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/watchdog/wdt_i6300esb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/s390x/event-facility.c b/hw/s390x/event-facility.c
-index ee5b83448b11..e574223a226b 100644
---- a/hw/s390x/event-facility.c
-+++ b/hw/s390x/event-facility.c
-@@ -466,12 +466,12 @@ static void init_event_facility(Object *obj)
-     new = object_new(TYPE_SCLP_QUIESCE);
-     object_property_add_child(obj, TYPE_SCLP_QUIESCE, new, NULL);
-     object_unref(new);
--    qdev_set_parent_bus(DEVICE(new), &event_facility->sbus.qbus);
-+    qdev_set_parent_bus(DEVICE(new), BUS(&event_facility->sbus));
+diff --git a/hw/watchdog/wdt_i6300esb.c b/hw/watchdog/wdt_i6300esb.c
+index 1c6eddf86aea..f2d1e86526f2 100644
+--- a/hw/watchdog/wdt_i6300esb.c
++++ b/hw/watchdog/wdt_i6300esb.c
+@@ -200,7 +200,7 @@ static void i6300esb_timer_expired(void *vp)
+         if (d->reboot_enabled) {
+             d->previous_reboot_flag = 1;
+             watchdog_perform_action(); /* This reboots, exits, etc */
+-            i6300esb_reset(&d->dev.qdev);
++            i6300esb_reset(DEVICE(d));
+         }
  
-     new = object_new(TYPE_SCLP_CPU_HOTPLUG);
-     object_property_add_child(obj, TYPE_SCLP_CPU_HOTPLUG, new, NULL);
-     object_unref(new);
--    qdev_set_parent_bus(DEVICE(new), &event_facility->sbus.qbus);
-+    qdev_set_parent_bus(DEVICE(new), BUS(&event_facility->sbus));
-     /* the facility will automatically realize the devices via the bus */
- }
- 
+         /* In "free running mode" we start stage 1 again. */
 -- 
 2.21.0
 
