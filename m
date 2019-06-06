@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYqFU-0000WE-47
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:08:00 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60533)
+	id 1hYqFU-0000Wz-Km
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:08:02 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60428)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFQ-0000SE-Rk
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:57 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hYqFN-0000QJ-Cx
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFP-0003fh-SI
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:56 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:41725)
+	(envelope-from <laurent@vivier.eu>) id 1hYqFM-0003aF-Ag
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:53 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:50607)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hYqFM-0003Y5-4R; Thu, 06 Jun 2019 07:07:52 -0400
+	id 1hYqFM-0003Oe-0o; Thu, 06 Jun 2019 07:07:52 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1MyKYE-1gcKlM29eO-00ydrs; Thu, 06 Jun 2019 13:06:44 +0200
+	id 1N2VGj-1gYjrl13Wh-013vCt; Thu, 06 Jun 2019 13:06:46 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -35,37 +35,35 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	qemu-s390x@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
 	Cornelia Huck <cohuck@redhat.com>,
 	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
+	Markus Armbruster <armbru@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Thu,  6 Jun 2019 13:06:13 +0200
-Message-Id: <20190606110625.32127-5-laurent@vivier.eu>
+Date: Thu,  6 Jun 2019 13:06:14 +0200
+Message-Id: <20190606110625.32127-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190606110625.32127-1-laurent@vivier.eu>
 References: <20190606110625.32127-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Sdcr+43MaEvgOFCLqoBVvN3f0eFhHJAHvIaumx6TwHBbk8Op53r
-	mhRKmdzJb12QS3KddxUe1EtLseBs5xkd1SsXwA3+T9NO/kW9XTkRTTOzQes53BFDepWNqGa
-	UESSp0MEJu5lf5G+XNU031f0o3i6XLWMYDa2rXelkiJ8HOl/LTYwUX2zHdgQMABfP9IBFXm
-	crE91O+LUBQMfdFtDEzyQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:FhUQ6BSxQOE=:HEakt/fZUJwDEWxUrzBJhV
-	IMUgGlIHLecx/vwK/4V6ODYNsPuQlHy01wVQ8XU58vvOw76/Syr6kJMSR1d7QdMnH57sAD/xL
-	aYh4iUNm/UtwGhf8M6YyGyPsEyp6H73sEd4RixaMpugkcdJTonPxzt5xnTnPD6CGc3AxWJ6bK
-	s9aRAC18kkyFc6u50hUu86enyjKpEQttOEGz4ErmMZOnHcYmxthr61OxYFCaFvzsaFxqOzzKq
-	+VL2hAxkBPiiD03SHxi+iz59ofelXdQvM2O1c00rzsD7d6wYZY1vvmJduDJ1fOppQBLtOqVNi
-	3MXdercddxWOKg53OllPqCxVlbWh1oIQTQTbJ2U295amOlAuPlM9Za+XSB93oTShAacj+QurY
-	ALee5rNrUsnP3M1KHREhYfZoCXjQIUGpH7lndAf3halW3pTCJNLeOpCmeroofyo6QdEbtZJBY
-	fDB+epeCrqDnAdA5NnRHtlNq9+21tHIMpEgmPNcEZyuOLtbJu5ALgpsjC8A3vyY/2mW0MpLvQ
-	2R+9LzK43lETPlxySTTmj8FuJCNsz8SRcT8Zhjk24og4LEU/qwG94pWY+4cK6vUR6K9xXPrIi
-	Zw38MhJk52TEmRfFCrvT21ZosID+Q1yhCW2UA4Rs5ELjkgfmkSakObIwGK0zL5ORTQGjmbINZ
-	WET/FUhprHHrOp0t+Lnncq3uQvgZicKI3aI+uNxr1qq2BvMWioiiP7foW4PrJwXJp2IhkdLnY
-	P1v7OFtu598stMsEU5eK6ZCRvOp2bauMzPluQySB6WlCrYkMoaZOxkMdMBc=
+X-Provags-ID: V03:K1:mdZyVMDlhLtgzFVkGMKPwhd1vTCTlJ2n6UQbcL+A7mXIwzLbgVv
+	rdWaTvkzh9+ZGkjpPIEnoHOJoofHKJj03PiJSnWzmZUzqRXpOBY3jmF4C+vJZl5cnICB7cQ
+	L7j1xb5jAz4it73StJCFXFaTOJbwctRdg49ymr5t30LvpGOdZYXf6TUgWyYtZ4NUA3WF/i3
+	PFB3LNVa1ATntBhgNggXg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:lGxVdu6POuc=:c8Pj8N5H0zrV72OzuTHYjr
+	HvEThxZQTS39G9ir4HCYdnA/11jd7NfU2ekUEFMs2LPH87iAK/aQcoxTPBaVuvBRA2e7xbn+M
+	A+Dhz9E9JjU8Ly+u8D7P9CesJcnFPStUgdvdhFZWm4HITMM1gXddx3RLjRGo3eqv30Nh8hAOE
+	AQevROoOUgr53j5+TZv/2e425A0rT4KjV+RLjBGlB5L36Nq5bp/9+km5UAw4HtJvYAw2uvfYy
+	6Eb1QcFpWXBx3fosHlLdbiJpki7xj0CdfudtCd9f4wKfFnwIQyyISNeUB38zCmTfDlL89YoRo
+	72xZeDkiDORNcx/rW6EoHNAlkLZqEC7czmmo+ah/1ksqBYf69uuwgautN0at4fJtu8CI9/dAP
+	qfApkM4XCf0s+qJ8514u4xAGK0k1taB6cFBViwyVW997GnTVXg+TGEfWHJbWyqP6eVB6HsQ6i
+	MGzvxhkmrSLcmfGO4WNefexyU4sEabxATw+6LImE1Ff7/2a0eQGpAeKqM2lxxy1ICBWDe/tRN
+	htjEx1O/AhrsL1Qmf35pqRERYdZPlYJRLFz43WIpaDzObwEiB4x2j36HmAt6UdcE8RzeVIqk6
+	/7mkNzzk+aEgQ9a7k1G4YnRaGsV7068KeylLJFPzWAyy1RSUqe+MhLdRV+BEf9XDGukK99tPW
+	PrhGBgfsD9zRLt2wqcxudQvNaOmWVI+UU8TmCtGhf/gVMfqEY6NYvMihUaqPd9mKHbtHgC5I0
+	9xE614xtHBAUHPL7256GZLupxYmcWXuUR5ZkeXI1Qze5RIgg6WGIFD0YI4Y=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
-Subject: [Qemu-trivial] [PULL 04/16] util: Adjust
- qemu_guest_getrandom_nofail for Coverity
+X-Received-From: 212.227.17.10
+Subject: [Qemu-trivial] [PULL 05/16] test: Fix make target check-report.tap
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -77,36 +75,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 11:07:58 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 11:07:56 -0000
 
-From: Richard Henderson <richard.henderson@linaro.org>
+From: Markus Armbruster <armbru@redhat.com>
 
-Explicitly ignore the return value of qemu_guest_getrandom.
-Because we use error_fatal, all errors are already caught.
+Fix a fat-fingered invocation of tap-merge.pl in the recipe of target
+check-report.tap.
 
-Fixes: CID 1401701
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Fixes: 9df43317b82 "test: replace gtester with a TAP driver"
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20190530173824.30699-1-richard.henderson@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20190604080010.23186-1-armbru@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- util/guest-random.c | 2 +-
+ tests/Makefile.include | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/util/guest-random.c b/util/guest-random.c
-index e8124a3cad48..00a08fd9819c 100644
---- a/util/guest-random.c
-+++ b/util/guest-random.c
-@@ -56,7 +56,7 @@ int qemu_guest_getrandom(void *buf, size_t len, Error **errp)
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index 46a36c2c9527..34df040583dc 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -904,7 +904,7 @@ check-report-unit.tap: $(check-unit-y)
+ # Reports and overall runs
  
- void qemu_guest_getrandom_nofail(void *buf, size_t len)
- {
--    qemu_guest_getrandom(buf, len, &error_fatal);
-+    (void)qemu_guest_getrandom(buf, len, &error_fatal);
- }
+ check-report.tap: $(patsubst %,check-report-qtest-%.tap, $(QTEST_TARGETS)) check-report-unit.tap
+-	$(call quiet-command,./scripts/tap-merge.py $^ > $@,"GEN","$@")
++	$(call quiet-command, cat $^ | scripts/tap-merge.pl >$@,"GEN","$@")
  
- uint64_t qemu_guest_random_seed_thread_part1(void)
+ # FPU Emulation tests (aka softfloat)
+ #
 -- 
 2.21.0
 
