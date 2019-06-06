@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYqFh-0000i2-Bo
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:08:13 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60810)
+	id 1hYqFh-0000jB-TJ
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:08:14 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60803)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFd-0000dZ-NU
+	(envelope-from <laurent@vivier.eu>) id 1hYqFd-0000d0-Dv
 	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:08:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFc-00042w-Il
+	(envelope-from <laurent@vivier.eu>) id 1hYqFc-00042o-G8
 	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:08:09 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:42439)
+Received: from mout.kundenserver.de ([217.72.192.75]:40507)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hYqFc-000418-7N; Thu, 06 Jun 2019 07:08:08 -0400
+	id 1hYqFV-0003o2-B3; Thu, 06 Jun 2019 07:08:01 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1M5gAG-1hSmUP1wPi-007ET8; Thu, 06 Jun 2019 13:07:03 +0200
+	id 1MVMJ7-1hAGYT2wEh-00SNSl; Thu, 06 Jun 2019 13:06:38 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -34,37 +34,33 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	Halil Pasic <pasic@linux.ibm.com>, Richard Henderson <rth@twiddle.net>,
 	qemu-s390x@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
 	Cornelia Huck <cohuck@redhat.com>,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-Date: Thu,  6 Jun 2019 13:06:24 +0200
-Message-Id: <20190606110625.32127-16-laurent@vivier.eu>
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>, Kamal Heib <kheib@redhat.com>
+Date: Thu,  6 Jun 2019 13:06:10 +0200
+Message-Id: <20190606110625.32127-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190606110625.32127-1-laurent@vivier.eu>
 References: <20190606110625.32127-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:X7Pzqi/mv0dxQQiN8SxrwtJ1RIT5ZhWHO/wg8CR2AcU8Aqcjkys
-	IQILE+MXIMIeW8OZvIlxp20ttU8zBKHg+OHVjimLpwVlLRzkTfABJ3EfPAqZJwvREjbWdgq
-	0G8lATPj2xwT3lND3J7dZNB0+TVgmZllAOYUegn0R5SO1uKnNG/ALrTPlNsL/kpIu7DghJK
-	Cv57NpSdPF3BCnxkbospg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:UJwOZYeoFZE=:1naxc3Kh4Xt1rELgqCD5Bc
-	jDG7R9YIyWEy448OTJSvwueso0oCcp1Wg+5dv9uljp/ODYIVIqYK3qrpoi9GrQ81eQ5e1JQ5Y
-	boUwl/zJwrjii+TKWN7A3/dWo1mTH6/IMXKXRkMRwnaB4J/Lu+78m6yEa6pPlycVETr+IMCem
-	T6u9ZmTGE/Y03DD3zU5XVyJA2c11ivHYZeozqFRepdC5yF+bsFPM/OLTs6L2s5AFMNksRAOx6
-	GP/HXXDpGfW0mWIY53D5CUbTejUgoZGvu0IiWTIF62btz3LM3huPtP9W0q7MUbPQns1/WpNQ9
-	FXnGs0gfu2EKEnsYgO3Pv78uaUnRAhSNWIn1eup0WsgqiQO+6TrQwPuPXc+mjzEelX4ZsyIbh
-	IHMoMH55ERH403WeYncRip2pmilDrx4eL1y5OIjzA1IOOMq7XqzTze2es7uxv66wMEJh0HyvG
-	yIb91fELUZP3Z+80NXDzbZFDv5JD665sEG6gPN6zKaKf9swcGkGotbf2zOa5kJc6XpburW5ol
-	Chu8/hf2ZhTykZQcHHplN9ABAywYUaxWa8Z63MqAgCyINNbfFR9IITsdwt9xVF9WFvwVClMnB
-	BeuyEtEARetrZfAVmXJkXiR2X6U897IUP9ISh8kBLqaAXT9NCpEHXBhyoG5V04ui9HfBTLZFc
-	v+iZLp+lgDo1KPqmGN8O3ytdYp2FkPd8+nWadR6oXjG0snJpQonyP89VHgk2LRi7kuuqBE4FA
-	bChtXKsN9soniAqqZ+lNz0Ur9RCX25vs6TVKdeD1WVdaM3ADRPG92BiIL94=
+X-Provags-ID: V03:K1:p5QiGkDHYjVQOWvNLCE7ybZDVUE17nKGGpnu4Z0+6/3/EaA8R1N
+	kYCdU4ffdWKbbeG8UT+wwPoddlRPgXX2pPoyn1Hng7oF8qkXvP/32CduU7RvYU674O3wCoY
+	1G2dlefckFC4MH2wLV5fm/02Vj8k1qm7eLypC94OHNXGtJyxDTTKJKnyy4S/UUQCBWIze+3
+	ewdiiZL7jTzS3LGW3YJpw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ozra9I6ERoU=:x4oV6y93l2CwRU9PJYcolF
+	3A5uiIo3kKa/8t8YAqBEsxQDnvEqndEWdax/9TYtnM2HVXJinyAAulvY22Z17nKM1RA3Y4R9h
+	zknpp7LUkrbCFsOSKYczaNY/GdJwj9E6mePR+yZEoGNC+2pK5v+NAvErVf/cAKOr0AgpDN/kJ
+	k99yDgzGesi5KeX+hu2duTVcpQl1PFNVJSHUrlxVLOR6A0BvJNWAuVSYhCE+YrLdprAk3TKPM
+	whzMnRoj/94MYNz7B2Zyid9VpjPYWQt/YjnoKh/TCHf+95qLjsXQhwrMkeuUOiIsM5LvCNvhk
+	LdAhscXlGZQUQEF9j56+cIEFbCIynn5Dw9weq6BNQc/opicN3wkawuoT9MMWuoiLSk0YAv6qX
+	7yAWDJoEpRaBbKAbNygJuHuxe4Lcp2uL9fSeEx93zN/wAoP367ksL7EWamEe2ctpdVoFxIebn
+	i2zdTnzS1AUN1koioi35GK3BnkCcctdQuGnW8WSMMsyO+3EuZAXO3PRINiFwfYbAqfizoAHxN
+	rxvY3DaDzo+05RENj7SBDHLFgUngCfbjrdfk9lclmWE25/pfw3gDGTd7udQZi65SI0b0Ttm/o
+	Al/wSq6yU5aT6EA1Z7de2WqeTlOMKGQitu7orCd/b+rg37i2BZcd8nxSxx+zuD5yVDLnOWO6J
+	D4B5fRWkRYs/gS5cwgBac+yz87fQXlD73nzRYmwbSDHp6EMrzaf5yWXs0EgIfJ/os1HTIWB00
+	cWfe987/DDqyb1cAsH1i+yXw/+bnpICQHVE4XA==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-Subject: [Qemu-trivial] [PULL 15/16] hw/scsi: Use the QOM BUS() macro to
- access BusState.qbus
+X-Received-From: 217.72.192.75
+Subject: [Qemu-trivial] [PULL 01/16] hw/rdma: Delete unused headers inclusion
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -78,80 +74,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 06 Jun 2019 11:08:10 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Yuval Shaia <yuval.shaia@oracle.com>
 
-Rather than looking inside the definition of a BusState with "s->bus.qbus",
-use the QOM prefered style: "BUS(&s->bus)".
+This is a trivial cleanup patch.
 
-This patch was generated using the following Coccinelle script:
-
-    // Use BUS() macros to access BusState.qbus
-    @use_bus_macro_to_access_qbus@
-    expression obj;
-    identifier bus;
-    @@
-    -&obj->bus.qbus
-    +BUS(&obj->bus)
-
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20190528164020.32250-3-philmd@redhat.com>
+Signed-off-by: Yuval Shaia <yuval.shaia@oracle.com>
+Reviewed-by: Kamal Heib <kheib@redhat.com>
+Message-Id: <20190505105112.22691-1-yuval.shaia@oracle.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/scsi/lsi53c895a.c  | 2 +-
- hw/scsi/mptsas.c      | 4 ++--
- hw/scsi/virtio-scsi.c | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ hw/rdma/rdma_backend.c | 7 -------
+ 1 file changed, 7 deletions(-)
 
-diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
-index da7239d94fcd..a8b7a199f960 100644
---- a/hw/scsi/lsi53c895a.c
-+++ b/hw/scsi/lsi53c895a.c
-@@ -1860,7 +1860,7 @@ static void lsi_reg_writeb(LSIState *s, int offset, uint8_t val)
-         }
-         if (val & LSI_SCNTL1_RST) {
-             if (!(s->sstat0 & LSI_SSTAT0_RST)) {
--                qbus_reset_all(&s->bus.qbus);
-+                qbus_reset_all(BUS(&s->bus));
-                 s->sstat0 |= LSI_SSTAT0_RST;
-                 lsi_script_scsi_interrupt(s, LSI_SIST0_RST, 0);
-             }
-diff --git a/hw/scsi/mptsas.c b/hw/scsi/mptsas.c
-index 929404fb48c8..e800683e91e9 100644
---- a/hw/scsi/mptsas.c
-+++ b/hw/scsi/mptsas.c
-@@ -540,7 +540,7 @@ reply_maybe_async:
-         break;
+diff --git a/hw/rdma/rdma_backend.c b/hw/rdma/rdma_backend.c
+index cf34874e9d2f..c39051068d1e 100644
+--- a/hw/rdma/rdma_backend.c
++++ b/hw/rdma/rdma_backend.c
+@@ -14,16 +14,9 @@
+  */
  
-     case MPI_SCSITASKMGMT_TASKTYPE_RESET_BUS:
--        qbus_reset_all(&s->bus.qbus);
-+        qbus_reset_all(BUS(&s->bus));
-         break;
+ #include "qemu/osdep.h"
+-#include "sysemu/sysemu.h"
+-#include "qapi/error.h"
+-#include "qapi/qmp/qlist.h"
+-#include "qapi/qmp/qnum.h"
+ #include "qapi/qapi-events-rdma.h"
  
-     default:
-@@ -803,7 +803,7 @@ static void mptsas_soft_reset(MPTSASState *s)
-     s->intr_mask = MPI_HIM_DIM | MPI_HIM_RIM;
-     mptsas_update_interrupt(s);
+ #include <infiniband/verbs.h>
+-#include <infiniband/umad_types.h>
+-#include <infiniband/umad.h>
+-#include <rdma/rdma_user_cm.h>
  
--    qbus_reset_all(&s->bus.qbus);
-+    qbus_reset_all(BUS(&s->bus));
-     s->intr_status = 0;
-     s->intr_mask = save_mask;
- 
-diff --git a/hw/scsi/virtio-scsi.c b/hw/scsi/virtio-scsi.c
-index 2994f0738fd8..12d21bbc613c 100644
---- a/hw/scsi/virtio-scsi.c
-+++ b/hw/scsi/virtio-scsi.c
-@@ -696,7 +696,7 @@ static void virtio_scsi_reset(VirtIODevice *vdev)
- 
-     assert(!s->dataplane_started);
-     s->resetting++;
--    qbus_reset_all(&s->bus.qbus);
-+    qbus_reset_all(BUS(&s->bus));
-     s->resetting--;
- 
-     vs->sense_size = VIRTIO_SCSI_SENSE_DEFAULT_SIZE;
+ #include "contrib/rdmacm-mux/rdmacm-mux.h"
+ #include "trace.h"
 -- 
 2.21.0
 
