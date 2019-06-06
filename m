@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYqF6-000090-Oq
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:07:36 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60272)
+	id 1hYqFJ-0000MA-2Q
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:07:49 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60343)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqF4-00006x-Ta
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:35 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hYqFG-0000JP-9m
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqF3-0003Ab-TG
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:34 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:59545)
+	(envelope-from <laurent@vivier.eu>) id 1hYqF8-0003MN-Lt
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:42 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:38547)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hYqF3-00037Y-JN; Thu, 06 Jun 2019 07:07:33 -0400
+	id 1hYqF6-0003EB-FB; Thu, 06 Jun 2019 07:07:36 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1N3KDM-1gZYHa2AiY-010LEk; Thu, 06 Jun 2019 13:06:56 +0200
+	id 1MkIAB-1gokqY1WHJ-00kkA9; Thu, 06 Jun 2019 13:06:51 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -37,34 +37,34 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>
-Date: Thu,  6 Jun 2019 13:06:20 +0200
-Message-Id: <20190606110625.32127-12-laurent@vivier.eu>
+Date: Thu,  6 Jun 2019 13:06:17 +0200
+Message-Id: <20190606110625.32127-9-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190606110625.32127-1-laurent@vivier.eu>
 References: <20190606110625.32127-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:sJX7kOEASuUqzKMQ0rklS29mfRE7eUYEEoU/Bn7KIEsOMKwqJ2X
-	YWBGxkVKP21No4MYqZEreaKD3SKmNr0IVXBWh40+U/9wjURMbjPqw8xeygGtw6C5ruUhURw
-	5PTP2d1ArFFy1tfPiZ2v60S3hEqYzBDPMVDYHsP6/bOT7MTQFtMBMFBnNyiu2k8qqxW4zGN
-	d5/gMCNINInwKR1/la0Hw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:wzw5+xshbZk=:eOln+xl+YM9UAHFJYpiARo
-	kMAa5EWoxeJf34xxDTgqQC7fOaimZY1Apa9qaRK20b2mH5uttdGv5MT0xv8KkiEvQwmXTKOrI
-	G2w9K0lP2YVN4PKXr3HXSK0hfP1ilcrHsjdI9FfPWdj40yGFwONc+PLcvGlkcsaqIextT69My
-	rWsilrh0PqEV/gOa+bSvsZmd2o6oXtWzcINnTA2TM2kyejnf5FaobVGleekLnqui3iiB3KDdm
-	+mrthPjiRiF+4ZoRmeNyHoQJadUmb1D9jXvzXFpkSk2FIaa3V+e4pEwGFocsoa+5Qziid1dXL
-	G/hSg2quGyzbJoQizY0Is1jXorDCvkW1jORInWTjiYN+eXsJ0JSH0xCf9bGlS4niFydQTqsRu
-	NfNWtaSO09TbKrjupcwPheqsAkmieZoeh7OtLq0lvDQSWXVObbQbzxUQTOsB0u5F0tCEnNQ+x
-	KnarwqmnqkOCRTaNrbJJ/iGOaFAaWo/Ok/3OcNTC30q6TnYKqgV5pzyP814fkUGLUVJ9AczkQ
-	wMRWKKLAifJ1iX+FYEu5sfFCAM5mw6I8j6qsXaHiYS+WDrO28oOUmtqwZ1r+Ced6EkQhr9Tah
-	7OKszfHeqfKOaG7tEXrqVWN9gnCjLP1Lcr2AQ1KhdtQpCPZ437d1npzmQju6AyY11X2l4RDT2
-	lOZtGC96V3nZOncQEtpZptxJsmP4A3jVp0PxHXvfVRwUadEL9507lG4oScg+uHRfOhJQxiupc
-	+21hzqQAGybZD2uXCflfJLXdq9D7qS8WmCZrFi5lKSxFoCg+NiVzEQWCFi8=
+X-Provags-ID: V03:K1:hp5C+eRkhKhZrL9ujfcR5R1twR4hIZGd7hOEgFE+5WIY2q2d8lY
+	kN/JEeng4lPu0Ecb53uf5a36SNII/prxc7ozqApBR4wgoSiD282kjxkkuv3171iGM7yuz+r
+	hONn0dYWoQi/b5920YVliGTFHcx0mDmfK75CcNl6N3MlE3EcdEwG1ZCC6ecgj9m33FqnDAN
+	jSJz3ir0wPZLxcfDxFnTw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:WFMkMbI5+Qk=:l7BrzmzlCtS/uryTbB9SRq
+	UjqIEOfGTswngkSpPUcZpXPwpySk2vU3hbL4UIf8mB5WfpmlQlwPQGwchlNjb8lOnACSxA08F
+	db7lwXFr1dnLD4BV0GFXZ1OnNkSFuXdZqzYizIGmh7R9q9qpibg6UOZHtPlzJ00ikH4tFF9sW
+	zLAt1MzgY0vxILRJzrsVGA/eriWyAYUfh4FL+qpxqwngkunsk86+PmLmsRgjTGT/9AJxOgj3Y
+	3kksLEbdbBxR//IDg6AC2hGCheQ3LPYjQ4I9Lz5uNgchjdntKfhUm8R7LwB0rkqcIAB3jowY6
+	CoU4I6jA8iJ39VRflpFyobnM5jV642+W8kyU6YGKHnRbiV2QJJsvzg+V1uTxUmLVSQmF9aRZN
+	b48wRQ3TbUFX2UNpbAdb99WR4z8aiq4oaeAw5jZVdocc36+seHz0CqiM/+D1DEw4bYYQZjB8z
+	Z5oB7GN5hd13Av/VSaLpG0AjkT5tXYK4oFntOS93kDN6RacwFdD+p5iyg7s5mT8Ur5A77rQvP
+	/dhIQPcRxJ/rIe7xQaieAEPDyZ/2f4dXXL2MH78x6aThvfOcc0rvHW/d0IMVQ4KDVnr0AJUZ/
+	99+OKSg1ON+mDyPixOqeNQj94jgcU+k1nnfQHT2Uh8aaIihEqRVfdOYNP/Rye0bny4OOgYAFN
+	Dg79EVs9kP+U01ZTdjx7HCPrWvLjNLpksR2v+kf2i1dQ9C2L1gZ7Dr8VTcuDYlQnnQLN4zCqo
+	yxRFyOPap2hCxh5HggK7PmGcZp9NU16B4+zOrg0ppOewJ+GZCs5ebQoxs1A=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: [Qemu-trivial] [PULL 11/16] hw/usb-storage: Use the QOM DEVICE()
- macro to access DeviceState.qdev
+X-Received-From: 212.227.17.13
+Subject: [Qemu-trivial] [PULL 08/16] hw/pci-bridge: Use the QOM BUS() macro
+ to access BusState.qbus
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,45 +76,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 11:07:36 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 11:07:47 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Rather than looking inside the definition of a DeviceState with
-"s->qdev", use the QOM prefered style: "DEVICE(s)".
+Rather than looking inside the definition of a BusState with "s->bus.qbus",
+use the QOM prefered style: "BUS(&s->bus)".
 
 This patch was generated using the following Coccinelle script:
 
-    // Use DEVICE() macros to access DeviceState.qdev
-    @use_device_macro_to_access_qdev@
+    // Use BUS() macros to access BusState.qbus
+    @use_bus_macro_to_access_qbus@
     expression obj;
-    identifier dev;
+    identifier bus;
     @@
-    -&obj->dev.qdev
-    +DEVICE(obj)
+    -&obj->bus.qbus
+    +BUS(&obj->bus)
 
 Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
-Message-Id: <20190528164020.32250-9-philmd@redhat.com>
+Reviewed-by: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Message-Id: <20190528164020.32250-4-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/usb/dev-storage.c | 2 +-
+ hw/pci/pci_bridge.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/usb/dev-storage.c b/hw/usb/dev-storage.c
-index cd5551d94f35..0e4e93ef1673 100644
---- a/hw/usb/dev-storage.c
-+++ b/hw/usb/dev-storage.c
-@@ -616,7 +616,7 @@ static void usb_msd_storage_realize(USBDevice *dev, Error **errp)
-      * The hack is probably a bad idea.
-      */
-     blk_ref(blk);
--    blk_detach_dev(blk, &s->dev.qdev);
-+    blk_detach_dev(blk, DEVICE(s));
-     s->conf.blk = NULL;
+diff --git a/hw/pci/pci_bridge.c b/hw/pci/pci_bridge.c
+index c6d9ded3203c..8d954885c0a1 100644
+--- a/hw/pci/pci_bridge.c
++++ b/hw/pci/pci_bridge.c
+@@ -273,7 +273,7 @@ void pci_bridge_write_config(PCIDevice *d,
+     newctl = pci_get_word(d->config + PCI_BRIDGE_CONTROL);
+     if (~oldctl & newctl & PCI_BRIDGE_CTL_BUS_RESET) {
+         /* Trigger hot reset on 0->1 transition. */
+-        qbus_reset_all(&s->sec_bus.qbus);
++        qbus_reset_all(BUS(&s->sec_bus));
+     }
+ }
  
-     usb_desc_create_serial(dev);
 -- 
 2.21.0
 
