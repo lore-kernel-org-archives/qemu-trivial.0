@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYqF6-00008f-G9
+	id 1hYqF6-000090-Oq
 	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:07:36 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60266)
+Received: from eggs.gnu.org ([209.51.188.92]:60272)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqF4-00006g-GZ
+	(envelope-from <laurent@vivier.eu>) id 1hYqF4-00006x-Ta
 	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqF3-00039i-IQ
+	(envelope-from <laurent@vivier.eu>) id 1hYqF3-0003Ab-TG
 	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:34 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:58621)
+Received: from mout.kundenserver.de ([212.227.17.24]:59545)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hYqF1-0002z6-0o; Thu, 06 Jun 2019 07:07:31 -0400
+	id 1hYqF3-00037Y-JN; Thu, 06 Jun 2019 07:07:33 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1MauFB-1gy8V734dX-00cSgp; Thu, 06 Jun 2019 13:06:43 +0200
+	id 1N3KDM-1gZYHa2AiY-010LEk; Thu, 06 Jun 2019 13:06:56 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -35,35 +35,36 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	qemu-s390x@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
 	Cornelia Huck <cohuck@redhat.com>,
 	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	Jie Wang <wangjie88@huawei.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Thu,  6 Jun 2019 13:06:12 +0200
-Message-Id: <20190606110625.32127-4-laurent@vivier.eu>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>
+Date: Thu,  6 Jun 2019 13:06:20 +0200
+Message-Id: <20190606110625.32127-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190606110625.32127-1-laurent@vivier.eu>
 References: <20190606110625.32127-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:CaPomUUU0ZJp2dT6eUq05+g7tIBXfeNTk8JnnR47rG4Bb3m2Amu
-	FYawHFxHtEN6ZwcplHPtkRE8L99QdHTARU0DkOY5IX6Khlx0ZOP1VVSVn6jDU4cyT9rzXkh
-	OXaCHxOgKUg+NpeQ/u4xYfYdSNT/lncnGfEUNJS7Sjt6PStGn1qP322oM4iT75BrRb6CBMO
-	Cd9LcRhoU7u+7OHe0NImA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:41tRHKGJyP0=:4ymjpaXSKln4RHBYeKTaxe
-	eHWyXozSKm/GfW/N7OJ1Zc3S0QRUoGie3/x2d9eHdXM8jgRb3Bpn9trcYMOS7x23oa2QC51eF
-	rD3Ajl+Kko9qZVsUpoPb2ZCQe+ejJdBGwmLLeGP634ant7VNwHnNNv1z1zyhv/IkfdTWFzLDz
-	4fIOZ5dGwIBtoJSXHGGnfKMhaROJiy69Kc9jUQqIZKJRTuNAnGcYPSvagkCcwQ1WD8b3+6iAl
-	c4eLCHB/4PBsauGmZRy2oA+6aczUWZrK1KUFML2K/dkFkF14ikiuRgve99MLwTYjw1IbRrG2t
-	+xzLn7CXcojeu/kpbk+uqjJcSEMnzKm9iYey8ue05T0SV3y/5OKrYR8OZD1h9Kh7rZEnQvwd2
-	4+ZmV2UPrsTozj2CiuOeeF1bu5k4q9kRh0vJm6gxy82O+Ah3g1JLz+Fh/lAG5Qi3GJ1v6/bDo
-	/febZbm//dL/wxA/uqOSKjnqXZbtRuRZN2voi9/nvCrVYjWgsr2tqM/ejh6p6QgqxzwtfX4la
-	S1xjp5j6K0s0Bu6hRtGUkOQ+EOjKE1XhN8xuHiVi/eG0Bsl4Y6D3XyADr3sPb1tl1reywT2q/
-	sZpVLZwh6KWE/Kq735ggQAk+WI/Wy6QFC/5VYxHRGaxVp+Sd/8gGj/620fIP61ahFlb8rgyD5
-	XJliIqnJR5W0CtqVhKlNYvQp7uhZohjAuRTnMB7ZziPVyuVr8pSAvZOFErkNOY9nqB9KraFQr
-	WpyhXhuuvVMmOi/PNpcTo7iMvda2OWyk6sfLQsXAQBy8pliKk02eM/6Jlb8=
+X-Provags-ID: V03:K1:sJX7kOEASuUqzKMQ0rklS29mfRE7eUYEEoU/Bn7KIEsOMKwqJ2X
+	YWBGxkVKP21No4MYqZEreaKD3SKmNr0IVXBWh40+U/9wjURMbjPqw8xeygGtw6C5ruUhURw
+	5PTP2d1ArFFy1tfPiZ2v60S3hEqYzBDPMVDYHsP6/bOT7MTQFtMBMFBnNyiu2k8qqxW4zGN
+	d5/gMCNINInwKR1/la0Hw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wzw5+xshbZk=:eOln+xl+YM9UAHFJYpiARo
+	kMAa5EWoxeJf34xxDTgqQC7fOaimZY1Apa9qaRK20b2mH5uttdGv5MT0xv8KkiEvQwmXTKOrI
+	G2w9K0lP2YVN4PKXr3HXSK0hfP1ilcrHsjdI9FfPWdj40yGFwONc+PLcvGlkcsaqIextT69My
+	rWsilrh0PqEV/gOa+bSvsZmd2o6oXtWzcINnTA2TM2kyejnf5FaobVGleekLnqui3iiB3KDdm
+	+mrthPjiRiF+4ZoRmeNyHoQJadUmb1D9jXvzXFpkSk2FIaa3V+e4pEwGFocsoa+5Qziid1dXL
+	G/hSg2quGyzbJoQizY0Is1jXorDCvkW1jORInWTjiYN+eXsJ0JSH0xCf9bGlS4niFydQTqsRu
+	NfNWtaSO09TbKrjupcwPheqsAkmieZoeh7OtLq0lvDQSWXVObbQbzxUQTOsB0u5F0tCEnNQ+x
+	KnarwqmnqkOCRTaNrbJJ/iGOaFAaWo/Ok/3OcNTC30q6TnYKqgV5pzyP814fkUGLUVJ9AczkQ
+	wMRWKKLAifJ1iX+FYEu5sfFCAM5mw6I8j6qsXaHiYS+WDrO28oOUmtqwZ1r+Ced6EkQhr9Tah
+	7OKszfHeqfKOaG7tEXrqVWN9gnCjLP1Lcr2AQ1KhdtQpCPZ437d1npzmQju6AyY11X2l4RDT2
+	lOZtGC96V3nZOncQEtpZptxJsmP4A3jVp0PxHXvfVRwUadEL9507lG4oScg+uHRfOhJQxiupc
+	+21hzqQAGybZD2uXCflfJLXdq9D7qS8WmCZrFi5lKSxFoCg+NiVzEQWCFi8=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.73
-Subject: [Qemu-trivial] [PULL 03/16] vhost: fix incorrect print type
+X-Received-From: 212.227.17.24
+Subject: [Qemu-trivial] [PULL 11/16] hw/usb-storage: Use the QOM DEVICE()
+ macro to access DeviceState.qdev
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -75,33 +76,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 11:07:35 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 11:07:36 -0000
 
-From: Jie Wang <wangjie88@huawei.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-fix incorrect print type in vhost_virtqueue_stop
+Rather than looking inside the definition of a DeviceState with
+"s->qdev", use the QOM prefered style: "DEVICE(s)".
 
-Signed-off-by: Jie Wang <wangjie88@huawei.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <1556605773-42019-1-git-send-email-wangjie88@huawei.com>
+This patch was generated using the following Coccinelle script:
+
+    // Use DEVICE() macros to access DeviceState.qdev
+    @use_device_macro_to_access_qdev@
+    expression obj;
+    identifier dev;
+    @@
+    -&obj->dev.qdev
+    +DEVICE(obj)
+
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+Message-Id: <20190528164020.32250-9-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/virtio/vhost.c | 2 +-
+ hw/usb/dev-storage.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-index 7f61018f2a3f..286bb27c6539 100644
---- a/hw/virtio/vhost.c
-+++ b/hw/virtio/vhost.c
-@@ -1081,7 +1081,7 @@ static void vhost_virtqueue_stop(struct vhost_dev *dev,
+diff --git a/hw/usb/dev-storage.c b/hw/usb/dev-storage.c
+index cd5551d94f35..0e4e93ef1673 100644
+--- a/hw/usb/dev-storage.c
++++ b/hw/usb/dev-storage.c
+@@ -616,7 +616,7 @@ static void usb_msd_storage_realize(USBDevice *dev, Error **errp)
+      * The hack is probably a bad idea.
+      */
+     blk_ref(blk);
+-    blk_detach_dev(blk, &s->dev.qdev);
++    blk_detach_dev(blk, DEVICE(s));
+     s->conf.blk = NULL;
  
-     r = dev->vhost_ops->vhost_get_vring_base(dev, &state);
-     if (r < 0) {
--        VHOST_OPS_DEBUG("vhost VQ %d ring restore failed: %d", idx, r);
-+        VHOST_OPS_DEBUG("vhost VQ %u ring restore failed: %d", idx, r);
-         /* Connection to the backend is broken, so let's sync internal
-          * last avail idx to the device used idx.
-          */
+     usb_desc_create_serial(dev);
 -- 
 2.21.0
 
