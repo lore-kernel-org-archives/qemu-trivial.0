@@ -1,22 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYoN3-0007CQ-Em
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 05:07:41 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:34259)
+	id 1hYoa0-0003P8-Hw
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 05:21:04 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:36914)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYoN0-0007CJ-Ql
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:07:39 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hYoZy-0003LM-CA
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:21:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYoMy-0004DO-Ub
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:07:38 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:42847)
+	(envelope-from <laurent@vivier.eu>) id 1hYoZx-0007fO-4W
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:21:02 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:45975)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
-	(Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1hYoMx-000491-CL
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:07:36 -0400
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
+	id 1hYoZw-0007bp-Rg; Thu, 06 Jun 2019 05:21:01 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
-	1My3Ad-1gd7JE1dU7-00zYbs; Thu, 06 Jun 2019 11:07:31 +0200
-To: Rami Rosen <ramirose@gmail.com>, qemu-trivial@nongnu.org
-References: <20190507184102.4258-1-ramirose@gmail.com>
+	(mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+	1MqbI0-1gmIT33332-00mZYq; Thu, 06 Jun 2019 11:20:33 +0200
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	Jie Wang <wangjie88@huawei.com>, qemu-devel@nongnu.org
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, mst@redhat.com,
+	wu.wubin@huawei.com, eric.fangyi@huawei.com
+References: <1556605773-42019-1-git-send-email-wangjie88@huawei.com>
+	<9bacd55b-4333-28fd-18cb-c0dbd771062c@redhat.com>
+	<43413f68-ef2e-27c3-d6e3-62dc6c7930c3@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -61,35 +66,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <760cf51e-22bd-f488-2274-02e65a29fbad@vivier.eu>
-Date: Thu, 6 Jun 2019 11:07:29 +0200
+Message-ID: <d8c3261f-9a92-6f16-86a9-dfb06828adf8@vivier.eu>
+Date: Thu, 6 Jun 2019 11:20:32 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190507184102.4258-1-ramirose@gmail.com>
+In-Reply-To: <43413f68-ef2e-27c3-d6e3-62dc6c7930c3@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:VuVl82UBb7Szbz106uaK+TKCwcrYF4JA3fKL65YB0SkYrRmcWWC
-	QWgt2gBHOseXug26HBLxlhmow92dt+jFt2bDlUY1P3IqznCvWJU3FVgAZJNx0+vaVsLxj2c
-	0GVpnRGVeUfGI+PNEgLPLWt5m2ZoLY2Adi8waIM8TW+I+2Oe0XRsyak9DBv5/R48u+v88c9
-	fYOZPpoUMCGSwIeC75Y/w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:tm9cTVWzytk=:++H6YaQBGn1oLAs6dlAMkX
-	0ixK0DQBbzn2vGbLgk9VOnrwHlFbaT8npBQ7myRvvtAepRY4SA0J5MlBPIYY5SszjpqUG8/VY
-	2WqNcYvrK+va12Cvf+qkYB1bPi+i5BKwVRn6FJ8TFGhRetHA6iFlCcANgLJi8UU/MjBxVxhjA
-	LDp6cyH86yU1aZh+wQBolaQxh2FlX4R5ODEqGqtUUJbRTwG18nrQMMQtcbiAcJnBMLLlTAt4l
-	fjrTLj1gzDkCYnYLk9cbkx5p/W6vFQwgusnRuIX6FlonS+UWRNbrvS4y6PfUJyO1IspsVG/bJ
-	42eKlSG/HdlD+2lAABPaEC65X08+CGib01t0HunbgN+0dK3MyBQEJYm5eqhinrNjJJHUxLKKh
-	2pwwWL7l/98MCm3YJ+rvGovDOuqQNoCTryihDayl0ALqczys4roMeEUfm6xkd2F3k5NGck/09
-	RFa9ooTKXmF8oRzl6zHX6c7Kpyeefd45Gu2G72fTERbPSyu8sVBrZDyBxAuc8X7RbzV50Y3YI
-	EUpWnd/nbAF8/pnHOMqZX4jmepJ4mLl3q8TyMh6hvhhDO+jd0CwAadHU+7h6OswTJRrIblrRb
-	bs4N6RCXra3u1Udg1rdMv8E4yEv2tzaghBHOxKF8wFv5YiFF5H7L0yegrXThJ6/rPuBLv5TAC
-	UDqZXfYyNK1lJPCtSdhBPr/NtKpyeXlxTJyN244WIXvHn5CcjVSXHd7vGKnhqRf+LJeOlGX6I
-	0+EXTu71TdeXEbFJuy9wjHLnRzw+qJZ1Pv7+UYMOyaTLdY+6g43H+IIZLJc=
+X-Provags-ID: V03:K1:t67vlXO+mpO2kusYyruJ5gqdzD13D0on62WyqZlXtV5nkAOjgIt
+	UPE7ewWkxFpBsgJE15TdUH24Xw6oManF4sl+174ta1KHXzEO6/+xm0mQlfe0V+HXMR/vJPQ
+	OfoyUztd4D7UDAfQxB90eYEnSFHl/ONSh4fhb/OalFX5T95FzzHbqui2Z5XvUDD6xqL15/R
+	MXUVETV/i8R58PJGITvRA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:TKXNb4aCr6U=:xqbX/fL/JvoDZ3ApLG3lBW
+	eh81PF0DWdOudGSNKOiIuToZKWH/y/Ae5OqaLs0/A2epr8KBrEo7Tp8+jPiIbuyLmMR/kG1oF
+	keN0QA078MX+vYPeWYWF0WVF3bNUE3SvoEuGyChvajXxtAp6yGnmyagqY/pJ2VLSwB+otLqkZ
+	Mh03qJepqmbJDTujlELBtGxa3UURm5hD7NDKHFGQdK5Mo8/Tb3vn0AzcS30rp5jELW84CSyzX
+	75kA8fK3VLfZV+mAVnPq0Jd3HgBN/5qPzcIBexOXXNuBFeiJ0esecmjT2EQz9Y9U1wqDLC96p
+	+/s3VE5a5SimakyoPLUMbNNAOM+4hb/+SzrWFpd3onV59HT6h2X3MGhXwDGJMHR/YFUPzmf10
+	qX55pC0OO+YS89NxcX6S80SZSthFmtAAx0Cf3C27uCMhWG05YIOvMEhrDP2qlOdgwd9O1S0Aj
+	BJt4vw3v2GrI6J6f4T/YfMK2vC54lqshZCU47o+GQvNOVK2K204mSFHnWAK1dnHazoOtHIeZT
+	gzIfVamIH1Qxux6EwxcLWwC6elYf64rJxTj88nyd5NclNfhgakFHXmpxeEZHQtaLdgSTz8JKj
+	ymLrEt5GJOobaW+eka8tyLU+6RToaVCFY+jy0/F4tFigPcBjJVGsCAhHDha30jQnCj+aN9lTi
+	SRhhxfcJZs36JlOUzSOOYwkaDepa8JjXUiSZAT5lJS3nDf1y+2TbArATivHDoMSR6OBxE/v+J
+	D8RIZh5h7Oa01iYMzNM5E1PLLCbzXnxdog8A6q3BHCou0yNchc3GW67awrA=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: Re: [Qemu-trivial] [PATCH] scripts/qmp: fix deleted link in
- qemu-ga-client script
+X-Received-From: 212.227.126.130
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] vhost: fix incorrect print
+ type
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -101,32 +106,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 09:07:40 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 09:21:03 -0000
 
-Le 07/05/2019 à 20:41, Rami Rosen a écrit :
-> This patch fixes a deleted link in qemu-ga-client script.
-> According to the old link, the page moved to 
-> https://wiki.qemu.org/Features/QAPI/GuestAgent.
+Le 29/05/2019 à 15:13, Philippe Mathieu-Daudé a écrit :
+> Cc'ing qemu-trivial
 > 
-> Signed-off-by: Rami Rosen <ramirose@gmail.com>
-> ---
->  scripts/qmp/qemu-ga-client | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/scripts/qmp/qemu-ga-client b/scripts/qmp/qemu-ga-client
-> index 30cf8a9..50efc21 100755
-> --- a/scripts/qmp/qemu-ga-client
-> +++ b/scripts/qmp/qemu-ga-client
-> @@ -33,7 +33,7 @@
->  # $ qemu-ga-client fsfreeze freeze
->  # 2 filesystems frozen
->  #
-> -# See also: https://wiki.qemu.org/Features/QAPI/GuestAgent
-> +# See also: https://wiki.qemu.org/Features/GuestAgent
->  #
->  
->  from __future__ import print_function
+> On 4/30/19 10:48 AM, Philippe Mathieu-Daudé wrote:
+>> On 4/30/19 8:29 AM, Jie Wang wrote:
+>>> fix incorrect print type in vhost_virtqueue_stop
+>>>
+>>> Signed-off-by: Jie Wang <wangjie88@huawei.com>
+>>> ---
+>>>  hw/virtio/vhost.c | 2 +-
+>>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+>>> index 7f61018f2a..286bb27c65 100644
+>>> --- a/hw/virtio/vhost.c
+>>> +++ b/hw/virtio/vhost.c
+>>> @@ -1081,7 +1081,7 @@ static void vhost_virtqueue_stop(struct vhost_dev *dev,
+>>>  
+>>>      r = dev->vhost_ops->vhost_get_vring_base(dev, &state);
+>>>      if (r < 0) {
+>>> -        VHOST_OPS_DEBUG("vhost VQ %d ring restore failed: %d", idx, r);
+>>> +        VHOST_OPS_DEBUG("vhost VQ %u ring restore failed: %d", idx, r);
+>>
+>> 'idx' is indeed unsigned.
+>>
+>> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>>
+>>>          /* Connection to the backend is broken, so let's sync internal
+>>>           * last avail idx to the device used idx.
+>>>           */
+>>>
 > 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Applied to my trivial-patches branch.
+
+Thanks,
+Laurent
 
