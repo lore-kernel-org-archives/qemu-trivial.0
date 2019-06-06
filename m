@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYqFJ-0000MA-2Q
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:07:49 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60343)
+	id 1hYqFQ-0000Rs-IO
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:07:56 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60449)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFG-0000JP-9m
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:47 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hYqFN-0000QO-Un
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqF8-0003MN-Lt
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:42 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:38547)
+	(envelope-from <laurent@vivier.eu>) id 1hYqFM-0003av-Kh
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:53 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:60125)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hYqF6-0003EB-FB; Thu, 06 Jun 2019 07:07:36 -0400
+	id 1hYqFM-0003Yj-BB; Thu, 06 Jun 2019 07:07:52 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1MkIAB-1gokqY1WHJ-00kkA9; Thu, 06 Jun 2019 13:06:51 +0200
+	id 1MD9CZ-1hQHVM09Kb-009CQ1; Thu, 06 Jun 2019 13:06:37 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -34,37 +34,32 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	Halil Pasic <pasic@linux.ibm.com>, Richard Henderson <rth@twiddle.net>,
 	qemu-s390x@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
 	Cornelia Huck <cohuck@redhat.com>,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-Date: Thu,  6 Jun 2019 13:06:17 +0200
-Message-Id: <20190606110625.32127-9-laurent@vivier.eu>
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>
+Date: Thu,  6 Jun 2019 13:06:09 +0200
+Message-Id: <20190606110625.32127-1-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190606110625.32127-1-laurent@vivier.eu>
-References: <20190606110625.32127-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:hp5C+eRkhKhZrL9ujfcR5R1twR4hIZGd7hOEgFE+5WIY2q2d8lY
-	kN/JEeng4lPu0Ecb53uf5a36SNII/prxc7ozqApBR4wgoSiD282kjxkkuv3171iGM7yuz+r
-	hONn0dYWoQi/b5920YVliGTFHcx0mDmfK75CcNl6N3MlE3EcdEwG1ZCC6ecgj9m33FqnDAN
-	jSJz3ir0wPZLxcfDxFnTw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:WFMkMbI5+Qk=:l7BrzmzlCtS/uryTbB9SRq
-	UjqIEOfGTswngkSpPUcZpXPwpySk2vU3hbL4UIf8mB5WfpmlQlwPQGwchlNjb8lOnACSxA08F
-	db7lwXFr1dnLD4BV0GFXZ1OnNkSFuXdZqzYizIGmh7R9q9qpibg6UOZHtPlzJ00ikH4tFF9sW
-	zLAt1MzgY0vxILRJzrsVGA/eriWyAYUfh4FL+qpxqwngkunsk86+PmLmsRgjTGT/9AJxOgj3Y
-	3kksLEbdbBxR//IDg6AC2hGCheQ3LPYjQ4I9Lz5uNgchjdntKfhUm8R7LwB0rkqcIAB3jowY6
-	CoU4I6jA8iJ39VRflpFyobnM5jV642+W8kyU6YGKHnRbiV2QJJsvzg+V1uTxUmLVSQmF9aRZN
-	b48wRQ3TbUFX2UNpbAdb99WR4z8aiq4oaeAw5jZVdocc36+seHz0CqiM/+D1DEw4bYYQZjB8z
-	Z5oB7GN5hd13Av/VSaLpG0AjkT5tXYK4oFntOS93kDN6RacwFdD+p5iyg7s5mT8Ur5A77rQvP
-	/dhIQPcRxJ/rIe7xQaieAEPDyZ/2f4dXXL2MH78x6aThvfOcc0rvHW/d0IMVQ4KDVnr0AJUZ/
-	99+OKSg1ON+mDyPixOqeNQj94jgcU+k1nnfQHT2Uh8aaIihEqRVfdOYNP/Rye0bny4OOgYAFN
-	Dg79EVs9kP+U01ZTdjx7HCPrWvLjNLpksR2v+kf2i1dQ9C2L1gZ7Dr8VTcuDYlQnnQLN4zCqo
-	yxRFyOPap2hCxh5HggK7PmGcZp9NU16B4+zOrg0ppOewJ+GZCs5ebQoxs1A=
+X-Provags-ID: V03:K1:jXBw7xjNhugMNssuQYniItqf9lQA5/h/Qq88/KbeErJwbnqLpdt
+	7ui3P6JZ7OxOIMpyB9CibBkKRDFhoAA7dcJ8ZhnKUkFayXS7Rr+arXJgFtOyI1w6vla9Cjl
+	b6penN1tKfSd3/HpXBsc0eqG4iWsM0X/OsD45+qMPo32/wwS9P+IyOQpan1tx7yOASheJbJ
+	fZ8H5ic5X+j6ej6HMaRkg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:9Mmxt/cZHXM=:ZQB9PFrxywQi13M79hZF8E
+	r1fUhE89o58WGZtmB1P9IiZKmf2mgf1gdh6ad8N+1DjXL4SKUrTtsOBLV91iVrN3iBmlKuUEG
+	5SpMugJz8zqdHD4XTR+VapItEbDkehwMs8yAT3VNLCtB2OuteJHW5znx3MOkJJTn49rW8yVYY
+	h39UP93BjMDb7jUd8cqPXSUwlcvaP8WGDMKe2eJx+mHeKTyYi9yM2uSYUd3LhQBcZGu28w9OB
+	jeA24GN//EPuXcaoBXIHKGyJP36/3MYXxhlnzfR01F6vRp2RYSejBV+OdW3k9YVNWzH/TXBJR
+	lqTIivEpCG4B5jhtlgBwDtH8ro16toi46WGVQY2DaUNTAwW0YBlGkcGfmXvCfbDIB5NKErNun
+	EZ/3gQ3tG9+XeDp9i04MfMOpQ+gf+NLZCbHRqpkdJuzNQuOZCSqKJNRl5aDoPNcBLmJCGEO7/
+	Vpg4aWSVbGn/T7lTJtVhoNWmZHYXJjv79Es5WihW7k/ZZ3fZcMqBaBfgbB9cOEuU3vTODuyD+
+	LwiHSrW5XnbeRDgW6yyvVQbwVxkwN/GGBcGQqMi68eKtAVM6c+T3Kx37bIvFydLcIR8LeBkZO
+	+UL8J92zpV2XcBAOR12MuXTQHXOFGFuJZ/V+xI9+w2fraduUBAuOmcjzpFv762AlU4n5EQDOs
+	HwNRSv2ve8tGFCnVAh61aK2eZ9klhC05ZY9nKJBcgCP37bMFHXbhqXVbbRMnWnS/Oh4dsvh91
+	1a4FWUBo+U1sc9w42goA5hHp6Lb4kkHYlPuShbDcD350iulVOT6IMERyXHQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.13
-Subject: [Qemu-trivial] [PULL 08/16] hw/pci-bridge: Use the QOM BUS() macro
- to access BusState.qbus
+Subject: [Qemu-trivial] [PULL 00/16] Trivial branch patches
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,45 +71,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 11:07:47 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 11:07:56 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+The following changes since commit 47fbad45d47af8af784bb12a5719489edcd89b4c:
 
-Rather than looking inside the definition of a BusState with "s->bus.qbus",
-use the QOM prefered style: "BUS(&s->bus)".
+  Merge remote-tracking branch 'remotes/kevin/tags/for-upstream' into staging (2019-06-04 17:22:42 +0100)
 
-This patch was generated using the following Coccinelle script:
+are available in the Git repository at:
 
-    // Use BUS() macros to access BusState.qbus
-    @use_bus_macro_to_access_qbus@
-    expression obj;
-    identifier bus;
-    @@
-    -&obj->bus.qbus
-    +BUS(&obj->bus)
+  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
 
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Message-Id: <20190528164020.32250-4-philmd@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/pci/pci_bridge.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+for you to fetch changes up to f1114d321246f9177072923e1c2a20e7aab82700:
 
-diff --git a/hw/pci/pci_bridge.c b/hw/pci/pci_bridge.c
-index c6d9ded3203c..8d954885c0a1 100644
---- a/hw/pci/pci_bridge.c
-+++ b/hw/pci/pci_bridge.c
-@@ -273,7 +273,7 @@ void pci_bridge_write_config(PCIDevice *d,
-     newctl = pci_get_word(d->config + PCI_BRIDGE_CONTROL);
-     if (~oldctl & newctl & PCI_BRIDGE_CTL_BUS_RESET) {
-         /* Trigger hot reset on 0->1 transition. */
--        qbus_reset_all(&s->sec_bus.qbus);
-+        qbus_reset_all(BUS(&s->sec_bus));
-     }
- }
- 
+  hw/watchdog/wdt_i6300esb: Use DEVICE() macro to access DeviceState.qdev (2019-06-06 11:55:04 +0200)
+
+----------------------------------------------------------------
+Trivial fixes 06/06/2019
+
+----------------------------------------------------------------
+
+Jie Wang (1):
+  vhost: fix incorrect print type
+
+Li Qiang (1):
+  migration: fix a typo
+
+Markus Armbruster (1):
+  test: Fix make target check-report.tap
+
+Philippe Mathieu-Daudé (11):
+  docs/devel/build-system: Update an example
+  hw/scsi/vmw_pvscsi: Use qbus_reset_all() directly
+  hw/pci-bridge: Use the QOM BUS() macro to access BusState.qbus
+  hw/s390x/event-facility: Use the QOM BUS() macro to access
+    BusState.qbus
+  hw/isa: Use the QOM DEVICE() macro to access DeviceState.qdev
+  hw/usb-storage: Use the QOM DEVICE() macro to access DeviceState.qdev
+  hw/vfio/pci: Use the QOM DEVICE() macro to access DeviceState.qdev
+  hw/audio/ac97: Use the QOM DEVICE() macro to access DeviceState.qdev
+  hw/sd: Use the QOM BUS() macro to access BusState.qbus
+  hw/scsi: Use the QOM BUS() macro to access BusState.qbus
+  hw/watchdog/wdt_i6300esb: Use DEVICE() macro to access
+    DeviceState.qdev
+
+Richard Henderson (1):
+  util: Adjust qemu_guest_getrandom_nofail for Coverity
+
+Yuval Shaia (1):
+  hw/rdma: Delete unused headers inclusion
+
+ docs/devel/build-system.txt | 19 +++++++------------
+ hw/audio/ac97.c             |  2 +-
+ hw/isa/lpc_ich9.c           |  2 +-
+ hw/isa/vt82c686.c           |  2 +-
+ hw/pci/pci_bridge.c         |  2 +-
+ hw/rdma/rdma_backend.c      |  7 -------
+ hw/s390x/event-facility.c   |  4 ++--
+ hw/scsi/lsi53c895a.c        |  2 +-
+ hw/scsi/mptsas.c            |  4 ++--
+ hw/scsi/virtio-scsi.c       |  2 +-
+ hw/scsi/vmw_pvscsi.c        |  4 ++--
+ hw/sd/milkymist-memcard.c   |  2 +-
+ hw/sd/ssi-sd.c              |  2 +-
+ hw/usb/dev-storage.c        |  2 +-
+ hw/vfio/pci.c               |  4 ++--
+ hw/virtio/vhost.c           |  2 +-
+ hw/watchdog/wdt_i6300esb.c  |  2 +-
+ migration/ram.c             |  2 +-
+ tests/Makefile.include      |  2 +-
+ util/guest-random.c         |  2 +-
+ 20 files changed, 29 insertions(+), 41 deletions(-)
+
 -- 
 2.21.0
 
