@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYqFc-0000bl-Rk
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:08:08 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60704)
+	id 1hYqFd-0000cm-8P
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:08:09 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60612)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFX-0000Yk-Mb
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:08:04 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hYqFT-0000V4-Bl
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:08:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFW-0003sE-QW
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:08:03 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:40829)
+	(envelope-from <laurent@vivier.eu>) id 1hYqFS-0003lA-C5
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:59 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:48335)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hYqFS-0003kp-WE; Thu, 06 Jun 2019 07:07:59 -0400
+	id 1hYqFM-0003XM-8B; Thu, 06 Jun 2019 07:07:52 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1Mjjvp-1gpIoc0oep-00lIOV; Thu, 06 Jun 2019 13:07:05 +0200
+	id 1MF45G-1hJOpv4BHE-00FVwS; Thu, 06 Jun 2019 13:07:00 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -37,33 +37,33 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>
-Date: Thu,  6 Jun 2019 13:06:25 +0200
-Message-Id: <20190606110625.32127-17-laurent@vivier.eu>
+Date: Thu,  6 Jun 2019 13:06:22 +0200
+Message-Id: <20190606110625.32127-14-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190606110625.32127-1-laurent@vivier.eu>
 References: <20190606110625.32127-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:bl0xDPOBLSFyaA6yuciGO6yWHbSUzI/Taafs3MPVPDjQvSPq2FO
-	n6XAL3not5uDhjPw7QdREwMHMqCv3HP2WfHkrW3kJZ0ay6L9pndG/dp1Dt4pPzTs5EeJw6u
-	1V+u6VXkuVastSw4iolcMlezkMrmvDF5WnpikF+fvoqBLA+wyljyEMTK3E9u4SO4wdbfSy3
-	XnHHHxVxZ1g5nQ0Uka1fQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:B/2HZW/kxEQ=:IBY9o2em4spVu6pcr0bD5N
-	4qbMMRjgEyOBMgFfTs8RKny4+saGSRYEv1xWFSYqFG5c13q0jtDJdNc1lDvFgk/wxM9G75xVu
-	1MzOz7WbfU35OEX8xX4SGzALQ1gBajW97yxYyX2HUfFUhTPgqPeHEOiHp7wbqEaG3yNBBZugy
-	+FltJC6MifGu8Ebu8uHTliWZtsqmsxxB1cOzRVLwo++swCivYQsz9PS+bs9sUL6XmAa9EDACp
-	I4gI2i5hWbmtWISlim8JXm2rVqpxqKMN54KHL2hwbys7e7wsil/54oUEBQJPu4gdVylrq0Nqy
-	Ov1owG4ToUZOGq8iOce0wTHpcY16y1bywwLRLAfpBML42UHHlcvBMxVDwkSHar65sg3uvtKMi
-	YtU5+GpjVmeaelGyfY43SNQCDXVWy+hRlCxo/vWM3EVIj3hf0qtxHx3EssyOD51iZ9kmstQgj
-	qk+S+MEBV9/+cWr8Z90TZ4EixwcbpliQlyGCaSlvudNAgo9FuRsHd0p7lz2NCMRwYsyz2TsKN
-	+flqumUZQnv3GhLb2M4D1em2avUDq3PCTXSX+0Tfe3+QnCCSwuV8VaRqz+uM+J6kQXP/YQaTz
-	TnrdStmsQnynmKN3dWjmA2WfBAe82kIgiqTV8WfaA+d/U+2HSnt3ieRjs3YmDY4pNvppbOUr1
-	7oagnQw4SODMvXVuBxJVFlu+plQymHQX4iOCsC2uAcH+FJeE3BYbrlO1JF4B2DAA5IVowEdE6
-	EiR3ncUqoE/SMYsiect/LdiFieqFj8omHC6H+HJ2CAgchrjwbRiAGlGH1/c=
+X-Provags-ID: V03:K1:fzaLTWynTwDqw6BjWmgpLb2j0IKt7+qM8X08zaQ6i9wGrXiov9X
+	wSpTCy06OGdyElX7Nu4C3qjeTx82I/dXttSwj8u7Um3YjV8hbFFJFfij/5g9aVoTRZMBsgU
+	qRFZL0xYRoujggCov1NFhZcDbnqII1+ueWrGKkHuP6rsAW5OyeZ+lG4bUnfHOe4LlnTqIjF
+	O/l0SKuUv7l8LcvaDxYGg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Hbvzz2t+sbA=:O/5Xg9ZXO9P0MYOLKekIUO
+	42O8iR3bR2OTpFSjE/mr0VGHbSNoL+DgTUJeZf8rtvpC2oqiQbZGMbj7L5TDfU9RPivEzId1S
+	tQsl5ZlOhBnJQxMT80vywmOoJgoeLDLz32hbMu6fs2w+eOwu5I1Fee2Hc+FBS23MIYWTURf51
+	tmbHnhTWGWetV1ZmPRGamqojQNd8KznKwpt+le0Qmj0fnW7y+BFc4lxktjt3sDLSQsuYbhBN/
+	LGKbYA2X/dnvmILr1zYmyEAR/gzKAA5OzgwO1sGjr8suE3Evekh/qOLxDD3zEtE1Zm9q3pYGh
+	7ftFN6nvFnvZvN+wl5L2LdgZSBKhaX6m1VDIvKy6WWAdNIQWgeYNy4xxE5UhMKGLggTbdQD3o
+	wZEppG7j7ZoVHJp9qw6gS1wtnNYsofIxKWDmnq3dke1b+vb3Qjz3eTuj7tSeDFI8XuqwQ9KEb
+	39v75ZQggF9F7r0UFwTd/ujaWqvQgzPe80YweWAEzxiZ6RLqkvHSmyxVtK+j+lA72H+8uRLoK
+	w05IjZqJP4RXFYSNvkBHTu6+l8ppc/qG6e1NzPjJoDE8RHXjYWZjxoSSGcpV59W15K2pH6o22
+	ZTeMQK0dxgXX75rxPLRnqhvjOMlEyOnqasQ3/8+MH/s9mAkhptO2jmWN3SwWRWAhucN4hjCIB
+	jUZYJ/HboaJs+kHcYLgD9NBDSRnwDL5YZucpvfmRZf5sQCcFcpFxgCO5hBqG+JBigvCWc0ZcR
+	ngA0FWEl9uDMvfez9BUfX7onzPQB12WuPnCop8J1c+JrbzPVolK2NnTNJJk=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.10
-Subject: [Qemu-trivial] [PULL 16/16] hw/watchdog/wdt_i6300esb: Use DEVICE()
+Subject: [Qemu-trivial] [PULL 13/16] hw/audio/ac97: Use the QOM DEVICE()
  macro to access DeviceState.qdev
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
@@ -76,14 +76,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 11:08:04 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 11:08:00 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 Rather than looking inside the definition of a DeviceState with
 "s->qdev", use the QOM prefered style: "DEVICE(s)".
 
-This patch was generated using the following Coccinelle script:
+This patch was generated using the following Coccinelle script
+(with a bit of manual fix-up, removing an extra space to please
+checkpatch.pl):
 
     // Use DEVICE() macros to access DeviceState.qdev
     @use_device_macro_to_access_qdev@
@@ -95,26 +97,26 @@ This patch was generated using the following Coccinelle script:
 
 Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20190528164020.32250-11-philmd@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>.
+Message-Id: <20190528164020.32250-7-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/watchdog/wdt_i6300esb.c | 2 +-
+ hw/audio/ac97.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/watchdog/wdt_i6300esb.c b/hw/watchdog/wdt_i6300esb.c
-index 1c6eddf86aea..f2d1e86526f2 100644
---- a/hw/watchdog/wdt_i6300esb.c
-+++ b/hw/watchdog/wdt_i6300esb.c
-@@ -200,7 +200,7 @@ static void i6300esb_timer_expired(void *vp)
-         if (d->reboot_enabled) {
-             d->previous_reboot_flag = 1;
-             watchdog_perform_action(); /* This reboots, exits, etc */
--            i6300esb_reset(&d->dev.qdev);
-+            i6300esb_reset(DEVICE(d));
-         }
+diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
+index 2265622d44a2..a4e8d99e7775 100644
+--- a/hw/audio/ac97.c
++++ b/hw/audio/ac97.c
+@@ -1388,7 +1388,7 @@ static void ac97_realize(PCIDevice *dev, Error **errp)
+     pci_register_bar (&s->dev, 0, PCI_BASE_ADDRESS_SPACE_IO, &s->io_nam);
+     pci_register_bar (&s->dev, 1, PCI_BASE_ADDRESS_SPACE_IO, &s->io_nabm);
+     AUD_register_card ("ac97", &s->card);
+-    ac97_on_reset (&s->dev.qdev);
++    ac97_on_reset(DEVICE(s));
+ }
  
-         /* In "free running mode" we start stage 1 again. */
+ static void ac97_exit(PCIDevice *dev)
 -- 
 2.21.0
 
