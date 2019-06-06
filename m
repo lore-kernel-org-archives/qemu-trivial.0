@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYqFh-0000hg-36
+	id 1hYqFh-0000i2-Bo
 	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:08:13 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60808)
+Received: from eggs.gnu.org ([209.51.188.92]:60810)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFd-0000dD-GA
+	(envelope-from <laurent@vivier.eu>) id 1hYqFd-0000dZ-NU
 	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:08:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFc-00042e-Eg
+	(envelope-from <laurent@vivier.eu>) id 1hYqFc-00042w-Il
 	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:08:09 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:41985)
+Received: from mout.kundenserver.de ([217.72.192.74]:42439)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hYqFX-0003s4-Al; Thu, 06 Jun 2019 07:08:03 -0400
+	id 1hYqFc-000418-7N; Thu, 06 Jun 2019 07:08:08 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1Mjjvp-1gpIoP3RQB-00lIOV; Thu, 06 Jun 2019 13:06:55 +0200
+	id 1M5gAG-1hSmUP1wPi-007ET8; Thu, 06 Jun 2019 13:07:03 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -37,34 +37,34 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>
-Date: Thu,  6 Jun 2019 13:06:19 +0200
-Message-Id: <20190606110625.32127-11-laurent@vivier.eu>
+Date: Thu,  6 Jun 2019 13:06:24 +0200
+Message-Id: <20190606110625.32127-16-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190606110625.32127-1-laurent@vivier.eu>
 References: <20190606110625.32127-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:aAa1raASz8JOmSHlj+lCdaiafK8ieKWUPyy/UkUZ38PqO9+KY5j
-	rycJ0oIdjZws5HBSsWNdb41aH1emLIY8VwJIOPyX0fx8uGumkPozjf5X2RcmUEJoIQIjzRP
-	G/E4kNIwblA3p5Aki9SPJDiU/YiMBcHPigbIK8kcbAft51Zc2UqzB+SeoS8FV2pM1UFTR40
-	8O73Da6kZRsn9RxZAYLKQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:TaGw/BMz8Ds=:+RxgS5R5CEPEwcHSeBiEa9
-	6BPo33XP9pjQQDFUbXt5rUEFQ9qDhLHbSEj1s9e8h+ELqtsOuMgawgprMxGMFasq5bHCDhsrA
-	rEGFmcOc4AcilUwmi9Il4f6Fhi0GkbwUkJxhTrO0AHiCkTC2k1LQv6YR3XsxFUBEUvernwNDM
-	7Kp5EGnUfUL1jJdLkur8cs1450ZBX6IMw3tlhgN7MB8waCcczeca8QrK2wHmnNvVINAW4C9VF
-	076o/oaWLs8OmHM2Ba3re/hyW1FNPnrQCmPkptAEkUc85M9rWNsZ30lBe4rbckpy3iqh6rNpS
-	RQfbvd6ipvUbm3+68smisfzvAr2dbmsUanIvCHL+jnbfLNeKYdlT4OXVMucj3bOMGapK8qfLt
-	8SAbmK8h54US12l96MBh1ODXxnbS6KpIXdAb9IkO1P3rXJeV6tCKuZofYh/Qpe6Ak47bjt8Jf
-	BG9qOPwhIyZKqbiZHYOh1axIK32ket6NzhSth8K15UDjjwTQhw+CKeIqEAv714AfbcdJAaQl6
-	9w54CcvGxgtkxjNhAUGDC6bmaiScLH+4MgKqIN13gIVfMUGdec86e8NhAyU/JDDd8IweA+MTW
-	fj7nktBu9b91KA9Fo5MSZhL9lmtgcE+SBx4P73trB72Y308XOw3GczzjSDkWstiLcOI2v7u2y
-	9FWCw2gbZ1nUOcM9cdK4jh4ps/mRe18ZFymKmWvTVC9gO5Fs8lm9O9NY3hQfXNPZelfFU/1U6
-	Gedg7yXzCJiLGP2gjEfwPNBJnrI2qLuxUgxd0855y252S8K3lP5hzZCM2t4=
+X-Provags-ID: V03:K1:X7Pzqi/mv0dxQQiN8SxrwtJ1RIT5ZhWHO/wg8CR2AcU8Aqcjkys
+	IQILE+MXIMIeW8OZvIlxp20ttU8zBKHg+OHVjimLpwVlLRzkTfABJ3EfPAqZJwvREjbWdgq
+	0G8lATPj2xwT3lND3J7dZNB0+TVgmZllAOYUegn0R5SO1uKnNG/ALrTPlNsL/kpIu7DghJK
+	Cv57NpSdPF3BCnxkbospg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:UJwOZYeoFZE=:1naxc3Kh4Xt1rELgqCD5Bc
+	jDG7R9YIyWEy448OTJSvwueso0oCcp1Wg+5dv9uljp/ODYIVIqYK3qrpoi9GrQ81eQ5e1JQ5Y
+	boUwl/zJwrjii+TKWN7A3/dWo1mTH6/IMXKXRkMRwnaB4J/Lu+78m6yEa6pPlycVETr+IMCem
+	T6u9ZmTGE/Y03DD3zU5XVyJA2c11ivHYZeozqFRepdC5yF+bsFPM/OLTs6L2s5AFMNksRAOx6
+	GP/HXXDpGfW0mWIY53D5CUbTejUgoZGvu0IiWTIF62btz3LM3huPtP9W0q7MUbPQns1/WpNQ9
+	FXnGs0gfu2EKEnsYgO3Pv78uaUnRAhSNWIn1eup0WsgqiQO+6TrQwPuPXc+mjzEelX4ZsyIbh
+	IHMoMH55ERH403WeYncRip2pmilDrx4eL1y5OIjzA1IOOMq7XqzTze2es7uxv66wMEJh0HyvG
+	yIb91fELUZP3Z+80NXDzbZFDv5JD665sEG6gPN6zKaKf9swcGkGotbf2zOa5kJc6XpburW5ol
+	Chu8/hf2ZhTykZQcHHplN9ABAywYUaxWa8Z63MqAgCyINNbfFR9IITsdwt9xVF9WFvwVClMnB
+	BeuyEtEARetrZfAVmXJkXiR2X6U897IUP9ISh8kBLqaAXT9NCpEHXBhyoG5V04ui9HfBTLZFc
+	v+iZLp+lgDo1KPqmGN8O3ytdYp2FkPd8+nWadR6oXjG0snJpQonyP89VHgk2LRi7kuuqBE4FA
+	bChtXKsN9soniAqqZ+lNz0Ur9RCX25vs6TVKdeD1WVdaM3ADRPG92BiIL94=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 217.72.192.74
-Subject: [Qemu-trivial] [PULL 10/16] hw/isa: Use the QOM DEVICE() macro to
- access DeviceState.qdev
+Subject: [Qemu-trivial] [PULL 15/16] hw/scsi: Use the QOM BUS() macro to
+ access BusState.qbus
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -80,55 +80,78 @@ X-List-Received-Date: Thu, 06 Jun 2019 11:08:10 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Rather than looking inside the definition of a DeviceState with
-"s->qdev", use the QOM prefered style: "DEVICE(s)".
+Rather than looking inside the definition of a BusState with "s->bus.qbus",
+use the QOM prefered style: "BUS(&s->bus)".
 
 This patch was generated using the following Coccinelle script:
 
-    // Use DEVICE() macros to access DeviceState.qdev
-    @use_device_macro_to_access_qdev@
+    // Use BUS() macros to access BusState.qbus
+    @use_bus_macro_to_access_qbus@
     expression obj;
-    identifier dev;
+    identifier bus;
     @@
-    -&obj->dev.qdev
-    +DEVICE(obj)
+    -&obj->bus.qbus
+    +BUS(&obj->bus)
 
 Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Message-Id: <20190528164020.32250-8-philmd@redhat.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20190528164020.32250-3-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/isa/lpc_ich9.c | 2 +-
- hw/isa/vt82c686.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ hw/scsi/lsi53c895a.c  | 2 +-
+ hw/scsi/mptsas.c      | 4 ++--
+ hw/scsi/virtio-scsi.c | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
-index 031ee9cd933d..35d17246e940 100644
---- a/hw/isa/lpc_ich9.c
-+++ b/hw/isa/lpc_ich9.c
-@@ -412,7 +412,7 @@ void ich9_lpc_pm_init(PCIDevice *lpc_pci, bool smm_enabled)
-                                  true);
-     }
+diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
+index da7239d94fcd..a8b7a199f960 100644
+--- a/hw/scsi/lsi53c895a.c
++++ b/hw/scsi/lsi53c895a.c
+@@ -1860,7 +1860,7 @@ static void lsi_reg_writeb(LSIState *s, int offset, uint8_t val)
+         }
+         if (val & LSI_SCNTL1_RST) {
+             if (!(s->sstat0 & LSI_SSTAT0_RST)) {
+-                qbus_reset_all(&s->bus.qbus);
++                qbus_reset_all(BUS(&s->bus));
+                 s->sstat0 |= LSI_SSTAT0_RST;
+                 lsi_script_scsi_interrupt(s, LSI_SIST0_RST, 0);
+             }
+diff --git a/hw/scsi/mptsas.c b/hw/scsi/mptsas.c
+index 929404fb48c8..e800683e91e9 100644
+--- a/hw/scsi/mptsas.c
++++ b/hw/scsi/mptsas.c
+@@ -540,7 +540,7 @@ reply_maybe_async:
+         break;
  
--    ich9_lpc_reset(&lpc->d.qdev);
-+    ich9_lpc_reset(DEVICE(lpc));
- }
+     case MPI_SCSITASKMGMT_TASKTYPE_RESET_BUS:
+-        qbus_reset_all(&s->bus.qbus);
++        qbus_reset_all(BUS(&s->bus));
+         break;
  
- /* APM */
-diff --git a/hw/isa/vt82c686.c b/hw/isa/vt82c686.c
-index 85d0532dd5b5..d46754f61cfb 100644
---- a/hw/isa/vt82c686.c
-+++ b/hw/isa/vt82c686.c
-@@ -369,7 +369,7 @@ static void vt82c686b_pm_realize(PCIDevice *dev, Error **errp)
-     pci_conf[0x90] = s->smb_io_base | 1;
-     pci_conf[0x91] = s->smb_io_base >> 8;
-     pci_conf[0xd2] = 0x90;
--    pm_smbus_init(&s->dev.qdev, &s->smb, false);
-+    pm_smbus_init(DEVICE(s), &s->smb, false);
-     memory_region_add_subregion(get_system_io(), s->smb_io_base, &s->smb.io);
+     default:
+@@ -803,7 +803,7 @@ static void mptsas_soft_reset(MPTSASState *s)
+     s->intr_mask = MPI_HIM_DIM | MPI_HIM_RIM;
+     mptsas_update_interrupt(s);
  
-     apm_init(dev, &s->apm, NULL, s);
+-    qbus_reset_all(&s->bus.qbus);
++    qbus_reset_all(BUS(&s->bus));
+     s->intr_status = 0;
+     s->intr_mask = save_mask;
+ 
+diff --git a/hw/scsi/virtio-scsi.c b/hw/scsi/virtio-scsi.c
+index 2994f0738fd8..12d21bbc613c 100644
+--- a/hw/scsi/virtio-scsi.c
++++ b/hw/scsi/virtio-scsi.c
+@@ -696,7 +696,7 @@ static void virtio_scsi_reset(VirtIODevice *vdev)
+ 
+     assert(!s->dataplane_started);
+     s->resetting++;
+-    qbus_reset_all(&s->bus.qbus);
++    qbus_reset_all(BUS(&s->bus));
+     s->resetting--;
+ 
+     vs->sense_size = VIRTIO_SCSI_SENSE_DEFAULT_SIZE;
 -- 
 2.21.0
 
