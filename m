@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYour-00071u-PX
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 05:42:37 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:42542)
+	id 1hYp6w-0003LV-Mj
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 05:55:06 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:45353)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYoup-00070l-L9
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:42:36 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hYp6u-0003JM-CV
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:55:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYouo-0006Dd-H4
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:42:35 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:46597)
+	(envelope-from <laurent@vivier.eu>) id 1hYp6t-0001pk-7C
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:55:04 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:42881)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hYouo-0006Bb-8G; Thu, 06 Jun 2019 05:42:34 -0400
+	id 1hYp6q-0001fa-Mg; Thu, 06 Jun 2019 05:55:00 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
-	1N5mWp-1gTFPe23St-017GtR; Thu, 06 Jun 2019 11:42:09 +0200
+	(mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+	1N6srH-1gUL9L1tbr-018OQU; Thu, 06 Jun 2019 11:54:32 +0200
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
@@ -32,7 +32,7 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
 	Cornelia Huck <cohuck@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
 	Richard Henderson <rth@twiddle.net>
 References: <20190528164020.32250-1-philmd@redhat.com>
-	<20190528164020.32250-11-philmd@redhat.com>
+	<20190528164020.32250-3-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -77,35 +77,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <e7446c5c-2d8a-a7b1-5fb5-6890e62c0856@vivier.eu>
-Date: Thu, 6 Jun 2019 11:42:07 +0200
+Message-ID: <bc27395d-e3b6-b2c6-17f2-7cbfc82a3498@vivier.eu>
+Date: Thu, 6 Jun 2019 11:54:27 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190528164020.32250-11-philmd@redhat.com>
+In-Reply-To: <20190528164020.32250-3-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:TX+rrqKFfhC9YjzAA1gj+l8X2xUVUCrPX5YH0u/R8P73cRY/e6B
-	JttywsZPN1R8L08izE2IBGO5tDqdQ7FaPlgroqF7Ki6BMdIFBz1bb/Oknubz59bJqOif2cj
-	SmiKSpCYRgGf0v/Q6WiYsRvsmF7FZAHMOb558Eq3p6Z/HXUq7tKDKdh6BdgVIKdXiTtvd67
-	B7n1bO0vJ4fGHwV7VVogg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:SmGHHdMm5Fo=:8TYuyyyVsPcy66Nz0yMEXL
-	W3aYfOOgi2onvlAc+PlRId2a5Z81r9794jook8ogFaXHHGwPFvA0b5TFTmgzckY5OAJxkp21f
-	LA17Eq1qXRgOSHEx8K1xrsT/HDKVuXNfuTh1ZVPSvpCWhPgljXThCDFyGyNMYdTAWAcF+dR0H
-	LTO4cv2BaSPd/J/YOpqy73OWiQZf4EJDc6EL/D+jR2Z4daYjCyc19e17CfwiKg/szzd5uS4FS
-	Dk+w1sVHcRr1oc/NwKeUSUvgjvty2XgUl0Z5F8EzFK+QPfI7uPkFBkEk1QPEfieZA2N6TPFMw
-	CNiD/Rm6wryzzlw5ScXG+1KbdWEFXJLO0x6aRrej1rvVpnWjKQ6OAeQZvecnZOHw1E3MvlZsM
-	BypaJnd0Sop1tT7ow3bP9aQGY0TeYC4B3A7asoJm/lKwp5ymHqW1LUHTc/C0ek+CTWwl/HzcM
-	1XJ1cyToqbQTk+WACZU44/Vwsc+Qt7YRH/rUcox4pi8rqs0FdHxl3IXQ27Y4MUHxdrJHRDiE4
-	fuTdRO9ydhbI53jog31hzOW0J7BQGqt1bwQHbuFP6TgJahaoe7ZSkHRIefMmZK/sfbD3WCt/5
-	XAbaq7JCfiaV4agVrvKNJ8ne+4j65QmYEpIRtnP3Ij7+aT358PtGiMAnpNPKgzq5uZDgIrKQz
-	qrrVu1yLknVczk/hWqm9JjwYeqv1Ql2+nQ0a7sq+mZNmYrdiybNXSkbyPD0p1UrYuSgMSe+6M
-	fnIIij/6vEp3jkx+8b0jD41r+bcSReHZh9X1k+Ik6GsccQwFEZ28eh11/Qk=
+X-Provags-ID: V03:K1:32l68PyGqgumeMJOnmhh5/nn6XfrZywbLGHDfNpgvVYdfc7+b8T
+	yFFy7fePY0yJzcutG2D9C+Jyc1Xys7O68neCfj4++eGmWUdUffwpOnztDzhc0awnHNi4/+n
+	KqS2RnsfXpaUbNEtXLuT0GVqu8kIRYA4dOmqTGzqpDdP23DcBGEKNe6wnpdjEUHiJyTKl9K
+	v6/GZTvFyF1aLTprXJKLA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:gdxgAGouVqQ=:/rHYq0WA9XFfRPhUJPb1NS
+	kgTXJdRcHo8rnXAjK+TM9MJpnl5ypQjZgTUD265zuUkK+w4zRVNhuwB+SqN79nH1oJFHhrMJq
+	3KgtNUV0zIlE2RVZIlRL2taraosRQkyQwl3ov3PBGZiA0pTdYuEGWpq1+cDaxvLFd6mX4yD3B
+	0petpEdLkqsN/HtOCccm8Ugy9yDsSEUHzUr24jYy2fgIMtzU6/DYISIzD/QCeXBFujcWKehjI
+	598CtymccNY3mUWF/JfYgjyTcg7RGKTBqYS2rMwvOtISc25rMeegDR8oNAdGVlBnOhCLF5QXF
+	wytY+UkP/AfySz+EX1yHUpQOopHW0+ZfBdzjJxbJ9IDrtFDeGnFbAB1ibAHxvB510Gad3Dz2E
+	4ybotL3gYBBGxSA5mdonYhnh552czic0/gQOzu6YDcFRRlwHlFAT8RWsmZo+fb4lu5tmD3S3V
+	j5UPYg16xywd8JOremEcc8TY/WHmkkqBJ4jSh+zx3pMwu6yBXBrbjjzFtnJhSLVcx5lyAWgt5
+	nnJtwdxjHZCIAWbD0BEBnk4u6AuQwWS4XMSlwcv0vctcw7C3WjOKRJjijvpiL0LsQWoSvkkR0
+	XA8buPI+s2UaSc3qchdMQlRFgIqk4tfAhGZ4SJjePhGrQ4tAhv8y+KhX4LzC62eRsm67XwSbU
+	NFfBaR5BxMNG9MZtgICm3iHFWC/v2H4ZKbOsm3nm6hjqO1bgQlNrYQUgysLEu4YqAOYbIGH0f
+	9wCiFMS7aqqlsXnOkwAyrxxNFK8gF90V1mG3hWu3PhvCB+VaTbdQCIWkSP8=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: Re: [Qemu-trivial] [PATCH v2 10/10] hw/watchdog/wdt_i6300esb: Use
- DEVICE() macro to access DeviceState.qdev
+X-Received-From: 212.227.126.187
+Subject: Re: [Qemu-trivial] [PATCH v2 02/10] hw/scsi: Use the QOM BUS()
+ macro to access BusState.qbus
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -117,28 +117,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 09:42:36 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 09:55:05 -0000
 
 Le 28/05/2019 à 18:40, Philippe Mathieu-Daudé a écrit :
-> Rather than looking inside the definition of a DeviceState with
-> "s->qdev", use the QOM prefered style: "DEVICE(s)".
+> Rather than looking inside the definition of a BusState with "s->bus.qbus",
+> use the QOM prefered style: "BUS(&s->bus)".
 > 
 > This patch was generated using the following Coccinelle script:
 > 
->     // Use DEVICE() macros to access DeviceState.qdev
->     @use_device_macro_to_access_qdev@
+>     // Use BUS() macros to access BusState.qbus
+>     @use_bus_macro_to_access_qbus@
 >     expression obj;
->     identifier dev;
+>     identifier bus;
 >     @@
->     -&obj->dev.qdev
->     +DEVICE(obj)
+>     -&obj->bus.qbus
+>     +BUS(&obj->bus)
 > 
 > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/watchdog/wdt_i6300esb.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/scsi/lsi53c895a.c  | 2 +-
+>  hw/scsi/mptsas.c      | 4 ++--
+>  hw/scsi/virtio-scsi.c | 2 +-
+>  3 files changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
+> index da7239d94f..a8b7a199f9 100644
+> --- a/hw/scsi/lsi53c895a.c
+> +++ b/hw/scsi/lsi53c895a.c
+> @@ -1860,7 +1860,7 @@ static void lsi_reg_writeb(LSIState *s, int offset, uint8_t val)
+>          }
+>          if (val & LSI_SCNTL1_RST) {
+>              if (!(s->sstat0 & LSI_SSTAT0_RST)) {
+> -                qbus_reset_all(&s->bus.qbus);
+> +                qbus_reset_all(BUS(&s->bus));
+>                  s->sstat0 |= LSI_SSTAT0_RST;
+>                  lsi_script_scsi_interrupt(s, LSI_SIST0_RST, 0);
+>              }
+> diff --git a/hw/scsi/mptsas.c b/hw/scsi/mptsas.c
+> index 929404fb48..e800683e91 100644
+> --- a/hw/scsi/mptsas.c
+> +++ b/hw/scsi/mptsas.c
+> @@ -540,7 +540,7 @@ reply_maybe_async:
+>          break;
+>  
+>      case MPI_SCSITASKMGMT_TASKTYPE_RESET_BUS:
+> -        qbus_reset_all(&s->bus.qbus);
+> +        qbus_reset_all(BUS(&s->bus));
+>          break;
+>  
+>      default:
+> @@ -803,7 +803,7 @@ static void mptsas_soft_reset(MPTSASState *s)
+>      s->intr_mask = MPI_HIM_DIM | MPI_HIM_RIM;
+>      mptsas_update_interrupt(s);
+>  
+> -    qbus_reset_all(&s->bus.qbus);
+> +    qbus_reset_all(BUS(&s->bus));
+>      s->intr_status = 0;
+>      s->intr_mask = save_mask;
+>  
+> diff --git a/hw/scsi/virtio-scsi.c b/hw/scsi/virtio-scsi.c
+> index 839f120256..2a71b78e22 100644
+> --- a/hw/scsi/virtio-scsi.c
+> +++ b/hw/scsi/virtio-scsi.c
+> @@ -696,7 +696,7 @@ static void virtio_scsi_reset(VirtIODevice *vdev)
+>  
+>      assert(!s->dataplane_started);
+>      s->resetting++;
+> -    qbus_reset_all(&s->bus.qbus);
+> +    qbus_reset_all(BUS(&s->bus));
+>      s->resetting--;
+>  
+>      vs->sense_size = VIRTIO_SCSI_SENSE_DEFAULT_SIZE;
+> 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Applied to my trivial-patches branch.
 
+Thanks,
+Laurent
 
