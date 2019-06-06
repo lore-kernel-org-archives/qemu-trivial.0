@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYqFQ-0000Rs-IO
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:07:56 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60449)
+	id 1hYqFU-0000WE-47
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:08:00 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60533)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFN-0000QO-Un
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:55 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hYqFQ-0000SE-Rk
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFM-0003av-Kh
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:53 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:60125)
+	(envelope-from <laurent@vivier.eu>) id 1hYqFP-0003fh-SI
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:56 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:41725)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hYqFM-0003Yj-BB; Thu, 06 Jun 2019 07:07:52 -0400
+	id 1hYqFM-0003Y5-4R; Thu, 06 Jun 2019 07:07:52 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1MD9CZ-1hQHVM09Kb-009CQ1; Thu, 06 Jun 2019 13:06:37 +0200
+	id 1MyKYE-1gcKlM29eO-00ydrs; Thu, 06 Jun 2019 13:06:44 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -34,32 +34,38 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	Halil Pasic <pasic@linux.ibm.com>, Richard Henderson <rth@twiddle.net>,
 	qemu-s390x@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
 	Cornelia Huck <cohuck@redhat.com>,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>
-Date: Thu,  6 Jun 2019 13:06:09 +0200
-Message-Id: <20190606110625.32127-1-laurent@vivier.eu>
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Thu,  6 Jun 2019 13:06:13 +0200
+Message-Id: <20190606110625.32127-5-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190606110625.32127-1-laurent@vivier.eu>
+References: <20190606110625.32127-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:jXBw7xjNhugMNssuQYniItqf9lQA5/h/Qq88/KbeErJwbnqLpdt
-	7ui3P6JZ7OxOIMpyB9CibBkKRDFhoAA7dcJ8ZhnKUkFayXS7Rr+arXJgFtOyI1w6vla9Cjl
-	b6penN1tKfSd3/HpXBsc0eqG4iWsM0X/OsD45+qMPo32/wwS9P+IyOQpan1tx7yOASheJbJ
-	fZ8H5ic5X+j6ej6HMaRkg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:9Mmxt/cZHXM=:ZQB9PFrxywQi13M79hZF8E
-	r1fUhE89o58WGZtmB1P9IiZKmf2mgf1gdh6ad8N+1DjXL4SKUrTtsOBLV91iVrN3iBmlKuUEG
-	5SpMugJz8zqdHD4XTR+VapItEbDkehwMs8yAT3VNLCtB2OuteJHW5znx3MOkJJTn49rW8yVYY
-	h39UP93BjMDb7jUd8cqPXSUwlcvaP8WGDMKe2eJx+mHeKTyYi9yM2uSYUd3LhQBcZGu28w9OB
-	jeA24GN//EPuXcaoBXIHKGyJP36/3MYXxhlnzfR01F6vRp2RYSejBV+OdW3k9YVNWzH/TXBJR
-	lqTIivEpCG4B5jhtlgBwDtH8ro16toi46WGVQY2DaUNTAwW0YBlGkcGfmXvCfbDIB5NKErNun
-	EZ/3gQ3tG9+XeDp9i04MfMOpQ+gf+NLZCbHRqpkdJuzNQuOZCSqKJNRl5aDoPNcBLmJCGEO7/
-	Vpg4aWSVbGn/T7lTJtVhoNWmZHYXJjv79Es5WihW7k/ZZ3fZcMqBaBfgbB9cOEuU3vTODuyD+
-	LwiHSrW5XnbeRDgW6yyvVQbwVxkwN/GGBcGQqMi68eKtAVM6c+T3Kx37bIvFydLcIR8LeBkZO
-	+UL8J92zpV2XcBAOR12MuXTQHXOFGFuJZ/V+xI9+w2fraduUBAuOmcjzpFv762AlU4n5EQDOs
-	HwNRSv2ve8tGFCnVAh61aK2eZ9klhC05ZY9nKJBcgCP37bMFHXbhqXVbbRMnWnS/Oh4dsvh91
-	1a4FWUBo+U1sc9w42goA5hHp6Lb4kkHYlPuShbDcD350iulVOT6IMERyXHQ=
+X-Provags-ID: V03:K1:Sdcr+43MaEvgOFCLqoBVvN3f0eFhHJAHvIaumx6TwHBbk8Op53r
+	mhRKmdzJb12QS3KddxUe1EtLseBs5xkd1SsXwA3+T9NO/kW9XTkRTTOzQes53BFDepWNqGa
+	UESSp0MEJu5lf5G+XNU031f0o3i6XLWMYDa2rXelkiJ8HOl/LTYwUX2zHdgQMABfP9IBFXm
+	crE91O+LUBQMfdFtDEzyQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:FhUQ6BSxQOE=:HEakt/fZUJwDEWxUrzBJhV
+	IMUgGlIHLecx/vwK/4V6ODYNsPuQlHy01wVQ8XU58vvOw76/Syr6kJMSR1d7QdMnH57sAD/xL
+	aYh4iUNm/UtwGhf8M6YyGyPsEyp6H73sEd4RixaMpugkcdJTonPxzt5xnTnPD6CGc3AxWJ6bK
+	s9aRAC18kkyFc6u50hUu86enyjKpEQttOEGz4ErmMZOnHcYmxthr61OxYFCaFvzsaFxqOzzKq
+	+VL2hAxkBPiiD03SHxi+iz59ofelXdQvM2O1c00rzsD7d6wYZY1vvmJduDJ1fOppQBLtOqVNi
+	3MXdercddxWOKg53OllPqCxVlbWh1oIQTQTbJ2U295amOlAuPlM9Za+XSB93oTShAacj+QurY
+	ALee5rNrUsnP3M1KHREhYfZoCXjQIUGpH7lndAf3halW3pTCJNLeOpCmeroofyo6QdEbtZJBY
+	fDB+epeCrqDnAdA5NnRHtlNq9+21tHIMpEgmPNcEZyuOLtbJu5ALgpsjC8A3vyY/2mW0MpLvQ
+	2R+9LzK43lETPlxySTTmj8FuJCNsz8SRcT8Zhjk24og4LEU/qwG94pWY+4cK6vUR6K9xXPrIi
+	Zw38MhJk52TEmRfFCrvT21ZosID+Q1yhCW2UA4Rs5ELjkgfmkSakObIwGK0zL5ORTQGjmbINZ
+	WET/FUhprHHrOp0t+Lnncq3uQvgZicKI3aI+uNxr1qq2BvMWioiiP7foW4PrJwXJp2IhkdLnY
+	P1v7OFtu598stMsEU5eK6ZCRvOp2bauMzPluQySB6WlCrYkMoaZOxkMdMBc=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
-Subject: [Qemu-trivial] [PULL 00/16] Trivial branch patches
+X-Received-From: 217.72.192.75
+Subject: [Qemu-trivial] [PULL 04/16] util: Adjust
+ qemu_guest_getrandom_nofail for Coverity
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -71,77 +77,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 11:07:56 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 11:07:58 -0000
 
-The following changes since commit 47fbad45d47af8af784bb12a5719489edcd89b4c:
+From: Richard Henderson <richard.henderson@linaro.org>
 
-  Merge remote-tracking branch 'remotes/kevin/tags/for-upstream' into staging (2019-06-04 17:22:42 +0100)
+Explicitly ignore the return value of qemu_guest_getrandom.
+Because we use error_fatal, all errors are already caught.
 
-are available in the Git repository at:
+Fixes: CID 1401701
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20190530173824.30699-1-richard.henderson@linaro.org>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ util/guest-random.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
-
-for you to fetch changes up to f1114d321246f9177072923e1c2a20e7aab82700:
-
-  hw/watchdog/wdt_i6300esb: Use DEVICE() macro to access DeviceState.qdev (2019-06-06 11:55:04 +0200)
-
-----------------------------------------------------------------
-Trivial fixes 06/06/2019
-
-----------------------------------------------------------------
-
-Jie Wang (1):
-  vhost: fix incorrect print type
-
-Li Qiang (1):
-  migration: fix a typo
-
-Markus Armbruster (1):
-  test: Fix make target check-report.tap
-
-Philippe Mathieu-Daudé (11):
-  docs/devel/build-system: Update an example
-  hw/scsi/vmw_pvscsi: Use qbus_reset_all() directly
-  hw/pci-bridge: Use the QOM BUS() macro to access BusState.qbus
-  hw/s390x/event-facility: Use the QOM BUS() macro to access
-    BusState.qbus
-  hw/isa: Use the QOM DEVICE() macro to access DeviceState.qdev
-  hw/usb-storage: Use the QOM DEVICE() macro to access DeviceState.qdev
-  hw/vfio/pci: Use the QOM DEVICE() macro to access DeviceState.qdev
-  hw/audio/ac97: Use the QOM DEVICE() macro to access DeviceState.qdev
-  hw/sd: Use the QOM BUS() macro to access BusState.qbus
-  hw/scsi: Use the QOM BUS() macro to access BusState.qbus
-  hw/watchdog/wdt_i6300esb: Use DEVICE() macro to access
-    DeviceState.qdev
-
-Richard Henderson (1):
-  util: Adjust qemu_guest_getrandom_nofail for Coverity
-
-Yuval Shaia (1):
-  hw/rdma: Delete unused headers inclusion
-
- docs/devel/build-system.txt | 19 +++++++------------
- hw/audio/ac97.c             |  2 +-
- hw/isa/lpc_ich9.c           |  2 +-
- hw/isa/vt82c686.c           |  2 +-
- hw/pci/pci_bridge.c         |  2 +-
- hw/rdma/rdma_backend.c      |  7 -------
- hw/s390x/event-facility.c   |  4 ++--
- hw/scsi/lsi53c895a.c        |  2 +-
- hw/scsi/mptsas.c            |  4 ++--
- hw/scsi/virtio-scsi.c       |  2 +-
- hw/scsi/vmw_pvscsi.c        |  4 ++--
- hw/sd/milkymist-memcard.c   |  2 +-
- hw/sd/ssi-sd.c              |  2 +-
- hw/usb/dev-storage.c        |  2 +-
- hw/vfio/pci.c               |  4 ++--
- hw/virtio/vhost.c           |  2 +-
- hw/watchdog/wdt_i6300esb.c  |  2 +-
- migration/ram.c             |  2 +-
- tests/Makefile.include      |  2 +-
- util/guest-random.c         |  2 +-
- 20 files changed, 29 insertions(+), 41 deletions(-)
-
+diff --git a/util/guest-random.c b/util/guest-random.c
+index e8124a3cad48..00a08fd9819c 100644
+--- a/util/guest-random.c
++++ b/util/guest-random.c
+@@ -56,7 +56,7 @@ int qemu_guest_getrandom(void *buf, size_t len, Error **errp)
+ 
+ void qemu_guest_getrandom_nofail(void *buf, size_t len)
+ {
+-    qemu_guest_getrandom(buf, len, &error_fatal);
++    (void)qemu_guest_getrandom(buf, len, &error_fatal);
+ }
+ 
+ uint64_t qemu_guest_random_seed_thread_part1(void)
 -- 
 2.21.0
 
