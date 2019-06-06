@@ -1,54 +1,133 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYil2-0002vh-5e
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Jun 2019 23:08:04 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:56233)
+	id 1hYmVC-0002jl-5T
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 03:07:58 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:37557)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1hYiky-0002uq-Ho
-	for qemu-trivial@nongnu.org; Wed, 05 Jun 2019 23:08:03 -0400
+	(envelope-from <borntraeger@de.ibm.com>) id 1hYmV9-0002iZ-0B
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 03:07:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <dgibson@ozlabs.org>) id 1hYikw-0001bt-5x
-	for qemu-trivial@nongnu.org; Wed, 05 Jun 2019 23:08:00 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:60355)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
-	id 1hYikh-0008Vh-CS; Wed, 05 Jun 2019 23:07:45 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 45K9ZN66Ggz9s9y; Thu,  6 Jun 2019 13:07:40 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1559790460;
-	bh=UbFRRGCpjaRPre/8KwJagQhq7z16re20x8946eKKOlo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Nht3DY2KlH5Vd7goZOLKER6ssNMS0KjUh/Fbf6ex870lb3Sl8dwsQi1JMyIlhUPMf
-	pQzzOu2YqroTzrDhNRRJ6WrrCYmBKmbMD1KOZLEv3BwtozSn4422KtWwXHFaLpzdcH
-	Ysh+w88VKpiG+m6cmcRXc2aiirLjDummDg+60Bc8=
-Date: Thu, 6 Jun 2019 13:07:32 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Cc: Like Xu <like.xu@linux.intel.com>, qemu-trivial@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+	(envelope-from <borntraeger@de.ibm.com>) id 1hYmV7-0008BY-Pl
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 03:07:54 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:32934
+	helo=mx0a-001b2d01.pphosted.com)
+	by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.71) (envelope-from <borntraeger@de.ibm.com>)
+	id 1hYmV7-00088q-LN
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 03:07:53 -0400
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+	by mx0b-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+	x566wkWG095036
+	for <qemu-trivial@nongnu.org>; Thu, 6 Jun 2019 03:07:51 -0400
+Received: from e06smtp02.uk.ibm.com (e06smtp02.uk.ibm.com [195.75.94.98])
+	by mx0b-001b2d01.pphosted.com with ESMTP id 2sxtrsru3a-1
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <qemu-trivial@nongnu.org>; Thu, 06 Jun 2019 03:07:51 -0400
+Received: from localhost
+	by e06smtp02.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use
+	Only! Violators will be prosecuted
+	for <qemu-trivial@nongnu.org> from <borntraeger@de.ibm.com>;
+	Thu, 6 Jun 2019 08:07:49 +0100
+Received: from b06cxnps3074.portsmouth.uk.ibm.com (9.149.109.194)
+	by e06smtp02.uk.ibm.com (192.168.101.132) with IBM ESMTP SMTP Gateway:
+	Authorized Use Only! Violators will be prosecuted; 
+	(version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+	Thu, 6 Jun 2019 08:07:43 +0100
+Received: from d06av23.portsmouth.uk.ibm.com (d06av23.portsmouth.uk.ibm.com
+	[9.149.105.59])
+	by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with
+	ESMTP id x5677gpr46530718
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256
+	verify=OK); Thu, 6 Jun 2019 07:07:42 GMT
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id AC177A406F;
+	Thu,  6 Jun 2019 07:07:42 +0000 (GMT)
+Received: from d06av23.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 24D3CA4055;
+	Thu,  6 Jun 2019 07:07:42 +0000 (GMT)
+Received: from oc7455500831.ibm.com (unknown [9.152.224.183])
+	by d06av23.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+	Thu,  6 Jun 2019 07:07:42 +0000 (GMT)
+To: Eduardo Habkost <ehabkost@redhat.com>, Like Xu <like.xu@linux.intel.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	David Hildenbrand <david@redhat.com>, qemu-trivial@nongnu.org,
+	Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
 	"Dr . David Alan Gilbert" <dgilbert@redhat.com>,
-	Alistair Francis <alistair23@gmail.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	=?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
-	=?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
-	qemu-ppc@nongnu.org
-Message-ID: <20190606030732.GL10319@umbus.fritz.box>
+	Halil Pasic <pasic@linux.ibm.com>, qemu-s390x@nongnu.org,
+	Alistair Francis <alistair23@gmail.com>, Igor Mammedov
+	<imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>
 References: <20190518205428.90532-1-like.xu@linux.intel.com>
-	<20190518205428.90532-5-like.xu@linux.intel.com>
-	<20190606025241.GM22416@habkost.net>
-	<20190606025456.GN22416@habkost.net>
+	<20190518205428.90532-7-like.xu@linux.intel.com>
+	<20190606025635.GO22416@habkost.net>
+From: Christian Borntraeger <borntraeger@de.ibm.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=borntraeger@de.ibm.com; prefer-encrypt=mutual; keydata=
+	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
+	syiRa+UVlsKmx1hsEg==
+Date: Thu, 6 Jun 2019 09:07:41 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+	Thunderbird/60.6.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="J2pR2RtFp0tAjF3C"
-Content-Disposition: inline
-In-Reply-To: <20190606025456.GN22416@habkost.net>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 04/10] hw/ppc: Replace
- global smp variables with machine smp properties
+In-Reply-To: <20190606025635.GO22416@habkost.net>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+x-cbid: 19060607-0008-0000-0000-000002F033A4
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 19060607-0009-0000-0000-0000225D1E6B
+Message-Id: <fe75222f-3f89-8128-796c-f575a029bdf0@de.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+	definitions=2019-06-06_06:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+	priorityscore=1501
+	malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+	clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
+	mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+	scancount=1 engine=8.0.1-1810050000 definitions=main-1906060052
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.158.5
+Subject: Re: [Qemu-trivial] [qemu-s390x] [Qemu-devel] [PATCH v3 06/10]
+ hw/s390x: Replace global smp variables with machine smp properties
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -60,428 +139,117 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 03:08:03 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 07:07:56 -0000
 
 
---J2pR2RtFp0tAjF3C
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jun 05, 2019 at 11:54:56PM -0300, Eduardo Habkost wrote:
-> On Wed, Jun 05, 2019 at 11:52:41PM -0300, Eduardo Habkost wrote:
-> > On Sun, May 19, 2019 at 04:54:22AM +0800, Like Xu wrote:
-> > > The global smp variables in ppc are replaced with smp machine propert=
-ies.
-> > >=20
-> > > A local variable of the same name would be introduced in the declarat=
-ion
-> > > phase if it's used widely in the context OR replace it on the spot if=
- it's
-> > > only used once. No semantic changes.
-> > >=20
-> > > Signed-off-by: Like Xu <like.xu@linux.intel.com>
-> >=20
-> > Any objections from the ppc maintainers to queueing this through
-> > the Machine Core tree?
->=20
-> Oops, CCing the ppc maintainers.
+On 06.06.19 04:56, Eduardo Habkost wrote:
+> On Sun, May 19, 2019 at 04:54:24AM +0800, Like Xu wrote:
+>> The global smp variables in s390x are replaced with smp machine properties.
+>>
+>> A local variable of the same name would be introduced in the declaration
+>> phase if it's used widely in the context OR replace it on the spot if it's
+>> only used once. No semantic changes.
+>>
+>> Signed-off-by: Like Xu <like.xu@linux.intel.com>
+> 
+> CCing s390 maintainers.
+> 
+> Any objections to merging this through the Machine Core tree?
 
-No objection here.
+Fine with me.
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Acked-by: Christian Borntraeger <borntraeger@de.ibm.com>
+> 
+>> ---
+>>  hw/s390x/s390-virtio-ccw.c | 3 ++-
+>>  hw/s390x/sclp.c            | 2 +-
+>>  target/s390x/cpu.c         | 3 +++
+>>  target/s390x/excp_helper.c | 5 +++++
+>>  4 files changed, 11 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+>> index ed1fe7a93e..692ad6e372 100644
+>> --- a/hw/s390x/s390-virtio-ccw.c
+>> +++ b/hw/s390x/s390-virtio-ccw.c
+>> @@ -83,7 +83,7 @@ static void s390_init_cpus(MachineState *machine)
+>>      /* initialize possible_cpus */
+>>      mc->possible_cpu_arch_ids(machine);
+>>  
+>> -    for (i = 0; i < smp_cpus; i++) {
+>> +    for (i = 0; i < machine->smp.cpus; i++) {
+>>          s390x_new_cpu(machine->cpu_type, i, &error_fatal);
+>>      }
+>>  }
+>> @@ -410,6 +410,7 @@ static CpuInstanceProperties s390_cpu_index_to_props(MachineState *ms,
+>>  static const CPUArchIdList *s390_possible_cpu_arch_ids(MachineState *ms)
+>>  {
+>>      int i;
+>> +    unsigned int max_cpus = ms->smp.max_cpus;
+>>  
+>>      if (ms->possible_cpus) {
+>>          g_assert(ms->possible_cpus && ms->possible_cpus->len == max_cpus);
+>> diff --git a/hw/s390x/sclp.c b/hw/s390x/sclp.c
+>> index 4510a800cb..fac7c3bb6c 100644
+>> --- a/hw/s390x/sclp.c
+>> +++ b/hw/s390x/sclp.c
+>> @@ -64,7 +64,7 @@ static void read_SCP_info(SCLPDevice *sclp, SCCB *sccb)
+>>      prepare_cpu_entries(sclp, read_info->entries, &cpu_count);
+>>      read_info->entries_cpu = cpu_to_be16(cpu_count);
+>>      read_info->offset_cpu = cpu_to_be16(offsetof(ReadInfo, entries));
+>> -    read_info->highest_cpu = cpu_to_be16(max_cpus - 1);
+>> +    read_info->highest_cpu = cpu_to_be16(machine->smp.max_cpus - 1);
+>>  
+>>      read_info->ibc_val = cpu_to_be32(s390_get_ibc_val());
+>>  
+>> diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+>> index b1df63d82c..f1e5c0d9c3 100644
+>> --- a/target/s390x/cpu.c
+>> +++ b/target/s390x/cpu.c
+>> @@ -37,6 +37,7 @@
+>>  #include "hw/qdev-properties.h"
+>>  #ifndef CONFIG_USER_ONLY
+>>  #include "hw/hw.h"
+>> +#include "hw/boards.h"
+>>  #include "sysemu/arch_init.h"
+>>  #include "sysemu/sysemu.h"
+>>  #endif
+>> @@ -193,6 +194,8 @@ static void s390_cpu_realizefn(DeviceState *dev, Error **errp)
+>>      }
+>>  
+>>  #if !defined(CONFIG_USER_ONLY)
+>> +    MachineState *ms = MACHINE(qdev_get_machine());
+>> +    unsigned int max_cpus = ms->smp.max_cpus;
+>>      if (cpu->env.core_id >= max_cpus) {
+>>          error_setg(&err, "Unable to add CPU with core-id: %" PRIu32
+>>                     ", maximum core-id: %d", cpu->env.core_id,
+>> diff --git a/target/s390x/excp_helper.c b/target/s390x/excp_helper.c
+>> index 3a467b72c5..1c6938effc 100644
+>> --- a/target/s390x/excp_helper.c
+>> +++ b/target/s390x/excp_helper.c
+>> @@ -31,6 +31,7 @@
+>>  #ifndef CONFIG_USER_ONLY
+>>  #include "sysemu/sysemu.h"
+>>  #include "hw/s390x/s390_flic.h"
+>> +#include "hw/boards.h"
+>>  #endif
+>>  
+>>  void QEMU_NORETURN tcg_s390_program_interrupt(CPUS390XState *env, uint32_t code,
+>> @@ -300,6 +301,10 @@ static void do_ext_interrupt(CPUS390XState *env)
+>>          g_assert(cpu_addr < S390_MAX_CPUS);
+>>          lowcore->cpu_addr = cpu_to_be16(cpu_addr);
+>>          clear_bit(cpu_addr, env->emergency_signals);
+>> +#ifndef CONFIG_USER_ONLY
+>> +        MachineState *ms = MACHINE(qdev_get_machine());
+>> +        unsigned int max_cpus = ms->smp.max_cpus;
+>> +#endif
+>>          if (bitmap_empty(env->emergency_signals, max_cpus)) {
+>>              env->pending_int &= ~INTERRUPT_EMERGENCY_SIGNAL;
+>>          }
+>> -- 
+>> 2.21.0
+>>
+>>
+> 
 
->=20
-> >=20
-> > > ---
-> > >  hw/ppc/e500.c         |  3 +++
-> > >  hw/ppc/mac_newworld.c |  3 ++-
-> > >  hw/ppc/mac_oldworld.c |  3 ++-
-> > >  hw/ppc/pnv.c          |  6 ++++--
-> > >  hw/ppc/prep.c         |  4 ++--
-> > >  hw/ppc/spapr.c        | 34 ++++++++++++++++++++++++++--------
-> > >  hw/ppc/spapr_rtas.c   |  4 +++-
-> > >  7 files changed, 42 insertions(+), 15 deletions(-)
-> > >=20
-> > > diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-> > > index beb2efd694..5e42e5a059 100644
-> > > --- a/hw/ppc/e500.c
-> > > +++ b/hw/ppc/e500.c
-> > > @@ -307,6 +307,7 @@ static int ppce500_load_device_tree(PPCE500Machin=
-eState *pms,
-> > >                                      bool dry_run)
-> > >  {
-> > >      MachineState *machine =3D MACHINE(pms);
-> > > +    unsigned int smp_cpus =3D machine->smp.cpus;
-> > >      const PPCE500MachineClass *pmc =3D PPCE500_MACHINE_GET_CLASS(pms=
-);
-> > >      CPUPPCState *env =3D first_cpu->env_ptr;
-> > >      int ret =3D -1;
-> > > @@ -734,6 +735,7 @@ static DeviceState *ppce500_init_mpic_qemu(PPCE50=
-0MachineState *pms,
-> > >      SysBusDevice *s;
-> > >      int i, j, k;
-> > >      MachineState *machine =3D MACHINE(pms);
-> > > +    unsigned int smp_cpus =3D machine->smp.cpus;
-> > >      const PPCE500MachineClass *pmc =3D PPCE500_MACHINE_GET_CLASS(pms=
-);
-> > > =20
-> > >      dev =3D qdev_create(NULL, TYPE_OPENPIC);
-> > > @@ -846,6 +848,7 @@ void ppce500_init(MachineState *machine)
-> > >      struct boot_info *boot_info;
-> > >      int dt_size;
-> > >      int i;
-> > > +    unsigned int smp_cpus =3D machine->smp.cpus;
-> > >      /* irq num for pin INTA, INTB, INTC and INTD is 1, 2, 3 and
-> > >       * 4 respectively */
-> > >      unsigned int pci_irq_nrs[PCI_NUM_PINS] =3D {1, 2, 3, 4};
-> > > diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-> > > index 02d8559621..257b26ee24 100644
-> > > --- a/hw/ppc/mac_newworld.c
-> > > +++ b/hw/ppc/mac_newworld.c
-> > > @@ -135,6 +135,7 @@ static void ppc_core99_init(MachineState *machine)
-> > >      DeviceState *dev, *pic_dev;
-> > >      hwaddr nvram_addr =3D 0xFFF04000;
-> > >      uint64_t tbfreq;
-> > > +    unsigned int smp_cpus =3D machine->smp.cpus;
-> > > =20
-> > >      linux_boot =3D (kernel_filename !=3D NULL);
-> > > =20
-> > > @@ -464,7 +465,7 @@ static void ppc_core99_init(MachineState *machine)
-> > >      sysbus_mmio_map(s, 1, CFG_ADDR + 2);
-> > > =20
-> > >      fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, (uint16_t)smp_cpus);
-> > > -    fw_cfg_add_i16(fw_cfg, FW_CFG_MAX_CPUS, (uint16_t)max_cpus);
-> > > +    fw_cfg_add_i16(fw_cfg, FW_CFG_MAX_CPUS, (uint16_t)machine->smp.m=
-ax_cpus);
-> > >      fw_cfg_add_i64(fw_cfg, FW_CFG_RAM_SIZE, (uint64_t)ram_size);
-> > >      fw_cfg_add_i16(fw_cfg, FW_CFG_MACHINE_ID, machine_arch);
-> > >      fw_cfg_add_i32(fw_cfg, FW_CFG_KERNEL_ADDR, kernel_base);
-> > > diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-> > > index 460cbc7923..1968f05a6c 100644
-> > > --- a/hw/ppc/mac_oldworld.c
-> > > +++ b/hw/ppc/mac_oldworld.c
-> > > @@ -99,6 +99,7 @@ static void ppc_heathrow_init(MachineState *machine)
-> > >      DeviceState *dev, *pic_dev;
-> > >      BusState *adb_bus;
-> > >      int bios_size;
-> > > +    unsigned int smp_cpus =3D machine->smp.cpus;
-> > >      uint16_t ppc_boot_device;
-> > >      DriveInfo *hd[MAX_IDE_BUS * MAX_IDE_DEVS];
-> > >      void *fw_cfg;
-> > > @@ -322,7 +323,7 @@ static void ppc_heathrow_init(MachineState *machi=
-ne)
-> > >      sysbus_mmio_map(s, 1, CFG_ADDR + 2);
-> > > =20
-> > >      fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, (uint16_t)smp_cpus);
-> > > -    fw_cfg_add_i16(fw_cfg, FW_CFG_MAX_CPUS, (uint16_t)max_cpus);
-> > > +    fw_cfg_add_i16(fw_cfg, FW_CFG_MAX_CPUS, (uint16_t)machine->smp.m=
-ax_cpus);
-> > >      fw_cfg_add_i64(fw_cfg, FW_CFG_RAM_SIZE, (uint64_t)ram_size);
-> > >      fw_cfg_add_i16(fw_cfg, FW_CFG_MACHINE_ID, ARCH_HEATHROW);
-> > >      fw_cfg_add_i32(fw_cfg, FW_CFG_KERNEL_ADDR, kernel_base);
-> > > diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-> > > index 1e8c505936..3bb15338de 100644
-> > > --- a/hw/ppc/pnv.c
-> > > +++ b/hw/ppc/pnv.c
-> > > @@ -678,7 +678,8 @@ static void pnv_init(MachineState *machine)
-> > >          object_property_add_child(OBJECT(pnv), chip_name, chip, &err=
-or_fatal);
-> > >          object_property_set_int(chip, PNV_CHIP_HWID(i), "chip-id",
-> > >                                  &error_fatal);
-> > > -        object_property_set_int(chip, smp_cores, "nr-cores", &error_=
-fatal);
-> > > +        object_property_set_int(chip, machine->smp.cores,
-> > > +                                "nr-cores", &error_fatal);
-> > >          object_property_set_bool(chip, true, "realized", &error_fata=
-l);
-> > >      }
-> > >      g_free(chip_typename);
-> > > @@ -1134,6 +1135,7 @@ static void pnv_chip_instance_init(Object *obj)
-> > > =20
-> > >  static void pnv_chip_core_realize(PnvChip *chip, Error **errp)
-> > >  {
-> > > +    MachineState *ms =3D MACHINE(qdev_get_machine());
-> > >      Error *error =3D NULL;
-> > >      PnvChipClass *pcc =3D PNV_CHIP_GET_CLASS(chip);
-> > >      const char *typename =3D pnv_chip_core_typename(chip);
-> > > @@ -1168,7 +1170,7 @@ static void pnv_chip_core_realize(PnvChip *chip=
-, Error **errp)
-> > >          snprintf(core_name, sizeof(core_name), "core[%d]", core_hwid=
-);
-> > >          object_property_add_child(OBJECT(chip), core_name, OBJECT(pn=
-v_core),
-> > >                                    &error_fatal);
-> > > -        object_property_set_int(OBJECT(pnv_core), smp_threads, "nr-t=
-hreads",
-> > > +        object_property_set_int(OBJECT(pnv_core), ms->smp.threads, "=
-nr-threads",
-> > >                                  &error_fatal);
-> > >          object_property_set_int(OBJECT(pnv_core), core_hwid,
-> > >                                  CPU_CORE_PROP_CORE_ID, &error_fatal);
-> > > diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-> > > index b7f459d475..968fd3ade2 100644
-> > > --- a/hw/ppc/prep.c
-> > > +++ b/hw/ppc/prep.c
-> > > @@ -428,7 +428,7 @@ static void ppc_prep_init(MachineState *machine)
-> > >      linux_boot =3D (kernel_filename !=3D NULL);
-> > > =20
-> > >      /* init CPUs */
-> > > -    for (i =3D 0; i < smp_cpus; i++) {
-> > > +    for (i =3D 0; i < machine->smp.cpus; i++) {
-> > >          cpu =3D POWERPC_CPU(cpu_create(machine->cpu_type));
-> > >          env =3D &cpu->env;
-> > > =20
-> > > @@ -765,7 +765,7 @@ static void ibm_40p_init(MachineState *machine)
-> > >          boot_device =3D machine->boot_order[0];
-> > >      }
-> > > =20
-> > > -    fw_cfg_add_i16(fw_cfg, FW_CFG_MAX_CPUS, (uint16_t)max_cpus);
-> > > +    fw_cfg_add_i16(fw_cfg, FW_CFG_MAX_CPUS, (uint16_t)machine->smp.m=
-ax_cpus);
-> > >      fw_cfg_add_i64(fw_cfg, FW_CFG_RAM_SIZE, (uint64_t)machine->ram_s=
-ize);
-> > >      fw_cfg_add_i16(fw_cfg, FW_CFG_MACHINE_ID, ARCH_PREP);
-> > > =20
-> > > diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> > > index 7fb34decb9..25da337f84 100644
-> > > --- a/hw/ppc/spapr.c
-> > > +++ b/hw/ppc/spapr.c
-> > > @@ -105,6 +105,9 @@
-> > >   */
-> > >  static int spapr_vcpu_id(SpaprMachineState *spapr, int cpu_index)
-> > >  {
-> > > +    MachineState *ms =3D MACHINE(spapr);
-> > > +    unsigned int smp_threads =3D ms->smp.threads;
-> > > +
-> > >      assert(spapr->vsmt);
-> > >      return
-> > >          (cpu_index / smp_threads) * spapr->vsmt + cpu_index % smp_th=
-reads;
-> > > @@ -152,8 +155,10 @@ static void pre_2_10_vmstate_unregister_dummy_ic=
-p(int i)
-> > > =20
-> > >  int spapr_max_server_number(SpaprMachineState *spapr)
-> > >  {
-> > > +    MachineState *ms =3D MACHINE(spapr);
-> > > +
-> > >      assert(spapr->vsmt);
-> > > -    return DIV_ROUND_UP(max_cpus * spapr->vsmt, smp_threads);
-> > > +    return DIV_ROUND_UP(ms->smp.max_cpus * spapr->vsmt, ms->smp.thre=
-ads);
-> > >  }
-> > > =20
-> > >  static int spapr_fixup_cpu_smt_dt(void *fdt, int offset, PowerPCCPU =
-*cpu,
-> > > @@ -286,6 +291,7 @@ static void spapr_populate_pa_features(SpaprMachi=
-neState *spapr,
-> > > =20
-> > >  static int spapr_fixup_cpu_dt(void *fdt, SpaprMachineState *spapr)
-> > >  {
-> > > +    MachineState *ms =3D MACHINE(spapr);
-> > >      int ret =3D 0, offset, cpus_offset;
-> > >      CPUState *cs;
-> > >      char cpu_model[32];
-> > > @@ -295,7 +301,7 @@ static int spapr_fixup_cpu_dt(void *fdt, SpaprMac=
-hineState *spapr)
-> > >          PowerPCCPU *cpu =3D POWERPC_CPU(cs);
-> > >          DeviceClass *dc =3D DEVICE_GET_CLASS(cs);
-> > >          int index =3D spapr_get_vcpu_id(cpu);
-> > > -        int compat_smt =3D MIN(smp_threads, ppc_compat_max_vthreads(=
-cpu));
-> > > +        int compat_smt =3D MIN(ms->smp.threads, ppc_compat_max_vthre=
-ads(cpu));
-> > > =20
-> > >          if (!spapr_is_thread0_in_vcore(spapr, cpu)) {
-> > >              continue;
-> > > @@ -441,6 +447,7 @@ static int spapr_populate_memory(SpaprMachineStat=
-e *spapr, void *fdt)
-> > >  static void spapr_populate_cpu_dt(CPUState *cs, void *fdt, int offse=
-t,
-> > >                                    SpaprMachineState *spapr)
-> > >  {
-> > > +    MachineState *ms =3D MACHINE(spapr);
-> > >      PowerPCCPU *cpu =3D POWERPC_CPU(cs);
-> > >      CPUPPCState *env =3D &cpu->env;
-> > >      PowerPCCPUClass *pcc =3D POWERPC_CPU_GET_CLASS(cs);
-> > > @@ -452,7 +459,8 @@ static void spapr_populate_cpu_dt(CPUState *cs, v=
-oid *fdt, int offset,
-> > >      uint32_t cpufreq =3D kvm_enabled() ? kvmppc_get_clockfreq() : 10=
-00000000;
-> > >      uint32_t page_sizes_prop[64];
-> > >      size_t page_sizes_prop_size;
-> > > -    uint32_t vcpus_per_socket =3D smp_threads * smp_cores;
-> > > +    unsigned int smp_threads =3D ms->smp.threads;
-> > > +    uint32_t vcpus_per_socket =3D smp_threads * ms->smp.cores;
-> > >      uint32_t pft_size_prop[] =3D {0, cpu_to_be32(spapr->htab_shift)};
-> > >      int compat_smt =3D MIN(smp_threads, ppc_compat_max_vthreads(cpu)=
-);
-> > >      SpaprDrc *drc;
-> > > @@ -1022,6 +1030,7 @@ int spapr_h_cas_compose_response(SpaprMachineSt=
-ate *spapr,
-> > > =20
-> > >  static void spapr_dt_rtas(SpaprMachineState *spapr, void *fdt)
-> > >  {
-> > > +    MachineState *ms =3D MACHINE(spapr);
-> > >      int rtas;
-> > >      GString *hypertas =3D g_string_sized_new(256);
-> > >      GString *qemu_hypertas =3D g_string_sized_new(256);
-> > > @@ -1032,7 +1041,7 @@ static void spapr_dt_rtas(SpaprMachineState *sp=
-apr, void *fdt)
-> > >          cpu_to_be32(max_device_addr >> 32),
-> > >          cpu_to_be32(max_device_addr & 0xffffffff),
-> > >          0, cpu_to_be32(SPAPR_MEMORY_BLOCK_SIZE),
-> > > -        cpu_to_be32(max_cpus / smp_threads),
-> > > +        cpu_to_be32(ms->smp.max_cpus / ms->smp.threads),
-> > >      };
-> > >      uint32_t maxdomain =3D cpu_to_be32(spapr->gpu_numa_id > 1 ? 1 : =
-0);
-> > >      uint32_t maxdomains[] =3D {
-> > > @@ -2540,7 +2549,7 @@ static void spapr_validate_node_memory(MachineS=
-tate *machine, Error **errp)
-> > >  /* find cpu slot in machine->possible_cpus by core_id */
-> > >  static CPUArchId *spapr_find_cpu_slot(MachineState *ms, uint32_t id,=
- int *idx)
-> > >  {
-> > > -    int index =3D id / smp_threads;
-> > > +    int index =3D id / ms->smp.threads;
-> > > =20
-> > >      if (index >=3D ms->possible_cpus->len) {
-> > >          return NULL;
-> > > @@ -2553,10 +2562,12 @@ static CPUArchId *spapr_find_cpu_slot(Machine=
-State *ms, uint32_t id, int *idx)
-> > > =20
-> > >  static void spapr_set_vsmt_mode(SpaprMachineState *spapr, Error **er=
-rp)
-> > >  {
-> > > +    MachineState *ms =3D MACHINE(spapr);
-> > >      Error *local_err =3D NULL;
-> > >      bool vsmt_user =3D !!spapr->vsmt;
-> > >      int kvm_smt =3D kvmppc_smt_threads();
-> > >      int ret;
-> > > +    unsigned int smp_threads =3D ms->smp.threads;
-> > > =20
-> > >      if (!kvm_enabled() && (smp_threads > 1)) {
-> > >          error_setg(&local_err, "TCG cannot support more than 1 threa=
-d/core "
-> > > @@ -2630,6 +2641,9 @@ static void spapr_init_cpus(SpaprMachineState *=
-spapr)
-> > >      SpaprMachineClass *smc =3D SPAPR_MACHINE_GET_CLASS(machine);
-> > >      const char *type =3D spapr_get_cpu_core_type(machine->cpu_type);
-> > >      const CPUArchIdList *possible_cpus;
-> > > +    unsigned int smp_cpus =3D machine->smp.cpus;
-> > > +    unsigned int smp_threads =3D machine->smp.threads;
-> > > +    unsigned int max_cpus =3D machine->smp.max_cpus;
-> > >      int boot_cores_nr =3D smp_cpus / smp_threads;
-> > >      int i;
-> > > =20
-> > > @@ -3856,6 +3870,7 @@ static void spapr_core_pre_plug(HotplugHandler =
-*hotplug_dev, DeviceState *dev,
-> > >      const char *type =3D object_get_typename(OBJECT(dev));
-> > >      CPUArchId *core_slot;
-> > >      int index;
-> > > +    unsigned int smp_threads =3D machine->smp.threads;
-> > > =20
-> > >      if (dev->hotplugged && !mc->has_hotpluggable_cpus) {
-> > >          error_setg(&local_err, "CPU hotplug not supported for this m=
-achine");
-> > > @@ -4110,14 +4125,16 @@ spapr_cpu_index_to_props(MachineState *machin=
-e, unsigned cpu_index)
-> > > =20
-> > >  static int64_t spapr_get_default_cpu_node_id(const MachineState *ms,=
- int idx)
-> > >  {
-> > > -    return idx / smp_cores % nb_numa_nodes;
-> > > +    return idx / ms->smp.cores % nb_numa_nodes;
-> > >  }
-> > > =20
-> > >  static const CPUArchIdList *spapr_possible_cpu_arch_ids(MachineState=
- *machine)
-> > >  {
-> > >      int i;
-> > > +    unsigned int smp_threads =3D machine->smp.threads;
-> > > +    unsigned int smp_cpus =3D machine->smp.cpus;
-> > >      const char *core_type;
-> > > -    int spapr_max_cores =3D max_cpus / smp_threads;
-> > > +    int spapr_max_cores =3D machine->smp.max_cpus / smp_threads;
-> > >      MachineClass *mc =3D MACHINE_GET_CLASS(machine);
-> > > =20
-> > >      if (!mc->has_hotpluggable_cpus) {
-> > > @@ -4240,6 +4257,7 @@ int spapr_get_vcpu_id(PowerPCCPU *cpu)
-> > >  void spapr_set_vcpu_id(PowerPCCPU *cpu, int cpu_index, Error **errp)
-> > >  {
-> > >      SpaprMachineState *spapr =3D SPAPR_MACHINE(qdev_get_machine());
-> > > +    MachineState *ms =3D MACHINE(spapr);
-> > >      int vcpu_id;
-> > > =20
-> > >      vcpu_id =3D spapr_vcpu_id(spapr, cpu_index);
-> > > @@ -4248,7 +4266,7 @@ void spapr_set_vcpu_id(PowerPCCPU *cpu, int cpu=
-_index, Error **errp)
-> > >          error_setg(errp, "Can't create CPU with id %d in KVM", vcpu_=
-id);
-> > >          error_append_hint(errp, "Adjust the number of cpus to %d "
-> > >                            "or try to raise the number of threads per=
- core\n",
-> > > -                          vcpu_id * smp_threads / spapr->vsmt);
-> > > +                          vcpu_id * ms->smp.threads / spapr->vsmt);
-> > >          return;
-> > >      }
-> > > =20
-> > > diff --git a/hw/ppc/spapr_rtas.c b/hw/ppc/spapr_rtas.c
-> > > index ee24212765..c9ffe9786c 100644
-> > > --- a/hw/ppc/spapr_rtas.c
-> > > +++ b/hw/ppc/spapr_rtas.c
-> > > @@ -231,6 +231,8 @@ static void rtas_ibm_get_system_parameter(PowerPC=
-CPU *cpu,
-> > >                                            target_ulong args,
-> > >                                            uint32_t nret, target_ulon=
-g rets)
-> > >  {
-> > > +    MachineState *ms =3D MACHINE(qdev_get_machine());
-> > > +    unsigned int max_cpus =3D ms->smp.max_cpus;
-> > >      target_ulong parameter =3D rtas_ld(args, 0);
-> > >      target_ulong buffer =3D rtas_ld(args, 1);
-> > >      target_ulong length =3D rtas_ld(args, 2);
-> > > @@ -244,7 +246,7 @@ static void rtas_ibm_get_system_parameter(PowerPC=
-CPU *cpu,
-> > >                                            "MaxPlatProcs=3D%d",
-> > >                                            max_cpus,
-> > >                                            current_machine->ram_size =
-/ MiB,
-> > > -                                          smp_cpus,
-> > > +                                          ms->smp.cpus,
-> > >                                            max_cpus);
-> > >          ret =3D sysparm_st(buffer, length, param_val, strlen(param_v=
-al) + 1);
-> > >          g_free(param_val);
-> >=20
->=20
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---J2pR2RtFp0tAjF3C
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAlz4g3MACgkQbDjKyiDZ
-s5Jg6hAA44V2Vh6o5ZBwoLI1q1ZEp/nsjMpNmCu0NP/f6wN39L6Wu4J7vvkYnl0g
-MBKphnnZCevs5Y5Ap3vvxZqXv/CXB9JdXGiNDvxSHwcjoHylquOv+zzF9KxhkZ3v
-FSuuPr6w+4+k+XucI0J1gA8JqHdXTi0+ElnoBrZxwK+4DrTLcuM+Mp4lAxrum8AV
-BVZVPJKlVjQlHL0E2DFa/mPcbYZ804xFL4rVhOewIxTklriD2bsHfTOSZlu1Ps35
-3EqNTZrtu1/KKFol1BQpUgMVlSMTxQKnzN8S3LYG+iYqM2PZNZRb/U1UfL8i5ovm
-PmJRfvB05hiIljxXbn7I7iPzWNYQJxPyz6UIfTCxTcgsQsZVR5C5KgV0OCgBvs7D
-KZn9ZEWZo2MQwPxJ0/YFUzXIr2BVOZBVlLkhqW8Ro8hRBcN4hU7O4ghAw5/k7DZP
-B3HTJSFsFykL/ubWhHDoA3JIj0RNiO9GGtPOcAFsUoa7NdjsEUzBx1X+0n5Te+kh
-yzFp3ygjX83VD1pXW5IZ4kvJU0WfnPK2s8OMBldNLWPkHtnQ2Hyx/hrZVQh0J0Hr
-9VP+rdskJAEDCcGTUF57L2P9GJrGxJWxEd4phvShp7lBpCeSbS7yRVDZ+T1LGQwz
-A4LeuGn8/CjN0+WZd7Gk2mglq+KDK/rF8HkmsjmhE/5z153Dwn4=
-=uAO/
------END PGP SIGNATURE-----
-
---J2pR2RtFp0tAjF3C--
 
