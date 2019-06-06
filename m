@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYoqv-0005OZ-L2
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 05:38:33 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:41499)
+	id 1hYork-0005Us-FO
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 05:39:24 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:41658)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYoqt-0005MA-Ed
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:38:32 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hYori-0005TT-EQ
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:39:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYoqr-00022h-AE
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:38:30 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:39497)
+	(envelope-from <laurent@vivier.eu>) id 1hYorh-0003EC-DE
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:39:22 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:37055)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hYoqp-0001zR-34; Thu, 06 Jun 2019 05:38:27 -0400
+	id 1hYore-00037z-Lr; Thu, 06 Jun 2019 05:39:18 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
-	1Mzz6s-1gf2fz4ANy-00x1he; Thu, 06 Jun 2019 11:37:02 +0200
+	(mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+	1MbTCr-1gxYA40ej3-00bvCV; Thu, 06 Jun 2019 11:38:49 +0200
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
 	qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
@@ -32,7 +32,7 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
 	Cornelia Huck <cohuck@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
 	Richard Henderson <rth@twiddle.net>
 References: <20190528164020.32250-1-philmd@redhat.com>
-	<20190528164020.32250-7-philmd@redhat.com>
+	<20190528164020.32250-6-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -77,35 +77,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <4c2b0e57-2a77-748f-5d31-2e5b0c19cba1@vivier.eu>
-Date: Thu, 6 Jun 2019 11:36:58 +0200
+Message-ID: <590c0f4f-5044-e57d-76d7-5a4029675463@vivier.eu>
+Date: Thu, 6 Jun 2019 11:38:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190528164020.32250-7-philmd@redhat.com>
+In-Reply-To: <20190528164020.32250-6-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:K0647dg7kTVNahhHrjsEabmCbdM41thqA4HM8iXPv3EtPItZLgU
-	UdsOQAiL7yVZDthRdNJhPF8130KnOF9rpVq1F6WnQB3cLThmLemWq9VJ64oWbPo+qXmlTxf
-	3ziILhYblSMAsk6/D8hDWd9qnV7p4VrciJkA2n6nHZ61LPRFhmxH5AFy/eoOBJ7/cwsnJnV
-	Lw9K1nIRC/tOk945QaVFQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:8xXL0WZzCGU=:tAE5Y1GJsmnfuFIcNvmfAY
-	wiH+VBN8VPisWoC2HCZyC1OekpXEy2v3+IKSvtzKyi8ms91lke75Y1J9iwHwUeaZDJgfcekbX
-	L4W/vCgzZCoZEBfHusvV/0iGC9Q6ujZNVrN0NYja/AsE8WxHSIxV+2Pm/xYozENoGta+OT5tY
-	00KcY39P8cqZ2TuzxNF4/dFb9jN3I9BDJ4197273J/QbrnrZ5fli+hu36CF+4iUMGGR5xZfSz
-	vDOT/JcRGIH4jUXCsu9nPLB9Lps4K9v9IYgZ/IwPP6h1z7eypDs1jVXxSOevXh91Yve3rEeNK
-	paKuSbZcMN4cGuNtnhEwQjpswpYyl26qlCj298cgwj3IiEREkpFBEuGeodIe+kH71407J5oZR
-	ujESGDqU7pfjG1prUd69KkbYIA5sBvTUgap1blhfclQnYrcPYhkQMn+bmxMuT5z0IZXmpbOon
-	k9Lx7EhOpOnsYiT6lg4ecvEdRDnpzugmWNnFecgfey7fZkB++mwfBEAHqyQoTKvgKEvD7pjzl
-	5CZoyIPuBHns7I6hDez4GY4KaNbBS7YIhmVpEg2hCkvURmpTV6MojshEotqrZTHRj4Yc6v3fw
-	1e21voAFpiWMtVYlSL/ALnA24LRl13+QuIQ8oXrdOVlxmNbIl+3IUxLA2HuHWWhZ5nOGxJK1h
-	9+qFreGFCD/3aLbIjNwhR6NvDwSOi3VyRyQCaGgyBejVA/1YSlF3MI+r+EzyuvkkaM5XHWf5E
-	RSCTblc7yCSFMsfUQd9Th+mN4qTRMNVLDJKxOOhaTjkR8rT1Ii+jyxOzAvI=
+X-Provags-ID: V03:K1:liROLdYs7VUTAQVNjV3J2UUvVBtFeb6r4VysXiZAi8mHnWTaWFE
+	5qag6abnyvyfP1zhccyrbYOZZpMHRF9WsUAfagjeEinASsMxnsZlgUmQ0/oATuet0NWuZwN
+	CbhC6I703vWcLpVZ0crq+wzuG6Q+Hn3XWbc7hJjue4WpPVbPdus1obBP4EGcnOFcE9fG6dO
+	/gEmMS5KGoJzuRiYnB5Rg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:7XTOMsauMGA=:1J0ul96SBCM1gwDog7oGTC
+	k2359+5GGnHoXSeZ3urfoUI8E32izm9gE4mjHoTSJT6RwHRWz1XhJFW5S2/LDWAoZvDzg6Mih
+	/NJHrTOgJAozsuu0bVv2BliXo3Yxw8sBYlJQ3q2Mrl8yh/hRmEC5k1aAei0nbRf9gs+lrugpU
+	6H2Ljhzqe2NQwEu77ek1Vh4/ne4sqsviAfG9ZINwAk4B3unAZZNfHX7w+0/TKETpwJFHQblaQ
+	4pgYCujAnIXarrYgmP+tvUBZ7SYB682M52FgWeiWYKaj24yBSVPvquAM7udUVhBs7rrm2YpTw
+	y4u4MaPXl7XhPlnOt+FSGdIu6ALhdZB8bIwiwLGtiMSA7cLksjDr/haZuvhKkdt+Qwl1sOObi
+	VW0D/NsGR/23zx5H+uaH+eF88Ho1v3TQ+rWYGJu5xLiYd6blQ/Y1hquEp2BS57DtdU30DCN5X
+	IzB1AeKuwqR0nQQmS2MbmeLDLJhPgzL3/TRttr4j5rgLHIEuuGutP0hQpi/+D3BxmOWYgRSyb
+	ctYqYl+QCKY5RRaYiSUB2RgBDPaCIz108WJIutfX1dGZMOyBAIBAM1iuyv3ews/cFoeK2GOuC
+	PGWH5/IB6erKBxlhPOC8bhf1Tq0nDqjLOBNCZc9sJW8VqzbiHo01lYawEhDwi/3i3H4OHSTix
+	dNB4XR2zvot+T4aevhfl0X6/T+N87iMgZ1Bv4OcRRkNcsMbFsa2MAoodx/DMKELj9fY3TVWKO
+	9jSrVbEJSOTL03OnUKDiOn1AkuwOEQnKrwgTi/X0ywgTJNthrLoPUCqO8Xk=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.134
-Subject: Re: [Qemu-trivial] [PATCH v2 06/10] hw/audio/ac97: Use the QOM
- DEVICE() macro to access DeviceState.qdev
+X-Received-From: 212.227.126.135
+Subject: Re: [Qemu-trivial] [PATCH v2 05/10] hw/sd: Use the QOM BUS() macro
+ to access BusState.qbus
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -117,43 +117,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 09:38:32 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 09:39:23 -0000
 
 Le 28/05/2019 à 18:40, Philippe Mathieu-Daudé a écrit :
-> Rather than looking inside the definition of a DeviceState with
-> "s->qdev", use the QOM prefered style: "DEVICE(s)".
+> Rather than looking inside the definition of a BusState with "s->bus.qbus",
+> use the QOM prefered style: "BUS(&s->bus)".
 > 
-> This patch was generated using the following Coccinelle script
-> (with a bit of manual fix-up, removing an extra space to please
-> checkpatch.pl):
+> This patch was generated using the following Coccinelle script:
 > 
->     // Use DEVICE() macros to access DeviceState.qdev
->     @use_device_macro_to_access_qdev@
+>     // Use BUS() macros to access BusState.qbus
+>     @use_bus_macro_to_access_qbus@
 >     expression obj;
->     identifier dev;
+>     identifier bus;
 >     @@
->     -&obj->dev.qdev
->     +DEVICE(obj)
+>     -&obj->bus.qbus
+>     +BUS(&obj->bus)
 > 
 > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/audio/ac97.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/sd/milkymist-memcard.c | 2 +-
+>  hw/sd/ssi-sd.c            | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
-> index 2265622d44..a4e8d99e77 100644
-> --- a/hw/audio/ac97.c
-> +++ b/hw/audio/ac97.c
-> @@ -1388,7 +1388,7 @@ static void ac97_realize(PCIDevice *dev, Error **errp)
->      pci_register_bar (&s->dev, 0, PCI_BASE_ADDRESS_SPACE_IO, &s->io_nam);
->      pci_register_bar (&s->dev, 1, PCI_BASE_ADDRESS_SPACE_IO, &s->io_nabm);
->      AUD_register_card ("ac97", &s->card);
-> -    ac97_on_reset (&s->dev.qdev);
-> +    ac97_on_reset(DEVICE(s));
->  }
->  
->  static void ac97_exit(PCIDevice *dev)
+> diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
+> index df42aa1c54..dd1ba649d9 100644
+> --- a/hw/sd/milkymist-memcard.c
+> +++ b/hw/sd/milkymist-memcard.c
+> @@ -277,7 +277,7 @@ static void milkymist_memcard_realize(DeviceState *dev, Error **errp)
+>      /* FIXME use a qdev drive property instead of drive_get_next() */
+>      dinfo = drive_get_next(IF_SD);
+>      blk = dinfo ? blk_by_legacy_dinfo(dinfo) : NULL;
+> -    carddev = qdev_create(&s->sdbus.qbus, TYPE_SD_CARD);
+> +    carddev = qdev_create(BUS(&s->sdbus), TYPE_SD_CARD);
+>      qdev_prop_set_drive(carddev, "drive", blk, &err);
+>      object_property_set_bool(OBJECT(carddev), true, "realized", &err);
+>      if (err) {
+> diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
+> index 623d0333e8..25e1009277 100644
+> --- a/hw/sd/ssi-sd.c
+> +++ b/hw/sd/ssi-sd.c
+> @@ -249,7 +249,7 @@ static void ssi_sd_realize(SSISlave *d, Error **errp)
+>      /* Create and plug in the sd card */
+>      /* FIXME use a qdev drive property instead of drive_get_next() */
+>      dinfo = drive_get_next(IF_SD);
+> -    carddev = qdev_create(&s->sdbus.qbus, TYPE_SD_CARD);
+> +    carddev = qdev_create(BUS(&s->sdbus), TYPE_SD_CARD);
+>      if (dinfo) {
+>          qdev_prop_set_drive(carddev, "drive", blk_by_legacy_dinfo(dinfo), &err);
+>      }
 > 
 
 Applied to my trivial-patches branch.
