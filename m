@@ -1,96 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYpD5-0005s7-Js
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 06:01:27 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:46835)
+	id 1hYqF3-00006B-Uf
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:07:33 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:60189)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYpD2-0005s0-Gr
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 06:01:25 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hYqF0-0008Uf-Oo
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYpD0-0001Pa-DA
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 06:01:24 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:51139)
+	(envelope-from <laurent@vivier.eu>) id 1hYqEz-0002xr-Nx
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:07:30 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:59695)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hYpCy-0001Kf-WF; Thu, 06 Jun 2019 06:01:22 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
-	1MryCb-1gne5A1l49-00nwdR; Thu, 06 Jun 2019 12:01:17 +0200
-To: Rami Rosen <ramirose@gmail.com>
-References: <20190507184102.4258-1-ramirose@gmail.com>
-Cc: qemu-trivial@nongnu.org, QEMU Developers <qemu-devel@nongnu.org>
+	id 1hYqEz-0002uI-DY; Thu, 06 Jun 2019 07:07:29 -0400
+Received: from localhost.localdomain ([78.238.229.36]) by
+	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
+	(Nemesis)
+	id 1MTzOe-1h8t6B2imY-00R0Q2; Thu, 06 Jun 2019 13:06:49 +0200
 From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
-	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
-Message-ID: <3c4507eb-31e0-effc-55b5-c8e1420ea901@vivier.eu>
-Date: Thu, 6 Jun 2019 12:01:12 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
-	Thunderbird/60.7.0
+To: qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Aleksandar Rikalo <arikalo@wavecomp.com>,
+	Juan Quintela <quintela@redhat.com>,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Fam Zheng <fam@euphon.net>, Michael Walle <michael@walle.cc>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+	Michael Tokarev <mjt@tls.msk.ru>, David Hildenbrand <david@redhat.com>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	Yuval Shaia <yuval.shaia@oracle.com>, qemu-trivial@nongnu.org,
+	Halil Pasic <pasic@linux.ibm.com>, Richard Henderson <rth@twiddle.net>,
+	qemu-s390x@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Thu,  6 Jun 2019 13:06:16 +0200
+Message-Id: <20190606110625.32127-8-laurent@vivier.eu>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190606110625.32127-1-laurent@vivier.eu>
+References: <20190606110625.32127-1-laurent@vivier.eu>
 MIME-Version: 1.0
-In-Reply-To: <20190507184102.4258-1-ramirose@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:bQrZKTR87JolmsEvP3eQvr6SM94uSvDSON3mHX6d4xHAl6aokkW
-	NRUT7NyqlJqgX3fdFuARmMxSMCctDIRdejuGW4lsKvfsLAls1boHw2OuVCp2oj4QG+DAwfi
-	63CasNLXKPEEOOytwBxgcMHGSsI6ttTVnL+QOcCFJiIhW2W/HsrSZd/EO/1VllzV1fcXqFh
-	nLQoD/7B6nscT0S3tgIFA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:rYEBsEf/Ftk=:0VzMC3opTTRbQjKQzrRbK6
-	OTXMSa0HLaFBGi2ClfxRcjs8jgfj9d3rxp/nfC2fSKg2zxXj+bfeJ9XzNS8s23n1kcCEu1DuP
-	HWLdLO1MFhAgZUiR2zc8HXi1D/osy1xp7HKiPP8rsOlRQPyP0P5+70J8S8JaoYIJI+KrBvkIJ
-	KXd0dE0FW22Sws4iNsPoM6tjstKqN0aaeTsnnMA3Z4g5Jbtghiq7DUC+rV7BYkpWOlQKJZJu1
-	XRfz6bP+vkamZFjiFQ8HaUER+NxHInxA9+fjkn91UH1tyTRd7KDeMCZ7Myg/9eP4uF5Te4+rr
-	BjYY9AuoezRht6d/b6iPcEIT7X11cO3z0+cupPBA7x71aj4zd1bLM6eLq9rDUYL6S+FMsZPaX
-	kKYYZzeX+IkfhdoEvfC6BaBhAre4ei5LPy+s66Ib+DKwXjNZXkR5U+PyeyF69fvK8U5v39FFu
-	UeTthAmEuFviA/hujqJGFoTt9uL89BCTQLJdTlhNgv/w0tMkrhrVSGZOJjUGcmzn1ZW6RwOLc
-	I0/GP+6fbak3LiGIoIMu/lkW3OmoCfzXv2oBl0EscDUwE235LDl77nc4lxe9pyz3Kwz2WAZdH
-	f9w5BuO+andkd/RdfCj4ZJrF7U9jNtdYB82dZSq2iI+njbdu49Zrjr696DQZHBD8+CPt+0Jjz
-	JXDatNgDiBGVVXMmgp9VFB0mKMRRZN+q6S8xJ19p2SF35gto+xnb65MKe1sMDAJkIG5QRBDVF
-	3Tvz+BCSm/1Ad8k1JWm0GjCjEnZBKiXOXYVscZ1K2wLe9QNksDDOtHAqOS0=
+X-Provags-ID: V03:K1:wUnOf9ABFcZPIdu6WP+ydyND6/T7AEWzdtKYRCuFesgdbDO+pWV
+	bscKmJLVjodYrfN8t9iS1cRpPoCDfV+1mf45ZCBA0YdeGPvJXrr2kqU85fI/RCIAeKkf8Jg
+	ubdzGz+CcwdO7d2x7jUoCesWsXskwq52BSz9noUg54VgWoR9cGbPPJseEril9oBCNCI+tRH
+	L5CUmfTnWIO1Dy5v6GQ1w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:PsnsnShj0z4=:G7S6rys+wtd5sUWMA/PkgR
+	lfvSW1K9nLgLNl/tGLs0aGnp4VvdO5/LOTBI0aiabPu9ARvuoatC6cxNPlW5n2z0hdcOiF9Wi
+	y1VmiJAItG34MlcinYh2/E2kT57r0uQijv7//EeUn2E4FVTXESQy+iUq5U/5q1LLURaNQt/eF
+	jARx/NawnA0BNvRlisSTiIVXVXW/1plgAcZWV/H9+9f63llE7F9EBkAwOIyDOP3ZQw2NEYNh/
+	8WC9qhwe8/AT+IlPOmGwHXxA1ypI4vd71H29OBk58psaqnxXAld4uxl3HZpj7J5PhZaSS6HuM
+	CICOud97dMRjjnYQSq5XcT3SYcjUMJt/h91bAy+c0501mrxy4f9ZOJoSZgS9ZrFubFmvsdll3
+	a1c8r4PkFOC9b2q1MTCIVlHrum3itWxporQBDjZaEFFEHjt6ircdnjEER5joOGy/O7ftMKfSJ
+	wCumsZiJ2mIbgmq8pYX+hpZLh4l9K7Kuccs9OqqulUhLaZSmMhMzY2CmlUYmZ+CDbMpOKj14E
+	nqTf3yKvwhXeEyAkzyNiP6ePbJjEN9GWYVGojba8P1RDcyM/PdAw0amdrd1xvfkKQoxWw10zf
+	LfcnH118f4YeFKzp1IVc11aUosTNwp5wIvFxc9LzSENS2788Ds8eaeKl3xPbEePAPLy16Vxdk
+	zTfn7zZKQl9NmPzhigTgU2ceoMBtj31vi+cA4U/ve8mvuRsFiqHqChRRvc0Q2G0+LkgJrOWnq
+	jgzQMG2ERAx9l0yay8jw2bkWS6GaWZJU8Owp6sYvJm8+DFxaspYnn7KaQ8Y=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: Re: [Qemu-trivial] [PATCH] scripts/qmp: fix deleted link in
- qemu-ga-client script
+X-Received-From: 212.227.17.24
+Subject: [Qemu-trivial] [PULL 07/16] hw/scsi/vmw_pvscsi: Use
+ qbus_reset_all() directly
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -102,35 +75,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 10:01:25 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 11:07:31 -0000
 
-Le 07/05/2019 à 20:41, Rami Rosen a écrit :
-> This patch fixes a deleted link in qemu-ga-client script.
-> According to the old link, the page moved to 
-> https://wiki.qemu.org/Features/QAPI/GuestAgent.
-> 
-> Signed-off-by: Rami Rosen <ramirose@gmail.com>
-> ---
->  scripts/qmp/qemu-ga-client | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/scripts/qmp/qemu-ga-client b/scripts/qmp/qemu-ga-client
-> index 30cf8a9..50efc21 100755
-> --- a/scripts/qmp/qemu-ga-client
-> +++ b/scripts/qmp/qemu-ga-client
-> @@ -33,7 +33,7 @@
->  # $ qemu-ga-client fsfreeze freeze
->  # 2 filesystems frozen
->  #
-> -# See also: https://wiki.qemu.org/Features/QAPI/GuestAgent
-> +# See also: https://wiki.qemu.org/Features/GuestAgent
->  #
->  
->  from __future__ import print_function
-> 
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Please re-send your patch cc'ing qemu-devel@nongnu.org.
+Since the BusState is accesible from the SCSIBus object,
+it is pointless to use qbus_reset_all_fn.
+Use qbus_reset_all() directly.
 
-Thanks,
-LAurent
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Dmitry Fleytman <dmitry.fleytman@gmail.com>
+Message-Id: <20190528164020.32250-2-philmd@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/scsi/vmw_pvscsi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/scsi/vmw_pvscsi.c b/hw/scsi/vmw_pvscsi.c
+index 584b4be07e79..c39e33fa3599 100644
+--- a/hw/scsi/vmw_pvscsi.c
++++ b/hw/scsi/vmw_pvscsi.c
+@@ -440,7 +440,7 @@ static void
+ pvscsi_reset_adapter(PVSCSIState *s)
+ {
+     s->resetting++;
+-    qbus_reset_all_fn(&s->bus);
++    qbus_reset_all(BUS(&s->bus));
+     s->resetting--;
+     pvscsi_process_completion_queue(s);
+     assert(QTAILQ_EMPTY(&s->pending_queue));
+@@ -848,7 +848,7 @@ pvscsi_on_cmd_reset_bus(PVSCSIState *s)
+     trace_pvscsi_on_cmd_arrived("PVSCSI_CMD_RESET_BUS");
+ 
+     s->resetting++;
+-    qbus_reset_all_fn(&s->bus);
++    qbus_reset_all(BUS(&s->bus));
+     s->resetting--;
+     return PVSCSI_COMMAND_PROCESSING_SUCCEEDED;
+ }
+-- 
+2.21.0
+
 
