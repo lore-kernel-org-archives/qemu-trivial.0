@@ -1,28 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYocL-00051n-2L
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 05:23:29 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:37498)
+	id 1hYof5-0007U5-WB
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 05:26:20 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:38329)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYocJ-00050g-Hl
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:23:28 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hYof4-0007QM-GO
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:26:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYocI-0005Ie-Lz
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:23:27 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:59283)
+	(envelope-from <laurent@vivier.eu>) id 1hYof3-0004ZP-EJ
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:26:18 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:44609)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hYocI-0005Hx-Be; Thu, 06 Jun 2019 05:23:26 -0400
+	id 1hYof0-0004V1-T5; Thu, 06 Jun 2019 05:26:15 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
-	(mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
-	1MFbeI-1hL4on2diA-00H73S; Thu, 06 Jun 2019 11:23:07 +0200
+	(mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+	1MNtCi-1hAWVv32Ua-00OGi4; Thu, 06 Jun 2019 11:25:55 +0200
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
-	"qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20190604080010.23186-1-armbru@redhat.com>
-	<ff72b9fc-003f-275a-d382-860f2a483d60@redhat.com>
-	<803fdb35-f28e-c033-b5ac-02d230dacf94@redhat.com>
-	<56d043be-efd0-cfb5-2c68-30855eb42d03@redhat.com>
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+	Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?=
+	<berrange@redhat.com>
+References: <20190529140504.21580-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -67,35 +65,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
 	OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
 	JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
 	ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <9808b3e6-a7f6-cd4d-05f7-ed314965adbc@vivier.eu>
-Date: Thu, 6 Jun 2019 11:23:06 +0200
+Message-ID: <e980d325-c692-1700-2bdd-805f582900e0@vivier.eu>
+Date: Thu, 6 Jun 2019 11:25:54 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <56d043be-efd0-cfb5-2c68-30855eb42d03@redhat.com>
+In-Reply-To: <20190529140504.21580-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:8byMmjlxvLjVs4vQ8Epfs1FL7be4u3zAPk0HFhMrJnztfEgpdbP
-	RWtUXcseWDUPtmgmnJXDUws/WCk8csQz4Q1+H7pUaxyztjoMbgQObsEWC+aLmRwmo/UXqYr
-	+q9Q+ivo9Yf2UbbqvbuqrUmVnLIcdFACnTL2DePaMT3bb54ubWSFRwajNQQ3kW6WU7hQO+N
-	aPXF5MhBVryTywmbceHAA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:FcX0Exxx+kU=:K6aH7REDbD/ZWq/2ebonHr
-	GtkqbpOElTa7nslp6b7f62pTORVAzETgQlkMmufZMEM7TPXTHyxecUZhN8gr1oE15HyfAdAWh
-	LBSy2iflP08hhJk7B80of7Gjd3Y/WV3lzY8NB/zn9/Bqv223zMlINY15fDVnGUBN+ZtTMFIed
-	5qqV90fRkIB4279altrmEPJRoXFG5pkOiT92g9g3/bz30nr0QBzIEh1oQKrm/LVrO0aTlC3Zh
-	nqrKTHOOmtQOjk7Dz5/I0D7RT4SB92qHXFMTITkIWXBbZqBOKv93ZXloKr3dbDVlN8XnpDGEN
-	tqi5qY5UzDkXSWq96/Kgrs9QVyuZVT+DFrIXm3rbnoMxlcMjktQ23JzX+AjWOwzMZ2LsAFA3B
-	h6gt7/bwR40s9ZAh96xIg1+7XfewOitl7DAmBkUBCd3lCfMAw0XJG4V3R/L0BLMaMs9UGot/L
-	44mlgwiRFD9v8c/sbFWeGlnnLDFRNwhh/tX4B0vNw1v/K7RXGEUJ3rVYtLrVLJ0ZzmLMn2mDI
-	g4Q/1PsQdJ4S0CEo6e8m4+AWg+fJwkm9BukP2+AkO+RMmlW9gCF1RE0PORNC6dDCfdf1CmVgg
-	4+MmC7lrS+ii0pIk3+XY78ou6uBTwZy29xOkRBdknCnCAmCEbjT55plR4PBOPU8RFgpF1VU9F
-	vQQF8bkmEdB0XF7CvwY+KDKlVMdIhdm6ZqmVug7F7sxsEqTOor1SCZOXiOcJ7VxBG9a80SktF
-	8L67Vku8IIj66XEBobGl7PY1tNxi8TaKZc3yqgfgG9VbERgHP6Kbm20YREU=
+X-Provags-ID: V03:K1:pq+yJ0DLBtmJd5HQDDdQH/axA9Th2lGAm4ZNeJ5e7Ch/Qr7GjkB
+	Wyz7OMnfcbjlJvicS3Rgh/gV/Y2D60PQ51zemCViv9Urvh3WXl/C1rqDJWWbkHOTclEd4uW
+	ej12aOfjtYZbyhuIHLt51pcYC+aYgrxSyd3eCQqN6Wh5FKQl0gKE/8twZixYMsTZIjLKwY6
+	6EvyuaZzyOD+eNtIDg9/w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:bPeRM/QIHoY=:mVIS6hb19Eq4sRXxB57BAj
+	SU6X3hN4xDuxGlXJFJG3fAfR4409iniEL4qtzCl5IFxI1gPm4T4v2OgDkzlK3+R4ct6Ylyreq
+	xZWE85W1lG06K0OooZ3RvJeYWwHW/9aFj05w7aF1cV7qZ7shU6ukiw1BEmOIVbfm4FBwn3yeB
+	w5bXeOvG6P33TTB2tb/WrJyHUc3cu3MY/7I5K+SGrsZFT+VZqFnApjApvEwUC5bISnYg1AYKQ
+	vgDt3w9vEz6hMyYPJTri+HZfa/bwGy1P1+BW6ErwZRApAWXqt7mI4ZZBtojMFkEPGFLoGHQzr
+	JAgWjdJWueezLK3fHfcES+/Y6/viNxURdokelkf4QdV6JqxMXotyyoDkx8KPsP2mK60Abd0nK
+	v3xKfQvRTlJ1/+QoTXuBn2gi+JuUeWm9/2oFW/S4ft0HwuPdjbYCrBW+ah1LZ6K8poocrAHuC
+	Hg0ZvZkmYf8hmIZ6fNMxWJ2S3R8AMzsxgaWC+30tJddV4X9VDTXK8qrWIHgLdbnqpuhDhjmcu
+	SbX5QUdODcwjm7jEsSEQGosx/NCODnRSpbSXTmkjraJUPZghMNhQPiAvoyQxzed6RR2X8sW0y
+	lFAuV5kqFXQCt6lh/OslqQw5xLU+Dn8DjzTRWlUi/qDq2Awz8pC2/o/2NNiN1laMQrpTd+k51
+	ZY4Hqgp5+/Dask9hslInRwnRE4crkFWShPiTdNqnr9f7MQGaC3ktpfGYxDoD2rzakRslNPKWK
+	z4dR2xJYh5/rk3hot4Hz5GimZb4Dcg1O0hBehQBaHOHw6hwQ8BBhZIk8CZw=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] test: Fix make target
- check-report.tap
+X-Received-From: 212.227.126.130
+Subject: Re: [Qemu-trivial] [PATCH v2] docs/devel/build-system: Update an
+ example
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -107,28 +105,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 09:23:28 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 09:26:19 -0000
 
-Le 04/06/2019 à 10:42, Philippe Mathieu-Daudé a écrit :
-> On 6/4/19 10:28 AM, Paolo Bonzini wrote:
->> On 04/06/19 10:09, Philippe Mathieu-Daudé wrote:
->>>>  check-report.tap: $(patsubst %,check-report-qtest-%.tap, $(QTEST_TARGETS)) check-report-unit.tap
->>>> -	$(call quiet-command,./scripts/tap-merge.py $^ > $@,"GEN","$@")
->>>> +	$(call quiet-command, cat $^ | scripts/tap-merge.pl >$@,"GEN","$@")
->>> Paolo, did you intend to submit a new tap-merge.py script in commit
->>> 9df43317b82?
->>>
->>
->> No, it's really just y vs l.
+Le 29/05/2019 à 16:05, Philippe Mathieu-Daudé a écrit :
+> The default-configs/ example added in 717171bd2025 is no
+> more accurate since fa212a2b8b60 (and various further other
+> commits).
 > 
-> OK!
+> The Kconfig build system is now in place.
+> Use the aarch64-softmmu config as example.
 > 
->>
->> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
->> Cc: qemu-trivial@nongnu.org
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+> v2: rephrased the sentence using Thomas suggestion
+> ---
+>  docs/devel/build-system.txt | 19 +++++++------------
+>  1 file changed, 7 insertions(+), 12 deletions(-)
 > 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> diff --git a/docs/devel/build-system.txt b/docs/devel/build-system.txt
+> index addd274eeb..41bd08ea3a 100644
+> --- a/docs/devel/build-system.txt
+> +++ b/docs/devel/build-system.txt
+> @@ -413,18 +413,13 @@ context.
+>  - default-configs/*.mak
+>  
+>  The files under default-configs/ control what emulated hardware is built
+> -into each QEMU system and userspace emulator targets. They merely
+> -contain a long list of config variable definitions. For example,
+> -default-configs/x86_64-softmmu.mak has:
+> -
+> -  include sound.mak
+> -  include usb.mak
+> -  CONFIG_QXL=$(CONFIG_SPICE)
+> -  CONFIG_VGA_ISA=y
+> -  CONFIG_VGA_CIRRUS=y
+> -  CONFIG_VMWARE_VGA=y
+> -  CONFIG_VIRTIO_VGA=y
+> -  ...snip...
+> +into each QEMU system and userspace emulator targets. They merely contain
+> +a list of config variable definitions like the machines that should be
+> +included. For example, default-configs/aarch64-softmmu.mak has:
+> +
+> +  include arm-softmmu.mak
+> +  CONFIG_XLNX_ZYNQMP_ARM=y
+> +  CONFIG_XLNX_VERSAL=y
+>  
+>  These files rarely need changing unless new devices / hardware need to
+>  be enabled for a particular system/userspace emulation target
 > 
 
 Applied to my trivial-patches branch.
