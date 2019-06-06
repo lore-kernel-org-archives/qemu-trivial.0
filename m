@@ -1,56 +1,95 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYnye-0003rb-LT
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 04:42:28 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:55536)
+	id 1hYoN3-0007CQ-Em
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 05:07:41 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34259)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <like.xu@linux.intel.com>) id 1hYnyc-0003m0-B2
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 04:42:27 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hYoN0-0007CJ-Ql
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:07:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <like.xu@linux.intel.com>) id 1hYntq-0005QK-Co
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 04:37:32 -0400
-Received: from mga09.intel.com ([134.134.136.24]:59112)
-	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
-	(Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
-	id 1hYntd-000506-6t; Thu, 06 Jun 2019 04:37:18 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-	by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
-	06 Jun 2019 01:37:09 -0700
-Received: from likexu-mobl1.ccr.corp.intel.com (HELO [10.239.196.166])
-	([10.239.196.166])
-	by orsmga008-auth.jf.intel.com with ESMTP/TLS/AES256-SHA;
-	06 Jun 2019 01:37:07 -0700
-To: Greg Kurz <groug@kaod.org>, David Gibson <david@gibson.dropbear.id.au>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
-	"Dr . David Alan Gilbert" <dgilbert@redhat.com>, qemu-devel@nongnu.org, 
-	=?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
-	=?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
-	Alistair Francis <alistair23@gmail.com>, Igor Mammedov
-	<imammedo@redhat.com>, qemu-ppc@nongnu.org
-References: <20190518205428.90532-1-like.xu@linux.intel.com>
-	<20190518205428.90532-5-like.xu@linux.intel.com>
-	<20190606025241.GM22416@habkost.net>
-	<20190606025456.GN22416@habkost.net>
-	<20190606030732.GL10319@umbus.fritz.box>
-	<20190606102017.264123c5@bahia.lab.toulouse-stg.fr.ibm.com>
-From: Like Xu <like.xu@linux.intel.com>
-Organization: Intel OTC
-Message-ID: <26cd4c51-2c19-1dab-3287-fec805535c93@linux.intel.com>
-Date: Thu, 6 Jun 2019 16:37:05 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+	(envelope-from <laurent@vivier.eu>) id 1hYoMy-0004DO-Ub
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:07:38 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:42847)
+	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+	(Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1hYoMx-000491-CL
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 05:07:36 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+	(mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+	1My3Ad-1gd7JE1dU7-00zYbs; Thu, 06 Jun 2019 11:07:31 +0200
+To: Rami Rosen <ramirose@gmail.com>, qemu-trivial@nongnu.org
+References: <20190507184102.4258-1-ramirose@gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+	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
+Message-ID: <760cf51e-22bd-f488-2274-02e65a29fbad@vivier.eu>
+Date: Thu, 6 Jun 2019 11:07:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
 	Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190606102017.264123c5@bahia.lab.toulouse-stg.fr.ibm.com>
-Content-Type: text/plain; charset=windows-1252; format=flowed
+In-Reply-To: <20190507184102.4258-1-ramirose@gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
-	recognized.
-X-Received-From: 134.134.136.24
-Subject: Re: [Qemu-trivial] [Qemu-devel] [Qemu-ppc] [PATCH v3 04/10] hw/ppc:
- Replace global smp variables with machine smp properties
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:VuVl82UBb7Szbz106uaK+TKCwcrYF4JA3fKL65YB0SkYrRmcWWC
+	QWgt2gBHOseXug26HBLxlhmow92dt+jFt2bDlUY1P3IqznCvWJU3FVgAZJNx0+vaVsLxj2c
+	0GVpnRGVeUfGI+PNEgLPLWt5m2ZoLY2Adi8waIM8TW+I+2Oe0XRsyak9DBv5/R48u+v88c9
+	fYOZPpoUMCGSwIeC75Y/w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:tm9cTVWzytk=:++H6YaQBGn1oLAs6dlAMkX
+	0ixK0DQBbzn2vGbLgk9VOnrwHlFbaT8npBQ7myRvvtAepRY4SA0J5MlBPIYY5SszjpqUG8/VY
+	2WqNcYvrK+va12Cvf+qkYB1bPi+i5BKwVRn6FJ8TFGhRetHA6iFlCcANgLJi8UU/MjBxVxhjA
+	LDp6cyH86yU1aZh+wQBolaQxh2FlX4R5ODEqGqtUUJbRTwG18nrQMMQtcbiAcJnBMLLlTAt4l
+	fjrTLj1gzDkCYnYLk9cbkx5p/W6vFQwgusnRuIX6FlonS+UWRNbrvS4y6PfUJyO1IspsVG/bJ
+	42eKlSG/HdlD+2lAABPaEC65X08+CGib01t0HunbgN+0dK3MyBQEJYm5eqhinrNjJJHUxLKKh
+	2pwwWL7l/98MCm3YJ+rvGovDOuqQNoCTryihDayl0ALqczys4roMeEUfm6xkd2F3k5NGck/09
+	RFa9ooTKXmF8oRzl6zHX6c7Kpyeefd45Gu2G72fTERbPSyu8sVBrZDyBxAuc8X7RbzV50Y3YI
+	EUpWnd/nbAF8/pnHOMqZX4jmepJ4mLl3q8TyMh6hvhhDO+jd0CwAadHU+7h6OswTJRrIblrRb
+	bs4N6RCXra3u1Udg1rdMv8E4yEv2tzaghBHOxKF8wFv5YiFF5H7L0yegrXThJ6/rPuBLv5TAC
+	UDqZXfYyNK1lJPCtSdhBPr/NtKpyeXlxTJyN244WIXvHn5CcjVSXHd7vGKnhqRf+LJeOlGX6I
+	0+EXTu71TdeXEbFJuy9wjHLnRzw+qJZ1Pv7+UYMOyaTLdY+6g43H+IIZLJc=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.227.126.135
+Subject: Re: [Qemu-trivial] [PATCH] scripts/qmp: fix deleted link in
+ qemu-ga-client script
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -62,72 +101,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 08:42:27 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 09:07:40 -0000
 
-On 2019/6/6 16:20, Greg Kurz wrote:
-> On Thu, 6 Jun 2019 13:07:32 +1000
-> David Gibson <david@gibson.dropbear.id.au> wrote:
+Le 07/05/2019 à 20:41, Rami Rosen a écrit :
+> This patch fixes a deleted link in qemu-ga-client script.
+> According to the old link, the page moved to 
+> https://wiki.qemu.org/Features/QAPI/GuestAgent.
 > 
->> On Wed, Jun 05, 2019 at 11:54:56PM -0300, Eduardo Habkost wrote:
->>> On Wed, Jun 05, 2019 at 11:52:41PM -0300, Eduardo Habkost wrote:
->>>> On Sun, May 19, 2019 at 04:54:22AM +0800, Like Xu wrote:
->>>>> The global smp variables in ppc are replaced with smp machine properties.
->>>>>
->>>>> A local variable of the same name would be introduced in the declaration
->>>>> phase if it's used widely in the context OR replace it on the spot if it's
->>>>> only used once. No semantic changes.
->>>>>
->>>>> Signed-off-by: Like Xu <like.xu@linux.intel.com>
->>>>
->>>> Any objections from the ppc maintainers to queueing this through
->>>> the Machine Core tree?
->>>
->>> Oops, CCing the ppc maintainers.
->>
->> No objection here.
->>
->> Acked-by: David Gibson <david@gibson.dropbear.id.au>
->>
+> Signed-off-by: Rami Rosen <ramirose@gmail.com>
+> ---
+>  scripts/qmp/qemu-ga-client | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Just one nit...
-> 
-> [...]
-> 
->>>>> diff --git a/hw/ppc/spapr_rtas.c b/hw/ppc/spapr_rtas.c
->>>>> index ee24212765..c9ffe9786c 100644
->>>>> --- a/hw/ppc/spapr_rtas.c
->>>>> +++ b/hw/ppc/spapr_rtas.c
->>>>> @@ -231,6 +231,8 @@ static void rtas_ibm_get_system_parameter(PowerPCCPU *cpu,
->>>>>                                             target_ulong args,
->>>>>                                             uint32_t nret, target_ulong rets)
->>>>>   {
->>>>> +    MachineState *ms = MACHINE(qdev_get_machine());
-> 
-> rtas_ibm_get_system_parameter() has a SpaprMachineState *spapr argument, no
-> need to rely on qdev_get_machine().
-
-I will fix it in the next (rebased) version. Thank you, Greg.
-
-> 
-> But this can be fixed in a followup patch I guess. Not worth holding the
-> patchset because of that.
-> 
->>>>> +    unsigned int max_cpus = ms->smp.max_cpus;
->>>>>       target_ulong parameter = rtas_ld(args, 0);
->>>>>       target_ulong buffer = rtas_ld(args, 1);
->>>>>       target_ulong length = rtas_ld(args, 2);
->>>>> @@ -244,7 +246,7 @@ static void rtas_ibm_get_system_parameter(PowerPCCPU *cpu,
->>>>>                                             "MaxPlatProcs=%d",
->>>>>                                             max_cpus,
->>>>>                                             current_machine->ram_size / MiB,
->>>>> -                                          smp_cpus,
->>>>> +                                          ms->smp.cpus,
->>>>>                                             max_cpus);
->>>>>           ret = sysparm_st(buffer, length, param_val, strlen(param_val) + 1);
->>>>>           g_free(param_val);
->>>>    
->>>    
->>
+> diff --git a/scripts/qmp/qemu-ga-client b/scripts/qmp/qemu-ga-client
+> index 30cf8a9..50efc21 100755
+> --- a/scripts/qmp/qemu-ga-client
+> +++ b/scripts/qmp/qemu-ga-client
+> @@ -33,7 +33,7 @@
+>  # $ qemu-ga-client fsfreeze freeze
+>  # 2 filesystems frozen
+>  #
+> -# See also: https://wiki.qemu.org/Features/QAPI/GuestAgent
+> +# See also: https://wiki.qemu.org/Features/GuestAgent
+>  #
+>  
+>  from __future__ import print_function
 > 
 
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
