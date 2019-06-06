@@ -1,21 +1,21 @@
 Received: from list by lists.gnu.org with archive (Exim 4.71)
-	id 1hYqFi-0000jP-5w
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:08:14 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:60813)
+	id 1hYqKj-0005cP-Qm
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jun 2019 07:13:25 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:34604)
 	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFd-0000dd-PF
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:08:10 -0400
+	(envelope-from <laurent@vivier.eu>) id 1hYqKf-0005YJ-P2
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:13:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <laurent@vivier.eu>) id 1hYqFc-00042j-Fh
-	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:08:09 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:55263)
+	(envelope-from <laurent@vivier.eu>) id 1hYqKe-0003PX-Sj
+	for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 07:13:21 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:51351)
 	by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
 	(Exim 4.71) (envelope-from <laurent@vivier.eu>)
-	id 1hYqFV-0003op-VF; Thu, 06 Jun 2019 07:08:02 -0400
+	id 1hYqKc-0003Ma-N0; Thu, 06 Jun 2019 07:13:18 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
 	mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA
 	(Nemesis)
-	id 1MVMJ7-1hAGXq33Ul-00SNSl; Thu, 06 Jun 2019 13:07:02 +0200
+	id 1MbjBo-1gyxyw1siM-00dHVC; Thu, 06 Jun 2019 13:06:40 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -34,37 +34,35 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
 	Halil Pasic <pasic@linux.ibm.com>, Richard Henderson <rth@twiddle.net>,
 	qemu-s390x@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
 	Cornelia Huck <cohuck@redhat.com>,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>
-Date: Thu,  6 Jun 2019 13:06:23 +0200
-Message-Id: <20190606110625.32127-15-laurent@vivier.eu>
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>, Li Qiang <liq3ea@163.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Date: Thu,  6 Jun 2019 13:06:11 +0200
+Message-Id: <20190606110625.32127-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190606110625.32127-1-laurent@vivier.eu>
 References: <20190606110625.32127-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:6yAVocbjKkdBthOG0ZynWAA9tjWYhTGgRctHDWFppOnRh6f2oMI
-	/vBXPjYl9uytwxPm04GLkOO7j2odwptj220yrssmmYDeu0p6f+nOslYEn2YV9RLY0AFoTwk
-	/Js5BQh+wgbFrluk1P3muu+XHFGrYBEikXnFBGguEjXFynE/RZr1ORbtbU3QrJfWVYTOjV3
-	XxNsfe0AepBWa+PepxPEQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:a7UhvE8kYu0=:HOw3Hj6Z+A6PP6wACCkwe9
-	h3cyl3LZAPts2BrmQ/Rcd31UoLU6jx31hJSCCGgbUC1g2CrBY3jegxvu8YVXXNBiuNwFUS+39
-	+NuWw015mgPDFwXEVPEDQM0ypqp17ulEa9LOzgTXqBnGEXujsQRncbHmWAAeU9ajurvchszGa
-	otlD7e9F6Wle+N/jgjgTbrdiI1FAqDjzpnVcdJFjPrUYML2gGkEpliu6/V9KKCiLsVVEjqqgG
-	HzIQj1xL6bTjDp2Ln2016N8dmg1pGMcD3crtSOn0qMabF/6cBezy2Ovo4eo1Rq2/rkZJlH0Hj
-	7BiMiuoDY3EAskoJj6l3nq1sHgVzkey3oEMXp4qpwCXbXbeqCouEsPouaEcVty5Wk2b/Ufoch
-	csvi8lzHGBDMM/P8mLvfgzWvUS/ktbSVViNZ3c+8Fv/154D90h7Ix1pueVFBASTyqYHpsEEHe
-	VPqnmuy1auUwIhcz2nFuXAFdwlS3VVPxMLRqkZKTdijfnRuXvDNPL7L5FvbAS28fCBa7d3xC2
-	UQkD52h9vNZ/hY5vcpFPJYPhOfC94ptFvolcAgB3XzHEoPmb3yQ5DiSPdHivRuQLV5hrnTYgE
-	MchukZicxKLDe5d3WNrliGpf2W9gCpS8SrEaGVHRJsVIQ4eMlumt80ShKfLtSaS4zUSg0+CTG
-	uxORGPOE3Ltsy+SEzjGF/g/YUfVh5miWlOLPcwaDgjtJ8KzS2swqtlLTDomgZ3x+JQ1vMPrAY
-	Ca/fe1I+ZmBs0B/r1hl4T7LVpC1cCcFg2yTGFNqysDvF2zW/YQ18TTOUmvY=
+X-Provags-ID: V03:K1:wmpSPsS+7A5QbkzIuo4H2PZEXePK7qndfEAgPOgvQ2LxlfTvhw9
+	amvAiKaRxtLucqhiiRKRCyClQcMp60JYWMDX9M+QknvPxj0kNgOs8Peb19vAGcpshprcRxJ
+	WcNPTGerQRJL+zpN8WiRua1Ve4iPwPaQSmZGJQpq9kftPb9yMfEDSixtCjVNxGsKMOTZjjX
+	7E2gfzmJo65wlVOPo5MUA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:X49tWX4nr2Y=:QcF6a7H8Yx79kAHKMB8+1R
+	Cr9r+2MHZWPvUk3fRGmltvgPkeLVMQVr8vGjaOIRmd5IZTQfMWMwBr1K61OqZFuw7wQnHO2lz
+	e9xnVQeTrDiwYNJez9xLMsM1g5HBIkCZqge/0hnqRomBNlraq6/EhLBuJcquFcXeLd6TV8rX7
+	C343+aRz3GQLS2ixo+VpDqJtvr7anT1tGtGN/rHgyN+nrzfuvHFEYx7ME7BEpsqM4rDTREAx6
+	fg8h7xnoykLDgkvJb3S4gyu25uyH4OMXMOjVSwVKC0YZcgt8Sm5NwEsJyOXe7UpSZ7ljqgo9l
+	+R6LBuvMa5gCcBKgdWJFnefL04N/V2IdiPq1i04f4E0nDBmMmgxhWqQCpSXOg+1llT//0H2JZ
+	VgiYKnBrpi7s5DGklyLAQD2ecH8GV5JdCMp/AYY59l/SYnmgYiU+ET6u1GTs5x7KD+bLadhvr
+	7Zycu0uRbBE2HI2SHxSjMgv+fw5dzPhFlRMgo6J13zx2euNYWzQyzVBT5Dzd3kLntNIz3NrIf
+	PVdT12sjtKs1bAy6kMDmMf1cpuNllz+Ttj+1Lo2Sk38zz9b2VQoxZSIiV3cfzl81xd3Qs9X1D
+	ikm4ad7bqEP38NHXtS5HE30q9/oKqugqMbM9iuP3+BSvmWkmwhp+Qrzh29jZ9J4Zxi9T58VZ7
+	TXCGXUeC75VQNdYvnJGsUeCBLudWknut+9FRy1qUNyp7A9hRtEVhQxPr0//Js3q3FYKLhr15l
+	w9ZIvB82HSzCGM9FnAh2UQHCdMla+rNApNbDy6q7u98ZYJLKd+C+4zMVk5o=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.10
-Subject: [Qemu-trivial] [PULL 14/16] hw/sd: Use the QOM BUS() macro to
- access BusState.qbus
+X-Received-From: 212.227.17.24
+Subject: [Qemu-trivial] [PULL 02/16] migration: fix a typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.21
 Precedence: list
@@ -76,59 +74,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 	<mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jun 2019 11:08:10 -0000
+X-List-Received-Date: Thu, 06 Jun 2019 11:13:22 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Li Qiang <liq3ea@163.com>
 
-Rather than looking inside the definition of a BusState with "s->bus.qbus",
-use the QOM prefered style: "BUS(&s->bus)".
+'postocpy' should be 'postcopy'.
 
-This patch was generated using the following Coccinelle script:
-
-    // Use BUS() macros to access BusState.qbus
-    @use_bus_macro_to_access_qbus@
-    expression obj;
-    identifier bus;
-    @@
-    -&obj->bus.qbus
-    +BUS(&obj->bus)
-
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20190528164020.32250-6-philmd@redhat.com>
+CC: qemu-trivial@nongnu.org
+Signed-off-by: Li Qiang <liq3ea@163.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+Message-Id: <20190525062832.18009-1-liq3ea@163.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/sd/milkymist-memcard.c | 2 +-
- hw/sd/ssi-sd.c            | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ migration/ram.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
-index df42aa1c545b..dd1ba649d9c0 100644
---- a/hw/sd/milkymist-memcard.c
-+++ b/hw/sd/milkymist-memcard.c
-@@ -277,7 +277,7 @@ static void milkymist_memcard_realize(DeviceState *dev, Error **errp)
-     /* FIXME use a qdev drive property instead of drive_get_next() */
-     dinfo = drive_get_next(IF_SD);
-     blk = dinfo ? blk_by_legacy_dinfo(dinfo) : NULL;
--    carddev = qdev_create(&s->sdbus.qbus, TYPE_SD_CARD);
-+    carddev = qdev_create(BUS(&s->sdbus), TYPE_SD_CARD);
-     qdev_prop_set_drive(carddev, "drive", blk, &err);
-     object_property_set_bool(OBJECT(carddev), true, "realized", &err);
-     if (err) {
-diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
-index 623d0333e863..25e1009277ed 100644
---- a/hw/sd/ssi-sd.c
-+++ b/hw/sd/ssi-sd.c
-@@ -249,7 +249,7 @@ static void ssi_sd_realize(SSISlave *d, Error **errp)
-     /* Create and plug in the sd card */
-     /* FIXME use a qdev drive property instead of drive_get_next() */
-     dinfo = drive_get_next(IF_SD);
--    carddev = qdev_create(&s->sdbus.qbus, TYPE_SD_CARD);
-+    carddev = qdev_create(BUS(&s->sdbus), TYPE_SD_CARD);
-     if (dinfo) {
-         qdev_prop_set_drive(carddev, "drive", blk_by_legacy_dinfo(dinfo), &err);
-     }
+diff --git a/migration/ram.c b/migration/ram.c
+index 4c608692262e..359dc8f1bc44 100644
+--- a/migration/ram.c
++++ b/migration/ram.c
+@@ -2236,7 +2236,7 @@ static RAMBlock *unqueue_page(RAMState *rs, ram_addr_t *offset)
+ }
+ 
+ /**
+- * get_queued_page: unqueue a page from the postocpy requests
++ * get_queued_page: unqueue a page from the postcopy requests
+  *
+  * Skips pages that are already sent (!dirty)
+  *
 -- 
 2.21.0
 
