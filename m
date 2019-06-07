@@ -1,47 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hZGUt-0002BR-73
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Jun 2019 11:09:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44954)
+	id 1hZGZM-00078s-D7
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Jun 2019 11:14:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55917)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <armbru@redhat.com>) id 1hZGUo-00029c-I1
- for qemu-trivial@nongnu.org; Fri, 07 Jun 2019 11:09:35 -0400
+ (envelope-from <lucienmp.qemu@gmail.com>) id 1hZ5YT-0000aT-5t
+ for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 23:28:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1hZGUi-0005Cp-Pd
- for qemu-trivial@nongnu.org; Fri, 07 Jun 2019 11:09:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60788)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>)
- id 1hZGUc-0004rH-Pm; Fri, 07 Jun 2019 11:09:23 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id F02782E95B1;
- Fri,  7 Jun 2019 15:09:14 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-148.ams2.redhat.com
- [10.36.116.148])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BEC227FEAD;
- Fri,  7 Jun 2019 15:09:14 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 2825011386A0; Fri,  7 Jun 2019 17:09:13 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: <tony.nguyen@bt.com>
-Cc: <qemu-devel@nongnu.org>,  qemu-trivial@nongnu.org
-References: <430a9a42f7a34b799ee4d2f3d7ab2e23@tpw09926dag18e.domain1.systemhost.net>
-Date: Fri, 07 Jun 2019 17:09:13 +0200
-In-Reply-To: <430a9a42f7a34b799ee4d2f3d7ab2e23@tpw09926dag18e.domain1.systemhost.net>
- (tony nguyen's message of "Fri, 7 Jun 2019 14:07:11 +0000")
-Message-ID: <87h891a0va.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
+ (envelope-from <lucienmp.qemu@gmail.com>) id 1hZ5YR-0004nE-T8
+ for qemu-trivial@nongnu.org; Thu, 06 Jun 2019 23:28:36 -0400
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:42768)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <lucienmp.qemu@gmail.com>)
+ id 1hZ5YQ-0004ix-TK; Thu, 06 Jun 2019 23:28:35 -0400
+Received: by mail-pg1-x544.google.com with SMTP id e6so379919pgd.9;
+ Thu, 06 Jun 2019 20:28:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=wvfTEi6MWh5ZptHrzsO5+RfC2vsLZDoHxbRpf2T/6Xw=;
+ b=pUMDk1UXCLrorkTKF3MyTZlqXsyOPCvSyVQgYRPebUKn/mEN1qmMnyZB/BQ6WzLoXJ
+ /uenrci0rP4Uz0ft1VnlHDXEwsIllkChnuTfkLXser1HIsKPmyfIWOKfWgL9DR4a1lcV
+ 6fxW1UdY7t8K1dVHc/mQGoYZM63LrxA6ZxEWGnX2yzt+NucXU4G5yApJMSU6cWsRIfPw
+ lRjAGms7VLoXaXiYOfGW2TlQTSOB3KQJycJA5BV/daesyrWxecEjn/JJMTMrnkQTVnig
+ xtwDkONEkTAJJyS+lqN2QgAEfyF5iv7VKiMv5IAegIZUSF6Zf7Kw+x3MP3kPFThGUWBs
+ BbDw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=wvfTEi6MWh5ZptHrzsO5+RfC2vsLZDoHxbRpf2T/6Xw=;
+ b=rKbfJHInOHW6q2qcE85zRfZPTVjohhvyvngT30F4GGrDwNNiGDDh9xiWXMetWdBHG+
+ GCotMmRDPCTW9V6jh4r2MBPjrvfHNPHxeySpD1DuzyXDTvasQ4/fZkexGY/4aOunDfnl
+ jFZdx0FMoBh2bMkMx9YRh3z6D7r0j35RfrM4PCCPq6XwLogn25SDTnP9B7n/o1kBR6YA
+ ueyBH7itPkEtnFnLQcWUX3yGeQTvKOJj55slOB3OZy9/gQStqzGGERNRTc5CRwejI49q
+ 7ZhFNcYREeMcv61DEUCeziLLrbclgbpbut0wBO95/KkMJrUG5BX69/6nOut73+TNO5bZ
+ Dg0g==
+X-Gm-Message-State: APjAAAXorKLsS/2CLOqw2a+vmPdS3iSwzHOWKFbKGOEWg+fR5TFDqAGe
+ ua22QW6x8bqdPZg94x1TKwQ=
+X-Google-Smtp-Source: APXvYqw45daic3sH9B1u63zNbhZYxqEb8CHP8ykypVeqG4TSatur1i0DqUcGBjEb8deAnBE35zZi+Q==
+X-Received: by 2002:a62:2643:: with SMTP id m64mr54794350pfm.46.1559878113522; 
+ Thu, 06 Jun 2019 20:28:33 -0700 (PDT)
+Received: from localhost.localdomain (sp183-74-192-44.msb.spmode.ne.jp.
+ [183.74.192.44])
+ by smtp.gmail.com with ESMTPSA id s24sm548820pfh.133.2019.06.06.20.28.31
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Thu, 06 Jun 2019 20:28:33 -0700 (PDT)
+Date: Fri, 7 Jun 2019 12:28:26 +0900
+From: Lucien Murray-Pitts <lucienmp.qemu@gmail.com>
+To: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>
+Message-ID: <20190607032825.GA5123@localhost.localdomain>
+References: <20190606234125.GA4830@localhost.localdomain>
+ <CAL1e-=i7WfrHq7k266grEs1xyf_FKVG_4JcvCbrrSZt66c4ftQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.29]); Fri, 07 Jun 2019 15:09:15 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] test: Use g_strndup instead
- of plain strndup
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAL1e-=i7WfrHq7k266grEs1xyf_FKVG_4JcvCbrrSZt66c4ftQ@mail.gmail.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::544
+X-Mailman-Approved-At: Fri, 07 Jun 2019 11:14:15 -0400
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] m68k comments break
+ patch submission due to being incorrectly formatted
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -53,45 +75,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Jun 2019 15:09:35 -0000
+X-List-Received-Date: Fri, 07 Jun 2019 03:28:38 -0000
 
-<tony.nguyen@bt.com> writes:
+On Fri, Jun 07, 2019 at 01:58:05AM +0200, Aleksandar Markovic wrote:
+> On Jun 7, 2019 1:42 AM, "Lucien Murray-Pitts" <lucienmp.qemu@gmail.com>
+> wrote:
+> >
+> > Altering all comments in target/m68k to match Qemu coding styles so that
+> future
+> > patches wont fail due to style breaches.
+> >
+> 
+> Are you saying that patches fail checkpatch checks even if the new code has
+> only correct comment format? (Or, in other words, that checkpatch detects
+> comment-related errors in  unchanged code, and reports them as the
+> errors/warnings in the patch in question?) I just want to understand what
+> is the obstacle you are trying to remove.
+> 
+> Thanks, Aleksandar
+> 
+[SNIP of PATCH]
 
-> Due to memory management rules. See HACKING.
->     
-> Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
->
-> diff --git a/tests/check-qjson.c b/tests/check-qjson.c
-> index fa2afcc..07a773e 100644
-> --- a/tests/check-qjson.c
-> +++ b/tests/check-qjson.c
-> @@ -767,7 +767,7 @@ static void utf8_string(void)
->                      if (*end == ' ') {
->                          end++;
->                      }
-> -                    in = strndup(tail, end - tail);
-> +                    in = g_strndup(tail, end - tail);
->                      str = from_json_str(in, j, NULL);
->                      g_assert(!str);
->                      g_free(in);
+checkpatch is correctly identifying the wrong style in the changed code.
+This changed code contains the original comments with ADDITIONAL edits
+resulting in pachew/checkpatch complaining.
 
-This one is fine.
+The m68k is, by my guess, older code and nearly all the comments are different
+from the style guide.  Some are "/**" or "/*commment here...." and so on.
 
-> diff --git a/tests/migration/stress.c b/tests/migration/stress.c
-> index 49a03aa..72c4012 100644
-> --- a/tests/migration/stress.c
-> +++ b/tests/migration/stress.c
-> @@ -104,7 +104,7 @@ static int get_command_arg_str(const char *name,
->      }
->  
->      if (end)
-> -        *val = strndup(start, end - start);
-> +        *val = g_strndup(start, end - start);
->      else
->          *val = strdup(start);
->      return 1;
+Since I had a patch AUTO-FLAGGED by patchew for this reason I thought I would
+start with a cleanup of the comments to bring them into line with the style.
 
-This one isn't.  The caller passes *val to free().  You have to change
-*both* allocations in get_command_arg_str() *and* the deallocation in
-get_command_arg_ull().
+Cheers,
+Luc
+
+
 
