@@ -1,46 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hZMUm-0001d2-2v
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Jun 2019 17:33:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41590)
+	id 1hZTrw-00051I-FQ
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Jun 2019 01:26:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56817)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <ehabkost@redhat.com>) id 1hZMUi-0000vp-2G
- for qemu-trivial@nongnu.org; Fri, 07 Jun 2019 17:33:53 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hZTrt-0004zS-Gr
+ for qemu-trivial@nongnu.org; Sat, 08 Jun 2019 01:26:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <ehabkost@redhat.com>) id 1hZMNB-00008B-DU
- for qemu-trivial@nongnu.org; Fri, 07 Jun 2019 17:26:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52738)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <ehabkost@redhat.com>)
- id 1hZMN4-0008Sy-7G; Fri, 07 Jun 2019 17:25:59 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id D878E3082126;
- Fri,  7 Jun 2019 21:25:50 +0000 (UTC)
-Received: from localhost (ovpn-116-9.gru2.redhat.com [10.97.116.9])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6898E60BE2;
- Fri,  7 Jun 2019 21:25:48 +0000 (UTC)
-Date: Fri, 7 Jun 2019 18:25:46 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Like Xu <like.xu@linux.intel.com>
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-devel@nongnu.org, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Alistair Francis <alistair23@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>
-Message-ID: <20190607212546.GG22416@habkost.net>
-References: <20190518205428.90532-1-like.xu@linux.intel.com>
+ (envelope-from <tony.nguyen@bt.com>) id 1hZTrs-0005Mf-Gs
+ for qemu-trivial@nongnu.org; Sat, 08 Jun 2019 01:26:17 -0400
+Received: from smtpe1.intersmtp.com ([213.121.35.79]:44441)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
+ id 1hZTra-00050y-HY; Sat, 08 Jun 2019 01:26:00 -0400
+Received: from tpw09926dag18h.domain1.systemhost.net (10.9.212.42) by
+ BWP09926084.bt.com (10.36.82.115) with Microsoft SMTP Server (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Sat, 8 Jun
+ 2019 06:25:41 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
+ tpw09926dag18h.domain1.systemhost.net (10.9.212.42) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Sat, 8 Jun 2019 06:25:52 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net
+ ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
+ ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Sat, 8 Jun 2019
+ 06:25:52 +0100
+From: <tony.nguyen@bt.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-trivial@nongnu.org>, <armbru@redhat.com>
+Thread-Topic: [Qemu-trivial] [PATCH v2] test: Use g_strndup instead of plain
+ strndup
+Thread-Index: AQHVHbqjI874F+ZZ4kOthbYYo6a9DQ==
+Date: Sat, 8 Jun 2019 05:25:52 +0000
+Message-ID: <dce313b46d294ada8826d34609a3447e@tpw09926dag18e.domain1.systemhost.net>
+Accept-Language: en-AU, en-GB, en-US
+Content-Language: en-AU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.187.101.40]
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190518205428.90532-1-like.xu@linux.intel.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.42]); Fri, 07 Jun 2019 21:25:50 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 00/10] Refactor cpu topo
- into machine properties
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 213.121.35.79
+Subject: [Qemu-trivial] [PATCH v2] test: Use g_strndup instead of plain
+ strndup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -52,18 +55,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Jun 2019 21:33:54 -0000
+X-List-Received-Date: Sat, 08 Jun 2019 05:26:19 -0000
 
-On Sun, May 19, 2019 at 04:54:18AM +0800, Like Xu wrote:
-> This patch series make existing cores/threads/sockets into machine
-> properties and get rid of global smp_* variables they use currently.
-> 
-> The purpose of getting rid of globals is disentangle layer violations and
-> let's do it one step at a time by replacing the smp_foo with qdev_get_machine()
-> as few calls as possible and delay other related refactoring efforts.
-
-Queued on machine-next, thanks!
-
--- 
-Eduardo
+Due to memory management rules. See HACKING.=0A=
+    =0A=
+Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>=0A=
+=0A=
+diff --git a/tests/check-qjson.c b/tests/check-qjson.c=0A=
+index fa2afcc..07a773e 100644=0A=
+--- a/tests/check-qjson.c=0A=
++++ b/tests/check-qjson.c=0A=
+@@ -767,7 +767,7 @@ static void utf8_string(void)=0A=
+                     if (*end =3D=3D ' ') {=0A=
+                         end++;=0A=
+                     }=0A=
+-                    in =3D strndup(tail, end - tail);=0A=
++                    in =3D g_strndup(tail, end - tail);=0A=
+                     str =3D from_json_str(in, j, NULL);=0A=
+                     g_assert(!str);=0A=
+                     g_free(in);=0A=
+diff --git a/tests/migration/stress.c b/tests/migration/stress.c=0A=
+index 49a03aa..d9aa4af 100644=0A=
+--- a/tests/migration/stress.c=0A=
++++ b/tests/migration/stress.c=0A=
+@@ -104,9 +104,9 @@ static int get_command_arg_str(const char *name,=0A=
+     }=0A=
+ =0A=
+     if (end)=0A=
+-        *val =3D strndup(start, end - start);=0A=
++        *val =3D g_strndup(start, end - start);=0A=
+     else=0A=
+-        *val =3D strdup(start);=0A=
++        *val =3D g_strdup(start);=0A=
+     return 1;=0A=
+ }=0A=
+ =0A=
+@@ -126,10 +126,10 @@ static int get_command_arg_ull(const char *name,=0A=
+     if (errno || *end) {=0A=
+         fprintf(stderr, "%s (%05d): ERROR: cannot parse %s value %s\n",=0A=
+                 argv0, gettid(), name, valstr);=0A=
+-        free(valstr);=0A=
++        g_free(valstr);=0A=
+         return -1;=0A=
+     }=0A=
+-    free(valstr);=0A=
++    g_free(valstr);=0A=
+     return 0;=0A=
+ }=
 
