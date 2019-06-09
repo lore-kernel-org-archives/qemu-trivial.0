@@ -1,49 +1,96 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hZTrw-00051I-FQ
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Jun 2019 01:26:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56817)
+	id 1hZy2f-00031l-RX
+	for mharc-qemu-trivial@gnu.org; Sun, 09 Jun 2019 09:39:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50533)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tony.nguyen@bt.com>) id 1hZTrt-0004zS-Gr
- for qemu-trivial@nongnu.org; Sat, 08 Jun 2019 01:26:19 -0400
+ (envelope-from <laurent@vivier.eu>) id 1hZy2d-00031e-Fw
+ for qemu-trivial@nongnu.org; Sun, 09 Jun 2019 09:39:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hZTrs-0005Mf-Gs
- for qemu-trivial@nongnu.org; Sat, 08 Jun 2019 01:26:17 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.79]:44441)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hZTra-00050y-HY; Sat, 08 Jun 2019 01:26:00 -0400
-Received: from tpw09926dag18h.domain1.systemhost.net (10.9.212.42) by
- BWP09926084.bt.com (10.36.82.115) with Microsoft SMTP Server (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Sat, 8 Jun
- 2019 06:25:41 +0100
-Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18h.domain1.systemhost.net (10.9.212.42) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Sat, 8 Jun 2019 06:25:52 +0100
-Received: from tpw09926dag18e.domain1.systemhost.net
- ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
- ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Sat, 8 Jun 2019
- 06:25:52 +0100
-From: <tony.nguyen@bt.com>
-To: <qemu-devel@nongnu.org>
-CC: <qemu-trivial@nongnu.org>, <armbru@redhat.com>
-Thread-Topic: [Qemu-trivial] [PATCH v2] test: Use g_strndup instead of plain
- strndup
-Thread-Index: AQHVHbqjI874F+ZZ4kOthbYYo6a9DQ==
-Date: Sat, 8 Jun 2019 05:25:52 +0000
-Message-ID: <dce313b46d294ada8826d34609a3447e@tpw09926dag18e.domain1.systemhost.net>
-Accept-Language: en-AU, en-GB, en-US
-Content-Language: en-AU
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.187.101.40]
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (envelope-from <laurent@vivier.eu>) id 1hZy2c-0008Fa-JF
+ for qemu-trivial@nongnu.org; Sun, 09 Jun 2019 09:39:23 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:54009)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1hZy2c-0008Ey-AH; Sun, 09 Jun 2019 09:39:22 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MDQqe-1hQeNk0vHa-00AZoY; Sun, 09 Jun 2019 15:39:18 +0200
+To: Lucien Murray-Pitts <lucienmp.qemu@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20190606234125.GA4830@localhost.localdomain>
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <7272c10f-3959-ed77-4f26-90e818278e8a@vivier.eu>
+Date: Sun, 9 Jun 2019 15:39:16 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.79
-Subject: [Qemu-trivial] [PATCH v2] test: Use g_strndup instead of plain
- strndup
+In-Reply-To: <20190606234125.GA4830@localhost.localdomain>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:ixn9FAziCxuy3P4CINRCKDDbgFE2TbHnGrTwVWzj4szIW4BJAKP
+ C68D1PbwvkR+Y3H/xZoO8/AJB4ppz6mdiR+f/tpgEctSgPdGYErZA9GDd4/rlvD9dXJUvzZ
+ X7Mvq+0H6skfucVAWBVo66nQFyQXwIIepERYTuAMOJkBMzu6D07j9UMpmG0zdfGMcG1tJ4g
+ aesspg3Q1qqk0cvnHgAFQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:8xGVlntOEdc=:9f6oG+ZPzlEZDhtRx2GO+V
+ WSGc3l7LxtN5kosGqyQAqizun9W8U4XqKctG27LZ2568mke4N8nFjrUT1fDN3sIbnW0e5rsih
+ MaGtJ6hmqr6fQDTWE6bhsF1fHDt8YWpE0TjRQgw1ZuJBxkOlGUbwOROlo9dYrRiUT5ridaKKv
+ mfAeUvufgWlWpFsjIwFMW/WZ5L3M/vkJ/1ZliXpg56aA73d1oPtBrR8vDcogymiUZW3WBbs94
+ zHssi4wn08OX4GNAE9EZ/ffQA7Xe/IKuW9feMTP43OFHoCgeooYpC3AHgKQnTGy15CPlo7z6y
+ CT2bb/tyTMKTZnwLvy0SpqwtG4An3njalI9KFVArIgxhuK0ehGSohFGCfDlPQeREcJj2Asz/L
+ MBg9rimgBmd0vzK0pqrEjwIRizWsjlL+6tKvwafl2epIxFYe9LL1Lfy1NkF1P6vNItRiA9R0v
+ M5XkIFO3fln9mlV3OIEUgs2uArXTRUtotP3Ghgq/TGpWCsgcNivBfwDgS9G7Cctta3qWK0+Ar
+ /ol+w+2BhvExYdLFimnmirrz0AgCAh8LnjK0fUFJ8v4BrIY+2ms+EWjGwxz3qNvBA3tEHVw20
+ Mplb9pjG/ZR+EV+0mgu45EowHe/otyLj7O/h763IAN1HURsPPE4sLiqK0C8tEfErXL+ACgmno
+ W4QvTchWiFmzgFoGy8w/iQfa7yl+RgPQ2WRIkGLT0RYVIB8QdNiaQxIpcfkfUVDQvfRQk34xe
+ ZmVpFjl3puHHnujcGxlH18UOYUUPfjUecnvhMJAm1BVEbpSFihwdwUEtyts=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 217.72.192.75
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v2] m68k comments break
+ patch submission due to being incorrectly formatted
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -55,51 +102,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Jun 2019 05:26:19 -0000
+X-List-Received-Date: Sun, 09 Jun 2019 13:39:24 -0000
 
-Due to memory management rules. See HACKING.=0A=
-    =0A=
-Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>=0A=
-=0A=
-diff --git a/tests/check-qjson.c b/tests/check-qjson.c=0A=
-index fa2afcc..07a773e 100644=0A=
---- a/tests/check-qjson.c=0A=
-+++ b/tests/check-qjson.c=0A=
-@@ -767,7 +767,7 @@ static void utf8_string(void)=0A=
-                     if (*end =3D=3D ' ') {=0A=
-                         end++;=0A=
-                     }=0A=
--                    in =3D strndup(tail, end - tail);=0A=
-+                    in =3D g_strndup(tail, end - tail);=0A=
-                     str =3D from_json_str(in, j, NULL);=0A=
-                     g_assert(!str);=0A=
-                     g_free(in);=0A=
-diff --git a/tests/migration/stress.c b/tests/migration/stress.c=0A=
-index 49a03aa..d9aa4af 100644=0A=
---- a/tests/migration/stress.c=0A=
-+++ b/tests/migration/stress.c=0A=
-@@ -104,9 +104,9 @@ static int get_command_arg_str(const char *name,=0A=
-     }=0A=
- =0A=
-     if (end)=0A=
--        *val =3D strndup(start, end - start);=0A=
-+        *val =3D g_strndup(start, end - start);=0A=
-     else=0A=
--        *val =3D strdup(start);=0A=
-+        *val =3D g_strdup(start);=0A=
-     return 1;=0A=
- }=0A=
- =0A=
-@@ -126,10 +126,10 @@ static int get_command_arg_ull(const char *name,=0A=
-     if (errno || *end) {=0A=
-         fprintf(stderr, "%s (%05d): ERROR: cannot parse %s value %s\n",=0A=
-                 argv0, gettid(), name, valstr);=0A=
--        free(valstr);=0A=
-+        g_free(valstr);=0A=
-         return -1;=0A=
-     }=0A=
--    free(valstr);=0A=
-+    g_free(valstr);=0A=
-     return 0;=0A=
- }=
+Le 07/06/2019 à 01:41, Lucien Murray-Pitts a écrit :
+> Altering all comments in target/m68k to match Qemu coding styles so that future
+> patches wont fail due to style breaches.
+> 
+> Signed-off-by: Lucien Murray-Pitts <lucienmp.qemu@gmail.com>
+> ---
+> 
+> Notes:
+>     v1->v2
+>      - incorrectly made split-single line comments multiple single lines
+>      - added corrections for /** comments as well as /*----...
+>      - caught some other malformed comments that had been missed out
+> 
+>  target/m68k/cpu-qom.h               |   2 +-
+>  target/m68k/cpu.c                   |   6 +-
+>  target/m68k/cpu.h                   |  32 ++--
+>  target/m68k/fpu_helper.c            |   6 +-
+>  target/m68k/gdbstub.c               |   6 +-
+>  target/m68k/helper.c                |  16 +-
+>  target/m68k/m68k-semi.c             |  24 ++-
+>  target/m68k/op_helper.c             |  58 ++++---
+>  target/m68k/softfloat.c             | 181 ++++++++++----------
+>  target/m68k/softfloat.h             |   3 +-
+>  target/m68k/softfloat_fpsp_tables.h |   3 +-
+>  target/m68k/translate.c             | 246 ++++++++++++++++++----------
+>  12 files changed, 355 insertions(+), 228 deletions(-)
+> 
+
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+
 
