@@ -1,74 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hb8vL-0001ye-75
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Jun 2019 15:28:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38963)
+	id 1hbhhG-00068X-G5
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2019 04:36:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56305)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <eblake@redhat.com>) id 1hb8vI-0001u9-V7
- for qemu-trivial@nongnu.org; Wed, 12 Jun 2019 15:28:42 -0400
+ (envelope-from <stefanha@gmail.com>) id 1hbhh9-00066b-JB
+ for qemu-trivial@nongnu.org; Fri, 14 Jun 2019 04:36:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1hb8vI-0000uJ-3p
- for qemu-trivial@nongnu.org; Wed, 12 Jun 2019 15:28:40 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39042)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1hb8vD-0000pc-V1; Wed, 12 Jun 2019 15:28:36 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 1A5B33005029;
- Wed, 12 Jun 2019 19:28:27 +0000 (UTC)
-Received: from [10.3.116.85] (ovpn-116-85.phx2.redhat.com [10.3.116.85])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E0C7E614C8;
- Wed, 12 Jun 2019 19:28:22 +0000 (UTC)
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- qemu-devel@nongnu.org, Ramon Fried <rfried.dev@gmail.com>
-References: <20190611145556.12940-1-rfried.dev@gmail.com>
- <87o932el61.fsf@zen.linaroharston>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=eblake@redhat.com; keydata=
- xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
- xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
- TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
- GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
- sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
- AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
- CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
- RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
- wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
- Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
- gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
- pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
- zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
- pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
- 3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
- NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
- cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
- SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
- I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
- mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
- Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
- 2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
-Organization: Red Hat, Inc.
-Message-ID: <9b51858e-a876-aff8-15f7-228f659d0d20@redhat.com>
-Date: Wed, 12 Jun 2019 14:28:21 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+ (envelope-from <stefanha@gmail.com>) id 1hbhh6-0006CS-N2
+ for qemu-trivial@nongnu.org; Fri, 14 Jun 2019 04:36:22 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:39322)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <stefanha@gmail.com>)
+ id 1hbhgx-00067I-Bs; Fri, 14 Jun 2019 04:36:11 -0400
+Received: by mail-wm1-x344.google.com with SMTP id z23so1392224wma.4;
+ Fri, 14 Jun 2019 01:36:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=FtsMw6gULlhnWEqNSilawymZFzcFoOlY8Y32pKxwRro=;
+ b=i85RF81QHE0GLgYy//g5gRXjpbcTD0qQHt9rVls97pztNR4g2g81hVLfZt6pLa3mTX
+ iUm7EfLzUP9/kghT0GmsEYXzr8/D+NqNaAkB2jAmf+zZbXz8A2kYEIrrGBKhx8W73nli
+ 5ORYR/dWo+NpwerfQZDsjfqhWtgpYfhK8n3BXtU1TeZT3WeytSd/SoHa715I5N6PreQj
+ ojNlDHhyisJOI1AEIyyXgxphWkDrODmeUty/FuKjIrVUrswnnm+c+pC1wq0jhiGnanSa
+ qDOVnkAo4AqJ88grdsytXscIczZBFDwCYJIT31BtdzNY0/IgYfPLthlUycOFVTKemXpA
+ 6kUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=FtsMw6gULlhnWEqNSilawymZFzcFoOlY8Y32pKxwRro=;
+ b=jDthlsd8bp57pxhiHofyeGhcO2Auo5lL+k94mCtZi9V2HooyCSSQXep+my40OWY9LH
+ sjnC8uQpvh5OKgm6Kx+LAo5/Fm98OzQV76gXt25zk34E7VedRtdM9g+XZgT1Er0tr5Qz
+ nm5U4thJoEN1ONqpByf2GsY4G0DiH+PS4vWjKs3h5sJZnWwo5Cgml/Z2Fa6dzu93yBZG
+ v8JxgsdJiIhQa/qvJ5EOeXkRpN1qT8zHDj9QBoqdO/3GJipjA9qi3Gae9bskOardIctL
+ 6DSIKszbvYg7AziDCkwJ2+FIg0hnagzBbhxg4GJpaqtElRngt/vqQNcO8DvDbiHeNq6d
+ A8jg==
+X-Gm-Message-State: APjAAAWpzoJ4obDButI7z/L0jz9BlqXI+VQSF7neDh46DdBY7lKIxSOV
+ s1gm3+cmGC83KSxeQuHLXdY=
+X-Google-Smtp-Source: APXvYqzZf565wq8+K0aO9G+2CRzEA8z7+x5B5wYcqX2kQxWuv5l3cwmGrmRCeLtSDEr6SY/RbUX9EQ==
+X-Received: by 2002:a05:600c:20c3:: with SMTP id
+ y3mr7155410wmm.3.1560501369141; 
+ Fri, 14 Jun 2019 01:36:09 -0700 (PDT)
+Received: from localhost ([51.15.41.238])
+ by smtp.gmail.com with ESMTPSA id y12sm2193773wrr.3.2019.06.14.01.36.08
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Fri, 14 Jun 2019 01:36:08 -0700 (PDT)
+Date: Fri, 14 Jun 2019 09:36:03 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, mst@redhat.com
+Message-ID: <20190614083603.GB10957@stefanha-x1.localdomain>
+References: <20190605131221.29432-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <87o932el61.fsf@zen.linaroharston>
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="nqWT9CePoK38wY5NuvbMp6T1rdnHuRb7x"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Wed, 12 Jun 2019 19:28:33 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [Qemu-arm] [PATCH v2] net:
- cadence_gem: fix compilation error when debug is on
+ protocol="application/pgp-signature"; boundary="z6Eq5LdranGa6ru8"
+Content-Disposition: inline
+In-Reply-To: <20190605131221.29432-1-marcandre.lureau@redhat.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::344
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] docs/vhost-user.json: some
+ firmware.json copy leftovers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -80,86 +73,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Jun 2019 19:28:42 -0000
+X-List-Received-Date: Fri, 14 Jun 2019 08:36:25 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---nqWT9CePoK38wY5NuvbMp6T1rdnHuRb7x
-Content-Type: multipart/mixed; boundary="KbisJ2eFc9eFgnTLpn7xOErVdRpYBM2XN";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- qemu-devel@nongnu.org, Ramon Fried <rfried.dev@gmail.com>
-Message-ID: <9b51858e-a876-aff8-15f7-228f659d0d20@redhat.com>
-Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v2] net: cadence_gem: fix
- compilation error when debug is on
-References: <20190611145556.12940-1-rfried.dev@gmail.com>
- <87o932el61.fsf@zen.linaroharston>
-In-Reply-To: <87o932el61.fsf@zen.linaroharston>
 
---KbisJ2eFc9eFgnTLpn7xOErVdRpYBM2XN
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+--z6Eq5LdranGa6ru8
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 6/12/19 1:03 PM, Alex Benn=C3=A9e wrote:
->=20
-> Ramon Fried <rfried.dev@gmail.com> writes:
->=20
->> defining CADENCE_GEM_ERR_DEBUG causes compilation
->> errors, fix that.
->=20
-> It would be worth doing something like:
->=20
-> #ifdef CADENCE_GEM_ERR_DEBUG
-> #define CADENCE_GEM_GATE 1
-> #else
-> #define CADENCE_GEM_GATE 0
-> #endif
->=20
-> #define DB_PRINT(...) do { \
->     if (CADENCE_GEM_GATE) { \
->         fprintf(stderr,  ": %s: ", __func__); \
->         fprintf(stderr, ## __VA_ARGS__); \
->     } \
-> } while (0)
->=20
-> So these format strings don't go stale in and only get detected on
-> --debug builds.
->=20
-> While your at it I suspect the fprintf debug would be better of as:
->=20
->   qemu_log("%s: " fmt, __func__, ## args);
+On Wed, Jun 05, 2019 at 03:12:21PM +0200, Marc-Andr=E9 Lureau wrote:
+> Signed-off-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  docs/interop/vhost-user.json | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
-Indeed, or even see if it is worth converting to full-on trace points
-for dynamic control of whether to catch these things without having to
-recompile debug on or off.
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
-
---KbisJ2eFc9eFgnTLpn7xOErVdRpYBM2XN--
-
---nqWT9CePoK38wY5NuvbMp6T1rdnHuRb7x
+--z6Eq5LdranGa6ru8
 Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAl0BUlUACgkQp6FrSiUn
-Q2pQ6ggAjV8iNpm2REHcnw/PqW1/AYUeokG6l/zMqUTeSN8/bjjaw4GrC6r8ICe4
-ms4VPK43DjxfIxCkZ3Bz7GRVT4Qw8PUhbB0WsWaO8AhNvcIYgasmsvlAMJrUzRRq
-n15YmZ2EYf+pWMWnrQXzsW2nYr5JgC8kfxTB38IYYMBU9hHMiFk54hbruO2zrCVu
-O2immF9st2C7261umVRpr4mzNqMrByyylK+flgztyq9Cd0qWhNCfU2C24omzutMi
-ooI92IoYaduvbLk4W29oarloN8WE7AMQPUgthjVuNPZhBFv8COrPmKW3tDlj1Dn3
-1bbEseoc/U33NWNnrH7qsiSGdetozA==
-=NQyf
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl0DXHMACgkQnKSrs4Gr
+c8i7xQf8CeyTI3u/TyRWKEcVGbn3cU0rOP8oOnVkScpoRe0bkmZevTpkmuy9kd44
+2k9AHgX1DDpla55m9AQk/ZQsZ95M3aY5WnUQlV1/D8wFrjEunv3okCl0Fd4bkQ5J
+72Qi6DrB/ZJ+OcnWJHJ4cW2zdDLmYhR/BmCN0EIPjivZIXcx0E1+JiZpg9VRJu5W
+v0vAnO4I4+Gqki/z06KWwdLtymlF3jgNoObbU04gI1h+qs4Se7cmh7sqcUSXegs+
+R7m0e0uouMGZypxwLinLOj8nUsijdW7vj9mwCOEzgIiJd0/EkXBDgTIAmUQ4APyC
+BlTi6FphKKZ2DjI/cxpkfW4rQ/eluQ==
+=oUDS
 -----END PGP SIGNATURE-----
 
---nqWT9CePoK38wY5NuvbMp6T1rdnHuRb7x--
+--z6Eq5LdranGa6ru8--
 
