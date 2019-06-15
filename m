@@ -1,67 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hbhhG-00068X-G5
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2019 04:36:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56305)
+	id 1hc15x-0006Nd-9i
+	for mharc-qemu-trivial@gnu.org; Sat, 15 Jun 2019 01:19:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50362)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <stefanha@gmail.com>) id 1hbhh9-00066b-JB
- for qemu-trivial@nongnu.org; Fri, 14 Jun 2019 04:36:25 -0400
+ (envelope-from <rfried.dev@gmail.com>) id 1hc15v-0006H0-Ot
+ for qemu-trivial@nongnu.org; Sat, 15 Jun 2019 01:19:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <stefanha@gmail.com>) id 1hbhh6-0006CS-N2
- for qemu-trivial@nongnu.org; Fri, 14 Jun 2019 04:36:22 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:39322)
+ (envelope-from <rfried.dev@gmail.com>) id 1hc14N-0005Qw-Br
+ for qemu-trivial@nongnu.org; Sat, 15 Jun 2019 01:17:40 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:38617)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <stefanha@gmail.com>)
- id 1hbhgx-00067I-Bs; Fri, 14 Jun 2019 04:36:11 -0400
-Received: by mail-wm1-x344.google.com with SMTP id z23so1392224wma.4;
- Fri, 14 Jun 2019 01:36:10 -0700 (PDT)
+ (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
+ id 1hc14F-0005HF-KA; Sat, 15 Jun 2019 01:17:33 -0400
+Received: by mail-wr1-x442.google.com with SMTP id d18so4534668wrs.5;
+ Fri, 14 Jun 2019 22:17:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=FtsMw6gULlhnWEqNSilawymZFzcFoOlY8Y32pKxwRro=;
- b=i85RF81QHE0GLgYy//g5gRXjpbcTD0qQHt9rVls97pztNR4g2g81hVLfZt6pLa3mTX
- iUm7EfLzUP9/kghT0GmsEYXzr8/D+NqNaAkB2jAmf+zZbXz8A2kYEIrrGBKhx8W73nli
- 5ORYR/dWo+NpwerfQZDsjfqhWtgpYfhK8n3BXtU1TeZT3WeytSd/SoHa715I5N6PreQj
- ojNlDHhyisJOI1AEIyyXgxphWkDrODmeUty/FuKjIrVUrswnnm+c+pC1wq0jhiGnanSa
- qDOVnkAo4AqJ88grdsytXscIczZBFDwCYJIT31BtdzNY0/IgYfPLthlUycOFVTKemXpA
- 6kUw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TJupJq2iLSzo+lmcW8D4WexhuYgKK3OJLzmJTPFePsY=;
+ b=mkf2VbESPMbaFlF23TzHGse6wRUBY5LI2IuAfxQaYVUccx/SkG5Pj4LsRenNPRXvSy
+ qI8ypM6Q0CeOo91Wsu7WlVamENOyxcSKHSm9hw8Y3sXMN9vxUMvrW92EOz8nU9kzRE7T
+ h65VM/Ax1d8fLokI64GuILX5I/l5Fe9tdxm1Cf+ENzjlr+kAkrEZe+6wY1ucOPePo7jN
+ /ypTu8/5SkLuHrBEAh0V/zJw2w9AONXrd4VTaho1yH44wGSGksRc6FqdZiRUUtKxg+9w
+ ktLq5A8ARkS2Sct7jh+8WlPfuejsLBUu8iajy66EY29oMQwStFheZVh+KQv4AijWqYxv
+ Dhsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=FtsMw6gULlhnWEqNSilawymZFzcFoOlY8Y32pKxwRro=;
- b=jDthlsd8bp57pxhiHofyeGhcO2Auo5lL+k94mCtZi9V2HooyCSSQXep+my40OWY9LH
- sjnC8uQpvh5OKgm6Kx+LAo5/Fm98OzQV76gXt25zk34E7VedRtdM9g+XZgT1Er0tr5Qz
- nm5U4thJoEN1ONqpByf2GsY4G0DiH+PS4vWjKs3h5sJZnWwo5Cgml/Z2Fa6dzu93yBZG
- v8JxgsdJiIhQa/qvJ5EOeXkRpN1qT8zHDj9QBoqdO/3GJipjA9qi3Gae9bskOardIctL
- 6DSIKszbvYg7AziDCkwJ2+FIg0hnagzBbhxg4GJpaqtElRngt/vqQNcO8DvDbiHeNq6d
- A8jg==
-X-Gm-Message-State: APjAAAWpzoJ4obDButI7z/L0jz9BlqXI+VQSF7neDh46DdBY7lKIxSOV
- s1gm3+cmGC83KSxeQuHLXdY=
-X-Google-Smtp-Source: APXvYqzZf565wq8+K0aO9G+2CRzEA8z7+x5B5wYcqX2kQxWuv5l3cwmGrmRCeLtSDEr6SY/RbUX9EQ==
-X-Received: by 2002:a05:600c:20c3:: with SMTP id
- y3mr7155410wmm.3.1560501369141; 
- Fri, 14 Jun 2019 01:36:09 -0700 (PDT)
-Received: from localhost ([51.15.41.238])
- by smtp.gmail.com with ESMTPSA id y12sm2193773wrr.3.2019.06.14.01.36.08
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TJupJq2iLSzo+lmcW8D4WexhuYgKK3OJLzmJTPFePsY=;
+ b=OyCQzGMTIPRvqZK/HVbvuVJJfY7iQQ3xicQxUYxdBt8dqw6j5ysdZFq4F4vNGd/LS5
+ qLmIhXwFQE6iiyoSawN0tk5Yt0D1ZMFwT19a+Eb3DZRsyIpwfRg4Shc4D0I4jZOUbzdM
+ X6k2z3ZU0leD35I6M2n6lRI+EtzoxLq2UO7PaHIYOHx1b/BIK2EIdzplKOWqHH0EEFLZ
+ dYysfF57cbgmQNBQJO1vbKYW5cEW8aAYQe4J2Wjatq49MRUELRSUCZk4VCr+xYt3bczs
+ hu4Qb/jT2+Tyh6IOrwo6U3ICm9kw3FxjCSM6I3ydl+QgznvT9BHx3M7CEdKxRA3TrRjw
+ lAQg==
+X-Gm-Message-State: APjAAAXUV+ABIZ3wcwv+tci0KGn5WXK7+sOVkuDfaJVf6jHW8eYIg4PH
+ 38XWuorLek3upD9EEuOBZGG/JdCrBYQ=
+X-Google-Smtp-Source: APXvYqwGa8Qst0ZHpONqAf5nvUuB9K6zZ7CEcP8mwnLovtERMCIdnghTTMBI8Aevgp9uuUUvkoGlJQ==
+X-Received: by 2002:adf:9003:: with SMTP id h3mr46157819wrh.172.1560575847700; 
+ Fri, 14 Jun 2019 22:17:27 -0700 (PDT)
+Received: from localhost.localdomain ([141.226.31.91])
+ by smtp.gmail.com with ESMTPSA id t15sm4316846wrx.84.2019.06.14.22.17.26
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 14 Jun 2019 01:36:08 -0700 (PDT)
-Date: Fri, 14 Jun 2019 09:36:03 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, mst@redhat.com
-Message-ID: <20190614083603.GB10957@stefanha-x1.localdomain>
-References: <20190605131221.29432-1-marcandre.lureau@redhat.com>
+ Fri, 14 Jun 2019 22:17:27 -0700 (PDT)
+From: Ramon Fried <rfried.dev@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Ramon Fried <rfried.dev@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ qemu-arm@nongnu.org (open list:Xilinx Zynq)
+Date: Sat, 15 Jun 2019 08:17:22 +0300
+Message-Id: <20190615051722.13994-1-rfried.dev@gmail.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="z6Eq5LdranGa6ru8"
-Content-Disposition: inline
-In-Reply-To: <20190605131221.29432-1-marcandre.lureau@redhat.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::344
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] docs/vhost-user.json: some
- firmware.json copy leftovers
+X-Received-From: 2a00:1450:4864:20::442
+Subject: [Qemu-trivial] [PATCH] net: cadence_gem: clear RX control descriptor
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,36 +72,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jun 2019 08:36:25 -0000
+X-List-Received-Date: Sat, 15 Jun 2019 05:19:16 -0000
 
+The RX ring descriptors control field is used for setting
+SOF and EOF (start of frame and end of frame).
+The SOF and EOF weren't cleared from the previous descriptors,
+causing inconsistencies in ring buffer.
+Fix that by clearing the control field of every descriptors we're
+processing.
 
---z6Eq5LdranGa6ru8
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
+---
+ hw/net/cadence_gem.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-On Wed, Jun 05, 2019 at 03:12:21PM +0200, Marc-Andr=E9 Lureau wrote:
-> Signed-off-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
-> ---
->  docs/interop/vhost-user.json | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index ecee22525c..d83a82bdb0 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -406,6 +406,11 @@ static inline void rx_desc_set_sof(uint32_t *desc)
+     desc[1] |= DESC_1_RX_SOF;
+ }
+ 
++static inline void rx_desc_clear(uint32_t *desc)
++{
++    desc[1]  = 0;
++}
++
+ static inline void rx_desc_set_eof(uint32_t *desc)
+ {
+     desc[1] |= DESC_1_RX_EOF;
+@@ -994,6 +999,8 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+         bytes_to_copy -= MIN(bytes_to_copy, rxbufsize);
+ 
+         /* Update the descriptor.  */
++        rx_desc_clear(s->rx_desc[q]);
++
+         if (first_desc) {
+             rx_desc_set_sof(s->rx_desc[q]);
+             first_desc = false;
+-- 
+2.21.0
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
---z6Eq5LdranGa6ru8
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl0DXHMACgkQnKSrs4Gr
-c8i7xQf8CeyTI3u/TyRWKEcVGbn3cU0rOP8oOnVkScpoRe0bkmZevTpkmuy9kd44
-2k9AHgX1DDpla55m9AQk/ZQsZ95M3aY5WnUQlV1/D8wFrjEunv3okCl0Fd4bkQ5J
-72Qi6DrB/ZJ+OcnWJHJ4cW2zdDLmYhR/BmCN0EIPjivZIXcx0E1+JiZpg9VRJu5W
-v0vAnO4I4+Gqki/z06KWwdLtymlF3jgNoObbU04gI1h+qs4Se7cmh7sqcUSXegs+
-R7m0e0uouMGZypxwLinLOj8nUsijdW7vj9mwCOEzgIiJd0/EkXBDgTIAmUQ4APyC
-BlTi6FphKKZ2DjI/cxpkfW4rQ/eluQ==
-=oUDS
------END PGP SIGNATURE-----
-
---z6Eq5LdranGa6ru8--
 
