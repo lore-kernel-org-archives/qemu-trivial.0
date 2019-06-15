@@ -1,65 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hc1P4-0005I0-Ij
-	for mharc-qemu-trivial@gnu.org; Sat, 15 Jun 2019 01:39:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53718)
+	id 1hc1Tg-0007Pm-7O
+	for mharc-qemu-trivial@gnu.org; Sat, 15 Jun 2019 01:43:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54936)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hc1Ox-0005Gw-57
- for qemu-trivial@nongnu.org; Sat, 15 Jun 2019 01:38:59 -0400
+ (envelope-from <philmd@redhat.com>) id 1hc1Td-0007P2-Td
+ for qemu-trivial@nongnu.org; Sat, 15 Jun 2019 01:43:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hc1On-00076u-Ko
- for qemu-trivial@nongnu.org; Sat, 15 Jun 2019 01:38:49 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:39971)
+ (envelope-from <philmd@redhat.com>) id 1hc1Td-0002Sl-0Z
+ for qemu-trivial@nongnu.org; Sat, 15 Jun 2019 01:43:45 -0400
+Received: from mail-wr1-f65.google.com ([209.85.221.65]:36219)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hc1Ol-00071A-JB
- for qemu-trivial@nongnu.org; Sat, 15 Jun 2019 01:38:45 -0400
-Received: by mail-wm1-f68.google.com with SMTP id v19so4156178wmj.5
- for <qemu-trivial@nongnu.org>; Fri, 14 Jun 2019 22:38:37 -0700 (PDT)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hc1Tb-0002R6-CV
+ for qemu-trivial@nongnu.org; Sat, 15 Jun 2019 01:43:44 -0400
+Received: by mail-wr1-f65.google.com with SMTP id n4so4583511wrs.3
+ for <qemu-trivial@nongnu.org>; Fri, 14 Jun 2019 22:43:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=EfnrBVu7HaiTAGRTcrTO+ehGnmBoe1i2SF2EEJPUd90=;
- b=IqqIiguGnJAMwm1d0ZLaN/vgeLFNAM4sGrSCReo8HbSI10p6giz/m2uDFspmkjBmwH
- hPYyRYXFHSRtglicCDzfx+prVMAb17gqcodU+x7fu3SHbG8AL+fmVJCUBG6PcwszAgCo
- BmUQtqo8Ci+RGgxEiaBsf1WGz3Q+DsO18eKpmZ2YkOY1anwp1AUy4mEv1VHFu4sk7rO1
- xPnHtkBII+sN93R9QctpdP6lBSTVW9fLTGkCWqneOKWElif/w4ESOHalUFC0ziwSsHrX
- aa3Ycd/rFhhGo6rERWD86c2Lay+ebPl9dn9mREtpBSTqBavgvtIc0Qglr5GUTvJctCbw
- C7JA==
-X-Gm-Message-State: APjAAAWTwhkFeXzQTikb2YewA5qIeSly/AH7szz5qU+HBnbEiy6vFcuW
- aFcPMihcUl1WA8K0El2DTHMITA==
-X-Google-Smtp-Source: APXvYqyqNcvfFWEbNz+2xp57kfkruMRAFCtr4q2/LqUZA2WBYTgVYRT12p1GK3ec+L6fPdCFszk6+Q==
-X-Received: by 2002:a7b:c776:: with SMTP id x22mr10133024wmk.55.1560577116726; 
- Fri, 14 Jun 2019 22:38:36 -0700 (PDT)
+ bh=v5uGUGq9ev6R+H4vzK2nrBhCNgR8tvot74Yt1F50TKo=;
+ b=sBzU/LXKxmOcOZz+no4jHUeawzmCO4mYF0jpbQjRgA76h6lG4Z5XRIW7nLI3Vl8yvl
+ 7ImvWBYwoxim/2aT+NyZFYwUYOV/OkunAAmW9JMGIpBPxflu5RQNLArqMPeGhpj1grBL
+ iczMlEjaKo8DrR3Olt/uXoBNwZl91amYSJVwLcBAdvkDGNtkhpSLZvDB0zUqXQaP4A6z
+ L/yBoUd/8Ot/9C3m+bUeQx7uS59Ry3Q1nC3eg59M4oM5e/BCMHun1rDgK0hECwmTH4IH
+ gFq2ad1JIdSX0D3OeN7pS8MDtRhZ8l+Ev6TOUhNvbgWQBzWEGaZKzsYFkjhDaFvnqPLL
+ AfcQ==
+X-Gm-Message-State: APjAAAXPUzSMEEd1vEumXZPwlkuaMcStyd6tO2VUdEblpYOEncz1vYPb
+ xmKCcpr2HkNJE8/zcl553mrlp+sRPRw=
+X-Google-Smtp-Source: APXvYqz6oVdYa21FoxChzcAe92WyeRLlJbKETDN0V04FIGKVwpstsR9id2zDYQjzPZTBe0JzAfG6qw==
+X-Received: by 2002:a05:6000:d1:: with SMTP id
+ q17mr14935061wrx.40.1560577422214; 
+ Fri, 14 Jun 2019 22:43:42 -0700 (PDT)
 Received: from [192.168.1.103] (183.red-88-21-202.staticip.rima-tde.net.
  [88.21.202.183])
- by smtp.gmail.com with ESMTPSA id 139sm5809495wmb.19.2019.06.14.22.38.35
+ by smtp.gmail.com with ESMTPSA id 34sm4892657wre.32.2019.06.14.22.43.41
  (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Fri, 14 Jun 2019 22:38:36 -0700 (PDT)
-To: Ramon Fried <rfried.dev@gmail.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang
- <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-References: <20190615051559.13767-1-rfried.dev@gmail.com>
+ Fri, 14 Jun 2019 22:43:41 -0700 (PDT)
+To: Greg Kurz <groug@kaod.org>, Stefano Stabellini <sstabellini@kernel.org>
+Cc: Anthony Perard <anthony.perard@citrix.com>,
+ Paul Durrant <Paul.Durrant@citrix.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Markus Armbruster <armbru@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <155912548463.2019004.3515830305299809902.stgit@bahia.lan>
+ <20190529125926.GD2126@perard.uk.xensource.com>
+ <20190605121056.0e784daf@bahia.lab.toulouse-stg.fr.ibm.com>
+ <c85d973ca2d444678e8fdc86a4cd6f4f@AMSPEX02CL03.citrite.net>
+ <20190614101621.098742e2@bahia.lan>
+ <c2c63dd46c684b1bb0f2e342a085d93d@AMSPEX02CL03.citrite.net>
+ <alpine.DEB.2.21.1906140844150.2072@sstabellini-ThinkPad-T480s>
+ <20190614185054.6f12ab30@bahia.lan>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
  url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <d87ea542-7ecc-4fb1-ac1d-929825d23a8a@redhat.com>
-Date: Sat, 15 Jun 2019 07:38:35 +0200
+Message-ID: <b40f16eb-5ae5-4b36-e0a8-02b10c3b7769@redhat.com>
+Date: Sat, 15 Jun 2019 07:43:40 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190615051559.13767-1-rfried.dev@gmail.com>
+In-Reply-To: <20190614185054.6f12ab30@bahia.lan>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] net: cadence_gem: fix
- compilation error when debug is on
+X-Received-From: 209.85.221.65
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] MAINTAINERS: Change
+ maintership of Xen code under hw/9pfs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,70 +78,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 Jun 2019 05:38:59 -0000
+X-List-Received-Date: Sat, 15 Jun 2019 05:43:46 -0000
 
-Hi Ramon,
+Cc'ing qemu-trivial@
 
-On 6/15/19 7:15 AM, Ramon Fried wrote:
-> defining CADENCE_GEM_ERR_DEBUG causes compilation
-> errors, fix that.
+On 6/14/19 6:50 PM, Greg Kurz wrote:
+[...]
+> Markus, Xen maintainers,
 > 
-> Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
-> ---
-> v2: change %lx to HWADDR_PRIx and %lx to %zdx
-> v3: change %zdx to %zx
+> All needed Acked-by have been provided. I don't plan to send a 9pfs PR
+> anytime soon. Can this go through someone else's tree please ?
 > 
->  hw/net/cadence_gem.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+> Cheers,
 > 
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index 7f63411430..ecee22525c 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -982,8 +982,8 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
->              return -1;
->          }
->  
-> -        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy, rxbufsize),
-> -                rx_desc_get_buffer(s->rx_desc[q]));
-> +        DB_PRINT("copy %d bytes to 0x%" HWADDR_PRIx "\n", MIN(bytes_to_copy, rxbufsize),
-> +                rx_desc_get_buffer(s, s->rx_desc[q]));
->  
->          /* Copy packet data to emulated DMA buffer */
->          address_space_write(&s->dma_as, rx_desc_get_buffer(s, s->rx_desc[q]) +
-> @@ -1156,7 +1156,7 @@ static void gem_transmit(CadenceGEMState *s)
->              if (tx_desc_get_length(desc) > sizeof(tx_packet) -
->                                                 (p - tx_packet)) {
->                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x space " \
-> -                         "0x%x\n", (unsigned)packet_desc_addr,
-> +                         "0x%zx\n", (unsigned)packet_desc_addr,
->                           (unsigned)tx_desc_get_length(desc),
->                           sizeof(tx_packet) - (p - tx_packet));
->                  break;
+> --
+> Greg
 > 
-
-I still get an error when trying to build on 32bit host with
-CADENCE_GEM_ERR_DEBUG enabled (pre-existing to your patch):
-
-  CC      hw/net/cadence_gem.o
-./hw/net/cadence_gem.c: In function 'gem_receive':
-./hw/net/cadence_gem.c:973:14: error: format '%ld' expects argument of
-type 'long int', but argument 4 has type 'size_t {aka unsigned int}'
-[-Werror=format=]
-     DB_PRINT("config bufsize: %d packet size: %ld\n", rxbufsize, size);
-              ^
-./hw/net/cadence_gem.c:38:24: note: in definition of macro 'DB_PRINT'
-     fprintf(stderr, ## __VA_ARGS__); \
-                        ^
-cc1: all warnings being treated as errors
-./rules.mak:69: recipe for target 'hw/net/cadence_gem.o' failed
-make: *** [hw/net/cadence_gem.o] Error 1
-
-However the 64bit host is indeed fixed, so I'm fine with your patch:
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-
-Regards,
-
-Phil.
 
