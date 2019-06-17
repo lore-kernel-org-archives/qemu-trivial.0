@@ -1,72 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hc1zY-00006e-Si
-	for mharc-qemu-trivial@gnu.org; Sat, 15 Jun 2019 02:16:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59988)
+	id 1hcq1P-0004pq-U4
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2019 07:42:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55728)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <rfried.dev@gmail.com>) id 1hc1zV-0008Ty-TU
- for qemu-trivial@nongnu.org; Sat, 15 Jun 2019 02:16:43 -0400
+ (envelope-from <berrange@redhat.com>) id 1hcq16-0004nh-8d
+ for qemu-trivial@nongnu.org; Mon, 17 Jun 2019 07:41:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <rfried.dev@gmail.com>) id 1hc1zU-0002G1-E0
- for qemu-trivial@nongnu.org; Sat, 15 Jun 2019 02:16:41 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:50358)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
- id 1hc1zP-0001sl-7i; Sat, 15 Jun 2019 02:16:37 -0400
-Received: by mail-wm1-x341.google.com with SMTP id c66so4349749wmf.0;
- Fri, 14 Jun 2019 23:16:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:user-agent:in-reply-to:references:mime-version
- :content-transfer-encoding:subject:to:cc:from:message-id;
- bh=DAxc5dy0+uGy/JP2OU5SIVh5tvhIxU8HqRH7eFKD2F8=;
- b=al7gbUJIjpcVYXPD+EEyM/rHZ8wIgZZffKlBetKAvVOxLxFxO9xS4EEFql8+sOd0is
- QmMsosot4g4olenik2BQb4zhDEt4XysDZvi9Y//AXcciSwl4CxzOAOqsNwylBEuqGJv4
- ZmGd9p09wIw5b6oZ+OVtUE0TCaXjXsoFXludVBtkkmvWn9oCKPDe2+Hstj6V6b1aqtW7
- XeJkuyBR4C3eHoHJEcH52GFhG8zLiYdZuOOOe10/lT3Fl4AN4TOF7oDTkK6d5uWILLjU
- OXNwMoL8eEaBMY8/0oTscyYTK5FaxKLfpruF+8UGZNJescGQ5brzDWVVN6dxV9vbMSDy
- PYIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:user-agent:in-reply-to:references
- :mime-version:content-transfer-encoding:subject:to:cc:from
- :message-id;
- bh=DAxc5dy0+uGy/JP2OU5SIVh5tvhIxU8HqRH7eFKD2F8=;
- b=VLshLYxU61vDuLTBEBb28F8ugz6sm/9QsGV/PdZWc1J608Z8Km8G5ANlDsTJK0mk13
- e0bXq8mcY1gcZaYllQqaEW+wYpiptzgyQrcUZNONyImZ9gNXAudUQ3DXRJeLNbcu+lPj
- Puo21AD8ZUiOF8OzNA/DIflMA0M98BaUWJYXwRqR+M5tku4rm4FHTt4MLFVPaxsQTQdO
- xlPtBC77hzHOqEg+Ej0g/zjoNocyZofQ1NkgiskBme07GP2ONmoZZCuasLY24xf4OJvI
- 6PpKKfEh24pIszAM6rDhvrAtbOavzG61uMAJH6ruTfkO+6Y+kgNqIxEyH7WYMH0/XK+e
- XE9Q==
-X-Gm-Message-State: APjAAAV7z/Cg2GD52n3mgZk6JfAA/c3LcieEEKBD5AgXGprwszP+SVO9
- 7XXo+23jvhiQ+HPO0skrCAM=
-X-Google-Smtp-Source: APXvYqwX3/jfGL0/JUN7hqDRdCrzE3GHGUL66OJbrKqg6F7zvmCFH7Vnpx3WApFSNxl8CnwbhtKHaw==
-X-Received: by 2002:a1c:1f06:: with SMTP id f6mr10925560wmf.60.1560579371253; 
- Fri, 14 Jun 2019 23:16:11 -0700 (PDT)
-Received: from [192.168.1.10] ([141.226.31.91])
- by smtp.gmail.com with ESMTPSA id g131sm3598355wmf.37.2019.06.14.23.16.09
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 14 Jun 2019 23:16:10 -0700 (PDT)
-Date: Sat, 15 Jun 2019 09:16:06 +0300
-User-Agent: K-9 Mail for Android
-In-Reply-To: <d87ea542-7ecc-4fb1-ac1d-929825d23a8a@redhat.com>
-References: <20190615051559.13767-1-rfried.dev@gmail.com>
- <d87ea542-7ecc-4fb1-ac1d-929825d23a8a@redhat.com>
+ (envelope-from <berrange@redhat.com>) id 1hcq15-0005YL-BJ
+ for qemu-trivial@nongnu.org; Mon, 17 Jun 2019 07:41:40 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39854)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <berrange@redhat.com>)
+ id 1hcq0t-0005Hc-Ds; Mon, 17 Jun 2019 07:41:29 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 460DC307E04A;
+ Mon, 17 Jun 2019 11:41:16 +0000 (UTC)
+Received: from localhost.localdomain.com (unknown [10.42.22.189])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5849617165;
+ Mon, 17 Jun 2019 11:41:15 +0000 (UTC)
+From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Date: Mon, 17 Jun 2019 12:41:14 +0100
+Message-Id: <20190617114114.24897-1-berrange@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.42]); Mon, 17 Jun 2019 11:41:16 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-CC: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-From: Ramon Fried <rfried.dev@gmail.com>
-Message-ID: <E1523CDB-895A-4EC7-908F-8A3A3717353C@gmail.com>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::341
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3] net: cadence_gem: fix
- compilation error when debug is on
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] configure: use valid args testing
+ sem_timedwait
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -78,84 +48,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 Jun 2019 06:16:43 -0000
+X-List-Received-Date: Mon, 17 Jun 2019 11:41:51 -0000
 
+The sem_timedwait function has been annotated as requiring
+non-null args in latest header files from GCC snapshot
+representing the future 2.30 release.
 
+This causes configure to fail when -Werror is used:
 
-On June 15, 2019 8:38:35 AM GMT+03:00, "Philippe Mathieu-Daud=C3=A9" <phil=
-md@redhat=2Ecom> wrote:
->Hi Ramon,
->
->On 6/15/19 7:15 AM, Ramon Fried wrote:
->> defining CADENCE_GEM_ERR_DEBUG causes compilation
->> errors, fix that=2E
->>=20
->> Signed-off-by: Ramon Fried <rfried=2Edev@gmail=2Ecom>
->> ---
->> v2: change %lx to HWADDR_PRIx and %lx to %zdx
->> v3: change %zdx to %zx
->>=20
->>  hw/net/cadence_gem=2Ec | 6 +++---
->>  1 file changed, 3 insertions(+), 3 deletions(-)
->>=20
->> diff --git a/hw/net/cadence_gem=2Ec b/hw/net/cadence_gem=2Ec
->> index 7f63411430=2E=2Eecee22525c 100644
->> --- a/hw/net/cadence_gem=2Ec
->> +++ b/hw/net/cadence_gem=2Ec
->> @@ -982,8 +982,8 @@ static ssize_t gem_receive(NetClientState *nc,
->const uint8_t *buf, size_t size)
->>              return -1;
->>          }
->> =20
->> -        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy,
->rxbufsize),
->> -                rx_desc_get_buffer(s->rx_desc[q]));
->> +        DB_PRINT("copy %d bytes to 0x%" HWADDR_PRIx "\n",
->MIN(bytes_to_copy, rxbufsize),
->> +                rx_desc_get_buffer(s, s->rx_desc[q]));
->> =20
->>          /* Copy packet data to emulated DMA buffer */
->>          address_space_write(&s->dma_as, rx_desc_get_buffer(s,
->s->rx_desc[q]) +
->> @@ -1156,7 +1156,7 @@ static void gem_transmit(CadenceGEMState *s)
->>              if (tx_desc_get_length(desc) > sizeof(tx_packet) -
->>                                                 (p - tx_packet)) {
->>                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x
->space " \
->> -                         "0x%x\n", (unsigned)packet_desc_addr,
->> +                         "0x%zx\n", (unsigned)packet_desc_addr,
->>                           (unsigned)tx_desc_get_length(desc),
->>                           sizeof(tx_packet) - (p - tx_packet));
->>                  break;
->>=20
->
->I still get an error when trying to build on 32bit host with
->CADENCE_GEM_ERR_DEBUG enabled (pre-existing to your patch):
->
->  CC      hw/net/cadence_gem=2Eo
->=2E/hw/net/cadence_gem=2Ec: In function 'gem_receive':
->=2E/hw/net/cadence_gem=2Ec:973:14: error: format '%ld' expects argument o=
-f
->type 'long int', but argument 4 has type 'size_t {aka unsigned int}'
->[-Werror=3Dformat=3D]
->    DB_PRINT("config bufsize: %d packet size: %ld\n", rxbufsize, size);
->              ^
->=2E/hw/net/cadence_gem=2Ec:38:24: note: in definition of macro 'DB_PRINT'
->     fprintf(stderr, ## __VA_ARGS__); \
->                        ^
->cc1: all warnings being treated as errors
->=2E/rules=2Emak:69: recipe for target 'hw/net/cadence_gem=2Eo' failed
->make: *** [hw/net/cadence_gem=2Eo] Error 1
->
->However the 64bit host is indeed fixed, so I'm fine with your patch:
->Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat=2Ecom>
->Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat=2Ecom>
->
->Regards,
->
->Phil=2E
-Thanks!=20
+config-temp/qemu-conf.c: In function =E2=80=98main=E2=80=99:
+config-temp/qemu-conf.c:2:25: error: null argument where non-null require=
+d (argument 1) [-Werror=3Dnonnull]
+    2 | int main(void) { return sem_timedwait(0, 0); }
+      |                         ^~~~~~~~~~~~~
+config-temp/qemu-conf.c:2:25: error: null argument where non-null require=
+d (argument 2) [-Werror=3Dnonnull]
 
+Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index b091b82cb3..6632d05fc7 100755
+--- a/configure
++++ b/configure
+@@ -5139,7 +5139,7 @@ fi
+ sem_timedwait=3Dno
+ cat > $TMPC << EOF
+ #include <semaphore.h>
+-int main(void) { return sem_timedwait(0, 0); }
++int main(void) { sem_t s; struct timespec t =3D {0}; return sem_timedwai=
+t(&s, &t); }
+ EOF
+ if compile_prog "" "" ; then
+     sem_timedwait=3Dyes
 --=20
-Sent from my Android device with K-9 Mail=2E Please excuse my brevity=2E
+2.21.0
+
 
