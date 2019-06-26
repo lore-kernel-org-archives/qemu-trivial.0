@@ -1,49 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hgE8a-0007kv-MA
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 16:03:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34940)
+	id 1hgE8l-0007q5-RK
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 16:03:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35021)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <laurent@vivier.eu>) id 1hgE8W-0007kk-7T
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 16:03:21 -0400
+ (envelope-from <laurent@vivier.eu>) id 1hgE8h-0007og-S4
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 16:03:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1hgE8O-0000pN-6m
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 16:03:16 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:44207)
+ (envelope-from <laurent@vivier.eu>) id 1hgE8f-00010j-HQ
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 16:03:31 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:38095)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1hgE8H-0000jB-OM
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 16:03:11 -0400
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1hgE8d-0000yS-2T; Wed, 26 Jun 2019 16:03:27 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MLz3X-1hxTrl1UFl-00HxEF; Wed, 26 Jun 2019 22:02:56 +0200
+ id 1MStKq-1i9KEJ1Vvi-00UM6S; Wed, 26 Jun 2019 22:02:57 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>
-Date: Wed, 26 Jun 2019 22:02:48 +0200
-Message-Id: <20190626200252.30220-1-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>,
+ Antonio Ospite <antonio.ospite@collabora.com>,
+ Eric Blake <eblake@redhat.com>
+Date: Wed, 26 Jun 2019 22:02:49 +0200
+Message-Id: <20190626200252.30220-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190626200252.30220-1-laurent@vivier.eu>
+References: <20190626200252.30220-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:J4z0zesVEL2KoUQPlh8qoaHWhyBnXCdbzFB7xJLWT7ygyRTg93Z
- 4v2VN80V5nUVS2CAhIIQCUGnbyaRpK8F891aIZgj1uUVO1cGxonKWHkr3z6cpq4hd6Her60
- mE3zjEGDtO/yfmIa9M/gQWdyRMCf4/nlC6mhjJoG6iUJZWkVKrc/Z+91IM5GwOsHyteuWjP
- p/Sfc2epeNVXfnfGtmeOg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:8Nv1RcIuKDU=:vCeYhgBfRb+nciuqOYAlqm
- Ci48+G8AT1LiWMpCREAfuCmyB0azJf62qb9qXHh6bB19T077bH+9ohX3O5fSCvucUsfAoHXRr
- 6OgvU8tZtwx+j/lyb+en0NkojxYJVGiw3Jp+w4SXRgGR6a2o6D/bld8GDeCs3uWYBl5E2o8gt
- zKrfBpaApZeIh5fTZhvqbDvGljKD7jhILnP3CFG0+qx99Z9KaP1aSDZizwcvRbfuWlXNeUzRe
- 43rlYey1tL22Lb2bu7jwdnn2FxwJ7koZ1OZTp9sFAHxqTIeonRzLM0ptKzraHLeLYCFDLlEZ+
- ZYA5EvK2ZhMMW54FRmbnmxGzZLAFjj8qDq2+lfa4RZWLjllC7oZWNLmVh7o+G/RsFbEnigMsm
- 625fdJerH1jWybckSkq+4Y5Z2kPYbZKoCBNS7I5SkiaYC5YEB1eps0AlMJ5gRI+3/+r6dleS+
- ew/uIUn+kk/q69F5+OCwYtYOzyHjuIoNwNqo9H2FaSGp5v6RV5Xo8EYMZ6kRysznwsIN4dXL+
- yfCJ2vFgdWT946RiFzZvjo69n6XdBrePPtHDgs6sJ/pZzzFEw7u7Rmb1z3QJYm9FgKWyxvjFJ
- UQxRxkr1W1vtlX1VB2cCExVwCWMC4V9n9YqUSTGswP5+w0nG7oF71+xlizNS5LyQ7BS6o//iL
- oIqgqAj9hJrXYqFGdjiDvpPxpa/xmRbTZp9vf31znIVv7ztOaGLOj7EZJlTtr6JDQ3ziBh33E
- BR/ioY409ZBSdzxPAXas8Nb2pgQyfLWBepKv+aaHqbTUVFtZ04RHQ4OPQ/A=
+X-Provags-ID: V03:K1:VjQsvc3d06qk9A6m95K7upSTC3nFZciaQBjZZHSxsd0tChHc7DE
+ oJNZCMn7zyS+gmIwOYnMjvpFnb8FdxY1/FmDVxmqE/kXPEEoZBc/lDkhBzpkTCdzPPVqSWL
+ QV5l7Ck5eTblDtEXAH+E9tN61aZT1VmxQStVq/86GsvlJTu4dRt/Tczq+K2nzIQIAtOrF8a
+ T1zgFrzMoU/ucERCixpYA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6hxK8KwUclA=:Jy4o4P0WB88lpsBLkqddS5
+ 59+OVsrcy2ea0ODCcoaSQvsLz+6KFbgKL3EH/GcX9dk1tjYaSwQMYCwYsyH0MmdjEsswoR/Wt
+ eFEBPbp27XtBhhmrvmAIDabW0f4DY9TiFWyQUgKPt+xoRrgEZsRhkZUn26O6W3P7coD9g4yD2
+ zihb1Xt6i3XGK9jTud0hp0wAiChKJJU3/4jkHy9ouGQlE9uUSZqH9CME/pxaOvpU9riR3Ngjl
+ +WFAHy77DA7KNpFUWNdgXncttTFiJUkzAAK+IcAUWKDIXWDjpq/O8IuI/7qXhcBzcsonovnb6
+ JQg0gCTzMuzionTqNo8DVRWP570RuzJJyShdvRawSg0oabWlAHO3Qg5nLUckokCuOBUSE61rW
+ uFVyVi/I3sXI48s+0JbB4Q7IIvPHfFHV78CFSYmE4N+o+M6h+Xsq5TCQKC3p28OA4ANONKBkn
+ 06EeofKpPKaoRQPmSGGCzlwt+N16dW7G8h2yPoZJqO7U7OxP8WF1VB8TFHU+e9yfLAkm77bsW
+ t/ag3oe56Ydw9gsFMiv0I1CZHxSE3dFFNy4ZcJifIEnxiCwciXX2QRdXI20ZSJ5A1UWCtETvi
+ mvIb+xnm9gdd5X5IzX0L2PBApMukUclyblHvosE/Z8t9vmBxuD7xFqMoA582BloHjmEIV+RG5
+ 6d0AcqgHB7yXNpBNALfbvN81DVqD631IPMz0izHWIEB/9UzW9Hk+zo6SmUkV/gzauMcbGKcM9
+ zDJ6AGBKv88+CY5rxQwrYnqWqaZlGNmQi2eeew==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.10
-Subject: [Qemu-trivial] [PULL 0/4] Trivial patches patches
+X-Received-From: 212.227.17.24
+Subject: [Qemu-trivial] [PULL 1/4] configure: set source_path only once and
+ make its definition more robust
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -55,42 +59,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Jun 2019 20:03:22 -0000
+X-List-Received-Date: Wed, 26 Jun 2019 20:03:33 -0000
 
-The following changes since commit 474f3938d79ab36b9231c9ad3b5a9314c2aeacde:
+From: Antonio Ospite <antonio.ospite@collabora.com>
 
-  Merge remote-tracking branch 'remotes/amarkovic/tags/mips-queue-jun-21-2019' into staging (2019-06-21 15:40:50 +0100)
+Since commit 79d77bcd36 (configure: Remove --source-path option,
+2019-04-29) source_path cannot be overridden anymore, move it out of the
+"default parameters" block since the word "default" may suggest that the
+value can change, while in fact it does not.
 
-are available in the Git repository at:
+While at it, only set source_path once and separate the positional
+argument of basename with "--" to more robustly cover the case of path
+names starting with a dash.
 
-  git://github.com/vivier/qemu.git tags/trivial-patches-pull-request
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: Antonio Ospite <antonio.ospite@collabora.com>
+Message-Id: <20190526144747.30019-2-ao2@ao2.it>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ configure | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-for you to fetch changes up to b827891d73778eaf962b0536f955194cf4faa424:
-
-  MAINTAINERS: Change maintership of Xen code under hw/9pfs (2019-06-26 18:30:03 +0200)
-
-----------------------------------------------------------------
-configure improvements and fixes
-MAINTAINERS update
-
-----------------------------------------------------------------
-
-Antonio Ospite (2):
-  configure: set source_path only once and make its definition more
-    robust
-  configure: disallow spaces and colons in source path and build path
-
-Daniel P. Berrangé (1):
-  configure: use valid args testing sem_timedwait
-
-Greg Kurz (1):
-  MAINTAINERS: Change maintership of Xen code under hw/9pfs
-
- MAINTAINERS |  3 ++-
- Makefile    |  4 ++++
- configure   | 13 +++++++++----
- 3 files changed, 15 insertions(+), 5 deletions(-)
-
+diff --git a/configure b/configure
+index b091b82cb371..b6962d1381a5 100755
+--- a/configure
++++ b/configure
+@@ -276,10 +276,10 @@ ld_has() {
+     $ld --help 2>/dev/null | grep ".$1" >/dev/null 2>&1
+ }
+ 
+-# default parameters
+-source_path=$(dirname "$0")
+ # make source path absolute
+-source_path=$(cd "$source_path"; pwd)
++source_path=$(cd "$(dirname -- "$0")"; pwd)
++
++# default parameters
+ cpu=""
+ iasl="iasl"
+ interp_prefix="/usr/gnemul/qemu-%M"
 -- 
 2.21.0
 
