@@ -1,53 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hgE91-00081Z-Hh
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 16:03:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35144)
+	id 1hgFqr-00032D-8x
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 17:53:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33654)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <laurent@vivier.eu>) id 1hgE8z-0007w6-6i
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 16:03:50 -0400
+ (envelope-from <jsnow@redhat.com>) id 1hgFqp-0002zT-5E
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 17:53:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1hgE8x-0001Bw-7N
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 16:03:48 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:37915)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1hgE8r-000155-9p; Wed, 26 Jun 2019 16:03:43 -0400
-Received: from localhost.localdomain ([78.238.229.36]) by
- mrelayeu.kundenserver.de (mreue109 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MTAJl-1i93784A5n-00UdDd; Wed, 26 Jun 2019 22:02:58 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>,
- Antonio Ospite <antonio.ospite@collabora.com>,
- Eric Blake <eblake@redhat.com>
-Date: Wed, 26 Jun 2019 22:02:50 +0200
-Message-Id: <20190626200252.30220-3-laurent@vivier.eu>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190626200252.30220-1-laurent@vivier.eu>
-References: <20190626200252.30220-1-laurent@vivier.eu>
+ (envelope-from <jsnow@redhat.com>) id 1hgFqo-00057L-4Y
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 17:53:11 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50964)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <jsnow@redhat.com>)
+ id 1hgFqj-00052x-PZ; Wed, 26 Jun 2019 17:53:05 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id B86F98553B;
+ Wed, 26 Jun 2019 21:53:04 +0000 (UTC)
+Received: from probe.bos.redhat.com (dhcp-17-47.bos.redhat.com [10.18.17.47])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C6F601001E63;
+ Wed, 26 Jun 2019 21:53:01 +0000 (UTC)
+From: John Snow <jsnow@redhat.com>
+To: qemu-block@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Qemu-Trivial <qemu-trivial@nongnu.org>, Max Reitz <mreitz@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, John Snow <jsnow@redhat.com>,
+ radmehrsaeed7@gmail.com
+Date: Wed, 26 Jun 2019 17:53:01 -0400
+Message-Id: <20190626215301.30733-1-jsnow@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:SDsrwGvhBVkJ1fQwnm9ExkGPbQNuyGaBfWIh6K97u5SFy6/iUwr
- 94CiJlMZk2roPrD9Zbmqnj9or6zVrBAgRX4XX24yvxM1W8ne5tesrQ93Sq+gOooixZGA9xg
- PbTjBFoouLcCFg015N6Iou2k6YKmnK18ESsgsuJsddlSQVMDsUidL3nZhYTtAfViE/qhe2f
- XAbpoj/jSJK6icLFJMAIg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ktFOV5d8Jyg=:YxQAZ5bbj5BXviSveKSRrQ
- YxS/xcm955RkJztqm6GpN1DxR3x/+/SL+Fu8AGbpysdSxm4fn9mChqNdjMeDwoTd/ljncWCu/
- WHqs6AxLtgayStqlMt7iVxBsf4m7M8WqmphdiTWHGq7RCsPyL0Vn6b9Z4b7GuQhTbwe4HlSFb
- VSNtWpfjr9Sc5Oq2aekTxWjeleBJNnlQLSTiVRn79v6K49f2SYkJ13skk5kwsRTvMZpUHiNkf
- vEqFYQLXXI8+vShpLzENNnVgTBAOaJpRaTFeWac7ArWXh4gWHsSrPCT+KfhZ3rU6l5CpwDgcu
- ZUgFdst0bw8QqDu0/nK60NEZNSM8CSfOBy/+eWiZmQH+uqkY12R6BMH8XC7yfXobS49D4j10x
- hpB8TmgkuCh7hRu8jxJ744TDGENa+GfTs+Qln14Gf31oGUksn0ZLLO91O13wvSnmM/SN+wWVv
- YEyG3t2cvUCf7PnxZUy6dmWL7pQoSnmq8ENgeqLHQUwNqS1witNtpStfFEN/wp9mylCkuo7dJ
- jjjmG0/rSHBMysBBEsiyi5VMXZ+hsWdzIYlKqsYsK1cyCm6Et1OmH42FDzyjjORmKq82g0uR+
- 5M1uFbwZFQbHENbkVWRseRbGku9rhHp5dkdxkQ9HH0GTTp8ES14JZNVIQSmKQit+B1NANZtRd
- f/AWpomKYUe9v37+CL7yXSVhEg2xPA2yyq0PxeWHDJ5TK9V+N8EKngkZHqWqd7ERwYYX2V6Zv
- xNXSP6Jt2bEoSttAmTrahUrUqpzgIzpHoXrG6w==
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.28]); Wed, 26 Jun 2019 21:53:04 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-Subject: [Qemu-trivial] [PULL 2/4] configure: disallow spaces and colons in
- source path and build path
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] block/qcow: Improve error when opening qcow2
+ files as qcow
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -59,66 +49,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Jun 2019 20:03:50 -0000
+X-List-Received-Date: Wed, 26 Jun 2019 21:53:12 -0000
 
-From: Antonio Ospite <antonio.ospite@collabora.com>
-
-The configure script breaks when the qemu source directory is in a path
-containing white spaces, in particular the list of targets is not
-correctly generated when calling "./configure --help" because of how the
-default_target_list variable is built.
-
-In addition to that, *building* qemu from a directory with spaces breaks
-some assumptions in the Makefiles, even if the original source path does
-not contain spaces like in the case of an out-of-tree build, or when
-symlinks are involved.
-
-To avoid these issues, refuse to run the configure script and the
-Makefile if there are spaces or colons in the source path or the build
-path, taking as inspiration what the kbuild system in linux does.
-
-Buglink: https://bugs.launchpad.net/qemu/+bug/1817345
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Signed-off-by: Antonio Ospite <antonio.ospite@collabora.com>
-Message-Id: <20190526144747.30019-3-ao2@ao2.it>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+Reported-by: radmehrsaeed7@gmail.com
+Fixes: https://bugs.launchpad.net/bugs/1832914
+Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- Makefile  | 4 ++++
- configure | 5 +++++
- 2 files changed, 9 insertions(+)
+ block/qcow.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/Makefile b/Makefile
-index cfb18f152544..c62594445d5f 100644
---- a/Makefile
-+++ b/Makefile
-@@ -1,5 +1,9 @@
- # Makefile for QEMU.
- 
-+ifneq ($(words $(subst :, ,$(CURDIR))), 1)
-+  $(error main directory cannot contain spaces nor colons)
-+endif
+diff --git a/block/qcow.c b/block/qcow.c
+index 6dee5bb792..a9cb6ae0bd 100644
+--- a/block/qcow.c
++++ b/block/qcow.c
+@@ -156,7 +156,12 @@ static int qcow_open(BlockDriverState *bs, QDict *op=
+tions, int flags,
+         goto fail;
+     }
+     if (header.version !=3D QCOW_VERSION) {
+-        error_setg(errp, "Unsupported qcow version %" PRIu32, header.ver=
+sion);
++        error_setg(errp, "qcow (v%d) does not support qcow version %" PR=
+Iu32,
++                   QCOW_VERSION, header.version);
++        if (header.version =3D=3D 2 || header.version =3D=3D 3) {
++            error_append_hint(errp, "Try the 'qcow2' driver instead.");
++        }
 +
- # Always point to the root of the build tree (needs GNU make).
- BUILD_DIR=$(CURDIR)
- 
-diff --git a/configure b/configure
-index b6962d1381a5..cf3d9d30bfce 100755
---- a/configure
-+++ b/configure
-@@ -279,6 +279,11 @@ ld_has() {
- # make source path absolute
- source_path=$(cd "$(dirname -- "$0")"; pwd)
- 
-+if printf %s\\n "$source_path" "$PWD" | grep -q "[[:space:]:]";
-+then
-+  error_exit "main directory cannot contain spaces nor colons"
-+fi
-+
- # default parameters
- cpu=""
- iasl="iasl"
--- 
+         ret =3D -ENOTSUP;
+         goto fail;
+     }
+--=20
 2.21.0
 
 
