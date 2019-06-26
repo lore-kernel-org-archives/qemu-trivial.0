@@ -1,46 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hg6vT-0005TK-6G
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 08:21:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52021)
+	id 1hgADq-0004mO-IY
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 11:52:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49486)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hg6vI-0005Qx-T8
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 08:21:15 -0400
+ (envelope-from <eblake@redhat.com>) id 1hgADp-0004kg-6W
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 11:52:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hg6vH-00063y-JL
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 08:21:12 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50507)
+ (envelope-from <eblake@redhat.com>) id 1hgADo-0002KC-6o
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 11:52:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48324)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1hg6vC-0005rq-Gm; Wed, 26 Jun 2019 08:21:06 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ (Exim 4.71) (envelope-from <eblake@redhat.com>)
+ id 1hgADl-0002HJ-Pz; Wed, 26 Jun 2019 11:52:30 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id A9A4A3082140;
- Wed, 26 Jun 2019 12:20:57 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-66.brq.redhat.com [10.40.204.66])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5CC6B10018F9;
- Wed, 26 Jun 2019 12:20:54 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Wed, 26 Jun 2019 14:20:42 +0200
-Message-Id: <20190626122042.7656-3-philmd@redhat.com>
-In-Reply-To: <20190626122042.7656-1-philmd@redhat.com>
-References: <20190626122042.7656-1-philmd@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id 7C97D308FBAC;
+ Wed, 26 Jun 2019 15:52:23 +0000 (UTC)
+Received: from [10.3.116.44] (ovpn-116-44.phx2.redhat.com [10.3.116.44])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3D20A60C80;
+ Wed, 26 Jun 2019 15:52:22 +0000 (UTC)
+To: Antonio Ospite <antonio.ospite@collabora.com>, Antonio Ospite
+ <ao2@ao2.it>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <20190526144747.30019-1-ao2@ao2.it>
+ <adce6062-9289-afe8-b26a-949144700656@collabora.com>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=eblake@redhat.com; keydata=
+ xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
+ xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
+ TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
+ GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
+ sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
+ AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
+ CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
+ RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
+ wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
+ Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
+ gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
+ pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
+ zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
+ pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
+ 3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
+ NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
+ cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
+ SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
+ I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
+ mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
+ Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
+ 2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
+Organization: Red Hat, Inc.
+Message-ID: <974086f5-459f-5e8d-d206-735010445b12@redhat.com>
+Date: Wed, 26 Jun 2019 10:52:20 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <adce6062-9289-afe8-b26a-949144700656@collabora.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="w6793FgKvl4g0Ryu18PChqsQBFXyIynMa"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.42]); Wed, 26 Jun 2019 12:21:02 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+ (mx1.redhat.com [10.5.110.43]); Wed, 26 Jun 2019 15:52:28 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH 2/2] hw/timer/m48t59: Convert debug printf()s
- to trace events
+Subject: Re: [Qemu-trivial] [PATCH v3 0/2] configure: disallow spaces and
+ colons in source path and build path
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -52,108 +81,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Jun 2019 12:21:18 -0000
+X-List-Received-Date: Wed, 26 Jun 2019 15:52:34 -0000
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/timer/m48t59-internal.h |  5 -----
- hw/timer/m48t59.c          | 11 +++++------
- hw/timer/trace-events      |  6 ++++++
- 3 files changed, 11 insertions(+), 11 deletions(-)
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--w6793FgKvl4g0Ryu18PChqsQBFXyIynMa
+Content-Type: multipart/mixed; boundary="1xE4CMDIHno0ylVkc4XIq6S7OWPZvj7ks";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: Antonio Ospite <antonio.ospite@collabora.com>, Antonio Ospite
+ <ao2@ao2.it>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Message-ID: <974086f5-459f-5e8d-d206-735010445b12@redhat.com>
+Subject: Re: [PATCH v3 0/2] configure: disallow spaces and colons in source
+ path and build path
+References: <20190526144747.30019-1-ao2@ao2.it>
+ <adce6062-9289-afe8-b26a-949144700656@collabora.com>
+In-Reply-To: <adce6062-9289-afe8-b26a-949144700656@collabora.com>
 
-diff --git a/hw/timer/m48t59-internal.h b/hw/timer/m48t59-internal.h
-index 4d4f2a6fed..cd648241e9 100644
---- a/hw/timer/m48t59-internal.h
-+++ b/hw/timer/m48t59-internal.h
-@@ -26,11 +26,6 @@
- #ifndef HW_M48T59_INTERNAL_H
- #define HW_M48T59_INTERNAL_H
-=20
--#define M48T59_DEBUG 0
--
--#define NVRAM_PRINTF(fmt, ...) do { \
--    if (M48T59_DEBUG) { printf(fmt , ## __VA_ARGS__); } } while (0)
--
- /*
-  * The M48T02, M48T08 and M48T59 chips are very similar. The newer '59 h=
-as
-  * alarm and a watchdog timer and related control registers. In the
-diff --git a/hw/timer/m48t59.c b/hw/timer/m48t59.c
-index 030c8872a2..d50b4ddea2 100644
---- a/hw/timer/m48t59.c
-+++ b/hw/timer/m48t59.c
-@@ -33,6 +33,7 @@
- #include "exec/address-spaces.h"
- #include "qemu/bcd.h"
- #include "qemu/module.h"
-+#include "trace.h"
-=20
- #include "m48t59-internal.h"
-=20
-@@ -189,8 +190,7 @@ void m48t59_write(M48t59State *NVRAM, uint32_t addr, =
-uint32_t val)
-     struct tm tm;
-     int tmp;
-=20
--    if (addr > 0x1FF8 && addr < 0x2000)
--	NVRAM_PRINTF("%s: 0x%08x =3D> 0x%08x\n", __func__, addr, val);
-+    trace_m48txx_nvram_mem_write(addr, val);
-=20
-     /* check for NVRAM access */
-     if ((NVRAM->model =3D=3D 2 && addr < 0x7f8) ||
-@@ -447,8 +447,7 @@ uint32_t m48t59_read(M48t59State *NVRAM, uint32_t add=
-r)
- 	}
-         break;
-     }
--    if (addr > 0x1FF9 && addr < 0x2000)
--       NVRAM_PRINTF("%s: 0x%08x <=3D 0x%08x\n", __func__, addr, retval);
-+    trace_m48txx_nvram_mem_read(addr, retval);
-=20
-     return retval;
- }
-@@ -459,7 +458,7 @@ static void NVRAM_writeb(void *opaque, hwaddr addr, u=
-int64_t val,
- {
-     M48t59State *NVRAM =3D opaque;
-=20
--    NVRAM_PRINTF("%s: 0x%"HWADDR_PRIx" =3D> 0x%"PRIx64"\n", __func__, ad=
-dr, val);
-+    trace_m48txx_nvram_io_write(addr, val);
-     switch (addr) {
-     case 0:
-         NVRAM->addr &=3D ~0x00FF;
-@@ -491,7 +490,7 @@ static uint64_t NVRAM_readb(void *opaque, hwaddr addr=
-, unsigned size)
-         retval =3D -1;
-         break;
-     }
--    NVRAM_PRINTF("%s: 0x%"HWADDR_PRIx" <=3D 0x%08x\n", __func__, addr, r=
-etval);
-+    trace_m48txx_nvram_io_read(addr, retval);
-=20
-     return retval;
- }
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index dcaf3d6da6..66ccdd0974 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -83,3 +83,9 @@ pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x =
-value 0x%08x"
- pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
- pl031_alarm_raised(void) "alarm raised"
- pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
-+
-+# m48t59.c
-+m48txx_nvram_io_read(uint64_t addr, uint64_t value) "io read addr:0x%04"=
- PRIx64 " value:0x%02" PRIx64
-+m48txx_nvram_io_write(uint64_t addr, uint64_t value) "io write addr:0x%0=
-4" PRIx64 " value:0x%02" PRIx64
-+m48txx_nvram_mem_read(uint32_t addr, uint32_t value) "mem read addr:0x%0=
-4x value:0x%02x"
-+m48txx_nvram_mem_write(uint32_t addr, uint32_t value) "mem write addr:0x=
-%04x value:0x%02x"
+--1xE4CMDIHno0ylVkc4XIq6S7OWPZvj7ks
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+On 6/26/19 10:16 AM, Antonio Ospite wrote:
+> On 26/05/19 16:47, Antonio Ospite wrote:
+>> Hi,
+>>
+>> Here is a v3 set to address
+>> https://bugs.launchpad.net/qemu/+bug/1817345
+>>
+>> CCing Laurent Vivier as the patch is going through the trivial-patches=
+
+>> branch.
+>>
+>=20
+> Ping.
+>=20
+> I cannot see this in the trivial-patches repository nor in mainline qem=
+u.
+>=20
+
+Explicitly adding qemu-trivial in cc may help (done now).
+
+>> Antonio Ospite (2):
+>> =C2=A0=C2=A0 configure: set source_path only once and make its definit=
+ion more
+>> =C2=A0=C2=A0=C2=A0=C2=A0 robust
+>> =C2=A0=C2=A0 configure: disallow spaces and colons in source path and =
+build path
+>>
+>> =C2=A0 Makefile=C2=A0 |=C2=A0 4 ++++
+>> =C2=A0 configure | 11 ++++++++---
+>> =C2=A0 2 files changed, 12 insertions(+), 3 deletions(-)
+>>
+>=20
+>=20
+
 --=20
-2.20.1
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
+
+--1xE4CMDIHno0ylVkc4XIq6S7OWPZvj7ks--
+
+--w6793FgKvl4g0Ryu18PChqsQBFXyIynMa
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAl0TlLQACgkQp6FrSiUn
+Q2rAdggAksZM/CmyWFFE4eaiVmOmynokvRyzTZKj861BeAleP+/cSb4TqCaV4aQW
+1UpQGNAgHw4lSPftCsJZkk2TusqSvONoG22ATfEswAFyTv5a2zAxIk0Z9iGPty2v
+3LN9Jx0G9ETcdPVPRglm5uisc06TPIOUxMWP+VMJgauCYuQr8j9BUVUPCAjnO4to
+79/qRREFibMh0aMgCzcia1NORS3ubfomi4/9w9gJk+fXBo79xDdjpx25TPTHV//z
+4XBu4d9dKW58U3MJIaDH+JLjGH+WlITLbc2cXqwC/WUnKgKDYotoTrmtztMVcwnu
+V1AKc7DethHL0nAwaGSYidbfL9lKGg==
+=sp4B
+-----END PGP SIGNATURE-----
+
+--w6793FgKvl4g0Ryu18PChqsQBFXyIynMa--
 
