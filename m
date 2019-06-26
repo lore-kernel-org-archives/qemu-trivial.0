@@ -1,25 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hgAbQ-0003vw-9S
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 12:16:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54943)
+	id 1hgAir-0008WO-H7
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 12:24:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56513)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <laurent@vivier.eu>) id 1hgAbN-0003u1-9n
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 12:16:54 -0400
+ (envelope-from <laurent@vivier.eu>) id 1hgAio-0008Uu-Ve
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 12:24:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1hgAbK-0001EX-9C
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 12:16:51 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:41489)
+ (envelope-from <laurent@vivier.eu>) id 1hgAin-0001a2-Vp
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 12:24:34 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:37735)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1hgAbF-000171-QZ; Wed, 26 Jun 2019 12:16:46 -0400
+ id 1hgAin-0001V9-Mu; Wed, 26 Jun 2019 12:24:33 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MXGSU-1i4zuK0XGQ-00YlmY; Wed, 26 Jun 2019 18:16:38 +0200
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MnJUy-1iPA6H2taW-00jHG3; Wed, 26 Jun 2019 18:24:01 +0200
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, mst@redhat.com
+References: <20190605131221.29432-1-marcandre.lureau@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
-To: Justin Hibbits <chmeeedalf@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Emilio G. Cota" <cota@braap.org>
-References: <20190607135653.6ece685d@titan.knownspace>
- <8676232e-917d-44e2-1149-b25f26698a73@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -63,35 +63,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <92053c9c-e7bf-76cb-9399-987f4ab31bfb@vivier.eu>
-Date: Wed, 26 Jun 2019 18:16:36 +0200
+Message-ID: <b66f43e4-e176-67d7-388b-23e04cff0884@vivier.eu>
+Date: Wed, 26 Jun 2019 18:24:00 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <8676232e-917d-44e2-1149-b25f26698a73@vivier.eu>
+In-Reply-To: <20190605131221.29432-1-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:VY1N/nVZMD2aR+OBSA1YXmOeDIJndErJA6uLaroSNMejhykZMYz
- 5i5FdG1dPegKsD+uO7mmywlK3rvxaukUjKswvTAd2Szwi0aS2V+0sdtF1AbjY5w4juBT1aR
- KdlmKQWG2D5KJtjEnVIXjWV3I6RFoj+qMxGb5/8bQNFPbpr9bCRta5vNy0CE50dsPJNj/NL
- 1bftQoVnrSXh2c1UL1Nqg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:arnd6t4EU5A=:vi39ZWMDGOWmuunzgKTcA7
- m2MoJjSzeF/mkUedT/WkUd+YOO7U7NdA0e6XkjjgrvyQjzSdO2Of1vBuTMngAxbIBgkQQtYAk
- 55/QGWyW/9iOXgc9jWrE6ztDy+l6i0DLEuX88SEbZGm6aQlGQ1aJ0A9n9XTXkOTa7x7qYsiRb
- jHYI1FXUdwKpjwBXtbrvZhia1GgbwQZMpV+/d2jjg5ei5CGciTLM0hemIAgal3RQgz9i8hbpS
- z3xfHIkyPh741ejzloUfZbJTUrT48MFMxMdLZccgmZx+vzU6c8orhDWRp8d8XSkJYTEGZ5tNl
- CDP8mWkxXNy236ztCc9YGbd2VhxO2/LXX3yFX05SlZRe/L2Uu3ro/kYRytLH+gYl4OwUpGrcf
- uDLByQgS+u4o4JDy19PRr53mVflA2KWUDLrVfSZAqXe4t1dbMPQTd7N+mADgnHWSl7Is5byYR
- s8KV5FXbutnT6EPkR57gYFD5ETn2wN4FBUd2h+zVBIRbeqS54/FAEs059Evh57sTTMIbVGCYV
- yUWqWpKRqCSsBSQ1M+d9Ip615MgiRVnUXYyt4zUNWfE0QPDOQTCZZ+xVREiNjw9MBBb7RGKeF
- Rgj2u+EXN4LRib3gEqrAjyzRnKLMHhobUqzxCpSI+MnTILmMgMh4hssZ5KSSABZB3TpiRQrGW
- Dc9tICS/kxVC4U0gKlKD2NC6xgi9yiJiOMT0tcwUXGO8hAXh3hDpgVdfy8g01R+1GAA4dAKLh
- aFtr4LNLrcxUDjicLCp0+1nZdzDlfL+53/wihZvEquOMDGNB/jjBZjXnbiI=
+X-Provags-ID: V03:K1:sgToY25GgXX4cUidRLCh+ClACiu7oYUeje8shy0NIt/M32XI9t4
+ OfhZ6gvQQDDW5H7BfR2Bgl+tZDoajLwt6N2bXT+YGFAZwzVOJYPL/Zv8tQXoPeDhucii/Ad
+ zChPPf4ey9uvYvR1kHh3QDjchn8dfPQKThkrdlos1WHhcyk47ZYDSJg9j+6gz5vPL2nEr/E
+ +lhIMr5WxtPxODbDEAjzw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:NRPpSu8hpUw=:+hf0B8ZDGpv9MXqoEaeU1Z
+ sEglkWhQ15ZOYUiw38d5Nxg9JIHsmo3g46Q2WllL9nOyyZTUrWBwQFLoa3qaZGHrOk2yrmw9N
+ XVi5yazhuOo4bCv5B9pZR3RLdXuytU6wBs1LfBHPPnULUXkvFmILh7qE1BGtJy5OuMgKI/C4m
+ zvOZcsoKZUPVHCGgx0DO8ReZh1SLHf6nJ2v8ke1vLfsuqYvQpfhiopAMs2IcqRIdc0pIwpVrU
+ 83O27lxPIPOnzvZEuwprwC6dmsiPtfAKvNuQtg98FaTdHOs1IdhVEWnBuvZ2FXVjt1T8Cyly0
+ 0n+cpB3Gs6i6j5MIjCTfV0yvHoBNKTsPbr2+qNndF994C9/elb+hQ/GkqdgA/4B8Et2n3oCy0
+ V3M2GB0W+zmSqOyee9KHxqiNNRfT4Bv+LXz4ANaNF0m/hrWYRgTJEHLqzPeW4orMRLeA7Ljpb
+ rq0YIoMfCvM3cMaHTsczNWhKp3O8XSQ8nPMzjSoAu9zesKE4nLYw48Lq3ib2rVpm2yE4eOXk3
+ gSfY4sYOYMIAHL0q6YR6LIzBSsC7jJ643kim2oW9IgD0P36adCpKwmp91iXOkTbWvek3VnQ9l
+ gOGotmi9HYL5SbDh93nPFE+qvHCjI9jnmfODaOeoPVJAqpSOsqfkQYMtVcs0ZtrEJ89g922vZ
+ EWRrOFQ+xTCpuSQpacHxQFjA4vXvxb3wbSlKWPWIPPU013MGjjjkr5D9vncMOPOAI21ozmD99
+ xUNsfms/0DKtgs7ELy8bMXblFXbrLaag80ggOgid8/2iM96EnacNNFc30oI=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
-Subject: Re: [Qemu-trivial] Fix cacheline size retrieval on
- FreeBSD/PowerPC(64)
+X-Received-From: 212.227.126.133
+Subject: Re: [Qemu-trivial] [PATCH] docs/vhost-user.json: some firmware.json
+ copy leftovers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,31 +103,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Jun 2019 16:16:54 -0000
+X-List-Received-Date: Wed, 26 Jun 2019 16:24:36 -0000
 
-Le 26/06/2019 à 18:14, Laurent Vivier a écrit :
-> Le 07/06/2019 à 20:56, Justin Hibbits a écrit :
->> The attached very trivial patch fixes a startup bug that prevents at
->> least Qemu 3.1 and later from working on FreeBSD/powerpc64.
->>
->> - Justin
->>
+Le 05/06/2019 à 15:12, Marc-André Lureau a écrit :
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> ---
+>  docs/interop/vhost-user.json | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> Please don't send a patch in attachment but inlined in the message
-> (you may use "git send-email" for that).
-> 
-> This patch fixes "util: add cacheinfo" that has changed the type from
-> unsigned to long.
-> 
-> You can add the following line in the commit message:
-> 
-> Fixes: b255b2c8a548 ("util: add cacheinfo")
-> 
-> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> diff --git a/docs/interop/vhost-user.json b/docs/interop/vhost-user.json
+> index ae88c03117..da6aaf51c8 100644
+> --- a/docs/interop/vhost-user.json
+> +++ b/docs/interop/vhost-user.json
+> @@ -178,11 +178,11 @@
+>  #
+>  #   - /usr/share/qemu/vhost-user/50-crosvm-gpu.json
+>  #
+> -# then the sysadmin can prevent the default QEMU being used at all with
+> +# then the sysadmin can prevent the default QEMU GPU being used at all with
+>  #
+>  #   $ touch /etc/qemu/vhost-user/50-qemu-gpu.json
+>  #
+> -# The sysadmin can replace/alter the distro default OVMF with
+> +# The sysadmin can replace/alter the distro default QEMU GPU with
+>  #
+>  #   $ vim /etc/qemu/vhost-user/50-qemu-gpu.json
+>  #
+> @@ -190,7 +190,7 @@
+>  #
+>  #   $ vim /etc/qemu/vhost-user/10-qemu-gpu.json
+>  #
+> -# or they can provide a parallel OVMF with lower priority
+> +# or they can provide a parallel QEMU GPU with lower priority
+>  #
+>  #   $ vim /etc/qemu/vhost-user/99-qemu-gpu.json
+>  #
 > 
 
-CC: author of b255b2c8a548 ("util: add cacheinfo")
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+
 
