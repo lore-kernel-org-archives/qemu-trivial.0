@@ -1,24 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hgAYu-0002bV-CY
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 12:14:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54399)
+	id 1hgAbQ-0003vw-9S
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 12:16:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54943)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <laurent@vivier.eu>) id 1hgAYs-0002at-RZ
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 12:14:19 -0400
+ (envelope-from <laurent@vivier.eu>) id 1hgAbN-0003u1-9n
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 12:16:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1hgAYr-0006hp-W0
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 12:14:18 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:57149)
+ (envelope-from <laurent@vivier.eu>) id 1hgAbK-0001EX-9C
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 12:16:51 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:41489)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1hgAYp-0006d9-Pw; Wed, 26 Jun 2019 12:14:16 -0400
+ id 1hgAbF-000171-QZ; Wed, 26 Jun 2019 12:16:46 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N1x6X-1ihe5V2n0r-012JP9; Wed, 26 Jun 2019 18:14:12 +0200
-To: Justin Hibbits <chmeeedalf@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20190607135653.6ece685d@titan.knownspace>
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MXGSU-1i4zuK0XGQ-00YlmY; Wed, 26 Jun 2019 18:16:38 +0200
 From: Laurent Vivier <laurent@vivier.eu>
+To: Justin Hibbits <chmeeedalf@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, "Emilio G. Cota" <cota@braap.org>
+References: <20190607135653.6ece685d@titan.knownspace>
+ <8676232e-917d-44e2-1149-b25f26698a73@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -62,33 +63,33 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <8676232e-917d-44e2-1149-b25f26698a73@vivier.eu>
-Date: Wed, 26 Jun 2019 18:14:10 +0200
+Message-ID: <92053c9c-e7bf-76cb-9399-987f4ab31bfb@vivier.eu>
+Date: Wed, 26 Jun 2019 18:16:36 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190607135653.6ece685d@titan.knownspace>
+In-Reply-To: <8676232e-917d-44e2-1149-b25f26698a73@vivier.eu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:E9YWjQshWGvzrLaZ2cZcFODWIc+Of1qEB56WYEIthulr1I48CdL
- BtM4Uo+pyqhebIpOMBU0j+pEYjiZhlRam4tzy7uPJQeGQbNasy9BBI5MSLxKRUuBZYRzhF1
- 3qGDrffVEwHYXTyAJTzUfK8kLIqCjtK3/IN4bywvY0XyjSujhiOeVGArZFxyW7ygqcaxzQL
- XJRe3GucaXu7lF2NdBD8A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Z/9Jo/ip1x4=:6OfGfe8H1C9icMHh+dgdlq
- g4ToFMkp/1dwidzKB90DXpdAc2jgreoU1FgdMvMuern77bKD4Yiv5ljj9R1nbD/33S1OGFnrG
- sPT8FCFSQaHGKb+is57qqF/KtC7wX/rq3s83l3TOLyAfzcdn8W6HxVFxrvfsTGP3Gxs5ju1Wx
- OQxvsYn5XwN5mCS29foYN+u27FAQB4Utvo2MzFP/EkgKIEE8m9aBK9EP2U5lb3BsUoghLkxiR
- dsBVFLmkAcmqWtod5OJ/GSM2T2rLriGFpeV0D1MyUCVI+DUqdWXS4SfPDy8t0O8wBr2v6kHlF
- Ce4JjtHCCo4DhhA10XTK2wu+yq8nVWf/jNZ6a43bPTWKKuha3k0HYx+e7tjduspBkZ5w8Flde
- uztGn/GT+PetBI1r+O3GTMnrGS0JMmtboaNlQhs7W7OIltpAPzbSYviiLDkdszIt5aLNtivwo
- 0c6VUb5rd2C7XhczwLuEG/+VP4PWxKPF2JvythcJsCiKqct3X0rrdEbYy8IHwi9suRaS8uOfa
- EumzHIVyzloRWgVPWnkkDqkyYm2Q/m6i8kQ+5dW+lYJ23pNzTyEJL4Bsse9oqMrTWFTIgZNZC
- 9E4AgScgW58hP2/CN1zAr8eBIKQ0WPb+Q7nf1az/yl/ObCmJE5grnln5xardAhbrxzSEKuriM
- RGym8EatIBr+AjfLKSU/13GZwNtQSB2onrKlT1XMloVNCKo3wwvN+r3h+12YiZjj0HwcMopNA
- 5VVk0chzSsROYNcR6QD3crxONJQRqTPjSNt1veg0CjBfLivIj8Cb7QR4HyA=
+X-Provags-ID: V03:K1:VY1N/nVZMD2aR+OBSA1YXmOeDIJndErJA6uLaroSNMejhykZMYz
+ 5i5FdG1dPegKsD+uO7mmywlK3rvxaukUjKswvTAd2Szwi0aS2V+0sdtF1AbjY5w4juBT1aR
+ KdlmKQWG2D5KJtjEnVIXjWV3I6RFoj+qMxGb5/8bQNFPbpr9bCRta5vNy0CE50dsPJNj/NL
+ 1bftQoVnrSXh2c1UL1Nqg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:arnd6t4EU5A=:vi39ZWMDGOWmuunzgKTcA7
+ m2MoJjSzeF/mkUedT/WkUd+YOO7U7NdA0e6XkjjgrvyQjzSdO2Of1vBuTMngAxbIBgkQQtYAk
+ 55/QGWyW/9iOXgc9jWrE6ztDy+l6i0DLEuX88SEbZGm6aQlGQ1aJ0A9n9XTXkOTa7x7qYsiRb
+ jHYI1FXUdwKpjwBXtbrvZhia1GgbwQZMpV+/d2jjg5ei5CGciTLM0hemIAgal3RQgz9i8hbpS
+ z3xfHIkyPh741ejzloUfZbJTUrT48MFMxMdLZccgmZx+vzU6c8orhDWRp8d8XSkJYTEGZ5tNl
+ CDP8mWkxXNy236ztCc9YGbd2VhxO2/LXX3yFX05SlZRe/L2Uu3ro/kYRytLH+gYl4OwUpGrcf
+ uDLByQgS+u4o4JDy19PRr53mVflA2KWUDLrVfSZAqXe4t1dbMPQTd7N+mADgnHWSl7Is5byYR
+ s8KV5FXbutnT6EPkR57gYFD5ETn2wN4FBUd2h+zVBIRbeqS54/FAEs059Evh57sTTMIbVGCYV
+ yUWqWpKRqCSsBSQ1M+d9Ip615MgiRVnUXYyt4zUNWfE0QPDOQTCZZ+xVREiNjw9MBBb7RGKeF
+ Rgj2u+EXN4LRib3gEqrAjyzRnKLMHhobUqzxCpSI+MnTILmMgMh4hssZ5KSSABZB3TpiRQrGW
+ Dc9tICS/kxVC4U0gKlKD2NC6xgi9yiJiOMT0tcwUXGO8hAXh3hDpgVdfy8g01R+1GAA4dAKLh
+ aFtr4LNLrcxUDjicLCp0+1nZdzDlfL+53/wihZvEquOMDGNB/jjBZjXnbiI=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
+X-Received-From: 212.227.126.131
 Subject: Re: [Qemu-trivial] Fix cacheline size retrieval on
  FreeBSD/PowerPC(64)
 X-BeenThere: qemu-trivial@nongnu.org
@@ -102,24 +103,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Jun 2019 16:14:19 -0000
+X-List-Received-Date: Wed, 26 Jun 2019 16:16:54 -0000
 
-Le 07/06/2019 à 20:56, Justin Hibbits a écrit :
-> The attached very trivial patch fixes a startup bug that prevents at
-> least Qemu 3.1 and later from working on FreeBSD/powerpc64.
+Le 26/06/2019 à 18:14, Laurent Vivier a écrit :
+> Le 07/06/2019 à 20:56, Justin Hibbits a écrit :
+>> The attached very trivial patch fixes a startup bug that prevents at
+>> least Qemu 3.1 and later from working on FreeBSD/powerpc64.
+>>
+>> - Justin
+>>
 > 
-> - Justin
+> Please don't send a patch in attachment but inlined in the message
+> (you may use "git send-email" for that).
+> 
+> This patch fixes "util: add cacheinfo" that has changed the type from
+> unsigned to long.
+> 
+> You can add the following line in the commit message:
+> 
+> Fixes: b255b2c8a548 ("util: add cacheinfo")
+> 
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 > 
 
-Please don't send a patch in attachment but inlined in the message
-(you may use "git send-email" for that).
+CC: author of b255b2c8a548 ("util: add cacheinfo")
 
-This patch fixes "util: add cacheinfo" that has changed the type from
-unsigned to long.
-
-You can add the following line in the commit message:
-
-Fixes: b255b2c8a548 ("util: add cacheinfo")
-
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Thanks,
+Laurent
 
