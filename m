@@ -1,50 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1he7oB-0002tU-Hr
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Jun 2019 20:53:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34623)
+	id 1hg6vG-0005ME-Ay
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 08:21:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51953)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <like.xu@linux.intel.com>) id 1he7o4-0002nX-QC
- for qemu-trivial@nongnu.org; Thu, 20 Jun 2019 20:53:34 -0400
+ (envelope-from <philmd@redhat.com>) id 1hg6vC-0005Dd-QA
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 08:21:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <like.xu@linux.intel.com>) id 1he7o1-0004Pj-Td
- for qemu-trivial@nongnu.org; Thu, 20 Jun 2019 20:53:32 -0400
-Received: from mga18.intel.com ([134.134.136.126]:42145)
+ (envelope-from <philmd@redhat.com>) id 1hg6vB-0005rl-Uy
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 08:21:06 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49073)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <like.xu@linux.intel.com>)
- id 1he7nv-00045F-96; Thu, 20 Jun 2019 20:53:25 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 20 Jun 2019 17:53:18 -0700
-X-IronPort-AV: E=Sophos;i="5.63,398,1557212400"; d="scan'208";a="154297615"
-Received: from likexu-mobl1.ccr.corp.intel.com (HELO [10.239.196.171])
- ([10.239.196.171])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/AES256-SHA;
- 20 Jun 2019 17:53:16 -0700
-To: Eduardo Habkost <ehabkost@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Alistair Francis <alistair23@gmail.com>, Igor Mammedov <imammedo@redhat.com>
-References: <20190518205428.90532-1-like.xu@linux.intel.com>
- <20190518205428.90532-6-like.xu@linux.intel.com>
- <20190620145204.GB1542@habkost.net>
-From: Like Xu <like.xu@linux.intel.com>
-Organization: Intel OTC
-Message-ID: <eeb97218-da68-6736-42e8-d8fa6d84e601@linux.intel.com>
-Date: Fri, 21 Jun 2019 08:53:15 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1hg6v8-0005iL-2e; Wed, 26 Jun 2019 08:21:02 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id DAA393082E64;
+ Wed, 26 Jun 2019 12:20:53 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-66.brq.redhat.com [10.40.204.66])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 46FCD1001281;
+ Wed, 26 Jun 2019 12:20:51 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-trivial@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Wed, 26 Jun 2019 14:20:41 +0200
+Message-Id: <20190626122042.7656-2-philmd@redhat.com>
+In-Reply-To: <20190626122042.7656-1-philmd@redhat.com>
+References: <20190626122042.7656-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190620145204.GB1542@habkost.net>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 134.134.136.126
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v3 05/10] hw/riscv: Replace
- global smp variables with machine smp properties
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.46]); Wed, 26 Jun 2019 12:20:56 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH 1/2] MAINTAINERS: Add missing m48t59 files to
+ the PReP section
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -56,47 +52,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Jun 2019 00:53:34 -0000
+X-List-Received-Date: Wed, 26 Jun 2019 12:21:07 -0000
 
-On 2019/6/20 22:52, Eduardo Habkost wrote:
-> On Sun, May 19, 2019 at 04:54:23AM +0800, Like Xu wrote:
->> The global smp variables in riscv are replaced with smp machine properties.
->>
->> A local variable of the same name would be introduced in the declaration
->> phase if it's used widely in the context OR replace it on the spot if it's
->> only used once. No semantic changes.
->>
->> Signed-off-by: Like Xu <like.xu@linux.intel.com>
->> ---
->>   hw/riscv/sifive_e.c    | 6 ++++--
->>   hw/riscv/sifive_plic.c | 3 +++
->>   hw/riscv/sifive_u.c    | 6 ++++--
->>   hw/riscv/spike.c       | 2 ++
->>   hw/riscv/virt.c        | 1 +
->>   5 files changed, 14 insertions(+), 4 deletions(-)
-> 
-> This was incomplete, I had to apply the following fixup.
-> 
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ MAINTAINERS | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Reviewed-by: Like Xu <like.xu@linux.intel.com>
-
-> ---
->   hw/riscv/spike.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/riscv/spike.c b/hw/riscv/spike.c
-> index 9e95f2c13c..d91d49dcae 100644
-> --- a/hw/riscv/spike.c
-> +++ b/hw/riscv/spike.c
-> @@ -172,6 +172,7 @@ static void spike_board_init(MachineState *machine)
->       MemoryRegion *main_mem = g_new(MemoryRegion, 1);
->       MemoryRegion *mask_rom = g_new(MemoryRegion, 1);
->       int i;
-> +    unsigned int smp_cpus = machine->smp.cpus;
->   
->       /* Initialize SOC */
->       object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->soc),
-> 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index cad58b9487..fbe89c0812 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1047,6 +1047,8 @@ F: hw/pci-host/prep.[hc]
+ F: hw/isa/i82378.c
+ F: hw/isa/pc87312.c
+ F: hw/dma/i82374.c
++F: hw/timer/m48t59.c
++F: hw/timer/m48t59-internal.h
+ F: hw/timer/m48t59-isa.c
+ F: include/hw/isa/pc87312.h
+ F: include/hw/timer/m48t59.h
+--=20
+2.20.1
 
 
