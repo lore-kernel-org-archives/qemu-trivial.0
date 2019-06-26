@@ -1,25 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hgAlw-0001kZ-M2
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 12:27:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57170)
+	id 1hgAn4-0002MK-Hg
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 12:28:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57473)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <laurent@vivier.eu>) id 1hgAlt-0001hp-FJ
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 12:27:46 -0400
+ (envelope-from <laurent@vivier.eu>) id 1hgAn1-0002Gt-UO
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 12:28:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1hgAls-0004et-GX
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 12:27:45 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:49405)
+ (envelope-from <laurent@vivier.eu>) id 1hgAn0-0005fi-Th
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 12:28:55 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:57007)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1hgAls-0004bR-7B; Wed, 26 Jun 2019 12:27:44 -0400
+ id 1hgAn0-0005eb-IP; Wed, 26 Jun 2019 12:28:54 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
  (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N95mR-1ibafG2V2F-016B4C; Wed, 26 Jun 2019 18:27:29 +0200
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20190617114114.24897-1-berrange@redhat.com>
+ 1MxUfh-1iUOr71fLd-00xtrV; Wed, 26 Jun 2019 18:28:36 +0200
 From: Laurent Vivier <laurent@vivier.eu>
+To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, mst@redhat.com
+References: <20190605131221.29432-1-marcandre.lureau@redhat.com>
+ <b66f43e4-e176-67d7-388b-23e04cff0884@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -63,35 +64,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <00c575f3-34f9-6d11-89a2-ab7e42a9ee69@vivier.eu>
-Date: Wed, 26 Jun 2019 18:27:28 +0200
+Message-ID: <8212139b-80a7-3af8-6af1-0c004ec2fe82@vivier.eu>
+Date: Wed, 26 Jun 2019 18:28:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190617114114.24897-1-berrange@redhat.com>
+In-Reply-To: <b66f43e4-e176-67d7-388b-23e04cff0884@vivier.eu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:qRJmMBgfwM1KBgnS+C8vq2odjB83UQTLBfSDEZyVlmMlGLXpbEG
- +2ToaOcB9AyBz7U4HDHmsyrqVvX7fqWhNohBhAceilm7Sky0N8UirBVM6CGOHA38cgPZC0f
- PK4wtSB1E2n9zhuKQUiGcq1C24eBjwHSnXay/xPywDMjXa35pV4Mqosp9DhwtP/oXh6FQrc
- TEdvHzUZuUwAYBhHI80vA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:4aSflQ+ZWaI=:/wJjU7EWfe6dOg/mkQ50MW
- tnhrH8oWdAbUCiTPv/YZ5cIsmCdNeMtnJ0HLlAzaV+ft5AFosv1mMdHUQksV7OlMAlsxvCcuy
- 0q79atrJwHMJQJTvdupYPWaUBR04Eka6RdwMOL6LcpCauoDe1MmjzrcdENafP8wRv7cZTWKla
- HSfN+dtCnL6f77DwGhK6fZp4v382oUjnGiFw9YKIdqlqR8A29LVo9ML+Pn5ZZ+1+blnLoXuOI
- pULE0FHS/1h8ChHvBNbvg6+dT67xQSQfyBkMyThHKcY6WB9waM28TSdezQIzOUxKnoyPj3/P4
- ZACffNdEuXaNCRgJ1zX3hFD+XJkZxnK3HN0EI05QXf+kCePYfrUfEaADUlzSgxlGKmaLP9Fo1
- jRJWdnDBmkELg8Bi/9LtQbIeLHoevcP2Nq72PI3L7MKCJzOnZToYt4m1+sdsEm2DqTc5kHDbd
- iONif1zT4N7xP/wisoD/P4BD8lkVhbU603bwkL0iYS//x+g82cbt4NBF7ck9w81mLN0quuRbe
- /1s5dCA5msK6nJA2z8m7lyUiBsVjkshFxfbftWnBNnGp28aSwY0Wi1JSIG6IwoB3wwkUbBlz+
- idMyObZXIv6Zc99RqlfZpnrcucEKRyUsthfJh1lpbL4iHgjamC5xwP+l21KQhH0YjGgzNHta2
- 3glGskE+PCzzEaeowf8NNONP8+hc3kOrA4qKLJvsbvdM+UPN004Ig/ZJQqu6H3gLPdJJgsaVL
- fESgHhZrCAY3WZYqzz7msPeon2QvTprXnAvrDCLH9Q1z/GNICcVGM1svxAM=
+X-Provags-ID: V03:K1:bj854EWvvWZ+CYMLSosg+n9yAbPLn+YCYEEpM6ZTH9uolkWAmjH
+ 25GkDZbwCF2aNl2KHARxl4IUzfVgBgYv9TiXwSabK1Afr4FNawn/CRTQZulT2exPkO7+8kG
+ 4yvqAd0uiLs5j5tCwD9LH23HB1iN3Jrg0frnJ6TA1sRLz1YuNUin/88TGy5ScWD6bERgLNO
+ M2ObohyR0OG+xjGsEo9kQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:h7QtK/8Ylpg=:+CBVo2X9UakLs43IxwqGWQ
+ 351EE+yjv75QjZnUZvoEKRjbqZj9oPjEm2OI2PdO1w0OxJyg8R6MV0zNGmhpZ6KH8rlKnTLpW
+ x17UZoPtS3V839c9y0UKQcR33h4uFuNHHHM0c5kbbqqH4P+qR6W/pIOG9jZBC1YENxi1tvE1w
+ QOFxgXI44v86S8CmYmK57tsovh9EY5x5s2QW2jDhy5RUXZRnLisYm64Lv0RbPijzUY+eF9COC
+ vVZT0c3LNsttgWtif+RV3U7g/cgZDx5snamEqO2BVMTN+kmhmDcC5PLTl8D/KRt1KQpdAMXgF
+ Ty7gDLvoXKasdJ00es6MtAtpof50QVe5akTADNZGJdpLgIxiakLT9mI9SVzQAJOGEx8b5IbVM
+ YVHeCOLsc2QHhKUtT0/vHUOAkG33GXzt478gfD7Gd8qopmborKsEO4HXo+CgGMgivgpaoaRcz
+ cUox14gVicz+Wvb2GJ2NV09huZP9E7c0o8RsXkiq/Yvo7cGfdVpwQg3UerNbGtzjhg42hrm4f
+ HL72fIbG4Qf+Ty6S8WeHQFq1qInYMIHN64Z6jdQw8/C2aBahQL3Yt6GPMMopLdqfADWOvGKKE
+ a9NPI8GNT+VP1lwg7vt8LQ00J4o5Fackqn2XEK+iyW4Ya7UOyWybgvv3X8DODt+hiCBWMLQOf
+ uMlu0nK9LKs13y9Yttyc6zgPiiZsh5KfiGSL8WfnFoFSIjWkBKoX2MEjT09DAdUN7yUafCh8G
+ tVZRArQnu6CNBsO6Nnhwe59g+mCcg0Ck5OYaSYk4cIxPa8FmaZWuuF+sf3U=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.131
-Subject: Re: [Qemu-trivial] [PATCH] configure: use valid args testing
- sem_timedwait
+X-Received-From: 212.227.126.134
+Subject: Re: [Qemu-trivial] [PATCH] docs/vhost-user.json: some firmware.json
+ copy leftovers
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,43 +104,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Jun 2019 16:27:47 -0000
+X-List-Received-Date: Wed, 26 Jun 2019 16:28:57 -0000
 
-Le 17/06/2019 à 13:41, Daniel P. Berrangé a écrit :
-> The sem_timedwait function has been annotated as requiring
-> non-null args in latest header files from GCC snapshot
-> representing the future 2.30 release.
+Le 26/06/2019 à 18:24, Laurent Vivier a écrit :
+> Le 05/06/2019 à 15:12, Marc-André Lureau a écrit :
+>> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+>> ---
+>>  docs/interop/vhost-user.json | 6 +++---
+>>  1 file changed, 3 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/docs/interop/vhost-user.json b/docs/interop/vhost-user.json
+>> index ae88c03117..da6aaf51c8 100644
+>> --- a/docs/interop/vhost-user.json
+>> +++ b/docs/interop/vhost-user.json
+>> @@ -178,11 +178,11 @@
+>>  #
+>>  #   - /usr/share/qemu/vhost-user/50-crosvm-gpu.json
+>>  #
+>> -# then the sysadmin can prevent the default QEMU being used at all with
+>> +# then the sysadmin can prevent the default QEMU GPU being used at all with
+>>  #
+>>  #   $ touch /etc/qemu/vhost-user/50-qemu-gpu.json
+>>  #
+>> -# The sysadmin can replace/alter the distro default OVMF with
+>> +# The sysadmin can replace/alter the distro default QEMU GPU with
+>>  #
+>>  #   $ vim /etc/qemu/vhost-user/50-qemu-gpu.json
+>>  #
+>> @@ -190,7 +190,7 @@
+>>  #
+>>  #   $ vim /etc/qemu/vhost-user/10-qemu-gpu.json
+>>  #
+>> -# or they can provide a parallel OVMF with lower priority
+>> +# or they can provide a parallel QEMU GPU with lower priority
+>>  #
+>>  #   $ vim /etc/qemu/vhost-user/99-qemu-gpu.json
+>>  #
+>>
 > 
-> This causes configure to fail when -Werror is used:
-> 
-> config-temp/qemu-conf.c: In function ‘main’:
-> config-temp/qemu-conf.c:2:25: error: null argument where non-null required (argument 1) [-Werror=nonnull]
->     2 | int main(void) { return sem_timedwait(0, 0); }
->       |                         ^~~~~~~~~~~~~
-> config-temp/qemu-conf.c:2:25: error: null argument where non-null required (argument 2) [-Werror=nonnull]
-> 
-> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> ---
->  configure | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/configure b/configure
-> index b091b82cb3..6632d05fc7 100755
-> --- a/configure
-> +++ b/configure
-> @@ -5139,7 +5139,7 @@ fi
->  sem_timedwait=no
->  cat > $TMPC << EOF
->  #include <semaphore.h>
-> -int main(void) { return sem_timedwait(0, 0); }
-> +int main(void) { sem_t s; struct timespec t = {0}; return sem_timedwait(&s, &t); }
->  EOF
->  if compile_prog "" "" ; then
->      sem_timedwait=yes
-> 
+> Applied to my trivial-patches branch.
 
-Applied to my trivial-patches branch.
+In fact, no, it has already been merged.
 
 Thanks,
 Laurent
+
 
