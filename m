@@ -1,98 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hgB5P-0001qS-ND
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 12:47:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33934)
+	id 1hgCHk-00071r-HU
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 14:04:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38245)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <laurent@vivier.eu>) id 1hgB5N-0001qI-OC
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 12:47:54 -0400
+ (envelope-from <chmeeedalf@gmail.com>) id 1hgCHf-0006zR-AH
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 14:04:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1hgB5M-0003X2-Jv
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 12:47:53 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:56833)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1hgB5M-0003W6-B2; Wed, 26 Jun 2019 12:47:52 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MYLqs-1i1gEv1Gc6-00VTds; Wed, 26 Jun 2019 18:47:43 +0200
-To: Justin Hibbits <chmeeedalf@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- "Emilio G. Cota" <cota@braap.org>
+ (envelope-from <chmeeedalf@gmail.com>) id 1hgCHa-0008Qg-Oh
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 14:04:36 -0400
+Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36]:45071)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <chmeeedalf@gmail.com>)
+ id 1hgCHK-0007zt-A2; Wed, 26 Jun 2019 14:04:19 -0400
+Received: by mail-io1-xd36.google.com with SMTP id e3so6988552ioc.12;
+ Wed, 26 Jun 2019 11:04:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=ov4PdTxMGoTpFE3f8bXEYa2hKdkYMV2/jyq6nZ6Ckqw=;
+ b=jvW0WKPujqrD+o6NhWZKsCd7elc1KJB6RwxQTTj7NuqIjJC1c4cy+LZzuVKLWW5qqt
+ AMxe5R23v9Jr7nca//RyAPfUegzi3ZQKwFhMd50DRQIDRqWTFg1SnIyO99M7xmzBhSNY
+ LVK9GCOcWBX1LgcxUY4O5rF0i0jbxzB1ZoLvPqEtLbNLE2iS98R48+1uC76vL7oTHUDF
+ i9cie6Nfc/GDAmUOhJNy9C/T98QmoN+8dmbRHBzE+xZg/0FpXlnd5gnS4yFZFnCCwnCX
+ fbN5KFzUYLfGlVLXsY4psDlh56FAXvJxAy0K+SEqC8rkU0rpbu6mOZS3IRhiZUk+0V/U
+ 3vBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=ov4PdTxMGoTpFE3f8bXEYa2hKdkYMV2/jyq6nZ6Ckqw=;
+ b=FiMHOJDoh0kKxk+PDC2dNS0vBvkxwrKHbEcpqcGmi7cVjyHWjX4NCT+XPobAT2DJr1
+ PCBBLEbkWEtSqJkXG3Oz4krfDMx7hc4boVh5AKASHztucabeoHLJ/VyQmUEkdnKzzjFw
+ wNy9C4Pu0gg/Gbefn6yryrc5U5Y/vNtpHDy7q7ded4iiQzLpslk4ScD1pdi0OYqSyaz8
+ hucqcM0Uv8Ks1wPEgepNgLmY4j26TH4F+MkmxQH2JUQB8r2JmGOVtNGbgREM1wBT+7hU
+ 57U8VTspepXZK6VLwcLz0+vPT1N1tLxmQgpQbvO8iFWiarXQLcY7c6Cb//7omgcIM/du
+ cbGg==
+X-Gm-Message-State: APjAAAUo6reGcA3MkC4/zvPqWnTONaIvJch1GQkd4Kpo6TxSRT11ebg3
+ nJyQq7USiE9TZN69QCwyux0=
+X-Google-Smtp-Source: APXvYqwgGcf8U+g55sQnmvLoZZ/hHWGf/A8QuSsyRAFtfoCFbwXviLvKn1W7Xp8D5ywKae+VGtk8JA==
+X-Received: by 2002:a5e:9b05:: with SMTP id j5mr6585842iok.75.1561572257169;
+ Wed, 26 Jun 2019 11:04:17 -0700 (PDT)
+Received: from titan.knownspace (173-25-245-129.client.mchsi.com.
+ [173.25.245.129])
+ by smtp.gmail.com with ESMTPSA id x22sm16184720ioh.87.2019.06.26.11.04.16
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Wed, 26 Jun 2019 11:04:16 -0700 (PDT)
+Date: Wed, 26 Jun 2019 13:04:14 -0500
+From: Justin Hibbits <chmeeedalf@gmail.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, "Emilio G. Cota"
+ <cota@braap.org>
+Message-ID: <20190626130414.08940342@titan.knownspace>
+In-Reply-To: <d60f142d-27ef-bfe5-1eb6-cefb22640625@vivier.eu>
 References: <20190607135653.6ece685d@titan.knownspace>
  <8676232e-917d-44e2-1149-b25f26698a73@vivier.eu>
  <92053c9c-e7bf-76cb-9399-987f4ab31bfb@vivier.eu>
  <20190626113742.6bcd8a26@titan.knownspace>
-From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <d60f142d-27ef-bfe5-1eb6-cefb22640625@vivier.eu>
-Date: Wed, 26 Jun 2019 18:47:42 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ <d60f142d-27ef-bfe5-1eb6-cefb22640625@vivier.eu>
+X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; powerpc64-portbld-freebsd13.0)
 MIME-Version: 1.0
-In-Reply-To: <20190626113742.6bcd8a26@titan.knownspace>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Sxw4H34TAQ8l9T/oC9EO1EUK++eQv7gFPsg8Lpc/7NHtQ+C2aTj
- 2J3w9k0Hu4Fs7AKrLDfNAUHFcRIKFLnRCIDU9Qa/IaMNDDP+t79CFwUDVb5R61SLjHsblvn
- IokEqU1pCQiZu7nP4Pyzq7sBQ+1PkOBNJeBesbr6eNpnvgL0vdq7cRJRmKG7vaxLV+60QLo
- nZk4g9oTiT1IyE7ZrHB9w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:tpIsUCZisMA=:rlvY+7+k2t7p8+HVkPMxmp
- sexvO5uibu2v22RCiaKZZ+glXx1rDdnswzXP2Y+YisILwlhyt01yOTX+EINViPBvEwVNwXlRH
- 8N9R+3n8nNPyXHQSYU+6wDgIPab/9bfNFRNumXHyL/TnNc4DnZb3nj/3GB8fZ9Z8o69AtiJxu
- r2inD8wqALW1aMxWEAzNLilLMaqtqUlH7R7OjE6vqTuaMdC5S2NEr2X0nCV30sNEtPVMVl4xY
- VfB8NT7Bpl5Co/GsZcGUEhQjjbZlHBTU0coWFO1WTakmQd13GQ1Y7wg+Sn1+j+hiSwP/o0HgR
- soZclRqTB9xs7jbxWXy9RnUNvfxgky/WGZdWecB5GIQEB2LA+HDtKNT1jBDRe5DAVMCG+wVsN
- DYdhIH9qFu2rUYv2gX0T0EguyoqPHP2/MRWyPpFTTx2NVCs4n26NZKFshbTG1C4c7ZinH1VRx
- Kw7NrkD8sh2JrFAAqxvIBEoxE/12GLpEZ/80pv4evLdYEWurp/K1al+0/LuLNVWx1GFUDzX3q
- aAoKUSHcMtb2AC/iYfeHJxXftAwvxqegTHqquR4pTcrzjzTzwY0wo9KR4yU4OzOVRwicpXUsL
- 9AqtGtAxhyVbjn8P9QGKf7N6fJgfKWbdySb4IzI1pDx8R8yUhcurulHplWBM6G9tUqE+0nOJd
- LHT19nbO3bC1E3ZGMqvqVFoYfFW5VtoCrpwFBf0/ysCkpPBJIn5nnH58TcfgXw1CoCzXb1aA+
- +A60JyX5Vh8hpFc4tPu2gi5Ye6bfxJwXTvEoVlT/ljiHNBAT/t7FlG1OPZE=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::d36
 Subject: Re: [Qemu-trivial] Fix cacheline size retrieval on
  FreeBSD/PowerPC(64)
 X-BeenThere: qemu-trivial@nongnu.org
@@ -106,83 +77,93 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Jun 2019 16:47:55 -0000
+X-List-Received-Date: Wed, 26 Jun 2019 18:04:40 -0000
 
-Le 26/06/2019 à 18:37, Justin Hibbits a écrit :
-> On Wed, 26 Jun 2019 18:16:36 +0200
-> Laurent Vivier <laurent@vivier.eu> wrote:
-> 
->> Le 26/06/2019 à 18:14, Laurent Vivier a écrit :
->>> Le 07/06/2019 à 20:56, Justin Hibbits a écrit :  
->>>> The attached very trivial patch fixes a startup bug that prevents
->>>> at least Qemu 3.1 and later from working on FreeBSD/powerpc64.
->>>>
->>>> - Justin
->>>>  
->>>
->>> Please don't send a patch in attachment but inlined in the message
->>> (you may use "git send-email" for that).
->>>
->>> This patch fixes "util: add cacheinfo" that has changed the type
->>> from unsigned to long.
->>>
->>> You can add the following line in the commit message:
->>>
->>> Fixes: b255b2c8a548 ("util: add cacheinfo")
->>>
->>> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
->>>   
->>
->> CC: author of b255b2c8a548 ("util: add cacheinfo")
->>
->> Thanks,
->> Laurent
-> 
-> Hi Laurent,
-> 
-> Sorry.  I had never used git send-email before, so wasn't comfortable
-> with it.  I just updated the commit message with your feedback and used
-> git send-email to submit the patch.  I hope everything went well.
+On Wed, 26 Jun 2019 18:47:42 +0200
+Laurent Vivier <laurent@vivier.eu> wrote:
 
-It seems not. I didn't receive it.
+> Le 26/06/2019 =C3=A0 18:37, Justin Hibbits a =C3=A9crit=C2=A0:
+> > On Wed, 26 Jun 2019 18:16:36 +0200
+> > Laurent Vivier <laurent@vivier.eu> wrote:
+> >  =20
+> >> Le 26/06/2019 =C3=A0 18:14, Laurent Vivier a =C3=A9crit=C2=A0: =20
+> >>> Le 07/06/2019 =C3=A0 20:56, Justin Hibbits a =C3=A9crit=C2=A0:   =20
+> >>>> The attached very trivial patch fixes a startup bug that prevents
+> >>>> at least Qemu 3.1 and later from working on FreeBSD/powerpc64.
+> >>>>
+> >>>> - Justin
+> >>>>   =20
+> >>>
+> >>> Please don't send a patch in attachment but inlined in the message
+> >>> (you may use "git send-email" for that).
+> >>>
+> >>> This patch fixes "util: add cacheinfo" that has changed the type
+> >>> from unsigned to long.
+> >>>
+> >>> You can add the following line in the commit message:
+> >>>
+> >>> Fixes: b255b2c8a548 ("util: add cacheinfo")
+> >>>
+> >>> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> >>>    =20
+> >>
+> >> CC: author of b255b2c8a548 ("util: add cacheinfo")
+> >>
+> >> Thanks,
+> >> Laurent =20
+> >=20
+> > Hi Laurent,
+> >=20
+> > Sorry.  I had never used git send-email before, so wasn't
+> > comfortable with it.  I just updated the commit message with your
+> > feedback and used git send-email to submit the patch.  I hope
+> > everything went well. =20
+>=20
+> It seems not. I didn't receive it.
+>=20
+> Did you configure the SMTP server. See git-send-email(1):
+>=20
+>    Use gmail as the smtp server
+>=20
+>        To use git send-email to send your patches through the GMail
+> SMTP server, edit ~/.gitconfig to specify your account settings:
+>=20
+>            [sendemail]
+>                    smtpEncryption =3D tls
+>                    smtpServer =3D smtp.gmail.com
+>                    smtpUser =3D yourname@gmail.com
+>                    smtpServerPort =3D 587
+>=20
+>        If you have multifactor authentication setup on your gmail
+> account, you will need to generate an app-specific password for use
+> with git send-email. Visit
+>        https://security.google.com/settings/security/apppasswords to
+> create it.
+>=20
+>        Once your commits are ready to be sent to the mailing list,
+> run the following commands:
+>=20
+>            $ git format-patch --cover-letter -M origin/master -o
+> outgoing/ $ edit outgoing/0000-*
+>            $ git send-email outgoing/*
+>=20
+>        The first time you run it, you will be prompted for your
+> credentials. Enter the app-specific or your regular password as
+> appropriate. If you have credential helper configured (see
+> git-credential(1)), the password will be saved in the credential
+> store so you won=E2=80=99t have to type it the next time.
+>=20
+>        Note: the following perl modules are required Net::SMTP::SSL,
+>        MIME::Base64 and Authen::SASL
+>=20
+> Thanks,
+> Laurent
+>=20
+> =20
 
-Did you configure the SMTP server. See git-send-email(1):
+Hm, you're right.  Even after making the config changes and installing
+the necessary packages, I still have no luck with git send-email.  Might
+take a bit to debug this.
 
-   Use gmail as the smtp server
-
-       To use git send-email to send your patches through the GMail SMTP
-       server, edit ~/.gitconfig to specify your account settings:
-
-           [sendemail]
-                   smtpEncryption = tls
-                   smtpServer = smtp.gmail.com
-                   smtpUser = yourname@gmail.com
-                   smtpServerPort = 587
-
-       If you have multifactor authentication setup on your gmail account, you
-       will need to generate an app-specific password for use with git
-       send-email. Visit
-       https://security.google.com/settings/security/apppasswords to create
-       it.
-
-       Once your commits are ready to be sent to the mailing list, run the
-       following commands:
-
-           $ git format-patch --cover-letter -M origin/master -o outgoing/
-           $ edit outgoing/0000-*
-           $ git send-email outgoing/*
-
-       The first time you run it, you will be prompted for your credentials.
-       Enter the app-specific or your regular password as appropriate. If you
-       have credential helper configured (see git-credential(1)), the password
-       will be saved in the credential store so you won’t have to type it the
-       next time.
-
-       Note: the following perl modules are required Net::SMTP::SSL,
-       MIME::Base64 and Authen::SASL
-
-Thanks,
-Laurent
-
- 
+- Justin
 
