@@ -1,72 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hgHIB-00028g-3k
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 19:25:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51037)
+	id 1hgHsF-0004SJ-Ic
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2019 20:02:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58249)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <eblake@redhat.com>) id 1hgHI8-00022q-Ms
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 19:25:29 -0400
+ (envelope-from <chmeeedalf@gmail.com>) id 1hgHsC-0004PS-Hw
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 20:02:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1hgHI7-000789-HL
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 19:25:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46484)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1hgHI2-00075O-OV; Wed, 26 Jun 2019 19:25:22 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 04F68C058CBD;
- Wed, 26 Jun 2019 23:25:22 +0000 (UTC)
-Received: from [10.3.116.44] (ovpn-116-44.phx2.redhat.com [10.3.116.44])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D2B021001B0E;
- Wed, 26 Jun 2019 23:25:18 +0000 (UTC)
-To: John Snow <jsnow@redhat.com>, qemu-block@nongnu.org, qemu-devel@nongnu.org
-Cc: Qemu-Trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
- radmehrsaeed7@gmail.com, Max Reitz <mreitz@redhat.com>
-References: <20190626215301.30733-1-jsnow@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=eblake@redhat.com; keydata=
- xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
- xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
- TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
- GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
- sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
- AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
- CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
- RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
- wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
- Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
- gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
- pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
- zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
- pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
- 3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
- NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
- cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
- SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
- I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
- mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
- Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
- 2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
-Organization: Red Hat, Inc.
-Message-ID: <83019545-dd96-2618-a028-9c885e904591@redhat.com>
-Date: Wed, 26 Jun 2019 18:25:17 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ (envelope-from <chmeeedalf@gmail.com>) id 1hgHsA-0001ls-Um
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2019 20:02:44 -0400
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135]:38983)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <chmeeedalf@gmail.com>)
+ id 1hgHs7-0001hs-3m; Wed, 26 Jun 2019 20:02:39 -0400
+Received: by mail-lf1-x135.google.com with SMTP id p24so296204lfo.6;
+ Wed, 26 Jun 2019 17:02:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=0bD4eEcaMXQo24YPh3YpBiz6BxI/iotWsEY5N08Vs4E=;
+ b=HPasXv6YmgH+VN1Xab72GajIyaMn6QCeQw4ZL2x/8JdqZT8hSz6hvfKM7YD8uq8FtP
+ sHlVvYtXywl9T/OFBicVKAjPVlq6F5kGJlE4IUurHPyiQSFyN9qWVAu4fthdH0FjDbcg
+ el5JaQRSvMpISqLSAU0023A/qTSPpI1tq5h8zpPH80sm/uvgxR0v0+gKAuJisfZg4Xss
+ snpM/w4tefwKT929Do/8oUuvnZ/Y9M1deZKH2idcG+1/Se5JsJ/1MRVqCWb6QLm3M1hV
+ 9Bx+OcIxyNaIbbM2+D21xiADAnsO0A98mJs7Ntd9fb6/6b8Ps0jg4y9o1/VavBKMB1g4
+ veJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=0bD4eEcaMXQo24YPh3YpBiz6BxI/iotWsEY5N08Vs4E=;
+ b=NpUfqZcz/2SMWlxIIgYIBcy4DNQ5+s3bGkhbQUW4bnUOpGUJjl5HEiWcqIt7fAWs68
+ tS3xdMlHgrwN95RuHiCvGcwGsiOTWrz7jNpRp5rLmvHCzewqErxhVToszhasA9f3icl5
+ NGI3wWs28P7HF5Xry+nPJCLxBfzhpyMOJuMmYo8Zg52DDvtIEgKV4rU+P5U5UhDHuHBH
+ 74Df25vCfxw9PLRE4jynHXqt3kvukZB44YPm+jd0vAokIzLTNgcb4LeKLvOsAXqJzQ2Q
+ x4xj7ruJkRDlAWL7MlqrM+apiIn98meqJxsXRCgom6laLJ3tky7WIJwpi058PA6i3gh+
+ LOAg==
+X-Gm-Message-State: APjAAAV2dtjG4ec3kyeK5sVOsUFqcoU5IOatmuVPXcNjHBEnH5eBdd7P
+ mzkdo2yUFNGhqWHOlHlkbOoEwd/T2koQ5kNDkUE=
+X-Google-Smtp-Source: APXvYqyjaotHpgJO77QWwMiM5xzlO0cv/MpB076PmptxzJ5OGfA+s2vWvl+329LIyqoygFdalbSQf2xI5T/HyPsM60g=
+X-Received: by 2002:a05:6512:48e:: with SMTP id
+ v14mr415861lfq.130.1561593757311; 
+ Wed, 26 Jun 2019 17:02:37 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190626215301.30733-1-jsnow@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="rke12gxMLVgPd7aEKDV69g22n3xOrVqgn"
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.32]); Wed, 26 Jun 2019 23:25:22 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block/qcow: Improve error
- when opening qcow2 files as qcow
+References: <20190607135653.6ece685d@titan.knownspace>
+ <8676232e-917d-44e2-1149-b25f26698a73@vivier.eu>
+ <92053c9c-e7bf-76cb-9399-987f4ab31bfb@vivier.eu>
+ <20190626113742.6bcd8a26@titan.knownspace>
+ <d60f142d-27ef-bfe5-1eb6-cefb22640625@vivier.eu>
+ <20190626130414.08940342@titan.knownspace>
+In-Reply-To: <20190626130414.08940342@titan.knownspace>
+From: Justin Hibbits <chmeeedalf@gmail.com>
+Date: Wed, 26 Jun 2019 19:02:25 -0500
+Message-ID: <CAHSQbTCxP09J9NtFiN4UpdXHJZHtTw_F66hfdAS2sM4=E5GHyQ@mail.gmail.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ "Emilio G. Cota" <cota@braap.org>
+Content-Type: multipart/alternative; boundary="000000000000302841058c42e101"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::135
+Subject: Re: [Qemu-trivial] Fix cacheline size retrieval on
+ FreeBSD/PowerPC(64)
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -78,93 +71,243 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Jun 2019 23:25:29 -0000
+X-List-Received-Date: Thu, 27 Jun 2019 00:02:46 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---rke12gxMLVgPd7aEKDV69g22n3xOrVqgn
-Content-Type: multipart/mixed; boundary="YLC3OetuhHmXnso4Gsg16MJ994RF3yQHA";
- protected-headers="v1"
-From: Eric Blake <eblake@redhat.com>
-To: John Snow <jsnow@redhat.com>, qemu-block@nongnu.org, qemu-devel@nongnu.org
-Cc: Qemu-Trivial <qemu-trivial@nongnu.org>, Kevin Wolf <kwolf@redhat.com>,
- radmehrsaeed7@gmail.com, Max Reitz <mreitz@redhat.com>
-Message-ID: <83019545-dd96-2618-a028-9c885e904591@redhat.com>
-Subject: Re: [Qemu-devel] [PATCH] block/qcow: Improve error when opening qcow2
- files as qcow
-References: <20190626215301.30733-1-jsnow@redhat.com>
-In-Reply-To: <20190626215301.30733-1-jsnow@redhat.com>
-
---YLC3OetuhHmXnso4Gsg16MJ994RF3yQHA
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+--000000000000302841058c42e101
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On 6/26/19 4:53 PM, John Snow wrote:
-> Reported-by: radmehrsaeed7@gmail.com
-> Fixes: https://bugs.launchpad.net/bugs/1832914
-> Signed-off-by: John Snow <jsnow@redhat.com>
-> ---
->  block/qcow.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
+On Wed, Jun 26, 2019, 13:04 Justin Hibbits <chmeeedalf@gmail.com> wrote:
 
-Yes, this is useful.
+> On Wed, 26 Jun 2019 18:47:42 +0200
+> Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> > Le 26/06/2019 =C3=A0 18:37, Justin Hibbits a =C3=A9crit :
+> > > On Wed, 26 Jun 2019 18:16:36 +0200
+> > > Laurent Vivier <laurent@vivier.eu> wrote:
+> > >
+> > >> Le 26/06/2019 =C3=A0 18:14, Laurent Vivier a =C3=A9crit :
+> > >>> Le 07/06/2019 =C3=A0 20:56, Justin Hibbits a =C3=A9crit :
+> > >>>> The attached very trivial patch fixes a startup bug that prevents
+> > >>>> at least Qemu 3.1 and later from working on FreeBSD/powerpc64.
+> > >>>>
+> > >>>> - Justin
+> > >>>>
+> > >>>
+> > >>> Please don't send a patch in attachment but inlined in the message
+> > >>> (you may use "git send-email" for that).
+> > >>>
+> > >>> This patch fixes "util: add cacheinfo" that has changed the type
+> > >>> from unsigned to long.
+> > >>>
+> > >>> You can add the following line in the commit message:
+> > >>>
+> > >>> Fixes: b255b2c8a548 ("util: add cacheinfo")
+> > >>>
+> > >>> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> > >>>
+> > >>
+> > >> CC: author of b255b2c8a548 ("util: add cacheinfo")
+> > >>
+> > >> Thanks,
+> > >> Laurent
+> > >
+> > > Hi Laurent,
+> > >
+> > > Sorry.  I had never used git send-email before, so wasn't
+> > > comfortable with it.  I just updated the commit message with your
+> > > feedback and used git send-email to submit the patch.  I hope
+> > > everything went well.
+> >
+> > It seems not. I didn't receive it.
+> >
+> > Did you configure the SMTP server. See git-send-email(1):
+> >
+> >    Use gmail as the smtp server
+> >
+> >        To use git send-email to send your patches through the GMail
+> > SMTP server, edit ~/.gitconfig to specify your account settings:
+> >
+> >            [sendemail]
+> >                    smtpEncryption =3D tls
+> >                    smtpServer =3D smtp.gmail.com
+> >                    smtpUser =3D yourname@gmail.com
+> >                    smtpServerPort =3D 587
+> >
+> >        If you have multifactor authentication setup on your gmail
+> > account, you will need to generate an app-specific password for use
+> > with git send-email. Visit
+> >        https://security.google.com/settings/security/apppasswords to
+> > create it.
+> >
+> >        Once your commits are ready to be sent to the mailing list,
+> > run the following commands:
+> >
+> >            $ git format-patch --cover-letter -M origin/master -o
+> > outgoing/ $ edit outgoing/0000-*
+> >            $ git send-email outgoing/*
+> >
+> >        The first time you run it, you will be prompted for your
+> > credentials. Enter the app-specific or your regular password as
+> > appropriate. If you have credential helper configured (see
+> > git-credential(1)), the password will be saved in the credential
+> > store so you won=E2=80=99t have to type it the next time.
+> >
+> >        Note: the following perl modules are required Net::SMTP::SSL,
+> >        MIME::Base64 and Authen::SASL
+> >
+> > Thanks,
+> > Laurent
+> >
+> >
+>
+> Hm, you're right.  Even after making the config changes and installing
+> the necessary packages, I still have no luck with git send-email.  Might
+> take a bit to debug this.
+>
+> - Justin
+>
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Sorry for the multiplicity, looks like Gmail forwarded it eventually, but
+not until I tried several times debugging it.
 
-Reminds me of when I helped convince the file(1) database maintainers
-that 'qcow2 (v3)' was better than 'qcow (v3)'.
-(https://bugzilla.redhat.com/show_bug.cgi?id=3D1654349, file.git 60b896d4=
-)
+- Justin
 
->=20
-> diff --git a/block/qcow.c b/block/qcow.c
-> index 6dee5bb792..a9cb6ae0bd 100644
-> --- a/block/qcow.c
-> +++ b/block/qcow.c
-> @@ -156,7 +156,12 @@ static int qcow_open(BlockDriverState *bs, QDict *=
-options, int flags,
->          goto fail;
->      }
->      if (header.version !=3D QCOW_VERSION) {
-> -        error_setg(errp, "Unsupported qcow version %" PRIu32, header.v=
-ersion);
-> +        error_setg(errp, "qcow (v%d) does not support qcow version %" =
-PRIu32,
-> +                   QCOW_VERSION, header.version);
-> +        if (header.version =3D=3D 2 || header.version =3D=3D 3) {
-> +            error_append_hint(errp, "Try the 'qcow2' driver instead.")=
-;
-> +        }
-> +
->          ret =3D -ENOTSUP;
->          goto fail;
->      }
->=20
+>
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+--000000000000302841058c42e101
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Wed, Jun 26, 2019, 13:04 Justin Hibbits &lt;<a href=
+=3D"mailto:chmeeedalf@gmail.com">chmeeedalf@gmail.com</a>&gt; wrote:<br></d=
+iv><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left=
+:1px #ccc solid;padding-left:1ex">On Wed, 26 Jun 2019 18:47:42 +0200<br>
+Laurent Vivier &lt;<a href=3D"mailto:laurent@vivier.eu" target=3D"_blank" r=
+el=3D"noreferrer">laurent@vivier.eu</a>&gt; wrote:<br>
+<br>
+&gt; Le 26/06/2019 =C3=A0 18:37, Justin Hibbits a =C3=A9crit=C2=A0:<br>
+&gt; &gt; On Wed, 26 Jun 2019 18:16:36 +0200<br>
+&gt; &gt; Laurent Vivier &lt;<a href=3D"mailto:laurent@vivier.eu" target=3D=
+"_blank" rel=3D"noreferrer">laurent@vivier.eu</a>&gt; wrote:<br>
+&gt; &gt;=C2=A0 =C2=A0<br>
+&gt; &gt;&gt; Le 26/06/2019 =C3=A0 18:14, Laurent Vivier a =C3=A9crit=C2=A0=
+:=C2=A0 <br>
+&gt; &gt;&gt;&gt; Le 07/06/2019 =C3=A0 20:56, Justin Hibbits a =C3=A9crit=
+=C2=A0:=C2=A0 =C2=A0 <br>
+&gt; &gt;&gt;&gt;&gt; The attached very trivial patch fixes a startup bug t=
+hat prevents<br>
+&gt; &gt;&gt;&gt;&gt; at least Qemu 3.1 and later from working on FreeBSD/p=
+owerpc64.<br>
+&gt; &gt;&gt;&gt;&gt;<br>
+&gt; &gt;&gt;&gt;&gt; - Justin<br>
+&gt; &gt;&gt;&gt;&gt;=C2=A0 =C2=A0 <br>
+&gt; &gt;&gt;&gt;<br>
+&gt; &gt;&gt;&gt; Please don&#39;t send a patch in attachment but inlined i=
+n the message<br>
+&gt; &gt;&gt;&gt; (you may use &quot;git send-email&quot; for that).<br>
+&gt; &gt;&gt;&gt;<br>
+&gt; &gt;&gt;&gt; This patch fixes &quot;util: add cacheinfo&quot; that has=
+ changed the type<br>
+&gt; &gt;&gt;&gt; from unsigned to long.<br>
+&gt; &gt;&gt;&gt;<br>
+&gt; &gt;&gt;&gt; You can add the following line in the commit message:<br>
+&gt; &gt;&gt;&gt;<br>
+&gt; &gt;&gt;&gt; Fixes: b255b2c8a548 (&quot;util: add cacheinfo&quot;)<br>
+&gt; &gt;&gt;&gt;<br>
+&gt; &gt;&gt;&gt; Reviewed-by: Laurent Vivier &lt;<a href=3D"mailto:laurent=
+@vivier.eu" target=3D"_blank" rel=3D"noreferrer">laurent@vivier.eu</a>&gt;<=
+br>
+&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0<br>
+&gt; &gt;&gt;<br>
+&gt; &gt;&gt; CC: author of b255b2c8a548 (&quot;util: add cacheinfo&quot;)<=
+br>
+&gt; &gt;&gt;<br>
+&gt; &gt;&gt; Thanks,<br>
+&gt; &gt;&gt; Laurent=C2=A0 <br>
+&gt; &gt; <br>
+&gt; &gt; Hi Laurent,<br>
+&gt; &gt; <br>
+&gt; &gt; Sorry.=C2=A0 I had never used git send-email before, so wasn&#39;=
+t<br>
+&gt; &gt; comfortable with it.=C2=A0 I just updated the commit message with=
+ your<br>
+&gt; &gt; feedback and used git send-email to submit the patch.=C2=A0 I hop=
+e<br>
+&gt; &gt; everything went well.=C2=A0 <br>
+&gt; <br>
+&gt; It seems not. I didn&#39;t receive it.<br>
+&gt; <br>
+&gt; Did you configure the SMTP server. See git-send-email(1):<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 Use gmail as the smtp server<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 To use git send-email to send your patches =
+through the GMail<br>
+&gt; SMTP server, edit ~/.gitconfig to specify your account settings:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 [sendemail]<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s=
+mtpEncryption =3D tls<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s=
+mtpServer =3D <a href=3D"http://smtp.gmail.com" rel=3D"noreferrer noreferre=
+r" target=3D"_blank">smtp.gmail.com</a><br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s=
+mtpUser =3D <a href=3D"mailto:yourname@gmail.com" target=3D"_blank" rel=3D"=
+noreferrer">yourname@gmail.com</a><br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 s=
+mtpServerPort =3D 587<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 If you have multifactor authentication setu=
+p on your gmail<br>
+&gt; account, you will need to generate an app-specific password for use<br=
+>
+&gt; with git send-email. Visit<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 <a href=3D"https://security.google.com/sett=
+ings/security/apppasswords" rel=3D"noreferrer noreferrer" target=3D"_blank"=
+>https://security.google.com/settings/security/apppasswords</a> to<br>
+&gt; create it.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 Once your commits are ready to be sent to t=
+he mailing list,<br>
+&gt; run the following commands:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 $ git format-patch --cover-le=
+tter -M origin/master -o<br>
+&gt; outgoing/ $ edit outgoing/0000-*<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 $ git send-email outgoing/*<b=
+r>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 The first time you run it, you will be prom=
+pted for your<br>
+&gt; credentials. Enter the app-specific or your regular password as<br>
+&gt; appropriate. If you have credential helper configured (see<br>
+&gt; git-credential(1)), the password will be saved in the credential<br>
+&gt; store so you won=E2=80=99t have to type it the next time.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 Note: the following perl modules are requir=
+ed Net::SMTP::SSL,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 MIME::Base64 and Authen::SASL<br>
+&gt; <br>
+&gt; Thanks,<br>
+&gt; Laurent<br>
+&gt; <br>
+&gt;=C2=A0 <br>
+<br>
+Hm, you&#39;re right.=C2=A0 Even after making the config changes and instal=
+ling<br>
+the necessary packages, I still have no luck with git send-email.=C2=A0 Mig=
+ht<br>
+take a bit to debug this.<br>
+<br>
+- Justin<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=
+=3D"auto">Sorry for the multiplicity, looks like Gmail forwarded it eventua=
+lly, but not until I tried several times debugging it.</div><div dir=3D"aut=
+o"><br></div><div dir=3D"auto">- Justin</div><div dir=3D"auto"><div class=
+=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8=
+ex;border-left:1px #ccc solid;padding-left:1ex">
+</blockquote></div></div></div>
 
---YLC3OetuhHmXnso4Gsg16MJ994RF3yQHA--
-
---rke12gxMLVgPd7aEKDV69g22n3xOrVqgn
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAl0T/t0ACgkQp6FrSiUn
-Q2pWPQgAq0jRTp61n/HEaHqFLEOY/NTjYJ8DBYWdP4gNIGHFUVyCYvccSBEZptRJ
-JXDWYtDI6ArPSH8/gSzhp1slCDl94OvYmy++Ggq8KL1yYkeh8mdpO0tt3IYqAI7A
-rYYUiVsl3nrbZiw1MdKxKddQTeKfZit71UyWUE/7EcJMT+FhenX3no4FcXgyf+vs
-e+j6n0Aj8fiSrCEwSG4BfUjYK1kfky8/5oTvFDNWnDbwdAHvWzkNNIPupSUcLwDs
-eC3DToeWMiGy5UEvD8CpK0p6xlWphZ68uhrt5/2SZiK0k/9CG+0xcHnZyX5kGlPh
-hCq3mEsJxSFcykerd61OjW9LK+hEEA==
-=dHcv
------END PGP SIGNATURE-----
-
---rke12gxMLVgPd7aEKDV69g22n3xOrVqgn--
+--000000000000302841058c42e101--
 
