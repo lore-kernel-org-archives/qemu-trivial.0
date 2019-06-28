@@ -1,48 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hgn7b-0004hu-1C
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jun 2019 05:24:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45838)
+	id 1hgrFH-0004Fc-T5
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jun 2019 09:48:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49155)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <kwolf@redhat.com>) id 1hgn7Y-0004cj-Du
- for qemu-trivial@nongnu.org; Fri, 28 Jun 2019 05:24:41 -0400
+ (envelope-from <liam.merwick@oracle.com>) id 1hgqcc-0008Pv-Uw
+ for qemu-trivial@nongnu.org; Fri, 28 Jun 2019 09:08:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kwolf@redhat.com>) id 1hgn7X-0004gW-Cy
- for qemu-trivial@nongnu.org; Fri, 28 Jun 2019 05:24:40 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59262)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kwolf@redhat.com>)
- id 1hgn7S-0004cY-Pw; Fri, 28 Jun 2019 05:24:34 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 14A13307E040;
- Fri, 28 Jun 2019 09:24:34 +0000 (UTC)
-Received: from dhcp-200-226.str.redhat.com (dhcp-200-226.str.redhat.com
- [10.33.200.226])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D3CCB60920;
- Fri, 28 Jun 2019 09:24:30 +0000 (UTC)
-Date: Fri, 28 Jun 2019 11:24:29 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: John Snow <jsnow@redhat.com>
-Cc: Qemu-Trivial <qemu-trivial@nongnu.org>, radmehrsaeed7@gmail.com,
- qemu-devel@nongnu.org, qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>
-Message-ID: <20190628092429.GB5179@dhcp-200-226.str.redhat.com>
-References: <20190626215301.30733-1-jsnow@redhat.com>
- <20190627083453.GC5618@localhost.localdomain>
- <5a374041-10a2-5ae3-6db1-966c7589b1cd@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <5a374041-10a2-5ae3-6db1-966c7589b1cd@redhat.com>
-User-Agent: Mutt/1.11.3 (2019-02-01)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.42]); Fri, 28 Jun 2019 09:24:34 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] block/qcow: Improve error
- when opening qcow2 files as qcow
+ (envelope-from <liam.merwick@oracle.com>) id 1hgqcc-00080U-0k
+ for qemu-trivial@nongnu.org; Fri, 28 Jun 2019 09:08:58 -0400
+Received: from aserp2120.oracle.com ([141.146.126.78]:49842)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <liam.merwick@oracle.com>)
+ id 1hgqcb-0007yA-Lo; Fri, 28 Jun 2019 09:08:57 -0400
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5SD3rv4156645;
+ Fri, 28 Jun 2019 13:08:53 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id; s=corp-2018-07-02;
+ bh=0C8PA+eTTuhq384WLM/bZtQrEJRTuSkPTMxjc8gHyQ4=;
+ b=pB+Lewpujjup7igrBL8lUwjCIMqIDs/MJaaW/IYMP9bPe58CIs51KnXRe/Qe6ujYF1Ma
+ VnXlFKJCTKmjynZiZmZMR2hPUq0dd2CFc7iS5+JQkVKyA267xAGnkeaQXmOVoqFoJLxy
+ wi4mojLvBv2A57Cze/qGkJNE5XLZgpzeBF27d131UF3mlCt8WXG/hZJSlCoNgUPi085d
+ uxvHIIZ7QeJzXUVGm6iGBe6KgWz8qCF2f4kNzUX3/iX29ukp/aYgo/tJfi+zKX/abMaE
+ XbcUJJw+ZFXW98Au+9B1MvyS2EzU46D5tnCh8C52KzS0HkJ8g0WjhmPzztqD8IBH+Lsx sg== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 2t9c9q5kfa-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 28 Jun 2019 13:08:53 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5SD8185106726;
+ Fri, 28 Jun 2019 13:08:52 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 2t99f5jxch-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 28 Jun 2019 13:08:52 +0000
+Received: from abhmp0022.oracle.com (abhmp0022.oracle.com [141.146.116.28])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x5SD8pHq009018;
+ Fri, 28 Jun 2019 13:08:51 GMT
+Received: from ol7.uk.oracle.com (/10.175.202.14)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 28 Jun 2019 06:08:50 -0700
+From: Liam Merwick <liam.merwick@oracle.com>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, liam.merwick@oracle.com
+Date: Fri, 28 Jun 2019 14:08:37 +0100
+Message-Id: <1561727317-30655-1-git-send-email-liam.merwick@oracle.com>
+X-Mailer: git-send-email 1.8.3.1
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9301
+ signatures=668688
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=993
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1906280157
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9301
+ signatures=668688
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=1 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1906280156
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 141.146.126.78
+X-Mailman-Approved-At: Fri, 28 Jun 2019 09:48:52 -0400
+Subject: [Qemu-trivial] [PATCH] docs/devel/testing: Fix typo in dockerfile
+ path
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -54,44 +78,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jun 2019 09:24:41 -0000
+X-List-Received-Date: Fri, 28 Jun 2019 13:09:00 -0000
 
-Am 27.06.2019 um 19:17 hat John Snow geschrieben:
-> 
-> 
-> On 6/27/19 4:34 AM, Kevin Wolf wrote:
-> > Am 26.06.2019 um 23:53 hat John Snow geschrieben:
-> >> Reported-by: radmehrsaeed7@gmail.com
-> >> Fixes: https://bugs.launchpad.net/bugs/1832914
-> >> Signed-off-by: John Snow <jsnow@redhat.com>
-> >> ---
-> >>  block/qcow.c | 7 ++++++-
-> >>  1 file changed, 6 insertions(+), 1 deletion(-)
-> >>
-> >> diff --git a/block/qcow.c b/block/qcow.c
-> >> index 6dee5bb792..a9cb6ae0bd 100644
-> >> --- a/block/qcow.c
-> >> +++ b/block/qcow.c
-> >> @@ -156,7 +156,12 @@ static int qcow_open(BlockDriverState *bs, QDict *options, int flags,
-> >>          goto fail;
-> >>      }
-> >>      if (header.version != QCOW_VERSION) {
-> >> -        error_setg(errp, "Unsupported qcow version %" PRIu32, header.version);
-> >> +        error_setg(errp, "qcow (v%d) does not support qcow version %" PRIu32,
-> >> +                   QCOW_VERSION, header.version);
-> >> +        if (header.version == 2 || header.version == 3) {
-> >> +            error_append_hint(errp, "Try the 'qcow2' driver instead.");
-> > 
-> > I think we want a \n at the end here.
-> > 
-> 
-> D'oh.
-> 
-> > Kevin
-> 
-> Can a maintainer pretty-please make the edit?
+Signed-off-by: Liam Merwick <liam.merwick@oracle.com>
+---
+ docs/devel/testing.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-A maintainer did that now. (read: thanks, applied)
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index da2d0fc9646f..3ef50a61db4d 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -327,7 +327,7 @@ Images
+ ------
+ 
+ Along with many other images, the ``min-glib`` image is defined in a Dockerfile
+-in ``tests/docker/dockefiles/``, called ``min-glib.docker``. ``make docker``
++in ``tests/docker/dockerfiles/``, called ``min-glib.docker``. ``make docker``
+ command will list all the available images.
+ 
+ To add a new image, simply create a new ``.docker`` file under the
+-- 
+1.8.3.1
 
-Kevin
 
