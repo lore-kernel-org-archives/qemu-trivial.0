@@ -1,51 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hgvh5-0001Dv-Qo
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jun 2019 14:33:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37435)
+	id 1hh0AO-0007Gr-OV
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jun 2019 19:20:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51344)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <ehabkost@redhat.com>) id 1hgvh1-00013r-JW
- for qemu-trivial@nongnu.org; Fri, 28 Jun 2019 14:33:54 -0400
+ (envelope-from <no-reply@patchew.org>) id 1hh0AL-0007Cj-If
+ for qemu-trivial@nongnu.org; Fri, 28 Jun 2019 19:20:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <ehabkost@redhat.com>) id 1hgvgz-0005ha-66
- for qemu-trivial@nongnu.org; Fri, 28 Jun 2019 14:33:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35814)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <ehabkost@redhat.com>)
- id 1hgvgp-0005X2-7o; Fri, 28 Jun 2019 14:33:39 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 6CEA83007E6A;
- Fri, 28 Jun 2019 18:33:28 +0000 (UTC)
-Received: from localhost (ovpn-116-7.gru2.redhat.com [10.97.116.7])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9441760920;
- Fri, 28 Jun 2019 18:33:23 +0000 (UTC)
-Date: Fri, 28 Jun 2019 15:33:21 -0300
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Like Xu <like.xu@linux.intel.com>
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-devel@nongnu.org, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Alistair Francis <alistair23@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Richard Henderson <rth@twiddle.net>,
- David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org
-Message-ID: <20190628183321.GE1862@habkost.net>
-References: <20190518205428.90532-1-like.xu@linux.intel.com>
- <20190518205428.90532-7-like.xu@linux.intel.com>
+ (envelope-from <no-reply@patchew.org>) id 1hh0AF-0007dW-RR
+ for qemu-trivial@nongnu.org; Fri, 28 Jun 2019 19:20:23 -0400
+Resent-Date: Fri, 28 Jun 2019 19:20:20 -0400
+Resent-Message-Id: <E1hh0AF-0007dW-RR@eggs.gnu.org>
+Received: from sender-of-o52.zoho.com ([135.84.80.217]:21479)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1hh0A8-0007PR-FX
+ for qemu-trivial@nongnu.org; Fri, 28 Jun 2019 19:20:14 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1561763068; cv=none; d=zoho.com; s=zohoarc; 
+ b=Azn7XsIrXwZaN7mdSRKi95h1TEe+QCo+S7CflvcUcOLJAbVb+iJM86l3LfYB7E9H9xuwJVphD1GjUt2n845EOyN+bxpU7VTbjwwdqUOydrPucWYPWaP3CpVth7GUqipJ4ZRQCDVK53hsrQ2EdME36XX/CXqxe1y6Ch9et9ZQgR4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+ s=zohoarc; t=1561763068;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+ bh=fgy8QMHDkmRsllaOGmCAnGRBuoUDyxi12RhgKuCwyN4=; 
+ b=YhwcvU5pUNWd++LEUw3YVzubJskqGE83kkr1nrsrRT2MGGj4ea7pnTGdb3gzYZfLrP0tO3QbqqGl0TtCy754SWaP068BIGSsl26Qc+Kt0XDyAvQhYfCxQy9G2IIyRqYTXH3zVI0B7PFi/I1Ae8/cejytvGI3zGzkZsBY0H/y2N0=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1561763054508239.17882317198814;
+ Fri, 28 Jun 2019 16:04:14 -0700 (PDT)
+Message-ID: <156176305246.16285.15387842115700265166@c4a48874b076>
+In-Reply-To: <20190628183321.GE1862@habkost.net>
+Reply-To: <qemu-devel@nongnu.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190518205428.90532-7-like.xu@linux.intel.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.45]); Fri, 28 Jun 2019 18:33:28 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: ehabkost@redhat.com
+Cc: like.xu@linux.intel.com, peter.maydell@linaro.org, david@redhat.com,
+ qemu-trivial@nongnu.org, cohuck@redhat.com, qemu-devel@nongnu.org,
+ dgilbert@redhat.com, pasic@linux.ibm.com, borntraeger@de.ibm.com,
+ qemu-s390x@nongnu.org, alistair23@gmail.com, imammedo@redhat.com,
+ rth@twiddle.net
+Date: Fri, 28 Jun 2019 16:04:14 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] fixup! hw/s390x: Replace global smp
- variables with machine smp properties
+X-Received-From: 135.84.80.217
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] fixup! hw/s390x: Replace
+ global smp variables with machine smp properties
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -57,67 +60,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jun 2019 18:33:54 -0000
+X-List-Received-Date: Fri, 28 Jun 2019 23:20:27 -0000
 
-On Sun, May 19, 2019 at 04:54:24AM +0800, Like Xu wrote:
-> The global smp variables in s390x are replaced with smp machine properties.
-> 
-> A local variable of the same name would be introduced in the declaration
-> phase if it's used widely in the context OR replace it on the spot if it's
-> only used once. No semantic changes.
-> 
-> Signed-off-by: Like Xu <like.xu@linux.intel.com>
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDYyODE4MzMyMS5HRTE4
+NjJAaGFia29zdC5uZXQvCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIGJ1aWxkIHRlc3Qgb24g
+czM5MHggaG9zdC4gUGxlYXNlIGZpbmQgdGhlIGRldGFpbHMgYmVsb3cuCgo9PT0gVEVTVCBTQ1JJ
+UFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCiMgVGVzdGluZyBzY3JpcHQgd2lsbCBiZSBpbnZva2Vk
+IHVuZGVyIHRoZSBnaXQgY2hlY2tvdXQgd2l0aAojIEhFQUQgcG9pbnRpbmcgdG8gYSBjb21taXQg
+dGhhdCBoYXMgdGhlIHBhdGNoZXMgYXBwbGllZCBvbiB0b3Agb2YgImJhc2UiCiMgYnJhbmNoCnNl
+dCAtZQoKZWNobwplY2hvICI9PT0gRU5WID09PSIKZW52CgplY2hvCmVjaG8gIj09PSBQQUNLQUdF
+UyA9PT0iCnJwbSAtcWEKCmVjaG8KZWNobyAiPT09IFVOQU1FID09PSIKdW5hbWUgLWEKCkNDPSRI
+T01FL2Jpbi9jYwpJTlNUQUxMPSRQV0QvaW5zdGFsbApCVUlMRD0kUFdEL2J1aWxkCm1rZGlyIC1w
+ICRCVUlMRCAkSU5TVEFMTApTUkM9JFBXRApjZCAkQlVJTEQKJFNSQy9jb25maWd1cmUgLS1jYz0k
+Q0MgLS1wcmVmaXg9JElOU1RBTEwKbWFrZSAtajQKIyBYWFg6IHdlIG5lZWQgcmVsaWFibGUgY2xl
+YW4gdXAKIyBtYWtlIGNoZWNrIC1qNCBWPTEKbWFrZSBpbnN0YWxsCj09PSBURVNUIFNDUklQVCBF
+TkQgPT09CgogIENDICAgICAgczM5MHgtc29mdG1tdS90YXJnZXQvczM5MHgvc2lncC5vCiAgQ0Mg
+ICAgICBzMzkweC1zb2Z0bW11L3RhcmdldC9zMzkweC9rdm0ubwovdmFyL3RtcC9wYXRjaGV3LXRl
+c3Rlci10bXAtM2RlM2Jvd2Ivc3JjL3RhcmdldC9zMzkweC9rdm0uYzogSW4gZnVuY3Rpb24g4oCY
+a3ZtX2FyY2hfaW5pdF92Y3B14oCZOgovdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtM2RlM2Jv
+d2Ivc3JjL3RhcmdldC9zMzkweC9rdm0uYzozNjU6NTY6IGVycm9yOiDigJhNYWNoaW5lU3RhdGXi
+gJkge2FrYSDigJhzdHJ1Y3QgTWFjaGluZVN0YXRl4oCZfSBoYXMgbm8gbWVtYmVyIG5hbWVkIOKA
+mHNtcOKAmQogIDM2NSB8ICAgICB1bnNpZ25lZCBpbnQgbWF4X2NwdXMgPSBNQUNISU5FKHFkZXZf
+Z2V0X21hY2hpbmUoKSktPnNtcC5tYXhfY3B1czsKICAgICAgfCAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXn4KL3Zhci90bXAvcGF0Y2hldy10
+ZXN0ZXItdG1wLTNkZTNib3diL3NyYy90YXJnZXQvczM5MHgva3ZtLmM6IEluIGZ1bmN0aW9uIOKA
+mGt2bV9zMzkwX3ZjcHVfaW50ZXJydXB0X3ByZV9zYXZl4oCZOgovdmFyL3RtcC9wYXRjaGV3LXRl
+c3Rlci10bXAtM2RlM2Jvd2Ivc3JjL3RhcmdldC9zMzkweC9rdm0uYzoxOTU0OjU2OiBlcnJvcjog
+4oCYTWFjaGluZVN0YXRl4oCZIHtha2Eg4oCYc3RydWN0IE1hY2hpbmVTdGF0ZeKAmX0gaGFzIG5v
+IG1lbWJlciBuYW1lZCDigJhzbXDigJkKIDE5NTQgfCAgICAgdW5zaWduZWQgaW50IG1heF9jcHVz
+ID0gTUFDSElORShxZGV2X2dldF9tYWNoaW5lKCkpLT5zbXAubWF4X2NwdXM7CiAgICAgIHwgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF5+Cm1h
+a2VbMV06ICoqKiBbL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLTNkZTNib3diL3NyYy9ydWxl
+cy5tYWs6Njk6IHRhcmdldC9zMzkweC9rdm0ub10gRXJyb3IgMQoKClRoZSBmdWxsIGxvZyBpcyBh
+dmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAxOTA2MjgxODMzMjEuR0UxODYy
+QGhhYmtvc3QubmV0L3Rlc3RpbmcuczM5MHgvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVy
+YXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxl
+YXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
 
-I'm applying the following fixup to address s390x build failures
-on machine-next.
-
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
----
- target/s390x/kvm.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/target/s390x/kvm.c b/target/s390x/kvm.c
-index 0267c6c2f6..6e814c230b 100644
---- a/target/s390x/kvm.c
-+++ b/target/s390x/kvm.c
-@@ -119,8 +119,8 @@
-  * Needs to be big enough to contain max_cpus emergency signals
-  * and in addition NR_LOCAL_IRQS interrupts
-  */
--#define VCPU_IRQ_BUF_SIZE (sizeof(struct kvm_s390_irq) * \
--                           (max_cpus + NR_LOCAL_IRQS))
-+#define VCPU_IRQ_BUF_SIZE(max_cpus) (sizeof(struct kvm_s390_irq) * \
-+                                     (max_cpus + NR_LOCAL_IRQS))
- 
- static CPUWatchpoint hw_watchpoint;
- /*
-@@ -362,9 +362,10 @@ unsigned long kvm_arch_vcpu_id(CPUState *cpu)
- 
- int kvm_arch_init_vcpu(CPUState *cs)
- {
-+    unsigned int max_cpus = MACHINE(qdev_get_machine())->smp.max_cpus;
-     S390CPU *cpu = S390_CPU(cs);
-     kvm_s390_set_cpu_state(cpu, cpu->env.cpu_state);
--    cpu->irqstate = g_malloc0(VCPU_IRQ_BUF_SIZE);
-+    cpu->irqstate = g_malloc0(VCPU_IRQ_BUF_SIZE(max_cpus));
-     return 0;
- }
- 
-@@ -1950,9 +1951,10 @@ int kvm_s390_set_cpu_state(S390CPU *cpu, uint8_t cpu_state)
- 
- void kvm_s390_vcpu_interrupt_pre_save(S390CPU *cpu)
- {
-+    unsigned int max_cpus = MACHINE(qdev_get_machine())->smp.max_cpus;
-     struct kvm_s390_irq_state irq_state = {
-         .buf = (uint64_t) cpu->irqstate,
--        .len = VCPU_IRQ_BUF_SIZE,
-+        .len = VCPU_IRQ_BUF_SIZE(max_cpus),
-     };
-     CPUState *cs = CPU(cpu);
-     int32_t bytes;
--- 
-2.18.0.rc1.1.g3f1ff2140
-
--- 
-Eduardo
 
