@@ -1,72 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hgrFH-0004Fc-T5
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jun 2019 09:48:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49155)
+	id 1hgrsm-00051S-GJ
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jun 2019 10:29:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40871)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <liam.merwick@oracle.com>) id 1hgqcc-0008Pv-Uw
- for qemu-trivial@nongnu.org; Fri, 28 Jun 2019 09:08:59 -0400
+ (envelope-from <philmd@redhat.com>) id 1hgrsj-0004wf-3s
+ for qemu-trivial@nongnu.org; Fri, 28 Jun 2019 10:29:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <liam.merwick@oracle.com>) id 1hgqcc-00080U-0k
- for qemu-trivial@nongnu.org; Fri, 28 Jun 2019 09:08:58 -0400
-Received: from aserp2120.oracle.com ([141.146.126.78]:49842)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <liam.merwick@oracle.com>)
- id 1hgqcb-0007yA-Lo; Fri, 28 Jun 2019 09:08:57 -0400
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5SD3rv4156645;
- Fri, 28 Jun 2019 13:08:53 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id; s=corp-2018-07-02;
- bh=0C8PA+eTTuhq384WLM/bZtQrEJRTuSkPTMxjc8gHyQ4=;
- b=pB+Lewpujjup7igrBL8lUwjCIMqIDs/MJaaW/IYMP9bPe58CIs51KnXRe/Qe6ujYF1Ma
- VnXlFKJCTKmjynZiZmZMR2hPUq0dd2CFc7iS5+JQkVKyA267xAGnkeaQXmOVoqFoJLxy
- wi4mojLvBv2A57Cze/qGkJNE5XLZgpzeBF27d131UF3mlCt8WXG/hZJSlCoNgUPi085d
- uxvHIIZ7QeJzXUVGm6iGBe6KgWz8qCF2f4kNzUX3/iX29ukp/aYgo/tJfi+zKX/abMaE
- XbcUJJw+ZFXW98Au+9B1MvyS2EzU46D5tnCh8C52KzS0HkJ8g0WjhmPzztqD8IBH+Lsx sg== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by aserp2120.oracle.com with ESMTP id 2t9c9q5kfa-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 28 Jun 2019 13:08:53 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5SD8185106726;
- Fri, 28 Jun 2019 13:08:52 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3030.oracle.com with ESMTP id 2t99f5jxch-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 28 Jun 2019 13:08:52 +0000
-Received: from abhmp0022.oracle.com (abhmp0022.oracle.com [141.146.116.28])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x5SD8pHq009018;
- Fri, 28 Jun 2019 13:08:51 GMT
-Received: from ol7.uk.oracle.com (/10.175.202.14)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 28 Jun 2019 06:08:50 -0700
-From: Liam Merwick <liam.merwick@oracle.com>
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, liam.merwick@oracle.com
-Date: Fri, 28 Jun 2019 14:08:37 +0100
-Message-Id: <1561727317-30655-1-git-send-email-liam.merwick@oracle.com>
-X-Mailer: git-send-email 1.8.3.1
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9301
- signatures=668688
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=993
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1906280157
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9301
- signatures=668688
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=1 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1906280156
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 141.146.126.78
-X-Mailman-Approved-At: Fri, 28 Jun 2019 09:48:52 -0400
-Subject: [Qemu-trivial] [PATCH] docs/devel/testing: Fix typo in dockerfile
- path
+ (envelope-from <philmd@redhat.com>) id 1hgrsh-0007Jq-SL
+ for qemu-trivial@nongnu.org; Fri, 28 Jun 2019 10:29:41 -0400
+Received: from mail-wm1-f68.google.com ([209.85.128.68]:35939)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hgrsh-0007H2-I0
+ for qemu-trivial@nongnu.org; Fri, 28 Jun 2019 10:29:39 -0400
+Received: by mail-wm1-f68.google.com with SMTP id u8so9188745wmm.1
+ for <qemu-trivial@nongnu.org>; Fri, 28 Jun 2019 07:29:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=kzyDs37IHkXapkdFzVROwyva8sAh39D6I+iSdvtITHE=;
+ b=I806pGfpgE2avL77sehFQtrDq6eBZJoCR7TyqkfqMiNtdPBuP2ovMRdkzBjjRrIX7d
+ IDfMOsp9etp8EiuhLCqUYri0bAhBRP5RMTx5FDGgoEo7i3IjirBDb2O5avfUEeTEoa5E
+ Sbs0Z5L7lwq43OMCf3AuXwdCbihH49YwGITDg64ChtCen9Aj2Vnn09Iq/THDKsK4TqRu
+ c8Ja/xaKaPo1N+i1B7JfKS6pWhEPoAr6nYli57oRXm1nnwTVuIFGebjGLjB7ihGKVflm
+ 63kUYg1S+o21ADDkoWH6Lsnz6XTsEBQiP3DiT9ZxckmeGR37YcNz8TbQIvfdnn5/TWKo
+ E2nQ==
+X-Gm-Message-State: APjAAAUIbEOsceYZIaDZl4gpKY1n6QUI7iFKVeb4FrUGNj4eyoAxsDtF
+ MlpMG56dwEU8oIYjaHjFbpN0/w==
+X-Google-Smtp-Source: APXvYqzy+X3cX8o+7lOJXg84BtnZfQ53sSdApCH7vMn1fxSCNSxZGa/et8u/SL4Y7RTfL5ItyVxA9g==
+X-Received: by 2002:a1c:f319:: with SMTP id q25mr7170520wmq.129.1561732176670; 
+ Fri, 28 Jun 2019 07:29:36 -0700 (PDT)
+Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.183])
+ by smtp.gmail.com with ESMTPSA id q12sm3935422wrp.50.2019.06.28.07.29.35
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Fri, 28 Jun 2019 07:29:36 -0700 (PDT)
+To: Liam Merwick <liam.merwick@oracle.com>, qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org
+References: <1561727317-30655-1-git-send-email-liam.merwick@oracle.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <bc12ed80-a2d2-d03e-2cf0-f066a214a344@redhat.com>
+Date: Fri, 28 Jun 2019 16:29:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
+MIME-Version: 1.0
+In-Reply-To: <1561727317-30655-1-git-send-email-liam.merwick@oracle.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.128.68
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] docs/devel/testing: Fix
+ typo in dockerfile path
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -78,27 +67,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jun 2019 13:09:00 -0000
+X-List-Received-Date: Fri, 28 Jun 2019 14:29:43 -0000
 
-Signed-off-by: Liam Merwick <liam.merwick@oracle.com>
----
- docs/devel/testing.rst | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 6/28/19 3:08 PM, Liam Merwick wrote:
+> Signed-off-by: Liam Merwick <liam.merwick@oracle.com>
+> ---
+>  docs/devel/testing.rst | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+> index da2d0fc9646f..3ef50a61db4d 100644
+> --- a/docs/devel/testing.rst
+> +++ b/docs/devel/testing.rst
+> @@ -327,7 +327,7 @@ Images
+>  ------
+>  
+>  Along with many other images, the ``min-glib`` image is defined in a Dockerfile
+> -in ``tests/docker/dockefiles/``, called ``min-glib.docker``. ``make docker``
+> +in ``tests/docker/dockerfiles/``, called ``min-glib.docker``. ``make docker``
+>  command will list all the available images.
+>  
+>  To add a new image, simply create a new ``.docker`` file under the
+> 
 
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index da2d0fc9646f..3ef50a61db4d 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -327,7 +327,7 @@ Images
- ------
- 
- Along with many other images, the ``min-glib`` image is defined in a Dockerfile
--in ``tests/docker/dockefiles/``, called ``min-glib.docker``. ``make docker``
-+in ``tests/docker/dockerfiles/``, called ``min-glib.docker``. ``make docker``
- command will list all the available images.
- 
- To add a new image, simply create a new ``.docker`` file under the
--- 
-1.8.3.1
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
