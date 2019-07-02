@@ -1,30 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hiDQK-0007eJ-Ui
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Jul 2019 03:41:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45927)
+	id 1hiDvs-00053f-4D
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Jul 2019 04:14:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51561)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <laurent@vivier.eu>) id 1hiDQH-0007eA-Uf
- for qemu-trivial@nongnu.org; Tue, 02 Jul 2019 03:41:55 -0400
+ (envelope-from <laurent@vivier.eu>) id 1hiDvq-000526-1K
+ for qemu-trivial@nongnu.org; Tue, 02 Jul 2019 04:14:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1hiDQG-0004oo-Fw
- for qemu-trivial@nongnu.org; Tue, 02 Jul 2019 03:41:53 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:36453)
+ (envelope-from <laurent@vivier.eu>) id 1hiDvp-0003NT-4b
+ for qemu-trivial@nongnu.org; Tue, 02 Jul 2019 04:14:29 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:38981)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1hiDQG-0004ny-5d
- for qemu-trivial@nongnu.org; Tue, 02 Jul 2019 03:41:52 -0400
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1hiDvm-0003Ld-RB; Tue, 02 Jul 2019 04:14:27 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MHXWL-1hmOPV2oUr-00DXUU; Tue, 02 Jul 2019 09:41:32 +0200
-To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Kashyap Chamarthy <kchamart@redhat.com>, Amit Shah <amit@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Richard W . M . Jones" <rjones@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20190529143106.11789-1-lvivier@redhat.com>
- <20190529143106.11789-2-lvivier@redhat.com>
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MtPzy-1iXaUn1WUI-00urU8; Tue, 02 Jul 2019 10:14:11 +0200
+To: Liam Merwick <liam.merwick@oracle.com>, qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org
+References: <1561727317-30655-1-git-send-email-liam.merwick@oracle.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -69,35 +62,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <af09f9ab-1852-f171-5dc6-3d36348395d7@vivier.eu>
-Date: Tue, 2 Jul 2019 09:41:30 +0200
+Message-ID: <a501aeaa-959d-05a1-21ac-e32b38e1d8f7@vivier.eu>
+Date: Tue, 2 Jul 2019 10:14:10 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190529143106.11789-2-lvivier@redhat.com>
+In-Reply-To: <1561727317-30655-1-git-send-email-liam.merwick@oracle.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:E2Dk+MtF0A4TPXd/oTO3DmqKBTiNksyrr8aznCUIGrOTRIUPA0E
- qFaaNyGdNGshWz+xLt9JE0kj0XcfkAK+24DUqMWAyRO2eZS+EFg3fgU6cn9aJCR7zmfdNvJ
- uIbmmNeO3JcgaWmxy5B/6qAFyTpn7OO4zuniTTUV7mceCsNhenFOGwiLkHhNanbMdjW9x7L
- BLh+EqVQbba/0BvC8g/ZQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:N6OX2qE8nnc=:m9+8kZp8URiS45heic1dX2
- /F2V5tP3Z4WjWyPS5f7riIY5xIT365Nvq+xYSDoml2RKiEkSn75oHB+9wTdOWfEL0UEtyZwlX
- eagcu90XzQ4Hbnma3LglvcfT0N0AP4awNKXy6FTU4GUITMcK88zJCV++IXYyWNr/Luomqp2g9
- FnDGpwc39H8yifjFUcqXqSZcOGSezkoc6Y6GTAMtXLfUi5Eay4GTXoEaMlvLJ0PSo2WZEO/9M
- IkOZbCjatXcRRbsvq0AnGudib/Htjy8wumbOh5D5PKtBn3sJchWh7UYd7RNt4z12L8rTBSrF/
- Qir3/HjTGTfmScClVGBr5dTQGbV7gPNJQFnc8iBfKjyrLuDfHzcwHDK/LEO+OAZ+C2MPOrml3
- 8jfGL5/zRkiEkgrs2fFtPpKLcgGByODzqG5pMS5NIaoJmXxlYCCD+cq8NeHmN3V5crpCOZnSr
- a/YEtff/gnEuaf0dc+BU2jsgUo0t1wElMtEQep/A61B8w1VOS0WuMM/mGz/qOzU8SQl7A5oB3
- W4qSZ6Trr7hs+5ON4Y23gIWKoWbmCfGJ5DC7MW5+7CtNCAMGzuFeJ2bUQObZNBy8ZMu/5I+Ix
- AJ+89VwWvVxfKiUT007x1lJXGMLHlIU5ym4i75cmdO+2p87mRphFRj7OP35ONr9M1FKfrFCSX
- vR3e9iHPt+U1iLP4wNIojRBvPpjYhjDPJZYJ37wYSYcvCrKJjt7vzGjY0XjXu7JKkiu27iTJ7
- NjOIfJUu/gXCJ5/jwJ9RbkMUDLhTq44hH2mpfnLXYRtqQLT0Bh09hKrYD2A=
+X-Provags-ID: V03:K1:OEY5NHEdB5vaYYpi1XNwaRx3feumfA6hJ7rPVSk9Jc0mddSwKqQ
+ y4jf6+mK8+DdJGg1y/AlmMm/iCkew9xHgmA7AVnkPyIFENjDhPDd++DCKvxz6APNHkzJE2g
+ 7S5jefBn2eXOfRAqKwM9FuRUAXHEN26hl4G3xKcUaNqdls86eYnCD8NFUr3qFXE6fVSp9ql
+ n9baBGq4H0dB2tKURTRCw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:1PuJ9B5Xvm0=:yUcTlWIROYwAh9IxLC+Fo7
+ VjjSlBAhDznDoijEcO9kWZ3VnxFCG0J/5N7Uuw/ISQF5/S6cdofJMoMxVrTMiEiCbtrnsZacC
+ /q1H8I1tkf++SOQTDNVSBkBPoSv44oF2QUzVxnZ8dcrhBfVBWa0GsLqnqOzpPaT5gP6tHRmr3
+ yUOleVRB30Sbi+Rnv2ddK4eZ4Cpd3QutC7os+HKAdMPsGlafVyjEt2QwxPg4PFSHiVimZzXTH
+ vX8TCJfmutK0zaoMm4QDN1qNyMAj7zOxDSRlGwQguF33o+YwBlPuOkhqXyqgLuHbF/W8QrGNZ
+ 00kRdHn+WwxbVtw8VyiPt3iCmDwnp4jR3IqzxwFZCrfwN0Ub9odbmVK2xTO3LFDXR1bgXX7E3
+ VmTQtjiEacYWFOblkMGkMwE8IUvbMlKqcnjebpEonoK58L+m1AjDEMA92UAGf7P/33v3JC2gw
+ Qpv/chdIvFe188gD/BV48K6gCk+bNBW9IcVVSVqJNKhZ6bD7nB+z+bBaFVTn0cQW/PCQo1la3
+ 5q5mNOTJa3l9tteRAZwyAD0/BpqJWi8DA+2atuRXvNmI13FrEuZNcR9qXjfCztxCbwwTnw4Ur
+ tSZ25wj6ahhPMyW0V+shuEXx18Bk/8eWVmOO5rVUoxJ2iVrm9/ooZDIMYvJxPSDiusKMS0aG5
+ AYoYeSU9cjA+HYJ0or7ACXoM+BzJW7DMQoT+b6h1kLKbwbaMyRs9oSDTgZDPvXmtLho//YOAi
+ NWKN/0UuRNVyxmR5IVbmG8ZsHNChckxfStBVd1gdl6PIwVl7fpyygaFG9vg=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v7 1/4] VirtIO-RNG: Update
- default entropy source to `/dev/urandom`
+X-Received-From: 212.227.126.130
+Subject: Re: [Qemu-trivial] [PATCH] docs/devel/testing: Fix typo in
+ dockerfile path
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,117 +102,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Jul 2019 07:41:55 -0000
+X-List-Received-Date: Tue, 02 Jul 2019 08:14:31 -0000
 
-Le 29/05/2019 à 16:31, Laurent Vivier a écrit :
-> From: Kashyap Chamarthy <kchamart@redhat.com>
-> 
-> When QEMU exposes a VirtIO-RNG device to the guest, that device needs a
-> source of entropy, and that source needs to be "non-blocking", like
-> `/dev/urandom`.  However, currently QEMU defaults to the problematic
-> `/dev/random`, which on Linux is "blocking" (as in, it waits until
-> sufficient entropy is available).
-> 
-> Why prefer `/dev/urandom` over `/dev/random`?
-> ---------------------------------------------
-> 
-> The man pages of urandom(4) and random(4) state:
-> 
->     "The /dev/random device is a legacy interface which dates back to a
->     time where the cryptographic primitives used in the implementation
->     of /dev/urandom were not widely trusted.  It will return random
->     bytes only within the estimated number of bits of fresh noise in the
->     entropy pool, blocking if necessary.  /dev/random is suitable for
->     applications that need high quality randomness, and can afford
->     indeterminate delays."
-> 
-> Further, the "Usage" section of the said man pages state:
-> 
->     "The /dev/random interface is considered a legacy interface, and
->     /dev/urandom is preferred and sufficient in all use cases, with the
->     exception of applications which require randomness during early boot
->     time; for these applications, getrandom(2) must be used instead,
->     because it will block until the entropy pool is initialized.
-> 
->     "If a seed file is saved across reboots as recommended below (all
->     major Linux distributions have done this since 2000 at least), the
->     output is cryptographically secure against attackers without local
->     root access as soon as it is reloaded in the boot sequence, and
->     perfectly adequate for network encryption session keys.  Since reads
->     from /dev/random may block, users will usually want to open it in
->     nonblocking mode (or perform a read with timeout), and provide some
->     sort of user notification if the desired entropy is not immediately
->     available."
-> 
-> And refer to random(7) for a comparison of `/dev/random` and
-> `/dev/urandom`.
-> 
-> What about other OSes?
-> ----------------------
-> 
-> `/dev/urandom` exists and works on OS-X, FreeBSD, DragonFlyBSD, NetBSD
-> and OpenBSD, which cover all the non-Linux platforms we explicitly
-> support, aside from Windows.
-> 
-> On Windows `/dev/random` doesn't work either so we don't regress.
-> This is actually another argument in favour of using the newly
-> proposed 'rng-builtin' backend by default, as that will work on
-> Windows.
-> 
->     - - -
-> 
-> Given the above, change the entropy source for VirtIO-RNG device to
-> `/dev/urandom`.
-> 
-> Related discussion in these[1][2] past threads.
-> 
-> [1] https://lists.nongnu.org/archive/html/qemu-devel/2018-06/msg08335.html
->     -- "RNG: Any reason QEMU doesn't default to `/dev/urandom`?"
-> [2] https://lists.nongnu.org/archive/html/qemu-devel/2018-09/msg02724.html
->     -- "[RFC] Virtio RNG: Consider changing the default entropy source to
->        /dev/urandom"
-> 
-> Signed-off-by: Kashyap Chamarthy <kchamart@redhat.com>
-> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+Le 28/06/2019 à 15:08, Liam Merwick a écrit :
+> Signed-off-by: Liam Merwick <liam.merwick@oracle.com>
 > ---
->  backends/rng-random.c | 2 +-
->  qemu-options.hx       | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+>  docs/devel/testing.rst | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/backends/rng-random.c b/backends/rng-random.c
-> index e2a49b0571d7..eff36ef14084 100644
-> --- a/backends/rng-random.c
-> +++ b/backends/rng-random.c
-> @@ -112,7 +112,7 @@ static void rng_random_init(Object *obj)
->                              rng_random_set_filename,
->                              NULL);
+> diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+> index da2d0fc9646f..3ef50a61db4d 100644
+> --- a/docs/devel/testing.rst
+> +++ b/docs/devel/testing.rst
+> @@ -327,7 +327,7 @@ Images
+>  ------
 >  
-> -    s->filename = g_strdup("/dev/random");
-> +    s->filename = g_strdup("/dev/urandom");
->      s->fd = -1;
->  }
+>  Along with many other images, the ``min-glib`` image is defined in a Dockerfile
+> -in ``tests/docker/dockefiles/``, called ``min-glib.docker``. ``make docker``
+> +in ``tests/docker/dockerfiles/``, called ``min-glib.docker``. ``make docker``
+>  command will list all the available images.
 >  
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 39dc17042967..f6e9bd1d9c42 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -4328,7 +4328,7 @@ Creates a random number generator backend which obtains entropy from
->  a device on the host. The @option{id} parameter is a unique ID that
->  will be used to reference this entropy backend from the @option{virtio-rng}
->  device. The @option{filename} parameter specifies which file to obtain
-> -entropy from and if omitted defaults to @option{/dev/random}.
-> +entropy from and if omitted defaults to @option{/dev/urandom}.
->  
->  @item -object rng-egd,id=@var{id},chardev=@var{chardevid}
->  
+>  To add a new image, simply create a new ``.docker`` file under the
 > 
 
-As this patch is trivial and reviewed by at least 3 persons, and it
-seems no one wants to take care of it, I will push it through my next
-trivial pull request.
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
