@@ -1,96 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hiDvs-00053f-4D
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Jul 2019 04:14:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51561)
+	id 1hiI2F-0003xg-GM
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Jul 2019 08:37:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48714)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <laurent@vivier.eu>) id 1hiDvq-000526-1K
- for qemu-trivial@nongnu.org; Tue, 02 Jul 2019 04:14:30 -0400
+ (envelope-from <laurent@vivier.eu>) id 1hiI2D-0003v1-Pe
+ for qemu-trivial@nongnu.org; Tue, 02 Jul 2019 08:37:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1hiDvp-0003NT-4b
- for qemu-trivial@nongnu.org; Tue, 02 Jul 2019 04:14:29 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:38981)
+ (envelope-from <laurent@vivier.eu>) id 1hiI2C-0000Zc-O7
+ for qemu-trivial@nongnu.org; Tue, 02 Jul 2019 08:37:21 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:42739)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1hiDvm-0003Ld-RB; Tue, 02 Jul 2019 04:14:27 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MtPzy-1iXaUn1WUI-00urU8; Tue, 02 Jul 2019 10:14:11 +0200
-To: Liam Merwick <liam.merwick@oracle.com>, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org
-References: <1561727317-30655-1-git-send-email-liam.merwick@oracle.com>
+ id 1hiI2C-0000XI-CC; Tue, 02 Jul 2019 08:37:20 -0400
+Received: from localhost.localdomain ([78.238.229.36]) by
+ mrelayeu.kundenserver.de (mreue009 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1N95mR-1idsBW2Q2Z-016AqN; Tue, 02 Jul 2019 14:37:17 +0200
 From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <a501aeaa-959d-05a1-21ac-e32b38e1d8f7@vivier.eu>
-Date: Tue, 2 Jul 2019 10:14:10 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-trivial@nongnu.org, Amit Shah <amit@kernel.org>,
+ Justin Hibbits <chmeeedalf@gmail.com>
+Date: Tue,  2 Jul 2019 14:37:11 +0200
+Message-Id: <20190702123713.14396-2-laurent@vivier.eu>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190702123713.14396-1-laurent@vivier.eu>
+References: <20190702123713.14396-1-laurent@vivier.eu>
 MIME-Version: 1.0
-In-Reply-To: <1561727317-30655-1-git-send-email-liam.merwick@oracle.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:OEY5NHEdB5vaYYpi1XNwaRx3feumfA6hJ7rPVSk9Jc0mddSwKqQ
- y4jf6+mK8+DdJGg1y/AlmMm/iCkew9xHgmA7AVnkPyIFENjDhPDd++DCKvxz6APNHkzJE2g
- 7S5jefBn2eXOfRAqKwM9FuRUAXHEN26hl4G3xKcUaNqdls86eYnCD8NFUr3qFXE6fVSp9ql
- n9baBGq4H0dB2tKURTRCw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:1PuJ9B5Xvm0=:yUcTlWIROYwAh9IxLC+Fo7
- VjjSlBAhDznDoijEcO9kWZ3VnxFCG0J/5N7Uuw/ISQF5/S6cdofJMoMxVrTMiEiCbtrnsZacC
- /q1H8I1tkf++SOQTDNVSBkBPoSv44oF2QUzVxnZ8dcrhBfVBWa0GsLqnqOzpPaT5gP6tHRmr3
- yUOleVRB30Sbi+Rnv2ddK4eZ4Cpd3QutC7os+HKAdMPsGlafVyjEt2QwxPg4PFSHiVimZzXTH
- vX8TCJfmutK0zaoMm4QDN1qNyMAj7zOxDSRlGwQguF33o+YwBlPuOkhqXyqgLuHbF/W8QrGNZ
- 00kRdHn+WwxbVtw8VyiPt3iCmDwnp4jR3IqzxwFZCrfwN0Ub9odbmVK2xTO3LFDXR1bgXX7E3
- VmTQtjiEacYWFOblkMGkMwE8IUvbMlKqcnjebpEonoK58L+m1AjDEMA92UAGf7P/33v3JC2gw
- Qpv/chdIvFe188gD/BV48K6gCk+bNBW9IcVVSVqJNKhZ6bD7nB+z+bBaFVTn0cQW/PCQo1la3
- 5q5mNOTJa3l9tteRAZwyAD0/BpqJWi8DA+2atuRXvNmI13FrEuZNcR9qXjfCztxCbwwTnw4Ur
- tSZ25wj6ahhPMyW0V+shuEXx18Bk/8eWVmOO5rVUoxJ2iVrm9/ooZDIMYvJxPSDiusKMS0aG5
- AYoYeSU9cjA+HYJ0or7ACXoM+BzJW7DMQoT+b6h1kLKbwbaMyRs9oSDTgZDPvXmtLho//YOAi
- NWKN/0UuRNVyxmR5IVbmG8ZsHNChckxfStBVd1gdl6PIwVl7fpyygaFG9vg=
+X-Provags-ID: V03:K1:MpVnjE9ILMkipRn4MKez3x505bdBBbNHNpT4QgWdLUuT25Bmqcz
+ 8o0hcFfpRpjTJVFA/q8MlwlzJ03BZopcx4tsLhBhOFfds31VF3rrF9h/ktu/hczqiYV9JfB
+ wFC9D7rxMB67waIEDZ18YqrSxp4a6GLfqcOXDzxKDv2dRXGEuBuSE4ebOaxxC2UN/tAC/07
+ nU5OcByicxxvBmlRTvmaw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:t2dAFxFol/E=:H8zjlW6jT2n6hR5wCwK1Bv
+ VVoZ9XSpXwBL5uXHAsd/BTMVddGv3yRH+NoxeRW1vIRBmPp/ZN3rO8CnH6h/1bvGxBTj19flf
+ cgVHaIk/bVrS1LhNuEr5UmBSHTELzBbAfZfd+eHpNzm9RtLJ4WxuoN1NrBwEyRbUoHgLy9i29
+ jTAjmCNRcjoXO/Y82d3Ui2GZ16vh4l0zxx5rNPHdM8bafjMlilRqUukg88VrqgUoW7WqbzQ+O
+ UvzB0WaTNxBrSZtxXYgRPEB8szMjKSAkmaFpD3yPx89K3ukAeKQ71A1HEApmEAkE/X+OhVjla
+ QCyBp5ntDoyXhucCE8CsA6XvfibE3/n88PqyBMkyx7qvnXxAYko9iIUPBkepKppDSrrtco/DX
+ CpCP3qnexDW4rul+IIQOKDf4UBC+kajeXXU9W60yeTzmbhqe2zRhlUaT3s1bqAUDmkAHfhPF2
+ 1DT2vlLLyJpUy3RC5qT7Ixn3E+VunqFbp7PydsIIj6zl9SaapREKPm4eFlDVEiw0Z1RW7aoF/
+ ChLVbBAeSg5o54qWjItactAhFYRAN7WstovCcnXu359vvWA/pIh+Oe59ZoZK1DYPLo1AZGlLq
+ MMG821E4EEYmWbg5rnG+ukddTI8xF+W0ap7sV0gCYGyDB8hHjGPxxotq0cS9/v7DsYP/KbmD+
+ 5UhlpByXFI0Lw5Ux/z0bvwfyLy/ujOBqghw3WZkKiwcZnjuly7YuFwFA5+pAwfyJJfxXuulX4
+ ktF18A/Rowo1n9p6wpqtgP2u7h24HjFznwW6vQ==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: Re: [Qemu-trivial] [PATCH] docs/devel/testing: Fix typo in
- dockerfile path
+X-Received-From: 212.227.126.133
+Subject: [Qemu-trivial] [PULL 1/3] Fix cacheline detection on
+ FreeBSD/powerpc.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -102,31 +58,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Jul 2019 08:14:31 -0000
+X-List-Received-Date: Tue, 02 Jul 2019 12:37:22 -0000
 
-Le 28/06/2019 à 15:08, Liam Merwick a écrit :
-> Signed-off-by: Liam Merwick <liam.merwick@oracle.com>
-> ---
->  docs/devel/testing.rst | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-> index da2d0fc9646f..3ef50a61db4d 100644
-> --- a/docs/devel/testing.rst
-> +++ b/docs/devel/testing.rst
-> @@ -327,7 +327,7 @@ Images
->  ------
->  
->  Along with many other images, the ``min-glib`` image is defined in a Dockerfile
-> -in ``tests/docker/dockefiles/``, called ``min-glib.docker``. ``make docker``
-> +in ``tests/docker/dockerfiles/``, called ``min-glib.docker``. ``make docker``
->  command will list all the available images.
->  
->  To add a new image, simply create a new ``.docker`` file under the
-> 
+From: Justin Hibbits <chmeeedalf@gmail.com>
 
-Applied to my trivial-patches branch.
+machdep.cacheline_size is an integer, not a long.  Since PowerPC is
+big-endian this causes sysctlbyname() to fill in the upper bits of the
+argument, rather than the correct 'lower bits' of the word.  Specify the
+correct type to fix this.
 
-Thanks,
-Laurent
+Fixes: b255b2c8a548 ("util: add cacheinfo")
+Signed-off-by: Justin Hibbits <chmeeedalf@gmail.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Message-Id: <20190607135653.6ece685d@titan.knownspace>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ util/cacheinfo.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/util/cacheinfo.c b/util/cacheinfo.c
+index eebe1ce9c5d2..516f837748a3 100644
+--- a/util/cacheinfo.c
++++ b/util/cacheinfo.c
+@@ -77,7 +77,7 @@ static void sys_cache_info(int *isize, int *dsize)
+ static void sys_cache_info(int *isize, int *dsize)
+ {
+     /* There's only a single sysctl for both I/D cache line sizes.  */
+-    long size;
++    int size;
+     size_t len = sizeof(size);
+     if (!sysctlbyname(SYSCTL_CACHELINE_NAME, &size, &len, NULL, 0)) {
+         *isize = *dsize = size;
+-- 
+2.21.0
+
 
