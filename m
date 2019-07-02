@@ -1,68 +1,103 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hi4Kk-0003cp-Cd
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jul 2019 17:59:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54908)
+	id 1hiDQK-0007eJ-Ui
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Jul 2019 03:41:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45927)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1hi4Kh-0003Yk-3m
- for qemu-trivial@nongnu.org; Mon, 01 Jul 2019 17:59:32 -0400
+ (envelope-from <laurent@vivier.eu>) id 1hiDQH-0007eA-Uf
+ for qemu-trivial@nongnu.org; Tue, 02 Jul 2019 03:41:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1hi4Kf-0007uI-LO
- for qemu-trivial@nongnu.org; Mon, 01 Jul 2019 17:59:31 -0400
-Received: from mail-oi1-f194.google.com ([209.85.167.194]:36153)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
- id 1hi4Kf-0007u5-Dx; Mon, 01 Jul 2019 17:59:29 -0400
-Received: by mail-oi1-f194.google.com with SMTP id w7so11269999oic.3;
- Mon, 01 Jul 2019 14:59:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc; bh=giwH7CgD6/A63HEnNwr1sQ4JxuR6Deb9LpUuZLXIuxc=;
- b=cjEKlP+oD5jhjwdPimkYk7w0HhfZPp9uQaxhWuIv7hFDxDhRljecYXAv5z0D1sVZa+
- suG29Sfi7h4CB8y6emXvcSvlRNhpzDR2GJgYUJxNwFCHDUf5Q4WgfF0Y3JXkXXjjD5bT
- YmpvFb3/91vLzZNhyTGOisqivW3Fpe0DFRelSakugMHksHWsDshZnC71GUgVEBGjbeJk
- IZv8wK/f3P+/xssqgB2XpcfCKEAbaQ1YppdVrLfIhtDgARGtwbfM0T1BUYSoD7LetT+x
- 0FrCCh++MEGViXzwo7AAGvAOBdC6BWSf2zkuHJYY7ScaIphskdSPCBOjg6zrosbzRY/4
- 8fXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:cc;
- bh=giwH7CgD6/A63HEnNwr1sQ4JxuR6Deb9LpUuZLXIuxc=;
- b=ZMu72GuIuNNAqUkRjsmOSbdVw8tEnPPY080/2hEyKmVpfaWjTEaObU8PsZgow57wMK
- WVkE/IPN2zuky81em9EDjJVyocYB61PfgrD/eMCn47Hu86A91LSDvQmogods/N8R9smF
- wQv52Ex/28O0O/hir6B1KJhtjrOI2aIZ3lKXL0A8gi5zvuszRhXxnzICwIbCPpEZpIAz
- DDqW44vEr1Qeop1XnpUyPBazCXbGAcJ75rsv7I5yRJe3lCcKnEyD2k/bE7rfpriLZjc3
- tok432kwyE/8hEl3LiQTS8iXvu/eaJg2ERfDhTWn1uY7PKnsHiKvwxIx0Dh0ysY9KNhl
- ujiQ==
-X-Gm-Message-State: APjAAAV5gxwcj1KD4kAJF8dGHv+39oPjdP9G/A+KM8YDrO0s4dFSCMAl
- puKW/yCzgnNF7XJ1h438DwcPHpBoKp7ONAh6t7wEOg==
-X-Google-Smtp-Source: APXvYqwKs/levlATGmDoZjTsqCGH5vrd0vmMo/14DURow/y9KCgErPJG34cQGcMZ7q/LvXLjEjPVoRhBlt88yFn8Ml8=
-X-Received: by 2002:aca:310a:: with SMTP id x10mr271485oix.62.1562001901761;
- Mon, 01 Jul 2019 10:25:01 -0700 (PDT)
+ (envelope-from <laurent@vivier.eu>) id 1hiDQG-0004oo-Fw
+ for qemu-trivial@nongnu.org; Tue, 02 Jul 2019 03:41:53 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:36453)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1hiDQG-0004ny-5d
+ for qemu-trivial@nongnu.org; Tue, 02 Jul 2019 03:41:52 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MHXWL-1hmOPV2oUr-00DXUU; Tue, 02 Jul 2019 09:41:32 +0200
+To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Kashyap Chamarthy <kchamart@redhat.com>, Amit Shah <amit@kernel.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Richard W . M . Jones" <rjones@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <20190529143106.11789-1-lvivier@redhat.com>
+ <20190529143106.11789-2-lvivier@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <af09f9ab-1852-f171-5dc6-3d36348395d7@vivier.eu>
+Date: Tue, 2 Jul 2019 09:41:30 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Received: by 2002:a9d:4798:0:0:0:0:0 with HTTP;
- Mon, 1 Jul 2019 10:25:01 -0700 (PDT)
-Received: by 2002:a9d:4798:0:0:0:0:0 with HTTP;
- Mon, 1 Jul 2019 10:25:01 -0700 (PDT)
-In-Reply-To: <20190701152332.GA30640@localhost.localdomain>
-References: <20190607174953.22342-1-philmd@redhat.com>
- <a09936fe-4fdc-1623-6300-43f4891ff389@redhat.com>
- <CAL1e-=hoWQpmttzUGGbW7x8gGme7VMfEKhw=cFpL5Pg9A9sHDQ@mail.gmail.com>
- <20190701152332.GA30640@localhost.localdomain>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Mon, 1 Jul 2019 19:25:01 +0200
-Message-ID: <CAL1e-=gukWv2ZTDFSmnTLA-pMpgxYDTUghvXk88ur6Fc-8RP1w@mail.gmail.com>
-To: Cleber Rosa <crosa@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- ehabkost@redhat.com, Aleksandar Rikalo <arikalo@wavecomp.com>, 
- Aurelien Jarno <aurelien@aurel32.net>
-Content-Type: multipart/alternative; boundary="0000000000007e3a0a058ca1e8c2"
+In-Reply-To: <20190529143106.11789-2-lvivier@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:E2Dk+MtF0A4TPXd/oTO3DmqKBTiNksyrr8aznCUIGrOTRIUPA0E
+ qFaaNyGdNGshWz+xLt9JE0kj0XcfkAK+24DUqMWAyRO2eZS+EFg3fgU6cn9aJCR7zmfdNvJ
+ uIbmmNeO3JcgaWmxy5B/6qAFyTpn7OO4zuniTTUV7mceCsNhenFOGwiLkHhNanbMdjW9x7L
+ BLh+EqVQbba/0BvC8g/ZQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:N6OX2qE8nnc=:m9+8kZp8URiS45heic1dX2
+ /F2V5tP3Z4WjWyPS5f7riIY5xIT365Nvq+xYSDoml2RKiEkSn75oHB+9wTdOWfEL0UEtyZwlX
+ eagcu90XzQ4Hbnma3LglvcfT0N0AP4awNKXy6FTU4GUITMcK88zJCV++IXYyWNr/Luomqp2g9
+ FnDGpwc39H8yifjFUcqXqSZcOGSezkoc6Y6GTAMtXLfUi5Eay4GTXoEaMlvLJ0PSo2WZEO/9M
+ IkOZbCjatXcRRbsvq0AnGudib/Htjy8wumbOh5D5PKtBn3sJchWh7UYd7RNt4z12L8rTBSrF/
+ Qir3/HjTGTfmScClVGBr5dTQGbV7gPNJQFnc8iBfKjyrLuDfHzcwHDK/LEO+OAZ+C2MPOrml3
+ 8jfGL5/zRkiEkgrs2fFtPpKLcgGByODzqG5pMS5NIaoJmXxlYCCD+cq8NeHmN3V5crpCOZnSr
+ a/YEtff/gnEuaf0dc+BU2jsgUo0t1wElMtEQep/A61B8w1VOS0WuMM/mGz/qOzU8SQl7A5oB3
+ W4qSZ6Trr7hs+5ON4Y23gIWKoWbmCfGJ5DC7MW5+7CtNCAMGzuFeJ2bUQObZNBy8ZMu/5I+Ix
+ AJ+89VwWvVxfKiUT007x1lJXGMLHlIU5ym4i75cmdO+2p87mRphFRj7OP35ONr9M1FKfrFCSX
+ vR3e9iHPt+U1iLP4wNIojRBvPpjYhjDPJZYJ37wYSYcvCrKJjt7vzGjY0XjXu7JKkiu27iTJ7
+ NjOIfJUu/gXCJ5/jwJ9RbkMUDLhTq44hH2mpfnLXYRtqQLT0Bh09hKrYD2A=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.167.194
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] BootLinuxSshTest: Only use
- 'test' for unittest.TestCase method names
+X-Received-From: 212.227.126.187
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH v7 1/4] VirtIO-RNG: Update
+ default entropy source to `/dev/urandom`
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,239 +109,118 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Jul 2019 21:59:32 -0000
+X-List-Received-Date: Tue, 02 Jul 2019 07:41:55 -0000
 
---0000000000007e3a0a058ca1e8c2
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Le 29/05/2019 à 16:31, Laurent Vivier a écrit :
+> From: Kashyap Chamarthy <kchamart@redhat.com>
+> 
+> When QEMU exposes a VirtIO-RNG device to the guest, that device needs a
+> source of entropy, and that source needs to be "non-blocking", like
+> `/dev/urandom`.  However, currently QEMU defaults to the problematic
+> `/dev/random`, which on Linux is "blocking" (as in, it waits until
+> sufficient entropy is available).
+> 
+> Why prefer `/dev/urandom` over `/dev/random`?
+> ---------------------------------------------
+> 
+> The man pages of urandom(4) and random(4) state:
+> 
+>     "The /dev/random device is a legacy interface which dates back to a
+>     time where the cryptographic primitives used in the implementation
+>     of /dev/urandom were not widely trusted.  It will return random
+>     bytes only within the estimated number of bits of fresh noise in the
+>     entropy pool, blocking if necessary.  /dev/random is suitable for
+>     applications that need high quality randomness, and can afford
+>     indeterminate delays."
+> 
+> Further, the "Usage" section of the said man pages state:
+> 
+>     "The /dev/random interface is considered a legacy interface, and
+>     /dev/urandom is preferred and sufficient in all use cases, with the
+>     exception of applications which require randomness during early boot
+>     time; for these applications, getrandom(2) must be used instead,
+>     because it will block until the entropy pool is initialized.
+> 
+>     "If a seed file is saved across reboots as recommended below (all
+>     major Linux distributions have done this since 2000 at least), the
+>     output is cryptographically secure against attackers without local
+>     root access as soon as it is reloaded in the boot sequence, and
+>     perfectly adequate for network encryption session keys.  Since reads
+>     from /dev/random may block, users will usually want to open it in
+>     nonblocking mode (or perform a read with timeout), and provide some
+>     sort of user notification if the desired entropy is not immediately
+>     available."
+> 
+> And refer to random(7) for a comparison of `/dev/random` and
+> `/dev/urandom`.
+> 
+> What about other OSes?
+> ----------------------
+> 
+> `/dev/urandom` exists and works on OS-X, FreeBSD, DragonFlyBSD, NetBSD
+> and OpenBSD, which cover all the non-Linux platforms we explicitly
+> support, aside from Windows.
+> 
+> On Windows `/dev/random` doesn't work either so we don't regress.
+> This is actually another argument in favour of using the newly
+> proposed 'rng-builtin' backend by default, as that will work on
+> Windows.
+> 
+>     - - -
+> 
+> Given the above, change the entropy source for VirtIO-RNG device to
+> `/dev/urandom`.
+> 
+> Related discussion in these[1][2] past threads.
+> 
+> [1] https://lists.nongnu.org/archive/html/qemu-devel/2018-06/msg08335.html
+>     -- "RNG: Any reason QEMU doesn't default to `/dev/urandom`?"
+> [2] https://lists.nongnu.org/archive/html/qemu-devel/2018-09/msg02724.html
+>     -- "[RFC] Virtio RNG: Consider changing the default entropy source to
+>        /dev/urandom"
+> 
+> Signed-off-by: Kashyap Chamarthy <kchamart@redhat.com>
+> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+> Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> ---
+>  backends/rng-random.c | 2 +-
+>  qemu-options.hx       | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/backends/rng-random.c b/backends/rng-random.c
+> index e2a49b0571d7..eff36ef14084 100644
+> --- a/backends/rng-random.c
+> +++ b/backends/rng-random.c
+> @@ -112,7 +112,7 @@ static void rng_random_init(Object *obj)
+>                              rng_random_set_filename,
+>                              NULL);
+>  
+> -    s->filename = g_strdup("/dev/random");
+> +    s->filename = g_strdup("/dev/urandom");
+>      s->fd = -1;
+>  }
+>  
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 39dc17042967..f6e9bd1d9c42 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -4328,7 +4328,7 @@ Creates a random number generator backend which obtains entropy from
+>  a device on the host. The @option{id} parameter is a unique ID that
+>  will be used to reference this entropy backend from the @option{virtio-rng}
+>  device. The @option{filename} parameter specifies which file to obtain
+> -entropy from and if omitted defaults to @option{/dev/random}.
+> +entropy from and if omitted defaults to @option{/dev/urandom}.
+>  
+>  @item -object rng-egd,id=@var{id},chardev=@var{chardevid}
+>  
+> 
 
-On Jul 1, 2019 5:23 PM, "Cleber Rosa" <crosa@redhat.com> wrote:
->
-> On Mon, Jul 01, 2019 at 05:03:33PM +0200, Aleksandar Markovic wrote:
-> > On Jul 1, 2019 4:22 PM, "Philippe Mathieu-Daud=C3=A9" <philmd@redhat.co=
-m>
-wrote:
-> > >
-> > > ping?
-> > >
-> > > On 6/7/19 7:49 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > > > In commit f6e501a28ef9, Eduardo started to use "check_" as a
-> > > > prefix for methods of similar purpose. Follow this prior art,
-> > > > since it might become the conventions when writting Avocado
-> > > > tests.
-> > > >
-> > > > Suggested-by: Cleber Rosa <crosa@redhat.com>
-> > > > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> > > > ---
-> >
-> > Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com>
->
-> Reviewed-by: Cleber Rosa <crosa@redhat.com>
->
-> And queued on my python-next branch.
->
+As this patch is trivial and reviewed by at least 3 persons, and it
+seems no one wants to take care of it, I will push it through my next
+trivial pull request.
 
-Beautiful, thanks!
-
-> >
-> > > >  tests/acceptance/linux_ssh_mips_malta.py | 10 +++++-----
-> > > >  1 file changed, 5 insertions(+), 5 deletions(-)
-> > > >
-> > > > diff --git a/tests/acceptance/linux_ssh_mips_malta.py
-> > b/tests/acceptance/linux_ssh_mips_malta.py
-> > > > index aafb0c39f6..134f10cac3 100644
-> > > > --- a/tests/acceptance/linux_ssh_mips_malta.py
-> > > > +++ b/tests/acceptance/linux_ssh_mips_malta.py
-> > > > @@ -162,7 +162,7 @@ class LinuxSSH(Test):
-> > > >          self.assertIn(True, ["0dfbe8aa4c20b52e1b8bf3cb6cbdf193" in
-line
-> > > >                               for line in stdout])
-> > > >
-> > > > -    def do_test_mips_malta(self, endianess, kernel_path, uname_m):
-> > > > +    def check_mips_malta(self, endianess, kernel_path, uname_m):
-> > > >          self.boot_debian_wheezy_image_and_ssh_login(endianess,
-> > kernel_path)
-> > > >
-> > > >          stdout, stderr =3D self.ssh_command('uname -a')
-> > > > @@ -184,7 +184,7 @@ class LinuxSSH(Test):
-> > > >          kernel_hash =3D '592e384a4edc16dade52a6cd5c785c637bcbc9ad'
-> > > >          kernel_path =3D self.fetch_asset(kernel_url,
-> > asset_hash=3Dkernel_hash)
-> > > >
-> > > > -        self.do_test_mips_malta('be', kernel_path, 'mips')
-> > > > +        self.check_mips_malta('be', kernel_path, 'mips')
-> > > >
-> > > >      @skipIf(os.getenv('CONTINUOUS_INTEGRATION'), 'Running on
-> > Travis-CI')
-> > > >      def test_mips_malta32el_kernel3_2_0(self):
-> > > > @@ -199,7 +199,7 @@ class LinuxSSH(Test):
-> > > >          kernel_hash =3D 'a66bea5a8adaa2cb3d36a1d4e0ccdb01be8f6c2a'
-> > > >          kernel_path =3D self.fetch_asset(kernel_url,
-> > asset_hash=3Dkernel_hash)
-> > > >
-> > > > -        self.do_test_mips_malta('le', kernel_path, 'mips')
-> > > > +        self.check_mips_malta('le', kernel_path, 'mips')
-> > > >
-> > > >      @skipIf(os.getenv('CONTINUOUS_INTEGRATION'), 'Running on
-> > Travis-CI')
-> > > >      def test_mips_malta64eb_kernel3_2_0(self):
-> > > > @@ -213,7 +213,7 @@ class LinuxSSH(Test):
-> > > >                        'vmlinux-3.2.0-4-5kc-malta')
-> > > >          kernel_hash =3D 'db6eea7de35d36c77d8c165b6bcb222e16eb91db'
-> > > >          kernel_path =3D self.fetch_asset(kernel_url,
-> > asset_hash=3Dkernel_hash)
-> > > > -        self.do_test_mips_malta('be', kernel_path, 'mips64')
-> > > > +        self.check_mips_malta('be', kernel_path, 'mips64')
-> > > >
-> > > >      @skipIf(os.getenv('CONTINUOUS_INTEGRATION'), 'Running on
-> > Travis-CI')
-> > > >      def test_mips_malta64el_kernel3_2_0(self):
-> > > > @@ -227,4 +227,4 @@ class LinuxSSH(Test):
-> > > >                        'vmlinux-3.2.0-4-5kc-malta')
-> > > >          kernel_hash =3D '6a7f77245acf231415a0e8b725d91ed2f3487794'
-> > > >          kernel_path =3D self.fetch_asset(kernel_url,
-> > asset_hash=3Dkernel_hash)
-> > > > -        self.do_test_mips_malta('le', kernel_path, 'mips64')
-> > > > +        self.check_mips_malta('le', kernel_path, 'mips64')
-> > > >
-> > >
-
---0000000000007e3a0a058ca1e8c2
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<p dir=3D"ltr"><br>
-On Jul 1, 2019 5:23 PM, &quot;Cleber Rosa&quot; &lt;<a href=3D"mailto:crosa=
-@redhat.com">crosa@redhat.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; On Mon, Jul 01, 2019 at 05:03:33PM +0200, Aleksandar Markovic wrote:<b=
-r>
-&gt; &gt; On Jul 1, 2019 4:22 PM, &quot;Philippe Mathieu-Daud=C3=A9&quot; &=
-lt;<a href=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; wrote:<br=
->
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; ping?<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; On 6/7/19 7:49 PM, Philippe Mathieu-Daud=C3=A9 wrote:<br>
-&gt; &gt; &gt; &gt; In commit f6e501a28ef9, Eduardo started to use &quot;ch=
-eck_&quot; as a<br>
-&gt; &gt; &gt; &gt; prefix for methods of similar purpose. Follow this prio=
-r art,<br>
-&gt; &gt; &gt; &gt; since it might become the conventions when writting Avo=
-cado<br>
-&gt; &gt; &gt; &gt; tests.<br>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt; &gt; Suggested-by: Cleber Rosa &lt;<a href=3D"mailto:crosa@r=
-edhat.com">crosa@redhat.com</a>&gt;<br>
-&gt; &gt; &gt; &gt; Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=
-=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt;<br>
-&gt; &gt; &gt; &gt; ---<br>
-&gt; &gt; <br>
-&gt; &gt; Reviewed-by: Aleksandar Markovic &lt;<a href=3D"mailto:amarkovic@=
-wavecomp.com">amarkovic@wavecomp.com</a>&gt;<br>
-&gt;<br>
-&gt; Reviewed-by: Cleber Rosa &lt;<a href=3D"mailto:crosa@redhat.com">crosa=
-@redhat.com</a>&gt;<br>
-&gt;<br>
-&gt; And queued on my python-next branch.<br>
-&gt;</p>
-<p dir=3D"ltr">Beautiful, thanks!</p>
-<p dir=3D"ltr">&gt; &gt; <br>
-&gt; &gt; &gt; &gt;=C2=A0 tests/acceptance/linux_ssh_mips_malta.py | 10 +++=
-++-----<br>
-&gt; &gt; &gt; &gt;=C2=A0 1 file changed, 5 insertions(+), 5 deletions(-)<b=
-r>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt; &gt; diff --git a/tests/acceptance/linux_ssh_mips_malta.py<b=
-r>
-&gt; &gt; b/tests/acceptance/linux_ssh_mips_malta.py<br>
-&gt; &gt; &gt; &gt; index aafb0c39f6..134f10cac3 100644<br>
-&gt; &gt; &gt; &gt; --- a/tests/acceptance/linux_ssh_mips_malta.py<br>
-&gt; &gt; &gt; &gt; +++ b/tests/acceptance/linux_ssh_mips_malta.py<br>
-&gt; &gt; &gt; &gt; @@ -162,7 +162,7 @@ class LinuxSSH(Test):<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 self.assertIn(True, [=
-&quot;0dfbe8aa4c20b52e1b8bf3cb6cbdf193&quot; in line<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0for line in stdout])=
-<br>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt; &gt; -=C2=A0 =C2=A0 def do_test_mips_malta(self, endianess, =
-kernel_path, uname_m):<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 def check_mips_malta(self, endianess, ke=
-rnel_path, uname_m):<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 self.boot_debian_whee=
-zy_image_and_ssh_login(endianess,<br>
-&gt; &gt; kernel_path)<br>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 stdout, stderr =3D se=
-lf.ssh_command(&#39;uname -a&#39;)<br>
-&gt; &gt; &gt; &gt; @@ -184,7 +184,7 @@ class LinuxSSH(Test):<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_hash =3D &#39;=
-592e384a4edc16dade52a6cd5c785c637bcbc9ad&#39;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.=
-fetch_asset(kernel_url,<br>
-&gt; &gt; asset_hash=3Dkernel_hash)<br>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.do_test_mips_malta(&#=
-39;be&#39;, kernel_path, &#39;mips&#39;)<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.check_mips_malta(&#39=
-;be&#39;, kernel_path, &#39;mips&#39;)<br>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 @skipIf(os.getenv(&#39;CONTINUOUS_I=
-NTEGRATION&#39;), &#39;Running on<br>
-&gt; &gt; Travis-CI&#39;)<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 def test_mips_malta32el_kernel3_2_0=
-(self):<br>
-&gt; &gt; &gt; &gt; @@ -199,7 +199,7 @@ class LinuxSSH(Test):<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_hash =3D &#39;=
-a66bea5a8adaa2cb3d36a1d4e0ccdb01be8f6c2a&#39;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.=
-fetch_asset(kernel_url,<br>
-&gt; &gt; asset_hash=3Dkernel_hash)<br>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.do_test_mips_malta(&#=
-39;le&#39;, kernel_path, &#39;mips&#39;)<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.check_mips_malta(&#39=
-;le&#39;, kernel_path, &#39;mips&#39;)<br>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 @skipIf(os.getenv(&#39;CONTINUOUS_I=
-NTEGRATION&#39;), &#39;Running on<br>
-&gt; &gt; Travis-CI&#39;)<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 def test_mips_malta64eb_kernel3_2_0=
-(self):<br>
-&gt; &gt; &gt; &gt; @@ -213,7 +213,7 @@ class LinuxSSH(Test):<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 &#39;vmlinux-3.2.0-4-5kc-malta&#39;)<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_hash =3D &#39;=
-db6eea7de35d36c77d8c165b6bcb222e16eb91db&#39;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.=
-fetch_asset(kernel_url,<br>
-&gt; &gt; asset_hash=3Dkernel_hash)<br>
-&gt; &gt; &gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.do_test_mips_malta(&#=
-39;be&#39;, kernel_path, &#39;mips64&#39;)<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.check_mips_malta(&#39=
-;be&#39;, kernel_path, &#39;mips64&#39;)<br>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 @skipIf(os.getenv(&#39;CONTINUOUS_I=
-NTEGRATION&#39;), &#39;Running on<br>
-&gt; &gt; Travis-CI&#39;)<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 def test_mips_malta64el_kernel3_2_0=
-(self):<br>
-&gt; &gt; &gt; &gt; @@ -227,4 +227,4 @@ class LinuxSSH(Test):<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 &#39;vmlinux-3.2.0-4-5kc-malta&#39;)<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_hash =3D &#39;=
-6a7f77245acf231415a0e8b725d91ed2f3487794&#39;<br>
-&gt; &gt; &gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.=
-fetch_asset(kernel_url,<br>
-&gt; &gt; asset_hash=3Dkernel_hash)<br>
-&gt; &gt; &gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.do_test_mips_malta(&#=
-39;le&#39;, kernel_path, &#39;mips64&#39;)<br>
-&gt; &gt; &gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 self.check_mips_malta(&#39=
-;le&#39;, kernel_path, &#39;mips64&#39;)<br>
-&gt; &gt; &gt; &gt;<br>
-&gt; &gt; &gt;<br>
-</p>
-
---0000000000007e3a0a058ca1e8c2--
+Thanks,
+Laurent
 
