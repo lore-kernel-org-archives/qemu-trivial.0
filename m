@@ -1,48 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hkaZg-0002Qx-Vw
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Jul 2019 16:49:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55537)
+	id 1hklnC-0003fN-1p
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Jul 2019 04:48:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35739)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <marcandre.lureau@redhat.com>) id 1hkaZe-0002Op-Qc
- for qemu-trivial@nongnu.org; Mon, 08 Jul 2019 16:49:23 -0400
+ (envelope-from <sgarzare@redhat.com>) id 1hkln9-0003ex-R7
+ for qemu-trivial@nongnu.org; Tue, 09 Jul 2019 04:48:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@redhat.com>) id 1hkaZd-0006L8-Pp
- for qemu-trivial@nongnu.org; Mon, 08 Jul 2019 16:49:22 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45108)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <marcandre.lureau@redhat.com>)
- id 1hkaZb-0006Ib-Jl; Mon, 08 Jul 2019 16:49:19 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id CE0F72E95A2;
- Mon,  8 Jul 2019 20:49:18 +0000 (UTC)
-Received: from localhost (ovpn-112-17.ams2.redhat.com [10.36.112.17])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 56CBD57996;
- Mon,  8 Jul 2019 20:49:12 +0000 (UTC)
-From: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-trivial@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Juan Quintela <quintela@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ (envelope-from <sgarzare@redhat.com>) id 1hkln4-0005KX-87
+ for qemu-trivial@nongnu.org; Tue, 09 Jul 2019 04:48:03 -0400
+Received: from mail-wm1-f65.google.com ([209.85.128.65]:33719)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1hkln4-0005Ei-0r
+ for qemu-trivial@nongnu.org; Tue, 09 Jul 2019 04:47:58 -0400
+Received: by mail-wm1-f65.google.com with SMTP id h19so1874161wme.0
+ for <qemu-trivial@nongnu.org>; Tue, 09 Jul 2019 01:47:49 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=h68BLrIpyAASaOncqPQjEEnTJbFxmymd6x/i3q39ZoE=;
+ b=hlmHpJyG2BLIc7DxHGFlAJJjg4TcszpNVQSAB4/pu5kp3lcDt+ceFYy0uPhZUxa0qj
+ LkaM008ZqhYj/yBmOnF8HAhCDrk9nauSg++W33LDu2J0ggziKAuPAT9v/q3swpn2FtFV
+ mTslj9i2Oi8uQQzZSHDyQIjTlV9b5xMmq/bJYxM9EOTa6ittKMlyritLZimSj2Bg3nAU
+ ef5jqnpTd1DLuY5waLq5oFWFCP96KKjkuTvNGpsBRiA9IcpbvlTzpPM6u41MS/M3BFSo
+ HvvLuwkD5hG3+00Sp826oWOu5p/HxrrLnAgZ2Ffok6reoeeUYRnKkrCtF5B9JILAkErW
+ HBng==
+X-Gm-Message-State: APjAAAVqZ806ziCgQ+FeLLRkKGySdLmqxQPPNAaomwwJfhvB4DINoVRS
+ 6syESCHZ3Ei8Fv+PONesvuIt2w==
+X-Google-Smtp-Source: APXvYqwPTcTJ+Ne9KZcXM6UlKDRU4t8mOMKE4/Ma6cQp/aaam93fqv/vjbAID9cxyYbTosqkMYKy7Q==
+X-Received: by 2002:a05:600c:206:: with SMTP id
+ 6mr19807431wmi.91.1562662068658; 
+ Tue, 09 Jul 2019 01:47:48 -0700 (PDT)
+Received: from steredhat (host122-201-dynamic.13-79-r.retail.telecomitalia.it.
+ [79.13.201.122])
+ by smtp.gmail.com with ESMTPSA id w23sm2475241wmi.45.2019.07.09.01.47.47
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Tue, 09 Jul 2019 01:47:48 -0700 (PDT)
+Date: Tue, 9 Jul 2019 10:47:45 +0200
+From: Stefano Garzarella <sgarzare@redhat.com>
+To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org,
  Eduardo Habkost <ehabkost@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, qemu-trivial@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Date: Tue,  9 Jul 2019 00:49:09 +0400
-Message-Id: <20190708204909.10891-1-marcandre.lureau@redhat.com>
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Message-ID: <20190709084745.yly57xxtwktasfjv@steredhat>
+References: <20190708204909.10891-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.29]); Mon, 08 Jul 2019 20:49:18 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20190708204909.10891-1-marcandre.lureau@redhat.com>
+User-Agent: NeoMutt/20180716
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] misc: fix naming scheme of compatiblity
- arrays
+ [fuzzy]
+X-Received-From: 209.85.128.65
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] misc: fix naming scheme of
+ compatiblity arrays
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -54,49 +70,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Jul 2019 20:49:23 -0000
+X-List-Received-Date: Tue, 09 Jul 2019 08:48:04 -0000
 
-Since merge 31ed41889e6e13699871040fe089a2884dca46cb ("Merge
-remote-tracking branch
-'remotes/elmarco/tags/machine-props-pull-request' into staging"), the
-compat arrays are in lowercase.
+On Tue, Jul 09, 2019 at 12:49:09AM +0400, Marc-André Lureau wrote:
+> Since merge 31ed41889e6e13699871040fe089a2884dca46cb ("Merge
+> remote-tracking branch
+> 'remotes/elmarco/tags/machine-props-pull-request' into staging"), the
+> compat arrays are in lowercase.
+> 
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> ---
+>  docs/devel/migration.rst | 2 +-
+>  hw/i386/pc_piix.c        | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 
-Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
----
- docs/devel/migration.rst | 2 +-
- hw/i386/pc_piix.c        | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
-index 220059679a..f7668ae389 100644
---- a/docs/devel/migration.rst
-+++ b/docs/devel/migration.rst
-@@ -314,7 +314,7 @@ For example:
-=20
-    a) Add a new property using ``DEFINE_PROP_BOOL`` - e.g. support-foo a=
-nd
-       default it to true.
--   b) Add an entry to the ``HW_COMPAT_`` for the previous version that s=
-ets
-+   b) Add an entry to the ``hw_compat_`` for the previous version that s=
-ets
-       the property to false.
-    c) Add a static bool  support_foo function that tests the property.
-    d) Add a subsection with a .needed set to the support_foo function
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index c2280c72ef..6a0e29de7c 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -313,7 +313,7 @@ else {
-  * pc_compat_*() functions that run on machine-init time and
-  * change global QEMU state are deprecated. Please don't create
-  * one, and implement any pc-*-2.4 (and newer) compat code in
-- * HW_COMPAT_*, PC_COMPAT_*, or * pc_*_machine_options().
-+ * hw_compat_*, pc_compat_*, or * pc_*_machine_options().
-  */
-=20
- static void pc_compat_2_3_fn(MachineState *machine)
---=20
-2.22.0.214.g8dca754b1e
-
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
 
