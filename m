@@ -1,65 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hkzqQ-0002WQ-0S
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Jul 2019 19:48:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34137)
+	id 1hl6JD-0003fx-W7
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Jul 2019 02:42:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47761)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <carenas@gmail.com>) id 1hkzqL-0002UZ-Tn
- for qemu-trivial@nongnu.org; Tue, 09 Jul 2019 19:48:19 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1hl6JB-0003fb-O1
+ for qemu-trivial@nongnu.org; Wed, 10 Jul 2019 02:42:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <carenas@gmail.com>) id 1hkzqI-0004Ir-4T
- for qemu-trivial@nongnu.org; Tue, 09 Jul 2019 19:48:16 -0400
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:33635)
+ (envelope-from <richard.henderson@linaro.org>) id 1hl6J9-0007w9-T8
+ for qemu-trivial@nongnu.org; Wed, 10 Jul 2019 02:42:29 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:46944)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <carenas@gmail.com>)
- id 1hkzq9-0003cN-2n; Tue, 09 Jul 2019 19:48:06 -0400
-Received: by mail-pf1-x441.google.com with SMTP id g2so146164pfq.0;
- Tue, 09 Jul 2019 16:46:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=vX9bV5hRrwaasQcUnY50N332WP/OyMV+dT8T59hv888=;
- b=b8fGVnjlS0yQo5xbP4wM4EuaBdA4ylKjWF0NmaW14UYL4icd/JQCDr1bzy7TZla3vZ
- YhbtMjRh0nLfi8AiWUda07QZ74AnLvTPYowVLI3soSjI2Ti/WVEKs3J/eLBGXnAruM2U
- IFwE1kzp1Eq7dp6gKcwfqUhkDgHPsVdWuGVcJ1m8WREbSpaPIj815cxYkqaE0fWts4dm
- 5gn9y7QoeenLsyrCTAZpCBipy/Q1aq5iFAzDHkiEeKXRGrl/mO+1NtAAz7aCQHzPMa7x
- 4Y5pkPUbeM7fJG3m57ltDaRaGD3fTll3oazYlibTf6pZPJGDSBUvpraE6nJC9RDdMDNI
- gQLA==
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1hl6J8-0007po-3P
+ for qemu-trivial@nongnu.org; Wed, 10 Jul 2019 02:42:27 -0400
+Received: by mail-ot1-x343.google.com with SMTP id z23so1031377ote.13
+ for <qemu-trivial@nongnu.org>; Tue, 09 Jul 2019 23:42:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=pTCwkQwfTaoa4SWphSJQOAblwJpi5VF7yxRVP6i7yqU=;
+ b=qVVMsmhHn/vWGhwsPKGNhUiWog8UvRBjF9Qm2eO450CLOO0VVzqFUPCPLgDbtceo+S
+ rXGXyvob7gtJ3DurAbycFFSepyqY1s4jP+tRQpDww81UdZrLOj6IQcY8R3WPYbOetEln
+ yr1OQYQzFfx4irzptzj17W/be9v82wKKlXwFZVH4IAYKnsY/RZ56fiapEug6lsrry7I1
+ QltXMpzkxGrZNq8mTrhpAI5/4u+XrwSX6gk/jJoMrslWfYjFUBMZ+8gDAtN0EX+207xA
+ NxohlhO6DUhTcz99v3P89fc5u/xMVlHeWR4MUM6YFd1AAeAVOrnnWgpxB3ug/d8/+hME
+ wrdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=vX9bV5hRrwaasQcUnY50N332WP/OyMV+dT8T59hv888=;
- b=f2p7AasHjmX8NjunG6UKNOx+kW25RCMasyHc+bcTioDMBhJuTtmrh+RHYB6h1P8bEm
- 8OXtSDV5fww9h92S6yDJjV3dEa9VFLk2GHJdR2vknBTYRVIrFe3IaZVwSjR/YegawJHA
- i7kHjx8eM9E/qnId0Hk0v5X4XpjywzqT6/CdeeEok9L6pohd2bp3yMu4uTVQt/SJvhNQ
- T3AkzhxyvDUDPTZwChKla3eq6seWQIjkPrgaIJiQoI4Q8+39dvBy9IKoVDcj0TQ2ahmO
- QUpUqnqKflwVia+ajCKuBcKpHVcvt4eTfGyf/Z6ZqQPg1fpJcxH3zZ0/clDDSa8AQQ96
- jnGQ==
-X-Gm-Message-State: APjAAAVz+4W0dT6LwTwFgrWzMFEYbpuC0juPvg1m3+JWZnriNEq14M0r
- GbejCqLAigiEQ+Y8DF7oJm3aWlOU
-X-Google-Smtp-Source: APXvYqy+oKDs33wmGjUDJDEQbOetAi3IlraQDR1JhQ6VzvG4urZpGJU1z/ut21TyAn8HYv2xcQ6q6g==
-X-Received: by 2002:a17:90a:ad89:: with SMTP id
- s9mr3033146pjq.41.1562715992712; 
- Tue, 09 Jul 2019 16:46:32 -0700 (PDT)
-Received: from localhost.localdomain ([205.209.24.227])
- by smtp.gmail.com with ESMTPSA id 185sm173685pfa.170.2019.07.09.16.46.32
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Tue, 09 Jul 2019 16:46:32 -0700 (PDT)
-From: =?UTF-8?q?Carlo=20Marcelo=20Arenas=20Bel=C3=B3n?= <carenas@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: rth@twiddle.net,
-	qemu-trivial@nongnu.org
-Date: Tue,  9 Jul 2019 16:43:30 -0700
-Message-Id: <20190709234330.89699-1-carenas@gmail.com>
-X-Mailer: git-send-email 2.22.0
+ bh=pTCwkQwfTaoa4SWphSJQOAblwJpi5VF7yxRVP6i7yqU=;
+ b=WxPuLPos40oV1Gn9+R5EKdHPFZzvhMMgeKFkr+91Oz0KQdS2MVOgjyV4K7gB245iFB
+ 5pF4BVLflUVSIC1CgiwyEqnOJsvi99S2Xz6C3dzCF+IIfGt6k9dNlRJj5WEYX4uHSN//
+ gqnjXpM9a8YENHhnhWC3jWm3W0tpq3yIibqB0TFf0ZmTcck7kKgEE/ByASZj8BtnPj43
+ T2NvXfmUJlHQNmVoFj7AhmG530729K9F+wl6nCYJK7U6MSCB45Gg7w9iCtxK/dA+Lxe0
+ nc6hGTmwjQc8bEu/Glb14cFe9yp316WmsLAPqT5EQ4pznmVGbgQxFJViITXa0NeYYZFa
+ 8h+g==
+X-Gm-Message-State: APjAAAVuM//If5O/eLRllmDQTX04fTRwAlsiYdt+1KnXMLtHFayqAsBz
+ EEBLSnqYhPHMTdzP4gK+Awk0Pw==
+X-Google-Smtp-Source: APXvYqwO+dIl32nafWlt7psuu8kpqTuOBaZQRFGBYQVeMYNZzFLxxDwxqxLCpH38tVfsHiOmzqOj5Q==
+X-Received: by 2002:a9d:6e6:: with SMTP id 93mr9890331otx.273.1562740940798;
+ Tue, 09 Jul 2019 23:42:20 -0700 (PDT)
+Received: from [192.168.43.94] ([172.56.7.82])
+ by smtp.gmail.com with ESMTPSA id w13sm459826oih.17.2019.07.09.23.42.17
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 09 Jul 2019 23:42:20 -0700 (PDT)
+To: =?UTF-8?Q?Carlo_Marcelo_Arenas_Bel=c3=b3n?= <carenas@gmail.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, rth@twiddle.net
+References: <20190709234330.89699-1-carenas@gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <8cc72ac3-bb28-5f48-61ed-860a1740cf6f@linaro.org>
+Date: Wed, 10 Jul 2019 08:42:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20190709234330.89699-1-carenas@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::441
-Subject: [Qemu-trivial] [PATCH] configure: remove obsoleted $sparc_cpu
- variable
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: remove obsoleted
+ $sparc_cpu variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,34 +77,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Jul 2019 23:48:19 -0000
+X-List-Received-Date: Wed, 10 Jul 2019 06:42:30 -0000
 
-9b9c37c364 ("tcg-sparc: Assume v9 cpu always, i.e. force v8plus in
-32-bit mode.", 2012-09-21) removed the need for this variable and
-most of the references to it, but this one.
+On 7/10/19 1:43 AM, Carlo Marcelo Arenas Belón wrote:
+> 9b9c37c364 ("tcg-sparc: Assume v9 cpu always, i.e. force v8plus in
+> 32-bit mode.", 2012-09-21) removed the need for this variable and
+> most of the references to it, but this one.
+> 
+> Remove defunct code, no effect or functionality change expected.
+> 
+> Signed-off-by: Carlo Marcelo Arenas Belón <carenas@gmail.com>
+> ---
+>  configure | 3 ---
+>  1 file changed, 3 deletions(-)
 
-Remove defunct code, no effect or functionality change expected.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Signed-off-by: Carlo Marcelo Arenas Belón <carenas@gmail.com>
----
- configure | 3 ---
- 1 file changed, 3 deletions(-)
 
-diff --git a/configure b/configure
-index 4983c8b533..7518f201ab 100755
---- a/configure
-+++ b/configure
-@@ -6378,9 +6378,6 @@ if test "$vnc" = "yes" ; then
-     echo "VNC JPEG support  $vnc_jpeg"
-     echo "VNC PNG support   $vnc_png"
- fi
--if test -n "$sparc_cpu"; then
--    echo "Target Sparc Arch $sparc_cpu"
--fi
- echo "xen support       $xen"
- if test "$xen" = "yes" ; then
-   echo "xen ctrl version  $xen_ctrl_version"
--- 
-2.22.0
-
+r~
 
