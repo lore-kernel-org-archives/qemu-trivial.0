@@ -1,42 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hlwkN-0007bq-Gh
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Jul 2019 10:42:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48170)
+	id 1hlwpZ-0001tJ-8J
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Jul 2019 10:47:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49660)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <mprivozn@redhat.com>) id 1hlwkL-0007Q2-4v
- for qemu-trivial@nongnu.org; Fri, 12 Jul 2019 10:42:02 -0400
+ (envelope-from <marcandre.lureau@gmail.com>) id 1hlwpX-0001sk-5t
+ for qemu-trivial@nongnu.org; Fri, 12 Jul 2019 10:47:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mprivozn@redhat.com>) id 1hlwkJ-0000vF-V8
- for qemu-trivial@nongnu.org; Fri, 12 Jul 2019 10:42:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54382)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mprivozn@redhat.com>)
- id 1hlwkH-0000tV-Ta; Fri, 12 Jul 2019 10:41:58 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 86AC630821BE;
- Fri, 12 Jul 2019 14:41:56 +0000 (UTC)
-Received: from moe.brq.redhat.com (unknown [10.43.2.30])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8EE94544F5;
- Fri, 12 Jul 2019 14:41:53 +0000 (UTC)
-From: Michal Privoznik <mprivozn@redhat.com>
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	laurent@vivier.eu,
-	marcandre.lureau@redhat.com
-Date: Fri, 12 Jul 2019 16:41:47 +0200
-Message-Id: <db150a03315a89a849ab9968e4a5a26110d41424.1562942402.git.mprivozn@redhat.com>
+ (envelope-from <marcandre.lureau@gmail.com>) id 1hlwpW-0004jc-3M
+ for qemu-trivial@nongnu.org; Fri, 12 Jul 2019 10:47:23 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:44782)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1hlwpV-0004i2-Fd; Fri, 12 Jul 2019 10:47:21 -0400
+Received: by mail-wr1-x441.google.com with SMTP id p17so10241018wrf.11;
+ Fri, 12 Jul 2019 07:47:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=04IwV+TUkf32mECcVEsbSZGl4M5f9jdHOjZ03oGi6Iw=;
+ b=gT7i5ZsjWXdy15NmIG7j9rCS8yAIpX7O0Ikgo6W01/b0XIWHv5yTWyY2eXyWb2SfMb
+ QMEANyVdBLN+ZQBQjsaTzfR6VaPGJGxQfCGY//WJD4LqMOIFU1IeJo1gOqEmqFtaV/IV
+ r5XA56Z/ftjg+1fXkYYODLe17xP1pq0EhVoQGavgiy/ZrHNCFWxsr0iANKCZq0n8PpGE
+ ZdMi+i9XNdfCIlK1U+frxA5koJNTakrxQ++4tNVnBxjn8vsHbTBGIH6P1MkyeIa/sWZk
+ OSpbtvGkTvijSXdpgHmYmI2q+atXMalLgp6wSsX48ooHHWQvkXEig6lUMM0Yph3slLd/
+ C4hQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=04IwV+TUkf32mECcVEsbSZGl4M5f9jdHOjZ03oGi6Iw=;
+ b=K6aumokdCDEddhYCiXIbCXtg7qSV1kbTRw0dE61iw5iA9bY3nLXDl5jTOcQyxjgnMD
+ MtP6YwdA6qYBVuf+IKlxtJsnFKKZ3HkwpRFuDs6IgAjIOf1gyvWh39TW77WbP+waK6Y5
+ TAZ9rijQhB3Lu82LdSY3YvlJyzMHcUI3fkNkMM7GXnbb9zsZ8XYet6dlMyKNSf5a9TvZ
+ 6pQDsEyRqK7/qWL6CNCaxgOj9o0/1PBFOK1N5jK+2goclp2qbg9w0eUkmX/+PQUN5ptN
+ Nag1+djMkxOz1E55qj9NGcJeWujgR0/6P7rCQsT2BrT16nVFmwKdE9YV+SLvSI2MQDKi
+ hwLQ==
+X-Gm-Message-State: APjAAAXqd0lPMeyQxtRNm5EYbhszEz0nBsZS6bexq6reWlLPtNI0VVhm
+ 7+ULe/jJdeBSymRg9DvKV2Or22Hjhmxc3KcQKmg=
+X-Google-Smtp-Source: APXvYqykVOR23LPyiBdtOvs4b7mcYSFCiCs1peUr1LfIqA03SbKrWWf/ELMNSPO9X27Mo3F4Tn6kzYAEfkl9Dg0yJ5k=
+X-Received: by 2002:adf:c70e:: with SMTP id k14mr12542106wrg.201.1562942839527; 
+ Fri, 12 Jul 2019 07:47:19 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.47]); Fri, 12 Jul 2019 14:41:56 +0000 (UTC)
+References: <db150a03315a89a849ab9968e4a5a26110d41424.1562942402.git.mprivozn@redhat.com>
+In-Reply-To: <db150a03315a89a849ab9968e4a5a26110d41424.1562942402.git.mprivozn@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Fri, 12 Jul 2019 18:47:07 +0400
+Message-ID: <CAJ+F1CLm251K1ysYKMxyovRFv1KA8b=R6hEh_=Z+bCatjCvyZw@mail.gmail.com>
+To: Michal Privoznik <mprivozn@redhat.com>
+Cc: qemu trival <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>, 
+ Laurent Vivier <laurent@vivier.eu>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] .gitignore: ignore some vhost-user* related
- files
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::441
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] .gitignore: ignore some
+ vhost-user* related files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -48,40 +67,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Jul 2019 14:42:02 -0000
+X-List-Received-Date: Fri, 12 Jul 2019 14:47:24 -0000
 
-Commit d52c454aadc creates
-'/contrib/vhost-user-gpu/50-qemu-gpu.json' and '/vhost-user-gpu'
-and commit 06914c97d3a creates '/vhost-user-input' neither of
-which is ignored by git.
+On Fri, Jul 12, 2019 at 6:42 PM Michal Privoznik <mprivozn@redhat.com> wrot=
+e:
+>
+> Commit d52c454aadc creates
+> '/contrib/vhost-user-gpu/50-qemu-gpu.json' and '/vhost-user-gpu'
+> and commit 06914c97d3a creates '/vhost-user-input' neither of
+> which is ignored by git.
+>
+> Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
 
-Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
----
- .gitignore | 3 +++
- 1 file changed, 3 insertions(+)
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
-diff --git a/.gitignore b/.gitignore
-index fd6e6c38c7..e9bbc006d3 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -65,6 +65,8 @@
- /scsi/qemu-pr-helper
- /vhost-user-scsi
- /vhost-user-blk
-+/vhost-user-gpu
-+/vhost-user-input
- /fsdev/virtfs-proxy-helper
- *.tmp
- *.[1-9]
-@@ -131,6 +133,7 @@
- /docs/interop/qemu-qmp-ref.info*
- /docs/interop/qemu-qmp-ref.txt
- /docs/version.texi
-+/contrib/vhost-user-gpu/50-qemu-gpu.json
- *.tps
- .stgit-*
- .git-submodule-status
+> ---
+>  .gitignore | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/.gitignore b/.gitignore
+> index fd6e6c38c7..e9bbc006d3 100644
+> --- a/.gitignore
+> +++ b/.gitignore
+> @@ -65,6 +65,8 @@
+>  /scsi/qemu-pr-helper
+>  /vhost-user-scsi
+>  /vhost-user-blk
+> +/vhost-user-gpu
+> +/vhost-user-input
+>  /fsdev/virtfs-proxy-helper
+>  *.tmp
+>  *.[1-9]
+> @@ -131,6 +133,7 @@
+>  /docs/interop/qemu-qmp-ref.info*
+>  /docs/interop/qemu-qmp-ref.txt
+>  /docs/version.texi
+> +/contrib/vhost-user-gpu/50-qemu-gpu.json
+>  *.tps
+>  .stgit-*
+>  .git-submodule-status
+> --
+> 2.21.0
+>
+>
+
+
 --=20
-2.21.0
-
+Marc-Andr=C3=A9 Lureau
 
