@@ -1,64 +1,92 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hlbsG-00088Q-SU
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Jul 2019 12:24:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42257)
+	id 1hlqjj-0006cL-BG
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Jul 2019 04:16:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50607)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hlbsE-00085S-Ai
- for qemu-trivial@nongnu.org; Thu, 11 Jul 2019 12:24:47 -0400
+ (envelope-from <thuth@redhat.com>) id 1hlqjg-0006W1-Uh
+ for qemu-trivial@nongnu.org; Fri, 12 Jul 2019 04:16:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hlbsA-0003O6-F0
- for qemu-trivial@nongnu.org; Thu, 11 Jul 2019 12:24:44 -0400
-Received: from mail-wm1-f53.google.com ([209.85.128.53]:36082)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hlbs7-0003Bt-Pl
- for qemu-trivial@nongnu.org; Thu, 11 Jul 2019 12:24:40 -0400
-Received: by mail-wm1-f53.google.com with SMTP id g67so2177627wme.1
- for <qemu-trivial@nongnu.org>; Thu, 11 Jul 2019 09:24:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to;
- bh=62h3UzjmmZyPzvzlMTS4Ekjtl0bCsg/7Pg0zmtw2H8c=;
- b=lZ1+rr7UcAeedszpxERHLqmmlOlViMzUJz51o26POV97YphJQMftbEdcFk0gCo5Fal
- 172ld2l7IN0usE+MDouBwEj7lUXt3vkpou4MJBYVFKA/BWBp3QWFSv5P/LkM1H4cgxBH
- bvomYPEnTccxi6PCj2xIjNC2M7LH8hBiRPS/k5yxosADZa5cQJAGWjvzgkX6beR83yRR
- ugjwJT1x4s3DixRjGAO9q937Xb0sm+L3Am06kWi5O2L20WFeUB0tyNsb9A1FsmJ22MgN
- qjIhjuJyfKVC5L8RjQEpDNCAtFwzidNm9E7eGhpnGPEJncRJtl+7fQevT2UNc1DsLQf2
- 7dxg==
-X-Gm-Message-State: APjAAAX08rLe2V5GO29E97wPDM+Aer4T7uWMWr+jZ7E+/JqY9UQviPZP
- MmUNPa7g9BFW64G6K7rrN5OAYjoMuhc=
-X-Google-Smtp-Source: APXvYqzVSVVClFItG1XPpyZwaWKDFdnPgJzfzK+0/rAP7LDazGncwx/o3iQ/Laj7Rt8JaQ709SzqXg==
-X-Received: by 2002:a1c:be19:: with SMTP id o25mr4787475wmf.54.1562862255691; 
- Thu, 11 Jul 2019 09:24:15 -0700 (PDT)
-Received: from [192.168.1.103] (62.red-83-42-61.dynamicip.rima-tde.net.
- [83.42.61.62])
- by smtp.gmail.com with ESMTPSA id p3sm5575103wmg.15.2019.07.11.09.24.14
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Thu, 11 Jul 2019 09:24:15 -0700 (PDT)
-To: Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Guenter Roeck <linux@roeck-us.net>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1533076661-8030-1-git-send-email-linux@roeck-us.net>
- <CAAdtpL6dAKVj3bBLRS_6x4B3Pmed9hodd6-kh2imBbs81txV8g@mail.gmail.com>
- <20181115151433.GA19418@stefanha-x1.localdomain>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <609c3832-d8c8-1fe2-8d29-5f6df1a80c2f@redhat.com>
-Date: Thu, 11 Jul 2019 18:24:13 +0200
+ (envelope-from <thuth@redhat.com>) id 1hlqjf-00027O-U3
+ for qemu-trivial@nongnu.org; Fri, 12 Jul 2019 04:16:56 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38418)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1hlqjd-00023x-BP; Fri, 12 Jul 2019 04:16:53 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 15E7F6E797;
+ Fri, 12 Jul 2019 08:10:24 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-180.ams2.redhat.com [10.36.116.180])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 10D6C1001B3C;
+ Fri, 12 Jul 2019 08:10:11 +0000 (UTC)
+To: =?UTF-8?Q?Carlo_Marcelo_Arenas_Bel=c3=b3n?= <carenas@gmail.com>,
+ qemu-devel@nongnu.org
+Cc: berrange@redhat.com, Gerd Hoffmann <kraxel@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20190710225528.409-1-carenas@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <ee30e1f6-8c3b-793d-665a-3fc4d3d0c662@redhat.com>
+Date: Fri, 12 Jul 2019 10:10:09 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20181115151433.GA19418@stefanha-x1.localdomain>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="ESKYxz0OlMfHzHQu7WMDcjSNY5xiuC5uS"
+In-Reply-To: <20190710225528.409-1-carenas@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.25]); Fri, 12 Jul 2019 08:10:24 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.128.53
-Subject: Re: [Qemu-trivial] [PATCH-for-4.2] hw/sd: Mark sd-card as storage
- device
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] configure: fix sdl
+ detection using sdl2-config
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -70,75 +98,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Jul 2019 16:24:47 -0000
+X-List-Received-Date: Fri, 12 Jul 2019 08:16:58 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---ESKYxz0OlMfHzHQu7WMDcjSNY5xiuC5uS
-Content-Type: multipart/mixed; boundary="ifgU7yOsrOCFsr4ZhDVXWLS0C6LNQZk4F";
- protected-headers="v1"
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Guenter Roeck <linux@roeck-us.net>, QEMU Trivial <qemu-trivial@nongnu.org>
-Message-ID: <609c3832-d8c8-1fe2-8d29-5f6df1a80c2f@redhat.com>
-Subject: Re: [PATCH-for-4.2] hw/sd: Mark sd-card as storage device
-References: <1533076661-8030-1-git-send-email-linux@roeck-us.net>
- <CAAdtpL6dAKVj3bBLRS_6x4B3Pmed9hodd6-kh2imBbs81txV8g@mail.gmail.com>
- <20181115151433.GA19418@stefanha-x1.localdomain>
-In-Reply-To: <20181115151433.GA19418@stefanha-x1.localdomain>
-
---ifgU7yOsrOCFsr4ZhDVXWLS0C6LNQZk4F
-Content-Type: text/plain; charset=windows-1252
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-Hi Stefan,
-
-On 11/15/18 4:14 PM, Stefan Hajnoczi wrote:
-> On Thu, Nov 15, 2018 at 03:24:25PM +0100, Philippe Mathieu-Daud=E9 wrot=
-e:
->> On Wed, Aug 1, 2018 at 12:37 AM Guenter Roeck <linux@roeck-us.net> wro=
-te:
->>>
->>> sd-card is currently listed as uncategorized device.
->>> Mark it as storage device.
->>>
->>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
->>
->> Reviewed-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+On 11/07/2019 00.55, Carlo Marcelo Arenas Bel=C3=B3n wrote:
+> If SDL2 is requested but pkg-config doesn't have a module for it
+> configure should fallback to use sdl*-config, but wasn't able to
+> because and old variable (from SDL) was being used by mistake.
 >=20
-> Do you send pull requests for the SD card subsystem or who will pick up=
+> Correct the variable name and complete other related changes so
+> there are no more references to the old SDL.
+>=20
+> Fixes: 0015ca5cbabe ("ui: remove support for SDL1.2 in favour of SDL2")
+> Signed-off-by: Carlo Marcelo Arenas Bel=C3=B3n <carenas@gmail.com>
+> ---
+>  configure | 9 ++++-----
+>  1 file changed, 4 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/configure b/configure
+> index 4983c8b533..0f88ba98a6 100755
+> --- a/configure
+> +++ b/configure
+> @@ -3016,15 +3016,15 @@ fi
+>  ##########################################
+>  # SDL probe
+> =20
+> -# Look for sdl configuration program (pkg-config or sdl-config).  Try
+> -# sdl-config even without cross prefix, and favour pkg-config over sdl=
+-config.
+> +# Look for sdl configuration program (pkg-config or sdl2-config).  Try
+> +# sdl2-config even without cross prefix, and favour pkg-config over sd=
+l2-config.
+> =20
+>  sdl_probe ()
+>  {
+>    if $pkg_config sdl2 --exists; then
+>      sdlconfig=3D"$pkg_config sdl2"
+>      sdlversion=3D$($sdlconfig --modversion 2>/dev/null)
+> -  elif has ${sdl_config}; then
+> +  elif has "$sdl2_config"; then
+>      sdlconfig=3D"$sdl2_config"
+>      sdlversion=3D$($sdlconfig --version)
+>    else
+> @@ -3035,7 +3035,7 @@ sdl_probe ()
+>      # no need to do the rest
+>      return
+>    fi
+> -  if test -n "$cross_prefix" && test "$(basename "$sdlconfig")" =3D sd=
+l-config; then
+> +  if test -n "$cross_prefix" && test "$(basename "$sdlconfig")" =3D sd=
+l2-config; then
+>      echo warning: using "\"$sdlconfig\"" to detect cross-compiled sdl =
+>&2
+>    fi
+> =20
+> @@ -8019,7 +8019,6 @@ preserve_env PKG_CONFIG
+>  preserve_env PKG_CONFIG_LIBDIR
+>  preserve_env PKG_CONFIG_PATH
+>  preserve_env PYTHON
+> -preserve_env SDL_CONFIG
+>  preserve_env SDL2_CONFIG
+>  preserve_env SMBD
+>  preserve_env STRIP
+>=20
 
-> this patch?
-
-Usually SD patches go via the ARM tree, this one could go via the
-Trivial tree too (Cc'ing them).
-
-
---ifgU7yOsrOCFsr4ZhDVXWLS0C6LNQZk4F--
-
---ESKYxz0OlMfHzHQu7WMDcjSNY5xiuC5uS
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEicHnj2Ae6GyGdJXLoqP9bt6twN4FAl0nYq4ACgkQoqP9bt6t
-wN7P1Q//clVJ3B9AkVNhat6JefxaJWqLGuV3Bj1pxcsZbLsvbcxDi9Qs/nJfLkMd
-BHNRGMCUy7GHxIhj/Ymd66HWdJygXP47YcnO/uDBg7sLSsIVjdfOTBxP1vhNt78D
-1NW2tsyXNrII+cM3VqpzOsagphFNoZ2eFJi6sN+DDBNmGJNWm2t2OrNjXggDP4Ge
-1gtjm7gKaCfaaezJUqGEgWDQX5AdVMN9kEHEb+I6QV3hvSjSd8ss3ErjelxbVTUW
-v0kRqQlAkoJ5qucZaLDz59xG7PerMEOPMKDXdJpZ2w1aGIY7UjIg7C4H3N0G0B1r
-wafWlfI1kOm5mh3KhDXNz+ixRXFGNU7DETZzCH12TQuLT0DywCVwXJA/T2QOn7vA
-D8EJKS7hOnWGDVvmJ19/NlJboeattQfiS3x/bce8rAMRzmEG0umYzfun7wAbcdKR
-VSkVsKhV4dkOnCOga/E73WPWX6bLgtFDF5EODI50PDz9VOICxPAOslYgFcfw6+9G
-cEBvbG7JcG61kxfXcVZ32+h3U3D3D/83MJHl8ucSPfpuhpEetCJUdJ+aOglt/m4F
-ZTrniVJ+q1pF3fO6mmPWw7ccGT0nRmGRyKG3IxFacdATVeIa9jEsWlsa77iBZIXC
-nNLGj4aLHloqMrr7TMbyXJjyw5NG1ktD9s0tVuFkvFqocwNgFxM=
-=xUOY
------END PGP SIGNATURE-----
-
---ESKYxz0OlMfHzHQu7WMDcjSNY5xiuC5uS--
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
