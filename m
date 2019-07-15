@@ -1,48 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hmyjx-0001E0-TV
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Jul 2019 07:01:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44083)
+	id 1hmz1J-0008SY-4n
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Jul 2019 07:19:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48123)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <armbru@redhat.com>) id 1hmyjw-00016G-34
- for qemu-trivial@nongnu.org; Mon, 15 Jul 2019 07:01:52 -0400
+ (envelope-from <sgarzare@redhat.com>) id 1hmz1H-0008QZ-1D
+ for qemu-trivial@nongnu.org; Mon, 15 Jul 2019 07:19:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1hmyju-0001lL-13
- for qemu-trivial@nongnu.org; Mon, 15 Jul 2019 07:01:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42892)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>)
- id 1hmyje-0001f4-3u; Mon, 15 Jul 2019 07:01:37 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id E58EC30C34C0;
- Mon, 15 Jul 2019 11:01:31 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-111.ams2.redhat.com
- [10.36.116.111])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8BFD160C8D;
- Mon, 15 Jul 2019 11:01:25 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 1A24311386A0; Mon, 15 Jul 2019 13:01:24 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
+ (envelope-from <sgarzare@redhat.com>) id 1hmz1G-0004LX-2L
+ for qemu-trivial@nongnu.org; Mon, 15 Jul 2019 07:19:46 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:39223)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1hmz1E-0004IU-3D
+ for qemu-trivial@nongnu.org; Mon, 15 Jul 2019 07:19:44 -0400
+Received: by mail-wr1-f68.google.com with SMTP id x4so16633872wrt.6
+ for <qemu-trivial@nongnu.org>; Mon, 15 Jul 2019 04:19:33 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=uduoneM+QrM6MHRk9FrHAjwAlnRrfZQdnUtoXqghyFU=;
+ b=CXUeka+4B5TFQIrN18GIevdKBo+z0RtVRLLkFhT7RtPU/gZPhoLVcX8rdyQH7Tq49k
+ RIxJcHsza/7WAs0oX8k93OhI511VdgqWzp4f1DT9t1FwXbJvamZ3FOCsNTs8SwVdAel6
+ A1zNpAHIbWI0TxOEpknAwEldO+dUBP5kHkO5asdY9HuXclrMlBg5h8jp4NqiixWYrkdO
+ gBPtdaXlxsIWhN3fiX0V5C1wKi9XQadEgh8FY/vtK1EI4ZvFIyGti7XntrnkJboGTKGZ
+ AVKeSM5J7Kx2Y39TrTUwRHiPvw3UOZH7vJs6S1CO/f5U8AOkbeV86wZg6C6loFDEtBWh
+ 2hdg==
+X-Gm-Message-State: APjAAAV5sRvpRN+t1ZDLoiH1qHbAbscEy/DjFYWQWDYRVMEZKO7tjpuZ
+ D2xm/P9Jsom/1TjF0q2/8WtEIA==
+X-Google-Smtp-Source: APXvYqxiyCRuzbDuyXZeHhEAc0nRgpyZ3n17o42gTbA+c5C+3bpxmwjUOM+RkKzs7RcN/9K2GR7Tow==
+X-Received: by 2002:adf:ed41:: with SMTP id u1mr27547900wro.162.1563189573081; 
+ Mon, 15 Jul 2019 04:19:33 -0700 (PDT)
+Received: from steredhat (host122-201-dynamic.13-79-r.retail.telecomitalia.it.
+ [79.13.201.122])
+ by smtp.gmail.com with ESMTPSA id y16sm36025043wrg.85.2019.07.15.04.19.32
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 15 Jul 2019 04:19:32 -0700 (PDT)
+Date: Mon, 15 Jul 2019 13:19:30 +0200
+From: Stefano Garzarella <sgarzare@redhat.com>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Jason Wang <jasowang@redhat.com>
+ Jason Wang <jasowang@redhat.com>, Markus Armbruster <armbru@redhat.com>
+Message-ID: <20190715111930.j7bdcq3dtayu66ve@steredhat>
 References: <20190715102210.31365-1-philmd@redhat.com>
-Date: Mon, 15 Jul 2019 13:01:24 +0200
-In-Reply-To: <20190715102210.31365-1-philmd@redhat.com> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 15 Jul 2019 12:22:10
- +0200")
-Message-ID: <877e8jy323.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.40]); Mon, 15 Jul 2019 11:01:31 +0000 (UTC)
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20190715102210.31365-1-philmd@redhat.com>
+User-Agent: NeoMutt/20180716
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+ [fuzzy]
+X-Received-From: 209.85.221.68
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/net/e1000: Fix erroneous
  comment
 X-BeenThere: qemu-trivial@nongnu.org
@@ -56,34 +65,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Jul 2019 11:01:53 -0000
+X-List-Received-Date: Mon, 15 Jul 2019 11:19:47 -0000
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
-
+On Mon, Jul 15, 2019 at 12:22:10PM +0200, Philippe Mathieu-Daudé wrote:
 > Missed during the QOM convertion in 9af21dbee14.
-
-Ooops.
-
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
 >  hw/net/e1000.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
->
+> 
 > diff --git a/hw/net/e1000.c b/hw/net/e1000.c
 > index 1dc1466332..ec8ded7252 100644
 > --- a/hw/net/e1000.c
 > +++ b/hw/net/e1000.c
-> @@ -1611,7 +1611,7 @@ static const VMStateDescription vmstate_e1000 =3D {
->=20=20
+> @@ -1611,7 +1611,7 @@ static const VMStateDescription vmstate_e1000 = {
+>  
 >  /*
 >   * EEPROM contents documented in Tables 5-2 and 5-3, pp. 98-102.
 > - * Note: A valid DevId will be inserted during pci_e1000_init().
 > + * Note: A valid DevId will be inserted during pci_e1000_realize().
 >   */
->  static const uint16_t e1000_eeprom_template[64] =3D {
->      0x0000, 0x0000, 0x0000, 0x0000,      0xffff, 0x0000,      0x0000, 0x=
-0000,
+>  static const uint16_t e1000_eeprom_template[64] = {
+>      0x0000, 0x0000, 0x0000, 0x0000,      0xffff, 0x0000,      0x0000, 0x0000,
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
 
