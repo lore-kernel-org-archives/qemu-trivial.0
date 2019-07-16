@@ -1,61 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hnHcv-000790-0z
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Jul 2019 03:11:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41852)
+	id 1hnHkc-0002QF-Rx
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Jul 2019 03:19:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43554)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <rfried.dev@gmail.com>) id 1hnHcs-0006xe-6z
- for qemu-trivial@nongnu.org; Tue, 16 Jul 2019 03:11:51 -0400
+ (envelope-from <philmd@redhat.com>) id 1hnHka-0002Px-Pd
+ for qemu-trivial@nongnu.org; Tue, 16 Jul 2019 03:19:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <rfried.dev@gmail.com>) id 1hnHcr-0001jI-15
- for qemu-trivial@nongnu.org; Tue, 16 Jul 2019 03:11:50 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40823)
+ (envelope-from <philmd@redhat.com>) id 1hnHkZ-0006gT-Oi
+ for qemu-trivial@nongnu.org; Tue, 16 Jul 2019 03:19:48 -0400
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:41710)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
- id 1hnHco-0001hf-M6; Tue, 16 Jul 2019 03:11:46 -0400
-Received: by mail-wm1-x342.google.com with SMTP id v19so17485519wmj.5;
- Tue, 16 Jul 2019 00:11:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fp4ZcS9Des/AW20ab/84QogiuUTyk9LS7IPWVRGoT/I=;
- b=iFa77jBKisfqoET0A6Ozlg5rDIVdqVlsz3gEIwJ7tC011x+Ao8igkrPrjvNRaisrQ/
- o+gZR5QItEpreN7fwCzKY2SF7imhfczC5h5wZ4vamm+b2DEReynRqZ7NkE47hYIaViQX
- oF7j8PmKaD6R9auu0IJ4s2X25OmN/pD47B/BbJgx5VOmydCFEyqspSmXPOXG6CrQbNFC
- 4ifq1eEyWHe0xvUXPQEFdFRBbuEoEMznBWQe8TCJgsC8VQn5tjNO+aOzR7yyPRHk3eOj
- jtBOCZ44x56Z2C7u6rHtbkjHvHMS6H4fGvaicE81LS/WT6WZLiBNCp5LjhS2/OXCkgO+
- Nw0w==
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hnHkZ-0006fs-IX
+ for qemu-trivial@nongnu.org; Tue, 16 Jul 2019 03:19:47 -0400
+Received: by mail-wr1-f67.google.com with SMTP id c2so16485132wrm.8
+ for <qemu-trivial@nongnu.org>; Tue, 16 Jul 2019 00:19:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=fp4ZcS9Des/AW20ab/84QogiuUTyk9LS7IPWVRGoT/I=;
- b=beIWTSPqvURnrWp7oL5iaiEVHdHrWvjGO90EKts183TIU5md0u0zgMGojhh8e99HEb
- OqhdaEvY2UDOWSyzJDX/tRgzFMpuoMxOlKbQtxQh+RyXYp6cXJK30RV34SeVZM5BR6zR
- brMWajSdP3pR8SeLSHj64WOoxbkf2glBMlbi+FkW3wi5bouSWgsYww4pYeWIEdTpILN1
- DjM/FqlBAXyq1Eu5KP+V8NoCd5rsvFZbp+vX6T5XoYDzUusMbAD1LkzacxDRzY0V8kZa
- Vx9w3ZaLLKTVUaFR1bgIY4NSefAR6IkwwyqlFdPGQ16vitgx4jAvEJgvSfzhDvzP5DwD
- qj1w==
-X-Gm-Message-State: APjAAAV+KwxlkQfP0H2SNKte42kEuB/wujuyQR1SbEJeY6EG2AI5O8S9
- ApUeinetgp3NEbnykLk3fND3t0PTaujUgHv3AbOCBjvX
-X-Google-Smtp-Source: APXvYqzZ2hgXquUviXNqxdHth7knK5VgZ5sieKd1MUlIGkFy3zlNNRGVjxQ4dxTSg8zyl61Br6qktGRV4D9zbdVxvMU=
-X-Received: by 2002:a7b:c0d0:: with SMTP id s16mr29303290wmh.141.1563261104644; 
- Tue, 16 Jul 2019 00:11:44 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190615051722.13994-1-rfried.dev@gmail.com>
-In-Reply-To: <20190615051722.13994-1-rfried.dev@gmail.com>
-From: Ramon Fried <rfried.dev@gmail.com>
-Date: Tue, 16 Jul 2019 10:11:33 +0300
-Message-ID: <CAGi-RUJazCVVh9NwpQ1AHfPdPLW1aYxKst6w6PKfCk2doBz_9w@mail.gmail.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=tnVNqHoiSgR4rP6XelwFnflFmdAT2038/qPRxCmlvno=;
+ b=j3BHz9fL/KAyW9/iTYsvKhNGoMV6NCd6jCC3eI/RXVFYa3akKc/FsC+qfa3oV4OoCs
+ WrQb1aT+V/tEccVzg+6zzPz7iO90RmJ9k+Rtb92gMS2TLkP8MtTZsJ+N3fa24LfPRV6P
+ ImDbHvMSWJtdBYfLbOWyNmlsfEQimz+lhCX+mtiFYB/7AeA4Zhh5UxHhnFIJ6sGHdIOX
+ iOJZK256pgs/o2qpEnfFYVqHCL2L6weBy68CSC6NtcC9lpH0oUQktNcotGT+/kiBgdBB
+ CC6lVpS+aa5jrAOs99m45R9qJs0jXcx8gAD4XFThxtiPd4HAYCYrlnsgXCXWU6y/nQms
+ b1jA==
+X-Gm-Message-State: APjAAAVIzhDbellr7IxkKU7FU1Ppz5ZvLqKEUd//RaFF2hhM46soM67s
+ cAUHLW0WwR+zm7voZQxJLjCyyg==
+X-Google-Smtp-Source: APXvYqz3/yzb20m4x1/IIV8ME4b+bSJCzY12Z8Y1T1903sJ5pG/ndWp0ZoUBtG6yZSbpdJHoK/Ddbw==
+X-Received: by 2002:adf:e504:: with SMTP id j4mr33075107wrm.222.1563261586434; 
+ Tue, 16 Jul 2019 00:19:46 -0700 (PDT)
+Received: from [192.168.1.37] (62.red-83-42-61.dynamicip.rima-tde.net.
+ [83.42.61.62])
+ by smtp.gmail.com with ESMTPSA id x20sm40687579wrg.10.2019.07.16.00.19.45
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Tue, 16 Jul 2019 00:19:45 -0700 (PDT)
+To: Ramon Fried <rfried.dev@gmail.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
 Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, 
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>, 
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: Re: [Qemu-trivial] [PATCH] net: cadence_gem: clear RX control
- descriptor
+ Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20190615051722.13994-1-rfried.dev@gmail.com>
+ <CAGi-RUJazCVVh9NwpQ1AHfPdPLW1aYxKst6w6PKfCk2doBz_9w@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <8422687a-f410-64a4-1211-b06a4f26681e@redhat.com>
+Date: Tue, 16 Jul 2019 09:19:44 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
+MIME-Version: 1.0
+In-Reply-To: <CAGi-RUJazCVVh9NwpQ1AHfPdPLW1aYxKst6w6PKfCk2doBz_9w@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.221.67
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] net: cadence_gem: clear RX
+ control descriptor
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -67,50 +72,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Jul 2019 07:11:51 -0000
+X-List-Received-Date: Tue, 16 Jul 2019 07:19:49 -0000
 
-ping
+On 7/16/19 9:11 AM, Ramon Fried wrote:
+> ping
+> 
+> On Sat, Jun 15, 2019 at 8:17 AM Ramon Fried <rfried.dev@gmail.com> wrote:
+>>
+>> The RX ring descriptors control field is used for setting
+>> SOF and EOF (start of frame and end of frame).
+>> The SOF and EOF weren't cleared from the previous descriptors,
+>> causing inconsistencies in ring buffer.
+>> Fix that by clearing the control field of every descriptors we're
+>> processing.
+>>
+>> Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
+>> ---
+>>  hw/net/cadence_gem.c | 7 +++++++
+>>  1 file changed, 7 insertions(+)
+>>
+>> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+>> index ecee22525c..d83a82bdb0 100644
+>> --- a/hw/net/cadence_gem.c
+>> +++ b/hw/net/cadence_gem.c
+>> @@ -406,6 +406,11 @@ static inline void rx_desc_set_sof(uint32_t *desc)
+>>      desc[1] |= DESC_1_RX_SOF;
+>>  }
+>>
+>> +static inline void rx_desc_clear(uint32_t *desc)
+>> +{
+>> +    desc[1]  = 0;
+>> +}
+>> +
+>>  static inline void rx_desc_set_eof(uint32_t *desc)
+>>  {
+>>      desc[1] |= DESC_1_RX_EOF;
+>> @@ -994,6 +999,8 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+>>          bytes_to_copy -= MIN(bytes_to_copy, rxbufsize);
+>>
+>>          /* Update the descriptor.  */
+>> +        rx_desc_clear(s->rx_desc[q]);
 
-On Sat, Jun 15, 2019 at 8:17 AM Ramon Fried <rfried.dev@gmail.com> wrote:
->
-> The RX ring descriptors control field is used for setting
-> SOF and EOF (start of frame and end of frame).
-> The SOF and EOF weren't cleared from the previous descriptors,
-> causing inconsistencies in ring buffer.
-> Fix that by clearing the control field of every descriptors we're
-> processing.
->
-> Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
-> ---
->  hw/net/cadence_gem.c | 7 +++++++
->  1 file changed, 7 insertions(+)
->
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index ecee22525c..d83a82bdb0 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -406,6 +406,11 @@ static inline void rx_desc_set_sof(uint32_t *desc)
->      desc[1] |= DESC_1_RX_SOF;
->  }
->
-> +static inline void rx_desc_clear(uint32_t *desc)
-> +{
-> +    desc[1]  = 0;
-> +}
-> +
->  static inline void rx_desc_set_eof(uint32_t *desc)
->  {
->      desc[1] |= DESC_1_RX_EOF;
-> @@ -994,6 +999,8 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
->          bytes_to_copy -= MIN(bytes_to_copy, rxbufsize);
->
->          /* Update the descriptor.  */
-> +        rx_desc_clear(s->rx_desc[q]);
-> +
->          if (first_desc) {
->              rx_desc_set_sof(s->rx_desc[q]);
->              first_desc = false;
-> --
-> 2.21.0
->
+Maybe move the call before the comment, regardless:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+>> +
+>>          if (first_desc) {
+>>              rx_desc_set_sof(s->rx_desc[q]);
+>>              first_desc = false;
+>> --
+>> 2.21.0
+>>
 
