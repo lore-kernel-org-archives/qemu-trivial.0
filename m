@@ -1,65 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hnLDa-0007JU-C9
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Jul 2019 07:01:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58378)
+	id 1hnNPf-0003mp-Sw
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Jul 2019 09:22:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49843)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <rfried.dev@gmail.com>) id 1hnLDV-00072K-MH
- for qemu-trivial@nongnu.org; Tue, 16 Jul 2019 07:01:54 -0400
+ (envelope-from <antonkuchin@yandex-team.ru>) id 1hnJSC-0001C1-Dc
+ for qemu-trivial@nongnu.org; Tue, 16 Jul 2019 05:08:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <rfried.dev@gmail.com>) id 1hnLDT-0006TP-HU
- for qemu-trivial@nongnu.org; Tue, 16 Jul 2019 07:01:53 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:35834)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
- id 1hnLDN-0006OM-Gf; Tue, 16 Jul 2019 07:01:45 -0400
-Received: by mail-wm1-x341.google.com with SMTP id l2so18234964wmg.0;
- Tue, 16 Jul 2019 04:01:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=mLuPacixCfQL1CqAQgfCd9QBEfriLajdZzVnBsDFPn4=;
- b=iNmU2TJZyaAxRkP9j0BcWKwgxig6Ed8x7tJmb38WV7RCJk/im0DjVWIxJYdG3/TwlX
- NVKPCU080FdJZjAmRhILgGUhrlq4/O+ILvaSmmkfqTHyGpXY2q3rQG8LdSGU1M2gc49Z
- rjH9HlXPq6p287V7P+clOjHZ6FfbS/4s9YgmmBsGAS1eNFny0jXMu2r6r7dYxb7hS/YM
- IUMSbqXy+eUZuCTH+VnIi5tDEj7C+RnkYCZ59fnCVs2dT8GBRnSZ63td3ePqL8u2BTuJ
- mJQRjJSIXKbTVBpqQm6U9V8wWB6WuO/gSa7nqEqWzMNdM4nKTshfbuB3BaYh2CbJOFj9
- ewPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=mLuPacixCfQL1CqAQgfCd9QBEfriLajdZzVnBsDFPn4=;
- b=eOEGxtxp4t4cbuqyJkzJPC6WPB9c0Y9aAClkZX+J+FoJG9aYCAXAl61ZyL+T1SgWVh
- GdMAz4k/lVAKRowXTYMA6Rf9cSBVrLiKPLRzmw/wwGg7YvQAGazvjQ2/mQlrLMwCDkCl
- SRYaEf2p6fiW54glEkjCpkduA3vtyxPeqiQNkFd9fzoL3g+IhrTV7qSi4NSh5Nm3W7z4
- r43vC6nM7lH5EDYtyqiG4n0B7E8g+W+6AESexzuiwT4Z0p5ICv+ZANnvL7x9fnEglbG8
- bxaJYpA8WlW07PFsEiAlTMU1HYNq0gcUhMY3Roy01mSUUHu0RhlYRLv92jQKS/kp2XW8
- EgaQ==
-X-Gm-Message-State: APjAAAWdov+jVLKDRKo1zYe1KfkChBqNYdikGfXUcoaevgSjXPX/420v
- NTunSMebcyU1Nn3MLl1YqmWhkJ6mFMZlkajjQqs=
-X-Google-Smtp-Source: APXvYqx3kRIuqKEJAuQUkLwBgzbS/D3N01GO5UhazSAMSHQ3yqv85+t+Tp/4MEX0nMGfh5tB6h3k3Ut87oVB3v++V5I=
-X-Received: by 2002:a1c:35c2:: with SMTP id c185mr29733757wma.58.1563274904137; 
- Tue, 16 Jul 2019 04:01:44 -0700 (PDT)
+ (envelope-from <antonkuchin@yandex-team.ru>) id 1hnJSB-0000vn-FN
+ for qemu-trivial@nongnu.org; Tue, 16 Jul 2019 05:08:56 -0400
+Received: from forwardcorp1p.mail.yandex.net ([77.88.29.217]:46202)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <antonkuchin@yandex-team.ru>)
+ id 1hnJS8-0000qZ-FB; Tue, 16 Jul 2019 05:08:53 -0400
+Received: from mxbackcorp1o.mail.yandex.net (mxbackcorp1o.mail.yandex.net
+ [IPv6:2a02:6b8:0:1a2d::301])
+ by forwardcorp1p.mail.yandex.net (Yandex) with ESMTP id 1BEF32E1489;
+ Tue, 16 Jul 2019 12:08:48 +0300 (MSK)
+Received: from smtpcorp1p.mail.yandex.net (smtpcorp1p.mail.yandex.net
+ [2a02:6b8:0:1472:2741:0:8b6:10])
+ by mxbackcorp1o.mail.yandex.net (nwsmtp/Yandex) with ESMTP id
+ 4yJEaq2cgi-8liuXbex; Tue, 16 Jul 2019 12:08:48 +0300
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
+ s=default; 
+ t=1563268128; bh=IAPuz1mCtbeDJgEG2GHY7V+hQF0B0Lrc4TWrQukY4Q4=;
+ h=Message-Id:Date:Subject:To:From:Cc;
+ b=zFJCuL8nbTN95TAYyvKfpD9EKjztcHThDkqVvnCc4D1pOfJ5lpqxXAOFp07gROey6
+ i7yY63KS6rIQSutPlRv2fTtdkTQLp/VBYDVm09sYdeyKV1MymC205U7dGFlAlUvzXE
+ FMJB3G+ahnS0k8B4j3pBqjQ7PE0uRqdn59FNlhqM=
+Authentication-Results: mxbackcorp1o.mail.yandex.net;
+ dkim=pass header.i=@yandex-team.ru
+Received: from dynamic-red.dhcp.yndx.net (dynamic-red.dhcp.yndx.net
+ [2a02:6b8:0:408:250:b6ff:fe97:2682])
+ by smtpcorp1p.mail.yandex.net (nwsmtp/Yandex) with ESMTPSA id
+ c0IeHuEGSf-8lwCZ2iK; Tue, 16 Jul 2019 12:08:47 +0300
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
+ (Client certificate not present)
+From: Anton Kuchin <antonkuchin@yandex-team.ru>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, Anton Kuchin <antonkuchin@yandex-team.ru>
+Date: Tue, 16 Jul 2019 12:08:39 +0300
+Message-Id: <20190716090839.19708-1-antonkuchin@yandex-team.ru>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20190615051722.13994-1-rfried.dev@gmail.com>
- <555fb9b5-361f-fc3f-ff35-38b993a29edd@redhat.com>
-In-Reply-To: <555fb9b5-361f-fc3f-ff35-38b993a29edd@redhat.com>
-From: Ramon Fried <rfried.dev@gmail.com>
-Date: Tue, 16 Jul 2019 14:01:33 +0300
-Message-ID: <CAGi-RUJPD+q8sCbRfffM2bxc7deLNY4Ewg0AOdkMKfJGQs95Aw@mail.gmail.com>
-To: Jason Wang <jasowang@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, 
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::341
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] net: cadence_gem: clear RX
- control descriptor
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 77.88.29.217
+X-Mailman-Approved-At: Tue, 16 Jul 2019 09:22:35 -0400
+Subject: [Qemu-trivial] [PATCH] virtio-net: remove redundant qdev from
+ VirtIONet
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,59 +61,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Jul 2019 11:01:56 -0000
+X-List-Received-Date: Tue, 16 Jul 2019 09:08:57 -0000
 
-On Tue, Jul 16, 2019 at 11:42 AM Jason Wang <jasowang@redhat.com> wrote:
->
->
-> On 2019/6/15 =E4=B8=8B=E5=8D=881:17, Ramon Fried wrote:
-> > The RX ring descriptors control field is used for setting
-> > SOF and EOF (start of frame and end of frame).
-> > The SOF and EOF weren't cleared from the previous descriptors,
-> > causing inconsistencies in ring buffer.
-> > Fix that by clearing the control field of every descriptors we're
-> > processing.
-> >
-> > Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
-> > ---
-> >   hw/net/cadence_gem.c | 7 +++++++
-> >   1 file changed, 7 insertions(+)
-> >
-> > diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> > index ecee22525c..d83a82bdb0 100644
-> > --- a/hw/net/cadence_gem.c
-> > +++ b/hw/net/cadence_gem.c
-> > @@ -406,6 +406,11 @@ static inline void rx_desc_set_sof(uint32_t *desc)
-> >       desc[1] |=3D DESC_1_RX_SOF;
-> >   }
-> >
-> > +static inline void rx_desc_clear(uint32_t *desc)
->
->
-> Nit: is this better to name this as "rx_desc_clear_control()" ?
-I agree, sent v2.
->
-> Thanks
->
->
-> > +{
-> > +    desc[1]  =3D 0;
-> > +}
-> > +
-> >   static inline void rx_desc_set_eof(uint32_t *desc)
-> >   {
-> >       desc[1] |=3D DESC_1_RX_EOF;
-> > @@ -994,6 +999,8 @@ static ssize_t gem_receive(NetClientState *nc, cons=
-t uint8_t *buf, size_t size)
-> >           bytes_to_copy -=3D MIN(bytes_to_copy, rxbufsize);
-> >
-> >           /* Update the descriptor.  */
-> > +        rx_desc_clear(s->rx_desc[q]);
-> > +
-> >           if (first_desc) {
-> >               rx_desc_set_sof(s->rx_desc[q]);
-> >               first_desc =3D false;
->
->
->
+Signed-off-by: Anton Kuchin <antonkuchin@yandex-team.ru>
+---
+ hw/net/virtio-net.c            | 3 +--
+ include/hw/virtio/virtio-net.h | 1 -
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+index b9e1cd71cf..16d2ad5927 100644
+--- a/hw/net/virtio-net.c
++++ b/hw/net/virtio-net.c
+@@ -387,7 +387,7 @@ static void rxfilter_notify(NetClientState *nc)
+     VirtIONet *n =3D qemu_get_nic_opaque(nc);
+=20
+     if (nc->rxfilter_notify_enabled) {
+-        gchar *path =3D object_get_canonical_path(OBJECT(n->qdev));
++        gchar *path =3D object_get_canonical_path(OBJECT(n));
+         qapi_event_send_nic_rx_filter_changed(!!n->netclient_name,
+                                               n->netclient_name, path);
+         g_free(path);
+@@ -2759,7 +2759,6 @@ static void virtio_net_device_realize(DeviceState *=
+dev, Error **errp)
+     nc->rxfilter_notify_enabled =3D 1;
+=20
+     QTAILQ_INIT(&n->rsc_chains);
+-    n->qdev =3D dev;
+ }
+=20
+ static void virtio_net_device_unrealize(DeviceState *dev, Error **errp)
+diff --git a/include/hw/virtio/virtio-net.h b/include/hw/virtio/virtio-ne=
+t.h
+index b96f0c643f..4a1b599d48 100644
+--- a/include/hw/virtio/virtio-net.h
++++ b/include/hw/virtio/virtio-net.h
+@@ -174,7 +174,6 @@ struct VirtIONet {
+     uint32_t *vlans;
+     virtio_net_conf net_conf;
+     NICConf nic_conf;
+-    DeviceState *qdev;
+     int multiqueue;
+     uint16_t max_queues;
+     uint16_t curr_queues;
+--=20
+2.20.1
+
 
