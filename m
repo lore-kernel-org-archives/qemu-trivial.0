@@ -1,59 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hmz1J-0008SY-4n
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Jul 2019 07:19:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48123)
+	id 1hnHcv-000790-0z
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Jul 2019 03:11:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41852)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <sgarzare@redhat.com>) id 1hmz1H-0008QZ-1D
- for qemu-trivial@nongnu.org; Mon, 15 Jul 2019 07:19:47 -0400
+ (envelope-from <rfried.dev@gmail.com>) id 1hnHcs-0006xe-6z
+ for qemu-trivial@nongnu.org; Tue, 16 Jul 2019 03:11:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <sgarzare@redhat.com>) id 1hmz1G-0004LX-2L
- for qemu-trivial@nongnu.org; Mon, 15 Jul 2019 07:19:46 -0400
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:39223)
+ (envelope-from <rfried.dev@gmail.com>) id 1hnHcr-0001jI-15
+ for qemu-trivial@nongnu.org; Tue, 16 Jul 2019 03:11:50 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40823)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1hmz1E-0004IU-3D
- for qemu-trivial@nongnu.org; Mon, 15 Jul 2019 07:19:44 -0400
-Received: by mail-wr1-f68.google.com with SMTP id x4so16633872wrt.6
- for <qemu-trivial@nongnu.org>; Mon, 15 Jul 2019 04:19:33 -0700 (PDT)
+ (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
+ id 1hnHco-0001hf-M6; Tue, 16 Jul 2019 03:11:46 -0400
+Received: by mail-wm1-x342.google.com with SMTP id v19so17485519wmj.5;
+ Tue, 16 Jul 2019 00:11:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=fp4ZcS9Des/AW20ab/84QogiuUTyk9LS7IPWVRGoT/I=;
+ b=iFa77jBKisfqoET0A6Ozlg5rDIVdqVlsz3gEIwJ7tC011x+Ao8igkrPrjvNRaisrQ/
+ o+gZR5QItEpreN7fwCzKY2SF7imhfczC5h5wZ4vamm+b2DEReynRqZ7NkE47hYIaViQX
+ oF7j8PmKaD6R9auu0IJ4s2X25OmN/pD47B/BbJgx5VOmydCFEyqspSmXPOXG6CrQbNFC
+ 4ifq1eEyWHe0xvUXPQEFdFRBbuEoEMznBWQe8TCJgsC8VQn5tjNO+aOzR7yyPRHk3eOj
+ jtBOCZ44x56Z2C7u6rHtbkjHvHMS6H4fGvaicE81LS/WT6WZLiBNCp5LjhS2/OXCkgO+
+ Nw0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=uduoneM+QrM6MHRk9FrHAjwAlnRrfZQdnUtoXqghyFU=;
- b=CXUeka+4B5TFQIrN18GIevdKBo+z0RtVRLLkFhT7RtPU/gZPhoLVcX8rdyQH7Tq49k
- RIxJcHsza/7WAs0oX8k93OhI511VdgqWzp4f1DT9t1FwXbJvamZ3FOCsNTs8SwVdAel6
- A1zNpAHIbWI0TxOEpknAwEldO+dUBP5kHkO5asdY9HuXclrMlBg5h8jp4NqiixWYrkdO
- gBPtdaXlxsIWhN3fiX0V5C1wKi9XQadEgh8FY/vtK1EI4ZvFIyGti7XntrnkJboGTKGZ
- AVKeSM5J7Kx2Y39TrTUwRHiPvw3UOZH7vJs6S1CO/f5U8AOkbeV86wZg6C6loFDEtBWh
- 2hdg==
-X-Gm-Message-State: APjAAAV5sRvpRN+t1ZDLoiH1qHbAbscEy/DjFYWQWDYRVMEZKO7tjpuZ
- D2xm/P9Jsom/1TjF0q2/8WtEIA==
-X-Google-Smtp-Source: APXvYqxiyCRuzbDuyXZeHhEAc0nRgpyZ3n17o42gTbA+c5C+3bpxmwjUOM+RkKzs7RcN/9K2GR7Tow==
-X-Received: by 2002:adf:ed41:: with SMTP id u1mr27547900wro.162.1563189573081; 
- Mon, 15 Jul 2019 04:19:33 -0700 (PDT)
-Received: from steredhat (host122-201-dynamic.13-79-r.retail.telecomitalia.it.
- [79.13.201.122])
- by smtp.gmail.com with ESMTPSA id y16sm36025043wrg.85.2019.07.15.04.19.32
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 15 Jul 2019 04:19:32 -0700 (PDT)
-Date: Mon, 15 Jul 2019 13:19:30 +0200
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Jason Wang <jasowang@redhat.com>, Markus Armbruster <armbru@redhat.com>
-Message-ID: <20190715111930.j7bdcq3dtayu66ve@steredhat>
-References: <20190715102210.31365-1-philmd@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=fp4ZcS9Des/AW20ab/84QogiuUTyk9LS7IPWVRGoT/I=;
+ b=beIWTSPqvURnrWp7oL5iaiEVHdHrWvjGO90EKts183TIU5md0u0zgMGojhh8e99HEb
+ OqhdaEvY2UDOWSyzJDX/tRgzFMpuoMxOlKbQtxQh+RyXYp6cXJK30RV34SeVZM5BR6zR
+ brMWajSdP3pR8SeLSHj64WOoxbkf2glBMlbi+FkW3wi5bouSWgsYww4pYeWIEdTpILN1
+ DjM/FqlBAXyq1Eu5KP+V8NoCd5rsvFZbp+vX6T5XoYDzUusMbAD1LkzacxDRzY0V8kZa
+ Vx9w3ZaLLKTVUaFR1bgIY4NSefAR6IkwwyqlFdPGQ16vitgx4jAvEJgvSfzhDvzP5DwD
+ qj1w==
+X-Gm-Message-State: APjAAAV+KwxlkQfP0H2SNKte42kEuB/wujuyQR1SbEJeY6EG2AI5O8S9
+ ApUeinetgp3NEbnykLk3fND3t0PTaujUgHv3AbOCBjvX
+X-Google-Smtp-Source: APXvYqzZ2hgXquUviXNqxdHth7knK5VgZ5sieKd1MUlIGkFy3zlNNRGVjxQ4dxTSg8zyl61Br6qktGRV4D9zbdVxvMU=
+X-Received: by 2002:a7b:c0d0:: with SMTP id s16mr29303290wmh.141.1563261104644; 
+ Tue, 16 Jul 2019 00:11:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20190715102210.31365-1-philmd@redhat.com>
-User-Agent: NeoMutt/20180716
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] hw/net/e1000: Fix erroneous
- comment
+References: <20190615051722.13994-1-rfried.dev@gmail.com>
+In-Reply-To: <20190615051722.13994-1-rfried.dev@gmail.com>
+From: Ramon Fried <rfried.dev@gmail.com>
+Date: Tue, 16 Jul 2019 10:11:33 +0300
+Message-ID: <CAGi-RUJazCVVh9NwpQ1AHfPdPLW1aYxKst6w6PKfCk2doBz_9w@mail.gmail.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, 
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>, 
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::342
+Subject: Re: [Qemu-trivial] [PATCH] net: cadence_gem: clear RX control
+ descriptor
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -65,29 +67,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Jul 2019 11:19:47 -0000
+X-List-Received-Date: Tue, 16 Jul 2019 07:11:51 -0000
 
-On Mon, Jul 15, 2019 at 12:22:10PM +0200, Philippe Mathieu-Daudé wrote:
-> Missed during the QOM convertion in 9af21dbee14.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+ping
+
+On Sat, Jun 15, 2019 at 8:17 AM Ramon Fried <rfried.dev@gmail.com> wrote:
+>
+> The RX ring descriptors control field is used for setting
+> SOF and EOF (start of frame and end of frame).
+> The SOF and EOF weren't cleared from the previous descriptors,
+> causing inconsistencies in ring buffer.
+> Fix that by clearing the control field of every descriptors we're
+> processing.
+>
+> Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
 > ---
->  hw/net/e1000.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/net/e1000.c b/hw/net/e1000.c
-> index 1dc1466332..ec8ded7252 100644
-> --- a/hw/net/e1000.c
-> +++ b/hw/net/e1000.c
-> @@ -1611,7 +1611,7 @@ static const VMStateDescription vmstate_e1000 = {
->  
->  /*
->   * EEPROM contents documented in Tables 5-2 and 5-3, pp. 98-102.
-> - * Note: A valid DevId will be inserted during pci_e1000_init().
-> + * Note: A valid DevId will be inserted during pci_e1000_realize().
->   */
->  static const uint16_t e1000_eeprom_template[64] = {
->      0x0000, 0x0000, 0x0000, 0x0000,      0xffff, 0x0000,      0x0000, 0x0000,
-
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+>  hw/net/cadence_gem.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>
+> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+> index ecee22525c..d83a82bdb0 100644
+> --- a/hw/net/cadence_gem.c
+> +++ b/hw/net/cadence_gem.c
+> @@ -406,6 +406,11 @@ static inline void rx_desc_set_sof(uint32_t *desc)
+>      desc[1] |= DESC_1_RX_SOF;
+>  }
+>
+> +static inline void rx_desc_clear(uint32_t *desc)
+> +{
+> +    desc[1]  = 0;
+> +}
+> +
+>  static inline void rx_desc_set_eof(uint32_t *desc)
+>  {
+>      desc[1] |= DESC_1_RX_EOF;
+> @@ -994,6 +999,8 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+>          bytes_to_copy -= MIN(bytes_to_copy, rxbufsize);
+>
+>          /* Update the descriptor.  */
+> +        rx_desc_clear(s->rx_desc[q]);
+> +
+>          if (first_desc) {
+>              rx_desc_set_sof(s->rx_desc[q]);
+>              first_desc = false;
+> --
+> 2.21.0
+>
 
