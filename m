@@ -1,55 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hnNPf-0003mp-Sw
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Jul 2019 09:22:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49843)
+	id 1hoEVB-0008SY-7k
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Jul 2019 18:03:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42570)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <antonkuchin@yandex-team.ru>) id 1hnJSC-0001C1-Dc
- for qemu-trivial@nongnu.org; Tue, 16 Jul 2019 05:08:57 -0400
+ (envelope-from <stefan@weilnetz.de>) id 1hoEV5-00081M-1b
+ for qemu-trivial@nongnu.org; Thu, 18 Jul 2019 18:03:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <antonkuchin@yandex-team.ru>) id 1hnJSB-0000vn-FN
- for qemu-trivial@nongnu.org; Tue, 16 Jul 2019 05:08:56 -0400
-Received: from forwardcorp1p.mail.yandex.net ([77.88.29.217]:46202)
+ (envelope-from <stefan@weilnetz.de>) id 1hoEUz-0003hH-Iu
+ for qemu-trivial@nongnu.org; Thu, 18 Jul 2019 18:03:42 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]:35702
+ helo=v2201612906741603.powersrv.de)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <antonkuchin@yandex-team.ru>)
- id 1hnJS8-0000qZ-FB; Tue, 16 Jul 2019 05:08:53 -0400
-Received: from mxbackcorp1o.mail.yandex.net (mxbackcorp1o.mail.yandex.net
- [IPv6:2a02:6b8:0:1a2d::301])
- by forwardcorp1p.mail.yandex.net (Yandex) with ESMTP id 1BEF32E1489;
- Tue, 16 Jul 2019 12:08:48 +0300 (MSK)
-Received: from smtpcorp1p.mail.yandex.net (smtpcorp1p.mail.yandex.net
- [2a02:6b8:0:1472:2741:0:8b6:10])
- by mxbackcorp1o.mail.yandex.net (nwsmtp/Yandex) with ESMTP id
- 4yJEaq2cgi-8liuXbex; Tue, 16 Jul 2019 12:08:48 +0300
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
- s=default; 
- t=1563268128; bh=IAPuz1mCtbeDJgEG2GHY7V+hQF0B0Lrc4TWrQukY4Q4=;
- h=Message-Id:Date:Subject:To:From:Cc;
- b=zFJCuL8nbTN95TAYyvKfpD9EKjztcHThDkqVvnCc4D1pOfJ5lpqxXAOFp07gROey6
- i7yY63KS6rIQSutPlRv2fTtdkTQLp/VBYDVm09sYdeyKV1MymC205U7dGFlAlUvzXE
- FMJB3G+ahnS0k8B4j3pBqjQ7PE0uRqdn59FNlhqM=
-Authentication-Results: mxbackcorp1o.mail.yandex.net;
- dkim=pass header.i=@yandex-team.ru
-Received: from dynamic-red.dhcp.yndx.net (dynamic-red.dhcp.yndx.net
- [2a02:6b8:0:408:250:b6ff:fe97:2682])
- by smtpcorp1p.mail.yandex.net (nwsmtp/Yandex) with ESMTPSA id
- c0IeHuEGSf-8lwCZ2iK; Tue, 16 Jul 2019 12:08:47 +0300
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
- (Client certificate not present)
-From: Anton Kuchin <antonkuchin@yandex-team.ru>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Jason Wang <jasowang@redhat.com>, Anton Kuchin <antonkuchin@yandex-team.ru>
-Date: Tue, 16 Jul 2019 12:08:39 +0300
-Message-Id: <20190716090839.19708-1-antonkuchin@yandex-team.ru>
+ (Exim 4.71) (envelope-from <stefan@weilnetz.de>)
+ id 1hoEUo-0003Zh-F9; Thu, 18 Jul 2019 18:03:26 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by v2201612906741603.powersrv.de (Postfix) with ESMTP id 1E489DB8797;
+ Thu, 18 Jul 2019 21:34:53 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+ by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id pWmEUmwMM1fd; Thu, 18 Jul 2019 21:34:52 +0200 (CEST)
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+ by v2201612906741603.powersrv.de (Postfix) with ESMTP id 5A917DB8783;
+ Thu, 18 Jul 2019 21:34:52 +0200 (CEST)
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+ id E972B460018; Thu, 18 Jul 2019 21:34:51 +0200 (CEST)
+From: Stefan Weil <sw@weilnetz.de>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Stefan Weil <sw@weilnetz.de>
+Date: Thu, 18 Jul 2019 21:34:41 +0200
+Message-Id: <20190718193441.12490-1-sw@weilnetz.de>
 X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 77.88.29.217
-X-Mailman-Approved-At: Tue, 16 Jul 2019 09:22:35 -0400
-Subject: [Qemu-trivial] [PATCH] virtio-net: remove redundant qdev from
- VirtIONet
+X-Received-From: 37.120.169.71
+Subject: [Qemu-trivial] [PATCH] audio: Add missing fall through comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -61,49 +49,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Jul 2019 09:08:57 -0000
+X-List-Received-Date: Thu, 18 Jul 2019 22:03:48 -0000
 
-Signed-off-by: Anton Kuchin <antonkuchin@yandex-team.ru>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- hw/net/virtio-net.c            | 3 +--
- include/hw/virtio/virtio-net.h | 1 -
- 2 files changed, 1 insertion(+), 3 deletions(-)
+ audio/audio.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-index b9e1cd71cf..16d2ad5927 100644
---- a/hw/net/virtio-net.c
-+++ b/hw/net/virtio-net.c
-@@ -387,7 +387,7 @@ static void rxfilter_notify(NetClientState *nc)
-     VirtIONet *n =3D qemu_get_nic_opaque(nc);
+diff --git a/audio/audio.c b/audio/audio.c
+index 5fd9a58a80..a7a13e900a 100644
+--- a/audio/audio.c
++++ b/audio/audio.c
+@@ -304,6 +304,7 @@ void audio_pcm_init_info (struct audio_pcm_info *info=
+, struct audsettings *as)
 =20
-     if (nc->rxfilter_notify_enabled) {
--        gchar *path =3D object_get_canonical_path(OBJECT(n->qdev));
-+        gchar *path =3D object_get_canonical_path(OBJECT(n));
-         qapi_event_send_nic_rx_filter_changed(!!n->netclient_name,
-                                               n->netclient_name, path);
-         g_free(path);
-@@ -2759,7 +2759,6 @@ static void virtio_net_device_realize(DeviceState *=
-dev, Error **errp)
-     nc->rxfilter_notify_enabled =3D 1;
+     case AUDIO_FORMAT_S16:
+         sign =3D 1;
++        /* fall through */
+     case AUDIO_FORMAT_U16:
+         bits =3D 16;
+         shift =3D 1;
+@@ -311,6 +312,7 @@ void audio_pcm_init_info (struct audio_pcm_info *info=
+, struct audsettings *as)
 =20
-     QTAILQ_INIT(&n->rsc_chains);
--    n->qdev =3D dev;
- }
-=20
- static void virtio_net_device_unrealize(DeviceState *dev, Error **errp)
-diff --git a/include/hw/virtio/virtio-net.h b/include/hw/virtio/virtio-ne=
-t.h
-index b96f0c643f..4a1b599d48 100644
---- a/include/hw/virtio/virtio-net.h
-+++ b/include/hw/virtio/virtio-net.h
-@@ -174,7 +174,6 @@ struct VirtIONet {
-     uint32_t *vlans;
-     virtio_net_conf net_conf;
-     NICConf nic_conf;
--    DeviceState *qdev;
-     int multiqueue;
-     uint16_t max_queues;
-     uint16_t curr_queues;
+     case AUDIO_FORMAT_S32:
+         sign =3D 1;
++        /* fall through */
+     case AUDIO_FORMAT_U32:
+         bits =3D 32;
+         shift =3D 2;
 --=20
 2.20.1
 
