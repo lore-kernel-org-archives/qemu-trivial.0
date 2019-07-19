@@ -1,59 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hoM75-0001C4-Jd
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Jul 2019 02:11:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40988)
+	id 1hoNLA-0000ZO-Ql
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Jul 2019 03:30:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34319)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <marcandre.lureau@gmail.com>) id 1hoM74-0001Bx-0m
- for qemu-trivial@nongnu.org; Fri, 19 Jul 2019 02:11:26 -0400
+ (envelope-from <philmd@redhat.com>) id 1hoNL8-0000Si-4P
+ for qemu-trivial@nongnu.org; Fri, 19 Jul 2019 03:30:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <marcandre.lureau@gmail.com>) id 1hoM73-00050B-3q
- for qemu-trivial@nongnu.org; Fri, 19 Jul 2019 02:11:25 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43407)
+ (envelope-from <philmd@redhat.com>) id 1hoNL7-0002jf-7Y
+ for qemu-trivial@nongnu.org; Fri, 19 Jul 2019 03:30:02 -0400
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:44242)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
- id 1hoM72-0004yD-Ti; Fri, 19 Jul 2019 02:11:25 -0400
-Received: by mail-wr1-x441.google.com with SMTP id p13so30962446wru.10;
- Thu, 18 Jul 2019 23:11:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=IMqib2Iv3NJCilmqP7Ijnt10gqm1wO7UAAQ2K/wwMYE=;
- b=OYfNyQ7U6w/2uUg26nEmux16sSF3D8cSFsOmKwz9gfCBs03Cy+TXA+fvHCEFF3Q+Bc
- RGeJmrfhDx0Wwjvtn1IOQBR8KMQxIAeWr9ulo4eelE/rOssMG5BcsBMYhxtzfiSVZ0hk
- 1yozmyTdX4bC2CEpoplqdrgF8awblefhU/tGY8hWV4EkDdut8Q0Z0rSjx5sx9dQOAqvb
- nst6kRT5GLCFH89kmgbXfpnXDKtH3SG3dEWvgj5ax5DmoP2UfEBcLpYDu3ZU2v2WGckt
- OWknTGNpinwdR1woiCC17Ljc3UFAENmIelTXnskHK+8Uz6MOUWHxfsuuvn2WXTCUbxGA
- 4vgg==
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hoNL7-0002jB-1g
+ for qemu-trivial@nongnu.org; Fri, 19 Jul 2019 03:30:01 -0400
+Received: by mail-wr1-f67.google.com with SMTP id p17so31155564wrf.11
+ for <qemu-trivial@nongnu.org>; Fri, 19 Jul 2019 00:30:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=IMqib2Iv3NJCilmqP7Ijnt10gqm1wO7UAAQ2K/wwMYE=;
- b=FzCbA1Xr7JTKrtONJS11c4Q+u+86BhiICB5l1iYrvSUxyRxcKuHoLMzGB/1axVFscM
- hga2Y+946sZiGZ6r80fbmKSPWpJ0v6Z8WzXf0pHdaGVayoFIp1vyTrOmfmdY8q3iPFaw
- hPr7BB5My043Qv/gJmZmMx0sDXU9yv4Y/3n3oo8ydU544CkXOVUEB6pmc1Q4fCiZ7m1J
- BZGt152QPUMKoKDjmmnY3lTh/ZecU18nd0DCRic1likvxIJBV2e3ylmdbTOmZWIpBaqC
- gBmI6HrpIlNhymeJ1kg3+9ywRqAt47wYL3E4s/2cjy9TaLKd6eLCZkRsmYi8l4oxb5w8
- w19Q==
-X-Gm-Message-State: APjAAAWhHye6+OlIDqdDF4TLi+2rLifTVGR0d0zODqAf5z2HN9j8IaTM
- I4B3vIWruumxhfBILTO1myjZXDkftf0eNSkr4bE=
-X-Google-Smtp-Source: APXvYqx9CQhzKv9t80+cFDd3sOkbTrt090XUBwCS6MVs4gj4+0iMQvQ62AInMJwCv2ndbJEpSFrnoCJbIRUBIWf41eo=
-X-Received: by 2002:adf:ea8b:: with SMTP id s11mr52949925wrm.100.1563516683116; 
- Thu, 18 Jul 2019 23:11:23 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=h6SaMbLUxsNfiBr7ugrdEUpYvlqkvzcv1pXbGi5RT1M=;
+ b=uIPvRtxKlAsDjdmtkfJeXv4E1NY90gJuE+yccJMKjo4awKZn5cA+880g/aUc3yvQqf
+ fkviIGG/Ca6cPfrSwKz7BMnqRmN+t006tqfNla7rwIpmTEcGJcxTpE2SunBH9XcXsxH6
+ x9XAE4EariFBexxdG9jjGfDW1QuLkCM+xkX17iuFawY28noCSz9Bgwqc2RVOjGmMtOCt
+ ykXvEtWkKhDcjcjKIaJpHo1F20PYIHj+5l/z3m7wLh4sJQOneHJAhZHMHSvlMzrQHSgD
+ ZPyG7jFGbM2VlYqU4z1vdoPO06xqFuY2vr63ySAFYdXZAOdAlTZj2Wo/1p5IUJMRTUvu
+ HPmQ==
+X-Gm-Message-State: APjAAAWm4PocPTtkeCzgqE6u4qcqVBU+twfaYtunsoD+j66vGgURYUCe
+ y0EGJvnHIO1sMfQDGmnf85I6zw==
+X-Google-Smtp-Source: APXvYqyDuAPd/yqV+G7Ng5nCxr2od2WHT74hWcn2Zamu93Si8xG6J5REr8aRzCW+x2cGKLzRE/uvHw==
+X-Received: by 2002:a5d:618d:: with SMTP id j13mr53836462wru.195.1563521400051; 
+ Fri, 19 Jul 2019 00:30:00 -0700 (PDT)
+Received: from [192.168.1.37] (62.red-83-42-61.dynamicip.rima-tde.net.
+ [83.42.61.62])
+ by smtp.gmail.com with ESMTPSA id v15sm29519376wrt.25.2019.07.19.00.29.58
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Fri, 19 Jul 2019 00:29:59 -0700 (PDT)
+To: Stefan Weil <sw@weilnetz.de>, Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 References: <20190718193441.12490-1-sw@weilnetz.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <6241fd95-789f-f560-2170-0544cded1720@redhat.com>
+Date: Fri, 19 Jul 2019 09:29:57 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
+MIME-Version: 1.0
 In-Reply-To: <20190718193441.12490-1-sw@weilnetz.de>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Fri, 19 Jul 2019 10:11:09 +0400
-Message-ID: <CAJ+F1C+0YbsigM9A9k=4=fDHBJONRxFaOuZhRcMGFY8h=-UCBA@mail.gmail.com>
-To: Stefan Weil <sw@weilnetz.de>
-Cc: Gerd Hoffmann <kraxel@redhat.com>, qemu trival <qemu-trivial@nongnu.org>, 
- QEMU <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::441
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.221.67
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] audio: Add missing fall
  through comments
 X-BeenThere: qemu-trivial@nongnu.org
@@ -67,46 +67,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Jul 2019 06:11:26 -0000
+X-List-Received-Date: Fri, 19 Jul 2019 07:30:03 -0000
 
-On Fri, Jul 19, 2019 at 2:12 AM Stefan Weil <sw@weilnetz.de> wrote:
->
+On 7/18/19 9:34 PM, Stefan Weil wrote:
 > Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 > ---
 >  audio/audio.c | 2 ++
 >  1 file changed, 2 insertions(+)
->
+> 
 > diff --git a/audio/audio.c b/audio/audio.c
 > index 5fd9a58a80..a7a13e900a 100644
 > --- a/audio/audio.c
 > +++ b/audio/audio.c
-> @@ -304,6 +304,7 @@ void audio_pcm_init_info (struct audio_pcm_info *info=
-, struct audsettings *as)
->
+> @@ -304,6 +304,7 @@ void audio_pcm_init_info (struct audio_pcm_info *info, struct audsettings *as)
+>  
 >      case AUDIO_FORMAT_S16:
->          sign =3D 1;
+>          sign = 1;
 > +        /* fall through */
 >      case AUDIO_FORMAT_U16:
->          bits =3D 16;
->          shift =3D 1;
-> @@ -311,6 +312,7 @@ void audio_pcm_init_info (struct audio_pcm_info *info=
-, struct audsettings *as)
->
+>          bits = 16;
+>          shift = 1;
+> @@ -311,6 +312,7 @@ void audio_pcm_init_info (struct audio_pcm_info *info, struct audsettings *as)
+>  
 >      case AUDIO_FORMAT_S32:
->          sign =3D 1;
+>          sign = 1;
 > +        /* fall through */
 >      case AUDIO_FORMAT_U32:
->          bits =3D 32;
->          shift =3D 2;
-> --
-> 2.20.1
->
->
-
-
---=20
-Marc-Andr=C3=A9 Lureau
+>          bits = 32;
+>          shift = 2;
+> 
 
