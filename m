@@ -1,65 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hoQ0w-0003Hw-WC
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Jul 2019 06:21:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51705)
+	id 1hoRKl-0007Lx-QG
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Jul 2019 07:45:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41216)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hoQ0u-0003F1-Iy
- for qemu-trivial@nongnu.org; Fri, 19 Jul 2019 06:21:21 -0400
+ (envelope-from <pbonzini@redhat.com>) id 1hoRKj-0007K6-Cu
+ for qemu-trivial@nongnu.org; Fri, 19 Jul 2019 07:45:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hoQ0t-0000Oj-IB
- for qemu-trivial@nongnu.org; Fri, 19 Jul 2019 06:21:20 -0400
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:38209)
+ (envelope-from <pbonzini@redhat.com>) id 1hoRKi-00016x-CZ
+ for qemu-trivial@nongnu.org; Fri, 19 Jul 2019 07:45:53 -0400
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:36336)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hoQ0t-0000O7-Ce
- for qemu-trivial@nongnu.org; Fri, 19 Jul 2019 06:21:19 -0400
-Received: by mail-wm1-f66.google.com with SMTP id s15so7141046wmj.3
- for <qemu-trivial@nongnu.org>; Fri, 19 Jul 2019 03:21:19 -0700 (PDT)
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hoRKi-00016S-5f
+ for qemu-trivial@nongnu.org; Fri, 19 Jul 2019 07:45:52 -0400
+Received: by mail-wm1-f67.google.com with SMTP id g67so24635309wme.1
+ for <qemu-trivial@nongnu.org>; Fri, 19 Jul 2019 04:45:52 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=RILE1iZpMYXfF8OwS6dKminfjIGlAG6jhJeAundloEM=;
- b=kHzijReCrSxVbCHtAQ2W7ASH7hSPUm0dfXCD49QACKytNiV4KqnWpo999Czg3NgXZC
- qfZLdcUUQ6EXV99t0YtPSWAOUhk06VSWixMsyaoy2JdTZsp68mY9wjTel3aJxh2JvmCT
- 02Jwl2UbB2gBppgNpEmagTjfhA9YugXazO9bJmZfKS1M+wEK/46l0J5CoX8HUY7ytTVp
- 1KRdgN4yR5vWvsT1BMzT6215HEWDmzHlp13S78jFhtlVU24p1kP+/vUc4axxEKZHAxJh
- Q95hvVk9CXKc+ch+IpJz4bGfdBfrNzn2cTTNlDGnxEzXgkvUcHPmZXpq6ERIEBGrp1d9
- IfpA==
-X-Gm-Message-State: APjAAAV6V+j9dfRU11ew0+lG6HZqXcAlw690mDTy38QQHte5/stWXEGT
- 815rO3eW8Or8Y8Cbd+FCdqA8eQ==
-X-Google-Smtp-Source: APXvYqw+LEsLriVeCMSW4dh3XgT/gokUV0pAoIyjS923gO8qn4nZpvIyoByaVNq8pfgLG/+yhirfog==
-X-Received: by 2002:a05:600c:2503:: with SMTP id
- d3mr48978539wma.41.1563531677915; 
- Fri, 19 Jul 2019 03:21:17 -0700 (PDT)
-Received: from [192.168.1.37] (62.red-83-42-61.dynamicip.rima-tde.net.
- [83.42.61.62])
- by smtp.gmail.com with ESMTPSA id c1sm59315666wrh.1.2019.07.19.03.21.16
+ bh=ic/Zh/DiGrt51Nn2Kyvkv205FonItVi+cVwsMddKFrE=;
+ b=dratzOS2gulkoEXjDb1jIa+lOgp1dd64vNceJb3PMJg1TkZ3edQmHUXQSBIpeUflbi
+ LbUJwsiFJuoQDDzItFGVcaAUuLzK7P0BPt2n0ZF4ZQ5mNYYRi9kL4p63pjuI8DsIEGnO
+ ksD+DpqN11IUPThd700NovLRYKi9AODH6sSAWC0uPT+eTg8txxVUItK0XwauOGf706F7
+ wF3i8c3HlbzLnX4PV2lXI7J7NpFsdUDvLaf8mzNW6z14LuXBiYlmYljgcaWlgWxLxoAt
+ PHhvh/EJ8+Hqfzymv1xw7BvQrXwuMlq7xy+IF/npmBpLMWP1kh8OxaTuIwISlQwjGJkk
+ dYyw==
+X-Gm-Message-State: APjAAAVXr1uMJtVS4Fe38xhh7j9CeTE246u4nyFIDkdoKE5b709alF91
+ wmgPRhoqUaJAqh1VH1BWxH0WvQ==
+X-Google-Smtp-Source: APXvYqwsLveD9UIUX/Ov9HgKXcrJUGRX5n+falgajfqCNtDq5M+gO3IWOpu2Jk5Pv85yvT6qcVevtQ==
+X-Received: by 2002:a05:600c:214e:: with SMTP id
+ v14mr49363175wml.96.1563536751122; 
+ Fri, 19 Jul 2019 04:45:51 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:8501:6b03:f18c:74f8?
+ ([2001:b07:6468:f312:8501:6b03:f18c:74f8])
+ by smtp.gmail.com with ESMTPSA id v5sm32485452wre.50.2019.07.19.04.45.50
  (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Fri, 19 Jul 2019 03:21:17 -0700 (PDT)
-To: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Stefan Weil <sw@weilnetz.de>
-References: <20190718193441.12490-1-sw@weilnetz.de>
- <6241fd95-789f-f560-2170-0544cded1720@redhat.com>
- <CAL1e-=h01=ouAuTiPK7mGqCJVX4C-WQUEVZngFBG5nthDQ936g@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <da7e8484-246b-45e6-3790-7d3e8407bf37@redhat.com>
-Date: Fri, 19 Jul 2019 12:21:16 +0200
+ Fri, 19 Jul 2019 04:45:50 -0700 (PDT)
+To: Jiri Slaby <jslaby@suse.cz>, qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, Richard Henderson <rth@twiddle.net>,
+ Eduardo Habkost <ehabkost@redhat.com>, Brijesh Singh
+ <brijesh.singh@amd.com>, Tom Lendacky <thomas.lendacky@amd.com>
+References: <20190719104118.17735-1-jslaby@suse.cz>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <c5487d32-f3b8-8534-fe19-3c7aef7188eb@redhat.com>
+Date: Fri, 19 Jul 2019 13:45:50 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAL1e-=h01=ouAuTiPK7mGqCJVX4C-WQUEVZngFBG5nthDQ936g@mail.gmail.com>
+In-Reply-To: <20190719104118.17735-1-jslaby@suse.cz>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] audio: Add missing fall
- through comments
+X-Received-From: 209.85.128.67
+Subject: Re: [Qemu-trivial] [PATCH] target/i386: sev: fix failed message
+ typos
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,86 +69,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Jul 2019 10:21:21 -0000
+X-List-Received-Date: Fri, 19 Jul 2019 11:45:54 -0000
 
-On 7/19/19 9:43 AM, Aleksandar Markovic wrote:
+On 19/07/19 12:41, Jiri Slaby wrote:
+> In these multiline messages, there were typos. Fix them -- add a missing
+> space and remove a superfluous apostrophe.
 > 
-> On Jul 19, 2019 9:30 AM, "Philippe Mathieu-Daudé" <philmd@redhat.com
-> <mailto:philmd@redhat.com>> wrote:
->>
->> On 7/18/19 9:34 PM, Stefan Weil wrote:
->> > Signed-off-by: Stefan Weil <sw@weilnetz.de <mailto:sw@weilnetz.de>>
->>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com
-> <mailto:philmd@redhat.com>>
->> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com
-> <mailto:philmd@redhat.com>>
->>
+> Inspired by Tom's patch.
 > 
-> Philippe, how do you test these comments?
-
-The testing is quite easy since it doesn't build with
-'-Wimplicit-fallthrough=2':
-
-  CC      audio/audio.o
-/home/phil/source/qemu/audio/audio.c: In function ‘audio_pcm_init_info’:
-/home/phil/source/qemu/audio/audio.c:308:14: error: this statement may
-fall through [-Werror=implicit-fallthrough=]
-  308 |         sign = 1;
-      |         ~~~~~^~~
-/home/phil/source/qemu/audio/audio.c:309:5: note: here
-  309 |     case AUDIO_FORMAT_U16:
-      |     ^~~~
-/home/phil/source/qemu/audio/audio.c:315:14: error: this statement may
-fall through [-Werror=implicit-fallthrough=]
-  315 |         sign = 1;
-      |         ~~~~~^~~
-/home/phil/source/qemu/audio/audio.c:316:5: note: here
-  316 |     case AUDIO_FORMAT_U32:
-      |     ^~~~
-cc1: all warnings being treated as errors
-
-With Stefan patch applied:
-
-  CC      audio/audio.o
-  CC      audio/audio_legacy.o
-  CC      audio/noaudio.o
-  CC      audio/wavaudio.o
-  CC      audio/mixeng.o
-  CC      audio/spiceaudio.o
-  CC      audio/wavcapture.o
-[...]
-
+> Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Richard Henderson <rth@twiddle.net>
+> Cc: Eduardo Habkost <ehabkost@redhat.com>
+> Cc: qemu-trivial@nongnu.org
+> Cc: Brijesh Singh <brijesh.singh@amd.com>
+> Cc: Tom Lendacky <thomas.lendacky@amd.com>
+> ---
+>  target/i386/sev.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> Yours, Aleksandar
+> diff --git a/target/i386/sev.c b/target/i386/sev.c
+> index 5ba1384ea1f6..f1423cb0c0d1 100644
+> --- a/target/i386/sev.c
+> +++ b/target/i386/sev.c
+> @@ -763,7 +763,7 @@ sev_guest_init(const char *id)
+>                                          "reduced-phys-bits", NULL);
+>      if (s->reduced_phys_bits < 1) {
+>          error_report("%s: reduced_phys_bits check failed, it should be >=1,"
+> -                     "' requested '%d'", __func__, s->reduced_phys_bits);
+> +                     " requested '%d'", __func__, s->reduced_phys_bits);
+>          goto err;
+>      }
+>  
+> @@ -783,7 +783,7 @@ sev_guest_init(const char *id)
+>      ret = sev_platform_ioctl(s->sev_fd, SEV_PLATFORM_STATUS, &status,
+>                               &fw_error);
+>      if (ret) {
+> -        error_report("%s: failed to get platform status ret=%d"
+> +        error_report("%s: failed to get platform status ret=%d "
+>                       "fw_error='%d: %s'", __func__, ret, fw_error,
+>                       fw_error_to_str(fw_error));
+>          goto err;
 > 
->> > ---
->> >  audio/audio.c | 2 ++
->> >  1 file changed, 2 insertions(+)
->> >
->> > diff --git a/audio/audio.c b/audio/audio.c
->> > index 5fd9a58a80..a7a13e900a 100644
->> > --- a/audio/audio.c
->> > +++ b/audio/audio.c
->> > @@ -304,6 +304,7 @@ void audio_pcm_init_info (struct audio_pcm_info
-> *info, struct audsettings *as)
->> > 
->> >      case AUDIO_FORMAT_S16:
->> >          sign = 1;
->> > +        /* fall through */
->> >      case AUDIO_FORMAT_U16:
->> >          bits = 16;
->> >          shift = 1;
->> > @@ -311,6 +312,7 @@ void audio_pcm_init_info (struct audio_pcm_info
-> *info, struct audsettings *as)
->> > 
->> >      case AUDIO_FORMAT_S32:
->> >          sign = 1;
->> > +        /* fall through */
->> >      case AUDIO_FORMAT_U32:
->> >          bits = 32;
->> >          shift = 2;
->> >
->>
-> 
+
+Queued, thanks.
+
+Paolo
 
