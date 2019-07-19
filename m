@@ -1,43 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hoEVB-0008SY-7k
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Jul 2019 18:03:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42570)
+	id 1hoM75-0001C4-Jd
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Jul 2019 02:11:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40988)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <stefan@weilnetz.de>) id 1hoEV5-00081M-1b
- for qemu-trivial@nongnu.org; Thu, 18 Jul 2019 18:03:48 -0400
+ (envelope-from <marcandre.lureau@gmail.com>) id 1hoM74-0001Bx-0m
+ for qemu-trivial@nongnu.org; Fri, 19 Jul 2019 02:11:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <stefan@weilnetz.de>) id 1hoEUz-0003hH-Iu
- for qemu-trivial@nongnu.org; Thu, 18 Jul 2019 18:03:42 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]:35702
- helo=v2201612906741603.powersrv.de)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <stefan@weilnetz.de>)
- id 1hoEUo-0003Zh-F9; Thu, 18 Jul 2019 18:03:26 -0400
-Received: from localhost (localhost [127.0.0.1])
- by v2201612906741603.powersrv.de (Postfix) with ESMTP id 1E489DB8797;
- Thu, 18 Jul 2019 21:34:53 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
-Received: from v2201612906741603.powersrv.de ([127.0.0.1])
- by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
- port 10024)
- with ESMTP id pWmEUmwMM1fd; Thu, 18 Jul 2019 21:34:52 +0200 (CEST)
-Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
- by v2201612906741603.powersrv.de (Postfix) with ESMTP id 5A917DB8783;
- Thu, 18 Jul 2019 21:34:52 +0200 (CEST)
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
- id E972B460018; Thu, 18 Jul 2019 21:34:51 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Stefan Weil <sw@weilnetz.de>
-Date: Thu, 18 Jul 2019 21:34:41 +0200
-Message-Id: <20190718193441.12490-1-sw@weilnetz.de>
-X-Mailer: git-send-email 2.20.1
+ (envelope-from <marcandre.lureau@gmail.com>) id 1hoM73-00050B-3q
+ for qemu-trivial@nongnu.org; Fri, 19 Jul 2019 02:11:25 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43407)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1hoM72-0004yD-Ti; Fri, 19 Jul 2019 02:11:25 -0400
+Received: by mail-wr1-x441.google.com with SMTP id p13so30962446wru.10;
+ Thu, 18 Jul 2019 23:11:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=IMqib2Iv3NJCilmqP7Ijnt10gqm1wO7UAAQ2K/wwMYE=;
+ b=OYfNyQ7U6w/2uUg26nEmux16sSF3D8cSFsOmKwz9gfCBs03Cy+TXA+fvHCEFF3Q+Bc
+ RGeJmrfhDx0Wwjvtn1IOQBR8KMQxIAeWr9ulo4eelE/rOssMG5BcsBMYhxtzfiSVZ0hk
+ 1yozmyTdX4bC2CEpoplqdrgF8awblefhU/tGY8hWV4EkDdut8Q0Z0rSjx5sx9dQOAqvb
+ nst6kRT5GLCFH89kmgbXfpnXDKtH3SG3dEWvgj5ax5DmoP2UfEBcLpYDu3ZU2v2WGckt
+ OWknTGNpinwdR1woiCC17Ljc3UFAENmIelTXnskHK+8Uz6MOUWHxfsuuvn2WXTCUbxGA
+ 4vgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=IMqib2Iv3NJCilmqP7Ijnt10gqm1wO7UAAQ2K/wwMYE=;
+ b=FzCbA1Xr7JTKrtONJS11c4Q+u+86BhiICB5l1iYrvSUxyRxcKuHoLMzGB/1axVFscM
+ hga2Y+946sZiGZ6r80fbmKSPWpJ0v6Z8WzXf0pHdaGVayoFIp1vyTrOmfmdY8q3iPFaw
+ hPr7BB5My043Qv/gJmZmMx0sDXU9yv4Y/3n3oo8ydU544CkXOVUEB6pmc1Q4fCiZ7m1J
+ BZGt152QPUMKoKDjmmnY3lTh/ZecU18nd0DCRic1likvxIJBV2e3ylmdbTOmZWIpBaqC
+ gBmI6HrpIlNhymeJ1kg3+9ywRqAt47wYL3E4s/2cjy9TaLKd6eLCZkRsmYi8l4oxb5w8
+ w19Q==
+X-Gm-Message-State: APjAAAWhHye6+OlIDqdDF4TLi+2rLifTVGR0d0zODqAf5z2HN9j8IaTM
+ I4B3vIWruumxhfBILTO1myjZXDkftf0eNSkr4bE=
+X-Google-Smtp-Source: APXvYqx9CQhzKv9t80+cFDd3sOkbTrt090XUBwCS6MVs4gj4+0iMQvQ62AInMJwCv2ndbJEpSFrnoCJbIRUBIWf41eo=
+X-Received: by 2002:adf:ea8b:: with SMTP id s11mr52949925wrm.100.1563516683116; 
+ Thu, 18 Jul 2019 23:11:23 -0700 (PDT)
 MIME-Version: 1.0
+References: <20190718193441.12490-1-sw@weilnetz.de>
+In-Reply-To: <20190718193441.12490-1-sw@weilnetz.de>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Fri, 19 Jul 2019 10:11:09 +0400
+Message-ID: <CAJ+F1C+0YbsigM9A9k=4=fDHBJONRxFaOuZhRcMGFY8h=-UCBA@mail.gmail.com>
+To: Stefan Weil <sw@weilnetz.de>
+Cc: Gerd Hoffmann <kraxel@redhat.com>, qemu trival <qemu-trivial@nongnu.org>, 
+ QEMU <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 37.120.169.71
-Subject: [Qemu-trivial] [PATCH] audio: Add missing fall through comments
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::441
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] audio: Add missing fall
+ through comments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -49,36 +67,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Jul 2019 22:03:48 -0000
+X-List-Received-Date: Fri, 19 Jul 2019 06:11:26 -0000
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
- audio/audio.c | 2 ++
- 1 file changed, 2 insertions(+)
+On Fri, Jul 19, 2019 at 2:12 AM Stefan Weil <sw@weilnetz.de> wrote:
+>
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
 
-diff --git a/audio/audio.c b/audio/audio.c
-index 5fd9a58a80..a7a13e900a 100644
---- a/audio/audio.c
-+++ b/audio/audio.c
-@@ -304,6 +304,7 @@ void audio_pcm_init_info (struct audio_pcm_info *info=
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+
+> ---
+>  audio/audio.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/audio/audio.c b/audio/audio.c
+> index 5fd9a58a80..a7a13e900a 100644
+> --- a/audio/audio.c
+> +++ b/audio/audio.c
+> @@ -304,6 +304,7 @@ void audio_pcm_init_info (struct audio_pcm_info *info=
 , struct audsettings *as)
-=20
-     case AUDIO_FORMAT_S16:
-         sign =3D 1;
-+        /* fall through */
-     case AUDIO_FORMAT_U16:
-         bits =3D 16;
-         shift =3D 1;
-@@ -311,6 +312,7 @@ void audio_pcm_init_info (struct audio_pcm_info *info=
+>
+>      case AUDIO_FORMAT_S16:
+>          sign =3D 1;
+> +        /* fall through */
+>      case AUDIO_FORMAT_U16:
+>          bits =3D 16;
+>          shift =3D 1;
+> @@ -311,6 +312,7 @@ void audio_pcm_init_info (struct audio_pcm_info *info=
 , struct audsettings *as)
-=20
-     case AUDIO_FORMAT_S32:
-         sign =3D 1;
-+        /* fall through */
-     case AUDIO_FORMAT_U32:
-         bits =3D 32;
-         shift =3D 2;
+>
+>      case AUDIO_FORMAT_S32:
+>          sign =3D 1;
+> +        /* fall through */
+>      case AUDIO_FORMAT_U32:
+>          bits =3D 32;
+>          shift =3D 2;
+> --
+> 2.20.1
+>
+>
+
+
 --=20
-2.20.1
-
+Marc-Andr=C3=A9 Lureau
 
