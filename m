@@ -1,49 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hoq1p-0007vA-6J
-	for mharc-qemu-trivial@gnu.org; Sat, 20 Jul 2019 10:08:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53825)
+	id 1hor8f-0006nk-BV
+	for mharc-qemu-trivial@gnu.org; Sat, 20 Jul 2019 11:19:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39953)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <dgibson@ozlabs.org>) id 1hoq1l-0007hC-KN
- for qemu-trivial@nongnu.org; Sat, 20 Jul 2019 10:07:58 -0400
+ (envelope-from <paolo.bonzini@gmail.com>) id 1hor8b-0006Xm-H3
+ for qemu-trivial@nongnu.org; Sat, 20 Jul 2019 11:19:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1hoq1k-0002kW-Fr
- for qemu-trivial@nongnu.org; Sat, 20 Jul 2019 10:07:57 -0400
-Received: from bilbo.ozlabs.org ([203.11.71.1]:37337 helo=ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1hoq1b-0002Yf-TR; Sat, 20 Jul 2019 10:07:49 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 45rV7Z1lSnz9sNC; Sun, 21 Jul 2019 00:07:38 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1563631658;
- bh=GIs8XKwl06uRHQ/l1PcTQRA8mzVA6skBTsqI/zdaF8M=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=FPvLmmmHZBlLaaXgusaUwse8JwUp2mxihgxR3ziSHYwABH5eyezdzlDumW0NzWqpW
- pcp2RJBCFgxcEXhdx6RqDnvvhUe1lrS5VVY4sa1aXTjtLxsK3GlWoW+VI1CcT0Z+he
- RRGbzMmQPyAsck+B8wAIfZe8RQD9bNxKJ0Ha8Bpo=
-Date: Sat, 20 Jul 2019 00:20:38 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- qemu-block@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org, Corey Minyard <minyard@acm.org>,
- Max Reitz <mreitz@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Peter Maydell <peter.maydell@linaro.org>,
- Kevin Wolf <kwolf@redhat.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Stefan Weil <sw@weilnetz.de>
-Message-ID: <20190719142038.GB4174@umbus.fritz.box>
-References: <20190719131425.10835-1-philmd@redhat.com>
- <20190719131425.10835-8-philmd@redhat.com>
+ (envelope-from <paolo.bonzini@gmail.com>) id 1hor8a-0008E6-F1
+ for qemu-trivial@nongnu.org; Sat, 20 Jul 2019 11:19:05 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:44985)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
+ id 1hor8Y-0008Ck-7G; Sat, 20 Jul 2019 11:19:02 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id p17so34986216wrf.11;
+ Sat, 20 Jul 2019 08:19:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=l+J1eu/SZQQm+GtTAYitv1nWk4WmFZ80tCb3ExUS/1Q=;
+ b=FYGEZ9ThezjDxFUfIwLnLQTbwI+Iha0ngGZGTgzYGPmrsm4Vp4iL/hH12/Kh+kt+Us
+ iMlw4OeFTw8NeLSEmAVytBoVh5gVG23zYn/puXnTdIv/HJj8TIGZo3HXXZF0lKUkN3VW
+ bJJws3yGrQONjEJ2HrqQf64rkVppHkcXrPY+bmsINyLibanKR/k5rhhPaZzyHNMYPjOk
+ YQO9iQ54g7Pn2zdoWBSsi2qtNjPTIGzaWqlGMny1PE30yrWOseeGBw7uPPY5tHUXJOQV
+ 7iFNmkIA37Lgep05eO/sMX+MLoWzOE8aHFJYUixfyq6GbJWc2zxmz4RVWgLMytsLU1S2
+ /Aag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=l+J1eu/SZQQm+GtTAYitv1nWk4WmFZ80tCb3ExUS/1Q=;
+ b=oYswCxFxb0FNecx2b+a3FNHnQXfdOtgu3XbcN2EE5KAtluQmazdhUctnzwZr1mvU/k
+ QEznrYSPXjNM06XEjDQKjqz4qL8Z/7lKeroT6H6SX5u3Iq9+MyYATFG0t66U+IJ2BMA5
+ 2iidJ0ohPsN7Xttj7gpLj0fsED9gUzmlnB/KH0v4FIwDbb0/ZHLnruM9w2Oivux3cSIk
+ mhv1OqOmAXNn+CgT7MiA3SngQttvRviTyKX2nOsqnlOvUsYLuqk3l4hIak/H9+smUn4a
+ 6SPfwkmyXato7wn8XRfoQHD7htjmi3KV3/4XyhUEUV38OxmbU9wRyPPgf4FIuLABtoDI
+ l4Yw==
+X-Gm-Message-State: APjAAAVdoO9YviUuYftPaYFbMCyIcYZ5Vw1zpBddDb6KC+yXoRb/Wal7
+ qH0x/Tjw6i78iBlE2dy3Nzsw15vZXrQ=
+X-Google-Smtp-Source: APXvYqyLorEFJb1XdL9hYBkyye3rCs1M602bzfRclHmBwjNUXZR7LmJNRHH9HLeMmv18IRdBzcPTKQ==
+X-Received: by 2002:adf:df8b:: with SMTP id z11mr7993398wrl.62.1563635940958; 
+ Sat, 20 Jul 2019 08:19:00 -0700 (PDT)
+Received: from localhost.localdomain ([2001:b07:6468:f312:8501:6b03:f18c:74f8])
+ by smtp.gmail.com with ESMTPSA id 4sm77517291wro.78.2019.07.20.08.18.59
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Sat, 20 Jul 2019 08:19:00 -0700 (PDT)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Jiri Slaby <jslaby@suse.cz>, Richard Henderson <rth@twiddle.net>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
+ Brijesh Singh <brijesh.singh@amd.com>,
+ Tom Lendacky <thomas.lendacky@amd.com>
+Date: Sat, 20 Jul 2019 17:18:46 +0200
+Message-Id: <20190720151846.7450-13-pbonzini@redhat.com>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190720151846.7450-1-pbonzini@redhat.com>
+References: <20190720151846.7450-1-pbonzini@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="3uo+9/B/ebqu+fSQ"
-Content-Disposition: inline
-In-Reply-To: <20190719131425.10835-8-philmd@redhat.com>
-User-Agent: Mutt/1.12.0 (2019-05-25)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 203.11.71.1
-Subject: Re: [Qemu-trivial] [PATCH-for-4.1? 7/7] spapr_events: Rewrite a
- fall through comment
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::42d
+Subject: [Qemu-trivial] [PULL 12/12] target/i386: sev: fix failed message
+ typos
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -55,83 +74,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 20 Jul 2019 14:08:00 -0000
+X-List-Received-Date: Sat, 20 Jul 2019 15:19:08 -0000
 
+From: Jiri Slaby <jslaby@suse.cz>
 
---3uo+9/B/ebqu+fSQ
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+In these multiline messages, there were typos. Fix them -- add a missing
+space and remove a superfluous apostrophe.
 
-On Fri, Jul 19, 2019 at 03:14:25PM +0200, Philippe Mathieu-Daud=C3=A9 wrote:
-> GCC9 is confused by this comment when building with CFLAG
-> -Wimplicit-fallthrough=3D2:
->=20
->     CC      ppc64-softmmu/hw/ppc/spapr_rtc.o
->   hw/ppc/spapr_events.c: In function =E2=80=98rtas_event_log_to_source=E2=
-=80=99:
->   hw/ppc/spapr_events.c:312:12: error: this statement may fall through [-=
-Werror=3Dimplicit-fallthrough=3D]
->     312 |         if (spapr_ovec_test(spapr->ov5_cas, OV5_HP_EVT)) {
->         |            ^
->   hw/ppc/spapr_events.c:317:5: note: here
->     317 |     case RTAS_LOG_TYPE_EPOW:
->         |     ^~~~
->   cc1: all warnings being treated as errors
->=20
-> Rewrite the comment using 'fall through' which is recognized by
-> GCC and static analyzers.
->=20
-> Reported-by: Stefan Weil <sw@weilnetz.de>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Inspired by Tom's patch.
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Richard Henderson <rth@twiddle.net>
+Cc: Eduardo Habkost <ehabkost@redhat.com>
+Cc: qemu-trivial@nongnu.org
+Cc: Brijesh Singh <brijesh.singh@amd.com>
+Cc: Tom Lendacky <thomas.lendacky@amd.com>
+Message-Id: <20190719104118.17735-1-jslaby@suse.cz>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ target/i386/sev.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> ---
->  hw/ppc/spapr_events.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/hw/ppc/spapr_events.c b/hw/ppc/spapr_events.c
-> index ae0f093f59..0a98894ad6 100644
-> --- a/hw/ppc/spapr_events.c
-> +++ b/hw/ppc/spapr_events.c
-> @@ -313,7 +313,7 @@ rtas_event_log_to_source(SpaprMachineState *spapr, in=
-t log_type)
->              g_assert(source->enabled);
->              break;
->          }
-> -        /* fall back to epow for legacy hotplug interrupt source */
-> +        /* fall through back to epow for legacy hotplug interrupt source=
- */
->      case RTAS_LOG_TYPE_EPOW:
->          source =3D spapr_event_sources_get_source(spapr->event_sources,
->                                                  EVENT_CLASS_EPOW);
+diff --git a/target/i386/sev.c b/target/i386/sev.c
+index 5ba1384..f1423cb 100644
+--- a/target/i386/sev.c
++++ b/target/i386/sev.c
+@@ -763,7 +763,7 @@ sev_guest_init(const char *id)
+                                         "reduced-phys-bits", NULL);
+     if (s->reduced_phys_bits < 1) {
+         error_report("%s: reduced_phys_bits check failed, it should be >=1,"
+-                     "' requested '%d'", __func__, s->reduced_phys_bits);
++                     " requested '%d'", __func__, s->reduced_phys_bits);
+         goto err;
+     }
+ 
+@@ -783,7 +783,7 @@ sev_guest_init(const char *id)
+     ret = sev_platform_ioctl(s->sev_fd, SEV_PLATFORM_STATUS, &status,
+                              &fw_error);
+     if (ret) {
+-        error_report("%s: failed to get platform status ret=%d"
++        error_report("%s: failed to get platform status ret=%d "
+                      "fw_error='%d: %s'", __func__, ret, fw_error,
+                      fw_error_to_str(fw_error));
+         goto err;
+-- 
+1.8.3.1
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---3uo+9/B/ebqu+fSQ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl0x0bYACgkQbDjKyiDZ
-s5I9vxAA0lXp2UY09O/eG6yHIgCAcvXl11ODbYnTahJ3Wu5LGLfj2UeOrj/wg+9+
-CVd90uAGBr4qglgwtf8uIDYPgfCvLpr/Gj8RbnoYtOW4yZXI4dpbM7km/HWqHfxk
-tumdLZTCEwWYHExhSalWcAroFyPwH04hqgrt9CXijyjfrgQttf4l8qJ7xXbJnuh4
-+MTSUuSfTscfpXWUa/yBhNfzdHXLEs0EE6v1+jIbXGnuxxQwwMZ0VDUBL5uqpcPs
-FeYQ94FHNnARf3wapU8T4U+Onkqf9AJESXYNGmJR9/rENRI47g3DmLg/EYqIf83G
-2wwFxF07goup9Hc8eM2Zj8tO7Pg9CO8G++yTe1t9BTcXCgf+3xyz0UlAVGRNXRUT
-OkfTHl2PsMowATemj0fZ6qdyCT/dbySUYTKbO6kNAt6KJcMVV5spKpH3nDTMuYKw
-CghZorlnUImR+/QsNLqNaJlQi9eW0LuJdS2NYvRVOo4R4E4Baf3rKG1CKLISE2xF
-HydYrUYTNYgZIeaAZK1U+ZMJRPtWnyTmNdqA3aOmVbfUA9D352d+K6k1HbEeWQRh
-IR366wn4QRdAbdXPAu+F7UsrtVCkMwnrAu0Hrm6Vqn/xL9fEhli0krx9rciwwi7m
-2tbq7Km4XdCoH6VTbuUi7R63GuofwTAeDhubO1nBQvOLwBamV+M=
-=TTyo
------END PGP SIGNATURE-----
-
---3uo+9/B/ebqu+fSQ--
 
