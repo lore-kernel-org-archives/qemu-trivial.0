@@ -1,80 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hp1Jo-0006To-B8
-	for mharc-qemu-trivial@gnu.org; Sat, 20 Jul 2019 22:11:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60564)
+	id 1hpGMk-00035V-Uu
+	for mharc-qemu-trivial@gnu.org; Sun, 21 Jul 2019 14:15:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34697)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tcminyard@gmail.com>) id 1hp1Jh-0006Ta-QH
- for qemu-trivial@nongnu.org; Sat, 20 Jul 2019 22:11:19 -0400
+ (envelope-from <mlevitsk@redhat.com>) id 1hpGMh-0002vB-C5
+ for qemu-trivial@nongnu.org; Sun, 21 Jul 2019 14:15:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tcminyard@gmail.com>) id 1hp1Jc-00069t-3p
- for qemu-trivial@nongnu.org; Sat, 20 Jul 2019 22:11:13 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:41287)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <tcminyard@gmail.com>)
- id 1hp1J5-0005lV-H2; Sat, 20 Jul 2019 22:10:35 -0400
-Received: by mail-ot1-x341.google.com with SMTP id o101so36671336ota.8;
- Sat, 20 Jul 2019 19:10:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:reply-to:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=+bovzgwNIaowu/9If/S9UV/uafetSfX0BxgWeCFHE/c=;
- b=oZJaxUrszvGOLkisheXp6/Ygzlg/jDaxg2mt84g/DZf9+m+dEDcSC47i/CA649Q5Vt
- n3RN5aLSHM2YUL5lggX9EmXczhOo+n6OtAsIdIIP0rxirbk/60CjD9VVTPh4wawSSVYc
- LC+0lAsL9mj4YdnytcXut+rxRz3P+CF+3sE8vmf+/35+bTu3+/69K4daVzWgcrnFV6+/
- lvpRZIgZC8AsX91Jqminkm3Hh+CnAaRF8bev2zlnWEHlm+xk8ZFSAQ5v+xcPyGnZJU4E
- TBRCaM1SHNr1CzjI5gV0BI9EQdjWAG5Yd2KkfeZaguJg94QtQFriEECgrfXkdA6GxTxS
- RIHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :reply-to:references:mime-version:content-disposition
- :content-transfer-encoding:in-reply-to:user-agent;
- bh=+bovzgwNIaowu/9If/S9UV/uafetSfX0BxgWeCFHE/c=;
- b=rtC30dbqadJqrrZuGrtJSnN+jXJhmZ7qOVlO17V7o18eybVJHCIADGJUYwBIqLkCxj
- Z9x3hftVgnfBFlB7y9f5OuSCSM2YtAzOn/Aa+kn4v9Ldg8XSdXAYtekqfv+TudIaVTEb
- kFVPEG2E97ZYDmXt123JQRH+SjHAgDi4vqseUUXVGXi0US+UYWbH87rJmH89ymRDlZto
- vnZugAgs+Uy4OX/i9TyMJT21DPy8UwgNfSf19gyEy3peM13LjCrahHYpz+qpN8Mf5WPO
- FsMxdBjGFIYWWgTE95JqPqb5cbCYZSRG/brRe3XaaufLjhPyuQ6WiWuydAD9EL5bme6S
- QrDg==
-X-Gm-Message-State: APjAAAXNmuY78VlfGTsqnCT/DJNWoPKJ3yfJuVauGyY/NWzSpcKPAddd
- buTbs05YYoXdXdUYbNh/hA==
-X-Google-Smtp-Source: APXvYqwO6q2eHI9DweGOcy6aCzokg194JKLixQMGyNqN4/RPG/2EG7UnVGYOfZUh53VIkpa4Lk6TaA==
-X-Received: by 2002:a9d:27c3:: with SMTP id c61mr43800996otb.291.1563675034351; 
- Sat, 20 Jul 2019 19:10:34 -0700 (PDT)
-Received: from serve.minyard.net ([47.184.134.43])
- by smtp.gmail.com with ESMTPSA id f84sm12359350oig.43.2019.07.20.19.10.33
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sat, 20 Jul 2019 19:10:33 -0700 (PDT)
-Sender: Corey Minyard <tcminyard@gmail.com>
-Received: from minyard.net (unknown [IPv6:2001:470:b8f6:1b:dda3:f567:355c:6b0])
- by serve.minyard.net (Postfix) with ESMTPSA id 3C5DF1800CD;
- Sun, 21 Jul 2019 02:10:33 +0000 (UTC)
-Date: Sat, 20 Jul 2019 21:10:16 -0500
-From: Corey Minyard <minyard@acm.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-block@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Max Reitz <mreitz@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Peter Maydell <peter.maydell@linaro.org>,
- Kevin Wolf <kwolf@redhat.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Stefan Weil <sw@weilnetz.de>
-Message-ID: <20190721021016.GG3066@minyard.net>
-Reply-To: minyard@acm.org
-References: <20190719131425.10835-1-philmd@redhat.com>
- <20190719131425.10835-5-philmd@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20190719131425.10835-5-philmd@redhat.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::341
-Subject: Re: [Qemu-trivial] [PATCH-for-4.1? 4/7] hw/ipmi: Rewrite a fall
- through comment
+ (envelope-from <mlevitsk@redhat.com>) id 1hpGMg-0001Sw-EG
+ for qemu-trivial@nongnu.org; Sun, 21 Jul 2019 14:15:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52188)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <mlevitsk@redhat.com>)
+ id 1hpGMd-0001QL-05; Sun, 21 Jul 2019 14:15:15 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 2638CC057F2E;
+ Sun, 21 Jul 2019 18:15:13 +0000 (UTC)
+Received: from maximlenovopc.usersys.redhat.com (unknown [10.35.206.70])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C52071001DE1;
+ Sun, 21 Jul 2019 18:15:10 +0000 (UTC)
+From: Maxim Levitsky <mlevitsk@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Max Reitz <mreitz@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>, Kevin Wolf <kwolf@redhat.com>,
+ qemu-trivial@nongnu.org, qemu-block@nongnu.org,
+ Maxim Levitsky <mlevitsk@redhat.com>
+Date: Sun, 21 Jul 2019 21:15:06 +0300
+Message-Id: <20190721181508.28608-1-mlevitsk@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.32]); Sun, 21 Jul 2019 18:15:14 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH 0/2] RFC: Trivial error message fixes for
+ luks format
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -86,50 +47,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 21 Jul 2019 02:11:19 -0000
+X-List-Received-Date: Sun, 21 Jul 2019 18:15:21 -0000
 
-On Fri, Jul 19, 2019 at 03:14:22PM +0200, Philippe Mathieu-Daudé wrote:
-> GCC9 is confused by this comment when building with CFLAG
-> -Wimplicit-fallthrough=2:
-> 
->   hw/ipmi/ipmi_bmc_extern.c: In function ‘addchar’:
->   hw/ipmi/ipmi_bmc_extern.c:178:12: error: this statement may fall through [-Werror=implicit-fallthrough=]
->     178 |         ch |= 0x10;
->         |         ~~~^~~~~~~
->   hw/ipmi/ipmi_bmc_extern.c:181:5: note: here
->     181 |     default:
->         |     ^~~~~~~
->   cc1: all warnings being treated as errors
->   make: *** [rules.mak:69: hw/ipmi/ipmi_bmc_extern.o] Error 1
-> 
-> Rewrite the comment using 'fall through' which is recognized by
-> GCC and static analyzers.
-> 
-> Reported-by: Stefan Weil <sw@weilnetz.de>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  hw/ipmi/ipmi_bmc_extern.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/hw/ipmi/ipmi_bmc_extern.c b/hw/ipmi/ipmi_bmc_extern.c
-> index c0a8dac346..d4cbd210c4 100644
-> --- a/hw/ipmi/ipmi_bmc_extern.c
-> +++ b/hw/ipmi/ipmi_bmc_extern.c
-> @@ -176,8 +176,7 @@ static void addchar(IPMIBmcExtern *ibe, unsigned char ch)
->          ibe->outbuf[ibe->outlen] = VM_ESCAPE_CHAR;
->          ibe->outlen++;
->          ch |= 0x10;
-> -        /* No break */
-> -
-> +        /* fall through */
->      default:
->          ibe->outbuf[ibe->outlen] = ch;
->          ibe->outlen++;
-> -- 
-> 2.20.1
-> 
+These are attempts to improve a bit error message
+based on bunch of luks related bugzillas assigned to me.
+Feel free to reject these if you think that it doesn't
+make the messages better.
 
-Well, whatever, this is fine.
+Best regards,
+	Maxim Levitsky
 
-Acked-by: Corey Minyard <cminyard@mvista.com>
+Maxim Levitsky (2):
+  LUKS: better error message when creating too large files
+  qemu-img: better error message when opening a backing file fails
+
+ block.c        |  1 +
+ block/crypto.c | 25 +++++++++++++++++++++----
+ qemu-img.c     |  2 +-
+ 3 files changed, 23 insertions(+), 5 deletions(-)
+
+-- 
+2.17.2
+
 
