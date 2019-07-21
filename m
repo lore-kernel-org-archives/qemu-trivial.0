@@ -1,68 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hor8f-0006nk-BV
-	for mharc-qemu-trivial@gnu.org; Sat, 20 Jul 2019 11:19:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39953)
+	id 1hp1Jo-0006To-B8
+	for mharc-qemu-trivial@gnu.org; Sat, 20 Jul 2019 22:11:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60564)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <paolo.bonzini@gmail.com>) id 1hor8b-0006Xm-H3
- for qemu-trivial@nongnu.org; Sat, 20 Jul 2019 11:19:06 -0400
+ (envelope-from <tcminyard@gmail.com>) id 1hp1Jh-0006Ta-QH
+ for qemu-trivial@nongnu.org; Sat, 20 Jul 2019 22:11:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <paolo.bonzini@gmail.com>) id 1hor8a-0008E6-F1
- for qemu-trivial@nongnu.org; Sat, 20 Jul 2019 11:19:05 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:44985)
+ (envelope-from <tcminyard@gmail.com>) id 1hp1Jc-00069t-3p
+ for qemu-trivial@nongnu.org; Sat, 20 Jul 2019 22:11:13 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:41287)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
- id 1hor8Y-0008Ck-7G; Sat, 20 Jul 2019 11:19:02 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id p17so34986216wrf.11;
- Sat, 20 Jul 2019 08:19:02 -0700 (PDT)
+ (Exim 4.71) (envelope-from <tcminyard@gmail.com>)
+ id 1hp1J5-0005lV-H2; Sat, 20 Jul 2019 22:10:35 -0400
+Received: by mail-ot1-x341.google.com with SMTP id o101so36671336ota.8;
+ Sat, 20 Jul 2019 19:10:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=l+J1eu/SZQQm+GtTAYitv1nWk4WmFZ80tCb3ExUS/1Q=;
- b=FYGEZ9ThezjDxFUfIwLnLQTbwI+Iha0ngGZGTgzYGPmrsm4Vp4iL/hH12/Kh+kt+Us
- iMlw4OeFTw8NeLSEmAVytBoVh5gVG23zYn/puXnTdIv/HJj8TIGZo3HXXZF0lKUkN3VW
- bJJws3yGrQONjEJ2HrqQf64rkVppHkcXrPY+bmsINyLibanKR/k5rhhPaZzyHNMYPjOk
- YQO9iQ54g7Pn2zdoWBSsi2qtNjPTIGzaWqlGMny1PE30yrWOseeGBw7uPPY5tHUXJOQV
- 7iFNmkIA37Lgep05eO/sMX+MLoWzOE8aHFJYUixfyq6GbJWc2zxmz4RVWgLMytsLU1S2
- /Aag==
+ h=sender:date:from:to:cc:subject:message-id:reply-to:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=+bovzgwNIaowu/9If/S9UV/uafetSfX0BxgWeCFHE/c=;
+ b=oZJaxUrszvGOLkisheXp6/Ygzlg/jDaxg2mt84g/DZf9+m+dEDcSC47i/CA649Q5Vt
+ n3RN5aLSHM2YUL5lggX9EmXczhOo+n6OtAsIdIIP0rxirbk/60CjD9VVTPh4wawSSVYc
+ LC+0lAsL9mj4YdnytcXut+rxRz3P+CF+3sE8vmf+/35+bTu3+/69K4daVzWgcrnFV6+/
+ lvpRZIgZC8AsX91Jqminkm3Hh+CnAaRF8bev2zlnWEHlm+xk8ZFSAQ5v+xcPyGnZJU4E
+ TBRCaM1SHNr1CzjI5gV0BI9EQdjWAG5Yd2KkfeZaguJg94QtQFriEECgrfXkdA6GxTxS
+ RIHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=l+J1eu/SZQQm+GtTAYitv1nWk4WmFZ80tCb3ExUS/1Q=;
- b=oYswCxFxb0FNecx2b+a3FNHnQXfdOtgu3XbcN2EE5KAtluQmazdhUctnzwZr1mvU/k
- QEznrYSPXjNM06XEjDQKjqz4qL8Z/7lKeroT6H6SX5u3Iq9+MyYATFG0t66U+IJ2BMA5
- 2iidJ0ohPsN7Xttj7gpLj0fsED9gUzmlnB/KH0v4FIwDbb0/ZHLnruM9w2Oivux3cSIk
- mhv1OqOmAXNn+CgT7MiA3SngQttvRviTyKX2nOsqnlOvUsYLuqk3l4hIak/H9+smUn4a
- 6SPfwkmyXato7wn8XRfoQHD7htjmi3KV3/4XyhUEUV38OxmbU9wRyPPgf4FIuLABtoDI
- l4Yw==
-X-Gm-Message-State: APjAAAVdoO9YviUuYftPaYFbMCyIcYZ5Vw1zpBddDb6KC+yXoRb/Wal7
- qH0x/Tjw6i78iBlE2dy3Nzsw15vZXrQ=
-X-Google-Smtp-Source: APXvYqyLorEFJb1XdL9hYBkyye3rCs1M602bzfRclHmBwjNUXZR7LmJNRHH9HLeMmv18IRdBzcPTKQ==
-X-Received: by 2002:adf:df8b:: with SMTP id z11mr7993398wrl.62.1563635940958; 
- Sat, 20 Jul 2019 08:19:00 -0700 (PDT)
-Received: from localhost.localdomain ([2001:b07:6468:f312:8501:6b03:f18c:74f8])
- by smtp.gmail.com with ESMTPSA id 4sm77517291wro.78.2019.07.20.08.18.59
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :reply-to:references:mime-version:content-disposition
+ :content-transfer-encoding:in-reply-to:user-agent;
+ bh=+bovzgwNIaowu/9If/S9UV/uafetSfX0BxgWeCFHE/c=;
+ b=rtC30dbqadJqrrZuGrtJSnN+jXJhmZ7qOVlO17V7o18eybVJHCIADGJUYwBIqLkCxj
+ Z9x3hftVgnfBFlB7y9f5OuSCSM2YtAzOn/Aa+kn4v9Ldg8XSdXAYtekqfv+TudIaVTEb
+ kFVPEG2E97ZYDmXt123JQRH+SjHAgDi4vqseUUXVGXi0US+UYWbH87rJmH89ymRDlZto
+ vnZugAgs+Uy4OX/i9TyMJT21DPy8UwgNfSf19gyEy3peM13LjCrahHYpz+qpN8Mf5WPO
+ FsMxdBjGFIYWWgTE95JqPqb5cbCYZSRG/brRe3XaaufLjhPyuQ6WiWuydAD9EL5bme6S
+ QrDg==
+X-Gm-Message-State: APjAAAXNmuY78VlfGTsqnCT/DJNWoPKJ3yfJuVauGyY/NWzSpcKPAddd
+ buTbs05YYoXdXdUYbNh/hA==
+X-Google-Smtp-Source: APXvYqwO6q2eHI9DweGOcy6aCzokg194JKLixQMGyNqN4/RPG/2EG7UnVGYOfZUh53VIkpa4Lk6TaA==
+X-Received: by 2002:a9d:27c3:: with SMTP id c61mr43800996otb.291.1563675034351; 
+ Sat, 20 Jul 2019 19:10:34 -0700 (PDT)
+Received: from serve.minyard.net ([47.184.134.43])
+ by smtp.gmail.com with ESMTPSA id f84sm12359350oig.43.2019.07.20.19.10.33
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Sat, 20 Jul 2019 08:19:00 -0700 (PDT)
-Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Jiri Slaby <jslaby@suse.cz>, Richard Henderson <rth@twiddle.net>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
- Brijesh Singh <brijesh.singh@amd.com>,
- Tom Lendacky <thomas.lendacky@amd.com>
-Date: Sat, 20 Jul 2019 17:18:46 +0200
-Message-Id: <20190720151846.7450-13-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190720151846.7450-1-pbonzini@redhat.com>
-References: <20190720151846.7450-1-pbonzini@redhat.com>
+ Sat, 20 Jul 2019 19:10:33 -0700 (PDT)
+Sender: Corey Minyard <tcminyard@gmail.com>
+Received: from minyard.net (unknown [IPv6:2001:470:b8f6:1b:dda3:f567:355c:6b0])
+ by serve.minyard.net (Postfix) with ESMTPSA id 3C5DF1800CD;
+ Sun, 21 Jul 2019 02:10:33 +0000 (UTC)
+Date: Sat, 20 Jul 2019 21:10:16 -0500
+From: Corey Minyard <minyard@acm.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-block@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Kevin Wolf <kwolf@redhat.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Stefan Weil <sw@weilnetz.de>
+Message-ID: <20190721021016.GG3066@minyard.net>
+Reply-To: minyard@acm.org
+References: <20190719131425.10835-1-philmd@redhat.com>
+ <20190719131425.10835-5-philmd@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20190719131425.10835-5-philmd@redhat.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::42d
-Subject: [Qemu-trivial] [PULL 12/12] target/i386: sev: fix failed message
- typos
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-trivial] [PATCH-for-4.1? 4/7] hw/ipmi: Rewrite a fall
+ through comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,51 +86,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 20 Jul 2019 15:19:08 -0000
+X-List-Received-Date: Sun, 21 Jul 2019 02:11:19 -0000
 
-From: Jiri Slaby <jslaby@suse.cz>
+On Fri, Jul 19, 2019 at 03:14:22PM +0200, Philippe Mathieu-Daudé wrote:
+> GCC9 is confused by this comment when building with CFLAG
+> -Wimplicit-fallthrough=2:
+> 
+>   hw/ipmi/ipmi_bmc_extern.c: In function ‘addchar’:
+>   hw/ipmi/ipmi_bmc_extern.c:178:12: error: this statement may fall through [-Werror=implicit-fallthrough=]
+>     178 |         ch |= 0x10;
+>         |         ~~~^~~~~~~
+>   hw/ipmi/ipmi_bmc_extern.c:181:5: note: here
+>     181 |     default:
+>         |     ^~~~~~~
+>   cc1: all warnings being treated as errors
+>   make: *** [rules.mak:69: hw/ipmi/ipmi_bmc_extern.o] Error 1
+> 
+> Rewrite the comment using 'fall through' which is recognized by
+> GCC and static analyzers.
+> 
+> Reported-by: Stefan Weil <sw@weilnetz.de>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  hw/ipmi/ipmi_bmc_extern.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/hw/ipmi/ipmi_bmc_extern.c b/hw/ipmi/ipmi_bmc_extern.c
+> index c0a8dac346..d4cbd210c4 100644
+> --- a/hw/ipmi/ipmi_bmc_extern.c
+> +++ b/hw/ipmi/ipmi_bmc_extern.c
+> @@ -176,8 +176,7 @@ static void addchar(IPMIBmcExtern *ibe, unsigned char ch)
+>          ibe->outbuf[ibe->outlen] = VM_ESCAPE_CHAR;
+>          ibe->outlen++;
+>          ch |= 0x10;
+> -        /* No break */
+> -
+> +        /* fall through */
+>      default:
+>          ibe->outbuf[ibe->outlen] = ch;
+>          ibe->outlen++;
+> -- 
+> 2.20.1
+> 
 
-In these multiline messages, there were typos. Fix them -- add a missing
-space and remove a superfluous apostrophe.
+Well, whatever, this is fine.
 
-Inspired by Tom's patch.
-
-Signed-off-by: Jiri Slaby <jslaby@suse.cz>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Richard Henderson <rth@twiddle.net>
-Cc: Eduardo Habkost <ehabkost@redhat.com>
-Cc: qemu-trivial@nongnu.org
-Cc: Brijesh Singh <brijesh.singh@amd.com>
-Cc: Tom Lendacky <thomas.lendacky@amd.com>
-Message-Id: <20190719104118.17735-1-jslaby@suse.cz>
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- target/i386/sev.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/target/i386/sev.c b/target/i386/sev.c
-index 5ba1384..f1423cb 100644
---- a/target/i386/sev.c
-+++ b/target/i386/sev.c
-@@ -763,7 +763,7 @@ sev_guest_init(const char *id)
-                                         "reduced-phys-bits", NULL);
-     if (s->reduced_phys_bits < 1) {
-         error_report("%s: reduced_phys_bits check failed, it should be >=1,"
--                     "' requested '%d'", __func__, s->reduced_phys_bits);
-+                     " requested '%d'", __func__, s->reduced_phys_bits);
-         goto err;
-     }
- 
-@@ -783,7 +783,7 @@ sev_guest_init(const char *id)
-     ret = sev_platform_ioctl(s->sev_fd, SEV_PLATFORM_STATUS, &status,
-                              &fw_error);
-     if (ret) {
--        error_report("%s: failed to get platform status ret=%d"
-+        error_report("%s: failed to get platform status ret=%d "
-                      "fw_error='%d: %s'", __func__, ret, fw_error,
-                      fw_error_to_str(fw_error));
-         goto err;
--- 
-1.8.3.1
-
+Acked-by: Corey Minyard <cminyard@mvista.com>
 
