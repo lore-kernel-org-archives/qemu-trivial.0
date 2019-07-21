@@ -1,41 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hpGMk-00035V-Uu
-	for mharc-qemu-trivial@gnu.org; Sun, 21 Jul 2019 14:15:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34697)
+	id 1hpGMp-0003Jp-4m
+	for mharc-qemu-trivial@gnu.org; Sun, 21 Jul 2019 14:15:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34753)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <mlevitsk@redhat.com>) id 1hpGMh-0002vB-C5
- for qemu-trivial@nongnu.org; Sun, 21 Jul 2019 14:15:20 -0400
+ (envelope-from <mlevitsk@redhat.com>) id 1hpGMk-00033V-8b
+ for qemu-trivial@nongnu.org; Sun, 21 Jul 2019 14:15:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mlevitsk@redhat.com>) id 1hpGMg-0001Sw-EG
- for qemu-trivial@nongnu.org; Sun, 21 Jul 2019 14:15:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52188)
+ (envelope-from <mlevitsk@redhat.com>) id 1hpGMi-0001VM-Vg
+ for qemu-trivial@nongnu.org; Sun, 21 Jul 2019 14:15:22 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54242)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <mlevitsk@redhat.com>)
- id 1hpGMd-0001QL-05; Sun, 21 Jul 2019 14:15:15 -0400
+ id 1hpGMe-0001RD-8L; Sun, 21 Jul 2019 14:15:16 -0400
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 2638CC057F2E;
- Sun, 21 Jul 2019 18:15:13 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 84EAF3082DDD;
+ Sun, 21 Jul 2019 18:15:15 +0000 (UTC)
 Received: from maximlenovopc.usersys.redhat.com (unknown [10.35.206.70])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C52071001DE1;
- Sun, 21 Jul 2019 18:15:10 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7CAFA1017E3F;
+ Sun, 21 Jul 2019 18:15:13 +0000 (UTC)
 From: Maxim Levitsky <mlevitsk@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Max Reitz <mreitz@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
  Laurent Vivier <laurent@vivier.eu>, Kevin Wolf <kwolf@redhat.com>,
  qemu-trivial@nongnu.org, qemu-block@nongnu.org,
  Maxim Levitsky <mlevitsk@redhat.com>
-Date: Sun, 21 Jul 2019 21:15:06 +0300
-Message-Id: <20190721181508.28608-1-mlevitsk@redhat.com>
+Date: Sun, 21 Jul 2019 21:15:07 +0300
+Message-Id: <20190721181508.28608-2-mlevitsk@redhat.com>
+In-Reply-To: <20190721181508.28608-1-mlevitsk@redhat.com>
+References: <20190721181508.28608-1-mlevitsk@redhat.com>
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.32]); Sun, 21 Jul 2019 18:15:14 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.46]); Sun, 21 Jul 2019 18:15:15 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH 0/2] RFC: Trivial error message fixes for
- luks format
+Subject: [Qemu-trivial] [PATCH 1/2] LUKS: better error message when creating
+ too large files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -47,25 +49,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 21 Jul 2019 18:15:21 -0000
+X-List-Received-Date: Sun, 21 Jul 2019 18:15:25 -0000
 
-These are attempts to improve a bit error message
-based on bunch of luks related bugzillas assigned to me.
-Feel free to reject these if you think that it doesn't
-make the messages better.
+Currently if you attampt to create too large file with luks you
+get the following error message:
 
-Best regards,
-	Maxim Levitsky
+Formatting 'test.luks', fmt=luks size=17592186044416 key-secret=sec0
+qemu-img: test.luks: Could not resize file: File too large
 
-Maxim Levitsky (2):
-  LUKS: better error message when creating too large files
-  qemu-img: better error message when opening a backing file fails
+While for raw format the error message is
+qemu-img: test.img: The image size is too large for file format 'raw'
 
- block.c        |  1 +
+
+The reason for this is that qemu-img checks for errono of the failure,
+and presents the later error when it is -EFBIG
+
+However crypto generic code 'swallows' the errno and replaces it
+with -EIO.
+
+As an attempt to make it better, we can make luks driver,
+detect -EFBIG and in this case present a better error message,
+which is what this patch does
+
+The new error message is:
+
+qemu-img: error creating test.luks: The requested file size is too large
+
+Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=1534898
+Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
+---
  block/crypto.c | 25 +++++++++++++++++++++----
- qemu-img.c     |  2 +-
- 3 files changed, 23 insertions(+), 5 deletions(-)
+ 1 file changed, 21 insertions(+), 4 deletions(-)
 
+diff --git a/block/crypto.c b/block/crypto.c
+index 8237424ae6..73b1013fa1 100644
+--- a/block/crypto.c
++++ b/block/crypto.c
+@@ -102,18 +102,35 @@ static ssize_t block_crypto_init_func(QCryptoBlock *block,
+                                       Error **errp)
+ {
+     struct BlockCryptoCreateData *data = opaque;
++    Error *local_error = NULL;
++    int ret;
+ 
+     if (data->size > INT64_MAX || headerlen > INT64_MAX - data->size) {
+-        error_setg(errp, "The requested file size is too large");
+-        return -EFBIG;
++        ret = -EFBIG;
++        goto error;
+     }
+ 
+     /* User provided size should reflect amount of space made
+      * available to the guest, so we must take account of that
+      * which will be used by the crypto header
+      */
+-    return blk_truncate(data->blk, data->size + headerlen, PREALLOC_MODE_OFF,
+-                        errp);
++    ret = blk_truncate(data->blk, data->size + headerlen, PREALLOC_MODE_OFF,
++                       &local_error);
++
++    if (ret >= 0) {
++        return ret;
++    }
++
++error:
++    if (ret == -EFBIG) {
++        /* Replace the error message with a better one */
++        error_free(local_error);
++        error_setg(errp, "The requested file size is too large");
++    } else {
++        error_propagate(errp, local_error);
++    }
++
++    return ret;
+ }
+ 
+ 
 -- 
 2.17.2
 
