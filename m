@@ -1,45 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hpUon-0007aa-O8
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Jul 2019 05:41:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46791)
+	id 1hpUu2-0005Jk-SY
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Jul 2019 05:46:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48640)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <kwolf@redhat.com>) id 1hpUok-0007N5-Nx
- for qemu-trivial@nongnu.org; Mon, 22 Jul 2019 05:41:15 -0400
+ (envelope-from <mlevitsk@redhat.com>) id 1hpUu0-0005AK-Bo
+ for qemu-trivial@nongnu.org; Mon, 22 Jul 2019 05:46:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kwolf@redhat.com>) id 1hpUoj-0004xQ-Jo
- for qemu-trivial@nongnu.org; Mon, 22 Jul 2019 05:41:14 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41940)
+ (envelope-from <mlevitsk@redhat.com>) id 1hpUtz-0000U9-D3
+ for qemu-trivial@nongnu.org; Mon, 22 Jul 2019 05:46:40 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36114)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kwolf@redhat.com>)
- id 1hpUod-0004su-NK; Mon, 22 Jul 2019 05:41:07 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ (Exim 4.71) (envelope-from <mlevitsk@redhat.com>)
+ id 1hpUtp-0000Ms-VA; Mon, 22 Jul 2019 05:46:31 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 3E9AA8535D;
- Mon, 22 Jul 2019 09:41:06 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-117-81.ams2.redhat.com
- [10.36.117.81])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id AAFF15D71B;
- Mon, 22 Jul 2019 09:41:04 +0000 (UTC)
-Date: Mon, 22 Jul 2019 11:41:03 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Maxim Levitsky <mlevitsk@redhat.com>
-Cc: qemu-devel@nongnu.org, Max Reitz <mreitz@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- qemu-block@nongnu.org
-Message-ID: <20190722094103.GA6583@localhost.localdomain>
+ by mx1.redhat.com (Postfix) with ESMTPS id 38588300C72A;
+ Mon, 22 Jul 2019 09:46:27 +0000 (UTC)
+Received: from maximlenovopc.usersys.redhat.com (unknown [10.35.206.45])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 66D975C206;
+ Mon, 22 Jul 2019 09:46:25 +0000 (UTC)
+Message-ID: <a8979dcc4affa9adc50c54e9c1b640dee3d09b83.camel@redhat.com>
+From: Maxim Levitsky <mlevitsk@redhat.com>
+To: Kevin Wolf <kwolf@redhat.com>
+Cc: qemu-devel@nongnu.org, Max Reitz <mreitz@redhat.com>, Michael Tokarev
+ <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org,  qemu-block@nongnu.org
+Date: Mon, 22 Jul 2019 12:46:24 +0300
+In-Reply-To: <20190722094103.GA6583@localhost.localdomain>
 References: <20190721181508.28608-1-mlevitsk@redhat.com>
  <20190721181508.28608-3-mlevitsk@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190721181508.28608-3-mlevitsk@redhat.com>
-User-Agent: Mutt/1.12.0 (2019-05-25)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+ <20190722094103.GA6583@localhost.localdomain>
+Content-Type: text/plain; charset="UTF-8"
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.25]); Mon, 22 Jul 2019 09:41:06 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.45]); Mon, 22 Jul 2019 09:46:27 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-trivial] [PATCH 2/2] qemu-img: better error message when
@@ -55,98 +53,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Jul 2019 09:41:16 -0000
+X-List-Received-Date: Mon, 22 Jul 2019 09:46:41 -0000
 
-Am 21.07.2019 um 20:15 hat Maxim Levitsky geschrieben:
-> Currently we print message like that:
+On Mon, 2019-07-22 at 11:41 +0200, Kevin Wolf wrote:
+> Am 21.07.2019 um 20:15 hat Maxim Levitsky geschrieben:
+> > Currently we print message like that:
+> > 
+> > "
+> > new_file.qcow2 : error message
+> > "
+> > 
+> > However the error could have come from opening the backing file (e.g when it missing encryption keys),
+> > thus try to clarify this by using this format:
+> > 
+> > "
+> > qemu-img: error creating new_file.qcow2: base_file.qcow2: error message
+> > Could not open backing image to determine size.
+> > "
 > 
-> "
-> new_file.qcow2 : error message
-> "
+> The old error message was just unspecific. Your new error message can be
+> actively misleading because you just unconditionally print the filename
+> of the direct backing file, even though the error could have occurred
+> while opening the backing file of the backing file (or even further down
+> the backing chain).
 > 
-> However the error could have come from opening the backing file (e.g when it missing encryption keys),
-> thus try to clarify this by using this format:
+> It's a common problem we have with backing files and error messages: We
+> either don't print the filename where the error actually happened (like
+> in this case), or we print all of the backing files in the chain (such
+> as "Could not open top.qcow2: Could not open mid.qcow2: Could not open
+> base.qcow2: Invalid something").
 > 
-> "
-> qemu-img: error creating new_file.qcow2: base_file.qcow2: error message
-> Could not open backing image to determine size.
-> "
+> Ideally, we'd find a way to print only the backing filename in such
+> cases ("Could not open base.qcow2: Invalid something"). I'd gladly
+> accept a patch that fixes error messages in this way for both open and
+> create, but I'm afraid that your approach in this patch is too
+> simplistic and not an improvement
 
-The old error message was just unspecific. Your new error message can be
-actively misleading because you just unconditionally print the filename
-of the direct backing file, even though the error could have occurred
-while opening the backing file of the backing file (or even further down
-the backing chain).
+You raise a very good point, I didn't thought about this.
+Thanks,
 
-It's a common problem we have with backing files and error messages: We
-either don't print the filename where the error actually happened (like
-in this case), or we print all of the backing files in the chain (such
-as "Could not open top.qcow2: Could not open mid.qcow2: Could not open
-base.qcow2: Invalid something").
+Best regards,
+	Maxim Levitsky
 
-Ideally, we'd find a way to print only the backing filename in such
-cases ("Could not open base.qcow2: Invalid something"). I'd gladly
-accept a patch that fixes error messages in this way for both open and
-create, but I'm afraid that your approach in this patch is too
-simplistic and not an improvement.
 
-Kevin
-
-> Test used:
-> 
-> qemu-img create -f qcow2 \
->         --object secret,id=sec0,data=hunter9 \
->         --object secret,id=sec1,data=my_new_secret_password \
->         -b 'json:{ "encrypt.key-secret": "sec1", "driver": "qcow2", "file": { "driver": "file", "filename": "base.qcow2" }}' \
->         -o encrypt.format=luks,encrypt.key-secret=sec1 \
->         sn.qcow2
-> 
-> 
-> Error message before:
-> 
-> qemu-img: sn.qcow2: Invalid password, cannot unlock any keyslot
-> Could not open backing image to determine size.
-> 
-> 
-> Error message after:
-> 
-> qemu-img: error creating sn.qcow2: \
-> 	json:{ "encrypt.key-secret": "sec1", "driver": "qcow2", "file": { "driver": "file", "filename": "base.qcow2" }}: \
-> 	Invalid password, cannot unlock any keyslot
-> Could not open backing image to determine size.
-> 
-> Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
-> ---
->  block.c    | 1 +
->  qemu-img.c | 2 +-
->  2 files changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/block.c b/block.c
-> index 29e931e217..5eb47b2199 100644
-> --- a/block.c
-> +++ b/block.c
-> @@ -5790,6 +5790,7 @@ void bdrv_img_create(const char *filename, const char *fmt,
->                              "This may become an error in future versions.\n");
->              local_err = NULL;
->          } else if (!bs) {
-> +            error_prepend(&local_err, "%s: ", backing_file);
->              /* Couldn't open bs, do not have size */
->              error_append_hint(&local_err,
->                                "Could not open backing image to determine size.\n");
-> diff --git a/qemu-img.c b/qemu-img.c
-> index 79983772de..134bf2fbe0 100644
-> --- a/qemu-img.c
-> +++ b/qemu-img.c
-> @@ -545,7 +545,7 @@ static int img_create(int argc, char **argv)
->      bdrv_img_create(filename, fmt, base_filename, base_fmt,
->                      options, img_size, flags, quiet, &local_err);
->      if (local_err) {
-> -        error_reportf_err(local_err, "%s: ", filename);
-> +        error_reportf_err(local_err, "error creating %s: ", filename);
->          goto fail;
->      }
->  
-> -- 
-> 2.17.2
-> 
 
