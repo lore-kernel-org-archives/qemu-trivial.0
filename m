@@ -1,70 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hqbTS-00064a-9J
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Jul 2019 06:59:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41965)
+	id 1hvi6Z-000811-Un
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Aug 2019 09:05:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33863)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hqbTQ-00063d-Az
- for qemu-trivial@nongnu.org; Thu, 25 Jul 2019 06:59:49 -0400
+ (envelope-from <philmd@redhat.com>) id 1hvi6X-0007w8-2A
+ for qemu-trivial@nongnu.org; Thu, 08 Aug 2019 09:05:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hqbTP-0007m2-6H
- for qemu-trivial@nongnu.org; Thu, 25 Jul 2019 06:59:48 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:33955)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hqbTO-0007k1-V9
- for qemu-trivial@nongnu.org; Thu, 25 Jul 2019 06:59:47 -0400
-Received: by mail-wm1-f68.google.com with SMTP id w9so35493098wmd.1
- for <qemu-trivial@nongnu.org>; Thu, 25 Jul 2019 03:59:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=soIWWHrLvhZt3MjKgXrRXvRwi32B3m+Tq+Pj6WkIRsQ=;
- b=oUTVdLg92YrvSa4mElVJh/GFgv9cv+eIoKFUBkv04pitIIuHC7zRVzPueVoB356tOl
- FbKAJH9lis1SVa/nBWtBZo6Yoy45yPNPR+IUFn3/RX29He0Klgv0J668p0H+3tn9iYb4
- WaOPhwMOeYqFrom9a1bBQuHRQmDRkIVI+47ggerZmBeX3j3kzDKOEb1MczOta8ER420w
- M0j2lYKPzol8LJFL402xKVWTb3i/Q9nxGvBQ54XAAxOqQ5ByP+0BHKmm7HY2VbeTvDXY
- s11XqILMsVQWoTtxvGIEK6i6YXBCi0hxvbZYd+7XDbu+G4wRi7dcFBFGFvmoU/dirsZw
- VnNQ==
-X-Gm-Message-State: APjAAAWselPfRSVnkKoWu6vSLCE4D0b/Y8PAtbgn330ZtkrJLS5uJTWd
- Ea+IoEJORKuVcS3mZ+fGdJYcLw==
-X-Google-Smtp-Source: APXvYqz2Zc7xgRdAXv8q0ApOTaM99s7PbHV5qfyyGNApEPl2wfconyDw+SLIDXQOS5flnkIQqKLWxw==
-X-Received: by 2002:a1c:f90f:: with SMTP id x15mr2510391wmh.69.1564052385886; 
- Thu, 25 Jul 2019 03:59:45 -0700 (PDT)
-Received: from [192.168.1.37] (190.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.190])
- by smtp.gmail.com with ESMTPSA id g131sm34155252wmf.37.2019.07.25.03.59.44
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Thu, 25 Jul 2019 03:59:45 -0700 (PDT)
-To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- qemu-block@nongnu.org, Corey Minyard <minyard@acm.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Stefan Weil <sw@weilnetz.de>, Michael Tokarev <mjt@tls.msk.ru>,
- Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>
-References: <20190719131425.10835-1-philmd@redhat.com>
- <20190719131425.10835-4-philmd@redhat.com>
- <6ff431d9-36bd-27a1-077b-b2cb1331750d@redhat.com>
- <bc3dc756-23a8-48a3-02ca-abaae6d0db96@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <bc3713cf-0e5c-52ed-c00c-fe4e24be608d@redhat.com>
-Date: Thu, 25 Jul 2019 12:59:43 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ (envelope-from <philmd@redhat.com>) id 1hvi6R-000652-Ou
+ for qemu-trivial@nongnu.org; Thu, 08 Aug 2019 09:05:17 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39012)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1hvi6L-0005y3-Hq; Thu, 08 Aug 2019 09:05:05 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id CDB3130253EC;
+ Thu,  8 Aug 2019 13:05:04 +0000 (UTC)
+Received: from x1w.redhat.com (unknown [10.40.205.30])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9A4E05D70D;
+ Thu,  8 Aug 2019 13:04:57 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, John Snow <jsnow@redhat.com>,
+ qemu-block@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Thu,  8 Aug 2019 15:04:54 +0200
+Message-Id: <20190808130454.9930-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <bc3dc756-23a8-48a3-02ca-abaae6d0db96@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.44]); Thu, 08 Aug 2019 13:05:04 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-trivial] [Qemu-block] [PATCH-for-4.1 3/7]
- hw/block/pflash_cfi02: Rewrite a fall through comment
+X-Received-From: 209.132.183.28
+Subject: [Qemu-trivial] [PATCH] hw/ide/atapi: Use the ldst API
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -76,65 +48,259 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Jul 2019 10:59:49 -0000
+X-List-Received-Date: Thu, 08 Aug 2019 13:05:18 -0000
 
-On 7/25/19 2:27 AM, John Snow wrote:
-> On 7/22/19 7:43 AM, Philippe Mathieu-Daudé wrote:
->> On 7/19/19 3:14 PM, Philippe Mathieu-Daudé wrote:
->>> GCC9 is confused by this comment when building with CFLAG
->>> -Wimplicit-fallthrough=2:
->>>
->>>   hw/block/pflash_cfi02.c: In function ‘pflash_write’:
->>>   hw/block/pflash_cfi02.c:574:16: error: this statement may fall through [-Werror=implicit-fallthrough=]
->>>     574 |             if (boff == 0x55 && cmd == 0x98) {
->>>         |                ^
->>>   hw/block/pflash_cfi02.c:581:9: note: here
->>>     581 |         default:
->>>         |         ^~~~~~~
->>>   cc1: all warnings being treated as errors
->>>
->>> Rewrite the comment using 'fall through' which is recognized by
->>> GCC and static analyzers.
->>>
->>> Reported-by: Stefan Weil <sw@weilnetz.de>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->>> ---
->>>  hw/block/pflash_cfi02.c | 2 +-
->>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
->>> index f68837a449..42886f6af5 100644
->>> --- a/hw/block/pflash_cfi02.c
->>> +++ b/hw/block/pflash_cfi02.c
->>> @@ -577,7 +577,7 @@ static void pflash_write(void *opaque, hwaddr offset, uint64_t value,
->>>                  pfl->cmd = 0x98;
->>>                  return;
->>>              }
->>> -            /* No break here */
->>> +            /* fall through */
->>>          default:
->>>              DPRINTF("%s: invalid write for command %02x\n",
->>>                      __func__, pfl->cmd);
->>>
->>
->> Queued to pflash/next, thanks.
->>
-> 
-> Are you queueing everything or just this one patch? It would be a little
-> inconvenient to split a series up like that.
+The big-endian load/store functions are already provided
+by "qemu/bswap.h".
+Avoid code duplication, use the generic API.
 
-Oops I simply queued this particular one.
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/ide/atapi.c | 80 ++++++++++++++++++--------------------------------
+ 1 file changed, 28 insertions(+), 52 deletions(-)
 
-> (Most other maintainers will, I believe, expect that with an "ACK" or
-> similar that someone else will stage the series.)
+diff --git a/hw/ide/atapi.c b/hw/ide/atapi.c
+index 1b0f66cc08..17a9d635d8 100644
+--- a/hw/ide/atapi.c
++++ b/hw/ide/atapi.c
+@@ -45,30 +45,6 @@ static void padstr8(uint8_t *buf, int buf_size, const =
+char *src)
+     }
+ }
+=20
+-static inline void cpu_to_ube16(uint8_t *buf, int val)
+-{
+-    buf[0] =3D val >> 8;
+-    buf[1] =3D val & 0xff;
+-}
+-
+-static inline void cpu_to_ube32(uint8_t *buf, unsigned int val)
+-{
+-    buf[0] =3D val >> 24;
+-    buf[1] =3D val >> 16;
+-    buf[2] =3D val >> 8;
+-    buf[3] =3D val & 0xff;
+-}
+-
+-static inline int ube16_to_cpu(const uint8_t *buf)
+-{
+-    return (buf[0] << 8) | buf[1];
+-}
+-
+-static inline int ube32_to_cpu(const uint8_t *buf)
+-{
+-    return (buf[0] << 24) | (buf[1] << 16) | (buf[2] << 8) | buf[3];
+-}
+-
+ static void lba_to_msf(uint8_t *buf, int lba)
+ {
+     lba +=3D 150;
+@@ -485,7 +461,7 @@ static inline uint8_t ide_atapi_set_profile(uint8_t *=
+buf, uint8_t *index,
+     uint8_t *buf_profile =3D buf + 12; /* start of profiles */
+=20
+     buf_profile +=3D ((*index) * 4); /* start of indexed profile */
+-    cpu_to_ube16 (buf_profile, profile);
++    stw_be_p(buf_profile, profile);
+     buf_profile[2] =3D ((buf_profile[0] =3D=3D buf[6]) && (buf_profile[1=
+] =3D=3D buf[7]));
+=20
+     /* each profile adds 4 bytes to the response */
+@@ -518,9 +494,9 @@ static int ide_dvd_read_structure(IDEState *s, int fo=
+rmat,
+                 buf[7] =3D 0;   /* default densities */
+=20
+                 /* FIXME: 0x30000 per spec? */
+-                cpu_to_ube32(buf + 8, 0); /* start sector */
+-                cpu_to_ube32(buf + 12, total_sectors - 1); /* end sector=
+ */
+-                cpu_to_ube32(buf + 16, total_sectors - 1); /* l0 end sec=
+tor */
++                stl_be_p(buf + 8, 0); /* start sector */
++                stl_be_p(buf + 12, total_sectors - 1); /* end sector */
++                stl_be_p(buf + 16, total_sectors - 1); /* l0 end sector =
+*/
+=20
+                 /* Size of buffer, not including 2 byte size field */
+                 stw_be_p(buf, 2048 + 2);
+@@ -839,7 +815,7 @@ static void cmd_get_configuration(IDEState *s, uint8_=
+t *buf)
+     }
+=20
+     /* XXX: could result in alignment problems in some architectures */
+-    max_len =3D ube16_to_cpu(buf + 7);
++    max_len =3D lduw_be_p(buf + 7);
+=20
+     /*
+      * XXX: avoid overflow for io_buffer if max_len is bigger than
+@@ -859,16 +835,16 @@ static void cmd_get_configuration(IDEState *s, uint=
+8_t *buf)
+      * to use as current.  0 means there is no media
+      */
+     if (media_is_dvd(s)) {
+-        cpu_to_ube16(buf + 6, MMC_PROFILE_DVD_ROM);
++        stw_be_p(buf + 6, MMC_PROFILE_DVD_ROM);
+     } else if (media_is_cd(s)) {
+-        cpu_to_ube16(buf + 6, MMC_PROFILE_CD_ROM);
++        stw_be_p(buf + 6, MMC_PROFILE_CD_ROM);
+     }
+=20
+     buf[10] =3D 0x02 | 0x01; /* persistent and current */
+     len =3D 12; /* headers: 8 + 4 */
+     len +=3D ide_atapi_set_profile(buf, &index, MMC_PROFILE_DVD_ROM);
+     len +=3D ide_atapi_set_profile(buf, &index, MMC_PROFILE_CD_ROM);
+-    cpu_to_ube32(buf, len - 4); /* data length */
++    stl_be_p(buf, len - 4); /* data length */
+=20
+     ide_atapi_cmd_reply(s, len, max_len);
+ }
+@@ -878,7 +854,7 @@ static void cmd_mode_sense(IDEState *s, uint8_t *buf)
+     int action, code;
+     int max_len;
+=20
+-    max_len =3D ube16_to_cpu(buf + 7);
++    max_len =3D lduw_be_p(buf + 7);
+     action =3D buf[2] >> 6;
+     code =3D buf[2] & 0x3f;
+=20
+@@ -886,7 +862,7 @@ static void cmd_mode_sense(IDEState *s, uint8_t *buf)
+     case 0: /* current values */
+         switch(code) {
+         case MODE_PAGE_R_W_ERROR: /* error recovery */
+-            cpu_to_ube16(&buf[0], 16 - 2);
++            stw_be_p(&buf[0], 16 - 2);
+             buf[2] =3D 0x70;
+             buf[3] =3D 0;
+             buf[4] =3D 0;
+@@ -905,7 +881,7 @@ static void cmd_mode_sense(IDEState *s, uint8_t *buf)
+             ide_atapi_cmd_reply(s, 16, max_len);
+             break;
+         case MODE_PAGE_AUDIO_CTL:
+-            cpu_to_ube16(&buf[0], 24 - 2);
++            stw_be_p(&buf[0], 24 - 2);
+             buf[2] =3D 0x70;
+             buf[3] =3D 0;
+             buf[4] =3D 0;
+@@ -924,7 +900,7 @@ static void cmd_mode_sense(IDEState *s, uint8_t *buf)
+             ide_atapi_cmd_reply(s, 24, max_len);
+             break;
+         case MODE_PAGE_CAPABILITIES:
+-            cpu_to_ube16(&buf[0], 30 - 2);
++            stw_be_p(&buf[0], 30 - 2);
+             buf[2] =3D 0x70;
+             buf[3] =3D 0;
+             buf[4] =3D 0;
+@@ -946,11 +922,11 @@ static void cmd_mode_sense(IDEState *s, uint8_t *bu=
+f)
+                 buf[14] |=3D 1 << 1;
+             }
+             buf[15] =3D 0x00; /* No volume & mute control, no changer */
+-            cpu_to_ube16(&buf[16], 704); /* 4x read speed */
++            stw_be_p(&buf[16], 704); /* 4x read speed */
+             buf[18] =3D 0; /* Two volume levels */
+             buf[19] =3D 2;
+-            cpu_to_ube16(&buf[20], 512); /* 512k buffer */
+-            cpu_to_ube16(&buf[22], 704); /* 4x read speed current */
++            stw_be_p(&buf[20], 512); /* 512k buffer */
++            stw_be_p(&buf[22], 704); /* 4x read speed current */
+             buf[24] =3D 0;
+             buf[25] =3D 0;
+             buf[26] =3D 0;
+@@ -998,12 +974,12 @@ static void cmd_read(IDEState *s, uint8_t* buf)
+     int nb_sectors, lba;
+=20
+     if (buf[0] =3D=3D GPCMD_READ_10) {
+-        nb_sectors =3D ube16_to_cpu(buf + 7);
++        nb_sectors =3D lduw_be_p(buf + 7);
+     } else {
+-        nb_sectors =3D ube32_to_cpu(buf + 6);
++        nb_sectors =3D ldl_be_p(buf + 6);
+     }
+=20
+-    lba =3D ube32_to_cpu(buf + 2);
++    lba =3D ldl_be_p(buf + 2);
+     if (nb_sectors =3D=3D 0) {
+         ide_atapi_cmd_ok(s);
+         return;
+@@ -1017,7 +993,7 @@ static void cmd_read_cd(IDEState *s, uint8_t* buf)
+     int nb_sectors, lba, transfer_request;
+=20
+     nb_sectors =3D (buf[6] << 16) | (buf[7] << 8) | buf[8];
+-    lba =3D ube32_to_cpu(buf + 2);
++    lba =3D ldl_be_p(buf + 2);
+=20
+     if (nb_sectors =3D=3D 0) {
+         ide_atapi_cmd_ok(s);
+@@ -1057,7 +1033,7 @@ static void cmd_seek(IDEState *s, uint8_t* buf)
+     unsigned int lba;
+     uint64_t total_sectors =3D s->nb_sectors >> 2;
+=20
+-    lba =3D ube32_to_cpu(buf + 2);
++    lba =3D ldl_be_p(buf + 2);
+     if (lba >=3D total_sectors) {
+         ide_atapi_cmd_error(s, ILLEGAL_REQUEST, ASC_LOGICAL_BLOCK_OOR);
+         return;
+@@ -1098,15 +1074,15 @@ static void cmd_start_stop_unit(IDEState *s, uint=
+8_t* buf)
+=20
+ static void cmd_mechanism_status(IDEState *s, uint8_t* buf)
+ {
+-    int max_len =3D ube16_to_cpu(buf + 8);
++    int max_len =3D lduw_be_p(buf + 8);
+=20
+-    cpu_to_ube16(buf, 0);
++    stw_be_p(buf, 0);
+     /* no current LBA */
+     buf[2] =3D 0;
+     buf[3] =3D 0;
+     buf[4] =3D 0;
+     buf[5] =3D 1;
+-    cpu_to_ube16(buf + 6, 0);
++    stw_be_p(buf + 6, 0);
+     ide_atapi_cmd_reply(s, 8, max_len);
+ }
+=20
+@@ -1116,7 +1092,7 @@ static void cmd_read_toc_pma_atip(IDEState *s, uint=
+8_t* buf)
+     int max_len;
+     uint64_t total_sectors =3D s->nb_sectors >> 2;
+=20
+-    max_len =3D ube16_to_cpu(buf + 7);
++    max_len =3D lduw_be_p(buf + 7);
+     format =3D buf[9] >> 6;
+     msf =3D (buf[1] >> 1) & 1;
+     start_track =3D buf[6];
+@@ -1154,15 +1130,15 @@ static void cmd_read_cdvd_capacity(IDEState *s, u=
+int8_t* buf)
+     uint64_t total_sectors =3D s->nb_sectors >> 2;
+=20
+     /* NOTE: it is really the number of sectors minus 1 */
+-    cpu_to_ube32(buf, total_sectors - 1);
+-    cpu_to_ube32(buf + 4, 2048);
++    stl_be_p(buf, total_sectors - 1);
++    stl_be_p(buf + 4, 2048);
+     ide_atapi_cmd_reply(s, 8, 8);
+ }
+=20
+ static void cmd_read_disc_information(IDEState *s, uint8_t* buf)
+ {
+     uint8_t type =3D buf[1] & 7;
+-    uint32_t max_len =3D ube16_to_cpu(buf + 7);
++    uint32_t max_len =3D lduw_be_p(buf + 7);
+=20
+     /* Types 1/2 are only defined for Blu-Ray.  */
+     if (type !=3D 0) {
+@@ -1196,7 +1172,7 @@ static void cmd_read_dvd_structure(IDEState *s, uin=
+t8_t* buf)
+     int format =3D buf[7];
+     int ret;
+=20
+-    max_len =3D ube16_to_cpu(buf + 8);
++    max_len =3D lduw_be_p(buf + 8);
+=20
+     if (format < 0xff) {
+         if (media_is_cd(s)) {
+--=20
+2.20.1
 
-I thought these are not critical bugfixes for 4.1, but since I had to do
-a pull request for pflash, I could include it. (I already noticed
-maintainers queueing particular patches from cleanup series).
-
-Next time I'll ping/wait.
-
-Regards,
-
-Phil.
 
