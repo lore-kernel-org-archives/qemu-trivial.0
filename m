@@ -1,92 +1,94 @@
 Received: from list by lists.gnu.org with archive (Exim 4.86_2)
-	id 1hw6eY-00055L-1E
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Aug 2019 11:18:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46774)
+	id 1hx8nn-0006eC-Oq
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Aug 2019 07:47:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37111)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <rebecca@bsdio.com>) id 1hw6eV-00052x-Hb
- for qemu-trivial@nongnu.org; Fri, 09 Aug 2019 11:18:00 -0400
+ (envelope-from <thuth@redhat.com>) id 1hx8nl-0006aJ-Jf
+ for qemu-trivial@nongnu.org; Mon, 12 Aug 2019 07:47:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <rebecca@bsdio.com>) id 1hw6eU-0007hs-L0
- for qemu-trivial@nongnu.org; Fri, 09 Aug 2019 11:17:59 -0400
-Received: from muon.bsdio.com ([65.103.231.193]:55648)
+ (envelope-from <thuth@redhat.com>) id 1hx8nk-0004mP-ND
+ for qemu-trivial@nongnu.org; Mon, 12 Aug 2019 07:47:49 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58372)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <rebecca@bsdio.com>)
- id 1hw6eS-0007eN-Jy; Fri, 09 Aug 2019 11:17:56 -0400
-Received: from muon.bsdio.com (localhost [127.0.0.1])
- by muon.bsdio.com (Postfix) with ESMTP id DEBAF8286F;
- Fri,  9 Aug 2019 09:17:55 -0600 (MDT)
-Received: from muon.bsdio.com ([127.0.0.1])
- by muon.bsdio.com (muon.bsdio.com [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id Errg4ILl3tyV; Fri,  9 Aug 2019 09:17:55 -0600 (MDT)
-Received: from photon.int.bluestop.org (unknown [10.0.10.120])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1hx8ng-0004kK-T0; Mon, 12 Aug 2019 07:47:45 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by muon.bsdio.com (Postfix) with ESMTPSA;
- Fri,  9 Aug 2019 09:17:54 -0600 (MDT)
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ by mx1.redhat.com (Postfix) with ESMTPS id 17869300676E;
+ Mon, 12 Aug 2019 11:47:44 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-117-26.ams2.redhat.com [10.36.117.26])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AB79C600C4;
+ Mon, 12 Aug 2019 11:47:37 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Gerd Hoffmann <kraxel@redhat.com>,
  qemu-trivial@nongnu.org
-References: <20190809041952.57302-1-rebecca@bsdio.com>
- <57083e0b-2853-7f5b-16ec-83bc22f237fa@linaro.org>
-From: Rebecca Cran <rebecca@bsdio.com>
+References: <20190812113739.16587-1-philmd@redhat.com>
+ <20190812113739.16587-2-philmd@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
-Autocrypt: addr=rebecca@bsdio.com; keydata=
- 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 DtU=
-Message-ID: <71dd9613-491f-bad3-c31e-231bf51df115@bsdio.com>
-Date: Fri, 9 Aug 2019 09:17:54 -0600
-User-Agent: Mozilla/5.0 (X11; FreeBSD amd64; rv:60.0) Gecko/20100101
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <67d69f94-1606-dec9-cefa-349952407888@redhat.com>
+Date: Mon, 12 Aug 2019 13:47:36 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <57083e0b-2853-7f5b-16ec-83bc22f237fa@linaro.org>
+In-Reply-To: <20190812113739.16587-2-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
 Content-Language: en-US
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 65.103.231.193
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Update the avx2 configure
- test to be compatible with clang
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.45]); Mon, 12 Aug 2019 11:47:44 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH 1/2] hw/display/sm501: Remove unused
+ include
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -98,26 +100,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Aug 2019 15:18:00 -0000
+X-List-Received-Date: Mon, 12 Aug 2019 11:47:50 -0000
 
-On 2019-08-08 23:22, Richard Henderson wrote:
->
-> No, this means we're not testing what we need:
->
-> We need to compile exactly one function using avx2.
->
-> The other functions should be compiled with sse4 and sse2, respectively, and we
-> choose between them by testing cpuid bits at startup.  If you supply -mavx2 to
-> the entire compilation, then the routine that is supposed to use only sse2 will
-> in fact use avx2, and then the runtime selection is moot.
+On 8/12/19 1:37 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> The "cpu.h" include makes devices target-specific. Since it
+> is not used, remove it, so the device become generic (we can
+> now compile it once for all targets).
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/display/sm501.c | 1 -
+>  1 file changed, 1 deletion(-)
+>=20
+> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+> index 5918f59b2b..b15fb1ab00 100644
+> --- a/hw/display/sm501.c
+> +++ b/hw/display/sm501.c
+> @@ -28,7 +28,6 @@
+>  #include "qapi/error.h"
+>  #include "qemu/log.h"
+>  #include "qemu/module.h"
+> -#include "cpu.h"
+>  #include "hw/hw.h"
+>  #include "hw/char/serial.h"
+>  #include "ui/console.h"
+>=20
 
-
-Oh, sorry, I hadn't fully realized there's runtime selection. Fixing
-this would require significant rework in that case, so I'll just build
-with GCC instead for now!
-
-
--- 
-Rebecca Cran
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
