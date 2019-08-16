@@ -1,66 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1hxsgi-0002tl-SK
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Aug 2019 08:47:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46753)
+	id 1hyiiB-0000sv-Ge
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Aug 2019 16:20:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46352)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1hxsga-0002rN-Ly
- for qemu-trivial@nongnu.org; Wed, 14 Aug 2019 08:47:30 -0400
+ (envelope-from <sebras@gmail.com>) id 1hyi3Q-00084y-Oa
+ for qemu-trivial@nongnu.org; Fri, 16 Aug 2019 15:38:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hxsgZ-0006Ik-Cy
- for qemu-trivial@nongnu.org; Wed, 14 Aug 2019 08:47:28 -0400
-Received: from mail-wr1-f65.google.com ([209.85.221.65]:34491)
+ (envelope-from <sebras@gmail.com>) id 1hyi3P-000213-Eu
+ for qemu-trivial@nongnu.org; Fri, 16 Aug 2019 15:38:28 -0400
+Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735]:34830)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hxsgZ-0006IB-7i
- for qemu-trivial@nongnu.org; Wed, 14 Aug 2019 08:47:27 -0400
-Received: by mail-wr1-f65.google.com with SMTP id 31so111010365wrm.1
- for <qemu-trivial@nongnu.org>; Wed, 14 Aug 2019 05:47:27 -0700 (PDT)
+ (Exim 4.71) (envelope-from <sebras@gmail.com>)
+ id 1hyi3P-0001zw-5O; Fri, 16 Aug 2019 15:38:27 -0400
+Received: by mail-qk1-x735.google.com with SMTP id r21so5717354qke.2;
+ Fri, 16 Aug 2019 12:38:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to:cc
+ :content-transfer-encoding;
+ bh=2AbiY5NqGuLxHSzaSmQb46FWjVADr7PsDh1kRLGvYKg=;
+ b=T0oZYk07zFa+2oCXwAovuSBGryO7E9vrVMSr76+cjYZkOlJXqrY8cQSYqABJ2YGmD0
+ LoqbvhWM9sSsvTjY6TwWjvxfKebJjWVpiY+2ZhaEPePLEAnOgICM8Unq51mUa0JVSfuf
+ J90X2o2cI4tLHOZgWnmYsOXzJayuLqyVMumxFYSbuZdgfhfJi82j5jZAjLlIgh8iRo5s
+ BeFCiznuCK0c37L3tdNVKERR9FRYHVUAudvAFyh2QBJV/CLrq/BZMOt4kncQ8xYVP3rY
+ VNyUEjAyhrLaZXOYgqsusrvOYKX/hKSFuUddDLi1krf6ECfs4lh8U5vZyrLi1ANIyQlM
+ Zt5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc
  :content-transfer-encoding;
- bh=GC88iupRSuNnyAPJpl7DNBIbadpWmmmmfnXyCOrnxdA=;
- b=jqlrCw0gVJ58TMyG64LfkF7yBOD5GhROVgLz580afyf7tUFwk8Y+W+kCXzC64V4pUK
- n4RMhggHn2UL30supBouwj4t/OV0txM1pYYKwDto4zrIlVLcPZRumwpu4XKex37UuB5n
- T+OrpF6ekSstjDJpDsReCRvyywpnLzsP4s+3au532ByNGkCZ/o5hlHgCPIJk38wec+Hz
- 4Js9/ivl4qzcCYPiCs2I+Bv42H1bkux5CwIQ6ZsLn4qSuOYWeGOR2i3fam6pnREgI90H
- myWnLkazTrDQDySal377ibyzJsxXItz4Jvpkdw5xB4VlZ5ROLrn+Tvkg2jAEnQTcRimO
- xOhg==
-X-Gm-Message-State: APjAAAV7b19WPRLvfjJY5rnhGKIZI4eogMDDcdhM8xyEoqZcdJ8MZeen
- NgtcWGEzcKFjtdZ9On5GhxrP+F+Xems=
-X-Google-Smtp-Source: APXvYqwSct0RcaqpUduab3tgYMGI0w6mVQ3cTs5V0Yg4ICVpFuKmgCALN1TKJ/bC+2Qy/kz8wZmYsA==
-X-Received: by 2002:a5d:54ce:: with SMTP id x14mr27046370wrv.237.1565786845734; 
- Wed, 14 Aug 2019 05:47:25 -0700 (PDT)
-Received: from [192.168.1.39] (251.red-88-10-102.dynamicip.rima-tde.net.
- [88.10.102.251])
- by smtp.gmail.com with ESMTPSA id w14sm10127884wrl.21.2019.08.14.05.47.24
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Wed, 14 Aug 2019 05:47:25 -0700 (PDT)
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-arm@nongnu.org,
- Miroslav Rezanina <mrezanin@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20190712133928.21394-1-philmd@redhat.com>
- <20190712133928.21394-4-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <0ded162d-50cf-42f6-bfcf-a0d1b0d97007@redhat.com>
-Date: Wed, 14 Aug 2019 14:47:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ bh=2AbiY5NqGuLxHSzaSmQb46FWjVADr7PsDh1kRLGvYKg=;
+ b=PN9KT5KiyW3Ftac4Zcs/nHLFGKWgEoHpvA7LM41xRRmSeaU4WAmo1y5tQZ973gQYtM
+ VEYcJMh0ndl/BcuB3mv06Hwg2LgR2ggYUS9yBXCdOIROVL1nUAOuG4vs6m8OGyum9xla
+ VC1cExlwXmWBxBInbYGdDVpqoN9VXicsoS6wrEIZUT37LkA+K8dk5f7sVh2RbJjgKqcm
+ B44m2MtL4kTplVFuPHocnNyt35EWRPe7Uv3vYr26KAdLTMF0jBw3STAfWsFcZLstcbTX
+ W73tUqzxxX7cj+F+a+fp4t14xd6MJ9PY98dRSLXxcyXJWN7dNvEBnMShLC6P4xrcN1Rl
+ J3dQ==
+X-Gm-Message-State: APjAAAU2fzJ/3qxt7GJtTel3NevfxGC5pF5bZDMtv2ikXnG3+oHRSJO1
+ lhOHBPbcO7h9IJKbiwXOz7YyYVO/gSHyAAOZaLudzxukOxE=
+X-Google-Smtp-Source: APXvYqwoL0T4SqcSdyXKcX/bCI6Qsc4KUz8ptRMRytZJVPaowR9J2mJ+CPj0Yez6AE8nlL5kbT4co5RoKyxxAc8ljNU=
+X-Received: by 2002:a37:a10:: with SMTP id 16mr9913508qkk.335.1565984305316;
+ Fri, 16 Aug 2019 12:38:25 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190712133928.21394-4-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.65
-Subject: Re: [Qemu-trivial] [PATCH-for-4.1? 3/7] MAINTAINERS: Add an entry
- for the Bluetooth devices
+From: Sebastian Rasmussen <sebras@gmail.com>
+Date: Fri, 16 Aug 2019 21:38:14 +0200
+Message-ID: <CAAgDR1NQSoO6d-OSB_YqbrPA6vxYnq7ZJE_=LoA=eLdmoc3Rsw@mail.gmail.com>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::735
+X-Mailman-Approved-At: Fri, 16 Aug 2019 16:20:33 -0400
+Subject: [Qemu-trivial] Translation of qemu to Swedish...
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,33 +64,108 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Aug 2019 12:47:30 -0000
+X-List-Received-Date: Fri, 16 Aug 2019 19:38:30 -0000
 
-Cc'ing qemu-trivial@ to salvage this patch.
+Hi!
 
-On 7/12/19 3:39 PM, Philippe Mathieu-Daudé wrote:
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  MAINTAINERS | 7 +++++++
->  1 file changed, 7 insertions(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index cc9636b43a..5d8f27d9bd 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1733,6 +1733,13 @@ F: hw/*/*xive*
->  F: include/hw/*/*xive*
->  F: docs/*/*xive*
->  
-> +Bluetooth
-> +S: Orphan
-> +F: bt-*.c
-> +F: hw/bt/
-> +F: include/hw/bt.h
-> +F: include/sysemu/bt.h
-> +
->  Subsystems
->  ----------
->  Audio
-> 
+I noticed that a translation to Swedish was missing,
+so I'd like to contribute that. Let me know if there is
+some issue and I'll do my best to fix it. :)
+
+ / Sebastian
+
+From 9d8525b987e0db8309b6221a7e2a292fa5db9eec Mon Sep 17 00:00:00 2001
+From: Sebastian Rasmussen <sebras@gmail.com>
+Date: Fri, 16 Aug 2019 21:22:11 +0200
+Subject: [PATCH] Added Swedish translation.
+
+Signed-off-by: Sebastian Rasmussen <sebras@gmail.com>
+---
+ po/sv.po | 75 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 75 insertions(+)
+ create mode 100644 po/sv.po
+
+diff --git a/po/sv.po b/po/sv.po
+new file mode 100644
+index 0000000000..e1ef3f7776
+--- /dev/null
++++ b/po/sv.po
+@@ -0,0 +1,75 @@
++# Swedish translation of qemu po-file.
++# This file is put in the public domain.
++# Sebastian Rasmussen <sebras@gmail.com>, 2019.
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: QEMU 2.12.91\n"
++"Report-Msgid-Bugs-To: qemu-devel@nongnu.org\n"
++"POT-Creation-Date: 2018-07-18 07:56+0200\n"
++"PO-Revision-Date: 2019-08-16 21:19+0200\n"
++"Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
++"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
++"Language: sv\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=3DUTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=3D2; plural=3D(n !=3D 1);\n"
++"X-Generator: Poedit 2.2.3\n"
++
++msgid " - Press Ctrl+Alt+G to release grab"
++msgstr " - Tryck Ctrl+Alt+G f=C3=B6r att sluta f=C3=A5nga"
++
++msgid " [Paused]"
++msgstr " [Pausad]"
++
++msgid "_Pause"
++msgstr "_Paus"
++
++msgid "_Reset"
++msgstr "_Starta om"
++
++msgid "Power _Down"
++msgstr "St=C3=A4ng _ner"
++
++msgid "_Quit"
++msgstr "_Avsluta"
++
++msgid "_Fullscreen"
++msgstr "_Helsk=C3=A4rm"
++
++msgid "_Copy"
++msgstr "_Kopiera"
++
++msgid "Zoom _In"
++msgstr "Zooma _in"
++
++msgid "Zoom _Out"
++msgstr "Zooma _ut"
++
++msgid "Best _Fit"
++msgstr "Anpassad _storlek"
++
++msgid "Zoom To _Fit"
++msgstr "Zooma till _anpassad storlek"
++
++msgid "Grab On _Hover"
++msgstr "F=C3=A5nga vid _hovring"
++
++msgid "_Grab Input"
++msgstr "_F=C3=A5nga inmatning"
++
++msgid "Show _Tabs"
++msgstr "Visa _flika"
++
++msgid "Detach Tab"
++msgstr "Frig=C3=B6r flik"
++
++msgid "Show Menubar"
++msgstr "Visa menyrad"
++
++msgid "_Machine"
++msgstr "_Maskin"
++
++msgid "_View"
++msgstr "_Visa"
+--=20
+2.23.0.rc1
 
