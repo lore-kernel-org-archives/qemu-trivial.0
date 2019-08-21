@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0OfX-0005FI-ON
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 07:20:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53590)
+	id 1i0OfZ-0005J6-H0
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 07:20:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53588)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i0OfS-00057L-QK
+ (envelope-from <laurent@vivier.eu>) id 1i0OfS-00057K-Rd
  for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i0OfQ-0006dc-Qt
+ (envelope-from <laurent@vivier.eu>) id 1i0OfQ-0006dL-PL
  for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:42 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:60159)
+Received: from mout.kundenserver.de ([217.72.192.74]:55335)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i0OfI-0006XX-FM; Wed, 21 Aug 2019 07:20:34 -0400
+ id 1i0Of5-0006O9-4k; Wed, 21 Aug 2019 07:20:19 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MJn4B-1hgNrk3nRJ-00K5FT; Wed, 21 Aug 2019 13:20:10 +0200
+ id 1M5x9B-1hu5G32Iah-007WCn; Wed, 21 Aug 2019 13:19:56 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
@@ -27,37 +27,34 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
  qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Stefan Weil <sw@weilnetz.de>
-Date: Wed, 21 Aug 2019 13:19:43 +0200
-Message-Id: <20190821111947.26580-11-laurent@vivier.eu>
+ "tony.nguyen@bt.com" <tony.nguyen@bt.com>
+Date: Wed, 21 Aug 2019 13:19:34 +0200
+Message-Id: <20190821111947.26580-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190821111947.26580-1-laurent@vivier.eu>
 References: <20190821111947.26580-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:dZPXJ7zALzqELWms6CgEg+HsPRg5cmClSJEGrVb744N3hZRY0VY
- GsNSpBr/WJLhfdimJegSry3T4iUgR0Gau1dCpecRqrJICDNbI8tIKBYazKZ+eiJF3IMPrW2
- rAga7e3JfkemVBGx7cLIV39JiZv8DlKZy7Xx8sudEKC2Wa6u0C7X7xR0YpFLgZlQo38VDEz
- Ro6O/YLOSQ8qtlqkySr/Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:DMrcvKZLe2c=:GljK/BN08zJCcYKWmmTCJu
- zUXpdhsuKZ2PWZl6nk/f21Ra9U865kOcgPAB+lac7HU3DtXHZRdFF8sfr/v5dXAoD9WcGFv0o
- Qfks28aECPpNLmJvLY/djUOUWEdTWscfaBpqtYavwlkJSBHsRTFcipy5dhFrF5Obvqc8am1zF
- WHLD5R64eGJYaLcEoIq+9udX8dQyMW92hdTSFsYW3Oe3m5WloJHGfshWzbMv+84OwZWaYYha6
- ePNw/hCS1ZNvC+2tNkq49TSlheLaIzYf4kFgPinlsoNT6SZ1mbPHCeIp2MkiTLCmF+wJfZeGg
- ltxWjzVagwXHTYUp87IenjjLkd99fFZwbjGkdCUhQHJCT1vOIroNulSkNIIYlEor0j5lhcA+C
- T8qIY+8r1YNXFRQA9QWi1bXgijYP75TATXWoKtq4vl8a+yPKwVXuomXuPg1f2AZG3asfCr7Td
- jNiZEGjiJ3uYyh75r/ryGU1X82s2p/o/A5YjykQ4Hmm8KbuQ5WWbYtGikp+0rNXEuTgq5TyG/
- FWquEvhAqkJuQL9iwX6/cV6eB8NQzaz6caAIpunGDmXAIAj3Xu0hA9cQntO7wWJrY+65M7QwS
- 0i+RIjnWdZYPnQYOhU8tZCZMJwABlJTa40S9/IvK6FdSLq1xBcKMVlh2m682oTL2yl47YJ/6N
- /0O76BVBA1u4WZxfGURdOF4+rKGpX3ogwubUys57GVwLG/d1fR5/5N+zwTq2wUS5cKnfQMxiM
- GnLagKPYWd0QSAsISA3PoSTE6EtJftula6Z/rn+46EAvIVd8XJTebQspLbsf2Jad8F1JOnVUL
- tkfuT+Bne7shKIG2nlPPXa0snKxNQ==
+X-Provags-ID: V03:K1:Dyz+FTs9M8yBZRNT0UZg9ivzFx4vuRw06ZKO9VJlZ/dglEzp+nD
+ Ab6JZqBAuH0/2F1MlsyE1niOH2DIDCwpyj2G8czG4uSn8MF8C6d/1KRQ1PiKlPJUIyi1e6Z
+ FhtA/+2m2npGlGb5r0JRBQxxMGRBoMco1Gs/MLaEt+hjX7opVGETJDHfaGpd1wEnHPIElY+
+ KQP/2WLuQbt5chpVq/G/w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:vKlawgQCwrk=:5TEchVoecxcoa6h/lj0huH
+ 82xQFN/YSJDGekkJTMb+RLmTcizyy5JR8+84NEHMYgTI6/IyaHDqTYmr/Xh6aa5KoX9UCeKhz
+ CrgYgoLZAcyxiZeANMq9PGH0wugqkqkrZB6SDyAGDpVciSug3tQrNc8DA0t1wuzmfR9JpB+92
+ oZAem9vrduHCIoR7HVuLtQR+4kD+W03AdSDYMsTsnWRvIG6T36c3v59UVHMq9Ca065uZwiYOJ
+ IGY00hAIYK4jbw18pKz6sTmV6+2CA9kPYJgF8SzMLwdx/gAOcAXstHTkJ9vgJRF4qeQkeygJq
+ rA889WbSLP17MudScFQkpOQwXPrXSkfnyR4eqg9PBu3wHigtgOBSZB1+JNP8qghZmENCC46gq
+ wCzUtlzItoLu9/vFj1MSx/tulayl00dZSF0BKghTVyBPlD1PqSBxDkMYDni4rAnH120VyFc/s
+ oQxtDWsEypHvsC81/kI/GMYWwG4uHHL74bspH+FA1PdmPqOFsLEAgEBMWmbAp5rQuSewDvwWS
+ T/Y8VDIQme3urz0nE3TMMTkGuDvRadXiB2RRIVy0aeDJq+C0dZkgtc9i/zg6VyFa95NcT+ewL
+ g/RoOWmdAtAfK8viWyio1zDRII3t2YmFMIuUUvR/qYrMVC15aWbXxClN/4/OZaQZhQIQStB5C
+ zAKON4TdP8AQRjqIzesFheajewO3gLhoGqFZAxTD6A8BZWsBXEJTY10+cf5TZtzhi0CRiX1yc
+ pa6zRfzGcAsAVcJeOAK60ZQXx62C6EQSnHJGlw==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: [Qemu-trivial] [PULL 10/14] target/ppc: Rewrite a fall through
- comment
+X-Received-From: 217.72.192.74
+Subject: [Qemu-trivial] [PULL 01/14] test: Use g_strndup instead of plain
+ strndup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,63 +68,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 21 Aug 2019 11:20:46 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: "tony.nguyen@bt.com" <tony.nguyen@bt.com>
 
-GCC9 is confused by this comment when building with CFLAG
--Wimplicit-fallthrough=2:
+Due to memory management rules. See HACKING.
 
-  target/ppc/mmu_helper.c: In function ‘dump_mmu’:
-  target/ppc/mmu_helper.c:1349:12: error: this statement may fall through [-Werror=implicit-fallthrough=]
-   1349 |         if (ppc64_v3_radix(env_archcpu(env))) {
-        |            ^
-  target/ppc/mmu_helper.c:1356:5: note: here
-   1356 |     default:
-        |     ^~~~~~~
-  cc1: all warnings being treated as errors
+Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
-Rewrite the comment using 'fall through' which is recognized by
-GCC and static analyzers.
-
-Reported-by: Stefan Weil <sw@weilnetz.de>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-Message-Id: <20190719131425.10835-6-philmd@redhat.com>
+Message-Id: <dce313b46d294ada8826d34609a3447e@tpw09926dag18e.domain1.systemhost.net>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/ppc/mmu_helper.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ tests/check-qjson.c      | 2 +-
+ tests/migration/stress.c | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
-index 55f7a7f16a12..86c667b09415 100644
---- a/target/ppc/mmu_helper.c
-+++ b/target/ppc/mmu_helper.c
-@@ -100,7 +100,7 @@ static int pp_check(int key, int pp, int nx)
-         case 0x1:
-         case 0x2:
-             access |= PAGE_WRITE;
--            /* No break here */
-+            /* fall through */
-         case 0x3:
-             access |= PAGE_READ;
-             break;
-@@ -708,7 +708,7 @@ static int mmu40x_get_physical_address(CPUPPCState *env, mmu_ctx_t *ctx,
-             if (pr != 0) {
-                 goto check_perms;
-             }
--            /* No break here */
-+            /* fall through */
-         case 0x3:
-             /* All accesses granted */
-             ctx->prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
-@@ -722,7 +722,7 @@ static int mmu40x_get_physical_address(CPUPPCState *env, mmu_ctx_t *ctx,
-                 ret = -2;
-                 break;
-             }
--            /* No break here */
-+            /* fall through */
-         case 0x1:
-         check_perms:
-             /* Check from TLB entry */
+diff --git a/tests/check-qjson.c b/tests/check-qjson.c
+index fa2afccb0a24..07a773e6530b 100644
+--- a/tests/check-qjson.c
++++ b/tests/check-qjson.c
+@@ -767,7 +767,7 @@ static void utf8_string(void)
+                     if (*end == ' ') {
+                         end++;
+                     }
+-                    in = strndup(tail, end - tail);
++                    in = g_strndup(tail, end - tail);
+                     str = from_json_str(in, j, NULL);
+                     g_assert(!str);
+                     g_free(in);
+diff --git a/tests/migration/stress.c b/tests/migration/stress.c
+index 49a03aab7b83..d9aa4afe928b 100644
+--- a/tests/migration/stress.c
++++ b/tests/migration/stress.c
+@@ -104,9 +104,9 @@ static int get_command_arg_str(const char *name,
+     }
+ 
+     if (end)
+-        *val = strndup(start, end - start);
++        *val = g_strndup(start, end - start);
+     else
+-        *val = strdup(start);
++        *val = g_strdup(start);
+     return 1;
+ }
+ 
+@@ -126,10 +126,10 @@ static int get_command_arg_ull(const char *name,
+     if (errno || *end) {
+         fprintf(stderr, "%s (%05d): ERROR: cannot parse %s value %s\n",
+                 argv0, gettid(), name, valstr);
+-        free(valstr);
++        g_free(valstr);
+         return -1;
+     }
+-    free(valstr);
++    g_free(valstr);
+     return 0;
+ }
+ 
 -- 
 2.21.0
 
