@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0OfZ-0005J6-H0
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 07:20:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53588)
+	id 1i0Ofa-0005MA-Vh
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 07:20:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53507)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i0OfS-00057K-Rd
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:44 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i0OfP-0004y9-3O
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i0OfQ-0006dL-PL
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:42 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:55335)
+ (envelope-from <laurent@vivier.eu>) id 1i0OfM-0006aw-VE
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:38 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:41083)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i0Of5-0006O9-4k; Wed, 21 Aug 2019 07:20:19 -0400
+ id 1i0OfK-0006Yo-Tc; Wed, 21 Aug 2019 07:20:35 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1M5x9B-1hu5G32Iah-007WCn; Wed, 21 Aug 2019 13:19:56 +0200
+ id 1MBV2f-1i68Tj3duR-00D2Vp; Wed, 21 Aug 2019 13:20:13 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
@@ -27,34 +27,36 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
  qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- "tony.nguyen@bt.com" <tony.nguyen@bt.com>
-Date: Wed, 21 Aug 2019 13:19:34 +0200
-Message-Id: <20190821111947.26580-2-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>
+Date: Wed, 21 Aug 2019 13:19:45 +0200
+Message-Id: <20190821111947.26580-13-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190821111947.26580-1-laurent@vivier.eu>
 References: <20190821111947.26580-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Dyz+FTs9M8yBZRNT0UZg9ivzFx4vuRw06ZKO9VJlZ/dglEzp+nD
- Ab6JZqBAuH0/2F1MlsyE1niOH2DIDCwpyj2G8czG4uSn8MF8C6d/1KRQ1PiKlPJUIyi1e6Z
- FhtA/+2m2npGlGb5r0JRBQxxMGRBoMco1Gs/MLaEt+hjX7opVGETJDHfaGpd1wEnHPIElY+
- KQP/2WLuQbt5chpVq/G/w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:vKlawgQCwrk=:5TEchVoecxcoa6h/lj0huH
- 82xQFN/YSJDGekkJTMb+RLmTcizyy5JR8+84NEHMYgTI6/IyaHDqTYmr/Xh6aa5KoX9UCeKhz
- CrgYgoLZAcyxiZeANMq9PGH0wugqkqkrZB6SDyAGDpVciSug3tQrNc8DA0t1wuzmfR9JpB+92
- oZAem9vrduHCIoR7HVuLtQR+4kD+W03AdSDYMsTsnWRvIG6T36c3v59UVHMq9Ca065uZwiYOJ
- IGY00hAIYK4jbw18pKz6sTmV6+2CA9kPYJgF8SzMLwdx/gAOcAXstHTkJ9vgJRF4qeQkeygJq
- rA889WbSLP17MudScFQkpOQwXPrXSkfnyR4eqg9PBu3wHigtgOBSZB1+JNP8qghZmENCC46gq
- wCzUtlzItoLu9/vFj1MSx/tulayl00dZSF0BKghTVyBPlD1PqSBxDkMYDni4rAnH120VyFc/s
- oQxtDWsEypHvsC81/kI/GMYWwG4uHHL74bspH+FA1PdmPqOFsLEAgEBMWmbAp5rQuSewDvwWS
- T/Y8VDIQme3urz0nE3TMMTkGuDvRadXiB2RRIVy0aeDJq+C0dZkgtc9i/zg6VyFa95NcT+ewL
- g/RoOWmdAtAfK8viWyio1zDRII3t2YmFMIuUUvR/qYrMVC15aWbXxClN/4/OZaQZhQIQStB5C
- zAKON4TdP8AQRjqIzesFheajewO3gLhoGqFZAxTD6A8BZWsBXEJTY10+cf5TZtzhi0CRiX1yc
- pa6zRfzGcAsAVcJeOAK60ZQXx62C6EQSnHJGlw==
+X-Provags-ID: V03:K1:6ipEDEcf1Ck2g1S/2T5QDfUmWvcuh7rLUy0thWBMmKgkr/N+jy1
+ Ybak3/nPxJmyHlHnCx5c6BXVpxx1374Z3SOvYs+KdQAz07Doe2mtfJyevTsKCgJ5QzPKf/X
+ IwPYYqfooIabtrLUTh6pxtFN7EQhvYZvly+ByKaYneUXipiJzhv0vA8FtAdK85bKnmtRgvN
+ vntQWrHDpJeHtE9O0vV4w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:DwWjJYGGRN4=:0isE0L0d1QA40v1eJkR/lK
+ sVjek+lCcppBL/cb0uvibM1wjQZffouxlGFFgJl64PnWdAjWdRGy7IQtfH8zmh2uXv1QM3v5t
+ 5LEsKGaGM9LrFqFXttszEOS6/KZF03P3gQaDpfk3l3EA/xy4qk1obGFZgBJFIzLgYkZ0EKAIP
+ Iw+rEbTo1aN5kSqgSJL6uN7ABRba3WjkSel/5UtVOfHfVo2y94S0eItGI/YlPFBlwO+BnyyFw
+ saaXtgMPf2wyJB1TBbagLLX4a8Q6Kz4uFuzCdJfp/4o58EYBC8tmq/QF4KlE946WmK7Fy+sRO
+ fwlFDUhPZJGFECUKHJTo+CrPKkC5Mq561UlUif2qv5U+wby1Z+oBt07Yp/OhPNqBq2+SvSOK9
+ koD0lS4ArB/FlzHmx5SKJ8VwEPuiM4N6FOHIeXlb8QYPnKWnp+/nY/AVBTXJmjttZExROM25C
+ 7SFVXg+0BZ9fLmaZLbaocUfvS1AYVwqFAsn5jnyXA9X0loe6fmD4UDYgfA7SnXldp/ttrXcGy
+ Q8NbmGf2umfEUK3MFv5t3KytZq6xgeGGP+BCrt0spAGYM2kYaq7Kk2J/fpTxu77AXLFg83JXp
+ wfuxysMMvb6Dd1Nf3Idi+DSth38ffeH/NUlceIDSyKQY9aXtYpecIaNy2hXPzdrY2XRiBx0hY
+ 4RqRRptC4wYZTbzoJOC5+FhHkk8IOSs+la/Gc2VcuHh86kwevlFdhj0z0ThI65UumfEncdYh/
+ SFe3b+SO/kq+R2u/yiIgABY264zhWutoJ6nLHjKMC4MyZAyjcW/PTY0jaF4=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-Subject: [Qemu-trivial] [PULL 01/14] test: Use g_strndup instead of plain
- strndup
+X-Received-From: 217.72.192.73
+Subject: [Qemu-trivial] [PULL 12/14] spapr_events: Rewrite a fall through
+ comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -66,64 +68,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Aug 2019 11:20:46 -0000
+X-List-Received-Date: Wed, 21 Aug 2019 11:20:41 -0000
 
-From: "tony.nguyen@bt.com" <tony.nguyen@bt.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Due to memory management rules. See HACKING.
+GCC9 is confused by this comment when building with CFLAG
+-Wimplicit-fallthrough=2:
 
-Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+    CC      ppc64-softmmu/hw/ppc/spapr_rtc.o
+  hw/ppc/spapr_events.c: In function ‘rtas_event_log_to_source’:
+  hw/ppc/spapr_events.c:312:12: error: this statement may fall through [-Werror=implicit-fallthrough=]
+    312 |         if (spapr_ovec_test(spapr->ov5_cas, OV5_HP_EVT)) {
+        |            ^
+  hw/ppc/spapr_events.c:317:5: note: here
+    317 |     case RTAS_LOG_TYPE_EPOW:
+        |     ^~~~
+  cc1: all warnings being treated as errors
 
-Message-Id: <dce313b46d294ada8826d34609a3447e@tpw09926dag18e.domain1.systemhost.net>
+Rewrite the comment using 'fall through' which is recognized by
+GCC and static analyzers.
+
+Reported-by: Stefan Weil <sw@weilnetz.de>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Message-Id: <20190719131425.10835-8-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/check-qjson.c      | 2 +-
- tests/migration/stress.c | 8 ++++----
- 2 files changed, 5 insertions(+), 5 deletions(-)
+ hw/ppc/spapr_events.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/check-qjson.c b/tests/check-qjson.c
-index fa2afccb0a24..07a773e6530b 100644
---- a/tests/check-qjson.c
-+++ b/tests/check-qjson.c
-@@ -767,7 +767,7 @@ static void utf8_string(void)
-                     if (*end == ' ') {
-                         end++;
-                     }
--                    in = strndup(tail, end - tail);
-+                    in = g_strndup(tail, end - tail);
-                     str = from_json_str(in, j, NULL);
-                     g_assert(!str);
-                     g_free(in);
-diff --git a/tests/migration/stress.c b/tests/migration/stress.c
-index 49a03aab7b83..d9aa4afe928b 100644
---- a/tests/migration/stress.c
-+++ b/tests/migration/stress.c
-@@ -104,9 +104,9 @@ static int get_command_arg_str(const char *name,
-     }
- 
-     if (end)
--        *val = strndup(start, end - start);
-+        *val = g_strndup(start, end - start);
-     else
--        *val = strdup(start);
-+        *val = g_strdup(start);
-     return 1;
- }
- 
-@@ -126,10 +126,10 @@ static int get_command_arg_ull(const char *name,
-     if (errno || *end) {
-         fprintf(stderr, "%s (%05d): ERROR: cannot parse %s value %s\n",
-                 argv0, gettid(), name, valstr);
--        free(valstr);
-+        g_free(valstr);
-         return -1;
-     }
--    free(valstr);
-+    g_free(valstr);
-     return 0;
- }
- 
+diff --git a/hw/ppc/spapr_events.c b/hw/ppc/spapr_events.c
+index 163a6cd25b45..0e4c19523aea 100644
+--- a/hw/ppc/spapr_events.c
++++ b/hw/ppc/spapr_events.c
+@@ -314,7 +314,7 @@ rtas_event_log_to_source(SpaprMachineState *spapr, int log_type)
+             g_assert(source->enabled);
+             break;
+         }
+-        /* fall back to epow for legacy hotplug interrupt source */
++        /* fall through back to epow for legacy hotplug interrupt source */
+     case RTAS_LOG_TYPE_EPOW:
+         source = spapr_event_sources_get_source(spapr->event_sources,
+                                                 EVENT_CLASS_EPOW);
 -- 
 2.21.0
 
