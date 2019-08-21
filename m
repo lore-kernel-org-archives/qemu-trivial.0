@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0MQD-0007sU-IN
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:56:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58948)
+	id 1i0MRY-0000x0-LN
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:58:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59631)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i0MQ9-0007iC-89
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:56:47 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i0MRU-0000qR-M8
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:58:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i0MQ7-0005bc-OA
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:56:45 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:33283)
+ (envelope-from <laurent@vivier.eu>) id 1i0MRT-0006Ow-HJ
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:58:08 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:54037)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i0MQ7-0005bE-FD; Wed, 21 Aug 2019 04:56:43 -0400
+ id 1i0MRO-0006Mb-Un; Wed, 21 Aug 2019 04:58:03 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1M7aqD-1hsPGu2gtp-00865F; Wed, 21 Aug 2019 10:56:33 +0200
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1N4yuK-1iPta82RMq-010sXi; Wed, 21 Aug 2019 10:57:52 +0200
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
@@ -25,7 +25,7 @@ Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 References: <20190719131425.10835-1-philmd@redhat.com>
- <20190719131425.10835-5-philmd@redhat.com>
+ <20190719131425.10835-6-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -70,34 +70,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <7b1fb7f8-6993-6f7d-6daf-f0ff5314167d@vivier.eu>
-Date: Wed, 21 Aug 2019 10:56:30 +0200
+Message-ID: <67fab672-0e34-b24b-7489-21b4eb6188bf@vivier.eu>
+Date: Wed, 21 Aug 2019 10:57:48 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190719131425.10835-5-philmd@redhat.com>
+In-Reply-To: <20190719131425.10835-6-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:QvcYfRir4nfmJWAJNTFbiZgzp8y1o0bpxbSEAiUDwlBuanmLXcO
- 4oUjfEVzpf1CJbRF+ShuIVbRi7GleVqr9c3xv2Y4DIbeVEz546NxeZ4DGlG3geIx6fJAXdO
- cNxWoQAiby/OI46S8GGXceL3YiLBAAQePp4kWq5VVqm7WoVl3b0k0sQ2JmJH8AuHuz/8Fh4
- lmqJNmlI7lIxtjuX4LPvA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:QGlMfj8HnPs=:HOLRctit6y4K2LKKvio+fJ
- AeC8dzh+3Kc37VdP86X57vJrZe4lUEHpQRqV4JXuJigGoIjqG6kefohEvY0/J/Pasa0TpVj5O
- TsUxKeYLAtuFnYS0Jkm39JjYkpkUN2bsxq8+487cg4/jkFQfLQNbMTlepHNQZ/ELvOSy42AVP
- ALdGWNEOLZ5EXK3OcE8BtaGw0r2TF+IKWoUuIeKxt7M2EjjwcKHLNHZdDovHrOVJTWGT16FpO
- cdQ4OXKjkRkL/LPKKurqa/Un+4TLlsZ+SgL9OJjmwhtd1iaOwvQ9zIzR2Nmr0MTJRyCuSyJMw
- 491XLsBdOmrmzkt2DEQkGT5nf7uwYoQRdwJiBVTUVnd0YpoCRs+4Vb8UwKC0DQwlrkqpFu9CL
- YZ4GlyAzVA1I7DNZ087TMnZVnovWIchESyNvLStfIKL0Qvzc5X53Wm/w3AkWueMtzx8hEuRiz
- 16VzULWXwG+iCmqlo/Z3SbnMWVETCnpNDn2X1IajDL+diHa+CGxYPYh0bh3FXnehBV7hjBb79
- d2UkxIb3y4CflQYKfbNpqpldmENR7yGCSvztX6jLEfAUOdvi9fsegOm6A7RPEalTCCn93+gMi
- rwnA1ZLGLuECMP4iHJ26j2MaMD9CxLhAWya/jwpzCS/pJYYkzkc0292CavgaL3MJJ0EesRIps
- Ce23GS4HP40SS+hXIb/otWQ+yXk6sqO+V8UqDnl9BxbabPN3H5IbEI13p6lKtHACr0yK6ElaH
- 5WKoIgCxvPSwDGqV6dlWNeOtKUyv0kWdxf3IZ/VwQeKSLPgZ/jmQJ8/pWCk=
+X-Provags-ID: V03:K1:7N0rjb/XayAdVl19yUtWBU2AU+WAcJ3/TE7Msc49A3/NgacYzgY
+ ZhW37slQJIYuQUcDuCs9DoenhQMhsdtTRUOXPTk/oPUAIFF4Kr9cNDdJ16aUk+uzLCYDjz0
+ QNlvN6dGxH6AGj8pHLqnheQf4/oIRiM8a8ZV7kHeJHdrBaoRyASswEdDUWEbD82+ilXHhT4
+ iBcpPi4TFxYaMx1p2aYaA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6iQrYRjoMN0=:p8ZkYP0Ikjux01G+EzuRT9
+ NheLhy0pq2q5WdivwCyDiEzkQXBeBAAVGbxhx83uIOV46cW1t0a/QKYWcciICl9IwOxDHeASM
+ b9Ddpk4/cJa3YJupcFPRp0ORVP59tqlp9M+iJsndZxdP0o19MTBme+VVb5OBi2/EjVr/e2CGi
+ BRJydDccjY+Df4F5z1Pqkyfen8uDf8fPY5LxTY1J+HCIvHJRZaNP3JW9WFBDqrtacL41mH930
+ i82VReSFRdfDyzarEIPMy2WFMJBizACgeTOL9LHh00OGIsOxyicWQOVfi431FKRF/InqziW8h
+ nFl1/rJpeUGjVjr0l5e6JTRbtugVxY+mGedU72igpWzmKLdg8r1YlwpKWjzKFGc6uA6jPpSnO
+ IwJyGI55AT4K0g2ZoxfgIQiMNPJJgdKvtZ4HL5KSRg7c4N5UyhnKKJ1u1PHRp0tsarlKOZdZe
+ dN0388mHwPQrzx0PZUmgKCFVQuW/04Y9EhhgURFm8ZQFWJsE7g89eV8Xs4RG0uoi5NQF0XENx
+ fmAy8dm4m8cpVQO0sygEKYH8xBmJHkNQX76/dr1+Eb1cdOJ8CDWwi0x3oeFVETR00Y7eBLh5g
+ gvtrSqwzTg+cX2DW9Dl1/vh1R7Z+IAxB/PU9Vm9zlQS7ncv19Lg+Y0FE9y5iVCESKH0n3ALol
+ Ad+U/e6DzV44cXr5HqZ8xVX3Z2WF6z7xwkgeHuSoxFPA4hMEssgwuJFzkqt9UjU4zYKMWZT8e
+ /mn3PgKl5Beb/QBwgYN3q3/BtCpFhOBwOdCtZzK+EOZtRzDXmHv2gFvXzrA=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.134
-Subject: Re: [Qemu-trivial] [PATCH-for-4.1? 4/7] hw/ipmi: Rewrite a fall
+X-Received-From: 212.227.126.131
+Subject: Re: [Qemu-trivial] [PATCH-for-4.1? 5/7] target/ppc: Rewrite a fall
  through comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,21 +110,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Aug 2019 08:56:47 -0000
+X-List-Received-Date: Wed, 21 Aug 2019 08:58:11 -0000
 
 Le 19/07/2019 à 15:14, Philippe Mathieu-Daudé a écrit :
 > GCC9 is confused by this comment when building with CFLAG
 > -Wimplicit-fallthrough=2:
 > 
->   hw/ipmi/ipmi_bmc_extern.c: In function ‘addchar’:
->   hw/ipmi/ipmi_bmc_extern.c:178:12: error: this statement may fall through [-Werror=implicit-fallthrough=]
->     178 |         ch |= 0x10;
->         |         ~~~^~~~~~~
->   hw/ipmi/ipmi_bmc_extern.c:181:5: note: here
->     181 |     default:
+>   target/ppc/mmu_helper.c: In function ‘dump_mmu’:
+>   target/ppc/mmu_helper.c:1349:12: error: this statement may fall through [-Werror=implicit-fallthrough=]
+>    1349 |         if (ppc64_v3_radix(env_archcpu(env))) {
+>         |            ^
+>   target/ppc/mmu_helper.c:1356:5: note: here
+>    1356 |     default:
 >         |     ^~~~~~~
 >   cc1: all warnings being treated as errors
->   make: *** [rules.mak:69: hw/ipmi/ipmi_bmc_extern.o] Error 1
 > 
 > Rewrite the comment using 'fall through' which is recognized by
 > GCC and static analyzers.
@@ -132,23 +131,40 @@ Le 19/07/2019 à 15:14, Philippe Mathieu-Daudé a écrit :
 > Reported-by: Stefan Weil <sw@weilnetz.de>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/ipmi/ipmi_bmc_extern.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+>  target/ppc/mmu_helper.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/hw/ipmi/ipmi_bmc_extern.c b/hw/ipmi/ipmi_bmc_extern.c
-> index c0a8dac346..d4cbd210c4 100644
-> --- a/hw/ipmi/ipmi_bmc_extern.c
-> +++ b/hw/ipmi/ipmi_bmc_extern.c
-> @@ -176,8 +176,7 @@ static void addchar(IPMIBmcExtern *ibe, unsigned char ch)
->          ibe->outbuf[ibe->outlen] = VM_ESCAPE_CHAR;
->          ibe->outlen++;
->          ch |= 0x10;
-> -        /* No break */
-> -
-> +        /* fall through */
->      default:
->          ibe->outbuf[ibe->outlen] = ch;
->          ibe->outlen++;
+> diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
+> index 261a8fe707..862824b073 100644
+> --- a/target/ppc/mmu_helper.c
+> +++ b/target/ppc/mmu_helper.c
+> @@ -98,7 +98,7 @@ static int pp_check(int key, int pp, int nx)
+>          case 0x1:
+>          case 0x2:
+>              access |= PAGE_WRITE;
+> -            /* No break here */
+> +            /* fall through */
+>          case 0x3:
+>              access |= PAGE_READ;
+>              break;
+> @@ -706,7 +706,7 @@ static int mmu40x_get_physical_address(CPUPPCState *env, mmu_ctx_t *ctx,
+>              if (pr != 0) {
+>                  goto check_perms;
+>              }
+> -            /* No break here */
+> +            /* fall through */
+>          case 0x3:
+>              /* All accesses granted */
+>              ctx->prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
+> @@ -720,7 +720,7 @@ static int mmu40x_get_physical_address(CPUPPCState *env, mmu_ctx_t *ctx,
+>                  ret = -2;
+>                  break;
+>              }
+> -            /* No break here */
+> +            /* fall through */
+>          case 0x1:
+>          check_perms:
+>              /* Check from TLB entry */
 > 
 
 Applied to my trivial-patches branch.
