@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0Ofg-0005Wp-Sg
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 07:20:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53592)
+	id 1i0Ofj-0005dc-Rm
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 07:20:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53789)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i0OfS-00057O-SD
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:44 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i0OfZ-0005IN-0t
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i0OfQ-0006dh-Rm
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:42 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:55141)
+ (envelope-from <laurent@vivier.eu>) id 1i0OfY-0006jp-1Z
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:48 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:48679)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i0Of2-0006MV-KP; Wed, 21 Aug 2019 07:20:16 -0400
+ id 1i0OfV-0006gn-Gs; Wed, 21 Aug 2019 07:20:45 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1Mqrjz-1idq8i1ebZ-00mvpD; Wed, 21 Aug 2019 13:20:05 +0200
+ id 1M3DaN-1hwop93Vi1-003erP; Wed, 21 Aug 2019 13:20:07 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
@@ -28,36 +28,35 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Stefan Weil <sw@weilnetz.de>, Eric Blake <eblake@redhat.com>
-Date: Wed, 21 Aug 2019 13:19:40 +0200
-Message-Id: <20190821111947.26580-8-laurent@vivier.eu>
+ Stefan Weil <sw@weilnetz.de>
+Date: Wed, 21 Aug 2019 13:19:41 +0200
+Message-Id: <20190821111947.26580-9-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190821111947.26580-1-laurent@vivier.eu>
 References: <20190821111947.26580-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:i+3b3qlR6kyQgu6gQfu96rxZj7K07Flpi6sw/j0BgOY8QwjhaRL
- FLLPkCl5BEfqwz5dQI5OsOlUnlrfaUy4i5pPqfWeF5wrf018FvTB08mNMgnnMEnDrhWVa/J
- IYjFmHpNmRZRXJjEypFI0uSbL6vK83oYIaxMpETydGePHENw/6DYZWycUAfct4xsLPi5GyG
- P50TxSivcFVqbYY8Qy0KQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:/lz0sZuo1ps=:qu6e8G22GTbs71/edVKvng
- U/Dy36pjAJMQojsfEnHkTrU0uJ3MNI0PTN/1Ph4pJjaNVf3oVDceaoOXsy0UJuR0t0rEzwqy7
- ODYKWm67rOGNUGRxh3DTl46uaIYvGDx4rBri8x1tT5xVE3BxAn58bQpm/rzRXJGAxgsCGH53w
- U3FKHIktqi9/tUNJnFHnnoWEJ7/6b42XL5uaAWDJ9LrXmyxPvFzQIe8k0NXifBOd+QFZFH2rk
- GmFOubWF584hkrayFPlAc6D6hR3+jInQ0/Mc3uimC3Sv1N0wU45z3CFU/F8jru4JoWFRH0Ihp
- E0cpzdNitUwTtLCi6QUqxhI5NzS2UrvDnYD93qS5YUKubmpBphg9n94gMv82pwpkxOMpfFd02
- 4DFbcI87G4JGHhpVaXRdMZ+GMgC15lJCi5EWSpoTVYke3qsgvkUo5vLcd0uMJrKSZN7ErT4Zc
- GTBGpEMxFqhucRwpbCy8U6qVQVoKcKPeu85MS2NTO8+ZksoJWTpUhGA5ULiQ3Jf4Bnt9r+laT
- XsQ1XTv+VLA47zXgDEYtCZBS8fc8lMLszuGmEFEwOuW4Kwqt7aMgk1jU0XIBt+QZ7KEm19vzE
- ea/AMVOtThxx2GF0d5QrXCnpzFD2Gc661yw4OlDEMonLTES3Gn+Rv6E9s+Z5H090jeu0HcOZ7
- fVEzdGgvan7j2pBH16iXtlbgDJD3IkEfS3jLEbDmARq67U47Ph4NcXfCSSJKZ42ZBsbyyeq8K
- gAXYc9aiarjQVL3qWb4O0BSGT0GxhL2gLc3nOQ4KH3vMV1DUKq/wPb65nj810hiyN8+LoNI/5
- cXiuGrIcuBHDE38b2pPz3XBNh60vw==
+X-Provags-ID: V03:K1:XFqrSYgzKdwKE3NPvAuk+SvzM02d7ufxqsFdJGzCeHSMLpORSLn
+ hOaoH18TBeUFKEOqe3kZEuKxWQsFcDgwardSBNpB4BbxkA1tzet0+18ZOlZ9wm2YKxjHRE/
+ keydpj3DygWBQcPjR+JV6jfGjFD8aLlKx/Z24kcu8+bf+34n1apyE8Cbe59qVJCFY2tz6EH
+ cPSlLZmIG8O0XOW2P4QLQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:tDAYKQHj5uQ=:DqYl+QOv/59V1ZJO1dSUbz
+ T6aMBrvT4MQDmoPZnH0be3fwob8cZff/VfEic0PbFHrUtfEDspdAPv6Djxkh+5cmZAkMHDhCp
+ 1a652DfC7HfxVAs+hPSmLjb7HylEszSxzqwXQ2NN9xkZTZgxdZVsePff1euNTimDgSQny9lNo
+ PrE8Tf9vKs8pKRNLO2t9MI+Ymh9s3xTgza1EWAWoe6F4s2/4uT+s18y28LF2nrk/FjIIG6crj
+ o6ROuzogfAo/LVwAKK49rLrxW9d6Fo0TqoHT1TTZoeSS6iy++2lvomo8ZmvffSwHyHHVkeBRh
+ yQg36ROkzfdmLMKhK6/v07Kji+ZhtjWUYs7WoCmflSyKrCjPHdFpDdY0rTmqKIdhHG4ACcyb6
+ X12Mb6ztM2DhfGf1ytxHStNOT0QlRxa5v3bQewyEMlaEbIS4SayjIawhRk2jLpoKeB3r8Ylsm
+ se182xzBu4F2zDiPcv9wU4BBaIKCOm60ajqnmylfQdNc3UvKGl3A+cOl9aMX2xO6WjIc9Nf1b
+ Y0s4f7aLuds+qgljK/0cUJKVIQ6UgjpHGC3VAPboLT54k8HNQ+gLsMVF+BnJ1SHvG5XMjSCbh
+ h8dJniGBEFJJ2c6bOGn9JBad4Ro1MLgqE9u4utSAf8iUu0AhSignlKPSG+jUhsqds5+ADwWR/
+ gWdYofcNJIT9M0HvYjpcRAJS2xdPaGjmA9P2zTgUPtXi3IsQRhAbEc68kD05b02JmLCybehu/
+ sQ3C26jHD+wuFyRODlszeXIgJW/6DaixHa8f8IfPpaAjQNcEcl1YrkZj6tE=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: [Qemu-trivial] [PULL 07/14] json: Move switch 'fall through'
- comment to correct place
+X-Received-From: 217.72.192.73
+Subject: [Qemu-trivial] [PULL 08/14] hw/dma/omap_dma: Move switch 'fall
+ through' comment to correct place
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,45 +68,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Aug 2019 11:20:46 -0000
+X-List-Received-Date: Wed, 21 Aug 2019 11:20:50 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
 Reported by GCC9 when building with CFLAG -Wimplicit-fallthrough=2:
 
-  qobject/json-parser.c: In function ‘parse_literal’:
-  qobject/json-parser.c:492:24: error: this statement may fall through [-Werror=implicit-fallthrough=]
-    492 |     case JSON_INTEGER: {
-        |                        ^
-  qobject/json-parser.c:524:5: note: here
-    524 |     case JSON_FLOAT:
+    CC      hw/dma/omap_dma.o
+  hw/dma/omap_dma.c: In function ‘omap_dma_write’:
+  hw/dma/omap_dma.c:1532:12: error: this statement may fall through [-Werror=implicit-fallthrough=]
+   1532 |         if (s->model <= omap_dma_3_1)
+        |            ^
+  hw/dma/omap_dma.c:1534:5: note: here
+   1534 |     case 0x400:
         |     ^~~~
+  cc1: all warnings being treated as errors
 
 Correctly place the 'fall through' comment.
 
 Reported-by: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Eric Blake <eblake@redhat.com>
-Message-Id: <20190719131425.10835-2-philmd@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20190719131425.10835-3-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qobject/json-parser.c | 2 +-
+ hw/dma/omap_dma.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/qobject/json-parser.c b/qobject/json-parser.c
-index 7d23e12e3379..d083810d3782 100644
---- a/qobject/json-parser.c
-+++ b/qobject/json-parser.c
-@@ -519,8 +519,8 @@ static QObject *parse_literal(JSONParserContext *ctxt)
-             }
-             assert(ret == -ERANGE);
-         }
--        /* fall through to JSON_FLOAT */
-     }
-+    /* fall through to JSON_FLOAT */
-     case JSON_FLOAT:
-         /* FIXME dependent on locale; a pervasive issue in QEMU */
-         /* FIXME our lexer matches RFC 8259 in forbidding Inf or NaN,
+diff --git a/hw/dma/omap_dma.c b/hw/dma/omap_dma.c
+index eab83c5c3a16..6677237d42a4 100644
+--- a/hw/dma/omap_dma.c
++++ b/hw/dma/omap_dma.c
+@@ -1531,8 +1531,8 @@ static void omap_dma_write(void *opaque, hwaddr addr,
+     case 0x404 ... 0x4fe:
+         if (s->model <= omap_dma_3_1)
+             break;
++        /* fall through */
+     case 0x400:
+-        /* Fall through. */
+         if (omap_dma_sys_write(s, addr, value))
+             break;
+         return;
 -- 
 2.21.0
 
