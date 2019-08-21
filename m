@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0Ofl-0005hB-FH
+	id 1i0Ofl-0005iB-Tu
 	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 07:21:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53650)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53707)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i0OfU-000593-RH
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:46 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i0OfW-0005Bw-6c
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i0OfO-0006c6-T3
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:44 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:56447)
+ (envelope-from <laurent@vivier.eu>) id 1i0OfU-0006gy-Pn
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:45 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:57473)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i0Oex-0006Ib-Eu; Wed, 21 Aug 2019 07:20:11 -0400
+ id 1i0OfO-0006Zw-1N; Wed, 21 Aug 2019 07:20:38 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1N1xZX-1iOU3W0Wgz-012Fkp; Wed, 21 Aug 2019 13:19:55 +0200
+ id 1MeC1p-1iYuj448dL-00bKij; Wed, 21 Aug 2019 13:19:58 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
@@ -26,32 +26,37 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
  Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
  qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
-Date: Wed, 21 Aug 2019 13:19:33 +0200
-Message-Id: <20190821111947.26580-1-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Stefano Garzarella <sgarzare@redhat.com>
+Date: Wed, 21 Aug 2019 13:19:35 +0200
+Message-Id: <20190821111947.26580-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190821111947.26580-1-laurent@vivier.eu>
+References: <20190821111947.26580-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:CwXLgJTeGqkHU4donMSo/o4WF+pmod01SbtIm67Fh6aEFuqYFK9
- sh3byMLoslHL9Jg742dcaGLAr9ueO71pP6cLEIhTN87ztx4EktsJrP+IQDeVK9arek9uRtV
- vyy1GaLtEqQDWznXol1dKMcC9ThtpwscF1RDsZ0/N4dwzUBXcynxY9LAxgrCAwuWn4Lwn7z
- o5h+2wAdrYEgENBiw3KQQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:GU2dcO62q0Q=:p0YWQtu9RaMtDVEyWv9daD
- ZbK20Iiurvn3jibUVPiERStMBGTuw0ruNuGBKJaP3YmAf/se+UyU9T31wIldFWqEZnk7pF0L2
- l5ncc8HLRglxQKMhVfsmialtKsP0NCl/2Z97YGJsjyDHLivGLHHTrNlrW2UvrTrQs1FnyUjEk
- F018Ju1E5eV4gWH68YWBxHCdTJmOQF+ynylf842vuBKSmiGBzZr5SfUi8NSb0bm8WPTOPt4yq
- oCta0e05MU8Zkqq74cldSpeljvLc7eHNDzZKm5QBtThm3CSlb3aUfdlzauTjzNcpiLmmaV5wQ
- j1HUXPlDCSSDvYVeTQw6FXPGXsaxDhwF91zqJ8Qtd02CId38uP1FXsYo+gAZrxlGLss7ejqsM
- 194+onIf4R3/f4uMQbiUd0CltqtKLTQ9QpbP3n/lpFL9HYyqsUVZNajqTh11y46aBi1HQmLsB
- dnVLdEmooHsFOAMjREBBeFSHmBkfI4YlldgEABWX9k86LV7WLMFMJ9ANui4AN0dftYUxwgUA8
- yUN6E4kUR6/gTQvQ4Rcyfd6lSOBYuIbU6Ir3lca5gQzqx6oD/YHTY9hvZLRiOxqI4obJg5s24
- uIphD7hySL/DsyBRuh6TozOhv4HY1g4h9K5yPPsKTBhhi5WM4PbTR84D/v0dl2elvfG+hKGp6
- T+K6lrstAaqIpsAGRLCov69VaLNhAhSTFOMFoLHr3cBSwSIed/60z5avQEFee8cuNarpm7NwH
- ll/M5YsEzyNlKLy0t57kB2+Rox0E4epIDXTca7iqKfrsqENEyZTrHSruCFw=
+X-Provags-ID: V03:K1:AQxPhlodgDaqZdj3nFfO5kylgpEg7MXdO5oZ7h/MRPjGk+4MM8r
+ 2bFp75yaqL0+e5WicFLnPxaOec1RKxPP/jJ1VOuuW9GxcIfA6t4nCULVPdBSJXsYet591qk
+ sKMokVIs74Cp37XQTvZmYZA0HJWVHGZ2tVcEh3eu1rgZo1VdHn28jY5mHjs942DoDHWNWZM
+ jf4AEsLgAcvkYrLkNTJow==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:OA2wNjpZBP4=:o7AjAppwGSdubTASaaO8qL
+ E5XDSbc8LmSKBbf7XPE1NmNAg7aKi6ddD7wK70zPaHnaCGvVLVkllf6WHInAsWZK3B6vaQewN
+ Ilg57YUUzM3it5fv42X6xtLlChZFq1rpIRazGRw7KaUH6gvLXWnPRNHtNf4HZT0nMvcpwy1Ok
+ N+6k6REIC3WtdMIV57w0Wne8d/9sA1m6qYi+QzF2Sbb+1cwBt6JaGzDopyzb9K9KfuOz2XAlf
+ EculVkYkRWGE/jZ+hxftS5WWQVzWzIYdlomTCsiDY0D0NeAiX5WVWoZ+NWHI4jHVTZj10g7Lu
+ fj6szJUoV+lXRvrUIbFzdHjP8SWTbIXFZYhTCWlrLEKv/4z5SV7jL9VZriSmsyhAMgTq43mWu
+ Td6dVU5gjocp6aLz4NU1eGzbcB7QwMjJE6kp0Lki0BbLJpBbhkukdn0hnmjthr0hM8sGgtg4B
+ xURqTEe7lNd00JiFRhdYb0RwvEIadLbVabSbmhBpx8sDjcNW+dYFv25auuwLC2faaFhIWjXev
+ pTI9dl82q/Jj/ZG+qAZgD4OUDYEqARBhMBj7qReNulEEdz6UmqsPo7dAjnUV6W216xGfgCl49
+ 0GOnfYdJbTajwiumgSgKT2UH1ahrX3Gr5AU4Os4sgjEvpUU0/6uysK5rpkndedEPd3CCdT0VT
+ gN3bxNEedNkZpaLe7KCHI0xMPAP3GKtblt5jEuewHsSUJ6LhcJVJiQNiDKTbQ/wl5ErvoSn0R
+ zDVVgHCem3V+KLTjVArvXJrzqs2KNlb1FDArUdPkh8aF8baMOyn+oOHOd5s=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
-Subject: [Qemu-trivial] [PULL 00/14] Trivial branch patches
+X-Received-From: 217.72.192.75
+Subject: [Qemu-trivial] [PULL 02/14] misc: fix naming scheme of compatiblity
+ arrays
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -65,64 +70,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 21 Aug 2019 11:20:48 -0000
 
-The following changes since commit 17dc57990320edaad52ac9ea808be9719c91cea6:
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-  Merge remote-tracking branch 'remotes/huth-gitlab/tags/pull-request-2019-08-20' into staging (2019-08-20 14:14:20 +0100)
+Since merge 31ed41889e6e13699871040fe089a2884dca46cb ("Merge
+remote-tracking branch
+'remotes/elmarco/tags/machine-props-pull-request' into staging"), the
+compat arrays are in lowercase.
 
-are available in the Git repository at:
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20190708204909.10891-1-marcandre.lureau@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ docs/devel/migration.rst | 2 +-
+ hw/i386/pc_piix.c        | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
-
-for you to fetch changes up to 8a9224a250094222e9ff302b95e379c3e71d3c8a:
-
-  hw/display: Compile various display devices as common object (2019-08-21 13:17:22 +0200)
-
-----------------------------------------------------------------
-Various trivial fixes
-
-----------------------------------------------------------------
-
-Carlo Marcelo Arenas Belón (2):
-  configure: remove obsoleted $sparc_cpu variable
-  configure: fix sdl detection using sdl2-config
-
-Marc-André Lureau (1):
-  misc: fix naming scheme of compatiblity arrays
-
-Michal Privoznik (1):
-  .gitignore: ignore some vhost-user* related files
-
-Philippe Mathieu-Daudé (9):
-  hw/net/e1000: Fix erroneous comment
-  json: Move switch 'fall through' comment to correct place
-  hw/dma/omap_dma: Move switch 'fall through' comment to correct place
-  hw/ipmi: Rewrite a fall through comment
-  target/ppc: Rewrite a fall through comment
-  vl: Rewrite a fall through comment
-  spapr_events: Rewrite a fall through comment
-  hw/display/sm501: Remove unused include
-  hw/display: Compile various display devices as common object
-
-tony.nguyen@bt.com (1):
-  test: Use g_strndup instead of plain strndup
-
- .gitignore                |  3 +++
- configure                 | 12 ++++--------
- docs/devel/migration.rst  |  2 +-
- hw/display/Makefile.objs  | 18 +++++++++---------
- hw/display/sm501.c        |  1 -
- hw/dma/omap_dma.c         |  2 +-
- hw/i386/pc_piix.c         |  2 +-
- hw/ipmi/ipmi_bmc_extern.c |  3 +--
- hw/net/e1000.c            |  2 +-
- hw/ppc/spapr_events.c     |  2 +-
- qobject/json-parser.c     |  2 +-
- target/ppc/mmu_helper.c   |  6 +++---
- tests/check-qjson.c       |  2 +-
- tests/migration/stress.c  |  8 ++++----
- vl.c                      |  2 +-
- 15 files changed, 32 insertions(+), 35 deletions(-)
-
+diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
+index 220059679ac9..f7668ae389c7 100644
+--- a/docs/devel/migration.rst
++++ b/docs/devel/migration.rst
+@@ -314,7 +314,7 @@ For example:
+ 
+    a) Add a new property using ``DEFINE_PROP_BOOL`` - e.g. support-foo and
+       default it to true.
+-   b) Add an entry to the ``HW_COMPAT_`` for the previous version that sets
++   b) Add an entry to the ``hw_compat_`` for the previous version that sets
+       the property to false.
+    c) Add a static bool  support_foo function that tests the property.
+    d) Add a subsection with a .needed set to the support_foo function
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 9e187f856a63..187d846af4b0 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -312,7 +312,7 @@ else {
+  * pc_compat_*() functions that run on machine-init time and
+  * change global QEMU state are deprecated. Please don't create
+  * one, and implement any pc-*-2.4 (and newer) compat code in
+- * HW_COMPAT_*, PC_COMPAT_*, or * pc_*_machine_options().
++ * hw_compat_*, pc_compat_*, or * pc_*_machine_options().
+  */
+ 
+ static void pc_compat_2_3_fn(MachineState *machine)
 -- 
 2.21.0
 
