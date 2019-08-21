@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0MOZ-0005C9-7C
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:55:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57820)
+	id 1i0MPS-0006OD-G4
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:56:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58417)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i0MOW-00057e-95
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:55:05 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i0MPP-0006JS-Gf
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:56:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i0MOV-000498-8d
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:55:04 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:53473)
+ (envelope-from <laurent@vivier.eu>) id 1i0MPO-00058t-EJ
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:55:59 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:55583)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i0MOS-000477-SA; Wed, 21 Aug 2019 04:55:01 -0400
+ id 1i0MPL-000568-T7; Wed, 21 Aug 2019 04:55:56 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MD9nd-1i8v750HzN-0099bj; Wed, 21 Aug 2019 10:54:50 +0200
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1Mtxxk-1iEs3R2x3s-00uFQO; Wed, 21 Aug 2019 10:55:45 +0200
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
@@ -25,7 +25,7 @@ Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 References: <20190719131425.10835-1-philmd@redhat.com>
- <20190719131425.10835-2-philmd@redhat.com>
+ <20190719131425.10835-3-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -70,35 +70,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <1651bd5e-b320-84f6-aa10-3c333e259306@vivier.eu>
-Date: Wed, 21 Aug 2019 10:54:45 +0200
+Message-ID: <346bac40-ee88-f615-38a9-891d78252bc2@vivier.eu>
+Date: Wed, 21 Aug 2019 10:55:40 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190719131425.10835-2-philmd@redhat.com>
+In-Reply-To: <20190719131425.10835-3-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:+EccMqBK6lTkUxNlxtAPnaafJMHzg8UgO3N8hh4tiTlWl6irN4G
- srFm9E0/5/LaPomrnusbVTHcXCZGUFrsdp+UFHmWfmnZB1ygzfZ/TyOvP/L9IKXWSyLH21e
- 06hB/DAKIIPzeKlD62yi+f9BhD6fzy0xRXhgIg0tVKCj4n5YAbUIaUFCHkJsq2nYMZLTj02
- nHkbalnfB6Zlx1Iu6P1kQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:0u7Opcrp1ic=:s+0MF6HGAiY+mMgKccbGtf
- GzgR/r/eINZYGKyPRplxU2amPDQXQc/3rbUcJI5Jq6QGYiTdJWxuASmfiQGq4RABgAQx/5by5
- i/e+lQPMlAJ8rLWDvWm5p7WcvqgQZ/EI6qadxlWCwrYlgbTFODssNV6cQd9YxxY5Vn4bBqC3u
- IcZbfQ+sg401b0jtA9DflmQSCw5s5vjBU5XRm3+7auUd4OLVtF+koDPe5tLNyDwHej0HtGCrJ
- 9dVmNmifiH2H1b7NjOcG5JrBDlo0Ps/UFla/2y5iCUQr/OEqns0iVJZK/2GJ3obCf2wZMnk4o
- DYOPhIZWlf0F5kdzvjl4DueiJCom50BuO+aLObXDiQKkA9pCXAXclkxQUowzPAihgc7hjXn9g
- FNmsl45TrydIEsALOIgGB5Thx6XqgXUF7p87mVOFagcWiQH0+aGZ7EFU060+FvEJFVBENmnib
- tnQgD6S7axRT+mKu5kVTUIZ6e4I4XOBbUkcmVHq2nncvAaQcq2o6Sosz6SluSiiX2wy/Sa6jh
- GLbdanfaHbm7QrLSGbBTqSCtBeCfuyzyAHZRkXYwmvo/CDAwc6VklfY4lVQ9Ly1If0LC3QDbg
- bM3GoJ06UIQ91z8ggJNe57hQWeDN79S6MG3XMxzxb80x8z/tcPU+eyr7P0Bq6oBtV+G6gpKr+
- l3zXVo9ia0i+tcKrLm44zRpHmMG+E2f1LG8cynFFVBX4MMdMX/lC/Vw3OMNWr0iVINbG9mTzX
- /s0tm42T9lk/XFFWGvXOqI9gmfoaM7eI/3kiAwCN2JScfIxZhE3YYSbs7Dg=
+X-Provags-ID: V03:K1:styZQo0jpFSBJ8rFP5mL08trpzG1urDoxz1KQ4H4PHXEeyD8Sbf
+ MPF9KdFgPn8fsyAL+6BDCpoQTi0hGrLIV7QPmyDSZOwJdm4kFMArDSb/BtrzKUsnxStOmBD
+ pGc43+jonLIZJihdtYApyxeAsuGvEJ7tq7gqQhD8DUosjzXghTpoCBgVBZjblCeJOl76z9X
+ Z6L7cm71jH2V9/wP9hjYw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6AnKFEH0FTY=:zFdABrdbh2GSW7O3sjnvFb
+ BntZU5GcmOshanmqLWMPNcfN6PvWTFTvqk8zEFoUfawPMNXka4mJ9xF2470cJeR5EfuBJwnth
+ C96oHkbOXODYZczlyWSzxrloK91uWLb0cO5De7V82MmowcvuuhwB6DJwcdhcOJrQ3pj16xEAW
+ GuU9mU39jzXqMFY8IwxBi9RmBy7cQUA8exEeprIYGd3A8H6JrAAfY7eydLK5yAmQ0SNCqIk98
+ bddmxBzmEZeaT3o2g/3oU5WAPpPv/I5AbWhgZ311HgsQ0k/2AKNI7hgPz/1H0n27bE9lpZ9qF
+ 0iexkHUlTxKL/LGUzNXu2x7o8YRS6RTcqqTnoj1EdCWzApeiCZUcVmrJjySnBlUDufP2cnD38
+ AB0rnDKV+4JAP/i3kd0u2BWEQr1NaS5w9BEJSXCMjZvXPq6H71PWUeNpHsw95PypSnvW2npiZ
+ sG3g/tr+vXW30LOvKPtSxqx6gMJljq2O1PXFIF14Wm7eGn98oD/r+QFxq4UE0jFN7vvVawUvw
+ qT2HXkuGRjS6rhWd7TkLMloSzC/jvUsDF/F95gjelSjwRL9ynrUPeGO4xr96+OBE3C9mPAb9h
+ gSLiK5up1CS27OCdhgG6SMb+VPJ17VKBjr6wWb3NtwbKwqTSaqO+izbYWJsVHLs5NJUokY+eV
+ iEwLtcqDKHw4URBpoFQa0nC0PckLo9Um9iXgwysvD4WmwgMAlwpihDNEwlllxSMfx2KjAfedo
+ S4iy3T+GcRLBNeCKtM6iUqttmYvKKhPUsjOaLD671bWCwyKpITsYWBSlpQ8=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-Subject: Re: [Qemu-trivial] [PATCH-for-4.1? 1/7] json: Move switch 'fall
- through' comment to correct place
+X-Received-From: 212.227.126.187
+Subject: Re: [Qemu-trivial] [PATCH-for-4.1? 2/7] hw/dma/omap_dma: Move
+ switch 'fall through' comment to correct place
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,41 +110,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Aug 2019 08:55:05 -0000
+X-List-Received-Date: Wed, 21 Aug 2019 08:56:01 -0000
 
 Le 19/07/2019 à 15:14, Philippe Mathieu-Daudé a écrit :
 > Reported by GCC9 when building with CFLAG -Wimplicit-fallthrough=2:
 > 
->   qobject/json-parser.c: In function ‘parse_literal’:
->   qobject/json-parser.c:492:24: error: this statement may fall through [-Werror=implicit-fallthrough=]
->     492 |     case JSON_INTEGER: {
->         |                        ^
->   qobject/json-parser.c:524:5: note: here
->     524 |     case JSON_FLOAT:
+>     CC      hw/dma/omap_dma.o
+>   hw/dma/omap_dma.c: In function ‘omap_dma_write’:
+>   hw/dma/omap_dma.c:1532:12: error: this statement may fall through [-Werror=implicit-fallthrough=]
+>    1532 |         if (s->model <= omap_dma_3_1)
+>         |            ^
+>   hw/dma/omap_dma.c:1534:5: note: here
+>    1534 |     case 0x400:
 >         |     ^~~~
+>   cc1: all warnings being treated as errors
 > 
 > Correctly place the 'fall through' comment.
 > 
 > Reported-by: Stefan Weil <sw@weilnetz.de>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  qobject/json-parser.c | 2 +-
+>  hw/dma/omap_dma.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/qobject/json-parser.c b/qobject/json-parser.c
-> index 7d23e12e33..d083810d37 100644
-> --- a/qobject/json-parser.c
-> +++ b/qobject/json-parser.c
-> @@ -519,8 +519,8 @@ static QObject *parse_literal(JSONParserContext *ctxt)
->              }
->              assert(ret == -ERANGE);
->          }
-> -        /* fall through to JSON_FLOAT */
->      }
-> +    /* fall through to JSON_FLOAT */
->      case JSON_FLOAT:
->          /* FIXME dependent on locale; a pervasive issue in QEMU */
->          /* FIXME our lexer matches RFC 8259 in forbidding Inf or NaN,
+> diff --git a/hw/dma/omap_dma.c b/hw/dma/omap_dma.c
+> index eab83c5c3a..6677237d42 100644
+> --- a/hw/dma/omap_dma.c
+> +++ b/hw/dma/omap_dma.c
+> @@ -1531,8 +1531,8 @@ static void omap_dma_write(void *opaque, hwaddr addr,
+>      case 0x404 ... 0x4fe:
+>          if (s->model <= omap_dma_3_1)
+>              break;
+> +        /* fall through */
+>      case 0x400:
+> -        /* Fall through. */
+>          if (omap_dma_sys_write(s, addr, value))
+>              break;
+>          return;
 > 
 
 Applied to my trivial-patches branch.
