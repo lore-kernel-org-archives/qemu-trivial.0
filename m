@@ -1,23 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0MBA-0003dy-JY
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:41:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55088)
+	id 1i0MCX-0005Iu-IK
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:42:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55672)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i0MB7-0003ck-8z
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:41:15 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i0MCT-0005Cq-Tq
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:42:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i0MB5-0004zk-UR
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:41:12 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:33287)
+ (envelope-from <laurent@vivier.eu>) id 1i0MCS-0005fW-W3
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:42:37 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:49519)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i0MB3-0004wZ-41; Wed, 21 Aug 2019 04:41:09 -0400
+ id 1i0MCQ-0005eH-Pt; Wed, 21 Aug 2019 04:42:35 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N63mC-1iKQC90QdU-016NMO; Wed, 21 Aug 2019 10:41:05 +0200
-To: Michal Privoznik <mprivozn@redhat.com>, qemu-trivial@nongnu.org
-Cc: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
-References: <db150a03315a89a849ab9968e4a5a26110d41424.1562942402.git.mprivozn@redhat.com>
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1Mnq4Q-1icV1Z0RcQ-00pMxw; Wed, 21 Aug 2019 10:42:31 +0200
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>
+References: <20190715102210.31365-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -62,36 +64,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <c2a4ba95-c77c-d311-f597-2312b2462720@vivier.eu>
-Date: Wed, 21 Aug 2019 10:41:02 +0200
+Message-ID: <c598e222-d707-2233-782c-cbf64ed3099e@vivier.eu>
+Date: Wed, 21 Aug 2019 10:42:29 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <db150a03315a89a849ab9968e4a5a26110d41424.1562942402.git.mprivozn@redhat.com>
+In-Reply-To: <20190715102210.31365-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:XlzmmF7pyeb+mDvfXFzAiFk0EskfKcdVRvY1Wsh9e54f19xow42
- aAlSXok8ysLM2C3LMyhxrJSDqdEO2tZJNshjeUrRw3uuiKfH1U7kM9dTKrD4VuVICuc82CX
- BQLp1ZqNY+XFBVu0wydKhekkJmuR+6fK57Gj1Kg7tOsvFJ8+ZC3mIiVE3RAMj5Ub7HKjxui
- u6LbsjMUXlnRSp3qLJOzw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:fP4Bt6n1+J0=:PoQqWcL2OgW6XPObVmi311
- D4hmCev9odrAKYKxX4mWoDeZdgtuXJDSPlSl+ts/NhTv+7krwXi1deGZIfthKDZ1P0SMSBUqG
- doE6wK0n+ldNdJTY5gH3Wt8Yd7SVW8Bf4C61jnogBWmBGN1Cib6JkWLcZnKiat8phS8U3nrbg
- 7myx/cZcSnPD7G0FgJ4Ek3MLn8U5GWtIDyoN5T+DaVVpx5i/+lZsBcBxGgFkBXrXX755xHqhj
- ev+PrCI9G8jFf/UxdfyDxkdxQsEXaNFncXYgOnn1vD0yLrXFAUwEN69qKoXZhTSsINkVrPQ9w
- LbvGJMeSTqUfSvgQtn7EBm2JDi2vJN4O0Y3r6br6LOWPI9dWN1Sc+VulJOatwaFYfXU/X8kT/
- zBEj5/GQfS2SrrykDCSOAUf8oLi5vY85CNGakq/LndNo8EolwOGfekzZV3GOPzvwVmHB9552N
- Uu0GN0kSGiLUtI8xYivq7dNNWs54535K3Eajf5JYVpyzSq2c5+eK3CIE0RmqNWo563s340aFv
- SJFplWKsvT6IZLajtqbHXLI3KeZbYcpO4/MRnf3BEjAvkXYzqGZnI1SfkNJ9JCetbZzQzg/ut
- R9+Ta9F+MO2+3yowN/eS8EFQjMCD6FcBHU3ukIlhQfDfrO1EDcLgcjRYpHJPrbtGEINKZuY/3
- Lyzz1KlEPYKF7SXZofStZh/Y8leWZWdccddlafOeikWB8Jq4l9i7Vg0apvNKsTrSFDERLGPb2
- /+TWJZX9p74Cf/6vrsdcIC6QU9lMkHvFQvTx9JUJ9loRh5ZV2ZcBPBdXElTZ6S/F+WWvjCw2e
- fz/fQEC4OZ9L3RRBlDcX0ABAg4Svg==
+X-Provags-ID: V03:K1:qtqFpAGZeKFeAMKikU/nqyDfd/UWy+CEfKAWcHyZFXAQIh/6iLn
+ 0Y5DqvDMCYgNjHGKS1RNZspx6h1RwzsNHefwMftoiiYOOP2ycvwLB4fPyDSJ8LdFL6VSAJ0
+ oYltIb/nlJsMJP9R9Os/dM/KxQ4kP/6QplAs2GQ0yQrQ35Go5Nj2wcGC6CDUrBFWY7HTM5w
+ krw82WU8faMakRzgDFkAA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:QN8YddFhuyc=:b6i4Us0vOa+cw21Vbk6pCw
+ HSXjRSVIsdbaDMDH+ODypYS0dlPo+a1kJ9uYzHLLucI8Izq4U4Zyr0h5MggZXYz5/Yb1WZzX+
+ H9X8DAcGduVyF2sxNCxWjrJ7i7DDbCku2ZTyVX92e5hxBu8AFtpZ9kvz8j8NgR0W11ju9xF99
+ 5oAtBMzFWkK6NCUEEX8Qy86x8FWbMbFZzyhKZSlQDqswJfHn6x7yA7M9arvy4osjRBlFQMbA1
+ n2qZFxu0+yNvQ18x9oD9JgJ1HxszVSj4r5WNtl/9fCi+5pJQGl3mVOHV4HQC6g4Uli2n/s+fo
+ AuURpxBlauQU/G8eMleizN+/OKJmjjiCBK9pfKtLO10/yDKd1VU3CYTMbaG7h7RzTCmO+eB1+
+ HppP4rtTU0c3vk71CvV3TGGqEtfO4DosRF4HdXvyb8C0U9E504vFOQEMZlBOTvbRcn6SRPmnv
+ WsKoFrZ7311ke3zqX/Eik8t3uqUxBdDNkMtNjDzY/ZgUyNGXqSiaFrmlrErQ4kOFZIvspA//1
+ HaMVZmTBbkOzAgoynyS62Q9YjxGMvieDiWzMa3LiU1+50VheaXdsrnJKQ2GfNYKD0Y7PY8sLG
+ /LeI47ZhFhFl8sIn/J6xO7yCbcaa7xiyZD13KC6rqLXbTOpccYbH+aDtT6HQNSfFviVHC1oTh
+ 2PcKued90N5UC0hgiahe/DHvlwzw6M3HP00L3Zpyct0Hf2wguvfvQVUEenZ+yY8/+R9Wq6oOK
+ ftq2Mrvtwx4SqeDFyFdl8mTKGL9U4E+9dSK3uqS51SmrZk+r+v/44+aJL4w=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.130
-Subject: Re: [Qemu-trivial] [PATCH] .gitignore: ignore some vhost-user*
- related files
+X-Received-From: 212.227.126.135
+Subject: Re: [Qemu-trivial] [PATCH] hw/net/e1000: Fix erroneous comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,40 +103,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Aug 2019 08:41:15 -0000
+X-List-Received-Date: Wed, 21 Aug 2019 08:42:39 -0000
 
-Le 12/07/2019 à 16:41, Michal Privoznik a écrit :
-> Commit d52c454aadc creates
-> '/contrib/vhost-user-gpu/50-qemu-gpu.json' and '/vhost-user-gpu'
-> and commit 06914c97d3a creates '/vhost-user-input' neither of
-> which is ignored by git.
+Le 15/07/2019 à 12:22, Philippe Mathieu-Daudé a écrit :
+> Missed during the QOM convertion in 9af21dbee14.
 > 
-> Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  .gitignore | 3 +++
->  1 file changed, 3 insertions(+)
+>  hw/net/e1000.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/.gitignore b/.gitignore
-> index fd6e6c38c7..e9bbc006d3 100644
-> --- a/.gitignore
-> +++ b/.gitignore
-> @@ -65,6 +65,8 @@
->  /scsi/qemu-pr-helper
->  /vhost-user-scsi
->  /vhost-user-blk
-> +/vhost-user-gpu
-> +/vhost-user-input
->  /fsdev/virtfs-proxy-helper
->  *.tmp
->  *.[1-9]
-> @@ -131,6 +133,7 @@
->  /docs/interop/qemu-qmp-ref.info*
->  /docs/interop/qemu-qmp-ref.txt
->  /docs/version.texi
-> +/contrib/vhost-user-gpu/50-qemu-gpu.json
->  *.tps
->  .stgit-*
->  .git-submodule-status
+> diff --git a/hw/net/e1000.c b/hw/net/e1000.c
+> index 1dc1466332..ec8ded7252 100644
+> --- a/hw/net/e1000.c
+> +++ b/hw/net/e1000.c
+> @@ -1611,7 +1611,7 @@ static const VMStateDescription vmstate_e1000 = {
+>  
+>  /*
+>   * EEPROM contents documented in Tables 5-2 and 5-3, pp. 98-102.
+> - * Note: A valid DevId will be inserted during pci_e1000_init().
+> + * Note: A valid DevId will be inserted during pci_e1000_realize().
+>   */
+>  static const uint16_t e1000_eeprom_template[64] = {
+>      0x0000, 0x0000, 0x0000, 0x0000,      0xffff, 0x0000,      0x0000, 0x0000,
 > 
 
 Applied to my trivial-patches branch.
