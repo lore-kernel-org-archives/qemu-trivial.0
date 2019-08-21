@@ -1,24 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0M18-0006cg-Sv
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:30:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52891)
+	id 1i0MBA-0003dy-JY
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:41:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55088)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i0M0z-0006bR-J3
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:30:46 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i0MB7-0003ck-8z
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:41:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i0M0x-0000ZY-8K
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:30:45 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:40541)
+ (envelope-from <laurent@vivier.eu>) id 1i0MB5-0004zk-UR
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:41:12 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:33287)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i0M0u-0000Xs-7L; Wed, 21 Aug 2019 04:30:40 -0400
+ id 1i0MB3-0004wZ-41; Wed, 21 Aug 2019 04:41:09 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1M9nlN-1hubFu3pQL-005uHq; Wed, 21 Aug 2019 10:30:36 +0200
-To: =?UTF-8?Q?Carlo_Marcelo_Arenas_Bel=c3=b3n?= <carenas@gmail.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, rth@twiddle.net
-References: <20190709234330.89699-1-carenas@gmail.com>
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1N63mC-1iKQC90QdU-016NMO; Wed, 21 Aug 2019 10:41:05 +0200
+To: Michal Privoznik <mprivozn@redhat.com>, qemu-trivial@nongnu.org
+Cc: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+References: <db150a03315a89a849ab9968e4a5a26110d41424.1562942402.git.mprivozn@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -63,35 +62,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <300152e2-9078-cceb-1ff0-d50c5d5a52d0@vivier.eu>
-Date: Wed, 21 Aug 2019 10:30:34 +0200
+Message-ID: <c2a4ba95-c77c-d311-f597-2312b2462720@vivier.eu>
+Date: Wed, 21 Aug 2019 10:41:02 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190709234330.89699-1-carenas@gmail.com>
+In-Reply-To: <db150a03315a89a849ab9968e4a5a26110d41424.1562942402.git.mprivozn@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:3i7SnvmLFGfugx27+6UrZcflAKCfsM+XURURyAHmdtnK0TQSKm7
- BggN8Yz5obGOBURwTNarvomZuevFIngf/pvfIutbHbfRA5IKKLdUGhvh2lcj6UB8X3fPKBL
- 8rJkCAZscuDmVAhMKc2bEfSfmDgZ1ovkoK3zf6RzuAHJF78KAlzn/YkKXx+9Lfzw/UkPLkD
- qrqZX1vauHyNc5HC1uROw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:bnqHVXWmJfQ=:2xDgsyprae5+Zm+IHCGV9R
- EJ388Y0F99iZ58iWDGyqUexYb9AsBbbinLou7CjOTOE5JhMZZ3gg+NjnxEegE1vdZqJx5KaJy
- Rji4ITuqsmtbgoM6iqucPwJnbnEFYCCqlFU6yIag7po7JTxDz2r/YpHO4qhiTITlJ9Lr4JNlH
- 7xvYvW2sOOgI4rQ9qkFGgT/bxtFfjbIQweT5Kl8tWxy/qIEGLWjRwqcyg0ykzpxBoKH2LR/SX
- dCVU5Dpj8DSJgK/T7QjhhtKT4B6M2h4nBt8dSHX1k6V9/zGz5Y2sNzacCvtUgy3wQVT2SxEXp
- 6A2FkK9jSaTpumlDS/H4YokMwVxA1BEijLmJObNSfebDiuJBP54u5Ch37HJD6Iud0Oj06evxN
- YUeSeBJlKtA/+5JKJlihk8PSjWZWGAlU05NoiMlH+W/cd5nPCZq/goqNYd2Zz+b6WWwz2ZHtd
- biAO4jyvErxukypeTdY71LLUmzLUsZ59Ayn2Zb0kP4saGJb00j6N4C99R6AR55qDY+6WmaaAt
- GUXlP1LbQjVgJTmN2Sby2T+5jWnF63YvIc++c80n/GhlAXIhBQYkK84v7hy1SCsU3ZiuWjUii
- 2qqWQEhpzY3l0voeZQX8WR4qjhud/23SDL9uhoGxG6OX2evw4leaz6z2IS3wUR1WBQSGxzylE
- IgxSdzN+0PaQiFUS1VWqi7d9ImeTBSHyy70xToxbAc3kmFS8t3s9znuJKSIDBSoEWM+d9N2fa
- /FaqAlUAVL+cvmfcfFwkgZ3miwU5iy0xOBklXbmGBzu3udD21uDyrqTCBFs=
+X-Provags-ID: V03:K1:XlzmmF7pyeb+mDvfXFzAiFk0EskfKcdVRvY1Wsh9e54f19xow42
+ aAlSXok8ysLM2C3LMyhxrJSDqdEO2tZJNshjeUrRw3uuiKfH1U7kM9dTKrD4VuVICuc82CX
+ BQLp1ZqNY+XFBVu0wydKhekkJmuR+6fK57Gj1Kg7tOsvFJ8+ZC3mIiVE3RAMj5Ub7HKjxui
+ u6LbsjMUXlnRSp3qLJOzw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:fP4Bt6n1+J0=:PoQqWcL2OgW6XPObVmi311
+ D4hmCev9odrAKYKxX4mWoDeZdgtuXJDSPlSl+ts/NhTv+7krwXi1deGZIfthKDZ1P0SMSBUqG
+ doE6wK0n+ldNdJTY5gH3Wt8Yd7SVW8Bf4C61jnogBWmBGN1Cib6JkWLcZnKiat8phS8U3nrbg
+ 7myx/cZcSnPD7G0FgJ4Ek3MLn8U5GWtIDyoN5T+DaVVpx5i/+lZsBcBxGgFkBXrXX755xHqhj
+ ev+PrCI9G8jFf/UxdfyDxkdxQsEXaNFncXYgOnn1vD0yLrXFAUwEN69qKoXZhTSsINkVrPQ9w
+ LbvGJMeSTqUfSvgQtn7EBm2JDi2vJN4O0Y3r6br6LOWPI9dWN1Sc+VulJOatwaFYfXU/X8kT/
+ zBEj5/GQfS2SrrykDCSOAUf8oLi5vY85CNGakq/LndNo8EolwOGfekzZV3GOPzvwVmHB9552N
+ Uu0GN0kSGiLUtI8xYivq7dNNWs54535K3Eajf5JYVpyzSq2c5+eK3CIE0RmqNWo563s340aFv
+ SJFplWKsvT6IZLajtqbHXLI3KeZbYcpO4/MRnf3BEjAvkXYzqGZnI1SfkNJ9JCetbZzQzg/ut
+ R9+Ta9F+MO2+3yowN/eS8EFQjMCD6FcBHU3ukIlhQfDfrO1EDcLgcjRYpHJPrbtGEINKZuY/3
+ Lyzz1KlEPYKF7SXZofStZh/Y8leWZWdccddlafOeikWB8Jq4l9i7Vg0apvNKsTrSFDERLGPb2
+ /+TWJZX9p74Cf/6vrsdcIC6QU9lMkHvFQvTx9JUJ9loRh5ZV2ZcBPBdXElTZ6S/F+WWvjCw2e
+ fz/fQEC4OZ9L3RRBlDcX0ABAg4Svg==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: Re: [Qemu-trivial] [PATCH] configure: remove obsoleted $sparc_cpu
- variable
+X-Received-From: 212.227.126.130
+Subject: Re: [Qemu-trivial] [PATCH] .gitignore: ignore some vhost-user*
+ related files
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,39 +103,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Aug 2019 08:30:47 -0000
+X-List-Received-Date: Wed, 21 Aug 2019 08:41:15 -0000
 
-Le 10/07/2019 à 01:43, Carlo Marcelo Arenas Belón a écrit :
-> 9b9c37c364 ("tcg-sparc: Assume v9 cpu always, i.e. force v8plus in
-> 32-bit mode.", 2012-09-21) removed the need for this variable and
-> most of the references to it, but this one.
+Le 12/07/2019 à 16:41, Michal Privoznik a écrit :
+> Commit d52c454aadc creates
+> '/contrib/vhost-user-gpu/50-qemu-gpu.json' and '/vhost-user-gpu'
+> and commit 06914c97d3a creates '/vhost-user-input' neither of
+> which is ignored by git.
 > 
-> Remove defunct code, no effect or functionality change expected.
-> 
-> Signed-off-by: Carlo Marcelo Arenas Belón <carenas@gmail.com>
+> Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
 > ---
->  configure | 3 ---
->  1 file changed, 3 deletions(-)
+>  .gitignore | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
-> diff --git a/configure b/configure
-> index 4983c8b533..7518f201ab 100755
-> --- a/configure
-> +++ b/configure
-> @@ -6378,9 +6378,6 @@ if test "$vnc" = "yes" ; then
->      echo "VNC JPEG support  $vnc_jpeg"
->      echo "VNC PNG support   $vnc_png"
->  fi
-> -if test -n "$sparc_cpu"; then
-> -    echo "Target Sparc Arch $sparc_cpu"
-> -fi
->  echo "xen support       $xen"
->  if test "$xen" = "yes" ; then
->    echo "xen ctrl version  $xen_ctrl_version"
+> diff --git a/.gitignore b/.gitignore
+> index fd6e6c38c7..e9bbc006d3 100644
+> --- a/.gitignore
+> +++ b/.gitignore
+> @@ -65,6 +65,8 @@
+>  /scsi/qemu-pr-helper
+>  /vhost-user-scsi
+>  /vhost-user-blk
+> +/vhost-user-gpu
+> +/vhost-user-input
+>  /fsdev/virtfs-proxy-helper
+>  *.tmp
+>  *.[1-9]
+> @@ -131,6 +133,7 @@
+>  /docs/interop/qemu-qmp-ref.info*
+>  /docs/interop/qemu-qmp-ref.txt
+>  /docs/version.texi
+> +/contrib/vhost-user-gpu/50-qemu-gpu.json
+>  *.tps
+>  .stgit-*
+>  .git-submodule-status
 > 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
 
