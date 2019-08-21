@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0MSM-0001pG-LN
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:59:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59802)
+	id 1i0MSu-0002m0-I6
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:59:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60134)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i0MSJ-0001jN-6X
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:59:00 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i0MSr-0002gI-5G
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:59:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i0MSI-0006lE-4s
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:58:59 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:37111)
+ (envelope-from <laurent@vivier.eu>) id 1i0MSp-0007Kr-Th
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:59:32 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:34797)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i0MSD-0006fh-J6; Wed, 21 Aug 2019 04:58:53 -0400
+ id 1i0MSn-0007IY-C7; Wed, 21 Aug 2019 04:59:29 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
  (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MdwRi-1iZ8hm3l3e-00b3Yi; Wed, 21 Aug 2019 10:58:45 +0200
+ 1Mi4un-1iV2Ns1Ep7-00e5yE; Wed, 21 Aug 2019 10:59:21 +0200
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
@@ -25,7 +25,7 @@ Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 References: <20190719131425.10835-1-philmd@redhat.com>
- <20190719131425.10835-7-philmd@redhat.com>
+ <20190719131425.10835-8-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -70,35 +70,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <1caf10c7-21cc-4a42-8529-c85d99fbdf63@vivier.eu>
-Date: Wed, 21 Aug 2019 10:58:42 +0200
+Message-ID: <91e26081-0ded-0b5a-8fea-e32928021110@vivier.eu>
+Date: Wed, 21 Aug 2019 10:59:17 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190719131425.10835-7-philmd@redhat.com>
+In-Reply-To: <20190719131425.10835-8-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:b9dwMaRGJLov6JL+qmefz/mmNLNIaPNM88CP5ZmKH53I9dHyiQb
- 2ts4vsVkFMjV1hC6L7KHknaFrSSOTXjpQft5z3Dut1reI+Ic2Ymyd4ZjsbNujbEuZGaG5n6
- dkZiBleuzKZ6y4xny3OyeGizMznmlmqUlG1SSm3XMEYTtT7To+i64Yig+Ty+r8hepmKEvNx
- X3atShzWbv+Y0wh1Ap6pQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:P8x7mnaMoyI=:+w80Tyo5YDIWjn3hPwXbPv
- oMCbAjnMHD8cfwmYIRmlT0pC2eHNDqUeseu5+XV77iK8g3tza1kdFcVGhbc5Y4r4HLNHVOxSM
- A9D/kMQOJACky4IsiPN2EjIgK6NvpkisA3oDvZRnl6EKbxknLvPOv5OnEt+Fpx5UMzhRdoj1D
- FMtMR1BE7RvIF3NIFgwE+ilzVNLzWaivjYT8R6JYdQffhWBgPP5xMTHQU285rPNiTjnnwjBzG
- KRMdrjSIW2NtKg6ooZACyHfUzJAAz5tEyqfijqAUSnxkhCOl8l7YzVdvsXfcat6i44al65vyz
- j0IILrxpLHdHP83DLrcR9I0T8Nu4BOALn9UECrZFECevzQbVfoTpObvzBDIXN3JjGnCMavO9H
- 3YCKu1AYr+6m++g1vaFxywnilJ5VKhj/3/aqnW0OGgySMZhY8vxymkrZqCHKJPsneO7Kd+afM
- JEUpVx42EdguC4oxWztlmF/VJ4Yhic+maiKPjhTJMlCEgbDBTFOEBbIClYxsUzW/PyWJsEhec
- sC7/rowYENeeW3xiJ67A5ZzkFcEPQ/+DKz4+hDqTDIgq2V4cK4Yyh5n6ZmbqsyAbSpPjnaTki
- ov1oYaM5fDYLkOFUvukMBvQDrcSGLAgAbOWSejkKznja6D9Vu0LslnRm/6IOHRl4T94rpuASu
- oZIJKEj520whrcYr3qrrWgRjvSRD18+FuvLOTu6kBvxydenLUH5NoJjiKj1Bt45IKVFWIo9Qy
- DCksaI1xJbbLmKXnHBg853YimzswlwTdsdwJTNlGMNlV56HmmfZ6A+Rk7Qg=
+X-Provags-ID: V03:K1:IKxWkAn0//19yD5mQvb4H3M1RH1/mPMJR/CRjW/OKaZXBXE6yIP
+ 2JKUS5oghBFnNEb7pXRxXjGxET5N5osAjvGClY/5RuQGIYP2o9WC/j4fsmtJiTZh9B2Rqoy
+ 8fY3LUwpO0JKMYeXIXUj5NUcv2R9kvi/yZK+dPvqTP3qtnIhd3yy57TYCOiVSMbiAy0kBA5
+ PwgYOfHrZcWfgBiHioDlw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:pW6ytaUjS4A=:tYcLzp1zM7YWZ7/AO/S4dD
+ mIMv2fpebtsXSEj5Vmly7YQgvUssjSGgj/RX3WUVg0Oeui9M0wJRqBDJ0r9aXg4rfhQfQl0dl
+ uLDDfcVwcx7gDwvQgJodLQvjVKwa7EgLFNiXxQsBHJkBk6gGyYvkgJUnIAWK0gRBPjh0vPKjX
+ +b8gKXQx0QagFYA6EsXt7FzOAHYD0E7RNKgoMEwmI+7Ea33Vw0qQlUK5h8cmRGI7dCIiSfv9J
+ 2n8e2mCb2Ojhw4Vz1xVxmz/YJ83WPZ9Fr/VjuqY2TpyZKRmG8Y3LMW8hiqWUR7RFxB4OX5FVy
+ cpM1xwkZK4QEuLc3eSjcp/OU96KSVnreDkuL99tJOwUyqCLIXezoMOvuhYJCT+zlKO47KU0UQ
+ GnSCJE2klrTsSJRrFjNIiU3sU32Asc2nO+n03i/bwPKHh2nwEYzoQBsKxLXDorzSkM9ngxNz1
+ Mpsm43JowoaZrvpkrONDWiZ0Nmc9QoHz7pz8l0+HW4bVkb9MFm4efv50XsncJ6murDtRqvSvE
+ cCJvs/vk6TCCpWaDsHRpMdkh0t2S4h0nt4xJMnmX+pLD/fO/MD7ApzYip3gF+LxlQuhrs+Ds1
+ 3rDHugj2C4UWz//Y2EMampO8GnichPRcxI90nglHYsUA90bShP0yURCWlP6D6eJ6/llkaUXyr
+ CUK/SKKDN24v+B+YHwjt/XDAuVWixd35tfpHBWV2nGYwb2xSl246bULqQrS8347NT8RPBDp31
+ xQAJ/TNd8AqYKD50OjA0+BFHWEQw4L/i0xcxaoCnpIlOdNIApwzwpFWbXNc=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.133
-Subject: Re: [Qemu-trivial] [PATCH-for-4.1? 6/7] vl: Rewrite a fall through
- comment
+X-Received-From: 212.227.126.134
+Subject: Re: [Qemu-trivial] [PATCH-for-4.1? 7/7] spapr_events: Rewrite a
+ fall through comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,18 +110,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Aug 2019 08:59:01 -0000
+X-List-Received-Date: Wed, 21 Aug 2019 08:59:35 -0000
 
 Le 19/07/2019 à 15:14, Philippe Mathieu-Daudé a écrit :
 > GCC9 is confused by this comment when building with CFLAG
 > -Wimplicit-fallthrough=2:
 > 
->   vl.c: In function ‘qemu_ref_timedate’:
->   vl.c:773:15: error: this statement may fall through [-Werror=implicit-fallthrough=]
->     773 |         value -= rtc_realtime_clock_offset;
->         |         ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
->   vl.c:775:5: note: here
->     775 |     case QEMU_CLOCK_VIRTUAL:
+>     CC      ppc64-softmmu/hw/ppc/spapr_rtc.o
+>   hw/ppc/spapr_events.c: In function ‘rtas_event_log_to_source’:
+>   hw/ppc/spapr_events.c:312:12: error: this statement may fall through [-Werror=implicit-fallthrough=]
+>     312 |         if (spapr_ovec_test(spapr->ov5_cas, OV5_HP_EVT)) {
+>         |            ^
+>   hw/ppc/spapr_events.c:317:5: note: here
+>     317 |     case RTAS_LOG_TYPE_EPOW:
 >         |     ^~~~
 >   cc1: all warnings being treated as errors
 > 
@@ -131,22 +132,22 @@ Le 19/07/2019 à 15:14, Philippe Mathieu-Daudé a écrit :
 > Reported-by: Stefan Weil <sw@weilnetz.de>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  vl.c | 2 +-
+>  hw/ppc/spapr_events.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/vl.c b/vl.c
-> index a5808f9a02..f5cf71e3b4 100644
-> --- a/vl.c
-> +++ b/vl.c
-> @@ -771,7 +771,7 @@ static time_t qemu_ref_timedate(QEMUClockType clock)
->      switch (clock) {
->      case QEMU_CLOCK_REALTIME:
->          value -= rtc_realtime_clock_offset;
-> -        /* no break */
-> +        /* fall through */
->      case QEMU_CLOCK_VIRTUAL:
->          value += rtc_ref_start_datetime;
->          break;
+> diff --git a/hw/ppc/spapr_events.c b/hw/ppc/spapr_events.c
+> index ae0f093f59..0a98894ad6 100644
+> --- a/hw/ppc/spapr_events.c
+> +++ b/hw/ppc/spapr_events.c
+> @@ -313,7 +313,7 @@ rtas_event_log_to_source(SpaprMachineState *spapr, int log_type)
+>              g_assert(source->enabled);
+>              break;
+>          }
+> -        /* fall back to epow for legacy hotplug interrupt source */
+> +        /* fall through back to epow for legacy hotplug interrupt source */
+>      case RTAS_LOG_TYPE_EPOW:
+>          source = spapr_event_sources_get_source(spapr->event_sources,
+>                                                  EVENT_CLASS_EPOW);
 > 
 
 Applied to my trivial-patches branch.
