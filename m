@@ -1,57 +1,96 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1hzpUK-000412-EQ
-	for mharc-qemu-trivial@gnu.org; Mon, 19 Aug 2019 17:46:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32985)
+	id 1i0LyK-0003G4-8E
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:28:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52454)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jkz@google.com>) id 1hzpU0-0003yR-0m
- for qemu-trivial@nongnu.org; Mon, 19 Aug 2019 17:46:42 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i0LyG-0003Fu-Ut
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:27:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jkz@google.com>) id 1hzpTw-0001lz-PY
- for qemu-trivial@nongnu.org; Mon, 19 Aug 2019 17:46:31 -0400
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:33100)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <jkz@google.com>) id 1hzpTw-0001hc-Cc
- for qemu-trivial@nongnu.org; Mon, 19 Aug 2019 17:46:28 -0400
-Received: by mail-pf1-x441.google.com with SMTP id g2so1967935pfq.0
- for <qemu-trivial@nongnu.org>; Mon, 19 Aug 2019 14:46:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to:cc;
- bh=ikavlIOQOEnel5CO+3gZOR2OAKyiRO+kaAZwrxJfrzg=;
- b=boTVdzNxiFK/APPvyrHAKGZ+XUFBxDu06Oq1BPKodzjO7RWbVQ3rsBBbveHGuCGHHT
- h15V2eZ+2XhEvWL+O/3gwdHxun6T5BJaSVTkeFcyide3xd15zyPFayBoYCTxiQDRqled
- 4+RE2P538/o28ox8JLgfY+1+++SIKyg6g4HuGidcqcLIembnD2nIOIk1XPw1fM8vBRQH
- W4DP3floDjhOP/tMlE93YXNysrbobHKh4qp7XOMPtdA1q3xGfGJuwwl++63wUrechVmc
- S8tTQFB/OH1e4ZovT2iCKAfyTb1X9yhcX2tP6Hgnzna3PQ6j1tS6DVcHOoKlQ8f5Kf8i
- bcEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
- bh=ikavlIOQOEnel5CO+3gZOR2OAKyiRO+kaAZwrxJfrzg=;
- b=uTi2HWFmWAsWZGji3Cl21n2aOSEMFDXBxpwrYB+y/a6YWlB3Cmjp6Q5ZoFN55qmicw
- LvCuK5++KvRBhNcuoNrf35EtVTvmBIZ6OtjTEMtjUp/vzXQ4crSBJHA2cvvjzjbblmU2
- GNl61jA924fKXhFpXeSW7psKS47tj8PsT39ECXeAkGWEgJOuQw3iYHNxxdfmF4U9tYUP
- YReFBh8JZoNGB7fRYF8Nelo5ChDI18rYCU+UMjJ8I6zcOXXciqoJMUPIEFAeuEwI7z6Y
- sZwtzXDbEcnf3kV9D7U+YEIxk6+kzGhJvEH+9YBrC82dB82tHSMaE/yeYlUYdu09KslS
- GIQA==
-X-Gm-Message-State: APjAAAUIFccDHgtDReFz4cDM5cmXmzYWee+QytkhjlcLnZLxHyKVuZYy
- iHJxpIgpgIMiNg+6K/7d8QwMCM2eQzn1hwbvEsmXeA==
-X-Google-Smtp-Source: APXvYqxRx6oUNp1G9JHtrYWLK+lg+ZxfFHsYR09xUd7U/+vXBqqUJxFeCPikTgVX0o5Z79OgQi3+vUv/kfGUwpI2+pg=
-X-Received: by 2002:a62:7513:: with SMTP id q19mr27647688pfc.192.1566251184064; 
- Mon, 19 Aug 2019 14:46:24 -0700 (PDT)
+ (envelope-from <laurent@vivier.eu>) id 1i0LyF-00086r-Kl
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:27:56 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:38185)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1i0LyF-00086X-9o; Wed, 21 Aug 2019 04:27:55 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MCKO2-1i9ju43dAo-009PlF; Wed, 21 Aug 2019 10:27:47 +0200
+To: tony.nguyen@bt.com, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, armbru@redhat.com
+References: <dce313b46d294ada8826d34609a3447e@tpw09926dag18e.domain1.systemhost.net>
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <707bb342-3b30-1c1a-628a-0b0eda6a76c3@vivier.eu>
+Date: Wed, 21 Aug 2019 10:27:42 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-From: Josh Kunz <jkz@google.com>
-Date: Mon, 19 Aug 2019 14:46:13 -0700
-Message-ID: <CADgy-2vznasvwaUwNSi96Sy=ucPC=-3e=O9irqc5DSpV_uhWUg@mail.gmail.com>
-To: marlies.ruck@gmail.com, qemu-devel@nongnu.org, riku.voipio@iki.fi, 
- laurent@vivier.eu
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, 
- Shu-Chun Weng <scw@google.com>
-Content-Type: multipart/alternative; boundary="00000000000074ea1c05907f4579"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::441
-Subject: Re: [Qemu-trivial] [Qemu-devel] patch to swap SIGRTMIN + 1 and
- SIGRTMAX - 1
+In-Reply-To: <dce313b46d294ada8826d34609a3447e@tpw09926dag18e.domain1.systemhost.net>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:YBy/vKcUxhAmATN/sZzcf3t7I8zyBYQNUcTlU67rUCWfazrqv5+
+ g2rDtuOAAn1WM9T8QDqNKThMNHESeTZlv+/sk716G+EEhrMFFcf9WDRK3bTyT9EqCzPwGb2
+ kF5FIDGzQifm1yOXPSL3TEAxlC7K28jsc9Q+hY8v5UgyZaWPGp4rUAc5wO6LlZeCTZq6L+6
+ iq0JMc10FEame/oNZPfsg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:4HD7Y7E/ifw=:xy3Y5Qdhd+KAdjeLMPB1eB
+ SJ2RhbVNFvz2HYhvWwUl1Yjrd5K6jF41WQdlrLCykdy4b8Ctv+c+L+gmaQallJ+DNhknvimD8
+ BJgdqBw3V+6H0teOilTeE/PLOhO5K81+ZxUiyAFTS2nws5Ed8R5EymmheUKCi+nzE4S7UZzIZ
+ kNbaxqn+vLLtGNahnHZrIO1mq8YDAlYz/WQEnshZWM0lv1vbpsHkJhfF7/BTgOfVtlxyENWuy
+ OkVBfThisKwmV9UVoqPmya157IsuO+0GN0Wc7Or3r2LPqUEr8cc41QJa5mTYL5Np9mgjAKZwv
+ q+K2bzri5fDyzqNkahSam8N89lC/7DePY9uk15Mp6KrdzG5gzKi6V54hXivfMGvFSRWf6q8Ed
+ qL/+rjpmWFWRT1BBDgfbwLP//jXxovbpdqnHmuFn2Zbf8agAyIW9s5vpWpO6edCEZM7gBNEBS
+ CbWLjE/W6izD73d44Y5fAKUCAtNecRx0c2rxUxC9YiMWdrQCW7eQ9Zf+Ty60vpUa4wkRa8Yw8
+ fPNYNm3qCCVvYMnWruqiRjoTrQgtBTM9J9Osg2qYgMGdU3emvwGxLRUErbGJBmDhPKR3Mu9/r
+ YTH+fd8FoFtUo6n+2OpqDRcjgJF9pUfW03KxKst4BdhjBGHUo5FxfSNaz8NkIT190otSBDmzD
+ dubjC2/8WHRrijmQ5SlK/E0uUudioKUineh8wkjWQYImEafyrPNxdV7GVjWIxedYuXabONdsU
+ 00gSF0gzjsvkwIxQwq7/EPbF+jlKcOcn+QyYM1DoaEX914qiSBDAPTSc/Dk=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.227.126.187
+Subject: Re: [Qemu-trivial] [PATCH v2] test: Use g_strndup instead of plain
+ strndup
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -63,50 +102,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 19 Aug 2019 21:46:46 -0000
+X-List-Received-Date: Wed, 21 Aug 2019 08:27:58 -0000
 
---00000000000074ea1c05907f4579
-Content-Type: text/plain; charset="UTF-8"
+Le 08/06/2019 à 07:25, tony.nguyen@bt.com a écrit :
+> Due to memory management rules. See HACKING.
+>     
+> Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
+> 
+> diff --git a/tests/check-qjson.c b/tests/check-qjson.c
+> index fa2afcc..07a773e 100644
+> --- a/tests/check-qjson.c
+> +++ b/tests/check-qjson.c
+> @@ -767,7 +767,7 @@ static void utf8_string(void)
+>                      if (*end == ' ') {
+>                          end++;
+>                      }
+> -                    in = strndup(tail, end - tail);
+> +                    in = g_strndup(tail, end - tail);
+>                      str = from_json_str(in, j, NULL);
+>                      g_assert(!str);
+>                      g_free(in);
+> diff --git a/tests/migration/stress.c b/tests/migration/stress.c
+> index 49a03aa..d9aa4af 100644
+> --- a/tests/migration/stress.c
+> +++ b/tests/migration/stress.c
+> @@ -104,9 +104,9 @@ static int get_command_arg_str(const char *name,
+>      }
+>  
+>      if (end)
+> -        *val = strndup(start, end - start);
+> +        *val = g_strndup(start, end - start);
+>      else
+> -        *val = strdup(start);
+> +        *val = g_strdup(start);
+>      return 1;
+>  }
+>  
+> @@ -126,10 +126,10 @@ static int get_command_arg_ull(const char *name,
+>      if (errno || *end) {
+>          fprintf(stderr, "%s (%05d): ERROR: cannot parse %s value %s\n",
+>                  argv0, gettid(), name, valstr);
+> -        free(valstr);
+> +        g_free(valstr);
+>          return -1;
+>      }
+> -    free(valstr);
+> +    g_free(valstr);
+>      return 0;
+>  }
+> 
 
-Hi all,
-
-I have also experienced issues with SIGRTMIN + 1, and am interested in
-moving this patch forwards. Anything I can do here to help? Would the
-maintainers prefer myself or Marli re-submit the patch?
-
-The Go issue here seems particularly sticky. Even if we update the Go
-runtime, users may try and run older binaries built with older versions of
-Go for quite some time (months? years?). Would it be better to hide this
-behind some kind of build-time flag (`--enable-sigrtmin-plus-one-proxy` or
-something), so that some users can opt-in, but older binaries still work as
-expected?
-
-Also, here is a link to the original thread this message is in reply to
-in-case my mail-client doesn't set up the reply properly:
-https://lists.nongnu.org/archive/html/qemu-devel/2019-07/msg01303.html
+Applied to my trivial-patches branch.
 
 Thanks,
-Josh Kunz
-
---00000000000074ea1c05907f4579
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi all,<div><br></div><div>I have also experienced issues=
-=C2=A0with SIGRTMIN=C2=A0+ 1, and am interested in moving this patch forwar=
-ds. Anything I can do here to help? Would the maintainers prefer myself or =
-Marli re-submit the patch?</div><div><br></div><div>The Go issue here seems=
- particularly sticky. Even if we update the Go runtime, users may try and r=
-un older binaries built with older versions of Go for quite some time (mont=
-hs? years?). Would it be better to hide this behind some kind of build-time=
- flag (`--enable-sigrtmin-plus-one-proxy` or something), so that some users=
-=C2=A0can opt-in, but older binaries still work as expected?</div><div><br>=
-</div><div>Also, here is a link to=C2=A0the original thread this message is=
- in reply to in-case my mail-client doesn&#39;t set up the reply properly:=
-=C2=A0<a href=3D"https://lists.nongnu.org/archive/html/qemu-devel/2019-07/m=
-sg01303.html">https://lists.nongnu.org/archive/html/qemu-devel/2019-07/msg0=
-1303.html</a></div><div><br></div><div>Thanks,</div><div>Josh Kunz</div></d=
-iv>
-
---00000000000074ea1c05907f4579--
+Laurent
 
