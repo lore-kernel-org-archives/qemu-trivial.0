@@ -1,100 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0MvC-0004Jf-RO
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 05:28:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37818)
+	id 1i0OfP-0004xW-1K
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 07:20:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53372)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i0Mv9-0004DQ-Gw
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 05:28:48 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i0OfE-0004kD-E2
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i0Mv8-00057s-9H
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 05:28:47 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:59015)
+ (envelope-from <laurent@vivier.eu>) id 1i0OfC-0006VN-P2
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:28 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:58727)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i0Mv5-00055M-II; Wed, 21 Aug 2019 05:28:43 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1M8yso-1hvQha2UFC-0063wu; Wed, 21 Aug 2019 11:28:08 +0200
-To: Josh Kunz <jkz@google.com>, marlies.ruck@gmail.com,
- qemu-devel@nongnu.org, riku.voipio@iki.fi
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org,
- Shu-Chun Weng <scw@google.com>,
- Aleksandar Markovic <aleksandar.markovic@rt-rk.com>,
- milos.stojanovic@rt-rk.com, Aleksandar Markovic <amarkovic@wavecomp.com>
-References: <CADgy-2vznasvwaUwNSi96Sy=ucPC=-3e=O9irqc5DSpV_uhWUg@mail.gmail.com>
+ id 1i0OfC-0006UD-Db; Wed, 21 Aug 2019 07:20:26 -0400
+Received: from localhost.localdomain ([78.238.229.36]) by
+ mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1M6VNX-1htX2U3K7l-006yF1; Wed, 21 Aug 2019 13:20:16 +0200
 From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <abf5f3b6-7c05-a85b-051f-9905b8f50041@vivier.eu>
-Date: Wed, 21 Aug 2019 11:28:04 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Corey Minyard <minyard@acm.org>,
+ Juan Quintela <quintela@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Richard Henderson <rth@twiddle.net>, Jason Wang <jasowang@redhat.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Markus Armbruster <armbru@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
+Date: Wed, 21 Aug 2019 13:19:47 +0200
+Message-Id: <20190821111947.26580-15-laurent@vivier.eu>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190821111947.26580-1-laurent@vivier.eu>
+References: <20190821111947.26580-1-laurent@vivier.eu>
 MIME-Version: 1.0
-In-Reply-To: <CADgy-2vznasvwaUwNSi96Sy=ucPC=-3e=O9irqc5DSpV_uhWUg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:mKHHcFijUv771zYoy0odzl1eeJO0Lqy3Gc0VPIjF7K8HPF/DeVX
- T+t9EIUxyScAjNQpWQEnFh1j1aWBTUMizJgZN9FrRAHiq1ty40UIvT2qIpUNySDSt48IvN5
- 80nqwHerwr3kV5Vc8d2uXYktFqUkX/05hVoDh+63wXrPGH0Dz0BiVzrtIdlMEV7p58Q19FB
- 8KY6dQGkbUYIAywrJ//Cw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:OEdt+7ASmCY=:EQaVazaiuOHS878eBqelH2
- icYUzfma0dYnAtm1Nm7xuyRXj1t4Rj4mdbqVvFCLoDq387m498BujPwMd1RlEu3vSO11xMUqr
- myYcElKJsgQ2Cjn2chQao+QjVH/0aZ9VDU9HZf2C9sYO0WmzFgkgTQhr+SEG1JqppFU+7cOpS
- CU1U/5mk1f5Qk0yAWwyOq7nh32OXZgwKPiFkz8ic73l7aGDAJ0KsOxl0if2hUv069aj8vXNOv
- CJqqqML0cnbDX3Pu69qfKNPTdws8gMJi/Fx9XJOXsjVbZ4N4bdFD+iu5N3Xz65NugEwKnz96L
- upUG7+XadwnOOUXP0d2x72E4b1kbKRNh8SDz75vrJOsK3Wnh/cDq5DMy4SifJV2+wxZkAaclf
- 0wvihL2317dYnXGYOSNULhV5qzBfncaA5x5dlDFHUqU6w3u06lRbAGmX9LvOwsXEUqSYYemZV
- /Thwv0HqNPftKBhWHaMWxpsL4Y/xbIols4QbRxP3ZmaRdROPagVHLx1w5BDYDF+t26lvt935J
- 5qTb5Qn5P4z6fYRHivq5jjqdkAeS5yv4fPs106cohroqIkAIFnhXgwVohZjB6EWRtSdzYw7Od
- qLxR5rWZDFoVrhja48TpSl/CA1c8vlqKw0CLwKHMRec5Eypn9JPZIN61C9xC0ce8YxgEIOWLe
- Y43Q6ziaEGoIcHZCaEtK9pKnjEG2ostdzx00sp9PMdF9Lkx5ZGRXgw8R33HaAtRFGnk/FUOQA
- BEer6MNLutixurC/syccR2YM65Av6lAYRVtKLKZJoh8ZdR+pCvYev70daDg=
+X-Provags-ID: V03:K1:IY6l50A0xPEDA9udGQabyD0pxfy01OHYRizudoGvggfbOXc5CnQ
+ nrN+nGGhjBrVeo+9MMeMErAHwvNwe1Xt47eCd4aRDd5bqs2r63b3Z9NISQ8VTlrw27yAaWp
+ Z4EgmMGsTtqCV1CQsUMjA6P+QDCRJtU/V0MeDSvlGZMbraLlnhzxFq8YWrSMtEJONUqP6n/
+ cusio3oV16io3Ka7PztkQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:C0HWSpMZ7NA=:NRRiRNRoz198yrqX3hDgzn
+ YswRGL2lIvats2Z46huM1e+bnFV7vjeRHEiE2s4kCXfjEMzDFmIknrt9cvGJKhMX/Gzr+32cD
+ 3B82Lc1DvVYkNBTWMsO7tFOeVTKkxuc0sLHrDWH3GsKKqq9MXe2UleLZl3ss4gKvCTkQjPGFL
+ gLNQ285NIqqhYMA6Si4FTixW9JFDQRSj5kMI97LjePghP356dOnTBLNIFyRmFH3Wf04w1GN8t
+ CE1+ptvxM35bylB9NatOpUCtEBqWUqhTu7+sccqmie/1Ky8vkpwSseZDDFKDz2hoG50FZsPx6
+ xGqwCEo7kBMCklc4C5NqFXuawLDOq2oRTWQQgVTSnAQ+il1C+4rLbR46Tssana7nV2ifP7LHz
+ B36ut9lds8i5WxIokNZhRbC/br9HeyhNNxfVF53nLmoygPMZ7vX+rDtqwrYdEonVkxps5xo+m
+ 3rxcN+JpVpJgWjjAV8CtJuOwrj6yrK4JdcEDj6YBvKhBT3g4msYkZpsgjF3MAOEECnqusa8cm
+ A1W0r+kgPjemmtUNqN+kvhYRxjWbYpAUu9oPM/C8ek2KS+3UeJZASYOnrNbRqxrMlmVGAYpNq
+ gL3/1vee27lhCbebNXYR7dWIUNYU5Dwti8MvMt/2e/vqfEX8SE5151Ptac2FkPwrGA4k+9TlC
+ YFVmuQ41EZ3WfUtyOnzahFquF1hVrHj0T+rmUyU/OAsSqc8WjKMcX5YpgDLeJwj8aXRU3sdy+
+ dKpyaVaWFfpFMZs98csYjJjcp2reYbisfMRvFbGAQvjK1Gl3lBNOlA+p9JH2MZ3z4U6ZhEdhv
+ WRR+fUD0mXERz8WsuGaiYfXD7okAA==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.134
-Subject: Re: [Qemu-trivial] [Qemu-devel] patch to swap SIGRTMIN + 1 and
- SIGRTMAX - 1
+X-Received-From: 212.227.17.24
+Subject: [Qemu-trivial] [PULL 14/14] hw/display: Compile various display
+ devices as common object
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,33 +69,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Aug 2019 09:28:49 -0000
+X-List-Received-Date: Wed, 21 Aug 2019 11:20:30 -0000
 
-Le 19/08/2019 à 23:46, Josh Kunz via Qemu-devel a écrit :
-> Hi all,
-> 
-> I have also experienced issues with SIGRTMIN + 1, and am interested in
-> moving this patch forwards. Anything I can do here to help? Would the
-> maintainers prefer myself or Marli re-submit the patch?
-> 
-> The Go issue here seems particularly sticky. Even if we update the Go
-> runtime, users may try and run older binaries built with older versions of
-> Go for quite some time (months? years?). Would it be better to hide this
-> behind some kind of build-time flag (`--enable-sigrtmin-plus-one-proxy` or
-> something), so that some users can opt-in, but older binaries still work as
-> expected?
-> 
-> Also, here is a link to the original thread this message is in reply to
-> in-case my mail-client doesn't set up the reply properly:
-> https://lists.nongnu.org/archive/html/qemu-devel/2019-07/msg01303.html
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The problem here is we break something to fix something else.
+Various display devices are not target-specific and can
+be compiled once for all the targets.
+After this commit, the 'make world' target is reduced by
+54 objects
 
-I'm wondering if the series from Aleksandar Markovic, "linux-user:
-Support signal passing for targets having more signals than host" [1]
-can fix the problem in a better way?
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Gerd Hoffmann <kraxel@redhat.com>
+Message-Id: <20190812113739.16587-3-philmd@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/display/Makefile.objs | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-Thanks,
-Laurent
-[1] http://patchwork.ozlabs.org/cover/1103565/
+diff --git a/hw/display/Makefile.objs b/hw/display/Makefile.objs
+index a64998fc7b23..0f11d55b14ef 100644
+--- a/hw/display/Makefile.objs
++++ b/hw/display/Makefile.objs
+@@ -31,13 +31,13 @@ obj-$(CONFIG_MILKYMIST_TMU2) += milkymist-tmu2.o
+ milkymist-tmu2.o-cflags := $(X11_CFLAGS) $(OPENGL_CFLAGS)
+ milkymist-tmu2.o-libs := $(X11_LIBS) $(OPENGL_LIBS)
+ 
+-obj-$(CONFIG_OMAP) += omap_dss.o
++common-obj-$(CONFIG_OMAP) += omap_dss.o
+ obj-$(CONFIG_OMAP) += omap_lcdc.o
+-obj-$(CONFIG_PXA2XX) += pxa2xx_lcd.o
+-obj-$(CONFIG_RASPI) += bcm2835_fb.o
+-obj-$(CONFIG_SM501) += sm501.o
+-obj-$(CONFIG_TCX) += tcx.o
+-obj-$(CONFIG_CG3) += cg3.o
++common-obj-$(CONFIG_PXA2XX) += pxa2xx_lcd.o
++common-obj-$(CONFIG_RASPI) += bcm2835_fb.o
++common-obj-$(CONFIG_SM501) += sm501.o
++common-obj-$(CONFIG_TCX) += tcx.o
++common-obj-$(CONFIG_CG3) += cg3.o
+ 
+ obj-$(CONFIG_VGA) += vga.o
+ 
+@@ -53,7 +53,7 @@ virtio-gpu.o-cflags := $(VIRGL_CFLAGS)
+ virtio-gpu.o-libs += $(VIRGL_LIBS)
+ virtio-gpu-3d.o-cflags := $(VIRGL_CFLAGS)
+ virtio-gpu-3d.o-libs += $(VIRGL_LIBS)
+-obj-$(CONFIG_DPCD) += dpcd.o
+-obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx_dp.o
++common-obj-$(CONFIG_DPCD) += dpcd.o
++common-obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx_dp.o
+ 
+-obj-$(CONFIG_ATI_VGA) += ati.o ati_2d.o ati_dbg.o
++common-obj-$(CONFIG_ATI_VGA) += ati.o ati_2d.o ati_dbg.o
+-- 
+2.21.0
+
 
