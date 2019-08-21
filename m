@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0Ofm-0005jI-ER
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 07:21:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53696)
+	id 1i0OfX-0005Fs-VG
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 07:20:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53591)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i0OfV-0005BE-Vj
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:47 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i0OfS-00057M-Rv
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i0OfU-0006ge-Me
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:45 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:53255)
+ (envelope-from <laurent@vivier.eu>) id 1i0OfO-0006c8-SJ
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:42 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:36673)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i0Oey-0006KI-Fd; Wed, 21 Aug 2019 07:20:12 -0400
+ id 1i0OfA-0006Re-Ak; Wed, 21 Aug 2019 07:20:24 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1M6EOc-1hto1S1adU-006hG6; Wed, 21 Aug 2019 13:20:02 +0200
+ id 1MXHBo-1hkUrl3R8w-00YiE0; Wed, 21 Aug 2019 13:20:04 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
@@ -27,37 +27,35 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
  qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Michal Privoznik <mprivozn@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Wed, 21 Aug 2019 13:19:38 +0200
-Message-Id: <20190821111947.26580-6-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Stefano Garzarella <sgarzare@redhat.com>
+Date: Wed, 21 Aug 2019 13:19:39 +0200
+Message-Id: <20190821111947.26580-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190821111947.26580-1-laurent@vivier.eu>
 References: <20190821111947.26580-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:qzR5HNnO6FY7LGx0tZ0b6gMXbFXJvxbxC156Z+PBSbIxM+DXenD
- YUNVZX3yOe4338y5su+c7Y2AbEE3LqLKqc3aoz3prxZMjA+m6A5XEXpiNTGx5yHz0OSvNpf
- K4W2W5g5oBq3PBYnDx++LqqUdbWR0No6faQiChNygLJwIvKbFAr3vfwHob6cVqn6BlVSgAu
- 8XzTBpNY1GAPXorywxN7Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:U928ZJdrwHE=:vlZvRbvlAJUrfcrRTtoV7P
- Y6TKwYAWp0qZenfkVEVlU/Y+Q9mOH1eNUvWtyzr1HwZIMFA8zlqxAXceMSTeOdnKldVkThGub
- bGrXhU0lVM+evvYUBpgrInf7Cl3thPtLkUbNS/pn+AvMupQRBf7QE4ZbTOH8z1eKBEcrpI6Wp
- 1D19HvETiZ9JHGl/7Dv1nYQk7UyAu0lSTweb95GuMIcHhhdp9JSfrwmPkWUkyZZLBMUSEe3/X
- I0Yw4BbqRfT/3V5C6FGQtdNxe0bfaZ8lBmJrBq/70Y3ksxogY55yEQdpUOc7d42Li68KL6Wmo
- Rk35szsMKdnEWdAj+ZswvzTePvRv8uECkvZPwRJpOFI5ru4ZvxYrv/nAIVIpQM2kVQNTHwkN/
- MubdEWWimn0TCyZvMw/bm6zmuiv7fsTYhxlO4di5FPXBWA5dlVAwZ2HKDmPkcJ/VjX23hHlo7
- BngVyUgYtlYcLzr7HqR805jR6xcuuOcGyr42J6O+5T6D4Xj053ronssbip6xeNgV5b5e9+N1u
- /35q5+5t+6T4Ob/x8PwN0xqnjnavGLSp/SRKn8NY9tujweewa8fWKjC/J8OxZLWjg+CU9I6ZX
- 4765MiiEZ7n10Iootlu7B1DnuhOSaRZ+3CtgI8Tnrg7KfwS2WD0hLx5i4nEXZtHgC4C3U53Mc
- idyILR3iV3lOFNBtkK7hxMp3e7Yt7EA0Q0r0nBSj5vH0+t/uSG78unKDQWVny/7M0cb5Xa01q
- UcROufOUnraJqSv9gflcHcH6n2rAKzduV+wZZDTmbBzYcTVb7V2mv1ProG8=
+X-Provags-ID: V03:K1:u2atPAoeKpCu5Yo8clBe1Kcd3F6j4dMNP1n92CWUCIMF4iVFIN0
+ HB3W5V2tXHG2XG9Zm+Pa8nQINXF2pbWxvfvh2RAM8NfvoZXbQtpe9szEYfiXEwdj9YjqWIB
+ PHDnBafwblquxKDujYqeU0nulnO7JcGY8tW4sRoULOwhlj/LEw08cbFsSm0YsDzpYrcA8TN
+ zJZL6suIPqxMmvCij41/g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+Cos+Wn8A+E=:EWRm5POM6JvWWBgwUC1dty
+ XbsDJN4qMDvRF/LC/PQ0lUTQuVf/vtc9MXw12GuA4HIjLerASa2z09iOdqYnl2mmjhKxDDdQb
+ Jr4y63PH1lizLwlv5pyVFRxe2xs8CaKUaCAjEJz+PSRrt1XSmJ+kaSDb3OMN7uoWH7B90f13m
+ XyB8hZEFcNgs3iqAnogpmoB7ds4wUGjMsxamQBA1YTzz5o6bNNc1g7qZadhYTFIntGvWUzVsX
+ PkMiP7I4imrCGVmQQ7GT50nP/QPvsJMnQFX8LqzV5NC7N1KMvNZQadEy3GrQyzEQ/I4maM/4L
+ 6sw4JaYy6f/sxAHZ5I16+W3EfQV4UuZxlp7ONfNyYKXzUpdtYGLTnk+Uycu4K6OG/rlFxytCc
+ hIaN8RRNJHeOJ2xMD0bgR9bU5d7zqnwz7UyEMRG45gUrLIReVjWXxg2uYtclJwMyNgkT8bDnf
+ gQWI4vUp91zDKX49cz738GNQB+mdqayZCy4C0cmgvII/suqIZXeiDIuZJdBghBjU7GTKicEEw
+ jKaG+4Yct5Jk6XHAoiGLpivJHIJwqJfru5/EMhh91PX9ZSfPxNG3l/lLYzhUxeCjL0mlMy+Fx
+ m1AYQY0ScDO9PWywouTom8kzT2LWy4XnV6iPPzcYqyRchK/OGecrpa0ZKoOFn/u8komWXEODX
+ jMGwj0apc6wBsmPllCElERy9rxuRtbA8MCZvfB6W1mOyFf3MfKJeCyxMPEi78bw0qRN+I4nBm
+ Knmol9q88Z2yEnN5N+dl6bcFCNd2XmUkWSOyeirx7WXDQMdSvCVze041XJk=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
-Subject: [Qemu-trivial] [PULL 05/14] .gitignore: ignore some vhost-user*
- related files
+X-Received-From: 212.227.17.10
+Subject: [Qemu-trivial] [PULL 06/14] hw/net/e1000: Fix erroneous comment
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,45 +67,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Aug 2019 11:20:48 -0000
+X-List-Received-Date: Wed, 21 Aug 2019 11:20:46 -0000
 
-From: Michal Privoznik <mprivozn@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Commit d52c454aadc creates
-'/contrib/vhost-user-gpu/50-qemu-gpu.json' and '/vhost-user-gpu'
-and commit 06914c97d3a creates '/vhost-user-input' neither of
-which is ignored by git.
+Missed during the QOM convertion in 9af21dbee14.
 
-Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <db150a03315a89a849ab9968e4a5a26110d41424.1562942402.git.mprivozn@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20190715102210.31365-1-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- .gitignore | 3 +++
- 1 file changed, 3 insertions(+)
+ hw/net/e1000.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/.gitignore b/.gitignore
-index fd6e6c38c7b9..e9bbc006d39e 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -65,6 +65,8 @@
- /scsi/qemu-pr-helper
- /vhost-user-scsi
- /vhost-user-blk
-+/vhost-user-gpu
-+/vhost-user-input
- /fsdev/virtfs-proxy-helper
- *.tmp
- *.[1-9]
-@@ -131,6 +133,7 @@
- /docs/interop/qemu-qmp-ref.info*
- /docs/interop/qemu-qmp-ref.txt
- /docs/version.texi
-+/contrib/vhost-user-gpu/50-qemu-gpu.json
- *.tps
- .stgit-*
- .git-submodule-status
+diff --git a/hw/net/e1000.c b/hw/net/e1000.c
+index 8ae4e08f1e90..a73f8d404e6c 100644
+--- a/hw/net/e1000.c
++++ b/hw/net/e1000.c
+@@ -1608,7 +1608,7 @@ static const VMStateDescription vmstate_e1000 = {
+ 
+ /*
+  * EEPROM contents documented in Tables 5-2 and 5-3, pp. 98-102.
+- * Note: A valid DevId will be inserted during pci_e1000_init().
++ * Note: A valid DevId will be inserted during pci_e1000_realize().
+  */
+ static const uint16_t e1000_eeprom_template[64] = {
+     0x0000, 0x0000, 0x0000, 0x0000,      0xffff, 0x0000,      0x0000, 0x0000,
 -- 
 2.21.0
 
