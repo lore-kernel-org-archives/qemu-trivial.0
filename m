@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0Ofc-0005Q9-TT
+	id 1i0Ofe-0005R5-O8
 	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 07:20:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53536)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53532)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i0OfR-00053x-0L
+ (envelope-from <laurent@vivier.eu>) id 1i0OfQ-00053P-T0
  for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i0OfO-0006cM-Sw
+ (envelope-from <laurent@vivier.eu>) id 1i0OfO-0006cR-TY
  for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 07:20:40 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:33997)
+Received: from mout.kundenserver.de ([217.72.192.74]:42335)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i0OfA-0006Sm-GC; Wed, 21 Aug 2019 07:20:24 -0400
+ id 1i0Of6-0006Pq-Q6; Wed, 21 Aug 2019 07:20:21 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1Mgw7n-1iRlrP1GE1-00hPWR; Wed, 21 Aug 2019 13:20:14 +0200
+ id 1MWBGG-1hlanV1wyI-00XblI; Wed, 21 Aug 2019 13:19:59 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
@@ -27,35 +27,37 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
  qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Thomas Huth <thuth@redhat.com>
-Date: Wed, 21 Aug 2019 13:19:46 +0200
-Message-Id: <20190821111947.26580-14-laurent@vivier.eu>
+ =?UTF-8?q?Carlo=20Marcelo=20Arenas=20Bel=C3=B3n?= <carenas@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Wed, 21 Aug 2019 13:19:36 +0200
+Message-Id: <20190821111947.26580-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190821111947.26580-1-laurent@vivier.eu>
 References: <20190821111947.26580-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:2/y0RZimKS2QqEOdr6rtgUM5CISmSCnCXkpUKfp06kwghkw65uO
- +sdap4Mi/6IvHrpD4ZpS37Mu6sfonvd1tVbyCj0Zp0kRG5TW+Z5DOv0oeDyF7BvZyosU1ZA
- VN+3zb8BNrVlQ+H/7037YZvZMy6sE2LNsyDtUAn8FUc6+i9qXNai3GRq8gNdWyOTcyVGmTp
- tgnC4ZG82q7V/7ksClrFA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:rWnds0iQH3A=:RCdOgpsm5csAK/OyCYy1Zi
- hTNpgerpd4pgrgF1Ibwc8aAN6CuJWexIaEFkHvx28JGaV7b/avPHvur/VGbgCeKB0R3XvNB60
- Yi4TcQDY00bhqnI8lfV1JAEwMr3wZGKZSrkjvZiI/9zfMcxY3L7dseY54o6vKD9PDnysix62w
- l8HEF3Hoy4pWssPA/YEIx4RJfxvCugcgHa5fcMAJNHPCDPfxFKuEbbc2p3RCC+criG3ujbImS
- OAazKJE62+gsEI54XiiH7mRlC4nbVVHrLqd3y6qxTPLAKPw/LyaHMWfre05PwQczb4qXaOOij
- wb8QHuXwCsF1Mkfsw7A9hQIGRM+dN4GPRgzOwzGJ91Dj01SVFCzgcD+hWayVAV4xbJYZD3iu2
- 9cmoYjLcrwGOSbMM7nlQ789eusPg+R0OEIaK5SbJl16A3cXuWzhBbCPDIyXOGaM3DHK12n93O
- fNv8ITHtEeB5CeR9Z3fSDO0QewO8z2lrMbNtMTt5WRWreFiAj+GJAzqFhICN9U4lY3XVNeai4
- 9MpKb/vZ/rrOS9LRmcEMq1C4zMQ8/qKTdm30JWJklNE0g6bHMvyEERAw7J6eLajfNMhLZZe/h
- MdSMR8V7ZUO2mpI/0qPKHfHMVpnl+oo4f4m5AKMIttelEYdfxvfugvLyCjWQztAHE9ued42Wo
- HH2BMFwbF5OWqM5g5LZV1LMIjfHbEFfYWFHBnwHDsXOn55KACX/J35XUbOb2ZDmV6HbV4Ain/
- E3kCbGNdojif0toyP8lKo9vMthStH6gIX8d+3+00tTKS5m991IxcoGjhN+o=
+X-Provags-ID: V03:K1:ZV7dLwTZZz5R+wuccd172/uspKnkVx3+luV7blIDhC72uT07rni
+ R8CpCIws4VISkdZq/3xxqth6IJA9AyGo7IbTVcDtHzY+u/CzoFe0GmRiTWDN/hjxmdhkUNp
+ P6vCRc56N3ylwfIHhItTV+42TJ0sHCigl1XZDiqOMyM3caGXZWNK5MIo9EXcCCXZVpXxhfo
+ EKgzDQAmDsHwAB4kX8R0g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:xjV6d8eXXZY=:9ZScjLxS+qktx/ZdKggwCz
+ DPH/XYmvR7iPh9kTh0z/r1dSHQGu8BOH3QpaUns722Q5sClPJ3hSvQN2+nImbH9ArwPwVa4an
+ zkxYRppsz+C2Akyw8JWLx8EOeCLACP+l2F8UIHP1FZx+X3TCCjbJxeq5SI5dkVRqJZenw1FyZ
+ EMqefvVr9Ofl2ld5hWDAe23fIHeDpa3Fwbc0q06o1xW7AKyhR0+5s5KdiFSsARkH0ljmkw8Am
+ yQRrffxj+LrfSOR6mPq2uSYLTdbsOpmZs8nAlRpIvMytQzYVa3EyXF/9QJsZErCC62F4Ae9LK
+ ITaqr2wnRqbwPiR3Jpca/rlsYszqkMWRy9V9gcpbjCk+KyDHoonnH6saNpDsZBr1FqyK8HKvL
+ HS7wzYZbwXLy8VA3quxHvQMniIfW8R8fPDPiRFXEOgQjo4ECbthC8vzcmAj7IR11aasa/PDUK
+ utuZVfP6sM06FJMqRbuHEn82Q3ObXZcFtKbODnGDAglEFWaYmx3BF7DOpzvmoVEeFW7cvI7ly
+ MxyAi8kQW9cY0DvS8FkCDWGRqikgIKfJqgBTU8P+F1gj8yPSgZCTQ0OpMN+ov7tTo3csaPpqN
+ LoKjKCgFsTtX5JwjxgTHAInhvuND9P2xOFZ9ov7eOZ3GWwexwhvzHZ9u1ZBb1EZQv7r8dPSDQ
+ +A+5FTOJl6Uw0jDhcdUSP8FnR97WqERkrIwHcUu+Rr/tjq02ieoVIrKL7wQoHMBXIi5fUqf3k
+ NE5xaj6U7m6q9SjsqdbWrzmIdomKxI16awQqK0vpZhqYNC2o7wRVlH3yQho=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 217.72.192.74
-Subject: [Qemu-trivial] [PULL 13/14] hw/display/sm501: Remove unused include
+Subject: [Qemu-trivial] [PULL 03/14] configure: remove obsoleted $sparc_cpu
+ variable
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,34 +71,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Wed, 21 Aug 2019 11:20:45 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Carlo Marcelo Arenas Belón <carenas@gmail.com>
 
-The "cpu.h" include makes devices target-specific. Since it
-is not used, remove it, so the device become generic (we can
-now compile it once for all targets).
+9b9c37c364 ("tcg-sparc: Assume v9 cpu always, i.e. force v8plus in
+32-bit mode.", 2012-09-21) removed the need for this variable and
+most of the references to it, but this one.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20190812113739.16587-2-philmd@redhat.com>
-[lv: fix conflict with 650d103d3ea9
-     ("Include hw/hw.h exactly where needed")]
+Remove defunct code, no effect or functionality change expected.
+
+Signed-off-by: Carlo Marcelo Arenas Belón <carenas@gmail.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20190709234330.89699-1-carenas@gmail.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/display/sm501.c | 1 -
- 1 file changed, 1 deletion(-)
+ configure | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-index d9e5762e367a..1f33c87e654e 100644
---- a/hw/display/sm501.c
-+++ b/hw/display/sm501.c
-@@ -28,7 +28,6 @@
- #include "qapi/error.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
--#include "cpu.h"
- #include "hw/char/serial.h"
- #include "ui/console.h"
- #include "hw/sysbus.h"
+diff --git a/configure b/configure
+index 714e7fb6a1fb..4e7b79c826a2 100755
+--- a/configure
++++ b/configure
+@@ -6384,9 +6384,6 @@ if test "$vnc" = "yes" ; then
+     echo "VNC JPEG support  $vnc_jpeg"
+     echo "VNC PNG support   $vnc_png"
+ fi
+-if test -n "$sparc_cpu"; then
+-    echo "Target Sparc Arch $sparc_cpu"
+-fi
+ echo "xen support       $xen"
+ if test "$xen" = "yes" ; then
+   echo "xen ctrl version  $xen_ctrl_version"
 -- 
 2.21.0
 
