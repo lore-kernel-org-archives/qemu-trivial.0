@@ -1,24 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0MKK-0006gd-6o
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:50:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56930)
+	id 1i0MOZ-0005C9-7C
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:55:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57820)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i0MKE-0006fh-Gz
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:50:40 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i0MOW-00057e-95
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:55:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i0MKB-0001MZ-Rj
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:50:37 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:53445)
+ (envelope-from <laurent@vivier.eu>) id 1i0MOV-000498-8d
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:55:04 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:53473)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i0MKB-0001M4-Il; Wed, 21 Aug 2019 04:50:35 -0400
+ id 1i0MOS-000477-SA; Wed, 21 Aug 2019 04:55:01 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1M4alK-1hzo5h1FJu-001k9C; Wed, 21 Aug 2019 10:50:31 +0200
-To: Anton Kuchin <antonkuchin@yandex-team.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>
-References: <20190716090839.19708-1-antonkuchin@yandex-team.ru>
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MD9nd-1i8v750HzN-0099bj; Wed, 21 Aug 2019 10:54:50 +0200
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ Corey Minyard <minyard@acm.org>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>,
+ Michael Tokarev <mjt@tls.msk.ru>, Markus Armbruster <armbru@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+References: <20190719131425.10835-1-philmd@redhat.com>
+ <20190719131425.10835-2-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -63,35 +70,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <f8bd0053-c19d-b92b-be05-f58c7de72f4d@vivier.eu>
-Date: Wed, 21 Aug 2019 10:50:30 +0200
+Message-ID: <1651bd5e-b320-84f6-aa10-3c333e259306@vivier.eu>
+Date: Wed, 21 Aug 2019 10:54:45 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190716090839.19708-1-antonkuchin@yandex-team.ru>
+In-Reply-To: <20190719131425.10835-2-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:6xu2yOiuB1NjvYXb/Yu74dkwe7ewD1uY+nQ2xiiOZf6qYoGC125
- 7l4+pY0q3CgHQtKAbqFZhhBWHq6qPiXU8FK0g4UkI18kVRYeOrRWUQJ7iXcjq/xN2qKvxDK
- 0cqyX7wZ22CDZA2GFikMAXVy1O2qfTz+FGQxyaDWz+elpSRNsS6Nrd1egFdcHfMIQP3kmqt
- 0CL6domwFiH971y+XWBTQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:lEjroSYHwBc=:1SAzX6alBehrluGZD14jPl
- 09bKxXI5jSDt2B7xCWoeSmb/IxbWwGpNL5mJwDbiP0xP5GmFEakAet5NEwSA82PF9uD/5GjzZ
- JLldAFeLxST2VzL5GW8VNnE8+M9MO5YoL+U6yAwUvcaVetUWqDLwtVWkmYf36WkMpQTBrjIwk
- M4WLrZIJBXQmSQpZHkQ/KtoaVa9KkdHeQxtusnTHHB+BTp7t1xRa2FQVcdJjJw3GE+CpCIlfW
- B5bnaJrmIf3f65Ik45R1cVtd5PchclcyxGm2DS5EtV7H2PREomiwDyQQZB1lavxVIdXP/57yc
- C4yQcbt3S7wQOO5YBfzb/QdZ8/4xB0XHFvJwMNsqXQi2QwXwR2e86KYOaokuE9uabcrCYxFnE
- I5wcKVwQOmQnz2PQF17S1aICxrSAq3IqyjokKhcfqZkCk884bTKcv33BhXQP1LGcdQryFSNZo
- 3uNOSy1+l29VHiGJraYgd14sOmVPl8Zk4Kh79pLAmAYy7TA5sAiXbkT567aubSXesxrWkXdkp
- RgGlatkHDeQSp2RCHuP9kpjdKw2AcaPcmtiUUncu6RDy3QsdmtxlIk5rhGi8CKs+I/pFpyBEe
- /FVJDFVUL0SiT94cRkJFhCKvu/x5dsGzkuxYk0ShWBjvcSkU/UcVCGVV+rJeYaKbfjdLXxH6x
- JFYX5swZpvY8YNyoQoNz6i4uJaN7qUQtBJHu32XB7RQaPxnoap/yaaR9HHx18ADicZB+PUZPq
- S3WWJCdT62/HsjBJuXmGbFpbDVTFdueijPS87B/6qjxH05bDWQWeikCP364=
+X-Provags-ID: V03:K1:+EccMqBK6lTkUxNlxtAPnaafJMHzg8UgO3N8hh4tiTlWl6irN4G
+ srFm9E0/5/LaPomrnusbVTHcXCZGUFrsdp+UFHmWfmnZB1ygzfZ/TyOvP/L9IKXWSyLH21e
+ 06hB/DAKIIPzeKlD62yi+f9BhD6fzy0xRXhgIg0tVKCj4n5YAbUIaUFCHkJsq2nYMZLTj02
+ nHkbalnfB6Zlx1Iu6P1kQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:0u7Opcrp1ic=:s+0MF6HGAiY+mMgKccbGtf
+ GzgR/r/eINZYGKyPRplxU2amPDQXQc/3rbUcJI5Jq6QGYiTdJWxuASmfiQGq4RABgAQx/5by5
+ i/e+lQPMlAJ8rLWDvWm5p7WcvqgQZ/EI6qadxlWCwrYlgbTFODssNV6cQd9YxxY5Vn4bBqC3u
+ IcZbfQ+sg401b0jtA9DflmQSCw5s5vjBU5XRm3+7auUd4OLVtF+koDPe5tLNyDwHej0HtGCrJ
+ 9dVmNmifiH2H1b7NjOcG5JrBDlo0Ps/UFla/2y5iCUQr/OEqns0iVJZK/2GJ3obCf2wZMnk4o
+ DYOPhIZWlf0F5kdzvjl4DueiJCom50BuO+aLObXDiQKkA9pCXAXclkxQUowzPAihgc7hjXn9g
+ FNmsl45TrydIEsALOIgGB5Thx6XqgXUF7p87mVOFagcWiQH0+aGZ7EFU060+FvEJFVBENmnib
+ tnQgD6S7axRT+mKu5kVTUIZ6e4I4XOBbUkcmVHq2nncvAaQcq2o6Sosz6SluSiiX2wy/Sa6jh
+ GLbdanfaHbm7QrLSGbBTqSCtBeCfuyzyAHZRkXYwmvo/CDAwc6VklfY4lVQ9Ly1If0LC3QDbg
+ bM3GoJ06UIQ91z8ggJNe57hQWeDN79S6MG3XMxzxb80x8z/tcPU+eyr7P0Bq6oBtV+G6gpKr+
+ l3zXVo9ia0i+tcKrLm44zRpHmMG+E2f1LG8cynFFVBX4MMdMX/lC/Vw3OMNWr0iVINbG9mTzX
+ /s0tm42T9lk/XFFWGvXOqI9gmfoaM7eI/3kiAwCN2JScfIxZhE3YYSbs7Dg=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.133
-Subject: Re: [Qemu-trivial] [PATCH] virtio-net: remove redundant qdev from
- VirtIONet
+Subject: Re: [Qemu-trivial] [PATCH-for-4.1? 1/7] json: Move switch 'fall
+ through' comment to correct place
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,53 +110,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Aug 2019 08:50:41 -0000
+X-List-Received-Date: Wed, 21 Aug 2019 08:55:05 -0000
 
-Could you add a commit message describing why we can remove the qdev field?
+Le 19/07/2019 à 15:14, Philippe Mathieu-Daudé a écrit :
+> Reported by GCC9 when building with CFLAG -Wimplicit-fallthrough=2:
+> 
+>   qobject/json-parser.c: In function ‘parse_literal’:
+>   qobject/json-parser.c:492:24: error: this statement may fall through [-Werror=implicit-fallthrough=]
+>     492 |     case JSON_INTEGER: {
+>         |                        ^
+>   qobject/json-parser.c:524:5: note: here
+>     524 |     case JSON_FLOAT:
+>         |     ^~~~
+> 
+> Correctly place the 'fall through' comment.
+> 
+> Reported-by: Stefan Weil <sw@weilnetz.de>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  qobject/json-parser.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/qobject/json-parser.c b/qobject/json-parser.c
+> index 7d23e12e33..d083810d37 100644
+> --- a/qobject/json-parser.c
+> +++ b/qobject/json-parser.c
+> @@ -519,8 +519,8 @@ static QObject *parse_literal(JSONParserContext *ctxt)
+>              }
+>              assert(ret == -ERANGE);
+>          }
+> -        /* fall through to JSON_FLOAT */
+>      }
+> +    /* fall through to JSON_FLOAT */
+>      case JSON_FLOAT:
+>          /* FIXME dependent on locale; a pervasive issue in QEMU */
+>          /* FIXME our lexer matches RFC 8259 in forbidding Inf or NaN,
+> 
+
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
-Le 16/07/2019 à 11:08, Anton Kuchin a écrit :
-> Signed-off-by: Anton Kuchin <antonkuchin@yandex-team.ru>
-> ---
->  hw/net/virtio-net.c            | 3 +--
->  include/hw/virtio/virtio-net.h | 1 -
->  2 files changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-> index b9e1cd71cf..16d2ad5927 100644
-> --- a/hw/net/virtio-net.c
-> +++ b/hw/net/virtio-net.c
-> @@ -387,7 +387,7 @@ static void rxfilter_notify(NetClientState *nc)
->      VirtIONet *n = qemu_get_nic_opaque(nc);
->  
->      if (nc->rxfilter_notify_enabled) {
-> -        gchar *path = object_get_canonical_path(OBJECT(n->qdev));
-> +        gchar *path = object_get_canonical_path(OBJECT(n));
->          qapi_event_send_nic_rx_filter_changed(!!n->netclient_name,
->                                                n->netclient_name, path);
->          g_free(path);
-> @@ -2759,7 +2759,6 @@ static void virtio_net_device_realize(DeviceState *dev, Error **errp)
->      nc->rxfilter_notify_enabled = 1;
->  
->      QTAILQ_INIT(&n->rsc_chains);
-> -    n->qdev = dev;
->  }
->  
->  static void virtio_net_device_unrealize(DeviceState *dev, Error **errp)
-> diff --git a/include/hw/virtio/virtio-net.h b/include/hw/virtio/virtio-net.h
-> index b96f0c643f..4a1b599d48 100644
-> --- a/include/hw/virtio/virtio-net.h
-> +++ b/include/hw/virtio/virtio-net.h
-> @@ -174,7 +174,6 @@ struct VirtIONet {
->      uint32_t *vlans;
->      virtio_net_conf net_conf;
->      NICConf nic_conf;
-> -    DeviceState *qdev;
->      int multiqueue;
->      uint16_t max_queues;
->      uint16_t curr_queues;
-> 
-
 
