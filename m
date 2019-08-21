@@ -1,25 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0MCX-0005Iu-IK
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:42:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55672)
+	id 1i0MKK-0006gd-6o
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Aug 2019 04:50:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56930)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i0MCT-0005Cq-Tq
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:42:38 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i0MKE-0006fh-Gz
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:50:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i0MCS-0005fW-W3
- for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:42:37 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:49519)
+ (envelope-from <laurent@vivier.eu>) id 1i0MKB-0001MZ-Rj
+ for qemu-trivial@nongnu.org; Wed, 21 Aug 2019 04:50:37 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:53445)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i0MCQ-0005eH-Pt; Wed, 21 Aug 2019 04:42:35 -0400
+ id 1i0MKB-0001M4-Il; Wed, 21 Aug 2019 04:50:35 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1Mnq4Q-1icV1Z0RcQ-00pMxw; Wed, 21 Aug 2019 10:42:31 +0200
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1M4alK-1hzo5h1FJu-001k9C; Wed, 21 Aug 2019 10:50:31 +0200
+To: Anton Kuchin <antonkuchin@yandex-team.ru>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
- Markus Armbruster <armbru@redhat.com>
-References: <20190715102210.31365-1-philmd@redhat.com>
+ "Michael S. Tsirkin" <mst@redhat.com>
+References: <20190716090839.19708-1-antonkuchin@yandex-team.ru>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -64,34 +63,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <c598e222-d707-2233-782c-cbf64ed3099e@vivier.eu>
-Date: Wed, 21 Aug 2019 10:42:29 +0200
+Message-ID: <f8bd0053-c19d-b92b-be05-f58c7de72f4d@vivier.eu>
+Date: Wed, 21 Aug 2019 10:50:30 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190715102210.31365-1-philmd@redhat.com>
+In-Reply-To: <20190716090839.19708-1-antonkuchin@yandex-team.ru>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:qtqFpAGZeKFeAMKikU/nqyDfd/UWy+CEfKAWcHyZFXAQIh/6iLn
- 0Y5DqvDMCYgNjHGKS1RNZspx6h1RwzsNHefwMftoiiYOOP2ycvwLB4fPyDSJ8LdFL6VSAJ0
- oYltIb/nlJsMJP9R9Os/dM/KxQ4kP/6QplAs2GQ0yQrQ35Go5Nj2wcGC6CDUrBFWY7HTM5w
- krw82WU8faMakRzgDFkAA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:QN8YddFhuyc=:b6i4Us0vOa+cw21Vbk6pCw
- HSXjRSVIsdbaDMDH+ODypYS0dlPo+a1kJ9uYzHLLucI8Izq4U4Zyr0h5MggZXYz5/Yb1WZzX+
- H9X8DAcGduVyF2sxNCxWjrJ7i7DDbCku2ZTyVX92e5hxBu8AFtpZ9kvz8j8NgR0W11ju9xF99
- 5oAtBMzFWkK6NCUEEX8Qy86x8FWbMbFZzyhKZSlQDqswJfHn6x7yA7M9arvy4osjRBlFQMbA1
- n2qZFxu0+yNvQ18x9oD9JgJ1HxszVSj4r5WNtl/9fCi+5pJQGl3mVOHV4HQC6g4Uli2n/s+fo
- AuURpxBlauQU/G8eMleizN+/OKJmjjiCBK9pfKtLO10/yDKd1VU3CYTMbaG7h7RzTCmO+eB1+
- HppP4rtTU0c3vk71CvV3TGGqEtfO4DosRF4HdXvyb8C0U9E504vFOQEMZlBOTvbRcn6SRPmnv
- WsKoFrZ7311ke3zqX/Eik8t3uqUxBdDNkMtNjDzY/ZgUyNGXqSiaFrmlrErQ4kOFZIvspA//1
- HaMVZmTBbkOzAgoynyS62Q9YjxGMvieDiWzMa3LiU1+50VheaXdsrnJKQ2GfNYKD0Y7PY8sLG
- /LeI47ZhFhFl8sIn/J6xO7yCbcaa7xiyZD13KC6rqLXbTOpccYbH+aDtT6HQNSfFviVHC1oTh
- 2PcKued90N5UC0hgiahe/DHvlwzw6M3HP00L3Zpyct0Hf2wguvfvQVUEenZ+yY8/+R9Wq6oOK
- ftq2Mrvtwx4SqeDFyFdl8mTKGL9U4E+9dSK3uqS51SmrZk+r+v/44+aJL4w=
+X-Provags-ID: V03:K1:6xu2yOiuB1NjvYXb/Yu74dkwe7ewD1uY+nQ2xiiOZf6qYoGC125
+ 7l4+pY0q3CgHQtKAbqFZhhBWHq6qPiXU8FK0g4UkI18kVRYeOrRWUQJ7iXcjq/xN2qKvxDK
+ 0cqyX7wZ22CDZA2GFikMAXVy1O2qfTz+FGQxyaDWz+elpSRNsS6Nrd1egFdcHfMIQP3kmqt
+ 0CL6domwFiH971y+XWBTQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:lEjroSYHwBc=:1SAzX6alBehrluGZD14jPl
+ 09bKxXI5jSDt2B7xCWoeSmb/IxbWwGpNL5mJwDbiP0xP5GmFEakAet5NEwSA82PF9uD/5GjzZ
+ JLldAFeLxST2VzL5GW8VNnE8+M9MO5YoL+U6yAwUvcaVetUWqDLwtVWkmYf36WkMpQTBrjIwk
+ M4WLrZIJBXQmSQpZHkQ/KtoaVa9KkdHeQxtusnTHHB+BTp7t1xRa2FQVcdJjJw3GE+CpCIlfW
+ B5bnaJrmIf3f65Ik45R1cVtd5PchclcyxGm2DS5EtV7H2PREomiwDyQQZB1lavxVIdXP/57yc
+ C4yQcbt3S7wQOO5YBfzb/QdZ8/4xB0XHFvJwMNsqXQi2QwXwR2e86KYOaokuE9uabcrCYxFnE
+ I5wcKVwQOmQnz2PQF17S1aICxrSAq3IqyjokKhcfqZkCk884bTKcv33BhXQP1LGcdQryFSNZo
+ 3uNOSy1+l29VHiGJraYgd14sOmVPl8Zk4Kh79pLAmAYy7TA5sAiXbkT567aubSXesxrWkXdkp
+ RgGlatkHDeQSp2RCHuP9kpjdKw2AcaPcmtiUUncu6RDy3QsdmtxlIk5rhGi8CKs+I/pFpyBEe
+ /FVJDFVUL0SiT94cRkJFhCKvu/x5dsGzkuxYk0ShWBjvcSkU/UcVCGVV+rJeYaKbfjdLXxH6x
+ JFYX5swZpvY8YNyoQoNz6i4uJaN7qUQtBJHu32XB7RQaPxnoap/yaaR9HHx18ADicZB+PUZPq
+ S3WWJCdT62/HsjBJuXmGbFpbDVTFdueijPS87B/6qjxH05bDWQWeikCP364=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
-Subject: Re: [Qemu-trivial] [PATCH] hw/net/e1000: Fix erroneous comment
+X-Received-From: 212.227.126.133
+Subject: Re: [Qemu-trivial] [PATCH] virtio-net: remove redundant qdev from
+ VirtIONet
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,33 +103,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Aug 2019 08:42:39 -0000
+X-List-Received-Date: Wed, 21 Aug 2019 08:50:41 -0000
 
-Le 15/07/2019 à 12:22, Philippe Mathieu-Daudé a écrit :
-> Missed during the QOM convertion in 9af21dbee14.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  hw/net/e1000.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/net/e1000.c b/hw/net/e1000.c
-> index 1dc1466332..ec8ded7252 100644
-> --- a/hw/net/e1000.c
-> +++ b/hw/net/e1000.c
-> @@ -1611,7 +1611,7 @@ static const VMStateDescription vmstate_e1000 = {
->  
->  /*
->   * EEPROM contents documented in Tables 5-2 and 5-3, pp. 98-102.
-> - * Note: A valid DevId will be inserted during pci_e1000_init().
-> + * Note: A valid DevId will be inserted during pci_e1000_realize().
->   */
->  static const uint16_t e1000_eeprom_template[64] = {
->      0x0000, 0x0000, 0x0000, 0x0000,      0xffff, 0x0000,      0x0000, 0x0000,
-> 
-
-Applied to my trivial-patches branch.
+Could you add a commit message describing why we can remove the qdev field?
 
 Thanks,
 Laurent
+
+Le 16/07/2019 à 11:08, Anton Kuchin a écrit :
+> Signed-off-by: Anton Kuchin <antonkuchin@yandex-team.ru>
+> ---
+>  hw/net/virtio-net.c            | 3 +--
+>  include/hw/virtio/virtio-net.h | 1 -
+>  2 files changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+> index b9e1cd71cf..16d2ad5927 100644
+> --- a/hw/net/virtio-net.c
+> +++ b/hw/net/virtio-net.c
+> @@ -387,7 +387,7 @@ static void rxfilter_notify(NetClientState *nc)
+>      VirtIONet *n = qemu_get_nic_opaque(nc);
+>  
+>      if (nc->rxfilter_notify_enabled) {
+> -        gchar *path = object_get_canonical_path(OBJECT(n->qdev));
+> +        gchar *path = object_get_canonical_path(OBJECT(n));
+>          qapi_event_send_nic_rx_filter_changed(!!n->netclient_name,
+>                                                n->netclient_name, path);
+>          g_free(path);
+> @@ -2759,7 +2759,6 @@ static void virtio_net_device_realize(DeviceState *dev, Error **errp)
+>      nc->rxfilter_notify_enabled = 1;
+>  
+>      QTAILQ_INIT(&n->rsc_chains);
+> -    n->qdev = dev;
+>  }
+>  
+>  static void virtio_net_device_unrealize(DeviceState *dev, Error **errp)
+> diff --git a/include/hw/virtio/virtio-net.h b/include/hw/virtio/virtio-net.h
+> index b96f0c643f..4a1b599d48 100644
+> --- a/include/hw/virtio/virtio-net.h
+> +++ b/include/hw/virtio/virtio-net.h
+> @@ -174,7 +174,6 @@ struct VirtIONet {
+>      uint32_t *vlans;
+>      virtio_net_conf net_conf;
+>      NICConf nic_conf;
+> -    DeviceState *qdev;
+>      int multiqueue;
+>      uint16_t max_queues;
+>      uint16_t curr_queues;
+> 
+
 
