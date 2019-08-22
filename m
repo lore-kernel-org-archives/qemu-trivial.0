@@ -1,41 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0wD9-0005Wo-Cm
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Aug 2019 19:09:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53154)
+	id 1i0wD9-0005Xx-UQ
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Aug 2019 19:09:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53200)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1i0wD0-0005ML-GH
- for qemu-trivial@nongnu.org; Thu, 22 Aug 2019 19:09:37 -0400
+ (envelope-from <philmd@redhat.com>) id 1i0wD6-0005Qw-0e
+ for qemu-trivial@nongnu.org; Thu, 22 Aug 2019 19:09:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1i0wCu-0004hD-5C
- for qemu-trivial@nongnu.org; Thu, 22 Aug 2019 19:09:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55162)
+ (envelope-from <philmd@redhat.com>) id 1i0wD1-0004m4-Pc
+ for qemu-trivial@nongnu.org; Thu, 22 Aug 2019 19:09:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39004)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1i0wCs-0004ex-2x; Thu, 22 Aug 2019 19:09:26 -0400
+ id 1i0wCt-0004gZ-FI; Thu, 22 Aug 2019 19:09:27 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 0B4E4308FC20;
- Thu, 22 Aug 2019 23:09:23 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id C138E18C890E;
+ Thu, 22 Aug 2019 23:09:26 +0000 (UTC)
 Received: from x1w.redhat.com (unknown [10.40.205.175])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 56DBE8D6B;
- Thu, 22 Aug 2019 23:09:19 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7179319C65;
+ Thu, 22 Aug 2019 23:09:25 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Fri, 23 Aug 2019 01:09:13 +0200
-Message-Id: <20190822230916.576-1-philmd@redhat.com>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Date: Fri, 23 Aug 2019 01:09:15 +0200
+Message-Id: <20190822230916.576-3-philmd@redhat.com>
+In-Reply-To: <20190822230916.576-1-philmd@redhat.com>
+References: <20190822230916.576-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.43]); Thu, 22 Aug 2019 23:09:23 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.70]); Thu, 22 Aug 2019 23:09:26 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH 0/3] mailmap: Clean up
+Subject: [Qemu-trivial] [PATCH 2/3] mailmap: Update philmd email address
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -47,18 +50,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Aug 2019 23:09:38 -0000
+X-List-Received-Date: Thu, 22 Aug 2019 23:09:41 -0000
 
-Trivial cleanup of .mailmap to have a nice 'git shortlog' output.
+Use the email address where I spend most of my time.
 
-Philippe Mathieu-Daud=C3=A9 (3):
-  mailmap: Reorder by sections
-  mailmap: Update philmd email address
-  mailmap: Add many entries to improve 'git shortlog' statistics
+Suggested-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ .mailmap | 1 +
+ 1 file changed, 1 insertion(+)
 
- .mailmap | 123 +++++++++++++++++++++++++++++++++++++++++++++++++++----
- 1 file changed, 115 insertions(+), 8 deletions(-)
-
+diff --git a/.mailmap b/.mailmap
+index e1fdc88d25..e68ddd26e6 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -32,6 +32,7 @@ Aleksandar Markovic <amarkovic@wavecomp.com> <aleksanda=
+r.markovic@imgtec.com>
+ Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+ Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
+ Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
++Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> <f4bug@amsat.org>
+ Yongbok Kim <yongbok.kim@mips.com> <yongbok.kim@imgtec.com>
+=20
+ # Also list preferred name forms where people have changed their
 --=20
 2.20.1
 
