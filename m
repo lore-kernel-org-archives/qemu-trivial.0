@@ -1,42 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i0wGC-0001LP-FX
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Aug 2019 19:12:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53701)
+	id 1i12oz-0006y0-BP
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Aug 2019 02:13:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52514)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1i0wG3-0001IF-2w
- for qemu-trivial@nongnu.org; Thu, 22 Aug 2019 19:12:47 -0400
+ (envelope-from <armbru@redhat.com>) id 1i12ox-0006vr-NI
+ for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 02:13:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1i0wG2-0006n3-2g
- for qemu-trivial@nongnu.org; Thu, 22 Aug 2019 19:12:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49272)
+ (envelope-from <armbru@redhat.com>) id 1i12ow-0002Us-NR
+ for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 02:13:11 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54902)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1i0wFz-0006lX-Uy; Thu, 22 Aug 2019 19:12:40 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ (Exim 4.71) (envelope-from <armbru@redhat.com>)
+ id 1i12ou-0002Sq-BK; Fri, 23 Aug 2019 02:13:08 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 3B26BA2E0EE;
- Thu, 22 Aug 2019 23:12:39 +0000 (UTC)
-Received: from x1w.redhat.com (unknown [10.40.205.175])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 96E111001938;
- Thu, 22 Aug 2019 23:12:34 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Fri, 23 Aug 2019 01:12:31 +0200
-Message-Id: <20190822231231.1306-1-philmd@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id BE89F3082131;
+ Fri, 23 Aug 2019 06:13:06 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-117-142.ams2.redhat.com
+ [10.36.117.142])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id EB8CC5E1CB;
+ Fri, 23 Aug 2019 06:13:03 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 5B0431162B63; Fri, 23 Aug 2019 08:13:02 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org
+References: <20190822230916.576-1-philmd@redhat.com>
+Date: Fri, 23 Aug 2019 08:13:02 +0200
+In-Reply-To: <20190822230916.576-1-philmd@redhat.com> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 23 Aug 2019 01:09:13
+ +0200")
+Message-ID: <874l2876kx.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.68]); Thu, 22 Aug 2019 23:12:39 +0000 (UTC)
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.42]); Fri, 23 Aug 2019 06:13:06 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] contrib/gitdm: Add RT-RK to the domain-map
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/3] mailmap: Clean up
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -48,28 +54,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Aug 2019 23:12:48 -0000
+X-List-Received-Date: Fri, 23 Aug 2019 06:13:12 -0000
 
-This company has at least 7 contributors, add a domain-map entry.
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- contrib/gitdm/domain-map | 1 +
- 1 file changed, 1 insertion(+)
+> Trivial cleanup of .mailmap to have a nice 'git shortlog' output.
+>
+> Philippe Mathieu-Daud=C3=A9 (3):
+>   mailmap: Reorder by sections
+>   mailmap: Update philmd email address
+>   mailmap: Add many entries to improve 'git shortlog' statistics
+>
+>  .mailmap | 123 +++++++++++++++++++++++++++++++++++++++++++++++++++----
+>  1 file changed, 115 insertions(+), 8 deletions(-)
 
-diff --git a/contrib/gitdm/domain-map b/contrib/gitdm/domain-map
-index fa9d454473..9efe066ec9 100644
---- a/contrib/gitdm/domain-map
-+++ b/contrib/gitdm/domain-map
-@@ -18,6 +18,7 @@ nokia.com       Nokia
- oracle.com      Oracle
- proxmox.com     Proxmox
- redhat.com      Red Hat
-+rt-rk.com       RT-RK
- siemens.com     Siemens
- sifive.com      SiFive
- suse.de         SUSE
---=20
-2.20.1
+Series
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
+However, it increases the difference to contrib/gitdm/aliases.  I'm just
+as guilty; my recent "[PATCH 2/2] contrib/gitdm: Add armbru@pond.sub.org
+to group-map-redhat" updates only that. and not .mailmap.
+
+Perhaps we want to keep the two in sync manually.  We should then add
+suitable comments to each file.
+
+Could we instead teach gitdm to use .mailmap, and ditch
+contrib/gitdm/aliases?
+
+aliases' format is documented in gitdm's README.  Each line maps a
+non-canonical e-mail address to a canonical one.
+
+.mailmap's format is documented in git-shortlog(1).  It can do a bit
+more.  Even the common part differs: it has two addresses in different
+order *boggle*.
 
