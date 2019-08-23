@@ -1,102 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i1DSw-0001rt-PN
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Aug 2019 13:35:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59375)
+	id 1i1JJ8-0008Os-9n
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Aug 2019 19:49:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50607)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1i1DSq-0001nq-H4
- for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 13:35:08 -0400
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1i1JJ3-0008HT-VL
+ for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 19:49:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1i1DSm-0006cp-Vh
- for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 13:35:02 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34382)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1i1DSh-0006Zp-Ef; Fri, 23 Aug 2019 13:34:55 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 31C2A10F23E5;
- Fri, 23 Aug 2019 17:34:54 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-83.ams2.redhat.com [10.36.116.83])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AF7295D6B2;
- Fri, 23 Aug 2019 17:34:47 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
- Antony Pavlov <antonynpavlov@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- Alistair Francis <alistair.francis@wdc.com>, qemu-trivial@nongnu.org
-References: <20190823143249.8096-1-philmd@redhat.com>
- <20190823143249.8096-7-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
- mQINBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
- yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
- 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
- tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
- 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
- O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
- 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
- gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
- 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
- zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABtB5UaG9tYXMgSHV0
- aCA8dGh1dGhAcmVkaGF0LmNvbT6JAjgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
- AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
- QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
- EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
- 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
- eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
- ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
- zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
- tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
- WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
- UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDuQIN
- BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
- 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
- +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
- 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
- gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
- WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
- VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
- knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
- cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
- X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABiQIfBBgBAgAJBQJR+3lM
- AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
- ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
- fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
- 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
- cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
- ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
- Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
- oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
- IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
- yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-Organization: Red Hat
-Message-ID: <be40e1e8-3a1c-b7f8-4a6f-604e99f529f1@redhat.com>
-Date: Fri, 23 Aug 2019 19:34:46 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1i1JJ2-00040v-Jl
+ for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 19:49:21 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:38818)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1i1JJ2-0003yq-Bb; Fri, 23 Aug 2019 19:49:20 -0400
+Received: by mail-ot1-x341.google.com with SMTP id r20so10288600ota.5;
+ Fri, 23 Aug 2019 16:49:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=GDZjD+DLwOQGXTvn+lxnFGRBmiGUflL7uU0HzcIxmDw=;
+ b=BLrfszeizZllNR9+cd7L8KgG5ZsJ91Tcu10IZuL5l6OnbpqOskWSkvSnE7VSlNRLrH
+ ipTIXkz1PsfuGnu4AR1pzJHphVcT3WDYtoglt070IY+9eRguhMojDHwcyygpmqJo8mCi
+ 02zeR1dlUaIU5AY430TRPAqKlfPQzi17GJgZMkGh6tW4HdzDzw86JLLv4AvtK/Nwtkbt
+ 87zb5DQZrdRmgdTIZMY9dbY0+4JmRpt9iFrWTBvKASO6uCFHvMegZV5VglyxLfieFoP9
+ 49B87HKiLVHJIKj4jy1sUXkMrH/t3tcYMrueGB3ndYaQx1BoX0abUn1RJDgL3C63W9nz
+ vvtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=GDZjD+DLwOQGXTvn+lxnFGRBmiGUflL7uU0HzcIxmDw=;
+ b=TdZEOnYPJz0cbu1eLeeOwtwjtTJxkDFvEf5wflaHpRTDCxwZ5q/CQ7T1cMhFcXg6Oe
+ +vOXBM2t260UhQaqnuq/e8gNiXAZeZ6XtPJEISmDsYLOaR2ndXUyOtMC9Q2mmAA5ExVF
+ tSyvczsHCML1hK4221iLTNc+MihHwsKsCU2B+h7jjglClgkclpOcYS6bfqA1N1w6afkc
+ 78P8kYndljiP24If63DRId8BpXkjbRnB2/kPpHGuDdUWqJjVdlrKQMstVfsO5vLI9iWe
+ UN04ejDsWyY0h1o77x7vzRlZlYSAQ5eCSQGR5ErpASm2Tdd7n1uqiImOCJc5h/M+8V4o
+ jKrQ==
+X-Gm-Message-State: APjAAAXe8MRF/WM9BFQovDr7F0uxiokMtpr/VZ3u6J6HnCPqREVMY4Ti
+ fLcJNMjh11em0AXZklv8s9vLtPJq9Ou3bq1o3dA=
+X-Google-Smtp-Source: APXvYqz8T03T+k1hn/p5CHQhDDNRR+LCEIq2wM3DkvIAPlVtG5KvCtbBMQ7afvwcZu5HliAWGDV2GmPXrsAfjE34ioA=
+X-Received: by 2002:a05:6830:15cc:: with SMTP id
+ j12mr6174900otr.64.1566604158204; 
+ Fri, 23 Aug 2019 16:49:18 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190823143249.8096-7-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.66]); Fri, 23 Aug 2019 17:34:54 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH v2 6/6] hw/net/xilinx_axi: Use
- object_initialize_child for correct ref. counting
+Received: by 2002:a05:6830:10d7:0:0:0:0 with HTTP; Fri, 23 Aug 2019 16:49:17
+ -0700 (PDT)
+Received: by 2002:a05:6830:10d7:0:0:0:0 with HTTP; Fri, 23 Aug 2019 16:49:17
+ -0700 (PDT)
+In-Reply-To: <874l2876kx.fsf@dusky.pond.sub.org>
+References: <20190822230916.576-1-philmd@redhat.com>
+ <874l2876kx.fsf@dusky.pond.sub.org>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Sat, 24 Aug 2019 01:49:17 +0200
+Message-ID: <CAL1e-=hvVp4i=s_Wr0iKy5UO7kH6xw3QR0Ms4_v_tobJSM2wRA@mail.gmail.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ qemu-devel@nongnu.org, alex.bennee@linaro.org
+Content-Type: multipart/alternative; boundary="0000000000005a7f4e0590d174ef"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/3] mailmap: Clean up
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,62 +71,122 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Aug 2019 17:35:08 -0000
+X-List-Received-Date: Fri, 23 Aug 2019 23:49:24 -0000
 
-On 8/23/19 4:32 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> As explained in commit aff39be0ed97:
->=20
->   Both functions, object_initialize() and object_property_add_child()
->   increase the reference counter of the new object, so one of the
->   references has to be dropped afterwards to get the reference
->   counting right. Otherwise the child object will not be properly
->   cleaned up when the parent gets destroyed.
->   Thus let's use now object_initialize_child() instead to get the
->   reference counting here right.
->=20
-> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/net/xilinx_axienet.c | 17 ++++++++---------
->  1 file changed, 8 insertions(+), 9 deletions(-)
->=20
-> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-> index d8716a1f73..2c8c065401 100644
-> --- a/hw/net/xilinx_axienet.c
-> +++ b/hw/net/xilinx_axienet.c
-> @@ -994,15 +994,14 @@ static void xilinx_enet_init(Object *obj)
->      XilinxAXIEnet *s =3D XILINX_AXI_ENET(obj);
->      SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
-> =20
-> -    object_initialize(&s->rx_data_dev, sizeof(s->rx_data_dev),
-> -                      TYPE_XILINX_AXI_ENET_DATA_STREAM);
-> -    object_initialize(&s->rx_control_dev, sizeof(s->rx_control_dev),
-> -                      TYPE_XILINX_AXI_ENET_CONTROL_STREAM);
-> -    object_property_add_child(OBJECT(s), "axistream-connected-target",
-> -                              (Object *)&s->rx_data_dev, &error_abort)=
-;
-> -    object_property_add_child(OBJECT(s), "axistream-control-connected-=
-target",
-> -                              (Object *)&s->rx_control_dev, &error_abo=
-rt);
-> -
-> +    object_initialize_child(OBJECT(s), "axistream-connected-target",
-> +                            &s->rx_data_dev, sizeof(s->rx_data_dev),
-> +                            TYPE_XILINX_AXI_ENET_DATA_STREAM, &error_a=
-bort,
-> +                            NULL);
-> +    object_initialize_child(OBJECT(s), "axistream-control-connected-ta=
-rget",
-> +                            &s->rx_control_dev, sizeof(s->rx_control_d=
-ev),
-> +                            TYPE_XILINX_AXI_ENET_CONTROL_STREAM, &erro=
-r_abort,
-> +                            NULL);
->      sysbus_init_irq(sbd, &s->irq);
-> =20
->      memory_region_init_io(&s->iomem, OBJECT(s), &enet_ops, s, "enet", =
-0x40000);
->=20
+--0000000000005a7f4e0590d174ef
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+23.08.2019. 08.13, "Markus Armbruster" <armbru@redhat.com> =D1=98=D0=B5 =D0=
+=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
+>
+> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+>
+> > Trivial cleanup of .mailmap to have a nice 'git shortlog' output.
+> >
+> > Philippe Mathieu-Daud=C3=A9 (3):
+> >   mailmap: Reorder by sections
+> >   mailmap: Update philmd email address
+> >   mailmap: Add many entries to improve 'git shortlog' statistics
+> >
+> >  .mailmap | 123 +++++++++++++++++++++++++++++++++++++++++++++++++++----
+> >  1 file changed, 115 insertions(+), 8 deletions(-)
+>
+> Series
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>
+> However, it increases the difference to contrib/gitdm/aliases.
+
+Alex' initial gitdm effort, as I understood it, was not meant to cover all
+history from 2007 or so, but just to give reasonable statistics for 2018
+(amd future years).
+
+In that light, .mailmap and gitdm aliases do not need to be equivalent.
+
+But perhaps Alex would now want gitdm to be used for all QEMU history? Is
+this desirable?
+
+Aleksandar
+
+> I'm just
+> as guilty; my recent "[PATCH 2/2] contrib/gitdm: Add armbru@pond.sub.org
+> to group-map-redhat" updates only that. and not .mailmap.
+>
+> Perhaps we want to keep the two in sync manually.  We should then add
+> suitable comments to each file.
+>
+> Could we instead teach gitdm to use .mailmap, and ditch
+> contrib/gitdm/aliases?
+>
+> aliases' format is documented in gitdm's README.  Each line maps a
+> non-canonical e-mail address to a canonical one.
+>
+> .mailmap's format is documented in git-shortlog(1).  It can do a bit
+> more.  Even the common part differs: it has two addresses in different
+> order *boggle*.
+>
+
+--0000000000005a7f4e0590d174ef
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<p dir=3D"ltr"><br>
+23.08.2019. 08.13, &quot;Markus Armbruster&quot; &lt;<a href=3D"mailto:armb=
+ru@redhat.com">armbru@redhat.com</a>&gt; =D1=98=D0=B5 =D0=BD=D0=B0=D0=BF=D0=
+=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:<br>
+&gt;<br>
+&gt; Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">p=
+hilmd@redhat.com</a>&gt; writes:<br>
+&gt;<br>
+&gt; &gt; Trivial cleanup of .mailmap to have a nice &#39;git shortlog&#39;=
+ output.<br>
+&gt; &gt;<br>
+&gt; &gt; Philippe Mathieu-Daud=C3=A9 (3):<br>
+&gt; &gt;=C2=A0 =C2=A0mailmap: Reorder by sections<br>
+&gt; &gt;=C2=A0 =C2=A0mailmap: Update philmd email address<br>
+&gt; &gt;=C2=A0 =C2=A0mailmap: Add many entries to improve &#39;git shortlo=
+g&#39; statistics<br>
+&gt; &gt;<br>
+&gt; &gt;=C2=A0 .mailmap | 123 ++++++++++++++++++++++++++++++++++++++++++++=
++++++++----<br>
+&gt; &gt;=C2=A0 1 file changed, 115 insertions(+), 8 deletions(-)<br>
+&gt;<br>
+&gt; Series<br>
+&gt; Reviewed-by: Markus Armbruster &lt;<a href=3D"mailto:armbru@redhat.com=
+">armbru@redhat.com</a>&gt;<br>
+&gt;<br>
+&gt; However, it increases the difference to contrib/gitdm/aliases.</p>
+<p dir=3D"ltr">Alex&#39; initial gitdm effort, as I understood it, was not =
+meant to cover all history from 2007 or so, but just to give reasonable sta=
+tistics for 2018 (amd future years).</p>
+<p dir=3D"ltr">In that light, .mailmap and gitdm aliases do not need to be =
+equivalent.</p>
+<p dir=3D"ltr">But perhaps Alex would now want gitdm to be used for all QEM=
+U history? Is this desirable?</p>
+<p dir=3D"ltr">Aleksandar</p>
+<p dir=3D"ltr">&gt; I&#39;m just<br>
+&gt; as guilty; my recent &quot;[PATCH 2/2] contrib/gitdm: Add <a href=3D"m=
+ailto:armbru@pond.sub.org">armbru@pond.sub.org</a><br>
+&gt; to group-map-redhat&quot; updates only that. and not .mailmap.<br>
+&gt;<br>
+&gt; Perhaps we want to keep the two in sync manually.=C2=A0 We should then=
+ add<br>
+&gt; suitable comments to each file.<br>
+&gt;<br>
+&gt; Could we instead teach gitdm to use .mailmap, and ditch<br>
+&gt; contrib/gitdm/aliases?<br>
+&gt;<br>
+&gt; aliases&#39; format is documented in gitdm&#39;s README.=C2=A0 Each li=
+ne maps a<br>
+&gt; non-canonical e-mail address to a canonical one.<br>
+&gt;<br>
+&gt; .mailmap&#39;s format is documented in git-shortlog(1).=C2=A0 It can d=
+o a bit<br>
+&gt; more.=C2=A0 Even the common part differs: it has two addresses in diff=
+erent<br>
+&gt; order *boggle*.<br>
+&gt;<br>
+</p>
+
+--0000000000005a7f4e0590d174ef--
 
