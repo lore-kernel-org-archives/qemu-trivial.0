@@ -1,50 +1,102 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i1Bk4-0005fd-BV
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Aug 2019 11:44:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35575)
+	id 1i1DSw-0001rt-PN
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Aug 2019 13:35:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59375)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1i1Bk1-0005c3-CO
- for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 11:44:42 -0400
+ (envelope-from <thuth@redhat.com>) id 1i1DSq-0001nq-H4
+ for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 13:35:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1i1Bk0-0002io-GW
- for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 11:44:41 -0400
-Resent-Date: Fri, 23 Aug 2019 11:44:41 -0400
-Resent-Message-Id: <E1i1Bk0-0002io-GW@eggs.gnu.org>
-Received: from sender4-of-o55.zoho.com ([136.143.188.55]:21574)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1i1Bjx-0002d2-Ne; Fri, 23 Aug 2019 11:44:37 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1566575066; cv=none; d=zoho.com; s=zohoarc; 
- b=grAvuAmXrNkc57IdX0O8Zy4IvGE3DBA3vPVzXlt+5HXFjoRI2pHZ2V7wkNn8RmmWjFfGxpxhI+9T9eefUkQ5lCA3fT4IdE7MbzN3O58VAKgGzmiDcXSgwcdza5aZnMiH3FMK/E9z6UA1aqkJMGku4h1PQAbXuiFNID+I0hq2cg8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
- s=zohoarc; t=1566575066;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
- bh=0KzeNnAtAdQOEnJTPME0MRCWmXptYvj+zWH1kexVZVw=; 
- b=OGranP9EWLRa3FX5s+KUxLnAaqkgKqY0UBVxWDqNz2Q7Cx0cOfzwuAT5sDY4tLYB12oi9OATqRB4SutE0SaM3rjX85pC0K15oEMd9KniyRCXERfjnVhXrui/H0JzcByim9sMeiB8ktHBt07kjnp6EqPq47YE2ZLvP11TBi04LYg=
-ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1566575062217372.82944311143376;
- Fri, 23 Aug 2019 08:44:22 -0700 (PDT)
-Reply-To: <qemu-devel@nongnu.org>
-In-Reply-To: <20190822231231.1306-1-philmd@redhat.com>
-Message-ID: <156657506005.1709.11989095096032401678@5dec9699b7de>
+ (envelope-from <thuth@redhat.com>) id 1i1DSm-0006cp-Vh
+ for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 13:35:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34382)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1i1DSh-0006Zp-Ef; Fri, 23 Aug 2019 13:34:55 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 31C2A10F23E5;
+ Fri, 23 Aug 2019 17:34:54 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-83.ams2.redhat.com [10.36.116.83])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AF7295D6B2;
+ Fri, 23 Aug 2019 17:34:47 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-trivial@nongnu.org
+References: <20190823143249.8096-1-philmd@redhat.com>
+ <20190823143249.8096-7-philmd@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+ mQINBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
+ yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
+ 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
+ tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
+ 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
+ O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
+ 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
+ gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
+ 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
+ zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABtB5UaG9tYXMgSHV0
+ aCA8dGh1dGhAcmVkaGF0LmNvbT6JAjgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
+ AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
+ QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
+ EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
+ 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
+ eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
+ ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
+ zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
+ tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
+ WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
+ UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDuQIN
+ BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
+ 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
+ +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
+ 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
+ gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
+ WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
+ VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
+ knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
+ cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
+ X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABiQIfBBgBAgAJBQJR+3lM
+ AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
+ ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
+ fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
+ 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
+ cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
+ ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
+ Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
+ oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
+ IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
+ yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
+Organization: Red Hat
+Message-ID: <be40e1e8-3a1c-b7f8-4a6f-604e99f529f1@redhat.com>
+Date: Fri, 23 Aug 2019 19:34:46 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: philmd@redhat.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, philmd@redhat.com,
- alex.bennee@linaro.org
-Date: Fri, 23 Aug 2019 08:44:22 -0700 (PDT)
-X-ZohoMailClient: External
+In-Reply-To: <20190823143249.8096-7-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.66]); Fri, 23 Aug 2019 17:34:54 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 136.143.188.55
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] contrib/gitdm: Add RT-RK to
- the domain-map
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH v2 6/6] hw/net/xilinx_axi: Use
+ object_initialize_child for correct ref. counting
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -56,18 +108,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Aug 2019 15:44:42 -0000
+X-List-Received-Date: Fri, 23 Aug 2019 17:35:08 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDgyMjIzMTIzMS4xMzA2
-LTEtcGhpbG1kQHJlZGhhdC5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIHRoZSBkb2Nr
-ZXItbWluZ3dAZmVkb3JhIGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5nIGNvbW1h
-bmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0YWxsZWQs
-IHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBTQ1JJUFQg
-QkVHSU4gPT09CiMhIC9iaW4vYmFzaAp0ZXN0ICIkKHVuYW1lIC1tKSIgPSAieDg2XzY0Igo9PT0g
-VEVTVCBTQ1JJUFQgRU5EID09PQoKCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRw
-Oi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MDgyMjIzMTIzMS4xMzA2LTEtcGhpbG1kQHJlZGhhdC5j
-b20vdGVzdGluZy5kb2NrZXItbWluZ3dAZmVkb3JhLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBn
-ZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10u
-ClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
+On 8/23/19 4:32 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> As explained in commit aff39be0ed97:
+>=20
+>   Both functions, object_initialize() and object_property_add_child()
+>   increase the reference counter of the new object, so one of the
+>   references has to be dropped afterwards to get the reference
+>   counting right. Otherwise the child object will not be properly
+>   cleaned up when the parent gets destroyed.
+>   Thus let's use now object_initialize_child() instead to get the
+>   reference counting here right.
+>=20
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/net/xilinx_axienet.c | 17 ++++++++---------
+>  1 file changed, 8 insertions(+), 9 deletions(-)
+>=20
+> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+> index d8716a1f73..2c8c065401 100644
+> --- a/hw/net/xilinx_axienet.c
+> +++ b/hw/net/xilinx_axienet.c
+> @@ -994,15 +994,14 @@ static void xilinx_enet_init(Object *obj)
+>      XilinxAXIEnet *s =3D XILINX_AXI_ENET(obj);
+>      SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
+> =20
+> -    object_initialize(&s->rx_data_dev, sizeof(s->rx_data_dev),
+> -                      TYPE_XILINX_AXI_ENET_DATA_STREAM);
+> -    object_initialize(&s->rx_control_dev, sizeof(s->rx_control_dev),
+> -                      TYPE_XILINX_AXI_ENET_CONTROL_STREAM);
+> -    object_property_add_child(OBJECT(s), "axistream-connected-target",
+> -                              (Object *)&s->rx_data_dev, &error_abort)=
+;
+> -    object_property_add_child(OBJECT(s), "axistream-control-connected-=
+target",
+> -                              (Object *)&s->rx_control_dev, &error_abo=
+rt);
+> -
+> +    object_initialize_child(OBJECT(s), "axistream-connected-target",
+> +                            &s->rx_data_dev, sizeof(s->rx_data_dev),
+> +                            TYPE_XILINX_AXI_ENET_DATA_STREAM, &error_a=
+bort,
+> +                            NULL);
+> +    object_initialize_child(OBJECT(s), "axistream-control-connected-ta=
+rget",
+> +                            &s->rx_control_dev, sizeof(s->rx_control_d=
+ev),
+> +                            TYPE_XILINX_AXI_ENET_CONTROL_STREAM, &erro=
+r_abort,
+> +                            NULL);
+>      sysbus_init_irq(sbd, &s->irq);
+> =20
+>      memory_region_init_io(&s->iomem, OBJECT(s), &enet_ops, s, "enet", =
+0x40000);
+>=20
 
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
