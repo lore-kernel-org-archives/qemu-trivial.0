@@ -1,73 +1,95 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i18pV-0007EN-GN
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Aug 2019 08:38:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60477)
+	id 1i1B4y-0005yB-7G
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Aug 2019 11:02:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55950)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1i18pT-0007Ax-3A
- for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 08:38:08 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i1B4r-0005tX-Rm
+ for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 11:02:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1i18pQ-0005Fh-88
- for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 08:38:06 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59944)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1i18pQ-0005FI-0Q
- for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 08:38:04 -0400
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B3C483DE04
- for <qemu-trivial@nongnu.org>; Fri, 23 Aug 2019 12:38:02 +0000 (UTC)
-Received: by mail-wm1-f69.google.com with SMTP id c14so4303064wml.5
- for <qemu-trivial@nongnu.org>; Fri, 23 Aug 2019 05:38:02 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=PRL/FSVEo0YfzA9EGloXDSoUR/S1PFJDhLfEHy07+zA=;
- b=f6jwTJfaNfhyYtIPUbqb4u++miOUs6006JApoRTxXn2rJx/xC/lOaA65Q/uHyjKaD/
- 1CzfFBqjqhlrE90tD5WgbXu/6okWPfZ9GM9SsAUKklbjfY/209VKIiPzUytUDJYzQ/0s
- iFngL1Ai4B5tyI8LcC5e1NnQuugdGeDaarvoa/hfHtxTw/hhZIuglxnssoFxfCxDJYWD
- rl8f/sGp4kcBCI61LwYPSD64Ll12+2wxmXX7HZPrMXN9PRedTCNe0PjLC5mq3oF+dAPY
- dfdTPuAHk0rxiZKWOiEhRxg4N0sSbhbuokjiwon+B1huO8aP9qFldbxLqZ/pfQdCL867
- 37UQ==
-X-Gm-Message-State: APjAAAXdnLVNnWcFOSgo9w0NHeS2mtO3ZVzwZlXJCz0mbGMLWjmn7faj
- mZNRd8jayfV7aqvuGQTSKTcTxXIPRMdIfQHVSr5+LYq6axLLe9NnEcBQIwvDxieRtlds5FBtw6j
- sE5CJPnfm52Otk9lUsw==
-X-Received: by 2002:a05:600c:2111:: with SMTP id
- u17mr5282548wml.64.1566563881396; 
- Fri, 23 Aug 2019 05:38:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzEo8du5YX9gfDSM/kyJluKNmwys5YqKM/HPVBjNjxYmbJOiDmr2jY3sYX6pu8yF7nGbOq7PA==
-X-Received: by 2002:a05:600c:2111:: with SMTP id
- u17mr5282537wml.64.1566563881231; 
- Fri, 23 Aug 2019 05:38:01 -0700 (PDT)
-Received: from [192.168.1.41] (251.red-88-10-102.dynamicip.rima-tde.net.
- [88.10.102.251])
- by smtp.gmail.com with ESMTPSA id t13sm3292287wrr.0.2019.08.23.05.38.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 23 Aug 2019 05:38:00 -0700 (PDT)
-To: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <20190822230916.576-1-philmd@redhat.com>
- <20190822230916.576-4-philmd@redhat.com>
- <CAL1e-=hypCsXVMhU5nC8O7JuDHN89huaMSe5RrJ27YB9W+AK_g@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <304fdaf2-7106-2333-9caf-85fbe940df8d@redhat.com>
-Date: Fri, 23 Aug 2019 14:37:59 +0200
+ (envelope-from <laurent@vivier.eu>) id 1i1B4p-0004Qp-Qa
+ for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 11:02:09 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:39257)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1i1B4j-0004L3-LA; Fri, 23 Aug 2019 11:02:01 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N9d91-1iLXNR3Ja9-015dr3; Fri, 23 Aug 2019 17:01:48 +0200
+To: Chen Zhang <tgfbeta@me.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Alex Williamson <alex.williamson@redhat.com>
+References: <8E5A9C27-C76D-46CF-85B0-79121A00B05F@me.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <d11d786b-bd04-42a5-46f2-23191f070df4@vivier.eu>
+Date: Fri, 23 Aug 2019 17:01:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAL1e-=hypCsXVMhU5nC8O7JuDHN89huaMSe5RrJ27YB9W+AK_g@mail.gmail.com>
+In-Reply-To: <8E5A9C27-C76D-46CF-85B0-79121A00B05F@me.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:0B82HvmwNC6S/Sp5DN+hMz77JTvBzKv/MzJilF+IJsFyz/6aWQP
+ 3L8nqIc9Wxwebl0h/rCh5YDMEoEKPZhIDWB8yMajiczK+XAdp+zsD6aiCtfACzUq0C6LpB8
+ vhp8zpxw1m4hEZQHo2PThLJxd7J84M5id1D16t8GQepNHtWNdedJxnbuUFttkGcyrheBQe5
+ hmvEUC9omJ0tFr/HXEvgQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:H19RhOfi82E=:+60eU9sYUmQVNoe8/RNsI3
+ mEVH8P48OjuzcBoXZj6sIcL05aZbUtxQZJ3FCt8hk7cBPpwzfP6wL0+x9jQvSSqpBZQv+gXuM
+ tgcSbDzUnmd8+T8QCVkdvjbRZPZeo2ZIa0Uc4e4muh3MBgfkf+OvEJmtGfZHzVp24Uxlm2tui
+ yj6ra8HHw8Xap3oU0dfvQEi73LlGbeJkc0B0kMHOAaxzdvbeZ58eUps+qmMTW3UqYXzauuN7j
+ YmH4dr6GE5mfEud3XP/HFVuv9SXE6ymO3YehsX0MolGOpb6fpBfmqD6H1xMv/2vuc8EQkEnxo
+ KaTAeRPx9UBH4pq5ctTDrAnp8CqEQEC6reholIH8RC5o3WJEeofoHHkw9XeNa2cJu0VqSE5GI
+ BPMBdc2180hn96PhbvnBr/1is3bxyk4jOk4X1zXa5tLXAsb4fX56m4RTJXzgof7QQu9GPWaIm
+ xwDxujAXk1718lyRNet39DtFoti5Mrssk5WY254eZaLVEHEKq1pTjYUrXMdF7PurCSwAIC1ZY
+ 8KR0G9J5JMQcV/I4wsBicbPATYZbQ1zmi7PPKWAe/aLFp0U7hg3KQ59L0l8uZglu/FfHWRpYI
+ so7MlB5c2H4qWo26+3dp+m4TKdfA/mFBp6pZgqUKMackX0HxSChltqvRSCjJoKvOnjv382oal
+ KaY8XMnKs5DGFl8gkj99I2bUe3XYxnbcETlxg5P4vbVJjMvyvXu0rPBGjL0m7rwAEkmSCqUtY
+ ll546DictkeaY3UGGIkkKgyrpkcqxmSodZqcZo57OgPNttkFPn+I3A+b7/c=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 3/3] mailmap: Add many
- entries to improve 'git shortlog' statistics
+X-Received-From: 217.72.192.73
+Subject: Re: [Qemu-trivial] [PATCH] vfio: fix a typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,40 +101,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Aug 2019 12:38:08 -0000
+X-List-Received-Date: Fri, 23 Aug 2019 15:02:12 -0000
 
-On 8/23/19 11:44 AM, Aleksandar Markovic wrote:
-> 23.08.2019. 01.10, "Philippe Mathieu-Daud=C3=A9" <philmd@redhat.com
-> <mailto:philmd@redhat.com>> =D1=98=D0=B5 =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=
-=D0=B0=D0=BE/=D0=BB=D0=B0:
->>
->> All of these emails have a least 1 commit with utf8/latin1 encoding
->> issue, or one with no author name.
->> When there are multiple commits, keep the author name the most used.
->>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com
-> <mailto:philmd@redhat.com>>
->> ---
->=20
-> Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com
-> <mailto:amarkovic@wavecomp.com>>
->=20
-> Out of the scope of this patch, what about the cases like Mateja
-> Marjanovic, who contributed with both Mateja.Marjanovic@rt-rk.com
-> <mailto:Mateja.Marjanovic@rt-rk.com> and mateja.marjanovic@rt-rk.com
-> <mailto:mateja.marjanovic@rt-rk.com> ?
+Le 22/08/2019 à 08:49, Chen Zhang via Qemu-trivial a écrit :
+> Signed-off-by: Chen Zhang <tgfbeta@me.com>
+> ---
+>  hw/vfio/pci.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> index dc3479c..c5e6fe6 100644
+> --- a/hw/vfio/pci.c
+> +++ b/hw/vfio/pci.c
+> @@ -44,7 +44,7 @@
+>  #define TYPE_VFIO_PCI "vfio-pci"
+>  #define PCI_VFIO(obj)    OBJECT_CHECK(VFIOPCIDevice, obj, TYPE_VFIO_PCI)
+>  
+> -#define TYPE_VIFO_PCI_NOHOTPLUG "vfio-pci-nohotplug"
+> +#define TYPE_VFIO_PCI_NOHOTPLUG "vfio-pci-nohotplug"
+>  
+>  static void vfio_disable_interrupts(VFIOPCIDevice *vdev);
+>  static void vfio_mmap_set_enabled(VFIOPCIDevice *vdev, bool enabled);
+> @@ -3199,7 +3199,7 @@ static void vfio_pci_nohotplug_dev_class_init(ObjectClass *klass, void *data)
+>  }
+>  
+>  static const TypeInfo vfio_pci_nohotplug_dev_info = { 
+> -    .name = TYPE_VIFO_PCI_NOHOTPLUG,
+> +    .name = TYPE_VFIO_PCI_NOHOTPLUG,
+>      .parent = TYPE_VFIO_PCI,
+>      .instance_size = sizeof(VFIOPCIDevice),
+>      .class_init = vfio_pci_nohotplug_dev_class_init,
+> 
 
-GIT-SHORTLOG(1) manpage is not clear about how it handles email casing.
+Applied to my trivial-patches branch.
 
-Anyhow, this last section only clean the author name (utf8/latin1
-encoding issue), there is no change in the email.
-
-So in Mateja case, since the author name is the same, it is fine:
-
-  Mateja Marjanovic <mateja.marjanovic@rt-rk.com>
-  Mateja Marjanovic <Mateja.Marjanovic@rt-rk.com>
-
-Thank you for your review!
-
-Phil.
+Thanks,
+Laurent
 
