@@ -1,64 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i1JJ8-0008Os-9n
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Aug 2019 19:49:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50607)
+	id 1i1QVk-0000Ny-Jm
+	for mharc-qemu-trivial@gnu.org; Sat, 24 Aug 2019 03:30:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36529)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1i1JJ3-0008HT-VL
- for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 19:49:24 -0400
+ (envelope-from <alex.bennee@linaro.org>) id 1i1QVi-0000NY-Aj
+ for qemu-trivial@nongnu.org; Sat, 24 Aug 2019 03:30:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1i1JJ2-00040v-Jl
- for qemu-trivial@nongnu.org; Fri, 23 Aug 2019 19:49:21 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:38818)
+ (envelope-from <alex.bennee@linaro.org>) id 1i1QVh-0007mO-3a
+ for qemu-trivial@nongnu.org; Sat, 24 Aug 2019 03:30:54 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:33724)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
- id 1i1JJ2-0003yq-Bb; Fri, 23 Aug 2019 19:49:20 -0400
-Received: by mail-ot1-x341.google.com with SMTP id r20so10288600ota.5;
- Fri, 23 Aug 2019 16:49:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc; bh=GDZjD+DLwOQGXTvn+lxnFGRBmiGUflL7uU0HzcIxmDw=;
- b=BLrfszeizZllNR9+cd7L8KgG5ZsJ91Tcu10IZuL5l6OnbpqOskWSkvSnE7VSlNRLrH
- ipTIXkz1PsfuGnu4AR1pzJHphVcT3WDYtoglt070IY+9eRguhMojDHwcyygpmqJo8mCi
- 02zeR1dlUaIU5AY430TRPAqKlfPQzi17GJgZMkGh6tW4HdzDzw86JLLv4AvtK/Nwtkbt
- 87zb5DQZrdRmgdTIZMY9dbY0+4JmRpt9iFrWTBvKASO6uCFHvMegZV5VglyxLfieFoP9
- 49B87HKiLVHJIKj4jy1sUXkMrH/t3tcYMrueGB3ndYaQx1BoX0abUn1RJDgL3C63W9nz
- vvtQ==
+ (Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+ id 1i1QVg-0007jj-RD
+ for qemu-trivial@nongnu.org; Sat, 24 Aug 2019 03:30:53 -0400
+Received: by mail-wr1-x444.google.com with SMTP id u16so10565118wrr.0
+ for <qemu-trivial@nongnu.org>; Sat, 24 Aug 2019 00:30:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:in-reply-to:date
+ :message-id:mime-version:content-transfer-encoding;
+ bh=Q7dE7xRWtNonIg7MYGdizMevWkr3L0SG5YEIrbJTAy0=;
+ b=h+g6K5DcdRlYKfmxnQCmjESeeiMRJ3Y+LG4TFVgYCRJPyFBM/h5lW9iRQ4MJqfp0x9
+ Hj55wCmOovdJV3MmcEgfyNIMjg3+6jxBxCYM3vyrZjneFfvhgMUkLhe/trQjNES8Xa8q
+ 4CZcD4ntkl2ic2Jift1RgGMcoQmfv0BbEEkbSImAyGFfbPmeI2v4ZiEH/S1sf6zwhxTP
+ zbQA2ibWt8mSVaofWlDpDljWpMO5v6v5wNzQMEuj6DFkIa6/iY7Zh/QqmBvfbd+OZ7fq
+ 5gJ32b39IVnzCCDhgDtlhodQ6/QM524Y6Gr+fytrGOjUONlIprhlrn1TTXwgK2+tarM3
+ t39g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:cc;
- bh=GDZjD+DLwOQGXTvn+lxnFGRBmiGUflL7uU0HzcIxmDw=;
- b=TdZEOnYPJz0cbu1eLeeOwtwjtTJxkDFvEf5wflaHpRTDCxwZ5q/CQ7T1cMhFcXg6Oe
- +vOXBM2t260UhQaqnuq/e8gNiXAZeZ6XtPJEISmDsYLOaR2ndXUyOtMC9Q2mmAA5ExVF
- tSyvczsHCML1hK4221iLTNc+MihHwsKsCU2B+h7jjglClgkclpOcYS6bfqA1N1w6afkc
- 78P8kYndljiP24If63DRId8BpXkjbRnB2/kPpHGuDdUWqJjVdlrKQMstVfsO5vLI9iWe
- UN04ejDsWyY0h1o77x7vzRlZlYSAQ5eCSQGR5ErpASm2Tdd7n1uqiImOCJc5h/M+8V4o
- jKrQ==
-X-Gm-Message-State: APjAAAXe8MRF/WM9BFQovDr7F0uxiokMtpr/VZ3u6J6HnCPqREVMY4Ti
- fLcJNMjh11em0AXZklv8s9vLtPJq9Ou3bq1o3dA=
-X-Google-Smtp-Source: APXvYqz8T03T+k1hn/p5CHQhDDNRR+LCEIq2wM3DkvIAPlVtG5KvCtbBMQ7afvwcZu5HliAWGDV2GmPXrsAfjE34ioA=
-X-Received: by 2002:a05:6830:15cc:: with SMTP id
- j12mr6174900otr.64.1566604158204; 
- Fri, 23 Aug 2019 16:49:18 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a05:6830:10d7:0:0:0:0 with HTTP; Fri, 23 Aug 2019 16:49:17
- -0700 (PDT)
-Received: by 2002:a05:6830:10d7:0:0:0:0 with HTTP; Fri, 23 Aug 2019 16:49:17
- -0700 (PDT)
-In-Reply-To: <874l2876kx.fsf@dusky.pond.sub.org>
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject
+ :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+ bh=Q7dE7xRWtNonIg7MYGdizMevWkr3L0SG5YEIrbJTAy0=;
+ b=DRVPx9MEZS99XzrjXwPUCSFoDEtk8R2Fz8+mrMy38l7Ept0Hglbxy2JTEsegsYx1Iv
+ zFS8hWj0E2yAwlK6e/0U7WbtacUVRzjTq+Ivzm0cHW0qoC4cNUM3IEJ0xUQMkhmha7EN
+ 35C4Vb9HkfMU2VosDKuAwwLDZOXXRjg7BEBIKINPYDMcX36FS5p6DAxxJSGLbSEdMNj7
+ kEE2/SgpIBg87fDrnY0PX84Fy9Cj+GiSJhk4zm4JTVdGRAWzV6/8HWfEqdPM7IDr+KGQ
+ HgWQP3+8/rETGW/g3LnhkIEN9d44tiNTFqkIx5lVjztoXEA6yHQl75ktZL2P1l7NrYih
+ DNFw==
+X-Gm-Message-State: APjAAAXY8ZkQzXO5ROHPNUbqz+ZyowC+ojrtjJfbi+v0J1LwpeRZmy8n
+ /Tn72rJwKm6rHGgUzK4jDJfYTg==
+X-Google-Smtp-Source: APXvYqyy+PyOpBNQD+RuJzprbao603f/OoeLpaV4QmD4xAW+NZtuI0J76jnabUn8moUUIoiEgfC58g==
+X-Received: by 2002:adf:f646:: with SMTP id x6mr10151004wrp.18.1566631851256; 
+ Sat, 24 Aug 2019 00:30:51 -0700 (PDT)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id b15sm4399956wrt.77.2019.08.24.00.30.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 24 Aug 2019 00:30:50 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id CAEA01FF87;
+ Sat, 24 Aug 2019 08:30:49 +0100 (BST)
 References: <20190822230916.576-1-philmd@redhat.com>
  <874l2876kx.fsf@dusky.pond.sub.org>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Sat, 24 Aug 2019 01:49:17 +0200
-Message-ID: <CAL1e-=hvVp4i=s_Wr0iKy5UO7kH6xw3QR0Ms4_v_tobJSM2wRA@mail.gmail.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- qemu-devel@nongnu.org, alex.bennee@linaro.org
-Content-Type: multipart/alternative; boundary="0000000000005a7f4e0590d174ef"
+ <CAL1e-=hvVp4i=s_Wr0iKy5UO7kH6xw3QR0Ms4_v_tobJSM2wRA@mail.gmail.com>
+User-agent: mu4e 1.3.4; emacs 27.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Cc: Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org, Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>, qemu-devel@nongnu.org
+In-reply-to: <CAL1e-=hvVp4i=s_Wr0iKy5UO7kH6xw3QR0Ms4_v_tobJSM2wRA@mail.gmail.com>
+Date: Sat, 24 Aug 2019 08:30:49 +0100
+Message-ID: <87a7bz2f6e.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::341
+X-Received-From: 2a00:1450:4864:20::444
 Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/3] mailmap: Clean up
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,122 +77,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Aug 2019 23:49:24 -0000
+X-List-Received-Date: Sat, 24 Aug 2019 07:30:55 -0000
 
---0000000000005a7f4e0590d174ef
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-23.08.2019. 08.13, "Markus Armbruster" <armbru@redhat.com> =D1=98=D0=B5 =D0=
-=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
+Aleksandar Markovic <aleksandar.m.mail@gmail.com> writes:
+
+> 23.08.2019. 08.13, "Markus Armbruster" <armbru@redhat.com> =D1=98=D0=B5 =
+=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
+>>
+>> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+>>
+>> > Trivial cleanup of .mailmap to have a nice 'git shortlog' output.
+>> >
+>> > Philippe Mathieu-Daud=C3=A9 (3):
+>> >   mailmap: Reorder by sections
+>> >   mailmap: Update philmd email address
+>> >   mailmap: Add many entries to improve 'git shortlog' statistics
+>> >
+>> >  .mailmap | 123 +++++++++++++++++++++++++++++++++++++++++++++++++++----
+>> >  1 file changed, 115 insertions(+), 8 deletions(-)
+>>
+>> Series
+>> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>>
+>> However, it increases the difference to contrib/gitdm/aliases.
 >
-> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+> Alex' initial gitdm effort, as I understood it, was not meant to cover all
+> history from 2007 or so, but just to give reasonable statistics for 2018
+> (amd future years).
 >
-> > Trivial cleanup of .mailmap to have a nice 'git shortlog' output.
-> >
-> > Philippe Mathieu-Daud=C3=A9 (3):
-> >   mailmap: Reorder by sections
-> >   mailmap: Update philmd email address
-> >   mailmap: Add many entries to improve 'git shortlog' statistics
-> >
-> >  .mailmap | 123 +++++++++++++++++++++++++++++++++++++++++++++++++++----
-> >  1 file changed, 115 insertions(+), 8 deletions(-)
+> In that light, .mailmap and gitdm aliases do not need to be equivalent.
 >
-> Series
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> But perhaps Alex would now want gitdm to be used for all QEMU history? Is
+> this desirable?
+
+It would be of interest historically but not something I'd want to spend
+a lot of time adding code churn for.
+
 >
-> However, it increases the difference to contrib/gitdm/aliases.
-
-Alex' initial gitdm effort, as I understood it, was not meant to cover all
-history from 2007 or so, but just to give reasonable statistics for 2018
-(amd future years).
-
-In that light, .mailmap and gitdm aliases do not need to be equivalent.
-
-But perhaps Alex would now want gitdm to be used for all QEMU history? Is
-this desirable?
-
-Aleksandar
-
-> I'm just
-> as guilty; my recent "[PATCH 2/2] contrib/gitdm: Add armbru@pond.sub.org
-> to group-map-redhat" updates only that. and not .mailmap.
+> Aleksandar
 >
-> Perhaps we want to keep the two in sync manually.  We should then add
-> suitable comments to each file.
->
-> Could we instead teach gitdm to use .mailmap, and ditch
-> contrib/gitdm/aliases?
->
-> aliases' format is documented in gitdm's README.  Each line maps a
-> non-canonical e-mail address to a canonical one.
->
-> .mailmap's format is documented in git-shortlog(1).  It can do a bit
-> more.  Even the common part differs: it has two addresses in different
-> order *boggle*.
->
+>> I'm just
+>> as guilty; my recent "[PATCH 2/2] contrib/gitdm: Add armbru@pond.sub.org
+>> to group-map-redhat" updates only that. and not .mailmap.
+>>
+>> Perhaps we want to keep the two in sync manually.  We should then add
+>> suitable comments to each file.
+>>
+>> Could we instead teach gitdm to use .mailmap, and ditch
+>> contrib/gitdm/aliases?
+>>
+>> aliases' format is documented in gitdm's README.  Each line maps a
+>> non-canonical e-mail address to a canonical one.
+>>
+>> .mailmap's format is documented in git-shortlog(1).  It can do a bit
+>> more.  Even the common part differs: it has two addresses in different
+>> order *boggle*.
+>>
 
---0000000000005a7f4e0590d174ef
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-<p dir=3D"ltr"><br>
-23.08.2019. 08.13, &quot;Markus Armbruster&quot; &lt;<a href=3D"mailto:armb=
-ru@redhat.com">armbru@redhat.com</a>&gt; =D1=98=D0=B5 =D0=BD=D0=B0=D0=BF=D0=
-=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:<br>
-&gt;<br>
-&gt; Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@redhat.com">p=
-hilmd@redhat.com</a>&gt; writes:<br>
-&gt;<br>
-&gt; &gt; Trivial cleanup of .mailmap to have a nice &#39;git shortlog&#39;=
- output.<br>
-&gt; &gt;<br>
-&gt; &gt; Philippe Mathieu-Daud=C3=A9 (3):<br>
-&gt; &gt;=C2=A0 =C2=A0mailmap: Reorder by sections<br>
-&gt; &gt;=C2=A0 =C2=A0mailmap: Update philmd email address<br>
-&gt; &gt;=C2=A0 =C2=A0mailmap: Add many entries to improve &#39;git shortlo=
-g&#39; statistics<br>
-&gt; &gt;<br>
-&gt; &gt;=C2=A0 .mailmap | 123 ++++++++++++++++++++++++++++++++++++++++++++=
-+++++++----<br>
-&gt; &gt;=C2=A0 1 file changed, 115 insertions(+), 8 deletions(-)<br>
-&gt;<br>
-&gt; Series<br>
-&gt; Reviewed-by: Markus Armbruster &lt;<a href=3D"mailto:armbru@redhat.com=
-">armbru@redhat.com</a>&gt;<br>
-&gt;<br>
-&gt; However, it increases the difference to contrib/gitdm/aliases.</p>
-<p dir=3D"ltr">Alex&#39; initial gitdm effort, as I understood it, was not =
-meant to cover all history from 2007 or so, but just to give reasonable sta=
-tistics for 2018 (amd future years).</p>
-<p dir=3D"ltr">In that light, .mailmap and gitdm aliases do not need to be =
-equivalent.</p>
-<p dir=3D"ltr">But perhaps Alex would now want gitdm to be used for all QEM=
-U history? Is this desirable?</p>
-<p dir=3D"ltr">Aleksandar</p>
-<p dir=3D"ltr">&gt; I&#39;m just<br>
-&gt; as guilty; my recent &quot;[PATCH 2/2] contrib/gitdm: Add <a href=3D"m=
-ailto:armbru@pond.sub.org">armbru@pond.sub.org</a><br>
-&gt; to group-map-redhat&quot; updates only that. and not .mailmap.<br>
-&gt;<br>
-&gt; Perhaps we want to keep the two in sync manually.=C2=A0 We should then=
- add<br>
-&gt; suitable comments to each file.<br>
-&gt;<br>
-&gt; Could we instead teach gitdm to use .mailmap, and ditch<br>
-&gt; contrib/gitdm/aliases?<br>
-&gt;<br>
-&gt; aliases&#39; format is documented in gitdm&#39;s README.=C2=A0 Each li=
-ne maps a<br>
-&gt; non-canonical e-mail address to a canonical one.<br>
-&gt;<br>
-&gt; .mailmap&#39;s format is documented in git-shortlog(1).=C2=A0 It can d=
-o a bit<br>
-&gt; more.=C2=A0 Even the common part differs: it has two addresses in diff=
-erent<br>
-&gt; order *boggle*.<br>
-&gt;<br>
-</p>
-
---0000000000005a7f4e0590d174ef--
+--
+Alex Benn=C3=A9e
 
