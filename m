@@ -1,71 +1,97 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i1QVk-0000Ny-Jm
-	for mharc-qemu-trivial@gnu.org; Sat, 24 Aug 2019 03:30:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36529)
+	id 1i2ANj-00034w-GZ
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Aug 2019 04:29:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47808)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alex.bennee@linaro.org>) id 1i1QVi-0000NY-Aj
- for qemu-trivial@nongnu.org; Sat, 24 Aug 2019 03:30:55 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i2ANg-00031q-Hr
+ for qemu-trivial@nongnu.org; Mon, 26 Aug 2019 04:29:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alex.bennee@linaro.org>) id 1i1QVh-0007mO-3a
- for qemu-trivial@nongnu.org; Sat, 24 Aug 2019 03:30:54 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:33724)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
- id 1i1QVg-0007jj-RD
- for qemu-trivial@nongnu.org; Sat, 24 Aug 2019 03:30:53 -0400
-Received: by mail-wr1-x444.google.com with SMTP id u16so10565118wrr.0
- for <qemu-trivial@nongnu.org>; Sat, 24 Aug 2019 00:30:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=references:user-agent:from:to:cc:subject:in-reply-to:date
- :message-id:mime-version:content-transfer-encoding;
- bh=Q7dE7xRWtNonIg7MYGdizMevWkr3L0SG5YEIrbJTAy0=;
- b=h+g6K5DcdRlYKfmxnQCmjESeeiMRJ3Y+LG4TFVgYCRJPyFBM/h5lW9iRQ4MJqfp0x9
- Hj55wCmOovdJV3MmcEgfyNIMjg3+6jxBxCYM3vyrZjneFfvhgMUkLhe/trQjNES8Xa8q
- 4CZcD4ntkl2ic2Jift1RgGMcoQmfv0BbEEkbSImAyGFfbPmeI2v4ZiEH/S1sf6zwhxTP
- zbQA2ibWt8mSVaofWlDpDljWpMO5v6v5wNzQMEuj6DFkIa6/iY7Zh/QqmBvfbd+OZ7fq
- 5gJ32b39IVnzCCDhgDtlhodQ6/QM524Y6Gr+fytrGOjUONlIprhlrn1TTXwgK2+tarM3
- t39g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject
- :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
- bh=Q7dE7xRWtNonIg7MYGdizMevWkr3L0SG5YEIrbJTAy0=;
- b=DRVPx9MEZS99XzrjXwPUCSFoDEtk8R2Fz8+mrMy38l7Ept0Hglbxy2JTEsegsYx1Iv
- zFS8hWj0E2yAwlK6e/0U7WbtacUVRzjTq+Ivzm0cHW0qoC4cNUM3IEJ0xUQMkhmha7EN
- 35C4Vb9HkfMU2VosDKuAwwLDZOXXRjg7BEBIKINPYDMcX36FS5p6DAxxJSGLbSEdMNj7
- kEE2/SgpIBg87fDrnY0PX84Fy9Cj+GiSJhk4zm4JTVdGRAWzV6/8HWfEqdPM7IDr+KGQ
- HgWQP3+8/rETGW/g3LnhkIEN9d44tiNTFqkIx5lVjztoXEA6yHQl75ktZL2P1l7NrYih
- DNFw==
-X-Gm-Message-State: APjAAAXY8ZkQzXO5ROHPNUbqz+ZyowC+ojrtjJfbi+v0J1LwpeRZmy8n
- /Tn72rJwKm6rHGgUzK4jDJfYTg==
-X-Google-Smtp-Source: APXvYqyy+PyOpBNQD+RuJzprbao603f/OoeLpaV4QmD4xAW+NZtuI0J76jnabUn8moUUIoiEgfC58g==
-X-Received: by 2002:adf:f646:: with SMTP id x6mr10151004wrp.18.1566631851256; 
- Sat, 24 Aug 2019 00:30:51 -0700 (PDT)
-Received: from zen.linaroharston ([51.148.130.216])
- by smtp.gmail.com with ESMTPSA id b15sm4399956wrt.77.2019.08.24.00.30.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 24 Aug 2019 00:30:50 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id CAEA01FF87;
- Sat, 24 Aug 2019 08:30:49 +0100 (BST)
-References: <20190822230916.576-1-philmd@redhat.com>
- <874l2876kx.fsf@dusky.pond.sub.org>
- <CAL1e-=hvVp4i=s_Wr0iKy5UO7kH6xw3QR0Ms4_v_tobJSM2wRA@mail.gmail.com>
-User-agent: mu4e 1.3.4; emacs 27.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Cc: Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org, Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>, qemu-devel@nongnu.org
-In-reply-to: <CAL1e-=hvVp4i=s_Wr0iKy5UO7kH6xw3QR0Ms4_v_tobJSM2wRA@mail.gmail.com>
-Date: Sat, 24 Aug 2019 08:30:49 +0100
-Message-ID: <87a7bz2f6e.fsf@linaro.org>
+ (envelope-from <laurent@vivier.eu>) id 1i2ANf-0003oI-F1
+ for qemu-trivial@nongnu.org; Mon, 26 Aug 2019 04:29:40 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:52453)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1i2ANf-0003n8-6j; Mon, 26 Aug 2019 04:29:39 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MXH3Y-1hj0853nBe-00Yf6A; Mon, 26 Aug 2019 10:29:24 +0200
+To: Josh Kunz <jkz@google.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>
+References: <20190816233422.16715-1-jkz@google.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
+ WoeuLWDmXE7A3oJoIsRecD6BXHTb0OYS20lS608anr3B0xn5g0BX7es9Mw+hV/pL+63EOCVm
+ SUVTEQwbGQN62guOKnJJJfphbbv82glIC/Ei4Ky8BwZkUuXd7d5NFJKC9/GDrbWdj75cDNQx
+ UZ9XXbXEKY9MHX83Uy7JFoiFDMOVHn55HnncflUncO0zDzY7CxFeQFwYRbsCXOUL9yBtqLer
+ Ky8/yjBskIlNrp0uQSt9LMoMsdSjYLYhvk1StsNPg74+s4u0Q6z45+l8RAsgLw5OLtTa+ePM
+ JyS7OIGNYxAX6eZk1+91a6tnqfyPcMbduxyBaYXn94HUG162BeuyBkbNoIDkB7pCByed1A7q
+ q9/FbuTDwgVGVLYthYSfTtN0Y60OgNkWCMtFwKxRaXt1WFA5ceqinN/XkgA+vf2Ch72zBkJL
+ RBIhfOPFv5f2Hkkj0MvsUXpOWaOjatiu0fpPo6Hw14UEpywke1zN4NKubApQOlNKZZC4hu6/
+ 8pv2t4HRi7s0K88jQYBRPObjrN5+owtI51xMaYzvPitHQ2053LmgsOdN9EKOqZeHAYG2SmRW
+ LOxYWKX14YkZI5j/TXfKlTpwSMvXho+efN4kgFvFmP6WT+tPnwARAQABtCJMYXVyZW50IFZp
+ dmllciA8bGF1cmVudEB2aXZpZXIuZXU+iQI4BBMBAgAiBQJWBTDeAhsDBgsJCAcDAgYVCAIJ
+ CgsEFgIDAQIeAQIXgAAKCRDzDDi9Py++PCEdD/oD8LD5UWxhQrMQCsUgLlXCSM7sxGLkwmmF
+ ozqSSljEGRhffxZvO35wMFcdX9Z0QOabVoFTKrT04YmvbjsErh/dP5zeM/4EhUByeOS7s6Yl
+ HubMXVQTkak9Wa9Eq6irYC6L41QNzz/oTwNEqL1weV1+XC3TNnht9B76lIaELyrJvRfgsp9M
+ rE+PzGPo5h7QHWdL/Cmu8yOtPLa8Y6l/ywEJ040IoiAUfzRoaJs2csMXf0eU6gVBhCJ4bs91
+ jtWTXhkzdl4tdV+NOwj3j0ukPy+RjqeL2Ej+bomnPTOW8nAZ32dapmu7Fj7VApuQO/BSIHyO
+ NkowMMjB46yohEepJaJZkcgseaus0x960c4ua/SUm/Nm6vioRsxyUmWd2nG0m089pp8LPopq
+ WfAk1l4GciiMepp1Cxn7cnn1kmG6fhzedXZ/8FzsKjvx/aVeZwoEmucA42uGJ3Vk9TiVdZes
+ lqMITkHqDIpHjC79xzlWkXOsDbA2UY/P18AtgJEZQPXbcrRBtdSifCuXdDfHvI+3exIdTpvj
+ BfbgZAar8x+lcsQBugvktlQWPfAXZu4Shobi3/mDYMEDOE92dnNRD2ChNXg2IuvAL4OW40wh
+ gXlkHC1ZgToNGoYVvGcZFug1NI+vCeCFchX+L3bXyLMg3rAfWMFPAZLzn42plIDMsBs+x2yP
+ +bkCDQRWBSYZARAAvFJBFuX9A6eayxUPFaEczlMbGXugs0mazbOYGlyaWsiyfyc3PStHLFPj
+ rSTaeJpPCjBJErwpZUN4BbpkBpaJiMuVO6egrC8Xy8/cnJakHPR2JPEvmj7Gm/L9DphTcE15
+ 92rxXLesWzGBbuYxKsj8LEnrrvLyi3kNW6B5LY3Id+ZmU8YTQ2zLuGV5tLiWKKxc6s3eMXNq
+ wrJTCzdVd6ThXrmUfAHbcFXOycUyf9vD+s+WKpcZzCXwKgm7x1LKsJx3UhuzT8ier1L363RW
+ ZaJBZ9CTPiu8R5NCSn9V+BnrP3wlFbtLqXp6imGhazT9nJF86b5BVKpF8Vl3F0/Y+UZ4gUwL
+ d9cmDKBcmQU/JaRUSWvvolNu1IewZZu3rFSVgcpdaj7F/1aC0t5vLdx9KQRyEAKvEOtCmP4m
+ 38kU/6r33t3JuTJnkigda4+Sfu5kYGsogeYG6dNyjX5wpK5GJIJikEhdkwcLM+BUOOTi+I9u
+ tX03BGSZo7FW/J7S9y0l5a8nooDs2gBRGmUgYKqQJHCDQyYut+hmcr+BGpUn9/pp2FTWijrP
+ inb/Pc96YDQLQA1q2AeAFv3Rx3XoBTGl0RCY4KZ02c0kX/dm3eKfMX40XMegzlXCrqtzUk+N
+ 8LeipEsnOoAQcEONAWWo1HcgUIgCjhJhBEF0AcELOQzitbJGG5UAEQEAAYkCHwQYAQIACQUC
+ VgUmGQIbDAAKCRDzDDi9Py++PCD3D/9VCtydWDdOyMTJvEMRQGbx0GacqpydMEWbE3kUW0ha
+ US5jz5gyJZHKR3wuf1En/3z+CEAEfP1M3xNGjZvpaKZXrgWaVWfXtGLoWAVTfE231NMQKGoB
+ w2Dzx5ivIqxikXB6AanBSVpRpoaHWb06tPNxDL6SVV9lZpUn03DSR6gZEZvyPheNWkvz7bE6
+ FcqszV/PNvwm0C5Ju7NlJA8PBAQjkIorGnvN/vonbVh5GsRbhYPOc/JVwNNr63P76rZL8Gk/
+ hb3xtcIEi5CCzab45+URG/lzc6OV2nTj9Lg0SNcRhFZ2ILE3txrmI+aXmAu26+EkxLLfqCVT
+ ohb2SffQha5KgGlOSBXustQSGH0yzzZVZb+HZPEvx6d/HjQ+t9sO1bCpEgPdZjyMuuMp9N1H
+ ctbwGdQM2Qb5zgXO+8ZSzwC+6rHHIdtcB8PH2j+Nd88dVGYlWFKZ36ELeZxD7iJflsE8E8yg
+ OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
+ JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
+ ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
+Message-ID: <5b4df64c-40e4-70cd-753e-f52e2b547c18@vivier.eu>
+Date: Mon, 26 Aug 2019 10:29:19 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
+In-Reply-To: <20190816233422.16715-1-jkz@google.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::444
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 0/3] mailmap: Clean up
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:VmNWjSLjdbGE6vVVKVFt/+0BbXXf1jTv9LArydLn3WsiZJ7ao2V
+ j61TLrP0W+yHaa5ThoNS9zz4Yc170S24jXl+YluJXiVVR9ICalI+EsMcf5ohRpWXdW5/W4u
+ 0IDqPRXlF91wtsJXdKUhUNIy6qpK5i6IbkIRzL7HaxvRZQImhsYATfniaZ7IFFUK5eOg7m8
+ /McrByILnBjVRogT5pJJg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:sFGXFRepLTM=:8IRB5kMtFrTYvjyKOXiblX
+ XuaawcdwjxRAr2zZu0u98rQIA4UGB4LpA5LVITLq9hEv8KVq9RIYPVQMscMZSRqKRHi7QpiwG
+ +jFl71pLkiXYCnrqLzFff6TLEc0Qen0T3bplKCXNKb3ZOxDbPfGxsKW+3UFFowZ32VXdlId3Q
+ O4K+vH1lRnogEK/hkNgaI47IXtGJ1LEEMWxI1oycChah5o5DNogVKUVqZ1tOA6ZhmbVIhgXiv
+ WaqeauD3d/KROY7kcAOlQKlgW/uzUv2eQJf0QzYH4AnIkqwDqXsEKS6bb8hPlKMZaM3JWAWvw
+ lCEX/k3LukH5zUWZPTFM9cqQ34YdaHC1lSSuJY6S/ne/fh6QLskvvxH2fCzFD1M+9Ci3xeE/n
+ AFqbKaTjBgOlww/rijkd8rhLUokhZp3hNDYQWk4bnxVG0pOwaLEPUbAM7CYyvZ1f+bZBhWyew
+ qHF56bfxyuOfTMxLtXf+M4XSrMUWAdQx12v0DE4hucsovbSnW3jPkcdWGpdK3jMphA4p5l3Tz
+ dDUlcy/cUwiLmRU9yJE7/W+h8jJ2+ExcAv5ChwxemVw3c/apszr1guekQ/YVuACQWRVwLImny
+ hDgJG0o+cA4SLbPIBIm8BMqTev3E3+L5zmSyd2sdw56j+r7LaCiAXOE9EvlbUTFotFi0njvif
+ l73rr1rQnhPtXmZfa6V+iExT5KGeXUj37JC0aQC07lpAbii03qdhvMZ23XbL64HP+/8++mSQH
+ HAYTlCZGsrKlKRHpcLnGiXUD05xHESi1xgVu5Rmm+XXrNuvO7GL6dwn/5FZ81HplqFHEyK08Z
+ uDIeSBIktJNrBgzGqqYCLEIgvsRAA==
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.227.17.24
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: Support gdb
+ 'qOffsets' query for ELF
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -77,65 +103,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 24 Aug 2019 07:30:55 -0000
+X-List-Received-Date: Mon, 26 Aug 2019 08:29:41 -0000
 
+Le 17/08/2019 à 01:34, Josh Kunz via Qemu-devel a écrit :
+> This is needed to support debugging PIE ELF binaries running under QEMU
+> user mode. Currently, `code_offset` and `data_offset` remain unset for
+> all ELF binaries, so GDB is unable to correctly locate the position of
+> the binary's text and data.
+> 
+> The fields `code_offset`, and `data_offset` were originally added way
+> back in 2006 to support debugging of bFMT executables (978efd6aac6),
+> and support was just never added for ELF. Since non-PIE binaries are
+> loaded at exactly the address specified in the binary, GDB does not need
+> to relocate any symbols, so the buggy behavior is not normally observed.
+> 
+> Buglink: https://bugs.launchpad.net/qemu/+bug/1528239
+> Signed-off-by: Josh Kunz <jkz@google.com>
+> ---
+>  linux-user/elfload.c | 2 ++
+>  1 file changed, 2 insertions(+)
 
-Aleksandar Markovic <aleksandar.m.mail@gmail.com> writes:
+As it seems they are text and data segment offsets, why it's not based
+on info->start_code and info->start_data?
 
-> 23.08.2019. 08.13, "Markus Armbruster" <armbru@redhat.com> =D1=98=D0=B5 =
-=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
->>
->> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
->>
->> > Trivial cleanup of .mailmap to have a nice 'git shortlog' output.
->> >
->> > Philippe Mathieu-Daud=C3=A9 (3):
->> >   mailmap: Reorder by sections
->> >   mailmap: Update philmd email address
->> >   mailmap: Add many entries to improve 'git shortlog' statistics
->> >
->> >  .mailmap | 123 +++++++++++++++++++++++++++++++++++++++++++++++++++----
->> >  1 file changed, 115 insertions(+), 8 deletions(-)
->>
->> Series
->> Reviewed-by: Markus Armbruster <armbru@redhat.com>
->>
->> However, it increases the difference to contrib/gitdm/aliases.
->
-> Alex' initial gitdm effort, as I understood it, was not meant to cover all
-> history from 2007 or so, but just to give reasonable statistics for 2018
-> (amd future years).
->
-> In that light, .mailmap and gitdm aliases do not need to be equivalent.
->
-> But perhaps Alex would now want gitdm to be used for all QEMU history? Is
-> this desirable?
-
-It would be of interest historically but not something I'd want to spend
-a lot of time adding code churn for.
-
->
-> Aleksandar
->
->> I'm just
->> as guilty; my recent "[PATCH 2/2] contrib/gitdm: Add armbru@pond.sub.org
->> to group-map-redhat" updates only that. and not .mailmap.
->>
->> Perhaps we want to keep the two in sync manually.  We should then add
->> suitable comments to each file.
->>
->> Could we instead teach gitdm to use .mailmap, and ditch
->> contrib/gitdm/aliases?
->>
->> aliases' format is documented in gitdm's README.  Each line maps a
->> non-canonical e-mail address to a canonical one.
->>
->> .mailmap's format is documented in git-shortlog(1).  It can do a bit
->> more.  Even the common part differs: it has two addresses in different
->> order *boggle*.
->>
-
-
---
-Alex Benn=C3=A9e
+Thanks,
+Laurent
 
