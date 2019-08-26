@@ -1,97 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i2ANj-00034w-GZ
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Aug 2019 04:29:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47808)
+	id 1i2MGZ-0000i0-OH
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Aug 2019 17:11:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35123)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1i2ANg-00031q-Hr
- for qemu-trivial@nongnu.org; Mon, 26 Aug 2019 04:29:41 -0400
+ (envelope-from <jkz@google.com>) id 1i2MGW-0000he-G4
+ for qemu-trivial@nongnu.org; Mon, 26 Aug 2019 17:11:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1i2ANf-0003oI-F1
- for qemu-trivial@nongnu.org; Mon, 26 Aug 2019 04:29:40 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:52453)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1i2ANf-0003n8-6j; Mon, 26 Aug 2019 04:29:39 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MXH3Y-1hj0853nBe-00Yf6A; Mon, 26 Aug 2019 10:29:24 +0200
-To: Josh Kunz <jkz@google.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>
-References: <20190816233422.16715-1-jkz@google.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <5b4df64c-40e4-70cd-753e-f52e2b547c18@vivier.eu>
-Date: Mon, 26 Aug 2019 10:29:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ (envelope-from <jkz@google.com>) id 1i2MGU-000641-Pi
+ for qemu-trivial@nongnu.org; Mon, 26 Aug 2019 17:11:04 -0400
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:42957)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <jkz@google.com>) id 1i2MGU-000623-Gc
+ for qemu-trivial@nongnu.org; Mon, 26 Aug 2019 17:11:02 -0400
+Received: by mail-pf1-x444.google.com with SMTP id i30so12584578pfk.9
+ for <qemu-trivial@nongnu.org>; Mon, 26 Aug 2019 14:10:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Z8ZIExFHtrlKt7DHcnRJlAw2R9efWUXORN53HJrWQMo=;
+ b=cKdPB7auUFwld61wp0mwxwO0cvr++TE8t/Gbmh9rISkfSr5fiJzQvZGGaXse2GCLDN
+ Ubyp4Nm0mp9eONSjbjZyrCVF3YsyWq0J2LVzF3Jll0NEmUVcP4gaxL7jmVT1cNrU9K5R
+ 6kNdaiRru/1AU88aSPbylC3hbdUqO0Z9+37idDrx7qS3DOZvRNMUb2nCcbocBpyN6HVx
+ GUQTBmIPhR5OiI9LF/Dc0m2dmDvI9GAb+xgChsPIX7EOTMaNamcvme4IVQZ4f5PC+aBe
+ HChp53Sz4paSko7jdSVexZhfzGU0Wia5PWJRTHW6ebFHtG0RxvFICZrrorS5JczI9Cmt
+ sY/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Z8ZIExFHtrlKt7DHcnRJlAw2R9efWUXORN53HJrWQMo=;
+ b=g6/EakLipFdaf8Aa6IuWTRiSAqiUSlhWreTaTMWYUhsFscuu5Dj7/By96uQTX0ghqr
+ lKe2OG64H8ZSj+zndp3QP/WwNvP7e5eXft+Ms/pBwm2chkuqYwW4YyuB0Y+T+rkpgck2
+ pvKKGTitKQr5wCGXUMtnwFUYOBHkTAUAvyt/fguh3B8gVCUvcSfOroyMYslu0TvVFgiB
+ LGJY+tKOwdPfEc/jzVBpDvk9C4UbHU0VS5F8ucpRDEctLjI5NTTgmB6jG6cls3spdw/v
+ ZS6o2XadLbFwpd5N31LHTlJnXM83wG+DBiF6hHI9gvxP1p86aU15Wlp6HYOd0TsempO1
+ 0DOw==
+X-Gm-Message-State: APjAAAUkVi/yvNB/623yVzAL1YjSMQN1+C1vUDGcrmD7eKrDoa+FzTdP
+ iTWPyHQ5F9UTZoXjRa25c6kB8Ok8zEh/pw0rZPMF4Q==
+X-Google-Smtp-Source: APXvYqyaDO6+AT99PLb3/AhO/c3C+gmncs7UQtnkvhT7sf4SrGLRO5s2T5lOxp2QwlRudWRzkunwnC76jHkMWxsG04Q=
+X-Received: by 2002:aa7:96b3:: with SMTP id g19mr21578265pfk.26.1566853857932; 
+ Mon, 26 Aug 2019 14:10:57 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190816233422.16715-1-jkz@google.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:VmNWjSLjdbGE6vVVKVFt/+0BbXXf1jTv9LArydLn3WsiZJ7ao2V
- j61TLrP0W+yHaa5ThoNS9zz4Yc170S24jXl+YluJXiVVR9ICalI+EsMcf5ohRpWXdW5/W4u
- 0IDqPRXlF91wtsJXdKUhUNIy6qpK5i6IbkIRzL7HaxvRZQImhsYATfniaZ7IFFUK5eOg7m8
- /McrByILnBjVRogT5pJJg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:sFGXFRepLTM=:8IRB5kMtFrTYvjyKOXiblX
- XuaawcdwjxRAr2zZu0u98rQIA4UGB4LpA5LVITLq9hEv8KVq9RIYPVQMscMZSRqKRHi7QpiwG
- +jFl71pLkiXYCnrqLzFff6TLEc0Qen0T3bplKCXNKb3ZOxDbPfGxsKW+3UFFowZ32VXdlId3Q
- O4K+vH1lRnogEK/hkNgaI47IXtGJ1LEEMWxI1oycChah5o5DNogVKUVqZ1tOA6ZhmbVIhgXiv
- WaqeauD3d/KROY7kcAOlQKlgW/uzUv2eQJf0QzYH4AnIkqwDqXsEKS6bb8hPlKMZaM3JWAWvw
- lCEX/k3LukH5zUWZPTFM9cqQ34YdaHC1lSSuJY6S/ne/fh6QLskvvxH2fCzFD1M+9Ci3xeE/n
- AFqbKaTjBgOlww/rijkd8rhLUokhZp3hNDYQWk4bnxVG0pOwaLEPUbAM7CYyvZ1f+bZBhWyew
- qHF56bfxyuOfTMxLtXf+M4XSrMUWAdQx12v0DE4hucsovbSnW3jPkcdWGpdK3jMphA4p5l3Tz
- dDUlcy/cUwiLmRU9yJE7/W+h8jJ2+ExcAv5ChwxemVw3c/apszr1guekQ/YVuACQWRVwLImny
- hDgJG0o+cA4SLbPIBIm8BMqTev3E3+L5zmSyd2sdw56j+r7LaCiAXOE9EvlbUTFotFi0njvif
- l73rr1rQnhPtXmZfa6V+iExT5KGeXUj37JC0aQC07lpAbii03qdhvMZ23XbL64HP+/8++mSQH
- HAYTlCZGsrKlKRHpcLnGiXUD05xHESi1xgVu5Rmm+XXrNuvO7GL6dwn/5FZ81HplqFHEyK08Z
- uDIeSBIktJNrBgzGqqYCLEIgvsRAA==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: Support gdb
- 'qOffsets' query for ELF
+References: <CADgy-2vznasvwaUwNSi96Sy=ucPC=-3e=O9irqc5DSpV_uhWUg@mail.gmail.com>
+ <abf5f3b6-7c05-a85b-051f-9905b8f50041@vivier.eu>
+In-Reply-To: <abf5f3b6-7c05-a85b-051f-9905b8f50041@vivier.eu>
+From: Josh Kunz <jkz@google.com>
+Date: Mon, 26 Aug 2019 14:10:46 -0700
+Message-ID: <CADgy-2va2xVmO_a1gDwg+zkpNcLJTW5D1j=2kk1TnRMxyPaLMg@mail.gmail.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: marlies.ruck@gmail.com, qemu-devel@nongnu.org, riku.voipio@iki.fi, 
+ qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
+ Shu-Chun Weng <scw@google.com>,
+ Aleksandar Markovic <aleksandar.markovic@rt-rk.com>, 
+ milos.stojanovic@rt-rk.com, Aleksandar Markovic <amarkovic@wavecomp.com>
+Content-Type: multipart/alternative; boundary="0000000000009e835a05910b97c7"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::444
+Subject: Re: [Qemu-trivial] [Qemu-devel] patch to swap SIGRTMIN + 1 and
+ SIGRTMAX - 1
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,29 +69,150 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Aug 2019 08:29:41 -0000
+X-List-Received-Date: Mon, 26 Aug 2019 21:11:06 -0000
 
-Le 17/08/2019 à 01:34, Josh Kunz via Qemu-devel a écrit :
-> This is needed to support debugging PIE ELF binaries running under QEMU
-> user mode. Currently, `code_offset` and `data_offset` remain unset for
-> all ELF binaries, so GDB is unable to correctly locate the position of
-> the binary's text and data.
-> 
-> The fields `code_offset`, and `data_offset` were originally added way
-> back in 2006 to support debugging of bFMT executables (978efd6aac6),
-> and support was just never added for ELF. Since non-PIE binaries are
-> loaded at exactly the address specified in the binary, GDB does not need
-> to relocate any symbols, so the buggy behavior is not normally observed.
-> 
-> Buglink: https://bugs.launchpad.net/qemu/+bug/1528239
-> Signed-off-by: Josh Kunz <jkz@google.com>
-> ---
->  linux-user/elfload.c | 2 ++
->  1 file changed, 2 insertions(+)
+--0000000000009e835a05910b97c7
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-As it seems they are text and data segment offsets, why it's not based
-on info->start_code and info->start_data?
+On Wed, Aug 21, 2019 at 2:28 AM Laurent Vivier <laurent@vivier.eu> wrote:
 
-Thanks,
-Laurent
+> Le 19/08/2019 =C3=A0 23:46, Josh Kunz via Qemu-devel a =C3=A9crit :
+> > Hi all,
+> >
+> > I have also experienced issues with SIGRTMIN + 1, and am interested in
+> > moving this patch forwards. Anything I can do here to help? Would the
+> > maintainers prefer myself or Marli re-submit the patch?
+> >
+> > The Go issue here seems particularly sticky. Even if we update the Go
+> > runtime, users may try and run older binaries built with older versions
+> of
+> > Go for quite some time (months? years?). Would it be better to hide thi=
+s
+> > behind some kind of build-time flag (`--enable-sigrtmin-plus-one-proxy`
+> or
+> > something), so that some users can opt-in, but older binaries still wor=
+k
+> as
+> > expected?
+> >
+> > Also, here is a link to the original thread this message is in reply to
+> > in-case my mail-client doesn't set up the reply properly:
+> > https://lists.nongnu.org/archive/html/qemu-devel/2019-07/msg01303.html
+>
+> The problem here is we break something to fix something else.
+>
+> I'm wondering if the series from Aleksandar Markovic, "linux-user:
+> Support signal passing for targets having more signals than host" [1]
+> can fix the problem in a better way?
+>
+
+That patch[1] (which I'll refer to as the MUX patch to avoid confusion)
+does not directly fix the issue addressed by this patch (re-wiring
+SIGRTMIN+1), but since it basically implements generic signal multiplexing,
+it could be re-worked to address this case as well. The way it handles
+`si_code` spooks me a little bit. It could easily be broken by a kernel
+version change, and such a breakage could be hard to detect or lead to
+surprising results. Other than that, it looks like a reasonable
+implementation.
+
+That said, overall, fixing the SIGRTMIN+1 issue using a more-generic
+signal-multiplexing mechanism doesn't seem *that* much better to me. It
+adds a lot of complexity, and only saves a single signal (assuming glibc
+doesn't add more reserved signals). The "big win" is additional emulation
+features, like those introduced in MUX patch (being able to utilize signals
+outside of the host range). If having those features in QEMU warrants the
+additional complexity, then re-working this patch on-top of that
+infrastructure seems like a good idea.
+
+If the maintainers want to go down that route, then I would be happy to
+re-work this patch utilizing the infrastructure from the MUX patch.
+Unfortunately it will require non-trivial changes, so it may be best to
+wait until that patch is merged. I could also provide a patch "on top of"
+the MUX patch, if that's desired/more convenient.
+
+Just one last note, if you do decide to merge the MUX patch, then it would
+be best to use SIGRTMAX (instead of SIGRTMAX-1) as the multiplexing signal
+if possible, to avoid breaking go binaries.
+
+Thanks again for taking a look at this issue.
+
+Cheers,
+Josh Kunz
+
+[1] http://patchwork.ozlabs.org/cover/1103565/
+
+--0000000000009e835a05910b97c7
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">On Wed, Aug 21, 2019 at 2:28 AM Laurent V=
+ivier &lt;<a href=3D"mailto:laurent@vivier.eu" target=3D"_blank">laurent@vi=
+vier.eu</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote clas=
+s=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid r=
+gb(204,204,204);padding-left:1ex">Le 19/08/2019 =C3=A0 23:46, Josh Kunz via=
+ Qemu-devel a =C3=A9crit=C2=A0:<br>
+&gt; Hi all,<br>
+&gt; <br>
+&gt; I have also experienced issues with SIGRTMIN + 1, and am interested in=
+<br>
+&gt; moving this patch forwards. Anything I can do here to help? Would the<=
+br>
+&gt; maintainers prefer myself or Marli re-submit the patch?<br>
+&gt; <br>
+&gt; The Go issue here seems particularly sticky. Even if we update the Go<=
+br>
+&gt; runtime, users may try and run older binaries built with older version=
+s of<br>
+&gt; Go for quite some time (months? years?). Would it be better to hide th=
+is<br>
+&gt; behind some kind of build-time flag (`--enable-sigrtmin-plus-one-proxy=
+` or<br>
+&gt; something), so that some users can opt-in, but older binaries still wo=
+rk as<br>
+&gt; expected?<br>
+&gt; <br>
+&gt; Also, here is a link to the original thread this message is in reply t=
+o<br>
+&gt; in-case my mail-client doesn&#39;t set up the reply properly:<br>
+&gt; <a href=3D"https://lists.nongnu.org/archive/html/qemu-devel/2019-07/ms=
+g01303.html" rel=3D"noreferrer" target=3D"_blank">https://lists.nongnu.org/=
+archive/html/qemu-devel/2019-07/msg01303.html</a><br>
+<br>
+The problem here is we break something to fix something else.<br>
+<br>
+I&#39;m wondering if the series from Aleksandar Markovic, &quot;linux-user:=
+<br>
+Support signal passing for targets having more signals than host&quot; [1]<=
+br>
+can fix the problem in a better way?<br></blockquote><div><br></div><div>Th=
+at patch[1] (which I&#39;ll refer to as the MUX patch to avoid confusion) d=
+oes not directly fix the issue addressed by this patch (re-wiring SIGRTMIN+=
+1), but since it basically implements generic signal multiplexing, it could=
+ be re-worked to address this case as well. The way it handles `si_code` sp=
+ooks me a little bit. It could easily be broken by a kernel version change,=
+ and such a breakage could be hard to detect or lead to surprising results.=
+ Other than that, it looks like a reasonable implementation.</div><div><br>=
+</div><div>That said, overall, fixing the SIGRTMIN+1 issue using a more-gen=
+eric signal-multiplexing mechanism doesn&#39;t seem *that* much better to m=
+e. It adds a lot of complexity, and only saves a single signal (assuming gl=
+ibc doesn&#39;t add more reserved signals). The &quot;big win&quot; is addi=
+tional emulation features, like those introduced in MUX patch (being able t=
+o utilize signals outside of the host range). If having those features in Q=
+EMU warrants the additional complexity, then re-working this patch on-top o=
+f that infrastructure seems like a good idea.</div><div><br></div><div>If t=
+he maintainers want to go down that route, then I would be happy to re-work=
+ this patch utilizing the infrastructure from the MUX patch. Unfortunately =
+it will require non-trivial changes, so it may be best to wait until that p=
+atch is merged. I could also provide a patch &quot;on top of&quot; the MUX =
+patch, if that&#39;s desired/more convenient.</div><div><br></div><div>Just=
+ one last note, if you do decide to merge the MUX patch, then it would be b=
+est to use SIGRTMAX (instead of SIGRTMAX-1) as the multiplexing signal if p=
+ossible, to avoid breaking go binaries.</div><div><br></div><div>Thanks aga=
+in for taking a look at this issue.</div><div><br></div><div>Cheers,</div><=
+div>Josh Kunz</div><div><br></div><div>[1]=C2=A0<a href=3D"http://patchwork=
+.ozlabs.org/cover/1103565/" rel=3D"noreferrer" target=3D"_blank">http://pat=
+chwork.ozlabs.org/cover/1103565/</a></div></div></div>
+
+--0000000000009e835a05910b97c7--
 
