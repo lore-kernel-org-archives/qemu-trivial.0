@@ -1,71 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i2fDK-0005WB-Ll
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Aug 2019 13:25:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41532)
+	id 1i2jpN-00041v-RC
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Aug 2019 18:20:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41782)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mreitz@redhat.com>) id 1i2fDH-0005Sf-SL
- for qemu-trivial@nongnu.org; Tue, 27 Aug 2019 13:25:00 -0400
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1i2jpL-0003zT-9r
+ for qemu-trivial@nongnu.org; Tue, 27 Aug 2019 18:20:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mreitz@redhat.com>) id 1i2fDG-0006WF-RJ
- for qemu-trivial@nongnu.org; Tue, 27 Aug 2019 13:24:59 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35564)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mreitz@redhat.com>)
- id 1i2fDC-0006S8-2P; Tue, 27 Aug 2019 13:24:54 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 50C1918012FA;
- Tue, 27 Aug 2019 17:24:53 +0000 (UTC)
-Received: from dresden.str.redhat.com (unknown [10.40.205.2])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9E30560468;
- Tue, 27 Aug 2019 17:24:49 +0000 (UTC)
-To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
- qemu-trivial@nongnu.org
-References: <20190827101328.4062-1-stefanha@redhat.com>
-From: Max Reitz <mreitz@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=mreitz@redhat.com; prefer-encrypt=mutual; keydata=
- mQENBFXOJlcBCADEyyhOTsoa/2ujoTRAJj4MKA21dkxxELVj3cuILpLTmtachWj7QW+TVG8U
- /PsMCFbpwsQR7oEy8eHHZwuGQsNpEtNC2G/L8Yka0BIBzv7dEgrPzIu+W3anZXQW4702+uES
- U29G8TP/NGfXRRHGlbBIH9KNUnOSUD2vRtpOLXkWsV5CN6vQFYgQfFvmp5ZpPeUe6xNplu8V
- mcTw8OSEDW/ZnxJc8TekCKZSpdzYoxfzjm7xGmZqB18VFwgJZlIibt1HE0EB4w5GsD7x5ekh
- awIe3RwoZgZDLQMdOitJ1tUc8aqaxvgA4tz6J6st8D8pS//m1gAoYJWGwwIVj1DjTYLtABEB
- AAG0HU1heCBSZWl0eiA8bXJlaXR6QHJlZGhhdC5jb20+iQFTBBMBCAA9AhsDBQkSzAMABQsJ
- CAcCBhUICQoLAgQWAgMBAh4BAheABQJVzie5FRhoa3A6Ly9rZXlzLmdudXBnLm5ldAAKCRD0
- B9sAYdXPQDcIB/9uNkbYEex1rHKz3mr12uxYMwLOOFY9fstP5aoVJQ1nWQVB6m2cfKGdcRe1
- 2/nFaHSNAzT0NnKz2MjhZVmcrpyd2Gp2QyISCfb1FbT82GMtXFj1wiHmPb3CixYmWGQUUh+I
- AvUqsevLA+WihgBUyaJq/vuDVM1/K9Un+w+Tz5vpeMidlIsTYhcsMhn0L9wlCjoucljvbDy/
- 8C9L2DUdgi3XTa0ORKeflUhdL4gucWoAMrKX2nmPjBMKLgU7WLBc8AtV+84b9OWFML6NEyo4
- 4cP7cM/07VlJK53pqNg5cHtnWwjHcbpGkQvx6RUx6F1My3y52vM24rNUA3+ligVEgPYBuQEN
- BFXOJlcBCADAmcVUNTWT6yLWQHvxZ0o47KCP8OcLqD+67T0RCe6d0LP8GsWtrJdeDIQk+T+F
- xO7DolQPS6iQ6Ak2/lJaPX8L0BkEAiMuLCKFU6Bn3lFOkrQeKp3u05wCSV1iKnhg0UPji9V2
- W5eNfy8F4ZQHpeGUGy+liGXlxqkeRVhLyevUqfU0WgNqAJpfhHSGpBgihUupmyUg7lfUPeRM
- DzAN1pIqoFuxnN+BRHdAecpsLcbR8sQddXmDg9BpSKozO/JyBmaS1RlquI8HERQoe6EynJhd
- 64aICHDfj61rp+/0jTIcevxIIAzW70IadoS/y3DVIkuhncgDBvGbF3aBtjrJVP+5ABEBAAGJ
- ASUEGAEIAA8FAlXOJlcCGwwFCRLMAwAACgkQ9AfbAGHVz0CbFwf9F/PXxQR9i4N0iipISYjU
- sxVdjJOM2TMut+ZZcQ6NSMvhZ0ogQxJ+iEQ5OjnIputKvPVd5U7WRh+4lF1lB/NQGrGZQ1ic
- alkj6ocscQyFwfib+xIe9w8TG1CVGkII7+TbS5pXHRxZH1niaRpoi/hYtgzkuOPp35jJyqT/
- /ELbqQTDAWcqtJhzxKLE/ugcOMK520dJDeb6x2xVES+S5LXby0D4juZlvUj+1fwZu+7Io5+B
- bkhSVPb/QdOVTpnz7zWNyNw+OONo1aBUKkhq2UIByYXgORPFnbfMY7QWHcjpBVw9MgC4tGeF
- R4bv+1nAMMxKmb5VvQCExr0eFhJUAHAhVg==
-Message-ID: <21c580bc-c4c7-ede5-b35b-701391697063@redhat.com>
-Date: Tue, 27 Aug 2019 19:24:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1i2jpJ-00030A-Iv
+ for qemu-trivial@nongnu.org; Tue, 27 Aug 2019 18:20:35 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:34175)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1i2jpG-0002x7-Bg; Tue, 27 Aug 2019 18:20:30 -0400
+Received: by mail-oi1-x242.google.com with SMTP id g128so552660oib.1;
+ Tue, 27 Aug 2019 15:20:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=Ke4EP9pzyAaS8AnFudlXUGsTk9WqfGLF8sxTfnGtLQY=;
+ b=f+v1F3bJDFk70UXZ5fQSofgrDNRWeAhJUcKeIxeRALX/MVsTZFynnyRxSvXgQdjhgg
+ cvGEjuX+7mramp6Tpk3DvE8gIjwgJ6G/MQ2pA+IyAyYmhD0+GOrXYCsX0WbOMKARJPTo
+ TbNJzX1w2hleZ75Ok4z0ksIv9sW5wqzUJYTXS2Eq5GVGUB4SvvKNMwdLUysOZUO5UoNG
+ MHbK6lubADNY+HsqYX0V30HQYtWXj27iPl+CX3c6DLFODX8BSy0sEYQCjMEdgZC4PhAS
+ ftl01//PbeBF2sggQEeBohD/7JJ7TjfD1kgsHdhA6jPRa0mCPj7ejyGoQkfjn7JRhsaz
+ b0mQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=Ke4EP9pzyAaS8AnFudlXUGsTk9WqfGLF8sxTfnGtLQY=;
+ b=sv5Hqeode7XxqbPxlOOm6NrssqIvTI/xV8LOF1aoSeM9IEIJIu1LR9YdV/q74Rev9I
+ wnSC6I3YL3QMa+vaj8eO4APR4CiY3Pehwp5YcxHSwCR1V2xkSk08jvNDHokOUFuZaBfz
+ i8jm1onVCGFk6bikbJSATsbjIYZUJ4WAAYekx9VOlUZbLMbI9hisNOUTU9cyPRsblkAR
+ edhSCYENXtNAFtZ6/+iq74OV9p7ydllKQl0nkVmwjd/TejNGL1KTA5YFtwR8Dqf1f8hB
+ lsF53oR5/cuyoZ8hXnA3GJtOMDerMlX8x/FrmMLeB7jSn/U6RPEOSKzktcLkuAh1DQ+9
+ wkHQ==
+X-Gm-Message-State: APjAAAVTkbQpSob3s0Z0u3o/Xdx6DaiSEE58E3YNcZlF3RdgwX9cuaXU
+ u//0oWMjqlPBXRfsQvRtUC5UMtG+Dj1v1aNHCKc=
+X-Google-Smtp-Source: APXvYqzyFJf18MEOkp2CaVHUmose8TZKd143xiq0yy7hsei9rVza/k8hQ0QjPPCa0l8NR9PCMlBYk5mQfN7MUZlogHo=
+X-Received: by 2002:a05:6808:198:: with SMTP id
+ w24mr677859oic.53.1566944428409; 
+ Tue, 27 Aug 2019 15:20:28 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190827101328.4062-1-stefanha@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="KQ7dUPPCLCUen2DSNFZ3gsXbuRtjGLSdq"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.63]); Tue, 27 Aug 2019 17:24:53 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] file-posix: fix request_alignment typo
+Received: by 2002:a05:6830:10d7:0:0:0:0 with HTTP; Tue, 27 Aug 2019 15:20:27
+ -0700 (PDT)
+Received: by 2002:a05:6830:10d7:0:0:0:0 with HTTP; Tue, 27 Aug 2019 15:20:27
+ -0700 (PDT)
+In-Reply-To: <fdba9c20-3ffb-7862-51c5-f78852b68238@codesourcery.com>
+References: <1550008033-26540-1-git-send-email-sandra@codesourcery.com>
+ <CAFEAcA8eFexmymsaur-DtgYdKcyJB0ia7dW_vp358hbySsyBDw@mail.gmail.com>
+ <fdba9c20-3ffb-7862-51c5-f78852b68238@codesourcery.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Wed, 28 Aug 2019 00:20:27 +0200
+Message-ID: <CAL1e-=iyYCiCP-kMhyvL_CUpsQQ7gKi5CjS1XivAzj55qTxpGA@mail.gmail.com>
+To: Sandra Loosemore <sandra@codesourcery.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: multipart/alternative; boundary="00000000000009cdbb059120aef7"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::242
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] gdbstub: Send a reply to
+ the vKill packet.
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -77,59 +73,131 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Aug 2019 17:25:01 -0000
+X-List-Received-Date: Tue, 27 Aug 2019 22:20:36 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---KQ7dUPPCLCUen2DSNFZ3gsXbuRtjGLSdq
-Content-Type: multipart/mixed; boundary="kEPR9glWcdyS3Hw4a0UY4nWIPS2QP7EwB";
- protected-headers="v1"
-From: Max Reitz <mreitz@redhat.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
- qemu-trivial@nongnu.org
-Message-ID: <21c580bc-c4c7-ede5-b35b-701391697063@redhat.com>
-Subject: Re: [PATCH] file-posix: fix request_alignment typo
-References: <20190827101328.4062-1-stefanha@redhat.com>
-In-Reply-To: <20190827101328.4062-1-stefanha@redhat.com>
-
---kEPR9glWcdyS3Hw4a0UY4nWIPS2QP7EwB
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+--00000000000009cdbb059120aef7
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On 27.08.19 12:13, Stefan Hajnoczi wrote:
-> Fixes: a6b257a08e3d72219f03e461a52152672fec0612
->        ("file-posix: Handle undetectable alignment")
-> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-> ---
->  block/file-posix.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+14.02.2019. 19.27, "Sandra Loosemore" <sandra@codesourcery.com> =D1=98=D0=
+=B5
+=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
+>
+> On 2/14/19 10:48 AM, Peter Maydell wrote:
+>>
+>> On Tue, 12 Feb 2019 at 21:52, Sandra Loosemore <sandra@codesourcery.com>
+wrote:
+>>>
+>>>
+>>> Per the GDB remote protocol documentation
+>>>
+>>>
+https://sourceware.org/gdb/current/onlinedocs/gdb/Packets.html#index-vKill-=
+packet
+>>>
+>>> the debug stub is expected to send a reply to the 'vKill' packet.  At
+>>> least some versions of GDB crash if the gdb stub simply exits without
+>>> sending a reply.  This patch fixes QEMU's gdb stub to conform to the
+>>> expected behavior.
+>>>
+>>> Note that QEMU's existing handling of the legacy 'k' packet is
+>>> correct: in that case GDB does not expect a reply, and QEMU does not
+>>> send one.
+>>>
+>>> Signed-off-by: Sandra Loosemore <sandra@codesourcery.com>
+>>
+>>
+>> Thanks, applied to target-arm.next.
+>>
+>> As an aside, do you know if there is any kind of test suite for
+>> the remote protocol that implementors of a debug stub can use to
+>> check that they're conforming to it?
+>
+>
+> Well, I discovered this problem by running the GDB testsuite (using QEMU
+for nios2-elf target with the other target-specific patches I recently
+posted).  I'm not sure if it's designed to exhaustively test the entire
+remote protocol, but it does a pretty good job of covering user-visible GDB
+features that depend on the remote target doing something reasonable, even
+if it's just saying "Huh?  I don't know how to do that."  :-)
+>
 
-Thanks, applied to my block branch:
+Debugging using gdb/qemu setups is fairly frequent use case and perhaps we
+should have a test module for interoperability of gdb and qemu, and also
+"make check-gdb".
 
-https://git.xanclic.moe/XanClic/qemu/commits/branch/block
+Thanks for pinpointing and fixing bugs in this area, Sandra!
 
-Max
+Aleksandar
 
+> -Sandra
+>
 
---kEPR9glWcdyS3Hw4a0UY4nWIPS2QP7EwB--
+--00000000000009cdbb059120aef7
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
---KQ7dUPPCLCUen2DSNFZ3gsXbuRtjGLSdq
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+<p dir=3D"ltr"><br>
+14.02.2019. 19.27, &quot;Sandra Loosemore&quot; &lt;<a href=3D"mailto:sandr=
+a@codesourcery.com">sandra@codesourcery.com</a>&gt; =D1=98=D0=B5 =D0=BD=D0=
+=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:<br>
+&gt;<br>
+&gt; On 2/14/19 10:48 AM, Peter Maydell wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; On Tue, 12 Feb 2019 at 21:52, Sandra Loosemore &lt;<a href=3D"mail=
+to:sandra@codesourcery.com">sandra@codesourcery.com</a>&gt; wrote:<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; Per the GDB remote protocol documentation<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; <a href=3D"https://sourceware.org/gdb/current/onlinedocs/gdb/P=
+ackets.html#index-vKill-packet">https://sourceware.org/gdb/current/onlinedo=
+cs/gdb/Packets.html#index-vKill-packet</a><br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; the debug stub is expected to send a reply to the &#39;vKill&#=
+39; packet.=C2=A0 At<br>
+&gt;&gt;&gt; least some versions of GDB crash if the gdb stub simply exits =
+without<br>
+&gt;&gt;&gt; sending a reply.=C2=A0 This patch fixes QEMU&#39;s gdb stub to=
+ conform to the<br>
+&gt;&gt;&gt; expected behavior.<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; Note that QEMU&#39;s existing handling of the legacy &#39;k&#3=
+9; packet is<br>
+&gt;&gt;&gt; correct: in that case GDB does not expect a reply, and QEMU do=
+es not<br>
+&gt;&gt;&gt; send one.<br>
+&gt;&gt;&gt;<br>
+&gt;&gt;&gt; Signed-off-by: Sandra Loosemore &lt;<a href=3D"mailto:sandra@c=
+odesourcery.com">sandra@codesourcery.com</a>&gt;<br>
+&gt;&gt;<br>
+&gt;&gt;<br>
+&gt;&gt; Thanks, applied to target-arm.next.<br>
+&gt;&gt;<br>
+&gt;&gt; As an aside, do you know if there is any kind of test suite for<br=
+>
+&gt;&gt; the remote protocol that implementors of a debug stub can use to<b=
+r>
+&gt;&gt; check that they&#39;re conforming to it?<br>
+&gt;<br>
+&gt;<br>
+&gt; Well, I discovered this problem by running the GDB testsuite (using QE=
+MU for nios2-elf target with the other target-specific patches I recently p=
+osted).=C2=A0 I&#39;m not sure if it&#39;s designed to exhaustively test th=
+e entire remote protocol, but it does a pretty good job of covering user-vi=
+sible GDB features that depend on the remote target doing something reasona=
+ble, even if it&#39;s just saying &quot;Huh?=C2=A0 I don&#39;t know how to =
+do that.&quot;=C2=A0 :-)<br>
+&gt;</p>
+<p dir=3D"ltr">Debugging using gdb/qemu setups is fairly frequent use case =
+and perhaps we should have a test module for interoperability of gdb and qe=
+mu, and also &quot;make check-gdb&quot;.</p>
+<p dir=3D"ltr">Thanks for pinpointing and fixing bugs in this area, Sandra!=
+</p>
+<p dir=3D"ltr">Aleksandar</p>
+<p dir=3D"ltr">&gt; -Sandra<br>
+&gt;<br>
+</p>
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEkb62CjDbPohX0Rgp9AfbAGHVz0AFAl1lZ18ACgkQ9AfbAGHV
-z0A6xQf+IUxK0oOHYAjx4vY3Gx2eFcgQGS8PiE0LA8wGc1EReivmi048FOalq883
-yOcKQ1bBHMp53dhTzcNpTNbkqcIgDRiLh66mbwPna5NnuQ5+aNUfd/rF1jkxE5BT
-Exnr1SCCjjfLyiBzBPJjM+9z4ovlVdgrwqfHdLLS83sq/iZiiWReZSgkkuxm8ImV
-dfd7h8eu/qQVT1uRVyBdyjDiWA8ypfUTm12wwg9AQdlzIQZkZJNMC4TjkYK2aCzc
-0ZTn2o34CU6vv/jkZmKVSqV5JkOoa73zZTNP/9hdp62uszTJNDvNvuux8N6lHuzU
-7NY5PkLtzPJQapzLz2npEvNOQmCupQ==
-=W6/Q
------END PGP SIGNATURE-----
-
---KQ7dUPPCLCUen2DSNFZ3gsXbuRtjGLSdq--
+--00000000000009cdbb059120aef7--
 
