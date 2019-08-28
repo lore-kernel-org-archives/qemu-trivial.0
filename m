@@ -1,67 +1,102 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i2jpN-00041v-RC
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Aug 2019 18:20:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41782)
+	id 1i2tgr-0001FN-I3
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2019 04:52:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34888)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1i2jpL-0003zT-9r
- for qemu-trivial@nongnu.org; Tue, 27 Aug 2019 18:20:36 -0400
+ (envelope-from <laurent@vivier.eu>) id 1i2tgp-0001Co-5d
+ for qemu-trivial@nongnu.org; Wed, 28 Aug 2019 04:52:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1i2jpJ-00030A-Iv
- for qemu-trivial@nongnu.org; Tue, 27 Aug 2019 18:20:35 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:34175)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
- id 1i2jpG-0002x7-Bg; Tue, 27 Aug 2019 18:20:30 -0400
-Received: by mail-oi1-x242.google.com with SMTP id g128so552660oib.1;
- Tue, 27 Aug 2019 15:20:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc; bh=Ke4EP9pzyAaS8AnFudlXUGsTk9WqfGLF8sxTfnGtLQY=;
- b=f+v1F3bJDFk70UXZ5fQSofgrDNRWeAhJUcKeIxeRALX/MVsTZFynnyRxSvXgQdjhgg
- cvGEjuX+7mramp6Tpk3DvE8gIjwgJ6G/MQ2pA+IyAyYmhD0+GOrXYCsX0WbOMKARJPTo
- TbNJzX1w2hleZ75Ok4z0ksIv9sW5wqzUJYTXS2Eq5GVGUB4SvvKNMwdLUysOZUO5UoNG
- MHbK6lubADNY+HsqYX0V30HQYtWXj27iPl+CX3c6DLFODX8BSy0sEYQCjMEdgZC4PhAS
- ftl01//PbeBF2sggQEeBohD/7JJ7TjfD1kgsHdhA6jPRa0mCPj7ejyGoQkfjn7JRhsaz
- b0mQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:cc;
- bh=Ke4EP9pzyAaS8AnFudlXUGsTk9WqfGLF8sxTfnGtLQY=;
- b=sv5Hqeode7XxqbPxlOOm6NrssqIvTI/xV8LOF1aoSeM9IEIJIu1LR9YdV/q74Rev9I
- wnSC6I3YL3QMa+vaj8eO4APR4CiY3Pehwp5YcxHSwCR1V2xkSk08jvNDHokOUFuZaBfz
- i8jm1onVCGFk6bikbJSATsbjIYZUJ4WAAYekx9VOlUZbLMbI9hisNOUTU9cyPRsblkAR
- edhSCYENXtNAFtZ6/+iq74OV9p7ydllKQl0nkVmwjd/TejNGL1KTA5YFtwR8Dqf1f8hB
- lsF53oR5/cuyoZ8hXnA3GJtOMDerMlX8x/FrmMLeB7jSn/U6RPEOSKzktcLkuAh1DQ+9
- wkHQ==
-X-Gm-Message-State: APjAAAVTkbQpSob3s0Z0u3o/Xdx6DaiSEE58E3YNcZlF3RdgwX9cuaXU
- u//0oWMjqlPBXRfsQvRtUC5UMtG+Dj1v1aNHCKc=
-X-Google-Smtp-Source: APXvYqzyFJf18MEOkp2CaVHUmose8TZKd143xiq0yy7hsei9rVza/k8hQ0QjPPCa0l8NR9PCMlBYk5mQfN7MUZlogHo=
-X-Received: by 2002:a05:6808:198:: with SMTP id
- w24mr677859oic.53.1566944428409; 
- Tue, 27 Aug 2019 15:20:28 -0700 (PDT)
+ (envelope-from <laurent@vivier.eu>) id 1i2tgn-0008FO-TN
+ for qemu-trivial@nongnu.org; Wed, 28 Aug 2019 04:52:27 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:58237)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1i2tgl-0008DI-1n; Wed, 28 Aug 2019 04:52:23 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MV5KC-1haoyM05x8-00S5C6; Wed, 28 Aug 2019 10:52:00 +0200
+To: Josh Kunz <jkz@google.com>,
+ Aleksandar Markovic <aleksandar.markovic@rt-rk.com>,
+ milos.stojanovic@rt-rk.com
+Cc: marlies.ruck@gmail.com, qemu-devel@nongnu.org, riku.voipio@iki.fi,
+ qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Shu-Chun Weng <scw@google.com>, Aleksandar Markovic <amarkovic@wavecomp.com>
+References: <CADgy-2vznasvwaUwNSi96Sy=ucPC=-3e=O9irqc5DSpV_uhWUg@mail.gmail.com>
+ <abf5f3b6-7c05-a85b-051f-9905b8f50041@vivier.eu>
+ <CADgy-2va2xVmO_a1gDwg+zkpNcLJTW5D1j=2kk1TnRMxyPaLMg@mail.gmail.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <6542ac57-6b06-1337-825b-dd1187accd15@vivier.eu>
+Date: Wed, 28 Aug 2019 10:51:52 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Received: by 2002:a05:6830:10d7:0:0:0:0 with HTTP; Tue, 27 Aug 2019 15:20:27
- -0700 (PDT)
-Received: by 2002:a05:6830:10d7:0:0:0:0 with HTTP; Tue, 27 Aug 2019 15:20:27
- -0700 (PDT)
-In-Reply-To: <fdba9c20-3ffb-7862-51c5-f78852b68238@codesourcery.com>
-References: <1550008033-26540-1-git-send-email-sandra@codesourcery.com>
- <CAFEAcA8eFexmymsaur-DtgYdKcyJB0ia7dW_vp358hbySsyBDw@mail.gmail.com>
- <fdba9c20-3ffb-7862-51c5-f78852b68238@codesourcery.com>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Wed, 28 Aug 2019 00:20:27 +0200
-Message-ID: <CAL1e-=iyYCiCP-kMhyvL_CUpsQQ7gKi5CjS1XivAzj55qTxpGA@mail.gmail.com>
-To: Sandra Loosemore <sandra@codesourcery.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, 
- QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: multipart/alternative; boundary="00000000000009cdbb059120aef7"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] gdbstub: Send a reply to
- the vKill packet.
+In-Reply-To: <CADgy-2va2xVmO_a1gDwg+zkpNcLJTW5D1j=2kk1TnRMxyPaLMg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:ouwgNHkEAdYnh26o4raLwgwve0Rfx7STJELe3f4l5nEOdhbLxZL
+ NpQFBaonTNc6f8Z3iStbSe3mVk7LoUY116TTgcQ5F/6RoOP7oy6FlInqVV6FpNWAAtNuA4X
+ 2jv/6xrvBqHkIpfy4bPXfFy7/9QegJXiEX4LNk5NANPRKqyhpuVT+elAut3l8udpDx0MHiw
+ XTAEcZ8OuUrCKNEEXrW0Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:HRqXxs8DNuU=:SL49YzSzc+Z5DpAsk9vu1a
+ WYVYGflMcGfwRrxDzFrfv+JzOzDzSCM3lgTbmOniqxm+pxv1aA1Erbfl1sHlhqNYjMTqqCbnK
+ ufOBUadgdhqbMtZ6HTNzgUrICBXrzbOKQ4Y6FwgBGRpTeJ1jKu9NfzCSM77/jL9zft1UIMc+p
+ RlzghEDC1EYi15V+3gUJpNzNfMqwQlQS0TK4tEz4gWF80lnLafYucx4uf9il5yQhScNBjvXwc
+ aTcwXCMZbN08XnfsNH0vZHZ8KUXTz93/dGVTgWNxOMn6ZXZzlvyfp6Ex2gmd1MBdsMsLuk8qE
+ Uo/KiWrMONt45cTpNsdm5puZwyE7ZPSTjbBM1uvyQrW7xbsFQgzLmNuqRUHOdcoCll4jiLh9R
+ 1k40WmRjdRIHxroGb0hwxtPesKz89YKcgkkNoPrQaRYX5il3xXmRdyPg0PTjGUlr7BLbX0h3k
+ RwW+XykTy4vQLzv33plCeFyTT48Rd4fH5UXbgAgwZQvGgRQusZIfaZP75YBENR1lTp0+Llf8k
+ jKltc2FWV9H6HPJkoUkuqaLUhweardIuSEEmZCy6OMA1kHfsI8XYeBw5Dop2sBr0NItU71A1O
+ qOSNiYRnjYYVEo9Psc+Bwx1PF9jcemFH70wIQ9WOhNZdKXGKeXAomz+y0O4jgLRrVcQptvZHK
+ EnEWfrpwKrFvvP/22NI9wkG02Tgi0cHCWBirv+Q5y1GCFRixyUSaBcrJAd/0b+k8dKYxPCasZ
+ F6JYElGN/jA+WWrAnWnVvEjYtlbk6mBlAJ5c4SPudHfE0qbMAHnFvJdjPSA=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 212.227.17.10
+Subject: Re: [Qemu-trivial] [Qemu-devel] patch to swap SIGRTMIN + 1 and
+ SIGRTMAX - 1
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,131 +108,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Aug 2019 22:20:36 -0000
+X-List-Received-Date: Wed, 28 Aug 2019 08:52:28 -0000
 
---00000000000009cdbb059120aef7
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Le 26/08/2019 à 23:10, Josh Kunz a écrit :
+> On Wed, Aug 21, 2019 at 2:28 AM Laurent Vivier <laurent@vivier.eu
+> <mailto:laurent@vivier.eu>> wrote:
+> 
+>     Le 19/08/2019 à 23:46, Josh Kunz via Qemu-devel a écrit :
+>     > Hi all,
+>     >
+>     > I have also experienced issues with SIGRTMIN + 1, and am interested in
+>     > moving this patch forwards. Anything I can do here to help? Would the
+>     > maintainers prefer myself or Marli re-submit the patch?
+>     >
+>     > The Go issue here seems particularly sticky. Even if we update the Go
+>     > runtime, users may try and run older binaries built with older
+>     versions of
+>     > Go for quite some time (months? years?). Would it be better to
+>     hide this
+>     > behind some kind of build-time flag
+>     (`--enable-sigrtmin-plus-one-proxy` or
+>     > something), so that some users can opt-in, but older binaries
+>     still work as
+>     > expected?
+>     >
+>     > Also, here is a link to the original thread this message is in
+>     reply to
+>     > in-case my mail-client doesn't set up the reply properly:
+>     > https://lists.nongnu.org/archive/html/qemu-devel/2019-07/msg01303.html
+> 
+>     The problem here is we break something to fix something else.
+> 
+>     I'm wondering if the series from Aleksandar Markovic, "linux-user:
+>     Support signal passing for targets having more signals than host" [1]
+>     can fix the problem in a better way?
+> 
+> 
+> That patch[1] (which I'll refer to as the MUX patch to avoid confusion)
+> does not directly fix the issue addressed by this patch (re-wiring
+> SIGRTMIN+1), but since it basically implements generic signal
+> multiplexing, it could be re-worked to address this case as well. The
+> way it handles `si_code` spooks me a little bit. It could easily be
+> broken by a kernel version change, and such a breakage could be hard to
+> detect or lead to surprising results. Other than that, it looks like a
+> reasonable implementation.
+> 
+> That said, overall, fixing the SIGRTMIN+1 issue using a more-generic
+> signal-multiplexing mechanism doesn't seem *that* much better to me. It
+> adds a lot of complexity, and only saves a single signal (assuming glibc
+> doesn't add more reserved signals). The "big win" is additional
+> emulation features, like those introduced in MUX patch (being able to
+> utilize signals outside of the host range). If having those features in
+> QEMU warrants the additional complexity, then re-working this patch
+> on-top of that infrastructure seems like a good idea.
+> 
+> If the maintainers want to go down that route, then I would be happy to
+> re-work this patch utilizing the infrastructure from the MUX patch.
+> Unfortunately it will require non-trivial changes, so it may be best to
+> wait until that patch is merged. I could also provide a patch "on top
+> of" the MUX patch, if that's desired/more convenient.
+> 
+> Just one last note, if you do decide to merge the MUX patch, then it
+> would be best to use SIGRTMAX (instead of SIGRTMAX-1) as the
+> multiplexing signal if possible, to avoid breaking go binaries.
+> 
 
-14.02.2019. 19.27, "Sandra Loosemore" <sandra@codesourcery.com> =D1=98=D0=
-=B5
-=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
->
-> On 2/14/19 10:48 AM, Peter Maydell wrote:
->>
->> On Tue, 12 Feb 2019 at 21:52, Sandra Loosemore <sandra@codesourcery.com>
-wrote:
->>>
->>>
->>> Per the GDB remote protocol documentation
->>>
->>>
-https://sourceware.org/gdb/current/onlinedocs/gdb/Packets.html#index-vKill-=
-packet
->>>
->>> the debug stub is expected to send a reply to the 'vKill' packet.  At
->>> least some versions of GDB crash if the gdb stub simply exits without
->>> sending a reply.  This patch fixes QEMU's gdb stub to conform to the
->>> expected behavior.
->>>
->>> Note that QEMU's existing handling of the legacy 'k' packet is
->>> correct: in that case GDB does not expect a reply, and QEMU does not
->>> send one.
->>>
->>> Signed-off-by: Sandra Loosemore <sandra@codesourcery.com>
->>
->>
->> Thanks, applied to target-arm.next.
->>
->> As an aside, do you know if there is any kind of test suite for
->> the remote protocol that implementors of a debug stub can use to
->> check that they're conforming to it?
->
->
-> Well, I discovered this problem by running the GDB testsuite (using QEMU
-for nios2-elf target with the other target-specific patches I recently
-posted).  I'm not sure if it's designed to exhaustively test the entire
-remote protocol, but it does a pretty good job of covering user-visible GDB
-features that depend on the remote target doing something reasonable, even
-if it's just saying "Huh?  I don't know how to do that."  :-)
->
+Personally, I prefer a solution that breaks nothing.
 
-Debugging using gdb/qemu setups is fairly frequent use case and perhaps we
-should have a test module for interoperability of gdb and qemu, and also
-"make check-gdb".
+Aleksandar, Milos,
 
-Thanks for pinpointing and fixing bugs in this area, Sandra!
+do you have an updated version of you series "Support signal passing for
+targets having more signals than host"?
 
-Aleksandar
-
-> -Sandra
->
-
---00000000000009cdbb059120aef7
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<p dir=3D"ltr"><br>
-14.02.2019. 19.27, &quot;Sandra Loosemore&quot; &lt;<a href=3D"mailto:sandr=
-a@codesourcery.com">sandra@codesourcery.com</a>&gt; =D1=98=D0=B5 =D0=BD=D0=
-=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:<br>
-&gt;<br>
-&gt; On 2/14/19 10:48 AM, Peter Maydell wrote:<br>
-&gt;&gt;<br>
-&gt;&gt; On Tue, 12 Feb 2019 at 21:52, Sandra Loosemore &lt;<a href=3D"mail=
-to:sandra@codesourcery.com">sandra@codesourcery.com</a>&gt; wrote:<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; Per the GDB remote protocol documentation<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; <a href=3D"https://sourceware.org/gdb/current/onlinedocs/gdb/P=
-ackets.html#index-vKill-packet">https://sourceware.org/gdb/current/onlinedo=
-cs/gdb/Packets.html#index-vKill-packet</a><br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; the debug stub is expected to send a reply to the &#39;vKill&#=
-39; packet.=C2=A0 At<br>
-&gt;&gt;&gt; least some versions of GDB crash if the gdb stub simply exits =
-without<br>
-&gt;&gt;&gt; sending a reply.=C2=A0 This patch fixes QEMU&#39;s gdb stub to=
- conform to the<br>
-&gt;&gt;&gt; expected behavior.<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; Note that QEMU&#39;s existing handling of the legacy &#39;k&#3=
-9; packet is<br>
-&gt;&gt;&gt; correct: in that case GDB does not expect a reply, and QEMU do=
-es not<br>
-&gt;&gt;&gt; send one.<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; Signed-off-by: Sandra Loosemore &lt;<a href=3D"mailto:sandra@c=
-odesourcery.com">sandra@codesourcery.com</a>&gt;<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; Thanks, applied to target-arm.next.<br>
-&gt;&gt;<br>
-&gt;&gt; As an aside, do you know if there is any kind of test suite for<br=
->
-&gt;&gt; the remote protocol that implementors of a debug stub can use to<b=
-r>
-&gt;&gt; check that they&#39;re conforming to it?<br>
-&gt;<br>
-&gt;<br>
-&gt; Well, I discovered this problem by running the GDB testsuite (using QE=
-MU for nios2-elf target with the other target-specific patches I recently p=
-osted).=C2=A0 I&#39;m not sure if it&#39;s designed to exhaustively test th=
-e entire remote protocol, but it does a pretty good job of covering user-vi=
-sible GDB features that depend on the remote target doing something reasona=
-ble, even if it&#39;s just saying &quot;Huh?=C2=A0 I don&#39;t know how to =
-do that.&quot;=C2=A0 :-)<br>
-&gt;</p>
-<p dir=3D"ltr">Debugging using gdb/qemu setups is fairly frequent use case =
-and perhaps we should have a test module for interoperability of gdb and qe=
-mu, and also &quot;make check-gdb&quot;.</p>
-<p dir=3D"ltr">Thanks for pinpointing and fixing bugs in this area, Sandra!=
-</p>
-<p dir=3D"ltr">Aleksandar</p>
-<p dir=3D"ltr">&gt; -Sandra<br>
-&gt;<br>
-</p>
-
---00000000000009cdbb059120aef7--
+Thanks,
+Laurent
 
