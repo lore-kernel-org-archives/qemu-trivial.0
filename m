@@ -1,39 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i5Npf-0007zm-RL
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Sep 2019 01:27:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34759)
+	id 1i5n3y-0004pi-8E
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Sep 2019 04:24:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60153)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1i5Npd-0007xb-BU
- for qemu-trivial@nongnu.org; Wed, 04 Sep 2019 01:27:50 -0400
+ (envelope-from <stefanha@redhat.com>) id 1i5n3v-0004lo-FJ
+ for qemu-trivial@nongnu.org; Thu, 05 Sep 2019 04:24:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1i5Npc-0006qZ-79
- for qemu-trivial@nongnu.org; Wed, 04 Sep 2019 01:27:49 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54572)
+ (envelope-from <stefanha@redhat.com>) id 1i5n3u-0002Q7-HP
+ for qemu-trivial@nongnu.org; Thu, 05 Sep 2019 04:24:15 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51088)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1i5NpZ-0006ow-Ho; Wed, 04 Sep 2019 01:27:45 -0400
+ (Exim 4.71) (envelope-from <stefanha@redhat.com>)
+ id 1i5n3q-0002N9-EJ; Thu, 05 Sep 2019 04:24:10 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 8925418B3D87;
- Wed,  4 Sep 2019 05:27:44 +0000 (UTC)
-Received: from thuth.com (ovpn-116-69.ams2.redhat.com [10.36.116.69])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7C5885D6C8;
- Wed,  4 Sep 2019 05:27:43 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Date: Wed,  4 Sep 2019 07:27:39 +0200
-Message-Id: <20190904052739.22123-1-thuth@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id 7D58D31752AF;
+ Thu,  5 Sep 2019 08:24:09 +0000 (UTC)
+Received: from localhost (ovpn-117-222.ams2.redhat.com [10.36.117.222])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F3E975D713;
+ Thu,  5 Sep 2019 08:24:05 +0000 (UTC)
+Date: Thu, 5 Sep 2019 09:24:04 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>
+Message-ID: <20190905082404.GB32415@stefanha-x1.localdomain>
+References: <20190902162638.28142-1-thuth@redhat.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="6sX45UoQRIJXqkqR"
+Content-Disposition: inline
+In-Reply-To: <20190902162638.28142-1-thuth@redhat.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.63]); Wed, 04 Sep 2019 05:27:44 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.49]); Thu, 05 Sep 2019 08:24:09 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] Replace '-machine accel=xyz' with '-accel
- xyz'
+Subject: Re: [Qemu-trivial] [PATCH] hw/misc: Mark most objects as "common"
+ code to speed up compilation a litte bit
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -45,105 +56,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Sep 2019 05:27:50 -0000
+X-List-Received-Date: Thu, 05 Sep 2019 08:24:16 -0000
 
-We've got a separate option to configure the accelerator nowadays, which
-is shorter to type and the preferred way of specifying an accelerator.
-Use it in the source and examples to show that it is the favored option.
-(However, do not touch the places yet which also specify other machine
-options or multiple accelerators - these are currently still better
-handled with one single "-machine" statement instead)
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- python/qemu/qtest.py                | 2 +-
- qemu-deprecated.texi                | 3 +--
- qemu-options.hx                     | 2 +-
- tests/libqtest.c                    | 2 +-
- tests/migration/guestperf/engine.py | 2 +-
- tests/qemu-iotests/172              | 2 +-
- 6 files changed, 6 insertions(+), 7 deletions(-)
+--6sX45UoQRIJXqkqR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/python/qemu/qtest.py b/python/qemu/qtest.py
-index eebcc233ed..3f1d2cb325 100644
---- a/python/qemu/qtest.py
-+++ b/python/qemu/qtest.py
-@@ -96,7 +96,7 @@ class QEMUQtestMachine(QEMUMachine):
-     def _base_args(self):
-         args = super(QEMUQtestMachine, self)._base_args()
-         args.extend(['-qtest', 'unix:path=' + self._qtest_path,
--                     '-machine', 'accel=qtest'])
-+                     '-accel', 'qtest'])
-         return args
- 
-     def _pre_launch(self):
-diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
-index 00a4b6f350..0982e41698 100644
---- a/qemu-deprecated.texi
-+++ b/qemu-deprecated.texi
-@@ -26,8 +26,7 @@ The @option{enforce-config-section} parameter is replaced by the
- 
- @subsection -no-kvm (since 1.3.0)
- 
--The ``-no-kvm'' argument is now a synonym for setting
--``-machine accel=tcg''.
-+The ``-no-kvm'' argument is now a synonym for setting ``-accel tcg''.
- 
- @subsection -usbdevice (since 2.10.0)
- 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 09e6439646..e0bba2abd1 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -4156,7 +4156,7 @@ STEXI
- Enable FIPS 140-2 compliance mode.
- ETEXI
- 
--HXCOMM Deprecated by -machine accel=tcg property
-+HXCOMM Deprecated by -accel tcg
- DEF("no-kvm", 0, QEMU_OPTION_no_kvm, "", QEMU_ARCH_I386)
- 
- DEF("msg", HAS_ARG, QEMU_OPTION_msg,
-diff --git a/tests/libqtest.c b/tests/libqtest.c
-index 2713b86cf7..67e39c59e7 100644
---- a/tests/libqtest.c
-+++ b/tests/libqtest.c
-@@ -238,7 +238,7 @@ QTestState *qtest_init_without_qmp_handshake(const char *extra_args)
-                               "-qtest-log %s "
-                               "-chardev socket,path=%s,id=char0 "
-                               "-mon chardev=char0,mode=control "
--                              "-machine accel=qtest "
-+                              "-accel qtest "
-                               "-display none "
-                               "%s", qemu_binary, socket_path,
-                               getenv("QTEST_LOG") ? "/dev/fd/2" : "/dev/null",
-diff --git a/tests/migration/guestperf/engine.py b/tests/migration/guestperf/engine.py
-index f13dbea800..1dd04ce33b 100644
---- a/tests/migration/guestperf/engine.py
-+++ b/tests/migration/guestperf/engine.py
-@@ -287,7 +287,7 @@ class Engine(object):
-             cmdline = "'" + cmdline + "'"
- 
-         argv = [
--            "-machine", "accel=kvm",
-+            "-accel", "kvm",
-             "-cpu", "host",
-             "-kernel", self._kernel,
-             "-initrd", self._initrd,
-diff --git a/tests/qemu-iotests/172 b/tests/qemu-iotests/172
-index ba7dad9057..d67997e5f6 100755
---- a/tests/qemu-iotests/172
-+++ b/tests/qemu-iotests/172
-@@ -55,7 +55,7 @@ do_run_qemu()
-             done
-         fi
-         echo quit
--    ) | $QEMU -machine accel=qtest -nographic -monitor stdio -serial none "$@"
-+    ) | $QEMU -accel qtest -nographic -monitor stdio -serial none "$@"
-     echo
- }
- 
--- 
-2.18.1
+On Mon, Sep 02, 2019 at 06:26:38PM +0200, Thomas Huth wrote:
+> Most of the code in hw/misc/ does not directly depend on CPU-specific
+> code. Mark it as "common" so that the code can be shared between e.g.
+> qemu-system-arm and qemu-system-aarch64, or between the various mips
+> flavours, instead of recompiling it for each and every target again
+> and again.
+>=20
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/misc/Makefile.objs | 90 +++++++++++++++++++++----------------------
+>  1 file changed, 45 insertions(+), 45 deletions(-)
 
+Nice.  My understanding is that we poison symbols so target-specific
+code accidentally added to common-obj-y should fail to compile.
+Therefore I didn't audit the affected code to see if it has
+target-specific dependencies.
+
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--6sX45UoQRIJXqkqR
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl1wxiQACgkQnKSrs4Gr
+c8jsgAf+PLcRF26MLfCuoYo6XtPaE8O7I0bcEteytjnW4Om5TppDwvKNeCoaOXlV
+LyIQuQDOOSwUw1ySaWfy1nZyWwWJ2u7tFhqOyEVUwKWMSMCpSh1O0PWU6Ae4woO/
+I6mUA6dXANTP/aIaC1wiWDHcsCIYrNoJoMR6utGKUI8fSrb5Idfysb+cIdkiKHNW
+0ewuMUAhllLqDa0WO3xbWOli7fKBiPXXIf6mS4Y5z4m2Cws2Wl3Azany8eenMtiz
+tOFoe3rXoV3g/M9hWqaKgyKO7nWgXS8hOjuiB4GU6thnN15wTi30V9T3WFeVJHY4
+i6ha15VFNDcBMMHUhQt6j8LOyyyABg==
+=9eJI
+-----END PGP SIGNATURE-----
+
+--6sX45UoQRIJXqkqR--
 
