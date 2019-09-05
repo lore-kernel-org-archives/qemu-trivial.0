@@ -1,50 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i5n3y-0004pi-8E
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Sep 2019 04:24:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60153)
+	id 1i5pPA-0004bJ-FT
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Sep 2019 06:54:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42500)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <stefanha@redhat.com>) id 1i5n3v-0004lo-FJ
- for qemu-trivial@nongnu.org; Thu, 05 Sep 2019 04:24:16 -0400
+ (envelope-from <philmd@redhat.com>) id 1i5pP8-0004b7-Nw
+ for qemu-trivial@nongnu.org; Thu, 05 Sep 2019 06:54:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <stefanha@redhat.com>) id 1i5n3u-0002Q7-HP
- for qemu-trivial@nongnu.org; Thu, 05 Sep 2019 04:24:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51088)
+ (envelope-from <philmd@redhat.com>) id 1i5pP7-0007wb-IX
+ for qemu-trivial@nongnu.org; Thu, 05 Sep 2019 06:54:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39516)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <stefanha@redhat.com>)
- id 1i5n3q-0002N9-EJ; Thu, 05 Sep 2019 04:24:10 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1i5pP7-0007wR-Aw
+ for qemu-trivial@nongnu.org; Thu, 05 Sep 2019 06:54:17 -0400
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 7D58D31752AF;
- Thu,  5 Sep 2019 08:24:09 +0000 (UTC)
-Received: from localhost (ovpn-117-222.ams2.redhat.com [10.36.117.222])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F3E975D713;
- Thu,  5 Sep 2019 08:24:05 +0000 (UTC)
-Date: Thu, 5 Sep 2019 09:24:04 +0100
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>
-Message-ID: <20190905082404.GB32415@stefanha-x1.localdomain>
-References: <20190902162638.28142-1-thuth@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id 49DD67BDA6
+ for <qemu-trivial@nongnu.org>; Thu,  5 Sep 2019 10:54:16 +0000 (UTC)
+Received: by mail-wm1-f69.google.com with SMTP id 1so332118wmk.4
+ for <qemu-trivial@nongnu.org>; Thu, 05 Sep 2019 03:54:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=9OBKhYZVAKZ9enmCZl2DGXC9sidzhQsl+qMJfNoHVh0=;
+ b=qLEaUYsQchsSdg5swOUIhxlyJpxoYomhIdRM0rGL7L5FLMGt9TNePOgXt6iflq6y33
+ 3uP4dWl5FB2ytgKRaxO/Fommo1xM+lot5ci/Y1X18WgWuaMYjFB67xuJJZtaRgzNBju8
+ cGBBgLuqef5aLYnVXfzWgwqTUrdXO0EWaCrIWcnq+lS11TPMJ9ASX4LYJ5axYFs15ed4
+ RXwjVwQkfMkgZxBnlKmD6v1395fD7ws15FZeKHrhCEnMerhffkgIwZN+dUcDC6FQ7Ftq
+ Z4BnFCMGiBN4HXF0j4jpzrCOhJFyV2wm2Q489DPpf+aUX8RPYMQxB1l/JIvPceTRqQV+
+ YcMw==
+X-Gm-Message-State: APjAAAVvoZ4w1um9qvBGZwo/tuiNZHP3o/h+5oRgF99+kD93uSXM6pqD
+ 93Dt4hg5KjJGp7BuLuRUrhjz5z4LzbjTnwFZ6bgBwcPQvGIagyKD50TZi4OByCQKW94zuWrzzUg
+ oJoJ2YMsXlwOTHQ3AGg==
+X-Received: by 2002:a7b:cb03:: with SMTP id u3mr2533330wmj.58.1567680855085;
+ Thu, 05 Sep 2019 03:54:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwEQmMrzVTU7FTSe5rrgaPvKKkELqRO8qOnhzpaFXMtES6064lWpEsJDWpupTujQ0h7u/KpxA==
+X-Received: by 2002:a7b:cb03:: with SMTP id u3mr2533318wmj.58.1567680854901;
+ Thu, 05 Sep 2019 03:54:14 -0700 (PDT)
+Received: from [192.168.1.48] (251.red-88-10-102.dynamicip.rima-tde.net.
+ [88.10.102.251])
+ by smtp.gmail.com with ESMTPSA id e15sm1372067wru.93.2019.09.05.03.54.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 05 Sep 2019 03:54:14 -0700 (PDT)
+To: Josh Kunz <jkz@google.com>, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+ qemu-devel@nongnu.org
+References: <20190816233422.16715-1-jkz@google.com>
+ <5b4df64c-40e4-70cd-753e-f52e2b547c18@vivier.eu>
+ <CADgy-2tzD0FVXbKtadSL1JuMWW_TEzFP2ZD0hzA4PUnxh1Xz0g@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <fe428dbd-a9f4-42c0-bb12-8c14fb3e2489@redhat.com>
+Date: Thu, 5 Sep 2019 12:54:13 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="6sX45UoQRIJXqkqR"
-Content-Disposition: inline
-In-Reply-To: <20190902162638.28142-1-thuth@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Thu, 05 Sep 2019 08:24:09 +0000 (UTC)
+In-Reply-To: <CADgy-2tzD0FVXbKtadSL1JuMWW_TEzFP2ZD0hzA4PUnxh1Xz0g@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] hw/misc: Mark most objects as "common"
- code to speed up compilation a litte bit
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: Support gdb
+ 'qOffsets' query for ELF
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -56,47 +79,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Sep 2019 08:24:16 -0000
+X-List-Received-Date: Thu, 05 Sep 2019 10:54:20 -0000
 
+Cc'ing Alex.
 
---6sX45UoQRIJXqkqR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Sep 02, 2019 at 06:26:38PM +0200, Thomas Huth wrote:
-> Most of the code in hw/misc/ does not directly depend on CPU-specific
-> code. Mark it as "common" so that the code can be shared between e.g.
-> qemu-system-arm and qemu-system-aarch64, or between the various mips
-> flavours, instead of recompiling it for each and every target again
-> and again.
+On 9/3/19 9:19 PM, Josh Kunz via Qemu-devel wrote:
+> The `Data` and `Code` flags in `qOffsets` are actually section offsets
+> rather than segment offsets. GDB relocates the symbols in those section=
+s
+> relative to their location in the binary. So we have to use `load_bias`=
+.
 >=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/misc/Makefile.objs | 90 +++++++++++++++++++++----------------------
->  1 file changed, 45 insertions(+), 45 deletions(-)
+> See here for a more detailed description:
+> https://sourceware.org/gdb/onlinedocs/gdb/General-Query-Packets.html#Ge=
+neral-Query-Packets
 
-Nice.  My understanding is that we poison symbols so target-specific
-code accidentally added to common-obj-y should fail to compile.
-Therefore I didn't audit the affected code to see if it has
-target-specific dependencies.
+Maybe we can amend a reference to
+http://sourceware.org/gdb/onlinedocs/gdb/General-Query-Packets.html#index=
+-qOffsets-packet
+in the commit.
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
---6sX45UoQRIJXqkqR
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl1wxiQACgkQnKSrs4Gr
-c8jsgAf+PLcRF26MLfCuoYo6XtPaE8O7I0bcEteytjnW4Om5TppDwvKNeCoaOXlV
-LyIQuQDOOSwUw1ySaWfy1nZyWwWJ2u7tFhqOyEVUwKWMSMCpSh1O0PWU6Ae4woO/
-I6mUA6dXANTP/aIaC1wiWDHcsCIYrNoJoMR6utGKUI8fSrb5Idfysb+cIdkiKHNW
-0ewuMUAhllLqDa0WO3xbWOli7fKBiPXXIf6mS4Y5z4m2Cws2Wl3Azany8eenMtiz
-tOFoe3rXoV3g/M9hWqaKgyKO7nWgXS8hOjuiB4GU6thnN15wTi30V9T3WFeVJHY4
-i6ha15VFNDcBMMHUhQt6j8LOyyyABg==
-=9eJI
------END PGP SIGNATURE-----
-
---6sX45UoQRIJXqkqR--
+> On Mon, Aug 26, 2019 at 1:29 AM Laurent Vivier <laurent@vivier.eu> wrot=
+e:
+>=20
+>> Le 17/08/2019 =C3=A0 01:34, Josh Kunz via Qemu-devel a =C3=A9crit :
+>>> This is needed to support debugging PIE ELF binaries running under QE=
+MU
+>>> user mode. Currently, `code_offset` and `data_offset` remain unset fo=
+r
+>>> all ELF binaries, so GDB is unable to correctly locate the position o=
+f
+>>> the binary's text and data.
+>>>
+>>> The fields `code_offset`, and `data_offset` were originally added way
+>>> back in 2006 to support debugging of bFMT executables (978efd6aac6),
+>>> and support was just never added for ELF. Since non-PIE binaries are
+>>> loaded at exactly the address specified in the binary, GDB does not n=
+eed
+>>> to relocate any symbols, so the buggy behavior is not normally observ=
+ed.
+>>>
+>>> Buglink: https://bugs.launchpad.net/qemu/+bug/1528239
+>>> Signed-off-by: Josh Kunz <jkz@google.com>
+>>> ---
+>>>  linux-user/elfload.c | 2 ++
+>>>  1 file changed, 2 insertions(+)
+>>
+>> As it seems they are text and data segment offsets, why it's not based
+>> on info->start_code and info->start_data?
+>>
+>> Thanks,
+>> Laurent
+>>
 
