@@ -1,73 +1,94 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i5pPA-0004bJ-FT
-	for mharc-qemu-trivial@gnu.org; Thu, 05 Sep 2019 06:54:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42500)
+	id 1i6CNN-00079S-IG
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Sep 2019 07:26:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35349)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1i5pP8-0004b7-Nw
- for qemu-trivial@nongnu.org; Thu, 05 Sep 2019 06:54:19 -0400
+ (envelope-from <thuth@redhat.com>) id 1i6CNL-00077K-Dk
+ for qemu-trivial@nongnu.org; Fri, 06 Sep 2019 07:26:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1i5pP7-0007wb-IX
- for qemu-trivial@nongnu.org; Thu, 05 Sep 2019 06:54:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39516)
+ (envelope-from <thuth@redhat.com>) id 1i6CNK-0000p2-HJ
+ for qemu-trivial@nongnu.org; Fri, 06 Sep 2019 07:25:59 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44254)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1i5pP7-0007wR-Aw
- for qemu-trivial@nongnu.org; Thu, 05 Sep 2019 06:54:17 -0400
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1i6CNI-0000lB-2x; Fri, 06 Sep 2019 07:25:56 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 49DD67BDA6
- for <qemu-trivial@nongnu.org>; Thu,  5 Sep 2019 10:54:16 +0000 (UTC)
-Received: by mail-wm1-f69.google.com with SMTP id 1so332118wmk.4
- for <qemu-trivial@nongnu.org>; Thu, 05 Sep 2019 03:54:16 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=9OBKhYZVAKZ9enmCZl2DGXC9sidzhQsl+qMJfNoHVh0=;
- b=qLEaUYsQchsSdg5swOUIhxlyJpxoYomhIdRM0rGL7L5FLMGt9TNePOgXt6iflq6y33
- 3uP4dWl5FB2ytgKRaxO/Fommo1xM+lot5ci/Y1X18WgWuaMYjFB67xuJJZtaRgzNBju8
- cGBBgLuqef5aLYnVXfzWgwqTUrdXO0EWaCrIWcnq+lS11TPMJ9ASX4LYJ5axYFs15ed4
- RXwjVwQkfMkgZxBnlKmD6v1395fD7ws15FZeKHrhCEnMerhffkgIwZN+dUcDC6FQ7Ftq
- Z4BnFCMGiBN4HXF0j4jpzrCOhJFyV2wm2Q489DPpf+aUX8RPYMQxB1l/JIvPceTRqQV+
- YcMw==
-X-Gm-Message-State: APjAAAVvoZ4w1um9qvBGZwo/tuiNZHP3o/h+5oRgF99+kD93uSXM6pqD
- 93Dt4hg5KjJGp7BuLuRUrhjz5z4LzbjTnwFZ6bgBwcPQvGIagyKD50TZi4OByCQKW94zuWrzzUg
- oJoJ2YMsXlwOTHQ3AGg==
-X-Received: by 2002:a7b:cb03:: with SMTP id u3mr2533330wmj.58.1567680855085;
- Thu, 05 Sep 2019 03:54:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwEQmMrzVTU7FTSe5rrgaPvKKkELqRO8qOnhzpaFXMtES6064lWpEsJDWpupTujQ0h7u/KpxA==
-X-Received: by 2002:a7b:cb03:: with SMTP id u3mr2533318wmj.58.1567680854901;
- Thu, 05 Sep 2019 03:54:14 -0700 (PDT)
-Received: from [192.168.1.48] (251.red-88-10-102.dynamicip.rima-tde.net.
- [88.10.102.251])
- by smtp.gmail.com with ESMTPSA id e15sm1372067wru.93.2019.09.05.03.54.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Sep 2019 03:54:14 -0700 (PDT)
-To: Josh Kunz <jkz@google.com>, Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-trivial@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
- qemu-devel@nongnu.org
-References: <20190816233422.16715-1-jkz@google.com>
- <5b4df64c-40e4-70cd-753e-f52e2b547c18@vivier.eu>
- <CADgy-2tzD0FVXbKtadSL1JuMWW_TEzFP2ZD0hzA4PUnxh1Xz0g@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <fe428dbd-a9f4-42c0-bb12-8c14fb3e2489@redhat.com>
-Date: Thu, 5 Sep 2019 12:54:13 +0200
+ by mx1.redhat.com (Postfix) with ESMTPS id 37A6A8553B;
+ Fri,  6 Sep 2019 11:25:55 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-159.ams2.redhat.com [10.36.116.159])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 00ABE60605;
+ Fri,  6 Sep 2019 11:25:50 +0000 (UTC)
+To: Greg Kurz <groug@kaod.org>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-trivial@nongnu.org
+References: <20190905113346.2473-1-thuth@redhat.com>
+ <20190905140701.6cc679ee@bahia.lan>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <fc82454c-ee11-c7a3-cccb-eeb51df35897@redhat.com>
+Date: Fri, 6 Sep 2019 13:25:50 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <CADgy-2tzD0FVXbKtadSL1JuMWW_TEzFP2ZD0hzA4PUnxh1Xz0g@mail.gmail.com>
+In-Reply-To: <20190905140701.6cc679ee@bahia.lan>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.28]); Fri, 06 Sep 2019 11:25:55 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] linux-user: Support gdb
- 'qOffsets' query for ELF
+Subject: Re: [Qemu-trivial] [PATCH] travis.yml: Install libcap-dev for
+ testing virito-9p
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,58 +100,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 05 Sep 2019 10:54:20 -0000
+X-List-Received-Date: Fri, 06 Sep 2019 11:26:00 -0000
 
-Cc'ing Alex.
-
-On 9/3/19 9:19 PM, Josh Kunz via Qemu-devel wrote:
-> The `Data` and `Code` flags in `qOffsets` are actually section offsets
-> rather than segment offsets. GDB relocates the symbols in those section=
-s
-> relative to their location in the binary. So we have to use `load_bias`=
-.
->=20
-> See here for a more detailed description:
-> https://sourceware.org/gdb/onlinedocs/gdb/General-Query-Packets.html#Ge=
-neral-Query-Packets
-
-Maybe we can amend a reference to
-http://sourceware.org/gdb/onlinedocs/gdb/General-Query-Packets.html#index=
--qOffsets-packet
-in the commit.
-
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
-> On Mon, Aug 26, 2019 at 1:29 AM Laurent Vivier <laurent@vivier.eu> wrot=
-e:
->=20
->> Le 17/08/2019 =C3=A0 01:34, Josh Kunz via Qemu-devel a =C3=A9crit :
->>> This is needed to support debugging PIE ELF binaries running under QE=
-MU
->>> user mode. Currently, `code_offset` and `data_offset` remain unset fo=
-r
->>> all ELF binaries, so GDB is unable to correctly locate the position o=
-f
->>> the binary's text and data.
->>>
->>> The fields `code_offset`, and `data_offset` were originally added way
->>> back in 2006 to support debugging of bFMT executables (978efd6aac6),
->>> and support was just never added for ELF. Since non-PIE binaries are
->>> loaded at exactly the address specified in the binary, GDB does not n=
-eed
->>> to relocate any symbols, so the buggy behavior is not normally observ=
-ed.
->>>
->>> Buglink: https://bugs.launchpad.net/qemu/+bug/1528239
->>> Signed-off-by: Josh Kunz <jkz@google.com>
->>> ---
->>>  linux-user/elfload.c | 2 ++
->>>  1 file changed, 2 insertions(+)
+On 05/09/2019 14.07, Greg Kurz wrote:
+> On Thu,  5 Sep 2019 13:33:46 +0200
+> Thomas Huth <thuth@redhat.com> wrote:
+> 
+>> So far we were not testing virtio-9p in Travis yet, since we forgot to
+>> install libcap-devel. Do it now to get some more test coverage.
 >>
->> As it seems they are text and data segment offsets, why it's not based
->> on info->start_code and info->start_data?
->>
->> Thanks,
->> Laurent
->>
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+> 
+> Acked-by: Greg Kurz <groug@kaod.org>
+> 
+> and
+> 
+> Tested-by: Greg Kurz <groug@kaod.org>
+> 
+> Whose tree is this going through BTW ?
+
+According to MAINTAINERS, .travis.yml is taken care of by Alex and Fam,
+so I hope they will pick this patch up. Otherwise, I think it could also
+go via trivial (now on CC: ), since it's just a one-liner.
+
+ Thomas
 
