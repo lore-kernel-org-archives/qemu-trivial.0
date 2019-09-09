@@ -1,31 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i7MiS-0005tl-Dj
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Sep 2019 12:40:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39436)
+	id 1i7MjY-0006nU-Ck
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Sep 2019 12:41:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39659)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jsnow@redhat.com>) id 1i7MiQ-0005rd-Gf
- for qemu-trivial@nongnu.org; Mon, 09 Sep 2019 12:40:35 -0400
+ (envelope-from <jsnow@redhat.com>) id 1i7MjU-0006ld-KM
+ for qemu-trivial@nongnu.org; Mon, 09 Sep 2019 12:41:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jsnow@redhat.com>) id 1i7MiP-0004OV-JM
- for qemu-trivial@nongnu.org; Mon, 09 Sep 2019 12:40:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43260)
+ (envelope-from <jsnow@redhat.com>) id 1i7MjT-0004zn-Jn
+ for qemu-trivial@nongnu.org; Mon, 09 Sep 2019 12:41:40 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39884)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <jsnow@redhat.com>)
- id 1i7MiL-0004JO-HQ; Mon, 09 Sep 2019 12:40:29 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ id 1i7MjO-0004si-7k; Mon, 09 Sep 2019 12:41:34 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id D0F071918651;
- Mon,  9 Sep 2019 16:40:28 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 8D6988E911;
+ Mon,  9 Sep 2019 16:41:33 +0000 (UTC)
 Received: from [10.18.17.230] (dhcp-17-230.bos.redhat.com [10.18.17.230])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2B0DD100194E;
- Mon,  9 Sep 2019 16:40:28 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A261860BE2;
+ Mon,  9 Sep 2019 16:41:29 +0000 (UTC)
 To: Thomas Huth <thuth@redhat.com>, qemu-block@nongnu.org,
  Max Reitz <mreitz@redhat.com>
 Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
  qemu-devel@nongnu.org
-References: <20190906113534.10907-1-thuth@redhat.com>
+References: <20190906113920.11271-1-thuth@redhat.com>
 From: John Snow <jsnow@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
@@ -102,22 +102,22 @@ Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
  i0HjnLoJP5jDcoMTabZTIazXmJz3pKM11HYJ5/ZsTIf3ZRJJKIvXJpbmcAPVwTZII6XxiJdh
  RSSX4Mvd5pL/+5WI6NTdW6DMfigTtdd85fe6PwBNVJL2ZvBfsBJZ5rxg1TOH3KLsYBqBTgW2
  glQofxhkJhDEcvjLhe3Y2BlbCWKOmvM8XS9TRt0OwUs=
-Message-ID: <00fd7a90-722d-aabd-aa17-473eb112fcc4@redhat.com>
-Date: Mon, 9 Sep 2019 12:40:27 -0400
+Message-ID: <a4a50a1a-97a3-a4b8-7370-5b3ca90f3819@redhat.com>
+Date: Mon, 9 Sep 2019 12:41:29 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190906113534.10907-1-thuth@redhat.com>
+In-Reply-To: <20190906113920.11271-1-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.70]); Mon, 09 Sep 2019 16:40:28 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.26]); Mon, 09 Sep 2019 16:41:33 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/Makefile: Do not
- print the name of the check-block.sh shell script
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] tests/qemu-iotests/check:
+ Replace "tests" with "iotests" in final status text
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -129,37 +129,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Sep 2019 16:40:35 -0000
+X-List-Received-Date: Mon, 09 Sep 2019 16:41:41 -0000
 
 
 
-On 9/6/19 7:35 AM, Thomas Huth wrote:
-> The check script is already printing out which iotest is currently
-> running, so printing out the name of the check-block.sh shell script
-> looks superfluous here.
+On 9/6/19 7:39 AM, Thomas Huth wrote:
+> When running "make check -j8" or something similar, the iotests are
+> running in parallel with the other tests. So when they are printing
+> out "Passed all xx tests" or a similar status message at the end,
+> it might not be quite clear that this message belongs to the iotests,
+> since the output might be mixed with the other tests. Thus change the
+> word "tests" here to "iotests" instead to avoid confusion.
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Makes sense.
+Yeah, why not? Being explicit is nice.
 
-Acked-by: John Snow <jsnow@redhat.com>
+Reviewed-by: John Snow <jsnow@redhat.com>
 
 > ---
->  tests/Makefile.include | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  tests/qemu-iotests/check | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 > 
-> diff --git a/tests/Makefile.include b/tests/Makefile.include
-> index f5ac09549c..a36317ac87 100644
-> --- a/tests/Makefile.include
-> +++ b/tests/Makefile.include
-> @@ -1097,7 +1097,7 @@ QEMU_IOTESTS_HELPERS-$(call land,$(CONFIG_SOFTMMU),$(CONFIG_LINUX)) = tests/qemu
->  check-tests/check-block.sh: tests/check-block.sh qemu-img$(EXESUF) \
->  		qemu-io$(EXESUF) qemu-nbd$(EXESUF) $(QEMU_IOTESTS_HELPERS-y) \
->  		$(patsubst %,%/all,$(filter %-softmmu,$(TARGET_DIRS)))
-> -	$<
-> +	@$<
->  
->  .PHONY: $(patsubst %, check-%, $(check-qapi-schema-y))
->  $(patsubst %, check-%, $(check-qapi-schema-y)): check-%.json: $(SRC_PATH)/%.json
+> diff --git a/tests/qemu-iotests/check b/tests/qemu-iotests/check
+> index c24874ff4a..2f1cf72abc 100755
+> --- a/tests/qemu-iotests/check
+> +++ b/tests/qemu-iotests/check
+> @@ -694,12 +694,12 @@ END        { if (NR > 0) {
+>          if [ ! -z "$n_bad" -a $n_bad != 0 ]
+>          then
+>              echo "Failures:$bad"
+> -            echo "Failed $n_bad of $try tests"
+> +            echo "Failed $n_bad of $try iotests"
+>              echo "Failures:$bad" | fmt >>check.log
+> -            echo "Failed $n_bad of $try tests" >>check.log
+> +            echo "Failed $n_bad of $try iotests" >>check.log
+>          else
+> -            echo "Passed all $try tests"
+> -            echo "Passed all $try tests" >>check.log
+> +            echo "Passed all $try iotests"
+> +            echo "Passed all $try iotests" >>check.log
+>          fi
+>          needwrap=false
+>      fi
 > 
+
 
