@@ -1,41 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i8Orv-0000Oe-QH
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Sep 2019 09:10:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60980)
+	id 1i8PbY-0007U9-BY
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Sep 2019 09:57:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41881)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1i8Oro-0000IW-Pk
- for qemu-trivial@nongnu.org; Thu, 12 Sep 2019 09:10:38 -0400
+ (envelope-from <groug@kaod.org>) id 1i8PbU-0007Sf-1n
+ for qemu-trivial@nongnu.org; Thu, 12 Sep 2019 09:57:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1i8Orj-00083o-1a
- for qemu-trivial@nongnu.org; Thu, 12 Sep 2019 09:10:32 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33802)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1i8Ord-00080B-LX; Thu, 12 Sep 2019 09:10:21 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 8982B2A09AC;
- Thu, 12 Sep 2019 13:10:20 +0000 (UTC)
-Received: from thuth.com (ovpn-204-41.brq.redhat.com [10.40.204.41])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C03B919C78;
- Thu, 12 Sep 2019 13:10:15 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Markus Armbruster <armbru@redhat.com>
-Date: Thu, 12 Sep 2019 15:10:11 +0200
-Message-Id: <20190912131011.6255-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.38]); Thu, 12 Sep 2019 13:10:20 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-trivial] [PATCH] hw/*/Makefile.objs: Move many .o files to
- common-objs
+ (envelope-from <groug@kaod.org>) id 1i8PbS-0006lc-3Q
+ for qemu-trivial@nongnu.org; Thu, 12 Sep 2019 09:57:43 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:42498)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <groug@kaod.org>) id 1i8PbR-0006ky-8C
+ for qemu-trivial@nongnu.org; Thu, 12 Sep 2019 09:57:41 -0400
+Received: from pps.filterd (m0127361.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x8CDvXRx096617
+ for <qemu-trivial@nongnu.org>; Thu, 12 Sep 2019 09:57:40 -0400
+Received: from e06smtp01.uk.ibm.com (e06smtp01.uk.ibm.com [195.75.94.97])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2uyp6vj7jg-1
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <qemu-trivial@nongnu.org>; Thu, 12 Sep 2019 09:57:39 -0400
+Received: from localhost
+ by e06smtp01.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ Violators will be prosecuted
+ for <qemu-trivial@nongnu.org> from <groug@kaod.org>;
+ Thu, 12 Sep 2019 14:57:30 +0100
+Received: from b06cxnps4075.portsmouth.uk.ibm.com (9.149.109.197)
+ by e06smtp01.uk.ibm.com (192.168.101.131) with IBM ESMTP SMTP Gateway:
+ Authorized Use Only! Violators will be prosecuted; 
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+ Thu, 12 Sep 2019 14:57:28 +0100
+Received: from d06av24.portsmouth.uk.ibm.com (mk.ibm.com [9.149.105.60])
+ by b06cxnps4075.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x8CDvRpm57737216
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 12 Sep 2019 13:57:27 GMT
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 42DC942041;
+ Thu, 12 Sep 2019 13:57:27 +0000 (GMT)
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 107C442045;
+ Thu, 12 Sep 2019 13:57:27 +0000 (GMT)
+Received: from bahia.tls.ibm.com (unknown [9.101.4.41])
+ by d06av24.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Thu, 12 Sep 2019 13:57:26 +0000 (GMT)
+From: Greg Kurz <groug@kaod.org>
+To: Laurent Vivier <lvivier@redhat.com>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+Date: Thu, 12 Sep 2019 15:57:26 +0200
+User-Agent: StGit/unknown-version
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+x-cbid: 19091213-4275-0000-0000-00000364E467
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 19091213-4276-0000-0000-000038773F85
+Message-Id: <156829664683.2070256.13400788010568373502.stgit@bahia.tls.ibm.com>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-09-12_06:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1034 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=768 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1906280000 definitions=main-1909120148
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.158.5
+Subject: [Qemu-trivial] [PATCH] kvm: Fix typo in header of
+ kvm_device_access()
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -47,306 +81,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Sep 2019 13:10:38 -0000
+X-List-Received-Date: Thu, 12 Sep 2019 13:57:46 -0000
 
-We have many files that apparently do not depend on the target CPU
-configuration, i.e. which can be put into common-obj-y instead of
-obj-y. This way, the code can be shared for example between
-qemu-system-arm and qemu-system-aarch64, or the various big and
-little endian variants like qemu-system-sh4 and qemu-system-sh4eb,
-so that we do not have to compile the code multiple times anymore.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Greg Kurz <groug@kaod.org>
 ---
- hw/adc/Makefile.objs     |  2 +-
- hw/block/Makefile.objs   |  2 +-
- hw/char/Makefile.objs    | 16 ++++++++--------
- hw/core/Makefile.objs    |  2 +-
- hw/display/Makefile.objs |  2 +-
- hw/dma/Makefile.objs     |  6 +++---
- hw/gpio/Makefile.objs    |  8 ++++----
- hw/i2c/Makefile.objs     |  4 ++--
- hw/i2c/ppc4xx_i2c.c      |  1 -
- hw/input/Makefile.objs   |  6 +++---
- hw/net/Makefile.objs     |  6 +++---
- hw/nvram/Makefile.objs   |  2 +-
- hw/pcmcia/Makefile.objs  |  2 +-
- hw/sd/Makefile.objs      |  8 ++++----
- hw/ssi/Makefile.objs     |  4 ++--
- hw/timer/Makefile.objs   | 22 +++++++++++-----------
- hw/usb/Makefile.objs     |  4 ++--
- 17 files changed, 48 insertions(+), 49 deletions(-)
+ include/sysemu/kvm.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/adc/Makefile.objs b/hw/adc/Makefile.objs
-index 3f6dfdedae..2b9dc36c7f 100644
---- a/hw/adc/Makefile.objs
-+++ b/hw/adc/Makefile.objs
-@@ -1 +1 @@
--obj-$(CONFIG_STM32F2XX_ADC) += stm32f2xx_adc.o
-+common-obj-$(CONFIG_STM32F2XX_ADC) += stm32f2xx_adc.o
-diff --git a/hw/block/Makefile.objs b/hw/block/Makefile.objs
-index f5f643f0cc..64c1f315c9 100644
---- a/hw/block/Makefile.objs
-+++ b/hw/block/Makefile.objs
-@@ -9,7 +9,7 @@ common-obj-$(CONFIG_ECC) += ecc.o
- common-obj-$(CONFIG_ONENAND) += onenand.o
- common-obj-$(CONFIG_NVME_PCI) += nvme.o
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index 909bcd77cf82..fd674772ab31 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -308,7 +308,7 @@ int kvm_vm_check_attr(KVMState *s, uint32_t group, uint64_t attr);
+ int kvm_device_check_attr(int fd, uint32_t group, uint64_t attr);
  
--obj-$(CONFIG_SH4) += tc58128.o
-+common-obj-$(CONFIG_SH4) += tc58128.o
- 
- obj-$(CONFIG_VIRTIO_BLK) += virtio-blk.o
- obj-$(CONFIG_VHOST_USER_BLK) += vhost-user-blk.o
-diff --git a/hw/char/Makefile.objs b/hw/char/Makefile.objs
-index 02d8a66925..9e9a6c1aff 100644
---- a/hw/char/Makefile.objs
-+++ b/hw/char/Makefile.objs
-@@ -13,14 +13,13 @@ common-obj-$(CONFIG_XILINX) += xilinx_uartlite.o
- common-obj-$(CONFIG_XEN) += xen_console.o
- common-obj-$(CONFIG_CADENCE) += cadence_uart.o
- 
--obj-$(CONFIG_EXYNOS4) += exynos4210_uart.o
--obj-$(CONFIG_COLDFIRE) += mcf_uart.o
--obj-$(CONFIG_OMAP) += omap_uart.o
--obj-$(CONFIG_SH4) += sh_serial.o
--obj-$(CONFIG_PSERIES) += spapr_vty.o
--obj-$(CONFIG_DIGIC) += digic-uart.o
--obj-$(CONFIG_STM32F2XX_USART) += stm32f2xx_usart.o
--obj-$(CONFIG_RASPI) += bcm2835_aux.o
-+common-obj-$(CONFIG_EXYNOS4) += exynos4210_uart.o
-+common-obj-$(CONFIG_COLDFIRE) += mcf_uart.o
-+common-obj-$(CONFIG_OMAP) += omap_uart.o
-+common-obj-$(CONFIG_SH4) += sh_serial.o
-+common-obj-$(CONFIG_DIGIC) += digic-uart.o
-+common-obj-$(CONFIG_STM32F2XX_USART) += stm32f2xx_usart.o
-+common-obj-$(CONFIG_RASPI) += bcm2835_aux.o
- 
- common-obj-$(CONFIG_CMSDK_APB_UART) += cmsdk-apb-uart.o
- common-obj-$(CONFIG_ETRAXFS) += etraxfs_ser.o
-@@ -33,4 +32,5 @@ common-obj-$(CONFIG_MILKYMIST) += milkymist-uart.o
- common-obj-$(CONFIG_SCLPCONSOLE) += sclpconsole.o sclpconsole-lm.o
- 
- obj-$(CONFIG_VIRTIO) += virtio-serial-bus.o
-+obj-$(CONFIG_PSERIES) += spapr_vty.o
- obj-$(CONFIG_TERMINAL3270) += terminal3270.o
-diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
-index fd0550d1d9..c94886cd74 100644
---- a/hw/core/Makefile.objs
-+++ b/hw/core/Makefile.objs
-@@ -26,5 +26,5 @@ common-obj-$(CONFIG_GENERIC_LOADER) += generic-loader.o
- common-obj-$(CONFIG_SOFTMMU) += null-machine.o
- 
- obj-$(CONFIG_SOFTMMU) += machine-qmp-cmds.o
--obj-$(CONFIG_SOFTMMU) += numa.o
-+common-obj-$(CONFIG_SOFTMMU) += numa.o
- common-obj-$(CONFIG_SOFTMMU) += machine-hmp-cmds.o
-diff --git a/hw/display/Makefile.objs b/hw/display/Makefile.objs
-index 5a4066383b..a56ea95d46 100644
---- a/hw/display/Makefile.objs
-+++ b/hw/display/Makefile.objs
-@@ -24,7 +24,7 @@ common-obj-$(CONFIG_BOCHS_DISPLAY) += bochs-display.o
- common-obj-$(CONFIG_BLIZZARD) += blizzard.o
- common-obj-$(CONFIG_EXYNOS4) += exynos4210_fimd.o
- common-obj-$(CONFIG_FRAMEBUFFER) += framebuffer.o
--obj-$(CONFIG_MILKYMIST) += milkymist-vgafb.o
-+common-obj-$(CONFIG_MILKYMIST) += milkymist-vgafb.o
- common-obj-$(CONFIG_ZAURUS) += tc6393xb.o
- 
- obj-$(CONFIG_MILKYMIST_TMU2) += milkymist-tmu2.o
-diff --git a/hw/dma/Makefile.objs b/hw/dma/Makefile.objs
-index b672e7a522..f4b1cfe26d 100644
---- a/hw/dma/Makefile.objs
-+++ b/hw/dma/Makefile.objs
-@@ -8,9 +8,9 @@ common-obj-$(CONFIG_XILINX_AXI) += xilinx_axidma.o
- common-obj-$(CONFIG_ZYNQ_DEVCFG) += xlnx-zynq-devcfg.o
- common-obj-$(CONFIG_ETRAXFS) += etraxfs_dma.o
- common-obj-$(CONFIG_STP2000) += sparc32_dma.o
--obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx_dpdma.o
-+common-obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx_dpdma.o
- common-obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx-zdma.o
- 
--obj-$(CONFIG_OMAP) += omap_dma.o soc_dma.o
--obj-$(CONFIG_PXA2XX) += pxa2xx_dma.o
-+common-obj-$(CONFIG_OMAP) += omap_dma.o soc_dma.o
-+common-obj-$(CONFIG_PXA2XX) += pxa2xx_dma.o
- common-obj-$(CONFIG_RASPI) += bcm2835_dma.o
-diff --git a/hw/gpio/Makefile.objs b/hw/gpio/Makefile.objs
-index e5da0cb54f..afdb4c3a06 100644
---- a/hw/gpio/Makefile.objs
-+++ b/hw/gpio/Makefile.objs
-@@ -5,7 +5,7 @@ common-obj-$(CONFIG_ZAURUS) += zaurus.o
- common-obj-$(CONFIG_E500) += mpc8xxx.o
- common-obj-$(CONFIG_GPIO_KEY) += gpio_key.o
- 
--obj-$(CONFIG_OMAP) += omap_gpio.o
--obj-$(CONFIG_IMX) += imx_gpio.o
--obj-$(CONFIG_RASPI) += bcm2835_gpio.o
--obj-$(CONFIG_NRF51_SOC) += nrf51_gpio.o
-+common-obj-$(CONFIG_OMAP) += omap_gpio.o
-+common-obj-$(CONFIG_IMX) += imx_gpio.o
-+common-obj-$(CONFIG_RASPI) += bcm2835_gpio.o
-+common-obj-$(CONFIG_NRF51_SOC) += nrf51_gpio.o
-diff --git a/hw/i2c/Makefile.objs b/hw/i2c/Makefile.objs
-index d7073a401f..6ba976b257 100644
---- a/hw/i2c/Makefile.objs
-+++ b/hw/i2c/Makefile.objs
-@@ -9,5 +9,5 @@ common-obj-$(CONFIG_IMX_I2C) += imx_i2c.o
- common-obj-$(CONFIG_ASPEED_SOC) += aspeed_i2c.o
- common-obj-$(CONFIG_NRF51_SOC) += microbit_i2c.o
- common-obj-$(CONFIG_MPC_I2C) += mpc_i2c.o
--obj-$(CONFIG_OMAP) += omap_i2c.o
--obj-$(CONFIG_PPC4XX) += ppc4xx_i2c.o
-+common-obj-$(CONFIG_OMAP) += omap_i2c.o
-+common-obj-$(CONFIG_PPC4XX) += ppc4xx_i2c.o
-diff --git a/hw/i2c/ppc4xx_i2c.c b/hw/i2c/ppc4xx_i2c.c
-index 3f015a1581..c0a8e04567 100644
---- a/hw/i2c/ppc4xx_i2c.c
-+++ b/hw/i2c/ppc4xx_i2c.c
-@@ -27,7 +27,6 @@
- #include "qemu/osdep.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
--#include "cpu.h"
- #include "hw/i2c/ppc4xx_i2c.h"
- #include "hw/irq.h"
- 
-diff --git a/hw/input/Makefile.objs b/hw/input/Makefile.objs
-index a1bc502ed0..7a4abb0aa1 100644
---- a/hw/input/Makefile.objs
-+++ b/hw/input/Makefile.objs
-@@ -12,6 +12,6 @@ common-obj-$(CONFIG_VIRTIO_INPUT) += virtio-input-hid.o
- common-obj-$(CONFIG_VIRTIO_INPUT_HOST) += virtio-input-host.o
- common-obj-$(CONFIG_VHOST_USER_INPUT) += vhost-user-input.o
- 
--obj-$(CONFIG_MILKYMIST) += milkymist-softusb.o
--obj-$(CONFIG_PXA2XX) += pxa2xx_keypad.o
--obj-$(CONFIG_TSC210X) += tsc210x.o
-+common-obj-$(CONFIG_MILKYMIST) += milkymist-softusb.o
-+common-obj-$(CONFIG_PXA2XX) += pxa2xx_keypad.o
-+common-obj-$(CONFIG_TSC210X) += tsc210x.o
-diff --git a/hw/net/Makefile.objs b/hw/net/Makefile.objs
-index 9904273b06..ef57e257ab 100644
---- a/hw/net/Makefile.objs
-+++ b/hw/net/Makefile.objs
-@@ -31,8 +31,8 @@ common-obj-$(CONFIG_SUNHME) += sunhme.o
- common-obj-$(CONFIG_FTGMAC100) += ftgmac100.o
- common-obj-$(CONFIG_SUNGEM) += sungem.o
- 
--obj-$(CONFIG_ETRAXFS) += etraxfs_eth.o
--obj-$(CONFIG_COLDFIRE) += mcf_fec.o
-+common-obj-$(CONFIG_ETRAXFS) += etraxfs_eth.o
-+common-obj-$(CONFIG_COLDFIRE) += mcf_fec.o
- obj-$(CONFIG_MILKYMIST) += milkymist-minimac2.o
- obj-$(CONFIG_PSERIES) += spapr_llan.o
- obj-$(CONFIG_XILINX_ETHLITE) += xilinx_ethlite.o
-@@ -42,7 +42,7 @@ common-obj-$(call land,$(CONFIG_VIRTIO_NET),$(CONFIG_VHOST_NET)) += vhost_net.o
- common-obj-$(call lnot,$(call land,$(CONFIG_VIRTIO_NET),$(CONFIG_VHOST_NET))) += vhost_net-stub.o
- common-obj-$(CONFIG_ALL) += vhost_net-stub.o
- 
--obj-$(CONFIG_ETSEC) += fsl_etsec/etsec.o fsl_etsec/registers.o \
-+common-obj-$(CONFIG_ETSEC) += fsl_etsec/etsec.o fsl_etsec/registers.o \
- 			fsl_etsec/rings.o fsl_etsec/miim.o
- 
- common-obj-$(CONFIG_ROCKER) += rocker/rocker.o rocker/rocker_fp.o \
-diff --git a/hw/nvram/Makefile.objs b/hw/nvram/Makefile.objs
-index 26f7b4ca35..f22229c244 100644
---- a/hw/nvram/Makefile.objs
-+++ b/hw/nvram/Makefile.objs
-@@ -4,5 +4,5 @@ common-obj-$(CONFIG_AT24C) += eeprom_at24c.o
- common-obj-y += fw_cfg.o
- common-obj-y += chrp_nvram.o
- common-obj-$(CONFIG_MAC_NVRAM) += mac_nvram.o
-+common-obj-$(CONFIG_NRF51_SOC) += nrf51_nvm.o
- obj-$(CONFIG_PSERIES) += spapr_nvram.o
--obj-$(CONFIG_NRF51_SOC) += nrf51_nvm.o
-diff --git a/hw/pcmcia/Makefile.objs b/hw/pcmcia/Makefile.objs
-index 4eac060c93..02cd986a2c 100644
---- a/hw/pcmcia/Makefile.objs
-+++ b/hw/pcmcia/Makefile.objs
-@@ -1,2 +1,2 @@
- common-obj-y += pcmcia.o
--obj-$(CONFIG_PXA2XX) += pxa2xx.o
-+common-obj-$(CONFIG_PXA2XX) += pxa2xx.o
-diff --git a/hw/sd/Makefile.objs b/hw/sd/Makefile.objs
-index 06657279d1..42e79c2afd 100644
---- a/hw/sd/Makefile.objs
-+++ b/hw/sd/Makefile.objs
-@@ -4,7 +4,7 @@ common-obj-$(CONFIG_SD) += sd.o core.o sdmmc-internal.o
- common-obj-$(CONFIG_SDHCI) += sdhci.o
- common-obj-$(CONFIG_SDHCI_PCI) += sdhci-pci.o
- 
--obj-$(CONFIG_MILKYMIST) += milkymist-memcard.o
--obj-$(CONFIG_OMAP) += omap_mmc.o
--obj-$(CONFIG_PXA2XX) += pxa2xx_mmci.o
--obj-$(CONFIG_RASPI) += bcm2835_sdhost.o
-+common-obj-$(CONFIG_MILKYMIST) += milkymist-memcard.o
-+common-obj-$(CONFIG_OMAP) += omap_mmc.o
-+common-obj-$(CONFIG_PXA2XX) += pxa2xx_mmci.o
-+common-obj-$(CONFIG_RASPI) += bcm2835_sdhost.o
-diff --git a/hw/ssi/Makefile.objs b/hw/ssi/Makefile.objs
-index f5bcc65fe7..07a85f1967 100644
---- a/hw/ssi/Makefile.objs
-+++ b/hw/ssi/Makefile.objs
-@@ -6,5 +6,5 @@ common-obj-$(CONFIG_ASPEED_SOC) += aspeed_smc.o
- common-obj-$(CONFIG_STM32F2XX_SPI) += stm32f2xx_spi.o
- common-obj-$(CONFIG_MSF2) += mss-spi.o
- 
--obj-$(CONFIG_OMAP) += omap_spi.o
--obj-$(CONFIG_IMX) += imx_spi.o
-+common-obj-$(CONFIG_OMAP) += omap_spi.o
-+common-obj-$(CONFIG_IMX) += imx_spi.o
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 123d92c969..f407523aa4 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -25,20 +25,20 @@ common-obj-$(CONFIG_MILKYMIST) += milkymist-sysctl.o
- common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
- common-obj-$(CONFIG_NRF51_SOC) += nrf51_timer.o
- 
--obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
--obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
--obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
--obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
--obj-$(CONFIG_OMAP) += omap_gptimer.o
--obj-$(CONFIG_OMAP) += omap_synctimer.o
--obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
--obj-$(CONFIG_SH4) += sh_timer.o
--obj-$(CONFIG_DIGIC) += digic-timer.o
--obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
-+common-obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
-+common-obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
-+common-obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
-+common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
-+common-obj-$(CONFIG_OMAP) += omap_gptimer.o
-+common-obj-$(CONFIG_OMAP) += omap_synctimer.o
-+common-obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
-+common-obj-$(CONFIG_SH4) += sh_timer.o
-+common-obj-$(CONFIG_DIGIC) += digic-timer.o
-+common-obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
- 
- obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
- 
--obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
-+common-obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
- 
- common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
- common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o aspeed_rtc.o
-diff --git a/hw/usb/Makefile.objs b/hw/usb/Makefile.objs
-index 303ac084a0..ae43ccf263 100644
---- a/hw/usb/Makefile.objs
-+++ b/hw/usb/Makefile.objs
-@@ -13,8 +13,8 @@ common-obj-$(CONFIG_USB_XHCI) += hcd-xhci.o
- common-obj-$(CONFIG_USB_XHCI_NEC) += hcd-xhci-nec.o
- common-obj-$(CONFIG_USB_MUSB) += hcd-musb.o
- 
--obj-$(CONFIG_TUSB6010) += tusb6010.o
--obj-$(CONFIG_IMX)      += chipidea.o
-+common-obj-$(CONFIG_TUSB6010) += tusb6010.o
-+common-obj-$(CONFIG_IMX)      += chipidea.o
- 
- # emulated usb devices
- common-obj-$(CONFIG_USB) += dev-hub.o
--- 
-2.18.1
+ /**
+- * kvm_device_access - set or get value of a specific vm attribute
++ * kvm_device_access - set or get value of a specific device attribute
+  * @fd: The device file descriptor
+  * @group: the group
+  * @attr: the attribute of that group to set or get
 
 
