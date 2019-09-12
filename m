@@ -1,50 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i8QBm-0006fd-SN
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Sep 2019 10:35:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48477)
+	id 1i8Qiu-00005K-7J
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Sep 2019 11:09:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37121)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <frederic.konrad@adacore.com>) id 1i8QBj-0006cZ-VV
- for qemu-trivial@nongnu.org; Thu, 12 Sep 2019 10:35:12 -0400
+ (envelope-from <philmd@redhat.com>) id 1i8Qis-0008UV-34
+ for qemu-trivial@nongnu.org; Thu, 12 Sep 2019 11:09:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <frederic.konrad@adacore.com>) id 1i8QBi-0006OC-V7
- for qemu-trivial@nongnu.org; Thu, 12 Sep 2019 10:35:11 -0400
-Received: from mel.act-europe.fr ([2a02:2ab8:224:1::a0a:d2]:36910
- helo=smtp.eu.adacore.com)
+ (envelope-from <philmd@redhat.com>) id 1i8Qiq-0001PX-9G
+ for qemu-trivial@nongnu.org; Thu, 12 Sep 2019 11:09:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45972)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <frederic.konrad@adacore.com>)
- id 1i8QBg-0006In-OY; Thu, 12 Sep 2019 10:35:08 -0400
-Received: from localhost (localhost [127.0.0.1])
- by filtered-smtp.eu.adacore.com (Postfix) with ESMTP id 9B98981549;
- Thu, 12 Sep 2019 16:35:06 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at eu.adacore.com
-Received: from smtp.eu.adacore.com ([127.0.0.1])
- by localhost (smtp.eu.adacore.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id meCP6MlRMKxx; Thu, 12 Sep 2019 16:35:06 +0200 (CEST)
-Received: from localhost.localdomain (lfbn-tou-1-447-75.w86-206.abo.wanadoo.fr
- [86.206.4.75])
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1i8Qiq-0001PB-2U
+ for qemu-trivial@nongnu.org; Thu, 12 Sep 2019 11:09:24 -0400
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by smtp.eu.adacore.com (Postfix) with ESMTPSA id 5272E812FD;
- Thu, 12 Sep 2019 16:35:06 +0200 (CEST)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>
-References: <1568296920-29939-1-git-send-email-frederic.konrad@adacore.com>
- <ca55df80-6461-9650-f2e4-b2136d54adc3@redhat.com>
-From: KONRAD Frederic <frederic.konrad@adacore.com>
-Message-ID: <0f04b987-28d2-e8d2-6c00-9a939b845cec@adacore.com>
-Date: Thu, 12 Sep 2019 16:35:05 +0200
+ by mx1.redhat.com (Postfix) with ESMTPS id 1B29E10B182
+ for <qemu-trivial@nongnu.org>; Thu, 12 Sep 2019 15:09:23 +0000 (UTC)
+Received: by mail-wr1-f69.google.com with SMTP id 32so7678456wrk.15
+ for <qemu-trivial@nongnu.org>; Thu, 12 Sep 2019 08:09:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:from:to:cc:references:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=7+8EFW9Nkbbot0zXClv+DpnuUl998o+XNV8XMeGZPVA=;
+ b=T+Tkf4BypupzRSDI7R17WcFGzMe+zFK3tnPu13uLkkhOiiOPRb0x/78JrZkbfNqiFD
+ Lr8yrd2qMmLCxSzx2MEG6ceZ4KrpMKsOg5V1/YIv1w9+4Uaw/7e4IIYX+gitU8I4bvpC
+ Y6HqadMZDXhBrp1KQn/T2lm0sfIPBuel39w1p9lAZedSdXNHdoMuYtFmbk/knx25gWTn
+ V3KNOgcS61y1EVhtE/iiCaBychyhAwY0KMQwp/nAndwRj3ybn+uMf9onVrPbIRjT/Ir5
+ ADdqf54d76+NVMpU9nXO8tbzDTFgai2BwTij1UNHcLFsXHHPYS1mxC54aP7eR7yZYLW/
+ k7vw==
+X-Gm-Message-State: APjAAAUC2huAiN4n+9uVN3vbnQKZGEYk+IFGmBVniPJdiJ6kxLkXZB0t
+ 7vLx2691yoXMyCUDjp5lqK/BVz9sQ3kZ+qDRxZ9o+UNlvJx3688w68XMDonSVa+e24yqy55zS+Y
+ lSNVn2v3SeLdLWYbcvw==
+X-Received: by 2002:a05:6000:110f:: with SMTP id
+ z15mr1981189wrw.328.1568300961490; 
+ Thu, 12 Sep 2019 08:09:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyPwqzbz4KjrRnTiyFjhztT2SqwVmE8sF4gCHz9DaWLi3KLfqnBtMczqacnfenVTWqXUjWmZA==
+X-Received: by 2002:a05:6000:110f:: with SMTP id
+ z15mr1981157wrw.328.1568300961203; 
+ Thu, 12 Sep 2019 08:09:21 -0700 (PDT)
+Received: from [192.168.1.41] (251.red-88-10-102.dynamicip.rima-tde.net.
+ [88.10.102.251])
+ by smtp.gmail.com with ESMTPSA id a15sm293479wmj.25.2019.09.12.08.09.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 12 Sep 2019 08:09:20 -0700 (PDT)
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+To: Alexey Kardashevskiy <aik@ozlabs.ru>, Stefan Hajnoczi <stefanha@gmail.com>
+Cc: qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20190613050937.124903-1-aik@ozlabs.ru>
+ <35361394-42ba-dcf0-6fe2-5a0a538d1440@redhat.com>
+ <d20e26db-7157-d9bd-c707-d7f4443396c0@ozlabs.ru>
+ <20190614093306.GG10957@stefanha-x1.localdomain>
+ <33c70ea6-08d7-d4ba-210b-328ea275cfe5@ozlabs.ru>
+ <fa361ec0-c734-567a-d617-6613b6e89f78@redhat.com>
+ <bbbf2fd0-34e5-c9a9-a11c-f87d07cc3b8f@ozlabs.ru>
+ <1aa3e97b-b5f7-1b88-eb14-af8926701ce4@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <eea0ce7a-1534-67e3-3841-ac06b7e620d5@redhat.com>
+Date: Thu, 12 Sep 2019 17:09:19 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <ca55df80-6461-9650-f2e4-b2136d54adc3@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: fr
+In-Reply-To: <1aa3e97b-b5f7-1b88-eb14-af8926701ce4@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 2a02:2ab8:224:1::a0a:d2
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] target/m68k/fpu_helper.c:
- rename the access arguments
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH qemu] loader: Trace loaded
+ images
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -56,59 +85,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Sep 2019 14:35:13 -0000
+X-List-Received-Date: Thu, 12 Sep 2019 15:09:27 -0000
 
-
-
-Le 9/12/19 =C3=A0 4:32 PM, Philippe Mathieu-Daud=C3=A9 a =C3=A9crit=C2=A0=
-:
-> On 9/12/19 4:02 PM, KONRAD Frederic wrote:
->> The "access" arguments clash with a macro under Windows with MinGW:
->>    CC      m68k-softmmu/target/m68k/fpu_helper.o
->>    target/m68k/fpu_helper.c: In function 'fmovem_predec':
->>    target/m68k/fpu_helper.c:405:56: error: macro "access" passed 4 arg=
-uments,
->>     but takes just 2
->>                 size =3D access(env, addr, &env->fregs[i], ra);
+On 6/20/19 10:53 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 6/20/19 7:50 AM, Alexey Kardashevskiy wrote:
+>> On 17/06/2019 14:56, Philippe Mathieu-Daud=C3=A9 wrote:
+>>> On 6/17/19 3:25 AM, Alexey Kardashevskiy wrote:
+>>>> On 14/06/2019 19:33, Stefan Hajnoczi wrote:
+>>>>> On Fri, Jun 14, 2019 at 10:13:04AM +1000, Alexey Kardashevskiy wrot=
+e:
+>>>>>>
+>>>>>>
+>>>>>> On 13/06/2019 23:08, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>>>>> Hi Alexey,
+>>>>>>>
+>>>>>>> On 6/13/19 7:09 AM, Alexey Kardashevskiy wrote:
+>>>>>>>> This adds a trace point which prints every loaded image. This in=
+cludes
+>>>>>>>> bios/firmware/kernel/initradmdisk/pcirom.
+>>>>>>>>
+>>>>>>>> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+>>>>>>>> ---
+>>>>>>>>
+>>>>>>>> The example for a pseries guest:
+>>>>>>>>
+>>>>>>>> loader_write_rom slof.bin: @0x0 size=3D0xe22e0 ROM=3D0
+>>>>>>>> loader_write_rom phdr #0: /home/aik/t/vml4120le: @0x400000 size=3D=
+0x13df000 ROM=3D0
+>>>>>>>> loader_write_rom /home/aik/t/le.cpio: @0x1ad0000 size=3D0x9463a0=
+0 ROM=3D0
+>>>>>>>
+>>>>>>> I find the "ROM=3D0" part confuse, maybe you can change to "ROM:f=
+alse".
+>>>>>>
+>>>>>> How? I mean I can do that in the code as rom->isrom?"true":"false"=
+ and
+>>>>>> make trace point accept "%s" but it is quite ugly and others seem =
+to
+>>>>>> just use %d for bool.
+>>>>>
+>>>>> Yes, %d is the convention for bool.  Perhaps you can name it "is_ro=
+m"
+>>>>> instead of "ROM".  That way the name communicates that this is a bo=
+olean
+>>>>> value.
+>>>>
+>>>> It is quite obvious though that it is boolean even as "ROM" (what el=
+se
+>>>> can that be realistically?) and there does not seem to be a conventi=
+on
+>>>> about xxx:N vs is_xxx:N. And personally I find longer lines worse fo=
+r
+>>>> limited width screens (I run multiple qemus in tiled tmux). Whose tr=
+ee
+>>>> is this going to? Let's ask that person :)
+>>>
+>>> Personally I find 'is_rom' clearer. I read 2 addresses, then my first
+>>> reaction was to parse it as another address. But it is also true we n=
+ow
+>>> enforce traced hex values with '0x' prefix, so your 'ROM' is unlikely=
+ an
+>>> address. Tiled tmux is an acceptable argument. Anyway you already got=
+ my
+>>> R-b.
+>>>
+>>> Tree: the PPC tree is likely to get it merged quicker than the MISC t=
+ree.
 >>
->> So this renames them access_fn.
->=20
-> access() is not your friend... this reminds me of
->=20
-> commit 05e015f73c3b5c50c237d3d8e555e25cfa543a5c
-> Author: KONRAD Frederic <frederic.konrad@adacore.com>
-> Date:   Thu Sep 21 12:04:20 2017 +0200
->=20
->      memory: avoid a name clash with access macro
->=20
->      This avoids a name clash with the access macro on windows 64:
-
-True, I didn't catch this one at the time because we didn't build m68k.
-
->=20
->      make
->              CHK version_gen.h
->        CC      aarch64-softmmu/memory.o
->      /home/konrad/qemu/memory.c: In function 'access_with_adjusted_size=
-':
->      /home/konrad/qemu/memory.c:591:73: error: macro "access" passed 7
-> arguments, \
->                       but takes just 2
->                       (size - access_size - i) * 8, access_mask, attrs)=
-;
->                                                                       ^
 >>
->> Tested with:
->>   ./configure --target-list=3Dm68k-softmmu
->>   make -j8
->>
->> Signed-off-by: KONRAD Frederic <frederic.konrad@adacore.com>
+>> There is nothing specific about PPC though so I guess it is the MISC
+>> tree, who does maintain that?
 >=20
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Paolo, Cc'ing him.
 
-Thanks!
-
-Cheers,
-Fred
-
+Stefan sometime takes tracing patches, but this patch might also go via
+Trivial@ (Cc'ed).
 
