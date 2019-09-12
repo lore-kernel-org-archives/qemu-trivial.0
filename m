@@ -1,122 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i87B3-0003PJ-Mi
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Sep 2019 14:17:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34569)
+	id 1i8Orv-0000Oe-QH
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Sep 2019 09:10:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60980)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jsnow@redhat.com>) id 1i87B0-0003Mh-Mg
- for qemu-trivial@nongnu.org; Wed, 11 Sep 2019 14:17:11 -0400
+ (envelope-from <thuth@redhat.com>) id 1i8Oro-0000IW-Pk
+ for qemu-trivial@nongnu.org; Thu, 12 Sep 2019 09:10:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jsnow@redhat.com>) id 1i87Az-0005co-JH
- for qemu-trivial@nongnu.org; Wed, 11 Sep 2019 14:17:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41018)
+ (envelope-from <thuth@redhat.com>) id 1i8Orj-00083o-1a
+ for qemu-trivial@nongnu.org; Thu, 12 Sep 2019 09:10:32 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33802)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jsnow@redhat.com>)
- id 1i87At-0005Y6-Jc; Wed, 11 Sep 2019 14:17:04 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1i8Ord-00080B-LX; Thu, 12 Sep 2019 09:10:21 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B381781DE0;
- Wed, 11 Sep 2019 18:17:01 +0000 (UTC)
-Received: from [10.18.17.203] (dhcp-17-203.bos.redhat.com [10.18.17.203])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CD5F960852;
- Wed, 11 Sep 2019 18:17:00 +0000 (UTC)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ by mx1.redhat.com (Postfix) with ESMTPS id 8982B2A09AC;
+ Thu, 12 Sep 2019 13:10:20 +0000 (UTC)
+Received: from thuth.com (ovpn-204-41.brq.redhat.com [10.40.204.41])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C03B919C78;
+ Thu, 12 Sep 2019 13:10:15 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Markus Armbruster <armbru@redhat.com>
-References: <20190911162900.8498-1-thuth@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <6c01ea97-a706-91ba-6e1b-42fb64e9306a@redhat.com>
-Date: Wed, 11 Sep 2019 14:17:00 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <20190911162900.8498-1-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Date: Thu, 12 Sep 2019 15:10:11 +0200
+Message-Id: <20190912131011.6255-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.25]); Wed, 11 Sep 2019 18:17:01 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+ (mx1.redhat.com [10.5.110.38]); Thu, 12 Sep 2019 13:10:20 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] Makefile: Remove generated
- files when doing 'distclean'
+Subject: [Qemu-trivial] [PATCH] hw/*/Makefile.objs: Move many .o files to
+ common-objs
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -128,89 +47,306 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Sep 2019 18:17:12 -0000
+X-List-Received-Date: Thu, 12 Sep 2019 13:10:38 -0000
 
+We have many files that apparently do not depend on the target CPU
+configuration, i.e. which can be put into common-obj-y instead of
+obj-y. This way, the code can be shared for example between
+qemu-system-arm and qemu-system-aarch64, or the various big and
+little endian variants like qemu-system-sh4 and qemu-system-sh4eb,
+so that we do not have to compile the code multiple times anymore.
 
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/adc/Makefile.objs     |  2 +-
+ hw/block/Makefile.objs   |  2 +-
+ hw/char/Makefile.objs    | 16 ++++++++--------
+ hw/core/Makefile.objs    |  2 +-
+ hw/display/Makefile.objs |  2 +-
+ hw/dma/Makefile.objs     |  6 +++---
+ hw/gpio/Makefile.objs    |  8 ++++----
+ hw/i2c/Makefile.objs     |  4 ++--
+ hw/i2c/ppc4xx_i2c.c      |  1 -
+ hw/input/Makefile.objs   |  6 +++---
+ hw/net/Makefile.objs     |  6 +++---
+ hw/nvram/Makefile.objs   |  2 +-
+ hw/pcmcia/Makefile.objs  |  2 +-
+ hw/sd/Makefile.objs      |  8 ++++----
+ hw/ssi/Makefile.objs     |  4 ++--
+ hw/timer/Makefile.objs   | 22 +++++++++++-----------
+ hw/usb/Makefile.objs     |  4 ++--
+ 17 files changed, 48 insertions(+), 49 deletions(-)
 
-On 9/11/19 12:29 PM, Thomas Huth wrote:
-> When running "make distclean" we currently leave a lot of generated
-> files in the build directory. Fix that.
->=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+diff --git a/hw/adc/Makefile.objs b/hw/adc/Makefile.objs
+index 3f6dfdedae..2b9dc36c7f 100644
+--- a/hw/adc/Makefile.objs
++++ b/hw/adc/Makefile.objs
+@@ -1 +1 @@
+-obj-$(CONFIG_STM32F2XX_ADC) += stm32f2xx_adc.o
++common-obj-$(CONFIG_STM32F2XX_ADC) += stm32f2xx_adc.o
+diff --git a/hw/block/Makefile.objs b/hw/block/Makefile.objs
+index f5f643f0cc..64c1f315c9 100644
+--- a/hw/block/Makefile.objs
++++ b/hw/block/Makefile.objs
+@@ -9,7 +9,7 @@ common-obj-$(CONFIG_ECC) += ecc.o
+ common-obj-$(CONFIG_ONENAND) += onenand.o
+ common-obj-$(CONFIG_NVME_PCI) += nvme.o
+ 
+-obj-$(CONFIG_SH4) += tc58128.o
++common-obj-$(CONFIG_SH4) += tc58128.o
+ 
+ obj-$(CONFIG_VIRTIO_BLK) += virtio-blk.o
+ obj-$(CONFIG_VHOST_USER_BLK) += vhost-user-blk.o
+diff --git a/hw/char/Makefile.objs b/hw/char/Makefile.objs
+index 02d8a66925..9e9a6c1aff 100644
+--- a/hw/char/Makefile.objs
++++ b/hw/char/Makefile.objs
+@@ -13,14 +13,13 @@ common-obj-$(CONFIG_XILINX) += xilinx_uartlite.o
+ common-obj-$(CONFIG_XEN) += xen_console.o
+ common-obj-$(CONFIG_CADENCE) += cadence_uart.o
+ 
+-obj-$(CONFIG_EXYNOS4) += exynos4210_uart.o
+-obj-$(CONFIG_COLDFIRE) += mcf_uart.o
+-obj-$(CONFIG_OMAP) += omap_uart.o
+-obj-$(CONFIG_SH4) += sh_serial.o
+-obj-$(CONFIG_PSERIES) += spapr_vty.o
+-obj-$(CONFIG_DIGIC) += digic-uart.o
+-obj-$(CONFIG_STM32F2XX_USART) += stm32f2xx_usart.o
+-obj-$(CONFIG_RASPI) += bcm2835_aux.o
++common-obj-$(CONFIG_EXYNOS4) += exynos4210_uart.o
++common-obj-$(CONFIG_COLDFIRE) += mcf_uart.o
++common-obj-$(CONFIG_OMAP) += omap_uart.o
++common-obj-$(CONFIG_SH4) += sh_serial.o
++common-obj-$(CONFIG_DIGIC) += digic-uart.o
++common-obj-$(CONFIG_STM32F2XX_USART) += stm32f2xx_usart.o
++common-obj-$(CONFIG_RASPI) += bcm2835_aux.o
+ 
+ common-obj-$(CONFIG_CMSDK_APB_UART) += cmsdk-apb-uart.o
+ common-obj-$(CONFIG_ETRAXFS) += etraxfs_ser.o
+@@ -33,4 +32,5 @@ common-obj-$(CONFIG_MILKYMIST) += milkymist-uart.o
+ common-obj-$(CONFIG_SCLPCONSOLE) += sclpconsole.o sclpconsole-lm.o
+ 
+ obj-$(CONFIG_VIRTIO) += virtio-serial-bus.o
++obj-$(CONFIG_PSERIES) += spapr_vty.o
+ obj-$(CONFIG_TERMINAL3270) += terminal3270.o
+diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+index fd0550d1d9..c94886cd74 100644
+--- a/hw/core/Makefile.objs
++++ b/hw/core/Makefile.objs
+@@ -26,5 +26,5 @@ common-obj-$(CONFIG_GENERIC_LOADER) += generic-loader.o
+ common-obj-$(CONFIG_SOFTMMU) += null-machine.o
+ 
+ obj-$(CONFIG_SOFTMMU) += machine-qmp-cmds.o
+-obj-$(CONFIG_SOFTMMU) += numa.o
++common-obj-$(CONFIG_SOFTMMU) += numa.o
+ common-obj-$(CONFIG_SOFTMMU) += machine-hmp-cmds.o
+diff --git a/hw/display/Makefile.objs b/hw/display/Makefile.objs
+index 5a4066383b..a56ea95d46 100644
+--- a/hw/display/Makefile.objs
++++ b/hw/display/Makefile.objs
+@@ -24,7 +24,7 @@ common-obj-$(CONFIG_BOCHS_DISPLAY) += bochs-display.o
+ common-obj-$(CONFIG_BLIZZARD) += blizzard.o
+ common-obj-$(CONFIG_EXYNOS4) += exynos4210_fimd.o
+ common-obj-$(CONFIG_FRAMEBUFFER) += framebuffer.o
+-obj-$(CONFIG_MILKYMIST) += milkymist-vgafb.o
++common-obj-$(CONFIG_MILKYMIST) += milkymist-vgafb.o
+ common-obj-$(CONFIG_ZAURUS) += tc6393xb.o
+ 
+ obj-$(CONFIG_MILKYMIST_TMU2) += milkymist-tmu2.o
+diff --git a/hw/dma/Makefile.objs b/hw/dma/Makefile.objs
+index b672e7a522..f4b1cfe26d 100644
+--- a/hw/dma/Makefile.objs
++++ b/hw/dma/Makefile.objs
+@@ -8,9 +8,9 @@ common-obj-$(CONFIG_XILINX_AXI) += xilinx_axidma.o
+ common-obj-$(CONFIG_ZYNQ_DEVCFG) += xlnx-zynq-devcfg.o
+ common-obj-$(CONFIG_ETRAXFS) += etraxfs_dma.o
+ common-obj-$(CONFIG_STP2000) += sparc32_dma.o
+-obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx_dpdma.o
++common-obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx_dpdma.o
+ common-obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx-zdma.o
+ 
+-obj-$(CONFIG_OMAP) += omap_dma.o soc_dma.o
+-obj-$(CONFIG_PXA2XX) += pxa2xx_dma.o
++common-obj-$(CONFIG_OMAP) += omap_dma.o soc_dma.o
++common-obj-$(CONFIG_PXA2XX) += pxa2xx_dma.o
+ common-obj-$(CONFIG_RASPI) += bcm2835_dma.o
+diff --git a/hw/gpio/Makefile.objs b/hw/gpio/Makefile.objs
+index e5da0cb54f..afdb4c3a06 100644
+--- a/hw/gpio/Makefile.objs
++++ b/hw/gpio/Makefile.objs
+@@ -5,7 +5,7 @@ common-obj-$(CONFIG_ZAURUS) += zaurus.o
+ common-obj-$(CONFIG_E500) += mpc8xxx.o
+ common-obj-$(CONFIG_GPIO_KEY) += gpio_key.o
+ 
+-obj-$(CONFIG_OMAP) += omap_gpio.o
+-obj-$(CONFIG_IMX) += imx_gpio.o
+-obj-$(CONFIG_RASPI) += bcm2835_gpio.o
+-obj-$(CONFIG_NRF51_SOC) += nrf51_gpio.o
++common-obj-$(CONFIG_OMAP) += omap_gpio.o
++common-obj-$(CONFIG_IMX) += imx_gpio.o
++common-obj-$(CONFIG_RASPI) += bcm2835_gpio.o
++common-obj-$(CONFIG_NRF51_SOC) += nrf51_gpio.o
+diff --git a/hw/i2c/Makefile.objs b/hw/i2c/Makefile.objs
+index d7073a401f..6ba976b257 100644
+--- a/hw/i2c/Makefile.objs
++++ b/hw/i2c/Makefile.objs
+@@ -9,5 +9,5 @@ common-obj-$(CONFIG_IMX_I2C) += imx_i2c.o
+ common-obj-$(CONFIG_ASPEED_SOC) += aspeed_i2c.o
+ common-obj-$(CONFIG_NRF51_SOC) += microbit_i2c.o
+ common-obj-$(CONFIG_MPC_I2C) += mpc_i2c.o
+-obj-$(CONFIG_OMAP) += omap_i2c.o
+-obj-$(CONFIG_PPC4XX) += ppc4xx_i2c.o
++common-obj-$(CONFIG_OMAP) += omap_i2c.o
++common-obj-$(CONFIG_PPC4XX) += ppc4xx_i2c.o
+diff --git a/hw/i2c/ppc4xx_i2c.c b/hw/i2c/ppc4xx_i2c.c
+index 3f015a1581..c0a8e04567 100644
+--- a/hw/i2c/ppc4xx_i2c.c
++++ b/hw/i2c/ppc4xx_i2c.c
+@@ -27,7 +27,6 @@
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+-#include "cpu.h"
+ #include "hw/i2c/ppc4xx_i2c.h"
+ #include "hw/irq.h"
+ 
+diff --git a/hw/input/Makefile.objs b/hw/input/Makefile.objs
+index a1bc502ed0..7a4abb0aa1 100644
+--- a/hw/input/Makefile.objs
++++ b/hw/input/Makefile.objs
+@@ -12,6 +12,6 @@ common-obj-$(CONFIG_VIRTIO_INPUT) += virtio-input-hid.o
+ common-obj-$(CONFIG_VIRTIO_INPUT_HOST) += virtio-input-host.o
+ common-obj-$(CONFIG_VHOST_USER_INPUT) += vhost-user-input.o
+ 
+-obj-$(CONFIG_MILKYMIST) += milkymist-softusb.o
+-obj-$(CONFIG_PXA2XX) += pxa2xx_keypad.o
+-obj-$(CONFIG_TSC210X) += tsc210x.o
++common-obj-$(CONFIG_MILKYMIST) += milkymist-softusb.o
++common-obj-$(CONFIG_PXA2XX) += pxa2xx_keypad.o
++common-obj-$(CONFIG_TSC210X) += tsc210x.o
+diff --git a/hw/net/Makefile.objs b/hw/net/Makefile.objs
+index 9904273b06..ef57e257ab 100644
+--- a/hw/net/Makefile.objs
++++ b/hw/net/Makefile.objs
+@@ -31,8 +31,8 @@ common-obj-$(CONFIG_SUNHME) += sunhme.o
+ common-obj-$(CONFIG_FTGMAC100) += ftgmac100.o
+ common-obj-$(CONFIG_SUNGEM) += sungem.o
+ 
+-obj-$(CONFIG_ETRAXFS) += etraxfs_eth.o
+-obj-$(CONFIG_COLDFIRE) += mcf_fec.o
++common-obj-$(CONFIG_ETRAXFS) += etraxfs_eth.o
++common-obj-$(CONFIG_COLDFIRE) += mcf_fec.o
+ obj-$(CONFIG_MILKYMIST) += milkymist-minimac2.o
+ obj-$(CONFIG_PSERIES) += spapr_llan.o
+ obj-$(CONFIG_XILINX_ETHLITE) += xilinx_ethlite.o
+@@ -42,7 +42,7 @@ common-obj-$(call land,$(CONFIG_VIRTIO_NET),$(CONFIG_VHOST_NET)) += vhost_net.o
+ common-obj-$(call lnot,$(call land,$(CONFIG_VIRTIO_NET),$(CONFIG_VHOST_NET))) += vhost_net-stub.o
+ common-obj-$(CONFIG_ALL) += vhost_net-stub.o
+ 
+-obj-$(CONFIG_ETSEC) += fsl_etsec/etsec.o fsl_etsec/registers.o \
++common-obj-$(CONFIG_ETSEC) += fsl_etsec/etsec.o fsl_etsec/registers.o \
+ 			fsl_etsec/rings.o fsl_etsec/miim.o
+ 
+ common-obj-$(CONFIG_ROCKER) += rocker/rocker.o rocker/rocker_fp.o \
+diff --git a/hw/nvram/Makefile.objs b/hw/nvram/Makefile.objs
+index 26f7b4ca35..f22229c244 100644
+--- a/hw/nvram/Makefile.objs
++++ b/hw/nvram/Makefile.objs
+@@ -4,5 +4,5 @@ common-obj-$(CONFIG_AT24C) += eeprom_at24c.o
+ common-obj-y += fw_cfg.o
+ common-obj-y += chrp_nvram.o
+ common-obj-$(CONFIG_MAC_NVRAM) += mac_nvram.o
++common-obj-$(CONFIG_NRF51_SOC) += nrf51_nvm.o
+ obj-$(CONFIG_PSERIES) += spapr_nvram.o
+-obj-$(CONFIG_NRF51_SOC) += nrf51_nvm.o
+diff --git a/hw/pcmcia/Makefile.objs b/hw/pcmcia/Makefile.objs
+index 4eac060c93..02cd986a2c 100644
+--- a/hw/pcmcia/Makefile.objs
++++ b/hw/pcmcia/Makefile.objs
+@@ -1,2 +1,2 @@
+ common-obj-y += pcmcia.o
+-obj-$(CONFIG_PXA2XX) += pxa2xx.o
++common-obj-$(CONFIG_PXA2XX) += pxa2xx.o
+diff --git a/hw/sd/Makefile.objs b/hw/sd/Makefile.objs
+index 06657279d1..42e79c2afd 100644
+--- a/hw/sd/Makefile.objs
++++ b/hw/sd/Makefile.objs
+@@ -4,7 +4,7 @@ common-obj-$(CONFIG_SD) += sd.o core.o sdmmc-internal.o
+ common-obj-$(CONFIG_SDHCI) += sdhci.o
+ common-obj-$(CONFIG_SDHCI_PCI) += sdhci-pci.o
+ 
+-obj-$(CONFIG_MILKYMIST) += milkymist-memcard.o
+-obj-$(CONFIG_OMAP) += omap_mmc.o
+-obj-$(CONFIG_PXA2XX) += pxa2xx_mmci.o
+-obj-$(CONFIG_RASPI) += bcm2835_sdhost.o
++common-obj-$(CONFIG_MILKYMIST) += milkymist-memcard.o
++common-obj-$(CONFIG_OMAP) += omap_mmc.o
++common-obj-$(CONFIG_PXA2XX) += pxa2xx_mmci.o
++common-obj-$(CONFIG_RASPI) += bcm2835_sdhost.o
+diff --git a/hw/ssi/Makefile.objs b/hw/ssi/Makefile.objs
+index f5bcc65fe7..07a85f1967 100644
+--- a/hw/ssi/Makefile.objs
++++ b/hw/ssi/Makefile.objs
+@@ -6,5 +6,5 @@ common-obj-$(CONFIG_ASPEED_SOC) += aspeed_smc.o
+ common-obj-$(CONFIG_STM32F2XX_SPI) += stm32f2xx_spi.o
+ common-obj-$(CONFIG_MSF2) += mss-spi.o
+ 
+-obj-$(CONFIG_OMAP) += omap_spi.o
+-obj-$(CONFIG_IMX) += imx_spi.o
++common-obj-$(CONFIG_OMAP) += omap_spi.o
++common-obj-$(CONFIG_IMX) += imx_spi.o
+diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+index 123d92c969..f407523aa4 100644
+--- a/hw/timer/Makefile.objs
++++ b/hw/timer/Makefile.objs
+@@ -25,20 +25,20 @@ common-obj-$(CONFIG_MILKYMIST) += milkymist-sysctl.o
+ common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
+ common-obj-$(CONFIG_NRF51_SOC) += nrf51_timer.o
+ 
+-obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
+-obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
+-obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
+-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
+-obj-$(CONFIG_OMAP) += omap_gptimer.o
+-obj-$(CONFIG_OMAP) += omap_synctimer.o
+-obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
+-obj-$(CONFIG_SH4) += sh_timer.o
+-obj-$(CONFIG_DIGIC) += digic-timer.o
+-obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
++common-obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
++common-obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
++common-obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
++common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
++common-obj-$(CONFIG_OMAP) += omap_gptimer.o
++common-obj-$(CONFIG_OMAP) += omap_synctimer.o
++common-obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
++common-obj-$(CONFIG_SH4) += sh_timer.o
++common-obj-$(CONFIG_DIGIC) += digic-timer.o
++common-obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
+ 
+ obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
+ 
+-obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
++common-obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
+ 
+ common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
+ common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o aspeed_rtc.o
+diff --git a/hw/usb/Makefile.objs b/hw/usb/Makefile.objs
+index 303ac084a0..ae43ccf263 100644
+--- a/hw/usb/Makefile.objs
++++ b/hw/usb/Makefile.objs
+@@ -13,8 +13,8 @@ common-obj-$(CONFIG_USB_XHCI) += hcd-xhci.o
+ common-obj-$(CONFIG_USB_XHCI_NEC) += hcd-xhci-nec.o
+ common-obj-$(CONFIG_USB_MUSB) += hcd-musb.o
+ 
+-obj-$(CONFIG_TUSB6010) += tusb6010.o
+-obj-$(CONFIG_IMX)      += chipidea.o
++common-obj-$(CONFIG_TUSB6010) += tusb6010.o
++common-obj-$(CONFIG_IMX)      += chipidea.o
+ 
+ # emulated usb devices
+ common-obj-$(CONFIG_USB) += dev-hub.o
+-- 
+2.18.1
 
-Nice,
-
-Reviewed-by: John Snow <jsnow@redhat.com>
-
-> ---
->  Makefile               |  6 +++---
->  tests/Makefile.include | 12 +++++++++++-
->  2 files changed, 14 insertions(+), 4 deletions(-)
->=20
-> diff --git a/Makefile b/Makefile
-> index ae17a83067..67e7e40e8c 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -681,14 +681,14 @@ clean: recurse-clean
->  		-exec rm {} +
->  	rm -f $(edk2-decompressed)
->  	rm -f $(filter-out %.tlb,$(TOOLS)) $(HELPERS-y) TAGS cscope.* *.pod *=
-~ */*~
-> -	rm -f fsdev/*.pod scsi/*.pod
-> +	rm -f fsdev/*.pod scsi/*.pod docs/*.pod docs/*/*.pod docs/*/.buildinf=
-o
->  	rm -f qemu-img-cmds.h
->  	rm -f ui/shader/*-vert.h ui/shader/*-frag.h
->  	@# May not be present in generated-files-y
->  	rm -f trace/generated-tracers-dtrace.dtrace*
->  	rm -f trace/generated-tracers-dtrace.h*
->  	rm -f $(foreach f,$(generated-files-y),$(f) $(f)-timestamp)
-> -	rm -f qapi-gen-timestamp
-> +	rm -f qapi-gen-timestamp vhost-user-input
->  	rm -rf qga/qapi-generated
->  	rm -f config-all-devices.mak
-> =20
-> @@ -719,7 +719,7 @@ distclean: clean
->  	rm -f config-host.mak config-host.h* config-host.ld $(DOCS) qemu-opti=
-ons.texi qemu-img-cmds.texi qemu-monitor.texi qemu-monitor-info.texi
->  	rm -f config-all-devices.mak config-all-disas.mak config.status
->  	rm -f $(SUBDIR_DEVICES_MAK)
-> -	rm -f po/*.mo tests/qemu-iotests/common.env
-> +	rm -f po/*.mo
->  	rm -f roms/seabios/config.mak roms/vgabios/config.mak
->  	rm -f qemu-doc.info qemu-doc.aux qemu-doc.cp qemu-doc.cps
->  	rm -f qemu-doc.fn qemu-doc.fns qemu-doc.info qemu-doc.ky qemu-doc.kys
-> diff --git a/tests/Makefile.include b/tests/Makefile.include
-> index f5ac09549c..07f794b01f 100644
-> --- a/tests/Makefile.include
-> +++ b/tests/Makefile.include
-> @@ -1174,11 +1174,21 @@ check: check-block check-qapi-schema check-unit=
- check-softfloat check-qtest chec
->  check-clean:
->  	rm -rf $(check-unit-y) tests/*.o $(QEMU_IOTESTS_HELPERS-y)
->  	rm -rf $(sort $(foreach target,$(SYSEMU_TARGET_LIST), $(check-qtest-$=
-(target)-y)) $(check-qtest-generic-y))
-> -	rm -f tests/test-qapi-gen-timestamp
->  	rm -rf $(TESTS_VENV_DIR) $(TESTS_RESULTS_DIR)
-> +	rm -f tests/qemu-iotests/common.env tests/qemu-iotests/check.*
-> +	rm -f tests/test-qapi-gen-timestamp tests/qht-bench$(EXESUF) \
-> +		tests/fp/fp-test tests/fp/*.out tests/qapi-schema/*.test.*
-> =20
->  clean: check-clean
-> =20
-> +check-distclean:
-> +	rm -f tests/test-qapi-types*.c tests/test-qapi-visit*.c \
-> +		tests/test-qapi-commands*.c tests/test-qapi-events*.c \
-> +		tests/test-qapi-emit-events.[ch] tests/test-qapi-introspect.c \
-> +		tests/include/test-qapi-*.c
-> +
-> +distclean: check-distclean
-> +
->  # Build the help program automatically
-> =20
->  all: $(QEMU_IOTESTS_HELPERS-y)
->=20
-
---=20
-=E2=80=94js
 
