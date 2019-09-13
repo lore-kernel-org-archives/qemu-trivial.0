@@ -1,48 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i8Xpq-0007Q4-G9
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Sep 2019 18:45:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44636)
+	id 1i8f1U-0008S0-5J
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Sep 2019 02:25:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53922)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mlevitsk@redhat.com>) id 1i8Xpm-0007LC-00
- for qemu-trivial@nongnu.org; Thu, 12 Sep 2019 18:45:03 -0400
+ (envelope-from <thuth@redhat.com>) id 1i8f1R-0008Pl-Fn
+ for qemu-trivial@nongnu.org; Fri, 13 Sep 2019 02:25:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mlevitsk@redhat.com>) id 1i8Xpj-0005aK-Sn
- for qemu-trivial@nongnu.org; Thu, 12 Sep 2019 18:45:01 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43340)
+ (envelope-from <thuth@redhat.com>) id 1i8f1Q-0008Dw-JW
+ for qemu-trivial@nongnu.org; Fri, 13 Sep 2019 02:25:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39224)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mlevitsk@redhat.com>)
- id 1i8Xpa-0005W9-98; Thu, 12 Sep 2019 18:44:51 -0400
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1i8f1M-0008AH-Q7; Fri, 13 Sep 2019 02:25:28 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id AA743C08EC0F;
- Thu, 12 Sep 2019 22:44:48 +0000 (UTC)
-Received: from maximlenovopc.usersys.redhat.com (unknown [10.35.206.59])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 70A5519C5B;
- Thu, 12 Sep 2019 22:44:46 +0000 (UTC)
-Message-ID: <ce0a42dfc06429ac3f1b5debee8aded308421db8.camel@redhat.com>
-From: Maxim Levitsky <mlevitsk@redhat.com>
-To: "Daniel P." =?ISO-8859-1?Q?Berrang=E9?= <berrange@redhat.com>
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org, 
- qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-devel@nongnu.org,  Laurent Vivier <laurent@vivier.eu>, Max Reitz
- <mreitz@redhat.com>
-Date: Fri, 13 Sep 2019 01:44:44 +0300
-In-Reply-To: <20190722090556.GC23775@redhat.com>
-References: <20190721181508.28608-1-mlevitsk@redhat.com>
- <20190721181508.28608-2-mlevitsk@redhat.com>
- <20190722090556.GC23775@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
+ by mx1.redhat.com (Postfix) with ESMTPS id B376818C4270;
+ Fri, 13 Sep 2019 06:25:26 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-134.ams2.redhat.com [10.36.116.134])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B936E19C5B;
+ Fri, 13 Sep 2019 06:25:25 +0000 (UTC)
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+References: <20190912184607.3507-1-eblake@redhat.com>
+Cc: qemu-trivial@nongnu.org
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <e9c31ac7-5b92-75d5-7bde-c33f06722744@redhat.com>
+Date: Fri, 13 Sep 2019 08:25:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <20190912184607.3507-1-eblake@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.31]); Thu, 12 Sep 2019 22:44:49 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.62]); Fri, 13 Sep 2019 06:25:26 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH 1/2] LUKS: better error
- message when creating too large files
+Subject: Re: [Qemu-trivial] [PATCH] build: Don't ignore qapi-visit-core.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -54,54 +95,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Sep 2019 22:45:04 -0000
+X-List-Received-Date: Fri, 13 Sep 2019 06:25:34 -0000
 
-On Mon, 2019-07-22 at 10:05 +0100, Daniel P. Berrang=C3=A9 wrote:
-> On Sun, Jul 21, 2019 at 09:15:07PM +0300, Maxim Levitsky wrote:
-> > Currently if you attampt to create too large file with luks you
-> > get the following error message:
-> >=20
-> > Formatting 'test.luks', fmt=3Dluks size=3D17592186044416 key-secret=3D=
-sec0
-> > qemu-img: test.luks: Could not resize file: File too large
-> >=20
-> > While for raw format the error message is
-> > qemu-img: test.img: The image size is too large for file format 'raw'
-> >=20
-> >=20
-> > The reason for this is that qemu-img checks for errono of the failure=
-,
-> > and presents the later error when it is -EFBIG
-> >=20
-> > However crypto generic code 'swallows' the errno and replaces it
-> > with -EIO.
-> >=20
-> > As an attempt to make it better, we can make luks driver,
-> > detect -EFBIG and in this case present a better error message,
-> > which is what this patch does
-> >=20
-> > The new error message is:
-> >=20
-> > qemu-img: error creating test.luks: The requested file size is too la=
-rge
-> >=20
-> > Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=3D1534898
-> > Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
-> > ---
-> >  block/crypto.c | 25 +++++++++++++++++++++----
-> >  1 file changed, 21 insertions(+), 4 deletions(-)
->=20
-> Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
->=20
-> Regards,
-> Daniel
-Hi!
+On 12/09/2019 20.46, Eric Blake wrote:
+> This file is version-controlled, and not generated from a .json file.
+> 
+> Fixes: bf582c3461b
+> Reported-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
+>  .gitignore | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/.gitignore b/.gitignore
+> index e9bbc006d39e..7de868d1eab4 100644
+> --- a/.gitignore
+> +++ b/.gitignore
+> @@ -41,6 +41,7 @@
+>  /qapi/qapi-types-*.[ch]
+>  /qapi/qapi-types.[ch]
+>  /qapi/qapi-visit-*.[ch]
+> +!/qapi/qapi-visit-core.c
+>  /qapi/qapi-visit.[ch]
+>  /qapi/qapi-doc.texi
+>  /qemu-doc.html
+> 
 
-Do you think that we should merge this or, shall I close the bugreport
-as WONTFIX?
+Thanks!
 
-Best regards,
-	Maxim Levitsky
-
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
