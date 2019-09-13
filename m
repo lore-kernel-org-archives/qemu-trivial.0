@@ -1,89 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i8f1U-0008S0-5J
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Sep 2019 02:25:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53922)
+	id 1i8jqP-0003OW-0t
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Sep 2019 07:34:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46044)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1i8f1R-0008Pl-Fn
- for qemu-trivial@nongnu.org; Fri, 13 Sep 2019 02:25:34 -0400
+ (envelope-from <eblake@redhat.com>) id 1i8jqM-0003Ly-4b
+ for qemu-trivial@nongnu.org; Fri, 13 Sep 2019 07:34:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1i8f1Q-0008Dw-JW
- for qemu-trivial@nongnu.org; Fri, 13 Sep 2019 02:25:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39224)
+ (envelope-from <eblake@redhat.com>) id 1i8jqL-0004mO-8S
+ for qemu-trivial@nongnu.org; Fri, 13 Sep 2019 07:34:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50208)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1i8f1M-0008AH-Q7; Fri, 13 Sep 2019 02:25:28 -0400
+ (Exim 4.71) (envelope-from <eblake@redhat.com>)
+ id 1i8jqJ-0004kd-2Z; Fri, 13 Sep 2019 07:34:23 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B376818C4270;
- Fri, 13 Sep 2019 06:25:26 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-134.ams2.redhat.com [10.36.116.134])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B936E19C5B;
- Fri, 13 Sep 2019 06:25:25 +0000 (UTC)
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+ by mx1.redhat.com (Postfix) with ESMTPS id 3A8318980F8;
+ Fri, 13 Sep 2019 11:34:22 +0000 (UTC)
+Received: from [10.3.116.234] (ovpn-116-234.phx2.redhat.com [10.3.116.234])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E4DFE410E;
+ Fri, 13 Sep 2019 11:34:21 +0000 (UTC)
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
 References: <20190912184607.3507-1-eblake@redhat.com>
-Cc: qemu-trivial@nongnu.org
-From: Thomas Huth <thuth@redhat.com>
+From: Eric Blake <eblake@redhat.com>
 Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat
-Message-ID: <e9c31ac7-5b92-75d5-7bde-c33f06722744@redhat.com>
-Date: Fri, 13 Sep 2019 08:25:24 +0200
+Autocrypt: addr=eblake@redhat.com; keydata=
+ xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
+ xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
+ TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
+ GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
+ sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
+ AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
+ CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
+ RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
+ wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
+ Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
+ gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
+ pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
+ zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
+ pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
+ 3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
+ NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
+ cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
+ SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
+ I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
+ mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
+ Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
+ 2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
+Organization: Red Hat, Inc.
+Message-ID: <f604ebfe-0157-81df-a948-18bf9589d880@redhat.com>
+Date: Fri, 13 Sep 2019 06:34:21 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
 In-Reply-To: <20190912184607.3507-1-eblake@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="0OLxt4MArl96ukrVC5EfwVnHzHs635YKc"
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.62]); Fri, 13 Sep 2019 06:25:26 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.67]); Fri, 13 Sep 2019 11:34:22 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] build: Don't ignore qapi-visit-core.c
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] build: Don't ignore
+ qapi-visit-core.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -95,18 +78,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Sep 2019 06:25:34 -0000
+X-List-Received-Date: Fri, 13 Sep 2019 11:34:27 -0000
 
-On 12/09/2019 20.46, Eric Blake wrote:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--0OLxt4MArl96ukrVC5EfwVnHzHs635YKc
+Content-Type: multipart/mixed; boundary="Neh0UhmQ1I6i5ocvaZk5AztnPJ0Z8QzyS";
+ protected-headers="v1"
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Message-ID: <f604ebfe-0157-81df-a948-18bf9589d880@redhat.com>
+Subject: Re: [Qemu-devel] [PATCH] build: Don't ignore qapi-visit-core.c
+References: <20190912184607.3507-1-eblake@redhat.com>
+In-Reply-To: <20190912184607.3507-1-eblake@redhat.com>
+
+--Neh0UhmQ1I6i5ocvaZk5AztnPJ0Z8QzyS
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+cc: qemu-trivial
+
+On 9/12/19 1:46 PM, Eric Blake wrote:
 > This file is version-controlled, and not generated from a .json file.
-> 
+>=20
 > Fixes: bf582c3461b
 > Reported-by: Thomas Huth <thuth@redhat.com>
 > Signed-off-by: Eric Blake <eblake@redhat.com>
 > ---
 >  .gitignore | 1 +
 >  1 file changed, 1 insertion(+)
-> 
+>=20
 > diff --git a/.gitignore b/.gitignore
 > index e9bbc006d39e..7de868d1eab4 100644
 > --- a/.gitignore
@@ -119,9 +122,32 @@ On 12/09/2019 20.46, Eric Blake wrote:
 >  /qapi/qapi-visit.[ch]
 >  /qapi/qapi-doc.texi
 >  /qemu-doc.html
-> 
+>=20
 
-Thanks!
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+
+--Neh0UhmQ1I6i5ocvaZk5AztnPJ0Z8QzyS--
+
+--0OLxt4MArl96ukrVC5EfwVnHzHs635YKc
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEccLMIrHEYCkn0vOqp6FrSiUnQ2oFAl17fr0ACgkQp6FrSiUn
+Q2qoggf6Akxtu6F3bWZLZ4gBi10IciPc9LfaCa/WheWApsUuc0D84Mxf1MkMbxp7
+tdzWQftKU1c7vR2+pCC9o09ERIXkX88HoPxjuxDvRbGJ0p7BUKgAJpNpJaiUIlXZ
+lr7uSBgSqs3/WJLPacYqLMzFK3T2djyD5SZ63sHswoPvIkCoZwbdAoyhrJhECpfS
+buDM6W9hwAijVI1UTglSesTO5fSANi797rPXgNqk1X1onD27oxWnkqjbscxK/C3A
+cRxHqySLZasE4f7yGRP98UjQRq9Urg6+HJFmZydQw0gWji2Pg51BVAHTxFGiIluf
+WoJjkHJty+xmI8e2o+l3JBa0nvEmew==
+=y+Eo
+-----END PGP SIGNATURE-----
+
+--0OLxt4MArl96ukrVC5EfwVnHzHs635YKc--
 
