@@ -1,48 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1i9sw8-0003P4-Kt
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Sep 2019 11:29:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60360)
+	id 1iAEt2-000457-MY
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Sep 2019 10:55:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57211)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <stefanha@redhat.com>) id 1i9sw5-0003K5-43
- for qemu-trivial@nongnu.org; Mon, 16 Sep 2019 11:29:06 -0400
+ (envelope-from <pbonzini@redhat.com>) id 1iAEsz-00042h-MM
+ for qemu-trivial@nongnu.org; Tue, 17 Sep 2019 10:55:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <stefanha@redhat.com>) id 1i9sw3-0000Z1-1B
- for qemu-trivial@nongnu.org; Mon, 16 Sep 2019 11:29:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59554)
+ (envelope-from <pbonzini@redhat.com>) id 1iAEsy-0003i5-Do
+ for qemu-trivial@nongnu.org; Tue, 17 Sep 2019 10:55:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42956)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <stefanha@redhat.com>)
- id 1i9svw-0000Sm-5t; Mon, 16 Sep 2019 11:28:56 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1iAEsy-0003ht-5A
+ for qemu-trivial@nongnu.org; Tue, 17 Sep 2019 10:55:20 -0400
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 7D5C290B24;
- Mon, 16 Sep 2019 15:28:54 +0000 (UTC)
-Received: from localhost (unknown [10.36.118.77])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 11D445C1D6;
- Mon, 16 Sep 2019 15:28:53 +0000 (UTC)
-Date: Mon, 16 Sep 2019 16:28:52 +0100
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-trivial@nongnu.org,
- Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
- Markus Armbruster <armbru@redhat.com>
-Message-ID: <20190916152852.GB5683@stefanha-x1.localdomain>
-References: <20190912131011.6255-1-thuth@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id 29261796FF
+ for <qemu-trivial@nongnu.org>; Tue, 17 Sep 2019 14:55:19 +0000 (UTC)
+Received: by mail-wm1-f71.google.com with SMTP id s25so977752wmh.1
+ for <qemu-trivial@nongnu.org>; Tue, 17 Sep 2019 07:55:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=/2Shdsn099W/sEo3HTED06ZWSCUt8Vpi4IXtw4rjI8w=;
+ b=NZW/AAxqHzlQilXjjjTyi4R0k9WxCQA3a3dykfmaRV8fyJuDLFtdKIW65PB1DD5wBk
+ Lt6aK8ZGdUrUNJ6dUnVfMvLCqY9ip7ZOj/hLYBqqYY3+S6V3tvG2X0btvQR1J69seoDX
+ vpsTZwzacDiAzX1G/UnsEEp/XBTHpzAuPhXm87us//2ThiV7VQT2+RxAkc5LOLf7Xm3N
+ n2eSLXbwvmZqXFyspsSJXBeOMkOz4GgKj/HnU9UnF2K7jd3xk0rlNXuyWQIfxfLL/FtG
+ xV+kMEDTlCTTklgw/bBGVHAN9XurInCW1ugz8owec1Yu1qOoep6kqejH+EVRcIXMd3re
+ miTg==
+X-Gm-Message-State: APjAAAUM5bdjXA+nBTCy4EwE7BpKAtHhwXaJvhHU6Zu3bU+RvIcy2Oat
+ IxdQiFwprDZR3ZVnoARGfRfg/kU6LnZozrWl0VPMsd7qz+9UE0GXF6bTo2f9DQJTvECfBOB/WVt
+ xeEuklyP6IiegZdDNyA==
+X-Received: by 2002:a1c:7ecf:: with SMTP id z198mr3748846wmc.175.1568732117713; 
+ Tue, 17 Sep 2019 07:55:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxCmwhyeGPxXe45kWIevj8Yj0vPVP//9ul3XWqyvAJfelRVYkkntwhK5H2iJYE/CP7hya0mzg==
+X-Received: by 2002:a1c:7ecf:: with SMTP id z198mr3748832wmc.175.1568732117443; 
+ Tue, 17 Sep 2019 07:55:17 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:c46c:2acb:d8d2:21d8?
+ ([2001:b07:6468:f312:c46c:2acb:d8d2:21d8])
+ by smtp.gmail.com with ESMTPSA id l18sm2854844wrc.18.2019.09.17.07.55.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 17 Sep 2019 07:55:16 -0700 (PDT)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
+ Eric Blake <eblake@redhat.com>
+References: <20190911162900.8498-1-thuth@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <d5f64427-9687-ae62-54b7-9548d2152acf@redhat.com>
+Date: Tue, 17 Sep 2019 16:55:15 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="pvezYHf7grwyp3Bc"
-Content-Disposition: inline
-In-Reply-To: <20190912131011.6255-1-thuth@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.71]); Mon, 16 Sep 2019 15:28:54 +0000 (UTC)
+In-Reply-To: <20190911162900.8498-1-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] hw/*/Makefile.objs: Move many .o files
- to common-objs
+Subject: Re: [Qemu-trivial] [PATCH] Makefile: Remove generated files when
+ doing 'distclean'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -54,63 +75,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Sep 2019 15:29:07 -0000
+X-List-Received-Date: Tue, 17 Sep 2019 14:55:23 -0000
 
-
---pvezYHf7grwyp3Bc
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Sep 12, 2019 at 03:10:11PM +0200, Thomas Huth wrote:
-> We have many files that apparently do not depend on the target CPU
-> configuration, i.e. which can be put into common-obj-y instead of
-> obj-y. This way, the code can be shared for example between
-> qemu-system-arm and qemu-system-aarch64, or the various big and
-> little endian variants like qemu-system-sh4 and qemu-system-sh4eb,
-> so that we do not have to compile the code multiple times anymore.
->=20
+On 11/09/19 18:29, Thomas Huth wrote:
+> When running "make distclean" we currently leave a lot of generated
+> files in the build directory. Fix that.
+> 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/adc/Makefile.objs     |  2 +-
->  hw/block/Makefile.objs   |  2 +-
->  hw/char/Makefile.objs    | 16 ++++++++--------
->  hw/core/Makefile.objs    |  2 +-
->  hw/display/Makefile.objs |  2 +-
->  hw/dma/Makefile.objs     |  6 +++---
->  hw/gpio/Makefile.objs    |  8 ++++----
->  hw/i2c/Makefile.objs     |  4 ++--
->  hw/i2c/ppc4xx_i2c.c      |  1 -
->  hw/input/Makefile.objs   |  6 +++---
->  hw/net/Makefile.objs     |  6 +++---
->  hw/nvram/Makefile.objs   |  2 +-
->  hw/pcmcia/Makefile.objs  |  2 +-
->  hw/sd/Makefile.objs      |  8 ++++----
->  hw/ssi/Makefile.objs     |  4 ++--
->  hw/timer/Makefile.objs   | 22 +++++++++++-----------
->  hw/usb/Makefile.objs     |  4 ++--
->  17 files changed, 48 insertions(+), 49 deletions(-)
+>  Makefile               |  6 +++---
+>  tests/Makefile.include | 12 +++++++++++-
+>  2 files changed, 14 insertions(+), 4 deletions(-)
+> 
+> diff --git a/Makefile b/Makefile
+> index ae17a83067..67e7e40e8c 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -681,14 +681,14 @@ clean: recurse-clean
+>  		-exec rm {} +
+>  	rm -f $(edk2-decompressed)
+>  	rm -f $(filter-out %.tlb,$(TOOLS)) $(HELPERS-y) TAGS cscope.* *.pod *~ */*~
+> -	rm -f fsdev/*.pod scsi/*.pod
+> +	rm -f fsdev/*.pod scsi/*.pod docs/*.pod docs/*/*.pod docs/*/.buildinfo
+>  	rm -f qemu-img-cmds.h
+>  	rm -f ui/shader/*-vert.h ui/shader/*-frag.h
+>  	@# May not be present in generated-files-y
+>  	rm -f trace/generated-tracers-dtrace.dtrace*
+>  	rm -f trace/generated-tracers-dtrace.h*
+>  	rm -f $(foreach f,$(generated-files-y),$(f) $(f)-timestamp)
+> -	rm -f qapi-gen-timestamp
+> +	rm -f qapi-gen-timestamp vhost-user-input
+>  	rm -rf qga/qapi-generated
+>  	rm -f config-all-devices.mak
+>  
+> @@ -719,7 +719,7 @@ distclean: clean
+>  	rm -f config-host.mak config-host.h* config-host.ld $(DOCS) qemu-options.texi qemu-img-cmds.texi qemu-monitor.texi qemu-monitor-info.texi
+>  	rm -f config-all-devices.mak config-all-disas.mak config.status
+>  	rm -f $(SUBDIR_DEVICES_MAK)
+> -	rm -f po/*.mo tests/qemu-iotests/common.env
+> +	rm -f po/*.mo
+>  	rm -f roms/seabios/config.mak roms/vgabios/config.mak
+>  	rm -f qemu-doc.info qemu-doc.aux qemu-doc.cp qemu-doc.cps
+>  	rm -f qemu-doc.fn qemu-doc.fns qemu-doc.info qemu-doc.ky qemu-doc.kys
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index f5ac09549c..07f794b01f 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -1174,11 +1174,21 @@ check: check-block check-qapi-schema check-unit check-softfloat check-qtest chec
+>  check-clean:
+>  	rm -rf $(check-unit-y) tests/*.o $(QEMU_IOTESTS_HELPERS-y)
+>  	rm -rf $(sort $(foreach target,$(SYSEMU_TARGET_LIST), $(check-qtest-$(target)-y)) $(check-qtest-generic-y))
+> -	rm -f tests/test-qapi-gen-timestamp
+>  	rm -rf $(TESTS_VENV_DIR) $(TESTS_RESULTS_DIR)
+> +	rm -f tests/qemu-iotests/common.env tests/qemu-iotests/check.*
+> +	rm -f tests/test-qapi-gen-timestamp tests/qht-bench$(EXESUF) \
+> +		tests/fp/fp-test tests/fp/*.out tests/qapi-schema/*.test.*
+>  
+>  clean: check-clean
+>  
+> +check-distclean:
+> +	rm -f tests/test-qapi-types*.c tests/test-qapi-visit*.c \
+> +		tests/test-qapi-commands*.c tests/test-qapi-events*.c \
+> +		tests/test-qapi-emit-events.[ch] tests/test-qapi-introspect.c \
+> +		tests/include/test-qapi-*.c
+> +
+> +distclean: check-distclean
+> +
+>  # Build the help program automatically
+>  
+>  all: $(QEMU_IOTESTS_HELPERS-y)
+> 
 
-Nice.  Again, I think the poisoned symbols would break compilation and
-CI would tell us if any changes made in this patch were incorrect.
-Therefore, looks good:
+Queued, thanks.
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
---pvezYHf7grwyp3Bc
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl1/qjQACgkQnKSrs4Gr
-c8hz2gf9EwjsM8w9vx1FBwHaBcLjqqoUcCzhZRS7r0Eoh6HCikKADY2fp85vW79f
-/5GLBDrCP/2ZSSU1jJa+B3FNpe1pagBD5Bypc+R4Tvw8kOnVakzlvgHOYVYzhenF
-GkzlGWhx5fPv/mOuwtnryKFZrNV+RXEqQNiH1OA05zHqWimuK2jIbyLT2O4ivu7K
-wAtNlVCctl85YXjcQmZOQXyGOtTcHddM2mNIgCENBXtX4b6E18YXLKtVh50jtJpm
-vFZ6r9Ai9E+xxC0VtvHqtI22lzz+RQ5wG/klULuptbUVIFdxBL12FdBbRCt/CtTm
-Qzqh9y1f3Ei3nNasN5NJG2qGKHiXWQ==
-=7+Dv
------END PGP SIGNATURE-----
-
---pvezYHf7grwyp3Bc--
+Paolo
 
