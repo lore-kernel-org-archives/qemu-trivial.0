@@ -1,27 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iAtCR-0004hr-Vb
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 05:58:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48407)
+	id 1iAtGr-0008Ti-G9
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 06:02:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48972)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iAtCO-0004cq-DI
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 05:58:05 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iAtGn-0008Mj-0Z
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:02:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iAtCN-0003JV-8b
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 05:58:04 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:40613)
+ (envelope-from <laurent@vivier.eu>) id 1iAtGl-0005up-8S
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:02:36 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:42061)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iAtCI-0003GD-KN; Thu, 19 Sep 2019 05:57:58 -0400
+ id 1iAtGg-0005sX-LF; Thu, 19 Sep 2019 06:02:30 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MKKd7-1iUuOF2pln-00Lpqk; Thu, 19 Sep 2019 11:57:52 +0200
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Peter Xu <peterx@redhat.com>, Max Reitz <mreitz@redhat.com>,
- Eric Blake <eblake@redhat.com>
-References: <20190903120555.7551-1-philmd@redhat.com>
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1M2OAi-1iDeQR3IBq-003xDq; Thu, 19 Sep 2019 12:02:25 +0200
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+References: <20190904052739.22123-1-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -66,37 +62,37 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <265d9140-9bfc-0acf-3201-ff5dff8d5340@vivier.eu>
-Date: Thu, 19 Sep 2019 11:57:49 +0200
+Message-ID: <525096b9-3be8-b768-bf3f-98b6ae707c2b@vivier.eu>
+Date: Thu, 19 Sep 2019 12:02:24 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190903120555.7551-1-philmd@redhat.com>
+In-Reply-To: <20190904052739.22123-1-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:C2KAe9luv/mrmrFAsx4kjVQIIPioeSiXsuO3EpZLuC0zltdBeoL
- 9VqUFp7Vi554nL0MJ1XKaXQufVBMg8LeZu7Bjf2hTHtbQTiYTw2F+nfgiy0xWnMPy03Auzh
- ksb633+LAvo57wgEqmuJ1Hw2Nlf3Pvv/zy4mlBeDGdtdIfe9e2elJ7FUovD9UdLGMh1QoQ3
- iDICdoimPent0lSgAhbmw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:hwxw3QqKmY4=:XwBHh4NbEFuAREdhqGrS2z
- CPRyG1+nopVPwyDcrrQ71VwNxH4lvMORUPxWHP64kPw1g+MXa1/vYoTorHjpZWtJfeGXpScm7
- yawWkcdkCIxHV6sU+iO2onf68jyXteM9CvfFWQNE1lK5/9Vs2b2yJ4Aio4Ewg2fpkMo8XwonG
- tBzwXHa4yblI5wXOm19Q/NauWDl/0CPDtYOhC2KrDrINyLt3U1nrw0iAzyTw/+qWQrMk7UFXo
- eQB75ZDAas0iIuP+MulHBSxtFyHyrIsJLywlyGFddiDxHGebE4UNwu+85v0NZikTtn9NFjxa0
- jqmoS+VQb9e+y3FStUeR8ZwUu03vunT1Mvfz2gWARglRsOeDwacToDRVDLMlRZPfSLv0LVda9
- MKvFmTXTdMBVDQXC8MwB1b/NgSLHnFdzdpKHAuPW4NSUTNmenHjJBzZlEfB+cIMd9sNKz/PYh
- ot3ELMugU2w4KEphsxBc3FQTYmotzQ/uCPPDN16/JsCVNYEwiDD3mCMtxz6YMBgBZtxzqZF5X
- +w1xYZ00dq9AnD6idZxBwWtJseQs/rySFXnejXenfgHGcQG1Tb86PLwE8RdTdVhB0FVYk9GMP
- Nt8J71nqa7Wb9MvHRj+UgAfVT16i4NJfTXpdJqUh2Sts19dcbTHuFtEvszANtpaP5+Gy3K+53
- IhniErRxK6HjcXSc/cj4XwvvzYrnWGCA6UzamCMmwTSvC+BaYJbXaVLXGCJVAuAzw4WF3cCUd
- qOZNw43dMNBH0DuJhZMRtPEraMxEgs+FAOqpErVoOWy03qznQZREpzhQ8871C8oS/Mdr2GPrW
- YC2kg0YH6jcS3BuQvi8lL418YuFUCZXe8Qq7gVHQp6A1EioTd/PAgk2ceT6d6OqGPjzkMkYKh
- lEWkdRGrK0kSGyDp79qXVUb/1G/6pdz6X3AmGR2UM=
+X-Provags-ID: V03:K1:owyqM2wD0aZIeujj7H5TrjFg69SEI5w4V2cHWCninWYB5PhqqLC
+ WUfz+201V2ndGL+FmUgtZ/pYxfxHuqnWfOt5+w2iALZpI+Fa4g66xqOOCglCNc2Bn1/XbOS
+ SoIANdEj0HZi+mYHSz33NHgwuKArNCUVI+Im+zHxgU2LzQVSZ/9L0tJ7OEN1/7v9sXOAZl4
+ R9a0CLKqyWrMriv/Y1b2Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:4a4ezcfjz88=:ui5MyhLeFu42NDrN9GjFcC
+ FjhH2MfR00/2bELGKhsRP9DFA8+ceI1+O5ciQEeevAe1zz2jr38DmG9KlwLYURUzMirGKL1nm
+ gWPQW/Wf2QyYEJ+06EBOJniPpLelzYW9sqfcxSoDD4KxaB4/9Fv5zKjvMQe6uMxv0MHXeA0i1
+ 0SR5L1ZGeMrI4nPmnO7TDzwT6F92GGN9KZ86ebVPmCy/ti0gnU0cLw8KWf4Kw5xGzTICutFbz
+ KlpC0iDJ6Hdr8hlDDHRIypaDVat1dM1CFXzim/HfcFrAbHzLDpJag5nZcrCwPWrb08GN+Nudn
+ c/8dpavPc1TBJ0bKY5qYJZdROFKKuUQN35d9dPJz4niHdnsfR8Utf5remKGzumlk0dITVxetx
+ UTtoCJNLi2vd0LnKimuU/LZf+jDRf34palACSLIccGuEXaZXwYfnc37fmeJvyHeYkUbo1CaJy
+ wXpovLja84emO5bkr9sROYxw41/CEbSTd199YVnnXmuKt98uf76zF7qxHPBZfS66jpYtkAE7y
+ fwgdL5EjSd1YNpLe/XjZO3Qyi6SCG+XhHXGzroC/isNtdvTOARebI7Iw4L6a5pkIirei25SKb
+ wAg2wrTxpY1jK1o4CU5MgqOs2dRBnr9rFieNgqkM1FaSWAUlN/vhulFqPI60bLqUGq+r5H/Zo
+ ep3tDbhVvdkMB+pZka267aWOGTJqU64VBj1CzfJdo3WwigehZNjLie2A/TqMvyNVRhaBD/5GY
+ 1LltRgbU1kKEKXl7oFl2rw8zY/xBk98krmRYrE+7ql9b02Hgz9amL1JjRu/TZjrBOIxLRwThn
+ x7w22xCJnKdJaq2P0YyAxwcxH1KIC1/Jm8ruzcNDvD2/MNMOpt6JBrbBB18gw5b8wo4Yx7djb
+ jzXodOk5PQh8ue8Dg9P8JMUDkdCVdnlX3VFkGQPi8=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
-Subject: Re: [Qemu-trivial] [PATCH] cutils: Move size_to_str() from
- "qemu-common.h" to "qemu/cutils.h"
+X-Received-From: 212.227.17.13
+Subject: Re: [Qemu-trivial] [PATCH] Replace '-machine accel=xyz' with
+ '-accel xyz'
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,77 +104,105 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Sep 2019 09:58:06 -0000
+X-List-Received-Date: Thu, 19 Sep 2019 10:02:39 -0000
 
-Le 03/09/2019 à 14:05, Philippe Mathieu-Daudé a écrit :
-> "qemu/cutils.h" contains various qemu_strtosz_*() functions
-> useful to convert strings to size. It seems natural to have
-> the opposite usage (from size to string) there too.
+Le 04/09/2019 à 07:27, Thomas Huth a écrit :
+> We've got a separate option to configure the accelerator nowadays, which
+> is shorter to type and the preferred way of specifying an accelerator.
+> Use it in the source and examples to show that it is the favored option.
+> (However, do not touch the places yet which also specify other machine
+> options or multiple accelerators - these are currently still better
+> handled with one single "-machine" statement instead)
 > 
-> The function definition is already in util/cutils.c.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
-> There are only 5 users, is it worthwhile renaming it qemu_sztostrt()?
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  block/qapi.c                 | 2 +-
->  include/qemu-common.h        | 1 -
->  include/qemu/cutils.h        | 2 ++
->  qapi/string-output-visitor.c | 2 +-
->  4 files changed, 4 insertions(+), 3 deletions(-)
+>  python/qemu/qtest.py                | 2 +-
+>  qemu-deprecated.texi                | 3 +--
+>  qemu-options.hx                     | 2 +-
+>  tests/libqtest.c                    | 2 +-
+>  tests/migration/guestperf/engine.py | 2 +-
+>  tests/qemu-iotests/172              | 2 +-
+>  6 files changed, 6 insertions(+), 7 deletions(-)
 > 
-> diff --git a/block/qapi.c b/block/qapi.c
-> index 15f1030264..7ee2ee065d 100644
-> --- a/block/qapi.c
-> +++ b/block/qapi.c
-> @@ -23,7 +23,7 @@
->   */
+> diff --git a/python/qemu/qtest.py b/python/qemu/qtest.py
+> index eebcc233ed..3f1d2cb325 100644
+> --- a/python/qemu/qtest.py
+> +++ b/python/qemu/qtest.py
+> @@ -96,7 +96,7 @@ class QEMUQtestMachine(QEMUMachine):
+>      def _base_args(self):
+>          args = super(QEMUQtestMachine, self)._base_args()
+>          args.extend(['-qtest', 'unix:path=' + self._qtest_path,
+> -                     '-machine', 'accel=qtest'])
+> +                     '-accel', 'qtest'])
+>          return args
 >  
->  #include "qemu/osdep.h"
-> -#include "qemu-common.h"
-> +#include "qemu/cutils.h"
->  #include "block/qapi.h"
->  #include "block/block_int.h"
->  #include "block/throttle-groups.h"
-> diff --git a/include/qemu-common.h b/include/qemu-common.h
-> index 0235cd3b91..8d84db90b0 100644
-> --- a/include/qemu-common.h
-> +++ b/include/qemu-common.h
-> @@ -123,7 +123,6 @@ void qemu_hexdump(const char *buf, FILE *fp, const char *prefix, size_t size);
->  int parse_debug_env(const char *name, int max, int initial);
+>      def _pre_launch(self):
+> diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
+> index 00a4b6f350..0982e41698 100644
+> --- a/qemu-deprecated.texi
+> +++ b/qemu-deprecated.texi
+> @@ -26,8 +26,7 @@ The @option{enforce-config-section} parameter is replaced by the
 >  
->  const char *qemu_ether_ntoa(const MACAddr *mac);
-> -char *size_to_str(uint64_t val);
->  void page_size_init(void);
+>  @subsection -no-kvm (since 1.3.0)
 >  
->  /* returns non-zero if dump is in progress, otherwise zero is
-> diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
-> index 12301340a4..b54c847e0f 100644
-> --- a/include/qemu/cutils.h
-> +++ b/include/qemu/cutils.h
-> @@ -155,6 +155,8 @@ int qemu_strtosz(const char *nptr, const char **end, uint64_t *result);
->  int qemu_strtosz_MiB(const char *nptr, const char **end, uint64_t *result);
->  int qemu_strtosz_metric(const char *nptr, const char **end, uint64_t *result);
+> -The ``-no-kvm'' argument is now a synonym for setting
+> -``-machine accel=tcg''.
+> +The ``-no-kvm'' argument is now a synonym for setting ``-accel tcg''.
 >  
-> +char *size_to_str(uint64_t val);
-> +
->  /* used to print char* safely */
->  #define STR_OR_NULL(str) ((str) ? (str) : "null")
+>  @subsection -usbdevice (since 2.10.0)
 >  
-> diff --git a/qapi/string-output-visitor.c b/qapi/string-output-visitor.c
-> index 7ab64468d9..0d93605d77 100644
-> --- a/qapi/string-output-visitor.c
-> +++ b/qapi/string-output-visitor.c
-> @@ -11,7 +11,7 @@
->   */
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 09e6439646..e0bba2abd1 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -4156,7 +4156,7 @@ STEXI
+>  Enable FIPS 140-2 compliance mode.
+>  ETEXI
 >  
->  #include "qemu/osdep.h"
-> -#include "qemu-common.h"
-> +#include "qemu/cutils.h"
->  #include "qapi/string-output-visitor.h"
->  #include "qapi/visitor-impl.h"
->  #include "qemu/host-utils.h"
+> -HXCOMM Deprecated by -machine accel=tcg property
+> +HXCOMM Deprecated by -accel tcg
+>  DEF("no-kvm", 0, QEMU_OPTION_no_kvm, "", QEMU_ARCH_I386)
+>  
+>  DEF("msg", HAS_ARG, QEMU_OPTION_msg,
+> diff --git a/tests/libqtest.c b/tests/libqtest.c
+> index 2713b86cf7..67e39c59e7 100644
+> --- a/tests/libqtest.c
+> +++ b/tests/libqtest.c
+> @@ -238,7 +238,7 @@ QTestState *qtest_init_without_qmp_handshake(const char *extra_args)
+>                                "-qtest-log %s "
+>                                "-chardev socket,path=%s,id=char0 "
+>                                "-mon chardev=char0,mode=control "
+> -                              "-machine accel=qtest "
+> +                              "-accel qtest "
+>                                "-display none "
+>                                "%s", qemu_binary, socket_path,
+>                                getenv("QTEST_LOG") ? "/dev/fd/2" : "/dev/null",
+> diff --git a/tests/migration/guestperf/engine.py b/tests/migration/guestperf/engine.py
+> index f13dbea800..1dd04ce33b 100644
+> --- a/tests/migration/guestperf/engine.py
+> +++ b/tests/migration/guestperf/engine.py
+> @@ -287,7 +287,7 @@ class Engine(object):
+>              cmdline = "'" + cmdline + "'"
+>  
+>          argv = [
+> -            "-machine", "accel=kvm",
+> +            "-accel", "kvm",
+>              "-cpu", "host",
+>              "-kernel", self._kernel,
+>              "-initrd", self._initrd,
+> diff --git a/tests/qemu-iotests/172 b/tests/qemu-iotests/172
+> index ba7dad9057..d67997e5f6 100755
+> --- a/tests/qemu-iotests/172
+> +++ b/tests/qemu-iotests/172
+> @@ -55,7 +55,7 @@ do_run_qemu()
+>              done
+>          fi
+>          echo quit
+> -    ) | $QEMU -machine accel=qtest -nographic -monitor stdio -serial none "$@"
+> +    ) | $QEMU -accel qtest -nographic -monitor stdio -serial none "$@"
+>      echo
+>  }
+>  
 > 
 
 Applied to my trivial-patches branch.
