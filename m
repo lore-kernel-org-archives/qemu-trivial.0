@@ -1,24 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iAtPG-00023X-FU
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 06:11:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50412)
+	id 1iAtQj-0003ep-Kk
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 06:12:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50616)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iAtP7-0001yF-GU
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:11:14 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iAtQg-0003XD-E7
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:12:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iAtP6-0001ov-C9
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:11:13 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:46587)
+ (envelope-from <laurent@vivier.eu>) id 1iAtQf-0002bZ-1S
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:12:50 -0400
+Received: from mout.kundenserver.de ([217.72.192.73]:33577)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iAtP6-0001mP-19; Thu, 19 Sep 2019 06:11:12 -0400
+ id 1iAtQe-0002a6-P6; Thu, 19 Sep 2019 06:12:48 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
  (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mqro7-1hom7H2MID-00moRK; Thu, 19 Sep 2019 12:10:58 +0200
-To: Greg Kurz <groug@kaod.org>, Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-devel@nongnu.org
-References: <156829664683.2070256.13400788010568373502.stgit@bahia.tls.ibm.com>
+ 1MVubb-1ic4xr2CY9-00RrlZ; Thu, 19 Sep 2019 12:12:42 +0200
+To: KONRAD Frederic <frederic.konrad@adacore.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+References: <1568296920-29939-1-git-send-email-frederic.konrad@adacore.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -63,37 +62,37 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <34c6e639-d3b4-734e-bd89-bb1d8eb098f4@vivier.eu>
-Date: Thu, 19 Sep 2019 12:10:52 +0200
+Message-ID: <54e5bbb1-1121-89cd-a190-4903fc555fa5@vivier.eu>
+Date: Thu, 19 Sep 2019 12:12:40 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <156829664683.2070256.13400788010568373502.stgit@bahia.tls.ibm.com>
+In-Reply-To: <1568296920-29939-1-git-send-email-frederic.konrad@adacore.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:eyJ1Rawxssvql5AajtQFRRvPa5E9FPciCoo0LRuuPeTEZsuu7k5
- eTzujRnIuhFEYydgKyIXxKxrabUzf/1w3R17X/eMkFpZA7r//fncgGKmM8kmC2KyqHCmL2/
- NqrMovxd9Jz31Y9jc11QMLdrvovrAESE3B/DKNL8gRICY2JZ+/72LPcB/l2qP+xg+prt21t
- 4xryzuo0WfIFW68nExWbg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:7CLH2JpjIo4=:0Xk8U9QU0ek33eAQaE/8Q4
- s27Xhhxv9pFPw4Fvxi3gtTscXY294m8tfuU8e4p9ym3NLP+mM6QxNGn1s/fGFSjZ6gP1vuQCd
- y0IDH0AbgY+ISXd/Ytl4J/tIdUBbPm7iF7Xzze1dUKImuQzblAidhqB4vKZsW/FznvOMyNQgS
- ULJREY1HQ1B9z3u+uk85tMGZAFarDILdqmAk3h5NNXK7Y1lPurMat5HftnUf/Ec+gfn1glMfG
- FfTN4gnlEkYh5TmiIlwv3Q2uOtExzx7oN2NOfKBymiGENQTS4DnUhog0Q+kJzctb0XiVVfLlX
- nHNapUdUlTNh+XSqro22m/irM3dgJteAhO4qTUtC0279UHv/3GCGiIcoi49KLupPBmtSfVVoJ
- YwO6reaDrMqwrDUstjEk3XllX5kI6x+M0S1h1hA6RGz1ZHMJmLDX/1WLGJIxGgjWtOI+mChMU
- lYyQ1B+YO/m6mFkoWAeAEe6wyHI65t6scXbWpeGucHMAtTI2ejqzFk30WaO4hTyVeruupmiBu
- ShgZ5RV7FufCbgWu3dKmbBMAQzEn/8crU+VUTORPoJSQKg0otOeAeWcc5cDOfa/hB+IQZmLPQ
- OIVpLKMkhP/aOEJZ176KQIIWPw3U2fDLvpRXwnFQH7UNxTAU+W5hlXTucbK52kpIOiXgSMFK0
- omk07Qr3JU20wWnIFmp9hIMhM3Z25pyvdMRncCCYLS6QaY751JR1Go3O7/99xu7vkchtYlku7
- IRoD9kjFc0yi68x4s1Ov0nHfOnjbIoi83KyMe+PCyUID6TPfrgdJxRsYWSgiJ2/aqhfIfVqfV
- jPUQSvTt6CMHBjFeZxyq8pupglek1hn7FA1KG2B61SIXzqJgVU1xW4VDGXwBLC/88va1eyCsx
- 8DHUEIkKO54FY7jPTsJ/1ei7vgdieqRNvbjU7IJAI=
+X-Provags-ID: V03:K1:VsWV4izfOzLAm3JZ3mnW7+D2bWs7kCxhgiWAC5GSezlVB0pQvQ4
+ 7dnrkz/9lwyk6Td7FT0DP3HL/MCksxKEOSslL+wLXhbiutArz1SB5m5Ei47zsRbnh8AtIUZ
+ 74pmGFjUewaDJL43H9mbnJWbYrMs/LNx418xnRRucTjx+9LUr0Ih2AVpdXpjqaD8T6EECwZ
+ 86b71Sb1bU0Zjq2tqosRw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Xs/y9TlzRP4=:T/XEEZWe0rQTb9ORFp3VLw
+ EdGJdN4l/lbtYnM9EezmdQvDy8azxMd4UlXte/5Af7PoSiMnzp6Iktg75p7Q+rZr+BJu/zFLP
+ kGjsqUGiUkleQXHvClyzFYlRjhZnmaXiE+RGYvC2jgwKayTimAt6L7e2bIVtZmc4FB3F7TkcQ
+ 1teFDeqrPghwrc7HWNmcRubhXhsdnQeXPGviAs+leEJ+1KrPOP6nNgbJNRMIuR18IZTYmJ3zJ
+ TWefvMvuJJLlKsLxTCeJHBA4Agle6oxSfUWbOqh17NFCOdolW8QD3Omv9FRODMk/pK1rL7K/n
+ 5Jj2KyMtKfJ4BnLMgj16zpMJkD/n958JqiK60ERIcS22o5muYqBDIty4gFEXvLtdi00RF9uk+
+ huzUj1piF9L0Oe/2z8deG6wJ/mdrc5/aE85no46cE20UDmyXDdgP4b3vwfA87VtobzsD4xOxn
+ dO1cMNlDOf9kFvacY4VgC5kCWoLG0DZ442jCKhT3UbAFJaFKsvDQVCQXTm0IOanRqwV6LJSr4
+ 3uHsvu2vX+tVTTjqzfXwzhL9J7plHCLefHSRx+q/xgcWYYr4lqsF/oMsBA/vDoewQAwfh8pPA
+ 1P32rgWZfyBWD0x4Hlp5N6Gc86ZgYYtEOK9Khz4ETlYBoJYEiqiE81TY1HFeXDTWTobnI37pm
+ x7dcLhI9gULuMRco+4AJvVA+BOXpCxnaNetIAZCaAKW1GdMEzX7nuht2BV52OAJnuPgOF4PFT
+ TIHfSUbBb+vVdmrlRc86rycJzGrbDBTAtzdC9h9FnNn508DL4P8blBi4+wYX3y7a1PEHdF2PF
+ 4jn0T9wuLZqoYh/odGFysmMsMenh5acpi4LBhAZApaiMpK7MibzLtJuBryhBXQ5pjJyLneSwH
+ g8qSWbkr86dA3BfSlWmZ/7iBhxXw2IrInYA7mikvM=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 217.72.192.73
-Subject: Re: [Qemu-trivial] [PATCH] kvm: Fix typo in header of
- kvm_device_access()
+Subject: Re: [Qemu-trivial] [PATCH] target/m68k/fpu_helper.c: rename the
+ access arguments
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,29 +104,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Sep 2019 10:11:16 -0000
+X-List-Received-Date: Thu, 19 Sep 2019 10:12:52 -0000
 
-Le 12/09/2019 à 15:57, Greg Kurz a écrit :
-> Signed-off-by: Greg Kurz <groug@kaod.org>
+Le 12/09/2019 à 16:02, KONRAD Frederic a écrit :
+> The "access" arguments clash with a macro under Windows with MinGW:
+>   CC      m68k-softmmu/target/m68k/fpu_helper.o
+>   target/m68k/fpu_helper.c: In function 'fmovem_predec':
+>   target/m68k/fpu_helper.c:405:56: error: macro "access" passed 4 arguments,
+>    but takes just 2
+>                size = access(env, addr, &env->fregs[i], ra);
+> 
+> So this renames them access_fn.
+> 
+> Tested with:
+>  ./configure --target-list=m68k-softmmu
+>  make -j8
+> 
+> Signed-off-by: KONRAD Frederic <frederic.konrad@adacore.com>
 > ---
->  include/sysemu/kvm.h |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  target/m68k/fpu_helper.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
 > 
-> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-> index 909bcd77cf82..fd674772ab31 100644
-> --- a/include/sysemu/kvm.h
-> +++ b/include/sysemu/kvm.h
-> @@ -308,7 +308,7 @@ int kvm_vm_check_attr(KVMState *s, uint32_t group, uint64_t attr);
->  int kvm_device_check_attr(int fd, uint32_t group, uint64_t attr);
+> diff --git a/target/m68k/fpu_helper.c b/target/m68k/fpu_helper.c
+> index 9b039c8..4137542 100644
+> --- a/target/m68k/fpu_helper.c
+> +++ b/target/m68k/fpu_helper.c
+> @@ -396,14 +396,14 @@ typedef int (*float_access)(CPUM68KState *env, uint32_t addr, FPReg *fp,
+>                              uintptr_t ra);
 >  
->  /**
-> - * kvm_device_access - set or get value of a specific vm attribute
-> + * kvm_device_access - set or get value of a specific device attribute
->   * @fd: The device file descriptor
->   * @group: the group
->   * @attr: the attribute of that group to set or get
-> 
+>  static uint32_t fmovem_predec(CPUM68KState *env, uint32_t addr, uint32_t mask,
+> -                               float_access access)
+> +                              float_access access_fn)
+>  {
+>      uintptr_t ra = GETPC();
+>      int i, size;
+>  
+>      for (i = 7; i >= 0; i--, mask <<= 1) {
+>          if (mask & 0x80) {
+> -            size = access(env, addr, &env->fregs[i], ra);
+> +            size = access_fn(env, addr, &env->fregs[i], ra);
+>              if ((mask & 0xff) != 0x80) {
+>                  addr -= size;
+>              }
+> @@ -414,14 +414,14 @@ static uint32_t fmovem_predec(CPUM68KState *env, uint32_t addr, uint32_t mask,
+>  }
+>  
+>  static uint32_t fmovem_postinc(CPUM68KState *env, uint32_t addr, uint32_t mask,
+> -                               float_access access)
+> +                               float_access access_fn)
+>  {
+>      uintptr_t ra = GETPC();
+>      int i, size;
+>  
+>      for (i = 0; i < 8; i++, mask <<= 1) {
+>          if (mask & 0x80) {
+> -            size = access(env, addr, &env->fregs[i], ra);
+> +            size = access_fn(env, addr, &env->fregs[i], ra);
+>              addr += size;
+>          }
+>      }
 > 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Applied to my trivial-patches branch.
+
+Thanks,
+Laurent
+
 
