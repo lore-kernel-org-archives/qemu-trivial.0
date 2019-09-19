@@ -1,103 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iAuxw-0005F9-Kx
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 07:51:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33426)
+	id 1iAwx3-0007TZ-9D
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 09:58:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51610)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iAuxt-00055K-HZ
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 07:51:14 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iAwx0-0007Cl-BX
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 09:58:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iAuuk-00060C-W7
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 07:47:59 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:41645)
+ (envelope-from <laurent@vivier.eu>) id 1iAwtd-0003lS-CT
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 09:54:58 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:36437)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iAuuj-0005zi-Ku; Thu, 19 Sep 2019 07:47:57 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mqal4-1hp2Q4196W-00mcJJ; Thu, 19 Sep 2019 13:47:44 +0200
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-trivial@nongnu.org, James Le Cuirot <chewi@gentoo.org>,
- qemu-devel@nongnu.org
-References: <20190914145155.19360-1-chewi@gentoo.org>
- <457c3a3c-d1b3-9f73-e156-24add1347e07@vivier.eu>
- <20190919083708.mwqjq6qzyemqlxpq@sirius.home.kraxel.org>
- <8dad2ef4-87ed-27ca-da22-a9ef4fa87cde@vivier.eu>
- <20190919110120.l7s4hvpqmcgqofhi@sirius.home.kraxel.org>
+ id 1iAwtc-0003jo-3z; Thu, 19 Sep 2019 09:54:56 -0400
+Received: from localhost.localdomain ([78.238.229.36]) by
+ mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
+ id 1N8nnU-1i75WL0mLW-015sVz; Thu, 19 Sep 2019 15:54:47 +0200
 From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <b9537aee-21dd-df30-b74e-b923a992318b@vivier.eu>
-Date: Thu, 19 Sep 2019 13:47:38 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>, Chen Zhang <tgfbeta@me.com>,
+ Li Qiang <liq3ea@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>
+Date: Thu, 19 Sep 2019 15:54:36 +0200
+Message-Id: <20190919135443.15164-2-laurent@vivier.eu>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190919135443.15164-1-laurent@vivier.eu>
+References: <20190919135443.15164-1-laurent@vivier.eu>
 MIME-Version: 1.0
-In-Reply-To: <20190919110120.l7s4hvpqmcgqofhi@sirius.home.kraxel.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:JruVSBsBHMkMYs7h0E7lLhAYUxRK+rPAafj85999Hl7p2l6MDOZ
- 5hRpJJH4+LGLzTPYhtnaRSzFZLCkQKKCEGdBb7Ca5Wd5E+8bI06NJGMaATR7JzJF4JABmp+
- edXZs6diifyW2JP9lp+NYy9gxdMaVmvPS+rV7nq/CFrwqxLQp838QHOSNFRlvhACCu9Xrvy
- ebwvko/OXwhAJG/G8XOUA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:7AnoYb9VvJI=:HnY4FaoJ3ImtcYbfbIP3gl
- 56QGso7DD+k8q5DVA8SWaNsb5bYIwhIsarjsy2PGFAsGKH4tXGGxBQ40T5iO18QPhn+y13kyR
- pD7rjgx3BiQ+6T6FY48xDnY0aAyFVpBD4Z4MoO50f/hobUlSIeSkQxsSbu/LRPjWZid2eQGWl
- 9g7oNtKWx5C1bjyG7tVh3KkZzluB6/qe1THtOpmQA8D3eFJS+lKp/MRBiFdnn3cgc7344mf/Y
- ++zYgVLyg5onZKOOwmoHD8kO91oV4NHXrsQprRFJtxgW2L0YOvLINABvASa0pmZmpsNTz6d/S
- JVWRYlxY1tXDzK9kQiNY6FYfGl4gX1Ro+lkLkJg0Q9LEO1Cx6Gc7DgQsgTXG7RVuU8TDTCcDs
- SBEm5YxVIr/iPJYdhop3ad9GMAc/47a18LBYg9gn3nZiGPbE0SGCtme+aGAZBbhqUe1m2afrZ
- 7ZZbkqrinzP1Z5A/6/nD/2XqKv/lzq2Y/jUZ/OU2MDJAjPOfUzb1a0PfaVedeb1G56GA2StHW
- vQnxA8FZKgQwdsCCZ7EwC7iThGgR12Ga9Gr/HOyWA9t8S2pSFv28CNKmL3CqpHXCHtiBNps/H
- AkRUAoxWoBuGCIq0cOsejqmcCAQYmXlC/WOOdh1NO/maK8s42y1yPrFiurJF8g/rLkwfBkz1z
- fN/USojjpR/pkAn0ZTqwMkpDCYLe5/AhqV+7af6jPvE9FsXueY1YuWkWxcw2obxGj5r5QB2bF
- oW9RxsNPJamZRmbk4WfW2GPqlHa9Mfa6fI1oWUTmEwut6BC5aetYQu2uDUTvK46pStXRdrDBm
- fllCrb2bd4Y73fuELAbVID9cRcPojXimZaP5HzOtJiRcVK+QUEJKSVL5N0IM98mEttxQjgiW2
- vFWiAiTlI0CZaQYGbEnBHalBTJ8NmP+luIlNs68fY=
+X-Provags-ID: V03:K1:LaU9Ntx8Wj5J6fYiZrKRMWlggqOfpZICtTyCp9Nnz0RauefgCEv
+ Ogdyb7Yz7AU5GK6pSjEFruzj2wbVRURwbRTXwfIa1RlW0yOUvlKOtoo+kwjOA9BA6LsCzgr
+ N1IgA90sS4zVNRXNvRGyU/hl43pp2LpdbCt0ITJz1M6RejfgY+cVe47SxoQqAyE6CMaFyyJ
+ Rvdv0JA5GJlymXV2YhADQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:X1vlgRN4UyM=:2e+Dtd8xPf5AY60rjUTU6e
+ /iO1upK5U38VY6htyEEEyUEQlCy4C6uKcd2nQZC2VNUG9Eku4EKu8Gj9kCdYPyU3WMt9KzQxo
+ pq3Bn4lHDLRoYwjGo2WnmiuoTzE3liJALMhR3PdZ74tgnC/55XyRov/eHwAWJLeMzLtsB1gNL
+ 1tIoLF0ksSpc6M42E0XkRUf/hx3sLMC4K1F/nPNPZb65M4QD5r1ndNPltX48diSAMpi2dDtm1
+ 0o7Yijl0z8t1F/qtKqBX/yIXAleais34LEzpM07LsmEdlMQf7B2O3g7kqCkwY5yxFMvSlfo+f
+ sR8iw2ZPOLR88yFl0ZDqeoz98EtLbECXaGHuR2vhTlKyYkMt+vdUI+34Zqb5l/THtjgqk1vqy
+ 0n39uNaJ+mfNibgoknPSpbkzm9onGQo6dlo+82mTa6BjG2a0k8R48vLPc/NlibBsRjf0CMZ5l
+ o5DK8JUWSjyaUt4so6XKbs7jGsfZ/PapzanLyGBtPIJk7cbJ4T9rEQb4KcDsK8RYrQIpk7azz
+ oNEaUTMm0ik1BzemjCuWULtBCuWkyzx4atDDAFzgn0XL17Fe99PvaRhmCCblCP2x7RhpyBPHM
+ L1jYEN7Jg3k1tBzq4V4klAbBixv4DBWUi07CRXnGncKepOiz7gAMWSz9IbfE3arm4q6bveZC1
+ IJbB1DwPjBSYhwxn3752A6P118pVjU6xuwXnTqGhwzO0Xj7ID7dsFgeES1ntYkw16dOujJmD1
+ qxWEim23dla9B5EnET89TYand+Zik40uQLQMe0kEVFkSjt4wsmK3NaRMQCHbYj6iGlShg+BnG
+ V6VkBjGgv5QtN7hxBgWAPcUpVlOjTVD4KXc9F7C9/0aQG+7fddEtz6rkL3MADyDRjXZxEO9JQ
+ im4GFMkBCfQIl6wUHenCp/GUEqhUeCnJN6AFQe0KM=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
-Subject: Re: [Qemu-trivial] [PATCH] configure: Add xkbcommon configure
- options
+X-Received-From: 212.227.17.24
+Subject: [Qemu-trivial] [PULL 1/8] vfio: fix a typo
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,62 +62,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Sep 2019 11:51:14 -0000
+X-List-Received-Date: Thu, 19 Sep 2019 13:58:27 -0000
 
-Le 19/09/2019 à 13:01, Gerd Hoffmann a écrit :
-> On Thu, Sep 19, 2019 at 12:16:43PM +0200, Laurent Vivier wrote:
->> Le 19/09/2019 à 10:37, Gerd Hoffmann a écrit :
->>> On Mon, Sep 16, 2019 at 10:15:15AM +0200, Laurent Vivier wrote:
->>>> Le 14/09/2019 à 16:51, James Le Cuirot a écrit :
->>>>> This dependency is currently "automagic", which is bad for distributions.
->>>>>
->>>>> Signed-off-by: James Le Cuirot <chewi@gentoo.org>
->>>>> ---
->>>>>  configure | 5 +++++
->>>>>  1 file changed, 5 insertions(+)
->>>>>
->>>>> diff --git a/configure b/configure
->>>>> index 30aad233d1..30544f52e6 100755
->>>>> --- a/configure
->>>>> +++ b/configure
->>>>> @@ -1521,6 +1521,10 @@ for opt do
->>>>>    ;;
->>>>>    --disable-libpmem) libpmem=no
->>>>>    ;;
->>>>> +  --enable-xkbcommon) xkbcommon=yes
->>>>> +  ;;
->>>>> +  --disable-xkbcommon) xkbcommon=no
->>>>> +  ;;
->>>>>    *)
->>>>>        echo "ERROR: unknown option $opt"
->>>>>        echo "Try '$0 --help' for more information"
->>>>> @@ -1804,6 +1808,7 @@ disabled with --disable-FEATURE, default is enabled if available:
->>>>>    capstone        capstone disassembler support
->>>>>    debug-mutex     mutex debugging support
->>>>>    libpmem         libpmem support
->>>>> +  xkbcommon       xkbcommon support
->>>>>  
->>>>>  NOTE: The object files are built at the place where configure is launched
->>>>>  EOF
->>>>>
->>>>
->>>> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
->>>>
->>>> cc: Gerd Hoffmann <kraxel@redhat.com>
->>>
->>> Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
->>>
->>
->> Gerd,
->>
->> do you take this through your ui branch or should I take through the
->> trivial patches branch?
-> 
-> Trivial branch is fine (have not picked this up b/c I saw qemu-trivial
-> on cc).
+From: Chen Zhang <tgfbeta@me.com>
 
-Applied to my trivial-patches branch.
+Signed-off-by: Chen Zhang <tgfbeta@me.com>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+Message-Id: <8E5A9C27-C76D-46CF-85B0-79121A00B05F@me.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ hw/vfio/pci.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Thanks,
-Laurent
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index dc3479c374e3..c5e6fe61cb3e 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -44,7 +44,7 @@
+ #define TYPE_VFIO_PCI "vfio-pci"
+ #define PCI_VFIO(obj)    OBJECT_CHECK(VFIOPCIDevice, obj, TYPE_VFIO_PCI)
+ 
+-#define TYPE_VIFO_PCI_NOHOTPLUG "vfio-pci-nohotplug"
++#define TYPE_VFIO_PCI_NOHOTPLUG "vfio-pci-nohotplug"
+ 
+ static void vfio_disable_interrupts(VFIOPCIDevice *vdev);
+ static void vfio_mmap_set_enabled(VFIOPCIDevice *vdev, bool enabled);
+@@ -3199,7 +3199,7 @@ static void vfio_pci_nohotplug_dev_class_init(ObjectClass *klass, void *data)
+ }
+ 
+ static const TypeInfo vfio_pci_nohotplug_dev_info = {
+-    .name = TYPE_VIFO_PCI_NOHOTPLUG,
++    .name = TYPE_VFIO_PCI_NOHOTPLUG,
+     .parent = TYPE_VFIO_PCI,
+     .instance_size = sizeof(VFIOPCIDevice),
+     .class_init = vfio_pci_nohotplug_dev_class_init,
+-- 
+2.21.0
+
 
