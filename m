@@ -1,50 +1,102 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iArwI-0005WS-C9
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 04:37:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36079)
+	id 1iAtCR-0004hr-Vb
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 05:58:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48407)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kraxel@redhat.com>) id 1iArwC-0005Sq-QB
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 04:37:18 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iAtCO-0004cq-DI
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 05:58:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kraxel@redhat.com>) id 1iArwA-0000QW-T6
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 04:37:16 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39822)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kraxel@redhat.com>)
- id 1iArw6-0000PR-Rw; Thu, 19 Sep 2019 04:37:10 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B112E81DF7;
- Thu, 19 Sep 2019 08:37:09 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-116-47.ams2.redhat.com
- [10.36.116.47])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6990A60A9F;
- Thu, 19 Sep 2019 08:37:09 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id BB7071FCC0; Thu, 19 Sep 2019 10:37:08 +0200 (CEST)
-Date: Thu, 19 Sep 2019 10:37:08 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: James Le Cuirot <chewi@gentoo.org>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Message-ID: <20190919083708.mwqjq6qzyemqlxpq@sirius.home.kraxel.org>
-References: <20190914145155.19360-1-chewi@gentoo.org>
- <457c3a3c-d1b3-9f73-e156-24add1347e07@vivier.eu>
+ (envelope-from <laurent@vivier.eu>) id 1iAtCN-0003JV-8b
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 05:58:04 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:40613)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1iAtCI-0003GD-KN; Thu, 19 Sep 2019 05:57:58 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MKKd7-1iUuOF2pln-00Lpqk; Thu, 19 Sep 2019 11:57:52 +0200
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Peter Xu <peterx@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ Eric Blake <eblake@redhat.com>
+References: <20190903120555.7551-1-philmd@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Openpgp: preference=signencrypt
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
+ WoeuLWDmXE7A3oJoIsRecD6BXHTb0OYS20lS608anr3B0xn5g0BX7es9Mw+hV/pL+63EOCVm
+ SUVTEQwbGQN62guOKnJJJfphbbv82glIC/Ei4Ky8BwZkUuXd7d5NFJKC9/GDrbWdj75cDNQx
+ UZ9XXbXEKY9MHX83Uy7JFoiFDMOVHn55HnncflUncO0zDzY7CxFeQFwYRbsCXOUL9yBtqLer
+ Ky8/yjBskIlNrp0uQSt9LMoMsdSjYLYhvk1StsNPg74+s4u0Q6z45+l8RAsgLw5OLtTa+ePM
+ JyS7OIGNYxAX6eZk1+91a6tnqfyPcMbduxyBaYXn94HUG162BeuyBkbNoIDkB7pCByed1A7q
+ q9/FbuTDwgVGVLYthYSfTtN0Y60OgNkWCMtFwKxRaXt1WFA5ceqinN/XkgA+vf2Ch72zBkJL
+ RBIhfOPFv5f2Hkkj0MvsUXpOWaOjatiu0fpPo6Hw14UEpywke1zN4NKubApQOlNKZZC4hu6/
+ 8pv2t4HRi7s0K88jQYBRPObjrN5+owtI51xMaYzvPitHQ2053LmgsOdN9EKOqZeHAYG2SmRW
+ LOxYWKX14YkZI5j/TXfKlTpwSMvXho+efN4kgFvFmP6WT+tPnwARAQABtCJMYXVyZW50IFZp
+ dmllciA8bGF1cmVudEB2aXZpZXIuZXU+iQI4BBMBAgAiBQJWBTDeAhsDBgsJCAcDAgYVCAIJ
+ CgsEFgIDAQIeAQIXgAAKCRDzDDi9Py++PCEdD/oD8LD5UWxhQrMQCsUgLlXCSM7sxGLkwmmF
+ ozqSSljEGRhffxZvO35wMFcdX9Z0QOabVoFTKrT04YmvbjsErh/dP5zeM/4EhUByeOS7s6Yl
+ HubMXVQTkak9Wa9Eq6irYC6L41QNzz/oTwNEqL1weV1+XC3TNnht9B76lIaELyrJvRfgsp9M
+ rE+PzGPo5h7QHWdL/Cmu8yOtPLa8Y6l/ywEJ040IoiAUfzRoaJs2csMXf0eU6gVBhCJ4bs91
+ jtWTXhkzdl4tdV+NOwj3j0ukPy+RjqeL2Ej+bomnPTOW8nAZ32dapmu7Fj7VApuQO/BSIHyO
+ NkowMMjB46yohEepJaJZkcgseaus0x960c4ua/SUm/Nm6vioRsxyUmWd2nG0m089pp8LPopq
+ WfAk1l4GciiMepp1Cxn7cnn1kmG6fhzedXZ/8FzsKjvx/aVeZwoEmucA42uGJ3Vk9TiVdZes
+ lqMITkHqDIpHjC79xzlWkXOsDbA2UY/P18AtgJEZQPXbcrRBtdSifCuXdDfHvI+3exIdTpvj
+ BfbgZAar8x+lcsQBugvktlQWPfAXZu4Shobi3/mDYMEDOE92dnNRD2ChNXg2IuvAL4OW40wh
+ gXlkHC1ZgToNGoYVvGcZFug1NI+vCeCFchX+L3bXyLMg3rAfWMFPAZLzn42plIDMsBs+x2yP
+ +bkCDQRWBSYZARAAvFJBFuX9A6eayxUPFaEczlMbGXugs0mazbOYGlyaWsiyfyc3PStHLFPj
+ rSTaeJpPCjBJErwpZUN4BbpkBpaJiMuVO6egrC8Xy8/cnJakHPR2JPEvmj7Gm/L9DphTcE15
+ 92rxXLesWzGBbuYxKsj8LEnrrvLyi3kNW6B5LY3Id+ZmU8YTQ2zLuGV5tLiWKKxc6s3eMXNq
+ wrJTCzdVd6ThXrmUfAHbcFXOycUyf9vD+s+WKpcZzCXwKgm7x1LKsJx3UhuzT8ier1L363RW
+ ZaJBZ9CTPiu8R5NCSn9V+BnrP3wlFbtLqXp6imGhazT9nJF86b5BVKpF8Vl3F0/Y+UZ4gUwL
+ d9cmDKBcmQU/JaRUSWvvolNu1IewZZu3rFSVgcpdaj7F/1aC0t5vLdx9KQRyEAKvEOtCmP4m
+ 38kU/6r33t3JuTJnkigda4+Sfu5kYGsogeYG6dNyjX5wpK5GJIJikEhdkwcLM+BUOOTi+I9u
+ tX03BGSZo7FW/J7S9y0l5a8nooDs2gBRGmUgYKqQJHCDQyYut+hmcr+BGpUn9/pp2FTWijrP
+ inb/Pc96YDQLQA1q2AeAFv3Rx3XoBTGl0RCY4KZ02c0kX/dm3eKfMX40XMegzlXCrqtzUk+N
+ 8LeipEsnOoAQcEONAWWo1HcgUIgCjhJhBEF0AcELOQzitbJGG5UAEQEAAYkCHwQYAQIACQUC
+ VgUmGQIbDAAKCRDzDDi9Py++PCD3D/9VCtydWDdOyMTJvEMRQGbx0GacqpydMEWbE3kUW0ha
+ US5jz5gyJZHKR3wuf1En/3z+CEAEfP1M3xNGjZvpaKZXrgWaVWfXtGLoWAVTfE231NMQKGoB
+ w2Dzx5ivIqxikXB6AanBSVpRpoaHWb06tPNxDL6SVV9lZpUn03DSR6gZEZvyPheNWkvz7bE6
+ FcqszV/PNvwm0C5Ju7NlJA8PBAQjkIorGnvN/vonbVh5GsRbhYPOc/JVwNNr63P76rZL8Gk/
+ hb3xtcIEi5CCzab45+URG/lzc6OV2nTj9Lg0SNcRhFZ2ILE3txrmI+aXmAu26+EkxLLfqCVT
+ ohb2SffQha5KgGlOSBXustQSGH0yzzZVZb+HZPEvx6d/HjQ+t9sO1bCpEgPdZjyMuuMp9N1H
+ ctbwGdQM2Qb5zgXO+8ZSzwC+6rHHIdtcB8PH2j+Nd88dVGYlWFKZ36ELeZxD7iJflsE8E8yg
+ OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
+ JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
+ ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
+Message-ID: <265d9140-9bfc-0acf-3201-ff5dff8d5340@vivier.eu>
+Date: Thu, 19 Sep 2019 11:57:49 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <457c3a3c-d1b3-9f73-e156-24add1347e07@vivier.eu>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.25]); Thu, 19 Sep 2019 08:37:09 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20190903120555.7551-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:C2KAe9luv/mrmrFAsx4kjVQIIPioeSiXsuO3EpZLuC0zltdBeoL
+ 9VqUFp7Vi554nL0MJ1XKaXQufVBMg8LeZu7Bjf2hTHtbQTiYTw2F+nfgiy0xWnMPy03Auzh
+ ksb633+LAvo57wgEqmuJ1Hw2Nlf3Pvv/zy4mlBeDGdtdIfe9e2elJ7FUovD9UdLGMh1QoQ3
+ iDICdoimPent0lSgAhbmw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:hwxw3QqKmY4=:XwBHh4NbEFuAREdhqGrS2z
+ CPRyG1+nopVPwyDcrrQ71VwNxH4lvMORUPxWHP64kPw1g+MXa1/vYoTorHjpZWtJfeGXpScm7
+ yawWkcdkCIxHV6sU+iO2onf68jyXteM9CvfFWQNE1lK5/9Vs2b2yJ4Aio4Ewg2fpkMo8XwonG
+ tBzwXHa4yblI5wXOm19Q/NauWDl/0CPDtYOhC2KrDrINyLt3U1nrw0iAzyTw/+qWQrMk7UFXo
+ eQB75ZDAas0iIuP+MulHBSxtFyHyrIsJLywlyGFddiDxHGebE4UNwu+85v0NZikTtn9NFjxa0
+ jqmoS+VQb9e+y3FStUeR8ZwUu03vunT1Mvfz2gWARglRsOeDwacToDRVDLMlRZPfSLv0LVda9
+ MKvFmTXTdMBVDQXC8MwB1b/NgSLHnFdzdpKHAuPW4NSUTNmenHjJBzZlEfB+cIMd9sNKz/PYh
+ ot3ELMugU2w4KEphsxBc3FQTYmotzQ/uCPPDN16/JsCVNYEwiDD3mCMtxz6YMBgBZtxzqZF5X
+ +w1xYZ00dq9AnD6idZxBwWtJseQs/rySFXnejXenfgHGcQG1Tb86PLwE8RdTdVhB0FVYk9GMP
+ Nt8J71nqa7Wb9MvHRj+UgAfVT16i4NJfTXpdJqUh2Sts19dcbTHuFtEvszANtpaP5+Gy3K+53
+ IhniErRxK6HjcXSc/cj4XwvvzYrnWGCA6UzamCMmwTSvC+BaYJbXaVLXGCJVAuAzw4WF3cCUd
+ qOZNw43dMNBH0DuJhZMRtPEraMxEgs+FAOqpErVoOWy03qznQZREpzhQ8871C8oS/Mdr2GPrW
+ YC2kg0YH6jcS3BuQvi8lL418YuFUCZXe8Qq7gVHQp6A1EioTd/PAgk2ceT6d6OqGPjzkMkYKh
+ lEWkdRGrK0kSGyDp79qXVUb/1G/6pdz6X3AmGR2UM=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-trivial] [PATCH] configure: Add xkbcommon configure
- options
+X-Received-From: 212.227.17.24
+Subject: Re: [Qemu-trivial] [PATCH] cutils: Move size_to_str() from
+ "qemu-common.h" to "qemu/cutils.h"
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -56,48 +108,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Sep 2019 08:37:18 -0000
+X-List-Received-Date: Thu, 19 Sep 2019 09:58:06 -0000
 
-On Mon, Sep 16, 2019 at 10:15:15AM +0200, Laurent Vivier wrote:
-> Le 14/09/2019 =E0 16:51, James Le Cuirot a =E9crit=A0:
-> > This dependency is currently "automagic", which is bad for distributi=
-ons.
-> >=20
-> > Signed-off-by: James Le Cuirot <chewi@gentoo.org>
-> > ---
-> >  configure | 5 +++++
-> >  1 file changed, 5 insertions(+)
-> >=20
-> > diff --git a/configure b/configure
-> > index 30aad233d1..30544f52e6 100755
-> > --- a/configure
-> > +++ b/configure
-> > @@ -1521,6 +1521,10 @@ for opt do
-> >    ;;
-> >    --disable-libpmem) libpmem=3Dno
-> >    ;;
-> > +  --enable-xkbcommon) xkbcommon=3Dyes
-> > +  ;;
-> > +  --disable-xkbcommon) xkbcommon=3Dno
-> > +  ;;
-> >    *)
-> >        echo "ERROR: unknown option $opt"
-> >        echo "Try '$0 --help' for more information"
-> > @@ -1804,6 +1808,7 @@ disabled with --disable-FEATURE, default is ena=
-bled if available:
-> >    capstone        capstone disassembler support
-> >    debug-mutex     mutex debugging support
-> >    libpmem         libpmem support
-> > +  xkbcommon       xkbcommon support
-> > =20
-> >  NOTE: The object files are built at the place where configure is lau=
-nched
-> >  EOF
-> >=20
->=20
-> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
->=20
-> cc: Gerd Hoffmann <kraxel@redhat.com>
+Le 03/09/2019 à 14:05, Philippe Mathieu-Daudé a écrit :
+> "qemu/cutils.h" contains various qemu_strtosz_*() functions
+> useful to convert strings to size. It seems natural to have
+> the opposite usage (from size to string) there too.
+> 
+> The function definition is already in util/cutils.c.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+> There are only 5 users, is it worthwhile renaming it qemu_sztostrt()?
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  block/qapi.c                 | 2 +-
+>  include/qemu-common.h        | 1 -
+>  include/qemu/cutils.h        | 2 ++
+>  qapi/string-output-visitor.c | 2 +-
+>  4 files changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/block/qapi.c b/block/qapi.c
+> index 15f1030264..7ee2ee065d 100644
+> --- a/block/qapi.c
+> +++ b/block/qapi.c
+> @@ -23,7 +23,7 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> -#include "qemu-common.h"
+> +#include "qemu/cutils.h"
+>  #include "block/qapi.h"
+>  #include "block/block_int.h"
+>  #include "block/throttle-groups.h"
+> diff --git a/include/qemu-common.h b/include/qemu-common.h
+> index 0235cd3b91..8d84db90b0 100644
+> --- a/include/qemu-common.h
+> +++ b/include/qemu-common.h
+> @@ -123,7 +123,6 @@ void qemu_hexdump(const char *buf, FILE *fp, const char *prefix, size_t size);
+>  int parse_debug_env(const char *name, int max, int initial);
+>  
+>  const char *qemu_ether_ntoa(const MACAddr *mac);
+> -char *size_to_str(uint64_t val);
+>  void page_size_init(void);
+>  
+>  /* returns non-zero if dump is in progress, otherwise zero is
+> diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
+> index 12301340a4..b54c847e0f 100644
+> --- a/include/qemu/cutils.h
+> +++ b/include/qemu/cutils.h
+> @@ -155,6 +155,8 @@ int qemu_strtosz(const char *nptr, const char **end, uint64_t *result);
+>  int qemu_strtosz_MiB(const char *nptr, const char **end, uint64_t *result);
+>  int qemu_strtosz_metric(const char *nptr, const char **end, uint64_t *result);
+>  
+> +char *size_to_str(uint64_t val);
+> +
+>  /* used to print char* safely */
+>  #define STR_OR_NULL(str) ((str) ? (str) : "null")
+>  
+> diff --git a/qapi/string-output-visitor.c b/qapi/string-output-visitor.c
+> index 7ab64468d9..0d93605d77 100644
+> --- a/qapi/string-output-visitor.c
+> +++ b/qapi/string-output-visitor.c
+> @@ -11,7 +11,7 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> -#include "qemu-common.h"
+> +#include "qemu/cutils.h"
+>  #include "qapi/string-output-visitor.h"
+>  #include "qapi/visitor-impl.h"
+>  #include "qemu/host-utils.h"
+> 
 
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+Applied to my trivial-patches branch.
+
+Thanks,
+Laurent
 
