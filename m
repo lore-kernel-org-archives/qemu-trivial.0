@@ -1,25 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iAtSQ-0004vy-M3
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 06:14:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50823)
+	id 1iAtUi-0006wj-9T
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 06:17:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51200)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iAtSM-0004pW-Nu
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:14:35 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iAtUe-0006t2-K5
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:16:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iAtSL-0003x5-Ps
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:14:34 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:34327)
+ (envelope-from <laurent@vivier.eu>) id 1iAtUd-00058F-Ej
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:16:56 -0400
+Received: from mout.kundenserver.de ([212.227.17.10]:57305)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iAtSJ-0003ux-Ap; Thu, 19 Sep 2019 06:14:31 -0400
+ id 1iAtUd-00057w-61; Thu, 19 Sep 2019 06:16:55 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MDhpZ-1iK00b2YB5-00Ajxt; Thu, 19 Sep 2019 12:14:26 +0200
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Thomas Huth <thuth@redhat.com>
-References: <20190912184607.3507-1-eblake@redhat.com>
- <f604ebfe-0157-81df-a948-18bf9589d880@redhat.com>
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MhUHt-1hfOMY3M1L-00egsx; Thu, 19 Sep 2019 12:16:45 +0200
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-trivial@nongnu.org, James Le Cuirot <chewi@gentoo.org>,
+ qemu-devel@nongnu.org
+References: <20190914145155.19360-1-chewi@gentoo.org>
+ <457c3a3c-d1b3-9f73-e156-24add1347e07@vivier.eu>
+ <20190919083708.mwqjq6qzyemqlxpq@sirius.home.kraxel.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -64,37 +65,37 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <bd495385-af3b-d462-645d-1ef135925128@vivier.eu>
-Date: Thu, 19 Sep 2019 12:14:24 +0200
+Message-ID: <8dad2ef4-87ed-27ca-da22-a9ef4fa87cde@vivier.eu>
+Date: Thu, 19 Sep 2019 12:16:43 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <f604ebfe-0157-81df-a948-18bf9589d880@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="fRBE7v7YkaceEjaWdcL9gwcbO2VKZVJBD"
-X-Provags-ID: V03:K1:aZvWtRfTtWjVnu5sUzgqpy0+HY4+AtSFt9WlkCsq0dynNfDR0PX
- 6tUyrVHapy5R6fSCJYqVJjXa+53s4Kr4gM+VYmApuqeF87vD+7gm+jLOQNCmfveRrBqPyMS
- LooQhhlGjfatyMcWbR5vqpLOCp3bId2KrIXWZ1Jx3Y3wQCfskY0rReRa5AVyxYVS+NcJgtj
- sXn56wDsusrqTPxf248LQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:fIqW/NpUdX4=:tVUQBc4kZLFio+5wRRxobv
- 5rFpZcVCKy1XBvFRzFiL7IbHEXmcDxdFl9D6NcZaTFWoZJQx9rU+clsXZpU6XPY1YXgtLnZu2
- pmsmQ6p1uZX4pX0csj+G3C8jkUZQLmomaTyqld1pDCNf/39GF75xLgRWwuZK0u4aelAnjlRBc
- AaLL1CQ3n+/UwE75k8C9VnrZLbaA/wK4Eh7owv26Bb3mxLtfcHeUp3kl6VvC+0WXaU4L57mly
- QRKVO0/B29nsFo+97xq++PSwca8eRAnHEKphJXN/HoVsCly6q8pfjYadlfpTN0hn1fbTIyMY/
- 1fyqjE2Uye2CkgKuW1FW4fY/9uozYrUnpnBkr/NMtKVGksoi3/UZtf6pMQq1wISoQHLvmOHpm
- d/tB/PEXqbV60yypJ8ZCATi4QYXjsPPFKdx4D0X6edzMqnxyHQdaeyUvP9mobPedAAyr+aHgs
- wc2HirOCLHCjgInOT0mZDJmQKQXhqwHu+Q4GByciHt/qIBVMNOzBvY8TKI/Z7SGosyapJmWvT
- yPmzk2mJBLAQ4DLOkX3W8u/fwjnBSayPu7GGCvEP2Y1T4NBGJD+BdigHTQn+NZsS/cpTPRlW/
- 3M4E7EFLburkc8h+/Pk2rmbTyGyz6jSXps/56mgN+7fJy8eGcvruLLG+dE1K4I7Hz4wCCFaSK
- mnEVIaV8iaQS7qQGN8lcV3Hb8NmiKwuQHH6Hswu+tHEhP+cghGilJB8CZnyhJ8USZygf9lGVu
- iSMaZZeJ46Nd03mdFOGwGzjoCabiRYgJdi5UCQUXkVE9YaZJFd9jKupFzV1UH2BN3i/w7KiQS
- QtRFT7B14k9Pj9SILRPbr34Izp9rzF59Bgt7Nyppt7PIx3RA8fHTyVswUnQJWxXmDoWPMZ8WY
- 1xMALR7oj2kneE/dEHAw==
+In-Reply-To: <20190919083708.mwqjq6qzyemqlxpq@sirius.home.kraxel.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:XlEZBwdXFBaFc5nCniATF0QI6DP4LKIUiVCmNzs+kCqi9m0X++u
+ NYbw/hB14EHikwB/Fvf4FowCA2ay5WaJFTTU16Log7iDmkm9esHgC8c6Rq/fHrbySpyxJKc
+ l1mMFRgNBBObJWzrZisWiXWZQNuXKWLculm9JQbn36SupElkx9jsZyoDxca+2O1pJQYv4vr
+ VBol+PrvOzlWdTOhu8GpQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:DNR4n1OFd64=:IuOZpARHYq/kihz0v0HB8F
+ lqA4DqmzT1Ik3AikHI6jnSFIfpKgk8L+rvr7pE3DMVTLSHE8WlMKRAxqUUyAy4rhWOR+uhO7O
+ 5Ck7cFMklOnpGejlc9LybPJWXXnSJ19g18NL+l/nAb8x+VrRvD6kBxMBTJ5wa9nRU/jGL8LsS
+ qwPDadoVV04ZK3A0HdPzrXDHhDs3x5gNl5G7SIzmSAa8okmdWpquRArEE2v1BqE+wnOO7mJG1
+ fptgBFDTx6KEDY3z4uxTqAX0bbnytdMOreGe9hc1wfKx+8aafNqIxRhxQzoQWf3Te+aLUHUa3
+ 0G9ojDVcrqFzw50SIWbaAOI46z0MBdk2dEEexdMh/lfq429EC5ZF8NY1ARwEL8tKZr3d3A0XQ
+ LsccC1M/PJH/6J5T4TSZckacnB39wM/xDll743U70dyHKz9lRITTWHVpKtJ2q5huxvqXV4G8/
+ z8YUkJmfoKyVtTUu0DzZIFaofK+evzduj7KvacIb20rbCr6lnI3Z/L6ceIyW8Z4du4hXoVYX0
+ Cev2nIceweNYk/KElGJr+eTuSINab4GTTStAHVwwDuAr2kg0Wc811NrZlZVDJz/zRRpdGIjtD
+ 5qKy+U2bso+c7fvGYzfCTEKtFmhMXjeZFlO4Y4hA1SDkchg+cF9qiB8IvduxXxwoDvEYim1XU
+ htrvz+n5MLYbKZA9IIAZsFV2qeeskZHmTVU0K88mVqNA5K6N316DQGVRCweN8GFts5os8hB+P
+ Zs492qTTcmZzrnRQ6/qZbVZnnuGA7lwUdlETa1oklfBl0DxSeGDb+UYYi6LHOlWOCBZr4biTR
+ GW3rnXNOfmtZHd39RDNs5LLPAkySP5rYuOfGLT/xgBLY29cEa9vy6OhFabFab/BqGcuOQEpiA
+ U+b+7BjaAJbAVe38MQ/zjj6t4Wveh3x2Lov691RFk=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
-Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] build: Don't ignore
- qapi-visit-core.c
+X-Received-From: 212.227.17.10
+Subject: Re: [Qemu-trivial] [PATCH] configure: Add xkbcommon configure
+ options
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,85 +107,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Sep 2019 10:14:37 -0000
+X-List-Received-Date: Thu, 19 Sep 2019 10:16:58 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---fRBE7v7YkaceEjaWdcL9gwcbO2VKZVJBD
-Content-Type: multipart/mixed; boundary="paEE7yzaQE536hNXbUeQZkQrJUsN17Upf";
- protected-headers="v1"
-From: Laurent Vivier <laurent@vivier.eu>
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Thomas Huth <thuth@redhat.com>
-Message-ID: <bd495385-af3b-d462-645d-1ef135925128@vivier.eu>
-Subject: Re: [Qemu-devel] [PATCH] build: Don't ignore qapi-visit-core.c
-References: <20190912184607.3507-1-eblake@redhat.com>
- <f604ebfe-0157-81df-a948-18bf9589d880@redhat.com>
-In-Reply-To: <f604ebfe-0157-81df-a948-18bf9589d880@redhat.com>
-
---paEE7yzaQE536hNXbUeQZkQrJUsN17Upf
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-Le 13/09/2019 =C3=A0 13:34, Eric Blake a =C3=A9crit=C2=A0:
-> cc: qemu-trivial
->=20
-> On 9/12/19 1:46 PM, Eric Blake wrote:
->> This file is version-controlled, and not generated from a .json file.
+Le 19/09/2019 à 10:37, Gerd Hoffmann a écrit :
+> On Mon, Sep 16, 2019 at 10:15:15AM +0200, Laurent Vivier wrote:
+>> Le 14/09/2019 à 16:51, James Le Cuirot a écrit :
+>>> This dependency is currently "automagic", which is bad for distributions.
+>>>
+>>> Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+>>> ---
+>>>  configure | 5 +++++
+>>>  1 file changed, 5 insertions(+)
+>>>
+>>> diff --git a/configure b/configure
+>>> index 30aad233d1..30544f52e6 100755
+>>> --- a/configure
+>>> +++ b/configure
+>>> @@ -1521,6 +1521,10 @@ for opt do
+>>>    ;;
+>>>    --disable-libpmem) libpmem=no
+>>>    ;;
+>>> +  --enable-xkbcommon) xkbcommon=yes
+>>> +  ;;
+>>> +  --disable-xkbcommon) xkbcommon=no
+>>> +  ;;
+>>>    *)
+>>>        echo "ERROR: unknown option $opt"
+>>>        echo "Try '$0 --help' for more information"
+>>> @@ -1804,6 +1808,7 @@ disabled with --disable-FEATURE, default is enabled if available:
+>>>    capstone        capstone disassembler support
+>>>    debug-mutex     mutex debugging support
+>>>    libpmem         libpmem support
+>>> +  xkbcommon       xkbcommon support
+>>>  
+>>>  NOTE: The object files are built at the place where configure is launched
+>>>  EOF
+>>>
 >>
->> Fixes: bf582c3461b
->> Reported-by: Thomas Huth <thuth@redhat.com>
->> Signed-off-by: Eric Blake <eblake@redhat.com>
->> ---
->>  .gitignore | 1 +
->>  1 file changed, 1 insertion(+)
+>> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 >>
->> diff --git a/.gitignore b/.gitignore
->> index e9bbc006d39e..7de868d1eab4 100644
->> --- a/.gitignore
->> +++ b/.gitignore
->> @@ -41,6 +41,7 @@
->>  /qapi/qapi-types-*.[ch]
->>  /qapi/qapi-types.[ch]
->>  /qapi/qapi-visit-*.[ch]
->> +!/qapi/qapi-visit-core.c
->>  /qapi/qapi-visit.[ch]
->>  /qapi/qapi-doc.texi
->>  /qemu-doc.html
->>
->=20
+>> cc: Gerd Hoffmann <kraxel@redhat.com>
+> 
+> Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+> 
 
-Applied to my trivial-patches branch.
+Gerd,
+
+do you take this through your ui branch or should I take through the
+trivial patches branch?
 
 Thanks,
 Laurent
-
-
-
---paEE7yzaQE536hNXbUeQZkQrJUsN17Upf--
-
---fRBE7v7YkaceEjaWdcL9gwcbO2VKZVJBD
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEzS913cjjpNwuT1Fz8ww4vT8vvjwFAl2DVQAACgkQ8ww4vT8v
-vjwi2BAAnfyF2IdCjtu458veAZg+E446Fi9TvC+rMtQ5PiP6wygt4LWr7FQjrNcm
-FMhdTwR3gLzOsBJkJDCxpRpT/mtuDEczSdZ/T0Fpp5dTK+kSRBkqdve4qIlaUy2e
-7c7MK5n0LCC/QdKpKy2a81s9ghd4/+Z0TCu+853mWl5s2EokXsjIMZzp/SG2LGHQ
-9pjAQFXykgwPuJ5EALMH5qht73yi0dwW3tLZRhJTy+kN4Hy3VNGJkcIEXDqUoiOH
-HaAJkarHcPmIlEZPwUcrM10nj6YlGxApXeZDeFIvI2Zd5APgRiCjKUsWk+NoajDA
-FcZqrL43T3/biTCUd/ivZ4EE5rWdb8s7+QtDrspqeNo6SKlsYtjJ2Ht7p0dR63Ao
-Vbsm3Nf0nIhVjsTYxvpNVwVYsITJRLuTG1xsy9G8fEL97zWR/vVjv7t6f/y3ohqB
-4P103arU3lwYiNexbW+Eaa0EvUIemhu+d52ToTizwyo7KYCenaYiZ+Nusb8HNFm/
-Tc9ZlVUvk8HjzTYYQUvhxaPCOUyQ9f65+Kbdu3ZVfq769kAHdEQw93eKASPRPTLP
-NEsVev+rcyxguyLT9TlNQbyWEV/uWuzGhfmT7uAzaBJMRbGF7N+ybUzgulCQ39LK
-wjhY5Ve74MqGUrYmP/JVSd7C+VUPKEtLfUf1tTgKBf0RZKIQE2c=
-=onK6
------END PGP SIGNATURE-----
-
---fRBE7v7YkaceEjaWdcL9gwcbO2VKZVJBD--
 
