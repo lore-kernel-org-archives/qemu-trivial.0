@@ -1,23 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iAtQj-0003ep-Kk
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 06:12:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50616)
+	id 1iAtSQ-0004vy-M3
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 06:14:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50823)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iAtQg-0003XD-E7
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:12:51 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iAtSM-0004pW-Nu
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:14:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iAtQf-0002bZ-1S
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:12:50 -0400
-Received: from mout.kundenserver.de ([217.72.192.73]:33577)
+ (envelope-from <laurent@vivier.eu>) id 1iAtSL-0003x5-Ps
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:14:34 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:34327)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iAtQe-0002a6-P6; Thu, 19 Sep 2019 06:12:48 -0400
+ id 1iAtSJ-0003ux-Ap; Thu, 19 Sep 2019 06:14:31 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MVubb-1ic4xr2CY9-00RrlZ; Thu, 19 Sep 2019 12:12:42 +0200
-To: KONRAD Frederic <frederic.konrad@adacore.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-References: <1568296920-29939-1-git-send-email-frederic.konrad@adacore.com>
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MDhpZ-1iK00b2YB5-00Ajxt; Thu, 19 Sep 2019 12:14:26 +0200
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Thomas Huth <thuth@redhat.com>
+References: <20190912184607.3507-1-eblake@redhat.com>
+ <f604ebfe-0157-81df-a948-18bf9589d880@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Openpgp: preference=signencrypt
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
@@ -62,37 +64,37 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <54e5bbb1-1121-89cd-a190-4903fc555fa5@vivier.eu>
-Date: Thu, 19 Sep 2019 12:12:40 +0200
+Message-ID: <bd495385-af3b-d462-645d-1ef135925128@vivier.eu>
+Date: Thu, 19 Sep 2019 12:14:24 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <1568296920-29939-1-git-send-email-frederic.konrad@adacore.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:VsWV4izfOzLAm3JZ3mnW7+D2bWs7kCxhgiWAC5GSezlVB0pQvQ4
- 7dnrkz/9lwyk6Td7FT0DP3HL/MCksxKEOSslL+wLXhbiutArz1SB5m5Ei47zsRbnh8AtIUZ
- 74pmGFjUewaDJL43H9mbnJWbYrMs/LNx418xnRRucTjx+9LUr0Ih2AVpdXpjqaD8T6EECwZ
- 86b71Sb1bU0Zjq2tqosRw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Xs/y9TlzRP4=:T/XEEZWe0rQTb9ORFp3VLw
- EdGJdN4l/lbtYnM9EezmdQvDy8azxMd4UlXte/5Af7PoSiMnzp6Iktg75p7Q+rZr+BJu/zFLP
- kGjsqUGiUkleQXHvClyzFYlRjhZnmaXiE+RGYvC2jgwKayTimAt6L7e2bIVtZmc4FB3F7TkcQ
- 1teFDeqrPghwrc7HWNmcRubhXhsdnQeXPGviAs+leEJ+1KrPOP6nNgbJNRMIuR18IZTYmJ3zJ
- TWefvMvuJJLlKsLxTCeJHBA4Agle6oxSfUWbOqh17NFCOdolW8QD3Omv9FRODMk/pK1rL7K/n
- 5Jj2KyMtKfJ4BnLMgj16zpMJkD/n958JqiK60ERIcS22o5muYqBDIty4gFEXvLtdi00RF9uk+
- huzUj1piF9L0Oe/2z8deG6wJ/mdrc5/aE85no46cE20UDmyXDdgP4b3vwfA87VtobzsD4xOxn
- dO1cMNlDOf9kFvacY4VgC5kCWoLG0DZ442jCKhT3UbAFJaFKsvDQVCQXTm0IOanRqwV6LJSr4
- 3uHsvu2vX+tVTTjqzfXwzhL9J7plHCLefHSRx+q/xgcWYYr4lqsF/oMsBA/vDoewQAwfh8pPA
- 1P32rgWZfyBWD0x4Hlp5N6Gc86ZgYYtEOK9Khz4ETlYBoJYEiqiE81TY1HFeXDTWTobnI37pm
- x7dcLhI9gULuMRco+4AJvVA+BOXpCxnaNetIAZCaAKW1GdMEzX7nuht2BV52OAJnuPgOF4PFT
- TIHfSUbBb+vVdmrlRc86rycJzGrbDBTAtzdC9h9FnNn508DL4P8blBi4+wYX3y7a1PEHdF2PF
- 4jn0T9wuLZqoYh/odGFysmMsMenh5acpi4LBhAZApaiMpK7MibzLtJuBryhBXQ5pjJyLneSwH
- g8qSWbkr86dA3BfSlWmZ/7iBhxXw2IrInYA7mikvM=
+In-Reply-To: <f604ebfe-0157-81df-a948-18bf9589d880@redhat.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="fRBE7v7YkaceEjaWdcL9gwcbO2VKZVJBD"
+X-Provags-ID: V03:K1:aZvWtRfTtWjVnu5sUzgqpy0+HY4+AtSFt9WlkCsq0dynNfDR0PX
+ 6tUyrVHapy5R6fSCJYqVJjXa+53s4Kr4gM+VYmApuqeF87vD+7gm+jLOQNCmfveRrBqPyMS
+ LooQhhlGjfatyMcWbR5vqpLOCp3bId2KrIXWZ1Jx3Y3wQCfskY0rReRa5AVyxYVS+NcJgtj
+ sXn56wDsusrqTPxf248LQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:fIqW/NpUdX4=:tVUQBc4kZLFio+5wRRxobv
+ 5rFpZcVCKy1XBvFRzFiL7IbHEXmcDxdFl9D6NcZaTFWoZJQx9rU+clsXZpU6XPY1YXgtLnZu2
+ pmsmQ6p1uZX4pX0csj+G3C8jkUZQLmomaTyqld1pDCNf/39GF75xLgRWwuZK0u4aelAnjlRBc
+ AaLL1CQ3n+/UwE75k8C9VnrZLbaA/wK4Eh7owv26Bb3mxLtfcHeUp3kl6VvC+0WXaU4L57mly
+ QRKVO0/B29nsFo+97xq++PSwca8eRAnHEKphJXN/HoVsCly6q8pfjYadlfpTN0hn1fbTIyMY/
+ 1fyqjE2Uye2CkgKuW1FW4fY/9uozYrUnpnBkr/NMtKVGksoi3/UZtf6pMQq1wISoQHLvmOHpm
+ d/tB/PEXqbV60yypJ8ZCATi4QYXjsPPFKdx4D0X6edzMqnxyHQdaeyUvP9mobPedAAyr+aHgs
+ wc2HirOCLHCjgInOT0mZDJmQKQXhqwHu+Q4GByciHt/qIBVMNOzBvY8TKI/Z7SGosyapJmWvT
+ yPmzk2mJBLAQ4DLOkX3W8u/fwjnBSayPu7GGCvEP2Y1T4NBGJD+BdigHTQn+NZsS/cpTPRlW/
+ 3M4E7EFLburkc8h+/Pk2rmbTyGyz6jSXps/56mgN+7fJy8eGcvruLLG+dE1K4I7Hz4wCCFaSK
+ mnEVIaV8iaQS7qQGN8lcV3Hb8NmiKwuQHH6Hswu+tHEhP+cghGilJB8CZnyhJ8USZygf9lGVu
+ iSMaZZeJ46Nd03mdFOGwGzjoCabiRYgJdi5UCQUXkVE9YaZJFd9jKupFzV1UH2BN3i/w7KiQS
+ QtRFT7B14k9Pj9SILRPbr34Izp9rzF59Bgt7Nyppt7PIx3RA8fHTyVswUnQJWxXmDoWPMZ8WY
+ 1xMALR7oj2kneE/dEHAw==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.73
-Subject: Re: [Qemu-trivial] [PATCH] target/m68k/fpu_helper.c: rename the
- access arguments
+X-Received-From: 217.72.192.75
+Subject: Re: [Qemu-trivial] [Qemu-devel] [PATCH] build: Don't ignore
+ qapi-visit-core.c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,70 +106,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Sep 2019 10:12:52 -0000
+X-List-Received-Date: Thu, 19 Sep 2019 10:14:37 -0000
 
-Le 12/09/2019 à 16:02, KONRAD Frederic a écrit :
-> The "access" arguments clash with a macro under Windows with MinGW:
->   CC      m68k-softmmu/target/m68k/fpu_helper.o
->   target/m68k/fpu_helper.c: In function 'fmovem_predec':
->   target/m68k/fpu_helper.c:405:56: error: macro "access" passed 4 arguments,
->    but takes just 2
->                size = access(env, addr, &env->fregs[i], ra);
-> 
-> So this renames them access_fn.
-> 
-> Tested with:
->  ./configure --target-list=m68k-softmmu
->  make -j8
-> 
-> Signed-off-by: KONRAD Frederic <frederic.konrad@adacore.com>
-> ---
->  target/m68k/fpu_helper.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/target/m68k/fpu_helper.c b/target/m68k/fpu_helper.c
-> index 9b039c8..4137542 100644
-> --- a/target/m68k/fpu_helper.c
-> +++ b/target/m68k/fpu_helper.c
-> @@ -396,14 +396,14 @@ typedef int (*float_access)(CPUM68KState *env, uint32_t addr, FPReg *fp,
->                              uintptr_t ra);
->  
->  static uint32_t fmovem_predec(CPUM68KState *env, uint32_t addr, uint32_t mask,
-> -                               float_access access)
-> +                              float_access access_fn)
->  {
->      uintptr_t ra = GETPC();
->      int i, size;
->  
->      for (i = 7; i >= 0; i--, mask <<= 1) {
->          if (mask & 0x80) {
-> -            size = access(env, addr, &env->fregs[i], ra);
-> +            size = access_fn(env, addr, &env->fregs[i], ra);
->              if ((mask & 0xff) != 0x80) {
->                  addr -= size;
->              }
-> @@ -414,14 +414,14 @@ static uint32_t fmovem_predec(CPUM68KState *env, uint32_t addr, uint32_t mask,
->  }
->  
->  static uint32_t fmovem_postinc(CPUM68KState *env, uint32_t addr, uint32_t mask,
-> -                               float_access access)
-> +                               float_access access_fn)
->  {
->      uintptr_t ra = GETPC();
->      int i, size;
->  
->      for (i = 0; i < 8; i++, mask <<= 1) {
->          if (mask & 0x80) {
-> -            size = access(env, addr, &env->fregs[i], ra);
-> +            size = access_fn(env, addr, &env->fregs[i], ra);
->              addr += size;
->          }
->      }
-> 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--fRBE7v7YkaceEjaWdcL9gwcbO2VKZVJBD
+Content-Type: multipart/mixed; boundary="paEE7yzaQE536hNXbUeQZkQrJUsN17Upf";
+ protected-headers="v1"
+From: Laurent Vivier <laurent@vivier.eu>
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Thomas Huth <thuth@redhat.com>
+Message-ID: <bd495385-af3b-d462-645d-1ef135925128@vivier.eu>
+Subject: Re: [Qemu-devel] [PATCH] build: Don't ignore qapi-visit-core.c
+References: <20190912184607.3507-1-eblake@redhat.com>
+ <f604ebfe-0157-81df-a948-18bf9589d880@redhat.com>
+In-Reply-To: <f604ebfe-0157-81df-a948-18bf9589d880@redhat.com>
+
+--paEE7yzaQE536hNXbUeQZkQrJUsN17Upf
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+Le 13/09/2019 =C3=A0 13:34, Eric Blake a =C3=A9crit=C2=A0:
+> cc: qemu-trivial
+>=20
+> On 9/12/19 1:46 PM, Eric Blake wrote:
+>> This file is version-controlled, and not generated from a .json file.
+>>
+>> Fixes: bf582c3461b
+>> Reported-by: Thomas Huth <thuth@redhat.com>
+>> Signed-off-by: Eric Blake <eblake@redhat.com>
+>> ---
+>>  .gitignore | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+>> diff --git a/.gitignore b/.gitignore
+>> index e9bbc006d39e..7de868d1eab4 100644
+>> --- a/.gitignore
+>> +++ b/.gitignore
+>> @@ -41,6 +41,7 @@
+>>  /qapi/qapi-types-*.[ch]
+>>  /qapi/qapi-types.[ch]
+>>  /qapi/qapi-visit-*.[ch]
+>> +!/qapi/qapi-visit-core.c
+>>  /qapi/qapi-visit.[ch]
+>>  /qapi/qapi-doc.texi
+>>  /qemu-doc.html
+>>
+>=20
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
 
+
+
+--paEE7yzaQE536hNXbUeQZkQrJUsN17Upf--
+
+--fRBE7v7YkaceEjaWdcL9gwcbO2VKZVJBD
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEzS913cjjpNwuT1Fz8ww4vT8vvjwFAl2DVQAACgkQ8ww4vT8v
+vjwi2BAAnfyF2IdCjtu458veAZg+E446Fi9TvC+rMtQ5PiP6wygt4LWr7FQjrNcm
+FMhdTwR3gLzOsBJkJDCxpRpT/mtuDEczSdZ/T0Fpp5dTK+kSRBkqdve4qIlaUy2e
+7c7MK5n0LCC/QdKpKy2a81s9ghd4/+Z0TCu+853mWl5s2EokXsjIMZzp/SG2LGHQ
+9pjAQFXykgwPuJ5EALMH5qht73yi0dwW3tLZRhJTy+kN4Hy3VNGJkcIEXDqUoiOH
+HaAJkarHcPmIlEZPwUcrM10nj6YlGxApXeZDeFIvI2Zd5APgRiCjKUsWk+NoajDA
+FcZqrL43T3/biTCUd/ivZ4EE5rWdb8s7+QtDrspqeNo6SKlsYtjJ2Ht7p0dR63Ao
+Vbsm3Nf0nIhVjsTYxvpNVwVYsITJRLuTG1xsy9G8fEL97zWR/vVjv7t6f/y3ohqB
+4P103arU3lwYiNexbW+Eaa0EvUIemhu+d52ToTizwyo7KYCenaYiZ+Nusb8HNFm/
+Tc9ZlVUvk8HjzTYYQUvhxaPCOUyQ9f65+Kbdu3ZVfq769kAHdEQw93eKASPRPTLP
+NEsVev+rcyxguyLT9TlNQbyWEV/uWuzGhfmT7uAzaBJMRbGF7N+ybUzgulCQ39LK
+wjhY5Ve74MqGUrYmP/JVSd7C+VUPKEtLfUf1tTgKBf0RZKIQE2c=
+=onK6
+-----END PGP SIGNATURE-----
+
+--fRBE7v7YkaceEjaWdcL9gwcbO2VKZVJBD--
 
