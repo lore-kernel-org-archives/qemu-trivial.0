@@ -1,53 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iAwx4-0007WD-VN
+	id 1iAwx5-0007Xl-Rb
 	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 09:58:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51610)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51677)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iAwx1-0007Cl-Cv
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 09:58:28 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iAwwz-0007Ju-OZ
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 09:58:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iAwtb-0003kE-R8
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 09:54:56 -0400
-Received: from mout.kundenserver.de ([212.227.17.10]:60019)
+ (envelope-from <laurent@vivier.eu>) id 1iAwth-0003nC-Db
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 09:55:02 -0400
+Received: from mout.kundenserver.de ([217.72.192.74]:50151)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iAwta-0003iX-Fg; Thu, 19 Sep 2019 09:54:54 -0400
+ id 1iAwth-0003me-5G; Thu, 19 Sep 2019 09:55:01 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MMFZQ-1iTAnk2MjO-00JMT9; Thu, 19 Sep 2019 15:54:50 +0200
+ id 1MfqGN-1hhwns0vNZ-00gGbg; Thu, 19 Sep 2019 15:54:53 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, Justin Hibbits <chmeeedalf@gmail.com>
-Date: Thu, 19 Sep 2019 15:54:41 +0200
-Message-Id: <20190919135443.15164-7-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, James Le Cuirot <chewi@gentoo.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>
+Date: Thu, 19 Sep 2019 15:54:43 +0200
+Message-Id: <20190919135443.15164-9-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190919135443.15164-1-laurent@vivier.eu>
 References: <20190919135443.15164-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:gCTZpmtHKLAlM6ggkWLzXvYON9BoHi026y+wk0KHm8QZRP7kYEy
- ZL8liT5ljF3wjc08u826E2/CyWXT1JZLgfNwZzrJQKP9aGM4jRAq580962S/C2Ncor+OfYO
- OUWS4a8NwOLJKCbrMecHtNpzFcpk6Uh1/5iTj4E9C7NPJCpnVpjpo7cXaCMVUTtbL5TKplF
- 5xtxhHtw8LCsU0s1Qx7qA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:WgSDtJllvg4=:yrBBCCeexAKYmZaWEC/h1I
- cHf8DMSa2EAl6f0UA/lgLbtNfxi5TrpVKVY2N/KqAGsBQLbUCLeM+gckvzQUMs8Vo6cTRmjwm
- K0E1t216JasT+t0zcqs9ED5VW2aNUvDZsSKb35RQAjn7snZqYxM0lzjL40dr8XiUZZnfff3eK
- cNPgvX3NcPCGYGrVsXfc0hOcAfvSG2OJrN3w7iseUDo3Ncem1yJqFD6E+Kiw5EAueI8RHy+hO
- svdOkKn5EhiI4HeWc5VxIWEA6kFFBQl0F3onB/YJ51+LOoFpoEoXCvOg3+fGVAx5TzSL3HA7d
- TzZ3X/vlOlSvw89Rl8yXw/ZsMUBDUMacuuBR4FhwuB4j6RnAMUf6XhO0YugU6EyWioHD/tkJf
- wDL6l8jn75XFiIwcrvYwXh2hxtjG/D/TMTD5usrvXoN5F2WYRKmGiXFNhwMCj10WYeGWQt7uj
- MdU3IxQxQTYRp4dFM9fwCKNFsG18Np/qEyYy01sOeyknOaFs4whF8g9txnZ+6PjWpOaX7X37f
- Gqcgefpc/Yc4EpWX8LO4aaMpfUgf958VYN3s7PLenReFZ9wKW/yI0hKJ5XFTug7Y+tAt9/lrC
- 0C7vapVyrlIrK0KMrzZ3k+i12UWnzje18jQ7XtXk+QH/JiNgW8b9qArVroSsOOm+vCx6sHcds
- +gpUp0CA260wsX6ZYFbNDANF8OkQHfoIYCksr1ogyyUqs8Ji+DBFl2OObMnv9ohaS54lr6172
- ZIYiyz3YIfIS1HU8HsbTgqIBIYE/guhGPqndJI3/a0IowoPsfFR1gmDKYEzJdksriguj+ByaU
- 7JIC5HpbEnsE2xXQkcIPw9NIherNNgTZeuxMIbIF7zgzPNDSh9yH4agkgsmkaTEeT3TAZTWTD
- fkBa1YNXGP2C9y0eZPJQ==
+X-Provags-ID: V03:K1:f+6zjxTbKi06c4tDhzzvg9koiK38E/wSTMmp6zkUdD6cg0MOIHA
+ xnG+2TBfmoYe3oNcP0VTXUPBplYRXxiGpbwzz2W7Wgrux/2lS5efTH0qGT9HOgF7iKz0I/S
+ OUiB3HYM4fIaBPDrCy1E8ZTL090aIG5e30PkIG6dll0wqPRoBg+3jt2XRBQ00QXoj5GWdFv
+ hmw9qRWwxA+Ahxn3C6UfQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:zxUz0HElFP4=:odiie1ryMABIwcTj2eaOXM
+ cgWVvlq/2FLpSdChEYD0nxvFOSAo8suACDHFziAdSmfMrjXgjNvDQ3Vdtc4zBLfWVgjMIzhWO
+ i9JO7IdflhwbQ1p7TnkmNq7wuJWfWLtUVDJ/znwBWXXPQI5nIIPV9A82NeY8vJPKbJOpwOhJs
+ 4uVg1s72byEkA1StZ4BkkjAAkpS4qyFKofm2RJFg7Cuff40ZpdpR3zmJKLlDKD41u4zzycumx
+ Jvnk/WHEPRfpptogvsU27uB9iP4eN75Dv7mxAHjcwoWVH/1HmPsTZrDfZ/+V+5/ixa1zem8Yq
+ oWvRU6vLHAQhbClHB2hHbK3eLQiODAp9jEMr3wbl2h3M0KVQ67r04RaB85/RQnZ/Nc6QmGmlQ
+ h+sdYgDrmVr4ITp35b75J5Vy4/mMv3JzESEdJC4y72KafT/X7ZW6ZWBYEjXMdLxWE7UtItWah
+ QA8w2NYMNiO5H5BoFfelqu5lWC44BeMaU2FdDi3pGkJUN3B7kGQM0rjni3aGGEx87AToMNRkd
+ 0k7ZILyoJMYEl4SB2+7H9yWciVlWSpXE18Dp4XnU4+nVVDQRqpiczvZkA2QGGlqEm2+OXUM9B
+ O1u0anT038KB2rdIMnXjfT7nynrs0GYw0iEtSJ4PNZY1ZaeTzYCg+Gfb/pofhRxwHbvyOQ570
+ /ihAUlYGxImsZ+dLoJAtw7mpGbYJgt52GLwh+gQozERi5jen6X5slrQjpEgBg7VANLCDvX5MC
+ PM1Rt+NoB26N41R3MXQFOAy2vLd9JV+p6RVNZQlkj26/1CTry2Dyn/95Q+bp+XE/Ozn9ulcDO
+ +2Ky0zW63FbQMk2Q8fkva5juGEQ8VPSuh8wpr97UfOtwNHSmGQgQgXmxzWAyK8Uzw9uafK2u4
+ PCPmUA+/0QUY4pqoAwZ8CCxQIO5jzXiw5rYjESFhI=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.10
-Subject: [Qemu-trivial] [PULL 6/8] Fix cacheline detection on
- FreeBSD/powerpc.
+X-Received-From: 217.72.192.74
+Subject: [Qemu-trivial] [PULL 8/8] configure: Add xkbcommon configure options
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -59,67 +61,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Sep 2019 13:58:29 -0000
+X-List-Received-Date: Thu, 19 Sep 2019 13:58:27 -0000
 
-From: Justin Hibbits <chmeeedalf@gmail.com>
+From: James Le Cuirot <chewi@gentoo.org>
 
-machdep.cacheline_size is an integer, not a long.  Since PowerPC is
-big-endian this causes sysctlbyname() to fill in the upper bits of the
-argument, rather than the correct 'lower bits' of the word.  Specify the
-correct type to fix this.
+This dependency is currently "automagic", which is bad for distributions.
 
-Fixes: b255b2c8a548 ("util: add cacheinfo")
-Signed-off-by: Justin Hibbits <chmeeedalf@gmail.com>
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+Message-Id: <20190914145155.19360-1-chewi@gentoo.org>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
-Tested-by: Justin Hibbits <chmeeedalf@gmail.com>
-Message-Id: <20190821082546.5252-2-laurent@vivier.eu>
 ---
- util/cacheinfo.c | 23 +++++++++++++----------
- 1 file changed, 13 insertions(+), 10 deletions(-)
+ configure | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/util/cacheinfo.c b/util/cacheinfo.c
-index eebe1ce9c5d2..ea6f3e99bf4a 100644
---- a/util/cacheinfo.c
-+++ b/util/cacheinfo.c
-@@ -65,25 +65,28 @@ static void sys_cache_info(int *isize, int *dsize)
-     g_free(buf);
- }
+diff --git a/configure b/configure
+index 30aad233d17c..30544f52e630 100755
+--- a/configure
++++ b/configure
+@@ -1521,6 +1521,10 @@ for opt do
+   ;;
+   --disable-libpmem) libpmem=no
+   ;;
++  --enable-xkbcommon) xkbcommon=yes
++  ;;
++  --disable-xkbcommon) xkbcommon=no
++  ;;
+   *)
+       echo "ERROR: unknown option $opt"
+       echo "Try '$0 --help' for more information"
+@@ -1804,6 +1808,7 @@ disabled with --disable-FEATURE, default is enabled if available:
+   capstone        capstone disassembler support
+   debug-mutex     mutex debugging support
+   libpmem         libpmem support
++  xkbcommon       xkbcommon support
  
--#elif defined(__APPLE__) \
--      || defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
-+#elif defined(__APPLE__)
- # include <sys/sysctl.h>
--# if defined(__APPLE__)
--#  define SYSCTL_CACHELINE_NAME "hw.cachelinesize"
--# else
--#  define SYSCTL_CACHELINE_NAME "machdep.cacheline_size"
--# endif
--
- static void sys_cache_info(int *isize, int *dsize)
- {
-     /* There's only a single sysctl for both I/D cache line sizes.  */
-     long size;
-     size_t len = sizeof(size);
--    if (!sysctlbyname(SYSCTL_CACHELINE_NAME, &size, &len, NULL, 0)) {
-+    if (!sysctlbyname("hw.cachelinesize", &size, &len, NULL, 0)) {
-+        *isize = *dsize = size;
-+    }
-+}
-+#elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
-+# include <sys/sysctl.h>
-+static void sys_cache_info(int *isize, int *dsize)
-+{
-+    /* There's only a single sysctl for both I/D cache line sizes.  */
-+    int size;
-+    size_t len = sizeof(size);
-+    if (!sysctlbyname("machdep.cacheline_size", &size, &len, NULL, 0)) {
-         *isize = *dsize = size;
-     }
- }
--
- #else
- /* POSIX */
- 
+ NOTE: The object files are built at the place where configure is launched
+ EOF
 -- 
 2.21.0
 
