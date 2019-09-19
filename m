@@ -1,99 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iAtZL-0002pm-M3
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 06:21:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51733)
+	id 1iAuBt-0003qL-Lc
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 07:01:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56841)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iAtZI-0002lh-3m
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:21:45 -0400
+ (envelope-from <kraxel@redhat.com>) id 1iAuBn-0003nu-AZ
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 07:01:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iAtZH-0007I9-2i
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 06:21:43 -0400
-Received: from mout.kundenserver.de ([217.72.192.74]:54047)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iAtZE-0007Fw-MX; Thu, 19 Sep 2019 06:21:40 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mo7eX-1hqQul1Ocl-00pdLE; Thu, 19 Sep 2019 12:21:32 +0200
-To: Greg Kurz <groug@kaod.org>, Laurent Vivier <lvivier@redhat.com>
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ (envelope-from <kraxel@redhat.com>) id 1iAuBm-0006NL-7j
+ for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 07:01:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34526)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kraxel@redhat.com>)
+ id 1iAuBg-0006Iz-0A; Thu, 19 Sep 2019 07:01:24 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 1365518C8935;
+ Thu, 19 Sep 2019 11:01:22 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-47.ams2.redhat.com
+ [10.36.116.47])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A703360C80;
+ Thu, 19 Sep 2019 11:01:21 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 9E9081747D; Thu, 19 Sep 2019 13:01:20 +0200 (CEST)
+Date: Thu, 19 Sep 2019 13:01:20 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, James Le Cuirot <chewi@gentoo.org>,
  qemu-devel@nongnu.org
-References: <156829664683.2070256.13400788010568373502.stgit@bahia.tls.ibm.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Openpgp: preference=signencrypt
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <d1e77b74-1d51-f34d-95a4-3d3d8579ec33@vivier.eu>
-Date: Thu, 19 Sep 2019 12:21:25 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+Message-ID: <20190919110120.l7s4hvpqmcgqofhi@sirius.home.kraxel.org>
+References: <20190914145155.19360-1-chewi@gentoo.org>
+ <457c3a3c-d1b3-9f73-e156-24add1347e07@vivier.eu>
+ <20190919083708.mwqjq6qzyemqlxpq@sirius.home.kraxel.org>
+ <8dad2ef4-87ed-27ca-da22-a9ef4fa87cde@vivier.eu>
 MIME-Version: 1.0
-In-Reply-To: <156829664683.2070256.13400788010568373502.stgit@bahia.tls.ibm.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:iHOoImrR0aZ+geA6kYlJTyGjyae5xJc/bdwEIkJ6DE/sPTh97rs
- ItByvkyE8t5WnZ66czEZ2Vg6nA80Co/N66RYAtoSJu35QlsyiTGW9PwF9xrqrizJbB6nCug
- I2AiGo48dFXr/77YTS2tN5ScTzm4dsGlagzPptloFHRnbmVPU+ffjfD7kDj/l1wzhPY9EBm
- wKQ7Irrc9GACa38yHsp2Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:JWV8X1up7zM=:oHcm0axsFEn7zSWMpdnLgn
- qkQMU4SPbtVPlUoYvtUWQ7AsFUKXujG43GehUSbTbHOQ0MkMpFLeuVkyHY3HRNkpE28SDXMGk
- hRqINbm8HtJwdGcX3yBOt6/ZgPMh+msOIcMV1Vkhpv6jwYqvULaivrxhqafUPgabbWI0La52S
- Ah+nYzK6cjAQ5yWPC8mYuVO/iTmuVS3hSFu+I077rV1gx8dLcnycYVZR22TagV39/z1hmyLDx
- GVjooA5VbYuyA4xVWVbMqlWhbDkp1mXNZhVlQw1KlpMtQbgnahN4RAG830FzrOuWTOI13P8gG
- 2x1vNDxX6jLDBbxlj5j9azJAZfD2pOFMP4hDxUA6uz9TozOsMu5ak4rYhJ5t0Lb/7l/x794bk
- Kk1eEltC4pYwwVRruwLSX83cpOlHGRCv0qrIDvZzQffM1Rfd25g0U4lC56Q+PwZygTVpnak6e
- 9r8xxC9u+cDq/h9cpuW09l5Kd2MGzNIIZZXGAnyvNSbkM4ztLM3S4q8x7QDcs+AB2oMXMgHhy
- KU44V92geTr27pWmXr9uNR6N02hCj/BccHeBfYsj1KwWmTQ8Ul+xP/YNKMi+kD9ZiYXtNWEvm
- kiE9eOJem9OmG4xKa4Et7XX+qMrfxnC7BT+4PLcqrMAfv3qp3I0x3W1RDvsrQI99SrEsZSnZJ
- iDijYW88IP7HoCJe1KGf72/YLgsqFvibwycpwGSn2R+iP0j/GFI+q4/8VO4BVXt8Oupbh3ulj
- Dk8yqRxN/cfE5G14rlG0bTC6F2AIZ7PppNcf1BRV7P9wF9b25gv/0VgCcCZtta9fuymnWOPyG
- UPWB/Z8EHzxPDYYrk/CUFgl9ZXWDHHfGQ835xTBHbUsBYwPsU6o4GD6J4uH7cxqeBHDKwmV2T
- YPKwurvcmbASU+6BaHCt0oaAVnAEu/VQLJ8y3D+7I=
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <8dad2ef4-87ed-27ca-da22-a9ef4fa87cde@vivier.eu>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.70]); Thu, 19 Sep 2019 11:01:22 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
-Subject: Re: [Qemu-trivial] [PATCH] kvm: Fix typo in header of
- kvm_device_access()
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-trivial] [PATCH] configure: Add xkbcommon configure
+ options
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,33 +58,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Sep 2019 10:21:46 -0000
+X-List-Received-Date: Thu, 19 Sep 2019 11:01:34 -0000
 
-Le 12/09/2019 à 15:57, Greg Kurz a écrit :
-> Signed-off-by: Greg Kurz <groug@kaod.org>
-> ---
->  include/sysemu/kvm.h |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-> index 909bcd77cf82..fd674772ab31 100644
-> --- a/include/sysemu/kvm.h
-> +++ b/include/sysemu/kvm.h
-> @@ -308,7 +308,7 @@ int kvm_vm_check_attr(KVMState *s, uint32_t group, uint64_t attr);
->  int kvm_device_check_attr(int fd, uint32_t group, uint64_t attr);
->  
->  /**
-> - * kvm_device_access - set or get value of a specific vm attribute
-> + * kvm_device_access - set or get value of a specific device attribute
->   * @fd: The device file descriptor
->   * @group: the group
->   * @attr: the attribute of that group to set or get
-> 
-> 
+On Thu, Sep 19, 2019 at 12:16:43PM +0200, Laurent Vivier wrote:
+> Le 19/09/2019 =E0 10:37, Gerd Hoffmann a =E9crit=A0:
+> > On Mon, Sep 16, 2019 at 10:15:15AM +0200, Laurent Vivier wrote:
+> >> Le 14/09/2019 =E0 16:51, James Le Cuirot a =E9crit=A0:
+> >>> This dependency is currently "automagic", which is bad for distribu=
+tions.
+> >>>
+> >>> Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+> >>> ---
+> >>>  configure | 5 +++++
+> >>>  1 file changed, 5 insertions(+)
+> >>>
+> >>> diff --git a/configure b/configure
+> >>> index 30aad233d1..30544f52e6 100755
+> >>> --- a/configure
+> >>> +++ b/configure
+> >>> @@ -1521,6 +1521,10 @@ for opt do
+> >>>    ;;
+> >>>    --disable-libpmem) libpmem=3Dno
+> >>>    ;;
+> >>> +  --enable-xkbcommon) xkbcommon=3Dyes
+> >>> +  ;;
+> >>> +  --disable-xkbcommon) xkbcommon=3Dno
+> >>> +  ;;
+> >>>    *)
+> >>>        echo "ERROR: unknown option $opt"
+> >>>        echo "Try '$0 --help' for more information"
+> >>> @@ -1804,6 +1808,7 @@ disabled with --disable-FEATURE, default is e=
+nabled if available:
+> >>>    capstone        capstone disassembler support
+> >>>    debug-mutex     mutex debugging support
+> >>>    libpmem         libpmem support
+> >>> +  xkbcommon       xkbcommon support
+> >>> =20
+> >>>  NOTE: The object files are built at the place where configure is l=
+aunched
+> >>>  EOF
+> >>>
+> >>
+> >> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> >>
+> >> cc: Gerd Hoffmann <kraxel@redhat.com>
+> >=20
+> > Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+> >=20
+>=20
+> Gerd,
+>=20
+> do you take this through your ui branch or should I take through the
+> trivial patches branch?
 
-Applied to my trivial-patches branch.
+Trivial branch is fine (have not picked this up b/c I saw qemu-trivial
+on cc).
 
-Thanks,
-Laurent
+cheers,
+  Gerd
 
+>=20
+> Thanks,
+> Laurent
 
