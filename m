@@ -1,51 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iAwxA-0007ej-7U
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Sep 2019 09:58:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51590)
+	id 1iBLlx-0003Ft-UJ
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2019 12:28:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54385)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iAwx4-00078M-65
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 09:58:31 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iBLls-00039V-J8
+ for qemu-trivial@nongnu.org; Fri, 20 Sep 2019 12:28:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iAwtW-0003gX-Il
- for qemu-trivial@nongnu.org; Thu, 19 Sep 2019 09:54:51 -0400
-Received: from mout.kundenserver.de ([212.227.17.13]:47997)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iAwtW-0003fw-A2; Thu, 19 Sep 2019 09:54:50 -0400
-Received: from localhost.localdomain ([78.238.229.36]) by
- mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MWBC8-1ihVjo1xVK-00Xdgp; Thu, 19 Sep 2019 15:54:46 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>
-Date: Thu, 19 Sep 2019 15:54:35 +0200
-Message-Id: <20190919135443.15164-1-laurent@vivier.eu>
-X-Mailer: git-send-email 2.21.0
+ (envelope-from <peter.maydell@linaro.org>) id 1iBLlr-0003CX-7b
+ for qemu-trivial@nongnu.org; Fri, 20 Sep 2019 12:28:36 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:35384)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iBLlr-0003CC-2X
+ for qemu-trivial@nongnu.org; Fri, 20 Sep 2019 12:28:35 -0400
+Received: by mail-ot1-x342.google.com with SMTP id z6so6714792otb.2
+ for <qemu-trivial@nongnu.org>; Fri, 20 Sep 2019 09:28:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=W+RrZzCeCmMgB4WeC6Z58QwhwbPLh+zvqQ+h5E+YFy0=;
+ b=lQhsFyP7EGi0zd3IzccMmfFH7f5n9CHwoml1LUu95Nq3ujSvQSH3qgI9DLxIY9dKJ0
+ liqrsHzilv8BflyTp038QYlN7/7HCADpoVmOb8t4NDgJ4cMFnWTr7AfHeElMtaPIvJco
+ QJQz74iIccY8x2+xt9aFaW6IY2xpAf+2IJYdFfcua9TofSukEi8tVTNMYx0He8mJ5oIv
+ ketaB7bBMxvljaziGilD+rw7yruXS5rRe9fAB9JE9o+uxDu22Uiyk3hwN6uKgSZWO0tt
+ 5IwYV3nZrQ0bM0S6GzaVrjLBDBbm9X3ynypeJ5Ftn9cPyP8vX7neySWL0RIxATbyjd3q
+ jjQA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=W+RrZzCeCmMgB4WeC6Z58QwhwbPLh+zvqQ+h5E+YFy0=;
+ b=Nslfl6GPLkHgpksHUg4KHx51WXDuXPpG6r+jD5FiYqIZMCoXYlbElHHk7ZSf3YdevE
+ kFllbpxjRVCtYVzuB2IhvObI1MdpkO0hs8S8Wm55sFN+fzcefV1NvDDF1DgLcsnIoTcF
+ loyrTvQW4jhFTWYTfVZoTIpiHE7AKx/yC1GqZ2mz8xn+nV5dxpMj/YteHwSn87FrNFAU
+ rr8XDd3eSUg+Sj6RTt7ufCvQ3wehZLydxwVO7lVNXVTjsOZ5AriKTE7XwcuJnWfrKdbO
+ PTgShCli0PJxyqPIMSmMNSVyRjvYceEEpqkC+5ypNgFctbKwLjLKOZXm3vgAHInbTAns
+ KHAQ==
+X-Gm-Message-State: APjAAAUM383YBPhABMnQzCM3Bed1+qID2P3wmYH7EZDc8DHRTqaCl+Mw
+ I1PswuGPqs/nUkCDerE0ZNObtG3R14GrpIWq0A2Hw37Wc14=
+X-Google-Smtp-Source: APXvYqyDdOKfkN5Qe3LvQ/BCDyQ0kpsTQYGlNQa8WCnsch5DrsihvG28xH16N9DYlxP5FflbJzgU2JZof58qtK0LusQ=
+X-Received: by 2002:a9d:4615:: with SMTP id y21mr4921025ote.97.1568996913411; 
+ Fri, 20 Sep 2019 09:28:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:qT9jtAZuYABIbTuHOgQwUSlVHJq8uvu7QXs+09cW7dtpCV17uxv
- 7wQ12Sim5YYRTgrn8KZILG8NVWEGw6+JxxlfdEqcDl9+AGfktFvZU7+UXSJMfgZjHRW/pg+
- a9np0kvJk6xGLhLFpgrDFX13fZGTIJExshtvAPJUk8WdumYmf7R9CAfLqWacJAuIhboA3bL
- d1vXmSAK92wfdPWJckvnw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:jhnjZvyvdjU=:Q1z8sSARPwxWwfXXZspSIO
- CgJ8HetCaa1yNQsTnFMqHclGoO55k5eya+rcmu7lx08eXS9CMmbkPZU6ih/MjCNdFyRTH1m59
- cZsJQ3fDon1pVTjkjTG1G1oYsgqrkhwzi/v2B1Y03w0b2wJ+2SLWZPZStIum6w6QmcgFlQH4g
- U4Gw449sBrqVgi8hAfRpAl467+ccu2mtpXrW3mRoQjZo+TRrsEtzLFXZWKatCUvTixpSbu1AJ
- f6qM2oXLQc6PN1FKXqd/rqPISdXJ/Gwx9ripIWxfSgIkJn65QVGUNPteDYrDS1JmwUY1e39Wb
- iQFOvMmQGwVGRZumROgZDulIn2hCCyYg7DX8BL66e+FWqSKRYt1tBbNYWRDjFCywtakPujf2e
- Vtncs1ZGcXvnZs0eKsCHUHGUxSwhNKF59V6a7TfUCD5gMKfWjHmSunfqbHWG4xgllp2+fivRW
- G5Hy2BqLA2GfNrKAH8TbhItyg5l1ZTdFHuoUPpVwXVrf2moYBQ+eu9vT/q52bYWH6pZdypBIJ
- jhrgYp7MRn9FEgZ0NpbKN3r9QQTkCLD8Gp3Zq70xR/RLB1+kjbsnNcLN2wQQqMZkw91RtMTlw
- dmHYONv5CIb+Uf9UR3wbr5ET7naS59qaywvFe23AMaH2X7EE8ERWcAR6AjeVbpEA0EacdAEqP
- Js36n63Jyb1eKK6KApppY865UkpYKB6WN0K9zXH+g7uTg8W7Od2qKc5+xcoJg7XTvibewWwNW
- XvkrJN9Eah1QK0aXc8xNpSnBAgUIiOjhV5NjFwtecRfmmFe2Ul3w02D4jesFSBSHZXrLWG5G1
- xftHJHV14i0VBx09AyFpXP32ibFDeEF5MoNWBVaCCBktbGIWpQCP8e59aVQN+EScY3Gj8FkDe
- JHicRWkSY6emjvcYxyD5Bw2AiWEJQru7IvhCRb/rU=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
-Subject: [Qemu-trivial] [PULL 0/8] Trivial branch patches
+References: <20190919135443.15164-1-laurent@vivier.eu>
+In-Reply-To: <20190919135443.15164-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 20 Sep 2019 17:28:22 +0100
+Message-ID: <CAFEAcA8QkkKQ_kMZ2x0xsW1Sp3sK+=i+QRGcDQ+rzq9emustSg@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PULL 0/8] Trivial branch patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::342
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -57,68 +65,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Sep 2019 13:58:33 -0000
+X-List-Received-Date: Fri, 20 Sep 2019 16:28:40 -0000
 
-The following changes since commit f8c3db33a5e863291182f8862ddf81618a7c6194:
+On Thu, 19 Sep 2019 at 15:02, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit f8c3db33a5e863291182f8862ddf81618a7c6194:
+>
+>   target/sparc: Switch to do_transaction_failed() hook (2019-09-17 12:01:00 +0100)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+>
+> for you to fetch changes up to 754119198de633683d7af79bc08e73c2de9df011:
+>
+>   configure: Add xkbcommon configure options (2019-09-19 14:42:31 +0200)
+>
+> ----------------------------------------------------------------
+> Trivial patches 20190919
+>
 
-  target/sparc: Switch to do_transaction_failed() hook (2019-09-17 12:01:00 +0100)
 
-are available in the Git repository at:
+Applied, thanks.
 
-  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+Please update the changelog at https://wiki.qemu.org/ChangeLog/4.2
+for any user-visible changes.
 
-for you to fetch changes up to 754119198de633683d7af79bc08e73c2de9df011:
-
-  configure: Add xkbcommon configure options (2019-09-19 14:42:31 +0200)
-
-----------------------------------------------------------------
-Trivial patches 20190919
-
-----------------------------------------------------------------
-
-Chen Zhang (1):
-  vfio: fix a typo
-
-Eric Blake (1):
-  build: Don't ignore qapi-visit-core.c
-
-Greg Kurz (1):
-  kvm: Fix typo in header of kvm_device_access()
-
-James Le Cuirot (1):
-  configure: Add xkbcommon configure options
-
-Justin Hibbits (1):
-  Fix cacheline detection on FreeBSD/powerpc.
-
-KONRAD Frederic (1):
-  target/m68k/fpu_helper.c: rename the access arguments
-
-Philippe Mathieu-Daudé (1):
-  cutils: Move size_to_str() from "qemu-common.h" to "qemu/cutils.h"
-
-Thomas Huth (1):
-  Replace '-machine accel=xyz' with '-accel xyz'
-
- .gitignore                          |  1 +
- block/qapi.c                        |  2 +-
- configure                           |  5 +++++
- hw/vfio/pci.c                       |  4 ++--
- include/qemu-common.h               |  1 -
- include/qemu/cutils.h               |  2 ++
- include/sysemu/kvm.h                |  2 +-
- python/qemu/qtest.py                |  2 +-
- qapi/string-output-visitor.c        |  2 +-
- qemu-deprecated.texi                |  3 +--
- qemu-options.hx                     |  2 +-
- target/m68k/fpu_helper.c            |  8 ++++----
- tests/libqtest.c                    |  2 +-
- tests/migration/guestperf/engine.py |  2 +-
- tests/qemu-iotests/172              |  2 +-
- util/cacheinfo.c                    | 23 +++++++++++++----------
- 16 files changed, 36 insertions(+), 27 deletions(-)
-
--- 
-2.21.0
-
+-- PMM
 
