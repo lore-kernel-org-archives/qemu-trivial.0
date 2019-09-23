@@ -1,88 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iCLPO-0003SI-GD
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Sep 2019 06:17:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33494)
+	id 1iCMYL-0006cM-Bh
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Sep 2019 07:30:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42314)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iCLPL-0003OT-5m
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 06:17:28 -0400
+ (envelope-from <armbru@redhat.com>) id 1iCMYH-0006aN-Ga
+ for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 07:30:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iCLPK-0007vz-3Y
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 06:17:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50578)
+ (envelope-from <armbru@redhat.com>) id 1iCMYF-0000B6-Fx
+ for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 07:30:44 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39646)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1iCLPE-0007oe-Er; Mon, 23 Sep 2019 06:17:20 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ (Exim 4.71) (envelope-from <armbru@redhat.com>)
+ id 1iCMYB-0000AR-VH; Mon, 23 Sep 2019 07:30:40 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 4440118CB8ED;
- Mon, 23 Sep 2019 10:17:19 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-120.ams2.redhat.com [10.36.116.120])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 362915D9E2;
- Mon, 23 Sep 2019 10:17:14 +0000 (UTC)
-Subject: Re: [PATCH] hw/arm/boot: Use the IEC binary prefix definitions
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20190921103405.19623-1-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
- mQINBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
- yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
- 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
- tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
- 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
- O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
- 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
- gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
- 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
- zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABtB5UaG9tYXMgSHV0
- aCA8dGh1dGhAcmVkaGF0LmNvbT6JAjgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
- AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
- QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
- EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
- 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
- eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
- ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
- zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
- tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
- WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
- UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDuQIN
- BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
- 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
- +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
- 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
- gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
- WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
- VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
- knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
- cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
- X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABiQIfBBgBAgAJBQJR+3lM
- AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
- ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
- fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
- 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
- cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
- ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
- Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
- oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
- IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
- yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-Organization: Red Hat
-Message-ID: <908de611-8875-843b-ea56-2d75d8a8d30d@redhat.com>
-Date: Mon, 23 Sep 2019 12:17:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ by mx1.redhat.com (Postfix) with ESMTPS id 4E5EA3064FD2;
+ Mon, 23 Sep 2019 11:30:39 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-117-142.ams2.redhat.com
+ [10.36.117.142])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id EA36F5C1B2;
+ Mon, 23 Sep 2019 11:30:38 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 75F80113864E; Mon, 23 Sep 2019 13:30:37 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH] Replace '-machine accel=xyz' with '-accel
+ xyz'
+References: <20190904052739.22123-1-thuth@redhat.com>
+ <5e8d67e5-842f-7cea-28a5-f07050615c38@redhat.com>
+Date: Mon, 23 Sep 2019 13:30:37 +0200
+In-Reply-To: <5e8d67e5-842f-7cea-28a5-f07050615c38@redhat.com> (Paolo
+ Bonzini's message of "Mon, 9 Sep 2019 19:06:26 +0200")
+Message-ID: <87wodzp7vm.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20190921103405.19623-1-philmd@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="Olpvw2oJcfJiOB0J6Sop2EsrcRUfoyM7Y"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.63]); Mon, 23 Sep 2019 10:17:19 +0000 (UTC)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.45]); Mon, 23 Sep 2019 11:30:39 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
@@ -96,109 +56,145 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Sep 2019 10:17:28 -0000
+X-List-Received-Date: Mon, 23 Sep 2019 11:30:47 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---Olpvw2oJcfJiOB0J6Sop2EsrcRUfoyM7Y
-Content-Type: multipart/mixed; boundary="FHhfKoDvy6YwjrajVhHlu9mi4XQJkx1N7";
- protected-headers="v1"
-From: Thomas Huth <thuth@redhat.com>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Message-ID: <908de611-8875-843b-ea56-2d75d8a8d30d@redhat.com>
-Subject: Re: [PATCH] hw/arm/boot: Use the IEC binary prefix definitions
-References: <20190921103405.19623-1-philmd@redhat.com>
-In-Reply-To: <20190921103405.19623-1-philmd@redhat.com>
+Paolo Bonzini <pbonzini@redhat.com> writes:
 
---FHhfKoDvy6YwjrajVhHlu9mi4XQJkx1N7
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+> On 04/09/19 07:27, Thomas Huth wrote:
+>> We've got a separate option to configure the accelerator nowadays, which
+>> is shorter to type and the preferred way of specifying an accelerator.
+>> Use it in the source and examples to show that it is the favored option.
+>> (However, do not touch the places yet which also specify other machine
+>> options or multiple accelerators - these are currently still better
+>> handled with one single "-machine" statement instead)
+>>=20
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>>  python/qemu/qtest.py                | 2 +-
+>>  qemu-deprecated.texi                | 3 +--
+>>  qemu-options.hx                     | 2 +-
+>>  tests/libqtest.c                    | 2 +-
+>>  tests/migration/guestperf/engine.py | 2 +-
+>>  tests/qemu-iotests/172              | 2 +-
+>>  6 files changed, 6 insertions(+), 7 deletions(-)
+>>=20
+>> diff --git a/python/qemu/qtest.py b/python/qemu/qtest.py
+>> index eebcc233ed..3f1d2cb325 100644
+>> --- a/python/qemu/qtest.py
+>> +++ b/python/qemu/qtest.py
+>> @@ -96,7 +96,7 @@ class QEMUQtestMachine(QEMUMachine):
+>>      def _base_args(self):
+>>          args =3D super(QEMUQtestMachine, self)._base_args()
+>>          args.extend(['-qtest', 'unix:path=3D' + self._qtest_path,
+>> -                     '-machine', 'accel=3Dqtest'])
+>> +                     '-accel', 'qtest'])
+>>          return args
+>>=20=20
+>>      def _pre_launch(self):
+>> diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
+>> index 00a4b6f350..0982e41698 100644
+>> --- a/qemu-deprecated.texi
+>> +++ b/qemu-deprecated.texi
+>> @@ -26,8 +26,7 @@ The @option{enforce-config-section} parameter is repla=
+ced by the
+>>=20=20
+>>  @subsection -no-kvm (since 1.3.0)
+>>=20=20
+>> -The ``-no-kvm'' argument is now a synonym for setting
+>> -``-machine accel=3Dtcg''.
+>> +The ``-no-kvm'' argument is now a synonym for setting ``-accel tcg''.
+>>=20=20
+>>  @subsection -usbdevice (since 2.10.0)
+>>=20=20
+>> diff --git a/qemu-options.hx b/qemu-options.hx
+>> index 09e6439646..e0bba2abd1 100644
+>> --- a/qemu-options.hx
+>> +++ b/qemu-options.hx
+>> @@ -4156,7 +4156,7 @@ STEXI
+>>  Enable FIPS 140-2 compliance mode.
+>>  ETEXI
+>>=20=20
+>> -HXCOMM Deprecated by -machine accel=3Dtcg property
+>> +HXCOMM Deprecated by -accel tcg
+>>  DEF("no-kvm", 0, QEMU_OPTION_no_kvm, "", QEMU_ARCH_I386)
+>>=20=20
+>>  DEF("msg", HAS_ARG, QEMU_OPTION_msg,
+>> diff --git a/tests/libqtest.c b/tests/libqtest.c
+>> index 2713b86cf7..67e39c59e7 100644
+>> --- a/tests/libqtest.c
+>> +++ b/tests/libqtest.c
+>> @@ -238,7 +238,7 @@ QTestState *qtest_init_without_qmp_handshake(const c=
+har *extra_args)
+>>                                "-qtest-log %s "
+>>                                "-chardev socket,path=3D%s,id=3Dchar0 "
+>>                                "-mon chardev=3Dchar0,mode=3Dcontrol "
+>> -                              "-machine accel=3Dqtest "
+>> +                              "-accel qtest "
+>>                                "-display none "
+>>                                "%s", qemu_binary, socket_path,
+>>                                getenv("QTEST_LOG") ? "/dev/fd/2" : "/dev=
+/null",
+>> diff --git a/tests/migration/guestperf/engine.py b/tests/migration/guest=
+perf/engine.py
+>> index f13dbea800..1dd04ce33b 100644
+>> --- a/tests/migration/guestperf/engine.py
+>> +++ b/tests/migration/guestperf/engine.py
+>> @@ -287,7 +287,7 @@ class Engine(object):
+>>              cmdline =3D "'" + cmdline + "'"
+>>=20=20
+>>          argv =3D [
+>> -            "-machine", "accel=3Dkvm",
+>> +            "-accel", "kvm",
+>>              "-cpu", "host",
+>>              "-kernel", self._kernel,
+>>              "-initrd", self._initrd,
+>> diff --git a/tests/qemu-iotests/172 b/tests/qemu-iotests/172
+>> index ba7dad9057..d67997e5f6 100755
+>> --- a/tests/qemu-iotests/172
+>> +++ b/tests/qemu-iotests/172
+>> @@ -55,7 +55,7 @@ do_run_qemu()
+>>              done
+>>          fi
+>>          echo quit
+>> -    ) | $QEMU -machine accel=3Dqtest -nographic -monitor stdio -serial =
+none "$@"
+>> +    ) | $QEMU -accel qtest -nographic -monitor stdio -serial none "$@"
+>>      echo
+>>  }
+>>=20=20
+>>=20
+>
+> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+>
+> Thanks.  While "-accel kvm:tcg" is not going to be supported, the above
+> replacement are all good.
 
-On 21/09/2019 12.34, Philippe Mathieu-Daud=C3=A9 wrote:
-> IEC binary prefixes ease code review: the unit is explicit.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/arm/boot.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->=20
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index bf97ef3e33..59bb2fa0d3 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -1095,7 +1095,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *=
-cpu,
->       * we might still make a bad choice here.
->       */
->      info->initrd_start =3D info->loader_start +
-> -        MIN(info->ram_size / 2, 128 * 1024 * 1024);
-> +        MIN(info->ram_size / 2, 128 * MiB);
->      if (image_high_addr) {
->          info->initrd_start =3D MAX(info->initrd_start, image_high_addr=
-);
->      }
-> @@ -1155,13 +1155,13 @@ static void arm_setup_direct_kernel_boot(ARMCPU=
- *cpu,
->                   *
->                   * Let's play safe and prealign it to 2MB to give us s=
-ome space.
->                   */
-> -                align =3D 2 * 1024 * 1024;
-> +                align =3D 2 * MiB;
->              } else {
->                  /*
->                   * Some 32bit kernels will trash anything in the 4K pa=
-ge the
->                   * initrd ends in, so make sure the DTB isn't caught u=
-p in that.
->                   */
-> -                align =3D 4096;
-> +                align =3D 4 * KiB;
->              }
-> =20
->              /* Place the DTB after the initrd in memory with alignment=
-=2E */
-> @@ -1178,7 +1178,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *=
-cpu,
->                  info->loader_start + KERNEL_ARGS_ADDR;
->              fixupcontext[FIXUP_ARGPTR_HI] =3D
->                  (info->loader_start + KERNEL_ARGS_ADDR) >> 32;
-> -            if (info->ram_size >=3D (1ULL << 32)) {
-> +            if (info->ram_size >=3D 4 * GiB) {
->                  error_report("RAM size must be less than 4GB to boot"
->                               " Linux kernel using ATAGS (try passing a=
- device tree"
->                               " using -dtb)");
->=20
+-accel is yet another convenience option.  We have so many of them.  I
+dislike the complexity they add to the CLI.  Here's how this one got in:
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+commit 8d4e9146b3568022ea5730d92841345d41275d66
+Author: KONRAD Frederic <fred.konrad@greensocs.com>
+Date:   Thu Feb 23 18:29:08 2017 +0000
 
+    tcg: add options for enabling MTTCG
+=20=20=20=20
+    We know there will be cases where MTTCG won't work until additional work
+    is done in the front/back ends to support. It will however be useful to
+    be able to turn it on.
+=20=20=20=20
+    As a result MTTCG will default to off unless the combination is
+    supported. However the user can turn it on for the sake of testing.
+=20=20=20=20
+    Signed-off-by: KONRAD Frederic <fred.konrad@greensocs.com>
+    [AJB: move to -accel tcg,thread=3Dmulti|single, defaults]
+    Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+    Reviewed-by: Richard Henderson <rth@twiddle.net>
 
---FHhfKoDvy6YwjrajVhHlu9mi4XQJkx1N7--
+Not a peep on why the existing options are so insufficient we must have
+another one.
 
---Olpvw2oJcfJiOB0J6Sop2EsrcRUfoyM7Y
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+Our CLI will remain the steaming mess it has become until we reform the
+habits that got us there.
 
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEJ7iIR+7gJQEY8+q5LtnXdP5wLbUFAl2Im6UACgkQLtnXdP5w
-LbUW9A/8CkW8WK2gJmI5/raC+0iuGw6z4qoipdoHYoApP2yj0D/cn9qjErIVQAA9
-W4Hq+g5t8id8f5znOKJlmGYTd+zXbroMHHBDIAncbWzASrrgtdoWLp58leY50Zhf
-A/wgLNFzy1ZS4ENJlM/ay0jSmIrhl1DAhTsxmYQAlXbseHtBSUNkao1LNd7R2zO6
-bNdJJrhbAciZZwhTfWK+wjITd+/z+pFobTD+AyOesPkJK5iAo040VSqP6qA83JSb
-Ln0DKV2QDyN3gMjOwC5YIQJCjMmUrjjMslsnAT9IU2l40Fr1p88dFE3Vol5MtmMl
-FVxTAza9z3vkONTNMzFSnXsLJU21kLO920jzuF96Xiy4bu1GT4/lvbNMLt9FYyTb
-BHuKwuFRimRjdZgTrYRjIn0V5ttjXufakdq8lBfCZfARdcfoyB/K86TPYvQtImTW
-gHwKVZGx6FOncd2BrGscY+Uh4PYbUuAtrr6mhcgyLIceyv70lfHzzxKEHStAOKQm
-/o6d7wApMhQfj1yTy5fJ2P41Qqk8YABUNhyxXRPQM8ar/bihfWBQQGpOy2GtIpAy
-49jt6ny/32Eos616Cm6cPSLkGgz5UwI1HrLyWp3fDS7CmLJQyLBM1Lv5T6890wq+
-K+T5QvPUb0tuh3HtWiEKr9/wL7kbukKXia+jDxIaYSXe5VXOsE8=
-=R82V
------END PGP SIGNATURE-----
-
---Olpvw2oJcfJiOB0J6Sop2EsrcRUfoyM7Y--
+No objection to your patch.
 
