@@ -1,42 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iCO7q-00022l-MI
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Sep 2019 09:11:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55051)
+	id 1iCOwC-0008Bq-Pz
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Sep 2019 10:03:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34802)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iCO7k-00020Y-DY
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 09:11:30 -0400
+ (envelope-from <pbonzini@redhat.com>) id 1iCOw6-00087r-QG
+ for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 10:03:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iCO7i-0006Vs-F1
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 09:11:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56514)
+ (envelope-from <pbonzini@redhat.com>) id 1iCOw4-0000xN-8t
+ for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 10:03:29 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55538)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iCO7a-0006Tk-1d; Mon, 23 Sep 2019 09:11:19 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1iCOw1-0000w6-NB
+ for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 10:03:26 -0400
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id A62A4C01B81A;
- Mon, 23 Sep 2019 13:11:16 +0000 (UTC)
-Received: from x1w.redhat.com (unknown [10.40.205.15])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1659710013D9;
- Mon, 23 Sep 2019 13:11:10 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Stefano Garzarella <sgarzare@redhat.com>, Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v2] hw/arm/boot: Use the IEC binary prefix definitions
-Date: Mon, 23 Sep 2019 15:11:08 +0200
-Message-Id: <20190923131108.21459-1-philmd@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id A2756C054C52
+ for <qemu-trivial@nongnu.org>; Mon, 23 Sep 2019 14:03:24 +0000 (UTC)
+Received: by mail-wr1-f69.google.com with SMTP id h6so4905964wrh.6
+ for <qemu-trivial@nongnu.org>; Mon, 23 Sep 2019 07:03:24 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=bdLGECz6UTASApait+2uuLepYLMmCoyTNfj+vR5SixE=;
+ b=b/JcA3Jun6Vhl5roUdNFpFNGKd/fnB4KFk1PW96mW2f/tM0wxQv50uKnR66IV2EXH9
+ kv2JziIr1BZdHFlYPdVzqsC4qkfBMwxJe647PqgsHZ+qkak8IaRQfemekBThoCeQhT8t
+ J1FPsZepA1LtF3VwFgqWrPWT3vsebPS9JzdhKVoK2neVcaD288nMvu4dXkq4r5YHJwE/
+ Us7DaBSG6Ar7x+1nHe/7OePM491iwSplPUeXAoIjIbDTOujRSUd4b4Rx+VHbXzs+2UBD
+ AcJstLPc7cqQpACncuvHB0eLZ0AHR6uaiLoO0Uk4QFUeR5yll3CcLQwEawZ9posn1nQz
+ KrPQ==
+X-Gm-Message-State: APjAAAVBzEp2N/li45iYiFLQBpXwyshWg/TyX7dBFuSEYa7reIRhYsMG
+ zJeO+ghIXxQZKy3IqhW4zN6ZDXpdUl95xPd3IiAUuvom+dP+i+p6NYFymv+l1whZFLC4NXzebSh
+ T2cFo/BPUxV5nqPerkg==
+X-Received: by 2002:a5d:684a:: with SMTP id o10mr20364974wrw.23.1569247403019; 
+ Mon, 23 Sep 2019 07:03:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyn0ItRAv+yr4hLHFmo/G4aX4KbBy8MoVr9/yXTlbcsZh8XmtAmoQmVPlPjBZt+HE/WZyYkuw==
+X-Received: by 2002:a5d:684a:: with SMTP id o10mr20364956wrw.23.1569247402722; 
+ Mon, 23 Sep 2019 07:03:22 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:9520:22e6:6416:5c36?
+ ([2001:b07:6468:f312:9520:22e6:6416:5c36])
+ by smtp.gmail.com with ESMTPSA id s12sm14324430wrn.90.2019.09.23.07.03.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 23 Sep 2019 07:03:21 -0700 (PDT)
+Subject: Re: [PATCH] Disallow colons in the parameter of "-accel"
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20190923121712.22971-1-thuth@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <41ed27d8-5494-28f0-2ca6-770f0969bc4d@redhat.com>
+Date: Mon, 23 Sep 2019 16:03:21 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.32]); Mon, 23 Sep 2019 13:11:16 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20190923121712.22971-1-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
@@ -50,77 +73,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Sep 2019 13:11:30 -0000
+X-List-Received-Date: Mon, 23 Sep 2019 14:03:35 -0000
 
-IEC binary prefixes ease code review: the unit is explicit.
+On 23/09/19 14:17, Thomas Huth wrote:
+> Everybody who used something like "-machine accel=kvm:tcg" in the past
+> might be tempted to specify a similar list with the -accel parameter,
+> too, for example "-accel kvm:tcg". However, this is not how this
+> options is thought to be used, since each "-accel" should only take care
+> of one specific accelerator.
+> 
+> In the long run, we really should rework the "-accel" code completely,
+> so that it does not set "-machine accel=..." anymore internally, but
+> is completely independent from "-machine". For the short run, let's
+> make sure that users cannot use "-accel xyz:tcg", so that we avoid
+> that we have to deal with such cases in the wild later.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  vl.c | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/vl.c b/vl.c
+> index 630f5c5e9c..68f47a9c25 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -3554,6 +3554,11 @@ int main(int argc, char **argv, char **envp)
+>                      g_slist_free(accel_list);
+>                      exit(0);
+>                  }
+> +                if (optarg && strchr(optarg, ':')) {
+> +                    error_report("Don't use ':' with -accel, "
+> +                                 "use -M accel=... in this case instead");
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
-v2: Use 4*GiB in arm_load_dtb (sgarzare)
----
- hw/arm/boot.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+s/in this case/for now/ or something like that?
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index bf97ef3e33..bc3e7be1e6 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -575,7 +575,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
-nfo *binfo,
-         goto fail;
-     }
-=20
--    if (scells < 2 && binfo->ram_size >=3D (1ULL << 32)) {
-+    if (scells < 2 && binfo->ram_size >=3D 4 * GiB) {
-         /* This is user error so deserves a friendlier error message
-          * than the failure of setprop_sized_cells would provide
-          */
-@@ -1095,7 +1095,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cp=
-u,
-      * we might still make a bad choice here.
-      */
-     info->initrd_start =3D info->loader_start +
--        MIN(info->ram_size / 2, 128 * 1024 * 1024);
-+        MIN(info->ram_size / 2, 128 * MiB);
-     if (image_high_addr) {
-         info->initrd_start =3D MAX(info->initrd_start, image_high_addr);
-     }
-@@ -1155,13 +1155,13 @@ static void arm_setup_direct_kernel_boot(ARMCPU *=
-cpu,
-                  *
-                  * Let's play safe and prealign it to 2MB to give us som=
-e space.
-                  */
--                align =3D 2 * 1024 * 1024;
-+                align =3D 2 * MiB;
-             } else {
-                 /*
-                  * Some 32bit kernels will trash anything in the 4K page=
- the
-                  * initrd ends in, so make sure the DTB isn't caught up =
-in that.
-                  */
--                align =3D 4096;
-+                align =3D 4 * KiB;
-             }
-=20
-             /* Place the DTB after the initrd in memory with alignment. =
-*/
-@@ -1178,7 +1178,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cp=
-u,
-                 info->loader_start + KERNEL_ARGS_ADDR;
-             fixupcontext[FIXUP_ARGPTR_HI] =3D
-                 (info->loader_start + KERNEL_ARGS_ADDR) >> 32;
--            if (info->ram_size >=3D (1ULL << 32)) {
-+            if (info->ram_size >=3D 4 * GiB) {
-                 error_report("RAM size must be less than 4GB to boot"
-                              " Linux kernel using ATAGS (try passing a d=
-evice tree"
-                              " using -dtb)");
---=20
-2.20.1
+Thanks,
+
+Paolo
+
+> +                    exit(1);
+> +                }
+>                  opts = qemu_opts_create(qemu_find_opts("machine"), NULL,
+>                                          false, &error_abort);
+>                  qemu_opt_set(opts, "accel", optarg, &error_abort);
+> 
 
 
