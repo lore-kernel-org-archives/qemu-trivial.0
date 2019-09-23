@@ -1,65 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iCJiu-0006AR-KH
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Sep 2019 04:29:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46491)
+	id 1iCJwI-0003XP-5c
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Sep 2019 04:43:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48794)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <sgarzare@redhat.com>) id 1iCJis-00067V-3o
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 04:29:31 -0400
+ (envelope-from <philmd@redhat.com>) id 1iCJwE-0003Sg-81
+ for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 04:43:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <sgarzare@redhat.com>) id 1iCJiq-0007Yf-Ng
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 04:29:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36202)
+ (envelope-from <philmd@redhat.com>) id 1iCJwD-0006hl-0l
+ for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 04:43:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39762)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1iCJio-0007XS-Oq
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 04:29:27 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iCJwC-0006hZ-Pg
+ for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 04:43:16 -0400
 Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
  [209.85.128.71])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id C5DB12A09A1
- for <qemu-trivial@nongnu.org>; Mon, 23 Sep 2019 08:29:23 +0000 (UTC)
-Received: by mail-wm1-f71.google.com with SMTP id o188so6319903wmo.5
- for <qemu-trivial@nongnu.org>; Mon, 23 Sep 2019 01:29:23 -0700 (PDT)
+ by mx1.redhat.com (Postfix) with ESMTPS id BF66B2A09BA
+ for <qemu-trivial@nongnu.org>; Mon, 23 Sep 2019 08:43:15 +0000 (UTC)
+Received: by mail-wm1-f71.google.com with SMTP id z205so6314600wmb.7
+ for <qemu-trivial@nongnu.org>; Mon, 23 Sep 2019 01:43:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=kikYKHfL3Ck2fN5906iWkH6+cgjWSLcj4UEJt3nusl4=;
- b=lKrR2vREmuLgxoc8TIrSfTvAtzcCTBZNBCsfDRZD5kvP/NTJgJ16mcHEOvC1r48wg9
- hq8WF+aPWCAl7yxtr24UYk8XD111C2rTs7qkV8bwGcjgn5UGuxcmu9wPXGs5mmpqJTA1
- J8smvz5pMxmZQZC3cmy7yJlLhx8LTC8o+g8At7MCaKKaqqNhgVDni9YXcN4FTAUsrF/U
- UqULSEwITe5lgxL6UOYtp4MIoxGPksKWdYpY1knyvKXvYMJdM1rpfgQDvdCPCW3XmAcC
- kAxuCh6P+DrjdVt1cmiKAyJrBRJ5QrY8Xon0jBJbIqxtGG5P275sDCwInCM50G7zwfRt
- 4O5w==
-X-Gm-Message-State: APjAAAVZ/ptc3l427M1aKF96wZMYjCtS31SjC/guV7jQZeObEoYf8BWN
- I/NhN62fBNciTpl0Dwb4gt3qFZbJIEe29imKA33LJysGD7/PA7GAN//1Rutajk7cnLqUb56Oqk3
- afAoMGI8iPfT2dMv7Vg==
-X-Received: by 2002:a1c:7ed7:: with SMTP id
- z206mr13700943wmc.124.1569227362480; 
- Mon, 23 Sep 2019 01:29:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzKX0HB9ZtvLtoSuZ2BX1CVOs4/0nzjuxdglPCbtiFmBe8VaHKy/UJBrfY1PW5dU113hHXcdQ==
-X-Received: by 2002:a1c:7ed7:: with SMTP id
- z206mr13700926wmc.124.1569227362235; 
- Mon, 23 Sep 2019 01:29:22 -0700 (PDT)
-Received: from steredhat (host170-61-dynamic.36-79-r.retail.telecomitalia.it.
- [79.36.61.170])
- by smtp.gmail.com with ESMTPSA id e6sm10312791wrp.91.2019.09.23.01.29.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Sep 2019 01:29:21 -0700 (PDT)
-Date: Mon, 23 Sep 2019 10:29:19 +0200
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=RZ8TfihFLFp9ogn/VN3z57FhE0lipjbfgVMgo4BXLqI=;
+ b=h5H5ATb5DjVgYIETNpfi4EVHAifum11HJJaipziRV6xAMWxXP74O2t5oGK8Q9vGOtn
+ QAnENBvyEOvrSmxLLtWaW65BxykCCnUIRPvuftnZYkw9MzjYZdJm6mCYWWyxcDgjz2iG
+ O2X/BT/N6sckp1rFXuAyiN/xbOD9Js7WF8sPitcqF/2O8wz+80tb4yQLl7BLB0keHaW7
+ rQxaoImylMjscfje8If9F5wE4fnmDsvxVTSNyzkEOA7ujUdzadsqBgSpu9JoR1L4Lbii
+ 4EqDTRHC+R7qAHTZneuiyNiGA2cjltGoaTAj8/jRnHg4mzCSahs0iFrKfFq5rdF32JWY
+ kAsQ==
+X-Gm-Message-State: APjAAAV9mn0MHHSA9hTscZKDnSo/lZ4J3INzEHtDqBQTHNIzput84JC4
+ 6VhBfneqcqDS82S6OA48V2Tlwj6zU0Q/5S66Kar2z2/VaPepeNWaqMhI1WqvsjbApWZhcMFID0S
+ YN9SJtLbZ7+1IZDKIQg==
+X-Received: by 2002:a05:600c:2412:: with SMTP id
+ 18mr12278158wmp.128.1569228194524; 
+ Mon, 23 Sep 2019 01:43:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzh5Dsh7lCmgMElQwKIcdcTwg3vHI378RhNCjA7e+DgtswSSab7CCNH19LkCShVhCZox92edw==
+X-Received: by 2002:a05:600c:2412:: with SMTP id
+ 18mr12278143wmp.128.1569228194240; 
+ Mon, 23 Sep 2019 01:43:14 -0700 (PDT)
+Received: from [192.168.1.40] (240.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.240])
+ by smtp.gmail.com with ESMTPSA id c18sm8776662wrv.10.2019.09.23.01.43.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 23 Sep 2019 01:43:13 -0700 (PDT)
+Subject: Re: [PATCH] hw/arm/boot: Use the IEC binary prefix definitions
+To: Stefano Garzarella <sgarzare@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: Re: [PATCH] hw/arm/boot: Use the IEC binary prefix definitions
-Message-ID: <20190923082919.y2fjn2y6t7lire3z@steredhat>
 References: <20190921103405.19623-1-philmd@redhat.com>
+ <20190923082919.y2fjn2y6t7lire3z@steredhat>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <75b5eaec-5e00-6dd0-1a67-b0dafd2d5622@redhat.com>
+Date: Mon, 23 Sep 2019 10:43:12 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20190921103405.19623-1-philmd@redhat.com>
-User-Agent: NeoMutt/20180716
+In-Reply-To: <20190923082919.y2fjn2y6t7lire3z@steredhat>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
@@ -74,84 +78,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Sep 2019 08:29:31 -0000
+X-List-Received-Date: Mon, 23 Sep 2019 08:43:20 -0000
 
-On Sat, Sep 21, 2019 at 12:34:04PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> IEC binary prefixes ease code review: the unit is explicit.
+On 9/23/19 10:29 AM, Stefano Garzarella wrote:
+> On Sat, Sep 21, 2019 at 12:34:04PM +0200, Philippe Mathieu-Daud=C3=A9 w=
+rote:
+>> IEC binary prefixes ease code review: the unit is explicit.
+>>
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> ---
+>>  hw/arm/boot.c | 8 ++++----
+>>  1 file changed, 4 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+>> index bf97ef3e33..59bb2fa0d3 100644
+>> --- a/hw/arm/boot.c
+>> +++ b/hw/arm/boot.c
 >=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> ---
->  hw/arm/boot.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+> Very appreciated!
 >=20
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index bf97ef3e33..59bb2fa0d3 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-
-Very appreciated!
-
-What about fixing also this other line?
-
-@@ -575,7 +575,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
-nfo *binfo,
-         goto fail;
-     }
-=20
--    if (scells < 2 && binfo->ram_size >=3D (1ULL << 32)) {
-+    if (scells < 2 && binfo->ram_size >=3D 4 * GiB) {
-         /* This is user error so deserves a friendlier error message
-          * than the failure of setprop_sized_cells would provide
-
-
-> @@ -1095,7 +1095,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *=
-cpu,
->       * we might still make a bad choice here.
->       */
->      info->initrd_start =3D info->loader_start +
-> -        MIN(info->ram_size / 2, 128 * 1024 * 1024);
-> +        MIN(info->ram_size / 2, 128 * MiB);
->      if (image_high_addr) {
->          info->initrd_start =3D MAX(info->initrd_start, image_high_addr=
-);
+> What about fixing also this other line?
+>=20
+> @@ -575,7 +575,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot=
+_info *binfo,
+>          goto fail;
 >      }
-> @@ -1155,13 +1155,13 @@ static void arm_setup_direct_kernel_boot(ARMCPU=
- *cpu,
->                   *
->                   * Let's play safe and prealign it to 2MB to give us s=
-ome space.
->                   */
-> -                align =3D 2 * 1024 * 1024;
-> +                align =3D 2 * MiB;
->              } else {
->                  /*
->                   * Some 32bit kernels will trash anything in the 4K pa=
-ge the
->                   * initrd ends in, so make sure the DTB isn't caught u=
-p in that.
->                   */
-> -                align =3D 4096;
-> +                align =3D 4 * KiB;
->              }
 > =20
->              /* Place the DTB after the initrd in memory with alignment=
-. */
-> @@ -1178,7 +1178,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *=
-cpu,
->                  info->loader_start + KERNEL_ARGS_ADDR;
->              fixupcontext[FIXUP_ARGPTR_HI] =3D
->                  (info->loader_start + KERNEL_ARGS_ADDR) >> 32;
-> -            if (info->ram_size >=3D (1ULL << 32)) {
-> +            if (info->ram_size >=3D 4 * GiB) {
->                  error_report("RAM size must be less than 4GB to boot"
->                               " Linux kernel using ATAGS (try passing a=
- device tree"
->                               " using -dtb)");
+> -    if (scells < 2 && binfo->ram_size >=3D (1ULL << 32)) {
+> +    if (scells < 2 && binfo->ram_size >=3D 4 * GiB) {
 
-With or without the new line fix:
+Good idea!
 
-Acked-by: Stefano Garzarella <sgarzare@redhat.com>
+>          /* This is user error so deserves a friendlier error message
+>           * than the failure of setprop_sized_cells would provide
+>=20
+>=20
+>> @@ -1095,7 +1095,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU =
+*cpu,
+>>       * we might still make a bad choice here.
+>>       */
+>>      info->initrd_start =3D info->loader_start +
+>> -        MIN(info->ram_size / 2, 128 * 1024 * 1024);
+>> +        MIN(info->ram_size / 2, 128 * MiB);
+>>      if (image_high_addr) {
+>>          info->initrd_start =3D MAX(info->initrd_start, image_high_add=
+r);
+>>      }
+>> @@ -1155,13 +1155,13 @@ static void arm_setup_direct_kernel_boot(ARMCP=
+U *cpu,
+>>                   *
+>>                   * Let's play safe and prealign it to 2MB to give us =
+some space.
+>>                   */
+>> -                align =3D 2 * 1024 * 1024;
+>> +                align =3D 2 * MiB;
+>>              } else {
+>>                  /*
+>>                   * Some 32bit kernels will trash anything in the 4K p=
+age the
+>>                   * initrd ends in, so make sure the DTB isn't caught =
+up in that.
+>>                   */
+>> -                align =3D 4096;
+>> +                align =3D 4 * KiB;
+>>              }
+>> =20
+>>              /* Place the DTB after the initrd in memory with alignmen=
+t. */
+>> @@ -1178,7 +1178,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU =
+*cpu,
+>>                  info->loader_start + KERNEL_ARGS_ADDR;
+>>              fixupcontext[FIXUP_ARGPTR_HI] =3D
+>>                  (info->loader_start + KERNEL_ARGS_ADDR) >> 32;
+>> -            if (info->ram_size >=3D (1ULL << 32)) {
+>> +            if (info->ram_size >=3D 4 * GiB) {
+>>                  error_report("RAM size must be less than 4GB to boot"
+>>                               " Linux kernel using ATAGS (try passing =
+a device tree"
+>>                               " using -dtb)");
+>=20
+> With or without the new line fix:
+>=20
+> Acked-by: Stefano Garzarella <sgarzare@redhat.com>
 
-Thanks,
-Stefano
+Did you mean Reviewed-by?
+
+Regards,
+
+Phil.
 
