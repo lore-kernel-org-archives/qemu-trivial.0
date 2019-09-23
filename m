@@ -1,91 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iCNfw-0001W5-Nj
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Sep 2019 08:42:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51537)
+	id 1iCNk8-0003iI-Be
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Sep 2019 08:47:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51960)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iCNft-0001TL-AT
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 08:42:42 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iCNk5-0003hH-8y
+ for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 08:47:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iCNfs-00050p-3g
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 08:42:41 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53946)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1iCNfo-0004z6-DK; Mon, 23 Sep 2019 08:42:36 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id F3F6A10C093A;
- Mon, 23 Sep 2019 12:42:34 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-120.ams2.redhat.com [10.36.116.120])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9B68F5C1B2;
- Mon, 23 Sep 2019 12:42:33 +0000 (UTC)
-Subject: Re: [PATCH] Disallow colons in the parameter of "-accel"
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1iCNk4-0006nQ-3f
+ for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 08:47:00 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:44066)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iCNk3-0006my-Ui
+ for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 08:47:00 -0400
+Received: by mail-oi1-x243.google.com with SMTP id w6so7400454oie.11
+ for <qemu-trivial@nongnu.org>; Mon, 23 Sep 2019 05:46:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=jV176iHH3a7T3Z7Nm5lkp7y1hfpdPt8AAf1Vbsv9mlo=;
+ b=ukmwFMMKvEdg+p8uYqffGx9MIw3iVA0NQ0HICz+kzsAifpdL87G+WZS+QTbU5Oo2uL
+ QtkiOdoPdwl+VWDDN+m8AkodmYd36usz/3fv8wc9+pWs3EWPJ+RgSx+mSzcgBjewxnmK
+ ATcGf3/uMbzHsF8PdR2ghT73zXer69FJUQhapDOxvF4r6R2s7iXXDCpmWGxMCW/3aLac
+ 32vGMROG6ORpspMu7n5xtg4y1nApBt3p4CcCBp1WS5k4HQ2pRU1t6Hnb7GnzC3F8NQC1
+ la72AkUR8Ev4dA72iOOn1ZYHsSVt63WJJsZpkWiU8zga0PQUedtEPwG3C8h8Mr+CKLD9
+ gOIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=jV176iHH3a7T3Z7Nm5lkp7y1hfpdPt8AAf1Vbsv9mlo=;
+ b=aVbbrPARlEl6cjOBEXgeTKw+2QYnAzXEID+KzyzbkFA6yc2NhGaX6j8okAsD+QRBPB
+ EI6i1JmdFP79cStmA8VdN+s1pZ3jghba767yGLLYCKPFvL3XTqG07Z/zLil3gz39M/ax
+ Dt+wBpX/ZrE5X4Vbk1t7qTHXBOE5fgS8quYzpXENnDaYBbyobRPrh++glIsjJ5sCq6mp
+ EO1CGeX+PhTuIeo+v0YohiPp4R/kYRlI7+GdX4oRI9JaOnMvNth/908NPliq/7ZvWzGu
+ Ds5JAcPN2i6mnIdp7aHcIIVGxLwTl6IfA5VbXlJuIVXrxMsv2NqtVgj8h63JpopOI63g
+ xe1g==
+X-Gm-Message-State: APjAAAUe1uaQ/5rYfhI997KUguVJDZ0GFO//jZFCcbfGkqvp6SlwUbmE
+ 2rExbhfzzaOX5zwvTMy8vr0EpoNi8PoW6B1tcd47lA==
+X-Google-Smtp-Source: APXvYqzmBuWVB3XNOwg1Jm00EZvD9MBkuGvA6s7KtruGDKZv8PGmMjIoCLiagpuE10y13JBQFu9eiz7MQZp/Qn+xFaM=
+X-Received: by 2002:aca:f54d:: with SMTP id t74mr13547038oih.170.1569242818897; 
+ Mon, 23 Sep 2019 05:46:58 -0700 (PDT)
+MIME-Version: 1.0
 References: <20190923121712.22971-1-thuth@redhat.com>
  <CAFEAcA9jOD_mFOeVaAo5qsoj-Q0-U5qF8c85Am4ObgSn3b6irg@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat
-Message-ID: <cff2b157-910a-a97d-3fe1-a862e781eac8@redhat.com>
-Date: Mon, 23 Sep 2019 14:42:32 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9jOD_mFOeVaAo5qsoj-Q0-U5qF8c85Am4ObgSn3b6irg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.66]); Mon, 23 Sep 2019 12:42:35 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+ <cff2b157-910a-a97d-3fe1-a862e781eac8@redhat.com>
+In-Reply-To: <cff2b157-910a-a97d-3fe1-a862e781eac8@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 23 Sep 2019 13:46:47 +0100
+Message-ID: <CAFEAcA-bUT4o0=Vs7zrnx_aS0XBaWuedsUv-rMu5cimV7S5a9A@mail.gmail.com>
+Subject: Re: [PATCH] Disallow colons in the parameter of "-accel"
+To: Thomas Huth <thuth@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::243
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -97,71 +68,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Sep 2019 12:42:42 -0000
+X-List-Received-Date: Mon, 23 Sep 2019 12:47:02 -0000
 
-On 23/09/2019 14.23, Peter Maydell wrote:
-> On Mon, 23 Sep 2019 at 13:21, Thomas Huth <thuth@redhat.com> wrote:
->>
->> Everybody who used something like "-machine accel=3Dkvm:tcg" in the pa=
-st
->> might be tempted to specify a similar list with the -accel parameter,
->> too, for example "-accel kvm:tcg". However, this is not how this
->> options is thought to be used, since each "-accel" should only take ca=
-re
->> of one specific accelerator.
->>
->> In the long run, we really should rework the "-accel" code completely,
->> so that it does not set "-machine accel=3D..." anymore internally, but
->> is completely independent from "-machine". For the short run, let's
->> make sure that users cannot use "-accel xyz:tcg", so that we avoid
->> that we have to deal with such cases in the wild later.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  vl.c | 5 +++++
->>  1 file changed, 5 insertions(+)
->>
->> diff --git a/vl.c b/vl.c
->> index 630f5c5e9c..68f47a9c25 100644
->> --- a/vl.c
->> +++ b/vl.c
->> @@ -3554,6 +3554,11 @@ int main(int argc, char **argv, char **envp)
->>                      g_slist_free(accel_list);
->>                      exit(0);
->>                  }
->> +                if (optarg && strchr(optarg, ':')) {
->> +                    error_report("Don't use ':' with -accel, "
->> +                                 "use -M accel=3D... in this case ins=
-tead");
->> +                    exit(1);
->> +                }
->=20
-> This seems pretty ugly.
+On Mon, 23 Sep 2019 at 13:42, Thomas Huth <thuth@redhat.com> wrote:
+>
+> On 23/09/2019 14.23, Peter Maydell wrote:
+> > This seems pretty ugly.
+>
+> Yes. The whole "-accel" option is currently ugly. My patch is just a
+> temporary work-around to prevent that we later have to deal with the
+> fact that users started to use this colon here in the wild and we would
+> then have to fight to get rid of it again.
+>
+> > If -accel is the way we're recommending
+> > users configure the accelerator then it should support syntax
+> > for specifying everything we could do with the old -machine...
+> > option.
+>
+> No, we certainly don't want to have the colon in here. The idea is
+> rather that you could specify multiply "-accel" options one day, e.g.:
+>
+>  -accel tcg,tb-size=2048 -accel kvm,kernel_irqchip=on
+>
+> ... and then the accelators are used with the right parameters in the
+> order of availability.
+>
+> Per-accelerator parameters just don't work here if you allow the colon.
+>
+> (IMHO we should not have let the -accel code enter the repository in
+> this shape, but rather insist on a proper implementation right from the
+> start - but now that it's there, we have to deal with it and should make
+> sure that it does not get worse)
 
-Yes. The whole "-accel" option is currently ugly. My patch is just a
-temporary work-around to prevent that we later have to deal with the
-fact that users started to use this colon here in the wild and we would
-then have to fight to get rid of it again.
+Ah, I hadn't realised that -accel was a (relatively) long-standing
+option; I'd just noticed some patches going past recently suggesting
+we were starting to recommend it over -machine accel=.
+Thanks for trying to clean it up a bit.
 
-> If -accel is the way we're recommending
-> users configure the accelerator then it should support syntax
-> for specifying everything we could do with the old -machine...
-> option.
-
-No, we certainly don't want to have the colon in here. The idea is
-rather that you could specify multiply "-accel" options one day, e.g.:
-
- -accel tcg,tb-size=3D2048 -accel kvm,kernel_irqchip=3Don
-
-... and then the accelators are used with the right parameters in the
-order of availability.
-
-Per-accelerator parameters just don't work here if you allow the colon.
-
-(IMHO we should not have let the -accel code enter the repository in
-this shape, but rather insist on a proper implementation right from the
-start - but now that it's there, we have to deal with it and should make
-sure that it does not get worse)
-
- Thomas
+-- PMM
 
