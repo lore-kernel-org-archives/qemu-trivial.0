@@ -1,63 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iCPVs-0006Dz-QJ
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Sep 2019 10:40:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40486)
+	id 1iCPjb-0007Bz-9G
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Sep 2019 10:54:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42529)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iCPVo-00061t-3k
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 10:40:25 -0400
+ (envelope-from <philmd@redhat.com>) id 1iCPjX-00076v-PA
+ for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 10:54:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iCPVl-00067l-O1
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 10:40:23 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:44997)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iCPVl-00063E-2v
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 10:40:21 -0400
-Received: by mail-ot1-x344.google.com with SMTP id 21so12272008otj.11
- for <qemu-trivial@nongnu.org>; Mon, 23 Sep 2019 07:40:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=UVxDV1Cug82JTtKncFbLQTRFqJjzdFnWaiYFroc2csk=;
- b=BWDzQQ5J9U5xpnEso5tBguBnnCR940tCrymriZfiNmByk3neQK0MFOBy8WdocahyNo
- Yh88vGHZs+jOH4dmsQnjWPq3z0nZSv5HUruj+Y5ec/Vykp6wtKPqAW42aRmc9FGn3Gba
- brYan7pMbX18LGJ7AerWSP9l8bvd1uZLrX10QOs0HpgL9LTlCQVZu6TFiJCDss0Gvlcv
- +BwH+6Zgc1Jd0LeUxulMO3ZRUAqM/1dWxCf8a/2iWOEEzH0WOAyETAGC2gA+eG6IqMon
- Zp9GRaf9STu0Nx1R1tKOb5ISXveeE89eGj+4QGPBvzq/scE8IA3yuvKV28ADioiAG/Zi
- ddYw==
+ (envelope-from <philmd@redhat.com>) id 1iCPjW-0003qn-LP
+ for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 10:54:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46710)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iCPjW-0003qQ-CW
+ for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 10:54:34 -0400
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 7AE9761D25
+ for <qemu-trivial@nongnu.org>; Mon, 23 Sep 2019 14:54:33 +0000 (UTC)
+Received: by mail-wr1-f71.google.com with SMTP id z8so4959521wrs.14
+ for <qemu-trivial@nongnu.org>; Mon, 23 Sep 2019 07:54:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=UVxDV1Cug82JTtKncFbLQTRFqJjzdFnWaiYFroc2csk=;
- b=diC9590WdT2y9rqdslPxGhhL12ZEwQnRhLcAHjLzdo4zcZ22HRCaKnxni2NpOadYVA
- /QAyChvdxnsaf4R1VBodPWetyWEfToY5+vrADl0rXpekD4ll+0v0bMu+GyOYIiYZQigV
- MrprTjOuxD4LO8tIPUri5zcnsH8i/bMl2d3SJWpqe+xLIMiIZd4kTWymZ0vL17tRe/dy
- Jkuod007G4dTudRSPH53W2NhS/XfbWbgmh03IQt3pzxlbfGyGl6fvcP6PJtqz6MUH67u
- kGjFDNmIOyQCdt3ZAyXA3R6AKV1awjmWAfl3BDcdrFQv66YkswCNjQyM5apBRnLtOes4
- NWaQ==
-X-Gm-Message-State: APjAAAUG6yqEUxthRKVZ36ytkui/XFnwkGYAsG0llfthi6RKxhL9xzwg
- jIIsV/IPf9tmJtGFrSzRylgk81kQ6WcQEib3WJqR5w==
-X-Google-Smtp-Source: APXvYqzVaBtiTn/cmdFjvhDcfZk9hpu5lzilSinhX9Xjh+7zUdMQGtwHbuFCAaWWZ4xfRBiUjkiSDBmr2dqSrhWKNXY=
-X-Received: by 2002:a05:6830:1357:: with SMTP id
- r23mr106498otq.91.1569249615442; 
- Mon, 23 Sep 2019 07:40:15 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190921101703.17935-1-philmd@redhat.com>
-In-Reply-To: <20190921101703.17935-1-philmd@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 23 Sep 2019 15:40:04 +0100
-Message-ID: <CAFEAcA8RfAPuV9LfL3c01KU+sCtAcWkHsLR7e-4QNJVcniq7Cg@mail.gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=zP/jlV1v/3MhIk9YH7uyR0if4+SvbBKgh10XpUaUcqw=;
+ b=l7JX4eHdcUOVTHMYyP5l+lfzoOC+o+FfuWqGF8sKyiIU5z5yIj2pm3ntYT7CYhl6ku
+ tI//VdlEKqLgL88eIFq6mhlQBBlibLNe2WOyfzR0JbWdZCHmC4h9G6jfAEnDTtL4QwAY
+ 0S1BQnEVP7UmVahBX1lqtHimcgAeuZTvevZahkegkPDatbkNm1hR9cgTl7Xpx77N68jI
+ iWezmadJUTi9ApUByo7kNaH0jHUuhq2PzakbXNTOqLUWdC99Nhnc16v+1I0JYs7+ctry
+ lQjfjMsk07shJaBh2pTIayKwjhR5NHXSn5/Uzl6UtxZF+BXg8V+pwCdFdlgwDBj7Vva2
+ a+hA==
+X-Gm-Message-State: APjAAAXuk8FAcv3ZSeGiPAb2YOG1ZZ/+FF4/TV3A8ZRsa96usCEgDMRH
+ 2zimu+RDw6emIS7nnNCuloDlvjbWKa8C1/lCwneYfAS5l2gbsufMLET9j21+SoRs01nC3eVjJXN
+ NoWCV2D1QGGn+sl7K6w==
+X-Received: by 2002:adf:f78a:: with SMTP id q10mr21763720wrp.276.1569250472238; 
+ Mon, 23 Sep 2019 07:54:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzJYBhinpCcpvtj/FGmej5hv+YchOC8OLDy6gVP3cELq0hJmgD/R+cGcWqWE+gkiTYupXQDUQ==
+X-Received: by 2002:adf:f78a:: with SMTP id q10mr21763707wrp.276.1569250472071; 
+ Mon, 23 Sep 2019 07:54:32 -0700 (PDT)
+Received: from [192.168.1.115] (240.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.240])
+ by smtp.gmail.com with ESMTPSA id n2sm9808489wmc.1.2019.09.23.07.54.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 23 Sep 2019 07:54:31 -0700 (PDT)
 Subject: Re: [PATCH] hw/ptimer: Assert next_event is newer than last_event
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, 
- Dmitry Osipenko <digetx@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+ QEMU Developers <qemu-devel@nongnu.org>, Dmitry Osipenko <digetx@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20190921101703.17935-1-philmd@redhat.com>
+ <CAFEAcA8RfAPuV9LfL3c01KU+sCtAcWkHsLR7e-4QNJVcniq7Cg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <ec6ddb30-6ae4-a3fb-e97c-58758df65650@redhat.com>
+Date: Mon, 23 Sep 2019 16:54:30 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8RfAPuV9LfL3c01KU+sCtAcWkHsLR7e-4QNJVcniq7Cg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::344
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,42 +77,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Sep 2019 14:40:26 -0000
+X-List-Received-Date: Mon, 23 Sep 2019 14:54:37 -0000
 
-On Sat, 21 Sep 2019 at 11:17, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
->
-> If the period is too big, the 'delta * period' product result
-> might overflow, resulting in a negative number, then the
-> next_event ends before the last_event. This is buggy, as there
-> is no forward progress. Assert this can not happen.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/core/ptimer.c | 3 +++
->  1 file changed, 3 insertions(+)
->
-> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
-> index d58e2dfdb0..88085d4c81 100644
-> --- a/hw/core/ptimer.c
-> +++ b/hw/core/ptimer.c
-> @@ -125,6 +125,9 @@ static void ptimer_reload(ptimer_state *s, int delta_=
-adjust)
->
->      s->last_event =3D s->next_event;
->      s->next_event =3D s->last_event + delta * period;
-> +    /* Verify forward progress */
-> +    g_assert(s->next_event > s->last_event);
-> +
->      if (period_frac) {
->          s->next_event +=3D ((int64_t)period_frac * delta) >> 32;
->      }
-> --
+On 9/23/19 4:40 PM, Peter Maydell wrote:
+> On Sat, 21 Sep 2019 at 11:17, Philippe Mathieu-Daud=C3=A9 <philmd@redha=
+t.com> wrote:
+>>
+>> If the period is too big, the 'delta * period' product result
+>> might overflow, resulting in a negative number, then the
+>> next_event ends before the last_event. This is buggy, as there
+>> is no forward progress. Assert this can not happen.
+>>
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> ---
+>>  hw/core/ptimer.c | 3 +++
+>>  1 file changed, 3 insertions(+)
+>>
+>> diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
+>> index d58e2dfdb0..88085d4c81 100644
+>> --- a/hw/core/ptimer.c
+>> +++ b/hw/core/ptimer.c
+>> @@ -125,6 +125,9 @@ static void ptimer_reload(ptimer_state *s, int del=
+ta_adjust)
+>>
+>>      s->last_event =3D s->next_event;
+>>      s->next_event =3D s->last_event + delta * period;
+>> +    /* Verify forward progress */
+>> +    g_assert(s->next_event > s->last_event);
+>> +
+>>      if (period_frac) {
+>>          s->next_event +=3D ((int64_t)period_frac * delta) >> 32;
+>>      }
+>> --
+>=20
+> Can this only happen if a QEMU timer model using the ptimer
+> code has a bug, or is it guest-triggerable for some of our
+> timer models?
 
-Can this only happen if a QEMU timer model using the ptimer
-code has a bug, or is it guest-triggerable for some of our
-timer models?
+I hit this running a raspi4 guest, I had incorrectly initialized a clock
+using the core cpu frequency, while I had to use the APB one (in my
+case, core_cpu_freq / 2). The guest use a high value to configure a slow
+timer, which in my buggy case made QEMU hang in hard way to debug.
 
-thanks
--- PMM
+So yes, it seems guest-triggerable if the implementation is broken.
+Using assert() is OK for broken implementation, right?
+Or should we audit all ptimer calls?
+
+Regards,
+
+Phil.
 
