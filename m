@@ -1,73 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iCQ0E-0007Tk-UU
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Sep 2019 11:11:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45047)
+	id 1iCfYL-0005Lo-Vd
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Sep 2019 03:48:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42412)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iCQ0B-0007T6-Oq
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 11:11:48 -0400
+ (envelope-from <thuth@redhat.com>) id 1iCfYI-0005I0-3O
+ for qemu-trivial@nongnu.org; Tue, 24 Sep 2019 03:48:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iCQ09-0002HO-LP
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 11:11:46 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45948)
+ (envelope-from <thuth@redhat.com>) id 1iCfYF-00077d-Ug
+ for qemu-trivial@nongnu.org; Tue, 24 Sep 2019 03:48:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47268)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iCQ09-0002Gw-DY
- for qemu-trivial@nongnu.org; Mon, 23 Sep 2019 11:11:45 -0400
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1iCfY4-0006zL-Jf; Tue, 24 Sep 2019 03:47:50 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id EC7E0C049E10
- for <qemu-trivial@nongnu.org>; Mon, 23 Sep 2019 15:11:43 +0000 (UTC)
-Received: by mail-wm1-f72.google.com with SMTP id g82so6853710wmg.9
- for <qemu-trivial@nongnu.org>; Mon, 23 Sep 2019 08:11:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=2iMzuuPa251sfDFdyUH3lp6mnbLiaArbh7c7v38p0zs=;
- b=KMKcnk/xnmah7zoLAd+Itk9NOKt85zpnBpAZFmdvdnYFlkHQjDw22BaG/waYJVa9jN
- Y9ipiKI5F153Gaapzf5JOQSCojtq/xGe1l0cHf0Cci1MhaqZkWmIqkqR/oAhsJfbUPRz
- Ox+Ybck1xT8smUApx+oYWrn9Z1+DHkzFEV7JygyTP+J7xPjG72HFdpHLm2P/0D93U26B
- tVn5KpjO5rYjOpzrOJqSqwoP/N1J1Qvepq3R7IK8RVz8twuvDe/oDkQ1bjJMuXt7e1cs
- k6o1644X3xdX6XJEoeacw+z/SlsZef8r1rx74JDT2ogKIqrxuTklGRokJxlIZiim5jTG
- todw==
-X-Gm-Message-State: APjAAAVxfeZ0rudvd8KyRqruyZk4AGbzVnt+w3SfgK9PCNitGn6A32gf
- yDXFS6JDJTGI5W13YkLX6y2Uv96rADH8F4i3fPkqNhAPVjLNriNiO1aHvs2/0KZIs0/X+twz5IQ
- E1+pESV7ghu/+6gw0TQ==
-X-Received: by 2002:a05:600c:2208:: with SMTP id
- z8mr109583wml.113.1569251502660; 
- Mon, 23 Sep 2019 08:11:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzDCXRTlUINGwFQhQitsS+3WNBTzT+Wi4q+hwFFK+CEk27SCz5qtYBgKj11Oy+AQoDNKbsw4w==
-X-Received: by 2002:a05:600c:2208:: with SMTP id
- z8mr109560wml.113.1569251502458; 
- Mon, 23 Sep 2019 08:11:42 -0700 (PDT)
-Received: from [192.168.1.115] (240.red-88-21-68.staticip.rima-tde.net.
- [88.21.68.240])
- by smtp.gmail.com with ESMTPSA id m16sm10474546wml.11.2019.09.23.08.11.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 23 Sep 2019 08:11:41 -0700 (PDT)
-Subject: Re: [PATCH] hw/ptimer: Assert next_event is newer than last_event
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Dmitry Osipenko <digetx@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20190921101703.17935-1-philmd@redhat.com>
- <CAFEAcA8RfAPuV9LfL3c01KU+sCtAcWkHsLR7e-4QNJVcniq7Cg@mail.gmail.com>
- <ec6ddb30-6ae4-a3fb-e97c-58758df65650@redhat.com>
- <CAFEAcA8+3KjJ61n_U-eM4ydPTNQpok2VRMpwQecYMGhGxcf9tw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <e166ee35-8a4c-5379-c933-9f561841ed9b@redhat.com>
-Date: Mon, 23 Sep 2019 17:11:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8+3KjJ61n_U-eM4ydPTNQpok2VRMpwQecYMGhGxcf9tw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+ by mx1.redhat.com (Postfix) with ESMTPS id EA4227E421;
+ Tue, 24 Sep 2019 07:47:45 +0000 (UTC)
+Received: from thuth.com (ovpn-116-95.ams2.redhat.com [10.36.116.95])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 14C566017E;
+ Tue, 24 Sep 2019 07:47:43 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Marcelo Tosatti <mtosatti@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] target/i386/kvm: Silence warning from Valgrind about
+ uninitialized bytes
+Date: Tue, 24 Sep 2019 09:47:38 +0200
+Message-Id: <20190924074738.13104-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.27]); Tue, 24 Sep 2019 07:47:45 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
@@ -81,69 +46,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Sep 2019 15:11:49 -0000
+X-List-Received-Date: Tue, 24 Sep 2019 07:48:04 -0000
 
-On 9/23/19 5:08 PM, Peter Maydell wrote:
-> On Mon, 23 Sep 2019 at 15:54, Philippe Mathieu-Daud=C3=A9 <philmd@redha=
-t.com> wrote:
->>
->> On 9/23/19 4:40 PM, Peter Maydell wrote:
->>> On Sat, 21 Sep 2019 at 11:17, Philippe Mathieu-Daud=C3=A9 <philmd@red=
-hat.com> wrote:
->>>>
->>>> If the period is too big, the 'delta * period' product result
->>>> might overflow, resulting in a negative number, then the
->>>> next_event ends before the last_event. This is buggy, as there
->>>> is no forward progress. Assert this can not happen.
->=20
->>> Can this only happen if a QEMU timer model using the ptimer
->>> code has a bug, or is it guest-triggerable for some of our
->>> timer models?
->>
->> I hit this running a raspi4 guest, I had incorrectly initialized a clo=
-ck
->> using the core cpu frequency, while I had to use the APB one (in my
->> case, core_cpu_freq / 2). The guest use a high value to configure a sl=
-ow
->> timer, which in my buggy case made QEMU hang in hard way to debug.
->>
->> So yes, it seems guest-triggerable if the implementation is broken.
->> Using assert() is OK for broken implementation, right?
->=20
-> Yeah, if this can only happen if QEMU code is broken then
-> an assert is OK. I was just trying to find out what the
-> cause was, since "this is buggy" isn't specific about where
-> the bug is.
->=20
->> Or should we audit all ptimer calls?
->=20
-> I don't think we specifically need an audit. We could perhaps
-> expand the comment by the assert to specifically say that if
-> the calculation of the next event overflowed then this indicates
-> a bug in the QEMU device model using the ptimer API, so if
-> somebody else runs into the assert they have a hint about
-> what to look at. (An overflowed next_event indicates a time
-> incredibly far in the future, given that it's a nanosecond
-> time in an int64_t.)
+When I run QEMU with KVM under Valgrind, I currently get this warning:
 
-OK I'll improve the comment.
+ Syscall param ioctl(generic) points to uninitialised byte(s)
+    at 0x95BA45B: ioctl (in /usr/lib64/libc-2.28.so)
+    by 0x429DC3: kvm_ioctl (kvm-all.c:2365)
+    by 0x51B249: kvm_arch_get_supported_msr_feature (kvm.c:469)
+    by 0x4C2A49: x86_cpu_get_supported_feature_word (cpu.c:3765)
+    by 0x4C4116: x86_cpu_expand_features (cpu.c:5065)
+    by 0x4C7F8D: x86_cpu_realizefn (cpu.c:5242)
+    by 0x5961F3: device_set_realized (qdev.c:835)
+    by 0x7038F6: property_set_bool (object.c:2080)
+    by 0x707EFE: object_property_set_qobject (qom-qobject.c:26)
+    by 0x705814: object_property_set_bool (object.c:1338)
+    by 0x498435: pc_new_cpu (pc.c:1549)
+    by 0x49C67D: pc_cpus_init (pc.c:1681)
+  Address 0x1ffeffee74 is on thread 1's stack
+  in frame #2, created by kvm_arch_get_supported_msr_feature (kvm.c:445)
 
-> The other approach I thought of would be to make the ptimer
-> code handle this sort of after-the-end-of-QEMU-universe time
-> by saturating next_event to INT64_MAX rather than letting it
-> overflow and wrap. Unfortunately while this would be fine for
-> the 'timer event' part of the code, it would break
-> ptimer_get_count() which calculates the current counter
-> value by looking at the difference between the current
-> time and the time of the next event (fixable but only with
-> a bunch of messing about to treat a next_event of INT64_MAX
-> as equivalent to the counter being disabled and tracking
-> the counter value in s->delta). So an assert is the
-> best thing I think.
+It's harmless, but a little bit annoying, so silence it by properly
+initializing the whole structure with zeroes.
 
-Yes :/
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ target/i386/kvm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks!
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index 92069099ab..bd92dabea6 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -447,7 +447,7 @@ uint32_t kvm_arch_get_supported_msr_feature(KVMState *s, uint32_t index)
+     struct {
+         struct kvm_msrs info;
+         struct kvm_msr_entry entries[1];
+-    } msr_data;
++    } msr_data = {};
+     uint32_t ret;
+ 
+     if (kvm_feature_msrs == NULL) { /* Host doesn't support feature MSRs */
+-- 
+2.18.1
 
-Phil.
 
