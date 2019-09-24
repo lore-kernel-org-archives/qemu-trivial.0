@@ -1,62 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iClaD-0001Qh-ED
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Sep 2019 10:14:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38253)
+	id 1iCnAP-0001dO-Q5
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Sep 2019 11:55:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54512)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iCla9-0001KU-6q
- for qemu-trivial@nongnu.org; Tue, 24 Sep 2019 10:14:22 -0400
+ (envelope-from <lersek@redhat.com>) id 1iCnAJ-0001Zs-5r
+ for qemu-trivial@nongnu.org; Tue, 24 Sep 2019 11:55:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iCla7-00006u-SY
- for qemu-trivial@nongnu.org; Tue, 24 Sep 2019 10:14:20 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:38835)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iCla7-00006E-MV
- for qemu-trivial@nongnu.org; Tue, 24 Sep 2019 10:14:19 -0400
-Received: by mail-oi1-x244.google.com with SMTP id m16so1757294oic.5
- for <qemu-trivial@nongnu.org>; Tue, 24 Sep 2019 07:14:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Mhd/FJiamKV8bgwxvhSM1XmfViMLPDMRpLbPk1h8UFQ=;
- b=j4yagwqXqS6lcOkOx5LSGKWlLY7JFtE0BSiUDKdT/0FUEo1UqAlkUOmbTGRRCzlYQd
- 0tH7T1+Gffnwm7zqlAzsr8aoQsWIMlsiFYsW1Ii58h7uXiPoElHc8mwCXHRugHNH4eim
- fI38tAv+rKuucYWaAa1KAfpC80eYWTfqeF2a6kOcA4zNzKhAWp7b9ULGsPrDeEdPMAd5
- dVToJBdinNNvbzgJkJOM+NNBgeN5Aw6o+4mNwuvXHZjbmiFDC4ifq2As5wVh0MHO8rRW
- BEtnDgNNrNoOozizNFmaIQBn1OZngb016lQmCXLeudMN6LAdO4KTi2/Hi/juPoAoFAY4
- z+wg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Mhd/FJiamKV8bgwxvhSM1XmfViMLPDMRpLbPk1h8UFQ=;
- b=V9M+bdVzKmFFi6iBULHdpctJ8ZIlugopoybvONzrMbbMpP5TVo2s3XAZh6AcHjhoPk
- 6CRCAXtUpdu9tg0wJlLDsH6TfvJgdmcvtiA0eLQAwKIRVoAMJJxAA+exCxvhUQ9dAiJS
- rn2pcmsesg9qNP2HE2HWl7SyuPPANhW5ABOvELt5x9iirNAvOiqcO77UfHm74ZGyXxbr
- c4G6PCfNj9mQGD4ZvWQ0vEzUYlqt+kLQEhUYht1jYtTB1mg5mQnluZTQM6T33Ok1RvqU
- znKNbW26fSaBhyl115vl05Y1Z+7tAeNAkXyl3GU+4Q5fpo4gDjqLWImgK3If/eslx40Z
- kKFg==
-X-Gm-Message-State: APjAAAUJHtrcU4tdfFTSF2tjFjGe3C8FM6cDp0GPjqMi6bSovS6TGB3W
- eYh1FcNLX0leihOWNtrjXDmEVcQda+riV/QWMdoMig==
-X-Google-Smtp-Source: APXvYqyCHKxkL301M500Wq7L6Lv/EDs9iq+Q0krCF/oLYOe5OqnzTO2xYvrOB+osqHBO3nNrhIrC40YpcSs8q8zYVvw=
-X-Received: by 2002:aca:50d8:: with SMTP id e207mr255616oib.48.1569334458739; 
- Tue, 24 Sep 2019 07:14:18 -0700 (PDT)
+ (envelope-from <lersek@redhat.com>) id 1iCnAH-0008V2-1q
+ for qemu-trivial@nongnu.org; Tue, 24 Sep 2019 11:55:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43028)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <lersek@redhat.com>)
+ id 1iCnAC-0008Pg-Lo; Tue, 24 Sep 2019 11:55:40 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id F1C2118CB8FE;
+ Tue, 24 Sep 2019 15:55:37 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-118.rdu2.redhat.com
+ [10.10.120.118])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DEF98600C8;
+ Tue, 24 Sep 2019 15:55:28 +0000 (UTC)
+Subject: Re: [PATCH] roms: Add a 'make help' target alias
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: John Snow <jsnow@redhat.com>, qemu-trivial@nongnu.org
+References: <20190920171159.18633-1-philmd@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <a0c746cb-c39b-32b4-3635-3e0c6cbd2b14@redhat.com>
+Date: Tue, 24 Sep 2019 17:55:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-References: <20190924141228.25009-1-philmd@redhat.com>
-In-Reply-To: <20190924141228.25009-1-philmd@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 Sep 2019 15:14:07 +0100
-Message-ID: <CAFEAcA9a-OdpzLgqeO+iRTr3PNYxGZ+ECX_GVOQD0NLNk8OynA@mail.gmail.com>
-Subject: Re: [PATCH] hw/timer/pl031: Add warning "do not use as model to
- implement a RTC"
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20190920171159.18633-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.63]); Tue, 24 Sep 2019 15:55:38 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::244
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -68,21 +53,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Sep 2019 14:14:23 -0000
+X-List-Received-Date: Tue, 24 Sep 2019 15:55:49 -0000
 
-On Tue, 24 Sep 2019 at 15:12, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
->
-> Peter said we should "not use the pl031 as a good model of how
-> to do an RTC, it has some definite flaws."
-> Add this information to the PL031 header for other developers.
+On 09/20/19 19:11, Philippe Mathieu-Daud=C3=A9 wrote:
+> Various C projects provide a 'make help' target. Our root directory
+> does so. The roms/ directory lacks a such rule, but already displays
+> a help output when the default target is called.
+> Add a 'help' target aliased to the default one, to avoid:
+>=20
+>   $ make -C roms help
+>   make: *** No rule to make target 'help'.  Stop.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  roms/Makefile | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/roms/Makefile b/roms/Makefile
+> index 6cf07d3b44..3ffd13cc7e 100644
+> --- a/roms/Makefile
+> +++ b/roms/Makefile
+> @@ -51,7 +51,7 @@ SEABIOS_EXTRAVERSION=3D"-prebuilt.qemu.org"
+>  #
+>  EDK2_EFIROM =3D edk2/BaseTools/Source/C/bin/EfiRom
+> =20
+> -default:
+> +default help:
+>  	@echo "nothing is build by default"
+>  	@echo "available build targets:"
+>  	@echo "  bios               -- update bios.bin (seabios)"
+>=20
 
-Lots of our code is less than great. I'm not sure this
-specific case really justifies blazoning it in a comment header
-at the top of the file... (If you do want to put in a comment,
-being more specific about exactly what the problems are would
-be better.)
+How about we just print: "help yourself"?
 
-thanks
--- PMM
+Just kidding. :P
+
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+
+Thanks!
+Laszlo
 
