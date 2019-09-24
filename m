@@ -1,38 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iCfYL-0005Lo-Vd
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Sep 2019 03:48:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42412)
+	id 1iCgP8-00076l-8n
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Sep 2019 04:42:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48872)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iCfYI-0005I0-3O
- for qemu-trivial@nongnu.org; Tue, 24 Sep 2019 03:48:03 -0400
+ (envelope-from <pbonzini@redhat.com>) id 1iCgP3-00076C-Hq
+ for qemu-trivial@nongnu.org; Tue, 24 Sep 2019 04:42:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iCfYF-00077d-Ug
- for qemu-trivial@nongnu.org; Tue, 24 Sep 2019 03:48:02 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47268)
+ (envelope-from <pbonzini@redhat.com>) id 1iCgP0-0004bM-VB
+ for qemu-trivial@nongnu.org; Tue, 24 Sep 2019 04:42:31 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55698)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1iCfY4-0006zL-Jf; Tue, 24 Sep 2019 03:47:50 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1iCgP0-0004am-IY
+ for qemu-trivial@nongnu.org; Tue, 24 Sep 2019 04:42:30 -0400
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id EA4227E421;
- Tue, 24 Sep 2019 07:47:45 +0000 (UTC)
-Received: from thuth.com (ovpn-116-95.ams2.redhat.com [10.36.116.95])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 14C566017E;
- Tue, 24 Sep 2019 07:47:43 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Marcelo Tosatti <mtosatti@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] target/i386/kvm: Silence warning from Valgrind about
+ by mx1.redhat.com (Postfix) with ESMTPS id 9B712368E2
+ for <qemu-trivial@nongnu.org>; Tue, 24 Sep 2019 08:42:27 +0000 (UTC)
+Received: by mail-wm1-f72.google.com with SMTP id k67so511737wmf.3
+ for <qemu-trivial@nongnu.org>; Tue, 24 Sep 2019 01:42:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=zAlxz3ekuyArKerXAyo+KvAyKVI/hFYdCrtWeyB90mU=;
+ b=RdrjwJAnGpqaJxpxUBFUrenZ4L47PnGMsPpXAYTi5z10wxEdEwmsJxqfXT8VNT+5/7
+ Y3M3jbPxbtWRfQgO9BD63FvLWesokVJ8h/g/ELw4a/kguZjQhk1fRf+IZhnFlkH15KDd
+ K5Psnv7MLySf2b0mGAQS7X8gROn4XlmAlm1NMo7+cNHudBVe64B0LM+moMH/a4pIap4q
+ MH8aD+yj6cKel4NBNxesjyWYFLO9MkNGbSSHxxYlyk6KZifFvW493xaWkNIgbhblq8H2
+ OXJEkurOHTRqSwjbC1ZTwLw1M9qfhxyUJZ+C08vdqkWF5ht2a64LcRrBEZTXMZX3VMVP
+ bcEA==
+X-Gm-Message-State: APjAAAXFq0GvH4PjfC7a3qzCoSsnnn/bNo+0wqi0DMuO79mO2GC1Xi4v
+ UPj/BVtJs6sGW86FEdSyPyEl7p1KSMD0m/RyKPXVCP1TDlcQPTFQ540tjF5KAMgIW7eAFzYbQRv
+ FxfYxXrgtk75XW+G5Sw==
+X-Received: by 2002:a1c:3cc3:: with SMTP id j186mr1596887wma.119.1569314545899; 
+ Tue, 24 Sep 2019 01:42:25 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzbNnBjbN9PwWk5gU/OGdJP98VJYxKlMcDj6yePk92Qgqy4BVw+649AnK0RYUyWJ2fxN3aOLA==
+X-Received: by 2002:a1c:3cc3:: with SMTP id j186mr1596858wma.119.1569314545502; 
+ Tue, 24 Sep 2019 01:42:25 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:d958:8ffa:a1f9:6bfa?
+ ([2001:b07:6468:f312:d958:8ffa:a1f9:6bfa])
+ by smtp.gmail.com with ESMTPSA id r65sm1243472wmr.9.2019.09.24.01.42.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 24 Sep 2019 01:42:24 -0700 (PDT)
+Subject: Re: [PATCH] target/i386/kvm: Silence warning from Valgrind about
  uninitialized bytes
-Date: Tue, 24 Sep 2019 09:47:38 +0200
-Message-Id: <20190924074738.13104-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.27]); Tue, 24 Sep 2019 07:47:45 +0000 (UTC)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Marcelo Tosatti <mtosatti@redhat.com>
+Cc: qemu-trivial@nongnu.org
+References: <20190924074738.13104-1-thuth@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <dc0c0363-6795-d0cf-f7b8-a88787e34e6c@redhat.com>
+Date: Tue, 24 Sep 2019 10:42:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <20190924074738.13104-1-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
@@ -46,48 +75,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Sep 2019 07:48:04 -0000
+X-List-Received-Date: Tue, 24 Sep 2019 08:42:35 -0000
 
-When I run QEMU with KVM under Valgrind, I currently get this warning:
+On 24/09/19 09:47, Thomas Huth wrote:
+> When I run QEMU with KVM under Valgrind, I currently get this warning:
+> 
+>  Syscall param ioctl(generic) points to uninitialised byte(s)
+>     at 0x95BA45B: ioctl (in /usr/lib64/libc-2.28.so)
+>     by 0x429DC3: kvm_ioctl (kvm-all.c:2365)
+>     by 0x51B249: kvm_arch_get_supported_msr_feature (kvm.c:469)
+>     by 0x4C2A49: x86_cpu_get_supported_feature_word (cpu.c:3765)
+>     by 0x4C4116: x86_cpu_expand_features (cpu.c:5065)
+>     by 0x4C7F8D: x86_cpu_realizefn (cpu.c:5242)
+>     by 0x5961F3: device_set_realized (qdev.c:835)
+>     by 0x7038F6: property_set_bool (object.c:2080)
+>     by 0x707EFE: object_property_set_qobject (qom-qobject.c:26)
+>     by 0x705814: object_property_set_bool (object.c:1338)
+>     by 0x498435: pc_new_cpu (pc.c:1549)
+>     by 0x49C67D: pc_cpus_init (pc.c:1681)
+>   Address 0x1ffeffee74 is on thread 1's stack
+>   in frame #2, created by kvm_arch_get_supported_msr_feature (kvm.c:445)
+> 
+> It's harmless, but a little bit annoying, so silence it by properly
+> initializing the whole structure with zeroes.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  target/i386/kvm.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+> index 92069099ab..bd92dabea6 100644
+> --- a/target/i386/kvm.c
+> +++ b/target/i386/kvm.c
+> @@ -447,7 +447,7 @@ uint32_t kvm_arch_get_supported_msr_feature(KVMState *s, uint32_t index)
+>      struct {
+>          struct kvm_msrs info;
+>          struct kvm_msr_entry entries[1];
+> -    } msr_data;
+> +    } msr_data = {};
+>      uint32_t ret;
+>  
+>      if (kvm_feature_msrs == NULL) { /* Host doesn't support feature MSRs */
+> 
 
- Syscall param ioctl(generic) points to uninitialised byte(s)
-    at 0x95BA45B: ioctl (in /usr/lib64/libc-2.28.so)
-    by 0x429DC3: kvm_ioctl (kvm-all.c:2365)
-    by 0x51B249: kvm_arch_get_supported_msr_feature (kvm.c:469)
-    by 0x4C2A49: x86_cpu_get_supported_feature_word (cpu.c:3765)
-    by 0x4C4116: x86_cpu_expand_features (cpu.c:5065)
-    by 0x4C7F8D: x86_cpu_realizefn (cpu.c:5242)
-    by 0x5961F3: device_set_realized (qdev.c:835)
-    by 0x7038F6: property_set_bool (object.c:2080)
-    by 0x707EFE: object_property_set_qobject (qom-qobject.c:26)
-    by 0x705814: object_property_set_bool (object.c:1338)
-    by 0x498435: pc_new_cpu (pc.c:1549)
-    by 0x49C67D: pc_cpus_init (pc.c:1681)
-  Address 0x1ffeffee74 is on thread 1's stack
-  in frame #2, created by kvm_arch_get_supported_msr_feature (kvm.c:445)
+Queued, thanks.
 
-It's harmless, but a little bit annoying, so silence it by properly
-initializing the whole structure with zeroes.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- target/i386/kvm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/target/i386/kvm.c b/target/i386/kvm.c
-index 92069099ab..bd92dabea6 100644
---- a/target/i386/kvm.c
-+++ b/target/i386/kvm.c
-@@ -447,7 +447,7 @@ uint32_t kvm_arch_get_supported_msr_feature(KVMState *s, uint32_t index)
-     struct {
-         struct kvm_msrs info;
-         struct kvm_msr_entry entries[1];
--    } msr_data;
-+    } msr_data = {};
-     uint32_t ret;
- 
-     if (kvm_feature_msrs == NULL) { /* Host doesn't support feature MSRs */
--- 
-2.18.1
-
+Paolo
 
