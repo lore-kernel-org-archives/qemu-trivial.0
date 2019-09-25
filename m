@@ -1,39 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iCudw-00016J-8R
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Sep 2019 19:54:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50310)
+	id 1iD05b-00036Z-K7
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Sep 2019 01:43:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57640)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jsnow@redhat.com>) id 1iCu1J-00069k-7X
- for qemu-trivial@nongnu.org; Tue, 24 Sep 2019 19:14:58 -0400
+ (envelope-from <armbru@redhat.com>) id 1iD05W-00031m-El
+ for qemu-trivial@nongnu.org; Wed, 25 Sep 2019 01:43:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jsnow@redhat.com>) id 1iCu1H-0007NF-FS
- for qemu-trivial@nongnu.org; Tue, 24 Sep 2019 19:14:57 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42420)
+ (envelope-from <armbru@redhat.com>) id 1iD05T-0000UQ-Q7
+ for qemu-trivial@nongnu.org; Wed, 25 Sep 2019 01:43:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45346)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jsnow@redhat.com>)
- id 1iCtzt-0006Wo-Bd; Tue, 24 Sep 2019 19:13:29 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ (Exim 4.71) (envelope-from <armbru@redhat.com>)
+ id 1iD05O-0000Pw-P0; Wed, 25 Sep 2019 01:43:34 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 71BDC307D971;
- Tue, 24 Sep 2019 23:13:28 +0000 (UTC)
-Received: from probe.bos.redhat.com (dhcp-17-231.bos.redhat.com [10.18.17.231])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DE28E6012C;
- Tue, 24 Sep 2019 23:13:25 +0000 (UTC)
-From: John Snow <jsnow@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	John Snow <jsnow@redhat.com>
-Subject: [PATCH] qemu-options.hx: remove stray quote
-Date: Tue, 24 Sep 2019 19:13:25 -0400
-Message-Id: <20190924231325.25444-1-jsnow@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id F1BE04628B;
+ Wed, 25 Sep 2019 05:43:33 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-117-142.ams2.redhat.com
+ [10.36.117.142])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 83FEF1001B05;
+ Wed, 25 Sep 2019 05:43:31 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id E4CAD113864E; Wed, 25 Sep 2019 07:43:29 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org
+Subject: Re: [PATCH] qemu-options.hx: remove stray quote
+References: <20190924231325.25444-1-jsnow@redhat.com>
+Date: Wed, 25 Sep 2019 07:43:29 +0200
+In-Reply-To: <20190924231325.25444-1-jsnow@redhat.com> (John Snow's message of
+ "Tue, 24 Sep 2019 19:13:25 -0400")
+Message-ID: <87o8z9rkvy.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.48]); Tue, 24 Sep 2019 23:13:28 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+ (mx1.redhat.com [10.5.110.29]); Wed, 25 Sep 2019 05:43:34 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
 X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -46,28 +53,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Sep 2019 23:54:51 -0000
+X-List-Received-Date: Wed, 25 Sep 2019 05:43:44 -0000
 
-Signed-off-by: John Snow <jsnow@redhat.com>
----
- qemu-options.hx | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+John Snow <jsnow@redhat.com> writes:
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 2a04ca6ac5..629a7b1186 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -1192,7 +1192,7 @@ Instead of @option{-fda}, @option{-fdb}, you can us=
-e:
- By default, @var{interface} is "ide" and @var{index} is automatically
- incremented:
- @example
--@value{qemu_system_x86} -drive file=3Da -drive file=3Db"
-+@value{qemu_system_x86} -drive file=3Da -drive file=3Db
- @end example
- is interpreted like:
- @example
---=20
-2.21.0
+> Signed-off-by: John Snow <jsnow@redhat.com>
+> ---
+>  qemu-options.hx | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 2a04ca6ac5..629a7b1186 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -1192,7 +1192,7 @@ Instead of @option{-fda}, @option{-fdb}, you can use:
+>  By default, @var{interface} is "ide" and @var{index} is automatically
+>  incremented:
+>  @example
+> -@value{qemu_system_x86} -drive file=a -drive file=b"
+> +@value{qemu_system_x86} -drive file=a -drive file=b
+>  @end example
+>  is interpreted like:
+>  @example
 
+Messed up more than ten years ago, in commit e0e7ada1d55, faithfully
+copied around ever since.  Makes me wonder how much this part of
+qemu-doc is actually read.
+
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
