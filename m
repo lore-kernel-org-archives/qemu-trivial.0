@@ -1,44 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iDVXf-0003T4-TS
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Sep 2019 11:18:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52694)
+	id 1iDVXg-0003TU-5r
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Sep 2019 11:18:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52697)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iDVXa-0003QM-3F
+ (envelope-from <philmd@redhat.com>) id 1iDVXa-0003QN-45
  for qemu-trivial@nongnu.org; Thu, 26 Sep 2019 11:18:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iDVXX-0004pV-I5
+ (envelope-from <philmd@redhat.com>) id 1iDVXX-0004pS-I5
  for qemu-trivial@nongnu.org; Thu, 26 Sep 2019 11:18:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45200)
+Received: from mx1.redhat.com ([209.132.183.28]:55946)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iDVXR-0004mJ-VM; Thu, 26 Sep 2019 11:18:38 -0400
+ id 1iDVXN-0004kh-VC; Thu, 26 Sep 2019 11:18:34 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id A258488134E;
- Thu, 26 Sep 2019 15:18:36 +0000 (UTC)
-Received: from x1w.redhat.com (unknown [10.40.205.127])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B93BE61F24;
+ by mx1.redhat.com (Postfix) with ESMTPS id 2D73A155E0;
  Thu, 26 Sep 2019 15:18:33 +0000 (UTC)
+Received: from x1w.redhat.com (unknown [10.40.205.127])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id BABAE5D6B0;
+ Thu, 26 Sep 2019 15:18:29 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
  Damien Hedde <damien.hedde@greensocs.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>
-Subject: [PATCH 07/11] hw/isa/vt82c686: Convert reset handler to DeviceReset
-Date: Thu, 26 Sep 2019 17:17:29 +0200
-Message-Id: <20190926151733.25349-8-philmd@redhat.com>
+ John Snow <jsnow@redhat.com>, qemu-block@nongnu.org
+Subject: [PATCH 06/11] hw/ide/via82c: Convert reset handler to DeviceReset
+Date: Thu, 26 Sep 2019 17:17:28 +0200
+Message-Id: <20190926151733.25349-7-philmd@redhat.com>
 In-Reply-To: <20190926151733.25349-1-philmd@redhat.com>
 References: <20190926151733.25349-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.69]); Thu, 26 Sep 2019 15:18:36 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.29]); Thu, 26 Sep 2019 15:18:33 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -60,56 +59,57 @@ Convert the reset handler into a proper Device reset method.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/isa/vt82c686.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
+ hw/ide/via.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/hw/isa/vt82c686.c b/hw/isa/vt82c686.c
-index 50bd28fa82..616f67f347 100644
---- a/hw/isa/vt82c686.c
-+++ b/hw/isa/vt82c686.c
-@@ -23,7 +23,6 @@
- #include "hw/isa/apm.h"
- #include "hw/acpi/acpi.h"
- #include "hw/i2c/pm_smbus.h"
--#include "sysemu/reset.h"
+diff --git a/hw/ide/via.c b/hw/ide/via.c
+index 7087dc676e..053622bd82 100644
+--- a/hw/ide/via.c
++++ b/hw/ide/via.c
+@@ -29,7 +29,6 @@
+ #include "migration/vmstate.h"
  #include "qemu/module.h"
- #include "qemu/timer.h"
- #include "exec/address-spaces.h"
-@@ -116,11 +115,10 @@ static const MemoryRegionOps superio_ops =3D {
-     },
- };
+ #include "sysemu/dma.h"
+-#include "sysemu/reset.h"
 =20
--static void vt82c686b_reset(void * opaque)
-+static void vt82c686b_isa_reset(DeviceState *dev)
- {
--    PCIDevice *d =3D opaque;
--    uint8_t *pci_conf =3D d->config;
--    VT82C686BState *vt82c =3D VT82C686B_DEVICE(d);
-+    VT82C686BState *vt82c =3D VT82C686B_DEVICE(dev);
-+    uint8_t *pci_conf =3D vt82c->dev.config;
-=20
-     pci_set_long(pci_conf + PCI_CAPABILITY_LIST, 0x000000c0);
-     pci_set_word(pci_conf + PCI_COMMAND, PCI_COMMAND_IO | PCI_COMMAND_ME=
-MORY |
-@@ -476,8 +474,6 @@ static void vt82c686b_realize(PCIDevice *d, Error **e=
-rrp)
-      * But we do not emulate a floppy, so just set it here. */
-     memory_region_add_subregion(isa_bus->address_space_io, 0x3f0,
-                                 &vt82c->superio);
--
--    qemu_register_reset(vt82c686b_reset, d);
+ #include "hw/ide/pci.h"
+ #include "trace.h"
+@@ -120,10 +119,10 @@ static void via_ide_set_irq(void *opaque, int n, in=
+t level)
+     }
  }
 =20
- ISABus *vt82c686b_isa_init(PCIBus *bus, int devfn)
-@@ -501,6 +497,7 @@ static void via_class_init(ObjectClass *klass, void *=
-data)
-     k->device_id =3D PCI_DEVICE_ID_VIA_ISA_BRIDGE;
-     k->class_id =3D PCI_CLASS_BRIDGE_ISA;
-     k->revision =3D 0x40;
-+    dc->reset =3D vt82c686b_isa_reset;
-     dc->desc =3D "ISA bridge";
-     dc->vmsd =3D &vmstate_via;
-     /*
+-static void via_ide_reset(void *opaque)
++static void via_ide_reset(DeviceState *dev)
+ {
+-    PCIIDEState *d =3D opaque;
+-    PCIDevice *pd =3D PCI_DEVICE(d);
++    PCIIDEState *d =3D PCI_IDE(dev);
++    PCIDevice *pd =3D PCI_DEVICE(dev);
+     uint8_t *pci_conf =3D pd->config;
+     int i;
+=20
+@@ -172,8 +171,6 @@ static void via_ide_realize(PCIDevice *dev, Error **e=
+rrp)
+     pci_set_long(pci_conf + PCI_CAPABILITY_LIST, 0x000000c0);
+     dev->wmask[PCI_INTERRUPT_LINE] =3D 0xf;
+=20
+-    qemu_register_reset(via_ide_reset, d);
+-
+     memory_region_init_io(&d->data_bar[0], OBJECT(d), &pci_ide_data_le_o=
+ps,
+                           &d->bus[0], "via-ide0-data", 8);
+     pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_IO, &d->data_bar[0])=
+;
+@@ -229,6 +226,7 @@ static void via_ide_class_init(ObjectClass *klass, vo=
+id *data)
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+     PCIDeviceClass *k =3D PCI_DEVICE_CLASS(klass);
+=20
++    dc->reset =3D via_ide_reset;
+     k->realize =3D via_ide_realize;
+     k->exit =3D via_ide_exitfn;
+     k->vendor_id =3D PCI_VENDOR_ID_VIA;
 --=20
 2.20.1
 
