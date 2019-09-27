@@ -1,42 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iDr4B-0001AZ-RP
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Sep 2019 10:17:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46611)
+	id 1iDr4C-0001B5-3W
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Sep 2019 10:17:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46613)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <crosa@redhat.com>) id 1iDr45-00013v-R9
+ (envelope-from <crosa@redhat.com>) id 1iDr45-000145-Tg
  for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 10:17:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <crosa@redhat.com>) id 1iDr44-0003Ur-Gl
+ (envelope-from <crosa@redhat.com>) id 1iDr44-0003V8-Ss
  for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 10:17:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51724)
+Received: from mx1.redhat.com ([209.132.183.28]:56752)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <crosa@redhat.com>)
- id 1iDr3x-0003Nq-Ve; Fri, 27 Sep 2019 10:17:38 -0400
+ id 1iDr3y-0003O5-1A; Fri, 27 Sep 2019 10:17:38 -0400
 Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
  [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 7DB3B3091740;
- Fri, 27 Sep 2019 14:17:31 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 71134317528B;
+ Fri, 27 Sep 2019 14:17:33 +0000 (UTC)
 Received: from dhcp-17-179.bos.redhat.com (dhcp-17-179.bos.redhat.com
  [10.18.17.179])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A33AA60BF3;
- Fri, 27 Sep 2019 14:17:30 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9852D60C44;
+ Fri, 27 Sep 2019 14:17:32 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
  qemu-block@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
  Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
  Cleber Rosa <crosa@redhat.com>
-Subject: [PATCH 1/4] qemu-iotests: remove bash shebang from library files
-Date: Fri, 27 Sep 2019 10:17:25 -0400
-Message-Id: <20190927141728.7137-2-crosa@redhat.com>
+Subject: [PATCH 3/4] qemu-iotests: 044: pass is actually a noop, so remove it
+Date: Fri, 27 Sep 2019 10:17:27 -0400
+Message-Id: <20190927141728.7137-4-crosa@redhat.com>
 In-Reply-To: <20190927141728.7137-1-crosa@redhat.com>
 References: <20190927141728.7137-1-crosa@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.41]); Fri, 27 Sep 2019 14:17:31 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.49]); Fri, 27 Sep 2019 14:17:33 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -54,96 +54,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 27 Sep 2019 14:17:49 -0000
 
-Due to not being able to find a reason to have shebangs on files that
-are not executable.
-
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/qemu-iotests/common.config  | 2 --
- tests/qemu-iotests/common.filter  | 2 --
- tests/qemu-iotests/common.nbd     | 1 -
- tests/qemu-iotests/common.pattern | 2 --
- tests/qemu-iotests/common.qemu    | 2 --
- tests/qemu-iotests/common.rc      | 2 --
- tests/qemu-iotests/common.tls     | 2 --
- 7 files changed, 13 deletions(-)
+ tests/qemu-iotests/044 | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/tests/qemu-iotests/common.config b/tests/qemu-iotests/common=
-.config
-index 9bd1a5a6fc..6956d38d4c 100644
---- a/tests/qemu-iotests/common.config
-+++ b/tests/qemu-iotests/common.config
-@@ -1,5 +1,3 @@
--#!/usr/bin/env bash
--#
- # Copyright (C) 2009 Red Hat, Inc.
- # Copyright (c) 2000-2003,2006 Silicon Graphics, Inc.  All Rights Reserv=
-ed.
- #
-diff --git a/tests/qemu-iotests/common.filter b/tests/qemu-iotests/common=
-.filter
-index 445a1c23e0..043c62c10c 100644
---- a/tests/qemu-iotests/common.filter
-+++ b/tests/qemu-iotests/common.filter
-@@ -1,5 +1,3 @@
--#!/usr/bin/env bash
--#
- # Copyright (C) 2009 Red Hat, Inc.
- # Copyright (c) 2000-2001 Silicon Graphics, Inc.  All Rights Reserved.
- #
-diff --git a/tests/qemu-iotests/common.nbd b/tests/qemu-iotests/common.nb=
-d
-index 24b01b60aa..5a9991b7ef 100644
---- a/tests/qemu-iotests/common.nbd
-+++ b/tests/qemu-iotests/common.nbd
-@@ -1,4 +1,3 @@
--#!/usr/bin/env bash
- # -*- shell-script-mode -*-
- #
- # Helpers for NBD server related config
-diff --git a/tests/qemu-iotests/common.pattern b/tests/qemu-iotests/commo=
-n.pattern
-index 4f5e5bcea0..e8d97dd2bb 100644
---- a/tests/qemu-iotests/common.pattern
-+++ b/tests/qemu-iotests/common.pattern
-@@ -1,5 +1,3 @@
--#!/usr/bin/env bash
--#
- # Copyright (C) 2009 Red Hat, Inc.
- #
- # This program is free software; you can redistribute it and/or modify
-diff --git a/tests/qemu-iotests/common.qemu b/tests/qemu-iotests/common.q=
-emu
-index 8d2021a7eb..5bdfde890d 100644
---- a/tests/qemu-iotests/common.qemu
-+++ b/tests/qemu-iotests/common.qemu
-@@ -1,5 +1,3 @@
--#!/usr/bin/env bash
--#
- # This allows for launching of multiple QEMU instances, with independent
- # communication possible to each instance.
- #
-diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
-index e45cdfa66b..19bddacf11 100644
---- a/tests/qemu-iotests/common.rc
-+++ b/tests/qemu-iotests/common.rc
-@@ -1,5 +1,3 @@
--#!/usr/bin/env bash
--#
- # Copyright (C) 2009 Red Hat, Inc.
- # Copyright (c) 2000-2006 Silicon Graphics, Inc.  All Rights Reserved.
- #
-diff --git a/tests/qemu-iotests/common.tls b/tests/qemu-iotests/common.tl=
-s
-index 54c331d7a5..61f8ef6037 100644
---- a/tests/qemu-iotests/common.tls
-+++ b/tests/qemu-iotests/common.tls
-@@ -1,5 +1,3 @@
--#!/usr/bin/env bash
--#
- # Helpers for TLS related config
- #
- # Copyright (C) 2018 Red Hat, Inc.
+diff --git a/tests/qemu-iotests/044 b/tests/qemu-iotests/044
+index 05ea1f49c5..eb42df0fe1 100755
+--- a/tests/qemu-iotests/044
++++ b/tests/qemu-iotests/044
+@@ -105,17 +105,14 @@ class TestRefcountTableGrowth(iotests.QMPTestCase):
+     def setUp(self):
+         qemu_img('create', '-f', iotests.imgfmt, '-o', 'cluster_size=3D5=
+12', test_img, '16G')
+         self.preallocate(test_img)
+-        pass
+=20
+=20
+     def tearDown(self):
+         os.remove(test_img)
+-        pass
+=20
+     def test_grow_refcount_table(self):
+         qemu_io('-c', 'write 3800M 1M', test_img)
+         qemu_img_verbose('check' , test_img)
+-        pass
+=20
+ if __name__ =3D=3D '__main__':
+     iotests.main(supported_fmts=3D['qcow2'],
 --=20
 2.21.0
 
