@@ -1,44 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iDr4D-0001Ch-JY
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Sep 2019 10:17:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46600)
+	id 1iDtG2-0004co-Kc
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Sep 2019 12:38:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46977)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <crosa@redhat.com>) id 1iDr45-00013S-AZ
- for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 10:17:46 -0400
+ (envelope-from <eblake@redhat.com>) id 1iDtG0-0004XG-Bj
+ for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 12:38:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <crosa@redhat.com>) id 1iDr44-0003Ui-Af
- for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 10:17:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47604)
+ (envelope-from <eblake@redhat.com>) id 1iDtFv-0002Pr-UA
+ for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 12:38:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55060)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <crosa@redhat.com>)
- id 1iDr3x-0003Nu-NG; Fri, 27 Sep 2019 10:17:37 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ (Exim 4.71) (envelope-from <eblake@redhat.com>)
+ id 1iDtFk-0001ac-K8; Fri, 27 Sep 2019 12:37:56 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 7560E3090FC9;
- Fri, 27 Sep 2019 14:17:32 +0000 (UTC)
-Received: from dhcp-17-179.bos.redhat.com (dhcp-17-179.bos.redhat.com
- [10.18.17.179])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9E93960BE2;
- Fri, 27 Sep 2019 14:17:31 +0000 (UTC)
-From: Cleber Rosa <crosa@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- qemu-block@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Cleber Rosa <crosa@redhat.com>
-Subject: [PATCH 2/4] qemu-iotests: remove forceful execution success from
- library files
-Date: Fri, 27 Sep 2019 10:17:26 -0400
-Message-Id: <20190927141728.7137-3-crosa@redhat.com>
-In-Reply-To: <20190927141728.7137-1-crosa@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id 4F8A28A1CA4;
+ Fri, 27 Sep 2019 16:37:53 +0000 (UTC)
+Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id AAD355D9C3;
+ Fri, 27 Sep 2019 16:37:52 +0000 (UTC)
+Subject: Re: [PATCH 1/4] qemu-iotests: remove bash shebang from library files
+To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>
 References: <20190927141728.7137-1-crosa@redhat.com>
+ <20190927141728.7137-2-crosa@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <7ce7f9b7-a79e-21c5-18e2-f7f2ec85e575@redhat.com>
+Date: Fri, 27 Sep 2019 11:37:52 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.43]); Fri, 27 Sep 2019 14:17:32 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20190927141728.7137-2-crosa@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.69]); Fri, 27 Sep 2019 16:37:53 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
@@ -53,53 +56,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Sep 2019 14:17:49 -0000
+X-List-Received-Date: Fri, 27 Sep 2019 16:38:13 -0000
 
-Should not be necessary on files that are not executed standalone.
+On 9/27/19 9:17 AM, Cleber Rosa wrote:
+> Due to not being able to find a reason to have shebangs on files that
+> are not executable.
+> 
+> Signed-off-by: Cleber Rosa <crosa@redhat.com>
+> ---
+>   tests/qemu-iotests/common.config  | 2 --
+>   tests/qemu-iotests/common.filter  | 2 --
+>   tests/qemu-iotests/common.nbd     | 1 -
+>   tests/qemu-iotests/common.pattern | 2 --
+>   tests/qemu-iotests/common.qemu    | 2 --
+>   tests/qemu-iotests/common.rc      | 2 --
+>   tests/qemu-iotests/common.tls     | 2 --
+>   7 files changed, 13 deletions(-)
+> 
 
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
----
- tests/qemu-iotests/common.config | 3 ---
- tests/qemu-iotests/common.filter | 3 ---
- tests/qemu-iotests/common.rc     | 3 ---
- 3 files changed, 9 deletions(-)
+Loss of the shebang changes the mode in which emacs opens the files 
+(from Shell-script[bash] to Conf[space] in my case).  I agree that a #! 
+comment is not appropriate for a file that is not executable as a 
+standalone file, but it becomes harder to edit the file correctly unless 
+we replace it with some other way of letting editors realize that the 
+contents of each file is still meant to be consumed by bash.
 
-diff --git a/tests/qemu-iotests/common.config b/tests/qemu-iotests/common=
-.config
-index 6956d38d4c..0a24d960ff 100644
---- a/tests/qemu-iotests/common.config
-+++ b/tests/qemu-iotests/common.config
-@@ -34,6 +34,3 @@ _optstr_add()
-         echo "$2"
-     fi
- }
--
--# make sure this script returns success
--true
-diff --git a/tests/qemu-iotests/common.filter b/tests/qemu-iotests/common=
-.filter
-index 043c62c10c..55db15865a 100644
---- a/tests/qemu-iotests/common.filter
-+++ b/tests/qemu-iotests/common.filter
-@@ -221,6 +221,3 @@ _filter_qmp_empty_return()
- {
-     grep -v '{"return": {}}'
- }
--
--# make sure this script returns success
--true
-diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
-index 19bddacf11..d7e6456086 100644
---- a/tests/qemu-iotests/common.rc
-+++ b/tests/qemu-iotests/common.rc
-@@ -600,6 +600,3 @@ _require_drivers()
-         fi
-     done
- }
--
--# make sure this script returns success
--true
---=20
-2.21.0
+Something like this would work:
 
+# hey emacs, this file will be sourced by bash: -*- sh -*-
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
