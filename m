@@ -1,27 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iDpgb-00072p-D0
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Sep 2019 08:49:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51316)
+	id 1iDpjM-0002N8-D5
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Sep 2019 08:52:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52005)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iDpgY-0006ya-BZ
- for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 08:49:23 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iDpjJ-0002Iq-7G
+ for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 08:52:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iDpgX-0000o2-63
- for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 08:49:22 -0400
-Received: from mout.kundenserver.de ([217.72.192.75]:52185)
+ (envelope-from <laurent@vivier.eu>) id 1iDpjI-0001Gs-0D
+ for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 08:52:12 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:55355)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1iDpgW-0000nQ-Sq
- for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 08:49:21 -0400
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1iDpjH-0001GU-NF
+ for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 08:52:11 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1N8GAQ-1i9AGv0YxU-014AXx; Fri, 27 Sep 2019 14:07:05 +0200
-Subject: Re: [PATCH 3/3] qemu-timer: reuse MIN macro in qemu_timeout_ns_to_ms
-To: Frediano Ziglio <fziglio@redhat.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MG9c2-1iNfUJ1qd2-00Gb8P; Fri, 27 Sep 2019 13:43:27 +0200
+Subject: Re: [PATCH 1/3] util/async: avoid useless cast
+To: Frediano Ziglio <fziglio@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-trivial@nongnu.org
 References: <20190927103233.20901-1-fziglio@redhat.com>
- <20190927103233.20901-3-fziglio@redhat.com>
- <9ec0d128-86ec-542b-a1b6-5cba36b752ec@vivier.eu>
- <478273945.3530478.1569585425201.JavaMail.zimbra@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -65,36 +62,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <7213a4fd-c3c5-d015-0896-ca7098b06547@vivier.eu>
-Date: Fri, 27 Sep 2019 14:07:03 +0200
+Message-ID: <7e769b7a-c825-7b20-973b-76d4c812e409@vivier.eu>
+Date: Fri, 27 Sep 2019 13:43:23 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <478273945.3530478.1569585425201.JavaMail.zimbra@redhat.com>
+In-Reply-To: <20190927103233.20901-1-fziglio@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:RL1Xph9z3bRdaQDM8xchEq6mLEjGkWCdqyO+oVdw0+5nhkjzNvg
- epj3g42mzpl2aab1gck5J2FoZgv2pBd4UMB76c72yx2kmRD6/jZrDrCv2QZ78eUZlrcvC1j
- qku4P1N8LGy0B1NBGO6gEefUcoVpQAJ5UIcXK4IaVEvRAlV5NTky4fZoe6HmAkS8dzI6Uww
- I6N/v4aVNiDAWpuDP1E/A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:YXGTG7m2X9c=:ZX/p940KNRJhAHW3+so+aa
- AiZ3ApydcvoAUueZanMCf533LhyPZqbQO4WaQFz2CukpvW87KFkNsbHT/KFdjoFNElr2n28SQ
- cl5y4adAYgALyXNaIX8P0OuaDCkzbRP1grNrWyYFoorZwvRifOj8ArHaeGwIOfHbCRTMkHPo3
- AxdRBv8wtWlu1thdedt6QsJ67RNl14tqK75LDxyXZNPZkUY7828DzIm2bQ6ngPrxSNsvRIxvR
- +335/HaHob0m7qWjAix1CDHGh7iMDvv4EQkOYe36xwL6pxCYA/h1jRPl4E0TJ/rGl7qwZTMAV
- q8GUklbFgXVPKhYsK2LQGuxkBVj5DComXT05u3tu+XdlUEUId7fFmNk8nFXAd5BfEVPxNKTqi
- 2AKnPmxkGfiq9TXL63IIqsD16qXYKLB5C3BfEU7RAQ2f+KNYoXSRKV7YKjkxPbrkXwSBi9s3Z
- HHlIr7Hk5p345kCl5gENlTUrX7hEywNjjWa0tHCKehzw5kfZN94ieHKkdBINZUMW+1IG4uoEd
- AcLwO8XENUlLj7M+jvMYy+5sLxdi5lxf6fD386DHGkgBVIZhm4b+aAR3Pz3fDS2nVKo1+7hZ7
- 8mMRArY79fgXug/amy5gr0EDejtZgbna1Q5926W3ZcHV/5GWdQC9qP+5Cbp0WVftg1+jgIlm+
- l/7V6EF0++X9IlsmjJMlWNcVjD1BOTUyh/WITc4A8vGkfd3D7C4ZqA6qYOl8bBy3qlqSMSlHX
- mds2kdAPwyt46/z9I1VqxXGkAQ9paY3pkxuPRECXp7sgrHYstKRmaqEFJiawlrpOVrct1wRNV
- /xCFIy284m4Yu165l06wPXZasB7zi/tSlecSVS45tjwM3imLYnjlOCdFErbzpqedf2pORkVE0
- hoInK+zAo3SV+Key6sMOInZgmWRYJdoGtghZqIxsY=
+X-Provags-ID: V03:K1:fA3qrcd9PjE8HGk7nwRcVL1fpW55SRxQwrCynyk7o8ZUMbvtmrw
+ 8S6KCjo7GYbU4mmbKiHOXkhr4zBLYqVEDtCrDm30SGbGmj40EYovRNoke5h/gHlGAKM2p0T
+ Q5WYY8vQryVXLFdrtKGuS7IrLn//BYvcTBjcu43GRO7WAZ5l+qZwx1MOghn5AFMTOC2O4I2
+ vLcvEa5Ca9b6c5ZPee3IQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:xS0oOSIHvmo=:frNjzKfAhGRjnXE7DIR/Tj
+ J3Fp18LajQwrVrQ7ZP213OcZ+7Q/+E6DiB7ojSCngn41lh899ReHEc/VROD6fJ/AA3GKW7/vw
+ oZrOiKDSCUBxTH1FHl8FJvrpO4EV2/y+C30cSJDpm3gGdlcOGoFrZOaNVgfaaIPLQQafpWKCK
+ KLR7059CrtSU428plvovqk+IdF2RFVCOo/NsdvxrQNBjb1BBOKUdwGsN7KP8+4RXH+ElfUCrI
+ pnUk4MVRjr/SKSaEzCfRLlN0WXWS39Ukh3QDmX8FEIQ85+MP1To7uw0rEcSkCBuyGb1PMdpHW
+ qu81m6pKmfbo3Hm4UCYpCE/D4L6jI/E2ikUlYoeAiPc40MuCzJuOTvkoGKpi7F1e/EuzO/xeJ
+ 068OI3byqgGpw5XQBtsIfu2NecoB1GnqNekUy2urYSGUo6+XLlsj9gZJd9FqB6IsPuuh1YL2t
+ EkLpAfwugXuircYT64u42USOM7ReahvZLCN8tQpcHdXSPbIFB1zN1JJLudn1aSFMeVIRvIBGI
+ qX7Id49kHNCLjFvMWaWPna9/hhgLaylWMlvl75TzftprxxgwP7cpnS34Wasg5SpyagHjizXpe
+ TC/Z86rmjrwplywC+g2ZD0u3eX/MeouvAzwKKPU7vjs7dIpZenTLEjDKhAW9nF/Whx8+NU5GE
+ qq89NtFZKZTy5TfzBK+V6f3ZpiLMfiXsNyzH9TgnOvXqg9xwZmIj1Yo9k5NXtvcDTZlAUYPbI
+ KyvQMW/5IYKEyRgyGH3g5wubNKCmS5Fz39lefZtw0gCTzyjN0FHWSesnPOGJhIYnHhj1oJIHg
+ ebTtz6tPAk3Drs8c/IC6AhRxieHcKRf4lsdA4nKe8lV3Xy/mJ1bFVt8/z7ShkjnJq1ppqmyqj
+ 1olAn+Kn06ZG4GEH39EsxrWHVOgrQa9+m4V/5bGII=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 217.72.192.75
+X-Received-From: 212.227.17.24
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,52 +103,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Sep 2019 12:49:24 -0000
+X-List-Received-Date: Fri, 27 Sep 2019 12:52:14 -0000
 
-Le 27/09/2019 à 13:57, Frediano Ziglio a écrit :
->>
->> Le 27/09/2019 à 12:32, Frediano Ziglio a écrit :
->>> Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
->>> ---
->>>  util/qemu-timer.c | 6 +-----
->>>  1 file changed, 1 insertion(+), 5 deletions(-)
->>>
->>> diff --git a/util/qemu-timer.c b/util/qemu-timer.c
->>> index d428fec567..9bd173ecda 100644
->>> --- a/util/qemu-timer.c
->>> +++ b/util/qemu-timer.c
->>> @@ -322,11 +322,7 @@ int qemu_timeout_ns_to_ms(int64_t ns)
->>>      ms = DIV_ROUND_UP(ns, SCALE_MS);
->>>  
->>>      /* To avoid overflow problems, limit this to 2^31, i.e. approx 25 days
->>>      */
->>> -    if (ms > (int64_t) INT32_MAX) {
->>> -        ms = INT32_MAX;
->>> -    }
->>> -
->>> -    return (int) ms;
->>> +    return (int) MIN(ms, INT32_MAX);
->>>  }
->>>  
->>
->> Perhaps it would be cleaner to have always the same return type for
->> MIN() with:
->>
->>     MIN(ms, (int64_t) INT32_MAX)
->>
+Le 27/09/2019 à 12:32, Frediano Ziglio a écrit :
+> event_notifier_dummy_cb is already compatible with EventNotifierHandler.
 > 
-> The (int64_t) cast here is useless, ms is signed, C compilers knows how to
-> convert and compare properly.
+> Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
+> ---
+>  util/async.c | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/util/async.c b/util/async.c
+> index 4e4c7af51e..3cdbf44503 100644
+> --- a/util/async.c
+> +++ b/util/async.c
+> @@ -425,7 +425,6 @@ AioContext *aio_context_new(Error **errp)
+>  
+>      aio_set_event_notifier(ctx, &ctx->notifier,
+>                             false,
+> -                           (EventNotifierHandler *)
+>                             event_notifier_dummy_cb,
+>                             event_notifier_poll);
+>  #ifdef CONFIG_LINUX_AIO
+> 
 
-I agree.
-
-> The function returns int and it's used in some cases to fill 32bit integer,
-> changing the return type to int64_t is not trivial.
-> But I suppose that here you mean instead that the 2 sides of the ternary
-> operator used by MIN macro are int64_t and (probably) int32_t. In this case
-
-Yes, it's what I mean.
-
-Thanks,
-Laurent
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
