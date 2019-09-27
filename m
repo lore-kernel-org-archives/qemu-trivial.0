@@ -1,48 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iDtOq-00044Q-BD
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Sep 2019 12:47:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48445)
+	id 1iDtQM-0004zS-TL
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Sep 2019 12:48:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48753)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iDtOl-0003z3-ET
- for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 12:47:18 -0400
+ (envelope-from <eblake@redhat.com>) id 1iDtQA-0004vo-Cn
+ for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 12:48:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iDtOk-0000h2-CX
- for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 12:47:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48080)
+ (envelope-from <eblake@redhat.com>) id 1iDtQ2-0007p4-GC
+ for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 12:48:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40848)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iDtOb-0007rO-Ly; Fri, 27 Sep 2019 12:47:05 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ id 1iDtPV-0004Lk-11; Fri, 27 Sep 2019 12:48:01 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 2DF11898110;
- Fri, 27 Sep 2019 16:47:03 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 236C4C0578F8;
+ Fri, 27 Sep 2019 16:47:55 +0000 (UTC)
 Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8FFFE600CD;
- Fri, 27 Sep 2019 16:47:02 +0000 (UTC)
-Subject: Re: [PATCH 2/4] qemu-iotests: remove forceful execution success from
- library files
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8710E60BE2;
+ Fri, 27 Sep 2019 16:47:54 +0000 (UTC)
+Subject: Re: [PATCH 3/4] qemu-iotests: 044: pass is actually a noop, so remove
+ it
 To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
  qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
  Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>
 References: <20190927141728.7137-1-crosa@redhat.com>
- <20190927141728.7137-3-crosa@redhat.com>
+ <20190927141728.7137-4-crosa@redhat.com>
 From: Eric Blake <eblake@redhat.com>
 Organization: Red Hat, Inc.
-Message-ID: <0f7ccc53-9740-a689-ea5a-c86fe05d3d0f@redhat.com>
-Date: Fri, 27 Sep 2019 11:47:02 -0500
+Message-ID: <69741a7b-fd4b-3f94-eb83-a7a147d6d937@redhat.com>
+Date: Fri, 27 Sep 2019 11:47:54 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <20190927141728.7137-3-crosa@redhat.com>
+In-Reply-To: <20190927141728.7137-4-crosa@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.67]); Fri, 27 Sep 2019 16:47:03 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.31]); Fri, 27 Sep 2019 16:47:55 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
@@ -57,39 +57,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Sep 2019 16:47:18 -0000
+X-List-Received-Date: Fri, 27 Sep 2019 16:48:51 -0000
 
 On 9/27/19 9:17 AM, Cleber Rosa wrote:
-> Should not be necessary on files that are not executed standalone.
-> 
 > Signed-off-by: Cleber Rosa <crosa@redhat.com>
 > ---
->   tests/qemu-iotests/common.config | 3 ---
->   tests/qemu-iotests/common.filter | 3 ---
->   tests/qemu-iotests/common.rc     | 3 ---
->   3 files changed, 9 deletions(-)
-> 
-> diff --git a/tests/qemu-iotests/common.config b/tests/qemu-iotests/common.config
-> index 6956d38d4c..0a24d960ff 100644
-> --- a/tests/qemu-iotests/common.config
-> +++ b/tests/qemu-iotests/common.config
-> @@ -34,6 +34,3 @@ _optstr_add()
->           echo "$2"
->       fi
->   }
-> -
-> -# make sure this script returns success
-> -true
+>   tests/qemu-iotests/044 | 3 ---
+>   1 file changed, 3 deletions(-)
 
-The exit status of the source command in the caller depends on the last 
-command executed here.
-
-However, you also have the point that if you delete this line, the last 
-command executed is a function definition which is successful (for all 3 
-files touched).  So there is no behavior change in dropping this line.
+It's useful when there is nothing else, but here we definitely have 
+something else.
 
 Reviewed-by: Eric Blake <eblake@redhat.com>
 
+> 
+> diff --git a/tests/qemu-iotests/044 b/tests/qemu-iotests/044
+> index 05ea1f49c5..eb42df0fe1 100755
+> --- a/tests/qemu-iotests/044
+> +++ b/tests/qemu-iotests/044
+> @@ -105,17 +105,14 @@ class TestRefcountTableGrowth(iotests.QMPTestCase):
+>       def setUp(self):
+>           qemu_img('create', '-f', iotests.imgfmt, '-o', 'cluster_size=512', test_img, '16G')
+>           self.preallocate(test_img)
+> -        pass
+>   
+>   
+>       def tearDown(self):
+>           os.remove(test_img)
+> -        pass
+>   
+>       def test_grow_refcount_table(self):
+>           qemu_io('-c', 'write 3800M 1M', test_img)
+>           qemu_img_verbose('check' , test_img)
+> -        pass
+>   
+>   if __name__ == '__main__':
+>       iotests.main(supported_fmts=['qcow2'],
+> 
 
 -- 
 Eric Blake, Principal Software Engineer
