@@ -1,42 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iDqRI-0001C3-74
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Sep 2019 09:37:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37650)
+	id 1iDqad-0001fH-BR
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Sep 2019 09:47:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39990)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <fziglio@redhat.com>) id 1iDqRC-00014w-D6
- for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 09:37:35 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iDqaE-0001Iv-Nd
+ for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 09:47:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <fziglio@redhat.com>) id 1iDqR6-0002wO-E1
- for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 09:37:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34162)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <fziglio@redhat.com>) id 1iDqR6-0002vw-7S
- for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 09:37:28 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id A26C53082A8D;
- Fri, 27 Sep 2019 10:32:51 +0000 (UTC)
-Received: from fziglio.remote.csb (unknown [10.33.32.20])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B0C2660BE2;
- Fri, 27 Sep 2019 10:32:49 +0000 (UTC)
-From: Frediano Ziglio <fziglio@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>,
-	Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-trivial@nongnu.org,
-	Frediano Ziglio <fziglio@redhat.com>
-Subject: [PATCH 1/3] util/async: avoid useless cast
-Date: Fri, 27 Sep 2019 11:32:31 +0100
-Message-Id: <20190927103233.20901-1-fziglio@redhat.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1iDqaB-00067U-7d
+ for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 09:46:54 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:40936)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iDqaA-00066v-TY
+ for qemu-trivial@nongnu.org; Fri, 27 Sep 2019 09:46:51 -0400
+Received: by mail-oi1-x243.google.com with SMTP id k9so5222779oib.7
+ for <qemu-trivial@nongnu.org>; Fri, 27 Sep 2019 06:46:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=iFxNGnMHc2gomfgmq3P5pPVF/whBRHuAE9BOwskh+hw=;
+ b=IjA3JX7DIDleqxnLELS8jcb70/pCkCrV8JkN1Ujn0/mWiHUW3RvIqdY4HcEep0++BG
+ YGl4jCRTQPFF28EfOQA+7S77rOPQdfUOQHdFmCKtJypx64IU3yejdn239QJ+9Q6rjbP5
+ yDGJuCayFT7mG48tgi1AfoHRnMDXn+BY1fxa6jbMyaohEDzEJEN+A/YGkH1PIfZS46OF
+ qU42Rco7BMGWTSjQrIlqoz3xo13kfDZxorWn5ArIvfBq+XUJKytRgI7jjgkTXLYg4Y5+
+ ZOyKiqaazsNpUpX1ADbw4IsT9wGelYM03c9eubnJUp9rryKzCD0E4PtwoMBaBC6yTRq2
+ d1qw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=iFxNGnMHc2gomfgmq3P5pPVF/whBRHuAE9BOwskh+hw=;
+ b=bQmE7um5bKLOUu0dOt0GjlSNor1hUBd4W0DFdSab9kAKVPoP/yre1/7D6jfzLuXfsP
+ RrhwXgJGdyC19z7kQ0Hs5F37c6b3ldv5Bt3n/VBjkaU98tzvkVnz4Hvb5B02+kmKTcTj
+ EyODdfejs46xYCNklxwon1yeKY9eG5PbODFM9O1QN6FTh5GzOWAxbArqo1S/i4btybfR
+ WFWDIDy5gKWtSX/XvUCJzUmGvn+pa1/wnOqfvhlQmQUliOB3WK/bLk5L0fTAe9O4u0oa
+ CnQL4c0OiZ2NZay8fg4LTZVhmD5JYz7qfSVQTYAzpMMTeADI5PMkxLnzAcAERaK5tmyn
+ vI9w==
+X-Gm-Message-State: APjAAAXEgT9R05AifUE2Qc/FCrUBJs94vEvK5PGTVPC9rZN7gvt4wOL2
+ e+Fuvwti7HpHQGmFz7wuE0axAYpyEH0/w63JghszpTstDdY=
+X-Google-Smtp-Source: APXvYqwDPDt9mPIQ92kcFMheHLiVAE6j+R5/tVPxT/BCrfwQuGh+8a2VyWm41yGTCgfowLbEzf3hPx1IFLNiyck5dRc=
+X-Received: by 2002:aca:50d8:: with SMTP id e207mr6111829oib.48.1569581165430; 
+ Fri, 27 Sep 2019 03:46:05 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.45]); Fri, 27 Sep 2019 10:32:51 +0000 (UTC)
+References: <20190923131108.21459-1-philmd@redhat.com>
+In-Reply-To: <20190923131108.21459-1-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 27 Sep 2019 11:45:54 +0100
+Message-ID: <CAFEAcA9V9LXQMDxE-QFCECJou9-7x-F8XDTCKSo9SkGT_oenuQ@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/arm/boot: Use the IEC binary prefix definitions
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Stefano Garzarella <sgarzare@redhat.com>, Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::243
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -48,28 +69,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Sep 2019 13:37:38 -0000
+X-List-Received-Date: Fri, 27 Sep 2019 13:47:11 -0000
 
-event_notifier_dummy_cb is already compatible with EventNotifierHandler.
+On Mon, 23 Sep 2019 at 14:11, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> IEC binary prefixes ease code review: the unit is explicit.
+>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> v2: Use 4*GiB in arm_load_dtb (sgarzare)
 
-Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
----
- util/async.c | 1 -
- 1 file changed, 1 deletion(-)
 
-diff --git a/util/async.c b/util/async.c
-index 4e4c7af51e..3cdbf44503 100644
---- a/util/async.c
-+++ b/util/async.c
-@@ -425,7 +425,6 @@ AioContext *aio_context_new(Error **errp)
-=20
-     aio_set_event_notifier(ctx, &ctx->notifier,
-                            false,
--                           (EventNotifierHandler *)
-                            event_notifier_dummy_cb,
-                            event_notifier_poll);
- #ifdef CONFIG_LINUX_AIO
---=20
-2.21.0
 
+Applied to target-arm.next, thanks.
+
+-- PMM
 
