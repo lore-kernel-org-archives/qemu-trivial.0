@@ -1,41 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iExEP-0005dt-Nf
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Sep 2019 11:04:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58833)
+	id 1iEzCO-0001d2-9f
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Sep 2019 13:11:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47206)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iExEK-0005a8-9g
- for qemu-trivial@nongnu.org; Mon, 30 Sep 2019 11:04:53 -0400
+ (envelope-from <thuth@redhat.com>) id 1iEzCL-0001aj-PV
+ for qemu-trivial@nongnu.org; Mon, 30 Sep 2019 13:10:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iExEJ-00025X-AO
- for qemu-trivial@nongnu.org; Mon, 30 Sep 2019 11:04:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33030)
+ (envelope-from <thuth@redhat.com>) id 1iEzCK-0005XQ-Lc
+ for qemu-trivial@nongnu.org; Mon, 30 Sep 2019 13:10:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:19433)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1iExEG-00022m-CC; Mon, 30 Sep 2019 11:04:48 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ id 1iEzCG-0005VB-7V; Mon, 30 Sep 2019 13:10:52 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 6F0FA18C4279;
- Mon, 30 Sep 2019 15:04:46 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 049CE20F7;
+ Mon, 30 Sep 2019 17:10:51 +0000 (UTC)
 Received: from thuth.com (ovpn-116-74.ams2.redhat.com [10.36.116.74])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4D6FE60C5E;
- Mon, 30 Sep 2019 15:04:41 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3CF2F5C223;
+ Mon, 30 Sep 2019 17:10:48 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- "Michael S . Tsirkin" <mst@redhat.com>
-Cc: qemu-trivial@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Rikalo <arikalo@wavecomp.com>,
- Richard Henderson <rth@twiddle.net>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
-Subject: [PATCH] hw/isa: Introduce a CONFIG_ISA_SUPERIO switch for
- isa-superio.c
-Date: Mon, 30 Sep 2019 17:04:36 +0200
-Message-Id: <20190930150436.18162-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+To: qemu-devel@nongnu.org, Richard Henderson <rth@twiddle.net>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>
+Cc: qemu-trivial@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH] target/sparc: Remove old TODO file
+Date: Mon, 30 Sep 2019 19:10:44 +0200
+Message-Id: <20190930171044.25312-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.62]); Mon, 30 Sep 2019 15:04:46 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.71]); Mon, 30 Sep 2019 17:10:51 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
@@ -50,81 +47,112 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Sep 2019 15:04:55 -0000
+X-List-Received-Date: Mon, 30 Sep 2019 17:10:59 -0000
 
-Currently, isa-superio.c is always compiled as soon as CONFIG_ISA_BUS
-is enabled. But there are also machines that have an ISA BUS without
-any of the superio chips attached to it, so we should not compile
-isa-superio.c in case we only compile a QEMU for such a machine.
-Thus add a proper CONFIG_ISA_SUPERIO switch so that this file only gets
-compiled when we really, really need it.
+This file hasn't seen a real (non-trivial) update since 2008 anymore,
+so we can assume that it is pretty much out of date and nobody cares
+for it anymore. Let's simply remove it.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/isa/Kconfig       | 10 +++++++---
- hw/isa/Makefile.objs |  2 +-
- hw/mips/Kconfig      |  1 +
- 3 files changed, 9 insertions(+), 4 deletions(-)
+ target/sparc/TODO | 88 -----------------------------------------------
+ 1 file changed, 88 deletions(-)
+ delete mode 100644 target/sparc/TODO
 
-diff --git a/hw/isa/Kconfig b/hw/isa/Kconfig
-index 6db0d7970c..98a289957e 100644
---- a/hw/isa/Kconfig
-+++ b/hw/isa/Kconfig
-@@ -13,9 +13,13 @@ config I82378
-     select MC146818RTC
-     select PCSPK
- 
--config PC87312
-+config ISA_SUPERIO
-     bool
-     select ISA_BUS
-+
-+config PC87312
-+    bool
-+    select ISA_SUPERIO
-     select I8259
-     select I8254
-     select I8257
-@@ -34,14 +38,14 @@ config PIIX4
- 
- config VT82C686
-     bool
--    select ISA_BUS
-+    select ISA_SUPERIO
-     select ACPI_SMBUS
-     select SERIAL_ISA
-     select FDC
- 
- config SMC37C669
-     bool
--    select ISA_BUS
-+    select ISA_SUPERIO
-     select SERIAL_ISA
-     select PARALLEL
-     select FDC
-diff --git a/hw/isa/Makefile.objs b/hw/isa/Makefile.objs
-index 9e106df186..ff97485504 100644
---- a/hw/isa/Makefile.objs
-+++ b/hw/isa/Makefile.objs
-@@ -1,5 +1,5 @@
- common-obj-$(CONFIG_ISA_BUS) += isa-bus.o
--common-obj-$(CONFIG_ISA_BUS) += isa-superio.o
-+common-obj-$(CONFIG_ISA_SUPERIO) += isa-superio.o
- common-obj-$(CONFIG_APM) += apm.o
- common-obj-$(CONFIG_I82378) += i82378.o
- common-obj-$(CONFIG_PC87312) += pc87312.o
-diff --git a/hw/mips/Kconfig b/hw/mips/Kconfig
-index 62aa01b29e..2c2adbc42a 100644
---- a/hw/mips/Kconfig
-+++ b/hw/mips/Kconfig
-@@ -13,6 +13,7 @@ config R4K
- 
- config MALTA
-     bool
-+    select ISA_SUPERIO
- 
- config MIPSSIM
-     bool
+diff --git a/target/sparc/TODO b/target/sparc/TODO
+deleted file mode 100644
+index b8c727e858..0000000000
+--- a/target/sparc/TODO
++++ /dev/null
+@@ -1,88 +0,0 @@
+-TODO-list:
+-
+-CPU common:
+-- Unimplemented features/bugs:
+- - Delay slot handling may fail sometimes (branch end of page, delay
+- slot next page)
+- - Atomical instructions
+- - CPU features should match real CPUs (also ASI selection)
+-- Optimizations/improvements:
+- - Condition code/branch handling like x86, also for FPU?
+- - Remove remaining explicit alignment checks
+- - Global register for regwptr, so that windowed registers can be
+- accessed directly
+- - Improve Sparc32plus addressing
+- - NPC/PC static optimisations (use JUMP_TB when possible)? (Is this
+- obsolete?)
+- - Synthetic instructions
+- - MMU model dependent on CPU model
+- - Select ASI helper at translation time (on V9 only if known)
+- - KQemu/KVM support for VM only
+- - Hardware breakpoint/watchpoint support
+- - Cache emulation mode
+- - Reverse-endian pages
+- - Faster FPU emulation
+- - Busy loop detection
+-
+-Sparc32 CPUs:
+-- Unimplemented features/bugs:
+- - Sun4/Sun4c MMUs
+- - Some V8 ASIs
+-
+-Sparc64 CPUs:
+-- Unimplemented features/bugs:
+- - Interrupt handling
+- - Secondary address space, other MMU functions
+- - Many V9/UA2005/UA2007 ASIs
+- - Rest of V9 instructions, missing VIS instructions
+- - IG/MG/AG vs. UA2007 globals
+- - Full hypervisor support
+- - SMP/CMT
+- - Sun4v CPUs
+-
+-Sun4:
+-- To be added
+-
+-Sun4c:
+-- A lot of unimplemented features
+-- Maybe split from Sun4m
+-
+-Sun4m:
+-- Unimplemented features/bugs:
+- - Hardware devices do not match real boards
+- - Floppy does not work
+- - CS4231: merge with cs4231a, add DMA
+- - Add cg6, bwtwo
+- - Arbitrary resolution support
+- - PCI for MicroSparc-IIe
+- - JavaStation machines
+- - SBus slot probing, FCode ROM support
+- - SMP probing support
+- - Interrupt routing does not match real HW
+- - SuSE 7.3 keyboard sometimes unresponsive
+- - Gentoo 2004.1 SMP does not work
+- - SS600MP ledma -> lebuffer
+- - Type 5 keyboard
+- - Less fixed hardware choices
+- - DBRI audio (Am7930)
+- - BPP parallel
+- - Diagnostic switch
+- - ESP PIO mode
+-
+-Sun4d:
+-- A lot of unimplemented features:
+- - SBI
+- - IO-unit
+-- Maybe split from Sun4m
+-
+-Sun4u:
+-- Unimplemented features/bugs:
+- - Interrupt controller
+- - PCI/IOMMU support (Simba, JIO, Tomatillo, Psycho, Schizo, Safari...)
+- - SMP
+- - Happy Meal Ethernet, flash, I2C, GPIO
+- - A lot of real machine types
+-
+-Sun4v:
+-- A lot of unimplemented features
+- - A lot of real machine types
 -- 
 2.18.1
 
