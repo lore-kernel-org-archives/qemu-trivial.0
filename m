@@ -1,52 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iEzLI-0006uE-TA
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Sep 2019 13:20:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48645)
+	id 1iFEBY-0002O2-4M
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Oct 2019 05:11:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33118)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1iEzLE-0006pj-TD
- for qemu-trivial@nongnu.org; Mon, 30 Sep 2019 13:20:10 -0400
+ (envelope-from <philmd@redhat.com>) id 1iFEBU-0002K1-S0
+ for qemu-trivial@nongnu.org; Tue, 01 Oct 2019 05:11:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1iEzLD-0000QQ-Rq
- for qemu-trivial@nongnu.org; Mon, 30 Sep 2019 13:20:08 -0400
-Resent-Date: Mon, 30 Sep 2019 13:20:08 -0400
-Resent-Message-Id: <E1iEzLD-0000QQ-Rq@eggs.gnu.org>
-Received: from sender4-of-o58.zoho.com ([136.143.188.58]:21826)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1iEzL9-0000Ou-O3; Mon, 30 Sep 2019 13:20:03 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1569863967; cv=none; d=zoho.com; s=zohoarc; 
- b=Yg3N6bcNKhInCXqTjEqgY3r0PWSSx/LyliEPmKXoG/RxDc+5KKPLcbgLzLI7EGYTcIyBKGTMAQaQjen5UycGambU5FIzGXf3187bNfGEbrZRcHPVYQJZfyDSTXCInLTGfBiuT/lpXXDf/sAIgLvMNqvzw4TxN7hgyLXwL3zwPkU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
- s=zohoarc; t=1569863967;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
- bh=quW1jKyQbrCHORj2wrrXVoQbtI9aPT7ArqeZkSzySLM=; 
- b=Pd7uqHNXxeMUqKdw1+vF2S1fvqJpDzFFYdhnNrNSoMeAsHb8YJHKQ7kKdYDybLysNdE8PNdl6ZIqqGTh13/+8X93ZKqJ0mU74H7IbQ/d1dvYc1oIAUYbp/L0WgqE1TGacB4c3ennLbHgmZ7UwpbsVo4mSLElKyhjdde6L9rxq5E=
-ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1569863965488316.47336312751486;
- Mon, 30 Sep 2019 10:19:25 -0700 (PDT)
-Reply-To: <qemu-devel@nongnu.org>
+ (envelope-from <philmd@redhat.com>) id 1iFEBT-0001jO-DH
+ for qemu-trivial@nongnu.org; Tue, 01 Oct 2019 05:11:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50634)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iFEBT-0001hh-4L
+ for qemu-trivial@nongnu.org; Tue, 01 Oct 2019 05:11:03 -0400
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 164D912A2
+ for <qemu-trivial@nongnu.org>; Tue,  1 Oct 2019 09:11:02 +0000 (UTC)
+Received: by mail-wr1-f71.google.com with SMTP id a4so5696865wrg.8
+ for <qemu-trivial@nongnu.org>; Tue, 01 Oct 2019 02:11:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=cNX6CzKY6UI6bxi8es/quSNCTr9n0cikcVRKiLTZ/9s=;
+ b=uWMb4cON4wZo2c8LzPRqqhsFi50l1Fm70tdDnh1lLQZSSANcBJchtPifhb4Au8Mkgl
+ dPfI1Mj5TxDsTx2kMcpVsSuHYy5tnIXZWT6L7ublGA9ZMZauyiD4bMwQ+CvS6dIDqmVv
+ MWuWa72PwG1sCul0c6os0oxuhM0PcYHkd5wLJ+hR05rofOSC8BdU1UaTSFygt+ocEMS+
+ FatH3f89srqmYQdvqfxlWTBOlrBkMc+YVv7t/bV8yHqEJ0IqunmGtlgYi6WJrekOKfxH
+ 5F04GKSFrJMQ+IRPxpltX21ILLt/uRIXNA9S0Sx4HH3EZg0uB2nFBgVJMDDAjtEV3XTL
+ KkZw==
+X-Gm-Message-State: APjAAAU90F+t2KYcgRMgWlPLJKVbZfct0xW4yS0UPA76RlcAWiLiOR5Z
+ iC09GipIX7S5woqvUUn0QKnmAFo79WvGM8Oy+drIINP29Yrae6keA1BPGBJby048FctNw/1pLrF
+ pMUeFJ6svsi0N4wovSA==
+X-Received: by 2002:a5d:52c8:: with SMTP id r8mr17797160wrv.256.1569921059871; 
+ Tue, 01 Oct 2019 02:10:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw24miDcosAukjkV7esurXFYlolpTSpLZx9q9776KzJiyyJbDYzZvqYHe56uU9Pu+An8mrMvw==
+X-Received: by 2002:a5d:52c8:: with SMTP id r8mr17797142wrv.256.1569921059691; 
+ Tue, 01 Oct 2019 02:10:59 -0700 (PDT)
+Received: from [192.168.1.35] (240.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.240])
+ by smtp.gmail.com with ESMTPSA id u83sm3326270wme.0.2019.10.01.02.10.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 01 Oct 2019 02:10:59 -0700 (PDT)
 Subject: Re: [PATCH] hw/isa: Introduce a CONFIG_ISA_SUPERIO switch for
  isa-superio.c
-In-Reply-To: <20190930150436.18162-1-thuth@redhat.com>
-Message-ID: <156986396389.27524.5625558969416986785@8230166b0665>
+To: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-devel@nongnu.org, "Michael S . Tsirkin" <mst@redhat.com>
+Cc: qemu-trivial@nongnu.org, Aleksandar Rikalo <arikalo@wavecomp.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
+References: <20190930150436.18162-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <cecc59f4-d2b9-7b3b-b750-b86ac202da2c@redhat.com>
+Date: Tue, 1 Oct 2019 11:10:58 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: thuth@redhat.com
-Cc: pbonzini@redhat.com, qemu-devel@nongnu.org, mst@redhat.com,
- qemu-trivial@nongnu.org, arikalo@wavecomp.com, hpoussin@reactos.org,
- amarkovic@wavecomp.com, aurelien@aurel32.net, rth@twiddle.net
-Date: Mon, 30 Sep 2019 10:19:25 -0700 (PDT)
-X-ZohoMailClient: External
+In-Reply-To: <20190930150436.18162-1-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 136.143.188.58
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -58,20 +78,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Sep 2019 17:20:10 -0000
+X-List-Received-Date: Tue, 01 Oct 2019 09:11:06 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDkzMDE1MDQzNi4xODE2
-Mi0xLXRodXRoQHJlZGhhdC5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIHRoZSBkb2Nr
-ZXItbWluZ3dAZmVkb3JhIGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5nIGNvbW1h
-bmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0YWxsZWQs
-IHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBTQ1JJUFQg
-QkVHSU4gPT09CiMhIC9iaW4vYmFzaApleHBvcnQgQVJDSD14ODZfNjQKbWFrZSBkb2NrZXItaW1h
-Z2UtZmVkb3JhIFY9MSBORVRXT1JLPTEKdGltZSBtYWtlIGRvY2tlci10ZXN0LW1pbmd3QGZlZG9y
-YSBKPTE0IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKCgoKVGhlIGZ1bGwgbG9n
-IGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MDkzMDE1MDQzNi4x
-ODE2Mi0xLXRodXRoQHJlZGhhdC5jb20vdGVzdGluZy5kb2NrZXItbWluZ3dAZmVkb3JhLz90eXBl
-PW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFto
-dHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hl
-dy1kZXZlbEByZWRoYXQuY29t
+On 9/30/19 5:04 PM, Thomas Huth wrote:
+> Currently, isa-superio.c is always compiled as soon as CONFIG_ISA_BUS
+> is enabled. But there are also machines that have an ISA BUS without
+> any of the superio chips attached to it, so we should not compile
+> isa-superio.c in case we only compile a QEMU for such a machine.
+> Thus add a proper CONFIG_ISA_SUPERIO switch so that this file only gets
+> compiled when we really, really need it.
+>=20
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+> ---
+>   hw/isa/Kconfig       | 10 +++++++---
+>   hw/isa/Makefile.objs |  2 +-
+>   hw/mips/Kconfig      |  1 +
+>   3 files changed, 9 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/hw/isa/Kconfig b/hw/isa/Kconfig
+> index 6db0d7970c..98a289957e 100644
+> --- a/hw/isa/Kconfig
+> +++ b/hw/isa/Kconfig
+> @@ -13,9 +13,13 @@ config I82378
+>       select MC146818RTC
+>       select PCSPK
+>  =20
+> -config PC87312
+> +config ISA_SUPERIO
+>       bool
+>       select ISA_BUS
+> +
+> +config PC87312
+> +    bool
+> +    select ISA_SUPERIO
+>       select I8259
+>       select I8254
+>       select I8257
+> @@ -34,14 +38,14 @@ config PIIX4
+>  =20
+>   config VT82C686
+>       bool
+> -    select ISA_BUS
+> +    select ISA_SUPERIO
+>       select ACPI_SMBUS
+>       select SERIAL_ISA
+>       select FDC
+>  =20
+>   config SMC37C669
+>       bool
+> -    select ISA_BUS
+> +    select ISA_SUPERIO
+>       select SERIAL_ISA
+>       select PARALLEL
+>       select FDC
+> diff --git a/hw/isa/Makefile.objs b/hw/isa/Makefile.objs
+> index 9e106df186..ff97485504 100644
+> --- a/hw/isa/Makefile.objs
+> +++ b/hw/isa/Makefile.objs
+> @@ -1,5 +1,5 @@
+>   common-obj-$(CONFIG_ISA_BUS) +=3D isa-bus.o
+> -common-obj-$(CONFIG_ISA_BUS) +=3D isa-superio.o
+> +common-obj-$(CONFIG_ISA_SUPERIO) +=3D isa-superio.o
+>   common-obj-$(CONFIG_APM) +=3D apm.o
+>   common-obj-$(CONFIG_I82378) +=3D i82378.o
+>   common-obj-$(CONFIG_PC87312) +=3D pc87312.o
+> diff --git a/hw/mips/Kconfig b/hw/mips/Kconfig
+> index 62aa01b29e..2c2adbc42a 100644
+> --- a/hw/mips/Kconfig
+> +++ b/hw/mips/Kconfig
+> @@ -13,6 +13,7 @@ config R4K
+>  =20
+>   config MALTA
+>       bool
+> +    select ISA_SUPERIO
+>  =20
+>   config MIPSSIM
+>       bool
+>=20
 
