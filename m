@@ -1,65 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iFGtF-0008Ih-T8
-	for mharc-qemu-trivial@gnu.org; Tue, 01 Oct 2019 08:04:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38517)
+	id 1iFNK0-0002D1-Vu
+	for mharc-qemu-trivial@gnu.org; Tue, 01 Oct 2019 14:56:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44221)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <sgarzare@redhat.com>) id 1iFGt8-0008Hr-Em
- for qemu-trivial@nongnu.org; Tue, 01 Oct 2019 08:04:19 -0400
+ (envelope-from <lersek@redhat.com>) id 1iFNJy-0002AB-6f
+ for qemu-trivial@nongnu.org; Tue, 01 Oct 2019 14:56:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <sgarzare@redhat.com>) id 1iFGt6-0002Nd-Al
- for qemu-trivial@nongnu.org; Tue, 01 Oct 2019 08:04:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50328)
+ (envelope-from <lersek@redhat.com>) id 1iFNJx-0004ip-73
+ for qemu-trivial@nongnu.org; Tue, 01 Oct 2019 14:56:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:62930)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1iFGt6-0002Mb-21
- for qemu-trivial@nongnu.org; Tue, 01 Oct 2019 08:04:16 -0400
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Exim 4.71) (envelope-from <lersek@redhat.com>)
+ id 1iFNJu-0004hk-6J; Tue, 01 Oct 2019 14:56:22 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 64C7346671
- for <qemu-trivial@nongnu.org>; Tue,  1 Oct 2019 12:04:14 +0000 (UTC)
-Received: by mail-wm1-f71.google.com with SMTP id o8so1325046wmc.2
- for <qemu-trivial@nongnu.org>; Tue, 01 Oct 2019 05:04:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=4S9GSvtVGVTRXQRmHgyH0l0klwBA4ec1EdhxAPTUlBs=;
- b=kvt4duzGT+Cbo8QaJSXt/ubA9Cj0HGL7JPpicOIO25K2CAZeKs7Ym4N4j0NzyhjbBx
- wHRe8l5zpRkSagRBLEhoRnjdJggnh1qQBwiaQN2fvcYKNG6p+XQJAHdysAfQyHu0HipF
- Q7sEQu7+GbPF/2h9sHaU83gFTam/cSsUv1WJRbKPusPI/nTkmSnXGGtQvLlB4tfvmwZm
- mLzHG9kcBZOIoOxPfqFfTRsaxAkmcI4KI7vwdA2hfUhdxkEnyR2raMeY8Tzwy09vy3MK
- qel9K9663E5y4UsKErVdRfwt+ZD28JnvcQRbueDeBx76L7J392uTlI76tsGAj8zFkTFS
- eYuQ==
-X-Gm-Message-State: APjAAAWkBElIejSR9U8zps7DOBztmv+m7Te9YePLnI1pBfqJyPjsCepR
- irb+8tiHyJHmhfJu/U/l3WNcfY8Hn6vQMAckKEYoqPqAWRG0m9YTHrgmC3sSI24o+LSEdWlpxJi
- juf2qJUL9O+VORTy82g==
-X-Received: by 2002:a5d:430e:: with SMTP id h14mr17017572wrq.18.1569931453113; 
- Tue, 01 Oct 2019 05:04:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw22QpxGa9eME8dcs/1xT5CLiq4lo9gYEw1snK8wBcGR6XzU+vUI36fuW5MEeS/vXNxNnmE8w==
-X-Received: by 2002:a5d:430e:: with SMTP id h14mr17017548wrq.18.1569931452886; 
- Tue, 01 Oct 2019 05:04:12 -0700 (PDT)
-Received: from steredhat (host174-200-dynamic.52-79-r.retail.telecomitalia.it.
- [79.52.200.174])
- by smtp.gmail.com with ESMTPSA id q19sm38966503wra.89.2019.10.01.05.04.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Oct 2019 05:04:11 -0700 (PDT)
-Date: Tue, 1 Oct 2019 14:04:09 +0200
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- qemu-trivial@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- Laszlo Ersek <lersek@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id 633253086E27;
+ Tue,  1 Oct 2019 18:56:21 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-121-64.rdu2.redhat.com
+ [10.10.121.64])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0625EA1020;
+ Tue,  1 Oct 2019 18:56:19 +0000 (UTC)
 Subject: Re: [PATCH] qemu-doc: Remove paragraph about requiring a HD image
  with -kernel
-Message-ID: <20191001120409.vgxd4tsmx4guhnxc@steredhat>
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Cc: qemu-trivial@nongnu.org, Alexander Graf <agraf@csgraf.de>,
+ Gerd Hoffmann <kraxel@redhat.com>
 References: <20191001110111.4870-1-thuth@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <3cadc565-2a0a-643b-1d42-22726601352a@redhat.com>
+Date: Tue, 1 Oct 2019 20:56:19 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <20191001110111.4870-1-thuth@redhat.com>
-User-Agent: NeoMutt/20180716
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.44]); Tue, 01 Oct 2019 18:56:21 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
@@ -74,9 +56,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 01 Oct 2019 12:04:20 -0000
+X-List-Received-Date: Tue, 01 Oct 2019 18:56:27 -0000
 
-On Tue, Oct 01, 2019 at 01:01:11PM +0200, Thomas Huth wrote:
+On 10/01/19 13:01, Thomas Huth wrote:
 > The need for specifying "-hda" together with "-kernel" has been removed in
 > commit 57a46d057995 ("Convert linux bootrom to external rom and fw_cfg"),
 > almost 10 years ago, so let's remove this description from our documentation
@@ -86,13 +68,6 @@ On Tue, Oct 01, 2019 at 01:01:11PM +0200, Thomas Huth wrote:
 > ---
 >  qemu-doc.texi | 4 ----
 >  1 file changed, 4 deletions(-)
-
-
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-
-Thanks,
-Stefano
-
 > 
 > diff --git a/qemu-doc.texi b/qemu-doc.texi
 > index 2ba6c90c08..3c5022050f 100644
@@ -109,10 +84,7 @@ Stefano
 >  If you do not need graphical output, you can disable it and redirect
 >  the virtual serial port and the QEMU monitor to the console with the
 >  @option{-nographic} option. The typical command line is:
-> -- 
-> 2.18.1
-> 
 > 
 
--- 
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
 
