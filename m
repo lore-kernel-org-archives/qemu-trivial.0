@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iGABz-0002mQ-Vb
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Oct 2019 19:07:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47169)
+	id 1iGACL-0002wr-CS
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Oct 2019 19:07:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47356)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iGABv-0002l4-1j
- for qemu-trivial@nongnu.org; Thu, 03 Oct 2019 19:07:24 -0400
+ (envelope-from <philmd@redhat.com>) id 1iGACF-0002ug-O7
+ for qemu-trivial@nongnu.org; Thu, 03 Oct 2019 19:07:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iGABs-0007Nb-Rz
- for qemu-trivial@nongnu.org; Thu, 03 Oct 2019 19:07:22 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45600)
+ (envelope-from <philmd@redhat.com>) id 1iGACE-0007ZT-B7
+ for qemu-trivial@nongnu.org; Thu, 03 Oct 2019 19:07:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45930)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iGABj-0007FO-VX; Thu, 03 Oct 2019 19:07:12 -0400
+ id 1iGAC0-0007Rf-Op; Thu, 03 Oct 2019 19:07:28 -0400
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id E37F33078A23;
- Thu,  3 Oct 2019 23:07:10 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 736C5A44AC6;
+ Thu,  3 Oct 2019 23:07:26 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-21.brq.redhat.com [10.40.204.21])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 036CC10013A7;
- Thu,  3 Oct 2019 23:07:02 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 76A0110013A7;
+ Thu,  3 Oct 2019 23:07:11 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: David Gibson <david@gibson.dropbear.id.au>,
@@ -43,17 +43,16 @@ Cc: David Gibson <david@gibson.dropbear.id.au>,
  Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v2 13/14] hw/rtc/xlnx-zynqmp-rtc: Remove unused "ptimer.h"
- include
-Date: Fri,  4 Oct 2019 01:04:03 +0200
-Message-Id: <20191003230404.19384-14-philmd@redhat.com>
+Subject: [PATCH v2 14/14] hw/rtc/aspeed_rtc: Remove unused includes
+Date: Fri,  4 Oct 2019 01:04:04 +0200
+Message-Id: <20191003230404.19384-15-philmd@redhat.com>
 In-Reply-To: <20191003230404.19384-1-philmd@redhat.com>
 References: <20191003230404.19384-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.48]); Thu, 03 Oct 2019 23:07:11 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.68]); Thu, 03 Oct 2019 23:07:26 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -69,28 +68,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Oct 2019 23:07:25 -0000
+X-List-Received-Date: Thu, 03 Oct 2019 23:07:47 -0000
 
-The "hw/ptimer.h" header is not used, remove it.
+The system <stdint.h> include is already provided by "osdep.h"
+(the scripts/clean-includes file clean such headers).
 
+Commit 64552b6be47 suggests we don't need to include "hw/irq.h":
+
+    Move the qemu_irq and qemu_irq_handler typedefs from hw/irq.h to
+    qemu/typedefs.h, and then include hw/irq.h only where it's still
+    needed.
+
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/rtc/xlnx-zynqmp-rtc.c | 1 -
- 1 file changed, 1 deletion(-)
+ include/hw/rtc/aspeed_rtc.h | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/hw/rtc/xlnx-zynqmp-rtc.c b/hw/rtc/xlnx-zynqmp-rtc.c
-index f9f09b7296..2bcd14d779 100644
---- a/hw/rtc/xlnx-zynqmp-rtc.c
-+++ b/hw/rtc/xlnx-zynqmp-rtc.c
-@@ -32,7 +32,6 @@
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "hw/irq.h"
--#include "hw/ptimer.h"
- #include "qemu/cutils.h"
- #include "sysemu/sysemu.h"
- #include "trace.h"
+diff --git a/include/hw/rtc/aspeed_rtc.h b/include/hw/rtc/aspeed_rtc.h
+index 3fde854ad9..b94a710268 100644
+--- a/include/hw/rtc/aspeed_rtc.h
++++ b/include/hw/rtc/aspeed_rtc.h
+@@ -8,9 +8,6 @@
+ #ifndef HW_RTC_ASPEED_RTC_H
+ #define HW_RTC_ASPEED_RTC_H
+=20
+-#include <stdint.h>
+-
+-#include "hw/irq.h"
+ #include "hw/sysbus.h"
+=20
+ typedef struct AspeedRtcState {
 --=20
 2.20.1
 
