@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iGABb-0002Nd-LD
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Oct 2019 19:07:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46799)
+	id 1iGABn-0002dr-Pv
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Oct 2019 19:07:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47007)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iGABW-0002HT-W7
- for qemu-trivial@nongnu.org; Thu, 03 Oct 2019 19:07:00 -0400
+ (envelope-from <philmd@redhat.com>) id 1iGABj-0002YV-NZ
+ for qemu-trivial@nongnu.org; Thu, 03 Oct 2019 19:07:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iGABV-00073X-Hk
- for qemu-trivial@nongnu.org; Thu, 03 Oct 2019 19:06:58 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60304)
+ (envelope-from <philmd@redhat.com>) id 1iGABi-0007EN-JS
+ for qemu-trivial@nongnu.org; Thu, 03 Oct 2019 19:07:11 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37032)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iGABM-0006yG-OS; Thu, 03 Oct 2019 19:06:48 -0400
+ id 1iGABb-00074y-Id; Thu, 03 Oct 2019 19:07:03 -0400
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id BA33F308FE8F;
- Thu,  3 Oct 2019 23:06:47 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 7CE455117D;
+ Thu,  3 Oct 2019 23:07:02 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-21.brq.redhat.com [10.40.204.21])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5105C10013A7;
- Thu,  3 Oct 2019 23:06:38 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 541BC10018F8;
+ Thu,  3 Oct 2019 23:06:48 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: David Gibson <david@gibson.dropbear.id.au>,
@@ -43,17 +43,17 @@ Cc: David Gibson <david@gibson.dropbear.id.au>,
  Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v2 11/14] hw: Move Aspeed RTC from hw/timer/ to hw/rtc/
- subdirectory
-Date: Fri,  4 Oct 2019 01:04:01 +0200
-Message-Id: <20191003230404.19384-12-philmd@redhat.com>
+Subject: [PATCH v2 12/14] hw/rtc/mc146818: Include mc146818rtc_regs.h a bit
+ less
+Date: Fri,  4 Oct 2019 01:04:02 +0200
+Message-Id: <20191003230404.19384-13-philmd@redhat.com>
 In-Reply-To: <20191003230404.19384-1-philmd@redhat.com>
 References: <20191003230404.19384-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Thu, 03 Oct 2019 23:06:47 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.39]); Thu, 03 Oct 2019 23:07:02 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -69,138 +69,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Oct 2019 23:07:01 -0000
+X-List-Received-Date: Thu, 03 Oct 2019 23:07:14 -0000
 
-Move RTC devices under the hw/rtc/ subdirectory.
+Only 2 source files require the "mc146818rtc_regs.h" header.
+Instead of having it processed 12 times, by all objects
+using "mc146818rtc.h", include it directly where used.
 
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/rtc/Makefile.objs                   | 1 +
- hw/{timer =3D> rtc}/aspeed_rtc.c         | 2 +-
- hw/rtc/trace-events                    | 4 ++++
- hw/timer/Makefile.objs                 | 2 +-
- hw/timer/trace-events                  | 4 ----
- include/hw/arm/aspeed_soc.h            | 2 +-
- include/hw/{timer =3D> rtc}/aspeed_rtc.h | 6 +++---
- 7 files changed, 11 insertions(+), 10 deletions(-)
- rename hw/{timer =3D> rtc}/aspeed_rtc.c (99%)
- rename include/hw/{timer =3D> rtc}/aspeed_rtc.h (84%)
+ hw/rtc/mc146818rtc.c         | 1 +
+ hw/timer/hpet.c              | 1 +
+ include/hw/rtc/mc146818rtc.h | 1 -
+ 3 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-index 3d4763fc26..8dc9fcd3a9 100644
---- a/hw/rtc/Makefile.objs
-+++ b/hw/rtc/Makefile.objs
-@@ -10,3 +10,4 @@ common-obj-$(CONFIG_XLNX_ZYNQMP) +=3D xlnx-zynqmp-rtc.o
- common-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_rtc.o
- obj-$(CONFIG_MC146818RTC) +=3D mc146818rtc.o
- common-obj-$(CONFIG_SUN4V_RTC) +=3D sun4v-rtc.o
-+common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_rtc.o
-diff --git a/hw/timer/aspeed_rtc.c b/hw/rtc/aspeed_rtc.c
-similarity index 99%
-rename from hw/timer/aspeed_rtc.c
-rename to hw/rtc/aspeed_rtc.c
-index 5313017353..3ca1183558 100644
---- a/hw/timer/aspeed_rtc.c
-+++ b/hw/rtc/aspeed_rtc.c
-@@ -8,7 +8,7 @@
-=20
- #include "qemu/osdep.h"
- #include "qemu-common.h"
--#include "hw/timer/aspeed_rtc.h"
-+#include "hw/rtc/aspeed_rtc.h"
+diff --git a/hw/rtc/mc146818rtc.c b/hw/rtc/mc146818rtc.c
+index ced15f764f..9d4ed54f65 100644
+--- a/hw/rtc/mc146818rtc.c
++++ b/hw/rtc/mc146818rtc.c
+@@ -35,6 +35,7 @@
+ #include "sysemu/reset.h"
+ #include "sysemu/runstate.h"
+ #include "hw/rtc/mc146818rtc.h"
++#include "hw/rtc/mc146818rtc_regs.h"
  #include "migration/vmstate.h"
- #include "qemu/log.h"
- #include "qemu/timer.h"
-diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-index 7f1945ad4c..d6749f4616 100644
---- a/hw/rtc/trace-events
-+++ b/hw/rtc/trace-events
-@@ -13,3 +13,7 @@ pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x =
-value 0x%08x"
- pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
- pl031_alarm_raised(void) "alarm raised"
- pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
-+
-+# aspeed-rtc.c
-+aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " val=
-ue 0x%08" PRIx64
-+aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " va=
-lue 0x%08" PRIx64
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 33191d74cb..83091770df 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -29,7 +29,7 @@ common-obj-$(CONFIG_MIPS_CPS) +=3D mips_gictimer.o
- common-obj-$(CONFIG_ALLWINNER_A10_PIT) +=3D allwinner-a10-pit.o
+ #include "qapi/error.h"
+ #include "qapi/qapi-commands-misc-target.h"
+diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
+index 02bf8a8ce8..9f17aaa278 100644
+--- a/hw/timer/hpet.c
++++ b/hw/timer/hpet.c
+@@ -34,6 +34,7 @@
+ #include "hw/timer/hpet.h"
+ #include "hw/sysbus.h"
+ #include "hw/rtc/mc146818rtc.h"
++#include "hw/rtc/mc146818rtc_regs.h"
+ #include "migration/vmstate.h"
+ #include "hw/timer/i8254.h"
 =20
- common-obj-$(CONFIG_STM32F2XX_TIMER) +=3D stm32f2xx_timer.o
--common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_timer.o aspeed_rtc.o
-+common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_timer.o
+diff --git a/include/hw/rtc/mc146818rtc.h b/include/hw/rtc/mc146818rtc.h
+index 2e9331637a..7fa59d4279 100644
+--- a/include/hw/rtc/mc146818rtc.h
++++ b/include/hw/rtc/mc146818rtc.h
+@@ -10,7 +10,6 @@
+ #define HW_RTC_MC146818RTC_H
 =20
- common-obj-$(CONFIG_CMSDK_APB_TIMER) +=3D cmsdk-apb-timer.o
- common-obj-$(CONFIG_CMSDK_APB_DUALTIMER) +=3D cmsdk-apb-dualtimer.o
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index 1459d07237..e18b87fc96 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -66,10 +66,6 @@ cmsdk_apb_dualtimer_read(uint64_t offset, uint64_t dat=
-a, unsigned size) "CMSDK A
- cmsdk_apb_dualtimer_write(uint64_t offset, uint64_t data, unsigned size)=
- "CMSDK APB dualtimer write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size=
- %u"
- cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: reset"
+ #include "hw/isa/isa.h"
+-#include "hw/rtc/mc146818rtc_regs.h"
 =20
--# hw/timer/aspeed-rtc.c
--aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " val=
-ue 0x%08" PRIx64
--aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " va=
-lue 0x%08" PRIx64
--
- # nrf51_timer.c
- nrf51_timer_read(uint64_t addr, uint32_t value, unsigned size) "read add=
-r 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
- nrf51_timer_write(uint64_t addr, uint32_t value, unsigned size) "write a=
-ddr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index ab5052b12c..5a443006ed 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -17,7 +17,7 @@
- #include "hw/misc/aspeed_sdmc.h"
- #include "hw/misc/aspeed_xdma.h"
- #include "hw/timer/aspeed_timer.h"
--#include "hw/timer/aspeed_rtc.h"
-+#include "hw/rtc/aspeed_rtc.h"
- #include "hw/i2c/aspeed_i2c.h"
- #include "hw/ssi/aspeed_smc.h"
- #include "hw/watchdog/wdt_aspeed.h"
-diff --git a/include/hw/timer/aspeed_rtc.h b/include/hw/rtc/aspeed_rtc.h
-similarity index 84%
-rename from include/hw/timer/aspeed_rtc.h
-rename to include/hw/rtc/aspeed_rtc.h
-index 15ba42912b..3fde854ad9 100644
---- a/include/hw/timer/aspeed_rtc.h
-+++ b/include/hw/rtc/aspeed_rtc.h
-@@ -5,8 +5,8 @@
-  * Copyright 2019 IBM Corp
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
--#ifndef ASPEED_RTC_H
--#define ASPEED_RTC_H
-+#ifndef HW_RTC_ASPEED_RTC_H
-+#define HW_RTC_ASPEED_RTC_H
+ #define TYPE_MC146818_RTC "mc146818rtc"
 =20
- #include <stdint.h>
-=20
-@@ -27,4 +27,4 @@ typedef struct AspeedRtcState {
- #define TYPE_ASPEED_RTC "aspeed.rtc"
- #define ASPEED_RTC(obj) OBJECT_CHECK(AspeedRtcState, (obj), TYPE_ASPEED_=
-RTC)
-=20
--#endif /* ASPEED_RTC_H */
-+#endif /* HW_RTC_ASPEED_RTC_H */
 --=20
 2.20.1
 
