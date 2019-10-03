@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iGABJ-0001xS-HE
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Oct 2019 19:06:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46582)
+	id 1iGABQ-000274-Mc
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Oct 2019 19:06:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46736)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iGABF-0001rj-M9
- for qemu-trivial@nongnu.org; Thu, 03 Oct 2019 19:06:42 -0400
+ (envelope-from <philmd@redhat.com>) id 1iGABN-00022b-7y
+ for qemu-trivial@nongnu.org; Thu, 03 Oct 2019 19:06:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iGABB-0006pk-Kt
- for qemu-trivial@nongnu.org; Thu, 03 Oct 2019 19:06:41 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42008)
+ (envelope-from <philmd@redhat.com>) id 1iGABM-0006yA-4b
+ for qemu-trivial@nongnu.org; Thu, 03 Oct 2019 19:06:49 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45508)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iGAAs-0006hP-40; Thu, 03 Oct 2019 19:06:18 -0400
+ id 1iGABD-0006qF-JE; Thu, 03 Oct 2019 19:06:39 -0400
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id CE19789810E;
- Thu,  3 Oct 2019 23:06:16 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 8738E307D84D;
+ Thu,  3 Oct 2019 23:06:38 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-21.brq.redhat.com [10.40.204.21])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id EE02710013A7;
- Thu,  3 Oct 2019 23:06:07 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 49D9510013A7;
+ Thu,  3 Oct 2019 23:06:17 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: David Gibson <david@gibson.dropbear.id.au>,
@@ -43,17 +43,17 @@ Cc: David Gibson <david@gibson.dropbear.id.au>,
  Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v2 09/14] hw: Move Xilinx ZynqMP RTC from hw/timer/ to hw/rtc/
+Subject: [PATCH v2 10/14] hw: Move Exynos4210 RTC from hw/timer/ to hw/rtc/
  subdirectory
-Date: Fri,  4 Oct 2019 01:03:59 +0200
-Message-Id: <20191003230404.19384-10-philmd@redhat.com>
+Date: Fri,  4 Oct 2019 01:04:00 +0200
+Message-Id: <20191003230404.19384-11-philmd@redhat.com>
 In-Reply-To: <20191003230404.19384-1-philmd@redhat.com>
 References: <20191003230404.19384-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.67]); Thu, 03 Oct 2019 23:06:17 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.48]); Thu, 03 Oct 2019 23:06:38 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -69,145 +69,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Oct 2019 23:06:44 -0000
+X-List-Received-Date: Thu, 03 Oct 2019 23:06:51 -0000
 
 Move RTC devices under the hw/rtc/ subdirectory.
-
-Remove Alistair outdated email address (see commit c22e580c2ad).
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/rtc/Makefile.objs                        | 1 +
- hw/rtc/trace-events                         | 3 +++
- hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.c         | 2 +-
- hw/timer/Makefile.objs                      | 1 -
- hw/timer/trace-events                       | 3 ---
- include/hw/arm/xlnx-zynqmp.h                | 2 +-
- include/hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.h | 6 +++---
- 7 files changed, 9 insertions(+), 9 deletions(-)
- rename hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.c (99%)
- rename include/hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.h (95%)
+ hw/rtc/Makefile.objs               | 1 +
+ hw/{timer =3D> rtc}/exynos4210_rtc.c | 0
+ hw/timer/Makefile.objs             | 1 -
+ 3 files changed, 1 insertion(+), 1 deletion(-)
+ rename hw/{timer =3D> rtc}/exynos4210_rtc.c (100%)
 
 diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-index b195863291..543a550a0f 100644
+index 543a550a0f..3d4763fc26 100644
 --- a/hw/rtc/Makefile.objs
 +++ b/hw/rtc/Makefile.objs
-@@ -6,5 +6,6 @@ common-obj-$(CONFIG_M48T59) +=3D m48t59-isa.o
- endif
+@@ -7,5 +7,6 @@ endif
  common-obj-$(CONFIG_PL031) +=3D pl031.o
  common-obj-$(CONFIG_TWL92230) +=3D twl92230.o
-+common-obj-$(CONFIG_XLNX_ZYNQMP) +=3D xlnx-zynqmp-rtc.o
+ common-obj-$(CONFIG_XLNX_ZYNQMP) +=3D xlnx-zynqmp-rtc.o
++common-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_rtc.o
  obj-$(CONFIG_MC146818RTC) +=3D mc146818rtc.o
  common-obj-$(CONFIG_SUN4V_RTC) +=3D sun4v-rtc.o
-diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-index ac9e0e0fba..7f1945ad4c 100644
---- a/hw/rtc/trace-events
-+++ b/hw/rtc/trace-events
-@@ -4,6 +4,9 @@
- sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 " =
-value 0x%" PRIx64
- sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx64 =
-" value 0x%" PRIx64
-=20
-+# xlnx-zynqmp-rtc.c
-+xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int min,=
- int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
-+
- # pl031.c
- pl031_irq_state(int level) "irq state %d"
- pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
-diff --git a/hw/timer/xlnx-zynqmp-rtc.c b/hw/rtc/xlnx-zynqmp-rtc.c
-similarity index 99%
-rename from hw/timer/xlnx-zynqmp-rtc.c
-rename to hw/rtc/xlnx-zynqmp-rtc.c
-index 5692db98c2..f9f09b7296 100644
---- a/hw/timer/xlnx-zynqmp-rtc.c
-+++ b/hw/rtc/xlnx-zynqmp-rtc.c
-@@ -36,7 +36,7 @@
- #include "qemu/cutils.h"
- #include "sysemu/sysemu.h"
- #include "trace.h"
--#include "hw/timer/xlnx-zynqmp-rtc.h"
-+#include "hw/rtc/xlnx-zynqmp-rtc.h"
- #include "migration/vmstate.h"
-=20
- #ifndef XLNX_ZYNQMP_RTC_ERR_DEBUG
+diff --git a/hw/timer/exynos4210_rtc.c b/hw/rtc/exynos4210_rtc.c
+similarity index 100%
+rename from hw/timer/exynos4210_rtc.c
+rename to hw/rtc/exynos4210_rtc.c
 diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 70b61b69c7..294465ef47 100644
+index 294465ef47..33191d74cb 100644
 --- a/hw/timer/Makefile.objs
 +++ b/hw/timer/Makefile.objs
-@@ -14,7 +14,6 @@ common-obj-$(CONFIG_IMX) +=3D imx_epit.o
- common-obj-$(CONFIG_IMX) +=3D imx_gpt.o
- common-obj-$(CONFIG_LM32) +=3D lm32_timer.o
- common-obj-$(CONFIG_MILKYMIST) +=3D milkymist-sysctl.o
--common-obj-$(CONFIG_XLNX_ZYNQMP) +=3D xlnx-zynqmp-rtc.o
- common-obj-$(CONFIG_NRF51_SOC) +=3D nrf51_timer.o
-=20
+@@ -19,7 +19,6 @@ common-obj-$(CONFIG_NRF51_SOC) +=3D nrf51_timer.o
  common-obj-$(CONFIG_ALTERA_TIMER) +=3D altera_timer.o
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index ce34b967db..1459d07237 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -70,9 +70,6 @@ cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: r=
-eset"
- aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " val=
-ue 0x%08" PRIx64
- aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " va=
-lue 0x%08" PRIx64
-=20
--# xlnx-zynqmp-rtc.c
--xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int min,=
- int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
--
- # nrf51_timer.c
- nrf51_timer_read(uint64_t addr, uint32_t value, unsigned size) "read add=
-r 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
- nrf51_timer_write(uint64_t addr, uint32_t value, unsigned size) "write a=
-ddr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
-diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-index d7483c3b42..53076fa29a 100644
---- a/include/hw/arm/xlnx-zynqmp.h
-+++ b/include/hw/arm/xlnx-zynqmp.h
-@@ -29,7 +29,7 @@
- #include "hw/dma/xlnx-zdma.h"
- #include "hw/display/xlnx_dp.h"
- #include "hw/intc/xlnx-zynqmp-ipi.h"
--#include "hw/timer/xlnx-zynqmp-rtc.h"
-+#include "hw/rtc/xlnx-zynqmp-rtc.h"
- #include "hw/cpu/cluster.h"
- #include "target/arm/cpu.h"
-=20
-diff --git a/include/hw/timer/xlnx-zynqmp-rtc.h b/include/hw/rtc/xlnx-zyn=
-qmp-rtc.h
-similarity index 95%
-rename from include/hw/timer/xlnx-zynqmp-rtc.h
-rename to include/hw/rtc/xlnx-zynqmp-rtc.h
-index 97e32322ed..6fa1cb2f43 100644
---- a/include/hw/timer/xlnx-zynqmp-rtc.h
-+++ b/include/hw/rtc/xlnx-zynqmp-rtc.h
-@@ -3,7 +3,7 @@
-  *
-  * Copyright (c) 2017 Xilinx Inc.
-  *
-- * Written-by: Alistair Francis <alistair.francis@xilinx.com>
-+ * Written-by: Alistair Francis
-  *
-  * Permission is hereby granted, free of charge, to any person obtaining=
- a copy
-  * of this software and associated documentation files (the "Software"),=
- to deal
-@@ -24,8 +24,8 @@
-  * THE SOFTWARE.
-  */
-=20
--#ifndef HW_TIMER_XLNX_ZYNQMP_RTC_H
--#define HW_TIMER_XLNX_ZYNQMP_RTC_H
-+#ifndef HW_RTC_XLNX_ZYNQMP_H
-+#define HW_RTC_XLNX_ZYNQMP_H
-=20
- #include "hw/register.h"
- #include "hw/sysbus.h"
+ common-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_mct.o
+ common-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_pwm.o
+-common-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_rtc.o
+ common-obj-$(CONFIG_OMAP) +=3D omap_gptimer.o
+ common-obj-$(CONFIG_OMAP) +=3D omap_synctimer.o
+ common-obj-$(CONFIG_PXA2XX) +=3D pxa2xx_timer.o
 --=20
 2.20.1
 
