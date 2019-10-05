@@ -1,68 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iGYdW-0000G7-IV
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2019 21:13:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54036)
+	id 1iGlad-0002gG-Gx
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Oct 2019 11:03:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39747)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <msmarduch@digitalocean.com>) id 1iGXOL-0004Sc-3F
- for qemu-trivial@nongnu.org; Fri, 04 Oct 2019 19:53:46 -0400
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iGlab-0002et-80
+ for qemu-trivial@nongnu.org; Sat, 05 Oct 2019 11:03:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <msmarduch@digitalocean.com>) id 1iGXOI-0003At-2n
- for qemu-trivial@nongnu.org; Fri, 04 Oct 2019 19:53:43 -0400
-Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743]:39498)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iGlaa-00039d-66
+ for qemu-trivial@nongnu.org; Sat, 05 Oct 2019 11:03:21 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:52842)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <msmarduch@digitalocean.com>)
- id 1iGXOH-0003Ak-Tf
- for qemu-trivial@nongnu.org; Fri, 04 Oct 2019 19:53:42 -0400
-Received: by mail-qk1-x743.google.com with SMTP id 4so7449054qki.6
- for <qemu-trivial@nongnu.org>; Fri, 04 Oct 2019 16:53:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=digitalocean.com; s=google;
- h=from:subject:to:cc:message-id:date:user-agent:mime-version
- :content-language:content-transfer-encoding;
- bh=074KI9eC6RnbCasB/To9XenkV7yh1rzl25oDZvf7GYI=;
- b=gUZS3j8BT7bMiOOP7+R+gWfb4Dtur2d6+6c73kausQHMB6hdlHggcHbOLinh0lFXQT
- z3qjgbRgOmeF2YD6gKdP8Q53CfZh5uKUU8msKacFV515ZMTYrFylmrkgdEqOrkHW63gl
- 1xvB7QqHugfNE/BqcizbSwjz+H/iUljPmajNI=
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iGlaX-00038k-Sd; Sat, 05 Oct 2019 11:03:18 -0400
+Received: by mail-wm1-x341.google.com with SMTP id r19so8462058wmh.2;
+ Sat, 05 Oct 2019 08:03:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9xIPwHoZQTBX/1rMkGn54r/An4esCo8ilJZSXHXy5A0=;
+ b=fBDk0Ma8hTiGyGbx1RWIt64e75s+884OVPL2ObCPDkCDuKBji0D4civ3FohpWfC7E6
+ f1bfpTmeTJFRfLQANGaO/0evGpjdXZV50UgIEs6yVEZ8Az9d0cVY+vh9H4ENgpLwCvd0
+ 5QOqt/LQOJIvX9WzvOSs3gx+H27KmGPPQFsNpXo14pDd0XUv91i4Yn8fHqCyhdXLTcZX
+ Ozb9rc2EqM49ACXCzjQy1SNzalYI3Gi8NPysMCHu8ekhoi1ZAN2LTEwymysF5y3u0xPd
+ ZWCQ/icIGQHvhWP4xlJSr7k3R1xKTt/z5VoVS9aXZYGL71dCOQUp+6L2LF45e4PR0FcU
+ VRgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:subject:to:cc:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=074KI9eC6RnbCasB/To9XenkV7yh1rzl25oDZvf7GYI=;
- b=j7XJRrf2VPgC1vmPnSKuIdwUuFDhR8yrIB3sDVZ5yIt52Oh25ETFYbaFbqEEDj4FKB
- PrmCPk6bOGubfqwGKSieZ0RNY2J9MimhZVUAYSHxhyzKWhpzxWIkMNiR2DBYHv/E5k/k
- ISCV9YnZ+YgON1AewQpz3jWRydhGdsn3hC/fw2pOUCGTIEY2FWaVLGDqWmrhNBuk3w1w
- xMKR3K2tyPAcrIEjKfPr8+pGB7eNMR05nkuvMq0tz+fIA/tj2+RbI9/CB4WNN8xKx03D
- 45iugflxCn6BfF4deVew948zKH3GX5heFvd6nywqobvJ+lTXM8OQi3Crs2FYyEnsLwgI
- cwcw==
-X-Gm-Message-State: APjAAAVYX8Gt6lt6bjTlA49HI9BmarmBFi0rnCtLtV29/X/KsOmmPVuV
- 3VpsowN9PGP7J3ep9QWRB5heqCS7ooVsXA==
-X-Google-Smtp-Source: APXvYqwPTzRtHA0gAQRFG3RI7mYPF1GUeIJ+DwhpyVV5obQhCokYNHDntSTJ0V+ve8RgbhTYwyXA6g==
-X-Received: by 2002:a05:620a:16c4:: with SMTP id
- a4mr13386847qkn.389.1570233220856; 
- Fri, 04 Oct 2019 16:53:40 -0700 (PDT)
-Received: from ?IPv6:2600:1700:4a30:84c0:f52d:a7dc:c1:54d?
- ([2600:1700:4a30:84c0:f52d:a7dc:c1:54d])
- by smtp.gmail.com with ESMTPSA id c25sm3104635qtv.71.2019.10.04.16.53.39
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 04 Oct 2019 16:53:40 -0700 (PDT)
-From: Mario Smarduch <msmarduch@digitalocean.com>
-Subject: [PATCH] target/i386: log guest name and memory error type AO, AR for
- MCEs
-To: mtosatti@redhat.com, armbru@redhat.com, pbonzini@redhat.com
-Cc: qemu-devel@nongnu.org, rth@twiddle.net, ehabkost@redhat.com,
- qemu-trivial@nongnu.org
-Message-ID: <ceb4d639-842a-30bd-5d54-bfacb07b5cc4@digitalocean.com>
-Date: Fri, 4 Oct 2019 16:53:38 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.2.1
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=9xIPwHoZQTBX/1rMkGn54r/An4esCo8ilJZSXHXy5A0=;
+ b=DMxOKzgFR6Tm0HbETBtz+2CV+utpsHWImn4Qr1XWncZfdjtpumbypJuFbLKawFxr+d
+ 1mB2w75w1lwuLDunCCQBmptMsUKOocWE0LlmX/dUpw7rbEdanVyyrcBl0zzIrUZRb1pY
+ 5ifUK2yW71Yd9mJQMYM3KagIxudObhjOgNiKHXyMP574znxxWslVCCbPZUw1b0oZIn8c
+ z5+lZx7wmwFwMnl5mcENjxTaxL6ASxbPQlZ7K0EmEuWjgLPmrzXObQKd/RKx0tmjSxMe
+ 3aPsuOWJBCwAu4UIF8dwLgF2zReJHv6S77wrX1bCO8niUY0vKE3iQxlkTqaDeWwmfgZa
+ hCYA==
+X-Gm-Message-State: APjAAAXULCCC0Wi/tZVteOD8csLG6oWU95YYHGYbJqfTC7rV9Imgml/+
+ heMdmaWMkw+Aqd9eSjU9WpuI7o04dek=
+X-Google-Smtp-Source: APXvYqyecaDJtufDTKp8+GoulfvrGCIUXE/C1SutNMkkPZiLVWzkEFImnvdw9NRsKfiHlbUOk1OCWQ==
+X-Received: by 2002:a1c:1c7:: with SMTP id 190mr13524469wmb.23.1570287795336; 
+ Sat, 05 Oct 2019 08:03:15 -0700 (PDT)
+Received: from localhost.localdomain (46.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.46])
+ by smtp.gmail.com with ESMTPSA id 79sm14190268wmb.7.2019.10.05.08.03.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 05 Oct 2019 08:03:13 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] hw/dma/etraxfs_dma: Simplify using MemoryRegionOps::impl
+ access_size
+Date: Sat,  5 Oct 2019 17:03:11 +0200
+Message-Id: <20191005150311.16373-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::743
-X-Mailman-Approved-At: Fri, 04 Oct 2019 21:13:28 -0400
+X-Received-From: 2a00:1450:4864:20::341
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,156 +77,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Oct 2019 23:53:46 -0000
+X-List-Received-Date: Sat, 05 Oct 2019 15:03:22 -0000
 
-In a large VPC environment we want to log memory error occurrences
-and log them with guest name and type - there are few use cases
+This device implementation is clearly restricted to 32-bit
+accesses. Set the MemoryRegionOps::impl min/max access_size
+fields to simplify the code, and remove the hw_error() call.
 
-
-- if VM crashes on AR mce inform the user about the reason and
-  resolve the case
-- if VM hangs notify the user to reboot and resume processing
-- if VM continues to run let the user know, he/she maybe able to
-  correlate to vm internal outage
-- Rawhammer attacks - isolate/determine the attacker possible
-  migrating it off the hypervisor
-- In general track memory errors on a hyperviosr over time to determine
-  trends
-
-Monitoring our fleet we come across quite a few of these and been
-able to take action where before there were no clues to the causes.
-
-When memory error occurs we get a log entry in qemu log:
-
-Guest [Droplet-12345678] 2019-08-02T05:00:11.940270Z qemu-system-x86_64:
-Guest MCE Memory Error at qemu addr 0x7f3c7622f000 and guest 78e42f000
-addr of type BUS_MCEERR_AR injected
-
-with enterprise logging environment we can to take further actions.
-
-Signed-off-by: Mario Smarduch <msmarduch@digitalocean.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/i386/kvm.c | 27 ++++++++++++++++++++++-----
- util/qemu-error.c | 24 ++++++++++++++++++++++++
- 2 files changed, 46 insertions(+), 5 deletions(-)
+ hw/dma/etraxfs_dma.c | 25 ++++---------------------
+ 1 file changed, 4 insertions(+), 21 deletions(-)
 
-diff --git a/target/i386/kvm.c b/target/i386/kvm.c
-index 92069099ab..79ebccc684 100644
---- a/target/i386/kvm.c
-+++ b/target/i386/kvm.c
-@@ -555,9 +555,9 @@ static void kvm_mce_inject(X86CPU *cpu, hwaddr
-paddr, int code)
-                        (MCM_ADDR_PHYS << 6) | 0xc, flags);
- }
-
--static void hardware_memory_error(void)
-+static void hardware_memory_error(void *addr)
- {
--    fprintf(stderr, "Hardware memory error!\n");
-+    error_report("QEMU got Hardware memory error at addr %p", addr);
-     exit(1);
- }
-
-@@ -581,15 +581,32 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int
-code, void *addr)
-             kvm_physical_memory_addr_from_host(c->kvm_state, addr,
-&paddr)) {
-             kvm_hwpoison_page_add(ram_addr);
-             kvm_mce_inject(cpu, paddr, code);
-+            /*
-+             * Use different logging severity based on error type.
-+             * If mcelog is running qemu va addr will help debug via
-mcelog.
-+             */
-+            if (code == BUS_MCEERR_AR) {
-+                error_report("Guest MCE Memory Error at qemu addr %p and "
-+                    "guest %lx addr of type %s injected", addr, paddr,
-+                     "BUS_MCEERR_AR");
-+            } else {
-+                 warn_report("Guest MCE Memory Error at qemu addr %p and "
-+                     "guest %lx addr of type %s injected", addr,
-+                     paddr, "BUS_MCEERR_AO");
-+            }
-+
-             return;
-         }
-
--        fprintf(stderr, "Hardware memory error for memory used by "
--                "QEMU itself instead of guest system!\n");
-+        if (code == BUS_MCEERR_AO) {
-+            warn_report("Hardware memory error at addr %p of type %s "
-+                "for memory used by QEMU itself instead of guest system!",
-+                addr, "BUS_MCEERR_AO");
-+        }
-     }
-
-     if (code == BUS_MCEERR_AR) {
--        hardware_memory_error();
-+        hardware_memory_error(addr);
-     }
-
-     /* Hope we are lucky for AO MCE */
-diff --git a/util/qemu-error.c b/util/qemu-error.c
-index f373f3b3b0..2ebafd4405 100644
---- a/util/qemu-error.c
-+++ b/util/qemu-error.c
-@@ -11,6 +11,8 @@
+diff --git a/hw/dma/etraxfs_dma.c b/hw/dma/etraxfs_dma.c
+index 47e1c6df12..dcb2286bd9 100644
+--- a/hw/dma/etraxfs_dma.c
++++ b/hw/dma/etraxfs_dma.c
+@@ -23,7 +23,6 @@
   */
-
+ 
  #include "qemu/osdep.h"
-+#include "qemu/option.h"
-+#include "qemu/config-file.h"
- #include "monitor/monitor.h"
- #include "qemu/error-report.h"
-
-@@ -35,11 +37,31 @@ int error_printf(const char *fmt, ...)
-     return ret;
+-#include "hw/hw.h"
+ #include "hw/irq.h"
+ #include "qemu/main-loop.h"
+ #include "sysemu/runstate.h"
+@@ -577,12 +576,6 @@ static inline int channel_in_run(struct fs_dma_ctrl *ctrl, int c)
+ 		return 0;
  }
-
-+static const char *error_get_guestname(void)
-+{
-+    QemuOpts *opts = qemu_opts_find(qemu_find_opts("name"), NULL);
-+    return qemu_opt_get(opts, "guest");
-+}
-+
-+/*
-+ * Print guest name associated with error, to aid debugging errors from
-+ * multiple guests in centralized logging environment.
-+ */
-+static void error_print_guestname(void)
-+{
-+    const char *name;
-+    name = error_get_guestname();
-+    if (name != NULL && !cur_mon) {
-+        error_printf("Guest [%s] ", name);
-+    }
-+}
-+
- int error_printf_unless_qmp(const char *fmt, ...)
+ 
+-static uint32_t dma_rinvalid (void *opaque, hwaddr addr)
+-{
+-        hw_error("Unsupported short raccess. reg=" TARGET_FMT_plx "\n", addr);
+-        return 0;
+-}
+-
+ static uint64_t
+ dma_read(void *opaque, hwaddr addr, unsigned int size)
  {
-     va_list ap;
-     int ret;
-
-+    error_print_guestname();
-     va_start(ap, fmt);
-     ret = error_vprintf_unless_qmp(fmt, ap);
-     va_end(ap);
-@@ -274,6 +296,7 @@ void error_report(const char *fmt, ...)
+@@ -590,10 +583,6 @@ dma_read(void *opaque, hwaddr addr, unsigned int size)
+ 	int c;
+ 	uint32_t r = 0;
+ 
+-	if (size != 4) {
+-		dma_rinvalid(opaque, addr);
+-	}
+-
+ 	/* Make addr relative to this channel and bounded to nr regs.  */
+ 	c = fs_channel(addr);
+ 	addr &= 0xff;
+@@ -615,12 +604,6 @@ dma_read(void *opaque, hwaddr addr, unsigned int size)
+ 	return r;
+ }
+ 
+-static void
+-dma_winvalid (void *opaque, hwaddr addr, uint32_t value)
+-{
+-        hw_error("Unsupported short waccess. reg=" TARGET_FMT_plx "\n", addr);
+-}
+-
+ static void
+ dma_update_state(struct fs_dma_ctrl *ctrl, int c)
  {
-     va_list ap;
+@@ -638,10 +621,6 @@ dma_write(void *opaque, hwaddr addr,
+ 	uint32_t value = val64;
+ 	int c;
+ 
+-	if (size != 4) {
+-		dma_winvalid(opaque, addr, value);
+-	}
+-
+         /* Make addr relative to this channel and bounded to nr regs.  */
+ 	c = fs_channel(addr);
+         addr &= 0xff;
+@@ -701,6 +680,10 @@ static const MemoryRegionOps dma_ops = {
+ 	.read = dma_read,
+ 	.write = dma_write,
+ 	.endianness = DEVICE_NATIVE_ENDIAN,
++    .impl = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
+ 	.valid = {
+ 		.min_access_size = 1,
+ 		.max_access_size = 4
+-- 
+2.20.1
 
-+    error_print_guestname();
-     va_start(ap, fmt);
-     vreport(REPORT_TYPE_ERROR, fmt, ap);
-     va_end(ap);
-@@ -289,6 +312,7 @@ void warn_report(const char *fmt, ...)
- {
-     va_list ap;
-
-+    error_print_guestname();
-     va_start(ap, fmt);
-     vreport(REPORT_TYPE_WARNING, fmt, ap);
-     va_end(ap);
---
-2.17.1
 
