@@ -1,64 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iGm3v-0003Ws-Ua
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Oct 2019 11:33:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43127)
+	id 1iGrsX-0008Me-Cv
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Oct 2019 17:46:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47090)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iGm3t-0003U0-8C
- for qemu-trivial@nongnu.org; Sat, 05 Oct 2019 11:33:38 -0400
+ (envelope-from <mst@redhat.com>) id 1iGrsU-0008La-JY
+ for qemu-trivial@nongnu.org; Sat, 05 Oct 2019 17:46:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iGm3s-0007BA-5d
- for qemu-trivial@nongnu.org; Sat, 05 Oct 2019 11:33:37 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:43149)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iGm3s-0007As-0Z
- for qemu-trivial@nongnu.org; Sat, 05 Oct 2019 11:33:36 -0400
-Received: by mail-ot1-x344.google.com with SMTP id o44so7691562ota.10
- for <qemu-trivial@nongnu.org>; Sat, 05 Oct 2019 08:33:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=zcDw5Wojp2disLArdDnJ1udwER4o7kyqmyFawSbiQBs=;
- b=fj+kjyick3KHHVb+Q8zUUt5HsAK9EKXv2H9suI83RB17sHRHhYjR6awi1dnlQnpizJ
- jDUv07cR8SVBnvpaUFgcGuTZMeiYslqRATtC9MdXZHN1UMxbes11Uf6ry7P4od5/LyHL
- 9JkGJn7aURTGZ4KRiaQD2ppBpLENSTf+rRxfzmXDdaOKHGYIxj2lSUsPsovUHxJPGtzd
- uzwa2JMxYBorCJ82L4brfB5qTIB3R2hahm+6TNjE1FhMvg6dRCpEyi0RwQPuEUGKW7R9
- jqk0YL0cjfX5ujNTfVXLQd6vnXjv/zB1Yk4YtDH4Ds9J4njINIk4EJCKsW5Y9XeOLTWc
- FxoA==
+ (envelope-from <mst@redhat.com>) id 1iGrsT-0000MU-0L
+ for qemu-trivial@nongnu.org; Sat, 05 Oct 2019 17:46:14 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43058)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <mst@redhat.com>) id 1iGrsS-0000Lj-MP
+ for qemu-trivial@nongnu.org; Sat, 05 Oct 2019 17:46:12 -0400
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id B05654DB1F
+ for <qemu-trivial@nongnu.org>; Sat,  5 Oct 2019 21:46:10 +0000 (UTC)
+Received: by mail-qk1-f200.google.com with SMTP id 11so10605396qkh.15
+ for <qemu-trivial@nongnu.org>; Sat, 05 Oct 2019 14:46:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=zcDw5Wojp2disLArdDnJ1udwER4o7kyqmyFawSbiQBs=;
- b=KQNTL+cSHZDKJ2tlR6/QQ5G6h0Sk5upgqGzUCt4nl0Sdyg2LaA4mfqOZqlqBa9xKJM
- b4bQ0/AFI7y0o/5SFv8Y53FyLtDNp4oZsIApk82hdUM2FVCTgcBEUn24yAHz3YVosx39
- xHH8dzDm0chB4Sh23xngENRiOW6ITesiVPr+8PG/CIraIO2FWNmlHyhoYI+f5/1xnYxS
- li6Q8HphfDiOag/L81ZXCKTlqm7UKC8HUeL6itGfdd9GSVwoTgXR+83sE6I3dxGJvBFm
- evCpazOzn+/AVC4VnmFYt1Yb/XwOr/mfcGXYBQWsmkSIex6/+9gCG7ieU4qrT/18pq+2
- KSmQ==
-X-Gm-Message-State: APjAAAWc/ugElG6B6hte+LYKZcUBFVvk0UOWEhfsqMPG34oFTfKGVYsB
- SZVOdAc+jRZe+PnM9LBkQHOG5XuGqnXVVXeNQ/ix/w==
-X-Google-Smtp-Source: APXvYqxgXoieFhc4b4sbELf5KJ0aT1aMofhxlPF6X+VnSuBNWfxZS1SBxbPZCBmLCT7ahJWn85StRnbC+vO4fJ4cv34=
-X-Received: by 2002:a9d:4615:: with SMTP id y21mr13929748ote.97.1570289615037; 
- Sat, 05 Oct 2019 08:33:35 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=w9cp5WOMnA8f6hUE+AzPrHfl7EdcqEtT+8UzwMy/tUA=;
+ b=XsHBGU+6kAajgedP2TrS0xzf8P76aXInB74ZWOE7c26CVdhQXG1b4oyLaBEtfBOCd8
+ jsScQBA+44SkCdpu91t3wt7tKmTet0GIJ46h4vJyI0NT/ALiXXLIH7QbVbJdCx0B/ljk
+ jtMT96JCrvpbuIwKIVPP+UduB5J3unC4rfml4IUMxzgF5vcqbBat+dJhkaEPPh04X69P
+ 7bhcmqb/xBGIhRUwSweuOLUxeOLKQzK52OKOqh7QHeUJgQTrotWpoH+YPicYj0VjWMJz
+ PYNZkOgs5EYbjckyODYATAyjc1J/I8UVGBHoZu43r44fLSTUWgS8vbbWTSqdLf/2joEa
+ 3CVQ==
+X-Gm-Message-State: APjAAAUeSMsv/as37N+03uEwvQQgtxNfLnSHiXIBSBogsPmToxvFw166
+ xWkqYNmJ4BdKl9thmVfQxHGBFeB+2IugAMjVeNZs/JbFyT7RpdFsC77QSbZS2Cf/iMqBvrfkNz7
+ mbUKTXCXVGs0MEubLNw==
+X-Received: by 2002:ad4:5572:: with SMTP id w18mr20866499qvy.220.1570311969969; 
+ Sat, 05 Oct 2019 14:46:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyzUVmREyQGN2ebE9/p5KmnrPF3x0+kP/8mY6eUlFiD+kv5Ek7D6K1h7KzdijPfyFqbMnb4xA==
+X-Received: by 2002:ad4:5572:: with SMTP id w18mr20866481qvy.220.1570311969747; 
+ Sat, 05 Oct 2019 14:46:09 -0700 (PDT)
+Received: from redhat.com (bzq-79-176-10-77.red.bezeqint.net. [79.176.10.77])
+ by smtp.gmail.com with ESMTPSA id
+ i30sm7337786qte.27.2019.10.05.14.46.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 05 Oct 2019 14:46:09 -0700 (PDT)
+Date: Sat, 5 Oct 2019 17:46:02 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>,
+ Damien Hedde <damien.hedde@greensocs.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ John Snow <jsnow@redhat.com>, qemu-block@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Igor Mammedov <imammedo@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Andrzej Zaborowski <balrogg@gmail.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH 00/11] hw: Convert various reset() handler to DeviceReset
+Message-ID: <20191005174531-mutt-send-email-mst@kernel.org>
+References: <20190926151733.25349-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20191005150311.16373-1-f4bug@amsat.org>
-In-Reply-To: <20191005150311.16373-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 5 Oct 2019 16:33:23 +0100
-Message-ID: <CAFEAcA-ZaabfZpaMbAV1zSNqVqzQFCQaJJo3dru7TWcNL-AShQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/dma/etraxfs_dma: Simplify using MemoryRegionOps::impl
- access_size
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20190926151733.25349-1-philmd@redhat.com>
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::344
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -70,40 +81,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Oct 2019 15:33:38 -0000
+X-List-Received-Date: Sat, 05 Oct 2019 21:46:16 -0000
 
-On Sat, 5 Oct 2019 at 16:04, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
->
-> This device implementation is clearly restricted to 32-bit
-> accesses. Set the MemoryRegionOps::impl min/max access_size
-> fields to simplify the code, and remove the hw_error() call.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/dma/etraxfs_dma.c | 25 ++++---------------------
->  1 file changed, 4 insertions(+), 21 deletions(-)
->
-> @@ -701,6 +680,10 @@ static const MemoryRegionOps dma_ops =3D {
->         .read =3D dma_read,
->         .write =3D dma_write,
->         .endianness =3D DEVICE_NATIVE_ENDIAN,
-> +    .impl =3D {
-> +        .min_access_size =3D 4,
-> +        .max_access_size =3D 4,
-> +    },
->         .valid =3D {
->                 .min_access_size =3D 1,
->                 .max_access_size =3D 4
+On Thu, Sep 26, 2019 at 05:17:22PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> Hi.
+>=20
+> Following the thread discussion between Peter/Markus/Damien about
+> reset handlers:
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg617103.html
+> I started to remove qemu_register_reset() calls from few qdevified
+> devices (the trivial ones).
+>=20
+> Regards,
+>=20
+> Phil.
 
-Unless I've forgotten how the memory layer works, doesn't this
-mean we'll now try to synthesize 1 and 2 byte accesses by
-making 4 byte accesses ? Would it be better to just set the
-.valid.min_access_size to 4 ?
+How do you want these patches merged? Trivial tree?
 
-(The indent on the change looks a bit suspect but that's
-because the whole file is tab-indent.)
-
-thanks
--- PMM
+> Philippe Mathieu-Daud=E9 (11):
+>   hw/acpi/piix4: Convert reset handler to DeviceReset
+>   hw/ide/piix: Convert reset handler to DeviceReset
+>   hw/isa/piix4: Convert reset handler to DeviceReset
+>   hw/pci-host/piix: Convert reset handler to DeviceReset
+>   hw/ide/sii3112: Convert reset handler to DeviceReset
+>   hw/ide/via82c: Convert reset handler to DeviceReset
+>   hw/isa/vt82c686: Convert reset handler to DeviceReset
+>   hw/input/lm832x: Convert reset handler to DeviceReset
+>   hw/pci-host/bonito: Convert reset handler to DeviceReset
+>   hw/timer/etraxfs: Convert reset handler to DeviceReset
+>   hw/misc/vmcoreinfo: Convert reset handler to DeviceReset
+>=20
+>  hw/acpi/piix4.c          |  7 +++----
+>  hw/ide/piix.c            |  8 +++-----
+>  hw/ide/sii3112.c         |  7 +++----
+>  hw/ide/via.c             | 10 ++++------
+>  hw/input/lm832x.c        | 12 +++++-------
+>  hw/isa/piix4.c           |  7 +++----
+>  hw/isa/vt82c686.c        | 11 ++++-------
+>  hw/misc/vmcoreinfo.c     |  5 ++---
+>  hw/pci-host/bonito.c     |  8 +++-----
+>  hw/pci-host/piix.c       |  8 +++-----
+>  hw/timer/etraxfs_timer.c |  7 +++----
+>  11 files changed, 36 insertions(+), 54 deletions(-)
+>=20
+> --=20
+> 2.20.1
 
