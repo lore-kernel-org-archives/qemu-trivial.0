@@ -1,78 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iHPqI-0001Ck-M5
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Oct 2019 06:02:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58581)
+	id 1iHQEt-0000Mz-RR
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Oct 2019 06:27:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34673)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iHPqB-00014X-80
- for qemu-trivial@nongnu.org; Mon, 07 Oct 2019 06:02:12 -0400
+ (envelope-from <philmd@redhat.com>) id 1iHQEr-0000Mn-Qa
+ for qemu-trivial@nongnu.org; Mon, 07 Oct 2019 06:27:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iHPq9-0006A1-Hj
- for qemu-trivial@nongnu.org; Mon, 07 Oct 2019 06:02:07 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35542)
+ (envelope-from <philmd@redhat.com>) id 1iHQEp-0007Y0-3A
+ for qemu-trivial@nongnu.org; Mon, 07 Oct 2019 06:27:36 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50766)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iHPq7-00068S-Bu
- for qemu-trivial@nongnu.org; Mon, 07 Oct 2019 06:02:05 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iHQEo-0007Xj-QA
+ for qemu-trivial@nongnu.org; Mon, 07 Oct 2019 06:27:35 -0400
 Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
  [209.85.221.70])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id C345FC057F31
- for <qemu-trivial@nongnu.org>; Mon,  7 Oct 2019 10:01:58 +0000 (UTC)
-Received: by mail-wr1-f70.google.com with SMTP id b6so7329556wrw.2
- for <qemu-trivial@nongnu.org>; Mon, 07 Oct 2019 03:01:58 -0700 (PDT)
+ by mx1.redhat.com (Postfix) with ESMTPS id 2F4627EBBD
+ for <qemu-trivial@nongnu.org>; Mon,  7 Oct 2019 10:27:33 +0000 (UTC)
+Received: by mail-wr1-f70.google.com with SMTP id 32so7311814wrk.15
+ for <qemu-trivial@nongnu.org>; Mon, 07 Oct 2019 03:27:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=vn3Z8/PHN+wHRrA5EwDE1JrUgVbGfslZkn0GNYob4BU=;
- b=XvpBP8edmw7Tu8DFpcX/LS51z6Px+OS1jv5sYv1miEpDECxBhiLl4LcGkQz2UOfRKr
- mM5bKG8/rvLzthR4F5U0V3jh2FgYUL22hqt/OUNtjeKKy77QkLK45PIvoRtjdtIIggIn
- m/3/wcgUDSYF7ydN4s2we7F8cUfo+i5/HpW8Xb/TgAH1qJQ8Cz1MVz5T5Szv315h+Xy/
- 4KOUU4wGkDKhwLLC8bzdTU4RUtszytpG0cDBzg8q7EKYMTKYnmVnFEHNrDkF/g9GI0Zg
- SB1QReiwwx+VWBc6q92M2TCuZatcHdCYOmHSDDGC+5oqHgofbeCQgqCUL/WvbtCcAm7r
- ZHyQ==
-X-Gm-Message-State: APjAAAVSf6XfMtHd4G5uBUFsfjJCYXsd1ivZK4seRD/h8PdgH6n6DEng
- gZBx5HTA1RcVVfnzI+Wbjz7P2f6QXHcVmxJXA9I53VBIM7we7/74g8LN3PwIhmbyp1rRHIZmKJ8
- pUQpvN8PmuVcJ6jJPqQ==
-X-Received: by 2002:a1c:4886:: with SMTP id
- v128mr19888203wma.176.1570442517476; 
- Mon, 07 Oct 2019 03:01:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyvmMKsTfyRyGqTf7buoZ0JfHYf4CUSzym7F2Frn6hcMWbXZ9SBP4QnBLuNm3cPPbOIqym4bA==
-X-Received: by 2002:a1c:4886:: with SMTP id
- v128mr19888181wma.176.1570442517239; 
- Mon, 07 Oct 2019 03:01:57 -0700 (PDT)
+ bh=i6JpkMARqyYXynCJK6HZNtcf3dcaBVwqJylq3o+GYoI=;
+ b=BkfB74dCdEwa4W+NbWe5dJDz1sqvhl2riG+uRdfMUGT1s0Bi8v+1/6W4geHgRNaQ3a
+ DQm9808KaVjIW6y5b8rxHxcMzpGXOdpmXRjBnifmOoMDhtfbZamuQUGgKDKZNU9f/BQa
+ Bjw/FJCtbO2O9Acx1HQKsV+rRRtr2UchIcBPTWuimyPWE/RS9J1jzDs6j5lM2FauVWeo
+ 2ErAKXaqAmq6Nk0YxqgY1WHK1adqxBWzp96irNgpxN7ZCtB4amPEEtXonVu76Umnx0Wo
+ p7vGjitBxFdSlcCEfZOXW2Ci9Pnm8pXAZLmTOj+MekHJQF8BHfyT5GtajzQjAVDMbL9c
+ IWKQ==
+X-Gm-Message-State: APjAAAVIx0aPhHQ142iugsyNVbdB30p6CzInWMyxjdgvtrAegjUV9l0z
+ 2F4i1bq51dMi/a8yG96gNOC8HRz54LD45KxF/23n6vECEABtO6XcH8PS4tzuzmPDPs4LHOwnPjx
+ qFYxgJ1CK8+RWGfaf5A==
+X-Received: by 2002:adf:ec09:: with SMTP id x9mr23003601wrn.308.1570444050868; 
+ Mon, 07 Oct 2019 03:27:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxZmq6vNUKIDVfCqnIhatgpzUQhHugMhlVcVsSo+3xPWjIzw82+51PqOwF3/BYjEGDOkILAYg==
+X-Received: by 2002:adf:ec09:: with SMTP id x9mr23003567wrn.308.1570444050459; 
+ Mon, 07 Oct 2019 03:27:30 -0700 (PDT)
 Received: from [192.168.1.115] (46.red-83-42-66.dynamicip.rima-tde.net.
  [83.42.66.46])
- by smtp.gmail.com with ESMTPSA id c9sm14324577wrt.7.2019.10.07.03.01.54
+ by smtp.gmail.com with ESMTPSA id r2sm13351987wrm.3.2019.10.07.03.27.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 07 Oct 2019 03:01:56 -0700 (PDT)
-Subject: Re: [PATCH 00/11] hw: Convert various reset() handler to DeviceReset
-To: "Michael S. Tsirkin" <mst@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Markus Armbruster <armbru@redhat.com>,
- Damien Hedde <damien.hedde@greensocs.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
- John Snow <jsnow@redhat.com>, qemu-block@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Igor Mammedov <imammedo@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
- Andrzej Zaborowski <balrogg@gmail.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-References: <20190926151733.25349-1-philmd@redhat.com>
- <20191005174531-mutt-send-email-mst@kernel.org>
+ Mon, 07 Oct 2019 03:27:29 -0700 (PDT)
+Subject: Re: [PATCH] target/i386: log guest name and memory error type AO, AR
+ for MCEs
+To: Mario Smarduch <msmarduch@digitalocean.com>, mtosatti@redhat.com,
+ armbru@redhat.com, pbonzini@redhat.com
+Cc: qemu-devel@nongnu.org, rth@twiddle.net, ehabkost@redhat.com,
+ qemu-trivial@nongnu.org
+References: <ceb4d639-842a-30bd-5d54-bfacb07b5cc4@digitalocean.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <9a20b4a9-b255-95e9-1e27-94e294e21042@redhat.com>
-Date: Mon, 7 Oct 2019 12:01:54 +0200
+Message-ID: <8ca93883-1af3-7959-1b8c-4eeff2f2cae5@redhat.com>
+Date: Mon, 7 Oct 2019 12:27:29 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <20191005174531-mutt-send-email-mst@kernel.org>
+In-Reply-To: <ceb4d639-842a-30bd-5d54-bfacb07b5cc4@digitalocean.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
@@ -87,40 +76,169 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Oct 2019 10:02:13 -0000
+X-List-Received-Date: Mon, 07 Oct 2019 10:27:39 -0000
 
-Hi Michael,
+Hi Mario,
 
-On 10/5/19 11:46 PM, Michael S. Tsirkin wrote:
-> On Thu, Sep 26, 2019 at 05:17:22PM +0200, Philippe Mathieu-Daud=C3=A9 w=
-rote:
->> Hi.
->>
->> Following the thread discussion between Peter/Markus/Damien about
->> reset handlers:
->> https://www.mail-archive.com/qemu-devel@nongnu.org/msg617103.html
->> I started to remove qemu_register_reset() calls from few qdevified
->> devices (the trivial ones).
->>
->> Regards,
->>
->> Phil.
->=20
-> How do you want these patches merged? Trivial tree?
+On 10/5/19 1:53 AM, Mario Smarduch wrote:
+> In a large VPC environment we want to log memory error occurrences
+> and log them with guest name and type - there are few use cases
+> 
+> 
+> - if VM crashes on AR mce inform the user about the reason and
+>    resolve the case
+> - if VM hangs notify the user to reboot and resume processing
+> - if VM continues to run let the user know, he/she maybe able to
+>    correlate to vm internal outage
+> - Rawhammer attacks - isolate/determine the attacker possible
+>    migrating it off the hypervisor
+> - In general track memory errors on a hyperviosr over time to determine
+>    trends
+> 
+> Monitoring our fleet we come across quite a few of these and been
+> able to take action where before there were no clues to the causes.
+> 
+> When memory error occurs we get a log entry in qemu log:
+> 
+> Guest [Droplet-12345678] 2019-08-02T05:00:11.940270Z qemu-system-x86_64:
+> Guest MCE Memory Error at qemu addr 0x7f3c7622f000 and guest 78e42f000
+> addr of type BUS_MCEERR_AR injected
+> 
+> with enterprise logging environment we can to take further actions.
+> 
+> Signed-off-by: Mario Smarduch <msmarduch@digitalocean.com>
+> ---
+>   target/i386/kvm.c | 27 ++++++++++++++++++++++-----
+>   util/qemu-error.c | 24 ++++++++++++++++++++++++
+>   2 files changed, 46 insertions(+), 5 deletions(-)
+> 
+> diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+> index 92069099ab..79ebccc684 100644
+> --- a/target/i386/kvm.c
+> +++ b/target/i386/kvm.c
+> @@ -555,9 +555,9 @@ static void kvm_mce_inject(X86CPU *cpu, hwaddr
+> paddr, int code)
+>                          (MCM_ADDR_PHYS << 6) | 0xc, flags);
+>   }
+> 
+> -static void hardware_memory_error(void)
+> +static void hardware_memory_error(void *addr)
 
-I was hoping Eduardo would take them but he is busy and I even forgot to=20
-Cc him. They might go via Trivial or else via Paolo's Misc...
+Maybe rename addr -> host_addr.
 
->> Philippe Mathieu-Daud=C3=A9 (11):
->>    hw/acpi/piix4: Convert reset handler to DeviceReset
->>    hw/ide/piix: Convert reset handler to DeviceReset
->>    hw/isa/piix4: Convert reset handler to DeviceReset
->>    hw/pci-host/piix: Convert reset handler to DeviceReset
->>    hw/ide/sii3112: Convert reset handler to DeviceReset
->>    hw/ide/via82c: Convert reset handler to DeviceReset
->>    hw/isa/vt82c686: Convert reset handler to DeviceReset
->>    hw/input/lm832x: Convert reset handler to DeviceReset
->>    hw/pci-host/bonito: Convert reset handler to DeviceReset
->>    hw/timer/etraxfs: Convert reset handler to DeviceReset
->>    hw/misc/vmcoreinfo: Convert reset handler to DeviceReset
+>   {
+> -    fprintf(stderr, "Hardware memory error!\n");
+> +    error_report("QEMU got Hardware memory error at addr %p", addr);
+>       exit(1);
+>   }
+> 
+> @@ -581,15 +581,32 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int
+> code, void *addr)
+>               kvm_physical_memory_addr_from_host(c->kvm_state, addr,
+> &paddr)) {
+>               kvm_hwpoison_page_add(ram_addr);
+>               kvm_mce_inject(cpu, paddr, code);
+> +            /*
+> +             * Use different logging severity based on error type.
+> +             * If mcelog is running qemu va addr will help debug via
+> mcelog.
+> +             */
+> +            if (code == BUS_MCEERR_AR) {
+> +                error_report("Guest MCE Memory Error at qemu addr %p and "
+> +                    "guest %lx addr of type %s injected", addr, paddr,
+
+"qemu addr" is not clear IMO, 'addr' is in the host (and is virtual... 
+how does this help you?).
+
+For the guest paddr you should use "0x%"HWADDR_PRIx format.
+
+> +                     "BUS_MCEERR_AR");
+> +            } else {
+> +                 warn_report("Guest MCE Memory Error at qemu addr %p and "
+> +                     "guest %lx addr of type %s injected", addr,
+> +                     paddr, "BUS_MCEERR_AO");
+> +            }
+> +
+>               return;
+>           }
+> 
+> -        fprintf(stderr, "Hardware memory error for memory used by "
+> -                "QEMU itself instead of guest system!\n");
+> +        if (code == BUS_MCEERR_AO) {
+> +            warn_report("Hardware memory error at addr %p of type %s "
+> +                "for memory used by QEMU itself instead of guest system!",
+> +                addr, "BUS_MCEERR_AO");
+> +        }
+>       }
+> 
+>       if (code == BUS_MCEERR_AR) {
+> -        hardware_memory_error();
+> +        hardware_memory_error(addr);
+>       }
+> 
+>       /* Hope we are lucky for AO MCE */
+> diff --git a/util/qemu-error.c b/util/qemu-error.c
+> index f373f3b3b0..2ebafd4405 100644
+> --- a/util/qemu-error.c
+> +++ b/util/qemu-error.c
+> @@ -11,6 +11,8 @@
+>    */
+> 
+>   #include "qemu/osdep.h"
+> +#include "qemu/option.h"
+> +#include "qemu/config-file.h"
+>   #include "monitor/monitor.h"
+>   #include "qemu/error-report.h"
+> 
+> @@ -35,11 +37,31 @@ int error_printf(const char *fmt, ...)
+>       return ret;
+>   }
+> 
+> +static const char *error_get_guestname(void)
+> +{
+> +    QemuOpts *opts = qemu_opts_find(qemu_find_opts("name"), NULL);
+> +    return qemu_opt_get(opts, "guest");
+> +}
+> +
+> +/*
+> + * Print guest name associated with error, to aid debugging errors from
+> + * multiple guests in centralized logging environment.
+> + */
+> +static void error_print_guestname(void)
+> +{
+> +    const char *name;
+> +    name = error_get_guestname();
+> +    if (name != NULL && !cur_mon) {
+> +        error_printf("Guest [%s] ", name);
+> +    }
+> +}
+> +
+>   int error_printf_unless_qmp(const char *fmt, ...)
+>   {
+>       va_list ap;
+>       int ret;
+> 
+> +    error_print_guestname();
+>       va_start(ap, fmt);
+>       ret = error_vprintf_unless_qmp(fmt, ap);
+>       va_end(ap);
+> @@ -274,6 +296,7 @@ void error_report(const char *fmt, ...)
+>   {
+>       va_list ap;
+> 
+> +    error_print_guestname();
+>       va_start(ap, fmt);
+>       vreport(REPORT_TYPE_ERROR, fmt, ap);
+>       va_end(ap);
+> @@ -289,6 +312,7 @@ void warn_report(const char *fmt, ...)
+>   {
+>       va_list ap;
+> 
+> +    error_print_guestname();
+>       va_start(ap, fmt);
+>       vreport(REPORT_TYPE_WARNING, fmt, ap);
+>       va_end(ap);
+> --
+> 2.17.1
+> 
 
