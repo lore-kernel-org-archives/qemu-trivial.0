@@ -1,48 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iHonw-0006NQ-Na
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Oct 2019 08:41:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60262)
+	id 1iHpbZ-0003n7-9l
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Oct 2019 09:32:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42650)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <berrange@redhat.com>) id 1iHont-0006JA-Of
- for qemu-trivial@nongnu.org; Tue, 08 Oct 2019 08:41:27 -0400
+ (envelope-from <ehabkost@redhat.com>) id 1iHpbW-0003kl-Fm
+ for qemu-trivial@nongnu.org; Tue, 08 Oct 2019 09:32:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <berrange@redhat.com>) id 1iHons-000811-45
- for qemu-trivial@nongnu.org; Tue, 08 Oct 2019 08:41:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52940)
+ (envelope-from <ehabkost@redhat.com>) id 1iHpbR-0001kk-Iw
+ for qemu-trivial@nongnu.org; Tue, 08 Oct 2019 09:32:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53380)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <berrange@redhat.com>)
- id 1iHonn-0007nZ-J9; Tue, 08 Oct 2019 08:41:19 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ (Exim 4.71) (envelope-from <ehabkost@redhat.com>)
+ id 1iHpbL-0001d5-9I; Tue, 08 Oct 2019 09:32:31 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 3249E44BD1;
- Tue,  8 Oct 2019 12:41:18 +0000 (UTC)
-Received: from redhat.com (ovpn-112-66.ams2.redhat.com [10.36.112.66])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B400160BE0;
- Tue,  8 Oct 2019 12:41:16 +0000 (UTC)
-Date: Tue, 8 Oct 2019 13:41:13 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Aleksandar Markovic <aleksandar.m.mail@gmail.com>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v2] Makefile: Remove generated files when doing
- 'distclean' (and 'clean')
-Message-ID: <20191008124113.GE1192@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20191008082815.8267-1-thuth@redhat.com>
- <CAL1e-=gYkhM99Ee0LxZJ5dCjeEdC08G4_Tm3WCZpCSWvJ=b26Q@mail.gmail.com>
- <4bfea125-eb63-f4a2-bca0-bce462f73d89@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id 25706307D989;
+ Tue,  8 Oct 2019 13:32:29 +0000 (UTC)
+Received: from localhost (ovpn-116-88.gru2.redhat.com [10.97.116.88])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 646E41001B08;
+ Tue,  8 Oct 2019 13:32:20 +0000 (UTC)
+Date: Tue, 8 Oct 2019 10:32:19 -0300
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Damien Hedde <damien.hedde@greensocs.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>
+Subject: Re: [PATCH 11/11] hw/misc/vmcoreinfo: Convert reset handler to
+ DeviceReset
+Message-ID: <20191008133219.GV4084@habkost.net>
+References: <20190926151733.25349-1-philmd@redhat.com>
+ <20190926151733.25349-12-philmd@redhat.com>
+ <f110c099-7521-95e0-74b9-9c7e53d7d5d8@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <4bfea125-eb63-f4a2-bca0-bce462f73d89@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+In-Reply-To: <f110c099-7521-95e0-74b9-9c7e53d7d5d8@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.30]); Tue, 08 Oct 2019 12:41:18 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.48]); Tue, 08 Oct 2019 13:32:29 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -58,161 +56,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Oct 2019 12:41:27 -0000
+X-List-Received-Date: Tue, 08 Oct 2019 13:32:43 -0000
 
-On Tue, Oct 08, 2019 at 02:35:20PM +0200, Thomas Huth wrote:
-> On 08/10/2019 14.18, Aleksandar Markovic wrote:
-> >=20
-> >=20
-> > On Tuesday, October 8, 2019, Thomas Huth <thuth@redhat.com
-> > <mailto:thuth@redhat.com>> wrote:
-> >=20
-> >     When running "make distclean" we currently leave a lot of generat=
-ed
-> >     files in the build directory. These should be completely removed.
-> >     Some of the generated files are removed in the "clean" target (wh=
-ich
-> >     is a prerequisite for the "distclean" target), since binary files
-> >     should be removed in this step already.
-> >=20
-> >     Signed-off-by: Thomas Huth <thuth@redhat.com <mailto:thuth@redhat=
-.com>>
-> >     ---
-> >     =C2=A0v2:
-> >     =C2=A0- Remove tests/qemu-iotests/common.env in "distclean", not =
-in "clean"
-> >     =C2=A0- Improved patch description
-> >=20
-> >     =C2=A0Makefile=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0|=C2=A0 6 +++---
-> >     =C2=A0tests/Makefile.include | 12 +++++++++++-
-> >     =C2=A02 files changed, 14 insertions(+), 4 deletions(-)
-> >=20
-> >     diff --git a/Makefile b/Makefile
-> >     index 30f0abfb42..767b1ffb25 100644
-> >     --- a/Makefile
-> >     +++ b/Makefile
-> >     @@ -696,14 +696,14 @@ clean: recurse-clean
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -exec rm =
-{} +
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f $(edk2-decompressed)
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f $(filter-out %.tlb,$(TOOLS)) $(=
-HELPERS-y) TAGS
-> >     cscope.* *.pod *~ */*~
-> >     -=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f fsdev/*.pod scsi/*.pod
-> >     +=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f fsdev/*.pod scsi/*.pod docs/*.p=
-od docs/*/*.pod
-> >     docs/*/.buildinfo
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f qemu-img-cmds.h
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f ui/shader/*-vert.h ui/shader/*-=
-frag.h
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 @# May not be present in generated-fi=
-les-y
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f trace/generated-tracers-dtrace.=
-dtrace*
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f trace/generated-tracers-dtrace.=
-h*
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f $(foreach f,$(generated-files-y=
-),$(f) $(f)-timestamp)
-> >     -=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f qapi-gen-timestamp
-> >     +=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f qapi-gen-timestamp vhost-user-i=
-nput
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -rf qga/qapi-generated
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f config-all-devices.mak
-> >=20
-> >     @@ -724,7 +724,7 @@ distclean: clean
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f tests/tcg/config-*.mak
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f config-all-devices.mak config-a=
-ll-disas.mak config.status
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f $(SUBDIR_DEVICES_MAK)
-> >     -=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f po/*.mo tests/qemu-iotests/comm=
-on.env
-> >     +=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f po/*.mo
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f roms/seabios/config.mak roms/vg=
-abios/config.mak
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f qemu-doc.info <http://qemu-doc.=
-info> qemu-doc.aux
-> >     qemu-doc.cp qemu-doc.cps
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f qemu-doc.fn qemu-doc.fns qemu-d=
-oc.info
-> >     <http://qemu-doc.info> qemu-doc.ky <http://qemu-doc.ky> qemu-doc.=
-kys
-> >     diff --git a/tests/Makefile.include b/tests/Makefile.include
-> >     index 3543451ed3..694f193fb6 100644
-> >     --- a/tests/Makefile.include
-> >     +++ b/tests/Makefile.include
-> >     @@ -1176,11 +1176,21 @@ check: check-block check-qapi-schema
-> >     check-unit check-softfloat check-qtest chec
-> >     =C2=A0check-clean:
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -rf $(check-unit-y) tests/*.o $(QE=
-MU_IOTESTS_HELPERS-y)
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -rf $(sort $(foreach target,$(SYSE=
-MU_TARGET_LIST),
-> >     $(check-qtest-$(target)-y)) $(check-qtest-generic-y))
-> >     -=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f tests/test-qapi-gen-timestamp
-> >     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -rf $(TESTS_VENV_DIR) $(TESTS_RESU=
-LTS_DIR)
-> >     +=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f tests/test-qapi-gen-timestamp t=
-ests/qht-bench$(EXESUF) \
-> >     +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tests/fp/=
-fp-test tests/fp/*.out
-> >     tests/qapi-schema/*.test.*
-> >=20
-> >     =C2=A0clean: check-clean
-> >=20
-> >     +check-distclean:
-> >     +=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f tests/qemu-iotests/common.env t=
-ests/qemu-iotests/check.*
-> >     +=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f tests/test-qapi-types*.c tests/=
-test-qapi-visit*.c \
-> >     +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tests/tes=
-t-qapi-commands*.c tests/test-qapi-events*.c \
-> >     +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tests/tes=
-t-qapi-emit-events.[ch]
-> >     tests/test-qapi-introspect.c \
-> >     +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tests/inc=
-lude/test-qapi-*.c
-> >     +
-> >     +distclean: check-distclean
-> >     +
-> >=20
-> >=20
-> > Sorry for bad email format, I have some difficultues with mail accoun=
-ts
-> > and =C2=A0mail clients.
-> >=20
-> > Thomas,
-> >=20
-> > If I remember well, QAPI-related c files are generated while doing
-> > 'make'. If that is true, these files should be deleted by 'make clean=
-',
-> > shouldn't they?
+On Thu, Sep 26, 2019 at 06:02:47PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> On 9/26/19 5:17 PM, Philippe Mathieu-Daud=E9 wrote:
+> > Convert the reset handler into a proper Device reset method.
 >=20
-> I think that's a philosophical question. Should "make clean" delete all
-> files that have been generated by a Makefile (i.e. not by "configure"),
-> or rather mainly the binary files?
+> Marc-Andr=E9 noticed this one is incorrect, because while being QDEV it=
+ is
+> not connected to a QBUS.
 >=20
-> If you have a look at our main Makefile in the topmost directory, you
-> can see that we remove lots of files that are obviously generated by
-> "make" in the "distclean" target, so it seems we have no clear rule wha=
-t
-> should be deleted in each step...
+> Maybe we can add a Device::unconnected property, and when set, the
+> parent realize() calls 'qemu_register_reset(dev->reset, dev);'?
+> This might look the same, but at least Devices implementations could
+> stop to use this function...
 
-Given that we're aiming to convert to meson, how much effort do we really
-want to put into fixing this inconsistency ?
+Can we make this automatic instead of requiring another explicit
+setting?
 
-I'd argue the best way to fix "clean" and "distclean" is to delete them
-entirely. Instead enforce that builddir !=3D srcdir when running configur=
-e,
-so cleaning up simply means deleting the builddir sub-tree entirely.
+Today we have at least 3 different ways of getting a device to be
+reset: qemu_register_reset(); explicit device_reset_all() call in
+another reset handler; and implicit device_reset_all() call done
+through parent buses/devices.  I wouldn't like to create a 4th
+method.
 
-Regards,
-Daniel
+What I really wish for, is a opt-out mechanism for reset (meaning
+all devices would be guaranteed to be reset unless they
+explicitly opt out), instead of 3 or 4 different opt-in
+mechanisms.
+
 --=20
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
-ge :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.c=
-om :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
-ge :|
+Eduardo
 
