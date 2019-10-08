@@ -1,94 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iHoiF-0002BV-FP
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Oct 2019 08:35:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59275)
+	id 1iHonr-0006HE-LZ
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Oct 2019 08:41:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60233)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iHoi9-00028u-9C
- for qemu-trivial@nongnu.org; Tue, 08 Oct 2019 08:35:31 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iHonp-0006G7-0W
+ for qemu-trivial@nongnu.org; Tue, 08 Oct 2019 08:41:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iHoi6-0004bg-Vd
- for qemu-trivial@nongnu.org; Tue, 08 Oct 2019 08:35:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:25579)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1iHoi2-0004Mv-WD; Tue, 08 Oct 2019 08:35:23 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 2ECFE30832E9;
- Tue,  8 Oct 2019 12:35:22 +0000 (UTC)
-Received: from thuth.remote.csb (dhcp-200-228.str.redhat.com [10.33.200.228])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3D82F10495B5;
- Tue,  8 Oct 2019 12:35:21 +0000 (UTC)
-Subject: Re: [PATCH v2] Makefile: Remove generated files when doing
- 'distclean' (and 'clean')
-To: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1iHonn-0007pM-Ml
+ for qemu-trivial@nongnu.org; Tue, 08 Oct 2019 08:41:20 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:41353)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iHonm-0007j0-G9
+ for qemu-trivial@nongnu.org; Tue, 08 Oct 2019 08:41:19 -0400
+Received: by mail-oi1-x242.google.com with SMTP id w65so14613511oiw.8
+ for <qemu-trivial@nongnu.org>; Tue, 08 Oct 2019 05:41:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=F4VpDAVVA0BdbVXXiCokr3TC1MIF05PM5d0Fz4YQTxU=;
+ b=F2+62V3YWK8lR+PbUFikW5KJX4gyNt7Ny7LHt59MdPMSyLzupjZj6zcd/vkO4RuqMp
+ t88rizSfaS0Z6TWdXRPSB/RHHNqLrC72asSStJHFo0Ic8mAUwY4L5rJHOxLsQAXj3yFk
+ N/qUXwTh2bK2vG53OwVTaCP0USeXMSj4L1qBPDB1gmBElIQnwNHJOpHEOYn3IWXhnLre
+ u6s7Se03gm4tVeFIfISAdVGCq1o/B3iwVaIFa64qxhITSPyEACeCZFkhl1T7lZ38g/qe
+ 0kv6Krr/kz+0/4wPgrzFrzPyi/10US01yeOanNaTdPowoOZ3Xn9xhljAXfiwPBQF9N4v
+ xiHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=F4VpDAVVA0BdbVXXiCokr3TC1MIF05PM5d0Fz4YQTxU=;
+ b=RSuMHVnJZKI6RVZY9DI8/YkMqTlbjYRIRKx2Wah6vzMvEDFxfVuq/lDAQt7ULN5F6K
+ ajjE5qP9J3IIoY6rYXMS1ZoRtN1Pcr0nEWm9Fx7pLc9dUI6mcidachv8KI9OwTFLecuc
+ L9h/O4ph8h+wk52kwajV3oBsMIcfKpbCl4lSLI6oe0AIqHGbfDPw2chQ2aBqj7TgCthD
+ 6J7NznviP4EpjdpLPAR8YBGZC+rQDlCxQnLG7gdcxBV2TswdGJBhQjGq70zSmPCObsUU
+ +33RKRy0vCYwjrGR4Tfn10xp0UKM0K1Dkn5fogwNQoIL78OW2xqrSrULR+RvINVdwJlk
+ 5bOQ==
+X-Gm-Message-State: APjAAAVFglyew4aPhBM44oQH3a0hn6qXFaPbfs4RI5NZteZxtYJy5OKg
+ +ync/sQ5fYaKRXsHJlxNrlv3TaApoHAEKxu6XJcx6Q==
+X-Google-Smtp-Source: APXvYqwKsR/yv5OUIoFls/2aqqiUr3Zg70ke6psJVhdjMYzFbUoIirFeVoJLzzpDcxgO2+duzHaVZ9OyiXBqxwh4NVA=
+X-Received: by 2002:aca:f54d:: with SMTP id t74mr3781638oih.170.1570538475123; 
+ Tue, 08 Oct 2019 05:41:15 -0700 (PDT)
+MIME-Version: 1.0
 References: <20191008082815.8267-1-thuth@redhat.com>
  <CAL1e-=gYkhM99Ee0LxZJ5dCjeEdC08G4_Tm3WCZpCSWvJ=b26Q@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat
-Message-ID: <4bfea125-eb63-f4a2-bca0-bce462f73d89@redhat.com>
-Date: Tue, 8 Oct 2019 14:35:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
-MIME-Version: 1.0
-In-Reply-To: <CAL1e-=gYkhM99Ee0LxZJ5dCjeEdC08G4_Tm3WCZpCSWvJ=b26Q@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.44]); Tue, 08 Oct 2019 12:35:22 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+ <4bfea125-eb63-f4a2-bca0-bce462f73d89@redhat.com>
+In-Reply-To: <4bfea125-eb63-f4a2-bca0-bce462f73d89@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 8 Oct 2019 13:41:04 +0100
+Message-ID: <CAFEAcA_+V7SNsxPSgsd04s8f7PnP3qdyXMp6NvS2inHjE08pJw@mail.gmail.com>
+Subject: Re: [PATCH v2] Makefile: Remove generated files when doing
+ 'distclean' (and 'clean')
+To: Thomas Huth <thuth@redhat.com>
+Cc: Aleksandar Markovic <aleksandar.m.mail@gmail.com>, 
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::242
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -100,139 +70,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Oct 2019 12:35:31 -0000
+X-List-Received-Date: Tue, 08 Oct 2019 12:41:22 -0000
 
-On 08/10/2019 14.18, Aleksandar Markovic wrote:
->=20
->=20
-> On Tuesday, October 8, 2019, Thomas Huth <thuth@redhat.com
-> <mailto:thuth@redhat.com>> wrote:
->=20
->     When running "make distclean" we currently leave a lot of generated
->     files in the build directory. These should be completely removed.
->     Some of the generated files are removed in the "clean" target (whic=
-h
->     is a prerequisite for the "distclean" target), since binary files
->     should be removed in this step already.
->=20
->     Signed-off-by: Thomas Huth <thuth@redhat.com <mailto:thuth@redhat.c=
-om>>
->     ---
->     =C2=A0v2:
->     =C2=A0- Remove tests/qemu-iotests/common.env in "distclean", not in=
- "clean"
->     =C2=A0- Improved patch description
->=20
->     =C2=A0Makefile=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
-|=C2=A0 6 +++---
->     =C2=A0tests/Makefile.include | 12 +++++++++++-
->     =C2=A02 files changed, 14 insertions(+), 4 deletions(-)
->=20
->     diff --git a/Makefile b/Makefile
->     index 30f0abfb42..767b1ffb25 100644
->     --- a/Makefile
->     +++ b/Makefile
->     @@ -696,14 +696,14 @@ clean: recurse-clean
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -exec rm {}=
- +
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f $(edk2-decompressed)
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f $(filter-out %.tlb,$(TOOLS)) $(HE=
-LPERS-y) TAGS
->     cscope.* *.pod *~ */*~
->     -=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f fsdev/*.pod scsi/*.pod
->     +=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f fsdev/*.pod scsi/*.pod docs/*.pod=
- docs/*/*.pod
->     docs/*/.buildinfo
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f qemu-img-cmds.h
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f ui/shader/*-vert.h ui/shader/*-fr=
-ag.h
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 @# May not be present in generated-file=
-s-y
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f trace/generated-tracers-dtrace.dt=
-race*
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f trace/generated-tracers-dtrace.h*
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f $(foreach f,$(generated-files-y),=
-$(f) $(f)-timestamp)
->     -=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f qapi-gen-timestamp
->     +=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f qapi-gen-timestamp vhost-user-inp=
-ut
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -rf qga/qapi-generated
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f config-all-devices.mak
->=20
->     @@ -724,7 +724,7 @@ distclean: clean
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f tests/tcg/config-*.mak
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f config-all-devices.mak config-all=
--disas.mak config.status
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f $(SUBDIR_DEVICES_MAK)
->     -=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f po/*.mo tests/qemu-iotests/common=
-.env
->     +=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f po/*.mo
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f roms/seabios/config.mak roms/vgab=
-ios/config.mak
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f qemu-doc.info <http://qemu-doc.in=
-fo> qemu-doc.aux
->     qemu-doc.cp qemu-doc.cps
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f qemu-doc.fn qemu-doc.fns qemu-doc=
-.info
->     <http://qemu-doc.info> qemu-doc.ky <http://qemu-doc.ky> qemu-doc.ky=
-s
->     diff --git a/tests/Makefile.include b/tests/Makefile.include
->     index 3543451ed3..694f193fb6 100644
->     --- a/tests/Makefile.include
->     +++ b/tests/Makefile.include
->     @@ -1176,11 +1176,21 @@ check: check-block check-qapi-schema
->     check-unit check-softfloat check-qtest chec
->     =C2=A0check-clean:
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -rf $(check-unit-y) tests/*.o $(QEMU=
-_IOTESTS_HELPERS-y)
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -rf $(sort $(foreach target,$(SYSEMU=
-_TARGET_LIST),
->     $(check-qtest-$(target)-y)) $(check-qtest-generic-y))
->     -=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f tests/test-qapi-gen-timestamp
->     =C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -rf $(TESTS_VENV_DIR) $(TESTS_RESULT=
-S_DIR)
->     +=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f tests/test-qapi-gen-timestamp tes=
-ts/qht-bench$(EXESUF) \
->     +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tests/fp/fp=
--test tests/fp/*.out
->     tests/qapi-schema/*.test.*
->=20
->     =C2=A0clean: check-clean
->=20
->     +check-distclean:
->     +=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f tests/qemu-iotests/common.env tes=
-ts/qemu-iotests/check.*
->     +=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f tests/test-qapi-types*.c tests/te=
-st-qapi-visit*.c \
->     +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tests/test-=
-qapi-commands*.c tests/test-qapi-events*.c \
->     +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tests/test-=
-qapi-emit-events.[ch]
->     tests/test-qapi-introspect.c \
->     +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tests/inclu=
-de/test-qapi-*.c
->     +
->     +distclean: check-distclean
->     +
->=20
->=20
-> Sorry for bad email format, I have some difficultues with mail accounts
-> and =C2=A0mail clients.
->=20
-> Thomas,
->=20
-> If I remember well, QAPI-related c files are generated while doing
-> 'make'. If that is true, these files should be deleted by 'make clean',
-> shouldn't they?
+On Tue, 8 Oct 2019 at 13:37, Thomas Huth <thuth@redhat.com> wrote:
+>
+> On 08/10/2019 14.18, Aleksandar Markovic wrote:
+> > If I remember well, QAPI-related c files are generated while doing
+> > 'make'. If that is true, these files should be deleted by 'make clean',
+> > shouldn't they?
+>
+> I think that's a philosophical question. Should "make clean" delete all
+> files that have been generated by a Makefile (i.e. not by "configure"),
+> or rather mainly the binary files?
 
-I think that's a philosophical question. Should "make clean" delete all
-files that have been generated by a Makefile (i.e. not by "configure"),
-or rather mainly the binary files?
+https://www.gnu.org/software/automake/manual/html_node/Clean.html
 
-If you have a look at our main Makefile in the topmost directory, you
-can see that we remove lots of files that are obviously generated by
-"make" in the "distclean" target, so it seems we have no clear rule what
-should be deleted in each step...
+The autoconf manual suggests some heuristics:
+ - If make built it, and it is commonly something that one would want
+   to rebuild (for instance, a .o file), then mostlyclean should delete it.
+ - Otherwise, if make built it, then clean should delete it.
+ - If configure built it, then distclean should delete it.
+ - If the maintainer built it (for instance, a .info file), then
+   maintainer-clean should delete it. However maintainer-clean should
+   not delete anything that needs to exist in order to run
+'./configure && make'.
 
- Thomas
+Not all of that applies for QEMU, but it seems like a reasonable
+set of ideas.
+
+thanks
+-- PMM
 
