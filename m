@@ -1,45 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iIHwH-0007Wy-LO
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Oct 2019 15:48:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57486)
+	id 1iII0G-0003YW-G7
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Oct 2019 15:52:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58147)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <crosa@redhat.com>) id 1iIHwE-0007SO-1v
- for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 15:47:58 -0400
+ (envelope-from <eblake@redhat.com>) id 1iII0C-0003TV-Us
+ for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 15:52:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <crosa@redhat.com>) id 1iIHwC-0003i5-TI
- for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 15:47:57 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45442)
+ (envelope-from <eblake@redhat.com>) id 1iII0B-0005IW-OP
+ for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 15:52:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46402)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <crosa@redhat.com>)
- id 1iIHw8-0003gF-4O; Wed, 09 Oct 2019 15:47:52 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ (Exim 4.71) (envelope-from <eblake@redhat.com>)
+ id 1iII06-0005Hc-MS; Wed, 09 Oct 2019 15:51:58 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 531D93164683;
- Wed,  9 Oct 2019 19:47:51 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-122-151.rdu2.redhat.com
- [10.10.122.151])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2F1131001DC0;
- Wed,  9 Oct 2019 19:47:47 +0000 (UTC)
-From: Cleber Rosa <crosa@redhat.com>
-To: qemu-devel@nongnu.org
+ by mx1.redhat.com (Postfix) with ESMTPS id E29E9C057E32;
+ Wed,  9 Oct 2019 19:51:57 +0000 (UTC)
+Received: from [10.3.116.162] (ovpn-116-162.phx2.redhat.com [10.3.116.162])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4CE7F60606;
+ Wed,  9 Oct 2019 19:51:57 +0000 (UTC)
+Subject: Re: [PATCH v2 1/4] qemu-iotests: remove bash shebang from library
+ files
+To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>,
  Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- Cleber Rosa <crosa@redhat.com>, Eric Blake <eblake@redhat.com>,
- John Snow <jsnow@redhat.com>
-Subject: [PATCH v2 4/4] qemu-iotests: 044: remove inaccurate docstring class
- description
-Date: Wed,  9 Oct 2019 15:47:40 -0400
-Message-Id: <20191009194740.8079-5-crosa@redhat.com>
-In-Reply-To: <20191009194740.8079-1-crosa@redhat.com>
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
 References: <20191009194740.8079-1-crosa@redhat.com>
+ <20191009194740.8079-2-crosa@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <287afb96-bfb7-5e6e-ca1c-0e2845f8ef3c@redhat.com>
+Date: Wed, 9 Oct 2019 14:51:56 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <20191009194740.8079-2-crosa@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.41]); Wed, 09 Oct 2019 19:47:51 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+ (mx1.redhat.com [10.5.110.31]); Wed, 09 Oct 2019 19:51:57 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
@@ -54,28 +57,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Oct 2019 19:48:00 -0000
+X-List-Received-Date: Wed, 09 Oct 2019 19:52:07 -0000
+
+On 10/9/19 2:47 PM, Cleber Rosa wrote:
+> Due to not being able to find a reason to have shebangs on files that
+> are not executable.
+> 
+> While at it, add a mode hint to emacs, which would be clueless or
+> plain wrong about these containing shell code.
+> 
+> Suggested-by: Eric Blake <eblake@redhat.com>
+> Signed-off-by: Cleber Rosa <crosa@redhat.com>
+> ---
+>   tests/qemu-iotests/common.config  | 2 +-
+>   tests/qemu-iotests/common.filter  | 2 +-
+>   tests/qemu-iotests/common.nbd     | 3 +--
+>   tests/qemu-iotests/common.pattern | 2 +-
+>   tests/qemu-iotests/common.qemu    | 2 +-
+>   tests/qemu-iotests/common.rc      | 2 +-
+>   tests/qemu-iotests/common.tls     | 2 +-
+>   7 files changed, 7 insertions(+), 8 deletions(-)
+> 
+> diff --git a/tests/qemu-iotests/common.config b/tests/qemu-iotests/common.config
+> index 9bd1a5a6fc..b85a6a6f96 100644
+> --- a/tests/qemu-iotests/common.config
+> +++ b/tests/qemu-iotests/common.config
+> @@ -1,4 +1,4 @@
+> -#!/usr/bin/env bash
+> +# -*- emacs mode: sh -*-
+
+I thought my version:
+# hey emacs, this file will be sourced by bash -*- mode: sh -*-
+was cuter, but that's not a requirement, and yours works  ;)
 
 Reviewed-by: Eric Blake <eblake@redhat.com>
-Reviewed-by: John Snow <jsnow@redhat.com>
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
----
- tests/qemu-iotests/044 | 1 -
- 1 file changed, 1 deletion(-)
 
-diff --git a/tests/qemu-iotests/044 b/tests/qemu-iotests/044
-index aa2a00ceed..bae99e25cf 100755
---- a/tests/qemu-iotests/044
-+++ b/tests/qemu-iotests/044
-@@ -31,7 +31,6 @@ import sys
- test_img =3D os.path.join(iotests.test_dir, 'test.img')
-=20
- class TestRefcountTableGrowth(iotests.QMPTestCase):
--    '''Abstract base class for image mirroring test cases'''
-=20
-     def preallocate(self, name):
-         fd =3D open(name, "r+b")
---=20
-2.21.0
-
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
