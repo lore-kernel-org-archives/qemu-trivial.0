@@ -1,69 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iIJMe-0004hT-VH
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Oct 2019 17:19:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46990)
+	id 1iIKsR-0003SI-0r
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Oct 2019 18:56:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60825)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1iIJMb-0004cM-At
- for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 17:19:18 -0400
+ (envelope-from <no-reply@patchew.org>) id 1iIKsL-0003Qb-7i
+ for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 18:56:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1iIJMZ-000400-Su
- for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 17:19:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50898)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1iIJMZ-0003zh-FZ
- for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 17:19:15 -0400
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 88EFBC01B808
- for <qemu-trivial@nongnu.org>; Wed,  9 Oct 2019 21:19:14 +0000 (UTC)
-Received: by mail-wr1-f69.google.com with SMTP id o10so1660722wrm.22
- for <qemu-trivial@nongnu.org>; Wed, 09 Oct 2019 14:19:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Zz5bhF6zfv+jR4MxHD4U4Soo4rdcQIP8qAHAJ/r2e0g=;
- b=XNtUQRkVdcXq+KVzd8lccJtbwSfqoSijNKOtoEXIjayBep9MuvR72v34x6GYuXzRAE
- cvU5Nur67IS9MPPSxvu8HDAIyERF+6K4pp2HcY5259IzopqpeVmdw/ayMkvvQdtAJVb1
- a+pUzXSIeU/v3bSe9WCP8B32pzFWEDuh0yCFJzpfLIEFK9IxKFSPz4/BmOg7pAC6qrjY
- 2tWheciu+slFj0KLCTLPrO6enHESs2lXUzk3meJUXlLPRqTZ1vVeLNyiSAyxKmJaUnCP
- aDw0DJ8u4A+RfgE7gM8WLiagdZCYVK/tWX6gmW48u4HGWnYe5X5euKSbaRI5NOphLAUk
- ssHQ==
-X-Gm-Message-State: APjAAAVOtjezKvdboYqXe0lkG1ByELfX+lEoRNTSLwOzHZt88/PQ5TPt
- 9qo3fP2kkINSbGvqiA9XXfMAAMqJHEwBQPu+fTVED62BVx1NzY5GtE1+Qc7/lkUni37UISHhQCV
- AEu1DT3zPcvyvM8HRIg==
-X-Received: by 2002:a5d:6592:: with SMTP id q18mr5040492wru.382.1570655953127; 
- Wed, 09 Oct 2019 14:19:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwNCZNQfZZgNTPhUBtSUSZTx06BSOQ3+OhjHfq/mE2O2uyDEy86uvCIFtB++XKELdIzcCgSew==
-X-Received: by 2002:a5d:6592:: with SMTP id q18mr5040470wru.382.1570655952808; 
- Wed, 09 Oct 2019 14:19:12 -0700 (PDT)
-Received: from [192.168.10.150] ([93.56.166.5])
- by smtp.gmail.com with ESMTPSA id q15sm5644526wrg.65.2019.10.09.14.19.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 09 Oct 2019 14:19:12 -0700 (PDT)
-Subject: Re: [PATCHv2 0/2] log guest name and memory error type AO, AR for MCEs
-To: Mario Smarduch <msmarduch@digitalocean.com>, philmd@redhat.com,
- mtosatti@redhat.com, armbru@redhat.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, rth@twiddle.net,
- ehabkost@redhat.com
-References: <20191009164459.8209-1-msmarduch@digitalocean.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <71149051-f7b9-b3ef-8493-4e2db1644a8d@redhat.com>
-Date: Wed, 9 Oct 2019 23:19:10 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
+ (envelope-from <no-reply@patchew.org>) id 1iIKsJ-00083D-Vd
+ for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 18:56:09 -0400
+Resent-Date: Wed, 09 Oct 2019 18:56:09 -0400
+Resent-Message-Id: <E1iIKsJ-00083D-Vd@eggs.gnu.org>
+Received: from sender4-of-o54.zoho.com ([136.143.188.54]:21490)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1iIKsE-00080P-WE; Wed, 09 Oct 2019 18:56:03 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1570661749; cv=none; d=zoho.com; s=zohoarc; 
+ b=IbLBR7pOqJ5glt/YczriJHDZEG6r7mMKcbwS8iGMyDk4HV/naE3mZ7h4Zk70ZzcvUFD1WB44moyZHvxbwvfJb6uIZXdGQboMuEWlXKh344r7sCmDuvhaqqxgprMsKpe3PRdSiHmdRZg5LzKI3ItYRjm6AXfOXNyccDZPYpMuHGY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+ s=zohoarc; t=1570661749;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=zm6qNVZ2o2J4kNDR7yAtuttemhMADY3W/BPGZvUyQnc=; 
+ b=jHB7GNY7xGINli9YSCKDqbUAOYmQf9e3itM0tlld9xUWjEaKkH0tVvcnZbTYrKznuKoc3VlV5fRYduwvZQ/V6g46ylKQR2dsccg1//m4KkMt8TTP/BsmxhVMO5KDo5To4Glh0QaZTYnPucqSegCOr7LQZnAlzu/s1WJxx1F5pZY=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1570661746983111.23669555286313;
+ Wed, 9 Oct 2019 15:55:46 -0700 (PDT)
 In-Reply-To: <20191009164459.8209-1-msmarduch@digitalocean.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Reply-To: <qemu-devel@nongnu.org>
+Subject: Re: [PATCHv2 0/2] log guest name and memory error type AO,
+ AR for MCEs 
+Message-ID: <157066174528.7138.14434697809199041276@37313f22b938>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: msmarduch@digitalocean.com
+Cc: philmd@redhat.com, mtosatti@redhat.com, pbonzini@redhat.com,
+ armbru@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ rth@twiddle.net, ehabkost@redhat.com, msmarduch@digitalocean.com
+Date: Wed, 9 Oct 2019 15:55:46 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.132.183.28
+X-Received-From: 136.143.188.54
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,49 +58,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Oct 2019 21:19:19 -0000
+X-List-Received-Date: Wed, 09 Oct 2019 22:56:11 -0000
 
-On 09/10/19 18:44, Mario Smarduch wrote:
-> In a large VPC environment we want to log memory error occurrences
-> and log them with guest name and type - there are few use cases
-> 
-> 
-> - if VM crashes on AR mce inform the user about the reason and resolve the case
-> - if VM hangs notify the user to reboot and resume processing
-> - if VM continues to run let the user know, he/she maybe able to correlate
->   to vm internal outage
-> - Rawhammer attacks - isolate/determine the attacker possible migrating it off
->   the hypervisor
-> - In general track memory errors on a hyperviosr over time to determine trends
-> 
-> Monitoring our fleet we come across quite a few of these and been
-> able to take action where before there were no clues to the causes.
-> 
-> When memory error occurs we get a log entry in qemu log:
-> 
-> Guest [Droplet-12345678] 2019-08-02T05:00:11.940270Z qemu-system-x86_64:
-> Guest MCE Memory Error at QEMU addr 0x7f3c7622f000 and GUEST 0x78e42f000
-> addr of type BUS_MCEERR_AR injected
-> 
-> with enterprise logging environment we can to take further actions.
-> 
-> v1 -> v2:
-> - split into two patches one to get the gustname second to log MCEs 
-> - addressed comments for MCE logging
-> 
-> Mario Smarduch (2):
->   util/qemu-error: add guest name helper with -msg options
->   target/i386: log MCE guest and host addresses
-> 
->  include/qemu/error-report.h |  1 +
->  qemu-options.hx             | 10 ++++++----
->  target/i386/kvm.c           | 29 ++++++++++++++++++++++++-----
->  util/qemu-error.c           | 31 +++++++++++++++++++++++++++++++
->  vl.c                        |  5 +++++
->  5 files changed, 67 insertions(+), 9 deletions(-)
-> 
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTAwOTE2NDQ1OS44MjA5
+LTEtbXNtYXJkdWNoQGRpZ2l0YWxvY2Vhbi5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVk
+IHRoZSBkb2NrZXItbWluZ3dAZmVkb3JhIGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0
+aW5nIGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBp
+bnN0YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVT
+VCBTQ1JJUFQgQkVHSU4gPT09CiMhIC9iaW4vYmFzaApleHBvcnQgQVJDSD14ODZfNjQKbWFrZSBk
+b2NrZXItaW1hZ2UtZmVkb3JhIFY9MSBORVRXT1JLPTEKdGltZSBtYWtlIGRvY2tlci10ZXN0LW1p
+bmd3QGZlZG9yYSBKPTE0IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKICBDQyAg
+ICAgIHV0aWwvaGJpdG1hcC5vCiAgQ0MgICAgICB1dGlsL2ZpZm84Lm8KCkVuY29kaW5nIGVycm9y
+OgondXRmLTgnIGNvZGVjIGNhbid0IGRlY29kZSBieXRlIDB4OTUgaW4gcG9zaXRpb24gNzk5OiBp
+bnZhbGlkIHN0YXJ0IGJ5dGUKVGhlIGZ1bGwgdHJhY2ViYWNrIGhhcyBiZWVuIHNhdmVkIGluIC90
+bXAvc3BoaW54LWVyci1xc2ZjZDkyeS5sb2csIGlmIHlvdSB3YW50IHRvIHJlcG9ydCB0aGUgaXNz
+dWUgdG8gdGhlIGRldmVsb3BlcnMuCiAgQ0MgICAgICB1dGlsL2NhY2hlaW5mby5vCi0tLQogIEND
+ICAgICAgdXRpbC9pZC5vCiAgQ0MgICAgICB1dGlsL2lvdi5vCiAgQ0MgICAgICB1dGlsL3FlbXUt
+Y29uZmlnLm8KbWFrZTogKioqIFtNYWtlZmlsZTo5OTQ6IGRvY3MvaW50ZXJvcC9pbmRleC5odG1s
+XSBFcnJvciAyCm1ha2U6ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVkIGpvYnMuLi4uClRyYWNl
+YmFjayAobW9zdCByZWNlbnQgY2FsbCBsYXN0KToKICBGaWxlICIuL3Rlc3RzL2RvY2tlci9kb2Nr
+ZXIucHkiLCBsaW5lIDY2MiwgaW4gPG1vZHVsZT4KLS0tCiAgICByYWlzZSBDYWxsZWRQcm9jZXNz
+RXJyb3IocmV0Y29kZSwgY21kKQpzdWJwcm9jZXNzLkNhbGxlZFByb2Nlc3NFcnJvcjogQ29tbWFu
+ZCAnWydzdWRvJywgJy1uJywgJ2RvY2tlcicsICdydW4nLCAnLS1sYWJlbCcsICdjb20ucWVtdS5p
+bnN0YW5jZS51dWlkPWM4Mjc0YThhOTIyZDRkMmM4MWIxNGI2YjVjMDkwMmNhJywgJy11JywgJzEw
+MDMnLCAnLS1zZWN1cml0eS1vcHQnLCAnc2VjY29tcD11bmNvbmZpbmVkJywgJy0tcm0nLCAnLWUn
+LCAnVEFSR0VUX0xJU1Q9JywgJy1lJywgJ0VYVFJBX0NPTkZJR1VSRV9PUFRTPScsICctZScsICdW
+PScsICctZScsICdKPTE0JywgJy1lJywgJ0RFQlVHPScsICctZScsICdTSE9XX0VOVj0nLCAnLWUn
+LCAnQ0NBQ0hFX0RJUj0vdmFyL3RtcC9jY2FjaGUnLCAnLXYnLCAnL2hvbWUvcGF0Y2hldzIvLmNh
+Y2hlL3FlbXUtZG9ja2VyLWNjYWNoZTovdmFyL3RtcC9jY2FjaGU6eicsICctdicsICcvdmFyL3Rt
+cC9wYXRjaGV3LXRlc3Rlci10bXAtdmRrN2Zlejkvc3JjL2RvY2tlci1zcmMuMjAxOS0xMC0wOS0x
+OC41My4wOS4xNzU0MDovdmFyL3RtcC9xZW11Onoscm8nLCAncWVtdTpmZWRvcmEnLCAnL3Zhci90
+bXAvcWVtdS9ydW4nLCAndGVzdC1taW5ndyddJyByZXR1cm5lZCBub24temVybyBleGl0IHN0YXR1
+cyAyLgpmaWx0ZXI9LS1maWx0ZXI9bGFiZWw9Y29tLnFlbXUuaW5zdGFuY2UudXVpZD1jODI3NGE4
+YTkyMmQ0ZDJjODFiMTRiNmI1YzA5MDJjYQptYWtlWzFdOiAqKiogW2RvY2tlci1ydW5dIEVycm9y
+IDEKbWFrZVsxXTogTGVhdmluZyBkaXJlY3RvcnkgYC92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRt
+cC12ZGs3ZmV6OS9zcmMnCm1ha2U6ICoqKiBbZG9ja2VyLXJ1bi10ZXN0LW1pbmd3QGZlZG9yYV0g
+RXJyb3IgMgoKcmVhbCAgICAybTM2LjY0M3MKdXNlciAgICAwbTcuMjU5cwoKClRoZSBmdWxsIGxv
+ZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAxOTEwMDkxNjQ0NTku
+ODIwOS0xLW1zbWFyZHVjaEBkaWdpdGFsb2NlYW4uY29tL3Rlc3RpbmcuZG9ja2VyLW1pbmd3QGZl
+ZG9yYS8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkg
+UGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNr
+IHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 
-Queued, thanks.
-
-Paolo
 
