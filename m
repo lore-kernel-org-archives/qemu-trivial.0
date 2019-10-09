@@ -1,62 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iIF5z-0001sC-TG
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Oct 2019 12:45:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56162)
+	id 1iIF6C-00029v-Cb
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Oct 2019 12:46:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56187)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <msmarduch@digitalocean.com>) id 1iIF5v-0001mJ-KB
- for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 12:45:48 -0400
+ (envelope-from <msmarduch@digitalocean.com>) id 1iIF69-000260-7R
+ for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 12:46:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <msmarduch@digitalocean.com>) id 1iIF5u-0001fh-5j
- for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 12:45:47 -0400
-Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235]:46057)
+ (envelope-from <msmarduch@digitalocean.com>) id 1iIF68-0001k1-3F
+ for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 12:46:01 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:43720)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <msmarduch@digitalocean.com>)
- id 1iIF5t-0001fS-W9
- for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 12:45:46 -0400
-Received: by mail-oi1-x235.google.com with SMTP id o205so2306670oib.12
- for <qemu-trivial@nongnu.org>; Wed, 09 Oct 2019 09:45:45 -0700 (PDT)
+ id 1iIF67-0001iw-UK
+ for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 12:46:00 -0400
+Received: by mail-oi1-x241.google.com with SMTP id t84so2319203oih.10
+ for <qemu-trivial@nongnu.org>; Wed, 09 Oct 2019 09:45:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=digitalocean.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=J4YN86Aqb6P3nZBxZGbSB3JP/PFIgkq5SLiK3nAUEks=;
- b=Bg7qinyHGcIxIzh43Gh4AvNI1I8OAA9q3iGmWryMw9LKOHzcx8iehStOSOe90nGVrN
- s1BEiUMGVZA7uIyAn8LBBOGqTWObdreWCnaDf0kOYzpR9S4868LolXH3Sm8GRULs4Xyv
- Q2jb/nIgZNtC3U92+IbdLeQ0qUj7mGVIodjCI=
+ bh=USBhbd2qdz43lBvTF90+/aku+zY1BGuB8YB3YsvDEsk=;
+ b=K/cgc8ip8Trh/UzP24Ybq9Ru+/wEGzn3Ce8H2Df4fY0jqGSTyhWVKXsBeg1xcxRSZf
+ bzCD3XJoTx8j+2dQ6RX8zZvwa6blK+f0IVtrZWAkKTB2USKgxfdUfM+Gn93pbOlttmqP
+ jtv6b9yfDvAn27g31BvHO29aGYvnqEmQFC5b4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=J4YN86Aqb6P3nZBxZGbSB3JP/PFIgkq5SLiK3nAUEks=;
- b=E/y5JlP6AR0dNsVtT/Lespdn9a2sm4Yqj2dpC08v2yVmmb7fKl9Gt1U4NueDoUCPZ9
- eKaNz1sIFdz8N+zWPeW4nymPnO5mPP4UpH9dbVDADc5IVana9F3OLv+aAouaz742TMhP
- Gf+yTqw6zABXFMh6vgm0syRbLBfV/0aKWoGS8RbKVHJowRQNVOrCmns2eMISZuSpvjGJ
- 9DSS9wDeX/ULGAqzkKj8QQamDB3Pze3zcFDOft/HBEm5w0Jwt+Qc0a5bfbrZ6XtixSEh
- CLrA4PjZTK8jtccroAG9649Sg+TfgSNaJfLuVK6d/xRETLI2aFOqCWTQtD8UkPDXobTf
- iykA==
-X-Gm-Message-State: APjAAAVldPSs+PiKLTQKFzfx0oudQFzuJTrpyzXfEi/+wNfRM6/SfQzh
- DBKcOsdVrIGDJEAPs/SoExMY3Q==
-X-Google-Smtp-Source: APXvYqxpgL1jB9NOpbCUjK6IIrbvQI84iUiBkIeqIv5KGQqsTORaTjnKwLcKMnp6ml9ZTTs/VvYnAQ==
-X-Received: by 2002:aca:90f:: with SMTP id 15mr3195748oij.92.1570639544552;
- Wed, 09 Oct 2019 09:45:44 -0700 (PDT)
+ bh=USBhbd2qdz43lBvTF90+/aku+zY1BGuB8YB3YsvDEsk=;
+ b=QizXyZ+44QzhqUuY2EkTq20MLCqGXWJbFtJG0+qcvWB/iXCI368GEKBIwpbewzqTrQ
+ xvQMBTMdsuzKIg8zU/19J9kPSWLt4WhCSKFh0xgidz16VleH41JuZXulni68xyWtWTeb
+ 83xdnuI4QZEaPvdNNEsUAGGfudPgraSN/4yi7BQHK714lR4FRq3YOsI5eo/fVW/rbzNQ
+ KhVSQtZbe19zeuzS6VtX8l42TIh3Yg+IkKsCVEjl+/pJ/JZSBjPxPWPMQBTWh2Sen7U2
+ LyFBc8wV2LGCXkPYa4Ypt0yQAlwQN4XnR2BJD8HbFhxPhk5No/doRCbRzLmJpP1pnLPf
+ MnFw==
+X-Gm-Message-State: APjAAAU/SwtAN9DwGxYnNw74a4Xje6g9xV3lLw9OsIYFMlXhP2pr5ayR
+ 2JIgArVyK2S9a2fNhBvVvLfnnA==
+X-Google-Smtp-Source: APXvYqzSykY2vXaWT1phz43fJDxY1HjvHG5KdsjA7bg8aI5Ho+b967sZD4OAa21R66F5htQHVrwqGg==
+X-Received: by 2002:a54:4519:: with SMTP id l25mr3163818oil.143.1570639557881; 
+ Wed, 09 Oct 2019 09:45:57 -0700 (PDT)
 Received: from msmarduch-ThinkPad-T460s.attlocal.net
  ([2600:1700:4a30:84c0:8d5e:794e:8a2e:ee89])
- by smtp.gmail.com with ESMTPSA id q1sm789818otn.8.2019.10.09.09.45.43
+ by smtp.gmail.com with ESMTPSA id q1sm789818otn.8.2019.10.09.09.45.56
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 09 Oct 2019 09:45:44 -0700 (PDT)
+ Wed, 09 Oct 2019 09:45:57 -0700 (PDT)
 From: Mario Smarduch <msmarduch@digitalocean.com>
 To: philmd@redhat.com, mtosatti@redhat.com, pbonzini@redhat.com,
  armbru@redhat.com
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, rth@twiddle.net,
  ehabkost@redhat.com, Mario Smarduch <msmarduch@digitalocean.com>
-Subject: [PATCHv2 1/2] util/qemu-error: add guest name helper with -msg options
-Date: Wed,  9 Oct 2019 09:44:58 -0700
-Message-Id: <20191009164459.8209-2-msmarduch@digitalocean.com>
+Subject: [PATCHv2 2/2] target/i386: log MCE guest and host addresses
+Date: Wed,  9 Oct 2019 09:44:59 -0700
+Message-Id: <20191009164459.8209-3-msmarduch@digitalocean.com>
 X-Mailer: git-send-email 2.9.3
 In-Reply-To: <20191009164459.8209-1-msmarduch@digitalocean.com>
 References: <20191009164459.8209-1-msmarduch@digitalocean.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::235
+X-Received-From: 2607:f8b0:4864:20::241
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -68,183 +68,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Oct 2019 16:45:50 -0000
+X-List-Received-Date: Wed, 09 Oct 2019 16:46:03 -0000
 
-This patch adds an option to enable/disable printing lead guest name in
-logging messages.
+Patch logs MCE AO, AR messages injected to guest or taken by QEMU itself.
+We print the QEMU address for guest MCEs, helps on hypervisors that have
+another source of MCE logging like mce log, and when they go missing.
 
-A '-msg name=on|off' allows to turn on, off guest name logging.
+For example we found these QEMU logs:
 
-If guest name is not set disabling this makes sense.
+September 26th 2019, 17:36:02.309        Droplet-153258224: Guest MCE Memory Error at qemu addr 0x7f8ce14f5000 and guest 3d6f5000 addr of type BUS_MCEERR_AR injected   qemu-system-x86_64      amsN    ams3nodeNNNN
 
-Verified with all combinations of 
-  '-msg timestamp=yes|no,name=yes|no.
+September 27th 2019, 06:25:03.234        Droplet-153258224: Guest MCE Memory Error at qemu addr 0x7f8ce14f5000 and guest 3d6f5000 addr of type BUS_MCEERR_AR injected   qemu-system-x86_64      amsN    ams3nodeNNNN
+
+The first log had a corresponding mce log entry, the second didnt (logging
+thresholds) we can infer from second entry same PA and mce type.
 
 Signed-off-by: Mario Smarduch <msmarduch@digitalocean.com>
 ---
- include/qemu/error-report.h |  1 +
- qemu-options.hx             | 10 ++++++----
- util/qemu-error.c           | 31 +++++++++++++++++++++++++++++++
- vl.c                        |  5 +++++
- 4 files changed, 43 insertions(+), 4 deletions(-)
+ target/i386/kvm.c | 29 ++++++++++++++++++++++++-----
+ 1 file changed, 24 insertions(+), 5 deletions(-)
 
-diff --git a/include/qemu/error-report.h b/include/qemu/error-report.h
-index 00d069b..9b44a06 100644
---- a/include/qemu/error-report.h
-+++ b/include/qemu/error-report.h
-@@ -74,5 +74,6 @@ void error_init(const char *argv0);
- 
- const char *error_get_progname(void);
- extern bool enable_timestamp_msg;
-+extern bool enable_guestname_msg;
- 
- #endif
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 2a04ca6..6066001 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -4164,14 +4164,16 @@ HXCOMM Deprecated by -accel tcg
- DEF("no-kvm", 0, QEMU_OPTION_no_kvm, "", QEMU_ARCH_I386)
- 
- DEF("msg", HAS_ARG, QEMU_OPTION_msg,
--    "-msg timestamp[=on|off]\n"
-+    "-msg [timestamp=on|off][name=on|off]\n"
-     "                change the format of messages\n"
--    "                on|off controls leading timestamps (default:on)\n",
-+    "                timestamp=on|off controls leading timestamps (default: on)\n"
-+    "                name=on|off controls leading guest name (default: off)\n",
-     QEMU_ARCH_ALL)
- STEXI
--@item -msg timestamp[=on|off]
-+@item -msg timestamp=on|off
-+@item -msg name=on|off
- @findex -msg
--prepend a timestamp to each log message.(default:on)
-+Prepend additional information to each log message
- ETEXI
- 
- DEF("dump-vmstate", HAS_ARG, QEMU_OPTION_dump_vmstate,
-diff --git a/util/qemu-error.c b/util/qemu-error.c
-index f373f3b..8ece7b2 100644
---- a/util/qemu-error.c
-+++ b/util/qemu-error.c
-@@ -11,6 +11,8 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/option.h"
-+#include "qemu/config-file.h"
- #include "monitor/monitor.h"
- #include "qemu/error-report.h"
- 
-@@ -192,6 +194,8 @@ static void print_loc(void)
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index 11b9c85..7eeefac 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -592,9 +592,9 @@ static void kvm_mce_inject(X86CPU *cpu, hwaddr paddr, int code)
+                        (MCM_ADDR_PHYS << 6) | 0xc, flags);
  }
  
- bool enable_timestamp_msg;
-+bool enable_guestname_msg;
-+
- /*
-  * Print a message to current monitor if we have one, else to stderr.
-  * @report_type is the type of message: error, warning or informational.
-@@ -228,6 +232,27 @@ static void vreport(report_type type, const char *fmt, va_list ap)
-     error_printf("\n");
+-static void hardware_memory_error(void)
++static void hardware_memory_error(void *host_addr)
+ {
+-    fprintf(stderr, "Hardware memory error!\n");
++    error_report("QEMU got Hardware memory error at addr %p", host_addr);
+     exit(1);
  }
  
-+static const char *error_get_guestname(void)
-+{
-+    QemuOpts *opts = qemu_opts_find(qemu_find_opts("name"), NULL);
-+    return qemu_opt_get(opts, "guest");
-+}
+@@ -618,15 +618,34 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+             kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+             kvm_hwpoison_page_add(ram_addr);
+             kvm_mce_inject(cpu, paddr, code);
 +
-+/*
-+ * Also print the guest name, handy if we log to a server.
-+ */
-+static void error_print_guestname(void)
-+{
-+    const char *name;
++            /*
++             * Use different logging severity based on error type.
++             * If there is additional MCE reporting on the hypervisor, QEMU VA
++             * could be another source to identify the PA and MCE details.
++             */
++            if (code == BUS_MCEERR_AR) {
++                error_report("Guest MCE Memory Error at QEMU addr %p and "
++                    "GUEST addr 0x%" HWADDR_PRIx " of type %s injected",
++                    addr, paddr, "BUS_MCEERR_AR");
++            } else {
++                 warn_report("Guest MCE Memory Error at QEMU addr %p and "
++                     "GUEST addr 0x%" HWADDR_PRIx " of type %s injected",
++                     addr, paddr, "BUS_MCEERR_AO");
++            }
 +
-+    if (enable_guestname_msg) {
-+        name = error_get_guestname();
-+        if (name && !cur_mon) {
-+            error_printf("Guest [%s] ", name);
+             return;
+         }
+ 
+-        fprintf(stderr, "Hardware memory error for memory used by "
+-                "QEMU itself instead of guest system!\n");
++        if (code == BUS_MCEERR_AO) {
++            warn_report("Hardware memory error at addr %p of type %s "
++                "for memory used by QEMU itself instead of guest system!",
++                 addr, "BUS_MCEERR_AO");
 +        }
-+    }
-+}
-+
- /*
-  * Print an error message to current monitor if we have one, else to stderr.
-  * Format arguments like vsprintf().  The resulting message should be
-@@ -237,6 +262,7 @@ static void vreport(report_type type, const char *fmt, va_list ap)
-  */
- void error_vreport(const char *fmt, va_list ap)
- {
-+    error_print_guestname();
-     vreport(REPORT_TYPE_ERROR, fmt, ap);
- }
- 
-@@ -248,6 +274,7 @@ void error_vreport(const char *fmt, va_list ap)
-  */
- void warn_vreport(const char *fmt, va_list ap)
- {
-+    error_print_guestname();
-     vreport(REPORT_TYPE_WARNING, fmt, ap);
- }
- 
-@@ -274,6 +301,7 @@ void error_report(const char *fmt, ...)
- {
-     va_list ap;
- 
-+    error_print_guestname();
-     va_start(ap, fmt);
-     vreport(REPORT_TYPE_ERROR, fmt, ap);
-     va_end(ap);
-@@ -289,6 +317,7 @@ void warn_report(const char *fmt, ...)
- {
-     va_list ap;
- 
-+    error_print_guestname();
-     va_start(ap, fmt);
-     vreport(REPORT_TYPE_WARNING, fmt, ap);
-     va_end(ap);
-@@ -324,6 +353,7 @@ bool error_report_once_cond(bool *printed, const char *fmt, ...)
-         return false;
      }
-     *printed = true;
-+    error_print_guestname();
-     va_start(ap, fmt);
-     vreport(REPORT_TYPE_ERROR, fmt, ap);
-     va_end(ap);
-@@ -344,6 +374,7 @@ bool warn_report_once_cond(bool *printed, const char *fmt, ...)
-         return false;
+ 
+     if (code == BUS_MCEERR_AR) {
+-        hardware_memory_error();
++        hardware_memory_error(addr);
      }
-     *printed = true;
-+    error_print_guestname();
-     va_start(ap, fmt);
-     vreport(REPORT_TYPE_WARNING, fmt, ap);
-     va_end(ap);
-diff --git a/vl.c b/vl.c
-index 002bf49..024bdc6 100644
---- a/vl.c
-+++ b/vl.c
-@@ -417,6 +417,10 @@ static QemuOptsList qemu_msg_opts = {
-             .name = "timestamp",
-             .type = QEMU_OPT_BOOL,
-         },
-+        {
-+            .name = "name",
-+            .type = QEMU_OPT_BOOL,
-+        },
-         { /* end of list */ }
-     },
- };
-@@ -1263,6 +1267,7 @@ static void realtime_init(void)
- static void configure_msg(QemuOpts *opts)
- {
-     enable_timestamp_msg = qemu_opt_get_bool(opts, "timestamp", true);
-+    enable_guestname_msg = qemu_opt_get_bool(opts, "name", false);
- }
  
- 
+     /* Hope we are lucky for AO MCE */
 -- 
 2.9.3
 
