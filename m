@@ -1,56 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iHu57-0006qP-7i
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Oct 2019 14:19:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60622)
+	id 1iIEF1-0006jG-SZ
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Oct 2019 11:51:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57146)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1iHu53-0006nb-1J
- for qemu-trivial@nongnu.org; Tue, 08 Oct 2019 14:19:31 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iICNV-0006Bg-IC
+ for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 09:51:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1iHu50-0006Ru-OR
- for qemu-trivial@nongnu.org; Tue, 08 Oct 2019 14:19:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54094)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>)
- id 1iHu4v-0006Ll-P6; Tue, 08 Oct 2019 14:19:21 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 3FBBDA44ADC;
- Tue,  8 Oct 2019 18:19:20 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.36.118.123])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id CA73B19C7F;
- Tue,  8 Oct 2019 18:19:19 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 4A1811138648; Tue,  8 Oct 2019 20:19:13 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>,
- "qemu-trivial\@nongnu.org" <qemu-trivial@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "qemu-devel\@nongnu.org" <qemu-devel@nongnu.org>,
- Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Subject: Re: [PATCH v2] Makefile: Remove generated files when doing
- 'distclean' (and 'clean')
-References: <20191008082815.8267-1-thuth@redhat.com>
- <CAL1e-=gYkhM99Ee0LxZJ5dCjeEdC08G4_Tm3WCZpCSWvJ=b26Q@mail.gmail.com>
- <4bfea125-eb63-f4a2-bca0-bce462f73d89@redhat.com>
- <20191008124113.GE1192@redhat.com>
-Date: Tue, 08 Oct 2019 20:19:13 +0200
-In-Reply-To: <20191008124113.GE1192@redhat.com> ("Daniel P. =?utf-8?Q?Berr?=
- =?utf-8?Q?ang=C3=A9=22's?=
- message of "Tue, 8 Oct 2019 13:41:13 +0100")
-Message-ID: <8736g3drry.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
+ (envelope-from <peter.maydell@linaro.org>) id 1iICNU-00065x-HM
+ for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 09:51:45 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:45144)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iICNU-00065d-BV
+ for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 09:51:44 -0400
+Received: by mail-oi1-x244.google.com with SMTP id o205so1763819oib.12
+ for <qemu-trivial@nongnu.org>; Wed, 09 Oct 2019 06:51:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=7OvEfYO9EpQ8fnwFtnhlr1IhWEuGDHMdr6XTfc/iLm4=;
+ b=iS0uoPqa0iDdcVDDcFthTa0dBcllC/xw8QVuoB40nYxZLnHLJcPgf5fwnAlW9A5pT3
+ pGLTi9+GpVIR19wE3k+W9EqDcbEcnqpScruo24bEMM9ye1z6JtwlexkJjCnpU1dr0g6x
+ V4KBztKpXYeD73SwuKiqoR6qsQy1ngvcehds54sZvt4M9hppCd69dlRHUb+7XQ/SwO1P
+ 2/elzoXowyWmzqQUiYy/sT58OtphDc9PXZXo5ZE2bqEjXe8Gd6vARyD9cPoYezd2Uxgb
+ ZSq7jbmSo0eHZCxlKrdpgwBCAOZqdJq9TsgxDfOBLXNzPibu8XYglADdv64FV8TmlaXf
+ nalg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=7OvEfYO9EpQ8fnwFtnhlr1IhWEuGDHMdr6XTfc/iLm4=;
+ b=FQHmEsi5M5AJQwdPg+my1HHiy5dbzUcdUaJ6NlILrySz6rTKJ3N1lqMhIT3ilMmi/F
+ WicwraCtdqiLZGmGzr5POwp8c6wYVoUanepb/IWD0ZeckYSiqaSMDFrO7FKLjMeExvcR
+ OkA0SM/VzNKuRjHvcoJg7IIQlmX7L5ULKnGsXfvDlhoJh8kWiwL53rG9JH3ivicXF9lO
+ 5hZhNLNoxaXMPlVud2ia/h9G6Xi8fco/KXqsv98ZnfJywWU02qXFMXU+cm4Ox5Z6nLGI
+ /COGP/nPs9efaifGGLdP8h3pupDiwuUXXBzYole8K0tcX9KqBY5G/7v+VyO+eu0NIGnZ
+ Vv2g==
+X-Gm-Message-State: APjAAAXUy7v0Zo/2INTArLoehtRWWSTeZgUxcFMe0+nv+sa3Tuq6NpVb
+ rOKVCSxkRKEOODuZydK/Lfg8Dri2DGT1yGi4XiYcEg==
+X-Google-Smtp-Source: APXvYqw2thD7HgJ1D7aUU/9v6R+eBR33EALysh6Zi2oURCCoVKqOMEfv6DInCNzXroIxkuUksdCbQUfjmrjFUz4aHn0=
+X-Received: by 2002:aca:2b08:: with SMTP id i8mr2204531oik.146.1570629102479; 
+ Wed, 09 Oct 2019 06:51:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20190926151733.25349-1-philmd@redhat.com>
+ <20190926151733.25349-12-philmd@redhat.com>
+ <f110c099-7521-95e0-74b9-9c7e53d7d5d8@redhat.com>
+In-Reply-To: <f110c099-7521-95e0-74b9-9c7e53d7d5d8@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 9 Oct 2019 14:51:30 +0100
+Message-ID: <CAFEAcA_urR77o5+mFy3a4wL=BDHVzEvnAeaf2ASXdpa6md16FQ@mail.gmail.com>
+Subject: Re: [PATCH 11/11] hw/misc/vmcoreinfo: Convert reset handler to
+ DeviceReset
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Markus Armbruster <armbru@redhat.com>,
+ Damien Hedde <damien.hedde@greensocs.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.68]); Tue, 08 Oct 2019 18:19:20 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::244
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -62,45 +74,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Oct 2019 18:19:31 -0000
+X-List-Received-Date: Wed, 09 Oct 2019 13:51:46 -0000
 
-Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
-
-> Given that we're aiming to convert to meson, how much effort do we really
-> want to put into fixing this inconsistency ?
+On Thu, 26 Sep 2019 at 17:02, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
 >
-> I'd argue the best way to fix "clean" and "distclean" is to delete them
-> entirely. Instead enforce that builddir !=3D srcdir when running configur=
-e,
-> so cleaning up simply means deleting the builddir sub-tree entirely.
+> On 9/26/19 5:17 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > Convert the reset handler into a proper Device reset method.
+>
+> Marc-Andr=C3=A9 noticed this one is incorrect, because while being QDEV i=
+t is
+> not connected to a QBUS.
+>
+> Maybe we can add a Device::unconnected property, and when set, the
+> parent realize() calls 'qemu_register_reset(dev->reset, dev);'?
+> This might look the same, but at least Devices implementations could
+> stop to use this function...
 
-I don't wish to belittle anybody's efforts at improving make targets
-clean and distclean, but like Daniel, I've long given up on them[*].  My
-"make distclean" is "rm -rf BUILD-DIR", and my "make clean" is "nuke-bld
-BUILD-DIR", where nuke-bld is the script below.
+I'm not in favour of ad-hoc attempts to patch the
+problem with some devices not being reset like this.
+I'd rather we figured out a general solution to the design
+problem (which isn't easy, but on the other hand the
+set of workarounds we currently have isn't too awful
+to deal with).
 
-#!/bin/sh -e
-
-if [ $# -gt 1 ]
-then
-    echo "Usage: $0 [bld-dir]" >&2
-    exit 1
-fi
-
-[ $# -eq 1 ] && cd "$1"
-
-if [ ! -e config.status ]
-then
-    echo "$0: not a build tree" >&2
-    exit 1
-fi
-
-rm -f .config.status
-mv config.status .config.status
-rm -r *
-mv .config.status config.status
-./config.status
-
-
-[*] Along with .gitignore.
+thanks
+-- PMM
 
