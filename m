@@ -1,71 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iIIFe-0008CG-O0
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Oct 2019 16:08:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49549)
+	id 1iIIyM-0004CJ-Eu
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Oct 2019 16:54:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41895)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1iI7tb-00021U-K8
- for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 05:04:36 -0400
+ (envelope-from <crosa@redhat.com>) id 1iIIyF-00048Y-Sv
+ for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 16:54:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1iI7ta-0002Jr-IR
- for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 05:04:35 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:54456)
+ (envelope-from <crosa@redhat.com>) id 1iIIyE-00036U-JB
+ for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 16:54:07 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59036)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1iI7tX-0002J1-CI; Wed, 09 Oct 2019 05:04:31 -0400
-Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 7C8CD96EF2;
- Wed,  9 Oct 2019 09:04:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1570611867;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uFZC/uncAXmFB+eSCmPzmATbTLD3IKnXZWHMbc2saMw=;
- b=GpvUJ88AmQx4h6NnUn4Iyj2Uy7Zy6xNNW7qm4I/Rjm/uoPRXn2MohPQ0Th+kuMVr2w1HfU
- wUiXLpqK4szI9jaofpIESjVkbj7ZfjfobEaxGGnuDxMblr6y1fVjscMnSYputnEr9zdBJ8
- g473EjyPe5HY7lNSM63MIT5fFD+RxDk=
-Subject: Re: [PATCH 11/11] hw/misc/vmcoreinfo: Convert reset handler to
- DeviceReset
-To: Eduardo Habkost <ehabkost@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>
-References: <20190926151733.25349-1-philmd@redhat.com>
- <20190926151733.25349-12-philmd@redhat.com>
- <f110c099-7521-95e0-74b9-9c7e53d7d5d8@redhat.com>
- <20191008133219.GV4084@habkost.net>
-From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <eb4eccc6-ef92-9a41-3d0d-f265166d5a98@greensocs.com>
-Date: Wed, 9 Oct 2019 11:04:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.0
+ (Exim 4.71) (envelope-from <crosa@redhat.com>)
+ id 1iIIy9-00035F-Ke; Wed, 09 Oct 2019 16:54:01 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id D16E71DBC;
+ Wed,  9 Oct 2019 20:54:00 +0000 (UTC)
+Received: from colo-mx.corp.redhat.com
+ (colo-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.21])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C672F6017E;
+ Wed,  9 Oct 2019 20:54:00 +0000 (UTC)
+Received: from zmail17.collab.prod.int.phx2.redhat.com
+ (zmail17.collab.prod.int.phx2.redhat.com [10.5.83.19])
+ by colo-mx.corp.redhat.com (Postfix) with ESMTP id AD03E4E589;
+ Wed,  9 Oct 2019 20:54:00 +0000 (UTC)
+Date: Wed, 9 Oct 2019 16:54:00 -0400 (EDT)
+From: Cleber Rosa <crosa@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org, 
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>
+Message-ID: <693191110.5428739.1570654440496.JavaMail.zimbra@redhat.com>
+In-Reply-To: <287afb96-bfb7-5e6e-ca1c-0e2845f8ef3c@redhat.com>
+References: <20191009194740.8079-1-crosa@redhat.com>
+ <20191009194740.8079-2-crosa@redhat.com>
+ <287afb96-bfb7-5e6e-ca1c-0e2845f8ef3c@redhat.com>
+Subject: Re: [PATCH v2 1/4] qemu-iotests: remove bash shebang from library
+ files
 MIME-Version: 1.0
-In-Reply-To: <20191008133219.GV4084@habkost.net>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US-large
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1570611867;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uFZC/uncAXmFB+eSCmPzmATbTLD3IKnXZWHMbc2saMw=;
- b=fVjiXuqNMAmOfHIlSVK5Q/Fo+yQe9Z1O4fhoQuymNUSqFlXkdif5P/OHeyELG9+ZepzSLE
- BFjraJTc12sN8IlbUSaR+tgSkQJ1Mt2ZhPJTjxQahTU4ix8flmiqX1ZnVE0VXacrcRjmiU
- RhN61BFlHbwzUQkkCCXUg1OYweAKXgY=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1570611867; a=rsa-sha256; cv=none;
- b=d2P1pZExi+Zg+Gdx3IxFYQiAM+sO1KUHcNunTivhQEJvX2sA1ovdTtD+ziAdIBN+wpp27E
- RodVb+dptbWuf83DYBApjX1MGng5AvXUudvYFkYS+Q4Xx0e70EruJ+EgIz7EvLiP5ldV7b
- Z7kUeMGmAeOjCgXyQ4Ze4qDwLMVm6RY=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.10.122.151, 10.4.195.18]
+Thread-Topic: qemu-iotests: remove bash shebang from library files
+Thread-Index: 2MRtY1XOi4WL2k8COvBkYY26ulFOgA==
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.71]); Wed, 09 Oct 2019 20:54:00 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 5.135.226.135
-X-Mailman-Approved-At: Wed, 09 Oct 2019 16:08:02 -0400
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -77,48 +62,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Oct 2019 09:04:36 -0000
+X-List-Received-Date: Wed, 09 Oct 2019 20:54:10 -0000
 
 
 
-On 10/8/19 3:32 PM, Eduardo Habkost wrote:
-> On Thu, Sep 26, 2019 at 06:02:47PM +0200, Philippe Mathieu-Daud=C3=A9 w=
-rote:
->> On 9/26/19 5:17 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->>> Convert the reset handler into a proper Device reset method.
->>
->> Marc-Andr=C3=A9 noticed this one is incorrect, because while being QDE=
-V it is
->> not connected to a QBUS.
->>
->> Maybe we can add a Device::unconnected property, and when set, the
->> parent realize() calls 'qemu_register_reset(dev->reset, dev);'?
->> This might look the same, but at least Devices implementations could
->> stop to use this function...
->=20
-> Can we make this automatic instead of requiring another explicit
-> setting?
->=20
-> Today we have at least 3 different ways of getting a device to be
-> reset: qemu_register_reset(); explicit device_reset_all() call in
-> another reset handler; and implicit device_reset_all() call done
-> through parent buses/devices.  I wouldn't like to create a 4th
-> method.
->=20
-> What I really wish for, is a opt-out mechanism for reset (meaning
-> all devices would be guaranteed to be reset unless they
-> explicitly opt out), instead of 3 or 4 different opt-in
-> mechanisms.
->=20
+----- Original Message -----
+> From: "Eric Blake" <eblake@redhat.com>
+> To: "Cleber Rosa" <crosa@redhat.com>, qemu-devel@nongnu.org
+> Cc: qemu-block@nongnu.org, "Max Reitz" <mreitz@redhat.com>, "Kevin Wolf" <kwolf@redhat.com>, qemu-trivial@nongnu.org,
+> "Michael Tokarev" <mjt@tls.msk.ru>, "Laurent Vivier" <laurent@vivier.eu>
+> Sent: Wednesday, October 9, 2019 3:51:56 PM
+> Subject: Re: [PATCH v2 1/4] qemu-iotests: remove bash shebang from library files
+> 
+> On 10/9/19 2:47 PM, Cleber Rosa wrote:
+> > Due to not being able to find a reason to have shebangs on files that
+> > are not executable.
+> > 
+> > While at it, add a mode hint to emacs, which would be clueless or
+> > plain wrong about these containing shell code.
+> > 
+> > Suggested-by: Eric Blake <eblake@redhat.com>
+> > Signed-off-by: Cleber Rosa <crosa@redhat.com>
+> > ---
+> >   tests/qemu-iotests/common.config  | 2 +-
+> >   tests/qemu-iotests/common.filter  | 2 +-
+> >   tests/qemu-iotests/common.nbd     | 3 +--
+> >   tests/qemu-iotests/common.pattern | 2 +-
+> >   tests/qemu-iotests/common.qemu    | 2 +-
+> >   tests/qemu-iotests/common.rc      | 2 +-
+> >   tests/qemu-iotests/common.tls     | 2 +-
+> >   7 files changed, 7 insertions(+), 8 deletions(-)
+> > 
+> > diff --git a/tests/qemu-iotests/common.config
+> > b/tests/qemu-iotests/common.config
+> > index 9bd1a5a6fc..b85a6a6f96 100644
+> > --- a/tests/qemu-iotests/common.config
+> > +++ b/tests/qemu-iotests/common.config
+> > @@ -1,4 +1,4 @@
+> > -#!/usr/bin/env bash
+> > +# -*- emacs mode: sh -*-
+> 
+> I thought my version:
+> # hey emacs, this file will be sourced by bash -*- mode: sh -*-
+> was cuter, but that's not a requirement, and yours works  ;)
+> 
 
-Sorry for the stupid question, but why would we not reset a device ? Are
-there some cases when a device must be "initialized" not in its reset
-state ?
+I will not make any disputes on that! :)
 
-Regarding the reset guarantee. Can this be done by doing first
-qemu_register_reset() on each device and eventually unregistering
-it in case of opt-out or wanting to reset it by other means (eg when
-putting it into a bus) ?
+Thanks for the reviews!
+- Cleber.
 
-Damien
+> Reviewed-by: Eric Blake <eblake@redhat.com>
+> 
+> --
+> Eric Blake, Principal Software Engineer
+> Red Hat, Inc.           +1-919-301-3226
+> Virtualization:  qemu.org | libvirt.org
+> 
 
