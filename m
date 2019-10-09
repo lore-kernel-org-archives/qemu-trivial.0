@@ -1,62 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iIF6C-00029v-Cb
-	for mharc-qemu-trivial@gnu.org; Wed, 09 Oct 2019 12:46:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56187)
+	id 1iIGrS-0002ZM-I6
+	for mharc-qemu-trivial@gnu.org; Wed, 09 Oct 2019 14:38:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44766)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <msmarduch@digitalocean.com>) id 1iIF69-000260-7R
- for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 12:46:02 -0400
+ (envelope-from <crosa@redhat.com>) id 1iIGrP-0002Th-Gk
+ for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 14:38:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <msmarduch@digitalocean.com>) id 1iIF68-0001k1-3F
- for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 12:46:01 -0400
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:43720)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <msmarduch@digitalocean.com>)
- id 1iIF67-0001iw-UK
- for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 12:46:00 -0400
-Received: by mail-oi1-x241.google.com with SMTP id t84so2319203oih.10
- for <qemu-trivial@nongnu.org>; Wed, 09 Oct 2019 09:45:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=digitalocean.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=USBhbd2qdz43lBvTF90+/aku+zY1BGuB8YB3YsvDEsk=;
- b=K/cgc8ip8Trh/UzP24Ybq9Ru+/wEGzn3Ce8H2Df4fY0jqGSTyhWVKXsBeg1xcxRSZf
- bzCD3XJoTx8j+2dQ6RX8zZvwa6blK+f0IVtrZWAkKTB2USKgxfdUfM+Gn93pbOlttmqP
- jtv6b9yfDvAn27g31BvHO29aGYvnqEmQFC5b4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=USBhbd2qdz43lBvTF90+/aku+zY1BGuB8YB3YsvDEsk=;
- b=QizXyZ+44QzhqUuY2EkTq20MLCqGXWJbFtJG0+qcvWB/iXCI368GEKBIwpbewzqTrQ
- xvQMBTMdsuzKIg8zU/19J9kPSWLt4WhCSKFh0xgidz16VleH41JuZXulni68xyWtWTeb
- 83xdnuI4QZEaPvdNNEsUAGGfudPgraSN/4yi7BQHK714lR4FRq3YOsI5eo/fVW/rbzNQ
- KhVSQtZbe19zeuzS6VtX8l42TIh3Yg+IkKsCVEjl+/pJ/JZSBjPxPWPMQBTWh2Sen7U2
- LyFBc8wV2LGCXkPYa4Ypt0yQAlwQN4XnR2BJD8HbFhxPhk5No/doRCbRzLmJpP1pnLPf
- MnFw==
-X-Gm-Message-State: APjAAAU/SwtAN9DwGxYnNw74a4Xje6g9xV3lLw9OsIYFMlXhP2pr5ayR
- 2JIgArVyK2S9a2fNhBvVvLfnnA==
-X-Google-Smtp-Source: APXvYqzSykY2vXaWT1phz43fJDxY1HjvHG5KdsjA7bg8aI5Ho+b967sZD4OAa21R66F5htQHVrwqGg==
-X-Received: by 2002:a54:4519:: with SMTP id l25mr3163818oil.143.1570639557881; 
- Wed, 09 Oct 2019 09:45:57 -0700 (PDT)
-Received: from msmarduch-ThinkPad-T460s.attlocal.net
- ([2600:1700:4a30:84c0:8d5e:794e:8a2e:ee89])
- by smtp.gmail.com with ESMTPSA id q1sm789818otn.8.2019.10.09.09.45.56
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 09 Oct 2019 09:45:57 -0700 (PDT)
-From: Mario Smarduch <msmarduch@digitalocean.com>
-To: philmd@redhat.com, mtosatti@redhat.com, pbonzini@redhat.com,
- armbru@redhat.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, rth@twiddle.net,
- ehabkost@redhat.com, Mario Smarduch <msmarduch@digitalocean.com>
-Subject: [PATCHv2 2/2] target/i386: log MCE guest and host addresses
-Date: Wed,  9 Oct 2019 09:44:59 -0700
-Message-Id: <20191009164459.8209-3-msmarduch@digitalocean.com>
-X-Mailer: git-send-email 2.9.3
-In-Reply-To: <20191009164459.8209-1-msmarduch@digitalocean.com>
-References: <20191009164459.8209-1-msmarduch@digitalocean.com>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::241
+ (envelope-from <crosa@redhat.com>) id 1iIGrO-0004OI-74
+ for qemu-trivial@nongnu.org; Wed, 09 Oct 2019 14:38:55 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45084)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <crosa@redhat.com>)
+ id 1iIGrH-0004Kh-QP; Wed, 09 Oct 2019 14:38:47 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id DD2593082B13;
+ Wed,  9 Oct 2019 18:38:45 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-122-151.rdu2.redhat.com
+ [10.10.122.151])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id F3FD35D9E2;
+ Wed,  9 Oct 2019 18:38:44 +0000 (UTC)
+Date: Wed, 9 Oct 2019 14:38:43 -0400
+From: Cleber Rosa <crosa@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>
+Subject: Re: [PATCH 1/4] qemu-iotests: remove bash shebang from library files
+Message-ID: <20191009183843.GA9917@localhost.localdomain>
+References: <20190927141728.7137-1-crosa@redhat.com>
+ <20190927141728.7137-2-crosa@redhat.com>
+ <7ce7f9b7-a79e-21c5-18e2-f7f2ec85e575@redhat.com>
+ <20191009162623.GG30349@localhost.localdomain>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20191009162623.GG30349@localhost.localdomain>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.45]); Wed, 09 Oct 2019 18:38:45 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -68,81 +57,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 09 Oct 2019 16:46:03 -0000
+X-List-Received-Date: Wed, 09 Oct 2019 18:38:56 -0000
 
-Patch logs MCE AO, AR messages injected to guest or taken by QEMU itself.
-We print the QEMU address for guest MCEs, helps on hypervisors that have
-another source of MCE logging like mce log, and when they go missing.
+On Wed, Oct 09, 2019 at 12:26:27PM -0400, Cleber Rosa wrote:
+> On Fri, Sep 27, 2019 at 11:37:52AM -0500, Eric Blake wrote:
+> > On 9/27/19 9:17 AM, Cleber Rosa wrote:
+> > > Due to not being able to find a reason to have shebangs on files that
+> > > are not executable.
+> > > 
+> > > Signed-off-by: Cleber Rosa <crosa@redhat.com>
+> > > ---
+> > >   tests/qemu-iotests/common.config  | 2 --
+> > >   tests/qemu-iotests/common.filter  | 2 --
+> > >   tests/qemu-iotests/common.nbd     | 1 -
+> > >   tests/qemu-iotests/common.pattern | 2 --
+> > >   tests/qemu-iotests/common.qemu    | 2 --
+> > >   tests/qemu-iotests/common.rc      | 2 --
+> > >   tests/qemu-iotests/common.tls     | 2 --
+> > >   7 files changed, 13 deletions(-)
+> > > 
+> > 
+> > Loss of the shebang changes the mode in which emacs opens the files (from
+> > Shell-script[bash] to Conf[space] in my case).  I agree that a #! comment is
+> > not appropriate for a file that is not executable as a standalone file, but
+> > it becomes harder to edit the file correctly unless we replace it with some
+> > other way of letting editors realize that the contents of each file is still
+> > meant to be consumed by bash.
+> > 
+> > Something like this would work:
+> > 
+> > # hey emacs, this file will be sourced by bash: -*- sh -*-
+> >
+> 
+> Yes, good point.  Will send that on a v2.
+>
 
-For example we found these QEMU logs:
+BTW, in addition to that, we may add to .editorconfig something like:
 
-September 26th 2019, 17:36:02.309        Droplet-153258224: Guest MCE Memory Error at qemu addr 0x7f8ce14f5000 and guest 3d6f5000 addr of type BUS_MCEERR_AR injected   qemu-system-x86_64      amsN    ams3nodeNNNN
+[tests/qemu-iotests/common.*]
+indent_style = space
+indent_size = 4
+file_type_emacs = sh
 
-September 27th 2019, 06:25:03.234        Droplet-153258224: Guest MCE Memory Error at qemu addr 0x7f8ce14f5000 and guest 3d6f5000 addr of type BUS_MCEERR_AR injected   qemu-system-x86_64      amsN    ams3nodeNNNN
+Although I was expecting editorconfig to provide a mode hint for other
+editors, which doesn't seem to be the case.
 
-The first log had a corresponding mce log entry, the second didnt (logging
-thresholds) we can infer from second entry same PA and mce type.
+Cheers,
+- Cleber.
 
-Signed-off-by: Mario Smarduch <msmarduch@digitalocean.com>
----
- target/i386/kvm.c | 29 ++++++++++++++++++++++++-----
- 1 file changed, 24 insertions(+), 5 deletions(-)
-
-diff --git a/target/i386/kvm.c b/target/i386/kvm.c
-index 11b9c85..7eeefac 100644
---- a/target/i386/kvm.c
-+++ b/target/i386/kvm.c
-@@ -592,9 +592,9 @@ static void kvm_mce_inject(X86CPU *cpu, hwaddr paddr, int code)
-                        (MCM_ADDR_PHYS << 6) | 0xc, flags);
- }
- 
--static void hardware_memory_error(void)
-+static void hardware_memory_error(void *host_addr)
- {
--    fprintf(stderr, "Hardware memory error!\n");
-+    error_report("QEMU got Hardware memory error at addr %p", host_addr);
-     exit(1);
- }
- 
-@@ -618,15 +618,34 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-             kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-             kvm_hwpoison_page_add(ram_addr);
-             kvm_mce_inject(cpu, paddr, code);
-+
-+            /*
-+             * Use different logging severity based on error type.
-+             * If there is additional MCE reporting on the hypervisor, QEMU VA
-+             * could be another source to identify the PA and MCE details.
-+             */
-+            if (code == BUS_MCEERR_AR) {
-+                error_report("Guest MCE Memory Error at QEMU addr %p and "
-+                    "GUEST addr 0x%" HWADDR_PRIx " of type %s injected",
-+                    addr, paddr, "BUS_MCEERR_AR");
-+            } else {
-+                 warn_report("Guest MCE Memory Error at QEMU addr %p and "
-+                     "GUEST addr 0x%" HWADDR_PRIx " of type %s injected",
-+                     addr, paddr, "BUS_MCEERR_AO");
-+            }
-+
-             return;
-         }
- 
--        fprintf(stderr, "Hardware memory error for memory used by "
--                "QEMU itself instead of guest system!\n");
-+        if (code == BUS_MCEERR_AO) {
-+            warn_report("Hardware memory error at addr %p of type %s "
-+                "for memory used by QEMU itself instead of guest system!",
-+                 addr, "BUS_MCEERR_AO");
-+        }
-     }
- 
-     if (code == BUS_MCEERR_AR) {
--        hardware_memory_error();
-+        hardware_memory_error(addr);
-     }
- 
-     /* Hope we are lucky for AO MCE */
--- 
-2.9.3
-
+> - Cleber.
+> 
+> > -- 
+> > Eric Blake, Principal Software Engineer
+> > Red Hat, Inc.           +1-919-301-3226
+> > Virtualization:  qemu.org | libvirt.org
 
