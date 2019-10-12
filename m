@@ -1,43 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iJBaa-0003t3-OU
-	for mharc-qemu-trivial@gnu.org; Sat, 12 Oct 2019 03:13:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48685)
+	id 1iJGPS-0006wv-Ik
+	for mharc-qemu-trivial@gnu.org; Sat, 12 Oct 2019 08:22:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53529)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iJBaY-0003pb-H4
- for qemu-trivial@nongnu.org; Sat, 12 Oct 2019 03:13:19 -0400
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1iJGPQ-0006wU-9G
+ for qemu-trivial@nongnu.org; Sat, 12 Oct 2019 08:22:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iJBaX-0006yA-DZ
- for qemu-trivial@nongnu.org; Sat, 12 Oct 2019 03:13:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33030)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iJBaV-0006wb-0j; Sat, 12 Oct 2019 03:13:15 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 2DF2C18CB8F0;
- Sat, 12 Oct 2019 07:13:14 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-46.brq.redhat.com [10.40.204.46])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 08D415C1B2;
- Sat, 12 Oct 2019 07:13:09 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] MAINTAINERS: Replace tab indent by spaces in the Status
- description
-Date: Sat, 12 Oct 2019 09:13:07 +0200
-Message-Id: <20191012071307.14314-1-philmd@redhat.com>
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1iJGPO-0001J1-Uc
+ for qemu-trivial@nongnu.org; Sat, 12 Oct 2019 08:22:08 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:38129)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1iJGPO-0001Id-Mz; Sat, 12 Oct 2019 08:22:06 -0400
+Received: by mail-oi1-x241.google.com with SMTP id m16so10223843oic.5;
+ Sat, 12 Oct 2019 05:22:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=CsvYkan0+HaVOnj1el4uyfArjQc9tuaEiV3+i2g5oxg=;
+ b=kJzk4fket16jJIojhHMMSyTpmvCHiDDjJ7TZyADOA9z8nSF6MpB5ceczz4jSwekmKk
+ omJcLy7/6Vn3kJHgPolt4tVhiKrxTNz5MO2qbnXMoxcJ+gCp/3oBtQVeI9/L+kunVMCo
+ vTVLqRlHXmd/uTYPhMauhtYtNUhtkvNbvrdXrcvnwkYuVpVCbYiwDS3sz/tfhOLvdY+q
+ J7wlipRxXiAURCDbPB0vc0IRPHvHueS8zeMMlMfncZBp7BsJPjEATwTrX0wuTbStzzXu
+ Arwgk5BLLBkFd1Zu1u+psCHCHYKTxGC/lrvuE8k7yFI6cue6wEQ+TRSyNvKoG+y49Gqz
+ ZO0w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=CsvYkan0+HaVOnj1el4uyfArjQc9tuaEiV3+i2g5oxg=;
+ b=KQQvnjP59eg12CKVF8qD9TFx2vbU0vDMtvuo2GlZTiLKXg1KUP5Kqx+6uK1f2r3h07
+ QPI9A7tvQIWq2Z4uqNkX3xK0GemFC/XiUF8qurUfaAq11ixwUv1p3cajV7FsW8mOScEk
+ +qUcXSTT/RAYYCfgFRi0tLWv3WIPKNSTDKNEFgf+fGsltaXXjIij/iI0+M5oC/mT1791
+ tsWUtmWjc2oRjFHlSUT4fe2yisrEjriu7sh9baMYURUknpSFylsPQADjHsPtKKxQBN2z
+ lQY+cwv9shZYMdbOZh+Vup5y/Yq12/N+984v2qYJpAOZrvWTLIaKPpP9KXNVbKF5f14e
+ Ru1Q==
+X-Gm-Message-State: APjAAAUbwMc18cOVaygh3Rf11kGXHDIR51oHihR+bg7mP3jY3wtEOEPG
+ BNrjd0ePdFuqK2eN7Bg4Swes6kj2AQIqZYhEwQM=
+X-Google-Smtp-Source: APXvYqzP2WM1YtlF0SBmVfPnGG920D5rbbMnKbuW4nyHBhVIDNKvgRJh8T1gXSY2BE1q4Fz9pmUvjDlR+RwkiHplYQE=
+X-Received: by 2002:aca:d64f:: with SMTP id n76mr15932589oig.79.1570882925734; 
+ Sat, 12 Oct 2019 05:22:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.63]); Sat, 12 Oct 2019 07:13:14 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+Received: by 2002:a9d:340a:0:0:0:0:0 with HTTP; Sat, 12 Oct 2019 05:22:05
+ -0700 (PDT)
+Received: by 2002:a9d:340a:0:0:0:0:0 with HTTP; Sat, 12 Oct 2019 05:22:05
+ -0700 (PDT)
+In-Reply-To: <20191012071307.14314-1-philmd@redhat.com>
+References: <20191012071307.14314-1-philmd@redhat.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Sat, 12 Oct 2019 14:22:05 +0200
+Message-ID: <CAL1e-=jC7+1EAsry8D5N9-L_o2oiuOWHWDyj1uJgt4bpEc0GJQ@mail.gmail.com>
+Subject: Re: [PATCH] MAINTAINERS: Replace tab indent by spaces in the Status
+ description
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000c5add60594b5aedf"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::241
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -49,50 +68,147 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 12 Oct 2019 07:13:19 -0000
+X-List-Received-Date: Sat, 12 Oct 2019 12:22:09 -0000
 
-The Status description has a mix of tabs and spaces and displays
-unaligned. Unify using spaces.
+--000000000000c5add60594b5aedf
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- MAINTAINERS | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+12.10.2019. 09.16, "Philippe Mathieu-Daud=C3=A9" <philmd@redhat.com> =D1=98=
+=D0=B5
+=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
+>
+> The Status description has a mix of tabs and spaces and displays
+> unaligned. Unify using spaces.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  MAINTAINERS | 18 +++++++++---------
+>  1 file changed, 9 insertions(+), 9 deletions(-)
+>
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 3ca814850e..b9093e4dac 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -24,15 +24,15 @@ Descriptions of section entries:
- 	Q: Patchwork web based patch tracking system site
- 	T: SCM tree type and location.  Type is one of: git, hg, quilt, stgit.
- 	S: Status, one of the following:
--	   Supported:	Someone is actually paid to look after this.
--	   Maintained:	Someone actually looks after it.
--	   Odd Fixes:	It has a maintainer but they don't have time to do
--			much other than throw the odd patch in. See below.
--	   Orphan:	No current maintainer [but maybe you could take the
--			role as you write your new code].
--	   Obsolete:	Old code. Something tagged obsolete generally means
--			it has been replaced by a better system and you
--			should be using that.
-+          Supported:   Someone is actually paid to look after this.
-+          Maintained:  Someone actually looks after it.
-+          Odd Fixes:   It has a maintainer but they don't have time to d=
+Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com>
+
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 3ca814850e..b9093e4dac 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -24,15 +24,15 @@ Descriptions of section entries:
+>         Q: Patchwork web based patch tracking system site
+>         T: SCM tree type and location.  Type is one of: git, hg, quilt,
+stgit.
+>         S: Status, one of the following:
+> -          Supported:   Someone is actually paid to look after this.
+> -          Maintained:  Someone actually looks after it.
+> -          Odd Fixes:   It has a maintainer but they don't have time to d=
 o
-+                       much other than throw the odd patch in. See below=
+> -                       much other than throw the odd patch in. See below=
 .
-+          Orphan:      No current maintainer [but maybe you could take t=
-he
-+                       role as you write your new code].
-+          Obsolete:    Old code. Something tagged obsolete generally mea=
-ns
-+                       it has been replaced by a better system and you
-+                       should be using that.
- 	F: Files and directories with wildcard patterns.
- 	   A trailing slash includes all files and subdirectory files.
- 	   F:	drivers/net/	all files in and below drivers/net
---=20
-2.21.0
+> -          Orphan:      No current maintainer [but maybe you could take
+the
+> -                       role as you write your new code].
+> -          Obsolete:    Old code. Something tagged obsolete generally
+means
+> -                       it has been replaced by a better system and you
+> -                       should be using that.
+> +          Supported:   Someone is actually paid to look after this.
+> +          Maintained:  Someone actually looks after it.
+> +          Odd Fixes:   It has a maintainer but they don't have time to d=
+o
+> +                       much other than throw the odd patch in. See below=
+.
+> +          Orphan:      No current maintainer [but maybe you could take
+the
+> +                       role as you write your new code].
+> +          Obsolete:    Old code. Something tagged obsolete generally
+means
+> +                       it has been replaced by a better system and you
+> +                       should be using that.
+>         F: Files and directories with wildcard patterns.
+>            A trailing slash includes all files and subdirectory files.
+>            F:   drivers/net/    all files in and below drivers/net
+> --
+> 2.21.0
+>
+>
 
+--000000000000c5add60594b5aedf
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<p dir=3D"ltr"><br>
+12.10.2019. 09.16, &quot;Philippe Mathieu-Daud=C3=A9&quot; &lt;<a href=3D"m=
+ailto:philmd@redhat.com">philmd@redhat.com</a>&gt; =D1=98=D0=B5 =D0=BD=D0=
+=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:<br>
+&gt;<br>
+&gt; The Status description has a mix of tabs and spaces and displays<br>
+&gt; unaligned. Unify using spaces.<br>
+&gt;<br>
+&gt; Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philm=
+d@redhat.com">philmd@redhat.com</a>&gt;<br>
+&gt; ---<br>
+&gt; =C2=A0MAINTAINERS | 18 +++++++++---------<br>
+&gt; =C2=A01 file changed, 9 insertions(+), 9 deletions(-)<br>
+&gt;</p>
+<p dir=3D"ltr">Reviewed-by: Aleksandar Markovic &lt;<a href=3D"mailto:amark=
+ovic@wavecomp.com">amarkovic@wavecomp.com</a>&gt;</p>
+<p dir=3D"ltr">&gt; diff --git a/MAINTAINERS b/MAINTAINERS<br>
+&gt; index 3ca814850e..b9093e4dac 100644<br>
+&gt; --- a/MAINTAINERS<br>
+&gt; +++ b/MAINTAINERS<br>
+&gt; @@ -24,15 +24,15 @@ Descriptions of section entries:<br>
+&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 Q: Patchwork web based patch tracking syst=
+em site<br>
+&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 T: SCM tree type and location.=C2=A0 Type =
+is one of: git, hg, quilt, stgit.<br>
+&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 S: Status, one of the following:<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Supported:=C2=A0 =C2=A0Someone is =
+actually paid to look after this.<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Maintained:=C2=A0 Someone actually=
+ looks after it.<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Odd Fixes:=C2=A0 =C2=A0It has a ma=
+intainer but they don&#39;t have time to do<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0much other than throw the odd patch in. See below.<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Orphan:=C2=A0 =C2=A0 =C2=A0 No cur=
+rent maintainer [but maybe you could take the<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0role as you write your new code].<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Obsolete:=C2=A0 =C2=A0 Old code. S=
+omething tagged obsolete generally means<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0it has been replaced by a better system and you<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0should be using that.<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Supported:=C2=A0 =C2=A0Someone is =
+actually paid to look after this.<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Maintained:=C2=A0 Someone actually=
+ looks after it.<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Odd Fixes:=C2=A0 =C2=A0It has a ma=
+intainer but they don&#39;t have time to do<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0much other than throw the odd patch in. See below.<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Orphan:=C2=A0 =C2=A0 =C2=A0 No cur=
+rent maintainer [but maybe you could take the<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0role as you write your new code].<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Obsolete:=C2=A0 =C2=A0 Old code. S=
+omething tagged obsolete generally means<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0it has been replaced by a better system and you<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0should be using that.<br>
+&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 F: Files and directories with wildcard pat=
+terns.<br>
+&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0A trailing slash includes all=
+ files and subdirectory files.<br>
+&gt; =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0F:=C2=A0 =C2=A0drivers/net/=
+=C2=A0 =C2=A0 all files in and below drivers/net<br>
+&gt; -- <br>
+&gt; 2.21.0<br>
+&gt;<br>
+&gt;<br>
+</p>
+
+--000000000000c5add60594b5aedf--
 
