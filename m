@@ -1,49 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iJ1Z3-0007yJ-KF
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Oct 2019 16:31:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47467)
+	id 1iJBaa-0003t3-OU
+	for mharc-qemu-trivial@gnu.org; Sat, 12 Oct 2019 03:13:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48685)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kwolf@redhat.com>) id 1iJ1Z0-0007uT-Bj
- for qemu-trivial@nongnu.org; Fri, 11 Oct 2019 16:31:03 -0400
+ (envelope-from <philmd@redhat.com>) id 1iJBaY-0003pb-H4
+ for qemu-trivial@nongnu.org; Sat, 12 Oct 2019 03:13:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kwolf@redhat.com>) id 1iJ1Yz-0002Pw-8l
- for qemu-trivial@nongnu.org; Fri, 11 Oct 2019 16:31:02 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41176)
+ (envelope-from <philmd@redhat.com>) id 1iJBaX-0006yA-DZ
+ for qemu-trivial@nongnu.org; Sat, 12 Oct 2019 03:13:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33030)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kwolf@redhat.com>)
- id 1iJ1Ys-0002M8-Iz; Fri, 11 Oct 2019 16:30:54 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1iJBaV-0006wb-0j; Sat, 12 Oct 2019 03:13:15 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 68DD2C024B00;
- Fri, 11 Oct 2019 20:30:51 +0000 (UTC)
-Received: from localhost.localdomain (unknown [10.36.118.111])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2CD845C223;
- Fri, 11 Oct 2019 20:30:47 +0000 (UTC)
-Date: Fri, 11 Oct 2019 22:30:46 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Cleber Rosa <crosa@redhat.com>
-Cc: Nir Soffer <nsoffer@redhat.com>, qemu-block <qemu-block@nongnu.org>,
- qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Max Reitz <mreitz@redhat.com>
-Subject: Re: [PATCH v2 1/4] qemu-iotests: remove bash shebang from library
- files
-Message-ID: <20191011203046.GI5158@localhost.localdomain>
-References: <20191009194740.8079-1-crosa@redhat.com>
- <20191009194740.8079-2-crosa@redhat.com>
- <20191011093610.GD5158@localhost.localdomain>
- <CAMRbyyu=NdwhKFwb=JzMyHfbnP4XzzpaHTCd7ucT7tLEk9HdFA@mail.gmail.com>
- <20191011200501.GA18783@dhcp-17-179.bos.redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id 2DF2C18CB8F0;
+ Sat, 12 Oct 2019 07:13:14 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-46.brq.redhat.com [10.40.204.46])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 08D415C1B2;
+ Sat, 12 Oct 2019 07:13:09 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] MAINTAINERS: Replace tab indent by spaces in the Status
+ description
+Date: Sat, 12 Oct 2019 09:13:07 +0200
+Message-Id: <20191012071307.14314-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20191011200501.GA18783@dhcp-17-179.bos.redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.32]); Fri, 11 Oct 2019 20:30:51 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.63]); Sat, 12 Oct 2019 07:13:14 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
@@ -58,48 +49,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Oct 2019 20:31:04 -0000
+X-List-Received-Date: Sat, 12 Oct 2019 07:13:19 -0000
 
-Am 11.10.2019 um 22:05 hat Cleber Rosa geschrieben:
-> On Fri, Oct 11, 2019 at 02:27:25PM +0300, Nir Soffer wrote:
-> > On Fri, Oct 11, 2019, 12:36 Kevin Wolf <kwolf@redhat.com> wrote:
-> > 
-> > > Am 09.10.2019 um 21:47 hat Cleber Rosa geschrieben:
-> > > > Due to not being able to find a reason to have shebangs on files that
-> > > > are not executable.
-> > > >
-> > > > While at it, add a mode hint to emacs, which would be clueless or
-> > > > plain wrong about these containing shell code.
-> > >
-> > > vim still doesn't like the change.
-> > >
-> > > Of course, we could also add another line for vim and for every other
-> > > editor in use, but actually, I think I'd prefer just dropping this
-> > > patch. It even makes each file a few bytes larger instead of saving
-> > > something. Shebang lines are a shorter and more portable format
-> > > indicator than the alternatives.
-> > >
-> > > So I think in the end we have found a good reason to keep them. :-)
-> > 
-> > What about .sh suffix? Should be most portable way.
-> 
-> That's the approach I tend to follow for my sh code.  Explicit is
-> better than implicit if you ask me.
+The Status description has a mix of tabs and spaces and displays
+unaligned. Unify using spaces.
 
-I would certainly agree for new files.
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ MAINTAINERS | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
-> Kevin,
-> 
-> Do you have any strong feelings here?  I'd be fine with either this
-> or dropping the patch.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 3ca814850e..b9093e4dac 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -24,15 +24,15 @@ Descriptions of section entries:
+ 	Q: Patchwork web based patch tracking system site
+ 	T: SCM tree type and location.  Type is one of: git, hg, quilt, stgit.
+ 	S: Status, one of the following:
+-	   Supported:	Someone is actually paid to look after this.
+-	   Maintained:	Someone actually looks after it.
+-	   Odd Fixes:	It has a maintainer but they don't have time to do
+-			much other than throw the odd patch in. See below.
+-	   Orphan:	No current maintainer [but maybe you could take the
+-			role as you write your new code].
+-	   Obsolete:	Old code. Something tagged obsolete generally means
+-			it has been replaced by a better system and you
+-			should be using that.
++          Supported:   Someone is actually paid to look after this.
++          Maintained:  Someone actually looks after it.
++          Odd Fixes:   It has a maintainer but they don't have time to d=
+o
++                       much other than throw the odd patch in. See below=
+.
++          Orphan:      No current maintainer [but maybe you could take t=
+he
++                       role as you write your new code].
++          Obsolete:    Old code. Something tagged obsolete generally mea=
+ns
++                       it has been replaced by a better system and you
++                       should be using that.
+ 	F: Files and directories with wildcard patterns.
+ 	   A trailing slash includes all files and subdirectory files.
+ 	   F:	drivers/net/	all files in and below drivers/net
+--=20
+2.21.0
 
-No strong feelings. The result of renaming the files would be a bit
-nicer than what we have today, but renaming always comes with a cost
-when working with the version history later. Hard to tell if it's a net
-gain or loss in the end.
-
-Myself, I would probably pick the lazy way and stick with "if it ain't
-broke, don't fix it", but I'm not objecting to a change either.
-
-Kevin
 
