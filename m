@@ -1,94 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iLUhA-0005HD-Ej
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Oct 2019 12:01:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47436)
+	id 1iLbgU-0007U9-G5
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Oct 2019 19:29:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35423)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iLUh6-0005Dq-Jx
- for qemu-trivial@nongnu.org; Fri, 18 Oct 2019 12:01:37 -0400
+ (envelope-from <no-reply@patchew.org>) id 1iLbgR-0007Rr-S7
+ for qemu-trivial@nongnu.org; Fri, 18 Oct 2019 19:29:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iLUh5-0003OX-CJ
- for qemu-trivial@nongnu.org; Fri, 18 Oct 2019 12:01:36 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49853)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1iLUgx-0003Mn-QN; Fri, 18 Oct 2019 12:01:28 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 9D83918CCEE2;
- Fri, 18 Oct 2019 16:01:26 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-252.ams2.redhat.com [10.36.116.252])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9ED61600C1;
- Fri, 18 Oct 2019 16:01:23 +0000 (UTC)
-Subject: Re: [PATCH v2] Do not use %m in common code to print error messages
-To: Kamil Rytarowski <n54@gmx.com>, Stefano Garzarella <sgarzare@redhat.com>
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Kamil Rytarowski <kamil@netbsd.org>, berrange@redhat.com,
- qemu-devel@nongnu.org
-References: <20191018130716.25438-1-thuth@redhat.com>
- <20191018134215.u6psfffrrxlsa2ns@steredhat>
- <1f36c112-fabb-df41-e01d-476e4c86186e@gmx.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat
-Message-ID: <f8fc0de2-b4b0-a75a-a00f-c6bca6914159@redhat.com>
-Date: Fri, 18 Oct 2019 18:01:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (envelope-from <no-reply@patchew.org>) id 1iLbgQ-00019I-Nm
+ for qemu-trivial@nongnu.org; Fri, 18 Oct 2019 19:29:23 -0400
+Resent-Date: Fri, 18 Oct 2019 19:29:23 -0400
+Resent-Message-Id: <E1iLbgQ-00019I-Nm@eggs.gnu.org>
+Received: from sender4-of-o54.zoho.com ([136.143.188.54]:21469)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1iLbgM-00015n-Dj; Fri, 18 Oct 2019 19:29:18 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1571441347; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=cTAWMD0Cr9Hu628ohSRUu+0aRtw/TClkionHtAjUIq9a2fPT6HylgNjnGng5HG/WYwjh7WOtz+TLdTEk9ZQKJFmN8wY5X5trbisHaOkP1iJaAxo25jAIr73GjIkD4RSJ6o0phJuBJOXqo7sgV4181Ami3R8IFssNzQmxJGkB4y4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1571441347;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=f4yjxkBtH8jFEhclGK1E8gCwxE+9aToprEElST0s8sI=; 
+ b=gvEAcIsyicRdMGFhLJyCNbnSjwJFGlHjI7Frx2h4EusIY6NldLOI1/2BZBCt1ka3Te4X2914r3WrWESSNPvy/9Ps82kOS2TLK8dQ4R3UdWChR8MJfAVZm/x0ffWaWffb+2/VMB4Wa5Ni7jYipi4lXajHWHz9hulF3sfCfCQl5mk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1571441346092100.56928968137242;
+ Fri, 18 Oct 2019 16:29:06 -0700 (PDT)
+In-Reply-To: <20191018104438.6158-1-thuth@redhat.com>
+Reply-To: <qemu-devel@nongnu.org>
+Subject: Re: [PATCH] Do not use %m in common code to print error messages
+Message-ID: <157144134474.24734.7450116290823922069@37313f22b938>
 MIME-Version: 1.0
-In-Reply-To: <1f36c112-fabb-df41-e01d-476e4c86186e@gmx.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.63]); Fri, 18 Oct 2019 16:01:26 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: thuth@redhat.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, pbonzini@redhat.com,
+ kamil@netbsd.org, berrange@redhat.com
+Date: Fri, 18 Oct 2019 16:29:06 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.132.183.28
+X-Received-From: 136.143.188.54
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -100,48 +58,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Oct 2019 16:01:38 -0000
+X-List-Received-Date: Fri, 18 Oct 2019 23:29:25 -0000
 
-On 18/10/2019 15.49, Kamil Rytarowski wrote:
-> On 18.10.2019 15:42, Stefano Garzarella wrote:
->> On Fri, Oct 18, 2019 at 03:07:16PM +0200, Thomas Huth wrote:
->>> The %m format specifier is an extension from glibc - and when compiling
->>> QEMU for NetBSD, the compiler correctly complains, e.g.:
->>>
->>> /home/qemu/qemu-test.ELjfrQ/src/util/main-loop.c: In function 'sigfd_handler':
->>> /home/qemu/qemu-test.ELjfrQ/src/util/main-loop.c:64:13: warning: %m is only
->>>  allowed in syslog(3) like functions [-Wformat=]
->>>              printf("read from sigfd returned %zd: %m\n", len);
->>>              ^
->>> Let's use g_strerror() here instead, which is an easy-to-use wrapper
->>> around the thread-safe strerror_r() function.
->>>
->>> While we're at it, also convert the "printf()" in main-loop.c into
->>> the preferred "error_report()".
->>>
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>>  v2: Do not try to g_free() the strings
->>>
->>>  hw/misc/tmp421.c | 4 ++--
->>>  util/main-loop.c | 3 ++-
->>>  util/systemd.c   | 4 ++--
->>>  3 files changed, 6 insertions(+), 5 deletions(-)
->>
->> There are many uses of %m also in hw/vfio/ but that's Linux stuff.
->> Should we change those too or it doesn't matter since it never really
->> compiled on NetBSD?
-> 
-> It's a gnu (glibc) extension and linux can use alternative libc
-> implementations. Probably most of them capable to host qemu use %m.
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTAxODEwNDQzOC42MTU4
+LTEtdGh1dGhAcmVkaGF0LmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgdGhlIGRvY2tl
+ci1xdWlja0BjZW50b3M3IGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5nIGNvbW1h
+bmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0YWxsZWQs
+IHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBTQ1JJUFQg
+QkVHSU4gPT09CiMhL2Jpbi9iYXNoCm1ha2UgZG9ja2VyLWltYWdlLWNlbnRvczcgVj0xIE5FVFdP
+Uks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtcXVpY2tAY2VudG9zNyBTSE9XX0VOVj0xIEo9MTQg
+TkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgogIENDICAgICAgaHcvbWlzYy9pbXg2
+X2NjbS5vCiAgQ0MgICAgICBody9taXNjL2lteDZ1bF9jY20ubwovdG1wL3FlbXUtdGVzdC9zcmMv
+aHcvbWlzYy90bXA0MjEuYzogSW4gZnVuY3Rpb24gJ3RtcDQyMV9zZXRfdGVtcGVyYXR1cmUnOgov
+dG1wL3FlbXUtdGVzdC9zcmMvaHcvbWlzYy90bXA0MjEuYzoxNjY6OTogZXJyb3I6IGZvcm1hdCAn
+JXMnIGV4cGVjdHMgYSBtYXRjaGluZyAnY2hhciAqJyBhcmd1bWVudCBbLVdlcnJvcj1mb3JtYXQ9
+XQogICAgICAgICBlcnJvcl9zZXRnKGVycnAsICJlcnJvciByZWFkaW5nICVzOiAlcyIsIGVycm1z
+Zyk7CiAgICAgICAgIF4KY2MxOiBhbGwgd2FybmluZ3MgYmVpbmcgdHJlYXRlZCBhcyBlcnJvcnMK
+ICBDQyAgICAgIGh3L21pc2MvaW14N19jY20ubwogIENDICAgICAgaHcvbWlzYy9pbXgyX3dkdC5v
+Cm1ha2U6ICoqKiBbaHcvbWlzYy90bXA0MjEub10gRXJyb3IgMQptYWtlOiAqKiogV2FpdGluZyBm
+b3IgdW5maW5pc2hlZCBqb2JzLi4uLgpUcmFjZWJhY2sgKG1vc3QgcmVjZW50IGNhbGwgbGFzdCk6
+CiAgRmlsZSAiLi90ZXN0cy9kb2NrZXIvZG9ja2VyLnB5IiwgbGluZSA2NjIsIGluIDxtb2R1bGU+
+Ci0tLQogICAgcmFpc2UgQ2FsbGVkUHJvY2Vzc0Vycm9yKHJldGNvZGUsIGNtZCkKc3VicHJvY2Vz
+cy5DYWxsZWRQcm9jZXNzRXJyb3I6IENvbW1hbmQgJ1snc3VkbycsICctbicsICdkb2NrZXInLCAn
+cnVuJywgJy0tbGFiZWwnLCAnY29tLnFlbXUuaW5zdGFuY2UudXVpZD1lYWUwNTQ0MzIyOTA0NTg0
+YjMwZDNjZTdiY2I3N2E4MicsICctdScsICcxMDAxJywgJy0tc2VjdXJpdHktb3B0JywgJ3NlY2Nv
+bXA9dW5jb25maW5lZCcsICctLXJtJywgJy1lJywgJ1RBUkdFVF9MSVNUPScsICctZScsICdFWFRS
+QV9DT05GSUdVUkVfT1BUUz0nLCAnLWUnLCAnVj0nLCAnLWUnLCAnSj0xNCcsICctZScsICdERUJV
+Rz0nLCAnLWUnLCAnU0hPV19FTlY9MScsICctZScsICdDQ0FDSEVfRElSPS92YXIvdG1wL2NjYWNo
+ZScsICctdicsICcvaG9tZS9wYXRjaGV3Ly5jYWNoZS9xZW11LWRvY2tlci1jY2FjaGU6L3Zhci90
+bXAvY2NhY2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLTc4Nm5zcmlx
+L3NyYy9kb2NrZXItc3JjLjIwMTktMTAtMTgtMTkuMjYuNTkuMTA2ODE6L3Zhci90bXAvcWVtdTp6
+LHJvJywgJ3FlbXU6Y2VudG9zNycsICcvdmFyL3RtcC9xZW11L3J1bicsICd0ZXN0LXF1aWNrJ10n
+IHJldHVybmVkIG5vbi16ZXJvIGV4aXQgc3RhdHVzIDIuCmZpbHRlcj0tLWZpbHRlcj1sYWJlbD1j
+b20ucWVtdS5pbnN0YW5jZS51dWlkPWVhZTA1NDQzMjI5MDQ1ODRiMzBkM2NlN2JjYjc3YTgyCm1h
+a2VbMV06ICoqKiBbZG9ja2VyLXJ1bl0gRXJyb3IgMQptYWtlWzFdOiBMZWF2aW5nIGRpcmVjdG9y
+eSBgL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLTc4Nm5zcmlxL3NyYycKbWFrZTogKioqIFtk
+b2NrZXItcnVuLXRlc3QtcXVpY2tAY2VudG9zN10gRXJyb3IgMgoKcmVhbCAgICAybTUuNTc4cwp1
+c2VyICAgIDBtNy41MjJzCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0
+Y2hldy5vcmcvbG9ncy8yMDE5MTAxODEwNDQzOC42MTU4LTEtdGh1dGhAcmVkaGF0LmNvbS90ZXN0
+aW5nLmRvY2tlci1xdWlja0BjZW50b3M3Lz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0
+ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFz
+ZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
 
-I think I read somewhere that other libcs on Linux also support %m (like
-musl), but I just can't find that reference anymore. Anyway, we can
-still fix that later in case someone hits the issue.
-
->> Anyway, this patch LGTM:
->> Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-
- Thanks,
-  Thomas
 
