@@ -1,70 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iLpHe-0006Ru-Id
-	for mharc-qemu-trivial@gnu.org; Sat, 19 Oct 2019 10:00:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40209)
+	id 1iLr3u-0006HU-11
+	for mharc-qemu-trivial@gnu.org; Sat, 19 Oct 2019 11:54:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49223)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <sgarzare@redhat.com>) id 1iLpHb-0006Qg-4z
- for qemu-trivial@nongnu.org; Sat, 19 Oct 2019 10:00:41 -0400
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1iLr3q-0006AC-ND
+ for qemu-trivial@nongnu.org; Sat, 19 Oct 2019 11:54:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <sgarzare@redhat.com>) id 1iLpHW-0007DX-QS
- for qemu-trivial@nongnu.org; Sat, 19 Oct 2019 10:00:36 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59822)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1iLpHW-0007Bn-H0
- for qemu-trivial@nongnu.org; Sat, 19 Oct 2019 10:00:34 -0400
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 1D5E5859FE
- for <qemu-trivial@nongnu.org>; Sat, 19 Oct 2019 14:00:32 +0000 (UTC)
-Received: by mail-wm1-f71.google.com with SMTP id k184so4076830wmk.1
- for <qemu-trivial@nongnu.org>; Sat, 19 Oct 2019 07:00:32 -0700 (PDT)
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1iLr3p-0006FB-FO
+ for qemu-trivial@nongnu.org; Sat, 19 Oct 2019 11:54:34 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:42512)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1iLr3m-0006AE-VN; Sat, 19 Oct 2019 11:54:31 -0400
+Received: by mail-ot1-x343.google.com with SMTP id c10so7516084otd.9;
+ Sat, 19 Oct 2019 08:54:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=/wi9tHf3MnS2dxc9XgroMhp7/I8JBCC/csRiTRi9bgs=;
+ b=qUC/05k2GbK8u9gKSFT1HomS0s7WWACblBJh9xH+MocVVzOuhoYBSfz7Z7YsPL+eUP
+ /E0rihWBNLlkMW5VjIXZa9zKVNvtbeLbz61ERTOwTIT+YZal0kQWzSqin/koth9heYUY
+ KXsEctUEeQztcuJw2sWjaRo+LC7ju0ber0D+4m9UOaAf292ourmNLoC5KZ4XMh7hMtth
+ SrLk1v1BIHqNHuWL94whaxVXjXCKKxG9wByWW1BSAHx6UFPTTRqRYOoBBWFcm6Zs+2ss
+ 88+AldoFPKSsYWu8fPllP4KUnaBdJkfUZFiUXAVwDKQAKPE2sfD2kGahQCE+8+bIbnNd
+ p9gA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=KP3vwjUBEB84k8OE1O8olnCOg3vO9FYTOfM95m1nWOY=;
- b=oFUcTO8to9OsRvqb5oZNUAaBQ252QMvqzaejYiryB2BBrfs9CRBBStlaZ1FwPQylL7
- /RagliDGKc8ba//ro8DHkiYGETqypAbLcX6tRgQtCeNhH4jG55wsDwaQqHj0fQvPxUCu
- iKN170oX00QSdyjobZBJYaxMv5P0unNO0d1upegVq+0mhTf74DjZKS6yTKpYr/YBbWf6
- Oh9QYQqLKFaolbV1jYhJE2iWGWFfadANM2oq7kiGu8EWAe+WjewBUGsPwuejVzYnsOIw
- P6Y2JxmLd8SkNCo8dFMglkzkv2kyBwex8/D9znLuZqPYHNrFYFCkh9zKZdjNn3L2PK7F
- 5c2g==
-X-Gm-Message-State: APjAAAVKx1X35Bd4H5NvE69rQGBCdDCCDx0N5IyBxbSB6QuJGw31gQdW
- 6i0rVq1CUTACWKHvssf7yFUaTc+aSwKjxiu8HbAp8WlYrfJdRfsGkDql7BZWOGnmeQy9NecExV9
- CzlePEhZayEVf9GmvjA==
-X-Received: by 2002:a1c:4c03:: with SMTP id z3mr12338749wmf.174.1571493630717; 
- Sat, 19 Oct 2019 07:00:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyV6qcwnkahEIWdsQ2Aqhq4hVfSdpKgV9ufvq3gfQC4GHf1PMG3zkzKP41gmyc3E9bkyT3n7w==
-X-Received: by 2002:a1c:4c03:: with SMTP id z3mr12338734wmf.174.1571493630437; 
- Sat, 19 Oct 2019 07:00:30 -0700 (PDT)
-Received: from steredhat (host93-199-dynamic.52-79-r.retail.telecomitalia.it.
- [79.52.199.93])
- by smtp.gmail.com with ESMTPSA id z13sm9500067wrm.64.2019.10.19.07.00.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 19 Oct 2019 07:00:29 -0700 (PDT)
-Date: Sat, 19 Oct 2019 16:00:27 +0200
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Kamil Rytarowski <n54@gmx.com>, qemu-trivial@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Kamil Rytarowski <kamil@netbsd.org>, berrange@redhat.com,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH v2] Do not use %m in common code to print error messages
-Message-ID: <20191019140027.yzr6ccalmu6nmz53@steredhat>
-References: <20191018130716.25438-1-thuth@redhat.com>
- <20191018134215.u6psfffrrxlsa2ns@steredhat>
- <1f36c112-fabb-df41-e01d-476e4c86186e@gmx.com>
- <f8fc0de2-b4b0-a75a-a00f-c6bca6914159@redhat.com>
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=/wi9tHf3MnS2dxc9XgroMhp7/I8JBCC/csRiTRi9bgs=;
+ b=rGYYXu09TJZ7/LKhiSxCJm7Ppla9VNe/I8JbXqyPNfu9P6k475VtHpcgKgS5ZvzH9h
+ efGCuxbec396UsfAg2xAG3v9Oj+oWeeTkz6I/CL9DdJVKRzio5mXNpb5pVzZLjFhg7Sb
+ ySDbc6C5eyAu4ZOBqtQALaH3/wxHEzL8cFMieE6Ss4MFfja2sEPxhil386BXSdeaQkmA
+ 0xJxFyhT39akw5THUTJ6+E7HFwVzQl1O1fid60/I0o2aztXoY/pOMZTo2F1wdrS0TILl
+ AwoGv2vFoqpF0blz593F5QZnE6IC26y2GpjsJfq7EEhggOF0i6zE0qLqrv/7HHXYAXaU
+ EpxA==
+X-Gm-Message-State: APjAAAX/tUbhU/ZHHkS5ebciGT7YcpaadU+9atl3/zjOObOEPPLc7Z/G
+ D8bWGPPKZ7KCd1aAm3CIeMwS5VQ3UT6PTZOXYVA=
+X-Google-Smtp-Source: APXvYqzVjVMWVHFMbVVvKU0QBD+truGhYNGEUM7MYC6bNBRaK5Q3Lw9qcXqzmkKJqdv7M/fWlniincVdDFIYTxWnBq4=
+X-Received: by 2002:a05:6830:452:: with SMTP id
+ d18mr12347505otc.295.1571500469717; 
+ Sat, 19 Oct 2019 08:54:29 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <f8fc0de2-b4b0-a75a-a00f-c6bca6914159@redhat.com>
-User-Agent: NeoMutt/20180716
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+Received: by 2002:a9d:340a:0:0:0:0:0 with HTTP; Sat, 19 Oct 2019 08:54:29
+ -0700 (PDT)
+In-Reply-To: <20191019120534.27479-2-ash@kambanaria.org>
+References: <20191019120534.27479-1-ash@kambanaria.org>
+ <20191019120534.27479-2-ash@kambanaria.org>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Sat, 19 Oct 2019 17:54:29 +0200
+Message-ID: <CAL1e-=gwJ-4Qv7n7tOPvtzPfnPd8VkR9D4gu-pVjt2RgvEqAwQ@mail.gmail.com>
+Subject: Re: [PATCH 1/1] Updated Bulgarian translation (19) - 4.1.0
+To: Alexander Shopov <ash@kambanaria.org>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Kevin Wolf <kwolf@redhat.com>, 
+ Anthony Liguori <aliguori@us.ibm.com>, Fam Zheng <famz@redhat.com>,
+ Wei Huang <wehuang@redhat.com>, Pino Toscano <ptoscano@redhat.com>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, 
+ Laszlo Ersek <lersek@redhat.com>, Laurent Vivier <laurent@vivier.eu>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, 
+ Stefan Weil <sw@weilnetz.de>, Thomas Huth <thuth@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Amos Kong <akong@redhat.com>, Dongsheng Song <songdongsheng@live.cn>
+Content-Type: multipart/alternative; boundary="00000000000043102b059545779e"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -76,52 +78,130 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 19 Oct 2019 14:00:41 -0000
+X-List-Received-Date: Sat, 19 Oct 2019 15:54:36 -0000
 
-On Fri, Oct 18, 2019 at 06:01:22PM +0200, Thomas Huth wrote:
-> On 18/10/2019 15.49, Kamil Rytarowski wrote:
-> > On 18.10.2019 15:42, Stefano Garzarella wrote:
-> >> On Fri, Oct 18, 2019 at 03:07:16PM +0200, Thomas Huth wrote:
-> >>> The %m format specifier is an extension from glibc - and when compiling
-> >>> QEMU for NetBSD, the compiler correctly complains, e.g.:
-> >>>
-> >>> /home/qemu/qemu-test.ELjfrQ/src/util/main-loop.c: In function 'sigfd_handler':
-> >>> /home/qemu/qemu-test.ELjfrQ/src/util/main-loop.c:64:13: warning: %m is only
-> >>>  allowed in syslog(3) like functions [-Wformat=]
-> >>>              printf("read from sigfd returned %zd: %m\n", len);
-> >>>              ^
-> >>> Let's use g_strerror() here instead, which is an easy-to-use wrapper
-> >>> around the thread-safe strerror_r() function.
-> >>>
-> >>> While we're at it, also convert the "printf()" in main-loop.c into
-> >>> the preferred "error_report()".
-> >>>
-> >>> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> >>> ---
-> >>>  v2: Do not try to g_free() the strings
-> >>>
-> >>>  hw/misc/tmp421.c | 4 ++--
-> >>>  util/main-loop.c | 3 ++-
-> >>>  util/systemd.c   | 4 ++--
-> >>>  3 files changed, 6 insertions(+), 5 deletions(-)
-> >>
-> >> There are many uses of %m also in hw/vfio/ but that's Linux stuff.
-> >> Should we change those too or it doesn't matter since it never really
-> >> compiled on NetBSD?
-> > 
-> > It's a gnu (glibc) extension and linux can use alternative libc
-> > implementations. Probably most of them capable to host qemu use %m.
-> 
-> I think I read somewhere that other libcs on Linux also support %m (like
+--00000000000043102b059545779e
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Good to know!
+On Saturday, October 19, 2019, Alexander Shopov <ash@kambanaria.org> wrote:
 
-> musl), but I just can't find that reference anymore. Anyway, we can
-> still fix that later in case someone hits the issue.
-> 
+> Signed-off-by: Alexander Shopov <ash@kambanaria.org>
+> ---
+>  po/bg.po | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+>
+>
+Reviewed-by: Aleksandar Markovic <amarkovic@wavecomp.com>
 
-Yes, make sense to me.
+diff --git a/po/bg.po b/po/bg.po
+> index 3d8c353372..98c57e5b22 100644
+> --- a/po/bg.po
+> +++ b/po/bg.po
+> @@ -1,14 +1,14 @@
+>  # Bulgarian translation of qemu po-file.
+> -# Copyright (C) 2016 Alexander Shopov <ash@kambanaria.org>
+> +# Copyright (C) 2016, 2019 Alexander Shopov <ash@kambanaria.org>
+>  # This file is distributed under the same license as the qemu package.
+> -# Alexander Shopov <ash@kambanaria.org>, 2016.
+> +# Alexander Shopov <ash@kambanaria.org>, 2016, 2019.
+>  #
+>  msgid ""
+>  msgstr ""
+> -"Project-Id-Version: QEMU 2.6.50\n"
+> +"Project-Id-Version: QEMU 4.1.0\n"
+>  "Report-Msgid-Bugs-To: qemu-devel@nongnu.org\n"
+>  "POT-Creation-Date: 2018-07-18 07:56+0200\n"
+> -"PO-Revision-Date: 2016-06-09 15:54+0300\n"
+> +"PO-Revision-Date: 2019-10-19 13:14+0200\n"
+>  "Last-Translator: Alexander Shopov <ash@kambanaria.org>\n"
+>  "Language-Team: Bulgarian <dict@ludost.net>\n"
+>  "Language: bg\n"
+> @@ -66,7 +66,7 @@ msgid "Detach Tab"
+>  msgstr "=D0=9A=D1=8A=D0=BC =D1=81=D0=B0=D0=BC=D0=BE=D1=81=D1=82=D0=BE=D1=
+=8F=D1=82=D0=B5=D0=BB=D0=B5=D0=BD =D0=BF=D0=BE=D0=B4=D0=BF=D1=80=D0=BE=D0=
+=B7=D0=BE=D1=80=D0=B5=D1=86"
+>
+>  msgid "Show Menubar"
+> -msgstr ""
+> +msgstr "=D0=9B=D0=B5=D0=BD=D1=82=D0=B0 =D0=B7=D0=B0 =D0=BC=D0=B5=D0=BD=
+=D1=8E=D1=82=D0=BE"
+>
+>  msgid "_Machine"
+>  msgstr "_=D0=9C=D0=B0=D1=88=D0=B8=D0=BD=D0=B0"
+> --
+> 2.23.0
+>
+>
+>
 
-Thanks,
-Stefano
+--00000000000043102b059545779e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<br><br>On Saturday, October 19, 2019, Alexander Shopov &lt;<a href=3D"mail=
+to:ash@kambanaria.org">ash@kambanaria.org</a>&gt; wrote:<br><blockquote cla=
+ss=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;pa=
+dding-left:1ex">Signed-off-by: Alexander Shopov &lt;<a href=3D"mailto:ash@k=
+ambanaria.org">ash@kambanaria.org</a>&gt;<br>
+---<br>
+=C2=A0po/bg.po | 10 +++++-----<br>
+=C2=A01 file changed, 5 insertions(+), 5 deletions(-)<br>
+<br></blockquote><div><br></div><div><span style=3D"color:rgb(34,34,34);fon=
+t-size:14px;line-height:22.1200008392334px">Reviewed-by: Aleksandar Markovi=
+c &lt;</span><a href=3D"mailto:amarkovic@wavecomp.com" style=3D"font-size:1=
+4px;line-height:22.1200008392334px">amarkovic@wavecomp.com</a><span style=
+=3D"color:rgb(34,34,34);font-size:14px;line-height:22.1200008392334px">&gt;=
+</span><br></div><div><br></div><blockquote class=3D"gmail_quote" style=3D"=
+margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+diff --git a/po/bg.po b/po/bg.po<br>
+index 3d8c353372..98c57e5b22 100644<br>
+--- a/po/bg.po<br>
++++ b/po/bg.po<br>
+@@ -1,14 +1,14 @@<br>
+=C2=A0# Bulgarian translation of qemu po-file.<br>
+-# Copyright (C) 2016 Alexander Shopov &lt;<a href=3D"mailto:ash@kambanaria=
+.org">ash@kambanaria.org</a>&gt;<br>
++# Copyright (C) 2016, 2019 Alexander Shopov &lt;<a href=3D"mailto:ash@kamb=
+anaria.org">ash@kambanaria.org</a>&gt;<br>
+=C2=A0# This file is distributed under the same license as the qemu package=
+.<br>
+-# Alexander Shopov &lt;<a href=3D"mailto:ash@kambanaria.org">ash@kambanari=
+a.org</a>&gt;, 2016.<br>
++# Alexander Shopov &lt;<a href=3D"mailto:ash@kambanaria.org">ash@kambanari=
+a.org</a>&gt;, 2016, 2019.<br>
+=C2=A0#<br>
+=C2=A0msgid &quot;&quot;<br>
+=C2=A0msgstr &quot;&quot;<br>
+-&quot;Project-Id-Version: QEMU 2.6.50\n&quot;<br>
++&quot;Project-Id-Version: QEMU 4.1.0\n&quot;<br>
+=C2=A0&quot;Report-Msgid-Bugs-To: <a href=3D"mailto:qemu-devel@nongnu.org">=
+qemu-devel@nongnu.org</a>\n&quot;<br>
+=C2=A0&quot;POT-Creation-Date: 2018-07-18 07:56+0200\n&quot;<br>
+-&quot;PO-Revision-Date: 2016-06-09 15:54+0300\n&quot;<br>
++&quot;PO-Revision-Date: 2019-10-19 13:14+0200\n&quot;<br>
+=C2=A0&quot;Last-Translator: Alexander Shopov &lt;<a href=3D"mailto:ash@kam=
+banaria.org">ash@kambanaria.org</a>&gt;\n&quot;<br>
+=C2=A0&quot;Language-Team: Bulgarian &lt;<a href=3D"mailto:dict@ludost.net"=
+>dict@ludost.net</a>&gt;\n&quot;<br>
+=C2=A0&quot;Language: bg\n&quot;<br>
+@@ -66,7 +66,7 @@ msgid &quot;Detach Tab&quot;<br>
+=C2=A0msgstr &quot;=D0=9A=D1=8A=D0=BC =D1=81=D0=B0=D0=BC=D0=BE=D1=81=D1=82=
+=D0=BE=D1=8F=D1=82=D0=B5=D0=BB=D0=B5=D0=BD =D0=BF=D0=BE=D0=B4=D0=BF=D1=80=
+=D0=BE=D0=B7=D0=BE=D1=80=D0=B5=D1=86&quot;<br>
+<br>
+=C2=A0msgid &quot;Show Menubar&quot;<br>
+-msgstr &quot;&quot;<br>
++msgstr &quot;=D0=9B=D0=B5=D0=BD=D1=82=D0=B0 =D0=B7=D0=B0 =D0=BC=D0=B5=D0=
+=BD=D1=8E=D1=82=D0=BE&quot;<br>
+<br>
+=C2=A0msgid &quot;_Machine&quot;<br>
+=C2=A0msgstr &quot;_=D0=9C=D0=B0=D1=88=D0=B8=D0=BD=D0=B0&quot;<br>
+-- <br>
+2.23.0<br>
+<br>
+<br>
+</blockquote>
+
+--00000000000043102b059545779e--
 
