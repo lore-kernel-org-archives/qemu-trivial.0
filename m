@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iLp8y-0003R3-63
+	id 1iLp8y-0003RL-CY
 	for mharc-qemu-trivial@gnu.org; Sat, 19 Oct 2019 09:51:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60143)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60172)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <ash@kambanaria.org>) id 1iLnUT-0006Tf-Ir
- for qemu-trivial@nongnu.org; Sat, 19 Oct 2019 08:05:50 -0400
+ (envelope-from <ash@kambanaria.org>) id 1iLnUV-0006Vo-MZ
+ for qemu-trivial@nongnu.org; Sat, 19 Oct 2019 08:05:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <ash@kambanaria.org>) id 1iLnUS-0002sG-Gn
- for qemu-trivial@nongnu.org; Sat, 19 Oct 2019 08:05:49 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:35388)
+ (envelope-from <ash@kambanaria.org>) id 1iLnUT-0002tI-N4
+ for qemu-trivial@nongnu.org; Sat, 19 Oct 2019 08:05:51 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:35679)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <ash@kambanaria.org>) id 1iLnUS-0002r0-Ba
- for qemu-trivial@nongnu.org; Sat, 19 Oct 2019 08:05:48 -0400
-Received: by mail-wr1-x443.google.com with SMTP id l10so8469915wrb.2
- for <qemu-trivial@nongnu.org>; Sat, 19 Oct 2019 05:05:47 -0700 (PDT)
+ (Exim 4.71) (envelope-from <ash@kambanaria.org>) id 1iLnUT-0002sQ-H0
+ for qemu-trivial@nongnu.org; Sat, 19 Oct 2019 08:05:49 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id l10so8470005wrb.2
+ for <qemu-trivial@nongnu.org>; Sat, 19 Oct 2019 05:05:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=kambanaria-org.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=D6rBFCWd7TXy/HRgb/86qSVMzCfvtlb6XwpaugqYJio=;
- b=gPgVTb81Pw3us9IJhAlVxhPES+J2Sl85nnxVQXqggsBUMQNdtCNqhCRcbzDHy7edGe
- aACLUSzrgxJwvqQ30nhdtFlfFVch1Q0+sZpGr07SLr34esmVF6j6M85IzjSj6g20HvP1
- R6mlJpk+07cLJhNOLM/jx8zhmpd8mVO7RHisXLXlXiS26ANxw51eFHI14xcPIuQDP+EI
- O8ROEQtEagGdXlZ2aAHIsKTWdmsfyTxns+1xBQBw6sb8Hx18lcCJOqp/S8chMiIfqm+Q
- 2YNX4Qp9hox/Km6uxIuvGSwBtouWV/aAPC3ySE96gSHkiHLwchVo3L+eHqzaI5IVX7mj
- T0dQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=MrtvVJmSyqwqULqVndoYPRFrL2xWqsVES8uYOf+Y1Ys=;
+ b=QcKSWnA8NKSaZdj2WYcoN5iFbSXIcqaOzJ5ZK/JB8K0NhZvjpDR6z5wZdwIG/2WKoF
+ gRW4KSaDTZdyEixJddWih3uJ8pgbui3CI9HZjZTonm7m1fkCZ4r0xSgHFagY79OeoO3u
+ z7L9IVIledlqI/lZ0Y0m9/zHSiBsv/nA5uTPkvBbKvyvW0+NQ5EN9VPUX6wmWFl2IsHZ
+ qn+Dg8IGPGLJm56OSrRn9JvrOUsPPRc2jbNpkZco7rWtm6sYaynueJxr/sB4nUKWu8Xb
+ +y9z2rSDJJo2gnSxTYmeRGs6IIXHGS7/8FqkFldnS+VxtLPUdI6yUxRjnE9AgjKn42Au
+ JGXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=D6rBFCWd7TXy/HRgb/86qSVMzCfvtlb6XwpaugqYJio=;
- b=OTpu+pCkgK4RAZlfB/5FLyDxoDo62BDCSdUie1vBMnYnHLTSQ+5SnHV7TIHWG4ovEB
- KnG6mx7Fhj1VRpYHRBw5NEbgqkJH81+vau/86iP+LYTYFWrgQEyRWSoi7DamoxYbStaC
- 0XrKiHvrsRz/9DNfitMzJcaiBxcudtCiIAjlgYseODIRGdPahmQLh5QdftDbS5jTsayU
- LpNyK9Ps3eCUowpHNZrTozwP8L510xvoUPWJUL/3oL58mbAe9jOUrIq8ug5RFX4s6zw5
- 6cZEi+5ef7aFo5elHk0pVnIbmYzCy63nGPrCWTrwouUwg6/3sUk2DxHhjrAoKl6kDIGK
- tC6A==
-X-Gm-Message-State: APjAAAV4o6tc02VNH+l95vnc0u3C9sl4jkHEksOg/0m85t3SxENZIYGj
- 7cYuMul4nFB5t8QxF2PemrBiiA==
-X-Google-Smtp-Source: APXvYqyQel5+wKejBxzlwC+ekLa/M6cOwuskAAo3G3tGR8HRJmTCYAPd0v/I0aNjSAXxs6U2T77JQA==
-X-Received: by 2002:a5d:66c1:: with SMTP id k1mr6674234wrw.73.1571486746077;
- Sat, 19 Oct 2019 05:05:46 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=MrtvVJmSyqwqULqVndoYPRFrL2xWqsVES8uYOf+Y1Ys=;
+ b=jmHYlamgm7arUy1XWM+TDFOGyKpdXprPG1/urRjClFFQuhON/0ICCGWESmPxZCPtxg
+ Sqgm17vyXnt/chA9nvi+SVQ0Uh7c8ScY1Y7S/BTDRj0A27eH9StyP4D/XeRufNRR9uRX
+ DQj5y591VZ9RUfL9s/3niCy5l/AU86yOaiMlOY35LCmA+o93FOcN1c7ozaEfIPlgF9gK
+ rDRNltCOxgCXZqi+3PdBSdG1l8jRRkkwKkBE7W2Sg2eTmYqScZ8xAfYFNikiQ9g1L+du
+ Vn8SSPw31oXV3cu5nfuVK91p9ElIVkBeowDTjdTvpjnS2Inijo4mgUiIjV7J2Ob4n5+n
+ 0GLQ==
+X-Gm-Message-State: APjAAAWbULDmZvdPkbiWOu4I/REfNZTzrXxiqQufGGz5K3AOWGTAqVnn
+ ZKqxeWTcVsGymxPo1//xJXLiNQ==
+X-Google-Smtp-Source: APXvYqz5/3KoMSNtMZjU1gAhnIQ5nVaCZBmd6J5l2JIRmaoOe0RS+NN5QktEJazcNMeGvWjrwgCTcQ==
+X-Received: by 2002:a5d:4701:: with SMTP id y1mr12458849wrq.385.1571486748481; 
+ Sat, 19 Oct 2019 05:05:48 -0700 (PDT)
 Received: from ashopov-C02X544YJHD3.home (ip4da0f75a.direct-adsl.nl.
  [77.160.247.90])
- by smtp.gmail.com with ESMTPSA id z22sm9249550wmf.2.2019.10.19.05.05.45
+ by smtp.gmail.com with ESMTPSA id z22sm9249550wmf.2.2019.10.19.05.05.47
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 19 Oct 2019 05:05:45 -0700 (PDT)
+ Sat, 19 Oct 2019 05:05:47 -0700 (PDT)
 From: Alexander Shopov <ash@kambanaria.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Amos Kong <akong@redhat.com>,
@@ -59,15 +59,18 @@ Cc: qemu-trivial@nongnu.org, Amos Kong <akong@redhat.com>,
  Pino Toscano <ptoscano@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
  Stefan Weil <sw@weilnetz.de>, Thomas Huth <thuth@redhat.com>,
  Wei Huang <wehuang@redhat.com>, Alexander Shopov <ash@kambanaria.org>
-Subject: [PATCH 0/1] Update Bulgarian translation
-Date: Sat, 19 Oct 2019 14:05:33 +0200
-Message-Id: <20191019120534.27479-1-ash@kambanaria.org>
+Subject: [PATCH 1/1] Updated Bulgarian translation (19) - 4.1.0
+Date: Sat, 19 Oct 2019 14:05:34 +0200
+Message-Id: <20191019120534.27479-2-ash@kambanaria.org>
 X-Mailer: git-send-email 2.23.0
+In-Reply-To: <20191019120534.27479-1-ash@kambanaria.org>
+References: <20191019120534.27479-1-ash@kambanaria.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::443
+X-Received-From: 2a00:1450:4864:20::42b
 X-Mailman-Approved-At: Sat, 19 Oct 2019 09:51:42 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -80,23 +83,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 19 Oct 2019 12:05:50 -0000
+X-List-Received-Date: Sat, 19 Oct 2019 12:05:52 -0000
 
-This is the updated Bulgarian translation of Qemu
-
-It has 1 new message translated and corresponds to v 4.1.0 and up
-I am sending to the devel list, the trivial patch list and
-all people listes as CC, Tested-By, Approved-By in the po dir
-Please ping if that is too wide an audience and point me to
-the right targets
-
-
-Alexander Shopov (1):
-  Updated Bulgarian translation (19) - 4.1.0
-
+Signed-off-by: Alexander Shopov <ash@kambanaria.org>
+---
  po/bg.po | 10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
 
+diff --git a/po/bg.po b/po/bg.po
+index 3d8c353372..98c57e5b22 100644
+--- a/po/bg.po
++++ b/po/bg.po
+@@ -1,14 +1,14 @@
+ # Bulgarian translation of qemu po-file.
+-# Copyright (C) 2016 Alexander Shopov <ash@kambanaria.org>
++# Copyright (C) 2016, 2019 Alexander Shopov <ash@kambanaria.org>
+ # This file is distributed under the same license as the qemu package.
+-# Alexander Shopov <ash@kambanaria.org>, 2016.
++# Alexander Shopov <ash@kambanaria.org>, 2016, 2019.
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: QEMU 2.6.50\n"
++"Project-Id-Version: QEMU 4.1.0\n"
+ "Report-Msgid-Bugs-To: qemu-devel@nongnu.org\n"
+ "POT-Creation-Date: 2018-07-18 07:56+0200\n"
+-"PO-Revision-Date: 2016-06-09 15:54+0300\n"
++"PO-Revision-Date: 2019-10-19 13:14+0200\n"
+ "Last-Translator: Alexander Shopov <ash@kambanaria.org>\n"
+ "Language-Team: Bulgarian <dict@ludost.net>\n"
+ "Language: bg\n"
+@@ -66,7 +66,7 @@ msgid "Detach Tab"
+ msgstr "Към самостоятелен подпрозорец"
+ 
+ msgid "Show Menubar"
+-msgstr ""
++msgstr "Лента за менюто"
+ 
+ msgid "_Machine"
+ msgstr "_Машина"
 -- 
 2.23.0
 
