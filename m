@@ -1,25 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iMaZ3-000875-UL
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Oct 2019 12:29:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37725)
+	id 1iMaad-0001VL-Sq
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Oct 2019 12:31:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38005)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iMaZ0-000829-IR
- for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 12:29:47 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iMaaV-0001RV-QJ
+ for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 12:31:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iMaYy-0001cg-EB
- for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 12:29:46 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:54613)
+ (envelope-from <laurent@vivier.eu>) id 1iMaaU-00029e-Mg
+ for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 12:31:19 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:50431)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iMaYy-0001cK-4a; Mon, 21 Oct 2019 12:29:44 -0400
+ id 1iMaaU-00029N-Dj; Mon, 21 Oct 2019 12:31:18 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MXXZf-1iWhY52df5-00Yw1P; Mon, 21 Oct 2019 18:29:38 +0200
-Subject: Re: [PATCH v2] Do not use %m in common code to print error messages
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Kamil Rytarowski <kamil@netbsd.org>, berrange@redhat.com, eblake@redhat.com
-References: <20191018130716.25438-1-thuth@redhat.com>
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MTi9N-1iRlVs2a7x-00U4TW; Mon, 21 Oct 2019 18:31:13 +0200
+Subject: Re: [RFC PATCH] hw/mem/Kconfig: NVDIMM device requires
+ CONFIG_MEM_DEVICE
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>
+References: <20191015164642.31069-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -63,33 +66,33 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <5996ace1-f288-2fe7-95a1-86455df4cdc0@vivier.eu>
-Date: Mon, 21 Oct 2019 18:29:35 +0200
+Message-ID: <53d3c75b-aa0d-1dd3-cbae-561891ad7be0@vivier.eu>
+Date: Mon, 21 Oct 2019 18:31:12 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <20191018130716.25438-1-thuth@redhat.com>
+In-Reply-To: <20191015164642.31069-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:hLjlJP08+eaXAert1Yb37oQyCAYXdpFICYplftXZe9nq3JIvSSm
- kKtE4zf3fc9HeiIqmH2SjO5/l6Bj6ZcWGzdi2z8cHUEylh+sIoS2HXxdIKJdibQFCxx+XX3
- EBw38dDXaKVXNAKdGW+symhYqDm3KVAy4TuXyDdiccqDVDvUvLCMssAndZZ5TtWJg9WtBsO
- bhfR5MBnwIBRzTcTteYJw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:weTGM/6XQXw=:Ybf6OEbejtis2Ec9FNbGS6
- BAVl/fIQIK+TRlg179ep/gm9aLkytduPGq9HejTrBjUlHAOUQZsu51Y2nEoTWA6QSwMp31jjr
- c8ruQXMcE2WQWaCujPu0ZFDflHq53knIxBQKUtTsVSZdccQpgf8PaSUMf0tN1qcaTJILERbRS
- vHye6sQHoD8Zja48wjZOOBXfSwG5dVDxjqww2wwCG130vUD0Q726Z0eJlq6+5R1cULmpN1H2q
- ok94zg16oy9KzixFsI5+ub5qKkc2Z0YbyHN/bxvxlvRXOeHsqwVmH2BYtvWh7Xkq/IXq3Z4tj
- nJ22nkrGxy7KsNgKQVsGgFklnZC2pGJhEtPDYM50gMFWdI3JvBZwdpi181Bn5+CGK/Sn4PK5/
- AaSL269tea5ogNeddp3tQfFZ22+UPgXfJOZPK3DEBkSbOL/ekodNMURZV4njdNasIRyq40vBK
- 9ZC2SZSESSrVUxWslxzq+/tQQmFar6lYJCQ1w2WOuwUrBYBPm0qR2wZYZAPiXS1Ws0m6VTMpV
- ITRSD0VH2kHJCQxkQw3jG7UtpInO7LeqQnFgXIruWRQLgJ/VZd8iLzk967MhJxz1PfBdXvzdg
- AtYOUZaeMunc6g8BP3zd8tYlANSB9mA1T8h3+jcBQFCiNZN3xrRGXg0M01qnyY/ZhFmB1uKAL
- vxdqL2vInCOR7uc2b830tFMKhDQrdFy8fsPffg7yPQE2ZAv9U/i2sbs1O2c6pksuTyMAspcpo
- +PT4hxil9ZqLWuhWWONfLbAby1mfZx5X1IZTlS1bMIMqdpttF51PqzYy3sB9ZWDHEiF47hPQl
- AoWV2SSy1afxerc9On0p2em18/xhGwuuMSluRwUUdszw+9U7aP1XjB9Voqe24HaTdbvAgkftP
- E6JOFlpwnmwQpMVq+O/EClCClVI4u07PqgU5ADvfs=
+X-Provags-ID: V03:K1:wX2IG4mJYyvm8duY6QyCPpdMTzfnVrbXnmmWfX6KYJUonQxd9Qz
+ zbgG2SgqjZRSSlvoQ5CxtcYWJ9StGlAEx0+DOWg9E0dQanuIHDYqpM5XDco+XWwq+8d8o1p
+ na7vaz8ZU7CKdzeMbocH6MjVh8efWohflx7GtgDjVoP8YJct6DR9aT47DeRkt6xXwdu9PyL
+ 5cYIb+KwDkYLkN8TjwCkg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:1I3y4jnFs0o=:20PNYzhYHu2g0Mc6uLHagD
+ PlhKT9/MlNpCw9UxacMsd50qNb8eZXm2NcnI8BcnC4yzD1AlDH+DvqZcclzo9Zuo2X5xnQIEJ
+ RxkvVt6RalREXvP0LSCb8yrZI62GfRO8Cwyab5VLYfs2N8XYEEmtiTO44+srDI9Ch/tiaMkg+
+ gQenI6NEKU8LImlNoWWFg3rGy9qunB0HE92lRrl8ciVsRr33g+s1XcS2b00g9p4DFEPDCgVEm
+ iKMByN/RIGmjkt69JKw9CnRxRSVx22ZpGV+v2sHOIgk+LlrqiViAglJLEC79Uz1UEMbnCYwpz
+ mfz89Rjq7FvgDkvQTjizj+wlCEU5uRZaqR93ugpn3zTI7Copk2VUe34e0Uh9cVcDBdCO4siJ7
+ URClxb5gLdiqnt7gun4YY0c2zZpOv4UUNollr4yBEXD4U/YYBYmZrUailjVoJJ/Ufg+5t//si
+ lIp8zDu50tT1+N3A4MFtwqwkD/Zhoqaud9AcAkRnvcX+BPGP9KhHBxiJDgs43XaOAuHdrv931
+ C8avte0mI+b0nqYoL7nEy+3CUY34UhN6O50/XSGotP3ouHLavnbJKFu6zdvi8X/muABWBW6do
+ RXcxN3zB8z0sFitw+Que/dOFcbUngr+klvDR0q1IBpZbmjIUC9GnYbszWyGVD96FCLx6PERr+
+ fgwgpkmc4RiDEtRvJ6kHBuNIdwEQC2xsu9h0BFfbxF9KBB5YoJMTEnIi3uylRX58n34GJs+8K
+ sy7fCEuGeoTjxJgyZce5MhFTnibKSIKq2I80ejGw06ws7tG96RfnjB8kRU8/3bpXJZ2VqPUmo
+ zkCLz9AO9gd7pKdyZL2xnw7KpT4/9FqAQUq4PKBgieRG5EESqpXuGkKV2zEtHN8Pfj+gvS7q8
+ ow9ho3knPIBNfoHqcmdLMLTOYyVP0kAcwDYzv1byI=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 212.227.126.134
@@ -104,83 +107,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Oct 2019 16:29:48 -0000
+X-List-Received-Date: Mon, 21 Oct 2019 16:31:23 -0000
 
-Le 18/10/2019 à 15:07, Thomas Huth a écrit :
-> The %m format specifier is an extension from glibc - and when compiling
-> QEMU for NetBSD, the compiler correctly complains, e.g.:
+Le 15/10/2019 à 18:46, Philippe Mathieu-Daudé a écrit :
+> When selecting only the NVDIMM device with "NVDIMM y", the
+> device is not compiled/linked because it does not select MEM_DEVICE
+> and hw/mem/Makefile.objs is not included:
 > 
-> /home/qemu/qemu-test.ELjfrQ/src/util/main-loop.c: In function 'sigfd_handler':
-> /home/qemu/qemu-test.ELjfrQ/src/util/main-loop.c:64:13: warning: %m is only
->  allowed in syslog(3) like functions [-Wformat=]
->              printf("read from sigfd returned %zd: %m\n", len);
->              ^
-> Let's use g_strerror() here instead, which is an easy-to-use wrapper
-> around the thread-safe strerror_r() function.
+>   $ git grep mem/ hw/Makefile.objs
+>   hw/Makefile.objs:39:devices-dirs-$(CONFIG_MEM_DEVICE) += mem/
 > 
-> While we're at it, also convert the "printf()" in main-loop.c into
-> the preferred "error_report()".
+> Let NVDIMM config select MEM_DEVICE.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  v2: Do not try to g_free() the strings
+> I'm not sure this is the best fix, maybe we should simply include
+> mem/ regardless of CONFIG_MEM_DEVICE (all mem devices use it).
+> ---
+>  hw/mem/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
 > 
->  hw/misc/tmp421.c | 4 ++--
->  util/main-loop.c | 3 ++-
->  util/systemd.c   | 4 ++--
->  3 files changed, 6 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/misc/tmp421.c b/hw/misc/tmp421.c
-> index 9f044705fa..c0bc150bca 100644
-> --- a/hw/misc/tmp421.c
-> +++ b/hw/misc/tmp421.c
-> @@ -120,7 +120,7 @@ static void tmp421_get_temperature(Object *obj, Visitor *v, const char *name,
->      int tempid;
+> diff --git a/hw/mem/Kconfig b/hw/mem/Kconfig
+> index 620fd4cb59..5da724d7a2 100644
+> --- a/hw/mem/Kconfig
+> +++ b/hw/mem/Kconfig
+> @@ -7,5 +7,6 @@ config MEM_DEVICE
 >  
->      if (sscanf(name, "temperature%d", &tempid) != 1) {
-> -        error_setg(errp, "error reading %s: %m", name);
-> +        error_setg(errp, "error reading %s: %s", name, g_strerror(errno));
->          return;
->      }
->  
-> @@ -160,7 +160,7 @@ static void tmp421_set_temperature(Object *obj, Visitor *v, const char *name,
->      }
->  
->      if (sscanf(name, "temperature%d", &tempid) != 1) {
-> -        error_setg(errp, "error reading %s: %m", name);
-> +        error_setg(errp, "error reading %s: %s", name, g_strerror(errno));
->          return;
->      }
->  
-> diff --git a/util/main-loop.c b/util/main-loop.c
-> index e3eaa55866..eda63fe4e0 100644
-> --- a/util/main-loop.c
-> +++ b/util/main-loop.c
-> @@ -61,7 +61,8 @@ static void sigfd_handler(void *opaque)
->          }
->  
->          if (len != sizeof(info)) {
-> -            printf("read from sigfd returned %zd: %m\n", len);
-> +            error_report("read from sigfd returned %zd: %s", len,
-> +                         g_strerror(errno));
->              return;
->          }
->  
-> diff --git a/util/systemd.c b/util/systemd.c
-> index d22e86c707..1dd0367d9a 100644
-> --- a/util/systemd.c
-> +++ b/util/systemd.c
-> @@ -60,8 +60,8 @@ unsigned int check_socket_activation(void)
->               * and we should exit.
->               */
->              error_report("Socket activation failed: "
-> -                         "invalid file descriptor fd = %d: %m",
-> -                         fd);
-> +                         "invalid file descriptor fd = %d: %s",
-> +                         fd, g_strerror(errno));
->              exit(EXIT_FAILURE);
->          }
->      }
+>  config NVDIMM
+>      bool
+> +    select MEM_DEVICE
+>      default y
+>      depends on PC
 > 
 
 Applied to my trivial-patches branch.
