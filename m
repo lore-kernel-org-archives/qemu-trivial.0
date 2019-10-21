@@ -1,24 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iMa8x-0001pH-Eo
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Oct 2019 12:02:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33988)
+	id 1iMaBE-00041W-Gc
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Oct 2019 12:05:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34446)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iMa8t-0001l7-Tc
- for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 12:02:48 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iMaBB-0003vh-Bx
+ for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 12:05:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iMa8s-0003Jq-T5
- for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 12:02:47 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:50561)
+ (envelope-from <laurent@vivier.eu>) id 1iMaBA-0004S6-Bv
+ for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 12:05:09 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:35911)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1iMa8s-0003Fn-Jb
- for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 12:02:46 -0400
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1iMaB6-0004Pe-VB; Mon, 21 Oct 2019 12:05:05 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N7QM9-1hwpBi1oHV-017isU; Mon, 21 Oct 2019 18:02:39 +0200
-Subject: Re: [PATCH 1/3] util/async: avoid useless cast
-To: Frediano Ziglio <fziglio@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-trivial@nongnu.org
-References: <20190927103233.20901-1-fziglio@redhat.com>
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MG9Pg-1iEu8M0kEW-00Gad7; Mon, 21 Oct 2019 18:04:58 +0200
+Subject: Re: [PATCH] qemu-doc: Remove paragraph about requiring a HD image
+ with -kernel
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Cc: qemu-trivial@nongnu.org, Alexander Graf <agraf@csgraf.de>,
+ Laszlo Ersek <lersek@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
+References: <20191001110111.4870-1-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -62,36 +65,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <9b5623ac-38d2-bca9-0322-9cde833fe785@vivier.eu>
-Date: Mon, 21 Oct 2019 18:02:37 +0200
+Message-ID: <a8ff53e0-6393-1b3f-0cc7-30f48f2d029d@vivier.eu>
+Date: Mon, 21 Oct 2019 18:04:55 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <20190927103233.20901-1-fziglio@redhat.com>
+In-Reply-To: <20191001110111.4870-1-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:xcW0IX5NAMPZMdoG7ro4wn46TzmXvc95Fx2Iht6m+3JBHhwuhn8
- oZbTE9i6IFLMZf4oIrTZ7ej0p9P2BZSn1DSMQeVoGxE/aqW8V/TnxAkT+AiuCQ+zXiGIBad
- YFofGBPYrb2ZkmO1iGZVhNff8DotXEUAKci0O6HgeklI6ef2jg+k1GYmFaW8Ua1x6MwJYmc
- hdvfIEjAvlMGEBgpTyAkQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:BKt76+XtsSw=:aSkAzSBQlgQkcaIRqUkDW3
- FmZagNqPs27uc5wyiycRIdslkwE1SvpRcscLIPmWIAoXM0XSJPOcG0U/rnats4ywVUCF+esjU
- ytd5r0IoDq9563FvF/fv4OqlnyavbV/IJsUtPNvCoXOYqsEM5LKLGTmDZXfy2CvisGBw9dIoG
- TJLNNYCNZCkXmMRqv3Ys5yjQjGRyjti5UjtKA9zfPRmkMT6fx9RBvHuPMJYtd6FKvzMEzYv1e
- RiSDEN6UEVHKV2xSHjC1t9NaJyA2O5w/Hj7aTk2iBy2La/eMeEW158IhOg/P1QH9m4bswTrtw
- X4ZKjJeReqS7srjYZJ2/iT5mtEe76R4fg3dsVqgnqbjRBGD1Uk0eCjz7/PvKh8IZl9sjw/S1n
- SrANMRuHWgsrLbpckJh7y3Uo6FhjmzEJJkSlWU8E3GrQt4QtfUwoPZMG6vEf7mzU2AL78DFTQ
- dUdCHF1uNpl29aX0zzT/jMKHYVFnUWfvWzE4ydSrp5pxB32274Krecr5xDQZzeVWC3jy9zRkk
- FXxEsdPBqTQDNKmVVzhpeDt2qfPMyub14eHTSPG87T4hElFb8UHgJ4v0J9HJk8Zl6tu9JhXKE
- S4ApkpD8KRpvflEX5U7yqNl2eG2UWYtMRKUggiTgGqlBva7cjQ5ANaHcpXNOMYOvjoFrblzQp
- qT33x/yyjlLredOEwOZopNjbcrs9OmXJIKfG60ET2J+6orXB0oA57n9lMhG89c0GsGuaKP9f+
- WoiA8kmE1CJbHUhEg26Bm4fGcd9kahM4eXc72ZWfYbDiPeEtw2S+qzpq4uScsDwpnQTmyy8d2
- TudaVy/qtoJ31lSHVp1aLDoHKoAaZXY9gI+KlcPvGiatvWdr0/FkEBzUXsTF5IkA5i0sceUqx
- rBnQIikbKhcXBD40JRJFgUZaAfAUxk+PkwVn3dulc=
+X-Provags-ID: V03:K1:2IuyYjs5RYz5ztB8EIR97jpaXchLURPCxupO7b/xX6yHkBAqjjH
+ /1xbxcXWlE0TycZva+s1HUHQVGWItF557ezQdSBpr5jjMce/mhQuchUha9iHaBxyn9euglI
+ HTzva24KSVD36k2Jy2t/+yXRhItubpCe7lQhkCzbtHtwz4TGSVFK7zg1Xf3gzCn/o1QQ0dU
+ uULXYqROGZso0FtsUFV6g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:vCmIjEXAY00=:0X/QEd0qp2hzC4/N2RzXlb
+ M2fV8JjzFTyrBZjfHBVI/VHYSjQZyEvuhB8+liPbzjxPGDVJI+UWTw94v6jJx7dig4oUnpSBB
+ iuLqTn8wnO0XQ0yWjCSVZ5eb+MsLW5/0t9yFh7gcf8i63+HgC8C0ao5VrVqXJFm8CryYgTfOJ
+ R4xWLUdfol2icAWGvY4daprgWKokp2GPjGZdHQFSmPoDfvdn01dho+ole2d83yjM+5CzWIVn6
+ c/CYR+czYWNDigtWZdMJWM/BI02MTFRYC1LhMtyyyIGIknGds8PmlE4zZ0GBH7o0rn0h2VNzx
+ +10TSQoBo+bO6Nd+p5Q7Bw37oCdaVlcvK7ohpBh+qzlGigvdk+eXL37DfcOilRbzEfNuWllW+
+ lEXkZlFgLgLR6tLo7Nfl1VF/nCzcaTbISU9r84XKMEqyDLqnHRg4HHtks7aS0vgDeDOMDC3Hr
+ lOfuNeOrsdanUq2nWEJS8MLKndnT/VLDZn9HMNpLguBsLJ3KO3i7J0QxspWxLD9HbbdM8NqpL
+ LmCo0n7/QDDaTv6aYD5RlgHypJyfK9DVOKUTFK6veajPuG8AjjdTEYHCYGX+2bYGPtHp6F0v/
+ E67n8dV0BnEHdpXSTqmK8LR+XI908fLoMYf4tquN0TUsbpEZeix4qI2mB1/kIRS901TLyHc5X
+ 8nW3HsV86tt1MsAXr0RoByV0y+E+m5PQhhzKHyK11R0s1ztskgqpXMILoHIVFsnu7gbhQBjoz
+ 1Msaf/IQ43dkEZQve3Q8sxNeV6vTnzdO6o6ilyNa9BwWq1C6pAQAHfgYZU3+c8dz9JcNzEj/6
+ O4zdySxf+0ZYRZR51gqZgO2DX8Ub964Lpfjv74vQoKXG66K3+kRVZuyuOmQNL6RAgwcE1Jb8c
+ Qk8G9d+quASfOr2LDrAWkuPwZ680RNFv29eeDFmtk=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.135
+X-Received-From: 212.227.126.187
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,34 +106,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Oct 2019 16:02:50 -0000
+X-List-Received-Date: Mon, 21 Oct 2019 16:05:11 -0000
 
-Please re-send your series to qemu-devel@nongnu.org if you want to have
-it merged.
+Le 01/10/2019 à 13:01, Thomas Huth a écrit :
+> The need for specifying "-hda" together with "-kernel" has been removed in
+> commit 57a46d057995 ("Convert linux bootrom to external rom and fw_cfg"),
+> almost 10 years ago, so let's remove this description from our documentation
+> now, too.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  qemu-doc.texi | 4 ----
+>  1 file changed, 4 deletions(-)
+> 
+> diff --git a/qemu-doc.texi b/qemu-doc.texi
+> index 2ba6c90c08..3c5022050f 100644
+> --- a/qemu-doc.texi
+> +++ b/qemu-doc.texi
+> @@ -906,10 +906,6 @@ Use @option{-kernel} to provide the Linux kernel image and
+>  @option{-append} to give the kernel command line arguments. The
+>  @option{-initrd} option can be used to provide an INITRD image.
+>  
+> -When using the direct Linux boot, a disk image for the first hard disk
+> -@file{hda} is required because its boot sector is used to launch the
+> -Linux kernel.
+> -
+>  If you do not need graphical output, you can disable it and redirect
+>  the virtual serial port and the QEMU monitor to the console with the
+>  @option{-nographic} option. The typical command line is:
+> 
+
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
-Le 27/09/2019 à 12:32, Frediano Ziglio a écrit :
-> event_notifier_dummy_cb is already compatible with EventNotifierHandler.
-> 
-> Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
-> ---
->  util/async.c | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/util/async.c b/util/async.c
-> index 4e4c7af51e..3cdbf44503 100644
-> --- a/util/async.c
-> +++ b/util/async.c
-> @@ -425,7 +425,6 @@ AioContext *aio_context_new(Error **errp)
->  
->      aio_set_event_notifier(ctx, &ctx->notifier,
->                             false,
-> -                           (EventNotifierHandler *)
->                             event_notifier_dummy_cb,
->                             event_notifier_poll);
->  #ifdef CONFIG_LINUX_AIO
-> 
-
 
