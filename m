@@ -1,27 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iMaBE-00041W-Gc
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Oct 2019 12:05:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34446)
+	id 1iMaVA-00044A-Ar
+	for mharc-qemu-trivial@gnu.org; Mon, 21 Oct 2019 12:25:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37213)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iMaBB-0003vh-Bx
- for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 12:05:10 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iMaV6-0003yh-Qb
+ for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 12:25:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iMaBA-0004S6-Bv
- for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 12:05:09 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:35911)
+ (envelope-from <laurent@vivier.eu>) id 1iMaV5-0000jD-N7
+ for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 12:25:44 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:38429)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iMaB6-0004Pe-VB; Mon, 21 Oct 2019 12:05:05 -0400
+ id 1iMaV5-0000iw-Ds; Mon, 21 Oct 2019 12:25:43 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MG9Pg-1iEu8M0kEW-00Gad7; Mon, 21 Oct 2019 18:04:58 +0200
-Subject: Re: [PATCH] qemu-doc: Remove paragraph about requiring a HD image
- with -kernel
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Cc: qemu-trivial@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- Laszlo Ersek <lersek@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
-References: <20191001110111.4870-1-thuth@redhat.com>
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1M89P1-1iRFT80NiF-005G7H; Mon, 21 Oct 2019 18:25:37 +0200
+Subject: Re: [PATCH] MAINTAINERS: Replace tab indent by spaces in the Status
+ description
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20191012071307.14314-1-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -65,36 +64,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <a8ff53e0-6393-1b3f-0cc7-30f48f2d029d@vivier.eu>
-Date: Mon, 21 Oct 2019 18:04:55 +0200
+Message-ID: <d4d3adeb-948a-fe20-996f-1f642f9e986d@vivier.eu>
+Date: Mon, 21 Oct 2019 18:25:34 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <20191001110111.4870-1-thuth@redhat.com>
+In-Reply-To: <20191012071307.14314-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:2IuyYjs5RYz5ztB8EIR97jpaXchLURPCxupO7b/xX6yHkBAqjjH
- /1xbxcXWlE0TycZva+s1HUHQVGWItF557ezQdSBpr5jjMce/mhQuchUha9iHaBxyn9euglI
- HTzva24KSVD36k2Jy2t/+yXRhItubpCe7lQhkCzbtHtwz4TGSVFK7zg1Xf3gzCn/o1QQ0dU
- uULXYqROGZso0FtsUFV6g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:vCmIjEXAY00=:0X/QEd0qp2hzC4/N2RzXlb
- M2fV8JjzFTyrBZjfHBVI/VHYSjQZyEvuhB8+liPbzjxPGDVJI+UWTw94v6jJx7dig4oUnpSBB
- iuLqTn8wnO0XQ0yWjCSVZ5eb+MsLW5/0t9yFh7gcf8i63+HgC8C0ao5VrVqXJFm8CryYgTfOJ
- R4xWLUdfol2icAWGvY4daprgWKokp2GPjGZdHQFSmPoDfvdn01dho+ole2d83yjM+5CzWIVn6
- c/CYR+czYWNDigtWZdMJWM/BI02MTFRYC1LhMtyyyIGIknGds8PmlE4zZ0GBH7o0rn0h2VNzx
- +10TSQoBo+bO6Nd+p5Q7Bw37oCdaVlcvK7ohpBh+qzlGigvdk+eXL37DfcOilRbzEfNuWllW+
- lEXkZlFgLgLR6tLo7Nfl1VF/nCzcaTbISU9r84XKMEqyDLqnHRg4HHtks7aS0vgDeDOMDC3Hr
- lOfuNeOrsdanUq2nWEJS8MLKndnT/VLDZn9HMNpLguBsLJ3KO3i7J0QxspWxLD9HbbdM8NqpL
- LmCo0n7/QDDaTv6aYD5RlgHypJyfK9DVOKUTFK6veajPuG8AjjdTEYHCYGX+2bYGPtHp6F0v/
- E67n8dV0BnEHdpXSTqmK8LR+XI908fLoMYf4tquN0TUsbpEZeix4qI2mB1/kIRS901TLyHc5X
- 8nW3HsV86tt1MsAXr0RoByV0y+E+m5PQhhzKHyK11R0s1ztskgqpXMILoHIVFsnu7gbhQBjoz
- 1Msaf/IQ43dkEZQve3Q8sxNeV6vTnzdO6o6ilyNa9BwWq1C6pAQAHfgYZU3+c8dz9JcNzEj/6
- O4zdySxf+0ZYRZR51gqZgO2DX8Ub964Lpfjv74vQoKXG66K3+kRVZuyuOmQNL6RAgwcE1Jb8c
- Qk8G9d+quASfOr2LDrAWkuPwZ680RNFv29eeDFmtk=
+X-Provags-ID: V03:K1:vWkTooxcQIUEne/u/SA1GKtIXaNBSztNf41rKMlgPENgcS5ZtW9
+ j53PnYcQ/TfAy1TC4EAMYlVOd/XH5JyO1y04JuaAKha95pQAeQC5+IG0JvLY8LHIqD/86qz
+ S3y2G7wbWx+a6B2lu/P9PY/I1ycdYZ2RskNZgWe394E4PsGUcUVp8H9vYcPUAwFrLApdoCX
+ /rlw65JONsYNSEZehshhA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ySvg9qTV+4g=:SjvhdtKfWdR0LGDdfM/97l
+ WqH4x3uj+3vDbM4UAs4kt7nMuSH4I4B6M5LtIPNpWjPXIUEcDOlYt1U31WU9KofFZ6X+Ki6mH
+ BorC1ZawOy+kDeDjxpA6GumDPbw8SszDStNAcuyDk5PO/2o8GGl3NkHodpHo6+0CKYHsyRW7t
+ Omdl+N86v5Levra3WVwYLVInBEYzf2qviTR6YyTw8U1NkNHBSDvFUvg8BCfsPtajgPgukFHb/
+ OS/f2tHB/E/+zRhJYQ/Zj5XrB6INUb52+A8wo3+JKBUwQyoXktBSXJvt2LQhKLn3cQiVmSEQa
+ xhglN+c9nycG6G6/1SnC/bnEJCo6EX7X9cWneNT3P7hLigEwtQ4gP4m0W69EVS1cW8RystV3s
+ UkxC/zAsd/Mpu8d7TcAaRvZwmeYTfwHbKAM3LURoHIl3Pa+mmfS++IJlcQ03U3vaNR/7Js6XI
+ TCucr9nzEIDBz9H4PGCeCx3W8Q1eR9rs6S5rOW4xbhjfpJQQHeXNTI4tH0oRg9cNCJHN4N8Af
+ UgmJA9mVGd9u9PCcsmQLLNsHKKISK5vGDCl6i9wIg9kaIvQhm3aD/Y2VLHofw+bxFEydrG0xB
+ 62AY/LiCIGB1m6Bo2VWA3CSRA0gVJYosaDsQh2CdYhGvFJTql7weeY7QRBFTFkfulsS0e9/F9
+ 1zvHYu3HE98o8EJ3Y0RmiuC1ZI5tJYoGQMEHSCD+nsr9OilO4bdE6pUjx3OYZoECqvFTiQy/n
+ eK5M+Ap9dspFLbhkx9g4vOiu+6LyFZuWybrlNM5u4A3dJXDQRY+L4QaDEAOhCWH6MWGSIHCPq
+ lpyceXDvE82eJvqCQpTlO1kqsQSIaWYHCf3f+BIDuZlV5MlhM65uR/N+cleZCWYEDFiede3vC
+ 2QVxUIR3IWpuvtTjBWtFnLK2yagaZN+LjA3Mgsims=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.187
+X-Received-From: 212.227.126.135
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,37 +105,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Oct 2019 16:05:11 -0000
+X-List-Received-Date: Mon, 21 Oct 2019 16:25:46 -0000
 
-Le 01/10/2019 à 13:01, Thomas Huth a écrit :
-> The need for specifying "-hda" together with "-kernel" has been removed in
-> commit 57a46d057995 ("Convert linux bootrom to external rom and fw_cfg"),
-> almost 10 years ago, so let's remove this description from our documentation
-> now, too.
+Le 12/10/2019 à 09:13, Philippe Mathieu-Daudé a écrit :
+> The Status description has a mix of tabs and spaces and displays
+> unaligned. Unify using spaces.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  qemu-doc.texi | 4 ----
->  1 file changed, 4 deletions(-)
+>  MAINTAINERS | 18 +++++++++---------
+>  1 file changed, 9 insertions(+), 9 deletions(-)
 > 
-> diff --git a/qemu-doc.texi b/qemu-doc.texi
-> index 2ba6c90c08..3c5022050f 100644
-> --- a/qemu-doc.texi
-> +++ b/qemu-doc.texi
-> @@ -906,10 +906,6 @@ Use @option{-kernel} to provide the Linux kernel image and
->  @option{-append} to give the kernel command line arguments. The
->  @option{-initrd} option can be used to provide an INITRD image.
->  
-> -When using the direct Linux boot, a disk image for the first hard disk
-> -@file{hda} is required because its boot sector is used to launch the
-> -Linux kernel.
-> -
->  If you do not need graphical output, you can disable it and redirect
->  the virtual serial port and the QEMU monitor to the console with the
->  @option{-nographic} option. The typical command line is:
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 3ca814850e..b9093e4dac 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -24,15 +24,15 @@ Descriptions of section entries:
+>  	Q: Patchwork web based patch tracking system site
+>  	T: SCM tree type and location.  Type is one of: git, hg, quilt, stgit.
+>  	S: Status, one of the following:
+> -	   Supported:	Someone is actually paid to look after this.
+> -	   Maintained:	Someone actually looks after it.
+> -	   Odd Fixes:	It has a maintainer but they don't have time to do
+> -			much other than throw the odd patch in. See below.
+> -	   Orphan:	No current maintainer [but maybe you could take the
+> -			role as you write your new code].
+> -	   Obsolete:	Old code. Something tagged obsolete generally means
+> -			it has been replaced by a better system and you
+> -			should be using that.
+> +          Supported:   Someone is actually paid to look after this.
+> +          Maintained:  Someone actually looks after it.
+> +          Odd Fixes:   It has a maintainer but they don't have time to do
+> +                       much other than throw the odd patch in. See below.
+> +          Orphan:      No current maintainer [but maybe you could take the
+> +                       role as you write your new code].
+> +          Obsolete:    Old code. Something tagged obsolete generally means
+> +                       it has been replaced by a better system and you
+> +                       should be using that.
+>  	F: Files and directories with wildcard patterns.
+>  	   A trailing slash includes all files and subdirectory files.
+>  	   F:	drivers/net/	all files in and below drivers/net
 > 
 
-Applied to my trivial-patches branch.
+Why don't you remove all the tabs (line 14 to line 55)?
+
+And "vi" can help you:
+
+:set expandtab
+:retab
 
 Thanks,
 Laurent
