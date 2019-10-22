@@ -1,71 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iMbCR-0006CZ-LH
-	for mharc-qemu-trivial@gnu.org; Mon, 21 Oct 2019 13:10:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42926)
+	id 1iMnUs-0001W1-Gm
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Oct 2019 02:18:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60759)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1iMbCQ-0006CG-07
- for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 13:10:30 -0400
+ (envelope-from <armbru@redhat.com>) id 1iMnUp-0001U3-Ci
+ for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 02:18:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1iMbCP-0006dJ-0M
- for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 13:10:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52692)
+ (envelope-from <armbru@redhat.com>) id 1iMnUo-0006g1-5p
+ for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 02:18:19 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:41075
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1iMbCO-0006cw-R1
- for qemu-trivial@nongnu.org; Mon, 21 Oct 2019 13:10:28 -0400
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1iMnUo-0006fu-2b
+ for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 02:18:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1571725097;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Y9t4ZYoitCThfCu83qRbjYr4evCXjg2uqwFMRmx+seY=;
+ b=axm+cYF562cclVN7jjtC0LgY2Parq8itO5Pfrx+AzjYf+xFCjhecjMtyaq60sUCUR0HTfs
+ oXwtlpm/VcnvRvSVFFSWo9JPltJyEPs/6Kq2v9aFj39mGHqhrljtElDcrEf+2Opbot6Z3V
+ 7tksxh9qM+m9bVxZ+j5F3ds920V1X7k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-336-vYKR9QsGPia8jk2di8H2IA-1; Tue, 22 Oct 2019 02:18:13 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id EBB7B85536
- for <qemu-trivial@nongnu.org>; Mon, 21 Oct 2019 17:10:27 +0000 (UTC)
-Received: by mail-wr1-f70.google.com with SMTP id a6so4806247wru.1
- for <qemu-trivial@nongnu.org>; Mon, 21 Oct 2019 10:10:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=BIrk6bO3LLMP97s4TJTCTNSLhmbhrLzzF2ckRns4HKY=;
- b=Dms+4uN3npsur6top+pVMIthTpZomdhpiSAFEbhav06mV+BHDbxCaovosX0T7/Bb50
- I72dk3EmMqPPMVb3Pl6h+blvrVLST9eclXZnAgQ68u9lSGLyVeYf/bh+nLVj1pNG5QXV
- evwMw51YhxBD15ijo9cK0VVfu9WJak312cew62pBM/vG19/WOTHGFUJOZ8S2Gul7qewb
- 3LYqE2Zn2T39HgB39ZbmosaDpaCb4MGds8TEknQ323KMQ6x77Kklvu3w3Mjmbat+LoWa
- 4MiRpvvoZVqSzPdjybNnvB1q8LFwZPj7PJo5h/RXL7GAQvHHZAgIiu6lFjlyIgz0vdL8
- mgig==
-X-Gm-Message-State: APjAAAUry8ZZPMAvMc0J8WSERStvtGlZ+UO9T/fTK29Fn4J4/bsV580k
- el4kh+RaXFv8H39S6CEWcFyVKXR4NimY6P40nBKo/TzrvL1r6ekZL1dljAX1F9AGptZIWK/5ctY
- 8ilzTM9zjtBhv/mb25g==
-X-Received: by 2002:adf:f101:: with SMTP id r1mr3156183wro.320.1571677826603; 
- Mon, 21 Oct 2019 10:10:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxZ+RmX5noSUmDMGfhi0SOVz0q2yzLFyWgWyR4rflwQyKf5tQ+bQ5k5TTvXLhQIBfDJ9vR9FA==
-X-Received: by 2002:adf:f101:: with SMTP id r1mr3156156wro.320.1571677826334; 
- Mon, 21 Oct 2019 10:10:26 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:847b:6afc:17c:89dd?
- ([2001:b07:6468:f312:847b:6afc:17c:89dd])
- by smtp.gmail.com with ESMTPSA id c14sm8432439wru.24.2019.10.21.10.10.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Oct 2019 10:10:25 -0700 (PDT)
-Subject: Re: [RFC PATCH] hw/mem/Kconfig: NVDIMM device requires
- CONFIG_MEM_DEVICE
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- qemu-trivial@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
-References: <20191015164642.31069-1-philmd@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <684fb125-6370-23c2-7a3d-834ab5f742e2@redhat.com>
-Date: Mon, 21 Oct 2019 19:10:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B3848107AD31;
+ Tue, 22 Oct 2019 06:18:12 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.36.118.123])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id ABF921001E75;
+ Tue, 22 Oct 2019 06:18:09 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 110461138619; Tue, 22 Oct 2019 08:18:08 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Han Han <hhan@redhat.com>
+Cc: qemu-devel@nongnu.org,  philmd@redhat.com, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] qemu-options.hx: Update for reboot-timeout parameter
+References: <20191015151451.727323-1-hhan@redhat.com>
+Date: Tue, 22 Oct 2019 08:18:08 +0200
+In-Reply-To: <20191015151451.727323-1-hhan@redhat.com> (Han Han's message of
+ "Tue, 15 Oct 2019 23:14:51 +0800")
+Message-ID: <87d0epqp5r.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20191015164642.31069-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: vYKR9QsGPia8jk2di8H2IA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.132.183.28
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -77,41 +67,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 21 Oct 2019 17:10:31 -0000
+X-List-Received-Date: Tue, 22 Oct 2019 06:18:20 -0000
 
-On 15/10/19 18:46, Philippe Mathieu-Daud=C3=A9 wrote:
-> When selecting only the NVDIMM device with "NVDIMM y", the
-> device is not compiled/linked because it does not select MEM_DEVICE
-> and hw/mem/Makefile.objs is not included:
->=20
->   $ git grep mem/ hw/Makefile.objs
->   hw/Makefile.objs:39:devices-dirs-$(CONFIG_MEM_DEVICE) +=3D mem/
->=20
-> Let NVDIMM config select MEM_DEVICE.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Han Han <hhan@redhat.com> writes:
+
+> Since ee5d0f89d, -1 is not valid for the value of reboot-timeout. Update
+> that in qemu-options doc.
+>
+> Signed-off-by: Han Han <hhan@redhat.com>
 > ---
-> I'm not sure this is the best fix, maybe we should simply include
-> mem/ regardless of CONFIG_MEM_DEVICE (all mem devices use it).
-> ---
->  hw/mem/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/hw/mem/Kconfig b/hw/mem/Kconfig
-> index 620fd4cb59..5da724d7a2 100644
-> --- a/hw/mem/Kconfig
-> +++ b/hw/mem/Kconfig
-> @@ -7,5 +7,6 @@ config MEM_DEVICE
+>  qemu-options.hx | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 793d70ff..6b92a916 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -327,8 +327,8 @@ format(true color). The resolution should be supporte=
+d by the SVGA mode, so
+   A splash picture could be passed to bios, enabling user to show it as lo=
+go,
+   when option splash=3D@var{sp_name} is given and menu=3Don, If firmware/B=
+IOS
+   supports them. Currently Seabios for X86 system support it.
+   limitation: The splash file could be a jpeg file or a BMP file in 24 BPP
+   format(true color). The resolution should be supported by the SVGA mode,=
+ so
+>  the recommended is 320x240, 640x480, 800x640.
 > =20
->  config NVDIMM
->      bool
-> +    select MEM_DEVICE
->      default y
->      depends on PC
->=20
+>  A timeout could be passed to bios, guest will pause for @var{rb_timeout}=
+ ms
+> -when boot failed, then reboot. If @var{rb_timeout} is '-1', guest will n=
+ot
+> -reboot, qemu passes '-1' to bios by default. Currently Seabios for X86
+> +when boot failed, then reboot. If @option{reboot-timeout} is not set,
+> +guest will not reboot by default. Currently Seabios for X86
+>  system support it.
+> =20
+>  Do strict boot via @option{strict=3Don} as far as firmware/BIOS
 
-Queued, thanks.  As a follow-up, hw/mem/memory-device.c can be common-obj=
--y.
+Preexisting: "could be passed" sounds awkward.  Same in the previous
+paragraph.  Not this patch's problem, so:
 
-Paolo
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+
 
