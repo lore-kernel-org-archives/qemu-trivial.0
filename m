@@ -1,61 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iMnUs-0001W1-Gm
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Oct 2019 02:18:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60759)
+	id 1iMpUV-00041Y-0V
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Oct 2019 04:26:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45820)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1iMnUp-0001U3-Ci
- for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 02:18:20 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iMpUS-0003xh-HI
+ for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 04:26:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1iMnUo-0006g1-5p
- for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 02:18:19 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:41075
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1iMnUo-0006fu-2b
- for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 02:18:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571725097;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Y9t4ZYoitCThfCu83qRbjYr4evCXjg2uqwFMRmx+seY=;
- b=axm+cYF562cclVN7jjtC0LgY2Parq8itO5Pfrx+AzjYf+xFCjhecjMtyaq60sUCUR0HTfs
- oXwtlpm/VcnvRvSVFFSWo9JPltJyEPs/6Kq2v9aFj39mGHqhrljtElDcrEf+2Opbot6Z3V
- 7tksxh9qM+m9bVxZ+j5F3ds920V1X7k=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-336-vYKR9QsGPia8jk2di8H2IA-1; Tue, 22 Oct 2019 02:18:13 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B3848107AD31;
- Tue, 22 Oct 2019 06:18:12 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.36.118.123])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id ABF921001E75;
- Tue, 22 Oct 2019 06:18:09 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 110461138619; Tue, 22 Oct 2019 08:18:08 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Han Han <hhan@redhat.com>
-Cc: qemu-devel@nongnu.org,  philmd@redhat.com, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] qemu-options.hx: Update for reboot-timeout parameter
-References: <20191015151451.727323-1-hhan@redhat.com>
-Date: Tue, 22 Oct 2019 08:18:08 +0200
-In-Reply-To: <20191015151451.727323-1-hhan@redhat.com> (Han Han's message of
- "Tue, 15 Oct 2019 23:14:51 +0800")
-Message-ID: <87d0epqp5r.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
+ (envelope-from <laurent@vivier.eu>) id 1iMpUR-0004Lq-5A
+ for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 04:26:04 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:36447)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1iMpUQ-0004LY-SH; Tue, 22 Oct 2019 04:26:03 -0400
+Received: from localhost.localdomain ([78.238.229.36]) by
+ mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1MUl4z-1iVwBw40Uz-00QgzI; Tue, 22 Oct 2019 10:25:58 +0200
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Michael Tokarev <mjt@tls.msk.ru>, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Stefano Garzarella <sgarzare@redhat.com>, Laszlo Ersek <lersek@redhat.com>
+Subject: [PULL 1/2] qemu-doc: Remove paragraph about requiring a HD image with
+ -kernel
+Date: Tue, 22 Oct 2019 10:25:52 +0200
+Message-Id: <20191022082553.10204-2-laurent@vivier.eu>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20191022082553.10204-1-laurent@vivier.eu>
+References: <20191022082553.10204-1-laurent@vivier.eu>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: vYKR9QsGPia8jk2di8H2IA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:wAVL9D6qA/7zLtbhg5LV+YVb62JjrnqCMEv7nUI4fK/LDO89v+X
+ /0PR/YcL+baiwQPg3SqozORmjY+C6T4N9E7JWNmgLQ5wt7KW6BJuNInv20X52NFL6Egitv0
+ oSAJQT7KGQ28r5ycIHPj9JxuPF2MqP/ivsKednhtd4z0MjGxu7/7JGMzuc9tvjyVRCgUpk7
+ EklLhZWpfwz6qcsPM+0Dg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:2/Vzy9R2FuI=:5FnkdQxHQ6z/h+bCnwdEjD
+ hMx+gSc/xZ1nwaxa+p/93P3hf31S4/IAPSjSPat55cf6ndvDCwM4mQmPIY61IMsGTWnM636Nd
+ 7XLh/Rvhuwdyxd5Zk9MdTvq/wm7iaKMN8rqz7cJFj+LVcQzeoporp3suDVMQOYyXSVRVptdsK
+ /GFoTqN4wCM69ZwJ1NvhLIEmaaUpyXd1QXk/SHmNUZnCXJR99ZmhrMYT9fuaso9g2znXRmeGI
+ GbZB9vq/RKiiJ+tfHp4CsA1C/+qFCvcb4YG/KvTQKQLIhAkqxYhmIhcUBRdoX7sC8J/0SUyEJ
+ MsdmB3SRgJVdF50jBKgMpipC6NCdiaB+smlwBW2tNOGUWf7bgDbfVYLW7tHamoDWND21CJsP6
+ uDcb7lQGb7EB/wvBhIcQnQTFnQJPQJCiXEGsVe/t0seuSuvYttjNMGPFgF9v8sx1o56SghfC9
+ H/F+rWdJSt5CHOlElL3fHr63eVBTA8WVD72Z2rI+dL74KHmytGix2Ld1pAtu0cXng3Ip7o+2/
+ QVXnqm57nxJw+JLJaV+jDhRnaY+v+drVpX4DVosVjWfGfK+rxxeXiG/fOMlPJd5CR5Nir3Ggw
+ CeAFA4f8txehag+7UXEcxrT3MAarAZqsCdS1aFFLn8n7B0E9rtizy7yYi69MdIRrTLPuMhrcW
+ t2nJ9j0L3Y+YXV8VzuBvZHGLkLuqBNfnLhw/MSPjcCkAIQ9B1+Py0TDnnKhKwB0u67R32JwAw
+ Bd13cCzAtSK5AdBQSH3bnri2LydOajw+q5vuwvdnmuc8iqB9TX2OJcB48Oeo+w6JSuHtF1fA0
+ LOARHAUPpSVZIdDIc2EU8LCpLebwo3pvu8JbP0OrCFKlIf2YWAjBzWldYqfLiF6AHwtROt0H1
+ aplSNIZ8URRKIwDFCgmGYDeSUkVPqRCDwSD3A8PVo=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 212.227.126.131
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -67,48 +63,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Oct 2019 06:18:20 -0000
+X-List-Received-Date: Tue, 22 Oct 2019 08:26:06 -0000
 
-Han Han <hhan@redhat.com> writes:
+From: Thomas Huth <thuth@redhat.com>
 
-> Since ee5d0f89d, -1 is not valid for the value of reboot-timeout. Update
-> that in qemu-options doc.
->
-> Signed-off-by: Han Han <hhan@redhat.com>
-> ---
->  qemu-options.hx | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 793d70ff..6b92a916 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -327,8 +327,8 @@ format(true color). The resolution should be supporte=
-d by the SVGA mode, so
-   A splash picture could be passed to bios, enabling user to show it as lo=
-go,
-   when option splash=3D@var{sp_name} is given and menu=3Don, If firmware/B=
-IOS
-   supports them. Currently Seabios for X86 system support it.
-   limitation: The splash file could be a jpeg file or a BMP file in 24 BPP
-   format(true color). The resolution should be supported by the SVGA mode,=
- so
->  the recommended is 320x240, 640x480, 800x640.
-> =20
->  A timeout could be passed to bios, guest will pause for @var{rb_timeout}=
- ms
-> -when boot failed, then reboot. If @var{rb_timeout} is '-1', guest will n=
-ot
-> -reboot, qemu passes '-1' to bios by default. Currently Seabios for X86
-> +when boot failed, then reboot. If @option{reboot-timeout} is not set,
-> +guest will not reboot by default. Currently Seabios for X86
->  system support it.
-> =20
->  Do strict boot via @option{strict=3Don} as far as firmware/BIOS
+The need for specifying "-hda" together with "-kernel" has been removed in
+commit 57a46d057995 ("Convert linux bootrom to external rom and fw_cfg"),
+almost 10 years ago, so let's remove this description from our documentation
+now, too.
 
-Preexisting: "could be passed" sounds awkward.  Same in the previous
-paragraph.  Not this patch's problem, so:
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Message-Id: <20191001110111.4870-1-thuth@redhat.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ qemu-doc.texi | 4 ----
+ 1 file changed, 4 deletions(-)
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index 2ba6c90c083b..3c5022050f0f 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -906,10 +906,6 @@ Use @option{-kernel} to provide the Linux kernel image and
+ @option{-append} to give the kernel command line arguments. The
+ @option{-initrd} option can be used to provide an INITRD image.
+ 
+-When using the direct Linux boot, a disk image for the first hard disk
+-@file{hda} is required because its boot sector is used to launch the
+-Linux kernel.
+-
+ If you do not need graphical output, you can disable it and redirect
+ the virtual serial port and the QEMU monitor to the console with the
+ @option{-nographic} option. The typical command line is:
+-- 
+2.21.0
 
 
