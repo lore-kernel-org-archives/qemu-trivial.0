@@ -1,68 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iMteR-0002iy-QC
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Oct 2019 08:52:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56850)
+	id 1iN0ss-0004ra-AT
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Oct 2019 16:36:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46353)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iMteL-0002fp-BY
- for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 08:52:38 -0400
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1iN0so-0004nz-LW
+ for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 16:36:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iMteJ-0003g3-Kj
- for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 08:52:32 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57998)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iMteJ-0003fV-Bo
- for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 08:52:31 -0400
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 4590E356D3
- for <qemu-trivial@nongnu.org>; Tue, 22 Oct 2019 12:52:30 +0000 (UTC)
-Received: by mail-wm1-f71.google.com with SMTP id g67so5861894wmg.4
- for <qemu-trivial@nongnu.org>; Tue, 22 Oct 2019 05:52:30 -0700 (PDT)
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1iN0sm-0001zR-Vn
+ for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 16:35:58 -0400
+Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c]:40489)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1iN0sj-0001yI-59; Tue, 22 Oct 2019 16:35:53 -0400
+Received: by mail-oi1-x22c.google.com with SMTP id b25so3774390oib.7;
+ Tue, 22 Oct 2019 13:35:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=YPmj/nroWY0pTnSVHHA4UhdKmPCO0A3bdgtwqRgYaGo=;
+ b=DFR/6zoeVy6/EZZquIR4CKBenL9MCjSYmfcOatm/SFh2JfvsQGJJtk3gsSqYiNWPim
+ sTPbyTIrJb726fC/REzZmiYwFN3v2MuL55rQT4GRi3uA4nEzlQzTiuA4AgyfKOXleEd3
+ 9itqkBs//KECiYMu2XsU5YCSpuUwrQiDEtcKkRzz0SlGH04PqcsVJ8deKupznYK7ZEaM
+ kPG3mjObZgidxuX60sdZfcp/0iFNNFgjgo7T9LSnjEXDt9jUIOtWa8VyJm+Jzsbsdc2U
+ cHBJMU0SbzJwSsGaC57gPeRYgQA4engp4TZoBd0cIR7wYK296eyBRNLjJR6VP7ISsZnw
+ G5eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=gmvf0BVZShPGJSnkCjp4EkXvRxogE/PLOWq6DjpJu2c=;
- b=kpi9CMCnYE6csTB+EiU2/CUCp2dBOOOedssODTj67QIty14jd8i5yfk/hGvxeL2PmU
- rvhkIYGpb9xwoFQnAjqkFew7rIs2w3RA8eyyf2Xa6CPVzDaMe/Rn/y90Q2m2IYhHGy16
- oh4pRA3fxyFSBLhx1qx0TEDSQuIlovqKbe3jegS2+Gy+8jAUat7/y6D0nzLDQY+8fdrx
- kBMbXpgoW30BRJmQMyAxREWa0lVBlms23vyb6UJzjvvawSrBEBIjoiBx+7j9inwg9biQ
- iGrE8YhJ+WDc4k3pPClrOh329h1ZvCgZWiWkP3IlYRtTxOgprMag6TQJE8EaJpsjWSGM
- mdOA==
-X-Gm-Message-State: APjAAAWH27fR8f0LLxjzvd23X2xhd+TQHUjkrFokInSGGVZRAOQ7hrPs
- yZD87RunmuPYpkTxW6bnH3z87FGKNjrwaxKBVQwcKS/EoXUAWwjLF9Zk91oiblga8Lbx540KlZI
- LzmlPjel3Mtg4FKpyTg==
-X-Received: by 2002:a5d:6281:: with SMTP id k1mr3472066wru.69.1571748748473;
- Tue, 22 Oct 2019 05:52:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzJQp8T5eHdBaFhOuIzdgZBTL1G/LdslrkQCEPQ+k9R00VBDwSIcjj6H4egtGRrGyrz7fPnJA==
-X-Received: by 2002:a5d:6281:: with SMTP id k1mr3472025wru.69.1571748747953;
- Tue, 22 Oct 2019 05:52:27 -0700 (PDT)
-Received: from [192.168.1.41] (129.red-83-57-174.dynamicip.rima-tde.net.
- [83.57.174.129])
- by smtp.gmail.com with ESMTPSA id z13sm21247346wrm.64.2019.10.22.05.52.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 22 Oct 2019 05:52:27 -0700 (PDT)
-Subject: Re: [PATCH] qemu-options.hx: Update for reboot-timeout parameter
-To: Markus Armbruster <armbru@redhat.com>, Han Han <hhan@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20191015151451.727323-1-hhan@redhat.com>
- <87d0epqp5r.fsf@dusky.pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <1a07f8dd-88e8-c8f0-f76e-2fe62259cac3@redhat.com>
-Date: Tue, 22 Oct 2019 14:52:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=YPmj/nroWY0pTnSVHHA4UhdKmPCO0A3bdgtwqRgYaGo=;
+ b=hfHxaj2QgRRYDcyTnJQ05avruiB/pNZJSZ/AuOzeyf1qpgl9l7V4Xrw0d4aghKI6cR
+ m3l7Y+5DlJSwYE7LV/cZrmb0nMGOaXH2YF1FRTOMS3LRhl9SJwq+ysH1LgfMpdakj2OI
+ 7wnXsaUGtTwVj0/107KbBnFQGuicutywe4F+c28+WnqwXrrt1sjQEWdRxM0HLv2+DXyp
+ I56IxjEglHW+939xS5OfmweCGCtx0h4zA7U/tuznV5c1bVEdRAc247wYGyo/OnEO3/Wk
+ 2D5BFG4zCnqpTwNwcCIE35x+/NOYyFOBvOfWxrfjl2sEXVMOAmM1k/hIUCbjUL0tAPxY
+ mUEw==
+X-Gm-Message-State: APjAAAXZF3LGXMyDaTQbxew1pdBC1u/KliStAUwzDDkmZTPkPaJLjDPh
+ 4l4Ru1s+l07VpUapjSgNxoHf+1SdewApxCvI2nM=
+X-Google-Smtp-Source: APXvYqy5CEdCgvPAm5uRl5gixuERACt1C00QNn6PxVDKprY7gloOD6Eyig0YnOSySs1jluNMdMT0SF/eIW3hBkJljFs=
+X-Received: by 2002:aca:4d12:: with SMTP id a18mr4382186oib.79.1571776552341; 
+ Tue, 22 Oct 2019 13:35:52 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <87d0epqp5r.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+Received: by 2002:a9d:340a:0:0:0:0:0 with HTTP; Tue, 22 Oct 2019 13:35:51
+ -0700 (PDT)
+In-Reply-To: <20191008082815.8267-1-thuth@redhat.com>
+References: <20191008082815.8267-1-thuth@redhat.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Tue, 22 Oct 2019 22:35:51 +0200
+Message-ID: <CAL1e-=ihiQiFptBKHyVEo_DZv5xHwa7eGuM7UFLo_c5DbYtxhA@mail.gmail.com>
+Subject: Re: [PATCH v2] Makefile: Remove generated files when doing
+ 'distclean' (and 'clean')
+To: Thomas Huth <thuth@redhat.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000119323059585bf78"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::22c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,55 +68,226 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Oct 2019 12:52:38 -0000
+X-List-Received-Date: Tue, 22 Oct 2019 20:36:00 -0000
 
-On 10/22/19 8:18 AM, Markus Armbruster wrote:
-> Han Han <hhan@redhat.com> writes:
->=20
->> Since ee5d0f89d, -1 is not valid for the value of reboot-timeout. Upda=
-te
->> that in qemu-options doc.
->>
->> Signed-off-by: Han Han <hhan@redhat.com>
->> ---
->>   qemu-options.hx | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/qemu-options.hx b/qemu-options.hx
->> index 793d70ff..6b92a916 100644
->> --- a/qemu-options.hx
->> +++ b/qemu-options.hx
->> @@ -327,8 +327,8 @@ format(true color). The resolution should be suppo=
-rted by the SVGA mode, so
->     A splash picture could be passed to bios, enabling user to show it =
-as logo,
->     when option splash=3D@var{sp_name} is given and menu=3Don, If firmw=
-are/BIOS
->     supports them. Currently Seabios for X86 system support it.
->     limitation: The splash file could be a jpeg file or a BMP file in 2=
-4 BPP
->     format(true color). The resolution should be supported by the SVGA =
-mode, so
->>   the recommended is 320x240, 640x480, 800x640.
->>  =20
->>   A timeout could be passed to bios, guest will pause for @var{rb_time=
-out} ms
->> -when boot failed, then reboot. If @var{rb_timeout} is '-1', guest wil=
-l not
->> -reboot, qemu passes '-1' to bios by default. Currently Seabios for X8=
-6
->> +when boot failed, then reboot. If @option{reboot-timeout} is not set,
->> +guest will not reboot by default. Currently Seabios for X86
->>   system support it.
->>  =20
->>   Do strict boot via @option{strict=3Don} as far as firmware/BIOS
->=20
-> Preexisting: "could be passed" sounds awkward.  Same in the previous
-> paragraph.  Not this patch's problem, so:
->=20
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+--000000000000119323059585bf78
+Content-Type: text/plain; charset="UTF-8"
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+On Tuesday, October 8, 2019, Thomas Huth <thuth@redhat.com> wrote:
 
-I assume this patch will go via qemu-trivial.
+> When running "make distclean" we currently leave a lot of generated
+> files in the build directory. These should be completely removed.
+> Some of the generated files are removed in the "clean" target (which
+> is a prerequisite for the "distclean" target), since binary files
+> should be removed in this step already.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  v2:
+>  - Remove tests/qemu-iotests/common.env in "distclean", not in "clean"
+>  - Improved patch description
+>
+>  Makefile               |  6 +++---
+>  tests/Makefile.include | 12 +++++++++++-
+>  2 files changed, 14 insertions(+), 4 deletions(-)
+>
+> Hello, Thomas,
+
+Do you intend to send a new version of this patch?
+
+It looks to me this is a very nice clean up that definitely should go into
+4.2, no?
+
+Aleksandat
+
+
+
+> diff --git a/Makefile b/Makefile
+> index 30f0abfb42..767b1ffb25 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -696,14 +696,14 @@ clean: recurse-clean
+>                 -exec rm {} +
+>         rm -f $(edk2-decompressed)
+>         rm -f $(filter-out %.tlb,$(TOOLS)) $(HELPERS-y) TAGS cscope.*
+> *.pod *~ */*~
+> -       rm -f fsdev/*.pod scsi/*.pod
+> +       rm -f fsdev/*.pod scsi/*.pod docs/*.pod docs/*/*.pod
+> docs/*/.buildinfo
+>         rm -f qemu-img-cmds.h
+>         rm -f ui/shader/*-vert.h ui/shader/*-frag.h
+>         @# May not be present in generated-files-y
+>         rm -f trace/generated-tracers-dtrace.dtrace*
+>         rm -f trace/generated-tracers-dtrace.h*
+>         rm -f $(foreach f,$(generated-files-y),$(f) $(f)-timestamp)
+> -       rm -f qapi-gen-timestamp
+> +       rm -f qapi-gen-timestamp vhost-user-input
+>         rm -rf qga/qapi-generated
+>         rm -f config-all-devices.mak
+>
+> @@ -724,7 +724,7 @@ distclean: clean
+>         rm -f tests/tcg/config-*.mak
+>         rm -f config-all-devices.mak config-all-disas.mak config.status
+>         rm -f $(SUBDIR_DEVICES_MAK)
+> -       rm -f po/*.mo tests/qemu-iotests/common.env
+> +       rm -f po/*.mo
+>         rm -f roms/seabios/config.mak roms/vgabios/config.mak
+>         rm -f qemu-doc.info qemu-doc.aux qemu-doc.cp qemu-doc.cps
+>         rm -f qemu-doc.fn qemu-doc.fns qemu-doc.info qemu-doc.ky
+> qemu-doc.kys
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index 3543451ed3..694f193fb6 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -1176,11 +1176,21 @@ check: check-block check-qapi-schema check-unit
+> check-softfloat check-qtest chec
+>  check-clean:
+>         rm -rf $(check-unit-y) tests/*.o $(QEMU_IOTESTS_HELPERS-y)
+>         rm -rf $(sort $(foreach target,$(SYSEMU_TARGET_LIST),
+> $(check-qtest-$(target)-y)) $(check-qtest-generic-y))
+> -       rm -f tests/test-qapi-gen-timestamp
+>         rm -rf $(TESTS_VENV_DIR) $(TESTS_RESULTS_DIR)
+> +       rm -f tests/test-qapi-gen-timestamp tests/qht-bench$(EXESUF) \
+> +               tests/fp/fp-test tests/fp/*.out tests/qapi-schema/*.test.*
+>
+>  clean: check-clean
+>
+> +check-distclean:
+> +       rm -f tests/qemu-iotests/common.env tests/qemu-iotests/check.*
+> +       rm -f tests/test-qapi-types*.c tests/test-qapi-visit*.c \
+> +               tests/test-qapi-commands*.c tests/test-qapi-events*.c \
+> +               tests/test-qapi-emit-events.[ch]
+> tests/test-qapi-introspect.c \
+> +               tests/include/test-qapi-*.c
+> +
+> +distclean: check-distclean
+> +
+>  # Build the help program automatically
+>
+>  all: $(QEMU_IOTESTS_HELPERS-y)
+> --
+> 2.18.1
+>
+>
+>
+
+--000000000000119323059585bf78
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<br><br>On Tuesday, October 8, 2019, Thomas Huth &lt;<a href=3D"mailto:thut=
+h@redhat.com">thuth@redhat.com</a>&gt; wrote:<br><blockquote class=3D"gmail=
+_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:=
+1ex">When running &quot;make distclean&quot; we currently leave a lot of ge=
+nerated<br>
+files in the build directory. These should be completely removed.<br>
+Some of the generated files are removed in the &quot;clean&quot; target (wh=
+ich<br>
+is a prerequisite for the &quot;distclean&quot; target), since binary files=
+<br>
+should be removed in this step already.<br>
+<br>
+Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com">thuth@re=
+dhat.com</a>&gt;<br>
+---<br>
+=C2=A0v2:<br>
+=C2=A0- Remove tests/qemu-iotests/common.env in &quot;distclean&quot;, not =
+in &quot;clean&quot;<br>
+=C2=A0- Improved patch description<br>
+<br>
+=C2=A0Makefile=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=
+=A0 6 +++---<br>
+=C2=A0tests/Makefile.include | 12 +++++++++++-<br>
+=C2=A02 files changed, 14 insertions(+), 4 deletions(-)<br>
+<br></blockquote><div>Hello, Thomas,</div><div><br></div><div>Do you intend=
+ to send a new version of this patch?</div><div><br></div><div>It looks to =
+me this is a very nice clean up that definitely should go into 4.2, no?</di=
+v><div><br></div><div>Aleksandat</div><div><br></div><div>=C2=A0</div><bloc=
+kquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #cc=
+c solid;padding-left:1ex">
+diff --git a/Makefile b/Makefile<br>
+index 30f0abfb42..767b1ffb25 100644<br>
+--- a/Makefile<br>
++++ b/Makefile<br>
+@@ -696,14 +696,14 @@ clean: recurse-clean<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 -exec rm {} +<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f $(edk2-decompressed)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f $(filter-out %.tlb,$(TOOLS)) $(HELPERS-y)=
+ TAGS cscope.* *.pod *~ */*~<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f fsdev/*.pod scsi/*.pod<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f fsdev/*.pod scsi/*.pod docs/*.pod docs/*/=
+*.pod docs/*/.buildinfo<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f qemu-img-cmds.h<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f ui/shader/*-vert.h ui/shader/*-frag.h<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 @# May not be present in generated-files-y<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f trace/generated-tracers-<wbr>dtrace.dtrac=
+e*<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f trace/generated-tracers-<wbr>dtrace.h*<br=
+>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f $(foreach f,$(generated-files-y),$(f) $(f=
+)-timestamp)<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f qapi-gen-timestamp<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f qapi-gen-timestamp vhost-user-input<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -rf qga/qapi-generated<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f config-all-devices.mak<br>
+<br>
+@@ -724,7 +724,7 @@ distclean: clean<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f tests/tcg/config-*.mak<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f config-all-devices.mak config-all-disas.m=
+ak config.status<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f $(SUBDIR_DEVICES_MAK)<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f po/*.mo tests/qemu-iotests/common.env<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f po/*.mo<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f roms/seabios/config.mak roms/vgabios/conf=
+ig.mak<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f <a href=3D"http://qemu-doc.info" target=
+=3D"_blank">qemu-doc.info</a> qemu-doc.aux qemu-doc.cp qemu-doc.cps<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -f qemu-doc.fn qemu-doc.fns <a href=3D"http:=
+//qemu-doc.info" target=3D"_blank">qemu-doc.info</a> <a href=3D"http://qemu=
+-doc.ky" target=3D"_blank">qemu-doc.ky</a> qemu-doc.kys<br>
+diff --git a/tests/Makefile.include b/tests/Makefile.include<br>
+index 3543451ed3..694f193fb6 100644<br>
+--- a/tests/Makefile.include<br>
++++ b/tests/Makefile.include<br>
+@@ -1176,11 +1176,21 @@ check: check-block check-qapi-schema check-unit che=
+ck-softfloat check-qtest chec<br>
+=C2=A0check-clean:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -rf $(check-unit-y) tests/*.o $(QEMU_IOTESTS=
+_HELPERS-y)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -rf $(sort $(foreach target,$(SYSEMU_TARGET_=
+LIST), $(check-qtest-$(target)-y)) $(check-qtest-generic-y))<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f tests/test-qapi-gen-timestamp<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rm -rf $(TESTS_VENV_DIR) $(TESTS_RESULTS_DIR)<b=
+r>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f tests/test-qapi-gen-timestamp tests/qht-b=
+ench$(EXESUF) \<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tests/fp/fp-test te=
+sts/fp/*.out tests/qapi-schema/*.test.*<br>
+<br>
+=C2=A0clean: check-clean<br>
+<br>
++check-distclean:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f tests/qemu-iotests/common.env tests/qemu-=
+iotests/check.*<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0rm -f tests/test-qapi-types*.c tests/test-qapi-=
+visit*.c \<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tests/test-qapi-com=
+mands*.c tests/test-qapi-events*.c \<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tests/test-qapi-emi=
+t-events.[<wbr>ch] tests/test-qapi-introspect.c \<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0tests/include/test-=
+qapi-*.c<br>
++<br>
++distclean: check-distclean<br>
++<br>
+=C2=A0# Build the help program automatically<br>
+<br>
+=C2=A0all: $(QEMU_IOTESTS_HELPERS-y)<br>
+-- <br>
+2.18.1<br>
+<br>
+<br>
+</blockquote>
+
+--000000000000119323059585bf78--
 
