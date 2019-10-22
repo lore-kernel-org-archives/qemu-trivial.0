@@ -1,52 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iMpUY-00046i-7Z
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Oct 2019 04:26:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45834)
+	id 1iMpUh-0004LG-Dd
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Oct 2019 04:26:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45862)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iMpUV-000423-98
- for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 04:26:08 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iMpUd-0004ER-OH
+ for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 04:26:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iMpUQ-0004Lg-Cv
- for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 04:26:07 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:47913)
+ (envelope-from <laurent@vivier.eu>) id 1iMpUc-0004P3-Lu
+ for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 04:26:15 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:56303)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iMpUO-0004Kf-2j; Tue, 22 Oct 2019 04:26:00 -0400
+ id 1iMpUc-0004Ob-CH; Tue, 22 Oct 2019 04:26:14 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mc1hn-1hjuN00Ng7-00dane; Tue, 22 Oct 2019 10:25:57 +0200
+ id 1N0Zfg-1i8ROd1uvk-00wTUT; Tue, 22 Oct 2019 10:25:59 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 0/2] Trivial branch patches
-Date: Tue, 22 Oct 2019 10:25:51 +0200
-Message-Id: <20191022082553.10204-1-laurent@vivier.eu>
+ Michael Tokarev <mjt@tls.msk.ru>,
+ Mao Zhongyi <maozhongyi@cmss.chinamobile.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PULL 2/2] tests/migration: fix a typo in comment
+Date: Tue, 22 Oct 2019 10:25:53 +0200
+Message-Id: <20191022082553.10204-3-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20191022082553.10204-1-laurent@vivier.eu>
+References: <20191022082553.10204-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:kzuY2wXh51v1n+hhHEeiWdtRKrc094DEqYR4R9AIfWNU1eKLfam
- jsLGd4eWbm0ioqL24tWbfVBvG2Ik+YPyDkXTBHIPj7/KVeU+WGfgZtlLJbQWqoBpMG7e0HO
- +RYNUbAfjIBcPCfPMXUCPZNyyM6plNN0TGl/sOdJdfM3EXJ98il+glFu+kEylwwlhHMf6mt
- eW34wzJzzxXl1BKx3Nc2w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:tHPPXjttYjE=:gj2jxpQE5oqojhcnvlRIcV
- 9Wcv75fAH7Kdr1+Qxp7K2X0ooqiLlqh6NKEIOB5CmW+e2ooARoj7BMfvwifV87/AgdAea+qaz
- NWme1J22bmJVqh0wBwAIU0fAzHSRspwACr0ZKdr/Mm/39g9ds/iYseyTm1E+2hI6OtTjXSJH2
- 9uJ4m6/+fw5BmC/jIA80GGs+V473kQT2WZ2ywE/AP3p//NETG9BYl8LBCNSy50uYk2XvO7GT6
- dv4vdQlPmoABCNyzRAvmjQR9s5Yst18y/yZwYOWGz2Ol7pz2M0BjVwcOBCa/BPAG6HnujjH3a
- aBcOjP/JDA0Get0qrVZL2LOdqegNaav0fZYhtwXOYBNaBts3VTHshI812orHX3MgYxo3e1zed
- 585Id6J/TewqLpNRKzG1BTc+vkyKClFVb85VTa/Umii2Fk18EeglZUfeSpFOWvWHfs/WwXuyh
- ZhT/f8YniCc3rnbYyDiHyL337soQe3U45DxdvsLmQYGI1/q+VPMId3AD2H6gZrrMrwnFJj2aX
- 3s1peQ3xmlCG/IYVN04ogU01shpaTCUZetcK3PO3552j1xQF9sRdidKIOuMjeRTK6XgO8mXNr
- NJrZVREDWn9ltk7KWMzYjbuKgB15dZcw+QX9VAlIE2xtESFLhZOHgyjpOxFMVWydbsETDQYb3
- 3X0WoEoNhF5TTfmGk5raNA/8V4KVbqk2MuUCuoZAMgN8ZjMCqQ+kHaioKf3Rb92I6wUAzwiCt
- zX9AM97Gbe5lhoDy01j4QR8kswhsvG+zviuEsAq4n4HyCJ34ZkZlAL947HusodI1iTW+1eK1X
- FhxpioWWDulCZvom7snEvvtQnkOHqnewtBGdvAXDi8z8U0r1teqSSpdVsufUNwCXPOSoPIXEA
- uVowQ5ltVQClW7tS9gEDQ98ZsS8/9t3YtmHkidrJI=
+X-Provags-ID: V03:K1:QjZZARMxjrsfgGzWOUzaO8EmrMkl58p0I0sjkKhARowNTwNKOuc
+ 7fMnCY211dyqokGFhNTjtCZxgYDoR4oHyaRCtQDJJnwgSOf1/LDCM4jylkR0HgpfWR08a1v
+ JotVKKD1EeDy3sPySUG6nrGnC7wPlHO6g/nmaU0TkQv5W/AOfsS9J8SAJdlRNCwbJ4xS+mE
+ /eTky+iJticvyncOanPNQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:kDe/OAJRuJw=:QA6Kjgkq6bzdfjlyuUtMOC
+ SQeGYFHsofdPrgJPzxQuPOlTLJlfP+0UZx8rNx1GnlGICXr6qv4OX83uu2AreXkxd0R+Hqb05
+ YyOQJAJXJ7N2GajHhG967B8pIf62kdcEv2MrnmeWrM0w2z7JWbdc9Aey2CXLythK2qDxU+Q8i
+ dvkKp8kWCf0VFIM/ikNeMs+MGAFuOMdNMrlIwihGjRoTf3aVhLmQriCIt25aRhQfCyB/6NeRh
+ R542CuvN416zOo6dRQPCj4KVXq5Rdm9dU8C+c/HLKHx25OlprURWOm2peJAXXE9Z4EofPPlxZ
+ Kb0zVcBCEPSMYHhx6aJPPT//sMdmKiyRh1JB2mEQvmapsqtR/6YqXBWIOwGcjuSXFKhn1nn/D
+ izhV6lSTZehrTOnmwcu/cfPH6XJ3eIoecwXSqU8mTbqnhggs2YyueHmuwN1VwnZsnC1Ai7wo6
+ Bf95mDK0W2vfosNu+MRj4LDly4CzHMx+KKC420ia8n1LMBtyRgmHmN//ZoQTbcEJ9oYXZRd34
+ qj7HcGYLnzYVIn3dOwtmUSVTrQ5lR/+RNpwStzsEhltu9oo8oOmArgI1jBcwUHVdOk3p6avIu
+ hjbfIRz+ZXo2jbSLxAyznkDqNlqJD2PArGtpLs0/v854ki42dwWkSO+grWGNnvO7oq200C6w9
+ u/i7hD9TKg5MwXcC2rbQFRC62kXKFsZ6C/po7hg6xlafPHFizX1J0TJFBv5Wze5/+Gh7SX1fr
+ ySsbt2Ux1v5ca2uNaV/mrt4sTnDFe64lQhc4lwFfc8GSKK4LDv+I3+71qzq5uYT7cy/YThfwc
+ gYsq/T/FO4muGpbU9SF86LWc51HWDDh4LA2vxGd78WluxyuyB81Xtc4rG0mTtrXK1lqDCkTm7
+ X9UrA3QMyhrcRH9IOl2HZ5oneZDd4hL683+HUDdk0=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.130
+X-Received-From: 212.227.126.134
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -58,35 +63,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Oct 2019 08:26:09 -0000
+X-List-Received-Date: Tue, 22 Oct 2019 08:26:17 -0000
 
-The following changes since commit e9d42461920f6f40f4d847a5ba18e90d095ed0b9:
+From: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
 
-  Merge remote-tracking branch 'remotes/kraxel/tags/audio-20191018-pull-request' into staging (2019-10-18 14:13:11 +0100)
-
-are available in the Git repository at:
-
-  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
-
-for you to fetch changes up to 81864c2e6166c015d30b8d8ae998a5a1238a68e9:
-
-  tests/migration: fix a typo in comment (2019-10-21 18:14:43 +0200)
-
-----------------------------------------------------------------
-Documentation update and a typo fix
-
-----------------------------------------------------------------
-
-Mao Zhongyi (1):
-  tests/migration: fix a typo in comment
-
-Thomas Huth (1):
-  qemu-doc: Remove paragraph about requiring a HD image with -kernel
-
- qemu-doc.texi            | 4 ----
+Signed-off-by: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <1d0aa8142a10edf735dac0a3330c46e98b06e8eb.1570208781.git.maozhongyi@cmss.chinamobile.com>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
  tests/migration/stress.c | 2 +-
- 2 files changed, 1 insertion(+), 5 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/tests/migration/stress.c b/tests/migration/stress.c
+index d9aa4afe928b..0c2396469344 100644
+--- a/tests/migration/stress.c
++++ b/tests/migration/stress.c
+@@ -192,7 +192,7 @@ static int stressone(unsigned long long ramsizeMB)
+ 
+     /* We don't care about initial state, but we do want
+      * to fault it all into RAM, otherwise the first iter
+-     * of the loop below will be quite slow. We cna't use
++     * of the loop below will be quite slow. We can't use
+      * 0x0 as the byte as gcc optimizes that away into a
+      * calloc instead :-) */
+     memset(ram, 0xfe, ramsizeMB * 1024 * 1024);
 -- 
 2.21.0
 
