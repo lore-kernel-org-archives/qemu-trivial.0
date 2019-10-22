@@ -1,57 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iMpUh-0004LG-Dd
-	for mharc-qemu-trivial@gnu.org; Tue, 22 Oct 2019 04:26:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45862)
+	id 1iMtX0-0007T1-8y
+	for mharc-qemu-trivial@gnu.org; Tue, 22 Oct 2019 08:44:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55536)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iMpUd-0004ER-OH
- for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 04:26:16 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iMtWx-0007SK-Ah
+ for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 08:44:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iMpUc-0004P3-Lu
- for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 04:26:15 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:56303)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iMpUc-0004Ob-CH; Tue, 22 Oct 2019 04:26:14 -0400
-Received: from localhost.localdomain ([78.238.229.36]) by
- mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1N0Zfg-1i8ROd1uvk-00wTUT; Tue, 22 Oct 2019 10:25:59 +0200
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Michael Tokarev <mjt@tls.msk.ru>,
- Mao Zhongyi <maozhongyi@cmss.chinamobile.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PULL 2/2] tests/migration: fix a typo in comment
-Date: Tue, 22 Oct 2019 10:25:53 +0200
-Message-Id: <20191022082553.10204-3-laurent@vivier.eu>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191022082553.10204-1-laurent@vivier.eu>
-References: <20191022082553.10204-1-laurent@vivier.eu>
+ (envelope-from <peter.maydell@linaro.org>) id 1iMtWv-0000bU-N5
+ for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 08:44:54 -0400
+Received: from mail-yb1-xb42.google.com ([2607:f8b0:4864:20::b42]:39149)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iMtWv-0000bE-J1
+ for qemu-trivial@nongnu.org; Tue, 22 Oct 2019 08:44:53 -0400
+Received: by mail-yb1-xb42.google.com with SMTP id z2so5089710ybn.6
+ for <qemu-trivial@nongnu.org>; Tue, 22 Oct 2019 05:44:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=MQMQS9X8FxXUakL8jBDxQ5LiW7Ue2emV11Dz8Ypfc5E=;
+ b=laaLpwQiHvtQa1wZOicEwrzJf9XiQTTPE6hfl8iT6tnzAC0RlpaAFhKPY4aWeOo3uJ
+ k72qOQ/RzY1swhpJ5TqSR64MY63mhdoFvprHdYbRA2di+AZYDdOA2SAzkI3zO78DRt9Y
+ WcxnlFhS4KyBdeuvhr83wbXGPvVzT48BVAFUgHefO+Yw3lqqCaIjxp5pEdEilYEyqOB6
+ di6CSRd/GMqRnfYrG+LZlO0KXWVYsGgZCuAxmmtD/Daoj/oxPp9wScEhz4g14vEs+WGh
+ U/EcdLLVljEXxAHL45HFOHSZomuM3Ga0F/tnXjSqT16a45AQNgdKQvZyWNXQhq+ICGJs
+ +KoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=MQMQS9X8FxXUakL8jBDxQ5LiW7Ue2emV11Dz8Ypfc5E=;
+ b=f5tYOgKAqSvgYvzpIlyvTuoSitBbXbhqlX0+uXQyJ9alhF3xgq0T1SqHzUySJfoc+J
+ EYyDBl47Vl4c3c8er2jGhASA8rUMFASg77d7qlwMEnn0CWVGW1+9gSqEuRrfkhQknJAx
+ CTaEV82erejPj3rzDahdbaPABgzihiE3tJJTAphCZPp2uvDr6OlhFXnHpV7R3Do9V6bs
+ /zOUe7/EGwXN4NkAbeHrvMGLRZDlm7kZcsxMxRHgzv7Xbvq+TXmmY2ojEfaKwI+qoBfJ
+ 0MqGQzTK+g+llevz8QtElFvnN/wS6TbaOrsaNoqleRPWDiNcBMQGUSL2EwXZ0lXEbg7e
+ Fqyw==
+X-Gm-Message-State: APjAAAXn8760gQMfDJuWJLtyGqDAd4DN4CEIPin79ggGQjkYKnO512q7
+ LzKYuNVzqzKixBJOu8lmC2edaS+aXdt2f7MVnnckcQPt+/U=
+X-Google-Smtp-Source: APXvYqwqKdJt+UjX3zBntFKUDBA2bJ1iRmCGTuwDiaOD8SCYfwHJ7mucLXRrA8mkLDizhtmd31cDH3abrQN1SPdiW6g=
+X-Received: by 2002:a9d:708e:: with SMTP id l14mr2558424otj.135.1571748292171; 
+ Tue, 22 Oct 2019 05:44:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:QjZZARMxjrsfgGzWOUzaO8EmrMkl58p0I0sjkKhARowNTwNKOuc
- 7fMnCY211dyqokGFhNTjtCZxgYDoR4oHyaRCtQDJJnwgSOf1/LDCM4jylkR0HgpfWR08a1v
- JotVKKD1EeDy3sPySUG6nrGnC7wPlHO6g/nmaU0TkQv5W/AOfsS9J8SAJdlRNCwbJ4xS+mE
- /eTky+iJticvyncOanPNQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:kDe/OAJRuJw=:QA6Kjgkq6bzdfjlyuUtMOC
- SQeGYFHsofdPrgJPzxQuPOlTLJlfP+0UZx8rNx1GnlGICXr6qv4OX83uu2AreXkxd0R+Hqb05
- YyOQJAJXJ7N2GajHhG967B8pIf62kdcEv2MrnmeWrM0w2z7JWbdc9Aey2CXLythK2qDxU+Q8i
- dvkKp8kWCf0VFIM/ikNeMs+MGAFuOMdNMrlIwihGjRoTf3aVhLmQriCIt25aRhQfCyB/6NeRh
- R542CuvN416zOo6dRQPCj4KVXq5Rdm9dU8C+c/HLKHx25OlprURWOm2peJAXXE9Z4EofPPlxZ
- Kb0zVcBCEPSMYHhx6aJPPT//sMdmKiyRh1JB2mEQvmapsqtR/6YqXBWIOwGcjuSXFKhn1nn/D
- izhV6lSTZehrTOnmwcu/cfPH6XJ3eIoecwXSqU8mTbqnhggs2YyueHmuwN1VwnZsnC1Ai7wo6
- Bf95mDK0W2vfosNu+MRj4LDly4CzHMx+KKC420ia8n1LMBtyRgmHmN//ZoQTbcEJ9oYXZRd34
- qj7HcGYLnzYVIn3dOwtmUSVTrQ5lR/+RNpwStzsEhltu9oo8oOmArgI1jBcwUHVdOk3p6avIu
- hjbfIRz+ZXo2jbSLxAyznkDqNlqJD2PArGtpLs0/v854ki42dwWkSO+grWGNnvO7oq200C6w9
- u/i7hD9TKg5MwXcC2rbQFRC62kXKFsZ6C/po7hg6xlafPHFizX1J0TJFBv5Wze5/+Gh7SX1fr
- ySsbt2Ux1v5ca2uNaV/mrt4sTnDFe64lQhc4lwFfc8GSKK4LDv+I3+71qzq5uYT7cy/YThfwc
- gYsq/T/FO4muGpbU9SF86LWc51HWDDh4LA2vxGd78WluxyuyB81Xtc4rG0mTtrXK1lqDCkTm7
- X9UrA3QMyhrcRH9IOl2HZ5oneZDd4hL683+HUDdk0=
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 212.227.126.134
+References: <20191022082553.10204-1-laurent@vivier.eu>
+In-Reply-To: <20191022082553.10204-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 22 Oct 2019 13:44:40 +0100
+Message-ID: <CAFEAcA8HQ=MeU=gayhsrCrO4EZgkP-Frd4HvZvcz+FuVV=wiqg@mail.gmail.com>
+Subject: Re: [PULL 0/2] Trivial branch patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::b42
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -63,34 +65,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 22 Oct 2019 08:26:17 -0000
+X-List-Received-Date: Tue, 22 Oct 2019 12:44:56 -0000
 
-From: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
+On Tue, 22 Oct 2019 at 09:27, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit e9d42461920f6f40f4d847a5ba18e90d095ed0b9:
+>
+>   Merge remote-tracking branch 'remotes/kraxel/tags/audio-20191018-pull-request' into staging (2019-10-18 14:13:11 +0100)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+>
+> for you to fetch changes up to 81864c2e6166c015d30b8d8ae998a5a1238a68e9:
+>
+>   tests/migration: fix a typo in comment (2019-10-21 18:14:43 +0200)
+>
+> ----------------------------------------------------------------
+> Documentation update and a typo fix
+>
+> ----------------------------------------------------------------
+>
+> Mao Zhongyi (1):
+>   tests/migration: fix a typo in comment
+>
+> Thomas Huth (1):
+>   qemu-doc: Remove paragraph about requiring a HD image with -kernel
+>
+>  qemu-doc.texi            | 4 ----
+>  tests/migration/stress.c | 2 +-
+>  2 files changed, 1 insertion(+), 5 deletions(-)
+>
 
-Signed-off-by: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <1d0aa8142a10edf735dac0a3330c46e98b06e8eb.1570208781.git.maozhongyi@cmss.chinamobile.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- tests/migration/stress.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/migration/stress.c b/tests/migration/stress.c
-index d9aa4afe928b..0c2396469344 100644
---- a/tests/migration/stress.c
-+++ b/tests/migration/stress.c
-@@ -192,7 +192,7 @@ static int stressone(unsigned long long ramsizeMB)
- 
-     /* We don't care about initial state, but we do want
-      * to fault it all into RAM, otherwise the first iter
--     * of the loop below will be quite slow. We cna't use
-+     * of the loop below will be quite slow. We can't use
-      * 0x0 as the byte as gcc optimizes that away into a
-      * calloc instead :-) */
-     memset(ram, 0xfe, ramsizeMB * 1024 * 1024);
--- 
-2.21.0
+Applied, thanks.
 
+Please update the changelog at https://wiki.qemu.org/ChangeLog/4.2
+for any user-visible changes.
+
+-- PMM
 
