@@ -1,105 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNI5z-0006Hk-8k
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Oct 2019 10:58:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34314)
+	id 1iNPp1-0001Ro-W4
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Oct 2019 19:13:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34347)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNI5v-0006CX-QX
- for qemu-trivial@nongnu.org; Wed, 23 Oct 2019 10:58:40 -0400
+ (envelope-from <philmd@redhat.com>) id 1iNPp0-0001RT-2T
+ for qemu-trivial@nongnu.org; Wed, 23 Oct 2019 19:13:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNI5t-00082l-Of
- for qemu-trivial@nongnu.org; Wed, 23 Oct 2019 10:58:39 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:53997)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNI5l-0007y6-Th; Wed, 23 Oct 2019 10:58:31 -0400
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MTR6K-1iZHbX2leG-00Thjr; Wed, 23 Oct 2019 16:58:23 +0200
-Subject: Re: [PATCH 3/3] qemu-timer: reuse MIN macro in qemu_timeout_ns_to_ms
-To: Eric Blake <eblake@redhat.com>, Frediano Ziglio <fziglio@redhat.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org
-References: <20191023122652.2999-1-fziglio@redhat.com>
- <20191023122652.2999-3-fziglio@redhat.com>
- <5f20705e-60bc-08d5-8b6e-72438afabefe@vivier.eu>
- <c2836c58-5a3c-2356-6e94-9b2341ab2194@redhat.com>
- <1860840671.8198083.1571840126307.JavaMail.zimbra@redhat.com>
- <21fd3aa0-232c-06e8-1e20-b5c98f125468@redhat.com>
- <8b52c02c-1e26-4ac7-3f79-db4459f9c178@vivier.eu>
- <173d8641-ff6b-adc4-b0d4-f4dd5909f87c@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <fbc49211-35f6-2b98-b21d-faad37ed8aea@vivier.eu>
-Date: Wed, 23 Oct 2019 16:58:20 +0200
+ (envelope-from <philmd@redhat.com>) id 1iNPoz-0003Wo-2k
+ for qemu-trivial@nongnu.org; Wed, 23 Oct 2019 19:13:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35850)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iNPoy-0003We-Sf
+ for qemu-trivial@nongnu.org; Wed, 23 Oct 2019 19:13:41 -0400
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 941EA5AFE9
+ for <qemu-trivial@nongnu.org>; Wed, 23 Oct 2019 23:13:39 +0000 (UTC)
+Received: by mail-wr1-f70.google.com with SMTP id c6so11838670wrp.3
+ for <qemu-trivial@nongnu.org>; Wed, 23 Oct 2019 16:13:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Q/kahgxTs8oi0snCEUdyH706xxWE0cVeQlvMyxh0e0I=;
+ b=GfJBCldCqlZyTzRJvgogVNAZlduC+NQxDGzj1HtgKRaeXKwnM1DnKploe2GiIcmgJV
+ 0gX26XypB068WUw79V2myGW0Gyr1TT/SsjnB2ey9BdUgzjKmsgmswnv5hzAVa3zJkZAO
+ dYV2vFHJhD+/6ujKGAV1x2a6k5P58GFNwzK0QK0nX/+tKLfRrrRwV1qmfzSHe8jmRxyV
+ q1ST8DyFZ3oLNN9U/QqAzS8kR1unyQprbC83lXgmHllwP6DFBK/ZoiEgSEIGxNlMw+Ve
+ ad7amI1roRc4kbfBOuX7yfQ3fNKS8PJq7t6/JymGsM5bFx7NbVr03uzISU0OtvwX8wUh
+ pX2w==
+X-Gm-Message-State: APjAAAU0MgHkEYwApsWi06w38N4gG+O9c6dI9mtzCfF4dHIDFafTsP4j
+ F0JHW+sVFlrxEp9bU39QQUPhgGg5YbfQbDNr7F1dFuzjzG3UpZdw6uc2QzBY9IIN9mJ8xnvF7zp
+ pMiKsxttQBLqvSTmTUQ==
+X-Received: by 2002:a1c:5641:: with SMTP id k62mr2010064wmb.97.1571872418271; 
+ Wed, 23 Oct 2019 16:13:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzmODej7GTwJUBFDO8bMqAOc+KLqmcGzysSSy2U4huxJQk7QJQG2PLIJIWDgDAnOgSTKc2aLA==
+X-Received: by 2002:a1c:5641:: with SMTP id k62mr2010052wmb.97.1571872418106; 
+ Wed, 23 Oct 2019 16:13:38 -0700 (PDT)
+Received: from [192.168.1.41] (129.red-83-57-174.dynamicip.rima-tde.net.
+ [83.57.174.129])
+ by smtp.gmail.com with ESMTPSA id v10sm989726wmg.48.2019.10.23.16.13.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 23 Oct 2019 16:13:37 -0700 (PDT)
+Subject: Re: [PATCH 1/1] pci: pass along the return value of dma_memory_rw
+To: Klaus Jensen <its@irrelevant.dk>, qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20191011070141.188713-1-its@irrelevant.dk>
+ <20191011070141.188713-2-its@irrelevant.dk>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <455e6dee-8dd8-fae7-5a2f-e175b9d1cb8d@redhat.com>
+Date: Thu, 24 Oct 2019 01:13:36 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <173d8641-ff6b-adc4-b0d4-f4dd5909f87c@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:1ThzeD0fXIluSylcZnTq3BtMqF+doyJAVa8fqc19LWfjC/ZIUq8
- 8FbzeOppJEFCkxk1NrEUigxexQWikaZThBEIH80euqsu3I1aeE0Z0A3KZAIXgqfdzQic/6p
- lvrXTwcJvvYzrE1tyH9c8JZPLD8iR9zAX83h/2fr1mKMHHxlmVVzo418zW8GgpndUGfhyWy
- E6kOHvh++hKLKCkuyIVyA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:3DxG/JVHJkQ=:fMyqK2o14IQ4pIDm8Qflfe
- XaOGvz1tolYyKU5FAHHCXvHZ87zVSmTvbKhIS26cw7xi2xpQtqHRMWfzlNN5BjDpqb/1Aloau
- tOt5f1n8jaadrWtiTLSl/84KgKOMB7MJ6rbh+wN9nTdKupH6/ItFXI1PQ0uPYFmMFPt4uu7f6
- TQssX3rxwLJS0eBOvFlcWPm1e/6BGnzX2kSr0XS4F5Zy9LGvSdlaA+FL28vA3MKnfQSiphQiT
- Q1/zgRQd220DBltmYU1mkDpGeO110LFiziRuCpEW0nzwU7zJ4p0xr6ly4Ng1g9ADt0+vuu1aI
- kgy9dfwztaZ96EIrX5PaY1ta7VDBXSI3iTQGr1Mwd4Nd1wG+ZMy6aB9hFyoppW5IxKVAYQRXn
- SXY+ROX0I2sOY14TMr1CbNmufITJB03rCwyGULO1kgKjnSnwFyHXS+oOFKjGXBNz9gDr8MxfJ
- UokrjCS/0IirDZ+aa5ny/3oIPxwhjfVVtgzrZQtLNjo5LpVWulraMLIfDFlfUpoK/jKud9wKL
- ZIrBSAM4t1T1e4WI/4yUTsZaHwDwsufisKQ2T31VJi9ehvmwlVbEt6e7ed9WlWo7cg8GB8GgV
- XyUZ6sX6o7e04YMq0MrLoU27WtWGoa6DVemxzWQDjy99i0GIPdC/p7Te2WvEcT0Zvqhwx9tID
- ixGSx/s+6sOUsrx91VvnoL8Y/UJ/W5v3bcPIB0FZbc5wZYnnC5dUiO0Y+4ysDBbHCsGbYO0WT
- +xEmR4ZS0V+sni8vYyywjv3w5Q7X1a2QRd5t8Nxb1foDhRYplRXIGcXs8pKd0/Ijy58Giyd/L
- L7hO7VmLgpw2d3z0U2QVFLnZA/aRfuvRk6geYntUwlzQtb593bc3ct64QqBesg+ot2yPfhJLT
- /GKdbpsUG8XeeagKBQmox6GDK1ubQNXf0T0xb914w=
+In-Reply-To: <20191011070141.188713-2-its@irrelevant.dk>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.134
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,60 +76,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Oct 2019 14:58:41 -0000
+X-List-Received-Date: Wed, 23 Oct 2019 23:13:43 -0000
 
-Le 23/10/2019 à 16:51, Eric Blake a écrit :
-> On 10/23/19 9:45 AM, Laurent Vivier wrote:
-> 
->>> The C rules for ternary type promotion guarantee that the MIN macro
->>> produces the correct type without the cast ('cond ? int64_t : int32_t'
->>> produces int64_t).
->>
->> gdb seems to disagree with that:
->>
->> (gdb) whatis l
->> type = long long
->> (gdb) whatis i
->> type = int
->> (gdb) whatis 1 ? l : i
->> type = long long
->> (gdb) whatis 0 ? l : i
->> type = int
-> 
-> It looks like you've found a gdb bug.
-> 
-> C99 6.5.15 p5 states:
-> "If both the second and third operands have arithmetic type, the result
-> type that would be determined by the usual arithmetic conversions, were
-> they applied to those two operands, is the type of the result."
-> 
-> and the usual arithmetic conversion of 'long long OP int' is 'long
-> long', per 6.3.1.8.
-> 
+On 10/11/19 9:01 AM, Klaus Jensen wrote:
+> Some might actually care about the return value of dma_memory_rw. So
+> let us pass it along instead of ignoring it.
+>=20
+> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+> ---
+>   include/hw/pci/pci.h | 3 +--
+>   1 file changed, 1 insertion(+), 2 deletions(-)
+>=20
+> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+> index f3f0ffd5fb78..4e95bb847857 100644
+> --- a/include/hw/pci/pci.h
+> +++ b/include/hw/pci/pci.h
+> @@ -779,8 +779,7 @@ static inline AddressSpace *pci_get_address_space(P=
+CIDevice *dev)
+>   static inline int pci_dma_rw(PCIDevice *dev, dma_addr_t addr,
+>                                void *buf, dma_addr_t len, DMADirection =
+dir)
+>   {
+> -    dma_memory_rw(pci_get_address_space(dev), addr, buf, len, dir);
+> -    return 0;
+> +    return dma_memory_rw(pci_get_address_space(dev), addr, buf, len, d=
+ir);
+>   }
+>  =20
+>   static inline int pci_dma_read(PCIDevice *dev, dma_addr_t addr,
+>=20
 
-Ok, you're right [1]
-
-Frediano, sorry for my misleading comment.
-
-Thanks,
-Laurent
-
-[1] and gcc agrees:
-
-int main(void)
-{
-        long long l;
-        int i;
-        typeof(0 ? l : i) f;
-        typeof(1 ? l : i) t;
-}
-
-(gdb) whatis l
-type = long long
-(gdb) whatis i
-type = int
-(gdb) whatis f
-type = long long
-(gdb) whatis t
-type = long long
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
