@@ -1,87 +1,116 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNhKU-0003w6-Tj
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2019 13:55:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44677)
+	id 1iNhS3-0007Tg-Kl
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2019 14:03:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46320)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iNhKR-0003q4-NE
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 13:55:20 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNhS0-0007MP-6A
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 14:03:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iNhKO-0008GW-KE
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 13:55:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55102)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iNhKN-0008FI-QY
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 13:55:16 -0400
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 7B6BBA76C
- for <qemu-trivial@nongnu.org>; Thu, 24 Oct 2019 17:55:14 +0000 (UTC)
-Received: by mail-wm1-f72.google.com with SMTP id l184so1574896wmf.6
- for <qemu-trivial@nongnu.org>; Thu, 24 Oct 2019 10:55:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=6v+fctnKVl/6fYka3XIVf9fH1YaHhqzuYR56MyK9A60=;
- b=M+X8nt1bdWwO5Xd74JO3k0121qQPO3TcPHqGaglT/CqCWUKw7pDaPcjfRiATnOImxt
- SNG56bkpxYXxBwqv8GBTU8aDS18Z5ypOwHNgt+H5ilPJrgjcqJbDbrJeR1E9PJprD9pL
- c4HMwDNVQvcERUiENXodE44JBZJuD6PbRxTHxKmDP7nZSfShL10vdNZaiwHBwCCyssEi
- 8p0sFCKWsGSDPq6VsI/eFQMIRfHSPSbJhPcQZYjIu3/6ualAdtUyfMVxrXib1jnFNC0M
- 1H8h1w82lbkD+VILa22YZbu514L2sLT+TBfyPP3Di0pxdpUqnCfZ7r9oBm0HNt1VMuuH
- 6TwA==
-X-Gm-Message-State: APjAAAV79PC4Rp+O54whD58+nlX/rXwpndNoCI1fGZEItKwNKNkUyg8R
- uFoFx5u9n4hnYLulc5SFqS5/lREYlmmDxA4/L3dNuQLg470kUi9rUCLjYHuJCne86VF5k91kzAh
- BZiIJkn8CRwcLUIp6iw==
-X-Received: by 2002:adf:8481:: with SMTP id 1mr5363886wrg.189.1571939713206;
- Thu, 24 Oct 2019 10:55:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyDJCsx9Qw7zYvfGHFEcryNWgFO6HIFZ5JybJTxQFAMpUNVQYdTFqK3xVFCKCJaBYCPY3voAA==
-X-Received: by 2002:adf:8481:: with SMTP id 1mr5363848wrg.189.1571939712934;
- Thu, 24 Oct 2019 10:55:12 -0700 (PDT)
-Received: from [192.168.1.115] (129.red-83-57-174.dynamicip.rima-tde.net.
- [83.57.174.129])
- by smtp.gmail.com with ESMTPSA id s13sm2892518wmc.28.2019.10.24.10.55.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 24 Oct 2019 10:55:12 -0700 (PDT)
-Subject: Re: [PATCH v2 00/14] hw: Split RTC devices from hw/timer/ to hw/rtc/
-To: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>,
- qemu-ppc <qemu-ppc@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>,
+ (envelope-from <laurent@vivier.eu>) id 1iNhRx-0004tR-Mj
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 14:03:07 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:52119)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1iNhRs-0004hv-LT; Thu, 24 Oct 2019 14:03:00 -0400
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MoNMu-1hdMBn0gP2-00ooUK; Thu, 24 Oct 2019 20:02:27 +0200
+Subject: Re: [PATCH v2 01/14] hw/timer: Compile devices not target-dependent
+ as common object
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Aleksandar Markovic <amarkovic@wavecomp.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goat?=
- =?UTF-8?Q?er?= <clg@kaod.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Thomas Huth <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Helge Deller <deller@gmx.de>,
- Aurelien Jarno <aurelien@aurel32.net>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
  =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Richard Henderson <rth@twiddle.net>, Eduardo Habkost <ehabkost@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>
+ Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-trivial@nongnu.org,
+ qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Igor Mammedov <imammedo@redhat.com>
 References: <20191003230404.19384-1-philmd@redhat.com>
- <CAFEAcA-rmPuKQyv8d-u-1UAMhy6yGAcF3csVDcvYVXMosZysYw@mail.gmail.com>
- <839e9cb5-6fc2-a2b2-df12-abf9dbf6dcdd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <04b0db79-dfb3-9f28-b649-459214728556@redhat.com>
-Date: Thu, 24 Oct 2019 19:55:10 +0200
+ <20191003230404.19384-2-philmd@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <9f57c1e8-5a2b-7caa-6461-139ad60b57de@vivier.eu>
+Date: Thu, 24 Oct 2019 20:02:20 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <839e9cb5-6fc2-a2b2-df12-abf9dbf6dcdd@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20191003230404.19384-2-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:z80SXNsCVhYNz63rVP2KGCGWwdR8wt/pnIvrQ3jqtGavyV//WPJ
+ bQagSEvEd3l8nC8U5jLJFC0nIi2IuBVsUfYSHIAzoQNbYUAGyjU5sDsbDj5c9ZYluZjFKMc
+ D3to3HuDEPii1H78ZgAh/EjqxCzG3xH+9Mn9c/8BfCmbDiYBVhM79w5w7EqbXN1U8hNELG8
+ 8BUlxXH2nklanQsAw9LXg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ZKwRa20/Rpw=:x0uD0v+dRzkj/yurXCNZbR
+ QpX9Ur+x/SubNAA8qMxVyvjN1WgjgVv+uGZoWxUismyy4VCN3F+lQDYDAMQZZIHqQ9ekRb/FR
+ ynfOaAXGBawAGKNLLa6rJUUZkercygk8RO5rSQ7ZnMNrr57w0wak3izPXTDGAIK1t4y7mN4zU
+ NMbZes7s2As0CRgAAQVfyVNKxBbHP0vszQW5yd97cQNq7Elqe7qjrPt5xKtOcmUkyleNDdLFS
+ x229sUecBhdfhu6jv82gERtHgZX3WYP2lRUGbc4dmhnh3i5y5vzSzV6T2ZAF07RlbfB54KIer
+ uO7Uw29XYTdkZBQ1Ee5ytihWzXNOyBQTvYtRJvAe1DhOT+51vYgTq/RMtMY6W1GnIvP9HBINj
+ 9ZMaT5TovI6myKbyJJ52QxKl303ZTjdvYrBDUCOrP0rGfk2abN3NMmaJuGQU6ceVUcmsJKtkL
+ MbKXL7VUiSUTSqyuMJYGVZGWkRcGhcfwuZ6X/4VTuKBZCRH5OgWOBdzFJUgr6+AfAbbuIiHyn
+ a+x/aYeeAjb0qXij5nkZz9uPJTNJ5J9Nxta6C0Ufk/s/Vb+VLjMuUmhvpOZaPSzzxZM4MGkuN
+ i+2xUNCPk0KqzeX/vuJ//XontKvUWGWtbB+hNtLMAtCUzStmFvBHNx2YYcPLIDLXNHGJdgOfL
+ Iy/FZnZ25hC2WCivWtv/6G0HCq3aDj+gTVoSF9dOaPsYNRWAu2czoX5CTZZLsTn5yQcnkPkJX
+ d0zGNGi+5m7vu0FU51dkVmFIPJXdJlOLzNPIqT2S/zPN11CZijsU5Av0YOqxDFE81SH9PZT5T
+ y8kGc+7QRqdOoGKmiXurNkAKW5GqZFy1nchOgL++CtK1agltUSr6svSAJpbAv2ZqHOKDti/Si
+ DxBMVi/HMmbuscvxmTw5b7+aeTLnlvTVKtm3iz8IQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.132.183.28
+X-Received-From: 212.227.126.130
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -93,45 +122,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Oct 2019 17:55:21 -0000
+X-List-Received-Date: Thu, 24 Oct 2019 18:03:10 -0000
 
-On 10/24/19 7:36 PM, Laurent Vivier wrote:
-> On 24/10/2019 17:51, Peter Maydell wrote:
->> On Fri, 4 Oct 2019 at 00:04, Philippe Mathieu-Daud=C3=A9 <philmd@redha=
-t.com> wrote:
->>>
->>> Since v1: https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg03=
-334.html
->>> - addressed review comments (described in patches 3 and 4)
->>> - added R-b/A-b tags
->>>
->>> Whole series now reviewed.
->>
->> for the arm parts:
->> Acked-by: Peter Maydell <peter.maydell@linaro.org>
->>
->=20
-> I'm going to queue this series in qemu-trivial queue, so I guess your
-> Acked-by is for patches 2, 10 and 11?
+Le 04/10/2019 à 01:03, Philippe Mathieu-Daudé a écrit :
+> All these devices do not contain any target-specific. While most
+> of them are arch-specific, they are shared between different
+> targets of the same arch family (ARM and AArch64, MIPS32/MIPS64,
+> endianess, ...).
+> Put them into common-obj-y to compile them once for all targets.
+> 
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  hw/timer/Makefile.objs | 22 +++++++++++-----------
+>  1 file changed, 11 insertions(+), 11 deletions(-)
+> 
+> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+> index 123d92c969..f407523aa4 100644
+> --- a/hw/timer/Makefile.objs
+> +++ b/hw/timer/Makefile.objs
+> @@ -25,20 +25,20 @@ common-obj-$(CONFIG_MILKYMIST) += milkymist-sysctl.o
+>  common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
+>  common-obj-$(CONFIG_NRF51_SOC) += nrf51_timer.o
+>  
+> -obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
+> -obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
+> -obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
+> -obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
+> -obj-$(CONFIG_OMAP) += omap_gptimer.o
+> -obj-$(CONFIG_OMAP) += omap_synctimer.o
+> -obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
+> -obj-$(CONFIG_SH4) += sh_timer.o
+> -obj-$(CONFIG_DIGIC) += digic-timer.o
+> -obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
+> +common-obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
+> +common-obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
+> +common-obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
+> +common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
+> +common-obj-$(CONFIG_OMAP) += omap_gptimer.o
+> +common-obj-$(CONFIG_OMAP) += omap_synctimer.o
+> +common-obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
+> +common-obj-$(CONFIG_SH4) += sh_timer.o
+> +common-obj-$(CONFIG_DIGIC) += digic-timer.o
+> +common-obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
+>  
+>  obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
+>  
+> -obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
+> +common-obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
+>  
+>  common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
+>  common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o aspeed_rtc.o
+> 
 
-ARM: 2, 7-11, 13-14:
+Applied to my trivial-patches branch.
 
-   hw: Move PL031 device from hw/timer/ to hw/rtc/ subdirectory
-   hw: Move TWL92230 device from hw/timer/ to hw/rtc/ subdirectory
-   hw: Move DS1338 device from hw/timer/ to hw/rtc/ subdirectory
-   hw: Move Xilinx ZynqMP RTC from hw/timer/ to hw/rtc/ subdirectory
-   hw: Move Exynos4210 RTC from hw/timer/ to hw/rtc/ subdirectory
-   hw: Move Aspeed RTC from hw/timer/ to hw/rtc/ subdirectory
-   hw/rtc/xlnx-zynqmp-rtc: Remove unused "ptimer.h" include
-   hw/rtc/aspeed_rtc: Remove unused includes
-
-PPC: 3-5
-
-   hw: Move MC146818 device from hw/timer/ to hw/rtc/ subdirectory
-   hw: Move M48T59 device from hw/timer/ to hw/rtc/ subdirectory
-   hw: Move M41T80 device from hw/timer/ to hw/rtc/ subdirectory
-
-SPARC: 6
-
-   hw: Move sun4v hypervisor RTC from hw/timer/ to hw/rtc/ subdirectory
+Thanks,
+Laurent
 
