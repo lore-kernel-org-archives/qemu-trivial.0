@@ -1,24 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNgsi-0005ga-Kg
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2019 13:26:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40115)
+	id 1iNgtf-0007sU-52
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2019 13:27:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40251)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNgse-0005Vz-JE
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 13:26:37 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNgtb-0007ml-LV
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 13:27:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNgsd-0006MJ-G7
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 13:26:36 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:58911)
+ (envelope-from <laurent@vivier.eu>) id 1iNgta-0006fO-JL
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 13:27:35 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:53669)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNgsY-0006HT-8C; Thu, 24 Oct 2019 13:26:30 -0400
+ id 1iNgtX-0006er-9i; Thu, 24 Oct 2019 13:27:31 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MnaTt-1hgPYw3RLx-00jWFm; Thu, 24 Oct 2019 19:26:23 +0200
-Subject: Re: [PATCH 1/3] util/async: avoid useless cast
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1N6srH-1hwGOn1YIZ-018KvV; Thu, 24 Oct 2019 19:27:26 +0200
+Subject: Re: [PATCH 2/3] event_notifier: avoid dandling file descriptor in
+ event_notifier_cleanup
 To: Frediano Ziglio <fziglio@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
 References: <20191023122652.2999-1-fziglio@redhat.com>
+ <20191023122652.2999-2-fziglio@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -62,36 +64,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <17410622-d980-730d-ae77-9fa53a64a9d4@vivier.eu>
-Date: Thu, 24 Oct 2019 19:26:21 +0200
+Message-ID: <63bab37e-f848-8361-2333-cfae59e81ae6@vivier.eu>
+Date: Thu, 24 Oct 2019 19:27:24 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20191023122652.2999-1-fziglio@redhat.com>
+In-Reply-To: <20191023122652.2999-2-fziglio@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:k1hPNn20zvIcs/x7bUo89AxCJEyYRCM6OJP4pp/MJ200PRAPkIH
- veCJ+d2ta61yCV6/6hBhvDkOXjJzE5Dkk2ZCm1NueNz0gZNxgLlRNH3/Qwd5w8N6Re+IEvG
- oxzVJKim+PBs8SiUyHW1tpZHuAWbSabmJXYv/uMFXGF6soBa//oYpielE9pR2mb7Rl8UgsY
- XuVeU2i+XMTqF7JKsjz1Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ku2i3mIkSKU=:qLYETMCEAg82cqCZzuoEQF
- 8uwECz/9qKBvdVkpJvULtiVoydEhjpa2FQy4stBeonv9jaW+8t9Onbrrr8M0AHKQZAym50PKZ
- sp6jvdtyXEBzkT5s5cCfe2HNaq27iXlkGSuFypM1ZiPUx8uSVo/ZxwoYAG81GrV0GbckW1mVr
- MbfUZcBRHyUe/0z0RNxB5XtaCFu9maOMR4FAbbVewQDHQfgcrw5YC8rDEukXssvP5N3+mxS0G
- 2v7HJEYO5ynXnR9uwdkSfw+ezM/oahPiv24zf9GydZuSTXSjKSiDOUMBT6Z5ZSf6S6nWfLTBb
- v0izP5xCHVD0vrmUyrOMlY4kOPaaZLOd+VEADn9cOv8G3cCdwYe2WhE0o80iQ4gcnSn2cCJZ7
- sc0yj46uQEOXFvo5xh75xsXunfB/snJ3k5xytjSL7bHo+51VJhkEjCDtTcmrdE4y401uW7pms
- 0feQ6RB4Ssph8SvlmyRFzkiqnkxfGvBDg7aazbgnyXXLD/DZIv0PRAObp3u5jXZIVQ3epnIt/
- MvTQUCQRCkiEHBLak57ZnUxhjndOMDeT3EaAxB7yj99yn/XXOEWkl5OtJhVhzs/g0ZRaRooe6
- EI5YBsFnj0JAxGYp/lWdwmt/eVTXM0XgRch6/e5fsu2LIH3iZyKsCZIGhOL3KqudluLYl/0kb
- fhsDZKKFryBVWFgzAUc9s1VN755kf5TPzaatR/f5dtSNSYy8zuZQz8zNtiJa1KQkiw4SelhXL
- 3OoZkZgdM/nI2bLyrQ5DcnxoNOJxpUNq0LZTld51TZGbJNQXD7/5MwSNyWwaEcx1x604ViQc5
- GPgSghQpKjjJ57/khgGMVVGd5VGxAeu5f25LJKZV8zEHa1vCk6yJJg0QS7KG9mgqF+E0qSKdK
- OqrI+XlNkYub0OkWEH2oYbPPTXKMfMZEOgDapslYo=
+X-Provags-ID: V03:K1:RLI+O/ihPBSQVdaCNiHO8/KZeE2zCJ2ej+k0mZq4LqWDWWsk+c0
+ 9mrnucF4O2bZsCTgp/CahQo2maS7Ar2a4F21rhPJXX0+Jw5qi5xX6IUwMGRcPqlM1TJ4yjH
+ V1YdVlq7z4zqyDUFFUR76XhzZcdUXgls3g6SIWL3aF+TLZJO0l0fmi1e5vqtW8axvy0Mrh9
+ 5rEs+XuRkssUmzyu2ozGw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:jvQwkczo4Oo=:4YVkAV5/J3N1Wbi2rB3VgN
+ VsttpdpA8AIWhNCehBl/Vj9L4VaQKTwsGIOzEm4T2NJedriU1lm153GJQkxF6amkXICPSQd+w
+ Vki3AW6nhHEJV/I3ql9vRb4wjbEi5/NzdnNxc2+7sh929RdKQweaSkuREARw361Fub+zDLYiU
+ DFL7HKP9sVves04r3JpPkmui6eNMb9kLWL8wLgv4zkwNweCPFwhq0RQKpo8Bp/68mI8on9Z19
+ 27uWegrViQtA8KwRtlhm5utprupvknfmqDZN3r09974Pn65ZXwTDVW2wDyPq2cnij16wcGYWY
+ Oy7CNCDbB92TvXtYUrMJxSpomjIICSdvHj/C9FmEiUmjl01nQJkdE5Y7o32Z8dytDwx3gVUON
+ l5Rna06aQ0Bfiwr0Oib7CJ6Pz2lXLu0sxdclUmrdTTLNi7Gz5D2SJrCvTIjw//rIl3Qht3/9X
+ CvGvRDdD/Nx8l6r9A5lBEpTKqy0mXN79diN3Sa4MSvyn3Kkopb00xMwaG91gQ0Ko4dS2iu5zF
+ 0Xs5x5Ba7iDgiq7EEJY6eow3sWW4zGOb0n6aoBYGhH7yCCRBbF+rGS5/+sFpEA+ZhCDnVUJ9D
+ pBD97hvKBgjy1kDvR/bNK9qKy4qUyA8JN4Mvit7hOzFSPqmRWp+yuBroWf31l+6fUvAZJWjzJ
+ Q0KafTcuDbf4e8R6XvjeOrkQmCYvRWBOeHRWUvyQVGkci0q29aG8ollPq7bxFhA63RXDLXzMN
+ E0r/G9YzX9jN/J1lvKHjrkRcj0zZDRtjHtxIQqKHTg5L9V66tDLpQuCfh5zg5HhnkIL7Bjj+P
+ FcDkoROI76zlY3EfXIN86reLZZRweFNrN6mXc6yHtvcljXrommZtZkcrqVZWi5VE6ALXvzuSa
+ IPFM+IzK0CHP9KeVEjKfZ/uo0miunJMvyOryt/7Sc=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.187
+X-Received-From: 212.227.126.135
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,28 +105,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Oct 2019 17:26:38 -0000
+X-List-Received-Date: Thu, 24 Oct 2019 17:27:37 -0000
 
 Le 23/10/2019 à 14:26, Frediano Ziglio a écrit :
-> event_notifier_dummy_cb is already compatible with EventNotifierHandler.
+> If rfd is equal to wfd the file descriptor is closed but
+> rfd will still have the closed value.
+> The EventNotifier structure should not be used again after calling
+> event_notifier_cleanup or should be initialized again but make
+> sure to not have dandling file descriptors around.
 > 
 > Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
 > ---
->  util/async.c | 1 -
->  1 file changed, 1 deletion(-)
+>  util/event_notifier-posix.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/util/async.c b/util/async.c
-> index ca83e32c7f..b1fa5319e5 100644
-> --- a/util/async.c
-> +++ b/util/async.c
-> @@ -429,7 +429,6 @@ AioContext *aio_context_new(Error **errp)
->  
->      aio_set_event_notifier(ctx, &ctx->notifier,
->                             false,
-> -                           (EventNotifierHandler *)
->                             event_notifier_dummy_cb,
->                             event_notifier_poll);
->  #ifdef CONFIG_LINUX_AIO
+> diff --git a/util/event_notifier-posix.c b/util/event_notifier-posix.c
+> index 73c4046b58..00d93204f9 100644
+> --- a/util/event_notifier-posix.c
+> +++ b/util/event_notifier-posix.c
+> @@ -80,8 +80,8 @@ void event_notifier_cleanup(EventNotifier *e)
+>  {
+>      if (e->rfd != e->wfd) {
+>          close(e->rfd);
+> -        e->rfd = -1;
+>      }
+> +    e->rfd = -1;
+>      close(e->wfd);
+>      e->wfd = -1;
+>  }
 > 
 
 Applied to my trivial-patches branch.
