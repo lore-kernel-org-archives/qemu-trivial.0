@@ -1,28 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNhaV-00073C-An
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2019 14:11:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47363)
+	id 1iNhdG-0002TD-8z
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2019 14:14:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47631)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNhaL-0006hB-UL
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 14:11:48 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNhdC-0002LP-95
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 14:14:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNhaK-0008Tr-Kx
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 14:11:45 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:60977)
+ (envelope-from <laurent@vivier.eu>) id 1iNhdA-0000pq-43
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 14:14:42 -0400
+Received: from mout.kundenserver.de ([212.227.126.130]:37867)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNhaH-0008Sy-PF; Thu, 24 Oct 2019 14:11:42 -0400
+ id 1iNhd2-0000lz-1i; Thu, 24 Oct 2019 14:14:32 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N5mOZ-1hv9FK1EFf-017F3I; Thu, 24 Oct 2019 20:11:37 +0200
-Subject: Re: [PATCH 3/3] qemu-timer: reuse MIN macro in qemu_timeout_ns_to_ms
-To: Eric Blake <eblake@redhat.com>, Frediano Ziglio <fziglio@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <20191023122652.2999-1-fziglio@redhat.com>
- <20191023122652.2999-3-fziglio@redhat.com>
- <ac0dbd04-c594-0904-020c-ab6384153997@vivier.eu>
- <45775e9d-5d7d-74b4-8eee-1813b080c2da@redhat.com>
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MPXta-1ibOzU3wpe-00Mbwf; Thu, 24 Oct 2019 20:14:07 +0200
+Subject: Re: [PATCH v2 03/14] hw: Move MC146818 device from hw/timer/ to
+ hw/rtc/ subdirectory
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-trivial@nongnu.org,
+ qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Igor Mammedov <imammedo@redhat.com>
+References: <20191003230404.19384-1-philmd@redhat.com>
+ <20191003230404.19384-4-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -66,36 +81,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <d9bf8d20-a873-57ec-3cc4-542c72016463@vivier.eu>
-Date: Thu, 24 Oct 2019 20:11:35 +0200
+Message-ID: <c24b0edf-9364-d6eb-6433-854d937320bc@vivier.eu>
+Date: Thu, 24 Oct 2019 20:14:03 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <45775e9d-5d7d-74b4-8eee-1813b080c2da@redhat.com>
+In-Reply-To: <20191003230404.19384-4-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Io65x8KOSpNhKJQfe0EV/jvbAueGShzHdDd8ROILf2MwE99pjWn
- V/rnGL2flHK6l+NRaZWXGUADAdlGha3JVN44onLRco5jTZgEQfOHoqghuq6FpjCs27Dvagm
- 9dpSbuA0s4yyzfSwyAzxsyJzccI+jtPp52B68qp2JePGHgTqwUSOMGTfmybqM8YVRU1H00Y
- nty82DnwpzQ3OfW/ZxmOA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ved6pVf0YTo=:B9gM8tPp7C+tLJt3WoeBb0
- lQ+Ma1M+sneFgZmNBO83es5DMY9yYz0P+AzYdopb7Ygig5CcuNIJUseRaA5FCBXU2xG/kFe6l
- H/Ednkw54gq0fncxAxl/N/ojE6OFlXO3lU0YMlXGWrYk+Drz9mOxOqiPBKAZ8qf/OfFcgXdUm
- fJ26hROHG9PWf0NOKD/nNdYMaObz1sgIrU3ID7dNeM1Tt4E9E78QlUCocOMc3uakpSiLuVbrn
- CSY5BFystLlb0xc7/esG5iU19OtHWybm5oMNc++TNo7cdbDX8m4QyIyTb2FabHsD6INEpYfoG
- AHeD5fFJl0JKm4/crxwudOekxD5YMGZjJw4aTll58pT95Sc+LsLJuZ/+kY/ZhIRfKJ0vvEn+V
- QaWcyAJQlA94Je9MMIbADjjelb/Sc7nrHdN2ugkqPWVrEhsPmhsHp3aF2TKm9EQsxa0BDcanU
- sGe++JlTw42omgkFLMbfUQDssAPl0nU04qjLwQQB0ZapxV+niEMp3IcbdHXVKgeZIswVkspRW
- HM1tQ+F5RBxNXPchouBAf01e1rs/ps+cyApJc2LfxkZZWwXBaYujKS1BATNx4hzcHizcQw3W9
- sDhpi8WeB3H4VkKfohXO0MopTafNlcr+fxy6NJyueJ8PTLLMDdhthCAHIDD3qnqmUuayQWY2C
- uAR2AUY16mftqfwuVhXT6y9FIwzinYnZjnClRsF+pfGoTCy1fANSlb4+s4aUTF7rXTyk3zf/6
- JM8A6NCcmCYubudR4OHOjfOHG1FxOZ1V1rL/opeA3kFF3cMSEYHEmMt4eh9/+QNklqDMU49me
- 4I7UINIOT+GtuncI1lSSLySVonL0J1Zhds7ORC3M40UVLmdNVoNmaVzvNGfNXhPZefXLJoT6K
- dnEYo9Dr+lX0Xq2BuArS+tcoK9uA+AOCwyG+fu0xI=
+X-Provags-ID: V03:K1:La8XN/pHojyhQuxC4Jqlhb7UZAwrEsKuJoUugUtv1Sc6X+b57eW
+ 4o5M+T123KgZ7QVLAmmdzZw4LNdjDZE8Wqm+ZVxB50ZHTppbGqyZ4AoPygKmuSu37a2A4kp
+ rgBYK4p5/mr1g4fH6obQKE2gUTHrlu0ViaGwV9T0IlMG+lgvKNxo31QAg0nYcyCrPMzTC5w
+ mNf1aAkShVf9mc+mk5JrA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:rUrPR27hGuA=:btLeeWYi4O11pZ8iaR/RoS
+ vsPOSjSpYYCtmJxZ2B9g5utu1jz1wR4nKkVRpdk+X4/6CCilEGto51ZeMhdxY0l7pOhcxQUm9
+ GCHtZpqtukH5KWOIJMUyfZMNHk8R14gbxkdWCtmtIVd2VErvec4k9E5bm3tWezMt1HXEQcExO
+ ttEj3v59+GJVu+d9UKZ+N8bP3q4UhYGHViHVEvVFTktWa1Ajb83bmDw9KJ9gVVIN0ftp9BkLY
+ dqZM0hyaCv8sRaEOiFONUxUJItiI42fz36P4AD+IVoFJgGaXSwSGGUpb+8Z/3VwOi4sI598nc
+ qjiL7uu6GVVWERVJs7+1LSSGVPsTASmi9QUYfgak/z9y3pHrOwHQShLsfOdVXzeenmEIZLBHE
+ Sx2Rs1sBRS6RkNXB7jVfd92hzy3JST6qRFAVn6MhE2xrgy4iL6p9nYsRU0a9DaqeasmBy/cUs
+ SC4vt1MXO09U/M6Dcvp57PZj7/O8Jup4BEZPCFZP2AvoaJ4Q3KvrThWPDx65iZ1kvXlrGGkHz
+ wONG56gXuCCnOUtKHptHyKe61hyCq4H9u1yZSqGzExpWvaoSyCPX2R47JPuL4pwZQWz0bAsOG
+ 5FjYFFlEzOicxkSt5xZHT/JcLSJ1rDtQFB56soiq4scCLOKHQtnAgQb1bKFLNGO8g6rRWrRw2
+ CsJ+Wdxz6LA3Y1W07FmehHdGLj4cZBT2/ZcYAvpX8bMGoO+NLhoel475yntjhv/BKx0wGRU6s
+ pKNfpmv2RIyAJtWBT61+k2S5xNo376fuW9PjNAQdnpQ9+n3KLCJy6pf2FRMp+chZyTuG8DEFf
+ v8S1g6s3/6S7WH6pTbYcCOnwdtHvumBih2jqnJfhF9uITK1YygOLOdgPDOfxb6/n5Hgeqs2Rp
+ YkL2ZMruHCdWxjskmlDBuBVai+chjDPtzRspos9ak=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.133
+X-Received-From: 212.227.126.130
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,35 +122,348 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Oct 2019 18:11:51 -0000
+X-List-Received-Date: Thu, 24 Oct 2019 18:14:45 -0000
 
-Le 24/10/2019 à 20:03, Eric Blake a écrit :
-> On 10/24/19 12:31 PM, Laurent Vivier wrote:
->> Le 23/10/2019 à 14:26, Frediano Ziglio a écrit :
->>> Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
->>> ---
->>>   util/qemu-timer.c | 6 +-----
->>>   1 file changed, 1 insertion(+), 5 deletions(-)
->>>
+Le 04/10/2019 à 01:03, Philippe Mathieu-Daudé a écrit :
+> The MC146818 is a Real Time Clock, not a timer.
+> Move it under the hw/rtc/ subdirectory.
 > 
->>>
->>
->> Applied to my trivial-patches branch.
->>
->> I've updated the patch to remove the two useless casts.
->>
->> Eric, if you want to add your R-b, I can add it to the queued patch.
+> Use copyright statement from 80cabfad163 for "hw/rtc/mc146818rtc.h".
 > 
-> I don't see it queued on https://github.com/vivier/qemu/branches yet,
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Acked-by: David Gibson <david@gibson.dropbear.id.au>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+> v2: Use SPDX identifier (thuth)
+> ---
+>  MAINTAINERS                                  |  4 ++--
+>  hw/alpha/dp264.c                             |  2 +-
+>  hw/hppa/machine.c                            |  2 +-
+>  hw/i386/acpi-build.c                         |  2 +-
+>  hw/i386/pc.c                                 |  2 +-
+>  hw/i386/pc_q35.c                             |  2 +-
+>  hw/mips/mips_fulong2e.c                      |  2 +-
+>  hw/mips/mips_jazz.c                          |  2 +-
+>  hw/mips/mips_malta.c                         |  2 +-
+>  hw/mips/mips_r4k.c                           |  2 +-
+>  hw/ppc/pnv.c                                 |  2 +-
+>  hw/ppc/prep.c                                |  2 +-
+>  hw/rtc/Kconfig                               |  3 +++
+>  hw/rtc/Makefile.objs                         |  1 +
+>  hw/{timer => rtc}/mc146818rtc.c              |  2 +-
+>  hw/timer/Kconfig                             |  3 ---
+>  hw/timer/Makefile.objs                       |  2 --
+>  hw/timer/hpet.c                              |  2 +-
+>  include/hw/{timer => rtc}/mc146818rtc.h      | 14 +++++++++++---
+>  include/hw/{timer => rtc}/mc146818rtc_regs.h |  5 +++--
+>  tests/rtc-test.c                             |  2 +-
+>  21 files changed, 34 insertions(+), 26 deletions(-)
+>  rename hw/{timer => rtc}/mc146818rtc.c (99%)
+>  rename include/hw/{timer => rtc}/mc146818rtc.h (58%)
+>  rename include/hw/{timer => rtc}/mc146818rtc_regs.h (96%)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 92d27f1206..e3255cdbf2 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1263,7 +1263,7 @@ F: hw/misc/debugexit.c
+>  F: hw/misc/pc-testdev.c
+>  F: hw/timer/hpet*
+>  F: hw/timer/i8254*
+> -F: hw/timer/mc146818rtc*
+> +F: hw/rtc/mc146818rtc*
+>  F: hw/watchdog/wdt_ib700.c
+>  F: hw/watchdog/wdt_i6300esb.c
+>  F: include/hw/display/vga.h
+> @@ -1275,7 +1275,7 @@ F: include/hw/isa/i8259_internal.h
+>  F: include/hw/isa/superio.h
+>  F: include/hw/timer/hpet.h
+>  F: include/hw/timer/i8254*
+> -F: include/hw/timer/mc146818rtc*
+> +F: include/hw/rtc/mc146818rtc*
+>  
+>  Machine core
+>  M: Eduardo Habkost <ehabkost@redhat.com>
+> diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
+> index 51feee8558..51b3cf7a61 100644
+> --- a/hw/alpha/dp264.c
+> +++ b/hw/alpha/dp264.c
+> @@ -14,7 +14,7 @@
+>  #include "alpha_sys.h"
+>  #include "qemu/error-report.h"
+>  #include "sysemu/sysemu.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/ide.h"
+>  #include "hw/timer/i8254.h"
+>  #include "hw/isa/superio.h"
+> diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
+> index 2736ce835e..6598e2469d 100644
+> --- a/hw/hppa/machine.c
+> +++ b/hw/hppa/machine.c
+> @@ -12,7 +12,7 @@
+>  #include "qemu/error-report.h"
+>  #include "sysemu/reset.h"
+>  #include "sysemu/sysemu.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/ide.h"
+>  #include "hw/timer/i8254.h"
+>  #include "hw/char/serial.h"
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 4e0f9f425a..fb53e0b691 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -45,7 +45,7 @@
+>  #include "hw/acpi/vmgenid.h"
+>  #include "hw/boards.h"
+>  #include "sysemu/tpm_backend.h"
+> -#include "hw/timer/mc146818rtc_regs.h"
+> +#include "hw/rtc/mc146818rtc_regs.h"
+>  #include "migration/vmstate.h"
+>  #include "hw/mem/memory-device.h"
+>  #include "sysemu/numa.h"
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index bcda50efcc..061cdb77f8 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -42,7 +42,7 @@
+>  #include "elf.h"
+>  #include "migration/vmstate.h"
+>  #include "multiboot.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/dma/i8257.h"
+>  #include "hw/timer/i8254.h"
+>  #include "hw/input/i8042.h"
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index 8fad20f314..748fc2ee15 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -33,7 +33,7 @@
+>  #include "hw/loader.h"
+>  #include "sysemu/arch_init.h"
+>  #include "hw/i2c/smbus_eeprom.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/xen/xen.h"
+>  #include "sysemu/kvm.h"
+>  #include "kvm_i386.h"
+> diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
+> index cf537dd7e6..03a27e1767 100644
+> --- a/hw/mips/mips_fulong2e.c
+> +++ b/hw/mips/mips_fulong2e.c
+> @@ -39,7 +39,7 @@
+>  #include "hw/ide.h"
+>  #include "elf.h"
+>  #include "hw/isa/vt82c686.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/timer/i8254.h"
+>  #include "exec/address-spaces.h"
+>  #include "sysemu/qtest.h"
+> diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
+> index c967b97d80..2811a4bd90 100644
+> --- a/hw/mips/mips_jazz.c
+> +++ b/hw/mips/mips_jazz.c
+> @@ -39,7 +39,7 @@
+>  #include "hw/scsi/esp.h"
+>  #include "hw/mips/bios.h"
+>  #include "hw/loader.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/timer/i8254.h"
+>  #include "hw/display/vga.h"
+>  #include "hw/audio/pcspk.h"
+> diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
+> index 4d9c64b36a..c1c8810e71 100644
+> --- a/hw/mips/mips_malta.c
+> +++ b/hw/mips/mips_malta.c
+> @@ -45,7 +45,7 @@
+>  #include "hw/irq.h"
+>  #include "hw/loader.h"
+>  #include "elf.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/timer/i8254.h"
+>  #include "exec/address-spaces.h"
+>  #include "hw/sysbus.h"             /* SysBusDevice */
+> diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
+> index bc0be26544..70024235ae 100644
+> --- a/hw/mips/mips_r4k.c
+> +++ b/hw/mips/mips_r4k.c
+> @@ -28,7 +28,7 @@
+>  #include "hw/ide.h"
+>  #include "hw/loader.h"
+>  #include "elf.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/input/i8042.h"
+>  #include "hw/timer/i8254.h"
+>  #include "exec/address-spaces.h"
+> diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
+> index 3f08db7b9e..4b2649d95b 100644
+> --- a/hw/ppc/pnv.c
+> +++ b/hw/ppc/pnv.c
+> @@ -48,7 +48,7 @@
+>  #include "hw/isa/isa.h"
+>  #include "hw/boards.h"
+>  #include "hw/char/serial.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  
+>  #include <libfdt.h>
+>  
+> diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+> index 4f3c6bf190..3a51536e1a 100644
+> --- a/hw/ppc/prep.c
+> +++ b/hw/ppc/prep.c
+> @@ -40,7 +40,7 @@
+>  #include "hw/ide.h"
+>  #include "hw/irq.h"
+>  #include "hw/loader.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/isa/pc87312.h"
+>  #include "hw/net/ne2000-isa.h"
+>  #include "sysemu/arch_init.h"
+> diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
+> index 8a4383bca9..7ffd702268 100644
+> --- a/hw/rtc/Kconfig
+> +++ b/hw/rtc/Kconfig
+> @@ -1,2 +1,5 @@
+>  config PL031
+>      bool
+> +
+> +config MC146818RTC
+> +    bool
+> diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
+> index 3e1eb42563..3cac0d5a63 100644
+> --- a/hw/rtc/Makefile.objs
+> +++ b/hw/rtc/Makefile.objs
+> @@ -1 +1,2 @@
+>  common-obj-$(CONFIG_PL031) += pl031.o
+> +obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
+> diff --git a/hw/timer/mc146818rtc.c b/hw/rtc/mc146818rtc.c
+> similarity index 99%
+> rename from hw/timer/mc146818rtc.c
+> rename to hw/rtc/mc146818rtc.c
+> index 6cb378751b..ced15f764f 100644
+> --- a/hw/timer/mc146818rtc.c
+> +++ b/hw/rtc/mc146818rtc.c
+> @@ -34,7 +34,7 @@
+>  #include "sysemu/replay.h"
+>  #include "sysemu/reset.h"
+>  #include "sysemu/runstate.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "migration/vmstate.h"
+>  #include "qapi/error.h"
+>  #include "qapi/qapi-commands-misc-target.h"
+> diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
+> index 27c5dce09e..af415c8ef8 100644
+> --- a/hw/timer/Kconfig
+> +++ b/hw/timer/Kconfig
+> @@ -35,9 +35,6 @@ config ALTERA_TIMER
+>      bool
+>      select PTIMER
+>  
+> -config MC146818RTC
+> -    bool
+> -
+>  config ALLWINNER_A10_PIT
+>      bool
+>      select PTIMER
+> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+> index 9f64f6e11e..b0159189cf 100644
+> --- a/hw/timer/Makefile.objs
+> +++ b/hw/timer/Makefile.objs
+> @@ -35,8 +35,6 @@ common-obj-$(CONFIG_SH4) += sh_timer.o
+>  common-obj-$(CONFIG_DIGIC) += digic-timer.o
+>  common-obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
+>  
+> -obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
+> -
+>  common-obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
+>  
+>  common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
+> diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
+> index 1ddae4e7d7..02bf8a8ce8 100644
+> --- a/hw/timer/hpet.c
+> +++ b/hw/timer/hpet.c
+> @@ -33,7 +33,7 @@
+>  #include "qemu/timer.h"
+>  #include "hw/timer/hpet.h"
+>  #include "hw/sysbus.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "migration/vmstate.h"
+>  #include "hw/timer/i8254.h"
+>  
+> diff --git a/include/hw/timer/mc146818rtc.h b/include/hw/rtc/mc146818rtc.h
+> similarity index 58%
+> rename from include/hw/timer/mc146818rtc.h
+> rename to include/hw/rtc/mc146818rtc.h
+> index fe6ed63f71..2e9331637a 100644
+> --- a/include/hw/timer/mc146818rtc.h
+> +++ b/include/hw/rtc/mc146818rtc.h
+> @@ -1,8 +1,16 @@
+> -#ifndef MC146818RTC_H
+> -#define MC146818RTC_H
+> +/*
+> + * QEMU MC146818 RTC emulation
+> + *
+> + * Copyright (c) 2003-2004 Fabrice Bellard
+> + *
+> + * SPDX-License-Identifier: MIT
+> + */
+> +
+> +#ifndef HW_RTC_MC146818RTC_H
+> +#define HW_RTC_MC146818RTC_H
+>  
+>  #include "hw/isa/isa.h"
+> -#include "hw/timer/mc146818rtc_regs.h"
+> +#include "hw/rtc/mc146818rtc_regs.h"
+>  
+>  #define TYPE_MC146818_RTC "mc146818rtc"
+>  
+> diff --git a/include/hw/timer/mc146818rtc_regs.h b/include/hw/rtc/mc146818rtc_regs.h
+> similarity index 96%
+> rename from include/hw/timer/mc146818rtc_regs.h
+> rename to include/hw/rtc/mc146818rtc_regs.h
+> index bfbb57e570..dd6c09e2fc 100644
+> --- a/include/hw/timer/mc146818rtc_regs.h
+> +++ b/include/hw/rtc/mc146818rtc_regs.h
+> @@ -22,10 +22,11 @@
+>   * THE SOFTWARE.
+>   */
+>  
+> -#ifndef MC146818RTC_REGS_H
+> -#define MC146818RTC_REGS_H
+> +#ifndef HW_RTC_MC146818RTC_REGS_H
+> +#define HW_RTC_MC146818RTC_REGS_H
+>  
+>  #include "qemu/timer.h"
+> +#include "qemu/host-utils.h"
+>  
+>  #define RTC_ISA_IRQ 8
+>  
+> diff --git a/tests/rtc-test.c b/tests/rtc-test.c
+> index 6309b0ef6c..79a4ff1ed6 100644
+> --- a/tests/rtc-test.c
+> +++ b/tests/rtc-test.c
+> @@ -15,7 +15,7 @@
+>  
+>  #include "libqtest-single.h"
+>  #include "qemu/timer.h"
+> -#include "hw/timer/mc146818rtc_regs.h"
+> +#include "hw/rtc/mc146818rtc_regs.h"
+>  
+>  #define UIP_HOLD_LENGTH           (8 * NANOSECONDS_PER_SECOND / 32768)
+>  
+> 
 
-Sorry, forgot to push it.
-
-> but if removing the two casts is the only difference from the original:
-> 
-> Reviewed-by: Eric Blake <eblake@redhat.com>
-> 
-
-Added and pushed (branch trivial-patches), you can check.
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
