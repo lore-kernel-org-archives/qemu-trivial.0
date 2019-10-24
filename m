@@ -1,61 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNYwa-00015H-5Q
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2019 04:58:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42253)
+	id 1iNdou-0002G0-NL
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2019 10:10:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36064)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1iNYwX-00014a-Vr
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 04:58:07 -0400
+ (envelope-from <philmd@redhat.com>) id 1iNdop-00021d-9f
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 10:10:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1iNYwV-00045t-6V
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 04:58:04 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:59715
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1iNdon-0001vK-2g
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 10:10:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59724)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1iNYwU-00044F-O1
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 04:58:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571907480;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sgj2kHCBhfIDMrtcNYT+KUTTqnro5jh/Ax+LK3eL7Bc=;
- b=Ok+pspR5b2+1P6xG5veyk5rVAacaEp6YUV29BVBrovUq9tFurqnroGfwFaIxUYyhwUAZ6K
- Bjxemw4UijK9845BSAjfGnOxZKdOGOUxC82ML4PH7shEeLpbmyPdEzKdFMs+KDdu6IB1bv
- FzVJgP/v0nUn+aZFSVx1Pc8qTJWoOIQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-162-JTeIz7qKOUmyyWix7KMF7A-1; Thu, 24 Oct 2019 04:57:58 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iNdom-0001tF-Qc
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 10:10:25 -0400
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B85095E9;
- Thu, 24 Oct 2019 08:57:57 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.36.118.123])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2508362A8A;
- Thu, 24 Oct 2019 08:57:54 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 5C7021138619; Thu, 24 Oct 2019 10:57:52 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] buildfix: update texinfo menu
-References: <20191023101956.19120-1-kraxel@redhat.com>
-Date: Thu, 24 Oct 2019 10:57:52 +0200
-In-Reply-To: <20191023101956.19120-1-kraxel@redhat.com> (Gerd Hoffmann's
- message of "Wed, 23 Oct 2019 12:19:56 +0200")
-Message-ID: <87ftjitt9r.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
+ by mx1.redhat.com (Postfix) with ESMTPS id 7D3F781F0D
+ for <qemu-trivial@nongnu.org>; Thu, 24 Oct 2019 14:10:23 +0000 (UTC)
+Received: by mail-wr1-f70.google.com with SMTP id 7so13040563wrl.2
+ for <qemu-trivial@nongnu.org>; Thu, 24 Oct 2019 07:10:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=IUvC0Te2uHehT4TVThYtj2pAOWd4YcJNRS5YDphkgtE=;
+ b=GqtOm28lZv9DHbSazfHiq+SSFWANzf4QE2qPySJxZdBHcTD8Ik4m85h5abBrrsWueA
+ 5Kj1P9bqgFXcpZMhiE9Y0d5ZFbVwR7dQ/7mIT9PKer4biySCmrgfg4/7wGwUoFVTNHlV
+ 75XhtZNmqU/V/pXUtuwVkWY67b1DUJme4DZDRWYZoy1QjreC2MWuZEvcxtiN/RHHIfcG
+ 6Enr19JYlfVzjhCQOXqG50CnAyn0ON59GcL2GqFP1+RbI9rtPl5NozzkvUUOjwZrxt95
+ qWbH4OSETlDqp/CpPDizBTey1KHRDudT9InEBSvBhVClRK08+dtIE/iUjORGhD6+w+QW
+ qwmQ==
+X-Gm-Message-State: APjAAAWU99kvjmYJ9QLeD8Y3Ip+Eyysq6XDD6iiw+WmP0OSqscJysSpG
+ /mEVwQGqpuQVwZ/4RUmGGxu8i4vLs7ymppyYqYQjVE855ctreopi/UbA52tdmfIst93HfPPzpjw
+ g14Ycyyy5TiGr8aFxEQ==
+X-Received: by 2002:a1c:8055:: with SMTP id b82mr2162463wmd.176.1571926222116; 
+ Thu, 24 Oct 2019 07:10:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz1LsC07MyYmcfDJfLsIhVchoJ5az23XXMxpaL4yG2zxr9OR/a9wScMJ2eqRH3oMrzTZWs61A==
+X-Received: by 2002:a1c:8055:: with SMTP id b82mr2162406wmd.176.1571926221787; 
+ Thu, 24 Oct 2019 07:10:21 -0700 (PDT)
+Received: from [192.168.1.115] (129.red-83-57-174.dynamicip.rima-tde.net.
+ [83.57.174.129])
+ by smtp.gmail.com with ESMTPSA id v10sm3904524wmg.48.2019.10.24.07.10.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 24 Oct 2019 07:10:20 -0700 (PDT)
+Subject: Re: [PATCH v2 06/14] hw: Move sun4v hypervisor RTC from hw/timer/ to
+ hw/rtc/ subdirectory
+To: Artyom Tarasenko <atar4qemu@gmail.com>
+Cc: qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goat?=
+ =?UTF-8?Q?er?= <clg@kaod.org>, qemu-trivial@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Thomas Huth <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Helge Deller <deller@gmx.de>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Richard Henderson <rth@twiddle.net>, Laurent Vivier <lvivier@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>
+References: <20191003230404.19384-1-philmd@redhat.com>
+ <20191003230404.19384-7-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <b1131c3d-d421-6130-b113-faa5e19c42a8@redhat.com>
+Date: Thu, 24 Oct 2019 16:10:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: JTeIz7qKOUmyyWix7KMF7A-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
+In-Reply-To: <20191003230404.19384-7-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -67,36 +92,195 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Oct 2019 08:58:07 -0000
+X-List-Received-Date: Thu, 24 Oct 2019 14:10:30 -0000
 
-Gerd Hoffmann <kraxel@redhat.com> writes:
+Hi Artyom,
 
-> Build error message:
-> qemu-doc.texi:34: node `Top' lacks menu item for `Recently removed featur=
-es' despite being its Up target
->
-> Fixes: 3264ffced3d0 ("dirty-bitmaps: remove deprecated autoload parameter=
-")
-> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Do you mind Acking this patch?
+
+On 10/4/19 1:03 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Move RTC devices under the hw/rtc/ subdirectory.
+>=20
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  qemu-doc.texi | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/qemu-doc.texi b/qemu-doc.texi
-> index 3c5022050f0f..3ddf5c0a6865 100644
-> --- a/qemu-doc.texi
-> +++ b/qemu-doc.texi
-> @@ -44,6 +44,7 @@
->  * Security::
->  * Implementation notes::
->  * Deprecated features::
-> +* Recently removed features::
->  * Supported build platforms::
->  * License::
->  * Index::
-
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-
-Cc'ing qemu-trivial.
-
+>   MAINTAINERS                   |  4 ++--
+>   hw/rtc/Kconfig                |  3 +++
+>   hw/rtc/Makefile.objs          |  1 +
+>   hw/{timer =3D> rtc}/sun4v-rtc.c |  2 +-
+>   hw/rtc/trace-events           |  4 ++++
+>   hw/sparc64/niagara.c          |  2 +-
+>   hw/timer/Kconfig              |  3 ---
+>   hw/timer/Makefile.objs        |  1 -
+>   hw/timer/trace-events         |  4 ----
+>   include/hw/rtc/sun4v-rtc.h    | 19 +++++++++++++++++++
+>   include/hw/timer/sun4v-rtc.h  |  1 -
+>   11 files changed, 31 insertions(+), 13 deletions(-)
+>   rename hw/{timer =3D> rtc}/sun4v-rtc.c (98%)
+>   create mode 100644 include/hw/rtc/sun4v-rtc.h
+>   delete mode 100644 include/hw/timer/sun4v-rtc.h
+>=20
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 0dfaa05d17..31e4fbf579 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1165,8 +1165,8 @@ Sun4v
+>   M: Artyom Tarasenko <atar4qemu@gmail.com>
+>   S: Maintained
+>   F: hw/sparc64/niagara.c
+> -F: hw/timer/sun4v-rtc.c
+> -F: include/hw/timer/sun4v-rtc.h
+> +F: hw/rtc/sun4v-rtc.c
+> +F: include/hw/rtc/sun4v-rtc.h
+>  =20
+>   Leon3
+>   M: Fabien Chouteau <chouteau@adacore.com>
+> diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
+> index 434b20b2b1..cc7fead764 100644
+> --- a/hw/rtc/Kconfig
+> +++ b/hw/rtc/Kconfig
+> @@ -10,3 +10,6 @@ config PL031
+>  =20
+>   config MC146818RTC
+>       bool
+> +
+> +config SUN4V_RTC
+> +    bool
+> diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
+> index 89e8e48c64..4621b37bc2 100644
+> --- a/hw/rtc/Makefile.objs
+> +++ b/hw/rtc/Makefile.objs
+> @@ -5,3 +5,4 @@ common-obj-$(CONFIG_M48T59) +=3D m48t59-isa.o
+>   endif
+>   common-obj-$(CONFIG_PL031) +=3D pl031.o
+>   obj-$(CONFIG_MC146818RTC) +=3D mc146818rtc.o
+> +common-obj-$(CONFIG_SUN4V_RTC) +=3D sun4v-rtc.o
+> diff --git a/hw/timer/sun4v-rtc.c b/hw/rtc/sun4v-rtc.c
+> similarity index 98%
+> rename from hw/timer/sun4v-rtc.c
+> rename to hw/rtc/sun4v-rtc.c
+> index 54272a822f..ada01b5774 100644
+> --- a/hw/timer/sun4v-rtc.c
+> +++ b/hw/rtc/sun4v-rtc.c
+> @@ -13,7 +13,7 @@
+>   #include "hw/sysbus.h"
+>   #include "qemu/module.h"
+>   #include "qemu/timer.h"
+> -#include "hw/timer/sun4v-rtc.h"
+> +#include "hw/rtc/sun4v-rtc.h"
+>   #include "trace.h"
+>  =20
+>  =20
+> diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
+> index 54c94ac557..ac9e0e0fba 100644
+> --- a/hw/rtc/trace-events
+> +++ b/hw/rtc/trace-events
+> @@ -1,5 +1,9 @@
+>   # See docs/devel/tracing.txt for syntax documentation.
+>  =20
+> +# sun4v-rtc.c
+> +sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 =
+" value 0x%" PRIx64
+> +sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx6=
+4 " value 0x%" PRIx64
+> +
+>   # pl031.c
+>   pl031_irq_state(int level) "irq state %d"
+>   pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+> diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
+> index 167143bffe..dfa0817eae 100644
+> --- a/hw/sparc64/niagara.c
+> +++ b/hw/sparc64/niagara.c
+> @@ -30,7 +30,7 @@
+>   #include "hw/misc/unimp.h"
+>   #include "hw/loader.h"
+>   #include "hw/sparc/sparc64.h"
+> -#include "hw/timer/sun4v-rtc.h"
+> +#include "hw/rtc/sun4v-rtc.h"
+>   #include "exec/address-spaces.h"
+>   #include "sysemu/block-backend.h"
+>   #include "qemu/error-report.h"
+> diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
+> index a6b668b255..b04c928136 100644
+> --- a/hw/timer/Kconfig
+> +++ b/hw/timer/Kconfig
+> @@ -35,9 +35,6 @@ config ALLWINNER_A10_PIT
+>   config STM32F2XX_TIMER
+>       bool
+>  =20
+> -config SUN4V_RTC
+> -    bool
+> -
+>   config CMSDK_APB_TIMER
+>       bool
+>       select PTIMER
+> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+> index 2fb12162a6..034bd30255 100644
+> --- a/hw/timer/Makefile.objs
+> +++ b/hw/timer/Makefile.objs
+> @@ -35,7 +35,6 @@ common-obj-$(CONFIG_ALLWINNER_A10_PIT) +=3D allwinner=
+-a10-pit.o
+>   common-obj-$(CONFIG_STM32F2XX_TIMER) +=3D stm32f2xx_timer.o
+>   common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_timer.o aspeed_rtc.o
+>  =20
+> -common-obj-$(CONFIG_SUN4V_RTC) +=3D sun4v-rtc.o
+>   common-obj-$(CONFIG_CMSDK_APB_TIMER) +=3D cmsdk-apb-timer.o
+>   common-obj-$(CONFIG_CMSDK_APB_DUALTIMER) +=3D cmsdk-apb-dualtimer.o
+>   common-obj-$(CONFIG_MSF2) +=3D mss-timer.o
+> diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+> index 6936fe8573..ce34b967db 100644
+> --- a/hw/timer/trace-events
+> +++ b/hw/timer/trace-events
+> @@ -70,10 +70,6 @@ cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer=
+: reset"
+>   aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " =
+value 0x%08" PRIx64
+>   aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 "=
+ value 0x%08" PRIx64
+>  =20
+> -# sun4v-rtc.c
+> -sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 =
+" value 0x%" PRIx64
+> -sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx6=
+4 " value 0x%" PRIx64
+> -
+>   # xlnx-zynqmp-rtc.c
+>   xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int m=
+in, int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
+>  =20
+> diff --git a/include/hw/rtc/sun4v-rtc.h b/include/hw/rtc/sun4v-rtc.h
+> new file mode 100644
+> index 0000000000..fd868f6ed2
+> --- /dev/null
+> +++ b/include/hw/rtc/sun4v-rtc.h
+> @@ -0,0 +1,19 @@
+> +/*
+> + * QEMU sun4v Real Time Clock device
+> + *
+> + * The sun4v_rtc device (sun4v tod clock)
+> + *
+> + * Copyright (c) 2016 Artyom Tarasenko
+> + *
+> + * This code is licensed under the GNU GPL v3 or (at your option) any =
+later
+> + * version.
+> + */
+> +
+> +#ifndef HW_RTC_SUN4V
+> +#define HW_RTC_SUN4V
+> +
+> +#include "exec/hwaddr.h"
+> +
+> +void sun4v_rtc_init(hwaddr addr);
+> +
+> +#endif
+> diff --git a/include/hw/timer/sun4v-rtc.h b/include/hw/timer/sun4v-rtc.=
+h
+> deleted file mode 100644
+> index 407278f918..0000000000
+> --- a/include/hw/timer/sun4v-rtc.h
+> +++ /dev/null
+> @@ -1 +0,0 @@
+> -void sun4v_rtc_init(hwaddr addr);
+>=20
 
