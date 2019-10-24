@@ -1,27 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNgph-00086Q-7m
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2019 13:23:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39527)
+	id 1iNgrj-0003q1-Ni
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2019 13:25:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39943)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNgpd-0007x2-JF
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 13:23:30 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNgrg-0003k0-80
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 13:25:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNgpc-0004pn-Hs
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 13:23:29 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:54601)
+ (envelope-from <laurent@vivier.eu>) id 1iNgrf-000621-8A
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 13:25:36 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:45061)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNgpZ-0004oT-KX; Thu, 24 Oct 2019 13:23:25 -0400
+ id 1iNgrX-000607-Pb; Thu, 24 Oct 2019 13:25:31 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MHGPA-1iAVYm3rIO-00DISK; Thu, 24 Oct 2019 19:23:21 +0200
-Subject: Re: [PATCH] qemu-options.hx: Update for reboot-timeout parameter
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MAwPZ-1iGqIG0FrN-00BIAA; Thu, 24 Oct 2019 19:25:09 +0200
+Subject: Re: [Qemu-devel] [PATCH] pci_bridge: fix a typo in comment
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Han Han <hhan@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <20191015151451.727323-1-hhan@redhat.com>
- <87d0epqp5r.fsf@dusky.pond.sub.org>
- <1a07f8dd-88e8-c8f0-f76e-2fe62259cac3@redhat.com>
+ maozy <maozhongyi@cmss.chinamobile.com>, qemu-devel@nongnu.org
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, mst@redhat.com
+References: <20181108122102.9915-1-maozhongyi@cmss.chinamobile.com>
+ <1898dc23-c512-88bd-cb73-5a2cffccd176@redhat.com>
+ <7f3e7954-3574-9f44-7710-4a488c1d0fe2@cmss.chinamobile.com>
+ <f68aacf9-2ac3-2a9d-8aab-6a86c52cbacb@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -65,36 +66,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <f149a9d6-83eb-c9f7-ab27-94bae0c10a23@vivier.eu>
-Date: Thu, 24 Oct 2019 19:23:19 +0200
+Message-ID: <6e4e6d91-5b79-8c7f-b0bd-846db8850f2c@vivier.eu>
+Date: Thu, 24 Oct 2019 19:25:06 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <1a07f8dd-88e8-c8f0-f76e-2fe62259cac3@redhat.com>
+In-Reply-To: <f68aacf9-2ac3-2a9d-8aab-6a86c52cbacb@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:LtcqubGEJHfgHFpiyEnz4efuOVv14JWefdoXMF/DqPja7YU7ozf
- zWneC3YnCZYLti+EBoHJg6yxb3dzHs8WSHok/7UyAAz847jruq5htAEeUW/O4sNdMnnjPhC
- oDQMBpmW5Oo6mwuCK+Qul4px1KIVuOGI+a+/3eOeecT3GW8tZ95leQOK1bH4HXzzfAZIiOz
- CSp0gqVjLC7HdIOD07ChQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:I3c8X5G0/RE=:ahwWKOrklsGTLdT4aPpl3Z
- 9k/CdStpbmZvBpOVG0t+33XYAkwMUI7Uw8gklOGEjYYpol4XxtSQkUulBDtRT/zjiS+6kg/F5
- JZ1tFBw1JkIx3SWj9K+aI8RwMHaTW3uZDHCOzmA4doRFBmfoXXRJpxv27ncBfYZ9yYG/ohq9h
- acugOQSO/ocSEIRIguZ3axnXr4uX2iYJnGiEUfFc412bkRouSC4El47pwhnBwQOTeGGKQZTfs
- 7+qcjxGznzk3DNE4UnTKjrqTjfmBlj0zCW556MMaLkIMEvBm0vg8FNrETpq6nEb1HMz1g3daP
- bULGk79H9Mar2Zh8FjVF9QzkOSxnFcoQRJUSF4ViGvFRB6tHz9D9WBFAyzoWBI4fLJ5VRHkUB
- jcoFyGAkvNSFaYDOM/LZZdYGXtfNTzE2BTH3n1aVypcONxtMKIMzuu9DpTV4gxRMW1UulUE2s
- NujQLOebaWyztoi2WAm8+zg+5Vf75TBT+H4Zxc4rext7S0KAW+m1aGB6frSCL3mWl/oDv40JV
- 9U8ycmm3Eam4vkw1hOQ2nUJMQum/zZ/+2P+9TcCjVjZZ6xUkTd2fazkqzCgOVcjeeHPgPygC2
- 4QFBBJiep5IuD7hxsJiS4GAiAkYdVyXFm+BeSVuM+A0AsYtxbYe3dntfHX+yY2O32bCO8A+2q
- jW26cTrFZFbOnBvreeeGiShB/rvmm4AvvbkfRUKJkWv+6WW2Z52zSeuAOpt7+N0Rtj/+q1Sl4
- adYhtdhYP87hqfq+VVxOAHEQYtg7PIjprXro0qTxC4pdSU15yp6WYetietGCoEP/uXusRMhSm
- uHptjubdhWektk00H9xOJ7vMxKjeybSQkmrsUFpMFaA0ThYwEWbnTHRRQU4CRM50qgYXhGoqC
- u/6vAwtxFiQyD2VNzgwOKFxqx8kiSBS6Bmul07vuc=
+X-Provags-ID: V03:K1:jxyzHHTiVQKPQ+1SDPElemjsGE7X8wtNaycwJCQpd4LuOp84HgW
+ /FoaPHe0NUi6nvoL0s4qbSIIz6frM+IwTgtmfGbXOHxJZvBhvBPjRl4f4rbSltd+/zncanC
+ dR32jNXcWrPZSe9GO/jnecVzEjhUlmGpVjLGEKnasb6yjKunbtaSH9qoZIzkv3AWvW/MiWk
+ I6e1kl4X2Fz5FwLPbRbMQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:dGlWQQgmkJA=:aF0jztbc6xwHvx8ooBQiBf
+ +6ESL21OqrPxEtndDPJ+XIN+t27ZxnvGfFZ1WEZq9miEYHRNgCwR3xtl26KznOJaIrTgWhzQ+
+ 3ZTCoiDPiWdBjkGcTUrito+IzWq24HfYXPDdnMIPWqTag8oaiEoenY2Gdy4YrbCrDYJCfhETy
+ kXJ5+R0cDcwow3VggHdoKCVLoXanWwTABc67R1w9FtcUDIldT+l6OyeowcOE9x8u2/M1dqN91
+ 5Mv59LenJ+wi/iNwVOrDlRJAJDZu8M6cCD6RkGR2mpHyRwFQi5nzFvIC39V6DsZM8HS1jlYGZ
+ TEU/BXkyOTlTvRqHIlr7qSYuyvwlOp2+VSReHGSEJxx+oCcj+fILCHAB7giGgueKKwLdnOH7m
+ Pmu31yTX0vGrXIAF3ZlSYjJVPSPfFYAwwTZlikLCrNV3iAXNjxI/1yk1f7xSz0Cw0nOupa/Rd
+ 2qPWHzRa1IMzL3vqRMNJj5OJkQLIJ808AmjLZU+7rYmW0fd1v6+YPmfXujGD5uCLFRY6l4MEE
+ uH104SPHOG3LqYwLkKBRvmpsshBw5Y8w/FUGn3Aj4bFpXkawAzTIjqTwhg9wr9o3ljx1ptuo2
+ ApNoLkzjBQlXyNsNoWPAdk91GcZtnSY6dWppTjFjyGfUTE+6pMPxf3rEdKa+xruIdfjDTMWdM
+ 8yTUArl4JQmnblSSgojHnZj1r4rhM1/oaqvd0PveIjwK9zzgpIY0nfK8unAt3h3Nw5EjVZQvQ
+ QYzV2/3LHZSjUobot6fhRWj30fKDRs+ZraiVBK5p6rrm7/v+8AD8KjjIyJ3Hlz9R9fnTb4DNM
+ nV+H60+v1L7ysz6lh326JY7R7090GvvQrsGyA8SDmDQYQtMlDziZvkM8ONATreoq2tYrW0lhe
+ gcMuIFVeEA3cFXXjTsPgd1tKQAtTob7JTazqwNcX8=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.133
+X-Received-From: 212.227.126.134
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,54 +107,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Oct 2019 17:23:32 -0000
+X-List-Received-Date: Thu, 24 Oct 2019 17:25:38 -0000
 
-Le 22/10/2019 à 14:52, Philippe Mathieu-Daudé a écrit :
-> On 10/22/19 8:18 AM, Markus Armbruster wrote:
->> Han Han <hhan@redhat.com> writes:
->>
->>> Since ee5d0f89d, -1 is not valid for the value of reboot-timeout. Update
->>> that in qemu-options doc.
->>>
->>> Signed-off-by: Han Han <hhan@redhat.com>
->>> ---
->>>   qemu-options.hx | 4 ++--
->>>   1 file changed, 2 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/qemu-options.hx b/qemu-options.hx
->>> index 793d70ff..6b92a916 100644
->>> --- a/qemu-options.hx
->>> +++ b/qemu-options.hx
->>> @@ -327,8 +327,8 @@ format(true color). The resolution should be
->>> supported by the SVGA mode, so
->>     A splash picture could be passed to bios, enabling user to show it
->> as logo,
->>     when option splash=@var{sp_name} is given and menu=on, If
->> firmware/BIOS
->>     supports them. Currently Seabios for X86 system support it.
->>     limitation: The splash file could be a jpeg file or a BMP file in
->> 24 BPP
->>     format(true color). The resolution should be supported by the SVGA
->> mode, so
->>>   the recommended is 320x240, 640x480, 800x640.
->>>     A timeout could be passed to bios, guest will pause for
->>> @var{rb_timeout} ms
->>> -when boot failed, then reboot. If @var{rb_timeout} is '-1', guest
->>> will not
->>> -reboot, qemu passes '-1' to bios by default. Currently Seabios for X86
->>> +when boot failed, then reboot. If @option{reboot-timeout} is not set,
->>> +guest will not reboot by default. Currently Seabios for X86
->>>   system support it.
->>>     Do strict boot via @option{strict=on} as far as firmware/BIOS
->>
->> Preexisting: "could be passed" sounds awkward.  Same in the previous
->> paragraph.  Not this patch's problem, so:
->>
->> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Le 23/10/2019 à 12:47, Philippe Mathieu-Daudé a écrit :
+> On 10/23/19 5:32 AM, maozy wrote:
+>> ping...
 > 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> I'm not sure qemu-trivial@ received this one because the email address
+> looked odd (now fixed).
 > 
-> I assume this patch will go via qemu-trivial.
+>>
+>> On 11/8/18 9:12 PM, Philippe Mathieu-Daudé wrote:
+>>> Cc'ing qemu-trivial@
+>>>
+>>> On 8/11/18 13:21, Mao Zhongyi wrote:
+>>>> Signed-off-by: Mao Zhongyi <maozhongyi@cmss.chinamobile.com>
+>>>
+>>> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>>>
+>>>> ---
+>>>>   hw/pci/pci_bridge.c | 2 +-
+>>>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/hw/pci/pci_bridge.c b/hw/pci/pci_bridge.c
+>>>> index ee9dff2d3a..da8daa3ff2 100644
+>>>> --- a/hw/pci/pci_bridge.c
+>>>> +++ b/hw/pci/pci_bridge.c
+>>>> @@ -310,7 +310,7 @@ void pci_bridge_reset(DeviceState *qdev)
+>>>>       /*
+>>>>        * the default values for base/limit registers aren't specified
+>>>> -     * in the PCI-to-PCI-bridge spec. So we don't thouch them here.
+>>>> +     * in the PCI-to-PCI-bridge spec. So we don't touch them here.
+>>>>        * Each implementation can override it.
+>>>>        * typical implementation does
+>>>>        * zero base/limit registers or
+>>>>
+>>>
+>>
+>>
 > 
 
 Applied to my trivial-patches branch.
