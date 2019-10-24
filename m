@@ -1,22 +1,22 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNhdG-0002TD-8z
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2019 14:14:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47631)
+	id 1iNhkR-0003DL-63
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2019 14:22:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48621)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNhdC-0002LP-95
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 14:14:44 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNhkM-000341-5g
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 14:22:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNhdA-0000pq-43
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 14:14:42 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:37867)
+ (envelope-from <laurent@vivier.eu>) id 1iNhkK-0003P0-2A
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 14:22:05 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:55083)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNhd2-0000lz-1i; Thu, 24 Oct 2019 14:14:32 -0400
+ id 1iNhk6-0003Mi-EU; Thu, 24 Oct 2019 14:21:50 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
  (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MPXta-1ibOzU3wpe-00Mbwf; Thu, 24 Oct 2019 20:14:07 +0200
-Subject: Re: [PATCH v2 03/14] hw: Move MC146818 device from hw/timer/ to
- hw/rtc/ subdirectory
+ 1MOz8O-1ie9EI2LL2-00PM9a; Thu, 24 Oct 2019 20:21:26 +0200
+Subject: Re: [PATCH v2 04/14] hw: Move M48T59 device from hw/timer/ to hw/rtc/
+ subdirectory
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -37,7 +37,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
  Igor Mammedov <imammedo@redhat.com>
 References: <20191003230404.19384-1-philmd@redhat.com>
- <20191003230404.19384-4-philmd@redhat.com>
+ <20191003230404.19384-5-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -81,36 +81,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <c24b0edf-9364-d6eb-6433-854d937320bc@vivier.eu>
-Date: Thu, 24 Oct 2019 20:14:03 +0200
+Message-ID: <da92db2a-a3d3-6f6c-6aa9-6daca6b0bac1@vivier.eu>
+Date: Thu, 24 Oct 2019 20:21:18 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20191003230404.19384-4-philmd@redhat.com>
+In-Reply-To: <20191003230404.19384-5-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:La8XN/pHojyhQuxC4Jqlhb7UZAwrEsKuJoUugUtv1Sc6X+b57eW
- 4o5M+T123KgZ7QVLAmmdzZw4LNdjDZE8Wqm+ZVxB50ZHTppbGqyZ4AoPygKmuSu37a2A4kp
- rgBYK4p5/mr1g4fH6obQKE2gUTHrlu0ViaGwV9T0IlMG+lgvKNxo31QAg0nYcyCrPMzTC5w
- mNf1aAkShVf9mc+mk5JrA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:rUrPR27hGuA=:btLeeWYi4O11pZ8iaR/RoS
- vsPOSjSpYYCtmJxZ2B9g5utu1jz1wR4nKkVRpdk+X4/6CCilEGto51ZeMhdxY0l7pOhcxQUm9
- GCHtZpqtukH5KWOIJMUyfZMNHk8R14gbxkdWCtmtIVd2VErvec4k9E5bm3tWezMt1HXEQcExO
- ttEj3v59+GJVu+d9UKZ+N8bP3q4UhYGHViHVEvVFTktWa1Ajb83bmDw9KJ9gVVIN0ftp9BkLY
- dqZM0hyaCv8sRaEOiFONUxUJItiI42fz36P4AD+IVoFJgGaXSwSGGUpb+8Z/3VwOi4sI598nc
- qjiL7uu6GVVWERVJs7+1LSSGVPsTASmi9QUYfgak/z9y3pHrOwHQShLsfOdVXzeenmEIZLBHE
- Sx2Rs1sBRS6RkNXB7jVfd92hzy3JST6qRFAVn6MhE2xrgy4iL6p9nYsRU0a9DaqeasmBy/cUs
- SC4vt1MXO09U/M6Dcvp57PZj7/O8Jup4BEZPCFZP2AvoaJ4Q3KvrThWPDx65iZ1kvXlrGGkHz
- wONG56gXuCCnOUtKHptHyKe61hyCq4H9u1yZSqGzExpWvaoSyCPX2R47JPuL4pwZQWz0bAsOG
- 5FjYFFlEzOicxkSt5xZHT/JcLSJ1rDtQFB56soiq4scCLOKHQtnAgQb1bKFLNGO8g6rRWrRw2
- CsJ+Wdxz6LA3Y1W07FmehHdGLj4cZBT2/ZcYAvpX8bMGoO+NLhoel475yntjhv/BKx0wGRU6s
- pKNfpmv2RIyAJtWBT61+k2S5xNo376fuW9PjNAQdnpQ9+n3KLCJy6pf2FRMp+chZyTuG8DEFf
- v8S1g6s3/6S7WH6pTbYcCOnwdtHvumBih2jqnJfhF9uITK1YygOLOdgPDOfxb6/n5Hgeqs2Rp
- YkL2ZMruHCdWxjskmlDBuBVai+chjDPtzRspos9ak=
+X-Provags-ID: V03:K1:97UoPm2iZUu6EOphR8iV9gY6jq43XoTRY2qFSBJeu1+EUUHDt1r
+ nJAgAebijA3G7APyOcYoHUv86NMbU4XPCVUPG3Y9povatOxiLs9kebxnLlsTDUVhKI5yQ+Z
+ dQxrXwZWJ0SunTwBk64Iwr7bz2tPx0XlLXS983+Nz8YgPN7d5XIpXCsYBMpCQkF+LVfQ/br
+ DwRQ6J2IuBMeiixcnXryQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:NA9syaalibM=:HPzNe0gfsS56tu90xgbblB
+ LCCJgUvUfFfp4+RdU/lQyRgqsCURnCT5IM0rEw2OPcDp7jgF9Uj8lgTqAvQ1lxOZPscCi8ixY
+ dLDmkcYi0wEVsG3APn7gWu6iyuT2emm+iU47OBfxqfH1FHo3Ze+1ER7WRmMBfsalOIDuNAN4W
+ aQIbxahpEbBwh/bgRM55+PDNPw2z/cIue8yFcfVPc1PQfAEzek91+m/M0FHXX+UqFvEtIjpuR
+ B3Xt4hkkNRbL9wADSMfKZ4VsmAP1PciCJvfJtO5X4Sof51zyVh2E7Ccog2AV+tZDJL6WNiZIS
+ Idv5W+nqpRrRJMDUJeN8mTGkzvxHOnIuJDuu2MRvD++Gu99OC02XTRXEVGIihzzMimNzc/oBD
+ cgCPi8fSm4EmGVLLXLrd/Cr7UgecmahnwbFDIqGZFRybi4BLeKHRC+ia1FSpT/6iSoRF0L0O4
+ VFUtGxjafDFqQ6Hea95QUxVjX3A+isA8jx54eHE+F8Snie5gfxxplnV3hNWVMEO8x7ofSC9iX
+ C16kB7YP76PH7kQ2xs/96U+cV57vutXr923Pctccwdlz1AuTapC2ti3U3hMUR6hr+6jslSS9R
+ W8O6+oJIj5+seJSXQc4ItbWuExn0d+3olvdtVf1/6xkjLUsbvtIy7QHF91izg4ubVEW/iAZtM
+ tWK31qwr8kSxGj+JjJbQCN9C9kRpeUKDHXyPwPFW+zOEbRB02aRPzsCRgPqd6fy1pSunoaShB
+ AlAqiOiulHxa9LVurkSRhJb2vuqqUz21iUByGevX7HJT3jmkkPo7i2F0Ph75G5b7MSprCTCVY
+ R1PoQaQiMkKGgdgXCeutWk7dUv52l0hhpjIEKvNz504DIwnrRGq3F6lG8YVMYbz4eTE1CPqNA
+ CrU+3Rde7N1aTrDnwUq+OH64kU/7iTFSDtPAXuAIg=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.130
+X-Received-From: 212.227.126.133
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -122,345 +122,301 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Oct 2019 18:14:45 -0000
+X-List-Received-Date: Thu, 24 Oct 2019 18:22:09 -0000
 
 Le 04/10/2019 à 01:03, Philippe Mathieu-Daudé a écrit :
-> The MC146818 is a Real Time Clock, not a timer.
+> The M48T59 is a Real Time Clock, not a timer.
 > Move it under the hw/rtc/ subdirectory.
 > 
-> Use copyright statement from 80cabfad163 for "hw/rtc/mc146818rtc.h".
-> 
 > Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-> Acked-by: David Gibson <david@gibson.dropbear.id.au>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
-> v2: Use SPDX identifier (thuth)
+> v2: delete include/hw/timer/m48t59.h (dgibson)
 > ---
->  MAINTAINERS                                  |  4 ++--
->  hw/alpha/dp264.c                             |  2 +-
->  hw/hppa/machine.c                            |  2 +-
->  hw/i386/acpi-build.c                         |  2 +-
->  hw/i386/pc.c                                 |  2 +-
->  hw/i386/pc_q35.c                             |  2 +-
->  hw/mips/mips_fulong2e.c                      |  2 +-
->  hw/mips/mips_jazz.c                          |  2 +-
->  hw/mips/mips_malta.c                         |  2 +-
->  hw/mips/mips_r4k.c                           |  2 +-
->  hw/ppc/pnv.c                                 |  2 +-
->  hw/ppc/prep.c                                |  2 +-
->  hw/rtc/Kconfig                               |  3 +++
->  hw/rtc/Makefile.objs                         |  1 +
->  hw/{timer => rtc}/mc146818rtc.c              |  2 +-
->  hw/timer/Kconfig                             |  3 ---
->  hw/timer/Makefile.objs                       |  2 --
->  hw/timer/hpet.c                              |  2 +-
->  include/hw/{timer => rtc}/mc146818rtc.h      | 14 +++++++++++---
->  include/hw/{timer => rtc}/mc146818rtc_regs.h |  5 +++--
->  tests/rtc-test.c                             |  2 +-
->  21 files changed, 34 insertions(+), 26 deletions(-)
->  rename hw/{timer => rtc}/mc146818rtc.c (99%)
->  rename include/hw/{timer => rtc}/mc146818rtc.h (58%)
->  rename include/hw/{timer => rtc}/mc146818rtc_regs.h (96%)
+>  MAINTAINERS                         |  4 +-
+>  hw/ppc/ppc405_boards.c              |  2 +-
+>  hw/ppc/prep.c                       |  2 +-
+>  hw/rtc/Kconfig                      |  3 ++
+>  hw/rtc/Makefile.objs                |  4 ++
+>  hw/{timer => rtc}/m48t59-internal.h |  0
+>  hw/{timer => rtc}/m48t59-isa.c      |  4 +-
+>  hw/{timer => rtc}/m48t59.c          |  2 +-
+>  hw/sparc/sun4m.c                    |  2 +-
+>  hw/sparc64/sun4u.c                  |  2 +-
+>  hw/timer/Kconfig                    |  3 --
+>  hw/timer/Makefile.objs              |  4 --
+>  include/hw/rtc/m48t59.h             | 57 +++++++++++++++++++++++++++++
+>  include/hw/timer/m48t59.h           | 32 ----------------
+>  14 files changed, 73 insertions(+), 48 deletions(-)
+>  rename hw/{timer => rtc}/m48t59-internal.h (100%)
+>  rename hw/{timer => rtc}/m48t59-isa.c (98%)
+>  rename hw/{timer => rtc}/m48t59.c (99%)
+>  create mode 100644 include/hw/rtc/m48t59.h
+>  delete mode 100644 include/hw/timer/m48t59.h
 > 
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 92d27f1206..e3255cdbf2 100644
+> index e3255cdbf2..5d85424a33 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -1263,7 +1263,7 @@ F: hw/misc/debugexit.c
->  F: hw/misc/pc-testdev.c
->  F: hw/timer/hpet*
->  F: hw/timer/i8254*
-> -F: hw/timer/mc146818rtc*
-> +F: hw/rtc/mc146818rtc*
->  F: hw/watchdog/wdt_ib700.c
->  F: hw/watchdog/wdt_i6300esb.c
->  F: include/hw/display/vga.h
-> @@ -1275,7 +1275,7 @@ F: include/hw/isa/i8259_internal.h
->  F: include/hw/isa/superio.h
->  F: include/hw/timer/hpet.h
->  F: include/hw/timer/i8254*
-> -F: include/hw/timer/mc146818rtc*
-> +F: include/hw/rtc/mc146818rtc*
+> @@ -1064,9 +1064,9 @@ F: hw/pci-host/prep.[hc]
+>  F: hw/isa/i82378.c
+>  F: hw/isa/pc87312.c
+>  F: hw/dma/i82374.c
+> -F: hw/timer/m48t59-isa.c
+> +F: hw/rtc/m48t59-isa.c
+>  F: include/hw/isa/pc87312.h
+> -F: include/hw/timer/m48t59.h
+> +F: include/hw/rtc/m48t59.h
+>  F: pc-bios/ppc_rom.bin
 >  
->  Machine core
->  M: Eduardo Habkost <ehabkost@redhat.com>
-> diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
-> index 51feee8558..51b3cf7a61 100644
-> --- a/hw/alpha/dp264.c
-> +++ b/hw/alpha/dp264.c
-> @@ -14,7 +14,7 @@
->  #include "alpha_sys.h"
->  #include "qemu/error-report.h"
+>  sPAPR
+> diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
+> index 388cae0b43..1f721feed6 100644
+> --- a/hw/ppc/ppc405_boards.c
+> +++ b/hw/ppc/ppc405_boards.c
+> @@ -29,7 +29,7 @@
+>  #include "cpu.h"
+>  #include "hw/ppc/ppc.h"
+>  #include "ppc405.h"
+> -#include "hw/timer/m48t59.h"
+> +#include "hw/rtc/m48t59.h"
+>  #include "hw/block/flash.h"
 >  #include "sysemu/sysemu.h"
-> -#include "hw/timer/mc146818rtc.h"
-> +#include "hw/rtc/mc146818rtc.h"
->  #include "hw/ide.h"
->  #include "hw/timer/i8254.h"
->  #include "hw/isa/superio.h"
-> diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
-> index 2736ce835e..6598e2469d 100644
-> --- a/hw/hppa/machine.c
-> +++ b/hw/hppa/machine.c
-> @@ -12,7 +12,7 @@
->  #include "qemu/error-report.h"
->  #include "sysemu/reset.h"
->  #include "sysemu/sysemu.h"
-> -#include "hw/timer/mc146818rtc.h"
-> +#include "hw/rtc/mc146818rtc.h"
->  #include "hw/ide.h"
->  #include "hw/timer/i8254.h"
->  #include "hw/char/serial.h"
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index 4e0f9f425a..fb53e0b691 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -45,7 +45,7 @@
->  #include "hw/acpi/vmgenid.h"
->  #include "hw/boards.h"
->  #include "sysemu/tpm_backend.h"
-> -#include "hw/timer/mc146818rtc_regs.h"
-> +#include "hw/rtc/mc146818rtc_regs.h"
->  #include "migration/vmstate.h"
->  #include "hw/mem/memory-device.h"
->  #include "sysemu/numa.h"
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index bcda50efcc..061cdb77f8 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -42,7 +42,7 @@
->  #include "elf.h"
->  #include "migration/vmstate.h"
->  #include "multiboot.h"
-> -#include "hw/timer/mc146818rtc.h"
-> +#include "hw/rtc/mc146818rtc.h"
->  #include "hw/dma/i8257.h"
->  #include "hw/timer/i8254.h"
->  #include "hw/input/i8042.h"
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index 8fad20f314..748fc2ee15 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -33,7 +33,7 @@
->  #include "hw/loader.h"
->  #include "sysemu/arch_init.h"
->  #include "hw/i2c/smbus_eeprom.h"
-> -#include "hw/timer/mc146818rtc.h"
-> +#include "hw/rtc/mc146818rtc.h"
->  #include "hw/xen/xen.h"
->  #include "sysemu/kvm.h"
->  #include "kvm_i386.h"
-> diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
-> index cf537dd7e6..03a27e1767 100644
-> --- a/hw/mips/mips_fulong2e.c
-> +++ b/hw/mips/mips_fulong2e.c
-> @@ -39,7 +39,7 @@
->  #include "hw/ide.h"
->  #include "elf.h"
->  #include "hw/isa/vt82c686.h"
-> -#include "hw/timer/mc146818rtc.h"
-> +#include "hw/rtc/mc146818rtc.h"
->  #include "hw/timer/i8254.h"
->  #include "exec/address-spaces.h"
 >  #include "sysemu/qtest.h"
-> diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
-> index c967b97d80..2811a4bd90 100644
-> --- a/hw/mips/mips_jazz.c
-> +++ b/hw/mips/mips_jazz.c
-> @@ -39,7 +39,7 @@
->  #include "hw/scsi/esp.h"
->  #include "hw/mips/bios.h"
->  #include "hw/loader.h"
-> -#include "hw/timer/mc146818rtc.h"
-> +#include "hw/rtc/mc146818rtc.h"
->  #include "hw/timer/i8254.h"
->  #include "hw/display/vga.h"
->  #include "hw/audio/pcspk.h"
-> diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
-> index 4d9c64b36a..c1c8810e71 100644
-> --- a/hw/mips/mips_malta.c
-> +++ b/hw/mips/mips_malta.c
-> @@ -45,7 +45,7 @@
->  #include "hw/irq.h"
->  #include "hw/loader.h"
->  #include "elf.h"
-> -#include "hw/timer/mc146818rtc.h"
-> +#include "hw/rtc/mc146818rtc.h"
->  #include "hw/timer/i8254.h"
->  #include "exec/address-spaces.h"
->  #include "hw/sysbus.h"             /* SysBusDevice */
-> diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
-> index bc0be26544..70024235ae 100644
-> --- a/hw/mips/mips_r4k.c
-> +++ b/hw/mips/mips_r4k.c
-> @@ -28,7 +28,7 @@
->  #include "hw/ide.h"
->  #include "hw/loader.h"
->  #include "elf.h"
-> -#include "hw/timer/mc146818rtc.h"
-> +#include "hw/rtc/mc146818rtc.h"
->  #include "hw/input/i8042.h"
->  #include "hw/timer/i8254.h"
->  #include "exec/address-spaces.h"
-> diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-> index 3f08db7b9e..4b2649d95b 100644
-> --- a/hw/ppc/pnv.c
-> +++ b/hw/ppc/pnv.c
-> @@ -48,7 +48,7 @@
->  #include "hw/isa/isa.h"
->  #include "hw/boards.h"
->  #include "hw/char/serial.h"
-> -#include "hw/timer/mc146818rtc.h"
-> +#include "hw/rtc/mc146818rtc.h"
->  
->  #include <libfdt.h>
->  
 > diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-> index 4f3c6bf190..3a51536e1a 100644
+> index 3a51536e1a..862345c2ac 100644
 > --- a/hw/ppc/prep.c
 > +++ b/hw/ppc/prep.c
-> @@ -40,7 +40,7 @@
->  #include "hw/ide.h"
->  #include "hw/irq.h"
->  #include "hw/loader.h"
-> -#include "hw/timer/mc146818rtc.h"
-> +#include "hw/rtc/mc146818rtc.h"
->  #include "hw/isa/pc87312.h"
->  #include "hw/net/ne2000-isa.h"
->  #include "sysemu/arch_init.h"
+> @@ -25,7 +25,7 @@
+>  
+>  #include "qemu/osdep.h"
+>  #include "cpu.h"
+> -#include "hw/timer/m48t59.h"
+> +#include "hw/rtc/m48t59.h"
+>  #include "hw/char/serial.h"
+>  #include "hw/block/fdc.h"
+>  #include "net/net.h"
 > diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
-> index 8a4383bca9..7ffd702268 100644
+> index 7ffd702268..159c233517 100644
 > --- a/hw/rtc/Kconfig
 > +++ b/hw/rtc/Kconfig
-> @@ -1,2 +1,5 @@
+> @@ -1,3 +1,6 @@
+> +config M48T59
+> +    bool
+> +
 >  config PL031
 >      bool
-> +
-> +config MC146818RTC
-> +    bool
+>  
 > diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-> index 3e1eb42563..3cac0d5a63 100644
+> index 3cac0d5a63..c87f81405e 100644
 > --- a/hw/rtc/Makefile.objs
 > +++ b/hw/rtc/Makefile.objs
-> @@ -1 +1,2 @@
+> @@ -1,2 +1,6 @@
+> +common-obj-$(CONFIG_M48T59) += m48t59.o
+> +ifeq ($(CONFIG_ISA_BUS),y)
+> +common-obj-$(CONFIG_M48T59) += m48t59-isa.o
+> +endif
 >  common-obj-$(CONFIG_PL031) += pl031.o
-> +obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
-> diff --git a/hw/timer/mc146818rtc.c b/hw/rtc/mc146818rtc.c
+>  obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
+> diff --git a/hw/timer/m48t59-internal.h b/hw/rtc/m48t59-internal.h
+> similarity index 100%
+> rename from hw/timer/m48t59-internal.h
+> rename to hw/rtc/m48t59-internal.h
+> diff --git a/hw/timer/m48t59-isa.c b/hw/rtc/m48t59-isa.c
+> similarity index 98%
+> rename from hw/timer/m48t59-isa.c
+> rename to hw/rtc/m48t59-isa.c
+> index 5e5432abfd..7fde854c0f 100644
+> --- a/hw/timer/m48t59-isa.c
+> +++ b/hw/rtc/m48t59-isa.c
+> @@ -1,5 +1,5 @@
+>  /*
+> - * QEMU M48T59 and M48T08 NVRAM emulation (ISA bus interface
+> + * QEMU M48T59 and M48T08 NVRAM emulation (ISA bus interface)
+>   *
+>   * Copyright (c) 2003-2005, 2007 Jocelyn Mayer
+>   * Copyright (c) 2013 Hervé Poussineau
+> @@ -26,7 +26,7 @@
+>  #include "qemu/osdep.h"
+>  #include "hw/isa/isa.h"
+>  #include "hw/qdev-properties.h"
+> -#include "hw/timer/m48t59.h"
+> +#include "hw/rtc/m48t59.h"
+>  #include "m48t59-internal.h"
+>  #include "qemu/module.h"
+>  
+> diff --git a/hw/timer/m48t59.c b/hw/rtc/m48t59.c
 > similarity index 99%
-> rename from hw/timer/mc146818rtc.c
-> rename to hw/rtc/mc146818rtc.c
-> index 6cb378751b..ced15f764f 100644
-> --- a/hw/timer/mc146818rtc.c
-> +++ b/hw/rtc/mc146818rtc.c
-> @@ -34,7 +34,7 @@
->  #include "sysemu/replay.h"
->  #include "sysemu/reset.h"
+> rename from hw/timer/m48t59.c
+> rename to hw/rtc/m48t59.c
+> index a9fc2f981a..fc592b9fb1 100644
+> --- a/hw/timer/m48t59.c
+> +++ b/hw/rtc/m48t59.c
+> @@ -27,7 +27,7 @@
+>  #include "qemu-common.h"
+>  #include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+> -#include "hw/timer/m48t59.h"
+> +#include "hw/rtc/m48t59.h"
+>  #include "qemu/timer.h"
 >  #include "sysemu/runstate.h"
-> -#include "hw/timer/mc146818rtc.h"
-> +#include "hw/rtc/mc146818rtc.h"
+>  #include "sysemu/sysemu.h"
+> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+> index 6c5a17a020..2aaa5bf1ae 100644
+> --- a/hw/sparc/sun4m.c
+> +++ b/hw/sparc/sun4m.c
+> @@ -31,7 +31,7 @@
+>  #include "qemu/error-report.h"
+>  #include "qemu/timer.h"
+>  #include "hw/sparc/sun4m_iommu.h"
+> -#include "hw/timer/m48t59.h"
+> +#include "hw/rtc/m48t59.h"
 >  #include "migration/vmstate.h"
->  #include "qapi/error.h"
->  #include "qapi/qapi-commands-misc-target.h"
+>  #include "hw/sparc/sparc32_dma.h"
+>  #include "hw/block/fdc.h"
+> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+> index 1ded2a4c9a..955082773b 100644
+> --- a/hw/sparc64/sun4u.c
+> +++ b/hw/sparc64/sun4u.c
+> @@ -36,7 +36,7 @@
+>  #include "hw/pci-host/sabre.h"
+>  #include "hw/char/serial.h"
+>  #include "hw/char/parallel.h"
+> -#include "hw/timer/m48t59.h"
+> +#include "hw/rtc/m48t59.h"
+>  #include "migration/vmstate.h"
+>  #include "hw/input/i8042.h"
+>  #include "hw/block/fdc.h"
 > diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-> index 27c5dce09e..af415c8ef8 100644
+> index af415c8ef8..a57e9b59fc 100644
 > --- a/hw/timer/Kconfig
 > +++ b/hw/timer/Kconfig
-> @@ -35,9 +35,6 @@ config ALTERA_TIMER
+> @@ -24,9 +24,6 @@ config M41T80
 >      bool
->      select PTIMER
+>      depends on I2C
 >  
-> -config MC146818RTC
+> -config M48T59
 > -    bool
 > -
->  config ALLWINNER_A10_PIT
+>  config TWL92230
 >      bool
->      select PTIMER
+>      depends on I2C
 > diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-> index 9f64f6e11e..b0159189cf 100644
+> index b0159189cf..fe2d1fbc40 100644
 > --- a/hw/timer/Makefile.objs
 > +++ b/hw/timer/Makefile.objs
-> @@ -35,8 +35,6 @@ common-obj-$(CONFIG_SH4) += sh_timer.o
->  common-obj-$(CONFIG_DIGIC) += digic-timer.o
->  common-obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
->  
-> -obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
-> -
->  common-obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
->  
->  common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
-> diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
-> index 1ddae4e7d7..02bf8a8ce8 100644
-> --- a/hw/timer/hpet.c
-> +++ b/hw/timer/hpet.c
-> @@ -33,7 +33,7 @@
->  #include "qemu/timer.h"
->  #include "hw/timer/hpet.h"
->  #include "hw/sysbus.h"
-> -#include "hw/timer/mc146818rtc.h"
-> +#include "hw/rtc/mc146818rtc.h"
->  #include "migration/vmstate.h"
->  #include "hw/timer/i8254.h"
->  
-> diff --git a/include/hw/timer/mc146818rtc.h b/include/hw/rtc/mc146818rtc.h
-> similarity index 58%
-> rename from include/hw/timer/mc146818rtc.h
-> rename to include/hw/rtc/mc146818rtc.h
-> index fe6ed63f71..2e9331637a 100644
-> --- a/include/hw/timer/mc146818rtc.h
-> +++ b/include/hw/rtc/mc146818rtc.h
-> @@ -1,8 +1,16 @@
-> -#ifndef MC146818RTC_H
-> -#define MC146818RTC_H
+> @@ -7,10 +7,6 @@ common-obj-$(CONFIG_DS1338) += ds1338.o
+>  common-obj-$(CONFIG_HPET) += hpet.o
+>  common-obj-$(CONFIG_I8254) += i8254_common.o i8254.o
+>  common-obj-$(CONFIG_M41T80) += m41t80.o
+> -common-obj-$(CONFIG_M48T59) += m48t59.o
+> -ifeq ($(CONFIG_ISA_BUS),y)
+> -common-obj-$(CONFIG_M48T59) += m48t59-isa.o
+> -endif
+>  common-obj-$(CONFIG_PUV3) += puv3_ost.o
+>  common-obj-$(CONFIG_TWL92230) += twl92230.o
+>  common-obj-$(CONFIG_XILINX) += xilinx_timer.o
+> diff --git a/include/hw/rtc/m48t59.h b/include/hw/rtc/m48t59.h
+> new file mode 100644
+> index 0000000000..e7ea4e8761
+> --- /dev/null
+> +++ b/include/hw/rtc/m48t59.h
+> @@ -0,0 +1,57 @@
 > +/*
-> + * QEMU MC146818 RTC emulation
+> + * QEMU M48T59 and M48T08 NVRAM emulation
 > + *
-> + * Copyright (c) 2003-2004 Fabrice Bellard
+> + * Copyright (c) 2003-2005, 2007 Jocelyn Mayer
+> + * Copyright (c) 2013 Hervé Poussineau
 > + *
-> + * SPDX-License-Identifier: MIT
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
 > + */
 > +
-> +#ifndef HW_RTC_MC146818RTC_H
-> +#define HW_RTC_MC146818RTC_H
->  
->  #include "hw/isa/isa.h"
-> -#include "hw/timer/mc146818rtc_regs.h"
-> +#include "hw/rtc/mc146818rtc_regs.h"
->  
->  #define TYPE_MC146818_RTC "mc146818rtc"
->  
-> diff --git a/include/hw/timer/mc146818rtc_regs.h b/include/hw/rtc/mc146818rtc_regs.h
-> similarity index 96%
-> rename from include/hw/timer/mc146818rtc_regs.h
-> rename to include/hw/rtc/mc146818rtc_regs.h
-> index bfbb57e570..dd6c09e2fc 100644
-> --- a/include/hw/timer/mc146818rtc_regs.h
-> +++ b/include/hw/rtc/mc146818rtc_regs.h
-> @@ -22,10 +22,11 @@
->   * THE SOFTWARE.
->   */
->  
-> -#ifndef MC146818RTC_REGS_H
-> -#define MC146818RTC_REGS_H
-> +#ifndef HW_RTC_MC146818RTC_REGS_H
-> +#define HW_RTC_MC146818RTC_REGS_H
->  
->  #include "qemu/timer.h"
-> +#include "qemu/host-utils.h"
->  
->  #define RTC_ISA_IRQ 8
->  
-> diff --git a/tests/rtc-test.c b/tests/rtc-test.c
-> index 6309b0ef6c..79a4ff1ed6 100644
-> --- a/tests/rtc-test.c
-> +++ b/tests/rtc-test.c
-> @@ -15,7 +15,7 @@
->  
->  #include "libqtest-single.h"
->  #include "qemu/timer.h"
-> -#include "hw/timer/mc146818rtc_regs.h"
-> +#include "hw/rtc/mc146818rtc_regs.h"
->  
->  #define UIP_HOLD_LENGTH           (8 * NANOSECONDS_PER_SECOND / 32768)
->  
+> +#ifndef HW_RTC_M48T59_H
+> +#define HW_RTC_M48T59_H
+> +
+> +#include "exec/hwaddr.h"
+> +#include "qom/object.h"
+> +
+> +#define TYPE_NVRAM "nvram"
+> +
+> +#define NVRAM_CLASS(klass) \
+> +    OBJECT_CLASS_CHECK(NvramClass, (klass), TYPE_NVRAM)
+> +#define NVRAM_GET_CLASS(obj) \
+> +    OBJECT_GET_CLASS(NvramClass, (obj), TYPE_NVRAM)
+> +#define NVRAM(obj) \
+> +    INTERFACE_CHECK(Nvram, (obj), TYPE_NVRAM)
+> +
+> +typedef struct Nvram Nvram;
+> +
+> +typedef struct NvramClass {
+> +    InterfaceClass parent;
+> +
+> +    uint32_t (*read)(Nvram *obj, uint32_t addr);
+> +    void (*write)(Nvram *obj, uint32_t addr, uint32_t val);
+> +    void (*toggle_lock)(Nvram *obj, int lock);
+> +} NvramClass;
+> +
+> +Nvram *m48t59_init_isa(ISABus *bus, uint32_t io_base, uint16_t size,
+> +                       int base_year, int type);
+> +Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
+> +                   uint32_t io_base, uint16_t size, int base_year,
+> +                   int type);
+> +
+> +#endif /* HW_M48T59_H */
+> diff --git a/include/hw/timer/m48t59.h b/include/hw/timer/m48t59.h
+> deleted file mode 100644
+> index f74854c026..0000000000
+> --- a/include/hw/timer/m48t59.h
+> +++ /dev/null
+> @@ -1,32 +0,0 @@
+> -#ifndef HW_M48T59_H
+> -#define HW_M48T59_H
+> -
+> -#include "exec/hwaddr.h"
+> -#include "qom/object.h"
+> -
+> -#define TYPE_NVRAM "nvram"
+> -
+> -#define NVRAM_CLASS(klass) \
+> -    OBJECT_CLASS_CHECK(NvramClass, (klass), TYPE_NVRAM)
+> -#define NVRAM_GET_CLASS(obj) \
+> -    OBJECT_GET_CLASS(NvramClass, (obj), TYPE_NVRAM)
+> -#define NVRAM(obj) \
+> -    INTERFACE_CHECK(Nvram, (obj), TYPE_NVRAM)
+> -
+> -typedef struct Nvram Nvram;
+> -
+> -typedef struct NvramClass {
+> -    InterfaceClass parent;
+> -
+> -    uint32_t (*read)(Nvram *obj, uint32_t addr);
+> -    void (*write)(Nvram *obj, uint32_t addr, uint32_t val);
+> -    void (*toggle_lock)(Nvram *obj, int lock);
+> -} NvramClass;
+> -
+> -Nvram *m48t59_init_isa(ISABus *bus, uint32_t io_base, uint16_t size,
+> -                       int base_year, int type);
+> -Nvram *m48t59_init(qemu_irq IRQ, hwaddr mem_base,
+> -                   uint32_t io_base, uint16_t size, int base_year,
+> -                   int type);
+> -
+> -#endif /* HW_M48T59_H */
 > 
 
 Applied to my trivial-patches branch.
