@@ -1,43 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNhTn-0004EF-92
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2019 14:04:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46557)
+	id 1iNhaV-00073C-An
+	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2019 14:11:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47363)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNhTj-00044i-6c
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 14:04:56 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNhaL-0006hB-UL
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 14:11:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNhTh-0006qm-Ki
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 14:04:55 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:35183)
+ (envelope-from <laurent@vivier.eu>) id 1iNhaK-0008Tr-Kx
+ for qemu-trivial@nongnu.org; Thu, 24 Oct 2019 14:11:45 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:60977)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNhTa-0006mt-Cs; Thu, 24 Oct 2019 14:04:46 -0400
+ id 1iNhaH-0008Sy-PF; Thu, 24 Oct 2019 14:11:42 -0400
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
  (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MGi6k-1iB2192GOo-00Dl8G; Thu, 24 Oct 2019 20:04:21 +0200
-Subject: Re: [PATCH v2 02/14] hw: Move PL031 device from hw/timer/ to hw/rtc/
- subdirectory
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <alistair.francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Andrew Jeffery <andrew@aj.id.au>, qemu-trivial@nongnu.org,
- qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Igor Mammedov <imammedo@redhat.com>
-References: <20191003230404.19384-1-philmd@redhat.com>
- <20191003230404.19384-3-philmd@redhat.com>
+ 1N5mOZ-1hv9FK1EFf-017F3I; Thu, 24 Oct 2019 20:11:37 +0200
+Subject: Re: [PATCH 3/3] qemu-timer: reuse MIN macro in qemu_timeout_ns_to_ms
+To: Eric Blake <eblake@redhat.com>, Frediano Ziglio <fziglio@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <20191023122652.2999-1-fziglio@redhat.com>
+ <20191023122652.2999-3-fziglio@redhat.com>
+ <ac0dbd04-c594-0904-020c-ab6384153997@vivier.eu>
+ <45775e9d-5d7d-74b4-8eee-1813b080c2da@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -81,33 +66,33 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <846da787-27fc-fd4e-7316-5f709328b915@vivier.eu>
-Date: Thu, 24 Oct 2019 20:04:15 +0200
+Message-ID: <d9bf8d20-a873-57ec-3cc4-542c72016463@vivier.eu>
+Date: Thu, 24 Oct 2019 20:11:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20191003230404.19384-3-philmd@redhat.com>
+In-Reply-To: <45775e9d-5d7d-74b4-8eee-1813b080c2da@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:aQyfZV4iv1bCzQ6za5z/s1X+QmIc8IloB3uQX7cAZZrGnMzLtXk
- nJuOtzPDH9QjzAT61BTFKBwZYAfR25TgVcJvG6Psm0bCL5JCW/rV/HRzxSD7LTA22+nZUt0
- MxQ1ckEjyu4ScVo+WLecx8+gNKn+WKCnsaAOsvrrwcAJp2pSpSIxOR7xYfTSOtTT7VifkKp
- SD73XT/N3DYATzckPuPgA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ks2uwLM8a/I=:CVQxLQpOAJXh2mNr+S0fqp
- rCEHejGXFUuLzw7dttief1veqSOm/EbJ0ZyYdRQLhkLu5KT/CBkE9wTlM2QBZdzFRDZs//rOW
- iXYQ+HcbFOUelpYwlZvnV65wa8V4jcGZLCIMTYOQTPqnlEew+0rd0TtEmeoB7ub/l4Xp17Gtf
- n8+R7Dx21eKvk1txWAe4+Ff2qX3aWTan/KH7uTSEdbRBZxVCGNDoN+/VcTZkdrwitYvHQZlvP
- kGSacZshkVTFzLPVUV+JCC4yTU2dU8i7V0TmQQmNElcvaIeX4tHK+Zq3osLmEYQIaEr97fTcz
- IxT9UvAKdiu2tCAEsEBrRvH1Wh0Pkf+3pWpRr9PDB6ML37n/swg2xaFLvK/cbdcLZBshMmDGb
- jN+y+C8q+Cs9AY5V8Q3Eedob32ROcC/gu+iVl3jnCuFJReoZhWgOEzRwYiiSih2oX10O6rZzH
- 5ApQp0V136tBet3WQkdW1YSckTcQYYcb+DevyYroqBQOteIet6W8k4b0dEJ3LfuQI8Tg8T+U4
- dJz6DZEZ/0hCLLGH/QvZh63OiGRgvVhlCkcjMJOr9WrsiCa468G5XyRj5mEmPoGtZWARNLdka
- GiI43HaPbMsUA6bvWotlOa8eJDvo2dYzQw6WUtIpXIsvBuQerLBWhMLjidRenor7yjJ4D2iGe
- q98vk4qcxPXEAfvDzPCkBR6T11T8faa8FCITtKGOJIUagNNPA7Te0AAivcQAbD0y2QehMWnhI
- SPvZo390oOf8IXr3T5w4zZx1yHj0SIYsDU2eNZw12RC5mWgsUgoj+LLQMAw8A9GRoWyHZOwg6
- HWkGz0BPnTTDRgnJzueLnTP5833sqB92yB42wk6+zswFc804qHwb94P+ojaHcV7WmhMHanUUY
- fwWvUlKvi3OBGaMV8vH9k/5K9xaa6P3R2UfgyYwX0=
+X-Provags-ID: V03:K1:Io65x8KOSpNhKJQfe0EV/jvbAueGShzHdDd8ROILf2MwE99pjWn
+ V/rnGL2flHK6l+NRaZWXGUADAdlGha3JVN44onLRco5jTZgEQfOHoqghuq6FpjCs27Dvagm
+ 9dpSbuA0s4yyzfSwyAzxsyJzccI+jtPp52B68qp2JePGHgTqwUSOMGTfmybqM8YVRU1H00Y
+ nty82DnwpzQ3OfW/ZxmOA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ved6pVf0YTo=:B9gM8tPp7C+tLJt3WoeBb0
+ lQ+Ma1M+sneFgZmNBO83es5DMY9yYz0P+AzYdopb7Ygig5CcuNIJUseRaA5FCBXU2xG/kFe6l
+ H/Ednkw54gq0fncxAxl/N/ojE6OFlXO3lU0YMlXGWrYk+Drz9mOxOqiPBKAZ8qf/OfFcgXdUm
+ fJ26hROHG9PWf0NOKD/nNdYMaObz1sgIrU3ID7dNeM1Tt4E9E78QlUCocOMc3uakpSiLuVbrn
+ CSY5BFystLlb0xc7/esG5iU19OtHWybm5oMNc++TNo7cdbDX8m4QyIyTb2FabHsD6INEpYfoG
+ AHeD5fFJl0JKm4/crxwudOekxD5YMGZjJw4aTll58pT95Sc+LsLJuZ/+kY/ZhIRfKJ0vvEn+V
+ QaWcyAJQlA94Je9MMIbADjjelb/Sc7nrHdN2ugkqPWVrEhsPmhsHp3aF2TKm9EQsxa0BDcanU
+ sGe++JlTw42omgkFLMbfUQDssAPl0nU04qjLwQQB0ZapxV+niEMp3IcbdHXVKgeZIswVkspRW
+ HM1tQ+F5RBxNXPchouBAf01e1rs/ps+cyApJc2LfxkZZWwXBaYujKS1BATNx4hzcHizcQw3W9
+ sDhpi8WeB3H4VkKfohXO0MopTafNlcr+fxy6NJyueJ8PTLLMDdhthCAHIDD3qnqmUuayQWY2C
+ uAR2AUY16mftqfwuVhXT6y9FIwzinYnZjnClRsF+pfGoTCy1fANSlb4+s4aUTF7rXTyk3zf/6
+ JM8A6NCcmCYubudR4OHOjfOHG1FxOZ1V1rL/opeA3kFF3cMSEYHEmMt4eh9/+QNklqDMU49me
+ 4I7UINIOT+GtuncI1lSSLySVonL0J1Zhds7ORC3M40UVLmdNVoNmaVzvNGfNXhPZefXLJoT6K
+ dnEYo9Dr+lX0Xq2BuArS+tcoK9uA+AOCwyG+fu0xI=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 212.227.126.133
@@ -122,209 +107,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Oct 2019 18:04:57 -0000
+X-List-Received-Date: Thu, 24 Oct 2019 18:11:51 -0000
 
-Le 04/10/2019 à 01:03, Philippe Mathieu-Daudé a écrit :
-> The PL031 is a Real Time Clock, not a timer.
-> Move it under the hw/rtc/ subdirectory.
+Le 24/10/2019 à 20:03, Eric Blake a écrit :
+> On 10/24/19 12:31 PM, Laurent Vivier wrote:
+>> Le 23/10/2019 à 14:26, Frediano Ziglio a écrit :
+>>> Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
+>>> ---
+>>>   util/qemu-timer.c | 6 +-----
+>>>   1 file changed, 1 insertion(+), 5 deletions(-)
+>>>
 > 
-> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  MAINTAINERS                       | 4 ++--
->  Makefile.objs                     | 1 +
->  hw/Kconfig                        | 1 +
->  hw/Makefile.objs                  | 1 +
->  hw/arm/musca.c                    | 2 +-
->  hw/rtc/Kconfig                    | 2 ++
->  hw/rtc/Makefile.objs              | 1 +
->  hw/{timer => rtc}/pl031.c         | 2 +-
->  hw/rtc/trace-events               | 8 ++++++++
->  hw/timer/Kconfig                  | 3 ---
->  hw/timer/Makefile.objs            | 1 -
->  hw/timer/trace-events             | 7 -------
->  include/hw/{timer => rtc}/pl031.h | 5 +++--
->  13 files changed, 21 insertions(+), 17 deletions(-)
->  create mode 100644 hw/rtc/Kconfig
->  create mode 100644 hw/rtc/Makefile.objs
->  rename hw/{timer => rtc}/pl031.c (99%)
->  create mode 100644 hw/rtc/trace-events
->  rename include/hw/{timer => rtc}/pl031.h (93%)
+>>>
+>>
+>> Applied to my trivial-patches branch.
+>>
+>> I've updated the patch to remove the two useless casts.
+>>
+>> Eric, if you want to add your R-b, I can add it to the queued patch.
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 21264eae9c..92d27f1206 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -495,8 +495,8 @@ F: hw/intc/pl190.c
->  F: hw/sd/pl181.c
->  F: hw/ssi/pl022.c
->  F: include/hw/ssi/pl022.h
-> -F: hw/timer/pl031.c
-> -F: include/hw/timer/pl031.h
-> +F: hw/rtc/pl031.c
-> +F: include/hw/rtc/pl031.h
->  F: include/hw/arm/primecell.h
->  F: hw/timer/cmsdk-apb-timer.c
->  F: include/hw/timer/cmsdk-apb-timer.h
-> diff --git a/Makefile.objs b/Makefile.objs
-> index abcbd89654..11ba1a36bd 100644
-> --- a/Makefile.objs
-> +++ b/Makefile.objs
-> @@ -173,6 +173,7 @@ trace-events-subdirs += hw/pci-host
->  trace-events-subdirs += hw/ppc
->  trace-events-subdirs += hw/rdma
->  trace-events-subdirs += hw/rdma/vmw
-> +trace-events-subdirs += hw/rtc
->  trace-events-subdirs += hw/s390x
->  trace-events-subdirs += hw/scsi
->  trace-events-subdirs += hw/sd
-> diff --git a/hw/Kconfig b/hw/Kconfig
-> index b45db3c813..4b53fee4d0 100644
-> --- a/hw/Kconfig
-> +++ b/hw/Kconfig
-> @@ -27,6 +27,7 @@ source pci-host/Kconfig
->  source pcmcia/Kconfig
->  source pci/Kconfig
->  source rdma/Kconfig
-> +source rtc/Kconfig
->  source scsi/Kconfig
->  source sd/Kconfig
->  source semihosting/Kconfig
-> diff --git a/hw/Makefile.objs b/hw/Makefile.objs
-> index ece6cc3755..fd9750e5f2 100644
-> --- a/hw/Makefile.objs
-> +++ b/hw/Makefile.objs
-> @@ -26,6 +26,7 @@ devices-dirs-y += nvram/
->  devices-dirs-y += pci/
->  devices-dirs-$(CONFIG_PCI) += pci-bridge/ pci-host/
->  devices-dirs-y += pcmcia/
-> +devices-dirs-y += rtc/
->  devices-dirs-$(CONFIG_SCSI) += scsi/
->  devices-dirs-y += sd/
->  devices-dirs-y += ssi/
-> diff --git a/hw/arm/musca.c b/hw/arm/musca.c
-> index 68db4b5b38..ba99dd1941 100644
-> --- a/hw/arm/musca.c
-> +++ b/hw/arm/musca.c
-> @@ -32,7 +32,7 @@
->  #include "hw/misc/tz-mpc.h"
->  #include "hw/misc/tz-ppc.h"
->  #include "hw/misc/unimp.h"
-> -#include "hw/timer/pl031.h"
-> +#include "hw/rtc/pl031.h"
->  
->  #define MUSCA_NUMIRQ_MAX 96
->  #define MUSCA_PPC_MAX 3
-> diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
-> new file mode 100644
-> index 0000000000..8a4383bca9
-> --- /dev/null
-> +++ b/hw/rtc/Kconfig
-> @@ -0,0 +1,2 @@
-> +config PL031
-> +    bool
-> diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-> new file mode 100644
-> index 0000000000..3e1eb42563
-> --- /dev/null
-> +++ b/hw/rtc/Makefile.objs
-> @@ -0,0 +1 @@
-> +common-obj-$(CONFIG_PL031) += pl031.o
-> diff --git a/hw/timer/pl031.c b/hw/rtc/pl031.c
-> similarity index 99%
-> rename from hw/timer/pl031.c
-> rename to hw/rtc/pl031.c
-> index 2b3e261006..3a982752a2 100644
-> --- a/hw/timer/pl031.c
-> +++ b/hw/rtc/pl031.c
-> @@ -13,7 +13,7 @@
->  
->  #include "qemu/osdep.h"
->  #include "qemu-common.h"
-> -#include "hw/timer/pl031.h"
-> +#include "hw/rtc/pl031.h"
->  #include "migration/vmstate.h"
->  #include "hw/irq.h"
->  #include "hw/qdev-properties.h"
-> diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-> new file mode 100644
-> index 0000000000..54c94ac557
-> --- /dev/null
-> +++ b/hw/rtc/trace-events
-> @@ -0,0 +1,8 @@
-> +# See docs/devel/tracing.txt for syntax documentation.
-> +
-> +# pl031.c
-> +pl031_irq_state(int level) "irq state %d"
-> +pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
-> +pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
-> +pl031_alarm_raised(void) "alarm raised"
-> +pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
-> diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-> index eefc95f35e..27c5dce09e 100644
-> --- a/hw/timer/Kconfig
-> +++ b/hw/timer/Kconfig
-> @@ -27,9 +27,6 @@ config M41T80
->  config M48T59
->      bool
->  
-> -config PL031
-> -    bool
-> -
->  config TWL92230
->      bool
->      depends on I2C
-> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-> index f407523aa4..9f64f6e11e 100644
-> --- a/hw/timer/Makefile.objs
-> +++ b/hw/timer/Makefile.objs
-> @@ -11,7 +11,6 @@ common-obj-$(CONFIG_M48T59) += m48t59.o
->  ifeq ($(CONFIG_ISA_BUS),y)
->  common-obj-$(CONFIG_M48T59) += m48t59-isa.o
->  endif
-> -common-obj-$(CONFIG_PL031) += pl031.o
->  common-obj-$(CONFIG_PUV3) += puv3_ost.o
->  common-obj-$(CONFIG_TWL92230) += twl92230.o
->  common-obj-$(CONFIG_XILINX) += xilinx_timer.o
-> diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-> index db02a9142c..6936fe8573 100644
-> --- a/hw/timer/trace-events
-> +++ b/hw/timer/trace-events
-> @@ -80,10 +80,3 @@ xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int min, int sec
->  # nrf51_timer.c
->  nrf51_timer_read(uint64_t addr, uint32_t value, unsigned size) "read addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
->  nrf51_timer_write(uint64_t addr, uint32_t value, unsigned size) "write addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
-> -
-> -# pl031.c
-> -pl031_irq_state(int level) "irq state %d"
-> -pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
-> -pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
-> -pl031_alarm_raised(void) "alarm raised"
-> -pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
-> diff --git a/include/hw/timer/pl031.h b/include/hw/rtc/pl031.h
-> similarity index 93%
-> rename from include/hw/timer/pl031.h
-> rename to include/hw/rtc/pl031.h
-> index 8c3f555ee2..e3cb1d646f 100644
-> --- a/include/hw/timer/pl031.h
-> +++ b/include/hw/rtc/pl031.h
-> @@ -11,10 +11,11 @@
->   * GNU GPL, version 2 or (at your option) any later version.
->   */
->  
-> -#ifndef HW_TIMER_PL031_H
-> -#define HW_TIMER_PL031_H
-> +#ifndef HW_RTC_PL031_H
-> +#define HW_RTC_PL031_H
->  
->  #include "hw/sysbus.h"
-> +#include "qemu/timer.h"
->  
->  #define TYPE_PL031 "pl031"
->  #define PL031(obj) OBJECT_CHECK(PL031State, (obj), TYPE_PL031)
+> I don't see it queued on https://github.com/vivier/qemu/branches yet,
+
+Sorry, forgot to push it.
+
+> but if removing the two casts is the only difference from the original:
+> 
+> Reviewed-by: Eric Blake <eblake@redhat.com>
 > 
 
-Applied to my trivial-patches branch.
+Added and pushed (branch trivial-patches), you can check.
 
 Thanks,
 Laurent
