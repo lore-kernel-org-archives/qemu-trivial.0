@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNv5V-0001cQ-3U
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Oct 2019 04:36:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50425)
+	id 1iNv5X-0001go-Iy
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Oct 2019 04:36:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50541)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNv5Q-0001Ua-9P
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:45 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNv5T-0001Zp-EO
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNv5L-0008Ai-4J
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:44 -0400
-Received: from mout.kundenserver.de ([212.227.126.131]:41697)
+ (envelope-from <laurent@vivier.eu>) id 1iNv5S-0008Eo-5U
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:47 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:34557)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNv5F-00086K-F9; Fri, 25 Oct 2019 04:36:33 -0400
+ id 1iNv5P-0008CN-FA; Fri, 25 Oct 2019 04:36:43 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MD9nd-1iFMLi0Lmj-0099T3; Fri, 25 Oct 2019 10:35:47 +0200
+ id 1M4K6z-1iOC3d1MB7-000O1d; Fri, 25 Oct 2019 10:36:00 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
@@ -40,34 +40,33 @@ Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
  Stefan Hajnoczi <stefanha@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Alistair Francis <alistair.francis@wdc.com>
-Subject: [PULL 12/19] hw: Move TWL92230 device from hw/timer/ to hw/rtc/
- subdirectory
-Date: Fri, 25 Oct 2019 10:35:04 +0200
-Message-Id: <20191025083511.11463-13-laurent@vivier.eu>
+Subject: [PULL 18/19] hw/rtc/xlnx-zynqmp-rtc: Remove unused "ptimer.h" include
+Date: Fri, 25 Oct 2019 10:35:10 +0200
+Message-Id: <20191025083511.11463-19-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191025083511.11463-1-laurent@vivier.eu>
 References: <20191025083511.11463-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:3NgaTQHiZJEuDv6c0dQXCgZoa6BvOnPgHLkhbho/31gjj5l8zsW
- WkeHtXVBDvGfypuno4cKy64/p67eBVjB9Djay1sckjewkgN0u++Cg1gp3Q5iLHUZc6hOp6o
- QJBkYofhhF28uO0DUwDanSge14Bs2da9gAQN4rFeY/0TDz51uzi0x26NmDOh7YzGD+Fk+xL
- jnyVJ/tycrlKjcQBclCxg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:HCo+icgs6qs=:PQSOcCS/4zlWKgipYVMMbF
- mwvkQB/fYY9tHUUcPGbn1Q/2v0mBjnUFMijT5SrWI1gw5w1kwLl2/+OdrMDSKrS/z1EBKcQYJ
- hir/pPZYJZgxRBz5I6V4e0yHcuUFehnwyZ8IBlruhDqB5PoBiSMzLI+4CE8qG8G+BGnuDMzLw
- jtwINX7jQkCxXCmifh8vVXhGbMoXH+Vlod11HJweJxUuX60yFPvCHSL5LjavneuSOqImn9TYT
- zDLvGj7fHmDuqAts73z3Tm9GcY9TAT0Cv4yxfYfAdxu42Gd+b7tMH3w7XtE7WeldY8o8Jbae/
- dDvBh8SsZYXLt9I9hAcq9GRbumwOyscCrctDVe46RwHdPkoLb4sSzq+jN7t+oIegtFPFkilGN
- JoQ/ShpNd77Q+DGhO87+Ypopnm4fLH+7UUUb7VmQxoaMtanNdDY1oKM75YjfnN2aPOt9ID8N6
- iNOkJlVkiyCzX9BPs9qRAI8LXxXWxdsGEVXX/oIAw7daNHxKT3fwefhdFSOIdUTK2DltqrPRL
- i7GVN3wzxnm4baJzKiYCUKjwDUT5cKh8XTVU/WP7+yZr1I82AWMXt90yMm5DSNPdWnN+5xfeN
- 60ouLhaGSNiafWnPxGHfvKfOy7fweCr/I3/uD9K5/DblLB0U67OXLUMLtAP1J/1goTqO1MN5/
- i2jrydX4HEK7zsjMAP77z6QKC+79kQJWw3WNUA5XGmyigSWgAtPZR/eYFWi4xajkrGQadGoGb
- 19mukk/C+00+gILHvqEZD79paOOQj5H+QsycP3QQ/9lFdEhdNWaziRnBWQW+dV8MWjdENoQFC
- wbx4qpoy1YJK4SKfwD6Y9MjM9iG26fDf16O2PTcc1TYwsDJVFmCpsIH5C+ZUL6oogd4IPmxWd
- oUrTrKK0YKnqyTAzY84E9ribsdW/Rm1B7inZ/Xwkk=
+X-Provags-ID: V03:K1:bIVh4Atdz8bHUNgDKytO4sxywaGZPxNGPkscIkQ59ZOiIyIm/xq
+ c8nPdAO8wITFiXU10dVK67Q/hD/eeRjyt7FlwozDNzVNUSu7N5VWqK4n9MHIEupT16Crppp
+ +0UYhJlob30MSu6hlUpt/rYmmSIknby3svJtfkCbqClmTP2DvE77O6Cr/Vjh0/9KYswm32T
+ w1Ix0+hjxjmif4ar3mGhg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ra8smSEyvIs=:JTCe2FY0XoUYysYNNN89O1
+ Aro3pi6I4fhHm4AXqjsGea1WxQ8lDqO8HwQEFWwhrLOhITnHTI5eUXJvhIt0GMXwm/DeFkNdR
+ hwoS5iC4RNrZKP67fcCvcGfzLiSA9UTG4C9iXv22bVb8VvQXUkSA9dYfqd/dsLiRs45QUnad9
+ zA/nUqmX8FuHrTAG0tIu/nU54+5tcZ4yzruXEVO3gmKT3Y57Vg3TgEMP6m5a1YD0dYifPr4Pd
+ sXmSE/JT4TCZVAdDieQlFOlQvbKJRPIsceaIAmRxPqwBGs0HASYSfi+lfAwHw0U7Y0x5wsm3/
+ 9WJxT8d+CzM8spnitrE5LWibeOCMgXQIs1OHPLTGpeUzjDeN2VwO0T+Er2WnAJsor16ProFgS
+ wAEVxOrsFTiWUV3lmudp0OACmpXsVweblTah713IRaExbhR/8dh0Mt13VZ0e/cQ6MHC38TaE0
+ 9kaFSItY77DwttlKpPO9H++p5pz30/gi+/218zR38dNd3kQhD8xRp1sM+9hU0WASgdwMJ8r4n
+ TdVGDxjqw4EuezAQ8Oj8c/CLg1pXmsBW5K2db5k3aXxr6ZejRx7CrFXlLe8UJJaE7NIfd+9lA
+ 0QzMMrM8UMUV+e0eDDj6N9EqBfWifrQTW0K6cqBviaI0NY41Jkdz1Nrb8Tsa1eOJbmIEpnEou
+ i90n4oLape0x7p56MhqJU6a3/17VV2xLf/+iQoZHWaulz5scPM0C+YT1BBp9XWHhZCJ0P6m/l
+ m/ZN9K3mlbjRLF4NFqnVPHbc4j8RkIPBYHBFLZVbL+N8LlTHkUBasWh479xXMrKjxUT3dYn1w
+ Y1NtT6Ae5egJGyc+vSkA61Alkz492aB6TBA+1GkOGAVQvyn9Wwp8KmcJQomuV6rs7nr+2U36q
+ c7X5oYlwsc6k8qGcSOZEzK/5ySzyhlnCIxPACRGrk=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 212.227.126.131
@@ -82,99 +81,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Oct 2019 08:36:47 -0000
+X-List-Received-Date: Fri, 25 Oct 2019 08:36:50 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The TWL92230 is an "energy management device" companion with
-a RTC. Since we mostly model the RTC, move it under the hw/rtc/
-subdirectory.
+The "hw/ptimer.h" header is not used, remove it.
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Acked-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20191003230404.19384-8-philmd@redhat.com>
+Message-Id: <20191003230404.19384-14-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- MAINTAINERS                  | 2 +-
- hw/rtc/Kconfig               | 4 ++++
- hw/rtc/Makefile.objs         | 1 +
- hw/{timer => rtc}/twl92230.c | 0
- hw/timer/Kconfig             | 4 ----
- hw/timer/Makefile.objs       | 1 -
- 6 files changed, 6 insertions(+), 6 deletions(-)
- rename hw/{timer => rtc}/twl92230.c (100%)
+ hw/rtc/xlnx-zynqmp-rtc.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index a7de5e2d1253..0dc72d37bdc8 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -663,7 +663,7 @@ F: hw/display/blizzard.c
- F: hw/input/lm832x.c
- F: hw/input/tsc2005.c
- F: hw/misc/cbus.c
--F: hw/timer/twl92230.c
-+F: hw/rtc/twl92230.c
- F: include/hw/display/blizzard.h
- F: include/hw/input/tsc2xxx.h
- F: include/hw/misc/cbus.h
-diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
-index cc7fead764f4..dff9d60946af 100644
---- a/hw/rtc/Kconfig
-+++ b/hw/rtc/Kconfig
-@@ -8,6 +8,10 @@ config M48T59
- config PL031
-     bool
- 
-+config TWL92230
-+    bool
-+    depends on I2C
-+
- config MC146818RTC
-     bool
- 
-diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-index 4621b37bc2f6..810a38ee7b3d 100644
---- a/hw/rtc/Makefile.objs
-+++ b/hw/rtc/Makefile.objs
-@@ -4,5 +4,6 @@ ifeq ($(CONFIG_ISA_BUS),y)
- common-obj-$(CONFIG_M48T59) += m48t59-isa.o
- endif
- common-obj-$(CONFIG_PL031) += pl031.o
-+common-obj-$(CONFIG_TWL92230) += twl92230.o
- obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
- common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
-diff --git a/hw/timer/twl92230.c b/hw/rtc/twl92230.c
-similarity index 100%
-rename from hw/timer/twl92230.c
-rename to hw/rtc/twl92230.c
-diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-index b04c928136c2..9357875f285d 100644
---- a/hw/timer/Kconfig
-+++ b/hw/timer/Kconfig
-@@ -20,10 +20,6 @@ config HPET
- config I8254
-     bool
- 
--config TWL92230
--    bool
--    depends on I2C
--
- config ALTERA_TIMER
-     bool
-     select PTIMER
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 034bd30255c0..23be70b71d32 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -7,7 +7,6 @@ common-obj-$(CONFIG_DS1338) += ds1338.o
- common-obj-$(CONFIG_HPET) += hpet.o
- common-obj-$(CONFIG_I8254) += i8254_common.o i8254.o
- common-obj-$(CONFIG_PUV3) += puv3_ost.o
--common-obj-$(CONFIG_TWL92230) += twl92230.o
- common-obj-$(CONFIG_XILINX) += xilinx_timer.o
- common-obj-$(CONFIG_SLAVIO) += slavio_timer.o
- common-obj-$(CONFIG_ETRAXFS) += etraxfs_timer.o
+diff --git a/hw/rtc/xlnx-zynqmp-rtc.c b/hw/rtc/xlnx-zynqmp-rtc.c
+index f9f09b72965a..2bcd14d7795d 100644
+--- a/hw/rtc/xlnx-zynqmp-rtc.c
++++ b/hw/rtc/xlnx-zynqmp-rtc.c
+@@ -32,7 +32,6 @@
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "hw/irq.h"
+-#include "hw/ptimer.h"
+ #include "qemu/cutils.h"
+ #include "sysemu/sysemu.h"
+ #include "trace.h"
 -- 
 2.21.0
 
