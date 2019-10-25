@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNv4q-0000Td-2E
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Oct 2019 04:36:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49582)
+	id 1iNv4u-0000aZ-8b
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Oct 2019 04:36:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49644)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNv4l-0000RE-OV
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:05 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNv4r-0000Vt-82
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNv4j-0007eo-LS
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:03 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:58789)
+ (envelope-from <laurent@vivier.eu>) id 1iNv4q-0007jA-0W
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:09 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:42539)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNv4h-0007bq-Rl; Fri, 25 Oct 2019 04:36:01 -0400
+ id 1iNv4p-0007i4-NA; Fri, 25 Oct 2019 04:36:07 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1M42zo-1iNv450zGi-00072i; Fri, 25 Oct 2019 10:35:21 +0200
+ id 1MPXta-1iacMQ3LTG-00Mbyg; Fri, 25 Oct 2019 10:35:33 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
@@ -37,39 +37,40 @@ Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Andrew Jeffery <andrew@aj.id.au>, Helge Deller <deller@gmx.de>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, Han Han <hhan@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PULL 01/19] qemu-options.hx: Update for reboot-timeout parameter
-Date: Fri, 25 Oct 2019 10:34:53 +0200
-Message-Id: <20191025083511.11463-2-laurent@vivier.eu>
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>
+Subject: [PULL 06/19] hw/timer: Compile devices not target-dependent as common
+ object
+Date: Fri, 25 Oct 2019 10:34:58 +0200
+Message-Id: <20191025083511.11463-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191025083511.11463-1-laurent@vivier.eu>
 References: <20191025083511.11463-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:c/zMktz+3JjDH+N71EHAEvM5mmPJFDBf9jhIDyxk7TxzV9fd6VF
- REjLhdpVtuT+qJJnkSVRY8ew+4aN3YxXoxXTeY8UycOnzgJS8DHvTvEseeCpOQFDy6OSCR8
- aOiLgpYlSLipBEF0WEqUxXkw8hfoJSbOxR8uKNmO7BMxTAyJ+SDfj7eiV7ERp40lT+h2UbQ
- nf6VK2l31V84+k9iosYqA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:9u9gYdmRFEM=:IHDA2tZj9/PN/GSiW8JqI9
- 3ui4rUZFYZTm+TAtJxWQ+8XTasyD/3lGBWFFqzkVoBXKAJhk93dh8FpDaTE2GGLK5PbbRSEBm
- /xLbvcGjUBldmt5vtvZhNZNTqat711fn/8QhfwHpYdCsYK8nuxmuDNirNRaMTSCRX0ixofiip
- /OpNz7oVvqcWcnj1J0PlRWspCPoupOznVS6bFaZtyp+6u+mtxmB7Np15ecx2nHe1ia3O0ohX+
- 2xALIeofdbNe6dv5/z8gPEjul/cv5/6Mq4D4eg0WUz4Sf1C0X8+Br9NZpQFjGwfXjDd5AD084
- eoMF1uG8aNL6ptNoHXPb6zHf6KKK7JLgv4nUzCiDLO/ULYHdNU+mYykxch67BabWWv9fjBMlg
- hCZAnZCwFm3qgsvstOlr1QZp+278O0WkiNwXvbgO3I9VnFOTFh6kY1HKbh4dcHBinQT8w/A4I
- 573cTrMiUc2vfSvTH+W0M1GhqnRnEBb2azODXUZtFtu+K/PuHWReTa6EC9bS0ey5pk8aIf7gV
- u5wHEUBSCpPtCOYfM1PwXYc5XeFW+flTHHRQYsejTit+9YhWK7F0d530FrzXIOv5O70hvCB2J
- ZqUUP2PWnlVlwf6uwRq3bq8Pvk98sQ1FvxQlV4QAXurdqUFuPZecAZ0MMJ/BUpW/K3QAa5LUj
- iEkqZiwPLexcdpfEg+M2sjkEuLxQiyTOPrFvlIib/59myXyPHE8d0236VrNgGmM1qrTROuy2U
- klz1OyeMnz8wlbjPibWqWQOX3q4FnldOZF5xboT09ly4anmWhKSbp5Yim4cuWCxzyQ02jK4vd
- ta8ms9UC4T4SwDq8fcr0aF6+dQQJsEqR8nuY4sGbWXMzZIZmB2AlVaIVOClG0nsE5aFx9pU3M
- NIzwbvNDxl9ZWFn0OcbjfHgalfCFN2rBmrbw4Q55s=
+X-Provags-ID: V03:K1:fJ4V1AnXTAcItYSV9oR8i35L0OGfAII0+g067o8KOiaQpL/F/Dy
+ ZwprbljE8vnKw8Swcki38wOLABSHSdwgvzsbd+ruAOD6OewQ2dfUeIPD3xqRfGXKlWl8MGW
+ uN+u7znWyXKIvvd+uqmtszoEu4aaEcKL/AakDVxCLTeOfq8keKigQPyAktuA1038zubP+aE
+ R0KAfL6HP8jiXkSihxieg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:2Rpo3xlo6y0=:J14/lgwOwfUNXqY26XKPK6
+ /LCbiixh3U/3SOte/ZGRUhk+qolPY5xQqR270PaRTA3v/G2M+NOBR+aLMRmKFJPx4NdV/1ltx
+ fv72HigBTOsZPL/BZJ+Et2RcShxvX28bivAsnJ2IlswAaPXI6xKuSVQ8NSB8qc5fBMccYLuEj
+ F5qF4fkimZFsbsgoXyYmry9jl0cWgRd2hU4F22Bs49KlwCJuGSCrh5QFTKUmHn3N0ZE+jiB6W
+ ZDf1pBmPYrsXfG9DVDbkGzPQJeocDJzxvh5uGm+Mrdgx3udtJ11UJpNWjQ6SKrAHxff413K8P
+ xzagBpNEGKT4O2LUZsJ2fECKH60Llus3OwJ30mQyB2/p4JOIm/upvzxyx3cW6xt2EuKOjo+mr
+ NcSHPmpzoYPhrzGFrUomDARcEsRLJ58rBbCObt91brilSotJ8rF/o6Vs/Gv0iDiYSI8AXAbGE
+ B1W8Ias8YXT+zsuQm5KKja5bjWPWCbN9STEQquRCYj256usZuLNi9ms0n2GsDu4VvKc5ilGz6
+ N9KTMkJieMGuT0JQYAUJZXUPw0t7jiqBk9UWsjJir50pZOyB1ncdpY2h3S7+4J/HSanLbYPTt
+ Lj4FBn5fktue0bg3uDk0+Io9V6rDCtvvxiy3zKx6yBVjm5cM2PzaQopdc+zdIjKvpcktqw/vy
+ HtFm25iYMsF8SRj35bU1kG9q+iIiITv+yAp2wzNkm1JevXaFgUAQl/djX+XMaDQVjoeGk7y8d
+ 2rJOl/ShR9yxS20Tx5wuxhNJRlFYqxvNLu+qz9YoBdOeEjD6pGeNlhJIPqwtJEUqibuT7wXod
+ mVE40dupzFuta57phzfzRSI6J/I4S3cymRmnXEpBe4dwb09KizjrRiofQwws+hKwn6Gq0lZNl
+ o5vwYz3el7btGeww7WCqF4c5qSYOgtzRxedd5CLao=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.187
+X-Received-From: 212.227.126.134
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,37 +82,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Oct 2019 08:36:06 -0000
+X-List-Received-Date: Fri, 25 Oct 2019 08:36:11 -0000
 
-From: Han Han <hhan@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Since ee5d0f89d, -1 is not valid for the value of reboot-timeout. Update
-that in qemu-options doc.
+All these devices do not contain any target-specific. While most
+of them are arch-specific, they are shared between different
+targets of the same arch family (ARM and AArch64, MIPS32/MIPS64,
+endianess, ...).
+Put them into common-obj-y to compile them once for all targets.
 
-Signed-off-by: Han Han <hhan@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20191015151451.727323-1-hhan@redhat.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20191003230404.19384-2-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- qemu-options.hx | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/timer/Makefile.objs | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 996b6fba7461..88b05599b1cd 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -327,8 +327,8 @@ format(true color). The resolution should be supported by the SVGA mode, so
- the recommended is 320x240, 640x480, 800x640.
+diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+index 123d92c9692c..f407523aa49d 100644
+--- a/hw/timer/Makefile.objs
++++ b/hw/timer/Makefile.objs
+@@ -25,20 +25,20 @@ common-obj-$(CONFIG_MILKYMIST) += milkymist-sysctl.o
+ common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
+ common-obj-$(CONFIG_NRF51_SOC) += nrf51_timer.o
  
- A timeout could be passed to bios, guest will pause for @var{rb_timeout} ms
--when boot failed, then reboot. If @var{rb_timeout} is '-1', guest will not
--reboot, qemu passes '-1' to bios by default. Currently Seabios for X86
-+when boot failed, then reboot. If @option{reboot-timeout} is not set,
-+guest will not reboot by default. Currently Seabios for X86
- system support it.
+-obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
+-obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
+-obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
+-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
+-obj-$(CONFIG_OMAP) += omap_gptimer.o
+-obj-$(CONFIG_OMAP) += omap_synctimer.o
+-obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
+-obj-$(CONFIG_SH4) += sh_timer.o
+-obj-$(CONFIG_DIGIC) += digic-timer.o
+-obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
++common-obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
++common-obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
++common-obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
++common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
++common-obj-$(CONFIG_OMAP) += omap_gptimer.o
++common-obj-$(CONFIG_OMAP) += omap_synctimer.o
++common-obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
++common-obj-$(CONFIG_SH4) += sh_timer.o
++common-obj-$(CONFIG_DIGIC) += digic-timer.o
++common-obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
  
- Do strict boot via @option{strict=on} as far as firmware/BIOS
+ obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
+ 
+-obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
++common-obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
+ 
+ common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
+ common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o aspeed_rtc.o
 -- 
 2.21.0
 
