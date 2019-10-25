@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNv5Y-0001ix-PQ
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Oct 2019 04:36:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50476)
+	id 1iNv5Z-0001jZ-3O
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Oct 2019 04:36:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50529)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNv5R-0001Wy-TN
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:47 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNv5T-0001ZJ-4a
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNv5Q-0008DO-4p
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:45 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:49507)
+ (envelope-from <laurent@vivier.eu>) id 1iNv5R-0008ES-SY
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:47 -0400
+Received: from mout.kundenserver.de ([212.227.126.135]:55787)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNv58-000813-Kd; Fri, 25 Oct 2019 04:36:26 -0400
+ id 1iNv5J-00089O-JD; Fri, 25 Oct 2019 04:36:37 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MkpOZ-1himgp23qR-00mKlv; Fri, 25 Oct 2019 10:35:44 +0200
+ id 1MNc5b-1id6HK3O8Z-00P4ox; Fri, 25 Oct 2019 10:35:54 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
@@ -40,37 +40,37 @@ Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
  Stefan Hajnoczi <stefanha@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Alistair Francis <alistair.francis@wdc.com>
-Subject: [PULL 11/19] hw: Move sun4v hypervisor RTC from hw/timer/ to hw/rtc/
+Subject: [PULL 15/19] hw: Move Exynos4210 RTC from hw/timer/ to hw/rtc/
  subdirectory
-Date: Fri, 25 Oct 2019 10:35:03 +0200
-Message-Id: <20191025083511.11463-12-laurent@vivier.eu>
+Date: Fri, 25 Oct 2019 10:35:07 +0200
+Message-Id: <20191025083511.11463-16-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191025083511.11463-1-laurent@vivier.eu>
 References: <20191025083511.11463-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:2E4FC47zjnu/IU4BsZd1CtXVEkYxFmlQwgRMLW7X0/TXZCkS/Xj
- 6tiznLRkZkCMiKNF0NRG7eCC6WPmsbqob4ja73U1Tr77nBgi9aXIExk1S41+uPGuIgsoAoq
- G+gIlzlih5iL8Ucr09o/jSBVZb3r6LVQ8jIT6GGAhKtFrSxRdx2rE7xY6HAPx+5CbMU8y4r
- eD+4vhf+KEeQPSHRs+gLQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:M8dzK/PK1So=:rhaMZtTst4WTyqnO14su7s
- LewxrVf1EtTGc6RpdGc5fhUkUZJqShgJmEqoW9yxIxlSJqnPcDr/wWUkl+4NY+iiVpAWR6geN
- qtJW+2DGv0qO2QYewCa8BNT4ub1CjN00KLO9+W2DxVkyOWxcSIINYIfIArvWNwONiNCVFEMKc
- wuLgPcY0iWk8WYTT0m03eN29K3g4GfWKyz5LbcqiTjNb1fnZjIq+j0JBcWd5Bg1Z4XrAqSHh1
- 2EWNO5Z1FH7QhSdzmsvX+kphF0Fwoj4HYTyklbOue3wUyf9wZ0v2m8XJbJProXiwTM8kHT6pl
- 5xcB0SV6wrq2ILlg8731AiaX0V00UJG0SQFtqoUgdlVglvL0xkG8pB+K70ReANQP98+3mQuu5
- DHdVN5W3AgGk5gMEn90dXqzxMZyNVKvXy6Ru3p1qkI6qsUOxqTFQY//nzkqCdoTlIrvTl72ai
- eJZeFcWqyVooTzJwJa7cxmuKLgoPLNWi+imJuu/F68iypXfZWgoE8NXzcMXGl9uAjB4ar+MPl
- XFvEyW7nt5j82tLtx82alHY3doJ9WRoKoOzKo9RmXwJOCwKGAAaRgzN+TuOZCyGi7rxkpbtZP
- V3fBOaX9/XWXqiL8hCkF2oQO9ZpX96KacAkUgBGageYQRbR2EuzjMqy0yVYp+RfiYIIKbT/qY
- UaZZDB9vtFHtguiuWsIWYmkbd3EtFy8WlvVmS9w9LD19la6YyqRxTDf8WU4H1uXKx/QvJKdVu
- TTHMeiGeSgF80PCBAHoZjyLgsGVzRZ4AkyDVqxnpFc0oORDZJSS7QOlBwj6rUcNDaT32mNKY6
- ObjrJEV8EGhNQtdeRXz2fnEiwGwoEe7ss4rlQao2WM6Y83hSRHZCfDTzCypgqMuh8/Q5HaA+i
- SHI8yMQup1MsYgctQh/YSyOz4oYXuC5kxI5DKpgd8=
+X-Provags-ID: V03:K1:vack1BjZXw7zRhCywDDbJMpaQCtjGChZK3BCFTUq7S15JitEFJr
+ 5p9Ubc07Ugls6WUEmqDhlHC4187umJJJmCfpUAinfcUOUCw8LjqzFpnIdAgAeKrb3aOQtI1
+ zjzGjIUoRXr1XGEvQUdQ3StRpC/nTG3m8ycOwOKuzUV4rFfPW+cyW+U+WqtFwc5Lgfws/Fv
+ AablbPtdvnzy61crt85hA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:UxPdNoSktyo=:SOk0/YJjK7m8tevZBbEk6o
+ rHaygyShR3IXb182XRgQ6Khb2Gu+pU1PUnCDzLpypQBadyzIS7xnNPxdhQxQKNdxaiYhQitoD
+ Me6eZeXAPQd3KuhX/ikOfDbWxJQ8kkeb+lKE3VFU5Fl5M0UsykvUJslYA6XxgldablZZylsZo
+ XZvsO91pYmL3foc/ZjtFEMOG9DfJxRiUxT5tKiN3CIpYK04igoxaeGgEAw7aEmtCzx8yN9X8u
+ n71wQCsXdw38L0oNPdIom6eOIMIblG73jhFbvRJEkMe1A2dzBBhiniRQJobSszTcq568oxG/D
+ WIVaGI5ex0PWdCTBWggLzwcj/KLr6Tyt+eT/Sik3mErO42Ex1rY2YTCN8rv/pvw+RKK/+zm/I
+ ZcHAPjG4eYl3F9EJWERwTZt6kZy/bdKcS13f6T56HXYm2fImtm9fUwYnCEa3WfmGuveF/92ne
+ en8UhO3iVjyYVS4EgmHg/JR9FAUvsJrgNPeyCkbrpybrS0X3jKRs4Qvn44p2vbUI+WAo1/Ec8
+ FjcGJlupBZKDou02cHOs9UHiJGYMmoeN/ustEnk/3wEaDEw7fI+MO7x1bYS+QeGwMbC+2dp7j
+ B3swZa7gRdkg0okz5LNb9G2N8istKZYzm0FxW435sVuP/AfEAgtXCnEOKvKARTsUuKchS1Lig
+ IH38JuHrln+7sKwm4ugwNCPQXNFb8FtNu39SsuGLcxv1Ama/954vrY+Ryk66PSTnH86tlxQZL
+ ABtEjukcMyh433wVRIxwk4GpGgv/aaXgWg8Q/rqehnUlZ0BdoRk5T+UNg7ga7zbWmCz7p03Bi
+ ewQKIwIx4Ads2yNnuis323kmm6dDZFzew38WjiYDuo5O1uVNybopWPmm2Q/Ld7cndPPvkNAEg
+ PJQUlxo6RkdNy3p8jbN3SEASkr0dbbXbvclipTO5Q=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.133
+X-Received-From: 212.227.126.135
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,177 +90,43 @@ Move RTC devices under the hw/rtc/ subdirectory.
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
-Message-Id: <20191003230404.19384-7-philmd@redhat.com>
+Acked-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20191003230404.19384-11-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- MAINTAINERS                   |  4 ++--
- hw/rtc/Kconfig                |  3 +++
- hw/rtc/Makefile.objs          |  1 +
- hw/{timer => rtc}/sun4v-rtc.c |  2 +-
- hw/rtc/trace-events           |  4 ++++
- hw/sparc64/niagara.c          |  2 +-
- hw/timer/Kconfig              |  3 ---
- hw/timer/Makefile.objs        |  1 -
- hw/timer/trace-events         |  4 ----
- include/hw/rtc/sun4v-rtc.h    | 19 +++++++++++++++++++
- include/hw/timer/sun4v-rtc.h  |  1 -
- 11 files changed, 31 insertions(+), 13 deletions(-)
- rename hw/{timer => rtc}/sun4v-rtc.c (98%)
- create mode 100644 include/hw/rtc/sun4v-rtc.h
- delete mode 100644 include/hw/timer/sun4v-rtc.h
+ hw/rtc/Makefile.objs               | 1 +
+ hw/{timer => rtc}/exynos4210_rtc.c | 0
+ hw/timer/Makefile.objs             | 1 -
+ 3 files changed, 1 insertion(+), 1 deletion(-)
+ rename hw/{timer => rtc}/exynos4210_rtc.c (100%)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index ba0d1906aae9..a7de5e2d1253 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1163,8 +1163,8 @@ Sun4v
- M: Artyom Tarasenko <atar4qemu@gmail.com>
- S: Maintained
- F: hw/sparc64/niagara.c
--F: hw/timer/sun4v-rtc.c
--F: include/hw/timer/sun4v-rtc.h
-+F: hw/rtc/sun4v-rtc.c
-+F: include/hw/rtc/sun4v-rtc.h
- 
- Leon3
- M: Fabien Chouteau <chouteau@adacore.com>
-diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
-index 434b20b2b1bd..cc7fead764f4 100644
---- a/hw/rtc/Kconfig
-+++ b/hw/rtc/Kconfig
-@@ -10,3 +10,6 @@ config PL031
- 
- config MC146818RTC
-     bool
-+
-+config SUN4V_RTC
-+    bool
 diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-index 89e8e48c6409..4621b37bc2f6 100644
+index 543a550a0f11..3d4763fc269e 100644
 --- a/hw/rtc/Makefile.objs
 +++ b/hw/rtc/Makefile.objs
-@@ -5,3 +5,4 @@ common-obj-$(CONFIG_M48T59) += m48t59-isa.o
- endif
+@@ -7,5 +7,6 @@ endif
  common-obj-$(CONFIG_PL031) += pl031.o
+ common-obj-$(CONFIG_TWL92230) += twl92230.o
+ common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
++common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
  obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
-+common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
-diff --git a/hw/timer/sun4v-rtc.c b/hw/rtc/sun4v-rtc.c
-similarity index 98%
-rename from hw/timer/sun4v-rtc.c
-rename to hw/rtc/sun4v-rtc.c
-index 54272a822fdf..ada01b57748b 100644
---- a/hw/timer/sun4v-rtc.c
-+++ b/hw/rtc/sun4v-rtc.c
-@@ -13,7 +13,7 @@
- #include "hw/sysbus.h"
- #include "qemu/module.h"
- #include "qemu/timer.h"
--#include "hw/timer/sun4v-rtc.h"
-+#include "hw/rtc/sun4v-rtc.h"
- #include "trace.h"
- 
- 
-diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-index 54c94ac557b2..ac9e0e0fba32 100644
---- a/hw/rtc/trace-events
-+++ b/hw/rtc/trace-events
-@@ -1,5 +1,9 @@
- # See docs/devel/tracing.txt for syntax documentation.
- 
-+# sun4v-rtc.c
-+sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 " value 0x%" PRIx64
-+sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx64 " value 0x%" PRIx64
-+
- # pl031.c
- pl031_irq_state(int level) "irq state %d"
- pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
-diff --git a/hw/sparc64/niagara.c b/hw/sparc64/niagara.c
-index 5987693659ed..5eb2d097b904 100644
---- a/hw/sparc64/niagara.c
-+++ b/hw/sparc64/niagara.c
-@@ -30,7 +30,7 @@
- #include "hw/misc/unimp.h"
- #include "hw/loader.h"
- #include "hw/sparc/sparc64.h"
--#include "hw/timer/sun4v-rtc.h"
-+#include "hw/rtc/sun4v-rtc.h"
- #include "exec/address-spaces.h"
- #include "sysemu/block-backend.h"
- #include "qemu/error-report.h"
-diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-index a6b668b2559b..b04c928136c2 100644
---- a/hw/timer/Kconfig
-+++ b/hw/timer/Kconfig
-@@ -35,9 +35,6 @@ config ALLWINNER_A10_PIT
- config STM32F2XX_TIMER
-     bool
- 
--config SUN4V_RTC
--    bool
--
- config CMSDK_APB_TIMER
-     bool
-     select PTIMER
+ common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
+diff --git a/hw/timer/exynos4210_rtc.c b/hw/rtc/exynos4210_rtc.c
+similarity index 100%
+rename from hw/timer/exynos4210_rtc.c
+rename to hw/rtc/exynos4210_rtc.c
 diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 2fb12162a623..034bd30255c0 100644
+index 294465ef47ad..33191d74cb98 100644
 --- a/hw/timer/Makefile.objs
 +++ b/hw/timer/Makefile.objs
-@@ -35,7 +35,6 @@ common-obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
- common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
- common-obj-$(CONFIG_ASPEED_SOC) += aspeed_timer.o aspeed_rtc.o
- 
--common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
- common-obj-$(CONFIG_CMSDK_APB_TIMER) += cmsdk-apb-timer.o
- common-obj-$(CONFIG_CMSDK_APB_DUALTIMER) += cmsdk-apb-dualtimer.o
- common-obj-$(CONFIG_MSF2) += mss-timer.o
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index 6936fe8573e9..ce34b967db9f 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -70,10 +70,6 @@ cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: reset"
- aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
- aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
- 
--# sun4v-rtc.c
--sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 " value 0x%" PRIx64
--sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx64 " value 0x%" PRIx64
--
- # xlnx-zynqmp-rtc.c
- xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int min, int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
- 
-diff --git a/include/hw/rtc/sun4v-rtc.h b/include/hw/rtc/sun4v-rtc.h
-new file mode 100644
-index 000000000000..fd868f6ed2fa
---- /dev/null
-+++ b/include/hw/rtc/sun4v-rtc.h
-@@ -0,0 +1,19 @@
-+/*
-+ * QEMU sun4v Real Time Clock device
-+ *
-+ * The sun4v_rtc device (sun4v tod clock)
-+ *
-+ * Copyright (c) 2016 Artyom Tarasenko
-+ *
-+ * This code is licensed under the GNU GPL v3 or (at your option) any later
-+ * version.
-+ */
-+
-+#ifndef HW_RTC_SUN4V
-+#define HW_RTC_SUN4V
-+
-+#include "exec/hwaddr.h"
-+
-+void sun4v_rtc_init(hwaddr addr);
-+
-+#endif
-diff --git a/include/hw/timer/sun4v-rtc.h b/include/hw/timer/sun4v-rtc.h
-deleted file mode 100644
-index 407278f91831..000000000000
---- a/include/hw/timer/sun4v-rtc.h
-+++ /dev/null
-@@ -1 +0,0 @@
--void sun4v_rtc_init(hwaddr addr);
+@@ -19,7 +19,6 @@ common-obj-$(CONFIG_NRF51_SOC) += nrf51_timer.o
+ common-obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
+ common-obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
+ common-obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
+-common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
+ common-obj-$(CONFIG_OMAP) += omap_gptimer.o
+ common-obj-$(CONFIG_OMAP) += omap_synctimer.o
+ common-obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
 -- 
 2.21.0
 
