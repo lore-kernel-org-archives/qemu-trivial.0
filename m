@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNv5A-00012c-5o
+	id 1iNv5A-000133-C5
 	for mharc-qemu-trivial@gnu.org; Fri, 25 Oct 2019 04:36:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50038)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50032)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNv57-0000x2-2j
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:25 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNv56-0000w6-Gh
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNv56-0007zc-2R
+ (envelope-from <laurent@vivier.eu>) id 1iNv54-0007ys-Rz
  for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:24 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:59807)
+Received: from mout.kundenserver.de ([212.227.126.130]:33137)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNv4z-0007sV-Mm; Fri, 25 Oct 2019 04:36:17 -0400
+ id 1iNv4x-0007qC-MG; Fri, 25 Oct 2019 04:36:15 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MUGyh-1iWTVR1uV9-00REYB; Fri, 25 Oct 2019 10:35:30 +0200
+ id 1MNKyQ-1icpHo3yV0-00Onq2; Fri, 25 Oct 2019 10:35:35 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
@@ -38,36 +38,39 @@ Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
  Andrew Jeffery <andrew@aj.id.au>, Helge Deller <deller@gmx.de>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
  Stefan Hajnoczi <stefanha@redhat.com>,
- Frediano Ziglio <fziglio@redhat.com>, Eric Blake <eblake@redhat.com>
-Subject: [PULL 05/19] qemu-timer: reuse MIN macro in qemu_timeout_ns_to_ms
-Date: Fri, 25 Oct 2019 10:34:57 +0200
-Message-Id: <20191025083511.11463-6-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>
+Subject: [PULL 07/19] hw: Move PL031 device from hw/timer/ to hw/rtc/
+ subdirectory
+Date: Fri, 25 Oct 2019 10:34:59 +0200
+Message-Id: <20191025083511.11463-8-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191025083511.11463-1-laurent@vivier.eu>
 References: <20191025083511.11463-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:uBpOxXMuLPxHKWK6/kD7EFF3c9UQZLvuAXfyn9fhAoa/clsGmUA
- K55b5ayMJJ4ds1bIRDXooVDF9dB2H3+0+zqjNy3OBx07di4AlLlQ4J9st0OPM0Re+ss4RYy
- zrw7Lr9je/Sz9awOZYYkQu1X8HLdZAeYIrHK1GbcqFZ/kJCbEvEtJMkbil2t0W/wPpHx8UX
- 4+U0vZbfLQjurmXs6scJg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:yW8U9yc4Kh0=:7oXwoqjFFLnDYPJG07KtHS
- /JMkSNQJF/7qCculq4xK7/PBaJEU+4LbJKTn5tyBsqpBp/OkqYrK9424puhfi66VTB+0uFZM3
- cO0DpIWNnErxZhh9FSxDXgRLzWvSS4e2tUFltxN/aER8he/Y6O9giH8DhmjiPwV7W/NiORlPN
- 0mjhkWI4qaQezpvL+1ssS5cSggm/fqmnUnP4QzEgUKnotLRU+QUabDFgftn+RRPQKFeKONAPh
- ISX7koluDhGcz7hGx2yAOJw+erchTBJ3OX2s1Lg0BAsYczkQ88p9Lw0DLmwRce8EQkhrsT0B9
- AOB9Ju6Q6fSKiWOFW5m4qoq+kQ+12uK6JXgBGTZGQyWrmgQ6/Y+ww6MYG/dSrjAjtqvjn3Xg8
- 01nfLN8ODwih56jbeesczywVMzi3VXyYPZQYlpT1Fm2TzdBfAnvCIQI8c4GoJFaVaPw0XoGuJ
- +z6Kdm6RC+kAgtG5ZT04tObCNPSEF6YSGmJ1thCKvPzvf0T+n11Ss6lrjCeSY5nG9Afda8mKp
- KHxz3RtRg5JX9GhMkuDMU61QHaOIqYqs2nB0p4hcPKCoLe9UvscQPSs97YH0LfeHp3/aDs60j
- KNfYHs4ZKOC3+aU3bjpo42HGAfuVE7qKaz/x5O6RyYsjudt3Qiwt4ubWmlBP+q+yDVekSrucy
- QGP1nvkdyRTAhRm3224vQdDvyDpJBeoJEIff0gqs1EKNtCz3R8Xl+69KmOPVkDC2mp0aOjcY5
- TKioR2/aO2T7xu14TJWK8ebe7DkhYPNmZuWAAKLu4JqAqXU11gVDidnwyQ0TkXwm3VNprJGw3
- Gu+6mQSTIB2Pl+XsVFbL6NT2gi6lwUVjj8mn4I10G+TODDIzl1321zkULQKWRNRWK05sxD3PH
- b/TLPtdOomhaZSPmIk0Q==
+X-Provags-ID: V03:K1:1Yj9pNygKerZ5iUZcCSAJRHrTy0Uv2L1BFRvnfzRNKo4FevvEjc
+ kFxWxa+3puenFGupfG/VWdTOiOtYcNGRRBJvTQzpOYPuUEEDd0WL75K031oyNOC+8yZQ77u
+ 5MSL3evxPNj34gsi0bFXZykBDdlnsEKl4EBS87kJ6kOX6S3b7IzHLrUFwmQjY+X0pulKDbW
+ isnQLafa7Dgpq4y8LVqfA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ctNIOKHoaj8=:1HmFOGi2RYebz0cuHxwh72
+ +3LSN65CFKOW76aX63T0JkF9xEeeDl3sr7jFr6NijIyC10SmvKbTb7NuwQMp27B+D0KyMQ/3z
+ s08GEU06AgaFXkS2RLBnHwMKi2rXgnni+1/yZRnhQYU/CTGQsoN3yx8QEQWS0FimxYdwUWjkz
+ 3VD1+NUq2QQ0WC1hq39ulfpmw7mT/9HeByTviAHkhxTBhwx8P8XkAB2D/XeXtRw3Aqye5CINt
+ syh6vim+WTdSN42ot94RdXVCaIqo40w8g4MsKGoY8Ky7hMIh6uz3LpM6VCBtIEe6mV7Sk3hwi
+ gYCa4tM6f5et+owITxVTF+WbZ7BB+gahlfTTPda4/e2VmPvy5+Q7sOvJcNGB51Bv/M1+2yIZD
+ waLveaW9QBksDOuyqxTGa+qDc/Tjgaf24NY9jLfdGvCwXvah6oKMsYzJm0REFA9X+lYx6BEqn
+ RPLmGKPbUlUH+tMdGe7iiCU/J0xoqhqdFjU9Np92y2QjMfR5BLM1Sl7MiOD7C3CMM5/c/96Rr
+ RaWhXAUQ94z6e1hmwl7WCQ9BFZLdtM39Zwc8igJDbxRnhfRgNpALwPthLoiCmigFEhOmw8c1o
+ uSWLo9YrHXeirEHRl1Afoy5tOp1F+b/usnyXREnKi8zhP29CkvcWZ4GvjdfaZmxBW1HaKVcn/
+ 6W5Fcx6rfZivYSf20R5w5hhCISSYHQQnP/ff2WVKSJeJkTcnhwGaZHBq4ncuYSYysuNfPSQ2o
+ QZONpgT4V3KlU6xMn2sVdBYsQWAmzYwnNVBMnQrQE2aDzDB0wKoiP44I3l0ulOrzUfqesMIgr
+ lF0CD659Yu6kgOq/LKAFBE+iTvEw8o5Vn+rNNo95zLWXzcR/R2htPDVorJk6rRPW62JNzWL1o
+ 9hnJn1JqEJm185uEH1kdZRg4fTQUiXJOsmmVG6epw=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.134
+X-Received-From: 212.227.126.130
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,35 +84,208 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 25 Oct 2019 08:36:27 -0000
 
-From: Frediano Ziglio <fziglio@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20191023122652.2999-3-fziglio@redhat.com>
-[lv: removed the two useless casts]
-Reviewed-by: Eric Blake <eblake@redhat.com>
+The PL031 is a Real Time Clock, not a timer.
+Move it under the hw/rtc/ subdirectory.
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Acked-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20191003230404.19384-3-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- util/qemu-timer.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+ MAINTAINERS                       | 4 ++--
+ Makefile.objs                     | 1 +
+ hw/Kconfig                        | 1 +
+ hw/Makefile.objs                  | 1 +
+ hw/arm/musca.c                    | 2 +-
+ hw/rtc/Kconfig                    | 2 ++
+ hw/rtc/Makefile.objs              | 1 +
+ hw/{timer => rtc}/pl031.c         | 2 +-
+ hw/rtc/trace-events               | 8 ++++++++
+ hw/timer/Kconfig                  | 3 ---
+ hw/timer/Makefile.objs            | 1 -
+ hw/timer/trace-events             | 7 -------
+ include/hw/{timer => rtc}/pl031.h | 5 +++--
+ 13 files changed, 21 insertions(+), 17 deletions(-)
+ create mode 100644 hw/rtc/Kconfig
+ create mode 100644 hw/rtc/Makefile.objs
+ rename hw/{timer => rtc}/pl031.c (99%)
+ create mode 100644 hw/rtc/trace-events
+ rename include/hw/{timer => rtc}/pl031.h (93%)
 
-diff --git a/util/qemu-timer.c b/util/qemu-timer.c
-index d428fec56772..ef52d28d3753 100644
---- a/util/qemu-timer.c
-+++ b/util/qemu-timer.c
-@@ -322,11 +322,7 @@ int qemu_timeout_ns_to_ms(int64_t ns)
-     ms = DIV_ROUND_UP(ns, SCALE_MS);
+diff --git a/MAINTAINERS b/MAINTAINERS
+index ed41d7d1b6cc..2e13ba46282d 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -495,8 +495,8 @@ F: hw/intc/pl190.c
+ F: hw/sd/pl181.c
+ F: hw/ssi/pl022.c
+ F: include/hw/ssi/pl022.h
+-F: hw/timer/pl031.c
+-F: include/hw/timer/pl031.h
++F: hw/rtc/pl031.c
++F: include/hw/rtc/pl031.h
+ F: include/hw/arm/primecell.h
+ F: hw/timer/cmsdk-apb-timer.c
+ F: include/hw/timer/cmsdk-apb-timer.h
+diff --git a/Makefile.objs b/Makefile.objs
+index abcbd89654ac..11ba1a36bd39 100644
+--- a/Makefile.objs
++++ b/Makefile.objs
+@@ -173,6 +173,7 @@ trace-events-subdirs += hw/pci-host
+ trace-events-subdirs += hw/ppc
+ trace-events-subdirs += hw/rdma
+ trace-events-subdirs += hw/rdma/vmw
++trace-events-subdirs += hw/rtc
+ trace-events-subdirs += hw/s390x
+ trace-events-subdirs += hw/scsi
+ trace-events-subdirs += hw/sd
+diff --git a/hw/Kconfig b/hw/Kconfig
+index b45db3c813ff..4b53fee4d0ce 100644
+--- a/hw/Kconfig
++++ b/hw/Kconfig
+@@ -27,6 +27,7 @@ source pci-host/Kconfig
+ source pcmcia/Kconfig
+ source pci/Kconfig
+ source rdma/Kconfig
++source rtc/Kconfig
+ source scsi/Kconfig
+ source sd/Kconfig
+ source semihosting/Kconfig
+diff --git a/hw/Makefile.objs b/hw/Makefile.objs
+index ece6cc37550f..fd9750e5f273 100644
+--- a/hw/Makefile.objs
++++ b/hw/Makefile.objs
+@@ -26,6 +26,7 @@ devices-dirs-y += nvram/
+ devices-dirs-y += pci/
+ devices-dirs-$(CONFIG_PCI) += pci-bridge/ pci-host/
+ devices-dirs-y += pcmcia/
++devices-dirs-y += rtc/
+ devices-dirs-$(CONFIG_SCSI) += scsi/
+ devices-dirs-y += sd/
+ devices-dirs-y += ssi/
+diff --git a/hw/arm/musca.c b/hw/arm/musca.c
+index 68db4b5b3878..ba99dd19413d 100644
+--- a/hw/arm/musca.c
++++ b/hw/arm/musca.c
+@@ -32,7 +32,7 @@
+ #include "hw/misc/tz-mpc.h"
+ #include "hw/misc/tz-ppc.h"
+ #include "hw/misc/unimp.h"
+-#include "hw/timer/pl031.h"
++#include "hw/rtc/pl031.h"
  
-     /* To avoid overflow problems, limit this to 2^31, i.e. approx 25 days */
--    if (ms > (int64_t) INT32_MAX) {
--        ms = INT32_MAX;
--    }
+ #define MUSCA_NUMIRQ_MAX 96
+ #define MUSCA_PPC_MAX 3
+diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
+new file mode 100644
+index 000000000000..8a4383bca9b2
+--- /dev/null
++++ b/hw/rtc/Kconfig
+@@ -0,0 +1,2 @@
++config PL031
++    bool
+diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
+new file mode 100644
+index 000000000000..3e1eb4256388
+--- /dev/null
++++ b/hw/rtc/Makefile.objs
+@@ -0,0 +1 @@
++common-obj-$(CONFIG_PL031) += pl031.o
+diff --git a/hw/timer/pl031.c b/hw/rtc/pl031.c
+similarity index 99%
+rename from hw/timer/pl031.c
+rename to hw/rtc/pl031.c
+index 2b3e26100699..3a982752a2ad 100644
+--- a/hw/timer/pl031.c
++++ b/hw/rtc/pl031.c
+@@ -13,7 +13,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu-common.h"
+-#include "hw/timer/pl031.h"
++#include "hw/rtc/pl031.h"
+ #include "migration/vmstate.h"
+ #include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
+new file mode 100644
+index 000000000000..54c94ac557b2
+--- /dev/null
++++ b/hw/rtc/trace-events
+@@ -0,0 +1,8 @@
++# See docs/devel/tracing.txt for syntax documentation.
++
++# pl031.c
++pl031_irq_state(int level) "irq state %d"
++pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
++pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
++pl031_alarm_raised(void) "alarm raised"
++pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
+diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
+index eefc95f35ecc..27c5dce09e43 100644
+--- a/hw/timer/Kconfig
++++ b/hw/timer/Kconfig
+@@ -27,9 +27,6 @@ config M41T80
+ config M48T59
+     bool
+ 
+-config PL031
+-    bool
 -
--    return (int) ms;
-+    return MIN(ms, INT32_MAX);
- }
+ config TWL92230
+     bool
+     depends on I2C
+diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+index f407523aa49d..9f64f6e11e78 100644
+--- a/hw/timer/Makefile.objs
++++ b/hw/timer/Makefile.objs
+@@ -11,7 +11,6 @@ common-obj-$(CONFIG_M48T59) += m48t59.o
+ ifeq ($(CONFIG_ISA_BUS),y)
+ common-obj-$(CONFIG_M48T59) += m48t59-isa.o
+ endif
+-common-obj-$(CONFIG_PL031) += pl031.o
+ common-obj-$(CONFIG_PUV3) += puv3_ost.o
+ common-obj-$(CONFIG_TWL92230) += twl92230.o
+ common-obj-$(CONFIG_XILINX) += xilinx_timer.o
+diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+index db02a9142cda..6936fe8573e9 100644
+--- a/hw/timer/trace-events
++++ b/hw/timer/trace-events
+@@ -80,10 +80,3 @@ xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int min, int sec
+ # nrf51_timer.c
+ nrf51_timer_read(uint64_t addr, uint32_t value, unsigned size) "read addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
+ nrf51_timer_write(uint64_t addr, uint32_t value, unsigned size) "write addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
+-
+-# pl031.c
+-pl031_irq_state(int level) "irq state %d"
+-pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+-pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+-pl031_alarm_raised(void) "alarm raised"
+-pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
+diff --git a/include/hw/timer/pl031.h b/include/hw/rtc/pl031.h
+similarity index 93%
+rename from include/hw/timer/pl031.h
+rename to include/hw/rtc/pl031.h
+index 8c3f555ee288..e3cb1d646fc4 100644
+--- a/include/hw/timer/pl031.h
++++ b/include/hw/rtc/pl031.h
+@@ -11,10 +11,11 @@
+  * GNU GPL, version 2 or (at your option) any later version.
+  */
  
+-#ifndef HW_TIMER_PL031_H
+-#define HW_TIMER_PL031_H
++#ifndef HW_RTC_PL031_H
++#define HW_RTC_PL031_H
  
+ #include "hw/sysbus.h"
++#include "qemu/timer.h"
+ 
+ #define TYPE_PL031 "pl031"
+ #define PL031(obj) OBJECT_CHECK(PL031State, (obj), TYPE_PL031)
 -- 
 2.21.0
 
