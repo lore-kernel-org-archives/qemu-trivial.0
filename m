@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNv52-0000ou-Po
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Oct 2019 04:36:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49860)
+	id 1iNv56-0000vg-Aj
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Oct 2019 04:36:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49966)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNv4y-0000hq-Dp
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:17 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNv51-0000nK-KZ
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNv4x-0007qj-82
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:16 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:39421)
+ (envelope-from <laurent@vivier.eu>) id 1iNv50-0007u2-45
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:19 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:58099)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNv4l-0007fP-Jw; Fri, 25 Oct 2019 04:36:05 -0400
+ id 1iNv4j-0007de-Ij; Fri, 25 Oct 2019 04:36:03 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MGzI3-1iAOHL1E8J-00E7YF; Fri, 25 Oct 2019 10:35:28 +0200
+ id 1MlfGs-1hfCKK4BIw-00ilT4; Fri, 25 Oct 2019 10:35:19 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
@@ -37,37 +37,35 @@ Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Andrew Jeffery <andrew@aj.id.au>, Helge Deller <deller@gmx.de>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, Frediano Ziglio <fziglio@redhat.com>
-Subject: [PULL 04/19] event_notifier: avoid dandling file descriptor in
- event_notifier_cleanup
-Date: Fri, 25 Oct 2019 10:34:56 +0200
-Message-Id: <20191025083511.11463-5-laurent@vivier.eu>
+ Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [PULL 00/19] Trivial branch patches
+Date: Fri, 25 Oct 2019 10:34:52 +0200
+Message-Id: <20191025083511.11463-1-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191025083511.11463-1-laurent@vivier.eu>
-References: <20191025083511.11463-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:/ygMbVZUdrFShG2v+IwnlPx6NIe+igwbNnW32CPAFZuGdtiUZh9
- 0Ag7mN+G3qOA/JlMXTSSzZMY2YZxxMu+jxcdUV3RBC7q7YF4hZCrD2ewOCsG35HyemMQOH0
- s0OumAT5NnUORhCIcj+oZsgEWy/CdihNGmfwGmsa+EE/XjFUElfWapjzoTvtvcHW/qPABLp
- 6f9lJd4xJqi8TuaIrEc1w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:5TrCoAdjS+w=:JrwOcPzSsGryCaoDQey2WN
- BPSyYWdhIqoa2zPIH+8m0tRxMWYzgJeURfgN80r3PI55IGpPXSaQVKckmk2aw2FakezM1KNvR
- iaL4KW4/ESiWbew9xuUkGWBIlNsDtXFo1rUm5ETB2o+zwg2WJS5Y7fpnBvNBof5p2ntYqYcYH
- 2oUdz0ZC08JmvE0Uorr9MKPnAgyVhOe51awoiAx69gQ+jZtduR2RARiNL3+WAdA6TvFPlmtEE
- zScXw3SnBZcSq2yngSGSz5CojOq+DjWNSYx64PoY2OaZxilz77wwNxaLbWQITVscS8ij2I0zO
- RZV4+/fft28sCQ0g7echHzRsio77eFLJ21ZcAungNlpoiRYe665tM9yi/0IsEbBY7+R3qCLAl
- hBOHSDzhpnzItNTYSUrE00CK6sMb5XJfSKZAOCifukifEcQpXnsMYP0fZeT42VtLFAHeThLEf
- biJTxCnF43gHscNjwlkVZCGtQ5ZXXEHX8gJGsIHQZckdS9cHZYUKXBgSgmKAkJ4eiDd6yLpsY
- O6ozRs2rtdX6ZZoJe/4W0Zk2VbSCErwPOtzKMvu5NcfgBIozzzwftvChf54tfL5Be98lH5RNJ
- U/kcZNIO4iD+lUokltU4qnXR+TuC5jgAc9mz3j+vZ5uHKvCbYsqFIIWBeSIEOI5q4dyciz7Av
- rUG1DPiITW5Z6SsUwNyr75tW7wiRQj/vTZEybtmCWRQB1RfT0+FkHheGDOwvSuZuytzHOGbwy
- V/iRz6zkE/7JTv/WY4IUYXcBnzqVPXcWPyCs5siSV/9yjkTqtiFzSOUht7EmqvES4tkATwg7T
- pSyk4iZJtGvt1Hx0rJOXL4UeBAOJKlbnvXC65JhX+VkTjHJ/4wIn7N9+IdfU/KeRGF1l7wTlQ
- dQvEq5Ok5NvynbHdU6tw==
+X-Provags-ID: V03:K1:RwtqkjHdNARmJISc3Rzs9W/wGRmACyboV+Evky/xDoOxUn0HMWN
+ jZ0NoyA2ecJQGFtauKS4oQ3PMhGmlD1D2zodmWXdLcIpmxqvz/yJ+6k/6P10YM2as2+Ts64
+ nhHprYP/CNUWGzQCEBGRiSTT+AseJXhltW0DMb/lypW//rlTmleXarjNrid3h4TZoYM4qQY
+ 6wbX6lWskIv5NRfxeuOmA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:c8U04DEJ+mc=:NQxWj56HMsCx6Aum6yxrbp
+ o6vgU6PqeNxF7y3w6zREYi7+Gn+sTx4kAyytboJTlvtdPD7uGkPk7XrIR/wYRPVvoPtg7QEcX
+ mNkoAY2EKJC5TQAdBRO1PlMOQw7vpxhzbZyFYy9m6+kIjjQ5ZFYLyo+Azg0/dW+fZC2X5sPQp
+ 18W2vodRRsiy1rsw98c40mOCRmRm3NmUE5U5/ZOrxyGNZFssj2WEKxSSGxU2Fz95FKJwMcsAA
+ WZL6M/A3bZ+8uERegZ+kY0X7K5Nul+nA67NFNmF7IleTwStJUKbHTSfgxGTybad57UbAu27Ee
+ y6BMdB5Z9yZmMZm74nJFdkbvCqm/ZohEx95E6UTMwa4SgAHq1+rkPqVCg2210M6ffttP0K6X+
+ 8UOK9aw1QkHzDXdWyiqtiyUpdt+JkV4wH1VpTUgRp6vtvt+rxLAOMn0EW6RsmeMgfrJnrRjgz
+ Dgw8MQW0N9RbSxcgzghUrJtH9/FGW+rmbWOr2jOBmqt1WL8TkoAkS+OYW+8/KshhX44HUKSly
+ EpEOyJb74zAQy/KQklBp2+tmGqBYWEGebDbpnTC3EipRrWW8FJXMPHYq0BXEWbVJVGAD4JX8N
+ T1lC63fiOe3qF9HS+3I8oqfSNSIplykUBvU6rePW1Xgu08xVoqUDZzmFJoUiApPAn5ZU46BQv
+ Soawo419NIKCDjBlKwew9LqRABJgeHS0T1l3EmrTBJet6YOUmMLgHMjidZ2Mn/MEC/BbJsSjk
+ iQ/p9vpSGNdxf/zR+/Kdd+ngNHmLdqtWB3HnUvy89hijhH9K12dx5x6whB6ivG04nGQgWxRsB
+ hH4MiqY1df5SSr9/YDG97gC7fe4xhK/OZ1fWPV/yE8bBzrzUYdLMiAfoedQmpqe2lPpTjnOLn
+ 4TSbBCFAnALiuJRqPHP5xcITgWmLXYdKLUgMCuRuQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.134
+X-Received-From: 212.227.126.133
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,38 +77,135 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Oct 2019 08:36:19 -0000
+X-List-Received-Date: Fri, 25 Oct 2019 08:36:22 -0000
 
-From: Frediano Ziglio <fziglio@redhat.com>
+The following changes since commit 58560ad254fbda71d4daa6622d71683190070ee2:
 
-If rfd is equal to wfd the file descriptor is closed but
-rfd will still have the closed value.
-The EventNotifier structure should not be used again after calling
-event_notifier_cleanup or should be initialized again but make
-sure to not have dandling file descriptors around.
+  Merge remote-tracking branch 'remotes/dgibson/tags/ppc-for-4.2-20191024' into staging (2019-10-24 16:22:58 +0100)
 
-Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <20191023122652.2999-2-fziglio@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- util/event_notifier-posix.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+are available in the Git repository at:
 
-diff --git a/util/event_notifier-posix.c b/util/event_notifier-posix.c
-index 73c4046b5871..00d93204f988 100644
---- a/util/event_notifier-posix.c
-+++ b/util/event_notifier-posix.c
-@@ -80,8 +80,8 @@ void event_notifier_cleanup(EventNotifier *e)
- {
-     if (e->rfd != e->wfd) {
-         close(e->rfd);
--        e->rfd = -1;
-     }
-+    e->rfd = -1;
-     close(e->wfd);
-     e->wfd = -1;
- }
+  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+
+for you to fetch changes up to fabb862f76f093cdd1610571de9ba714d3333c1c:
+
+  hw/rtc/aspeed_rtc: Remove unused includes (2019-10-24 20:35:28 +0200)
+
+----------------------------------------------------------------
+Fix typos and docs, trivial changes and RTC devices split
+
+----------------------------------------------------------------
+
+Frediano Ziglio (3):
+  util/async: avoid useless cast
+  event_notifier: avoid dandling file descriptor in
+    event_notifier_cleanup
+  qemu-timer: reuse MIN macro in qemu_timeout_ns_to_ms
+
+Han Han (1):
+  qemu-options.hx: Update for reboot-timeout parameter
+
+Mao Zhongyi (1):
+  pci_bridge: fix a typo in comment
+
+Philippe Mathieu-Daudé (14):
+  hw/timer: Compile devices not target-dependent as common object
+  hw: Move PL031 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move MC146818 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move M48T59 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move M41T80 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move sun4v hypervisor RTC from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move TWL92230 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move DS1338 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move Xilinx ZynqMP RTC from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move Exynos4210 RTC from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move Aspeed RTC from hw/timer/ to hw/rtc/ subdirectory
+  hw/rtc/mc146818: Include mc146818rtc_regs.h a bit less
+  hw/rtc/xlnx-zynqmp-rtc: Remove unused "ptimer.h" include
+  hw/rtc/aspeed_rtc: Remove unused includes
+
+ MAINTAINERS                                  | 20 +++----
+ Makefile.objs                                |  1 +
+ hw/Kconfig                                   |  1 +
+ hw/Makefile.objs                             |  1 +
+ hw/alpha/dp264.c                             |  2 +-
+ hw/arm/musca.c                               |  2 +-
+ hw/hppa/machine.c                            |  2 +-
+ hw/i386/acpi-build.c                         |  2 +-
+ hw/i386/pc.c                                 |  2 +-
+ hw/i386/pc_q35.c                             |  2 +-
+ hw/mips/mips_fulong2e.c                      |  2 +-
+ hw/mips/mips_jazz.c                          |  2 +-
+ hw/mips/mips_malta.c                         |  2 +-
+ hw/mips/mips_r4k.c                           |  2 +-
+ hw/pci/pci_bridge.c                          |  2 +-
+ hw/ppc/pnv.c                                 |  2 +-
+ hw/ppc/ppc405_boards.c                       |  2 +-
+ hw/ppc/prep.c                                |  4 +-
+ hw/rtc/Kconfig                               | 23 ++++++++
+ hw/rtc/Makefile.objs                         | 13 +++++
+ hw/{timer => rtc}/aspeed_rtc.c               |  2 +-
+ hw/{timer => rtc}/ds1338.c                   |  0
+ hw/{timer => rtc}/exynos4210_rtc.c           |  0
+ hw/{timer => rtc}/m41t80.c                   |  0
+ hw/{timer => rtc}/m48t59-internal.h          |  0
+ hw/{timer => rtc}/m48t59-isa.c               |  4 +-
+ hw/{timer => rtc}/m48t59.c                   |  2 +-
+ hw/{timer => rtc}/mc146818rtc.c              |  3 +-
+ hw/{timer => rtc}/pl031.c                    |  2 +-
+ hw/{timer => rtc}/sun4v-rtc.c                |  2 +-
+ hw/rtc/trace-events                          | 19 +++++++
+ hw/{timer => rtc}/twl92230.c                 |  0
+ hw/{timer => rtc}/xlnx-zynqmp-rtc.c          |  3 +-
+ hw/sparc/sun4m.c                             |  2 +-
+ hw/sparc64/niagara.c                         |  2 +-
+ hw/sparc64/sun4u.c                           |  2 +-
+ hw/timer/Kconfig                             | 24 ---------
+ hw/timer/Makefile.objs                       | 35 ++++--------
+ hw/timer/hpet.c                              |  3 +-
+ hw/timer/trace-events                        | 18 -------
+ include/hw/arm/aspeed_soc.h                  |  2 +-
+ include/hw/arm/xlnx-zynqmp.h                 |  2 +-
+ include/hw/{timer => rtc}/aspeed_rtc.h       |  9 ++--
+ include/hw/rtc/m48t59.h                      | 57 ++++++++++++++++++++
+ include/hw/{timer => rtc}/mc146818rtc.h      | 13 +++--
+ include/hw/{timer => rtc}/mc146818rtc_regs.h |  5 +-
+ include/hw/{timer => rtc}/pl031.h            |  5 +-
+ include/hw/rtc/sun4v-rtc.h                   | 19 +++++++
+ include/hw/{timer => rtc}/xlnx-zynqmp-rtc.h  |  6 +--
+ include/hw/timer/m48t59.h                    | 32 -----------
+ include/hw/timer/sun4v-rtc.h                 |  1 -
+ qemu-options.hx                              |  4 +-
+ tests/rtc-test.c                             |  2 +-
+ util/async.c                                 |  1 -
+ util/event_notifier-posix.c                  |  2 +-
+ util/qemu-timer.c                            |  6 +--
+ 56 files changed, 213 insertions(+), 165 deletions(-)
+ create mode 100644 hw/rtc/Kconfig
+ create mode 100644 hw/rtc/Makefile.objs
+ rename hw/{timer => rtc}/aspeed_rtc.c (99%)
+ rename hw/{timer => rtc}/ds1338.c (100%)
+ rename hw/{timer => rtc}/exynos4210_rtc.c (100%)
+ rename hw/{timer => rtc}/m41t80.c (100%)
+ rename hw/{timer => rtc}/m48t59-internal.h (100%)
+ rename hw/{timer => rtc}/m48t59-isa.c (98%)
+ rename hw/{timer => rtc}/m48t59.c (99%)
+ rename hw/{timer => rtc}/mc146818rtc.c (99%)
+ rename hw/{timer => rtc}/pl031.c (99%)
+ rename hw/{timer => rtc}/sun4v-rtc.c (98%)
+ create mode 100644 hw/rtc/trace-events
+ rename hw/{timer => rtc}/twl92230.c (100%)
+ rename hw/{timer => rtc}/xlnx-zynqmp-rtc.c (99%)
+ rename include/hw/{timer => rtc}/aspeed_rtc.h (80%)
+ create mode 100644 include/hw/rtc/m48t59.h
+ rename include/hw/{timer => rtc}/mc146818rtc.h (63%)
+ rename include/hw/{timer => rtc}/mc146818rtc_regs.h (96%)
+ rename include/hw/{timer => rtc}/pl031.h (93%)
+ create mode 100644 include/hw/rtc/sun4v-rtc.h
+ rename include/hw/{timer => rtc}/xlnx-zynqmp-rtc.h (95%)
+ delete mode 100644 include/hw/timer/m48t59.h
+ delete mode 100644 include/hw/timer/sun4v-rtc.h
+
 -- 
 2.21.0
 
