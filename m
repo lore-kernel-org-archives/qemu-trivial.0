@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNv5Z-0001jZ-3O
+	id 1iNv5Z-0001kM-LJ
 	for mharc-qemu-trivial@gnu.org; Fri, 25 Oct 2019 04:36:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50529)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50588)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNv5T-0001ZJ-4a
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:48 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNv5U-0001bk-Gr
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNv5R-0008ES-SY
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:47 -0400
-Received: from mout.kundenserver.de ([212.227.126.135]:55787)
+ (envelope-from <laurent@vivier.eu>) id 1iNv5T-0008Fl-Aw
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:48 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:46229)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNv5J-00089O-JD; Fri, 25 Oct 2019 04:36:37 -0400
+ id 1iNv5H-00087p-Q8; Fri, 25 Oct 2019 04:36:36 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MNc5b-1id6HK3O8Z-00P4ox; Fri, 25 Oct 2019 10:35:54 +0200
+ id 1M6DnM-1iLi9W0W2S-006iku; Fri, 25 Oct 2019 10:35:58 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
@@ -40,37 +40,36 @@ Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
  Stefan Hajnoczi <stefanha@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Alistair Francis <alistair.francis@wdc.com>
-Subject: [PULL 15/19] hw: Move Exynos4210 RTC from hw/timer/ to hw/rtc/
- subdirectory
-Date: Fri, 25 Oct 2019 10:35:07 +0200
-Message-Id: <20191025083511.11463-16-laurent@vivier.eu>
+Subject: [PULL 17/19] hw/rtc/mc146818: Include mc146818rtc_regs.h a bit less
+Date: Fri, 25 Oct 2019 10:35:09 +0200
+Message-Id: <20191025083511.11463-18-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191025083511.11463-1-laurent@vivier.eu>
 References: <20191025083511.11463-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:vack1BjZXw7zRhCywDDbJMpaQCtjGChZK3BCFTUq7S15JitEFJr
- 5p9Ubc07Ugls6WUEmqDhlHC4187umJJJmCfpUAinfcUOUCw8LjqzFpnIdAgAeKrb3aOQtI1
- zjzGjIUoRXr1XGEvQUdQ3StRpC/nTG3m8ycOwOKuzUV4rFfPW+cyW+U+WqtFwc5Lgfws/Fv
- AablbPtdvnzy61crt85hA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:UxPdNoSktyo=:SOk0/YJjK7m8tevZBbEk6o
- rHaygyShR3IXb182XRgQ6Khb2Gu+pU1PUnCDzLpypQBadyzIS7xnNPxdhQxQKNdxaiYhQitoD
- Me6eZeXAPQd3KuhX/ikOfDbWxJQ8kkeb+lKE3VFU5Fl5M0UsykvUJslYA6XxgldablZZylsZo
- XZvsO91pYmL3foc/ZjtFEMOG9DfJxRiUxT5tKiN3CIpYK04igoxaeGgEAw7aEmtCzx8yN9X8u
- n71wQCsXdw38L0oNPdIom6eOIMIblG73jhFbvRJEkMe1A2dzBBhiniRQJobSszTcq568oxG/D
- WIVaGI5ex0PWdCTBWggLzwcj/KLr6Tyt+eT/Sik3mErO42Ex1rY2YTCN8rv/pvw+RKK/+zm/I
- ZcHAPjG4eYl3F9EJWERwTZt6kZy/bdKcS13f6T56HXYm2fImtm9fUwYnCEa3WfmGuveF/92ne
- en8UhO3iVjyYVS4EgmHg/JR9FAUvsJrgNPeyCkbrpybrS0X3jKRs4Qvn44p2vbUI+WAo1/Ec8
- FjcGJlupBZKDou02cHOs9UHiJGYMmoeN/ustEnk/3wEaDEw7fI+MO7x1bYS+QeGwMbC+2dp7j
- B3swZa7gRdkg0okz5LNb9G2N8istKZYzm0FxW435sVuP/AfEAgtXCnEOKvKARTsUuKchS1Lig
- IH38JuHrln+7sKwm4ugwNCPQXNFb8FtNu39SsuGLcxv1Ama/954vrY+Ryk66PSTnH86tlxQZL
- ABtEjukcMyh433wVRIxwk4GpGgv/aaXgWg8Q/rqehnUlZ0BdoRk5T+UNg7ga7zbWmCz7p03Bi
- ewQKIwIx4Ads2yNnuis323kmm6dDZFzew38WjiYDuo5O1uVNybopWPmm2Q/Ld7cndPPvkNAEg
- PJQUlxo6RkdNy3p8jbN3SEASkr0dbbXbvclipTO5Q=
+X-Provags-ID: V03:K1:fo2sC3oBx2jPfCQrBxU70SXruu633246+ExBKU/D1kXsJeNwjU1
+ KGlpKsDt/yD75ZoHmLJa2QkafdPSh1tg4ganhk/ql+nAX4rFsM0ITal+Dpn3xQi5yGSX2m8
+ r42SjKHR50g2K6NplUIHbhIONu9cNLeMLQF/7zobNvxifyD7g9pXOBxZgdxQph2T5uvJfqW
+ FgD4vOsO7cQBgO6ye4C3A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:uqFFU+R/qyU=:7NGivjYrUMNBsUkQhEZnTC
+ Bz8XFSK2xIFoUbLGzIQ4tYfkZmkARsWvxG0U5GkhD2jQc7F4RarVAo0PYMsympI+bLIyZoeMY
+ LZkGTEdKcCSZBcbp9wEfiue5IVvuqGU4m8agSxf5zVIk83/gefhDLFvU6YgdKXOxclLRswq+n
+ 1wHyZoLHFxPvqS0vBlFeyH3lQ86gtDQMLCqFSHKNIz0If8FaC6qjL3EPmk71hyTr010qmUNO/
+ lwpNLf6qAUIVHvHlos8BJXXmc/sVlPnJekaV6lbMgGi4rfKp2VmViwCCoQ3Ym0y4dMd0vtrYT
+ lK5gekFz1M0bc61wWMB45rMztnRXs5m4GEN/qWoARZqDhDGAt3y2MPk3N5FWZksZX/huoOB0P
+ yUUjB6LegLBYq5HyNuu4paf0f6jLmgES88n1aD6FSzlI0EMGRODT8QPXiI/P0OQ5k0oW1w4Sh
+ H4nqf8BL2wYy/wyGBC3tG201UPAQ2ChOnzM/cn8hf9SbCevFTxs2zzKuK1zlj91JZf2KreNJG
+ cqq/B7Miftl2i1zUxEluyS2CyKUVszXt48xECr2cBQbG6/5oHhKUEiH0NniqZWwQa2JaQvMfT
+ kusdP9/mh/7e+E/0UM/OKysPzSx+4GrCTxJF4LSZwYN9Jj9rEs9jmx1Kv/Ftrgjxx8uRxx40P
+ cRK9XzvtprSO738VZX9UpIvZlH+cCPGAd20si7mFB8QGBDWyt2TPL9IlYIgoiIQjmgpmb2/ZF
+ OMTFHbJZu4GMDnXkd5MNUt0X55epUJL1wKccrgqkpmd+gzMuvKjHvCePnGizyyqH1EOVMGB3C
+ k0Bub3cyWxFIeVSbJSCFi07onPe4kLMdXfBMFugMe4KRmRTUXEoFgGsViTOKByygFkbxcI4pa
+ 90n4bvXNmhFl4nRTSjgijuc/vdMwqo5iHH/11FzT8=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.135
+X-Received-From: 212.227.126.187
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,51 +81,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Oct 2019 08:36:50 -0000
+X-List-Received-Date: Fri, 25 Oct 2019 08:36:51 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Move RTC devices under the hw/rtc/ subdirectory.
+Only 2 source files require the "mc146818rtc_regs.h" header.
+Instead of having it processed 12 times, by all objects
+using "mc146818rtc.h", include it directly where used.
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Acked-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20191003230404.19384-11-philmd@redhat.com>
+Message-Id: <20191003230404.19384-13-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/rtc/Makefile.objs               | 1 +
- hw/{timer => rtc}/exynos4210_rtc.c | 0
- hw/timer/Makefile.objs             | 1 -
- 3 files changed, 1 insertion(+), 1 deletion(-)
- rename hw/{timer => rtc}/exynos4210_rtc.c (100%)
+ hw/rtc/mc146818rtc.c         | 1 +
+ hw/timer/hpet.c              | 1 +
+ include/hw/rtc/mc146818rtc.h | 1 -
+ 3 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-index 543a550a0f11..3d4763fc269e 100644
---- a/hw/rtc/Makefile.objs
-+++ b/hw/rtc/Makefile.objs
-@@ -7,5 +7,6 @@ endif
- common-obj-$(CONFIG_PL031) += pl031.o
- common-obj-$(CONFIG_TWL92230) += twl92230.o
- common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
-+common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
- obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
- common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
-diff --git a/hw/timer/exynos4210_rtc.c b/hw/rtc/exynos4210_rtc.c
-similarity index 100%
-rename from hw/timer/exynos4210_rtc.c
-rename to hw/rtc/exynos4210_rtc.c
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 294465ef47ad..33191d74cb98 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -19,7 +19,6 @@ common-obj-$(CONFIG_NRF51_SOC) += nrf51_timer.o
- common-obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
- common-obj-$(CONFIG_EXYNOS4) += exynos4210_mct.o
- common-obj-$(CONFIG_EXYNOS4) += exynos4210_pwm.o
--common-obj-$(CONFIG_EXYNOS4) += exynos4210_rtc.o
- common-obj-$(CONFIG_OMAP) += omap_gptimer.o
- common-obj-$(CONFIG_OMAP) += omap_synctimer.o
- common-obj-$(CONFIG_PXA2XX) += pxa2xx_timer.o
+diff --git a/hw/rtc/mc146818rtc.c b/hw/rtc/mc146818rtc.c
+index ced15f764fc1..9d4ed54f65e2 100644
+--- a/hw/rtc/mc146818rtc.c
++++ b/hw/rtc/mc146818rtc.c
+@@ -35,6 +35,7 @@
+ #include "sysemu/reset.h"
+ #include "sysemu/runstate.h"
+ #include "hw/rtc/mc146818rtc.h"
++#include "hw/rtc/mc146818rtc_regs.h"
+ #include "migration/vmstate.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-commands-misc-target.h"
+diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
+index 02bf8a8ce8fc..9f17aaa278e2 100644
+--- a/hw/timer/hpet.c
++++ b/hw/timer/hpet.c
+@@ -34,6 +34,7 @@
+ #include "hw/timer/hpet.h"
+ #include "hw/sysbus.h"
+ #include "hw/rtc/mc146818rtc.h"
++#include "hw/rtc/mc146818rtc_regs.h"
+ #include "migration/vmstate.h"
+ #include "hw/timer/i8254.h"
+ 
+diff --git a/include/hw/rtc/mc146818rtc.h b/include/hw/rtc/mc146818rtc.h
+index 2e9331637a6d..7fa59d4279c5 100644
+--- a/include/hw/rtc/mc146818rtc.h
++++ b/include/hw/rtc/mc146818rtc.h
+@@ -10,7 +10,6 @@
+ #define HW_RTC_MC146818RTC_H
+ 
+ #include "hw/isa/isa.h"
+-#include "hw/rtc/mc146818rtc_regs.h"
+ 
+ #define TYPE_MC146818_RTC "mc146818rtc"
+ 
 -- 
 2.21.0
 
