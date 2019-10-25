@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNv5I-0001Hp-29
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Oct 2019 04:36:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50161)
+	id 1iNv5T-0001aH-RH
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Oct 2019 04:36:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50393)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iNv5D-00018S-CA
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:33 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iNv5P-0001Sh-0E
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iNv5B-00083s-CF
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:31 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:42735)
+ (envelope-from <laurent@vivier.eu>) id 1iNv5N-0008Bl-FS
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 04:36:42 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:60005)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iNv5B-00083D-1p; Fri, 25 Oct 2019 04:36:29 -0400
+ id 1iNv5N-0008BJ-5y; Fri, 25 Oct 2019 04:36:41 -0400
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mz9pT-1i1YWg0l8d-00wDiB; Fri, 25 Oct 2019 10:35:37 +0200
+ id 1MEVFi-1iCKDd2bFK-00G2Qg; Fri, 25 Oct 2019 10:35:51 +0200
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
@@ -40,37 +40,37 @@ Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
  Stefan Hajnoczi <stefanha@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Alistair Francis <alistair.francis@wdc.com>
-Subject: [PULL 08/19] hw: Move MC146818 device from hw/timer/ to hw/rtc/
+Subject: [PULL 14/19] hw: Move Xilinx ZynqMP RTC from hw/timer/ to hw/rtc/
  subdirectory
-Date: Fri, 25 Oct 2019 10:35:00 +0200
-Message-Id: <20191025083511.11463-9-laurent@vivier.eu>
+Date: Fri, 25 Oct 2019 10:35:06 +0200
+Message-Id: <20191025083511.11463-15-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191025083511.11463-1-laurent@vivier.eu>
 References: <20191025083511.11463-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:nPAhZeV0h5yJNwT9z6ozlTm9Z6iSMJi1iiykf/RjJ7QBLmaw4rS
- P4XlS+FpzGBtqpXM+yEhUQenTgxJNxXUKs1MHaaPH2y7NWROCoyZoeYJxYuXNKcD6FVBIco
- x/tApDF4V/q/PwFZ6P+LqIUOW/oY1eQW1am8cXFNMSQqaf1YbvMfzCt1nrFZxa0COxMcamE
- 20a4EThCvpoLKtm2fzTrA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:p7xX4NIZxz0=:vFSJuCToVho3lOZgNwBXQp
- 67MFT99bEY09T6YycObB5F27m4YvyLcgItwHc9GByvwXxbpR7tza65vQChg8vaP++qXPZU5wj
- vig2BUX38jcBp/jPv7pWba0rU8yzh01yW2PGv3vXMVLnb1f9tD5ia0KUXWzwKewtLdVAcs0aa
- YybRDxpAOxYQs/hRrPpQBzmGL4ODALo+joqjz2krPVy2B1OFpLGJ5HIEksLwXPDzjlB1XwcbM
- AIin0a6RmByRGxuAa8zY5WxFvWAHTapc6J5kddRMZqmjYHIyR59ohzfCZUdj2oWIOwx32vDf5
- bX1VmQlzN27Roy3BlOHq34vHcURxnN/MuTwNhRUmPTpuFaFmLCsF/8W5SHEXdp/mho5+7SSLx
- dimXkJTq+2maBMMWGYtsK21+EdE/KVTtOHSxisfPMFx+ritBt2idp8ETJkna0FPaXVi7wa+NS
- i/Ucbhz5XKBdyaICqLsWgcAoIbdI6GvgbS82IRy1cvUvrpkUIY4RRKyI1hWozqwilF4LC2A04
- AyMePdURVX01QdTfp0PQjiuI8BCySmty+Z5NeGnAdhco84mXPht+YAeYLZUTwhfpilDn6IkPV
- xkzWhFZtwKpJLAsIVnHa1LY/TL8lq7/S7GCOpB+OpY3Kf5aP+pezGWICj0NFsTNfZ+jZ7ndJN
- IGE7+87XYH5vCquw8GBhBYicv9UWIp4U9NPjzMAsoJYkTJ/HR/Hr6pvV5A7r37mMaL89llQ3A
- 5SMDd9D8XL/JZS1F02lJzT25MqTqJ7La0pcc3MdBGzy0BkZZfZxkerJGs1irfqxmLOquzRI8t
- uWthFtaiRRiojlQNYXBrqUmeftB2WWywXottMJ5FIFOZ0X7r1WrPguAFVW9F/hlOsI9a31uuJ
- 4sucsJAYuDG6aGlSdeqDHGokRox24D8Y5hAc/bo1s=
+X-Provags-ID: V03:K1:etCUXD52RarWTMMWx6gvRrbz0qPxz/OK/mTowevKvf7KrVhR6fH
+ R3gTkOx1/tY26LybSCfVMzae+/OMpo3pvEZGy5J2LcHeyR1ts4U+5ylkMWaJvW9ju5u1a6e
+ k2JzO95VmMtpiwOZ2Jadc6g/m/IgHG8pvzsgHzPJ8ydm29LrE2hcocBnHeBtfhYlj1GQlBJ
+ 2lX6oQkmb7pZgW2aV0x5A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:KKa+C83ziFE=:bnyn3MqhkPUrazDEuUJSXF
+ TI/+EBeASIWyWUG3ZUYihiD0zfIxfIx1gnv4+GMbWxfP4wrwGGZSFlCT4li+vKr64xBaWD9Ae
+ r2HbVpnehIaveXClzVqXAVNcFYBp0T/JUZ3jfRIZCXWl3F26jbHKdvXsQSdirY02cmhd0ByNS
+ UIQWEL2GPdKODaH+meRclnpJHAEjI89a/GUhCirneMqtnGlj+c+9L7WHvMla3hc6Z7DMbQvwc
+ E154eu4Io0haAj/jAzBwlCAppD9lPxBg1N6tnJBMI81IYim+QDRBFQ8HgqhG3+1o1mZzJrdN0
+ 1rCgfF0kzTaACDSDelPlO7iNznTRvCJ93Msz4h1C3RjgdV0JRao7MGnMNOiQKaDgMQfSIXT6u
+ fTgDoAYtV7fsnWkeygz24g3WyxHSwDnmWsQVJVqqW4Yy/OCv2JGruDj1tg9aLtyAHU3ijm2l/
+ n/c8AM9yCuewCUR68Hk064qQ7vsy28aFFDyrmiHYIfItf8wtbmgRkAHJs/JwtkLJUjYFpGvPH
+ KXxUChJt4N44d/MNgXqgTp62j81Qa4PzZFBtmoYpvJdB7SdyvxrqK86LPBKDIEFFLttsqqR+a
+ OikkJSD6sV4QkU6a1LSraCpKJpiQGwL54SWY80zZsixg8bhBcqVF4wDPQ3WPYMNG580imIpow
+ mBF4pYA8OrYupnbZiHwChtR4G85lDxIxJyZURcFEmIbVR5TCTza2AgfM6ncTluEZ0Ftncal4j
+ I6SqxMGOjsjao9yFOud8N62NGWMmJe5bFM2Bj1g7dEVpKdTaa/pVwPHimbmT4dzB7atfezciY
+ astSBhwQ3zEZ+eAhI7CoWSahp963/BTPvb/dgFuLXeCgMnJfys91oFivVVPomWWp8qG819Aby
+ mp/opAat3zopAFVhKoBmCjKOCGo+OX95uepMIeVE0=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.187
+X-Received-From: 212.227.126.134
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,346 +82,138 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Oct 2019 08:36:34 -0000
+X-List-Received-Date: Fri, 25 Oct 2019 08:36:46 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The MC146818 is a Real Time Clock, not a timer.
-Move it under the hw/rtc/ subdirectory.
+Move RTC devices under the hw/rtc/ subdirectory.
 
-Use copyright statement from 80cabfad163 for "hw/rtc/mc146818rtc.h".
+Remove Alistair outdated email address (see commit c22e580c2ad).
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20191003230404.19384-4-philmd@redhat.com>
+Acked-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20191003230404.19384-10-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- MAINTAINERS                                  |  4 ++--
- hw/alpha/dp264.c                             |  2 +-
- hw/hppa/machine.c                            |  2 +-
- hw/i386/acpi-build.c                         |  2 +-
- hw/i386/pc.c                                 |  2 +-
- hw/i386/pc_q35.c                             |  2 +-
- hw/mips/mips_fulong2e.c                      |  2 +-
- hw/mips/mips_jazz.c                          |  2 +-
- hw/mips/mips_malta.c                         |  2 +-
- hw/mips/mips_r4k.c                           |  2 +-
- hw/ppc/pnv.c                                 |  2 +-
- hw/ppc/prep.c                                |  2 +-
- hw/rtc/Kconfig                               |  3 +++
- hw/rtc/Makefile.objs                         |  1 +
- hw/{timer => rtc}/mc146818rtc.c              |  2 +-
- hw/timer/Kconfig                             |  3 ---
- hw/timer/Makefile.objs                       |  2 --
- hw/timer/hpet.c                              |  2 +-
- include/hw/{timer => rtc}/mc146818rtc.h      | 14 +++++++++++---
- include/hw/{timer => rtc}/mc146818rtc_regs.h |  5 +++--
- tests/rtc-test.c                             |  2 +-
- 21 files changed, 34 insertions(+), 26 deletions(-)
- rename hw/{timer => rtc}/mc146818rtc.c (99%)
- rename include/hw/{timer => rtc}/mc146818rtc.h (58%)
- rename include/hw/{timer => rtc}/mc146818rtc_regs.h (96%)
+ hw/rtc/Makefile.objs                        | 1 +
+ hw/rtc/trace-events                         | 3 +++
+ hw/{timer => rtc}/xlnx-zynqmp-rtc.c         | 2 +-
+ hw/timer/Makefile.objs                      | 1 -
+ hw/timer/trace-events                       | 3 ---
+ include/hw/arm/xlnx-zynqmp.h                | 2 +-
+ include/hw/{timer => rtc}/xlnx-zynqmp-rtc.h | 6 +++---
+ 7 files changed, 9 insertions(+), 9 deletions(-)
+ rename hw/{timer => rtc}/xlnx-zynqmp-rtc.c (99%)
+ rename include/hw/{timer => rtc}/xlnx-zynqmp-rtc.h (95%)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 2e13ba46282d..7eba146444ae 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1261,7 +1261,7 @@ F: hw/misc/debugexit.c
- F: hw/misc/pc-testdev.c
- F: hw/timer/hpet*
- F: hw/timer/i8254*
--F: hw/timer/mc146818rtc*
-+F: hw/rtc/mc146818rtc*
- F: hw/watchdog/wdt_ib700.c
- F: hw/watchdog/wdt_i6300esb.c
- F: include/hw/display/vga.h
-@@ -1273,7 +1273,7 @@ F: include/hw/isa/i8259_internal.h
- F: include/hw/isa/superio.h
- F: include/hw/timer/hpet.h
- F: include/hw/timer/i8254*
--F: include/hw/timer/mc146818rtc*
-+F: include/hw/rtc/mc146818rtc*
- 
- Machine core
- M: Eduardo Habkost <ehabkost@redhat.com>
-diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
-index 51feee855812..51b3cf7a6128 100644
---- a/hw/alpha/dp264.c
-+++ b/hw/alpha/dp264.c
-@@ -14,7 +14,7 @@
- #include "alpha_sys.h"
- #include "qemu/error-report.h"
- #include "sysemu/sysemu.h"
--#include "hw/timer/mc146818rtc.h"
-+#include "hw/rtc/mc146818rtc.h"
- #include "hw/ide.h"
- #include "hw/timer/i8254.h"
- #include "hw/isa/superio.h"
-diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
-index 953d454f4879..b30aba6d5439 100644
---- a/hw/hppa/machine.c
-+++ b/hw/hppa/machine.c
-@@ -12,7 +12,7 @@
- #include "qemu/error-report.h"
- #include "sysemu/reset.h"
- #include "sysemu/sysemu.h"
--#include "hw/timer/mc146818rtc.h"
-+#include "hw/rtc/mc146818rtc.h"
- #include "hw/ide.h"
- #include "hw/timer/i8254.h"
- #include "hw/char/serial.h"
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 1d077a7cb772..d9435ba0b310 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -45,7 +45,7 @@
- #include "hw/acpi/vmgenid.h"
- #include "hw/boards.h"
- #include "sysemu/tpm_backend.h"
--#include "hw/timer/mc146818rtc_regs.h"
-+#include "hw/rtc/mc146818rtc_regs.h"
- #include "migration/vmstate.h"
- #include "hw/mem/memory-device.h"
- #include "sysemu/numa.h"
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 4b1904237ec6..51b72439b440 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -42,7 +42,7 @@
- #include "elf.h"
- #include "migration/vmstate.h"
- #include "multiboot.h"
--#include "hw/timer/mc146818rtc.h"
-+#include "hw/rtc/mc146818rtc.h"
- #include "hw/dma/i8257.h"
- #include "hw/timer/i8254.h"
- #include "hw/input/i8042.h"
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 8fad20f3146a..748fc2ee15bf 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -33,7 +33,7 @@
- #include "hw/loader.h"
- #include "sysemu/arch_init.h"
- #include "hw/i2c/smbus_eeprom.h"
--#include "hw/timer/mc146818rtc.h"
-+#include "hw/rtc/mc146818rtc.h"
- #include "hw/xen/xen.h"
- #include "sysemu/kvm.h"
- #include "kvm_i386.h"
-diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
-index cf537dd7e631..03a27e176796 100644
---- a/hw/mips/mips_fulong2e.c
-+++ b/hw/mips/mips_fulong2e.c
-@@ -39,7 +39,7 @@
- #include "hw/ide.h"
- #include "elf.h"
- #include "hw/isa/vt82c686.h"
--#include "hw/timer/mc146818rtc.h"
-+#include "hw/rtc/mc146818rtc.h"
- #include "hw/timer/i8254.h"
- #include "exec/address-spaces.h"
- #include "sysemu/qtest.h"
-diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
-index 8d010a0b6e10..d978bb64a0f5 100644
---- a/hw/mips/mips_jazz.c
-+++ b/hw/mips/mips_jazz.c
-@@ -39,7 +39,7 @@
- #include "hw/scsi/esp.h"
- #include "hw/mips/bios.h"
- #include "hw/loader.h"
--#include "hw/timer/mc146818rtc.h"
-+#include "hw/rtc/mc146818rtc.h"
- #include "hw/timer/i8254.h"
- #include "hw/display/vga.h"
- #include "hw/audio/pcspk.h"
-diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
-index 4d9c64b36ab2..c1c8810e7198 100644
---- a/hw/mips/mips_malta.c
-+++ b/hw/mips/mips_malta.c
-@@ -45,7 +45,7 @@
- #include "hw/irq.h"
- #include "hw/loader.h"
- #include "elf.h"
--#include "hw/timer/mc146818rtc.h"
-+#include "hw/rtc/mc146818rtc.h"
- #include "hw/timer/i8254.h"
- #include "exec/address-spaces.h"
- #include "hw/sysbus.h"             /* SysBusDevice */
-diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
-index bc0be2654415..70024235ae52 100644
---- a/hw/mips/mips_r4k.c
-+++ b/hw/mips/mips_r4k.c
-@@ -28,7 +28,7 @@
- #include "hw/ide.h"
- #include "hw/loader.h"
- #include "elf.h"
--#include "hw/timer/mc146818rtc.h"
-+#include "hw/rtc/mc146818rtc.h"
- #include "hw/input/i8042.h"
- #include "hw/timer/i8254.h"
- #include "exec/address-spaces.h"
-diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
-index 4a51fb65a834..60632720ef6f 100644
---- a/hw/ppc/pnv.c
-+++ b/hw/ppc/pnv.c
-@@ -48,7 +48,7 @@
- #include "hw/isa/isa.h"
- #include "hw/boards.h"
- #include "hw/char/serial.h"
--#include "hw/timer/mc146818rtc.h"
-+#include "hw/rtc/mc146818rtc.h"
- 
- #include <libfdt.h>
- 
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index 4f3c6bf19018..3a51536e1a39 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -40,7 +40,7 @@
- #include "hw/ide.h"
- #include "hw/irq.h"
- #include "hw/loader.h"
--#include "hw/timer/mc146818rtc.h"
-+#include "hw/rtc/mc146818rtc.h"
- #include "hw/isa/pc87312.h"
- #include "hw/net/ne2000-isa.h"
- #include "sysemu/arch_init.h"
-diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
-index 8a4383bca9b2..7ffd702268ad 100644
---- a/hw/rtc/Kconfig
-+++ b/hw/rtc/Kconfig
-@@ -1,2 +1,5 @@
- config PL031
-     bool
-+
-+config MC146818RTC
-+    bool
 diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-index 3e1eb4256388..3cac0d5a637b 100644
+index b195863291d1..543a550a0f11 100644
 --- a/hw/rtc/Makefile.objs
 +++ b/hw/rtc/Makefile.objs
-@@ -1 +1,2 @@
+@@ -6,5 +6,6 @@ common-obj-$(CONFIG_M48T59) += m48t59-isa.o
+ endif
  common-obj-$(CONFIG_PL031) += pl031.o
-+obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
-diff --git a/hw/timer/mc146818rtc.c b/hw/rtc/mc146818rtc.c
-similarity index 99%
-rename from hw/timer/mc146818rtc.c
-rename to hw/rtc/mc146818rtc.c
-index 6cb378751b1f..ced15f764fc1 100644
---- a/hw/timer/mc146818rtc.c
-+++ b/hw/rtc/mc146818rtc.c
-@@ -34,7 +34,7 @@
- #include "sysemu/replay.h"
- #include "sysemu/reset.h"
- #include "sysemu/runstate.h"
--#include "hw/timer/mc146818rtc.h"
-+#include "hw/rtc/mc146818rtc.h"
- #include "migration/vmstate.h"
- #include "qapi/error.h"
- #include "qapi/qapi-commands-misc-target.h"
-diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-index 27c5dce09e43..af415c8ef831 100644
---- a/hw/timer/Kconfig
-+++ b/hw/timer/Kconfig
-@@ -35,9 +35,6 @@ config ALTERA_TIMER
-     bool
-     select PTIMER
+ common-obj-$(CONFIG_TWL92230) += twl92230.o
++common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
+ obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
+ common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
+diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
+index ac9e0e0fba32..7f1945ad4cc6 100644
+--- a/hw/rtc/trace-events
++++ b/hw/rtc/trace-events
+@@ -4,6 +4,9 @@
+ sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64 " value 0x%" PRIx64
+ sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx64 " value 0x%" PRIx64
  
--config MC146818RTC
--    bool
--
- config ALLWINNER_A10_PIT
-     bool
-     select PTIMER
++# xlnx-zynqmp-rtc.c
++xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int min, int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
++
+ # pl031.c
+ pl031_irq_state(int level) "irq state %d"
+ pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+diff --git a/hw/timer/xlnx-zynqmp-rtc.c b/hw/rtc/xlnx-zynqmp-rtc.c
+similarity index 99%
+rename from hw/timer/xlnx-zynqmp-rtc.c
+rename to hw/rtc/xlnx-zynqmp-rtc.c
+index 5692db98c2db..f9f09b72965a 100644
+--- a/hw/timer/xlnx-zynqmp-rtc.c
++++ b/hw/rtc/xlnx-zynqmp-rtc.c
+@@ -36,7 +36,7 @@
+ #include "qemu/cutils.h"
+ #include "sysemu/sysemu.h"
+ #include "trace.h"
+-#include "hw/timer/xlnx-zynqmp-rtc.h"
++#include "hw/rtc/xlnx-zynqmp-rtc.h"
+ #include "migration/vmstate.h"
+ 
+ #ifndef XLNX_ZYNQMP_RTC_ERR_DEBUG
 diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 9f64f6e11e78..b0159189cf34 100644
+index 70b61b69c7a4..294465ef47ad 100644
 --- a/hw/timer/Makefile.objs
 +++ b/hw/timer/Makefile.objs
-@@ -35,8 +35,6 @@ common-obj-$(CONFIG_SH4) += sh_timer.o
- common-obj-$(CONFIG_DIGIC) += digic-timer.o
- common-obj-$(CONFIG_MIPS_CPS) += mips_gictimer.o
+@@ -14,7 +14,6 @@ common-obj-$(CONFIG_IMX) += imx_epit.o
+ common-obj-$(CONFIG_IMX) += imx_gpt.o
+ common-obj-$(CONFIG_LM32) += lm32_timer.o
+ common-obj-$(CONFIG_MILKYMIST) += milkymist-sysctl.o
+-common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-rtc.o
+ common-obj-$(CONFIG_NRF51_SOC) += nrf51_timer.o
  
--obj-$(CONFIG_MC146818RTC) += mc146818rtc.o
+ common-obj-$(CONFIG_ALTERA_TIMER) += altera_timer.o
+diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+index ce34b967db9f..1459d07237b9 100644
+--- a/hw/timer/trace-events
++++ b/hw/timer/trace-events
+@@ -70,9 +70,6 @@ cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: reset"
+ aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
+ aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
+ 
+-# xlnx-zynqmp-rtc.c
+-xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int min, int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
 -
- common-obj-$(CONFIG_ALLWINNER_A10_PIT) += allwinner-a10-pit.o
+ # nrf51_timer.c
+ nrf51_timer_read(uint64_t addr, uint32_t value, unsigned size) "read addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
+ nrf51_timer_write(uint64_t addr, uint32_t value, unsigned size) "write addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
+diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+index d7483c3b4285..53076fa29a75 100644
+--- a/include/hw/arm/xlnx-zynqmp.h
++++ b/include/hw/arm/xlnx-zynqmp.h
+@@ -29,7 +29,7 @@
+ #include "hw/dma/xlnx-zdma.h"
+ #include "hw/display/xlnx_dp.h"
+ #include "hw/intc/xlnx-zynqmp-ipi.h"
+-#include "hw/timer/xlnx-zynqmp-rtc.h"
++#include "hw/rtc/xlnx-zynqmp-rtc.h"
+ #include "hw/cpu/cluster.h"
+ #include "target/arm/cpu.h"
  
- common-obj-$(CONFIG_STM32F2XX_TIMER) += stm32f2xx_timer.o
-diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
-index 1ddae4e7d7dc..02bf8a8ce8fc 100644
---- a/hw/timer/hpet.c
-+++ b/hw/timer/hpet.c
-@@ -33,7 +33,7 @@
- #include "qemu/timer.h"
- #include "hw/timer/hpet.h"
- #include "hw/sysbus.h"
--#include "hw/timer/mc146818rtc.h"
-+#include "hw/rtc/mc146818rtc.h"
- #include "migration/vmstate.h"
- #include "hw/timer/i8254.h"
- 
-diff --git a/include/hw/timer/mc146818rtc.h b/include/hw/rtc/mc146818rtc.h
-similarity index 58%
-rename from include/hw/timer/mc146818rtc.h
-rename to include/hw/rtc/mc146818rtc.h
-index fe6ed63f7179..2e9331637a6d 100644
---- a/include/hw/timer/mc146818rtc.h
-+++ b/include/hw/rtc/mc146818rtc.h
-@@ -1,8 +1,16 @@
--#ifndef MC146818RTC_H
--#define MC146818RTC_H
-+/*
-+ * QEMU MC146818 RTC emulation
-+ *
-+ * Copyright (c) 2003-2004 Fabrice Bellard
-+ *
-+ * SPDX-License-Identifier: MIT
-+ */
-+
-+#ifndef HW_RTC_MC146818RTC_H
-+#define HW_RTC_MC146818RTC_H
- 
- #include "hw/isa/isa.h"
--#include "hw/timer/mc146818rtc_regs.h"
-+#include "hw/rtc/mc146818rtc_regs.h"
- 
- #define TYPE_MC146818_RTC "mc146818rtc"
- 
-diff --git a/include/hw/timer/mc146818rtc_regs.h b/include/hw/rtc/mc146818rtc_regs.h
-similarity index 96%
-rename from include/hw/timer/mc146818rtc_regs.h
-rename to include/hw/rtc/mc146818rtc_regs.h
-index bfbb57e57012..dd6c09e2fcf9 100644
---- a/include/hw/timer/mc146818rtc_regs.h
-+++ b/include/hw/rtc/mc146818rtc_regs.h
-@@ -22,10 +22,11 @@
+diff --git a/include/hw/timer/xlnx-zynqmp-rtc.h b/include/hw/rtc/xlnx-zynqmp-rtc.h
+similarity index 95%
+rename from include/hw/timer/xlnx-zynqmp-rtc.h
+rename to include/hw/rtc/xlnx-zynqmp-rtc.h
+index 97e32322ed70..6fa1cb2f43f8 100644
+--- a/include/hw/timer/xlnx-zynqmp-rtc.h
++++ b/include/hw/rtc/xlnx-zynqmp-rtc.h
+@@ -3,7 +3,7 @@
+  *
+  * Copyright (c) 2017 Xilinx Inc.
+  *
+- * Written-by: Alistair Francis <alistair.francis@xilinx.com>
++ * Written-by: Alistair Francis
+  *
+  * Permission is hereby granted, free of charge, to any person obtaining a copy
+  * of this software and associated documentation files (the "Software"), to deal
+@@ -24,8 +24,8 @@
   * THE SOFTWARE.
   */
  
--#ifndef MC146818RTC_REGS_H
--#define MC146818RTC_REGS_H
-+#ifndef HW_RTC_MC146818RTC_REGS_H
-+#define HW_RTC_MC146818RTC_REGS_H
+-#ifndef HW_TIMER_XLNX_ZYNQMP_RTC_H
+-#define HW_TIMER_XLNX_ZYNQMP_RTC_H
++#ifndef HW_RTC_XLNX_ZYNQMP_H
++#define HW_RTC_XLNX_ZYNQMP_H
  
- #include "qemu/timer.h"
-+#include "qemu/host-utils.h"
- 
- #define RTC_ISA_IRQ 8
- 
-diff --git a/tests/rtc-test.c b/tests/rtc-test.c
-index 6309b0ef6cc2..79a4ff1ed611 100644
---- a/tests/rtc-test.c
-+++ b/tests/rtc-test.c
-@@ -15,7 +15,7 @@
- 
- #include "libqtest-single.h"
- #include "qemu/timer.h"
--#include "hw/timer/mc146818rtc_regs.h"
-+#include "hw/rtc/mc146818rtc_regs.h"
- 
- #define UIP_HOLD_LENGTH           (8 * NANOSECONDS_PER_SECOND / 32768)
- 
+ #include "hw/register.h"
+ #include "hw/sysbus.h"
 -- 
 2.21.0
 
