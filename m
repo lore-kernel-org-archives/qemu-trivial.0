@@ -1,40 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iNxLe-00027E-F4
+	id 1iNxLe-00027b-Lo
 	for mharc-qemu-trivial@gnu.org; Fri, 25 Oct 2019 07:01:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40301)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40315)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iNxLX-0001vT-92
+ (envelope-from <philmd@redhat.com>) id 1iNxLZ-00022R-Od
  for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 07:01:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iNxLW-0001IK-6h
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 07:01:31 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:23741
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1iNxLT-0001HH-8d
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 07:01:33 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:24993
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iNxLW-0001I8-3G
- for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 07:01:30 -0400
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iNxLT-0001H0-4K
+ for qemu-trivial@nongnu.org; Fri, 25 Oct 2019 07:01:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1572001289;
+ s=mimecast20190719; t=1572001286;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZCMZbY3BXuLAM/Zus+tvhIQnQM13usxdBSN4vCiZ85E=;
- b=C/t8fnutLwLFgNDkoBrq+2ft9R4Ajdin7Qfo5DLtmALndoYnDCAy4NNjhy91G/1eFARvCA
- x/BwHsgGLKErH1zpEOO2Ko+KfK/tgNQuspO1nQo2DIFtThY8bTCLllkkPMxM3xCwOVFvhN
- Ou9yyD1Vee2hNzI433zydb3io6HW7Xc=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=rvofbdMsFiHSbSYh1z33bgI9FevJ8vBhIJ+juY/w+lM=;
+ b=F0McuKOH7n2cWwRyty4Pk8tjn+QB0zlwrorCToZEaw/L/8JNKui/mbyM6jYF4RWLv3RvPs
+ fjuVg5vbvEzRoVkjFCHnVXfnw1s1g522ptmgJ4UIDo9zp5pzSDS3T0O2hw6o6ngsK2WMMN
+ D6bvvaujHdJKIPPU0925Jwni8Q4cOe8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-359-ssyFhbnKMDutZZ3z4SsUIw-1; Fri, 25 Oct 2019 07:01:27 -0400
+ us-mta-226-O7acdi-6N66U8aNpq7JQ3w-1; Fri, 25 Oct 2019 07:01:22 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 684111005509;
- Fri, 25 Oct 2019 11:01:26 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1F0FD801E70;
+ Fri, 25 Oct 2019 11:01:21 +0000 (UTC)
 Received: from x1w.redhat.com (unknown [10.40.205.177])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3E6745D9CA;
- Fri, 25 Oct 2019 11:01:24 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5ACE65D9CA;
+ Fri, 25 Oct 2019 11:01:16 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Fabien Chouteau <chouteau@adacore.com>,
@@ -42,20 +41,18 @@ To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  KONRAD Frederic <frederic.konrad@adacore.com>
 Cc: qemu-trivial@nongnu.org, Jiri Gaisler <jiri@gaisler.se>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH 2/2] hw/misc/grlib_ahb_apb_pnp: Fix 8-bit accesses
-Date: Fri, 25 Oct 2019 13:01:14 +0200
-Message-Id: <20191025110114.27091-3-philmd@redhat.com>
-In-Reply-To: <20191025110114.27091-1-philmd@redhat.com>
-References: <20191025110114.27091-1-philmd@redhat.com>
+Subject: [PATCH 0/2] hw/sparc/leon3: Fixes for the AHB/APB bridge
+Date: Fri, 25 Oct 2019 13:01:12 +0200
+Message-Id: <20191025110114.27091-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: ssyFhbnKMDutZZ3z4SsUIw-1
+X-MC-Unique: O7acdi-6N66U8aNpq7JQ3w-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,46 +66,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 25 Oct 2019 11:01:35 -0000
 
-The Plug & Play region of the AHB/APB bridge can be accessed
-by various word size, however the implementation is clearly
-restricted to 32-bit:
+Two trivial fixes after reading Jiri comment:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg654994.html
 
-  static uint64_t grlib_apb_pnp_read(void *opaque, hwaddr offset, unsigned =
-size)
-  {
-      APBPnp *apb_pnp =3D GRLIB_APB_PNP(opaque);
+  "The plug&play area must support byte accesses,
+  which is used by the RTEMS grlib scanning functions..."
 
-      return apb_pnp->regs[offset >> 2];
-  }
+Regards,
 
-Set the MemoryRegionOps::impl min/max fields to 32-bit, so
-memory.c::access_with_adjusted_size() can adjust when the
-access is not 32-bit.
+Phil.
 
-This is required to run RTEMS on leon3, the grlib scanning
-functions do byte accesses.
+Philippe Mathieu-Daud=C3=A9 (2):
+  hw/misc/grlib_ahb_apb_pnp: Avoid crash when writing to PnP registers
+  hw/misc/grlib_ahb_apb_pnp: Fix 8-bit accesses
 
-Reported-by: Jiri Gaisler <jiri@gaisler.se>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/misc/grlib_ahb_apb_pnp.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ hw/misc/grlib_ahb_apb_pnp.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/hw/misc/grlib_ahb_apb_pnp.c b/hw/misc/grlib_ahb_apb_pnp.c
-index f3c015d2c3..e230e25363 100644
---- a/hw/misc/grlib_ahb_apb_pnp.c
-+++ b/hw/misc/grlib_ahb_apb_pnp.c
-@@ -242,6 +242,10 @@ static const MemoryRegionOps grlib_apb_pnp_ops =3D {
-     .read       =3D grlib_apb_pnp_read,
-     .write      =3D grlib_apb_pnp_write,
-     .endianness =3D DEVICE_BIG_ENDIAN,
-+    .impl =3D {
-+        .min_access_size =3D 4,
-+        .max_access_size =3D 4,
-+    },
- };
-=20
- static void grlib_apb_pnp_realize(DeviceState *dev, Error **errp)
 --=20
 2.21.0
 
