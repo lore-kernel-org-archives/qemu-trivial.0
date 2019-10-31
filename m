@@ -1,55 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iPnMY-0002US-DN
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Oct 2019 08:46:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33589)
+	id 1iQ9rQ-0001C8-Sx
+	for mharc-qemu-trivial@gnu.org; Thu, 31 Oct 2019 08:47:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59141)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jordipujolp@gmail.com>) id 1iPipR-0005bv-8E
- for qemu-trivial@nongnu.org; Wed, 30 Oct 2019 03:55:43 -0400
+ (envelope-from <laurent@vivier.eu>) id 1iQ9rM-00015Q-Uz
+ for qemu-trivial@nongnu.org; Thu, 31 Oct 2019 08:47:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jordipujolp@gmail.com>) id 1iPipN-0003Tf-VR
- for qemu-trivial@nongnu.org; Wed, 30 Oct 2019 03:55:39 -0400
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c]:34637)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <jordipujolp@gmail.com>)
- id 1iPipN-0003Pm-NK
- for qemu-trivial@nongnu.org; Wed, 30 Oct 2019 03:55:37 -0400
-Received: by mail-oi1-x22c.google.com with SMTP id l202so1200165oig.1
- for <qemu-trivial@nongnu.org>; Wed, 30 Oct 2019 00:55:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=AQu2cBReKW4uxbEXN/FuTmBZbrOjjMUsuh9yVXCzfxU=;
- b=ReHcfSHbAaWEwGg8q+gCg437RUMxnAvOekvsLh3ypR9BRc/lLqljnkop6mghg+v9Lf
- iXLtg2EP7PBEuHItBrOxG4za1txxjG+y81lLgDu1TgCPcJALeeWry42eGfP7/i4N9Pt3
- GrBKwPB1FXaxS/TqEkfQeNsrlDn8Tv0rsF/h3I35WISwoEZrqC5VFvlhrQPI+z279ZC0
- XyV5rKqKzU7vYMoP+R+7M5mE4fRDnYRlHkLEfrKwr+ldH3KfKhZYaV6MQCVrxP9rzmAV
- yTyFC2SyiQqqO66NQIkm+igZUFtHaCgZjsbjBPGR1zgn2mALAjW3Z93fG3VY74ImZsCD
- 2flw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=AQu2cBReKW4uxbEXN/FuTmBZbrOjjMUsuh9yVXCzfxU=;
- b=W8CJzMOJPrMABAXbmxSenJ8kqYUwWWjgOQqzbGIGcJm4noI1cX/OJHR5ICfMILZc+j
- XRc/ZLSEH8G4f01zpVmxmCWRPTOyxM/+OGM3rEL7KL0Mc1tX9JTRT+XglfzyhUpYWL9d
- qka3ewXR4SH4c6QkkSitvtGMBeeoAwZpvlLH8Im5mvY9GuafDZD3bTG52C+DXhL47au8
- w2WtBZVHpTrW44UH/0L2XWADv+0Sd2DSc08IJW0WnuKi9vKZSq03sa4wMyUonw7svaCl
- xSJB97mFtAOlM6iWUMcTqn/KakEht4zLdMV96s6d97rUawN41d+wauUvDLoQ2qkdLrcQ
- 3ZyA==
-X-Gm-Message-State: APjAAAWrErc3vxLJrt+F/qulCIZdELA6djChTRRjv16KjKRPq9HMkMPS
- XJpLMOALFlKGn9KiNwL4UcvHEhMaVTSn6h5yZIuWLqV8
-X-Google-Smtp-Source: APXvYqxJ6yvfQBV1TQ2iJt7UXh47e8yjtIFmEcc+qKuzinXPAChWZIr6VeAMohm2GCbkR/Blurq5iUvJXDmdZW0ZCvA=
-X-Received: by 2002:a54:4116:: with SMTP id l22mr7796394oic.121.1572422136035; 
- Wed, 30 Oct 2019 00:55:36 -0700 (PDT)
+ (envelope-from <laurent@vivier.eu>) id 1iQ9rL-0003pW-KN
+ for qemu-trivial@nongnu.org; Thu, 31 Oct 2019 08:47:28 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:41387)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1iQ9rI-0003lh-Ux; Thu, 31 Oct 2019 08:47:25 -0400
+Received: from [172.20.52.177] ([91.217.168.176]) by mrelayeu.kundenserver.de
+ (mreue012 [212.227.15.168]) with ESMTPSA (Nemesis) id
+ 1M91Tq-1iMHhc1Bzi-0069lP; Thu, 31 Oct 2019 13:47:14 +0100
+Subject: Re: smb daemon get additional command line parameters from env
+ variable
+To: Jordi Pujol <jordipujolp@gmail.com>, qemu-trivial@nongnu.org
+References: <CACTE=gpFbUSxXeTwu6_tzSeoh_9Yp905aMdzCPCUz3h7kcgeyw@mail.gmail.com>
+Cc: qemu-devel qemu-devel <qemu-devel@nongnu.org>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Jan Kiszka <jan.kiszka@siemens.com>, Jason Wang <jasowang@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Message-ID: <144c1b0a-5cd4-b657-025b-f44d5e812e06@vivier.eu>
+Date: Thu, 31 Oct 2019 13:47:12 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-From: Jordi Pujol <jordipujolp@gmail.com>
-Date: Wed, 30 Oct 2019 08:55:24 +0100
-Message-ID: <CACTE=gpFbUSxXeTwu6_tzSeoh_9Yp905aMdzCPCUz3h7kcgeyw@mail.gmail.com>
-Subject: smb daemon get additional command line parameters from env variable
-To: qemu-trivial@nongnu.org
-Content-Type: multipart/mixed; boundary="000000000000db1e9605961c0eb2"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::22c
-X-Mailman-Approved-At: Wed, 30 Oct 2019 08:46:09 -0400
+In-Reply-To: <CACTE=gpFbUSxXeTwu6_tzSeoh_9Yp905aMdzCPCUz3h7kcgeyw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:hUjrROPXhsRqX4jqNGggYsukH6D/0IYDkt8vrq2hOt4oZ0FLBo2
+ 2752RmaEl1FY+ZWrKXvSLAZWizybd8sarWrs11//ke3y6wDEeDGkdaLQM9VVTngtb9SrCqg
+ 7Ik/qYL0i7i0vm0XA0lLMiRxJOMe64IT7I8WdlNzXE9B3gcbM9hD7KJzsTEYcsjfioJOQNc
+ Rv77/PjfFHuFSzv8DYJSw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:0FiI78k2MYg=:1n1sddFwXFFiyJB8xPpGrr
+ n1tbKLra/sJp/NTT7mYlrPYLhKa8+LWdLk60H7G54PQlcmdks1uzO5DyWAnuGqvO9cXDkCKLp
+ KQM2ZUBjRucN9FQ8bPVlbsbMKXrYzm4Ro07zcQy61/baEgjQVRxwZfoq3rTQ5+6OCIo1eGlrw
+ LYsQ6g/YOyF3kAa/eCNWCgiSPyaqK1IkE9+rakRk676XlO5WmpJI5LaOyTlNi2Rj8DoHSpx8T
+ InuIrPaGn7/YAHDlR0DbPPv04e+QaHBT0OaTOi+kDrtke0i0fcpGlFsHrXlSyqpolVScKlC3x
+ a1K3vMwYgYYJ8Jmmc5fCd2CEqAF5/wret+/U6tlH25HEutl3Cm5CZId2KracfENtJAZRfs4a+
+ 8wgnxNSt112QfXTsILfURo/Ogla4gbjMFpgksuzkX82llBSz4Bir8k6lI1Th1R31SU/jtMaZs
+ sSRciu/Wtj8WcVfxe5wQxZA75LCjLmBRwExZ4LEA0LkdQUjoaIBO3WjYTt/niaWhlDzncUmOB
+ /aZ4P5vBTArzgYs6XAerzQDUY9zELJivB1XkWcWEwAxo33+CQH+wkcCQqhDYeHidFgQwuh3eF
+ z5GBev3OKlyFXa3+B3Mg2peDEi7b18MlJK9SuGKuDbUeuVuahYIPttacPJI4wpI82fT1GF4Zq
+ 4POIrKckj+tvwGDTkA1yJAarWnoQOflxRhCCWTe6JdHSaw+NBJdwqDuUsQSdVYF49yE+CrcyN
+ MvUC1o/FTE0FC1+tPDTg/7ZDIsL8UHEGplqHZKPa1xK2ir9Gk8x0vM/NuVWMVZuYo7og26GDY
+ 8iXULTzgNYviWC/n4ph9ruLJWrSyjNACkmyjh2zw2O1De/I4IeRKKFECkiM5rTS43uNIymWpN
+ h0GdkR8wGjWsQjR/Xw5vSQOFO4bWdejySHn5kMh0w=
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 212.227.126.187
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -61,66 +64,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Oct 2019 07:55:44 -0000
+X-List-Received-Date: Thu, 31 Oct 2019 12:47:31 -0000
 
---000000000000db1e9605961c0eb2
-Content-Type: text/plain; charset="UTF-8"
+Hi,
 
-Hello,
+On 30/10/2019 08:55, Jordi Pujol wrote:
+> Hello,
+> 
+> The new version 4 of Samba disables version 1 SMB protocols, now to
+> run old Win clients we must modify the temporary configuration of the
+> samba daemon to enable protocols before starting the samba client.
+> This patch gets the value of the environment variable SMBDOPTIONS and
+> appends it to the smbd command line; it allows the user to specify
+> additional samba daemon parameters before starting qemu.
+> It also patches the fork_exec function in misc.c, to parse correctly
+> command lines that contain spaces.
+> 
+> Thanks,
+> 
+> Jordi Pujol
+> 
 
-The new version 4 of Samba disables version 1 SMB protocols, now to
-run old Win clients we must modify the temporary configuration of the
-samba daemon to enable protocols before starting the samba client.
-This patch gets the value of the environment variable SMBDOPTIONS and
-appends it to the smbd command line; it allows the user to specify
-additional samba daemon parameters before starting qemu.
-It also patches the fork_exec function in misc.c, to parse correctly
-command lines that contain spaces.
+cc'ed: qemu-devel and maintainers
+
+To contribute, please follow the guideline
+https://wiki.qemu.org/Contribute/SubmitAPatch
 
 Thanks,
-
-Jordi Pujol
-
---000000000000db1e9605961c0eb2
-Content-Type: text/x-patch; charset="US-ASCII"; name="smbd_options.patch"
-Content-Disposition: attachment; filename="smbd_options.patch"
-Content-Transfer-Encoding: base64
-Content-ID: <f_k2cza91b0>
-X-Attachment-Id: f_k2cza91b0
-
-RnJvbTogSm9yZGkgUHVqb2wgUGFsb21lciA8am9yZGlwdWpvbHBAZ21haWwuY29tPgpEYXRlOiBG
-cmksIDI1IE9jdCAyMDE5IDA5OjI0OjE0ICswMjAwClN1YmplY3Q6IFtQQVRDSF0gUUVNVSBzYW1i
-YSBkYWVtb246IGFkZGl0aW9uYWwgY29tbWFuZCBsaW5lIG9wdGlvbnMKClRoZSBzbWJkIGRhZW1v
-biB0YWtlcyBhZGRpdGlvbmFsIGNvbW1hbmQgbGluZSBvcHRpb25zCmZyb20gZW52aXJvbm1lbnQg
-dmFyaWFibGUgU01CRE9QVElPTlMuClNldCB0aGUgZW52aXJvbm1lbnQgdmFyaWFibGUgU01CRE9Q
-VElPTlMgYmVmb3JlIGV4ZWN1dGluZyBxZW11LgoKRXhhbXBsZToKCmV4cG9ydCBTTUJET1BUSU9O
-Uz0iLS1vcHRpb249J3NlcnZlciBtaW4gcHJvdG9jb2w9Q09SRScgLWQgNCIKLS0tCi0tLSBxZW11
-LTQuMS1hL25ldC9zbGlycC5jCisrKyBxZW11XzQuMS1iL25ldC9zbGlycC5jCkBAIC05MDksNiAr
-OTA5LDEyIEBAIHN0YXRpYyBpbnQgc2xpcnBfc21iKFNsaXJwU3RhdGUqIHMsIGNvbnMKICAgICAg
-ICAgICAgICBDT05GSUdfU01CRF9DT01NQU5ELCBzLT5zbWJfZGlyLCBzbWJfY29uZik7CiAgICAg
-Z19mcmVlKHNtYl9jb25mKTsKIAorICAgIGNoYXIgKm9wdGlvbnM7CisgICAgaWYgKChvcHRpb25z
-ID0gZ19zdHJkdXAoZ19nZXRlbnYoIlNNQkRPUFRJT05TIikpKSAhPSBOVUxMKSB7CisgICAgICAg
-IHNtYl9jbWRsaW5lID0gZ19zdHJkdXBfcHJpbnRmKCIlcyAlcyIsIHNtYl9jbWRsaW5lLCBvcHRp
-b25zKTsKKyAgICB9CisgICAgZ19mcmVlKG9wdGlvbnMpOworCiAgICAgaWYgKHNsaXJwX2FkZF9l
-eGVjKHMtPnNsaXJwLCBzbWJfY21kbGluZSwgJnZzZXJ2ZXJfYWRkciwgMTM5KSA8IDAgfHwKICAg
-ICAgICAgc2xpcnBfYWRkX2V4ZWMocy0+c2xpcnAsIHNtYl9jbWRsaW5lLCAmdnNlcnZlcl9hZGRy
-LCA0NDUpIDwgMCkgewogICAgICAgICBzbGlycF9zbWJfY2xlYW51cChzKTsKCi0tLSBxZW11LTQu
-MS1hL3NsaXJwL3NyYy9taXNjLmMJMjAxOS0xMC0yOSAxNDo0MDoxNS4wNDMxMjA5NDEgKzAxMDAK
-KysrIHFlbXUtNC4xLWIvc2xpcnAvc3JjL21pc2MuYwkyMDE5LTEwLTI5IDE0OjQxOjA0LjQ0MDIz
-NTY4NCArMDEwMApAQCAtMTY4LDcgKzE2OCw5IEBAIGdfc3Bhd25fYXN5bmNfd2l0aF9mZHNfc2xp
-cnAoY29uc3QgZ2NoYXIKIGludCBmb3JrX2V4ZWMoc3RydWN0IHNvY2tldCAqc28sIGNvbnN0IGNo
-YXIgKmV4KQogewogICAgIEdFcnJvciAqZXJyID0gTlVMTDsKLSAgICBjaGFyICoqYXJndjsKKyAg
-ICBnaW50IGFyZ2MgPSAwOworICAgIGdjaGFyICoqYXJndiA9IE5VTEw7CisgICAgZ2Jvb2xlYW4g
-cmV0OwogICAgIGludCBvcHQsIHNwWzJdOwogCiAgICAgREVCVUdfQ0FMTCgiZm9ya19leGVjIik7
-CkBAIC0xNzksNyArMTgxLDEzIEBAIGludCBmb3JrX2V4ZWMoc3RydWN0IHNvY2tldCAqc28sIGNv
-bnN0IGMKICAgICAgICAgcmV0dXJuIDA7CiAgICAgfQogCi0gICAgYXJndiA9IGdfc3Ryc3BsaXQo
-ZXgsICIgIiwgLTEpOworICAgIHJldCA9IGdfc2hlbGxfcGFyc2VfYXJndihleCwgJmFyZ2MsICZh
-cmd2LCAmZXJyKTsKKyAgICBpZiAoZXJyKSB7CisgICAgICAgIGdfY3JpdGljYWwoImZvcmtfZXhl
-YyBpbnZhbGlkIGNvbW1hbmQ6ICVzIiwgZXJyLT5tZXNzYWdlKTsKKyAgICAgICAgZ19lcnJvcl9m
-cmVlKGVycik7CisgICAgICAgIHJldHVybiAwOworICAgIH0KKwogICAgIGdfc3Bhd25fYXN5bmNf
-d2l0aF9mZHMoTlVMTCAvKiBjd2QgKi8sIGFyZ3YsIE5VTEwgLyogZW52ICovLAogICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgR19TUEFXTl9TRUFSQ0hfUEFUSCwgZm9ya19leGVjX2NoaWxkX3Nl
-dHVwLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgTlVMTCAvKiBkYXRhICovLCBOVUxMIC8q
-IGNoaWxkX3BpZCAqLywgc3BbMV0sIHNwWzFdLAo=
---000000000000db1e9605961c0eb2--
+Laurent
 
