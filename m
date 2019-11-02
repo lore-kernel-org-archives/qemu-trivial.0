@@ -1,57 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iQrpC-00012s-PC
-	for mharc-qemu-trivial@gnu.org; Sat, 02 Nov 2019 07:44:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52986)
+	id 1iQwjE-0002q6-Di
+	for mharc-qemu-trivial@gnu.org; Sat, 02 Nov 2019 12:58:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43337)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iQrpA-000116-Fr
- for qemu-trivial@nongnu.org; Sat, 02 Nov 2019 07:44:09 -0400
+ (envelope-from <sgarzare@redhat.com>) id 1iQwjB-0002pu-RN
+ for qemu-trivial@nongnu.org; Sat, 02 Nov 2019 12:58:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iQrp8-0004NA-82
- for qemu-trivial@nongnu.org; Sat, 02 Nov 2019 07:44:07 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:28857
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <sgarzare@redhat.com>) id 1iQwj8-00007G-A8
+ for qemu-trivial@nongnu.org; Sat, 02 Nov 2019 12:58:15 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35510)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iQrp8-0004I1-4Y
- for qemu-trivial@nongnu.org; Sat, 02 Nov 2019 07:44:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1572695044;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=+1THuLuSw0xjQPjCO5YWe8AoN+US1aCmSHR/MVwMob0=;
- b=Gqz+IilCzxY2d1aYIAkMeenQHrvCwLw/7YrPeg7dM3Dtxdf+UEkGlVtwzKkG7ObWnhRjIX
- /10LqpjXxQEgSSnCZfWPwZlLklcserX1KtXtDN8Q4VRB1Ih/NoUT32NQNKmW3DxAmWh12L
- caEf/EccpMD/EdoRxIHyVkZ56RpXelo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-84-JnDCX2CQOBaWxlZILnh34Q-1; Sat, 02 Nov 2019 07:44:00 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1iQwj8-0008O0-2w
+ for qemu-trivial@nongnu.org; Sat, 02 Nov 2019 12:58:14 -0400
+Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
+ [209.85.167.200])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0BB661800DFD;
- Sat,  2 Nov 2019 11:43:59 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-63.brq.redhat.com [10.40.204.63])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0BBB35D9CD;
- Sat,  2 Nov 2019 11:43:49 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org,
-	Sergio Lopez <slp@redhat.com>
-Cc: qemu-trivial@nongnu.org, Stefano Garzarella <sgarzare@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, Bruce Rogers <brogers@suse.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] Makefile: install bios-microvm like other binary blobs
-Date: Sat,  2 Nov 2019 12:43:46 +0100
-Message-Id: <20191102114346.6445-1-philmd@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id 5AF0E59449
+ for <qemu-trivial@nongnu.org>; Sat,  2 Nov 2019 16:58:11 +0000 (UTC)
+Received: by mail-oi1-f200.google.com with SMTP id x15so7884420oif.19
+ for <qemu-trivial@nongnu.org>; Sat, 02 Nov 2019 09:58:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=2jSpwmZaDSMA0WmkwmiZE/EaDVe/p6WyRu3qsrw0Ep8=;
+ b=LX/9eDhwxkqrjwt5kJTBpj4GnLUNmYwAywGybpn8tnARScOILaiL4DmCuAKpgquLHJ
+ hST0hvEy+MxbNYTKTnD1LIupR+N3ndSITsdAMKfE5PzsgQwjkiE/QBuI7p+/ITxP4y8N
+ OayiFDzKGE8RcWfDMq6D23rNCfgIdcRg6Lvw5Oz/v1Eu6yXDwUKqhd7AzdY7VARvjVHW
+ Je2g64i2sRF//tYRhaLgNr8J6oDrBlnnW+c48AagmMYdGylg2PvA0sLyTf+kNggO1tmq
+ 37bmR6VetcDCbbAUmo38SkohbX2/TkT2Z1Q8CohdXoWPV034c48Xv5tcIlwpWHi9aCbT
+ LpGw==
+X-Gm-Message-State: APjAAAXBDmhpxUxpbMTtIZdvfkYqGKpd6LwzRh6+MsaBUwY/R/ijbfio
+ KWjwHIUWOH/4nrIuYXD6rgEpZh8TL1SLeX0vKx1aMGj5dIkeXCVNDJrApX1oAw4SbPZKP16DX/K
+ bt05b6iJVVrfTWiiWLx6EBsX2WUOb6yxoWA==
+X-Received: by 2002:aca:c7c1:: with SMTP id x184mr8281670oif.158.1572713890778; 
+ Sat, 02 Nov 2019 09:58:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyTto/GKdgwzddtNyMFaYuvELq/XtAZLhCv0cFVUERODd6QVrdHXA2c8FQM1y4sE6ypOLT5OQLAIKfcLO+bda8=
+X-Received: by 2002:aca:c7c1:: with SMTP id x184mr8281652oif.158.1572713890401; 
+ Sat, 02 Nov 2019 09:58:10 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: JnDCX2CQOBaWxlZILnh34Q-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8
+References: <20191102114346.6445-1-philmd@redhat.com>
+In-Reply-To: <20191102114346.6445-1-philmd@redhat.com>
+From: Stefano Garzarella <sgarzare@redhat.com>
+Date: Sat, 2 Nov 2019 17:57:59 +0100
+Message-ID: <CAGxU2F6TKSwwCBMESc1GoikzwhHbtZwxpUHKAqpSAE=Sk1yyUw@mail.gmail.com>
+Subject: Re: [PATCH] Makefile: install bios-microvm like other binary blobs
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: qemu devel list <qemu-devel@nongnu.org>, Sergio Lopez <slp@redhat.com>,
+ qemu-trivial@nongnu.org, 
+ "Michael S . Tsirkin" <mst@redhat.com>, Bruce Rogers <brogers@suse.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -63,39 +66,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 02 Nov 2019 11:44:09 -0000
+X-List-Received-Date: Sat, 02 Nov 2019 16:58:18 -0000
 
-From: Bruce Rogers <brogers@suse.com>
+On Sat, Nov 2, 2019 at 12:43 PM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
+>
+> From: Bruce Rogers <brogers@suse.com>
+>
+> Commit 0d5fae3e52e introduced bios-microvm.bin but forgot to add
+> it to the list of blobs being installed.
+> Add it to the list of BLOBS that get installed.
+>
+> Fixes: 0d5fae3e52e "roms: add microvm-bios (qboot) as binary"
+> Signed-off-by: Bruce Rogers <brogers@suse.com>
+> [PMD: Reworded description]
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  Makefile | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Commit 0d5fae3e52e introduced bios-microvm.bin but forgot to add
-it to the list of blobs being installed.
-Add it to the list of BLOBS that get installed.
+The patch LGTM:
 
-Fixes: 0d5fae3e52e "roms: add microvm-bios (qboot) as binary"
-Signed-off-by: Bruce Rogers <brogers@suse.com>
-[PMD: Reworded description]
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
 
-diff --git a/Makefile b/Makefile
-index bd6376d295..755aa6c5f5 100644
---- a/Makefile
-+++ b/Makefile
-@@ -770,7 +770,7 @@ de-ch  es     fo  fr-ca  hu     ja  mk  pt  sl     tr \
- bepo    cz
-=20
- ifdef INSTALL_BLOBS
--BLOBS=3Dbios.bin bios-256k.bin sgabios.bin vgabios.bin vgabios-cirrus.bin =
-\
-+BLOBS=3Dbios.bin bios-256k.bin bios-microvm.bin sgabios.bin vgabios.bin vg=
-abios-cirrus.bin \
- vgabios-stdvga.bin vgabios-vmware.bin vgabios-qxl.bin vgabios-virtio.bin \
- vgabios-ramfb.bin vgabios-bochs-display.bin vgabios-ati.bin \
- ppc_rom.bin openbios-sparc32 openbios-sparc64 openbios-ppc QEMU,tcx.bin QE=
-MU,cgthree.bin \
---=20
-2.21.0
+Thanks,
+Stefano
 
+>
+> diff --git a/Makefile b/Makefile
+> index bd6376d295..755aa6c5f5 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -770,7 +770,7 @@ de-ch  es     fo  fr-ca  hu     ja  mk  pt  sl     tr=
+ \
+>  bepo    cz
+>
+>  ifdef INSTALL_BLOBS
+> -BLOBS=3Dbios.bin bios-256k.bin sgabios.bin vgabios.bin vgabios-cirrus.bi=
+n \
+> +BLOBS=3Dbios.bin bios-256k.bin bios-microvm.bin sgabios.bin vgabios.bin =
+vgabios-cirrus.bin \
+>  vgabios-stdvga.bin vgabios-vmware.bin vgabios-qxl.bin vgabios-virtio.bin=
+ \
+>  vgabios-ramfb.bin vgabios-bochs-display.bin vgabios-ati.bin \
+>  ppc_rom.bin openbios-sparc32 openbios-sparc64 openbios-ppc QEMU,tcx.bin =
+QEMU,cgthree.bin \
+> --
+> 2.21.0
+>
 
