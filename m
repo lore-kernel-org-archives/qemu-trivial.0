@@ -1,58 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iQ9rQ-0001C8-Sx
-	for mharc-qemu-trivial@gnu.org; Thu, 31 Oct 2019 08:47:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59141)
+	id 1iQrpC-00012s-PC
+	for mharc-qemu-trivial@gnu.org; Sat, 02 Nov 2019 07:44:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52986)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iQ9rM-00015Q-Uz
- for qemu-trivial@nongnu.org; Thu, 31 Oct 2019 08:47:30 -0400
+ (envelope-from <philmd@redhat.com>) id 1iQrpA-000116-Fr
+ for qemu-trivial@nongnu.org; Sat, 02 Nov 2019 07:44:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iQ9rL-0003pW-KN
- for qemu-trivial@nongnu.org; Thu, 31 Oct 2019 08:47:28 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:41387)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iQ9rI-0003lh-Ux; Thu, 31 Oct 2019 08:47:25 -0400
-Received: from [172.20.52.177] ([91.217.168.176]) by mrelayeu.kundenserver.de
- (mreue012 [212.227.15.168]) with ESMTPSA (Nemesis) id
- 1M91Tq-1iMHhc1Bzi-0069lP; Thu, 31 Oct 2019 13:47:14 +0100
-Subject: Re: smb daemon get additional command line parameters from env
- variable
-To: Jordi Pujol <jordipujolp@gmail.com>, qemu-trivial@nongnu.org
-References: <CACTE=gpFbUSxXeTwu6_tzSeoh_9Yp905aMdzCPCUz3h7kcgeyw@mail.gmail.com>
-Cc: qemu-devel qemu-devel <qemu-devel@nongnu.org>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Jan Kiszka <jan.kiszka@siemens.com>, Jason Wang <jasowang@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <144c1b0a-5cd4-b657-025b-f44d5e812e06@vivier.eu>
-Date: Thu, 31 Oct 2019 13:47:12 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ (envelope-from <philmd@redhat.com>) id 1iQrp8-0004NA-82
+ for qemu-trivial@nongnu.org; Sat, 02 Nov 2019 07:44:07 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:28857
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iQrp8-0004I1-4Y
+ for qemu-trivial@nongnu.org; Sat, 02 Nov 2019 07:44:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1572695044;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=+1THuLuSw0xjQPjCO5YWe8AoN+US1aCmSHR/MVwMob0=;
+ b=Gqz+IilCzxY2d1aYIAkMeenQHrvCwLw/7YrPeg7dM3Dtxdf+UEkGlVtwzKkG7ObWnhRjIX
+ /10LqpjXxQEgSSnCZfWPwZlLklcserX1KtXtDN8Q4VRB1Ih/NoUT32NQNKmW3DxAmWh12L
+ caEf/EccpMD/EdoRxIHyVkZ56RpXelo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-84-JnDCX2CQOBaWxlZILnh34Q-1; Sat, 02 Nov 2019 07:44:00 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0BB661800DFD;
+ Sat,  2 Nov 2019 11:43:59 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-63.brq.redhat.com [10.40.204.63])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0BBB35D9CD;
+ Sat,  2 Nov 2019 11:43:49 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org,
+	Sergio Lopez <slp@redhat.com>
+Cc: qemu-trivial@nongnu.org, Stefano Garzarella <sgarzare@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, Bruce Rogers <brogers@suse.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] Makefile: install bios-microvm like other binary blobs
+Date: Sat,  2 Nov 2019 12:43:46 +0100
+Message-Id: <20191102114346.6445-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CACTE=gpFbUSxXeTwu6_tzSeoh_9Yp905aMdzCPCUz3h7kcgeyw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:hUjrROPXhsRqX4jqNGggYsukH6D/0IYDkt8vrq2hOt4oZ0FLBo2
- 2752RmaEl1FY+ZWrKXvSLAZWizybd8sarWrs11//ke3y6wDEeDGkdaLQM9VVTngtb9SrCqg
- 7Ik/qYL0i7i0vm0XA0lLMiRxJOMe64IT7I8WdlNzXE9B3gcbM9hD7KJzsTEYcsjfioJOQNc
- Rv77/PjfFHuFSzv8DYJSw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:0FiI78k2MYg=:1n1sddFwXFFiyJB8xPpGrr
- n1tbKLra/sJp/NTT7mYlrPYLhKa8+LWdLk60H7G54PQlcmdks1uzO5DyWAnuGqvO9cXDkCKLp
- KQM2ZUBjRucN9FQ8bPVlbsbMKXrYzm4Ro07zcQy61/baEgjQVRxwZfoq3rTQ5+6OCIo1eGlrw
- LYsQ6g/YOyF3kAa/eCNWCgiSPyaqK1IkE9+rakRk676XlO5WmpJI5LaOyTlNi2Rj8DoHSpx8T
- InuIrPaGn7/YAHDlR0DbPPv04e+QaHBT0OaTOi+kDrtke0i0fcpGlFsHrXlSyqpolVScKlC3x
- a1K3vMwYgYYJ8Jmmc5fCd2CEqAF5/wret+/U6tlH25HEutl3Cm5CZId2KracfENtJAZRfs4a+
- 8wgnxNSt112QfXTsILfURo/Ogla4gbjMFpgksuzkX82llBSz4Bir8k6lI1Th1R31SU/jtMaZs
- sSRciu/Wtj8WcVfxe5wQxZA75LCjLmBRwExZ4LEA0LkdQUjoaIBO3WjYTt/niaWhlDzncUmOB
- /aZ4P5vBTArzgYs6XAerzQDUY9zELJivB1XkWcWEwAxo33+CQH+wkcCQqhDYeHidFgQwuh3eF
- z5GBev3OKlyFXa3+B3Mg2peDEi7b18MlJK9SuGKuDbUeuVuahYIPttacPJI4wpI82fT1GF4Zq
- 4POIrKckj+tvwGDTkA1yJAarWnoQOflxRhCCWTe6JdHSaw+NBJdwqDuUsQSdVYF49yE+CrcyN
- MvUC1o/FTE0FC1+tPDTg/7ZDIsL8UHEGplqHZKPa1xK2ir9Gk8x0vM/NuVWMVZuYo7og26GDY
- 8iXULTzgNYviWC/n4ph9ruLJWrSyjNACkmyjh2zw2O1De/I4IeRKKFECkiM5rTS43uNIymWpN
- h0GdkR8wGjWsQjR/Xw5vSQOFO4bWdejySHn5kMh0w=
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: JnDCX2CQOBaWxlZILnh34Q-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.187
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -64,32 +63,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 31 Oct 2019 12:47:31 -0000
+X-List-Received-Date: Sat, 02 Nov 2019 11:44:09 -0000
 
-Hi,
+From: Bruce Rogers <brogers@suse.com>
 
-On 30/10/2019 08:55, Jordi Pujol wrote:
-> Hello,
-> 
-> The new version 4 of Samba disables version 1 SMB protocols, now to
-> run old Win clients we must modify the temporary configuration of the
-> samba daemon to enable protocols before starting the samba client.
-> This patch gets the value of the environment variable SMBDOPTIONS and
-> appends it to the smbd command line; it allows the user to specify
-> additional samba daemon parameters before starting qemu.
-> It also patches the fork_exec function in misc.c, to parse correctly
-> command lines that contain spaces.
-> 
-> Thanks,
-> 
-> Jordi Pujol
-> 
+Commit 0d5fae3e52e introduced bios-microvm.bin but forgot to add
+it to the list of blobs being installed.
+Add it to the list of BLOBS that get installed.
 
-cc'ed: qemu-devel and maintainers
+Fixes: 0d5fae3e52e "roms: add microvm-bios (qboot) as binary"
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+[PMD: Reworded description]
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-To contribute, please follow the guideline
-https://wiki.qemu.org/Contribute/SubmitAPatch
+diff --git a/Makefile b/Makefile
+index bd6376d295..755aa6c5f5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -770,7 +770,7 @@ de-ch  es     fo  fr-ca  hu     ja  mk  pt  sl     tr \
+ bepo    cz
+=20
+ ifdef INSTALL_BLOBS
+-BLOBS=3Dbios.bin bios-256k.bin sgabios.bin vgabios.bin vgabios-cirrus.bin =
+\
++BLOBS=3Dbios.bin bios-256k.bin bios-microvm.bin sgabios.bin vgabios.bin vg=
+abios-cirrus.bin \
+ vgabios-stdvga.bin vgabios-vmware.bin vgabios-qxl.bin vgabios-virtio.bin \
+ vgabios-ramfb.bin vgabios-bochs-display.bin vgabios-ati.bin \
+ ppc_rom.bin openbios-sparc32 openbios-sparc64 openbios-ppc QEMU,tcx.bin QE=
+MU,cgthree.bin \
+--=20
+2.21.0
 
-Thanks,
-Laurent
 
