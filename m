@@ -1,98 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iRd0g-00050P-N1
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2019 09:07:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59360)
+	id 1iRhSc-0002Ll-MF
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2019 13:52:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47619)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iRd0e-0004yR-Gt
- for qemu-trivial@nongnu.org; Mon, 04 Nov 2019 09:07:09 -0500
+ (envelope-from <dgilbert@redhat.com>) id 1iRhSZ-0002IK-4p
+ for qemu-trivial@nongnu.org; Mon, 04 Nov 2019 13:52:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iRd0d-000626-FT
- for qemu-trivial@nongnu.org; Mon, 04 Nov 2019 09:07:08 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:50485)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iRd0a-00061K-V3; Mon, 04 Nov 2019 09:07:05 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mqagw-1i5iOx2AVM-00mdM2; Mon, 04 Nov 2019 15:06:59 +0100
-Subject: Re: [PATCH] qom: Fix error message in object_class_property_add()
-To: Greg Kurz <groug@kaod.org>, Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-trivial@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>,
- qemu-devel@nongnu.org
-References: <157287383591.234942.311840593519058490.stgit@bahia.tlslab.ibm.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <c1fcf973-b469-2a1f-e882-4fa1608ffe44@vivier.eu>
-Date: Mon, 4 Nov 2019 15:06:57 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ (envelope-from <dgilbert@redhat.com>) id 1iRhSX-0001uX-Op
+ for qemu-trivial@nongnu.org; Mon, 04 Nov 2019 13:52:15 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:33841)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1iRhSX-0001uK-LD
+ for qemu-trivial@nongnu.org; Mon, 04 Nov 2019 13:52:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1572893533;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=u9yoCUoQ5IjQ9AYWfHlboVDzOuGLVXErAwJSGIPE5P4=;
+ b=PYS0xS9+6R881w/G6B1KuIQUTJGeuOqTomfPw6oSKUXnsWmPgVEzsJeIb7ZZ9hsFE3U9/L
+ 49fxa5m9ByDtOFDwvSAy0Wyhv8AS7G+rhymK0pYZhjDYqsLtb2ERlqithiAXvZokyQ8Pj/
+ RlQRVn1sR8Wtnx30YbpqMAgVbcQvrDI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-13-WmY6-rjoOBSsD-AA_T6f_A-1; Mon, 04 Nov 2019 13:52:10 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 625808017DD;
+ Mon,  4 Nov 2019 18:52:09 +0000 (UTC)
+Received: from dgilbert-t580.localhost (ovpn-117-99.ams2.redhat.com
+ [10.36.117.99])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4A6145D9CD;
+ Mon,  4 Nov 2019 18:52:04 +0000 (UTC)
+From: "Dr. David Alan Gilbert (git)" <dgilbert@redhat.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, mjt@tls.msk.ru,
+ laurent@vivier.eu
+Cc: peter.maydell@linaro.org, david@gibson.dropbear.id.au,
+ sstabellini@kernel.org, marcandre.lureau@redhat.com
+Subject: [PATCH] global: Squash 'the the'
+Date: Mon,  4 Nov 2019 18:52:02 +0000
+Message-Id: <20191104185202.102504-1-dgilbert@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <157287383591.234942.311840593519058490.stgit@bahia.tlslab.ibm.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:wcTnzZ7q4DPtT8C2LdRql1HDCo/5Cjn+ksjFgqNPKMVZfXOBkEZ
- 96i6gL5wHByGNfaYjC8DRrdO9/3bVGBlvPkcjbHPoyTvHBK2VP+9V6ZRSKvmJlKfViDezBr
- Tw3n/cDwh8ZrwA6KzDweJSkWwrxEn86evZUiY0vVbNPiExu3MnwdFO3tCjCoy16mb8giRl1
- /JxPyq63VvLix9wBXcWDQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:BGjlrFCLmMI=:zAoj3/mGRV5TsKZOg9gATC
- O1GOA04WWNsKkGaXbyCxCG1s8m02OR9wn99jlGN721gi1uV3nosELLF6zHIb0cBvrsrWc8WrC
- YKn2FcshaD1VSci/jxRxMhjLsh/tWy4PYrSwp7NvRW0PwM7Arr3HkMyqsdVE8JRJM9fm22isr
- eqq76kRJmzEJNxWPCaHOUDRvRPnWHpwS7552I8j5It77OGATbPsmXjkiL90uX37tfBOsNIZNY
- demaFSG901wxx5ygW1q0QkO1B53+blFy4hmLar49cbJT6V6zoxIGPdDuqtJluii/G4TO3c11g
- GdA5+KY5EX4kQ+tk6P1iCvLvyCF8QrU0fIeOeQ7rwhGwchYs3ejkTfAtVEpyP79OWA3OEuNyK
- UF1k2Qz5w9u677YwL8zGH1qUErVgj6Jq/k1SMHZaJE5CbTC81XoC+O1vP8LycGx4c5m/w8ZS/
- etNVUdZqsB7cth0FRhNYg7xG7bUMEWtP/JrGHEKmUACtvi00JO4oCBPb7jq0QfDpMa1ZGBNIY
- IWQS5IO0/989eBRAqf/OVJss/A5YmAl0Fvu1hXA46+GSYEfr/fmh2yOSkpx+qXS1GILNMXkNT
- Inoq2LovNUkkkVXIB0nqH387RY1RH06+ShobHaK6C5Y7BTWP6BjWc7MHQVbw42rEPLXxpa/4p
- szHMie2x0qQwwClBAMWBe0lRjiqIkjqfN8fTvmG+PhzQI7RfYrRPfjFsmqHILGNiZKUszUbxe
- hW8OWn6gkJ+lfyRsl0Xrmy92m2fWbY22VDvmf0MKXqLbK7tPUOe9wlJyo6uCosPOHWXUXT3LE
- xO8oHc3gnVyYc+LL9av5tYFtdl2Z7Jho8YZ9OQI4Pzf+o0eC601EMR+szP6Wv/mg9376ArfoC
- 3W6VdP4sPKuzj/zDJkztz+/FCj2DceZuwP456Jse4=
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: WmY6-rjoOBSsD-AA_T6f_A-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 217.72.192.73
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,51 +62,130 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Nov 2019 14:07:09 -0000
+X-List-Received-Date: Mon, 04 Nov 2019 18:52:16 -0000
 
-Le 04/11/2019 à 14:23, Greg Kurz a écrit :
-> The error message in object_class_property_add() was copied from
-> object_property_add() in commit 16bf7f522a2ff. Clarify that it is
-> about a class, not an object.
-> 
-> While here, have the format string in both functions to fit in a
-> single line for better grep-ability, despite the checkpatch warning.
-> 
-> Signed-off-by: Greg Kurz <groug@kaod.org>
-> ---
->  qom/object.c |   10 ++++------
->  1 file changed, 4 insertions(+), 6 deletions(-)
-> 
-> diff --git a/qom/object.c b/qom/object.c
-> index 6fa9c619fac4..d51b57fba11e 100644
-> --- a/qom/object.c
-> +++ b/qom/object.c
-> @@ -1106,9 +1106,8 @@ object_property_add(Object *obj, const char *name, const char *type,
->      }
->  
->      if (object_property_find(obj, name, NULL) != NULL) {
-> -        error_setg(errp, "attempt to add duplicate property '%s'"
-> -                   " to object (type '%s')", name,
-> -                   object_get_typename(obj));
-> +        error_setg(errp, "attempt to add duplicate property '%s' to object (type '%s')",
-> +                   name, object_get_typename(obj));
->          return NULL;
->      }
->  
-> @@ -1139,9 +1138,8 @@ object_class_property_add(ObjectClass *klass,
->      ObjectProperty *prop;
->  
->      if (object_class_property_find(klass, name, NULL) != NULL) {
-> -        error_setg(errp, "attempt to add duplicate property '%s'"
-> -                   " to object (type '%s')", name,
-> -                   object_class_get_name(klass));
-> +        error_setg(errp, "attempt to add duplicate property '%s' to class (type '%s')",
-> +                   name, object_class_get_name(klass));
->          return NULL;
->      }
->  
-> 
-> 
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+'the' has a tendency to double up; squash them back down.
+
+Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+---
+ disas/libvixl/vixl/invalset.h       | 2 +-
+ docs/interop/pr-helper.rst          | 2 +-
+ docs/specs/ppc-spapr-hotplug.txt    | 2 +-
+ docs/specs/ppc-xive.rst             | 2 +-
+ docs/specs/tpm.txt                  | 2 +-
+ include/hw/xen/interface/io/blkif.h | 2 +-
+ scripts/dump-guest-memory.py        | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/disas/libvixl/vixl/invalset.h b/disas/libvixl/vixl/invalset.h
+index ffdc0237b4..ef5e49d6fe 100644
+--- a/disas/libvixl/vixl/invalset.h
++++ b/disas/libvixl/vixl/invalset.h
+@@ -102,7 +102,7 @@ template<TEMPLATE_INVALSET_P_DECL> class InvalSet {
+   size_t size() const;
+=20
+   // Returns true if no elements are stored in the set.
+-  // Note that this does not mean the the backing storage is empty: it can=
+ still
++  // Note that this does not mean the backing storage is empty: it can sti=
+ll
+   // contain invalid elements.
+   bool empty() const;
+=20
+diff --git a/docs/interop/pr-helper.rst b/docs/interop/pr-helper.rst
+index 9f76d5bcf9..e926f0a6c9 100644
+--- a/docs/interop/pr-helper.rst
++++ b/docs/interop/pr-helper.rst
+@@ -10,7 +10,7 @@ can delegate implementation of persistent reservations to=
+ an external
+ restricting access to block devices to specific initiators in a shared
+ storage setup.
+=20
+-For a more detailed reference please refer the the SCSI Primary
++For a more detailed reference please refer to the SCSI Primary
+ Commands standard, specifically the section on Reservations and the
+ "PERSISTENT RESERVE IN" and "PERSISTENT RESERVE OUT" commands.
+=20
+diff --git a/docs/specs/ppc-spapr-hotplug.txt b/docs/specs/ppc-spapr-hotplu=
+g.txt
+index cc7833108e..859d52cce6 100644
+--- a/docs/specs/ppc-spapr-hotplug.txt
++++ b/docs/specs/ppc-spapr-hotplug.txt
+@@ -385,7 +385,7 @@ Each LMB list entry consists of the following elements:
+   is used to retrieve the right associativity list to be used for this
+   LMB.
+ - A 32bit flags word. The bit at bit position 0x00000008 defines whether
+-  the LMB is assigned to the the partition as of boot time.
++  the LMB is assigned to the partition as of boot time.
+=20
+ ibm,dynamic-memory-v2
+=20
+diff --git a/docs/specs/ppc-xive.rst b/docs/specs/ppc-xive.rst
+index 148d57eb6a..83d43f658b 100644
+--- a/docs/specs/ppc-xive.rst
++++ b/docs/specs/ppc-xive.rst
+@@ -163,7 +163,7 @@ Interrupt Priority Register (PIPR) is also updated usin=
+g the IPB. This
+ register represent the priority of the most favored pending
+ notification.
+=20
+-The PIPR is then compared to the the Current Processor Priority
++The PIPR is then compared to the Current Processor Priority
+ Register (CPPR). If it is more favored (numerically less than), the
+ CPU interrupt line is raised and the EO bit of the Notification Source
+ Register (NSR) is updated to notify the presence of an exception for
+diff --git a/docs/specs/tpm.txt b/docs/specs/tpm.txt
+index 5d8c26b1ad..9c8cca042d 100644
+--- a/docs/specs/tpm.txt
++++ b/docs/specs/tpm.txt
+@@ -89,7 +89,7 @@ TPM upon reboot. The PPI specification defines the operat=
+ion requests and the
+ actions the firmware has to take. The system administrator passes the oper=
+ation
+ request number to the firmware through an ACPI interface which writes this
+ number to a memory location that the firmware knows. Upon reboot, the firm=
+ware
+-finds the number and sends commands to the the TPM. The firmware writes th=
+e TPM
++finds the number and sends commands to the TPM. The firmware writes the TP=
+M
+ result code and the operation request number to a memory location that ACP=
+I can
+ read from and pass the result on to the administrator.
+=20
+diff --git a/include/hw/xen/interface/io/blkif.h b/include/hw/xen/interface=
+/io/blkif.h
+index 8b1be50ce8..d07fa1e078 100644
+--- a/include/hw/xen/interface/io/blkif.h
++++ b/include/hw/xen/interface/io/blkif.h
+@@ -341,7 +341,7 @@
+  *      access (even when it should be read-only). If the frontend hits th=
+e
+  *      maximum number of allowed persistently mapped grants, it can fallb=
+ack
+  *      to non persistent mode. This will cause a performance degradation,
+- *      since the the backend driver will still try to map those grants
++ *      since the backend driver will still try to map those grants
+  *      persistently. Since the persistent grants protocol is compatible w=
+ith
+  *      the previous protocol, a frontend driver can choose to work in
+  *      persistent mode even when the backend doesn't support it.
+diff --git a/scripts/dump-guest-memory.py b/scripts/dump-guest-memory.py
+index 2c587cbefc..9371e45813 100644
+--- a/scripts/dump-guest-memory.py
++++ b/scripts/dump-guest-memory.py
+@@ -170,7 +170,7 @@ class ELF(object):
+         self.ehdr.e_phnum +=3D 1
+=20
+     def to_file(self, elf_file):
+-        """Writes all ELF structures to the the passed file.
++        """Writes all ELF structures to the passed file.
+=20
+         Structure:
+         Ehdr
+--=20
+2.23.0
+
 
