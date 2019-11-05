@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iS2yg-0002RK-Fy
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2019 12:50:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47174)
+	id 1iS2yn-0002Ui-Tl
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2019 12:50:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47292)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iS2yc-0002N8-Ld
- for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 12:50:48 -0500
+ (envelope-from <laurent@vivier.eu>) id 1iS2yj-0002Sx-Qb
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 12:50:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iS2yb-0004Xf-6h
- for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 12:50:46 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:53001)
+ (envelope-from <laurent@vivier.eu>) id 1iS2yh-0004cY-T9
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 12:50:53 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:35453)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iS2ya-0004XG-To; Tue, 05 Nov 2019 12:50:45 -0500
+ id 1iS2yc-0004Xc-0T; Tue, 05 Nov 2019 12:50:46 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1M8xsm-1iY4aV2PBO-006BFm; Tue, 05 Nov 2019 18:50:25 +0100
+ id 1MS4ab-1iLlQr1IPT-00TQkF; Tue, 05 Nov 2019 18:50:22 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Fabien Chouteau <chouteau@adacore.com>, qemu-ppc@nongnu.org,
@@ -30,39 +30,38 @@ Cc: Fabien Chouteau <chouteau@adacore.com>, qemu-ppc@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Cleber Rosa <crosa@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PULL v2 3/3] global: Squash 'the the'
-Date: Tue,  5 Nov 2019 18:50:10 +0100
-Message-Id: <20191105175010.2591-4-laurent@vivier.eu>
+Subject: [PULL v2 1/3] hw/misc/grlib_ahb_apb_pnp: Avoid crash when writing to
+ PnP registers
+Date: Tue,  5 Nov 2019 18:50:08 +0100
+Message-Id: <20191105175010.2591-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191105175010.2591-1-laurent@vivier.eu>
 References: <20191105175010.2591-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:SaGI/2qVSXMVZNyKW/ejZuFYgiKKZFkiwfgC83akVKcYnU7xxX2
- fwJRh5TsZQRqkeqvyysvzK15pag2h6pa1AkmjtC4dNJfC0O4AFEJJgswhnCmfs6qnZOxKcI
- M0k8uTi+PU9aGoYemSLTC/YGOu9RZShzEpvnKKRQbjL2zoGYBbxBZNyBpnLWV9Uy3tzL9Z+
- GWbe/mBFDLYd5DHLrrFBw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:aEkazEhZA58=:PClIdpwWynZy75IsEQoQYP
- /aemNXr8Ap03tx3kzN9Om0z1kcU0bkg7/1aygjdDku534ZYBudJSwIZ/fKDtKAYM4bgTvkF8m
- kwEQRhFzfuUhsimiLmFCPSde7LT64+VKDn2S1NRoZkUCvxf9ObghYvCcsH1fRe4At26vg8JiJ
- CZEqONrv4X8v9W3TH3D5SvksLJUdlIDjVihYkrWpNVUJJlQXUKg+3zd62tDSLqpLCwJez3qmY
- iJSQpP2J1W4ZikwO2qLtO75Xl1K9uM6j5Dih8zDP5kkfcOL0Mo0zaT9rekyfwO6O4XEyk+qCO
- t4r/6H+jJhGcaGOMqLM1B4d0EVgUgvwoy7XBuHkWK3HHiMtChw8HcFJUrO2M/XjL4Jaj7qqan
- hKtzsW5WZrxO1kydCONgd3IUtmExwUs6ATE/uRfau53zoumYO1kKvUZrWooQU2Q/VMQkTPgoT
- exhIkd4pi5Nc7vjwJXdBvMtLWz9TyXEi1BZA2FMdM//3TDG2yuVnZSgBfYtegV+xT15FdUSoF
- LA9fNNJWpSO7Nuu6CgYDKoCiDja5lA973eBZav48jUT6uoD3+mhY4LofPQQjczVw3H0/vVxat
- lyW55MkHs5nAebnTmroX8s2ScjEsWMSW0HCxCMX4sAM4pbPpzKvAWfp2mzlEfxEuLo0ji1Aqo
- DjYvgsPpWROLG3tRJeK6VBwJNHF+kY+//loG5wNeezaxIfZtYJwislmdcqTczwsIZRxtZx1lg
- b0ENC8u0PBz4Es/a1isKzJydl57KEOiNtueFYtT+tOYulytvxWbBCi/38hfeGh0eewZ9NEAm2
- Dae4e8h23Jng607sZ+J2CrXSnPXJJpDkON883/TfZw8pb8P1QIClR3xjQkHB07unskTwUKxVY
- hthX4/B8Bs77gGIv4BpO5dHhYdQDCVBa48BgK0fmE=
+X-Provags-ID: V03:K1:xIRSM2QcNuucJtLEhlYRpyW0YjRZeJsUZwbZz0pkdgW0UYo3LqF
+ H3VqTkrZ07U49UA806XDzr3Eju+3GmLsm40n7fx4b0SzVs56y4F+xbyQCPixXFPc5Q3kgIw
+ EY0j5y8UkYd5jzWOpVGbpISd6LfX6AOdxr175i30dnhQaF4Tim81ZAQcG9k2DA5PhoxKHze
+ nBr5mcduF/rlk8MasQWLg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+7GRlHCA3/U=:3wOwnQgqgieEE2UdVEQkBf
+ AxFgA2QCER1KmhRTkqiCowOTDjBEHT4p2OJhihJVW4HDKwO9JRZu3zMNaMu+K8l925y4sU/oq
+ tq6brI+MKJ0OWG1UjN5u5U4KphyWdBBVPZVomvckUNPB6O4hfs8nTkQAM4yuDyoqfPLUITO1F
+ lFgUEMy1Sjo7mXi+QoWkF+rruNbYZTOtL2nzQw3W5l3Jvs5NxauTbs6A3iihSn7luS3wptloE
+ BfAwrpiXClbcca518oryCGE944yV+vrYd0HJVNt9AWpFl0bKLvGuP4jtWo1v/qy/XDxQvUpFr
+ j1sz9qF5aTU/u42lDa+YxPfxAqltPozm1ooO0yXHOu7ET1q7pDoFy/fhwhOFknTkYKUogzmzR
+ rmD3j/IPjFsZHxCvnDbpzabNoxAvTiLpI3niJeLjojzjSqKgsphJrMl3FFykSTfwiavWzxahn
+ yh8uIH+1n6COxaqx60fSXDu6zz/2M17c+G1zFRfkEarEt20g1BhWWKX4+8wSyqXIF3FHz6kZ0
+ LSKjML7WmHEs8oNCzK6hdBTPUGl+LKH5UjwXoen1QojU7dhhEertzAQQJC6d6h2Ve5AcVM0GC
+ qsR77WK7kwyudeZW2+qxomkznEFN6mAcqlNO045GqQ+eTc52iP9Ch8lu5m04350pl1WsiAEGe
+ 4XvlTTPWL8x9eqzkq4/NaRm7k+o34TkBhu+a7UoBySqTv4KGZZA2sMUlMbtjcvL/kIQ8JZwzc
+ NbBoebBQrF0lC/hmPxWPOH0uOShbJZJFX9xgxvpUHm+4zkyI1okfvWFQBNK2O4jy+zCIPWViL
+ bpwnT7JgeXZ1VHg8iQwGja8Lxq52IGp4X8Mnit8BxNRFnWCB7Wk7iPti+7zZHos3EKRHOvaYS
+ N1CjbUT9twQNk3pBFKqsHEwjeLP4r/zwfcikmNwjY=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 217.72.192.75
+X-Received-From: 217.72.192.74
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,119 +73,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Nov 2019 17:50:48 -0000
+X-List-Received-Date: Tue, 05 Nov 2019 17:50:55 -0000
 
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-'the' has a tendency to double up; squash them back down.
+Guests can crash QEMU when writting to PnP registers:
 
-Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20191104185202.102504-1-dgilbert@redhat.com>
+  $ echo 'writeb 0x800ff042 69' | qemu-system-sparc -M leon3_generic -S -bios /etc/magic -qtest stdio
+  [I 1571938309.932255] OPENED
+  [R +0.063474] writeb 0x800ff042 69
+  Segmentation fault (core dumped)
+
+  (gdb) bt
+  #0  0x0000000000000000 in  ()
+  #1  0x0000555f4bcdf0bc in memory_region_write_with_attrs_accessor (mr=0x555f4d7be8c0, addr=66, value=0x7fff07d00f08, size=1, shift=0, mask=255, attrs=...) at memory.c:503
+  #2  0x0000555f4bcdf185 in access_with_adjusted_size (addr=66, value=0x7fff07d00f08, size=1, access_size_min=1, access_size_max=4, access_fn=0x555f4bcdeff4 <memory_region_write_with_attrs_accessor>, mr=0x555f4d7be8c0, attrs=...) at memory.c:539
+  #3  0x0000555f4bce2243 in memory_region_dispatch_write (mr=0x555f4d7be8c0, addr=66, data=69, op=MO_8, attrs=...) at memory.c:1489
+  #4  0x0000555f4bc80b20 in flatview_write_continue (fv=0x555f4d92c400, addr=2148528194, attrs=..., buf=0x7fff07d01120 "E", len=1, addr1=66, l=1, mr=0x555f4d7be8c0) at exec.c:3161
+  #5  0x0000555f4bc80c65 in flatview_write (fv=0x555f4d92c400, addr=2148528194, attrs=..., buf=0x7fff07d01120 "E", len=1) at exec.c:3201
+  #6  0x0000555f4bc80fb0 in address_space_write (as=0x555f4d7aa460, addr=2148528194, attrs=..., buf=0x7fff07d01120 "E", len=1) at exec.c:3291
+  #7  0x0000555f4bc8101d in address_space_rw (as=0x555f4d7aa460, addr=2148528194, attrs=..., buf=0x7fff07d01120 "E", len=1, is_write=true) at exec.c:3301
+  #8  0x0000555f4bcdb388 in qtest_process_command (chr=0x555f4c2ed7e0 <qtest_chr>, words=0x555f4db0c5d0) at qtest.c:432
+
+Instead of crashing, log the access as unimplemented.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: KONRAD Frederic <frederic.konrad@adacore.com>
+Message-Id: <20191025110114.27091-2-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- disas/libvixl/vixl/invalset.h       | 2 +-
- docs/interop/pr-helper.rst          | 2 +-
- docs/specs/ppc-spapr-hotplug.txt    | 2 +-
- docs/specs/ppc-xive.rst             | 2 +-
- docs/specs/tpm.txt                  | 2 +-
- include/hw/xen/interface/io/blkif.h | 2 +-
- scripts/dump-guest-memory.py        | 2 +-
- 7 files changed, 7 insertions(+), 7 deletions(-)
+ hw/misc/grlib_ahb_apb_pnp.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/disas/libvixl/vixl/invalset.h b/disas/libvixl/vixl/invalset.h
-index ffdc0237b47c..ef5e49d6feb2 100644
---- a/disas/libvixl/vixl/invalset.h
-+++ b/disas/libvixl/vixl/invalset.h
-@@ -102,7 +102,7 @@ template<TEMPLATE_INVALSET_P_DECL> class InvalSet {
-   size_t size() const;
+diff --git a/hw/misc/grlib_ahb_apb_pnp.c b/hw/misc/grlib_ahb_apb_pnp.c
+index 7338461694c9..f3c015d2c35f 100644
+--- a/hw/misc/grlib_ahb_apb_pnp.c
++++ b/hw/misc/grlib_ahb_apb_pnp.c
+@@ -22,6 +22,7 @@
+  */
  
-   // Returns true if no elements are stored in the set.
--  // Note that this does not mean the the backing storage is empty: it can still
-+  // Note that this does not mean the backing storage is empty: it can still
-   // contain invalid elements.
-   bool empty() const;
+ #include "qemu/osdep.h"
++#include "qemu/log.h"
+ #include "hw/sysbus.h"
+ #include "hw/misc/grlib_ahb_apb_pnp.h"
  
-diff --git a/docs/interop/pr-helper.rst b/docs/interop/pr-helper.rst
-index 9f76d5bcf98f..e926f0a6c9cb 100644
---- a/docs/interop/pr-helper.rst
-+++ b/docs/interop/pr-helper.rst
-@@ -10,7 +10,7 @@ can delegate implementation of persistent reservations to an external
- restricting access to block devices to specific initiators in a shared
- storage setup.
+@@ -231,8 +232,15 @@ static uint64_t grlib_apb_pnp_read(void *opaque, hwaddr offset, unsigned size)
+     return apb_pnp->regs[offset >> 2];
+ }
  
--For a more detailed reference please refer the the SCSI Primary
-+For a more detailed reference please refer to the SCSI Primary
- Commands standard, specifically the section on Reservations and the
- "PERSISTENT RESERVE IN" and "PERSISTENT RESERVE OUT" commands.
++static void grlib_apb_pnp_write(void *opaque, hwaddr addr,
++                                uint64_t val, unsigned size)
++{
++    qemu_log_mask(LOG_UNIMP, "%s not implemented\n", __func__);
++}
++
+ static const MemoryRegionOps grlib_apb_pnp_ops = {
+     .read       = grlib_apb_pnp_read,
++    .write      = grlib_apb_pnp_write,
+     .endianness = DEVICE_BIG_ENDIAN,
+ };
  
-diff --git a/docs/specs/ppc-spapr-hotplug.txt b/docs/specs/ppc-spapr-hotplug.txt
-index cc7833108e12..859d52cce6c8 100644
---- a/docs/specs/ppc-spapr-hotplug.txt
-+++ b/docs/specs/ppc-spapr-hotplug.txt
-@@ -385,7 +385,7 @@ Each LMB list entry consists of the following elements:
-   is used to retrieve the right associativity list to be used for this
-   LMB.
- - A 32bit flags word. The bit at bit position 0x00000008 defines whether
--  the LMB is assigned to the the partition as of boot time.
-+  the LMB is assigned to the partition as of boot time.
- 
- ibm,dynamic-memory-v2
- 
-diff --git a/docs/specs/ppc-xive.rst b/docs/specs/ppc-xive.rst
-index 148d57eb6ab2..83d43f658b90 100644
---- a/docs/specs/ppc-xive.rst
-+++ b/docs/specs/ppc-xive.rst
-@@ -163,7 +163,7 @@ Interrupt Priority Register (PIPR) is also updated using the IPB. This
- register represent the priority of the most favored pending
- notification.
- 
--The PIPR is then compared to the the Current Processor Priority
-+The PIPR is then compared to the Current Processor Priority
- Register (CPPR). If it is more favored (numerically less than), the
- CPU interrupt line is raised and the EO bit of the Notification Source
- Register (NSR) is updated to notify the presence of an exception for
-diff --git a/docs/specs/tpm.txt b/docs/specs/tpm.txt
-index 5d8c26b1adba..9c8cca042da8 100644
---- a/docs/specs/tpm.txt
-+++ b/docs/specs/tpm.txt
-@@ -89,7 +89,7 @@ TPM upon reboot. The PPI specification defines the operation requests and the
- actions the firmware has to take. The system administrator passes the operation
- request number to the firmware through an ACPI interface which writes this
- number to a memory location that the firmware knows. Upon reboot, the firmware
--finds the number and sends commands to the the TPM. The firmware writes the TPM
-+finds the number and sends commands to the TPM. The firmware writes the TPM
- result code and the operation request number to a memory location that ACPI can
- read from and pass the result on to the administrator.
- 
-diff --git a/include/hw/xen/interface/io/blkif.h b/include/hw/xen/interface/io/blkif.h
-index 8b1be50ce81e..d07fa1e07822 100644
---- a/include/hw/xen/interface/io/blkif.h
-+++ b/include/hw/xen/interface/io/blkif.h
-@@ -341,7 +341,7 @@
-  *      access (even when it should be read-only). If the frontend hits the
-  *      maximum number of allowed persistently mapped grants, it can fallback
-  *      to non persistent mode. This will cause a performance degradation,
-- *      since the the backend driver will still try to map those grants
-+ *      since the backend driver will still try to map those grants
-  *      persistently. Since the persistent grants protocol is compatible with
-  *      the previous protocol, a frontend driver can choose to work in
-  *      persistent mode even when the backend doesn't support it.
-diff --git a/scripts/dump-guest-memory.py b/scripts/dump-guest-memory.py
-index 2c587cbefc57..9371e4581308 100644
---- a/scripts/dump-guest-memory.py
-+++ b/scripts/dump-guest-memory.py
-@@ -170,7 +170,7 @@ class ELF(object):
-         self.ehdr.e_phnum += 1
- 
-     def to_file(self, elf_file):
--        """Writes all ELF structures to the the passed file.
-+        """Writes all ELF structures to the passed file.
- 
-         Structure:
-         Ehdr
 -- 
 2.21.0
 
