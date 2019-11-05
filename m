@@ -1,53 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iRlgf-0002Fz-Ro
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2019 18:23:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44564)
+	id 1iRu0d-0006DY-15
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2019 03:16:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34286)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1iRlgc-0002Dh-US
- for qemu-trivial@nongnu.org; Mon, 04 Nov 2019 18:23:04 -0500
+ (envelope-from <alex.bennee@linaro.org>) id 1iRu0a-0006Ct-3I
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 03:16:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1iRlga-0006Wo-UK
- for qemu-trivial@nongnu.org; Mon, 04 Nov 2019 18:23:02 -0500
-Resent-Date: Mon, 04 Nov 2019 18:23:01 -0500
-Resent-Message-Id: <E1iRlga-0006Wo-UK@eggs.gnu.org>
-Received: from sender4-of-o54.zoho.com ([136.143.188.54]:21464)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1iRlgV-0006Sp-9K; Mon, 04 Nov 2019 18:22:56 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1572909754; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=hTTN/ZvPkMJwTtyvRgebHTCNfp5TCvhfiifiMiuE5Re1yeLrePi6j6xybO8rlFxI6hU0yrSTyMQltb+Ze8nXpBO24b7ooxd32NOnFcc3CLyu3xiINoFFzamJ/M3PHEc0tQ2Ve0cq8QZ8ipKM4tYdR89TXXrCdI+u/vIRNd6V6IY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1572909754;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=b0/3qqh5tmRtg2xzpuVA3bIT0K4yPhdj7WeO7sQTCgY=; 
- b=QWzRzyG46GfFl1vANN0vSTFqnf2c1O6Es/hw4Fsre04R4qNkMYEg89JQFXmSzng0KwCdIg+kfZZo7Je3ungqPIinGCbt6iupPOqDVVzjIrVn+zy9SaICM8EgwxCG/grQhLZNPzSDYMjWimTcVQdfcQ2S/TSW5vm++qsiCgMOO2I=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1572909751680440.05171983654077;
- Mon, 4 Nov 2019 15:22:31 -0800 (PST)
-In-Reply-To: <20191104185202.102504-1-dgilbert@redhat.com>
-Reply-To: <qemu-devel@nongnu.org>
-Subject: Re: [PATCH] global: Squash 'the the'
-Message-ID: <157290975035.27285.3954856965557307495@37313f22b938>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: dgilbert@redhat.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, mjt@tls.msk.ru,
- laurent@vivier.eu, peter.maydell@linaro.org, sstabellini@kernel.org,
+ (envelope-from <alex.bennee@linaro.org>) id 1iRu0Y-0001Cy-Hz
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 03:16:11 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c]:50389)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+ id 1iRu0Y-0001Br-AG
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 03:16:10 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id 11so19757321wmk.0
+ for <qemu-trivial@nongnu.org>; Tue, 05 Nov 2019 00:16:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:in-reply-to:date
+ :message-id:mime-version:content-transfer-encoding;
+ bh=pz6NCRSrqLbjvY2Wj3fxrpPEduIrQL6aoWd5/f8EqWk=;
+ b=MN5jr4eyOeo5D5os8lF4tuHxZZNT29rabArJvMSnAE771dhOLpZpL9zEXwteD58VR9
+ wdceCOLpvMwE+hgzxRMvx+0Mwp2245GnjXmxxjcqh++2zJfeSOVHZ/9aVB+hlEjOHSer
+ QJhOq0GFHOD+3LhxK9c2nr1CW3qICP/a9RUiEBCCl9gwVQjCXPtAudv6qPKuTTcOAljP
+ uWvZc3b5hjKCCrzNtciL6mmRJzX4aBj+gvy2vEMTF9asq7Dr8JWWi/4RFuKT6P2h6kNr
+ SzljWPCb21ZHh0Sn67G3vxmaN35wOimgMaVV9jTbFKs8tgPDQAJF++0mMEamDhD9Jrfj
+ e+tA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject
+ :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+ bh=pz6NCRSrqLbjvY2Wj3fxrpPEduIrQL6aoWd5/f8EqWk=;
+ b=DIXAvSzdXN4r4a/fiq+fIvNw/2kRdjGQScfPvOM1HUEvxm0bM4P7nOpsyaKfGSZc5A
+ vqjIJ9e0gIx2zQEmSIV330j3w8CUctLCC95s/Z9g7LujCJCwmQ0RFW23GBYwYpKg6bj9
+ 5mXrlnk+t90OIOHkkxo+NwZJKrcs9pRpQE7QgMEt3iRZ97RLa6qmTQXH9CnWIoVy0PgB
+ IF2uVdWQxyqQC25WVyqJttCwHa8IeEd5PZP1kls/YVVwYJbaFwk10O13FnON95p0uG9h
+ fuboZWhku8dyDM4XdBHmGoLuvPk7j7pTsKrutLxAetRc9JJvJ1bvmuHen5lQ4ilFQNV5
+ /vRQ==
+X-Gm-Message-State: APjAAAUObX+tzR+OpAx1shtVUha+z9Gi+VmbjKD2QGWTQBaUkrlLP1N0
+ Il/WClt4kErzGFICtnxdwCctsQ==
+X-Google-Smtp-Source: APXvYqxDreqS1U+iXMt1UVCp74zllZfh1FPcRTDZ+RsnX1aD8zeBYhso26LqLHjko4Rh/ohb5ZzQxQ==
+X-Received: by 2002:a7b:cb0b:: with SMTP id u11mr2840521wmj.125.1572941767488; 
+ Tue, 05 Nov 2019 00:16:07 -0800 (PST)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id w4sm5657709wmk.29.2019.11.05.00.16.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 05 Nov 2019 00:16:06 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id AA5221FF87;
+ Tue,  5 Nov 2019 08:16:05 +0000 (GMT)
+References: <20191104185202.102504-1-dgilbert@redhat.com>
+ <157290359988.27285.16497763825853147226@37313f22b938>
+User-agent: mu4e 1.3.5; emacs 27.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: dgilbert@redhat.com, peter.maydell@linaro.org, sstabellini@kernel.org,
+ qemu-trivial@nongnu.org, mjt@tls.msk.ru, laurent@vivier.eu,
  marcandre.lureau@redhat.com, david@gibson.dropbear.id.au
-Date: Mon, 4 Nov 2019 15:22:31 -0800 (PST)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.54
+Subject: Re: [PATCH] global: Squash 'the the'
+In-reply-to: <157290359988.27285.16497763825853147226@37313f22b938>
+Date: Tue, 05 Nov 2019 08:16:05 +0000
+Message-ID: <87ftj2kabe.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::32c
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -59,32 +77,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Nov 2019 23:23:04 -0000
+X-List-Received-Date: Tue, 05 Nov 2019 08:16:13 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTEwNDE4NTIwMi4xMDI1
-MDQtMS1kZ2lsYmVydEByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhh
-dmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUg
-aW5mb3JtYXRpb246CgpTdWJqZWN0OiBbUEFUQ0hdIGdsb2JhbDogU3F1YXNoICd0aGUgdGhlJwpU
-eXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAxOTExMDQxODUyMDIuMTAyNTA0LTEtZGdpbGJlcnRA
-cmVkaGF0LmNvbQoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaApnaXQgcmV2
-LXBhcnNlIGJhc2UgPiAvZGV2L251bGwgfHwgZXhpdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZm
-LnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBj
-b25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0
-Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClVwZGF0aW5n
-IDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKU3dpdGNoZWQgdG8gYSBu
-ZXcgYnJhbmNoICd0ZXN0Jwo0MmE2ODUwIGdsb2JhbDogU3F1YXNoICd0aGUgdGhlJwoKPT09IE9V
-VFBVVCBCRUdJTiA9PT0KRVJST1I6IGRvIG5vdCB1c2UgQzk5IC8vIGNvbW1lbnRzCiMyNDogRklM
-RTogZGlzYXMvbGlidml4bC92aXhsL2ludmFsc2V0Lmg6MTA1OgorICAvLyBOb3RlIHRoYXQgdGhp
-cyBkb2VzIG5vdCBtZWFuIHRoZSBiYWNraW5nIHN0b3JhZ2UgaXMgZW1wdHk6IGl0IGNhbiBzdGls
-bAoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCA1NiBsaW5lcyBjaGVja2VkCgpDb21taXQg
-NDJhNjg1MDNjMTFiIChnbG9iYWw6IFNxdWFzaCAndGhlIHRoZScpIGhhcyBzdHlsZSBwcm9ibGVt
-cywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0
-aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJ
-TlRBSU5FUlMuCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNv
-ZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9s
-b2dzLzIwMTkxMTA0MTg1MjAyLjEwMjUwNC0xLWRnaWxiZXJ0QHJlZGhhdC5jb20vdGVzdGluZy5j
-aGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxs
-eSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVl
-ZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
 
+no-reply@patchew.org writes:
+
+> Patchew URL: https://patchew.org/QEMU/20191104185202.102504-1-dgilbert@re=
+dhat.com/
+>
+>
+>
+> Hi,
+>
+> This series failed the docker-quick@centos7 build test. Please find the t=
+esting commands and
+> their output below. If you have Docker installed, you can probably reprod=
+uce it
+> locally.
+>
+> =3D=3D=3D TEST SCRIPT BEGIN =3D=3D=3D
+> #!/bin/bash
+> make docker-image-centos7 V=3D1 NETWORK=3D1
+> time make docker-test-quick@centos7 SHOW_ENV=3D1 J=3D14 NETWORK=3D1
+> =3D=3D=3D TEST SCRIPT END =3D=3D=3D
+>
+>   TEST    iotest-qcow2: 009
+>   TEST    iotest-qcow2: 010
+> **
+> ERROR:/tmp/qemu-test/src/tests/migration-test.c:903:wait_for_migration_fa=
+il: assertion failed: (!strcmp(status, "setup") || !strcmp(status, "failed"=
+) || (allow_active && !strcmp(status, "active")))
+> ERROR - Bail out! ERROR:/tmp/qemu-test/src/tests/migration-test.c:903:wai=
+t_for_migration_fail: assertion failed: (!strcmp(status, "setup") || !strcm=
+p(status, "failed") || (allow_active && !strcmp(status, "active")))
+> make: *** [check-qtest-aarch64] Error 1
+> make: *** Waiting for unfinished jobs....
+
+That's one I've been seeing intermittently on Travis since the
+softfreeze started. It was masked by the other regressions which are now
+fixed.
+
+
+>   TEST    check-unit: tests/test-bdrv-drain
+>   TEST    iotest-qcow2: 011
+> ---
+>     raise CalledProcessError(retcode, cmd)
+> subprocess.CalledProcessError: Command '['sudo', '-n', 'docker', 'run', '=
+--label', 'com.qemu.instance.uuid=3Dacf3f0f780e741e6a5c367dda157d023', '-u'=
+, '1003', '--security-opt', 'seccomp=3Dunconfined', '--rm', '-e', 'TARGET_L=
+IST=3D', '-e', 'EXTRA_CONFIGURE_OPTS=3D', '-e', 'V=3D', '-e', 'J=3D14', '-e=
+', 'DEBUG=3D', '-e', 'SHOW_ENV=3D1', '-e', 'CCACHE_DIR=3D/var/tmp/ccache', =
+'-v', '/home/patchew2/.cache/qemu-docker-ccache:/var/tmp/ccache:z', '-v', '=
+/var/tmp/patchew-tester-tmp-_ad8j8yg/src/docker-src.2019-11-04-16.29.40.744=
+5:/var/tmp/qemu:z,ro', 'qemu:centos7', '/var/tmp/qemu/run', 'test-quick']' =
+returned non-zero exit status 2.
+> filter=3D--filter=3Dlabel=3Dcom.qemu.instance.uuid=3Dacf3f0f780e741e6a5c3=
+67dda157d023
+> make[1]: *** [docker-run] Error 1
+> make[1]: Leaving directory `/var/tmp/patchew-tester-tmp-_ad8j8yg/src'
+> make: *** [docker-run-test-quick@centos7] Error 2
+>
+> real    10m19.416s
+> user    0m7.957s
+>
+>
+> The full log is available at
+> http://patchew.org/logs/20191104185202.102504-1-dgilbert@redhat.com/testi=
+ng.docker-quick@centos7/?type=3Dmessage.
+> ---
+> Email generated automatically by Patchew [https://patchew.org/].
+> Please send your feedback to patchew-devel@redhat.com
+
+
+--
+Alex Benn=C3=A9e
 
