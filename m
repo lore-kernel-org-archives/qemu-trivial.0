@@ -1,67 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iS03V-0000DH-90
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2019 09:43:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54890)
+	id 1iS14u-0001Io-MY
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2019 10:49:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43681)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iS03R-000088-06
- for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 09:43:34 -0500
+ (envelope-from <no-reply@patchew.org>) id 1iS14q-0001EG-Ce
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 10:49:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iS03P-0002mO-TI
- for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 09:43:32 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:55037)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iS03F-0002fa-0J; Tue, 05 Nov 2019 09:43:21 -0500
-Received: from localhost.localdomain ([78.238.229.36]) by
- mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MNOZO-1iHcpa0A94-00OnFO; Tue, 05 Nov 2019 15:43:00 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
- xen-devel@lists.xenproject.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-arm@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Fabien Chouteau <chouteau@adacore.com>, qemu-ppc@nongnu.org,
- Paul Durrant <paul@xen.org>, Michael Tokarev <mjt@tls.msk.ru>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Cleber Rosa <crosa@redhat.com>,
- Claudio Fontana <claudio.fontana@huawei.com>,
- Anthony Perard <anthony.perard@citrix.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Greg Kurz <groug@kaod.org>
-Subject: [PULL 3/4] qom: Fix error message in object_class_property_add()
-Date: Tue,  5 Nov 2019 15:42:46 +0100
-Message-Id: <20191105144247.10301-4-laurent@vivier.eu>
-X-Mailer: git-send-email 2.21.0
+ (envelope-from <no-reply@patchew.org>) id 1iS14p-0005ct-1o
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 10:49:04 -0500
+Resent-Date: Tue, 05 Nov 2019 10:49:04 -0500
+Resent-Message-Id: <E1iS14p-0005ct-1o@eggs.gnu.org>
+Received: from sender4-of-o58.zoho.com ([136.143.188.58]:21881)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1iS14l-0005XF-Kw; Tue, 05 Nov 2019 10:48:59 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1572968881; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=eJ9z/nzx+qocDS1/hVg1RjdT5pPQayO8jfNG0wmC0ThRJYZ7P72l3JmRBJ1ZdZEHRmriiF84ijsvhPyPjJqnu3FDI416GgEuFIKs0IDYz24GDw8aTtxTuKshFaDquFNU1EY4xtdvFzHfJdbXIyrXMnwDaXm8gdlau9C+bf8tGgk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1572968881;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=Q4x+f/wmgD9+wgoUiUJ4DR7Cp7vYJwT7GTGmcDOH6zY=; 
+ b=cQ0WAsCaFuOLBq8PNph0CEhyWq4TQi/q8CyUycWlbtuyZ3ie/cUDPvvSsVAto/LHkZ2kc5yN3MswAqA/Luu6uvrSvyC93CFjwGCyfC2jPPfOxJ7zfcY6dkIsIzMCOe2qGWFdkbjOlgc/RQJcf+IGU5XjcLKY2QEmblWT9Cae0PU=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1572968880683579.3517686475908;
+ Tue, 5 Nov 2019 07:48:00 -0800 (PST)
 In-Reply-To: <20191105144247.10301-1-laurent@vivier.eu>
-References: <20191105144247.10301-1-laurent@vivier.eu>
+Reply-To: <qemu-devel@nongnu.org>
+Subject: Re: [PULL 0/4] Trivial branch patches
+Message-ID: <157296887817.27285.13935693519835086344@37313f22b938>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:6lLJMzjHAvmf+zbwEIjFaYmgyD4Xp9wj/yXBg2phAoLtjGTLNyf
- jFjRccWeRNCD3ubmrfEp6pKPVm7zFgjB+CKCqYNlLfEM0oSrYgQF1m5aP+VPUibYsU/asll
- l0BTqu8MMLy2rC5IlFC/P74gFDbdiPqYjDS81gLzgE669CpGIkKZX6QpwL+i+h9nd3ihAHs
- k0aU8H/oBeIugwumgO8KA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:9IzBdaTOrfc=:WVe7Hft7P5ufdiP75OVziB
- x8KctqAt8Cv13LcM75gj++4dutEn1v6LhQCSchEOYg+3tcCUGhIt50OpmFgITwSRxocBrT6e1
- bLP2HAWKwgcU66M482GnlsGwKAOwQSJubLVIpHxdSfMoOFUbTgySaV4aNsT8/NXQ44Ekpb6dj
- fkHmWUkptVIFOgHWCV8k7MOqOuGhzS4yhquR6JINooEiJtgAdBX7i7cYnis4JxR90Rq7mGqcm
- r8TB5sXsaFdr2oMLgWl23Fv+1rChP4I+6k371AwGaZIom+FcxtKUVlK9SnhPQErgGNMr0eaKv
- exQ23WnT7L0Q80b1ybigTikE0TmleJRNc/kVNs/6G0L9AQ6yIZpFpWoDb8rBApCbyt4ShbJPU
- ANLd4+KPQn2ALCD9oXPCD7JYQEAmtSclO/2X9fYeMaRedVAseex7WifatctvkBWGZ1NbpXfpD
- VJAmA+VGKVzMy1hC7r8S19oX6SnbiFpS6KrzdL+UBRPD6cYUfU1TMWr53tI+RSeydqA6CF7d+
- cI0ZBSSQ+ydwV0IgBhHd90uy2gMyoxuwEn2wacAXtC6zUy/R8Hdu1de7EpV6skhW6Dzb+TXyq
- nHnuwiwgIrNcSkeEn44cN7ThC6TWlXbVEo2lK+e/FtwcX2dLjRb9+7BAMOFpVcc1jnv03IeI6
- Y2l5mm0yZ489zSr+dbjUHxYaHF2spJzvD7vxmkeDD3V//U+togeiqoOm5AXdQJAcBcH1zAy3D
- b6tewJkju/xecXIYUa9kGmGwLWBWI1IMTK2wQ6W8+NQpz2/P78nHKQuxG6cQwqQI/rPdhAViP
- QWZcUcoFU7WV3kHIckvdm551ETQMMONk8tpB6dkM4yh7dSXhZjSapaolihSSiV7SlsFh/jcva
- rfBzTogkwOQAHn9mOXYA==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: laurent@vivier.eu
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, sstabellini@kernel.org,
+ berrange@redhat.com, ehabkost@redhat.com, pbonzini@redhat.com, paul@xen.org,
+ qemu-trivial@nongnu.org, claudio.fontana@huawei.com, crosa@redhat.com,
+ mjt@tls.msk.ru, laurent@vivier.eu, chouteau@adacore.com,
+ frederic.konrad@adacore.com, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ clg@kaod.org, marcandre.lureau@redhat.com, anthony.perard@citrix.com,
+ xen-devel@lists.xenproject.org, david@gibson.dropbear.id.au
+Date: Tue, 5 Nov 2019 07:48:00 -0800 (PST)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.135
+X-Received-From: 136.143.188.58
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,54 +63,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Nov 2019 14:43:36 -0000
+X-List-Received-Date: Tue, 05 Nov 2019 15:49:06 -0000
 
-From: Greg Kurz <groug@kaod.org>
-
-The error message in object_class_property_add() was copied from
-object_property_add() in commit 16bf7f522a2ff. Clarify that it is
-about a class, not an object.
-
-While here, have the format string in both functions to fit in a
-single line for better grep-ability, despite the checkpatch warning.
-
-Signed-off-by: Greg Kurz <groug@kaod.org>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Message-Id: <157287383591.234942.311840593519058490.stgit@bahia.tlslab.ibm.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- qom/object.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
-
-diff --git a/qom/object.c b/qom/object.c
-index 6fa9c619fac4..d51b57fba11e 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -1106,9 +1106,8 @@ object_property_add(Object *obj, const char *name, const char *type,
-     }
- 
-     if (object_property_find(obj, name, NULL) != NULL) {
--        error_setg(errp, "attempt to add duplicate property '%s'"
--                   " to object (type '%s')", name,
--                   object_get_typename(obj));
-+        error_setg(errp, "attempt to add duplicate property '%s' to object (type '%s')",
-+                   name, object_get_typename(obj));
-         return NULL;
-     }
- 
-@@ -1139,9 +1138,8 @@ object_class_property_add(ObjectClass *klass,
-     ObjectProperty *prop;
- 
-     if (object_class_property_find(klass, name, NULL) != NULL) {
--        error_setg(errp, "attempt to add duplicate property '%s'"
--                   " to object (type '%s')", name,
--                   object_class_get_name(klass));
-+        error_setg(errp, "attempt to add duplicate property '%s' to class (type '%s')",
-+                   name, object_class_get_name(klass));
-         return NULL;
-     }
- 
--- 
-2.21.0
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTEwNTE0NDI0Ny4xMDMw
+MS0xLWxhdXJlbnRAdml2aWVyLmV1LwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUg
+c29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUgaW5m
+b3JtYXRpb246CgpTdWJqZWN0OiBbUFVMTCAwLzRdIFRyaXZpYWwgYnJhbmNoIHBhdGNoZXMKVHlw
+ZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMTkxMTA1MTQ0MjQ3LjEwMzAxLTEtbGF1cmVudEB2aXZp
+ZXIuZXUKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJz
+ZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5h
+bWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmln
+IC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBs
+IC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpTd2l0Y2hlZCB0byBh
+IG5ldyBicmFuY2ggJ3Rlc3QnCjg1YWM0NTMgZ2xvYmFsOiBTcXVhc2ggJ3RoZSB0aGUnCjlkZDdk
+YTQgcW9tOiBGaXggZXJyb3IgbWVzc2FnZSBpbiBvYmplY3RfY2xhc3NfcHJvcGVydHlfYWRkKCkK
+MmI3NmI0NSBody9taXNjL2dybGliX2FoYl9hcGJfcG5wOiBGaXggOC1iaXQgYWNjZXNzZXMKYmRk
+Y2ZkOSBody9taXNjL2dybGliX2FoYl9hcGJfcG5wOiBBdm9pZCBjcmFzaCB3aGVuIHdyaXRpbmcg
+dG8gUG5QIHJlZ2lzdGVycwoKPT09IE9VVFBVVCBCRUdJTiA9PT0KMS80IENoZWNraW5nIGNvbW1p
+dCBiZGRjZmQ5YjZiMjQgKGh3L21pc2MvZ3JsaWJfYWhiX2FwYl9wbnA6IEF2b2lkIGNyYXNoIHdo
+ZW4gd3JpdGluZyB0byBQblAgcmVnaXN0ZXJzKQoyLzQgQ2hlY2tpbmcgY29tbWl0IDJiNzZiNDUx
+ZjliNyAoaHcvbWlzYy9ncmxpYl9haGJfYXBiX3BucDogRml4IDgtYml0IGFjY2Vzc2VzKQozLzQg
+Q2hlY2tpbmcgY29tbWl0IDlkZDdkYTQyMWJmYiAocW9tOiBGaXggZXJyb3IgbWVzc2FnZSBpbiBv
+YmplY3RfY2xhc3NfcHJvcGVydHlfYWRkKCkpCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0
+ZXJzCiMzMTogRklMRTogcW9tL29iamVjdC5jOjExMDk6CisgICAgICAgIGVycm9yX3NldGcoZXJy
+cCwgImF0dGVtcHQgdG8gYWRkIGR1cGxpY2F0ZSBwcm9wZXJ0eSAnJXMnIHRvIG9iamVjdCAodHlw
+ZSAnJXMnKSIsCgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojNDM6IEZJTEU6IHFv
+bS9vYmplY3QuYzoxMTQxOgorICAgICAgICBlcnJvcl9zZXRnKGVycnAsICJhdHRlbXB0IHRvIGFk
+ZCBkdXBsaWNhdGUgcHJvcGVydHkgJyVzJyB0byBjbGFzcyAodHlwZSAnJXMnKSIsCgp0b3RhbDog
+MCBlcnJvcnMsIDIgd2FybmluZ3MsIDIyIGxpbmVzIGNoZWNrZWQKClBhdGNoIDMvNCBoYXMgc3R5
+bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBm
+YWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BB
+VENIIGluIE1BSU5UQUlORVJTLgo0LzQgQ2hlY2tpbmcgY29tbWl0IDg1YWM0NTNkMTUyMCAoZ2xv
+YmFsOiBTcXVhc2ggJ3RoZSB0aGUnKQpFUlJPUjogZG8gbm90IHVzZSBDOTkgLy8gY29tbWVudHMK
+IzI2OiBGSUxFOiBkaXNhcy9saWJ2aXhsL3ZpeGwvaW52YWxzZXQuaDoxMDU6CisgIC8vIE5vdGUg
+dGhhdCB0aGlzIGRvZXMgbm90IG1lYW4gdGhlIGJhY2tpbmcgc3RvcmFnZSBpcyBlbXB0eTogaXQg
+Y2FuIHN0aWxsCgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDU2IGxpbmVzIGNoZWNrZWQK
+ClBhdGNoIDQvNCBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2Yg
+dGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50
+YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKPT09IE9VVFBVVCBFTkQgPT09
+CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBhdmFp
+bGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAxOTExMDUxNDQyNDcuMTAzMDEtMS1s
+YXVyZW50QHZpdmllci5ldS90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVt
+YWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5v
+cmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5j
+b20=
 
 
