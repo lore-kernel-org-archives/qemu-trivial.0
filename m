@@ -1,67 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iS2yi-0002RY-1c
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2019 12:50:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47180)
+	id 1iS315-0005wx-71
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2019 12:53:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47939)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iS2yd-0002Nb-0u
- for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 12:50:48 -0500
+ (envelope-from <no-reply@patchew.org>) id 1iS311-0005qV-AG
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 12:53:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iS2yb-0004Xx-V1
- for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 12:50:46 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:34039)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iS2yZ-0004Wm-Li; Tue, 05 Nov 2019 12:50:43 -0500
-Received: from localhost.localdomain ([78.238.229.36]) by
- mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1M42Ss-1iS2yG0Su0-0007FQ; Tue, 05 Nov 2019 18:50:24 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Fabien Chouteau <chouteau@adacore.com>, qemu-ppc@nongnu.org,
- qemu-trivial@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
- qemu-arm@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
- Laurent Vivier <laurent@vivier.eu>, Paul Durrant <paul@xen.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- Michael Tokarev <mjt@tls.msk.ru>,
- Claudio Fontana <claudio.fontana@huawei.com>,
- Anthony Perard <anthony.perard@citrix.com>,
- Peter Maydell <peter.maydell@linaro.org>, xen-devel@lists.xenproject.org,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Jiri Gaisler <jiri@gaisler.se>
-Subject: [PULL v2 2/3] hw/misc/grlib_ahb_apb_pnp: Fix 8-bit accesses
-Date: Tue,  5 Nov 2019 18:50:09 +0100
-Message-Id: <20191105175010.2591-3-laurent@vivier.eu>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191105175010.2591-1-laurent@vivier.eu>
-References: <20191105175010.2591-1-laurent@vivier.eu>
+ (envelope-from <no-reply@patchew.org>) id 1iS30z-0005Xu-1m
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 12:53:15 -0500
+Resent-Date: Tue, 05 Nov 2019 12:53:15 -0500
+Resent-Message-Id: <E1iS30z-0005Xu-1m@eggs.gnu.org>
+Received: from sender4-of-o58.zoho.com ([136.143.188.58]:21853)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1iS30v-0005UG-O3; Tue, 05 Nov 2019 12:53:09 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1572976333; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=W41LKsmhNK3Xgp4NAkMoYbigzyT4xnAW6PDiNaLDHoks/gUKlkFlXU3ouwTFRlfP8CSY3iQgC9l3e1XXLz1BNFIpNRzkYsrt0A1Ia5i3/nwkfeBw3wxoaekX+EU/ZjQ/k6qC/0Zc8/Eibqsvw2btKQCNdG8csARElgVxZaju1zA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1572976333;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=5vdIBxF8T/xgMrXsQHlZ0gLCxvaKH/eFWvu3KUlj7nM=; 
+ b=kTcuRDFtJXMo/UZHiV4AdwPPu+uT+CnhG0mXM/OyzwWdWdhNwqrfDZB2Aft30JMCMpYT3YVRHW7rVsFxiO/TPD29yYPZ2D1AEGQmrt5ghklwHNjmHH1xmwtSW9yWarw2K0JghYozGirYX8UcV5gKubHxySWLLJMdv32YyWrHO2U=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1572976332869468.6086744975937;
+ Tue, 5 Nov 2019 09:52:12 -0800 (PST)
+In-Reply-To: <20191105144247.10301-1-laurent@vivier.eu>
+Reply-To: <qemu-devel@nongnu.org>
+Subject: Re: [PULL 0/4] Trivial branch patches
+Message-ID: <157297633037.27285.18020124194406333059@37313f22b938>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:lZFxrSfyzft189ztgtj2zhDPSI/v8wne3TXsIYykJJGOhUsiUZI
- WUL5cdIywdu0OUa3r4YX6cB3Tht5LIMC0ClU0II1uDHDHXG37ReL8vF62QOrl1xOxWDZxAa
- yCqIAJHzVW28Cq2J7jJQs6dd+fOzaDuzfjzVCqTQsbJVnvlh+AledLIOc1Vel5LH8FUBnnh
- o47BZat4luIwytgGxrHcg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:av6w0M/wZvM=:rDhXnAD9A6cpkNh2e0TgfK
- J5zOnZTmo/W2/DrEV1TxsmjMZKnl4JwjBQ2mVcpEMorM95RpraeHljKk6t3tDPN9htva00ZS+
- n0IKmM/g54Fxgbudpy2rNfAWupAwq8AOCr38O1wobl8Bp/lRRRUuj1DZn0hrORfW1BiiE1gRu
- GthE7ZJHo2MLLrMrhXBnGO7DPuPRa+1vEbtQk9FBU6jVR3g1Bmt3QddQzGLkiUOsMnAKkXybK
- iv9ZHOq6yKrXbOPUdJNLZqKmNu5QB8SvFBiRLk53kKWXg5DL8P3PSyFE44kUyIDBbCa2s3Ohc
- f94YctBbcL9YU5QBlW6Nwu4fdldc8HR0zwl23GHM8taAuVWhUUst0bAcbky1izqYVhnwHJn1R
- eQrdjr9KZX5ac4OXFu1KZrTwkQpp0tfr/HI2TkwfmnngyN4UksepaIhwp2Yjb0O7A88PqEUco
- 4gDwDOA4U9bZNwEmwCgRAEhma1/YgZjpzKq8KwOH2+r85K5x7yNvLw9sSqzWLFA22rjhvchsv
- kDgAfgPtmB73k4lCOcLXEJpK0Wqgr/5KGZTohZmKSsuInPT/SYbnutSzOYKmnGtZQL5DBYf3a
- Ffz0lRXXmB1JvCyKrdlixwyOy5ZMKgh26Ca8J9olDZLuqEXYVP665ZS3UZpQ7giQkdwruVD1z
- VjZqrV5/+n8dISFBbupy5B/MNVImCkyCk1EuopkA7tj/QGjFM02nT+QEu1hmyrSQMJYIcyC1h
- v6AOWFzBqbucg6B8a7O4b488V2tPkikK+6Xj0FxRIchrNIh1TO3HeYrR72TWCmYvoiJsE3oVw
- MSVb44EyLNzkUgBzQ0nagEe+iBk+aTQLdvfM0Glo9oYSOyWcn6XykZEbWXbsOFtHKhG2fXxdO
- yV0/pVe89F9Tov60kVhYGU5ic5vtb/L80oLvPPMJo=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: laurent@vivier.eu
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, sstabellini@kernel.org,
+ berrange@redhat.com, ehabkost@redhat.com, pbonzini@redhat.com, paul@xen.org,
+ qemu-trivial@nongnu.org, claudio.fontana@huawei.com, crosa@redhat.com,
+ mjt@tls.msk.ru, laurent@vivier.eu, chouteau@adacore.com,
+ frederic.konrad@adacore.com, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ clg@kaod.org, marcandre.lureau@redhat.com, anthony.perard@citrix.com,
+ xen-devel@lists.xenproject.org, david@gibson.dropbear.id.au
+Date: Tue, 5 Nov 2019 09:52:12 -0800 (PST)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 217.72.192.75
+X-Received-From: 136.143.188.58
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,53 +63,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Nov 2019 17:50:48 -0000
+X-List-Received-Date: Tue, 05 Nov 2019 17:53:17 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
-
-The Plug & Play region of the AHB/APB bridge can be accessed
-by various word size, however the implementation is clearly
-restricted to 32-bit:
-
-  static uint64_t grlib_apb_pnp_read(void *opaque, hwaddr offset, unsigned size)
-  {
-      APBPnp *apb_pnp = GRLIB_APB_PNP(opaque);
-
-      return apb_pnp->regs[offset >> 2];
-  }
-
-Set the MemoryRegionOps::impl min/max fields to 32-bit, so
-memory.c::access_with_adjusted_size() can adjust when the
-access is not 32-bit.
-
-This is required to run RTEMS on leon3, the grlib scanning
-functions do byte accesses.
-
-Reported-by: Jiri Gaisler <jiri@gaisler.se>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: KONRAD Frederic <frederic.konrad@adacore.com>
-Message-Id: <20191025110114.27091-3-philmd@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/misc/grlib_ahb_apb_pnp.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/hw/misc/grlib_ahb_apb_pnp.c b/hw/misc/grlib_ahb_apb_pnp.c
-index f3c015d2c35f..e230e2536361 100644
---- a/hw/misc/grlib_ahb_apb_pnp.c
-+++ b/hw/misc/grlib_ahb_apb_pnp.c
-@@ -242,6 +242,10 @@ static const MemoryRegionOps grlib_apb_pnp_ops = {
-     .read       = grlib_apb_pnp_read,
-     .write      = grlib_apb_pnp_write,
-     .endianness = DEVICE_BIG_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
- };
- 
- static void grlib_apb_pnp_realize(DeviceState *dev, Error **errp)
--- 
-2.21.0
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTEwNTE0NDI0Ny4xMDMw
+MS0xLWxhdXJlbnRAdml2aWVyLmV1LwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUg
+c29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUgaW5m
+b3JtYXRpb246CgpTdWJqZWN0OiBbUFVMTCAwLzRdIFRyaXZpYWwgYnJhbmNoIHBhdGNoZXMKVHlw
+ZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMTkxMTA1MTQ0MjQ3LjEwMzAxLTEtbGF1cmVudEB2aXZp
+ZXIuZXUKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJz
+ZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5h
+bWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmln
+IC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBs
+IC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhj
+ZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0ClN3aXRjaGVkIHRvIGEgbmV3IGJy
+YW5jaCAndGVzdCcKMDEwMmM3OSBnbG9iYWw6IFNxdWFzaCAndGhlIHRoZScKOWM1ODNiMCBxb206
+IEZpeCBlcnJvciBtZXNzYWdlIGluIG9iamVjdF9jbGFzc19wcm9wZXJ0eV9hZGQoKQoyOTllZWZk
+IGh3L21pc2MvZ3JsaWJfYWhiX2FwYl9wbnA6IEZpeCA4LWJpdCBhY2Nlc3NlcwpjOTMxMjMxIGh3
+L21pc2MvZ3JsaWJfYWhiX2FwYl9wbnA6IEF2b2lkIGNyYXNoIHdoZW4gd3JpdGluZyB0byBQblAg
+cmVnaXN0ZXJzCgo9PT0gT1VUUFVUIEJFR0lOID09PQoxLzQgQ2hlY2tpbmcgY29tbWl0IGM5MzEy
+MzE4N2RmMiAoaHcvbWlzYy9ncmxpYl9haGJfYXBiX3BucDogQXZvaWQgY3Jhc2ggd2hlbiB3cml0
+aW5nIHRvIFBuUCByZWdpc3RlcnMpCjIvNCBDaGVja2luZyBjb21taXQgMjk5ZWVmZDM3NTIyICho
+dy9taXNjL2dybGliX2FoYl9hcGJfcG5wOiBGaXggOC1iaXQgYWNjZXNzZXMpCjMvNCBDaGVja2lu
+ZyBjb21taXQgOWM1ODNiMDRmZGIxIChxb206IEZpeCBlcnJvciBtZXNzYWdlIGluIG9iamVjdF9j
+bGFzc19wcm9wZXJ0eV9hZGQoKSkKV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzMx
+OiBGSUxFOiBxb20vb2JqZWN0LmM6MTEwOToKKyAgICAgICAgZXJyb3Jfc2V0ZyhlcnJwLCAiYXR0
+ZW1wdCB0byBhZGQgZHVwbGljYXRlIHByb3BlcnR5ICclcycgdG8gb2JqZWN0ICh0eXBlICclcycp
+IiwKCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiM0MzogRklMRTogcW9tL29iamVj
+dC5jOjExNDE6CisgICAgICAgIGVycm9yX3NldGcoZXJycCwgImF0dGVtcHQgdG8gYWRkIGR1cGxp
+Y2F0ZSBwcm9wZXJ0eSAnJXMnIHRvIGNsYXNzICh0eXBlICclcycpIiwKCnRvdGFsOiAwIGVycm9y
+cywgMiB3YXJuaW5ncywgMjIgbGluZXMgY2hlY2tlZAoKUGF0Y2ggMy80IGhhcyBzdHlsZSBwcm9i
+bGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBv
+c2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4g
+TUFJTlRBSU5FUlMuCjQvNCBDaGVja2luZyBjb21taXQgMDEwMmM3OWEzMDY4IChnbG9iYWw6IFNx
+dWFzaCAndGhlIHRoZScpCkVSUk9SOiBkbyBub3QgdXNlIEM5OSAvLyBjb21tZW50cwojMjY6IEZJ
+TEU6IGRpc2FzL2xpYnZpeGwvdml4bC9pbnZhbHNldC5oOjEwNToKKyAgLy8gTm90ZSB0aGF0IHRo
+aXMgZG9lcyBub3QgbWVhbiB0aGUgYmFja2luZyBzdG9yYWdlIGlzIGVtcHR5OiBpdCBjYW4gc3Rp
+bGwKCnRvdGFsOiAxIGVycm9ycywgMCB3YXJuaW5ncywgNTYgbGluZXMgY2hlY2tlZAoKUGF0Y2gg
+NC80IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBl
+cnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwg
+c2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3Qg
+Y29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBh
+dApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MTEwNTE0NDI0Ny4xMDMwMS0xLWxhdXJlbnRA
+dml2aWVyLmV1L3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2Vu
+ZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQ
+bGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 
 
