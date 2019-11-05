@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iS03M-0008RK-8P
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2019 09:43:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54632)
+	id 1iS03O-0008V6-CZ
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2019 09:43:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54736)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iS03F-0008Gw-Ar
- for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 09:43:26 -0500
+ (envelope-from <laurent@vivier.eu>) id 1iS03K-0008On-Pt
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 09:43:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iS03E-0002fe-8v
- for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 09:43:21 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:57135)
+ (envelope-from <laurent@vivier.eu>) id 1iS03J-0002iO-I3
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 09:43:26 -0500
+Received: from mout.kundenserver.de ([212.227.126.131]:48787)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iS03D-0002f7-Vy; Tue, 05 Nov 2019 09:43:20 -0500
+ id 1iS03B-0002dM-UL; Tue, 05 Nov 2019 09:43:18 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MqZE0-1i5upG2BIu-00mbPo; Tue, 05 Nov 2019 15:42:58 +0100
+ id 1MUD7D-1iJZpb3pFD-00RF8p; Tue, 05 Nov 2019 15:42:57 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
@@ -33,38 +33,38 @@ Cc: qemu-trivial@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
  Anthony Perard <anthony.perard@citrix.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Jiri Gaisler <jiri@gaisler.se>
-Subject: [PULL 2/4] hw/misc/grlib_ahb_apb_pnp: Fix 8-bit accesses
-Date: Tue,  5 Nov 2019 15:42:45 +0100
-Message-Id: <20191105144247.10301-3-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PULL 1/4] hw/misc/grlib_ahb_apb_pnp: Avoid crash when writing to PnP
+ registers
+Date: Tue,  5 Nov 2019 15:42:44 +0100
+Message-Id: <20191105144247.10301-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191105144247.10301-1-laurent@vivier.eu>
 References: <20191105144247.10301-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:L0D96drAblJ0e5CYodG0S9iuT59onHnJ0Slrv+hqH6rKd5o+myY
- mmZ4AB9u/hybpbbZ2Ui1BvYZaGmkHHRYBjFF//4qqaI/qpxjt4w1bMwDK3anqiXodn8epC6
- j+saVzYmrd4wPfoElBBOiTRuP4dIA/vJMIvF0Mv0Go4JTNym5GyH8fnWYgtYzA1H7fd69+J
- cVRaRWixqbsaw5ieGlf5g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:K08tChYLLIg=:38M25GKpRoC1OrLY/QzTVf
- UueeHNpRByJqajENf/AkFYd1n5DA6UZgyq0efhC0T2q0rlbcjrvJYCFp/IWpImifpMVamJqQO
- oL0heUITSvF3XbfNrx6W8AHVcV6mdls5eFR6fnfGyuRInk5Q+vL4AkEH9eW27qgs1w6kb2qO8
- MyuHTFWPQmFGMfmM1SF29ep8RMakYptJFnybUwcp2JH9PwEJoFuOfxFRbcBo607K3fRqsNltJ
- +f3SgwUN94AqAoBmoF5ZfJlOvZONGdRcc2sUjW16Dg5ewtKXqNYYEhxy4CUVvlygnv/jmVCwu
- l5ynhoADTlMtQiLyD6Yt3t5RXnvC5ZLHdZXLQrbSJFklUmwoloe2K+oauhYWwnEn051Fed/l4
- g1ezK1/d6FGpiPvcTaoPKSvO268khCULfcMQ11maybdp7kfn2cxy2WezOAE6XzlIgtWqacSwR
- 736/bwyNvNiJMOB4+L+T3PXT8BksGAWQHAT1X9+x1hWwDphfCuddY7Y/U1TyzHw6GjVsBAVL+
- hTQqCX4BuHidsJU5sfjs304RpJACYm5LWTQuUNEZTH72L4wcgLSe733/o9N5tG0aSY6hny6xW
- tTyk2Nxz3ubxIX0l6vrd9JUhAqnpW63QaotnJmb0D/FlDOPGa24akh3GsKUzzrsJqzObHFsoM
- 2uMBbsrAErbO1vaQniD2xUv9QzqhuvU2UOYhjvnefSS3GvwVazVLeZ+R2eMHxiWYK+cpE5zAe
- 87tuOBo1ejLYN3PRS9ZS9PTfF6v6Gmz0a9V9thYO4wWFvhW7BSUSwGWKC2eZiWvEj9vL5X4Sx
- zgON+iu1SdKsNHF/IBgjW3DSHLwL6qK65CsZBdIq0//NLe89vvlDH3D69k9SmTZB4f3bvpvB1
- oyrCOw7D2x1G4Km4z4PTVzH56hxX5qVzEsv2S8qBY=
+X-Provags-ID: V03:K1:Ml/MHDlWxXyppXpZMCGFBDj/O++YcL10kd1yqebCkUb1KJkFOVS
+ lxZqglzv7krRW55VEUF8rKzJJeH8WGkLaDCt/e81/sxi5CkxuEtyq7sM5ofLr5H6/zIalIB
+ iLnze1k1sKg2MMFCZZwcDgjjMvJ9BCMevYZop6WdlieYNOduUNE2tmhxm3TrqZFsuMHfiKq
+ XXMUNfnZM3rRTyEbEjLWA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wAwd8f1ozMU=:3tGAlFcrRzVUy4stv1h2Kj
+ DOfwVb62tvFhpMbcNeMQMmnYRRpXCrgHBKbpocMPQIIJfNhFSFXnqMpE2EytXFj11gHw36Iqs
+ 4ExOhLmy30jCgD1gvqhHkjsfLAgqFDKuG09mC9eZqdnD7uC6la3DdV4zxOxoXPGale+2VA9wW
+ cfFphRt1Y2Nh9sII63JhOb1G/zJrKdbandh6cZYyQhtcDHF6FSJGKYvGnWpQBT5ElDzzfpVRD
+ nxS4Y3Nz9QFLPT80E7iq1CjyLfrACRXGNYyl4k9ulT8ZIxYisvOPsi6PWGlqamPxvgAAoPEBR
+ 5Yi6RUK+zY4IFnoIpgKVktwk4Aa5EdP0Efdf1rbaGN9n7MnQCWVD88sRDqhZ7+lkV2dgZa08E
+ SEKOB68JmKVcow9nkvCHUHkwvgeIqoh672T2fank2pNtbIJfa9K73EnsPQXPV15gqLpQC1fzw
+ vzTZnQErBvGt7TVq8AFwXpAtdXXrjHh1I3mcBTNk0uk5AyUVPl7+qum29PwyA1CeOQkTRK2t2
+ nvmnxG3LC7G1O1bmtATDf/e5KB3qzrYE0RGWBy76AkZ2KIRBmuOIYrtdiO0TSh6nkWGoU9y85
+ Fsgt0Kv/ZGyJ3DInGx7rvKMdiQtHEB6rqOEutG0XOjcwdloG/X8tO/rg5u9LIPqBTVfDTOUEv
+ 1vaoiJnulMeMFsO2v7kUFJuPDfP09PBru2EumJdm29q73lGEvEJUebE0QFKTlM0UXL4wIwyoa
+ t71rYj8mpNKbWswgITuI0blS56FVzyCqugZhzS5N+TPYhmHXVtyBREjdGarv89AsNyXqxOI1H
+ TQQZlM2ZJejhydPM8QDb7WwvuRN28ANscaXT7gSUYbGrgAClqjAeFPpdxrtGS1p52PHhmEBlO
+ nU38rCnhbWAcbf3/vYaPi3rtE1FX7wE27Bd64jaq4=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.133
+X-Received-From: 212.227.126.131
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -76,52 +76,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Nov 2019 14:43:26 -0000
+X-List-Received-Date: Tue, 05 Nov 2019 14:43:29 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The Plug & Play region of the AHB/APB bridge can be accessed
-by various word size, however the implementation is clearly
-restricted to 32-bit:
+Guests can crash QEMU when writting to PnP registers:
 
-  static uint64_t grlib_apb_pnp_read(void *opaque, hwaddr offset, unsigned size)
-  {
-      APBPnp *apb_pnp = GRLIB_APB_PNP(opaque);
+  $ echo 'writeb 0x800ff042 69' | qemu-system-sparc -M leon3_generic -S -bios /etc/magic -qtest stdio
+  [I 1571938309.932255] OPENED
+  [R +0.063474] writeb 0x800ff042 69
+  Segmentation fault (core dumped)
 
-      return apb_pnp->regs[offset >> 2];
-  }
+  (gdb) bt
+  #0  0x0000000000000000 in  ()
+  #1  0x0000555f4bcdf0bc in memory_region_write_with_attrs_accessor (mr=0x555f4d7be8c0, addr=66, value=0x7fff07d00f08, size=1, shift=0, mask=255, attrs=...) at memory.c:503
+  #2  0x0000555f4bcdf185 in access_with_adjusted_size (addr=66, value=0x7fff07d00f08, size=1, access_size_min=1, access_size_max=4, access_fn=0x555f4bcdeff4 <memory_region_write_with_attrs_accessor>, mr=0x555f4d7be8c0, attrs=...) at memory.c:539
+  #3  0x0000555f4bce2243 in memory_region_dispatch_write (mr=0x555f4d7be8c0, addr=66, data=69, op=MO_8, attrs=...) at memory.c:1489
+  #4  0x0000555f4bc80b20 in flatview_write_continue (fv=0x555f4d92c400, addr=2148528194, attrs=..., buf=0x7fff07d01120 "E", len=1, addr1=66, l=1, mr=0x555f4d7be8c0) at exec.c:3161
+  #5  0x0000555f4bc80c65 in flatview_write (fv=0x555f4d92c400, addr=2148528194, attrs=..., buf=0x7fff07d01120 "E", len=1) at exec.c:3201
+  #6  0x0000555f4bc80fb0 in address_space_write (as=0x555f4d7aa460, addr=2148528194, attrs=..., buf=0x7fff07d01120 "E", len=1) at exec.c:3291
+  #7  0x0000555f4bc8101d in address_space_rw (as=0x555f4d7aa460, addr=2148528194, attrs=..., buf=0x7fff07d01120 "E", len=1, is_write=true) at exec.c:3301
+  #8  0x0000555f4bcdb388 in qtest_process_command (chr=0x555f4c2ed7e0 <qtest_chr>, words=0x555f4db0c5d0) at qtest.c:432
 
-Set the MemoryRegionOps::impl min/max fields to 32-bit, so
-memory.c::access_with_adjusted_size() can adjust when the
-access is not 32-bit.
+Instead of crashing, log the access as unimplemented.
 
-This is required to run RTEMS on leon3, the grlib scanning
-functions do byte accesses.
-
-Reported-by: Jiri Gaisler <jiri@gaisler.se>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Reviewed-by: KONRAD Frederic <frederic.konrad@adacore.com>
-Message-Id: <20191025110114.27091-3-philmd@redhat.com>
+Message-Id: <20191025110114.27091-2-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/misc/grlib_ahb_apb_pnp.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ hw/misc/grlib_ahb_apb_pnp.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/hw/misc/grlib_ahb_apb_pnp.c b/hw/misc/grlib_ahb_apb_pnp.c
-index f3c015d2c35f..e230e2536361 100644
+index 7338461694c9..f3c015d2c35f 100644
 --- a/hw/misc/grlib_ahb_apb_pnp.c
 +++ b/hw/misc/grlib_ahb_apb_pnp.c
-@@ -242,6 +242,10 @@ static const MemoryRegionOps grlib_apb_pnp_ops = {
+@@ -22,6 +22,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/log.h"
+ #include "hw/sysbus.h"
+ #include "hw/misc/grlib_ahb_apb_pnp.h"
+ 
+@@ -231,8 +232,15 @@ static uint64_t grlib_apb_pnp_read(void *opaque, hwaddr offset, unsigned size)
+     return apb_pnp->regs[offset >> 2];
+ }
+ 
++static void grlib_apb_pnp_write(void *opaque, hwaddr addr,
++                                uint64_t val, unsigned size)
++{
++    qemu_log_mask(LOG_UNIMP, "%s not implemented\n", __func__);
++}
++
+ static const MemoryRegionOps grlib_apb_pnp_ops = {
      .read       = grlib_apb_pnp_read,
-     .write      = grlib_apb_pnp_write,
++    .write      = grlib_apb_pnp_write,
      .endianness = DEVICE_BIG_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
  };
  
- static void grlib_apb_pnp_realize(DeviceState *dev, Error **errp)
 -- 
 2.21.0
 
