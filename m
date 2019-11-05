@@ -1,57 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iS315-0005wx-71
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2019 12:53:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47939)
+	id 1iS42Z-0000FX-BD
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2019 13:58:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33974)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1iS311-0005qV-AG
- for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 12:53:16 -0500
+ (envelope-from <dgilbert@redhat.com>) id 1iS42C-000096-UM
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 13:58:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1iS30z-0005Xu-1m
- for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 12:53:15 -0500
-Resent-Date: Tue, 05 Nov 2019 12:53:15 -0500
-Resent-Message-Id: <E1iS30z-0005Xu-1m@eggs.gnu.org>
-Received: from sender4-of-o58.zoho.com ([136.143.188.58]:21853)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1iS30v-0005UG-O3; Tue, 05 Nov 2019 12:53:09 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1572976333; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=W41LKsmhNK3Xgp4NAkMoYbigzyT4xnAW6PDiNaLDHoks/gUKlkFlXU3ouwTFRlfP8CSY3iQgC9l3e1XXLz1BNFIpNRzkYsrt0A1Ia5i3/nwkfeBw3wxoaekX+EU/ZjQ/k6qC/0Zc8/Eibqsvw2btKQCNdG8csARElgVxZaju1zA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1572976333;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=5vdIBxF8T/xgMrXsQHlZ0gLCxvaKH/eFWvu3KUlj7nM=; 
- b=kTcuRDFtJXMo/UZHiV4AdwPPu+uT+CnhG0mXM/OyzwWdWdhNwqrfDZB2Aft30JMCMpYT3YVRHW7rVsFxiO/TPD29yYPZ2D1AEGQmrt5ghklwHNjmHH1xmwtSW9yWarw2K0JghYozGirYX8UcV5gKubHxySWLLJMdv32YyWrHO2U=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1572976332869468.6086744975937;
- Tue, 5 Nov 2019 09:52:12 -0800 (PST)
-In-Reply-To: <20191105144247.10301-1-laurent@vivier.eu>
-Reply-To: <qemu-devel@nongnu.org>
-Subject: Re: [PULL 0/4] Trivial branch patches
-Message-ID: <157297633037.27285.18020124194406333059@37313f22b938>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: laurent@vivier.eu
+ (envelope-from <dgilbert@redhat.com>) id 1iS41l-0001u0-Go
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 13:58:31 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:46122
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1iS41l-0001tS-6Q
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 13:58:05 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1572980283;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=7GVqNJQn+sLBTmtj5fKdnJMPW+NBUpq5Wszc2IgCo54=;
+ b=OPyVDcUk7F8ozUwBtnrzCGJlS04k2n+OENMqhtAKmLeVTVLR6xcu97v+Y+O8t8KcjjLNW9
+ uK/rr/56D9dB0N3v35GvTZ9iBIRD30QcNtZ+D+53foHCvri57cCh6EbzlP+FzPK6yDn4XJ
+ JGnLj6O22kMXhnq8QLEtzChUo2pyqdY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-198-s0RUTdedNluJpZCank5jmg-1; Tue, 05 Nov 2019 13:58:00 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B6E0F1005500;
+ Tue,  5 Nov 2019 18:57:58 +0000 (UTC)
+Received: from work-vm (ovpn-117-86.ams2.redhat.com [10.36.117.86])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D1F775D9CD;
+ Tue,  5 Nov 2019 18:57:49 +0000 (UTC)
+Date: Tue, 5 Nov 2019 18:57:47 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, sstabellini@kernel.org,
- berrange@redhat.com, ehabkost@redhat.com, pbonzini@redhat.com, paul@xen.org,
- qemu-trivial@nongnu.org, claudio.fontana@huawei.com, crosa@redhat.com,
- mjt@tls.msk.ru, laurent@vivier.eu, chouteau@adacore.com,
- frederic.konrad@adacore.com, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- clg@kaod.org, marcandre.lureau@redhat.com, anthony.perard@citrix.com,
- xen-devel@lists.xenproject.org, david@gibson.dropbear.id.au
-Date: Tue, 5 Nov 2019 09:52:12 -0800 (PST)
-X-ZohoMailClient: External
+ qemu-trivial@nongnu.org, mjt@tls.msk.ru, laurent@vivier.eu,
+ marcandre.lureau@redhat.com, david@gibson.dropbear.id.au
+Subject: Re: [PATCH] global: Squash 'the the'
+Message-ID: <20191105185747.GE2781@work-vm>
+References: <20191104185202.102504-1-dgilbert@redhat.com>
+ <157290359988.27285.16497763825853147226@37313f22b938>
+ <87ftj2kabe.fsf@linaro.org>
+MIME-Version: 1.0
+In-Reply-To: <87ftj2kabe.fsf@linaro.org>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: s0RUTdedNluJpZCank5jmg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 136.143.188.58
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -63,49 +69,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Nov 2019 17:53:17 -0000
+X-List-Received-Date: Tue, 05 Nov 2019 18:58:53 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTEwNTE0NDI0Ny4xMDMw
-MS0xLWxhdXJlbnRAdml2aWVyLmV1LwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUg
-c29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUgaW5m
-b3JtYXRpb246CgpTdWJqZWN0OiBbUFVMTCAwLzRdIFRyaXZpYWwgYnJhbmNoIHBhdGNoZXMKVHlw
-ZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMTkxMTA1MTQ0MjQ3LjEwMzAxLTEtbGF1cmVudEB2aXZp
-ZXIuZXUKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJz
-ZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5h
-bWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmln
-IC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBs
-IC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhj
-ZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0ClN3aXRjaGVkIHRvIGEgbmV3IGJy
-YW5jaCAndGVzdCcKMDEwMmM3OSBnbG9iYWw6IFNxdWFzaCAndGhlIHRoZScKOWM1ODNiMCBxb206
-IEZpeCBlcnJvciBtZXNzYWdlIGluIG9iamVjdF9jbGFzc19wcm9wZXJ0eV9hZGQoKQoyOTllZWZk
-IGh3L21pc2MvZ3JsaWJfYWhiX2FwYl9wbnA6IEZpeCA4LWJpdCBhY2Nlc3NlcwpjOTMxMjMxIGh3
-L21pc2MvZ3JsaWJfYWhiX2FwYl9wbnA6IEF2b2lkIGNyYXNoIHdoZW4gd3JpdGluZyB0byBQblAg
-cmVnaXN0ZXJzCgo9PT0gT1VUUFVUIEJFR0lOID09PQoxLzQgQ2hlY2tpbmcgY29tbWl0IGM5MzEy
-MzE4N2RmMiAoaHcvbWlzYy9ncmxpYl9haGJfYXBiX3BucDogQXZvaWQgY3Jhc2ggd2hlbiB3cml0
-aW5nIHRvIFBuUCByZWdpc3RlcnMpCjIvNCBDaGVja2luZyBjb21taXQgMjk5ZWVmZDM3NTIyICho
-dy9taXNjL2dybGliX2FoYl9hcGJfcG5wOiBGaXggOC1iaXQgYWNjZXNzZXMpCjMvNCBDaGVja2lu
-ZyBjb21taXQgOWM1ODNiMDRmZGIxIChxb206IEZpeCBlcnJvciBtZXNzYWdlIGluIG9iamVjdF9j
-bGFzc19wcm9wZXJ0eV9hZGQoKSkKV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzMx
-OiBGSUxFOiBxb20vb2JqZWN0LmM6MTEwOToKKyAgICAgICAgZXJyb3Jfc2V0ZyhlcnJwLCAiYXR0
-ZW1wdCB0byBhZGQgZHVwbGljYXRlIHByb3BlcnR5ICclcycgdG8gb2JqZWN0ICh0eXBlICclcycp
-IiwKCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFyYWN0ZXJzCiM0MzogRklMRTogcW9tL29iamVj
-dC5jOjExNDE6CisgICAgICAgIGVycm9yX3NldGcoZXJycCwgImF0dGVtcHQgdG8gYWRkIGR1cGxp
-Y2F0ZSBwcm9wZXJ0eSAnJXMnIHRvIGNsYXNzICh0eXBlICclcycpIiwKCnRvdGFsOiAwIGVycm9y
-cywgMiB3YXJuaW5ncywgMjIgbGluZXMgY2hlY2tlZAoKUGF0Y2ggMy80IGhhcyBzdHlsZSBwcm9i
-bGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBv
-c2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4g
-TUFJTlRBSU5FUlMuCjQvNCBDaGVja2luZyBjb21taXQgMDEwMmM3OWEzMDY4IChnbG9iYWw6IFNx
-dWFzaCAndGhlIHRoZScpCkVSUk9SOiBkbyBub3QgdXNlIEM5OSAvLyBjb21tZW50cwojMjY6IEZJ
-TEU6IGRpc2FzL2xpYnZpeGwvdml4bC9pbnZhbHNldC5oOjEwNToKKyAgLy8gTm90ZSB0aGF0IHRo
-aXMgZG9lcyBub3QgbWVhbiB0aGUgYmFja2luZyBzdG9yYWdlIGlzIGVtcHR5OiBpdCBjYW4gc3Rp
-bGwKCnRvdGFsOiAxIGVycm9ycywgMCB3YXJuaW5ncywgNTYgbGluZXMgY2hlY2tlZAoKUGF0Y2gg
-NC80IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBl
-cnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwg
-c2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3Qg
-Y29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBh
-dApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MTEwNTE0NDI0Ny4xMDMwMS0xLWxhdXJlbnRA
-dml2aWVyLmV1L3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2Vu
-ZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQ
-bGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+* Alex Benn=E9e (alex.bennee@linaro.org) wrote:
+>=20
+> no-reply@patchew.org writes:
+>=20
+> > Patchew URL: https://patchew.org/QEMU/20191104185202.102504-1-dgilbert@=
+redhat.com/
+> >
+> >
+> >
+> > Hi,
+> >
+> > This series failed the docker-quick@centos7 build test. Please find the=
+ testing commands and
+> > their output below. If you have Docker installed, you can probably repr=
+oduce it
+> > locally.
+> >
+> > =3D=3D=3D TEST SCRIPT BEGIN =3D=3D=3D
+> > #!/bin/bash
+> > make docker-image-centos7 V=3D1 NETWORK=3D1
+> > time make docker-test-quick@centos7 SHOW_ENV=3D1 J=3D14 NETWORK=3D1
+> > =3D=3D=3D TEST SCRIPT END =3D=3D=3D
+> >
+> >   TEST    iotest-qcow2: 009
+> >   TEST    iotest-qcow2: 010
+> > **
+> > ERROR:/tmp/qemu-test/src/tests/migration-test.c:903:wait_for_migration_=
+fail: assertion failed: (!strcmp(status, "setup") || !strcmp(status, "faile=
+d") || (allow_active && !strcmp(status, "active")))
+> > ERROR - Bail out! ERROR:/tmp/qemu-test/src/tests/migration-test.c:903:w=
+ait_for_migration_fail: assertion failed: (!strcmp(status, "setup") || !str=
+cmp(status, "failed") || (allow_active && !strcmp(status, "active")))
+> > make: *** [check-qtest-aarch64] Error 1
+> > make: *** Waiting for unfinished jobs....
+>=20
+> That's one I've been seeing intermittently on Travis since the
+> softfreeze started. It was masked by the other regressions which are now
+> fixed.
+
+If anyone hits this I'd be greatful for a backtrace and/or the value of
+'status' at the point it fails.
+
+Dave
+
+>=20
+> >   TEST    check-unit: tests/test-bdrv-drain
+> >   TEST    iotest-qcow2: 011
+> > ---
+> >     raise CalledProcessError(retcode, cmd)
+> > subprocess.CalledProcessError: Command '['sudo', '-n', 'docker', 'run',=
+ '--label', 'com.qemu.instance.uuid=3Dacf3f0f780e741e6a5c367dda157d023', '-=
+u', '1003', '--security-opt', 'seccomp=3Dunconfined', '--rm', '-e', 'TARGET=
+_LIST=3D', '-e', 'EXTRA_CONFIGURE_OPTS=3D', '-e', 'V=3D', '-e', 'J=3D14', '=
+-e', 'DEBUG=3D', '-e', 'SHOW_ENV=3D1', '-e', 'CCACHE_DIR=3D/var/tmp/ccache'=
+, '-v', '/home/patchew2/.cache/qemu-docker-ccache:/var/tmp/ccache:z', '-v',=
+ '/var/tmp/patchew-tester-tmp-_ad8j8yg/src/docker-src.2019-11-04-16.29.40.7=
+445:/var/tmp/qemu:z,ro', 'qemu:centos7', '/var/tmp/qemu/run', 'test-quick']=
+' returned non-zero exit status 2.
+> > filter=3D--filter=3Dlabel=3Dcom.qemu.instance.uuid=3Dacf3f0f780e741e6a5=
+c367dda157d023
+> > make[1]: *** [docker-run] Error 1
+> > make[1]: Leaving directory `/var/tmp/patchew-tester-tmp-_ad8j8yg/src'
+> > make: *** [docker-run-test-quick@centos7] Error 2
+> >
+> > real    10m19.416s
+> > user    0m7.957s
+> >
+> >
+> > The full log is available at
+> > http://patchew.org/logs/20191104185202.102504-1-dgilbert@redhat.com/tes=
+ting.docker-quick@centos7/?type=3Dmessage.
+> > ---
+> > Email generated automatically by Patchew [https://patchew.org/].
+> > Please send your feedback to patchew-devel@redhat.com
+>=20
+>=20
+> --
+> Alex Benn=E9e
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
 
