@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iS03S-0000AX-TY
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2019 09:43:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54845)
+	id 1iS03V-0000DH-90
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Nov 2019 09:43:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54890)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iS03P-00004z-5a
- for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 09:43:32 -0500
+ (envelope-from <laurent@vivier.eu>) id 1iS03R-000088-06
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 09:43:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iS03N-0002kl-GN
- for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 09:43:31 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:45885)
+ (envelope-from <laurent@vivier.eu>) id 1iS03P-0002mO-TI
+ for qemu-trivial@nongnu.org; Tue, 05 Nov 2019 09:43:32 -0500
+Received: from mout.kundenserver.de ([212.227.126.135]:55037)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iS03E-0002fB-3X; Tue, 05 Nov 2019 09:43:20 -0500
+ id 1iS03F-0002fa-0J; Tue, 05 Nov 2019 09:43:21 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MjPYI-1i4EoB2dju-00kyqs; Tue, 05 Nov 2019 15:43:01 +0100
+ id 1MNOZO-1iHcpa0A94-00OnFO; Tue, 05 Nov 2019 15:43:00 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
@@ -32,40 +32,36 @@ Cc: qemu-trivial@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
  Claudio Fontana <claudio.fontana@huawei.com>,
  Anthony Perard <anthony.perard@citrix.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PULL 4/4] global: Squash 'the the'
-Date: Tue,  5 Nov 2019 15:42:47 +0100
-Message-Id: <20191105144247.10301-5-laurent@vivier.eu>
+ Peter Maydell <peter.maydell@linaro.org>, Greg Kurz <groug@kaod.org>
+Subject: [PULL 3/4] qom: Fix error message in object_class_property_add()
+Date: Tue,  5 Nov 2019 15:42:46 +0100
+Message-Id: <20191105144247.10301-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191105144247.10301-1-laurent@vivier.eu>
 References: <20191105144247.10301-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:JNoxt4H34KkBSPuWmF9GErgKUZwyQv3Mxe+T2CTt6aHlA2A5yRR
- 3E+liXgMDMhesz7bdii/u3mcbwIwTGlzMxclNKuIeSI+Ti/9qyNoUwv7wioMYkVOEoFcOfw
- V50zys+VtgQCtYTjEhZhAIZ9bXG+lxXncNV5qyt11sWNjC7i9v/ePmItrO3v0a+8tgwzJOx
- A/7AjMdEAcs+vG7ryklHA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Xfx0CyW1lWU=:dIquTygg+lDDE2ngKnWlqC
- CixfxkPGwz3v9iDyscyMwcEo5z/peQAFvuaEJsEIR8T5tLoq3FlR/sWqnncXn0lBmBYnCyM4K
- 5mc/JK4O7wNXh6A5T6Ko53e2vHiaSdeHhnOXFDs4zgYRdKd14Yq6Mr8NzlwPpFVlNwaHXosnF
- dSqkL6LPusb9GlFrqyOlcOEQtPIp75XDTTaFy4Vhl7oTsjNgxYDTFLhgrGUhJK6nkQqQj0S4P
- 6lzCHZOKM+8Zm9niyqL335Xbc+gRgtZ2NIycOxEs/3icCrOImAShbM799FuMp9hqUSaijj4lU
- k9iF4sCpPDQFWOJk6tWlz/qJVvfjAvR+cnXW5HrcD6+e88GM8+yMI3ADdeb3DmEnS+gcfuxTG
- TGj5EHYFpAleIMrOoMDeIrG3QuIXWtiq/7KQPrn6Z+e5H2CTQkU3R2yaSuaYbY/bAKqv/+cof
- BW2tzRhvFu5k7vD9BS/JuTC+PtFFg1e6/nbiRywH+9LwEsLYvICWJCFqTyYDkVVNa35v7b3hD
- WakILpLSVOYOt3Usa/QaVv4TqwWiJi6AGdFBMMDVd+HKAtHiNDflmaFRUUgn16K4g0Bc9n88v
- pr+5D+o3QTr8+0/PctrR6mkR3EsoTPNsZModvCRfWAU3cAEqDWfExnb1+f3WPSn6UCDiX67ny
- 5wt/Fq4yMMYLYvdxKCpLm9qSJrYWjv3l214xEuH/jCHE0xcJngoBIJ8xmsI+zUSAUUTN/Wgno
- brVGdTH1x19OyRGq+1iH2AHsQzsXSdG6caSBdHd/R3icCEpvl5OLXThpCKsG06X00NJtWFgGQ
- crSP4WXP6VxJW+/e+59I+bxgVeorXM4FJRa8L95yVaCFVUHnb0IL8p0p4KeDuOoQivHG/1bRl
- dTGRrI+pqpnXTYf+kdEXsuPFJWTffENDL14Tpm1aA=
+X-Provags-ID: V03:K1:6lLJMzjHAvmf+zbwEIjFaYmgyD4Xp9wj/yXBg2phAoLtjGTLNyf
+ jFjRccWeRNCD3ubmrfEp6pKPVm7zFgjB+CKCqYNlLfEM0oSrYgQF1m5aP+VPUibYsU/asll
+ l0BTqu8MMLy2rC5IlFC/P74gFDbdiPqYjDS81gLzgE669CpGIkKZX6QpwL+i+h9nd3ihAHs
+ k0aU8H/oBeIugwumgO8KA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:9IzBdaTOrfc=:WVe7Hft7P5ufdiP75OVziB
+ x8KctqAt8Cv13LcM75gj++4dutEn1v6LhQCSchEOYg+3tcCUGhIt50OpmFgITwSRxocBrT6e1
+ bLP2HAWKwgcU66M482GnlsGwKAOwQSJubLVIpHxdSfMoOFUbTgySaV4aNsT8/NXQ44Ekpb6dj
+ fkHmWUkptVIFOgHWCV8k7MOqOuGhzS4yhquR6JINooEiJtgAdBX7i7cYnis4JxR90Rq7mGqcm
+ r8TB5sXsaFdr2oMLgWl23Fv+1rChP4I+6k371AwGaZIom+FcxtKUVlK9SnhPQErgGNMr0eaKv
+ exQ23WnT7L0Q80b1ybigTikE0TmleJRNc/kVNs/6G0L9AQ6yIZpFpWoDb8rBApCbyt4ShbJPU
+ ANLd4+KPQn2ALCD9oXPCD7JYQEAmtSclO/2X9fYeMaRedVAseex7WifatctvkBWGZ1NbpXfpD
+ VJAmA+VGKVzMy1hC7r8S19oX6SnbiFpS6KrzdL+UBRPD6cYUfU1TMWr53tI+RSeydqA6CF7d+
+ cI0ZBSSQ+ydwV0IgBhHd90uy2gMyoxuwEn2wacAXtC6zUy/R8Hdu1de7EpV6skhW6Dzb+TXyq
+ nHnuwiwgIrNcSkeEn44cN7ThC6TWlXbVEo2lK+e/FtwcX2dLjRb9+7BAMOFpVcc1jnv03IeI6
+ Y2l5mm0yZ489zSr+dbjUHxYaHF2spJzvD7vxmkeDD3V//U+togeiqoOm5AXdQJAcBcH1zAy3D
+ b6tewJkju/xecXIYUa9kGmGwLWBWI1IMTK2wQ6W8+NQpz2/P78nHKQuxG6cQwqQI/rPdhAViP
+ QWZcUcoFU7WV3kHIckvdm551ETQMMONk8tpB6dkM4yh7dSXhZjSapaolihSSiV7SlsFh/jcva
+ rfBzTogkwOQAHn9mOXYA==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.133
+X-Received-From: 212.227.126.135
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -77,119 +73,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Nov 2019 14:43:33 -0000
+X-List-Received-Date: Tue, 05 Nov 2019 14:43:36 -0000
 
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+From: Greg Kurz <groug@kaod.org>
 
-'the' has a tendency to double up; squash them back down.
+The error message in object_class_property_add() was copied from
+object_property_add() in commit 16bf7f522a2ff. Clarify that it is
+about a class, not an object.
 
-Signed-off-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+While here, have the format string in both functions to fit in a
+single line for better grep-ability, despite the checkpatch warning.
+
+Signed-off-by: Greg Kurz <groug@kaod.org>
 Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20191104185202.102504-1-dgilbert@redhat.com>
+Message-Id: <157287383591.234942.311840593519058490.stgit@bahia.tlslab.ibm.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- disas/libvixl/vixl/invalset.h       | 2 +-
- docs/interop/pr-helper.rst          | 2 +-
- docs/specs/ppc-spapr-hotplug.txt    | 2 +-
- docs/specs/ppc-xive.rst             | 2 +-
- docs/specs/tpm.txt                  | 2 +-
- include/hw/xen/interface/io/blkif.h | 2 +-
- scripts/dump-guest-memory.py        | 2 +-
- 7 files changed, 7 insertions(+), 7 deletions(-)
+ qom/object.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/disas/libvixl/vixl/invalset.h b/disas/libvixl/vixl/invalset.h
-index ffdc0237b47c..ef5e49d6feb2 100644
---- a/disas/libvixl/vixl/invalset.h
-+++ b/disas/libvixl/vixl/invalset.h
-@@ -102,7 +102,7 @@ template<TEMPLATE_INVALSET_P_DECL> class InvalSet {
-   size_t size() const;
+diff --git a/qom/object.c b/qom/object.c
+index 6fa9c619fac4..d51b57fba11e 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -1106,9 +1106,8 @@ object_property_add(Object *obj, const char *name, const char *type,
+     }
  
-   // Returns true if no elements are stored in the set.
--  // Note that this does not mean the the backing storage is empty: it can still
-+  // Note that this does not mean the backing storage is empty: it can still
-   // contain invalid elements.
-   bool empty() const;
+     if (object_property_find(obj, name, NULL) != NULL) {
+-        error_setg(errp, "attempt to add duplicate property '%s'"
+-                   " to object (type '%s')", name,
+-                   object_get_typename(obj));
++        error_setg(errp, "attempt to add duplicate property '%s' to object (type '%s')",
++                   name, object_get_typename(obj));
+         return NULL;
+     }
  
-diff --git a/docs/interop/pr-helper.rst b/docs/interop/pr-helper.rst
-index 9f76d5bcf98f..e926f0a6c9cb 100644
---- a/docs/interop/pr-helper.rst
-+++ b/docs/interop/pr-helper.rst
-@@ -10,7 +10,7 @@ can delegate implementation of persistent reservations to an external
- restricting access to block devices to specific initiators in a shared
- storage setup.
+@@ -1139,9 +1138,8 @@ object_class_property_add(ObjectClass *klass,
+     ObjectProperty *prop;
  
--For a more detailed reference please refer the the SCSI Primary
-+For a more detailed reference please refer to the SCSI Primary
- Commands standard, specifically the section on Reservations and the
- "PERSISTENT RESERVE IN" and "PERSISTENT RESERVE OUT" commands.
+     if (object_class_property_find(klass, name, NULL) != NULL) {
+-        error_setg(errp, "attempt to add duplicate property '%s'"
+-                   " to object (type '%s')", name,
+-                   object_class_get_name(klass));
++        error_setg(errp, "attempt to add duplicate property '%s' to class (type '%s')",
++                   name, object_class_get_name(klass));
+         return NULL;
+     }
  
-diff --git a/docs/specs/ppc-spapr-hotplug.txt b/docs/specs/ppc-spapr-hotplug.txt
-index cc7833108e12..859d52cce6c8 100644
---- a/docs/specs/ppc-spapr-hotplug.txt
-+++ b/docs/specs/ppc-spapr-hotplug.txt
-@@ -385,7 +385,7 @@ Each LMB list entry consists of the following elements:
-   is used to retrieve the right associativity list to be used for this
-   LMB.
- - A 32bit flags word. The bit at bit position 0x00000008 defines whether
--  the LMB is assigned to the the partition as of boot time.
-+  the LMB is assigned to the partition as of boot time.
- 
- ibm,dynamic-memory-v2
- 
-diff --git a/docs/specs/ppc-xive.rst b/docs/specs/ppc-xive.rst
-index 148d57eb6ab2..83d43f658b90 100644
---- a/docs/specs/ppc-xive.rst
-+++ b/docs/specs/ppc-xive.rst
-@@ -163,7 +163,7 @@ Interrupt Priority Register (PIPR) is also updated using the IPB. This
- register represent the priority of the most favored pending
- notification.
- 
--The PIPR is then compared to the the Current Processor Priority
-+The PIPR is then compared to the Current Processor Priority
- Register (CPPR). If it is more favored (numerically less than), the
- CPU interrupt line is raised and the EO bit of the Notification Source
- Register (NSR) is updated to notify the presence of an exception for
-diff --git a/docs/specs/tpm.txt b/docs/specs/tpm.txt
-index 5d8c26b1adba..9c8cca042da8 100644
---- a/docs/specs/tpm.txt
-+++ b/docs/specs/tpm.txt
-@@ -89,7 +89,7 @@ TPM upon reboot. The PPI specification defines the operation requests and the
- actions the firmware has to take. The system administrator passes the operation
- request number to the firmware through an ACPI interface which writes this
- number to a memory location that the firmware knows. Upon reboot, the firmware
--finds the number and sends commands to the the TPM. The firmware writes the TPM
-+finds the number and sends commands to the TPM. The firmware writes the TPM
- result code and the operation request number to a memory location that ACPI can
- read from and pass the result on to the administrator.
- 
-diff --git a/include/hw/xen/interface/io/blkif.h b/include/hw/xen/interface/io/blkif.h
-index 8b1be50ce81e..d07fa1e07822 100644
---- a/include/hw/xen/interface/io/blkif.h
-+++ b/include/hw/xen/interface/io/blkif.h
-@@ -341,7 +341,7 @@
-  *      access (even when it should be read-only). If the frontend hits the
-  *      maximum number of allowed persistently mapped grants, it can fallback
-  *      to non persistent mode. This will cause a performance degradation,
-- *      since the the backend driver will still try to map those grants
-+ *      since the backend driver will still try to map those grants
-  *      persistently. Since the persistent grants protocol is compatible with
-  *      the previous protocol, a frontend driver can choose to work in
-  *      persistent mode even when the backend doesn't support it.
-diff --git a/scripts/dump-guest-memory.py b/scripts/dump-guest-memory.py
-index 2c587cbefc57..9371e4581308 100644
---- a/scripts/dump-guest-memory.py
-+++ b/scripts/dump-guest-memory.py
-@@ -170,7 +170,7 @@ class ELF(object):
-         self.ehdr.e_phnum += 1
- 
-     def to_file(self, elf_file):
--        """Writes all ELF structures to the the passed file.
-+        """Writes all ELF structures to the passed file.
- 
-         Structure:
-         Ehdr
 -- 
 2.21.0
 
