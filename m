@@ -1,51 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iSGMM-0007SP-D8
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Nov 2019 03:08:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38411)
+	id 1iSKi5-0001gs-9T
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Nov 2019 07:46:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60649)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groug@kaod.org>) id 1iSGMJ-0007Pc-Nz
- for qemu-trivial@nongnu.org; Wed, 06 Nov 2019 03:08:09 -0500
+ (envelope-from <groug@kaod.org>) id 1iSKi3-0001fY-5I
+ for qemu-trivial@nongnu.org; Wed, 06 Nov 2019 07:46:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groug@kaod.org>) id 1iSGMI-0007Iu-EP
- for qemu-trivial@nongnu.org; Wed, 06 Nov 2019 03:08:07 -0500
-Received: from 3.mo5.mail-out.ovh.net ([46.105.40.108]:35012)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <groug@kaod.org>) id 1iSGMI-0007Cv-8W
- for qemu-trivial@nongnu.org; Wed, 06 Nov 2019 03:08:06 -0500
-Received: from player729.ha.ovh.net (unknown [10.108.57.76])
- by mo5.mail-out.ovh.net (Postfix) with ESMTP id 09ED62588F9
- for <qemu-trivial@nongnu.org>; Wed,  6 Nov 2019 09:07:56 +0100 (CET)
-Received: from kaod.org (lns-bzn-46-82-253-208-248.adsl.proxad.net
- [82.253.208.248]) (Authenticated sender: groug@kaod.org)
- by player729.ha.ovh.net (Postfix) with ESMTPSA id 77D99BF352FA;
- Wed,  6 Nov 2019 08:07:30 +0000 (UTC)
-Date: Wed, 6 Nov 2019 09:07:28 +0100
+ (envelope-from <groug@kaod.org>) id 1iSKi1-00060t-RN
+ for qemu-trivial@nongnu.org; Wed, 06 Nov 2019 07:46:50 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:52558
+ helo=mx0a-001b2d01.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <groug@kaod.org>) id 1iSKi1-000606-MU
+ for qemu-trivial@nongnu.org; Wed, 06 Nov 2019 07:46:49 -0500
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ xA6CggtR130081
+ for <qemu-trivial@nongnu.org>; Wed, 6 Nov 2019 07:46:47 -0500
+Received: from e06smtp03.uk.ibm.com (e06smtp03.uk.ibm.com [195.75.94.99])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 2w3xab8fdx-1
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <qemu-trivial@nongnu.org>; Wed, 06 Nov 2019 07:46:47 -0500
+Received: from localhost
+ by e06smtp03.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ Violators will be prosecuted
+ for <qemu-trivial@nongnu.org> from <groug@kaod.org>;
+ Wed, 6 Nov 2019 12:46:45 -0000
+Received: from b06avi18878370.portsmouth.uk.ibm.com (9.149.26.194)
+ by e06smtp03.uk.ibm.com (192.168.101.133) with IBM ESMTP SMTP Gateway:
+ Authorized Use Only! Violators will be prosecuted; 
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+ Wed, 6 Nov 2019 12:46:42 -0000
+Received: from d06av24.portsmouth.uk.ibm.com (d06av24.portsmouth.uk.ibm.com
+ [9.149.105.60])
+ by b06avi18878370.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
+ id xA6CkflV27459934
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 6 Nov 2019 12:46:41 GMT
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D2AD742059;
+ Wed,  6 Nov 2019 12:46:40 +0000 (GMT)
+Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id A0FAA42068;
+ Wed,  6 Nov 2019 12:46:40 +0000 (GMT)
+Received: from bahia.lan (unknown [9.145.181.93])
+ by d06av24.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Wed,  6 Nov 2019 12:46:40 +0000 (GMT)
+Subject: [PATCH] numa: Add missing \n to error message
 From: Greg Kurz <groug@kaod.org>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-devel@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- peter.maydell@linaro.org, sstabellini@kernel.org, berrange@redhat.com,
- ehabkost@redhat.com, pbonzini@redhat.com, paul@xen.org,
- qemu-trivial@nongnu.org, claudio.fontana@huawei.com, crosa@redhat.com,
- mjt@tls.msk.ru, chouteau@adacore.com, frederic.konrad@adacore.com,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, clg@kaod.org,
- marcandre.lureau@redhat.com, anthony.perard@citrix.com,
- xen-devel@lists.xenproject.org, david@gibson.dropbear.id.au
-Subject: Re: [PULL 0/4] Trivial branch patches
-Message-ID: <20191106090728.0f758e78@bahia.lan>
-In-Reply-To: <41caef0b-3db3-3fcf-a0b4-329e8e88ff0f@vivier.eu>
-References: <157296887817.27285.13935693519835086344@37313f22b938>
- <41caef0b-3db3-3fcf-a0b4-329e8e88ff0f@vivier.eu>
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+To: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Marcel Apfelbaum <marcel@redhat.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Date: Wed, 06 Nov 2019 13:46:40 +0100
+User-Agent: StGit/unknown-version
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Ovh-Tracer-Id: 9177210144560028120
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudduiedgudduiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjqdffgfeufgfipdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvuffkjghfofggtgfgsehtqhertdertdejnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucffohhmrghinhepphgrthgthhgvfidrohhrghenucfkpheptddrtddrtddrtddpkedvrddvheefrddvtdekrddvgeeknecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejvdelrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomhepghhrohhugheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdhtrhhivhhirghlsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedt
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 46.105.40.108
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+x-cbid: 19110612-0012-0000-0000-0000036136BD
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 19110612-0013-0000-0000-0000219C93AB
+Message-Id: <157304440026.351774.14607704217028190097.stgit@bahia.lan>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-11-06_03:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1034 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1908290000 definitions=main-1911060125
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.158.5
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -57,106 +82,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Nov 2019 08:08:09 -0000
+X-List-Received-Date: Wed, 06 Nov 2019 12:46:52 -0000
 
-On Tue, 5 Nov 2019 16:56:11 +0100
-Laurent Vivier <laurent@vivier.eu> wrote:
+If memory allocation fails when using -mem-path, QEMU is supposed to print
+out a message to indicate that fallback to anonymous RAM is deprecated. This
+is done with error_printf() which does output buffering. As a consequence,
+the message is only printed at the next flush, eg. when quiting QEMU, and
+it also lacks a trailing newline:
 
-> Greg, Dave,
->=20
-> could you fix that?
->=20
-> Thanks,
-> Laurent
->=20
-> Le 05/11/2019 =C3=A0 16:48, no-reply@patchew.org a =C3=A9crit=C2=A0:
-> > Patchew URL: https://patchew.org/QEMU/20191105144247.10301-1-laurent@vi=
-vier.eu/
-> >=20
-> >=20
-> >=20
-> > Hi,
-> >=20
-> > This series seems to have some coding style problems. See output below =
-for
-> > more information:
-> >=20
-> > Subject: [PULL 0/4] Trivial branch patches
-> > Type: series
-> > Message-id: 20191105144247.10301-1-laurent@vivier.eu
-> >=20
-> > =3D=3D=3D TEST SCRIPT BEGIN =3D=3D=3D
-> > #!/bin/bash
-> > git rev-parse base > /dev/null || exit 0
-> > git config --local diff.renamelimit 0
-> > git config --local diff.renames True
-> > git config --local diff.algorithm histogram
-> > ./scripts/checkpatch.pl --mailback base..
-> > =3D=3D=3D TEST SCRIPT END =3D=3D=3D
-> >=20
-> > Switched to a new branch 'test'
-> > 85ac453 global: Squash 'the the'
-> > 9dd7da4 qom: Fix error message in object_class_property_add()
-> > 2b76b45 hw/misc/grlib_ahb_apb_pnp: Fix 8-bit accesses
-> > bddcfd9 hw/misc/grlib_ahb_apb_pnp: Avoid crash when writing to PnP regi=
-sters
-> >=20
-> > =3D=3D=3D OUTPUT BEGIN =3D=3D=3D
-> > 1/4 Checking commit bddcfd9b6b24 (hw/misc/grlib_ahb_apb_pnp: Avoid cras=
-h when writing to PnP registers)
-> > 2/4 Checking commit 2b76b451f9b7 (hw/misc/grlib_ahb_apb_pnp: Fix 8-bit =
-accesses)
-> > 3/4 Checking commit 9dd7da421bfb (qom: Fix error message in object_clas=
-s_property_add())
-> > WARNING: line over 80 characters
-> > #31: FILE: qom/object.c:1109:
-> > +        error_setg(errp, "attempt to add duplicate property '%s' to ob=
-ject (type '%s')",
-> >=20
-> > WARNING: line over 80 characters
-> > #43: FILE: qom/object.c:1141:
-> > +        error_setg(errp, "attempt to add duplicate property '%s' to cl=
-ass (type '%s')",
-> >=20
+qemu-system-ppc64: unable to map backing store for guest RAM: Cannot allocate memory
+qemu-system-ppc64: warning: falling back to regular RAM allocation
+QEMU 4.1.50 monitor - type 'help' for more information
+(qemu) q
+This is deprecated. Make sure that -mem-path  specified path has sufficient resources to allocate -m specified RAM amountgreg@boss02:~/Work/qemu/qemu-spapr$
 
-As mentioned in the changelog, this is deliberate. AFAIK better grep-ability
-has precedence over the 80 characters rule when it comes to error messages.
-Maybe we should teach checkpatch about that ?
+Add the missing \n to fix both issues.
 
-Cheers,
+Fixes: cb79224b7e4b "deprecate -mem-path fallback to anonymous RAM"
+Signed-off-by: Greg Kurz <groug@kaod.org>
+---
+ hw/core/numa.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---
-Greg
-
-> > total: 0 errors, 2 warnings, 22 lines checked
-> >=20
-> > Patch 3/4 has style problems, please review.  If any of these errors
-> > are false positives report them to the maintainer, see
-> > CHECKPATCH in MAINTAINERS.
-> > 4/4 Checking commit 85ac453d1520 (global: Squash 'the the')
-> > ERROR: do not use C99 // comments
-> > #26: FILE: disas/libvixl/vixl/invalset.h:105:
-> > +  // Note that this does not mean the backing storage is empty: it can=
- still
-> >=20
-> > total: 1 errors, 0 warnings, 56 lines checked
-> >=20
-> > Patch 4/4 has style problems, please review.  If any of these errors
-> > are false positives report them to the maintainer, see
-> > CHECKPATCH in MAINTAINERS.
-> >=20
-> > =3D=3D=3D OUTPUT END =3D=3D=3D
-> >=20
-> > Test command exited with code: 1
-> >=20
-> >=20
-> > The full log is available at
-> > http://patchew.org/logs/20191105144247.10301-1-laurent@vivier.eu/testin=
-g.checkpatch/?type=3Dmessage.
-> > ---
-> > Email generated automatically by Patchew [https://patchew.org/].
-> > Please send your feedback to patchew-devel@redhat.com
-> >=20
->=20
+diff --git a/hw/core/numa.c b/hw/core/numa.c
+index 038c96d4abc6..e3332a984f7c 100644
+--- a/hw/core/numa.c
++++ b/hw/core/numa.c
+@@ -503,7 +503,7 @@ static void allocate_system_memory_nonnuma(MemoryRegion *mr, Object *owner,
+             warn_report("falling back to regular RAM allocation");
+             error_printf("This is deprecated. Make sure that -mem-path "
+                          " specified path has sufficient resources to allocate"
+-                         " -m specified RAM amount");
++                         " -m specified RAM amount\n");
+             /* Legacy behavior: if allocation failed, fall back to
+              * regular RAM allocation.
+              */
 
 
