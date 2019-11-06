@@ -1,74 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iSMPc-0005hP-78
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Nov 2019 09:35:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60592)
+	id 1iSNoI-0001SV-Ad
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Nov 2019 11:05:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54132)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iSMPZ-0005ds-11
- for qemu-trivial@nongnu.org; Wed, 06 Nov 2019 09:35:54 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1iSNoE-0001MY-7n
+ for qemu-trivial@nongnu.org; Wed, 06 Nov 2019 11:05:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iSMPX-0006Uf-Py
- for qemu-trivial@nongnu.org; Wed, 06 Nov 2019 09:35:52 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:57438)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iSMPX-0006U3-IA
- for qemu-trivial@nongnu.org; Wed, 06 Nov 2019 09:35:51 -0500
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 57CA4368E4
- for <qemu-trivial@nongnu.org>; Wed,  6 Nov 2019 14:35:50 +0000 (UTC)
-Received: by mail-wm1-f69.google.com with SMTP id o202so1019238wme.5
- for <qemu-trivial@nongnu.org>; Wed, 06 Nov 2019 06:35:50 -0800 (PST)
+ (envelope-from <peter.maydell@linaro.org>) id 1iSNo9-0002KH-SN
+ for qemu-trivial@nongnu.org; Wed, 06 Nov 2019 11:05:25 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:38203)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iSNo9-0002GN-Nc
+ for qemu-trivial@nongnu.org; Wed, 06 Nov 2019 11:05:21 -0500
+Received: by mail-oi1-x241.google.com with SMTP id a14so1718285oid.5
+ for <qemu-trivial@nongnu.org>; Wed, 06 Nov 2019 08:05:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=64hrqu/vQ7OGvSnY8/7zVhi3gVactcah6O2vkBSklxU=;
+ b=d7d5Dw9nF/6TQzt9V1ffLuSjskOslEzvqNlh1RpFiAeB2bkuGo7IggeGunMLB+gfKq
+ WXzLJaIgWmVGVl4v0NAO9pDw6MqnDIB9cWsdxF4cIvCD1D2vk1W74+WiSivAZ9UrTwJs
+ MCEmvOwWKc3nZZgrKRkekhxpXX9XY+TbLfh0Tpi7+1TtUrxYgXnvC8JuX+8M3b09BUT8
+ 7dnl7QbjcmjQxw5NhA6h4JfwZf3uv7gFWd8FhQHTeYnaZKFLiOO40x1wqGtsH1VH0yNE
+ 40cT/+J42y9Fohw2egk+Mn2hiXtOjKjeJMIhZR1yAJEl9p/IvQXA0T3gaASxpMZnMkCJ
+ 21Kg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=h9lWEEYjv6YG7HNBSk6dMj/MeCvWO6sLSN/9Uj3Boog=;
- b=fi5snEhPQ9Id7lTk3h5BLRpjrsgaOBkBHuEd8ubY8oNO1LeULPEIgYYN6KOSK79Enu
- kakQg1jpWcCU4cE8xUgs0dgrvyz9SUeRmt29w4ECR9ejf79iKVDt8uKiadLRG2VF8DTs
- ToHLhq3N0uncbiVyMUM7MVuO60O08jjnTSsfKuN/HGt+DqvUID90/v3k+TUDbG9bJTKk
- nprBwVuaPLX6lNJAaZjK+2TmIAEILgLBbS5PRKr9UzXR//dn7HHE52+OPadeHfzPIP2N
- HVr24wkjmEmF+I5m9FP9b9aMqO1K3yv1p2dAiIGx9oZA1AdQBRzT0bGDXwEFMFIBND/M
- VkBQ==
-X-Gm-Message-State: APjAAAVuCVHVQYVkO4n6P7RmTsGbJyZqDjK8mRplAImkrBVTWIYAR16V
- u6UvXGYcVYNXJKjAEpgOvyB1qmXES0VtsuA6PqF4kJsOjZjyQjYUrB4n8eIBzkvqL3x6b3Tgjwg
- KBFIu+NZGaQmPi/FLTg==
-X-Received: by 2002:a05:6000:350:: with SMTP id
- e16mr3224685wre.276.1573050949031; 
- Wed, 06 Nov 2019 06:35:49 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz3SZDhe1Odz7hIJ+Z7e0SabkQgDobjRAMTwqWAdwInJQW2D3OQI5EHHsm/ZLcHdRBMrgBJ3Q==
-X-Received: by 2002:a05:6000:350:: with SMTP id
- e16mr3224666wre.276.1573050948803; 
- Wed, 06 Nov 2019 06:35:48 -0800 (PST)
-Received: from [192.168.1.24] (lfbn-1-7864-228.w92-167.abo.wanadoo.fr.
- [92.167.33.228])
- by smtp.gmail.com with ESMTPSA id z8sm19209083wrp.49.2019.11.06.06.35.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 Nov 2019 06:35:48 -0800 (PST)
-Subject: Re: [PATCH] numa: Add missing \n to error message
-To: Laurent Vivier <laurent@vivier.eu>, Greg Kurz <groug@kaod.org>
-Cc: Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>
-References: <157304440026.351774.14607704217028190097.stgit@bahia.lan>
- <bb828956-28b3-9fe7-1d57-ceb723a32997@vivier.eu>
- <20191106151246.2bf44314@bahia.lan>
- <da6cc0c8-eb29-7b2f-e43a-631ab04f5ba9@vivier.eu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <c3ea75b6-34c5-eca4-cc57-0a5d1b1d07c9@redhat.com>
-Date: Wed, 6 Nov 2019 15:35:47 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=64hrqu/vQ7OGvSnY8/7zVhi3gVactcah6O2vkBSklxU=;
+ b=UXPfiSC5ScuDz9OwffFGCVZS7Z1q0KcOKkotboruZLiRSWP6AzEBS5hVdnd7n+dJrD
+ G8OqYGLKeeneabj/wB965AGHbYRXIJp1sGNmLYx5mzm3Kf0T4G2A9bMumx+1Zd1b7NFI
+ ivo7RLMvvfD/VO90LZmM6JE1O9zBsy0bkUxcTivHja+cissk0qB6sbZQvPeVQf2REYDF
+ gLZZ0HZrnBZY2LAu7CgZtsWIsz8/PJk3SoWbv8TXQi/rOCRHouhSk86BAUpVfwoIFMpr
+ AzwShjzypxHh0k3mBpRn3lQL9gD6Y9DKjD6Wv/LsxRrquAaE64rp1sUFKkcvaQk6DQtU
+ qjrA==
+X-Gm-Message-State: APjAAAW02KDbLrwKQ19CTCx0mVBrXlWPAscIdE3R7FXjRTEk0COX6m7Z
+ xFfNFNv2cL6GYQiMJwIRGvz1NcLpd6DaU1xgwnRK7w==
+X-Google-Smtp-Source: APXvYqzaP+yWEF70z/KqKnujAWBTvm5aQj4wddRKM2S8f+/Ktf47uuMJ2MIJorOjYeG4oii0EHkQg647ftJDLFR3dII=
+X-Received: by 2002:aca:3e8a:: with SMTP id l132mr2762720oia.146.1573056319217; 
+ Wed, 06 Nov 2019 08:05:19 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <da6cc0c8-eb29-7b2f-e43a-631ab04f5ba9@vivier.eu>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+References: <157298160814.27285.16893877491189017648@37313f22b938>
+ <73852c81-87b7-e5f5-4041-d24f078cc7fa@vivier.eu>
+In-Reply-To: <73852c81-87b7-e5f5-4041-d24f078cc7fa@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 6 Nov 2019 16:05:08 +0000
+Message-ID: <CAFEAcA8SvSGCZsYT1LmN1cP1BjVDPqLP90yW9TCbvVA=kmyqBw@mail.gmail.com>
+Subject: Re: [Xen-devel] [PULL v2 0/3] Trivial branch patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ Stefano Stabellini <sstabellini@kernel.org>, 
+ Eduardo Habkost <ehabkost@redhat.com>, Paul Durrant <paul@xen.org>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Claudio Fontana <claudio.fontana@huawei.com>, 
+ Cleber Rosa <crosa@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, 
+ Fabien Chouteau <chouteau@adacore.com>,
+ KONRAD Frederic <frederic.konrad@adacore.com>, 
+ qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>, 
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Anthony PERARD <anthony.perard@citrix.com>, 
+ "open list:X86" <xen-devel@lists.xenproject.org>,
+ David Gibson <david@gibson.dropbear.id.au>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::241
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -80,87 +80,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Nov 2019 14:35:54 -0000
+X-List-Received-Date: Wed, 06 Nov 2019 16:05:28 -0000
 
-On 11/6/19 3:20 PM, Laurent Vivier wrote:
-> Le 06/11/2019 =C3=A0 15:12, Greg Kurz a =C3=A9crit=C2=A0:
->> On Wed, 6 Nov 2019 14:01:01 +0100
->> Laurent Vivier <laurent@vivier.eu> wrote:
->>
->>> Le 06/11/2019 =C3=A0 13:46, Greg Kurz a =C3=A9crit=C2=A0:
->>>> If memory allocation fails when using -mem-path, QEMU is supposed to=
- print
->>>> out a message to indicate that fallback to anonymous RAM is deprecat=
-ed. This
->>>> is done with error_printf() which does output buffering. As a conseq=
-uence,
->>>> the message is only printed at the next flush, eg. when quiting QEMU=
-, and
->>>> it also lacks a trailing newline:
->>>>
->>>> qemu-system-ppc64: unable to map backing store for guest RAM: Cannot=
- allocate memory
->>>> qemu-system-ppc64: warning: falling back to regular RAM allocation
->>>> QEMU 4.1.50 monitor - type 'help' for more information
->>>> (qemu) q
->>>> This is deprecated. Make sure that -mem-path  specified path has suf=
-ficient resources to allocate -m specified RAM amountgreg@boss02:~/Work/q=
-emu/qemu-spapr$
->>>>
->>>> Add the missing \n to fix both issues.
->>>>
->>>> Fixes: cb79224b7e4b "deprecate -mem-path fallback to anonymous RAM"
->>>> Signed-off-by: Greg Kurz <groug@kaod.org>
->>>> ---
->>>>   hw/core/numa.c |    2 +-
->>>>   1 file changed, 1 insertion(+), 1 deletion(-)
->>>>
->>>> diff --git a/hw/core/numa.c b/hw/core/numa.c
->>>> index 038c96d4abc6..e3332a984f7c 100644
->>>> --- a/hw/core/numa.c
->>>> +++ b/hw/core/numa.c
->>>> @@ -503,7 +503,7 @@ static void allocate_system_memory_nonnuma(Memor=
-yRegion *mr, Object *owner,
->>>>               warn_report("falling back to regular RAM allocation");
->>>>               error_printf("This is deprecated. Make sure that -mem-=
-path "
->>>>                            " specified path has sufficient resources=
- to allocate"
->>>> -                         " -m specified RAM amount");
->>>> +                         " -m specified RAM amount\n");
->>>>               /* Legacy behavior: if allocation failed, fall back to
->>>>                * regular RAM allocation.
->>>>                */
->>>>
->>>>
->>>
->>> Why is this an error_printf() and not an error_report()?
->>>
->>
->> Because CODING_STYLE suggests to do so I guess:
->>
->> Reporting errors to the human user
->> ----------------------------------
->>
->> Do not use printf(), fprintf() or monitor_printf().  Instead, use
->> error_report() or error_vreport() from error-report.h.  This ensures t=
-he
->> error is reported in the right place (current monitor or stderr), and =
-in
->> a uniform format.
->>
->> Use error_printf() & friends to print additional information. <=3D=3D=3D
->>
->> error_report() prints the current location.  In certain common cases
->> like command line parsing, the current location is tracked
->> automatically.  To manipulate it manually, use the loc_``*``() from
->> error-report.h.
->=20
-> So I guess it's to not report the current location and the binary name =
-.
->=20
-> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+On Tue, 5 Nov 2019 at 20:06, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> Le 05/11/2019 =C3=A0 20:20, no-reply@patchew.org a =C3=A9crit :
+> > Patchew URL: https://patchew.org/QEMU/20191105175010.2591-1-laurent@viv=
+ier.eu/
+> >
+> >
+> >
+> > Hi,
+> >
+> > This series seems to have some coding style problems. See output below =
+for
+> > more information:
+> >
+> > Subject: [Xen-devel] [PULL v2 0/3] Trivial branch patches
+> > Type: series
+> > Message-id: 20191105175010.2591-1-laurent@vivier.eu
+> >
+> > =3D=3D=3D TEST SCRIPT BEGIN =3D=3D=3D
+> > #!/bin/bash
+> > git rev-parse base > /dev/null || exit 0
+> > git config --local diff.renamelimit 0
+> > git config --local diff.renames True
+> > git config --local diff.algorithm histogram
+> > ./scripts/checkpatch.pl --mailback base..
+> > =3D=3D=3D TEST SCRIPT END =3D=3D=3D
+> >
+> > Switched to a new branch 'test'
+> > 49a55f7 global: Squash 'the the'
+> > c0b5513 hw/misc/grlib_ahb_apb_pnp: Fix 8-bit accesses
+> > eb43395 hw/misc/grlib_ahb_apb_pnp: Avoid crash when writing to PnP regi=
+sters
+> >
+> > =3D=3D=3D OUTPUT BEGIN =3D=3D=3D
+> > 1/3 Checking commit eb43395bf8f1 (hw/misc/grlib_ahb_apb_pnp: Avoid cras=
+h when writing to PnP registers)
+> > 2/3 Checking commit c0b5513f971a (hw/misc/grlib_ahb_apb_pnp: Fix 8-bit =
+accesses)
+> > 3/3 Checking commit 49a55f7feb19 (global: Squash 'the the')
+> > ERROR: do not use C99 // comments
+> > #26: FILE: disas/libvixl/vixl/invalset.h:105:
+> > +  // Note that this does not mean the backing storage is empty: it can=
+ still
+>
+> As reported by David Gilbert, this is a false positive as this file is a
+> C++ file.
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+True, but it's also a third-party dependency that we have
+taken a copy of. If we care about fixing its typos in comments
+we should do that by submitting the fixes upstream. We should
+avoid making changes to our local copy of this code because
+it just makes it unnecessarily more difficult to do updates to
+newer versions.
 
+Could you drop that change, please? (Sorry I didn't notice
+it going by when the patch was originally on list.)
+
+thanks
+-- PMM
 
