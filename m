@@ -1,67 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iT6nh-0001ZT-Mt
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Nov 2019 11:07:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58052)
+	id 1iT7jU-00078O-VI
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Nov 2019 12:07:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39166)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iT6nf-0001Y5-8p
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 11:07:52 -0500
+ (envelope-from <philmd@redhat.com>) id 1iT7jR-00073R-SX
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 12:07:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iT6ne-0004wW-7X
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 11:07:51 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:44444
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1iT7jQ-0001Xa-0u
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 12:07:33 -0500
+Received: from mx1.redhat.com ([209.132.183.28]:57900)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1iT6ne-0004wH-3j
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 11:07:50 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1573229269;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kdA4X9Z8UPZwZPYLbSBiDcWzZfCxAMjEEmG1ckGuYOo=;
- b=LH9hBdwMiGq9iaBPgVuI2A0TNbnIvoiDhSPHLJenUJjnxFXCF2/dDK+qAu/bmuyrzuAXOl
- KpYkx+5ev833T0i/1ykRtfVIs3/XlS8iD+1nDQoZLjWzIzSAumgf3yyQlfhl+vgKzzZWyb
- 67ZT5LslrRDT7BDRATzsF4rAiFN0WvQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-88-dq9nGt3-P4C4DQNrX6O6eA-1; Fri, 08 Nov 2019 11:07:46 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iT7jP-0001XF-OL
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 12:07:31 -0500
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 33A8E107ACC4;
- Fri,  8 Nov 2019 16:07:45 +0000 (UTC)
-Received: from [10.3.117.38] (ovpn-117-38.phx2.redhat.com [10.3.117.38])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id ABF525DA7F;
- Fri,  8 Nov 2019 16:07:38 +0000 (UTC)
-Subject: Re: [PATCH v2 3/3] trace: Forbid dynamic field width in event format
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ by mx1.redhat.com (Postfix) with ESMTPS id 73CE68553A
+ for <qemu-trivial@nongnu.org>; Fri,  8 Nov 2019 17:07:30 +0000 (UTC)
+Received: by mail-wm1-f71.google.com with SMTP id l184so3376668wmf.6
+ for <qemu-trivial@nongnu.org>; Fri, 08 Nov 2019 09:07:30 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=xw/FtypxzJMBjKUiU55I6eUnrTKhLd2CUCx7XUb7MNA=;
+ b=m5DNfNzLDSk1ccvS+TYbwUgGg4QyhhOu1aPtjwKrZnZd4loU7x2udRsDuzcaXikykP
+ RectrfY3+kpabYoAs+9zeuX9DzHtDDludQMRO9GDP56vXHHFzGbo4TSOEvEfgQ6NOjy+
+ Hh+wAD6WTulRMlgXcvF85tX+oWioAjkOAfMKgwkpr1k3P90DO9CvYJmepcncJBcgnTqs
+ WT4gXBTiAsNWWAvU8wIhAfDLb9fJn2Z6toZtdT73DvBCwiY9weUwbv4OiNbsRr7yweBK
+ B+jZhow5ouDzUlL7Ja8agMHUTk7pj/C4CJ74CaqhBfWK6Ek32697GyKOIug9f4e2pdV7
+ aYVw==
+X-Gm-Message-State: APjAAAXD9uHafL3y/P9GsaY47eBgV0XswtfKb7pfnd60TJp6T3HMf+KQ
+ dfcrO1fCgA1PLUNzMK8Zscz7QDTmx9bnX5TkjLswkYXxWx3dbLPyQu1JKPkvl51nfdlJtuu/QSv
+ 7NZYvB7cE6PoR0EsgAg==
+X-Received: by 2002:adf:aa92:: with SMTP id h18mr6993805wrc.150.1573232849108; 
+ Fri, 08 Nov 2019 09:07:29 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyF5qqaQewT8ccdYkPJJBVUqsZA2qZotzxd6Mfo31ZFMujH5abXTKW/A88sv0MGqY1NNcS5uQ==
+X-Received: by 2002:adf:aa92:: with SMTP id h18mr6993770wrc.150.1573232848885; 
+ Fri, 08 Nov 2019 09:07:28 -0800 (PST)
+Received: from [192.168.1.33] (62.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.62])
+ by smtp.gmail.com with ESMTPSA id m3sm6298292wrw.20.2019.11.08.09.07.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 08 Nov 2019 09:07:28 -0800 (PST)
+Subject: Re: [PATCH] configure: Check bzip2 is available
+To: Eric Blake <eblake@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
  qemu-devel@nongnu.org
-Cc: Max Reitz <mreitz@redhat.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>, qemu-block@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Aurelien Jarno <aurelien@aurel32.net>, qemu-trivial@nongnu.org
-References: <20191108144042.30245-1-philmd@redhat.com>
- <20191108144042.30245-4-philmd@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <191fbe18-73b2-4d22-5540-8775688166a8@redhat.com>
-Date: Fri, 8 Nov 2019 10:07:38 -0600
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ "Daniel P . Berrange" <berrange@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>
+References: <20191108102805.8258-1-philmd@redhat.com>
+ <862eb773-609d-4250-b46b-d922fc5a86a7@redhat.com>
+ <00cca0a5-7a51-f2d1-5120-821c335954b8@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <51f9b2d9-b196-c30e-dc67-988e29b5df47@redhat.com>
+Date: Fri, 8 Nov 2019 18:07:27 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20191108144042.30245-4-philmd@redhat.com>
+In-Reply-To: <00cca0a5-7a51-f2d1-5120-821c335954b8@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: dq9nGt3-P4C4DQNrX6O6eA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,45 +79,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Nov 2019 16:07:52 -0000
+X-List-Received-Date: Fri, 08 Nov 2019 17:07:35 -0000
 
-On 11/8/19 8:40 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Since not all trace backends support dynamic field width in
-> format (dtrace via stap does not), forbid them.
+On 11/8/19 4:43 PM, Eric Blake wrote:
+> On 11/8/19 5:01 AM, Laszlo Ersek wrote:
 >=20
-> Add a check to refuse field width in new formats:
+>>>
+>>> Add a check in ./configure to warn the user if bzip2 is missing.
+>>
+>> We've come full circle. Let me explain:
+>>
+>>>
+>>> Fixes: 536d2173b2b
+>>
+>> So this makes me kinda grumpy. If you look at the v3 posting of the=20
+>> patch that would later become commit 536d2173b2b:
+>>
+>> =C2=A0=C2=A0 http://mid.mail-archive.com/20190321113408.19929-8-lersek=
+@redhat.com
+>>
+>> you see the following note in the changelog:
+>>
+>> =C2=A0=C2=A0=C2=A0=C2=A0 - compress FD files with bzip2 rather than xz=
+, so that=20
+>> decompression at
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "make install" time succeed on ol=
+der build OSes too [Peter]
+>>
+>> So I couldn't use xz because that was "too new" for some build OSes,=20
+>> but now we also can't take bzip2 for granted because that's "too old"=20
+>> for some other build OSes? This is ridiculous.
+>>
+>> To be clear, my disagreement is only with the "Fixes" tag. For me,=20
+>> "Fixes" stands for something that, in retrospect, can be proven to=20
+>> have been a bug at the time the code was *originally* committed. But,=20
+>> at the time, taking "bzip2" for granted was *not* a bug. The=20
+>> conditions / circumstances have changed more recently, and the=20
+>> assumption about bzip2 has been invalidated *after* adding a=20
+>> dependency on bzip2.
+>>
+>> Nonetheless, thank you for adapting the code to the potential absence=20
+>> of bzip2. Can you perhaps go in some details in the commit message,=20
+>> near "not included in default installations" and "freshly installed=20
+>> systems"? If we can, we should identify the exact distro release where=
+=20
+>> this problem has been encountered (and I wouldn't mind a link to the=20
+>> BZ or ticket under which people agreed to remove bzip2 from the=20
+>> default package set).
 >=20
+> bzip2 is no longer a favored compression.=C2=A0 If we are trying to pic=
+k a=20
+> compression that is most likely to be present on any system, go with=20
+> gzip.=C2=A0 If we are trying to pick a compression that packs tighter a=
+nd=20
+> uncompresses faster, pick xz or zstd.=C2=A0 But bzip2 does neither: it =
+packs=20
+> slightly tighter than gzip but has slower performance in doing so, and=20
+> thus is no longer used as a default compression.
 
-> +++ b/scripts/tracetool/__init__.py
-> @@ -206,6 +206,7 @@ class Event(object):
->                         "\s*"
->                         "(?:(?:(?P<fmt_trans>\".+),)?\s*(?P<fmt>\".+))?"
->                         "\s*")
-> +    _DFWRE =3D re.compile(".*(%0?\*).*")
+The problem was with OpenBSD 6.1 which hadn't xz available.
 
-The use of leading and trailing .* is pointless if the RE itself is used=20
-unanchored and where you only care if the () matched.
+In commit 12745eaa02 Gerd updated the VM to OpenBSD 6.5 and we now have=20
+access to xz. IIRC OSX supported versions also provide xz.
 
-This doesn't catch all valid uses of * in a printf format.  Better might=20
-be something like:
-
-_DFWRE =3D re.compile("%[\d\.\- +#']*\*")
-
-which matches only if there is a %, any number of characters that can=20
-form a printf flag, as well as a numeric field width but dynamic precision.
-
-
-> +        if Event._DFWRE.match(fmt):
-> +            raise ValueError("Event format must not contain field width =
-'%*'")
->  =20
->           if len(fmt_trans) > 0:
->               fmt =3D [fmt_trans, fmt]
->=20
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
+If we want to revert Laszlo's patches and apply his first version (using=20
+xz), we should do that during 5.0 dev cycle, now it is too late.
+I'd prefer we simply fix bzip2 for the next release.
 
