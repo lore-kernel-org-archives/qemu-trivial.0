@@ -1,67 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iT7ms-0002xi-1X
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Nov 2019 12:11:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39764)
+	id 1iT8DW-0006Du-0u
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Nov 2019 12:38:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44479)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iT7mq-0002w0-GW
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 12:11:05 -0500
+ (envelope-from <lersek@redhat.com>) id 1iT8DT-0006Ap-0n
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 12:38:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iT7mp-0002xy-6R
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 12:11:04 -0500
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:44697)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iT7mo-0002xd-VD
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 12:11:03 -0500
-Received: by mail-ot1-x344.google.com with SMTP id c19so5764512otr.11
- for <qemu-trivial@nongnu.org>; Fri, 08 Nov 2019 09:11:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=mnalJx4H7+m/gSnRqRgd6jzyL97VfmT3+CQtQppxItA=;
- b=vWl9oRKqH9BvBjJwegeaDDYe1gHbJV7c4uXSC/eAox4LxcYqnDg17y3EPVL0umWtek
- kzLz0crhgqK9Rn/kItlcBbbR6D9X3i/DwapfoPsKt6G5u82gLfSumbrx0bqPoSr2yrOE
- AYp/jtgLF78PIiWA2U4yOIy6v0gj2pez6925/GORFJpW8MIHx4eQiZus8Tc+9M5OsjPF
- pUzjm2jF34lDMQMLmMLxVJh+65vj8GelDxKszM9y0gDKZjNXcu6/n884/jq+MKhEUWrI
- Zm9YYXw6OFueBiO0g99xCDArjaCparfKHjCI2b7Bz3tMKrsho48lYt/HSAGGXtz5840F
- BQZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=mnalJx4H7+m/gSnRqRgd6jzyL97VfmT3+CQtQppxItA=;
- b=YRl4K9/D/QB/FSG6akXqYwfm453GjhDMqxKGgvqI/XsO2z2i4HKVZD6pY0IatORiV/
- 24E4zT24YX0QYOa8+yzaSUmcoOtYvzen/7ZAwrUPVlp8V76Dz5LXg2uP7JQGIxsJlb3G
- ZUgRen4AgZ/x7RtHAvPgccUrI/hX1NY7x+kUCbH3/miCjfNDYmaaVLrd95NHLS/nUkRL
- Ae1T1C1N8g5jqetSZpBoHEdVUqH4tCn+ZjWkhW0YGmGN11RkvqoLU8SEwg3XLqUFiK6U
- vIUVAJjMSlqCGLdwStEVCJXFQcN9+zkhSweLb+1ck7hj+qLLta3yNCfY1mk42Y2GuJlH
- ROaQ==
-X-Gm-Message-State: APjAAAVhqEq2xXY/dO3dFA/QepqyPsYje+xSnapT9898VVazCgoVdvB+
- wCL0e+EmyYf44uOvo7yqfZfAWv8Z4QkdGRYOxhoFjA==
-X-Google-Smtp-Source: APXvYqy0x/mWqnLFvbmckS7rUPfeqSOnUktV77TWLR8MK3xAF3eS7ywry2xUnlQh+zI/z1LANrL1YKX51SvQ3e+iRhs=
-X-Received: by 2002:a9d:68cc:: with SMTP id i12mr5771433oto.97.1573233061926; 
- Fri, 08 Nov 2019 09:11:01 -0800 (PST)
-MIME-Version: 1.0
-References: <20191108102805.8258-1-philmd@redhat.com>
- <862eb773-609d-4250-b46b-d922fc5a86a7@redhat.com>
- <00cca0a5-7a51-f2d1-5120-821c335954b8@redhat.com>
- <51f9b2d9-b196-c30e-dc67-988e29b5df47@redhat.com>
-In-Reply-To: <51f9b2d9-b196-c30e-dc67-988e29b5df47@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 8 Nov 2019 17:10:50 +0000
-Message-ID: <CAFEAcA8EijZRqhFerQbq5cCbaq-qzrMzOrQjc6Ro=v2p6=W_pA@mail.gmail.com>
-Subject: Re: [PATCH] configure: Check bzip2 is available
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: Eric Blake <eblake@redhat.com>, Laszlo Ersek <lersek@redhat.com>, 
- QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- Thomas Huth <thuth@redhat.com>, "Daniel P . Berrange" <berrange@redhat.com>, 
+ (envelope-from <lersek@redhat.com>) id 1iT8DR-00059h-TL
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 12:38:34 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:44137
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <lersek@redhat.com>) id 1iT8DR-00059Z-QM
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 12:38:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1573234713;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3ygWqRFf3rR76CqLihMOU6WLOgpbxH73V/9PnL4pR1o=;
+ b=NBkgzOm9Xt92WblA51daHaB9LjzyEGpzm40NqhmwIhqVNOYZ5ObLGTSq/qJF1LXmiI9XAs
+ 4wZwzc6e4j8+emDrDjS3jja4EsmCwDpOnaKhYkga1CiH7FHk4gddF2bqooiPa+CwHOZvOj
+ +nXVre4ZKkeIyh5UrwmAA4+mPMhr6D8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-223-WAHBejUANwuRoTl5ia8Uag-1; Fri, 08 Nov 2019 12:38:30 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4E753107ACC4;
+ Fri,  8 Nov 2019 17:38:29 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-117-227.ams2.redhat.com
+ [10.36.117.227])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AA2C66084E;
+ Fri,  8 Nov 2019 17:38:12 +0000 (UTC)
+Subject: Re: [PATCH v2 1/2] configure: Only decompress EDK2 blobs for X86/ARM
+ targets
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: "Daniel P . Berrange" <berrange@redhat.com>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+ Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org
+References: <20191108114531.21518-1-philmd@redhat.com>
+ <20191108114531.21518-2-philmd@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <288753f3-872e-8eca-1f86-869ae6bf5380@redhat.com>
+Date: Fri, 8 Nov 2019 18:38:11 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
+MIME-Version: 1.0
+In-Reply-To: <20191108114531.21518-2-philmd@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: WAHBejUANwuRoTl5ia8Uag-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::344
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,32 +72,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Nov 2019 17:11:05 -0000
+X-List-Received-Date: Fri, 08 Nov 2019 17:38:36 -0000
 
-On Fri, 8 Nov 2019 at 17:07, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
-> wrote:
-> On 11/8/19 4:43 PM, Eric Blake wrote:
-> > bzip2 is no longer a favored compression.  If we are trying to pick a
-> > compression that is most likely to be present on any system, go with
-> > gzip.  If we are trying to pick a compression that packs tighter and
-> > uncompresses faster, pick xz or zstd.  But bzip2 does neither: it packs
-> > slightly tighter than gzip but has slower performance in doing so, and
-> > thus is no longer used as a default compression.
->
-> The problem was with OpenBSD 6.1 which hadn't xz available.
->
-> In commit 12745eaa02 Gerd updated the VM to OpenBSD 6.5 and we now have
-> access to xz. IIRC OSX supported versions also provide xz.
->
-> If we want to revert Laszlo's patches and apply his first version (using
-> xz), we should do that during 5.0 dev cycle, now it is too late.
-> I'd prefer we simply fix bzip2 for the next release.
+On 11/08/19 12:45, Philippe Mathieu-Daud=C3=A9 wrote:
+> The EDK2 firmware blobs only target the X86/ARM architectures.
+> Define the DECOMPRESS_EDK2_BLOBS variable and only decompress
+> the blobs when the variable exists.
+>=20
+> Fixes: 536d2173b2b
+> Suggested-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> v2: new
+> ---
+>  Makefile  |  2 ++
+>  configure | 13 +++++++++++++
+>  2 files changed, 15 insertions(+)
+>=20
+> diff --git a/Makefile b/Makefile
+> index aa9d1a42aa..3430eca532 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -480,7 +480,9 @@ $(SOFTMMU_ALL_RULES): $(chardev-obj-y)
+>  $(SOFTMMU_ALL_RULES): $(crypto-obj-y)
+>  $(SOFTMMU_ALL_RULES): $(io-obj-y)
+>  $(SOFTMMU_ALL_RULES): config-all-devices.mak
+> +ifdef DECOMPRESS_EDK2_BLOBS
+>  $(SOFTMMU_ALL_RULES): $(edk2-decompressed)
+> +endif
+> =20
+>  .PHONY: $(TARGET_DIRS_RULES)
+>  # The $(TARGET_DIRS_RULES) are of the form SUBDIR/GOAL, so that
+> diff --git a/configure b/configure
+> index efe165edf9..9b322284c3 100755
+> --- a/configure
+> +++ b/configure
+> @@ -427,6 +427,7 @@ softmmu=3D"yes"
+>  linux_user=3D"no"
+>  bsd_user=3D"no"
+>  blobs=3D"yes"
+> +edk2_blobs=3D"no"
+>  pkgversion=3D""
+>  pie=3D""
+>  qom_cast_debug=3D"yes"
+> @@ -2146,6 +2147,14 @@ case " $target_list " in
+>    ;;
+>  esac
+> =20
+> +for target in $target_list; do
+> +  case "$target" in
+> +    arm-softmmu | aarch64-softmmu | i386-softmmu | x86_64-softmmu)
+> +      edk2_blobs=3D"yes"
+> +      ;;
+> +  esac
+> +done
+> +
+>  feature_not_found() {
+>    feature=3D$1
+>    remedy=3D$2
+> @@ -7526,6 +7535,10 @@ if test "$libudev" !=3D "no"; then
+>      echo "LIBUDEV_LIBS=3D$libudev_libs" >> $config_host_mak
+>  fi
+> =20
+> +if test "$edk2_blobs" =3D "yes" ; then
+> +  echo "DECOMPRESS_EDK2_BLOBS=3Dy" >> $config_host_mak
+> +fi
+> +
+>  # use included Linux headers
+>  if test "$linux" =3D "yes" ; then
+>    mkdir -p linux-headers
+>=20
 
-I don't think we should try to use 'xz' because I don't see
-the point. We should use something that's generally available,
-whether that's bzip2 or gzip. Life's too short to deal with
-yet another file compression tool and format.
+Impressively surgical & simple.
 
-thanks
--- PMM
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+
+Thank you!
+Laszlo
+
 
