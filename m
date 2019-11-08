@@ -1,52 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iT2uQ-0004Ex-Re
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Nov 2019 06:58:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38264)
+	id 1iT2zo-0000Te-1b
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Nov 2019 07:04:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39254)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iT2uL-000482-AT
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 06:58:30 -0500
+ (envelope-from <thuth@redhat.com>) id 1iT2zl-0000SK-Un
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 07:04:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iT2uK-0002K5-3d
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 06:58:29 -0500
-Received: from mx1.redhat.com ([209.132.183.28]:34400)
+ (envelope-from <thuth@redhat.com>) id 1iT2zk-00037d-PD
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 07:04:05 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:44343
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iT2uJ-0002IX-Qa
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 06:58:28 -0500
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iT2zk-00035v-LZ
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 07:04:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1573214643;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HU5M3CzU/w1/r0d+V0Co2DNK9MgH+Xi0kKIiDzxYqgk=;
+ b=UM86eWA51lZ+i5fKQMAZlxv4dxgs7xTvIxePcbAqXxtqldQbCUembbiRyfdX0QDKcjEKjW
+ CyGJZS9L7HH0kk885Qp1GCPippDg7ntC9paCqHV30+Uy/PGyYpjhaHhlBk39TYjyvzPVVt
+ i9KdbW5gVR/yVw4hSjb1998IYpulTIQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-305-tKpMsQaDN7qpQfsLUEOJ-g-1; Fri, 08 Nov 2019 07:04:01 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 7444E821CC
- for <qemu-trivial@nongnu.org>; Fri,  8 Nov 2019 11:58:26 +0000 (UTC)
-Received: by mail-wm1-f71.google.com with SMTP id g17so2255950wmc.4
- for <qemu-trivial@nongnu.org>; Fri, 08 Nov 2019 03:58:26 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=lDtcoNA1YcT/e930WhhoooBJnhMqdakwlIvwoyvGyf4=;
- b=cSmoN9fXtHxDpEvHHY73J2wVz6eK9phNZMq25VBDzd4gCqULcpoJOgF3PgP9J/UjKP
- VknqllLygSCklBO0dz1ubv8FQ2Qf1MpCxCWzWMVOAYBp9wRfQn8wepDLjgcmwurkNQzU
- bYEn+40V7qSJR2880qAoEPf+5+zMXnFWBJreXtEwaDkvVRQi38ff8gVajz9+wFRKXRTU
- mPcWmT2PTdRnfTTbhLJnRRDvonCoEDoMMVQ6Ge4CKR0D0r+BWran7VeVr/j0ltV1boGj
- A3SQIvIpn1sFCJ6oSHwpWUv3mAe3O+zucmeLWwizcaYbOYvJp42a4rlcG/vu+yeEUFU1
- f0Ig==
-X-Gm-Message-State: APjAAAXcBE4f74KmDYcA1QKb194WBXiOuqR4UEqAtuyIWz+fYDAmDtJu
- fU110ITvtwY+AKrIkyX2oYXyNkzyzyjawtkbwwKR8T5LmByaJDFtqza9F9TUzzPM1ZY6LuaBh4/
- z4BGJWkeC4IFnRprCZg==
-X-Received: by 2002:a5d:5586:: with SMTP id i6mr7821488wrv.81.1573214305140;
- Fri, 08 Nov 2019 03:58:25 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzxu60k3M8WiCj+qcPI/SYkIPeRvALpvUWWa0AWVcQogHC3KEFEHQ/T1bMEtSd4k1qBMpCpCA==
-X-Received: by 2002:a5d:5586:: with SMTP id i6mr7821468wrv.81.1573214304878;
- Fri, 08 Nov 2019 03:58:24 -0800 (PST)
-Received: from [192.168.1.33] (62.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.62])
- by smtp.gmail.com with ESMTPSA id l2sm6274980wrt.15.2019.11.08.03.58.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 08 Nov 2019 03:58:24 -0800 (PST)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 537DC800C72;
+ Fri,  8 Nov 2019 12:04:00 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-167.ams2.redhat.com
+ [10.36.116.167])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id BBC14600D3;
+ Fri,  8 Nov 2019 12:03:50 +0000 (UTC)
 Subject: Re: [PATCH] configure: Check bzip2 is available
-To: Laszlo Ersek <lersek@redhat.com>, Thomas Huth <thuth@redhat.com>,
+To: Laszlo Ersek <lersek@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 Cc: "Daniel P . Berrange" <berrange@redhat.com>, qemu-trivial@nongnu.org,
  Wainer dos Santos Moschetta <wainersm@redhat.com>
@@ -54,19 +46,22 @@ References: <20191108102805.8258-1-philmd@redhat.com>
  <b6005d59-c5d2-1844-db94-a67e258c2867@redhat.com>
  <d0cf0f78-a0c9-e0fa-7959-ecdebf27f912@redhat.com>
  <f688cac2-d370-23af-27fd-fa1f3c3637f9@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <55f259eb-aaf9-75ce-5346-9d33f8d2464f@redhat.com>
-Date: Fri, 8 Nov 2019 12:58:23 +0100
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <599870e8-a2d8-8160-4ab5-718db200a3c6@redhat.com>
+Date: Fri, 8 Nov 2019 13:03:48 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ Thunderbird/68.2.0
 MIME-Version: 1.0
 In-Reply-To: <f688cac2-d370-23af-27fd-fa1f3c3637f9@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: tKpMsQaDN7qpQfsLUEOJ-g-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.132.183.28
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -78,9 +73,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Nov 2019 11:58:30 -0000
+X-List-Received-Date: Fri, 08 Nov 2019 12:04:07 -0000
 
-On 11/8/19 12:39 PM, Laszlo Ersek wrote:
+On 08/11/2019 12.39, Laszlo Ersek wrote:
 > On 11/08/19 11:42, Philippe Mathieu-Daud=C3=A9 wrote:
 >> On 11/8/19 11:34 AM, Thomas Huth wrote:
 >>> On 08/11/2019 11.28, Philippe Mathieu-Daud=C3=A9 wrote:
@@ -88,13 +83,12 @@ On 11/8/19 12:39 PM, Laszlo Ersek wrote:
 >>>> On freshly installed systems, ./configure succeeds but 'make'
 >>>> might fail later:
 >>>>
->>>>  =C2=A0=C2=A0=C2=A0=C2=A0 BUNZIP2 pc-bios/edk2-i386-secure-code.fd.b=
-z2
+>>>>  =C2=A0=C2=A0=C2=A0=C2=A0 BUNZIP2 pc-bios/edk2-i386-secure-code.fd.bz2
 >>>>  =C2=A0=C2=A0 /bin/sh: bzip2: command not found
->>>>  =C2=A0=C2=A0 make: *** [Makefile:305: pc-bios/edk2-i386-secure-code=
-.fd] Error 127
->>>>  =C2=A0=C2=A0 make: *** Deleting file 'pc-bios/edk2-i386-secure-code=
-.fd'
+>>>>  =C2=A0=C2=A0 make: *** [Makefile:305: pc-bios/edk2-i386-secure-code.f=
+d] Error 127
+>>>>  =C2=A0=C2=A0 make: *** Deleting file 'pc-bios/edk2-i386-secure-code.f=
+d'
 >>>>  =C2=A0=C2=A0 make: *** Waiting for unfinished jobs....
 >>>>
 >>>> Add a check in ./configure to warn the user if bzip2 is missing.
@@ -123,30 +117,33 @@ z2
 >>>
 >>> It's only required for the edk2 binaries, isn't it? So should this
 >>> maybe also check whether we build any of the i386-softmmu,
->>> x86_64-softmmu arm-softmmu or aarch64-softmmu targets and pass otherw=
-ise?
+>>> x86_64-softmmu arm-softmmu or aarch64-softmmu targets and pass otherwis=
+e?
 >>
->> I have this on my TODO somewhere, because we extract the edk2 firmware=
-s
+>> I have this on my TODO somewhere, because we extract the edk2 firmwares
 >> even if we only build MIPS/PowerPC.
 >=20
 > But that applies to all of "BLOBS" in the root-level Makefile, doesn't
 > it? We also install, say, "vgabios-qxl.bin", when only the MIPS/PowerPC
-> system emulators are built. The only aspect that's specific to edk2
+> system emulators are built.
+
+IIRC there was another odd dependency that the PCI devices need their=20
+ROM also on non-x86 systems... but that's another story...
+
+> The only aspect that's specific to edk2
 > binaries is that they are kept compressed until installation time, to
 > save space in the git repo and in the source tarball.
 
-You are right, other targets could improve this too.
-Since this add quite complexity to the buildsys and nobody complained=20
-about that previously, I suggest we clean that *after* we switch the=20
-build machinery to Meson.
+I noticed that there are also some iotests that use bzip2 ... they are=20
+not used during the build process, but still, it might be better to=20
+simply always require bzip2, also in case some other architectures want=20
+to use it. So I'm also fine if we simply always require bzip2 for the build=
+.
 
-> I'm reminded of the "external QEMU blob / firmware repo" idea.
+  Thomas
 
-Do you mind starting a new thread asking about it? It would be nice we=20
-clear this during the next dev cycle.
+PS: Anybody interested in writing a patch to compress the other big=20
+binaries in the pc-bios folder, too? ... skiboot.lid ...=20
+openbios-sparc64 ... ppc_rom.bin ...
 
-Regards,
-
-Phil.
 
