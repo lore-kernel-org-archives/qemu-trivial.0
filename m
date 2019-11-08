@@ -1,66 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iT6Qc-0000Yr-Jv
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Nov 2019 10:44:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53682)
+	id 1iT6d0-0007UF-3N
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Nov 2019 10:56:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55214)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iT6QZ-0000V3-Ad
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 10:44:00 -0500
+ (envelope-from <eblake@redhat.com>) id 1iT6cy-0007Tl-5g
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 10:56:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iT6QY-0001Zb-0C
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 10:43:59 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:57781
+ (envelope-from <eblake@redhat.com>) id 1iT6cw-0007in-53
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 10:56:47 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:45255
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1iT6QX-0001ZF-TI
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 10:43:57 -0500
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1iT6cw-0007i5-1K
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 10:56:46 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1573227837;
+ s=mimecast20190719; t=1573228605;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uDx5th0g9HpIcu0JF2xvZ+ctTQBM9PLpFhboxKhHl5k=;
- b=TmJyvUL0btw6PhcozOoH5fRVFH7UOg3GDq2I+X5X3tVNtm6Drg2h/sK+9UhtYYNuJxihGE
- TrSPaVz89F++Nd3sFShUPNhicFZ3AuYGE6lI87ppc8UQvr3ho0GZtbVucYD+JhzkqUWOei
- Id7Ccc2H18UvwDTMRe78Vdwhh/RyXQM=
+ bh=FHqr1TVF3ufbo38zQakdQOBdWxqZfUmbI3vsj5ZzLbM=;
+ b=EeEjITWLOm3MU/4IbI/zAgRlee4HngVTSXesRCLm2SatBZ4y6uw4CHRsOddeYfFZEy5sEU
+ 2Mxk8YUWG+Pcy1LLz4qkF+NCvbfIX6+NoFzPc1xAMjp3mSRo4w79R0Kafd2IygffiaFu/m
+ yirBbJnQoww06Tcl0QaS3UtkNWeV+Pc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-188-j-ew9pROMzSJakllX3EOkQ-1; Fri, 08 Nov 2019 10:43:53 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-369-EbmLw8BONo6piafnQq-V3w-1; Fri, 08 Nov 2019 10:56:41 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 921B2800C72;
- Fri,  8 Nov 2019 15:43:52 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2CD891800D7B;
+ Fri,  8 Nov 2019 15:56:40 +0000 (UTC)
 Received: from [10.3.117.38] (ovpn-117-38.phx2.redhat.com [10.3.117.38])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id ED7AC600C9;
- Fri,  8 Nov 2019 15:43:42 +0000 (UTC)
-Subject: Re: [PATCH] configure: Check bzip2 is available
-To: Laszlo Ersek <lersek@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8A41A60856;
+ Fri,  8 Nov 2019 15:56:36 +0000 (UTC)
+Subject: Re: [PATCH v2 1/3] hw/block/pflash: Remove dynamic field width from
+ trace events
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
- "Daniel P . Berrange" <berrange@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>
-References: <20191108102805.8258-1-philmd@redhat.com>
- <862eb773-609d-4250-b46b-d922fc5a86a7@redhat.com>
+Cc: Max Reitz <mreitz@redhat.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>, qemu-block@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, qemu-trivial@nongnu.org
+References: <20191108144042.30245-1-philmd@redhat.com>
+ <20191108144042.30245-2-philmd@redhat.com>
 From: Eric Blake <eblake@redhat.com>
 Organization: Red Hat, Inc.
-Message-ID: <00cca0a5-7a51-f2d1-5120-821c335954b8@redhat.com>
-Date: Fri, 8 Nov 2019 09:43:42 -0600
+Message-ID: <9e7990b7-87ed-84d4-5256-8397bc25a1f4@redhat.com>
+Date: Fri, 8 Nov 2019 09:56:35 -0600
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <862eb773-609d-4250-b46b-d922fc5a86a7@redhat.com>
+In-Reply-To: <20191108144042.30245-2-philmd@redhat.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: j-ew9pROMzSJakllX3EOkQ-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: EbmLw8BONo6piafnQq-V3w-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,53 +74,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Nov 2019 15:44:00 -0000
+X-List-Received-Date: Fri, 08 Nov 2019 15:56:49 -0000
 
-On 11/8/19 5:01 AM, Laszlo Ersek wrote:
+On 11/8/19 8:40 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Since not all trace backends support dynamic field width in
+> format (dtrace via stap does not), replace by a static field
+> width instead.
+>=20
+> Reported-by: Eric Blake <eblake@redhat.com>
+> Buglink: https://bugs.launchpad.net/qemu/+bug/1844817
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>   hw/block/pflash_cfi01.c | 8 ++++----
+>   hw/block/pflash_cfi02.c | 8 ++++----
+>   hw/block/trace-events   | 8 ++++----
+>   3 files changed, 12 insertions(+), 12 deletions(-)
+>=20
+> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
+> index 566c0acb77..787d1196f2 100644
+> --- a/hw/block/pflash_cfi01.c
+> +++ b/hw/block/pflash_cfi01.c
+> @@ -276,7 +276,7 @@ static uint32_t pflash_data_read(PFlashCFI01 *pfl, hw=
+addr offset,
+>           DPRINTF("BUG in %s\n", __func__);
+>           abort();
+>       }
+> -    trace_pflash_data_read(offset, width << 1, ret);
+> +    trace_pflash_data_read(offset, width << 3, ret);
 
->>
->> Add a check in ./configure to warn the user if bzip2 is missing.
->=20
-> We've come full circle. Let me explain:
->=20
->>
->> Fixes: 536d2173b2b
->=20
-> So this makes me kinda grumpy. If you look at the v3 posting of the patch=
- that would later become commit 536d2173b2b:
->=20
->    http://mid.mail-archive.com/20190321113408.19929-8-lersek@redhat.com
->=20
-> you see the following note in the changelog:
->=20
->      - compress FD files with bzip2 rather than xz, so that decompression=
- at
->        "make install" time succeed on older build OSes too [Peter]
->=20
-> So I couldn't use xz because that was "too new" for some build OSes, but =
-now we also can't take bzip2 for granted because that's "too old" for some =
-other build OSes? This is ridiculous.
->=20
-> To be clear, my disagreement is only with the "Fixes" tag. For me, "Fixes=
-" stands for something that, in retrospect, can be proven to have been a bu=
-g at the time the code was *originally* committed. But, at the time, taking=
- "bzip2" for granted was *not* a bug. The conditions / circumstances have c=
-hanged more recently, and the assumption about bzip2 has been invalidated *=
-after* adding a dependency on bzip2.
->=20
-> Nonetheless, thank you for adapting the code to the potential absence of =
-bzip2. Can you perhaps go in some details in the commit message, near "not =
-included in default installations" and "freshly installed systems"? If we c=
-an, we should identify the exact distro release where this problem has been=
- encountered (and I wouldn't mind a link to the BZ or ticket under which pe=
-ople agreed to remove bzip2 from the default package set).
+Umm, why is width changing?  That's not mentioned in the commit message.
 
-bzip2 is no longer a favored compression.  If we are trying to pick a=20
-compression that is most likely to be present on any system, go with=20
-gzip.  If we are trying to pick a compression that packs tighter and=20
-uncompresses faster, pick xz or zstd.  But bzip2 does neither: it packs=20
-slightly tighter than gzip but has slower performance in doing so, and=20
-thus is no longer used as a default compression.
+> @@ -389,7 +389,7 @@ static uint32_t pflash_read(PFlashCFI01 *pfl, hwaddr =
+offset,
+>  =20
+>           break;
+>       }
+> -    trace_pflash_io_read(offset, width, width << 1, ret, pfl->cmd, pfl->=
+wcycle);
+> +    trace_pflash_io_read(offset, width << 3, ret, pfl->cmd, pfl->wcycle)=
+;
+
+And even this one is odd.  Matching up to the trace messages:
+
+
+> -pflash_io_read(uint64_t offset, int width, int fmt_width, uint32_t value=
+, uint8_t cmd, uint8_t wcycle) "offset:0x%04"PRIx64" width:%d value:0x%0*x =
+cmd:0x%02x wcycle:%u"
+
+> +pflash_io_read(uint64_t offset, int width, uint32_t value, uint8_t cmd, =
+uint8_t wcycle) "offset:0x%04"PRIx64" width:%d value:0x%04x cmd:0x%02x wcyc=
+le:%u"
+
+you are changing from:
+
+"%04"PRIx64" %d %0*x...", offset, width, width << 1, ret,...
+
+(where width<<1, ret matches *x)
+
+into
+
+"%04"PRIx64" %d %04x...", offset, width << 3, ret,...
+
+where you are now printing a different value for width.
 
 --=20
 Eric Blake, Principal Software Engineer
