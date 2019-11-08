@@ -1,68 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iT4sQ-0008Lm-GU
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Nov 2019 09:04:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34042)
+	id 1iT5Dw-0007Dg-5D
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Nov 2019 09:26:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38138)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1iT4sN-0008J9-LT
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 09:04:36 -0500
+ (envelope-from <philmd@redhat.com>) id 1iT5Dt-0007A0-3A
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 09:26:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <luc.michel@greensocs.com>) id 1iT4sM-0002EV-JH
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 09:04:35 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:58058)
+ (envelope-from <philmd@redhat.com>) id 1iT5Dr-0007I4-RC
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 09:26:49 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:28793
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <luc.michel@greensocs.com>)
- id 1iT4sJ-0002DQ-Dv; Fri, 08 Nov 2019 09:04:31 -0500
-Received: from [192.168.61.102] (lfbn-1-8165-82.w90-112.abo.wanadoo.fr
- [90.112.74.82])
- by beetle.greensocs.com (Postfix) with ESMTPSA id C188E96EF0;
- Fri,  8 Nov 2019 14:04:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1573221870;
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iT5Dr-0007Hu-NG
+ for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 09:26:47 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1573223207;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1iXA3v+10Q0q98qhuB75EcaFSp4c6O+HNINtTksGx6o=;
- b=xBN47fX1unoSwq2VKAZgB+7qLPSkBhRBlRjGx2o2/pinjVRzJFD1XrYTg8oPWVaQ4jNKUn
- Ix2gwKaAvyOqH0tnqIcqgD3Uq0Jj+lnt1rwFsOwmhdmbx/DProx864JjywSajWEVIYzL0u
- mZUMswMxFQikA9MeFm/u1g7HH5q1zGk=
-Subject: Re: [PATCH v2 2/2] configure: Check bzip2 is available
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, Laszlo Ersek <lersek@redhat.com>
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
- "Daniel P . Berrange" <berrange@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>
-References: <20191108114531.21518-1-philmd@redhat.com>
- <20191108114531.21518-3-philmd@redhat.com>
-From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <31d46dcc-e4b9-d4a9-ccd2-e357cd3964f7@greensocs.com>
-Date: Fri, 8 Nov 2019 15:04:29 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ content-transfer-encoding:content-transfer-encoding;
+ bh=8W3VjnwZihgA8y5clORFGnv7BxO2RxkGBcMPeB2hj7w=;
+ b=T6WijnFeov5XAtMGTRDQloWV2kXOJcNU8a6jNG1aB45jvgOzMrUq6cY+h90Nvxqkn/F7kZ
+ 54j5etof7hh3LEdt/s61UrnsEst0TLbTSMVi0kOgNpn26XCE3bATI1TlPoIzGU7YxYjh6g
+ reCIpM7p8isjDO0ZLqFPpMM6y8akYAs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-175-J-7Go_AUMnOQBseuoZ3l1Q-1; Fri, 08 Nov 2019 09:26:43 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BA0C4800C72;
+ Fri,  8 Nov 2019 14:26:42 +0000 (UTC)
+Received: from x1w.redhat.com (unknown [10.40.206.29])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 51ED9101E58D;
+ Fri,  8 Nov 2019 14:26:16 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org,
+	Eric Blake <eblake@redhat.com>
+Cc: qemu-trivial@nongnu.org, Max Reitz <mreitz@redhat.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Kevin Wolf <kwolf@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ qemu-block@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
+Subject: [PATCH 0/3] hw: Remove dynamic field width from trace event
+Date: Fri,  8 Nov 2019 15:26:10 +0100
+Message-Id: <20191108142613.26649-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20191108114531.21518-3-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-PH
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1573221870;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1iXA3v+10Q0q98qhuB75EcaFSp4c6O+HNINtTksGx6o=;
- b=H2JOp3OTf5T6JQTSQuQMFdOlPnBU4qf3DcwHxPYYxQbGbLJphaHTfHp8afEuKwKizQFx6p
- UlO6lMi5o2sVVsDyynFNsDeRK5CzbnSgMtgXc5VPHXRDHvBNotDhFiY7ZrJ2n3Q6r73jz+
- MfSDi9Igy4ZVGEl0GVOqQ8wDbm80SiI=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1573221870; a=rsa-sha256; cv=none;
- b=E6j+Rgc6Osyqchjj+4ibUVI/Bgd9xh8vzVf/LTrCOFOszHAgHId7YhQqAs5JrgHfhZlvc5
- ihgYnaAyuvlI9M0NmSvj8LkZtuX3o1G81YJ0svzyQTT9545vyQTB8pDMer+oDQu6iVbODI
- Wb4w0tWBa03hHU+pZBNsb/TeGb3fF7w=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: J-7Go_AUMnOQBseuoZ3l1Q-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 5.135.226.135
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,59 +67,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Nov 2019 14:04:37 -0000
+X-List-Received-Date: Fri, 08 Nov 2019 14:26:50 -0000
 
+Eric noted in [1] the dtrace via stap backend can not support
+the dynamic '*' width format.
+I'd really like to use dynamic width in trace event because the
+read/write accesses are easier to read but it is not a priority.
+Since next release is close, time to fix LP#1844817 [2].
 
+[1] https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg04720.html
+[2] https://bugs.launchpad.net/qemu/+bug/1844817
 
-On 11/8/19 12:45 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> The bzip2 tool is not included in default installations.
-> On freshly installed systems, ./configure succeeds but 'make'
-> might fail later:
->=20
->     BUNZIP2 pc-bios/edk2-i386-secure-code.fd.bz2
->   /bin/sh: bzip2: command not found
->   make: *** [Makefile:305: pc-bios/edk2-i386-secure-code.fd] Error 127
->   make: *** Deleting file 'pc-bios/edk2-i386-secure-code.fd'
->   make: *** Waiting for unfinished jobs....
->=20
-> Add a check in ./configure to warn the user if bzip2 is missing.
->=20
-> Fixes: 536d2173b2b
-> Reported-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> v2: use better English (Daniel)
-> (Not taking Daniel Reviewed-by because logic changed)
-> ---
->  configure | 4 ++++
->  1 file changed, 4 insertions(+)
->=20
-> diff --git a/configure b/configure
-> index 9b322284c3..2b419a8039 100755
-> --- a/configure
-> +++ b/configure
-> @@ -2147,6 +2147,7 @@ case " $target_list " in
->    ;;
->  esac
-> =20
-> +# Some firmware binaries are compressed with bzip2
-With this comment squashed in previous commit:
+Philippe Mathieu-Daud=C3=A9 (3):
+  hw/block/pflash: Remove dynamic field width from trace event
+  hw/mips/gt64xxx: Remove dynamic field width from trace event
+  trace: Forbid dynamic field width in event format
 
-Reviewed-by: Luc Michel <luc.michel@greensocs.com>
+ hw/block/pflash_cfi01.c       |  8 ++++----
+ hw/block/pflash_cfi02.c       |  8 ++++----
+ hw/mips/gt64xxx_pci.c         | 34 +++++++++++++++++-----------------
+ hw/block/trace-events         |  8 ++++----
+ hw/mips/trace-events          |  4 ++--
+ scripts/tracetool/__init__.py |  3 +++
+ 6 files changed, 34 insertions(+), 31 deletions(-)
 
+--=20
+2.21.0
 
->  for target in $target_list; do
->    case "$target" in
->      arm-softmmu | aarch64-softmmu | i386-softmmu | x86_64-softmmu)
-> @@ -2154,6 +2155,9 @@ for target in $target_list; do
->        ;;
->    esac
->  done
-> +if test "$edk2_blobs" =3D "yes" && ! has bzip2; then
-> +  error_exit "The bzip2 program is required for building QEMU"
-> +fi
-> =20
->  feature_not_found() {
->    feature=3D$1
->=20
 
