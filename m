@@ -1,65 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iT8Ia-0007uT-Kc
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Nov 2019 12:43:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45452)
+	id 1iU6lp-00071F-W3
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Nov 2019 05:18:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47511)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <lersek@redhat.com>) id 1iT8IY-0007uH-Bl
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 12:43:51 -0500
+ (envelope-from <mst@redhat.com>) id 1iU6lm-0006xW-Pb
+ for qemu-trivial@nongnu.org; Mon, 11 Nov 2019 05:18:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <lersek@redhat.com>) id 1iT8IX-0000e9-6g
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 12:43:50 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:47450
+ (envelope-from <mst@redhat.com>) id 1iU6ll-0000oH-Nj
+ for qemu-trivial@nongnu.org; Mon, 11 Nov 2019 05:18:02 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:51191
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <lersek@redhat.com>) id 1iT8IX-0000dn-31
- for qemu-trivial@nongnu.org; Fri, 08 Nov 2019 12:43:49 -0500
+ (Exim 4.71) (envelope-from <mst@redhat.com>) id 1iU6ll-0000nz-Jb
+ for qemu-trivial@nongnu.org; Mon, 11 Nov 2019 05:18:01 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1573235028;
+ s=mimecast20190719; t=1573467481;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=QpnJRWJE0qGmFpIo8tXqp6ZYbE2E1mdLJjO92tWc96Y=;
- b=LsDHTf32/U23mJlYMW8ddxnm2mqVeYz8qDxO58wET59g+p7Ol/qbOjqDWcnTS78uPsLl+a
- THOEjqNn1qoabmkuckFtpjUwFhzxKpBTLf2eOH3Mo/3SySxbVjdXyh8MvnP54upgDusdfP
- R/RbIQt4YC8Inu16LnrGU9KMOTiEyPI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-208-TLFB4pcLNUukvc4uyiSOsw-1; Fri, 08 Nov 2019 12:43:46 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7D3A6477;
- Fri,  8 Nov 2019 17:43:45 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-117-227.ams2.redhat.com
- [10.36.117.227])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3FC733D8C;
- Fri,  8 Nov 2019 17:43:38 +0000 (UTC)
-Subject: Re: [PATCH v2 2/2] configure: Check bzip2 is available
-To: =?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>, 
- Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org
-References: <20191108114531.21518-1-philmd@redhat.com>
- <20191108114531.21518-3-philmd@redhat.com>
- <20191108114847.GM182396@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <bc9c15f1-bb3f-5b5e-6b25-53821c2264c5@redhat.com>
-Date: Fri, 8 Nov 2019 18:43:38 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+ bh=/Z09O5HzS6QdzWa8EDPWyd2SK3M6EQ4wvljJa2g7nCc=;
+ b=hWJ0uE9rhZ9zv7G8J6mlSLhPgUqa9R4A+r0eel2XsqaEj93spUpkRSWJlpnN4w0F470FJk
+ 5WuLII2SeqLgR/xhxmJ1VugaerApvroroaNL0HUfcfDX53BReP7j4wD0fCVKf4iNd+oeAn
+ X87+V2v2doteVWDN2qGZSZQmOzAjhz4=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-105-NO8ZEugzPRaPrODNoSL-MA-1; Mon, 11 Nov 2019 05:16:47 -0500
+Received: by mail-qt1-f200.google.com with SMTP id 22so7665873qtw.10
+ for <qemu-trivial@nongnu.org>; Mon, 11 Nov 2019 02:16:47 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=uEKmjpMzFxYdumZRbv8JATTBMMWBUbghULtgERy0pbo=;
+ b=P6YhBu2gMChCG0dofbDfcH+66rXXwwnTi+pMIMgi/rkXqaY7oXwBbkABRFOe2xnDZ4
+ JhUUoIjERt2HeR4n7cEtbCGU9qzfcQa2/dfdJ32qEvBtxP1LXj9v6p++hKOY8KbaidXB
+ WVdYVVXarYc2sNbmz0zdavLC8gh5DGJvwwkh2QwJpjU7UQ7zm66vfyWOs9n+O9zcVSIH
+ 6+Xu0FwFPAznOXOLf9R1J82UnCe8Q+UqbP4um8sxIK7WDpPJnaRzkJJc7n/FyfX7VQQa
+ nwAgOp4/RGX38LBhtAzJHMsuI4ob1RfCggo14P1pyt88aC6KGmy+b36jP1hcltiJa9mL
+ ZQtw==
+X-Gm-Message-State: APjAAAVAPKo6FyMqsyusbRiQ6m2YZ3irkkqZ3AJS/MguYDwiGFoZskYR
+ 64zQXhrcMFwmLy0vDUs75lBvDz+DVAEEjoPCO7AE4LP8o6Bmya835fHczZJZ3l9SFl50PbeEEyK
+ AY32Def8tQ6q72OJA3A==
+X-Received: by 2002:aed:2be2:: with SMTP id e89mr24523501qtd.161.1573467407531; 
+ Mon, 11 Nov 2019 02:16:47 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyabDfL13W7SFtZyi7lBn3grH+4StX5UEIa479Fraj/bPzTyMc4miKFbqkFuFg3CpBLXTRIdA==
+X-Received: by 2002:aed:2be2:: with SMTP id e89mr24523488qtd.161.1573467407361; 
+ Mon, 11 Nov 2019 02:16:47 -0800 (PST)
+Received: from redhat.com (bzq-79-176-6-42.red.bezeqint.net. [79.176.6.42])
+ by smtp.gmail.com with ESMTPSA id w30sm8865823qtc.47.2019.11.11.02.16.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 Nov 2019 02:16:46 -0800 (PST)
+Date: Mon, 11 Nov 2019 05:16:41 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Klaus Birkelund <its@irrelevant.dk>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH 1/1] pci: pass along the return value of dma_memory_rw
+Message-ID: <20191111051055-mutt-send-email-mst@kernel.org>
+References: <20191011070141.188713-1-its@irrelevant.dk>
+ <20191011070141.188713-2-its@irrelevant.dk>
+ <455e6dee-8dd8-fae7-5a2f-e175b9d1cb8d@redhat.com>
+ <20191111093007.GA109346@apples.localdomain>
 MIME-Version: 1.0
-In-Reply-To: <20191108114847.GM182396@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: TLFB4pcLNUukvc4uyiSOsw-1
+In-Reply-To: <20191111093007.GA109346@apples.localdomain>
+X-MC-Unique: NO8ZEugzPRaPrODNoSL-MA-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=WINDOWS-1252
 Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,83 +86,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Nov 2019 17:43:51 -0000
+X-List-Received-Date: Mon, 11 Nov 2019 10:18:04 -0000
 
-On 11/08/19 12:48, Daniel P. Berrang=C3=A9 wrote:
-> On Fri, Nov 08, 2019 at 12:45:31PM +0100, Philippe Mathieu-Daud=C3=A9 wro=
-te:
->> The bzip2 tool is not included in default installations.
->> On freshly installed systems, ./configure succeeds but 'make'
->> might fail later:
->>
->>     BUNZIP2 pc-bios/edk2-i386-secure-code.fd.bz2
->>   /bin/sh: bzip2: command not found
->>   make: *** [Makefile:305: pc-bios/edk2-i386-secure-code.fd] Error 127
->>   make: *** Deleting file 'pc-bios/edk2-i386-secure-code.fd'
->>   make: *** Waiting for unfinished jobs....
->>
->> Add a check in ./configure to warn the user if bzip2 is missing.
->>
->> Fixes: 536d2173b2b
->> Reported-by: Thomas Huth <thuth@redhat.com>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->> ---
->> v2: use better English (Daniel)
->> (Not taking Daniel Reviewed-by because logic changed)
->> ---
->>  configure | 4 ++++
->>  1 file changed, 4 insertions(+)
+On Mon, Nov 11, 2019 at 10:30:07AM +0100, Klaus Birkelund wrote:
+> On Thu, Oct 24, 2019 at 01:13:36AM +0200, Philippe Mathieu-Daud=E9 wrote:
+> > On 10/11/19 9:01 AM, Klaus Jensen wrote:
+> > > Some might actually care about the return value of dma_memory_rw. So
+> > > let us pass it along instead of ignoring it.
+> > >=20
+> > > Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+> > > ---
+> > >   include/hw/pci/pci.h | 3 +--
+> > >   1 file changed, 1 insertion(+), 2 deletions(-)
+> > >=20
+> > > diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+> > > index f3f0ffd5fb78..4e95bb847857 100644
+> > > --- a/include/hw/pci/pci.h
+> > > +++ b/include/hw/pci/pci.h
+> > > @@ -779,8 +779,7 @@ static inline AddressSpace *pci_get_address_space=
+(PCIDevice *dev)
+> > >   static inline int pci_dma_rw(PCIDevice *dev, dma_addr_t addr,
+> > >                                void *buf, dma_addr_t len, DMADirectio=
+n dir)
+> > >   {
+> > > -    dma_memory_rw(pci_get_address_space(dev), addr, buf, len, dir);
+> > > -    return 0;
+> > > +    return dma_memory_rw(pci_get_address_space(dev), addr, buf, len,=
+ dir);
+> > >   }
+> > >   static inline int pci_dma_read(PCIDevice *dev, dma_addr_t addr,
+> > >=20
+> >=20
+> > Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 >=20
->> diff --git a/configure b/configure
->> index 9b322284c3..2b419a8039 100755
->> --- a/configure
->> +++ b/configure
->> @@ -2147,6 +2147,7 @@ case " $target_list " in
->>    ;;
->>  esac
->> =20
->> +# Some firmware binaries are compressed with bzip2
+> Gentle ping on this.
 >=20
-> Squash into previous patch
+> This fix is required for the nvme device to start passing some of the
+> nasty tests from blktests that flips bus mastering while doing I/O.
 >=20
->>  for target in $target_list; do
->>    case "$target" in
->>      arm-softmmu | aarch64-softmmu | i386-softmmu | x86_64-softmmu)
->> @@ -2154,6 +2155,9 @@ for target in $target_list; do
->>        ;;
->>    esac
->>  done
->> +if test "$edk2_blobs" =3D "yes" && ! has bzip2; then
->> +  error_exit "The bzip2 program is required for building QEMU"
->> +fi
->> =20
->>  feature_not_found() {
->>    feature=3D$1
 >=20
-> Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+> Cheers,
+> Klaus
 
-I don't feel too strongly about this, but how about a different improvement=
-:
+So I looked and it does not seem like anyone at all checks the
+return value. While this makes the patch safe, how come it
+helps anyone at all?
+Maybe this is just infrastructure to allow checks in the
+future, in this case do we need this for the freeze?
+Or can it wait until after the release?
 
-- keep the comment in this patch, but move it right before the "has
-bzip2" check
-- instead of "some firmware binaries", clearly state "edk2 blobs".
-
-Something like:
-
-+# Edk2 blobs are compressed with bzip2.
-+if test "$edk2_blobs" =3D "yes" && ! has bzip2; then
-+  error_exit "The bzip2 program is required for building QEMU"
-+fi
-
-So... now we have three variants: the one posted by Phil (v2), the one
-recommended by Dan (as an update to v2), and the one I suggest above (as
-a different update to v2). For simplicity, I'm fine with any one of the
-three variants going in.
-
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
-
-Thanks!
-Laszlo
+--=20
+MST
 
 
