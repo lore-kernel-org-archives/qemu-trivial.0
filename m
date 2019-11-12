@@ -1,57 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iUT4s-0004ut-VK
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Nov 2019 05:07:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53735)
+	id 1iUWbV-0005CD-F1
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Nov 2019 08:53:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52707)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iUT4q-0004qn-H5
- for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 05:07:13 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1iUWbT-0005BU-Il
+ for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 08:53:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iUT4p-0003GF-Fd
- for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 05:07:12 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:49925)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iUT4p-0003Fk-6M; Tue, 12 Nov 2019 05:07:11 -0500
-Received: from localhost.localdomain ([78.238.229.36]) by
- mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MnIxu-1i54Mr1TPg-00jH64; Tue, 12 Nov 2019 11:04:37 +0100
-From: Laurent Vivier <laurent@vivier.eu>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org,
- Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, Jan Kiszka <jan.kiszka@siemens.com>,
- Claudio Fontana <claudio.fontana@suse.com>
-Subject: [PULL 4/5] ivshmem-server: Clean up shmem on shutdown
-Date: Tue, 12 Nov 2019 11:04:28 +0100
-Message-Id: <20191112100429.11957-5-laurent@vivier.eu>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191112100429.11957-1-laurent@vivier.eu>
-References: <20191112100429.11957-1-laurent@vivier.eu>
+ (envelope-from <peter.maydell@linaro.org>) id 1iUWbS-0000rk-8x
+ for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 08:53:07 -0500
+Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233]:38694)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iUWbR-0000rP-VK
+ for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 08:53:06 -0500
+Received: by mail-oi1-x233.google.com with SMTP id a14so14817009oid.5
+ for <qemu-trivial@nongnu.org>; Tue, 12 Nov 2019 05:53:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=cOZA7fuckIXozgptk+Bar+NHWOMyVXYdWJdIWVRbTtI=;
+ b=mEUcDZQB26DpG0UZDqaNttJEFCx5CRB7V57iF19712mVjw34sfeOi41hRUQ/te9KNL
+ tnlcEQTHOG5GVqrLVtx5/bi137kHpwo1AOIQPBq+8aaYkD/J5DNmllGLLiXm4e3JEZEa
+ DXNGCaTbdQDqzJb8RH2wJPEYYvrQ4TtFE8uwp8zp9SYNVG/rqed0kLONOXxTYk+KRjMn
+ VROW+y6wKImF/9A9cNViKsh1Qr9k52XTGFaJMS8n5jUfaALQcTseNvX0r/XpQji8Co3A
+ LnHV67rs5JpmRfN0kxt0fDnFNxAWLswBTij+BOvBdsv2FgxUwzlA8xzkR0oUdp5TQQoH
+ AFEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=cOZA7fuckIXozgptk+Bar+NHWOMyVXYdWJdIWVRbTtI=;
+ b=O0gkDYT3ScHvl4dNAgTsGHcO+MCrahYTZdGZMdIxxw+Ar+m2aMMTeSLHDbzu7iXM8K
+ k6KIWN/JncVNzvBJhbVnFrS5JC/AITST9z+eXRPr00z5QQ7hH+sNZQXPc+wDH5s8v6qw
+ ysVdA8qD013ybCKzJHTHQf+xWzThg9yt6C/sFmGuvsmkfYzV5p507dlC3jvuCpVBGT2h
+ agqa4yMD71Vp9NWuWWcBw7fMgGisg09Og54T3yUu0oj7l+nJJVsXOD05aaUS0lEbPj9g
+ nCq91A+nw/nasT7u2nDgNNlx+9ScHq71Aoze/wRGq9Q9CrfsV/lRdm0Gtuao5Tm7RlaK
+ 3sNg==
+X-Gm-Message-State: APjAAAWwDjeqo6O6TxLI/jHtfVWgHCOl9SqbTSUxTqdjyrwkJLpM4+DR
+ gi7xc32Zn8Uykl941kIouzf46+5YXAe383VpedAqEQ==
+X-Google-Smtp-Source: APXvYqyiIp+tebqhLGed8sf/MeS5NHBxKRnUoaPx6janSNE/kXz2MXrI2Z/fofJHd4eU3RhUKZg42PEAs7PamPVnXy8=
+X-Received: by 2002:aca:cf12:: with SMTP id f18mr3982462oig.48.1573566785050; 
+ Tue, 12 Nov 2019 05:53:05 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:yLDYQSxCQhgDFCTR/0qu35xiPvOF8VZbC2a+Ebcv0epbuMBNkmx
- CP1zi4n5zQjav7AqnIWomZZz/quxwTZKg0/+qD2wWDu/u9pGpZ2iAUvUB0/43juXi39RWqX
- SDrm04iLaFFDF7n6vOA6zB/sGi+XuoEXdXZPsZgA74bx3vyYWIBOxXu7kIONW+FI444zeTj
- j0M7ggTQpem9C8IU1Yngw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Q0vKXxH5xSE=:dJQhLkVNwmWdEel8iZ9YYr
- JEfpHyETccKomt3HrInEOi7QBk5ZB9mn5bYlI3eQSZk6q5Je8q3kVlDNdDgbP+uY3Ik0TlOFD
- GC6UQoDMt0uyqqhKZyspZS4rCnURVlVP3Wz8Mgk5VycU2QoZUpDLOmwOP6X6gi93Fxrk1YTTI
- gaNdOG9KtJ04OqKU0KfeitYXzIysUyOa4qlrty3wWgTADpy5gZ0SQ11DvRNbtcoXC0ruE/HJ0
- 8qQRV/R1q8QMNNG1CMRCBq88Nkaz5DgAK9L5lR/aK3TSCAaC6IjqUrsazMo1pI0ub+A/LF9nE
- ExZf7sYfAmUfqCQOXCj6UGRNNPbiii2+0s93V3rDV5X1PFRCGjtkVOz04G15AC5749RnhC1RM
- ywY7VCykZlwBO7BCmYUnSWa1YLvSL/l6IGZDC5UGBKkQbX4pO5TRbS92ppunkWgVFVvIUi2Op
- emiVWWP4f/kMr0pl5CuM36a6h8IzR5FHnuYf1rWCM3bR9NWtUi7iW5pBd6vdLj+v8NUBv7ojE
- GpxZYrODM3zKzL+I5AG6PBN2xA1UDZ2GC9cbFTaNjlm8B7i4ejY4T65hqXBSmUl/AlN76TW/J
- +URqP/41GhWjiDkKMRy0qvCf9hBmUnUmDadSoGh+c2roRN3JkGB5E01PpoH1TLfaVDHI1ct90
- 6iKgxSc3xDQa9G494ly+b9nSZuEpH700UXyBn7d4DR/TE6enVCKM2K61DZqgjZXkU7biYPhDF
- +gtetCICcapJl7rkAWaV5we9NqzbGXcs9Jxmr4iiTKX7Yd0alYU9EZTqFeQTzaJHjxlcJoxqC
- mPXJSlURWeSDjTKbj1HgcCZ9NO54hsz8jYf4YODPa72kiw88hUay9qY6EJczBFMvbqCmOfR3a
- /MZ/h3sTb11BWBTsP12g==
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 212.227.17.10
+References: <20191112100429.11957-1-laurent@vivier.eu>
+In-Reply-To: <20191112100429.11957-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 12 Nov 2019 13:52:53 +0000
+Message-ID: <CAFEAcA_TvPZrjXmx0hC2jjEG_ur=QWqX8dD2T1VAi5LVRWbfWA@mail.gmail.com>
+Subject: Re: [PULL 0/5] Trivial branch patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Eduardo Habkost <ehabkost@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::233
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -63,47 +67,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Nov 2019 10:07:14 -0000
+X-List-Received-Date: Tue, 12 Nov 2019 13:53:08 -0000
 
-From: Jan Kiszka <jan.kiszka@siemens.com>
+On Tue, 12 Nov 2019 at 10:07, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit 9f2ce35dfa4ea4a31dbb765dd02bed2500891887:
+>
+>   Merge remote-tracking branch 'remotes/rth/tags/pull-tcg-20191111' into staging (2019-11-11 16:54:16 +0000)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+>
+> for you to fetch changes up to 5c62979ed5f75976ae215098566ebd93dfe4e22a:
+>
+>   ivshmem-server: Terminate also on SIGINT (2019-11-12 10:37:20 +0100)
+>
+> ----------------------------------------------------------------
+> Trivial fixes (20191112)
+> ivshmem-server, error messages (numa, qom) and
+> Makefile (bios-microvm) fixes
+>
+> ----------------------------------------------------------------
 
-So far, the server leaves the posix shared memory object behind when
-terminating, requiring the user to explicitly remove it in order to
-start a new instance.
+Applied, thanks.
 
-Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
-Reviewed-by: Claudio Fontana <claudio.fontana@suse.com>
-Message-Id: <d938a62c-7538-9d2b-cc0a-13b240ab9141@web.de>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- contrib/ivshmem-server/ivshmem-server.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+Please update the changelog at https://wiki.qemu.org/ChangeLog/4.2
+for any user-visible changes.
 
-diff --git a/contrib/ivshmem-server/ivshmem-server.c b/contrib/ivshmem-server/ivshmem-server.c
-index 77f97b209cb9..88daee812d65 100644
---- a/contrib/ivshmem-server/ivshmem-server.c
-+++ b/contrib/ivshmem-server/ivshmem-server.c
-@@ -353,6 +353,9 @@ ivshmem_server_start(IvshmemServer *server)
- err_close_sock:
-     close(sock_fd);
- err_close_shm:
-+    if (server->use_shm_open) {
-+        shm_unlink(server->shm_path);
-+    }
-     close(shm_fd);
-     return -1;
- }
-@@ -370,6 +373,9 @@ ivshmem_server_close(IvshmemServer *server)
-     }
- 
-     unlink(server->unix_sock_path);
-+    if (server->use_shm_open) {
-+        shm_unlink(server->shm_path);
-+    }
-     close(server->sock_fd);
-     close(server->shm_fd);
-     server->sock_fd = -1;
--- 
-2.21.0
-
+-- PMM
 
