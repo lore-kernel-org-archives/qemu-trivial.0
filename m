@@ -1,59 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iUT3h-0003TI-Vo
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Nov 2019 05:06:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53467)
+	id 1iUT4n-0004le-G7
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Nov 2019 05:07:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53694)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1iUT3f-0003PV-H9
- for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 05:06:00 -0500
+ (envelope-from <laurent@vivier.eu>) id 1iUT4l-0004iT-H2
+ for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 05:07:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1iUT3e-0002uC-EP
- for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 05:05:59 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:42235)
+ (envelope-from <laurent@vivier.eu>) id 1iUT4g-0003Dy-Ky
+ for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 05:07:07 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:48959)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1iUT3e-0002tt-5d; Tue, 12 Nov 2019 05:05:58 -0500
+ id 1iUT4g-0003DP-By; Tue, 12 Nov 2019 05:07:02 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue107 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1M4aEC-1iV1Ge40TW-001ecg; Tue, 12 Nov 2019 11:04:35 +0100
+ id 1MILru-1iip1u0vUC-00EMBo; Tue, 12 Nov 2019 11:04:38 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org,
  Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, Bruce Rogers <brogers@suse.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Stefano Garzarella <sgarzare@redhat.com>, Sergio Lopez <slp@redhat.com>
-Subject: [PULL 1/5] Makefile: install bios-microvm like other binary blobs
-Date: Tue, 12 Nov 2019 11:04:25 +0100
-Message-Id: <20191112100429.11957-2-laurent@vivier.eu>
+ Laurent Vivier <laurent@vivier.eu>, Jan Kiszka <jan.kiszka@siemens.com>,
+ Claudio Fontana <claudio.fontana@suse.com>,
+ Stefano Garzarella <sgarzare@redhat.com>
+Subject: [PULL 5/5] ivshmem-server: Terminate also on SIGINT
+Date: Tue, 12 Nov 2019 11:04:29 +0100
+Message-Id: <20191112100429.11957-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191112100429.11957-1-laurent@vivier.eu>
 References: <20191112100429.11957-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:wQcXvqEXPICCirYZlSZvjkx3LuTDZcRc7s3EElSKSd+fTn7WzjT
- tUJ9zljPWfz5aMWi3rs+SoDAmdCC/bZQ4x/SpUhhX77RNGYG+PCzYF9ZnnHixvcKUwzaMwE
- 5d0cdrYbzoE7lIKbYcr571PYuFyokWRATEBcXNSP7ufz0mMvNzO2EZb8XSyl9NqMgOTP6/9
- 69+Rh4blqz60h5hYjpyTw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:FGgFTlr4xOU=:wDyAspUSsh4YfTI6HTFB9R
- VNYU9RD9vF8qMTNjSx9XJOsLQKVM4IzAN/bW1Vfl2JBdynV+POi4z4FMRvYLboRkPZ/pvcnvB
- h3or7UMQtFSImsQ72GuW5nN/WkRWfsUDEePcXpqRdXh+2eh/JxQLCLNyOJAgKPscIGOLoPjMy
- KgG6GcYZhy5sHZNpwJeJJnepDlMZCTBqfgL3geTaAX5yCh/S89Gb9TSxpKmHEn8doWRlTEm6n
- ve+lEI7WR+gYtzEkF1yWa1rt3xOr68TBJFRF26w4L6oIPOvpN0+QZrWIdZ0/nCLOwl0/NEUfQ
- imosS59MLihzFYg71GbYD96x+ePViPlalP1ztBcUAzEW3mgaSgEjX+cIU6tLHnbsbsDPtmaqZ
- Zj6xF2S5EUfpKdl7VPG4C3VtQK4p1tNIx5FQHad6cT/QUPnhgrD9kAory8TfmvMymKB2OtAE0
- Wncnr36ZpGMyntxii9i8ItUseyuYhfZck5tCR60TQnZlEtG1k08yt8rKgbZlCnwJtjovj37OY
- QFz3Ha6rEnq2gmIKRN3oOa4KjfQweDA4wUjoTl3ULeUdFpIeowu/chnoE2nqk+7JXYgj4wWVL
- bJQh4z3lgjdm5tXiDibVooBZBl5vzKknp1+UMA5Y+VaGrsZ73B0nvoMa2XvTgcApjLcPEBPoH
- y+GzFKb3qFy3KfBiV7FYzMyLyxDgOqOmDBtIgGOU9HsR2ijCyy8HDnAse/dI3cQG8qJCZOoho
- uvSOumj+jyfJsltD6+8BR8kYuc9bSSeMFxQM7s6IFOOEVSGsACzd67HuAN9eryjuLSgyNUGuf
- HMZEWJPPeTRdX6QCp7nYUsaf4GFI9gKKJLvHWMTGI64wRirobcKvAB8iANNRZ8fnP0Yu1n1ke
- UD4bsp88Lkb8N4gD9pguj1SZDQCI+j6TZRAgsY0vo=
+X-Provags-ID: V03:K1:lCdy1/ah0HDEBjmlm8KfY2Kri3NDqzdrhbdMmkirTMD8Q241Yy+
+ kOMsT65UfB/3jxREvRcwDw7V4uLVkqBaXGhxLk9V471bqaFEzwl8gMsgDz2p9/2QN4Xj34O
+ Oq5T4xpd13/C+CsAGdYIPamYPPd7/uEdn9JKIKasJ7XT3w7CbEvL9+Wg6vSncFb9bhGXz4X
+ yVsio5+nEL+cgE4SdJ6pg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:nT1R0aW2zw0=:O4k4rXb9MR9LTPv9YHBj4s
+ b4x5FJmGzhdxoUZiZZDrP7+gyKr88c3Ig01yAtSBXdqXcgQlukE+/UoW4mHQQ3Y7UjWgLfJvQ
+ UsFk6wYYpuWTg/71cV68IVzTSFSAtQj8667WL2XzgQ8CJ1LtQaoFlzSI72i8MmthitoOXAUzd
+ XMKOgt72E0Nq6xo2wOYMJfCRuqbId03vDxjyNcI+KT+bVvmS4mtqYYST0g1iMvZG/M+UT2zVQ
+ 6UFtvfIoeVnYRh4u62KhHo3lgWLqYybbWgtDp0n1T1gbb7tlnXgbgH5Pa0gvChvGv07cqXdNC
+ x0ahzoDwiueTt2hUpl6wH031/YiSAK5Xor03kBah1NyHrwx4sO06HnhQWWZj7GNKlOGAozQta
+ rPkQ5foSAikwhUsf9ButLiKYMOYEJJfQP5RXwmoP0CjIvjPxJdecULMmBFiHeEAuVWGE+83km
+ gBQPsIfuVEv1v9B32tXmeiLtFADfpTRM1cnNgIuDNwX+YIK2RatG4OQO4d8kGhppSqnrs8T0O
+ hY5xijT90G4D0cqR07lnVGP/cqjsCV9vssEaRZ0I0YNWopaUSdIDZ4yQleKyv6I2Jo3PzGfji
+ ADw7e8si9ehBJfxkvdA6mXXIBHwcl1qzcT84yrHxB4JUCxnIwDx+wko+nfwbjGzE9T2vBTUHl
+ xoqozdn91LoSvFCc5bAUJP6xX2Yf7mlPYmRbZqmoXwDLbHmbpw9mUfMNsA+SXlwcl/cisM2cJ
+ Dzoju9spqmcPE/RlA7bXBVE0CuMgGzkcAMQH7qM9bFDKSBEOp3U7oJlkgsci3nFmwgiYUw8Kx
+ ssE9N1bAGZeVTx0pzsp1gBX8hUK1ZaY5OPDTEra4N5Z90kzvG02nNBchJeNjXEUIPxUZPfgOa
+ ooKQAZzZSmpeeP1cjh8A==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.17.10
+X-Received-From: 217.72.192.75
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -65,39 +64,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Nov 2019 10:06:00 -0000
+X-List-Received-Date: Tue, 12 Nov 2019 10:07:09 -0000
 
-From: Bruce Rogers <brogers@suse.com>
+From: Jan Kiszka <jan.kiszka@siemens.com>
 
-Commit 0d5fae3e52e introduced bios-microvm.bin but forgot to add
-it to the list of blobs being installed.
-Add it to the list of BLOBS that get installed.
+Allows to shutdown a foreground session via ctrl-c.
 
-Fixes: 0d5fae3e52e "roms: add microvm-bios (qboot) as binary"
-Signed-off-by: Bruce Rogers <brogers@suse.com>
-[PMD: Reworded description]
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+Reviewed-by: Claudio Fontana <claudio.fontana@suse.com>
 Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
-Reviewed-by: Sergio Lopez <slp@redhat.com>
-Message-Id: <20191102114346.6445-1-philmd@redhat.com>
+Message-Id: <99c1a7bd-1876-66a2-4b8e-d5bc86116fe7@web.de>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ contrib/ivshmem-server/main.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index aa9d1a42aa91..a8998fe5cf79 100644
---- a/Makefile
-+++ b/Makefile
-@@ -771,7 +771,7 @@ de-ch  es     fo  fr-ca  hu     ja  mk  pt  sl     tr \
- bepo    cz
+diff --git a/contrib/ivshmem-server/main.c b/contrib/ivshmem-server/main.c
+index 197c79c57ec2..e4cd35f74c61 100644
+--- a/contrib/ivshmem-server/main.c
++++ b/contrib/ivshmem-server/main.c
+@@ -223,8 +223,9 @@ main(int argc, char *argv[])
+     sa_quit.sa_handler = ivshmem_server_quit_cb;
+     sa_quit.sa_flags = 0;
+     if (sigemptyset(&sa_quit.sa_mask) == -1 ||
+-        sigaction(SIGTERM, &sa_quit, 0) == -1) {
+-        perror("failed to add SIGTERM handler; sigaction");
++        sigaction(SIGTERM, &sa_quit, 0) == -1 ||
++        sigaction(SIGINT, &sa_quit, 0) == -1) {
++        perror("failed to add signal handler; sigaction");
+         goto err;
+     }
  
- ifdef INSTALL_BLOBS
--BLOBS=bios.bin bios-256k.bin sgabios.bin vgabios.bin vgabios-cirrus.bin \
-+BLOBS=bios.bin bios-256k.bin bios-microvm.bin sgabios.bin vgabios.bin vgabios-cirrus.bin \
- vgabios-stdvga.bin vgabios-vmware.bin vgabios-qxl.bin vgabios-virtio.bin \
- vgabios-ramfb.bin vgabios-bochs-display.bin vgabios-ati.bin \
- ppc_rom.bin openbios-sparc32 openbios-sparc64 openbios-ppc QEMU,tcx.bin QEMU,cgthree.bin \
 -- 
 2.21.0
 
