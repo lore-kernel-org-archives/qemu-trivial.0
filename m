@@ -1,79 +1,100 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iUSHI-0003t6-Te
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Nov 2019 04:16:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45838)
+	id 1iUSYG-0000vK-0F
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Nov 2019 04:33:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48639)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1iUSH9-0003s6-O4
- for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 04:15:57 -0500
+ (envelope-from <laurent@vivier.eu>) id 1iUSYD-0000v1-0t
+ for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 04:33:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1iUSH8-0005Ku-OL
- for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 04:15:51 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:33231
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1iUSH8-0005KH-Kw
- for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 04:15:50 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1573550149;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=A+tdr1qp7+aUa0drhLGKEWaUxpgrWNl/wUgju6EPFRA=;
- b=Mp8WBJSuak/3crzQgRo9RdMiy4YBDNJWn3DbmmvaTzU858hbIHgG09ffzm2yZhS58CBJNt
- x7nqVqDN3UYfOkAiFP6I7jBqDFRvc2IrDaC5y91IqbY6Xk43qi0A/M+pkgbVOE3oL8wuWF
- QMpqXWvKIRgk2ByMlSqPFiwLo0khhxU=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-240-QqkYnRYXMbiExhKFR2VDmQ-1; Tue, 12 Nov 2019 04:15:46 -0500
-Received: by mail-wr1-f70.google.com with SMTP id f8so11568412wrq.6
- for <qemu-trivial@nongnu.org>; Tue, 12 Nov 2019 01:15:46 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=fo6RZMfIdlNBUYkZqR9uVjnc1J5hKM3Tz/Ts0c/kyt0=;
- b=Wz9aFoT8aTCZI9ADw7erk/QM6JM3kB7ADsYt4aoU+HmyGl83MQAlIds4NWj8wU9ex+
- OK3gSwNVbDth2CAZ8fzz6H+RD0xh6MrBvHfZ9xw7Pqu19klWfHua26+wM9vBaT+NTI5x
- /DwXBiUQHAEPGXZkDz8RIDQmh123CTw46QR1M33nLyPUU0EbNNh9SWbodTnqK5FMBPtq
- jNb3H0p53pjnzCf/kbPMz5j61whNl1o+ttT0jSzSo9jUV76Dur5yKuPyjUboU+dN2TqH
- zQuWPHwxB9TTqjkPM9Uh+hU/GtMZ+IHTFZy8EDhFzVf0T9WA4qEKCyDeQftOzrZmX7E0
- UCwg==
-X-Gm-Message-State: APjAAAXUnnUkmUWDmvE0SYCYY1a2lDB9tojnLRFHiAJcNF4HLaj+9tzb
- FSCZ6jvsGZH2gTVV0yV7vOSdj5KW2kMmp33832vPqf8EpDpGtVrPEdUaGlVNYQ138rqKe5Kq8Vj
- GJ3kAGKvYJy+2Mak7RA==
-X-Received: by 2002:adf:9506:: with SMTP id 6mr26103509wrs.274.1573550145048; 
- Tue, 12 Nov 2019 01:15:45 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyI3tpXZhgDWr1vuXVYvXPmeHJW4/Wol11TpBb/x+9EBOXYEMXJGcBYAHXNGauNC9YGjebT3g==
-X-Received: by 2002:adf:9506:: with SMTP id 6mr26103486wrs.274.1573550144682; 
- Tue, 12 Nov 2019 01:15:44 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:8c9d:1a6f:4730:367c?
- ([2001:b07:6468:f312:8c9d:1a6f:4730:367c])
- by smtp.gmail.com with ESMTPSA id p14sm20842897wrq.72.2019.11.12.01.15.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Nov 2019 01:15:44 -0800 (PST)
-Subject: Re: [PATCH qemu] scripts: Detect git worktrees for get_maintainer.pl
- --git
-To: Alexey Kardashevskiy <aik@ozlabs.ru>, qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-References: <20191112034532.69079-1-aik@ozlabs.ru>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <049148d5-0a35-e8bf-4a8b-714a3f1fb9d1@redhat.com>
-Date: Tue, 12 Nov 2019 10:15:44 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ (envelope-from <laurent@vivier.eu>) id 1iUSYB-0006Gh-Sb
+ for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 04:33:28 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:47869)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1iUSYB-0006Fp-JE; Tue, 12 Nov 2019 04:33:27 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1Mjjvp-1i1gUu3jP1-00lCaG; Tue, 12 Nov 2019 10:32:08 +0100
+Subject: Re: [PATCH] Makefile: install bios-microvm like other binary blobs
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, Sergio Lopez <slp@redhat.com>
+Cc: qemu-trivial@nongnu.org, Bruce Rogers <brogers@suse.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Stefano Garzarella <sgarzare@redhat.com>
+References: <20191102114346.6445-1-philmd@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <2598c193-61fc-725a-5bff-b542120eb634@vivier.eu>
+Date: Tue, 12 Nov 2019 10:32:06 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20191112034532.69079-1-aik@ozlabs.ru>
-Content-Language: en-US
-X-MC-Unique: QqkYnRYXMbiExhKFR2VDmQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20191102114346.6445-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:85Js8v4a6W1818izND4QK4qlR4f3DuE7gYSB6VOmPy0M+g7njQ7
+ Ens+b7LmSDWncJsCmDu3SH3XcpXhvquUJpvabKZ7LiQVJCzFngpawl/CV4fEORdoX/E3zLI
+ oM238ZeYI4yNpHT1hnozZxau15sGchUcBhFlZVvBRL4DlFCTT91Ef85UIlbt+StxEBp2t9N
+ vVN+5fSrsfvc6WMBnt1ng==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:bK9V1dqIP/o=:v5aC9KEPcqrhNWUBTCPbUu
+ ug0WtCPtGWhTaXbxb/gMuWIIfHbgdFKos3oqioOjCsBh+k3MVMIdEdHjPzExb+rapO/Ua38R+
+ mV8FNr3eUrt03yNeiiEk9FbUaA/sSriIDixg+HtEomk5NmQ3vO7qriTlsUlySjyBFakxGtVDN
+ pAjkxQXpaS599rzXis6nBcb/2ubB8p7qih51gf3b+LdIezxkSLRiHUYY3scFyTcVuz2yiEDvB
+ a0UM7Uuw5np6Zw4xOINZFydN21ENv+ce+nVKtdtR060NPptbRg4LP7vloGpaATL8g+u1sUwKs
+ 4tvOwSEiW3QeLnnBCe2ffjW0Wwj/84hJYYfUWwU1zqnTnQ7Ierd24v9ZKSd1pMRDOIMng4v5R
+ /5ijxq1y5ZrTHyXDCDoWwhAr+ysIAbCvktz+y+fv3hdF/wglma8EWoLSgbUVe4WDZdnV/NegE
+ gDsKC8wko4/z9zCKZQeIqO4KPZQ/ITi6/xMqexJzkZuIjLmmlMZUnL5cSGZRCnpSwr5LPWgJy
+ arV3FiXLOrZcGPSkz4Waso9VPxGtM38qSQENzxWZMmO2Z04emySc0a9rl5WVw2u3yGIabeZ/O
+ l+Vo8UoSMI1swDRLjXvRbF2b6iXiwqk3cai5UvFKsWuJSYFU9uTQcGIXbarvQ3OdQ1cR6hv+0
+ v9FCR/Y535bI4p1WmDwLMzRkbzwA42na07bImUNCr6o2A8XcOBifoo/p7eSUboMookAcnDghO
+ 9D+jq+4MeA3d6AR1NKpbt68IWcyvx02UQkvEpA9OgDRHLQnmEDlDDaJERXVtDpPWTnPIPVuUs
+ Os4OpZzGcuIDh9JyGNCtoLbfcThbY74vgG7abrYm2puBak1I0NFDm6t0MC0Aqa6YYsQQ3XvN3
+ Xu4EXS9ca1cKEVwRIHfTWpIjS8zwSSCfjJZuQ2rZU=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 217.72.192.74
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,35 +106,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Nov 2019 09:15:58 -0000
+X-List-Received-Date: Tue, 12 Nov 2019 09:33:30 -0000
 
-On 12/11/19 04:45, Alexey Kardashevskiy wrote:
-> Recent git versions support worktrees where .git is not a directory but
-> a file with a path to the .git repository; however the get_maintainer.pl
-> script only recognises the .git directory, let's fix it.
->=20
-> Signed-off-by: Alexey Kardashevskiy <aik@ozlabs.ru>
+Le 02/11/2019 à 12:43, Philippe Mathieu-Daudé a écrit :
+> From: Bruce Rogers <brogers@suse.com>
+> 
+> Commit 0d5fae3e52e introduced bios-microvm.bin but forgot to add
+> it to the list of blobs being installed.
+> Add it to the list of BLOBS that get installed.
+> 
+> Fixes: 0d5fae3e52e "roms: add microvm-bios (qboot) as binary"
+> Signed-off-by: Bruce Rogers <brogers@suse.com>
+> [PMD: Reworded description]
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  scripts/get_maintainer.pl | 2 +-
+>  Makefile | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/scripts/get_maintainer.pl b/scripts/get_maintainer.pl
-> index 71415e3c7061..27991eb1cfb4 100755
-> --- a/scripts/get_maintainer.pl
-> +++ b/scripts/get_maintainer.pl
-> @@ -81,7 +81,7 @@ my %VCS_cmds;
-> =20
->  my %VCS_cmds_git =3D (
->      "execute_cmd" =3D> \&git_execute_cmd,
-> -    "available" =3D> '(which("git") ne "") && (-d ".git")',
-> +    "available" =3D> '(which("git") ne "") && (-e ".git")',
->      "find_signers_cmd" =3D>
->  =09"git log --no-color --follow --since=3D\$email_git_since " .
->  =09    '--format=3D"GitCommit: %H%n' .
->=20
+> 
+> diff --git a/Makefile b/Makefile
+> index bd6376d295..755aa6c5f5 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -770,7 +770,7 @@ de-ch  es     fo  fr-ca  hu     ja  mk  pt  sl     tr \
+>  bepo    cz
+>  
+>  ifdef INSTALL_BLOBS
+> -BLOBS=bios.bin bios-256k.bin sgabios.bin vgabios.bin vgabios-cirrus.bin \
+> +BLOBS=bios.bin bios-256k.bin bios-microvm.bin sgabios.bin vgabios.bin vgabios-cirrus.bin \
+>  vgabios-stdvga.bin vgabios-vmware.bin vgabios-qxl.bin vgabios-virtio.bin \
+>  vgabios-ramfb.bin vgabios-bochs-display.bin vgabios-ati.bin \
+>  ppc_rom.bin openbios-sparc32 openbios-sparc64 openbios-ppc QEMU,tcx.bin QEMU,cgthree.bin \
+> 
 
-Queued, thanks.
+Applied to my trivial-patches branch.
 
-Paolo
-
+Thanks,
+Laurent
 
