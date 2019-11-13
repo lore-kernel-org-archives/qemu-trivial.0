@@ -1,61 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iUWbV-0005CD-F1
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Nov 2019 08:53:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52707)
+	id 1iUtqq-00020Z-29
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Nov 2019 09:42:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42398)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iUWbT-0005BU-Il
- for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 08:53:08 -0500
+ (envelope-from <hhan@redhat.com>) id 1iUsXH-0001BO-GE
+ for qemu-trivial@nongnu.org; Wed, 13 Nov 2019 08:18:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iUWbS-0000rk-8x
- for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 08:53:07 -0500
-Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233]:38694)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iUWbR-0000rP-VK
- for qemu-trivial@nongnu.org; Tue, 12 Nov 2019 08:53:06 -0500
-Received: by mail-oi1-x233.google.com with SMTP id a14so14817009oid.5
- for <qemu-trivial@nongnu.org>; Tue, 12 Nov 2019 05:53:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cOZA7fuckIXozgptk+Bar+NHWOMyVXYdWJdIWVRbTtI=;
- b=mEUcDZQB26DpG0UZDqaNttJEFCx5CRB7V57iF19712mVjw34sfeOi41hRUQ/te9KNL
- tnlcEQTHOG5GVqrLVtx5/bi137kHpwo1AOIQPBq+8aaYkD/J5DNmllGLLiXm4e3JEZEa
- DXNGCaTbdQDqzJb8RH2wJPEYYvrQ4TtFE8uwp8zp9SYNVG/rqed0kLONOXxTYk+KRjMn
- VROW+y6wKImF/9A9cNViKsh1Qr9k52XTGFaJMS8n5jUfaALQcTseNvX0r/XpQji8Co3A
- LnHV67rs5JpmRfN0kxt0fDnFNxAWLswBTij+BOvBdsv2FgxUwzlA8xzkR0oUdp5TQQoH
- AFEA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=cOZA7fuckIXozgptk+Bar+NHWOMyVXYdWJdIWVRbTtI=;
- b=O0gkDYT3ScHvl4dNAgTsGHcO+MCrahYTZdGZMdIxxw+Ar+m2aMMTeSLHDbzu7iXM8K
- k6KIWN/JncVNzvBJhbVnFrS5JC/AITST9z+eXRPr00z5QQ7hH+sNZQXPc+wDH5s8v6qw
- ysVdA8qD013ybCKzJHTHQf+xWzThg9yt6C/sFmGuvsmkfYzV5p507dlC3jvuCpVBGT2h
- agqa4yMD71Vp9NWuWWcBw7fMgGisg09Og54T3yUu0oj7l+nJJVsXOD05aaUS0lEbPj9g
- nCq91A+nw/nasT7u2nDgNNlx+9ScHq71Aoze/wRGq9Q9CrfsV/lRdm0Gtuao5Tm7RlaK
- 3sNg==
-X-Gm-Message-State: APjAAAWwDjeqo6O6TxLI/jHtfVWgHCOl9SqbTSUxTqdjyrwkJLpM4+DR
- gi7xc32Zn8Uykl941kIouzf46+5YXAe383VpedAqEQ==
-X-Google-Smtp-Source: APXvYqyiIp+tebqhLGed8sf/MeS5NHBxKRnUoaPx6janSNE/kXz2MXrI2Z/fofJHd4eU3RhUKZg42PEAs7PamPVnXy8=
-X-Received: by 2002:aca:cf12:: with SMTP id f18mr3982462oig.48.1573566785050; 
- Tue, 12 Nov 2019 05:53:05 -0800 (PST)
+ (envelope-from <hhan@redhat.com>) id 1iUsXD-0001vU-Mv
+ for qemu-trivial@nongnu.org; Wed, 13 Nov 2019 08:18:13 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:20182
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <hhan@redhat.com>) id 1iUsXD-0001v1-HS
+ for qemu-trivial@nongnu.org; Wed, 13 Nov 2019 08:18:11 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1573651090;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=oRlArMFWyud7kUjmh/m3vluscZB87Gsshm5D6gU2PGM=;
+ b=gbK2wX1tUc+VNkaZnMsDARsqrdBu91elnuH6JrYHX5EQkdGOJx6aWrkbeJGwJjbp3Q2fG8
+ Ai4O3x0JqAw/+Q/uUc8mrUGNIyrZDnj3K5jZYjqdKQj6NAyEUaLAmIJZYF96mm2w0toBx5
+ 6o0tw0+7rDC3ioTMOGGlOelYOptQijk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-264-41__45EZP42qd3yNM9WwNA-1; Wed, 13 Nov 2019 08:17:02 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id ED2FA8048E7
+ for <qemu-trivial@nongnu.org>; Wed, 13 Nov 2019 13:17:01 +0000 (UTC)
+Received: from localhost.localdomain.com (ovpn-12-128.pek2.redhat.com
+ [10.72.12.128])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C2C1C891C;
+ Wed, 13 Nov 2019 13:17:00 +0000 (UTC)
+From: Han Han <hhan@redhat.com>
+To: qemu-trivial@nongnu.org
+Cc: Han Han <hhan@redhat.com>
+Subject: [PATCH] scripts: Fix undefinited name 'file' error for python3
+Date: Wed, 13 Nov 2019 21:16:55 +0800
+Message-Id: <20191113131655.307847-1-hhan@redhat.com>
 MIME-Version: 1.0
-References: <20191112100429.11957-1-laurent@vivier.eu>
-In-Reply-To: <20191112100429.11957-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 12 Nov 2019 13:52:53 +0000
-Message-ID: <CAFEAcA_TvPZrjXmx0hC2jjEG_ur=QWqX8dD2T1VAi5LVRWbfWA@mail.gmail.com>
-Subject: Re: [PULL 0/5] Trivial branch patches
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Eduardo Habkost <ehabkost@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
- Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::233
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: 41__45EZP42qd3yNM9WwNA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-Mailman-Approved-At: Wed, 13 Nov 2019 09:42:31 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -67,33 +62,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Nov 2019 13:53:08 -0000
+X-List-Received-Date: Wed, 13 Nov 2019 13:18:16 -0000
 
-On Tue, 12 Nov 2019 at 10:07, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit 9f2ce35dfa4ea4a31dbb765dd02bed2500891887:
->
->   Merge remote-tracking branch 'remotes/rth/tags/pull-tcg-20191111' into staging (2019-11-11 16:54:16 +0000)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
->
-> for you to fetch changes up to 5c62979ed5f75976ae215098566ebd93dfe4e22a:
->
->   ivshmem-server: Terminate also on SIGINT (2019-11-12 10:37:20 +0100)
->
-> ----------------------------------------------------------------
-> Trivial fixes (20191112)
-> ivshmem-server, error messages (numa, qom) and
-> Makefile (bios-microvm) fixes
->
-> ----------------------------------------------------------------
+In python3, 'file' is no longer a keyword for file type object. So it
+will can error when run the scripts by python3:
 
-Applied, thanks.
+$ python3 ./scripts/vmstate-static-checker.py -s 4.0.json -d 4.1.json
+Traceback (most recent call last):
+  File "./scripts/vmstate-static-checker.py", line 431, in <module>
+    sys.exit(main())
+  File "./scripts/vmstate-static-checker.py", line 378, in main
+    parser.add_argument('-s', '--src', type=3Dfile, required=3DTrue,
+NameError: name 'file' is not defined
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/4.2
-for any user-visible changes.
+Replace file type to argparse.FileType('r').
 
--- PMM
+Signed-off-by: Han Han <hhan@redhat.com>
+---
+ scripts/vmstate-static-checker.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/scripts/vmstate-static-checker.py b/scripts/vmstate-static-che=
+cker.py
+index d3467288..14f199a0 100755
+--- a/scripts/vmstate-static-checker.py
++++ b/scripts/vmstate-static-checker.py
+@@ -375,9 +375,9 @@ def main():
+     help_text =3D "Parse JSON-formatted vmstate dumps from QEMU in files S=
+RC and DEST.  Checks whether migration from SRC to DEST QEMU versions would=
+ break based on the VMSTATE information contained within the JSON outputs. =
+ The JSON output is created from a QEMU invocation with the -dump-vmstate p=
+arameter and a filename argument to it.  Other parameters to QEMU do not ma=
+tter, except the -M (machine type) parameter."
+=20
+     parser =3D argparse.ArgumentParser(description=3Dhelp_text)
+-    parser.add_argument('-s', '--src', type=3Dfile, required=3DTrue,
++    parser.add_argument('-s', '--src', type=3Dargparse.FileType('r'), requ=
+ired=3DTrue,
+                         help=3D'json dump from src qemu')
+-    parser.add_argument('-d', '--dest', type=3Dfile, required=3DTrue,
++    parser.add_argument('-d', '--dest', type=3Dargparse.FileType('r'), req=
+uired=3DTrue,
+                         help=3D'json dump from dest qemu')
+     parser.add_argument('--reverse', required=3DFalse, default=3DFalse,
+                         action=3D'store_true',
+--=20
+2.23.0
+
 
