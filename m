@@ -1,46 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iVeOq-0006xb-83
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Nov 2019 11:24:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51744)
+	id 1iVeQ1-0000Qg-F4
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Nov 2019 11:25:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52337)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iVeOo-0006x4-Ei
- for qemu-trivial@nongnu.org; Fri, 15 Nov 2019 11:24:43 -0500
+ (envelope-from <thuth@redhat.com>) id 1iVePy-0000M2-H6
+ for qemu-trivial@nongnu.org; Fri, 15 Nov 2019 11:25:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iVeOm-0000QJ-Sp
- for qemu-trivial@nongnu.org; Fri, 15 Nov 2019 11:24:42 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:34748
+ (envelope-from <thuth@redhat.com>) id 1iVePw-0000wH-Tp
+ for qemu-trivial@nongnu.org; Fri, 15 Nov 2019 11:25:54 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:31537
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iVeOm-0000Q6-Pd
- for qemu-trivial@nongnu.org; Fri, 15 Nov 2019 11:24:40 -0500
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iVePw-0000vr-QJ
+ for qemu-trivial@nongnu.org; Fri, 15 Nov 2019 11:25:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1573835080;
+ s=mimecast20190719; t=1573835152;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=rVekyxgN4bMiTsZH/4w84/56lmlCAIprnqv5e2wLqAE=;
- b=KQRt1piOHv4zpGX/TScNeLXB4BrpDxaMBoksMxtkv38NHp55uBKd11/TxHrHkNKAkTQfLX
- NdBlglIuGYNQEk3FZZ6LtSNhRDWLsKTi+Icu7IoQ3j/4kLFJYHoxE+gZ7TPjI0JkYVi5wx
- Ely1nZm2LfVFrLArE9un8BTeiaJnetA=
+ bh=otxzYIfpCWpsQYyEylcULtfWltAjZadyTN7OYl8t4YQ=;
+ b=JIiHUIj777PwiMuRLoy/XHLTKOv/fbVI1ed3GfdPbsrfWJmoQf02czHvbdaWq3gFYrLTbl
+ v82xsfufiGMuE8vYrOl3WKPgoB/1pSNwPeseGf7QOPSvA5VLxvX72DQm2q1UAyRbuow8hF
+ fahX+JKQOzG5xBIAk15zZ3e0wRbFmfI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-440-6SrWiY4qPBmPr32446gpQA-1; Fri, 15 Nov 2019 11:24:37 -0500
+ us-mta-384-_8dLqASWPEy5trTUSo89_Q-1; Fri, 15 Nov 2019 11:25:49 -0500
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 18D291858F1D;
- Fri, 15 Nov 2019 16:24:36 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D4CEB8C980E;
+ Fri, 15 Nov 2019 16:25:47 +0000 (UTC)
 Received: from localhost.localdomain (ovpn-117-84.ams2.redhat.com
  [10.36.117.84])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2BC671036C81;
- Fri, 15 Nov 2019 16:24:29 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B815A1036C81;
+ Fri, 15 Nov 2019 16:25:39 +0000 (UTC)
 Subject: Re: [PATCH for-4.2] hw/i386: Fix compiler warning when CONFIG_IDE_ISA
  is disabled
-To: Peter Maydell <peter.maydell@linaro.org>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  QEMU Trivial <qemu-trivial@nongnu.org>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
@@ -48,17 +49,17 @@ Cc: QEMU Developers <qemu-devel@nongnu.org>,
 References: <20191115145049.26868-1-thuth@redhat.com>
  <CAFEAcA-EuQVBtr=BCE5sdHo+LMv8XchHUSPM=CgSYxPVryWKZg@mail.gmail.com>
  <273a3123-9eef-c78e-5b83-833a21e3988c@redhat.com>
- <CAFEAcA9N+T=M=5-xb3ahRMqD6oxhm5Lx55-1Mtk1vXsRJEomwA@mail.gmail.com>
+ <c7c45aed-76c0-9c17-72fb-6abceb9e5ff4@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <85b5fbcc-e06b-7ce2-0a97-7fdc156915cd@redhat.com>
-Date: Fri, 15 Nov 2019 17:12:01 +0100
+Message-ID: <be453a76-d5fe-62c3-6954-447be7fe646a@redhat.com>
+Date: Fri, 15 Nov 2019 17:13:19 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9N+T=M=5-xb3ahRMqD6oxhm5Lx55-1Mtk1vXsRJEomwA@mail.gmail.com>
+In-Reply-To: <c7c45aed-76c0-9c17-72fb-6abceb9e5ff4@redhat.com>
 Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: 6SrWiY4qPBmPr32446gpQA-1
+X-MC-Unique: _8dLqASWPEy5trTUSo89_Q-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
@@ -76,13 +77,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Nov 2019 16:24:43 -0000
+X-List-Received-Date: Fri, 15 Nov 2019 16:25:56 -0000
 
-On 15/11/2019 17.15, Peter Maydell wrote:
-> On Fri, 15 Nov 2019 at 16:08, Thomas Huth <thuth@redhat.com> wrote:
->>
+On 15/11/2019 17.13, Paolo Bonzini wrote:
+> On 15/11/19 16:54, Thomas Huth wrote:
 >> On 15/11/2019 16.54, Peter Maydell wrote:
 >>> On Fri, 15 Nov 2019 at 15:10, Thomas Huth <thuth@redhat.com> wrote:
+>>>>
+>>>> When CONFIG_IDE_ISA is disabled, compilation currently fails:
+>>>>
+>>>>  hw/i386/pc_piix.c: In function =E2=80=98pc_init1=E2=80=99:
+>>>>  hw/i386/pc_piix.c:81:9: error: unused variable =E2=80=98i=E2=80=99 [-=
+Werror=3Dunused-variable]
+>>>>
+>>>> Move the variable declaration to the right code block to avoid
+>>>> this problem.
+>>>>
+>>>> Fixes: 4501d317b50e ("hw/i386/pc: Extract pc_i8259_create()")
+>>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>>> ---
+>>>>  hw/i386/pc_piix.c | 3 +--
+>>>>  1 file changed, 1 insertion(+), 2 deletions(-)
+>>>>
+>>>> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+>>>> index 2aefa3b8df..d187db761c 100644
 >>>> --- a/hw/i386/pc_piix.c
 >>>> +++ b/hw/i386/pc_piix.c
 >>>> @@ -78,7 +78,6 @@ static void pc_init1(MachineState *machine,
@@ -110,18 +128,25 @@ i],
 >> Why? We're using -std=3Dgnu99 now, so this should not be an issue anymor=
 e.
 >=20
-> Consistency with the rest of the code base, which mostly
-> avoids this particular trick.
+> For now I can squash the following while we discuss coding standards. :)
+>=20
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index fa62244f4d..0130b8fb4e 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -244,7 +244,8 @@ static void pc_init1(MachineState *machine,
+>      }
+>  #ifdef CONFIG_IDE_ISA
+>  else {
+> -        for (int i =3D 0; i < MAX_IDE_BUS; i++) {
+> +        int i;
+> +        for (i =3D 0; i < MAX_IDE_BUS; i++) {
+>              ISADevice *dev;
+>              char busname[] =3D "ide.0";
+>              dev =3D isa_ide_init(isa_bus, ide_iobase[i], ide_iobase2[i],
 
-We've also got a few spots that use it...
-(run e.g.: grep -r 'for (int ' hw/* )
-
-> See the 'Declarations' section of CODING_STYLE.rst.
-
-OK, that's a point. But since this gnu99 is a rather new option that we
-just introduced less than a year ago, we should maybe think of whether
-we want to allow this for for-loops now, too (since IMHO it's quite a
-nice feature in gnu99).
+Yes, please do. I guess we won't update CODING_STYLE.rst during the hard
+freeze anymore ;-)
 
  Thomas
 
