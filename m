@@ -1,55 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iWcmJ-0002kk-Ni
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Nov 2019 03:52:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53611)
+	id 1iWd66-0001KP-Tv
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Nov 2019 04:13:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55859)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iWcmH-0002k0-B4
- for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 03:52:58 -0500
+ (envelope-from <armbru@redhat.com>) id 1iWd64-0001I4-Tf
+ for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 04:13:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iWcmF-0005aY-72
- for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 03:52:56 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:28747
+ (envelope-from <armbru@redhat.com>) id 1iWd63-0002N2-Sp
+ for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 04:13:24 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:49445
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iWcmE-0005ZH-Se
- for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 03:52:55 -0500
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1iWd63-0002Mk-Pl
+ for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 04:13:23 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574067173;
+ s=mimecast20190719; t=1574068403;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Uj//TRfL6/3wwgnBTxP9o2XPXQ/0l5M4gq/5/A9dFw8=;
- b=fXFx5Ir9GLnplgWugUp8lhEHR8SoTFMAuNxt1dfzxLuok753aWMFhZsGbL9hcQImYUcUyr
- 9WTPSY8iKeMZpIV4A+lmEWRxXGNrOTCrq5MK2H/N0GEYeQy7C0L2Zug8dGiQ8s8Ay9BlNR
- 653IiyLxCq+yDEO1WDJeSdF3C/4mMNc=
+ bh=4SXqocHGGObICQ0noNgGOSAzBTIvED8fRj2EMrEWyXg=;
+ b=i42A9j7F5bP+GctJ67Xmm4hOLPPDfn7UjsBaaUNZg9F4uiL9leVXjv50Fkyk7hdKDdGi+j
+ E2TsrYEZ03vzFjeq/TGqU79JkAv32GzYaCLnaJ4GMChnCOd9mHsefDKyJkIfkeWMdoowV1
+ o9NN6pOo9B6qOvJpfnf7tR4eot09ydQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-78-Pcsma_RuOJ2Mmz3u4vfcAQ-1; Mon, 18 Nov 2019 03:52:52 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-308-BbM8Zn0nNXmZ9F_Wp-UfGA-1; Mon, 18 Nov 2019 04:13:20 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E099395B25;
- Mon, 18 Nov 2019 08:52:50 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-200.ams2.redhat.com
- [10.36.116.200])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id EFC5561073;
- Mon, 18 Nov 2019 08:52:49 +0000 (UTC)
-Subject: Re: [PATCH] Modify tests to work with clang
-To: Taylor Simpson <tsimpson@quicinc.com>, qemu-devel@nongnu.org
-References: <1574032465-12186-1-git-send-email-tsimpson@quicinc.com>
-Cc: alex.bennee@linaro.org, QEMU Trivial <qemu-trivial@nongnu.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <bbad38fa-d2fa-2acd-7f01-eabae34fbc18@redhat.com>
-Date: Mon, 18 Nov 2019 09:52:47 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 45C9880268A;
+ Mon, 18 Nov 2019 09:13:19 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-97.ams2.redhat.com
+ [10.36.116.97])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9767760856;
+ Mon, 18 Nov 2019 09:13:16 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 4300C1138648; Mon, 18 Nov 2019 10:13:15 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Laszlo Ersek <lersek@redhat.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] buildfix: update texinfo menu
+References: <20191023101956.19120-1-kraxel@redhat.com>
+ <ba8b74e7-8c37-dc76-a77e-33448b698777@redhat.com>
+Date: Mon, 18 Nov 2019 10:13:15 +0100
+In-Reply-To: <ba8b74e7-8c37-dc76-a77e-33448b698777@redhat.com> (Laszlo Ersek's
+ message of "Sat, 16 Nov 2019 20:12:34 +0100")
+Message-ID: <87blt9y2c4.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <1574032465-12186-1-git-send-email-tsimpson@quicinc.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: Pcsma_RuOJ2Mmz3u4vfcAQ-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: BbM8Zn0nNXmZ9F_Wp-UfGA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=WINDOWS-1252
 Content-Transfer-Encoding: quoted-printable
@@ -67,52 +70,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Nov 2019 08:52:58 -0000
+X-List-Received-Date: Mon, 18 Nov 2019 09:13:26 -0000
 
-On 18/11/2019 00.14, Taylor Simpson wrote:
-> Signed-off-by: Taylor Simpson <tsimpson@quicinc.com>
-> ---
->  tests/tcg/multiarch/float_helpers.c | 2 --
->  tests/tcg/multiarch/linux-test.c    | 6 +++++-
->  2 files changed, 5 insertions(+), 3 deletions(-)
->=20
-> diff --git a/tests/tcg/multiarch/float_helpers.c b/tests/tcg/multiarch/fl=
-oat_helpers.c
-> index 8ee7903..bc530e5 100644
-> --- a/tests/tcg/multiarch/float_helpers.c
-> +++ b/tests/tcg/multiarch/float_helpers.c
-> @@ -79,11 +79,9 @@ char *fmt_16(uint16_t num)
-> =20
->  #ifndef SNANF
->  /* Signaling NaN macros, if supported.  */
-> -# if __GNUC_PREREQ(3, 3)
->  #  define SNANF (__builtin_nansf (""))
->  #  define SNAN (__builtin_nans (""))
->  #  define SNANL (__builtin_nansl (""))
-> -# endif
->  #endif
-> =20
->  static float f32_numbers[] =3D {
-> diff --git a/tests/tcg/multiarch/linux-test.c b/tests/tcg/multiarch/linux=
--test.c
-> index 673d7c8..8a7c15c 100644
-> --- a/tests/tcg/multiarch/linux-test.c
-> +++ b/tests/tcg/multiarch/linux-test.c
-> @@ -485,7 +485,11 @@ static void test_signal(void)
->      act.sa_flags =3D SA_SIGINFO;
->      chk_error(sigaction(SIGSEGV, &act, NULL));
->      if (setjmp(jmp_env) =3D=3D 0) {
-> -        *(uint8_t *)0 =3D 0;
-> +        /*
-> +         * clang requires volatile or it will turn this into a
-> +         * call to abort() instead of forcing a SIGSEGV.
-> +         */
-> +        *(volatile uint8_t *)0 =3D 0;
->      }
-> =20
->      act.sa_handler =3D SIG_DFL;
->=20
+Laszlo Ersek <lersek@redhat.com> writes:
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+> On 10/23/19 12:19, Gerd Hoffmann wrote:
+>> Build error message:
+>> qemu-doc.texi:34: node `Top' lacks menu item for `Recently removed featu=
+res' despite being its Up target
+>>=20
+>> Fixes: 3264ffced3d0 ("dirty-bitmaps: remove deprecated autoload paramete=
+r")
+>> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+>> ---
+>>  qemu-doc.texi | 1 +
+>>  1 file changed, 1 insertion(+)
+>>=20
+>> diff --git a/qemu-doc.texi b/qemu-doc.texi
+>> index 3c5022050f0f..3ddf5c0a6865 100644
+>> --- a/qemu-doc.texi
+>> +++ b/qemu-doc.texi
+>> @@ -44,6 +44,7 @@
+>>  * Security::
+>>  * Implementation notes::
+>>  * Deprecated features::
+>> +* Recently removed features::
+>>  * Supported build platforms::
+>>  * License::
+>>  * Index::
+>>=20
+>
+> Can this patch be included in v4.2.0-rc2 please?
+
+Cc'ing qemu-trivial again, might be a workable path into -rc2.
 
 
