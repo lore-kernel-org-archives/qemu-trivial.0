@@ -1,61 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iWeu5-00005D-De
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Nov 2019 06:09:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47446)
+	id 1iWfO3-0007uE-Fx
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Nov 2019 06:40:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52136)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iWeu2-0008RG-5G
- for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 06:09:07 -0500
+ (envelope-from <kraxel@redhat.com>) id 1iWfNz-0007mv-T4
+ for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 06:40:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iWeu0-0003WN-US
- for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 06:09:05 -0500
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:36460)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iWeu0-0003W0-Ok
- for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 06:09:04 -0500
-Received: by mail-ot1-x341.google.com with SMTP id f10so14145516oto.3
- for <qemu-trivial@nongnu.org>; Mon, 18 Nov 2019 03:09:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KbOVYI+ydVbw+ayeWHjOmyxuU9+KfHJGy84vYvqdy9s=;
- b=hSLu42dWg+4ySTpZ2I4mGW4pAAeTzFTUAAa83tYa9VD0jog+kuZE1CvsyT2Kx2bff4
- ANbPfEKiz67XlBMgmTYa+z4TPD8DffVadWv7GL/4zQl1/a6WAKMrYWyEuTElW9tD/xB3
- eA+B4QdYQzdEvpCiILlGAAx5HNNr47PDEeRFOiCfwqTGaOgGMTWl+jdHZORoP+hIzGfP
- DBUeS+xPoMQ9EGFMpF9bOR/Xlt1MIvQjdcM7mbN1A6a7bSuDjuJMpV/EUr/xZjbSkaSa
- wA7B5BB2RookBpOTluNE4P/a5ey3sya0IfvZMun1KstLHzUC5bhCpLlI/jLlfnc8ioHB
- 3qRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=KbOVYI+ydVbw+ayeWHjOmyxuU9+KfHJGy84vYvqdy9s=;
- b=t7+wi/fU7hTXYEqFbCM2KSbkjDOvfAq/3GEo8fRorjS5TZgIIlwAYioHDR7EZgpt7n
- vb0tlh1WCqj3+oIHPSkViC6QLsVx9mXrYIAR5HtNbmvKi3ZDv+pEJj7izyD/IQCCwLwc
- Lu6etf8zCbQIGA5yRqpbxjoS5QAB+Tp9itkEA/+xh9p3LFNEktsu0H7WRkSL7eepRU4B
- rcEnG8VI+2lJcJ3G6MUeiAZLx0nObFZyA2N6sjeK+UUVjPYLUmMkxFvXtjy4XTY3pGxz
- 9OlgddVm2cbKH4UFwEg9l0qn0fPmgn9onOWkGwLydEYrBjQZ9O/0dAh4aMw4QMQjnM47
- amcQ==
-X-Gm-Message-State: APjAAAXxA4FQMGefR47NTXCVCF0uTdTwTwjsc6rQiwl0Vc6OFgfTKu04
- h3za9Xes9M4eIaI07UeIoc3yWvTgz4DO/PYgXNJw6w==
-X-Google-Smtp-Source: APXvYqyUh19/Z0u4lDrtc79M/2whl5pbMNjbHkZkA2bvc5AEZdmux02VVcsEWgIaHd6btvg4Adp13zGOQNiMWuXc6ZE=
-X-Received: by 2002:a9d:7ac2:: with SMTP id m2mr22073430otn.135.1574075343680; 
- Mon, 18 Nov 2019 03:09:03 -0800 (PST)
-MIME-Version: 1.0
+ (envelope-from <kraxel@redhat.com>) id 1iWfNy-0007bh-TW
+ for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 06:40:03 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:59577
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kraxel@redhat.com>) id 1iWfNy-0007bX-Os
+ for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 06:40:02 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1574077202;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pg1/bvbhHvcRVPwsEkyPTDDEKMMYw49cVJ9kAzRM1ok=;
+ b=adoaxVVZ2tDO+lOyk1pPhx7k8gQijLzjyjc7r1rmzNvpiOq4UMYWU2O3ts9E5AZYdbOLL0
+ WQfAvOUEgg6TVutDeb3S5QFu1SKS4R+hCKaBY2327LIGf3JaoE5EIsCbF3r9UT+t/TUyGP
+ 3APXJtxDQGxe7LnDpd3CWtii7mBY13A=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-430-zHiEwF4rN5O8e9liX62qhg-1; Mon, 18 Nov 2019 06:40:00 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 851B8107ACC9;
+ Mon, 18 Nov 2019 11:39:59 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-67.ams2.redhat.com
+ [10.36.116.67])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 409594B6;
+ Mon, 18 Nov 2019 11:39:59 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 6367B16E2D; Mon, 18 Nov 2019 12:39:58 +0100 (CET)
+Date: Mon, 18 Nov 2019 12:39:58 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Markus Armbruster <armbru@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH] buildfix: update texinfo menu
+Message-ID: <20191118113958.y4z6upzjzvxtkjwe@sirius.home.kraxel.org>
 References: <20191023101956.19120-1-kraxel@redhat.com>
  <ba8b74e7-8c37-dc76-a77e-33448b698777@redhat.com>
  <87blt9y2c4.fsf@dusky.pond.sub.org>
-In-Reply-To: <87blt9y2c4.fsf@dusky.pond.sub.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Nov 2019 11:08:52 +0000
-Message-ID: <CAFEAcA8yQm7B7Cdif8GtzL_67io_-DvHZzV6H+Aiy+L0CaP2Rg@mail.gmail.com>
-Subject: Re: [PATCH] buildfix: update texinfo menu
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Laszlo Ersek <lersek@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, 
- QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::341
+ <CAFEAcA8yQm7B7Cdif8GtzL_67io_-DvHZzV6H+Aiy+L0CaP2Rg@mail.gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8yQm7B7Cdif8GtzL_67io_-DvHZzV6H+Aiy+L0CaP2Rg@mail.gmail.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: zHiEwF4rN5O8e9liX62qhg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -67,43 +73,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Nov 2019 11:09:07 -0000
+X-List-Received-Date: Mon, 18 Nov 2019 11:40:05 -0000
 
-On Mon, 18 Nov 2019 at 09:13, Markus Armbruster <armbru@redhat.com> wrote:
->
-> Laszlo Ersek <lersek@redhat.com> writes:
->
-> > On 10/23/19 12:19, Gerd Hoffmann wrote:
-> >> Build error message:
-> >> qemu-doc.texi:34: node `Top' lacks menu item for `Recently removed features' despite being its Up target
-> >>
-> >> Fixes: 3264ffced3d0 ("dirty-bitmaps: remove deprecated autoload parameter")
-> >> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-> >> ---
-> >>  qemu-doc.texi | 1 +
-> >>  1 file changed, 1 insertion(+)
-> >>
-> >> diff --git a/qemu-doc.texi b/qemu-doc.texi
-> >> index 3c5022050f0f..3ddf5c0a6865 100644
-> >> --- a/qemu-doc.texi
-> >> +++ b/qemu-doc.texi
-> >> @@ -44,6 +44,7 @@
-> >>  * Security::
-> >>  * Implementation notes::
-> >>  * Deprecated features::
-> >> +* Recently removed features::
-> >>  * Supported build platforms::
-> >>  * License::
-> >>  * Index::
-> >>
+On Mon, Nov 18, 2019 at 11:08:52AM +0000, Peter Maydell wrote:
+> On Mon, 18 Nov 2019 at 09:13, Markus Armbruster <armbru@redhat.com> wrote=
+:
 > >
-> > Can this patch be included in v4.2.0-rc2 please?
->
-> Cc'ing qemu-trivial again, might be a workable path into -rc2.
+> > Laszlo Ersek <lersek@redhat.com> writes:
+> >
+> > > On 10/23/19 12:19, Gerd Hoffmann wrote:
+> > >> Build error message:
+> > >> qemu-doc.texi:34: node `Top' lacks menu item for `Recently removed f=
+eatures' despite being its Up target
+> > >>
+> > >> Fixes: 3264ffced3d0 ("dirty-bitmaps: remove deprecated autoload para=
+meter")
+> > >> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+> > >> ---
+> > >>  qemu-doc.texi | 1 +
+> > >>  1 file changed, 1 insertion(+)
+> > >>
+> > >> diff --git a/qemu-doc.texi b/qemu-doc.texi
+> > >> index 3c5022050f0f..3ddf5c0a6865 100644
+> > >> --- a/qemu-doc.texi
+> > >> +++ b/qemu-doc.texi
+> > >> @@ -44,6 +44,7 @@
+> > >>  * Security::
+> > >>  * Implementation notes::
+> > >>  * Deprecated features::
+> > >> +* Recently removed features::
+> > >>  * Supported build platforms::
+> > >>  * License::
+> > >>  * Index::
+> > >>
+> > >
+> > > Can this patch be included in v4.2.0-rc2 please?
+> >
+> > Cc'ing qemu-trivial again, might be a workable path into -rc2.
+>=20
+> I've just applied it directly to master. (Not sure why none
+> of my build test machines complain about the error.)
 
-I've just applied it directly to master. (Not sure why none
-of my build test machines complain about the error.)
+Probably some build dependency for --enable-docs is missing.
+sphinx maybe?
 
-thanks
--- PMM
+cheers,
+  Gerd
+
 
