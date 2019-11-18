@@ -1,66 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iWlSw-0002W6-OA
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Nov 2019 13:09:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35764)
+	id 1iWlz1-00065v-Mz
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Nov 2019 13:42:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40216)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <lersek@redhat.com>) id 1iWlSu-0002ST-Qy
- for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 13:09:33 -0500
+ (envelope-from <eblake@redhat.com>) id 1iWlyy-00064m-OT
+ for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 13:42:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <lersek@redhat.com>) id 1iWlSt-0002qy-4j
- for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 13:09:32 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:29612
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <eblake@redhat.com>) id 1iWlyw-0000sC-TC
+ for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 13:42:39 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:25730
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <lersek@redhat.com>) id 1iWlSq-0002jw-1X
- for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 13:09:28 -0500
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1iWlyw-0000rZ-OQ
+ for qemu-trivial@nongnu.org; Mon, 18 Nov 2019 13:42:38 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574100565;
+ s=mimecast20190719; t=1574102557;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Nv6NvDeo2Od3giRB78KY5Ol3Ivn/MUlFOSVJLkG9CwM=;
- b=jMrQqq3SnBhZjwslPyOo7Lbr7VOjo+nk93m3g4TeOs62HEPLcda/E7xgYhULO0S5vBQbOn
- +xAUu9P2/sJyePhjzf45g7QyPS+SJvMMiJJ7tmFMNBJNThBZmSh+63rFjCsdj/E9mIES+n
- pOYtMtdksdTRSmEps6psqNkhboHBRf0=
+ bh=cEdJqtRj7FvPjTb3Rr2nH1P95ASTUqg5fccA2ZxkeG8=;
+ b=X8fUVoVfGddNRRd6cdTjVPPhXcXpJ2SaqrAw0NtSIpGB19R+iALR4bP+YiguPRgqx9Nzna
+ ffUQVQMy2X7Z5MarCQyeWEI4OFIFXQ7g/81YqlEDaAlHf5aUmuTlIciMljwnOzDX1pSJhP
+ T3cYgjVRpEWZolIYxKEEnBfsLfkuXa8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-275-f-ev4bMvMXOyGcLRQUKONg-1; Mon, 18 Nov 2019 13:09:20 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-380-yLYeoTojOdWw9CZHCSC9aQ-1; Mon, 18 Nov 2019 13:42:36 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AB5C28018A2;
- Mon, 18 Nov 2019 18:09:18 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-117-92.ams2.redhat.com
- [10.36.117.92])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CF55160D0B;
- Mon, 18 Nov 2019 18:09:14 +0000 (UTC)
-Subject: Re: [PATCH] buildfix: update texinfo menu
-To: Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>
-Cc: Gerd Hoffmann <kraxel@redhat.com>, QEMU Developers
- <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20191023101956.19120-1-kraxel@redhat.com>
- <ba8b74e7-8c37-dc76-a77e-33448b698777@redhat.com>
- <87blt9y2c4.fsf@dusky.pond.sub.org>
- <CAFEAcA8yQm7B7Cdif8GtzL_67io_-DvHZzV6H+Aiy+L0CaP2Rg@mail.gmail.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <4765031e-0946-51a7-b3a8-6ee8d8d37c15@redhat.com>
-Date: Mon, 18 Nov 2019 19:09:13 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 512368018A3;
+ Mon, 18 Nov 2019 18:42:34 +0000 (UTC)
+Received: from [10.3.116.221] (ovpn-116-221.phx2.redhat.com [10.3.116.221])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3EC291D9;
+ Mon, 18 Nov 2019 18:42:26 +0000 (UTC)
+Subject: Re: [PATCH v2 3/3] trace: Forbid dynamic field width in event format
+From: Eric Blake <eblake@redhat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, Max Reitz <mreitz@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
+References: <20191108144042.30245-1-philmd@redhat.com>
+ <20191108144042.30245-4-philmd@redhat.com>
+ <191fbe18-73b2-4d22-5540-8775688166a8@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <da2f1c61-1f99-8124-4485-c1ed4358d1e2@redhat.com>
+Date: Mon, 18 Nov 2019 12:42:25 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8yQm7B7Cdif8GtzL_67io_-DvHZzV6H+Aiy+L0CaP2Rg@mail.gmail.com>
+In-Reply-To: <191fbe18-73b2-4d22-5540-8775688166a8@redhat.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: f-ev4bMvMXOyGcLRQUKONg-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: yLYeoTojOdWw9CZHCSC9aQ-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,54 +75,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Nov 2019 18:09:34 -0000
+X-List-Received-Date: Mon, 18 Nov 2019 18:42:42 -0000
 
-On 11/18/19 12:08, Peter Maydell wrote:
-> On Mon, 18 Nov 2019 at 09:13, Markus Armbruster <armbru@redhat.com> wrote=
-:
+On 11/8/19 10:07 AM, Eric Blake wrote:
+> On 11/8/19 8:40 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>> Since not all trace backends support dynamic field width in
+>> format (dtrace via stap does not), forbid them.
 >>
->> Laszlo Ersek <lersek@redhat.com> writes:
+>> Add a check to refuse field width in new formats:
 >>
->>> On 10/23/19 12:19, Gerd Hoffmann wrote:
->>>> Build error message:
->>>> qemu-doc.texi:34: node `Top' lacks menu item for `Recently removed fea=
-tures' despite being its Up target
->>>>
->>>> Fixes: 3264ffced3d0 ("dirty-bitmaps: remove deprecated autoload parame=
-ter")
->>>> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
->>>> ---
->>>>  qemu-doc.texi | 1 +
->>>>  1 file changed, 1 insertion(+)
->>>>
->>>> diff --git a/qemu-doc.texi b/qemu-doc.texi
->>>> index 3c5022050f0f..3ddf5c0a6865 100644
->>>> --- a/qemu-doc.texi
->>>> +++ b/qemu-doc.texi
->>>> @@ -44,6 +44,7 @@
->>>>  * Security::
->>>>  * Implementation notes::
->>>>  * Deprecated features::
->>>> +* Recently removed features::
->>>>  * Supported build platforms::
->>>>  * License::
->>>>  * Index::
->>>>
->>>
->>> Can this patch be included in v4.2.0-rc2 please?
->>
->> Cc'ing qemu-trivial again, might be a workable path into -rc2.
 >=20
-> I've just applied it directly to master.
+>> +++ b/scripts/tracetool/__init__.py
+>> @@ -206,6 +206,7 @@ class Event(object):
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "\s*"
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "(?:(?:(=
+?P<fmt_trans>\".+),)?\s*(?P<fmt>\".+))?"
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "\s*")
+>> +=C2=A0=C2=A0=C2=A0 _DFWRE =3D re.compile(".*(%0?\*).*")
+>=20
+> The use of leading and trailing .* is pointless if the RE itself is used=
+=20
+> unanchored and where you only care if the () matched.
 
-Thank you!
-Laszlo
+Following up on this (based on an IRC conversation):
 
-> (Not sure why none
-> of my build test machines complain about the error.)
+re.match _is_ anchored by default, while re.search is unanchored
+
 >=20
-> thanks
-> -- PMM
+> This doesn't catch all valid uses of * in a printf format.=C2=A0 Better m=
+ight=20
+> be something like:
 >=20
+> _DFWRE =3D re.compile("%[\d\.\- +#']*\*")
+>=20
+> which matches only if there is a %, any number of characters that can=20
+> form a printf flag, as well as a numeric field width but dynamic precisio=
+n.
+>=20
+>=20
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if Event._DFWRE.match(fmt):
+
+Or put differently, if you want to drop the .* from the compiled regex,=20
+then you need to use .search(fmt) here rather than .match(fmt).
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
 
