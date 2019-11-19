@@ -1,76 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iWy0M-0007mo-IW
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Nov 2019 02:32:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43829)
+	id 1iX1M0-00009p-5k
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Nov 2019 06:07:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45479)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1iWy0K-0007lo-8F
- for qemu-trivial@nongnu.org; Tue, 19 Nov 2019 02:32:53 -0500
+ (envelope-from <yury-kotov@yandex-team.ru>) id 1iX1Ly-00005c-CV
+ for qemu-trivial@nongnu.org; Tue, 19 Nov 2019 06:07:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1iWy0J-0007V4-5A
- for qemu-trivial@nongnu.org; Tue, 19 Nov 2019 02:32:52 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:34245)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1iWy0I-0007UV-Sg
- for qemu-trivial@nongnu.org; Tue, 19 Nov 2019 02:32:51 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id e6so22558530wrw.1
- for <qemu-trivial@nongnu.org>; Mon, 18 Nov 2019 23:32:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=idWxf4dr3x+QCd6oeTBf2ZP1ObTu2n2ly9xqb/SaAEo=;
- b=Q/RqmEj2BtN5RP8O9nWKk/MwfoxA/fnN3oUxLuB7Kq6OEvjCB29X2BRP+TTMBhWR5C
- NFpybgClQeTJXztLIVIGB/HoeGzRe3HhNaVkzmBKTh5f23KDPuFQJ6qze4VSKvtZfXPN
- PKT3vFFFwGXzcf3aXD9A5VYglsZQcAAQOVc2hfhoK2BYMfgBVuED9Aszma0n9kduoeoA
- 3T6kFw6tlKBuL+DqmxvKHlT2wcNHsLZfKh9yf5EFYOXkfTp49cYD8zpHQmX/C/VMxsqf
- DJ14IkeXywuQ2hhupY2WeZXtGPBWIe/73fmOEqTic7QW0YPiIWHrN7YgmUr4d1OG3INB
- OgfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=idWxf4dr3x+QCd6oeTBf2ZP1ObTu2n2ly9xqb/SaAEo=;
- b=UyhelOxRXNFyl1yfr6wgra7S2k+LmBWNvV/JC6o1PBbMjAZLyJjjLoINKvh5MaI3bF
- c7a3LCzeZMmLIFZRwurfBEN6m2ZxQy6meTS4LttWr1FCIHE9AlN4qqRisC9UAlu52gbc
- RSPAl+flCPakrJrtNKUwXwYEWwiXPPACT6Os2z5uTnUK42oBIO2oMzdBMOHGgLVIeigy
- 2PoDE0n03Vwfuis8uAhV7qFVC14q4JIdkEriabci/RzxejMSfZwo+URMVKintLy5SqXx
- 06vLSK+UdQUpMIKJTqhfM4nH4QPVScQBqzibYzPLWx377nmg4lFb4I6P7mvhkDhQKJw4
- zapw==
-X-Gm-Message-State: APjAAAUEp6dclq03AxozWhHr/DLxWAmtQawEnYvaIENi8BtLITb3yUD8
- NXjwsFYllOYAfMChjj6vIqxuCg==
-X-Google-Smtp-Source: APXvYqztTyMuOmvHlSjxVx8UaW9KmNIKzCc/Zn0sqrAmtQG/VkPN+wP67D0ngs9a/jj6DQkOyEHyeg==
-X-Received: by 2002:a5d:6083:: with SMTP id w3mr17224312wrt.308.1574148769414; 
- Mon, 18 Nov 2019 23:32:49 -0800 (PST)
-Received: from [192.168.8.102] (64.red-79-149-204.dynamicip.rima-tde.net.
- [79.149.204.64])
- by smtp.gmail.com with ESMTPSA id t134sm2129017wmt.24.2019.11.18.23.32.47
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 18 Nov 2019 23:32:48 -0800 (PST)
-Subject: Re: [PATCH-for-4.2 v3 0/3] hw: Remove dynamic field width from trace
- events
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- qemu-block@nongnu.org, qemu-trivial@nongnu.org, Max Reitz
- <mreitz@redhat.com>, Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-References: <20191118210458.11959-1-philmd@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <98767bf6-7248-531c-f06a-17aae81acabe@linaro.org>
-Date: Tue, 19 Nov 2019 08:32:45 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (envelope-from <yury-kotov@yandex-team.ru>) id 1iX1Lx-0006bv-E7
+ for qemu-trivial@nongnu.org; Tue, 19 Nov 2019 06:07:26 -0500
+Received: from forwardcorp1j.mail.yandex.net ([5.45.199.163]:42962)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <yury-kotov@yandex-team.ru>)
+ id 1iX1Lr-0006VF-Mi; Tue, 19 Nov 2019 06:07:21 -0500
+Received: from mxbackcorp2j.mail.yandex.net (mxbackcorp2j.mail.yandex.net
+ [IPv6:2a02:6b8:0:1619::119])
+ by forwardcorp1j.mail.yandex.net (Yandex) with ESMTP id 3597A2E14AB;
+ Tue, 19 Nov 2019 14:07:14 +0300 (MSK)
+Received: from iva4-c987840161f8.qloud-c.yandex.net
+ (iva4-c987840161f8.qloud-c.yandex.net [2a02:6b8:c0c:3da5:0:640:c987:8401])
+ by mxbackcorp2j.mail.yandex.net (mxbackcorp/Yandex) with ESMTP id
+ VO2TDAzMyt-7DJqCYZQ; Tue, 19 Nov 2019 14:07:14 +0300
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
+ s=default; 
+ t=1574161634; bh=HrCcSpLJG9L8gXmV5hNBmH/yRn0z5OXCyYhqzp8ItS0=;
+ h=Message-Id:Date:Subject:To:From:Cc;
+ b=k0pGrV5tS39Xb6YzVgZ4T30m7ZNbBmgx5/vL/J9hGr/3PrXtkDcVIgh6spfrkIjHc
+ P4pTcBf76yfAAPGjaROS4h1UUSGyaP+HrXTOT2Fsx9goKQXnjjiZjNSZ7HJHduTWGm
+ BDCSO5TV7UElkK+qVtu0hVBo9sad2Nlv/jbeBWiE=
+Authentication-Results: mxbackcorp2j.mail.yandex.net;
+ dkim=pass header.i=@yandex-team.ru
+Received: from dynamic-red.dhcp.yndx.net (dynamic-red.dhcp.yndx.net
+ [2a02:6b8:0:408:a563:bec5:6346:ec71])
+ by iva4-c987840161f8.qloud-c.yandex.net (smtpcorp/Yandex) with ESMTPSA id
+ 92QNE4iRjf-7DWqLRrr; Tue, 19 Nov 2019 14:07:13 +0300
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
+ (Client certificate not present)
+From: Yury Kotov <yury-kotov@yandex-team.ru>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>
+Subject: [PATCH] monitor: Remove unused define
+Date: Tue, 19 Nov 2019 14:07:09 +0300
+Message-Id: <20191119110709.13827-1-yury-kotov@yandex-team.ru>
+X-Mailer: git-send-email 2.24.0
 MIME-Version: 1.0
-In-Reply-To: <20191118210458.11959-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::42b
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 5.45.199.163
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,16 +59,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Nov 2019 07:32:53 -0000
+X-List-Received-Date: Tue, 19 Nov 2019 11:07:27 -0000
 
-On 11/18/19 10:04 PM, Philippe Mathieu-Daudé wrote:
-> Philippe Mathieu-Daudé (3):
->   hw/block/pflash: Remove dynamic field width from trace events
->   hw/mips/gt64xxx: Remove dynamic field width from trace events
->   trace: Forbid dynamic field width in event format
+Remove the definition of QMP_ACCEPT_UNKNOWNS as it is unused since
+refactoring 5c678ee8d940
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Yury Kotov <yury-kotov@yandex-team.ru>
+---
+ monitor/misc.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
+diff --git a/monitor/misc.c b/monitor/misc.c
+index 3baa15f3bf..6680734ea1 100644
+--- a/monitor/misc.c
++++ b/monitor/misc.c
+@@ -106,9 +106,6 @@ struct MonFdset {
+     QLIST_ENTRY(MonFdset) next;
+ };
+=20
+-/* QMP checker flags */
+-#define QMP_ACCEPT_UNKNOWNS 1
+-
+ /* Protects mon_fdsets */
+ static QemuMutex mon_fdsets_lock;
+ static QLIST_HEAD(, MonFdset) mon_fdsets;
+--=20
+2.24.0
 
-r~
 
