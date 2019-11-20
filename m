@@ -1,80 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iX6Ib-0004rE-6F
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Nov 2019 11:24:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38235)
+	id 1iXTyK-0002Z0-Rn
+	for mharc-qemu-trivial@gnu.org; Wed, 20 Nov 2019 12:40:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57460)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iX6IY-0004mg-2S
- for qemu-trivial@nongnu.org; Tue, 19 Nov 2019 11:24:15 -0500
+ (envelope-from <thuth@redhat.com>) id 1iXTyI-0002WR-6H
+ for qemu-trivial@nongnu.org; Wed, 20 Nov 2019 12:40:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iX6IW-0007Pv-SV
- for qemu-trivial@nongnu.org; Tue, 19 Nov 2019 11:24:13 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:57289
+ (envelope-from <thuth@redhat.com>) id 1iXTyH-0006Hy-5a
+ for qemu-trivial@nongnu.org; Wed, 20 Nov 2019 12:40:54 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:30158
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iX6IW-0007Om-P5
- for qemu-trivial@nongnu.org; Tue, 19 Nov 2019 11:24:12 -0500
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iXTyH-0006Hd-2G
+ for qemu-trivial@nongnu.org; Wed, 20 Nov 2019 12:40:53 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574180652;
+ s=mimecast20190719; t=1574271652;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xjysQALhk+U9MIs4/dyzD9AOC+F1VbKkNCYM+APDpgs=;
- b=SIwJ+wG2FMT3+yJmndGpeql0gZYrozaQ/oBMvAHxua/9pfXKruEqqGWyO0qjyEVP8ojXI+
- 6fojMH+I+kLkeNkTe9534tGbPi7LkeYphdtUbxIoZiJhrB9HAkD720VU0syV09+6g+fBV7
- ByBkWNZrI0ofy/HeXGEpkq17nu2x+xA=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-1-zFXMOatoPhClS8r6XDBbOA-1; Tue, 19 Nov 2019 11:24:09 -0500
-Received: by mail-wr1-f70.google.com with SMTP id q6so18630701wrv.11
- for <qemu-trivial@nongnu.org>; Tue, 19 Nov 2019 08:24:09 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=jKRhxYVddBJ4HfBKN9Vv6aCtn3nJZeIh4nl5sSKteJs=;
- b=Z3ANlx0SI0qns6+zLqJGLUJ+PX7VLcKIZO2t+EQl6aRuOYVhR8IvxMZujzTsYJifIf
- 3BYS0ozJIyrQVoaY6EgpXntPF1saaaeKN8drGHAEhl4OCeWZnU21XOm30UyikgKEe4y1
- 5792mVMBLzq1KWvdLCwL9C+G1LZslBgclgK2ZgmtZPg5lbKKaRMXpXJrl4EVArIoo0RY
- GNeUJ5AK9/RVgjC1Z92LNNQdR0/ZDgsz3sWXAiYFo+L4um0xbJi38qpWDkRfLypnLyVf
- FqoxH7D7p8GSYrZfKQC0BIJPUR2rMk7eNBeT7pHC21hDiuG5MAceC3uAEEfvqqPf2b30
- 6naw==
-X-Gm-Message-State: APjAAAWdmrLx3k6XOj15K7c4c0HGIKPDUAfkAnEd6ahz3WJJTu/9jUKF
- dEgjHdxH9oDwIpwwyhoW+T/t38nQgimdHkWtL2NHyK3IQiUCDZLyJOzMVgGVwOHomIs+vPSgdqc
- Aldoh13OygqxHKzCB+w==
-X-Received: by 2002:a05:600c:294e:: with SMTP id
- n14mr6562065wmd.18.1574180648801; 
- Tue, 19 Nov 2019 08:24:08 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzwuwCf32+G1yVoTW4lxfXbu8F7JhgX8kaHWDQXhJeelptkKnvfjYYMwxJKCQDrHC9Qp/0haw==
-X-Received: by 2002:a05:600c:294e:: with SMTP id
- n14mr6562027wmd.18.1574180648612; 
- Tue, 19 Nov 2019 08:24:08 -0800 (PST)
-Received: from [192.168.1.35] (131.red-88-21-102.staticip.rima-tde.net.
- [88.21.102.131])
- by smtp.gmail.com with ESMTPSA id x8sm27445666wrm.7.2019.11.19.08.24.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 Nov 2019 08:24:08 -0800 (PST)
-Subject: Re: [PATCH v4 0/2] hw: Remove dynamic field width from trace events
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org,
- Aurelien Jarno <aurelien@aurel32.net>, Kevin Wolf <kwolf@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>, qemu-trivial@nongnu.org,
- Max Reitz <mreitz@redhat.com>, qemu-block@nongnu.org
-References: <20191118222746.31467-1-philmd@redhat.com>
- <20191119162112.GC229732@stefanha-x1.localdomain>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <f2a3704c-da84-5f88-14a3-74c0d6bd38c3@redhat.com>
-Date: Tue, 19 Nov 2019 17:24:06 +0100
+ bh=1x1vITYcH+j4amC61VFFXDoc8FVGMgkZiRQkm5tYDRI=;
+ b=LqANFnMj2ZESjcm3IpMb/lcD3UHRQlzH+AmfP/vtxA5/VseIzQh2DQY3ZOBfXloPAfxj+g
+ pv7RMhmSGfh/3q4oq0AJHg0tSyoTrlOY2mg+TNVs/s1cR1SWI8JqGJN+AQFbqaqlOHZWLb
+ eGHJMaST1NO2Uw5tIYyOXpUu0CEGZ5o=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-221-C_Ohe3utNbWEPbU09THACg-1; Wed, 20 Nov 2019 12:40:51 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C8299107ACC4;
+ Wed, 20 Nov 2019 17:40:49 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-122.ams2.redhat.com
+ [10.36.116.122])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9C37F65F78;
+ Wed, 20 Nov 2019 17:40:47 +0000 (UTC)
+Subject: Re: [PATCH] pseries: disable migration-test if /dev/kvm cannot be used
+To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Cole Robinson <crobinso@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20191120170955.242900-1-lvivier@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <e4cde90e-155e-d408-b34e-b50c137e6fad@redhat.com>
+Date: Wed, 20 Nov 2019 18:40:45 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ Thunderbird/68.2.0
 MIME-Version: 1.0
-In-Reply-To: <20191119162112.GC229732@stefanha-x1.localdomain>
+In-Reply-To: <20191120170955.242900-1-lvivier@redhat.com>
 Content-Language: en-US
-X-MC-Unique: zFXMOatoPhClS8r6XDBbOA-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: C_Ohe3utNbWEPbU09THACg-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -90,44 +71,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Nov 2019 16:24:15 -0000
+X-List-Received-Date: Wed, 20 Nov 2019 17:40:55 -0000
 
-On 11/19/19 5:21 PM, Stefan Hajnoczi wrote:
-> On Mon, Nov 18, 2019 at 11:27:44PM +0100, Philippe Mathieu-Daud=E9 wrote:
->> This series fixes LP#1844817 [2].
->>
->> (Eric noted in [1] the dtrace via stap backend can not support
->> the dynamic '*' width format.)
->>
->> If they are trivial/block/tracing pull in preparation, this
->> series will be happy to be taken, else it will go via mips-next.
->>
->> Thanks,
->>
->> Phil.
->>
->> [1] https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg04720.html
->> [2] https://bugs.launchpad.net/qemu/+bug/1844817
->>
->> Philippe Mathieu-Daud=E9 (2):
->>    hw/block/pflash: Remove dynamic field width from trace events
->>    hw/mips/gt64xxx: Remove dynamic field width from trace events
->>
->>   hw/block/pflash_cfi01.c |  8 ++++----
->>   hw/block/pflash_cfi02.c |  8 ++++----
->>   hw/mips/gt64xxx_pci.c   | 16 ++++++++--------
->>   hw/block/trace-events   |  8 ++++----
->>   hw/mips/trace-events    |  4 ++--
->>   5 files changed, 22 insertions(+), 22 deletions(-)
->>
->> --=20
->> 2.21.0
->>
+On 20/11/2019 18.09, Laurent Vivier wrote:
+> On ppc64, migration-test only works with kvm_hv, and we already
+> have a check to verify the module is loaded.
 >=20
-> Will send a pull request today.
+> kvm_hv module can be loaded in memory and /sys/module/kvm_hv exists,
+> but on some systems (like build systems) /dev/kvm can be missing
+> (by administrators choice).
+>=20
+> And as kvm_hv exists test-migration is started but QEMU falls back to
+> TCG because it cannot be used:
+>=20
+>     Could not access KVM kernel module: No such file or directory
+>     failed to initialize KVM: No such file or directory
+>     Back to tcg accelerator
+>=20
+> And as the test is done with TCG, it fails.
+>=20
+> As for s390x, we must check for the existence and the access rights
+> of /dev/kvm.
+>=20
+> Reported-by: Cole Robinson <crobinso@redhat.com>
+> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> ---
+>  tests/migration-test.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/tests/migration-test.c b/tests/migration-test.c
+> index ac780dffdaad..2b25ba6d77f6 100644
+> --- a/tests/migration-test.c
+> +++ b/tests/migration-test.c
+> @@ -1349,7 +1349,8 @@ int main(int argc, char **argv)
+>       * some reason)
+>       */
+>      if (g_str_equal(qtest_get_arch(), "ppc64") &&
+> -        access("/sys/module/kvm_hv", F_OK)) {
+> +        (access("/sys/module/kvm_hv", F_OK) ||
+> +         access("/dev/kvm", R_OK | W_OK))) {
+>          g_test_message("Skipping test: kvm_hv not available");
+>          return g_test_run();
+>      }
+>=20
 
-Oh thanks Stefan, but it was getting late for the RC tag so I sent a=20
-pull for these patches via mips-next a pair of hours ago:
-https://lists.gnu.org/archive/html/qemu-devel/2019-11/msg02894.html
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
