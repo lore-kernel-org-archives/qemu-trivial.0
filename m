@@ -1,64 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iZHAm-00007q-VZ
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Nov 2019 11:25:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39616)
+	id 1iZLzI-0006TM-2c
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Nov 2019 16:33:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59592)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iZHAl-00006K-1E
- for qemu-trivial@nongnu.org; Mon, 25 Nov 2019 11:25:12 -0500
+ (envelope-from <no-reply@patchew.org>) id 1iZLz9-0006Om-JL
+ for qemu-trivial@nongnu.org; Mon, 25 Nov 2019 16:33:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iZHAj-0005Wb-Qa
- for qemu-trivial@nongnu.org; Mon, 25 Nov 2019 11:25:10 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:58232
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1iZHAj-0005WT-N5
- for qemu-trivial@nongnu.org; Mon, 25 Nov 2019 11:25:09 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574699108;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=OpWoAuNt4KGKQ+xl08kYRnys7W7k/TC2TB6w3sXsqbw=;
- b=K/Fm9Zj+T2FUaZdfchOpOT7UwFMUqmq/178+RoZS2P7PMHyIt8MIjJ9zapr2PINdDxspbG
- BHzeGE/81YxOslJy+4KmRH29llTbNaxWe1C6F9dE/8l8MxX0+7jN7CUop7vRCf1p3QmkZr
- QWzqF38+CzLJkURbGGT5Ty7/+9HlsJY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-37-wpfFU-ZkN_iqxCvL7Q5oYA-1; Mon, 25 Nov 2019 11:25:06 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2F3D81856A8D;
- Mon, 25 Nov 2019 16:25:05 +0000 (UTC)
-Received: from [10.3.116.163] (ovpn-116-163.phx2.redhat.com [10.3.116.163])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 095631001B03;
- Mon, 25 Nov 2019 16:25:03 +0000 (UTC)
-Subject: Re: [PATCH 2/2] test-keyval: Tighten test of trailing crap after size
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, tao3.xu@intel.com
-References: <20191125133846.27790-1-armbru@redhat.com>
- <20191125133846.27790-3-armbru@redhat.com>
- <b06f7807-b201-5a52-5a62-b50f52cc4d44@redhat.com>
- <87fticdlbx.fsf@dusky.pond.sub.org>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <49d5c743-5ff4-2f5a-cb45-a6730d85f5f9@redhat.com>
-Date: Mon, 25 Nov 2019 10:25:03 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ (envelope-from <no-reply@patchew.org>) id 1iZLz3-0003Px-LC
+ for qemu-trivial@nongnu.org; Mon, 25 Nov 2019 16:33:27 -0500
+Resent-Date: Mon, 25 Nov 2019 16:33:26 -0500
+Resent-Message-Id: <E1iZLz3-0003Px-LC@eggs.gnu.org>
+Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21118)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1iZLyz-0003MD-1w; Mon, 25 Nov 2019 16:33:21 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1574717586; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=Bxs81lrMRsMjv0ZS92cHzCwW84EWa6IlpkbZpu98siJRDZznjmcNOFHJdCIxr7s8UP6gfV54Na5KjSQN0i8Jf3ojzG77MLyV37q9uRHZGsRlbQV6Vy/ZlEvqBq0E4DKP+XMXVTEu50fHzhaqPa8NpFCSwDsHethdJ+gALe4zaAk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1574717586;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=P09jt/NKVXeu/RFmc24GG83y+kuLChnmWhIvGcpLrrA=; 
+ b=UMCxLbXDz2x4zTn6S3axvwD+7J+5XSNTPts+1rwnoUshML0Oaob5+LuPisFb7e+G5DhJyGqXnwDWwMUG3Q5CqHfGBhBjBj9FpshdDAAJmmRBEuSA6MOVQl+A6lXA5f3wxsWB9abYVgP6BkOLEVc7F+WMZB2pi41KZVpxmPEr40I=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1574717584595140.59556692739864;
+ Mon, 25 Nov 2019 13:33:04 -0800 (PST)
+In-Reply-To: <20191125133846.27790-1-armbru@redhat.com>
+Reply-To: <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 0/2] Minor integer parsing improvements
+Message-ID: <157471758359.28656.8987702310062604783@37313f22b938>
 MIME-Version: 1.0
-In-Reply-To: <87fticdlbx.fsf@dusky.pond.sub.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: wpfFU-ZkN_iqxCvL7Q5oYA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: armbru@redhat.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, tao3.xu@intel.com
+Date: Mon, 25 Nov 2019 13:33:04 -0800 (PST)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 136.143.188.51
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -70,40 +57,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Nov 2019 16:25:12 -0000
+X-List-Received-Date: Mon, 25 Nov 2019 21:33:35 -0000
 
-On 11/25/19 9:31 AM, Markus Armbruster wrote:
-> Eric Blake <eblake@redhat.com> writes:
-> 
->> On 11/25/19 7:38 AM, Markus Armbruster wrote:
->>> test_keyval_visit_size() should test for trailing crap after size with
->>> and without suffix.  It does test the latter: "sz2=16Gi" has size
->>> "16G" followed by crap "i".  It fails to test the former "sz1=16E" is
->>> a syntactically valid size that overflows uint64_t.  Replace by
->>> "sz1=0Z".
->>>
-
->>>          /* Trailing crap */
->>> -    qdict = keyval_parse("sz1=16E,sz2=16Gi", NULL, &error_abort);
->>> +    qdict = keyval_parse("sz1=0Z,sz2=16Gi", NULL, &error_abort);
->>
->> Does this actually test both failure cases, or does it abort the parse
->> after the first failure (sz1=0Z) without ever hitting the second half
->> of the parse (sz2=16Gi)?
-> 
-> Fair question!  Short answer: yes, we check both.
-
-Aha - keyval_parse() just sets up the parser, while the check for double 
-failures is in the test code below.
-
-> Clear now?
-
-Yes.
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTEyNTEzMzg0Ni4yNzc5
+MC0xLWFybWJydUByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUg
+c29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUgaW5m
+b3JtYXRpb246CgpTdWJqZWN0OiBbUEFUQ0ggMC8yXSBNaW5vciBpbnRlZ2VyIHBhcnNpbmcgaW1w
+cm92ZW1lbnRzClR5cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDE5MTEyNTEzMzg0Ni4yNzc5MC0x
+LWFybWJydUByZWRoYXQuY29tCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNo
+CmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAtLWxv
+Y2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRy
+dWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3NjcmlwdHMv
+Y2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoK
+U3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0JwpmNGE1MGViIHRlc3Qta2V5dmFsOiBUaWdo
+dGVuIHRlc3Qgb2YgdHJhaWxpbmcgY3JhcCBhZnRlciBzaXplCjFiNzRiYzUgdXRpbC9jdXRpbHM6
+IFR1cm4gRklYTUUgY29tbWVudCBpbnRvIFFFTVVfQlVJTERfQlVHX09OKCkKCj09PSBPVVRQVVQg
+QkVHSU4gPT09CjEvMiBDaGVja2luZyBjb21taXQgMWI3NGJjNWJjNDVhICh1dGlsL2N1dGlsczog
+VHVybiBGSVhNRSBjb21tZW50IGludG8gUUVNVV9CVUlMRF9CVUdfT04oKSkKRVJST1I6IHRyYWls
+aW5nIHdoaXRlc3BhY2UKIzM1OiBGSUxFOiB1dGlsL2N1dGlscy5jOjUyMzoKKyAgICBRRU1VX0JV
+SUxEX0JVR19PTihzaXplb2YoaW50NjRfdCkgIT0gc2l6ZW9mKGxvbmcgbG9uZykpOyAkCgp0b3Rh
+bDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDI4IGxpbmVzIGNoZWNrZWQKClBhdGNoIDEvMiBoYXMg
+c3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFy
+ZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVD
+S1BBVENIIGluIE1BSU5UQUlORVJTLgoKMi8yIENoZWNraW5nIGNvbW1pdCBmNGE1MGViMTU4YWYg
+KHRlc3Qta2V5dmFsOiBUaWdodGVuIHRlc3Qgb2YgdHJhaWxpbmcgY3JhcCBhZnRlciBzaXplKQo9
+PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhl
+IGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MTEy
+NTEzMzg0Ni4yNzc5MC0xLWFybWJydUByZWRoYXQuY29tL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlw
+ZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBb
+aHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNo
+ZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 
 
