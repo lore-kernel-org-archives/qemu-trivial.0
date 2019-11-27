@@ -1,68 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iZUtd-0005DU-6x
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Nov 2019 02:04:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57984)
+	id 1iZzZ9-0006oJ-5a
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Nov 2019 10:49:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53765)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <hhan@redhat.com>) id 1iZToa-0004y7-30
- for qemu-trivial@nongnu.org; Tue, 26 Nov 2019 00:55:09 -0500
+ (envelope-from <thuth@redhat.com>) id 1iZzZ2-0006kt-1F
+ for qemu-trivial@nongnu.org; Wed, 27 Nov 2019 10:49:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <hhan@redhat.com>) id 1iZToX-0007dk-3u
- for qemu-trivial@nongnu.org; Tue, 26 Nov 2019 00:55:06 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:53835
+ (envelope-from <thuth@redhat.com>) id 1iZzZ1-0001lM-3g
+ for qemu-trivial@nongnu.org; Wed, 27 Nov 2019 10:49:11 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35765
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <hhan@redhat.com>) id 1iZToW-0007cg-KQ
- for qemu-trivial@nongnu.org; Tue, 26 Nov 2019 00:55:05 -0500
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iZzYz-0001kE-7G
+ for qemu-trivial@nongnu.org; Wed, 27 Nov 2019 10:49:11 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574747703;
+ s=mimecast20190719; t=1574869747;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=PhagN+LBgF+cj4p9K3LtyIxiU2ITBstkjXlWHpHb+AU=;
- b=UycfruJX1/7POC57MsnQoaXabNWePw77+p7k1CfLuqAE0keO51JzbQwq3NwtlhnSnelaaC
- XTmMnlsuTmIODjQfY5GZlxPteKDEpXwU85gsWpkeNwmKdbs+MgZVQ/yej9x7nDhkeFjrQX
- 8zU/QniX3w+mCmFCCyJMi/wOXx0w3ko=
-Received: from mail-ot1-f69.google.com (mail-ot1-f69.google.com
- [209.85.210.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-44-xqRWOQKdO9-whwgPVdWcjg-1; Tue, 26 Nov 2019 00:55:00 -0500
-Received: by mail-ot1-f69.google.com with SMTP id h15so9456314otr.11
- for <qemu-trivial@nongnu.org>; Mon, 25 Nov 2019 21:55:00 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to;
- bh=vEWh+2J5jrBt1wzRP2+XNoxibqPg4eFFJY9s/gJMNv4=;
- b=rHXHmB5UFpBt6YkzXw7qDvxPpeqU4b+n5mBVwzfB9ohNTxN7Ri44GGa83BxnSX1HNc
- leoot9sD9N3l2qwoXmcPFq4OP/OodpFbmm4vtDwl+9ubz80H7SS0jtc49Hj3qeCq6UEx
- jd/xszR8BFE5Rgz5VlrTHs4whQQVMxz3zoWEREBjk/OnxYEgPUe97pjiAg9kI050UChH
- lJ6qJDlF0NWCsFE2QOJZCjAIu4JuN41qG6w4uyglZQphFQq4spRYA+vLSD1zIY4MnzA1
- Zl70r0d0YFqqS//JiS0MY6NsVPm7dsKySrvUOAylJ+TiodL0eLO70Nb6v38l0R180Ev8
- 3G6Q==
-X-Gm-Message-State: APjAAAW6kT1G8TdIVRxmOQdjdwxLMGVSXnt/xE5UaB8Urqyt6koZ5DWP
- BZ1YagzUhON9X+uZHW4BSiBD3ZTS+bRFhAX8BtTnVgdLwLq8flHww2wQZISD3cfo/um7B8ZezRO
- 8u1folaUGnvIASUCIyDuGnKA6wwab18peCg==
-X-Received: by 2002:a05:6830:19a:: with SMTP id
- q26mr1131377ota.370.1574747700154; 
- Mon, 25 Nov 2019 21:55:00 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx4/dretCEBKQb3+/NqaZyYMEfhkJUx6rPCgsBLON7pMZXugWPyySRo5ksxZELfkIgBulCToOhw6Qz36OiBwvY=
-X-Received: by 2002:a05:6830:19a:: with SMTP id
- q26mr1131373ota.370.1574747699941; 
- Mon, 25 Nov 2019 21:54:59 -0800 (PST)
-MIME-Version: 1.0
-References: <20191113131655.307847-1-hhan@redhat.com>
-In-Reply-To: <20191113131655.307847-1-hhan@redhat.com>
-From: Han Han <hhan@redhat.com>
-Date: Tue, 26 Nov 2019 13:54:30 +0800
-Message-ID: <CAHjf+S_miSm8ygAadObVnif1LKejA=j9OFae+OV5Oe-TedByyQ@mail.gmail.com>
-Subject: Re: [PATCH] scripts: Fix undefinited name 'file' error for python3
-To: qemu-trivial@nongnu.org
-X-MC-Unique: xqRWOQKdO9-whwgPVdWcjg-1
+ to:to:cc:cc:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=F+sRT08xI0DgTWOHKpVZIo4KNrtxWrizu/wCM33a8W4=;
+ b=INafv6E3chutwO5D2JQiZ8nKqHjd/4vwfw6UMO4s6wXadxq4NagaIPSxp+x0t2ingfGdVw
+ M0yTyDZAK4xHbqE4kdp9wsXkKylsoGHim88ZoI3065Oob9SPIRH6yEy29wOv+T9W2yZNfF
+ l5CfSdGztviQy452Uc9GxpmBMOCX1N8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-300-Qkj3jAXvNPauElYJ5phUwQ-1; Wed, 27 Nov 2019 10:49:04 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D4A8112CAC08;
+ Wed, 27 Nov 2019 15:49:03 +0000 (UTC)
+Received: from thuth.com (ovpn-117-186.ams2.redhat.com [10.36.117.186])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E8F9B1001DE1;
+ Wed, 27 Nov 2019 15:48:59 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] travis.yml: Run tcg tests with tci
+Date: Wed, 27 Nov 2019 16:48:57 +0100
+Message-Id: <20191127154857.3590-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: Qkj3jAXvNPauElYJ5phUwQ-1
 X-Mimecast-Spam-Score: 0
-Content-Type: multipart/alternative; boundary="0000000000004431720598398503"
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 205.139.110.120
-X-Mailman-Approved-At: Tue, 26 Nov 2019 02:04:20 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,147 +61,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Nov 2019 05:55:09 -0000
+X-List-Received-Date: Wed, 27 Nov 2019 15:49:13 -0000
 
---0000000000004431720598398503
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+So far we only have compile coverage for tci. But since commit
+2f160e0f9797c7522bfd0d09218d0c9340a5137c ("tci: Add implementation
+for INDEX_op_ld16u_i64") has been included, we can also run the
+x86 TCG tests with tci, so let's enable them in Travis now.
 
-ping
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ .travis.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-On Wed, Nov 13, 2019 at 9:17 PM Han Han <hhan@redhat.com> wrote:
-
-> In python3, 'file' is no longer a keyword for file type object. So it
-> will can error when run the scripts by python3:
->
-> $ python3 ./scripts/vmstate-static-checker.py -s 4.0.json -d 4.1.json
-> Traceback (most recent call last):
->   File "./scripts/vmstate-static-checker.py", line 431, in <module>
->     sys.exit(main())
->   File "./scripts/vmstate-static-checker.py", line 378, in main
->     parser.add_argument('-s', '--src', type=3Dfile, required=3DTrue,
-> NameError: name 'file' is not defined
->
-> Replace file type to argparse.FileType('r').
->
-> Signed-off-by: Han Han <hhan@redhat.com>
-> ---
->  scripts/vmstate-static-checker.py | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/scripts/vmstate-static-checker.py
-> b/scripts/vmstate-static-checker.py
-> index d3467288..14f199a0 100755
-> --- a/scripts/vmstate-static-checker.py
-> +++ b/scripts/vmstate-static-checker.py
-> @@ -375,9 +375,9 @@ def main():
->      help_text =3D "Parse JSON-formatted vmstate dumps from QEMU in files
-> SRC and DEST.  Checks whether migration from SRC to DEST QEMU versions
-> would break based on the VMSTATE information contained within the JSON
-> outputs.  The JSON output is created from a QEMU invocation with the
-> -dump-vmstate parameter and a filename argument to it.  Other parameters =
-to
-> QEMU do not matter, except the -M (machine type) parameter."
->
->      parser =3D argparse.ArgumentParser(description=3Dhelp_text)
-> -    parser.add_argument('-s', '--src', type=3Dfile, required=3DTrue,
-> +    parser.add_argument('-s', '--src', type=3Dargparse.FileType('r'),
-> required=3DTrue,
->                          help=3D'json dump from src qemu')
-> -    parser.add_argument('-d', '--dest', type=3Dfile, required=3DTrue,
-> +    parser.add_argument('-d', '--dest', type=3Dargparse.FileType('r'),
-> required=3DTrue,
->                          help=3D'json dump from dest qemu')
->      parser.add_argument('--reverse', required=3DFalse, default=3DFalse,
->                          action=3D'store_true',
-> --
-> 2.23.0
->
->
-
+diff --git a/.travis.yml b/.travis.yml
+index c09b6a0014..b0b634d484 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -218,7 +218,7 @@ matrix:
+     # We manually include builds which we disable "make check" for
+     - env:
+         - CONFIG=3D"--enable-debug --enable-tcg-interpreter"
+-        - TEST_CMD=3D""
++        - TEST_CMD=3D"make run-tcg-tests-x86_64-softmmu V=3D1"
+=20
+=20
+     # We don't need to exercise every backend with every front-end
 --=20
-Best regards,
------------------------------------
-Han Han
-Quality Engineer
-Redhat.
-
-Email: hhan@redhat.com
-Phone: +861065339333
-
---0000000000004431720598398503
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">ping<br></div><br><div class=3D"gmail_quote"><div dir=3D"l=
-tr" class=3D"gmail_attr">On Wed, Nov 13, 2019 at 9:17 PM Han Han &lt;<a hre=
-f=3D"mailto:hhan@redhat.com">hhan@redhat.com</a>&gt; wrote:<br></div><block=
-quote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1=
-px solid rgb(204,204,204);padding-left:1ex">In python3, &#39;file&#39; is n=
-o longer a keyword for file type object. So it<br>
-will can error when run the scripts by python3:<br>
-<br>
-$ python3 ./scripts/vmstate-static-checker.py -s 4.0.json -d 4.1.json<br>
-Traceback (most recent call last):<br>
-=C2=A0 File &quot;./scripts/vmstate-static-checker.py&quot;, line 431, in &=
-lt;module&gt;<br>
-=C2=A0 =C2=A0 sys.exit(main())<br>
-=C2=A0 File &quot;./scripts/vmstate-static-checker.py&quot;, line 378, in m=
-ain<br>
-=C2=A0 =C2=A0 parser.add_argument(&#39;-s&#39;, &#39;--src&#39;, type=3Dfil=
-e, required=3DTrue,<br>
-NameError: name &#39;file&#39; is not defined<br>
-<br>
-Replace file type to argparse.FileType(&#39;r&#39;).<br>
-<br>
-Signed-off-by: Han Han &lt;<a href=3D"mailto:hhan@redhat.com" target=3D"_bl=
-ank">hhan@redhat.com</a>&gt;<br>
----<br>
-=C2=A0scripts/vmstate-static-checker.py | 4 ++--<br>
-=C2=A01 file changed, 2 insertions(+), 2 deletions(-)<br>
-<br>
-diff --git a/scripts/vmstate-static-checker.py b/scripts/vmstate-static-che=
-cker.py<br>
-index d3467288..14f199a0 100755<br>
---- a/scripts/vmstate-static-checker.py<br>
-+++ b/scripts/vmstate-static-checker.py<br>
-@@ -375,9 +375,9 @@ def main():<br>
-=C2=A0 =C2=A0 =C2=A0help_text =3D &quot;Parse JSON-formatted vmstate dumps =
-from QEMU in files SRC and DEST.=C2=A0 Checks whether migration from SRC to=
- DEST QEMU versions would break based on the VMSTATE information contained =
-within the JSON outputs.=C2=A0 The JSON output is created from a QEMU invoc=
-ation with the -dump-vmstate parameter and a filename argument to it.=C2=A0=
- Other parameters to QEMU do not matter, except the -M (machine type) param=
-eter.&quot;<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0parser =3D argparse.ArgumentParser(description=3Dhelp_t=
-ext)<br>
--=C2=A0 =C2=A0 parser.add_argument(&#39;-s&#39;, &#39;--src&#39;, type=3Dfi=
-le, required=3DTrue,<br>
-+=C2=A0 =C2=A0 parser.add_argument(&#39;-s&#39;, &#39;--src&#39;, type=3Dar=
-gparse.FileType(&#39;r&#39;), required=3DTrue,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0help=3D&#39;json dump from src qemu&#39;)<br>
--=C2=A0 =C2=A0 parser.add_argument(&#39;-d&#39;, &#39;--dest&#39;, type=3Df=
-ile, required=3DTrue,<br>
-+=C2=A0 =C2=A0 parser.add_argument(&#39;-d&#39;, &#39;--dest&#39;, type=3Da=
-rgparse.FileType(&#39;r&#39;), required=3DTrue,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0help=3D&#39;json dump from dest qemu&#39;)<br>
-=C2=A0 =C2=A0 =C2=A0parser.add_argument(&#39;--reverse&#39;, required=3DFal=
-se, default=3DFalse,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0action=3D&#39;store_true&#39;,<br>
--- <br>
-2.23.0<br>
-<br>
-</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
-mail_signature"><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr=
-">Best regards,</div><div dir=3D"ltr">-----------------------------------<b=
-r></div><div dir=3D"ltr">Han Han<br>Quality Engineer<br>Redhat.<br><br>Emai=
-l: <a href=3D"mailto:hhan@redhat.com" target=3D"_blank">hhan@redhat.com</a>=
-<br>Phone: +861065339333<br></div></div></div></div></div></div>
-
---0000000000004431720598398503--
+2.18.1
 
 
