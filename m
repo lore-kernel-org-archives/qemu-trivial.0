@@ -1,55 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iZzZ9-0006oJ-5a
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Nov 2019 10:49:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53765)
+	id 1iZzb9-0008Up-Bb
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Nov 2019 10:51:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54037)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iZzZ2-0006kt-1F
- for qemu-trivial@nongnu.org; Wed, 27 Nov 2019 10:49:12 -0500
+ (envelope-from <thuth@redhat.com>) id 1iZzb6-0008R4-E4
+ for qemu-trivial@nongnu.org; Wed, 27 Nov 2019 10:51:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iZzZ1-0001lM-3g
- for qemu-trivial@nongnu.org; Wed, 27 Nov 2019 10:49:11 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35765
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <thuth@redhat.com>) id 1iZzb5-0002sm-ED
+ for qemu-trivial@nongnu.org; Wed, 27 Nov 2019 10:51:20 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:59027
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iZzYz-0001kE-7G
- for qemu-trivial@nongnu.org; Wed, 27 Nov 2019 10:49:11 -0500
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iZzb5-0002qr-Ag
+ for qemu-trivial@nongnu.org; Wed, 27 Nov 2019 10:51:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574869747;
+ s=mimecast20190719; t=1574869876;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding;
- bh=F+sRT08xI0DgTWOHKpVZIo4KNrtxWrizu/wCM33a8W4=;
- b=INafv6E3chutwO5D2JQiZ8nKqHjd/4vwfw6UMO4s6wXadxq4NagaIPSxp+x0t2ingfGdVw
- M0yTyDZAK4xHbqE4kdp9wsXkKylsoGHim88ZoI3065Oob9SPIRH6yEy29wOv+T9W2yZNfF
- l5CfSdGztviQy452Uc9GxpmBMOCX1N8=
+ bh=fMYtqfEPtvwR1oq2gVG2Msg0FfbaqLatOFvY14i/d6I=;
+ b=eIIODQ9vY7OURgQJ3+E09ZYEm6Yc9NZOMxdQQMSHsgoazZKotxgC9uMbdRtn09oKSDp6eP
+ MkXcuYfgwcHat5SiLem/ipejARI/RhHuzonlAeJT6wK/5yQ72Ovm8Lu5hBEVEQhcvzMsjw
+ MkWocZWtVrCoRoExi1qWb+x1WP3puqY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-300-Qkj3jAXvNPauElYJ5phUwQ-1; Wed, 27 Nov 2019 10:49:04 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-311-nhUGtkGTMm-o17djqDQqlQ-1; Wed, 27 Nov 2019 10:51:10 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D4A8112CAC08;
- Wed, 27 Nov 2019 15:49:03 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 02F768BEF88;
+ Wed, 27 Nov 2019 15:51:09 +0000 (UTC)
 Received: from thuth.com (ovpn-117-186.ams2.redhat.com [10.36.117.186])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E8F9B1001DE1;
- Wed, 27 Nov 2019 15:48:59 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E751087ED6;
+ Wed, 27 Nov 2019 15:51:06 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
-To: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- qemu-trivial@nongnu.org
-Subject: [PATCH] travis.yml: Run tcg tests with tci
-Date: Wed, 27 Nov 2019 16:48:57 +0100
-Message-Id: <20191127154857.3590-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: Qkj3jAXvNPauElYJ5phUwQ-1
+To: qemu-devel@nongnu.org
+Cc: Stefan Weil <sw@weilnetz.de>,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] gitlab-ci.yml: Run tcg test with tci
+Date: Wed, 27 Nov 2019 16:51:05 +0100
+Message-Id: <20191127155105.3784-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: nhUGtkGTMm-o17djqDQqlQ-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -61,31 +60,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Nov 2019 15:49:13 -0000
+X-List-Received-Date: Wed, 27 Nov 2019 15:51:21 -0000
 
-So far we only have compile coverage for tci. But since commit
-2f160e0f9797c7522bfd0d09218d0c9340a5137c ("tci: Add implementation
-for INDEX_op_ld16u_i64") has been included, we can also run the
-x86 TCG tests with tci, so let's enable them in Travis now.
+Since commit 2f160e0f9797c7522bfd0d09218d0c9340a5137c ("tci: Add
+implementation for INDEX_op_ld16u_i64") has been included now, we
+can also run the TCG tests with tci, so let's enable them in our
+Gitlab CI now.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- .travis.yml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .gitlab-ci.yml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/.travis.yml b/.travis.yml
-index c09b6a0014..b0b634d484 100644
---- a/.travis.yml
-+++ b/.travis.yml
-@@ -218,7 +218,7 @@ matrix:
-     # We manually include builds which we disable "make check" for
-     - env:
-         - CONFIG=3D"--enable-debug --enable-tcg-interpreter"
--        - TEST_CMD=3D""
-+        - TEST_CMD=3D"make run-tcg-tests-x86_64-softmmu V=3D1"
-=20
-=20
-     # We don't need to exercise every backend with every front-end
+diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
+index be57c6a454..125d4204b3 100644
+--- a/.gitlab-ci.yml
++++ b/.gitlab-ci.yml
+@@ -73,6 +73,7 @@ build-tci:
+  - ./configure --enable-tcg-interpreter
+       --target-list=3D"$(for tg in $TARGETS; do echo -n ${tg}'-softmmu '; =
+done)"
+  - make -j2
++ - make run-tcg-tests-x86_64-softmmu
+  - make tests/boot-serial-test tests/cdrom-test tests/pxe-test
+  - for tg in $TARGETS ; do
+      export QTEST_QEMU_BINARY=3D"${tg}-softmmu/qemu-system-${tg}" ;
 --=20
 2.18.1
 
