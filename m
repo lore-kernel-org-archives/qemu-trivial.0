@@ -1,63 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iaJwo-0006S3-MD
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Nov 2019 08:35:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58829)
+	id 1iaLBp-0006wT-0m
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Nov 2019 09:54:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37761)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iaJwm-0006Qz-Ha
- for qemu-trivial@nongnu.org; Thu, 28 Nov 2019 08:35:05 -0500
+ (envelope-from <philmd@redhat.com>) id 1iaLBk-0006ss-KW
+ for qemu-trivial@nongnu.org; Thu, 28 Nov 2019 09:54:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iaJvO-0004eU-Dd
- for qemu-trivial@nongnu.org; Thu, 28 Nov 2019 08:33:41 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:57991
+ (envelope-from <philmd@redhat.com>) id 1iaLBT-0002ik-4K
+ for qemu-trivial@nongnu.org; Thu, 28 Nov 2019 09:54:31 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:37856
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iaJvO-0004Ue-9d
- for qemu-trivial@nongnu.org; Thu, 28 Nov 2019 08:33:38 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iaLBR-0002XI-Um
+ for qemu-trivial@nongnu.org; Thu, 28 Nov 2019 09:54:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574948015;
+ s=mimecast20190719; t=1574952856;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UZWbpoC2J+eGEGYbbcesSj/oP4mhOZwwPs3I0BwYyS0=;
- b=XeN/DWruhN0KBVIcGnrllAE/fJnrIwbMn4hmCHwRDzdleooiVM+wmZjz22C4UVdfL/gZkn
- Sql9s8atz0XalpM0mOiLNnaVPFODNGR0wz+WYqIpwLjhsVM32VWa4nEjTo/6XILcY0Y740
- Yk1B0OrZHql4oc9vHV5ILzRRMLSK3eI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-223-jlK_kUItMoGptGqeIykyXQ-1; Thu, 28 Nov 2019 08:33:34 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8B0A8184CAA0;
- Thu, 28 Nov 2019 13:33:33 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-114.ams2.redhat.com [10.36.116.114])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B6E83600C8;
- Thu, 28 Nov 2019 13:33:29 +0000 (UTC)
-Subject: Re: [PATCH] travis.yml: Run tcg tests with tci
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>, qemu-trivial@nongnu.org
-References: <20191127154857.3590-1-thuth@redhat.com>
- <87zhghf9lg.fsf@linaro.org> <02c92ddf-e65a-2d2d-40fa-027aa4e4c558@redhat.com>
- <87r21sfgqz.fsf@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <94f2d39f-8525-8821-8af2-f5656f7b0025@redhat.com>
-Date: Thu, 28 Nov 2019 14:33:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ bh=eHV1Eyf8uC3LYSu2U8Zq/CxZWGGQvWuQ1uaFhUtf0BA=;
+ b=JeeergixusrZh21QJXr6J6o5mBWQdiYNI1WTt6a8Eo2PigYNV/euk5jn/t/88FMIk3nTNl
+ WrGu30aW/uP1Z4O2TYmFPTMk8PUV9MDbJKrpXWgPsaDMJZm3UjiYQpbHfLGjR/nvH95pD2
+ l/BhfgdLdDPyAkfaRyG9lAYdA+II0S8=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-104-Gym19HnYMOaLipVZqsjwRg-1; Thu, 28 Nov 2019 09:54:14 -0500
+Received: by mail-wm1-f69.google.com with SMTP id l23so3776143wmh.6
+ for <qemu-trivial@nongnu.org>; Thu, 28 Nov 2019 06:54:14 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=p3E/8222RacGj97HRp98RDwGuYZify7STc5zCtCPmlA=;
+ b=nZXQ0sSCJmULa2Su8wWjkdZZc01SzlF0xvYSfyDlRDE1VnwNvqQIl+FhT7ketw4Bu9
+ CgktQpQSF5IksoI9Ki2gb/Q5PoWcVfWxc31aP2gMv8PkXCpYocengQN5JNa+w6K+XDkF
+ dyq8o+0iPachzEQTr53gsTlBCvW3XMfD22ULTCo+4j/arvD5VCgJ/+LLpu4HkFxlMZV1
+ 6t2MC3I8PpfDdwfoj4wNRpyd42YwRMD3GBufGTMoZ9fr11HWLCIPdKt0zLjgT0eMM9/q
+ fKsGjowH80Q47YCmQYokGzjzyfBIy/zQtsofEpwmTq29O3WNkdr8N8P5R1XfQBiFGiIO
+ Eb+g==
+X-Gm-Message-State: APjAAAXUiGXg6dv2HHV3OLq15bhgCy+4FrJhorHHt429yuglyLuqVXMM
+ KGvIjJDq7yzidrKVur3Fmk5ajnTUXL0oE80gtDYG1dhkALW4cnKJQ2WVlA61boPxdvOmvV+gHr9
+ +Tqg8jsIJA9qdY7v6ww==
+X-Received: by 2002:a05:600c:2049:: with SMTP id
+ p9mr9991237wmg.128.1574952853052; 
+ Thu, 28 Nov 2019 06:54:13 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzCKb/aNTSW2ihQ+T777nqsOYp6qTkaYQMxiBlXU7Z4sX3nKr7CirYN4GyG4/ya3fezDQCLKw==
+X-Received: by 2002:a05:600c:2049:: with SMTP id
+ p9mr9991217wmg.128.1574952852855; 
+ Thu, 28 Nov 2019 06:54:12 -0800 (PST)
+Received: from [192.168.1.35] (182.red-88-21-103.staticip.rima-tde.net.
+ [88.21.103.182])
+ by smtp.gmail.com with ESMTPSA id y6sm23896220wrn.21.2019.11.28.06.54.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 28 Nov 2019 06:54:12 -0800 (PST)
+Subject: Re: [PATCH] vfio-ccw: Fix error message
+To: Boris Fiuczynski <fiuczy@linux.ibm.com>, qemu-s390x@nongnu.org,
+ cohuck@redhat.com, alex.williamson@redhat.com, farman@linux.ibm.com
+Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20191128143015.5231-1-fiuczy@linux.ibm.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <1d285275-5964-2415-e52e-1b60397d2918@redhat.com>
+Date: Thu, 28 Nov 2019 15:54:11 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <87r21sfgqz.fsf@linaro.org>
+In-Reply-To: <20191128143015.5231-1-fiuczy@linux.ibm.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: jlK_kUItMoGptGqeIykyXQ-1
+X-MC-Unique: Gym19HnYMOaLipVZqsjwRg-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,49 +86,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Nov 2019 13:35:05 -0000
+X-List-Received-Date: Thu, 28 Nov 2019 14:54:39 -0000
 
-On 28/11/2019 11.16, Alex Benn=C3=A9e wrote:
+On 11/28/19 3:30 PM, Boris Fiuczynski wrote:
+> Signed-off-by: Boris Fiuczynski <fiuczy@linux.ibm.com>
+> Reviewed-by: Eric Farman <farman@linux.ibm.com>
+> ---
+>   hw/vfio/ccw.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> Thomas Huth <thuth@redhat.com> writes:
+> diff --git a/hw/vfio/ccw.c b/hw/vfio/ccw.c
+> index 6863f6c69f..3b5520ae75 100644
+> --- a/hw/vfio/ccw.c
+> +++ b/hw/vfio/ccw.c
+> @@ -102,7 +102,7 @@ again:
+>           if (errno =3D=3D EAGAIN) {
+>               goto again;
+>           }
+> -        error_report("vfio-ccw: wirte I/O region failed with errno=3D%d"=
+, errno);
+> +        error_report("vfio-ccw: write I/O region failed with errno=3D%d"=
+, errno);
+>           ret =3D -errno;
+>       } else {
+>           ret =3D region->ret_code;
 >=20
->> On 27/11/2019 19.38, Alex Benn=C3=A9e wrote:
->>> Thomas Huth <thuth@redhat.com> writes:
->>>
->>>> So far we only have compile coverage for tci. But since commit
->>>> 2f160e0f9797c7522bfd0d09218d0c9340a5137c ("tci: Add implementation
->>>> for INDEX_op_ld16u_i64") has been included, we can also run the
->>>> x86 TCG tests with tci, so let's enable them in Travis now.
->>>>
->>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>>> ---
->>>>    .travis.yml | 2 +-
->>>>    1 file changed, 1 insertion(+), 1 deletion(-)
->>>>
->>>> diff --git a/.travis.yml b/.travis.yml
->>>> index c09b6a0014..b0b634d484 100644
->>>> --- a/.travis.yml
->>>> +++ b/.travis.yml
->>>> @@ -218,7 +218,7 @@ matrix:
->>>>        # We manually include builds which we disable "make check" for
->>> this comment is out of date now (or rather has been for a while)
->>>
->>>>        - env:
->>>>            - CONFIG=3D"--enable-debug --enable-tcg-interpreter"
->>> Perhaps as linux-user doesn't add much to testing the TCG we could
->>> limit
->>> by MAIN_SOFTMMU_TARGETS here?
->>
->> Limiting is a good idea, but I think we should use the architectures
->> that are supported by tests/boot-serial-test.c instead.
->=20
-> Maybe a new env - TESTBOOT_SOFTMMU_TARGETS?
 
-I tried something like that - but with all possible targets that are=20
-supported by boot-serial-tests, I hit the 50 minutes timeout from=20
-Travis. Looks like I've got to skip some, TCI is really slow. So I'll=20
-rather specify the target subset in the matrix entry directly.
-
-  Thomas
+Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 
 
