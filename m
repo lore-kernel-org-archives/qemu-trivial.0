@@ -1,79 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ia4iM-0004QY-Gv
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Nov 2019 16:19:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46884)
+	id 1iaE0K-0003p2-GZ
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Nov 2019 02:14:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47129)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1ia4iK-0004P1-2I
- for qemu-trivial@nongnu.org; Wed, 27 Nov 2019 16:19:09 -0500
+ (envelope-from <arei.gonglei@huawei.com>) id 1iaE0I-0003kv-HH
+ for qemu-trivial@nongnu.org; Thu, 28 Nov 2019 02:14:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1ia4iJ-0002AR-3p
- for qemu-trivial@nongnu.org; Wed, 27 Nov 2019 16:19:07 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:36117
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <arei.gonglei@huawei.com>) id 1iaE0H-0008A1-DP
+ for qemu-trivial@nongnu.org; Thu, 28 Nov 2019 02:14:18 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2483 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ia4iI-00029u-VD
- for qemu-trivial@nongnu.org; Wed, 27 Nov 2019 16:19:07 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1574889546;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=E0sdROm8vDBkkhXor0lVZMnz117098c5SxSyVxhVbXs=;
- b=ZnE6OF5+3jdQT8i3jRVyapkppQ/TwzPc7AQ253Z8qcCxb2RbrEpyXnoLU0WZusF2+7CCRj
- 0uzk11nz7HVOxWwzGFBzsbUAuc3BiJMRgPKdLbSCkfC1yFfyXApB4v8BqTdxs/2C766yAG
- o/AJKkTZZo/GOPwLoix7Qju7UdzJWvs=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-272-sZX-XoUUPxuHo7miHnPi8w-1; Wed, 27 Nov 2019 16:19:04 -0500
-Received: by mail-wr1-f69.google.com with SMTP id d8so8814188wrq.12
- for <qemu-trivial@nongnu.org>; Wed, 27 Nov 2019 13:19:04 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=9dDgbYK56G9JGdBXiG8g8rFq9PZSdh/Mj+NpfZWv1EM=;
- b=gQs19snLYfegGp7QD+winP9mCdmLhrMNHRWtOtOwKn/Ec40LfXJ92qblIYDI++A97f
- Xb0n/R/Lt2vqaeEVL8i/1uoxEzj4dfrfe/pSwcGecIWfIucs3a3WfB0GjzZ3LT2ZKIMW
- ftXjSxvuOUDdsO0dEv+bMIOD4jO09l64lVSjc8ocLJOaIsoEB23jJ7kjnlKNG/6Lt0fI
- 20McMk6tJ8qwyiKdqQFzKFSq36KbCm34Hz6Zja7OaCF/SnMfyl38xQUHrjP89glfg4mv
- 1v9xNnH92TzWK6F3k+LoGTj7Mcr3Bwn+MOYVP5zB4bUpfFlBUh4ogX115RS0WBN6CPx8
- KalA==
-X-Gm-Message-State: APjAAAUXHHpvaJ+Pt4T0veWalIjlzTMJbLXqPtKF2MPo4AuKUdVNRsnG
- YQybDMDsxLncZcRZ8OQlQMGmTIWuq/6zCcFmcy6V2MVVzSy/NhSGatYyk+/TUoi7+7b+FQZM0sl
- hqVhewndjrTO3QhWXqw==
-X-Received: by 2002:a7b:c357:: with SMTP id l23mr6319176wmj.152.1574889542916; 
- Wed, 27 Nov 2019 13:19:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxunfDAx8SenjVKVfK5fTj9T1xWoPqHD4mmHBFRfeKBgqZvhaXI10aNmMlgFyqZ1RWrArCWkw==
-X-Received: by 2002:a7b:c357:: with SMTP id l23mr6319161wmj.152.1574889542707; 
- Wed, 27 Nov 2019 13:19:02 -0800 (PST)
-Received: from [192.168.1.35] (182.red-88-21-103.staticip.rima-tde.net.
- [88.21.103.182])
- by smtp.gmail.com with ESMTPSA id i25sm7768484wmd.25.2019.11.27.13.19.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 Nov 2019 13:19:01 -0800 (PST)
-Subject: Re: [PATCH] travis.yml: Run tcg tests with tci
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20191127154857.3590-1-thuth@redhat.com>
- <87zhghf9lg.fsf@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <ee3b2cf5-a119-95a7-1aa6-1c42b00cfd7f@redhat.com>
-Date: Wed, 27 Nov 2019 22:19:01 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ (Exim 4.71) (envelope-from <arei.gonglei@huawei.com>)
+ id 1iaE0E-0007ka-Id; Thu, 28 Nov 2019 02:14:14 -0500
+Received: from DGGEML401-HUB.china.huawei.com (unknown [172.30.72.56])
+ by Forcepoint Email with ESMTP id 8089BB7CAB5F298D1177;
+ Thu, 28 Nov 2019 15:14:02 +0800 (CST)
+Received: from DGGEML511-MBX.china.huawei.com ([169.254.1.151]) by
+ DGGEML401-HUB.china.huawei.com ([fe80::89ed:853e:30a9:2a79%31]) with mapi id
+ 14.03.0439.000; Thu, 28 Nov 2019 15:13:53 +0800
+From: "Gonglei (Arei)" <arei.gonglei@huawei.com>
+To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "marcandre.lureau@gmail.com" <marcandre.lureau@gmail.com>,
+ "philmd@redhat.com" <philmd@redhat.com>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>
+Subject: RE: [PATCH v6] backends/cryptodev: drop local_err from
+ cryptodev_backend_complete()
+Thread-Topic: [PATCH v6] backends/cryptodev: drop local_err from
+ cryptodev_backend_complete()
+Thread-Index: AQHVpVtFP2rZkz4m50KfOlRvg42c16egKx1A
+Date: Thu, 28 Nov 2019 07:13:53 +0000
+Message-ID: <33183CC9F5247A488A2544077AF19020DB5A1062@dggeml511-mbx.china.huawei.com>
+References: <20191127194541.24304-1-vsementsov@virtuozzo.com>
+In-Reply-To: <20191127194541.24304-1-vsementsov@virtuozzo.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.225.234]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <87zhghf9lg.fsf@linaro.org>
-Content-Language: en-US
-X-MC-Unique: sZX-XoUUPxuHo7miHnPi8w-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 45.249.212.188
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,51 +56,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Nov 2019 21:19:09 -0000
+X-List-Received-Date: Thu, 28 Nov 2019 07:14:19 -0000
 
-On 11/27/19 7:38 PM, Alex Benn=C3=A9e wrote:
-> Thomas Huth <thuth@redhat.com> writes:
->=20
->> So far we only have compile coverage for tci. But since commit
->> 2f160e0f9797c7522bfd0d09218d0c9340a5137c ("tci: Add implementation
->> for INDEX_op_ld16u_i64") has been included, we can also run the
->> x86 TCG tests with tci, so let's enable them in Travis now.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>   .travis.yml | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/.travis.yml b/.travis.yml
->> index c09b6a0014..b0b634d484 100644
->> --- a/.travis.yml
->> +++ b/.travis.yml
->> @@ -218,7 +218,7 @@ matrix:
->>       # We manually include builds which we disable "make check" for
->=20
-> this comment is out of date now (or rather has been for a while)
->=20
->>       - env:
->>           - CONFIG=3D"--enable-debug --enable-tcg-interpreter"
->=20
-> Perhaps as linux-user doesn't add much to testing the TCG we could limit
-> by MAIN_SOFTMMU_TARGETS here?
-
-Good idea.
-
->> -        - TEST_CMD=3D""
->> +        - TEST_CMD=3D"make run-tcg-tests-x86_64-softmmu V=3D1"
->=20
-> How about "make check-qtest check-tcg"
->=20
-> Which will exercise the moderate boot code tests of various
-> architectures as well as x86_64 (if we include the --disable-docker
-> configure stanza)
-
-Another good idea!
-
->>  =20
->>  =20
->>       # We don't need to exercise every backend with every front-end
-
+Q0NpbmcgcWVtdS10cml2aWFsQG5vbmdudS5vcmcNCg0KUmV2aWV3ZWQtYnk6IEdvbmdsZWkgPGFy
+ZWkuZ29uZ2xlaUBodWF3ZWkuY29tPg0KDQoNClJlZ2FyZHMsDQotR29uZ2xlaQ0KDQo+IC0tLS0t
+T3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IFZsYWRpbWlyIFNlbWVudHNvdi1PZ2lldnNr
+aXkgW21haWx0bzp2c2VtZW50c292QHZpcnR1b3p6by5jb21dDQo+IFNlbnQ6IFRodXJzZGF5LCBO
+b3ZlbWJlciAyOCwgMjAxOSAzOjQ2IEFNDQo+IFRvOiBxZW11LWRldmVsQG5vbmdudS5vcmcNCj4g
+Q2M6IEdvbmdsZWkgKEFyZWkpIDxhcmVpLmdvbmdsZWlAaHVhd2VpLmNvbT47IG1hcmNhbmRyZS5s
+dXJlYXVAZ21haWwuY29tOw0KPiBwaGlsbWRAcmVkaGF0LmNvbTsgdnNlbWVudHNvdkB2aXJ0dW96
+em8uY29tDQo+IFN1YmplY3Q6IFtQQVRDSCB2Nl0gYmFja2VuZHMvY3J5cHRvZGV2OiBkcm9wIGxv
+Y2FsX2VyciBmcm9tDQo+IGNyeXB0b2Rldl9iYWNrZW5kX2NvbXBsZXRlKCkNCj4gDQo+IE5vIHJl
+YXNvbiBmb3IgbG9jYWxfZXJyIGhlcmUsIHVzZSBlcnJwIGRpcmVjdGx5IGluc3RlYWQuDQo+IA0K
+PiBTaWduZWQtb2ZmLWJ5OiBWbGFkaW1pciBTZW1lbnRzb3YtT2dpZXZza2l5IDx2c2VtZW50c292
+QHZpcnR1b3p6by5jb20+DQo+IFJldmlld2VkLWJ5OiBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSA8
+cGhpbG1kQHJlZGhhdC5jb20+DQo+IFJldmlld2VkLWJ5OiBNYXJjLUFuZHLDqSBMdXJlYXUgPG1h
+cmNhbmRyZS5sdXJlYXVAcmVkaGF0LmNvbT4NCj4gLS0tDQo+IA0KPiB2NjogYWRkIHItYiBieSBQ
+aGlsaXBwZSBhbmQgTWFyYy1BbmRyw6kNCj4gDQo+ICBiYWNrZW5kcy9jcnlwdG9kZXYuYyB8IDEx
+ICstLS0tLS0tLS0tDQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEwIGRlbGV0
+aW9ucygtKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2JhY2tlbmRzL2NyeXB0b2Rldi5jIGIvYmFja2Vu
+ZHMvY3J5cHRvZGV2LmMgaW5kZXgNCj4gM2MwNzFlYWI5NS4uNWE5NzM1Njg0ZSAxMDA2NDQNCj4g
+LS0tIGEvYmFja2VuZHMvY3J5cHRvZGV2LmMNCj4gKysrIGIvYmFja2VuZHMvY3J5cHRvZGV2LmMN
+Cj4gQEAgLTE3NiwxOSArMTc2LDEwIEBAIGNyeXB0b2Rldl9iYWNrZW5kX2NvbXBsZXRlKFVzZXJD
+cmVhdGFibGUgKnVjLA0KPiBFcnJvciAqKmVycnApICB7DQo+ICAgICAgQ3J5cHRvRGV2QmFja2Vu
+ZCAqYmFja2VuZCA9IENSWVBUT0RFVl9CQUNLRU5EKHVjKTsNCj4gICAgICBDcnlwdG9EZXZCYWNr
+ZW5kQ2xhc3MgKmJjID0gQ1JZUFRPREVWX0JBQ0tFTkRfR0VUX0NMQVNTKHVjKTsNCj4gLSAgICBF
+cnJvciAqbG9jYWxfZXJyID0gTlVMTDsNCj4gDQo+ICAgICAgaWYgKGJjLT5pbml0KSB7DQo+IC0g
+ICAgICAgIGJjLT5pbml0KGJhY2tlbmQsICZsb2NhbF9lcnIpOw0KPiAtICAgICAgICBpZiAobG9j
+YWxfZXJyKSB7DQo+IC0gICAgICAgICAgICBnb3RvIG91dDsNCj4gLSAgICAgICAgfQ0KPiArICAg
+ICAgICBiYy0+aW5pdChiYWNrZW5kLCBlcnJwKTsNCj4gICAgICB9DQo+IC0NCj4gLSAgICByZXR1
+cm47DQo+IC0NCj4gLW91dDoNCj4gLSAgICBlcnJvcl9wcm9wYWdhdGUoZXJycCwgbG9jYWxfZXJy
+KTsNCj4gIH0NCj4gDQo+ICB2b2lkIGNyeXB0b2Rldl9iYWNrZW5kX3NldF91c2VkKENyeXB0b0Rl
+dkJhY2tlbmQgKmJhY2tlbmQsIGJvb2wgdXNlZCkNCj4gLS0NCj4gMi4yMS4wDQoNCg==
 
