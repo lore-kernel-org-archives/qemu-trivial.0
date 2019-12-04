@@ -1,61 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1icTa3-0007oF-S7
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Dec 2019 07:16:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50641)
+	id 1icTfM-0002CS-TA
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Dec 2019 07:22:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51479)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1icTZq-0007kx-4A
- for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 07:16:27 -0500
+ (envelope-from <dgilbert@redhat.com>) id 1icTfG-00027x-Ep
+ for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 07:21:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1icTZo-0005TW-0j
- for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 07:16:16 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:49402
+ (envelope-from <dgilbert@redhat.com>) id 1icTfC-0000Ls-OI
+ for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 07:21:51 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:32897
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1icTZn-00059I-So
- for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 07:16:15 -0500
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1icTfC-0000Bh-F0
+ for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 07:21:50 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575461773;
+ s=mimecast20190719; t=1575462108;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=0lhELDBp2p7kSZYzziYGeg4mIOq150GA1nTJ88AVdZ4=;
- b=duPcoHNKIHSCI2p8RsLEgSUYvE8f0UkHQTu2dOr5PRpZoJubzzX6dJNG88ebh2E+Vkz19y
- ir7QXdo0i3kjiqD8Id2ixGQWBSJpRM7BTK0wUXEGv3lGlovGTbh4NcCKkGXXImnRHBwoNT
- MocS+vUUWIxP1tuDpRsmPC8KegOsHkw=
+ bh=H3OnM5eaSxNefQQlb69I5DoqeGRL34Usqzt0Ta6j9ao=;
+ b=Zf5Wq74AvTgIBBw792efu4hCYgKTQ+mgs5Hn1TYJj2mG6oVzFqxRNhQpFPfuFeXX7Ibys5
+ Zj18HY9/Vo5ayYX8zX8ncNpeDRoQAADAnS65tgzZhsKlNvlWHFkqNCDGN9WX58arAo0z95
+ vjXKNhWg6GhdrO+OMKkHr8lllDBNszA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-132-rjDh1BFNNfikRkjb436bSg-1; Wed, 04 Dec 2019 07:16:10 -0500
+ us-mta-44-uw02SxsnNk6Lj4z_w0su_A-1; Wed, 04 Dec 2019 07:21:45 -0500
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E3C601005502;
- Wed,  4 Dec 2019 12:16:09 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-134.ams2.redhat.com
- [10.36.116.134])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A33531001901;
- Wed,  4 Dec 2019 12:16:09 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 18DB51138606; Wed,  4 Dec 2019 13:16:08 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1DA5C1005300;
+ Wed,  4 Dec 2019 12:21:44 +0000 (UTC)
+Received: from work-vm (ovpn-117-217.ams2.redhat.com [10.36.117.217])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 04C711001B0B;
+ Wed,  4 Dec 2019 12:21:42 +0000 (UTC)
+Date: Wed, 4 Dec 2019 12:21:40 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 To: Han Han <hhan@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, laurent@vivier.eu,
- dgilbert@redhat.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, laurent@vivier.eu
 Subject: Re: [PATCH] Revert "qemu-options.hx: Update for reboot-timeout
  parameter"
+Message-ID: <20191204122140.GI3325@work-vm>
 References: <20191204085628.2892-1-hhan@redhat.com>
-Date: Wed, 04 Dec 2019 13:16:08 +0100
-In-Reply-To: <20191204085628.2892-1-hhan@redhat.com> (Han Han's message of
- "Wed, 4 Dec 2019 16:56:28 +0800")
-Message-ID: <87immwb81j.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
+In-Reply-To: <20191204085628.2892-1-hhan@redhat.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: rjDh1BFNNfikRkjb436bSg-1
+X-MC-Unique: uw02SxsnNk6Lj4z_w0su_A-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 205.139.110.61
@@ -70,18 +66,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Dec 2019 12:16:31 -0000
+X-List-Received-Date: Wed, 04 Dec 2019 12:21:57 -0000
 
-Han Han <hhan@redhat.com> writes:
-
+* Han Han (hhan@redhat.com) wrote:
 > This reverts commit bbd9e6985ff342cbe15b9cb7eb30e842796fbbe8.
->
+
+Patchew spotted you're missing the signed-off-by; please send one.
+
+Dave
+
 > In 20a1922032 we allowed reboot-timeout=3D-1 again, so update the doc
 > accordingly.
 > ---
 >  qemu-options.hx | 4 ++--
 >  1 file changed, 2 insertions(+), 2 deletions(-)
->
+>=20
 > diff --git a/qemu-options.hx b/qemu-options.hx
 > index 65c9473b73..e14d88e9b2 100644
 > --- a/qemu-options.hx
@@ -100,7 +99,10 @@ ot
 >  system support it.
 > =20
 >  Do strict boot via @option{strict=3Don} as far as firmware/BIOS
-
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> --=20
+> 2.24.0.rc1
+>=20
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
 
