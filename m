@@ -1,53 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1icTE8-0004P2-Kq
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Dec 2019 06:53:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45795)
+	id 1icTa3-0007oF-S7
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Dec 2019 07:16:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50641)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1icTDx-0004HE-1d
- for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 06:53:44 -0500
+ (envelope-from <armbru@redhat.com>) id 1icTZq-0007kx-4A
+ for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 07:16:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1icTDv-0007Y2-PK
- for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 06:53:40 -0500
-Resent-Date: Wed, 04 Dec 2019 06:53:40 -0500
-Resent-Message-Id: <E1icTDv-0007Y2-PK@eggs.gnu.org>
-Received: from sender4-of-o50.zoho.com ([136.143.188.50]:21073)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1icTDn-0006Jf-Rh; Wed, 04 Dec 2019 06:53:33 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1575460400; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=F8jypdx9V1X8Re6q6iTZdKFL6EJcmHmmIaDVovi1rq2vtQvPZsV8VghNTv6OlNB0gRWF5Qz2rvofWBJuGxus73Oc1WexYOhYexh+Zo5mI0OS0XRsWoBzaRedPG2X0W0aSGF5waEWQIFDf+6h7JDPSrsOtQ4/vRVoIFcMfU+P8P4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1575460400;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=hFMsxS+ExnFRVxRW7VzE+YkEb9qWfXcVwGFKkSZdJJ4=; 
- b=YiF/aPV4TV6srsEpKFih62vBEhXAc48iOx4gXuqjmbwCrI7f2tAuncvKfyfdgranXc/P/CSxsyopG535rf9nd5b/B6vWZoAyqZLgLAgybZ58xR8XUPjxFJngdwpxG7FZYCtPuedob7cKSF0e+pd28jvZcL4pFqj4CWBThcKZ51s=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1575460398468289.67097072103354;
- Wed, 4 Dec 2019 03:53:18 -0800 (PST)
-In-Reply-To: <20191204085628.2892-1-hhan@redhat.com>
-Reply-To: <qemu-devel@nongnu.org>
+ (envelope-from <armbru@redhat.com>) id 1icTZo-0005TW-0j
+ for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 07:16:16 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:49402
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1icTZn-00059I-So
+ for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 07:16:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1575461773;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=0lhELDBp2p7kSZYzziYGeg4mIOq150GA1nTJ88AVdZ4=;
+ b=duPcoHNKIHSCI2p8RsLEgSUYvE8f0UkHQTu2dOr5PRpZoJubzzX6dJNG88ebh2E+Vkz19y
+ ir7QXdo0i3kjiqD8Id2ixGQWBSJpRM7BTK0wUXEGv3lGlovGTbh4NcCKkGXXImnRHBwoNT
+ MocS+vUUWIxP1tuDpRsmPC8KegOsHkw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-132-rjDh1BFNNfikRkjb436bSg-1; Wed, 04 Dec 2019 07:16:10 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E3C601005502;
+ Wed,  4 Dec 2019 12:16:09 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-134.ams2.redhat.com
+ [10.36.116.134])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A33531001901;
+ Wed,  4 Dec 2019 12:16:09 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 18DB51138606; Wed,  4 Dec 2019 13:16:08 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Han Han <hhan@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, laurent@vivier.eu,
+ dgilbert@redhat.com
 Subject: Re: [PATCH] Revert "qemu-options.hx: Update for reboot-timeout
  parameter"
-Message-ID: <157546039706.18804.4103010064190588655@37313f22b938>
+References: <20191204085628.2892-1-hhan@redhat.com>
+Date: Wed, 04 Dec 2019 13:16:08 +0100
+In-Reply-To: <20191204085628.2892-1-hhan@redhat.com> (Han Han's message of
+ "Wed, 4 Dec 2019 16:56:28 +0800")
+Message-ID: <87immwb81j.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: hhan@redhat.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, hhan@redhat.com,
- laurent@vivier.eu, dgilbert@redhat.com
-Date: Wed, 4 Dec 2019 03:53:18 -0800 (PST)
-X-ZohoMailClient: External
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: rjDh1BFNNfikRkjb436bSg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 136.143.188.50
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -59,32 +70,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Dec 2019 11:53:44 -0000
+X-List-Received-Date: Wed, 04 Dec 2019 12:16:31 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTIwNDA4NTYyOC4yODky
-LTEtaGhhbkByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUgc29t
-ZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUgaW5mb3Jt
-YXRpb246CgpTdWJqZWN0OiBbUEFUQ0hdIFJldmVydCAicWVtdS1vcHRpb25zLmh4OiBVcGRhdGUg
-Zm9yIHJlYm9vdC10aW1lb3V0IHBhcmFtZXRlciIKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIw
-MTkxMjA0MDg1NjI4LjI4OTItMS1oaGFuQHJlZGhhdC5jb20KCj09PSBURVNUIFNDUklQVCBCRUdJ
-TiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQg
-MApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2Nh
-bCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlz
-dG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNU
-IFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJk
-ODg4NzEzMzg0ClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKNjgwMzMzOCBSZXZlcnQg
-InFlbXUtb3B0aW9ucy5oeDogVXBkYXRlIGZvciByZWJvb3QtdGltZW91dCBwYXJhbWV0ZXIiCgo9
-PT0gT1VUUFVUIEJFR0lOID09PQpFUlJPUjogTWlzc2luZyBTaWduZWQtb2ZmLWJ5OiBsaW5lKHMp
-Cgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDEwIGxpbmVzIGNoZWNrZWQKCkNvbW1pdCA2
-ODAzMzM4MjIwMjYgKFJldmVydCAicWVtdS1vcHRpb25zLmh4OiBVcGRhdGUgZm9yIHJlYm9vdC10
-aW1lb3V0IHBhcmFtZXRlciIpIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElm
-IGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0
-aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCj09PSBPVVRQVVQg
-RU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cg
-aXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMTkxMjA0MDg1NjI4LjI4
-OTItMS1oaGFuQHJlZGhhdC5jb20vdGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0t
-LQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNo
-ZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRo
-YXQuY29t
+Han Han <hhan@redhat.com> writes:
+
+> This reverts commit bbd9e6985ff342cbe15b9cb7eb30e842796fbbe8.
+>
+> In 20a1922032 we allowed reboot-timeout=3D-1 again, so update the doc
+> accordingly.
+> ---
+>  qemu-options.hx | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 65c9473b73..e14d88e9b2 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -327,8 +327,8 @@ format(true color). The resolution should be supporte=
+d by the SVGA mode, so
+>  the recommended is 320x240, 640x480, 800x640.
+> =20
+>  A timeout could be passed to bios, guest will pause for @var{rb_timeout}=
+ ms
+> -when boot failed, then reboot. If @option{reboot-timeout} is not set,
+> -guest will not reboot by default. Currently Seabios for X86
+> +when boot failed, then reboot. If @var{rb_timeout} is '-1', guest will n=
+ot
+> +reboot, qemu passes '-1' to bios by default. Currently Seabios for X86
+>  system support it.
+> =20
+>  Do strict boot via @option{strict=3Don} as far as firmware/BIOS
+
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
 
