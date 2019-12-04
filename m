@@ -1,57 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1icTfM-0002CS-TA
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Dec 2019 07:22:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51479)
+	id 1icXUs-0007Wa-H9
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Dec 2019 11:27:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35190)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1icTfG-00027x-Ep
- for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 07:21:56 -0500
+ (envelope-from <thuth@redhat.com>) id 1icXUm-0007UF-S8
+ for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 11:27:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgilbert@redhat.com>) id 1icTfC-0000Ls-OI
- for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 07:21:51 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:32897
+ (envelope-from <thuth@redhat.com>) id 1icXUk-0004bK-AS
+ for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 11:27:20 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:38913
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1icTfC-0000Bh-F0
- for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 07:21:50 -0500
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1icXUk-0004b0-6c
+ for qemu-trivial@nongnu.org; Wed, 04 Dec 2019 11:27:18 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575462108;
+ s=mimecast20190719; t=1575476835;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=H3OnM5eaSxNefQQlb69I5DoqeGRL34Usqzt0Ta6j9ao=;
- b=Zf5Wq74AvTgIBBw792efu4hCYgKTQ+mgs5Hn1TYJj2mG6oVzFqxRNhQpFPfuFeXX7Ibys5
- Zj18HY9/Vo5ayYX8zX8ncNpeDRoQAADAnS65tgzZhsKlNvlWHFkqNCDGN9WX58arAo0z95
- vjXKNhWg6GhdrO+OMKkHr8lllDBNszA=
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=XgSBMX7QaG545SIWQOnLBcvBjoAWoabk9DvDE6Y8fyE=;
+ b=SYPtzY33+KIHmdeg+JsUhbRSn7lxaPjopai3zFkM14utiDRS7auz5LIr/q/iAMF8IKYqm2
+ CCuDagb9jsab06BvWE/22TM65ETZxwNLVmKxtMhzubzwm0lMEmcvE4ycQNVswMdn+4Ku9e
+ bbmp1/ToVYO/Fw3RrRszMLJYB42ljBc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-44-uw02SxsnNk6Lj4z_w0su_A-1; Wed, 04 Dec 2019 07:21:45 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-96-4VpLxPSJO86Br9Ph_5Yfrg-1; Wed, 04 Dec 2019 11:27:14 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1DA5C1005300;
- Wed,  4 Dec 2019 12:21:44 +0000 (UTC)
-Received: from work-vm (ovpn-117-217.ams2.redhat.com [10.36.117.217])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 04C711001B0B;
- Wed,  4 Dec 2019 12:21:42 +0000 (UTC)
-Date: Wed, 4 Dec 2019 12:21:40 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Han Han <hhan@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, laurent@vivier.eu
-Subject: Re: [PATCH] Revert "qemu-options.hx: Update for reboot-timeout
- parameter"
-Message-ID: <20191204122140.GI3325@work-vm>
-References: <20191204085628.2892-1-hhan@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8F93B107ACFB;
+ Wed,  4 Dec 2019 16:27:13 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-117-39.ams2.redhat.com [10.36.117.39])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 09B5F5D6BE;
+ Wed,  4 Dec 2019 16:27:11 +0000 (UTC)
+Subject: Re: [PATCH] target/sparc: Remove old TODO file
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Richard Henderson <rth@twiddle.net>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+References: <20190930171044.25312-1-thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <1b2ecf64-ee98-6a05-2455-436f822a7163@redhat.com>
+Date: Wed, 4 Dec 2019 17:27:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <20191204085628.2892-1-hhan@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: uw02SxsnNk6Lj4z_w0su_A-1
+In-Reply-To: <20190930171044.25312-1-thuth@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: 4VpLxPSJO86Br9Ph_5Yfrg-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 205.139.110.61
@@ -66,43 +69,117 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Dec 2019 12:21:57 -0000
+X-List-Received-Date: Wed, 04 Dec 2019 16:27:22 -0000
 
-* Han Han (hhan@redhat.com) wrote:
-> This reverts commit bbd9e6985ff342cbe15b9cb7eb30e842796fbbe8.
-
-Patchew spotted you're missing the signed-off-by; please send one.
-
-Dave
-
-> In 20a1922032 we allowed reboot-timeout=3D-1 again, so update the doc
-> accordingly.
+On 30/09/2019 19.10, Thomas Huth wrote:
+> This file hasn't seen a real (non-trivial) update since 2008 anymore,
+> so we can assume that it is pretty much out of date and nobody cares
+> for it anymore. Let's simply remove it.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  qemu-options.hx | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 65c9473b73..e14d88e9b2 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -327,8 +327,8 @@ format(true color). The resolution should be supporte=
-d by the SVGA mode, so
->  the recommended is 320x240, 640x480, 800x640.
-> =20
->  A timeout could be passed to bios, guest will pause for @var{rb_timeout}=
- ms
-> -when boot failed, then reboot. If @option{reboot-timeout} is not set,
-> -guest will not reboot by default. Currently Seabios for X86
-> +when boot failed, then reboot. If @var{rb_timeout} is '-1', guest will n=
-ot
-> +reboot, qemu passes '-1' to bios by default. Currently Seabios for X86
->  system support it.
-> =20
->  Do strict boot via @option{strict=3Don} as far as firmware/BIOS
-> --=20
-> 2.24.0.rc1
->=20
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+>  target/sparc/TODO | 88 -----------------------------------------------
+>  1 file changed, 88 deletions(-)
+>  delete mode 100644 target/sparc/TODO
+> 
+> diff --git a/target/sparc/TODO b/target/sparc/TODO
+> deleted file mode 100644
+> index b8c727e858..0000000000
+> --- a/target/sparc/TODO
+> +++ /dev/null
+> @@ -1,88 +0,0 @@
+> -TODO-list:
+> -
+> -CPU common:
+> -- Unimplemented features/bugs:
+> - - Delay slot handling may fail sometimes (branch end of page, delay
+> - slot next page)
+> - - Atomical instructions
+> - - CPU features should match real CPUs (also ASI selection)
+> -- Optimizations/improvements:
+> - - Condition code/branch handling like x86, also for FPU?
+> - - Remove remaining explicit alignment checks
+> - - Global register for regwptr, so that windowed registers can be
+> - accessed directly
+> - - Improve Sparc32plus addressing
+> - - NPC/PC static optimisations (use JUMP_TB when possible)? (Is this
+> - obsolete?)
+> - - Synthetic instructions
+> - - MMU model dependent on CPU model
+> - - Select ASI helper at translation time (on V9 only if known)
+> - - KQemu/KVM support for VM only
+> - - Hardware breakpoint/watchpoint support
+> - - Cache emulation mode
+> - - Reverse-endian pages
+> - - Faster FPU emulation
+> - - Busy loop detection
+> -
+> -Sparc32 CPUs:
+> -- Unimplemented features/bugs:
+> - - Sun4/Sun4c MMUs
+> - - Some V8 ASIs
+> -
+> -Sparc64 CPUs:
+> -- Unimplemented features/bugs:
+> - - Interrupt handling
+> - - Secondary address space, other MMU functions
+> - - Many V9/UA2005/UA2007 ASIs
+> - - Rest of V9 instructions, missing VIS instructions
+> - - IG/MG/AG vs. UA2007 globals
+> - - Full hypervisor support
+> - - SMP/CMT
+> - - Sun4v CPUs
+> -
+> -Sun4:
+> -- To be added
+> -
+> -Sun4c:
+> -- A lot of unimplemented features
+> -- Maybe split from Sun4m
+> -
+> -Sun4m:
+> -- Unimplemented features/bugs:
+> - - Hardware devices do not match real boards
+> - - Floppy does not work
+> - - CS4231: merge with cs4231a, add DMA
+> - - Add cg6, bwtwo
+> - - Arbitrary resolution support
+> - - PCI for MicroSparc-IIe
+> - - JavaStation machines
+> - - SBus slot probing, FCode ROM support
+> - - SMP probing support
+> - - Interrupt routing does not match real HW
+> - - SuSE 7.3 keyboard sometimes unresponsive
+> - - Gentoo 2004.1 SMP does not work
+> - - SS600MP ledma -> lebuffer
+> - - Type 5 keyboard
+> - - Less fixed hardware choices
+> - - DBRI audio (Am7930)
+> - - BPP parallel
+> - - Diagnostic switch
+> - - ESP PIO mode
+> -
+> -Sun4d:
+> -- A lot of unimplemented features:
+> - - SBI
+> - - IO-unit
+> -- Maybe split from Sun4m
+> -
+> -Sun4u:
+> -- Unimplemented features/bugs:
+> - - Interrupt controller
+> - - PCI/IOMMU support (Simba, JIO, Tomatillo, Psycho, Schizo, Safari...)
+> - - SMP
+> - - Happy Meal Ethernet, flash, I2C, GPIO
+> - - A lot of real machine types
+> -
+> -Sun4v:
+> -- A lot of unimplemented features
+> - - A lot of real machine types
+> 
+
+Ping?
+
+ Thomas
 
 
