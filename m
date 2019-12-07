@@ -1,78 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1idEOD-0001Jg-Jn
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Dec 2019 09:15:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58328)
+	id 1idU9C-0002Dv-AR
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Dec 2019 02:04:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38400)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1idEO9-0001CW-G1
- for qemu-trivial@nongnu.org; Fri, 06 Dec 2019 09:15:22 -0500
+ (envelope-from <dirty@apple.com>) id 1idPub-0000kn-4N
+ for qemu-trivial@nongnu.org; Fri, 06 Dec 2019 21:33:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1idEO7-0001Em-T4
- for qemu-trivial@nongnu.org; Fri, 06 Dec 2019 09:15:20 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:42053)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1idEO7-0001DQ-Oh
- for qemu-trivial@nongnu.org; Fri, 06 Dec 2019 09:15:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575641719;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ez6aKTrCztIhj+k6BO+Q+SbcPIi5BLLMxobDaC/9HCg=;
- b=YYxa5ISU8s9ph6NOec778in15W36DlpSI2r4JI+TsL2LSHSzjfJabuDrH7tUB+Yz97r6bE
- uiTZiIctjjl34atJFygFMYxRtsojSIdeMUpJmI0yu9dZOp0wFKTT90N5EEUDeqdkYqWzX4
- Nn7OOTaYDovDOMtRQszm27X+QuOMvtE=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-6-NtoquQYpMXarlrmajqyvIg-1; Fri, 06 Dec 2019 09:15:17 -0500
-Received: by mail-wm1-f70.google.com with SMTP id j203so1678002wma.2
- for <qemu-trivial@nongnu.org>; Fri, 06 Dec 2019 06:15:17 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=aez2pqz/QPpZMITOw7HT4/ywKDjbfgmh+cBAnl2Cy+Q=;
- b=jMYxclFE4cZG7GjJpTd5yCCOc5I01c8JBHwVnLljg1Fztu7QdOa33ZuFOR99pxkFtu
- or86ZaYMsDtZiqQr3acF5NsWEVKg8DxcV3rOKlueoQRnpQKqSqARPMf9/LDJZYSg6mv5
- VKLiaxKRao4GGlVIRgyYApislMrmAW5UNkge0XkpYLzm2H9A7grNN3fjT5APsim8UnGa
- +zxV1iqZ+zpTMIeCqXLnYMNDFCCw8qN+ibgwCyJ87uXtUNSXdcMeghiRMlApPdVEPqMR
- Wv4F29vavUPKXXF2R3sUoMUeuPQTZvOC41CG0eqWl+K1GskuNUD1h5AwX+hITB1xmq5o
- CosA==
-X-Gm-Message-State: APjAAAVKgzcfHkJwuXFRshHQGfT5hM+lY7WRHAgS72ojB+0SNI9JLJUp
- ugd4ychY4SWx1y/go1r3OY7zS7mt+GI0jYRkehIwKKXeOb2AfRDYSPDWRE2nCQ/1te6kNTJP/mB
- qk4/SE4VTrvtOcmnSaQ==
-X-Received: by 2002:a05:600c:507:: with SMTP id
- i7mr11403050wmc.135.1575641715948; 
- Fri, 06 Dec 2019 06:15:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzvIUsEdxu0K846Mk45UXUhL4OMf5SYJAOiBYrBCNn1AY7jTO9W9M5gDgrE/cWIXx/FlNUv7A==
-X-Received: by 2002:a05:600c:507:: with SMTP id
- i7mr11403035wmc.135.1575641715762; 
- Fri, 06 Dec 2019 06:15:15 -0800 (PST)
-Received: from [192.168.1.35] (182.red-88-21-103.staticip.rima-tde.net.
- [88.21.103.182])
- by smtp.gmail.com with ESMTPSA id e16sm3445854wme.35.2019.12.06.06.15.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Dec 2019 06:15:15 -0800 (PST)
-Subject: Re: [PATCH] mailmap: Add entry about me
-To: Yu-Chen Lin <npes87184@gmail.com>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20191206140931.14133-1-npes87184@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <bd91caac-86c5-54a6-080d-37909b91a656@redhat.com>
-Date: Fri, 6 Dec 2019 15:15:14 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
-MIME-Version: 1.0
-In-Reply-To: <20191206140931.14133-1-npes87184@gmail.com>
-Content-Language: en-US
-X-MC-Unique: NtoquQYpMXarlrmajqyvIg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
+ (envelope-from <dirty@apple.com>) id 1idPuZ-0007xA-W7
+ for qemu-trivial@nongnu.org; Fri, 06 Dec 2019 21:33:36 -0500
+Received: from nwk-aaemail-lapp02.apple.com ([17.151.62.67]:57618)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dirty@apple.com>)
+ id 1idPuZ-0007iv-J2; Fri, 06 Dec 2019 21:33:35 -0500
+Received: from pps.filterd (nwk-aaemail-lapp02.apple.com [127.0.0.1])
+ by nwk-aaemail-lapp02.apple.com (8.16.0.27/8.16.0.27) with SMTP id
+ xB72WFxP042064; Fri, 6 Dec 2019 18:33:33 -0800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=apple.com;
+ h=sender : from : to :
+ cc : subject : date : message-id : mime-version :
+ content-transfer-encoding; s=20180706;
+ bh=tCSB5uOKLEox3K6K+aLs93+U7ucV7iPrx4x4KZDF2n0=;
+ b=KRyS+wvVooeoQWZfMvKvPbJJf+nHY40O20WJ4xa5CP3qxIDvtrG8DSXymjKc6at9l5e3
+ FOUHz48nN3AJiPDuiC3D5tUqgSaWoHoSLeJp5ec657KkEL+Yzfo5tkK+CsQpw1LlmTQ5
+ YgLQWP2o5AmRbiS7SH5SftzfK/4hcAgs53JJpmyhd9DFB/Q0176uDtOuzFUaTY6iGMVn
+ RBAAyJmR9ZlDRNYAQEgMoMS9DU15bNLYZh3R4E4bzX4RaXoJHylZUfQFnpzAWlSUhOhz
+ AcQSw4ACXPW5LB0xXPUgr/COYwvrj6PEQPBYQEmiJiQXX+pt+JXuEl5xpgyhxKyMB7XH 2Q== 
+Received: from ma1-mtap-s03.corp.apple.com (ma1-mtap-s03.corp.apple.com
+ [17.40.76.7])
+ by nwk-aaemail-lapp02.apple.com with ESMTP id 2wknw6vmv2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NO);
+ Fri, 06 Dec 2019 18:33:32 -0800
+Received: from nwk-mmpp-sz12.apple.com
+ (nwk-mmpp-sz12.apple.com [17.128.115.204]) by ma1-mtap-s03.corp.apple.com
+ (Oracle Communications Messaging Server 8.0.2.4.20190507 64bit (built May  7
+ 2019)) with ESMTPS id <0Q24005JQF3VNA80@ma1-mtap-s03.corp.apple.com>; Fri,
+ 06 Dec 2019 18:33:32 -0800 (PST)
+Received: from process_milters-daemon.nwk-mmpp-sz12.apple.com by
+ nwk-mmpp-sz12.apple.com
+ (Oracle Communications Messaging Server 8.0.2.4.20190507 64bit (built May  7
+ 2019)) id <0Q2400F00EQA3200@nwk-mmpp-sz12.apple.com>; Fri,
+ 06 Dec 2019 18:33:31 -0800 (PST)
+X-Va-A: 
+X-Va-T-CD: 
+X-Va-E-CD: 
+X-Va-R-CD: 
+X-Va-CD: 0
+X-Va-ID: c025b2cc-3337-4fbb-bc8b-1ad71b7df0bd
+X-V-A: 
+X-V-T-CD: c56cc4374afe9162bf6a337f3d661529
+X-V-E-CD: 36058438670e30bb75b386a3291a5519
+X-V-R-CD: 28211e39a4a0c84d37f6c238b7f92cd3
+X-V-CD: 0
+X-V-ID: e1874f02-32e4-4c42-8577-955ae1d98350
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:,,
+ definitions=2019-12-06_08:,, signatures=0
+Received: from pontoon.com (unknown [17.193.42.217]) by nwk-mmpp-sz12.apple.com
+ (Oracle Communications Messaging Server 8.0.2.4.20190507 64bit (built May  7
+ 2019)) with ESMTPSA id <0Q2400HE0F3V0L50@nwk-mmpp-sz12.apple.com>; Fri,
+ 06 Dec 2019 18:33:31 -0800 (PST)
+Sender: dirty@apple.com
+From: Cameron Esfahani <dirty@apple.com>
+To: qemu-devel@nongnu.org
+Cc: liran.alon@oracle.com, pbonzini@redhat.com, qemu-trivial@nongnu.org
+Subject: [PATCH] Fix some comment spelling errors.
+Date: Fri, 06 Dec 2019 18:33:30 -0800
+Message-id: <086c197db928384b8697edfa64755e2cb46c8100.1575685843.git.dirty@apple.com>
+X-Mailer: git-send-email 2.24.0
+MIME-version: 1.0
+Content-transfer-encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-12-06_08:, , signatures=0
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 17.151.62.67
+X-Mailman-Approved-At: Sat, 07 Dec 2019 02:04:57 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -84,38 +84,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Dec 2019 14:15:23 -0000
+X-List-Received-Date: Sat, 07 Dec 2019 02:33:38 -0000
 
-Cc'ing qemu-trivial@
+Signed-off-by: Cameron Esfahani <dirty@apple.com>
+---
+ target/i386/machine.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-On 12/6/19 3:09 PM, Yu-Chen Lin wrote:
-> I have two mail address, add entries for
-> showing author and email correctly.
->=20
-> Signed-off-by: Yu-Chen Lin <npes87184@gmail.com>
-> ---
->   .mailmap | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
->=20
-> diff --git a/.mailmap b/.mailmap
-> index 3816e4effe..3fbf3902a3 100644
-> --- a/.mailmap
-> +++ b/.mailmap
-> @@ -151,7 +151,8 @@ Xiaoqiang Zhao <zxq_yx_007@163.com>
->   Xinhua Cao <caoxinhua@huawei.com>
->   Xiong Zhang <xiong.y.zhang@intel.com>
->   Yin Yin <yin.yin@cs2c.com.cn>
-> -yuchenlin <npes87184@gmail.com>
-> +Yu-Chen Lin <npes87184@gmail.com>
-> +Yu-Chen Lin <npes87184@gmail.com> <yuchenlin@synology.com>
-
-Thanks for updating your entry in .mailmap!
-
-Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-
->   YunQiang Su <syq@debian.org>
->   YunQiang Su <ysu@wavecomp.com>
->   Yuri Pudgorodskiy <yur@virtuozzo.com>
->=20
+diff --git a/target/i386/machine.c b/target/i386/machine.c
+index 2699eed94e..f21823f179 100644
+--- a/target/i386/machine.c
++++ b/target/i386/machine.c
+@@ -261,7 +261,7 @@ static int cpu_pre_save(void *opaque)
+      * intercepted anymore.
+      *
+      * Furthermore, when a L2 exception is intercepted by L1
+-     * hypervisor, it's exception payload (CR2/DR6 on #PF/#DB)
++     * hypervisor, its exception payload (CR2/DR6 on #PF/#DB)
+      * should not be set yet in the respective vCPU register.
+      * Thus, in case an exception is pending, it is
+      * important to save the exception payload seperately.
+@@ -273,7 +273,7 @@ static int cpu_pre_save(void *opaque)
+      *
+      * In order to preserve better backwards-compatabile migration,
+      * convert a pending exception to an injected exception in
+-     * case it is not important to distingiush between them
++     * case it is not important to distinguish between them
+      * as described above.
+      */
+     if (env->exception_pending && !(env->hflags & HF_GUEST_MASK)) {
+@@ -415,7 +415,7 @@ static bool exception_info_needed(void *opaque)
+ 
+     /*
+      * It is important to save exception-info only in case
+-     * we need to distingiush between a pending and injected
++     * we need to distinguish between a pending and injected
+      * exception. Which is only required in case there is a
+      * pending exception and vCPU is running L2.
+      * For more info, refer to comment in cpu_pre_save().
+-- 
+2.24.0
 
 
