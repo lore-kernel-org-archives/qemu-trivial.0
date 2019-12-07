@@ -1,78 +1,91 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1idU9C-0002Dv-AR
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Dec 2019 02:04:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38400)
+	id 1idUlh-0007Yr-QE
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Dec 2019 02:44:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44202)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dirty@apple.com>) id 1idPub-0000kn-4N
- for qemu-trivial@nongnu.org; Fri, 06 Dec 2019 21:33:38 -0500
+ (envelope-from <sw@weilnetz.de>) id 1idUlf-0007Xt-B4
+ for qemu-trivial@nongnu.org; Sat, 07 Dec 2019 02:44:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dirty@apple.com>) id 1idPuZ-0007xA-W7
- for qemu-trivial@nongnu.org; Fri, 06 Dec 2019 21:33:36 -0500
-Received: from nwk-aaemail-lapp02.apple.com ([17.151.62.67]:57618)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dirty@apple.com>)
- id 1idPuZ-0007iv-J2; Fri, 06 Dec 2019 21:33:35 -0500
-Received: from pps.filterd (nwk-aaemail-lapp02.apple.com [127.0.0.1])
- by nwk-aaemail-lapp02.apple.com (8.16.0.27/8.16.0.27) with SMTP id
- xB72WFxP042064; Fri, 6 Dec 2019 18:33:33 -0800
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=apple.com;
- h=sender : from : to :
- cc : subject : date : message-id : mime-version :
- content-transfer-encoding; s=20180706;
- bh=tCSB5uOKLEox3K6K+aLs93+U7ucV7iPrx4x4KZDF2n0=;
- b=KRyS+wvVooeoQWZfMvKvPbJJf+nHY40O20WJ4xa5CP3qxIDvtrG8DSXymjKc6at9l5e3
- FOUHz48nN3AJiPDuiC3D5tUqgSaWoHoSLeJp5ec657KkEL+Yzfo5tkK+CsQpw1LlmTQ5
- YgLQWP2o5AmRbiS7SH5SftzfK/4hcAgs53JJpmyhd9DFB/Q0176uDtOuzFUaTY6iGMVn
- RBAAyJmR9ZlDRNYAQEgMoMS9DU15bNLYZh3R4E4bzX4RaXoJHylZUfQFnpzAWlSUhOhz
- AcQSw4ACXPW5LB0xXPUgr/COYwvrj6PEQPBYQEmiJiQXX+pt+JXuEl5xpgyhxKyMB7XH 2Q== 
-Received: from ma1-mtap-s03.corp.apple.com (ma1-mtap-s03.corp.apple.com
- [17.40.76.7])
- by nwk-aaemail-lapp02.apple.com with ESMTP id 2wknw6vmv2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NO);
- Fri, 06 Dec 2019 18:33:32 -0800
-Received: from nwk-mmpp-sz12.apple.com
- (nwk-mmpp-sz12.apple.com [17.128.115.204]) by ma1-mtap-s03.corp.apple.com
- (Oracle Communications Messaging Server 8.0.2.4.20190507 64bit (built May  7
- 2019)) with ESMTPS id <0Q24005JQF3VNA80@ma1-mtap-s03.corp.apple.com>; Fri,
- 06 Dec 2019 18:33:32 -0800 (PST)
-Received: from process_milters-daemon.nwk-mmpp-sz12.apple.com by
- nwk-mmpp-sz12.apple.com
- (Oracle Communications Messaging Server 8.0.2.4.20190507 64bit (built May  7
- 2019)) id <0Q2400F00EQA3200@nwk-mmpp-sz12.apple.com>; Fri,
- 06 Dec 2019 18:33:31 -0800 (PST)
-X-Va-A: 
-X-Va-T-CD: 
-X-Va-E-CD: 
-X-Va-R-CD: 
-X-Va-CD: 0
-X-Va-ID: c025b2cc-3337-4fbb-bc8b-1ad71b7df0bd
-X-V-A: 
-X-V-T-CD: c56cc4374afe9162bf6a337f3d661529
-X-V-E-CD: 36058438670e30bb75b386a3291a5519
-X-V-R-CD: 28211e39a4a0c84d37f6c238b7f92cd3
-X-V-CD: 0
-X-V-ID: e1874f02-32e4-4c42-8577-955ae1d98350
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:,,
- definitions=2019-12-06_08:,, signatures=0
-Received: from pontoon.com (unknown [17.193.42.217]) by nwk-mmpp-sz12.apple.com
- (Oracle Communications Messaging Server 8.0.2.4.20190507 64bit (built May  7
- 2019)) with ESMTPSA id <0Q2400HE0F3V0L50@nwk-mmpp-sz12.apple.com>; Fri,
- 06 Dec 2019 18:33:31 -0800 (PST)
-Sender: dirty@apple.com
-From: Cameron Esfahani <dirty@apple.com>
-To: qemu-devel@nongnu.org
+ (envelope-from <sw@weilnetz.de>) id 1idUld-0007A9-FV
+ for qemu-trivial@nongnu.org; Sat, 07 Dec 2019 02:44:43 -0500
+Received: from mail.weilnetz.de ([37.120.169.71]:55438
+ helo=v2201612906741603.powersrv.de)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <sw@weilnetz.de>)
+ id 1idUla-00074H-3o; Sat, 07 Dec 2019 02:44:38 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by v2201612906741603.powersrv.de (Postfix) with ESMTP id BEB57DB1CC4;
+ Sat,  7 Dec 2019 08:44:35 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+ by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id rScDA-UNmhT4; Sat,  7 Dec 2019 08:44:34 +0100 (CET)
+Received: from edv-macbook-pro.fritz.box (p57B42DA4.dip0.t-ipconnect.de
+ [87.180.45.164])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 87675DB1B0A;
+ Sat,  7 Dec 2019 08:44:34 +0100 (CET)
+Subject: Re: [PATCH] Fix some comment spelling errors.
+To: Cameron Esfahani <dirty@apple.com>, qemu-devel@nongnu.org
 Cc: liran.alon@oracle.com, pbonzini@redhat.com, qemu-trivial@nongnu.org
-Subject: [PATCH] Fix some comment spelling errors.
-Date: Fri, 06 Dec 2019 18:33:30 -0800
-Message-id: <086c197db928384b8697edfa64755e2cb46c8100.1575685843.git.dirty@apple.com>
-X-Mailer: git-send-email 2.24.0
-MIME-version: 1.0
-Content-transfer-encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-12-06_08:, , signatures=0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 17.151.62.67
-X-Mailman-Approved-At: Sat, 07 Dec 2019 02:04:57 -0500
+References: <086c197db928384b8697edfa64755e2cb46c8100.1575685843.git.dirty@apple.com>
+From: Stefan Weil <sw@weilnetz.de>
+Openpgp: preference=signencrypt
+Autocrypt: addr=sw@weilnetz.de; keydata=
+ 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
+Message-ID: <543d4015-f043-96c5-39b8-2a37bd78d689@weilnetz.de>
+Date: Sat, 7 Dec 2019 08:44:34 +0100
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:60.0)
+ Gecko/20100101 Thunderbird/60.9.1
+MIME-Version: 1.0
+In-Reply-To: <086c197db928384b8697edfa64755e2cb46c8100.1575685843.git.dirty@apple.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 37.120.169.71
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -84,45 +97,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Dec 2019 02:33:38 -0000
+X-List-Received-Date: Sat, 07 Dec 2019 07:44:44 -0000
 
-Signed-off-by: Cameron Esfahani <dirty@apple.com>
----
- target/i386/machine.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Am 07.12.19 um 03:33 schrieb Cameron Esfahani via:
 
-diff --git a/target/i386/machine.c b/target/i386/machine.c
-index 2699eed94e..f21823f179 100644
---- a/target/i386/machine.c
-+++ b/target/i386/machine.c
-@@ -261,7 +261,7 @@ static int cpu_pre_save(void *opaque)
-      * intercepted anymore.
-      *
-      * Furthermore, when a L2 exception is intercepted by L1
--     * hypervisor, it's exception payload (CR2/DR6 on #PF/#DB)
-+     * hypervisor, its exception payload (CR2/DR6 on #PF/#DB)
-      * should not be set yet in the respective vCPU register.
-      * Thus, in case an exception is pending, it is
-      * important to save the exception payload seperately.
-@@ -273,7 +273,7 @@ static int cpu_pre_save(void *opaque)
-      *
-      * In order to preserve better backwards-compatabile migration,
-      * convert a pending exception to an injected exception in
--     * case it is not important to distingiush between them
-+     * case it is not important to distinguish between them
-      * as described above.
-      */
-     if (env->exception_pending && !(env->hflags & HF_GUEST_MASK)) {
-@@ -415,7 +415,7 @@ static bool exception_info_needed(void *opaque)
- 
-     /*
-      * It is important to save exception-info only in case
--     * we need to distingiush between a pending and injected
-+     * we need to distinguish between a pending and injected
-      * exception. Which is only required in case there is a
-      * pending exception and vCPU is running L2.
-      * For more info, refer to comment in cpu_pre_save().
--- 
-2.24.0
+> Signed-off-by: Cameron Esfahani <dirty@apple.com>
+> ---
+>  target/i386/machine.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/target/i386/machine.c b/target/i386/machine.c
+> index 2699eed94e..f21823f179 100644
+> --- a/target/i386/machine.c
+> +++ b/target/i386/machine.c
+> @@ -261,7 +261,7 @@ static int cpu_pre_save(void *opaque)
+>       * intercepted anymore.
+>       *
+>       * Furthermore, when a L2 exception is intercepted by L1
+> -     * hypervisor, it's exception payload (CR2/DR6 on #PF/#DB)
+> +     * hypervisor, its exception payload (CR2/DR6 on #PF/#DB)
+>       * should not be set yet in the respective vCPU register.
+>       * Thus, in case an exception is pending, it is
+>       * important to save the exception payload seperately.
+> @@ -273,7 +273,7 @@ static int cpu_pre_save(void *opaque)
+>       *
+>       * In order to preserve better backwards-compatabile migration,
+
+
+s/compatabile/compatible/
+
+can perhaps be fixed, too, when merging this commit.
+
+
+>       * convert a pending exception to an injected exception in
+> -     * case it is not important to distingiush between them
+> +     * case it is not important to distinguish between them
+>       * as described above.
+>       */
+>      if (env->exception_pending && !(env->hflags & HF_GUEST_MASK)) {
+> @@ -415,7 +415,7 @@ static bool exception_info_needed(void *opaque)
+>  
+>      /*
+>       * It is important to save exception-info only in case
+> -     * we need to distingiush between a pending and injected
+> +     * we need to distinguish between a pending and injected
+>       * exception. Which is only required in case there is a
+>       * pending exception and vCPU is running L2.
+>       * For more info, refer to comment in cpu_pre_save().
+
+
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 
 
