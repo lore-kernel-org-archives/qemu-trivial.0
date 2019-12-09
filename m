@@ -1,70 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ieFvB-0000iq-GX
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Dec 2019 05:05:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51132)
+	id 1ieKP7-0000U3-GU
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Dec 2019 09:52:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44231)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1ieFv8-0000i1-VE
- for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 05:05:39 -0500
+ (envelope-from <thuth@redhat.com>) id 1ieKP5-0000Tn-B6
+ for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 09:52:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1ieFv7-0003ST-V1
- for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 05:05:38 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:53665
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <thuth@redhat.com>) id 1ieKP3-000361-Vd
+ for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 09:52:51 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:53640
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1ieFv7-0003S6-RE
- for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 05:05:37 -0500
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1ieKP3-00035a-Sm
+ for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 09:52:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575885937;
+ s=mimecast20190719; t=1575903169;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=gcXxnFZqmipUTp4SLY/i9ILSaABJyhP3QgU/n54mC1A=;
- b=fwVGq7RrJS1p7B7k8FE7OMX71ZBf5WwwwQ98wgrLnC/u0I8bGQDvw27e7eH++NtH6fZaWG
- CmXzmLZdAd5FPJRItS+W+O51pRC5XrniuygxgzUPZ5FPDfvsplKHnPZJ+5uKgkx1+qnzbG
- CwN8y8H/eLMiFp2W6e71g5VryUg7NB4=
+ to:to:cc:cc:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=iq86KGxLR6UTYXmMeKI1ArfzDy3UjI2qkFgCjrf2gXY=;
+ b=GNnV3LJHlvcY+zLk0DvcJCGJ1GL+EfNxUJEuhy5PbEej3CTZhYNG9Q5IKEF+Tou5wnqegD
+ FWzOtlJ7nzEbqSUwtu6IKE0uEoIj+hg1PipqwVJS72XNhtiNJNNR1uEGZwPB8u6TZHsdCV
+ hwSmriGLTioyIgXYaKZ0Pyqn7fRHROU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-101-h0eJ5ZtWNDC-3obL730LkA-1; Mon, 09 Dec 2019 05:05:34 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-280-MQfb8sPxN6yLSrYgTqbD9Q-1; Mon, 09 Dec 2019 09:52:45 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7AEDE107AFFB;
- Mon,  9 Dec 2019 10:05:32 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-121.ams2.redhat.com [10.36.116.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id CF7B95D6C5;
- Mon,  9 Dec 2019 10:05:22 +0000 (UTC)
-Subject: Re: [PATCH-for-5.0 v3 3/6] hw/pci-host/i440fx: Use size_t to iterate
- over ARRAY_SIZE()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: xen-devel@lists.xenproject.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Anthony Perard <anthony.perard@citrix.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Paul Durrant <paul@xen.org>,
- Alex Williamson <alex.williamson@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20191209095002.32194-1-philmd@redhat.com>
- <20191209095002.32194-4-philmd@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CA285800D4E;
+ Mon,  9 Dec 2019 14:52:44 +0000 (UTC)
+Received: from thuth.com (ovpn-116-121.ams2.redhat.com [10.36.116.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1D3EC10372C0;
+ Mon,  9 Dec 2019 14:52:42 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <a4745134-47dc-ab8a-6009-69fcc9dfbb02@redhat.com>
-Date: Mon, 9 Dec 2019 11:05:21 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
-MIME-Version: 1.0
-In-Reply-To: <20191209095002.32194-4-philmd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: h0eJ5ZtWNDC-3obL730LkA-1
+To: Greg Kurz <groug@kaod.org>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH] virtfs: Remove the deprecated "-virtfs_synth" option
+Date: Mon,  9 Dec 2019 15:52:40 +0100
+Message-Id: <20191209145240.9271-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: MQfb8sPxN6yLSrYgTqbD9Q-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -76,41 +61,97 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Dec 2019 10:05:40 -0000
+X-List-Received-Date: Mon, 09 Dec 2019 14:52:52 -0000
 
-On 09/12/2019 10.49, Philippe Mathieu-Daud=C3=A9 wrote:
-> We don't enforce the -Wsign-conversion CPPFLAG, but it doesn't hurt
-> to avoid this warning:
->=20
->   warning: implicit conversion changes signedness: 'int' to 'size_t' (aka=
- 'unsigned long') [-Wsign-conversion]
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/pci-host/i440fx.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
->=20
-> diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
-> index fbdc563599..0cc80b276d 100644
-> --- a/hw/pci-host/i440fx.c
-> +++ b/hw/pci-host/i440fx.c
-> @@ -419,12 +419,11 @@ out:
->  static void igd_pt_i440fx_realize(PCIDevice *pci_dev, Error **errp)
->  {
->      uint32_t val =3D 0;
-> -    int i, num;
-> +    size_t i;
->      int pos, len;
->      Error *local_err =3D NULL;
-> =20
-> -    num =3D ARRAY_SIZE(igd_host_bridge_infos);
-> -    for (i =3D 0; i < num; i++) {
-> +    for (i =3D 0; i < ARRAY_SIZE(igd_host_bridge_infos); i++) {
->          pos =3D igd_host_bridge_infos[i].offset;
->          len =3D igd_host_bridge_infos[i].len;
->          host_pci_config_read(pos, len, &val, &local_err);
->=20
+It's been marked as deprecated since QEMU v4.1, time to remove it now.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ qemu-deprecated.texi |  5 -----
+ qemu-options.hx      | 10 ----------
+ vl.c                 | 23 -----------------------
+ 3 files changed, 38 deletions(-)
+
+diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
+index 2f9efb45ba..3745334e80 100644
+--- a/qemu-deprecated.texi
++++ b/qemu-deprecated.texi
+@@ -84,11 +84,6 @@ error in the future.
+ The @code{-realtime mlock=3Don|off} argument has been replaced by the
+ @code{-overcommit mem-lock=3Don|off} argument.
+=20
+-@subsection -virtfs_synth (since 4.1)
+-
+-The ``-virtfs_synth'' argument is now deprecated. Please use ``-fsdev synt=
+h''
+-and ``-device virtio-9p-...'' instead.
+-
+ @subsection -numa node,mem=3D@var{size} (since 4.1)
+=20
+ The parameter @option{mem} of @option{-numa node} is used to assign a part=
+ of
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 65c9473b73..4cf7751ade 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -1468,16 +1468,6 @@ would still return entries from other devices).
+ @end table
+ ETEXI
+=20
+-DEF("virtfs_synth", 0, QEMU_OPTION_virtfs_synth,
+-    "-virtfs_synth Create synthetic file system image\n",
+-    QEMU_ARCH_ALL)
+-STEXI
+-@item -virtfs_synth
+-@findex -virtfs_synth
+-Create synthetic file system image. Note that this option is now deprecate=
+d.
+-Please use @code{-fsdev synth} and @code{-device virtio-9p-...} instead.
+-ETEXI
+-
+ DEF("iscsi", HAS_ARG, QEMU_OPTION_iscsi,
+     "-iscsi [user=3Duser][,password=3Dpassword]\n"
+     "       [,header-digest=3DCRC32C|CR32C-NONE|NONE-CRC32C|NONE\n"
+diff --git a/vl.c b/vl.c
+index 6a65a64bfd..c0904b365b 100644
+--- a/vl.c
++++ b/vl.c
+@@ -3374,29 +3374,6 @@ int main(int argc, char **argv, char **envp)
+                              qemu_opt_get(opts, "mount_tag"), &error_abort=
+);
+                 break;
+             }
+-            case QEMU_OPTION_virtfs_synth: {
+-                QemuOpts *fsdev;
+-                QemuOpts *device;
+-
+-                warn_report("'-virtfs_synth' is deprecated, please use "
+-                             "'-fsdev synth' and '-device virtio-9p-...' "
+-                            "instead");
+-
+-                fsdev =3D qemu_opts_create(qemu_find_opts("fsdev"), "v_syn=
+th",
+-                                         1, NULL);
+-                if (!fsdev) {
+-                    error_report("duplicate option: %s", "virtfs_synth");
+-                    exit(1);
+-                }
+-                qemu_opt_set(fsdev, "fsdriver", "synth", &error_abort);
+-
+-                device =3D qemu_opts_create(qemu_find_opts("device"), NULL=
+, 0,
+-                                          &error_abort);
+-                qemu_opt_set(device, "driver", "virtio-9p-pci", &error_abo=
+rt);
+-                qemu_opt_set(device, "fsdev", "v_synth", &error_abort);
+-                qemu_opt_set(device, "mount_tag", "v_synth", &error_abort)=
+;
+-                break;
+-            }
+             case QEMU_OPTION_serial:
+                 add_device_config(DEV_SERIAL, optarg);
+                 default_serial =3D 0;
+--=20
+2.18.1
 
 
