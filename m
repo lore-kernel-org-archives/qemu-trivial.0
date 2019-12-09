@@ -1,66 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ieF27-0001Vn-0N
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Dec 2019 04:08:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48083)
+	id 1ieFs4-000764-4o
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Dec 2019 05:02:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50732)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <devel@etsukata.com>) id 1ieDV0-0001AB-7M
- for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 02:30:31 -0500
+ (envelope-from <thuth@redhat.com>) id 1ieFs1-00074E-Cj
+ for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 05:02:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <devel@etsukata.com>) id 1ieDUy-0003nh-Nl
- for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 02:30:30 -0500
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:35479)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <devel@etsukata.com>) id 1ieDUy-0003mM-9C
- for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 02:30:28 -0500
-Received: by mail-pl1-x642.google.com with SMTP id s10so5431782plp.2
- for <qemu-trivial@nongnu.org>; Sun, 08 Dec 2019 23:30:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=etsukata-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ytPK+hH06lqGjyswEy6eX9rtlUfTVQLT89l523gdpMs=;
- b=TQXHKbh/UREXMkgVaVPmqJupbseTmERK85MSDdLPis5u1tVUExHIF2zXEQ/a3R7uQ7
- IPwFTVpkEKj9e2i7wuejXnNviflA1eEBi2XSijSCJWlUZqr0N0qS4AiLae2W5JKZGke6
- yEY+P7bfGFI0rkklI1oaiX+BH37TCypVO2MUIY0VN5bxvayX/7eItAEw1NtOKFiV5vuB
- BcjIw/fftHvBa+JpOPXVmCr+A99xGhk+DLnSd6EYBv/p3Mz4dCnXhGjcn1AIPquwtA7+
- YXUnwb5nWCYHsraEPdT1miHxDXgCe0/3cNCob32aTC+P57mY7Q17STKGBu/UInM6fLM2
- Byxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ytPK+hH06lqGjyswEy6eX9rtlUfTVQLT89l523gdpMs=;
- b=CZ100njWzZ+LHIhL6qs50sq+3FZE1cdNns91xDcC9kKmHvpe9WUAa2e8G2xqurDPTL
- /O5HSViaLKJrPZyVUHiwpDgn63nRwDpDLtkJGGTHf4GLoohG25JO0bn/J7krUW5mG4QK
- r/H9JoeHx/ukjr6Xo4pIrhL0evGE8+0AQ0q+aU3bQnuMOqeB0w3MX6LeRCx/4FIC901e
- znYqwH+s+x0r5fDxmRAPGfow97OHTpxvr9SkTqmSLBRqSM5kVkvMWxxmeyi6NmhHSIns
- 0OLycHta00alP0gZxh28H8xkbBzDT9QjoTO01n2Qv94TbKJAe+3GuFFdhA7GZCnjoUMX
- Ny9w==
-X-Gm-Message-State: APjAAAUatINNTiXJL6xbyI24OoPmqPTBI7//g6WvMSLEQ/uotB6n8h70
- ekPLLAndeYp2JeGEDjOvcuampw==
-X-Google-Smtp-Source: APXvYqzqCU1qinCtg2re+a0Na3/RreE9wGd00R/ycD/EeVqpcds+bFJlRj6O+FZYejrD+pKoLWVleA==
-X-Received: by 2002:a17:902:968b:: with SMTP id
- n11mr23780213plp.120.1575876626379; 
- Sun, 08 Dec 2019 23:30:26 -0800 (PST)
-Received: from localhost.localdomain
- (p5309002-ipngn11902marunouchi.tokyo.ocn.ne.jp. [114.166.47.2])
- by smtp.gmail.com with ESMTPSA id q22sm26104660pfg.170.2019.12.08.23.30.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 08 Dec 2019 23:30:25 -0800 (PST)
-From: Eiichi Tsukata <devel@etsukata.com>
-To: pbonzini@redhat.com, mtosatti@redhat.com, rth@twiddle.net,
- ehabkost@redhat.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: Eiichi Tsukata <devel@etsukata.com>
-Subject: [PATCH] target/i386: remove unused pci-assign codes
-Date: Mon,  9 Dec 2019 16:29:32 +0900
-Message-Id: <20191209072932.313056-1-devel@etsukata.com>
-X-Mailer: git-send-email 2.23.0
+ (envelope-from <thuth@redhat.com>) id 1ieFrz-0002CK-9i
+ for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 05:02:24 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:53835
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1ieFrz-0002AQ-5d
+ for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 05:02:23 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1575885741;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=xxMmNC5FGITGyG1+6EhX9Q2cuRNo/kPIvv4PpcDRbsU=;
+ b=UFUCgTmq02n3zj4pHXFLK3Sm7lly6kupbLMQfIHl/DqIF3XEqnT1a7yTn3Af3WE3/rMmuN
+ RqcDtfczL0HhrH5DTopzXtuJDbEA6Lv4m5eS1sdJKhDWu/eqfPKc8RduGbRSH4DH+wrmD5
+ Xw1sqfX1lSDQug0aqVAbIU55Y70+riw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-151-QjKFY9XyOeen4Q3QFgFomg-1; Mon, 09 Dec 2019 05:02:21 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 78829800C78;
+ Mon,  9 Dec 2019 10:02:19 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-121.ams2.redhat.com [10.36.116.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 41A0818231;
+ Mon,  9 Dec 2019 10:02:02 +0000 (UTC)
+Subject: Re: [PATCH-for-5.0 v3 1/6] hw/pci-host/i440fx: Correct the header
+ description
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: xen-devel@lists.xenproject.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Paul Durrant <paul@xen.org>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20191209095002.32194-1-philmd@redhat.com>
+ <20191209095002.32194-2-philmd@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <12e7069c-46f0-ae9f-4e1f-70f0b8318180@redhat.com>
+Date: Mon, 9 Dec 2019 11:02:01 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::642
-X-Mailman-Approved-At: Mon, 09 Dec 2019 04:08:45 -0500
+In-Reply-To: <20191209095002.32194-2-philmd@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: QjKFY9XyOeen4Q3QFgFomg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,201 +76,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Dec 2019 07:30:32 -0000
+X-List-Received-Date: Mon, 09 Dec 2019 10:02:26 -0000
 
-Legacy PCI device assignment has been already removed in commit ab37bfc7d641
-("pci-assign: Remove"), but some codes remain unused.
+On 09/12/2019 10.49, Philippe Mathieu-Daud=C3=A9 wrote:
+> Missed during the refactor in commits 14a026dd58 and 0f25d865a,
+> this file is now only about the i440FX chipset.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/pci-host/i440fx.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
+> index f27131102d..3fc94426ea 100644
+> --- a/hw/pci-host/i440fx.c
+> +++ b/hw/pci-host/i440fx.c
+> @@ -1,5 +1,5 @@
+>  /*
+> - * QEMU i440FX/PIIX3 PCI Bridge Emulation
+> + * QEMU i440FX PCI Bridge Emulation
+>   *
+>   * Copyright (c) 2006 Fabrice Bellard
+>   *
+>=20
 
-CC: qemu-trivial@nongnu.org
-Signed-off-by: Eiichi Tsukata <devel@etsukata.com>
----
- target/i386/kvm.c      | 140 -----------------------------------------
- target/i386/kvm_i386.h |  20 ------
- 2 files changed, 160 deletions(-)
-
-diff --git a/target/i386/kvm.c b/target/i386/kvm.c
-index bf1655645b..efd39843c4 100644
---- a/target/i386/kvm.c
-+++ b/target/i386/kvm.c
-@@ -4505,146 +4505,6 @@ int kvm_arch_irqchip_create(MachineState *ms, KVMState *s)
-     }
- }
- 
--/* Classic KVM device assignment interface. Will remain x86 only. */
--int kvm_device_pci_assign(KVMState *s, PCIHostDeviceAddress *dev_addr,
--                          uint32_t flags, uint32_t *dev_id)
--{
--    struct kvm_assigned_pci_dev dev_data = {
--        .segnr = dev_addr->domain,
--        .busnr = dev_addr->bus,
--        .devfn = PCI_DEVFN(dev_addr->slot, dev_addr->function),
--        .flags = flags,
--    };
--    int ret;
--
--    dev_data.assigned_dev_id =
--        (dev_addr->domain << 16) | (dev_addr->bus << 8) | dev_data.devfn;
--
--    ret = kvm_vm_ioctl(s, KVM_ASSIGN_PCI_DEVICE, &dev_data);
--    if (ret < 0) {
--        return ret;
--    }
--
--    *dev_id = dev_data.assigned_dev_id;
--
--    return 0;
--}
--
--int kvm_device_pci_deassign(KVMState *s, uint32_t dev_id)
--{
--    struct kvm_assigned_pci_dev dev_data = {
--        .assigned_dev_id = dev_id,
--    };
--
--    return kvm_vm_ioctl(s, KVM_DEASSIGN_PCI_DEVICE, &dev_data);
--}
--
--static int kvm_assign_irq_internal(KVMState *s, uint32_t dev_id,
--                                   uint32_t irq_type, uint32_t guest_irq)
--{
--    struct kvm_assigned_irq assigned_irq = {
--        .assigned_dev_id = dev_id,
--        .guest_irq = guest_irq,
--        .flags = irq_type,
--    };
--
--    if (kvm_check_extension(s, KVM_CAP_ASSIGN_DEV_IRQ)) {
--        return kvm_vm_ioctl(s, KVM_ASSIGN_DEV_IRQ, &assigned_irq);
--    } else {
--        return kvm_vm_ioctl(s, KVM_ASSIGN_IRQ, &assigned_irq);
--    }
--}
--
--int kvm_device_intx_assign(KVMState *s, uint32_t dev_id, bool use_host_msi,
--                           uint32_t guest_irq)
--{
--    uint32_t irq_type = KVM_DEV_IRQ_GUEST_INTX |
--        (use_host_msi ? KVM_DEV_IRQ_HOST_MSI : KVM_DEV_IRQ_HOST_INTX);
--
--    return kvm_assign_irq_internal(s, dev_id, irq_type, guest_irq);
--}
--
--int kvm_device_intx_set_mask(KVMState *s, uint32_t dev_id, bool masked)
--{
--    struct kvm_assigned_pci_dev dev_data = {
--        .assigned_dev_id = dev_id,
--        .flags = masked ? KVM_DEV_ASSIGN_MASK_INTX : 0,
--    };
--
--    return kvm_vm_ioctl(s, KVM_ASSIGN_SET_INTX_MASK, &dev_data);
--}
--
--static int kvm_deassign_irq_internal(KVMState *s, uint32_t dev_id,
--                                     uint32_t type)
--{
--    struct kvm_assigned_irq assigned_irq = {
--        .assigned_dev_id = dev_id,
--        .flags = type,
--    };
--
--    return kvm_vm_ioctl(s, KVM_DEASSIGN_DEV_IRQ, &assigned_irq);
--}
--
--int kvm_device_intx_deassign(KVMState *s, uint32_t dev_id, bool use_host_msi)
--{
--    return kvm_deassign_irq_internal(s, dev_id, KVM_DEV_IRQ_GUEST_INTX |
--        (use_host_msi ? KVM_DEV_IRQ_HOST_MSI : KVM_DEV_IRQ_HOST_INTX));
--}
--
--int kvm_device_msi_assign(KVMState *s, uint32_t dev_id, int virq)
--{
--    return kvm_assign_irq_internal(s, dev_id, KVM_DEV_IRQ_HOST_MSI |
--                                              KVM_DEV_IRQ_GUEST_MSI, virq);
--}
--
--int kvm_device_msi_deassign(KVMState *s, uint32_t dev_id)
--{
--    return kvm_deassign_irq_internal(s, dev_id, KVM_DEV_IRQ_GUEST_MSI |
--                                                KVM_DEV_IRQ_HOST_MSI);
--}
--
--bool kvm_device_msix_supported(KVMState *s)
--{
--    /* The kernel lacks a corresponding KVM_CAP, so we probe by calling
--     * KVM_ASSIGN_SET_MSIX_NR with an invalid parameter. */
--    return kvm_vm_ioctl(s, KVM_ASSIGN_SET_MSIX_NR, NULL) == -EFAULT;
--}
--
--int kvm_device_msix_init_vectors(KVMState *s, uint32_t dev_id,
--                                 uint32_t nr_vectors)
--{
--    struct kvm_assigned_msix_nr msix_nr = {
--        .assigned_dev_id = dev_id,
--        .entry_nr = nr_vectors,
--    };
--
--    return kvm_vm_ioctl(s, KVM_ASSIGN_SET_MSIX_NR, &msix_nr);
--}
--
--int kvm_device_msix_set_vector(KVMState *s, uint32_t dev_id, uint32_t vector,
--                               int virq)
--{
--    struct kvm_assigned_msix_entry msix_entry = {
--        .assigned_dev_id = dev_id,
--        .gsi = virq,
--        .entry = vector,
--    };
--
--    return kvm_vm_ioctl(s, KVM_ASSIGN_SET_MSIX_ENTRY, &msix_entry);
--}
--
--int kvm_device_msix_assign(KVMState *s, uint32_t dev_id)
--{
--    return kvm_assign_irq_internal(s, dev_id, KVM_DEV_IRQ_HOST_MSIX |
--                                              KVM_DEV_IRQ_GUEST_MSIX, 0);
--}
--
--int kvm_device_msix_deassign(KVMState *s, uint32_t dev_id)
--{
--    return kvm_deassign_irq_internal(s, dev_id, KVM_DEV_IRQ_GUEST_MSIX |
--                                                KVM_DEV_IRQ_HOST_MSIX);
--}
--
- int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
-                              uint64_t address, uint32_t data, PCIDevice *dev)
- {
-diff --git a/target/i386/kvm_i386.h b/target/i386/kvm_i386.h
-index 06fe06bdb3..7d0242f5fb 100644
---- a/target/i386/kvm_i386.h
-+++ b/target/i386/kvm_i386.h
-@@ -40,26 +40,6 @@ void kvm_synchronize_all_tsc(void);
- void kvm_arch_reset_vcpu(X86CPU *cs);
- void kvm_arch_do_init_vcpu(X86CPU *cs);
- 
--int kvm_device_pci_assign(KVMState *s, PCIHostDeviceAddress *dev_addr,
--                          uint32_t flags, uint32_t *dev_id);
--int kvm_device_pci_deassign(KVMState *s, uint32_t dev_id);
--
--int kvm_device_intx_assign(KVMState *s, uint32_t dev_id,
--                           bool use_host_msi, uint32_t guest_irq);
--int kvm_device_intx_set_mask(KVMState *s, uint32_t dev_id, bool masked);
--int kvm_device_intx_deassign(KVMState *s, uint32_t dev_id, bool use_host_msi);
--
--int kvm_device_msi_assign(KVMState *s, uint32_t dev_id, int virq);
--int kvm_device_msi_deassign(KVMState *s, uint32_t dev_id);
--
--bool kvm_device_msix_supported(KVMState *s);
--int kvm_device_msix_init_vectors(KVMState *s, uint32_t dev_id,
--                                 uint32_t nr_vectors);
--int kvm_device_msix_set_vector(KVMState *s, uint32_t dev_id, uint32_t vector,
--                               int virq);
--int kvm_device_msix_assign(KVMState *s, uint32_t dev_id);
--int kvm_device_msix_deassign(KVMState *s, uint32_t dev_id);
--
- void kvm_put_apicbase(X86CPU *cpu, uint64_t value);
- 
- bool kvm_enable_x2apic(void);
--- 
-2.23.0
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
