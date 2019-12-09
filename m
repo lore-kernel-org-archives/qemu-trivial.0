@@ -1,55 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ieKP7-0000U3-GU
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Dec 2019 09:52:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44231)
+	id 1ieMvn-0003o4-3n
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Dec 2019 12:34:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51364)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1ieKP5-0000Tn-B6
- for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 09:52:52 -0500
+ (envelope-from <groug@kaod.org>) id 1ieMvk-0003l7-Ku
+ for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 12:34:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1ieKP3-000361-Vd
- for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 09:52:51 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:53640
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <groug@kaod.org>) id 1ieMvj-0004fN-6Z
+ for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 12:34:44 -0500
+Received: from 10.mo178.mail-out.ovh.net ([46.105.76.150]:40383)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1ieKP3-00035a-Sm
- for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 09:52:49 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1575903169;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=iq86KGxLR6UTYXmMeKI1ArfzDy3UjI2qkFgCjrf2gXY=;
- b=GNnV3LJHlvcY+zLk0DvcJCGJ1GL+EfNxUJEuhy5PbEej3CTZhYNG9Q5IKEF+Tou5wnqegD
- FWzOtlJ7nzEbqSUwtu6IKE0uEoIj+hg1PipqwVJS72XNhtiNJNNR1uEGZwPB8u6TZHsdCV
- hwSmriGLTioyIgXYaKZ0Pyqn7fRHROU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-280-MQfb8sPxN6yLSrYgTqbD9Q-1; Mon, 09 Dec 2019 09:52:45 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CA285800D4E;
- Mon,  9 Dec 2019 14:52:44 +0000 (UTC)
-Received: from thuth.com (ovpn-116-121.ams2.redhat.com [10.36.116.121])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1D3EC10372C0;
- Mon,  9 Dec 2019 14:52:42 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Greg Kurz <groug@kaod.org>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH] virtfs: Remove the deprecated "-virtfs_synth" option
-Date: Mon,  9 Dec 2019 15:52:40 +0100
-Message-Id: <20191209145240.9271-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: MQfb8sPxN6yLSrYgTqbD9Q-1
-X-Mimecast-Spam-Score: 0
+ (Exim 4.71) (envelope-from <groug@kaod.org>) id 1ieMvj-0004ef-0A
+ for qemu-trivial@nongnu.org; Mon, 09 Dec 2019 12:34:43 -0500
+Received: from player756.ha.ovh.net (unknown [10.108.42.192])
+ by mo178.mail-out.ovh.net (Postfix) with ESMTP id 95B1C80B4E
+ for <qemu-trivial@nongnu.org>; Mon,  9 Dec 2019 18:34:40 +0100 (CET)
+Received: from kaod.org (lns-bzn-46-82-253-208-248.adsl.proxad.net
+ [82.253.208.248]) (Authenticated sender: groug@kaod.org)
+ by player756.ha.ovh.net (Postfix) with ESMTPSA id 17361C42DB58;
+ Mon,  9 Dec 2019 17:34:36 +0000 (UTC)
+Date: Mon, 9 Dec 2019 18:34:30 +0100
+From: Greg Kurz <groug@kaod.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Paolo Bonzini
+ <pbonzini@redhat.com>
+Subject: Re: [PATCH] virtfs: Remove the deprecated "-virtfs_synth" option
+Message-ID: <20191209183430.46ec8137@bahia.w3ibm.bluemix.net>
+In-Reply-To: <20191209145240.9271-1-thuth@redhat.com>
+References: <20191209145240.9271-1-thuth@redhat.com>
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 9633199603446159666
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudeltddguddtfecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvuffkjghfofggtgfgsehtjeertdertddvnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpkedvrddvheefrddvtdekrddvgeeknecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejheeirdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomhepghhrohhugheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdhtrhhivhhirghlsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedt
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 46.105.76.150
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -61,97 +50,93 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Dec 2019 14:52:52 -0000
+X-List-Received-Date: Mon, 09 Dec 2019 17:34:46 -0000
 
-It's been marked as deprecated since QEMU v4.1, time to remove it now.
+On Mon,  9 Dec 2019 15:52:40 +0100
+Thomas Huth <thuth@redhat.com> wrote:
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- qemu-deprecated.texi |  5 -----
- qemu-options.hx      | 10 ----------
- vl.c                 | 23 -----------------------
- 3 files changed, 38 deletions(-)
+> It's been marked as deprecated since QEMU v4.1, time to remove it now.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
 
-diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
-index 2f9efb45ba..3745334e80 100644
---- a/qemu-deprecated.texi
-+++ b/qemu-deprecated.texi
-@@ -84,11 +84,6 @@ error in the future.
- The @code{-realtime mlock=3Don|off} argument has been replaced by the
- @code{-overcommit mem-lock=3Don|off} argument.
-=20
--@subsection -virtfs_synth (since 4.1)
--
--The ``-virtfs_synth'' argument is now deprecated. Please use ``-fsdev synt=
-h''
--and ``-device virtio-9p-...'' instead.
--
- @subsection -numa node,mem=3D@var{size} (since 4.1)
-=20
- The parameter @option{mem} of @option{-numa node} is used to assign a part=
- of
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 65c9473b73..4cf7751ade 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -1468,16 +1468,6 @@ would still return entries from other devices).
- @end table
- ETEXI
-=20
--DEF("virtfs_synth", 0, QEMU_OPTION_virtfs_synth,
--    "-virtfs_synth Create synthetic file system image\n",
--    QEMU_ARCH_ALL)
--STEXI
--@item -virtfs_synth
--@findex -virtfs_synth
--Create synthetic file system image. Note that this option is now deprecate=
-d.
--Please use @code{-fsdev synth} and @code{-device virtio-9p-...} instead.
--ETEXI
--
- DEF("iscsi", HAS_ARG, QEMU_OPTION_iscsi,
-     "-iscsi [user=3Duser][,password=3Dpassword]\n"
-     "       [,header-digest=3DCRC32C|CR32C-NONE|NONE-CRC32C|NONE\n"
-diff --git a/vl.c b/vl.c
-index 6a65a64bfd..c0904b365b 100644
---- a/vl.c
-+++ b/vl.c
-@@ -3374,29 +3374,6 @@ int main(int argc, char **argv, char **envp)
-                              qemu_opt_get(opts, "mount_tag"), &error_abort=
-);
-                 break;
-             }
--            case QEMU_OPTION_virtfs_synth: {
--                QemuOpts *fsdev;
--                QemuOpts *device;
--
--                warn_report("'-virtfs_synth' is deprecated, please use "
--                             "'-fsdev synth' and '-device virtio-9p-...' "
--                            "instead");
--
--                fsdev =3D qemu_opts_create(qemu_find_opts("fsdev"), "v_syn=
-th",
--                                         1, NULL);
--                if (!fsdev) {
--                    error_report("duplicate option: %s", "virtfs_synth");
--                    exit(1);
--                }
--                qemu_opt_set(fsdev, "fsdriver", "synth", &error_abort);
--
--                device =3D qemu_opts_create(qemu_find_opts("device"), NULL=
-, 0,
--                                          &error_abort);
--                qemu_opt_set(device, "driver", "virtio-9p-pci", &error_abo=
-rt);
--                qemu_opt_set(device, "fsdev", "v_synth", &error_abort);
--                qemu_opt_set(device, "mount_tag", "v_synth", &error_abort)=
-;
--                break;
--            }
-             case QEMU_OPTION_serial:
-                 add_device_config(DEV_SERIAL, optarg);
-                 default_serial =3D 0;
---=20
-2.18.1
+Pushed to 9p-next.
+
+>  qemu-deprecated.texi |  5 -----
+>  qemu-options.hx      | 10 ----------
+>  vl.c                 | 23 -----------------------
+>  3 files changed, 38 deletions(-)
+> 
+> diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
+> index 2f9efb45ba..3745334e80 100644
+> --- a/qemu-deprecated.texi
+> +++ b/qemu-deprecated.texi
+> @@ -84,11 +84,6 @@ error in the future.
+>  The @code{-realtime mlock=on|off} argument has been replaced by the
+>  @code{-overcommit mem-lock=on|off} argument.
+>  
+> -@subsection -virtfs_synth (since 4.1)
+> -
+> -The ``-virtfs_synth'' argument is now deprecated. Please use ``-fsdev synth''
+> -and ``-device virtio-9p-...'' instead.
+> -
+>  @subsection -numa node,mem=@var{size} (since 4.1)
+>  
+>  The parameter @option{mem} of @option{-numa node} is used to assign a part of
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 65c9473b73..4cf7751ade 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -1468,16 +1468,6 @@ would still return entries from other devices).
+>  @end table
+>  ETEXI
+>  
+> -DEF("virtfs_synth", 0, QEMU_OPTION_virtfs_synth,
+> -    "-virtfs_synth Create synthetic file system image\n",
+> -    QEMU_ARCH_ALL)
+> -STEXI
+> -@item -virtfs_synth
+> -@findex -virtfs_synth
+> -Create synthetic file system image. Note that this option is now deprecated.
+> -Please use @code{-fsdev synth} and @code{-device virtio-9p-...} instead.
+> -ETEXI
+> -
+>  DEF("iscsi", HAS_ARG, QEMU_OPTION_iscsi,
+>      "-iscsi [user=user][,password=password]\n"
+>      "       [,header-digest=CRC32C|CR32C-NONE|NONE-CRC32C|NONE\n"
+> diff --git a/vl.c b/vl.c
+> index 6a65a64bfd..c0904b365b 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -3374,29 +3374,6 @@ int main(int argc, char **argv, char **envp)
+>                               qemu_opt_get(opts, "mount_tag"), &error_abort);
+>                  break;
+>              }
+> -            case QEMU_OPTION_virtfs_synth: {
+> -                QemuOpts *fsdev;
+> -                QemuOpts *device;
+> -
+> -                warn_report("'-virtfs_synth' is deprecated, please use "
+> -                             "'-fsdev synth' and '-device virtio-9p-...' "
+> -                            "instead");
+> -
+> -                fsdev = qemu_opts_create(qemu_find_opts("fsdev"), "v_synth",
+> -                                         1, NULL);
+> -                if (!fsdev) {
+> -                    error_report("duplicate option: %s", "virtfs_synth");
+> -                    exit(1);
+> -                }
+> -                qemu_opt_set(fsdev, "fsdriver", "synth", &error_abort);
+> -
+> -                device = qemu_opts_create(qemu_find_opts("device"), NULL, 0,
+> -                                          &error_abort);
+> -                qemu_opt_set(device, "driver", "virtio-9p-pci", &error_abort);
+> -                qemu_opt_set(device, "fsdev", "v_synth", &error_abort);
+> -                qemu_opt_set(device, "mount_tag", "v_synth", &error_abort);
+> -                break;
+> -            }
+>              case QEMU_OPTION_serial:
+>                  add_device_config(DEV_SERIAL, optarg);
+>                  default_serial = 0;
 
 
