@@ -1,79 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ifCwe-00069a-RZ
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Dec 2019 20:07:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54248)
+	id 1ifIfM-0002vs-9w
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Dec 2019 02:13:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48791)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1ifCwY-00066M-Rc
- for qemu-trivial@nongnu.org; Wed, 11 Dec 2019 20:07:05 -0500
+ (envelope-from <thuth@redhat.com>) id 1ifIfJ-0002uo-QO
+ for qemu-trivial@nongnu.org; Thu, 12 Dec 2019 02:13:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1ifCwW-0006z9-9w
- for qemu-trivial@nongnu.org; Wed, 11 Dec 2019 20:07:01 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:33117
+ (envelope-from <thuth@redhat.com>) id 1ifIfI-0002bo-PF
+ for qemu-trivial@nongnu.org; Thu, 12 Dec 2019 02:13:37 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:53246
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1ifCwV-0006vf-Lb
- for qemu-trivial@nongnu.org; Wed, 11 Dec 2019 20:07:00 -0500
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1ifIfI-0002aN-KZ
+ for qemu-trivial@nongnu.org; Thu, 12 Dec 2019 02:13:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576112818;
+ s=mimecast20190719; t=1576134816;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TXJKZz5IsL95cyHTFXpZXRIU3W8hP875CCGZBLk77i8=;
- b=P9G5Tkuf6pHoJH6W6BUh0eYO/DZit7ZOdHn28zfQ++mTynFLFIbkLzg4Pzg2/HMq63/xnf
- YYpMGgGQAYUp2sCI1Xmt+O/Y11Q3onuzkBgrkqKCQM2RdZChwEAuHHGAY3myCuc6zDf75o
- TbaDZj+1VvBCvsn+ErNzBHeHEyiOuPo=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-27-Ai6M09QUNOWJk0xSqJLdGA-1; Wed, 11 Dec 2019 20:06:55 -0500
-Received: by mail-wr1-f70.google.com with SMTP id d8so343486wrq.12
- for <qemu-trivial@nongnu.org>; Wed, 11 Dec 2019 17:06:55 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=TXJKZz5IsL95cyHTFXpZXRIU3W8hP875CCGZBLk77i8=;
- b=iVpsKBhJuUd9Sm9oVQS0BKuhHE4qvcXNN160aSLGNbY3pz153knOBhL+2SJ4K9fHv1
- paRv3Y5GviNRLtX2Q1KzfmBkAUeB1QTHmx8K/JxRqE63tKqqlOgwCXGwJXWAXEJ7k2fi
- ZjyXGAqZJRSKEBBmCScT+SQpwtK1puA6oCkXLZP19dUaBcaSxu/kllvRc+zBpDMvz6v1
- BCu61iZFjwAFZFCBhSvGrBzpeull22J0uTHEQ2AX6JUPzix7Th8+9bykTdCSENNjFQ+E
- C15D2nqxc+P1mYviytujI2Ta4xux3eD2ZAOAt4Mz7D9cikJdFeT7CkMGU4umF9AcnZXa
- 12Vg==
-X-Gm-Message-State: APjAAAWFj+L5KvmUMulOwSqOHUHBuBsCZfbX8GHfIsFN6rcovE68et4B
- nm3q49kefZF1KTCRu9ZNHXRvBY/coFC+5hD+0aCX0Qo/ByNR1xA9fQVCMunmmjT2yUc8zwwnWii
- gPFYFpOts0dI5f0UQkQ==
-X-Received: by 2002:a1c:22c6:: with SMTP id i189mr3248011wmi.15.1576112814344; 
- Wed, 11 Dec 2019 17:06:54 -0800 (PST)
-X-Google-Smtp-Source: APXvYqz1foYlnLzY1o69NXI2yoGk2Zq3N0QqKKpGV1L1WLv6gjpTXaAkmrH+RDRPxdaZEDEsF4zmTg==
-X-Received: by 2002:a1c:22c6:: with SMTP id i189mr3247990wmi.15.1576112814058; 
- Wed, 11 Dec 2019 17:06:54 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:e9bb:92e9:fcc3:7ba9?
- ([2001:b07:6468:f312:e9bb:92e9:fcc3:7ba9])
- by smtp.gmail.com with ESMTPSA id t12sm4118804wrs.96.2019.12.11.17.06.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 Dec 2019 17:06:53 -0800 (PST)
-Subject: Re: [PATCH] migration: fix stringop-truncation warning
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
- <marcandre.lureau@redhat.com>
-References: <1576074210-52834-3-git-send-email-pbonzini@redhat.com>
- <ce08ed58-78f0-83c8-404c-4caa76d38569@linaro.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <d3de9def-b922-7469-8534-a448bf3384cc@redhat.com>
-Date: Thu, 12 Dec 2019 02:06:53 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=2nwA8y5P+ItZHjQKY4472/tbtCDMewvaqNvIDI8E6Pw=;
+ b=Xb27jmjPyly45Ax2NgIZXYzWaR0rxb2ChXtE0trn/JrkNjU6gnfiDrrZUj/7KghXzFlVZT
+ A1k3CxzB1veP5p52ERuez+VCSpkhtE63CtPlaDFMUZ0nmp5bCeJeP19T9wayBE323pVuGG
+ ZWTgK3OcfzCOV7NbdtFlNlKgU88TzRk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-96-OjpK6ojNOdaH8W1W5xaihQ-1; Thu, 12 Dec 2019 02:13:34 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 90903107ACC4;
+ Thu, 12 Dec 2019 07:13:33 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-168.ams2.redhat.com [10.36.116.168])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2D46877009;
+ Thu, 12 Dec 2019 07:13:29 +0000 (UTC)
+Subject: Re: [PATCH 1/1] tests/Makefile: Fix check-report.* targets shown in
+ check-help
+To: Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-devel@nongnu.org
+Cc: pbonzini@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20191211204427.4681-1-wainersm@redhat.com>
+ <20191211204427.4681-2-wainersm@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <3bff7e70-3b20-2e4b-b57f-9d529ab6378c@redhat.com>
+Date: Thu, 12 Dec 2019 08:13:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <ce08ed58-78f0-83c8-404c-4caa76d38569@linaro.org>
+In-Reply-To: <20191211204427.4681-2-wainersm@redhat.com>
 Content-Language: en-US
-X-MC-Unique: Ai6M09QUNOWJk0xSqJLdGA-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: OjpK6ojNOdaH8W1W5xaihQ-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,31 +69,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Dec 2019 01:07:05 -0000
+X-List-Received-Date: Thu, 12 Dec 2019 07:13:38 -0000
 
-On 12/12/19 01:55, Richard Henderson wrote:
-> On 12/11/19 6:23 AM, Paolo Bonzini wrote:
->> @@ -44,8 +44,7 @@ void global_state_store_running(void)
->>  {
->>      const char *state = RunState_str(RUN_STATE_RUNNING);
->>      assert(strlen(state) < sizeof(global_state.runstate));
->> -    strncpy((char *)global_state.runstate,
->> -           state, sizeof(global_state.runstate));
->> +    memcpy(global_state.runstate, state, strlen(state) + 1);
+On 11/12/2019 21.44, Wainer dos Santos Moschetta wrote:
+> The check-report.html and check-report.xml targets were replaced
+> with check-report.tap in commit 9df43317b82 but the check-help
+> text was not updated so it still lists check-report.html.
 > 
-> We should assign the strlen result to a local variable rather than compute it
-> twice.
+> Fixes: 9df43317b82
+> Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
+> ---
+>  tests/Makefile.include | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index 8566f5f119..680bd8a669 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -16,12 +16,10 @@ check-help:
+>  	@echo " $(MAKE) check-softfloat      Run FPU emulation tests"
+>  	@echo " $(MAKE) check-acceptance     Run all acceptance (functional) tests"
+>  	@echo
+> -	@echo " $(MAKE) check-report.html    Generates an HTML test report"
+> +	@echo " $(MAKE) check-report.tap     Generates an aggregated TAP test report"
+>  	@echo " $(MAKE) check-venv           Creates a Python venv for tests"
+>  	@echo " $(MAKE) check-clean          Clean the tests and related data"
+>  	@echo
+> -	@echo "Please note that HTML reports do not regenerate if the unit tests"
+> -	@echo "have not changed."
+>  	@echo
+>  	@echo "The variable SPEED can be set to control the gtester speed setting."
+>  	@echo "Default options are -k and (for $(MAKE) V=1) --verbose; they can be"
+> 
 
-We could even strcpy since the assertion ensures it's valid, but perhaps
-it's better to do nothing, since the best alternative would be
-memset+strcpy, i.e. back to strncpy.
-
-We generally are quite mindful about our uses of strncpy, but maybe we
-could fold the assertion and strncpy into a qemu_strncpy function,
-and/or qemu_strncpy_nonul for when you're copying into an array that
-does _not_ need to be nul-terminated (so the assertion can become <=
-rather than <).  I'll add it to BiteSizedTasks.
-
-Paolo
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
