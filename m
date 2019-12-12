@@ -1,79 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ifCOH-0002so-S4
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Dec 2019 19:31:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32803)
+	id 1ifClh-0001oz-BU
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Dec 2019 19:55:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41749)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1ifCOE-0002ol-FI
- for qemu-trivial@nongnu.org; Wed, 11 Dec 2019 19:31:35 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1ifCle-0001nU-ML
+ for qemu-trivial@nongnu.org; Wed, 11 Dec 2019 19:55:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1ifCOC-0008As-UA
- for qemu-trivial@nongnu.org; Wed, 11 Dec 2019 19:31:34 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:29676
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1ifCOC-00084I-L0
- for qemu-trivial@nongnu.org; Wed, 11 Dec 2019 19:31:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576110684;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=UJGOP2uBpm5En8S36aOhtvQxYnoYYWbOTtm9lAZdCHs=;
- b=EvYiMiykrf1ImgTOyq7nP8wmIsCMO+e0o1t72i7KvWDggQwf84m2+vkAlC9Wfx0BwwiYtm
- 3R4HWslHdXsuPycJonrjpGtHQlgv/J6GYH9Odd0Z8iL1dijOC7kuSH5I0EHGjb+XGEMeMZ
- 8bz2iu+rt4ISCOFgBd1KFQbiEVkKH3U=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-165-hSVf9u5qMQGaMAUbFIFaAQ-1; Wed, 11 Dec 2019 19:31:07 -0500
-Received: by mail-wr1-f72.google.com with SMTP id u18so307110wrn.11
- for <qemu-trivial@nongnu.org>; Wed, 11 Dec 2019 16:31:07 -0800 (PST)
+ (envelope-from <richard.henderson@linaro.org>) id 1ifCld-00070A-Dx
+ for qemu-trivial@nongnu.org; Wed, 11 Dec 2019 19:55:46 -0500
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:33067)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1ifCld-0006wr-6X
+ for qemu-trivial@nongnu.org; Wed, 11 Dec 2019 19:55:45 -0500
+Received: by mail-pj1-x1041.google.com with SMTP id r67so288841pjb.0
+ for <qemu-trivial@nongnu.org>; Wed, 11 Dec 2019 16:55:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Len6tZyHmfGHMmylbxusBCppMCH5HZKLBxqirR/6e3E=;
+ b=dXOWwZ3NAX2LER55++YdXd9rP2vtCX1CVWfwE8io5eXwoTISDTUvLy4q6pSDMJuVWG
+ qL1vgriRNW3quwyzwzvJm3BKh7kKJIuvep55umWyEIQ4BVRI4kneVEgnV5jlCM4MFFAz
+ 6h9sCMTwninjJTW13csusQ+DT4Ge5e3v0ZVlU68EbxMMLcbSGvabq3mrphuVAMsSlCTE
+ rvcC2WrKAWqVvv3mhJB/iqAnNms6H3RK+mhUZ+R66+in241UWDJy3w1iNnX6rYPi5RaM
+ iN0RcwASkmTdOuVtMWvU+6MBBuS1yBwo3saSyYUALdQvA28mP1nzA/sxNxbwI3GWCYB/
+ cWOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=UJGOP2uBpm5En8S36aOhtvQxYnoYYWbOTtm9lAZdCHs=;
- b=RGhdbCtl0jHbMw+BWGEjtHC7cy9BuafCvouZmSJrqVp6IK2gwG8PiGra65T798SUHd
- 1T0IGRQmEKNzjLlOn+YvtiNwtCGuMjLvNijFG7ftWy+1B3b4R/uD2tjK949+7AZ9JLev
- xKGTwLO15q2Xc0hTW0lFB+HBuGWGeYN2JaHwtCI222C1ykcuPpCn0BaePp5AYwGQsFI1
- YY9C0u5JhJICryp/PveJX4yBT6TFiiBdtx2HxUr8s7ptZj/t0Ql/Uf2CcqgBY6ZxGM/h
- Yrocw3rXZTyOwzmUTCc9kM290SbakW74mkXrAUhwkbMIJuRCMZnfWfWj53AmJFsjsYZg
- V3iQ==
-X-Gm-Message-State: APjAAAVRm7PkoKky57K/H0bv0k6lKmo1JganiExnzqMIz1xnhPGZptpn
- fmdvkVb/MrXD7R76HRR9Ko86FavnRamH0XRja9ZNojjJKJlR/iQ5ngkvb+DRMEAcAg1AKpFoN9O
- hCSsNnb6Q9wRfuWECtA==
-X-Received: by 2002:adf:fa12:: with SMTP id m18mr2711296wrr.309.1576110666142; 
- Wed, 11 Dec 2019 16:31:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzcqfZatkvH4PnwiUjxdpl7g13EVDB2oLVNPnTsYZZ1kdm4muEW6fxgbOom+YOWS/ntbE1v+Q==
-X-Received: by 2002:adf:fa12:: with SMTP id m18mr2711276wrr.309.1576110665845; 
- Wed, 11 Dec 2019 16:31:05 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:e9bb:92e9:fcc3:7ba9?
- ([2001:b07:6468:f312:e9bb:92e9:fcc3:7ba9])
- by smtp.gmail.com with ESMTPSA id f1sm4231998wml.11.2019.12.11.16.31.05
+ bh=Len6tZyHmfGHMmylbxusBCppMCH5HZKLBxqirR/6e3E=;
+ b=nZ2IyWjf33sWQFJdnPNS5jYsJtkOL6XywIVOKW3YB/IMf2qHsVbi5K2RcFIijvE/Ds
+ GEyEkZdwbEie0J/KO9nXbuWCubMh0NSl5xfFFhPFbTPaFUsWFVLfKcEGiFxfj0ozAaEm
+ JRFgtCHfur1ViWEjqZeNtdyZphY1ZmVKN4CEm6lIAxwaIrQUOjaXmz6Z+keYcV1tggI+
+ nZKQWTp8hrfr27tnD5iNGN3v71POA3sRnAk8BSk2VD3IE23ugnZFDY8Kufox+FMfbHEb
+ TmBJTIT7ekjtsBt/smnQflBRwgUHK1qeKScR2D8llgOd53v/2xRYrMpYqVs1slKZ/8fV
+ 93vg==
+X-Gm-Message-State: APjAAAX9ktyM9lNaf6/UQeC75UoXqKBtgGDIeD7cDjSsHdTDqjL87F45
+ afDOu14lD2d4lerEbJNeQwBefQ==
+X-Google-Smtp-Source: APXvYqxTTmiP9OBN5IFQ8R7jLG6RFZoXwKi8AzROi7uxTHB4vByT1Mm2kZKPwN7s2D6TTxye7QUENQ==
+X-Received: by 2002:a17:90b:3cc:: with SMTP id
+ go12mr6785115pjb.89.1576112140970; 
+ Wed, 11 Dec 2019 16:55:40 -0800 (PST)
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id z4sm4429843pfn.42.2019.12.11.16.55.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 Dec 2019 16:31:05 -0800 (PST)
-Subject: Re: [PATCH 1/1] tests/Makefile: Fix check-report.* targets shown in
- check-help
-To: Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-devel@nongnu.org, 
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20191211204427.4681-1-wainersm@redhat.com>
- <20191211204427.4681-2-wainersm@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <daf920c0-7b3e-5b2e-c865-ccaf39ba1740@redhat.com>
-Date: Thu, 12 Dec 2019 01:31:05 +0100
+ Wed, 11 Dec 2019 16:55:40 -0800 (PST)
+Subject: Re: [PATCH] migration: fix stringop-truncation warning
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+ <marcandre.lureau@redhat.com>
+References: <1576074210-52834-3-git-send-email-pbonzini@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <ce08ed58-78f0-83c8-404c-4caa76d38569@linaro.org>
+Date: Wed, 11 Dec 2019 16:55:37 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ Thunderbird/68.2.1
 MIME-Version: 1.0
-In-Reply-To: <20191211204427.4681-2-wainersm@redhat.com>
-Content-Language: en-US
-X-MC-Unique: hSVf9u5qMQGaMAUbFIFaAQ-1
-X-Mimecast-Spam-Score: 0
+In-Reply-To: <1576074210-52834-3-git-send-email-pbonzini@redhat.com>
 Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::1041
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,39 +76,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Dec 2019 00:31:36 -0000
+X-List-Received-Date: Thu, 12 Dec 2019 00:55:47 -0000
 
-On 11/12/19 21:44, Wainer dos Santos Moschetta wrote:
-> The check-report.html and check-report.xml targets were replaced
-> with check-report.tap in commit 9df43317b82 but the check-help
-> text was not updated so it still lists check-report.html.
-> 
-> Fixes: 9df43317b82
-> Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-> ---
->  tests/Makefile.include | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/tests/Makefile.include b/tests/Makefile.include
-> index 8566f5f119..680bd8a669 100644
-> --- a/tests/Makefile.include
-> +++ b/tests/Makefile.include
-> @@ -16,12 +16,10 @@ check-help:
->  	@echo " $(MAKE) check-softfloat      Run FPU emulation tests"
->  	@echo " $(MAKE) check-acceptance     Run all acceptance (functional) tests"
->  	@echo
-> -	@echo " $(MAKE) check-report.html    Generates an HTML test report"
-> +	@echo " $(MAKE) check-report.tap     Generates an aggregated TAP test report"
->  	@echo " $(MAKE) check-venv           Creates a Python venv for tests"
->  	@echo " $(MAKE) check-clean          Clean the tests and related data"
->  	@echo
-> -	@echo "Please note that HTML reports do not regenerate if the unit tests"
-> -	@echo "have not changed."
->  	@echo
->  	@echo "The variable SPEED can be set to control the gtester speed setting."
->  	@echo "Default options are -k and (for $(MAKE) V=1) --verbose; they can be"
-> 
+On 12/11/19 6:23 AM, Paolo Bonzini wrote:
+> @@ -44,8 +44,7 @@ void global_state_store_running(void)
+>  {
+>      const char *state = RunState_str(RUN_STATE_RUNNING);
+>      assert(strlen(state) < sizeof(global_state.runstate));
+> -    strncpy((char *)global_state.runstate,
+> -           state, sizeof(global_state.runstate));
+> +    memcpy(global_state.runstate, state, strlen(state) + 1);
 
-Cc: qemu-trivial@nongnu.org
+We should assign the strlen result to a local variable rather than compute it
+twice.
+
+
+r~
 
 
