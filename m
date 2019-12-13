@@ -1,81 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ifjXI-00040a-Ra
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Dec 2019 06:55:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37218)
+	id 1ifktc-0001Q5-Se
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Dec 2019 08:22:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40305)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1ifjXH-00040O-HX
- for qemu-trivial@nongnu.org; Fri, 13 Dec 2019 06:55:07 -0500
+ (envelope-from <philmd@redhat.com>) id 1ifktZ-0001Ne-K2
+ for qemu-trivial@nongnu.org; Fri, 13 Dec 2019 08:22:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1ifjXG-0004RF-F0
- for qemu-trivial@nongnu.org; Fri, 13 Dec 2019 06:55:07 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:50008
+ (envelope-from <philmd@redhat.com>) id 1ifktY-0007kV-Jn
+ for qemu-trivial@nongnu.org; Fri, 13 Dec 2019 08:22:13 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:33226
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1ifjXG-0004Q4-9o
- for qemu-trivial@nongnu.org; Fri, 13 Dec 2019 06:55:06 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ifktY-0007jn-G8
+ for qemu-trivial@nongnu.org; Fri, 13 Dec 2019 08:22:12 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576238105;
+ s=mimecast20190719; t=1576243332;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ARv6mcy281jUa1nbgAjuLfWfQQSOGGA4O9KDT/2tagM=;
- b=JEpxKBIlrSAicd5i65lFzU+c5o39EsnHp8vOskKYfHlgkDYBdXPenWLF9CQR//KW4sL4cl
- pxVcq7A/GFUsGLobB+v9asmYjLuqnrnJC3AOjf5mbD2MHHJnijlsY5DgKil6sCoh4YbwE1
- L6pz3jH4CJQEdx/XYOeOjIEqVbNDxNs=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-330-8Ufr6lkXPcmrGXj5_7DWBw-1; Fri, 13 Dec 2019 06:55:04 -0500
-Received: by mail-wr1-f69.google.com with SMTP id 90so2475509wrq.6
- for <qemu-trivial@nongnu.org>; Fri, 13 Dec 2019 03:55:04 -0800 (PST)
+ bh=7jgspVajfgjE42ZvZQfn/amiK0x8QorJMMvgrfevHDE=;
+ b=NTvpi8DVpzy9IXKb77VfiVwD8wtFoWZ8vTM8q4jRJCsJXTpJGz5qj5QAkqXYJ6vJoFwxzY
+ ldrlzqdV02XzyPe/5S0aWvn/m3e1123sZgzgnNHY8/Z/+g9jGZzLproQBP29ZxYi4v/0Lr
+ 0cSH9qb8oSpSmY4Mi98R7/PvhXn7fIQ=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-179-jB4WJv4uMlulFaRHSeGn0A-1; Fri, 13 Dec 2019 08:22:10 -0500
+Received: by mail-wr1-f72.google.com with SMTP id z15so2596924wrw.0
+ for <qemu-trivial@nongnu.org>; Fri, 13 Dec 2019 05:22:10 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Z1TphYBfZEVPZphlaqakJCWwiVWqp8Gd3XbmpXjBi4I=;
- b=BdiUMUY3kxBH9ltgC69+j4WXBCp+wmC9mD+0gG3b5yxyKiA2brdS+GbqUz8481KxjK
- tfNHGfYHsTFw4Q7XVhZZ8I2YriKXZXm8vpqWvv43FkkSHf5RyN6gc2OOmjsB443FejIV
- qxFy2iVBTprxYa1LXy60VPxTqNQikCbfRs2wp7mpEhR4bjxfOYHgiaZ2DJBUnEkAV3xD
- Myx4bqYNI7EB43i5qLgRfwv5j0wjvzN0cb3JvjHjoi/HsFuCi60yMNRZQyEDl0JnCI+c
- s1DgyH8XA8qAaW6RY/HBIejV+NHrgQz7CMtdJxtA5UNsllk7AGkqXN6df1lhj8arUBf/
- w5bA==
-X-Gm-Message-State: APjAAAVzT7X5m3tCSLpVGt+0I6aCvnDNrcvZNyutu00Wg1CGVN1g45Yh
- +Hbirx4+prOIndJyd+g0mvAZ0/LW1NCefYXsaprrRu/N95OIUdsxF9t1BVDZk49DKok34fE2SXn
- s2wubF19C9SdYMdFTYg==
-X-Received: by 2002:adf:c54e:: with SMTP id s14mr13010796wrf.385.1576238102948; 
- Fri, 13 Dec 2019 03:55:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxp97+/F1/T9RSvc65pPuib8yjdamuaVfF7HAVYD1x+PRiPlaxWvZC+lr5Tc/0mj0ARxgfZCQ==
-X-Received: by 2002:adf:c54e:: with SMTP id s14mr13010772wrf.385.1576238102737; 
- Fri, 13 Dec 2019 03:55:02 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:e9bb:92e9:fcc3:7ba9?
- ([2001:b07:6468:f312:e9bb:92e9:fcc3:7ba9])
- by smtp.gmail.com with ESMTPSA id g2sm9668770wrw.76.2019.12.13.03.55.01
+ bh=VY/4rF+g3Stxjk2j0HlkvEIE4fBT/7Xv9T82Gu/sONg=;
+ b=B55BUpevLFb7fjGIOxxvvPNNJZG/DhQwljVF7HKwJ/a3hgwinavZYZ5sAWmuvek0FW
+ jecKVoeNg3YZKhbgRll6WI3aAmBG6mvZF2KObftrb4kYllBw9fGcacRVWiPM+9zpLfNo
+ wSoTcNcfwKtlkE6786I9gJgd5kp/w0mH1E12f+CDglcTcfvnz4p4bLW8+Ck9Rlax+BRZ
+ f+YB6YehijZyjILIpca+uuBMMYrmRI4bHPQ52+YuN+5Dzny1Br9/dzVYhAW7osUvrBDS
+ W/Uyl+wlL3CoGVJrHLlYPaff5PKB2Xbz6xF+tuj5Y8vHXBPrCh/jfULj7A5y6KsVl6Oy
+ LwKQ==
+X-Gm-Message-State: APjAAAWP5xdzJZqWbMg71mPYUnFzxeTl6aAdoU/ue0LIP9zIEaeweKIm
+ SQmyobSSDUQGXQyGL56GbT59hkJpjf/TDp+k2SZ3H6FHGFDs7xN1m1zDoj0cl/el1UWBPFXJFCT
+ roXvAylQSuvuJzt+n/Q==
+X-Received: by 2002:a1c:6585:: with SMTP id
+ z127mr13324493wmb.113.1576243329372; 
+ Fri, 13 Dec 2019 05:22:09 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwrPpDti4gPsctX5koB9VTm1Tquxj03KYjvJPGJQKBSDmkVKjKjnaXIWDgcfvBIr4GAcm2yzA==
+X-Received: by 2002:a1c:6585:: with SMTP id
+ z127mr13324458wmb.113.1576243328984; 
+ Fri, 13 Dec 2019 05:22:08 -0800 (PST)
+Received: from [192.168.1.35] (34.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.34])
+ by smtp.gmail.com with ESMTPSA id c9sm9823992wmc.47.2019.12.13.05.22.08
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 13 Dec 2019 03:55:02 -0800 (PST)
-Subject: Re: [PATCH] hw/i386/pc: Simplify ioapic_init_gsi()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Eduardo Habkost <ehabkost@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Richard Henderson <rth@twiddle.net>,
- qemu-trivial@nongnu.org
-References: <20191213111145.11288-1-philmd@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <573a8391-ff5d-601c-e651-75025a1ea026@redhat.com>
-Date: Fri, 13 Dec 2019 12:55:01 +0100
+ Fri, 13 Dec 2019 05:22:08 -0800 (PST)
+Subject: Re: [PATCH] hw/isa/isa-bus: Use ISA_NUM_IRQS instead of magic number
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org
+References: <20191213105921.9529-1-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <0be14c5f-4d19-e633-8ed7-47bf99e632d9@redhat.com>
+Date: Fri, 13 Dec 2019 14:22:07 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20191213111145.11288-1-philmd@redhat.com>
+In-Reply-To: <20191213105921.9529-1-philmd@redhat.com>
 Content-Language: en-US
-X-MC-Unique: 8Ufr6lkXPcmrGXj5_7DWBw-1
+X-MC-Unique: jB4WJv4uMlulFaRHSeGn0A-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,48 +85,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Dec 2019 11:55:08 -0000
+X-List-Received-Date: Fri, 13 Dec 2019 13:22:15 -0000
 
-On 13/12/19 12:11, Philippe Mathieu-Daud=C3=A9 wrote:
-> All callers of ioapic_init_gsi() provide a parent. We want new
-> uses to follow the same good practice and provide the parent
-> name, so do not make this optional: assert the parent name is
-> provided, and simplify the code.
+On 12/13/19 11:59 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> We have a definition for the number of ISA IRQs, use it.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  hw/i386/pc.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
+>   hw/isa/isa-bus.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index ac08e63604..234945d328 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -1488,15 +1488,14 @@ void ioapic_init_gsi(GSIState *gsi_state, const c=
-har *parent_name)
->      SysBusDevice *d;
->      unsigned int i;
-> =20
-> +    assert(parent_name);
->      if (kvm_ioapic_in_kernel()) {
->          dev =3D qdev_create(NULL, TYPE_KVM_IOAPIC);
->      } else {
->          dev =3D qdev_create(NULL, TYPE_IOAPIC);
->      }
-> -    if (parent_name) {
-> -        object_property_add_child(object_resolve_path(parent_name, NULL)=
-,
-> -                                  "ioapic", OBJECT(dev), NULL);
-> -    }
-> +    object_property_add_child(object_resolve_path(parent_name, NULL),
-> +                              "ioapic", OBJECT(dev), NULL);
->      qdev_init_nofail(dev);
->      d =3D SYS_BUS_DEVICE(dev);
->      sysbus_mmio_map(d, 0, IO_APIC_DEFAULT_ADDRESS);
+> diff --git a/hw/isa/isa-bus.c b/hw/isa/isa-bus.c
+> index 388800603b..1d79ed133c 100644
+> --- a/hw/isa/isa-bus.c
+> +++ b/hw/isa/isa-bus.c
+> @@ -85,7 +85,7 @@ void isa_bus_irqs(ISABus *bus, qemu_irq *irqs)
+>   qemu_irq isa_get_irq(ISADevice *dev, int isairq)
+>   {
+>       assert(!dev || ISA_BUS(qdev_get_parent_bus(DEVICE(dev))) =3D=3D isa=
+bus);
+> -    if (isairq < 0 || isairq > 15) {
+> +    if (isairq < 0 || isairq > >=3D ISA_NUM_IRQS) {
+
+Oops, Pablo was quicker than patchew to notice this buggy patch =3D)
+
+I messed when copy/pasting from a bigger series :/
+
+So no need to review further.
+
+>           hw_error("isa irq %d invalid", isairq);
+>       }
+>       return isabus->irqs[isairq];
 >=20
-
-Queued, thanks.
-
-Paolo
 
 
