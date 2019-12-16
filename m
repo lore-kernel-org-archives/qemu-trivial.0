@@ -1,57 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1igODJ-0008TT-Dm
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Dec 2019 02:21:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52802)
+	id 1igqRg-0002xj-L0
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Dec 2019 08:29:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47397)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1igODC-0008O2-Po
- for qemu-trivial@nongnu.org; Sun, 15 Dec 2019 02:21:11 -0500
+ (envelope-from <thuth@redhat.com>) id 1igqRe-0002xW-Ij
+ for qemu-trivial@nongnu.org; Mon, 16 Dec 2019 08:29:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1igODB-0006h1-E0
- for qemu-trivial@nongnu.org; Sun, 15 Dec 2019 02:21:06 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:53248
+ (envelope-from <thuth@redhat.com>) id 1igqRd-0003FN-95
+ for qemu-trivial@nongnu.org; Mon, 16 Dec 2019 08:29:54 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:27867
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1igODB-0006gB-9C
- for qemu-trivial@nongnu.org; Sun, 15 Dec 2019 02:21:05 -0500
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1igqRd-0003D7-6A
+ for qemu-trivial@nongnu.org; Mon, 16 Dec 2019 08:29:53 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576394464;
+ s=mimecast20190719; t=1576502992;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0pGfJm/TGowlztGp6XpdBVnICvwvarC3xa5cFuIdSIg=;
- b=Y5HRpmE7sWlzfMjT1b0Uut0I3uCnuwML3nZs6eh1gFN8P1DcWwPDBEw/sOMqUQJBQ5VEsd
- QSh9rGCzJVJ7u+urJVYsibDtUDatcFBHJltyT2Awr+99Kti5OuQEpaQNBB3blHFYxZLEV+
- YtnamzqrDzNvHNM/HPPGHDvkNalBSfE=
+ to:to:cc:cc:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=3kaJcfh0spaMxjl6LwdbDaL7zBIZf7w01TlpxB0raCQ=;
+ b=C7SJOCddmkPo7/QZnvLD70TvFb+3OwJ+gHIdEDLQgq/3BRReeq2jcsSa39RKOb4zK0HWvt
+ qXnJcnYCMkA6645MPdduOh32dRsdD4b38t5vNdncuYaHNei5PA/6xCrdnSw3gLM2K6cuTY
+ K6QqTcXFU8yS4UEMm8XLgBPB/lc7XsA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-333-zuxFDwmoNIGGY4ZeH5Zraw-1; Sun, 15 Dec 2019 02:21:01 -0500
+ us-mta-223-_r_D6h3EN-eHUwkt-LGveQ-1; Mon, 16 Dec 2019 08:29:48 -0500
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2C1851005502;
- Sun, 15 Dec 2019 07:20:59 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-205-147.brq.redhat.com [10.40.205.147])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E0922384;
- Sun, 15 Dec 2019 07:20:56 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- qemu-ppc@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v2 2/2] hw/timer/m48t59: Convert debug printf()s to trace
- events
-Date: Sun, 15 Dec 2019 08:20:45 +0100
-Message-Id: <20191215072045.7198-3-philmd@redhat.com>
-In-Reply-To: <20191215072045.7198-1-philmd@redhat.com>
-References: <20191215072045.7198-1-philmd@redhat.com>
-MIME-Version: 1.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A6DCD100DF2F;
+ Mon, 16 Dec 2019 13:29:47 +0000 (UTC)
+Received: from thuth.com (ovpn-117-164.ams2.redhat.com [10.36.117.164])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 55A3126343;
+ Mon, 16 Dec 2019 13:29:45 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Michael Roth <mdroth@linux.vnet.ibm.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH] qemu-doc: Remove the unused "Guest Agent" node
+Date: Mon, 16 Dec 2019 14:29:41 +0100
+Message-Id: <20191216132941.25729-1-thuth@redhat.com>
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: zuxFDwmoNIGGY4ZeH5Zraw-1
+X-MC-Unique: _r_D6h3EN-eHUwkt-LGveQ-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -67,107 +61,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Dec 2019 07:21:11 -0000
+X-List-Received-Date: Mon, 16 Dec 2019 13:29:55 -0000
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+The node has been removed from the texi file some months ago, so we
+should remove it from the menu section, too.
+
+Fixes: 27a296fce982 ("qemu-ga: Convert invocation documentation to rST")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/rtc/m48t59-internal.h |  5 -----
- hw/rtc/m48t59.c          | 11 +++++------
- hw/rtc/trace-events      |  6 ++++++
- 3 files changed, 11 insertions(+), 11 deletions(-)
+ qemu-doc.texi | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/rtc/m48t59-internal.h b/hw/rtc/m48t59-internal.h
-index 4d4f2a6fed..cd648241e9 100644
---- a/hw/rtc/m48t59-internal.h
-+++ b/hw/rtc/m48t59-internal.h
-@@ -26,11 +26,6 @@
- #ifndef HW_M48T59_INTERNAL_H
- #define HW_M48T59_INTERNAL_H
-=20
--#define M48T59_DEBUG 0
--
--#define NVRAM_PRINTF(fmt, ...) do { \
--    if (M48T59_DEBUG) { printf(fmt , ## __VA_ARGS__); } } while (0)
--
- /*
-  * The M48T02, M48T08 and M48T59 chips are very similar. The newer '59 has
-  * alarm and a watchdog timer and related control registers. In the
-diff --git a/hw/rtc/m48t59.c b/hw/rtc/m48t59.c
-index fc592b9fb1..ecc92ca476 100644
---- a/hw/rtc/m48t59.c
-+++ b/hw/rtc/m48t59.c
-@@ -35,6 +35,7 @@
- #include "exec/address-spaces.h"
- #include "qemu/bcd.h"
- #include "qemu/module.h"
-+#include "trace.h"
-=20
- #include "m48t59-internal.h"
- #include "migration/vmstate.h"
-@@ -192,8 +193,7 @@ void m48t59_write(M48t59State *NVRAM, uint32_t addr, ui=
-nt32_t val)
-     struct tm tm;
-     int tmp;
-=20
--    if (addr > 0x1FF8 && addr < 0x2000)
--=09NVRAM_PRINTF("%s: 0x%08x =3D> 0x%08x\n", __func__, addr, val);
-+    trace_m48txx_nvram_mem_write(addr, val);
-=20
-     /* check for NVRAM access */
-     if ((NVRAM->model =3D=3D 2 && addr < 0x7f8) ||
-@@ -450,8 +450,7 @@ uint32_t m48t59_read(M48t59State *NVRAM, uint32_t addr)
- =09}
-         break;
-     }
--    if (addr > 0x1FF9 && addr < 0x2000)
--       NVRAM_PRINTF("%s: 0x%08x <=3D 0x%08x\n", __func__, addr, retval);
-+    trace_m48txx_nvram_mem_read(addr, retval);
-=20
-     return retval;
- }
-@@ -462,7 +461,7 @@ static void NVRAM_writeb(void *opaque, hwaddr addr, uin=
-t64_t val,
- {
-     M48t59State *NVRAM =3D opaque;
-=20
--    NVRAM_PRINTF("%s: 0x%"HWADDR_PRIx" =3D> 0x%"PRIx64"\n", __func__, addr=
-, val);
-+    trace_m48txx_nvram_io_write(addr, val);
-     switch (addr) {
-     case 0:
-         NVRAM->addr &=3D ~0x00FF;
-@@ -494,7 +493,7 @@ static uint64_t NVRAM_readb(void *opaque, hwaddr addr, =
-unsigned size)
-         retval =3D -1;
-         break;
-     }
--    NVRAM_PRINTF("%s: 0x%"HWADDR_PRIx" <=3D 0x%08x\n", __func__, addr, ret=
-val);
-+    trace_m48txx_nvram_io_read(addr, retval);
-=20
-     return retval;
- }
-diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-index d6749f4616..52c1566198 100644
---- a/hw/rtc/trace-events
-+++ b/hw/rtc/trace-events
-@@ -17,3 +17,9 @@ pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
- # aspeed-rtc.c
- aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value=
- 0x%08" PRIx64
- aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " valu=
-e 0x%08" PRIx64
-+
-+# m48t59.c
-+m48txx_nvram_io_read(uint64_t addr, uint64_t value) "io read addr:0x%04" P=
-RIx64 " value:0x%02" PRIx64
-+m48txx_nvram_io_write(uint64_t addr, uint64_t value) "io write addr:0x%04"=
- PRIx64 " value:0x%02" PRIx64
-+m48txx_nvram_mem_read(uint32_t addr, uint32_t value) "mem read addr:0x%04x=
- value:0x%02x"
-+m48txx_nvram_mem_write(uint32_t addr, uint32_t value) "mem write addr:0x%0=
-4x value:0x%02x"
+diff --git a/qemu-doc.texi b/qemu-doc.texi
+index 3ddf5c0a68..4b62b23264 100644
+--- a/qemu-doc.texi
++++ b/qemu-doc.texi
+@@ -38,7 +38,6 @@
+ * Introduction::
+ * QEMU PC System emulator::
+ * QEMU System emulator for non PC targets::
+-* QEMU Guest Agent::
+ * QEMU User space emulator::
+ * System requirements::
+ * Security::
 --=20
-2.21.0
+2.18.1
 
 
