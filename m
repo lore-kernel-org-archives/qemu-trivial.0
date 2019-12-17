@@ -1,86 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ihGpB-0001ov-P5
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Dec 2019 12:39:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49894)
+	id 1ihH3h-0006wn-Eq
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Dec 2019 12:54:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59832)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1ihGp9-0001lC-Ds
- for qemu-trivial@nongnu.org; Tue, 17 Dec 2019 12:39:56 -0500
+ (envelope-from <clg@kaod.org>) id 1ihH3e-0006vf-MS
+ for qemu-trivial@nongnu.org; Tue, 17 Dec 2019 12:54:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1ihGp8-0000rx-Dh
- for qemu-trivial@nongnu.org; Tue, 17 Dec 2019 12:39:55 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:41927
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <clg@kaod.org>) id 1ihH3d-0008TL-Cm
+ for qemu-trivial@nongnu.org; Tue, 17 Dec 2019 12:54:54 -0500
+Received: from 10.mo178.mail-out.ovh.net ([46.105.76.150]:44765)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ihGp8-0000r8-Ac
- for qemu-trivial@nongnu.org; Tue, 17 Dec 2019 12:39:54 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576604393;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=otHh6o7oxDp9j6yghQWHjKyedFvOrFKCAiJYw7JbOso=;
- b=bnPZalXMiAaF53WxblMvaAk6GFNlAyhlmGtNc555QdflK8aeToXuarQu8onLZf2pNiw0AO
- leKUy7Jyjt447Z4TQKuKlqrrj2DZA9jAqxs/7958D6pxh7lh2NqJSDrjnDPG0NhIb0Fd74
- bFVg/b5J5IVKytkFNgpC3PZjUF5uQV8=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-415-4EIAgU1aN2upRyQVkR9HMQ-1; Tue, 17 Dec 2019 12:39:52 -0500
-Received: by mail-wr1-f69.google.com with SMTP id u18so5621376wrn.11
- for <qemu-trivial@nongnu.org>; Tue, 17 Dec 2019 09:39:51 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=bAAJWyVVZ1IKai9f9il7x2Z+RsApLRgS+QHt3wBYLSA=;
- b=ZjDjiMI78nIh6pCzyDUyVjeC10GtrJNyq2KqWR849oQbxltcN+65r+nOrQTJqZ/sTE
- afQ7gXuFvgfrQsuW2427xilGSRurhd4FPB0Sf7DQywvOCPoz6QLnQRoIYCasGMvRqdOA
- VDsyibc24yF32ZXSg/GhBAU1aWpA4rhMUxmb5GHFtcikzJR9iURFRdfBoPgNW8YGTSUq
- 431uv1GxJ0/8BjjW8yd9zwA5hvoYgB/zYxA/fBnEwzBkZL1gUrFo3adKFzJFseY5qXi7
- bLxwhooLXUJKhY5c/eHXhAJLHDVb5ZBpMB71y5VFpayviItNaV3vJLQQhGRzPv9qXgsz
- Imng==
-X-Gm-Message-State: APjAAAWjx0MCirS1YcNrWLQd+tXzXW8jWlvC7TYJcaShe+g5ve3fH2f0
- aarCIbBMwQbJzci+wbChEDjrJ/wMJ+kkRkCNfjNarzX4sT3NtwmbA8Ch64e4ah/WZ2rItq64QVt
- pGGnJer1t/zNf6K1MeA==
-X-Received: by 2002:a5d:6a0f:: with SMTP id m15mr38388337wru.40.1576604390835; 
- Tue, 17 Dec 2019 09:39:50 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzFBpSiHMJZuiUp5KC+DdlpgXyZDlJKyko8FRSj5XpUtFN/99wAgHNrx1ZQ4OV5F9Cdqp7BRQ==
-X-Received: by 2002:a5d:6a0f:: with SMTP id m15mr38388290wru.40.1576604390534; 
- Tue, 17 Dec 2019 09:39:50 -0800 (PST)
-Received: from [192.168.1.35] (34.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.34])
- by smtp.gmail.com with ESMTPSA id h17sm27417449wrs.18.2019.12.17.09.39.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Dec 2019 09:39:50 -0800 (PST)
-Subject: Re: [PATCH 0/6] Fix more GCC9 -O3 warnings
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, Max Reitz <mreitz@redhat.com>, Fam Zheng <fam@euphon.net>,
- Peter Chubb <peter.chubb@nicta.com.au>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Paolo Bonzini <pbonzini@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Jason Wang <jasowang@redhat.com>, qemu-block@nongnu.org,
- Andrew Jeffery <andrew@aj.id.au>, Gerd Hoffmann <kraxel@redhat.com>,
- Hannes Reinecke <hare@suse.com>, =?UTF-8?B?S8WRdsOhZ8OzLCBab2x0w6Fu?=
- <dirty.ice.hu@gmail.com>
-References: <20191217173252.4672-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <6a8266c6-7c6d-3139-249f-2dd46c98e02f@redhat.com>
-Date: Tue, 17 Dec 2019 18:39:48 +0100
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1ihH3d-0008HK-6v
+ for qemu-trivial@nongnu.org; Tue, 17 Dec 2019 12:54:53 -0500
+Received: from player711.ha.ovh.net (unknown [10.109.146.211])
+ by mo178.mail-out.ovh.net (Postfix) with ESMTP id 1FE7882EBB
+ for <qemu-trivial@nongnu.org>; Tue, 17 Dec 2019 18:54:41 +0100 (CET)
+Received: from kaod.org (lfbn-tou-1-1227-223.w90-76.abo.wanadoo.fr
+ [90.76.50.223]) (Authenticated sender: clg@kaod.org)
+ by player711.ha.ovh.net (Postfix) with ESMTPSA id 5CE0FD4A870A;
+ Tue, 17 Dec 2019 17:54:34 +0000 (UTC)
+Subject: Re: [PATCH 4/6] hw/timer/aspeed_timer: Add a fall through comment
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org
+References: <20191217173425.5082-1-philmd@redhat.com>
+ <20191217173425.5082-5-philmd@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <9bbdf21b-a330-b8d2-5fa6-8649adeb9143@kaod.org>
+Date: Tue, 17 Dec 2019 18:54:31 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20191217173252.4672-1-philmd@redhat.com>
+In-Reply-To: <20191217173425.5082-5-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-MC-Unique: 4EIAgU1aN2upRyQVkR9HMQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8; format=flowed
+X-Ovh-Tracer-Id: 1612570142561831856
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrvddtjedguddthecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdeltddrjeeirdehtddrvddvfeenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeduuddrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqthhrihhvihgrlhesnhhonhhgnhhurdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 46.105.76.150
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -92,31 +55,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Dec 2019 17:39:56 -0000
+X-List-Received-Date: Tue, 17 Dec 2019 17:54:55 -0000
 
-On 12/17/19 6:32 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Fix some trivial warnings when building with -O3.
+On 17/12/2019 18:34, Philippe Mathieu-Daud=C3=A9 wrote:
+> Reported by GCC9 when building with CFLAG -Wimplicit-fallthrough=3D2:
 >=20
-> Philippe Mathieu-Daud=C3=A9 (6):
->    audio/audio: Add missing fall through comment
->    hw/display/tcx: Add missing fall through comments
->    hw/net/imx_fec: Rewrite fall through comments
->    hw/timer/aspeed_timer: Add a fall through comment
->    hw/scsi/megasas: Silent GCC9 duplicated-cond warning
->    qemu-io-cmds: Silent GCC9 format-overflow warning
+>   hw/timer/aspeed_timer.c: In function =E2=80=98aspeed_timer_set_value=E2=
+=80=99:
+>   hw/timer/aspeed_timer.c:283:24: error: this statement may fall throug=
+h [-Werror=3Dimplicit-fallthrough=3D]
+>     283 |         if (old_reload || !t->reload) {
+>         |             ~~~~~~~~~~~^~~~~~~~~~~~~
+>   hw/timer/aspeed_timer.c:287:5: note: here
+>     287 |     case TIMER_REG_STATUS:
+>         |     ^~~~
+>   cc1: all warnings being treated as errors
+>=20
+> Add the missing fall through comment.
+>=20
+> Fixes: 1403f364472
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-Sorry, this series failed because I used this tag in the first patch:
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
-Cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.com>
 
-Then git-send-email was happy with --dry-run, but then failed:
-(body) Adding cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.co=
-m> from line 'Cc:=20
-K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.com>'
-5.1.1 <K  v  g  >: Recipient address rejected: User unknown in local=20
-recipient table
-
-Note to self, enclose utf-8 names, as:
-Cc: "K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n" <dirty.ice.hu@gmail.com>
+> ---
+> Cc: "C=C3=A9dric Le Goater" <clg@kaod.org>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Andrew Jeffery <andrew@aj.id.au>
+> Cc: Joel Stanley <joel@jms.id.au>
+> Cc: qemu-arm@nongnu.org
+> ---
+>  hw/timer/aspeed_timer.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+> index a8c38cc118..c91f18415c 100644
+> --- a/hw/timer/aspeed_timer.c
+> +++ b/hw/timer/aspeed_timer.c
+> @@ -283,7 +283,7 @@ static void aspeed_timer_set_value(AspeedTimerCtrlS=
+tate *s, int timer, int reg,
+>          if (old_reload || !t->reload) {
+>              break;
+>          }
+> -
+> +        /* fall through to re-enable */
+>      case TIMER_REG_STATUS:
+>          if (timer_enabled(t)) {
+>              uint64_t now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>=20
 
 
