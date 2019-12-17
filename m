@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ihGkN-0001cq-L5
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Dec 2019 12:34:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46079)
+	id 1ihGkO-0001ek-Hg
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Dec 2019 12:35:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46102)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1ihGkK-0001Wn-9F
- for qemu-trivial@nongnu.org; Tue, 17 Dec 2019 12:34:57 -0500
+ (envelope-from <philmd@redhat.com>) id 1ihGkL-0001YJ-5c
+ for qemu-trivial@nongnu.org; Tue, 17 Dec 2019 12:34:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1ihGkI-0008Ap-7i
- for qemu-trivial@nongnu.org; Tue, 17 Dec 2019 12:34:56 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:60717
+ (envelope-from <philmd@redhat.com>) id 1ihGkK-0008EB-02
+ for qemu-trivial@nongnu.org; Tue, 17 Dec 2019 12:34:57 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:50958
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ihGkI-0008A5-3g
- for qemu-trivial@nongnu.org; Tue, 17 Dec 2019 12:34:54 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ihGkJ-0008DY-Sc
+ for qemu-trivial@nongnu.org; Tue, 17 Dec 2019 12:34:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576604093;
+ s=mimecast20190719; t=1576604095;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=i/ycAlXiPXADaLAOWo3IoxfdaOKQ4Pec1+OI0orkZ5c=;
- b=OreWebw9FkyVlzJmb01uipl/8WCSkZ6mmGvWsLzxBl5g4oJL22btiH/vMY30ER06MnGujs
- ZPs5KJXWgsnMgSy0B9aSxipSB4VUkjd1VsJjo8omXmdHF520vOn7kx3PPhHij/ZQpYTxmH
- wzQj2JsDRmK1QT8M/z0xswNliJiniYo=
+ bh=024EQHq67Rd7USQOwAS6CFKa3pM0k1rzZuTHwHmHWb8=;
+ b=THpmWLF5SfjTrWZWAgi/Z+DG+xX9u4wLIa9BIGWdaaVI34jx54DvfNKdAoUq4XUQlXkw4n
+ Rlu+oqzd6nGtYGY1xk5dbxH/nVmdKc77T8orSXgO+eYY7CS0HMCkDdAki9wMBG2IV0EQHc
+ WJbYwNN9U6Qy+d/Buy0lOC/ghpBWdJE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-164-Fz3Ue5MAMvqsmOjIRlB__g-1; Tue, 17 Dec 2019 12:34:50 -0500
+ us-mta-320-Q2qQ9ZUJNjKv8sUJ0YPWfA-1; Tue, 17 Dec 2019 12:34:54 -0500
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6373C8024E6;
- Tue, 17 Dec 2019 17:34:49 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AB0F18024E9;
+ Tue, 17 Dec 2019 17:34:52 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-205-147.brq.redhat.com [10.40.205.147])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DB5EA19C4F;
- Tue, 17 Dec 2019 17:34:46 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 00CC719C4F;
+ Tue, 17 Dec 2019 17:34:49 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?q?K=C5=91v=C3=A1g=C3=B3=2C=20Zolt=C3=A1n?= <dirty.ice.hu@gmail.com>
-Subject: [PATCH 1/6] audio/audio: Add missing fall through comment
-Date: Tue, 17 Dec 2019 18:34:20 +0100
-Message-Id: <20191217173425.5082-2-philmd@redhat.com>
+ Olivier Danet <odanet@caramail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: [PATCH 2/6] hw/display/tcx: Add missing fall through comments
+Date: Tue, 17 Dec 2019 18:34:21 +0100
+Message-Id: <20191217173425.5082-3-philmd@redhat.com>
 In-Reply-To: <20191217173425.5082-1-philmd@redhat.com>
 References: <20191217173425.5082-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: Fz3Ue5MAMvqsmOjIRlB__g-1
+X-MC-Unique: Q2qQ9ZUJNjKv8sUJ0YPWfA-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
@@ -66,45 +66,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Dec 2019 17:34:58 -0000
+X-List-Received-Date: Tue, 17 Dec 2019 17:34:59 -0000
 
 GCC9 is confused by this comment when building with
 CFLAG -Wimplicit-fallthrough=3D2:
 
-  audio/audio.c: In function =E2=80=98audio_pcm_init_info=E2=80=99:
-  audio/audio.c:306:14: error: this statement may fall through [-Werror=3Di=
-mplicit-fallthrough=3D]
-    306 |         sign =3D 1;
-        |         ~~~~~^~~
-  audio/audio.c:307:5: note: here
-    307 |     case AUDIO_FORMAT_U8:
-        |     ^~~~
+  hw/display/tcx.c: In function =E2=80=98tcx_dac_writel=E2=80=99:
+  hw/display/tcx.c:453:26: error: this statement may fall through [-Werror=
+=3Dimplicit-fallthrough=3D]
+    453 |             s->dac_index =3D (s->dac_index + 1) & 0xff; /* Index =
+autoincrement */
+        |             ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+  hw/display/tcx.c:454:9: note: here
+    454 |         default:
+        |         ^~~~~~~
+  hw/display/tcx.c: In function =E2=80=98tcx_dac_readl=E2=80=99:
+  hw/display/tcx.c:412:22: error: this statement may fall through [-Werror=
+=3Dimplicit-fallthrough=3D]
+    412 |         s->dac_index =3D (s->dac_index + 1) & 0xff; /* Index auto=
+increment */
+        |         ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+  hw/display/tcx.c:413:5: note: here
+    413 |     default:
+        |     ^~~~~~~
   cc1: all warnings being treated as errors
 
-Add the missing fall through comment, similarly to e46349414.
+Add the missing fall through comments.
 
-Fixes: 2b9cce8c8c
+Fixes: 55d7bfe22
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
-Cc: Gerd Hoffmann <kraxel@redhat.com>
-Cc: "K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n" <dirty.ice.hu@gmail.com>
+Cc: Olivier Danet <odanet@caramail.com>
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 ---
- audio/audio.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/display/tcx.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/audio/audio.c b/audio/audio.c
-index 56fae55047..57daf3f620 100644
---- a/audio/audio.c
-+++ b/audio/audio.c
-@@ -304,6 +304,7 @@ void audio_pcm_init_info (struct audio_pcm_info *info, =
-struct audsettings *as)
-     switch (as->fmt) {
-     case AUDIO_FORMAT_S8:
-         sign =3D 1;
+diff --git a/hw/display/tcx.c b/hw/display/tcx.c
+index 14e829d3fa..abbeb30284 100644
+--- a/hw/display/tcx.c
++++ b/hw/display/tcx.c
+@@ -410,6 +410,7 @@ static uint64_t tcx_dac_readl(void *opaque, hwaddr addr=
+,
+     case 2:
+         val =3D s->b[s->dac_index] << 24;
+         s->dac_index =3D (s->dac_index + 1) & 0xff; /* Index autoincrement=
+ */
 +        /* fall through */
-     case AUDIO_FORMAT_U8:
-         mul =3D 1;
+     default:
+         s->dac_state =3D 0;
          break;
+@@ -451,6 +452,7 @@ static void tcx_dac_writel(void *opaque, hwaddr addr, u=
+int64_t val,
+             s->b[index] =3D val >> 24;
+             update_palette_entries(s, index, index + 1);
+             s->dac_index =3D (s->dac_index + 1) & 0xff; /* Index autoincre=
+ment */
++            /* fall through */
+         default:
+             s->dac_state =3D 0;
+             break;
 --=20
 2.21.0
 
