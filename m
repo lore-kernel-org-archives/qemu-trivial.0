@@ -1,55 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ihYx6-0001yP-LY
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 08:01:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52299)
+	id 1ihYx7-0001zy-Rp
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 08:01:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52389)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1ihYx2-0001su-OL
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 08:01:17 -0500
+ (envelope-from <laurent@vivier.eu>) id 1ihYx3-0001tf-9U
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 08:01:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1ihYx1-0007lD-Hm
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 08:01:16 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:44313)
+ (envelope-from <laurent@vivier.eu>) id 1ihYx1-0007m0-Mx
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 08:01:17 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:40751)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1ihYx1-0007ez-4G; Wed, 18 Dec 2019 08:01:15 -0500
+ id 1ihYx1-0007ge-AA; Wed, 18 Dec 2019 08:01:15 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MY5wD-1iC0HB4AEH-00YQSd; Wed, 18 Dec 2019 14:01:09 +0100
+ id 1Mt7Pt-1hp3WQ00z3-00tPoh; Wed, 18 Dec 2019 14:01:11 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
  Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Yury Kotov <yury-kotov@yandex-team.ru>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PULL 2/7] monitor: Remove unused define
-Date: Wed, 18 Dec 2019 14:01:00 +0100
-Message-Id: <20191218130105.125981-3-laurent@vivier.eu>
+ Thomas Huth <thuth@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>
+Subject: [PULL 5/7] target/sparc: Remove old TODO file
+Date: Wed, 18 Dec 2019 14:01:03 +0100
+Message-Id: <20191218130105.125981-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20191218130105.125981-1-laurent@vivier.eu>
 References: <20191218130105.125981-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:B6YPh6a/2Jn6QR7PRjH8XuSgK1AeJBsTvAMvlseB60rXwBbjtiq
- 5SQP5rSegMUe7F31KDqjPqgFFwV4u7U9Tyy9zO8h9vI2zf3XLpK6TxogKmalpmEEA5riGGD
- wWZEzv/CSORnItLTf/D0OA32lMzT1iR0AXk2A2LFMJvmvOytyB2p+AscEM1StKlJdOH/06o
- MHAfD6oRP3cO4UuFe+QIQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:YTmUnv4x634=:k6CeyI2mP3DJzZbZeR2FS6
- 56caXC+zSxoi8pIHEUlDP4ZLJafV8ECbqU+QSsa19+sRcmcprFNeyQrVY19dUElhMDgN29/y9
- +wGh4yhs/DlVRqnQ/LBa24kMSHRtWpiG8GRGTBNW0OmtAJmlQChdBrWgNLfvKI9Ks99T6v7At
- EySLab584XiKCrw2tzhbFf8jrOWQqDu3Pgb2xIP10H3NAni0Fnb1i+WzL6HF0c++RRk1wX9aV
- 8mdnetrabIIrlJApznx/snTinlIPqMiNHoYE/fDb8hUlTMd8+PRkUOgnzr81feWlS9t2DaQ+9
- 4ttxt4AXTI5h9xCrPTlJpI69UQAMZQOPVMvXw+sqweadJzHZXGqeEVeTpK8tqML1Q5awc6RxW
- iXp1F77vMvDzQy5FV90HrrCuasZ2ZBnlkC1XyUGZXU9KArsDARUzG5cftqAHuZLuelI53evLf
- 3JAHJETooOQ1EEv5SvG8Lj/fi0y6jDz68BlDQFJExN35A5QS694bJ0uhIfHlFGz7AaSgTzdtK
- cZgROv5UAmaEINKpY/qV5oYRq1ZV0leeANh3ZWW2+96pEySAhDk/QVeL2u77f1ev/ZTRg396C
- KYdC5L8GRGy6dOlV4S9+AgGxAMmewpF8inDJEMj9ZCxg9O7NGWFft2J0lO0vQ0I6CYCS8LtRP
- 4lDy8+Cpdu1XXDNUan/40cUoz1y8Yk8R+uPGlcJ34g1ypxZc6lTbM0M8TJnXGD3kVWCqZW2WP
- GXpeAv2ngjVC9KYxURchERGi3IJW3k17KkU0P3/Z8t0AqJL8/qfKAVGDWTMp8DVX44tSZJ4eK
- Xxu2hmNy1iKi10zdp7WKPzzbp4QM2BwyPmddEejfmK9xtcCExqxf3/O273pjPBSpK2Oh8MDzh
- BS7pu3ExuYWfnkSU85i5swb9foo/UXZKL8bGRICPg=
+X-Provags-ID: V03:K1:bKfy2QzkGVq3B4KwCkJG1BCHQ+Kwx6GjFWipxIkeISNUQQDSx9G
+ 276T34V+p2WSG/jLpk12hDfm1jV9GslZNcMY8wlZyYnv1P9rj+s9B2c8eQXD0On9dxxSSWw
+ 1CGjwIj278Z0zFHbuaU+a5+GjfxiOyuwb8gFiLem1uvmCYzk21YIxXQzY5g06zVMEdugaF9
+ wbxK/girfkTH+M/9mQLsQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:TkUqZgL0x6M=:p+TwhpnT4CR5kRLMQREU57
+ aKdQI3glGwzh80N96ZWLj9A0W20Np+YfNn35m4tpeX0afX37orfSpwWda2LDH8h5GPP2hak9f
+ cjgL5Ux4Q5tn7/5ws3qJxU8kS9czAe+/hkI8XIg2GTgFy5z+dMKDiJznoP3N/cACtflAyzJHr
+ zjn1KXtFCFu5OGqiDmvRz8LFCQaq/Uf3E3POu+bQZpt8LYLPIHb2R4SxEGsmxLCO5bWeZDXzF
+ ShgbJEONF0kWFu3lGFqajB2CuMjPEMbx45ncy+CD9DHP9ytjdwZkiA4bIWppoxZArH9xuMaiS
+ X7p3yPFovKfeMSUeCEy6fxU9m9+9U9Fe8FxgO9QJ9o3sZcg/9N6yHixh57iZCSb9WkJEUdi8T
+ PmGfwypUF4IzmKmghLsjZ6iB082BLeavB8HqTt41dFL69KsACYiFYfVOBlsExpF4oDh3fjkPx
+ 7iHgCpfgle4sSA9PpJLsTwxn8ygujlKv614U6EsxIKbmxq+E/OKRx/7QjG6kO6UUfIiCMVq1o
+ OC+OpWw713dnezdCQM5IoWq0+5fYJqsPPSo1GfTWjl6QKQT6xHNPeMfi8LlqCay/ivIInIu0K
+ +d3AyUhE2hEiu8rbqiJBNyH3B7VJoF5OMUvXZ07lYyntNB3Wk3zr/LfLxuFEWhrqoUZ4pC0Yi
+ C8SYKmXi5nSl7/zyRXqxpllffj/++T5wHddOLitwbmh/H6gFq+J5tioeYd8/pHJPbj4ZGnApo
+ q5MDVlVbU+9WEAaoSmacnWnVOySVYI71rxAVv7B02Nq1tZypra0F5S9bNt9r2shZl9HCZWil+
+ dEtF2lEpEHa9EBjIdbL5hypYrr8u0EC1SdQ/6OUkOLN1YjCbfLW09F2TCgngYDt+KK4C5qTmq
+ sz6B4lALCS+JUiUs+cwg==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 212.227.126.130
@@ -64,36 +61,117 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Dec 2019 13:01:19 -0000
+X-List-Received-Date: Wed, 18 Dec 2019 13:01:20 -0000
 
-From: Yury Kotov <yury-kotov@yandex-team.ru>
+From: Thomas Huth <thuth@redhat.com>
 
-Remove the definition of QMP_ACCEPT_UNKNOWNS as it is unused since
-refactoring 5c678ee8d940
+This file hasn't seen a real (non-trivial) update since 2008 anymore,
+so we can assume that it is pretty much out of date and nobody cares
+for it anymore. Let's simply remove it.
 
-Signed-off-by: Yury Kotov <yury-kotov@yandex-team.ru>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20191119110709.13827-1-yury-kotov@yandex-team.ru>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
+Message-Id: <20190930171044.25312-1-thuth@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- monitor/misc.c | 3 ---
- 1 file changed, 3 deletions(-)
+ target/sparc/TODO | 88 -----------------------------------------------
+ 1 file changed, 88 deletions(-)
+ delete mode 100644 target/sparc/TODO
 
-diff --git a/monitor/misc.c b/monitor/misc.c
-index 3baa15f3bfac..6680734ea150 100644
---- a/monitor/misc.c
-+++ b/monitor/misc.c
-@@ -106,9 +106,6 @@ struct MonFdset {
-     QLIST_ENTRY(MonFdset) next;
- };
- 
--/* QMP checker flags */
--#define QMP_ACCEPT_UNKNOWNS 1
+diff --git a/target/sparc/TODO b/target/sparc/TODO
+deleted file mode 100644
+index b8c727e85846..000000000000
+--- a/target/sparc/TODO
++++ /dev/null
+@@ -1,88 +0,0 @@
+-TODO-list:
 -
- /* Protects mon_fdsets */
- static QemuMutex mon_fdsets_lock;
- static QLIST_HEAD(, MonFdset) mon_fdsets;
+-CPU common:
+-- Unimplemented features/bugs:
+- - Delay slot handling may fail sometimes (branch end of page, delay
+- slot next page)
+- - Atomical instructions
+- - CPU features should match real CPUs (also ASI selection)
+-- Optimizations/improvements:
+- - Condition code/branch handling like x86, also for FPU?
+- - Remove remaining explicit alignment checks
+- - Global register for regwptr, so that windowed registers can be
+- accessed directly
+- - Improve Sparc32plus addressing
+- - NPC/PC static optimisations (use JUMP_TB when possible)? (Is this
+- obsolete?)
+- - Synthetic instructions
+- - MMU model dependent on CPU model
+- - Select ASI helper at translation time (on V9 only if known)
+- - KQemu/KVM support for VM only
+- - Hardware breakpoint/watchpoint support
+- - Cache emulation mode
+- - Reverse-endian pages
+- - Faster FPU emulation
+- - Busy loop detection
+-
+-Sparc32 CPUs:
+-- Unimplemented features/bugs:
+- - Sun4/Sun4c MMUs
+- - Some V8 ASIs
+-
+-Sparc64 CPUs:
+-- Unimplemented features/bugs:
+- - Interrupt handling
+- - Secondary address space, other MMU functions
+- - Many V9/UA2005/UA2007 ASIs
+- - Rest of V9 instructions, missing VIS instructions
+- - IG/MG/AG vs. UA2007 globals
+- - Full hypervisor support
+- - SMP/CMT
+- - Sun4v CPUs
+-
+-Sun4:
+-- To be added
+-
+-Sun4c:
+-- A lot of unimplemented features
+-- Maybe split from Sun4m
+-
+-Sun4m:
+-- Unimplemented features/bugs:
+- - Hardware devices do not match real boards
+- - Floppy does not work
+- - CS4231: merge with cs4231a, add DMA
+- - Add cg6, bwtwo
+- - Arbitrary resolution support
+- - PCI for MicroSparc-IIe
+- - JavaStation machines
+- - SBus slot probing, FCode ROM support
+- - SMP probing support
+- - Interrupt routing does not match real HW
+- - SuSE 7.3 keyboard sometimes unresponsive
+- - Gentoo 2004.1 SMP does not work
+- - SS600MP ledma -> lebuffer
+- - Type 5 keyboard
+- - Less fixed hardware choices
+- - DBRI audio (Am7930)
+- - BPP parallel
+- - Diagnostic switch
+- - ESP PIO mode
+-
+-Sun4d:
+-- A lot of unimplemented features:
+- - SBI
+- - IO-unit
+-- Maybe split from Sun4m
+-
+-Sun4u:
+-- Unimplemented features/bugs:
+- - Interrupt controller
+- - PCI/IOMMU support (Simba, JIO, Tomatillo, Psycho, Schizo, Safari...)
+- - SMP
+- - Happy Meal Ethernet, flash, I2C, GPIO
+- - A lot of real machine types
+-
+-Sun4v:
+-- A lot of unimplemented features
+- - A lot of real machine types
 -- 
 2.24.1
 
