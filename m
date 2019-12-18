@@ -1,61 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ihStC-0002dn-TJ
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 01:32:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48265)
+	id 1ihUAC-00039i-3I
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 02:54:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52569)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1ihSt9-0002d9-Lp
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 01:32:52 -0500
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1ihUA8-00035B-HY
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 02:54:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1ihSt6-00019F-Pf
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 01:32:49 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:36214
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1ihSt6-00016s-Ak
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 01:32:48 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576650767;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=1KKn6U+/ywUnPKKL8LJsqgLOyVqm7OJXYIGf2lnOawg=;
- b=eaNivfk+5qqR9vEEOlLyvTfwWGJncb2l1Wof5feGsbto/gSevHcpz9Hr+XA0f/K/AlO1Rd
- mXvTqKJAoEyf96q0XxGvbyLsQPCAK2ydpA5UekhRxUL1IfKQeDrBgWyAidzc1fF/i2QVS+
- 6xM+UCWZPSCsXrBno0p/ddj9bgApErw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-53--nAnQBo1NkeHyETDJj4EWg-1; Wed, 18 Dec 2019 01:32:44 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 87D9C800D48;
- Wed, 18 Dec 2019 06:32:43 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-150.ams2.redhat.com [10.36.116.150])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 79F251891F;
- Wed, 18 Dec 2019 06:32:42 +0000 (UTC)
-Subject: Re: [PATCH] docker: gtester is no longer used
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Cc: alex.bennee@linaro.org, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <1576632611-55032-1-git-send-email-pbonzini@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <bea5bec3-bf6c-8784-0bf0-038143fffa17@redhat.com>
-Date: Wed, 18 Dec 2019 07:32:40 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1ihUA7-00046N-9I
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 02:54:28 -0500
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:33736)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1ihUA4-0003yW-EX; Wed, 18 Dec 2019 02:54:24 -0500
+Received: by mail-ot1-x344.google.com with SMTP id b18so1388397otp.0;
+ Tue, 17 Dec 2019 23:54:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=c9Ott8n8VeSD/aim4reyK20MiBP+jR7McIfV4rDYYn0=;
+ b=ZFGyUKkeW6dKdapbz52w8fOFnMCGnovDcEDSohXpO0MBHJy57CpJuwfx960np7anbv
+ F0FBXprM2hABKw77oGIln8nFkkmUoOb7WfOzyHPw1W7HVIovHW6mz1N2bWmB99aRnpPY
+ pWGPG14/byN7BZt71xy80rzbAWin833vP/W4akvGQvuhcUQvpfAooFTmhnK0s9f/BACk
+ GROV/QH40CJWuc4UYbbb7yfnxJy3K02kYcZ1KWAywfRhvmLvYHNFKNKZ73NghViH/Xxc
+ Vsc7/VIKI0HjE63i4OoGMl4ehwNJRNWfilAoiswkdeOuy6eUG7dz0I8R49B/j83VeM8E
+ hHTA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=c9Ott8n8VeSD/aim4reyK20MiBP+jR7McIfV4rDYYn0=;
+ b=uFqak62xfo4ShDR7p7YWVOZS4VISQ6WhGemxET95f5FTcAVNQnzSIouZ9vRoxelH/d
+ 4zql7y+OPfqVUZQgejHKv6JYgBe+nKD5z57Egdr5L2WpQtN/q4pcn95MPkzpEdbvf21g
+ lbnLJwcJ9PBWXjt+E9V4y89bemACjWR2UUJFMz5BrRaSJbqn+3PEbgGL+HK7ms26AojA
+ qHRbni8g/+2Kk9G3YQoF1KVXarWRECQcBZkIanC7CLFAtdx0xkChGbr13y4VH29kkeJF
+ cK6KkvvNhd36z0KCiohjgXlVgQgc7et7+BM1hC61ysZfmksGQJsaPCD+UCjG6np46xfA
+ Ae7g==
+X-Gm-Message-State: APjAAAWx6c/+r8defPMhJBxmgeFZS5aIAH1sLZjLS4MGTdLN4x+bMMGl
+ CZkVVqAzt1+Ts0zKHaCgDi/iMn57H+odi5T65g4=
+X-Google-Smtp-Source: APXvYqzOOgAiyiKw/9QmgW0UGh3/T2k4zdWBwRUtwSMRyVWzXi4As4Y78Zhp0nnhjss9xkXvfO/F8bfzBNYyJ59ixG4=
+X-Received: by 2002:a05:6830:3054:: with SMTP id
+ p20mr1189344otr.121.1576655663603; 
+ Tue, 17 Dec 2019 23:54:23 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1576632611-55032-1-git-send-email-pbonzini@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: -nAnQBo1NkeHyETDJj4EWg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+Received: by 2002:a9d:d21:0:0:0:0:0 with HTTP;
+ Tue, 17 Dec 2019 23:54:23 -0800 (PST)
+In-Reply-To: <20191217173425.5082-3-philmd@redhat.com>
+References: <20191217173425.5082-1-philmd@redhat.com>
+ <20191217173425.5082-3-philmd@redhat.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Wed, 18 Dec 2019 08:54:23 +0100
+Message-ID: <CAL1e-=gPi2C41Lc7cOQnTP+gL3aW=yWpQvamzTSfdDCJOK5BEA@mail.gmail.com>
+Subject: Re: [PATCH 2/6] hw/display/tcx: Add missing fall through comments
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
+ Olivier Danet <odanet@caramail.com>
+Content-Type: multipart/alternative; boundary="000000000000c324830599f5c009"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::344
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -67,37 +70,172 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Dec 2019 06:32:53 -0000
+X-List-Received-Date: Wed, 18 Dec 2019 07:54:31 -0000
 
-On 18/12/2019 02.30, Paolo Bonzini wrote:
-> We are using tap-driver.pl, do not require anymore gtester to be installed
-> to run the testsuite in docker-based tests.
-> 
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+--000000000000c324830599f5c009
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Tuesday, December 17, 2019, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+om>
+wrote:
+
+> GCC9 is confused by this comment when building with
+> CFLAG -Wimplicit-fallthrough=3D2:
+>
+>   hw/display/tcx.c: In function =E2=80=98tcx_dac_writel=E2=80=99:
+>   hw/display/tcx.c:453:26: error: this statement may fall through
+> [-Werror=3Dimplicit-fallthrough=3D]
+>     453 |             s->dac_index =3D (s->dac_index + 1) & 0xff; /* Inde=
+x
+> autoincrement */
+>         |             ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+>   hw/display/tcx.c:454:9: note: here
+>     454 |         default:
+>         |         ^~~~~~~
+>   hw/display/tcx.c: In function =E2=80=98tcx_dac_readl=E2=80=99:
+>   hw/display/tcx.c:412:22: error: this statement may fall through
+> [-Werror=3Dimplicit-fallthrough=3D]
+>     412 |         s->dac_index =3D (s->dac_index + 1) & 0xff; /* Index
+> autoincrement */
+>         |         ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+>   hw/display/tcx.c:413:5: note: here
+>     413 |     default:
+>         |     ^~~~~~~
+>   cc1: all warnings being treated as errors
+>
+> Add the missing fall through comments.
+>
+> Fixes: 55d7bfe22
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  tests/docker/common.rc | 7 +------
->  1 file changed, 1 insertion(+), 6 deletions(-)
-> 
-> diff --git a/tests/docker/common.rc b/tests/docker/common.rc
-> index 512202b..02cd67a 100755
-> --- a/tests/docker/common.rc
-> +++ b/tests/docker/common.rc
-> @@ -53,12 +53,7 @@ check_qemu()
->          INVOCATION="$@"
->      fi
->  
-> -    if command -v gtester > /dev/null 2>&1 && \
-> -           gtester --version > /dev/null 2>&1; then
-> -        make $MAKEFLAGS $INVOCATION
-> -    else
-> -        echo "No working gtester, skipping make $INVOCATION"
-> -    fi
-> +    make $MAKEFLAGS $INVOCATION
->  }
->  
->  test_fail()
-> 
+> Cc: Olivier Danet <odanet@caramail.com>
+> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> ---
+>  hw/display/tcx.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+>
+The content of the patch is fine, but the commit message is, I think,
+inacurate: gcc is not confused at all, it does what it was told to.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+The title is fine.
 
+
+> diff --git a/hw/display/tcx.c b/hw/display/tcx.c
+> index 14e829d3fa..abbeb30284 100644
+> --- a/hw/display/tcx.c
+> +++ b/hw/display/tcx.c
+> @@ -410,6 +410,7 @@ static uint64_t tcx_dac_readl(void *opaque, hwaddr
+> addr,
+>      case 2:
+>          val =3D s->b[s->dac_index] << 24;
+>          s->dac_index =3D (s->dac_index + 1) & 0xff; /* Index autoincreme=
+nt
+> */
+> +        /* fall through */
+>      default:
+>          s->dac_state =3D 0;
+>          break;
+> @@ -451,6 +452,7 @@ static void tcx_dac_writel(void *opaque, hwaddr addr,
+> uint64_t val,
+>              s->b[index] =3D val >> 24;
+>              update_palette_entries(s, index, index + 1);
+>              s->dac_index =3D (s->dac_index + 1) & 0xff; /* Index
+> autoincrement */
+> +            /* fall through */
+>          default:
+>              s->dac_state =3D 0;
+>              break;
+> --
+> 2.21.0
+>
+>
+>
+
+--000000000000c324830599f5c009
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<br><br>On Tuesday, December 17, 2019, Philippe Mathieu-Daud=C3=A9 &lt;<a h=
+ref=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; wrote:<br><block=
+quote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc=
+ solid;padding-left:1ex">GCC9 is confused by this comment when building wit=
+h<br>
+CFLAG -Wimplicit-fallthrough=3D2:<br>
+<br>
+=C2=A0 hw/display/tcx.c: In function =E2=80=98tcx_dac_writel=E2=80=99:<br>
+=C2=A0 hw/display/tcx.c:453:26: error: this statement may fall through [-We=
+rror=3Dimplicit-fallthrough=3D<wbr>]<br>
+=C2=A0 =C2=A0 453 |=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;da=
+c_index =3D (s-&gt;dac_index + 1) &amp; 0xff; /* Index autoincrement */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~<wbr>~~~~~~~~~~<br>
+=C2=A0 hw/display/tcx.c:454:9: note: here<br>
+=C2=A0 =C2=A0 454 |=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0default:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0^~~~~~~<br>
+=C2=A0 hw/display/tcx.c: In function =E2=80=98tcx_dac_readl=E2=80=99:<br>
+=C2=A0 hw/display/tcx.c:412:22: error: this statement may fall through [-We=
+rror=3Dimplicit-fallthrough=3D<wbr>]<br>
+=C2=A0 =C2=A0 412 |=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;dac_index =3D (s=
+-&gt;dac_index + 1) &amp; 0xff; /* Index autoincrement */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0~~~~~~~~~~~~=
+~^~~~~~~~~~~~~~~~~<wbr>~~~~~~~~~~<br>
+=C2=A0 hw/display/tcx.c:413:5: note: here<br>
+=C2=A0 =C2=A0 413 |=C2=A0 =C2=A0 =C2=A0default:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A0 =C2=A0^~~~~~~<br>
+=C2=A0 cc1: all warnings being treated as errors<br>
+<br>
+Add the missing fall through comments.<br>
+<br>
+Fixes: 55d7bfe22<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@red=
+hat.com">philmd@redhat.com</a>&gt;<br>
+---<br>
+Cc: Olivier Danet &lt;<a href=3D"mailto:odanet@caramail.com">odanet@caramai=
+l.com</a>&gt;<br>
+Cc: Mark Cave-Ayland &lt;<a href=3D"mailto:mark.cave-ayland@ilande.co.uk">m=
+ark.cave-ayland@ilande.co.uk</a>&gt;<br>
+---<br>
+=C2=A0hw/display/tcx.c | 2 ++<br>
+=C2=A01 file changed, 2 insertions(+)<br>
+<br></blockquote><div><br></div><div>The content of the patch is fine, but =
+the commit message is, I think, inacurate: gcc is not confused at all, it d=
+oes what it was told to.</div><div><br></div><div>The title is fine.</div><=
+div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8e=
+x;border-left:1px #ccc solid;padding-left:1ex">
+diff --git a/hw/display/tcx.c b/hw/display/tcx.c<br>
+index 14e829d3fa..abbeb30284 100644<br>
+--- a/hw/display/tcx.c<br>
++++ b/hw/display/tcx.c<br>
+@@ -410,6 +410,7 @@ static uint64_t tcx_dac_readl(void *opaque, hwaddr addr=
+,<br>
+=C2=A0 =C2=A0 =C2=A0case 2:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0val =3D s-&gt;b[s-&gt;dac_index] &lt;&lt;=
+ 24;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;dac_index =3D (s-&gt;dac_index + 1)=
+ &amp; 0xff; /* Index autoincrement */<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* fall through */<br>
+=C2=A0 =C2=A0 =C2=A0default:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;dac_state =3D 0;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+@@ -451,6 +452,7 @@ static void tcx_dac_writel(void *opaque, hwaddr addr, u=
+int64_t val,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;b[index] =3D val &gt;=
+&gt; 24;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0update_palette_entries(s, i=
+ndex, index + 1);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;dac_index =3D (s-&gt;=
+dac_index + 1) &amp; 0xff; /* Index autoincrement */<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* fall through */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0default:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;dac_state =3D 0;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+-- <br>
+2.21.0<br>
+<br>
+<br>
+</blockquote>
+
+--000000000000c324830599f5c009--
 
