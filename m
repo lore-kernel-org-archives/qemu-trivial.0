@@ -1,25 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ihXdV-000059-Sy
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 06:37:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50934)
+	id 1ihXy8-0001pi-TA
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 06:58:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47418)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1ihXdS-0008Vi-Qy
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 06:36:59 -0500
+ (envelope-from <laurent@vivier.eu>) id 1ihXy5-0001m1-Gi
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 06:58:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1ihXdR-00070r-NN
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 06:36:58 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:49587)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (envelope-from <laurent@vivier.eu>) id 1ihXy3-0005fN-GF
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 06:58:16 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:34271)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1ihXdH-0006zI-D3; Wed, 18 Dec 2019 06:36:47 -0500
+ id 1ihXxy-0005UT-Io; Wed, 18 Dec 2019 06:58:12 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MTOZQ-1iG8KF0r2S-00TjXi; Wed, 18 Dec 2019 12:36:43 +0100
-Subject: Re: [PATCH v2] Revert "qemu-options.hx: Update for reboot-timeout
- parameter"
-To: Han Han <hhan@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, dgilbert@redhat.com
-References: <20191205024821.245435-1-hhan@redhat.com>
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MJVU0-1iNpDq0RSK-00Jo1O; Wed, 18 Dec 2019 12:57:58 +0100
+Subject: Re: [PATCH-for-5.0 v3 1/6] hw/pci-host/i440fx: Correct the header
+ description
+To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@redhat.com>, qemu-devel@nongnu.org
+Cc: Stefano Stabellini <sstabellini@kernel.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, Paul Durrant <paul@xen.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org
+References: <20191209095002.32194-1-philmd@redhat.com>
+ <20191209095002.32194-2-philmd@redhat.com>
+ <12e7069c-46f0-ae9f-4e1f-70f0b8318180@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -63,36 +73,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <5fe686d9-4672-23df-7d65-da7fa8d58018@vivier.eu>
-Date: Wed, 18 Dec 2019 12:36:42 +0100
+Message-ID: <0d11898c-d3b6-97a7-26d5-f71d5dc9e915@vivier.eu>
+Date: Wed, 18 Dec 2019 12:57:56 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20191205024821.245435-1-hhan@redhat.com>
+In-Reply-To: <12e7069c-46f0-ae9f-4e1f-70f0b8318180@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:ypF1HpnYwbeYMpAbY74TCahuHWXb8g+DNFsWXnOig0w6Au8N62P
- hsv/ur+OCp0vGBHWbNy9Q4o843d+8oab4MaX438EGPEpKQqKTIkilx0uHpqcEpLPCpHmg3f
- iHbVEMZQuG8dRBBaxoe+DGf28YiCNL38sbfkzglMiI3LTAUImk1nMC9FgQFIhPpCsJh7uBm
- eIQ8R0ZHf7NnlkFuhXzVg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:1NQES/3+xCc=:ECNBe0ruIE2WbZYcaL4T/M
- E1vpM/EPSX01ceYko+KuLbPBD7e42/2XqF3vaKNxcyHd+6qQKYco4dsWNUjv/OAjvU3mmgmft
- t0OdUjz+lpqr+98xvZluYl0AtlBB28Q6yc91FzBtUBTTcO3HE4GNjO1XvUa7087Z1xcrN7LUT
- TMrjFuHojHziexQfWAqp8rbZpOV9GsaX06Zx+0UZ0M5nYKDAfhU0TdxdI80a/cz6DnmB3uv6a
- YXunSJ2u4F2hD2jfDFusN3WUwiZAaS++Sz3JxF5mnI7WPfqyVwg7g0fG2pYtoYB6om5By4ORm
- GptDSM7IjonwICxvAwMfxiWa3tnXcmCfXnpxt3JYo43Qyq3ChDBATbMdLv8jRtahfKPy5I+yR
- QBfudP5XTOVUxEfuVTSRuTLLosaRxSv2lASdQ/9NPPL91N8n63RiKYOaQdSvNyC1SppieGIA8
- OEHAVVC7UvEbcDKknaX09pcWEiPkNa6B1t+pVEkMGhVhBIijAWFuoqtpL6tn3yrXC0rfioYpc
- Xg2ySvaFAOVF5tEaUvo7va2hYqiKDUJR+oI4O7ztAgpGtb5RTAHBKOJe3hP2wrAYENib9DjHS
- +slxehem3HIhK5nZMTrwogABtdlQBfW6I/uCI4CulpbF+WAA911tT0MN+8AKzPaWHoPHyCMUf
- VLesR2ZuHCEcDHj8qIALln12+b9VCiv3n9MeGY2PuAiJdBUZnDwwXAGe5R9Zw6lQI6NLsSIw6
- 9xbQwtFex8SFihOorQd3HYC99V+7Ft4sCpz4iHGWKZp+lUn3KSkfAAVNxVYGlc8TdWteDRJi6
- EsJrORz4rZUDabakvuvsDCGY5CAWupQK/+LmlCDbseVclzkHx32ueNx8Zfm/qKXPKar0fM9hK
- 6UlI1gnY9PV8DV2zxcHA==
+X-Provags-ID: V03:K1:JNYvr0dF2iVjZPMM774y5p0XG32vbIXHKAwm9OVCJU4ZBvtFysh
+ QNUXzjCkaQRKzA05is2I1+WD7k8MNmRa4y1Ckj5jvvx7Qf/2BlQQibq5S7vbEQeahhQH9xV
+ AAHHV1J+4JGgV+GlB1CJ16XgWV8R0LSwE7OfXK0FCd4udYulqWvv1Kcn/FuyOQcE5sBLS8H
+ 13/eNnPFPGCJf3m48EYqw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:QCyaQd4Nwmo=:atB3YLjPnnoe58+SpaAwht
+ DjodQlVdGgk//mH2QEQKLDCbSNPq8fdZw292BjhYyMbwkQ/8U2EWQxR9X+Tmyv9RUflbSqmNA
+ Co9r93f29PwyHLFMCw8XvNlsLLRkKVpSQqak4doi+oFgvrQ8b3347FCyLic+OcDA61QNI91/h
+ e3aXENGrOPgXgCHrh02EmDZDAf0rVhSWLSV5LW7YZIaKu1HTTJN9ieiGKNz9hfLQz8iX17LO3
+ h+FQvHj0tB3cHOOKbon3wrwIrbD2pilDk2ZGA1yRLJlN8rIpISPC1mWETzvasO4lzvz01/+nQ
+ GzvQha08p65NeoaUF7SPey9WaCikg40AoroZ/0PgNkZotDo/Mz0MjiXFM3HCzUDNmVehQfeDS
+ 0iILfuRV60CNIhMBnjAFgYB4ITAU8tRm/w3HwPmvZgBLyr+hKjoVmUSNprVTfcWMR3xpzO52d
+ ovCr+QYCsIzRUi/gb6NnfmOqwFaduLJJQkjMe5Bif3w32r0X5RI3etoMBEysJBNtHgVkjfW2h
+ uXyO78zyXdqSSwJCzFlvWSOUnG4R3VKTxkDfE6KKymKs0upoYP/020P1ChrBwbdVsV2eRBl8s
+ Si1aHGOjLxDLSH430Q9zdFhtmRPZiRPX2Mnzz66cxCUwaargFOfcUSRCYom3Dm0i7j9STjuzm
+ +Pp5Spvx3h65ldXPVNRC1WF/nFVXtEljYJO9blaml59vox1J5fy326274QD+5ly21ErzVOKyj
+ c6cDfeyqBz4er7VZGEPmmTHtK6kwoSWBfPr5De7CiGd9pHswmOY17gFyllW+MTVgRR8Q8DeQw
+ rSaVZHGXHNB+0RFA2LHPGGTA/EfJes9GlpsKiM/cCywbrSvEaJXjeoRZJrLOnEbmMnIQkH+FH
+ inJWy+gO5bO1wSL+AQ5A==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.131
+X-Received-From: 212.227.126.130
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,39 +114,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Dec 2019 11:36:59 -0000
+X-List-Received-Date: Wed, 18 Dec 2019 11:58:18 -0000
 
-Le 05/12/2019 à 03:48, Han Han a écrit :
-> This reverts commit bbd9e6985ff342cbe15b9cb7eb30e842796fbbe8.
+Le 09/12/2019 à 11:02, Thomas Huth a écrit :
+> On 09/12/2019 10.49, Philippe Mathieu-Daudé wrote:
+>> Missed during the refactor in commits 14a026dd58 and 0f25d865a,
+>> this file is now only about the i440FX chipset.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  hw/pci-host/i440fx.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
+>> index f27131102d..3fc94426ea 100644
+>> --- a/hw/pci-host/i440fx.c
+>> +++ b/hw/pci-host/i440fx.c
+>> @@ -1,5 +1,5 @@
+>>  /*
+>> - * QEMU i440FX/PIIX3 PCI Bridge Emulation
+>> + * QEMU i440FX PCI Bridge Emulation
+>>   *
+>>   * Copyright (c) 2006 Fabrice Bellard
+>>   *
+>>
 > 
-> In 20a1922032 we allowed reboot-timeout=-1 again, so update the doc
-> accordingly.
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 > 
-> Signed-off-by: Han Han <hhan@redhat.com>
-> ---
->  qemu-options.hx | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 65c9473b..e14d88e9 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -327,8 +327,8 @@ format(true color). The resolution should be supported by the SVGA mode, so
->  the recommended is 320x240, 640x480, 800x640.
->  
->  A timeout could be passed to bios, guest will pause for @var{rb_timeout} ms
-> -when boot failed, then reboot. If @option{reboot-timeout} is not set,
-> -guest will not reboot by default. Currently Seabios for X86
-> +when boot failed, then reboot. If @var{rb_timeout} is '-1', guest will not
-> +reboot, qemu passes '-1' to bios by default. Currently Seabios for X86
->  system support it.
->  
->  Do strict boot via @option{strict=on} as far as firmware/BIOS
 > 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
 
