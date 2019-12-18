@@ -1,91 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ihY1G-0004nD-Ci
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 07:01:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59244)
+	id 1ihY48-0007fP-7s
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 07:04:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58020)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1ihY1E-0004my-KL
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 07:01:33 -0500
+ (envelope-from <paolo.bonzini@gmail.com>) id 1ihY41-0007VS-1E
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 07:04:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1ihY19-0002LT-52
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 07:01:31 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:52143
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1ihY19-0002Hg-0X
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 07:01:27 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576670486;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nnTOVHuW87Jr/QF5nTyCZsFNBa9WxSkLxkS3rc7V324=;
- b=eVXDmNMqNrvB1pMGEleu/ZM7gl6DbJG69NoRRtu6zL1jsc47kChzu4ddPqaPSeshxUnfGI
- J3WbV933NQ0kI8OyQx6DmRQGmJ5jA7OzbhWSxJzPrK4D40vH37afYqWBnMz9kx0sRhmMeE
- IlS9S2INg1kAAEGNV+a5dLXIt3lQqTo=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-176-4c3vft3oN4S_M2Ep26SH7w-1; Wed, 18 Dec 2019 07:01:23 -0500
-Received: by mail-wm1-f71.google.com with SMTP id s25so437270wmj.3
- for <qemu-trivial@nongnu.org>; Wed, 18 Dec 2019 04:01:23 -0800 (PST)
+ (envelope-from <paolo.bonzini@gmail.com>) id 1ihY3z-0003xU-6G
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 07:04:24 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:38576)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <paolo.bonzini@gmail.com>)
+ id 1ihY3v-0003ej-4Z; Wed, 18 Dec 2019 07:04:19 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id y17so2013266wrh.5;
+ Wed, 18 Dec 2019 04:04:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=xoiVKpP9hu9WCjJ4oCdzKyi18D0F4vTbBwktrThFJeE=;
+ b=YJ/uJLWBZxg8la5DghZ0zMXGKR5HMj1GVEIdeEtmw33/h0A01X1zSkGPSJhiAo/QnC
+ iYpPkAZRjlMuW2tsAAhfwgKl86G+qkz30RLZz3x1mbZiwcvxsvc0YZS6PeIXkwqYYo8X
+ v+D1whVCvQkpiYVTKzhvOlXlJRHKEv/aGJ35OLOC3Ezi2f3qY16HUZFhCELSGVqcyVHa
+ txTmgBaR7UhCy5eltJGFF+4gh254h+IxpQO1xZRWqXbCsxZf5HBswWjrgRBxUFJI7ciF
+ xxCi8q/tzsiYewZ/5IoOtqbXVXZd6XtSR1X/QAWde2t6XVFAaXFgXHFHl4i11CeXjRQT
+ V7Cw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=vtprSGYHU4j197Ob5MFH6FDAhj99Ty+47OcaF4TZslQ=;
- b=HiVzaS1xu8ZScJZQNitdUqYMfr9Bg/RakrZq7x5c0qz4BeMQBUiTS/H+Em6CrNpVKl
- FKHtW03/tvUyLKaHrr2wkdP2ID7jLFWYSirohAtCTGB888Wr9+SFtRtP43PWt+dCI4UD
- o33pfUi9QJOhShoUoIE0OLWuViUaxPSZ697xVlBrV8p7KeZ7B/Qp/v9CPGWX203kL5FO
- gOCy9+W9LI4GfG1Yec3jQDJ9bH2hZbs5W77gb1eojsO+PW2/neQ6/ByqGoAmecEmEqRg
- YCHvRN3GukMDOq9Kt0/RpSduG6kV7x1KAyWWeq0Pb6fpAZP5n8Xfb+8/XHTIV4LJoyHa
- Jyxg==
-X-Gm-Message-State: APjAAAX4X0G5vIVI+xaNH77OFG/8QPDy5RnwVEaKl9vqYuYRPXFbCvEC
- LO1V9AP+yTgVu3IgaPU3Cn2ecMl/J5+MpRVExOic3n85Jyk2n7+8VqE7BTHRYArXJNveCNAbxZy
- HSncUXlkvZmQ5XecXnA==
-X-Received: by 2002:a05:6000:50:: with SMTP id
- k16mr2402942wrx.145.1576670482493; 
- Wed, 18 Dec 2019 04:01:22 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzP+Fh3tnwzAq8B8UcmM2mVBYjuJtoDSV8sbDFanUFk2f/c6bgGmh1sUtNsOgYBEFE0wS3EXA==
-X-Received: by 2002:a05:6000:50:: with SMTP id
- k16mr2402888wrx.145.1576670482076; 
- Wed, 18 Dec 2019 04:01:22 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:ac09:bce1:1c26:264c?
- ([2001:b07:6468:f312:ac09:bce1:1c26:264c])
- by smtp.gmail.com with ESMTPSA id s8sm2242512wrt.57.2019.12.18.04.01.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Dec 2019 04:01:21 -0800 (PST)
-Subject: Re: [PATCH-for-5.0 v3 3/6] hw/pci-host/i440fx: Use size_t to iterate
- over ARRAY_SIZE()
-To: Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Stefano Stabellini <sstabellini@kernel.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, QEMU Trivial
- <qemu-trivial@nongnu.org>, Paul Durrant <paul@xen.org>,
- Markus Armbruster <armbru@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org
-References: <20191209095002.32194-1-philmd@redhat.com>
- <20191209095002.32194-4-philmd@redhat.com>
- <a4745134-47dc-ab8a-6009-69fcc9dfbb02@redhat.com>
- <46339299-e45b-79a3-5b45-f62fb5c7b26f@vivier.eu>
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references;
+ bh=xoiVKpP9hu9WCjJ4oCdzKyi18D0F4vTbBwktrThFJeE=;
+ b=JJKf7Ul9x3dDIudosdgIn+UnSN+Y8nsxwDeLwTb9Uu0egEpQB66YtNqO9HEMQsJPHq
+ ksmm/0ZcK9q8hpHJiAfZfxBKtqMgz239WnraPncm8hSEhtVGX0zmHMTiDbqu0OJljgPN
+ 2F7KWC8DDPu4ljJOAbN6CoPx1JHksqeB3aPT1kKUg3QoDetuOOT2SevvDyDvjYgwphDC
+ 9aQtv4qnTJdwZ2tBOaBbash0qHiq5AmZdHqftj1fdLNziJnJrZzSJyS6UrQMsLjmDSjO
+ u6FVs7gHWzmK724XQmTv9u4RU86Ai/ZKjaCElo1KSFkjceudT0AmX1o+kNZv048Fzsb1
+ H2Bg==
+X-Gm-Message-State: APjAAAUS5dwll4wueu4r05dDfDUITYEYGRA8U23WLhdSDbwLx5q2pHsN
+ sABUeLYV5NBbgOypP9YEMMlKi+6k
+X-Google-Smtp-Source: APXvYqyp14ZH+erO5k4m5jU7LCGriOlnOIxoJRZ9U9/WBknXiG8DLtoyeYIL01UWssLyDgh6SJ9uqA==
+X-Received: by 2002:adf:f508:: with SMTP id q8mr2449904wro.334.1576670657870; 
+ Wed, 18 Dec 2019 04:04:17 -0800 (PST)
+Received: from 640k.lan ([93.56.166.5])
+ by smtp.gmail.com with ESMTPSA id n67sm2236838wmf.46.2019.12.18.04.04.16
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 18 Dec 2019 04:04:17 -0800 (PST)
+Sender: Paolo Bonzini <paolo.bonzini@gmail.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <b629cd94-95e9-d351-6e80-23594c2b6245@redhat.com>
-Date: Wed, 18 Dec 2019 13:01:29 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
-MIME-Version: 1.0
-In-Reply-To: <46339299-e45b-79a3-5b45-f62fb5c7b26f@vivier.eu>
-Content-Language: en-US
-X-MC-Unique: 4c3vft3oN4S_M2Ep26SH7w-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.120
+To: qemu-devel@nongnu.org
+Cc: Eiichi Tsukata <devel@etsukata.com>,
+	qemu-trivial@nongnu.org
+Subject: [PULL 75/87] target/i386: remove unused pci-assign codes
+Date: Wed, 18 Dec 2019 13:02:41 +0100
+Message-Id: <1576670573-48048-76-git-send-email-pbonzini@redhat.com>
+X-Mailer: git-send-email 1.8.3.1
+In-Reply-To: <1576670573-48048-1-git-send-email-pbonzini@redhat.com>
+References: <1576670573-48048-1-git-send-email-pbonzini@redhat.com>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::42a
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -97,51 +68,206 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Dec 2019 12:01:34 -0000
+X-List-Received-Date: Wed, 18 Dec 2019 12:04:28 -0000
 
-On 18/12/19 12:57, Laurent Vivier wrote:
-> Le 09/12/2019 =C3=A0 11:05, Thomas Huth a =C3=A9crit=C2=A0:
->> On 09/12/2019 10.49, Philippe Mathieu-Daud=C3=A9 wrote:
->>> We don't enforce the -Wsign-conversion CPPFLAG, but it doesn't hurt
->>> to avoid this warning:
->>>
->>>   warning: implicit conversion changes signedness: 'int' to 'size_t' (a=
-ka 'unsigned long') [-Wsign-conversion]
->>>
->>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->>> ---
->>>  hw/pci-host/i440fx.c | 5 ++---
->>>  1 file changed, 2 insertions(+), 3 deletions(-)
->>>
->>> diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
->>> index fbdc563599..0cc80b276d 100644
->>> --- a/hw/pci-host/i440fx.c
->>> +++ b/hw/pci-host/i440fx.c
->>> @@ -419,12 +419,11 @@ out:
->>>  static void igd_pt_i440fx_realize(PCIDevice *pci_dev, Error **errp)
->>>  {
->>>      uint32_t val =3D 0;
->>> -    int i, num;
->>> +    size_t i;
->>>      int pos, len;
->>>      Error *local_err =3D NULL;
->>> =20
->>> -    num =3D ARRAY_SIZE(igd_host_bridge_infos);
->>> -    for (i =3D 0; i < num; i++) {
->>> +    for (i =3D 0; i < ARRAY_SIZE(igd_host_bridge_infos); i++) {
->>>          pos =3D igd_host_bridge_infos[i].offset;
->>>          len =3D igd_host_bridge_infos[i].len;
->>>          host_pci_config_read(pos, len, &val, &local_err);
->>>
->>
->> Reviewed-by: Thomas Huth <thuth@redhat.com>
->>
->>
->=20
-> Applied to my trivial-patches branch.
+From: Eiichi Tsukata <devel@etsukata.com>
 
-No need to, I've already queued the whole series.
+Legacy PCI device assignment has been already removed in commit ab37bfc7d641
+("pci-assign: Remove"), but some codes remain unused.
 
-Paolo
+CC: qemu-trivial@nongnu.org
+Signed-off-by: Eiichi Tsukata <devel@etsukata.com>
+Message-Id: <20191209072932.313056-1-devel@etsukata.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ target/i386/kvm.c      | 140 -------------------------------------------------
+ target/i386/kvm_i386.h |  20 -------
+ 2 files changed, 160 deletions(-)
+
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index 55e6265..0b51190 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -4512,146 +4512,6 @@ int kvm_arch_irqchip_create(KVMState *s)
+     }
+ }
+ 
+-/* Classic KVM device assignment interface. Will remain x86 only. */
+-int kvm_device_pci_assign(KVMState *s, PCIHostDeviceAddress *dev_addr,
+-                          uint32_t flags, uint32_t *dev_id)
+-{
+-    struct kvm_assigned_pci_dev dev_data = {
+-        .segnr = dev_addr->domain,
+-        .busnr = dev_addr->bus,
+-        .devfn = PCI_DEVFN(dev_addr->slot, dev_addr->function),
+-        .flags = flags,
+-    };
+-    int ret;
+-
+-    dev_data.assigned_dev_id =
+-        (dev_addr->domain << 16) | (dev_addr->bus << 8) | dev_data.devfn;
+-
+-    ret = kvm_vm_ioctl(s, KVM_ASSIGN_PCI_DEVICE, &dev_data);
+-    if (ret < 0) {
+-        return ret;
+-    }
+-
+-    *dev_id = dev_data.assigned_dev_id;
+-
+-    return 0;
+-}
+-
+-int kvm_device_pci_deassign(KVMState *s, uint32_t dev_id)
+-{
+-    struct kvm_assigned_pci_dev dev_data = {
+-        .assigned_dev_id = dev_id,
+-    };
+-
+-    return kvm_vm_ioctl(s, KVM_DEASSIGN_PCI_DEVICE, &dev_data);
+-}
+-
+-static int kvm_assign_irq_internal(KVMState *s, uint32_t dev_id,
+-                                   uint32_t irq_type, uint32_t guest_irq)
+-{
+-    struct kvm_assigned_irq assigned_irq = {
+-        .assigned_dev_id = dev_id,
+-        .guest_irq = guest_irq,
+-        .flags = irq_type,
+-    };
+-
+-    if (kvm_check_extension(s, KVM_CAP_ASSIGN_DEV_IRQ)) {
+-        return kvm_vm_ioctl(s, KVM_ASSIGN_DEV_IRQ, &assigned_irq);
+-    } else {
+-        return kvm_vm_ioctl(s, KVM_ASSIGN_IRQ, &assigned_irq);
+-    }
+-}
+-
+-int kvm_device_intx_assign(KVMState *s, uint32_t dev_id, bool use_host_msi,
+-                           uint32_t guest_irq)
+-{
+-    uint32_t irq_type = KVM_DEV_IRQ_GUEST_INTX |
+-        (use_host_msi ? KVM_DEV_IRQ_HOST_MSI : KVM_DEV_IRQ_HOST_INTX);
+-
+-    return kvm_assign_irq_internal(s, dev_id, irq_type, guest_irq);
+-}
+-
+-int kvm_device_intx_set_mask(KVMState *s, uint32_t dev_id, bool masked)
+-{
+-    struct kvm_assigned_pci_dev dev_data = {
+-        .assigned_dev_id = dev_id,
+-        .flags = masked ? KVM_DEV_ASSIGN_MASK_INTX : 0,
+-    };
+-
+-    return kvm_vm_ioctl(s, KVM_ASSIGN_SET_INTX_MASK, &dev_data);
+-}
+-
+-static int kvm_deassign_irq_internal(KVMState *s, uint32_t dev_id,
+-                                     uint32_t type)
+-{
+-    struct kvm_assigned_irq assigned_irq = {
+-        .assigned_dev_id = dev_id,
+-        .flags = type,
+-    };
+-
+-    return kvm_vm_ioctl(s, KVM_DEASSIGN_DEV_IRQ, &assigned_irq);
+-}
+-
+-int kvm_device_intx_deassign(KVMState *s, uint32_t dev_id, bool use_host_msi)
+-{
+-    return kvm_deassign_irq_internal(s, dev_id, KVM_DEV_IRQ_GUEST_INTX |
+-        (use_host_msi ? KVM_DEV_IRQ_HOST_MSI : KVM_DEV_IRQ_HOST_INTX));
+-}
+-
+-int kvm_device_msi_assign(KVMState *s, uint32_t dev_id, int virq)
+-{
+-    return kvm_assign_irq_internal(s, dev_id, KVM_DEV_IRQ_HOST_MSI |
+-                                              KVM_DEV_IRQ_GUEST_MSI, virq);
+-}
+-
+-int kvm_device_msi_deassign(KVMState *s, uint32_t dev_id)
+-{
+-    return kvm_deassign_irq_internal(s, dev_id, KVM_DEV_IRQ_GUEST_MSI |
+-                                                KVM_DEV_IRQ_HOST_MSI);
+-}
+-
+-bool kvm_device_msix_supported(KVMState *s)
+-{
+-    /* The kernel lacks a corresponding KVM_CAP, so we probe by calling
+-     * KVM_ASSIGN_SET_MSIX_NR with an invalid parameter. */
+-    return kvm_vm_ioctl(s, KVM_ASSIGN_SET_MSIX_NR, NULL) == -EFAULT;
+-}
+-
+-int kvm_device_msix_init_vectors(KVMState *s, uint32_t dev_id,
+-                                 uint32_t nr_vectors)
+-{
+-    struct kvm_assigned_msix_nr msix_nr = {
+-        .assigned_dev_id = dev_id,
+-        .entry_nr = nr_vectors,
+-    };
+-
+-    return kvm_vm_ioctl(s, KVM_ASSIGN_SET_MSIX_NR, &msix_nr);
+-}
+-
+-int kvm_device_msix_set_vector(KVMState *s, uint32_t dev_id, uint32_t vector,
+-                               int virq)
+-{
+-    struct kvm_assigned_msix_entry msix_entry = {
+-        .assigned_dev_id = dev_id,
+-        .gsi = virq,
+-        .entry = vector,
+-    };
+-
+-    return kvm_vm_ioctl(s, KVM_ASSIGN_SET_MSIX_ENTRY, &msix_entry);
+-}
+-
+-int kvm_device_msix_assign(KVMState *s, uint32_t dev_id)
+-{
+-    return kvm_assign_irq_internal(s, dev_id, KVM_DEV_IRQ_HOST_MSIX |
+-                                              KVM_DEV_IRQ_GUEST_MSIX, 0);
+-}
+-
+-int kvm_device_msix_deassign(KVMState *s, uint32_t dev_id)
+-{
+-    return kvm_deassign_irq_internal(s, dev_id, KVM_DEV_IRQ_GUEST_MSIX |
+-                                                KVM_DEV_IRQ_HOST_MSIX);
+-}
+-
+ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
+                              uint64_t address, uint32_t data, PCIDevice *dev)
+ {
+diff --git a/target/i386/kvm_i386.h b/target/i386/kvm_i386.h
+index 06fe06b..7d0242f 100644
+--- a/target/i386/kvm_i386.h
++++ b/target/i386/kvm_i386.h
+@@ -40,26 +40,6 @@ void kvm_synchronize_all_tsc(void);
+ void kvm_arch_reset_vcpu(X86CPU *cs);
+ void kvm_arch_do_init_vcpu(X86CPU *cs);
+ 
+-int kvm_device_pci_assign(KVMState *s, PCIHostDeviceAddress *dev_addr,
+-                          uint32_t flags, uint32_t *dev_id);
+-int kvm_device_pci_deassign(KVMState *s, uint32_t dev_id);
+-
+-int kvm_device_intx_assign(KVMState *s, uint32_t dev_id,
+-                           bool use_host_msi, uint32_t guest_irq);
+-int kvm_device_intx_set_mask(KVMState *s, uint32_t dev_id, bool masked);
+-int kvm_device_intx_deassign(KVMState *s, uint32_t dev_id, bool use_host_msi);
+-
+-int kvm_device_msi_assign(KVMState *s, uint32_t dev_id, int virq);
+-int kvm_device_msi_deassign(KVMState *s, uint32_t dev_id);
+-
+-bool kvm_device_msix_supported(KVMState *s);
+-int kvm_device_msix_init_vectors(KVMState *s, uint32_t dev_id,
+-                                 uint32_t nr_vectors);
+-int kvm_device_msix_set_vector(KVMState *s, uint32_t dev_id, uint32_t vector,
+-                               int virq);
+-int kvm_device_msix_assign(KVMState *s, uint32_t dev_id);
+-int kvm_device_msix_deassign(KVMState *s, uint32_t dev_id);
+-
+ void kvm_put_apicbase(X86CPU *cpu, uint64_t value);
+ 
+ bool kvm_enable_x2apic(void);
+-- 
+1.8.3.1
+
 
 
