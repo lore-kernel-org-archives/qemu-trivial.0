@@ -1,82 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ihdOa-0004RR-EC
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 12:46:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37161)
+	id 1ihdUy-0007hC-HL
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 12:52:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56234)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1ihdOX-0004RD-S9
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 12:45:58 -0500
+ (envelope-from <philmd@redhat.com>) id 1ihdUv-0007ed-5K
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 12:52:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1ihdOU-0005cq-22
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 12:45:55 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:41430
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1ihdUr-0001aE-LK
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 12:52:31 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:28872
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ihdOQ-0005N7-Rv
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 12:45:51 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ihdUq-0001X4-3Y
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 12:52:28 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576691139;
+ s=mimecast20190719; t=1576691547;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kYdCtARh1DlaJb5QhxAom7DShKuTQCeWthsEi/g0iqI=;
- b=bYVtfWRB54+/m85f7ZJp90Ku1z3lIKyRnOPTLOC01YodOYW0Qy74Ljxs8jqs5nCqKENXj0
- eLSZuiZzZusJsxnxo3tU+8wotG69lZM1+gNMZKJMFcVZxXW4BgeQ1xSli1GUpvszBmRWBv
- WACtz8el73dhU11j2WhgbqxG/KYlgMY=
+ bh=mqg0Hqh1h6ScbTcwhh5SWMh3HUuJu7TKLUZYNxshdFk=;
+ b=Dy/nyYMMF6TqTPyVZGu680cuFD39HB0nxQM04CVUyBtMR7GNX1VL7SLLcUH+OhG45TMHj9
+ KPmdcvwJEeWBomeKlBSIItYaDziywrG4weeyOO06Vhw3BtVYq/XdZqHHFoFKTFAFnmz5fT
+ 0ACDesd0MyNXpNvy6r1iK6gyfM6Cgas=
 Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
  [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-320-BP0t9JlOM2GMqVWkmsmTjQ-1; Wed, 18 Dec 2019 12:45:38 -0500
-Received: by mail-wr1-f69.google.com with SMTP id t3so455456wrm.23
- for <qemu-trivial@nongnu.org>; Wed, 18 Dec 2019 09:45:38 -0800 (PST)
+ us-mta-115-aSb59H-7NWeyhUPOgAayQw-1; Wed, 18 Dec 2019 12:52:24 -0500
+Received: by mail-wr1-f69.google.com with SMTP id c17so332366wrp.10
+ for <qemu-trivial@nongnu.org>; Wed, 18 Dec 2019 09:52:23 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=SXc/wu8KlY6VL5Z2QJesRd/ee9QosLEou+3J83m0oio=;
- b=HFZFEVn8Vvp6mBHB/S+B2TjyF4U8Rz6BVQbog4oFu2Kkxsdf42XM8l4dvSH0oBhMt2
- mPCA54x3YY5iKT5vwL8Of0tf0JuG4WcO+0jJOYRV4yZ3C2TcALAprL7u0sXULC5Je/NO
- Uzi+0waGs0N9rjFMk7NS4GY/uF6tA8j0F4TuJ1Vu9HnT+SF8WUWed+BZQa2uhkGJmh/g
- K3M5IEXxQY27FILSZOiQf9Fdo+gGDLYjPzgXAfBk6WtbEfbrZZfwgHngd7F27lxmT08k
- b0gwd1jaw+Ln1Hz96944dYq+c67Urh37iOjd7Ati/1F0SkuAmIFtYl1vNYEiqO/Qfz8h
- TMMw==
-X-Gm-Message-State: APjAAAWwwPkpdc66yRAogUGRePEkiIVMs29FzIb3J/dm/ogvoz3mU81+
- Xm94bI9JFfFZTLbMc/V9MXkhWykR5CKtb/6Pi62QrvLUT0mB3eg+Iy6EMaXdA6Qk5McHVTgBqBR
- GUD4sOlDwT9zXGl44kg==
-X-Received: by 2002:a05:600c:108a:: with SMTP id
- e10mr4478087wmd.38.1576691137009; 
- Wed, 18 Dec 2019 09:45:37 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzxZFf933ygNrX6goWNEZCNEh4Z1T7XrmfQKj+0lmiiO4CTTeMAuX7QMLTamuo6X91ot5C7LA==
-X-Received: by 2002:a05:600c:108a:: with SMTP id
- e10mr4478054wmd.38.1576691136690; 
- Wed, 18 Dec 2019 09:45:36 -0800 (PST)
+ bh=X0c5BkxyPTbFBv2YtbtERUODj2FEvP0pkA9OscXlgoI=;
+ b=nclkpJvrfgL1jloYzs/T/zJYCCvHaXZNcE2gjpRhMMXQ2y+vxKdNklvqh6CgKwJ2CZ
+ tz2hBetf5jRAdsYz0SKj7d878UPECNTszr/aY/xap0BVmgKsVaxPu/cQWUJej0tDCwpm
+ FyNQXaVM3Kt4ko0rMO4zxayTvAdRvLI2dPFd/13aZzXOKtKQ7pV3bk8ICoaaUcoJer7k
+ 79adlMLuLzBKzYyMNCvxl1qEEN+0NCxaY2i9DjNwV+l/UnFRYsC1JdrGxHP/IFpAaSgw
+ Ozhetse6n8xE/YDoqgiNMfOhck21mKrhRrFjn9I0kFUgYPWTnKa36Zioa2g9JTX8TXQ5
+ wdIQ==
+X-Gm-Message-State: APjAAAUx8QvNrOmJpj6ft3JavesAU/93oTWISwrktrZBcXFaIANBVYDO
+ FcBkL44CIrVm5mqyEh6NjxhKpOej9bcB00jeJAvlWKy3b0gIFVKz3KJvNAJp17ndRv3KJ9NbqTu
+ t5QzmLMi9U4tpdoTKXw==
+X-Received: by 2002:adf:fa12:: with SMTP id m18mr4046217wrr.309.1576691542865; 
+ Wed, 18 Dec 2019 09:52:22 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwZ+auCFqkdFehZbjyhHOVhI4hmNTdDc8guXDzGXH19VY7mXGxd2Hr1yAgs9b08yxgkvnU9ww==
+X-Received: by 2002:adf:fa12:: with SMTP id m18mr4046194wrr.309.1576691542645; 
+ Wed, 18 Dec 2019 09:52:22 -0800 (PST)
 Received: from [192.168.1.35] (34.red-83-42-66.dynamicip.rima-tde.net.
  [83.42.66.34])
- by smtp.gmail.com with ESMTPSA id z6sm3373743wrw.36.2019.12.18.09.45.35
+ by smtp.gmail.com with ESMTPSA id v22sm3070737wml.11.2019.12.18.09.52.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Dec 2019 09:45:36 -0800 (PST)
-Subject: Re: [PATCH 6/6] qemu-io-cmds: Silent GCC9 format-overflow warning
+ Wed, 18 Dec 2019 09:52:22 -0800 (PST)
+Subject: Re: [PATCH 5/6] hw/scsi/megasas: Silent GCC9 duplicated-cond warning
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
- qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>
+Cc: Fam Zheng <fam@euphon.net>, Hannes Reinecke <hare@suse.com>,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
 References: <20191217173425.5082-1-philmd@redhat.com>
- <20191217173425.5082-7-philmd@redhat.com>
- <0bd64884-03fd-68e1-a790-c9ceb7710fd9@linaro.org>
+ <20191217173425.5082-6-philmd@redhat.com>
+ <b29f856a-5199-6f62-4aee-5a2cfc9f05a3@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <ac01ca89-ad58-a6f4-e33f-c1dcc4e0ad90@redhat.com>
-Date: Wed, 18 Dec 2019 18:45:34 +0100
+Message-ID: <71c58178-6bd5-bbb9-5691-77bdae7d2788@redhat.com>
+Date: Wed, 18 Dec 2019 18:52:21 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <0bd64884-03fd-68e1-a790-c9ceb7710fd9@linaro.org>
+In-Reply-To: <b29f856a-5199-6f62-4aee-5a2cfc9f05a3@linaro.org>
 Content-Language: en-US
-X-MC-Unique: BP0t9JlOM2GMqVWkmsmTjQ-1
+X-MC-Unique: aSb59H-7NWeyhUPOgAayQw-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,77 +87,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Dec 2019 17:45:59 -0000
+X-List-Received-Date: Wed, 18 Dec 2019 17:52:35 -0000
 
-On 12/18/19 5:15 AM, Richard Henderson wrote:
+On 12/18/19 5:03 AM, Richard Henderson wrote:
 > On 12/17/19 7:34 AM, Philippe Mathieu-Daud=C3=A9 wrote:
 >> GCC9 is confused when building with CFLAG -O3:
 >>
->>    In function =E2=80=98help_oneline=E2=80=99,
->>        inlined from =E2=80=98help_all=E2=80=99 at qemu-io-cmds.c:2414:9,
->>        inlined from =E2=80=98help_f=E2=80=99 at qemu-io-cmds.c:2424:9:
->>    qemu-io-cmds.c:2389:9: error: =E2=80=98%s=E2=80=99 directive argument=
- is null [-Werror=3Dformat-overflow=3D]
->>     2389 |         printf("%s ", ct->name);
->>          |         ^~~~~~~~~~~~~~~~~~~~~~~
+>>    hw/scsi/megasas.c: In function =E2=80=98megasas_scsi_realize=E2=80=99=
+:
+>>    hw/scsi/megasas.c:2387:26: error: duplicated =E2=80=98if=E2=80=99 con=
+dition [-Werror=3Dduplicated-cond]
+>>     2387 |     } else if (s->fw_sge >=3D 128 - MFI_PASS_FRAME_SIZE) {
+>>    hw/scsi/megasas.c:2385:19: note: previously used here
+>>     2385 |     if (s->fw_sge >=3D MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE)=
+ {
+>>    cc1: all warnings being treated as errors
 >>
->> Audit shows this can't happen. Give a hint to GCC adding an
->> assert() call.
->=20
-> This deserves more investigation.  From my glance it appears you are righ=
-t --
-> and moreover impossible for gcc to have come to this conclusion.  Which b=
-egs
-> the question of how that is.
-
-New entries are added to cmdtab[] in qemuio_add_command() which is=20
-public (also called in qemu-io.c). So you can insert a cmdinfo_t with a=20
-name being NULL. This is why I thought GCC was correct first, and I tried:
-
--- >8 --
---- a/qemu-io-cmds.c
-+++ b/qemu-io-cmds.c
-@@ -42,6 +42,7 @@ void qemuio_add_command(const cmdinfo_t *ci)
-       * Catch it now rather than letting it manifest as a crash if a
-       * particular set of command line options are used.
-       */
-+    assert(ci->name);
-      assert(ci->perm =3D=3D 0 ||
-             (ci->flags & (CMD_FLAG_GLOBAL | CMD_NOFILE_OK)) =3D=3D 0);
-      cmdtab =3D g_renew(cmdinfo_t, cmdtab, ++ncmds);
----
-
-But this didn't fix the warning... So I moved the assert() in the other=20
-location.
-
->=20
-> Did you file a gcc bug report?
-
-No because I'm not sure this is a bug, but if you confirm I'll file one :)
-
+>> When this device was introduced in commit e8f943c3bcc, the author
+>> cared about modularity, using a definition for the firmware limit.
+>> If we modify the limit, the code is valid. Add a check if the
+>> definition got modified to a bigger limit.
 >>
 >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 >> ---
->> Cc: Kevin Wolf <kwolf@redhat.com>
->> Cc: Max Reitz <mreitz@redhat.com>
+>> Cc: Hannes Reinecke <hare@suse.com>
+>> Cc: Paolo Bonzini <pbonzini@redhat.com>
+>> Cc: Fam Zheng <fam@euphon.net>
 >> Cc: qemu-block@nongnu.org
 >> ---
->>   qemu-io-cmds.c | 1 +
->>   1 file changed, 1 insertion(+)
+>>   hw/scsi/megasas.c | 3 ++-
+>>   1 file changed, 2 insertions(+), 1 deletion(-)
 >>
->> diff --git a/qemu-io-cmds.c b/qemu-io-cmds.c
->> index 1b7e700020..9e956a5dd4 100644
->> --- a/qemu-io-cmds.c
->> +++ b/qemu-io-cmds.c
->> @@ -2411,6 +2411,7 @@ static void help_all(void)
->>       const cmdinfo_t *ct;
->>  =20
->>       for (ct =3D cmdtab; ct < &cmdtab[ncmds]; ct++) {
->> +        assert(ct->name);
->>           help_oneline(ct->name, ct);
+>> diff --git a/hw/scsi/megasas.c b/hw/scsi/megasas.c
+>> index de9bd20887..ece1601b66 100644
+>> --- a/hw/scsi/megasas.c
+>> +++ b/hw/scsi/megasas.c
+>> @@ -2382,7 +2382,8 @@ static void megasas_scsi_realize(PCIDevice *dev, E=
+rror **errp)
+>>       if (!s->hba_serial) {
+>>           s->hba_serial =3D g_strdup(MEGASAS_HBA_SERIAL);
 >>       }
->>       printf("\nUse 'help commandname' for extended help.\n");
+>> -    if (s->fw_sge >=3D MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE) {
+>> +    if (MEGASAS_MAX_SGE > 128
+>> +        && s->fw_sge >=3D MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE) {
+>>           s->fw_sge =3D MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE;
+>>       } else if (s->fw_sge >=3D 128 - MFI_PASS_FRAME_SIZE) {
+>>           s->fw_sge =3D 128 - MFI_PASS_FRAME_SIZE;
 >>
 >=20
+> I'm not keen on this.  It looks to me like the raw 128 case should be rem=
+oved
+> -- surely that's the point of the symbolic constant.  But I'll defer if a
+> maintainer disagrees.
+
+Is that approach acceptable?
+
+-- >8 --
+@@ -54,6 +54,9 @@
+  #define MEGASAS_FLAG_USE_QUEUE64   1
+  #define MEGASAS_MASK_USE_QUEUE64   (1 << MEGASAS_FLAG_USE_QUEUE64)
+
++QEMU_BUILD_BUG_MSG(MEGASAS_MAX_SGE > 128,
++                   "Firmware limit too big for this device model");
++
+  static const char *mfi_frame_desc[] =3D {
+      "MFI init", "LD Read", "LD Write", "LD SCSI", "PD SCSI",
+      "MFI Doorbell", "MFI Abort", "MFI SMP", "MFI Stop"};
+@@ -2382,9 +2385,7 @@ static void megasas_scsi_realize(PCIDevice *dev,=20
+Error **errp)
+      if (!s->hba_serial) {
+          s->hba_serial =3D g_strdup(MEGASAS_HBA_SERIAL);
+      }
+-    if (s->fw_sge >=3D MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE) {
+-        s->fw_sge =3D MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE;
+-    } else if (s->fw_sge >=3D 128 - MFI_PASS_FRAME_SIZE) {
++    if (s->fw_sge >=3D 128 - MFI_PASS_FRAME_SIZE) {
+          s->fw_sge =3D 128 - MFI_PASS_FRAME_SIZE;
+      } else {
+          s->fw_sge =3D 64 - MFI_PASS_FRAME_SIZE;
+---
 
 
