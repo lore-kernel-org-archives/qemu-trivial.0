@@ -1,75 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iheb7-0006tW-BY
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 14:03:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48281)
+	id 1ihetS-0005L2-9l
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 14:21:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49861)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1iheb5-0006sx-0L
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:03:00 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1ihetP-0005Kg-JB
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:21:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1iheb3-0002uY-Ia
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:02:58 -0500
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:34343)
+ (envelope-from <richard.henderson@linaro.org>) id 1ihetN-0004Ty-Vb
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:21:55 -0500
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:36738)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1iheb3-0002pQ-7C
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:02:57 -0500
-Received: by mail-pg1-x541.google.com with SMTP id r11so1773000pgf.1
- for <qemu-trivial@nongnu.org>; Wed, 18 Dec 2019 11:02:57 -0800 (PST)
+ id 1ihetL-0004N5-DC
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:21:51 -0500
+Received: by mail-pj1-x1044.google.com with SMTP id n59so1332289pjb.1
+ for <qemu-trivial@nongnu.org>; Wed, 18 Dec 2019 11:21:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=FJ/NneotDbdMSFVuPbzyvFrv1Tr9LGEV2bZJOOTXNiI=;
- b=aSRFguwBr1Ow/cSRojBnPFp9j4Jjn4JrETCIGaY3le2iOWCL8LWt4C5pIzckBxGWwP
- cSgjyZZ85mBSGuKUIL4FmyRVYl8lVCcIK8EgkXJptukhtHLoi9Ug9xDXGpTzhk02SHZ2
- L8diBObziQOTXjXaTlYgF4azVzHJbLVWcHoKlBUE+xVE380B2OVH8M37zYFLGvEEqOsr
- LDiIbX5ShJBaN/4T7fPey1cCiitsa/9YFRlOQzt+vzKXsYYIKNt1coBlu3/kKTowrfFz
- MtrQZmZSsTNJi1fND7UOvmRn0CEcWHqBrW5DW2v74aQcrzeqRVaDVAQW0lQnGYkjGQGl
- kj5w==
+ bh=SSfkhnxOLJVq8D0VuMw3m1Nkq1JpB7CQgyG5iwWZ6DU=;
+ b=gFKeG5MMjtr4xilgNcvrs1xT4Pi8O4ut37IDtsKysAqmVcEGnMbU4r2e3+CWiDiruL
+ uoTZ94zxMexRSxa0eqFseDU/6VJGmZatSkjw85IboBrIj7jaKs2aDJK3qQ4Scc9kGdEV
+ M6O2IEcXgXEp8tyXcQTbpMLRjkX12BRzAJmXCUx14hgGChlM+YrxbTamJdk39pW/uJrM
+ pHRxiCcCESUbyRtGath1B3J1JDWsDac5oLba8ZJ49Bzfp8wCdvI6lJ0Umyz4k45QkzIR
+ 5DsaEKrUdLnyedayd/D7EzhmcMEv+1Pc5105COCmnCWsbXV/6SaeTrGZM8FiAuU3z2vp
+ zUAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=FJ/NneotDbdMSFVuPbzyvFrv1Tr9LGEV2bZJOOTXNiI=;
- b=LqJB3j46PJ1pzSArUVOQtRip08eSE3jkhG/+lNmtT3ZkiFoyYxn0o0BMIRC48Lyfhw
- uS7BDmAMxctnw2MKwALHf5033RV8ezpK+k3kzdHMhsi0VYWGgNShvhaRfirhEfv5b6LH
- OizMtnspqj/oLrX4afp14RgxBh9j0rDhCDQ+Wz1HmQKMrkIHhk8SV9ktadpcI+WEyuII
- b9LBt2ShxHG1hwjAUazFoUF17IyEF3fYyYXDTTFcz4Md4/0uvT3saZ7nAjXF95HV1qbC
- 1Of766ikKrnjsS6YPHPm33yzg3qcrkESKkSkRA3RnXYzf/QVbQ0bxyCqE+VBXjHYfvLJ
- IlOg==
-X-Gm-Message-State: APjAAAVqMZaIu8vES0gFFoO4BW/ZNTk05owhKCCDpjCudzoXyvIcZzxG
- mSCDCjdOz9jg22AZkNPzVY4gbg==
-X-Google-Smtp-Source: APXvYqzcwxyXLPKp2/mLkUCoJF2oLqyfnkpCDx71XG7uQXmtyWau8qNYkclOYWq3+iv/jyRgyDE/Dg==
-X-Received: by 2002:a63:604:: with SMTP id 4mr4877617pgg.406.1576695775769;
- Wed, 18 Dec 2019 11:02:55 -0800 (PST)
+ bh=SSfkhnxOLJVq8D0VuMw3m1Nkq1JpB7CQgyG5iwWZ6DU=;
+ b=nQpwMXgdG+JwDpFl3CfNQqHeqXEqf4heCO+Hkk5j+QAb7ZHaHvYeq658pi0BwdyWsZ
+ RcAcbLOriFZ3tEQvrTR7bK/4ToOsx3X5+j8Z86G89FWR9gf0a3ANDX69UWMbm0DIS1eG
+ EBNnNMGLCu/neXwPBt2rrxDJQ6RlwtcAq+S74JQn+S08tFs7sKUW/NVeSQ8+iPSVbIWx
+ Q+ThibUg+yEiQ2WBliji9fLNLJCiKAdo3s8K0kF0fZQv+1HKXtVaB8+DvqBP6jX/bULp
+ EZzgocgVRlbtbH8nMQXhT/DCO/Kazr/t1QMmnpLLsFuMdzcAY9/MPDm4Bdcmhn16fvNT
+ E0xQ==
+X-Gm-Message-State: APjAAAWu9rH9kmXv14BekYCYjn5Srk/lt5ZxhQbT3pLrUJpr3wmAGwxk
+ gPeRs4ctBPsBBWD0whWYYyln/g==
+X-Google-Smtp-Source: APXvYqxvA4SLKaxmKmY6tZcVUVgiDaYR1galGEj7E9qMyEgcQzEn/Fx/+6h0W8pPyyj4vlN/EX95Zg==
+X-Received: by 2002:a17:902:8d95:: with SMTP id
+ v21mr4619711plo.61.1576696908969; 
+ Wed, 18 Dec 2019 11:21:48 -0800 (PST)
 Received: from ?IPv6:2605:e000:c74f:dc00:6838:d2b2:17e2:8445?
  ([2605:e000:c74f:dc00:6838:d2b2:17e2:8445])
- by smtp.gmail.com with ESMTPSA id b22sm4393194pfd.63.2019.12.18.11.02.54
+ by smtp.gmail.com with ESMTPSA id j125sm4264198pfg.160.2019.12.18.11.21.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Dec 2019 11:02:55 -0800 (PST)
-Subject: Re: [PATCH 5/6] hw/scsi/megasas: Silent GCC9 duplicated-cond warning
+ Wed, 18 Dec 2019 11:21:48 -0800 (PST)
+Subject: Re: [PATCH 6/6] qemu-io-cmds: Silent GCC9 format-overflow warning
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Cc: Fam Zheng <fam@euphon.net>, Hannes Reinecke <hare@suse.com>,
- qemu-block@nongnu.org, qemu-trivial@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+ qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>
 References: <20191217173425.5082-1-philmd@redhat.com>
- <20191217173425.5082-6-philmd@redhat.com>
- <b29f856a-5199-6f62-4aee-5a2cfc9f05a3@linaro.org>
- <71c58178-6bd5-bbb9-5691-77bdae7d2788@redhat.com>
+ <20191217173425.5082-7-philmd@redhat.com>
+ <0bd64884-03fd-68e1-a790-c9ceb7710fd9@linaro.org>
+ <ac01ca89-ad58-a6f4-e33f-c1dcc4e0ad90@redhat.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <9f861e54-946e-df71-fb8c-458399ac17bb@linaro.org>
-Date: Wed, 18 Dec 2019 09:02:51 -1000
+Message-ID: <eeb1a68a-82cc-00ea-5a42-20fb260500af@linaro.org>
+Date: Wed, 18 Dec 2019 09:21:45 -1000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <71c58178-6bd5-bbb9-5691-77bdae7d2788@redhat.com>
+In-Reply-To: <ac01ca89-ad58-a6f4-e33f-c1dcc4e0ad90@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::541
+X-Received-From: 2607:f8b0:4864:20::1044
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,49 +81,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Dec 2019 19:03:00 -0000
+X-List-Received-Date: Wed, 18 Dec 2019 19:21:57 -0000
 
-On 12/18/19 7:52 AM, Philippe Mathieu-Daudé wrote:
->>> -    if (s->fw_sge >= MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE) {
->>> +    if (MEGASAS_MAX_SGE > 128
->>> +        && s->fw_sge >= MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE) {
->>>           s->fw_sge = MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE;
->>>       } else if (s->fw_sge >= 128 - MFI_PASS_FRAME_SIZE) {
->>>           s->fw_sge = 128 - MFI_PASS_FRAME_SIZE;
+On 12/18/19 7:45 AM, Philippe Mathieu-Daudé wrote:
+> On 12/18/19 5:15 AM, Richard Henderson wrote:
+>> On 12/17/19 7:34 AM, Philippe Mathieu-Daudé wrote:
+>>> GCC9 is confused when building with CFLAG -O3:
 >>>
+>>>    In function ‘help_oneline’,
+>>>        inlined from ‘help_all’ at qemu-io-cmds.c:2414:9,
+>>>        inlined from ‘help_f’ at qemu-io-cmds.c:2424:9:
+>>>    qemu-io-cmds.c:2389:9: error: ‘%s’ directive argument is null
+>>> [-Werror=format-overflow=]
+>>>     2389 |         printf("%s ", ct->name);
+>>>          |         ^~~~~~~~~~~~~~~~~~~~~~~
+>>>
+>>> Audit shows this can't happen. Give a hint to GCC adding an
+>>> assert() call.
 >>
->> I'm not keen on this.  It looks to me like the raw 128 case should be removed
->> -- surely that's the point of the symbolic constant.  But I'll defer if a
->> maintainer disagrees.
+>> This deserves more investigation.  From my glance it appears you are right --
+>> and moreover impossible for gcc to have come to this conclusion.  Which begs
+>> the question of how that is.
 > 
-> Is that approach acceptable?
+> New entries are added to cmdtab[] in qemuio_add_command() which is public (also
+> called in qemu-io.c). So you can insert a cmdinfo_t with a name being NULL.
+> This is why I thought GCC was correct first, and I tried:
 > 
 > -- >8 --
-> @@ -54,6 +54,9 @@
->  #define MEGASAS_FLAG_USE_QUEUE64   1
->  #define MEGASAS_MASK_USE_QUEUE64   (1 << MEGASAS_FLAG_USE_QUEUE64)
+> --- a/qemu-io-cmds.c
+> +++ b/qemu-io-cmds.c
+> @@ -42,6 +42,7 @@ void qemuio_add_command(const cmdinfo_t *ci)
+>       * Catch it now rather than letting it manifest as a crash if a
+>       * particular set of command line options are used.
+>       */
+> +    assert(ci->name);
+>      assert(ci->perm == 0 ||
+>             (ci->flags & (CMD_FLAG_GLOBAL | CMD_NOFILE_OK)) == 0);
+>      cmdtab = g_renew(cmdinfo_t, cmdtab, ++ncmds);
+> ---
 > 
-> +QEMU_BUILD_BUG_MSG(MEGASAS_MAX_SGE > 128,
-> +                   "Firmware limit too big for this device model");
-> +
->  static const char *mfi_frame_desc[] = {
->      "MFI init", "LD Read", "LD Write", "LD SCSI", "PD SCSI",
->      "MFI Doorbell", "MFI Abort", "MFI SMP", "MFI Stop"};
-> @@ -2382,9 +2385,7 @@ static void megasas_scsi_realize(PCIDevice *dev, Error
-> **errp)
->      if (!s->hba_serial) {
->          s->hba_serial = g_strdup(MEGASAS_HBA_SERIAL);
->      }
-> -    if (s->fw_sge >= MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE) {
-> -        s->fw_sge = MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE;
-> -    } else if (s->fw_sge >= 128 - MFI_PASS_FRAME_SIZE) {
-> +    if (s->fw_sge >= 128 - MFI_PASS_FRAME_SIZE) {
->          s->fw_sge = 128 - MFI_PASS_FRAME_SIZE;
->      } else {
->          s->fw_sge = 64 - MFI_PASS_FRAME_SIZE;
+> But this didn't fix the warning... So I moved the assert() in the other location.
+> 
+>>
+>> Did you file a gcc bug report?
+> 
+> No because I'm not sure this is a bug, but if you confirm I'll file one :)
 
-Eh.  I suppose.  But what's the point of leaving the hard-coded 128?  There's
-certainly something I'm missing here...
+The error message is not saying the value *might* be null, but that it *is*
+null.  That is, the compiler thinks that it has proven the value can be no
+other value than null.
+
+Can I assume that you've tested this particular code path, rather than merely
+removed the Werror?
+
+If the compiler really is "proving" that the value must be null, then the
+assert should be transformed to assert(false), and qemu will abort at runtime.
+ In this case, the reason why the Werror  went away is that the printf is
+removed as unreachable beforehand.
+
+But of course the value assigned in qemuio_add_command is truly variable, and
+since -O3 does not imply -flto the compiler cannot have proven to see all
+callers.  So it follows that the compiler should not have proven that the value
+is null.
+
+So there *must* be a compiler bug.  The only question is whether it is isolated
+to the printf warning or if it goes further into value propagation and wrong
+code generation.
 
 
 r~
