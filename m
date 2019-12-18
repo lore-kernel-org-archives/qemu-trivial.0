@@ -1,26 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ihXV0-0003Wm-9T
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 06:28:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47043)
+	id 1ihXW0-0003zR-NJ
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 06:29:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33710)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1ihXUx-0003WZ-2l
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 06:28:12 -0500
+ (envelope-from <laurent@vivier.eu>) id 1ihXVy-0003x9-TL
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 06:29:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1ihXUw-0008NF-1u
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 06:28:10 -0500
-Received: from mout.kundenserver.de ([212.227.126.131]:58531)
+ (envelope-from <laurent@vivier.eu>) id 1ihXVx-0004y1-PU
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 06:29:14 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:56837)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1ihXUv-0008Dj-Ne
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 06:28:09 -0500
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1ihXVv-0004hb-8w; Wed, 18 Dec 2019 06:29:11 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MnFps-1i0oIV1BZ6-00jLUf for <qemu-trivial@nongnu.org>; Wed, 18 Dec 2019
- 12:28:07 +0100
-Subject: Re: [PATCH 1/2] util/cutils: Turn FIXME comment into
- QEMU_BUILD_BUG_ON()
-To: qemu-trivial@nongnu.org
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MFsIZ-1iT0Ot3qZD-00HRfP; Wed, 18 Dec 2019 12:29:05 +0100
+Subject: Re: [PATCH 2/2] test-keyval: Tighten test of trailing crap after size
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, tao3.xu@intel.com
 References: <20191125133846.27790-1-armbru@redhat.com>
- <20191125133846.27790-2-armbru@redhat.com>
+ <20191125133846.27790-3-armbru@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -64,36 +63,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <0a9621b5-ea1c-3fa9-30ee-0bbac5065744@vivier.eu>
-Date: Wed, 18 Dec 2019 12:28:06 +0100
+Message-ID: <7a80fed1-ae16-2fda-19d4-8f0dfa13ebb2@vivier.eu>
+Date: Wed, 18 Dec 2019 12:29:02 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20191125133846.27790-2-armbru@redhat.com>
+In-Reply-To: <20191125133846.27790-3-armbru@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:9VLJ6LyF5IiurP/vc2cYjmLAMbb/A+/f6svxb8oBvXn3I8hKLUK
- b5FIdLHzja2evlMfpnAfT0zkb2KZNEdiyhQaPBGaXjqKTRzU3JCk9R1lMyQgWVqc/O6vsOQ
- hbt3GldXjSFpbzsG5p3kV+FRiCwuGfVL/sBG8hZnINPyF54ItMtrl1H2hHNGU61qtIUYcXi
- 924SfwlQXWSPUNOP6OOkQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ENVoulOEMSs=:Qum79DPWkeVDJ1meU9Afra
- Q8SsZC6J4cLgVHiaqM/ZT1lF4DR1/sMfYbTSnH+3EXRW/g+DiX/pz0CJ2y1ewQyqeO1q6JBzY
- 26s2Ni6nFYcZhCze6Slxk/Jc1g2eGYqBm+WxBOSu0uEkTIIFH/0Y2y1I2u/3jqem5qsQET0+U
- wwivp0MYxa3BvJoSTX5JG7A2XKvJOgpZkYCy5VUPS0Bm4K8pB0mHZOGWZWnu3QHi3WJkOiXET
- gJdF+5q+JgGhq8LINgwAdfLDVRqTKTA5hn61RzaexWu+VtawjK2Ez5Kwr6vxea7Jb7SqPnwPY
- p6PEe40CPe6IBOUkUbuZh/up2KlNQzdXqwQYg8L8q+Qfr7mB1q0VEiMcMHWT/GtibTP4l8NLi
- SwzfMS7f3owJ10OrnJTDtwaCXjsuXEb+BNynvuQyKenkPRQ+IECHV3yTpo4OgEx1sWOMiXHxX
- CO9df4vACrjMFTOpcA6hiN/Tz2imwxdhb9S5oUYvXUK7PUdvXAoRZF77cs5PILOlDvz3FG+6W
- 3r5qUseLQgM61WhkbbiMBxlyDGok5WHrViP8gSQ8k+grihJmIK1qBaWzgP0GS2mEEPS4ZlvIO
- f+4Twn3iXhhMv8ztdjuvKfeHK/DyYRAImbg90smQ9MpRXtRKOpoE+ivvFr3rA+cUAZNCgSXS/
- ijp2w+pyfU7DRnjkz3Ygvp7RftWPyfSJwRQeEKB3+ApE6IjHOLHsUpxglRdtD9BFDjvfJOAO4
- GLcEnKhFySpxVvbu3Y4I6KcnyUFD9Ugk/fwa3c0dNIwIJCAAqanLsVMvAJ++9qlJHi3EkvIGX
- 5+ocg5eqwsnVDMet879J974TIspBQn94zOhiAh7I1jweRda2QkA/tkwWRNzldUCQRIs8ewhzA
- BO2GVAF4yjzyYoK4mvqUi5IQigO43J0lFr0jKo+J8=
+X-Provags-ID: V03:K1:RA9BnBGjgeXTH5jGi1LL4j2s7QioSgV5DAr0CsaDErEDhKF+aO3
+ Xd8C+oGIRs4H4Yi94G5nYlvviZgeyhscht42mqv2dobK5efL+nY9ZOlLHvGOHuRq8yhTRWG
+ sTpF2Ffy7Kaj6Pw+u8T2IEAGkv6x3ymURFLj5eH/kAyE46DibxCO/fENvN3tK+TswaJagK1
+ 490T2uU9uOMKvFGWiysVQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:+DusY0GoJGA=:M32nRKoAqA2/H20TAgi+OZ
+ C5J3wu1xBoHSYDQpsWpwW7ouLpsSE9o7fQaWHlwXjBuCYYSaupofVY1o35eWsIAfdorsGEbkQ
+ Hhug7y5UvvlJSmSTDCLBTzaskOWfa6juSOZCFdcP9FhC2HKlARZqfmjgu3oD1KMKE1JDAt1tz
+ x3/urhiVeEQFSLoWS1cIpPITau3y1DPNwhp0Dwe47kD3I4s6qycQCwNvVHg1y8Tw9CV2z+w0a
+ CrDsExpje3KfZpN2TyOgnlzJPWL8ozTKiSMDh7aWlqiqqiR3hR7jWUSNct3DZU9RXO258ZypF
+ 1xB/wL5Q1cb0hOTUwkE7elESLPxIYmMoTEDjxrqTbBogWp9uz355iEC/vccKDWT4P5ajpGhQu
+ eKR89GqVL/4jYWnVZFVh+Vf1P2fzRvZ3XkSs2/gfuVte7RCwamrTNFozr8clK5mu1geWNWjM5
+ rE8tnSKRnc/JoyX2yTssLS7Pfd6IvjMSsXGPUPOIfMPUgkOiq1FsCogKGiNgHAFf5pnzfKQ2N
+ 0QD79OJfVGlwwg3EdjIrDkaYaniTSoZRMBQ2fvrpnQTDnTn9eElTaVTd/B1qwxYeCs5dH1CU/
+ RE3IDsYJeaCx7I+8hjE28KGSScFlkFDjSoHSYcTi/abZd7zFA7VZGQHbldNxtIxDBqvxtOPQJ
+ x79C1qtucL1RGzq2tdabPeyLzcOYSpihF5TbdbO07Sd6auz7OdD/6Fd2deJy4Wg4CMppuvWdz
+ x0jJg/dYMfKO4slZ6ygsLPJhYBmu9U7ASHl2/K6qOeWu73G/BdlFPTOWPpupInwExwckMi9ZK
+ +tEKAHuPYqLI94xZ2tXr3SkF1JewXFc6HUmC8X8lGgVttyAEcR4KxUaoaMQ5fU7i7bM4RuM1K
+ XFcr7znG0/AzLCZGFFtHQzan/J80+wcwCAQO7FKmQ=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.131
+X-Received-From: 212.227.126.134
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,59 +104,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Dec 2019 11:28:12 -0000
+X-List-Received-Date: Wed, 18 Dec 2019 11:29:16 -0000
 
 Le 25/11/2019 à 14:38, Markus Armbruster a écrit :
-> qemu_strtoi64() assumes int64_t is long long.  This is marked FIXME.
-> Replace by a QEMU_BUILD_BUG_ON() to avoid surprises.
-> 
-> Same for qemu_strtou64().
-> 
-> Fix a typo in qemu_strtoul()'s contract while there.
+> test_keyval_visit_size() should test for trailing crap after size with
+> and without suffix.  It does test the latter: "sz2=16Gi" has size
+> "16G" followed by crap "i".  It fails to test the former "sz1=16E" is
+> a syntactically valid size that overflows uint64_t.  Replace by
+> "sz1=0Z".
 > 
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 > ---
->  util/cutils.c | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
+>  tests/test-keyval.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/util/cutils.c b/util/cutils.c
-> index fd591cadf0..b372dd3e68 100644
-> --- a/util/cutils.c
-> +++ b/util/cutils.c
-> @@ -502,7 +502,7 @@ int qemu_strtoul(const char *nptr, const char **endptr, int base,
->   * Convert string @nptr to an int64_t.
->   *
->   * Works like qemu_strtol(), except it stores INT64_MAX on overflow,
-> - * and INT_MIN on underflow.
-> + * and INT64_MIN on underflow.
->   */
->  int qemu_strtoi64(const char *nptr, const char **endptr, int base,
->                   int64_t *result)
-> @@ -517,8 +517,9 @@ int qemu_strtoi64(const char *nptr, const char **endptr, int base,
->          return -EINVAL;
->      }
+> diff --git a/tests/test-keyval.c b/tests/test-keyval.c
+> index 09b0ae3c68..e331a84149 100644
+> --- a/tests/test-keyval.c
+> +++ b/tests/test-keyval.c
+> @@ -478,7 +478,7 @@ static void test_keyval_visit_size(void)
+>      visit_free(v);
 >  
-> +    /* This assumes int64_t is long long TODO relax */
-> +    QEMU_BUILD_BUG_ON(sizeof(int64_t) != sizeof(long long)); 
->      errno = 0;
-> -    /* FIXME This assumes int64_t is long long */
->      *result = strtoll(nptr, &ep, base);
->      return check_strtox_error(nptr, ep, endptr, errno);
->  }
-> @@ -541,8 +542,9 @@ int qemu_strtou64(const char *nptr, const char **endptr, int base,
->          return -EINVAL;
->      }
->  
-> +    /* This assumes uint64_t is unsigned long long TODO relax */
-> +    QEMU_BUILD_BUG_ON(sizeof(uint64_t) != sizeof(unsigned long long));
->      errno = 0;
-> -    /* FIXME This assumes uint64_t is unsigned long long */
->      *result = strtoull(nptr, &ep, base);
->      /* Windows returns 1 for negative out-of-range values.  */
->      if (errno == ERANGE) {
+>      /* Trailing crap */
+> -    qdict = keyval_parse("sz1=16E,sz2=16Gi", NULL, &error_abort);
+> +    qdict = keyval_parse("sz1=0Z,sz2=16Gi", NULL, &error_abort);
+>      v = qobject_input_visitor_new_keyval(QOBJECT(qdict));
+>      qobject_unref(qdict);
+>      visit_start_struct(v, NULL, NULL, 0, &error_abort);
 > 
 
-Applied to my trivial-patches branch with removed trailing whitespace.
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
