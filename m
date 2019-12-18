@@ -1,66 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ihf7H-0001dm-St
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 14:36:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40052)
+	id 1ihfLO-0004eO-9j
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 14:50:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55608)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1ihf7E-0001Zk-R0
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:36:13 -0500
+ (envelope-from <marcel.apfelbaum@gmail.com>) id 1ihfLL-0004dt-T6
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:50:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1ihf7D-0005Ng-0S
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:36:12 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:21442
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1ihf7B-0005Fq-W2
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:36:10 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1576697769;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=GiprSwdHZ/Z6TSNz/6DxrHEnQe0kiuxGby8tvQrTjLc=;
- b=Lo/eNSgzgKqZWAr0bcla16OcBeKNcLv8HCiRhDV0Qwl/i8v1mrZvNGmc+FgqK7oz5YgKXg
- +mCMUlYF+H9pmUXGdceGK/PPD1QI5wcPIya5IA+Tt79d8dUoaZryfz7HzDOd+Aek7fx29L
- UjGCHo/mdMgkmsrA7uYv4H2Rqmx5b1w=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-320-WxuNooOsNP2TC_FJfZ2PFQ-1; Wed, 18 Dec 2019 14:35:57 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5E8C4102CE16;
- Wed, 18 Dec 2019 19:35:54 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-120.ams2.redhat.com [10.36.116.120])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 56DAE5D9E2;
- Wed, 18 Dec 2019 19:35:50 +0000 (UTC)
-Subject: Re: [PATCH 3/6] hw/net/imx_fec: Rewrite fall through comments
-From: Thomas Huth <thuth@redhat.com>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>
-References: <20191217173425.5082-1-philmd@redhat.com>
- <20191217173425.5082-4-philmd@redhat.com>
- <2fc74b64-0a0b-c437-e925-4c16d3907da7@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <54e5071f-b5c2-3cc7-514c-ecc2b7e2bed4@redhat.com>
-Date: Wed, 18 Dec 2019 20:35:48 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (envelope-from <marcel.apfelbaum@gmail.com>) id 1ihfLK-0005G1-O4
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:50:47 -0500
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:42459)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <marcel.apfelbaum@gmail.com>)
+ id 1ihfLK-000571-AM; Wed, 18 Dec 2019 14:50:46 -0500
+Received: by mail-wr1-x443.google.com with SMTP id q6so3572141wro.9;
+ Wed, 18 Dec 2019 11:50:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-transfer-encoding:content-language;
+ bh=IpZCed3Z6EscQnpsDfxPN13qvLHAnUW41C9UkoTf4aQ=;
+ b=cFJniQKJ3eOC47ZPSIvre61jGvSaWxAEyTVsvkt+UkjjrF3YLGKz6WvkK504AX6/50
+ kSd/aEyYYJPsBioBcxqpqUxQUNDL/XZ60kqn57bpcjpFNuADpYZmcLOS7uojCI/B6QnL
+ UPSIDhIG3ETTlB/0pXksbxH5BAtT8Oa4ywjtnyomXhwYLYbYuur0Fpvs0mgQGo7qrf81
+ ToYqJwyTI6ma0iX0A1wrImLRrEoLGj5cqX4WWJOLgJAm3kmtJr3LhZetpfuU0zpiBKT3
+ fg9pgy2a9VydxyAkFvF690xd6PkLjF77IKeHFVvSk+bPe4LVlkhhAIBp2R6vb9SXP5TT
+ 0olw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=IpZCed3Z6EscQnpsDfxPN13qvLHAnUW41C9UkoTf4aQ=;
+ b=UeDM6ABElah5Tebq/vUWja8qeX98VRvUEXxWyGxYloA8zpWPtH2ZDTdzDbHqiB3IBZ
+ evGI3T/JR4b8xpErRVjq3b5ZU+AOmzQANCrzgRbf+25yQUVjVyhXks90hep9M9b3jo5C
+ s3GKThAl0pVsIRvGHfC4B8AjFDjA7gfHP1rsslzkW9vWDBzL5b1YBtDwGTTsUlT+toOL
+ yw/ftMnHyKR76MFdkqscY9/x6PdLk2zt3rV7wyafBkTD8dpojLOAdDuDzvh6Bhbbdb8j
+ eZN8DdGzu3FBV9WogWyCGTE/W6d620IzGZGO/FshtwSgkWBaf7vEC0seD89DozXlEwzp
+ yw9A==
+X-Gm-Message-State: APjAAAV02e8/uyL6Xj7WZkdxVIf9bDzLhOqVIT6Cs6x9pZtXaMpVzZ8V
+ gFSM+dm4EjP3tCi2mEcvT2AMKATD
+X-Google-Smtp-Source: APXvYqyPCUUQg6tEGxYpIAgVHAioOtmuED4tBExk98veqHVcQu2oLqARQHMLTtOpCYfjfjeRW7MKyA==
+X-Received: by 2002:adf:ef49:: with SMTP id c9mr4710186wrp.292.1576698643876; 
+ Wed, 18 Dec 2019 11:50:43 -0800 (PST)
+Received: from [192.168.86.99] ([37.142.144.12])
+ by smtp.gmail.com with ESMTPSA id h17sm3814160wrs.18.2019.12.18.11.50.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 18 Dec 2019 11:50:43 -0800 (PST)
+Subject: Re: [PATCH] MAINTAINERS: Update Yuval Shaia's email address
+To: Yuval Shaia <yuval.shaia@oracle.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+References: <20191126102637.2038-1-yuval.shaia@oracle.com>
+From: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Message-ID: <df5ed556-f636-0d8e-5882-89560e90e884@gmail.com>
+Date: Wed, 18 Dec 2019 21:50:39 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <2fc74b64-0a0b-c437-e925-4c16d3907da7@redhat.com>
+In-Reply-To: <20191126102637.2038-1-yuval.shaia@oracle.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: WxuNooOsNP2TC_FJfZ2PFQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.120
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::443
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,79 +73,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Dec 2019 19:36:14 -0000
-
-On 17/12/2019 18.55, Thomas Huth wrote:
-> On 17/12/2019 18.34, Philippe Mathieu-Daud=C3=A9 wrote:
->> GCC9 is confused by this comment when building with CFLAG
->> -Wimplicit-fallthrough=3D2:
->>
->>   hw/net/imx_fec.c: In function =E2=80=98imx_eth_write=E2=80=99:
->>   hw/net/imx_fec.c:906:12: error: this statement may fall through [-Werr=
-or=3Dimplicit-fallthrough=3D]
->>     906 |         if (unlikely(single_tx_ring)) {
->>         |            ^
->>   hw/net/imx_fec.c:912:5: note: here
->>     912 |     case ENET_TDAR:     /* FALLTHROUGH */
->>         |     ^~~~
->>   cc1: all warnings being treated as errors
->>
->> Rewrite the comments in the correct place,  using 'fall through'
->> which is recognized by GCC and static analyzers.
->>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->> ---
->> Cc: Peter Chubb <peter.chubb@nicta.com.au>
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Cc: Jason Wang <jasowang@redhat.com>
->> Cc: qemu-arm@nongnu.org
->> ---
->>  hw/net/imx_fec.c | 8 +++++---
->>  1 file changed, 5 insertions(+), 3 deletions(-)
->>
->> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
->> index bd99236864..30cc07753d 100644
->> --- a/hw/net/imx_fec.c
->> +++ b/hw/net/imx_fec.c
->> @@ -901,15 +901,17 @@ static void imx_eth_write(void *opaque, hwaddr off=
-set, uint64_t value,
->>              s->regs[index] =3D 0;
->>          }
->>          break;
->> -    case ENET_TDAR1:    /* FALLTHROUGH */
->> -    case ENET_TDAR2:    /* FALLTHROUGH */
->> +        /* fall through */
->=20
-> Wrong location. And I think you don't need any comment here at all, GCC
-> should stay silent without it?
->=20
->> +    case ENET_TDAR1:
->> +    case ENET_TDAR2:
->>          if (unlikely(single_tx_ring)) {
->>              qemu_log_mask(LOG_GUEST_ERROR,
->>                            "[%s]%s: trying to access TDAR2 or TDAR1\n",
->>                            TYPE_IMX_FEC, __func__);
->>              return;
->>          }
->> -    case ENET_TDAR:     /* FALLTHROUGH */
->> +        /* fall through */
->=20
-> I'd suggest to simply remove it, too.
-
-/me needsmorecoffee
-
-... of course this hunk was fine. Good that you kept it in v2.
-
- Thomas
+X-List-Received-Date: Wed, 18 Dec 2019 19:50:49 -0000
 
 
->> +    case ENET_TDAR:
->>          if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
->>              s->regs[index] =3D ENET_TDAR_TDAR;
->>              imx_eth_do_tx(s, index);
->>
->=20
->  Thomas
->=20
+
+On 11/26/19 12:26 PM, Yuval Shaia wrote:
+> Use gmail account for maintainer tasks.
+>
+> Signed-off-by: Yuval Shaia <yuval.shaia@oracle.com>
+> ---
+>   MAINTAINERS | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 5e5e3e52d6..4297b54fcb 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -2640,7 +2640,7 @@ F: tests/test-replication.c
+>   F: docs/block-replication.txt
+>   
+>   PVRDMA
+> -M: Yuval Shaia <yuval.shaia@oracle.com>
+> +M: Yuval Shaia <yuval.shaia.ml@gmail.com>
+>   M: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+>   S: Maintained
+>   F: hw/rdma/*
+
+Hi,
+
+Can someone grab this patch ?
+
+Thanks,
+Marcel
 
 
