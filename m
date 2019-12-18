@@ -1,55 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ihYx7-0001zy-Rp
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 08:01:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52389)
+	id 1ihYxA-000240-NI
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 08:01:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52697)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1ihYx3-0001tf-9U
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 08:01:18 -0500
+ (envelope-from <laurent@vivier.eu>) id 1ihYx4-0001vp-Q1
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 08:01:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1ihYx1-0007m0-Mx
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 08:01:17 -0500
-Received: from mout.kundenserver.de ([212.227.126.130]:40751)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (envelope-from <laurent@vivier.eu>) id 1ihYx3-0007th-E8
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 08:01:18 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:36705)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1ihYx1-0007ge-AA; Wed, 18 Dec 2019 08:01:15 -0500
+ id 1ihYx0-0007bd-IX; Wed, 18 Dec 2019 08:01:14 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1Mt7Pt-1hp3WQ00z3-00tPoh; Wed, 18 Dec 2019 14:01:11 +0100
+ id 1M2Nm2-1ifvK72kxS-003v1g; Wed, 18 Dec 2019 14:01:09 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
  Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>
-Subject: [PULL 5/7] target/sparc: Remove old TODO file
-Date: Wed, 18 Dec 2019 14:01:03 +0100
-Message-Id: <20191218130105.125981-6-laurent@vivier.eu>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PULL 3/7] util/cutils: Turn FIXME comment into QEMU_BUILD_BUG_ON()
+Date: Wed, 18 Dec 2019 14:01:01 +0100
+Message-Id: <20191218130105.125981-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20191218130105.125981-1-laurent@vivier.eu>
 References: <20191218130105.125981-1-laurent@vivier.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:bKfy2QzkGVq3B4KwCkJG1BCHQ+Kwx6GjFWipxIkeISNUQQDSx9G
- 276T34V+p2WSG/jLpk12hDfm1jV9GslZNcMY8wlZyYnv1P9rj+s9B2c8eQXD0On9dxxSSWw
- 1CGjwIj278Z0zFHbuaU+a5+GjfxiOyuwb8gFiLem1uvmCYzk21YIxXQzY5g06zVMEdugaF9
- wbxK/girfkTH+M/9mQLsQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:TkUqZgL0x6M=:p+TwhpnT4CR5kRLMQREU57
- aKdQI3glGwzh80N96ZWLj9A0W20Np+YfNn35m4tpeX0afX37orfSpwWda2LDH8h5GPP2hak9f
- cjgL5Ux4Q5tn7/5ws3qJxU8kS9czAe+/hkI8XIg2GTgFy5z+dMKDiJznoP3N/cACtflAyzJHr
- zjn1KXtFCFu5OGqiDmvRz8LFCQaq/Uf3E3POu+bQZpt8LYLPIHb2R4SxEGsmxLCO5bWeZDXzF
- ShgbJEONF0kWFu3lGFqajB2CuMjPEMbx45ncy+CD9DHP9ytjdwZkiA4bIWppoxZArH9xuMaiS
- X7p3yPFovKfeMSUeCEy6fxU9m9+9U9Fe8FxgO9QJ9o3sZcg/9N6yHixh57iZCSb9WkJEUdi8T
- PmGfwypUF4IzmKmghLsjZ6iB082BLeavB8HqTt41dFL69KsACYiFYfVOBlsExpF4oDh3fjkPx
- 7iHgCpfgle4sSA9PpJLsTwxn8ygujlKv614U6EsxIKbmxq+E/OKRx/7QjG6kO6UUfIiCMVq1o
- OC+OpWw713dnezdCQM5IoWq0+5fYJqsPPSo1GfTWjl6QKQT6xHNPeMfi8LlqCay/ivIInIu0K
- +d3AyUhE2hEiu8rbqiJBNyH3B7VJoF5OMUvXZ07lYyntNB3Wk3zr/LfLxuFEWhrqoUZ4pC0Yi
- C8SYKmXi5nSl7/zyRXqxpllffj/++T5wHddOLitwbmh/H6gFq+J5tioeYd8/pHJPbj4ZGnApo
- q5MDVlVbU+9WEAaoSmacnWnVOySVYI71rxAVv7B02Nq1tZypra0F5S9bNt9r2shZl9HCZWil+
- dEtF2lEpEHa9EBjIdbL5hypYrr8u0EC1SdQ/6OUkOLN1YjCbfLW09F2TCgngYDt+KK4C5qTmq
- sz6B4lALCS+JUiUs+cwg==
+X-Provags-ID: V03:K1:Z6qpvgpRgK83bqqxGDdS0W/GT+hXJdPgM7idN7ExVcjSrrL//C2
+ tn5OhPvbociww0aXhH4Pf5bXN5KhtRWHc/XxB/+PpVaV+HR7mf6IYuF8HbhOKdohsvmC04J
+ MQFOGwfr0u+Pc9MUGjdOfI6cFJwg54pv79YxwY+AE/p08+W8Y08Jfj5vwHg0YcJJDA4AvFl
+ Mgewp8i1DTbm9c4Hsz4Zg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:zcLUXBW2HKA=:kpjk1LjmQDFmlvqAOhgqpb
+ 1qdYQf7rnTmTxhMbbFEPw4Q5y3b2J4xuqpp/W3zz0voxrik2vy+llwQX+R67hhsbOG+sSqoQd
+ dSb4AdFvTWEomCrj/ybc8RUgv4dbDiqlPWmdNb7hMFyjj+ycDdWn9wLrsHodi1YbmfCFhzcyg
+ zl2iC2IPje4h8bl4WY7ieWhDUCosnoY4HPJ1HLtjLKtQVNSaDCY2Nieed9xdA546/oqPRFIph
+ WlBCAjBqEh6l9on3ngnmsHF6bSeQ/TXX1/wiIUEwg+qD2qZ612/5jQ8fyzJJmgubnBZ46NTdF
+ g4jLxR1nDe/QtW3/3bHTm1753DvDCglPzrcIKyBu4UGz5QCNtJ9gAyuQnq/28JH6D1EDULj5S
+ L0XZYtwUTxBtdOufmbaTNclf0A6rckUXVBo9teAGbyNCwQ7HYWfCsqr3boDmwY2urFuVu8C5t
+ xsJTZ5ub/8hfvP5p5sFudcwD338UmfqYGVcKz0qpiXYanZ+IA9dscBQ40VzqmzygDc1O4YQSK
+ PHR+YFoOq1q9WaIneZl0yAVhp4bJ0YfvkddrsLhBOnHZSku/7BD2VByRmypuztyZYV2+utG35
+ aYaKSxmXL1Hkrx6CSzIlnK8f5Wyc0IX/GvWUFylgDNXTTNKaQi0JPC6MnQGKsDiaZmwObdDef
+ CRCERRAyJI7MCSlu0ycLJzDz2AcS5/Fgk67zew6NGpLvzpMDKPo164SGEXoCVLnAXZBjHlY+H
+ +oGfikhEjVEtpajeghT+Tg31S+p1/M1jeuj4tw4d0tnzk/5yJwqpvspVABj1va10+umYbK+lS
+ YladQckGLYMvlOHCZDfyabZq88a5S6NK41dsel5+5KC/1Z44xFiB0KBSZDlUPPY+U2agSNXQo
+ lM75J6ZXT/rInm9SYsjSBuuDW26smvYKTg3EphjeE=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.130
+X-Received-From: 212.227.126.134
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -61,117 +62,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Dec 2019 13:01:20 -0000
+X-List-Received-Date: Wed, 18 Dec 2019 13:01:21 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Markus Armbruster <armbru@redhat.com>
 
-This file hasn't seen a real (non-trivial) update since 2008 anymore,
-so we can assume that it is pretty much out of date and nobody cares
-for it anymore. Let's simply remove it.
+qemu_strtoi64() assumes int64_t is long long.  This is marked FIXME.
+Replace by a QEMU_BUILD_BUG_ON() to avoid surprises.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Artyom Tarasenko <atar4qemu@gmail.com>
-Message-Id: <20190930171044.25312-1-thuth@redhat.com>
+Same for qemu_strtou64().
+
+Fix a typo in qemu_strtoul()'s contract while there.
+
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20191125133846.27790-2-armbru@redhat.com>
+[lv: removed trailing whitespace]
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/sparc/TODO | 88 -----------------------------------------------
- 1 file changed, 88 deletions(-)
- delete mode 100644 target/sparc/TODO
+ util/cutils.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/target/sparc/TODO b/target/sparc/TODO
-deleted file mode 100644
-index b8c727e85846..000000000000
---- a/target/sparc/TODO
-+++ /dev/null
-@@ -1,88 +0,0 @@
--TODO-list:
--
--CPU common:
--- Unimplemented features/bugs:
-- - Delay slot handling may fail sometimes (branch end of page, delay
-- slot next page)
-- - Atomical instructions
-- - CPU features should match real CPUs (also ASI selection)
--- Optimizations/improvements:
-- - Condition code/branch handling like x86, also for FPU?
-- - Remove remaining explicit alignment checks
-- - Global register for regwptr, so that windowed registers can be
-- accessed directly
-- - Improve Sparc32plus addressing
-- - NPC/PC static optimisations (use JUMP_TB when possible)? (Is this
-- obsolete?)
-- - Synthetic instructions
-- - MMU model dependent on CPU model
-- - Select ASI helper at translation time (on V9 only if known)
-- - KQemu/KVM support for VM only
-- - Hardware breakpoint/watchpoint support
-- - Cache emulation mode
-- - Reverse-endian pages
-- - Faster FPU emulation
-- - Busy loop detection
--
--Sparc32 CPUs:
--- Unimplemented features/bugs:
-- - Sun4/Sun4c MMUs
-- - Some V8 ASIs
--
--Sparc64 CPUs:
--- Unimplemented features/bugs:
-- - Interrupt handling
-- - Secondary address space, other MMU functions
-- - Many V9/UA2005/UA2007 ASIs
-- - Rest of V9 instructions, missing VIS instructions
-- - IG/MG/AG vs. UA2007 globals
-- - Full hypervisor support
-- - SMP/CMT
-- - Sun4v CPUs
--
--Sun4:
--- To be added
--
--Sun4c:
--- A lot of unimplemented features
--- Maybe split from Sun4m
--
--Sun4m:
--- Unimplemented features/bugs:
-- - Hardware devices do not match real boards
-- - Floppy does not work
-- - CS4231: merge with cs4231a, add DMA
-- - Add cg6, bwtwo
-- - Arbitrary resolution support
-- - PCI for MicroSparc-IIe
-- - JavaStation machines
-- - SBus slot probing, FCode ROM support
-- - SMP probing support
-- - Interrupt routing does not match real HW
-- - SuSE 7.3 keyboard sometimes unresponsive
-- - Gentoo 2004.1 SMP does not work
-- - SS600MP ledma -> lebuffer
-- - Type 5 keyboard
-- - Less fixed hardware choices
-- - DBRI audio (Am7930)
-- - BPP parallel
-- - Diagnostic switch
-- - ESP PIO mode
--
--Sun4d:
--- A lot of unimplemented features:
-- - SBI
-- - IO-unit
--- Maybe split from Sun4m
--
--Sun4u:
--- Unimplemented features/bugs:
-- - Interrupt controller
-- - PCI/IOMMU support (Simba, JIO, Tomatillo, Psycho, Schizo, Safari...)
-- - SMP
-- - Happy Meal Ethernet, flash, I2C, GPIO
-- - A lot of real machine types
--
--Sun4v:
--- A lot of unimplemented features
-- - A lot of real machine types
+diff --git a/util/cutils.c b/util/cutils.c
+index 238016523039..36ce712271f1 100644
+--- a/util/cutils.c
++++ b/util/cutils.c
+@@ -542,7 +542,7 @@ int qemu_strtoul(const char *nptr, const char **endptr, int base,
+  * Convert string @nptr to an int64_t.
+  *
+  * Works like qemu_strtol(), except it stores INT64_MAX on overflow,
+- * and INT_MIN on underflow.
++ * and INT64_MIN on underflow.
+  */
+ int qemu_strtoi64(const char *nptr, const char **endptr, int base,
+                  int64_t *result)
+@@ -557,8 +557,9 @@ int qemu_strtoi64(const char *nptr, const char **endptr, int base,
+         return -EINVAL;
+     }
+ 
++    /* This assumes int64_t is long long TODO relax */
++    QEMU_BUILD_BUG_ON(sizeof(int64_t) != sizeof(long long));
+     errno = 0;
+-    /* FIXME This assumes int64_t is long long */
+     *result = strtoll(nptr, &ep, base);
+     return check_strtox_error(nptr, ep, endptr, errno);
+ }
+@@ -581,8 +582,9 @@ int qemu_strtou64(const char *nptr, const char **endptr, int base,
+         return -EINVAL;
+     }
+ 
++    /* This assumes uint64_t is unsigned long long TODO relax */
++    QEMU_BUILD_BUG_ON(sizeof(uint64_t) != sizeof(unsigned long long));
+     errno = 0;
+-    /* FIXME This assumes uint64_t is unsigned long long */
+     *result = strtoull(nptr, &ep, base);
+     /* Windows returns 1 for negative out-of-range values.  */
+     if (errno == ERANGE) {
 -- 
 2.24.1
 
