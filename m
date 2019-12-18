@@ -1,55 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ihYxo-0002wj-1H
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 08:02:04 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60929)
+	id 1ihd0O-0007kT-2u
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 12:21:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37747)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1ihYxj-0002sp-Ey
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 08:02:01 -0500
+ (envelope-from <philmd@redhat.com>) id 1ihd0K-0007jk-Ew
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 12:20:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1ihYxi-000314-4d
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 08:01:59 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:41079)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1ihYxh-0002v8-Ng; Wed, 18 Dec 2019 08:01:57 -0500
-Received: from localhost.localdomain ([78.238.229.36]) by
- mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MMG6Y-1iQaKP2iuM-00JG3Q; Wed, 18 Dec 2019 14:01:11 +0100
-From: Laurent Vivier <laurent@vivier.eu>
+ (envelope-from <philmd@redhat.com>) id 1ihd0I-0008Ta-Ob
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 12:20:56 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:42683
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ihd0I-0008Ou-Ea
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 12:20:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1576689653;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Rhz4RPxPQ1vIc+WeKxKoufDlvutrmYap4D2gdrkuO4c=;
+ b=bGW0Qa5UUI0+JsIn8D+UXgwiNoH5NDQL7VUNONVSOvcj8XfmdAC859Jl/OxUNH4XdLKeCP
+ ktihfj4xoSsimJsVOvv1i19kmGQ18V/9yN/ToShm1W502qqflNt+4m5RKtBoWRE4FZdLId
+ 2JQUPc0Nv3+c394Zxhr7IgE86ixvvZY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-125-33cw4hSXMpWhfEe4tLQhMQ-1; Wed, 18 Dec 2019 12:20:52 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7E8CEDC20;
+ Wed, 18 Dec 2019 17:20:49 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-116-235.ams2.redhat.com [10.36.116.235])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id AAAA51001281;
+ Wed, 18 Dec 2019 17:20:42 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
- Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Han Han <hhan@redhat.com>
-Subject: [PULL 6/7] Revert "qemu-options.hx: Update for reboot-timeout
- parameter"
-Date: Wed, 18 Dec 2019 14:01:04 +0100
-Message-Id: <20191218130105.125981-7-laurent@vivier.eu>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20191218130105.125981-1-laurent@vivier.eu>
-References: <20191218130105.125981-1-laurent@vivier.eu>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Corey Minyard <cminyard@mvista.com>, Corey Minyard <minyard@acm.org>,
+ qemu-trivial@nongnu.org
+Subject: [PATCH v2 01/14] hw/ipmi: Remove unnecessary declarations
+Date: Wed, 18 Dec 2019 18:19:56 +0100
+Message-Id: <20191218172009.8868-2-philmd@redhat.com>
+In-Reply-To: <20191218172009.8868-1-philmd@redhat.com>
+References: <20191218172009.8868-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:mcINSF27Ad3PpojdTOFXImedKdWrSkp4lRQlQEQPRNorzg6cSVt
- PNBhvXzM2VVHOrgRr7D+hqGgkJ9f37XdGTnM+IguV7Onb9NzJ6QU+V5la56i181nxyCYE6V
- 67e3ujiczjUagp6jXiJMz3fIuhQo8f0u8GcdHOqLzzwthwrKWVk1odeiddE4RxWYXdz9b6p
- OD/10IC1lYTtZmVuDi8AA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:NMPZbsILd54=:B/PKMxEryt3tbvJqUWW60O
- Wb4kfka84dbjW5kcgQDKkP6XUrxNLx7RlaUxQUFQ93wreeEqjOdKnBxGSP4IcnFYoexbgQGxQ
- PnpMO/YNKLs/dKAKWXp1Sa7aNXmHNP0DFywYKvg3sA0eQ38N98LKTEjCAsbl5+mDh/UM17OU9
- f14mXTiE78HWHr89upTvdAzkBV//6Qry634MUTaG4KPORh+1en18DPIOfUmMCxZ2TI6TIkMlJ
- 7/fZ8pzPkU8jeA4/BBPu/HIu3Io/uk+1mzkShEiMm6ZCFExqV05xYcgngHKWv525BoxBoG4aw
- fVPZig2tq708eEJJrWlZCfCZb+QCpwEsjgC3yBSDm1pbAAWN4ERqolqBz1zuf1nFv/NaQiuNj
- TFea1hpYhAFc4nsdt/4qgKJV25mF1Eb6y1WoxYEChC4D+J/5I87+pLOflq4k2AZ+Xi1b/XSu0
- Qs2e5YEcigbbI4/Vio4xPJ0FIZNourG6b830SpdzDGl0m7FbHHQlV507Jy1V3yIQ+0c/gdldg
- pB6nkgu+MCCxUq37ou02SzgMaH5DeG7dRmwUZDK5xoQmnNmwZy673W6+1CoeYuCYt7NUXNwnR
- AHyL8GtaOmEVr4mf74JQ9Ey+qCV78LCLAfNafgayLSzedZ7PraRcVAx+HmWEuBYbs2dKAD1ed
- Zj0AWJqkAG2L+6f0+nlDqGZUcw8/kMHVaLIko2r8gmUw6PDI54nUUhcNy1/HhOVY8ZJjhiH9w
- HwhwhhJ6UPeYElSDZWlxwMV0A1q/4aqKf+wVgWuyM11iuK5luMIGTZdBVJGW2WByNb3YZU++V
- M5sYhZQHSuF0nQlbzrZSJ0EfBFhvFEMF5J+Gykz9zsG/+g2nx+b3zZjUEFqyARrz2zQXr3A4F
- XGiDlMv187D9L5prwwjg==
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: 33cw4hSXMpWhfEe4tLQhMQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.133
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -61,39 +65,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Dec 2019 13:02:02 -0000
+X-List-Received-Date: Wed, 18 Dec 2019 17:20:59 -0000
 
-From: Han Han <hhan@redhat.com>
+Since we don't use these methods before defining them,
+no need to forward-declare them.
 
-This reverts commit bbd9e6985ff342cbe15b9cb7eb30e842796fbbe8.
-
-In 20a1922032 we allowed reboot-timeout=-1 again, so update the doc
-accordingly.
-
-Signed-off-by: Han Han <hhan@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Message-Id: <20191205024821.245435-1-hhan@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Acked-by: Corey Minyard <cminyard@mvista.com>
 ---
- qemu-options.hx | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Cc: Corey Minyard <minyard@acm.org>
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index c63e794b64d1..6cbbefd08169 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -327,8 +327,8 @@ format(true color). The resolution should be supported by the SVGA mode, so
- the recommended is 320x240, 640x480, 800x640.
- 
- A timeout could be passed to bios, guest will pause for @var{rb_timeout} ms
--when boot failed, then reboot. If @option{reboot-timeout} is not set,
--guest will not reboot by default. Currently Seabios for X86
-+when boot failed, then reboot. If @var{rb_timeout} is '-1', guest will not
-+reboot, qemu passes '-1' to bios by default. Currently Seabios for X86
- system support it.
- 
- Do strict boot via @option{strict=on} as far as firmware/BIOS
--- 
-2.24.1
+In case the other patches are rejected:
+Cc: qemu-trivial@nongnu.org
+---
+ hw/ipmi/ipmi_bmc_extern.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/hw/ipmi/ipmi_bmc_extern.c b/hw/ipmi/ipmi_bmc_extern.c
+index 87da9ff99c..450926e5fb 100644
+--- a/hw/ipmi/ipmi_bmc_extern.c
++++ b/hw/ipmi/ipmi_bmc_extern.c
+@@ -87,10 +87,6 @@ typedef struct IPMIBmcExtern {
+     bool send_reset;
+ } IPMIBmcExtern;
+=20
+-static int can_receive(void *opaque);
+-static void receive(void *opaque, const uint8_t *buf, int size);
+-static void chr_event(void *opaque, int event);
+-
+ static unsigned char
+ ipmb_checksum(const unsigned char *data, int size, unsigned char start)
+ {
+--=20
+2.21.0
 
 
