@@ -1,75 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ihetS-0005L2-9l
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 14:21:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49861)
+	id 1ihf7H-0001dm-St
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 14:36:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40052)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1ihetP-0005Kg-JB
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:21:56 -0500
+ (envelope-from <thuth@redhat.com>) id 1ihf7E-0001Zk-R0
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:36:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1ihetN-0004Ty-Vb
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:21:55 -0500
-Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:36738)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1ihetL-0004N5-DC
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:21:51 -0500
-Received: by mail-pj1-x1044.google.com with SMTP id n59so1332289pjb.1
- for <qemu-trivial@nongnu.org>; Wed, 18 Dec 2019 11:21:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=SSfkhnxOLJVq8D0VuMw3m1Nkq1JpB7CQgyG5iwWZ6DU=;
- b=gFKeG5MMjtr4xilgNcvrs1xT4Pi8O4ut37IDtsKysAqmVcEGnMbU4r2e3+CWiDiruL
- uoTZ94zxMexRSxa0eqFseDU/6VJGmZatSkjw85IboBrIj7jaKs2aDJK3qQ4Scc9kGdEV
- M6O2IEcXgXEp8tyXcQTbpMLRjkX12BRzAJmXCUx14hgGChlM+YrxbTamJdk39pW/uJrM
- pHRxiCcCESUbyRtGath1B3J1JDWsDac5oLba8ZJ49Bzfp8wCdvI6lJ0Umyz4k45QkzIR
- 5DsaEKrUdLnyedayd/D7EzhmcMEv+1Pc5105COCmnCWsbXV/6SaeTrGZM8FiAuU3z2vp
- zUAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=SSfkhnxOLJVq8D0VuMw3m1Nkq1JpB7CQgyG5iwWZ6DU=;
- b=nQpwMXgdG+JwDpFl3CfNQqHeqXEqf4heCO+Hkk5j+QAb7ZHaHvYeq658pi0BwdyWsZ
- RcAcbLOriFZ3tEQvrTR7bK/4ToOsx3X5+j8Z86G89FWR9gf0a3ANDX69UWMbm0DIS1eG
- EBNnNMGLCu/neXwPBt2rrxDJQ6RlwtcAq+S74JQn+S08tFs7sKUW/NVeSQ8+iPSVbIWx
- Q+ThibUg+yEiQ2WBliji9fLNLJCiKAdo3s8K0kF0fZQv+1HKXtVaB8+DvqBP6jX/bULp
- EZzgocgVRlbtbH8nMQXhT/DCO/Kazr/t1QMmnpLLsFuMdzcAY9/MPDm4Bdcmhn16fvNT
- E0xQ==
-X-Gm-Message-State: APjAAAWu9rH9kmXv14BekYCYjn5Srk/lt5ZxhQbT3pLrUJpr3wmAGwxk
- gPeRs4ctBPsBBWD0whWYYyln/g==
-X-Google-Smtp-Source: APXvYqxvA4SLKaxmKmY6tZcVUVgiDaYR1galGEj7E9qMyEgcQzEn/Fx/+6h0W8pPyyj4vlN/EX95Zg==
-X-Received: by 2002:a17:902:8d95:: with SMTP id
- v21mr4619711plo.61.1576696908969; 
- Wed, 18 Dec 2019 11:21:48 -0800 (PST)
-Received: from ?IPv6:2605:e000:c74f:dc00:6838:d2b2:17e2:8445?
- ([2605:e000:c74f:dc00:6838:d2b2:17e2:8445])
- by smtp.gmail.com with ESMTPSA id j125sm4264198pfg.160.2019.12.18.11.21.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Dec 2019 11:21:48 -0800 (PST)
-Subject: Re: [PATCH 6/6] qemu-io-cmds: Silent GCC9 format-overflow warning
+ (envelope-from <thuth@redhat.com>) id 1ihf7D-0005Ng-0S
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:36:12 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:21442
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1ihf7B-0005Fq-W2
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 14:36:10 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1576697769;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=GiprSwdHZ/Z6TSNz/6DxrHEnQe0kiuxGby8tvQrTjLc=;
+ b=Lo/eNSgzgKqZWAr0bcla16OcBeKNcLv8HCiRhDV0Qwl/i8v1mrZvNGmc+FgqK7oz5YgKXg
+ +mCMUlYF+H9pmUXGdceGK/PPD1QI5wcPIya5IA+Tt79d8dUoaZryfz7HzDOd+Aek7fx29L
+ UjGCHo/mdMgkmsrA7uYv4H2Rqmx5b1w=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-320-WxuNooOsNP2TC_FJfZ2PFQ-1; Wed, 18 Dec 2019 14:35:57 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5E8C4102CE16;
+ Wed, 18 Dec 2019 19:35:54 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-120.ams2.redhat.com [10.36.116.120])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 56DAE5D9E2;
+ Wed, 18 Dec 2019 19:35:50 +0000 (UTC)
+Subject: Re: [PATCH 3/6] hw/net/imx_fec: Rewrite fall through comments
+From: Thomas Huth <thuth@redhat.com>
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
- qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>
 References: <20191217173425.5082-1-philmd@redhat.com>
- <20191217173425.5082-7-philmd@redhat.com>
- <0bd64884-03fd-68e1-a790-c9ceb7710fd9@linaro.org>
- <ac01ca89-ad58-a6f4-e33f-c1dcc4e0ad90@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <eeb1a68a-82cc-00ea-5a42-20fb260500af@linaro.org>
-Date: Wed, 18 Dec 2019 09:21:45 -1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ <20191217173425.5082-4-philmd@redhat.com>
+ <2fc74b64-0a0b-c437-e925-4c16d3907da7@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <54e5071f-b5c2-3cc7-514c-ecc2b7e2bed4@redhat.com>
+Date: Wed, 18 Dec 2019 20:35:48 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <ac01ca89-ad58-a6f4-e33f-c1dcc4e0ad90@redhat.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <2fc74b64-0a0b-c437-e925-4c16d3907da7@redhat.com>
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::1044
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: WxuNooOsNP2TC_FJfZ2PFQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,73 +72,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Dec 2019 19:21:57 -0000
+X-List-Received-Date: Wed, 18 Dec 2019 19:36:14 -0000
 
-On 12/18/19 7:45 AM, Philippe Mathieu-Daudé wrote:
-> On 12/18/19 5:15 AM, Richard Henderson wrote:
->> On 12/17/19 7:34 AM, Philippe Mathieu-Daudé wrote:
->>> GCC9 is confused when building with CFLAG -O3:
->>>
->>>    In function ‘help_oneline’,
->>>        inlined from ‘help_all’ at qemu-io-cmds.c:2414:9,
->>>        inlined from ‘help_f’ at qemu-io-cmds.c:2424:9:
->>>    qemu-io-cmds.c:2389:9: error: ‘%s’ directive argument is null
->>> [-Werror=format-overflow=]
->>>     2389 |         printf("%s ", ct->name);
->>>          |         ^~~~~~~~~~~~~~~~~~~~~~~
->>>
->>> Audit shows this can't happen. Give a hint to GCC adding an
->>> assert() call.
+On 17/12/2019 18.55, Thomas Huth wrote:
+> On 17/12/2019 18.34, Philippe Mathieu-Daud=C3=A9 wrote:
+>> GCC9 is confused by this comment when building with CFLAG
+>> -Wimplicit-fallthrough=3D2:
 >>
->> This deserves more investigation.  From my glance it appears you are right --
->> and moreover impossible for gcc to have come to this conclusion.  Which begs
->> the question of how that is.
-> 
-> New entries are added to cmdtab[] in qemuio_add_command() which is public (also
-> called in qemu-io.c). So you can insert a cmdinfo_t with a name being NULL.
-> This is why I thought GCC was correct first, and I tried:
-> 
-> -- >8 --
-> --- a/qemu-io-cmds.c
-> +++ b/qemu-io-cmds.c
-> @@ -42,6 +42,7 @@ void qemuio_add_command(const cmdinfo_t *ci)
->       * Catch it now rather than letting it manifest as a crash if a
->       * particular set of command line options are used.
->       */
-> +    assert(ci->name);
->      assert(ci->perm == 0 ||
->             (ci->flags & (CMD_FLAG_GLOBAL | CMD_NOFILE_OK)) == 0);
->      cmdtab = g_renew(cmdinfo_t, cmdtab, ++ncmds);
-> ---
-> 
-> But this didn't fix the warning... So I moved the assert() in the other location.
-> 
+>>   hw/net/imx_fec.c: In function =E2=80=98imx_eth_write=E2=80=99:
+>>   hw/net/imx_fec.c:906:12: error: this statement may fall through [-Werr=
+or=3Dimplicit-fallthrough=3D]
+>>     906 |         if (unlikely(single_tx_ring)) {
+>>         |            ^
+>>   hw/net/imx_fec.c:912:5: note: here
+>>     912 |     case ENET_TDAR:     /* FALLTHROUGH */
+>>         |     ^~~~
+>>   cc1: all warnings being treated as errors
 >>
->> Did you file a gcc bug report?
-> 
-> No because I'm not sure this is a bug, but if you confirm I'll file one :)
+>> Rewrite the comments in the correct place,  using 'fall through'
+>> which is recognized by GCC and static analyzers.
+>>
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> ---
+>> Cc: Peter Chubb <peter.chubb@nicta.com.au>
+>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>> Cc: Jason Wang <jasowang@redhat.com>
+>> Cc: qemu-arm@nongnu.org
+>> ---
+>>  hw/net/imx_fec.c | 8 +++++---
+>>  1 file changed, 5 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+>> index bd99236864..30cc07753d 100644
+>> --- a/hw/net/imx_fec.c
+>> +++ b/hw/net/imx_fec.c
+>> @@ -901,15 +901,17 @@ static void imx_eth_write(void *opaque, hwaddr off=
+set, uint64_t value,
+>>              s->regs[index] =3D 0;
+>>          }
+>>          break;
+>> -    case ENET_TDAR1:    /* FALLTHROUGH */
+>> -    case ENET_TDAR2:    /* FALLTHROUGH */
+>> +        /* fall through */
+>=20
+> Wrong location. And I think you don't need any comment here at all, GCC
+> should stay silent without it?
+>=20
+>> +    case ENET_TDAR1:
+>> +    case ENET_TDAR2:
+>>          if (unlikely(single_tx_ring)) {
+>>              qemu_log_mask(LOG_GUEST_ERROR,
+>>                            "[%s]%s: trying to access TDAR2 or TDAR1\n",
+>>                            TYPE_IMX_FEC, __func__);
+>>              return;
+>>          }
+>> -    case ENET_TDAR:     /* FALLTHROUGH */
+>> +        /* fall through */
+>=20
+> I'd suggest to simply remove it, too.
 
-The error message is not saying the value *might* be null, but that it *is*
-null.  That is, the compiler thinks that it has proven the value can be no
-other value than null.
+/me needsmorecoffee
 
-Can I assume that you've tested this particular code path, rather than merely
-removed the Werror?
+... of course this hunk was fine. Good that you kept it in v2.
 
-If the compiler really is "proving" that the value must be null, then the
-assert should be transformed to assert(false), and qemu will abort at runtime.
- In this case, the reason why the Werror  went away is that the printf is
-removed as unreachable beforehand.
-
-But of course the value assigned in qemuio_add_command is truly variable, and
-since -O3 does not imply -flto the compiler cannot have proven to see all
-callers.  So it follows that the compiler should not have proven that the value
-is null.
-
-So there *must* be a compiler bug.  The only question is whether it is isolated
-to the printf warning or if it goes further into value propagation and wrong
-code generation.
+ Thomas
 
 
-r~
+>> +    case ENET_TDAR:
+>>          if (s->regs[ENET_ECR] & ENET_ECR_ETHEREN) {
+>>              s->regs[index] =3D ENET_TDAR_TDAR;
+>>              imx_eth_do_tx(s, index);
+>>
+>=20
+>  Thomas
+>=20
+
 
