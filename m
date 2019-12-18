@@ -1,25 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ihXW0-0003zR-NJ
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 06:29:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33710)
+	id 1ihXbq-0007Ep-Bx
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Dec 2019 06:35:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35547)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1ihXVy-0003x9-TL
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 06:29:15 -0500
+ (envelope-from <laurent@vivier.eu>) id 1ihXbm-0007B9-Ud
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 06:35:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1ihXVx-0004y1-PU
- for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 06:29:14 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:56837)
+ (envelope-from <laurent@vivier.eu>) id 1ihXbl-0000l5-Is
+ for qemu-trivial@nongnu.org; Wed, 18 Dec 2019 06:35:14 -0500
+Received: from mout.kundenserver.de ([212.227.126.133]:60631)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1ihXVv-0004hb-8w; Wed, 18 Dec 2019 06:29:11 -0500
+ id 1ihXbi-0000M4-Jr; Wed, 18 Dec 2019 06:35:10 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MFsIZ-1iT0Ot3qZD-00HRfP; Wed, 18 Dec 2019 12:29:05 +0100
-Subject: Re: [PATCH 2/2] test-keyval: Tighten test of trailing crap after size
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, tao3.xu@intel.com
-References: <20191125133846.27790-1-armbru@redhat.com>
- <20191125133846.27790-3-armbru@redhat.com>
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MnJdE-1i0oL00i3w-00jKi9; Wed, 18 Dec 2019 12:34:50 +0100
+Subject: Re: [PATCH] target/sparc: Remove old TODO file
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Richard Henderson <rth@twiddle.net>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+References: <20190930171044.25312-1-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -63,36 +65,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <7a80fed1-ae16-2fda-19d4-8f0dfa13ebb2@vivier.eu>
-Date: Wed, 18 Dec 2019 12:29:02 +0100
+Message-ID: <2d4b45cb-686d-ba70-a6dd-acb7fecc1bcb@vivier.eu>
+Date: Wed, 18 Dec 2019 12:34:48 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20191125133846.27790-3-armbru@redhat.com>
+In-Reply-To: <20190930171044.25312-1-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:RA9BnBGjgeXTH5jGi1LL4j2s7QioSgV5DAr0CsaDErEDhKF+aO3
- Xd8C+oGIRs4H4Yi94G5nYlvviZgeyhscht42mqv2dobK5efL+nY9ZOlLHvGOHuRq8yhTRWG
- sTpF2Ffy7Kaj6Pw+u8T2IEAGkv6x3ymURFLj5eH/kAyE46DibxCO/fENvN3tK+TswaJagK1
- 490T2uU9uOMKvFGWiysVQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:+DusY0GoJGA=:M32nRKoAqA2/H20TAgi+OZ
- C5J3wu1xBoHSYDQpsWpwW7ouLpsSE9o7fQaWHlwXjBuCYYSaupofVY1o35eWsIAfdorsGEbkQ
- Hhug7y5UvvlJSmSTDCLBTzaskOWfa6juSOZCFdcP9FhC2HKlARZqfmjgu3oD1KMKE1JDAt1tz
- x3/urhiVeEQFSLoWS1cIpPITau3y1DPNwhp0Dwe47kD3I4s6qycQCwNvVHg1y8Tw9CV2z+w0a
- CrDsExpje3KfZpN2TyOgnlzJPWL8ozTKiSMDh7aWlqiqqiR3hR7jWUSNct3DZU9RXO258ZypF
- 1xB/wL5Q1cb0hOTUwkE7elESLPxIYmMoTEDjxrqTbBogWp9uz355iEC/vccKDWT4P5ajpGhQu
- eKR89GqVL/4jYWnVZFVh+Vf1P2fzRvZ3XkSs2/gfuVte7RCwamrTNFozr8clK5mu1geWNWjM5
- rE8tnSKRnc/JoyX2yTssLS7Pfd6IvjMSsXGPUPOIfMPUgkOiq1FsCogKGiNgHAFf5pnzfKQ2N
- 0QD79OJfVGlwwg3EdjIrDkaYaniTSoZRMBQ2fvrpnQTDnTn9eElTaVTd/B1qwxYeCs5dH1CU/
- RE3IDsYJeaCx7I+8hjE28KGSScFlkFDjSoHSYcTi/abZd7zFA7VZGQHbldNxtIxDBqvxtOPQJ
- x79C1qtucL1RGzq2tdabPeyLzcOYSpihF5TbdbO07Sd6auz7OdD/6Fd2deJy4Wg4CMppuvWdz
- x0jJg/dYMfKO4slZ6ygsLPJhYBmu9U7ASHl2/K6qOeWu73G/BdlFPTOWPpupInwExwckMi9ZK
- +tEKAHuPYqLI94xZ2tXr3SkF1JewXFc6HUmC8X8lGgVttyAEcR4KxUaoaMQ5fU7i7bM4RuM1K
- XFcr7znG0/AzLCZGFFtHQzan/J80+wcwCAQO7FKmQ=
+X-Provags-ID: V03:K1:F0R5tE+18Ez+qH7y6pY8GB8Ii3p3t4RmJWxPiCUXQQ5AX/9DqyK
+ d4oWu3EfzfvWPqIYIOdY30CUifFh8hTE0D+48VkpTfiE5fl76UAwg66HDiv6PSoh+W2fwcV
+ xqeKIEoDVgSL1UYDJlsSZrmQ2PyPxxF4jzkG/Rs5aqsxIy+Wp/C4SyclQuzoPW1jRcPuiqb
+ ahUdL9YoaYvMJd5I/SxlA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:5Xj3l5nRLQw=:xDmydpkJDUBLhif5xJh0b9
+ senNEj4SOXZijGgNZF3TTf9uhBvGL06xzUp8Rlz+DpR6E9sq1alJUxJOIIT2mZTzQdCqiS5kc
+ uEVt4jg53zGeUT/1xgVVt2gCLmftr5yATjx0VQ/te001xHzQoBvDsdt//B8oqCs5lf2PCrJE2
+ I7o3E6MJP02YIRoyJ9pUSqK4IWSBCOFH/E6EKHVZ752vfpq83Q9wRnoU3lvPf2BoibXQkr7gj
+ DwUkZJhaU+Mg/m5ruz2z+4oWIvXdHop6gE83jGxe+R/5ltNogz+dKV5BBXU9DnqJUPv6t4xx1
+ zS6Wf2YZN6noTRdLciebeY9nEhE+G76Nzm5FyINw4WAaAlgeOEz3UrvYFQvSBnhfM88wIy3NX
+ lMvJCzSL5JXN/SDDOypCmjEgmR3whqoKIS4nBdf9N0Caslq9ufqPg8kMq/4VxNYXLDXjS3I1Y
+ kflwQlhdrLIq4Syw/Ffyc9xDv8Y/CFuqWHF7iYFLLyYA699CoaPLfsZ+qPUhmr8dwfrvc1kcL
+ 4tjkTFpKDq6Ny5rhBZCVCuhv5+bYiWQ8hSFAtArq7QJUgcTLwNJo8MSs9yM4CVnvAOhV0E9w9
+ A746Tgk9Y+ba1MWSYLyYgLSrGJrlSPNRxkcVgFiCn6rhHjfW3kkyEfNUmRZmNCUj60wFhRFo+
+ SYBwi4IHHGV1sRpBsfG/Zf0gqEizfkJleAVPIFDDn5QtktiNx+xJ2aJ1oYOrBURXLb7GyTXu3
+ FMOOtO5fFbEwn/qeQo2rll1aGkl1QVCCP5swtZsXlJIRYXayHVdDyiQ8ONvB01f3A3GT9NUtK
+ dj6GUi5YZdCGU6mWaSrdk37gYz8pmd2AvoOml0vN4KZql7J6nP7DYEN6CME929Hvp01vvsVSM
+ TmADdmlWiStWzBBB7aHnABfF4aehuTuRIhceywFbs=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.126.134
+X-Received-From: 212.227.126.133
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,33 +106,113 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Dec 2019 11:29:16 -0000
+X-List-Received-Date: Wed, 18 Dec 2019 11:35:16 -0000
 
-Le 25/11/2019 à 14:38, Markus Armbruster a écrit :
-> test_keyval_visit_size() should test for trailing crap after size with
-> and without suffix.  It does test the latter: "sz2=16Gi" has size
-> "16G" followed by crap "i".  It fails to test the former "sz1=16E" is
-> a syntactically valid size that overflows uint64_t.  Replace by
-> "sz1=0Z".
+Le 30/09/2019 à 19:10, Thomas Huth a écrit :
+> This file hasn't seen a real (non-trivial) update since 2008 anymore,
+> so we can assume that it is pretty much out of date and nobody cares
+> for it anymore. Let's simply remove it.
 > 
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  tests/test-keyval.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  target/sparc/TODO | 88 -----------------------------------------------
+>  1 file changed, 88 deletions(-)
+>  delete mode 100644 target/sparc/TODO
 > 
-> diff --git a/tests/test-keyval.c b/tests/test-keyval.c
-> index 09b0ae3c68..e331a84149 100644
-> --- a/tests/test-keyval.c
-> +++ b/tests/test-keyval.c
-> @@ -478,7 +478,7 @@ static void test_keyval_visit_size(void)
->      visit_free(v);
->  
->      /* Trailing crap */
-> -    qdict = keyval_parse("sz1=16E,sz2=16Gi", NULL, &error_abort);
-> +    qdict = keyval_parse("sz1=0Z,sz2=16Gi", NULL, &error_abort);
->      v = qobject_input_visitor_new_keyval(QOBJECT(qdict));
->      qobject_unref(qdict);
->      visit_start_struct(v, NULL, NULL, 0, &error_abort);
+> diff --git a/target/sparc/TODO b/target/sparc/TODO
+> deleted file mode 100644
+> index b8c727e858..0000000000
+> --- a/target/sparc/TODO
+> +++ /dev/null
+> @@ -1,88 +0,0 @@
+> -TODO-list:
+> -
+> -CPU common:
+> -- Unimplemented features/bugs:
+> - - Delay slot handling may fail sometimes (branch end of page, delay
+> - slot next page)
+> - - Atomical instructions
+> - - CPU features should match real CPUs (also ASI selection)
+> -- Optimizations/improvements:
+> - - Condition code/branch handling like x86, also for FPU?
+> - - Remove remaining explicit alignment checks
+> - - Global register for regwptr, so that windowed registers can be
+> - accessed directly
+> - - Improve Sparc32plus addressing
+> - - NPC/PC static optimisations (use JUMP_TB when possible)? (Is this
+> - obsolete?)
+> - - Synthetic instructions
+> - - MMU model dependent on CPU model
+> - - Select ASI helper at translation time (on V9 only if known)
+> - - KQemu/KVM support for VM only
+> - - Hardware breakpoint/watchpoint support
+> - - Cache emulation mode
+> - - Reverse-endian pages
+> - - Faster FPU emulation
+> - - Busy loop detection
+> -
+> -Sparc32 CPUs:
+> -- Unimplemented features/bugs:
+> - - Sun4/Sun4c MMUs
+> - - Some V8 ASIs
+> -
+> -Sparc64 CPUs:
+> -- Unimplemented features/bugs:
+> - - Interrupt handling
+> - - Secondary address space, other MMU functions
+> - - Many V9/UA2005/UA2007 ASIs
+> - - Rest of V9 instructions, missing VIS instructions
+> - - IG/MG/AG vs. UA2007 globals
+> - - Full hypervisor support
+> - - SMP/CMT
+> - - Sun4v CPUs
+> -
+> -Sun4:
+> -- To be added
+> -
+> -Sun4c:
+> -- A lot of unimplemented features
+> -- Maybe split from Sun4m
+> -
+> -Sun4m:
+> -- Unimplemented features/bugs:
+> - - Hardware devices do not match real boards
+> - - Floppy does not work
+> - - CS4231: merge with cs4231a, add DMA
+> - - Add cg6, bwtwo
+> - - Arbitrary resolution support
+> - - PCI for MicroSparc-IIe
+> - - JavaStation machines
+> - - SBus slot probing, FCode ROM support
+> - - SMP probing support
+> - - Interrupt routing does not match real HW
+> - - SuSE 7.3 keyboard sometimes unresponsive
+> - - Gentoo 2004.1 SMP does not work
+> - - SS600MP ledma -> lebuffer
+> - - Type 5 keyboard
+> - - Less fixed hardware choices
+> - - DBRI audio (Am7930)
+> - - BPP parallel
+> - - Diagnostic switch
+> - - ESP PIO mode
+> -
+> -Sun4d:
+> -- A lot of unimplemented features:
+> - - SBI
+> - - IO-unit
+> -- Maybe split from Sun4m
+> -
+> -Sun4u:
+> -- Unimplemented features/bugs:
+> - - Interrupt controller
+> - - PCI/IOMMU support (Simba, JIO, Tomatillo, Psycho, Schizo, Safari...)
+> - - SMP
+> - - Happy Meal Ethernet, flash, I2C, GPIO
+> - - A lot of real machine types
+> -
+> -Sun4v:
+> -- A lot of unimplemented features
+> - - A lot of real machine types
 > 
 
 Applied to my trivial-patches branch.
