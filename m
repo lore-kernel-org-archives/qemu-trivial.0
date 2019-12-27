@@ -1,92 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ikrPa-0004MD-UR
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Dec 2019 10:20:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59167)
+	id 1ikv4f-0002eo-Ee
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Dec 2019 14:15:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38108)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mkdolata@us.ibm.com>) id 1ikfZT-0000Mp-7V
- for qemu-trivial@nongnu.org; Thu, 26 Dec 2019 21:41:48 -0500
+ (envelope-from <philmd@redhat.com>) id 1ikv4c-0002eH-KE
+ for qemu-trivial@nongnu.org; Fri, 27 Dec 2019 14:14:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mkdolata@us.ibm.com>) id 1ikfZR-0002SZ-Nf
- for qemu-trivial@nongnu.org; Thu, 26 Dec 2019 21:41:47 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:21578)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mkdolata@us.ibm.com>)
- id 1ikfZN-0002S5-Ay; Thu, 26 Dec 2019 21:41:41 -0500
-Received: from pps.filterd (m0098393.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- xBR2bTRM077387; Thu, 26 Dec 2019 21:41:39 -0500
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2x21r80ent-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 26 Dec 2019 21:41:39 -0500
-Received: from m0098393.ppops.net (m0098393.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id xBR2ecY7082925;
- Thu, 26 Dec 2019 21:41:38 -0500
-Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
- [169.47.144.26])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2x21r80enk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 26 Dec 2019 21:41:38 -0500
-Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
- by ppma04wdc.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id xBR2eBYr017166;
- Fri, 27 Dec 2019 02:41:37 GMT
-Received: from b03cxnp07029.gho.boulder.ibm.com
- (b03cxnp07029.gho.boulder.ibm.com [9.17.130.16])
- by ppma04wdc.us.ibm.com with ESMTP id 2x1b175kqj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 27 Dec 2019 02:41:37 +0000
-Received: from b03ledav004.gho.boulder.ibm.com
- (b03ledav004.gho.boulder.ibm.com [9.17.130.235])
- by b03cxnp07029.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- xBR2faid32768380
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 27 Dec 2019 02:41:36 GMT
-Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id C93497805E;
- Fri, 27 Dec 2019 02:41:36 +0000 (GMT)
-Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 98F7078064;
- Fri, 27 Dec 2019 02:41:36 +0000 (GMT)
-Received: from mail.gmx.ibm.com (unknown [9.209.252.213])
- by b03ledav004.gho.boulder.ibm.com (Postfix) with ESMTPS;
- Fri, 27 Dec 2019 02:41:36 +0000 (GMT)
-Received: from m01ex005.gmx.ibm.com (10.148.53.45) by m01ex010.gmx.ibm.com
- (10.65.151.232) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1779.2; Thu, 26 Dec
- 2019 20:41:35 -0600
-Received: from m01ex005.gmx.ibm.com ([fe80::7d2d:476:2d5a:cb2f]) by
- m01ex005.gmx.ibm.com ([fe80::7d2d:476:2d5a:cb2f%9]) with mapi id
- 15.01.1779.002; Thu, 26 Dec 2019 20:41:29 -0600
-From: "Marek Dolata - mkdolata@us.ibm.com" <mkdolata@us.ibm.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, Doug Gale
- <doug16k@gmail.com>, Markus Armbruster <armbru@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>
-Subject: [PATCH] /target/i386: fix gdbstub k_gs_base issue
-Thread-Topic: [PATCH] /target/i386: fix gdbstub k_gs_base issue
-Thread-Index: AdW8XtoXUETDbpusTL6rHcn7kOLpDw==
-Date: Fri, 27 Dec 2019 02:41:29 +0000
-Message-ID: <f392e1a15634455d8af668b28b88f3b4@us.ibm.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [9.16.14.35]
-Content-Type: multipart/alternative;
- boundary="_000_f392e1a15634455d8af668b28b88f3b4usibmcom_"
+ (envelope-from <philmd@redhat.com>) id 1ikv4a-0005Hn-Hd
+ for qemu-trivial@nongnu.org; Fri, 27 Dec 2019 14:14:57 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:29343
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ikv4a-0005HQ-EW
+ for qemu-trivial@nongnu.org; Fri, 27 Dec 2019 14:14:56 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1577474095;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HOtHWLZD3gMUE8ZLMiqKA+xfr8aRLG+h2PTQQlJZXGE=;
+ b=NPb69vLMJHYrUFOpIGG8ryAbaGb7+rRawHMLZXif7vGiTcBV79tn8EgBMuFpNPkRtfsz2t
+ bG7vX7qBKIvenFuk7R4mkqf0BX1+VUAKcAIWc/BPzbJnY/h3Ln/L22GbTh0VSW/bZAhzUI
+ IQe+G/WsCF8AmXMh2E5EQCQ6QsAPDE8=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-135-pbrfmvqmN8a3Wl1Xek-Cuw-1; Fri, 27 Dec 2019 14:14:52 -0500
+Received: by mail-wr1-f72.google.com with SMTP id d8so7810031wrq.12
+ for <qemu-trivial@nongnu.org>; Fri, 27 Dec 2019 11:14:52 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=69OYBx5AUrmqOpXDBKa83VuAn5ZdgbJjVvg3NNVLsuE=;
+ b=PbrAXw0MtV/8EOGtaECDyxL2hAsp0d6tgXJS/Q8HxQVord5jQ04u/AGm2Bs4NfK54G
+ opz5vgQhPKVIVaPnbIWcBY7Av9/dhmMSnM4Pd0l+t79C//d263whJzQ1qIYPHDSiGrus
+ SWfvxk1se9JbcErI5D2RcDPZqz4WpTIWnp00bwjltBD7CMP4UBTe5IP2hZ0ZjuRxg7JS
+ xdgkY3lZLMtqb9RJSowR+RdYmcE/z+zJTMKQkNu44JBxlF/gjdZGPmRYhCneyfQtXCNe
+ VACXQAsOvaFZbRijGDy9gKi+CtR+JC6sfJWqJa1YWFiraG9qZfp7yjfzZdpBeiUAv+s+
+ XGJg==
+X-Gm-Message-State: APjAAAWZwrMOaGiT8lEE/V8zDAHw9yf4FmXkaiXLY6nnF9vnx4rkjI1F
+ xzWmD/1fR0H7ffo3woDAJzUaTEZhATHZqoCq7D6bAMb57+qVHJ4CFkYQpvscHraNe1ihwqX/w7C
+ cKpr7okjZ1becK0O3dw==
+X-Received: by 2002:a1c:6809:: with SMTP id d9mr20777446wmc.70.1577474091363; 
+ Fri, 27 Dec 2019 11:14:51 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzWUVxeRFDF2HV633egro9bQBFeYD1PqAO8Mfxij5sHpQkdcDp0krwZXGj6aXOgn6AhDkGyYg==
+X-Received: by 2002:a1c:6809:: with SMTP id d9mr20777427wmc.70.1577474091067; 
+ Fri, 27 Dec 2019 11:14:51 -0800 (PST)
+Received: from [192.168.1.25] (abayonne-654-1-186-92.w92-134.abo.wanadoo.fr.
+ [92.134.161.92])
+ by smtp.gmail.com with ESMTPSA id o7sm11892001wmh.11.2019.12.27.11.14.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 27 Dec 2019 11:14:50 -0800 (PST)
+Subject: Re: [PATCH] /target/i386: fix gdbstub k_gs_base issue
+To: "Marek Dolata - mkdolata@us.ibm.com" <mkdolata@us.ibm.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Doug Gale <doug16k@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Eduardo Habkost <ehabkost@redhat.com>
+References: <f392e1a15634455d8af668b28b88f3b4@us.ibm.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <f29f72e8-8b80-c064-599a-a706979a425b@redhat.com>
+Date: Fri, 27 Dec 2019 20:14:48 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.95,18.0.572
- definitions=2019-12-26_05:2019-12-24,2019-12-26 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0
- bulkscore=0 phishscore=0 mlxscore=0 malwarescore=0 mlxlogscore=787
- clxscore=1011 impostorscore=0 priorityscore=1501 adultscore=0
- suspectscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-1910280000 definitions=main-1912270017
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 148.163.156.1
-X-Mailman-Approved-At: Fri, 27 Dec 2019 10:20:21 -0500
+In-Reply-To: <f392e1a15634455d8af668b28b88f3b4@us.ibm.com>
+Content-Language: en-US
+X-MC-Unique: pbrfmvqmN8a3Wl1Xek-Cuw-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -98,194 +87,106 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Dec 2019 02:41:48 -0000
+X-List-Received-Date: Fri, 27 Dec 2019 19:15:00 -0000
 
---_000_f392e1a15634455d8af668b28b88f3b4usibmcom_
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Hi Marek,
 
-Fixes: corrects clobbering of registers appearing after k_gs_base
-Buglink: https://bugs.launchpad.net/qemu/+bug/1857640
+If you look at the other patches, you'll notice no leading slash is=20
+used, so please remove it when resending.
 
-Signed-off-by: Marek Dolata <mkdolata@us.ibm.com>
----
-target/i386/gdbstub.c | 4 +++-
-1 file changed, 3 insertions(+), 1 deletion(-)
+Maybe you can use "target/i386: Fix handling of k_gs_base register in=20
+32-bit mode in gdbstub" as patch subject.
 
-diff --git a/target/i386/gdbstub.c b/target/i386/gdbstub.c
-index aef25b70f1..7228d20674 100644
---- a/target/i386/gdbstub.c
-+++ b/target/i386/gdbstub.c
-@@ -350,14 +350,16 @@ int x86_cpu_gdb_write_register(CPUState *cs, uint8_t =
-*mem_buf, int n)
-             env->segs[R_GS].base =3D ldl_p(mem_buf);
-             return 4;
--#ifdef TARGET_X86_64
-         case IDX_SEG_REGS + 8:
-+#ifdef TARGET_X86_64
-             if (env->hflags & HF_CS64_MASK) {
-                 env->kernelgsbase =3D ldq_p(mem_buf);
-                 return 8;
-             }
-             env->kernelgsbase =3D ldl_p(mem_buf);
-             return 4;
-+#else
-+            return 4;
+Please Cc the maintainers. See:
+https://wiki.qemu.org/Contribute/SubmitAPatch#CC_the_relevant_maintainer
+Doing it for you now (adding Richard and Eduardo).
+
+On 12/27/19 3:41 AM, Marek Dolata - mkdolata@us.ibm.com wrote:
+> Fixes: corrects clobbering of registers appearing after k_gs_base
+>=20
+> Buglink: https://bugs.launchpad.net/qemu/+bug/1857640
+>=20
+> Signed-off-by: Marek Dolata <mkdolata@us.ibm.com>
+>=20
+> ---
+>=20
+> target/i386/gdbstub.c | 4 +++-
+>=20
+> 1 file changed, 3 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/target/i386/gdbstub.c b/target/i386/gdbstub.c
+>=20
+> index aef25b70f1..7228d20674 100644
+>=20
+> --- a/target/i386/gdbstub.c
+>=20
+> +++ b/target/i386/gdbstub.c
+
+I am having troubles trying to apply your patch:
+
+Applying: /target/i386: fix gdbstub k_gs_base issue
+error: corrupt patch at line 23
+Patch failed at 0001 /target/i386: fix gdbstub k_gs_base issue
+hint: Use 'git am --show-current-patch' to see the failed patch
+When you have resolved this problem, run "git am --continue".
+If you prefer to skip this patch, run "git am --skip" instead.
+To restore the original branch and stop patching, run "git am --abort".
+
+The information on the wiki might help you to use proper format:
+https://wiki.qemu.org/Contribute/SubmitAPatch#Use_git_format-patch
+
+>=20
+> @@ -350,14 +350,16 @@ int x86_cpu_gdb_write_register(CPUState *cs,=20
+> uint8_t *mem_buf, int n)
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 env->segs[R_GS].base =3D ldl_p(mem_=
+buf);
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return 4;
+>=20
+> -#ifdef TARGET_X86_64
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0 case IDX_SEG_REGS + 8:
+>=20
+> +#ifdef TARGET_X86_64
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 if (env->hflags & HF_CS64_MASK) {
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0 =A0=A0=A0=A0=A0=A0=A0=A0env->kernelgsbase =3D l=
+dq_p(mem_buf);
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return 8;
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 }
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 env->kernelgsbase =3D ldl_p(mem_buf=
+);
+
+You can add here the
+
 #endif
-         case IDX_FP_REGS + 8:
---
-2.21.0
 
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return 4;
 
+and remove the '#else return 4; #endif' lines.
 
---_000_f392e1a15634455d8af668b28b88f3b4usibmcom_
-Content-Type: text/html; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+>=20
+> +#else
+>=20
+> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return 4;
+>=20
+> #endif
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0case IDX_FP_REGS + 8:
+>=20
+> --=20
+>=20
+> 2.21.0
+>=20
 
-<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
-osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
-xmlns:x=3D"urn:schemas-microsoft-com:office:excel" xmlns:m=3D"http://schema=
-s.microsoft.com/office/2004/12/omml" xmlns=3D"http://www.w3.org/TR/REC-html=
-40">
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
->
-<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
-<style><!--
-/* Font Definitions */
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-@font-face
-	{font-family:"IBM Plex Sans";
-	panose-1:2 11 5 3 5 2 3 0 2 3;}
-/* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0in;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;}
-a:link, span.MsoHyperlink
-	{mso-style-priority:99;
-	color:#0563C1;
-	text-decoration:underline;}
-a:visited, span.MsoHyperlinkFollowed
-	{mso-style-priority:99;
-	color:#954F72;
-	text-decoration:underline;}
-span.EmailStyle17
-	{mso-style-type:personal-compose;
-	font-family:"IBM Plex Sans",sans-serif;
-	color:windowtext;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	font-family:"Calibri",sans-serif;}
-@page WordSection1
-	{size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;}
-div.WordSection1
-	{page:WordSection1;}
---></style><!--[if gte mso 9]><xml>
-<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
-</xml><![endif]--><!--[if gte mso 9]><xml>
-<o:shapelayout v:ext=3D"edit">
-<o:idmap v:ext=3D"edit" data=3D"1" />
-</o:shapelayout></xml><![endif]-->
-</head>
-<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72">
-<div class=3D"WordSection1">
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-Fixes: corrects clobbering of registers appearing after k_gs_base<o:p></o:p=
-></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-Buglink: https://bugs.launchpad.net/qemu/&#43;bug/1857640<o:p></o:p></span>=
-</p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-<o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-Signed-off-by: Marek Dolata &lt;mkdolata@us.ibm.com&gt;<o:p></o:p></span></=
-p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
----<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-target/i386/gdbstub.c | 4 &#43;&#43;&#43;-<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-1 file changed, 3 insertions(&#43;), 1 deletion(-)<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-<o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-diff --git a/target/i386/gdbstub.c b/target/i386/gdbstub.c<o:p></o:p></span=
-></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-index aef25b70f1..7228d20674 100644<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
---- a/target/i386/gdbstub.c<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-&#43;&#43;&#43; b/target/i386/gdbstub.c<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-@@ -350,14 &#43;350,16 @@ int x86_cpu_gdb_write_register(CPUState *cs, uint=
-8_t *mem_buf, int n)<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; en=
-v-&gt;segs[R_GS].base =3D ldl_p(mem_buf);<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; re=
-turn 4;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
--#ifdef TARGET_X86_64<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case IDX_SEG_REGS &#43; 8:=
-<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-&#43;#ifdef TARGET_X86_64<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if=
- (env-&gt;hflags &amp; HF_CS64_MASK) {<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;env-&gt;kernelgsbase =3D ldq_p(mem_buf);<o:p></o:p></=
-span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
-sp;&nbsp;&nbsp;&nbsp; return 8;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<=
-o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; en=
-v-&gt;kernelgsbase =3D ldl_p(mem_buf);<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; re=
-turn 4;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-&#43;#else<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-&#43;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ret=
-urn 4;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-#endif<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case IDX_FP_REGS &#43=
-; 8:<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
--- <o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-2.21.0<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-<o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-<o:p>&nbsp;</o:p></span></p>
-</div>
-</body>
-</html>
+Regards,
 
---_000_f392e1a15634455d8af668b28b88f3b4usibmcom_--
+Phil.
 
 
