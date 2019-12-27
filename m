@@ -1,94 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ikvuB-0002F3-IF
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Dec 2019 15:08:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46341)
+	id 1ikxPu-0002v7-4F
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Dec 2019 16:45:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53987)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mkdolata@us.ibm.com>) id 1ikvu9-0002Eh-1i
- for qemu-trivial@nongnu.org; Fri, 27 Dec 2019 15:08:14 -0500
+ (envelope-from <philmd@redhat.com>) id 1ikxPr-0002uz-Fr
+ for qemu-trivial@nongnu.org; Fri, 27 Dec 2019 16:45:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mkdolata@us.ibm.com>) id 1ikvu6-0007xy-7p
- for qemu-trivial@nongnu.org; Fri, 27 Dec 2019 15:08:11 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:23068)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mkdolata@us.ibm.com>)
- id 1ikvu5-0007vV-Vj; Fri, 27 Dec 2019 15:08:10 -0500
-Received: from pps.filterd (m0098394.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- xBRK2Q5F052301; Fri, 27 Dec 2019 15:08:08 -0500
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2x5jh20mhv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 27 Dec 2019 15:08:08 -0500
-Received: from m0098394.ppops.net (m0098394.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id xBRK87ar088645;
- Fri, 27 Dec 2019 15:08:07 -0500
-Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
- [169.62.189.10])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2x5jh20mhg-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 27 Dec 2019 15:08:07 -0500
-Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
- by ppma02dal.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id xBRK0VO0003079;
- Fri, 27 Dec 2019 20:08:07 GMT
-Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com
- [9.57.198.26]) by ppma02dal.us.ibm.com with ESMTP id 2x1b180d6h-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 27 Dec 2019 20:08:06 +0000
-Received: from b01ledav002.gho.pok.ibm.com (b01ledav002.gho.pok.ibm.com
- [9.57.199.107])
- by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- xBRK869d16253718
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 27 Dec 2019 20:08:06 GMT
-Received: from b01ledav002.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 18E0B124052;
- Fri, 27 Dec 2019 20:08:06 +0000 (GMT)
-Received: from b01ledav002.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id F135C12405B;
- Fri, 27 Dec 2019 20:08:05 +0000 (GMT)
-Received: from mail.gmx.ibm.com (unknown [9.209.242.114])
- by b01ledav002.gho.pok.ibm.com (Postfix) with ESMTPS;
- Fri, 27 Dec 2019 20:08:05 +0000 (GMT)
-Received: from m01ex005.gmx.ibm.com (10.148.53.45) by m01ex002.gmx.ibm.com
- (10.148.53.59) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1779.2; Fri, 27 Dec
- 2019 15:07:53 -0500
-Received: from m01ex005.gmx.ibm.com ([fe80::7d2d:476:2d5a:cb2f]) by
- m01ex005.gmx.ibm.com ([fe80::7d2d:476:2d5a:cb2f%9]) with mapi id
- 15.01.1779.002; Fri, 27 Dec 2019 14:07:53 -0600
-From: "Marek Dolata - mkdolata@us.ibm.com" <mkdolata@us.ibm.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>,
+ (envelope-from <philmd@redhat.com>) id 1ikxPq-0005FT-B8
+ for qemu-trivial@nongnu.org; Fri, 27 Dec 2019 16:45:03 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:33792
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ikxPq-0005F5-7K
+ for qemu-trivial@nongnu.org; Fri, 27 Dec 2019 16:45:02 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1577483101;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hmbc9ZLKA4lyNlXb4Mp9QVKNZbDD5QoaM2f7T/+jMrg=;
+ b=Pg1KqUglT3berTdpwvgQDkx5w4PQoMv/RUbbvv3y3AM3uX/cyweXgR38wAHTO1xakMOVe3
+ qaAxi9e0ZZEKIAw+ojo/92OsmMmLppmMmNoOg9gM++TTS0lwzaJklQ4T8AmuasWbP3GNL8
+ rnG/oe766EgE0iwcWREfs1tG+073Q7k=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-266-J08l3OpvN1iQqcAEuAoUnA-1; Fri, 27 Dec 2019 16:44:59 -0500
+Received: by mail-wr1-f69.google.com with SMTP id d8so7973808wrq.12
+ for <qemu-trivial@nongnu.org>; Fri, 27 Dec 2019 13:44:59 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=eHhU0ykQiE9dJ4DGpJIPGvyaJ/cwOCNG9yskkZAS2K0=;
+ b=ZJpJ/MMH5lN0l2eZH9eKLWVuYbAa+hDQaxLmukHArCKTdbK6uJik8UnlwVBSg6kcgq
+ RgRmuyDZzzBuRMSN1mnyXaAEPFWd+6NXvAHQNcTo4+3uSdcCJ/4ahYhNmUaQSRmTDzYk
+ MDCiPqOafiyC15alsigSNW3DATYbdRxgh5tIiYPf9C1oXi7CKR0APSCGms66rrntICwN
+ RWT40TouTdM2Qb0/BPiDxoy/o+LEaZgK04AZ1AfQ7zj5VOLNa7lgU/ooAj70XvqjY+K5
+ /v2QbZCCMjgw01Q+6JhmvxWlNFC2cdMckmo3ctSTljI94/+UCn2Q8oYQn1sXSEerp/ga
+ dynw==
+X-Gm-Message-State: APjAAAXQEpr3MuESKyxuEenPhwrCbB/euPxY9tSyNBjoeH+twxcXh8VW
+ YZJJ3/EUeZ/7GWBnFgZlaQbJQHLb6hwcnmcC4mFN/eto8S5fywdzo9bt5ugKevwsG9Pr3fFuJAQ
+ fLEv70Rc+tnY/iYwk+A==
+X-Received: by 2002:adf:e3cd:: with SMTP id k13mr49556709wrm.338.1577483098321; 
+ Fri, 27 Dec 2019 13:44:58 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzxgoQpV8XoKLA0K4WRE/zn/lbR6vSbizIVxpNXqzU+P3VOjKxSIigPbU+14gPCFUyvPT4MSg==
+X-Received: by 2002:adf:e3cd:: with SMTP id k13mr49556692wrm.338.1577483098041; 
+ Fri, 27 Dec 2019 13:44:58 -0800 (PST)
+Received: from [192.168.1.25] (abayonne-654-1-186-92.w92-134.abo.wanadoo.fr.
+ [92.134.161.92])
+ by smtp.gmail.com with ESMTPSA id b137sm12867884wme.26.2019.12.27.13.44.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 27 Dec 2019 13:44:57 -0800 (PST)
+Subject: Re: [PATCH v2] target/i386: Fix handling of k_gs_base register in
+ 32-bit mode in gdbstub
+To: "Marek Dolata - mkdolata@us.ibm.com" <mkdolata@us.ibm.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Doug Gale <doug16k@gmail.com>,
  Markus Armbruster <armbru@redhat.com>, Richard Henderson <rth@twiddle.net>,
  Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PATCH] target/i386: Fix handling of k_gs_base register in 32-bit
- mode in gdbstub
-Thread-Topic: [PATCH] target/i386: Fix handling of k_gs_base register in
- 32-bit mode in gdbstub
-Thread-Index: AdW88H6nBhaHncE3T2iSXPzbb8O+qQ==
-Date: Fri, 27 Dec 2019 20:07:53 +0000
-Message-ID: <62c3c3385b014ce1a6ca07f88973bf95@us.ibm.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [9.16.14.33]
-Content-Type: multipart/alternative;
- boundary="_000_62c3c3385b014ce1a6ca07f88973bf95usibmcom_"
+References: <62c3c3385b014ce1a6ca07f88973bf95@us.ibm.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <2defe319-c1ed-922a-c375-6fda1ed68292@redhat.com>
+Date: Fri, 27 Dec 2019 22:44:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.95,18.0.572
- definitions=2019-12-27_07:2019-12-24,2019-12-27 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 malwarescore=0
- adultscore=0 priorityscore=1501 lowpriorityscore=0 suspectscore=0
- phishscore=0 mlxscore=0 mlxlogscore=999 bulkscore=0 clxscore=1011
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-1910280000 definitions=main-1912270167
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 148.163.156.1
+In-Reply-To: <62c3c3385b014ce1a6ca07f88973bf95@us.ibm.com>
+Content-Language: en-US
+X-MC-Unique: J08l3OpvN1iQqcAEuAoUnA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -100,200 +88,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Dec 2019 20:08:14 -0000
+X-List-Received-Date: Fri, 27 Dec 2019 21:45:04 -0000
 
---_000_62c3c3385b014ce1a6ca07f88973bf95usibmcom_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Hi Marek,
 
-Fixes: corrects clobbering of registers appearing after k_gs_base
-Buglink: https://bugs.launchpad.net/qemu/+bug/1857640
+Thanks for Cc'ing the maintainers :)
 
-Signed-off-by: Marek Dolata <mkdolata@us.ibm.com<mailto:mkdolata@us.ibm.com=
->>
----
-target/i386/gdbstub.c | 4 ++--
-1 file changed, 2 insertions(+), 2 deletions(-)
+Still the same error occurs:
 
-diff --git a/target/i386/gdbstub.c b/target/i386/gdbstub.c
-index aef25b70f1..572ead641c 100644
---- a/target/i386/gdbstub.c
-+++ b/target/i386/gdbstub.c
-@@ -350,15 +350,15 @@ int x86_cpu_gdb_write_register(CPUState *cs, uint8_t =
-*mem_buf, int n)
-             env->segs[R_GS].base =3D ldl_p(mem_buf);
-             return 4;
--#ifdef TARGET_X86_64
-         case IDX_SEG_REGS + 8:
-+#ifdef TARGET_X86_64
-             if (env->hflags & HF_CS64_MASK) {
-                 env->kernelgsbase =3D ldq_p(mem_buf);
-                 return 8;
-             }
-             env->kernelgsbase =3D ldl_p(mem_buf);
--            return 4;
-#endif
-+            return 4;
-         case IDX_FP_REGS + 8:
-             cpu_set_fpuc(env, ldl_p(mem_buf));
---
-2.24.1
+   Applying: target/i386: Fix handling of k_gs_base register in 32-bit=20
+mode in gdbstub
+   error: corrupt patch at line 21
+   Patch failed at 0001 target/i386: Fix handling of k_gs_base register=20
+in 32-bit mode in gdbstub
 
+Please use a version number when you repost a patch, this is patch v2=20
+(next should be v3).
 
---_000_62c3c3385b014ce1a6ca07f88973bf95usibmcom_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
-osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
-xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
-//www.w3.org/TR/REC-html40">
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
-<style><!--
-/* Font Definitions */
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-@font-face
-	{font-family:"IBM Plex Sans";
-	panose-1:2 11 5 3 5 2 3 0 2 3;}
-/* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0in;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;}
-a:link, span.MsoHyperlink
-	{mso-style-priority:99;
-	color:#0563C1;
-	text-decoration:underline;}
-a:visited, span.MsoHyperlinkFollowed
-	{mso-style-priority:99;
-	color:#954F72;
-	text-decoration:underline;}
-span.EmailStyle17
-	{mso-style-type:personal-compose;
-	font-family:"IBM Plex Sans",sans-serif;
-	color:windowtext;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	font-family:"Calibri",sans-serif;}
-@page WordSection1
-	{size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;}
-div.WordSection1
-	{page:WordSection1;}
---></style><!--[if gte mso 9]><xml>
-<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
-</xml><![endif]--><!--[if gte mso 9]><xml>
-<o:shapelayout v:ext=3D"edit">
-<o:idmap v:ext=3D"edit" data=3D"1" />
-</o:shapelayout></xml><![endif]-->
-</head>
-<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72">
-<div class=3D"WordSection1">
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">Fixes: corrects clobbering of registers appearing after k_=
-gs_base<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">Buglink:
-<a href=3D"https://bugs.launchpad.net/qemu/&#43;bug/1857640">https://bugs.l=
-aunchpad.net/qemu/&#43;bug/1857640</a><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-family:&quot;Courier New&quot;">=
-Signed-off-by: Marek Dolata &lt;<a href=3D"mailto:mkdolata@us.ibm.com">mkdo=
-lata@us.ibm.com</a>&gt;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">---<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">target/i386/gdbstub.c | 4 &#43;&#43;--<o:p></o:p></span></=
-p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">1 file changed, 2 insertions(&#43;), 2 deletions(-)<o:p></=
-o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">diff --git a/target/i386/gdbstub.c b/target/i386/gdbstub.c=
-<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">index aef25b70f1..572ead641c 100644<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">--- a/target/i386/gdbstub.c<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">&#43;&#43;&#43; b/target/i386/gdbstub.c<o:p></o:p></span><=
-/p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">@@ -350,15 &#43;350,15 @@ int x86_cpu_gdb_write_register(C=
-PUState *cs, uint8_t *mem_buf, int n)<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp; env-&gt;segs[R_GS].base =3D ldl_p(mem_buf);<o:p></o:p></span=
-></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp; return 4;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">-#ifdef TARGET_X86_64<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; case IDX_=
-SEG_REGS &#43; 8:<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">&#43;#ifdef TARGET_X86_64<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp; if (env-&gt;hflags &amp; HF_CS64_MASK) {<o:p></o:p></span></=
-p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; env-&gt;kernelgsbase =3D ldq_p(mem_b=
-uf);<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 8;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp; }<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp; env-&gt;kernelgsbase =3D ldl_p(mem_buf);<o:p></o:p></span></=
-p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
-sp;&nbsp; return 4;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">#endif<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">&#43;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp; return 4;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case=
- IDX_FP_REGS &#43; 8:<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp; cpu_set_fpuc(env, ldl_p(mem_buf));<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">-- <o:p>
-</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;">2.24.1<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
-urier New&quot;"><o:p>&nbsp;</o:p></span></p>
-</div>
-</body>
-</html>
-
---_000_62c3c3385b014ce1a6ca07f88973bf95usibmcom_--
+On 12/27/19 9:07 PM, Marek Dolata - mkdolata@us.ibm.com wrote:
+> Fixes: corrects clobbering of registers appearing after k_gs_base
+>=20
+> Buglink: https://bugs.launchpad.net/qemu/+bug/1857640
+>=20
+> Signed-off-by: Marek Dolata <mkdolata@us.ibm.com=20
+> <mailto:mkdolata@us.ibm.com>>
+>=20
+> ---
+>=20
+> target/i386/gdbstub.c | 4 ++--
+>=20
+> 1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/target/i386/gdbstub.c b/target/i386/gdbstub.c
+>=20
+> index aef25b70f1..572ead641c 100644
+>=20
+> --- a/target/i386/gdbstub.c
+>=20
+> +++ b/target/i386/gdbstub.c
+>=20
+> @@ -350,15 +350,15 @@ int x86_cpu_gdb_write_register(CPUState *cs,=20
+> uint8_t *mem_buf, int n)
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 env->segs[R_GS].base =3D ldl_p(mem_=
+buf);
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return 4;
+>=20
+> -#ifdef TARGET_X86_64
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0 case IDX_SEG_REGS + 8:
+>=20
+> +#ifdef TARGET_X86_64
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 if (env->hflags & HF_CS64_MASK) {
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 env->kernelgsbase =3D l=
+dq_p(mem_buf);
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return 8;
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 }
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 env->kernelgsbase =3D ldl_p(mem_buf=
+);
+>=20
+> -=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return 4;
+>=20
+> #endif
+>=20
+> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return 4;
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0case IDX_FP_REGS + 8:
+>=20
+>  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 cpu_set_fpuc(env, ldl_p(mem_buf));
+>=20
+> --=20
+>=20
+> 2.24.1
+>=20
 
 
