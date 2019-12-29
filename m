@@ -1,82 +1,96 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ilFPp-0004fz-Ry
-	for mharc-qemu-trivial@gnu.org; Sat, 28 Dec 2019 11:58:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34813)
+	id 1ilOdJ-0006lb-05
+	for mharc-qemu-trivial@gnu.org; Sat, 28 Dec 2019 21:48:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43386)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1ilFPn-0004eU-OG
- for qemu-trivial@nongnu.org; Sat, 28 Dec 2019 11:58:13 -0500
+ (envelope-from <mkdolata@us.ibm.com>) id 1ilOdF-0006io-Jx
+ for qemu-trivial@nongnu.org; Sat, 28 Dec 2019 21:48:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1ilFPl-0000E8-DN
- for qemu-trivial@nongnu.org; Sat, 28 Dec 2019 11:58:11 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:20702
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ilFPk-00007v-V4
- for qemu-trivial@nongnu.org; Sat, 28 Dec 2019 11:58:09 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1577552288;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZDik/qENimSiOTNyE7E+6Lmlst/8Rr8Dtv2Nv/DAZRk=;
- b=dAJDmdrNSvJvQ1lSVduZl2BPTEzWQh3vW6vu986yByoo1wkksDYCpOGqqGFlqsmctW/0M4
- cNvopNqM+iQ7foTueENVMnT7IY3ytQojH+WuTAB3NYlvppmWIwLTHVpZhLyT88IfOo92zP
- j5zsyDMNHbszp6dSaWs09mAMm3lgzn4=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-105-xewEVzEhM4qAwqAoI0PNyg-1; Sat, 28 Dec 2019 11:58:04 -0500
-Received: by mail-wr1-f69.google.com with SMTP id l20so8341818wrc.13
- for <qemu-trivial@nongnu.org>; Sat, 28 Dec 2019 08:58:03 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=eAPYpgunDwkHnTrJpGjelWBSwhOarkRJCG3bFIaFXno=;
- b=t37AwsB1SIKkt29b8MrQK9OSpLW/ZYYnuLlBmLXkCKaP8Gpc7q6A2s7siYvW5WKcx1
- SBmnOAJlj97gEL0AvxarAtEBOBs+ViydTgBzDBsrmNlbwzW2hqhcl3z72CpNLdZn90eE
- GdmdZywI8xtS1co//1LOuCUiSvOpNCiZ2kVCUcdWsSa5ONefCazcgx8AP8vJDFzUktAV
- AMR/VZZp2s7k274dURfamsR6b+oYQSVTfnxj3z3nWqsWeFOt9nBU1PdXREAX8R90lh3g
- TSAa+hmb0lG4t2Fj2zU1Paliwgj5RJXL2WrcHzYO6B/TXrsjPDhQ8gGte/fMw4vVTts6
- ACvw==
-X-Gm-Message-State: APjAAAWmLJzII5bMyUgf2HHQ67Q8tPNrXpDkCLL16eAHaLDgysTUtrvB
- GPGN/n8hB6dz21vUDMeI+ACJKxPlogp5IkbxMjTGEDRYT6Lrk2u0FAxTu6PxyLyL6w1eecO5FN9
- Ie3ImGR+ZTVerMtEEhA==
-X-Received: by 2002:a1c:2355:: with SMTP id j82mr25561366wmj.135.1577552283113; 
- Sat, 28 Dec 2019 08:58:03 -0800 (PST)
-X-Google-Smtp-Source: APXvYqybXEVye3NsPFqO6CMDAYzh75QR/hKvBd45IcXBziGwvLYRSDch4KXdpzckKsmYcptrC3F4qw==
-X-Received: by 2002:a1c:2355:: with SMTP id j82mr25561346wmj.135.1577552282748; 
- Sat, 28 Dec 2019 08:58:02 -0800 (PST)
-Received: from [192.168.1.25] (abayonne-654-1-186-92.w92-134.abo.wanadoo.fr.
- [92.134.161.92])
- by smtp.gmail.com with ESMTPSA id f65sm14960078wmf.2.2019.12.28.08.58.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 28 Dec 2019 08:58:02 -0800 (PST)
-Subject: Re: [PATCH V3] target/i386: Fix handling of k_gs_base register in
- 32-bit mode in gdbstub
-To: "Marek Dolata - mkdolata@us.ibm.com" <mkdolata@us.ibm.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ (envelope-from <mkdolata@us.ibm.com>) id 1ilOdD-0005zO-1j
+ for qemu-trivial@nongnu.org; Sat, 28 Dec 2019 21:48:40 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:1580
+ helo=mx0a-001b2d01.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <mkdolata@us.ibm.com>)
+ id 1ilOdC-0005w8-S7; Sat, 28 Dec 2019 21:48:38 -0500
+Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ xBT2gPVP117453; Sat, 28 Dec 2019 21:48:37 -0500
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 2x6441yh3g-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sat, 28 Dec 2019 21:48:37 -0500
+Received: from m0098420.ppops.net (m0098420.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id xBT2iZbu120229;
+ Sat, 28 Dec 2019 21:48:36 -0500
+Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.26])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 2x6441yh37-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sat, 28 Dec 2019 21:48:36 -0500
+Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
+ by ppma04wdc.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id xBT2jDb4022216;
+ Sun, 29 Dec 2019 02:48:36 GMT
+Received: from b03cxnp08025.gho.boulder.ibm.com
+ (b03cxnp08025.gho.boulder.ibm.com [9.17.130.17])
+ by ppma04wdc.us.ibm.com with ESMTP id 2x5xp5q1bg-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sun, 29 Dec 2019 02:48:36 +0000
+Received: from b03ledav003.gho.boulder.ibm.com
+ (b03ledav003.gho.boulder.ibm.com [9.17.130.234])
+ by b03cxnp08025.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ xBT2mZwd55116262
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sun, 29 Dec 2019 02:48:35 GMT
+Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 10E136A04D;
+ Sun, 29 Dec 2019 02:48:35 +0000 (GMT)
+Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D61496A047;
+ Sun, 29 Dec 2019 02:48:34 +0000 (GMT)
+Received: from mail.gmx.ibm.com (unknown [9.209.242.114])
+ by b03ledav003.gho.boulder.ibm.com (Postfix) with ESMTPS;
+ Sun, 29 Dec 2019 02:48:34 +0000 (GMT)
+Received: from m01ex005.gmx.ibm.com (10.148.53.45) by m01ex002.gmx.ibm.com
+ (10.148.53.59) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1779.2; Sat, 28 Dec
+ 2019 21:48:20 -0500
+Received: from m01ex005.gmx.ibm.com ([fe80::7d2d:476:2d5a:cb2f]) by
+ m01ex005.gmx.ibm.com ([fe80::7d2d:476:2d5a:cb2f%9]) with mapi id
+ 15.01.1779.002; Sat, 28 Dec 2019 20:48:20 -0600
+From: "Marek Dolata - mkdolata@us.ibm.com" <mkdolata@us.ibm.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Doug Gale <doug16k@gmail.com>,
  Markus Armbruster <armbru@redhat.com>, Richard Henderson <rth@twiddle.net>,
  Eduardo Habkost <ehabkost@redhat.com>
-References: <2cf601fe9f2d4447ba4eec653df634ee@us.ibm.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <b44c1837-037d-24f4-3ff0-6a36e3fea1e0@redhat.com>
-Date: Sat, 28 Dec 2019 17:57:58 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
-MIME-Version: 1.0
-In-Reply-To: <2cf601fe9f2d4447ba4eec653df634ee@us.ibm.com>
+Subject: [PATCH v4] target/i386: Fix handling of k_gs_base register in 32-bit
+ mode in gdbstub
+Thread-Topic: [PATCH v4] target/i386: Fix handling of k_gs_base register in
+ 32-bit mode in gdbstub
+Thread-Index: AdW98htrzEem9H8FS6K9td8fI3BiWQ==
+Date: Sun, 29 Dec 2019 02:48:20 +0000
+Message-ID: <4afa19236529458282794f682dfac556@us.ibm.com>
+Accept-Language: en-US
 Content-Language: en-US
-X-MC-Unique: xewEVzEhM4qAwqAoI0PNyg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [9.16.14.37]
+Content-Type: multipart/alternative;
+ boundary="_000_4afa19236529458282794f682dfac556usibmcom_"
+MIME-Version: 1.0
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.95,18.0.572
+ definitions=2019-12-28_08:2019-12-27,2019-12-28 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 bulkscore=0
+ clxscore=1015 suspectscore=0 mlxlogscore=999 phishscore=0
+ lowpriorityscore=0 priorityscore=1501 malwarescore=0 impostorscore=0
+ mlxscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-1910280000 definitions=main-1912290025
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
+X-Received-From: 148.163.158.5
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,95 +102,202 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 28 Dec 2019 16:58:13 -0000
+X-List-Received-Date: Sun, 29 Dec 2019 02:48:42 -0000
 
-On 12/28/19 12:37 AM, Marek Dolata - mkdolata@us.ibm.com wrote:
-> Fixes: corrects clobbering of registers appearing after k_gs_base
->=20
-> Buglink: https://bugs.launchpad.net/qemu/+bug/1857640
->=20
-> Signed-off-by: Marek Dolata <mkdolata@us.ibm.com=20
-> <mailto:mkdolata@us.ibm.com>>
->=20
-> ---
->=20
-> target/i386/gdbstub.c | 4 ++--
->=20
-> 1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/target/i386/gdbstub.c b/target/i386/gdbstub.c
->=20
-> index aef25b70f1..572ead641c 100644
->=20
-> --- a/target/i386/gdbstub.c
->=20
-> +++ b/target/i386/gdbstub.c
->=20
-> @@ -350,15 +350,15 @@ int x86_cpu_gdb_write_register(CPUState *cs,=20
-> uint8_t *mem_buf, int n)
->=20
->  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 env->segs[R_GS].base =3D ldl_p(mem_=
-buf);
->=20
->  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return 4;
->=20
-> -#ifdef TARGET_X86_64
->=20
->  =A0=A0=A0=A0=A0=A0=A0=A0 case IDX_SEG_REGS + 8:
->=20
-> +#ifdef TARGET_X86_64
->=20
->  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 if (env->hflags & HF_CS64_MASK) {
->=20
->  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 env->kernelgsbase =3D l=
-dq_p(mem_buf);
->=20
->  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return 8;
->=20
->  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 }
->=20
->  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 env->kernelgsbase =3D ldl_p(mem_buf=
-);
->=20
-> -=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return 4;
->=20
-> #endif
->=20
-> +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return 4;
->=20
->  =A0=A0=A0=A0=A0=A0=A0=A0=A0case IDX_FP_REGS + 8:
->=20
->  =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 cpu_set_fpuc(env, ldl_p(mem_buf));
->=20
-> --=20
->=20
-> 2.24.1
->=20
+--_000_4afa19236529458282794f682dfac556usibmcom_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-Still:
+Fixes: corrects clobbering of registers appearing after k_gs_base
+Buglink: https://bugs.launchpad.net/qemu/+bug/1857640
 
-$ pwclient git-am 11311411
-Applying patch #11311411 using "git am"
-Description: [V3] target/i386: Fix handling of k_gs_base register in=20
-32-bit mode in gdbstub
-Applying: target/i386: Fix handling of k_gs_base register in 32-bit mode=20
-in gdbstub
-error: corrupt patch at line 25
-Patch failed at 0001 target/i386: Fix handling of k_gs_base register in=20
-32-bit mode in gdbstub
-hint: Use 'git am --show-current-patch' to see the failed patch
-When you have resolved this problem, run "git am --continue".
-If you prefer to skip this patch, run "git am --skip" instead.
-To restore the original branch and stop patching, run "git am --abort".
-'git am' failed with exit status 128
+Signed-off-by: Marek Dolata <mkdolata@us.ibm.com>
+---
+target/i386/gdbstub.c | 4 ++--
+1 file changed, 2 insertions(+), 2 deletions(-)
 
-I thought this could be due to this recent git change:
-https://github.com/git/git/commit/5983ddc1652
-and would suggest to try with:
+diff --git a/target/i386/gdbstub.c b/target/i386/gdbstub.c
+index aef25b70f1..572ead641c 100644
+--- a/target/i386/gdbstub.c
++++ b/target/i386/gdbstub.c
+@@ -350,15 +350,15 @@ int x86_cpu_gdb_write_register(CPUState *cs, uint8_t =
+*mem_buf, int n)
+             env->segs[R_GS].base =3D ldl_p(mem_buf);
+             return 4;
+-#ifdef TARGET_X86_64
+         case IDX_SEG_REGS + 8:
++#ifdef TARGET_X86_64
+             if (env->hflags & HF_CS64_MASK) {
+                 env->kernelgsbase =3D ldq_p(mem_buf);
+                 return 8;
+             }
+             env->kernelgsbase =3D ldl_p(mem_buf);
+-            return 4;
+#endif
++            return 4;
+         case IDX_FP_REGS + 8:
+             cpu_set_fpuc(env, ldl_p(mem_buf));
+--
+2.24.1
 
-$ git config sendemail.transferEncoding 8bit
 
-but you use git 2.24 and this got introduced in 2.25, so I'm not sure=20
-what's wrong. You could still try, in case this helps...
+--_000_4afa19236529458282794f682dfac556usibmcom_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"IBM Plex Sans";
+	panose-1:2 11 5 3 5 2 3 0 2 3;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"IBM Plex Sans",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri",sans-serif;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">Fixes: corrects clobbering of registers appea=
+ring after k_gs_base<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">Buglink: https://bugs.launchpad.net/qemu/&#43=
+;bug/1857640<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">Signed-off-by: Marek Dolata &lt;mkdolata@us.i=
+bm.com&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">---<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">target/i386/gdbstub.c | 4 &#43;&#43;--<o:p></=
+o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">1 file changed, 2 insertions(&#43;), 2 deleti=
+ons(-)<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">diff --git a/target/i386/gdbstub.c b/target/i=
+386/gdbstub.c<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">index aef25b70f1..572ead641c 100644<o:p></o:p=
+></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">--- a/target/i386/gdbstub.c<o:p></o:p></span>=
+</p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">&#43;&#43;&#43; b/target/i386/gdbstub.c<o:p><=
+/o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">@@ -350,15 &#43;350,15 @@ int x86_cpu_gdb_wri=
+te_register(CPUState *cs, uint8_t *mem_buf, int n)<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp; env-&gt;segs[R_GS].base =3D ldl_p(mem_buf);<o:p=
+></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp; return 4;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">-#ifdef TARGET_X86_64<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp; case IDX_SEG_REGS &#43; 8:<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">&#43;#ifdef TARGET_X86_64<o:p></o:p></span></=
+p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp; if (env-&gt;hflags &amp; HF_CS64_MASK) {<o:p></=
+o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; env-&gt;kernelgsbase =
+=3D ldq_p(mem_buf);<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 8;<o:p></o:p></s=
+pan></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;}<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp; env-&gt;kernelgsbase =3D ldl_p(mem_buf);<o:p></=
+o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp; return 4;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">#endif<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">&#43;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp; return 4;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;case IDX_FP_REGS &#43; 8:<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp; cpu_set_fpuc(env, ldl_p(mem_buf));<o:p></o:p></=
+span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">--
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;IB=
+M Plex Sans&quot;,sans-serif">2.24.1<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+</div>
+</body>
+</html>
+
+--_000_4afa19236529458282794f682dfac556usibmcom_--
 
 
