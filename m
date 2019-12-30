@@ -1,61 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ily8Q-0001rZ-GY
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Dec 2019 11:43:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51753)
+	id 1ilyOv-0005Oi-Si
+	for mharc-qemu-trivial@gnu.org; Mon, 30 Dec 2019 12:00:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53857)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alex.bennee@linaro.org>) id 1ily8O-0001r9-4V
- for qemu-trivial@nongnu.org; Mon, 30 Dec 2019 11:43:13 -0500
+ (envelope-from <philmd@redhat.com>) id 1ilyOq-0005Fr-VA
+ for qemu-trivial@nongnu.org; Mon, 30 Dec 2019 12:00:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alex.bennee@linaro.org>) id 1ily8M-0005FN-Pf
- for qemu-trivial@nongnu.org; Mon, 30 Dec 2019 11:43:11 -0500
-Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230]:42287)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
- id 1ily8M-0005Dn-HJ
- for qemu-trivial@nongnu.org; Mon, 30 Dec 2019 11:43:10 -0500
-Received: by mail-lj1-x230.google.com with SMTP id y4so19495149ljj.9
- for <qemu-trivial@nongnu.org>; Mon, 30 Dec 2019 08:43:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ZjUhiqstMZuj78cqOT1rhjHaT3mb+h7oGr+unit2u0w=;
- b=VcjM742hEnICaPVExdGd+nuKw3LUw3RCSWITxxiwMgK56en0+BtPq+CIrDRO0Qzt3a
- 86DA5T//wHsphWl7GiIgyzDSHOfPcdRwfI14HpbFt6TbnWwTUFe42KC9MS8PFqhjCRXL
- c/gspFv9H1zoSRGR8W3VsFtSWu3TjQA3wJyE6Sf205UigllrKxoise3/lUea+Co+EdN3
- oFc3sUyP1huKomHEEo/YcuNJQ6EQalen9FN9BXBesYGT1O8GcVt9moUKH3QbPj+9r3sO
- WOJASILKmTU/+sMujYWan7vy2I2ix0WNsbkViJ0+VHN8SjIYSZiPEMbtyfRIFMdfejn6
- UrZA==
+ (envelope-from <philmd@redhat.com>) id 1ilyOn-0002IT-7f
+ for qemu-trivial@nongnu.org; Mon, 30 Dec 2019 12:00:11 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:49697
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1ilyOm-0002I8-DP
+ for qemu-trivial@nongnu.org; Mon, 30 Dec 2019 12:00:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1577725207;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=uYHvn2oYThI3z3bqnaWp4TJRAroW2ZDXFyKOmcujNKs=;
+ b=VLOgRrXyY7WZWPfs8dNxzOwqQnLoNKCLBT5HTVJDNYos1JYn/xos6tXJgl3VVxjdk5nVcR
+ ciIvIynUP5VI3rxtroRCV2hYHuN2prQOjU2xa2/PWB9OxBwag4+05vx0vaNjeMTzVj5Jvy
+ zKxJB1sONUJV4r9FIXFyInwx7KZIbQc=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-99-z_uIzSoGMSqpu1M1t9B0OA-1; Mon, 30 Dec 2019 12:00:05 -0500
+Received: by mail-wr1-f69.google.com with SMTP id h30so9164164wrh.5
+ for <qemu-trivial@nongnu.org>; Mon, 30 Dec 2019 09:00:05 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ZjUhiqstMZuj78cqOT1rhjHaT3mb+h7oGr+unit2u0w=;
- b=O4PhhJzy1X2t2MkMJsjUhDjVqupoGempSM+AZC1giIf3ayWGDuhidmWHw7yLu731nc
- GPcMEf1/8mAyj/FF5aIezVGY/+TloaDHMwlJMHt7/h/hh5bTifr1pp826+nII7xZKHIa
- mNmtACfg8vKHdcehpLgQMKvvDnplwbP33yOlhA2yZ6XJPuGovTzuD1R0zeEK6Yk0bqFO
- J4rAazot1wQGv+hCi023Scj3gR/yuiChgFpBhFM0pEmLQCDl24cnAUYyAsPrxFUu3NHd
- CtAZw3VFXsx2WqVyLdeYOksgvBfMWARr/cRjx+8ibHJ0ailsCUj869/YxDikpAOhL6zM
- cAqw==
-X-Gm-Message-State: APjAAAWVBaDBk8feWsOm2fqC1Buz5vYbd9I6O/dVOiFGE2iw6oBgtrAS
- YSpHCUPddTx9irLDLYw3eFRZLcHN9IVvFEjwAlEDfw==
-X-Google-Smtp-Source: APXvYqxoBQ2SedT5TFF67ACfrJIu1XS5GRSdKDBvJZCLezKRL2ZzuPUmLyAKQLDpIZMRQWxv46Kje8wKQd8EN0jAFmA=
-X-Received: by 2002:a05:651c:239:: with SMTP id
- z25mr39600358ljn.48.1577724188187; 
- Mon, 30 Dec 2019 08:43:08 -0800 (PST)
-MIME-Version: 1.0
-References: <20191230111801.26315-1-philmd@redhat.com>
-In-Reply-To: <20191230111801.26315-1-philmd@redhat.com>
-From: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Date: Mon, 30 Dec 2019 16:42:55 +0000
-Message-ID: <CAHDbmO2-LeyiGcaZxDdxGr+BZVyUhM0aXeAqSy8pBG+_zBpz9g@mail.gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=BqrS0mPxlhSGMdF6WXF/f+VF7RdTblu/FV8J5psIfCo=;
+ b=R2MYSpPz+Wy00q1WsrGBt3o6fL7pJ/jEWAMqUbvLyL6dHvG677QteZwJMwdcxY+0T5
+ 1wmwRr/PbjCLtO98Ag3QpEI19hDpzlRctrKsJ0wtBYsKROgV2VvJXX/ED2RyI5ggkw0w
+ +z6+qD7TOwoTzlaRhWtClyrZrA4/WmbUH343oh/JMokqVyva0DA5eutMXQVeWUJuLDOG
+ Gdr9rZti3h7H8TkIBBWguYs21Qh8KyeA/aBMzt6966aagnTCIhJLecnasJfi0PrDZbZo
+ /54btpWLvm+jXe9VyoKraOsA3SrXrd76wNcrFTE4JKX8fgL5/qtwtOFyaDENb3qSRE+U
+ b75g==
+X-Gm-Message-State: APjAAAVApSY+yJ33iR1EQggRyia7/SMySP7/EzHu9HuKuiyzT3vCmrbz
+ +JmrxY1kZhvbeebn7pgs3sAZIb6o+JxNmuRivtfhXbxU5ZXcRdIFTm6Nb0nwhcBtjcEjrlpw0Kj
+ U9wKRD4t54NxfKBgpkg==
+X-Received: by 2002:a5d:6802:: with SMTP id w2mr66582054wru.353.1577725204576; 
+ Mon, 30 Dec 2019 09:00:04 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxrXmBmTAvQCkVlLexJnKww7T0/7iXsZsPatiQlXiaUe8GPDSUSP/S3nW5Bi1rOl89ksMBTDw==
+X-Received: by 2002:a5d:6802:: with SMTP id w2mr66582031wru.353.1577725204259; 
+ Mon, 30 Dec 2019 09:00:04 -0800 (PST)
+Received: from [192.168.1.25] (abayonne-654-1-186-92.w92-134.abo.wanadoo.fr.
+ [92.134.161.92])
+ by smtp.gmail.com with ESMTPSA id f207sm20297wme.9.2019.12.30.09.00.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 30 Dec 2019 09:00:03 -0800 (PST)
 Subject: Re: [PATCH] MAINTAINERS: Remove Claudio Fontana bouncing email
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Claudio Fontana <claudio.fontana@gmail.com>
-Content-Type: multipart/alternative; boundary="000000000000ca708a059aee8940"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::230
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Claudio Fontana <claudio.fontana@gmail.com>
+References: <20191230111801.26315-1-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <6e105845-05b1-de20-0844-7081821d0479@redhat.com>
+Date: Mon, 30 Dec 2019 18:00:02 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
+MIME-Version: 1.0
+In-Reply-To: <20191230111801.26315-1-philmd@redhat.com>
+Content-Language: en-US
+X-MC-Unique: z_uIzSoGMSqpu1M1t9B0OA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -67,94 +83,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Dec 2019 16:43:13 -0000
+X-List-Received-Date: Mon, 30 Dec 2019 17:00:16 -0000
 
---000000000000ca708a059aee8940
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-On Mon, 30 Dec 2019, 11:19 Philippe Mathieu-Daud=C3=A9, <philmd@redhat.com>
-wrote:
-
+On 12/30/19 12:18 PM, Philippe Mathieu-Daud=C3=A9 wrote:
 > Claudio Fontana Huawei email is bouncing, remove it.
->
->   The message you sent to claudio.fontana@huawei.com couldn't be
->   delivered due to: Recipient email address is possibly incorrect.
->
->   Further information:
->     5.1.1 Error: invalid recipients
->
+>=20
+>    The message you sent to claudio.fontana@huawei.com couldn't be
+>    delivered due to: Recipient email address is possibly incorrect.
+>=20
+>    Further information:
+>      5.1.1 Error: invalid recipients
+>=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  MAINTAINERS | 1 -
->  1 file changed, 1 deletion(-)
->
+>   MAINTAINERS | 1 -
+>   1 file changed, 1 deletion(-)
+>=20
 > diff --git a/MAINTAINERS b/MAINTAINERS
 > index 387879aebc..8db4de6b9a 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
 > @@ -2383,7 +2383,6 @@ F: plugins/
->  F: tests/plugin
->
->  AArch64 TCG target
+>   F: tests/plugin
+>  =20
+>   AArch64 TCG target
 > -M: Claudio Fontana <claudio.fontana@huawei.com>
->  M: Claudio Fontana <claudio.fontana@gmail.com>
->  S: Maintained
->  L: qemu-arm@nongnu.org
-> --
-> 2.21.0
->
->
->
+>   M: Claudio Fontana <claudio.fontana@gmail.com>
+>   S: Maintained
+>   L: qemu-arm@nongnu.org
+>=20
 
---000000000000ca708a059aee8940
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Claudio, if you want we can amend to this patch:
 
-<div dir=3D"auto">Reviewed-by: Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.=
-bennee@linaro.org">alex.bennee@linaro.org</a>&gt;</div><br><div class=3D"gm=
-ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, 30 Dec 2019, 11:19=
- Philippe Mathieu-Daud=C3=A9, &lt;<a href=3D"mailto:philmd@redhat.com">phil=
-md@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" sty=
-le=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">Claudi=
-o Fontana Huawei email is bouncing, remove it.<br>
-<br>
-=C2=A0 The message you sent to <a href=3D"mailto:claudio.fontana@huawei.com=
-" target=3D"_blank" rel=3D"noreferrer">claudio.fontana@huawei.com</a> could=
-n&#39;t be<br>
-=C2=A0 delivered due to: Recipient email address is possibly incorrect.<br>
-<br>
-=C2=A0 Further information:<br>
-=C2=A0 =C2=A0 5.1.1 Error: invalid recipients<br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@red=
-hat.com" target=3D"_blank" rel=3D"noreferrer">philmd@redhat.com</a>&gt;<br>
----<br>
-=C2=A0MAINTAINERS | 1 -<br>
-=C2=A01 file changed, 1 deletion(-)<br>
-<br>
-diff --git a/MAINTAINERS b/MAINTAINERS<br>
-index 387879aebc..8db4de6b9a 100644<br>
---- a/MAINTAINERS<br>
-+++ b/MAINTAINERS<br>
-@@ -2383,7 +2383,6 @@ F: plugins/<br>
-=C2=A0F: tests/plugin<br>
-<br>
-=C2=A0AArch64 TCG target<br>
--M: Claudio Fontana &lt;<a href=3D"mailto:claudio.fontana@huawei.com" targe=
-t=3D"_blank" rel=3D"noreferrer">claudio.fontana@huawei.com</a>&gt;<br>
-=C2=A0M: Claudio Fontana &lt;<a href=3D"mailto:claudio.fontana@gmail.com" t=
-arget=3D"_blank" rel=3D"noreferrer">claudio.fontana@gmail.com</a>&gt;<br>
-=C2=A0S: Maintained<br>
-=C2=A0L: <a href=3D"mailto:qemu-arm@nongnu.org" target=3D"_blank" rel=3D"no=
-referrer">qemu-arm@nongnu.org</a><br>
--- <br>
-2.21.0<br>
-<br>
-<br>
-</blockquote></div>
+-- >8 --
+diff --git a/.mailmap b/.mailmap
+index 3816e4effe..4ed87fb53f 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -43,6 +43,7 @@ Aleksandar Markovic <amarkovic@wavecomp.com>=20
+<aleksandar.markovic@mips.com>
+  Aleksandar Markovic <amarkovic@wavecomp.com>=20
+<aleksandar.markovic@imgtec.com>
+  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com> <arikalo@wavecomp.com>
+  Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori=20
+<aliguori@us.ibm.com>
++Claudio Fontana <claudio.fontana@gmail.com> <claudio.fontana@huawei.com>
+  James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
+  Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+  Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
+---
 
---000000000000ca708a059aee8940--
+Simply reply with your Ack-by such "with .mailmap change:"...
+
 
