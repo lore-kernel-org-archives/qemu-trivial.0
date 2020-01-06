@@ -1,56 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobmC-0000sW-O6
+	id 1iobmC-0000ss-Tv
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46181)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46253)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4r-0003EQ-2v
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:10 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4v-0003Mu-Q6
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4p-0004vD-TG
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:08 -0500
-Received: from mail-qt1-x842.google.com ([2607:f8b0:4864:20::842]:41709)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4u-00050T-Ny
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:13 -0500
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:38123)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4n-0004qX-2V; Mon, 06 Jan 2020 13:26:05 -0500
-Received: by mail-qt1-x842.google.com with SMTP id k40so43186289qtk.8;
- Mon, 06 Jan 2020 10:26:05 -0800 (PST)
+ id 1ioX4s-0004y0-I5; Mon, 06 Jan 2020 13:26:10 -0500
+Received: by mail-qk1-x741.google.com with SMTP id k6so40298558qki.5;
+ Mon, 06 Jan 2020 10:26:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=jkWrhgPSptvUdoRpBvu+nZPt4DG/CCW6P9e4SvO3R4Y=;
- b=PpUVHzsymhP0qmvWWvSH988bOE8R/TWD2utS/aX3eog494DPlrx06/rLaIj/20bdOD
- 5cw7BvX+je2pcnvWwYaAt0BlnD8JeZEhq4YaZ2fjSBW0E+Aq/GrFCHEcEDTNyLogntj1
- 4LgtKWaFgsSfXKgXLvi5hnn4YuWWrd89zF2VI8qK0yFs3EKSllP9i35mywAVXz4knxtK
- /ZoIxnj2xzEYMgDe8c5ThzuPJd+M4atCl3zbtmXUaA0o0mDwkqGPo3Zxet287hcMM0m9
- cL8S0bQwL4eYsHUxhEDrEH3nEp23MUUNQzwb9N+Div5n48JnD3bFUbKI25aWssVDp7/3
- fhOg==
+ bh=3FG9qdDQWzZLGEvFHKtE2+cU1rKneLyoMCDilVuOhQw=;
+ b=GtSaFG8D1mBVeP9wYwdRsmx7jcl3MN12LcQELS2dx6mPJSyN+d7D/TqBkLUCcUL91Z
+ pshF27WZbKMYFQAIp0G4naYN6nBcbDAUwS3tGLKw+LiUdVLz/pk3TKGQMBQDx2FZHddP
+ d0T4Twaa5/Hj9ChzEhzh3XDZd5t2VROGdeqMd+XXWfewSFZvAeKIwGw5ZO9sEHVBHcOR
+ sGwzTMjVSmPuzGHTsv/n+t5sYkUbgcYQs8QKVKJbo1j/13rd6hIdiDI0zOrYsOa9MyXW
+ cPlXfBfLUnBZDh/CPdxw/iGylpD0cCctLe4kxmE0IDmXsHHDx+0DvOhTrVMxUZTTZkSb
+ xIWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=jkWrhgPSptvUdoRpBvu+nZPt4DG/CCW6P9e4SvO3R4Y=;
- b=uKzQZEN4LUMYBF2rPtnWCNxrIqPduI4FaE2HSd3EGPiS/Y8my5Cpjvy9o/S4VS0YS3
- idh/NHfHFjHHP08DWLXC+xv7m6vmuRgtYf6FN0HTcHVlCZt7BSbn+By8S95BzOOjJXZK
- BUNmhbglhaBFe090MoCY7HD4I7NMBmME+mYI80jtUfbXK/q7Z9S2BTYc6y3m+TZCOYbV
- zj0yG0tW3FebmarxqT5Ayzj0N5643wMFurkAb6D7A/UubE4aBGmzftdcPB0gHejsjjK6
- vtSVLcuWVTZOPmPV5H11TcaF+AhLOqjVOqTtEw9XY2kkOnrqvN9aTzyHV8E2U1y6p6br
- JR7A==
-X-Gm-Message-State: APjAAAWR+HatDfD6WYQuILLeeLlmM2u7shvghX4IQ1bm9PIerm5SYl20
- DJEJXYMfu//IXlBkh1e1RPGM9uVe
-X-Google-Smtp-Source: APXvYqyfAVd/QYltAIZUHmuLgfKU7232NaaldQUa3oK+LsgJIaAp0wBAPCDwRaSixBJh8RVGfnZ/Eg==
-X-Received: by 2002:ac8:404e:: with SMTP id j14mr67129587qtl.312.1578335164489; 
- Mon, 06 Jan 2020 10:26:04 -0800 (PST)
+ bh=3FG9qdDQWzZLGEvFHKtE2+cU1rKneLyoMCDilVuOhQw=;
+ b=XG+9UbDaGOr/+d3ZBow58jUjBNpFwGQBfFqBXam3JwNWMAC/u9zXX2G4FORF+P3i1j
+ IhjHWBpaF82HJlQ+8sduPp2jf9ttLmaavRS2EPTDxwCxpEEyrHpU/ElajCSEXv8wEMSY
+ ZYEQJ0dkGKr3TQ1QDnRLkNHy2/8Xg98i8QqLOAaWWB8D1xslTjSzOMQv1XtqVK7xWCnu
+ rADTwYtCEQJwEtbwUaYlnQDGMPuqDnhQqW7Hz+bRnF8SO93Oa/BfwOxgMOpGYoLvb3nj
+ IQYI4/2SctCTRRF4nWe52e1L1FEqJnC7G2hX4aKWt+/Z7uK2HZ+ttCip+O+AgUReSAp/
+ sKdQ==
+X-Gm-Message-State: APjAAAUGbv3EN1CiGYNTJaSOeCCAGZJN7Uu/qXl8gtVMEfEqZh7+Jzkc
+ NHH7eSus5dc8OygoRKeGwyLSR3xm
+X-Google-Smtp-Source: APXvYqzFew3AJMCvTiarhXTnm1iHIqDjLoyAdP9XUwvEvi4CAIw5zq9xyF6Xr0nVkXGwaZxqVdwk1g==
+X-Received: by 2002:a37:48f:: with SMTP id 137mr83918265qke.25.1578335169968; 
+ Mon, 06 Jan 2020 10:26:09 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.02
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:26:04 -0800 (PST)
+ Mon, 06 Jan 2020 10:26:09 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH v1 40/59] hsb/hcd-ehci.c: remove unneeded labels
-Date: Mon,  6 Jan 2020 15:24:06 -0300
-Message-Id: <20200106182425.20312-41-danielhb413@gmail.com>
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: [PATCH v1 43/59] i386/amd_iommu.c: remove unneeded label in
+ amdvi_int_remap_msi()
+Date: Mon,  6 Jan 2020 15:24:09 -0300
+Message-Id: <20200106182425.20312-44-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -58,7 +60,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::842
+X-Received-From: 2607:f8b0:4864:20::741
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,138 +73,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:26:11 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:26:16 -0000
 
-Label 'out' in ehci_state_fetchentry(), ehci_state_waitlisthead(),
-ehci_state_fetchqh() and ehci_state_execute() can be replaced
-by 'return' with the appropriate value.
+'remap_fail' label can be replaced by 'return' with the
+adequate error value.
 
-CC: Gerd Hoffmann <kraxel@redhat.com>
+CC: Michael S. Tsirkin <mst@redhat.com>
+CC: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- hw/usb/hcd-ehci.c | 32 ++++++++++----------------------
- 1 file changed, 10 insertions(+), 22 deletions(-)
+ hw/i386/amd_iommu.c | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
 
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-index 56ab2f457f..d8103102d6 100644
---- a/hw/usb/hcd-ehci.c
-+++ b/hw/usb/hcd-ehci.c
-@@ -1511,7 +1511,6 @@ static int ehci_state_waitlisthead(EHCIState *ehci,  int async)
- {
-     EHCIqh qh;
-     int i = 0;
--    int again = 0;
-     uint32_t entry = ehci->asynclistaddr;
- 
-     /* set reclamation flag at start event (4.8.6) */
-@@ -1536,8 +1535,7 @@ static int ehci_state_waitlisthead(EHCIState *ehci,  int async)
- 
-             ehci_set_fetch_addr(ehci, async, entry);
-             ehci_set_state(ehci, async, EST_FETCHENTRY);
--            again = 1;
--            goto out;
-+            return 1;
-         }
- 
-         entry = qh.next;
-@@ -1550,8 +1548,7 @@ static int ehci_state_waitlisthead(EHCIState *ehci,  int async)
- 
-     ehci_set_state(ehci, async, EST_ACTIVE);
- 
--out:
--    return again;
-+    return 0;
- }
- 
- 
-@@ -1565,7 +1562,7 @@ static int ehci_state_fetchentry(EHCIState *ehci, int async)
- 
-     if (NLPTR_TBIT(entry)) {
-         ehci_set_state(ehci, async, EST_ACTIVE);
--        goto out;
-+        return 0;
-     }
- 
-     /* section 4.8, only QH in async schedule */
-@@ -1597,7 +1594,6 @@ static int ehci_state_fetchentry(EHCIState *ehci, int async)
-         return -1;
-     }
- 
--out:
-     return again;
- }
- 
-@@ -1617,14 +1613,12 @@ static EHCIQueue *ehci_state_fetchqh(EHCIState *ehci, int async)
-     if (q->seen > 1) {
-         /* we are going in circles -- stop processing */
-         ehci_set_state(ehci, async, EST_ACTIVE);
--        q = NULL;
--        goto out;
-+        return NULL;
-     }
- 
-     if (get_dwords(ehci, NLPTR_GET(q->qhaddr),
-                    (uint32_t *) &qh, sizeof(EHCIqh) >> 2) < 0) {
--        q = NULL;
--        goto out;
-+        return NULL;
-     }
-     ehci_trace_qh(q, NLPTR_GET(q->qhaddr), &qh);
- 
-@@ -1658,8 +1652,7 @@ static EHCIQueue *ehci_state_fetchqh(EHCIState *ehci, int async)
-             DPRINTF("FETCHQH:  QH 0x%08x. H-bit set, reclamation status reset"
-                        " - done processing\n", q->qhaddr);
-             ehci_set_state(ehci, async, EST_ACTIVE);
--            q = NULL;
--            goto out;
-+            return NULL;
-         }
-     }
- 
-@@ -1688,7 +1681,6 @@ static EHCIQueue *ehci_state_fetchqh(EHCIState *ehci, int async)
-         ehci_set_state(ehci, async, EST_ADVANCEQUEUE);
-     }
- 
--out:
-     return q;
- }
- 
-@@ -1932,8 +1924,7 @@ static int ehci_state_execute(EHCIQueue *q)
-     /* 4.10.3, bottom of page 82, go horizontal on transaction counter == 0 */
-     if (!q->async && q->transact_ctr == 0) {
-         ehci_set_state(q->ehci, q->async, EST_HORIZONTALQH);
--        again = 1;
--        goto out;
-+        return 1;
-     }
- 
-     if (q->async) {
-@@ -1942,7 +1933,7 @@ static int ehci_state_execute(EHCIQueue *q)
- 
-     again = ehci_execute(p, "process");
-     if (again == -1) {
--        goto out;
-+        return -1;
-     }
-     if (p->packet.status == USB_RET_ASYNC) {
-         ehci_flush_qh(q);
-@@ -1954,14 +1945,11 @@ static int ehci_state_execute(EHCIQueue *q)
+diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
+index b1175e52c7..711e1f6e40 100644
+--- a/hw/i386/amd_iommu.c
++++ b/hw/i386/amd_iommu.c
+@@ -1268,7 +1268,7 @@ static int amdvi_int_remap_msi(AMDVIState *iommu,
+         trace_amdvi_ir_delivery_mode("fixed/arbitrated");
+         ret = __amdvi_int_remap_msi(iommu, origin, translated, dte, &irq, sid);
+         if (ret < 0) {
+-            goto remap_fail;
++            return ret;
          } else {
-             again = 1;
-         }
--        goto out;
-+        return again;
+             /* Translate IRQ to MSI messages */
+             x86_iommu_irq_to_msi_message(&irq, translated);
+@@ -1298,7 +1298,7 @@ static int amdvi_int_remap_msi(AMDVIState *iommu,
      }
  
-     ehci_set_state(q->ehci, q->async, EST_EXECUTING);
--    again = 1;
+     if (ret < 0) {
+-        goto remap_fail;
++        return ret;
+     }
+ 
+     /*
+@@ -1309,25 +1309,20 @@ static int amdvi_int_remap_msi(AMDVIState *iommu,
+     dest_mode = (origin->address >> MSI_ADDR_DEST_MODE_SHIFT) & 1;
+     if (dest_mode) {
+         trace_amdvi_ir_err("invalid dest_mode");
+-        ret = -AMDVI_IR_ERR;
+-        goto remap_fail;
++        return -AMDVI_IR_ERR;
+     }
+ 
+     if (pass) {
+         memcpy(translated, origin, sizeof(*origin));
+     } else {
+         trace_amdvi_ir_err("passthrough is not enabled");
+-        ret = -AMDVI_IR_ERR;
+-        goto remap_fail;
++        return -AMDVI_IR_ERR;
+     }
+ 
+ out:
+     trace_amdvi_ir_remap_msi(origin->address, origin->data,
+                              translated->address, translated->data);
+     return 0;
 -
--out:
--    return again;
-+    return 1;
+-remap_fail:
+-    return ret;
  }
  
- static int ehci_state_executing(EHCIQueue *q)
+ static int amdvi_int_remap(X86IOMMUState *iommu,
 -- 
 2.24.1
 
