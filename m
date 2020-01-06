@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobmB-0000r2-Ur
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45873)
+	id 1iobmC-0000rL-5L
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46003)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4W-0002dG-Jj
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:49 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4f-0002rv-2D
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4V-0004ZC-Iw
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:48 -0500
-Received: from mail-qt1-x843.google.com ([2607:f8b0:4864:20::843]:44907)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4d-0004hT-WE
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:56 -0500
+Received: from mail-qv1-xf44.google.com ([2607:f8b0:4864:20::f44]:45620)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4T-0004Wp-8I; Mon, 06 Jan 2020 13:25:45 -0500
-Received: by mail-qt1-x843.google.com with SMTP id t3so43183563qtr.11;
- Mon, 06 Jan 2020 10:25:45 -0800 (PST)
+ id 1ioX4b-0004ey-PZ; Mon, 06 Jan 2020 13:25:53 -0500
+Received: by mail-qv1-xf44.google.com with SMTP id l14so19416062qvu.12;
+ Mon, 06 Jan 2020 10:25:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=MbtlCtBPgzqoGr8mUx8uII1CR9SSU0AvNsp1PJ3n1Aw=;
- b=DORwoTJXuE+VEhA22rmb5ertrcQheAF+szdeA/wGUNHxxKnamMDt8mRrrsJ6mJkiT3
- wKSx8+Cq/3PnnQRHKclMoXRz17zvGcyNRUqLba3lQvEjdeEQjjvf1ulcnsODh4TRz+Yx
- N1mYIlPx7eHSnxvSCFecSThkdRGuw/7ayXB47wtZabqFVF1BNi/VBPJO9XmaFAZ3xsbF
- Ay5OApQh/ce0NN1xHJkSDew0ldGnQluXbMJbE4S04iP7oYYUFY8l0DX7y2b3oS3tAdjC
- Lpws/XX14RY2vG++zCmrt4t9zaRYlIS/VHmIAIYzAsKpP62XCDMHjvmHKPS+g4dkoNDU
- CObA==
+ bh=+Ybn8SHkq8jjr5laYfWKQovRFgmNlWcpAqoISVHGuSA=;
+ b=PcQxEVDfKIoEBYkWAYPs+4/6kfD+8h3oxGya2O1PCDxbqG286Exuqa4QtABEnAtgkM
+ SeS5QttmNwC/kDzG2gAcdHnKpFoY911IygzOXoJErqeBsUM07zFhzFGVx1O7FMQOcbnP
+ FDfE1/vf6FSBZygWQa4e7x69/YP/95CUAeTt8YHKeZvl7cVAqw90ePDPLjdSXDrZqmxN
+ QGMsil8CfuNj4atB3UViORrwsA2vBjDL2bQJGflC7s1f4Jqspl1sRlVHQSMpOoETZck+
+ 1uwAsjUlNE57W55EiWzMmasyWuWYH4CDrUE+NTWVrKpWgKRzHrOx87tNfk+knkqKdMJe
+ uMSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=MbtlCtBPgzqoGr8mUx8uII1CR9SSU0AvNsp1PJ3n1Aw=;
- b=mxnwQ8T6xo4unOVnLOYjkzMpvRPIk3FpzPnhWONZ3JAz63TbR2l1ASLLb8SWY5eytG
- buHwZLftMH4EAVgk2c9eKL3vHLzgNZ9++llgoZ0x4OB0u3MONqgCmMYFKm5Yo3lF0a7J
- IicbYVNi89WwLHLNXYjMMM/30nl+MLnyn8gVE5CB+RbS/ZhC9gSJKpUn4nHSE/pEMMv5
- emDqItYSgH7AGt5uxipi9bGxpOPdadHCizrbWGNGDbHQvVt3W1nr65SUGLlF8iH93pa5
- 7pXhqZ+p2zw6MxDZQgdar2CC2oFGDdgeuBKWqh6FxiPZDxLh6lp/Yce+gp7E8mWp92py
- Nhtw==
-X-Gm-Message-State: APjAAAUfhdDkvxklY3DFgzCNWksC7IP3rUuuDSqrHNgspZi3bp4l+W3y
- KNvKXueeKHIuGzmvF7OarMteg/uq
-X-Google-Smtp-Source: APXvYqxj7atGmegCHcM6OKfS6yo7/T+5qulOAvhmTYb6RVIuOMkEHi/QvaWyslbN1EGCvIi+61xJBw==
-X-Received: by 2002:aed:2be4:: with SMTP id e91mr77978661qtd.148.1578335144732; 
- Mon, 06 Jan 2020 10:25:44 -0800 (PST)
+ bh=+Ybn8SHkq8jjr5laYfWKQovRFgmNlWcpAqoISVHGuSA=;
+ b=H/maD4rrebleTLlOQVRe3TgxT/c5qDRPQsUGc7igG+aVtSD04U+Qj2apTllnUfi10T
+ UpUiIKhYG5ruQhzbx0GLvDqWMHPTlf+hJFqefCuf8mXslWMmtP/2bKecZFQmOQ/XnD9O
+ V4yt/JlgGXyct2LdDgIhZrqi/umt7U60tFFTWhdHrAGk/gYAtTM6VM91tNjaXFcHFRxp
+ CPJdviYBJCso7NFV2iEDmoNYzjelUyStjnQH6HH26gcXs/VrhD5bAA4h0a0366RYnKaT
+ +mKSsv0SLphPoJ/HL1DGdJriAWJsGPsTaNz2GEKxl+sXqHawS2jm85GU7O4znngETIUe
+ ix2g==
+X-Gm-Message-State: APjAAAXKMdAXePSUd5PVjmgM6gHm6A2Y7AcdSgxbYrnEK2eQjRtsMP7U
+ fl3wo61ISfSaP478SmaygLkgWkUB
+X-Google-Smtp-Source: APXvYqyLtTjVd0dbqEcDUlg26wRB/H7xY1Azv6a1zMD1apI7oJI2kccqTIASGHOz5KK8Bz4W0meLhQ==
+X-Received: by 2002:a0c:c250:: with SMTP id w16mr76989332qvh.24.1578335153245; 
+ Mon, 06 Jan 2020 10:25:53 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.43
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:44 -0800 (PST)
+ Mon, 06 Jan 2020 10:25:52 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Gonglei <arei.gonglei@huawei.com>
-Subject: [PATCH v1 29/59] cryptodev-vhost.c: remove unneeded 'err' label in
- cryptodev_vhost_start
-Date: Mon,  6 Jan 2020 15:23:55 -0300
-Message-Id: <20200106182425.20312-30-danielhb413@gmail.com>
+ Corey Minyard <minyard@acm.org>
+Subject: [PATCH v1 34/59] ipmi/ipmi_bt.c: remove unneeded label in
+ ipmi_bt_handle_event
+Date: Mon,  6 Jan 2020 15:24:00 -0300
+Message-Id: <20200106182425.20312-35-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -59,7 +59,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::843
+X-Received-From: 2607:f8b0:4864:20::f44
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,39 +72,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:51 -0000
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:51 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:25:59 -0000
 
-'err' can be replaced by 'return r'.
+'out' can be replaced by 'return'.
 
-CC: Gonglei <arei.gonglei@huawei.com>
+CC: Corey Minyard <minyard@acm.org>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- backends/cryptodev-vhost.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/ipmi/ipmi_bt.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/backends/cryptodev-vhost.c b/backends/cryptodev-vhost.c
-index 8337c9a495..907ca21fa7 100644
---- a/backends/cryptodev-vhost.c
-+++ b/backends/cryptodev-vhost.c
-@@ -201,7 +201,7 @@ int cryptodev_vhost_start(VirtIODevice *dev, int total_queues)
-     r = k->set_guest_notifiers(qbus->parent, total_queues, true);
-     if (r < 0) {
-         error_report("error binding guest notifier: %d", -r);
--        goto err;
-+        return r;
-     }
+diff --git a/hw/ipmi/ipmi_bt.c b/hw/ipmi/ipmi_bt.c
+index 22f94fb98d..8173551d7d 100644
+--- a/hw/ipmi/ipmi_bt.c
++++ b/hw/ipmi/ipmi_bt.c
+@@ -98,14 +98,14 @@ static void ipmi_bt_handle_event(IPMIInterface *ii)
+     IPMIBT *ib = iic->get_backend_data(ii);
  
-     for (i = 0; i < total_queues; i++) {
-@@ -236,7 +236,7 @@ err_start:
-     if (e < 0) {
-         error_report("vhost guest notifier cleanup failed: %d", e);
+     if (ib->inlen < 4) {
+-        goto out;
++        return;
      }
--err:
-+
-     return r;
+     /* Note that overruns are handled by handle_command */
+     if (ib->inmsg[0] != (ib->inlen - 1)) {
+         /* Length mismatch, just ignore. */
+         IPMI_BT_SET_BBUSY(ib->control_reg, 1);
+         ib->inlen = 0;
+-        goto out;
++        return;
+     }
+     if ((ib->inmsg[1] == (IPMI_NETFN_APP << 2)) &&
+                         (ib->inmsg[3] == IPMI_CMD_GET_BT_INTF_CAP)) {
+@@ -136,7 +136,7 @@ static void ipmi_bt_handle_event(IPMIInterface *ii)
+             IPMI_BT_SET_B2H_IRQ(ib->mask_reg, 1);
+             ipmi_bt_raise_irq(ib);
+         }
+-        goto out;
++        return;
+     }
+     ib->waiting_seq = ib->inmsg[2];
+     ib->inmsg[2] = ib->inmsg[1];
+@@ -145,8 +145,6 @@ static void ipmi_bt_handle_event(IPMIInterface *ii)
+         bk->handle_command(ib->bmc, ib->inmsg + 2, ib->inlen - 2,
+                            sizeof(ib->inmsg), ib->waiting_rsp);
+     }
+- out:
+-    return;
  }
  
+ static void ipmi_bt_handle_rsp(IPMIInterface *ii, uint8_t msg_id,
 -- 
 2.24.1
 
