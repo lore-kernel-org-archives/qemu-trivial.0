@@ -1,58 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ioblq-0000TK-6C
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45378)
+	id 1ioblr-0000Ty-2p
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45563)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX46-00021P-Sy
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:23 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4H-0002EH-9l
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX45-00048V-Qh
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:22 -0500
-Received: from mail-qv1-xf41.google.com ([2607:f8b0:4864:20::f41]:45614)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4F-0004I3-FS
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:33 -0500
+Received: from mail-qv1-xf41.google.com ([2607:f8b0:4864:20::f41]:42441)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX43-00046G-Ih; Mon, 06 Jan 2020 13:25:19 -0500
-Received: by mail-qv1-xf41.google.com with SMTP id l14so19415266qvu.12;
- Mon, 06 Jan 2020 10:25:19 -0800 (PST)
+ id 1ioX4C-0004FG-NL; Mon, 06 Jan 2020 13:25:28 -0500
+Received: by mail-qv1-xf41.google.com with SMTP id dc14so19417436qvb.9;
+ Mon, 06 Jan 2020 10:25:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=hSgP8NRncEIEX6pPa78Nm0OrXSlmyhM+fq2uskBfwUQ=;
- b=PnwIgj7Mss+7c3FRHg/gxnuuuKT8VRVeMsMvCbh1H4EGvXB3DM2fzXTh5jB0Rkh2Nn
- JCW4h8jtc19hRCb2cAOxvhCJC05xHS92i2Zm+j5y/OZJwI+goDz5791lDCJwzm5ERSeH
- WyEgduHpVUIVR6CNKpZSeLfVr8/wH9iGgMwLxf7nhDIEiTcm2Wxk0kgicREh0VB+jcE3
- /wsN8ac/2tnyy0LXicEg4VGn+YEY9hzwjeI1TBRwY7YeDZm2TgQLxbuwAVScuhpewABw
- MdJWkCG0Rn0e1e7Z310As33vFUSeFS0x4GdRDnDesE1Yn78gGk2VZMB5VhNk0wq8/8nl
- 3ZVw==
+ bh=bPEopA2rGPiKlnwe7NwEEW5/buNpX4bBB0w0wRuIyWo=;
+ b=VwihmafXyrVYQKAP1pZJKtR4hfs73lmSlCTxATzLXkFHVkupvup1ZQLLLiplJDqsQq
+ bczTVaeiaZ4fDnBYDC8azWkuwM4uEx6INZLK3pkookVwygZbBOteZgBd5nFDXEG0BWaW
+ o1S77n7u3WX2kZnhr/LV8l5clxTwAKoh8rVd711zrk5rono1U5aZjP+H1H5/+rPB0K5U
+ dw8gWHKa1d6qlfDUZYM6aEQkZEo3eqSH/V8H6fL7i9Rg4RaRb+JBOAopejZ19h43YXe0
+ WA7h+D+gqR602cf0FMGl8ykZf+3Cjh3/G4HDEEXLmPKtF1lFtC/hNNnFMbxLh8F6VOgT
+ ytZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=hSgP8NRncEIEX6pPa78Nm0OrXSlmyhM+fq2uskBfwUQ=;
- b=DGuWTI4uDeeyoIWwxJ7jx6Y5Nquo7EUUV1bUzWQmoQEELbv6gIfvzOFwJ/+W8kpoDF
- v7gm7/3Zs0QDU+5NePMSz/U+LrygWULskNSKjI8p2bzJO9U0gNKz/fUiZhY/axUwwi0p
- 3hrQ+xPZESr2hlXcCy8JW4lvB8Qr4eZUHAGG5RYvv3aD3abII59iCBdLBgbT1yRvzpCt
- 8UPd51Tli28FwjroUTXXr45a8xsJmSENZEv94/mpzMzG3XT9lH+TPjZ4B4ypX3t+4Ub2
- x+Xybzzl5sRO1O2TQvJ3pK37AbOEDUQMCJRz+IJe8QIs297XiRlZYpPc6sv/jqBDlDAB
- RtOA==
-X-Gm-Message-State: APjAAAUPkRzRp7jf65vPj0r9qql3eFHPcyx+g3CiOR98yzPcf2Iyx4Y3
- TS6c81Gzui2WyfhNmOpTgCwYiq6l
-X-Google-Smtp-Source: APXvYqxX16Cv1Akxg3pbiFk+LwU7ID3SXP4GXRzIaaySsTIEkjSILzEueIMKSMxhXeNKoZzSZuNfdA==
-X-Received: by 2002:a0c:8bd2:: with SMTP id a18mr53137941qvc.38.1578335118942; 
- Mon, 06 Jan 2020 10:25:18 -0800 (PST)
+ bh=bPEopA2rGPiKlnwe7NwEEW5/buNpX4bBB0w0wRuIyWo=;
+ b=hZC+UXSMN/waHCpoNVPYUK8lspLBXVYx/pepyVHwuYcYOPbbcdpc10qMh9E2NCehxx
+ Qk6xyyWOhbzR0Ly2Dh1ZfY7tNuHleTxcdM8YLh0EQpXp9SVsrb5Q7z5LY4+KCb2hUjyy
+ t855hOmZy58G5lE8huWGwJHvCeN8XRK2GQR2B2JF5H3h1E/Bu0SlAdyU9MLIs9H0BYe9
+ c3VCb5ASNvgPmop9hwhi8yzdTtcrMuRJP+VcFZ0vPexmJO60/mnMsOpPpl+Tld3WR4BB
+ DpyaRpHzKlpbtEc5qP9zkrYhu7CXuOJyq+0KrkSIZutHTZ6rHfMQa0nmtV7OnejF+ODV
+ eWUQ==
+X-Gm-Message-State: APjAAAWnsj1MgOdil44OtfA9qcz7d0oA5MRYOxLJ1c27Zv4nzSC0eqnv
+ aO8Z5RtJ/B2NSLs39VsfOwm77rZ0
+X-Google-Smtp-Source: APXvYqzciuoVbabwwxlGIl13Ksj3vtokHbUWMVSjvO9RGjZcKpW4zNQZ5T9o2tbs6M1UcRLDoSfAdQ==
+X-Received: by 2002:a05:6214:1272:: with SMTP id
+ r18mr51710568qvv.208.1578335128135; 
+ Mon, 06 Jan 2020 10:25:28 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.17
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:18 -0800 (PST)
+ Mon, 06 Jan 2020 10:25:27 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v1 15/59] block/blkreplay.c: remove unneeded 'fail' label in
- blkreplay_open()
-Date: Mon,  6 Jan 2020 15:23:41 -0300
-Message-Id: <20200106182425.20312-16-danielhb413@gmail.com>
+ Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org
+Subject: [PATCH v1 20/59] block/vpc.c: remove unneeded 'fail' label in
+ create_dynamic_disk()
+Date: Mon,  6 Jan 2020 15:23:46 -0300
+Message-Id: <20200106182425.20312-21-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -73,49 +73,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:24 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:25:35 -0000
 
-Both the 'fail' label and the 'ret' variable can be removed.
-Use 'return -EINVAL' in the error condition and 'return 0' in
-the end of the function.
+'fail' label can be replaced by 'return ret' on error and
+'return 0' in the end of the function.
 
-CC: Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
-CC: Paolo Bonzini <pbonzini@redhat.com>
+CC: Kevin Wolf <kwolf@redhat.com>
+CC: qemu-block@nongnu.org
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- block/blkreplay.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ block/vpc.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
-diff --git a/block/blkreplay.c b/block/blkreplay.c
-index c96ac8f4bc..d8c4c311f3 100644
---- a/block/blkreplay.c
-+++ b/block/blkreplay.c
-@@ -24,23 +24,19 @@ static int blkreplay_open(BlockDriverState *bs, QDict *options, int flags,
-                           Error **errp)
- {
-     Error *local_err = NULL;
--    int ret;
+diff --git a/block/vpc.c b/block/vpc.c
+index a65550298e..2678b48dfd 100644
+--- a/block/vpc.c
++++ b/block/vpc.c
+@@ -839,13 +839,13 @@ static int create_dynamic_disk(BlockBackend *blk, uint8_t *buf,
  
-     /* Open the image file */
-     bs->file = bdrv_open_child(NULL, options, "image",
-                                bs, &child_file, false, &local_err);
-     if (local_err) {
--        ret = -EINVAL;
-         error_propagate(errp, local_err);
+     ret = blk_pwrite(blk, offset, buf, HEADER_SIZE, 0);
+     if (ret < 0) {
 -        goto fail;
-+        return -EINVAL;
++        return ret;
      }
  
-     bs->supported_write_flags = BDRV_REQ_WRITE_UNCHANGED;
-     bs->supported_zero_flags = BDRV_REQ_WRITE_UNCHANGED;
+     offset = 1536 + ((num_bat_entries * 4 + 511) & ~511);
+     ret = blk_pwrite(blk, offset, buf, HEADER_SIZE, 0);
+     if (ret < 0) {
+-        goto fail;
++        return ret;
+     }
+ 
+     /* Write the initial BAT */
+@@ -855,7 +855,7 @@ static int create_dynamic_disk(BlockBackend *blk, uint8_t *buf,
+     for (i = 0; i < DIV_ROUND_UP(num_bat_entries * 4, 512); i++) {
+         ret = blk_pwrite(blk, offset, buf, 512, 0);
+         if (ret < 0) {
+-            goto fail;
++            return ret;
+         }
+         offset += 512;
+     }
+@@ -882,12 +882,10 @@ static int create_dynamic_disk(BlockBackend *blk, uint8_t *buf,
+ 
+     ret = blk_pwrite(blk, offset, buf, 1024, 0);
+     if (ret < 0) {
+-        goto fail;
++        return ret;
+     }
  
 -    ret = 0;
--fail:
+- fail:
 -    return ret;
 +    return 0;
  }
  
- static int64_t blkreplay_getlength(BlockDriverState *bs)
+ static int create_fixed_disk(BlockBackend *blk, uint8_t *buf,
 -- 
 2.24.1
 
