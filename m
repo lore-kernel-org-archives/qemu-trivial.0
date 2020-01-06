@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobll-0000O2-JI
+	id 1iobll-0000OQ-Pb
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45049)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44965)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX3l-0001Ur-Li
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:02 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX3i-0001Ot-0P
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:24:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX3k-0003j3-Es
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:01 -0500
-Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43]:37941)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX3g-0003fQ-UN
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:24:57 -0500
+Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744]:39310)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX3h-0003gA-T6; Mon, 06 Jan 2020 13:24:57 -0500
-Received: by mail-qv1-xf43.google.com with SMTP id t6so19445797qvs.5;
- Mon, 06 Jan 2020 10:24:57 -0800 (PST)
+ id 1ioX3e-0003d3-KO; Mon, 06 Jan 2020 13:24:54 -0500
+Received: by mail-qk1-x744.google.com with SMTP id c16so40275737qko.6;
+ Mon, 06 Jan 2020 10:24:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=w1daSF8Ke50vf7L1lkiX0k78v3ttDXfxEHmXKjiAnDM=;
- b=fvEA+lPfmF5uzZTGgJKwCrnrb0+IU9t4oJ74GmQhGsUw8ayTq0kCoiOsWnTHyXEZzA
- HM02mY9S0Ppzbk6pg5VFW3FBLfI9LN+Y9vf8OT/Upj5c2TgmYOeeCwGWrdCE2z+ubUSW
- HbLFak51A2jvycRPrk+GJ9ilsqbhQMMLS4/mwtjlrlW5D7hHtf5PlWbZC99MEcePiCLN
- NK5FjV+21LTBZSBcF+o0niXd7C4nHn7lvM5KXfrpUaQlPBV2PlRoQQdjzzNlj4rjq7lA
- R6Lunp1SY/5fUqYyvqeVV4fbvbu36wQxWATOw4FZmoPt/fsD7N/lVN+0yYAV964e8QUU
- zosQ==
+ bh=BPtzP3vwdKJDYfiK+1V5sLIQfxo+hk+yi1CNnAf7kDI=;
+ b=JWJv08rPQVD7dn31fA27RO0L1TkNs1eZ9KXvmtdm0n7e2b3V2eAIbZttqeAX1H5Rte
+ Avc+0JE3rvoP7GzJvhfOJ5ewaz3VJA8JSAMPIEbsKh1adEh4g1QXbfSEVxbQjoFqikk4
+ BtI1GUO3uQlj9ymIAnA6TsItIgbn3CABvoQb5Qd3aeGUH+/2fAjRGSSclE99FWzTI1zS
+ D7IiLxILsyuC3+Yfx5T6a7s8n1INXpR9QVEZWm2K2cnvrQQtTrSACyBoKJzs8nYrD7Ja
+ Tqfhpqa1OHtwL+kO1m+RmsjjWV5ViP3i7YswqofiguV26EAZYI6iOFXTk7q94UMJcUpy
+ g37w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=w1daSF8Ke50vf7L1lkiX0k78v3ttDXfxEHmXKjiAnDM=;
- b=hU99zO16K70HC2No3uyBaNfwHehSnfivFPakkJieQOanjUPZvRptHs2R6E5yaJ25Iu
- nEeE8mKKnz3AzxVZUniLwGF2C2T1D4s4YneMKflPjPA34wC6FyaK+ADKLT560tPPZgO7
- +W2xRHI/qzKxqTXAp5ROyVGjwNG/TJUe5kAu4jfstgvYKtTYWfjfus+hQ+wHn++rwWWV
- yVL7hzoDuqyp8le7DZ/VroBFmP9zycAmSZXZViN9+r+8NrWy4x4J1Py3xjcAioRkA33C
- 9c5WGadZui8uQSY6HE2BmUVVCFpBH1+W3BNvDXC2dTBMJf4oBH1P9j8PqzQwEYx1ukKH
- xnPA==
-X-Gm-Message-State: APjAAAVLm8ORWIExG6w4YjuZvmrO/Ibvq5YrJ6dm7oClefTpjZVy3Tzi
- ejmmfQzJNFIRHZ9lhypyjHo428d3
-X-Google-Smtp-Source: APXvYqxWTlBIt1KcA9as9yiBJamQ7BhAdA9fJnTkcj1X7G95+rr5BfkNXkOu4UuKsXjqGexd6u42yg==
-X-Received: by 2002:a0c:8605:: with SMTP id p5mr80154235qva.109.1578335097141; 
- Mon, 06 Jan 2020 10:24:57 -0800 (PST)
+ bh=BPtzP3vwdKJDYfiK+1V5sLIQfxo+hk+yi1CNnAf7kDI=;
+ b=LNkij0JqX25hjDF3zASaW8heATGHWZGBMDFdsMaoyIm1NBkd/A5N4WywYMPNv+J2Ev
+ aYEniwLzUayM7S/280bJvCFSUwT5CCV6ZevYjcRmC54xKwUwGRLOv/ovJUBligb9R5rZ
+ QU5nVvJm7iRuUFGugxetpo/V2qZ2Mdl9EIVI4zXrLFgOUisBeO+8oepvdPS8NbNYpdg+
+ hSXDpJAy+hJizn+xaHMXfsY2zNXjuTIz2itK7q1w+nOv3FLMnj2kzS9ZzdgO4J5fa+SY
+ dBoM9aBu9glhNtiggpj6swbu9fmUKRzKB7YoBTKveDP2L9Ggi/b/01nsREaUs0WvN8yV
+ /1vA==
+X-Gm-Message-State: APjAAAUqb+GePkxdx7yVyxDQ1ZikRp4kdbiAeCW28pUjsW3kWChCX+05
+ gBFi1C91RC8wiiPRaRRLQi4Qt76s
+X-Google-Smtp-Source: APXvYqzSvXtub0j4T5AEHx49CbNdWuauWRDEVcXL7gZSK9eZLojO15sNyMdKc7IVkJTQgyCJfdjIaw==
+X-Received: by 2002:a37:48f:: with SMTP id 137mr83913337qke.25.1578335093972; 
+ Mon, 06 Jan 2020 10:24:53 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.24.55
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.24.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:24:56 -0800 (PST)
+ Mon, 06 Jan 2020 10:24:53 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v1 03/59] kvm-all.c: remove unneeded labels
-Date: Mon,  6 Jan 2020 15:23:29 -0300
-Message-Id: <20200106182425.20312-4-danielhb413@gmail.com>
+ David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org
+Subject: [PATCH v1 01/59] spapr.c: remove 'out' label in spapr_dt_cas_updates()
+Date: Mon,  6 Jan 2020 15:23:27 -0300
+Message-Id: <20200106182425.20312-2-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -58,7 +58,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::f43
+X-Received-From: 2607:f8b0:4864:20::744
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,130 +71,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:03 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:24:59 -0000
 
-Labels 'err' and 'out' from kvm_destroy_vcpu(), kvm_init_vcpu()
-and kvm_physical_sync_dirty_bitmap() can be replaced by
-'return' with the appropriate return value.
+'out' can be replaced by 'return' with the appropriate
+return value.
 
-CC: Paolo Bonzini <pbonzini@redhat.com>
+CC: David Gibson <david@gibson.dropbear.id.au>
+CC: qemu-ppc@nongnu.org
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- accel/kvm/kvm-all.c | 30 +++++++++++-------------------
- 1 file changed, 11 insertions(+), 19 deletions(-)
+ hw/ppc/spapr.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index b2f1a5bcb5..09ca99e082 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -329,26 +329,24 @@ int kvm_destroy_vcpu(CPUState *cpu)
- 
-     ret = kvm_arch_destroy_vcpu(cpu);
-     if (ret < 0) {
--        goto err;
-+        return ret;
-     }
- 
-     mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
-     if (mmap_size < 0) {
--        ret = mmap_size;
-         DPRINTF("KVM_GET_VCPU_MMAP_SIZE failed\n");
--        goto err;
-+        return mmap_size;
-     }
- 
-     ret = munmap(cpu->kvm_run, mmap_size);
-     if (ret < 0) {
--        goto err;
-+        return ret;
-     }
- 
-     vcpu = g_malloc0(sizeof(*vcpu));
-     vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
-     vcpu->kvm_fd = cpu->kvm_fd;
-     QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
--err:
-     return ret;
- }
- 
-@@ -381,7 +379,7 @@ int kvm_init_vcpu(CPUState *cpu)
-     ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
-     if (ret < 0) {
-         DPRINTF("kvm_create_vcpu failed\n");
--        goto err;
-+        return ret;
-     }
- 
-     cpu->kvm_fd = ret;
-@@ -390,17 +388,15 @@ int kvm_init_vcpu(CPUState *cpu)
- 
-     mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
-     if (mmap_size < 0) {
--        ret = mmap_size;
-         DPRINTF("KVM_GET_VCPU_MMAP_SIZE failed\n");
--        goto err;
-+        return mmap_size;
-     }
- 
-     cpu->kvm_run = mmap(NULL, mmap_size, PROT_READ | PROT_WRITE, MAP_SHARED,
-                         cpu->kvm_fd, 0);
-     if (cpu->kvm_run == MAP_FAILED) {
--        ret = -errno;
-         DPRINTF("mmap'ing vcpu state failed\n");
--        goto err;
-+        return -errno;
-     }
- 
-     if (s->coalesced_mmio && !s->coalesced_mmio_ring) {
-@@ -408,9 +404,7 @@ int kvm_init_vcpu(CPUState *cpu)
-             (void *)cpu->kvm_run + s->coalesced_mmio * PAGE_SIZE;
-     }
- 
--    ret = kvm_arch_init_vcpu(cpu);
--err:
--    return ret;
-+    return kvm_arch_init_vcpu(cpu);
- }
- 
- /*
-@@ -565,7 +559,6 @@ static int kvm_physical_sync_dirty_bitmap(KVMMemoryListener *kml,
-     KVMSlot *mem;
-     hwaddr start_addr, size;
-     hwaddr slot_size, slot_offset = 0;
--    int ret = 0;
- 
-     size = kvm_align_section(section, &start_addr);
-     while (size) {
-@@ -575,7 +568,7 @@ static int kvm_physical_sync_dirty_bitmap(KVMMemoryListener *kml,
-         mem = kvm_lookup_matching_slot(kml, start_addr, slot_size);
-         if (!mem) {
-             /* We don't have a slot if we want to trap every access. */
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index f11422fc41..1bfe47337c 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -878,7 +878,7 @@ static int spapr_dt_cas_updates(SpaprMachineState *spapr, void *fdt,
+         g_assert(smc->dr_lmb_enabled);
+         ret = spapr_populate_drconf_memory(spapr, fdt);
+         if (ret) {
 -            goto out;
-+            return 0;
++            return ret;
          }
- 
-         if (!mem->dirty_bmap) {
-@@ -587,8 +580,7 @@ static int kvm_physical_sync_dirty_bitmap(KVMMemoryListener *kml,
-         d.slot = mem->slot | (kml->as_id << 16);
-         if (kvm_vm_ioctl(s, KVM_GET_DIRTY_LOG, &d) == -1) {
-             DPRINTF("ioctl failed %d\n", errno);
--            ret = -1;
--            goto out;
-+            return -1;
-         }
- 
-         subsection.offset_within_region += slot_offset;
-@@ -599,8 +591,8 @@ static int kvm_physical_sync_dirty_bitmap(KVMMemoryListener *kml,
-         start_addr += slot_size;
-         size -= slot_size;
      }
+ 
+@@ -889,11 +889,8 @@ static int spapr_dt_cas_updates(SpaprMachineState *spapr, void *fdt,
+             return offset;
+         }
+     }
+-    ret = spapr_ovec_populate_dt(fdt, offset, spapr->ov5_cas,
+-                                 "ibm,architecture-vec-5");
+-
 -out:
 -    return ret;
-+
-+    return 0;
++    return spapr_ovec_populate_dt(fdt, offset, spapr->ov5_cas,
++                                  "ibm,architecture-vec-5");
  }
  
- /* Alignment requirement for KVM_CLEAR_DIRTY_LOG - 64 pages */
+ static void spapr_dt_rtas(SpaprMachineState *spapr, void *fdt)
 -- 
 2.24.1
 
