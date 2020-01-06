@@ -1,73 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ioHvb-0003hL-DB
-	for mharc-qemu-trivial@gnu.org; Sun, 05 Jan 2020 21:15:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44719)
+	id 1ioLae-0002d9-2S
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 01:10:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52019)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1ioHvY-0003g7-JS
- for qemu-trivial@nongnu.org; Sun, 05 Jan 2020 21:15:33 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1ioLac-0002cu-5A
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 01:10:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1ioHvX-00042r-8K
- for qemu-trivial@nongnu.org; Sun, 05 Jan 2020 21:15:32 -0500
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:45219)
+ (envelope-from <richard.henderson@linaro.org>) id 1ioLaa-0000Av-NJ
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 01:10:09 -0500
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:33520)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1ioHvX-0003y4-0V
- for qemu-trivial@nongnu.org; Sun, 05 Jan 2020 21:15:31 -0500
-Received: by mail-pf1-x442.google.com with SMTP id 2so26222108pfg.12
- for <qemu-trivial@nongnu.org>; Sun, 05 Jan 2020 18:15:30 -0800 (PST)
+ id 1ioLaa-0000AP-G9
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 01:10:08 -0500
+Received: by mail-pj1-x1043.google.com with SMTP id u63so4075554pjb.0
+ for <qemu-trivial@nongnu.org>; Sun, 05 Jan 2020 22:10:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=XP2hNmKzUX3IBbM3eIgKOH1z6Rf1aNz0lhFQuUULG28=;
- b=L+5ViJE/plrN7/Mb02cYU3on+MSMjvXFum9iBNLG4cSZVc98RsAx+t0+giOH/7vxnY
- Io2ZFBtPuUSXbxkjuzrZRNncANRyBvpp0mVHnu4duv2JSIelA1qhLc/4WnbJf87Krq06
- s3iXcDm4nLInqAbd3ZK24/2jVdeYpr5X//LrhliNCvurrUr4FMiAbRpBBoCWF30uknZn
- +i4HoE7zTRx0CEUX8RmzjV7obcpImGDRiYSJp/mDh/vSnl3DOKbF9cCOn+0SS61LgUmP
- bpcuNHcNv3yLIitYkqU3BSa+ssgQSbyH7E0M9y294F9n2sJ0ONmKfTnDXXg5a42tsymM
- 5DZg==
+ bh=IaFMdYrQh6moNLyiHY/tsJKmyR2OVajlOoepIbh5I0Y=;
+ b=NRoLpNBWP5tMk7BJZTIp9x96sqhIBT4GzEKVbk6oeV7RXFbWhmQOOcRsm4Nt84POrO
+ dtmutQE5Ae92j/O1+PU8mxbLAXXhSU1sIGrCL5WYGxqEJNNFu0s0jlrxHR9pde9oT1M2
+ ZUB0t1KUwou2kx/wHAC+AHxgzLOJ6kD3vbBMHOGyQLRUPmGw11EIWPjU30WzCc2VnTC5
+ f8fuy5v3izvC/anb1XdpclVibvrz+gfpiX8SZKZ803nw0cR0dvGYkoyk//uvk4sv8YbH
+ cQYBmogWSNb5TSeAS8VtnDuVZQyAV9L0MiiYrz+azGx2iKfc56wlotDux+nWI+Qb+rY5
+ ctaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=XP2hNmKzUX3IBbM3eIgKOH1z6Rf1aNz0lhFQuUULG28=;
- b=mAgf1WiQ72sojfEZv7iyha3BgVLvtvjLx0m2BoEAGQGkn3w9xkQs3mZ7Alb2r9dzZF
- tOYalxg0MEo0Dm56z7ACp6J65hMI9mjMqCPFKqNg6ViHDNpGevTkYYDtCNxcQYNNxRob
- a5UFsAmtwioqIqhNMCCryaomqzyBIig23nsQ3fsvwWcCPDNSEK5PW01DwR7ISBhHw57u
- O67GxMat8YQwFP929AuBGFqyGEbvu7RLvfD4f4FPOQtn1mgRzvqp5bT4LJ9ALLiUuwrL
- y7cXIp46niPP5Bq/jr3K2Ise7tLf95usED+fVMwFPUVJDE6zW/gbkAn/pL+tplZJPbbA
- U4aA==
-X-Gm-Message-State: APjAAAWbKPrDDKVSBDAUPH/SrUo8UoW5GXzSGdJLpuqcX0j5KENOz7mr
- wRvDfJo3o5NUwmQPgEQ3BXSdVw==
-X-Google-Smtp-Source: APXvYqzm/I8hj2u5w/XYgHGzZIr6n8dwIqvbWjJ4C8k8SWV87E9RhpMQLnIDrk/G2Bdkz5g2p6hTFw==
-X-Received: by 2002:a63:5b59:: with SMTP id
- l25mr110928350pgm.382.1578276929620; 
- Sun, 05 Jan 2020 18:15:29 -0800 (PST)
+ bh=IaFMdYrQh6moNLyiHY/tsJKmyR2OVajlOoepIbh5I0Y=;
+ b=HCQkkcnGXH8s8+308c+O96xC8oaZC7xafjeOr+bInpXKv6K88yhpwmBz840uzWyH/E
+ q9yGvv/5nu9VrkBb3tJlZusptTyOhegkA6H6SeXK8U6V3pzxlyAxgU3EC24XKRu4dgnJ
+ PBF9gIjg3U39xbv8zI5758NRZVF5YujVGVx7vXPBN1n596seKpY9BKfQXiktyLag9op1
+ MiQW8LYWixks5QSFxwiOwI02D865TGNt/Ig5KzzywLR52jTjPvhjBNT46trQUv+IuAIH
+ IGKGS4jjFvYBNnvqVwpJ9Tcz/PbmSalmsuysHArUr12ZI2yuO8zYUmTX7+Gszbgvnqb+
+ CKLg==
+X-Gm-Message-State: APjAAAVBTTBNp6FF2J9EF56hmMBOflmFqCoAC/MMj1LJiP7D5842zQqZ
+ 0hYq6HwFhuYU9x1x1Do+eNdnlQ==
+X-Google-Smtp-Source: APXvYqwFHCzMCA0UuPh4Qr+0a/IMN1U8xGGs0WfBqXT7uzHJRe1Rp/JwotW0quPvzrH5bse1prqNfw==
+X-Received: by 2002:a17:90a:1a50:: with SMTP id
+ 16mr42169259pjl.14.1578291007310; 
+ Sun, 05 Jan 2020 22:10:07 -0800 (PST)
 Received: from ?IPv6:2001:44b8:2176:c800:f1c3:9f9c:2e9f:1ebd?
  (2001-44b8-2176-c800-f1c3-9f9c-2e9f-1ebd.static.ipv6.internode.on.net.
  [2001:44b8:2176:c800:f1c3:9f9c:2e9f:1ebd])
- by smtp.gmail.com with ESMTPSA id z6sm60618257pfa.155.2020.01.05.18.15.25
+ by smtp.gmail.com with ESMTPSA id p21sm75481720pfn.103.2020.01.05.22.10.04
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 05 Jan 2020 18:15:28 -0800 (PST)
-Subject: Re: [PATCH] arm/translate-a64: fix uninitialized variable warning
-To: pannengyuan@huawei.com, peter.maydell@linaro.org
-Cc: zhang.zhanghailiang@huawei.com, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Euler Robot <euler.robot@huawei.com>
-References: <20200106015700.52992-1-pannengyuan@huawei.com>
+ Sun, 05 Jan 2020 22:10:06 -0800 (PST)
+Subject: Re: [PATCH] MAINTAINERS: Remove Claudio Fontana bouncing email
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Claudio Fontana <claudio.fontana@gmail.com>
+References: <20191230111801.26315-1-philmd@redhat.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <69ee9eb1-84bf-5bcc-738c-c75dd520cbf2@linaro.org>
-Date: Mon, 6 Jan 2020 12:15:22 +1000
+Message-ID: <9a15dd8b-02fb-c8ab-6a7c-294feb258609@linaro.org>
+Date: Mon, 6 Jan 2020 16:10:01 +1000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20200106015700.52992-1-pannengyuan@huawei.com>
+In-Reply-To: <20191230111801.26315-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::442
+X-Received-From: 2607:f8b0:4864:20::1043
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,36 +78,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 02:15:33 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 06:10:11 -0000
 
-On 1/6/20 11:57 AM, pannengyuan@huawei.com wrote:
-> From: Pan Nengyuan <pannengyuan@huawei.com>
+On 12/30/19 9:18 PM, Philippe Mathieu-Daudé wrote:
+> Claudio Fontana Huawei email is bouncing, remove it.
 > 
-> Fixes:
-> target/arm/translate-a64.c: In function 'disas_crypto_three_reg_sha512':
-> target/arm/translate-a64.c:13625:9: error: 'genfn' may be used uninitialized in this function [-Werror=maybe-uninitialized]
->     genfn(tcg_rd_ptr, tcg_rn_ptr, tcg_rm_ptr);
->     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> qemu/target/arm/translate-a64.c:13609:8: error: 'feature' may be used uninitialized in this function [-Werror=maybe-uninitialized]
->     if (!feature) {
+>   The message you sent to claudio.fontana@huawei.com couldn't be
+>   delivered due to: Recipient email address is possibly incorrect.
 > 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org> 
+>   Further information:
+>     5.1.1 Error: invalid recipients
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  MAINTAINERS | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 387879aebc..8db4de6b9a 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -2383,7 +2383,6 @@ F: plugins/
+>  F: tests/plugin
+>  
+>  AArch64 TCG target
+> -M: Claudio Fontana <claudio.fontana@huawei.com>
+>  M: Claudio Fontana <claudio.fontana@gmail.com>
+>  S: Maintained
+>  L: qemu-arm@nongnu.org
+> 
 
-Are you compiling with reduced optimization?  The compiler should be able to
-prove that these variables are initialized.  It certainly does with -O2, on all
-known gcc versions.
+In
 
-Perhaps a better fix is to add a
+  https://lists.gnu.org/archive/html/qemu-devel/2019-05/msg06872.html
 
-    default:
-        g_assert_not_reached();
-
-entry to the o == 0 switch.  Though of course opcode must be in [0-3], based on
-the extraction mask, so a default label isn't actually reachable.  But that's
-the only path I can see for which incomplete optimization would fail to prove
-initialization.
+Claudio asks to be removed from the section entirely.
+I can take it up.
 
 
 r~
