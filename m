@@ -1,57 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobmB-0000ps-9w
+	id 1iobmB-0000qL-Ip
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45101)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45356)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX3p-0001c3-Gy
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:06 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX45-000207-6t
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX3o-0003mQ-5v
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:05 -0500
-Received: from mail-qv1-xf44.google.com ([2607:f8b0:4864:20::f44]:43225)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX44-00046x-3B
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:21 -0500
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742]:38115)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX3l-0003ja-Dv; Mon, 06 Jan 2020 13:25:01 -0500
-Received: by mail-qv1-xf44.google.com with SMTP id p2so19406901qvo.10;
- Mon, 06 Jan 2020 10:25:01 -0800 (PST)
+ id 1ioX41-00044T-MG; Mon, 06 Jan 2020 13:25:17 -0500
+Received: by mail-qk1-x742.google.com with SMTP id k6so40295908qki.5;
+ Mon, 06 Jan 2020 10:25:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=OpEeHG8VMYN/6kN5WjiHoFM09NjO3owbEnQZsuwufHY=;
- b=PVL37wwiLOZ/UhuxFDC6beTK3Lf9R834ZgZAJYqeOvLynH3sjlel0frLEvPiLVMTmv
- I/LeOBkD+Jgo2zHjiy9iMnfjAhX8rUE4e5MkM+02ieHu/p79swltEoStKpEakIWtithb
- RLqm0qkwBazQJZqH5SvwSM6UPV2Czq1U2HMhiF1MYNHT/dycOZ2Gu7HwL/6KDrS31EOR
- cqIwXOIXp4213MdwhaJDWaR3Ez3ScBDYzOWCAV0E0Nmw9Ys8ioCzdE2MqzEdoz/PO0/D
- Kt5n37l/WDj1fOJSj1qWPLfy7x3mK/0BeKZwlJMiRkDjEexJZzA/7hdNh24BpxWxtdVx
- baJQ==
+ bh=BIyO2R/e5VA+08g+h58CqbpLSi6LpjdAOK3scVDW2ro=;
+ b=IxLtAmrPYJNVPDNfzTVeql5qlu94afy0FGMz/4NHeAI8s0HsNdythteFYv1RHMX/7u
+ 7P7pJqBh2NU48A6Wkpnxv6m/c9zkiNqus/asZembCTFVE8hbDUKs65Ww92pWcL6lkxvz
+ xB69e7QKjTfWFw3jXSFHlhdO+ldo28ujYOCo+t0G1fHutArsYNeZZ8YABPncOwSLWIck
+ YVnOcR7pCiwLMJN0u668fCZVWvHHttQ0FUv2NHRG7Vy3yN68a6409BHPyYbBJxa5xuAq
+ L36dMdJ94SEZPMUV9NpZsZQoREYeWi/Ke3Xc8Y6SDs6sapalojsmJsSk8eOUO4svV4dR
+ uJlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=OpEeHG8VMYN/6kN5WjiHoFM09NjO3owbEnQZsuwufHY=;
- b=Z76ocpTOYCsz2a7ELql8+jIoj2DeQTVdOR+EE1zhMDCocqyi7UW2mxk+e6WffEspmN
- grj81z9MwLqJyN9ts+KDLPEz1OegjHxCAd1NALjw9b/VrGRAt1n0JYy2AP6v2KE7Wv2+
- cCAHNXmAEyyEopdvOfIBTRb7I5eQ+EmupBj1DzmJg9CAk4fYk805g0BEJU2EcMad1ijg
- tajMqlaS8K9iSk14IFTN6r3ZvUtGhR2oc5OSWQ24ajdXXRGPkNYhTEHKUtFH0qibiv1u
- R5d7h8DfszDimvNKFs0J/kUiWwtJ1WKgqmrXtxC0NuYQNCYc2YMhStpnTQDdkYXlRmvg
- 4ZsA==
-X-Gm-Message-State: APjAAAWXPpbO+Qh3PJWgx/sOCQgmoiszTs4h4eR90Mbg1awFVIVw5wfH
- RsUrUG7gB2I9FlVP2R7UVdUnl7O1
-X-Google-Smtp-Source: APXvYqyfpYF68ZJGI74BOh433meVATIdOibL9LaFAPigjDejL8zyFx4rLNAADJRr2vi1oN7ik2OHog==
-X-Received: by 2002:a0c:f6cd:: with SMTP id d13mr78946792qvo.20.1578335100652; 
- Mon, 06 Jan 2020 10:25:00 -0800 (PST)
+ bh=BIyO2R/e5VA+08g+h58CqbpLSi6LpjdAOK3scVDW2ro=;
+ b=YUiCNJf4A19LHG7MBeFaaHbgX+KBkGCPhdNElaTvoX+TllUWFA8hL11pQqO4W0rOMg
+ Ufm+FrKkx2N4meq78ugxrffmsf5sujDEaVI/n16QXmroP7zhKL496sBPaI+Jg8TbZQYR
+ 6rWCF1Kz1gKKrO4E1RQvyVAYgCg+AXn2/UhoPXrbgeBPlvU8gqWFIu9s16qaJuQjRNDi
+ DBpBiDWqzjvNBS7Xy+8Mv9Z90aUdhJMzEDsWeK+GcoYCin8mSe+HjeDlvw26/0BHpdVd
+ GIuX6JOxhw6mPZzonP/bR/3emk4LtkmKdA7CdTrqA/2ipc01MDG7XM4UcO2IQhbUSP+p
+ P9rA==
+X-Gm-Message-State: APjAAAVCgsflyiwrDgwIkVmDcbpMGmbZJXVdSlU4AJfa85+/EJXvxN2X
+ Ge34t8aoEW9HzSoUnsviX+cHpjqi
+X-Google-Smtp-Source: APXvYqxH254lKZYuyTcHA2ZEi/wut8AKP6ECTaVz8jKgldIYPG/JO+PG1eBhuv5eAT4iDYHgzKuwEg==
+X-Received: by 2002:a37:8e03:: with SMTP id q3mr82843572qkd.395.1578335117004; 
+ Mon, 06 Jan 2020 10:25:17 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.24.59
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:00 -0800 (PST)
+ Mon, 06 Jan 2020 10:25:16 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Juan Quintela <quintela@redhat.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>
-Subject: [PATCH v1 05/59] ram.c: remove unneeded labels
-Date: Mon,  6 Jan 2020 15:23:31 -0300
-Message-Id: <20200106182425.20312-6-danielhb413@gmail.com>
+ Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org
+Subject: [PATCH v1 14/59] block/file-posix.c: remove unneeded labels
+Date: Mon,  6 Jan 2020 15:23:40 -0300
+Message-Id: <20200106182425.20312-15-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -59,7 +58,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::f44
+X-Received-From: 2607:f8b0:4864:20::742
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,93 +71,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:07 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:25:24 -0000
 
-ram_save_queue_pages() has an 'err' label that can be replaced by
-'return -1' instead.
+'out' label from cdrom_probe_device() can be removed, and its
+only instance replaced by 'return prio'.
 
-Same thing with ram_discard_range(), and in this case we can also
-get rid of the 'ret' variable and return either '-1' on error
-or the result of ram_block_discard_range().
+In raw_co_create(), 'out' can be replaced by 'return -errno' in
+the error condition it is being called.
 
-CC: Juan Quintela <quintela@redhat.com>
-CC: Dr. David Alan Gilbert <dgilbert@redhat.com>
+CC: Kevin Wolf <kwolf@redhat.com>
+CC: qemu-block@nongnu.org
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- migration/ram.c | 18 +++++-------------
- 1 file changed, 5 insertions(+), 13 deletions(-)
+ block/file-posix.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/migration/ram.c b/migration/ram.c
-index 96feb4062c..980cc644d7 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -2434,7 +2434,7 @@ int ram_save_queue_pages(const char *rbname, ram_addr_t start, ram_addr_t len)
-              * it's the 1st request.
-              */
-             error_report("ram_save_queue_pages no previous block");
--            goto err;
-+            return -1;
-         }
-     } else {
-         ramblock = qemu_ram_block_by_name(rbname);
-@@ -2442,7 +2442,7 @@ int ram_save_queue_pages(const char *rbname, ram_addr_t start, ram_addr_t len)
-         if (!ramblock) {
-             /* We shouldn't be asked for a non-existent RAMBlock */
-             error_report("ram_save_queue_pages no block '%s'", rbname);
--            goto err;
-+            return -1;
-         }
-         rs->last_req_rb = ramblock;
-     }
-@@ -2451,7 +2451,7 @@ int ram_save_queue_pages(const char *rbname, ram_addr_t start, ram_addr_t len)
-         error_report("%s request overrun start=" RAM_ADDR_FMT " len="
-                      RAM_ADDR_FMT " blocklen=" RAM_ADDR_FMT,
-                      __func__, start, len, ramblock->used_length);
--        goto err;
-+        return -1;
+diff --git a/block/file-posix.c b/block/file-posix.c
+index 1b805bd938..b1a6549806 100644
+--- a/block/file-posix.c
++++ b/block/file-posix.c
+@@ -2265,9 +2265,8 @@ raw_co_create(BlockdevCreateOptions *options, Error **errp)
+     /* Create file */
+     fd = qemu_open(file_opts->filename, O_RDWR | O_CREAT | O_BINARY, 0644);
+     if (fd < 0) {
+-        result = -errno;
+-        error_setg_errno(errp, -result, "Could not create file");
+-        goto out;
++        error_setg_errno(errp, errno, "Could not create file");
++        return -errno;
      }
  
-     struct RAMSrcPageRequest *new_entry =
-@@ -2467,9 +2467,6 @@ int ram_save_queue_pages(const char *rbname, ram_addr_t start, ram_addr_t len)
-     qemu_mutex_unlock(&rs->src_page_req_mutex);
- 
-     return 0;
--
--err:
--    return -1;
+     /* Take permissions: We want to discard everything, so we need
+@@ -2342,7 +2341,7 @@ out_close:
+         result = -errno;
+         error_setg_errno(errp, -result, "Could not close the new file");
+     }
+-out:
++
+     return result;
  }
  
- static bool save_page_use_compression(RAMState *rs)
-@@ -3072,8 +3069,6 @@ int ram_postcopy_send_discard_bitmap(MigrationState *ms)
-  */
- int ram_discard_range(const char *rbname, uint64_t start, size_t length)
- {
--    int ret = -1;
--
-     trace_ram_discard_range(rbname, start, length);
+@@ -3554,7 +3553,7 @@ static int cdrom_probe_device(const char *filename)
  
-     RCU_READ_LOCK_GUARD();
-@@ -3081,7 +3076,7 @@ int ram_discard_range(const char *rbname, uint64_t start, size_t length)
- 
-     if (!rb) {
-         error_report("ram_discard_range: Failed to find block '%s'", rbname);
--        goto err;
-+        return -1;
+     fd = qemu_open(filename, O_RDONLY | O_NONBLOCK);
+     if (fd < 0) {
+-        goto out;
++        return prio;
      }
+     ret = fstat(fd, &st);
+     if (ret == -1 || !S_ISBLK(st.st_mode)) {
+@@ -3568,7 +3567,6 @@ static int cdrom_probe_device(const char *filename)
  
-     /*
-@@ -3093,10 +3088,7 @@ int ram_discard_range(const char *rbname, uint64_t start, size_t length)
-                      length >> qemu_target_page_bits());
-     }
- 
--    ret = ram_block_discard_range(rb, start, length);
--
--err:
--    return ret;
-+    return ram_block_discard_range(rb, start, length);
+ outc:
+     qemu_close(fd);
+-out:
+     return prio;
  }
  
- /*
 -- 
 2.24.1
 
