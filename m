@@ -1,58 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobm9-0000mu-K0
+	id 1iobm9-0000nG-QC
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46224)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46338)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4t-0003Jd-Mq
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:12 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX51-0003Wy-16
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4s-0004yS-O3
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:11 -0500
-Received: from mail-qv1-xf41.google.com ([2607:f8b0:4864:20::f41]:44706)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4z-00056O-Rw
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:18 -0500
+Received: from mail-qt1-x843.google.com ([2607:f8b0:4864:20::843]:38170)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4q-0004va-Lf; Mon, 06 Jan 2020 13:26:08 -0500
-Received: by mail-qv1-xf41.google.com with SMTP id n8so19407992qvg.11;
- Mon, 06 Jan 2020 10:26:08 -0800 (PST)
+ id 1ioX4x-00053I-BG; Mon, 06 Jan 2020 13:26:15 -0500
+Received: by mail-qt1-x843.google.com with SMTP id n15so43213366qtp.5;
+ Mon, 06 Jan 2020 10:26:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=e2Pglg9q4RMFoXAtcnS8nyYGqCU2Tjq8RVW10uPUEeA=;
- b=PdJHk+dxqZORm7y8xJbfbi8AyLgfnD4aDeCYFLOeiHbk6FSIg1xKIWSA6cXNY2hrcT
- p1U98c0XD4iJxVvzonsagevv8f2o4xNMwnVPWe1i+03yeEFgBv5HWFdS1YqVp9St2RaR
- iEESSUn0ONAvWl/TL0V3FYkWi6Dg7kjF2t1tBkNurApYktaikl25//wppIT+8pwYK6C9
- RVE13ERlyHzzXRXNEUZMJQg3xKXc/BpqkahYfH2JR+7w+vC3CJph6mfR5yD75hAkgur6
- 1eKHrlaqN2RL3BNKODPy7BGY46eh5kIfbhOZdKg7qKmstSi7EoGstEYzhG+KZJfn2lLb
- bFVA==
+ bh=vLkBK5lSWEkB9UXmndWqWUlDLfAZMhVOoZ7WRef+Ig4=;
+ b=IhG6pGWJ6BRiXdPk0rw3Kv9D6qGDfbd3ECSNZ2+sAA/tXxgRYiVztrJBDuz4WGFREC
+ rIana4JBxaZVXnlLcelSckeO/sL4PJQol+dhSin85HPt0PgNL/LdAXk6jRr+ITE4DBpm
+ 7pB063tzhD/thPSt/MjN4IlK7jUWwA8lOoi1IBnH9o6Umtg7a1wRxm8zbrq+xv9rDIFU
+ TG8H1z/Yr2MTxFL3yP1QJLxdJBVNCBcuShcHnWF6VTQJsb/FTaAMclJQm9YZvzTqRQhU
+ t7BU6m2tRWNUjNc8e3ZA9xyL1GYhMAU48VpZSa9TbIkhq+B/ft35pmeaPufAsXrP7LGo
+ Dvgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=e2Pglg9q4RMFoXAtcnS8nyYGqCU2Tjq8RVW10uPUEeA=;
- b=qYMfM6k5coz0ShGTqTI/t93vW/QDZ32dypFP/1gNqlQmivEEHxUVksu8UoGUGPlgXI
- GSZ01ivnaR97z2CgvHBLYlsvYEkharltGgwkpWXevTNy8tMA82h+9L1vXI+clwpOvEng
- M2/EHitUTBBYam+4K+AraHHo7K1QwIEw+YBEYYlTKSmdK1GqkrXUs7QARuu8KkKBRknx
- Aus4Eej9r3yUgfxF29ULDV3nGxTPfaLRwik+t8IWdbg3ZBoFfPmbw0XigUvvmkR4I7A9
- 7IW/3LBrUeaT3mZQVFHGmwPVHFM+PYDTxhjIumeqgsIPtelZoUe0+8vo5TklrKugEFM/
- kw6Q==
-X-Gm-Message-State: APjAAAXDRSZwgRh9vGk0X5YPZjHEj2lktGJSeXlvzY3HYb+WZEMaoiur
- reX5H0keb4/82jOoIGikzEisWpT7
-X-Google-Smtp-Source: APXvYqyMOUdvQFsVG1KX82JecU22kDLwhxzjSAPzowB71iFledUIlr4Xia7OhmMcc+66CTt7CwzG+A==
-X-Received: by 2002:a05:6214:923:: with SMTP id
- dk3mr77520156qvb.96.1578335168111; 
- Mon, 06 Jan 2020 10:26:08 -0800 (PST)
+ bh=vLkBK5lSWEkB9UXmndWqWUlDLfAZMhVOoZ7WRef+Ig4=;
+ b=i3VcEkS7gBUCTfq45v8REy2BN//EcR9pynw+jpQ+bkkWnXJauZSra/RVkBh/dCvDON
+ OY7BZPlhqSoK07NzvVwj3LHXy7VPOhNrKH7q7nWGR405tuHMfngcb5su8e8RjwBLuEkw
+ 6Yl+8bto8cWV65s6JiEoYvyWnmEoT8C0j4xH1ICyABsiDbs/Ec7EXBAJazo2jj5cdR6J
+ 5VlwFKiQLVjTiOM59hi6oU07y562KN/7VuU654CcV9+QaJRqpvxq1mxlLB2X7NWSIUq6
+ Jg00/LKQJvDzREB9H0IQjYlbGj6F4V18wI+AeP+YT09t4wYqqmQmPALsz7cGomLL+Lyp
+ tH7g==
+X-Gm-Message-State: APjAAAXnsQjtRywKZ53m5Rqet+CBCKtHHGkbslsYRIrT8Gi9pzIsF+f2
+ 26yAf68VjKU04ZjywPy2ZpTSWsBJ
+X-Google-Smtp-Source: APXvYqz0JY9smgLFPzAiiETwEw3EDaNA9DaxSXm2oBrDtCaChGrePUXVRbUAYfq3Q9hxG9/fYtO3tA==
+X-Received: by 2002:ac8:769a:: with SMTP id g26mr12100709qtr.259.1578335174763; 
+ Mon, 06 Jan 2020 10:26:14 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.06
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:26:07 -0800 (PST)
+ Mon, 06 Jan 2020 10:26:14 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH v1 42/59] i386/intel_iommu.c: remove unneeded labels
-Date: Mon,  6 Jan 2020 15:24:08 -0300
-Message-Id: <20200106182425.20312-43-danielhb413@gmail.com>
+ Richard Henderson <rth@twiddle.net>
+Subject: [PATCH v1 46/59] alpha/typhoon.c: remove unneeded label in
+ typhoon_translate_iommu()
+Date: Mon,  6 Jan 2020 15:24:12 -0300
+Message-Id: <20200106182425.20312-47-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -60,7 +59,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::f41
+X-Received-From: 2607:f8b0:4864:20::843
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,59 +72,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:26:13 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:26:21 -0000
 
-'out' label in vtd_lookup_iotlb() and 'done' label in
-vtd_process_device_iotlb_desc() can be replaced by
-'return' with the apropriate value.
+Label 'success' can be replaced by 'return ret'.
 
-CC: Michael S. Tsirkin <mst@redhat.com>
-CC: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+As a bonus, existing trailing whitespaces were automatically
+deleted by the text editor while making this patch.
+
+CC: Richard Henderson <rth@twiddle.net>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- hw/i386/intel_iommu.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ hw/alpha/typhoon.c | 18 ++++++++----------
+ 1 file changed, 8 insertions(+), 10 deletions(-)
 
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index 43c94b993b..e0dd987851 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -304,11 +304,10 @@ static VTDIOTLBEntry *vtd_lookup_iotlb(IntelIOMMUState *s, uint16_t source_id,
-                                 source_id, level);
-         entry = g_hash_table_lookup(s->iotlb, &key);
-         if (entry) {
--            goto out;
-+            return entry;
+diff --git a/hw/alpha/typhoon.c b/hw/alpha/typhoon.c
+index 179e1f7658..af992883c7 100644
+--- a/hw/alpha/typhoon.c
++++ b/hw/alpha/typhoon.c
+@@ -34,7 +34,7 @@ typedef struct TyphoonWindow {
+     uint64_t wsm;
+     uint64_t tba;
+ } TyphoonWindow;
+- 
++
+ typedef struct TyphoonPchip {
+     MemoryRegion region;
+     MemoryRegion reg_iack;
+@@ -190,7 +190,7 @@ static MemTxResult cchip_read(void *opaque, hwaddr addr,
+     case 0x0780:
+         /* PWR: Power Management Control.   */
+         break;
+-    
++
+     case 0x0c00: /* CMONCTLA */
+     case 0x0c40: /* CMONCTLB */
+     case 0x0c80: /* CMONCNT01 */
+@@ -442,7 +442,7 @@ static MemTxResult cchip_write(void *opaque, hwaddr addr,
+     case 0x0780:
+         /* PWR: Power Management Control.   */
+         break;
+-    
++
+     case 0x0c00: /* CMONCTLA */
+     case 0x0c40: /* CMONCTLB */
+     case 0x0c80: /* CMONCNT01 */
+@@ -694,14 +694,14 @@ static IOMMUTLBEntry typhoon_translate_iommu(IOMMUMemoryRegion *iommu,
+         /* Check the first three windows.  */
+         for (i = 0; i < 3; ++i) {
+             if (window_translate(&pchip->win[i], addr, &ret)) {
+-                goto success;
++                return ret;
+             }
+         }
+ 
+         /* Check the fourth window for DAC disable.  */
+         if ((pchip->win[3].wba & 0x80000000000ull) == 0
+             && window_translate(&pchip->win[3], addr, &ret)) {
+-            goto success;
++            return ret;
+         }
+     } else {
+         /* Double-address cycle.  */
+@@ -711,7 +711,7 @@ static IOMMUTLBEntry typhoon_translate_iommu(IOMMUMemoryRegion *iommu,
+             if (pchip->ctl & 0x40) {
+                 /* See 10.1.4.4; in particular <39:35> is ignored.  */
+                 make_iommu_tlbe(0, 0x007ffffffffull, &ret);
+-                goto success;
++                return ret;
+             }
+         }
+ 
+@@ -723,16 +723,14 @@ static IOMMUTLBEntry typhoon_translate_iommu(IOMMUMemoryRegion *iommu,
+                 pte_addr  = pchip->win[3].tba & 0x7ffc00000ull;
+                 pte_addr |= (addr & 0xffffe000u) >> 10;
+                 if (pte_translate(pte_addr, &ret)) {
+-                        goto success;
++                    return ret;
+                 }
+             }
          }
      }
  
--out:
-     return entry;
+  failure:
+-    ret = (IOMMUTLBEntry) { .perm = IOMMU_NONE };
+- success:
+-    return ret;
++    return (IOMMUTLBEntry) { .perm = IOMMU_NONE };
  }
  
-@@ -2380,12 +2379,12 @@ static bool vtd_process_device_iotlb_desc(IntelIOMMUState *s,
- 
-     vtd_bus = vtd_find_as_from_bus_num(s, bus_num);
-     if (!vtd_bus) {
--        goto done;
-+        return true;
-     }
- 
-     vtd_dev_as = vtd_bus->dev_as[devfn];
-     if (!vtd_dev_as) {
--        goto done;
-+        return true;
-     }
- 
-     /* According to ATS spec table 2.4:
-@@ -2410,7 +2409,6 @@ static bool vtd_process_device_iotlb_desc(IntelIOMMUState *s,
-     entry.translated_addr = 0;
-     memory_region_notify_iommu(&vtd_dev_as->iommu, 0, entry);
- 
--done:
-     return true;
- }
- 
+ static AddressSpace *typhoon_pci_dma_iommu(PCIBus *bus, void *opaque, int devfn)
 -- 
 2.24.1
 
