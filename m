@@ -1,56 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobmB-0000qj-P6
+	id 1iobmB-0000r2-Ur
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45733)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45873)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4P-0002R5-64
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:42 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4W-0002dG-Jj
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4O-0004RV-2v
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:41 -0500
-Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744]:38121)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4V-0004ZC-Iw
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:48 -0500
+Received: from mail-qt1-x843.google.com ([2607:f8b0:4864:20::843]:44907)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4L-0004On-LO; Mon, 06 Jan 2020 13:25:37 -0500
-Received: by mail-qk1-x744.google.com with SMTP id k6so40296963qki.5;
- Mon, 06 Jan 2020 10:25:37 -0800 (PST)
+ id 1ioX4T-0004Wp-8I; Mon, 06 Jan 2020 13:25:45 -0500
+Received: by mail-qt1-x843.google.com with SMTP id t3so43183563qtr.11;
+ Mon, 06 Jan 2020 10:25:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=PKYZ0M4t+5Cvodu2K02JYtC//F3gaNkUYi3Ckm33kDw=;
- b=vgvSkeeOFCOWiENjxBXP+qbzb6eNuk+3D7Q6fYet0qFgaDfGM9sD3FyHyi0t9i1AG0
- qIXDU0dBHuKSA/RNyWMbNviS/3e89GH3uuyyOdGfeXccgCOinZL0AGDFQBSphX4HGbGn
- Xk+HHkS6Ygvyh0HqGzXRXQuF+FXxIGmj4K4MfehzTYK2QTd8irx2suv00wTl7FLpS39o
- vZzgvBWStF6P1AOrGBuUwpOxzfC0+ZiUkccB3n4ys+laWqT1ysKC1Qjgab5cHQmR0wLx
- yChLWGqTvsMlgZK9NZdjuLMbBr+DSBNM69R0tw27GUqI4rLZLiBWf+Kuq3PPfBPczZj4
- kLAA==
+ bh=MbtlCtBPgzqoGr8mUx8uII1CR9SSU0AvNsp1PJ3n1Aw=;
+ b=DORwoTJXuE+VEhA22rmb5ertrcQheAF+szdeA/wGUNHxxKnamMDt8mRrrsJ6mJkiT3
+ wKSx8+Cq/3PnnQRHKclMoXRz17zvGcyNRUqLba3lQvEjdeEQjjvf1ulcnsODh4TRz+Yx
+ N1mYIlPx7eHSnxvSCFecSThkdRGuw/7ayXB47wtZabqFVF1BNi/VBPJO9XmaFAZ3xsbF
+ Ay5OApQh/ce0NN1xHJkSDew0ldGnQluXbMJbE4S04iP7oYYUFY8l0DX7y2b3oS3tAdjC
+ Lpws/XX14RY2vG++zCmrt4t9zaRYlIS/VHmIAIYzAsKpP62XCDMHjvmHKPS+g4dkoNDU
+ CObA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=PKYZ0M4t+5Cvodu2K02JYtC//F3gaNkUYi3Ckm33kDw=;
- b=q9WFH9HUN+1Inu5WMOnhE9Kyqf6fDclwku5hGQ1wwYcmkXjDuAVUG0/OeVh12Mb3eo
- TLqVu0v9jnlGwMFj9ayFaqw/CBuF0/IWLrZ8+7So+iOgimHZOuC4aAep99U60sYH3CWT
- /Mkp3MDzwuSfY0HnwD6Wf4blVnB3fmcD+xrKsjApsORVk1GUnDD+MxB3Jh74CILtb1Nl
- T1saOzY2QlT1PikIwU8NmgjuGaqRlYixXSHNjdXByMU0qzc5cRt8BckGA6iSQQYlr3F3
- 6+tMIduUNm5UyFGmcAjP3MLKirz7uqq/YSf4Db84H/Td//Gh/8bimHo3GdbRGohrOAWB
- y0qg==
-X-Gm-Message-State: APjAAAVUKCi3esE/HH2ZCxzUpGb1RLhUMHiIcMJq6I/agL7K2VYXjJGa
- 7GdGTB9D9wi7fC83WZCdajSoCuzN
-X-Google-Smtp-Source: APXvYqyHPrK96/xFK20pSP76AtA0O9Douwyua786EZfCF4dVv9Ptbi5dJPEGq9kPIygFyrbrybdiSA==
-X-Received: by 2002:a37:9f41:: with SMTP id i62mr81732449qke.272.1578335137004; 
- Mon, 06 Jan 2020 10:25:37 -0800 (PST)
+ bh=MbtlCtBPgzqoGr8mUx8uII1CR9SSU0AvNsp1PJ3n1Aw=;
+ b=mxnwQ8T6xo4unOVnLOYjkzMpvRPIk3FpzPnhWONZ3JAz63TbR2l1ASLLb8SWY5eytG
+ buHwZLftMH4EAVgk2c9eKL3vHLzgNZ9++llgoZ0x4OB0u3MONqgCmMYFKm5Yo3lF0a7J
+ IicbYVNi89WwLHLNXYjMMM/30nl+MLnyn8gVE5CB+RbS/ZhC9gSJKpUn4nHSE/pEMMv5
+ emDqItYSgH7AGt5uxipi9bGxpOPdadHCizrbWGNGDbHQvVt3W1nr65SUGLlF8iH93pa5
+ 7pXhqZ+p2zw6MxDZQgdar2CC2oFGDdgeuBKWqh6FxiPZDxLh6lp/Yce+gp7E8mWp92py
+ Nhtw==
+X-Gm-Message-State: APjAAAUfhdDkvxklY3DFgzCNWksC7IP3rUuuDSqrHNgspZi3bp4l+W3y
+ KNvKXueeKHIuGzmvF7OarMteg/uq
+X-Google-Smtp-Source: APXvYqxj7atGmegCHcM6OKfS6yo7/T+5qulOAvhmTYb6RVIuOMkEHi/QvaWyslbN1EGCvIi+61xJBw==
+X-Received: by 2002:aed:2be4:: with SMTP id e91mr77978661qtd.148.1578335144732; 
+ Mon, 06 Jan 2020 10:25:44 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.35
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:36 -0800 (PST)
+ Mon, 06 Jan 2020 10:25:44 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Jeff Cody <codyprime@gmail.com>, qemu-block@nongnu.org
-Subject: [PATCH v1 25/59] block/vhdx.c: remove unneeded 'exit' labels
-Date: Mon,  6 Jan 2020 15:23:51 -0300
-Message-Id: <20200106182425.20312-26-danielhb413@gmail.com>
+ Gonglei <arei.gonglei@huawei.com>
+Subject: [PATCH v1 29/59] cryptodev-vhost.c: remove unneeded 'err' label in
+ cryptodev_vhost_start
+Date: Mon,  6 Jan 2020 15:23:55 -0300
+Message-Id: <20200106182425.20312-30-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -58,7 +59,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::744
+X-Received-From: 2607:f8b0:4864:20::843
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,57 +72,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:43 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:25:51 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:25:51 -0000
 
-'exit' label of vhdx_region_check() and vhdx_update_header()
-can be replaced by 'return' statements.
+'err' can be replaced by 'return r'.
 
-CC: Jeff Cody <codyprime@gmail.com>
-CC: qemu-block@nongnu.org
+CC: Gonglei <arei.gonglei@huawei.com>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- block/vhdx.c | 10 +++-------
- 1 file changed, 3 insertions(+), 7 deletions(-)
+ backends/cryptodev-vhost.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/block/vhdx.c b/block/vhdx.c
-index f02d2611be..7a1ea312ed 100644
---- a/block/vhdx.c
-+++ b/block/vhdx.c
-@@ -229,7 +229,6 @@ void vhdx_guid_generate(MSGUID *guid)
- /* Check for region overlaps inside the VHDX image */
- static int vhdx_region_check(BDRVVHDXState *s, uint64_t start, uint64_t length)
- {
--    int ret = 0;
-     uint64_t end;
-     VHDXRegionEntry *r;
- 
-@@ -239,13 +238,11 @@ static int vhdx_region_check(BDRVVHDXState *s, uint64_t start, uint64_t length)
-             error_report("VHDX region %" PRIu64 "-%" PRIu64 " overlaps with "
-                          "region %" PRIu64 "-%." PRIu64, start, end, r->start,
-                          r->end);
--            ret = -EINVAL;
--            goto exit;
-+            return -EINVAL;
-         }
+diff --git a/backends/cryptodev-vhost.c b/backends/cryptodev-vhost.c
+index 8337c9a495..907ca21fa7 100644
+--- a/backends/cryptodev-vhost.c
++++ b/backends/cryptodev-vhost.c
+@@ -201,7 +201,7 @@ int cryptodev_vhost_start(VirtIODevice *dev, int total_queues)
+     r = k->set_guest_notifiers(qbus->parent, total_queues, true);
+     if (r < 0) {
+         error_report("error binding guest notifier: %d", -r);
+-        goto err;
++        return r;
      }
  
--exit:
--    return ret;
-+    return 0;
- }
- 
- /* Register a region for future checks */
-@@ -390,11 +387,10 @@ static int vhdx_update_header(BlockDriverState *bs, BDRVVHDXState *s,
- 
-     ret = vhdx_write_header(bs->file, inactive_header, header_offset, true);
-     if (ret < 0) {
--        goto exit;
-+        return ret;
+     for (i = 0; i < total_queues; i++) {
+@@ -236,7 +236,7 @@ err_start:
+     if (e < 0) {
+         error_report("vhost guest notifier cleanup failed: %d", e);
      }
-     s->curr_header = hdr_idx;
- 
--exit:
-     return ret;
+-err:
++
+     return r;
  }
  
 -- 
