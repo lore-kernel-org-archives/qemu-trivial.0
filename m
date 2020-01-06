@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobll-0000Ng-Cw
+	id 1iobll-0000O2-JI
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45529)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45049)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4F-0002Bi-Ga
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:33 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX3l-0001Ur-Li
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4E-0004Gg-16
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:31 -0500
-Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:38116)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX3k-0003j3-Es
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:01 -0500
+Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43]:37941)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4B-0004DU-4H; Mon, 06 Jan 2020 13:25:27 -0500
-Received: by mail-qk1-x741.google.com with SMTP id k6so40296404qki.5;
- Mon, 06 Jan 2020 10:25:26 -0800 (PST)
+ id 1ioX3h-0003gA-T6; Mon, 06 Jan 2020 13:24:57 -0500
+Received: by mail-qv1-xf43.google.com with SMTP id t6so19445797qvs.5;
+ Mon, 06 Jan 2020 10:24:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=iIYRPlSXfjPSgphJVr9MrieAqsI8xts4nkwFUXyHtYQ=;
- b=mQhipP9oLD5WYxqXU3Jf1sX/+F2XCuz17PnDMVOQGuSYlA3ITIeH4GDfHo5O9OLRAi
- mpbP56gc+LoBIWpZpz3A+ESeexNycfiOo1O2ieYVo+FriFiqkp11MFrBAL5+WGE1mGj5
- Q6YB0MM+1pK2HWLfKBV2Q3iJzy6VpY1GL93KunDPDXcZa+zkf3BlSFtOtDp2bhk1wPz6
- gnXS4qGhYPas6OybiOE4st28V0WnQlAf1trWanaB59bweCqfsDUvEY+ZCUE9MlpdAgeS
- /aIn9BVLx75tuQsEM1IFY9+AAavV0NjSP6/smv8WV35hLxj7pltxOve41CM9MCN+3t7E
- sF3Q==
+ bh=w1daSF8Ke50vf7L1lkiX0k78v3ttDXfxEHmXKjiAnDM=;
+ b=fvEA+lPfmF5uzZTGgJKwCrnrb0+IU9t4oJ74GmQhGsUw8ayTq0kCoiOsWnTHyXEZzA
+ HM02mY9S0Ppzbk6pg5VFW3FBLfI9LN+Y9vf8OT/Upj5c2TgmYOeeCwGWrdCE2z+ubUSW
+ HbLFak51A2jvycRPrk+GJ9ilsqbhQMMLS4/mwtjlrlW5D7hHtf5PlWbZC99MEcePiCLN
+ NK5FjV+21LTBZSBcF+o0niXd7C4nHn7lvM5KXfrpUaQlPBV2PlRoQQdjzzNlj4rjq7lA
+ R6Lunp1SY/5fUqYyvqeVV4fbvbu36wQxWATOw4FZmoPt/fsD7N/lVN+0yYAV964e8QUU
+ zosQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=iIYRPlSXfjPSgphJVr9MrieAqsI8xts4nkwFUXyHtYQ=;
- b=dEOrwk/YTq0tG4RqGgcBXIukwJu/yYVInUkx1P1W0SCl81L+KsDlWLqTLEHsst0iL+
- QgYAH2nMtSIhfxOWus392CiIHFMdoiZPPcsxLgSJEe1cLXrMOvzrAo6rxfM3oce3vgbK
- feBaAQ2S1R61QYjP4DgaR0mjwOoVqomA6peMlj3D3mW8lhAnhSVFInjXIItQ8oK6hG9C
- n/yMvc87eC6mdxYmHc70DZty/lwS8DImrqmz342+VVyo5xywjeEINSvpF3Zm/N4YI/sn
- 3F3D1K1FN9hMQ+M6LNaWaZkke7rCFzj5BkpyiAAl4higMEZabO9wSAj5+A6ewd+E5XPI
- tJ+g==
-X-Gm-Message-State: APjAAAWP5MzqYJH0elyBd1l2a/v2BX6k6J8wOgipmXAfoLWwLWrhZLQQ
- qK0f+1oUpj5+WVhIWyQivhsoaWt6
-X-Google-Smtp-Source: APXvYqyr26GEbIsdAlLQPqpzzUEP+eCeLvGjtbIaTl7QyANUHBEppluPjmQ1RudJ9NcQqRSQ6A7raw==
-X-Received: by 2002:a37:684b:: with SMTP id d72mr85753234qkc.293.1578335126320; 
- Mon, 06 Jan 2020 10:25:26 -0800 (PST)
+ bh=w1daSF8Ke50vf7L1lkiX0k78v3ttDXfxEHmXKjiAnDM=;
+ b=hU99zO16K70HC2No3uyBaNfwHehSnfivFPakkJieQOanjUPZvRptHs2R6E5yaJ25Iu
+ nEeE8mKKnz3AzxVZUniLwGF2C2T1D4s4YneMKflPjPA34wC6FyaK+ADKLT560tPPZgO7
+ +W2xRHI/qzKxqTXAp5ROyVGjwNG/TJUe5kAu4jfstgvYKtTYWfjfus+hQ+wHn++rwWWV
+ yVL7hzoDuqyp8le7DZ/VroBFmP9zycAmSZXZViN9+r+8NrWy4x4J1Py3xjcAioRkA33C
+ 9c5WGadZui8uQSY6HE2BmUVVCFpBH1+W3BNvDXC2dTBMJf4oBH1P9j8PqzQwEYx1ukKH
+ xnPA==
+X-Gm-Message-State: APjAAAVLm8ORWIExG6w4YjuZvmrO/Ibvq5YrJ6dm7oClefTpjZVy3Tzi
+ ejmmfQzJNFIRHZ9lhypyjHo428d3
+X-Google-Smtp-Source: APXvYqxWTlBIt1KcA9as9yiBJamQ7BhAdA9fJnTkcj1X7G95+rr5BfkNXkOu4UuKsXjqGexd6u42yg==
+X-Received: by 2002:a0c:8605:: with SMTP id p5mr80154235qva.109.1578335097141; 
+ Mon, 06 Jan 2020 10:24:57 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.24
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.24.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:25 -0800 (PST)
+ Mon, 06 Jan 2020 10:24:56 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- "Richard W . M . Jones" <rjones@redhat.com>, qemu-block@nongnu.org
-Subject: [PATCH v1 19/59] block/ssh.c: remove unneeded labels
-Date: Mon,  6 Jan 2020 15:23:45 -0300
-Message-Id: <20200106182425.20312-20-danielhb413@gmail.com>
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v1 03/59] kvm-all.c: remove unneeded labels
+Date: Mon,  6 Jan 2020 15:23:29 -0300
+Message-Id: <20200106182425.20312-4-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -58,7 +58,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::741
+X-Received-From: 2607:f8b0:4864:20::f43
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,174 +71,130 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:33 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:25:03 -0000
 
-The 'out' labels for check_host_key_knownhosts() and authenticate()
-functions can be removed and, instead, call 'return' with the
-appropriate return value. The 'ret' integer from both functions
-could also be removed.
+Labels 'err' and 'out' from kvm_destroy_vcpu(), kvm_init_vcpu()
+and kvm_physical_sync_dirty_bitmap() can be replaced by
+'return' with the appropriate return value.
 
-CC: Richard W.M. Jones <rjones@redhat.com>
-CC: qemu-block@nongnu.org
+CC: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- block/ssh.c | 61 +++++++++++++++++------------------------------------
- 1 file changed, 19 insertions(+), 42 deletions(-)
+ accel/kvm/kvm-all.c | 30 +++++++++++-------------------
+ 1 file changed, 11 insertions(+), 19 deletions(-)
 
-diff --git a/block/ssh.c b/block/ssh.c
-index b4375cf7d2..e0c56d002a 100644
---- a/block/ssh.c
-+++ b/block/ssh.c
-@@ -276,7 +276,6 @@ static void ssh_parse_filename(const char *filename, QDict *options,
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index b2f1a5bcb5..09ca99e082 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -329,26 +329,24 @@ int kvm_destroy_vcpu(CPUState *cpu)
  
- static int check_host_key_knownhosts(BDRVSSHState *s, Error **errp)
- {
--    int ret;
- #ifdef HAVE_LIBSSH_0_8
-     enum ssh_known_hosts_e state;
-     int r;
-@@ -295,7 +294,6 @@ static int check_host_key_knownhosts(BDRVSSHState *s, Error **errp)
-         trace_ssh_check_host_key_knownhosts();
-         break;
-     case SSH_KNOWN_HOSTS_CHANGED:
--        ret = -EINVAL;
-         r = ssh_get_server_publickey(s->session, &pubkey);
-         if (r == 0) {
-             r = ssh_get_publickey_hash(pubkey, SSH_PUBLICKEY_HASH_SHA256,
-@@ -320,28 +318,23 @@ static int check_host_key_knownhosts(BDRVSSHState *s, Error **errp)
-                        "host key does not match the one in known_hosts; this "
-                        "may be a possible attack");
-         }
--        goto out;
-+        return -EINVAL;
-     case SSH_KNOWN_HOSTS_OTHER:
--        ret = -EINVAL;
-         error_setg(errp,
-                    "host key for this server not found, another type exists");
--        goto out;
-+        return -EINVAL;
-     case SSH_KNOWN_HOSTS_UNKNOWN:
--        ret = -EINVAL;
-         error_setg(errp, "no host key was found in known_hosts");
--        goto out;
-+        return -EINVAL;
-     case SSH_KNOWN_HOSTS_NOT_FOUND:
--        ret = -ENOENT;
-         error_setg(errp, "known_hosts file not found");
--        goto out;
-+        return -ENOENT;
-     case SSH_KNOWN_HOSTS_ERROR:
--        ret = -EINVAL;
-         error_setg(errp, "error while checking the host");
--        goto out;
-+        return -EINVAL;
-     default:
--        ret = -EINVAL;
-         error_setg(errp, "error while checking for known server (%d)", state);
--        goto out;
-+        return -EINVAL;
+     ret = kvm_arch_destroy_vcpu(cpu);
+     if (ret < 0) {
+-        goto err;
++        return ret;
      }
- #else /* !HAVE_LIBSSH_0_8 */
-     int state;
-@@ -355,40 +348,31 @@ static int check_host_key_knownhosts(BDRVSSHState *s, Error **errp)
-         trace_ssh_check_host_key_knownhosts();
-         break;
-     case SSH_SERVER_KNOWN_CHANGED:
--        ret = -EINVAL;
-         error_setg(errp,
-                    "host key does not match the one in known_hosts; this "
-                    "may be a possible attack");
--        goto out;
-+        return -EINVAL;
-     case SSH_SERVER_FOUND_OTHER:
--        ret = -EINVAL;
-         error_setg(errp,
-                    "host key for this server not found, another type exists");
--        goto out;
-+        return -EINVAL;
-     case SSH_SERVER_FILE_NOT_FOUND:
--        ret = -ENOENT;
-         error_setg(errp, "known_hosts file not found");
--        goto out;
-+        return -ENOENT;
-     case SSH_SERVER_NOT_KNOWN:
--        ret = -EINVAL;
-         error_setg(errp, "no host key was found in known_hosts");
--        goto out;
-+        return -EINVAL;
-     case SSH_SERVER_ERROR:
--        ret = -EINVAL;
-         error_setg(errp, "server error");
--        goto out;
-+        return -EINVAL;
-     default:
--        ret = -EINVAL;
-         error_setg(errp, "error while checking for known server (%d)", state);
--        goto out;
-+        return -EINVAL;
-     }
- #endif /* !HAVE_LIBSSH_0_8 */
  
-     /* known_hosts checking successful. */
--    ret = 0;
--
-- out:
--    return ret;
-+    return 0;
+     mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
+     if (mmap_size < 0) {
+-        ret = mmap_size;
+         DPRINTF("KVM_GET_VCPU_MMAP_SIZE failed\n");
+-        goto err;
++        return mmap_size;
+     }
+ 
+     ret = munmap(cpu->kvm_run, mmap_size);
+     if (ret < 0) {
+-        goto err;
++        return ret;
+     }
+ 
+     vcpu = g_malloc0(sizeof(*vcpu));
+     vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
+     vcpu->kvm_fd = cpu->kvm_fd;
+     QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
+-err:
+     return ret;
  }
  
- static unsigned hex2decimal(char ch)
-@@ -501,20 +485,18 @@ static int check_host_key(BDRVSSHState *s, SshHostKeyCheck *hkc, Error **errp)
- 
- static int authenticate(BDRVSSHState *s, Error **errp)
- {
--    int r, ret;
-+    int r;
-     int method;
- 
-     /* Try to authenticate with the "none" method. */
-     r = ssh_userauth_none(s->session, NULL);
-     if (r == SSH_AUTH_ERROR) {
--        ret = -EPERM;
-         session_error_setg(errp, s, "failed to authenticate using none "
-                                     "authentication");
--        goto out;
-+        return -EPERM;
-     } else if (r == SSH_AUTH_SUCCESS) {
-         /* Authenticated! */
--        ret = 0;
--        goto out;
-+        return 0;
+@@ -381,7 +379,7 @@ int kvm_init_vcpu(CPUState *cpu)
+     ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
+     if (ret < 0) {
+         DPRINTF("kvm_create_vcpu failed\n");
+-        goto err;
++        return ret;
      }
  
-     method = ssh_userauth_list(s->session, NULL);
-@@ -527,23 +509,18 @@ static int authenticate(BDRVSSHState *s, Error **errp)
-     if (method & SSH_AUTH_METHOD_PUBLICKEY) {
-         r = ssh_userauth_publickey_auto(s->session, NULL, NULL);
-         if (r == SSH_AUTH_ERROR) {
--            ret = -EINVAL;
-             session_error_setg(errp, s, "failed to authenticate using "
-                                         "publickey authentication");
--            goto out;
-+            return -EINVAL;
-         } else if (r == SSH_AUTH_SUCCESS) {
-             /* Authenticated! */
--            ret = 0;
+     cpu->kvm_fd = ret;
+@@ -390,17 +388,15 @@ int kvm_init_vcpu(CPUState *cpu)
+ 
+     mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
+     if (mmap_size < 0) {
+-        ret = mmap_size;
+         DPRINTF("KVM_GET_VCPU_MMAP_SIZE failed\n");
+-        goto err;
++        return mmap_size;
+     }
+ 
+     cpu->kvm_run = mmap(NULL, mmap_size, PROT_READ | PROT_WRITE, MAP_SHARED,
+                         cpu->kvm_fd, 0);
+     if (cpu->kvm_run == MAP_FAILED) {
+-        ret = -errno;
+         DPRINTF("mmap'ing vcpu state failed\n");
+-        goto err;
++        return -errno;
+     }
+ 
+     if (s->coalesced_mmio && !s->coalesced_mmio_ring) {
+@@ -408,9 +404,7 @@ int kvm_init_vcpu(CPUState *cpu)
+             (void *)cpu->kvm_run + s->coalesced_mmio * PAGE_SIZE;
+     }
+ 
+-    ret = kvm_arch_init_vcpu(cpu);
+-err:
+-    return ret;
++    return kvm_arch_init_vcpu(cpu);
+ }
+ 
+ /*
+@@ -565,7 +559,6 @@ static int kvm_physical_sync_dirty_bitmap(KVMMemoryListener *kml,
+     KVMSlot *mem;
+     hwaddr start_addr, size;
+     hwaddr slot_size, slot_offset = 0;
+-    int ret = 0;
+ 
+     size = kvm_align_section(section, &start_addr);
+     while (size) {
+@@ -575,7 +568,7 @@ static int kvm_physical_sync_dirty_bitmap(KVMMemoryListener *kml,
+         mem = kvm_lookup_matching_slot(kml, start_addr, slot_size);
+         if (!mem) {
+             /* We don't have a slot if we want to trap every access. */
 -            goto out;
 +            return 0;
          }
-     }
  
--    ret = -EPERM;
-     error_setg(errp, "failed to authenticate using publickey authentication "
-                "and the identities held by your ssh-agent");
--
-- out:
+         if (!mem->dirty_bmap) {
+@@ -587,8 +580,7 @@ static int kvm_physical_sync_dirty_bitmap(KVMMemoryListener *kml,
+         d.slot = mem->slot | (kml->as_id << 16);
+         if (kvm_vm_ioctl(s, KVM_GET_DIRTY_LOG, &d) == -1) {
+             DPRINTF("ioctl failed %d\n", errno);
+-            ret = -1;
+-            goto out;
++            return -1;
+         }
+ 
+         subsection.offset_within_region += slot_offset;
+@@ -599,8 +591,8 @@ static int kvm_physical_sync_dirty_bitmap(KVMMemoryListener *kml,
+         start_addr += slot_size;
+         size -= slot_size;
+     }
+-out:
 -    return ret;
-+    return -EPERM;
++
++    return 0;
  }
  
- static QemuOptsList ssh_runtime_opts = {
+ /* Alignment requirement for KVM_CLEAR_DIRTY_LOG - 64 pages */
 -- 
 2.24.1
 
