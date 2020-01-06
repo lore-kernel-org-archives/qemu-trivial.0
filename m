@@ -1,58 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobmA-0000ne-0p
+	id 1iobmA-0000o1-7Q
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46387)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46584)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX54-0003d2-Fk
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:23 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX5I-00045i-D7
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX53-00059d-CS
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:22 -0500
-Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743]:39322)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX5H-0005M8-9a
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:36 -0500
+Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42]:44709)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX51-00057I-53; Mon, 06 Jan 2020 13:26:19 -0500
-Received: by mail-qk1-x743.google.com with SMTP id c16so40279922qko.6;
- Mon, 06 Jan 2020 10:26:19 -0800 (PST)
+ id 1ioX5E-0005J5-RL; Mon, 06 Jan 2020 13:26:32 -0500
+Received: by mail-qv1-xf42.google.com with SMTP id n8so19408495qvg.11;
+ Mon, 06 Jan 2020 10:26:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=bs7x1DdZtpqQKwEZE8GS4y2GJ9iZwDpJNAVLOudv4rU=;
- b=N7CNeotvXctrkrAGky6hUb3El8MgPub51aUw6VZiMIVZL9tyQ7kP52weIeQagDaSVv
- bD6qcCwLE1gJpKw0hKxyV8P/NyYX5PmC49IIGRfzEUpTWcZ32GsXhJHXbiM89WBF+oxJ
- QnGv5K6lPy//8DEBPf0mb4YggELTgr3nAUBojHGjmNfUzYYESzzsMwpE95ohNoIDAxVq
- sC9v3rQgsBBPv2CAp/r2oOZU4nDrtWuGigu7TOgEoYxGox794Zya2DhVwibpXC563vmj
- 6rRgdw7vpGFwDaboG+LmNNSP1Jh+cSrG9FoHVlvCAQdFjxqoT/P5DwnVUemFfJsPNccO
- LdGQ==
+ bh=8epzYC9Hx96nC8wKq8nl8igdorRt4UtCgIwD3AuQIS8=;
+ b=CtGRoI1EAaFcZ6XoR5d+63MLor+iAEqD2yM88p5EaGJXkcPA9LKw3LiViNE5nDNejI
+ ABgUNaD6xhvfr1VYxHN+POKVOR40TVf6QUGvzZCiZJ4xztny9YCi67AyIYgo7pwPwIAD
+ CuR/1wIM0q/H/1p+His7K4QoYglHO7cKAJ/HF825HXbChXuByO/OC0ztG4npOytSl2HF
+ v7HYadn8fhnmUYifDQ/GAt34Ec23R0aX5h8BGPziaU5JTrsj+BA/wHwo2MdQoXOY9XZB
+ 2QTp4yefkn51kwf1LkTr+jQRQpiVaAAG2kwg7t4sunaCf32ZidCRVOtFa8JWk4UOVwAH
+ EXUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=bs7x1DdZtpqQKwEZE8GS4y2GJ9iZwDpJNAVLOudv4rU=;
- b=Mdq14J1FB1T/m3YPTw63A0HwT11L4gUOQW8YDIK5Oom1Yp32necOkOToU9qrbyUYus
- 8GIaANr9M5LPwWigvLqwGReVRdWRvfUW4t9sUasXW59/CsmGx7maHNU/MZLQ163o8IIN
- V6H1l4JIEgYRfw/7g4hCTxjuhnpYBkSKWmuySk15hY9gptPfuw7hW7b01gtEe1i7brea
- UNETHmcCcXKhm4vEps13MFVRS8LV5BvROvQZhZw9ZlqA6GmX8ZM8JStAejVlcxDmgltQ
- +5f2Ls9KDSOPGNQ2HL7ulImxyEARn7oEYTsJnqgrtZ+eKXZi4d/ol9wATcFUWvzcvwq/
- TsFw==
-X-Gm-Message-State: APjAAAXjwdf/dA7ebJ8Kf/59AgDTzOVxL+wHeSJhDgT3/4GvuCFNfvpX
- eMZATHqXhwEwBR9nhRjKn21Mj4eT
-X-Google-Smtp-Source: APXvYqwp57AWDJiUhXtstFk6McUIumDhjnvSPpEl2+ee+XmFqCQ7VRFp/LZ+b+CsrS76H3AIMpI7wg==
-X-Received: by 2002:a37:6346:: with SMTP id x67mr83721219qkb.476.1578335178367; 
- Mon, 06 Jan 2020 10:26:18 -0800 (PST)
+ bh=8epzYC9Hx96nC8wKq8nl8igdorRt4UtCgIwD3AuQIS8=;
+ b=cCbz6RrrVbDa6dhTQqfhupqKQfjuF8DFpFjR6+TTDPHm79UkW+KDBz8cTGoO8Yafz4
+ +r62rNH3S7CURSLC2dzIJRuDf5QsHnmG/5+DQ/B5+PYr5hyRZvxMll4gi1AKjgjGYuHU
+ gTlAqf6iSOo/TcW9Hd7tf75mTcRlww98ncv6B58eYBqYGZZXDeXBxJQTNFXVRlar3897
+ s5mWmWfaGw4Vh76SPNgSzO52IZ0Pgfr3A5cgjKo4jlaT/j9CFuAytXv3Gd1S1XsmdhZm
+ GvGYVP/V9qKMRZbWe0t3NEMJcO2LpeJ0VdDLvsnFVLvsiBbZZJO16vlIBzMUGGBLTQaR
+ PGqA==
+X-Gm-Message-State: APjAAAWJop3wiGWg/ajholh2qo/0bKT2kQGGssS+wtq5VKrkWSQXOjKH
+ fvM18vpjjLhKxGIrciBvJsSC0jjI
+X-Google-Smtp-Source: APXvYqxtyRMbmiEujs6q/5zgBBL/E9J99OUADg6ZgH+EC79ejwTz2kcu9nJQQyNjSHyiW7bCWWSW7Q==
+X-Received: by 2002:a0c:a145:: with SMTP id d63mr82830123qva.120.1578335192274; 
+ Mon, 06 Jan 2020 10:26:32 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.16
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:26:18 -0800 (PST)
+ Mon, 06 Jan 2020 10:26:31 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Yuval Shaia <yuval.shaia@oracle.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH v1 48/59] pvrdma_dev_ring.c: remove unneeded label in
- pvrdma_ring_init()
-Date: Mon,  6 Jan 2020 15:24:14 -0300
-Message-Id: <20200106182425.20312-49-danielhb413@gmail.com>
+ Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH v1 56/59] linux-user/signal.c: remove unneeded label in
+ do_sigaltstack()
+Date: Mon,  6 Jan 2020 15:24:22 -0300
+Message-Id: <20200106182425.20312-57-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -60,7 +59,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::743
+X-Received-From: 2607:f8b0:4864:20::f42
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,58 +72,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:26:24 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:26:39 -0000
 
-'out' label can be replaced by 'return' with the right return
-value. Since the 'rc' var was being used just to set -ENOMEM
-in a single error condition, get rid of the var and set
-the return value directly in the 'return' call.
+'out' can be replaced by 'return ret'. Since 'ret' is used
+just to set the return value, drop the 'ret' variable and
+use 'return' with the appropriate value instead.
 
-CC: Yuval Shaia <yuval.shaia@oracle.com>
-CC: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+CC: Riku Voipio <riku.voipio@iki.fi>
+CC: Laurent Vivier <laurent@vivier.eu>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- hw/rdma/vmw/pvrdma_dev_ring.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ linux-user/signal.c | 20 ++++++--------------
+ 1 file changed, 6 insertions(+), 14 deletions(-)
 
-diff --git a/hw/rdma/vmw/pvrdma_dev_ring.c b/hw/rdma/vmw/pvrdma_dev_ring.c
-index d7bc7f5ccc..c2ecce3b41 100644
---- a/hw/rdma/vmw/pvrdma_dev_ring.c
-+++ b/hw/rdma/vmw/pvrdma_dev_ring.c
-@@ -28,7 +28,6 @@ int pvrdma_ring_init(PvrdmaRing *ring, const char *name, PCIDevice *dev,
-                      size_t elem_sz, dma_addr_t *tbl, uint32_t npages)
+diff --git a/linux-user/signal.c b/linux-user/signal.c
+index 5ca6d62b15..5efb1b79d9 100644
+--- a/linux-user/signal.c
++++ b/linux-user/signal.c
+@@ -708,7 +708,6 @@ static void host_signal_handler(int host_signum, siginfo_t *info,
+ /* compare linux/kernel/signal.c:do_sigaltstack() */
+ abi_long do_sigaltstack(abi_ulong uss_addr, abi_ulong uoss_addr, abi_ulong sp)
  {
-     int i;
--    int rc = 0;
+-    int ret;
+     struct target_sigaltstack oss;
+     TaskState *ts = (TaskState *)thread_cpu->opaque;
  
-     strncpy(ring->name, name, MAX_RING_NAME_SZ);
-     ring->name[MAX_RING_NAME_SZ - 1] = 0;
-@@ -51,14 +50,13 @@ int pvrdma_ring_init(PvrdmaRing *ring, const char *name, PCIDevice *dev,
- 
-         ring->pages[i] = rdma_pci_dma_map(dev, tbl[i], TARGET_PAGE_SIZE);
-         if (!ring->pages[i]) {
--            rc = -ENOMEM;
-             rdma_error_report("Failed to map to page %d in ring %s", i, name);
-             goto out_free;
+@@ -734,32 +733,28 @@ abi_long do_sigaltstack(abi_ulong uss_addr, abi_ulong uoss_addr, abi_ulong sp)
          }
-         memset(ring->pages[i], 0, TARGET_PAGE_SIZE);
+ #endif
+ 
+-        ret = -TARGET_EFAULT;
+         if (!lock_user_struct(VERIFY_READ, uss, uss_addr, 1)) {
+-            goto out;
++            return -TARGET_EFAULT;
+         }
+         __get_user(ss.ss_sp, &uss->ss_sp);
+         __get_user(ss.ss_size, &uss->ss_size);
+         __get_user(ss.ss_flags, &uss->ss_flags);
+         unlock_user_struct(uss, uss_addr, 0);
+ 
+-        ret = -TARGET_EPERM;
+         if (on_sig_stack(sp))
+-            goto out;
++            return -TARGET_EPERM;
+ 
+-        ret = -TARGET_EINVAL;
+         if (ss.ss_flags != TARGET_SS_DISABLE
+             && ss.ss_flags != TARGET_SS_ONSTACK
+             && ss.ss_flags != 0)
+-            goto out;
++            return -TARGET_EINVAL;
+ 
+         if (ss.ss_flags == TARGET_SS_DISABLE) {
+             ss.ss_size = 0;
+             ss.ss_sp = 0;
+         } else {
+-            ret = -TARGET_ENOMEM;
+             if (ss.ss_size < minstacksize) {
+-                goto out;
++                return -TARGET_ENOMEM;
+             }
+         }
+ 
+@@ -768,14 +763,11 @@ abi_long do_sigaltstack(abi_ulong uss_addr, abi_ulong uoss_addr, abi_ulong sp)
      }
  
--    goto out;
-+    return 0;
- 
- out_free:
-     while (i--) {
-@@ -66,8 +64,7 @@ out_free:
+     if (uoss_addr) {
+-        ret = -TARGET_EFAULT;
+         if (copy_to_user(uoss_addr, &oss, sizeof(oss)))
+-            goto out;
++            return -TARGET_EFAULT;
      }
-     g_free(ring->pages);
  
+-    ret = 0;
 -out:
--    return rc;
-+    return -ENOMEM;
+-    return ret;
++    return 0;
  }
  
- void *pvrdma_ring_next_elem_read(PvrdmaRing *ring)
+ /* do_sigaction() return target values and host errnos */
 -- 
 2.24.1
 
