@@ -1,65 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobln-0000Q5-4i
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45173)
+	id 1ioblo-0000RJ-9l
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45246)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX3t-0001iY-Eb
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:10 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX3y-0001pZ-4o
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX3s-0003rj-0h
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:09 -0500
-Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43]:33219)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX3w-0003z6-VD
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:14 -0500
+Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844]:45902)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX3p-0003n4-3a; Mon, 06 Jan 2020 13:25:05 -0500
-Received: by mail-qv1-xf43.google.com with SMTP id z3so19445708qvn.0;
- Mon, 06 Jan 2020 10:25:05 -0800 (PST)
+ id 1ioX3u-0003u6-BB; Mon, 06 Jan 2020 13:25:10 -0500
+Received: by mail-qt1-x844.google.com with SMTP id l12so43162498qtq.12;
+ Mon, 06 Jan 2020 10:25:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=eY6GwOKUsSxbSiC0sEZUPgTqkPSXyaF2//XptsTcqg0=;
- b=Ir10aGHisUato561BZTbYR+T9sXZkJZa09fi7GWiq733xHdB0qdupgf6KGp2/jlp72
- 9liT2tk+YwLFfMuybNo72GaPvgAK70rwojOb2rBHSiLquEVIYZ404wx8/NWW9Kj0qMR1
- DkyB9UexOsa5+H11jhW4kYgvjimYr2O9EYdfEQp2bM3W08jAJgnF21yC3x/SEqTARsi7
- 3Xor9+ML05wbwttIZSIZ6OIdKpEnX7HFyFSBcTDx+plwF4R4apt8Jg+hVXUEt5zQVhq9
- LGYTVvXLm8YRjrCa1ksHW9676g+sv59z+e1W/3g9YjAKVd6nwkoAcB0JCMRAkyeaAy3i
- exeA==
+ bh=tnY7QxipU1+snECgL7BBBU3+B3MZxCY/MIXbljxzDB8=;
+ b=AG8vG7v2VGw2KzpxtIVUSix/hig/+nKsA/yE7FWR40p8AU5NhiYLJ38r7kYFhHSvYY
+ CW8ELOWLFo8wKg0P6B/ylPd8YaLgS2lHNQgANVz1OXNV1ci2v43DrVPTk4VtUYGL5kph
+ ZsoC7Hpxs98LZ2cj2k9Z/uyTFz36iynVok48mRkvwTY+GAmBTzc/jc859sGy6J+tTJP/
+ e5G9AJRwad+nCeHEbcXKFez4vkcHccibprR4FxOhP0yO0riUzEqbu3G2wL5K6mOz5ZgH
+ x1gdasslqNGKmyxlxjK+5y9dzoNyoj2+lDtRFWLy4fe4iNjlbVcM9h2ppEdpPQFGxKAt
+ 3a0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=eY6GwOKUsSxbSiC0sEZUPgTqkPSXyaF2//XptsTcqg0=;
- b=nV9P8rFlBwJ0JUrVPa4mfcKB+RnysB5oon7rRGKRL+5ggkboCqFCZJVwmnj/yaMjnV
- wCjjaZJymlOZaDUc9Qeagf5qhDg1Yk+eB1jULDw4n29ZEgaT1ugqB/qCKp82PqjnbvYd
- gHMdHjFlXXd1l5gbaW+/XwOhCFDnCOT5VXxpidQkY31St5ZBWY4Me2O0meVSBpJULSXo
- eOkrJ9RipyiQmBL0bbO4QtYRyoydNZo/SU8CopQ+rhsaatQKzIb/kPW98wXzmiQjr033
- QWAYXS76+6lbq8uLPtdBVwLQb7UyjyEf+Z4tlW6kusC3v0Pw9Y87i/n5aENTkYdKOUFP
- q7YQ==
-X-Gm-Message-State: APjAAAW4xq10+H7O0mlandP7wwrjiozRI5q8vhY41fCz4Dsj+ztpKnUT
- oeoLpSZNOErDYLwPEMlJCGGjXsXo
-X-Google-Smtp-Source: APXvYqy1QFUQeLXKMDt2TJuYG88b704qBzioKoASnhKiJguwt1zbK+ohgbdq9BwNC8spt6Uq6hNRDw==
-X-Received: by 2002:a0c:c542:: with SMTP id y2mr6110998qvi.225.1578335104537; 
- Mon, 06 Jan 2020 10:25:04 -0800 (PST)
+ bh=tnY7QxipU1+snECgL7BBBU3+B3MZxCY/MIXbljxzDB8=;
+ b=i+xsplcdK1M4v8aoQqvaNe04Bm2m99GvJfZydoPCWcfpLDRssRxEflQxCUx1FwuWmN
+ 6g97hlTN3xQBa/qHV7nAkTIvvlNMjoevHZHGvy2zK1a/Kpltqo3Ih4KLQoOg9UIBD+xm
+ N1CpoKTpEEW4UoNpOjr9K+Sl52ZDzzPvfssi57h1pLcldYv5dRP7lytpDdpdC715tAjh
+ hWBSdZ9atgER6sYebojAql1jk2n1iXYM807pUMsKStBgvIxBWrlYT0kg7HrBpnxIafPD
+ WpvMbWv+3KeJQXG55iKQXgOCITYwvTFI3PYff6CXdTQQE6GBOMgHbwZBld3fbsxFNtX4
+ rnHw==
+X-Gm-Message-State: APjAAAXiD6horcvMPhLkrEagkm1EKlVx7SEPZ5YDfIj6C9agyyrwQ7XR
+ 8HPS4S8bk0TShFuwdfnzrWHPqu7j
+X-Google-Smtp-Source: APXvYqye+lhuCh1FLVoCiYftUgeEtIrW0bNAhi7IeTTrucdmUNSCcRaHprn2BTjxc7LZh/69i7qYGQ==
+X-Received: by 2002:ac8:490f:: with SMTP id e15mr72867227qtq.32.1578335109804; 
+ Mon, 06 Jan 2020 10:25:09 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.02
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:04 -0800 (PST)
+ Mon, 06 Jan 2020 10:25:09 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>
-Subject: [PATCH v1 07/59] unicore32/softmmu.c: remove 'do_fault' label in
- get_phys_addr_ucv2()
-Date: Mon,  6 Jan 2020 15:23:33 -0300
-Message-Id: <20200106182425.20312-8-danielhb413@gmail.com>
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v1 10/59] chardev/char-win.c: remove 'fail' label in
+ win_chr_serial_init()
+Date: Mon,  6 Jan 2020 15:23:36 -0300
+Message-Id: <20200106182425.20312-11-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::f43
+X-Received-From: 2607:f8b0:4864:20::844
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,104 +74,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:12 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:25:16 -0000
 
-'do_fault' is a label that executes 'return code'. The 'code'
-variable is an integer that is set to zero, then in all instances
-it is set to another value right before 'do_fault'.
+The 'fail' label is a simply call to 'return -1' on error. Remove
+it and do the return call instead.
 
-We can get rid of both the label and the variable to make
-the code a bit cleaner.
-
-CC: Guan Xuetao <gxt@mprc.pku.edu.cn>
+CC: Marc-André Lureau <marcandre.lureau@redhat.com>
+CC: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- target/unicore32/softmmu.c | 23 +++++++----------------
- 1 file changed, 7 insertions(+), 16 deletions(-)
+ chardev/char-win.c | 19 ++++++++-----------
+ 1 file changed, 8 insertions(+), 11 deletions(-)
 
-diff --git a/target/unicore32/softmmu.c b/target/unicore32/softmmu.c
-index cbdaa500b7..3373400cba 100644
---- a/target/unicore32/softmmu.c
-+++ b/target/unicore32/softmmu.c
-@@ -125,7 +125,6 @@ static int get_phys_addr_ucv2(CPUUniCore32State *env, uint32_t address,
-         target_ulong *page_size)
- {
-     CPUState *cs = env_cpu(env);
--    int code;
-     uint32_t table;
-     uint32_t desc;
-     uint32_t phys_addr;
-@@ -135,13 +134,11 @@ static int get_phys_addr_ucv2(CPUUniCore32State *env, uint32_t address,
-     table = env->cp0.c2_base & 0xfffff000;
-     table |= (address >> 20) & 0xffc;
-     desc = ldl_phys(cs->as, table);
--    code = 0;
-     switch (PAGETABLE_TYPE(desc)) {
-     case 3:
-         /* Superpage  */
-         if (!(desc & UC32_PAGETABLE_EXIST)) {
--            code = 0x0b; /* superpage miss */
--            goto do_fault;
-+            return 0x0b; /* superpage miss */
-         }
-         phys_addr = (desc & 0xffc00000) | (address & 0x003fffff);
-         *page_size = SUPERPAGE_SIZE;
-@@ -152,8 +149,7 @@ static int get_phys_addr_ucv2(CPUUniCore32State *env, uint32_t address,
-             DPRINTF("PGD address %x, desc %x\n", table, desc);
-         }
-         if (!(desc & UC32_PAGETABLE_EXIST)) {
--            code = 0x05; /* second pagetable miss */
--            goto do_fault;
-+            return 0x05; /* second pagetable miss */
-         }
-         table = (desc & 0xfffff000) | ((address >> 10) & 0xffc);
-         desc = ldl_phys(cs->as, table);
-@@ -162,8 +158,7 @@ static int get_phys_addr_ucv2(CPUUniCore32State *env, uint32_t address,
-             DPRINTF("PTE address %x, desc %x\n", table, desc);
-         }
-         if (!(desc & UC32_PAGETABLE_EXIST)) {
--            code = 0x08; /* page miss */
--            goto do_fault;
-+            return 0x08; /* page miss */
-         }
-         switch (PAGETABLE_TYPE(desc)) {
-         case 0:
-@@ -185,8 +180,7 @@ static int get_phys_addr_ucv2(CPUUniCore32State *env, uint32_t address,
-         *prot |= PAGE_READ;
-     } else {
-         if (is_user && (access_type == 0)) {
--            code = 0x11; /* access unreadable area */
--            goto do_fault;
-+            return 0x11; /* access unreadable area */
-         }
+diff --git a/chardev/char-win.c b/chardev/char-win.c
+index 34825f683d..72c232e6d9 100644
+--- a/chardev/char-win.c
++++ b/chardev/char-win.c
+@@ -85,12 +85,12 @@ int win_chr_serial_init(Chardev *chr, const char *filename, Error **errp)
+     s->hsend = CreateEvent(NULL, TRUE, FALSE, NULL);
+     if (!s->hsend) {
+         error_setg(errp, "Failed CreateEvent");
+-        goto fail;
++        return -1;
+     }
+     s->hrecv = CreateEvent(NULL, TRUE, FALSE, NULL);
+     if (!s->hrecv) {
+         error_setg(errp, "Failed CreateEvent");
+-        goto fail;
++        return -1;
      }
  
-@@ -194,8 +188,7 @@ static int get_phys_addr_ucv2(CPUUniCore32State *env, uint32_t address,
-         *prot |= PAGE_WRITE;
-     } else {
-         if (is_user && (access_type == 1)) {
--            code = 0x12; /* access unwritable area */
--            goto do_fault;
-+            return 0x12; /* access unwritable area */
-         }
+     s->file = CreateFile(filename, GENERIC_READ | GENERIC_WRITE, 0, NULL,
+@@ -98,12 +98,12 @@ int win_chr_serial_init(Chardev *chr, const char *filename, Error **errp)
+     if (s->file == INVALID_HANDLE_VALUE) {
+         error_setg(errp, "Failed CreateFile (%lu)", GetLastError());
+         s->file = NULL;
+-        goto fail;
++        return -1;
      }
  
-@@ -203,13 +196,11 @@ static int get_phys_addr_ucv2(CPUUniCore32State *env, uint32_t address,
-         *prot |= PAGE_EXEC;
-     } else {
-         if (is_user && (access_type == 2)) {
--            code = 0x13; /* access unexecutable area */
--            goto do_fault;
-+            return 0x13; /* access unexecutable area */
-         }
+     if (!SetupComm(s->file, NRECVBUF, NSENDBUF)) {
+         error_setg(errp, "Failed SetupComm");
+-        goto fail;
++        return -1;
      }
  
--do_fault:
--    return code;
-+    return 0;
+     ZeroMemory(&comcfg, sizeof(COMMCONFIG));
+@@ -114,29 +114,26 @@ int win_chr_serial_init(Chardev *chr, const char *filename, Error **errp)
+ 
+     if (!SetCommState(s->file, &comcfg.dcb)) {
+         error_setg(errp, "Failed SetCommState");
+-        goto fail;
++        return -1;
+     }
+ 
+     if (!SetCommMask(s->file, EV_ERR)) {
+         error_setg(errp, "Failed SetCommMask");
+-        goto fail;
++        return -1;
+     }
+ 
+     cto.ReadIntervalTimeout = MAXDWORD;
+     if (!SetCommTimeouts(s->file, &cto)) {
+         error_setg(errp, "Failed SetCommTimeouts");
+-        goto fail;
++        return -1;
+     }
+ 
+     if (!ClearCommError(s->file, &err, &comstat)) {
+         error_setg(errp, "Failed ClearCommError");
+-        goto fail;
++        return -1;
+     }
+     qemu_add_polling_cb(win_chr_serial_poll, chr);
+     return 0;
+-
+- fail:
+-    return -1;
  }
  
- bool uc32_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+ int win_chr_pipe_poll(void *opaque)
 -- 
 2.24.1
 
