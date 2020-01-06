@@ -1,60 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ioXFn-0000pD-0F
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 13:37:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50577)
+	id 1ioXYx-00024n-EP
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 13:57:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55399)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <rjones@redhat.com>) id 1ioXFi-0000dM-7a
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:37:23 -0500
+ (envelope-from <dgilbert@redhat.com>) id 1ioXYt-0001zB-Tj
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:57:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <rjones@redhat.com>) id 1ioXFf-0001Wu-Jr
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:37:21 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:34821
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <dgilbert@redhat.com>) id 1ioXYs-0003oa-KF
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:57:11 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:34847
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <rjones@redhat.com>) id 1ioXFf-0001V5-Ey
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:37:19 -0500
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1ioXYs-0003o7-GV
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:57:10 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578335838;
+ s=mimecast20190719; t=1578337030;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8LBT8lWGbj5wXWuf6lIrINqLmDi7lCmsvVs67nXSJUM=;
- b=LhFn1rPE2jUFHy613vlBcuwxY11DzHFTKMYw2+kMkHltoudxtxOWVPZcyOhOPAY9lLPIb+
- tmVcZn/L1DKRm3t9jn+DTG5HKFyfXrRB9rQKmbWUNmgVx4611rk5lz0yyTOGliH7pTxUp0
- 0YYckkNBP1EJL1I0B/ZnkgQYYN+6IGc=
+ bh=Yw+PxDAygc39+OT5Uw/VZinsoASgcc3XbKbTThXogJ4=;
+ b=OxV/sMUDI63dBN78wg2nRVm27hz02ctD9j2nT3KfUFs3AJa489x0HBx62LVmQ+BQeotKLx
+ GVolsoSx18YkN/MIZKGiuWPl2MUsZjTSk14elk1zyn1L4ts3jlVjM2gBthZi+186DNv+1R
+ vNHbVfVDq7CG1Wkr7urYlS+kPk+HIog=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-218-D5Ro7BNkMz2B5z3tJxRz_g-1; Mon, 06 Jan 2020 13:37:14 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-47-hYrkj7rEMTmGrRTMQTLb7w-1; Mon, 06 Jan 2020 13:57:07 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D645A800D5F;
- Mon,  6 Jan 2020 18:37:13 +0000 (UTC)
-Received: from localhost (ovpn-117-237.ams2.redhat.com [10.36.117.237])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7AC2E7DB55;
- Mon,  6 Jan 2020 18:37:13 +0000 (UTC)
-Date: Mon, 6 Jan 2020 18:37:12 +0000
-From: "Richard W.M. Jones" <rjones@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D6BBB802C82;
+ Mon,  6 Jan 2020 18:57:05 +0000 (UTC)
+Received: from work-vm (ovpn-117-53.ams2.redhat.com [10.36.117.53])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CF6F55C290;
+ Mon,  6 Jan 2020 18:57:04 +0000 (UTC)
+Date: Mon, 6 Jan 2020 18:57:02 +0000
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 To: Daniel Henrique Barboza <danielhb413@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-block@nongnu.org
-Subject: Re: [PATCH v1 19/59] block/ssh.c: remove unneeded labels
-Message-ID: <20200106183712.GH3888@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Juan Quintela <quintela@redhat.com>
+Subject: Re: [PATCH v1 05/59] ram.c: remove unneeded labels
+Message-ID: <20200106185702.GN2798@work-vm>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
- <20200106182425.20312-20-danielhb413@gmail.com>
+ <20200106182425.20312-6-danielhb413@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20200106182425.20312-20-danielhb413@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: D5Ro7BNkMz2B5z3tJxRz_g-1
+In-Reply-To: <20200106182425.20312-6-danielhb413@gmail.com>
+User-Agent: Mutt/1.13.0 (2019-11-30)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: hYrkj7rEMTmGrRTMQTLb7w-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -66,204 +67,110 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:37:25 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:57:14 -0000
 
-On Mon, Jan 06, 2020 at 03:23:45PM -0300, Daniel Henrique Barboza wrote:
-> The 'out' labels for check_host_key_knownhosts() and authenticate()
-> functions can be removed and, instead, call 'return' with the
-> appropriate return value. The 'ret' integer from both functions
-> could also be removed.
+* Daniel Henrique Barboza (danielhb413@gmail.com) wrote:
+> ram_save_queue_pages() has an 'err' label that can be replaced by
+> 'return -1' instead.
 >=20
-> CC: Richard W.M. Jones <rjones@redhat.com>
-> CC: qemu-block@nongnu.org
+> Same thing with ram_discard_range(), and in this case we can also
+> get rid of the 'ret' variable and return either '-1' on error
+> or the result of ram_block_discard_range().
+>=20
+> CC: Juan Quintela <quintela@redhat.com>
+> CC: Dr. David Alan Gilbert <dgilbert@redhat.com>
 > Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+
 > ---
->  block/ssh.c | 61 +++++++++++++++++------------------------------------
->  1 file changed, 19 insertions(+), 42 deletions(-)
+>  migration/ram.c | 18 +++++-------------
+>  1 file changed, 5 insertions(+), 13 deletions(-)
 >=20
-> diff --git a/block/ssh.c b/block/ssh.c
-> index b4375cf7d2..e0c56d002a 100644
-> --- a/block/ssh.c
-> +++ b/block/ssh.c
-> @@ -276,7 +276,6 @@ static void ssh_parse_filename(const char *filename, =
-QDict *options,
-> =20
->  static int check_host_key_knownhosts(BDRVSSHState *s, Error **errp)
->  {
-> -    int ret;
->  #ifdef HAVE_LIBSSH_0_8
->      enum ssh_known_hosts_e state;
->      int r;
-> @@ -295,7 +294,6 @@ static int check_host_key_knownhosts(BDRVSSHState *s,=
- Error **errp)
->          trace_ssh_check_host_key_knownhosts();
->          break;
->      case SSH_KNOWN_HOSTS_CHANGED:
-> -        ret =3D -EINVAL;
->          r =3D ssh_get_server_publickey(s->session, &pubkey);
->          if (r =3D=3D 0) {
->              r =3D ssh_get_publickey_hash(pubkey, SSH_PUBLICKEY_HASH_SHA2=
-56,
-> @@ -320,28 +318,23 @@ static int check_host_key_knownhosts(BDRVSSHState *=
-s, Error **errp)
->                         "host key does not match the one in known_hosts; =
-this "
->                         "may be a possible attack");
+> diff --git a/migration/ram.c b/migration/ram.c
+> index 96feb4062c..980cc644d7 100644
+> --- a/migration/ram.c
+> +++ b/migration/ram.c
+> @@ -2434,7 +2434,7 @@ int ram_save_queue_pages(const char *rbname, ram_ad=
+dr_t start, ram_addr_t len)
+>               * it's the 1st request.
+>               */
+>              error_report("ram_save_queue_pages no previous block");
+> -            goto err;
+> +            return -1;
 >          }
-> -        goto out;
-> +        return -EINVAL;
->      case SSH_KNOWN_HOSTS_OTHER:
-> -        ret =3D -EINVAL;
->          error_setg(errp,
->                     "host key for this server not found, another type exi=
-sts");
-> -        goto out;
-> +        return -EINVAL;
->      case SSH_KNOWN_HOSTS_UNKNOWN:
-> -        ret =3D -EINVAL;
->          error_setg(errp, "no host key was found in known_hosts");
-> -        goto out;
-> +        return -EINVAL;
->      case SSH_KNOWN_HOSTS_NOT_FOUND:
-> -        ret =3D -ENOENT;
->          error_setg(errp, "known_hosts file not found");
-> -        goto out;
-> +        return -ENOENT;
->      case SSH_KNOWN_HOSTS_ERROR:
-> -        ret =3D -EINVAL;
->          error_setg(errp, "error while checking the host");
-> -        goto out;
-> +        return -EINVAL;
->      default:
-> -        ret =3D -EINVAL;
->          error_setg(errp, "error while checking for known server (%d)", s=
-tate);
-> -        goto out;
-> +        return -EINVAL;
+>      } else {
+>          ramblock =3D qemu_ram_block_by_name(rbname);
+> @@ -2442,7 +2442,7 @@ int ram_save_queue_pages(const char *rbname, ram_ad=
+dr_t start, ram_addr_t len)
+>          if (!ramblock) {
+>              /* We shouldn't be asked for a non-existent RAMBlock */
+>              error_report("ram_save_queue_pages no block '%s'", rbname);
+> -            goto err;
+> +            return -1;
+>          }
+>          rs->last_req_rb =3D ramblock;
 >      }
->  #else /* !HAVE_LIBSSH_0_8 */
->      int state;
-> @@ -355,40 +348,31 @@ static int check_host_key_knownhosts(BDRVSSHState *=
-s, Error **errp)
->          trace_ssh_check_host_key_knownhosts();
->          break;
->      case SSH_SERVER_KNOWN_CHANGED:
-> -        ret =3D -EINVAL;
->          error_setg(errp,
->                     "host key does not match the one in known_hosts; this=
- "
->                     "may be a possible attack");
-> -        goto out;
-> +        return -EINVAL;
->      case SSH_SERVER_FOUND_OTHER:
-> -        ret =3D -EINVAL;
->          error_setg(errp,
->                     "host key for this server not found, another type exi=
-sts");
-> -        goto out;
-> +        return -EINVAL;
->      case SSH_SERVER_FILE_NOT_FOUND:
-> -        ret =3D -ENOENT;
->          error_setg(errp, "known_hosts file not found");
-> -        goto out;
-> +        return -ENOENT;
->      case SSH_SERVER_NOT_KNOWN:
-> -        ret =3D -EINVAL;
->          error_setg(errp, "no host key was found in known_hosts");
-> -        goto out;
-> +        return -EINVAL;
->      case SSH_SERVER_ERROR:
-> -        ret =3D -EINVAL;
->          error_setg(errp, "server error");
-> -        goto out;
-> +        return -EINVAL;
->      default:
-> -        ret =3D -EINVAL;
->          error_setg(errp, "error while checking for known server (%d)", s=
-tate);
-> -        goto out;
-> +        return -EINVAL;
+> @@ -2451,7 +2451,7 @@ int ram_save_queue_pages(const char *rbname, ram_ad=
+dr_t start, ram_addr_t len)
+>          error_report("%s request overrun start=3D" RAM_ADDR_FMT " len=3D=
+"
+>                       RAM_ADDR_FMT " blocklen=3D" RAM_ADDR_FMT,
+>                       __func__, start, len, ramblock->used_length);
+> -        goto err;
+> +        return -1;
 >      }
->  #endif /* !HAVE_LIBSSH_0_8 */
 > =20
->      /* known_hosts checking successful. */
-> -    ret =3D 0;
+>      struct RAMSrcPageRequest *new_entry =3D
+> @@ -2467,9 +2467,6 @@ int ram_save_queue_pages(const char *rbname, ram_ad=
+dr_t start, ram_addr_t len)
+>      qemu_mutex_unlock(&rs->src_page_req_mutex);
+> =20
+>      return 0;
 > -
-> - out:
-> -    return ret;
-> +    return 0;
+> -err:
+> -    return -1;
 >  }
 > =20
->  static unsigned hex2decimal(char ch)
-> @@ -501,20 +485,18 @@ static int check_host_key(BDRVSSHState *s, SshHostK=
-eyCheck *hkc, Error **errp)
-> =20
->  static int authenticate(BDRVSSHState *s, Error **errp)
+>  static bool save_page_use_compression(RAMState *rs)
+> @@ -3072,8 +3069,6 @@ int ram_postcopy_send_discard_bitmap(MigrationState=
+ *ms)
+>   */
+>  int ram_discard_range(const char *rbname, uint64_t start, size_t length)
 >  {
-> -    int r, ret;
-> +    int r;
->      int method;
-> =20
->      /* Try to authenticate with the "none" method. */
->      r =3D ssh_userauth_none(s->session, NULL);
->      if (r =3D=3D SSH_AUTH_ERROR) {
-> -        ret =3D -EPERM;
->          session_error_setg(errp, s, "failed to authenticate using none "
->                                      "authentication");
-> -        goto out;
-> +        return -EPERM;
->      } else if (r =3D=3D SSH_AUTH_SUCCESS) {
->          /* Authenticated! */
-> -        ret =3D 0;
-> -        goto out;
-> +        return 0;
->      }
-> =20
->      method =3D ssh_userauth_list(s->session, NULL);
-> @@ -527,23 +509,18 @@ static int authenticate(BDRVSSHState *s, Error **er=
-rp)
->      if (method & SSH_AUTH_METHOD_PUBLICKEY) {
->          r =3D ssh_userauth_publickey_auto(s->session, NULL, NULL);
->          if (r =3D=3D SSH_AUTH_ERROR) {
-> -            ret =3D -EINVAL;
->              session_error_setg(errp, s, "failed to authenticate using "
->                                          "publickey authentication");
-> -            goto out;
-> +            return -EINVAL;
->          } else if (r =3D=3D SSH_AUTH_SUCCESS) {
->              /* Authenticated! */
-> -            ret =3D 0;
-> -            goto out;
-> +            return 0;
->          }
->      }
-> =20
-> -    ret =3D -EPERM;
->      error_setg(errp, "failed to authenticate using publickey authenticat=
-ion "
->                 "and the identities held by your ssh-agent");
+> -    int ret =3D -1;
 > -
-> - out:
+>      trace_ram_discard_range(rbname, start, length);
+> =20
+>      RCU_READ_LOCK_GUARD();
+> @@ -3081,7 +3076,7 @@ int ram_discard_range(const char *rbname, uint64_t =
+start, size_t length)
+> =20
+>      if (!rb) {
+>          error_report("ram_discard_range: Failed to find block '%s'", rbn=
+ame);
+> -        goto err;
+> +        return -1;
+>      }
+> =20
+>      /*
+> @@ -3093,10 +3088,7 @@ int ram_discard_range(const char *rbname, uint64_t=
+ start, size_t length)
+>                       length >> qemu_target_page_bits());
+>      }
+> =20
+> -    ret =3D ram_block_discard_range(rb, start, length);
+> -
+> -err:
 > -    return ret;
-> +    return -EPERM;
+> +    return ram_block_discard_range(rb, start, length);
 >  }
 > =20
->  static QemuOptsList ssh_runtime_opts =3D {
-
-I agree that the code is functionality the same after this change.
-Don't know whether or not one style or the other is preferred by qemu,
-but in any case:
-
-Reviewed-by: Richard W.M. Jones <rjones@redhat.com>
-
-Rich.
-
---=20
-Richard Jones, Virtualization Group, Red Hat http://people.redhat.com/~rjon=
-es
-Read my programming and virtualization blog: http://rwmj.wordpress.com
-virt-top is 'top' for virtual machines.  Tiny program with many
-powerful monitoring features, net stats, disk stats, logging, etc.
-http://people.redhat.com/~rjones/virt-top
+>  /*
+> --=20
+> 2.24.1
+>=20
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
 
