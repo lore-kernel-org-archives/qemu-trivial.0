@@ -1,57 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobm9-0000mQ-Dh
+	id 1iobm9-0000mu-K0
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46050)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46224)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4j-00030E-DQ
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:02 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4t-0003Jd-Mq
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4i-0004lv-A0
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:01 -0500
-Received: from mail-qt1-x841.google.com ([2607:f8b0:4864:20::841]:40610)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4s-0004yS-O3
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:11 -0500
+Received: from mail-qv1-xf41.google.com ([2607:f8b0:4864:20::f41]:44706)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4f-0004iY-4U; Mon, 06 Jan 2020 13:25:57 -0500
-Received: by mail-qt1-x841.google.com with SMTP id e6so43208924qtq.7;
- Mon, 06 Jan 2020 10:25:57 -0800 (PST)
+ id 1ioX4q-0004va-Lf; Mon, 06 Jan 2020 13:26:08 -0500
+Received: by mail-qv1-xf41.google.com with SMTP id n8so19407992qvg.11;
+ Mon, 06 Jan 2020 10:26:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=NDENpcOxrSQW9UZ3pijocQSdBIy4XBNwZQRjnmUpikY=;
- b=pf3PzziFI1qtO+PwJCFaC/uGCn0ZkFfWCqnvHr8XUQKHLuUbBUY+k0TmFTQDjaLsaD
- bAfAmG0r+sgHc5ZKvCFwaUwydNot+GVd+ExrvhHIADRcskMkCuX65hH6ldKGJDgw6shw
- C8ysLc440K7NftNq9Je3z04ZNeCMNH2AjMsxW9PsnYK7oTgoUTt/OUBqteW5MAgufL7e
- qzmWy9wbPyUWNQyIPVBB1xwjuMclwyIoqO55g38AdRQqdeRwg7BITwqfN2I+i8jXJ62N
- OrdltzzkTqef8/slUOpbaFbI3VkiIQeW0J6szpYqQnu1UX2mMlXZMstk4scORiuwCBN3
- C/Vg==
+ bh=e2Pglg9q4RMFoXAtcnS8nyYGqCU2Tjq8RVW10uPUEeA=;
+ b=PdJHk+dxqZORm7y8xJbfbi8AyLgfnD4aDeCYFLOeiHbk6FSIg1xKIWSA6cXNY2hrcT
+ p1U98c0XD4iJxVvzonsagevv8f2o4xNMwnVPWe1i+03yeEFgBv5HWFdS1YqVp9St2RaR
+ iEESSUn0ONAvWl/TL0V3FYkWi6Dg7kjF2t1tBkNurApYktaikl25//wppIT+8pwYK6C9
+ RVE13ERlyHzzXRXNEUZMJQg3xKXc/BpqkahYfH2JR+7w+vC3CJph6mfR5yD75hAkgur6
+ 1eKHrlaqN2RL3BNKODPy7BGY46eh5kIfbhOZdKg7qKmstSi7EoGstEYzhG+KZJfn2lLb
+ bFVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=NDENpcOxrSQW9UZ3pijocQSdBIy4XBNwZQRjnmUpikY=;
- b=PHxHneGN7pQTIVwJFXyXf2O/Tp2UCtchSYN3siUC8Yv5WtsrysEhHA6mfbU+A3iYEo
- prk41ahJaS0MPvdPeK5j7pRXhSBw/gT06DPWpK8TORJhMpsHlMHdXD4/3vVeuhC73299
- x5cMBWG85E0yF6d/G7npCUZ2Yz3hRoboMu1yc6lSX3JPlFKSZ75nfgCU2Qr3yMggw4IC
- 0uEnU84LjYhwDoBtpi1MWK3ED2JzaIZk67cTI97XLEsC+FxjKqih4KeMSCdm8ZMJ+bSr
- fEg5q8H7SyMYz1EB0VWmKhNqczOvQA2TuqEt2pQ7JQLCHgAR56hoZCh34Lw24HM3rwfr
- OQSg==
-X-Gm-Message-State: APjAAAU3UiZG6Ld+7MpyOn6Iej5L2CGETf9f9ckbrf2O7HLv/YIUi5c2
- MGJHcJKl5nckl1vW/PsxbhKm4iCa
-X-Google-Smtp-Source: APXvYqwAqKKyyYmsXaeW4lCIhlIXBQ1eaRlFkQWReyJRbzWNsfs1TcHrnZG4zlrzFHLre5CY765g6w==
-X-Received: by 2002:ac8:490f:: with SMTP id e15mr72869796qtq.32.1578335156613; 
- Mon, 06 Jan 2020 10:25:56 -0800 (PST)
+ bh=e2Pglg9q4RMFoXAtcnS8nyYGqCU2Tjq8RVW10uPUEeA=;
+ b=qYMfM6k5coz0ShGTqTI/t93vW/QDZ32dypFP/1gNqlQmivEEHxUVksu8UoGUGPlgXI
+ GSZ01ivnaR97z2CgvHBLYlsvYEkharltGgwkpWXevTNy8tMA82h+9L1vXI+clwpOvEng
+ M2/EHitUTBBYam+4K+AraHHo7K1QwIEw+YBEYYlTKSmdK1GqkrXUs7QARuu8KkKBRknx
+ Aus4Eej9r3yUgfxF29ULDV3nGxTPfaLRwik+t8IWdbg3ZBoFfPmbw0XigUvvmkR4I7A9
+ 7IW/3LBrUeaT3mZQVFHGmwPVHFM+PYDTxhjIumeqgsIPtelZoUe0+8vo5TklrKugEFM/
+ kw6Q==
+X-Gm-Message-State: APjAAAXDRSZwgRh9vGk0X5YPZjHEj2lktGJSeXlvzY3HYb+WZEMaoiur
+ reX5H0keb4/82jOoIGikzEisWpT7
+X-Google-Smtp-Source: APXvYqyMOUdvQFsVG1KX82JecU22kDLwhxzjSAPzowB71iFledUIlr4Xia7OhmMcc+66CTt7CwzG+A==
+X-Received: by 2002:a05:6214:923:: with SMTP id
+ dk3mr77520156qvb.96.1578335168111; 
+ Mon, 06 Jan 2020 10:26:08 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.55
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:56 -0800 (PST)
+ Mon, 06 Jan 2020 10:26:07 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Corey Minyard <minyard@acm.org>
-Subject: [PATCH v1 36/59] ipmi/ipmi_kcs.c: remove unneeded label in
- ipmi_kcs_handle_event
-Date: Mon,  6 Jan 2020 15:24:02 -0300
-Message-Id: <20200106182425.20312-37-danielhb413@gmail.com>
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: [PATCH v1 42/59] i386/intel_iommu.c: remove unneeded labels
+Date: Mon,  6 Jan 2020 15:24:08 -0300
+Message-Id: <20200106182425.20312-43-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -59,7 +60,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::841
+X-Received-From: 2607:f8b0:4864:20::f41
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,38 +73,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:26:03 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:26:13 -0000
 
-'out_noibf' can be replaced by 'return'.
+'out' label in vtd_lookup_iotlb() and 'done' label in
+vtd_process_device_iotlb_desc() can be replaced by
+'return' with the apropriate value.
 
-CC: Corey Minyard <minyard@acm.org>
+CC: Michael S. Tsirkin <mst@redhat.com>
+CC: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- hw/ipmi/ipmi_kcs.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ hw/i386/intel_iommu.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/hw/ipmi/ipmi_kcs.c b/hw/ipmi/ipmi_kcs.c
-index a77612946a..83009baddb 100644
---- a/hw/ipmi/ipmi_kcs.c
-+++ b/hw/ipmi/ipmi_kcs.c
-@@ -168,7 +168,7 @@ static void ipmi_kcs_handle_event(IPMIInterface *ii)
-             ik->outpos = 0;
-             bk->handle_command(ik->bmc, ik->inmsg, ik->inlen, sizeof(ik->inmsg),
-                                ik->waiting_rsp);
--            goto out_noibf;
-+            return;
-         } else if (ik->cmd_reg == IPMI_KCS_WRITE_END_CMD) {
-             ik->cmd_reg = -1;
-             ik->write_end = 1;
-@@ -197,8 +197,6 @@ static void ipmi_kcs_handle_event(IPMIInterface *ii)
-     ik->cmd_reg = -1;
-     ik->data_in_reg = -1;
-     IPMI_KCS_SET_IBF(ik->status_reg, 0);
-- out_noibf:
--    return;
+diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+index 43c94b993b..e0dd987851 100644
+--- a/hw/i386/intel_iommu.c
++++ b/hw/i386/intel_iommu.c
+@@ -304,11 +304,10 @@ static VTDIOTLBEntry *vtd_lookup_iotlb(IntelIOMMUState *s, uint16_t source_id,
+                                 source_id, level);
+         entry = g_hash_table_lookup(s->iotlb, &key);
+         if (entry) {
+-            goto out;
++            return entry;
+         }
+     }
+ 
+-out:
+     return entry;
  }
  
- static void ipmi_kcs_handle_rsp(IPMIInterface *ii, uint8_t msg_id,
+@@ -2380,12 +2379,12 @@ static bool vtd_process_device_iotlb_desc(IntelIOMMUState *s,
+ 
+     vtd_bus = vtd_find_as_from_bus_num(s, bus_num);
+     if (!vtd_bus) {
+-        goto done;
++        return true;
+     }
+ 
+     vtd_dev_as = vtd_bus->dev_as[devfn];
+     if (!vtd_dev_as) {
+-        goto done;
++        return true;
+     }
+ 
+     /* According to ATS spec table 2.4:
+@@ -2410,7 +2409,6 @@ static bool vtd_process_device_iotlb_desc(IntelIOMMUState *s,
+     entry.translated_addr = 0;
+     memory_region_notify_iommu(&vtd_dev_as->iommu, 0, entry);
+ 
+-done:
+     return true;
+ }
+ 
 -- 
 2.24.1
 
