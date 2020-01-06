@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobmC-0000rL-5L
+	id 1iobmC-0000rf-B5
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46003)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46027)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4f-0002rv-2D
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:58 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4g-0002vf-NY
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4d-0004hT-WE
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:56 -0500
-Received: from mail-qv1-xf44.google.com ([2607:f8b0:4864:20::f44]:45620)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4f-0004jO-J6
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:58 -0500
+Received: from mail-qv1-xf44.google.com ([2607:f8b0:4864:20::f44]:37947)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4b-0004ey-PZ; Mon, 06 Jan 2020 13:25:53 -0500
-Received: by mail-qv1-xf44.google.com with SMTP id l14so19416062qvu.12;
- Mon, 06 Jan 2020 10:25:53 -0800 (PST)
+ id 1ioX4d-0004gh-Eo; Mon, 06 Jan 2020 13:25:55 -0500
+Received: by mail-qv1-xf44.google.com with SMTP id t6so19447132qvs.5;
+ Mon, 06 Jan 2020 10:25:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=+Ybn8SHkq8jjr5laYfWKQovRFgmNlWcpAqoISVHGuSA=;
- b=PcQxEVDfKIoEBYkWAYPs+4/6kfD+8h3oxGya2O1PCDxbqG286Exuqa4QtABEnAtgkM
- SeS5QttmNwC/kDzG2gAcdHnKpFoY911IygzOXoJErqeBsUM07zFhzFGVx1O7FMQOcbnP
- FDfE1/vf6FSBZygWQa4e7x69/YP/95CUAeTt8YHKeZvl7cVAqw90ePDPLjdSXDrZqmxN
- QGMsil8CfuNj4atB3UViORrwsA2vBjDL2bQJGflC7s1f4Jqspl1sRlVHQSMpOoETZck+
- 1uwAsjUlNE57W55EiWzMmasyWuWYH4CDrUE+NTWVrKpWgKRzHrOx87tNfk+knkqKdMJe
- uMSA==
+ bh=8+CZdFpf3tevgOcUS4uRCI6axpXi/NG+wpiA6ZaBcfg=;
+ b=lFAHkREEA9zOA84tmBdmJe0yyz5tibWdRaWk9V6hg2bIxqanpTLo90uhWnOiaI69TM
+ SOXlcYKJ7rTQqloejIT2KBN6yV39/NZlV5ydKPl62oAAfzroRV9n6s+TwbRN4xmfQfrw
+ VqF0ouw19/mmCnflhYrIeyYKutMBWOE9bT3hDcSXOb+LgyciM492n3r28O74PjyKZJaZ
+ 75G5eUcGCw40DXFPQyrJLaKgMCzxdctqUhFNswowuqlKUdat8nOyQU4ZFW9CONVqRR9i
+ 6SZk7eYonUgYnRlGoEfN3U91pspmgPdbOS43q3eLhUjZD0zDOxzM4iSi31YZ+Dq2T3pF
+ ThzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=+Ybn8SHkq8jjr5laYfWKQovRFgmNlWcpAqoISVHGuSA=;
- b=H/maD4rrebleTLlOQVRe3TgxT/c5qDRPQsUGc7igG+aVtSD04U+Qj2apTllnUfi10T
- UpUiIKhYG5ruQhzbx0GLvDqWMHPTlf+hJFqefCuf8mXslWMmtP/2bKecZFQmOQ/XnD9O
- V4yt/JlgGXyct2LdDgIhZrqi/umt7U60tFFTWhdHrAGk/gYAtTM6VM91tNjaXFcHFRxp
- CPJdviYBJCso7NFV2iEDmoNYzjelUyStjnQH6HH26gcXs/VrhD5bAA4h0a0366RYnKaT
- +mKSsv0SLphPoJ/HL1DGdJriAWJsGPsTaNz2GEKxl+sXqHawS2jm85GU7O4znngETIUe
- ix2g==
-X-Gm-Message-State: APjAAAXKMdAXePSUd5PVjmgM6gHm6A2Y7AcdSgxbYrnEK2eQjRtsMP7U
- fl3wo61ISfSaP478SmaygLkgWkUB
-X-Google-Smtp-Source: APXvYqyLtTjVd0dbqEcDUlg26wRB/H7xY1Azv6a1zMD1apI7oJI2kccqTIASGHOz5KK8Bz4W0meLhQ==
-X-Received: by 2002:a0c:c250:: with SMTP id w16mr76989332qvh.24.1578335153245; 
- Mon, 06 Jan 2020 10:25:53 -0800 (PST)
+ bh=8+CZdFpf3tevgOcUS4uRCI6axpXi/NG+wpiA6ZaBcfg=;
+ b=KKiVXFctn8Cd5Xk3vRvIJuyxPryJKkZ5hOEd3JNOvJt7lyYhgnTu6oh6d6UGwxBFWI
+ oFcyJ5VSNS2eep6yP4D6uPxY5zbCneEc6BJDktZR2y/FXr4Wo4X0ipz9tGL5YgG4zFVF
+ vojmb8tbilrJ+w0roJ3OCH8BhvD27yloiUbQqDuFhx9YYcvr7DCz/dOBlCrQaclMwrIy
+ 0x7krY4OunKJWZo+2ffVSYNFMedb+ElQPonENGgiAZuN8PY9f6Vc5UXuNRapELTD1tKU
+ lcM4ygRhehRIyGydi1vE7+37DD9kokjTyIXriOAMkrxcht4kch47ucmAZRhs6SVkwp9C
+ UBtg==
+X-Gm-Message-State: APjAAAXTAosNFLUcaXrM7z8ExvX2jef7ia//TFu6+A5CyhnxJJh6UUXX
+ iHnSBb+pdjZt0EaUa9actSH18NMI
+X-Google-Smtp-Source: APXvYqwbOyXc8qrqk5iQUvc0gUPDpjsvnNs1tH3O5eaBsXLxEHrMGNRybDgKdBqAFkhAL8KMWl1dGA==
+X-Received: by 2002:a0c:8bd2:: with SMTP id a18mr53139947qvc.38.1578335154886; 
+ Mon, 06 Jan 2020 10:25:54 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.51
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:52 -0800 (PST)
+ Mon, 06 Jan 2020 10:25:54 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Corey Minyard <minyard@acm.org>
-Subject: [PATCH v1 34/59] ipmi/ipmi_bt.c: remove unneeded label in
- ipmi_bt_handle_event
-Date: Mon,  6 Jan 2020 15:24:00 -0300
-Message-Id: <20200106182425.20312-35-danielhb413@gmail.com>
+Subject: [PATCH v1 35/59] ipmi_bmc_extern.c: remove unneeded label in
+ ipmi_bmc_extern_handle_command
+Date: Mon,  6 Jan 2020 15:24:01 -0300
+Message-Id: <20200106182425.20312-36-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -72,55 +72,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:59 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:26:01 -0000
 
-'out' can be replaced by 'return'.
+'out' label can be replaced by 'return'.
 
 CC: Corey Minyard <minyard@acm.org>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- hw/ipmi/ipmi_bt.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ hw/ipmi/ipmi_bmc_extern.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/hw/ipmi/ipmi_bt.c b/hw/ipmi/ipmi_bt.c
-index 22f94fb98d..8173551d7d 100644
---- a/hw/ipmi/ipmi_bt.c
-+++ b/hw/ipmi/ipmi_bt.c
-@@ -98,14 +98,14 @@ static void ipmi_bt_handle_event(IPMIInterface *ii)
-     IPMIBT *ib = iic->get_backend_data(ii);
+diff --git a/hw/ipmi/ipmi_bmc_extern.c b/hw/ipmi/ipmi_bmc_extern.c
+index 87da9ff99c..16d9114725 100644
+--- a/hw/ipmi/ipmi_bmc_extern.c
++++ b/hw/ipmi/ipmi_bmc_extern.c
+@@ -217,7 +217,7 @@ static void ipmi_bmc_extern_handle_command(IPMIBmc *b,
+         rsp[2] = err;
+         ibe->waiting_rsp = false;
+         k->handle_rsp(s, msg_id, rsp, 3);
+-        goto out;
++        return;
+     }
  
-     if (ib->inlen < 4) {
--        goto out;
-+        return;
-     }
-     /* Note that overruns are handled by handle_command */
-     if (ib->inmsg[0] != (ib->inlen - 1)) {
-         /* Length mismatch, just ignore. */
-         IPMI_BT_SET_BBUSY(ib->control_reg, 1);
-         ib->inlen = 0;
--        goto out;
-+        return;
-     }
-     if ((ib->inmsg[1] == (IPMI_NETFN_APP << 2)) &&
-                         (ib->inmsg[3] == IPMI_CMD_GET_BT_INTF_CAP)) {
-@@ -136,7 +136,7 @@ static void ipmi_bt_handle_event(IPMIInterface *ii)
-             IPMI_BT_SET_B2H_IRQ(ib->mask_reg, 1);
-             ipmi_bt_raise_irq(ib);
-         }
--        goto out;
-+        return;
-     }
-     ib->waiting_seq = ib->inmsg[2];
-     ib->inmsg[2] = ib->inmsg[1];
-@@ -145,8 +145,6 @@ static void ipmi_bt_handle_event(IPMIInterface *ii)
-         bk->handle_command(ib->bmc, ib->inmsg + 2, ib->inlen - 2,
-                            sizeof(ib->inmsg), ib->waiting_rsp);
-     }
+     addchar(ibe, msg_id);
+@@ -232,9 +232,6 @@ static void ipmi_bmc_extern_handle_command(IPMIBmc *b,
+ 
+     /* Start the transmit */
+     continue_send(ibe);
+-
 - out:
 -    return;
  }
  
- static void ipmi_bt_handle_rsp(IPMIInterface *ii, uint8_t msg_id,
+ static void handle_hw_op(IPMIBmcExtern *ibe, unsigned char hw_op)
 -- 
 2.24.1
 
