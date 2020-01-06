@@ -1,66 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobll-0000Om-VA
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44999)
+	id 1iobxE-0005ag-IZ
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:38:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52012)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX3j-0001RC-E7
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:00 -0500
+ (envelope-from <quintela@redhat.com>) id 1iobxB-0005U1-03
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 18:38:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX3i-0003gy-A3
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:24:59 -0500
-Received: from mail-qt1-x843.google.com ([2607:f8b0:4864:20::843]:43278)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX3g-0003eZ-77; Mon, 06 Jan 2020 13:24:56 -0500
-Received: by mail-qt1-x843.google.com with SMTP id d18so40492830qtj.10;
- Mon, 06 Jan 2020 10:24:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=9UmeSQEs5rob9wrTq2qmb04fnkLXv4NpiQ8wHgmBhdQ=;
- b=NYbCZL8kRRwem5Io6W0Rv8fJs/luyPrKXDV1i3FI2TMztdEE2dMIcwM/vU9maVNhMr
- 3t/FqCrKWy4GHh/Eg5tg83YQSid3KvIYEt8oVX4BgLS31EPmbiAUw8D1N6od7AN6EWgJ
- +gC9gaEX5EMeVvc1Yi/7276dYGW2YURBRGmzphfT2dY1/+vDAcKaXMgx43iNa8rbcgP4
- xM+UQIbFsd9WrLaQR+WgCTNlPOW2AM+BfM/04WqOozqXaqChsE8o1y9RxXaHQ1iC3h5m
- h9s5IJyzmh8oFC9Ec9/VrAaPyUn7a4fJH66QHNm75vUZCcIGWd0C2cZA7bVwMgjLkRnt
- 7sGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=9UmeSQEs5rob9wrTq2qmb04fnkLXv4NpiQ8wHgmBhdQ=;
- b=uSMNsWNDtZAxifOBhv6UdFoU77ISvgEyW4xfG/QQBUdP0vLxGtUMQFjR1H/4yLKkci
- 8a9g81aQ8cQ26DDg4pE2zCvAPQCBLY1Mv8xgmEEWG8/FiDtbbIfJwjbVt6DsHGlyAhIb
- yZt2fl9qdANBlWTLe8DU4TC1STGYneY8P1EFp+VfHas/q+7uJWEgyOkiYDy0rab1Z8cy
- UpTA6eGVjCfwod9yncj70h63KC3gAifHzDyjzhiWcT0Lz/C3+f+a8f0bvrnwps4XWKJe
- J6IROnXqwGMqmIsoJOZ0cPbRqjz1YDXtk+1grvpVWbdJ0S64qM9IzTprZHClvm8zp/Kw
- AfFQ==
-X-Gm-Message-State: APjAAAWLusAsaR/Ob/rKS7V9luK8O6NmyLkydjNtjry/y8jiEK+eomRr
- 3jklzHwDz9jAPl9Nm73vnwbac4vM
-X-Google-Smtp-Source: APXvYqysG9Euycb7WM82W/Td0I147yU5XTejtd+bqGoAlGKBmm3Qvmlpmn7SqAtCcQzqSKytc+nEPw==
-X-Received: by 2002:ac8:59:: with SMTP id i25mr76889454qtg.110.1578335095624; 
- Mon, 06 Jan 2020 10:24:55 -0800 (PST)
-Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.24.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:24:55 -0800 (PST)
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org
-Subject: [PATCH v1 02/59] ppc440_bamboo.c: remove label from
- bamboo_load_device_tree()
-Date: Mon,  6 Jan 2020 15:23:28 -0300
-Message-Id: <20200106182425.20312-3-danielhb413@gmail.com>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
+ (envelope-from <quintela@redhat.com>) id 1iobx9-0006Gu-QX
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 18:38:32 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:34925
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1iobx9-0006GQ-Nj
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 18:38:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1578353911;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vOyTcMLr9WzrXoxI0/cmErtAO80sAJQrm+KZusxm4dw=;
+ b=I789drUf47IdGyhT/Y40KM9+xMBIOQXMT3RS0n/sMdSPTD2gbIwFIXjkZDAyp80nadWzLA
+ YCseXjigP9G6KVShyCUfi1WSQ7dCZTjYJ8tq7LPYIt2WSErbihXD4ylsZDvLnTXVck79VP
+ j5jyDAFsZXDpW+jqJWwkUSu5LLTNSa8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-419-Wd5YEv4HMBCP6QgXnIEGcA-1; Mon, 06 Jan 2020 18:38:27 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 901BE107ACC5;
+ Mon,  6 Jan 2020 23:38:26 +0000 (UTC)
+Received: from redhat.com (ovpn-116-57.ams2.redhat.com [10.36.116.57])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0C1A9387;
+ Mon,  6 Jan 2020 23:38:25 +0000 (UTC)
+From: Juan Quintela <quintela@redhat.com>
+To: Daniel Henrique Barboza <danielhb413@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>
+Subject: Re: [PATCH v1 05/59] ram.c: remove unneeded labels
+In-Reply-To: <20200106182425.20312-6-danielhb413@gmail.com> (Daniel Henrique
+ Barboza's message of "Mon, 6 Jan 2020 15:23:31 -0300")
 References: <20200106182425.20312-1-danielhb413@gmail.com>
+ <20200106182425.20312-6-danielhb413@gmail.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+Reply-To: quintela@redhat.com
+Date: Tue, 07 Jan 2020 00:38:23 +0100
+Message-ID: <87blrgxij4.fsf@trasno.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::843
-X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: Wd5YEv4HMBCP6QgXnIEGcA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,48 +69,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:01 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 23:38:35 -0000
 
-'out' label can be replaced by 'return -1' in all cases.
+Daniel Henrique Barboza <danielhb413@gmail.com> wrote:
+> ram_save_queue_pages() has an 'err' label that can be replaced by
+> 'return -1' instead.
+>
+> Same thing with ram_discard_range(), and in this case we can also
+> get rid of the 'ret' variable and return either '-1' on error
+> or the result of ram_block_discard_range().
+>
+> CC: Juan Quintela <quintela@redhat.com>
+> CC: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 
-CC: David Gibson <david@gibson.dropbear.id.au>
-CC: qemu-ppc@nongnu.org
-Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
----
- hw/ppc/ppc440_bamboo.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
-
-diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
-index 4d95c0f8a8..b782641b23 100644
---- a/hw/ppc/ppc440_bamboo.c
-+++ b/hw/ppc/ppc440_bamboo.c
-@@ -71,12 +71,12 @@ static int bamboo_load_device_tree(hwaddr addr,
- 
-     filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, BINARY_DEVICE_TREE_FILE);
-     if (!filename) {
--        goto out;
-+        return -1;
-     }
-     fdt = load_device_tree(filename, &fdt_size);
-     g_free(filename);
-     if (fdt == NULL) {
--        goto out;
-+        return -1;
-     }
- 
-     /* Manipulate device tree in memory. */
-@@ -117,10 +117,6 @@ static int bamboo_load_device_tree(hwaddr addr,
-     rom_add_blob_fixed(BINARY_DEVICE_TREE_FILE, fdt, fdt_size, addr);
-     g_free(fdt);
-     return 0;
--
--out:
--
--    return ret;
- }
- 
- /* Create reset TLB entries for BookE, spanning the 32bit addr space.  */
--- 
-2.24.1
+Reviewed-by: Juan Quintela <quintela@redhat.com>
 
 
