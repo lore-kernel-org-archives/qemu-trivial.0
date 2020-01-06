@@ -1,57 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobmG-0000yj-Gq
+	id 1iobmG-0000zC-N7
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45853)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45896)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4V-0002bE-Bl
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:48 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4Y-0002gf-6B
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4U-0004Xl-4K
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:47 -0500
-Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b]:41776)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4X-0004ap-45
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:50 -0500
+Received: from mail-qt1-x843.google.com ([2607:f8b0:4864:20::843]:34795)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4R-0004VB-Ia; Mon, 06 Jan 2020 13:25:43 -0500
-Received: by mail-qk1-x72b.google.com with SMTP id x129so40277788qke.8;
- Mon, 06 Jan 2020 10:25:43 -0800 (PST)
+ id 1ioX4U-0004YR-Sd; Mon, 06 Jan 2020 13:25:46 -0500
+Received: by mail-qt1-x843.google.com with SMTP id 5so43197290qtz.1;
+ Mon, 06 Jan 2020 10:25:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Adi6YmWzd5BlIyjySU/FHh29puafqwS6MyW1XVUsuis=;
- b=aCigGM45Roe/Nr1ZXPjbYM8Xz0GSFXDL5YrXrdeaqunEB+OI3Y2LN/2I5bPMtc5S8j
- CGMl++arbFq6+4W/1Q33RBV8me0qDj45oXKxyynzYylUQnuirH625VTao0ior+8O3qFz
- xIN4ehhT7CuPe+exRMgisa4ERBUk5Fyfv7wN9eqZEvjeCUXVXHs2zFK4EW5LgBgQGgDF
- p+tQzfTuoWQNk0l4xKS44jJE2a/ik0xT352iQsjb6V7RhWs7FCkfZBlQNDsAAU/zjGxu
- zl+jk5tZ7tXYfIiTIlZb4glU0uA69gLjeZNo3bgkwJKmZEbEjEO8+wU2ywCNKD0kvRiZ
- Y9rw==
+ bh=9bVPKH/u51qFSWaRLOxFrn4Yt2i0R3QrPeQ70R4x82s=;
+ b=P3e1aHqsVL6FmSFsstxXwCg5dTAjOFJApqJ4WypAQSeI8eX6HWV3QbH9zIRvsyFWNG
+ GR7O39PEKugv+H6YvLY03aZDJ9/eyekRvhNqrHYR5PkkA25EsxyeuUtupT6pEcs/Jai3
+ Khoy44++nTdynHbbz2bI5SqZJFYxjg6DQ02jlCn2ZkTovsf2YGDVCGQsPRAYlMC1vQdI
+ f8y/KmsDxMla0dXLZnHecVl3x8et3z8P5EmcwKKaOsaxe8cLvA00UB+A4cFax4/LmvQ8
+ Je8I4VSaVGNf/zPZDEKWbwbgO2EU+p8MZN86+iNA1VZjSzulahSoZXz8yJndOP5BkAnC
+ u7Xg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Adi6YmWzd5BlIyjySU/FHh29puafqwS6MyW1XVUsuis=;
- b=Vi54n9HzxSjjZja4aeMs2cWOWaNPxqHHeE0K7ReddM/v/3HWjFo+UNrJFO94oBo6rn
- 8LjL+Jafo9/8MB8jJ/Qbia85OfOBA8Ur7fDlMkvMID5CLCiCW48xRi0jEUDyzUorJlD2
- O7T/Q1RRT+1rwjaezDlECLUCQxefKNPlL/wYS2ZhUiWNtD9KHfKVWhbuVjghAb1VFC/K
- Q8v5rTQKrBEllLMfr0oG9N48DtoS43oJxbDaeb8rEeF6BW8Czq6pVY8yHCW4BxQYUt75
- hz+ZfQrOnJ+zVN+2uJHB3si6SYq+ABHC8ZRqW8DZVZ8r8AwSF92kzMS+9Aoz5R/7PGZW
- 82nA==
-X-Gm-Message-State: APjAAAXgY8GzOA2N8+OZ5+X5jrK9qiSsDkklwJCsOgGlZoEA63CKQRXz
- /UPpSJ5IUSIFXDKoFP82gv4AylND
-X-Google-Smtp-Source: APXvYqy9uuY+g/FFOUyP/GV4GYpoqMkRy1st8SV0/XE9bt2uTfjdO1LUISMtE5C85hik3nZV78SaHg==
-X-Received: by 2002:ae9:f711:: with SMTP id s17mr83111219qkg.238.1578335142878; 
- Mon, 06 Jan 2020 10:25:42 -0800 (PST)
+ bh=9bVPKH/u51qFSWaRLOxFrn4Yt2i0R3QrPeQ70R4x82s=;
+ b=S2ArbKcCyOP2R5S7+13FccnxBk0IAbI9UdXqMNCDC/BQgp+tVX6Ibmv0wztXp+XTNM
+ hPFm8plRs+GoG7ikkuhS4m9g3o4tgmB12xtT6IMWs6n+K8K7j14MC/D+BmtwcTPrvA+5
+ oZ+l1QRN+9tDwLI7TkE3okXgaKgmJ+dQc3Nn8/N2mTX5L6BnJkl54rVpzfMuihB5Mfgp
+ FkGWMgt7MwxgK22S4QWkqZgAovtLh0unRzblzFx3dOnjzTfWd8m9CgXZrt9dsJyaTMPb
+ qEUicnHsiOpVxpT7GOFByp17dl60sDd0rHLUKutS4ZxhC7KkuEiEorY/7K9MnDbORCxK
+ eubg==
+X-Gm-Message-State: APjAAAV7QQpe8tk3lh1qDu9UDGmvjkSWXivjhLAqxIvqzjueOi6QMQLa
+ 4SfmOzJuo2J6R5K2rBHGN+eA50ca
+X-Google-Smtp-Source: APXvYqzUt0pJJsam0yMuf4GLbZQlWznnPX9YhdgHEcot1QfP8rnOSPzphUhEpM7hBOP2w67OZSTm9g==
+X-Received: by 2002:ac8:5215:: with SMTP id r21mr75440322qtn.77.1578335146381; 
+ Mon, 06 Jan 2020 10:25:46 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.41
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:42 -0800 (PST)
+ Mon, 06 Jan 2020 10:25:45 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Stefan Weil <sw@weilnetz.de>
-Subject: [PATCH v1 28/59] qga/commands-win32.c: remove 'out' label in
- get_pci_info
-Date: Mon,  6 Jan 2020 15:23:54 -0300
-Message-Id: <20200106182425.20312-29-danielhb413@gmail.com>
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v1 30/59] util/module.c: remove unneeded label in
+ module_load_file()
+Date: Mon,  6 Jan 2020 15:23:56 -0300
+Message-Id: <20200106182425.20312-31-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -59,7 +59,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::72b
+X-Received-From: 2607:f8b0:4864:20::843
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,98 +72,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:49 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:25:52 -0000
 
-'out' can be replaced by 'return pci' instead.
+'out' can be replaced by the apropriate return values set
+in 'ret' for each case.
 
-CC: Stefan Weil <sw@weilnetz.de>
+CC: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- qga/commands-win32.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
+ util/module.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
 
-diff --git a/qga/commands-win32.c b/qga/commands-win32.c
-index 2461fd19bf..c520a341df 100644
---- a/qga/commands-win32.c
-+++ b/qga/commands-win32.c
-@@ -513,7 +513,7 @@ static GuestPCIAddress *get_pci_info(int number, Error **errp)
-                                    DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
-     if (dev_info == INVALID_HANDLE_VALUE) {
-         error_setg_win32(errp, GetLastError(), "failed to get devices tree");
+diff --git a/util/module.c b/util/module.c
+index e9fe3e5422..9b5453f878 100644
+--- a/util/module.c
++++ b/util/module.c
+@@ -111,12 +111,10 @@ static int module_load_file(const char *fname)
+ 
+     if (len <= suf_len || strcmp(&fname[len - suf_len], dsosuf)) {
+         /* wrong suffix */
+-        ret = -EINVAL;
 -        goto out;
-+        return pci;
++        return -EINVAL;
+     }
+     if (access(fname, F_OK)) {
+-        ret = -ENOENT;
+-        goto out;
++        return -ENOENT;
      }
  
-     g_debug("enumerating devices");
-@@ -584,7 +584,7 @@ static GuestPCIAddress *get_pci_info(int number, Error **errp)
-                 } else {
-                     error_setg_win32(errp, GetLastError(),
-                                      "failed to get device instance ID");
--                    goto out;
-+                    return pci;
-                 }
-             }
- 
-@@ -598,14 +598,14 @@ static GuestPCIAddress *get_pci_info(int number, Error **errp)
-                 g_error("CM_Locate_DevInst failed with code %lx", cr);
-                 error_setg_win32(errp, GetLastError(),
-                                  "failed to get device instance");
--                goto out;
-+                return pci;
-             }
-             cr = CM_Get_Parent(&parent_dev_inst, dev_inst, 0);
-             if (cr != CR_SUCCESS) {
-                 g_error("CM_Get_Parent failed with code %lx", cr);
-                 error_setg_win32(errp, GetLastError(),
-                                  "failed to get parent device instance");
--                goto out;
-+                return pci;
-             }
- 
-             cr = CM_Get_Device_ID_Size(&dev_id_size, parent_dev_inst, 0);
-@@ -613,7 +613,7 @@ static GuestPCIAddress *get_pci_info(int number, Error **errp)
-                 g_error("CM_Get_Device_ID_Size failed with code %lx", cr);
-                 error_setg_win32(errp, GetLastError(),
-                                  "failed to get parent device ID length");
--                goto out;
-+                return pci;
-             }
- 
-             ++dev_id_size;
-@@ -628,7 +628,7 @@ static GuestPCIAddress *get_pci_info(int number, Error **errp)
-                 g_error("CM_Get_Device_ID failed with code %lx", cr);
-                 error_setg_win32(errp, GetLastError(),
-                                  "failed to get parent device ID");
--                goto out;
-+                return pci;
-             }
-         }
- 
-@@ -642,14 +642,14 @@ static GuestPCIAddress *get_pci_info(int number, Error **errp)
-         if (parent_dev_info == INVALID_HANDLE_VALUE) {
-             error_setg_win32(errp, GetLastError(),
-                              "failed to get parent device");
--            goto out;
-+            return pci;
-         }
- 
-         parent_dev_info_data.cbSize = sizeof(SP_DEVINFO_DATA);
-         if (!SetupDiEnumDeviceInfo(parent_dev_info, 0, &parent_dev_info_data)) {
-             error_setg_win32(errp, GetLastError(),
-                            "failed to get parent device data");
--            goto out;
-+            return pci;
-         }
- 
-         for (j = 0;
-@@ -731,7 +731,6 @@ static GuestPCIAddress *get_pci_info(int number, Error **errp)
- 
- free_dev_info:
-     SetupDiDestroyDeviceInfoList(dev_info);
+     assert(QTAILQ_EMPTY(&dso_init_list));
+@@ -125,8 +123,7 @@ static int module_load_file(const char *fname)
+     if (!g_module) {
+         fprintf(stderr, "Failed to open module: %s\n",
+                 g_module_error());
+-        ret = -EINVAL;
+-        goto out;
++        return -EINVAL;
+     }
+     if (!g_module_symbol(g_module, DSO_STAMP_FUN_STR, (gpointer *)&sym)) {
+         fprintf(stderr, "Failed to initialize module: %s\n",
+@@ -151,7 +148,7 @@ static int module_load_file(const char *fname)
+         QTAILQ_REMOVE(&dso_init_list, e, node);
+         g_free(e);
+     }
 -out:
-     return pci;
++
+     return ret;
  }
- 
+ #endif
 -- 
 2.24.1
 
