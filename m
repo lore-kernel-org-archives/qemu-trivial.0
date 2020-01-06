@@ -1,59 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ioblk-0000Mh-TL
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45159)
+	id 1iobll-0000N9-4d
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45468)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX3s-0001hZ-Pf
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:09 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4C-00027w-6r
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX3r-0003rH-AJ
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:08 -0500
-Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:42538)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4B-0004Dl-5D
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:28 -0500
+Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42]:43226)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX3n-0003lV-Eo; Mon, 06 Jan 2020 13:25:03 -0500
-Received: by mail-qk1-x741.google.com with SMTP id z14so39012652qkg.9;
- Mon, 06 Jan 2020 10:25:03 -0800 (PST)
+ id 1ioX47-00049R-3z; Mon, 06 Jan 2020 13:25:23 -0500
+Received: by mail-qv1-xf42.google.com with SMTP id p2so19407459qvo.10;
+ Mon, 06 Jan 2020 10:25:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=6Myf4ZWmr4nE4JAJE8+rypGdemGPMt6KifqXfy2qX4M=;
- b=BBNdStsnR86XbL41pOc8DijV7GPqR46FvkotpzYm449GLuY7kU1qnOn0nKQiNf1uvS
- DhUxUGtVM0M7J5op78fqT8N66vKJR2dQODcEHb31rzpxoUBCbP0eqq0P97ghSs5rCG7R
- XUGg4r4ldA8QUDUJ7zj2cAWLfC1SE+JHNykcEDL7F1Yi0m4C+63MS2E4V4G0U9IW7Vqk
- hoW9YyZIA7MkYzdCu2aME/rI8JTLIyK+0tdxBstBg7ZkcGmxMhMW0rkkJCSjFNfx76jh
- KbzqHKCTNmzkDqxt7pIfBxSR36Gg/D0G/c2KYZJnI6PeAPIcdpufi18OidMBs+TEOtlS
- jthA==
+ bh=AQ30SiavMBc1O6qPtvk0xgAULn2vwWgQBHbs/PLUbI8=;
+ b=eO/AqUVMui9U6V4k1266lbWw9rHB6L1/xQKK9x30mQ8ILZg7Wj6nXgXUTRudpF1J1G
+ 6FABU8/sNTARDGMPGCjHZHS6sZ2Cjr3RSBUY7s0d6ipN4okgaDy3N1BxvUD79bBl77z2
+ Ev5/wUAvrl2KfeDaF+EwO7m7camnfr6OTyfdS1ntFDov9WF7CDLcHbriiMldC2IyDsD4
+ iQpLdrsZaagqfp7eoQpzG0xoTW2+I5xsSwUvBEAW2uE8gC+hp9VS+Vwg/TvzFqMi/CPh
+ exC/csYIhV3cyoDllSgzE7Kfy5AnyjYVB0Mo0RBkdV/PcKkszn/3lMFAVQbrLyBEm+TM
+ FwUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=6Myf4ZWmr4nE4JAJE8+rypGdemGPMt6KifqXfy2qX4M=;
- b=g1J1FdUFOJ4ogP6SbSAgBjHHIDbRUVKNEZi+YKg+WF4gQOPn8Eozdx2FixaQe06Afl
- uKgOZSbL2Gl3DrQc9uSmboz/4BnLIfTOdIZTt1SIkpl2Y9IDnOtkCl91XwoYEWPU3GK8
- Es5pvbKRU1XmgeQLK+MMP8GnD8Kpde6et5y5czCtSoyEZpzh0vqbJvJDbPFHGzDEsMAk
- T2qMySwWUXP03BLmn+FiPWsx0Ix/VxnqYpPR0vtV2W9bR+PNr+Qa4mkMS3RFFs8vnu5E
- JeFeE3947L+ZWF7DHh6oJJH68v0U8c9pRMmMnM9tbNMMcxxjaRkOo1RcmALtHnIUc5P9
- NSHA==
-X-Gm-Message-State: APjAAAUh+lPw18YDJg4HTRNtthXgOWWE/R4IK8Af9xpIcHBXxbGy490Z
- lvOxl3tMUk+pVt2m7mSlaH4znWqP
-X-Google-Smtp-Source: APXvYqy+sEo/5P9jgzxK2PvQhLOP0hE9C4PXCbzbNZ+mUJ+LarIsGOdiT0jcUwA2uNynUVAd7dPVaA==
-X-Received: by 2002:a37:a54b:: with SMTP id o72mr83397639qke.313.1578335102807; 
- Mon, 06 Jan 2020 10:25:02 -0800 (PST)
+ bh=AQ30SiavMBc1O6qPtvk0xgAULn2vwWgQBHbs/PLUbI8=;
+ b=D+FqbNPJz2i5kdbY71RojygEw89XLNpU/bVvLNYbVvFNGgfPBSXjZC0Ej1wN+STtnq
+ kt/0CPPSAHyFoHkQifrV7NXgUrvJdMaJn2I2KIQKXwsKOtCbRRo8kspiQIHK6mMqpZTM
+ s2wiwBBeHvuP6fyTwGtPym2fUgVQblpmCdz0SOhJFGMkevJbMXvVn5Ik5wbkfth4EwvJ
+ 2gBEvQRkaEIC2gHM9y/43nGTZRGvd13cfCXzrHGe2Ts92OoxHXbfGW3/1fhKB4W9FTIi
+ +Q+pRkXgydzI3j79RBwuPMCSgIK5nKV7wacXgwJSZ7aJuAFvoof7xULEsGMeb4UYMHGp
+ RAdw==
+X-Gm-Message-State: APjAAAUZpS9CN9VNdDI88LqFAnF3iq8HC2tp5YoGPobG4SbgjBzlOaFw
+ 6biPkpDwyku6Vbc44pNYfq3Qs7V5
+X-Google-Smtp-Source: APXvYqxOrPWINPn22Tyf/XmY642bRM7VWtoZbvGTLor0xos/mdHd9Ta3OD1J1WE+mG5vddqcaLHxQg==
+X-Received: by 2002:a0c:c18f:: with SMTP id n15mr68377057qvh.35.1578335122527; 
+ Mon, 06 Jan 2020 10:25:22 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.01
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:02 -0800 (PST)
+ Mon, 06 Jan 2020 10:25:22 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
-Subject: [PATCH v1 06/59] mips-semi.c: remove 'uhi_done' label in
- helper_do_semihosting()
-Date: Mon,  6 Jan 2020 15:23:32 -0300
-Message-Id: <20200106182425.20312-7-danielhb413@gmail.com>
+ Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org
+Subject: [PATCH v1 17/59] block/dmg.c: remove unneeded 'fail' label in
+ dmg_read_mish_block()
+Date: Mon,  6 Jan 2020 15:23:43 -0300
+Message-Id: <20200106182425.20312-18-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -61,7 +59,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::741
+X-Received-From: 2607:f8b0:4864:20::f42
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,91 +72,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:11 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:25:30 -0000
 
-The label 'uhi_done' is a simple 'return' call and can
-be removed for a bit more clarity in the code.
+Both the 'fail' label and 'ret' variable can be removed from the
+function. Instead, call 'return -EINVAL' in the error conditions.
 
-CC: Aurelien Jarno <aurelien@aurel32.net>
-CC: Aleksandar Markovic <amarkovic@wavecomp.com>
-CC: Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
+CC: Stefan Hajnoczi <stefanha@redhat.com>
+CC: qemu-block@nongnu.org
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- target/mips/mips-semi.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
+ block/dmg.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
 
-diff --git a/target/mips/mips-semi.c b/target/mips/mips-semi.c
-index 35bdfd7c77..10a710c1e8 100644
---- a/target/mips/mips-semi.c
-+++ b/target/mips/mips-semi.c
-@@ -218,7 +218,7 @@ static int copy_argn_to_target(CPUMIPSState *env, int arg_num,
-         if (!p) {                               \
-             gpr[2] = -1;                        \
-             gpr[3] = EFAULT;                    \
--            goto uhi_done;                      \
-+            return;                             \
-         }                                       \
-     } while (0)
+diff --git a/block/dmg.c b/block/dmg.c
+index 4a045f2b3e..ce39a87864 100644
+--- a/block/dmg.c
++++ b/block/dmg.c
+@@ -217,7 +217,6 @@ static int dmg_read_mish_block(BDRVDMGState *s, DmgHeaderState *ds,
+                                uint8_t *buffer, uint32_t count)
+ {
+     uint32_t type, i;
+-    int ret;
+     size_t new_size;
+     uint32_t chunk_count;
+     int64_t offset = 0;
+@@ -273,8 +272,7 @@ static int dmg_read_mish_block(BDRVDMGState *s, DmgHeaderState *ds,
+             error_report("sector count %" PRIu64 " for chunk %" PRIu32
+                          " is larger than max (%u)",
+                          s->sectorcounts[i], i, DMG_SECTORCOUNTS_MAX);
+-            ret = -EINVAL;
+-            goto fail;
++            return -EINVAL;
+         }
  
-@@ -228,14 +228,14 @@ static int copy_argn_to_target(CPUMIPSState *env, int arg_num,
-         if (!p) {                                       \
-             gpr[2] = -1;                                \
-             gpr[3] = EFAULT;                            \
--            goto uhi_done;                              \
-+            return;                                     \
-         }                                               \
-         p2 = lock_user_string(addr2);                   \
-         if (!p2) {                                      \
-             unlock_user(p, addr, 0);                    \
-             gpr[2] = -1;                                \
-             gpr[3] = EFAULT;                            \
--            goto uhi_done;                              \
-+            return;                                     \
-         }                                               \
-     } while (0)
+         /* offset in (compressed) data fork */
+@@ -288,8 +286,7 @@ static int dmg_read_mish_block(BDRVDMGState *s, DmgHeaderState *ds,
+             error_report("length %" PRIu64 " for chunk %" PRIu32
+                          " is larger than max (%u)",
+                          s->lengths[i], i, DMG_LENGTHS_MAX);
+-            ret = -EINVAL;
+-            goto fail;
++            return -EINVAL;
+         }
  
-@@ -272,7 +272,7 @@ void helper_do_semihosting(CPUMIPSState *env)
-         if (gpr[4] < 3) {
-             /* ignore closing stdin/stdout/stderr */
-             gpr[2] = 0;
--            goto uhi_done;
-+            return;
-         }
-         gpr[2] = close(gpr[4]);
-         gpr[3] = errno_mips(errno);
-@@ -302,7 +302,7 @@ void helper_do_semihosting(CPUMIPSState *env)
-             gpr[2] = fstat(gpr[4], &sbuf);
-             gpr[3] = errno_mips(errno);
-             if (gpr[2]) {
--                goto uhi_done;
-+                return;
-             }
-             gpr[2] = copy_stat_to_target(env, &sbuf, gpr[5]);
-             gpr[3] = errno_mips(errno);
-@@ -314,14 +314,14 @@ void helper_do_semihosting(CPUMIPSState *env)
-     case UHI_argnlen:
-         if (gpr[4] >= semihosting_get_argc()) {
-             gpr[2] = -1;
--            goto uhi_done;
-+            return;
-         }
-         gpr[2] = strlen(semihosting_get_arg(gpr[4]));
-         break;
-     case UHI_argn:
-         if (gpr[4] >= semihosting_get_argc()) {
-             gpr[2] = -1;
--            goto uhi_done;
-+            return;
-         }
-         gpr[2] = copy_argn_to_target(env, gpr[4], gpr[5]);
-         break;
-@@ -369,6 +369,5 @@ void helper_do_semihosting(CPUMIPSState *env)
-         fprintf(stderr, "Unknown UHI operation %d\n", op);
-         abort();
+         update_max_chunk_size(s, i, &ds->max_compressed_size,
+@@ -298,9 +295,6 @@ static int dmg_read_mish_block(BDRVDMGState *s, DmgHeaderState *ds,
      }
--uhi_done:
-     return;
+     s->n_chunks += chunk_count;
+     return 0;
+-
+-fail:
+-    return ret;
  }
+ 
+ static int dmg_read_resource_fork(BlockDriverState *bs, DmgHeaderState *ds,
 -- 
 2.24.1
 
