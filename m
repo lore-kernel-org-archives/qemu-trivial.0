@@ -1,58 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobmC-0000ss-Tv
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46253)
+	id 1iobmD-0000tL-5h
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46427)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4v-0003Mu-Q6
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:14 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX57-0003iQ-Me
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4u-00050T-Ny
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:13 -0500
-Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:38123)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX56-0005CI-L2
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:25 -0500
+Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743]:44338)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4s-0004y0-I5; Mon, 06 Jan 2020 13:26:10 -0500
-Received: by mail-qk1-x741.google.com with SMTP id k6so40298558qki.5;
- Mon, 06 Jan 2020 10:26:10 -0800 (PST)
+ id 1ioX54-0005AX-I5; Mon, 06 Jan 2020 13:26:22 -0500
+Received: by mail-qk1-x743.google.com with SMTP id w127so40269883qkb.11;
+ Mon, 06 Jan 2020 10:26:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=3FG9qdDQWzZLGEvFHKtE2+cU1rKneLyoMCDilVuOhQw=;
- b=GtSaFG8D1mBVeP9wYwdRsmx7jcl3MN12LcQELS2dx6mPJSyN+d7D/TqBkLUCcUL91Z
- pshF27WZbKMYFQAIp0G4naYN6nBcbDAUwS3tGLKw+LiUdVLz/pk3TKGQMBQDx2FZHddP
- d0T4Twaa5/Hj9ChzEhzh3XDZd5t2VROGdeqMd+XXWfewSFZvAeKIwGw5ZO9sEHVBHcOR
- sGwzTMjVSmPuzGHTsv/n+t5sYkUbgcYQs8QKVKJbo1j/13rd6hIdiDI0zOrYsOa9MyXW
- cPlXfBfLUnBZDh/CPdxw/iGylpD0cCctLe4kxmE0IDmXsHHDx+0DvOhTrVMxUZTTZkSb
- xIWQ==
+ bh=JP7yRAv3JFqhY7+OM2TlYk8mkn5EeN/uOmT4fxUErEA=;
+ b=Vr1DbhI/ySi+nSz1J3b1Vz6TDDueqfUI5kWiNnFHtX+b77uUHqpAd02mmjG30yN1AQ
+ ZxRuPfiL8EN6Uwr1kZYQU76VHMFnAlR07gdPcK91D9sXGRjgT3x292tpMES0e7iwbXYs
+ wmkuamyCyCBvRSxASDKoJ+4V0wH1dtYxVE14TzYhWZzhGqPyG4JeprB32MXbULns40Ck
+ xhHINx2ofieHYO9vLJGW1D0iBdOkJLHi2j/tqJqEKUb/BoIBeS8jBRFVfGcKKZvARmQG
+ SCqAgUuEzNlnRT0PX7kv7tAWXVlMr7hc8lNNEpddZ36aK07TLvKXr+Dombf7XSDMz6Du
+ bduw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=3FG9qdDQWzZLGEvFHKtE2+cU1rKneLyoMCDilVuOhQw=;
- b=XG+9UbDaGOr/+d3ZBow58jUjBNpFwGQBfFqBXam3JwNWMAC/u9zXX2G4FORF+P3i1j
- IhjHWBpaF82HJlQ+8sduPp2jf9ttLmaavRS2EPTDxwCxpEEyrHpU/ElajCSEXv8wEMSY
- ZYEQJ0dkGKr3TQ1QDnRLkNHy2/8Xg98i8QqLOAaWWB8D1xslTjSzOMQv1XtqVK7xWCnu
- rADTwYtCEQJwEtbwUaYlnQDGMPuqDnhQqW7Hz+bRnF8SO93Oa/BfwOxgMOpGYoLvb3nj
- IQYI4/2SctCTRRF4nWe52e1L1FEqJnC7G2hX4aKWt+/Z7uK2HZ+ttCip+O+AgUReSAp/
- sKdQ==
-X-Gm-Message-State: APjAAAUGbv3EN1CiGYNTJaSOeCCAGZJN7Uu/qXl8gtVMEfEqZh7+Jzkc
- NHH7eSus5dc8OygoRKeGwyLSR3xm
-X-Google-Smtp-Source: APXvYqzFew3AJMCvTiarhXTnm1iHIqDjLoyAdP9XUwvEvi4CAIw5zq9xyF6Xr0nVkXGwaZxqVdwk1g==
-X-Received: by 2002:a37:48f:: with SMTP id 137mr83918265qke.25.1578335169968; 
- Mon, 06 Jan 2020 10:26:09 -0800 (PST)
+ bh=JP7yRAv3JFqhY7+OM2TlYk8mkn5EeN/uOmT4fxUErEA=;
+ b=PT2WCj1aoX89TwUmDZHoTp+nGad+IcU4GE5TpJ6g/RJmO58e1kUtbxHO/LAuROSvnL
+ WOhJmpfFl/fdbfemyKio75+HR9r/X7hB/EfI2xbLWXUxWv6CUIMDiUhap77kZkANu7zZ
+ nXFA0DXDlkUpl6RGbD+4iIjDtLy2U/yoowlOeBuQr+7ilAHa46Av+GmMGZBMEUOF+LM0
+ hEppsoN81583TOqyZuoYYNNJS3uRrYQmIe2NGXnXPZqXlC7g1dLXCdVg8PAlU4h8wdu5
+ +6v7wFphUQBfHxB24nL367BAW2MoSiVu36fxVYNgaeFaP3k1hFfMS3mYdmUZRap/XyyT
+ dnVQ==
+X-Gm-Message-State: APjAAAUOv/G4BY7wvKR6RzwQMpGRIDkqWrQH9q2uUjYrioVdmr+25mO5
+ ExAEMhstZat96krQ5txBbM2ZBZ2t
+X-Google-Smtp-Source: APXvYqy7eHx3DNdyUi8FeIpvryybTYEiqNapfd+kmM0ClNOuRVHCPX1NE2URNksuTXzckQsorG3jZA==
+X-Received: by 2002:a05:620a:b04:: with SMTP id
+ t4mr86335470qkg.7.1578335181943; 
+ Mon, 06 Jan 2020 10:26:21 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.08
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:26:09 -0800 (PST)
+ Mon, 06 Jan 2020 10:26:21 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- "Michael S . Tsirkin" <mst@redhat.com>,
+ Yuval Shaia <yuval.shaia@oracle.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH v1 43/59] i386/amd_iommu.c: remove unneeded label in
- amdvi_int_remap_msi()
-Date: Mon,  6 Jan 2020 15:24:09 -0300
-Message-Id: <20200106182425.20312-44-danielhb413@gmail.com>
+Subject: [PATCH v1 50/59] rdma/rdma_backend.c: remove unneeded label in
+ rdma_backend_init()
+Date: Mon,  6 Jan 2020 15:24:16 -0300
+Message-Id: <20200106182425.20312-51-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -60,7 +61,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::741
+X-Received-From: 2607:f8b0:4864:20::743
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,68 +74,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:26:16 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:26:28 -0000
 
-'remap_fail' label can be replaced by 'return' with the
-adequate error value.
+'out' label can be replaced by 'return -EIO' in the single
+goto jump.
 
-CC: Michael S. Tsirkin <mst@redhat.com>
+CC: Yuval Shaia <yuval.shaia@oracle.com>
 CC: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- hw/i386/amd_iommu.c | 13 ++++---------
- 1 file changed, 4 insertions(+), 9 deletions(-)
+ hw/rdma/rdma_backend.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
-index b1175e52c7..711e1f6e40 100644
---- a/hw/i386/amd_iommu.c
-+++ b/hw/i386/amd_iommu.c
-@@ -1268,7 +1268,7 @@ static int amdvi_int_remap_msi(AMDVIState *iommu,
-         trace_amdvi_ir_delivery_mode("fixed/arbitrated");
-         ret = __amdvi_int_remap_msi(iommu, origin, translated, dte, &irq, sid);
-         if (ret < 0) {
--            goto remap_fail;
-+            return ret;
-         } else {
-             /* Translate IRQ to MSI messages */
-             x86_iommu_irq_to_msi_message(&irq, translated);
-@@ -1298,7 +1298,7 @@ static int amdvi_int_remap_msi(AMDVIState *iommu,
+diff --git a/hw/rdma/rdma_backend.c b/hw/rdma/rdma_backend.c
+index c346407cd3..20c4c9fc3a 100644
+--- a/hw/rdma/rdma_backend.c
++++ b/hw/rdma/rdma_backend.c
+@@ -1335,8 +1335,7 @@ int rdma_backend_init(RdmaBackendDev *backend_dev, PCIDevice *pdev,
+     if (!backend_dev->context) {
+         rdma_error_report("Failed to open IB device %s",
+                           ibv_get_device_name(backend_dev->ib_dev));
+-        ret = -EIO;
+-        goto out;
++        return -EIO;
      }
  
-     if (ret < 0) {
--        goto remap_fail;
-+        return ret;
-     }
+     backend_dev->channel = ibv_create_comp_channel(backend_dev->context);
+@@ -1377,7 +1376,6 @@ out_close_device:
+ out_free_dev_list:
+     ibv_free_device_list(dev_list);
  
-     /*
-@@ -1309,25 +1309,20 @@ static int amdvi_int_remap_msi(AMDVIState *iommu,
-     dest_mode = (origin->address >> MSI_ADDR_DEST_MODE_SHIFT) & 1;
-     if (dest_mode) {
-         trace_amdvi_ir_err("invalid dest_mode");
--        ret = -AMDVI_IR_ERR;
--        goto remap_fail;
-+        return -AMDVI_IR_ERR;
-     }
- 
-     if (pass) {
-         memcpy(translated, origin, sizeof(*origin));
-     } else {
-         trace_amdvi_ir_err("passthrough is not enabled");
--        ret = -AMDVI_IR_ERR;
--        goto remap_fail;
-+        return -AMDVI_IR_ERR;
-     }
- 
- out:
-     trace_amdvi_ir_remap_msi(origin->address, origin->data,
-                              translated->address, translated->data);
-     return 0;
--
--remap_fail:
--    return ret;
+-out:
+     return ret;
  }
  
- static int amdvi_int_remap(X86IOMMUState *iommu,
 -- 
 2.24.1
 
