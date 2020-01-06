@@ -1,71 +1,92 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ioYSz-00023R-US
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 14:55:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60130)
+	id 1ioZXy-0007vW-Qy
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 16:04:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39909)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tcminyard@gmail.com>) id 1ioYSw-0001zp-Ac
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 14:55:07 -0500
+ (envelope-from <sw@weilnetz.de>) id 1ioZXv-0007rd-AQ
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 16:04:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tcminyard@gmail.com>) id 1ioYSu-0003nC-K9
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 14:55:06 -0500
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:32910)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <tcminyard@gmail.com>)
- id 1ioYSr-0003iP-2X; Mon, 06 Jan 2020 14:55:01 -0500
-Received: by mail-oi1-x243.google.com with SMTP id v140so16765972oie.0;
- Mon, 06 Jan 2020 11:55:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:reply-to:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=l2b+kv/gZMocs+0ayg7lmK/Rp83ff0VM1eGdR/Hw4VE=;
- b=knWRkm3D8TJA/7jNP2Ri1/Avxd4Z/WpMmQFNCYOnYnXYzR788ksPJ4COEjd32sLL0J
- cXa/MXBMCRLMvTBAFoYdifNVMlfsxiMHmeDRDRQ88J1XkRxbf+KnL/hq8dlMxSu74G2A
- 8xmAjx/TG4w+qjmglH/N+1AtEe/mEubVl1M2TxnFLDlii2rzbF4fJmOW1ux45jGcWb6N
- XCx7sv9U02zVZxAl8l0dEa/dTkrFOHsYcCadVn6mjoVZWtgBRu//VK316IErYdmX9UUt
- 74zqZOji2xHgOEqahBZ2edWby9U602wzn1wlDGZhtjwElWfA3xBBMgBhzguzRH1XG+tc
- cmPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :reply-to:references:mime-version:content-disposition:in-reply-to
- :user-agent;
- bh=l2b+kv/gZMocs+0ayg7lmK/Rp83ff0VM1eGdR/Hw4VE=;
- b=IEjYOmy1sfWmREpxo00dwxzTNvJ+B6bo7tFBpjkNdZcycdVsQhDLv+32pwLWNiIx+k
- pXj7KN0s3JQKq0AWIbHkL+PEl3eDKURV6AusjN77w2JSWNONr+gB/2Dpuqd3gVid7elr
- /xNcE2tqrKaGhoFBIt5m+Bl+4F3jeaqc8bLvEEw2JKOgHr+L4OfeARBdxN4bFJI5HDpa
- Fr+6IWRH8fBS1urJx69v0CHMVnmZUynEI5kNBJ8E0jwn/ggiq3c979cELIkl4qF6b7j1
- Q0KnY8dyWOkxVRj+6ovVFnzAHa33b1Rl3Q4U5wV5OtfLB5LeqU0yIsMJRl3s1T5ab43K
- TwmQ==
-X-Gm-Message-State: APjAAAUK3xsSisGGetKpFGegtIhjeTlmVJmToMcjEfd0aKazzEpCXdq/
- 2RLHEL2ve05VE1RaNXMtLQ==
-X-Google-Smtp-Source: APXvYqypHD2sht7gw6aTf9I/WdjGJJGPJceay8TWxY269Hcvw4gDb11P3kCVOrzK4kcupgaX5uJcHg==
-X-Received: by 2002:a05:6808:208:: with SMTP id
- l8mr5965360oie.112.1578340499979; 
- Mon, 06 Jan 2020 11:54:59 -0800 (PST)
-Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
- by smtp.gmail.com with ESMTPSA id v25sm24260566otk.51.2020.01.06.11.54.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 11:54:59 -0800 (PST)
-Sender: Corey Minyard <tcminyard@gmail.com>
-Received: from minyard.net (unknown [IPv6:2001:470:b8f6:1b:adc3:7c20:81:d62b])
- by serve.minyard.net (Postfix) with ESMTPSA id AA851180050;
- Mon,  6 Jan 2020 19:54:58 +0000 (UTC)
-Date: Mon, 6 Jan 2020 13:54:57 -0600
-From: Corey Minyard <minyard@acm.org>
-To: Daniel Henrique Barboza <danielhb413@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH v1 00/59] trivial unneeded labels cleanup
-Message-ID: <20200106195457.GE2886@minyard.net>
-Reply-To: minyard@acm.org
+ (envelope-from <sw@weilnetz.de>) id 1ioZXt-0003XD-Sx
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 16:04:19 -0500
+Received: from mail.weilnetz.de ([37.120.169.71]:47270
+ helo=v2201612906741603.powersrv.de)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <sw@weilnetz.de>)
+ id 1ioZXm-0003G9-Ei; Mon, 06 Jan 2020 16:04:10 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by v2201612906741603.powersrv.de (Postfix) with ESMTP id 32F51DBAA99;
+ Mon,  6 Jan 2020 22:04:08 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
+Received: from v2201612906741603.powersrv.de ([127.0.0.1])
+ by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
+ port 10024)
+ with ESMTP id YVMNpFMezDdY; Mon,  6 Jan 2020 22:04:06 +0100 (CET)
+Received: from edv-macbook-pro.fritz.box (pD9EC3B33.dip0.t-ipconnect.de
+ [217.236.59.51])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested)
+ by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id C0E6ADBAA94;
+ Mon,  6 Jan 2020 22:04:06 +0100 (CET)
+Subject: Re: [PATCH v1 13/59] block/vdi.c: remove 'fail' label in vdi_open()
+To: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-block@nongnu.org
 References: <20200106182425.20312-1-danielhb413@gmail.com>
+ <20200106182425.20312-14-danielhb413@gmail.com>
+From: Stefan Weil <sw@weilnetz.de>
+Autocrypt: addr=sw@weilnetz.de; keydata=
+ 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
+Message-ID: <06475279-d456-7160-1927-0120460b6864@weilnetz.de>
+Date: Mon, 6 Jan 2020 22:04:06 +0100
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:68.0)
+ Gecko/20100101 Thunderbird/68.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::243
+In-Reply-To: <20200106182425.20312-14-danielhb413@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 37.120.169.71
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -77,205 +98,162 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 19:55:08 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 21:04:20 -0000
 
-On Mon, Jan 06, 2020 at 03:23:26PM -0300, Daniel Henrique Barboza wrote:
-> Hello,
-> 
-> This is the type of cleanup I've contributed to Libvirt
-> during the last year. Figured QEMU also deserves the same
-> care.
-> 
-> The idea here is remove unneeded labels. By 'unneeded' I
-> mean labels that does nothing but a 'return' call. One
-> common case is something like this:
-> 
-> if ()
->     goto cleanup;
-> [...]
->  cleanup:
->     return 0;
-> 
-> This code can be simplified to:
-> 
-> if ()
->     return 0;
-> 
-> 
-> Which is cleaner and requires less brain cycles to wonder
-> whether the 'cleanup' label does anything special, such
-> as a heap memory cleanup.
+Am 06.01.20 um 19:23 schrieb Daniel Henrique Barboza:
 
-I would disagree with this analysis.  To me, I often wonder
-when I have to add cleanup code to a routine whether there is
-some hidden return in the middle of the function.  That's a lot
-harder to spot than just looking for the cleanup label at the
-end of the function to see what it does.  For non-trivial
-functions I prefer to have one point of return at the end
-(and maybe some minor checks with returns right at the beginning).
-I'm not adamant about this, just my opinion.
+> The 'fail' label can be replaced by 'return ret' or by
+> a 'return' with the error code that was being set right
+> before the 'goto' call.
+>
+> CC: Stefan Weil <sw@weilnetz.de>
+> CC: qemu-block@nongnu.org
+> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+> ---
+>  block/vdi.c | 40 +++++++++++++---------------------------
+>  1 file changed, 13 insertions(+), 27 deletions(-)
+>
+> diff --git a/block/vdi.c b/block/vdi.c
+> index 0142da7233..6d486ffed9 100644
+> --- a/block/vdi.c
+> +++ b/block/vdi.c
+> @@ -388,7 +388,7 @@ static int vdi_open(BlockDriverState *bs, QDict *op=
+tions, int flags,
+> =20
+>      ret =3D bdrv_pread(bs->file, 0, &header, sizeof(header));
+>      if (ret < 0) {
+> -        goto fail;
+> +        return ret;
+>      }
+> =20
+>      vdi_header_to_cpu(&header);
+> @@ -400,8 +400,7 @@ static int vdi_open(BlockDriverState *bs, QDict *op=
+tions, int flags,
+>          error_setg(errp, "Unsupported VDI image size (size is 0x%" PRI=
+x64
+>                            ", max supported is 0x%" PRIx64 ")",
+>                            header.disk_size, VDI_DISK_SIZE_MAX);
+> -        ret =3D -ENOTSUP;
+> -        goto fail;
+> +        return -ENOTSUP;
+>      }
+> =20
+>      uuid_link =3D header.uuid_link;
+> @@ -418,58 +417,48 @@ static int vdi_open(BlockDriverState *bs, QDict *=
+options, int flags,
+>      if (header.signature !=3D VDI_SIGNATURE) {
+>          error_setg(errp, "Image not in VDI format (bad signature %08" =
+PRIx32
+>                     ")", header.signature);
+> -        ret =3D -EINVAL;
+> -        goto fail;
+> +        return -EINVAL;
+>      } else if (header.version !=3D VDI_VERSION_1_1) {
+>          error_setg(errp, "unsupported VDI image (version %" PRIu32 ".%=
+" PRIu32
+>                     ")", header.version >> 16, header.version & 0xffff)=
+;
+> -        ret =3D -ENOTSUP;
+> -        goto fail;
+> +        return -ENOTSUP;
+>      } else if (header.offset_bmap % SECTOR_SIZE !=3D 0) {
+>          /* We only support block maps which start on a sector boundary=
+=2E */
+>          error_setg(errp, "unsupported VDI image (unaligned block map o=
+ffset "
+>                     "0x%" PRIx32 ")", header.offset_bmap);
+> -        ret =3D -ENOTSUP;
+> -        goto fail;
+> +        return -ENOTSUP;
+>      } else if (header.offset_data % SECTOR_SIZE !=3D 0) {
+>          /* We only support data blocks which start on a sector boundar=
+y. */
+>          error_setg(errp, "unsupported VDI image (unaligned data offset=
+ 0x%"
+>                     PRIx32 ")", header.offset_data);
+> -        ret =3D -ENOTSUP;
+> -        goto fail;
+> +        return -ENOTSUP;
+>      } else if (header.sector_size !=3D SECTOR_SIZE) {
+>          error_setg(errp, "unsupported VDI image (sector size %" PRIu32=
 
-But if we are going to fix things like this, it might be best to add
-them to the coding style document and checkpatch script.  Otherwise
-these sorts of things will just continue.
+>                     " is not %u)", header.sector_size, SECTOR_SIZE);
+> -        ret =3D -ENOTSUP;
+> -        goto fail;
+> +        return -ENOTSUP;
+>      } else if (header.block_size !=3D DEFAULT_CLUSTER_SIZE) {
+>          error_setg(errp, "unsupported VDI image (block size %" PRIu32
+>                           " is not %" PRIu32 ")",
+>                     header.block_size, DEFAULT_CLUSTER_SIZE);
+> -        ret =3D -ENOTSUP;
+> -        goto fail;
+> +        return -ENOTSUP;
+>      } else if (header.disk_size >
+>                 (uint64_t)header.blocks_in_image * header.block_size) {=
 
--corey
+>          error_setg(errp, "unsupported VDI image (disk size %" PRIu64 "=
+, "
+>                     "image bitmap has room for %" PRIu64 ")",
+>                     header.disk_size,
+>                     (uint64_t)header.blocks_in_image * header.block_siz=
+e);
+> -        ret =3D -ENOTSUP;
+> -        goto fail;
+> +        return -ENOTSUP;
+>      } else if (!qemu_uuid_is_null(&uuid_link)) {
+>          error_setg(errp, "unsupported VDI image (non-NULL link UUID)")=
+;
+> -        ret =3D -ENOTSUP;
+> -        goto fail;
+> +        return -ENOTSUP;
+>      } else if (!qemu_uuid_is_null(&uuid_parent)) {
+>          error_setg(errp, "unsupported VDI image (non-NULL parent UUID)=
+");
+> -        ret =3D -ENOTSUP;
+> -        goto fail;
+> +        return -ENOTSUP;
+>      } else if (header.blocks_in_image > VDI_BLOCKS_IN_IMAGE_MAX) {
+>          error_setg(errp, "unsupported VDI image "
+>                           "(too many blocks %u, max is %u)",
+>                            header.blocks_in_image, VDI_BLOCKS_IN_IMAGE_=
+MAX);
+> -        ret =3D -ENOTSUP;
+> -        goto fail;
+> +        return -ENOTSUP;
+>      }
+> =20
+>      bs->total_sectors =3D header.disk_size / SECTOR_SIZE;
+> @@ -482,8 +471,7 @@ static int vdi_open(BlockDriverState *bs, QDict *op=
+tions, int flags,
+>      bmap_size =3D DIV_ROUND_UP(bmap_size, SECTOR_SIZE);
+>      s->bmap =3D qemu_try_blockalign(bs->file->bs, bmap_size * SECTOR_S=
+IZE);
+>      if (s->bmap =3D=3D NULL) {
+> -        ret =3D -ENOMEM;
+> -        goto fail;
+> +        return -ENOMEM;
+>      }
+> =20
+>      ret =3D bdrv_pread(bs->file, header.offset_bmap, s->bmap,
+> @@ -509,8 +497,6 @@ static int vdi_open(BlockDriverState *bs, QDict *op=
+tions, int flags,
+> =20
+>   fail_free_bmap:
+>      qemu_vfree(s->bmap);
+> -
+> - fail:
+>      return ret;
+>  }
+> =20
 
-> 
-> Another common case uses a variable to set a return value,
-> generally an error, then return:
-> 
-> if () {
->     ret = -ENOENT;
->     goto out;
-> }
-> [..]
->  out:
->     return ret;
-> 
-> Likewise, it is clearer to just 'return -ENOENT' instead of
-> jumping to a label. There are other cases being handled in
-> these patches, but these are the most common.
-> 
-> There are still a handful of unneeded labels hanging around after
-> this series. There are cases in which the label name is
-> part of the code semantics and I judged not worth removing.
-> search_chunk() in block/dmg.c has an example of an unneeded
-> 'err' label that I decided to not remove.
-> 
-> No functional change was made. If any of these patches changes
-> existing behavior it is unintended and an error from my
-> part.
-> 
-> 
-> 
-> Daniel Henrique Barboza (59):
->   spapr.c: remove 'out' label in spapr_dt_cas_updates()
->   ppc440_bamboo.c: remove label from bamboo_load_device_tree()
->   kvm-all.c: remove unneeded labels
->   paaudio.c: remove unneeded labels
->   ram.c: remove unneeded labels
->   mips-semi.c: remove 'uhi_done' label in helper_do_semihosting()
->   unicore32/softmmu.c: remove 'do_fault' label in get_phys_addr_ucv2()
->   chardev/char-mux.c: remove 'send_char' label
->   chardev/char-pipe.c: remove 'fail' label in win_chr_pipe_init()
->   chardev/char-win.c: remove 'fail' label in win_chr_serial_init()
->   exec.c: remove 'err' label in ram_block_discard_range()
->   virtfs-proxy-helper.c: remove 'err_out' label in setugid()
->   block/vdi.c: remove 'fail' label in vdi_open()
->   block/file-posix.c: remove unneeded labels
->   block/blkreplay.c: remove unneeded 'fail' label in blkreplay_open()
->   block/gluster.c: remove unneeded 'exit' label
->   block/dmg.c: remove unneeded 'fail' label in dmg_read_mish_block()
->   qcow2-refcount.c: remove unneeded 'fail' label in
->     qcow2_refcount_init()
->   block/ssh.c: remove unneeded labels
->   block/vpc.c: remove unneeded 'fail' label in create_dynamic_disk()
->   block/backup.c remove unneeded 'out' label in backup_run()
->   block/vmdk.c: remove unneeded labels
->   block/vxhs.c: remove unneeded 'out' label in vxhs_iio_callback()
->   block/vhdx-log.c: remove unneeded labels
->   block/vhdx.c: remove unneeded 'exit' labels
->   block/replication.c: remove unneeded label in replication_co_writev
->   crypto/block-luks.c: remove unneeded label in
->     qcrypto_block_luks_find_key
->   qga/commands-win32.c: remove 'out' label in get_pci_info
->   cryptodev-vhost.c: remove unneeded 'err' label in
->     cryptodev_vhost_start
->   util/module.c: remove unneeded label in module_load_file()
->   util/aio-posix.c: remove unneeded 'out' label in aio_epoll
->   qemu-img.c: remove 'out4' label in img_compare
->   ipmi/ipmi_bmc_sim.c: remove unneeded labels
->   ipmi/ipmi_bt.c: remove unneeded label in ipmi_bt_handle_event
->   ipmi_bmc_extern.c: remove unneeded label in
->     ipmi_bmc_extern_handle_command
->   ipmi/ipmi_kcs.c: remove unneeded label in ipmi_kcs_handle_event
->   s390x/event-facility.c: remove unneeded labels
->   s390x/sclp.c: remove unneeded label in sclp_service_call()
->   usb/dev-mtp.c: remove unneeded label in write_retry()
->   hsb/hcd-ehci.c: remove unneeded labels
->   intc/s390_flic_kvm.c: remove unneeded label in kvm_flic_load()
->   i386/intel_iommu.c: remove unneeded labels
->   i386/amd_iommu.c: remove unneeded label in amdvi_int_remap_msi()
->   9p-local.c: remove unneeded label in local_unlinkat_common()
->   9pfs/9p.c: remove unneeded labels
->   alpha/typhoon.c: remove unneeded label in typhoon_translate_iommu()
->   pvrdma_main.c: remove unneeded labels
->   pvrdma_dev_ring.c: remove unneeded label in pvrdma_ring_init()
->   rdma/rdma_rm.c: remove unneeded label in rdma_rm_alloc_pd()
->   rdma/rdma_backend.c: remove unneeded label in rdma_backend_init()
->   virtio/vhost.c: remove unneeded labels
->   net/vhost_net.c: remove unneeded labels
->   net/net_tx_pkt.c: remove unneeded label in net_tx_pkt_get_gso_type()
->   ivshmem-server/main.c: remove unneeded label in main()
->   linux-user/flatload.c: remove unused 'out' label
->   linux-user/signal.c: remove unneeded label in do_sigaltstack()
->   linux-user/syscall.c: fix trailing whitespaces and style
->   linux-user/syscall.c: remove unneeded labels
->   linux-user/vm86.c: remove unneeded label in do_vm86()
-> 
->  accel/kvm/kvm-all.c           | 30 +++++-------
->  audio/paaudio.c               | 10 +---
->  backends/cryptodev-vhost.c    |  4 +-
->  block/backup.c                |  6 +--
->  block/blkreplay.c             |  8 +---
->  block/dmg.c                   | 10 +---
->  block/file-posix.c            | 10 ++--
->  block/gluster.c               |  3 +-
->  block/qcow2-refcount.c        |  7 +--
->  block/replication.c           |  9 ++--
->  block/ssh.c                   | 61 ++++++++-----------------
->  block/vdi.c                   | 40 ++++++----------
->  block/vhdx-log.c              | 86 +++++++++++++----------------------
->  block/vhdx.c                  | 10 ++--
->  block/vmdk.c                  | 37 ++++++---------
->  block/vpc.c                   | 12 ++---
->  block/vxhs.c                  |  4 +-
->  chardev/char-mux.c            |  3 +-
->  chardev/char-pipe.c           | 13 ++----
->  chardev/char-win.c            | 19 ++++----
->  contrib/ivshmem-server/main.c |  9 ++--
->  crypto/block-luks.c           |  3 +-
->  exec.c                        | 13 +++---
->  fsdev/virtfs-proxy-helper.c   |  4 +-
->  hw/9pfs/9p-local.c            | 12 ++---
->  hw/9pfs/9p.c                  |  9 ++--
->  hw/alpha/typhoon.c            | 18 ++++----
->  hw/i386/amd_iommu.c           | 13 ++----
->  hw/i386/intel_iommu.c         |  8 ++--
->  hw/intc/s390_flic_kvm.c       | 10 ++--
->  hw/ipmi/ipmi_bmc_extern.c     |  5 +-
->  hw/ipmi/ipmi_bmc_sim.c        |  9 +---
->  hw/ipmi/ipmi_bt.c             |  8 ++--
->  hw/ipmi/ipmi_kcs.c            |  4 +-
->  hw/net/net_tx_pkt.c           | 11 ++---
->  hw/net/vhost_net.c            |  7 ++-
->  hw/ppc/ppc440_bamboo.c        |  8 +---
->  hw/ppc/spapr.c                |  9 ++--
->  hw/rdma/rdma_backend.c        |  4 +-
->  hw/rdma/rdma_rm.c             | 11 ++---
->  hw/rdma/vmw/pvrdma_dev_ring.c |  7 +--
->  hw/rdma/vmw/pvrdma_main.c     | 10 ++--
->  hw/s390x/event-facility.c     | 21 +++------
->  hw/s390x/sclp.c               | 16 ++-----
->  hw/usb/dev-mtp.c              | 13 ++----
->  hw/usb/hcd-ehci.c             | 32 ++++---------
->  hw/virtio/vhost.c             | 11 ++---
->  linux-user/flatload.c         |  1 -
->  linux-user/signal.c           | 20 +++-----
->  linux-user/syscall.c          | 54 ++++++++++------------
->  linux-user/vm86.c             |  7 +--
->  migration/ram.c               | 18 ++------
->  qemu-img.c                    |  7 +--
->  qga/commands-win32.c          | 17 ++++---
->  target/mips/mips-semi.c       | 15 +++---
->  target/unicore32/softmmu.c    | 23 +++-------
->  util/aio-posix.c              |  3 +-
->  util/module.c                 | 11 ++---
->  58 files changed, 293 insertions(+), 550 deletions(-)
-> 
-> -- 
-> 2.24.1
-> 
-> 
+
+Technically these changes are fine. Personally I prefer functions having
+a single return statement, even if that requires a goto statement. But
+if there is a consense to change the code, that can be done of course.
+
+Regards,
+Stefan Weil
+
+
+
 
