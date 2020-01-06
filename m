@@ -1,56 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobm0-0000dN-F6
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46481)
+	id 1iobm2-0000er-5B
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46534)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX5B-0003pQ-3f
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:30 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX5E-0003wK-DR
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX5A-0005FF-2o
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:28 -0500
-Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743]:42555)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX5D-0005Hw-9m
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:32 -0500
+Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42]:43232)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX57-0005D7-Sm; Mon, 06 Jan 2020 13:26:25 -0500
-Received: by mail-qk1-x743.google.com with SMTP id z14so39016754qkg.9;
- Mon, 06 Jan 2020 10:26:25 -0800 (PST)
+ id 1ioX5B-0005Fy-4z; Mon, 06 Jan 2020 13:26:29 -0500
+Received: by mail-qv1-xf42.google.com with SMTP id p2so19408978qvo.10;
+ Mon, 06 Jan 2020 10:26:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=0v81XTgpe39UJaMXds5mD2XgR/7Ua6QyU6w1mwdmCXM=;
- b=ViZJtqqCIYXTcWLD/22pFaG95qUlFyo49tNVAh+CDYXLpd9LYH7KX/BQYcvqDs/yUi
- ik/p6lx3qUPTq4i6XbhwIxEjo8Sd+AgnpNeWJbdMu1MBqfIUeECHbHUT0L3oqopUTsvm
- o9VrmlLYUvA1OjLMlG8wYNlmzCMOfjUnqO/ZZO7sCCVrG7QCmVLb8oqR9ctL+P40BQSg
- jxXaw3ci7t+pcuwoIuV20wJ7sESgk7Vr0KXzpwuvI8rz92+CcDALJWQlYkcYBL6W6zDh
- /7UjsAO/YcG18Ne8i5epZN3bVZ9L0FnV0hkK1KpHhSMh6Pd3JDkOu8Kia8eBV5kbx4cq
- xjSQ==
+ bh=JQxTRPnPlhXn/y/TL9t8metwExxAfIfNbs5Qew1wUwQ=;
+ b=tD4lcCRN/yapUlr0QvtqVHeZ6aifJvSjso4C98TRGStU6v5qr34PW2eVaHPgO+DXdK
+ Q4sDCoimJ3eLNhiSpplK8TKYuubQRE35M7vOTPI1MWLGlmh4hhlGmDZ9sf8MJd5BXISC
+ usm62KGtedERfjrr7Q3gXRrm4iiiMyZhAgj05V+BkjAp6u07HHgF8+/G5Qt+z/pV+WtD
+ ailQ3yyxCzdzTX3Bv5yfZhHVr6JEA7Kk3Lh19Y+Bsusu8Pf5uka+l6KhGk7u2Z62XZjx
+ N6lBJJwXEAPjjH8GRlYkRmogKphX3dw88lA1pGng5TdWlktmwTOXRAaYWW6Exw+ZZ5AG
+ T75A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=0v81XTgpe39UJaMXds5mD2XgR/7Ua6QyU6w1mwdmCXM=;
- b=IvujFk0Scgxtfew7ZG9UZKqfl2TC5gh8tDomOQCheeLQ4dMiY1z1vB1NsFWo7MRbbV
- d/H/0sxHru5i55QhIpnKkGtqzWSoa2qWoGZkx3C1tF/pYJtmBzKLSy7eVgjG9Q7LbCUV
- F+L728bJbRs2SyV3wOYhgHwjij60GNob1zaFX4S/v2I79DzjDElezPJcF+/x0RbWOdXn
- ebjeD9KrpuMnsrFN3yM0F/oRHSlKb8yMVK9bGG0YGXOlS9K8hbCD5Bo5sXRhFOPr+QCO
- r1Cam5SMTKxV4wWSa9tFJue/8VyP125krpYlxfOoFTfzGcd1mxGKfgAflgkggUiRvfN6
- aiYw==
-X-Gm-Message-State: APjAAAUqJi36Row61Wnu8IvsExNcCrhS25q5vxrKNEa55Y2+qpWlmmcs
- M+G4g1T2gawhecxMZkNERUvP4pYE
-X-Google-Smtp-Source: APXvYqy9QOYrdk3Drvow6+RkYXXFtLZ8YsGNL4zUxm54gTZBLULiM8QInD8M5hYvmyXCmFTkggQkEw==
-X-Received: by 2002:ae9:f711:: with SMTP id s17mr83113900qkg.238.1578335185353; 
- Mon, 06 Jan 2020 10:26:25 -0800 (PST)
+ bh=JQxTRPnPlhXn/y/TL9t8metwExxAfIfNbs5Qew1wUwQ=;
+ b=XfWTX5fo1/1nLJsUxu1OXS/aOEioJMb/m0YUZnMJGBcsbd0rgPYpqCr88ZpLmAu32u
+ Vzqe4s/1F/BDeeTu+finyaKXFdNv5N4Z2A3FXbibS7gVugotBcIprbjBc22uHwzCx+jM
+ 5oEPEnrstlSD89ayzuwz/leWn0i3WTJ//zemjRWYWSeQ7D8xXPipw9GLvv2FPETsRKTE
+ Yyhyrvi+V9Dm7iVv/yocVHj7L6PmdmQLQQxycaLvfl/MoCm9UGaS7Zk+DmRl7ouNSMKk
+ UnKsWrhrijfOjkT0Z04dnh3dE3QrsZs0/NjrmyO2QZ77Gc3vdi5O7pDQTCFqgpI9XDRM
+ IDiA==
+X-Gm-Message-State: APjAAAXV34tFwZYEQpg0VUii+x9JTXlhdxJI0xL5V/7Nukzk4XlU6qkP
+ 4dvClbPUvANCXHQ+EeUlxZV0/5g1
+X-Google-Smtp-Source: APXvYqwxzpST7Aq/bU8yDjkptRfPj1gmygJph2a1ZL8w3deaE1bHYZ89DjZ8XuKU8V4IXlaKzZap7Q==
+X-Received: by 2002:a0c:ed32:: with SMTP id u18mr81340466qvq.2.1578335188543; 
+ Mon, 06 Jan 2020 10:26:28 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.23
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:26:25 -0800 (PST)
+ Mon, 06 Jan 2020 10:26:28 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- "Michael S . Tsirkin" <mst@redhat.com>
-Subject: [PATCH v1 52/59] net/vhost_net.c: remove unneeded labels
-Date: Mon,  6 Jan 2020 15:24:18 -0300
-Message-Id: <20200106182425.20312-53-danielhb413@gmail.com>
+Cc: qemu-trivial@nongnu.org,
+	Daniel Henrique Barboza <danielhb413@gmail.com>
+Subject: [PATCH v1 54/59] ivshmem-server/main.c: remove unneeded label in
+ main()
+Date: Mon,  6 Jan 2020 15:24:20 -0300
+Message-Id: <20200106182425.20312-55-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -58,7 +59,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::743
+X-Received-From: 2607:f8b0:4864:20::f42
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,56 +72,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:26:31 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:26:35 -0000
 
-Label 'fail_notifiers' in vhost_net_start_one() and
-'err' in vhost_net_start() can be replaced by 'return r'.
+'err' can be replaced by 'return 1'.
 
-CC: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- hw/net/vhost_net.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ contrib/ivshmem-server/main.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/hw/net/vhost_net.c b/hw/net/vhost_net.c
-index 6b82803fa7..272519f970 100644
---- a/hw/net/vhost_net.c
-+++ b/hw/net/vhost_net.c
-@@ -230,7 +230,7 @@ static int vhost_net_start_one(struct vhost_net *net,
- 
-     r = vhost_dev_enable_notifiers(&net->dev, dev);
-     if (r < 0) {
--        goto fail_notifiers;
-+        return r;
-     }
- 
-     r = vhost_dev_start(&net->dev, dev);
-@@ -278,7 +278,6 @@ fail:
-     vhost_dev_stop(&net->dev, dev);
- fail_start:
-     vhost_dev_disable_notifiers(&net->dev, dev);
--fail_notifiers:
-     return r;
- }
- 
-@@ -331,7 +330,7 @@ int vhost_net_start(VirtIODevice *dev, NetClientState *ncs,
-     r = k->set_guest_notifiers(qbus->parent, total_queues * 2, true);
-     if (r < 0) {
-         error_report("Error binding guest notifier: %d", -r);
+diff --git a/contrib/ivshmem-server/main.c b/contrib/ivshmem-server/main.c
+index e4cd35f74c..b491e8237f 100644
+--- a/contrib/ivshmem-server/main.c
++++ b/contrib/ivshmem-server/main.c
+@@ -217,7 +217,7 @@ main(int argc, char *argv[])
+     if (sigemptyset(&sa.sa_mask) == -1 ||
+         sigaction(SIGPIPE, &sa, 0) == -1) {
+         perror("failed to ignore SIGPIPE; sigaction");
 -        goto err;
-+        return r;
++        return 1;
      }
  
-     for (i = 0; i < total_queues; i++) {
-@@ -362,7 +361,7 @@ err_start:
-         fprintf(stderr, "vhost guest notifier cleanup failed: %d\n", e);
-         fflush(stderr);
+     sa_quit.sa_handler = ivshmem_server_quit_cb;
+@@ -226,7 +226,7 @@ main(int argc, char *argv[])
+         sigaction(SIGTERM, &sa_quit, 0) == -1 ||
+         sigaction(SIGINT, &sa_quit, 0) == -1) {
+         perror("failed to add signal handler; sigaction");
+-        goto err;
++        return 1;
      }
+ 
+     /* init the ivshms structure */
+@@ -234,13 +234,13 @@ main(int argc, char *argv[])
+                             args.shm_path, args.use_shm_open,
+                             args.shm_size, args.n_vectors, args.verbose) < 0) {
+         fprintf(stderr, "cannot init server\n");
+-        goto err;
++        return 1;
+     }
+ 
+     /* start the ivshmem server (open shm & unix socket) */
+     if (ivshmem_server_start(&server) < 0) {
+         fprintf(stderr, "cannot bind\n");
+-        goto err;
++        return 1;
+     }
+ 
+     /* daemonize if asked to */
+@@ -269,6 +269,5 @@ main(int argc, char *argv[])
+ 
+ err_close:
+     ivshmem_server_close(&server);
 -err:
-+
-     return r;
+     return ret;
  }
- 
 -- 
 2.24.1
 
