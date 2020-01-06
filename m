@@ -1,56 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobmG-0000yG-7W
+	id 1iobmG-0000yj-Gq
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45647)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45853)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4L-0002LU-Lh
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:38 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4V-0002bE-Bl
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4K-0004Ng-D3
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:37 -0500
-Received: from mail-qt1-x841.google.com ([2607:f8b0:4864:20::841]:44903)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4U-0004Xl-4K
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:47 -0500
+Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b]:41776)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4H-0004Ik-8v; Mon, 06 Jan 2020 13:25:33 -0500
-Received: by mail-qt1-x841.google.com with SMTP id t3so43183042qtr.11;
- Mon, 06 Jan 2020 10:25:32 -0800 (PST)
+ id 1ioX4R-0004VB-Ia; Mon, 06 Jan 2020 13:25:43 -0500
+Received: by mail-qk1-x72b.google.com with SMTP id x129so40277788qke.8;
+ Mon, 06 Jan 2020 10:25:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ETqO23SHWpPMRbtRK9xMCrBSsMXG0QNt/7zW03rA7Ew=;
- b=pkqpqClAAU65D8rWlHzvXBzNxtF8NFiKqQd/peZLcto6NN8X4vC011llPx805Cuh9j
- okgP2a4G55Vc75DZiwkkL7LflHQd6GUb8yTJh3JgzJFK8VPYgIwgWnnk/XhSHdcmKlLz
- VGPbSH3HIozEfeeyOmzCfu3r4rX1sZM7Gtbu8gHVpaPNnb5GI+Dx4yPA0478xOFxdBJ5
- EWIXsbpNUZE7f4KX7YJcs7mTHE7LlmvthkL3BEauzAYAF4U1i1Xe7lSZQJR8lNvRtvTJ
- IrDfUiLViWdxs7Ve/1SHxdutDNjVuQVaHAT3NTQnPWxjr+fqcMo7DdHxDHDlmuWLT/o5
- fLPA==
+ bh=Adi6YmWzd5BlIyjySU/FHh29puafqwS6MyW1XVUsuis=;
+ b=aCigGM45Roe/Nr1ZXPjbYM8Xz0GSFXDL5YrXrdeaqunEB+OI3Y2LN/2I5bPMtc5S8j
+ CGMl++arbFq6+4W/1Q33RBV8me0qDj45oXKxyynzYylUQnuirH625VTao0ior+8O3qFz
+ xIN4ehhT7CuPe+exRMgisa4ERBUk5Fyfv7wN9eqZEvjeCUXVXHs2zFK4EW5LgBgQGgDF
+ p+tQzfTuoWQNk0l4xKS44jJE2a/ik0xT352iQsjb6V7RhWs7FCkfZBlQNDsAAU/zjGxu
+ zl+jk5tZ7tXYfIiTIlZb4glU0uA69gLjeZNo3bgkwJKmZEbEjEO8+wU2ywCNKD0kvRiZ
+ Y9rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ETqO23SHWpPMRbtRK9xMCrBSsMXG0QNt/7zW03rA7Ew=;
- b=cxKVJ0LH+nXBX+7Gye5xO0QMhoCe0B7Mi9CR3abxOnLg97vMCKk5Obiq0dUJ9fUTg3
- qQWgiODD48JO2G/oxGirhBIF8rmUj0rw/qAFk544Hmo9CnGrMuZCy2IWGE0/Qt0GXbei
- k3i6zdVXGN1DQJqeMeQb/UVI74hvG4bG2iZmbnO5mQGsslZ7eJ11tYCY49Zc84Q+j0yk
- w7bYdCnHu9QKwbPcS4JfTWy+rkRhIVN+/InK5b8dBV/zWIJc5fqEzNr7qJ7xv9uyCowl
- UIsqSEj0Vafy0fPZUhaAXe/T6W+STBn3qiOY2SpkBPs4ZYS068NQD63o74Ml/tW7JzIt
- eVjg==
-X-Gm-Message-State: APjAAAXkrtCBI6CbfgCU3qilZN+SrXLsddIVxms9nfj/P2Ql+Ae1znqE
- PHZU5uEyTPMdDyw/j8M7CoXN08+G
-X-Google-Smtp-Source: APXvYqwVAjtRACMUNbwLQSLwq35h9JtpfeE9y9G2e55OXgkDStnsckiZohcDDEa5GjF3ioEOBZ6VIw==
-X-Received: by 2002:ac8:5442:: with SMTP id d2mr78985485qtq.297.1578335131570; 
- Mon, 06 Jan 2020 10:25:31 -0800 (PST)
+ bh=Adi6YmWzd5BlIyjySU/FHh29puafqwS6MyW1XVUsuis=;
+ b=Vi54n9HzxSjjZja4aeMs2cWOWaNPxqHHeE0K7ReddM/v/3HWjFo+UNrJFO94oBo6rn
+ 8LjL+Jafo9/8MB8jJ/Qbia85OfOBA8Ur7fDlMkvMID5CLCiCW48xRi0jEUDyzUorJlD2
+ O7T/Q1RRT+1rwjaezDlECLUCQxefKNPlL/wYS2ZhUiWNtD9KHfKVWhbuVjghAb1VFC/K
+ Q8v5rTQKrBEllLMfr0oG9N48DtoS43oJxbDaeb8rEeF6BW8Czq6pVY8yHCW4BxQYUt75
+ hz+ZfQrOnJ+zVN+2uJHB3si6SYq+ABHC8ZRqW8DZVZ8r8AwSF92kzMS+9Aoz5R/7PGZW
+ 82nA==
+X-Gm-Message-State: APjAAAXgY8GzOA2N8+OZ5+X5jrK9qiSsDkklwJCsOgGlZoEA63CKQRXz
+ /UPpSJ5IUSIFXDKoFP82gv4AylND
+X-Google-Smtp-Source: APXvYqy9uuY+g/FFOUyP/GV4GYpoqMkRy1st8SV0/XE9bt2uTfjdO1LUISMtE5C85hik3nZV78SaHg==
+X-Received: by 2002:ae9:f711:: with SMTP id s17mr83111219qkg.238.1578335142878; 
+ Mon, 06 Jan 2020 10:25:42 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.29
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:31 -0800 (PST)
+ Mon, 06 Jan 2020 10:25:42 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Fam Zheng <fam@euphon.net>, qemu-block@nongnu.org
-Subject: [PATCH v1 22/59] block/vmdk.c: remove unneeded labels
-Date: Mon,  6 Jan 2020 15:23:48 -0300
-Message-Id: <20200106182425.20312-23-danielhb413@gmail.com>
+ Stefan Weil <sw@weilnetz.de>
+Subject: [PATCH v1 28/59] qga/commands-win32.c: remove 'out' label in
+ get_pci_info
+Date: Mon,  6 Jan 2020 15:23:54 -0300
+Message-Id: <20200106182425.20312-29-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -58,7 +59,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::841
+X-Received-From: 2607:f8b0:4864:20::72b
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -71,98 +72,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:40 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:25:49 -0000
 
-'exit' label from vmdk_open_desc_file() can be replaced by
-'return' calls with the appropriate value. Same thing with
-the 'out' label from vmdk_co_create().
+'out' can be replaced by 'return pci' instead.
 
-CC: Fam Zheng <fam@euphon.net>
-CC: qemu-block@nongnu.org
+CC: Stefan Weil <sw@weilnetz.de>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- block/vmdk.c | 37 +++++++++++++------------------------
- 1 file changed, 13 insertions(+), 24 deletions(-)
+ qga/commands-win32.c | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
 
-diff --git a/block/vmdk.c b/block/vmdk.c
-index 20e909d997..d1491486de 100644
---- a/block/vmdk.c
-+++ b/block/vmdk.c
-@@ -1222,14 +1222,12 @@ out:
- static int vmdk_open_desc_file(BlockDriverState *bs, int flags, char *buf,
-                                QDict *options, Error **errp)
- {
--    int ret;
-     char ct[128];
-     BDRVVmdkState *s = bs->opaque;
- 
-     if (vmdk_parse_description(buf, "createType", ct, sizeof(ct))) {
-         error_setg(errp, "invalid VMDK image descriptor");
--        ret = -EINVAL;
--        goto exit;
-+        return -EINVAL;
-     }
-     if (strcmp(ct, "monolithicFlat") &&
-         strcmp(ct, "vmfs") &&
-@@ -1238,14 +1236,11 @@ static int vmdk_open_desc_file(BlockDriverState *bs, int flags, char *buf,
-         strcmp(ct, "twoGbMaxExtentSparse") &&
-         strcmp(ct, "twoGbMaxExtentFlat")) {
-         error_setg(errp, "Unsupported image type '%s'", ct);
--        ret = -ENOTSUP;
--        goto exit;
-+        return -ENOTSUP;
-     }
-     s->create_type = g_strdup(ct);
-     s->desc_offset = 0;
--    ret = vmdk_parse_extents(buf, bs, options, errp);
--exit:
--    return ret;
-+    return vmdk_parse_extents(buf, bs, options, errp);
- }
- 
- static int vmdk_open(BlockDriverState *bs, QDict *options, int flags,
-@@ -2738,7 +2733,6 @@ static BlockBackend *vmdk_co_create_cb(int64_t size, int idx,
- static int coroutine_fn vmdk_co_create(BlockdevCreateOptions *create_options,
-                                        Error **errp)
- {
--    int ret;
-     BlockdevCreateOptionsVmdk *opts;
- 
-     opts = &create_options->u.vmdk;
-@@ -2746,23 +2740,18 @@ static int coroutine_fn vmdk_co_create(BlockdevCreateOptions *create_options,
-     /* Validate options */
-     if (!QEMU_IS_ALIGNED(opts->size, BDRV_SECTOR_SIZE)) {
-         error_setg(errp, "Image size must be a multiple of 512 bytes");
--        ret = -EINVAL;
+diff --git a/qga/commands-win32.c b/qga/commands-win32.c
+index 2461fd19bf..c520a341df 100644
+--- a/qga/commands-win32.c
++++ b/qga/commands-win32.c
+@@ -513,7 +513,7 @@ static GuestPCIAddress *get_pci_info(int number, Error **errp)
+                                    DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
+     if (dev_info == INVALID_HANDLE_VALUE) {
+         error_setg_win32(errp, GetLastError(), "failed to get devices tree");
 -        goto out;
-+        return -EINVAL;
++        return pci;
      }
  
--    ret = vmdk_co_do_create(opts->size,
--                            opts->subformat,
--                            opts->adapter_type,
--                            opts->backing_file,
--                            opts->hwversion,
--                            false,
--                            opts->zeroed_grain,
--                            vmdk_co_create_cb,
--                            opts, errp);
--    return ret;
--
+     g_debug("enumerating devices");
+@@ -584,7 +584,7 @@ static GuestPCIAddress *get_pci_info(int number, Error **errp)
+                 } else {
+                     error_setg_win32(errp, GetLastError(),
+                                      "failed to get device instance ID");
+-                    goto out;
++                    return pci;
+                 }
+             }
+ 
+@@ -598,14 +598,14 @@ static GuestPCIAddress *get_pci_info(int number, Error **errp)
+                 g_error("CM_Locate_DevInst failed with code %lx", cr);
+                 error_setg_win32(errp, GetLastError(),
+                                  "failed to get device instance");
+-                goto out;
++                return pci;
+             }
+             cr = CM_Get_Parent(&parent_dev_inst, dev_inst, 0);
+             if (cr != CR_SUCCESS) {
+                 g_error("CM_Get_Parent failed with code %lx", cr);
+                 error_setg_win32(errp, GetLastError(),
+                                  "failed to get parent device instance");
+-                goto out;
++                return pci;
+             }
+ 
+             cr = CM_Get_Device_ID_Size(&dev_id_size, parent_dev_inst, 0);
+@@ -613,7 +613,7 @@ static GuestPCIAddress *get_pci_info(int number, Error **errp)
+                 g_error("CM_Get_Device_ID_Size failed with code %lx", cr);
+                 error_setg_win32(errp, GetLastError(),
+                                  "failed to get parent device ID length");
+-                goto out;
++                return pci;
+             }
+ 
+             ++dev_id_size;
+@@ -628,7 +628,7 @@ static GuestPCIAddress *get_pci_info(int number, Error **errp)
+                 g_error("CM_Get_Device_ID failed with code %lx", cr);
+                 error_setg_win32(errp, GetLastError(),
+                                  "failed to get parent device ID");
+-                goto out;
++                return pci;
+             }
+         }
+ 
+@@ -642,14 +642,14 @@ static GuestPCIAddress *get_pci_info(int number, Error **errp)
+         if (parent_dev_info == INVALID_HANDLE_VALUE) {
+             error_setg_win32(errp, GetLastError(),
+                              "failed to get parent device");
+-            goto out;
++            return pci;
+         }
+ 
+         parent_dev_info_data.cbSize = sizeof(SP_DEVINFO_DATA);
+         if (!SetupDiEnumDeviceInfo(parent_dev_info, 0, &parent_dev_info_data)) {
+             error_setg_win32(errp, GetLastError(),
+                            "failed to get parent device data");
+-            goto out;
++            return pci;
+         }
+ 
+         for (j = 0;
+@@ -731,7 +731,6 @@ static GuestPCIAddress *get_pci_info(int number, Error **errp)
+ 
+ free_dev_info:
+     SetupDiDestroyDeviceInfoList(dev_info);
 -out:
--    return ret;
-+    return vmdk_co_do_create(opts->size,
-+                             opts->subformat,
-+                             opts->adapter_type,
-+                             opts->backing_file,
-+                             opts->hwversion,
-+                             false,
-+                             opts->zeroed_grain,
-+                             vmdk_co_create_cb,
-+                             opts, errp);
+     return pci;
  }
  
- static void vmdk_close(BlockDriverState *bs)
 -- 
 2.24.1
 
