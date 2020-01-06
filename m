@@ -1,67 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobmD-0000tL-5h
+	id 1iobmD-0000to-Cq
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:13 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46427)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50333)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX57-0003iQ-Me
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:26 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioZ6R-0005bm-FP
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 15:35:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX56-0005CI-L2
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:25 -0500
-Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743]:44338)
+ (envelope-from <danielhb413@gmail.com>) id 1ioZ6Q-0000Rr-9I
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 15:35:55 -0500
+Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43]:45210)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX54-0005AX-I5; Mon, 06 Jan 2020 13:26:22 -0500
-Received: by mail-qk1-x743.google.com with SMTP id w127so40269883qkb.11;
- Mon, 06 Jan 2020 10:26:22 -0800 (PST)
+ id 1ioZ6Q-0000RN-4w; Mon, 06 Jan 2020 15:35:54 -0500
+Received: by mail-qv1-xf43.google.com with SMTP id l14so19594236qvu.12;
+ Mon, 06 Jan 2020 12:35:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=JP7yRAv3JFqhY7+OM2TlYk8mkn5EeN/uOmT4fxUErEA=;
- b=Vr1DbhI/ySi+nSz1J3b1Vz6TDDueqfUI5kWiNnFHtX+b77uUHqpAd02mmjG30yN1AQ
- ZxRuPfiL8EN6Uwr1kZYQU76VHMFnAlR07gdPcK91D9sXGRjgT3x292tpMES0e7iwbXYs
- wmkuamyCyCBvRSxASDKoJ+4V0wH1dtYxVE14TzYhWZzhGqPyG4JeprB32MXbULns40Ck
- xhHINx2ofieHYO9vLJGW1D0iBdOkJLHi2j/tqJqEKUb/BoIBeS8jBRFVfGcKKZvARmQG
- SCqAgUuEzNlnRT0PX7kv7tAWXVlMr7hc8lNNEpddZ36aK07TLvKXr+Dombf7XSDMz6Du
- bduw==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ZncD7zhSxxbabOsOGW71JUJwtsupPDeAceN9FfhoZgI=;
+ b=pVh9nrB7tGk9kD/gd7ljzbrj66ytZyWvie+YujhPTWH9GaEgriMrRPfIFWXeGFrXs2
+ oHF2+cBX7B4kKt9NHgMvDJHo1SyfgPsrODB3S7MDjpoUQFM7wywK4CyBff0VI3mIrEAA
+ 2hflGS1hEci0MMAuQmZdK/0JBhEtV/OMCsxnWK/uCKoYeUG9oGaDon3s3mJ3OjD2xnrw
+ FM6GWzeOOZAjpaa4Vs5tI7pK7Ynf1YeLjETSMDethONDpiJGMSt461bAav1JLW54IEO2
+ AtZbuRbRv1+PBfbefBP4WiyYQB53mfpem8FSilvWVDpF2A4HoCE1z8EeOoBaL+AxGjeT
+ FCAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=JP7yRAv3JFqhY7+OM2TlYk8mkn5EeN/uOmT4fxUErEA=;
- b=PT2WCj1aoX89TwUmDZHoTp+nGad+IcU4GE5TpJ6g/RJmO58e1kUtbxHO/LAuROSvnL
- WOhJmpfFl/fdbfemyKio75+HR9r/X7hB/EfI2xbLWXUxWv6CUIMDiUhap77kZkANu7zZ
- nXFA0DXDlkUpl6RGbD+4iIjDtLy2U/yoowlOeBuQr+7ilAHa46Av+GmMGZBMEUOF+LM0
- hEppsoN81583TOqyZuoYYNNJS3uRrYQmIe2NGXnXPZqXlC7g1dLXCdVg8PAlU4h8wdu5
- +6v7wFphUQBfHxB24nL367BAW2MoSiVu36fxVYNgaeFaP3k1hFfMS3mYdmUZRap/XyyT
- dnVQ==
-X-Gm-Message-State: APjAAAUOv/G4BY7wvKR6RzwQMpGRIDkqWrQH9q2uUjYrioVdmr+25mO5
- ExAEMhstZat96krQ5txBbM2ZBZ2t
-X-Google-Smtp-Source: APXvYqy7eHx3DNdyUi8FeIpvryybTYEiqNapfd+kmM0ClNOuRVHCPX1NE2URNksuTXzckQsorG3jZA==
-X-Received: by 2002:a05:620a:b04:: with SMTP id
- t4mr86335470qkg.7.1578335181943; 
- Mon, 06 Jan 2020 10:26:21 -0800 (PST)
-Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:26:21 -0800 (PST)
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Yuval Shaia <yuval.shaia@oracle.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH v1 50/59] rdma/rdma_backend.c: remove unneeded label in
- rdma_backend_init()
-Date: Mon,  6 Jan 2020 15:24:16 -0300
-Message-Id: <20200106182425.20312-51-danielhb413@gmail.com>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ZncD7zhSxxbabOsOGW71JUJwtsupPDeAceN9FfhoZgI=;
+ b=iUC+Ae8jI9gDc9is5CFA6cRiSyppl06YLxO/CT5nIi0DSc4QjYhN9Dxr3WPNwpfky+
+ IiASktz/o9iZznJQY42Gd7gCgu5iD7vQjg1KXVzaecYwLcFGUCiPBaaxgWbrQtnyaU/x
+ vmZQvfi86UbAqO1a4mg1yMjCFxQis+ItafGqlxPDXkJaUUQzmv9/JK90vOJgw7/I42I0
+ nBDZEibCVKH8fC1B9SG64jJaicTMl5R0qsMLvR8Fqx6ZlRJuJLAi7tkcPlD8hyKqJ3Xg
+ wZS+XqDIsaggObpIVfyNd6NPjzOHAJP/el4DXjn5/quxEDo3O0YYcA3yVIbvSWG1n2Ge
+ VmnQ==
+X-Gm-Message-State: APjAAAUqBFMd4nQ4bLm0qVL0yk4z+1EG+i3YIMGP5kZR+eoTDGfhrGzv
+ JYtCKHrLuyCMS2aHKTKQmPsNf2DB
+X-Google-Smtp-Source: APXvYqz3yRyxDM1/foc5ViV7uD7SAfEvpNEsojh3Xh4xXO68CL3cC5XX+iLQ6gsGfL1Zvlo5NfJBDQ==
+X-Received: by 2002:ad4:518d:: with SMTP id b13mr80295621qvp.141.1578342953193; 
+ Mon, 06 Jan 2020 12:35:53 -0800 (PST)
+Received: from ?IPv6:2804:431:c7c6:655b:9e1c:e865:3705:e1df?
+ ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
+ by smtp.gmail.com with ESMTPSA id t2sm23749571qtn.22.2020.01.06.12.35.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 06 Jan 2020 12:35:52 -0800 (PST)
+Subject: Re: [PATCH v1 00/59] trivial unneeded labels cleanup
+To: minyard@acm.org
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 References: <20200106182425.20312-1-danielhb413@gmail.com>
+ <20200106195457.GE2886@minyard.net>
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+Message-ID: <f71eb524-571b-54d1-1a99-95d2896f6586@gmail.com>
+Date: Mon, 6 Jan 2020 17:35:49 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20200106195457.GE2886@minyard.net>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::743
+X-Received-From: 2607:f8b0:4864:20::f43
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,41 +76,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:26:28 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 20:35:56 -0000
 
-'out' label can be replaced by 'return -EIO' in the single
-goto jump.
 
-CC: Yuval Shaia <yuval.shaia@oracle.com>
-CC: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
----
- hw/rdma/rdma_backend.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/hw/rdma/rdma_backend.c b/hw/rdma/rdma_backend.c
-index c346407cd3..20c4c9fc3a 100644
---- a/hw/rdma/rdma_backend.c
-+++ b/hw/rdma/rdma_backend.c
-@@ -1335,8 +1335,7 @@ int rdma_backend_init(RdmaBackendDev *backend_dev, PCIDevice *pdev,
-     if (!backend_dev->context) {
-         rdma_error_report("Failed to open IB device %s",
-                           ibv_get_device_name(backend_dev->ib_dev));
--        ret = -EIO;
--        goto out;
-+        return -EIO;
-     }
- 
-     backend_dev->channel = ibv_create_comp_channel(backend_dev->context);
-@@ -1377,7 +1376,6 @@ out_close_device:
- out_free_dev_list:
-     ibv_free_device_list(dev_list);
- 
--out:
-     return ret;
- }
- 
--- 
-2.24.1
+On 1/6/20 4:54 PM, Corey Minyard wrote:
+> On Mon, Jan 06, 2020 at 03:23:26PM -0300, Daniel Henrique Barboza wrote:
+>> Hello,
+[...]
+>>
+>> Which is cleaner and requires less brain cycles to wonder
+>> whether the 'cleanup' label does anything special, such
+>> as a heap memory cleanup.
+> 
+> I would disagree with this analysis.  To me, I often wonder
+> when I have to add cleanup code to a routine whether there is
+> some hidden return in the middle of the function.  That's a lot
+> harder to spot than just looking for the cleanup label at the
+> end of the function to see what it does.  For non-trivial
+> functions I prefer to have one point of return at the end
+> (and maybe some minor checks with returns right at the beginning).
+> I'm not adamant about this, just my opinion.
 
+I agree that what I'm doing here isn't a one rule fits all situation. This
+is why I didn't purge all the 'unused' labels I found. The criteria used to
+remove/spare labels will differ from person to person (although I believe that
+cases such as patch 15 isn't too much of a debate), thus I'd rather leave to
+each maintainer to accept/deny the changes based on the context of the code.
+
+And for this same reason I don't think that a checkpatch rule is necessary.
+The review process can take care of these situations and allow 'good unneeded
+labels' to be in the code.
+
+
+Thanks,
+
+
+DHB
+
+
+
+> 
+> But if we are going to fix things like this, it might be best to add
+> them to the coding style document and checkpatch script.  Otherwise
+> these sorts of things will just continue.
+> 
+> -corey
+> 
 
