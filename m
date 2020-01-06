@@ -1,61 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ioXYx-00024n-EP
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 13:57:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55399)
+	id 1ioXdD-0007Yk-GG
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 14:01:39 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57649)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1ioXYt-0001zB-Tj
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:57:12 -0500
+ (envelope-from <mlureau@redhat.com>) id 1ioXd9-0007TG-N6
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 14:01:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgilbert@redhat.com>) id 1ioXYs-0003oa-KF
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:57:11 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:34847
+ (envelope-from <mlureau@redhat.com>) id 1ioXd8-00009V-JQ
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 14:01:35 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:35310
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgilbert@redhat.com>) id 1ioXYs-0003o7-GV
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:57:10 -0500
+ (Exim 4.71) (envelope-from <mlureau@redhat.com>) id 1ioXd2-0008Sr-Cv
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 14:01:33 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578337030;
+ s=mimecast20190719; t=1578337286;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Yw+PxDAygc39+OT5Uw/VZinsoASgcc3XbKbTThXogJ4=;
- b=OxV/sMUDI63dBN78wg2nRVm27hz02ctD9j2nT3KfUFs3AJa489x0HBx62LVmQ+BQeotKLx
- GVolsoSx18YkN/MIZKGiuWPl2MUsZjTSk14elk1zyn1L4ts3jlVjM2gBthZi+186DNv+1R
- vNHbVfVDq7CG1Wkr7urYlS+kPk+HIog=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-47-hYrkj7rEMTmGrRTMQTLb7w-1; Mon, 06 Jan 2020 13:57:07 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D6BBB802C82;
- Mon,  6 Jan 2020 18:57:05 +0000 (UTC)
-Received: from work-vm (ovpn-117-53.ams2.redhat.com [10.36.117.53])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id CF6F55C290;
- Mon,  6 Jan 2020 18:57:04 +0000 (UTC)
-Date: Mon, 6 Jan 2020 18:57:02 +0000
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Daniel Henrique Barboza <danielhb413@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Juan Quintela <quintela@redhat.com>
-Subject: Re: [PATCH v1 05/59] ram.c: remove unneeded labels
-Message-ID: <20200106185702.GN2798@work-vm>
-References: <20200106182425.20312-1-danielhb413@gmail.com>
- <20200106182425.20312-6-danielhb413@gmail.com>
+ bh=udr4qNUrHL92V3QPI1xp7SuA0OONQ/iGl2vzlDGLXAo=;
+ b=UDyQhKk1TsWmFLaAkc9/qveEfQ5orxRHfbxT1Dn9U6qY8zk7IRwLxqY5sfj232/vd7KBax
+ 1njwlJXJFHYLBW0l/UQq8coVLASXqmv7N00UmMdiEbr7olC3M2FqhqGIkHMkPRWecsh0Wc
+ RRfiO6qzubR4LW9S0JZKYFrb5vG4cqY=
+Received: from mail-oi1-f198.google.com (mail-oi1-f198.google.com
+ [209.85.167.198]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-3-Fk-kVV1bPHyAsFrmbXmDDQ-1; Mon, 06 Jan 2020 14:01:19 -0500
+Received: by mail-oi1-f198.google.com with SMTP id m127so10914674oig.19
+ for <qemu-trivial@nongnu.org>; Mon, 06 Jan 2020 11:01:19 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=udr4qNUrHL92V3QPI1xp7SuA0OONQ/iGl2vzlDGLXAo=;
+ b=XTtR8huVeWRpPT44RV2lRy/iuH2xtFZ5+shbQ3hzhILRFxrcduvYWb2dt2NXKHabKq
+ CsFyiPLACCvi14gDR9r1VbHIzkuVwgx+7m09p5Vj0DmQsR57wHWEPKEUb8i2uRWHp1DX
+ UI0P6ljl70ZE7Ft2NC+19rqoTpbCSIeGb4GWezV6rZ7rDwPnMngw7d8JW+GuXlAgNdP4
+ WcEWlJPVydtcwLUL8oqL9FGY6VSPACAAjg2L24HydJzHY2JFsIH9MPONKNeywWDhjU3m
+ NebOvmlqyTBpocAB802JPprqq7qzaudTB20rpNLhwMj3iDVlHgbqyh0hiergGQGEcOFG
+ o2Og==
+X-Gm-Message-State: APjAAAUPrnqufAauzwflZk8ifMtWMSE0nqSx23E1jEtHiDH3mbvh3xyg
+ HrEe0gzPTqJ8ncA62CPT90qNY66xoAVqch3XN0rn0NWbvHWxielJXs4KD4KHecGOpCBiTmQr4jO
+ LZtpRKHlCDdeeQWsYVulvBCfhykcxKQqnkQ==
+X-Received: by 2002:a9d:4706:: with SMTP id a6mr109017047otf.331.1578337278811; 
+ Mon, 06 Jan 2020 11:01:18 -0800 (PST)
+X-Google-Smtp-Source: APXvYqy6hg7r8jOwhDc1l9VjJIUG5XkDT8WG02VjnstOQj4/x7ixMw2kczT/a6yFRqGT6A+K6KhfmSzxzCXNyrCt7D4=
+X-Received: by 2002:a9d:4706:: with SMTP id a6mr109017029otf.331.1578337278541; 
+ Mon, 06 Jan 2020 11:01:18 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200106182425.20312-6-danielhb413@gmail.com>
-User-Agent: Mutt/1.13.0 (2019-11-30)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: hYrkj7rEMTmGrRTMQTLb7w-1
+References: <20200106182425.20312-1-danielhb413@gmail.com>
+ <20200106182425.20312-11-danielhb413@gmail.com>
+In-Reply-To: <20200106182425.20312-11-danielhb413@gmail.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Date: Mon, 6 Jan 2020 23:01:06 +0400
+Message-ID: <CAMxuvawDuytTS90fBxc95ONkR=w1AxGT8+faSm+Dbd7-U4TJyA@mail.gmail.com>
+Subject: Re: [PATCH v1 10/59] chardev/char-win.c: remove 'fail' label in
+ win_chr_serial_init()
+To: Daniel Henrique Barboza <danielhb413@gmail.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-trivial <qemu-trivial@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+X-MC-Unique: Fk-kVV1bPHyAsFrmbXmDDQ-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -67,110 +77,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:57:14 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 19:01:38 -0000
 
-* Daniel Henrique Barboza (danielhb413@gmail.com) wrote:
-> ram_save_queue_pages() has an 'err' label that can be replaced by
-> 'return -1' instead.
->=20
-> Same thing with ram_discard_range(), and in this case we can also
-> get rid of the 'ret' variable and return either '-1' on error
-> or the result of ram_block_discard_range().
->=20
-> CC: Juan Quintela <quintela@redhat.com>
-> CC: Dr. David Alan Gilbert <dgilbert@redhat.com>
+On Mon, Jan 6, 2020 at 10:25 PM Daniel Henrique Barboza
+<danielhb413@gmail.com> wrote:
+>
+> The 'fail' label is a simply call to 'return -1' on error. Remove
+> it and do the return call instead.
+>
+> CC: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> CC: Paolo Bonzini <pbonzini@redhat.com>
 > Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
 > ---
->  migration/ram.c | 18 +++++-------------
->  1 file changed, 5 insertions(+), 13 deletions(-)
->=20
-> diff --git a/migration/ram.c b/migration/ram.c
-> index 96feb4062c..980cc644d7 100644
-> --- a/migration/ram.c
-> +++ b/migration/ram.c
-> @@ -2434,7 +2434,7 @@ int ram_save_queue_pages(const char *rbname, ram_ad=
-dr_t start, ram_addr_t len)
->               * it's the 1st request.
->               */
->              error_report("ram_save_queue_pages no previous block");
-> -            goto err;
-> +            return -1;
->          }
->      } else {
->          ramblock =3D qemu_ram_block_by_name(rbname);
-> @@ -2442,7 +2442,7 @@ int ram_save_queue_pages(const char *rbname, ram_ad=
-dr_t start, ram_addr_t len)
->          if (!ramblock) {
->              /* We shouldn't be asked for a non-existent RAMBlock */
->              error_report("ram_save_queue_pages no block '%s'", rbname);
-> -            goto err;
-> +            return -1;
->          }
->          rs->last_req_rb =3D ramblock;
->      }
-> @@ -2451,7 +2451,7 @@ int ram_save_queue_pages(const char *rbname, ram_ad=
-dr_t start, ram_addr_t len)
->          error_report("%s request overrun start=3D" RAM_ADDR_FMT " len=3D=
-"
->                       RAM_ADDR_FMT " blocklen=3D" RAM_ADDR_FMT,
->                       __func__, start, len, ramblock->used_length);
-> -        goto err;
+>  chardev/char-win.c | 19 ++++++++-----------
+>  1 file changed, 8 insertions(+), 11 deletions(-)
+>
+> diff --git a/chardev/char-win.c b/chardev/char-win.c
+> index 34825f683d..72c232e6d9 100644
+> --- a/chardev/char-win.c
+> +++ b/chardev/char-win.c
+> @@ -85,12 +85,12 @@ int win_chr_serial_init(Chardev *chr, const char *fil=
+ename, Error **errp)
+>      s->hsend =3D CreateEvent(NULL, TRUE, FALSE, NULL);
+>      if (!s->hsend) {
+>          error_setg(errp, "Failed CreateEvent");
+> -        goto fail;
 > +        return -1;
 >      }
-> =20
->      struct RAMSrcPageRequest *new_entry =3D
-> @@ -2467,9 +2467,6 @@ int ram_save_queue_pages(const char *rbname, ram_ad=
-dr_t start, ram_addr_t len)
->      qemu_mutex_unlock(&rs->src_page_req_mutex);
-> =20
+>      s->hrecv =3D CreateEvent(NULL, TRUE, FALSE, NULL);
+>      if (!s->hrecv) {
+>          error_setg(errp, "Failed CreateEvent");
+> -        goto fail;
+> +        return -1;
+>      }
+>
+>      s->file =3D CreateFile(filename, GENERIC_READ | GENERIC_WRITE, 0, NU=
+LL,
+> @@ -98,12 +98,12 @@ int win_chr_serial_init(Chardev *chr, const char *fil=
+ename, Error **errp)
+>      if (s->file =3D=3D INVALID_HANDLE_VALUE) {
+>          error_setg(errp, "Failed CreateFile (%lu)", GetLastError());
+>          s->file =3D NULL;
+> -        goto fail;
+> +        return -1;
+>      }
+>
+>      if (!SetupComm(s->file, NRECVBUF, NSENDBUF)) {
+>          error_setg(errp, "Failed SetupComm");
+> -        goto fail;
+> +        return -1;
+>      }
+>
+>      ZeroMemory(&comcfg, sizeof(COMMCONFIG));
+> @@ -114,29 +114,26 @@ int win_chr_serial_init(Chardev *chr, const char *f=
+ilename, Error **errp)
+>
+>      if (!SetCommState(s->file, &comcfg.dcb)) {
+>          error_setg(errp, "Failed SetCommState");
+> -        goto fail;
+> +        return -1;
+>      }
+>
+>      if (!SetCommMask(s->file, EV_ERR)) {
+>          error_setg(errp, "Failed SetCommMask");
+> -        goto fail;
+> +        return -1;
+>      }
+>
+>      cto.ReadIntervalTimeout =3D MAXDWORD;
+>      if (!SetCommTimeouts(s->file, &cto)) {
+>          error_setg(errp, "Failed SetCommTimeouts");
+> -        goto fail;
+> +        return -1;
+>      }
+>
+>      if (!ClearCommError(s->file, &err, &comstat)) {
+>          error_setg(errp, "Failed ClearCommError");
+> -        goto fail;
+> +        return -1;
+>      }
+>      qemu_add_polling_cb(win_chr_serial_poll, chr);
 >      return 0;
 > -
-> -err:
+> - fail:
 > -    return -1;
 >  }
-> =20
->  static bool save_page_use_compression(RAMState *rs)
-> @@ -3072,8 +3069,6 @@ int ram_postcopy_send_discard_bitmap(MigrationState=
- *ms)
->   */
->  int ram_discard_range(const char *rbname, uint64_t start, size_t length)
->  {
-> -    int ret =3D -1;
-> -
->      trace_ram_discard_range(rbname, start, length);
-> =20
->      RCU_READ_LOCK_GUARD();
-> @@ -3081,7 +3076,7 @@ int ram_discard_range(const char *rbname, uint64_t =
-start, size_t length)
-> =20
->      if (!rb) {
->          error_report("ram_discard_range: Failed to find block '%s'", rbn=
-ame);
-> -        goto err;
-> +        return -1;
->      }
-> =20
->      /*
-> @@ -3093,10 +3088,7 @@ int ram_discard_range(const char *rbname, uint64_t=
- start, size_t length)
->                       length >> qemu_target_page_bits());
->      }
-> =20
-> -    ret =3D ram_block_discard_range(rb, start, length);
-> -
-> -err:
-> -    return ret;
-> +    return ram_block_discard_range(rb, start, length);
->  }
-> =20
->  /*
-> --=20
+>
+>  int win_chr_pipe_poll(void *opaque)
+> --
 > 2.24.1
->=20
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+>
 
 
