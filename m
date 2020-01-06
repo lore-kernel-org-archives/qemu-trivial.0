@@ -1,92 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ioZXy-0007vW-Qy
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 16:04:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39909)
+	id 1ioblk-0000Mh-TL
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45159)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <sw@weilnetz.de>) id 1ioZXv-0007rd-AQ
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 16:04:20 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX3s-0001hZ-Pf
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <sw@weilnetz.de>) id 1ioZXt-0003XD-Sx
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 16:04:19 -0500
-Received: from mail.weilnetz.de ([37.120.169.71]:47270
- helo=v2201612906741603.powersrv.de)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <sw@weilnetz.de>)
- id 1ioZXm-0003G9-Ei; Mon, 06 Jan 2020 16:04:10 -0500
-Received: from localhost (localhost [127.0.0.1])
- by v2201612906741603.powersrv.de (Postfix) with ESMTP id 32F51DBAA99;
- Mon,  6 Jan 2020 22:04:08 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at v2201612906741603.powersrv.de
-Received: from v2201612906741603.powersrv.de ([127.0.0.1])
- by localhost (v2201612906741603.powersrv.de [127.0.0.1]) (amavisd-new,
- port 10024)
- with ESMTP id YVMNpFMezDdY; Mon,  6 Jan 2020 22:04:06 +0100 (CET)
-Received: from edv-macbook-pro.fritz.box (pD9EC3B33.dip0.t-ipconnect.de
- [217.236.59.51])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by v2201612906741603.powersrv.de (Postfix) with ESMTPSA id C0E6ADBAA94;
- Mon,  6 Jan 2020 22:04:06 +0100 (CET)
-Subject: Re: [PATCH v1 13/59] block/vdi.c: remove 'fail' label in vdi_open()
-To: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-block@nongnu.org
+ (envelope-from <danielhb413@gmail.com>) id 1ioX3r-0003rH-AJ
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:08 -0500
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:42538)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
+ id 1ioX3n-0003lV-Eo; Mon, 06 Jan 2020 13:25:03 -0500
+Received: by mail-qk1-x741.google.com with SMTP id z14so39012652qkg.9;
+ Mon, 06 Jan 2020 10:25:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=6Myf4ZWmr4nE4JAJE8+rypGdemGPMt6KifqXfy2qX4M=;
+ b=BBNdStsnR86XbL41pOc8DijV7GPqR46FvkotpzYm449GLuY7kU1qnOn0nKQiNf1uvS
+ DhUxUGtVM0M7J5op78fqT8N66vKJR2dQODcEHb31rzpxoUBCbP0eqq0P97ghSs5rCG7R
+ XUGg4r4ldA8QUDUJ7zj2cAWLfC1SE+JHNykcEDL7F1Yi0m4C+63MS2E4V4G0U9IW7Vqk
+ hoW9YyZIA7MkYzdCu2aME/rI8JTLIyK+0tdxBstBg7ZkcGmxMhMW0rkkJCSjFNfx76jh
+ KbzqHKCTNmzkDqxt7pIfBxSR36Gg/D0G/c2KYZJnI6PeAPIcdpufi18OidMBs+TEOtlS
+ jthA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=6Myf4ZWmr4nE4JAJE8+rypGdemGPMt6KifqXfy2qX4M=;
+ b=g1J1FdUFOJ4ogP6SbSAgBjHHIDbRUVKNEZi+YKg+WF4gQOPn8Eozdx2FixaQe06Afl
+ uKgOZSbL2Gl3DrQc9uSmboz/4BnLIfTOdIZTt1SIkpl2Y9IDnOtkCl91XwoYEWPU3GK8
+ Es5pvbKRU1XmgeQLK+MMP8GnD8Kpde6et5y5czCtSoyEZpzh0vqbJvJDbPFHGzDEsMAk
+ T2qMySwWUXP03BLmn+FiPWsx0Ix/VxnqYpPR0vtV2W9bR+PNr+Qa4mkMS3RFFs8vnu5E
+ JeFeE3947L+ZWF7DHh6oJJH68v0U8c9pRMmMnM9tbNMMcxxjaRkOo1RcmALtHnIUc5P9
+ NSHA==
+X-Gm-Message-State: APjAAAUh+lPw18YDJg4HTRNtthXgOWWE/R4IK8Af9xpIcHBXxbGy490Z
+ lvOxl3tMUk+pVt2m7mSlaH4znWqP
+X-Google-Smtp-Source: APXvYqy+sEo/5P9jgzxK2PvQhLOP0hE9C4PXCbzbNZ+mUJ+LarIsGOdiT0jcUwA2uNynUVAd7dPVaA==
+X-Received: by 2002:a37:a54b:: with SMTP id o72mr83397639qke.313.1578335102807; 
+ Mon, 06 Jan 2020 10:25:02 -0800 (PST)
+Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 06 Jan 2020 10:25:02 -0800 (PST)
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
+Subject: [PATCH v1 06/59] mips-semi.c: remove 'uhi_done' label in
+ helper_do_semihosting()
+Date: Mon,  6 Jan 2020 15:23:32 -0300
+Message-Id: <20200106182425.20312-7-danielhb413@gmail.com>
+X-Mailer: git-send-email 2.24.1
+In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
- <20200106182425.20312-14-danielhb413@gmail.com>
-From: Stefan Weil <sw@weilnetz.de>
-Autocrypt: addr=sw@weilnetz.de; keydata=
- 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
-Message-ID: <06475279-d456-7160-1927-0120460b6864@weilnetz.de>
-Date: Mon, 6 Jan 2020 22:04:06 +0100
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:68.0)
- Gecko/20100101 Thunderbird/68.3.1
 MIME-Version: 1.0
-In-Reply-To: <20200106182425.20312-14-danielhb413@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 37.120.169.71
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::741
+X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -98,162 +74,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 21:04:20 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:25:11 -0000
 
-Am 06.01.20 um 19:23 schrieb Daniel Henrique Barboza:
+The label 'uhi_done' is a simple 'return' call and can
+be removed for a bit more clarity in the code.
 
-> The 'fail' label can be replaced by 'return ret' or by
-> a 'return' with the error code that was being set right
-> before the 'goto' call.
->
-> CC: Stefan Weil <sw@weilnetz.de>
-> CC: qemu-block@nongnu.org
-> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
-> ---
->  block/vdi.c | 40 +++++++++++++---------------------------
->  1 file changed, 13 insertions(+), 27 deletions(-)
->
-> diff --git a/block/vdi.c b/block/vdi.c
-> index 0142da7233..6d486ffed9 100644
-> --- a/block/vdi.c
-> +++ b/block/vdi.c
-> @@ -388,7 +388,7 @@ static int vdi_open(BlockDriverState *bs, QDict *op=
-tions, int flags,
-> =20
->      ret =3D bdrv_pread(bs->file, 0, &header, sizeof(header));
->      if (ret < 0) {
-> -        goto fail;
-> +        return ret;
->      }
-> =20
->      vdi_header_to_cpu(&header);
-> @@ -400,8 +400,7 @@ static int vdi_open(BlockDriverState *bs, QDict *op=
-tions, int flags,
->          error_setg(errp, "Unsupported VDI image size (size is 0x%" PRI=
-x64
->                            ", max supported is 0x%" PRIx64 ")",
->                            header.disk_size, VDI_DISK_SIZE_MAX);
-> -        ret =3D -ENOTSUP;
-> -        goto fail;
-> +        return -ENOTSUP;
->      }
-> =20
->      uuid_link =3D header.uuid_link;
-> @@ -418,58 +417,48 @@ static int vdi_open(BlockDriverState *bs, QDict *=
-options, int flags,
->      if (header.signature !=3D VDI_SIGNATURE) {
->          error_setg(errp, "Image not in VDI format (bad signature %08" =
-PRIx32
->                     ")", header.signature);
-> -        ret =3D -EINVAL;
-> -        goto fail;
-> +        return -EINVAL;
->      } else if (header.version !=3D VDI_VERSION_1_1) {
->          error_setg(errp, "unsupported VDI image (version %" PRIu32 ".%=
-" PRIu32
->                     ")", header.version >> 16, header.version & 0xffff)=
-;
-> -        ret =3D -ENOTSUP;
-> -        goto fail;
-> +        return -ENOTSUP;
->      } else if (header.offset_bmap % SECTOR_SIZE !=3D 0) {
->          /* We only support block maps which start on a sector boundary=
-=2E */
->          error_setg(errp, "unsupported VDI image (unaligned block map o=
-ffset "
->                     "0x%" PRIx32 ")", header.offset_bmap);
-> -        ret =3D -ENOTSUP;
-> -        goto fail;
-> +        return -ENOTSUP;
->      } else if (header.offset_data % SECTOR_SIZE !=3D 0) {
->          /* We only support data blocks which start on a sector boundar=
-y. */
->          error_setg(errp, "unsupported VDI image (unaligned data offset=
- 0x%"
->                     PRIx32 ")", header.offset_data);
-> -        ret =3D -ENOTSUP;
-> -        goto fail;
-> +        return -ENOTSUP;
->      } else if (header.sector_size !=3D SECTOR_SIZE) {
->          error_setg(errp, "unsupported VDI image (sector size %" PRIu32=
+CC: Aurelien Jarno <aurelien@aurel32.net>
+CC: Aleksandar Markovic <amarkovic@wavecomp.com>
+CC: Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
+Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+---
+ target/mips/mips-semi.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
 
->                     " is not %u)", header.sector_size, SECTOR_SIZE);
-> -        ret =3D -ENOTSUP;
-> -        goto fail;
-> +        return -ENOTSUP;
->      } else if (header.block_size !=3D DEFAULT_CLUSTER_SIZE) {
->          error_setg(errp, "unsupported VDI image (block size %" PRIu32
->                           " is not %" PRIu32 ")",
->                     header.block_size, DEFAULT_CLUSTER_SIZE);
-> -        ret =3D -ENOTSUP;
-> -        goto fail;
-> +        return -ENOTSUP;
->      } else if (header.disk_size >
->                 (uint64_t)header.blocks_in_image * header.block_size) {=
-
->          error_setg(errp, "unsupported VDI image (disk size %" PRIu64 "=
-, "
->                     "image bitmap has room for %" PRIu64 ")",
->                     header.disk_size,
->                     (uint64_t)header.blocks_in_image * header.block_siz=
-e);
-> -        ret =3D -ENOTSUP;
-> -        goto fail;
-> +        return -ENOTSUP;
->      } else if (!qemu_uuid_is_null(&uuid_link)) {
->          error_setg(errp, "unsupported VDI image (non-NULL link UUID)")=
-;
-> -        ret =3D -ENOTSUP;
-> -        goto fail;
-> +        return -ENOTSUP;
->      } else if (!qemu_uuid_is_null(&uuid_parent)) {
->          error_setg(errp, "unsupported VDI image (non-NULL parent UUID)=
-");
-> -        ret =3D -ENOTSUP;
-> -        goto fail;
-> +        return -ENOTSUP;
->      } else if (header.blocks_in_image > VDI_BLOCKS_IN_IMAGE_MAX) {
->          error_setg(errp, "unsupported VDI image "
->                           "(too many blocks %u, max is %u)",
->                            header.blocks_in_image, VDI_BLOCKS_IN_IMAGE_=
-MAX);
-> -        ret =3D -ENOTSUP;
-> -        goto fail;
-> +        return -ENOTSUP;
->      }
-> =20
->      bs->total_sectors =3D header.disk_size / SECTOR_SIZE;
-> @@ -482,8 +471,7 @@ static int vdi_open(BlockDriverState *bs, QDict *op=
-tions, int flags,
->      bmap_size =3D DIV_ROUND_UP(bmap_size, SECTOR_SIZE);
->      s->bmap =3D qemu_try_blockalign(bs->file->bs, bmap_size * SECTOR_S=
-IZE);
->      if (s->bmap =3D=3D NULL) {
-> -        ret =3D -ENOMEM;
-> -        goto fail;
-> +        return -ENOMEM;
->      }
-> =20
->      ret =3D bdrv_pread(bs->file, header.offset_bmap, s->bmap,
-> @@ -509,8 +497,6 @@ static int vdi_open(BlockDriverState *bs, QDict *op=
-tions, int flags,
-> =20
->   fail_free_bmap:
->      qemu_vfree(s->bmap);
-> -
-> - fail:
->      return ret;
->  }
-> =20
-
-
-Technically these changes are fine. Personally I prefer functions having
-a single return statement, even if that requires a goto statement. But
-if there is a consense to change the code, that can be done of course.
-
-Regards,
-Stefan Weil
-
-
+diff --git a/target/mips/mips-semi.c b/target/mips/mips-semi.c
+index 35bdfd7c77..10a710c1e8 100644
+--- a/target/mips/mips-semi.c
++++ b/target/mips/mips-semi.c
+@@ -218,7 +218,7 @@ static int copy_argn_to_target(CPUMIPSState *env, int arg_num,
+         if (!p) {                               \
+             gpr[2] = -1;                        \
+             gpr[3] = EFAULT;                    \
+-            goto uhi_done;                      \
++            return;                             \
+         }                                       \
+     } while (0)
+ 
+@@ -228,14 +228,14 @@ static int copy_argn_to_target(CPUMIPSState *env, int arg_num,
+         if (!p) {                                       \
+             gpr[2] = -1;                                \
+             gpr[3] = EFAULT;                            \
+-            goto uhi_done;                              \
++            return;                                     \
+         }                                               \
+         p2 = lock_user_string(addr2);                   \
+         if (!p2) {                                      \
+             unlock_user(p, addr, 0);                    \
+             gpr[2] = -1;                                \
+             gpr[3] = EFAULT;                            \
+-            goto uhi_done;                              \
++            return;                                     \
+         }                                               \
+     } while (0)
+ 
+@@ -272,7 +272,7 @@ void helper_do_semihosting(CPUMIPSState *env)
+         if (gpr[4] < 3) {
+             /* ignore closing stdin/stdout/stderr */
+             gpr[2] = 0;
+-            goto uhi_done;
++            return;
+         }
+         gpr[2] = close(gpr[4]);
+         gpr[3] = errno_mips(errno);
+@@ -302,7 +302,7 @@ void helper_do_semihosting(CPUMIPSState *env)
+             gpr[2] = fstat(gpr[4], &sbuf);
+             gpr[3] = errno_mips(errno);
+             if (gpr[2]) {
+-                goto uhi_done;
++                return;
+             }
+             gpr[2] = copy_stat_to_target(env, &sbuf, gpr[5]);
+             gpr[3] = errno_mips(errno);
+@@ -314,14 +314,14 @@ void helper_do_semihosting(CPUMIPSState *env)
+     case UHI_argnlen:
+         if (gpr[4] >= semihosting_get_argc()) {
+             gpr[2] = -1;
+-            goto uhi_done;
++            return;
+         }
+         gpr[2] = strlen(semihosting_get_arg(gpr[4]));
+         break;
+     case UHI_argn:
+         if (gpr[4] >= semihosting_get_argc()) {
+             gpr[2] = -1;
+-            goto uhi_done;
++            return;
+         }
+         gpr[2] = copy_argn_to_target(env, gpr[4], gpr[5]);
+         break;
+@@ -369,6 +369,5 @@ void helper_do_semihosting(CPUMIPSState *env)
+         fprintf(stderr, "Unknown UHI operation %d\n", op);
+         abort();
+     }
+-uhi_done:
+     return;
+ }
+-- 
+2.24.1
 
 
