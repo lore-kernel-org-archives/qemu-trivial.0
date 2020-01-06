@@ -1,67 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobls-0000WH-71
+	id 1iobls-0000Wv-E1
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45230)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45503)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX3x-0001ns-3b
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:14 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4E-0002A2-4W
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX3v-0003wd-Ob
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:12 -0500
-Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844]:33722)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4D-0004Fn-3R
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:30 -0500
+Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744]:46975)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX3s-0003sS-Tj; Mon, 06 Jan 2020 13:25:08 -0500
-Received: by mail-qt1-x844.google.com with SMTP id d5so43221896qto.0;
- Mon, 06 Jan 2020 10:25:08 -0800 (PST)
+ id 1ioX48-0004BY-SC; Mon, 06 Jan 2020 13:25:24 -0500
+Received: by mail-qk1-x744.google.com with SMTP id r14so40253712qke.13;
+ Mon, 06 Jan 2020 10:25:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=QRyshu9MeZF7Qp8JBN9b2R4zIWlvD97XdczFgR/WKsg=;
- b=oW0fJ1WOFaFYQygb4OiaE2zwvUJCoVB0ClpJiA+CpxlH5uLM/ELeanPSZao/ebTUai
- azFcEXAXgGk5jMU6ksXGrZdoPcQ7w+4hCy2+fnwl7yemAoThA+FTuV2H76J8EfNxVIRx
- /C0gbSFOtqmy8udAeWsKYRouWWF621uQ3Ba+UvCnqmyAtgNZPIBh2vHvIrUhMYw7lOUu
- OSVobWtjOKsj1P+sEc3HZnfUVOapduplG09t3LZRFjUJW3vFzx0mXqYne9VFRn9/CobG
- 7I1LlNZmPfpqCl7bGc4sbNINlk2ofK073OgQ4UwM7L7CV5l22HT8RRfv6DcFaNgieVPJ
- +b1A==
+ bh=pow/5Z2bAbGCDH4hbr5Mur0CSZ4ZY/agAkg/ACDkDZ0=;
+ b=O6ArrT20JB0/YZXuReV5drE66ncq7KfKgtG8G6AlTLIwqMGmnO475rEpkucFjrTPYv
+ wWARQwKOSDhQsCDhiekVFrmO9KCiTzr5Kat9RVZvE/NmDWVJQwaV0k+1h0X5dW91CeC+
+ DW72POEdFxKAMJFPhBT7FRlaqXxypExV/pSz1beW5g619qBGgdvMyV53OglJbIpUCv14
+ Yu7i0l8Y7/gZ7jupfhBRdeFWFGeXxBeP6WE1Ml1p1JVXVfbv5pJ+8l0cVwznBy5d+cLK
+ tqeCFjbQ4QIpvVna6eblN3TddJ8xY/0soEHHUYff8uYqHHxVpeLlWt3h+De1ZEhSQu/q
+ plOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=QRyshu9MeZF7Qp8JBN9b2R4zIWlvD97XdczFgR/WKsg=;
- b=Q24w6nMclxdp/QCYJMqeN8VFoj2fJe5yV4n1L6YiCqsQk1oHxZlOX7d2za6oIKxyg/
- /Q/wfKcwxaMDbb+ZzZc6EC/MO878IXIxW7vF49CbvuLcdoznOyICB9ecbuTxkQhEiMxI
- kJfg2XgWsQ53JFHPu9R4a5RzJYJSKB7z7/Bzrlkqe7UI9gNbrhg50Ngg/OIUsGH1bpGE
- TAjHbJnL31WZ6F1t2FUTfEq0C9FFx/sPcg0kgkG+g1PmEASIW6lxHyWj94FghDi+KR7k
- euGDLaJr+QJBiifeff+rAfrLpzzZXnF14xdx1tuLJYqyJ+FZF5fgAevpOE36d/M0pqd/
- QKRQ==
-X-Gm-Message-State: APjAAAWvf2hnMXOsX76Z0kH2CSYsN3Krgmfg5XWZnc3eK4Oh6F6CZIbi
- KSql+Ywyu0geqT6tKbtlAs4ZeGZq
-X-Google-Smtp-Source: APXvYqz2P1iO6OVNn84mm/5qlWhQzA+cG1IKA4KYCAetSls150BfSZkRNfZfWLTnxF9hsQgqLWY5PQ==
-X-Received: by 2002:ac8:41c1:: with SMTP id o1mr61453222qtm.229.1578335108258; 
- Mon, 06 Jan 2020 10:25:08 -0800 (PST)
+ bh=pow/5Z2bAbGCDH4hbr5Mur0CSZ4ZY/agAkg/ACDkDZ0=;
+ b=H4hINKhTWqJNtiSPQJoxV9D3x2SQnyclyhrzqvHV81w8kw0dvQO5YDuGiUWYb995PT
+ xnTnWYYwrp5YD0eloq5+3BSbaYd7IeP76hYi7Gd5fepv+zuqhzqlMscVaOknmSXMLuEj
+ 4vqUZu4pe9mjoF06d+X/rSv4ogUWGVpuboj2wTfaojgLkW+oQ1/BubappQgKI/GOGeKo
+ yFNRWDU09gaXMlKbkfRRQTHlHwyOo0nGCjfE+lNtxOswjKtXWMo7nWazxNk+cWwhaE+7
+ 5AVnCH2Xj2r3Mx2TMY7OjIKgrKblpvXh5vhgoqmdLtWHhExRTRw22hkxchMU2IVSULBs
+ ppnw==
+X-Gm-Message-State: APjAAAXdDBzmmOzcZ3glkJNxLU1tOFTh5OLA17yEJKHOY2YudC26Ywkk
+ nRU8M+jqxYaU/mt0v90lYo46voHx
+X-Google-Smtp-Source: APXvYqwTQSm0S+pxsKqQKEDTkChAA5zcEGP4fQuGs0g4MI6u+vnRzeP0qhLoy59GQyQd/aUTo8xhvw==
+X-Received: by 2002:a05:620a:6b8:: with SMTP id
+ i24mr86399499qkh.9.1578335124342; 
+ Mon, 06 Jan 2020 10:25:24 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.06
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:07 -0800 (PST)
+ Mon, 06 Jan 2020 10:25:24 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v1 09/59] chardev/char-pipe.c: remove 'fail' label in
- win_chr_pipe_init()
-Date: Mon,  6 Jan 2020 15:23:35 -0300
-Message-Id: <20200106182425.20312-10-danielhb413@gmail.com>
+ Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ qemu-block@nongnu.org
+Subject: [PATCH v1 18/59] qcow2-refcount.c: remove unneeded 'fail' label in
+ qcow2_refcount_init()
+Date: Mon,  6 Jan 2020 15:23:44 -0300
+Message-Id: <20200106182425.20312-19-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::844
+X-Received-From: 2607:f8b0:4864:20::744
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,73 +74,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:15 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:25:32 -0000
 
-The 'fail' label is simply doing a 'return -1'.
+'fail' label can be replaced by 'return ret' and 'return -ENOMEM'
+calls.
 
-CC: Marc-André Lureau <marcandre.lureau@redhat.com>
-CC: Paolo Bonzini <pbonzini@redhat.com>
+CC: Kevin Wolf <kwolf@redhat.com>
+CC: Max Reitz <mreitz@redhat.com>
+CC: qemu-block@nongnu.org
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- chardev/char-pipe.c | 13 +++++--------
- 1 file changed, 5 insertions(+), 8 deletions(-)
+ block/qcow2-refcount.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/chardev/char-pipe.c b/chardev/char-pipe.c
-index 94d714ffcd..65d52beb0d 100644
---- a/chardev/char-pipe.c
-+++ b/chardev/char-pipe.c
-@@ -54,12 +54,12 @@ static int win_chr_pipe_init(Chardev *chr, const char *filename,
-     s->hsend = CreateEvent(NULL, TRUE, FALSE, NULL);
-     if (!s->hsend) {
-         error_setg(errp, "Failed CreateEvent");
--        goto fail;
-+        return -1;
-     }
-     s->hrecv = CreateEvent(NULL, TRUE, FALSE, NULL);
-     if (!s->hrecv) {
-         error_setg(errp, "Failed CreateEvent");
--        goto fail;
-+        return -1;
-     }
+diff --git a/block/qcow2-refcount.c b/block/qcow2-refcount.c
+index f67ac6b2d8..1fe66677d1 100644
+--- a/block/qcow2-refcount.c
++++ b/block/qcow2-refcount.c
+@@ -111,22 +111,19 @@ int qcow2_refcount_init(BlockDriverState *bs)
  
-     openname = g_strdup_printf("\\\\.\\pipe\\%s", filename);
-@@ -72,7 +72,7 @@ static int win_chr_pipe_init(Chardev *chr, const char *filename,
-     if (s->file == INVALID_HANDLE_VALUE) {
-         error_setg(errp, "Failed CreateNamedPipe (%lu)", GetLastError());
-         s->file = NULL;
--        goto fail;
-+        return -1;
-     }
- 
-     ZeroMemory(&ov, sizeof(ov));
-@@ -80,7 +80,7 @@ static int win_chr_pipe_init(Chardev *chr, const char *filename,
-     ret = ConnectNamedPipe(s->file, &ov);
-     if (ret) {
-         error_setg(errp, "Failed ConnectNamedPipe");
--        goto fail;
-+        return -1;
-     }
- 
-     ret = GetOverlappedResult(s->file, &ov, &size, TRUE);
-@@ -90,7 +90,7 @@ static int win_chr_pipe_init(Chardev *chr, const char *filename,
-             CloseHandle(ov.hEvent);
-             ov.hEvent = NULL;
+     if (s->refcount_table_size > 0) {
+         if (s->refcount_table == NULL) {
+-            ret = -ENOMEM;
+-            goto fail;
++            return -ENOMEM;
          }
--        goto fail;
-+        return -1;
+         BLKDBG_EVENT(bs->file, BLKDBG_REFTABLE_LOAD);
+         ret = bdrv_pread(bs->file, s->refcount_table_offset,
+                          s->refcount_table, refcount_table_size2);
+         if (ret < 0) {
+-            goto fail;
++            return ret;
+         }
+         for(i = 0; i < s->refcount_table_size; i++)
+             be64_to_cpus(&s->refcount_table[i]);
+         update_max_refcount_table_index(s);
      }
- 
-     if (ov.hEvent) {
-@@ -99,9 +99,6 @@ static int win_chr_pipe_init(Chardev *chr, const char *filename,
-     }
-     qemu_add_polling_cb(win_chr_pipe_poll, chr);
      return 0;
--
 - fail:
--    return -1;
+-    return ret;
  }
  
- static void qemu_chr_open_pipe(Chardev *chr,
+ void qcow2_refcount_close(BlockDriverState *bs)
 -- 
 2.24.1
 
