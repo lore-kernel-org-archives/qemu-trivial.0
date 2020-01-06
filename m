@@ -1,57 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobmC-0000s8-HQ
+	id 1iobmC-0000sW-O6
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46082)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46181)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4l-00033R-Cy
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:04 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4r-0003EQ-2v
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4k-0004nh-0a
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:03 -0500
-Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844]:41709)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4p-0004vD-TG
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:08 -0500
+Received: from mail-qt1-x842.google.com ([2607:f8b0:4864:20::842]:41709)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4h-0004l9-K3; Mon, 06 Jan 2020 13:25:59 -0500
-Received: by mail-qt1-x844.google.com with SMTP id k40so43186044qtk.8;
- Mon, 06 Jan 2020 10:25:59 -0800 (PST)
+ id 1ioX4n-0004qX-2V; Mon, 06 Jan 2020 13:26:05 -0500
+Received: by mail-qt1-x842.google.com with SMTP id k40so43186289qtk.8;
+ Mon, 06 Jan 2020 10:26:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=dFCW/pT3CYgJTCfIMv+vOfdNZ6PcIxCGOVhdGgC1DCo=;
- b=oSgpl5Ca3cVgcfTotPuV6oPNOhUXbeDmGSk8zwp8nSnzWxSkS+fSYd3s7qHkr7kLuP
- LKNlPwfxGyQ0YIlWex+7ezogXdP22mFl9A7QOrMyVGTU/aBh/U4Vw4XW4GkBSFnmuG7o
- F6UKcQiHj6/uoaso0x2kYzErEBlag08WX+SEB9Kyw8B0aVWFerJwB2f9TyDy54/3OjDa
- bWu9CO4jiE/NBFiUwn6gYil8UwOEvdGFdqocXL3gzzzuQ7Q/o7Ri8/NcTrqnNddffeId
- vGROkOnHE7xn3EocOyRMiAh1yC2Ckv9gYF6uUlJtRzH9LXdAmlvn4c45ddq87HWdyIg5
- GYtw==
+ bh=jkWrhgPSptvUdoRpBvu+nZPt4DG/CCW6P9e4SvO3R4Y=;
+ b=PpUVHzsymhP0qmvWWvSH988bOE8R/TWD2utS/aX3eog494DPlrx06/rLaIj/20bdOD
+ 5cw7BvX+je2pcnvWwYaAt0BlnD8JeZEhq4YaZ2fjSBW0E+Aq/GrFCHEcEDTNyLogntj1
+ 4LgtKWaFgsSfXKgXLvi5hnn4YuWWrd89zF2VI8qK0yFs3EKSllP9i35mywAVXz4knxtK
+ /ZoIxnj2xzEYMgDe8c5ThzuPJd+M4atCl3zbtmXUaA0o0mDwkqGPo3Zxet287hcMM0m9
+ cL8S0bQwL4eYsHUxhEDrEH3nEp23MUUNQzwb9N+Div5n48JnD3bFUbKI25aWssVDp7/3
+ fhOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=dFCW/pT3CYgJTCfIMv+vOfdNZ6PcIxCGOVhdGgC1DCo=;
- b=Mgk41Fq3lrncJIjEBQK2T+WrGhRkx01E+l4Uo1Rx85xvGsHjThnPPOAxtNjlDf927n
- 1/E+W8SqInTqQfW0094OoirttabpH+pi9F2UieEJvtyH0m4O1aA6sw3+eI97xoYWhVHQ
- iR4ZNaJOZKLvoL+JTOahmOSzfJZsjyyAexmBd5kKlmwXE49J/6lopGUxxV/0DfqzM7CA
- K6SyTE0NX4a1qDu81KZKzfPdZHOdbVSLl1zbQb8bXXrUUET4182BKs8D5TkCx0hAuz2H
- 5Qw39e7gbHV5giJikNdWsAVK/m63sB6lttATW3WrAbJws5qFAfHhT5beBbp18SVwMrmG
- djcw==
-X-Gm-Message-State: APjAAAVGtNWjjWV+Sx4d72pj8dhUPlYLhInKJgnRGGy74ayxS9PronUs
- ndSlsrGKOjChu3mvDIcXlz7WdIbm
-X-Google-Smtp-Source: APXvYqzhcjveduVulYsE2b+5+6bnrZ4v4OsEJnrftTuEJ50lwBr9HCbWoFJXSIlnlr8iFTsXB+lZnQ==
-X-Received: by 2002:ac8:1194:: with SMTP id d20mr75595878qtj.243.1578335159069; 
- Mon, 06 Jan 2020 10:25:59 -0800 (PST)
+ bh=jkWrhgPSptvUdoRpBvu+nZPt4DG/CCW6P9e4SvO3R4Y=;
+ b=uKzQZEN4LUMYBF2rPtnWCNxrIqPduI4FaE2HSd3EGPiS/Y8my5Cpjvy9o/S4VS0YS3
+ idh/NHfHFjHHP08DWLXC+xv7m6vmuRgtYf6FN0HTcHVlCZt7BSbn+By8S95BzOOjJXZK
+ BUNmhbglhaBFe090MoCY7HD4I7NMBmME+mYI80jtUfbXK/q7Z9S2BTYc6y3m+TZCOYbV
+ zj0yG0tW3FebmarxqT5Ayzj0N5643wMFurkAb6D7A/UubE4aBGmzftdcPB0gHejsjjK6
+ vtSVLcuWVTZOPmPV5H11TcaF+AhLOqjVOqTtEw9XY2kkOnrqvN9aTzyHV8E2U1y6p6br
+ JR7A==
+X-Gm-Message-State: APjAAAWR+HatDfD6WYQuILLeeLlmM2u7shvghX4IQ1bm9PIerm5SYl20
+ DJEJXYMfu//IXlBkh1e1RPGM9uVe
+X-Google-Smtp-Source: APXvYqyfAVd/QYltAIZUHmuLgfKU7232NaaldQUa3oK+LsgJIaAp0wBAPCDwRaSixBJh8RVGfnZ/Eg==
+X-Received: by 2002:ac8:404e:: with SMTP id j14mr67129587qtl.312.1578335164489; 
+ Mon, 06 Jan 2020 10:26:04 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.56
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:58 -0800 (PST)
+ Mon, 06 Jan 2020 10:26:04 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>
-Subject: [PATCH v1 37/59] s390x/event-facility.c: remove unneeded labels
-Date: Mon,  6 Jan 2020 15:24:03 -0300
-Message-Id: <20200106182425.20312-38-danielhb413@gmail.com>
+ Gerd Hoffmann <kraxel@redhat.com>
+Subject: [PATCH v1 40/59] hsb/hcd-ehci.c: remove unneeded labels
+Date: Mon,  6 Jan 2020 15:24:06 -0300
+Message-Id: <20200106182425.20312-41-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -59,7 +58,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::844
+X-Received-From: 2607:f8b0:4864:20::842
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,96 +71,138 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:26:05 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:26:11 -0000
 
-'out' label from write_event_mask(), handle_sccb_read_events()
-and write_event_data() can be replaced by 'return'.
+Label 'out' in ehci_state_fetchentry(), ehci_state_waitlisthead(),
+ehci_state_fetchqh() and ehci_state_execute() can be replaced
+by 'return' with the appropriate value.
 
-CC: Cornelia Huck <cohuck@redhat.com>
-CC: Halil Pasic <pasic@linux.ibm.com>
-CC: Christian Borntraeger <borntraeger@de.ibm.com>
+CC: Gerd Hoffmann <kraxel@redhat.com>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- hw/s390x/event-facility.c | 21 ++++++---------------
- 1 file changed, 6 insertions(+), 15 deletions(-)
+ hw/usb/hcd-ehci.c | 32 ++++++++++----------------------
+ 1 file changed, 10 insertions(+), 22 deletions(-)
 
-diff --git a/hw/s390x/event-facility.c b/hw/s390x/event-facility.c
-index 6afe278cad..f3b9661f32 100644
---- a/hw/s390x/event-facility.c
-+++ b/hw/s390x/event-facility.c
-@@ -182,11 +182,11 @@ static void write_event_data(SCLPEventFacility *ef, SCCB *sccb)
+diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+index 56ab2f457f..d8103102d6 100644
+--- a/hw/usb/hcd-ehci.c
++++ b/hw/usb/hcd-ehci.c
+@@ -1511,7 +1511,6 @@ static int ehci_state_waitlisthead(EHCIState *ehci,  int async)
  {
-     if (sccb->h.function_code != SCLP_FC_NORMAL_WRITE) {
-         sccb->h.response_code = cpu_to_be16(SCLP_RC_INVALID_FUNCTION);
--        goto out;
-+        return;
-     }
-     if (be16_to_cpu(sccb->h.length) < 8) {
-         sccb->h.response_code = cpu_to_be16(SCLP_RC_INSUFFICIENT_SCCB_LENGTH);
--        goto out;
-+        return;
-     }
-     /* first do a sanity check of the write events */
-     sccb->h.response_code = cpu_to_be16(write_event_length_check(sccb));
-@@ -196,9 +196,6 @@ static void write_event_data(SCLPEventFacility *ef, SCCB *sccb)
-         sccb->h.response_code =
-                 cpu_to_be16(handle_sccb_write_events(ef, sccb));
-     }
--
--out:
--    return;
- }
+     EHCIqh qh;
+     int i = 0;
+-    int again = 0;
+     uint32_t entry = ehci->asynclistaddr;
  
- static uint16_t handle_sccb_read_events(SCLPEventFacility *ef, SCCB *sccb,
-@@ -262,7 +259,7 @@ static void read_event_data(SCLPEventFacility *ef, SCCB *sccb)
+     /* set reclamation flag at start event (4.8.6) */
+@@ -1536,8 +1535,7 @@ static int ehci_state_waitlisthead(EHCIState *ehci,  int async)
  
-     if (be16_to_cpu(sccb->h.length) != SCCB_SIZE) {
-         sccb->h.response_code = cpu_to_be16(SCLP_RC_INSUFFICIENT_SCCB_LENGTH);
--        goto out;
-+        return;
-     }
- 
-     sclp_cp_receive_mask = ef->receive_mask;
-@@ -280,18 +277,15 @@ static void read_event_data(SCLPEventFacility *ef, SCCB *sccb)
-             (sclp_active_selection_mask & ~sclp_cp_receive_mask)) {
-             sccb->h.response_code =
-                     cpu_to_be16(SCLP_RC_INVALID_SELECTION_MASK);
+             ehci_set_fetch_addr(ehci, async, entry);
+             ehci_set_state(ehci, async, EST_FETCHENTRY);
+-            again = 1;
 -            goto out;
-+            return;
++            return 1;
          }
-         break;
-     default:
-         sccb->h.response_code = cpu_to_be16(SCLP_RC_INVALID_FUNCTION);
--        goto out;
-+        return;
-     }
-     sccb->h.response_code = cpu_to_be16(
-             handle_sccb_read_events(ef, sccb, sclp_active_selection_mask));
--
+ 
+         entry = qh.next;
+@@ -1550,8 +1548,7 @@ static int ehci_state_waitlisthead(EHCIState *ehci,  int async)
+ 
+     ehci_set_state(ehci, async, EST_ACTIVE);
+ 
 -out:
--    return;
+-    return again;
++    return 0;
  }
  
- static void write_event_mask(SCLPEventFacility *ef, SCCB *sccb)
-@@ -303,7 +297,7 @@ static void write_event_mask(SCLPEventFacility *ef, SCCB *sccb)
-     if (!mask_length || (mask_length > SCLP_EVENT_MASK_LEN_MAX) ||
-         ((mask_length != 4) && !ef->allow_all_mask_sizes)) {
-         sccb->h.response_code = cpu_to_be16(SCLP_RC_INVALID_MASK_LENGTH);
+ 
+@@ -1565,7 +1562,7 @@ static int ehci_state_fetchentry(EHCIState *ehci, int async)
+ 
+     if (NLPTR_TBIT(entry)) {
+         ehci_set_state(ehci, async, EST_ACTIVE);
 -        goto out;
-+        return;
++        return 0;
      }
  
-     /*
-@@ -328,9 +322,6 @@ static void write_event_mask(SCLPEventFacility *ef, SCCB *sccb)
+     /* section 4.8, only QH in async schedule */
+@@ -1597,7 +1594,6 @@ static int ehci_state_fetchentry(EHCIState *ehci, int async)
+         return -1;
+     }
  
-     sccb->h.response_code = cpu_to_be16(SCLP_RC_NORMAL_COMPLETION);
-     ef->mask_length = mask_length;
--
 -out:
--    return;
+     return again;
  }
  
- /* qemu object creation and initialization functions */
+@@ -1617,14 +1613,12 @@ static EHCIQueue *ehci_state_fetchqh(EHCIState *ehci, int async)
+     if (q->seen > 1) {
+         /* we are going in circles -- stop processing */
+         ehci_set_state(ehci, async, EST_ACTIVE);
+-        q = NULL;
+-        goto out;
++        return NULL;
+     }
+ 
+     if (get_dwords(ehci, NLPTR_GET(q->qhaddr),
+                    (uint32_t *) &qh, sizeof(EHCIqh) >> 2) < 0) {
+-        q = NULL;
+-        goto out;
++        return NULL;
+     }
+     ehci_trace_qh(q, NLPTR_GET(q->qhaddr), &qh);
+ 
+@@ -1658,8 +1652,7 @@ static EHCIQueue *ehci_state_fetchqh(EHCIState *ehci, int async)
+             DPRINTF("FETCHQH:  QH 0x%08x. H-bit set, reclamation status reset"
+                        " - done processing\n", q->qhaddr);
+             ehci_set_state(ehci, async, EST_ACTIVE);
+-            q = NULL;
+-            goto out;
++            return NULL;
+         }
+     }
+ 
+@@ -1688,7 +1681,6 @@ static EHCIQueue *ehci_state_fetchqh(EHCIState *ehci, int async)
+         ehci_set_state(ehci, async, EST_ADVANCEQUEUE);
+     }
+ 
+-out:
+     return q;
+ }
+ 
+@@ -1932,8 +1924,7 @@ static int ehci_state_execute(EHCIQueue *q)
+     /* 4.10.3, bottom of page 82, go horizontal on transaction counter == 0 */
+     if (!q->async && q->transact_ctr == 0) {
+         ehci_set_state(q->ehci, q->async, EST_HORIZONTALQH);
+-        again = 1;
+-        goto out;
++        return 1;
+     }
+ 
+     if (q->async) {
+@@ -1942,7 +1933,7 @@ static int ehci_state_execute(EHCIQueue *q)
+ 
+     again = ehci_execute(p, "process");
+     if (again == -1) {
+-        goto out;
++        return -1;
+     }
+     if (p->packet.status == USB_RET_ASYNC) {
+         ehci_flush_qh(q);
+@@ -1954,14 +1945,11 @@ static int ehci_state_execute(EHCIQueue *q)
+         } else {
+             again = 1;
+         }
+-        goto out;
++        return again;
+     }
+ 
+     ehci_set_state(q->ehci, q->async, EST_EXECUTING);
+-    again = 1;
+-
+-out:
+-    return again;
++    return 1;
+ }
+ 
+ static int ehci_state_executing(EHCIQueue *q)
 -- 
 2.24.1
 
