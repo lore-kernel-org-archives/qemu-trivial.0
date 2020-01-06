@@ -1,57 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobmA-0000o1-7Q
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46584)
+	id 1iobm1-0000eR-US
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:27:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46512)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX5I-00045i-D7
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:37 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX5C-0003tQ-Ul
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX5H-0005M8-9a
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:36 -0500
-Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42]:44709)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX5B-0005GW-Ox
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:30 -0500
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:33026)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX5E-0005J5-RL; Mon, 06 Jan 2020 13:26:32 -0500
-Received: by mail-qv1-xf42.google.com with SMTP id n8so19408495qvg.11;
- Mon, 06 Jan 2020 10:26:32 -0800 (PST)
+ id 1ioX59-0005Ed-Ik; Mon, 06 Jan 2020 13:26:27 -0500
+Received: by mail-qk1-x741.google.com with SMTP id d71so32446953qkc.0;
+ Mon, 06 Jan 2020 10:26:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=8epzYC9Hx96nC8wKq8nl8igdorRt4UtCgIwD3AuQIS8=;
- b=CtGRoI1EAaFcZ6XoR5d+63MLor+iAEqD2yM88p5EaGJXkcPA9LKw3LiViNE5nDNejI
- ABgUNaD6xhvfr1VYxHN+POKVOR40TVf6QUGvzZCiZJ4xztny9YCi67AyIYgo7pwPwIAD
- CuR/1wIM0q/H/1p+His7K4QoYglHO7cKAJ/HF825HXbChXuByO/OC0ztG4npOytSl2HF
- v7HYadn8fhnmUYifDQ/GAt34Ec23R0aX5h8BGPziaU5JTrsj+BA/wHwo2MdQoXOY9XZB
- 2QTp4yefkn51kwf1LkTr+jQRQpiVaAAG2kwg7t4sunaCf32ZidCRVOtFa8JWk4UOVwAH
- EXUw==
+ bh=JJWYjaXsWA8uSjmMFIfhA7Z1i5kUfBIKlMWt+XL7NrA=;
+ b=XepBHbRcdoMRwO/gywlmTxjNi0ImO5cPV4DtOK1NSPJGEfrf8JEDe0NrCB4TaMx9v2
+ gnrkoe6RF42aFys5F9Ukvws0ZF8e5DXACSzyTa0p0XR3RCF1t/414Yo649bJstTeBEop
+ fBc/75GDTZKOismSWmAKMBj5KKDi1NsRnK69joXE2lkeNAy6a6kXfbCRnGR0r/YOFAUH
+ 1MXbUWMCMTuVyAbd+f/8uRuU4ToXh+nS88I6kjOwX2r18ta46hzA1FYzOYN0RZMPxJ4o
+ Fd//G+Sij6PXgvhnpzyr8GhsjgY2UavIx07s5wBkxd1LbWNDiQ3owxKWxCQuUT6TrQ64
+ 5V2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=8epzYC9Hx96nC8wKq8nl8igdorRt4UtCgIwD3AuQIS8=;
- b=cCbz6RrrVbDa6dhTQqfhupqKQfjuF8DFpFjR6+TTDPHm79UkW+KDBz8cTGoO8Yafz4
- +r62rNH3S7CURSLC2dzIJRuDf5QsHnmG/5+DQ/B5+PYr5hyRZvxMll4gi1AKjgjGYuHU
- gTlAqf6iSOo/TcW9Hd7tf75mTcRlww98ncv6B58eYBqYGZZXDeXBxJQTNFXVRlar3897
- s5mWmWfaGw4Vh76SPNgSzO52IZ0Pgfr3A5cgjKo4jlaT/j9CFuAytXv3Gd1S1XsmdhZm
- GvGYVP/V9qKMRZbWe0t3NEMJcO2LpeJ0VdDLvsnFVLvsiBbZZJO16vlIBzMUGGBLTQaR
- PGqA==
-X-Gm-Message-State: APjAAAWJop3wiGWg/ajholh2qo/0bKT2kQGGssS+wtq5VKrkWSQXOjKH
- fvM18vpjjLhKxGIrciBvJsSC0jjI
-X-Google-Smtp-Source: APXvYqxtyRMbmiEujs6q/5zgBBL/E9J99OUADg6ZgH+EC79ejwTz2kcu9nJQQyNjSHyiW7bCWWSW7Q==
-X-Received: by 2002:a0c:a145:: with SMTP id d63mr82830123qva.120.1578335192274; 
- Mon, 06 Jan 2020 10:26:32 -0800 (PST)
+ bh=JJWYjaXsWA8uSjmMFIfhA7Z1i5kUfBIKlMWt+XL7NrA=;
+ b=gjemjH1oQ2bWRVZBL+Aut+GJOOJv80XijT/moGCwR4qCH9bwBxRKg6Dspqxl+NwLsw
+ 7W03nWf2tHzRUYJUm79qdgrPEQu8RpgIdphMxdeYB6qgENy28mT/YyVmPNm643VlS3vM
+ GNekJpddfMZuS9dT37Nx0q2iCxVNmbAYnrzvmkqFl/1Z3I9edhRjJAPD70yEJIYCeL2E
+ GqYOU9OV/jYmV/CR7cOlEkjknnSuq0s6R8v62vs0G1mwySmgOZJLhPt2cK1ZTzzb0EmE
+ yKRYc5aeNvxNxioqvdXSmwWyslv8rAEp+XnY53THfQLFFUDl1Jpcxj1Vl2TlHKuYFPWW
+ 4MaQ==
+X-Gm-Message-State: APjAAAXMywTwwQ9YIagzDTQbUlq/HyEZVSXnd2D2ddCslN4whXxtauga
+ Xy1+9GuF84tXDWZhkIBFq8HzRW9F
+X-Google-Smtp-Source: APXvYqyvzVhyJMExc/vZgKmVGSOiey8uffmAAxbMnZ4hCmyLPBsiUp1omZBy6qvRrKZ6Kt3Av2xXgw==
+X-Received: by 2002:a37:6794:: with SMTP id
+ b142mr85102518qkc.216.1578335187051; 
+ Mon, 06 Jan 2020 10:26:27 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.30
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:26:31 -0800 (PST)
+ Mon, 06 Jan 2020 10:26:26 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v1 56/59] linux-user/signal.c: remove unneeded label in
- do_sigaltstack()
-Date: Mon,  6 Jan 2020 15:24:22 -0300
-Message-Id: <20200106182425.20312-57-danielhb413@gmail.com>
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>
+Subject: [PATCH v1 53/59] net/net_tx_pkt.c: remove unneeded label in
+ net_tx_pkt_get_gso_type()
+Date: Mon,  6 Jan 2020 15:24:19 -0300
+Message-Id: <20200106182425.20312-54-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -59,7 +60,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::f42
+X-Received-From: 2607:f8b0:4864:20::741
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,85 +73,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:26:39 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:26:33 -0000
 
-'out' can be replaced by 'return ret'. Since 'ret' is used
-just to set the return value, drop the 'ret' variable and
-use 'return' with the appropriate value instead.
+'func_exit' can be replaced by 'return' with the appropriate
+return value. 'rc' also becomes unnecessary after this change,
+thus let's remove it as well.
 
-CC: Riku Voipio <riku.voipio@iki.fi>
-CC: Laurent Vivier <laurent@vivier.eu>
+CC: Dmitry Fleytman <dmitry.fleytman@gmail.com>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- linux-user/signal.c | 20 ++++++--------------
- 1 file changed, 6 insertions(+), 14 deletions(-)
+ hw/net/net_tx_pkt.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
 
-diff --git a/linux-user/signal.c b/linux-user/signal.c
-index 5ca6d62b15..5efb1b79d9 100644
---- a/linux-user/signal.c
-+++ b/linux-user/signal.c
-@@ -708,7 +708,6 @@ static void host_signal_handler(int host_signum, siginfo_t *info,
- /* compare linux/kernel/signal.c:do_sigaltstack() */
- abi_long do_sigaltstack(abi_ulong uss_addr, abi_ulong uoss_addr, abi_ulong sp)
+diff --git a/hw/net/net_tx_pkt.c b/hw/net/net_tx_pkt.c
+index 162f802dd7..3cd6aa1d0e 100644
+--- a/hw/net/net_tx_pkt.c
++++ b/hw/net/net_tx_pkt.c
+@@ -287,21 +287,18 @@ struct virtio_net_hdr *net_tx_pkt_get_vhdr(struct NetTxPkt *pkt)
+ static uint8_t net_tx_pkt_get_gso_type(struct NetTxPkt *pkt,
+                                           bool tso_enable)
  {
--    int ret;
-     struct target_sigaltstack oss;
-     TaskState *ts = (TaskState *)thread_cpu->opaque;
+-    uint8_t rc = VIRTIO_NET_HDR_GSO_NONE;
+     uint16_t l3_proto;
  
-@@ -734,32 +733,28 @@ abi_long do_sigaltstack(abi_ulong uss_addr, abi_ulong uoss_addr, abi_ulong sp)
-         }
- #endif
+     l3_proto = eth_get_l3_proto(&pkt->vec[NET_TX_PKT_L2HDR_FRAG], 1,
+         pkt->vec[NET_TX_PKT_L2HDR_FRAG].iov_len);
  
--        ret = -TARGET_EFAULT;
-         if (!lock_user_struct(VERIFY_READ, uss, uss_addr, 1)) {
--            goto out;
-+            return -TARGET_EFAULT;
-         }
-         __get_user(ss.ss_sp, &uss->ss_sp);
-         __get_user(ss.ss_size, &uss->ss_size);
-         __get_user(ss.ss_flags, &uss->ss_flags);
-         unlock_user_struct(uss, uss_addr, 0);
- 
--        ret = -TARGET_EPERM;
-         if (on_sig_stack(sp))
--            goto out;
-+            return -TARGET_EPERM;
- 
--        ret = -TARGET_EINVAL;
-         if (ss.ss_flags != TARGET_SS_DISABLE
-             && ss.ss_flags != TARGET_SS_ONSTACK
-             && ss.ss_flags != 0)
--            goto out;
-+            return -TARGET_EINVAL;
- 
-         if (ss.ss_flags == TARGET_SS_DISABLE) {
-             ss.ss_size = 0;
-             ss.ss_sp = 0;
-         } else {
--            ret = -TARGET_ENOMEM;
-             if (ss.ss_size < minstacksize) {
--                goto out;
-+                return -TARGET_ENOMEM;
-             }
-         }
- 
-@@ -768,14 +763,11 @@ abi_long do_sigaltstack(abi_ulong uss_addr, abi_ulong uoss_addr, abi_ulong sp)
+     if (!tso_enable) {
+-        goto func_exit;
++        return VIRTIO_NET_HDR_GSO_NONE;
      }
  
-     if (uoss_addr) {
--        ret = -TARGET_EFAULT;
-         if (copy_to_user(uoss_addr, &oss, sizeof(oss)))
--            goto out;
-+            return -TARGET_EFAULT;
-     }
- 
--    ret = 0;
--out:
--    return ret;
-+    return 0;
+-    rc = eth_get_gso_type(l3_proto, pkt->vec[NET_TX_PKT_L3HDR_FRAG].iov_base,
+-                          pkt->l4proto);
+-
+-func_exit:
+-    return rc;
++    return eth_get_gso_type(l3_proto,
++                            pkt->vec[NET_TX_PKT_L3HDR_FRAG].iov_base,
++                            pkt->l4proto);
  }
  
- /* do_sigaction() return target values and host errnos */
+ void net_tx_pkt_build_vheader(struct NetTxPkt *pkt, bool tso_enable,
 -- 
 2.24.1
 
