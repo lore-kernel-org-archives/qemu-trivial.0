@@ -1,57 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iobll-0000N9-4d
+	id 1iobll-0000Ng-Cw
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45468)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45529)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4C-00027w-6r
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:29 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4F-0002Bi-Ga
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4B-0004Dl-5D
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:28 -0500
-Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42]:43226)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4E-0004Gg-16
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:31 -0500
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741]:38116)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX47-00049R-3z; Mon, 06 Jan 2020 13:25:23 -0500
-Received: by mail-qv1-xf42.google.com with SMTP id p2so19407459qvo.10;
- Mon, 06 Jan 2020 10:25:23 -0800 (PST)
+ id 1ioX4B-0004DU-4H; Mon, 06 Jan 2020 13:25:27 -0500
+Received: by mail-qk1-x741.google.com with SMTP id k6so40296404qki.5;
+ Mon, 06 Jan 2020 10:25:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=AQ30SiavMBc1O6qPtvk0xgAULn2vwWgQBHbs/PLUbI8=;
- b=eO/AqUVMui9U6V4k1266lbWw9rHB6L1/xQKK9x30mQ8ILZg7Wj6nXgXUTRudpF1J1G
- 6FABU8/sNTARDGMPGCjHZHS6sZ2Cjr3RSBUY7s0d6ipN4okgaDy3N1BxvUD79bBl77z2
- Ev5/wUAvrl2KfeDaF+EwO7m7camnfr6OTyfdS1ntFDov9WF7CDLcHbriiMldC2IyDsD4
- iQpLdrsZaagqfp7eoQpzG0xoTW2+I5xsSwUvBEAW2uE8gC+hp9VS+Vwg/TvzFqMi/CPh
- exC/csYIhV3cyoDllSgzE7Kfy5AnyjYVB0Mo0RBkdV/PcKkszn/3lMFAVQbrLyBEm+TM
- FwUA==
+ bh=iIYRPlSXfjPSgphJVr9MrieAqsI8xts4nkwFUXyHtYQ=;
+ b=mQhipP9oLD5WYxqXU3Jf1sX/+F2XCuz17PnDMVOQGuSYlA3ITIeH4GDfHo5O9OLRAi
+ mpbP56gc+LoBIWpZpz3A+ESeexNycfiOo1O2ieYVo+FriFiqkp11MFrBAL5+WGE1mGj5
+ Q6YB0MM+1pK2HWLfKBV2Q3iJzy6VpY1GL93KunDPDXcZa+zkf3BlSFtOtDp2bhk1wPz6
+ gnXS4qGhYPas6OybiOE4st28V0WnQlAf1trWanaB59bweCqfsDUvEY+ZCUE9MlpdAgeS
+ /aIn9BVLx75tuQsEM1IFY9+AAavV0NjSP6/smv8WV35hLxj7pltxOve41CM9MCN+3t7E
+ sF3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=AQ30SiavMBc1O6qPtvk0xgAULn2vwWgQBHbs/PLUbI8=;
- b=D+FqbNPJz2i5kdbY71RojygEw89XLNpU/bVvLNYbVvFNGgfPBSXjZC0Ej1wN+STtnq
- kt/0CPPSAHyFoHkQifrV7NXgUrvJdMaJn2I2KIQKXwsKOtCbRRo8kspiQIHK6mMqpZTM
- s2wiwBBeHvuP6fyTwGtPym2fUgVQblpmCdz0SOhJFGMkevJbMXvVn5Ik5wbkfth4EwvJ
- 2gBEvQRkaEIC2gHM9y/43nGTZRGvd13cfCXzrHGe2Ts92OoxHXbfGW3/1fhKB4W9FTIi
- +Q+pRkXgydzI3j79RBwuPMCSgIK5nKV7wacXgwJSZ7aJuAFvoof7xULEsGMeb4UYMHGp
- RAdw==
-X-Gm-Message-State: APjAAAUZpS9CN9VNdDI88LqFAnF3iq8HC2tp5YoGPobG4SbgjBzlOaFw
- 6biPkpDwyku6Vbc44pNYfq3Qs7V5
-X-Google-Smtp-Source: APXvYqxOrPWINPn22Tyf/XmY642bRM7VWtoZbvGTLor0xos/mdHd9Ta3OD1J1WE+mG5vddqcaLHxQg==
-X-Received: by 2002:a0c:c18f:: with SMTP id n15mr68377057qvh.35.1578335122527; 
- Mon, 06 Jan 2020 10:25:22 -0800 (PST)
+ bh=iIYRPlSXfjPSgphJVr9MrieAqsI8xts4nkwFUXyHtYQ=;
+ b=dEOrwk/YTq0tG4RqGgcBXIukwJu/yYVInUkx1P1W0SCl81L+KsDlWLqTLEHsst0iL+
+ QgYAH2nMtSIhfxOWus392CiIHFMdoiZPPcsxLgSJEe1cLXrMOvzrAo6rxfM3oce3vgbK
+ feBaAQ2S1R61QYjP4DgaR0mjwOoVqomA6peMlj3D3mW8lhAnhSVFInjXIItQ8oK6hG9C
+ n/yMvc87eC6mdxYmHc70DZty/lwS8DImrqmz342+VVyo5xywjeEINSvpF3Zm/N4YI/sn
+ 3F3D1K1FN9hMQ+M6LNaWaZkke7rCFzj5BkpyiAAl4higMEZabO9wSAj5+A6ewd+E5XPI
+ tJ+g==
+X-Gm-Message-State: APjAAAWP5MzqYJH0elyBd1l2a/v2BX6k6J8wOgipmXAfoLWwLWrhZLQQ
+ qK0f+1oUpj5+WVhIWyQivhsoaWt6
+X-Google-Smtp-Source: APXvYqyr26GEbIsdAlLQPqpzzUEP+eCeLvGjtbIaTl7QyANUHBEppluPjmQ1RudJ9NcQqRSQ6A7raw==
+X-Received: by 2002:a37:684b:: with SMTP id d72mr85753234qkc.293.1578335126320; 
+ Mon, 06 Jan 2020 10:25:26 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.20
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:22 -0800 (PST)
+ Mon, 06 Jan 2020 10:25:25 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org
-Subject: [PATCH v1 17/59] block/dmg.c: remove unneeded 'fail' label in
- dmg_read_mish_block()
-Date: Mon,  6 Jan 2020 15:23:43 -0300
-Message-Id: <20200106182425.20312-18-danielhb413@gmail.com>
+ "Richard W . M . Jones" <rjones@redhat.com>, qemu-block@nongnu.org
+Subject: [PATCH v1 19/59] block/ssh.c: remove unneeded labels
+Date: Mon,  6 Jan 2020 15:23:45 -0300
+Message-Id: <20200106182425.20312-20-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -59,7 +58,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::f42
+X-Received-From: 2607:f8b0:4864:20::741
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,60 +71,174 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:30 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:25:33 -0000
 
-Both the 'fail' label and 'ret' variable can be removed from the
-function. Instead, call 'return -EINVAL' in the error conditions.
+The 'out' labels for check_host_key_knownhosts() and authenticate()
+functions can be removed and, instead, call 'return' with the
+appropriate return value. The 'ret' integer from both functions
+could also be removed.
 
-CC: Stefan Hajnoczi <stefanha@redhat.com>
+CC: Richard W.M. Jones <rjones@redhat.com>
 CC: qemu-block@nongnu.org
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- block/dmg.c | 10 ++--------
- 1 file changed, 2 insertions(+), 8 deletions(-)
+ block/ssh.c | 61 +++++++++++++++++------------------------------------
+ 1 file changed, 19 insertions(+), 42 deletions(-)
 
-diff --git a/block/dmg.c b/block/dmg.c
-index 4a045f2b3e..ce39a87864 100644
---- a/block/dmg.c
-+++ b/block/dmg.c
-@@ -217,7 +217,6 @@ static int dmg_read_mish_block(BDRVDMGState *s, DmgHeaderState *ds,
-                                uint8_t *buffer, uint32_t count)
+diff --git a/block/ssh.c b/block/ssh.c
+index b4375cf7d2..e0c56d002a 100644
+--- a/block/ssh.c
++++ b/block/ssh.c
+@@ -276,7 +276,6 @@ static void ssh_parse_filename(const char *filename, QDict *options,
+ 
+ static int check_host_key_knownhosts(BDRVSSHState *s, Error **errp)
  {
-     uint32_t type, i;
 -    int ret;
-     size_t new_size;
-     uint32_t chunk_count;
-     int64_t offset = 0;
-@@ -273,8 +272,7 @@ static int dmg_read_mish_block(BDRVDMGState *s, DmgHeaderState *ds,
-             error_report("sector count %" PRIu64 " for chunk %" PRIu32
-                          " is larger than max (%u)",
-                          s->sectorcounts[i], i, DMG_SECTORCOUNTS_MAX);
--            ret = -EINVAL;
--            goto fail;
-+            return -EINVAL;
+ #ifdef HAVE_LIBSSH_0_8
+     enum ssh_known_hosts_e state;
+     int r;
+@@ -295,7 +294,6 @@ static int check_host_key_knownhosts(BDRVSSHState *s, Error **errp)
+         trace_ssh_check_host_key_knownhosts();
+         break;
+     case SSH_KNOWN_HOSTS_CHANGED:
+-        ret = -EINVAL;
+         r = ssh_get_server_publickey(s->session, &pubkey);
+         if (r == 0) {
+             r = ssh_get_publickey_hash(pubkey, SSH_PUBLICKEY_HASH_SHA256,
+@@ -320,28 +318,23 @@ static int check_host_key_knownhosts(BDRVSSHState *s, Error **errp)
+                        "host key does not match the one in known_hosts; this "
+                        "may be a possible attack");
          }
- 
-         /* offset in (compressed) data fork */
-@@ -288,8 +286,7 @@ static int dmg_read_mish_block(BDRVDMGState *s, DmgHeaderState *ds,
-             error_report("length %" PRIu64 " for chunk %" PRIu32
-                          " is larger than max (%u)",
-                          s->lengths[i], i, DMG_LENGTHS_MAX);
--            ret = -EINVAL;
--            goto fail;
-+            return -EINVAL;
-         }
- 
-         update_max_chunk_size(s, i, &ds->max_compressed_size,
-@@ -298,9 +295,6 @@ static int dmg_read_mish_block(BDRVDMGState *s, DmgHeaderState *ds,
+-        goto out;
++        return -EINVAL;
+     case SSH_KNOWN_HOSTS_OTHER:
+-        ret = -EINVAL;
+         error_setg(errp,
+                    "host key for this server not found, another type exists");
+-        goto out;
++        return -EINVAL;
+     case SSH_KNOWN_HOSTS_UNKNOWN:
+-        ret = -EINVAL;
+         error_setg(errp, "no host key was found in known_hosts");
+-        goto out;
++        return -EINVAL;
+     case SSH_KNOWN_HOSTS_NOT_FOUND:
+-        ret = -ENOENT;
+         error_setg(errp, "known_hosts file not found");
+-        goto out;
++        return -ENOENT;
+     case SSH_KNOWN_HOSTS_ERROR:
+-        ret = -EINVAL;
+         error_setg(errp, "error while checking the host");
+-        goto out;
++        return -EINVAL;
+     default:
+-        ret = -EINVAL;
+         error_setg(errp, "error while checking for known server (%d)", state);
+-        goto out;
++        return -EINVAL;
      }
-     s->n_chunks += chunk_count;
-     return 0;
+ #else /* !HAVE_LIBSSH_0_8 */
+     int state;
+@@ -355,40 +348,31 @@ static int check_host_key_knownhosts(BDRVSSHState *s, Error **errp)
+         trace_ssh_check_host_key_knownhosts();
+         break;
+     case SSH_SERVER_KNOWN_CHANGED:
+-        ret = -EINVAL;
+         error_setg(errp,
+                    "host key does not match the one in known_hosts; this "
+                    "may be a possible attack");
+-        goto out;
++        return -EINVAL;
+     case SSH_SERVER_FOUND_OTHER:
+-        ret = -EINVAL;
+         error_setg(errp,
+                    "host key for this server not found, another type exists");
+-        goto out;
++        return -EINVAL;
+     case SSH_SERVER_FILE_NOT_FOUND:
+-        ret = -ENOENT;
+         error_setg(errp, "known_hosts file not found");
+-        goto out;
++        return -ENOENT;
+     case SSH_SERVER_NOT_KNOWN:
+-        ret = -EINVAL;
+         error_setg(errp, "no host key was found in known_hosts");
+-        goto out;
++        return -EINVAL;
+     case SSH_SERVER_ERROR:
+-        ret = -EINVAL;
+         error_setg(errp, "server error");
+-        goto out;
++        return -EINVAL;
+     default:
+-        ret = -EINVAL;
+         error_setg(errp, "error while checking for known server (%d)", state);
+-        goto out;
++        return -EINVAL;
+     }
+ #endif /* !HAVE_LIBSSH_0_8 */
+ 
+     /* known_hosts checking successful. */
+-    ret = 0;
 -
--fail:
+- out:
 -    return ret;
++    return 0;
  }
  
- static int dmg_read_resource_fork(BlockDriverState *bs, DmgHeaderState *ds,
+ static unsigned hex2decimal(char ch)
+@@ -501,20 +485,18 @@ static int check_host_key(BDRVSSHState *s, SshHostKeyCheck *hkc, Error **errp)
+ 
+ static int authenticate(BDRVSSHState *s, Error **errp)
+ {
+-    int r, ret;
++    int r;
+     int method;
+ 
+     /* Try to authenticate with the "none" method. */
+     r = ssh_userauth_none(s->session, NULL);
+     if (r == SSH_AUTH_ERROR) {
+-        ret = -EPERM;
+         session_error_setg(errp, s, "failed to authenticate using none "
+                                     "authentication");
+-        goto out;
++        return -EPERM;
+     } else if (r == SSH_AUTH_SUCCESS) {
+         /* Authenticated! */
+-        ret = 0;
+-        goto out;
++        return 0;
+     }
+ 
+     method = ssh_userauth_list(s->session, NULL);
+@@ -527,23 +509,18 @@ static int authenticate(BDRVSSHState *s, Error **errp)
+     if (method & SSH_AUTH_METHOD_PUBLICKEY) {
+         r = ssh_userauth_publickey_auto(s->session, NULL, NULL);
+         if (r == SSH_AUTH_ERROR) {
+-            ret = -EINVAL;
+             session_error_setg(errp, s, "failed to authenticate using "
+                                         "publickey authentication");
+-            goto out;
++            return -EINVAL;
+         } else if (r == SSH_AUTH_SUCCESS) {
+             /* Authenticated! */
+-            ret = 0;
+-            goto out;
++            return 0;
+         }
+     }
+ 
+-    ret = -EPERM;
+     error_setg(errp, "failed to authenticate using publickey authentication "
+                "and the identities held by your ssh-agent");
+-
+- out:
+-    return ret;
++    return -EPERM;
+ }
+ 
+ static QemuOptsList ssh_runtime_opts = {
 -- 
 2.24.1
 
