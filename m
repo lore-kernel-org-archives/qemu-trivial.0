@@ -1,67 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ioblr-0000Vc-Vk
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46111)
+	id 1iobls-0000WH-71
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45230)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4m-00035t-T3
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:05 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX3x-0001ns-3b
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4l-0004pM-R5
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:04 -0500
-Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43]:41661)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX3v-0003wd-Ob
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:12 -0500
+Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844]:33722)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4j-0004ms-Jp; Mon, 06 Jan 2020 13:26:01 -0500
-Received: by mail-qv1-xf43.google.com with SMTP id x1so19420805qvr.8;
- Mon, 06 Jan 2020 10:26:01 -0800 (PST)
+ id 1ioX3s-0003sS-Tj; Mon, 06 Jan 2020 13:25:08 -0500
+Received: by mail-qt1-x844.google.com with SMTP id d5so43221896qto.0;
+ Mon, 06 Jan 2020 10:25:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=AeTlk6Mv4Sdw9TGJE5bJAMzPZ3CIV82gaf3D39HkxpY=;
- b=mSCzFxGkDvJH0IMXM8h4ve+2MYWjYSUJ4vRU40x8Ls6nAraZaxAfEODkR5bkOFVIky
- i2+oZq3zbx0+xFWnHOovK57omXi1H9FEOvBGxcw8rd3OcFn3bA32YjdviqLJ4v9Bgmyl
- dp8nN/Tw8//TvPwC6hY8LRh0Agag5ip8u3PG2TVYhHDVLHTmR+a0jFEYsvQXnQZBtvTr
- dm1nES3c0C1Cc0ccjxtbW2ir23ihHJQZYBys26BR0Pp44yuc7/11mIyFtGSrNba3uXvs
- xss3gMUzvuCYHgEbqpjVoLxv98zEt4z+0ipt7gs/el1J1zLTe3U6LoMIMzkgdMSeUlwh
- 1QzA==
+ bh=QRyshu9MeZF7Qp8JBN9b2R4zIWlvD97XdczFgR/WKsg=;
+ b=oW0fJ1WOFaFYQygb4OiaE2zwvUJCoVB0ClpJiA+CpxlH5uLM/ELeanPSZao/ebTUai
+ azFcEXAXgGk5jMU6ksXGrZdoPcQ7w+4hCy2+fnwl7yemAoThA+FTuV2H76J8EfNxVIRx
+ /C0gbSFOtqmy8udAeWsKYRouWWF621uQ3Ba+UvCnqmyAtgNZPIBh2vHvIrUhMYw7lOUu
+ OSVobWtjOKsj1P+sEc3HZnfUVOapduplG09t3LZRFjUJW3vFzx0mXqYne9VFRn9/CobG
+ 7I1LlNZmPfpqCl7bGc4sbNINlk2ofK073OgQ4UwM7L7CV5l22HT8RRfv6DcFaNgieVPJ
+ +b1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=AeTlk6Mv4Sdw9TGJE5bJAMzPZ3CIV82gaf3D39HkxpY=;
- b=r6Xj9zn7atMoWwNG35F9wMUiE9IfW/LLRASuZC/gErFmTlX++o+YbaNvGlj0Daw8nf
- BtBI5LHAxHK1U1EaNUwOiiaMr7kkmGQkHFBi4KdGNf3/MXW2zTzTDfY9SY0+IFDBk77B
- 1tOBT/J23XEn4RfpxKaHZaVl3WeIAN7WEuy0X4kn/PqcYhYImSzETZwbNCWIVncdBj7K
- 7tmxMeVpSUu3PRHo3wpiEJ+wk4MILeF9Y2mHVKDL10QD6D3M6dqmZcnt+DSFlEaFyay9
- 6vJtlaORC/3dk6AmiTRs3PgoNjHtPpcNDRCjqtBnFg/4oVIgOh7K2D/3hyC88ySGPJ9J
- E2Sg==
-X-Gm-Message-State: APjAAAVTRygo0VaZm8foCxb0pCh+rVr8OrBrbo6BMayWgzmd8EJy3Orc
- vX5r/TUfYSkQ9qGj/Uf5vRhU1god
-X-Google-Smtp-Source: APXvYqydM2v6y698cHrh6e48dCGfdy3XG0GFCyDtLkp+J84lN4ZngHlwI7Wr28Og/NNJ84T9Q4lJEA==
-X-Received: by 2002:a05:6214:1150:: with SMTP id
- b16mr81204786qvt.71.1578335161010; 
- Mon, 06 Jan 2020 10:26:01 -0800 (PST)
+ bh=QRyshu9MeZF7Qp8JBN9b2R4zIWlvD97XdczFgR/WKsg=;
+ b=Q24w6nMclxdp/QCYJMqeN8VFoj2fJe5yV4n1L6YiCqsQk1oHxZlOX7d2za6oIKxyg/
+ /Q/wfKcwxaMDbb+ZzZc6EC/MO878IXIxW7vF49CbvuLcdoznOyICB9ecbuTxkQhEiMxI
+ kJfg2XgWsQ53JFHPu9R4a5RzJYJSKB7z7/Bzrlkqe7UI9gNbrhg50Ngg/OIUsGH1bpGE
+ TAjHbJnL31WZ6F1t2FUTfEq0C9FFx/sPcg0kgkG+g1PmEASIW6lxHyWj94FghDi+KR7k
+ euGDLaJr+QJBiifeff+rAfrLpzzZXnF14xdx1tuLJYqyJ+FZF5fgAevpOE36d/M0pqd/
+ QKRQ==
+X-Gm-Message-State: APjAAAWvf2hnMXOsX76Z0kH2CSYsN3Krgmfg5XWZnc3eK4Oh6F6CZIbi
+ KSql+Ywyu0geqT6tKbtlAs4ZeGZq
+X-Google-Smtp-Source: APXvYqz2P1iO6OVNn84mm/5qlWhQzA+cG1IKA4KYCAetSls150BfSZkRNfZfWLTnxF9hsQgqLWY5PQ==
+X-Received: by 2002:ac8:41c1:: with SMTP id o1mr61453222qtm.229.1578335108258; 
+ Mon, 06 Jan 2020 10:25:08 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.59
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:26:00 -0800 (PST)
+ Mon, 06 Jan 2020 10:25:07 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>
-Subject: [PATCH v1 38/59] s390x/sclp.c: remove unneeded label in
- sclp_service_call()
-Date: Mon,  6 Jan 2020 15:24:04 -0300
-Message-Id: <20200106182425.20312-39-danielhb413@gmail.com>
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v1 09/59] chardev/char-pipe.c: remove 'fail' label in
+ win_chr_pipe_init()
+Date: Mon,  6 Jan 2020 15:23:35 -0300
+Message-Id: <20200106182425.20312-10-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::f43
+X-Received-From: 2607:f8b0:4864:20::844
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,72 +74,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:26:07 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:25:15 -0000
 
-'out' label can be replaced by 'return' with the appropriate
-value. The 'r' integer, which is used solely to set the
-return value for this label, can also be removed.
+The 'fail' label is simply doing a 'return -1'.
 
-CC: Cornelia Huck <cohuck@redhat.com>
-CC: Halil Pasic <pasic@linux.ibm.com>
-CC: Christian Borntraeger <borntraeger@de.ibm.com>
+CC: Marc-André Lureau <marcandre.lureau@redhat.com>
+CC: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- hw/s390x/sclp.c | 16 +++++-----------
- 1 file changed, 5 insertions(+), 11 deletions(-)
+ chardev/char-pipe.c | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
 
-diff --git a/hw/s390x/sclp.c b/hw/s390x/sclp.c
-index f57ce7b739..af0bfbc2ec 100644
---- a/hw/s390x/sclp.c
-+++ b/hw/s390x/sclp.c
-@@ -197,24 +197,20 @@ int sclp_service_call(CPUS390XState *env, uint64_t sccb, uint32_t code)
- {
-     SCLPDevice *sclp = get_sclp_device();
-     SCLPDeviceClass *sclp_c = SCLP_GET_CLASS(sclp);
--    int r = 0;
-     SCCB work_sccb;
- 
-     hwaddr sccb_len = sizeof(SCCB);
- 
-     /* first some basic checks on program checks */
-     if (env->psw.mask & PSW_MASK_PSTATE) {
--        r = -PGM_PRIVILEGED;
--        goto out;
-+        return -PGM_PRIVILEGED;
+diff --git a/chardev/char-pipe.c b/chardev/char-pipe.c
+index 94d714ffcd..65d52beb0d 100644
+--- a/chardev/char-pipe.c
++++ b/chardev/char-pipe.c
+@@ -54,12 +54,12 @@ static int win_chr_pipe_init(Chardev *chr, const char *filename,
+     s->hsend = CreateEvent(NULL, TRUE, FALSE, NULL);
+     if (!s->hsend) {
+         error_setg(errp, "Failed CreateEvent");
+-        goto fail;
++        return -1;
      }
-     if (cpu_physical_memory_is_io(sccb)) {
--        r = -PGM_ADDRESSING;
--        goto out;
-+        return -PGM_ADDRESSING;
-     }
-     if ((sccb & ~0x1fffUL) == 0 || (sccb & ~0x1fffUL) == env->psa
-         || (sccb & ~0x7ffffff8UL) != 0) {
--        r = -PGM_SPECIFICATION;
--        goto out;
-+        return -PGM_SPECIFICATION;
+     s->hrecv = CreateEvent(NULL, TRUE, FALSE, NULL);
+     if (!s->hrecv) {
+         error_setg(errp, "Failed CreateEvent");
+-        goto fail;
++        return -1;
      }
  
-     /*
-@@ -226,8 +222,7 @@ int sclp_service_call(CPUS390XState *env, uint64_t sccb, uint32_t code)
- 
-     /* Valid sccb sizes */
-     if (be16_to_cpu(work_sccb.h.length) < sizeof(SCCBHeader)) {
--        r = -PGM_SPECIFICATION;
--        goto out;
-+        return -PGM_SPECIFICATION;
+     openname = g_strdup_printf("\\\\.\\pipe\\%s", filename);
+@@ -72,7 +72,7 @@ static int win_chr_pipe_init(Chardev *chr, const char *filename,
+     if (s->file == INVALID_HANDLE_VALUE) {
+         error_setg(errp, "Failed CreateNamedPipe (%lu)", GetLastError());
+         s->file = NULL;
+-        goto fail;
++        return -1;
      }
  
-     switch (code & SCLP_CMD_CODE_MASK) {
-@@ -257,8 +252,7 @@ out_write:
+     ZeroMemory(&ov, sizeof(ov));
+@@ -80,7 +80,7 @@ static int win_chr_pipe_init(Chardev *chr, const char *filename,
+     ret = ConnectNamedPipe(s->file, &ov);
+     if (ret) {
+         error_setg(errp, "Failed ConnectNamedPipe");
+-        goto fail;
++        return -1;
+     }
  
-     sclp_c->service_interrupt(sclp, sccb);
+     ret = GetOverlappedResult(s->file, &ov, &size, TRUE);
+@@ -90,7 +90,7 @@ static int win_chr_pipe_init(Chardev *chr, const char *filename,
+             CloseHandle(ov.hEvent);
+             ov.hEvent = NULL;
+         }
+-        goto fail;
++        return -1;
+     }
  
--out:
--    return r;
-+    return 0;
+     if (ov.hEvent) {
+@@ -99,9 +99,6 @@ static int win_chr_pipe_init(Chardev *chr, const char *filename,
+     }
+     qemu_add_polling_cb(win_chr_pipe_poll, chr);
+     return 0;
+-
+- fail:
+-    return -1;
  }
  
- static void service_interrupt(SCLPDevice *sclp, uint32_t sccb)
+ static void qemu_chr_open_pipe(Chardev *chr,
 -- 
 2.24.1
 
