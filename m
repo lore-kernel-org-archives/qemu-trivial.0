@@ -1,59 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ioblr-0000VB-Oy
+	id 1ioblr-0000Vc-Vk
 	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45810)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46111)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4S-0002X1-TC
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:45 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4m-00035t-T3
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4R-0004Vc-Pn
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:25:44 -0500
-Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735]:40866)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4l-0004pM-R5
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:04 -0500
+Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43]:41661)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4P-0004Sr-Jq; Mon, 06 Jan 2020 13:25:41 -0500
-Received: by mail-qk1-x735.google.com with SMTP id c17so40290906qkg.7;
- Mon, 06 Jan 2020 10:25:41 -0800 (PST)
+ id 1ioX4j-0004ms-Jp; Mon, 06 Jan 2020 13:26:01 -0500
+Received: by mail-qv1-xf43.google.com with SMTP id x1so19420805qvr.8;
+ Mon, 06 Jan 2020 10:26:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=5cBjVRTpORMTQVS8zXhW7QTuSicvsXs51ybQld+rw8U=;
- b=X1gKjg8PQhYPv5gcSNzBZPcGOjMWmJ4yS8Ffu/1zmXHxJcXeNGvb62g73d8cyJMzXk
- gUa1mznTs1qvuP6ot1jQ5iBQ1aTndK13gojoefCM/jLxSUeVjgLwzDruRIZClOfDlehW
- u0/sdxFTcfYqrD23E0BFIXcTRQDkfUz6jWXbDIRpJ4UBcJ4/9MbrAbaGmYHTjZ2ZtgHe
- a/9gSoghL4JsgW63lfIrqtPpe2uyZ9huUFjhiCcF2JLh+4F+xBcjwFh8L0YZDmWbieis
- ORXOhLxFO4tn/IGG5jOT+/QdTaOeG5WSxXvt1o2q1PBzViWW8mgt3WSjrkxMF+NseBjO
- EqfA==
+ bh=AeTlk6Mv4Sdw9TGJE5bJAMzPZ3CIV82gaf3D39HkxpY=;
+ b=mSCzFxGkDvJH0IMXM8h4ve+2MYWjYSUJ4vRU40x8Ls6nAraZaxAfEODkR5bkOFVIky
+ i2+oZq3zbx0+xFWnHOovK57omXi1H9FEOvBGxcw8rd3OcFn3bA32YjdviqLJ4v9Bgmyl
+ dp8nN/Tw8//TvPwC6hY8LRh0Agag5ip8u3PG2TVYhHDVLHTmR+a0jFEYsvQXnQZBtvTr
+ dm1nES3c0C1Cc0ccjxtbW2ir23ihHJQZYBys26BR0Pp44yuc7/11mIyFtGSrNba3uXvs
+ xss3gMUzvuCYHgEbqpjVoLxv98zEt4z+0ipt7gs/el1J1zLTe3U6LoMIMzkgdMSeUlwh
+ 1QzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=5cBjVRTpORMTQVS8zXhW7QTuSicvsXs51ybQld+rw8U=;
- b=Nt3YxGW01+tnU0F4to7Bn8EqjGGXK/mzZd6z5L9KQq+1Y3i4DemWYcpykm81Mhup7G
- Ia0iLMyi86oPbxedVzEfRFBaps8Wt821UeUkJAbTqtnQU7ExSi0G5iHxdpgnqbRs901o
- 2+IOqV3bITszc7yNW9IrMJH9vdvmjqJ9ZZyohHz45hOQNo95FMtOMv51DWcW4PuXMv33
- /+QyYx0dt8qJv2w4PfHhzl12rQUhCr/QgT51rGRUGOeLF0qaNHek5nRdr7chMzpu0fnO
- J+7HOaJnXJhh6xiIeej9Kncgfi8b2sd1i42tSwq6k58a9W9afsNQ5qRBzVzRnBNYbaoS
- 1Ijg==
-X-Gm-Message-State: APjAAAWBVcVo2f29mkyPUerAPN+8XzTjSOTBPa7J+yO/QEUb5GBxx26M
- kH3VGKG80pXTpwMErt6zhE+XD30M
-X-Google-Smtp-Source: APXvYqxedHDi5UiIn6Ox/FRAahaP05DzZ24yJxrpBkoIXp/fo+o0u+VfbhhfxtEQK5ufObtyaj2sHw==
-X-Received: by 2002:a05:620a:1eb:: with SMTP id
- x11mr85685346qkn.254.1578335140987; 
- Mon, 06 Jan 2020 10:25:40 -0800 (PST)
+ bh=AeTlk6Mv4Sdw9TGJE5bJAMzPZ3CIV82gaf3D39HkxpY=;
+ b=r6Xj9zn7atMoWwNG35F9wMUiE9IfW/LLRASuZC/gErFmTlX++o+YbaNvGlj0Daw8nf
+ BtBI5LHAxHK1U1EaNUwOiiaMr7kkmGQkHFBi4KdGNf3/MXW2zTzTDfY9SY0+IFDBk77B
+ 1tOBT/J23XEn4RfpxKaHZaVl3WeIAN7WEuy0X4kn/PqcYhYImSzETZwbNCWIVncdBj7K
+ 7tmxMeVpSUu3PRHo3wpiEJ+wk4MILeF9Y2mHVKDL10QD6D3M6dqmZcnt+DSFlEaFyay9
+ 6vJtlaORC/3dk6AmiTRs3PgoNjHtPpcNDRCjqtBnFg/4oVIgOh7K2D/3hyC88ySGPJ9J
+ E2Sg==
+X-Gm-Message-State: APjAAAVTRygo0VaZm8foCxb0pCh+rVr8OrBrbo6BMayWgzmd8EJy3Orc
+ vX5r/TUfYSkQ9qGj/Uf5vRhU1god
+X-Google-Smtp-Source: APXvYqydM2v6y698cHrh6e48dCGfdy3XG0GFCyDtLkp+J84lN4ZngHlwI7Wr28Og/NNJ84T9Q4lJEA==
+X-Received: by 2002:a05:6214:1150:: with SMTP id
+ b16mr81204786qvt.71.1578335161010; 
+ Mon, 06 Jan 2020 10:26:01 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.39
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.25.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:25:40 -0800 (PST)
+ Mon, 06 Jan 2020 10:26:00 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
- qemu-block@nongnu.org
-Subject: [PATCH v1 27/59] crypto/block-luks.c: remove unneeded label in
- qcrypto_block_luks_find_key
-Date: Mon,  6 Jan 2020 15:23:53 -0300
-Message-Id: <20200106182425.20312-28-danielhb413@gmail.com>
+ Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>
+Subject: [PATCH v1 38/59] s390x/sclp.c: remove unneeded label in
+ sclp_service_call()
+Date: Mon,  6 Jan 2020 15:24:04 -0300
+Message-Id: <20200106182425.20312-39-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -61,7 +61,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::735
+X-Received-From: 2607:f8b0:4864:20::f43
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -74,39 +74,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:25:47 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:26:07 -0000
 
-'error' can be replaced by 'return -1' directly.
+'out' label can be replaced by 'return' with the appropriate
+value. The 'r' integer, which is used solely to set the
+return value for this label, can also be removed.
 
-CC: Kevin Wolf <kwolf@redhat.com>
-CC: Max Reitz <mreitz@redhat.com>
-CC: qemu-block@nongnu.org
+CC: Cornelia Huck <cohuck@redhat.com>
+CC: Halil Pasic <pasic@linux.ibm.com>
+CC: Christian Borntraeger <borntraeger@de.ibm.com>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- crypto/block-luks.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ hw/s390x/sclp.c | 16 +++++-----------
+ 1 file changed, 5 insertions(+), 11 deletions(-)
 
-diff --git a/crypto/block-luks.c b/crypto/block-luks.c
-index 4861db810c..9742d4bdd9 100644
---- a/crypto/block-luks.c
-+++ b/crypto/block-luks.c
-@@ -1057,7 +1057,7 @@ qcrypto_block_luks_find_key(QCryptoBlock *block,
-                                          opaque,
-                                          errp);
-         if (rv < 0) {
--            goto error;
-+            return -1;
-         }
-         if (rv == 1) {
-             return 0;
-@@ -1065,7 +1065,6 @@ qcrypto_block_luks_find_key(QCryptoBlock *block,
+diff --git a/hw/s390x/sclp.c b/hw/s390x/sclp.c
+index f57ce7b739..af0bfbc2ec 100644
+--- a/hw/s390x/sclp.c
++++ b/hw/s390x/sclp.c
+@@ -197,24 +197,20 @@ int sclp_service_call(CPUS390XState *env, uint64_t sccb, uint32_t code)
+ {
+     SCLPDevice *sclp = get_sclp_device();
+     SCLPDeviceClass *sclp_c = SCLP_GET_CLASS(sclp);
+-    int r = 0;
+     SCCB work_sccb;
+ 
+     hwaddr sccb_len = sizeof(SCCB);
+ 
+     /* first some basic checks on program checks */
+     if (env->psw.mask & PSW_MASK_PSTATE) {
+-        r = -PGM_PRIVILEGED;
+-        goto out;
++        return -PGM_PRIVILEGED;
+     }
+     if (cpu_physical_memory_is_io(sccb)) {
+-        r = -PGM_ADDRESSING;
+-        goto out;
++        return -PGM_ADDRESSING;
+     }
+     if ((sccb & ~0x1fffUL) == 0 || (sccb & ~0x1fffUL) == env->psa
+         || (sccb & ~0x7ffffff8UL) != 0) {
+-        r = -PGM_SPECIFICATION;
+-        goto out;
++        return -PGM_SPECIFICATION;
      }
  
-     error_setg(errp, "Invalid password, cannot unlock any keyslot");
-- error:
-     return -1;
+     /*
+@@ -226,8 +222,7 @@ int sclp_service_call(CPUS390XState *env, uint64_t sccb, uint32_t code)
+ 
+     /* Valid sccb sizes */
+     if (be16_to_cpu(work_sccb.h.length) < sizeof(SCCBHeader)) {
+-        r = -PGM_SPECIFICATION;
+-        goto out;
++        return -PGM_SPECIFICATION;
+     }
+ 
+     switch (code & SCLP_CMD_CODE_MASK) {
+@@ -257,8 +252,7 @@ out_write:
+ 
+     sclp_c->service_interrupt(sclp, sccb);
+ 
+-out:
+-    return r;
++    return 0;
  }
  
+ static void service_interrupt(SCLPDevice *sclp, uint32_t sccb)
 -- 
 2.24.1
 
