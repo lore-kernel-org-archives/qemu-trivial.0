@@ -1,57 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ioblv-0000ZJ-6A
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46189)
+	id 1ioblw-0000Zx-Oe
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46284)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4r-0003FD-H9
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:10 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4x-0003Pn-Mv
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4q-0004vd-H4
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:09 -0500
-Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844]:37690)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4w-00052c-Ip
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:15 -0500
+Received: from mail-qv1-xf44.google.com ([2607:f8b0:4864:20::f44]:44709)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4o-0004tX-EI; Mon, 06 Jan 2020 13:26:06 -0500
-Received: by mail-qt1-x844.google.com with SMTP id w47so43209353qtk.4;
- Mon, 06 Jan 2020 10:26:06 -0800 (PST)
+ id 1ioX4u-0004zT-8L; Mon, 06 Jan 2020 13:26:12 -0500
+Received: by mail-qv1-xf44.google.com with SMTP id n8so19408060qvg.11;
+ Mon, 06 Jan 2020 10:26:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=9CWmGBj5aHcDceZZnak42d3HhmzkoQ6hZFURnh41AJQ=;
- b=fRNkR8Pq92PLD4Rj2lj2DlkW57FOCci79QyrBY/E4ItMBC7xeq+R4kunKB7FeSjPBu
- zE7qF4hW36T00wvtYM1tPvWSSPc3sGscMOX2LcqviMfYfAb956a3JsAgBzi+Z03E7w+d
- o2Jmt6n7jy0juIFX8uBKPJsDlAmbis15KOmxjz457UtyLCyjMojluXkmvYoNTesQtRas
- I7Wvx2kAjPaAr8vps60mOcT+IOz3SpGyaxZMaN7Zqfu4ELJ6S5cCMZOdTJ1tAU9KUowr
- hUuGn9M6ibX620kKFO66ixGhvZpTc5ESQMjCQ75CZdfxcqZZIMJx74PaVpZRu1UFkFCQ
- EcQg==
+ bh=mpfIHJqJRcqC4Yq+ELUmZkb3CWZtgP1HlVj632oKpm4=;
+ b=SQQZXd0Hkm27bw09ihFgZpDdMnFMt5UqLm7MMQo1Baw8csh13X325ESiZ2a1n8di4I
+ cyg1Ew9ipVOzN8liH9UcttZCbJLe/gOj2CM40aXfsn8Sbo3RHMztenxxNu6gS4pnHQW2
+ fWwuDVvHANdc1mvbwIi77g+qf0bq9yOpjg1ibzdqD5vqS1tWIjiGF+HkxCnoBEd00G4S
+ 35z8jlkaqxPX7FaBTq5cGBn2qP5Wylc58mLQtvWfuDSFe6TAORRbyHpo8oFZTowueK79
+ zod7gGyH4aCn3f+f7Ni46cHhb5oe26WybhsHJnQ3MrLmDno1hagR+BiWfNIZKsaNhib9
+ G/6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=9CWmGBj5aHcDceZZnak42d3HhmzkoQ6hZFURnh41AJQ=;
- b=EzlkzNHDcQmVHgLKfsP1dPDKfz0gGvIB88Uj+Y16rR5Z55QNKbrOcIlPoWVWwy3y7+
- H5vTd9aooqOZ2mDkceDfJS8GglNNE/53DZqQvLye+ZodkUO9PiZzCXTx8esGVB4D6Wvq
- gLwbgDReBPFQmdYWFnGBfS6zvw9McVCxD3Jt3DjdbpprbdhUdwsqTVCPpxlJg3cvEpC9
- CJV4kTYZBkWorbmfeL6Sf0+7eqjkVeD5pm78zWa35T+MefdBpqOo82tbceTM+qfnrOBk
- gSjj7k4a69opRufaZVM64HviakgdEDb6FIT2ifq6Xka19lQyKtdR/cGzPFIV0dqK0oDQ
- csIw==
-X-Gm-Message-State: APjAAAW3xAIX5RfBDC2GIl1ivBnEB7K++t/5J6I/aSbaEqAib6RK8t78
- P6J3mCtMAqx8uORp2S0QOSieOXT4
-X-Google-Smtp-Source: APXvYqzTlr5xjO3oGTrwz33FSc5NOPPkNEHipnTdpGDDmkxvyLdJGLhxx5lH/htTz8fDtvcjIVnPbg==
-X-Received: by 2002:ac8:5457:: with SMTP id d23mr72710032qtq.93.1578335165941; 
- Mon, 06 Jan 2020 10:26:05 -0800 (PST)
+ bh=mpfIHJqJRcqC4Yq+ELUmZkb3CWZtgP1HlVj632oKpm4=;
+ b=eZbYU4SBhVA6NP7OJgYB+h3uefhkwV09yiyaCDyF54/OGha9rpzLSRYl8n3gcaqBvQ
+ dPz4T9fgjhZSrXTnU5/y4VdgLNVowK0imO95qYaZKul4itMUc8+BkkEfrHKiyfu8jC27
+ B+mBC34qp8kyEpgbEfy67pdBTTaymaR87uc5uVKdazZiTaVogoUuadPSI1AOATfcP+Oa
+ jd+GQ/2ZITImLNvIDl29X2sXQYB/9DQoPe0YNtJ6yg3IzW8A7D+u/9jfzfl06l+cOSyG
+ 1KHPT9K7fPafpQgGlamAL/IJeXipmWkA3YDBW1Uupl5zYN8eTicNE645dKK8lWGksBnV
+ Ofgg==
+X-Gm-Message-State: APjAAAUc6XOednrUgJjv5ECToPUsTYxYBOXBkQneKpRAGXX8xZvcjrz6
+ bhZMGFsQUM4PAUiRBJURlkMoKtH7
+X-Google-Smtp-Source: APXvYqxmtVPcSIQ61YfaX5ax6qApQhozK+8b0/vmjFHP/QdsenqVJrYHT3fEy/D5ZOY2OaML8pv2SA==
+X-Received: by 2002:a05:6214:118d:: with SMTP id
+ t13mr78133928qvv.5.1578335171686; 
+ Mon, 06 Jan 2020 10:26:11 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.04
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:26:05 -0800 (PST)
+ Mon, 06 Jan 2020 10:26:11 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Daniel Henrique Barboza <danielhb413@gmail.com>
-Subject: [PATCH v1 41/59] intc/s390_flic_kvm.c: remove unneeded label in
- kvm_flic_load()
-Date: Mon,  6 Jan 2020 15:24:07 -0300
-Message-Id: <20200106182425.20312-42-danielhb413@gmail.com>
+Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Greg Kurz <groug@kaod.org>
+Subject: [PATCH v1 44/59] 9p-local.c: remove unneeded label in
+ local_unlinkat_common()
+Date: Mon,  6 Jan 2020 15:24:10 -0300
+Message-Id: <20200106182425.20312-45-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -59,7 +60,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::844
+X-Received-From: 2607:f8b0:4864:20::f44
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -72,50 +73,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:26:11 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:26:17 -0000
 
-'out' label can be replaced by 'return' with the apropriate
-value that is set by 'r' right before the jump.
+'err_out' can be replaced by 'return ret' in the error conditions
+the jump was being made.
 
-Christian Borntraeger <borntraeger@de.ibm.com>
+CC: Greg Kurz <groug@kaod.org>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- hw/intc/s390_flic_kvm.c | 10 +++-------
- 1 file changed, 3 insertions(+), 7 deletions(-)
+ hw/9pfs/9p-local.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
-diff --git a/hw/intc/s390_flic_kvm.c b/hw/intc/s390_flic_kvm.c
-index dddd33ea61..2e1e70c61d 100644
---- a/hw/intc/s390_flic_kvm.c
-+++ b/hw/intc/s390_flic_kvm.c
-@@ -439,17 +439,14 @@ static int kvm_flic_load(QEMUFile *f, void *opaque, size_t size,
-     count = qemu_get_be64(f);
-     len = count * sizeof(struct kvm_s390_irq);
-     if (count == FLIC_FAILED) {
--        r = -EINVAL;
--        goto out;
-+        return -EINVAL;
-     }
-     if (count == 0) {
--        r = 0;
--        goto out;
-+        return 0;
-     }
-     buf = g_try_malloc0(len);
-     if (!buf) {
--        r = -ENOMEM;
--        goto out;
-+        return -ENOMEM;
+diff --git a/hw/9pfs/9p-local.c b/hw/9pfs/9p-local.c
+index ca641390fb..f9bdd2ad7c 100644
+--- a/hw/9pfs/9p-local.c
++++ b/hw/9pfs/9p-local.c
+@@ -1094,12 +1094,12 @@ static int local_unlinkat_common(FsContext *ctx, int dirfd, const char *name,
+ 
+             fd = openat_dir(dirfd, name);
+             if (fd == -1) {
+-                goto err_out;
++                return ret;
+             }
+             ret = unlinkat(fd, VIRTFS_META_DIR, AT_REMOVEDIR);
+             close_preserve_errno(fd);
+             if (ret < 0 && errno != ENOENT) {
+-                goto err_out;
++                return ret;
+             }
+         }
+         map_dirfd = openat_dir(dirfd, VIRTFS_META_DIR);
+@@ -1107,16 +1107,14 @@ static int local_unlinkat_common(FsContext *ctx, int dirfd, const char *name,
+             ret = unlinkat(map_dirfd, name, 0);
+             close_preserve_errno(map_dirfd);
+             if (ret < 0 && errno != ENOENT) {
+-                goto err_out;
++                return ret;
+             }
+         } else if (errno != ENOENT) {
+-            goto err_out;
++            return ret;
+         }
      }
  
-     if (qemu_get_buffer(f, (uint8_t *) buf, len) != len) {
-@@ -460,7 +457,6 @@ static int kvm_flic_load(QEMUFile *f, void *opaque, size_t size,
- 
- out_free:
-     g_free(buf);
--out:
-     return r;
+-    ret = unlinkat(dirfd, name, flags);
+-err_out:
+-    return ret;
++    return unlinkat(dirfd, name, flags);
  }
  
+ static int local_remove(FsContext *ctx, const char *path)
 -- 
 2.24.1
 
