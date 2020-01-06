@@ -1,58 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ioblw-0000Zx-Oe
-	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46284)
+	id 1iobly-0000bC-K3
+	for mharc-qemu-trivial@gnu.org; Mon, 06 Jan 2020 18:26:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46309)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4x-0003Pn-Mv
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:16 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4z-0003T1-54
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ioX4w-00052c-Ip
- for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:15 -0500
-Received: from mail-qv1-xf44.google.com ([2607:f8b0:4864:20::f44]:44709)
+ (envelope-from <danielhb413@gmail.com>) id 1ioX4y-000547-02
+ for qemu-trivial@nongnu.org; Mon, 06 Jan 2020 13:26:17 -0500
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742]:41165)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ioX4u-0004zT-8L; Mon, 06 Jan 2020 13:26:12 -0500
-Received: by mail-qv1-xf44.google.com with SMTP id n8so19408060qvg.11;
- Mon, 06 Jan 2020 10:26:12 -0800 (PST)
+ id 1ioX4v-000515-M6; Mon, 06 Jan 2020 13:26:13 -0500
+Received: by mail-qk1-x742.google.com with SMTP id x129so40279331qke.8;
+ Mon, 06 Jan 2020 10:26:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=mpfIHJqJRcqC4Yq+ELUmZkb3CWZtgP1HlVj632oKpm4=;
- b=SQQZXd0Hkm27bw09ihFgZpDdMnFMt5UqLm7MMQo1Baw8csh13X325ESiZ2a1n8di4I
- cyg1Ew9ipVOzN8liH9UcttZCbJLe/gOj2CM40aXfsn8Sbo3RHMztenxxNu6gS4pnHQW2
- fWwuDVvHANdc1mvbwIi77g+qf0bq9yOpjg1ibzdqD5vqS1tWIjiGF+HkxCnoBEd00G4S
- 35z8jlkaqxPX7FaBTq5cGBn2qP5Wylc58mLQtvWfuDSFe6TAORRbyHpo8oFZTowueK79
- zod7gGyH4aCn3f+f7Ni46cHhb5oe26WybhsHJnQ3MrLmDno1hagR+BiWfNIZKsaNhib9
- G/6Q==
+ bh=8LtGJFRoLm+1QViJT/TSBBPXd3MZMx440gcj2kcTdA4=;
+ b=E0AwercUzSfgtOPsdaKwCargU5p1STDCJT25acr9PLcWwNzJVhZNBfbIIoAOJElWNh
+ pRx3+aoOoI+GvsMLVeyfpdl3RUmg+qa9GgpwKCsg43/7KB6s6UY/CggIQ7wUhkPqXlwt
+ BdNAry1dcFq5VH4T3oSmu1XC6++yaN5dZFLiaTkw5OSyR5qPzuL58r5MyERrG4yax8Lh
+ F7fvShSFdDgJwsXlpuiVGLwQsS0y8pj9MjZb58sFCTuRDCFvX9NBh7IXwXWl2/hyxmcW
+ S3SD9J8TRBalKqXLNoE7zjL9p7Llz5I/SSbrpEQQ202liFEqK/bqlgJUNX/8vYTWVjkf
+ lDRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=mpfIHJqJRcqC4Yq+ELUmZkb3CWZtgP1HlVj632oKpm4=;
- b=eZbYU4SBhVA6NP7OJgYB+h3uefhkwV09yiyaCDyF54/OGha9rpzLSRYl8n3gcaqBvQ
- dPz4T9fgjhZSrXTnU5/y4VdgLNVowK0imO95qYaZKul4itMUc8+BkkEfrHKiyfu8jC27
- B+mBC34qp8kyEpgbEfy67pdBTTaymaR87uc5uVKdazZiTaVogoUuadPSI1AOATfcP+Oa
- jd+GQ/2ZITImLNvIDl29X2sXQYB/9DQoPe0YNtJ6yg3IzW8A7D+u/9jfzfl06l+cOSyG
- 1KHPT9K7fPafpQgGlamAL/IJeXipmWkA3YDBW1Uupl5zYN8eTicNE645dKK8lWGksBnV
- Ofgg==
-X-Gm-Message-State: APjAAAUc6XOednrUgJjv5ECToPUsTYxYBOXBkQneKpRAGXX8xZvcjrz6
- bhZMGFsQUM4PAUiRBJURlkMoKtH7
-X-Google-Smtp-Source: APXvYqxmtVPcSIQ61YfaX5ax6qApQhozK+8b0/vmjFHP/QdsenqVJrYHT3fEy/D5ZOY2OaML8pv2SA==
-X-Received: by 2002:a05:6214:118d:: with SMTP id
- t13mr78133928qvv.5.1578335171686; 
- Mon, 06 Jan 2020 10:26:11 -0800 (PST)
+ bh=8LtGJFRoLm+1QViJT/TSBBPXd3MZMx440gcj2kcTdA4=;
+ b=cH5euehgyJ24DDx0P4K8ChUK/3u1V6bZe+2xagLnDD2onKKpKCvyskwTzp9ME4VMVO
+ SA6r5Fx68hv/BrYsqRuGUHICaZcE6kui5eUxCcGlPy0jXT93Dh6s7IJskn0toXC9Qeja
+ HMS/VgnpBG3PvP3A2k1GorGMv4ppK0ZmQnjpyuJ5BJ83TQoh9bEuWqiLhzZjCJJOHaZJ
+ z977ENCQz9q5ad8+IskETDg2NhytwUrl5eVN/7oVaIRQaNl/zhyX0pLFo0VLKiSAZJ3s
+ UHJwPWAG2ivpLQpwXxZggyCJ8085ECAp8d2OSONoGO8dvpacEsVSUFekjVeiwoiEozXl
+ u1jQ==
+X-Gm-Message-State: APjAAAVQdoTliDm5Jx2QqWPvF7nLt2xYdV/bfBRk5+QLI++UTh4GvpEJ
+ bpoVvH2mMyOIQzKVC+2bYO9tX7BH
+X-Google-Smtp-Source: APXvYqy/Z+2Py4bryxprBQK1r7tzlXhDuL+n9PFjlwc5OSvUfaRZzVCcIsfcph9Pz8WVncG1rCwivw==
+X-Received: by 2002:a37:6794:: with SMTP id
+ b142mr85101702qkc.216.1578335173136; 
+ Mon, 06 Jan 2020 10:26:13 -0800 (PST)
 Received: from rekt.ibmuc.com ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.10
+ by smtp.gmail.com with ESMTPSA id b81sm21026522qkc.135.2020.01.06.10.26.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Jan 2020 10:26:11 -0800 (PST)
+ Mon, 06 Jan 2020 10:26:12 -0800 (PST)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Greg Kurz <groug@kaod.org>
-Subject: [PATCH v1 44/59] 9p-local.c: remove unneeded label in
- local_unlinkat_common()
-Date: Mon,  6 Jan 2020 15:24:10 -0300
-Message-Id: <20200106182425.20312-45-danielhb413@gmail.com>
+Subject: [PATCH v1 45/59] 9pfs/9p.c: remove unneeded labels
+Date: Mon,  6 Jan 2020 15:24:11 -0300
+Message-Id: <20200106182425.20312-46-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
@@ -60,7 +59,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::f44
+X-Received-From: 2607:f8b0:4864:20::742
 X-Mailman-Approved-At: Mon, 06 Jan 2020 18:26:41 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -73,56 +72,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 06 Jan 2020 18:26:17 -0000
+X-List-Received-Date: Mon, 06 Jan 2020 18:26:19 -0000
 
-'err_out' can be replaced by 'return ret' in the error conditions
-the jump was being made.
+'out' label in v9fs_xattr_write() and 'out_nofid' label in
+v9fs_complete_rename() can be replaced by appropriate return
+calls.
 
 CC: Greg Kurz <groug@kaod.org>
 Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 ---
- hw/9pfs/9p-local.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
+ hw/9pfs/9p.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/hw/9pfs/9p-local.c b/hw/9pfs/9p-local.c
-index ca641390fb..f9bdd2ad7c 100644
---- a/hw/9pfs/9p-local.c
-+++ b/hw/9pfs/9p-local.c
-@@ -1094,12 +1094,12 @@ static int local_unlinkat_common(FsContext *ctx, int dirfd, const char *name,
+diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
+index 520177f40c..be2beba4cd 100644
+--- a/hw/9pfs/9p.c
++++ b/hw/9pfs/9p.c
+@@ -2464,8 +2464,7 @@ static int v9fs_xattr_write(V9fsState *s, V9fsPDU *pdu, V9fsFidState *fidp,
  
-             fd = openat_dir(dirfd, name);
-             if (fd == -1) {
--                goto err_out;
-+                return ret;
-             }
-             ret = unlinkat(fd, VIRTFS_META_DIR, AT_REMOVEDIR);
-             close_preserve_errno(fd);
-             if (ret < 0 && errno != ENOENT) {
--                goto err_out;
-+                return ret;
-             }
-         }
-         map_dirfd = openat_dir(dirfd, VIRTFS_META_DIR);
-@@ -1107,16 +1107,14 @@ static int local_unlinkat_common(FsContext *ctx, int dirfd, const char *name,
-             ret = unlinkat(map_dirfd, name, 0);
-             close_preserve_errno(map_dirfd);
-             if (ret < 0 && errno != ENOENT) {
--                goto err_out;
-+                return ret;
-             }
-         } else if (errno != ENOENT) {
--            goto err_out;
-+            return ret;
-         }
+ 
+     if (fidp->fs.xattr.len < off) {
+-        err = -ENOSPC;
+-        goto out;
++        return -ENOSPC;
      }
- 
--    ret = unlinkat(dirfd, name, flags);
--err_out:
--    return ret;
-+    return unlinkat(dirfd, name, flags);
+     write_count = fidp->fs.xattr.len - off;
+     if (write_count > count) {
+@@ -2491,7 +2490,7 @@ static int v9fs_xattr_write(V9fsState *s, V9fsPDU *pdu, V9fsFidState *fidp,
+         off += to_copy;
+         write_count -= to_copy;
+     }
+-out:
++
+     return err;
  }
  
- static int local_remove(FsContext *ctx, const char *path)
+@@ -3056,8 +3055,7 @@ static int coroutine_fn v9fs_complete_rename(V9fsPDU *pdu, V9fsFidState *fidp,
+     if (newdirfid != -1) {
+         dirfidp = get_fid(pdu, newdirfid);
+         if (dirfidp == NULL) {
+-            err = -ENOENT;
+-            goto out_nofid;
++            return -ENOENT;
+         }
+         if (fidp->fid_type != P9_FID_NONE) {
+             err = -EINVAL;
+@@ -3100,7 +3098,6 @@ out:
+         put_fid(pdu, dirfidp);
+     }
+     v9fs_path_free(&new_path);
+-out_nofid:
+     return err;
+ }
+ 
 -- 
 2.24.1
 
