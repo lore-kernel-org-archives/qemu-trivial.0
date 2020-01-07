@@ -1,63 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iop0A-0000XC-Fa
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 08:34:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47295)
+	id 1iop13-0003B7-0M
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 08:35:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52428)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iop06-0000RD-Md
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 08:34:27 -0500
+ (envelope-from <qemu_oss@crudebyte.com>) id 1ionkg-0007cN-KW
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 07:14:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iop05-0006dk-L9
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 08:34:26 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:30720
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iop05-0006cY-Hi
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 08:34:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578404065;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=aVHWUPijN67Yd8prPGoEwGFdSzw4hbEysj3lMHTDpXY=;
- b=X7ijQkmkBtB//Wm4dRg80byuer4xG8gu16Pgt3P6ooTONBkBQbqndwQWtSGNQLCVUkt59t
- TiCKKrEHuiBOoK3a26AT1mE+OzFBVKThUHl6KWm1g4xhGJuHAWTDWwX3oQeABV7J/IfPtj
- aWekctgAY3HGewGIEI6oPjjSG/bMos8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-140-B6jzkJq9O2e1-GXptvivYQ-1; Tue, 07 Jan 2020 08:34:24 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1124E801E77;
- Tue,  7 Jan 2020 13:34:23 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-116.ams2.redhat.com [10.36.116.116])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2711E86C43;
- Tue,  7 Jan 2020 13:34:21 +0000 (UTC)
-Subject: Re: [PATCH v1 31/59] util/aio-posix.c: remove unneeded 'out' label in
- aio_epoll
-To: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+ (envelope-from <qemu_oss@crudebyte.com>) id 1ionkf-0002RR-IA
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 07:14:26 -0500
+Received: from kylie.crudebyte.com ([5.189.157.229]:39153)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <qemu_oss@crudebyte.com>)
+ id 1ionkd-0002PW-42; Tue, 07 Jan 2020 07:14:23 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=crudebyte.com; s=kylie; h=Content-Type:Content-Transfer-Encoding:
+ MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+ Content-ID:Content-Description;
+ bh=kHnAvQb+bCtckqXNHiGqjg1vnZNiazUuQfZqot5vWfA=; b=nIwShGu8c7igOKSk1LqI38kgAn
+ MRFEuaHoKlXlOsIAWGht4vXcuUHplGSq/UWrTmg9tlx1r1Wq7PU6yqQcYv91uhmXAgsN8ZQ78XWeF
+ 4XTlLmUWdNX3Ohztk8s4kWkkxOtyo8lC5up6Zwr/dJlY7g5JGYqxI1MYKtzxocr+8Ft5d43ZdsV22
+ sDBHLmIREZqr6jFOFxvogTbyxANvYuq3YF94ODACU/bHQKQMkD19fYZ1DG4NzRXQi+zGfyP4VKdnc
+ SMEqEjtQQSOn+sutTffft2jDZQFLmeACN0Gz+RYNO5RZKQlgnGqjVPXPJ/0S/r+FSYPus6Ns/gcQt
+ REoRo8XxYbjjMQH5/hKI9mfkHgMWjti3Tl70/LqH+z/Mgarp47Wtj6PgfkhpwzRrkCG9VmQhwpCpZ
+ lonqUQxL9Jtw9e2wDOWMkUK/FJxVgWj/jFeL1vn2IFooV+RQeLHHCBnHS0lLzRUo3nWNcGQzF0tMK
+ oClP/yApl42w4x/Ke6e6kQ3jfVkSlpSNLx/o3SRAxXbHAkeEimCbwQhG/7RplsmuAquHXduz/PmbB
+ /FWO1uNUW0TamNDdP3GpXOmbYMMR3CvrvmOzNXj7R80H3hUAJHLt8AEVhs24hvDJElmocAC8RbHzo
+ M1cSqOn36BfZdAxmQv9fF+1eeYCynm6QPdS4aomXM=;
+From: Christian Schoenebeck <qemu_oss@crudebyte.com>
+To: qemu-devel@nongnu.org
+Cc: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-trivial@nongnu.org,
+ Greg Kurz <groug@kaod.org>
+Subject: Re: [PATCH v1 45/59] 9pfs/9p.c: remove unneeded labels
+Date: Tue, 07 Jan 2020 13:14:20 +0100
+Message-ID: <13045963.Gd4jlxRJ09@silver>
+In-Reply-To: <20200106182425.20312-46-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
- <20200106182425.20312-32-danielhb413@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <e38ddfcb-1b65-a7ac-924b-5c0d36476bad@redhat.com>
-Date: Tue, 7 Jan 2020 14:34:20 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ <20200106182425.20312-46-danielhb413@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20200106182425.20312-32-danielhb413@gmail.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: B6jzkJq9O2e1-GXptvivYQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 5.189.157.229
+X-Mailman-Approved-At: Tue, 07 Jan 2020 08:35:23 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,38 +54,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jan 2020 13:34:29 -0000
+X-List-Received-Date: Tue, 07 Jan 2020 12:14:29 -0000
 
-On 06/01/2020 19.23, Daniel Henrique Barboza wrote:
-> 'out' can be replaced by 'return ret'.
+On Montag, 6. Januar 2020 19:24:11 CET Daniel Henrique Barboza wrote:
+> 'out' label in v9fs_xattr_write() and 'out_nofid' label in
+> v9fs_complete_rename() can be replaced by appropriate return
+> calls.
 > 
-> CC: Paolo Bonzini <pbonzini@redhat.com>
+> CC: Greg Kurz <groug@kaod.org>
 > Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 > ---
->  util/aio-posix.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+>  hw/9pfs/9p.c | 9 +++------
+>  1 file changed, 3 insertions(+), 6 deletions(-)
 > 
-> diff --git a/util/aio-posix.c b/util/aio-posix.c
-> index a4977f538e..7c4cfea8ce 100644
-> --- a/util/aio-posix.c
-> +++ b/util/aio-posix.c
-> @@ -121,7 +121,7 @@ static int aio_epoll(AioContext *ctx, GPollFD *pfds,
->                           ARRAY_SIZE(events),
->                           timeout);
->          if (ret <= 0) {
-> -            goto out;
-> +            return ret;
->          }
->          for (i = 0; i < ret; i++) {
->              int ev = events[i].events;
-> @@ -132,7 +132,6 @@ static int aio_epoll(AioContext *ctx, GPollFD *pfds,
->                  (ev & EPOLLERR ? G_IO_ERR : 0);
->          }
+> diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
+> index 520177f40c..be2beba4cd 100644
+> --- a/hw/9pfs/9p.c
+> +++ b/hw/9pfs/9p.c
+> @@ -2464,8 +2464,7 @@ static int v9fs_xattr_write(V9fsState *s, V9fsPDU
+> *pdu, V9fsFidState *fidp,
+> 
+> 
+>      if (fidp->fs.xattr.len < off) {
+> -        err = -ENOSPC;
+> -        goto out;
+> +        return -ENOSPC;
+>      }
+>      write_count = fidp->fs.xattr.len - off;
+>      if (write_count > count) {
+> @@ -2491,7 +2490,7 @@ static int v9fs_xattr_write(V9fsState *s, V9fsPDU
+> *pdu, V9fsFidState *fidp, off += to_copy;
+>          write_count -= to_copy;
 >      }
 > -out:
->      return ret;
+> +
+>      return err;
+>  }
+> 
+> @@ -3056,8 +3055,7 @@ static int coroutine_fn v9fs_complete_rename(V9fsPDU
+> *pdu, V9fsFidState *fidp, if (newdirfid != -1) {
+>          dirfidp = get_fid(pdu, newdirfid);
+>          if (dirfidp == NULL) {
+> -            err = -ENOENT;
+> -            goto out_nofid;
+> +            return -ENOENT;
+>          }
+>          if (fidp->fid_type != P9_FID_NONE) {
+>              err = -EINVAL;
+> @@ -3100,7 +3098,6 @@ out:
+>          put_fid(pdu, dirfidp);
+>      }
+>      v9fs_path_free(&new_path);
+> -out_nofid:
+>      return err;
 >  }
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Same as with patch 44: IMO not any improvement, but also not any behaviour 
+change at least. So it's up to you Greg.
+
+Best regards,
+Christian Schoenebeck
+
 
 
