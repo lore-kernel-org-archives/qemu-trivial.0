@@ -1,84 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iolOb-0003cd-41
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 04:43:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45483)
+	id 1iolWK-0006g8-2a
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 04:51:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46600)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mreitz@redhat.com>) id 1iolOW-0003GE-4r
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:43:25 -0500
+ (envelope-from <groug@kaod.org>) id 1iolWE-00069x-28
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:51:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mreitz@redhat.com>) id 1iolOU-0003Fw-Pb
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:43:23 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:50555
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <groug@kaod.org>) id 1iolWC-0006qc-S5
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:51:21 -0500
+Received: from 4.mo6.mail-out.ovh.net ([87.98.184.159]:57911)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mreitz@redhat.com>) id 1iolOU-0003FB-LI
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:43:22 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578390202;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=wwe+Al0UA3gvOo5vmrdfV05trfwMxUtyU4/mAx4+OMA=;
- b=ezmE3DwLQ2vyykyhYuB9UC8pA83Qb+GGPZwRITZGonec7wqqIQviD3e2A83YmWsR1XO8eZ
- E8/V613lCzX/DGVwclywrdXq7OwdjW/wZ7m5bGPuthr7arR0qdZn1BAhKST4g1bu0TuY2l
- 9pvl25Eb/2UDmqNZMAsQ7Lp7mDMAJz0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-227-1qqrJZr6Mu-mX8oKgA5rQA-1; Tue, 07 Jan 2020 04:43:15 -0500
-X-MC-Unique: 1qqrJZr6Mu-mX8oKgA5rQA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3FA1E8024DA;
- Tue,  7 Jan 2020 09:43:14 +0000 (UTC)
-Received: from dresden.str.redhat.com (ovpn-117-1.ams2.redhat.com
- [10.36.117.1])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id CF34360BE2;
- Tue,  7 Jan 2020 09:43:12 +0000 (UTC)
-Subject: Re: [PATCH v1 00/59] trivial unneeded labels cleanup
-To: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
+ (Exim 4.71) (envelope-from <groug@kaod.org>) id 1iolWC-0006oN-Ma
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:51:20 -0500
+Received: from player159.ha.ovh.net (unknown [10.108.1.13])
+ by mo6.mail-out.ovh.net (Postfix) with ESMTP id F267C1F7E70
+ for <qemu-trivial@nongnu.org>; Tue,  7 Jan 2020 10:51:17 +0100 (CET)
+Received: from kaod.org (lns-bzn-46-82-253-208-248.adsl.proxad.net
+ [82.253.208.248]) (Authenticated sender: groug@kaod.org)
+ by player159.ha.ovh.net (Postfix) with ESMTPSA id 8779DDE7D743;
+ Tue,  7 Jan 2020 09:51:14 +0000 (UTC)
+Date: Tue, 7 Jan 2020 10:51:13 +0100
+From: Greg Kurz <groug@kaod.org>
+To: Daniel Henrique Barboza <danielhb413@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH v1 12/59] virtfs-proxy-helper.c: remove 'err_out' label
+ in setugid()
+Message-ID: <20200107105113.7a443d51@bahia.lan>
+In-Reply-To: <20200106182425.20312-13-danielhb413@gmail.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
-From: Max Reitz <mreitz@redhat.com>
-Autocrypt: addr=mreitz@redhat.com; prefer-encrypt=mutual; keydata=
- mQENBFXOJlcBCADEyyhOTsoa/2ujoTRAJj4MKA21dkxxELVj3cuILpLTmtachWj7QW+TVG8U
- /PsMCFbpwsQR7oEy8eHHZwuGQsNpEtNC2G/L8Yka0BIBzv7dEgrPzIu+W3anZXQW4702+uES
- U29G8TP/NGfXRRHGlbBIH9KNUnOSUD2vRtpOLXkWsV5CN6vQFYgQfFvmp5ZpPeUe6xNplu8V
- mcTw8OSEDW/ZnxJc8TekCKZSpdzYoxfzjm7xGmZqB18VFwgJZlIibt1HE0EB4w5GsD7x5ekh
- awIe3RwoZgZDLQMdOitJ1tUc8aqaxvgA4tz6J6st8D8pS//m1gAoYJWGwwIVj1DjTYLtABEB
- AAG0HU1heCBSZWl0eiA8bXJlaXR6QHJlZGhhdC5jb20+iQFTBBMBCAA9AhsDBQkSzAMABQsJ
- CAcCBhUICQoLAgQWAgMBAh4BAheABQJVzie5FRhoa3A6Ly9rZXlzLmdudXBnLm5ldAAKCRD0
- B9sAYdXPQDcIB/9uNkbYEex1rHKz3mr12uxYMwLOOFY9fstP5aoVJQ1nWQVB6m2cfKGdcRe1
- 2/nFaHSNAzT0NnKz2MjhZVmcrpyd2Gp2QyISCfb1FbT82GMtXFj1wiHmPb3CixYmWGQUUh+I
- AvUqsevLA+WihgBUyaJq/vuDVM1/K9Un+w+Tz5vpeMidlIsTYhcsMhn0L9wlCjoucljvbDy/
- 8C9L2DUdgi3XTa0ORKeflUhdL4gucWoAMrKX2nmPjBMKLgU7WLBc8AtV+84b9OWFML6NEyo4
- 4cP7cM/07VlJK53pqNg5cHtnWwjHcbpGkQvx6RUx6F1My3y52vM24rNUA3+ligVEgPYBuQEN
- BFXOJlcBCADAmcVUNTWT6yLWQHvxZ0o47KCP8OcLqD+67T0RCe6d0LP8GsWtrJdeDIQk+T+F
- xO7DolQPS6iQ6Ak2/lJaPX8L0BkEAiMuLCKFU6Bn3lFOkrQeKp3u05wCSV1iKnhg0UPji9V2
- W5eNfy8F4ZQHpeGUGy+liGXlxqkeRVhLyevUqfU0WgNqAJpfhHSGpBgihUupmyUg7lfUPeRM
- DzAN1pIqoFuxnN+BRHdAecpsLcbR8sQddXmDg9BpSKozO/JyBmaS1RlquI8HERQoe6EynJhd
- 64aICHDfj61rp+/0jTIcevxIIAzW70IadoS/y3DVIkuhncgDBvGbF3aBtjrJVP+5ABEBAAGJ
- ASUEGAEIAA8FAlXOJlcCGwwFCRLMAwAACgkQ9AfbAGHVz0CbFwf9F/PXxQR9i4N0iipISYjU
- sxVdjJOM2TMut+ZZcQ6NSMvhZ0ogQxJ+iEQ5OjnIputKvPVd5U7WRh+4lF1lB/NQGrGZQ1ic
- alkj6ocscQyFwfib+xIe9w8TG1CVGkII7+TbS5pXHRxZH1niaRpoi/hYtgzkuOPp35jJyqT/
- /ELbqQTDAWcqtJhzxKLE/ugcOMK520dJDeb6x2xVES+S5LXby0D4juZlvUj+1fwZu+7Io5+B
- bkhSVPb/QdOVTpnz7zWNyNw+OONo1aBUKkhq2UIByYXgORPFnbfMY7QWHcjpBVw9MgC4tGeF
- R4bv+1nAMMxKmb5VvQCExr0eFhJUAHAhVg==
-Message-ID: <d9e8e203-b529-1d1a-d8b9-5fd0fbe49e6b@redhat.com>
-Date: Tue, 7 Jan 2020 10:43:09 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.1
+ <20200106182425.20312-13-danielhb413@gmail.com>
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="yeemFV6yw3gZg4wyqV76NOcbhykcd03i5"
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 6094777671292524806
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrvdehvddgtdejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvffukfgjfhfogggtgfesthejredtredtvdenucfhrhhomhepifhrvghgucfmuhhriicuoehgrhhouhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrvdehfedrvddtkedrvdegkeenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrudehledrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpehgrhhouhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqthhrihhvihgrlhesnhhonhhgnhhurdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 87.98.184.159
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,102 +51,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jan 2020 09:43:28 -0000
+X-List-Received-Date: Tue, 07 Jan 2020 09:51:26 -0000
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---yeemFV6yw3gZg4wyqV76NOcbhykcd03i5
-Content-Type: multipart/mixed; boundary="aRUSOiLNpVhiPxYelpXmi9QyENeaBuzv9"
+On Mon,  6 Jan 2020 15:23:38 -0300
+Daniel Henrique Barboza <danielhb413@gmail.com> wrote:
 
---aRUSOiLNpVhiPxYelpXmi9QyENeaBuzv9
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+> 'err_out' can be removed and be replaced by 'return -errno'
+> in its only instance in the function.
+> 
+> CC: Greg Kurz <groug@kaod.org>
+> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+> ---
 
-On 06.01.20 19:23, Daniel Henrique Barboza wrote:
-> Hello,
->=20
-> This is the type of cleanup I've contributed to Libvirt
-> during the last year. Figured QEMU also deserves the same
-> care.
->=20
-> The idea here is remove unneeded labels. By 'unneeded' I
-> mean labels that does nothing but a 'return' call. One
-> common case is something like this:
->=20
-> if ()
->     goto cleanup;
-> [...]
->  cleanup:
->     return 0;
->=20
-> This code can be simplified to:
->=20
-> if ()
->     return 0;
->=20
->=20
-> Which is cleaner and requires less brain cycles to wonder
-> whether the 'cleanup' label does anything special, such
-> as a heap memory cleanup.
+I don't really mind, but I confirm this doesn't change behavior.
 
-For me, it doesn=E2=80=99t require any brain cycles, because I generally ju=
-st
-assume the cleanup label will do the right thing.  OTOH, a return
-statement may make me invest some some brain cycles, because maybe there
-is something to be cleaned up and it isn=E2=80=99t done here.
+Acked-by: Greg Kurz <groug@kaod.org>
 
-> Another common case uses a variable to set a return value,
-> generally an error, then return:
->=20
-> if () {
->     ret =3D -ENOENT;
->     goto out;
-> }
-> [..]
->  out:
->     return ret;
->=20
-> Likewise, it is clearer to just 'return -ENOENT' instead of
-> jumping to a label. There are other cases being handled in
-> these patches, but these are the most common.
+What's the plan to get this and the other 9p related patches merged ?
+Through the trivial tree or each subsystem tree ?
 
-I find it clearer from the perspective of =E2=80=9Cless LoC=E2=80=9D, but I=
- find it less
-clear from the perspective of =E2=80=9CIs this the right way to clean up?=
-=E2=80=9D.
-
-Even on patch 15 (which you say isn=E2=80=99t too much of a debate), I don=
-=E2=80=99t
-find the change to make things any clearer.  Just less verbose.
-
-I suppose none of this would matter if we used __attribute__((cleanup))
-everywhere and simply never had to clean up anything manually.  But as
-long as we don=E2=80=99t and require cleanup paths in many places, I disagr=
-ee
-that they require more brain cycles than plain return statements.
-
-Max
-
-
---aRUSOiLNpVhiPxYelpXmi9QyENeaBuzv9--
-
---yeemFV6yw3gZg4wyqV76NOcbhykcd03i5
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEkb62CjDbPohX0Rgp9AfbAGHVz0AFAl4UUq4ACgkQ9AfbAGHV
-z0BnjwgAsAOGsDeksjE+XhOuNJmoFdN5teK96YEqA76RJ8P9nM8aiNt1jyAGMnvK
-5n8drgqKk3Wkgaig8dKKOfqIlDBkKCI0v4Koae1hZbQmXQlDo/eugEv85e+ABsp2
-my+GHGe26UXH/LJK81FRM695GKiB3v7Yg9K9txnqnMV1zBmilCsF/mBIylKKpSGJ
-Vsj8gAZRNDM7pDkgoQehkNlhcCvQldQTBt0eFn7vWt/u8WQDB4KEXw2VLqq2Za/6
-P8ciSkg9Ttd0giHvVcJ0uOud636TaLho6SIiVXz6e1EfkNW500Hq1JqzZ9MTgxVJ
-EorJ0zCBNaipIrqh7jYadh5OSqsEUQ==
-=W0pp
------END PGP SIGNATURE-----
-
---yeemFV6yw3gZg4wyqV76NOcbhykcd03i5--
+>  fsdev/virtfs-proxy-helper.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
+> index 0d4de49dcf..aa1ab2590d 100644
+> --- a/fsdev/virtfs-proxy-helper.c
+> +++ b/fsdev/virtfs-proxy-helper.c
+> @@ -287,8 +287,7 @@ static int setugid(int uid, int gid, int *suid, int *sgid)
+>      *sgid = getegid();
+>  
+>      if (setresgid(-1, gid, *sgid) == -1) {
+> -        retval = -errno;
+> -        goto err_out;
+> +        return -errno;
+>      }
+>  
+>      if (setresuid(-1, uid, *suid) == -1) {
+> @@ -322,7 +321,6 @@ err_sgid:
+>      if (setresgid(-1, *sgid, *sgid) == -1) {
+>          abort();
+>      }
+> -err_out:
+>      return retval;
+>  }
+>  
 
 
