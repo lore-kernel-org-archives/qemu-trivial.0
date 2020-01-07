@@ -1,52 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iop15-0003Ic-Ip
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 08:35:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55215)
+	id 1iop2G-0006Fa-GZ
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 08:36:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48115)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <prime.zeng@hisilicon.com>) id 1iom7K-0002rw-SI
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 05:29:44 -0500
+ (envelope-from <thuth@redhat.com>) id 1iop2B-00064D-Pz
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 08:36:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <prime.zeng@hisilicon.com>) id 1iom7J-0002Dq-H4
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 05:29:42 -0500
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2426 helo=huawei.com)
+ (envelope-from <thuth@redhat.com>) id 1iop2A-00083m-5X
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 08:36:35 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:56848
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <prime.zeng@hisilicon.com>)
- id 1iom7A-00029I-H7; Tue, 07 Jan 2020 05:29:32 -0500
-Received: from DGGEMM402-HUB.china.huawei.com (unknown [172.30.72.54])
- by Forcepoint Email with ESMTP id 39AA7985251B38707C0B;
- Tue,  7 Jan 2020 18:29:27 +0800 (CST)
-Received: from DGGEMM526-MBX.china.huawei.com ([169.254.8.143]) by
- DGGEMM402-HUB.china.huawei.com ([10.3.20.210]) with mapi id 14.03.0439.000;
- Tue, 7 Jan 2020 18:29:23 +0800
-From: "Zengtao (B)" <prime.zeng@hisilicon.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>, Shannon Zhao <shannon.zhaosl@gmail.com>, "Peter
- Maydell" <peter.maydell@linaro.org>, Igor Mammedov <imammedo@redhat.com>, 
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Subject: RE: [PATCH] hw/arm/acpi: Pack the SRAT processors structure by
- node_id ascending order
-Thread-Topic: [PATCH] hw/arm/acpi: Pack the SRAT processors structure by
- node_id ascending order
-Thread-Index: AQHVxTwQeBqIZ8yXtEyanioq6c3U06feal4AgACT4nA=
-Date: Tue, 7 Jan 2020 10:29:22 +0000
-Message-ID: <678F3D1BB717D949B966B68EAEB446ED340B608D@dggemm526-mbx.china.huawei.com>
-References: <1578388729-55540-1-git-send-email-prime.zeng@hisilicon.com>
- <20200107042918-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20200107042918-mutt-send-email-mst@kernel.org>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.74.221.187]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iop2A-00083B-2M
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 08:36:34 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1578404193;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=34RMSZkL48no063to1I0icdNEnW7GdgTFsYRTceuYaQ=;
+ b=cafzCUrXwI+aM/44d1POHfS6xErjWLK2IQvmOqy5aI0avwI115CpmyAAkvL+CFVmb/I8Ew
+ UsX29p+YmIuEXQSRGTf8hBk7G4ge7lKL/kXBnhNXCOGF24M5ULefuDnXMuFjlQzgsGcZzJ
+ SJRgbXRcxtqbpFH7Cu5cDM6h5lpEARI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-339-j9UQCtXuOCOZhDoEBbdTfg-1; Tue, 07 Jan 2020 08:36:30 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0F076107ACC5;
+ Tue,  7 Jan 2020 13:36:29 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-116.ams2.redhat.com [10.36.116.116])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 60E8E7C364;
+ Tue,  7 Jan 2020 13:36:27 +0000 (UTC)
+Subject: Re: [PATCH v1 37/59] s390x/event-facility.c: remove unneeded labels
+To: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org
+References: <20200106182425.20312-1-danielhb413@gmail.com>
+ <20200106182425.20312-38-danielhb413@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <7a274241-0844-b068-527a-bec07dbf207c@redhat.com>
+Date: Tue, 7 Jan 2020 14:36:25 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <20200106182425.20312-38-danielhb413@gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: j9UQCtXuOCOZhDoEBbdTfg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.187
-X-Mailman-Approved-At: Tue, 07 Jan 2020 08:35:23 -0500
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -58,115 +70,99 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jan 2020 10:29:46 -0000
+X-List-Received-Date: Tue, 07 Jan 2020 13:36:40 -0000
 
-> -----Original Message-----
-> From: Michael S. Tsirkin [mailto:mst@redhat.com]
-> Sent: Tuesday, January 07, 2020 5:33 PM
-> To: Zengtao (B)
-> Cc: qemu-devel@nongnu.org; qemu-trivial@nongnu.org; Shannon Zhao;
-> Peter Maydell; Igor Mammedov; qemu-arm@nongnu.org
-> Subject: Re: [PATCH] hw/arm/acpi: Pack the SRAT processors structure by
-> node_id ascending order
->=20
-> On Tue, Jan 07, 2020 at 05:18:49PM +0800, Zeng Tao wrote:
-> > When booting the guest linux with the following numa configuration:
-> > -numa node,node_id=3D1,cpus=3D0-3
-> > -numa node,node_id=3D0,cpus=3D4-7
-> > We can get the following numa topology in the guest system:
-> > Architecture:          aarch64
-> > Byte Order:            Little Endian
-> > CPU(s):                8
-> > On-line CPU(s) list:   0-7
-> > Thread(s) per core:    1
-> > Core(s) per socket:    8
-> > Socket(s):             1
-> > NUMA node(s):          2
-> > L1d cache:             unknown size
-> > L1i cache:             unknown size
-> > L2 cache:              unknown size
-> > NUMA node0 CPU(s):     0-3
-> > NUMA node1 CPU(s):     4-7
-> > The Cpus 0-3 is assigned with NUMA node 1 in QEMU while it get NUMA
-> node
-> > 0 in the guest.
-> >
-> > In fact, In the linux kernel, numa_node_id is allocated per the ACPI
-> > SRAT processors structure order,so the cpu 0 will be the first one to
-> > allocate its NUMA node id, so it gets the NUMA node 0.
-> >
-> > To fix this issue, we pack the SRAT processors structure in numa node i=
-d
-> > order but not the default cpu number order.
-> >
-> > Signed-off-by: Zeng Tao <prime.zeng@hisilicon.com>
->=20
->=20
-> Does this matter? If yes fixing linux to take node id from proximity
-> field in ACPI seems cleaner ...
->
+On 06/01/2020 19.24, Daniel Henrique Barboza wrote:
+> 'out' label from write_event_mask(), handle_sccb_read_events()
+> and write_event_data() can be replaced by 'return'.
+> 
+> CC: Cornelia Huck <cohuck@redhat.com>
+> CC: Halil Pasic <pasic@linux.ibm.com>
+> CC: Christian Borntraeger <borntraeger@de.ibm.com>
+> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+> ---
+>  hw/s390x/event-facility.c | 21 ++++++---------------
+>  1 file changed, 6 insertions(+), 15 deletions(-)
+> 
+> diff --git a/hw/s390x/event-facility.c b/hw/s390x/event-facility.c
+> index 6afe278cad..f3b9661f32 100644
+> --- a/hw/s390x/event-facility.c
+> +++ b/hw/s390x/event-facility.c
+> @@ -182,11 +182,11 @@ static void write_event_data(SCLPEventFacility *ef, SCCB *sccb)
+>  {
+>      if (sccb->h.function_code != SCLP_FC_NORMAL_WRITE) {
+>          sccb->h.response_code = cpu_to_be16(SCLP_RC_INVALID_FUNCTION);
+> -        goto out;
+> +        return;
+>      }
+>      if (be16_to_cpu(sccb->h.length) < 8) {
+>          sccb->h.response_code = cpu_to_be16(SCLP_RC_INSUFFICIENT_SCCB_LENGTH);
+> -        goto out;
+> +        return;
+>      }
+>      /* first do a sanity check of the write events */
+>      sccb->h.response_code = cpu_to_be16(write_event_length_check(sccb));
+> @@ -196,9 +196,6 @@ static void write_event_data(SCLPEventFacility *ef, SCCB *sccb)
+>          sccb->h.response_code =
+>                  cpu_to_be16(handle_sccb_write_events(ef, sccb));
+>      }
+> -
+> -out:
+> -    return;
+>  }
+>  
+>  static uint16_t handle_sccb_read_events(SCLPEventFacility *ef, SCCB *sccb,
+> @@ -262,7 +259,7 @@ static void read_event_data(SCLPEventFacility *ef, SCCB *sccb)
+>  
+>      if (be16_to_cpu(sccb->h.length) != SCCB_SIZE) {
+>          sccb->h.response_code = cpu_to_be16(SCLP_RC_INSUFFICIENT_SCCB_LENGTH);
+> -        goto out;
+> +        return;
+>      }
+>  
+>      sclp_cp_receive_mask = ef->receive_mask;
+> @@ -280,18 +277,15 @@ static void read_event_data(SCLPEventFacility *ef, SCCB *sccb)
+>              (sclp_active_selection_mask & ~sclp_cp_receive_mask)) {
+>              sccb->h.response_code =
+>                      cpu_to_be16(SCLP_RC_INVALID_SELECTION_MASK);
+> -            goto out;
+> +            return;
+>          }
+>          break;
+>      default:
+>          sccb->h.response_code = cpu_to_be16(SCLP_RC_INVALID_FUNCTION);
+> -        goto out;
+> +        return;
+>      }
+>      sccb->h.response_code = cpu_to_be16(
+>              handle_sccb_read_events(ef, sccb, sclp_active_selection_mask));
+> -
+> -out:
+> -    return;
+>  }
+>  
+>  static void write_event_mask(SCLPEventFacility *ef, SCCB *sccb)
+> @@ -303,7 +297,7 @@ static void write_event_mask(SCLPEventFacility *ef, SCCB *sccb)
+>      if (!mask_length || (mask_length > SCLP_EVENT_MASK_LEN_MAX) ||
+>          ((mask_length != 4) && !ef->allow_all_mask_sizes)) {
+>          sccb->h.response_code = cpu_to_be16(SCLP_RC_INVALID_MASK_LENGTH);
+> -        goto out;
+> +        return;
+>      }
+>  
+>      /*
+> @@ -328,9 +322,6 @@ static void write_event_mask(SCLPEventFacility *ef, SCCB *sccb)
+>  
+>      sccb->h.response_code = cpu_to_be16(SCLP_RC_NORMAL_COMPLETION);
+>      ef->mask_length = mask_length;
+> -
+> -out:
+> -    return;
+>  }
+>  
+>  /* qemu object creation and initialization functions */
+> 
 
-In fact, I just want to align the node_id concept in QEMU and Linux.
-If we fix the kernel side, we need to align with all platforms.
-i think maybe not a good idea.
-=20
-> > ---
-> >  hw/arm/virt-acpi-build.c | 23 +++++++++++++++--------
-> >  1 file changed, 15 insertions(+), 8 deletions(-)
-> >
-> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > index bd5f771..497192b 100644
-> > --- a/hw/arm/virt-acpi-build.c
-> > +++ b/hw/arm/virt-acpi-build.c
-> > @@ -520,7 +520,8 @@ build_srat(GArray *table_data, BIOSLinker
-> *linker, VirtMachineState *vms)
-> >      AcpiSystemResourceAffinityTable *srat;
-> >      AcpiSratProcessorGiccAffinity *core;
-> >      AcpiSratMemoryAffinity *numamem;
-> > -    int i, srat_start;
-> > +    int i, j, srat_start;
-> > +    uint32_t node_id;
-> >      uint64_t mem_base;
-> >      MachineClass *mc =3D MACHINE_GET_CLASS(vms);
-> >      MachineState *ms =3D MACHINE(vms);
-> > @@ -530,13 +531,19 @@ build_srat(GArray *table_data, BIOSLinker
-> *linker, VirtMachineState *vms)
-> >      srat =3D acpi_data_push(table_data, sizeof(*srat));
-> >      srat->reserved1 =3D cpu_to_le32(1);
-> >
-> > -    for (i =3D 0; i < cpu_list->len; ++i) {
-> > -        core =3D acpi_data_push(table_data, sizeof(*core));
-> > -        core->type =3D ACPI_SRAT_PROCESSOR_GICC;
-> > -        core->length =3D sizeof(*core);
-> > -        core->proximity =3D
-> cpu_to_le32(cpu_list->cpus[i].props.node_id);
-> > -        core->acpi_processor_uid =3D cpu_to_le32(i);
-> > -        core->flags =3D cpu_to_le32(1);
-> > +    for (i =3D 0; i < ms->numa_state->num_nodes; ++i) {
-> > +        for (j =3D 0; j < cpu_list->len; ++j) {
->=20
-> Hmm O(n ^2) isn't great ...
-Good suggestion, 3Q.
->=20
-> > +            node_id =3D cpu_to_le32(cpu_list->cpus[j].props.node_id);
-> > +            if (node_id !=3D i) {
-> > +                continue;
-> > +            }
-> > +            core =3D acpi_data_push(table_data, sizeof(*core));
-> > +            core->type =3D ACPI_SRAT_PROCESSOR_GICC;
-> > +            core->length =3D sizeof(*core);
-> > +            core->proximity =3D node_id;
-> > +            core->acpi_processor_uid =3D cpu_to_le32(j);
-> > +            core->flags =3D cpu_to_le32(1);
-> > +        }
-> >      }
->=20
-> is the issue arm specific? wouldn't it affect x86 too?
->=20
-Good question, I think it will affect x86, but I need to confirm.
-
-> >      mem_base =3D vms->memmap[VIRT_MEM].base;
-> > --
-> > 2.8.1
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
