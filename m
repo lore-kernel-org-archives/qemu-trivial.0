@@ -1,63 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iomF2-0001gm-MV
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 05:37:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56972)
+	id 1ion0U-0006Ru-Js
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 06:26:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40148)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iomEw-0001KA-KB
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 05:37:35 -0500
+ (envelope-from <thuth@redhat.com>) id 1ion0O-00068K-D2
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 06:26:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iomEv-0007HX-7H
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 05:37:34 -0500
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:36680)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iomEv-0007Gn-0C
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 05:37:33 -0500
-Received: by mail-ot1-x341.google.com with SMTP id 19so63357307otz.3
- for <qemu-trivial@nongnu.org>; Tue, 07 Jan 2020 02:37:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=t3qwPXT9p7cy8baY/HD1tlyhWXo+nF5zeMf9AINIWe8=;
- b=T9FmmKghVH0A+OKwu3l2SFN19n1GdF+EE+w+6CMq7E2AkZaN+CbG0+lVv1sHq+2c5d
- hsnSGkyX47Gqnd5n8sa8gHUhx7riS03a1f2DsfEkMeSsf3TGVq/gpao2d9uUrN2G2jQj
- xXh+yPzZmgU38R9hGzRgfBUPukqIHyuwDql7tEczbjVobI7j6sAkJhbojzQmT5J8JB/z
- ZC39UYDDeOCMqxlJdh3aYiEhbfLaX2svQIuimlXbS5GewqatzCLdhKZJFqASQw0o9HKw
- AqlI0cP0+a8Di3+lzu9dSz/duij3xcK8yqj/WhD8CRmxpkVsbeUrmzijLWSa0LmuWEhK
- ZkWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=t3qwPXT9p7cy8baY/HD1tlyhWXo+nF5zeMf9AINIWe8=;
- b=ikVSDk4iJxOJg3+MY0n4OypllRJBrIwSLbKRnFL1GqUgBmdXKgAcRvF7r0tid/1p2W
- GyPVbKv6NBaPpQNv/S09gQkmcfACW6QznzTKmxG5i+xnKFOP98ubJopu9IWy7d7JclSR
- i9D19SmG0Q/uE4gsI5Az8Tzb9bqSyZX8pNEvgma2CEAIgPQ+vmGy4bz/bycXooe5RVFG
- nxQUd7JCIJsdZShtY6z91PyjPacp6RAFFXxqw5EuOIeD++AI0vs55fuOWUlQTSzW5D83
- jF+EOoXd5/JIq8byMiv4QoErMkKrL+tN3Q9nPgDkytEHW/y1ls5qkH/E7HTSMMpiUEop
- vbEQ==
-X-Gm-Message-State: APjAAAWn38BJQaJNy+ulol+AfwE5X/m8hy9eHr1g3PcxU6f97f7x6Pxf
- Gpzr/Nb2qn6rOtPtMUdto2Flzy6928sJZpBJ0Ck2ZA==
-X-Google-Smtp-Source: APXvYqz8Xz/RsFiCXx6qhGE89+jJSQl8w9bOQzIBVL+81h+6btmZd2oKVXLUgHcWp71DmLMYW34yU457JeDX/seNjhA=
-X-Received: by 2002:a05:6830:13da:: with SMTP id
- e26mr46349otq.97.1578393451691; 
- Tue, 07 Jan 2020 02:37:31 -0800 (PST)
-MIME-Version: 1.0
+ (envelope-from <thuth@redhat.com>) id 1ion0M-0007a7-Mz
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 06:26:35 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:55583
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1ion0M-0007ZH-I6
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 06:26:34 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1578396394;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=N3y6qe5/JHaMhEeKlFhhDLl52vVW/QTu+uNcjtsh3zg=;
+ b=STMIoIoulkl5wYGfhJwUkfFzvtCsCMlF+XHu8PkVCAhEMolhUXIiFFpB06W2L6dMH6xKEe
+ 5EFz9PNlwyhcJvbVAn2D52C5bCfLazkYjyUW1zHthLXdB+rwyJtuhrRylGB51PXhqsvj8+
+ NiZkw0eRFqcp97+oMfYB1GO+241a25Y=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-420-UjMRQ31QMEecTwI6wRDWKg-1; Tue, 07 Jan 2020 06:26:25 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C1CFFDB20;
+ Tue,  7 Jan 2020 11:26:24 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-116.ams2.redhat.com [10.36.116.116])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id BA0765C290;
+ Tue,  7 Jan 2020 11:26:23 +0000 (UTC)
+Subject: Re: [PATCH v1 30/59] util/module.c: remove unneeded label in
+ module_load_file()
+To: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
- <20200106182425.20312-58-danielhb413@gmail.com>
-In-Reply-To: <20200106182425.20312-58-danielhb413@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 7 Jan 2020 10:37:20 +0000
-Message-ID: <CAFEAcA-c-RGWartF61zGGszs8CFH3TxZyBeKR71Sn+A_0OnDqQ@mail.gmail.com>
-Subject: Re: [PATCH v1 57/59] linux-user/syscall.c: fix trailing whitespaces
- and style
-To: Daniel Henrique Barboza <danielhb413@gmail.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::341
+ <20200106182425.20312-31-danielhb413@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <2d940fe2-0fbd-4db8-c5bf-1b5b44dffef9@redhat.com>
+Date: Tue, 7 Jan 2020 12:26:22 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
+MIME-Version: 1.0
+In-Reply-To: <20200106182425.20312-31-danielhb413@gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: UjMRQ31QMEecTwI6wRDWKg-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,72 +69,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jan 2020 10:37:38 -0000
+X-List-Received-Date: Tue, 07 Jan 2020 11:26:40 -0000
 
-On Mon, 6 Jan 2020 at 19:19, Daniel Henrique Barboza
-<danielhb413@gmail.com> wrote:
->
-> There are trailing whitespaces in this file that, if removed
-> by a text editor that refuses to let the traiing whitespace
-> alone, which happens to be the editor I am using, will cause
-> checkpatch.pl to warn about styling problems in the resulting
-> patch. This happens because the trailing whitespace lines
-> are using a deprecated style.
-
-You should fix your editor to not do this kind of uncommanded edit
-(otherwise you'll be spending forever trying to sort out
-unasked for changes from patches you write) but the style cleanup
-here is reasonable.
-
-> To keep the intended change I wanted to do (remove unneeded
-> labels in do_ioctl_blkpg() and do_sendrecvmsg_locked())
-> trivial, this patch is another trivial change to fix the
-> trailing whitespaces and the code style errors that
-> checkpatch.pl warns about. Doing this change beforehand will
-> keep the next patch focused just on the label removal changes.
-
-> @@ -1526,10 +1526,11 @@ static inline abi_long target_to_host_cmsg(struct msghdr *msgh,
->      abi_ulong target_cmsg_addr;
->      struct target_cmsghdr *target_cmsg, *target_cmsg_start;
->      socklen_t space = 0;
-> -
-> +
->      msg_controllen = tswapal(target_msgh->msg_controllen);
-> -    if (msg_controllen < sizeof (struct target_cmsghdr))
-> +    if (msg_controllen < sizeof(struct target_cmsghdr)) {
->          goto the_end;
-> +    }
->      target_cmsg_addr = tswapal(target_msgh->msg_control);
->      target_cmsg = lock_user(VERIFY_READ, target_cmsg_addr, msg_controllen, 1);
->      target_cmsg_start = target_cmsg;
-> @@ -1610,8 +1611,9 @@ static inline abi_long host_to_target_cmsg(struct target_msghdr *target_msgh,
->      socklen_t space = 0;
->
->      msg_controllen = tswapal(target_msgh->msg_controllen);
-> -    if (msg_controllen < sizeof (struct target_cmsghdr))
-> +    if (msg_controllen < sizeof(struct target_cmsghdr)) {
->          goto the_end;
-> +    }
->      target_cmsg_addr = tswapal(target_msgh->msg_control);
->      target_cmsg = lock_user(VERIFY_WRITE, target_cmsg_addr, msg_controllen, 0);
->      target_cmsg_start = target_cmsg;
-> @@ -5592,9 +5594,9 @@ abi_long do_set_thread_area(CPUX86State *env, abi_ulong ptr)
+On 06/01/2020 19.23, Daniel Henrique Barboza wrote:
+> 'out' can be replaced by the apropriate return values set
+> in 'ret' for each case.
+> 
+> CC: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+> ---
+>  util/module.c | 11 ++++-------
+>  1 file changed, 4 insertions(+), 7 deletions(-)
+> 
+> diff --git a/util/module.c b/util/module.c
+> index e9fe3e5422..9b5453f878 100644
+> --- a/util/module.c
+> +++ b/util/module.c
+> @@ -111,12 +111,10 @@ static int module_load_file(const char *fname)
+>  
+>      if (len <= suf_len || strcmp(&fname[len - suf_len], dsosuf)) {
+>          /* wrong suffix */
+> -        ret = -EINVAL;
+> -        goto out;
+> +        return -EINVAL;
 >      }
->      unlock_user_struct(target_ldt_info, ptr, 1);
->
-> -    if (ldt_info.entry_number < TARGET_GDT_ENTRY_TLS_MIN ||
-> +    if (ldt_info.entry_number < TARGET_GDT_ENTRY_TLS_MIN ||
->          ldt_info.entry_number > TARGET_GDT_ENTRY_TLS_MAX)
-> -           return -TARGET_EINVAL;
-> +        return -TARGET_EINVAL;
->      seg_32bit = ldt_info.flags & 1;
->      contents = (ldt_info.flags >> 1) & 3;
->      read_exec_only = (ldt_info.flags >> 3) & 1;
+>      if (access(fname, F_OK)) {
+> -        ret = -ENOENT;
+> -        goto out;
+> +        return -ENOENT;
+>      }
+>  
+>      assert(QTAILQ_EMPTY(&dso_init_list));
+> @@ -125,8 +123,7 @@ static int module_load_file(const char *fname)
+>      if (!g_module) {
+>          fprintf(stderr, "Failed to open module: %s\n",
+>                  g_module_error());
+> -        ret = -EINVAL;
+> -        goto out;
+> +        return -EINVAL;
+>      }
+>      if (!g_module_symbol(g_module, DSO_STAMP_FUN_STR, (gpointer *)&sym)) {
+>          fprintf(stderr, "Failed to initialize module: %s\n",
+> @@ -151,7 +148,7 @@ static int module_load_file(const char *fname)
+>          QTAILQ_REMOVE(&dso_init_list, e, node);
+>          g_free(e);
+>      }
+> -out:
+> +
+>      return ret;
+>  }
+>  #endif
+> 
 
-Doesn't checkpatch complain about not having braces on this if ?
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Either way
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
--- PMM
 
