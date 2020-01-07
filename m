@@ -1,45 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iolWK-0006g8-2a
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 04:51:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46600)
+	id 1iomF2-0001gm-MV
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 05:37:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56972)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groug@kaod.org>) id 1iolWE-00069x-28
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:51:23 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1iomEw-0001KA-KB
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 05:37:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groug@kaod.org>) id 1iolWC-0006qc-S5
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:51:21 -0500
-Received: from 4.mo6.mail-out.ovh.net ([87.98.184.159]:57911)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <groug@kaod.org>) id 1iolWC-0006oN-Ma
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:51:20 -0500
-Received: from player159.ha.ovh.net (unknown [10.108.1.13])
- by mo6.mail-out.ovh.net (Postfix) with ESMTP id F267C1F7E70
- for <qemu-trivial@nongnu.org>; Tue,  7 Jan 2020 10:51:17 +0100 (CET)
-Received: from kaod.org (lns-bzn-46-82-253-208-248.adsl.proxad.net
- [82.253.208.248]) (Authenticated sender: groug@kaod.org)
- by player159.ha.ovh.net (Postfix) with ESMTPSA id 8779DDE7D743;
- Tue,  7 Jan 2020 09:51:14 +0000 (UTC)
-Date: Tue, 7 Jan 2020 10:51:13 +0100
-From: Greg Kurz <groug@kaod.org>
-To: Daniel Henrique Barboza <danielhb413@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH v1 12/59] virtfs-proxy-helper.c: remove 'err_out' label
- in setugid()
-Message-ID: <20200107105113.7a443d51@bahia.lan>
-In-Reply-To: <20200106182425.20312-13-danielhb413@gmail.com>
-References: <20200106182425.20312-1-danielhb413@gmail.com>
- <20200106182425.20312-13-danielhb413@gmail.com>
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ (envelope-from <peter.maydell@linaro.org>) id 1iomEv-0007HX-7H
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 05:37:34 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:36680)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iomEv-0007Gn-0C
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 05:37:33 -0500
+Received: by mail-ot1-x341.google.com with SMTP id 19so63357307otz.3
+ for <qemu-trivial@nongnu.org>; Tue, 07 Jan 2020 02:37:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=t3qwPXT9p7cy8baY/HD1tlyhWXo+nF5zeMf9AINIWe8=;
+ b=T9FmmKghVH0A+OKwu3l2SFN19n1GdF+EE+w+6CMq7E2AkZaN+CbG0+lVv1sHq+2c5d
+ hsnSGkyX47Gqnd5n8sa8gHUhx7riS03a1f2DsfEkMeSsf3TGVq/gpao2d9uUrN2G2jQj
+ xXh+yPzZmgU38R9hGzRgfBUPukqIHyuwDql7tEczbjVobI7j6sAkJhbojzQmT5J8JB/z
+ ZC39UYDDeOCMqxlJdh3aYiEhbfLaX2svQIuimlXbS5GewqatzCLdhKZJFqASQw0o9HKw
+ AqlI0cP0+a8Di3+lzu9dSz/duij3xcK8yqj/WhD8CRmxpkVsbeUrmzijLWSa0LmuWEhK
+ ZkWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=t3qwPXT9p7cy8baY/HD1tlyhWXo+nF5zeMf9AINIWe8=;
+ b=ikVSDk4iJxOJg3+MY0n4OypllRJBrIwSLbKRnFL1GqUgBmdXKgAcRvF7r0tid/1p2W
+ GyPVbKv6NBaPpQNv/S09gQkmcfACW6QznzTKmxG5i+xnKFOP98ubJopu9IWy7d7JclSR
+ i9D19SmG0Q/uE4gsI5Az8Tzb9bqSyZX8pNEvgma2CEAIgPQ+vmGy4bz/bycXooe5RVFG
+ nxQUd7JCIJsdZShtY6z91PyjPacp6RAFFXxqw5EuOIeD++AI0vs55fuOWUlQTSzW5D83
+ jF+EOoXd5/JIq8byMiv4QoErMkKrL+tN3Q9nPgDkytEHW/y1ls5qkH/E7HTSMMpiUEop
+ vbEQ==
+X-Gm-Message-State: APjAAAWn38BJQaJNy+ulol+AfwE5X/m8hy9eHr1g3PcxU6f97f7x6Pxf
+ Gpzr/Nb2qn6rOtPtMUdto2Flzy6928sJZpBJ0Ck2ZA==
+X-Google-Smtp-Source: APXvYqz8Xz/RsFiCXx6qhGE89+jJSQl8w9bOQzIBVL+81h+6btmZd2oKVXLUgHcWp71DmLMYW34yU457JeDX/seNjhA=
+X-Received: by 2002:a05:6830:13da:: with SMTP id
+ e26mr46349otq.97.1578393451691; 
+ Tue, 07 Jan 2020 02:37:31 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 6094777671292524806
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrvdehvddgtdejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvffukfgjfhfogggtgfesthejredtredtvdenucfhrhhomhepifhrvghgucfmuhhriicuoehgrhhouhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrvdehfedrvddtkedrvdegkeenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrudehledrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpehgrhhouhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqthhrihhvihgrlhesnhhonhhgnhhurdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 87.98.184.159
+References: <20200106182425.20312-1-danielhb413@gmail.com>
+ <20200106182425.20312-58-danielhb413@gmail.com>
+In-Reply-To: <20200106182425.20312-58-danielhb413@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 7 Jan 2020 10:37:20 +0000
+Message-ID: <CAFEAcA-c-RGWartF61zGGszs8CFH3TxZyBeKR71Sn+A_0OnDqQ@mail.gmail.com>
+Subject: Re: [PATCH v1 57/59] linux-user/syscall.c: fix trailing whitespaces
+ and style
+To: Daniel Henrique Barboza <danielhb413@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -51,49 +69,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jan 2020 09:51:26 -0000
+X-List-Received-Date: Tue, 07 Jan 2020 10:37:38 -0000
 
-On Mon,  6 Jan 2020 15:23:38 -0300
-Daniel Henrique Barboza <danielhb413@gmail.com> wrote:
+On Mon, 6 Jan 2020 at 19:19, Daniel Henrique Barboza
+<danielhb413@gmail.com> wrote:
+>
+> There are trailing whitespaces in this file that, if removed
+> by a text editor that refuses to let the traiing whitespace
+> alone, which happens to be the editor I am using, will cause
+> checkpatch.pl to warn about styling problems in the resulting
+> patch. This happens because the trailing whitespace lines
+> are using a deprecated style.
 
-> 'err_out' can be removed and be replaced by 'return -errno'
-> in its only instance in the function.
-> 
-> CC: Greg Kurz <groug@kaod.org>
-> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
-> ---
+You should fix your editor to not do this kind of uncommanded edit
+(otherwise you'll be spending forever trying to sort out
+unasked for changes from patches you write) but the style cleanup
+here is reasonable.
 
-I don't really mind, but I confirm this doesn't change behavior.
+> To keep the intended change I wanted to do (remove unneeded
+> labels in do_ioctl_blkpg() and do_sendrecvmsg_locked())
+> trivial, this patch is another trivial change to fix the
+> trailing whitespaces and the code style errors that
+> checkpatch.pl warns about. Doing this change beforehand will
+> keep the next patch focused just on the label removal changes.
 
-Acked-by: Greg Kurz <groug@kaod.org>
-
-What's the plan to get this and the other 9p related patches merged ?
-Through the trivial tree or each subsystem tree ?
-
->  fsdev/virtfs-proxy-helper.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/fsdev/virtfs-proxy-helper.c b/fsdev/virtfs-proxy-helper.c
-> index 0d4de49dcf..aa1ab2590d 100644
-> --- a/fsdev/virtfs-proxy-helper.c
-> +++ b/fsdev/virtfs-proxy-helper.c
-> @@ -287,8 +287,7 @@ static int setugid(int uid, int gid, int *suid, int *sgid)
->      *sgid = getegid();
->  
->      if (setresgid(-1, gid, *sgid) == -1) {
-> -        retval = -errno;
-> -        goto err_out;
-> +        return -errno;
+> @@ -1526,10 +1526,11 @@ static inline abi_long target_to_host_cmsg(struct msghdr *msgh,
+>      abi_ulong target_cmsg_addr;
+>      struct target_cmsghdr *target_cmsg, *target_cmsg_start;
+>      socklen_t space = 0;
+> -
+> +
+>      msg_controllen = tswapal(target_msgh->msg_controllen);
+> -    if (msg_controllen < sizeof (struct target_cmsghdr))
+> +    if (msg_controllen < sizeof(struct target_cmsghdr)) {
+>          goto the_end;
+> +    }
+>      target_cmsg_addr = tswapal(target_msgh->msg_control);
+>      target_cmsg = lock_user(VERIFY_READ, target_cmsg_addr, msg_controllen, 1);
+>      target_cmsg_start = target_cmsg;
+> @@ -1610,8 +1611,9 @@ static inline abi_long host_to_target_cmsg(struct target_msghdr *target_msgh,
+>      socklen_t space = 0;
+>
+>      msg_controllen = tswapal(target_msgh->msg_controllen);
+> -    if (msg_controllen < sizeof (struct target_cmsghdr))
+> +    if (msg_controllen < sizeof(struct target_cmsghdr)) {
+>          goto the_end;
+> +    }
+>      target_cmsg_addr = tswapal(target_msgh->msg_control);
+>      target_cmsg = lock_user(VERIFY_WRITE, target_cmsg_addr, msg_controllen, 0);
+>      target_cmsg_start = target_cmsg;
+> @@ -5592,9 +5594,9 @@ abi_long do_set_thread_area(CPUX86State *env, abi_ulong ptr)
 >      }
->  
->      if (setresuid(-1, uid, *suid) == -1) {
-> @@ -322,7 +321,6 @@ err_sgid:
->      if (setresgid(-1, *sgid, *sgid) == -1) {
->          abort();
->      }
-> -err_out:
->      return retval;
->  }
->  
+>      unlock_user_struct(target_ldt_info, ptr, 1);
+>
+> -    if (ldt_info.entry_number < TARGET_GDT_ENTRY_TLS_MIN ||
+> +    if (ldt_info.entry_number < TARGET_GDT_ENTRY_TLS_MIN ||
+>          ldt_info.entry_number > TARGET_GDT_ENTRY_TLS_MAX)
+> -           return -TARGET_EINVAL;
+> +        return -TARGET_EINVAL;
+>      seg_32bit = ldt_info.flags & 1;
+>      contents = (ldt_info.flags >> 1) & 3;
+>      read_exec_only = (ldt_info.flags >> 3) & 1;
 
+Doesn't checkpatch complain about not having braces on this if ?
+
+Either way
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+-- PMM
 
