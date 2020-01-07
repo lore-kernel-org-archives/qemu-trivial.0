@@ -1,77 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iolEv-00016K-Sy
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 04:33:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43779)
+	id 1iolOb-0003cd-41
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 04:43:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45483)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1iolEo-0000jD-3K
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:33:25 -0500
+ (envelope-from <mreitz@redhat.com>) id 1iolOW-0003GE-4r
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:43:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1iolEm-0006Ss-K5
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:33:21 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:28134
+ (envelope-from <mreitz@redhat.com>) id 1iolOU-0003Fw-Pb
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:43:23 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:50555
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1iolEm-0006SU-Fz
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:33:20 -0500
+ (Exim 4.71) (envelope-from <mreitz@redhat.com>) id 1iolOU-0003FB-LI
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:43:22 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578389600;
+ s=mimecast20190719; t=1578390202;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=rV4AdtV6fpiPzPLrFUgrzsHrBxOJEDqTcY7DhA1rJnY=;
- b=AiRCrQSHB8QOP2qUJV060pqweVanSv24j3dEq8FwAcMnxaJl3WQvujY8NTotAia5xeHT6H
- uYpqB4c5V49OqPrgOULsNugslox7HQV5vFKa0ha1SmGf1ZaCp0Ryvc0RlCqiOPLNfBPklG
- 7BR3XDMT4FguQ2lZUJH+1V3JLE/iFqM=
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-400-eNGUl7_4NkiKR2lL6b2W8Q-1; Tue, 07 Jan 2020 04:33:16 -0500
-Received: by mail-qk1-f200.google.com with SMTP id c202so2006427qkg.4
- for <qemu-trivial@nongnu.org>; Tue, 07 Jan 2020 01:33:16 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Ohifn2DS3HJRYsyyct+ZrgDyh93/8Y0awwWQNx1/1jY=;
- b=HMfJfw99dGkYOfPywsKSbwDNuG9AkXSGkBolaKthZLu+/jBmlt0ns3yw1OvVQn2K18
- TiDaDOW1kMCcicA0px65dks4ZvNnBY3KDKWUxe6Smn77Qqhk2s5xTmsrNyDxCPL4xlRA
- 9TkF2cRpNnMrMOEmcs2nr+DRXZ65Acn3b9MM5fSqtX7lj4m6x39Gmqw8Gw7/jS+6RTg/
- IVTZVtRw6gUWgWNZELtBiM1//Dw29XYGZ7bhHlORFyPVl+VAQj2irgSDOk519sqbjxmx
- 8r8eCejBtHbPUfRItP5lra9Pnve5AWdrGIj1owYR3Nc0rWRggKT2yvD+m7t/HajZ27Yu
- tWtQ==
-X-Gm-Message-State: APjAAAWajFdOIiEGBuWsYU/QKD7/IG3jP/rf3ViwLAHMQ95Qz5EQlYx9
- IAtTnuJOCbEtXBDW7QkR234cBXbpA6Jan2tLBjGQ54OxeMW4rhijXLnhQ9gIUNalwHvDij+P6m4
- 5QqPE0E7mJzFxGK4P4w==
-X-Received: by 2002:ae9:c112:: with SMTP id z18mr85848446qki.145.1578389596435; 
- Tue, 07 Jan 2020 01:33:16 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxHY0PZh8Y4O5aIkVgVdtBJKAFwFFbuwYsxD3dYruwAypabO3DUWnEUYzHwjzsKxNefEKWRGw==
-X-Received: by 2002:ae9:c112:: with SMTP id z18mr85848421qki.145.1578389596085; 
- Tue, 07 Jan 2020 01:33:16 -0800 (PST)
-Received: from redhat.com (bzq-79-183-34-164.red.bezeqint.net. [79.183.34.164])
- by smtp.gmail.com with ESMTPSA id q73sm22021675qka.56.2020.01.07.01.33.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Jan 2020 01:33:15 -0800 (PST)
-Date: Tue, 7 Jan 2020 04:33:10 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Zeng Tao <prime.zeng@hisilicon.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH] hw/arm/acpi: Pack the SRAT processors structure by
- node_id ascending order
-Message-ID: <20200107042918-mutt-send-email-mst@kernel.org>
-References: <1578388729-55540-1-git-send-email-prime.zeng@hisilicon.com>
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=wwe+Al0UA3gvOo5vmrdfV05trfwMxUtyU4/mAx4+OMA=;
+ b=ezmE3DwLQ2vyykyhYuB9UC8pA83Qb+GGPZwRITZGonec7wqqIQviD3e2A83YmWsR1XO8eZ
+ E8/V613lCzX/DGVwclywrdXq7OwdjW/wZ7m5bGPuthr7arR0qdZn1BAhKST4g1bu0TuY2l
+ 9pvl25Eb/2UDmqNZMAsQ7Lp7mDMAJz0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-227-1qqrJZr6Mu-mX8oKgA5rQA-1; Tue, 07 Jan 2020 04:43:15 -0500
+X-MC-Unique: 1qqrJZr6Mu-mX8oKgA5rQA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3FA1E8024DA;
+ Tue,  7 Jan 2020 09:43:14 +0000 (UTC)
+Received: from dresden.str.redhat.com (ovpn-117-1.ams2.redhat.com
+ [10.36.117.1])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CF34360BE2;
+ Tue,  7 Jan 2020 09:43:12 +0000 (UTC)
+Subject: Re: [PATCH v1 00/59] trivial unneeded labels cleanup
+To: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20200106182425.20312-1-danielhb413@gmail.com>
+From: Max Reitz <mreitz@redhat.com>
+Autocrypt: addr=mreitz@redhat.com; prefer-encrypt=mutual; keydata=
+ mQENBFXOJlcBCADEyyhOTsoa/2ujoTRAJj4MKA21dkxxELVj3cuILpLTmtachWj7QW+TVG8U
+ /PsMCFbpwsQR7oEy8eHHZwuGQsNpEtNC2G/L8Yka0BIBzv7dEgrPzIu+W3anZXQW4702+uES
+ U29G8TP/NGfXRRHGlbBIH9KNUnOSUD2vRtpOLXkWsV5CN6vQFYgQfFvmp5ZpPeUe6xNplu8V
+ mcTw8OSEDW/ZnxJc8TekCKZSpdzYoxfzjm7xGmZqB18VFwgJZlIibt1HE0EB4w5GsD7x5ekh
+ awIe3RwoZgZDLQMdOitJ1tUc8aqaxvgA4tz6J6st8D8pS//m1gAoYJWGwwIVj1DjTYLtABEB
+ AAG0HU1heCBSZWl0eiA8bXJlaXR6QHJlZGhhdC5jb20+iQFTBBMBCAA9AhsDBQkSzAMABQsJ
+ CAcCBhUICQoLAgQWAgMBAh4BAheABQJVzie5FRhoa3A6Ly9rZXlzLmdudXBnLm5ldAAKCRD0
+ B9sAYdXPQDcIB/9uNkbYEex1rHKz3mr12uxYMwLOOFY9fstP5aoVJQ1nWQVB6m2cfKGdcRe1
+ 2/nFaHSNAzT0NnKz2MjhZVmcrpyd2Gp2QyISCfb1FbT82GMtXFj1wiHmPb3CixYmWGQUUh+I
+ AvUqsevLA+WihgBUyaJq/vuDVM1/K9Un+w+Tz5vpeMidlIsTYhcsMhn0L9wlCjoucljvbDy/
+ 8C9L2DUdgi3XTa0ORKeflUhdL4gucWoAMrKX2nmPjBMKLgU7WLBc8AtV+84b9OWFML6NEyo4
+ 4cP7cM/07VlJK53pqNg5cHtnWwjHcbpGkQvx6RUx6F1My3y52vM24rNUA3+ligVEgPYBuQEN
+ BFXOJlcBCADAmcVUNTWT6yLWQHvxZ0o47KCP8OcLqD+67T0RCe6d0LP8GsWtrJdeDIQk+T+F
+ xO7DolQPS6iQ6Ak2/lJaPX8L0BkEAiMuLCKFU6Bn3lFOkrQeKp3u05wCSV1iKnhg0UPji9V2
+ W5eNfy8F4ZQHpeGUGy+liGXlxqkeRVhLyevUqfU0WgNqAJpfhHSGpBgihUupmyUg7lfUPeRM
+ DzAN1pIqoFuxnN+BRHdAecpsLcbR8sQddXmDg9BpSKozO/JyBmaS1RlquI8HERQoe6EynJhd
+ 64aICHDfj61rp+/0jTIcevxIIAzW70IadoS/y3DVIkuhncgDBvGbF3aBtjrJVP+5ABEBAAGJ
+ ASUEGAEIAA8FAlXOJlcCGwwFCRLMAwAACgkQ9AfbAGHVz0CbFwf9F/PXxQR9i4N0iipISYjU
+ sxVdjJOM2TMut+ZZcQ6NSMvhZ0ogQxJ+iEQ5OjnIputKvPVd5U7WRh+4lF1lB/NQGrGZQ1ic
+ alkj6ocscQyFwfib+xIe9w8TG1CVGkII7+TbS5pXHRxZH1niaRpoi/hYtgzkuOPp35jJyqT/
+ /ELbqQTDAWcqtJhzxKLE/ugcOMK520dJDeb6x2xVES+S5LXby0D4juZlvUj+1fwZu+7Io5+B
+ bkhSVPb/QdOVTpnz7zWNyNw+OONo1aBUKkhq2UIByYXgORPFnbfMY7QWHcjpBVw9MgC4tGeF
+ R4bv+1nAMMxKmb5VvQCExr0eFhJUAHAhVg==
+Message-ID: <d9e8e203-b529-1d1a-d8b9-5fd0fbe49e6b@redhat.com>
+Date: Tue, 7 Jan 2020 10:43:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-In-Reply-To: <1578388729-55540-1-git-send-email-prime.zeng@hisilicon.com>
-X-MC-Unique: eNGUl7_4NkiKR2lL6b2W8Q-1
+In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="yeemFV6yw3gZg4wyqV76NOcbhykcd03i5"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -83,96 +90,102 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jan 2020 09:33:28 -0000
+X-List-Received-Date: Tue, 07 Jan 2020 09:43:28 -0000
 
-On Tue, Jan 07, 2020 at 05:18:49PM +0800, Zeng Tao wrote:
-> When booting the guest linux with the following numa configuration:
-> -numa node,node_id=3D1,cpus=3D0-3
-> -numa node,node_id=3D0,cpus=3D4-7
-> We can get the following numa topology in the guest system:
-> Architecture:          aarch64
-> Byte Order:            Little Endian
-> CPU(s):                8
-> On-line CPU(s) list:   0-7
-> Thread(s) per core:    1
-> Core(s) per socket:    8
-> Socket(s):             1
-> NUMA node(s):          2
-> L1d cache:             unknown size
-> L1i cache:             unknown size
-> L2 cache:              unknown size
-> NUMA node0 CPU(s):     0-3
-> NUMA node1 CPU(s):     4-7
-> The Cpus 0-3 is assigned with NUMA node 1 in QEMU while it get NUMA node
-> 0 in the guest.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--yeemFV6yw3gZg4wyqV76NOcbhykcd03i5
+Content-Type: multipart/mixed; boundary="aRUSOiLNpVhiPxYelpXmi9QyENeaBuzv9"
+
+--aRUSOiLNpVhiPxYelpXmi9QyENeaBuzv9
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+On 06.01.20 19:23, Daniel Henrique Barboza wrote:
+> Hello,
 >=20
-> In fact, In the linux kernel, numa_node_id is allocated per the ACPI
-> SRAT processors structure order,so the cpu 0 will be the first one to
-> allocate its NUMA node id, so it gets the NUMA node 0.
+> This is the type of cleanup I've contributed to Libvirt
+> during the last year. Figured QEMU also deserves the same
+> care.
 >=20
-> To fix this issue, we pack the SRAT processors structure in numa node id
-> order but not the default cpu number order.
+> The idea here is remove unneeded labels. By 'unneeded' I
+> mean labels that does nothing but a 'return' call. One
+> common case is something like this:
 >=20
-> Signed-off-by: Zeng Tao <prime.zeng@hisilicon.com>
-
-
-Does this matter? If yes fixing linux to take node id from proximity
-field in ACPI seems cleaner ...
-
-> ---
->  hw/arm/virt-acpi-build.c | 23 +++++++++++++++--------
->  1 file changed, 15 insertions(+), 8 deletions(-)
+> if ()
+>     goto cleanup;
+> [...]
+>  cleanup:
+>     return 0;
 >=20
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index bd5f771..497192b 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -520,7 +520,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, Vi=
-rtMachineState *vms)
->      AcpiSystemResourceAffinityTable *srat;
->      AcpiSratProcessorGiccAffinity *core;
->      AcpiSratMemoryAffinity *numamem;
-> -    int i, srat_start;
-> +    int i, j, srat_start;
-> +    uint32_t node_id;
->      uint64_t mem_base;
->      MachineClass *mc =3D MACHINE_GET_CLASS(vms);
->      MachineState *ms =3D MACHINE(vms);
-> @@ -530,13 +531,19 @@ build_srat(GArray *table_data, BIOSLinker *linker, =
-VirtMachineState *vms)
->      srat =3D acpi_data_push(table_data, sizeof(*srat));
->      srat->reserved1 =3D cpu_to_le32(1);
-> =20
-> -    for (i =3D 0; i < cpu_list->len; ++i) {
-> -        core =3D acpi_data_push(table_data, sizeof(*core));
-> -        core->type =3D ACPI_SRAT_PROCESSOR_GICC;
-> -        core->length =3D sizeof(*core);
-> -        core->proximity =3D cpu_to_le32(cpu_list->cpus[i].props.node_id)=
-;
-> -        core->acpi_processor_uid =3D cpu_to_le32(i);
-> -        core->flags =3D cpu_to_le32(1);
-> +    for (i =3D 0; i < ms->numa_state->num_nodes; ++i) {
-> +        for (j =3D 0; j < cpu_list->len; ++j) {
+> This code can be simplified to:
+>=20
+> if ()
+>     return 0;
+>=20
+>=20
+> Which is cleaner and requires less brain cycles to wonder
+> whether the 'cleanup' label does anything special, such
+> as a heap memory cleanup.
 
-Hmm O(n ^2) isn't great ...
+For me, it doesn=E2=80=99t require any brain cycles, because I generally ju=
+st
+assume the cleanup label will do the right thing.  OTOH, a return
+statement may make me invest some some brain cycles, because maybe there
+is something to be cleaned up and it isn=E2=80=99t done here.
 
-> +            node_id =3D cpu_to_le32(cpu_list->cpus[j].props.node_id);
-> +            if (node_id !=3D i) {
-> +                continue;
-> +            }
-> +            core =3D acpi_data_push(table_data, sizeof(*core));
-> +            core->type =3D ACPI_SRAT_PROCESSOR_GICC;
-> +            core->length =3D sizeof(*core);
-> +            core->proximity =3D node_id;
-> +            core->acpi_processor_uid =3D cpu_to_le32(j);
-> +            core->flags =3D cpu_to_le32(1);
-> +        }
->      }
+> Another common case uses a variable to set a return value,
+> generally an error, then return:
+>=20
+> if () {
+>     ret =3D -ENOENT;
+>     goto out;
+> }
+> [..]
+>  out:
+>     return ret;
+>=20
+> Likewise, it is clearer to just 'return -ENOENT' instead of
+> jumping to a label. There are other cases being handled in
+> these patches, but these are the most common.
 
-is the issue arm specific? wouldn't it affect x86 too?
+I find it clearer from the perspective of =E2=80=9Cless LoC=E2=80=9D, but I=
+ find it less
+clear from the perspective of =E2=80=9CIs this the right way to clean up?=
+=E2=80=9D.
 
->      mem_base =3D vms->memmap[VIRT_MEM].base;
-> --=20
-> 2.8.1
+Even on patch 15 (which you say isn=E2=80=99t too much of a debate), I don=
+=E2=80=99t
+find the change to make things any clearer.  Just less verbose.
+
+I suppose none of this would matter if we used __attribute__((cleanup))
+everywhere and simply never had to clean up anything manually.  But as
+long as we don=E2=80=99t and require cleanup paths in many places, I disagr=
+ee
+that they require more brain cycles than plain return statements.
+
+Max
+
+
+--aRUSOiLNpVhiPxYelpXmi9QyENeaBuzv9--
+
+--yeemFV6yw3gZg4wyqV76NOcbhykcd03i5
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEkb62CjDbPohX0Rgp9AfbAGHVz0AFAl4UUq4ACgkQ9AfbAGHV
+z0BnjwgAsAOGsDeksjE+XhOuNJmoFdN5teK96YEqA76RJ8P9nM8aiNt1jyAGMnvK
+5n8drgqKk3Wkgaig8dKKOfqIlDBkKCI0v4Koae1hZbQmXQlDo/eugEv85e+ABsp2
+my+GHGe26UXH/LJK81FRM695GKiB3v7Yg9K9txnqnMV1zBmilCsF/mBIylKKpSGJ
+Vsj8gAZRNDM7pDkgoQehkNlhcCvQldQTBt0eFn7vWt/u8WQDB4KEXw2VLqq2Za/6
+P8ciSkg9Ttd0giHvVcJ0uOud636TaLho6SIiVXz6e1EfkNW500Hq1JqzZ9MTgxVJ
+EorJ0zCBNaipIrqh7jYadh5OSqsEUQ==
+=W0pp
+-----END PGP SIGNATURE-----
+
+--yeemFV6yw3gZg4wyqV76NOcbhykcd03i5--
 
 
