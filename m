@@ -1,47 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iop13-0003B7-0M
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 08:35:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52428)
+	id 1iop14-0003Ep-5s
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 08:35:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42385)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <qemu_oss@crudebyte.com>) id 1ionkg-0007cN-KW
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 07:14:27 -0500
+ (envelope-from <prime.zeng@hisilicon.com>) id 1iol5G-0005qI-RL
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:23:33 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <qemu_oss@crudebyte.com>) id 1ionkf-0002RR-IA
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 07:14:26 -0500
-Received: from kylie.crudebyte.com ([5.189.157.229]:39153)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <qemu_oss@crudebyte.com>)
- id 1ionkd-0002PW-42; Tue, 07 Jan 2020 07:14:23 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=crudebyte.com; s=kylie; h=Content-Type:Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
- Content-ID:Content-Description;
- bh=kHnAvQb+bCtckqXNHiGqjg1vnZNiazUuQfZqot5vWfA=; b=nIwShGu8c7igOKSk1LqI38kgAn
- MRFEuaHoKlXlOsIAWGht4vXcuUHplGSq/UWrTmg9tlx1r1Wq7PU6yqQcYv91uhmXAgsN8ZQ78XWeF
- 4XTlLmUWdNX3Ohztk8s4kWkkxOtyo8lC5up6Zwr/dJlY7g5JGYqxI1MYKtzxocr+8Ft5d43ZdsV22
- sDBHLmIREZqr6jFOFxvogTbyxANvYuq3YF94ODACU/bHQKQMkD19fYZ1DG4NzRXQi+zGfyP4VKdnc
- SMEqEjtQQSOn+sutTffft2jDZQFLmeACN0Gz+RYNO5RZKQlgnGqjVPXPJ/0S/r+FSYPus6Ns/gcQt
- REoRo8XxYbjjMQH5/hKI9mfkHgMWjti3Tl70/LqH+z/Mgarp47Wtj6PgfkhpwzRrkCG9VmQhwpCpZ
- lonqUQxL9Jtw9e2wDOWMkUK/FJxVgWj/jFeL1vn2IFooV+RQeLHHCBnHS0lLzRUo3nWNcGQzF0tMK
- oClP/yApl42w4x/Ke6e6kQ3jfVkSlpSNLx/o3SRAxXbHAkeEimCbwQhG/7RplsmuAquHXduz/PmbB
- /FWO1uNUW0TamNDdP3GpXOmbYMMR3CvrvmOzNXj7R80H3hUAJHLt8AEVhs24hvDJElmocAC8RbHzo
- M1cSqOn36BfZdAxmQv9fF+1eeYCynm6QPdS4aomXM=;
-From: Christian Schoenebeck <qemu_oss@crudebyte.com>
-To: qemu-devel@nongnu.org
-Cc: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-trivial@nongnu.org,
- Greg Kurz <groug@kaod.org>
-Subject: Re: [PATCH v1 45/59] 9pfs/9p.c: remove unneeded labels
-Date: Tue, 07 Jan 2020 13:14:20 +0100
-Message-ID: <13045963.Gd4jlxRJ09@silver>
-In-Reply-To: <20200106182425.20312-46-danielhb413@gmail.com>
-References: <20200106182425.20312-1-danielhb413@gmail.com>
- <20200106182425.20312-46-danielhb413@gmail.com>
+ (envelope-from <prime.zeng@hisilicon.com>) id 1iol5D-00087B-Dz
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 04:23:29 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2229 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <prime.zeng@hisilicon.com>)
+ id 1iol4x-0007kv-Qa; Tue, 07 Jan 2020 04:23:12 -0500
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id B80F5282A2F41FAD5E84;
+ Tue,  7 Jan 2020 17:23:03 +0800 (CST)
+Received: from localhost.localdomain (10.67.165.24) by
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 7 Jan 2020 17:22:55 +0800
+From: Zeng Tao <prime.zeng@hisilicon.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-trivial@nongnu.org>, Zeng Tao <prime.zeng@hisilicon.com>, "Shannon
+ Zhao" <shannon.zhaosl@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ <qemu-arm@nongnu.org>
+Subject: [PATCH] hw/arm/acpi: Pack the SRAT processors structure by node_id
+ ascending order
+Date: Tue, 7 Jan 2020 17:18:49 +0800
+Message-ID: <1578388729-55540-1-git-send-email-prime.zeng@hisilicon.com>
+X-Mailer: git-send-email 2.8.1
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain
+X-Originating-IP: [10.67.165.24]
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 5.189.157.229
+X-Received-From: 45.249.212.190
 X-Mailman-Approved-At: Tue, 07 Jan 2020 08:35:23 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -54,66 +48,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jan 2020 12:14:29 -0000
+X-List-Received-Date: Tue, 07 Jan 2020 09:23:37 -0000
 
-On Montag, 6. Januar 2020 19:24:11 CET Daniel Henrique Barboza wrote:
-> 'out' label in v9fs_xattr_write() and 'out_nofid' label in
-> v9fs_complete_rename() can be replaced by appropriate return
-> calls.
-> 
-> CC: Greg Kurz <groug@kaod.org>
-> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
-> ---
->  hw/9pfs/9p.c | 9 +++------
->  1 file changed, 3 insertions(+), 6 deletions(-)
-> 
-> diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
-> index 520177f40c..be2beba4cd 100644
-> --- a/hw/9pfs/9p.c
-> +++ b/hw/9pfs/9p.c
-> @@ -2464,8 +2464,7 @@ static int v9fs_xattr_write(V9fsState *s, V9fsPDU
-> *pdu, V9fsFidState *fidp,
-> 
-> 
->      if (fidp->fs.xattr.len < off) {
-> -        err = -ENOSPC;
-> -        goto out;
-> +        return -ENOSPC;
->      }
->      write_count = fidp->fs.xattr.len - off;
->      if (write_count > count) {
-> @@ -2491,7 +2490,7 @@ static int v9fs_xattr_write(V9fsState *s, V9fsPDU
-> *pdu, V9fsFidState *fidp, off += to_copy;
->          write_count -= to_copy;
->      }
-> -out:
-> +
->      return err;
->  }
-> 
-> @@ -3056,8 +3055,7 @@ static int coroutine_fn v9fs_complete_rename(V9fsPDU
-> *pdu, V9fsFidState *fidp, if (newdirfid != -1) {
->          dirfidp = get_fid(pdu, newdirfid);
->          if (dirfidp == NULL) {
-> -            err = -ENOENT;
-> -            goto out_nofid;
-> +            return -ENOENT;
->          }
->          if (fidp->fid_type != P9_FID_NONE) {
->              err = -EINVAL;
-> @@ -3100,7 +3098,6 @@ out:
->          put_fid(pdu, dirfidp);
->      }
->      v9fs_path_free(&new_path);
-> -out_nofid:
->      return err;
->  }
+When booting the guest linux with the following numa configuration:
+-numa node,node_id=1,cpus=0-3
+-numa node,node_id=0,cpus=4-7
+We can get the following numa topology in the guest system:
+Architecture:          aarch64
+Byte Order:            Little Endian
+CPU(s):                8
+On-line CPU(s) list:   0-7
+Thread(s) per core:    1
+Core(s) per socket:    8
+Socket(s):             1
+NUMA node(s):          2
+L1d cache:             unknown size
+L1i cache:             unknown size
+L2 cache:              unknown size
+NUMA node0 CPU(s):     0-3
+NUMA node1 CPU(s):     4-7
+The Cpus 0-3 is assigned with NUMA node 1 in QEMU while it get NUMA node
+0 in the guest.
 
-Same as with patch 44: IMO not any improvement, but also not any behaviour 
-change at least. So it's up to you Greg.
+In fact, In the linux kernel, numa_node_id is allocated per the ACPI
+SRAT processors structure order,so the cpu 0 will be the first one to
+allocate its NUMA node id, so it gets the NUMA node 0.
 
-Best regards,
-Christian Schoenebeck
+To fix this issue, we pack the SRAT processors structure in numa node id
+order but not the default cpu number order.
 
+Signed-off-by: Zeng Tao <prime.zeng@hisilicon.com>
+---
+ hw/arm/virt-acpi-build.c | 23 +++++++++++++++--------
+ 1 file changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index bd5f771..497192b 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -520,7 +520,8 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     AcpiSystemResourceAffinityTable *srat;
+     AcpiSratProcessorGiccAffinity *core;
+     AcpiSratMemoryAffinity *numamem;
+-    int i, srat_start;
++    int i, j, srat_start;
++    uint32_t node_id;
+     uint64_t mem_base;
+     MachineClass *mc = MACHINE_GET_CLASS(vms);
+     MachineState *ms = MACHINE(vms);
+@@ -530,13 +531,19 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     srat = acpi_data_push(table_data, sizeof(*srat));
+     srat->reserved1 = cpu_to_le32(1);
+ 
+-    for (i = 0; i < cpu_list->len; ++i) {
+-        core = acpi_data_push(table_data, sizeof(*core));
+-        core->type = ACPI_SRAT_PROCESSOR_GICC;
+-        core->length = sizeof(*core);
+-        core->proximity = cpu_to_le32(cpu_list->cpus[i].props.node_id);
+-        core->acpi_processor_uid = cpu_to_le32(i);
+-        core->flags = cpu_to_le32(1);
++    for (i = 0; i < ms->numa_state->num_nodes; ++i) {
++        for (j = 0; j < cpu_list->len; ++j) {
++            node_id = cpu_to_le32(cpu_list->cpus[j].props.node_id);
++            if (node_id != i) {
++                continue;
++            }
++            core = acpi_data_push(table_data, sizeof(*core));
++            core->type = ACPI_SRAT_PROCESSOR_GICC;
++            core->length = sizeof(*core);
++            core->proximity = node_id;
++            core->acpi_processor_uid = cpu_to_le32(j);
++            core->flags = cpu_to_le32(1);
++        }
+     }
+ 
+     mem_base = vms->memmap[VIRT_MEM].base;
+-- 
+2.8.1
 
 
