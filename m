@@ -1,79 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ioqHp-0004G2-VP
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 09:56:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49591)
+	id 1ior7W-0005X0-RP
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 10:50:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54554)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1ioqHn-0004Am-U6
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 09:56:48 -0500
+ (envelope-from <imammedo@redhat.com>) id 1ior7T-0005Ng-CO
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 10:50:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1ioqHl-0005ia-Gp
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 09:56:46 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:57687
+ (envelope-from <imammedo@redhat.com>) id 1ior7R-0007X6-Hw
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 10:50:10 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:36202
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1ioqHl-0005i1-CA
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 09:56:45 -0500
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1ior7R-0007Wi-Dg
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 10:50:09 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578409004;
+ s=mimecast20190719; t=1578412209;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=R0RrzZgv66jhK7LMA3RAoxyp5F5E4qkxn7mKXQVUqJE=;
- b=V3IVWdWPc0SgmlN+qLwuFnG7rEqfOOFBZjMPY2cR3R3VS9aisHBkNnuEfCONoQPx2Q1HvO
- tFdOcbOaj1OgVvRFAibXqtxn3gkmyP36603XrJENRVmM5/lIhFaxiCx6vwTHFsavlzwerF
- K3EZuDeeJ6DeEknxNbpMXBgHLPaMqtQ=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-168-CCjPyEfqNGqAvG8M08ajkQ-1; Tue, 07 Jan 2020 09:56:43 -0500
-Received: by mail-wm1-f71.google.com with SMTP id s25so2024888wmj.3
- for <qemu-trivial@nongnu.org>; Tue, 07 Jan 2020 06:56:42 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=R0RrzZgv66jhK7LMA3RAoxyp5F5E4qkxn7mKXQVUqJE=;
- b=cxuI+fdTuC0ebSYrCwGB+6ssiaroLZMHvpR/AuXJu3V8P9IFBynJZ1TZAuXPGGyIWu
- roUuiSBfGBXUAhDiW6QtqjINT7nzOae7kdPioD/8oFZL6wOe5bsltb6+rAYJO5D9bFnB
- NHSKA7AxO3igJWA44vS1qsfJv8QEQOG44jYUIl3vNp97vXdiSg0g7XOLOyOnmmE4qcbM
- u9WXF6JEDqZEvWqZf1KNBNrRKjr6O3lyQrcHBU8YjV4uZweyFnp0arpaATB5q1dbpVgZ
- Pz3fmp58+Grrwh07Tat52mZMMBO3dMFSWGUkFryrwxJwF5gA+Mqb5a6IY12slvvOS45I
- +Asw==
-X-Gm-Message-State: APjAAAUe0lF6r94EXtw498VkaQA/aSbb2/Jmw4OOnkOlI4RnBLqs5mTx
- v8aMcapvVG1PlpZZP2rCsOccUli0udZro1JxzYtZ3PcdBmdWPqPNfWasqGAtiy4IiEb2iLkutGc
- 7joiIzQg6EyLCiOhtQg==
-X-Received: by 2002:a7b:cfc9:: with SMTP id f9mr42395394wmm.1.1578409001865;
- Tue, 07 Jan 2020 06:56:41 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwFXZz5Lvb9UTJc8bmGOVgoKv5Yn5b0xYiia9ZaeHgK1hfq+LjN+nSIjE0UdrtwU4y5bCFvJw==
-X-Received: by 2002:a7b:cfc9:: with SMTP id f9mr42395374wmm.1.1578409001640;
- Tue, 07 Jan 2020 06:56:41 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:c6d:4079:b74c:e329?
- ([2001:b07:6468:f312:c6d:4079:b74c:e329])
- by smtp.gmail.com with ESMTPSA id o4sm109503wrx.25.2020.01.07.06.56.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Jan 2020 06:56:41 -0800 (PST)
-Subject: Re: [PATCH 5/6] hw/scsi/megasas: Silent GCC9 duplicated-cond warning
-To: Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Fam Zheng <fam@euphon.net>, Hannes Reinecke <hare@suse.com>,
- qemu-block@nongnu.org, qemu-trivial@nongnu.org,
- Hannes Reinecke <hare@suse.de>
-References: <20191217173425.5082-1-philmd@redhat.com>
- <20191217173425.5082-6-philmd@redhat.com>
- <b29f856a-5199-6f62-4aee-5a2cfc9f05a3@linaro.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <8e06e74a-901d-acb3-67f0-006732abdba9@redhat.com>
-Date: Tue, 7 Jan 2020 15:56:40 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ bh=3Odwf/AUtoZmMcMcAIxGxeYOSRVe1Tmv4H0wuhbOlVc=;
+ b=XL9vgNB2RximxBtTEEHe3JKcqlLwSmWkM52h5mi+RB8ZeNWQMR/61LOjA0jnDZOHONR72q
+ 1mEqzxAJZHAe7KearCOul9e6FS2KjZWmDVjiWh8vm/3klR0QFDhb0tGADR9oHFY5g/NVGG
+ 7RsoJGy0oOrsv9mNMW8lj9hSpv7iKGE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-268-3ZZHcbHKMjqJOprrKr5Ilg-1; Tue, 07 Jan 2020 10:50:06 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4FAE98024D3;
+ Tue,  7 Jan 2020 15:50:04 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 154FD858B9;
+ Tue,  7 Jan 2020 15:49:59 +0000 (UTC)
+Date: Tue, 7 Jan 2020 16:49:58 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: "Zengtao (B)" <prime.zeng@hisilicon.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, Shannon Zhao <shannon.zhaosl@gmail.com>, "Peter
+ Maydell" <peter.maydell@linaro.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>
+Subject: Re: [PATCH] hw/arm/acpi: Pack the SRAT processors structure by
+ node_id ascending order
+Message-ID: <20200107164958.7811777d@redhat.com>
+In-Reply-To: <678F3D1BB717D949B966B68EAEB446ED340B608D@dggemm526-mbx.china.huawei.com>
+References: <1578388729-55540-1-git-send-email-prime.zeng@hisilicon.com>
+ <20200107042918-mutt-send-email-mst@kernel.org>
+ <678F3D1BB717D949B966B68EAEB446ED340B608D@dggemm526-mbx.china.huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <b29f856a-5199-6f62-4aee-5a2cfc9f05a3@linaro.org>
-Content-Language: en-US
-X-MC-Unique: CCjPyEfqNGqAvG8M08ajkQ-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: 3ZZHcbHKMjqJOprrKr5Ilg-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -89,42 +70,126 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jan 2020 14:56:49 -0000
+X-List-Received-Date: Tue, 07 Jan 2020 15:50:13 -0000
 
-On 18/12/19 05:03, Richard Henderson wrote:
->>      if (!s->hba_serial) {
->>          s->hba_serial = g_strdup(MEGASAS_HBA_SERIAL);
->>      }
->> -    if (s->fw_sge >= MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE) {
->> +    if (MEGASAS_MAX_SGE > 128
->> +        && s->fw_sge >= MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE) {
->>          s->fw_sge = MEGASAS_MAX_SGE - MFI_PASS_FRAME_SIZE;
->>      } else if (s->fw_sge >= 128 - MFI_PASS_FRAME_SIZE) {
->>          s->fw_sge = 128 - MFI_PASS_FRAME_SIZE;
->>      } else {
->>          s->fw_sge = 64 - MFI_PASS_FRAME_SIZE;
->>      }
->
-> I'm not keen on this.  It looks to me like the raw 128 case should be removed
-> -- surely that's the point of the symbolic constant.  But I'll defer if a
-> maintainer disagrees.
+On Tue, 7 Jan 2020 10:29:22 +0000
+"Zengtao (B)" <prime.zeng@hisilicon.com> wrote:
 
-I don't really understand this chain of ifs.  Hannes, does it make sense
-to just remove the "if (s->fw_sge >= 128 - MFI_PASS_FRAME_SIZE)" case,
-or does Phil's variation (quoted in the patch fragment above) makes sense?
+> > -----Original Message-----
+> > From: Michael S. Tsirkin [mailto:mst@redhat.com]
+> > Sent: Tuesday, January 07, 2020 5:33 PM
+> > To: Zengtao (B)
+> > Cc: qemu-devel@nongnu.org; qemu-trivial@nongnu.org; Shannon Zhao;
+> > Peter Maydell; Igor Mammedov; qemu-arm@nongnu.org
+> > Subject: Re: [PATCH] hw/arm/acpi: Pack the SRAT processors structure by
+> > node_id ascending order
+> > 
+> > On Tue, Jan 07, 2020 at 05:18:49PM +0800, Zeng Tao wrote:  
+> > > When booting the guest linux with the following numa configuration:
+> > > -numa node,node_id=1,cpus=0-3
+> > > -numa node,node_id=0,cpus=4-7
+> > > We can get the following numa topology in the guest system:
+> > > Architecture:          aarch64
+> > > Byte Order:            Little Endian
+> > > CPU(s):                8
+> > > On-line CPU(s) list:   0-7
+> > > Thread(s) per core:    1
+> > > Core(s) per socket:    8
+> > > Socket(s):             1
+> > > NUMA node(s):          2
+> > > L1d cache:             unknown size
+> > > L1i cache:             unknown size
+> > > L2 cache:              unknown size
+> > > NUMA node0 CPU(s):     0-3
+> > > NUMA node1 CPU(s):     4-7
+> > > The Cpus 0-3 is assigned with NUMA node 1 in QEMU while it get NUMA  
+> > node  
+> > > 0 in the guest.
+> > >
+> > > In fact, In the linux kernel, numa_node_id is allocated per the ACPI
+> > > SRAT processors structure order,so the cpu 0 will be the first one to
+> > > allocate its NUMA node id, so it gets the NUMA node 0.
+> > >
+> > > To fix this issue, we pack the SRAT processors structure in numa node id
+> > > order but not the default cpu number order.
+> > >
+> > > Signed-off-by: Zeng Tao <prime.zeng@hisilicon.com>  
+> > 
+> > 
+> > Does this matter? If yes fixing linux to take node id from proximity
+> > field in ACPI seems cleaner ...
+> >  
+> 
+> In fact, I just want to align the node_id concept in QEMU and Linux.
+> If we fix the kernel side, we need to align with all platforms.
+> i think maybe not a good idea.
+if linux makes up node ID's on it's own, it would be hard for it to
+map SRAT entries to other tables that use proximity id as well.
 
-Or perhaps this rewrite:
+So it would need to maintain map of [proximity id] -> [node id] (and reverse)
+somewhere to resolve mappings on other tables.
+If it doesn't do this then it's broken and works just by accident,
+if it does the fix probably should be in that code and not in QEMU.
 
-        max_sge = s->fw_sge + MFI_PASS_FRAME_SIZE;
-        if (max_sge < MEGASAS_MAX_SGE) {
-            if (max_sge < 64) {
-                error(...);
-            } else {
-                max_sge = max_sge < 128 ? 64 : 128;
-            }
-        }
-	s->fw_sge = max_sge - MFI_PASS_FRAME_SIZE;
-
-Paolo
+>  
+> > > ---
+> > >  hw/arm/virt-acpi-build.c | 23 +++++++++++++++--------
+> > >  1 file changed, 15 insertions(+), 8 deletions(-)
+> > >
+> > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > > index bd5f771..497192b 100644
+> > > --- a/hw/arm/virt-acpi-build.c
+> > > +++ b/hw/arm/virt-acpi-build.c
+> > > @@ -520,7 +520,8 @@ build_srat(GArray *table_data, BIOSLinker  
+> > *linker, VirtMachineState *vms)  
+> > >      AcpiSystemResourceAffinityTable *srat;
+> > >      AcpiSratProcessorGiccAffinity *core;
+> > >      AcpiSratMemoryAffinity *numamem;
+> > > -    int i, srat_start;
+> > > +    int i, j, srat_start;
+> > > +    uint32_t node_id;
+> > >      uint64_t mem_base;
+> > >      MachineClass *mc = MACHINE_GET_CLASS(vms);
+> > >      MachineState *ms = MACHINE(vms);
+> > > @@ -530,13 +531,19 @@ build_srat(GArray *table_data, BIOSLinker  
+> > *linker, VirtMachineState *vms)  
+> > >      srat = acpi_data_push(table_data, sizeof(*srat));
+> > >      srat->reserved1 = cpu_to_le32(1);
+> > >
+> > > -    for (i = 0; i < cpu_list->len; ++i) {
+> > > -        core = acpi_data_push(table_data, sizeof(*core));
+> > > -        core->type = ACPI_SRAT_PROCESSOR_GICC;
+> > > -        core->length = sizeof(*core);
+> > > -        core->proximity =  
+> > cpu_to_le32(cpu_list->cpus[i].props.node_id);  
+> > > -        core->acpi_processor_uid = cpu_to_le32(i);
+> > > -        core->flags = cpu_to_le32(1);
+> > > +    for (i = 0; i < ms->numa_state->num_nodes; ++i) {
+> > > +        for (j = 0; j < cpu_list->len; ++j) {  
+> > 
+> > Hmm O(n ^2) isn't great ...  
+> Good suggestion, 3Q.
+> >   
+> > > +            node_id = cpu_to_le32(cpu_list->cpus[j].props.node_id);
+> > > +            if (node_id != i) {
+> > > +                continue;
+> > > +            }
+> > > +            core = acpi_data_push(table_data, sizeof(*core));
+> > > +            core->type = ACPI_SRAT_PROCESSOR_GICC;
+> > > +            core->length = sizeof(*core);
+> > > +            core->proximity = node_id;
+> > > +            core->acpi_processor_uid = cpu_to_le32(j);
+> > > +            core->flags = cpu_to_le32(1);
+> > > +        }
+> > >      }  
+> > 
+> > is the issue arm specific? wouldn't it affect x86 too?
+> >   
+> Good question, I think it will affect x86, but I need to confirm.
+> 
+> > >      mem_base = vms->memmap[VIRT_MEM].base;
+> > > --
+> > > 2.8.1  
+> 
 
 
