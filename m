@@ -1,47 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iopO9-0001kt-BZ
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 08:59:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57186)
+	id 1iopf8-0005lz-NL
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 09:16:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33828)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groug@kaod.org>) id 1iopO3-0001ey-9W
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 08:59:13 -0500
+ (envelope-from <danielhb413@gmail.com>) id 1iopf4-0005UJ-7n
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 09:16:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groug@kaod.org>) id 1iopO2-0005En-23
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 08:59:11 -0500
-Received: from 19.mo3.mail-out.ovh.net ([178.32.98.231]:48190)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <groug@kaod.org>) id 1iopNz-000591-OB
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 08:59:07 -0500
-Received: from player795.ha.ovh.net (unknown [10.108.54.237])
- by mo3.mail-out.ovh.net (Postfix) with ESMTP id 6ABFB23B311
- for <qemu-trivial@nongnu.org>; Tue,  7 Jan 2020 14:59:02 +0100 (CET)
-Received: from kaod.org (deibp9eh1--blueice1n4.emea.ibm.com [195.212.29.166])
- (Authenticated sender: groug@kaod.org)
- by player795.ha.ovh.net (Postfix) with ESMTPSA id 46686DD123E4;
- Tue,  7 Jan 2020 13:58:58 +0000 (UTC)
-Date: Tue, 7 Jan 2020 14:58:53 +0100
-From: Greg Kurz <groug@kaod.org>
-To: Christian Schoenebeck <qemu_oss@crudebyte.com>
-Cc: qemu-devel@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- qemu-trivial@nongnu.org
+ (envelope-from <danielhb413@gmail.com>) id 1iopf2-0006aM-VJ
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 09:16:46 -0500
+Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43]:39688)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
+ id 1iopf2-0006Zz-Qh; Tue, 07 Jan 2020 09:16:44 -0500
+Received: by mail-qv1-xf43.google.com with SMTP id y8so20561221qvk.6;
+ Tue, 07 Jan 2020 06:16:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=SdvGPS/XJdqytZYrb4vgNQWyWBKFRSDsX/DuNlf6ccg=;
+ b=le5GjNNh+HJOVtg2c4V4WujCfARz/3m5/C5zJoqq+WAIhx/FEZQjvQTNfODf101BRX
+ FcZ5Bxz/Cyc6jvyTm0ank9UPmcCqMbv9kC6hIlkoxsHAuuYSq6qroDl99JFI9+t63/sr
+ IxSRnTSyYY1ObuudVplZY25IEd1n/nR/QS5LKz1UikKDChZjvCNO2rklKQIsH6r9d11m
+ 1m0R37FLKsDCM2R0oEHlbVwZKaAqhihWu3wuAn1KhQR8uzU9nA5FYcYN5Dv4DuGyYOss
+ Oz1m2JQt604+qs2wyFrVe2DYYJvnuChLkk1e0SdLSwpj3sYPypqjAAwmhq+6mMqazSOX
+ 2YAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=SdvGPS/XJdqytZYrb4vgNQWyWBKFRSDsX/DuNlf6ccg=;
+ b=iv9pL0FZBzrRPqtBXRg/aMUxMlxZYnh6fR7qB1+mKZE+cSE0HpZjccrewrEY4RuRm6
+ isqFrGuQO7bmBDXkaMbncckvO3Ea2vX56uWPAfkylTMkWJOUv4YU2UAH145wa560NtWK
+ M5RbchBW/b+Cz3lJDjYdhtr71JbpzP09N4ptxTtfVFaifzGhzJNl47TCNfPTCpsor6oo
+ A5+Ufcl1Y+52/keoYugVerPF3zts5qHmT9XNtciwRiHg43IMNmGjaRU/y4aYbICfnFJT
+ VdBX7om3gwSPC0Cd/4euSXYVoPH9Q3fIhtGi2IbqFZDi1MxVS0fQlDuW8HlVEMUR9Bn9
+ jfpw==
+X-Gm-Message-State: APjAAAUXeXuH6F3y0ZEzDw5LsflPhykPzoTCAPRW3wjnW8d89bvfkxGB
+ 6x6skJiOcaUNpMuXB79j3emb04ol
+X-Google-Smtp-Source: APXvYqw8IRrxNdGJlltd61qTMPqPoNTD0uIzh0CPxQyY7qYQtT4XRd4IQFagTk1TOtQsJEhsTCo3rw==
+X-Received: by 2002:a0c:c24f:: with SMTP id w15mr84501810qvh.66.1578406603768; 
+ Tue, 07 Jan 2020 06:16:43 -0800 (PST)
+Received: from ?IPv6:2804:431:c7c6:655b:9e1c:e865:3705:e1df?
+ ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
+ by smtp.gmail.com with ESMTPSA id n190sm22663294qke.90.2020.01.07.06.16.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 07 Jan 2020 06:16:43 -0800 (PST)
 Subject: Re: [PATCH v1 44/59] 9p-local.c: remove unneeded label in
  local_unlinkat_common()
-Message-ID: <20200107145853.3f523dc6@bahia.lan>
-In-Reply-To: <16442994.pYkbpd2YfT@silver>
+To: Greg Kurz <groug@kaod.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 References: <20200106182425.20312-1-danielhb413@gmail.com>
  <20200106182425.20312-45-danielhb413@gmail.com>
- <16442994.pYkbpd2YfT@silver>
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ <20200107145340.60698c46@bahia.lan>
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
+Message-ID: <ad424eb9-334e-3e5e-626b-6b2a6316b870@gmail.com>
+Date: Tue, 7 Jan 2020 11:16:39 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <20200107145340.60698c46@bahia.lan>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 10278903200864246080
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrvdehgedguddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvffukfgjfhfogggtgfesthejredtredtvdenucfhrhhomhepifhrvghgucfmuhhriicuoehgrhhouhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdduleehrddvuddvrddvledrudeiieenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeelhedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpehgrhhouhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqthhrihhvihgrlhesnhhonhhgnhhurdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 178.32.98.231
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::f43
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -53,79 +77,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Jan 2020 13:59:15 -0000
+X-List-Received-Date: Tue, 07 Jan 2020 14:16:49 -0000
 
-On Tue, 07 Jan 2020 13:04:20 +0100
-Christian Schoenebeck <qemu_oss@crudebyte.com> wrote:
 
-> On Montag, 6. Januar 2020 19:24:10 CET Daniel Henrique Barboza wrote:
-> > 'err_out' can be replaced by 'return ret' in the error conditions
-> > the jump was being made.
-> > 
-> > CC: Greg Kurz <groug@kaod.org>
-> > Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
-> > ---
-> >  hw/9pfs/9p-local.c | 12 +++++-------
-> >  1 file changed, 5 insertions(+), 7 deletions(-)
-> > 
-> > diff --git a/hw/9pfs/9p-local.c b/hw/9pfs/9p-local.c
-> > index ca641390fb..f9bdd2ad7c 100644
-> > --- a/hw/9pfs/9p-local.c
-> > +++ b/hw/9pfs/9p-local.c
-> > @@ -1094,12 +1094,12 @@ static int local_unlinkat_common(FsContext *ctx, int
-> > dirfd, const char *name,
-> > 
-> >              fd = openat_dir(dirfd, name);
-> >              if (fd == -1) {
-> > -                goto err_out;
-> > +                return ret;
-> >              }
-> >              ret = unlinkat(fd, VIRTFS_META_DIR, AT_REMOVEDIR);
-> >              close_preserve_errno(fd);
-> >              if (ret < 0 && errno != ENOENT) {
-> > -                goto err_out;
-> > +                return ret;
-> >              }
-> >          }
-> >          map_dirfd = openat_dir(dirfd, VIRTFS_META_DIR);
-> > @@ -1107,16 +1107,14 @@ static int local_unlinkat_common(FsContext *ctx, int
-> > dirfd, const char *name, ret = unlinkat(map_dirfd, name, 0);
-> >              close_preserve_errno(map_dirfd);
-> >              if (ret < 0 && errno != ENOENT) {
-> > -                goto err_out;
-> > +                return ret;
-> >              }
-> >          } else if (errno != ENOENT) {
-> > -            goto err_out;
-> > +            return ret;
-> >          }
-> >      }
-> > 
-> > -    ret = unlinkat(dirfd, name, flags);
-> > -err_out:
-> > -    return ret;
-> > +    return unlinkat(dirfd, name, flags);
-> >  }
-> > 
-> >  static int local_remove(FsContext *ctx, const char *path)
-> 
-> Well, personally I don't see any improvement by these changes. It probably 
-> makes the code slightly more elegant, but IMO not more readable. And return 
-> constructed functions vs. jump to label constructed functions are more likely 
-> to gather missing-cleanup bugs.
-> 
-> At least this patch does not cause any behaviour change, so I leave that up to 
-> you Greg to decide. ;-)
-> 
 
-I don't care that much but in the present case, the function has a bug that
-can be fixed with a variant of this patch if 'goto err_out' is turned into
-'return -1'. I've hence asked Daniel to move this patch out of the series and
-to turn it into a real fix that I'll merge directly.
-
-> Best regards,
-> Christian Schoenebeck
+On 1/7/20 10:53 AM, Greg Kurz wrote:
+> On Mon,  6 Jan 2020 15:24:10 -0300
+> Daniel Henrique Barboza <danielhb413@gmail.com> wrote:
 > 
+>> 'err_out' can be replaced by 'return ret' in the error conditions
+>> the jump was being made.
+>>
+>> CC: Greg Kurz <groug@kaod.org>
+>> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+>> ---
+>>   hw/9pfs/9p-local.c | 12 +++++-------
+>>   1 file changed, 5 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/hw/9pfs/9p-local.c b/hw/9pfs/9p-local.c
+>> index ca641390fb..f9bdd2ad7c 100644
+>> --- a/hw/9pfs/9p-local.c
+>> +++ b/hw/9pfs/9p-local.c
+>> @@ -1094,12 +1094,12 @@ static int local_unlinkat_common(FsContext *ctx, int dirfd, const char *name,
+>>   
+>>               fd = openat_dir(dirfd, name);
+>>               if (fd == -1) {
+>> -                goto err_out;
+>> +                return ret;
+>>               }
+>>               ret = unlinkat(fd, VIRTFS_META_DIR, AT_REMOVEDIR);
+>>               close_preserve_errno(fd);
+>>               if (ret < 0 && errno != ENOENT) {
+>> -                goto err_out;
+>> +                return ret;
+>>               }
+>>           }
+>>           map_dirfd = openat_dir(dirfd, VIRTFS_META_DIR);
+>> @@ -1107,16 +1107,14 @@ static int local_unlinkat_common(FsContext *ctx, int dirfd, const char *name,
+>>               ret = unlinkat(map_dirfd, name, 0);
+>>               close_preserve_errno(map_dirfd);
+>>               if (ret < 0 && errno != ENOENT) {
+>> -                goto err_out;
+>> +                return ret;
+>>               }
+>>           } else if (errno != ENOENT) {
+>> -            goto err_out;
+>> +            return ret;
 > 
+> Ouch... I now realize we can get there with ret == 0 when unlinking a
+> directory in mapped-file mode. The function will wrongly return success
+> despite the failure.... Since this function is supposed to return -1
+> on error, I suggest to do that instead of return ret, and to drop the
+> initialization of ret to -1, which wouldn't be needed anymore.
+> 
+> Since this would fix a bug it makes sense to post it separately from
+> this series. Rewrite the title/changelog accordingly and I'll merge
+> it via the 9p tree.
 
+
+Got it. I'll repost it separately with an updated title and commit msg.
+
+
+Thanks,
+
+
+Daniel
+
+> 
+>>           }
+>>       }
+>>   
+>> -    ret = unlinkat(dirfd, name, flags);
+>> -err_out:
+>> -    return ret;
+>> +    return unlinkat(dirfd, name, flags);
+>>   }
+>>   
+>>   static int local_remove(FsContext *ctx, const char *path)
+> 
 
