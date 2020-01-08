@@ -1,71 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ip2Gq-00022E-7H
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 22:44:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47403)
+	id 1ip2YD-00025K-Ru
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Jan 2020 23:02:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60184)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1ip2Go-0001z5-5p
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 22:44:35 -0500
+ (envelope-from <prime.zeng@hisilicon.com>) id 1ip2Y9-0001xc-68
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 23:02:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1ip2Gm-0001Uv-5W
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 22:44:33 -0500
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:44276)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1ip2Gl-0001TC-UV
- for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 22:44:32 -0500
-Received: by mail-pl1-x644.google.com with SMTP id az3so533124plb.11
- for <qemu-trivial@nongnu.org>; Tue, 07 Jan 2020 19:44:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=t9nsho0Y4J3wU6LI4fcqMlN7D6a6PFi25xdf9ScGT/s=;
- b=ydW1ICm4QmEBVlMm9uu9G704okVm2bGGtE05iQRs7PEcuPSbgEcuEa8IXlP8/GS1Yb
- 2BhnzvP8RwBgvgMbzxWltQNq+1Rd25oFo7bcOabF4awl5g2lX3r3C+Se2B8vo0j6qN5q
- L+XplDC5lvk9N9FBBiRxiknS91v4BYhaZt96l0sGD+/qyfnTublUMYm9c9gKZ/stY2G+
- PNBdQAZ0v9AzHYWfr2NBh43ZiP5RFfHCOKQRQ5BC4wKY1VMW87Xg0nhPZK+hvfdHNjjW
- CxvtxFYqMM07nVY+Pbk8MR2DONvYXOpLrEqaU1MH6oFlBJ1uA8z9LaWsaSPzdFd7VK7A
- QRaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=t9nsho0Y4J3wU6LI4fcqMlN7D6a6PFi25xdf9ScGT/s=;
- b=DQjscuJJmEb3jiLv2VSlhAYbhjFK3X2pwaWeiCwaECTTWzj7HFuh2t5H/cHXOhNP4b
- UlZWHswsiv/5a3U2eIts6v/JGcCU1+mA/DQPe9TvRuabWWU8qqp5dSfc434/R6nG3J4J
- 5WgD0q11poMF7rPEM4u7vKz030ENkqFXg1ScUxYtsDEbukVgdFl/rF7LUuANPmNgCRmv
- pZz2kMf97Y6nrG1SGFlqz+PeC5epnUVOUqy0SJ7oBu/QUP1oqpmGIYXDagZaIOpcStuZ
- +83lxeRDMbMe+UF6K3/OVYniBre+7oz2xWQYi/8UWtge0hVOQVo1bm0M87060ZtZmnfb
- dXeQ==
-X-Gm-Message-State: APjAAAVaF9mdRJYaI7pVTj4/ordvXKXYEBjI7AkyooV5JyOTTjMqqaJb
- TU+Ap7s2blfse0NOtWOufzSdEw==
-X-Google-Smtp-Source: APXvYqyvQLIbI/uDDoS3sAPsl1GQVMKUw8wdunn8lOO3UUFOef8j6mPhwG6Hvg6WYYOloRYjpWo0lQ==
-X-Received: by 2002:a17:902:59cd:: with SMTP id
- d13mr3274960plj.146.1578455070625; 
- Tue, 07 Jan 2020 19:44:30 -0800 (PST)
-Received: from [192.168.15.12] (alanje.lnk.telstra.net. [120.151.179.201])
- by smtp.gmail.com with ESMTPSA id j9sm1124255pff.6.2020.01.07.19.44.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Jan 2020 19:44:29 -0800 (PST)
-Subject: Re: [PATCH v2] nbd: fix uninitialized variable warning
-To: pannengyuan@huawei.com, eblake@redhat.com
-Cc: zhang.zhanghailiang@huawei.com, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- Euler Robot <euler.robot@huawei.com>
-References: <20200108025132.46956-1-pannengyuan@huawei.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <f26f8785-9523-c37a-17bf-74c65faac85d@linaro.org>
-Date: Wed, 8 Jan 2020 13:44:24 +1000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ (envelope-from <prime.zeng@hisilicon.com>) id 1ip2Y7-0008Kp-Da
+ for qemu-trivial@nongnu.org; Tue, 07 Jan 2020 23:02:28 -0500
+Received: from szxga08-in.huawei.com ([45.249.212.255]:33406 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <prime.zeng@hisilicon.com>)
+ id 1ip2Y0-00088w-QT; Tue, 07 Jan 2020 23:02:21 -0500
+Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.53])
+ by Forcepoint Email with ESMTP id B23C8F73DEA1703FDE75;
+ Wed,  8 Jan 2020 12:02:15 +0800 (CST)
+Received: from DGGEMM526-MBX.china.huawei.com ([169.254.8.143]) by
+ DGGEMM406-HUB.china.huawei.com ([10.3.20.214]) with mapi id 14.03.0439.000;
+ Wed, 8 Jan 2020 12:02:11 +0800
+From: "Zengtao (B)" <prime.zeng@hisilicon.com>
+To: Igor Mammedov <imammedo@redhat.com>
+CC: "Michael S. Tsirkin" <mst@redhat.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, 
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Subject: RE: [PATCH] hw/arm/acpi: Pack the SRAT processors structure by
+ node_id ascending order
+Thread-Topic: [PATCH] hw/arm/acpi: Pack the SRAT processors structure by
+ node_id ascending order
+Thread-Index: AQHVxTwQeBqIZ8yXtEyanioq6c3U06feal4AgACT4nD//9VlAIABTx2w
+Date: Wed, 8 Jan 2020 04:02:10 +0000
+Message-ID: <678F3D1BB717D949B966B68EAEB446ED340B8B24@dggemm526-mbx.china.huawei.com>
+References: <1578388729-55540-1-git-send-email-prime.zeng@hisilicon.com>
+ <20200107042918-mutt-send-email-mst@kernel.org>
+ <678F3D1BB717D949B966B68EAEB446ED340B608D@dggemm526-mbx.china.huawei.com>
+ <20200107164958.7811777d@redhat.com>
+In-Reply-To: <20200107164958.7811777d@redhat.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.74.221.187]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-In-Reply-To: <20200108025132.46956-1-pannengyuan@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::644
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.255
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -77,27 +59,158 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jan 2020 03:44:35 -0000
+X-List-Received-Date: Wed, 08 Jan 2020 04:02:32 -0000
 
-On 1/8/20 12:51 PM, pannengyuan@huawei.com wrote:
-> From: Pan Nengyuan <pannengyuan@huawei.com>
-> 
-> Fixes:
-> /mnt/sdb/qemu/nbd/server.c: In function 'nbd_handle_request':
-> /mnt/sdb/qemu/nbd/server.c:2313:9: error: 'ret' may be used uninitialized in this function [-Werror=maybe-uninitialized]
->      int ret;
-> 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
-> ---
-> Changes v2 to v1:
-> - change 'if(client->export_meta.bitmap)' into 'else' to fix uninitialized warning and clean up pointless code (suggested by Eric Blake)
-> ---
->  nbd/server.c | 10 +---------
->  1 file changed, 1 insertion(+), 9 deletions(-)
+> -----Original Message-----
+> From: Igor Mammedov [mailto:imammedo@redhat.com]
+> Sent: Tuesday, January 07, 2020 11:50 PM
+> To: Zengtao (B)
+> Cc: Michael S. Tsirkin; qemu-devel@nongnu.org; qemu-trivial@nongnu.org;
+> Shannon Zhao; Peter Maydell; qemu-arm@nongnu.org
+> Subject: Re: [PATCH] hw/arm/acpi: Pack the SRAT processors structure by
+> node_id ascending order
+>=20
+> On Tue, 7 Jan 2020 10:29:22 +0000
+> "Zengtao (B)" <prime.zeng@hisilicon.com> wrote:
+>=20
+> > > -----Original Message-----
+> > > From: Michael S. Tsirkin [mailto:mst@redhat.com]
+> > > Sent: Tuesday, January 07, 2020 5:33 PM
+> > > To: Zengtao (B)
+> > > Cc: qemu-devel@nongnu.org; qemu-trivial@nongnu.org; Shannon
+> Zhao;
+> > > Peter Maydell; Igor Mammedov; qemu-arm@nongnu.org
+> > > Subject: Re: [PATCH] hw/arm/acpi: Pack the SRAT processors structure
+> by
+> > > node_id ascending order
+> > >
+> > > On Tue, Jan 07, 2020 at 05:18:49PM +0800, Zeng Tao wrote:
+> > > > When booting the guest linux with the following numa configuration:
+> > > > -numa node,node_id=3D1,cpus=3D0-3
+> > > > -numa node,node_id=3D0,cpus=3D4-7
+> > > > We can get the following numa topology in the guest system:
+> > > > Architecture:          aarch64
+> > > > Byte Order:            Little Endian
+> > > > CPU(s):                8
+> > > > On-line CPU(s) list:   0-7
+> > > > Thread(s) per core:    1
+> > > > Core(s) per socket:    8
+> > > > Socket(s):             1
+> > > > NUMA node(s):          2
+> > > > L1d cache:             unknown size
+> > > > L1i cache:             unknown size
+> > > > L2 cache:              unknown size
+> > > > NUMA node0 CPU(s):     0-3
+> > > > NUMA node1 CPU(s):     4-7
+> > > > The Cpus 0-3 is assigned with NUMA node 1 in QEMU while it get
+> NUMA
+> > > node
+> > > > 0 in the guest.
+> > > >
+> > > > In fact, In the linux kernel, numa_node_id is allocated per the ACP=
+I
+> > > > SRAT processors structure order,so the cpu 0 will be the first one =
+to
+> > > > allocate its NUMA node id, so it gets the NUMA node 0.
+> > > >
+> > > > To fix this issue, we pack the SRAT processors structure in numa no=
+de
+> id
+> > > > order but not the default cpu number order.
+> > > >
+> > > > Signed-off-by: Zeng Tao <prime.zeng@hisilicon.com>
+> > >
+> > >
+> > > Does this matter? If yes fixing linux to take node id from proximity
+> > > field in ACPI seems cleaner ...
+> > >
+> >
+> > In fact, I just want to align the node_id concept in QEMU and Linux.
+> > If we fix the kernel side, we need to align with all platforms.
+> > i think maybe not a good idea.
+> if linux makes up node ID's on it's own, it would be hard for it to
+> map SRAT entries to other tables that use proximity id as well.
+>=20
+> So it would need to maintain map of [proximity id] -> [node id] (and reve=
+rse)
+> somewhere to resolve mappings on other tables.
+> If it doesn't do this then it's broken and works just by accident,
+> if it does the fix probably should be in that code and not in QEMU.
+>=20
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Hmm, the problem is how to understand the concept of node id.
+1. In dts, there is node id. Both the QEMU and Linux can use it
+directly, so no conflict.
+2. In ACPI, there is only proximity domain, but no node id, there
+ should be a mapping between them, while kernel and QEMU maintain
+ their own rule, and unfortunately they conflict with each other=20
+ sometimes.
 
+There is no specification to indicate what we should do to maintain the
+mapping, so it's hard to align the QEMU and Linux.
 
-r~
+Any suggestion, or we just accept it as a rule since it don't affect much?
+
+> >
+> > > > ---
+> > > >  hw/arm/virt-acpi-build.c | 23 +++++++++++++++--------
+> > > >  1 file changed, 15 insertions(+), 8 deletions(-)
+> > > >
+> > > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > > > index bd5f771..497192b 100644
+> > > > --- a/hw/arm/virt-acpi-build.c
+> > > > +++ b/hw/arm/virt-acpi-build.c
+> > > > @@ -520,7 +520,8 @@ build_srat(GArray *table_data, BIOSLinker
+> > > *linker, VirtMachineState *vms)
+> > > >      AcpiSystemResourceAffinityTable *srat;
+> > > >      AcpiSratProcessorGiccAffinity *core;
+> > > >      AcpiSratMemoryAffinity *numamem;
+> > > > -    int i, srat_start;
+> > > > +    int i, j, srat_start;
+> > > > +    uint32_t node_id;
+> > > >      uint64_t mem_base;
+> > > >      MachineClass *mc =3D MACHINE_GET_CLASS(vms);
+> > > >      MachineState *ms =3D MACHINE(vms);
+> > > > @@ -530,13 +531,19 @@ build_srat(GArray *table_data, BIOSLinker
+> > > *linker, VirtMachineState *vms)
+> > > >      srat =3D acpi_data_push(table_data, sizeof(*srat));
+> > > >      srat->reserved1 =3D cpu_to_le32(1);
+> > > >
+> > > > -    for (i =3D 0; i < cpu_list->len; ++i) {
+> > > > -        core =3D acpi_data_push(table_data, sizeof(*core));
+> > > > -        core->type =3D ACPI_SRAT_PROCESSOR_GICC;
+> > > > -        core->length =3D sizeof(*core);
+> > > > -        core->proximity =3D
+> > > cpu_to_le32(cpu_list->cpus[i].props.node_id);
+> > > > -        core->acpi_processor_uid =3D cpu_to_le32(i);
+> > > > -        core->flags =3D cpu_to_le32(1);
+> > > > +    for (i =3D 0; i < ms->numa_state->num_nodes; ++i) {
+> > > > +        for (j =3D 0; j < cpu_list->len; ++j) {
+> > >
+> > > Hmm O(n ^2) isn't great ...
+> > Good suggestion, 3Q.
+> > >
+> > > > +            node_id =3D
+> cpu_to_le32(cpu_list->cpus[j].props.node_id);
+> > > > +            if (node_id !=3D i) {
+> > > > +                continue;
+> > > > +            }
+> > > > +            core =3D acpi_data_push(table_data, sizeof(*core));
+> > > > +            core->type =3D ACPI_SRAT_PROCESSOR_GICC;
+> > > > +            core->length =3D sizeof(*core);
+> > > > +            core->proximity =3D node_id;
+> > > > +            core->acpi_processor_uid =3D cpu_to_le32(j);
+> > > > +            core->flags =3D cpu_to_le32(1);
+> > > > +        }
+> > > >      }
+> > >
+> > > is the issue arm specific? wouldn't it affect x86 too?
+> > >
+> > Good question, I think it will affect x86, but I need to confirm.
+> >
+> > > >      mem_base =3D vms->memmap[VIRT_MEM].base;
+> > > > --
+> > > > 2.8.1
+> >
+
 
