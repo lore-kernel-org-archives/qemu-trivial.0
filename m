@@ -1,26 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ipCsa-0006SM-5P
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Jan 2020 10:04:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44662)
+	id 1ipCz9-0000p4-OR
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Jan 2020 10:11:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50402)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1ipCsV-0006LA-Sf
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 10:04:12 -0500
+ (envelope-from <laurent@vivier.eu>) id 1ipCz6-0000l5-6N
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 10:11:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1ipCsU-0001hu-MP
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 10:04:11 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:37795)
+ (envelope-from <laurent@vivier.eu>) id 1ipCz4-0007H4-VR
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 10:11:00 -0500
+Received: from mout.kundenserver.de ([217.72.192.73]:44017)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1ipCsR-0001bM-RC; Wed, 08 Jan 2020 10:04:08 -0500
+ id 1ipCyi-00075H-Qq; Wed, 08 Jan 2020 10:10:56 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mlf8e-1jXa353r3i-00ikKx; Wed, 08 Jan 2020 16:03:50 +0100
-Subject: Re: [PATCH v2] nbd: fix uninitialized variable warning
-To: pannengyuan@huawei.com, eblake@redhat.com
-Cc: zhang.zhanghailiang@huawei.com, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MatZt-1jQkqz3nFz-00cRhy; Wed, 08 Jan 2020 16:10:31 +0100
+Subject: Re: [PATCH v2] arm/translate-a64: fix uninitialized variable warning
+To: pannengyuan@huawei.com, peter.maydell@linaro.org
+Cc: zhang.zhanghailiang@huawei.com, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Euler Robot <euler.robot@huawei.com>
-References: <20200108025132.46956-1-pannengyuan@huawei.com>
+References: <20200108023915.52288-1-pannengyuan@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -64,36 +64,36 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <3bf9f590-ba43-557e-649e-9da837f3e5a3@vivier.eu>
-Date: Wed, 8 Jan 2020 16:03:48 +0100
+Message-ID: <4274ef7b-8a2d-cb4f-c002-97d06211e744@vivier.eu>
+Date: Wed, 8 Jan 2020 16:10:29 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.3.1
 MIME-Version: 1.0
-In-Reply-To: <20200108025132.46956-1-pannengyuan@huawei.com>
+In-Reply-To: <20200108023915.52288-1-pannengyuan@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:BqUJG+VnmwphTOS/RjKFpGe/RYaRo2kjI5mWVGRQZGX2Rt/9hDa
- /Ok2GY+BGXl/D/+C17ACT8UnxqpVaBd3j6myvsMzSXD5aaHskc+947VyyswsQdsMmkUItrS
- E3btSjzlRFWKcMJIqtkaC6s16pHthDzS3msF175g/1wXZc0y/CV2NuSNWsX8cXgBhAms3Vr
- tYWwOp2vNTqSqx0pPZoDg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:pmvKE7TU29o=:YmCFdudYCT6pEaT5tY1c+O
- PYcKGBXckyMAVdzSVwDWNUTY//2jUh+ICU4jZfugmw3Ra9/b85xD6pLrWPOS+ooP9m4LUyl+7
- S6T8hH8XIKtK5cjovn7KYfyk81f3FRTmpWISEORNzZAw0yYUdjWaNlIYGnMsze9DIYZo6+YkO
- Lqqj6txSXG9iquv6prsNVef72GnzqjW/T9DcPShEOawSHnwKz3Ij5l8YPz6T1CYMlhoZPHu3r
- YurB5rHyZP80wsx1QXN7mquQf8DhK2xUruCO9vhkMZFZrwDFXlJsE7Le6LEqprWqfgG+w8S0o
- +NspkIRLsdStFg/eg1xP5NXOKaUtzZwrFFBn1k6myUEJLuzEsExgGwxRXmULV11j0q5lApS/l
- ChHU3Zk9cmZT3Jztgg9f0KQequmehOcNICdT/YHFLSYDWecxqLgRueO++P44aGaokX1eNnSrX
- vEvj3+b2q5xx36iZMjSfh2Yryepa9x8UmHYaUWLVaCKgKrgyC3xeysS9ZkrzCbY2Fl/7ilKsa
- hUfbjnWC+QdbKrNO7TE8t1E00O8zn5UWgMkNUqjA+h/VauoQJQ41aWnsa2q5VXf2wgYnujih/
- w5aHkgKaxDMoyymWRXhHT1IbwVsqK1m6OfDRCpCL0FBOdju54+5BtlYV5TL0R/g9ndltyHnLV
- yhcn6nE8K9FZmUUjiHLbvAB+uZ5vfWY79W5Jjrn/MuSg0732MemV3ny+oYbLHA2T2pnTkoRUr
- 5BCTbft45tNKttZENaRYN0eqDsiyoTA8rRK/CF/9fbm3u/zP04zih2mH4m9ETt+ykk+8UC516
- Bn6nlFKtXe8fADiZptFO5nMlvrlf6WVWpEQBZjtH4UAN4xYPtqyouSI+decC69fHIXe/lsDOH
- HH1zgq1EYL6FcU6AABpWKK9C1RF3T9fJTBVclE3eM=
+X-Provags-ID: V03:K1:EXRRJFu6b3cCD7Ongt0goDgiAyC/7vEBVFleNuALvlgtiX2SoyD
+ hq4XxKpNSSoV/mAC9A5+cNcd5mkbzFUgcvilaz8EAGKUyRDudz3Ub9g13wYNbmAKG0lOje+
+ fiR7ZF00ikwzC+Ra28GQfqdTR7q3iLZdYo0IjZcIwy6L6AxeBoR1V7u29dGUh+w3n+x6dPB
+ 7t72eddL2yYVvQFASoT2Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:WSoWEOtO0UU=:qaR+bzvh3rTjjV2KfKBJhq
+ 4XDdbbQPBACeJlR65iSkdOCDMSfcy4i/oVzjARp8o3CGPAEoEey72r+HPcAUhzpW+aMbhszd8
+ 7Xi4r84fPU6Du1OjxUpkM4YileEWD7JOFcxImNZaMlsBiWC2c5CBOTfIC7qfj8KPgrErqDtwP
+ 119OpXKibv65uSDefpV5tcUoRnP9Q3Oxz1/oqHJy0fQW6nodKZaZ/z0RrScH7Vev8eTWF1gEy
+ Yek2jR6OuSI60Cm+7c/+QrZGtAjpY7YedJKBBO3FSGYmftBlYZOXbNaNgXnM9pUAQ/lz2z4sG
+ qMWK80emr9g6QZawRWUQ8/uxHOaTYQcAw35eXJm/y+rClG4dv5E8OgaRgifqJZK0wV1+MFO46
+ 5L2uLSFvxeq2B/BZtl4AbxwStN7VA/DWP1krlJkl0Rzs0D6CzIO9gtpGwnK3RREPgW5pV6qfH
+ BNAPzu+7D2jkTSnK5ogHxgA349UAUF8XAqTp5xtXz/uoSWz4DptYx6oZzKJO/2UGbd7j7Smgm
+ lWdvq3CLWfHDwIacmKI0tiHxN47BIE/NDk3vsTOlOa4FIETmvwQgJtMOMx7dnvNRoMk+HBBnE
+ OjhueJwZpE8ihu7lgg/HgLWAbk1vFC4NSFkFMw65rkOs0fhKZRl4wBIjVntZsuPnlk+Xj/CJI
+ gvhFt+KwVf+KBbIHAjwbhJXxqLyL9e7CUOWcA+TxxbiRgas/D4pinuoTRcGaa3oNc/mrDUEnU
+ WHDDq0zWI+m18+ctyFRly9iQRBHX9bkhEA8017AAypCpth7T2nFLTBJharK/gi1qvbaAuwwYG
+ CDsLt+PfgFbmvqQhLIwcw5dHljDPIAQBrRUBjmT7OR411jBnRJAISaeZ2c2V+r2dF4C5MZLGT
+ 4YUIzLbqz7j1byF1lATA==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 212.227.17.10
+X-Received-From: 217.72.192.73
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,58 +105,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jan 2020 15:04:14 -0000
+X-List-Received-Date: Wed, 08 Jan 2020 15:11:02 -0000
 
-Le 08/01/2020 à 03:51, pannengyuan@huawei.com a écrit :
+Le 08/01/2020 à 03:39, pannengyuan@huawei.com a écrit :
 > From: Pan Nengyuan <pannengyuan@huawei.com>
 > 
 > Fixes:
-> /mnt/sdb/qemu/nbd/server.c: In function 'nbd_handle_request':
-> /mnt/sdb/qemu/nbd/server.c:2313:9: error: 'ret' may be used uninitialized in this function [-Werror=maybe-uninitialized]
->      int ret;
+> target/arm/translate-a64.c: In function 'disas_crypto_three_reg_sha512':
+> target/arm/translate-a64.c:13625:9: error: 'genfn' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+>     genfn(tcg_rd_ptr, tcg_rn_ptr, tcg_rm_ptr);
+>     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> qemu/target/arm/translate-a64.c:13609:8: error: 'feature' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+>     if (!feature) {
 > 
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
 > ---
 > Changes v2 to v1:
-> - change 'if(client->export_meta.bitmap)' into 'else' to fix uninitialized warning and clean up pointless code (suggested by Eric Blake)
+> - add a default label to fix uninitialized warnings(suggested by Richard Henderson)
 > ---
->  nbd/server.c | 10 +---------
->  1 file changed, 1 insertion(+), 9 deletions(-)
+>  target/arm/translate-a64.c | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> diff --git a/nbd/server.c b/nbd/server.c
-> index 24ebc1a805..87fcd2e7bf 100644
-> --- a/nbd/server.c
-> +++ b/nbd/server.c
-> @@ -2384,20 +2384,12 @@ static coroutine_fn int nbd_handle_request(NBDClient *client,
->                                                 !client->export_meta.bitmap,
->                                                 NBD_META_ID_BASE_ALLOCATION,
->                                                 errp);
-> -                if (ret < 0) {
-> -                    return ret;
-> -                }
-> -            }
-> -
-> -            if (client->export_meta.bitmap) {
-> +            } else {              /* client->export_meta.bitmap */
->                  ret = nbd_co_send_bitmap(client, request->handle,
->                                           client->exp->export_bitmap,
->                                           request->from, request->len,
->                                           dont_fragment,
->                                           true, NBD_META_ID_DIRTY_BITMAP, errp);
-> -                if (ret < 0) {
-> -                    return ret;
-> -                }
->              }
->  
->              return ret;
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index d4bebbe629..63a3d26687 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -13585,6 +13585,8 @@ static void disas_crypto_three_reg_sha512(DisasContext *s, uint32_t insn)
+>              feature = dc_isar_feature(aa64_sha3, s);
+>              genfn = NULL;
+>              break;
+> +        default:
+> +            g_assert_not_reached();
+>          }
+>      } else {
+>          switch (opcode) {
 > 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-
-And applied to my trivial-patches branch.
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
-
 
