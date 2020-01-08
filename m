@@ -1,62 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ipBCU-0001ed-Na
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Jan 2020 08:16:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60120)
+	id 1ipC0n-0004nU-7I
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Jan 2020 09:08:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39772)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1ipBCR-0001ck-Uq
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 08:16:41 -0500
+ (envelope-from <groug@kaod.org>) id 1ipC0k-0004mv-4q
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 09:08:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <cohuck@redhat.com>) id 1ipBCQ-0007De-Ve
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 08:16:39 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:30845
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <groug@kaod.org>) id 1ipC0i-0000uT-SC
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 09:08:37 -0500
+Received: from 8.mo3.mail-out.ovh.net ([87.98.172.249]:47298)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1ipBBy-0006v3-E1
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 08:16:38 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578489366;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nPcmk0b6yRUBu9FYvwhg+6bf/76SqxpUR2t7+mUQVoE=;
- b=eJ+vF545fKmhYhBMffs9C8XK7FeFP8N/+ZyW4laUqbD6w6QSmZ6oNfzWXRJowRfCtHiTFz
- be42dueKz0FdMAjUmSAquCOdXMlTKy52UVyYG1FqPNEFrTGebj8QO2XbNyYTCgAXRLf6m9
- /IaYwBXwrkCJQYhHz8DPHYz+lABJSjc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-123-5frj8CK_OQOzT6ZooWMIyw-1; Wed, 08 Jan 2020 08:16:04 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8D6AE800D41;
- Wed,  8 Jan 2020 13:16:03 +0000 (UTC)
-Received: from gondolin (dhcp-192-245.str.redhat.com [10.33.192.245])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 65BC65C1B0;
- Wed,  8 Jan 2020 13:16:02 +0000 (UTC)
-Date: Wed, 8 Jan 2020 14:16:00 +0100
-From: Cornelia Huck <cohuck@redhat.com>
-To: Daniel Henrique Barboza <danielhb413@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Halil Pasic
- <pasic@linux.ibm.com>, Christian Borntraeger <borntraeger@de.ibm.com>,
- qemu-s390x@nongnu.org
-Subject: Re: [PATCH v1 38/59] s390x/sclp.c: remove unneeded label in
- sclp_service_call()
-Message-ID: <20200108141600.23c879c0.cohuck@redhat.com>
-In-Reply-To: <20200106182425.20312-39-danielhb413@gmail.com>
+ (Exim 4.71) (envelope-from <groug@kaod.org>) id 1ipC0i-0000rR-LN
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 09:08:36 -0500
+Received: from player794.ha.ovh.net (unknown [10.108.35.12])
+ by mo3.mail-out.ovh.net (Postfix) with ESMTP id 4722923B7C8
+ for <qemu-trivial@nongnu.org>; Wed,  8 Jan 2020 15:08:33 +0100 (CET)
+Received: from kaod.org (lns-bzn-46-82-253-208-248.adsl.proxad.net
+ [82.253.208.248]) (Authenticated sender: groug@kaod.org)
+ by player794.ha.ovh.net (Postfix) with ESMTPSA id 62352AFBC6D5;
+ Wed,  8 Jan 2020 14:08:30 +0000 (UTC)
+Date: Wed, 8 Jan 2020 15:08:29 +0100
+From: Greg Kurz <groug@kaod.org>
+To: Christian Schoenebeck <qemu_oss@crudebyte.com>
+Cc: qemu-devel@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH v1 45/59] 9pfs/9p.c: remove unneeded labels
+Message-ID: <20200108150829.6664f450@bahia.lan>
+In-Reply-To: <13045963.Gd4jlxRJ09@silver>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
- <20200106182425.20312-39-danielhb413@gmail.com>
-Organization: Red Hat GmbH
+ <20200106182425.20312-46-danielhb413@gmail.com>
+ <13045963.Gd4jlxRJ09@silver>
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: 5frj8CK_OQOzT6ZooWMIyw-1
-X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 16312319329440340288
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrvdehkedgiedtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvffukfgjfhfogggtgfesthejredtredtvdenucfhrhhomhepifhrvghgucfmuhhriicuoehgrhhouhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrvdehfedrvddtkedrvdegkeenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeelgedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpehgrhhouhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqthhrihhvihgrlhesnhhonhhgnhhurdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 87.98.172.249
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -68,23 +52,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jan 2020 13:16:41 -0000
+X-List-Received-Date: Wed, 08 Jan 2020 14:08:39 -0000
 
-On Mon,  6 Jan 2020 15:24:04 -0300
-Daniel Henrique Barboza <danielhb413@gmail.com> wrote:
+On Tue, 07 Jan 2020 13:14:20 +0100
+Christian Schoenebeck <qemu_oss@crudebyte.com> wrote:
 
-> 'out' label can be replaced by 'return' with the appropriate
-> value. The 'r' integer, which is used solely to set the
-> return value for this label, can also be removed.
+> On Montag, 6. Januar 2020 19:24:11 CET Daniel Henrique Barboza wrote:
+> > 'out' label in v9fs_xattr_write() and 'out_nofid' label in
+> > v9fs_complete_rename() can be replaced by appropriate return
+> > calls.
+> > 
+> > CC: Greg Kurz <groug@kaod.org>
+> > Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+> > ---
+> >  hw/9pfs/9p.c | 9 +++------
+> >  1 file changed, 3 insertions(+), 6 deletions(-)
+> > 
+> > diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
+> > index 520177f40c..be2beba4cd 100644
+> > --- a/hw/9pfs/9p.c
+> > +++ b/hw/9pfs/9p.c
+> > @@ -2464,8 +2464,7 @@ static int v9fs_xattr_write(V9fsState *s, V9fsPDU
+> > *pdu, V9fsFidState *fidp,
+> > 
+> > 
+> >      if (fidp->fs.xattr.len < off) {
+> > -        err = -ENOSPC;
+> > -        goto out;
+> > +        return -ENOSPC;
+> >      }
+> >      write_count = fidp->fs.xattr.len - off;
+> >      if (write_count > count) {
+> > @@ -2491,7 +2490,7 @@ static int v9fs_xattr_write(V9fsState *s, V9fsPDU
+> > *pdu, V9fsFidState *fidp, off += to_copy;
+> >          write_count -= to_copy;
+> >      }
+> > -out:
+> > +
+> >      return err;
+> >  }
+> > 
+> > @@ -3056,8 +3055,7 @@ static int coroutine_fn v9fs_complete_rename(V9fsPDU
+> > *pdu, V9fsFidState *fidp, if (newdirfid != -1) {
+> >          dirfidp = get_fid(pdu, newdirfid);
+> >          if (dirfidp == NULL) {
+> > -            err = -ENOENT;
+> > -            goto out_nofid;
+> > +            return -ENOENT;
+> >          }
+> >          if (fidp->fid_type != P9_FID_NONE) {
+> >              err = -EINVAL;
+> > @@ -3100,7 +3098,6 @@ out:
+> >          put_fid(pdu, dirfidp);
+> >      }
+> >      v9fs_path_free(&new_path);
+> > -out_nofid:
+> >      return err;
+> >  }
 > 
-> CC: Cornelia Huck <cohuck@redhat.com>
-> CC: Halil Pasic <pasic@linux.ibm.com>
-> CC: Christian Borntraeger <borntraeger@de.ibm.com>
-> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
-> ---
->  hw/s390x/sclp.c | 16 +++++-----------
->  1 file changed, 5 insertions(+), 11 deletions(-)
+> Same as with patch 44: IMO not any improvement, but also not any behaviour 
+> change at least. So it's up to you Greg.
+> 
 
-Thanks, applied.
+I don't really care either but as you say it doesn't change behaviour, and
+and the diffstat is nice :)
+
+Acked-by: Greg Kurz <groug@kaod.org>
+
+> Best regards,
+> Christian Schoenebeck
+> 
+> 
 
 
