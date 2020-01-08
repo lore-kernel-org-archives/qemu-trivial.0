@@ -1,72 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ipC7K-0000I8-HK
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Jan 2020 09:15:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43701)
+	id 1ipCoN-0001q6-JQ
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Jan 2020 09:59:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42128)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <danielhb413@gmail.com>) id 1ipC7H-0000Dc-Gm
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 09:15:24 -0500
+ (envelope-from <pbonzini@redhat.com>) id 1ipCoL-0001ml-Bd
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 09:59:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <danielhb413@gmail.com>) id 1ipC7G-0006U7-HD
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 09:15:23 -0500
-Received: from mail-qt1-x841.google.com ([2607:f8b0:4864:20::841]:44140)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <danielhb413@gmail.com>)
- id 1ipC7E-0006RS-3k; Wed, 08 Jan 2020 09:15:20 -0500
-Received: by mail-qt1-x841.google.com with SMTP id t3so2839687qtr.11;
- Wed, 08 Jan 2020 06:15:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=kz008dI/5ko0RwiX0dhQgdEcmtnuOK5w/ZgYy3z+lwg=;
- b=R029GEXGaMEgUS+37qzV7CpBVvb7c/7H75pxTxHG1SbSeX7OoIPeP67Vt4sEWrAizF
- nGlIsN9oBip4+JD6Z1MjzBNgwBY5imYl+z7uKRTHrXdyhe80oP+Ph/PEa8QCIDHcrcCI
- NeEbHszFcU/nMmuxsHN8qOrne88widQfjpk2VY3nZNZjRQITNVAIWXCbwiG8ZXVYcZnJ
- xaoptATzayB4k+BJdWAANL6lkq9iVXdGXkyYH54woeGi1DMYxnpZ71AcZgziWQD8sfbY
- vkSlRSqyTuAmCLxqwIJ/V5yj6yjSaUPlHGmYS6nBR8K2Y34vUpxoof/KrgenHFrVhM1S
- Yulg==
+ (envelope-from <pbonzini@redhat.com>) id 1ipCoJ-0007XT-Vy
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 09:59:53 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:41183
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1ipCoJ-0007Wt-S3
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 09:59:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1578495591;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=fFYIF8ZdTAD8k9euNtihp5ry8OyQtjs/RvA8CMTdmh8=;
+ b=elmDam6FZHVIJQQGS20lfkg9nYq37Lk8zlY4ilgLJefYicfxbMVQcNjBdLJ/6WOs3YE4pR
+ NW7fxZ8hkrXvtmR9oeBLix1CwY18n5jDwybzl7LPmGW/oJFu5MJudqndKRv/8BDqE/5OLK
+ Vl1iWKWGdNjbeWG5y061RAknwNrvEic=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-163-VnA08VRfO7-r1Eq_eDcRgQ-1; Wed, 08 Jan 2020 09:59:49 -0500
+Received: by mail-wr1-f70.google.com with SMTP id i9so1547710wru.1
+ for <qemu-trivial@nongnu.org>; Wed, 08 Jan 2020 06:59:49 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=kz008dI/5ko0RwiX0dhQgdEcmtnuOK5w/ZgYy3z+lwg=;
- b=rGsxYUt1u45/dWZf/alIKWRA1+f1u7Pq4qPWB4ysh3/O7yWK/ucS+w4rVipDuCUiY7
- Vf//fIY0YKxaq5ReH2kgOfM1mUojsIpHWy2XW/Ozh+5HEf9Q8ZElGYOM4WIZtwjIWHUp
- U8sq5i+OjnGahcyNA2dx+RflKsXThYcia9VXrff24Lm4NLWSka/n3BiXF3e32kw76QYP
- 8ePgY0HP4DToKGvGbxBIlkS4rlxcgprCqfmcz/RyjKkYrka7rA9N9pxK5/xL7++z1T9q
- 6tqmfT/khBdSvhx8iYwYWWjVKRRFzF48HIihinbg0nnqC5PJ6NUKJjkZA+1oWbTOH/GN
- NdWQ==
-X-Gm-Message-State: APjAAAWLDOSI/7tSQHQ/PhbdGJAoikpU7G35RYZmmnD72LxPVTdQHaX2
- 2e1BA60dgpySR4uQb9xGf/81y93O
-X-Google-Smtp-Source: APXvYqxLc56IdG+CQRyXL/VzTBEKTWMj5xA8IY75UvWu9Acn0u02JoHPzlIorYuy2pUewCCsRTyo1Q==
-X-Received: by 2002:aed:3fce:: with SMTP id w14mr3938372qth.0.1578492919000;
- Wed, 08 Jan 2020 06:15:19 -0800 (PST)
-Received: from ?IPv6:2804:431:c7c6:655b:9e1c:e865:3705:e1df?
- ([2804:431:c7c6:655b:9e1c:e865:3705:e1df])
- by smtp.gmail.com with ESMTPSA id n4sm1593482qti.55.2020.01.08.06.15.17
+ bh=MLzIGaZzdEEgusdjGwD6Pmgs5JYLqMw3A2MztWx9gaQ=;
+ b=De1IH9iyh3ZyMaDdZDfQkSNP6oTpYQNn3sVabGFvZrkQV9noMD16yDOfnjFWSe+qpq
+ SwTaejI9zkiVitw/1JaHupkPUiJX0O1EsJYIhAB+S5mEUr8PYcXMaGlXfsjUUS0CYKCG
+ /rL5jCUvanFsjFJunaNotJNhyU07ehD/RRzDZevJLyDTsPZkiBXRKQR1NpNffwQG75VM
+ s7FsHUMSuaBJcgL2wY2xKn8ZWV6EfPyaMI9cY5f14aqXJ+ODB18NaUBD161I/mjC5hqY
+ g6ZJ+DYB5nzkNptXwo/Q0MMxjT5wCrX2IZpvCeaEYMnb5FwB9jLkiw1y7VG1m74FhVVa
+ YU8A==
+X-Gm-Message-State: APjAAAVVcIttmhDpxp5tvZ05oBRWvUIzYJG6x7ifUFwsIRK8mBIH40PE
+ ZVZW4MQdHD7vJ3260Q9ohgz6+d3FBhmdRwVX7ywaXJH41mn7w4Yy2iVsRVDZ7YpZY66+QOqivw5
+ xAnfhqIkYFBFoXrdCOg==
+X-Received: by 2002:a1c:a78c:: with SMTP id q134mr4064022wme.98.1578495588504; 
+ Wed, 08 Jan 2020 06:59:48 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzylaoxCvjvFJH/G3Q2zllps869qAsZq7b3Fyq1Voff7946Q6iKd0qFU0fXHqA2avPxL5OuBw==
+X-Received: by 2002:a1c:a78c:: with SMTP id q134mr4063997wme.98.1578495588241; 
+ Wed, 08 Jan 2020 06:59:48 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:c6d:4079:b74c:e329?
+ ([2001:b07:6468:f312:c6d:4079:b74c:e329])
+ by smtp.gmail.com with ESMTPSA id d10sm4692485wrw.64.2020.01.08.06.59.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jan 2020 06:15:18 -0800 (PST)
-Subject: Re: [PATCH v1 37/59] s390x/event-facility.c: remove unneeded labels
-To: Cornelia Huck <cohuck@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org
-References: <20200106182425.20312-1-danielhb413@gmail.com>
- <20200106182425.20312-38-danielhb413@gmail.com>
- <20200108134608.17c8c76c.cohuck@redhat.com>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-Message-ID: <53cb4209-ed1c-0847-edf6-2dac868ee6dc@gmail.com>
-Date: Wed, 8 Jan 2020 11:15:14 -0300
+ Wed, 08 Jan 2020 06:59:47 -0800 (PST)
+Subject: Re: [PATCH] vl: fix memory leak in configure_accelerators
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ kuhn.chenqun@huawei.com, qemu-devel@nongnu.org
+Cc: liyiting@huawei.com, pannengyuan@huawei.com,
+ zhang.zhanghailiang@huawei.com,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <20200108114207.58084-1-kuhn.chenqun@huawei.com>
+ <2bf0ae4f-b024-c421-b9d2-eefe99453e04@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <d5626e7e-31fc-9065-7654-028c1af1d979@redhat.com>
+Date: Wed, 8 Jan 2020 15:59:46 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.1
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20200108134608.17c8c76c.cohuck@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <2bf0ae4f-b024-c421-b9d2-eefe99453e04@redhat.com>
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::841
+X-MC-Unique: VnA08VRfO7-r1Eq_eDcRgQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -78,29 +87,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jan 2020 14:15:24 -0000
+X-List-Received-Date: Wed, 08 Jan 2020 14:59:54 -0000
 
+On 08/01/20 15:56, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 1/8/20 12:42 PM, kuhn.chenqun@huawei.com wrote:
+>> From: Chen Qun <kuhn.chenqun@huawei.com>
+>>
+>> The accel_list forgot to free, the asan output:
+>>
+>> Direct leak of 16 byte(s) in 1 object(s) allocated from:
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #0 0xffff919331cb in __interceptor_malloc
+>> (/lib64/libasan.so.4+0xd31cb)
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #1 0xffff913f7163 in g_malloc (/lib64/libglib-2=
+.0.so.0+0x57163)
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #2 0xffff91413d9b in g_strsplit (/lib64/libglib=
+-2.0.so.0+0x73d9b)
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #3 0xaaab42fb58e7 in configure_accelerators /qe=
+mu/vl.c:2777
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #4 0xaaab42fb58e7 in main /qemu/vl.c:4121
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #5 0xffff8f9b0b9f in __libc_start_main (/lib64/=
+libc.so.6+0x20b9f)
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #6 0xaaab42fc1dab=C2=A0
+>> (/qemu/build/aarch64-softmmu/qemu-system-aarch64+0x8b1dab)
+>>
+>> Indirect leak of 4 byte(s) in 1 object(s) allocated from:
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #0 0xffff919331cb in __interceptor_malloc
+>> (/lib64/libasan.so.4+0xd31cb)
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #1 0xffff913f7163 in g_malloc (/lib64/libglib-2=
+.0.so.0+0x57163)
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #2 0xffff9141243b in g_strdup (/lib64/libglib-2=
+.0.so.0+0x7243b)
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #3 0xffff91413e6f in g_strsplit (/lib64/libglib=
+-2.0.so.0+0x73e6f)
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #4 0xaaab42fb58e7 in configure_accelerators /qe=
+mu/vl.c:2777
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #5 0xaaab42fb58e7 in main /qemu/vl.c:4121
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #6 0xffff8f9b0b9f in __libc_start_main (/lib64/=
+libc.so.6+0x20b9f)
+>> =C2=A0=C2=A0=C2=A0=C2=A0 #7 0xaaab42fc1dab=C2=A0
+>> (/qemu/build/aarch64-softmmu/qemu-system-aarch64+0x8b1dab)
+>>
+>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+>=20
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>=20
+>> ---
+>> =C2=A0 vl.c | 1 +
+>> =C2=A0 1 file changed, 1 insertion(+)
+>>
+>> diff --git a/vl.c b/vl.c
+>> index 86474a55c9..035a24e52b 100644
+>> --- a/vl.c
+>> +++ b/vl.c
+>> @@ -2788,6 +2788,7 @@ static void configure_accelerators(const char
+>> *progname)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_report("invalid accelerator %s", *tmp)=
+;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 }
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_strfreev(accel_list);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (accel !=3D NU=
+LL) {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 error_report("The -accel and \"-machine accel=3D\" options
+>> are incompatible");
+>>
+>=20
 
+Cc; qemu-trivial@nongnu.org
 
-On 1/8/20 9:46 AM, Cornelia Huck wrote:
-> On Mon,  6 Jan 2020 15:24:03 -0300
-> Daniel Henrique Barboza <danielhb413@gmail.com> wrote:
-> 
-
-[..]
-
-> I think read_event_data() is still a bit confusing, even if we get rid
-> of the 'out:' label, as the flow remains the same. How about something
-> like the following, which makes it clear that we handle the sccb events
-> for unconditional read and for a selective read with a valid mask:
-
-The code reading is better with your suggestion indeed.
-
-I'll re-send this patch with this new read_event_data() flow.
-
-
-Thanks,
-
-
-DHB
 
