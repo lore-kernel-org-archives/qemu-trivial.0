@@ -1,81 +1,99 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ipCoN-0001q6-JQ
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Jan 2020 09:59:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42128)
+	id 1ipCsa-0006SM-5P
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Jan 2020 10:04:16 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44662)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1ipCoL-0001ml-Bd
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 09:59:54 -0500
+ (envelope-from <laurent@vivier.eu>) id 1ipCsV-0006LA-Sf
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 10:04:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1ipCoJ-0007XT-Vy
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 09:59:53 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:41183
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1ipCoJ-0007Wt-S3
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 09:59:51 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578495591;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fFYIF8ZdTAD8k9euNtihp5ry8OyQtjs/RvA8CMTdmh8=;
- b=elmDam6FZHVIJQQGS20lfkg9nYq37Lk8zlY4ilgLJefYicfxbMVQcNjBdLJ/6WOs3YE4pR
- NW7fxZ8hkrXvtmR9oeBLix1CwY18n5jDwybzl7LPmGW/oJFu5MJudqndKRv/8BDqE/5OLK
- Vl1iWKWGdNjbeWG5y061RAknwNrvEic=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-163-VnA08VRfO7-r1Eq_eDcRgQ-1; Wed, 08 Jan 2020 09:59:49 -0500
-Received: by mail-wr1-f70.google.com with SMTP id i9so1547710wru.1
- for <qemu-trivial@nongnu.org>; Wed, 08 Jan 2020 06:59:49 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=MLzIGaZzdEEgusdjGwD6Pmgs5JYLqMw3A2MztWx9gaQ=;
- b=De1IH9iyh3ZyMaDdZDfQkSNP6oTpYQNn3sVabGFvZrkQV9noMD16yDOfnjFWSe+qpq
- SwTaejI9zkiVitw/1JaHupkPUiJX0O1EsJYIhAB+S5mEUr8PYcXMaGlXfsjUUS0CYKCG
- /rL5jCUvanFsjFJunaNotJNhyU07ehD/RRzDZevJLyDTsPZkiBXRKQR1NpNffwQG75VM
- s7FsHUMSuaBJcgL2wY2xKn8ZWV6EfPyaMI9cY5f14aqXJ+ODB18NaUBD161I/mjC5hqY
- g6ZJ+DYB5nzkNptXwo/Q0MMxjT5wCrX2IZpvCeaEYMnb5FwB9jLkiw1y7VG1m74FhVVa
- YU8A==
-X-Gm-Message-State: APjAAAVVcIttmhDpxp5tvZ05oBRWvUIzYJG6x7ifUFwsIRK8mBIH40PE
- ZVZW4MQdHD7vJ3260Q9ohgz6+d3FBhmdRwVX7ywaXJH41mn7w4Yy2iVsRVDZ7YpZY66+QOqivw5
- xAnfhqIkYFBFoXrdCOg==
-X-Received: by 2002:a1c:a78c:: with SMTP id q134mr4064022wme.98.1578495588504; 
- Wed, 08 Jan 2020 06:59:48 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzylaoxCvjvFJH/G3Q2zllps869qAsZq7b3Fyq1Voff7946Q6iKd0qFU0fXHqA2avPxL5OuBw==
-X-Received: by 2002:a1c:a78c:: with SMTP id q134mr4063997wme.98.1578495588241; 
- Wed, 08 Jan 2020 06:59:48 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:c6d:4079:b74c:e329?
- ([2001:b07:6468:f312:c6d:4079:b74c:e329])
- by smtp.gmail.com with ESMTPSA id d10sm4692485wrw.64.2020.01.08.06.59.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jan 2020 06:59:47 -0800 (PST)
-Subject: Re: [PATCH] vl: fix memory leak in configure_accelerators
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- kuhn.chenqun@huawei.com, qemu-devel@nongnu.org
-Cc: liyiting@huawei.com, pannengyuan@huawei.com,
- zhang.zhanghailiang@huawei.com,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <20200108114207.58084-1-kuhn.chenqun@huawei.com>
- <2bf0ae4f-b024-c421-b9d2-eefe99453e04@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <d5626e7e-31fc-9065-7654-028c1af1d979@redhat.com>
-Date: Wed, 8 Jan 2020 15:59:46 +0100
+ (envelope-from <laurent@vivier.eu>) id 1ipCsU-0001hu-MP
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 10:04:11 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:37795)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1ipCsR-0001bM-RC; Wed, 08 Jan 2020 10:04:08 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1Mlf8e-1jXa353r3i-00ikKx; Wed, 08 Jan 2020 16:03:50 +0100
+Subject: Re: [PATCH v2] nbd: fix uninitialized variable warning
+To: pannengyuan@huawei.com, eblake@redhat.com
+Cc: zhang.zhanghailiang@huawei.com, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ Euler Robot <euler.robot@huawei.com>
+References: <20200108025132.46956-1-pannengyuan@huawei.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <3bf9f590-ba43-557e-649e-9da837f3e5a3@vivier.eu>
+Date: Wed, 8 Jan 2020 16:03:48 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-In-Reply-To: <2bf0ae4f-b024-c421-b9d2-eefe99453e04@redhat.com>
-Content-Language: en-US
-X-MC-Unique: VnA08VRfO7-r1Eq_eDcRgQ-1
-X-Mimecast-Spam-Score: 0
+In-Reply-To: <20200108025132.46956-1-pannengyuan@huawei.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:BqUJG+VnmwphTOS/RjKFpGe/RYaRo2kjI5mWVGRQZGX2Rt/9hDa
+ /Ok2GY+BGXl/D/+C17ACT8UnxqpVaBd3j6myvsMzSXD5aaHskc+947VyyswsQdsMmkUItrS
+ E3btSjzlRFWKcMJIqtkaC6s16pHthDzS3msF175g/1wXZc0y/CV2NuSNWsX8cXgBhAms3Vr
+ tYWwOp2vNTqSqx0pPZoDg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:pmvKE7TU29o=:YmCFdudYCT6pEaT5tY1c+O
+ PYcKGBXckyMAVdzSVwDWNUTY//2jUh+ICU4jZfugmw3Ra9/b85xD6pLrWPOS+ooP9m4LUyl+7
+ S6T8hH8XIKtK5cjovn7KYfyk81f3FRTmpWISEORNzZAw0yYUdjWaNlIYGnMsze9DIYZo6+YkO
+ Lqqj6txSXG9iquv6prsNVef72GnzqjW/T9DcPShEOawSHnwKz3Ij5l8YPz6T1CYMlhoZPHu3r
+ YurB5rHyZP80wsx1QXN7mquQf8DhK2xUruCO9vhkMZFZrwDFXlJsE7Le6LEqprWqfgG+w8S0o
+ +NspkIRLsdStFg/eg1xP5NXOKaUtzZwrFFBn1k6myUEJLuzEsExgGwxRXmULV11j0q5lApS/l
+ ChHU3Zk9cmZT3Jztgg9f0KQequmehOcNICdT/YHFLSYDWecxqLgRueO++P44aGaokX1eNnSrX
+ vEvj3+b2q5xx36iZMjSfh2Yryepa9x8UmHYaUWLVaCKgKrgyC3xeysS9ZkrzCbY2Fl/7ilKsa
+ hUfbjnWC+QdbKrNO7TE8t1E00O8zn5UWgMkNUqjA+h/VauoQJQ41aWnsa2q5VXf2wgYnujih/
+ w5aHkgKaxDMoyymWRXhHT1IbwVsqK1m6OfDRCpCL0FBOdju54+5BtlYV5TL0R/g9ndltyHnLV
+ yhcn6nE8K9FZmUUjiHLbvAB+uZ5vfWY79W5Jjrn/MuSg0732MemV3ny+oYbLHA2T2pnTkoRUr
+ 5BCTbft45tNKttZENaRYN0eqDsiyoTA8rRK/CF/9fbm3u/zP04zih2mH4m9ETt+ykk+8UC516
+ Bn6nlFKtXe8fADiZptFO5nMlvrlf6WVWpEQBZjtH4UAN4xYPtqyouSI+decC69fHIXe/lsDOH
+ HH1zgq1EYL6FcU6AABpWKK9C1RF3T9fJTBVclE3eM=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 212.227.17.10
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,77 +105,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jan 2020 14:59:54 -0000
+X-List-Received-Date: Wed, 08 Jan 2020 15:04:14 -0000
 
-On 08/01/20 15:56, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 1/8/20 12:42 PM, kuhn.chenqun@huawei.com wrote:
->> From: Chen Qun <kuhn.chenqun@huawei.com>
->>
->> The accel_list forgot to free, the asan output:
->>
->> Direct leak of 16 byte(s) in 1 object(s) allocated from:
->> =C2=A0=C2=A0=C2=A0=C2=A0 #0 0xffff919331cb in __interceptor_malloc
->> (/lib64/libasan.so.4+0xd31cb)
->> =C2=A0=C2=A0=C2=A0=C2=A0 #1 0xffff913f7163 in g_malloc (/lib64/libglib-2=
-.0.so.0+0x57163)
->> =C2=A0=C2=A0=C2=A0=C2=A0 #2 0xffff91413d9b in g_strsplit (/lib64/libglib=
--2.0.so.0+0x73d9b)
->> =C2=A0=C2=A0=C2=A0=C2=A0 #3 0xaaab42fb58e7 in configure_accelerators /qe=
-mu/vl.c:2777
->> =C2=A0=C2=A0=C2=A0=C2=A0 #4 0xaaab42fb58e7 in main /qemu/vl.c:4121
->> =C2=A0=C2=A0=C2=A0=C2=A0 #5 0xffff8f9b0b9f in __libc_start_main (/lib64/=
-libc.so.6+0x20b9f)
->> =C2=A0=C2=A0=C2=A0=C2=A0 #6 0xaaab42fc1dab=C2=A0
->> (/qemu/build/aarch64-softmmu/qemu-system-aarch64+0x8b1dab)
->>
->> Indirect leak of 4 byte(s) in 1 object(s) allocated from:
->> =C2=A0=C2=A0=C2=A0=C2=A0 #0 0xffff919331cb in __interceptor_malloc
->> (/lib64/libasan.so.4+0xd31cb)
->> =C2=A0=C2=A0=C2=A0=C2=A0 #1 0xffff913f7163 in g_malloc (/lib64/libglib-2=
-.0.so.0+0x57163)
->> =C2=A0=C2=A0=C2=A0=C2=A0 #2 0xffff9141243b in g_strdup (/lib64/libglib-2=
-.0.so.0+0x7243b)
->> =C2=A0=C2=A0=C2=A0=C2=A0 #3 0xffff91413e6f in g_strsplit (/lib64/libglib=
--2.0.so.0+0x73e6f)
->> =C2=A0=C2=A0=C2=A0=C2=A0 #4 0xaaab42fb58e7 in configure_accelerators /qe=
-mu/vl.c:2777
->> =C2=A0=C2=A0=C2=A0=C2=A0 #5 0xaaab42fb58e7 in main /qemu/vl.c:4121
->> =C2=A0=C2=A0=C2=A0=C2=A0 #6 0xffff8f9b0b9f in __libc_start_main (/lib64/=
-libc.so.6+0x20b9f)
->> =C2=A0=C2=A0=C2=A0=C2=A0 #7 0xaaab42fc1dab=C2=A0
->> (/qemu/build/aarch64-softmmu/qemu-system-aarch64+0x8b1dab)
->>
->> Reported-by: Euler Robot <euler.robot@huawei.com>
->> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
->=20
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->=20
->> ---
->> =C2=A0 vl.c | 1 +
->> =C2=A0 1 file changed, 1 insertion(+)
->>
->> diff --git a/vl.c b/vl.c
->> index 86474a55c9..035a24e52b 100644
->> --- a/vl.c
->> +++ b/vl.c
->> @@ -2788,6 +2788,7 @@ static void configure_accelerators(const char
->> *progname)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_report("invalid accelerator %s", *tmp)=
-;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 }
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_strfreev(accel_list);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (accel !=3D NU=
-LL) {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 error_report("The -accel and \"-machine accel=3D\" options
->> are incompatible");
->>
->=20
+Le 08/01/2020 à 03:51, pannengyuan@huawei.com a écrit :
+> From: Pan Nengyuan <pannengyuan@huawei.com>
+> 
+> Fixes:
+> /mnt/sdb/qemu/nbd/server.c: In function 'nbd_handle_request':
+> /mnt/sdb/qemu/nbd/server.c:2313:9: error: 'ret' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+>      int ret;
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+> ---
+> Changes v2 to v1:
+> - change 'if(client->export_meta.bitmap)' into 'else' to fix uninitialized warning and clean up pointless code (suggested by Eric Blake)
+> ---
+>  nbd/server.c | 10 +---------
+>  1 file changed, 1 insertion(+), 9 deletions(-)
+> 
+> diff --git a/nbd/server.c b/nbd/server.c
+> index 24ebc1a805..87fcd2e7bf 100644
+> --- a/nbd/server.c
+> +++ b/nbd/server.c
+> @@ -2384,20 +2384,12 @@ static coroutine_fn int nbd_handle_request(NBDClient *client,
+>                                                 !client->export_meta.bitmap,
+>                                                 NBD_META_ID_BASE_ALLOCATION,
+>                                                 errp);
+> -                if (ret < 0) {
+> -                    return ret;
+> -                }
+> -            }
+> -
+> -            if (client->export_meta.bitmap) {
+> +            } else {              /* client->export_meta.bitmap */
+>                  ret = nbd_co_send_bitmap(client, request->handle,
+>                                           client->exp->export_bitmap,
+>                                           request->from, request->len,
+>                                           dont_fragment,
+>                                           true, NBD_META_ID_DIRTY_BITMAP, errp);
+> -                if (ret < 0) {
+> -                    return ret;
+> -                }
+>              }
+>  
+>              return ret;
+> 
 
-Cc; qemu-trivial@nongnu.org
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+
+And applied to my trivial-patches branch.
+
+Thanks,
+Laurent
 
 
