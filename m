@@ -1,54 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ipGwG-0006OC-PA
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Jan 2020 14:24:20 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49723)
+	id 1ipHaP-0007HX-SF
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Jan 2020 15:05:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39476)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1ipGwE-0006LY-G7
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 14:24:19 -0500
+ (envelope-from <alex.bennee@linaro.org>) id 1ipHaK-0007Dk-TC
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 15:05:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1ipGwC-0001ry-2p
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 14:24:16 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:47454
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1ipGwB-0001r5-IL
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 14:24:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578511454;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=WwFOMrqX73wgS5ZRyMqgaVo5lAi6RtsybQOFo8tMJvc=;
- b=fqKIQkmh1qm7aezQlrH0ITX6HLl9DFn1iHVm6JeDmj4krNGts0M2jQDIu7mlFxioKvWRfr
- cta0XNP5B/8h8HW6oPXsWs5+z10LgffZhGuWKcul0gb9N+Mv1txTtkygAgf5lUskpD+SlK
- gLuLay3iNEkC/iLRhSkyrkYQSKt8J9U=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-294-R1vzWpBGPg-acnVnEso3KQ-1; Wed, 08 Jan 2020 14:24:12 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3F6E018552A0;
- Wed,  8 Jan 2020 19:24:11 +0000 (UTC)
-Received: from thuth.com (ovpn-117-114.ams2.redhat.com [10.36.117.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 226DE7C36E;
- Wed,  8 Jan 2020 19:24:07 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Subject: [PATCH] include/sysemu/sysemu.h: Remove usused variable no_quit
-Date: Wed,  8 Jan 2020 20:24:02 +0100
-Message-Id: <20200108192402.19672-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: R1vzWpBGPg-acnVnEso3KQ-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
+ (envelope-from <alex.bennee@linaro.org>) id 1ipHaI-00078x-SH
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 15:05:44 -0500
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:40042)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+ id 1ipHaH-00076c-BK
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 15:05:42 -0500
+Received: by mail-wm1-x341.google.com with SMTP id t14so220910wmi.5
+ for <qemu-trivial@nongnu.org>; Wed, 08 Jan 2020 12:05:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:in-reply-to:date
+ :message-id:mime-version:content-transfer-encoding;
+ bh=aoZmBCHq8KdFyuYwAZ29pK8yo9t5oHzC7+ZipSOnK4o=;
+ b=xH3vD3drbsAplx28P//fQaNZ69lvMTMtOaSA31IQ1LlkVvvKFkHTsJqlYOu3yLvKvN
+ aZ3EGuvSIeHQ8dJayblsPz4g4G+9lyYHja5rLxlzl+Kj28Vp7GlKbVPdWZfBMcpDDLJE
+ RvAKY7G6GPJoT7neR9cazwMijmTOHooJeSFC1jJ3nH/sT4iJCnEqP1jdQb5V+Lzk6iV+
+ iBAAKyOxMYz/pN78nDzuXo1Bf2BWZDB8eC4rgRdovOoG3tQAB9CrJwUqwYtESuqHXUYW
+ MkcBvjcc560fFhrCkqG4Qpu6yiYaBaV4RoK68K2WUmhgtqm1+yTrVBczc6FPUgp47bcD
+ InEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject
+ :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+ bh=aoZmBCHq8KdFyuYwAZ29pK8yo9t5oHzC7+ZipSOnK4o=;
+ b=mWzbPQjeiXuwUfl40eCGjrDz/Gw7/r79hSSpY+CxbFUsXWfGzJpmMHACYmAFeac9Rf
+ ReNUWSbRmW488e8C5vLd7WhRa3om8LLRBpMrFkAcDfkebyM+W5+0xYFFiuO/H8xGhZhs
+ UpVJJzjuTMN7T52dtVIvcKxZFoXhLQ9RaRu1i2D6vukw6TU9TzkLw/a/DbEpy10DKaUP
+ xe0t7o2Z8SLFaOVBDquo3ToYJBr4Y03PFsWW9kBDEUTvi61/BGogm/xs+ajkNyr2mooM
+ 6viN7+zVBQjeprBw7iS5yDWkty+/4beApW/eGyhNWVjvQvwvsDYUP5qKEprv3Nkfd+3v
+ P3WA==
+X-Gm-Message-State: APjAAAUsPS+dNg+gcrZ6sYQl9VivbUdHg9avoF10ZJ2VsrkscD4WzHXW
+ a6OuS4wwakkuNXJErrfNScwmoA==
+X-Google-Smtp-Source: APXvYqxQOd/CT6GuhQ5W7OLEVnUKro7qH1GUHWinp7c66KcmagTClyqKF2JChvnEzvyTZfmD5UwAzQ==
+X-Received: by 2002:a7b:c949:: with SMTP id i9mr335569wml.131.1578513940140;
+ Wed, 08 Jan 2020 12:05:40 -0800 (PST)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id f127sm239202wma.4.2020.01.08.12.05.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 08 Jan 2020 12:05:39 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 6D2AD1FF87;
+ Wed,  8 Jan 2020 20:05:38 +0000 (GMT)
+References: <20200108192402.19672-1-thuth@redhat.com>
+User-agent: mu4e 1.3.6; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] include/sysemu/sysemu.h: Remove usused variable no_quit
+In-reply-to: <20200108192402.19672-1-thuth@redhat.com>
+Date: Wed, 08 Jan 2020 20:05:38 +0000
+Message-ID: <874kx5k92l.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.120
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::341
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -60,30 +74,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jan 2020 19:24:20 -0000
+X-List-Received-Date: Wed, 08 Jan 2020 20:05:46 -0000
 
-The no_quit variable has been removed in commit 78782712a62d56 ("vl: drop
-no_quit variable"), so let's remove the extern declaration in the header
-now, too.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- include/sysemu/sysemu.h | 1 -
- 1 file changed, 1 deletion(-)
+Thomas Huth <thuth@redhat.com> writes:
 
-diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
-index 80c57fdc4e..686f4217a6 100644
---- a/include/sysemu/sysemu.h
-+++ b/include/sysemu/sysemu.h
-@@ -44,7 +44,6 @@ extern int alt_grab;
- extern int ctrl_grab;
- extern int cursor_hide;
- extern int graphic_rotate;
--extern int no_quit;
- extern int no_shutdown;
- extern int old_param;
- extern int boot_menu;
+> The no_quit variable has been removed in commit 78782712a62d56 ("vl: drop
+> no_quit variable"), so let's remove the extern declaration in the header
+> now, too.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+> ---
+>  include/sysemu/sysemu.h | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
+> index 80c57fdc4e..686f4217a6 100644
+> --- a/include/sysemu/sysemu.h
+> +++ b/include/sysemu/sysemu.h
+> @@ -44,7 +44,6 @@ extern int alt_grab;
+>  extern int ctrl_grab;
+>  extern int cursor_hide;
+>  extern int graphic_rotate;
+> -extern int no_quit;
+>  extern int no_shutdown;
+>  extern int old_param;
+>  extern int boot_menu;
+
+
 --=20
-2.18.1
-
+Alex Benn=C3=A9e
 
