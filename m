@@ -1,99 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ipCz9-0000p4-OR
-	for mharc-qemu-trivial@gnu.org; Wed, 08 Jan 2020 10:11:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50402)
+	id 1ipDnB-0005WF-Mq
+	for mharc-qemu-trivial@gnu.org; Wed, 08 Jan 2020 11:02:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36189)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1ipCz6-0000l5-6N
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 10:11:02 -0500
+ (envelope-from <laurent@vivier.eu>) id 1ipDn9-0005VV-Fe
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 11:02:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1ipCz4-0007H4-VR
- for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 10:11:00 -0500
-Received: from mout.kundenserver.de ([217.72.192.73]:44017)
+ (envelope-from <laurent@vivier.eu>) id 1ipDn8-0001iI-B6
+ for qemu-trivial@nongnu.org; Wed, 08 Jan 2020 11:02:43 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:34921)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1ipCyi-00075H-Qq; Wed, 08 Jan 2020 10:10:56 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MatZt-1jQkqz3nFz-00cRhy; Wed, 08 Jan 2020 16:10:31 +0100
-Subject: Re: [PATCH v2] arm/translate-a64: fix uninitialized variable warning
-To: pannengyuan@huawei.com, peter.maydell@linaro.org
-Cc: zhang.zhanghailiang@huawei.com, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Euler Robot <euler.robot@huawei.com>
-References: <20200108023915.52288-1-pannengyuan@huawei.com>
+ id 1ipDn8-0001gz-1e; Wed, 08 Jan 2020 11:02:42 -0500
+Received: from localhost.localdomain ([78.238.229.36]) by
+ mrelayeu.kundenserver.de (mreue011 [212.227.15.167]) with ESMTPSA (Nemesis)
+ id 1M277h-1ir8Wz0iYT-002XWE; Wed, 08 Jan 2020 17:02:36 +0100
 From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <4274ef7b-8a2d-cb4f-c002-97d06211e744@vivier.eu>
-Date: Wed, 8 Jan 2020 16:10:29 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.1
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, Eric Blake <eblake@redhat.com>,
+ qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org
+Subject: [PULL 0/5] Trivial branch patches
+Date: Wed,  8 Jan 2020 17:02:28 +0100
+Message-Id: <20200108160233.991134-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-In-Reply-To: <20200108023915.52288-1-pannengyuan@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:EXRRJFu6b3cCD7Ongt0goDgiAyC/7vEBVFleNuALvlgtiX2SoyD
- hq4XxKpNSSoV/mAC9A5+cNcd5mkbzFUgcvilaz8EAGKUyRDudz3Ub9g13wYNbmAKG0lOje+
- fiR7ZF00ikwzC+Ra28GQfqdTR7q3iLZdYo0IjZcIwy6L6AxeBoR1V7u29dGUh+w3n+x6dPB
- 7t72eddL2yYVvQFASoT2Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:WSoWEOtO0UU=:qaR+bzvh3rTjjV2KfKBJhq
- 4XDdbbQPBACeJlR65iSkdOCDMSfcy4i/oVzjARp8o3CGPAEoEey72r+HPcAUhzpW+aMbhszd8
- 7Xi4r84fPU6Du1OjxUpkM4YileEWD7JOFcxImNZaMlsBiWC2c5CBOTfIC7qfj8KPgrErqDtwP
- 119OpXKibv65uSDefpV5tcUoRnP9Q3Oxz1/oqHJy0fQW6nodKZaZ/z0RrScH7Vev8eTWF1gEy
- Yek2jR6OuSI60Cm+7c/+QrZGtAjpY7YedJKBBO3FSGYmftBlYZOXbNaNgXnM9pUAQ/lz2z4sG
- qMWK80emr9g6QZawRWUQ8/uxHOaTYQcAw35eXJm/y+rClG4dv5E8OgaRgifqJZK0wV1+MFO46
- 5L2uLSFvxeq2B/BZtl4AbxwStN7VA/DWP1krlJkl0Rzs0D6CzIO9gtpGwnK3RREPgW5pV6qfH
- BNAPzu+7D2jkTSnK5ogHxgA349UAUF8XAqTp5xtXz/uoSWz4DptYx6oZzKJO/2UGbd7j7Smgm
- lWdvq3CLWfHDwIacmKI0tiHxN47BIE/NDk3vsTOlOa4FIETmvwQgJtMOMx7dnvNRoMk+HBBnE
- OjhueJwZpE8ihu7lgg/HgLWAbk1vFC4NSFkFMw65rkOs0fhKZRl4wBIjVntZsuPnlk+Xj/CJI
- gvhFt+KwVf+KBbIHAjwbhJXxqLyL9e7CUOWcA+TxxbiRgas/D4pinuoTRcGaa3oNc/mrDUEnU
- WHDDq0zWI+m18+ctyFRly9iQRBHX9bkhEA8017AAypCpth7T2nFLTBJharK/gi1qvbaAuwwYG
- CDsLt+PfgFbmvqQhLIwcw5dHljDPIAQBrRUBjmT7OR411jBnRJAISaeZ2c2V+r2dF4C5MZLGT
- 4YUIzLbqz7j1byF1lATA==
+X-Provags-ID: V03:K1:han+nQkylqe3A/S2HyNMjDndNNoLes/6ZXbcmTOqTLGOql7VtAZ
+ vFG+8g/DmLaIK00zox4v8ZHUrBHbbBi1VIZW10zTM3fTLgR4uvpL4GdyJ8N381+U4L2QREp
+ kpgj3Ol/tdUHYgqTiWdjH+023REbGh+hAfkCefv/8loJmOMxsO/5y/iwtIlYhhC6CtPsW+l
+ 9kHo02yTnD0Sl8wR0QJjA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:UAiyEN2Cc2A=:FBcDX6ha6plWvQaSp6P//S
+ PWh3vGUu+H2Q5WlNMT31qZiYJDzsLfrr//SEz2hXLdxNDftTeTIcW9HH0soV30Tu9xWFBW1JB
+ MWZ2FZHtE3syVyRsrU3fgv3UgN+/ANmjBcKSTwdHIwwOOS5uWDhy3fjD+pHNDhRH8cfQHCIsX
+ ez5bSPAn41qrcQlF9z0VQgv6OYnVHMWGvx1QMs02gn4mKYA75Jun6tZhh6cbrmmHDGoSwiw/P
+ 3kG4ZKbzzxLYn9XmjHjYZahnl+CuB6Xuj2PvnYD9qo+xy0JiFpCa9ploNDCgy5Dm2qflwDADt
+ QJ8tMoqrh/mhlIEumuKJtgm89oJGzvNUKsp0NMCxzR0C9mZ+U9pMovfa77l70UHXiaitD0AAD
+ Wp4nrH3n8KWRJaERuX/cZtBzXzXJN05/iVd5CFe/fFENZvd7wx9qpUJH7hcONVawJK/t7TXcB
+ XWIXIRC2hs/qSWXIXxRD+ceY64ZkrwcykOjDv/ZSsdObQhr2FspvlArl3Znfi7Jbsn8x3NBG2
+ CrNpxkxH4inNtcBCXSDHNU9ASW+a2dx83FhibVnYNxH7QKXgG68k3p4YSw953Fu4DKLf8KDHV
+ UUpZldV78b4nJO6sxy3r7h2umUD8QUnJx91Y+e64mx2KAFSmTyg7rH61shDNJjXKWHtfts8O0
+ xlC2kKhQ0iGHaitwSga+oTa279qKXqwK84nodunLyy6/p/a3IjT3fCMaOCluFEcRtu9uDDfcc
+ Zzdxu+eX8inGtwqI4BKLK8cNjoifOzMb5E3FqAClEp8oEeeVVkjTlVTESzfsOgeeDgWkhxtXz
+ qM0Hr/VYqKYGp5MGowsSQYmkNF1AkyHywm8px4VMYhwqik9rVOG5E2E+j0oaDP1Y68sBpQS46
+ lPVer/PeySBo7BLO5TdUnFs1GwojAkuuld1bK7EyY=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 217.72.192.73
+X-Received-From: 212.227.126.134
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,45 +60,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 08 Jan 2020 15:11:02 -0000
+X-List-Received-Date: Wed, 08 Jan 2020 16:02:44 -0000
 
-Le 08/01/2020 à 03:39, pannengyuan@huawei.com a écrit :
-> From: Pan Nengyuan <pannengyuan@huawei.com>
-> 
-> Fixes:
-> target/arm/translate-a64.c: In function 'disas_crypto_three_reg_sha512':
-> target/arm/translate-a64.c:13625:9: error: 'genfn' may be used uninitialized in this function [-Werror=maybe-uninitialized]
->     genfn(tcg_rd_ptr, tcg_rn_ptr, tcg_rm_ptr);
->     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> qemu/target/arm/translate-a64.c:13609:8: error: 'feature' may be used uninitialized in this function [-Werror=maybe-uninitialized]
->     if (!feature) {
-> 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
-> ---
-> Changes v2 to v1:
-> - add a default label to fix uninitialized warnings(suggested by Richard Henderson)
-> ---
->  target/arm/translate-a64.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index d4bebbe629..63a3d26687 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -13585,6 +13585,8 @@ static void disas_crypto_three_reg_sha512(DisasContext *s, uint32_t insn)
->              feature = dc_isar_feature(aa64_sha3, s);
->              genfn = NULL;
->              break;
-> +        default:
-> +            g_assert_not_reached();
->          }
->      } else {
->          switch (opcode) {
-> 
+The following changes since commit 035eed4c0d257c905a556fa0f4865a0c077b4e7f:
 
-Applied to my trivial-patches branch.
+  Merge remote-tracking branch 'remotes/vivier/tags/q800-for-5.0-pull-request' into staging (2020-01-07 17:08:21 +0000)
 
-Thanks,
-Laurent
+are available in the Git repository at:
+
+  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+
+for you to fetch changes up to adb464ff671d124010953aad48dd9194cedc6ff6:
+
+  vl: fix memory leak in configure_accelerators (2020-01-08 16:12:39 +0100)
+
+----------------------------------------------------------------
+Fix some uninitialized variable warnings,
+some memory leak warnings and update MAINTAINERS file.
+
+----------------------------------------------------------------
+
+Chen Qun (1):
+  vl: fix memory leak in configure_accelerators
+
+Pan Nengyuan (3):
+  util/module: fix a memory leak
+  nbd: fix uninitialized variable warning
+  arm/translate-a64: fix uninitialized variable warning
+
+Yuval Shaia (1):
+  MAINTAINERS: Update Yuval Shaia's email address
+
+ MAINTAINERS                |  2 +-
+ nbd/server.c               | 10 +---------
+ target/arm/translate-a64.c |  2 ++
+ util/module.c              |  1 +
+ vl.c                       |  1 +
+ 5 files changed, 6 insertions(+), 10 deletions(-)
+
+-- 
+2.24.1
+
 
