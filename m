@@ -1,75 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ipW7m-0000VC-IE
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Jan 2020 06:37:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41306)
+	id 1ipXFl-0004KU-Ik
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Jan 2020 07:49:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34216)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mst@redhat.com>) id 1ipW7j-0000Qw-HT
- for qemu-trivial@nongnu.org; Thu, 09 Jan 2020 06:37:12 -0500
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1ipXFi-0004Gn-LL
+ for qemu-trivial@nongnu.org; Thu, 09 Jan 2020 07:49:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mst@redhat.com>) id 1ipW7f-0000Wm-7K
- for qemu-trivial@nongnu.org; Thu, 09 Jan 2020 06:37:11 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:48253
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mst@redhat.com>) id 1ipW7d-0000Sv-8l
- for qemu-trivial@nongnu.org; Thu, 09 Jan 2020 06:37:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578569824;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0SDNXG5Yi/btrLMOlEi7BNUjLCnWv8a1bpV6Xjevjjg=;
- b=YlJQBlwaSzUNjnmO7cZVurSzm5JWiZdEkQ4D1i6Ryy1VGi1HcQX0+YIpFgkcpD7Asv+rxS
- SByyKA9bW3EBPwT6sCjPMknhIYXH/Bm3/1BcfwDBkWGtmoje7HzRWkDC8Rf3OznaaFvvVo
- 0Iizl4DlTiyK52ssKAC4jOsFhC1KeFc=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-107-Jn3ygjzhP9qYh2Smgnx7mA-1; Thu, 09 Jan 2020 06:37:02 -0500
-Received: by mail-qv1-f69.google.com with SMTP id e14so3946354qvr.6
- for <qemu-trivial@nongnu.org>; Thu, 09 Jan 2020 03:37:02 -0800 (PST)
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1ipXFg-0002yH-Cj
+ for qemu-trivial@nongnu.org; Thu, 09 Jan 2020 07:49:30 -0500
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:42852)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1ipXFd-0002kr-6k; Thu, 09 Jan 2020 07:49:25 -0500
+Received: by mail-ot1-x344.google.com with SMTP id 66so7090632otd.9;
+ Thu, 09 Jan 2020 04:49:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=AiMhUtgjKB/D6GYpuP4+LfS+QIpgbkVxzfO/EvO4uq0=;
+ b=hPQjUrUnDEQ60OTjE7sLM4IkcnUANAMnQKSSWc9kHoUsfdwuJTNFvbUXKO8wy/dhan
+ 0yXKF/mt3ymL7zE3qFjIimkR79HoXzRr9HYytS5Z0qplwvNwX80Vm/dPKuBCeP2q9OFs
+ UVU8gOR1CoVyJp0QeWLOZlKXt+JrrzhWEdiGrMSZzLlZr5opy1YwWGR2P6xlwd5zSJop
+ P/08NNwa9nQWwuSc9aFZwxadkuRGRfKrBOigGBRxlBV1ICKPWeXmOOz61DPaorBMdlWw
+ gPP6Wa6bD+F2MmzwY9O+5jfDhR6upEtbBGsH+meEoPglf1M6AkkCGY5sidAV+uoJdzYY
+ 9Ktg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=V8wsSytS5VzLMRvoBhbSD6l1trukDJP3qnoOhdNNEMI=;
- b=evOpWnb9P4DlaVBYn3uCzmyklCr9Ssj0oEl8eSfGXX4auXjpFkURKkgfchKfF76UIJ
- oZLqOI24xKUcIBOZnLD3Xf83m1vMEdk/KdGMceIuUgPo2UBPIuTjiOc5mJDJv6zACVCD
- cpMeO+qeTW8sMLvrKEatNiYSJMLNypkQ65lv8co5Iy3ScUOqx4pcyFbfjwBHLZpTYyy6
- Tn7U2cfl7IJz1/78qhXSMGDn31ad4ohDoLO2m33Rfs50TgHGPuZXc9VVrUrxe/bagCTN
- CgJDuorUamTVYnlL3tRf5PqBqMqhgUgTlKInLHnZgGivGti19msvjUrmrZXX6PbyDmo1
- 9w6Q==
-X-Gm-Message-State: APjAAAWI2BeM4Z1efg9Bx8cxOcCHPl8UQDmhh7jTtLB6hMbaeNIO2kh7
- 0cP6p6wd4ssEKE14djgpxBiMzRPV/ZR6dAqtk7LZcItBLxCQ/xBakkGSAL7pVYTOSFQbSlLyqYN
- rWdAljoipNkpl+TuMRw==
-X-Received: by 2002:a37:490d:: with SMTP id w13mr8467980qka.221.1578569821597; 
- Thu, 09 Jan 2020 03:37:01 -0800 (PST)
-X-Google-Smtp-Source: APXvYqyLBAHZYd2fj7Qvov3ZhRHufVOdT5hWC2YnekJvTWDjsp6Bj166cUj2XW7w10uwZxdfB2Q8oQ==
-X-Received: by 2002:a37:490d:: with SMTP id w13mr8467952qka.221.1578569821159; 
- Thu, 09 Jan 2020 03:37:01 -0800 (PST)
-Received: from redhat.com (bzq-79-183-34-164.red.bezeqint.net. [79.183.34.164])
- by smtp.gmail.com with ESMTPSA id r37sm3123789qtj.44.2020.01.09.03.36.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 Jan 2020 03:37:00 -0800 (PST)
-Date: Thu, 9 Jan 2020 06:36:56 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/smbios/smbios: Remove unused include
-Message-ID: <20200109063646-mutt-send-email-mst@kernel.org>
-References: <20200109112504.32622-1-philmd@redhat.com>
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=AiMhUtgjKB/D6GYpuP4+LfS+QIpgbkVxzfO/EvO4uq0=;
+ b=uSnG+4Fh97ILh181PgzM8PBNXg0FvEqRBno3CVs5d3RfSjgby18oGwITUYmTbekjI0
+ QxQ2aCdXn0OywNgSkM2Y103vMyrJFGjEDxLgBe7/NkvV6wvhGaOp7YZx4BwJh/lg7RLm
+ OfOP+w9gkHYEeKJA1M4QhBv6efQ9L9zbeIFqnK3bqjYIErzn5hyegwePQpr+dEJ4rn3/
+ LLr8+x+D62IzbuCqbDQVJDvuLYPfWzYWltNgwSHVGxKyiqE43I2oaM5I9DeuNg9v/4Ff
+ q+Olxq/5JhZQowUdep23uI0Rsv4XJmivfqKi7WhldgwG9u+9d9KNvDKfsLDvE7igNzSK
+ lJuQ==
+X-Gm-Message-State: APjAAAUhMH9V1BSty8WmfDboLZBauZ7PIF6tTfJx9UUTm8d+Yj9UfDPA
+ uQF32usarOLzZ2jhCkfpFMS9HBLzeUXYASH3eRw=
+X-Google-Smtp-Source: APXvYqw9LyToFHMwmhbpVobKL+RNAFIRLqAXXAfy7mOtMDgJ9vZPOGzdWAtFgGT6nN2JkdSl+Xl8OvsueGmZfJ0QNnU=
+X-Received: by 2002:a9d:7305:: with SMTP id e5mr8060526otk.64.1578574163603;
+ Thu, 09 Jan 2020 04:49:23 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200109112504.32622-1-philmd@redhat.com>
-X-MC-Unique: Jn3ygjzhP9qYh2Smgnx7mA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+Received: by 2002:a9d:d21:0:0:0:0:0 with HTTP;
+ Thu, 9 Jan 2020 04:49:23 -0800 (PST)
+In-Reply-To: <20200109095116.18201-1-thuth@redhat.com>
+References: <20200109095116.18201-1-thuth@redhat.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Thu, 9 Jan 2020 13:49:23 +0100
+Message-ID: <CAL1e-=jnAMtpNNHO1rqG-63K_5uM-QfVYoMcj0NZeHwKCWG4uQ@mail.gmail.com>
+Subject: Re: [PATCH] qemu-deprecated: Remove text about Python 2
+To: Thomas Huth <thuth@redhat.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Content-Type: multipart/alternative; boundary="00000000000045f45d059bb470fa"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::344
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,34 +67,99 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Jan 2020 11:37:12 -0000
+X-List-Received-Date: Thu, 09 Jan 2020 12:49:32 -0000
 
-On Thu, Jan 09, 2020 at 12:25:04PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> Nothing from "sysemu/cpus.h" is used by smbios.c, remove the include.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+--00000000000045f45d059bb470fa
+Content-Type: text/plain; charset="UTF-8"
 
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+On Thursday, January 9, 2020, Thomas Huth <thuth@redhat.com> wrote:
 
-
-
+> Python 2 support has been removed, so we should now also remove
+> the announcement text for the deprecation.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/smbios/smbios.c | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-> index ded5f1f4e2..1a0f461541 100644
-> --- a/hw/smbios/smbios.c
-> +++ b/hw/smbios/smbios.c
-> @@ -24,7 +24,6 @@
->  #include "qemu/option.h"
->  #include "sysemu/sysemu.h"
->  #include "qemu/uuid.h"
-> -#include "sysemu/cpus.h"
->  #include "hw/firmware/smbios.h"
->  #include "hw/loader.h"
->  #include "hw/boards.h"
-> --=20
-> 2.21.1
+>  qemu-deprecated.texi | 8 --------
+>  1 file changed, 8 deletions(-)
+>
+>
+Reviewed by: Aleksandar Markovic <amarkovic@wavecomp.com>
 
+
+> diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
+> index 7033e531de..8b23e98474 100644
+> --- a/qemu-deprecated.texi
+> +++ b/qemu-deprecated.texi
+> @@ -341,14 +341,6 @@ they have no effect when used with @option{-n} to
+> skip image creation.
+>  Silently ignored options can be confusing, so this combination of
+>  options will be made an error in future versions.
+>
+> -@section Build system
+> -
+> -@subsection Python 2 support (since 4.1.0)
+> -
+> -In the future, QEMU will require Python 3 to be available at
+> -build time.  Support for Python 2 in scripts shipped with QEMU
+> -is deprecated.
+> -
+>  @section Backwards compatibility
+>
+>  @subsection Runnability guarantee of CPU models (since 4.1.0)
+> --
+> 2.18.1
+>
+>
+>
+
+--00000000000045f45d059bb470fa
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<br><br>On Thursday, January 9, 2020, Thomas Huth &lt;<a href=3D"mailto:thu=
+th@redhat.com">thuth@redhat.com</a>&gt; wrote:<br><blockquote class=3D"gmai=
+l_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left=
+:1ex">Python 2 support has been removed, so we should now also remove<br>
+the announcement text for the deprecation.<br>
+<br>
+Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com">thuth@re=
+dhat.com</a>&gt;<br>
+---<br>
+=C2=A0qemu-deprecated.texi | 8 --------<br>
+=C2=A01 file changed, 8 deletions(-)<br>
+<br></blockquote><div><br></div><div><span style=3D"color:rgb(34,34,34);fon=
+t-size:14px;line-height:22.1200008392334px">Reviewed by: Aleksandar Markovi=
+c &lt;</span><a href=3D"mailto:amarkovic@wavecomp.com" target=3D"_blank" st=
+yle=3D"font-size:14px;line-height:22.1200008392334px">amarkovic@wavecomp.co=
+m</a><span style=3D"color:rgb(34,34,34);font-size:14px;line-height:22.12000=
+08392334px">&gt;</span><br></div><div>=C2=A0</div><blockquote class=3D"gmai=
+l_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left=
+:1ex">
+diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi<br>
+index 7033e531de..8b23e98474 100644<br>
+--- a/qemu-deprecated.texi<br>
++++ b/qemu-deprecated.texi<br>
+@@ -341,14 +341,6 @@ they have no effect when used with @option{-n} to skip=
+ image creation.<br>
+=C2=A0Silently ignored options can be confusing, so this combination of<br>
+=C2=A0options will be made an error in future versions.<br>
+<br>
+-@section Build system<br>
+-<br>
+-@subsection Python 2 support (since 4.1.0)<br>
+-<br>
+-In the future, QEMU will require Python 3 to be available at<br>
+-build time.=C2=A0 Support for Python 2 in scripts shipped with QEMU<br>
+-is deprecated.<br>
+-<br>
+=C2=A0@section Backwards compatibility<br>
+<br>
+=C2=A0@subsection Runnability guarantee of CPU models (since 4.1.0)<br>
+-- <br>
+2.18.1<br>
+<br>
+<br>
+</blockquote>
+
+--00000000000045f45d059bb470fa--
 
