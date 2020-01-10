@@ -1,40 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ipuea-0004X1-DB
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Jan 2020 08:48:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45830)
+	id 1ipzbT-000876-51
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Jan 2020 14:05:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48892)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1ips0g-0000Bt-6d
- for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 05:59:23 -0500
+ (envelope-from <eblake@redhat.com>) id 1ipzbP-00086P-B6
+ for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 14:05:48 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1ips0f-00049e-5t
- for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 05:59:22 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:56936 helo=huawei.com)
+ (envelope-from <eblake@redhat.com>) id 1ipzbM-0006zO-Al
+ for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 14:05:46 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:32972
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1ips0c-0003YR-9s; Fri, 10 Jan 2020 05:59:18 -0500
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 6905F66E5737D2D7369D;
- Fri, 10 Jan 2020 18:59:08 +0800 (CST)
-Received: from HGHY4C002233111.china.huawei.com (10.133.205.93) by
- DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
- 14.3.439.0; Fri, 10 Jan 2020 18:59:00 +0800
-From: <kuhn.chenqun@huawei.com>
-To: <qemu-devel@nongnu.org>, <kraxel@redhat.com>
-CC: <pannengyuan@huawei.com>, <zhang.zhanghailiang@huawei.com>,
- <qemu-trivial@nongnu.org>, Chen Qun <kuhn.chenqun@huawei.com>
-Subject: [PATCH] xhci: Fix memory leak in xhci_kick_epctx when poweroff GuestOS
-Date: Fri, 10 Jan 2020 18:58:55 +0800
-Message-ID: <20200110105855.81144-1-kuhn.chenqun@huawei.com>
-X-Mailer: git-send-email 2.14.1.windows.1
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1ipzbM-0006u2-5S
+ for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 14:05:44 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1578683143;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=bttTzXiMaz1WxT+fAEauqKCdwjNBX/qJEjpntrdEXNc=;
+ b=g1lzy8cS+NtcJwbhZXqgvLOWm++yuyn3L6fNBG3S0aqyLERnAMN8g/czKKNWujmH4MekHa
+ UhWWmG+Z5JVA7oUefuWU+mf70S4YSyFMxXWS/3Vh8MhRDcG0sNN6syxvcz4mUD5p2ttMlD
+ OpZCUhHOX8+SrTw81ft6H3h9a+eLSEE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-156-KjM2uee6O9-kTQwdZEGyDw-1; Fri, 10 Jan 2020 14:05:41 -0500
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B80CB107ACC9;
+ Fri, 10 Jan 2020 19:05:40 +0000 (UTC)
+Received: from [10.3.117.16] (ovpn-117-16.phx2.redhat.com [10.3.117.16])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 359D41001B05;
+ Fri, 10 Jan 2020 19:05:40 +0000 (UTC)
+Subject: Re: [PATCH v1 00/59] trivial unneeded labels cleanup
+To: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
+References: <20200106182425.20312-1-danielhb413@gmail.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <15cc13a7-4061-b4e8-fc0a-c0c8386cf969@redhat.com>
+Date: Fri, 10 Jan 2020 13:05:39 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-X-Originating-IP: [10.133.205.93]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20200106182425.20312-1-danielhb413@gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-MC-Unique: KjM2uee6O9-kTQwdZEGyDw-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.32
-X-Mailman-Approved-At: Fri, 10 Jan 2020 08:48:42 -0500
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -46,62 +67,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Jan 2020 10:59:23 -0000
+X-List-Received-Date: Fri, 10 Jan 2020 19:05:49 -0000
 
-From: Chen Qun <kuhn.chenqun@huawei.com>
+On 1/6/20 12:23 PM, Daniel Henrique Barboza wrote:
+> Hello,
+> 
+> This is the type of cleanup I've contributed to Libvirt
+> during the last year. Figured QEMU also deserves the same
+> care.
+> 
+> The idea here is remove unneeded labels. By 'unneeded' I
+> mean labels that does nothing but a 'return' call. One
+> common case is something like this:
+> 
+> if ()
+>      goto cleanup;
+> [...]
+>   cleanup:
+>      return 0;
+> 
+> This code can be simplified to:
+> 
+> if ()
+>      return 0;
+> 
+> 
 
-start vm with libvirt, when GuestOS running, enter poweroff command using
-the xhci keyboard, then ASAN shows memory leak stack=EF=BC=9A
+How much of this work is done manually, and how much via Coccinelle?
 
-Direct leak of 80 byte(s) in 5 object(s) allocated from:
-    #0 0xfffd1e6431cb in __interceptor_malloc (/lib64/libasan.so.4+0xd31c=
-b)
-    #1 0xfffd1e107163 in g_malloc (/lib64/libglib-2.0.so.0+0x57163)
-    #2 0xaaad39051367 in qemu_sglist_init /qemu/dma-helpers.c:43
-    #3 0xaaad3947c407 in pci_dma_sglist_init /qemu/include/hw/pci/pci.h:8=
-42
-    #4 0xaaad3947c407 in xhci_xfer_create_sgl /qemu/hw/usb/hcd-xhci.c:144=
-6
-    #5 0xaaad3947c407 in xhci_setup_packet /qemu/hw/usb/hcd-xhci.c:1618
-    #6 0xaaad3948625f in xhci_submit /qemu/hw/usb/hcd-xhci.c:1827
-    #7 0xaaad3948625f in xhci_fire_transfer /qemu/hw/usb/hcd-xhci.c:1839
-    #8 0xaaad3948625f in xhci_kick_epctx /qemu/hw/usb/hcd-xhci.c:1991
-    #9 0xaaad3948f537 in xhci_doorbell_write /qemu/hw/usb/hcd-xhci.c:3158
-    #10 0xaaad38bcbfc7 in memory_region_write_accessor /qemu/memory.c:483
-    #11 0xaaad38bc654f in access_with_adjusted_size /qemu/memory.c:544
-    #12 0xaaad38bd1877 in memory_region_dispatch_write /qemu/memory.c:148=
-2
-    #13 0xaaad38b1c77f in flatview_write_continue /qemu/exec.c:3167
-    #14 0xaaad38b1ca83 in flatview_write /qemu/exec.c:3207
-    #15 0xaaad38b268db in address_space_write /qemu/exec.c:3297
-    #16 0xaaad38bf909b in kvm_cpu_exec /qemu/accel/kvm/kvm-all.c:2383
-    #17 0xaaad38bb063f in qemu_kvm_cpu_thread_fn /qemu/cpus.c:1246
-    #18 0xaaad39821c93 in qemu_thread_start /qemu/util/qemu-thread-posix.=
-c:519
-    #19 0xfffd1c8378bb  (/lib64/libpthread.so.0+0x78bb)
-    #20 0xfffd1c77616b  (/lib64/libc.so.6+0xd616b)
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
----
- hw/usb/hcd-xhci.c | 1 +
- 1 file changed, 1 insertion(+)
+>   qga/commands-win32.c          | 17 ++++---
+>   target/mips/mips-semi.c       | 15 +++---
+>   target/unicore32/softmmu.c    | 23 +++-------
+>   util/aio-posix.c              |  3 +-
+>   util/module.c                 | 11 ++---
 
-diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
-index 80988bb305..0d3d96d05a 100644
---- a/hw/usb/hcd-xhci.c
-+++ b/hw/usb/hcd-xhci.c
-@@ -2000,6 +2000,7 @@ static void xhci_kick_epctx(XHCIEPContext *epctx, u=
-nsigned int streamid)
-         if (xfer !=3D NULL && xfer->running_retry) {
-             DPRINTF("xhci: xfer nacked, stopping schedule\n");
-             epctx->retry =3D xfer;
-+            xhci_xfer_unmap(xfer);
-             break;
-         }
-         if (count++ > TRANSFER_LIMIT) {
---=20
-2.23.0
+Hmm, no change to scripts/coccinelle, so presumably all manual :(
 
+If we have a Coccinelle script that performs this transformation, we are 
+more likely to be able to catch all places in the tree that would 
+benefit (rather than relying on grep calls or other manual inspection), 
+and more importantly, we can repeat the effort periodically to fix 
+future additions that don't comply with the preferred style as well as 
+backport the patch by rerunning the Coccinelle script with less worry of 
+changed context.  Automated cleanups are always going to be easier to 
+swallow (even if the diffstat is larger) than manual ad hoc cleanups.
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
 
