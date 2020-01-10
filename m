@@ -1,30 +1,25 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ipqpz-00011r-0I
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Jan 2020 04:44:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53035)
+	id 1ipqzR-0001VN-HV
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Jan 2020 04:54:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52539)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1ipqpu-0000zC-Tz
- for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 04:44:12 -0500
+ (envelope-from <laurent@vivier.eu>) id 1ipqzN-0001NQ-M2
+ for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 04:53:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1ipqpt-0005K2-Hn
- for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 04:44:10 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:40535)
+ (envelope-from <laurent@vivier.eu>) id 1ipqzM-0001gd-0U
+ for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 04:53:57 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:32903)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1ipqpp-00052l-R0; Fri, 10 Jan 2020 04:44:06 -0500
+ id 1ipqzL-0001ab-N9; Fri, 10 Jan 2020 04:53:55 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MfZDK-1jIc4G1oaW-00fwjv; Fri, 10 Jan 2020 10:43:52 +0100
-Subject: Re: [PATCH v2 2/2] qga/main: Don't mismatch g_strsplit/g_free in
- split_list()
-To: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@gmail.com>,
- pannengyuan@huawei.com
-Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>,
- qemu trival <qemu-trivial@nongnu.org>, QEMU <qemu-devel@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20200110091710.53424-1-pannengyuan@huawei.com>
- <20200110091710.53424-3-pannengyuan@huawei.com>
- <CAJ+F1CKTDYa50ss4ckd-mHxyuHmc=sF3CmuOFq2ABkzPtSCkrQ@mail.gmail.com>
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MXYEr-1jBYb20Dst-00YyFv; Fri, 10 Jan 2020 10:53:43 +0100
+Subject: Re: [PATCH] vl: Don't mismatch g_strsplit()/g_free()
+To: pannengyuan@huawei.com, pbonzini@redhat.com
+Cc: qemu-trivial@nongnu.org, Euler Robot <euler.robot@huawei.com>,
+ qemu-devel@nongnu.org, zhang.zhanghailiang@huawei.com
+References: <20200110031618.23332-1-pannengyuan@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -68,33 +63,33 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <250c6454-5a1c-992a-0433-757c46cfb8e5@vivier.eu>
-Date: Fri, 10 Jan 2020 10:43:50 +0100
+Message-ID: <87099d30-f067-a954-083c-92fab9c44831@vivier.eu>
+Date: Fri, 10 Jan 2020 10:53:41 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.3.1
 MIME-Version: 1.0
-In-Reply-To: <CAJ+F1CKTDYa50ss4ckd-mHxyuHmc=sF3CmuOFq2ABkzPtSCkrQ@mail.gmail.com>
+In-Reply-To: <20200110031618.23332-1-pannengyuan@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:cwDYtJb5DAZ75EQNWVwRwHvoW7YOs76D9ZY3klJ2lWpameeMfWI
- 0Pg+DzuFdW0EBudJW+y5e8vQKGBgTV4SbuMP0DcBl9KpAzwV5zwvxHbVouODQGSqieNh+RH
- SVbolRUO4lSoJjmDIJmhrxBOTkdH1jAvC5v6OBBCbTR0XRlQKXH6qtFSGm2eFe9L0CE3aOp
- EXvxeMZAhDNdJJNOhtouw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:q7WJLRynEqc=:Y9emKhsk7MPUm6MoaBm1hL
- +qbwfOslieF50R+A4WV5mtz2Khp3zrJe9T2aWL/QdfZdQuDlxtaYBOhgMg1tN+nymEQy1iktx
- JDnR2rzyzWH8/+r0/iCMxOWaHweeDmjHQG0vK9SO0Q2ktjIx6CAmyGIPcuoWXw3Pk9I1fsgEs
- E1kifJOs91TRygslNld4RgemL224VmHxJXDeH7K5NQ9+b+Apt7VS+cIJvq8kymVbLaKXbNtTm
- ObmJR1Y3VkbdckD4Q329wHdYbs9PE15GPrkSTYrDAc/Hqdn6fg1WYiU6vRPc1CX5/xZVA2AuT
- 1gwRjxL+0qjq8XPGACTCUWGcGM5KTDkX00yGq1Zfq9bTwHBvoY19F/fz5LyjFTVv4ijUynqs7
- E+rV8ITx/o6MNpyxBHuIcxYDbdoNXXz7SfSOJKx+DYGT72yPF3i6O8jF8BdfGSC+pEa0OxtT/
- r6/B9jVKXhusSJW6E4y0fEXExrnrbBsMZLl0FY/X5deyuquKa+sgL6DgXo1GUyc47CYkzgGZ4
- 1o8rJW6BzoFllIlHdx/iom3ozCqaMgnCtoFWapp0eCldkSJOdXCrBt8Uu8keg3+yWA4v7G3XZ
- 9jafVfvYEEJ6v+12L5IiGBPHJZ0y4xliDNihBoYhexsCh3P/aZxSxbggxTL99RJI6rqtxo5jg
- FCYI8Jbzuq9IW5hk2RGudxittq+IRTxA64muxbJLgQ23EyfMuVXFG+3fhKJx1SMDxMJevB5hG
- fG79uSWUfCDQMWIXjUOjMfZdg0IMgZ/ZnKJikb2P7tIiMrnYbltEEnzrTeJfZ5j9IkxU8aaKc
- qOwndIi2UxCGAeopynl8AYENH+hDtpCAAPf1/7v1BZF36LcQGGCtisdVUyzriqAzvNj6+yokg
- RY1YAQnORgEj5a9gzY8WEvpcVvi+ods3E1/Ate01Y=
+X-Provags-ID: V03:K1:a3dfz69LVj9CiAWgrxlaRPBLGmkg4NpM4Fwrt5o/dOJ63uFhycy
+ vRT+vFYf2gzWciYMnq9UYVB2mOyACIVrIfGygeU79e56aVL3LLsb6pmu2Vp/z6e+IKcm6b+
+ YNQbXJLxYO8sDuILRjY5DNctYtHMs/9kHp41eKOMH0/yEUe3FoDR2NJ9/0DSkfTMU+rYIU5
+ jdXQ0rRZCuoyzz7T58eKQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:r5gLOHXYj+Y=:Fd+byl8deEZfE+cWvXH9sp
+ p3hzF2sH6Gw8KqenxOu5K9g2nDoqYiSbyJkTj8oK4Dpsz1MuGGDGXhAO08/Ao7mkw04/c0YJy
+ nspM0+hlyw5nzQs4ITfMbxyBUEc8zU/fjwo2TK/TPf8/hXI8MO+l5QA1lAE+f/8wv7knVVtGN
+ f/PDF95HbzmCABe/CAwe6HARi3+8iJ6meO7HnWuLoGwF71yDuOJMK5kSifLrWF3sh5p8/YJ3s
+ QmRdjNhZ/L63YvgNz1ScH8vZ/87+wNlno5SaMvkaoQ8/oup0i7IoXXg/OW9T/fbNDehmH35lN
+ P0pOGdMDiFa1QRAc3S7RWgOVLM+mz7d8K2Zko1MjH5Z/hu++eBbZGaGS0FsChBS04c40Y4kCF
+ mAl85yezoDqb2APfeJ7l7+tyP/cuxV9cC0Vtx2ruiMsJHeOaauyL8BuOeLzfZ1Bb2ng/Wxux2
+ wUAQdofJkcIBCbXVm57nmRa9bczewUhpWEY9XjpCzsL4lJIBIe814koZ3nFvkFUhdNymR+tht
+ Xbysz3hGQuahrpMPkeSt+CelFy0yUF2nxH1Psc30IwbyWKZaXjwhqOlrv0sDbi+wpffU1LlIw
+ a+w8IbigcueItXjbHVj6RhekmsVgJpci/AJfJMPtv5JsWCKrqD6lFzUB0niwpVoxEBTYZwF2z
+ 97MnzKFS22ino+OSd6Joe4wKAy4MG84WW+yYqx+vUBsWfHIkZGB/r/GftWMXn0pZdvS02xVKi
+ E93qP8r+XyRJ9+efA/P+4T+wORBrDutzdVq9iWCpmBhIQC0EJju6Puqk7d2ZqBI1OgCvqpOAn
+ Y5Q0Oz0396Mw7VQkFi/f07d4225/PH21spoHhSUH0ujBoAWgEpyv2H590fmNBcs4RmX0XB6Z4
+ 53HpGYv4Tn0T6FBFp4Yb3i8tchjUNfDeRrJZwn+G8=
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 212.227.17.13
@@ -109,23 +104,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Jan 2020 09:44:12 -0000
+X-List-Received-Date: Fri, 10 Jan 2020 09:53:59 -0000
 
-Le 10/01/2020 à 10:41, Marc-André Lureau a écrit :
-> Hi
+Le 10/01/2020 à 04:16, pannengyuan@huawei.com a écrit :
+> From: Pan Nengyuan <pannengyuan@huawei.com>
 > 
-> On Fri, Jan 10, 2020 at 1:18 PM <pannengyuan@huawei.com> wrote:
->>
->> From: Pan Nengyuan <pannengyuan@huawei.com>
->>
->> fix a mismatch between g_strsplit and g_free
->>
->> Reported-by: Laurent Vivier <laurent@vivier.eu>
->> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+> It's a mismatch between g_strsplit and g_free, it will cause a memory leak as follow:
 > 
-> NACK, the elements are added to the returned list.
+> [root@localhost]# ./aarch64-softmmu/qemu-system-aarch64 -accel help
+> Accelerators supported in QEMU binary:
+> tcg
+> kvm
+> =================================================================
+> ==1207900==ERROR: LeakSanitizer: detected memory leaks
+> 
+> Direct leak of 8 byte(s) in 2 object(s) allocated from:
+>     #0 0xfffd700231cb in __interceptor_malloc (/lib64/libasan.so.4+0xd31cb)
+>     #1 0xfffd6ec57163 in g_malloc (/lib64/libglib-2.0.so.0+0x57163)
+>     #2 0xfffd6ec724d7 in g_strndup (/lib64/libglib-2.0.so.0+0x724d7)
+>     #3 0xfffd6ec73d3f in g_strsplit (/lib64/libglib-2.0.so.0+0x73d3f)
+>     #4 0xaaab66be5077 in main /mnt/sdc/qemu-master/qemu-4.2.0-rc0/vl.c:3517
+>     #5 0xfffd6e140b9f in __libc_start_main (/lib64/libc.so.6+0x20b9f)
+>     #6 0xaaab66bf0f53  (./build/aarch64-softmmu/qemu-system-aarch64+0x8a0f53)
+> 
+> Direct leak of 2 byte(s) in 2 object(s) allocated from:
+>     #0 0xfffd700231cb in __interceptor_malloc (/lib64/libasan.so.4+0xd31cb)
+>     #1 0xfffd6ec57163 in g_malloc (/lib64/libglib-2.0.so.0+0x57163)
+>     #2 0xfffd6ec7243b in g_strdup (/lib64/libglib-2.0.so.0+0x7243b)
+>     #3 0xfffd6ec73e6f in g_strsplit (/lib64/libglib-2.0.so.0+0x73e6f)
+>     #4 0xaaab66be5077 in main /mnt/sdc/qemu-master/qemu-4.2.0-rc0/vl.c:3517
+>     #5 0xfffd6e140b9f in __libc_start_main (/lib64/libc.so.6+0x20b9f)
+>     #6 0xaaab66bf0f53  (./build/aarch64-softmmu/qemu-system-aarch64+0x8a0f53)
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+> ---
+>  vl.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/vl.c b/vl.c
+> index 86474a55c9..2fa5cb3b9a 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -3476,7 +3476,7 @@ int main(int argc, char **argv, char **envp)
+>                              gchar **optname = g_strsplit(typename,
+>                                                           ACCEL_CLASS_SUFFIX, 0);
+>                              printf("%s\n", optname[0]);
+> -                            g_free(optname);
+> +                            g_strfreev(optname);
+>                          }
+>                          g_free(typename);
+>                      }
+> 
 
-It's my fault, sorry...
-
-Laurent
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
