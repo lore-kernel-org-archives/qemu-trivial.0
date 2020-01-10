@@ -1,52 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ipqki-00051Q-DQ
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Jan 2020 04:38:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38612)
+	id 1ipqo5-000891-1D
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Jan 2020 04:42:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48627)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1ipqkg-00050Y-94
- for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 04:38:47 -0500
+ (envelope-from <marcandre.lureau@gmail.com>) id 1ipqo1-00084Y-MD
+ for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 04:42:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1ipqke-0001sw-Nb
- for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 04:38:45 -0500
-Resent-Date: Fri, 10 Jan 2020 04:38:45 -0500
-Resent-Message-Id: <E1ipqke-0001sw-Nb@eggs.gnu.org>
-Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21132)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1ipqke-0001km-ED; Fri, 10 Jan 2020 04:38:44 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1578649111; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=jDxzxbXKo4ZKjyvrzZS6hyI78aP1aLVC8W2p7tIlhWhG1MAvYJlot4272/uIvlTF3pqrGycFtoNKC3uooxBVersPIJDpgBuAWVkwgiukuFoZFjM4r/1Ey4PJIPyYXcDKxJ0TLiYQwnPaNph7xXOVuL2WQLeGHdnuMx/S23rj634=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1578649111;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=Ja3PON84+9Sai4EXCegwrDowh5PIJAgCIg6r4RNCmjA=; 
- b=fvE+FwOGrnOGa9PVlFjejECtoIEoEfSeCgJITxBqs7JTEsVTtTjW+etlVirVooUt/3M+LZN9kURuB3rbb24tiZx7UezWqllTZjurHsTc5moUeMFWhDnksIPSdF8N21af06zohQOF0Zj3htHZ6wio5GlYKX4W5s2LxhzIV4RXVxY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1578649107507463.1547522796719;
- Fri, 10 Jan 2020 01:38:27 -0800 (PST)
-In-Reply-To: <20200110091710.53424-1-pannengyuan@huawei.com>
-Reply-To: <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v2 0/2] fix mismatches between g_strsplit and g_free
-Message-ID: <157864910613.14224.13450876414345316635@37313f22b938>
+ (envelope-from <marcandre.lureau@gmail.com>) id 1ipqo0-0008Df-JC
+ for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 04:42:13 -0500
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:45871)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1ipqo0-00089x-Bj; Fri, 10 Jan 2020 04:42:12 -0500
+Received: by mail-wr1-x444.google.com with SMTP id j42so1101413wrj.12;
+ Fri, 10 Jan 2020 01:42:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=8dqO2ueHj7gIKIyWyu1BBEDjKzHtdvHlP1LJUdwu2HE=;
+ b=P7Fvn1XGTB/A3yaZY22gHasoTZPt6xhhsQdjchKZFFtrYsr847sfz/Chvn9TlYpp5S
+ 4vSivyS4L+YtJLF/PSONEn+TVeyBIEu1fiI1rSIZWDpzPjzSBkRYM9RzWwdn0FjfYfUv
+ ugT+oTFm4amHIjmqWJE1TEbFy6vbZPeMF7VwkqqayP1su6SJteekXv5GX1UyV+WNN31Y
+ MVK2MD5MmWpUvLXAoCebecjxCQombS/p3PekDnfce6ynEvEana3M0nxKULjW6Lj0c4v0
+ ePZOxkVtP4Y5ssnDikNVeAkwmxex1sJrNgFXVI2JoTbAsfaCzR1hQk+J5mw9briqlDBM
+ KFpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=8dqO2ueHj7gIKIyWyu1BBEDjKzHtdvHlP1LJUdwu2HE=;
+ b=XDk8+sdh3ckZdMKqyhLCfT2c4fkV20J9+ZN0WucI1eq/1tb86ZnQD7UIDb3nKLZH7/
+ VYhXxiwUCEu0LVwNrDhYSnh3xHTDXNkUH7QGs3JyP9cGF8CMnv/sIkDovA1k197liWwQ
+ WEABje52DSDlSoXNcDGbPbZbTSjTvn/Rj5TX8jaF3EGRdG3ECcfPvHTb7I/d7s9LnGWs
+ ZQOMkScbbr5bVcWc2jpQkQkIVTB/h/9zt6aoacuZKm3WDwju7fulWjo5T4dp0AWo80Nc
+ EiJwYurk3jaZvrq0vx4Garuc6BXTgEZgTaNdQJ8nxZDbeyBUXgGJ0QH759xbtXHwNdOd
+ a38g==
+X-Gm-Message-State: APjAAAVM9zhm325V1+37EkwZDQpU+bE/TVjrTCW54mQ0a/UZQXPYAGcy
+ 0eVs4XGzm4H3b3QXBdEox/5dWfHTdhQtBlvPRv8=
+X-Google-Smtp-Source: APXvYqyEXPaHRzt10u2yvHTvFczu74JAiA4FG/kAdDZKMw8/kosQ2XuzHKMDJZTxvpQhO58mxnr3T21LLDD/AIkr/yU=
+X-Received: by 2002:adf:f10a:: with SMTP id r10mr2483033wro.202.1578649331183; 
+ Fri, 10 Jan 2020 01:42:11 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
+References: <20200110091710.53424-1-pannengyuan@huawei.com>
+ <20200110091710.53424-3-pannengyuan@huawei.com>
+In-Reply-To: <20200110091710.53424-3-pannengyuan@huawei.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Fri, 10 Jan 2020 13:41:58 +0400
+Message-ID: <CAJ+F1CKTDYa50ss4ckd-mHxyuHmc=sF3CmuOFq2ABkzPtSCkrQ@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] qga/main: Don't mismatch g_strsplit/g_free in
+ split_list()
 To: pannengyuan@huawei.com
-Cc: pbonzini@redhat.com, mdroth@linux.vnet.ibm.com, qemu-trivial@nongnu.org,
- pannengyuan@huawei.com, qemu-devel@nongnu.org, zhang.zhanghailiang@huawei.com
-Date: Fri, 10 Jan 2020 01:38:27 -0800 (PST)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.51
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>, 
+ qemu trival <qemu-trivial@nongnu.org>, Laurent Vivier <laurent@vivier.eu>, 
+ QEMU <qemu-devel@nongnu.org>, zhanghailiang <zhang.zhanghailiang@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::444
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -58,42 +70,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Jan 2020 09:38:47 -0000
+X-List-Received-Date: Fri, 10 Jan 2020 09:42:15 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDExMDA5MTcxMC41MzQy
-NC0xLXBhbm5lbmd5dWFuQGh1YXdlaS5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIHRo
-ZSBkb2NrZXItcXVpY2tAY2VudG9zNyBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGlu
-ZyBjb21tYW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5z
-dGFsbGVkLCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1Qg
-U0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAptYWtlIGRvY2tlci1pbWFnZS1jZW50b3M3IFY9
-MSBORVRXT1JLPTEKdGltZSBtYWtlIGRvY2tlci10ZXN0LXF1aWNrQGNlbnRvczcgU0hPV19FTlY9
-MSBKPTE0IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKICBURVNUICAgIGNoZWNr
-LXVuaXQ6IHRlc3RzL3Rlc3QtY3J5cHRvLWNpcGhlcgogIFRFU1QgICAgY2hlY2stdW5pdDogdGVz
-dHMvdGVzdC1jcnlwdG8tc2VjcmV0CiAgVEVTVCAgICBjaGVjay11bml0OiB0ZXN0cy90ZXN0LXFn
-YQpFUlJPUiAtIHRvbyBmZXcgdGVzdHMgcnVuIChleHBlY3RlZCAyNSwgZ290IDE3KQogIFRFU1Qg
-ICAgaW90ZXN0LXFjb3cyOiAwMjkKbWFrZTogKioqIFtjaGVjay11bml0XSBFcnJvciAxCm1ha2U6
-ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVkIGpvYnMuLi4uCiAgVEVTVCAgICBpb3Rlc3QtcWNv
-dzI6IDAzMQogIFRFU1QgICAgaW90ZXN0LXFjb3cyOiAwMzIKLS0tCiAgICByYWlzZSBDYWxsZWRQ
-cm9jZXNzRXJyb3IocmV0Y29kZSwgY21kKQpzdWJwcm9jZXNzLkNhbGxlZFByb2Nlc3NFcnJvcjog
-Q29tbWFuZCAnWydzdWRvJywgJy1uJywgJ2RvY2tlcicsICdydW4nLCAnLS1sYWJlbCcsICdjb20u
-cWVtdS5pbnN0YW5jZS51dWlkPTMyN2UxYmViYTk3OTRlMzA4NWE5ZTM5OTI3ZDFkZmU1JywgJy11
-JywgJzEwMDMnLCAnLS1zZWN1cml0eS1vcHQnLCAnc2VjY29tcD11bmNvbmZpbmVkJywgJy0tcm0n
-LCAnLWUnLCAnVEFSR0VUX0xJU1Q9JywgJy1lJywgJ0VYVFJBX0NPTkZJR1VSRV9PUFRTPScsICct
-ZScsICdWPScsICctZScsICdKPTE0JywgJy1lJywgJ0RFQlVHPScsICctZScsICdTSE9XX0VOVj0x
-JywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90bXAvY2NhY2hlJywgJy12JywgJy9ob21lL3BhdGNo
-ZXcyLy5jYWNoZS9xZW11LWRvY2tlci1jY2FjaGU6L3Zhci90bXAvY2NhY2hlOnonLCAnLXYnLCAn
-L3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLTFxZ2NmaWZkL3NyYy9kb2NrZXItc3JjLjIwMjAt
-MDEtMTAtMDQuMjcuMzAuMTI1MTE6L3Zhci90bXAvcWVtdTp6LHJvJywgJ3FlbXU6Y2VudG9zNycs
-ICcvdmFyL3RtcC9xZW11L3J1bicsICd0ZXN0LXF1aWNrJ10nIHJldHVybmVkIG5vbi16ZXJvIGV4
-aXQgc3RhdHVzIDIuCmZpbHRlcj0tLWZpbHRlcj1sYWJlbD1jb20ucWVtdS5pbnN0YW5jZS51dWlk
-PTMyN2UxYmViYTk3OTRlMzA4NWE5ZTM5OTI3ZDFkZmU1Cm1ha2VbMV06ICoqKiBbZG9ja2VyLXJ1
-bl0gRXJyb3IgMQptYWtlWzFdOiBMZWF2aW5nIGRpcmVjdG9yeSBgL3Zhci90bXAvcGF0Y2hldy10
-ZXN0ZXItdG1wLTFxZ2NmaWZkL3NyYycKbWFrZTogKioqIFtkb2NrZXItcnVuLXRlc3QtcXVpY2tA
-Y2VudG9zN10gRXJyb3IgMgoKcmVhbCAgICAxMG01NS43NTlzCnVzZXIgICAgMG04LjAxMHMKCgpU
-aGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAw
-MTEwMDkxNzEwLjUzNDI0LTEtcGFubmVuZ3l1YW5AaHVhd2VpLmNvbS90ZXN0aW5nLmRvY2tlci1x
-dWlja0BjZW50b3M3Lz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGlj
-YWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIg
-ZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
+Hi
 
+On Fri, Jan 10, 2020 at 1:18 PM <pannengyuan@huawei.com> wrote:
+>
+> From: Pan Nengyuan <pannengyuan@huawei.com>
+>
+> fix a mismatch between g_strsplit and g_free
+>
+> Reported-by: Laurent Vivier <laurent@vivier.eu>
+> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+
+NACK, the elements are added to the returned list.
+
+> ---
+> Changes v2 to v1:
+> - fix a mismatch in qga/main.c
+> ---
+>  qga/main.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/qga/main.c b/qga/main.c
+> index c35c2a2120..a72ae074f4 100644
+> --- a/qga/main.c
+> +++ b/qga/main.c
+> @@ -933,7 +933,7 @@ static GList *split_list(const gchar *str, const gcha=
+r *delim)
+>      for (i =3D 0; strv[i]; i++) {
+>          list =3D g_list_prepend(list, strv[i]);
+>      }
+> -    g_free(strv);
+> +    g_strfreev(strv);
+>
+>      return list;
+>  }
+> --
+> 2.21.0.windows.1
+>
+>
+>
+
+
+--=20
+Marc-Andr=C3=A9 Lureau
 
