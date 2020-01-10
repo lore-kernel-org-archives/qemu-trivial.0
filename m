@@ -1,42 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ipqRC-0002Hq-DZ
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Jan 2020 04:18:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33648)
+	id 1ipqki-00051Q-DQ
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Jan 2020 04:38:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38612)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pannengyuan@huawei.com>) id 1ipqR9-0002By-0h
- for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 04:18:36 -0500
+ (envelope-from <no-reply@patchew.org>) id 1ipqkg-00050Y-94
+ for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 04:38:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pannengyuan@huawei.com>) id 1ipqR7-00056v-VS
- for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 04:18:34 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2674 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
- id 1ipqR4-0004dV-BV; Fri, 10 Jan 2020 04:18:30 -0500
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 2417338EB152DB909AF2;
- Fri, 10 Jan 2020 17:18:26 +0800 (CST)
-Received: from DESKTOP-9NTIQGG.china.huawei.com (10.173.221.136) by
- DGGEMS401-HUB.china.huawei.com (10.3.19.201) with Microsoft SMTP Server id
- 14.3.439.0; Fri, 10 Jan 2020 17:18:16 +0800
-From: <pannengyuan@huawei.com>
-To: <pbonzini@redhat.com>, <mdroth@linux.vnet.ibm.com>
-CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>,
- <zhang.zhanghailiang@huawei.com>, Pan Nengyuan <pannengyuan@huawei.com>,
- Euler Robot <euler.robot@huawei.com>
-Subject: [PATCH v2 1/2] vl: Don't mismatch g_strsplit()/g_free()
-Date: Fri, 10 Jan 2020 17:17:09 +0800
-Message-ID: <20200110091710.53424-2-pannengyuan@huawei.com>
-X-Mailer: git-send-email 2.21.0.windows.1
+ (envelope-from <no-reply@patchew.org>) id 1ipqke-0001sw-Nb
+ for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 04:38:45 -0500
+Resent-Date: Fri, 10 Jan 2020 04:38:45 -0500
+Resent-Message-Id: <E1ipqke-0001sw-Nb@eggs.gnu.org>
+Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21132)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1ipqke-0001km-ED; Fri, 10 Jan 2020 04:38:44 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1578649111; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=jDxzxbXKo4ZKjyvrzZS6hyI78aP1aLVC8W2p7tIlhWhG1MAvYJlot4272/uIvlTF3pqrGycFtoNKC3uooxBVersPIJDpgBuAWVkwgiukuFoZFjM4r/1Ey4PJIPyYXcDKxJ0TLiYQwnPaNph7xXOVuL2WQLeGHdnuMx/S23rj634=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1578649111;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=Ja3PON84+9Sai4EXCegwrDowh5PIJAgCIg6r4RNCmjA=; 
+ b=fvE+FwOGrnOGa9PVlFjejECtoIEoEfSeCgJITxBqs7JTEsVTtTjW+etlVirVooUt/3M+LZN9kURuB3rbb24tiZx7UezWqllTZjurHsTc5moUeMFWhDnksIPSdF8N21af06zohQOF0Zj3htHZ6wio5GlYKX4W5s2LxhzIV4RXVxY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1578649107507463.1547522796719;
+ Fri, 10 Jan 2020 01:38:27 -0800 (PST)
 In-Reply-To: <20200110091710.53424-1-pannengyuan@huawei.com>
-References: <20200110091710.53424-1-pannengyuan@huawei.com>
+Reply-To: <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v2 0/2] fix mismatches between g_strsplit and g_free
+Message-ID: <157864910613.14224.13450876414345316635@37313f22b938>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.173.221.136]
-X-CFilter-Loop: Reflected
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: pannengyuan@huawei.com
+Cc: pbonzini@redhat.com, mdroth@linux.vnet.ibm.com, qemu-trivial@nongnu.org,
+ pannengyuan@huawei.com, qemu-devel@nongnu.org, zhang.zhanghailiang@huawei.com
+Date: Fri, 10 Jan 2020 01:38:27 -0800 (PST)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.190
+X-Received-From: 136.143.188.51
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -48,71 +58,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Jan 2020 09:18:36 -0000
+X-List-Received-Date: Fri, 10 Jan 2020 09:38:47 -0000
 
-From: Pan Nengyuan <pannengyuan@huawei.com>
-
-It's a mismatch between g_strsplit and g_free, it will cause a memory lea=
-k as follow:
-
-[root@localhost]# ./aarch64-softmmu/qemu-system-aarch64 -accel help
-Accelerators supported in QEMU binary:
-tcg
-kvm
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-=3D=3D1207900=3D=3DERROR: LeakSanitizer: detected memory leaks
-
-Direct leak of 8 byte(s) in 2 object(s) allocated from:
-    #0 0xfffd700231cb in __interceptor_malloc (/lib64/libasan.so.4+0xd31c=
-b)
-    #1 0xfffd6ec57163 in g_malloc (/lib64/libglib-2.0.so.0+0x57163)
-    #2 0xfffd6ec724d7 in g_strndup (/lib64/libglib-2.0.so.0+0x724d7)
-    #3 0xfffd6ec73d3f in g_strsplit (/lib64/libglib-2.0.so.0+0x73d3f)
-    #4 0xaaab66be5077 in main /mnt/sdc/qemu-master/qemu-4.2.0-rc0/vl.c:35=
-17
-    #5 0xfffd6e140b9f in __libc_start_main (/lib64/libc.so.6+0x20b9f)
-    #6 0xaaab66bf0f53  (./build/aarch64-softmmu/qemu-system-aarch64+0x8a0=
-f53)
-
-Direct leak of 2 byte(s) in 2 object(s) allocated from:
-    #0 0xfffd700231cb in __interceptor_malloc (/lib64/libasan.so.4+0xd31c=
-b)
-    #1 0xfffd6ec57163 in g_malloc (/lib64/libglib-2.0.so.0+0x57163)
-    #2 0xfffd6ec7243b in g_strdup (/lib64/libglib-2.0.so.0+0x7243b)
-    #3 0xfffd6ec73e6f in g_strsplit (/lib64/libglib-2.0.so.0+0x73e6f)
-    #4 0xaaab66be5077 in main /mnt/sdc/qemu-master/qemu-4.2.0-rc0/vl.c:35=
-17
-    #5 0xfffd6e140b9f in __libc_start_main (/lib64/libc.so.6+0x20b9f)
-    #6 0xaaab66bf0f53  (./build/aarch64-softmmu/qemu-system-aarch64+0x8a0=
-f53)
-
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
----
-Changes v2 to v1:
-- fix another on in qga/main.c
----
- vl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/vl.c b/vl.c
-index 86474a55c9..2fa5cb3b9a 100644
---- a/vl.c
-+++ b/vl.c
-@@ -3476,7 +3476,7 @@ int main(int argc, char **argv, char **envp)
-                             gchar **optname =3D g_strsplit(typename,
-                                                          ACCEL_CLASS_SUF=
-FIX, 0);
-                             printf("%s\n", optname[0]);
--                            g_free(optname);
-+                            g_strfreev(optname);
-                         }
-                         g_free(typename);
-                     }
---=20
-2.21.0.windows.1
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDExMDA5MTcxMC41MzQy
+NC0xLXBhbm5lbmd5dWFuQGh1YXdlaS5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIHRo
+ZSBkb2NrZXItcXVpY2tAY2VudG9zNyBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGlu
+ZyBjb21tYW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5z
+dGFsbGVkLCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1Qg
+U0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAptYWtlIGRvY2tlci1pbWFnZS1jZW50b3M3IFY9
+MSBORVRXT1JLPTEKdGltZSBtYWtlIGRvY2tlci10ZXN0LXF1aWNrQGNlbnRvczcgU0hPV19FTlY9
+MSBKPTE0IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKICBURVNUICAgIGNoZWNr
+LXVuaXQ6IHRlc3RzL3Rlc3QtY3J5cHRvLWNpcGhlcgogIFRFU1QgICAgY2hlY2stdW5pdDogdGVz
+dHMvdGVzdC1jcnlwdG8tc2VjcmV0CiAgVEVTVCAgICBjaGVjay11bml0OiB0ZXN0cy90ZXN0LXFn
+YQpFUlJPUiAtIHRvbyBmZXcgdGVzdHMgcnVuIChleHBlY3RlZCAyNSwgZ290IDE3KQogIFRFU1Qg
+ICAgaW90ZXN0LXFjb3cyOiAwMjkKbWFrZTogKioqIFtjaGVjay11bml0XSBFcnJvciAxCm1ha2U6
+ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVkIGpvYnMuLi4uCiAgVEVTVCAgICBpb3Rlc3QtcWNv
+dzI6IDAzMQogIFRFU1QgICAgaW90ZXN0LXFjb3cyOiAwMzIKLS0tCiAgICByYWlzZSBDYWxsZWRQ
+cm9jZXNzRXJyb3IocmV0Y29kZSwgY21kKQpzdWJwcm9jZXNzLkNhbGxlZFByb2Nlc3NFcnJvcjog
+Q29tbWFuZCAnWydzdWRvJywgJy1uJywgJ2RvY2tlcicsICdydW4nLCAnLS1sYWJlbCcsICdjb20u
+cWVtdS5pbnN0YW5jZS51dWlkPTMyN2UxYmViYTk3OTRlMzA4NWE5ZTM5OTI3ZDFkZmU1JywgJy11
+JywgJzEwMDMnLCAnLS1zZWN1cml0eS1vcHQnLCAnc2VjY29tcD11bmNvbmZpbmVkJywgJy0tcm0n
+LCAnLWUnLCAnVEFSR0VUX0xJU1Q9JywgJy1lJywgJ0VYVFJBX0NPTkZJR1VSRV9PUFRTPScsICct
+ZScsICdWPScsICctZScsICdKPTE0JywgJy1lJywgJ0RFQlVHPScsICctZScsICdTSE9XX0VOVj0x
+JywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90bXAvY2NhY2hlJywgJy12JywgJy9ob21lL3BhdGNo
+ZXcyLy5jYWNoZS9xZW11LWRvY2tlci1jY2FjaGU6L3Zhci90bXAvY2NhY2hlOnonLCAnLXYnLCAn
+L3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLTFxZ2NmaWZkL3NyYy9kb2NrZXItc3JjLjIwMjAt
+MDEtMTAtMDQuMjcuMzAuMTI1MTE6L3Zhci90bXAvcWVtdTp6LHJvJywgJ3FlbXU6Y2VudG9zNycs
+ICcvdmFyL3RtcC9xZW11L3J1bicsICd0ZXN0LXF1aWNrJ10nIHJldHVybmVkIG5vbi16ZXJvIGV4
+aXQgc3RhdHVzIDIuCmZpbHRlcj0tLWZpbHRlcj1sYWJlbD1jb20ucWVtdS5pbnN0YW5jZS51dWlk
+PTMyN2UxYmViYTk3OTRlMzA4NWE5ZTM5OTI3ZDFkZmU1Cm1ha2VbMV06ICoqKiBbZG9ja2VyLXJ1
+bl0gRXJyb3IgMQptYWtlWzFdOiBMZWF2aW5nIGRpcmVjdG9yeSBgL3Zhci90bXAvcGF0Y2hldy10
+ZXN0ZXItdG1wLTFxZ2NmaWZkL3NyYycKbWFrZTogKioqIFtkb2NrZXItcnVuLXRlc3QtcXVpY2tA
+Y2VudG9zN10gRXJyb3IgMgoKcmVhbCAgICAxMG01NS43NTlzCnVzZXIgICAgMG04LjAxMHMKCgpU
+aGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAw
+MTEwMDkxNzEwLjUzNDI0LTEtcGFubmVuZ3l1YW5AaHVhd2VpLmNvbS90ZXN0aW5nLmRvY2tlci1x
+dWlja0BjZW50b3M3Lz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGlj
+YWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIg
+ZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
 
 
