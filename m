@@ -1,43 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ipoGg-0004lu-V3
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Jan 2020 01:59:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49643)
+	id 1ipomp-0008Jr-H5
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Jan 2020 02:32:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52495)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dovgaluk@ispras.ru>) id 1ipnRv-0000sg-2Q
- for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 01:07:12 -0500
+ (envelope-from <marcandre.lureau@gmail.com>) id 1ipomm-0008Jh-F7
+ for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 02:32:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dovgaluk@ispras.ru>) id 1ipnRu-0005sJ-1e
- for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 01:07:10 -0500
-Received: from mail.ispras.ru ([83.149.199.45]:60068)
- by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <dovgaluk@ispras.ru>)
- id 1ipnRr-0005Pn-2f; Fri, 10 Jan 2020 01:07:07 -0500
-Received: from PASHAISP (unknown [85.142.117.226])
- by mail.ispras.ru (Postfix) with ESMTPSA id 09F69725C0;
- Fri, 10 Jan 2020 09:07:04 +0300 (MSK)
-From: "Pavel Dovgalyuk" <dovgaluk@ispras.ru>
-To: "'Daniel Henrique Barboza'" <danielhb413@gmail.com>,
- <qemu-devel@nongnu.org>
-Cc: <qemu-trivial@nongnu.org>, "'Pavel Dovgalyuk'" <pavel.dovgaluk@ispras.ru>,
- "'Paolo Bonzini'" <pbonzini@redhat.com>
-References: <20200106182425.20312-1-danielhb413@gmail.com>
- <20200106182425.20312-16-danielhb413@gmail.com>
-In-Reply-To: <20200106182425.20312-16-danielhb413@gmail.com>
-Subject: RE: [PATCH v1 15/59] block/blkreplay.c: remove unneeded 'fail' label
- in blkreplay_open()
-Date: Fri, 10 Jan 2020 09:07:04 +0300
-Message-ID: <000a01d5c77c$2ebb5a00$8c320e00$@ru>
+ (envelope-from <marcandre.lureau@gmail.com>) id 1ipoml-0006QZ-BE
+ for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 02:32:48 -0500
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:37953)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1ipoml-0006Kc-3S; Fri, 10 Jan 2020 02:32:47 -0500
+Received: by mail-wm1-x344.google.com with SMTP id u2so844837wmc.3;
+ Thu, 09 Jan 2020 23:32:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=ZzKvdGhJFsMeICXr3VtgCwst4arqpQnw5AaFK1rrQFo=;
+ b=CaY9NgW3UER3bu3dElS8wzjdwHr00UPBlWVFoS0DJ1oq402wId9NpLSh31wdtTMSho
+ F3IaMgTAcayqRB1xtgID2xTfNNu0BeqSW89AATaZnxqv0N2XNYZOO+1HPd9rrpMhr+LK
+ lKmZrN8Hk9vLR+ChCdSaCPECbf6THHRhsb+N6tvZcaslkvcA/zGvZQ2htIHiqOioCiqI
+ iVCveIKT6TH2UwSOxHvEOOEMzS38MBKTlcOned6fUhRRtRfVIXbU2KYneBr+ZPuIStAY
+ g1nCVLapmEUmw+g9Ao7+ccRTasuASH0DbrEfrJFT+k5m173JYNsethuyB5xk0Oo20iRe
+ PJkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=ZzKvdGhJFsMeICXr3VtgCwst4arqpQnw5AaFK1rrQFo=;
+ b=JFhaLF8DBB3BTW44rGVoCBw6IcIeHPy1CCc78XMNbWEwgRVUtX3wzjJWiIhilSX8Ax
+ vuAUxs1dZctyaJsxJQjBzq6+htKRDu7Ienlnn2PuZg+vlAmmd8A+5aC5KqOkJmKjdyVt
+ c/r2ZdVUhMjpTv0MGMx5Xowuew3lcRyQkpAWzHVEYjIR4EtXJNKAFwsIKamBVskTTZbb
+ +Xd4ZYtKwm4F9fSPTrXetItFXWTQ++8RAJmtduXFwFGx5Q5yabsUwcNmX+1xwCUS3JY2
+ obZzFpZ3NVe+Fw6LuSerDEjxkJJAdhQxiDXIukNd2t6YhoAB2YpDloEx2DXxlSrlkmv1
+ qWPw==
+X-Gm-Message-State: APjAAAXI4yD/LoBNk8Ud97m7zP/IODqY3CQ8CLMzWf9QVOZv7s8l54p5
+ zBIflHRREqp0OrqRE+I5rF9gteFLYROCf07TzTk=
+X-Google-Smtp-Source: APXvYqyPwr7jXwt56oDnbUds9OMqDPAyge3mbJIWb6fqMeXvmIxTRpYtauusGl0pUKooZ1Cm4+YYDKr7YvPr5Anu5OQ=
+X-Received: by 2002:a05:600c:2059:: with SMTP id
+ p25mr2465485wmg.161.1578641565696; 
+ Thu, 09 Jan 2020 23:32:45 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-X-Mailer: Microsoft Office Outlook 12.0
-Thread-Index: AdXEvqbie5zFYprPSzi9IdjgcpaudwCvXYoQ
-Content-Language: ru
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Received-From: 83.149.199.45
-X-Mailman-Approved-At: Fri, 10 Jan 2020 01:59:37 -0500
+References: <20200110031618.23332-1-pannengyuan@huawei.com>
+In-Reply-To: <20200110031618.23332-1-pannengyuan@huawei.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Fri, 10 Jan 2020 11:32:32 +0400
+Message-ID: <CAJ+F1CJtpu4ac-v-pTkm3Wc95juicCNsPA5sy6+YyCBgEfc7Qg@mail.gmail.com>
+Subject: Re: [PATCH] vl: Don't mismatch g_strsplit()/g_free()
+To: pannengyuan@huawei.com
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu trival <qemu-trivial@nongnu.org>,
+ Euler Robot <euler.robot@huawei.com>, QEMU <qemu-devel@nongnu.org>, 
+ zhanghailiang <zhang.zhanghailiang@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::344
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -49,64 +68,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Jan 2020 06:07:12 -0000
+X-List-Received-Date: Fri, 10 Jan 2020 07:32:49 -0000
 
-> From: Daniel Henrique Barboza [mailto:danielhb413@gmail.com]
-> Sent: Monday, January 06, 2020 9:24 PM
-> To: qemu-devel@nongnu.org
-> Cc: qemu-trivial@nongnu.org; Daniel Henrique Barboza; Pavel Dovgalyuk; Paolo Bonzini
-> Subject: [PATCH v1 15/59] block/blkreplay.c: remove unneeded 'fail' label in blkreplay_open()
-> 
-> Both the 'fail' label and the 'ret' variable can be removed.
-> Use 'return -EINVAL' in the error condition and 'return 0' in
-> the end of the function.
-> 
-> CC: Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
-> CC: Paolo Bonzini <pbonzini@redhat.com>
-> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+Hi
 
+On Fri, Jan 10, 2020 at 7:17 AM <pannengyuan@huawei.com> wrote:
+>
+> From: Pan Nengyuan <pannengyuan@huawei.com>
+>
+> It's a mismatch between g_strsplit and g_free, it will cause a memory lea=
+k as follow:
+>
+> [root@localhost]# ./aarch64-softmmu/qemu-system-aarch64 -accel help
+> Accelerators supported in QEMU binary:
+> tcg
+> kvm
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> =3D=3D1207900=3D=3DERROR: LeakSanitizer: detected memory leaks
+>
+> Direct leak of 8 byte(s) in 2 object(s) allocated from:
+>     #0 0xfffd700231cb in __interceptor_malloc (/lib64/libasan.so.4+0xd31c=
+b)
+>     #1 0xfffd6ec57163 in g_malloc (/lib64/libglib-2.0.so.0+0x57163)
+>     #2 0xfffd6ec724d7 in g_strndup (/lib64/libglib-2.0.so.0+0x724d7)
+>     #3 0xfffd6ec73d3f in g_strsplit (/lib64/libglib-2.0.so.0+0x73d3f)
+>     #4 0xaaab66be5077 in main /mnt/sdc/qemu-master/qemu-4.2.0-rc0/vl.c:35=
+17
+>     #5 0xfffd6e140b9f in __libc_start_main (/lib64/libc.so.6+0x20b9f)
+>     #6 0xaaab66bf0f53  (./build/aarch64-softmmu/qemu-system-aarch64+0x8a0=
+f53)
+>
+> Direct leak of 2 byte(s) in 2 object(s) allocated from:
+>     #0 0xfffd700231cb in __interceptor_malloc (/lib64/libasan.so.4+0xd31c=
+b)
+>     #1 0xfffd6ec57163 in g_malloc (/lib64/libglib-2.0.so.0+0x57163)
+>     #2 0xfffd6ec7243b in g_strdup (/lib64/libglib-2.0.so.0+0x7243b)
+>     #3 0xfffd6ec73e6f in g_strsplit (/lib64/libglib-2.0.so.0+0x73e6f)
+>     #4 0xaaab66be5077 in main /mnt/sdc/qemu-master/qemu-4.2.0-rc0/vl.c:35=
+17
+>     #5 0xfffd6e140b9f in __libc_start_main (/lib64/libc.so.6+0x20b9f)
+>     #6 0xaaab66bf0f53  (./build/aarch64-softmmu/qemu-system-aarch64+0x8a0=
+f53)
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
 
-Reviewed-by: Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>
+Fixes: cbe6d6365a48bce4526c664170cda6fe738484f8
+
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
 > ---
->  block/blkreplay.c | 8 ++------
->  1 file changed, 2 insertions(+), 6 deletions(-)
-> 
-> diff --git a/block/blkreplay.c b/block/blkreplay.c
-> index c96ac8f4bc..d8c4c311f3 100644
-> --- a/block/blkreplay.c
-> +++ b/block/blkreplay.c
-> @@ -24,23 +24,19 @@ static int blkreplay_open(BlockDriverState *bs, QDict *options, int flags,
->                            Error **errp)
->  {
->      Error *local_err = NULL;
-> -    int ret;
-> 
->      /* Open the image file */
->      bs->file = bdrv_open_child(NULL, options, "image",
->                                 bs, &child_file, false, &local_err);
->      if (local_err) {
-> -        ret = -EINVAL;
->          error_propagate(errp, local_err);
-> -        goto fail;
-> +        return -EINVAL;
->      }
-> 
->      bs->supported_write_flags = BDRV_REQ_WRITE_UNCHANGED;
->      bs->supported_zero_flags = BDRV_REQ_WRITE_UNCHANGED;
-> 
-> -    ret = 0;
-> -fail:
-> -    return ret;
-> +    return 0;
->  }
-> 
->  static int64_t blkreplay_getlength(BlockDriverState *bs)
+>  vl.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/vl.c b/vl.c
+> index 86474a55c9..2fa5cb3b9a 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -3476,7 +3476,7 @@ int main(int argc, char **argv, char **envp)
+>                              gchar **optname =3D g_strsplit(typename,
+>                                                           ACCEL_CLASS_SUF=
+FIX, 0);
+>                              printf("%s\n", optname[0]);
+> -                            g_free(optname);
+> +                            g_strfreev(optname);
+>                          }
+>                          g_free(typename);
+>                      }
 > --
-> 2.24.1
+> 2.21.0.windows.1
+>
+>
+>
 
 
-
-Pavel Dovgalyuk
-
+--=20
+Marc-Andr=C3=A9 Lureau
 
