@@ -1,55 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iqwCr-0000M7-Ln
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Jan 2020 04:40:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35669)
+	id 1iqy5z-0004Jn-Ve
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Jan 2020 06:41:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48192)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1iqwCq-0000IG-1T
- for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 04:40:20 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1iqy5x-0004JP-R8
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 06:41:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1iqwCo-00065i-Nh
- for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 04:40:19 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2487 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1iqwCm-0005q4-6c; Mon, 13 Jan 2020 04:40:16 -0500
-Received: from DGGEMM402-HUB.china.huawei.com (unknown [172.30.72.53])
- by Forcepoint Email with ESMTP id 70BB11EBBF731E10A0B1;
- Mon, 13 Jan 2020 17:40:07 +0800 (CST)
-Received: from DGGEMM422-HUB.china.huawei.com (10.1.198.39) by
- DGGEMM402-HUB.china.huawei.com (10.3.20.210) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 13 Jan 2020 17:39:21 +0800
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.215]) by
- dggemm422-hub.china.huawei.com ([10.1.198.39]) with mapi id 14.03.0439.000;
- Mon, 13 Jan 2020 17:39:15 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Gerd Hoffmann <kraxel@redhat.com>,
- =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>, Pannengyuan <pannengyuan@huawei.com>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>
-Subject: RE: [PATCH] xhci: Fix memory leak in xhci_kick_epctx when poweroff
- GuestOS
-Thread-Topic: [PATCH] xhci: Fix memory leak in xhci_kick_epctx when poweroff
- GuestOS
-Thread-Index: AQHVx6T71tCpOn/wSkGorEYKOY6OCKfjWkgAgARb5YCAAJoCgA==
-Date: Mon, 13 Jan 2020 09:39:14 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B0E957F@dggemm531-mbx.china.huawei.com>
-References: <20200110105855.81144-1-kuhn.chenqun@huawei.com>
- <d5e369c6-b1c2-2b64-97a5-d9b2fc443842@redhat.com>
- <20200113074805.4nsqairqwvrf37eb@sirius.home.kraxel.org>
-In-Reply-To: <20200113074805.4nsqairqwvrf37eb@sirius.home.kraxel.org>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (envelope-from <peter.maydell@linaro.org>) id 1iqy5w-0004cs-IN
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 06:41:21 -0500
+Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236]:37295)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iqy5w-0004bh-Am
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 06:41:20 -0500
+Received: by mail-oi1-x236.google.com with SMTP id z64so7941515oia.4
+ for <qemu-trivial@nongnu.org>; Mon, 13 Jan 2020 03:41:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=jXuAmEqcarzf+a78FkUZCIwn83+tXkGCweIcG3ngEx8=;
+ b=jnl608Qh+6bv5qSQKmcZSZvX66xxJaHhAaUWItOB0GWDamsBFlbI+mUb2gB3V1jPJ3
+ srdIsfmJ5kL70sQJKArKM45nc8Eof9dU/o+WpnaJOkpC3EZooig5u047Jd+a6LutkTYW
+ Y0YWri1z0b7sI9OdYYgmvTLmT+F+0ZFYcS532oGMZf7JPv5+a2ArN7Am0Z7rSX1b8hGD
+ TE6B6cwK/M6dimmA0nNWAeQm1b9SpLkD7Z006sh7/3/+USDLhGOZRc6LAjstXoMeJj/4
+ 5o0yMHMRhJvg3t9GhZJcORFQ+mzLEjm0n/NsSySVfUl9IrTpL2tY54IQhRMjDZcfSzML
+ gv6w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=jXuAmEqcarzf+a78FkUZCIwn83+tXkGCweIcG3ngEx8=;
+ b=cO4Zp0L8x/K9gZ+g+4/x0BrQPNxDbSqc1PTKPLtTzjeX3Q/LM7IqyOkqZTYhCheyoa
+ uWc1+Bq67S9joT8P02w1XUshyV1o836DsTaHjgrYycN4p+WSFm140K/eeu50VU9lY9Ak
+ DJAs3ZKH5WBVukLzvvYNL/VxVFMnZXdja8RZJqRDlP6yi4uFPNpciFcKsZS4ExjP0vjp
+ p3jvCztlXh+7SWLvvRPM99bAWvx0Pg1pXEbIM9pNaR5+r27Gi0zmlvOUCLe+wr5PtuOj
+ 3ZnBvb3K1PO1oJco/SHwe9VGG3loFqtmKcZ9Dqfp9DEwusJVK19WYcShHnglNrcwyzDP
+ oGTw==
+X-Gm-Message-State: APjAAAXRFhADBfwSAmpG8OkNbSuH6gSjh1VV6sNzYN3EaBqLdKM//zpd
+ CEWuRzD2+cW9l5ZDOb8kJlVosYegjmBXSYsvVVq2Zg==
+X-Google-Smtp-Source: APXvYqzPHYRiEM0VJR2S12axuqQ5ZQDsYSphGu7QieRWSkvCRE/T8PEMNUxRIPbk1LUnhuBCpRRtRIp74sHwTVU0toU=
+X-Received: by 2002:aca:3d7:: with SMTP id 206mr12514660oid.98.1578915679351; 
+ Mon, 13 Jan 2020 03:41:19 -0800 (PST)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.188
+References: <20200108160233.991134-1-laurent@vivier.eu>
+In-Reply-To: <20200108160233.991134-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 13 Jan 2020 11:41:08 +0000
+Message-ID: <CAFEAcA8feV07E7Fwq77EaBRyUao5HYVUNCrkp2mn4OU4rSLvkA@mail.gmail.com>
+Subject: Re: [PULL 0/5] Trivial branch patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Eric Blake <eblake@redhat.com>, 
+ Qemu-block <qemu-block@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-arm <qemu-arm@nongnu.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::236
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -61,30 +67,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Jan 2020 09:40:21 -0000
+X-List-Received-Date: Mon, 13 Jan 2020 11:41:23 -0000
 
-Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogR2VyZCBIb2ZmbWFubiBbbWFpbHRv
-OmtyYXhlbEByZWRoYXQuY29tXQ0KPlNlbnQ6IE1vbmRheSwgSmFudWFyeSAxMywgMjAyMCAzOjQ4
-IFBNDQo+VG86IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMOpIDxwaGlsbWRAcmVkaGF0LmNvbT4NCj5D
-YzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPjsgcWVtdS0NCj5kZXZl
-bEBub25nbnUub3JnOyBxZW11LXRyaXZpYWxAbm9uZ251Lm9yZzsgUGFubmVuZ3l1YW4NCj48cGFu
-bmVuZ3l1YW5AaHVhd2VpLmNvbT47IFpoYW5naGFpbGlhbmcNCj48emhhbmcuemhhbmdoYWlsaWFu
-Z0BodWF3ZWkuY29tPg0KPlN1YmplY3Q6IFJlOiBbUEFUQ0hdIHhoY2k6IEZpeCBtZW1vcnkgbGVh
-ayBpbiB4aGNpX2tpY2tfZXBjdHggd2hlbiBwb3dlcm9mZg0KPkd1ZXN0T1MNCj4NCj4+ID4gZGlm
-ZiAtLWdpdCBhL2h3L3VzYi9oY2QteGhjaS5jIGIvaHcvdXNiL2hjZC14aGNpLmMgaW5kZXgNCj4+
-ID4gODA5ODhiYjMwNS4uMGQzZDk2ZDA1YSAxMDA2NDQNCj4+ID4gLS0tIGEvaHcvdXNiL2hjZC14
-aGNpLmMNCj4+ID4gKysrIGIvaHcvdXNiL2hjZC14aGNpLmMNCj4+ID4gQEAgLTIwMDAsNiArMjAw
-MCw3IEBAIHN0YXRpYyB2b2lkIHhoY2lfa2lja19lcGN0eChYSENJRVBDb250ZXh0DQo+KmVwY3R4
-LCB1bnNpZ25lZCBpbnQgc3RyZWFtaWQpDQo+PiA+ICAgICAgICAgICBpZiAoeGZlciAhPSBOVUxM
-ICYmIHhmZXItPnJ1bm5pbmdfcmV0cnkpIHsNCj4+ID4gICAgICAgICAgICAgICBEUFJJTlRGKCJ4
-aGNpOiB4ZmVyIG5hY2tlZCwgc3RvcHBpbmcgc2NoZWR1bGVcbiIpOw0KPj4gPiAgICAgICAgICAg
-ICAgIGVwY3R4LT5yZXRyeSA9IHhmZXI7DQo+PiA+ICsgICAgICAgICAgICB4aGNpX3hmZXJfdW5t
-YXAoeGZlcik7DQo+Pg0KPj4gU2hvdWxkbid0IHdlIHVzZSB4aGNpX2VwX2ZyZWVfeGZlcigpIGlu
-c3RlYWQ/DQo+DQo+Tm8sIHhoY2kgd2lsbCB0cnkgdG8gcnVuIHRoZSB0cmFuc2ZlciBhZ2FpbiBs
-YXRlci4NCj4NCj54aGNpIHdpbGwgcmUtY3JlYXRlIHRoZSBzZ2wgdGhlbiwgc28gZnJlZWluZyB0
-aGUgc2dsIGhlcmUgaXMgY29ycmVjdC4gIFBhdGNoIGFkZGVkDQo+dG8gdXNiIHF1ZXVlLg0KDQpI
-aSAgR2VyZCwNCg0KSSB0ZXN0IGV2ZXJ5IGtleWJvYXJkIGlucHV0LCBpdCB3aWxsIGxlYWsgb25j
-ZS4gICANCkkgdGVzdGVkIHFlbXUtNC4wLjAgIGFsc28gaGFkICB0aGlzIGxlYWsgLg0KDQpNYXli
-ZSAgd2Ugc2hvdWxkIGNjIHRvIHFlbXUtc3RhYmxlID8NCg0KVGhhbmtzLg0KPg0KPnRoYW5rcywN
-Cj4gIEdlcmQNCg0K
+On Wed, 8 Jan 2020 at 16:02, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit 035eed4c0d257c905a556fa0f4865a0c077b4e7f:
+>
+>   Merge remote-tracking branch 'remotes/vivier/tags/q800-for-5.0-pull-request' into staging (2020-01-07 17:08:21 +0000)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+>
+> for you to fetch changes up to adb464ff671d124010953aad48dd9194cedc6ff6:
+>
+>   vl: fix memory leak in configure_accelerators (2020-01-08 16:12:39 +0100)
+>
+> ----------------------------------------------------------------
+> Fix some uninitialized variable warnings,
+> some memory leak warnings and update MAINTAINERS file.
+>
+> ----------------------------------------------------------------
+
+
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/5.0
+for any user-visible changes.
+
+-- PMM
 
