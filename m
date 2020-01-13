@@ -1,61 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ir1c1-0001BL-MC
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Jan 2020 10:26:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57995)
+	id 1ir2ER-00041k-Ch
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Jan 2020 11:06:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43290)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1ir1bz-00016S-Iy
- for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 10:26:40 -0500
+ (envelope-from <thuth@redhat.com>) id 1ir2EP-0003zr-7y
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 11:06:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1ir1by-0003oF-Hu
- for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 10:26:39 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:39330
+ (envelope-from <thuth@redhat.com>) id 1ir2EO-0004Ic-8D
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 11:06:21 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:45873
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1ir1by-0003na-EN
- for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 10:26:38 -0500
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1ir2EN-00048N-O7
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 11:06:20 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578929197;
+ s=mimecast20190719; t=1578931576;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qcDFBLZo+Jb8xGOew4Wd3dTD2HMwSN35pi1u7LgD7js=;
- b=XrRz2zPk3Fp9zuZ/Omg6/X8OyEKG9bPT8GsP2QMAewFf3/w1lZMVv9vrVQF/6uax0VodFT
- 2aqmahTAlaTysNNkbv3jT1RY4K41v1s0gDKYX+ytIIAcQOWGbp6fC7KQ6gUzcXNsj4/NMV
- XRH4Ru/ALvrIuAm6nyPPHX1m7or/tss=
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=DZrEM7aklK4LD47Ic4drvMCGLz421cRHJ4vCT0VgPSA=;
+ b=GRThqzWsr4VNYgpsS1xNi0gp1V5HQL1VyZb+a+9Y+Qk1kt+1pzb5r8aYvNv5pshfvzEmFD
+ fowfNkCQQh9vql/ebkcs9yNW0IMRV8XdL6Zs46dNisYlY0PSYQhnOy9IBcHOD6abCUiIvH
+ R3bQoLRTIzbzLEDYU5F/s5s2UJ0FHag=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-116-tUrUOBjlNeOyHiewkFDeoA-1; Mon, 13 Jan 2020 10:26:33 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-250-afxEuU8DPUGa-UHkJou5cQ-1; Mon, 13 Jan 2020 11:06:13 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 785D710054E3;
- Mon, 13 Jan 2020 15:26:32 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-131.ams2.redhat.com
- [10.36.116.131])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 491CA87EEC;
- Mon, 13 Jan 2020 15:26:32 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id D0C6F1138600; Mon, 13 Jan 2020 16:26:30 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Corey Minyard <minyard@acm.org>
-Cc: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH v1 00/59] trivial unneeded labels cleanup
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4185E10239A6;
+ Mon, 13 Jan 2020 16:06:12 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-87.ams2.redhat.com [10.36.116.87])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8697E19756;
+ Mon, 13 Jan 2020 16:06:11 +0000 (UTC)
+Subject: Re: [PATCH v1 41/59] intc/s390_flic_kvm.c: remove unneeded label in
+ kvm_flic_load()
+To: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
 References: <20200106182425.20312-1-danielhb413@gmail.com>
- <20200106195457.GE2886@minyard.net>
-Date: Mon, 13 Jan 2020 16:26:30 +0100
-In-Reply-To: <20200106195457.GE2886@minyard.net> (Corey Minyard's message of
- "Mon, 6 Jan 2020 13:54:57 -0600")
-Message-ID: <87a76rxtqx.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ <20200106182425.20312-42-danielhb413@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <960983b9-1719-7d07-96cb-9f4663a598e8@redhat.com>
+Date: Mon, 13 Jan 2020 17:06:09 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: tUrUOBjlNeOyHiewkFDeoA-1
+In-Reply-To: <20200106182425.20312-42-danielhb413@gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: afxEuU8DPUGa-UHkJou5cQ-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 205.139.110.61
@@ -70,58 +69,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Jan 2020 15:26:40 -0000
+X-List-Received-Date: Mon, 13 Jan 2020 16:06:22 -0000
 
-Corey Minyard <minyard@acm.org> writes:
+On 06/01/2020 19.24, Daniel Henrique Barboza wrote:
+> 'out' label can be replaced by 'return' with the apropriate
 
-> On Mon, Jan 06, 2020 at 03:23:26PM -0300, Daniel Henrique Barboza wrote:
->> Hello,
->>=20
->> This is the type of cleanup I've contributed to Libvirt
->> during the last year. Figured QEMU also deserves the same
->> care.
->>=20
->> The idea here is remove unneeded labels. By 'unneeded' I
->> mean labels that does nothing but a 'return' call. One
->> common case is something like this:
->>=20
->> if ()
->>     goto cleanup;
->> [...]
->>  cleanup:
->>     return 0;
->>=20
->> This code can be simplified to:
->>=20
->> if ()
->>     return 0;
->>=20
->>=20
->> Which is cleaner and requires less brain cycles to wonder
->> whether the 'cleanup' label does anything special, such
->> as a heap memory cleanup.
->
-> I would disagree with this analysis.  To me, I often wonder
-> when I have to add cleanup code to a routine whether there is
-> some hidden return in the middle of the function.  That's a lot
-> harder to spot than just looking for the cleanup label at the
-> end of the function to see what it does.
+s/apropriate/appropriate/
 
-A cleanup label does not preclude existence of return.  You have to
-check for return anyway.
+> value that is set by 'r' right before the jump.
+> 
+> Christian Borntraeger <borntraeger@de.ibm.com>
 
->                                           For non-trivial
-> functions I prefer to have one point of return at the end
-> (and maybe some minor checks with returns right at the beginning).
-> I'm not adamant about this, just my opinion.
+Missing "Cc:" ? With this line and the typo removed/fixed:
 
-I'm in Daniel's camp: if there's no need for cleanup, return without
-ado.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-> But if we are going to fix things like this, it might be best to add
-> them to the coding style document and checkpatch script.  Otherwise
-> these sorts of things will just continue.
 
-Maybe.
+> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+> ---
+>  hw/intc/s390_flic_kvm.c | 10 +++-------
+>  1 file changed, 3 insertions(+), 7 deletions(-)
+> 
+> diff --git a/hw/intc/s390_flic_kvm.c b/hw/intc/s390_flic_kvm.c
+> index dddd33ea61..2e1e70c61d 100644
+> --- a/hw/intc/s390_flic_kvm.c
+> +++ b/hw/intc/s390_flic_kvm.c
+> @@ -439,17 +439,14 @@ static int kvm_flic_load(QEMUFile *f, void *opaque, size_t size,
+>      count = qemu_get_be64(f);
+>      len = count * sizeof(struct kvm_s390_irq);
+>      if (count == FLIC_FAILED) {
+> -        r = -EINVAL;
+> -        goto out;
+> +        return -EINVAL;
+>      }
+>      if (count == 0) {
+> -        r = 0;
+> -        goto out;
+> +        return 0;
+>      }
+>      buf = g_try_malloc0(len);
+>      if (!buf) {
+> -        r = -ENOMEM;
+> -        goto out;
+> +        return -ENOMEM;
+>      }
+>  
+>      if (qemu_get_buffer(f, (uint8_t *) buf, len) != len) {
+> @@ -460,7 +457,6 @@ static int kvm_flic_load(QEMUFile *f, void *opaque, size_t size,
+>  
+>  out_free:
+>      g_free(buf);
+> -out:
+>      return r;
+>  }
+>  
+> 
 
 
