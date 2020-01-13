@@ -1,54 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iq6Jq-0002dH-2o
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Jan 2020 21:16:08 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55104)
+	id 1iquSS-0005yw-79
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Jan 2020 02:48:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54319)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1iq6Jj-0002Zz-2U
- for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 21:16:00 -0500
+ (envelope-from <kraxel@redhat.com>) id 1iquSO-0005os-0z
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 02:48:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1iq6Jh-0000bo-RJ
- for qemu-trivial@nongnu.org; Fri, 10 Jan 2020 21:15:59 -0500
-Received: from szxga03-in.huawei.com ([45.249.212.189]:2051 helo=huawei.com)
+ (envelope-from <kraxel@redhat.com>) id 1iquSM-0000MB-1M
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 02:48:14 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:35559
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1iq6Je-0008Uq-R5; Fri, 10 Jan 2020 21:15:55 -0500
-Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.56])
- by Forcepoint Email with ESMTP id D0A4697E424D2ABCA5EC;
- Sat, 11 Jan 2020 10:15:49 +0800 (CST)
-Received: from DGGEMM423-HUB.china.huawei.com (10.1.198.40) by
- DGGEMM405-HUB.china.huawei.com (10.3.20.213) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Sat, 11 Jan 2020 10:15:49 +0800
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.215]) by
- dggemm423-hub.china.huawei.com ([10.1.198.40]) with mapi id 14.03.0439.000;
- Sat, 11 Jan 2020 10:15:41 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "kraxel@redhat.com"
- <kraxel@redhat.com>
-CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, Pannengyuan
- <pannengyuan@huawei.com>, Zhanghailiang <zhang.zhanghailiang@huawei.com>
-Subject: RE: [PATCH] xhci: Fix memory leak in xhci_kick_epctx when poweroff
+ (Exim 4.71) (envelope-from <kraxel@redhat.com>) id 1iquSL-0000Eh-K0
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 02:48:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1578901691;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=7bEOR9oyDnD2vz8O9zDFtOYrvT5bY8MGcoR9KuTjcDg=;
+ b=WuorQt747GwVAMV83HrB8sksBxY33Hfu0DIuyLbMz5ckFnzlMh6U9vcwrRFz9FxPVY/bfQ
+ QhQRsLvihVP0z0vNbsUy1QtLbyvwU2D9QPLi+FcYFKqSs9lw45mgnFl3N2+AP6G8ljIRG6
+ PsMJnG7fytFOiHe9O/BJJioumTQACV4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-381-lDyjCLBsP7uiW9NpZ1WrOA-1; Mon, 13 Jan 2020 02:48:10 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 18BE1477;
+ Mon, 13 Jan 2020 07:48:09 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-106.ams2.redhat.com
+ [10.36.116.106])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 66C3888863;
+ Mon, 13 Jan 2020 07:48:06 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 690279DA5; Mon, 13 Jan 2020 08:48:05 +0100 (CET)
+Date: Mon, 13 Jan 2020 08:48:05 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: kuhn.chenqun@huawei.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ pannengyuan@huawei.com, zhang.zhanghailiang@huawei.com
+Subject: Re: [PATCH] xhci: Fix memory leak in xhci_kick_epctx when poweroff
  GuestOS
-Thread-Topic: [PATCH] xhci: Fix memory leak in xhci_kick_epctx when poweroff
- GuestOS
-Thread-Index: AQHVx6T71tCpOn/wSkGorEYKOY6OCKfjWkgAgAFXCmA=
-Date: Sat, 11 Jan 2020 02:15:40 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B0E37A2@dggemm531-mbx.china.huawei.com>
+Message-ID: <20200113074805.4nsqairqwvrf37eb@sirius.home.kraxel.org>
 References: <20200110105855.81144-1-kuhn.chenqun@huawei.com>
  <d5e369c6-b1c2-2b64-97a5-d9b2fc443842@redhat.com>
-In-Reply-To: <d5e369c6-b1c2-2b64-97a5-d9b2fc443842@redhat.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <d5e369c6-b1c2-2b64-97a5-d9b2fc443842@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: lDyjCLBsP7uiW9NpZ1WrOA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.189
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -60,66 +70,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 11 Jan 2020 02:16:00 -0000
+X-List-Received-Date: Mon, 13 Jan 2020 07:48:18 -0000
 
-DQoNCj4tLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPkZyb206IFBoaWxpcHBlIE1hdGhpZXUt
-RGF1ZMOpIFttYWlsdG86cGhpbG1kQHJlZGhhdC5jb21dDQo+U2VudDogRnJpZGF5LCBKYW51YXJ5
-IDEwLCAyMDIwIDk6MTQgUE0NCj5UbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3
-ZWkuY29tPjsgcWVtdS0NCj5kZXZlbEBub25nbnUub3JnOyBrcmF4ZWxAcmVkaGF0LmNvbQ0KPkNj
-OiBxZW11LXRyaXZpYWxAbm9uZ251Lm9yZzsgUGFubmVuZ3l1YW4gPHBhbm5lbmd5dWFuQGh1YXdl
-aS5jb20+Ow0KPlpoYW5naGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT4N
-Cj5TdWJqZWN0OiBSZTogW1BBVENIXSB4aGNpOiBGaXggbWVtb3J5IGxlYWsgaW4geGhjaV9raWNr
-X2VwY3R4IHdoZW4gcG93ZXJvZmYNCj5HdWVzdE9TDQo+DQo+T24gMS8xMC8yMCAxMTo1OCBBTSwg
-a3Vobi5jaGVucXVuQGh1YXdlaS5jb20gd3JvdGU6DQo+PiBGcm9tOiBDaGVuIFF1biA8a3Vobi5j
-aGVucXVuQGh1YXdlaS5jb20+DQo+Pg0KPj4gc3RhcnQgdm0gd2l0aCBsaWJ2aXJ0LCB3aGVuIEd1
-ZXN0T1MgcnVubmluZywgZW50ZXIgcG93ZXJvZmYgY29tbWFuZA0KPj4gdXNpbmcgdGhlIHhoY2kg
-a2V5Ym9hcmQsIHRoZW4gQVNBTiBzaG93cyBtZW1vcnkgbGVhayBzdGFja++8mg0KPj4NCj4+IERp
-cmVjdCBsZWFrIG9mIDgwIGJ5dGUocykgaW4gNSBvYmplY3QocykgYWxsb2NhdGVkIGZyb206DQo+
-PiAgICAgICMwIDB4ZmZmZDFlNjQzMWNiIGluIF9faW50ZXJjZXB0b3JfbWFsbG9jICgvbGliNjQv
-bGliYXNhbi5zby40KzB4ZDMxY2IpDQo+PiAgICAgICMxIDB4ZmZmZDFlMTA3MTYzIGluIGdfbWFs
-bG9jICgvbGliNjQvbGliZ2xpYi0yLjAuc28uMCsweDU3MTYzKQ0KPj4gICAgICAjMiAweGFhYWQz
-OTA1MTM2NyBpbiBxZW11X3NnbGlzdF9pbml0IC9xZW11L2RtYS1oZWxwZXJzLmM6NDMNCj4+ICAg
-ICAgIzMgMHhhYWFkMzk0N2M0MDcgaW4gcGNpX2RtYV9zZ2xpc3RfaW5pdA0KPi9xZW11L2luY2x1
-ZGUvaHcvcGNpL3BjaS5oOjg0Mg0KPj4gICAgICAjNCAweGFhYWQzOTQ3YzQwNyBpbiB4aGNpX3hm
-ZXJfY3JlYXRlX3NnbCAvcWVtdS9ody91c2IvaGNkLQ0KPnhoY2kuYzoxNDQ2DQo+PiAgICAgICM1
-IDB4YWFhZDM5NDdjNDA3IGluIHhoY2lfc2V0dXBfcGFja2V0IC9xZW11L2h3L3VzYi9oY2QteGhj
-aS5jOjE2MTgNCj4+ICAgICAgIzYgMHhhYWFkMzk0ODYyNWYgaW4geGhjaV9zdWJtaXQgL3FlbXUv
-aHcvdXNiL2hjZC14aGNpLmM6MTgyNw0KPj4gICAgICAjNyAweGFhYWQzOTQ4NjI1ZiBpbiB4aGNp
-X2ZpcmVfdHJhbnNmZXIgL3FlbXUvaHcvdXNiL2hjZC14aGNpLmM6MTgzOQ0KPj4gICAgICAjOCAw
-eGFhYWQzOTQ4NjI1ZiBpbiB4aGNpX2tpY2tfZXBjdHggL3FlbXUvaHcvdXNiL2hjZC14aGNpLmM6
-MTk5MQ0KPj4gICAgICAjOSAweGFhYWQzOTQ4ZjUzNyBpbiB4aGNpX2Rvb3JiZWxsX3dyaXRlIC9x
-ZW11L2h3L3VzYi9oY2QtDQo+eGhjaS5jOjMxNTgNCj4+ICAgICAgIzEwIDB4YWFhZDM4YmNiZmM3
-IGluIG1lbW9yeV9yZWdpb25fd3JpdGVfYWNjZXNzb3INCj4vcWVtdS9tZW1vcnkuYzo0ODMNCj4+
-ICAgICAgIzExIDB4YWFhZDM4YmM2NTRmIGluIGFjY2Vzc193aXRoX2FkanVzdGVkX3NpemUgL3Fl
-bXUvbWVtb3J5LmM6NTQ0DQo+PiAgICAgICMxMiAweGFhYWQzOGJkMTg3NyBpbiBtZW1vcnlfcmVn
-aW9uX2Rpc3BhdGNoX3dyaXRlDQo+L3FlbXUvbWVtb3J5LmM6MTQ4Mg0KPj4gICAgICAjMTMgMHhh
-YWFkMzhiMWM3N2YgaW4gZmxhdHZpZXdfd3JpdGVfY29udGludWUgL3FlbXUvZXhlYy5jOjMxNjcN
-Cj4+ICAgICAgIzE0IDB4YWFhZDM4YjFjYTgzIGluIGZsYXR2aWV3X3dyaXRlIC9xZW11L2V4ZWMu
-YzozMjA3DQo+PiAgICAgICMxNSAweGFhYWQzOGIyNjhkYiBpbiBhZGRyZXNzX3NwYWNlX3dyaXRl
-IC9xZW11L2V4ZWMuYzozMjk3DQo+PiAgICAgICMxNiAweGFhYWQzOGJmOTA5YiBpbiBrdm1fY3B1
-X2V4ZWMgL3FlbXUvYWNjZWwva3ZtL2t2bS1hbGwuYzoyMzgzDQo+PiAgICAgICMxNyAweGFhYWQz
-OGJiMDYzZiBpbiBxZW11X2t2bV9jcHVfdGhyZWFkX2ZuIC9xZW11L2NwdXMuYzoxMjQ2DQo+PiAg
-ICAgICMxOCAweGFhYWQzOTgyMWM5MyBpbiBxZW11X3RocmVhZF9zdGFydCAvcWVtdS91dGlsL3Fl
-bXUtdGhyZWFkLQ0KPnBvc2l4LmM6NTE5DQo+PiAgICAgICMxOSAweGZmZmQxYzgzNzhiYiAgKC9s
-aWI2NC9saWJwdGhyZWFkLnNvLjArMHg3OGJiKQ0KPj4gICAgICAjMjAgMHhmZmZkMWM3NzYxNmIg
-ICgvbGliNjQvbGliYy5zby42KzB4ZDYxNmIpDQo+Pg0KPj4gUmVwb3J0ZWQtYnk6IEV1bGVyIFJv
-Ym90IDxldWxlci5yb2JvdEBodWF3ZWkuY29tPg0KPj4gU2lnbmVkLW9mZi1ieTogQ2hlbiBRdW4g
-PGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPg0KPj4gLS0tDQo+PiAgIGh3L3VzYi9oY2QteGhjaS5j
-IHwgMSArDQo+PiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQ0KPj4NCj4+IGRpZmYg
-LS1naXQgYS9ody91c2IvaGNkLXhoY2kuYyBiL2h3L3VzYi9oY2QteGhjaS5jIGluZGV4DQo+PiA4
-MDk4OGJiMzA1Li4wZDNkOTZkMDVhIDEwMDY0NA0KPj4gLS0tIGEvaHcvdXNiL2hjZC14aGNpLmMN
-Cj4+ICsrKyBiL2h3L3VzYi9oY2QteGhjaS5jDQo+PiBAQCAtMjAwMCw2ICsyMDAwLDcgQEAgc3Rh
-dGljIHZvaWQgeGhjaV9raWNrX2VwY3R4KFhIQ0lFUENvbnRleHQgKmVwY3R4LA0KPnVuc2lnbmVk
-IGludCBzdHJlYW1pZCkNCj4+ICAgICAgICAgICBpZiAoeGZlciAhPSBOVUxMICYmIHhmZXItPnJ1
-bm5pbmdfcmV0cnkpIHsNCj4+ICAgICAgICAgICAgICAgRFBSSU5URigieGhjaTogeGZlciBuYWNr
-ZWQsIHN0b3BwaW5nIHNjaGVkdWxlXG4iKTsNCj4+ICAgICAgICAgICAgICAgZXBjdHgtPnJldHJ5
-ID0geGZlcjsNCj4+ICsgICAgICAgICAgICB4aGNpX3hmZXJfdW5tYXAoeGZlcik7DQo+DQo+U2hv
-dWxkbid0IHdlIHVzZSB4aGNpX2VwX2ZyZWVfeGZlcigpIGluc3RlYWQ/DQo+QWxzbywgaXQgd291
-bGQgYmUgY2xlYW5lciBpZiB5b3Ugc2V0IGl0IHRvIE5VTEwuDQo+DQpIaSAgUGhpbGlwcGUsDQpU
-aGFua3MgZm9yIHlvdXIgcmVwbHkhICANCkJ1dCwgIEl0ICBpcyBqdXN0IGEgc2dsaXN0IGxlYWsu
-ICB4aGNpX3hmZXJfdW5tYXAoKSBjYW4gZnJlZSBhbmQgc2V0ICBpdCB0byBOVUxMLg0KVGhlICB4
-aGNpX2VwX2ZyZWVfeGZlcigpIGRpZCd0IGZyZWUgYSBzZ2xpc3QuICANCg0KQnkgdGhlIHdheSwg
-eGZlciBzaG91bGQgYmUgdXNlIGZvciBlcGN0eC0+cmV0cnksIHdlIGNhbid0IGZyZWUgaXQuDQoN
-ClRoYW5rcy4NCj4+ICAgICAgICAgICAgICAgYnJlYWs7DQo+PiAgICAgICAgICAgfQ0KPj4gICAg
-ICAgICAgIGlmIChjb3VudCsrID4gVFJBTlNGRVJfTElNSVQpIHsNCj4+DQoNCg==
+> > diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
+> > index 80988bb305..0d3d96d05a 100644
+> > --- a/hw/usb/hcd-xhci.c
+> > +++ b/hw/usb/hcd-xhci.c
+> > @@ -2000,6 +2000,7 @@ static void xhci_kick_epctx(XHCIEPContext *epctx,=
+ unsigned int streamid)
+> >           if (xfer !=3D NULL && xfer->running_retry) {
+> >               DPRINTF("xhci: xfer nacked, stopping schedule\n");
+> >               epctx->retry =3D xfer;
+> > +            xhci_xfer_unmap(xfer);
+>=20
+> Shouldn't we use xhci_ep_free_xfer() instead?
+
+No, xhci will try to run the transfer again later.
+
+xhci will re-create the sgl then, so freeing the
+sgl here is correct.  Patch added to usb queue.
+
+thanks,
+  Gerd
+
 
