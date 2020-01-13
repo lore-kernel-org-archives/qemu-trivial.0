@@ -1,63 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ir2vu-0006kc-Jf
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Jan 2020 11:51:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57131)
+	id 1ir5pp-00048k-0y
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Jan 2020 14:57:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43766)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1ir2vs-0006hN-5I
- for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 11:51:17 -0500
+ (envelope-from <groug@kaod.org>) id 1ir5pm-00047i-8C
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 14:57:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <cohuck@redhat.com>) id 1ir2vp-0008VV-L8
- for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 11:51:14 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:50972
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <groug@kaod.org>) id 1ir5pl-0002TJ-07
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 14:57:10 -0500
+Received: from 19.mo1.mail-out.ovh.net ([178.32.97.206]:57762)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1ir2vp-0008Tz-DD
- for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 11:51:13 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578934272;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QMgZ71vUfZS2/RClU+/StStQsA+OK5w96RXGV98Gb94=;
- b=h5s3G0D2EoRFv52UT9d0quhv7TA4kSr0xxTa6Ye4fLj1h59/R64dJA37j6gn59Tkq4sSX5
- BInV7JywXpSuVLKMaB5d/oZizzYVBl5yIyLKmxSrX8T7YiS0sl19KmlzuzP16t5EjgDuIY
- cLBhjPW/7bBjLaDJiwcGnY7QgBtu8QY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-133-qkFtJKKIM1WoYBiuqVW1vA-1; Mon, 13 Jan 2020 11:51:09 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B58C564A82;
- Mon, 13 Jan 2020 16:51:07 +0000 (UTC)
-Received: from gondolin (dhcp-192-245.str.redhat.com [10.33.192.245])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 59F55A4B60;
- Mon, 13 Jan 2020 16:51:06 +0000 (UTC)
-Date: Mon, 13 Jan 2020 17:51:04 +0100
-From: Cornelia Huck <cohuck@redhat.com>
-To: Daniel Henrique Barboza <danielhb413@gmail.com>
-Cc: qemu-trivial@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- qemu-s390x@nongnu.org, qemu-devel@nongnu.org, Christian Borntraeger
- <borntraeger@de.ibm.com>
-Subject: Re: [PATCH v1 41/59] intc/s390_flic_kvm.c: remove unneeded label in
- kvm_flic_load()
-Message-ID: <20200113175104.6daf383e.cohuck@redhat.com>
-In-Reply-To: <20200108140046.0682253d.cohuck@redhat.com>
+ (Exim 4.71) (envelope-from <groug@kaod.org>) id 1ir5pk-0002Rq-Qa
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 14:57:08 -0500
+Received: from player690.ha.ovh.net (unknown [10.108.42.23])
+ by mo1.mail-out.ovh.net (Postfix) with ESMTP id 8CD5B1A81B7
+ for <qemu-trivial@nongnu.org>; Mon, 13 Jan 2020 20:57:06 +0100 (CET)
+Received: from kaod.org (lns-bzn-46-82-253-208-248.adsl.proxad.net
+ [82.253.208.248]) (Authenticated sender: groug@kaod.org)
+ by player690.ha.ovh.net (Postfix) with ESMTPSA id 60868E0C300C;
+ Mon, 13 Jan 2020 19:57:00 +0000 (UTC)
+Date: Mon, 13 Jan 2020 20:56:58 +0100
+From: Greg Kurz <groug@kaod.org>
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org, Daniel
+ Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
+Subject: Re: [PATCH v1 12/59] virtfs-proxy-helper.c: remove 'err_out' label
+ in setugid()
+Message-ID: <20200113205658.11fc5a78@bahia.lan>
+In-Reply-To: <c0bb2a92-7361-9ff3-42c2-022906b6dcad@vivier.eu>
 References: <20200106182425.20312-1-danielhb413@gmail.com>
- <20200106182425.20312-42-danielhb413@gmail.com>
- <20200108140046.0682253d.cohuck@redhat.com>
-Organization: Red Hat GmbH
+ <20200106182425.20312-13-danielhb413@gmail.com>
+ <20200107105113.7a443d51@bahia.lan>
+ <87wo9vxu9n.fsf@dusky.pond.sub.org>
+ <c0bb2a92-7361-9ff3-42c2-022906b6dcad@vivier.eu>
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: qkFtJKKIM1WoYBiuqVW1vA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Ovh-Tracer-Id: 14668786937680730584
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrvdejtddguddvlecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvuffkjghfofggtgfgsehtqhertdertdejnecuhfhrohhmpefirhgvghcumfhurhiiuceoghhrohhugheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpkedvrddvheefrddvtdekrddvgeeknecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrheiledtrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomhepghhrohhugheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdhtrhhivhhirghlsehnohhnghhnuhdrohhrghenucevlhhushhtvghrufhiiigvpedt
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 178.32.97.206
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,31 +55,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Jan 2020 16:51:17 -0000
+X-List-Received-Date: Mon, 13 Jan 2020 19:57:11 -0000
 
-On Wed, 8 Jan 2020 14:00:46 +0100
-Cornelia Huck <cohuck@redhat.com> wrote:
+On Mon, 13 Jan 2020 17:32:31 +0100
+Laurent Vivier <laurent@vivier.eu> wrote:
 
-> On Mon,  6 Jan 2020 15:24:07 -0300
-> Daniel Henrique Barboza <danielhb413@gmail.com> wrote:
-> 
-> > 'out' label can be replaced by 'return' with the apropriate
-> > value that is set by 'r' right before the jump.
-> > 
-> > Christian Borntraeger <borntraeger@de.ibm.com>  
-> 
-> I think something went wrong here; adding some cc:s.
-> 
-> > Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
-> > ---
-> >  hw/intc/s390_flic_kvm.c | 10 +++-------
-> >  1 file changed, 3 insertions(+), 7 deletions(-)
+> Le 13/01/2020 =C3=A0 16:15, Markus Armbruster a =C3=A9crit=C2=A0:
+> > Greg Kurz <groug@kaod.org> writes:
+> >=20
+> >> On Mon,  6 Jan 2020 15:23:38 -0300
+> >> Daniel Henrique Barboza <danielhb413@gmail.com> wrote:
+> >>
+> >>> 'err_out' can be removed and be replaced by 'return -errno'
+> >>> in its only instance in the function.
+> >>>
+> >>> CC: Greg Kurz <groug@kaod.org>
+> >>> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+> >>> ---
+> >>
+> >> I don't really mind, but I confirm this doesn't change behavior.
+> >>
+> >> Acked-by: Greg Kurz <groug@kaod.org>
+> >>
+> >> What's the plan to get this and the other 9p related patches merged ?
+> >> Through the trivial tree or each subsystem tree ?
+> >=20
+> > I guess qemu-trivial will eventually pick up whatever hasn't been merged
+> > by maintainers.
+> >=20
+> > [...]
+> >=20
+>=20
+> Yes, but the difficulty will be to sort which ones of the 59 patches
+> series to collect...
+>=20
 
-> Looks fine to me; will apply unless someone sees an issue.
-> 
-> 
+Ok, less work for you then. I've applied both 12/59 and 45/59 to 9p-next.
+I'm planning to send a PR later this week.
 
-Thanks, applied (with the patch description fixed as per Thomas'
-comments).
+> Thanks,
+> Laurent
+>=20
 
+Cheers,
+
+--
+Greg
 
