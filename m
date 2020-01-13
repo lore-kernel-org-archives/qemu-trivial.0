@@ -1,61 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iqy5z-0004Jn-Ve
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Jan 2020 06:41:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48192)
+	id 1ir1RA-0001t5-Tk
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Jan 2020 10:15:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53735)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iqy5x-0004JP-R8
- for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 06:41:22 -0500
+ (envelope-from <armbru@redhat.com>) id 1ir1R8-0001qy-BI
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 10:15:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iqy5w-0004cs-IN
- for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 06:41:21 -0500
-Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236]:37295)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iqy5w-0004bh-Am
- for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 06:41:20 -0500
-Received: by mail-oi1-x236.google.com with SMTP id z64so7941515oia.4
- for <qemu-trivial@nongnu.org>; Mon, 13 Jan 2020 03:41:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=jXuAmEqcarzf+a78FkUZCIwn83+tXkGCweIcG3ngEx8=;
- b=jnl608Qh+6bv5qSQKmcZSZvX66xxJaHhAaUWItOB0GWDamsBFlbI+mUb2gB3V1jPJ3
- srdIsfmJ5kL70sQJKArKM45nc8Eof9dU/o+WpnaJOkpC3EZooig5u047Jd+a6LutkTYW
- Y0YWri1z0b7sI9OdYYgmvTLmT+F+0ZFYcS532oGMZf7JPv5+a2ArN7Am0Z7rSX1b8hGD
- TE6B6cwK/M6dimmA0nNWAeQm1b9SpLkD7Z006sh7/3/+USDLhGOZRc6LAjstXoMeJj/4
- 5o0yMHMRhJvg3t9GhZJcORFQ+mzLEjm0n/NsSySVfUl9IrTpL2tY54IQhRMjDZcfSzML
- gv6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=jXuAmEqcarzf+a78FkUZCIwn83+tXkGCweIcG3ngEx8=;
- b=cO4Zp0L8x/K9gZ+g+4/x0BrQPNxDbSqc1PTKPLtTzjeX3Q/LM7IqyOkqZTYhCheyoa
- uWc1+Bq67S9joT8P02w1XUshyV1o836DsTaHjgrYycN4p+WSFm140K/eeu50VU9lY9Ak
- DJAs3ZKH5WBVukLzvvYNL/VxVFMnZXdja8RZJqRDlP6yi4uFPNpciFcKsZS4ExjP0vjp
- p3jvCztlXh+7SWLvvRPM99bAWvx0Pg1pXEbIM9pNaR5+r27Gi0zmlvOUCLe+wr5PtuOj
- 3ZnBvb3K1PO1oJco/SHwe9VGG3loFqtmKcZ9Dqfp9DEwusJVK19WYcShHnglNrcwyzDP
- oGTw==
-X-Gm-Message-State: APjAAAXRFhADBfwSAmpG8OkNbSuH6gSjh1VV6sNzYN3EaBqLdKM//zpd
- CEWuRzD2+cW9l5ZDOb8kJlVosYegjmBXSYsvVVq2Zg==
-X-Google-Smtp-Source: APXvYqzPHYRiEM0VJR2S12axuqQ5ZQDsYSphGu7QieRWSkvCRE/T8PEMNUxRIPbk1LUnhuBCpRRtRIp74sHwTVU0toU=
-X-Received: by 2002:aca:3d7:: with SMTP id 206mr12514660oid.98.1578915679351; 
- Mon, 13 Jan 2020 03:41:19 -0800 (PST)
+ (envelope-from <armbru@redhat.com>) id 1ir1R6-00071J-4B
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 10:15:24 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:25511
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1ir1R5-0006zd-Vw
+ for qemu-trivial@nongnu.org; Mon, 13 Jan 2020 10:15:24 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1578928523;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gqriSNUO6aoz+7hgMesSJlUQr2cOnjev1lmGFCpQusY=;
+ b=P2jXEkoQMAvzRsMuy0E5sjn85g3qGhDHMz48AltUOxeLD0gL0myI+ZtuW9AAdrUQfR3Nn0
+ 7wFuE9gPEiY+Vb3+SMwjVEnCRvcf+hJfSqH22qKijIBoj957ko9sgOI92UHQbJ5VACztCU
+ ti77WnEXCmp7N0h6/Auprc/VTYWSpN4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-405-vUnIroHDPYmEUrtoHhI_jQ-1; Mon, 13 Jan 2020 10:15:19 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 73D5A107ACC5;
+ Mon, 13 Jan 2020 15:15:18 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-131.ams2.redhat.com
+ [10.36.116.131])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0CFCF60BF1;
+ Mon, 13 Jan 2020 15:15:18 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 901DC1138600; Mon, 13 Jan 2020 16:15:16 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Greg Kurz <groug@kaod.org>
+Cc: Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH v1 12/59] virtfs-proxy-helper.c: remove 'err_out' label in
+ setugid()
+References: <20200106182425.20312-1-danielhb413@gmail.com>
+ <20200106182425.20312-13-danielhb413@gmail.com>
+ <20200107105113.7a443d51@bahia.lan>
+Date: Mon, 13 Jan 2020 16:15:16 +0100
+In-Reply-To: <20200107105113.7a443d51@bahia.lan> (Greg Kurz's message of "Tue, 
+ 7 Jan 2020 10:51:13 +0100")
+Message-ID: <87wo9vxu9n.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-References: <20200108160233.991134-1-laurent@vivier.eu>
-In-Reply-To: <20200108160233.991134-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Jan 2020 11:41:08 +0000
-Message-ID: <CAFEAcA8feV07E7Fwq77EaBRyUao5HYVUNCrkp2mn4OU4rSLvkA@mail.gmail.com>
-Subject: Re: [PULL 0/5] Trivial branch patches
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Eric Blake <eblake@redhat.com>, 
- Qemu-block <qemu-block@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-arm <qemu-arm@nongnu.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::236
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: vUnIroHDPYmEUrtoHhI_jQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -67,33 +72,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Jan 2020 11:41:23 -0000
+X-List-Received-Date: Mon, 13 Jan 2020 15:15:27 -0000
 
-On Wed, 8 Jan 2020 at 16:02, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit 035eed4c0d257c905a556fa0f4865a0c077b4e7f:
->
->   Merge remote-tracking branch 'remotes/vivier/tags/q800-for-5.0-pull-request' into staging (2020-01-07 17:08:21 +0000)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
->
-> for you to fetch changes up to adb464ff671d124010953aad48dd9194cedc6ff6:
->
->   vl: fix memory leak in configure_accelerators (2020-01-08 16:12:39 +0100)
->
-> ----------------------------------------------------------------
-> Fix some uninitialized variable warnings,
-> some memory leak warnings and update MAINTAINERS file.
->
-> ----------------------------------------------------------------
+Greg Kurz <groug@kaod.org> writes:
 
+> On Mon,  6 Jan 2020 15:23:38 -0300
+> Daniel Henrique Barboza <danielhb413@gmail.com> wrote:
+>
+>> 'err_out' can be removed and be replaced by 'return -errno'
+>> in its only instance in the function.
+>>=20
+>> CC: Greg Kurz <groug@kaod.org>
+>> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+>> ---
+>
+> I don't really mind, but I confirm this doesn't change behavior.
+>
+> Acked-by: Greg Kurz <groug@kaod.org>
+>
+> What's the plan to get this and the other 9p related patches merged ?
+> Through the trivial tree or each subsystem tree ?
 
-Applied, thanks.
+I guess qemu-trivial will eventually pick up whatever hasn't been merged
+by maintainers.
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/5.0
-for any user-visible changes.
+[...]
 
--- PMM
 
