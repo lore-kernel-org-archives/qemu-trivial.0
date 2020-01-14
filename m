@@ -1,68 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1irH36-0005DC-5U
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Jan 2020 02:55:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44740)
+	id 1irJ7l-0000x4-0a
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Jan 2020 05:08:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38095)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1irH33-0005Bi-CO
- for qemu-trivial@nongnu.org; Tue, 14 Jan 2020 02:55:38 -0500
+ (envelope-from <thuth@redhat.com>) id 1irJ7e-0000mQ-6H
+ for qemu-trivial@nongnu.org; Tue, 14 Jan 2020 05:08:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1irH31-0006Iv-3b
- for qemu-trivial@nongnu.org; Tue, 14 Jan 2020 02:55:36 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:25059
+ (envelope-from <thuth@redhat.com>) id 1irJ7a-0001Md-Im
+ for qemu-trivial@nongnu.org; Tue, 14 Jan 2020 05:08:30 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:46283
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1irH30-0006IE-N3
- for qemu-trivial@nongnu.org; Tue, 14 Jan 2020 02:55:35 -0500
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1irJ7a-0001MS-Fq
+ for qemu-trivial@nongnu.org; Tue, 14 Jan 2020 05:08:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578988533;
+ s=mimecast20190719; t=1578996506;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=4q90mFfpgBnql4cHvswY3fLuXnuX6PeM9otqNKL0iXQ=;
- b=MU2TSBy7QsItJflIhANrT3oQ+V9DWNg/8uINnA+WlViOQbpCvWdlmGFhSPC+Y+PacXReu6
- j1yk2vNRUeEupqDTM7oh8HEBCUC6hej1w1NaYwgKGkCqBPfajPpiHOKJDfQW6niWV1PYJi
- 1PZ1AxCliwnE6Y/Pialuwo9ZFs5xIxQ=
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=YsPOKO5VuHtfyeuY7VrvEY52mOoDlHbuoXh29lYX0Y8=;
+ b=KEv9sfhJRN0GZ3rtgKq9H0obHdxsXBtMQOZkaiNDOu0MnHrkNcg1mu4MnGlMVIDbmZs62p
+ hRnOpMbz8cYb7PauqBdMSViUIf+0UXB+6Tc1MK5fILi+Q2IuT0ZneNTQaoSARTWaFb6R3I
+ 6OJEB8ouRLgrAU3iODXTGyIHg5figd0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-218-EzU2WDySP7OehJaLvCVKpQ-1; Tue, 14 Jan 2020 02:55:30 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-265-F-M_FDMiPqawW_D4SpaH8A-1; Tue, 14 Jan 2020 05:08:23 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 85CAF800D55;
- Tue, 14 Jan 2020 07:55:29 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-131.ams2.redhat.com
- [10.36.116.131])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 391CA80F63;
- Tue, 14 Jan 2020 07:55:29 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id C2E261138600; Tue, 14 Jan 2020 08:55:27 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: Greg Kurz <groug@kaod.org>, qemu-trivial@nongnu.org,
- Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org
-Subject: Re: [PATCH v1 12/59] virtfs-proxy-helper.c: remove 'err_out' label in
- setugid()
-References: <20200106182425.20312-1-danielhb413@gmail.com>
- <20200106182425.20312-13-danielhb413@gmail.com>
- <20200107105113.7a443d51@bahia.lan>
- <87wo9vxu9n.fsf@dusky.pond.sub.org>
- <c0bb2a92-7361-9ff3-42c2-022906b6dcad@vivier.eu>
-Date: Tue, 14 Jan 2020 08:55:27 +0100
-In-Reply-To: <c0bb2a92-7361-9ff3-42c2-022906b6dcad@vivier.eu> (Laurent
- Vivier's message of "Mon, 13 Jan 2020 17:32:31 +0100")
-Message-ID: <87pnfmlbf4.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 06CE21007302;
+ Tue, 14 Jan 2020 10:08:22 +0000 (UTC)
+Received: from thuth.remote.csb (unknown [10.36.118.98])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 96A6B5C1B0;
+ Tue, 14 Jan 2020 10:08:18 +0000 (UTC)
+Subject: Re: [PATCH] qemu-deprecated: Remove text about Python 2
+To: John Snow <jsnow@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20200109095116.18201-1-thuth@redhat.com>
+ <5883bc34-926e-70e3-6402-32dfb5d92ab2@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <e1ae4e63-626c-cc6d-5117-4b4fbd1ad436@redhat.com>
+Date: Tue, 14 Jan 2020 11:08:16 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: EzU2WDySP7OehJaLvCVKpQ-1
+In-Reply-To: <5883bc34-926e-70e3-6402-32dfb5d92ab2@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: F-M_FDMiPqawW_D4SpaH8A-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,40 +69,82 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Jan 2020 07:55:39 -0000
+X-List-Received-Date: Tue, 14 Jan 2020 10:08:36 -0000
 
-Laurent Vivier <laurent@vivier.eu> writes:
+On 13/01/2020 23.36, John Snow wrote:
+>=20
+>=20
+> On 1/9/20 4:51 AM, Thomas Huth wrote:
+>> Python 2 support has been removed, so we should now also remove
+>> the announcement text for the deprecation.
+>>
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>=20
+> Reviewed-by: John Snow <jsnow@redhat.com>
+>=20
+>> ---
+>>  qemu-deprecated.texi | 8 --------
+>>  1 file changed, 8 deletions(-)
+>>
+>> diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
+>> index 7033e531de..8b23e98474 100644
+>> --- a/qemu-deprecated.texi
+>> +++ b/qemu-deprecated.texi
+>> @@ -341,14 +341,6 @@ they have no effect when used with @option{-n} to s=
+kip image creation.
+>>  Silently ignored options can be confusing, so this combination of
+>>  options will be made an error in future versions.
+>> =20
+>> -@section Build system
+>> -
+>> -@subsection Python 2 support (since 4.1.0)
+>> -
+>> -In the future, QEMU will require Python 3 to be available at
+>> -build time.  Support for Python 2 in scripts shipped with QEMU
+>> -is deprecated.
+>> -
+>>  @section Backwards compatibility
+>> =20
+>>  @subsection Runnability guarantee of CPU models (since 4.1.0)
+>>
+>=20
+> Genuine question, I'm sorry:
+>=20
+> Is it worth documenting things we recently removed?
 
-> Le 13/01/2020 =C3=A0 16:15, Markus Armbruster a =C3=A9crit=C2=A0:
->> Greg Kurz <groug@kaod.org> writes:
->>=20
->>> On Mon,  6 Jan 2020 15:23:38 -0300
->>> Daniel Henrique Barboza <danielhb413@gmail.com> wrote:
->>>
->>>> 'err_out' can be removed and be replaced by 'return -errno'
->>>> in its only instance in the function.
->>>>
->>>> CC: Greg Kurz <groug@kaod.org>
->>>> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
->>>> ---
->>>
->>> I don't really mind, but I confirm this doesn't change behavior.
->>>
->>> Acked-by: Greg Kurz <groug@kaod.org>
->>>
->>> What's the plan to get this and the other 9p related patches merged ?
->>> Through the trivial tree or each subsystem tree ?
->>=20
->> I guess qemu-trivial will eventually pick up whatever hasn't been merged
->> by maintainers.
->>=20
->> [...]
->>=20
->
-> Yes, but the difficulty will be to sort which ones of the 59 patches
-> series to collect...
+Basically yes. In case of Python 2, it's not a QEMU feature that we
+remove here, but a build requirement, and we tell the users that we need
+at least Python 3.5 when they run "configure", so I'm not sure whether
+that needs to be explicitely mentioned again the docs beside our ChangeLog?
 
-Collect them all and let git figure out which ones have been applied
-already?
+> Right now, we don't
+> really have these docs hosted in a searchable way online in a
+> per-version format. Once the notice is gone, it's gone from the mirror.
+>=20
+> I removed some bitmap functionality not too long ago and I created a
+> "Recently Removed" section as a bit of a troubleshooting guide should it
+> be needed.
+>=20
+> - Do we want this section?
+> - Should I remove it?
+> - Can we add historical docs to the website to see previous deprecated
+> docs in a searchable manner?
+
+I also once started a page in the Wiki here:
+
+ https://wiki.qemu.org/Features/RemovedFeatures
+
+... but apparently, it did not get enough attention yet, otherwise you
+would have noticed it before introducing the new chapter into the
+qemu-doc ...
+
+We definitely need one spot where we can document removed features. I
+don't mind which way we do it, either the qemu-doc or the wiki, but we
+should unify on one of the two. I guess the qemu-doc is the better place
+since we are tracking the deprecated features there already and one more
+or less just has to move the text to the other chapter when things get
+finally removed?
+
+ Thomas
 
 
