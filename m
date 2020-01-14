@@ -1,64 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1irJJe-0001ZB-DT
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Jan 2020 05:20:54 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40701)
+	id 1irLYj-0001xD-O6
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Jan 2020 07:44:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38608)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <berrange@redhat.com>) id 1irJJX-0001Un-RG
- for qemu-trivial@nongnu.org; Tue, 14 Jan 2020 05:20:51 -0500
+ (envelope-from <philmd@redhat.com>) id 1irLYg-0001tz-Dg
+ for qemu-trivial@nongnu.org; Tue, 14 Jan 2020 07:44:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <berrange@redhat.com>) id 1irJJT-0006KV-6A
- for qemu-trivial@nongnu.org; Tue, 14 Jan 2020 05:20:47 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:27207
+ (envelope-from <philmd@redhat.com>) id 1irLYe-00078R-97
+ for qemu-trivial@nongnu.org; Tue, 14 Jan 2020 07:44:34 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:47834
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <berrange@redhat.com>) id 1irJJT-0006KO-2W
- for qemu-trivial@nongnu.org; Tue, 14 Jan 2020 05:20:43 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1irLYe-00078N-65
+ for qemu-trivial@nongnu.org; Tue, 14 Jan 2020 07:44:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1578997242;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1579005871;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=AUtGb9/k4oQ2myGnNcwaCS5oecgX08myZfyIda8wpr8=;
- b=UBltjGke+DwjF5iSPsdRCZwEnjRDEOsbRvlm2GyD699YONeTzPazSjE3wdn7/Lur3btXG/
- /AHltF23Tznsf+D14i01Fy14c+QfMMGR6rqw60oqNCiEv2R0Mop4aalrL5hgI2YpGFyTUw
- /OJLIbzQ0969WqzTwh+UxrsjLisvXGI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-409--QQleTLJPzWMeBxXlyXYYw-1; Tue, 14 Jan 2020 05:20:39 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2779E10054E3;
- Tue, 14 Jan 2020 10:20:38 +0000 (UTC)
-Received: from redhat.com (ovpn-112-42.ams2.redhat.com [10.36.112.42])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 744895D9E5;
- Tue, 14 Jan 2020 10:20:34 +0000 (UTC)
-Date: Tue, 14 Jan 2020 10:20:31 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: John Snow <jsnow@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] qemu-deprecated: Remove text about Python 2
-Message-ID: <20200114102031.GE4071034@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20200109095116.18201-1-thuth@redhat.com>
- <5883bc34-926e-70e3-6402-32dfb5d92ab2@redhat.com>
- <e1ae4e63-626c-cc6d-5117-4b4fbd1ad436@redhat.com>
+ bh=zoV8XFb70US4wtfbY1n94Er2azORQJIzo99CIq35yg8=;
+ b=g/8SEUz2so9UWZlrRfvvF54sj+jDC5+CsJs707JI1m8TbMlJxNsoaTg88nnTQQhM9nnkPv
+ ltCSKRYeUzhEESnhwOAXjNS29J+rzFfrC6HS4XXqMNX1X0rWjl+oLm71gUJhYHi9840Lvb
+ ySLJQ2NH0l1+0uomVPnSvBEAPc4qbmU=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-4-3AohKaWnM2-0ng7949oGKQ-1; Tue, 14 Jan 2020 07:44:28 -0500
+Received: by mail-wr1-f71.google.com with SMTP id u18so6402469wrn.11
+ for <qemu-trivial@nongnu.org>; Tue, 14 Jan 2020 04:44:28 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=7j8CwUwkHJam8aVjm733nleoJ5Yw969ctuPEeETw7z4=;
+ b=aKk4qU53k+Aqy8F0ViFbPoIz7V7B6lLTpoL8zbod1qDtWd3Pm7z3wh9y8zXQZff1L6
+ KOEOvoHDiriEEdyMS3KnjiZG+zXF7cgAAy+/eV033PG5qIhSOLV/mXSmQy+H1Svip+qz
+ K1BImdA93q7549R2IIGPWb7lFmmCtQmal9CMAPsZPAXK5jxKnp0E6NWBYAUyIBcvU2Ok
+ PcL1wlZcHqTPb/Sxw2sgWO0/GwPD9erlek5J8wvzE0rSwUyC0DnFbGfrd4xZOm74Bk98
+ DdKUFvMjcdIjEXnr1lqQq6MY2ijdychC/ZhWVQCOLcwStSKNjISTPzfzmxF2HuynpCTP
+ ZUIQ==
+X-Gm-Message-State: APjAAAUQ1IYowksGR5Fge/m6mMzTuYbmNrst/RrSOZH8ErAOSf+tWCXk
+ d25WiDEgtIqWayopd0Yoi7SszhDFwzdafNZYbdiZwxGeb1VjHl4DoE7RWKE+uOuEAoQe1wp2s8S
+ JJrXK7JdJipiL3UrFoQ==
+X-Received: by 2002:a1c:4857:: with SMTP id v84mr27888895wma.8.1579005867248; 
+ Tue, 14 Jan 2020 04:44:27 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzm7xmqsDRrXMqCEChulMqqQcND2uTklxttqvXkG4nn2i3NhBjwiOlFqUhjKjVXlSz6vIKRog==
+X-Received: by 2002:a1c:4857:: with SMTP id v84mr27888876wma.8.1579005867071; 
+ Tue, 14 Jan 2020 04:44:27 -0800 (PST)
+Received: from [10.0.1.197] (lfbn-mon-1-1103-34.w90-48.abo.wanadoo.fr.
+ [90.48.206.34])
+ by smtp.gmail.com with ESMTPSA id b137sm19520346wme.26.2020.01.14.04.44.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 14 Jan 2020 04:44:26 -0800 (PST)
+Subject: Re: [PATCH] target/arm: add PMU feature to cortex-r5 and cortex-r5f
+To: Clement Deschamps <clement.deschamps@greensocs.com>,
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>
+References: <20200114105918.2366370-1-clement.deschamps@greensocs.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <03110090-dd50-b124-e60a-9cf136e8f7fd@redhat.com>
+Date: Tue, 14 Jan 2020 13:44:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <e1ae4e63-626c-cc6d-5117-4b4fbd1ad436@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: -QQleTLJPzWMeBxXlyXYYw-1
+In-Reply-To: <20200114105918.2366370-1-clement.deschamps@greensocs.com>
+Content-Language: en-US
+X-MC-Unique: 3AohKaWnM2-0ng7949oGKQ-1
 X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -70,123 +84,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Jan 2020 10:20:51 -0000
+X-List-Received-Date: Tue, 14 Jan 2020 12:44:36 -0000
 
-On Tue, Jan 14, 2020 at 11:08:16AM +0100, Thomas Huth wrote:
-> On 13/01/2020 23.36, John Snow wrote:
-> >=20
-> >=20
-> > On 1/9/20 4:51 AM, Thomas Huth wrote:
-> >> Python 2 support has been removed, so we should now also remove
-> >> the announcement text for the deprecation.
-> >>
-> >> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> >=20
-> > Reviewed-by: John Snow <jsnow@redhat.com>
-> >=20
-> >> ---
-> >>  qemu-deprecated.texi | 8 --------
-> >>  1 file changed, 8 deletions(-)
-> >>
-> >> diff --git a/qemu-deprecated.texi b/qemu-deprecated.texi
-> >> index 7033e531de..8b23e98474 100644
-> >> --- a/qemu-deprecated.texi
-> >> +++ b/qemu-deprecated.texi
-> >> @@ -341,14 +341,6 @@ they have no effect when used with @option{-n} to=
- skip image creation.
-> >>  Silently ignored options can be confusing, so this combination of
-> >>  options will be made an error in future versions.
-> >> =20
-> >> -@section Build system
-> >> -
-> >> -@subsection Python 2 support (since 4.1.0)
-> >> -
-> >> -In the future, QEMU will require Python 3 to be available at
-> >> -build time.  Support for Python 2 in scripts shipped with QEMU
-> >> -is deprecated.
-> >> -
-> >>  @section Backwards compatibility
-> >> =20
-> >>  @subsection Runnability guarantee of CPU models (since 4.1.0)
-> >>
-> >=20
-> > Genuine question, I'm sorry:
-> >=20
-> > Is it worth documenting things we recently removed?
+On 1/14/20 11:59 AM, Clement Deschamps wrote:
+
+Maybe describe here:
+
+The PMU is not optional on cortex-r5 and cortex-r5f (see
+the "Features" chapter of the Technical Reference Manual).
+
+> Signed-off-by: Clement Deschamps <clement.deschamps@greensocs.com>
+
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+> ---
+> See cortex-r5 TRM - 1.3 Features
 >=20
-> Basically yes. In case of Python 2, it's not a QEMU feature that we
-> remove here, but a build requirement, and we tell the users that we need
-> at least Python 3.5 when they run "configure", so I'm not sure whether
-> that needs to be explicitely mentioned again the docs beside our ChangeLo=
-g?
-
-In general changed build pre-requisites such as new minimum software
-versions are documented in the release notes:
-
-   https://wiki.qemu.org/ChangeLog/5.0#Build_Information
-
-We normally would not list build pre-requisites in the deprecation notes
-at all, since they don't follow the deprecation process normally. We
-just update minimum versions immediately that our supported OS build
-platforms change due to an OS going end of life. So for example we
-have in the past bumped gnutls, glib, nettle, gcc, etc min versions
-with no warning.  So the fact that Python 2 was mentioned in the
-deprecations at all was slightly unusual. This is mostly just to be
-nice to users since the OS platforms here aren't going EOL and still
-ship Python 2, we simply don't wish to support it any more, since
-the distros also all have Py 3.
-
-
+> PMU is not optional on cortex-r5 and cortex-r5f
+> ---
+>   target/arm/cpu.c | 1 +
+>   1 file changed, 1 insertion(+)
 >=20
-> > Right now, we don't
-> > really have these docs hosted in a searchable way online in a
-> > per-version format. Once the notice is gone, it's gone from the mirror.
-> >=20
-> > I removed some bitmap functionality not too long ago and I created a
-> > "Recently Removed" section as a bit of a troubleshooting guide should i=
-t
-> > be needed.
-> >=20
-> > - Do we want this section?
-> > - Should I remove it?
-> > - Can we add historical docs to the website to see previous deprecated
-> > docs in a searchable manner?
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index d62fd5fdc6..64cd0a7d73 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -2121,6 +2121,7 @@ static void cortex_r5_initfn(Object *obj)
+>       set_feature(&cpu->env, ARM_FEATURE_V7);
+>       set_feature(&cpu->env, ARM_FEATURE_V7MP);
+>       set_feature(&cpu->env, ARM_FEATURE_PMSA);
+> +    set_feature(&cpu->env, ARM_FEATURE_PMU);
+>       cpu->midr =3D 0x411fc153; /* r1p3 */
+>       cpu->id_pfr0 =3D 0x0131;
+>       cpu->id_pfr1 =3D 0x001;
 >=20
-> I also once started a page in the Wiki here:
->=20
->  https://wiki.qemu.org/Features/RemovedFeatures
->=20
-> ... but apparently, it did not get enough attention yet, otherwise you
-> would have noticed it before introducing the new chapter into the
-> qemu-doc ...
->=20
-> We definitely need one spot where we can document removed features. I
-> don't mind which way we do it, either the qemu-doc or the wiki, but we
-> should unify on one of the two. I guess the qemu-doc is the better place
-> since we are tracking the deprecated features there already and one more
-> or less just has to move the text to the other chapter when things get
-> finally removed?
-
-Yeah, I've said in the past that we should not be deleting deprecations
-from the docs entirely.
-
-If you look at GTK docs for example, you'll see they keep a record of
-all incompatible or noteworth changes between release:
-
-  https://developer.gnome.org/gtk3/stable/gtk-migrating-3-x-to-y.html
-
-IMHO, we should follow this and have an appendix of removed features,
-with sub-sections per QEMU release listing each removed feature. Thus
-deprecation docs just get moved to this appendix at the right time.
-
-Regards,
-Daniel
---=20
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange=
- :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com=
- :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange=
- :|
 
 
