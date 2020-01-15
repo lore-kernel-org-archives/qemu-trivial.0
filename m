@@ -1,55 +1,99 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1irh03-00075n-6n
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Jan 2020 06:38:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41576)
+	id 1irh8B-0003YU-0C
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Jan 2020 06:46:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42452)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1irh00-0006xz-1e
- for qemu-trivial@nongnu.org; Wed, 15 Jan 2020 06:38:13 -0500
+ (envelope-from <laurent@vivier.eu>) id 1irh85-0003Uq-8Z
+ for qemu-trivial@nongnu.org; Wed, 15 Jan 2020 06:46:37 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1irgzv-0004Mw-H8
- for qemu-trivial@nongnu.org; Wed, 15 Jan 2020 06:38:11 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35334
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1irgzu-0004IG-3R
- for qemu-trivial@nongnu.org; Wed, 15 Jan 2020 06:38:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579088282;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=4P+bM/vZpE5lNkOKVhAXPHeZ4S2lSKTreH2z68EN97s=;
- b=ONAbzlduDRlMiGoq8hlfGQS67ndmku2JCF94hzGPDrqLwqcHRxrp2pbshMWpqli92Tz7W7
- oiP7HDchAWfSam62pawcQwMTYgFDgIBQz7/eFy+WobX6PA/v4iuzLaxBdM4TQTau+3SWct
- KYrz9/Ct9WYcRKhlPLDdkbaDmme5xiw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-278-KA-DoQh-Miiv-re6hlqBmg-1; Wed, 15 Jan 2020 06:37:59 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 273E864A97;
- Wed, 15 Jan 2020 11:37:58 +0000 (UTC)
-Received: from thuth.com (ovpn-116-114.ams2.redhat.com [10.36.116.114])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E7D4A811E7;
- Wed, 15 Jan 2020 11:37:51 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Cc: Philippe Mathieu-Daude <philmd@redhat.com>, qemu-trivial@nongnu.org,
+ (envelope-from <laurent@vivier.eu>) id 1irh81-0001HV-28
+ for qemu-trivial@nongnu.org; Wed, 15 Jan 2020 06:46:33 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:48311)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1irh80-0001GM-PM; Wed, 15 Jan 2020 06:46:29 -0500
+Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
+ (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1M9Evp-1ilu6W42Xn-006PH8; Wed, 15 Jan 2020 12:46:20 +0100
+Subject: Re: [PATCH] hw/input: Do not enable CONFIG_PCKBD by default
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org, Philippe Mathieu-Daude <philmd@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH] hw/input: Do not enable CONFIG_PCKBD by default
-Date: Wed, 15 Jan 2020 12:37:48 +0100
-Message-Id: <20200115113748.24757-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: KA-DoQh-Miiv-re6hlqBmg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+References: <20200115113748.24757-1-thuth@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <670ab2be-d6ba-1eef-fd56-e6f8df7e0085@vivier.eu>
+Date: Wed, 15 Jan 2020 12:46:18 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
+MIME-Version: 1.0
+In-Reply-To: <20200115113748.24757-1-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:kvfy+3kkfW2V91r9ucLOZkc0zl/6GmpBQSEztxtAEmbHqKIuxeP
+ dcqU9VJpX271cMKh8dPzfRK8iNXj+NUqE3LKb2WSHEEBf7TUJCtjfyILpZGgA/DgtgOfKYs
+ AQG3hgfjG0SUzk+AE74oSBVuRph38IAj6gTkWELgkQq/2FAkMVI7V33wS5i+WDU6V7KDp2P
+ 84u9lB3m2beOB6RR6Twuw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ThCZdMmmXd8=:PNMoScXttedZYbnq+Pkep2
+ hOzAl7DJMY3JJiIBc5UuEB5hnMj8N2560NzmtYYZkgnn1czci56iomWhpb5Jl0HfxV+qxbD84
+ QwYGM8Dd6tyOVxaW1xIlt/G/6bKquMqQdpf56fIpjfucc0lK/5MQ2lttct7gn0zYliOaYNfs8
+ 1bpkta7gCGWN/gDZX6esE9ZIKya/zIFc4O/KdrgAFSl/ZghqeCEPaF/9l6DBJ0mMDeJLKzjKy
+ XQnSTeWi8Dwz/b1dt6v9q6U/1N5E1kokmCQxLEy65hlI6M78pVA3jrfMa6GdWV5tjLc7NZ2sJ
+ 5Klckik27j5mXgI+GL88MNw8ZQMU7iDB5eGg5M69tI1F7tES9NE82Jvz0T2KtJFM6/Jz5mLEC
+ hkjp8SXM0NOlPuzZa94TMjA8Bm3wUgmL60Xqrh8x1/lo+KxrmbpBK4fNj/LvBQiE1byN6vmX5
+ 6z5w2x5HARMf2iv79PlXld7R+4A3EjUqa6Gttj5UNcLdthCmQyb9gvTH4NIPe9DMOKNSVNBtY
+ 0/jJeekCqKAnEGoBo8UV6SPkgZ478Zlh17KByz3cDwXPD3EXGfMBeN/HYK132ZSGqV9pfBlMK
+ yLkOggRqI+GFVFl5VGCtTF7hJ4IexGpNTr7cCNOFB1tERecVJhRke6LZVdhDPyFe/LqOqR9u5
+ J7xzTLH5CIlvR1RzObY835VPepXWoqIU8hY1nZZZwlWPNjflR5KNMF1wa1rVSdPKe2mfh8Cfs
+ fWcCFTmul6BYmM1vh3oLaX36OJdop8NRf2m3/0px4ayIK5GwTj9/tpDOVpOvTQYloSvPauGA7
+ VI6B9ZTEW/lcRCyUE3NrIIZrHpRX4XE40Vc4pvknJ0QSh1d5UYZAgR2HpPzdSS9c3yzoP+wHH
+ juhjBuLbp6diU7K959JA==
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 212.227.17.10
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -61,43 +105,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Jan 2020 11:38:13 -0000
+X-List-Received-Date: Wed, 15 Jan 2020 11:46:37 -0000
 
-The i8042 device is part of the chipset of a machine, so it should
-be selected by the machines or chipsets (e.g. SuperIO chipsets),
-and not be enabled by default.
+Le 15/01/2020 à 12:37, Thomas Huth a écrit :
+> The i8042 device is part of the chipset of a machine, so it should
+> be selected by the machines or chipsets (e.g. SuperIO chipsets),
+> and not be enabled by default.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/input/Kconfig | 1 -
+>  hw/isa/Kconfig   | 1 +
+>  2 files changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/input/Kconfig b/hw/input/Kconfig
+> index 287f08887b..a2f25725be 100644
+> --- a/hw/input/Kconfig
+> +++ b/hw/input/Kconfig
+> @@ -7,7 +7,6 @@ config LM832X
+>  
+>  config PCKBD
+>      bool
+> -    default y
+>      select PS2
+>      depends on ISA_BUS
+>  
+> diff --git a/hw/isa/Kconfig b/hw/isa/Kconfig
+> index 8a38813cc1..c7f07854f7 100644
+> --- a/hw/isa/Kconfig
+> +++ b/hw/isa/Kconfig
+> @@ -16,6 +16,7 @@ config I82378
+>  config ISA_SUPERIO
+>      bool
+>      select ISA_BUS
+> +    select PCKBD
+>  
+>  config PC87312
+>      bool
+> 
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/input/Kconfig | 1 -
- hw/isa/Kconfig   | 1 +
- 2 files changed, 1 insertion(+), 1 deletion(-)
+It is also used by R4K but the Kconfig already includes it, so:
 
-diff --git a/hw/input/Kconfig b/hw/input/Kconfig
-index 287f08887b..a2f25725be 100644
---- a/hw/input/Kconfig
-+++ b/hw/input/Kconfig
-@@ -7,7 +7,6 @@ config LM832X
-=20
- config PCKBD
-     bool
--    default y
-     select PS2
-     depends on ISA_BUS
-=20
-diff --git a/hw/isa/Kconfig b/hw/isa/Kconfig
-index 8a38813cc1..c7f07854f7 100644
---- a/hw/isa/Kconfig
-+++ b/hw/isa/Kconfig
-@@ -16,6 +16,7 @@ config I82378
- config ISA_SUPERIO
-     bool
-     select ISA_BUS
-+    select PCKBD
-=20
- config PC87312
-     bool
---=20
-2.18.1
-
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
