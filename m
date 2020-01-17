@@ -1,70 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1isUrz-0002rQ-ON
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Jan 2020 11:53:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48792)
+	id 1isUuN-0005El-DK
+	for mharc-qemu-trivial@gnu.org; Fri, 17 Jan 2020 11:55:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49067)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pmathieu@redhat.com>) id 1isUru-0002kH-Mt
- for qemu-trivial@nongnu.org; Fri, 17 Jan 2020 11:53:13 -0500
+ (envelope-from <philmd@redhat.com>) id 1isUuI-0005BY-DW
+ for qemu-trivial@nongnu.org; Fri, 17 Jan 2020 11:55:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pmathieu@redhat.com>) id 1isUrr-0002UJ-86
- for qemu-trivial@nongnu.org; Fri, 17 Jan 2020 11:53:10 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:41846
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1isUuE-0004m5-RF
+ for qemu-trivial@nongnu.org; Fri, 17 Jan 2020 11:55:38 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:57980
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pmathieu@redhat.com>) id 1isUrr-0002Tb-4U
- for qemu-trivial@nongnu.org; Fri, 17 Jan 2020 11:53:07 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1isUuE-0004le-OD
+ for qemu-trivial@nongnu.org; Fri, 17 Jan 2020 11:55:34 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579279986;
+ s=mimecast20190719; t=1579280134;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=R0s1e3wFZuSI2imvfqdX57mYUhYsVNZnyzDn5sVcg1E=;
- b=Nae+qFWab3PVywzqwaXIHmobT9DoWQT7O646e3jIVcaqlvb8aOpil3oSJwG9aFHPD/Xt53
- Eg/z2voHKND9vyc7+7QRFSqQgx+QNwPiXHl8XYGs2V4bbSjfmgrI+SvGzBcDKjI/0eyTYG
- po47UUSzDXSy5njnzK6lS9bjrpdDbUI=
+ bh=Nd0bXqos5it2fsYYHTou3mK1Mjt3pFhpidQ/WPuFGaA=;
+ b=ME6EE6EO5xlJNhV+k1YZQPP+wkLCeSySaHXylqTFQpowFrzY6XLutodDUX0MGbKbidzZna
+ 3rIPnWmknKwquly1mexefAJzWkKj3g209aMPGjF6mmAD4vjGi2oTk2JXAuN79ZUCvOWXv4
+ J4k2PUCbbMww4p50yDdtJhg4SwbUlHo=
 Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
  [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-167-VV5Ok63oMxKsjT0GilL6eQ-1; Fri, 17 Jan 2020 11:53:04 -0500
-Received: by mail-wr1-f69.google.com with SMTP id f10so10783107wro.14
- for <qemu-trivial@nongnu.org>; Fri, 17 Jan 2020 08:53:04 -0800 (PST)
+ us-mta-23-heLEcz-tOG20pGX-a5iHww-1; Fri, 17 Jan 2020 11:55:32 -0500
+Received: by mail-wr1-f69.google.com with SMTP id t3so10666087wrm.23
+ for <qemu-trivial@nongnu.org>; Fri, 17 Jan 2020 08:55:32 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=R0s1e3wFZuSI2imvfqdX57mYUhYsVNZnyzDn5sVcg1E=;
- b=IHGIe6grG0HDIoxOgLzgHz+SM9uyO+l8CwW8itd7qimMtLkxAxjKItphEHw5X6AaOr
- C+Dt+ITVYhAxS8asTmIk+1S7TEjzgpjnCjG8rLKSV/Q9aSdlf+LqebJT/2WuYudHMbLu
- ksr2paIcVCZBoAMYPvJmun98dUdRlCxzniE3XFUztInK4XrND4aJ32vzXCMFXfVLC2FW
- 9LC42y6GT82iPW68qEboJGD23NAfinxxQfs9z4TMzTqdqjE2vjERlqmPZ23b8uCYddKp
- yLfJBrvnFY5xWZBUKgTGCu4/4d0de6biPJDgf6MByMcUFQW+PG/pcKOooT9Lsg4GmyHu
- W7iw==
-X-Gm-Message-State: APjAAAXBdDAfxadmR/nWr/YI6sXpHgh8a2l3OvaVRcwPh83KcjbccRqy
- KtJ7ISFyagrh5t5xue5khxliclfpK+YgkHkedXqyi43bmM2o1HvE3VrrWmAOufz1FC6g+GMJlKq
- wVTL4lU+ZMDAldhA28Nq4C03uRJM6VFGLSg==
-X-Received: by 2002:adf:dd8a:: with SMTP id x10mr4244845wrl.117.1579279983281; 
- Fri, 17 Jan 2020 08:53:03 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzcWtQin4vqaFBczq8lv2wKBnbOKg44p8M3NxW0ZY183aX4b1UNYq0jHC050n+rLkr84QSlvXdJrcyURQa13qU=
-X-Received: by 2002:adf:dd8a:: with SMTP id x10mr4244821wrl.117.1579279983046; 
- Fri, 17 Jan 2020 08:53:03 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=fyzRTIOREV58jx4vZ8G3KluoMzSIgrPRzuLoPsJGsrM=;
+ b=FP3gFzHAqyjCrR5W66XoUlvQY6qR5ep0SfKkr1CLuAdNG80kbqN50+wYu/zwFgzIBS
+ eieQoU6JRY3YugQ9zVFK7mnx/ZAYrU/BO2Ee+yLqtCYVLtpuWNWNXXzLOvRJPqrYsluA
+ i5RWHFpqO14Y220AjSqnCJwVtrMxZB/heSsYhNTugD4sHwSMrqmfiGQCJ6jTmfC1pud5
+ PAPCL4Nygzo3Vm/EK2mfa/w7V/Vr2ZlDk4tslA4t7H2m8Bf50WMq7+vNxyVx6FVrhkwB
+ cUUjG+crOa3LQztMdJprTlIYqJZARoNTeZMihv9sm/pCXULzWPvKq7XUDUmXVyEmCo1V
+ xBgg==
+X-Gm-Message-State: APjAAAXuD1pZKaGMsr+8vkg1eaST2Celcx0kJzQmB1jyrLgND09Czllq
+ YrbiLCbMWvlR2SaZ8lB8it33ZF95BmDLJ89/fb9v/D2DpbKyjsVdbWHNQALvY5cx1yAm8v2StPi
+ JGBFI6ExQ3fRPC1i+UA==
+X-Received: by 2002:a1c:66d6:: with SMTP id a205mr5741996wmc.171.1579280131512; 
+ Fri, 17 Jan 2020 08:55:31 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxwx7nOl6UUhTKNBw8l8IrVVx64aDd5IKkeOwfNbfiQu/J+NlayTvdjMRyJVdNddPB2Ehkbgg==
+X-Received: by 2002:a1c:66d6:: with SMTP id a205mr5741958wmc.171.1579280131208; 
+ Fri, 17 Jan 2020 08:55:31 -0800 (PST)
+Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net.
+ [83.57.172.113])
+ by smtp.gmail.com with ESMTPSA id 16sm9951251wmi.0.2020.01.17.08.55.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 17 Jan 2020 08:55:30 -0800 (PST)
+Subject: Re: [PATCH v2 0/6] Fix more GCC9 -O3 warnings
+To: qemu-devel@nongnu.org
+Cc: Aleksandar Markovic <aleksandar.m.mail@gmail.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Andrey Smirnov <andrew.smirnov@gmail.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, =?UTF-8?B?S8WRdsOhZ8OzLCBab2x0w6Fu?=
+ <dirty.ice.hu@gmail.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Markus Armbruster <armbru@redhat.com>, Olivier Danet <odanet@caramail.com>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20191218192526.13845-1-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <a6eaee52-52fb-3541-fc67-fd2af35ae655@redhat.com>
+Date: Fri, 17 Jan 2020 17:55:28 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-References: <20191218185723.7738-1-philmd@redhat.com>
-In-Reply-To: <20191218185723.7738-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Date: Fri, 17 Jan 2020 17:52:51 +0100
-Message-ID: <CAP+75-UOLktsv95POJ_0_etdYGfonvJ_zub0VQv9eQA+W20o5A@mail.gmail.com>
-Subject: Re: [PATCH] mailmap: Add more entries to sanitize 'git log' output
-To: QEMU Developers <qemu-devel@nongnu.org>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-X-MC-Unique: VV5Ok63oMxKsjT0GilL6eQ-1
+In-Reply-To: <20191218192526.13845-1-philmd@redhat.com>
+Content-Language: en-US
+X-MC-Unique: heLEcz-tOG20pGX-a5iHww-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -76,142 +93,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Jan 2020 16:53:14 -0000
+X-List-Received-Date: Fri, 17 Jan 2020 16:55:42 -0000
 
-ping?
+Cc'ing qemu-trivial as this series is fully reviewed.
 
-On Wed, Dec 18, 2019 at 7:57 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> Most of these developers have the Signed-off-by tag properly
-> written, but not the author/commiter name. Fix this.
-> Also we incorrectly wrote Arei Gonglei name, update and reorder.
->
-> git-log does not use this file by default until you specify the
-> --use-mailmap flag:
->
->   $ git log --use-mailmap
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  .mailmap | 29 ++++++++++++++++++++++++++++-
->  1 file changed, 28 insertions(+), 1 deletion(-)
->
-> diff --git a/.mailmap b/.mailmap
-> index 3816e4effe..1a859d9e65 100644
-> --- a/.mailmap
-> +++ b/.mailmap
-> @@ -56,6 +56,10 @@ Aaron Lindsay <aaron@os.amperecomputing.com>
->  Alexey Gerasimenko <x1917x@gmail.com>
->  Alex Ivanov <void@aleksoft.net>
->  Andreas F=C3=A4rber <afaerber@suse.de>
-> +Andreas F=C3=A4rber <andreas.faerber@web.de>
-> +Andreas F=C3=A4rber <andreas.faerber@web.de> <andreas.faerber>
-> +Arei Gonglei <arei.gonglei@huawei.com>
-> +Arei Gonglei <arei.gonglei@huawei.com> <root@ceth6.(none)>
->  Bandan Das <bsd@redhat.com>
->  Benjamin MARSILI <mlspirat42@gmail.com>
->  Beno=C3=AEt Canet <benoit.canet@gmail.com>
-> @@ -67,27 +71,36 @@ Brad Smith <brad@comstyle.com>
->  Brijesh Singh <brijesh.singh@amd.com>
->  Brilly Wu <brillywu@viatech.com.cn>
->  C=C3=A9dric Vincent <cedric.vincent@st.com>
-> +Chai Wen <chaiw.fnst@cn.fujitsu.com>
-> +Chaojian Hu <chaojianhu@hotmail.com>
->  CheneyLin <linzc@zju.edu.cn>
-> +Chen Fan <chen.fan.fnst@cn.fujitsu.com>
->  Chen Gang <chengang@emindsoft.com.cn>
->  Chen Gang <gang.chen.5i5j@gmail.com>
->  Chen Gang <gang.chen@sunrus.com.cn>
->  Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
->  Christophe Lyon <christophe.lyon@st.com>
-> +Christoph Hellwig <hch@lst.de>
->  Collin L. Walling <walling@linux.ibm.com>
->  Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-> +Disheng Su <edison@cloud.com>
-> +Dunrong Huang <riegamaths@gmail.com>
->  Eduardo Otubo <otubo@redhat.com>
->  Fabrice Desclaux <fabrice.desclaux@cea.fr>
->  Fernando Luis V=C3=A1zquez Cao <fernando_b1@lab.ntt.co.jp>
->  Fernando Luis V=C3=A1zquez Cao <fernando@oss.ntt.co.jp>
->  Gautham R. Shenoy <ego@in.ibm.com>
->  Gautham R. Shenoy <ego@linux.vnet.ibm.com>
-> -Gonglei (Arei) <arei.gonglei@huawei.com>
->  Guang Wang <wang.guang55@zte.com.cn>
->  Hailiang Zhang <zhang.zhanghailiang@huawei.com>
->  Herv=C3=A9 Poussineau <hpoussin@reactos.org>
-> +Hiroyuki Obinata <hiroyuki.obinata@gmail.com>
->  Jakub Jerm=C3=A1=C5=99 <jakub@jermar.eu>
->  Jakub Jerm=C3=A1=C5=99 <jakub.jermar@kernkonzept.com>
-> +Jay Zhou <jianjay.zhou@huawei.com>
->  Jean-Christophe Dubois <jcd@tribudubois.net>
-> +Jean-Christophe Dubois <jcd@tribudubois.net> <jcd@jcd-laptop.(none)>
-> +Jia Lina <jialina01@baidu.com>
->  Jind=C5=99ich Makovi=C4=8Dka <makovick@gmail.com>
->  John Arbuckle <programmingkidx@gmail.com>
->  Juha Riihim=C3=A4ki <juha.riihimaki@nokia.com>
-> @@ -96,9 +109,11 @@ Jun Li <junmuzi@gmail.com>
->  Laurent Vivier <Laurent@lvivier.info>
->  Leandro Lupori <leandro.lupori@gmail.com>
->  Li Guang <lig.fnst@cn.fujitsu.com>
-> +Lili Huang <huanglili.huang@huawei.com>
->  Liming Wang <walimisdev@gmail.com>
->  linzhecheng <linzc@zju.edu.cn>
->  Liran Schour <lirans@il.ibm.com>
-> +Li Tianqing <tianqing@unitedstack.com>
->  Liu Yu <yu.liu@freescale.com>
->  Liu Yu <Yu.Liu@freescale.com>
->  Li Zhang <zhlcindy@gmail.com>
-> @@ -112,11 +127,14 @@ Marc Mar=C3=AD <marc.mari.barcelo@gmail.com>
->  Marc Mar=C3=AD <markmb@redhat.com>
->  Michael Avdienko <whitearchey@gmail.com>
->  Michael S. Tsirkin <mst@redhat.com>
-> +Michael S. Tsirkin <mst@redhat.com> <mst@robin.(none)>
-> +Michael Tokarev <mjt@tls.msk.ru> <mjt@gandalf>
->  Munkyu Im <munkyu.im@samsung.com>
->  Nicholas Bellinger <nab@linux-iscsi.org>
->  Nicholas Thomas <nick@bytemark.co.uk>
->  Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>
->  Orit Wasserman <owasserm@redhat.com>
-> +Pan Nengyuan <pannengyuan@huawei.com>
->  Paolo Bonzini <pbonzini@redhat.com>
->  Pavel Dovgaluk <dovgaluk@ispras.ru>
->  Pavel Dovgaluk <pavel.dovgaluk@gmail.com>
-> @@ -124,15 +142,23 @@ Pavel Dovgaluk <Pavel.Dovgaluk@ispras.ru>
->  Peter Crosthwaite <crosthwaite.peter@gmail.com>
->  Peter Crosthwaite <peter.crosthwaite@petalogix.com>
->  Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-> +Peter Maydell <peter.maydell@linaro.org> <petmay01@cam-vm-266.(none)>
->  Prasad J Pandit <pjp@fedoraproject.org>
->  Prasad J Pandit <ppandit@redhat.com>
->  Qiao Nuohan <qiaonuohan@cn.fujitsu.com>
->  Reimar D=C3=B6ffinger <Reimar.Doeffinger@gmx.de>
->  Remy Noel <remy.noel@blade-group.com>
-> +Richard Henderson <rth@twiddle.net> <rth@anchor.twiddle.home>
->  Roger Pau Monn=C3=A9 <roger.pau@citrix.com>
->  Shin'ichiro Kawasaki <kawasaki@juno.dti.ne.jp>
->  Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>
-> +Siwei Zhuang <siwei.zhuang@data61.csiro.au>
-> +Sochin Jiang <sochin@aliyun.com>
->  Sochin Jiang <sochin.jiang@huawei.com>
-> +Stefan Berger <stefanb@linux.ibm.com> <Stefan Berger stefanb@linux.vnet.=
-ibm.com>
-> +Stefan Weil <sw@weilnetz.de> <stefan@kiwi.(none)>
-> +Stefan Weil <sw@weilnetz.de> <stefan@weilnetz.de>
-> +Stefan Weil <sw@weilnetz.de> <weil@mail.berlios.de>
->  Takashi Yoshii <takasi-y@ops.dti.ne.jp>
->  Thomas Huth <thuth@redhat.com>
->  Thomas Knych <thomaswk@google.com>
-> @@ -150,6 +176,7 @@ Wenshuang Ma <kevinnma@tencent.com>
->  Xiaoqiang Zhao <zxq_yx_007@163.com>
->  Xinhua Cao <caoxinhua@huawei.com>
->  Xiong Zhang <xiong.y.zhang@intel.com>
-> +Ying Fang <fangying1@huawei.com>
->  Yin Yin <yin.yin@cs2c.com.cn>
->  yuchenlin <npes87184@gmail.com>
->  YunQiang Su <syq@debian.org>
-> --
-> 2.21.0
->
+On 12/18/19 8:25 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> Fix some trivial warnings when building with -O3.
+>=20
+> v2:
+> - addressed Thomas and Aleksandar comments
+> - dropped 'hw/scsi/megasas: Silent GCC9 duplicated-cond warning'
+> - dropped 'qemu-io-cmds: Silent GCC9 format-overflow warning'
+>=20
+> Philippe Mathieu-Daud=C3=A9 (6):
+>    audio/audio: Add missing fall through comment
+>    hw/display/tcx: Add missing fall through comments
+>    hw/timer/aspeed_timer: Add a fall through comment
+>    hw/net/imx_fec: Rewrite fall through comments
+>    hw/net/imx_fec: Remove unuseful FALLTHROUGH comments
+>    hw/pci-host/designware: Remove unuseful FALLTHROUGH comment
+>=20
+>   audio/audio.c            | 1 +
+>   hw/display/tcx.c         | 2 ++
+>   hw/net/imx_fec.c         | 7 ++++---
+>   hw/pci-host/designware.c | 2 +-
+>   hw/timer/aspeed_timer.c  | 2 +-
+>   5 files changed, 9 insertions(+), 5 deletions(-)
+>=20
+> Cc: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+> Cc: Andrew Jeffery <andrew@aj.id.au>
+> Cc: Andrey Smirnov <andrew.smirnov@gmail.com>
+> Cc: "C=C3=A9dric Le Goater" <clg@kaod.org>
+> Cc: Gerd Hoffmann <kraxel@redhat.com>
+> Cc: Jason Wang <jasowang@redhat.com>
+> Cc: Joel Stanley <joel@jms.id.au>
+> Cc: "K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n" <dirty.ice.hu@gmail.com>
+> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+> Cc: Markus Armbruster <armbru@redhat.com>
+> Cc: Olivier Danet <odanet@caramail.com>
+> Cc: Peter Chubb <peter.chubb@nicta.com.au>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+>=20
 
 
