@@ -1,84 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1isl2q-0002Ot-UR
-	for mharc-qemu-trivial@gnu.org; Sat, 18 Jan 2020 05:09:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46147)
+	id 1iso8i-0005AZ-8q
+	for mharc-qemu-trivial@gnu.org; Sat, 18 Jan 2020 08:27:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41505)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1isl2o-0002Od-74
- for qemu-trivial@nongnu.org; Sat, 18 Jan 2020 05:09:31 -0500
+ (envelope-from <armbru@redhat.com>) id 1iso8e-00059F-SX
+ for qemu-trivial@nongnu.org; Sat, 18 Jan 2020 08:27:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1isl2m-0006BG-F8
- for qemu-trivial@nongnu.org; Sat, 18 Jan 2020 05:09:29 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:58277
+ (envelope-from <armbru@redhat.com>) id 1iso8c-0003YB-2c
+ for qemu-trivial@nongnu.org; Sat, 18 Jan 2020 08:27:43 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:33834
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1isl2m-00066U-2K
- for qemu-trivial@nongnu.org; Sat, 18 Jan 2020 05:09:28 -0500
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1iso8b-0003Ws-IX
+ for qemu-trivial@nongnu.org; Sat, 18 Jan 2020 08:27:42 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579342166;
+ s=mimecast20190719; t=1579354060;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ALmFK4GN1R3f8ivCPsaZjbKvNERv/UXgwN1V0eQdo9U=;
- b=PF1G5ZpjdD+3NXpIHGb6uwDbSyiM4p2VshRLah6sAhz9QOwT601Puku9aLxrpXDwcmZA8X
- I8K3BJO/Il0grvCXSMMdcBUdDXpC/3WA/fMMIPAjyGUsYAd3N7pzP38pEfdIDtXFjd5yAV
- XueiysX94NastBWE8qA2gF8GXq4nXmc=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-241-lC0SLoIeMWCEcNg9U2Eu9g-1; Sat, 18 Jan 2020 05:09:25 -0500
-Received: by mail-wr1-f69.google.com with SMTP id u18so11551187wrn.11
- for <qemu-trivial@nongnu.org>; Sat, 18 Jan 2020 02:09:25 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=U1Sxext4Y1Dh1E+fQ3V/TgeW7exJ8+wkF1SkhDeB9Co=;
- b=LmtiuoWZLXPWHAkMudtgMG1MfaABPhaT3o4WGhuZ0CE4MsD1WTedYp3LxnYlASctzZ
- Snr6/StmIzZSYbot4cUVljAoMxtfhlxW+2x0MqcQscSkRJ/hX9iCNignjb34C+irBBd3
- SSi3fxzcTnBhFxpkoWBd3il+v+TKslR/VJxTnshlgGvyy2wJxnF6aUF4UfVHDnpV0hzD
- pAAfInl5ov12F1YG2aqoJdouPBt8NIFQL/47jFWYcyIJBFkbZHRMV+TMDTQzFvSxe/qW
- eVqQUVDmLYd3UOjieLarxxuK9nPRKVsS1KXICu/NG1rpaVWpjRi8kYZD1mF0Nd/GvXKX
- v3QA==
-X-Gm-Message-State: APjAAAUd+2Zg9fWTOMU18ErHFyL1yaTENgwjJJXalV4gjSGOM9bOTjzo
- M6YUbkfnp3NpukaBzz4Zj/H4x2cujh7/jOjvpqJ8/3N1r9+52eEllXrY9xzwDGkM8xuhA6qDi3+
- SuoDQJ+kIPywZpRSb7Q==
-X-Received: by 2002:a1c:1f51:: with SMTP id f78mr8943657wmf.60.1579342164380; 
- Sat, 18 Jan 2020 02:09:24 -0800 (PST)
-X-Google-Smtp-Source: APXvYqw+UNYu5PBC0fFkwbTA6OX3+XYODHPGXlMMUt5k21OsDUHDebPYkgyQFznTzMN3BTu/hAW6uw==
-X-Received: by 2002:a1c:1f51:: with SMTP id f78mr8943637wmf.60.1579342164183; 
- Sat, 18 Jan 2020 02:09:24 -0800 (PST)
-Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net.
- [83.57.172.113])
- by smtp.gmail.com with ESMTPSA id q19sm12616717wmc.12.2020.01.18.02.09.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 18 Jan 2020 02:09:23 -0800 (PST)
-Subject: Re: [PATCH] scripts/git.orderfile: Display decodetree before C source
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Sven Schnelle <svens@stackframe.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- David Hildenbrand <david@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Stafford Horne <shorne@gmail.com>, Palmer Dabbelt
- <palmerdabbelt@google.com>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20191230082856.30556-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <4bf7c585-fe7f-c574-d706-2317e6bcbceb@redhat.com>
-Date: Sat, 18 Jan 2020 11:09:21 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ bh=N8w7064/FC54QWkO5c5dHGuWITtPCZOwiFG7Xt0RvIM=;
+ b=RzsJXE7NLI0gWZSBuJRnXqjtIWxBIVlTeWH4fpp4xeHPGXbkXoaaNjzN1wBt7/88D9i4Qm
+ KtEM3JvydOyD+xlXG1FQ30FMweIUEzG5AD5+7ukJ4Pt3pdAItz66BQ+EW0VMr1uBxnhV3e
+ y7eiG3JsqnbbjHOvdG0Ztmu0DVpOLiM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-78-1xexDuVaOFmYeM89l3Fzow-1; Sat, 18 Jan 2020 08:27:39 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 47D442F29;
+ Sat, 18 Jan 2020 13:27:37 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-131.ams2.redhat.com
+ [10.36.116.131])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 76AA35C1B2;
+ Sat, 18 Jan 2020 13:27:34 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 04BF91138600; Sat, 18 Jan 2020 14:27:33 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-trivial@nongnu.org,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,  qemu-devel@nongnu.org
+Subject: Re: [PATCH] mailmap: Add more entries to sanitize 'git log' output
+References: <20191218185723.7738-1-philmd@redhat.com>
+ <87h80ts0ii.fsf@dusky.pond.sub.org>
+ <aef8102c-23d5-7cdc-7183-673c116a44b2@redhat.com>
+Date: Sat, 18 Jan 2020 14:27:32 +0100
+In-Reply-To: <aef8102c-23d5-7cdc-7183-673c116a44b2@redhat.com> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Sat, 18 Jan 2020 09:17:42
+ +0100")
+Message-ID: <87tv4sq4hn.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20191230082856.30556-1-philmd@redhat.com>
-Content-Language: en-US
-X-MC-Unique: lC0SLoIeMWCEcNg9U2Eu9g-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: 1xexDuVaOFmYeM89l3Fzow-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,34 +73,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 18 Jan 2020 10:09:31 -0000
+X-List-Received-Date: Sat, 18 Jan 2020 13:27:46 -0000
 
-Cc'ing qemu-trivial@
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-On 12/30/19 9:28 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> To avoid scrolling each instruction when reviewing tcg
-> helpers written for the decodetree script, display the
-> .decode files (similar to header declarations) before
-> the C source (implementation of previous declarations).
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->   scripts/git.orderfile | 3 +++
->   1 file changed, 3 insertions(+)
->=20
-> diff --git a/scripts/git.orderfile b/scripts/git.orderfile
-> index e89790941c..1f747b583a 100644
-> --- a/scripts/git.orderfile
-> +++ b/scripts/git.orderfile
-> @@ -25,5 +25,8 @@ qga/*.json
->   # headers
->   *.h
->  =20
-> +# decoding tree specification
-> +*.decode
-> +
->   # code
->   *.c
->=20
+> On 1/18/20 8:10 AM, Markus Armbruster wrote:
+>> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+>>
+>>> Most of these developers have the Signed-off-by tag properly
+>>> written, but not the author/commiter name. Fix this.
+>>> Also we incorrectly wrote Arei Gonglei name, update and reorder.
+>>>
+>>> git-log does not use this file by default until you specify the
+>>> --use-mailmap flag:
+>>>
+>>>    $ git log --use-mailmap
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>>> ---
+>>>   .mailmap | 29 ++++++++++++++++++++++++++++-
+>>>   1 file changed, 28 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/.mailmap b/.mailmap
+>>> index 3816e4effe..1a859d9e65 100644
+>>> --- a/.mailmap
+>>> +++ b/.mailmap
+>>> @@ -56,6 +56,10 @@ Aaron Lindsay <aaron@os.amperecomputing.com>
+>>>   Alexey Gerasimenko <x1917x@gmail.com>
+>>>   Alex Ivanov <void@aleksoft.net>
+>>>   Andreas F=C3=A4rber <afaerber@suse.de>
+>>> +Andreas F=C3=A4rber <andreas.faerber@web.de>
+>>> +Andreas F=C3=A4rber <andreas.faerber@web.de> <andreas.faerber>
+>>> +Arei Gonglei <arei.gonglei@huawei.com>
+>>> +Arei Gonglei <arei.gonglei@huawei.com> <root@ceth6.(none)>
+>>
+>> I can't find this one in git-log.
+>
+> I was first surprised:
+>
+> $ git log -1 3b08098b40
+> commit 3b08098b409c0fb28f85436ba1adeb1d401ec8f7
+> Author:     Gonglei <arei.gonglei@huawei.com>
+> AuthorDate: Wed Dec 3 18:25:46 2014 +0000
+> Commit:     root <root@ceth6.(none)>
+> CommitDate: Mon Dec 22 14:39:21 2014 +0800
+>
+>     bootdevice: add validate check for qemu_boot_set()
+>
+>     Signed-off-by: Gonglei <arei.gonglei@huawei.com>
+>     Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>
+> After thinking for a bit I remembered I once changed my default format:
+>
+> $ git config format.pretty
+> fuller
+
+Aha!  Could've thought of this myself...
+
+> I suppose I should add this in the commit description.
+
+Can't hurt.
+
+[...]
+>>>   Shin'ichiro Kawasaki <kawasaki@juno.dti.ne.jp>
+>>>   Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>
+>>> +Siwei Zhuang <siwei.zhuang@data61.csiro.au>
+>>
+>> It's actually spelled Siwei.Zhuang@data61.csiro.au in git-log.
+>> Shouldn't matter.
+>
+> Correct:
+>
+> $ git shortlog -e 6478dd745d~..6478dd745d
+> Zhuang, Siwei (Data61, Kensington NSW) <Siwei.Zhuang@data61.csiro.au> (1)=
+:
+>       hw/riscv: Add optional symbol callback ptr to riscv_load_kernel()
+>
+> $ git shortlog -e 6478dd745d~..6478dd745d
+> Siwei Zhuang <Siwei.Zhuang@data61.csiro.au> (1):
+>       hw/riscv: Add optional symbol callback ptr to riscv_load_kernel()
+
+Suggest to adjust case if you respin.
+
+> Thanks for caring checking all entries!
+
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+
+[...]
 
 
