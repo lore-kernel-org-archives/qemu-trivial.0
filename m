@@ -1,62 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1isUx8-0008OG-9x
-	for mharc-qemu-trivial@gnu.org; Fri, 17 Jan 2020 11:58:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49499)
+	id 1isiFq-0008PM-8o
+	for mharc-qemu-trivial@gnu.org; Sat, 18 Jan 2020 02:10:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33117)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1isUx2-0008FI-Pm
- for qemu-trivial@nongnu.org; Fri, 17 Jan 2020 11:58:29 -0500
+ (envelope-from <armbru@redhat.com>) id 1isiFm-0008OE-R6
+ for qemu-trivial@nongnu.org; Sat, 18 Jan 2020 02:10:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1isUwz-0007ID-3y
- for qemu-trivial@nongnu.org; Fri, 17 Jan 2020 11:58:28 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:52166
+ (envelope-from <armbru@redhat.com>) id 1isiFj-0001Z7-9r
+ for qemu-trivial@nongnu.org; Sat, 18 Jan 2020 02:10:42 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:26800
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1isUwz-0007Hg-0o
- for qemu-trivial@nongnu.org; Fri, 17 Jan 2020 11:58:25 -0500
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1isiFj-0001Y4-5P
+ for qemu-trivial@nongnu.org; Sat, 18 Jan 2020 02:10:39 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579280304;
+ s=mimecast20190719; t=1579331438;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DR0w/zADhVqXf1WL7QQBc9ZUnFILA0c+2wzRWZv9rMo=;
- b=EzfTLJ3/32G/VP4IKgxvWpARraxtwG9LAUbQPkRuOolsR4C9524fmcHAOuxnTcws4SnOHU
- 3Ygd6vFuXkj3FPx2dIBqbU/w1Ra+zOT+PTonZhz/eeB5ewL5CBIIiVt1HbVCQRGUpndxhC
- 0N/DuZXJ7e90iuqmfh0FLkPA0vTVZXY=
+ bh=y6PyhKTHh93D+xfbE1lS+PQ7rT4TmxwjmTtbda6oJ1s=;
+ b=hY3BIpterUsHmL9DhQv56T3EDFcYOMkQRy55/jB1EmYINPvqfX7i0USMw87iZiMaqO4/XB
+ KydNDTW7o184gUkxBYU5M2ULD8wjapTdqRPwD/aPUipwQybdZMBLxwrgFV1jOkiZigifZG
+ OrS9qEmtdminU7IOvu/0A+JWLWbECac=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-23-NoYFqi05NsSTlAt-ga-LAg-1; Fri, 17 Jan 2020 11:58:23 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-62-2CyD68-rMxqsEBwidis_rQ-1; Sat, 18 Jan 2020 02:10:35 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2DF68800D41;
- Fri, 17 Jan 2020 16:58:22 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-206-6.brq.redhat.com [10.40.206.6])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8A3E25D9CD;
- Fri, 17 Jan 2020 16:58:19 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: qemu-ppc@nongnu.org,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v3 2/2] hw/timer/m48t59: Convert debug printf()s to trace
- events
-Date: Fri, 17 Jan 2020 17:58:09 +0100
-Message-Id: <20200117165809.31067-3-philmd@redhat.com>
-In-Reply-To: <20200117165809.31067-1-philmd@redhat.com>
-References: <20200117165809.31067-1-philmd@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 419508010CE;
+ Sat, 18 Jan 2020 07:10:34 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-131.ams2.redhat.com
+ [10.36.116.131])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 45D5B845C0;
+ Sat, 18 Jan 2020 07:10:31 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id CE8101138600; Sat, 18 Jan 2020 08:10:29 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org,  Alex =?utf-8?Q?Benn?=
+ =?utf-8?Q?=C3=A9e?= <alex.bennee@linaro.org>
+Subject: Re: [PATCH] mailmap: Add more entries to sanitize 'git log' output
+References: <20191218185723.7738-1-philmd@redhat.com>
+Date: Sat, 18 Jan 2020 08:10:29 +0100
+In-Reply-To: <20191218185723.7738-1-philmd@redhat.com> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Wed, 18 Dec 2019 19:57:23
+ +0100")
+Message-ID: <87h80ts0ii.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: NoYFqi05NsSTlAt-ga-LAg-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: 2CyD68-rMxqsEBwidis_rQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -68,107 +71,152 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 17 Jan 2020 16:58:30 -0000
+X-List-Received-Date: Sat, 18 Jan 2020 07:10:44 -0000
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/rtc/m48t59-internal.h |  5 -----
- hw/rtc/m48t59.c          | 11 +++++------
- hw/rtc/trace-events      |  6 ++++++
- 3 files changed, 11 insertions(+), 11 deletions(-)
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-diff --git a/hw/rtc/m48t59-internal.h b/hw/rtc/m48t59-internal.h
-index 4d4f2a6fed..cd648241e9 100644
---- a/hw/rtc/m48t59-internal.h
-+++ b/hw/rtc/m48t59-internal.h
-@@ -26,11 +26,6 @@
- #ifndef HW_M48T59_INTERNAL_H
- #define HW_M48T59_INTERNAL_H
-=20
--#define M48T59_DEBUG 0
--
--#define NVRAM_PRINTF(fmt, ...) do { \
--    if (M48T59_DEBUG) { printf(fmt , ## __VA_ARGS__); } } while (0)
--
- /*
-  * The M48T02, M48T08 and M48T59 chips are very similar. The newer '59 has
-  * alarm and a watchdog timer and related control registers. In the
-diff --git a/hw/rtc/m48t59.c b/hw/rtc/m48t59.c
-index fc592b9fb1..ecc92ca476 100644
---- a/hw/rtc/m48t59.c
-+++ b/hw/rtc/m48t59.c
-@@ -35,6 +35,7 @@
- #include "exec/address-spaces.h"
- #include "qemu/bcd.h"
- #include "qemu/module.h"
-+#include "trace.h"
-=20
- #include "m48t59-internal.h"
- #include "migration/vmstate.h"
-@@ -192,8 +193,7 @@ void m48t59_write(M48t59State *NVRAM, uint32_t addr, ui=
-nt32_t val)
-     struct tm tm;
-     int tmp;
-=20
--    if (addr > 0x1FF8 && addr < 0x2000)
--=09NVRAM_PRINTF("%s: 0x%08x =3D> 0x%08x\n", __func__, addr, val);
-+    trace_m48txx_nvram_mem_write(addr, val);
-=20
-     /* check for NVRAM access */
-     if ((NVRAM->model =3D=3D 2 && addr < 0x7f8) ||
-@@ -450,8 +450,7 @@ uint32_t m48t59_read(M48t59State *NVRAM, uint32_t addr)
- =09}
-         break;
-     }
--    if (addr > 0x1FF9 && addr < 0x2000)
--       NVRAM_PRINTF("%s: 0x%08x <=3D 0x%08x\n", __func__, addr, retval);
-+    trace_m48txx_nvram_mem_read(addr, retval);
-=20
-     return retval;
- }
-@@ -462,7 +461,7 @@ static void NVRAM_writeb(void *opaque, hwaddr addr, uin=
-t64_t val,
- {
-     M48t59State *NVRAM =3D opaque;
-=20
--    NVRAM_PRINTF("%s: 0x%"HWADDR_PRIx" =3D> 0x%"PRIx64"\n", __func__, addr=
-, val);
-+    trace_m48txx_nvram_io_write(addr, val);
-     switch (addr) {
-     case 0:
-         NVRAM->addr &=3D ~0x00FF;
-@@ -494,7 +493,7 @@ static uint64_t NVRAM_readb(void *opaque, hwaddr addr, =
-unsigned size)
-         retval =3D -1;
-         break;
-     }
--    NVRAM_PRINTF("%s: 0x%"HWADDR_PRIx" <=3D 0x%08x\n", __func__, addr, ret=
-val);
-+    trace_m48txx_nvram_io_read(addr, retval);
-=20
-     return retval;
- }
-diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-index d6749f4616..52c1566198 100644
---- a/hw/rtc/trace-events
-+++ b/hw/rtc/trace-events
-@@ -17,3 +17,9 @@ pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
- # aspeed-rtc.c
- aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value=
- 0x%08" PRIx64
- aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " valu=
-e 0x%08" PRIx64
-+
-+# m48t59.c
-+m48txx_nvram_io_read(uint64_t addr, uint64_t value) "io read addr:0x%04" P=
-RIx64 " value:0x%02" PRIx64
-+m48txx_nvram_io_write(uint64_t addr, uint64_t value) "io write addr:0x%04"=
- PRIx64 " value:0x%02" PRIx64
-+m48txx_nvram_mem_read(uint32_t addr, uint32_t value) "mem read addr:0x%04x=
- value:0x%02x"
-+m48txx_nvram_mem_write(uint32_t addr, uint32_t value) "mem write addr:0x%0=
-4x value:0x%02x"
---=20
-2.21.1
+> Most of these developers have the Signed-off-by tag properly
+> written, but not the author/commiter name. Fix this.
+> Also we incorrectly wrote Arei Gonglei name, update and reorder.
+>
+> git-log does not use this file by default until you specify the
+> --use-mailmap flag:
+>
+>   $ git log --use-mailmap
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  .mailmap | 29 ++++++++++++++++++++++++++++-
+>  1 file changed, 28 insertions(+), 1 deletion(-)
+>
+> diff --git a/.mailmap b/.mailmap
+> index 3816e4effe..1a859d9e65 100644
+> --- a/.mailmap
+> +++ b/.mailmap
+> @@ -56,6 +56,10 @@ Aaron Lindsay <aaron@os.amperecomputing.com>
+>  Alexey Gerasimenko <x1917x@gmail.com>
+>  Alex Ivanov <void@aleksoft.net>
+>  Andreas F=C3=A4rber <afaerber@suse.de>
+> +Andreas F=C3=A4rber <andreas.faerber@web.de>
+> +Andreas F=C3=A4rber <andreas.faerber@web.de> <andreas.faerber>
+> +Arei Gonglei <arei.gonglei@huawei.com>
+> +Arei Gonglei <arei.gonglei@huawei.com> <root@ceth6.(none)>
+
+I can't find this one in git-log.
+
+>  Bandan Das <bsd@redhat.com>
+>  Benjamin MARSILI <mlspirat42@gmail.com>
+>  Beno=C3=AEt Canet <benoit.canet@gmail.com>
+> @@ -67,27 +71,36 @@ Brad Smith <brad@comstyle.com>
+>  Brijesh Singh <brijesh.singh@amd.com>
+>  Brilly Wu <brillywu@viatech.com.cn>
+>  C=C3=A9dric Vincent <cedric.vincent@st.com>
+> +Chai Wen <chaiw.fnst@cn.fujitsu.com>
+> +Chaojian Hu <chaojianhu@hotmail.com>
+>  CheneyLin <linzc@zju.edu.cn>
+> +Chen Fan <chen.fan.fnst@cn.fujitsu.com>
+>  Chen Gang <chengang@emindsoft.com.cn>
+>  Chen Gang <gang.chen.5i5j@gmail.com>
+>  Chen Gang <gang.chen@sunrus.com.cn>
+>  Chen Wei-Ren <chenwj@iis.sinica.edu.tw>
+>  Christophe Lyon <christophe.lyon@st.com>
+> +Christoph Hellwig <hch@lst.de>
+>  Collin L. Walling <walling@linux.ibm.com>
+>  Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+> +Disheng Su <edison@cloud.com>
+> +Dunrong Huang <riegamaths@gmail.com>
+>  Eduardo Otubo <otubo@redhat.com>
+>  Fabrice Desclaux <fabrice.desclaux@cea.fr>
+>  Fernando Luis V=C3=A1zquez Cao <fernando_b1@lab.ntt.co.jp>
+>  Fernando Luis V=C3=A1zquez Cao <fernando@oss.ntt.co.jp>
+>  Gautham R. Shenoy <ego@in.ibm.com>
+>  Gautham R. Shenoy <ego@linux.vnet.ibm.com>
+> -Gonglei (Arei) <arei.gonglei@huawei.com>
+>  Guang Wang <wang.guang55@zte.com.cn>
+>  Hailiang Zhang <zhang.zhanghailiang@huawei.com>
+>  Herv=C3=A9 Poussineau <hpoussin@reactos.org>
+> +Hiroyuki Obinata <hiroyuki.obinata@gmail.com>
+>  Jakub Jerm=C3=A1=C5=99 <jakub@jermar.eu>
+>  Jakub Jerm=C3=A1=C5=99 <jakub.jermar@kernkonzept.com>
+> +Jay Zhou <jianjay.zhou@huawei.com>
+>  Jean-Christophe Dubois <jcd@tribudubois.net>
+> +Jean-Christophe Dubois <jcd@tribudubois.net> <jcd@jcd-laptop.(none)>
+> +Jia Lina <jialina01@baidu.com>
+>  Jind=C5=99ich Makovi=C4=8Dka <makovick@gmail.com>
+>  John Arbuckle <programmingkidx@gmail.com>
+>  Juha Riihim=C3=A4ki <juha.riihimaki@nokia.com>
+> @@ -96,9 +109,11 @@ Jun Li <junmuzi@gmail.com>
+>  Laurent Vivier <Laurent@lvivier.info>
+>  Leandro Lupori <leandro.lupori@gmail.com>
+>  Li Guang <lig.fnst@cn.fujitsu.com>
+> +Lili Huang <huanglili.huang@huawei.com>
+
+I can't find this one in git-log.
+
+>  Liming Wang <walimisdev@gmail.com>
+>  linzhecheng <linzc@zju.edu.cn>
+>  Liran Schour <lirans@il.ibm.com>
+> +Li Tianqing <tianqing@unitedstack.com>
+>  Liu Yu <yu.liu@freescale.com>
+>  Liu Yu <Yu.Liu@freescale.com>
+>  Li Zhang <zhlcindy@gmail.com>
+> @@ -112,11 +127,14 @@ Marc Mar=C3=AD <marc.mari.barcelo@gmail.com>
+>  Marc Mar=C3=AD <markmb@redhat.com>
+>  Michael Avdienko <whitearchey@gmail.com>
+>  Michael S. Tsirkin <mst@redhat.com>
+> +Michael S. Tsirkin <mst@redhat.com> <mst@robin.(none)>
+> +Michael Tokarev <mjt@tls.msk.ru> <mjt@gandalf>
+
+I can't find these two in git-log.
+
+>  Munkyu Im <munkyu.im@samsung.com>
+>  Nicholas Bellinger <nab@linux-iscsi.org>
+>  Nicholas Thomas <nick@bytemark.co.uk>
+>  Nikunj A Dadhania <nikunj@linux.vnet.ibm.com>
+>  Orit Wasserman <owasserm@redhat.com>
+> +Pan Nengyuan <pannengyuan@huawei.com>
+>  Paolo Bonzini <pbonzini@redhat.com>
+>  Pavel Dovgaluk <dovgaluk@ispras.ru>
+>  Pavel Dovgaluk <pavel.dovgaluk@gmail.com>
+> @@ -124,15 +142,23 @@ Pavel Dovgaluk <Pavel.Dovgaluk@ispras.ru>
+>  Peter Crosthwaite <crosthwaite.peter@gmail.com>
+>  Peter Crosthwaite <peter.crosthwaite@petalogix.com>
+>  Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+> +Peter Maydell <peter.maydell@linaro.org> <petmay01@cam-vm-266.(none)>
+
+I can't find this one in git-log.
+
+>  Prasad J Pandit <pjp@fedoraproject.org>
+>  Prasad J Pandit <ppandit@redhat.com>
+>  Qiao Nuohan <qiaonuohan@cn.fujitsu.com>
+>  Reimar D=C3=B6ffinger <Reimar.Doeffinger@gmx.de>
+>  Remy Noel <remy.noel@blade-group.com>
+> +Richard Henderson <rth@twiddle.net> <rth@anchor.twiddle.home>
+>  Roger Pau Monn=C3=A9 <roger.pau@citrix.com>
+>  Shin'ichiro Kawasaki <kawasaki@juno.dti.ne.jp>
+>  Shin'ichiro Kawasaki <shinichiro.kawasaki@wdc.com>
+> +Siwei Zhuang <siwei.zhuang@data61.csiro.au>
+
+It's actually spelled Siwei.Zhuang@data61.csiro.au in git-log.
+Shouldn't matter.
+
+> +Sochin Jiang <sochin@aliyun.com>
+>  Sochin Jiang <sochin.jiang@huawei.com>
+> +Stefan Berger <stefanb@linux.ibm.com> <Stefan Berger stefanb@linux.vnet.=
+ibm.com>
+> +Stefan Weil <sw@weilnetz.de> <stefan@kiwi.(none)>
+> +Stefan Weil <sw@weilnetz.de> <stefan@weilnetz.de>
+> +Stefan Weil <sw@weilnetz.de> <weil@mail.berlios.de>
+>  Takashi Yoshii <takasi-y@ops.dti.ne.jp>
+>  Thomas Huth <thuth@redhat.com>
+>  Thomas Knych <thomaswk@google.com>
+> @@ -150,6 +176,7 @@ Wenshuang Ma <kevinnma@tencent.com>
+>  Xiaoqiang Zhao <zxq_yx_007@163.com>
+>  Xinhua Cao <caoxinhua@huawei.com>
+>  Xiong Zhang <xiong.y.zhang@intel.com>
+> +Ying Fang <fangying1@huawei.com>
+>  Yin Yin <yin.yin@cs2c.com.cn>
+>  yuchenlin <npes87184@gmail.com>
+>  YunQiang Su <syq@debian.org>
 
 
