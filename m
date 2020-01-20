@@ -1,66 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1itQ1L-0006ia-8R
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Jan 2020 00:54:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35109)
+	id 1itWfn-0003VX-P6
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Jan 2020 08:00:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57199)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1itQ1I-0006eJ-FG
- for qemu-trivial@nongnu.org; Mon, 20 Jan 2020 00:54:41 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1itWfk-0003Ug-Lo
+ for qemu-trivial@nongnu.org; Mon, 20 Jan 2020 08:00:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1itQ1F-0006Bp-NP
- for qemu-trivial@nongnu.org; Mon, 20 Jan 2020 00:54:40 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:51010
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1itQ1F-0006BG-K7
- for qemu-trivial@nongnu.org; Mon, 20 Jan 2020 00:54:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579499676;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=4EkOUPDmnZw5vrmCcpAKcV3iNLZ563Jg/RVQvolZcPQ=;
- b=Ej/ARJ27r9B80UvgEJI40h8719y+Sx9vxAIJrmf+pBQbVI1MP5hniB5qtSzIMorgPRIKRl
- XzvsKrp9i1yvtzSjLlRlogMUk6k5T5WYf+RevEK+b3u85pEB24Z32gellh3eXDeZrinEiL
- 0D0NJXT6/E2+Ct3H+0XJM9gp3tIJ9+M=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-294-qBDv0p9UMLSLMjMy1lqzuA-1; Mon, 20 Jan 2020 00:54:33 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6D0131005514;
- Mon, 20 Jan 2020 05:54:32 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-99.ams2.redhat.com [10.36.116.99])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9A19460BF7;
- Mon, 20 Jan 2020 05:54:28 +0000 (UTC)
-Subject: Re: [PATCH v3 1/2] MAINTAINERS: Add missing m48t59 files to the PReP
- section
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- qemu-ppc@nongnu.org
-References: <20200117165809.31067-1-philmd@redhat.com>
- <20200117165809.31067-2-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <8b6ec2fe-7939-a9d4-8064-e0031eb4aa99@redhat.com>
-Date: Mon, 20 Jan 2020 06:54:27 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (envelope-from <peter.maydell@linaro.org>) id 1itWfj-0003jk-H0
+ for qemu-trivial@nongnu.org; Mon, 20 Jan 2020 08:00:52 -0500
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:34110)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1itWfh-0003hX-V3
+ for qemu-trivial@nongnu.org; Mon, 20 Jan 2020 08:00:50 -0500
+Received: by mail-ot1-x342.google.com with SMTP id a15so28588721otf.1
+ for <qemu-trivial@nongnu.org>; Mon, 20 Jan 2020 05:00:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=enEzIYGOJ3Z9BcpMWQn0M59KHHmkVRX4jfdLkG5CuCk=;
+ b=bX4XaQYDs43MyIIESYHeI8kkQ/pwbnQSNPMjHiF4P5Za1GD8YduN/DSGcEL0Hvge6Y
+ 8LRks6GSVgt4jnH9Jk6XfTZUmxKMbtRpDcmx2797dyffQ3lyUqijBsGYoswec3N1vAGP
+ cta9GInwB8/jAyRdXCkddjf65qN0Rao9VrvIzF3z3P2ieA5yer6O4xG/So1Nz2eX6UnP
+ 5+x0GOGxCLwMWdOzpbrCIHTEGDYuiUfCr21KqVSESPxRMzHakzuAIXEbdLM5EP7DtfZG
+ 8kg5BACFwa5U/q1S+5RDuE1uv2G/foA/5D8mFA8aRfaxj8r5Ui1qOprvHQ5cNmAGJUQ7
+ TW/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=enEzIYGOJ3Z9BcpMWQn0M59KHHmkVRX4jfdLkG5CuCk=;
+ b=qhrMUgk19Jzw2pGo+1quS4lW5Tp6oqF4nv/ampZ0FgxFtnW1QbaNGtth/ttkp8gk0M
+ Y1S3H/jZgPmfvQInQosXKT4QmPA/aTXgkg/rFUuhIJLRmhtQFLfpCO3GHDOkLXZaYRDC
+ ZrVqg4jakP7I/V8Yjwl2d78otfDQUz0YhVfd2SiZ0rtQ/FKGkIquf0Lx01X8yPm1Xygd
+ ChzEmaDaB1D0mFpSuMPZbkSPSKxKr2Q33tGIpnMZJdsCJIDu98qXeT95YfgjJXBqkFra
+ 6mQekPVgV+fJcpy+eTWZDUQdZ8Vac27h6DGgxEGQhjL1k+cWVA9o2JSALGAbT2rLDFcS
+ PIVA==
+X-Gm-Message-State: APjAAAUM5hQWpLG2E5XuOL/5WQfCiLuQoF9R6ZuPFxICET3neutrWxfE
+ l2cPV9RTu6lMf9Vl86JidseNWQZJJijkvoI0JikpwA==
+X-Google-Smtp-Source: APXvYqxYrXh+bs0hosTD/hzmdQkN1G90/b647zIel/Jl7hKZbVY6pkzUQgTI+fIWHmnErEf5W84Du3nysbF+feMrkrE=
+X-Received: by 2002:a05:6830:13da:: with SMTP id
+ e26mr14993763otq.97.1579525248039; 
+ Mon, 20 Jan 2020 05:00:48 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200117165809.31067-2-philmd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: qBDv0p9UMLSLMjMy1lqzuA-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+References: <20200114105918.2366370-1-clement.deschamps@greensocs.com>
+ <03110090-dd50-b124-e60a-9cf136e8f7fd@redhat.com>
+In-Reply-To: <03110090-dd50-b124-e60a-9cf136e8f7fd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 20 Jan 2020 13:00:37 +0000
+Message-ID: <CAFEAcA92pO3j+d8wS2PHhUKTjViLS3GbrmT4ocaDUYKFZLWgAg@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: add PMU feature to cortex-r5 and cortex-r5f
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: Clement Deschamps <clement.deschamps@greensocs.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.120
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::342
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,30 +70,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Jan 2020 05:54:42 -0000
+X-List-Received-Date: Mon, 20 Jan 2020 13:00:53 -0000
 
-On 17/01/2020 17.58, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  MAINTAINERS | 2 ++
->  1 file changed, 2 insertions(+)
->=20
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 4b425d030d..c162145bd0 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1084,6 +1084,8 @@ F: hw/pci-host/prep.[hc]
->  F: hw/isa/i82378.c
->  F: hw/isa/pc87312.c
->  F: hw/dma/i82374.c
-> +F: hw/rtc/m48t59.c
-> +F: hw/rtc/m48t59-internal.h
->  F: hw/rtc/m48t59-isa.c
+On Tue, 14 Jan 2020 at 12:44, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> On 1/14/20 11:59 AM, Clement Deschamps wrote:
+>
+> Maybe describe here:
+>
+> The PMU is not optional on cortex-r5 and cortex-r5f (see
+> the "Features" chapter of the Technical Reference Manual).
+>
+> > Signed-off-by: Clement Deschamps <clement.deschamps@greensocs.com>
+>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-You could also use a wildcard instead of the three lines:
 
-F: hw/rtc/m48t59*
 
- Thomas
+Applied to target-arm.next, thanks (with the suggested
+improvement to the commit message).
 
+-- PMM
 
