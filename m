@@ -1,94 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1isti0-0002B1-AU
-	for mharc-qemu-trivial@gnu.org; Sat, 18 Jan 2020 14:24:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50523)
+	id 1itQ05-0004xW-OH
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Jan 2020 00:53:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34870)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1isthu-00023U-VO
- for qemu-trivial@nongnu.org; Sat, 18 Jan 2020 14:24:31 -0500
+ (envelope-from <thuth@redhat.com>) id 1itQ03-0004wq-UA
+ for qemu-trivial@nongnu.org; Mon, 20 Jan 2020 00:53:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1istht-0001pY-T0
- for qemu-trivial@nongnu.org; Sat, 18 Jan 2020 14:24:30 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:42758
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <thuth@redhat.com>) id 1itQ02-0005fo-Lz
+ for qemu-trivial@nongnu.org; Mon, 20 Jan 2020 00:53:23 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:53693
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1istht-0001pB-Pm
- for qemu-trivial@nongnu.org; Sat, 18 Jan 2020 14:24:29 -0500
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1itQ02-0005fJ-IX
+ for qemu-trivial@nongnu.org; Mon, 20 Jan 2020 00:53:22 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579375469;
+ s=mimecast20190719; t=1579499601;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=4Yt0cLPEtWQSPHouvmP/tZdV+Nm8YIxHarzWfnOxaVo=;
- b=bjl/JYVYkfEwtsqjSkUHk+n0NFnF+yBnmRCt9ince3fy6MAtQTcEoxDp/9PKU0Vh93lubw
- pAm6lCWjix8HUm6Amqg4EqpszbXnIxWsSOL5SNtQ+B3fbAtpKgpIJJ5TPHm2qGfQtkywBA
- n5T4RF7mbSdKjpL9l7j46I5xiW2i2xc=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-140-Uce0T4mxPy63383NJ10F1g-1; Sat, 18 Jan 2020 14:24:26 -0500
-Received: by mail-wr1-f69.google.com with SMTP id c6so11968639wrm.18
- for <qemu-trivial@nongnu.org>; Sat, 18 Jan 2020 11:24:25 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=HVQGz5YSjkxifvvhIhHWjfL482L8+9+PoGYqgiTx25Q=;
- b=tbC4YZVcRuvvRv3gIrjc1ohDKuWEiXw8wowXqgHyV591mCSFaLNMIIh0Fj8RXf/Rsk
- Py3MngYm0YLJP0msgr0zp91WBD8e0mTZO8HCP7Uw7iFv1uSgmKjBnt0R3tTlu0IZVTBg
- Gw7TWW0+kHO+o8xHwhI0LuGdnFkUJaXK9o9WKb2J9JW9ECGLo1UcAPpNZhlTJkOcMyKY
- Q19iuMsdGqOBvF7o+A7fElncWWJOyRgLzQSkQ3RatAJ1GUo1p+s0rtCAwD833GjnW0Lk
- mCHUf9I2AtZYTuH+z8DRhOYg7sn5dKDE1JziVjczAEh2P/FigEBSTwtkCO+XxXpsWz5/
- Quww==
-X-Gm-Message-State: APjAAAXGYljdzzvRHXGfDbweuaoHKNUEdou0/r3V+oxX93xMJnnEMPl/
- 3spdpfm1SUcyb1neR9BRAFYSjnIVTQl2R1oOzx/U3Hn8LN6kZfozjKg4hZCVB4niVG5ETArei4p
- b43nZ8Z9H1B6//HRJNg==
-X-Received: by 2002:a05:600c:22c8:: with SMTP id
- 8mr11144090wmg.178.1579375464908; 
- Sat, 18 Jan 2020 11:24:24 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzr2J7LFfbWffIMbkkV/P11lGmOvpf23+ujij+Fop3va/bWuyYFQlaPyZuyRXbCLuugRtCRlw==
-X-Received: by 2002:a05:600c:22c8:: with SMTP id
- 8mr11144060wmg.178.1579375464682; 
- Sat, 18 Jan 2020 11:24:24 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:e0d6:d2cd:810b:30a9?
- ([2001:b07:6468:f312:e0d6:d2cd:810b:30a9])
- by smtp.gmail.com with ESMTPSA id h17sm41015708wrs.18.2020.01.18.11.24.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 18 Jan 2020 11:24:24 -0800 (PST)
-Subject: Re: [PATCH 0/6] Fix more GCC9 -O3 warnings
-To: Markus Armbruster <armbru@redhat.com>,
- "Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Hannes Reinecke <hare@suse.com>, Gerd Hoffmann <kraxel@redhat.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Max Reitz <mreitz@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, Kevin Wolf <kwolf@redhat.com>, Joel Stanley <joel@jms.id.au>
-References: <20191217173252.4672-1-philmd@redhat.com>
- <84fthiaahd.wl-Peter.Chubb@data61.csiro.au>
- <87a77q9njk.fsf@dusky.pond.sub.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <97c34bbd-79d2-070e-a35e-4fdf68b2e291@redhat.com>
-Date: Sat, 18 Jan 2020 20:24:24 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=1MEWERI7pid8EKgC/A7rUFac0H0nin36giL1rweprGo=;
+ b=X1rcNMj4ssUZCbiNW2/usnbXuYG3fAw29Zr144A99eTllxKGj3gv89W9uyjVdCpTACbEqA
+ EJIjKt5/8ed4pfF7ZEM63nsP9rdE/hYOoSItICI5YAuyj3nIRW0gajmxVA7gBu8eXbrSzR
+ nyBCiddpdfJ+5jdizU1GD9VfU/SE268=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-245-p1qOAsSVNvC-YKto9Wm2vQ-1; Mon, 20 Jan 2020 00:53:20 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6B274100550E;
+ Mon, 20 Jan 2020 05:53:19 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-99.ams2.redhat.com [10.36.116.99])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 677E484D9D;
+ Mon, 20 Jan 2020 05:53:15 +0000 (UTC)
+Subject: Re: [PATCH v3 1/2] MAINTAINERS: Add missing m48t59 files to the PReP
+ section
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ qemu-ppc@nongnu.org
+References: <20200117165809.31067-1-philmd@redhat.com>
+ <20200117165809.31067-2-philmd@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <f5181fa3-e830-7d04-1f4e-0673d2202eec@redhat.com>
+Date: Mon, 20 Jan 2020 06:53:13 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <87a77q9njk.fsf@dusky.pond.sub.org>
+In-Reply-To: <20200117165809.31067-2-philmd@redhat.com>
 Content-Language: en-US
-X-MC-Unique: Uce0T4mxPy63383NJ10F1g-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: p1qOAsSVNvC-YKto9Wm2vQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.61
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -100,33 +72,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 18 Jan 2020 19:24:32 -0000
+X-List-Received-Date: Mon, 20 Jan 2020 05:53:24 -0000
 
-On 18/12/19 07:05, Markus Armbruster wrote:
-> "Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au>
-> writes:
+On 17/01/2020 17.58, Philippe Mathieu-Daud=C3=A9 wrote:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  MAINTAINERS | 2 ++
+>  1 file changed, 2 insertions(+)
 >=20
->>>>>>> "Philippe" =3D=3D Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> w=
-rites:
->>
->> Philippe> Fix some trivial warnings when building with -O3.
->>
->> For compatibility with lint and other older checkers, it'd be good to ke=
-ep
->> this as /* FALLTHROUGH */ (which gcc should accept according to its
->> manual).
->=20
-> We have hundreds of /* fall through */ comments already.
->=20
->> Fixing the comments' placement is a different matter, and should be
->> done.  Seems to me that until gcc started warning for this, noone had
->> actually run a checker, and the comments were just for human info.
->>
->> Peter C
->=20
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 4b425d030d..c162145bd0 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1084,6 +1084,8 @@ F: hw/pci-host/prep.[hc]
+>  F: hw/isa/i82378.c
+>  F: hw/isa/pc87312.c
+>  F: hw/dma/i82374.c
+> +F: hw/rtc/m48t59.c
+> +F: hw/rtc/m48t59-internal.h
+>  F: hw/rtc/m48t59-isa.c
+>  F: include/hw/isa/pc87312.h
+>  F: include/hw/rtc/m48t59.h
 
-Queued, thanks.
+Why only PReP? The device seems also to be used by Sparc machines...?
 
-Paolo
+ Thomas
 
 
