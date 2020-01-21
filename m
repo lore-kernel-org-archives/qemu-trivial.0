@@ -1,63 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1itvDf-0004wl-LG
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Jan 2020 10:13:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51950)
+	id 1itwEE-00047J-4C
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Jan 2020 11:18:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35253)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <robert.foley@linaro.org>) id 1itv45-0006wf-T2
- for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 10:03:42 -0500
+ (envelope-from <thuth@redhat.com>) id 1itwE6-000448-9M
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 11:18:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <robert.foley@linaro.org>) id 1itv41-0005MU-H2
- for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 10:03:37 -0500
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:42997)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <robert.foley@linaro.org>)
- id 1itv41-0005KA-8C
- for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 10:03:33 -0500
-Received: by mail-lj1-x243.google.com with SMTP id y4so3115261ljj.9
- for <qemu-trivial@nongnu.org>; Tue, 21 Jan 2020 07:03:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=TzqKfwD/PW+oYsUJMo1neA0G+XqzarcdrQtmMVi1wCo=;
- b=DgCGKjqCKB5rbHARnsMEggvpTOMAikb1wKkNSQBcwXfGEVkV2tLkSoQWemvBionkT2
- P158aK5mQ+MeTyShUxmmQCThjelBpvPCwF7FY9PjXp6auRctgoIAe7HAUzHiuw5BPCpq
- 6GAPJwOjtZoguNY+BUzbaRYf+Jqs5gAZGh4kW5Dx0ArLIb0TG0Yt72PBi216rmSDebNm
- Y4nlTDrGx37VPh/jZCFOkntcm0g2mvPbj5HoQACcd8RJIbZWMeTQTlFmk62n44FOZQ4O
- Dk3e4ui9cfjnINbGf4XidPMMc9io6bWdWPkzc6BeQIxX2byvlqzBj3Dq3khHkj8TH9xO
- PCPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=TzqKfwD/PW+oYsUJMo1neA0G+XqzarcdrQtmMVi1wCo=;
- b=mDf2hAvAy+J+kx11CS+yGEm01YWZBG7SBGdFGAGjQonhR+PhSOIT1uIIeRi0EYidDn
- TH7PTQ1d/OPrVKzRHNN6q8Akcr+RqadJhzXg/7xZfsqCpjANvUwmquTI6YIYihLF8UMq
- np2U8GKxr1XmDIKEpn3V1vSKIo6r5zX/c/fN0bgEBt77IjZ+PYOZUGBMVTEF8qX/J/Nl
- kCaSgpXWm8IIIYs9WPH2lNhEycZI46AOdft0aoyEYWmyqWvUYYztK4osCWY27a6RA06F
- /cb/59oPHfDrGrylyptij7Yg7L/CtK3pNqWLbB+7dmlK0IRTduvXGE7rDUZVdfR+XT6x
- 4t1A==
-X-Gm-Message-State: APjAAAWZEK9CyU1gyOYj6kEaI/qg2Nggzp6XMKZWua36Icw2bQMi3w/J
- vHDvSXJQ0qAhT2cCpiwWZReIA9OtI0Tc59pBj0hoXA==
-X-Google-Smtp-Source: APXvYqwXC26EqZbhCD4fWWYVZPWe9S/Jh+QXCAeTZ0gwRzyFAHBRXA4lg3aN84Xx5M7btRKoOMaQlaZQW9Iwnbn1JIU=
-X-Received: by 2002:a2e:b61a:: with SMTP id r26mr2893853ljn.72.1579619009516; 
- Tue, 21 Jan 2020 07:03:29 -0800 (PST)
-MIME-Version: 1.0
-References: <cover.1579598240.git.mrezanin@redhat.com>
- <63b0fcedf7dfe799c8210b113e5dccf32414a89d.1579598240.git.mrezanin@redhat.com>
- <14ba746f-97c3-1ae3-c836-ad2e3e213756@redhat.com>
-In-Reply-To: <14ba746f-97c3-1ae3-c836-ad2e3e213756@redhat.com>
-From: Robert Foley <robert.foley@linaro.org>
-Date: Tue, 21 Jan 2020 10:03:18 -0500
-Message-ID: <CAEyhzFuJoFYy_aE6fq1ieHcEcgWQCUkwHmGNQ0gJiazusH3BAw@mail.gmail.com>
-Subject: Re: [PATCH 1/2] test-logging: Fix -Werror=maybe-uninitialized warning
-To: Thomas Huth <thuth@redhat.com>
-Cc: mrezanin@redhat.com, qemu-devel@nongnu.org, peter.maydell@linaro.org, 
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::243
-X-Mailman-Approved-At: Tue, 21 Jan 2020 10:13:30 -0500
+ (envelope-from <thuth@redhat.com>) id 1itwE1-0006kV-Ht
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 11:18:01 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:54499
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1itwE1-0006k5-EI
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 11:17:57 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1579623476;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=a3Ux0PVxC8InXew79I80ST6+H9hTQVTilwJku2Xro48=;
+ b=cd2OuRaY9BOn3+TRPPk5s3EZ5uR2of69vYgKhxF2zVI8nHB7nbWcOmSsnpBiaR7qxUYZu6
+ 6XuFetf9X68jqmF/xHulDyL95RvZCvOgB0vHKtp6B9jPO9lxEs5w8KLyS1+4r+dDMuu0Bz
+ pLR4ruayLYArALQ5TfASmWCGQxYLAhY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-383-oGkG9ygMPtaS4BNVSu56XQ-1; Tue, 21 Jan 2020 11:17:54 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5FFCA10883A0;
+ Tue, 21 Jan 2020 16:17:52 +0000 (UTC)
+Received: from thuth.com (unknown [10.36.118.148])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9ADEC60FC4;
+ Tue, 21 Jan 2020 16:17:50 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>
+Cc: qemu-trivial@nongnu.org,
+	xen-devel@lists.xenproject.org
+Subject: [Qemu-devel] [PATCH] trivial: Remove xenfb_enabled from sysemu.h
+Date: Tue, 21 Jan 2020 17:17:47 +0100
+Message-Id: <20200121161747.10569-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: oGkG9ygMPtaS4BNVSu56XQ-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,58 +62,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Jan 2020 15:03:42 -0000
+X-List-Received-Date: Tue, 21 Jan 2020 16:18:06 -0000
 
-Good catch.
-Reviewed-by: Robert Foley <robert.foley@linaro.org>
+The define is only used in one other place. Move the code there
+instead of keeping this xen-specific define in sysemu.h.
 
-On Tue, 21 Jan 2020 at 04:58, Thomas Huth <thuth@redhat.com> wrote:
->
-> On 21/01/2020 10.28, mrezanin@redhat.com wrote:
-> > From: Miroslav Rezanina <mrezanin@redhat.com>
-> >
-> > Checking for uninitialized variables raises warning for file path
-> > variables in test_logfile_write and test_logfile_lock functions.
-> >
-> > To suppress this warning, initialize varibles to NULL. This is safe
-> > change as result of g_build_filename is stored to them before any usage.
-> >
-> > Signed-off-by: Miroslav Rezanina <mrezanin@redhat.com>
-> > ---
-> >  tests/test-logging.c | 6 +++---
-> >  1 file changed, 3 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/tests/test-logging.c b/tests/test-logging.c
-> > index 1e646f0..6387e49 100644
-> > --- a/tests/test-logging.c
-> > +++ b/tests/test-logging.c
-> > @@ -114,8 +114,8 @@ static void test_logfile_write(gconstpointer data)
-> >      QemuLogFile *logfile2;
-> >      gchar const *dir = data;
-> >      Error *err = NULL;
-> > -    g_autofree gchar *file_path;
-> > -    g_autofree gchar *file_path1;
-> > +    g_autofree gchar *file_path = NULL;
-> > +    g_autofree gchar *file_path1 = NULL;
-> >      FILE *orig_fd;
-> >
-> >      /*
-> > @@ -157,7 +157,7 @@ static void test_logfile_lock(gconstpointer data)
-> >      FILE *logfile;
-> >      gchar const *dir = data;
-> >      Error *err = NULL;
-> > -    g_autofree gchar *file_path;
-> > +    g_autofree gchar *file_path = NULL;
-> >
-> >      file_path = g_build_filename(dir, "qemu_test_logfile_lock0.log", NULL);
->
-> Right. The glib documentation clearly states that "the variable must be
-> initialized", see:
->
-> https://developer.gnome.org/glib/stable/glib-Miscellaneous-Macros.html#g-autofree
->
-> So this is the right thing to do here!
->
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
->
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/xenpv/xen_machine_pv.c | 2 +-
+ include/sysemu/sysemu.h   | 1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/hw/xenpv/xen_machine_pv.c b/hw/xenpv/xen_machine_pv.c
+index 3a8af1a1e0..8df575a457 100644
+--- a/hw/xenpv/xen_machine_pv.c
++++ b/hw/xenpv/xen_machine_pv.c
+@@ -60,7 +60,7 @@ static void xen_init_pv(MachineState *machine)
+     xen_be_register("qnic", &xen_netdev_ops);
+=20
+     /* configure framebuffer */
+-    if (xenfb_enabled) {
++    if (vga_interface_type =3D=3D VGA_XENFB) {
+         xen_config_dev_vfb(0, "vnc");
+         xen_config_dev_vkbd(0);
+     }
+diff --git a/include/sysemu/sysemu.h b/include/sysemu/sysemu.h
+index 80c57fdc4e..2ccf216158 100644
+--- a/include/sysemu/sysemu.h
++++ b/include/sysemu/sysemu.h
+@@ -32,7 +32,6 @@ typedef enum {
+ } VGAInterfaceType;
+=20
+ extern int vga_interface_type;
+-#define xenfb_enabled (vga_interface_type =3D=3D VGA_XENFB)
+=20
+ extern int graphic_width;
+ extern int graphic_height;
+--=20
+2.18.1
+
 
