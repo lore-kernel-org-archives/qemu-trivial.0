@@ -1,65 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1itqN2-0003Gn-Qf
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Jan 2020 05:02:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33416)
+	id 1itr1L-0002FX-1Y
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Jan 2020 05:44:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37248)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1itqMx-0003BR-Cf
- for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 05:02:51 -0500
+ (envelope-from <clg@kaod.org>) id 1itr1I-0002Ee-Se
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 05:44:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1itqMt-0001st-Jw
- for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 05:02:47 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:22807
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <clg@kaod.org>) id 1itr1H-0006DT-Ld
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 05:44:28 -0500
+Received: from 14.mo6.mail-out.ovh.net ([46.105.56.113]:59657)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1itqMt-0001sa-Gx
- for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 05:02:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579600963;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=AWQiREJxN9rv1oDVmYf/FFgrolMa5xplZG/aoRsi+Ag=;
- b=DxUU5errkyj2Gza1kWXpcIBEFmyRznTCbxrWIj3A5pJFvIcLoHIFmLh6H31mc3sWDA0dDN
- Wb58DE5ie9/p/dtcWKkLrlUwhUgLokYJrvbDbfeYMTnQzh8/p4wMbKZWxXTKDkqMpO2Z0f
- 6f0ypz9YUwQr5at6cWZ4FC5rvyjy8Ks=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-199-u9Rf53nYP_2HUYkTPdtKWQ-1; Tue, 21 Jan 2020 05:02:39 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 15F85DB20;
- Tue, 21 Jan 2020 10:02:38 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-121.ams2.redhat.com [10.36.116.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1DFA28BE28;
- Tue, 21 Jan 2020 10:02:35 +0000 (UTC)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1itr1H-0006A1-GB
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 05:44:27 -0500
+Received: from player739.ha.ovh.net (unknown [10.109.143.189])
+ by mo6.mail-out.ovh.net (Postfix) with ESMTP id BE6861FAA21
+ for <qemu-trivial@nongnu.org>; Tue, 21 Jan 2020 11:44:24 +0100 (CET)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player739.ha.ovh.net (Postfix) with ESMTPSA id 41640A6F73AC;
+ Tue, 21 Jan 2020 10:44:15 +0000 (UTC)
 Subject: Re: [PATCH 2/2] aspeed/i2c: Prevent uninitialized warning
-To: mrezanin@redhat.com, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, Andrew Jeffery <andrew@aj.id.au>,
+To: Thomas Huth <thuth@redhat.com>, mrezanin@redhat.com, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, Andrew Jeffery <andrew@aj.id.au>,
  Joel Stanley <joel@jms.id.au>, qemu-trivial@nongnu.org
 References: <cover.1579598240.git.mrezanin@redhat.com>
  <07957dcab31f65de3dd30efa91e6b9152ac79879.1579598240.git.mrezanin@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <c1b01c90-e42c-b65f-c7b8-2a589510a7d0@redhat.com>
-Date: Tue, 21 Jan 2020 11:02:34 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ <c1b01c90-e42c-b65f-c7b8-2a589510a7d0@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <fdc3e6c2-87e4-2e51-cbee-d9c7a008eec9@kaod.org>
+Date: Tue, 21 Jan 2020 11:44:14 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <07957dcab31f65de3dd30efa91e6b9152ac79879.1579598240.git.mrezanin@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: u9Rf53nYP_2HUYkTPdtKWQ-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <c1b01c90-e42c-b65f-c7b8-2a589510a7d0@redhat.com>
 Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 15422576926850845675
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedugedrudekgddukecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeefledrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqthhrihhvihgrlhesnhhonhhgnhhurdhorhhg
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 46.105.56.113
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,38 +54,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Jan 2020 10:02:51 -0000
+X-List-Received-Date: Tue, 21 Jan 2020 10:44:30 -0000
 
-On 21/01/2020 10.28, mrezanin@redhat.com wrote:
-> From: Miroslav Rezanina <mrezanin@redhat.com>
+On 1/21/20 11:02 AM, Thomas Huth wrote:
+> On 21/01/2020 10.28, mrezanin@redhat.com wrote:
+>> From: Miroslav Rezanina <mrezanin@redhat.com>
+>>
+>> Compiler reports uninitialized warning for cmd_flags variable.
+>>
+>> Adding NULL initialization to prevent this warning.
+>>
+>> Signed-off-by: Miroslav Rezanina <mrezanin@redhat.com>
+>> ---
+>>  hw/i2c/aspeed_i2c.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+>> index 2da04a4..445182a 100644
+>> --- a/hw/i2c/aspeed_i2c.c
+>> +++ b/hw/i2c/aspeed_i2c.c
+>> @@ -400,7 +400,7 @@ static bool aspeed_i2c_check_sram(AspeedI2CBus *bus)
+>>  
+>>  static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
+>>  {
+>> -    g_autofree char *cmd_flags;
+>> +    g_autofree char *cmd_flags = NULL;
+>>      uint32_t count;
+>>  
+>>      if (bus->cmd & (I2CD_RX_BUFF_ENABLE | I2CD_RX_BUFF_ENABLE)) {
 > 
-> Compiler reports uninitialized warning for cmd_flags variable.
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 > 
-> Adding NULL initialization to prevent this warning.
-> 
-> Signed-off-by: Miroslav Rezanina <mrezanin@redhat.com>
-> ---
->  hw/i2c/aspeed_i2c.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index 2da04a4..445182a 100644
-> --- a/hw/i2c/aspeed_i2c.c
-> +++ b/hw/i2c/aspeed_i2c.c
-> @@ -400,7 +400,7 @@ static bool aspeed_i2c_check_sram(AspeedI2CBus *bus)
->  
->  static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
->  {
-> -    g_autofree char *cmd_flags;
-> +    g_autofree char *cmd_flags = NULL;
->      uint32_t count;
->  
->      if (bus->cmd & (I2CD_RX_BUFF_ENABLE | I2CD_RX_BUFF_ENABLE)) {
+> ... maybe someone with enough Perl-foo (i.e. not me ;-)) should add a
+> check to our check_patch.pl script so that it complains when new code is
+> introduced that uses g_autofree without initializing the variable...
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+weird. The cmd_flags variable is assigned just after and used
+in a trace. 
 
-... maybe someone with enough Perl-foo (i.e. not me ;-)) should add a
-check to our check_patch.pl script so that it complains when new code is
-introduced that uses g_autofree without initializing the variable...
-
+C.
 
