@@ -1,65 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1itqJ5-0007Zv-BT
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Jan 2020 04:58:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33105)
+	id 1itqN2-0003Gn-Qf
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Jan 2020 05:02:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33416)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1itqJ1-0007VZ-OQ
- for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 04:58:44 -0500
+ (envelope-from <thuth@redhat.com>) id 1itqMx-0003BR-Cf
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 05:02:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1itqIy-0000QP-Vu
- for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 04:58:43 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:25070
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <thuth@redhat.com>) id 1itqMt-0001st-Jw
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 05:02:47 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:22807
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1itqIy-0000Q9-Rz
- for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 04:58:40 -0500
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1itqMt-0001sa-Gx
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 05:02:43 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579600720;
+ s=mimecast20190719; t=1579600963;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=AFjkN8bouUrfUaNGMdKSZ041gyEtd0iTfg4rOY3K8Bo=;
- b=McQelIz0IRvTUOXqSTqTSW/tpbamMzu39AqQXGJcK6M4HUWVP+IeNLgzY/oX4tk+S8Ckkz
- eKEm4yO6UNLWse4D+aQnib4M3Y7t9hvstffNZdLy+RK9riJoADky7arW85x+8SO2GHPAcf
- 6cPCyGjWET102po8ST8Xvy6L14ykg60=
+ bh=AWQiREJxN9rv1oDVmYf/FFgrolMa5xplZG/aoRsi+Ag=;
+ b=DxUU5errkyj2Gza1kWXpcIBEFmyRznTCbxrWIj3A5pJFvIcLoHIFmLh6H31mc3sWDA0dDN
+ Wb58DE5ie9/p/dtcWKkLrlUwhUgLokYJrvbDbfeYMTnQzh8/p4wMbKZWxXTKDkqMpO2Z0f
+ 6f0ypz9YUwQr5at6cWZ4FC5rvyjy8Ks=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-349-fuvSs_5oPQmunrKRyhPVvQ-1; Tue, 21 Jan 2020 04:58:37 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-199-u9Rf53nYP_2HUYkTPdtKWQ-1; Tue, 21 Jan 2020 05:02:39 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 01DE5800D50;
- Tue, 21 Jan 2020 09:58:36 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 15F85DB20;
+ Tue, 21 Jan 2020 10:02:38 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-121.ams2.redhat.com [10.36.116.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8338860E1C;
- Tue, 21 Jan 2020 09:58:34 +0000 (UTC)
-Subject: Re: [PATCH 1/2] test-logging: Fix -Werror=maybe-uninitialized warning
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1DFA28BE28;
+ Tue, 21 Jan 2020 10:02:35 +0000 (UTC)
+Subject: Re: [PATCH 2/2] aspeed/i2c: Prevent uninitialized warning
 To: mrezanin@redhat.com, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Robert Foley <robert.foley@linaro.org>,
- qemu-trivial@nongnu.org
+Cc: peter.maydell@linaro.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joel Stanley <joel@jms.id.au>, qemu-trivial@nongnu.org
 References: <cover.1579598240.git.mrezanin@redhat.com>
- <63b0fcedf7dfe799c8210b113e5dccf32414a89d.1579598240.git.mrezanin@redhat.com>
+ <07957dcab31f65de3dd30efa91e6b9152ac79879.1579598240.git.mrezanin@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
-Message-ID: <14ba746f-97c3-1ae3-c836-ad2e3e213756@redhat.com>
-Date: Tue, 21 Jan 2020 10:58:32 +0100
+Message-ID: <c1b01c90-e42c-b65f-c7b8-2a589510a7d0@redhat.com>
+Date: Tue, 21 Jan 2020 11:02:34 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <63b0fcedf7dfe799c8210b113e5dccf32414a89d.1579598240.git.mrezanin@redhat.com>
+In-Reply-To: <07957dcab31f65de3dd30efa91e6b9152ac79879.1579598240.git.mrezanin@redhat.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: fuvSs_5oPQmunrKRyhPVvQ-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: u9Rf53nYP_2HUYkTPdtKWQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,53 +71,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Jan 2020 09:58:45 -0000
+X-List-Received-Date: Tue, 21 Jan 2020 10:02:51 -0000
 
 On 21/01/2020 10.28, mrezanin@redhat.com wrote:
 > From: Miroslav Rezanina <mrezanin@redhat.com>
 > 
-> Checking for uninitialized variables raises warning for file path
-> variables in test_logfile_write and test_logfile_lock functions.
+> Compiler reports uninitialized warning for cmd_flags variable.
 > 
-> To suppress this warning, initialize varibles to NULL. This is safe
-> change as result of g_build_filename is stored to them before any usage.
+> Adding NULL initialization to prevent this warning.
 > 
 > Signed-off-by: Miroslav Rezanina <mrezanin@redhat.com>
 > ---
->  tests/test-logging.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  hw/i2c/aspeed_i2c.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/tests/test-logging.c b/tests/test-logging.c
-> index 1e646f0..6387e49 100644
-> --- a/tests/test-logging.c
-> +++ b/tests/test-logging.c
-> @@ -114,8 +114,8 @@ static void test_logfile_write(gconstpointer data)
->      QemuLogFile *logfile2;
->      gchar const *dir = data;
->      Error *err = NULL;
-> -    g_autofree gchar *file_path;
-> -    g_autofree gchar *file_path1;
-> +    g_autofree gchar *file_path = NULL;
-> +    g_autofree gchar *file_path1 = NULL;
->      FILE *orig_fd;
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index 2da04a4..445182a 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -400,7 +400,7 @@ static bool aspeed_i2c_check_sram(AspeedI2CBus *bus)
 >  
->      /*
-> @@ -157,7 +157,7 @@ static void test_logfile_lock(gconstpointer data)
->      FILE *logfile;
->      gchar const *dir = data;
->      Error *err = NULL;
-> -    g_autofree gchar *file_path;
-> +    g_autofree gchar *file_path = NULL;
+>  static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
+>  {
+> -    g_autofree char *cmd_flags;
+> +    g_autofree char *cmd_flags = NULL;
+>      uint32_t count;
 >  
->      file_path = g_build_filename(dir, "qemu_test_logfile_lock0.log", NULL);
-
-Right. The glib documentation clearly states that "the variable must be
-initialized", see:
-
-https://developer.gnome.org/glib/stable/glib-Miscellaneous-Macros.html#g-autofree
-
-So this is the right thing to do here!
+>      if (bus->cmd & (I2CD_RX_BUFF_ENABLE | I2CD_RX_BUFF_ENABLE)) {
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
+
+... maybe someone with enough Perl-foo (i.e. not me ;-)) should add a
+check to our check_patch.pl script so that it complains when new code is
+introduced that uses g_autofree without initializing the variable...
 
 
