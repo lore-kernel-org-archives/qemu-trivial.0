@@ -1,64 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1itd1D-0008Fr-Hv
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Jan 2020 14:47:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38194)
+	id 1itn3V-0006n0-F7
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Jan 2020 01:30:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43119)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1itd17-0008Dv-8y
- for qemu-trivial@nongnu.org; Mon, 20 Jan 2020 14:47:24 -0500
+ (envelope-from <kraxel@redhat.com>) id 1itn3P-0006mi-VT
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 01:30:27 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1itd14-00015n-3Q
- for qemu-trivial@nongnu.org; Mon, 20 Jan 2020 14:47:21 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:32604
+ (envelope-from <kraxel@redhat.com>) id 1itn3M-00051I-3m
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 01:30:23 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:34098
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1itd13-00014L-VV
- for qemu-trivial@nongnu.org; Mon, 20 Jan 2020 14:47:18 -0500
+ (Exim 4.71) (envelope-from <kraxel@redhat.com>) id 1itn3L-00050z-VB
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 01:30:20 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579549637;
+ s=mimecast20190719; t=1579588219;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=rFHsmSvzipxm9ijijYW6o70CkTd33ne/iRbUywS7kus=;
- b=N+M7+RTvJIJM7zXCjt9mrF8ovqUiy3rF+aMGkinCaPRillD/FZmpNWNGv9d+cPQxkZfgNS
- yDvfjg8YGidS08gzxVM6HfFKp/mi/2lxEKtrBSvixd+kAE8jV6DTh37/aM1BR3rbjxqvOO
- fVhz6HdTIRiRxm54c1fT76bMsNTjpro=
+ bh=qsiftc4sag6Yw4KJj/+j+lEX2X59zfXwkvJoqT4IxwQ=;
+ b=V1Ys/SQi/EmtCuTnSqWPcBADplAU/RBZnsTF+fCtyaf9edSr+1MfHOUXT+bx5HRiDf7HVX
+ poWBVmoTL92stMuXUzrKwfaDZHSoBJv5YlfDsZHzSzJ1bNtF0kv+9NFokaNO0057hji7au
+ Tk1dojkdSX29tSFWQF2SGPkkKNP2nHU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-307-ucLm-nmuNuqzY-7TjFGk7g-1; Mon, 20 Jan 2020 14:47:14 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-274-LNmucJ6BOnWxd_pdwVnLHQ-1; Tue, 21 Jan 2020 01:30:18 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 511CC800D41;
- Mon, 20 Jan 2020 19:47:13 +0000 (UTC)
-Received: from [10.3.117.16] (ovpn-117-16.phx2.redhat.com [10.3.117.16])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7CCC060BF7;
- Mon, 20 Jan 2020 19:47:05 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2EE4718A8C92;
+ Tue, 21 Jan 2020 06:30:17 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-106.ams2.redhat.com
+ [10.36.116.106])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DBF7B8CCD2;
+ Tue, 21 Jan 2020 06:30:10 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 58DFA1747D; Tue, 21 Jan 2020 07:30:08 +0100 (CET)
+Date: Tue, 21 Jan 2020 07:30:08 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Thomas Huth <thuth@redhat.com>
 Subject: Re: [PATCH] ui/console: Display the 'none' backend in '-display help'
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>
+Message-ID: <20200121063008.i2nr5osfkj65wjl3@sirius.home.kraxel.org>
 References: <20200120192947.31613-1-philmd@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <5653e64e-771d-1431-9039-d0f058d065a5@redhat.com>
-Date: Mon, 20 Jan 2020 13:47:05 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.1
 MIME-Version: 1.0
 In-Reply-To: <20200120192947.31613-1-philmd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: ucLm-nmuNuqzY-7TjFGk7g-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: LNmucJ6BOnWxd_pdwVnLHQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -70,9 +69,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Jan 2020 19:47:24 -0000
+X-List-Received-Date: Tue, 21 Jan 2020 06:30:28 -0000
 
-On 1/20/20 1:29 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+On Mon, Jan 20, 2020 at 08:29:47PM +0100, Philippe Mathieu-Daud=E9 wrote:
 > Commit c388f408b5 added the possibility to list the display
 > backends using '-display help'. Since the 'none' backend is
 > is not implemented as a DisplayChangeListenerOps, it is not
@@ -81,46 +80,26 @@ On 1/20/20 1:29 PM, Philippe Mathieu-Daud=C3=A9 wrote:
 >=20
 > This might be confusing, as we list it in the man page:
 >=20
->    -display type
->        Select type of display to use. This option is a replacement for
->        the old style -sdl/-curses/... options. Valid values for type are
+>   -display type
+>       Select type of display to use. This option is a replacement for
+>       the old style -sdl/-curses/... options. Valid values for type are
 >=20
->        none
->            Do not display video output. The guest will still see an
->            emulated graphics card, but its output will not be displayed
->            to the QEMU user. This option differs from the -nographic
->            option in that it only affects what is done with video
->            output; -nographic also changes the destination of the serial
->            and parallel port data.
+>       none
+>           Do not display video output. The guest will still see an
+>           emulated graphics card, but its output will not be displayed
+>           to the QEMU user. This option differs from the -nographic
+>           option in that it only affects what is done with video
+>           output; -nographic also changes the destination of the serial
+>           and parallel port data.
 >=20
 > Fix by manually listing the special 'none' backend in the help.
 >=20
 > Suggested-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->   ui/console.c | 1 +
->   1 file changed, 1 insertion(+)
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Added to ui queue.
 
->=20
-> diff --git a/ui/console.c b/ui/console.c
-> index 69339b028b..179901c35e 100644
-> --- a/ui/console.c
-> +++ b/ui/console.c
-> @@ -2338,6 +2338,7 @@ void qemu_display_help(void)
->       int idx;
->  =20
->       printf("Available display backend types:\n");
-> +    printf("none\n");
->       for (idx =3D DISPLAY_TYPE_NONE; idx < DISPLAY_TYPE__MAX; idx++) {
->           if (!dpys[idx]) {
->               ui_module_load_one(DisplayType_str(idx));
->=20
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+thanks,
+  Gerd
 
 
