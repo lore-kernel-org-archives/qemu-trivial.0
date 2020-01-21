@@ -1,62 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1itxdD-0005f2-Ro
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Jan 2020 12:48:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41783)
+	id 1iu1Ek-0004YV-IN
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Jan 2020 16:39:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48252)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pdurrant@gmail.com>) id 1itwsC-0008Js-SH
- for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 11:59:29 -0500
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iu1Eh-0004Wl-Vs
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 16:39:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pdurrant@gmail.com>) id 1itwsB-0005jp-WF
- for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 11:59:28 -0500
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:36150)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iu1Eh-0007Ba-53
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 16:38:59 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:35280)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <pdurrant@gmail.com>)
- id 1itws9-0005h2-T0; Tue, 21 Jan 2020 11:59:26 -0500
-Received: by mail-pl1-x642.google.com with SMTP id a6so1592673plm.3;
- Tue, 21 Jan 2020 08:59:25 -0800 (PST)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iu1Ee-0007AP-Vt; Tue, 21 Jan 2020 16:38:57 -0500
+Received: by mail-wr1-x442.google.com with SMTP id g17so5070136wro.2;
+ Tue, 21 Jan 2020 13:38:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=DKEZ+rFgh1FXDkP8cH00GpTaydprdQJ7DPFD5gprERY=;
- b=RqRr+tCbOQ8WPX3stp52RVDkId//sCDJf9CO5sfgfRdLJabtk/wtA/I+5CohyNqFCM
- sESVIsO45yJDbUfUzJwGvO4soEqXyDNQvmKYv2KekJjMT+sJA8ZGb1/zDJxW0jHAcphZ
- elfg2ABbGho/RZGdVKbC7gc4XUqgj4TycaibpIGYNMR6khmF3N72ElZIP5P7bDMCP0qR
- Dh8saLSxKjQe04U8ywMDMegf+0nJqzajqP8ReOcFEy5vBdeCgWzSS3oil58GO9Rw46td
- uYGHfsd0DPW4RrpiXkaMOyxLBIOW+aEseGbj6invbd7DnvPALN459pFGPtao15wzENxm
- D2lQ==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=4YI519z4F/iZ1loOmyQ18PERAwvamdmtU/8VAEDn3Sc=;
+ b=qLFpkxljfehHzepiuArqbAWqzdoTh8PXV7gXp1KvXJ/LHNvt0qwIGxcD5QWLGYIIFo
+ CJ5v0gOGfOGLAu3Mg/TK8D3nIbPUgkw/xdZ2UXy6jZuZ7jZUyMIwlS7NkMrL/ozd5MmI
+ T3zcaIJNd4OZ3MJANdq186Gqm10Op76eN4bSUfB8peHmlij8YWeFhTaC20WQEfldf771
+ sig9M9JrjUXjUtubs4H+QpLD+0aUlsJVU4vAXpPJ52GJNNRM2GNkY7RGerI0XaDTMH30
+ bgICpLs8liPeaXDRqiJCRV5J8IdqrU1pQcuEyYhOg5JdHXP7dHRDhRZCcwyyk5hNN4pl
+ Bkfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=DKEZ+rFgh1FXDkP8cH00GpTaydprdQJ7DPFD5gprERY=;
- b=OnU/8o8Ino+sb9NWTm/nI9zPUud0R55uTPGVNnaYe9+vvb4FJnqpM1bVcsAhSA/HX5
- qw3JXUY3+279pRCKcBy5ERfeSAWMf+2axS9HDr6mmSd/RSDwGowZwQgFdMJ11d9GJ0mB
- M9j2isfrgsiX1DQDU/23/mu/jSj+RIF+6nOAZ7WEi/7Mv09cXmXDGc5d1wYjUswuxioL
- ruD9DaDJRPM1RnJ9/90OzswvlB0gdSeKP1SNepteGmFsKlrNg0W7OYSRQFpJZ8p26ExN
- hb5N/nSDfchWjk0Z4o81efydKhj4pCQZDi3+iG6ZHuKjh7wZuwTUDleuEo5HzhwmA8xi
- X9pw==
-X-Gm-Message-State: APjAAAXe3Sln4BzL1dlWtSgE00KuqbAB/FxokiD8PdKMzq1CjrWRpd7y
- hWz5jaGnV0cereBUjLlA8TgGtevNRmzyPA120BQ=
-X-Google-Smtp-Source: APXvYqzQ7V/yjk2IB3+IOt/dUJUCw7xy1gibPalzPgdG/hOiHo5q/OkxOXQelyvuJRpYuQHd5F8vi13aOFCNWWBUicc=
-X-Received: by 2002:a17:902:7291:: with SMTP id
- d17mr6233137pll.227.1579625963940; 
- Tue, 21 Jan 2020 08:59:23 -0800 (PST)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=4YI519z4F/iZ1loOmyQ18PERAwvamdmtU/8VAEDn3Sc=;
+ b=emakqITmzsqK8La6R7qLC72Z3IXMnnpwV+fqnLDIt4vYUku8Ke3AnU0tRlON90P6Av
+ WJSEsMUq3L8GdxI3Y4UpNV+J0HdiHHGsEUymD6EFqIQ4D8dJllWFpc98FD6wBTpAWWBP
+ jRj4jAKRJpyTdqKlKZ9Os+1HWX9hVv5a68oRf1AqZ/j5TYtARk70pITpmMbQ9p0qoNkZ
+ Z+si8xS0SjYb+0DIAXendQ89apx2yCwkmBomPVWQLOZ8BCBGL6s10RW8K3aJP61nP3ta
+ 4FJjC9wPpu7j+s00PGPa1hClscqQghAxfsFxRl2ImGqnrwymIAVPpFIEDVMfk3Xxwq1g
+ WeCw==
+X-Gm-Message-State: APjAAAXbX37fRSnqRXY8Ya3ZlnpYOzFo3AsClE7tHk++qLMn7lXlG9wg
+ pEhjlSWP+NWJUnsVmZ5AJPgRSdMV
+X-Google-Smtp-Source: APXvYqxKKa1S1gJwA3U0iFR9pou1ob+vTlGudSEvWDtkiVqD0KzYMROJy9s7VcgLggnL/SUyZXpaLA==
+X-Received: by 2002:a5d:5708:: with SMTP id a8mr6989032wrv.79.1579642735385;
+ Tue, 21 Jan 2020 13:38:55 -0800 (PST)
+Received: from x1w.redhat.com (113.red-83-57-172.dynamicip.rima-tde.net.
+ [83.57.172.113])
+ by smtp.gmail.com with ESMTPSA id v22sm935609wml.11.2020.01.21.13.38.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 21 Jan 2020 13:38:54 -0800 (PST)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
+ <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org,
+	Alistair Francis <alistair@alistair23.me>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH] hw/misc/stm32f4xx_syscfg: Fix copy/paste error
+Date: Tue, 21 Jan 2020 22:38:53 +0100
+Message-Id: <20200121213853.9601-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.1
 MIME-Version: 1.0
-References: <20200121161747.10569-1-thuth@redhat.com>
-In-Reply-To: <20200121161747.10569-1-thuth@redhat.com>
-From: Paul Durrant <pdurrant@gmail.com>
-Date: Tue, 21 Jan 2020 16:59:12 +0000
-Message-ID: <CACCGGhCZeb1-OQ0XJsRYiYC2EUSZxoeH=Q8FFortE7UnXXJuwg@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH] trivial: Remove xenfb_enabled from sysemu.h
-To: Thomas Huth <thuth@redhat.com>
-Cc: "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Stefano Stabellini <sstabellini@kernel.org>, 
- Anthony Perard <anthony.perard@citrix.com>, qemu-trivial@nongnu.org, 
- xen-devel <xen-devel@lists.xenproject.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::642
-X-Mailman-Approved-At: Tue, 21 Jan 2020 12:48:01 -0500
+X-Received-From: 2a00:1450:4864:20::442
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -68,14 +76,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Jan 2020 16:59:30 -0000
+X-List-Received-Date: Tue, 21 Jan 2020 21:39:01 -0000
 
-On Tue, 21 Jan 2020 at 16:18, Thomas Huth <thuth@redhat.com> wrote:
->
-> The define is only used in one other place. Move the code there
-> instead of keeping this xen-specific define in sysemu.h.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Missed in 870c034da0b, hopefully reported by Coverity.
 
-Acked-by: Paul Durrant <paul@xen.org>
+Fixes: Coverity CID 1412793 (Incorrect expression)
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/misc/stm32f4xx_syscfg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/misc/stm32f4xx_syscfg.c b/hw/misc/stm32f4xx_syscfg.c
+index dbcdca59f8..f960e4ea1e 100644
+--- a/hw/misc/stm32f4xx_syscfg.c
++++ b/hw/misc/stm32f4xx_syscfg.c
+@@ -47,7 +47,7 @@ static void stm32f4xx_syscfg_set_irq(void *opaque, int irq, int level)
+     STM32F4xxSyscfgState *s = opaque;
+     int icrreg = irq / 4;
+     int startbit = (irq & 3) * 4;
+-    uint8_t config = config = irq / 16;
++    uint8_t config = irq / 16;
+ 
+     trace_stm32f4xx_syscfg_set_irq(irq / 16, irq % 16, level);
+ 
+-- 
+2.21.1
+
 
