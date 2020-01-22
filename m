@@ -1,136 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iu3KZ-0008Vv-NA
-	for mharc-qemu-trivial@gnu.org; Tue, 21 Jan 2020 18:53:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59776)
+	id 1iu4nL-0000HY-HZ
+	for mharc-qemu-trivial@gnu.org; Tue, 21 Jan 2020 20:26:59 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38865)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jsnow@redhat.com>) id 1iu3KX-0008VC-6V
- for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 18:53:10 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1iu4nI-0000Fr-KQ
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 20:26:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jsnow@redhat.com>) id 1iu3KV-0002RE-PW
- for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 18:53:08 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:28287
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jsnow@redhat.com>) id 1iu3KV-0002Qm-MR
- for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 18:53:07 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579650787;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=gK+HxLlZkzMysiDF8AGHyLeASadCTjiXYn94WrsNyu4=;
- b=CD0orXO+nuC4X0ruikebpO6YAep2BifskAa1tPX9+zsfaYC0NztN5M+gSYlJHYfh2wrfUw
- UBV03UwbEkg5bwu6lMQKyKXttzQQBE6IRVhNr+0+xImebTq5E1JRkYdmdBjNxESJYqGUlP
- cGfYWmV9bWkqBoNay3TYR655Sh5pbSw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-282-27MoJe51NhCrpO07QYE6-A-1; Tue, 21 Jan 2020 18:53:03 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AD543DB23;
- Tue, 21 Jan 2020 23:53:02 +0000 (UTC)
-Received: from [10.18.17.91] (dhcp-17-91.bos.redhat.com [10.18.17.91])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 249905DA70;
- Tue, 21 Jan 2020 23:53:01 +0000 (UTC)
-Subject: Re: [PATCH] qemu-options.hx: remove stray quote
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20190924231325.25444-1-jsnow@redhat.com>
- <87o8z9rkvy.fsf@dusky.pond.sub.org>
-From: John Snow <jsnow@redhat.com>
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <11dd22ea-7517-6d18-1da0-4a366d107514@redhat.com>
-Date: Tue, 21 Jan 2020 18:53:01 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1iu4nH-00043o-HT
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 20:26:56 -0500
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:46045)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iu4nH-00043X-Cd
+ for qemu-trivial@nongnu.org; Tue, 21 Jan 2020 20:26:55 -0500
+Received: by mail-pg1-x541.google.com with SMTP id b9so2489430pgk.12
+ for <qemu-trivial@nongnu.org>; Tue, 21 Jan 2020 17:26:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Pp16kqLpiEIyAGHOLDB5F5XDcQRr9/fLT5GRMKH+yXw=;
+ b=ILxg713aGeQ9egQymNxSuXStlT2t0GFABSc4CbfRZRht+coExjcQeM0JWc5uIAz5I0
+ ohnnXAsVueVr1NZx1pEIApH1JdQDWZmnyrrTkTDUqgDK50iCXPpDgvgjt7pxII0rSqvu
+ n4pTuk3HMCPTyQ31PGXyeZGJ57M63fyvaIBrgtQ7/diaZY5Qfe7ArF+q6Im+3WYNRPQp
+ 2WlzbQpeTABa0j2j1srD7QBdUAux0ygDOAWHo5fMWxPZE6p7aDqEUrGZk+PaPqBy0nWC
+ d09H3cQ74Z25rAZVkMwT7D4H3lq/W/VBZZyu443/Kgrv+8fEZ9N5svzTEttvUad74NOM
+ R7GA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Pp16kqLpiEIyAGHOLDB5F5XDcQRr9/fLT5GRMKH+yXw=;
+ b=VLvWMqmzv02E5M4FWOEnKhg3b4JZOFwfPsI57SmGICR5WTXOGzGcpewDuIh467lDNO
+ KLbrWlYdIytbkXyCr2nP6ZAErTC2zw4UOvPxn1iVe9up3eoWKimIzW8PIoU2L7Tm7K5b
+ 9sHMCvSvFw4Nim3HnbjJk4CEkEHVpegyDfjzMQct6Z3jCBpAEtOT3WzMqVr2lC3dFCEw
+ Bj/FNtGK0xi2SMjy+tCh5F1OVncKo6eBGp5DzDPzjI/rQ6eBoc34Cp2p6nxq8sxI8BPA
+ C6YXtJKgektgYl+ZjFsSg16AvHiLqJN3WTCoByv0iqkOV5GZ/UKsoPsB9pq9wf7TN9Cp
+ rh7g==
+X-Gm-Message-State: APjAAAWz4x4WmJsJF6+YdgAT3Ccq7VJIlkHgFVV0yzFvvuxfeMYMpN9k
+ Xb/W86iiEJ+6YtmkxI7maQeI3iAWRak=
+X-Google-Smtp-Source: APXvYqxQHZFHoqWoh/O4jd1powqUGPfcr+QqKjgiXNsCW39l4cU8zwA6SYVXdVi+SLLMiYWDaFLz2g==
+X-Received: by 2002:a63:5b0a:: with SMTP id p10mr8370478pgb.228.1579656413790; 
+ Tue, 21 Jan 2020 17:26:53 -0800 (PST)
+Received: from [10.5.50.117] (rrcs-173-198-77-92.west.biz.rr.com.
+ [173.198.77.92])
+ by smtp.gmail.com with ESMTPSA id u3sm43802068pga.72.2020.01.21.17.26.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 21 Jan 2020 17:26:52 -0800 (PST)
+Subject: Re: [PATCH] scripts/git.orderfile: Display decodetree before C source
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Sven Schnelle <svens@stackframe.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ David Hildenbrand <david@redhat.com>, Stafford Horne <shorne@gmail.com>,
+ Palmer Dabbelt <palmerdabbelt@google.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20191230082856.30556-1-philmd@redhat.com>
+ <4bf7c585-fe7f-c574-d706-2317e6bcbceb@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <404a7378-5ad4-1a5a-e280-551293cf970b@linaro.org>
+Date: Tue, 21 Jan 2020 15:26:48 -1000
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.0
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <87o8z9rkvy.fsf@dusky.pond.sub.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: 27MoJe51NhCrpO07QYE6-A-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <4bf7c585-fe7f-c574-d706-2317e6bcbceb@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::541
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -142,42 +82,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Jan 2020 23:53:10 -0000
+X-List-Received-Date: Wed, 22 Jan 2020 01:26:57 -0000
 
-
-
-On 9/25/19 1:43 AM, Markus Armbruster wrote:
-> John Snow <jsnow@redhat.com> writes:
+On 1/18/20 12:09 AM, Philippe Mathieu-Daudé wrote:
+> Cc'ing qemu-trivial@
 > 
->> Signed-off-by: John Snow <jsnow@redhat.com>
->> ---
->>  qemu-options.hx | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
+> On 12/30/19 9:28 AM, Philippe Mathieu-Daudé wrote:
+>> To avoid scrolling each instruction when reviewing tcg
+>> helpers written for the decodetree script, display the
+>> .decode files (similar to header declarations) before
+>> the C source (implementation of previous declarations).
 >>
->> diff --git a/qemu-options.hx b/qemu-options.hx
->> index 2a04ca6ac5..629a7b1186 100644
->> --- a/qemu-options.hx
->> +++ b/qemu-options.hx
->> @@ -1192,7 +1192,7 @@ Instead of @option{-fda}, @option{-fdb}, you can use:
->>  By default, @var{interface} is "ide" and @var{index} is automatically
->>  incremented:
->>  @example
->> -@value{qemu_system_x86} -drive file=a -drive file=b"
->> +@value{qemu_system_x86} -drive file=a -drive file=b
->>  @end example
->>  is interpreted like:
->>  @example
-> 
-> Messed up more than ten years ago, in commit e0e7ada1d55, faithfully
-> copied around ever since.  Makes me wonder how much this part of
-> qemu-doc is actually read.
-> 
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-> 
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Not worth the calories to merge it into a trivial roundup, either. Maybe
-the error can get copied into the ReST version, too.
+Queued to tcg-next, since no one else has picked this up.
 
---js
 
+r~
 
