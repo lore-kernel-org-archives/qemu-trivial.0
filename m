@@ -1,56 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iuJhV-0007WJ-Cc
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Jan 2020 12:21:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55162)
+	id 1iuLd7-0003qn-Cu
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Jan 2020 14:25:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44661)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iuJhT-0007Tu-BL
- for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 12:21:56 -0500
+ (envelope-from <richard.henderson@linaro.org>) id 1iuLd3-0003o0-57
+ for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 14:25:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iuJhS-0007wd-Fp
- for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 12:21:55 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:43421
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iuJhS-0007wO-Co
- for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 12:21:54 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579713714;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=81TkLNXfmbOYYGG0HEzvgfCJtTEvF70HIv7HTaQpniQ=;
- b=dEmcaHDO2Y7ufeWVmvW+e+3bJzREAXnfG6GAtHLt7pzDcYv84AucmX9GbvHkDV9ehQDzkU
- Uocmg2VZ2s4RxFdjfWQHCdqU7TeSPslrj35y/25oe4Wc/ozY9wOrp8qUw56lW3GqWQuPC+
- 8sLOEI1BxMkhYmtnQtzK14BZc9iPMC4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-146-oTFEtTClOhi5LEZTvRyCdg-1; Wed, 22 Jan 2020 12:21:49 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B03E2108594E;
- Wed, 22 Jan 2020 17:21:47 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-78.brq.redhat.com [10.40.204.78])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E634160F8D;
- Wed, 22 Jan 2020 17:21:40 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] Makefile: List the sphinx documentation in 'make help'
-Date: Wed, 22 Jan 2020 18:21:37 +0100
-Message-Id: <20200122172137.7282-1-philmd@redhat.com>
+ (envelope-from <richard.henderson@linaro.org>) id 1iuLd2-0003lT-0s
+ for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 14:25:28 -0500
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:51932)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iuLd1-0003k5-PK
+ for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 14:25:27 -0500
+Received: by mail-pj1-x1042.google.com with SMTP id d15so372181pjw.1
+ for <qemu-trivial@nongnu.org>; Wed, 22 Jan 2020 11:25:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=dLLhwhf2bGoDdETTzh/LsbMlfpbCN8urf5vSnY0fHDo=;
+ b=ah7dei+sYH7kEfPYnLubp6s5Co6ulJ8LGF2FHSgjWS1oruucwDkSQB3R6oSzJIDg19
+ VqlLLxHlXkI360qTrmB4vuLpjY6CUUbrnaB1CMThw+ctxRVFMKw5tMT9PIcyRKmSKEK2
+ oIzHejg1hjAP4WlUECY32TfAbXenzJO4YIxoD/xjsU1hIWp0DPJCNswOlZfjWwB3zOEm
+ ay+BMstUq2TyhU0IXsvmo+HwhOWMtZv9U+NePZsrmNIyRXQc6yKSe2qYwDdKBlVZlTTq
+ /Nbu8j3lU47d8BQTV3AvR0VNMYajPg0KS/quLsmVZ4be6MAfg4z8+02mC0a3L2/bkNMo
+ KKRg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=dLLhwhf2bGoDdETTzh/LsbMlfpbCN8urf5vSnY0fHDo=;
+ b=Q85YVS1eGVHIG5FW5Uzq3KQXJDazMbSZr307ThDIbOOvBzUhXY3H1ELVHc0LwYCGtN
+ hfB+rNPEVj/TgNApvMOKS+3+cEgWgjo1PEadZ9/e/1zi6LKQS4p8NRQITlj6GbBASZy9
+ P1CJExhTuUUB8dldI2rG3mWoZqHYuM0db1qFk4tGCs3KMXBaOc2hd61OQ8Kubr6AWs1A
+ pApe+UENIO3kDncLXUG7NSv2VRc7+QJgKeZYW8nYlNaPmuxyd4Zk79rzTUCmos5tWftA
+ SRqB4ME9vtBUlxyoTTvnVWLM6YffKVyKwYjIN6dNBRLdeKDiQ7Jp1sqFjloJRlI9k+8L
+ snVw==
+X-Gm-Message-State: APjAAAWEb1WDKrlHZDp5la3ncArbCcgm3qWC+IkpUr2eukXeBDhivkSR
+ 9F3Ub4IM1S0cGMuxjkd60wdQKQ==
+X-Google-Smtp-Source: APXvYqxaBuVU9zve4sFLswNtBi3tXwLKvBSG1FfaPtjTmEU5RQ/c4o5f1d2qagjZevRtmWy04m6Axw==
+X-Received: by 2002:a17:90a:222c:: with SMTP id c41mr72143pje.35.1579721126433; 
+ Wed, 22 Jan 2020 11:25:26 -0800 (PST)
+Received: from ?IPv6:2607:fb90:580:a104:4475:e6b8:8600:af4a?
+ ([2607:fb90:580:a104:4475:e6b8:8600:af4a])
+ by smtp.gmail.com with ESMTPSA id i66sm48870284pfg.85.2020.01.22.11.25.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 22 Jan 2020 11:25:25 -0800 (PST)
+Subject: Re: [PATCH] Makefile: List the sphinx documentation in 'make help'
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <20200122172137.7282-1-philmd@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <733f67b5-e4d2-6d3e-6407-7d73801de3f6@linaro.org>
+Date: Wed, 22 Jan 2020 09:25:19 -1000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: oTFEtTClOhi5LEZTvRyCdg-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
+In-Reply-To: <20200122172137.7282-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::1042
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -62,31 +76,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Jan 2020 17:21:56 -0000
+X-List-Received-Date: Wed, 22 Jan 2020 19:25:31 -0000
 
-In commit 5f71eac06e1 we started to support the rST documentation.
-List the build target we need to call to generate the rST files in
-the 'make help' output.
+On 1/22/20 7:21 AM, Philippe Mathieu-Daudé wrote:
+> In commit 5f71eac06e1 we started to support the rST documentation.
+> List the build target we need to call to generate the rST files in
+> the 'make help' output.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  Makefile | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/Makefile b/Makefile
-index 6562b0dc97..b777f7fcdd 100644
---- a/Makefile
-+++ b/Makefile
-@@ -1197,7 +1197,7 @@ endif
- =09@echo  '  vm-help         - Help about targets running tests inside VM'
- =09@echo  ''
- =09@echo  'Documentation targets:'
--=09@echo  '  html info pdf txt'
-+=09@echo  '  html info pdf txt sphinxdocs'
- =09@echo  '                  - Build documentation in specified format'
- ifdef CONFIG_GCOV
- =09@echo  '  coverage-report - Create code coverage report'
---=20
-2.21.1
 
+r~
 
