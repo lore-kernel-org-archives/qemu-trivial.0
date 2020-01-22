@@ -1,69 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iuDDj-0002LF-NJ
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Jan 2020 05:26:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58131)
+	id 1iuGK3-0007bE-1w
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Jan 2020 08:45:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54543)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alex.bennee@linaro.org>) id 1iuDDg-0002Hv-CW
- for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 05:26:45 -0500
+ (envelope-from <thuth@redhat.com>) id 1iuGJz-0007Zh-Rk
+ for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 08:45:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alex.bennee@linaro.org>) id 1iuDDe-0002ug-Pl
- for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 05:26:44 -0500
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:40056)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
- id 1iuDDe-0002te-IM
- for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 05:26:42 -0500
-Received: by mail-wr1-x443.google.com with SMTP id c14so6633186wrn.7
- for <qemu-trivial@nongnu.org>; Wed, 22 Jan 2020 02:26:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=references:user-agent:from:to:cc:subject:in-reply-to:date
- :message-id:mime-version:content-transfer-encoding;
- bh=HMQpvxEKbEDAeRkf4OY+Hn1X5JhhpxYJX6+ZnaZn7ZE=;
- b=ANzn0hdqBoKoYYGbV/wLvEH8YyAKk194fBMDRdByMyHk9LrkuRZjHthno6a50kzorL
- wgCvD+4koGRj64/mjuKug9R4IZHT13WLk3+gjPXh92vZSzze87sQPNYumFsaxTX7WR8b
- sOkBdqhPBcZGWqVEz2wvQ2/tcw6a0uiZDTykmepCKOEp9Nnv+oKPr7Y+tS5toX3FJV+8
- 0wmGNq5tC6CTj0F0oZ4hyyoHKv0ylLL3+EfLjQiFZnW/nRCSpeoxg0Ij4Q5zibUIGTvi
- r9WMTdLjHQPFsUsfy5dBqvR9iHaRET1X4cLvGvwGJxTjnqA90cmbkOT1NFyBJWPkrW2W
- MVEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject
- :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
- bh=HMQpvxEKbEDAeRkf4OY+Hn1X5JhhpxYJX6+ZnaZn7ZE=;
- b=XjPpCZmHBrkPi41ZlkY34awzwtrL6PxEsqURyK/HXExVoPmSL0D0hb0HdGawbdsXEN
- lmlSICkCtipDunS321kGkJpnIosmOEj8Nn/QK6qbKPvPYe8d/yspNPRZXy1MugSKsx3D
- L8dJNBjs/s9wJz/oqzNCmWk/rIPpKocZ4bASbovKPFfgfjXFW/nKo4bJLijwkfmQ2kh+
- AxTc/eNKQ/ktJ6tQI3iStuqUuC5t7z7HMaGa6acsfesA5P3+dlbqlGj0bZZhJQkCfGiI
- EeI7nyVNyIb1e9qrpgOSTsnd9NR2oeQIn5e56WnW7aDTn/XMKPa0vBpQ2/pZQkzX/kzv
- Mg3g==
-X-Gm-Message-State: APjAAAUnLl5tHbV6we3OBVG3BgFX/O/pKGflomWxdkzxAC5g8YvtOUfI
- M+F6Gb2yJKqJ6UJ5Vydapk+KLxHmUvY=
-X-Google-Smtp-Source: APXvYqwB/SnLmn4Tri3v/6Dq6VgEbP7hYWIAeV0eMELMnX6iR6lrh3QzFKzFGZWb9BPKjh9dFJDyvg==
-X-Received: by 2002:a5d:4692:: with SMTP id u18mr10468824wrq.206.1579688800384; 
- Wed, 22 Jan 2020 02:26:40 -0800 (PST)
-Received: from zen.linaroharston ([51.148.130.216])
- by smtp.gmail.com with ESMTPSA id t125sm3462104wmf.17.2020.01.22.02.26.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Jan 2020 02:26:39 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id D17B71FF87;
- Wed, 22 Jan 2020 10:26:38 +0000 (GMT)
-References: <20200121213853.9601-1-f4bug@amsat.org>
-User-agent: mu4e 1.3.6; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: Alistair Francis <alistair@alistair23.me>, qemu-trivial@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-Subject: Re: [PATCH] hw/misc/stm32f4xx_syscfg: Fix copy/paste error
-In-reply-to: <20200121213853.9601-1-f4bug@amsat.org>
-Date: Wed, 22 Jan 2020 10:26:38 +0000
-Message-ID: <871rrr23dt.fsf@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+ (envelope-from <thuth@redhat.com>) id 1iuGJx-0000FJ-NP
+ for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 08:45:27 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:33652
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iuGJx-0000DU-AO
+ for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 08:45:25 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1579700724;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Ts9SCDRNaPPbh7Q2CsxkiDyEIy+bE9Y5C6HVsbgfRqE=;
+ b=Vm5dF52w2krjfHBH31G2KGZA/ID8vKRQVtRG11d+u0PhBk4TFcwz7jR8dhqmKscI3NfBHn
+ UNPKiwF0aUKQyfNRo3PRl3W5/eYv/Fq1p5t08XJEN8cb4G2orGxxvjKebu5oa3qYMcXwb3
+ 2hHP40bXGtkTIzeSrlF1G8riuRELcTQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-221-oocPSiI2POSI9Zt6vMAZdg-1; Wed, 22 Jan 2020 08:45:17 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 611CB107ACC4;
+ Wed, 22 Jan 2020 13:45:16 +0000 (UTC)
+Received: from thuth.com (ovpn-116-176.ams2.redhat.com [10.36.116.176])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9E5EF5C3FD;
+ Wed, 22 Jan 2020 13:45:14 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-block@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH] docs/devel: Fix qtest paths and info about check-block in
+ testing.rst
+Date: Wed, 22 Jan 2020 14:45:11 +0100
+Message-Id: <20200122134511.23806-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: oocPSiI2POSI9Zt6vMAZdg-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::443
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,37 +64,99 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Jan 2020 10:26:45 -0000
+X-List-Received-Date: Wed, 22 Jan 2020 13:45:29 -0000
 
+The qtests have recently been moved to a separate subdirectory, so
+the paths that are mentioned in the documentation have to be adjusted
+accordingly. And some of the iotests are now always run as part of
+"make check", so this information has to be adjusted here, too.
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ docs/devel/testing.rst | 23 ++++++++++++-----------
+ 1 file changed, 12 insertions(+), 11 deletions(-)
 
-> Missed in 870c034da0b, hopefully reported by Coverity.
->
-> Fixes: Coverity CID 1412793 (Incorrect expression)
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-> ---
->  hw/misc/stm32f4xx_syscfg.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/misc/stm32f4xx_syscfg.c b/hw/misc/stm32f4xx_syscfg.c
-> index dbcdca59f8..f960e4ea1e 100644
-> --- a/hw/misc/stm32f4xx_syscfg.c
-> +++ b/hw/misc/stm32f4xx_syscfg.c
-> @@ -47,7 +47,7 @@ static void stm32f4xx_syscfg_set_irq(void *opaque, int =
-irq, int level)
->      STM32F4xxSyscfgState *s =3D opaque;
->      int icrreg =3D irq / 4;
->      int startbit =3D (irq & 3) * 4;
-> -    uint8_t config =3D config =3D irq / 16;
-> +    uint8_t config =3D irq / 16;
->=20=20
->      trace_stm32f4xx_syscfg_set_irq(irq / 16, irq % 16, level);
-
-
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index ab5be0c729..770a987ea4 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -16,8 +16,8 @@ The usual way to run these tests is:
+=20
+   make check
+=20
+-which includes QAPI schema tests, unit tests, and QTests. Different sub-ty=
+pes
+-of "make check" tests will be explained below.
++which includes QAPI schema tests, unit tests, QTests and some iotests.
++Different sub-types of "make check" tests will be explained below.
+=20
+ Before running tests, it is best to build QEMU programs first. Some tests
+ expect the executables to exist and will fail with obscure messages if the=
+y
+@@ -79,8 +79,8 @@ QTest cases can be executed with
+=20
+    make check-qtest
+=20
+-The QTest library is implemented by ``tests/libqtest.c`` and the API is de=
+fined
+-in ``tests/libqtest.h``.
++The QTest library is implemented by ``tests/qtest/libqtest.c`` and the API=
+ is
++defined in ``tests/qtest/libqtest.h``.
+=20
+ Consider adding a new QTest case when you are introducing a new virtual
+ hardware, or extending one if you are adding functionalities to an existin=
+g
+@@ -94,20 +94,20 @@ libqos instead of directly calling into libqtest.
+ Steps to add a new QTest case are:
+=20
+ 1. Create a new source file for the test. (More than one file can be added=
+ as
+-   necessary.) For example, ``tests/test-foo-device.c``.
++   necessary.) For example, ``tests/qtest/foo-test.c``.
+=20
+ 2. Write the test code with the glib and libqtest/libqos API. See also exi=
+sting
+    tests and the library headers for reference.
+=20
+-3. Register the new test in ``tests/Makefile.include``. Add the test execu=
+table
+-   name to an appropriate ``check-qtest-*-y`` variable. For example:
++3. Register the new test in ``tests/qtest/Makefile.include``. Add the test
++   executable name to an appropriate ``check-qtest-*-y`` variable. For exa=
+mple:
+=20
+-   ``check-qtest-generic-y =3D tests/test-foo-device$(EXESUF)``
++   ``check-qtest-generic-y =3D tests/qtest/foo-test$(EXESUF)``
+=20
+ 4. Add object dependencies of the executable in the Makefile, including th=
+e
+    test source file(s) and other interesting objects. For example:
+=20
+-   ``tests/test-foo-device$(EXESUF): tests/test-foo-device.o $(libqos-obj-=
+y)``
++   ``tests/qtest/foo-test$(EXESUF): tests/qtest/foo-test.o $(libqos-obj-y)=
+``
+=20
+ Debugging a QTest failure is slightly harder than the unit test because th=
+e
+ tests look up QEMU program names in the environment variables, such as
+@@ -152,8 +152,9 @@ parser (either fixing a bug or extending/modifying the =
+syntax). To do this:
+ check-block
+ -----------
+=20
+-``make check-block`` is a legacy command to invoke block layer iotests and=
+ is
+-rarely used. See "QEMU iotests" section below for more information.
++``make check-block`` runs a subset of the block layer iotests (the tests t=
+hat
++are in the "auto" group in ``tests/qemu-iotests/group``).
++See the "QEMU iotests" section below for more information.
+=20
+ GCC gcov support
+ ----------------
 --=20
-Alex Benn=C3=A9e
+2.18.1
+
 
