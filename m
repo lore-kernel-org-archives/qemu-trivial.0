@@ -1,63 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iuAJ0-0003o2-GE
-	for mharc-qemu-trivial@gnu.org; Wed, 22 Jan 2020 02:20:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38319)
+	id 1iuDDj-0002LF-NJ
+	for mharc-qemu-trivial@gnu.org; Wed, 22 Jan 2020 05:26:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58131)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iuAIy-0003np-KQ
- for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 02:20:01 -0500
+ (envelope-from <alex.bennee@linaro.org>) id 1iuDDg-0002Hv-CW
+ for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 05:26:45 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iuAIw-0005VF-Ag
- for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 02:19:59 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:20475
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iuAIv-0005SL-VR
- for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 02:19:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579677596;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=X2m5PAzWaOjdS19doYbHQuc45gp4yYQVNyIb4aBDjCQ=;
- b=LaSLxyhC7gkfrU2VdPygVHwdWew4zcwwz+B3s6ko+/ukkXPyaxorkbcbFGcZUOF3WtYERd
- oDDaQYknVSPprvmFJlVlJujOzDfvz4p84YdKfbx+pqhaYAWd/vVXMLVRquMqvqziuPHCk0
- d0rJeiualdS7VluC3tJok3VdZVNjy54=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-95-mfcGcc3XMxKQ0_AcKYk0mg-1; Wed, 22 Jan 2020 02:19:53 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A0B641005502;
- Wed, 22 Jan 2020 07:19:51 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-176.ams2.redhat.com [10.36.116.176])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5B07B89D02;
- Wed, 22 Jan 2020 07:19:50 +0000 (UTC)
-Subject: Re: [PATCH] hw/misc/stm32f4xx_syscfg: Fix copy/paste error
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+ (envelope-from <alex.bennee@linaro.org>) id 1iuDDe-0002ug-Pl
+ for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 05:26:44 -0500
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:40056)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+ id 1iuDDe-0002te-IM
+ for qemu-trivial@nongnu.org; Wed, 22 Jan 2020 05:26:42 -0500
+Received: by mail-wr1-x443.google.com with SMTP id c14so6633186wrn.7
+ for <qemu-trivial@nongnu.org>; Wed, 22 Jan 2020 02:26:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:in-reply-to:date
+ :message-id:mime-version:content-transfer-encoding;
+ bh=HMQpvxEKbEDAeRkf4OY+Hn1X5JhhpxYJX6+ZnaZn7ZE=;
+ b=ANzn0hdqBoKoYYGbV/wLvEH8YyAKk194fBMDRdByMyHk9LrkuRZjHthno6a50kzorL
+ wgCvD+4koGRj64/mjuKug9R4IZHT13WLk3+gjPXh92vZSzze87sQPNYumFsaxTX7WR8b
+ sOkBdqhPBcZGWqVEz2wvQ2/tcw6a0uiZDTykmepCKOEp9Nnv+oKPr7Y+tS5toX3FJV+8
+ 0wmGNq5tC6CTj0F0oZ4hyyoHKv0ylLL3+EfLjQiFZnW/nRCSpeoxg0Ij4Q5zibUIGTvi
+ r9WMTdLjHQPFsUsfy5dBqvR9iHaRET1X4cLvGvwGJxTjnqA90cmbkOT1NFyBJWPkrW2W
+ MVEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject
+ :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+ bh=HMQpvxEKbEDAeRkf4OY+Hn1X5JhhpxYJX6+ZnaZn7ZE=;
+ b=XjPpCZmHBrkPi41ZlkY34awzwtrL6PxEsqURyK/HXExVoPmSL0D0hb0HdGawbdsXEN
+ lmlSICkCtipDunS321kGkJpnIosmOEj8Nn/QK6qbKPvPYe8d/yspNPRZXy1MugSKsx3D
+ L8dJNBjs/s9wJz/oqzNCmWk/rIPpKocZ4bASbovKPFfgfjXFW/nKo4bJLijwkfmQ2kh+
+ AxTc/eNKQ/ktJ6tQI3iStuqUuC5t7z7HMaGa6acsfesA5P3+dlbqlGj0bZZhJQkCfGiI
+ EeI7nyVNyIb1e9qrpgOSTsnd9NR2oeQIn5e56WnW7aDTn/XMKPa0vBpQ2/pZQkzX/kzv
+ Mg3g==
+X-Gm-Message-State: APjAAAUnLl5tHbV6we3OBVG3BgFX/O/pKGflomWxdkzxAC5g8YvtOUfI
+ M+F6Gb2yJKqJ6UJ5Vydapk+KLxHmUvY=
+X-Google-Smtp-Source: APXvYqwB/SnLmn4Tri3v/6Dq6VgEbP7hYWIAeV0eMELMnX6iR6lrh3QzFKzFGZWb9BPKjh9dFJDyvg==
+X-Received: by 2002:a5d:4692:: with SMTP id u18mr10468824wrq.206.1579688800384; 
+ Wed, 22 Jan 2020 02:26:40 -0800 (PST)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id t125sm3462104wmf.17.2020.01.22.02.26.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 22 Jan 2020 02:26:39 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id D17B71FF87;
+ Wed, 22 Jan 2020 10:26:38 +0000 (GMT)
 References: <20200121213853.9601-1-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <05208ecf-9d8f-7dfc-ea95-974e93aa49b5@redhat.com>
-Date: Wed, 22 Jan 2020 08:19:48 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+User-agent: mu4e 1.3.6; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Alistair Francis <alistair@alistair23.me>, qemu-trivial@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+Subject: Re: [PATCH] hw/misc/stm32f4xx_syscfg: Fix copy/paste error
+In-reply-to: <20200121213853.9601-1-f4bug@amsat.org>
+Date: Wed, 22 Jan 2020 10:26:38 +0000
+Message-ID: <871rrr23dt.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20200121213853.9601-1-f4bug@amsat.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: mfcGcc3XMxKQ0_AcKYk0mg-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::443
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,17 +75,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 22 Jan 2020 07:20:01 -0000
+X-List-Received-Date: Wed, 22 Jan 2020 10:26:45 -0000
 
-On 21/01/2020 22.38, Philippe Mathieu-Daud=C3=A9 wrote:
+
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+
 > Missed in 870c034da0b, hopefully reported by Coverity.
->=20
+>
 > Fixes: Coverity CID 1412793 (Incorrect expression)
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
 > ---
 >  hw/misc/stm32f4xx_syscfg.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
+>
 > diff --git a/hw/misc/stm32f4xx_syscfg.c b/hw/misc/stm32f4xx_syscfg.c
 > index dbcdca59f8..f960e4ea1e 100644
 > --- a/hw/misc/stm32f4xx_syscfg.c
@@ -91,11 +102,10 @@ irq, int level)
 >      int startbit =3D (irq & 3) * 4;
 > -    uint8_t config =3D config =3D irq / 16;
 > +    uint8_t config =3D irq / 16;
-> =20
+>=20=20
 >      trace_stm32f4xx_syscfg_set_irq(irq / 16, irq % 16, level);
-> =20
->=20
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 
+--=20
+Alex Benn=C3=A9e
 
