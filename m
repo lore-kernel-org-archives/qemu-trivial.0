@@ -1,62 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iub3P-00035D-TE
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2020 06:53:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38741)
+	id 1iudvO-0004Hf-BX
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2020 09:57:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40091)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iub3M-0002zi-6j
- for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:53:41 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1iudvL-0004Ce-61
+ for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 09:57:36 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iub3L-0001ZF-3J
- for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:53:40 -0500
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:36447)
+ (envelope-from <peter.maydell@linaro.org>) id 1iudvK-0007lS-5T
+ for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 09:57:35 -0500
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:36223)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iub3K-0001Yl-UF
- for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:53:39 -0500
-Received: by mail-ot1-x341.google.com with SMTP id m2so2475845otq.3
- for <qemu-trivial@nongnu.org>; Thu, 23 Jan 2020 03:53:38 -0800 (PST)
+ id 1iudvJ-0007ix-Ur
+ for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 09:57:34 -0500
+Received: by mail-ot1-x343.google.com with SMTP id m2so3006237otq.3
+ for <qemu-trivial@nongnu.org>; Thu, 23 Jan 2020 06:57:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=jiEFxAVj/mPGzRjcXJwGIfxc2hM/TdWjGuKvlH0yFAM=;
- b=C4bLCHzO6NQ/k+qHqTnTcU6J3STSEMopUE3fAarUapmH1wYUT8VDnbb6aqXQxCiOBK
- tjjZS1je15dDjjYn5WJ7A+C9IwYjNnstJDIbw3cdVN7brJepFDap1B/tUPhSRPa8K9Z6
- L5Y931si7JUYw8pimeSxgnBzkeL1o2vKQUacMYVYw0zNz/L8kvg7iKsqrdhzBbppgEl+
- SxV10py0MMW+KVIjp/Yyh/yywySfQ1oPaSKokVqAJdsS0NMROPqsIebAp8iVEMGhXUQU
- pJAN2C8etGnth6Wp0wQvSTXNEtbLziBIwnWbLxdzTkG2gtjDxayAh4PCUjx1tngaelPO
- Sh8w==
+ bh=78OoLEKFshaco3XqlhTyDxZN2Mdmre/EN0v1XtzbuR0=;
+ b=ZWmV9fw7omIzoYFDr9pbun5Qfn3dVDRHV4eAiqcI08YWzC/lXrf6WZEcfJ1DWaX3wq
+ uHzQUXzgfz5kBsTDzHjXPn3IkBBd6X9+bqLWLXTlUCr8WrwR+uokTnZUmxJOSnFkHm6Q
+ GrYGZE52ERXMWOdYyQxwD9L3+2vCBoqbT7BkBPx8FfvMunp0ycengbtd099f0Lpcz+I0
+ qYI6m/7MCO+vSV32ycQLSiWk3QFBUlxRKAE/T4Bj/24o66MTfDUGkBHtZFeMkDMQhMGf
+ 62gPC1tqlu7DHDh6rIh5AQIYNv5QQxkbbFbTtJikJBCa/2r/U0PwzHrcXtrNum2J0sE7
+ iTyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=jiEFxAVj/mPGzRjcXJwGIfxc2hM/TdWjGuKvlH0yFAM=;
- b=ZMBqXS7U0Tivwr8tFcZ9UMYT0YNNAM+lT96f1SzsIQNND/qb89m8ms0Fu9OK5sc6Al
- dez6UrybO3iqatTKcQHGE8/5trox+ShpE2IbCSMDQfEXnLh4ev4mn1xiHockCfAF6Pc4
- aPabHqObgL/lxNxMbHvWgNpCfCZGaehidQ4Yrn2KRgNRCCqs1nLE81URc6TJtxT8/jWP
- mMBbg8f2WXIp1bFKw59wyVZroIbBJ1IGIyXqOdDjH5v4FeeTpUn4ZtwzgCSSpXzz4IbF
- vJ0t5G394O9dYR5SgYbYp7g9PqrOmjPDQ3+w4GZEDbTj09/TRytmG6aKyYimDxmofWB7
- cyng==
-X-Gm-Message-State: APjAAAXA/Kx0diWHIVphPqFDBxy5H2mU6jwevbPlKYfCw3lfru41OW5q
- BBPrW6kFSFyfkJfLfKZ8SelbfPwWaXSQZSym8VzSwSLJpP4=
-X-Google-Smtp-Source: APXvYqyBD+bp3ayHUWadu90HXnJ2UiPufQhG+lR76jOjRIUcCM/fDaMLcl6yzFgY6g6kPLWPqVvmFxXk01gBYwDHf0s=
-X-Received: by 2002:a05:6830:4a4:: with SMTP id
- l4mr5115122otd.91.1579780418124; 
- Thu, 23 Jan 2020 03:53:38 -0800 (PST)
+ bh=78OoLEKFshaco3XqlhTyDxZN2Mdmre/EN0v1XtzbuR0=;
+ b=T2dhBi5HXxtveYMFc1ilrcNO3sPtGRXvMqf4Z0bsU7FEgfHq180uNEGQND7t9jQusf
+ 4lWzwG3YU5km55IC56IcFxAytmMET0NO3U8+uovj9JQPD+yrps3rFNd8HBimCknRmxup
+ VTJKENzUHKNjZpcTu5S/I1RtziyWibaxXvtFrQMtILbKZLt82zRO1uslDk/784X5fHAY
+ tFbOFMZ28WeaON2w6BfbPz3lhTrFBA+jO4bRN8hjBTgSDjHLa+l5gA86BDsVTEO8L8n4
+ Vw7wLkxxd8Y9heKFwEMHrkNANVsWN0dCWK35BQ2kybIBuxY6FAKW9FfSijia4CQ5gQNI
+ mqOw==
+X-Gm-Message-State: APjAAAVTg6th09krQlg4Ajs53R+hIO7Jpw9xq1lEuIfDBF8dSGqgOGXR
+ ZTeJxXKPAPpi+NnqFHu5OiLarGroqxgpCYyf8Gr5fw==
+X-Google-Smtp-Source: APXvYqxeoCf+W762Ucg8W/W4FjNefJdeQ8bYNiSyC9LFCiEAsMtG9gtLOoHuwJfzdfCTdoTooem8+bs3ddCSunh36B8=
+X-Received: by 2002:a05:6830:184:: with SMTP id
+ q4mr11914530ota.232.1579791453016; 
+ Thu, 23 Jan 2020 06:57:33 -0800 (PST)
 MIME-Version: 1.0
-References: <20200122172137.7282-1-philmd@redhat.com>
-In-Reply-To: <20200122172137.7282-1-philmd@redhat.com>
+References: <20200121213853.9601-1-f4bug@amsat.org>
+In-Reply-To: <20200121213853.9601-1-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 23 Jan 2020 11:53:27 +0000
-Message-ID: <CAFEAcA_4yGD4Tm5LpN3PXP6S_cbFGdVD8jAcnrm2pEyLNteW0w@mail.gmail.com>
-Subject: Re: [PATCH] Makefile: List the sphinx documentation in 'make help'
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Date: Thu, 23 Jan 2020 14:57:22 +0000
+Message-ID: <CAFEAcA_yVNoFjgTcdCfxzzLLrz2jpENS9FZVp9vWS2X-R11REA@mail.gmail.com>
+Subject: Re: [PATCH] hw/misc/stm32f4xx_syscfg: Fix copy/paste error
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>, 
  QEMU Trivial <qemu-trivial@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::341
+X-Received-From: 2607:f8b0:4864:20::343
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -68,40 +69,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Jan 2020 11:53:42 -0000
+X-List-Received-Date: Thu, 23 Jan 2020 14:57:37 -0000
 
-On Wed, 22 Jan 2020 at 17:21, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
+On Tue, 21 Jan 2020 at 21:38, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
 >
-> In commit 5f71eac06e1 we started to support the rST documentation.
-> List the build target we need to call to generate the rST files in
-> the 'make help' output.
+> Missed in 870c034da0b, hopefully reported by Coverity.
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Fixes: Coverity CID 1412793 (Incorrect expression)
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  Makefile | 2 +-
+>  hw/misc/stm32f4xx_syscfg.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/Makefile b/Makefile
-> index 6562b0dc97..b777f7fcdd 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -1197,7 +1197,7 @@ endif
->         @echo  '  vm-help         - Help about targets running tests insi=
-de VM'
->         @echo  ''
->         @echo  'Documentation targets:'
-> -       @echo  '  html info pdf txt'
-> +       @echo  '  html info pdf txt sphinxdocs'
->         @echo  '                  - Build documentation in specified form=
-at'
->  ifdef CONFIG_GCOV
->         @echo  '  coverage-report - Create code coverage report'
+> diff --git a/hw/misc/stm32f4xx_syscfg.c b/hw/misc/stm32f4xx_syscfg.c
+> index dbcdca59f8..f960e4ea1e 100644
+> --- a/hw/misc/stm32f4xx_syscfg.c
+> +++ b/hw/misc/stm32f4xx_syscfg.c
+> @@ -47,7 +47,7 @@ static void stm32f4xx_syscfg_set_irq(void *opaque, int =
+irq, int level)
+>      STM32F4xxSyscfgState *s =3D opaque;
+>      int icrreg =3D irq / 4;
+>      int startbit =3D (irq & 3) * 4;
+> -    uint8_t config =3D config =3D irq / 16;
+> +    uint8_t config =3D irq / 16;
+>
+>      trace_stm32f4xx_syscfg_set_irq(irq / 16, irq % 16, level);
 
-'sphinxdocs' wasn't intended to be a user-facing target.
-If you do 'make html' this will build the HTML Sphinx
-documentation (as well as any legacy non-Sphinx HTML).
 
-thanks
+
+Applied to target-arm.next, thanks.
+
 -- PMM
 
