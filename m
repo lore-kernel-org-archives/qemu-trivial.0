@@ -1,91 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iughO-0003kC-Ab
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2020 12:55:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34734)
+	id 1iuhC2-0003f7-HS
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2020 13:27:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47449)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iughJ-0003co-H4
- for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 12:55:19 -0500
+ (envelope-from <alex.bennee@linaro.org>) id 1iuhBy-0003Zk-S5
+ for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 13:26:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iughI-0000QP-5p
- for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 12:55:17 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:48251
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iughH-0000Ou-Le
- for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 12:55:15 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579802113;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=CsA7brPv5IiayWjJ564yZ0Wwt41HKNVlotkuFX3f/6o=;
- b=H8VPBNLlq8OqQdpSgn5D8ilLigkByPPSQ6bVKqR4vzDa9YAvmtcL8WtaTYkAM0D68p3c/i
- A6I2Hlh8e1vclQg8SQYpAs4u31DoAtt4dz3F/SIUROnMd5yf/gldzkKbtU+AbqBktMVsh8
- X9MUsza/wwDhs1JTYwIAQh28Kg7KzyU=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-19-H_YQei6EPEuECtJpRfu8mw-1; Thu, 23 Jan 2020 12:55:11 -0500
-Received: by mail-wr1-f69.google.com with SMTP id r2so2236743wrp.7
- for <qemu-trivial@nongnu.org>; Thu, 23 Jan 2020 09:55:11 -0800 (PST)
+ (envelope-from <alex.bennee@linaro.org>) id 1iuhBx-0004PA-KY
+ for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 13:26:58 -0500
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:38759)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+ id 1iuhBx-0004OV-Dv
+ for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 13:26:57 -0500
+Received: by mail-wm1-x344.google.com with SMTP id u2so3572112wmc.3
+ for <qemu-trivial@nongnu.org>; Thu, 23 Jan 2020 10:26:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:in-reply-to:date
+ :message-id:mime-version:content-transfer-encoding;
+ bh=7dXJiqFh/Qd0FgxO2ZOIyemz+7W8bSpsp6lnmrr/4EQ=;
+ b=W2JJ4TeRyjyoPxJ9+jIE+APwYqc31Ed4827OmakVFGzMwG6cyXM93/MSUZOuZ9Fy4u
+ Av25d6W3rWFuHkAGv4A9SX7ik1hVA45gqkX43xzSCDkkw/XsmJVi0H2vlBDshf62Ynlw
+ yRO8fycmV9FeS44u3Bq/fHZBJ+GUKKNXZ1fz0wUMUzcWkS1gk91/tRTSXYv9/4NrsT6p
+ UTkFElrJeWj47WjiD43EgBn5W+CjCzcHr++dZ1Vj8xsyOggXfOhRpBZojh+LR6rjC8zA
+ yMQ7l3wTg8pMIb6eyw0Otb3OOxOGmqUaLdQaEAW4qElAPjaZj7HR1bGIErdFn+7jwyUz
+ mh7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=0fl68LNmJbFTI1O/WBJWI+YervOar9TZo3leS9OrhI8=;
- b=tLhjCoBdWn7T8AIGO/Fb9ZVoEuiUbwUCQoaV18hT6B52bKDkIdsoEg/MAX5URSJz9r
- KcHkqtWeW47fOoeO8TFRWc4V5weVR+XdGQCMyuQr/0pc4Nn4fRkm0NghNd6esQIXdE/G
- OL0u6EALCH3lVU38WLmBnBRHGW2mIj7tXk3t4ffvF1zDBwYP5sKELdJ1gMehOU7dP84u
- ppAT14rkPMH8cjz0X1KNdWngSXW2qE/QunlW9+p/oUfzl0i310a55daXGwGSyxTEQ9JQ
- H6ckNWtM9Z6gYZOFvOvao8MAAv0m+ajsW0D+inC/GL3eR94BrSPs9CFFuZEAoIxCz9fN
- udrQ==
-X-Gm-Message-State: APjAAAVOcPrMTBPr1vmERT/poBPBmgsuC9ShnKIlkJld6yqbR4ftRyHU
- 2M+mDWrKzbgdjg/9fH7Pho1PhlYc7rq0Bb8J2oGyQWGUxib+CFXvt8DxVRM9ZnvQ3dv7ZpZinJV
- eg6zHb98W/+8g245Upg==
-X-Received: by 2002:a05:600c:228f:: with SMTP id
- 15mr5568236wmf.56.1579802110492; 
- Thu, 23 Jan 2020 09:55:10 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwSzLK+pjpstzeHkdgPXBLM/skus+p40VzHZOu/bQJ33G5IjNZfVtXuSfnT14eq1UURR79AOA==
-X-Received: by 2002:a05:600c:228f:: with SMTP id
- 15mr5568205wmf.56.1579802110302; 
- Thu, 23 Jan 2020 09:55:10 -0800 (PST)
-Received: from [192.168.1.35] (113.red-83-57-172.dynamicip.rima-tde.net.
- [83.57.172.113])
- by smtp.gmail.com with ESMTPSA id u18sm3960739wrt.26.2020.01.23.09.55.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Jan 2020 09:55:09 -0800 (PST)
-Subject: Re: [PATCH 0/6] Fix more GCC9 -O3 warnings
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Stefan Hajnoczi <stefanha@redhat.com>
-Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
- Peter Maydell <peter.maydell@linaro.org>, Hannes Reinecke <hare@suse.com>,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Max Reitz <mreitz@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Peter Chubb <peter.chubb@nicta.com.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>, Kevin Wolf <kwolf@redhat.com>,
- =?UTF-8?B?S8WRdsOhZ8OzLCBab2x0w6Fu?= <dirty.ice.hu@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>,
- qemu-arm@nongnu.org
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject
+ :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+ bh=7dXJiqFh/Qd0FgxO2ZOIyemz+7W8bSpsp6lnmrr/4EQ=;
+ b=lltEq197dP4KdP0SjYrY28OQwQmaUlRAqMQoOC3erlyIs+WVIY9Ju/11J0xeB0qLgc
+ iENVVSU8BkYvBZ5rjMCSTR29dZTzQovI+VkVOfUmcHWZq32aC5Z+ZMWdsftb6NVkTAi1
+ FrqI58+OoHJOdxhAwgStzHleCX4gFFINKSQmHyKQ27uTqApmJgPOYY3X/c0pr7G1VfXE
+ naL01cr+jaJWiC3CD1lx7R8bP3MxnxGTTLIMFW7xVEzItbA6R4ywzoTnYKE0akPeQA/n
+ tlau9PiFTPaGhrlOhRBmwEH1R1vSObVFEUsha6ujzSa08Z4+jUnlMvdYXYdVB//QpPmE
+ sUvg==
+X-Gm-Message-State: APjAAAXoJFcyPKKV6zh0vafO16q4eCaa1gcaexQQYo01iO+Rj8Q/07RH
+ PWQbzlUkF0kFaSsdqgIq7jonqA==
+X-Google-Smtp-Source: APXvYqy33tetM39E+6BoKwUeZDxw3JJOKqAWYoioWj4ZqTs+QVvOzkPsrX/1nM6Y2uAXHJVewNTAIw==
+X-Received: by 2002:a05:600c:2507:: with SMTP id
+ d7mr5226059wma.28.1579804015556; 
+ Thu, 23 Jan 2020 10:26:55 -0800 (PST)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id a5sm3552190wmb.37.2020.01.23.10.26.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 23 Jan 2020 10:26:54 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 66A121FF87;
+ Thu, 23 Jan 2020 18:26:53 +0000 (GMT)
 References: <20191217173252.4672-1-philmd@redhat.com>
- <6a8266c6-7c6d-3139-249f-2dd46c98e02f@redhat.com> <87blquza17.fsf@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <47e28e48-362a-39ea-ee58-9bbe7d222394@redhat.com>
-Date: Thu, 23 Jan 2020 18:55:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ <6a8266c6-7c6d-3139-249f-2dd46c98e02f@redhat.com>
+ <87blquza17.fsf@linaro.org>
+ <47e28e48-362a-39ea-ee58-9bbe7d222394@redhat.com>
+User-agent: mu4e 1.3.6; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org, Fam Zheng
+ <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>, Hannes
+ Reinecke <hare@suse.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org, Jason Wang
+ <jasowang@redhat.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Max Reitz <mreitz@redhat.com>, Andrew Jeffery <andrew@aj.id.au>, Peter
+ Chubb <peter.chubb@nicta.com.au>, =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@kaod.org>, Kevin
+ Wolf <kwolf@redhat.com>, =?utf-8?B?S8WRdsOhZ8OzLCBab2x0w6Fu?=
+ <dirty.ice.hu@gmail.com>, Paolo
+ Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org
+Subject: Re: [PATCH 0/6] Fix more GCC9 -O3 warnings
+In-reply-to: <47e28e48-362a-39ea-ee58-9bbe7d222394@redhat.com>
+Date: Thu, 23 Jan 2020 18:26:53 +0000
+Message-ID: <878slyyqoi.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <87blquza17.fsf@linaro.org>
-Content-Language: en-US
-X-MC-Unique: H_YQei6EPEuECtJpRfu8mw-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 207.211.31.120
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::344
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -97,43 +89,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Jan 2020 17:55:20 -0000
+X-List-Received-Date: Thu, 23 Jan 2020 18:27:00 -0000
 
-On 1/23/20 12:28 PM, Alex Benn=C3=A9e wrote:
-> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
->=20
->> On 12/17/19 6:32 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->>> Fix some trivial warnings when building with -O3.
->>> Philippe Mathieu-Daud=C3=A9 (6):
->>>     audio/audio: Add missing fall through comment
->>>     hw/display/tcx: Add missing fall through comments
->>>     hw/net/imx_fec: Rewrite fall through comments
->>>     hw/timer/aspeed_timer: Add a fall through comment
->>>     hw/scsi/megasas: Silent GCC9 duplicated-cond warning
->>>     qemu-io-cmds: Silent GCC9 format-overflow warning
->>
->> Sorry, this series failed because I used this tag in the first patch:
->>
->> Cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.com>
->>
->> Then git-send-email was happy with --dry-run, but then failed:
->> (body) Adding cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail=
-.com> from line
->> 'Cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.com>'
->> 5.1.1 <K  v  g  >: Recipient address rejected: User unknown in local
->> recipient table
->>
->> Note to self, enclose utf-8 names, as:
->> Cc: "K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n" <dirty.ice.hu@gmail.com>
->=20
-> I never have to with my tags:
->=20
-> Cc: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->=20
-> Is it possible to be more even utf-8? Sounds like a bug in the git tools
-> to me.
 
-The problem is the comma.
-What do you mean by "more UTF-8"?
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
+> On 1/23/20 12:28 PM, Alex Benn=C3=A9e wrote:
+>> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+>>=20
+>>> On 12/17/19 6:32 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>> Fix some trivial warnings when building with -O3.
+>>>> Philippe Mathieu-Daud=C3=A9 (6):
+>>>>     audio/audio: Add missing fall through comment
+>>>>     hw/display/tcx: Add missing fall through comments
+>>>>     hw/net/imx_fec: Rewrite fall through comments
+>>>>     hw/timer/aspeed_timer: Add a fall through comment
+>>>>     hw/scsi/megasas: Silent GCC9 duplicated-cond warning
+>>>>     qemu-io-cmds: Silent GCC9 format-overflow warning
+>>>
+>>> Sorry, this series failed because I used this tag in the first patch:
+>>>
+>>> Cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.com>
+>>>
+>>> Then git-send-email was happy with --dry-run, but then failed:
+>>> (body) Adding cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmai=
+l.com> from line
+>>> 'Cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.com>'
+>>> 5.1.1 <K  v  g  >: Recipient address rejected: User unknown in local
+>>> recipient table
+>>>
+>>> Note to self, enclose utf-8 names, as:
+>>> Cc: "K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n" <dirty.ice.hu@gmail.com>
+>> I never have to with my tags:
+>> Cc: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> Is it possible to be more even utf-8? Sounds like a bug in the git
+>> tools
+>> to me.
+>
+> The problem is the comma.
+> What do you mean by "more UTF-8"?
+
+It was a joke - I think you are either utf-8 clean or not. Now the
+question is should the tools have slurped the coma as part of the name?
+Is it a localisation issue?
+
+--=20
+Alex Benn=C3=A9e
 
