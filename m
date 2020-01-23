@@ -1,64 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iuaiv-0000OA-EB
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2020 06:32:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32919)
+	id 1iub3P-00035D-TE
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2020 06:53:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38741)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <stefanha@gmail.com>) id 1iuait-0000Ml-BO
- for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:32:32 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1iub3M-0002zi-6j
+ for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:53:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <stefanha@gmail.com>) id 1iuais-0008HF-Cz
- for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:32:31 -0500
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:42513)
+ (envelope-from <peter.maydell@linaro.org>) id 1iub3L-0001ZF-3J
+ for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:53:40 -0500
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:36447)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <stefanha@gmail.com>)
- id 1iuaiq-0008Fj-9a; Thu, 23 Jan 2020 06:32:28 -0500
-Received: by mail-wr1-x441.google.com with SMTP id q6so2649812wro.9;
- Thu, 23 Jan 2020 03:32:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=+sHDYTYXY35BbDvLrvUf+80RBIsbR7QucjDuIeFfGLU=;
- b=iHeYwFo0sRcHmLzXzphM6YVrSo/wHe3wVvuHklMvtHwuyerEOJl12+Jp9plTWkmbSS
- KqYsyhuHxt9TGwy4ZeY+P440Dcp3Lc/Ul3exLTZw/K1txJDxNlS+KRYmG7WWnplW0tel
- KRbnGGvU9VRsv73ZjhLJf3ZAOb/V3ZK94xBg68Oqid1DuSFV/Pk+5Jixu9KrJKb12RBW
- i5JPRU20/vDqT5qTOsF02a37KBWU/tGcsrFeaKRo1WA+CTheAqyhhIsJeZujKOvTHgmd
- v/5NLzctZOhNE1eTWuJ10ktzbHUi7k62A/9ESHawXuhFTkvYaX6GYhmx20f+ePc2hbiI
- u0ww==
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iub3K-0001Yl-UF
+ for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:53:39 -0500
+Received: by mail-ot1-x341.google.com with SMTP id m2so2475845otq.3
+ for <qemu-trivial@nongnu.org>; Thu, 23 Jan 2020 03:53:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=jiEFxAVj/mPGzRjcXJwGIfxc2hM/TdWjGuKvlH0yFAM=;
+ b=C4bLCHzO6NQ/k+qHqTnTcU6J3STSEMopUE3fAarUapmH1wYUT8VDnbb6aqXQxCiOBK
+ tjjZS1je15dDjjYn5WJ7A+C9IwYjNnstJDIbw3cdVN7brJepFDap1B/tUPhSRPa8K9Z6
+ L5Y931si7JUYw8pimeSxgnBzkeL1o2vKQUacMYVYw0zNz/L8kvg7iKsqrdhzBbppgEl+
+ SxV10py0MMW+KVIjp/Yyh/yywySfQ1oPaSKokVqAJdsS0NMROPqsIebAp8iVEMGhXUQU
+ pJAN2C8etGnth6Wp0wQvSTXNEtbLziBIwnWbLxdzTkG2gtjDxayAh4PCUjx1tngaelPO
+ Sh8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=+sHDYTYXY35BbDvLrvUf+80RBIsbR7QucjDuIeFfGLU=;
- b=A0FAHHPuoQ0xp6YL/EKjKbF54vzdQKoPQL8rBfZpWtw0xiQbOu00bH7zfhZJvPRENJ
- +sWBDhOkTCWKHO16t8bOXJ4/0olcxIDYJ5YajDpHv/Fla8tacCVv3of4TsDzY+UmKKwL
- vUz52412v94Vsl7mkCi9ZmgNyFYJW8bfIStlqqWni+EhPseJjq31U86npy7eA8IXYylH
- xKCjh4nY+KdQn6MAw64j4cfIjc1Ou5sFmgYKgBkXMadojoPjTQe9bKiYZI39y1XNhCdg
- 3GjHpF18XcJTLrfmKZXW+/zX7nR0i9fRSpRLV2d3fJ6JMQFRRyGVahW1jnROYCq3xOLH
- AFuw==
-X-Gm-Message-State: APjAAAWwk3UBlYjKtK9Ttjufb7brLlnWhniu5jKMoSJF9HdmgNgg0wsp
- NLmTh8AhQnW60f9SNoPRkn4=
-X-Google-Smtp-Source: APXvYqyN0eazphPlACZXOg5rPKXPtmORa7TOhbvGUgAVx1p7rO52dWV64t+Pnv2/f9ZW07aaPwCqRQ==
-X-Received: by 2002:adf:ea42:: with SMTP id j2mr16378983wrn.270.1579779147157; 
- Thu, 23 Jan 2020 03:32:27 -0800 (PST)
-Received: from localhost ([51.15.41.238])
- by smtp.gmail.com with ESMTPSA id x10sm2641839wrv.60.2020.01.23.03.32.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Jan 2020 03:32:26 -0800 (PST)
-Date: Thu, 23 Jan 2020 11:32:25 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: salvador@qindel.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, sfandino@yahoo.com
-Subject: Re: [PATCH] qemu_set_log_filename: filename argument may be NULL
-Message-ID: <20200123113225.GB691377@stefanha-x1.localdomain>
-References: <20200122210812.17124-1-salvador@qindel.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=jiEFxAVj/mPGzRjcXJwGIfxc2hM/TdWjGuKvlH0yFAM=;
+ b=ZMBqXS7U0Tivwr8tFcZ9UMYT0YNNAM+lT96f1SzsIQNND/qb89m8ms0Fu9OK5sc6Al
+ dez6UrybO3iqatTKcQHGE8/5trox+ShpE2IbCSMDQfEXnLh4ev4mn1xiHockCfAF6Pc4
+ aPabHqObgL/lxNxMbHvWgNpCfCZGaehidQ4Yrn2KRgNRCCqs1nLE81URc6TJtxT8/jWP
+ mMBbg8f2WXIp1bFKw59wyVZroIbBJ1IGIyXqOdDjH5v4FeeTpUn4ZtwzgCSSpXzz4IbF
+ vJ0t5G394O9dYR5SgYbYp7g9PqrOmjPDQ3+w4GZEDbTj09/TRytmG6aKyYimDxmofWB7
+ cyng==
+X-Gm-Message-State: APjAAAXA/Kx0diWHIVphPqFDBxy5H2mU6jwevbPlKYfCw3lfru41OW5q
+ BBPrW6kFSFyfkJfLfKZ8SelbfPwWaXSQZSym8VzSwSLJpP4=
+X-Google-Smtp-Source: APXvYqyBD+bp3ayHUWadu90HXnJ2UiPufQhG+lR76jOjRIUcCM/fDaMLcl6yzFgY6g6kPLWPqVvmFxXk01gBYwDHf0s=
+X-Received: by 2002:a05:6830:4a4:: with SMTP id
+ l4mr5115122otd.91.1579780418124; 
+ Thu, 23 Jan 2020 03:53:38 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="2B/JsCI69OhZNC5r"
-Content-Disposition: inline
-In-Reply-To: <20200122210812.17124-1-salvador@qindel.com>
+References: <20200122172137.7282-1-philmd@redhat.com>
+In-Reply-To: <20200122172137.7282-1-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 23 Jan 2020 11:53:27 +0000
+Message-ID: <CAFEAcA_4yGD4Tm5LpN3PXP6S_cbFGdVD8jAcnrm2pEyLNteW0w@mail.gmail.com>
+Subject: Re: [PATCH] Makefile: List the sphinx documentation in 'make help'
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
+X-Received-From: 2607:f8b0:4864:20::341
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -70,43 +68,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Jan 2020 11:32:32 -0000
+X-List-Received-Date: Thu, 23 Jan 2020 11:53:42 -0000
 
+On Wed, 22 Jan 2020 at 17:21, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> In commit 5f71eac06e1 we started to support the rST documentation.
+> List the build target we need to call to generate the rST files in
+> the 'make help' output.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  Makefile | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/Makefile b/Makefile
+> index 6562b0dc97..b777f7fcdd 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -1197,7 +1197,7 @@ endif
+>         @echo  '  vm-help         - Help about targets running tests insi=
+de VM'
+>         @echo  ''
+>         @echo  'Documentation targets:'
+> -       @echo  '  html info pdf txt'
+> +       @echo  '  html info pdf txt sphinxdocs'
+>         @echo  '                  - Build documentation in specified form=
+at'
+>  ifdef CONFIG_GCOV
+>         @echo  '  coverage-report - Create code coverage report'
 
---2B/JsCI69OhZNC5r
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+'sphinxdocs' wasn't intended to be a user-facing target.
+If you do 'make html' this will build the HTML Sphinx
+documentation (as well as any legacy non-Sphinx HTML).
 
-On Wed, Jan 22, 2020 at 10:08:12PM +0100, salvador@qindel.com wrote:
-
-Existing callers like vl.c:main() do:
-
-   if (log_file) {
-        qemu_set_log_filename(log_file, &error_fatal);
-   }
-
-Please fix up existing callers.  They won't need to check for NULL
-anymore before calling qemu_set_log_filename().
-
-> +    /* else, let logfilename be NULL indicating we want to use stderr */
-
-Please update the doc comment instead.  That way callers know that
-passing NULL is allowed without reading the implementation.
-
---2B/JsCI69OhZNC5r
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl4phEgACgkQnKSrs4Gr
-c8h+sgf+KkMPkPO5J0HmxHNTO6txcYkrkVJvcvWBc2dSnvCDumfzAMHIB2cC3mjG
-JTa5RAob1heDKJGEWlGyf6m5KLFUlWvyeFq3EEhdirThHqTtV73gY8NMZ8aOhdgS
-RPUZlI8ISYkHjCtyVaVU3hIOHGjX/8s0BM1bfyERrxIfDNvQBNQsEQuVi38IBDdP
-H83DBuIYNcmSl3QXBztS2d0QdOOpXR4zvqm0zwZ8xHqokzIuDadW5RcmiV4KrTYe
-jc43g+SW0P4GkrCibyA8rtcwfW40pOTX4RjRoTJZRBdJNUTcwoDPJ56iMcdXtUWS
-xOz68N+Fgmvje6Y96vj0VldgvWWpsQ==
-=bbIk
------END PGP SIGNATURE-----
-
---2B/JsCI69OhZNC5r--
+thanks
+-- PMM
 
