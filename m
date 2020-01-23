@@ -1,53 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iuWFM-0007uu-Lr
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2020 01:45:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55847)
+	id 1iuafV-0005V3-2T
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2020 06:29:01 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60324)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iuWFK-0007sr-1V
- for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 01:45:42 -0500
+ (envelope-from <alex.bennee@linaro.org>) id 1iuafR-0005U3-Q0
+ for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:28:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iuWFF-0007mK-GK
- for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 01:45:41 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:47921
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iuWFD-0007gk-NM
- for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 01:45:37 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579761934;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=Wa/wOvDKIKjfYFWPzA0F93y0kOqKY3rHPjDTfSCfC/0=;
- b=IRp9UZYQZHVGWLuVDI3klb+VBdRi34DDlmcyRUsiqUTQWCdymVPbLlOp8+PkRmfbcDpDsJ
- SztjPTl8qiJa/T6Iqkqz9axAD9nmtq7ecw4Kj4hch+ODkuOD+D40DxB9vXg79aykUZ9Muj
- Z5MvF60VEycuraEd1WX9bFiKOMZXrPw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-134-D8-5FDHYN5WNhSjUDK-JKw-1; Thu, 23 Jan 2020 01:45:30 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E90E010054E3;
- Thu, 23 Jan 2020 06:45:29 +0000 (UTC)
-Received: from thuth.com (ovpn-116-64.ams2.redhat.com [10.36.116.64])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 17DE686448;
- Thu, 23 Jan 2020 06:45:28 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Subject: [PATCH] hw/bt: Remove empty Kconfig file
-Date: Thu, 23 Jan 2020 07:45:25 +0100
-Message-Id: <20200123064525.6935-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: D8-5FDHYN5WNhSjUDK-JKw-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+ (envelope-from <alex.bennee@linaro.org>) id 1iuafQ-0006U6-IT
+ for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:28:57 -0500
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:53639)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+ id 1iuafQ-0006TR-A8
+ for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:28:56 -0500
+Received: by mail-wm1-x341.google.com with SMTP id m24so2171376wmc.3
+ for <qemu-trivial@nongnu.org>; Thu, 23 Jan 2020 03:28:56 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=references:user-agent:from:to:cc:subject:in-reply-to:date
+ :message-id:mime-version:content-transfer-encoding;
+ bh=JT0vRtzsfSszG2BZGI3MYVv47jIAKzN+WgSV9JREyRA=;
+ b=fkUaQvvaAY7oZ7SDFpItQ+JmgHO24HO4HBwcdI5Glm4OJVYc1lx3FdmA8xuscw95x5
+ qg9LAAPHJkQ+5NMBjqcfR76VSxrWtaQTlOywepbOAVo0eqfA3COopXR7u50YDDsrotvW
+ wcxUEQEaoTcNiQYaqPBPfH9oEEENPMQLHbKDDEkaGjQDJqGC5Yhgaski3Q91ZhH1tLtO
+ 4qs0m2xxq/Byj2G0fFPONxTG6BlAIW4kr0eN34a8UcP0+tlH+0Se4NKP88/PXYYbLI3x
+ J3gI05xZGUmpdPVy527hwqs1q84UhNX+ouFcrJkwPYI9FEoD0NnDnZMek3EW7OV7r9mB
+ Ksfg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject
+ :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+ bh=JT0vRtzsfSszG2BZGI3MYVv47jIAKzN+WgSV9JREyRA=;
+ b=mqgz5Z+HwVvWU5T3xZION0E7W4VpSDmH3BJQQ3RcxRbRkX5YiLxGxXTY+QXxs4sdyZ
+ tW7EiSnK7VY/XeORPFHOixWkw8F1IXCk2T8B4vbEGtseb4xDyNudFDSRsvGTq31LnJp8
+ Aoq1kTScXgISFVrQFnQhlNwOo/Gh8K+qTYQ7iCXstTqasIPDlutiDZfuVjM1+d02vT6p
+ +LsaOZp+aa/mfJam6kfoGXI4bU8CaoMrvQDW6BUJyTlGiWb9Ge7Y3xP1hpx13NgMWiKd
+ 7MyILQMs6ngbqHW1bsBU/DSpezXToErpl2rUIro4ghLrSNYxG0yuk8abB5qs98KD43l4
+ xTlQ==
+X-Gm-Message-State: APjAAAUtai+ADvS2TKgCQ/0RosZXtG8rirrpgiV2sLkEW7FyO8IaJkRD
+ ESlXHip5npFnSQ0R+QW95BLgiQ==
+X-Google-Smtp-Source: APXvYqzBfyOaCavQLsNNPp3o3Yeh1KcX20P8tpeJ/t856wf8osmzxGnXuf8g7YzU3mJgXDjTwcRqrA==
+X-Received: by 2002:a1c:7e0b:: with SMTP id z11mr3780971wmc.88.1579778935127; 
+ Thu, 23 Jan 2020 03:28:55 -0800 (PST)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id i10sm2661243wru.16.2020.01.23.03.28.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 23 Jan 2020 03:28:53 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id E8EAF1FF87;
+ Thu, 23 Jan 2020 11:28:52 +0000 (GMT)
+References: <20191217173252.4672-1-philmd@redhat.com>
+ <6a8266c6-7c6d-3139-249f-2dd46c98e02f@redhat.com>
+User-agent: mu4e 1.3.6; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>, Peter Maydell
+ <peter.maydell@linaro.org>, Hannes Reinecke <hare@suse.com>, Gerd Hoffmann
+ <kraxel@redhat.com>, qemu-block@nongnu.org, qemu-trivial@nongnu.org, Jason
+ Wang <jasowang@redhat.com>, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, Max Reitz <mreitz@redhat.com>, Andrew
+ Jeffery <andrew@aj.id.au>, Peter Chubb <peter.chubb@nicta.com.au>,
+ =?utf-8?Q?C=C3=A9dric?=
+ Le Goater <clg@kaod.org>, Kevin Wolf <kwolf@redhat.com>, =?utf-8?B?S8WR?=
+ =?utf-8?B?dsOhZ8OzLCBab2x0w6Fu?=
+ <dirty.ice.hu@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Joel
+ Stanley <joel@jms.id.au>, qemu-arm@nongnu.org
+Subject: Re: [PATCH 0/6] Fix more GCC9 -O3 warnings
+In-reply-to: <6a8266c6-7c6d-3139-249f-2dd46c98e02f@redhat.com>
+Date: Thu, 23 Jan 2020 11:28:52 +0000
+Message-ID: <87blquza17.fsf@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::341
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -59,24 +85,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Jan 2020 06:45:43 -0000
+X-List-Received-Date: Thu, 23 Jan 2020 11:28:59 -0000
 
-While removing the bluetooth code some weeks ago, I had to leave the
-hw/bt/Kconfig file around. Otherwise some of the builds would have been
-broken since the generated dependency files tried to include it before
-they were rebuilt. Meanwhile, all those dependency files should have
-been updated, so we can remove the empty Kconfig file now, too.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/bt/Kconfig | 0
- 1 file changed, 0 insertions(+), 0 deletions(-)
- delete mode 100644 hw/bt/Kconfig
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-diff --git a/hw/bt/Kconfig b/hw/bt/Kconfig
-deleted file mode 100644
-index e69de29bb2..0000000000
+> On 12/17/19 6:32 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+>> Fix some trivial warnings when building with -O3.
+>> Philippe Mathieu-Daud=C3=A9 (6):
+>>    audio/audio: Add missing fall through comment
+>>    hw/display/tcx: Add missing fall through comments
+>>    hw/net/imx_fec: Rewrite fall through comments
+>>    hw/timer/aspeed_timer: Add a fall through comment
+>>    hw/scsi/megasas: Silent GCC9 duplicated-cond warning
+>>    qemu-io-cmds: Silent GCC9 format-overflow warning
+>
+> Sorry, this series failed because I used this tag in the first patch:
+>
+> Cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.com>
+>
+> Then git-send-email was happy with --dry-run, but then failed:
+> (body) Adding cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.=
+com> from line
+> 'Cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.com>'
+> 5.1.1 <K  v  g  >: Recipient address rejected: User unknown in local
+> recipient table
+>
+> Note to self, enclose utf-8 names, as:
+> Cc: "K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n" <dirty.ice.hu@gmail.com>
+
+I never have to with my tags:
+
+Cc: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+Is it possible to be more even utf-8? Sounds like a bug in the git tools
+to me.
+
 --=20
-2.18.1
-
+Alex Benn=C3=A9e
 
