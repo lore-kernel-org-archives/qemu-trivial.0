@@ -1,79 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iuafV-0005V3-2T
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2020 06:29:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60324)
+	id 1iuaiv-0000OA-EB
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Jan 2020 06:32:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32919)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alex.bennee@linaro.org>) id 1iuafR-0005U3-Q0
- for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:28:58 -0500
+ (envelope-from <stefanha@gmail.com>) id 1iuait-0000Ml-BO
+ for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:32:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alex.bennee@linaro.org>) id 1iuafQ-0006U6-IT
- for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:28:57 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:53639)
+ (envelope-from <stefanha@gmail.com>) id 1iuais-0008HF-Cz
+ for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:32:31 -0500
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:42513)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
- id 1iuafQ-0006TR-A8
- for qemu-trivial@nongnu.org; Thu, 23 Jan 2020 06:28:56 -0500
-Received: by mail-wm1-x341.google.com with SMTP id m24so2171376wmc.3
- for <qemu-trivial@nongnu.org>; Thu, 23 Jan 2020 03:28:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=references:user-agent:from:to:cc:subject:in-reply-to:date
- :message-id:mime-version:content-transfer-encoding;
- bh=JT0vRtzsfSszG2BZGI3MYVv47jIAKzN+WgSV9JREyRA=;
- b=fkUaQvvaAY7oZ7SDFpItQ+JmgHO24HO4HBwcdI5Glm4OJVYc1lx3FdmA8xuscw95x5
- qg9LAAPHJkQ+5NMBjqcfR76VSxrWtaQTlOywepbOAVo0eqfA3COopXR7u50YDDsrotvW
- wcxUEQEaoTcNiQYaqPBPfH9oEEENPMQLHbKDDEkaGjQDJqGC5Yhgaski3Q91ZhH1tLtO
- 4qs0m2xxq/Byj2G0fFPONxTG6BlAIW4kr0eN34a8UcP0+tlH+0Se4NKP88/PXYYbLI3x
- J3gI05xZGUmpdPVy527hwqs1q84UhNX+ouFcrJkwPYI9FEoD0NnDnZMek3EW7OV7r9mB
- Ksfg==
+ (Exim 4.71) (envelope-from <stefanha@gmail.com>)
+ id 1iuaiq-0008Fj-9a; Thu, 23 Jan 2020 06:32:28 -0500
+Received: by mail-wr1-x441.google.com with SMTP id q6so2649812wro.9;
+ Thu, 23 Jan 2020 03:32:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=+sHDYTYXY35BbDvLrvUf+80RBIsbR7QucjDuIeFfGLU=;
+ b=iHeYwFo0sRcHmLzXzphM6YVrSo/wHe3wVvuHklMvtHwuyerEOJl12+Jp9plTWkmbSS
+ KqYsyhuHxt9TGwy4ZeY+P440Dcp3Lc/Ul3exLTZw/K1txJDxNlS+KRYmG7WWnplW0tel
+ KRbnGGvU9VRsv73ZjhLJf3ZAOb/V3ZK94xBg68Oqid1DuSFV/Pk+5Jixu9KrJKb12RBW
+ i5JPRU20/vDqT5qTOsF02a37KBWU/tGcsrFeaKRo1WA+CTheAqyhhIsJeZujKOvTHgmd
+ v/5NLzctZOhNE1eTWuJ10ktzbHUi7k62A/9ESHawXuhFTkvYaX6GYhmx20f+ePc2hbiI
+ u0ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject
- :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
- bh=JT0vRtzsfSszG2BZGI3MYVv47jIAKzN+WgSV9JREyRA=;
- b=mqgz5Z+HwVvWU5T3xZION0E7W4VpSDmH3BJQQ3RcxRbRkX5YiLxGxXTY+QXxs4sdyZ
- tW7EiSnK7VY/XeORPFHOixWkw8F1IXCk2T8B4vbEGtseb4xDyNudFDSRsvGTq31LnJp8
- Aoq1kTScXgISFVrQFnQhlNwOo/Gh8K+qTYQ7iCXstTqasIPDlutiDZfuVjM1+d02vT6p
- +LsaOZp+aa/mfJam6kfoGXI4bU8CaoMrvQDW6BUJyTlGiWb9Ge7Y3xP1hpx13NgMWiKd
- 7MyILQMs6ngbqHW1bsBU/DSpezXToErpl2rUIro4ghLrSNYxG0yuk8abB5qs98KD43l4
- xTlQ==
-X-Gm-Message-State: APjAAAUtai+ADvS2TKgCQ/0RosZXtG8rirrpgiV2sLkEW7FyO8IaJkRD
- ESlXHip5npFnSQ0R+QW95BLgiQ==
-X-Google-Smtp-Source: APXvYqzBfyOaCavQLsNNPp3o3Yeh1KcX20P8tpeJ/t856wf8osmzxGnXuf8g7YzU3mJgXDjTwcRqrA==
-X-Received: by 2002:a1c:7e0b:: with SMTP id z11mr3780971wmc.88.1579778935127; 
- Thu, 23 Jan 2020 03:28:55 -0800 (PST)
-Received: from zen.linaroharston ([51.148.130.216])
- by smtp.gmail.com with ESMTPSA id i10sm2661243wru.16.2020.01.23.03.28.53
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=+sHDYTYXY35BbDvLrvUf+80RBIsbR7QucjDuIeFfGLU=;
+ b=A0FAHHPuoQ0xp6YL/EKjKbF54vzdQKoPQL8rBfZpWtw0xiQbOu00bH7zfhZJvPRENJ
+ +sWBDhOkTCWKHO16t8bOXJ4/0olcxIDYJ5YajDpHv/Fla8tacCVv3of4TsDzY+UmKKwL
+ vUz52412v94Vsl7mkCi9ZmgNyFYJW8bfIStlqqWni+EhPseJjq31U86npy7eA8IXYylH
+ xKCjh4nY+KdQn6MAw64j4cfIjc1Ou5sFmgYKgBkXMadojoPjTQe9bKiYZI39y1XNhCdg
+ 3GjHpF18XcJTLrfmKZXW+/zX7nR0i9fRSpRLV2d3fJ6JMQFRRyGVahW1jnROYCq3xOLH
+ AFuw==
+X-Gm-Message-State: APjAAAWwk3UBlYjKtK9Ttjufb7brLlnWhniu5jKMoSJF9HdmgNgg0wsp
+ NLmTh8AhQnW60f9SNoPRkn4=
+X-Google-Smtp-Source: APXvYqyN0eazphPlACZXOg5rPKXPtmORa7TOhbvGUgAVx1p7rO52dWV64t+Pnv2/f9ZW07aaPwCqRQ==
+X-Received: by 2002:adf:ea42:: with SMTP id j2mr16378983wrn.270.1579779147157; 
+ Thu, 23 Jan 2020 03:32:27 -0800 (PST)
+Received: from localhost ([51.15.41.238])
+ by smtp.gmail.com with ESMTPSA id x10sm2641839wrv.60.2020.01.23.03.32.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Jan 2020 03:28:53 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id E8EAF1FF87;
- Thu, 23 Jan 2020 11:28:52 +0000 (GMT)
-References: <20191217173252.4672-1-philmd@redhat.com>
- <6a8266c6-7c6d-3139-249f-2dd46c98e02f@redhat.com>
-User-agent: mu4e 1.3.6; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>, Peter Maydell
- <peter.maydell@linaro.org>, Hannes Reinecke <hare@suse.com>, Gerd Hoffmann
- <kraxel@redhat.com>, qemu-block@nongnu.org, qemu-trivial@nongnu.org, Jason
- Wang <jasowang@redhat.com>, Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>, Max Reitz <mreitz@redhat.com>, Andrew
- Jeffery <andrew@aj.id.au>, Peter Chubb <peter.chubb@nicta.com.au>,
- =?utf-8?Q?C=C3=A9dric?=
- Le Goater <clg@kaod.org>, Kevin Wolf <kwolf@redhat.com>, =?utf-8?B?S8WR?=
- =?utf-8?B?dsOhZ8OzLCBab2x0w6Fu?=
- <dirty.ice.hu@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Joel
- Stanley <joel@jms.id.au>, qemu-arm@nongnu.org
-Subject: Re: [PATCH 0/6] Fix more GCC9 -O3 warnings
-In-reply-to: <6a8266c6-7c6d-3139-249f-2dd46c98e02f@redhat.com>
-Date: Thu, 23 Jan 2020 11:28:52 +0000
-Message-ID: <87blquza17.fsf@linaro.org>
+ Thu, 23 Jan 2020 03:32:26 -0800 (PST)
+Date: Thu, 23 Jan 2020 11:32:25 +0000
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: salvador@qindel.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, sfandino@yahoo.com
+Subject: Re: [PATCH] qemu_set_log_filename: filename argument may be NULL
+Message-ID: <20200123113225.GB691377@stefanha-x1.localdomain>
+References: <20200122210812.17124-1-salvador@qindel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="2B/JsCI69OhZNC5r"
+Content-Disposition: inline
+In-Reply-To: <20200122210812.17124-1-salvador@qindel.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::341
+X-Received-From: 2a00:1450:4864:20::441
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,42 +70,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Jan 2020 11:28:59 -0000
+X-List-Received-Date: Thu, 23 Jan 2020 11:32:32 -0000
 
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+--2B/JsCI69OhZNC5r
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-> On 12/17/19 6:32 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->> Fix some trivial warnings when building with -O3.
->> Philippe Mathieu-Daud=C3=A9 (6):
->>    audio/audio: Add missing fall through comment
->>    hw/display/tcx: Add missing fall through comments
->>    hw/net/imx_fec: Rewrite fall through comments
->>    hw/timer/aspeed_timer: Add a fall through comment
->>    hw/scsi/megasas: Silent GCC9 duplicated-cond warning
->>    qemu-io-cmds: Silent GCC9 format-overflow warning
->
-> Sorry, this series failed because I used this tag in the first patch:
->
-> Cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.com>
->
-> Then git-send-email was happy with --dry-run, but then failed:
-> (body) Adding cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.=
-com> from line
-> 'Cc: K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n <dirty.ice.hu@gmail.com>'
-> 5.1.1 <K  v  g  >: Recipient address rejected: User unknown in local
-> recipient table
->
-> Note to self, enclose utf-8 names, as:
-> Cc: "K=C5=91v=C3=A1g=C3=B3, Zolt=C3=A1n" <dirty.ice.hu@gmail.com>
+On Wed, Jan 22, 2020 at 10:08:12PM +0100, salvador@qindel.com wrote:
 
-I never have to with my tags:
+Existing callers like vl.c:main() do:
 
-Cc: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+   if (log_file) {
+        qemu_set_log_filename(log_file, &error_fatal);
+   }
 
-Is it possible to be more even utf-8? Sounds like a bug in the git tools
-to me.
+Please fix up existing callers.  They won't need to check for NULL
+anymore before calling qemu_set_log_filename().
 
---=20
-Alex Benn=C3=A9e
+> +    /* else, let logfilename be NULL indicating we want to use stderr */
+
+Please update the doc comment instead.  That way callers know that
+passing NULL is allowed without reading the implementation.
+
+--2B/JsCI69OhZNC5r
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl4phEgACgkQnKSrs4Gr
+c8h+sgf+KkMPkPO5J0HmxHNTO6txcYkrkVJvcvWBc2dSnvCDumfzAMHIB2cC3mjG
+JTa5RAob1heDKJGEWlGyf6m5KLFUlWvyeFq3EEhdirThHqTtV73gY8NMZ8aOhdgS
+RPUZlI8ISYkHjCtyVaVU3hIOHGjX/8s0BM1bfyERrxIfDNvQBNQsEQuVi38IBDdP
+H83DBuIYNcmSl3QXBztS2d0QdOOpXR4zvqm0zwZ8xHqokzIuDadW5RcmiV4KrTYe
+jc43g+SW0P4GkrCibyA8rtcwfW40pOTX4RjRoTJZRBdJNUTcwoDPJ56iMcdXtUWS
+xOz68N+Fgmvje6Y96vj0VldgvWWpsQ==
+=bbIk
+-----END PGP SIGNATURE-----
+
+--2B/JsCI69OhZNC5r--
 
