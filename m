@@ -1,59 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iuw97-0004VI-HK
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Jan 2020 05:25:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43742)
+	id 1iv2f7-0002mA-Up
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Jan 2020 12:22:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53773)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <stefanha@redhat.com>) id 1iuw92-0004QC-VI
- for qemu-trivial@nongnu.org; Fri, 24 Jan 2020 05:24:57 -0500
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1iv2f5-0002jw-Qn
+ for qemu-trivial@nongnu.org; Fri, 24 Jan 2020 12:22:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <stefanha@redhat.com>) id 1iuw91-0005Hs-SM
- for qemu-trivial@nongnu.org; Fri, 24 Jan 2020 05:24:56 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:36389
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <stefanha@redhat.com>) id 1iuw91-0005HP-Oh
- for qemu-trivial@nongnu.org; Fri, 24 Jan 2020 05:24:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1579861495;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=jub131MXyMRaMBUqRg2Fc5ggG8DBK5kB113uWrxUibc=;
- b=bJIsIMgPegeiEZcOSuCnR2cpmU205ExtfJDvzb1XI4P5ULwEOjP+/MvmEnrzisjWGT4/2A
- wvoO9cmFNRbpwRJBDIWitvEA8nRW1IEkByyihVrAC0ATKJMzdmTSvHB+32SZ/ObK9pHOl3
- E78bvAftM0NTTaTlWJ0UyA795zCMDSQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-60-JW7fU0d-Njyxnmz8Ib8mVA-1; Fri, 24 Jan 2020 05:24:51 -0500
-X-MC-Unique: JW7fU0d-Njyxnmz8Ib8mVA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D6ABDDB5B;
- Fri, 24 Jan 2020 10:24:48 +0000 (UTC)
-Received: from localhost (ovpn-117-162.ams2.redhat.com [10.36.117.162])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3AD283B4;
- Fri, 24 Jan 2020 10:24:48 +0000 (UTC)
-Date: Fri, 24 Jan 2020 10:24:47 +0000
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: salvador@qindel.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, sfandino@yahoo.com,
- stefanha@gmail.com, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH] qemu_set_log_filename: filename argument may be NULL
-Message-ID: <20200124102447.GC736986@stefanha-x1.localdomain>
-References: <20200123113225.GB691377@stefanha-x1.localdomain>
- <20200123193626.19956-1-salvador@qindel.com>
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1iv2f4-0003bG-Di
+ for qemu-trivial@nongnu.org; Fri, 24 Jan 2020 12:22:27 -0500
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:45657)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1iv2f0-0003Xs-4R; Fri, 24 Jan 2020 12:22:22 -0500
+Received: by mail-ot1-x344.google.com with SMTP id 59so2302199otp.12;
+ Fri, 24 Jan 2020 09:22:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=rAKShrNxMu3ZVat7CaRPVYDzrzP2/5uHm5ULUp8EUpc=;
+ b=c26cwiayGVDPDXdmJFWnl6MmTqthKhfn7DI0vXyZLxAY6dmcloeir5lUzRuFCvplMr
+ wWOEs/VH2fQCVghYrXRZwWF25sCmCneo7irwMaMUfQ6NKRjFqrRuOG2C4p+iBFFCVhy4
+ 6HPef2jBxh7EWvH34ltMTYGi7WjVoT2NSxWn3qy9kHJcez1Mv22aOgV9APGYjY/ekUWn
+ InTY+eyglVjd3Cw2+JOc/pV0s1lwHSRvMS+kF2uxyUJRgiozuYMV6artPZdOXfvU8SwZ
+ CT45vaJOijti2jlgGrmNFYT/KWEqFYe2vAL1SSfUt+s8iVhV2JYAllys5bljzoZ9QQbd
+ 0/kA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=rAKShrNxMu3ZVat7CaRPVYDzrzP2/5uHm5ULUp8EUpc=;
+ b=XmIumVFojWxixHhNk3BWac2jYnbJgequv4p6ex385h9nb6yFj7Q8y0EQZHvGlVN/GD
+ EECo4SLJ/Sit28Jgl4wU37bjF/DxvkZgPgM6K+5bB42cVY+oFFRLk1hgsOUL2uqH4WKG
+ OKMbmBd9yca/lLmyD84bDeZ9LINLKDgmnLsyajq0TLiDKJLUhKXJlwpCbnuY8kBWHPO+
+ a7GI2AvDc1nx+Jp4hB77hI1KR1H1C5ylcdutGKeyFITlIsBZORZMn+DNH+nRihWXHFQL
+ ffamDS1qYz9CGPLeDDb/21xCJN5v7nrspnWfL4YlqOFgqc5VxwqA909z7EpkaLmcEc+P
+ 2Odg==
+X-Gm-Message-State: APjAAAXiJBngYvimn++cpCNZNHZYnV8Jz7McW1Eo1FDRJ/XUZNz9n3iS
+ K49hk8Er2oj1H0xjOkd36C25tWxw9kR2WGOk0uU=
+X-Google-Smtp-Source: APXvYqw9aRbgM81GuxpOj1mlfaj+0Jt4PG+cf1703N0aLzFxN2zps2b6qqJBca9/Wr1sC6qH5iGYAOBN+MPnYIDPzek=
+X-Received: by 2002:a9d:198b:: with SMTP id k11mr3563830otk.295.1579886540773; 
+ Fri, 24 Jan 2020 09:22:20 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200123193626.19956-1-salvador@qindel.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="1ccMZA6j1vT5UqiK"
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+References: <20200106182425.20312-1-danielhb413@gmail.com>
+ <20200106182425.20312-7-danielhb413@gmail.com>
+In-Reply-To: <20200106182425.20312-7-danielhb413@gmail.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Fri, 24 Jan 2020 18:22:09 +0100
+Message-ID: <CAL1e-=iaSis_dBzA+=GBQq5q24V2r8Tnt6jvQjtKs97RJ4-yJQ@mail.gmail.com>
+Subject: Re: [PATCH v1 06/59] mips-semi.c: remove 'uhi_done' label in
+ helper_do_semihosting()
+To: Daniel Henrique Barboza <danielhb413@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>, 
+ Aurelien Jarno <aurelien@aurel32.net>
+Content-Type: multipart/alternative; boundary="0000000000000c7124059ce6000e"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::344
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -65,50 +69,205 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Jan 2020 10:24:58 -0000
+X-List-Received-Date: Fri, 24 Jan 2020 17:22:29 -0000
 
---1ccMZA6j1vT5UqiK
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+--0000000000000c7124059ce6000e
+Content-Type: text/plain; charset="UTF-8"
 
-On Thu, Jan 23, 2020 at 08:36:26PM +0100, salvador@qindel.com wrote:
-> From: Salvador Fandino <salvador@qindel.com>
->=20
-> NULL is a valid log filename used to indicate we want to use stderr
-> but qemu_set_log_filename (which is called by bsd-user/main.c) was not
-> handling it correctly.
->=20
-> That also made redundant a couple of NULL checks in calling code which
-> have been removed.
->=20
-> Signed-off-by: Salvador Fandino <salvador@qindel.com>
+On Mon, Jan 6, 2020 at 7:29 PM Daniel Henrique Barboza <
+danielhb413@gmail.com> wrote:
+
+> The label 'uhi_done' is a simple 'return' call and can
+> be removed for a bit more clarity in the code.
+>
+> CC: Aurelien Jarno <aurelien@aurel32.net>
+> CC: Aleksandar Markovic <amarkovic@wavecomp.com>
+> CC: Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
+> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 > ---
->  trace/control.c |  4 +---
->  util/log.c      | 28 ++++++++++++++++------------
->  vl.c            |  5 +----
->  3 files changed, 18 insertions(+), 19 deletions(-)
+>  target/mips/mips-semi.c | 15 +++++++--------
+>  1 file changed, 7 insertions(+), 8 deletions(-)
+>
+>
+Applied to MIPS queue.
 
-Thanks, applied to my tracing tree:
-https://github.com/stefanha/qemu/commits/tracing
 
-Stefan
+> diff --git a/target/mips/mips-semi.c b/target/mips/mips-semi.c
+> index 35bdfd7c77..10a710c1e8 100644
+> --- a/target/mips/mips-semi.c
+> +++ b/target/mips/mips-semi.c
+> @@ -218,7 +218,7 @@ static int copy_argn_to_target(CPUMIPSState *env, int
+> arg_num,
+>          if (!p) {                               \
+>              gpr[2] = -1;                        \
+>              gpr[3] = EFAULT;                    \
+> -            goto uhi_done;                      \
+> +            return;                             \
+>          }                                       \
+>      } while (0)
+>
+> @@ -228,14 +228,14 @@ static int copy_argn_to_target(CPUMIPSState *env,
+> int arg_num,
+>          if (!p) {                                       \
+>              gpr[2] = -1;                                \
+>              gpr[3] = EFAULT;                            \
+> -            goto uhi_done;                              \
+> +            return;                                     \
+>          }                                               \
+>          p2 = lock_user_string(addr2);                   \
+>          if (!p2) {                                      \
+>              unlock_user(p, addr, 0);                    \
+>              gpr[2] = -1;                                \
+>              gpr[3] = EFAULT;                            \
+> -            goto uhi_done;                              \
+> +            return;                                     \
+>          }                                               \
+>      } while (0)
+>
+> @@ -272,7 +272,7 @@ void helper_do_semihosting(CPUMIPSState *env)
+>          if (gpr[4] < 3) {
+>              /* ignore closing stdin/stdout/stderr */
+>              gpr[2] = 0;
+> -            goto uhi_done;
+> +            return;
+>          }
+>          gpr[2] = close(gpr[4]);
+>          gpr[3] = errno_mips(errno);
+> @@ -302,7 +302,7 @@ void helper_do_semihosting(CPUMIPSState *env)
+>              gpr[2] = fstat(gpr[4], &sbuf);
+>              gpr[3] = errno_mips(errno);
+>              if (gpr[2]) {
+> -                goto uhi_done;
+> +                return;
+>              }
+>              gpr[2] = copy_stat_to_target(env, &sbuf, gpr[5]);
+>              gpr[3] = errno_mips(errno);
+> @@ -314,14 +314,14 @@ void helper_do_semihosting(CPUMIPSState *env)
+>      case UHI_argnlen:
+>          if (gpr[4] >= semihosting_get_argc()) {
+>              gpr[2] = -1;
+> -            goto uhi_done;
+> +            return;
+>          }
+>          gpr[2] = strlen(semihosting_get_arg(gpr[4]));
+>          break;
+>      case UHI_argn:
+>          if (gpr[4] >= semihosting_get_argc()) {
+>              gpr[2] = -1;
+> -            goto uhi_done;
+> +            return;
+>          }
+>          gpr[2] = copy_argn_to_target(env, gpr[4], gpr[5]);
+>          break;
+> @@ -369,6 +369,5 @@ void helper_do_semihosting(CPUMIPSState *env)
+>          fprintf(stderr, "Unknown UHI operation %d\n", op);
+>          abort();
+>      }
+> -uhi_done:
+>      return;
+>  }
+> --
+> 2.24.1
+>
+>
+>
 
---1ccMZA6j1vT5UqiK
-Content-Type: application/pgp-signature; name="signature.asc"
+--0000000000000c7124059ce6000e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: base64
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl4qxe4ACgkQnKSrs4Gr
-c8gSaggAlTUMkt7cOnpWn/GK1mEcnlmjkQPKU1MWQI/t0bcozxCQZ105VX0qixBJ
-2/9A0vgr4qzbcGQPGor4VaMeTINW70g+I5zggdxksU3M6JfxialdID7n2dBnkRiA
-bn9V4BP6IvNSl1uDJ3n6GwNbZp/S2iZEjfNJEDRYYvRlkv5crKnoQ5iuBzCAe785
-+w1oK53F0rr1QguXm59VR+d6w65yhj29gadAVs6zQlWpWZ3CgrWPW+aF9qx1ttaF
-8XyfNypk7dlJdcyWmIb6HSDKr1XZ66ZjPCVpMbG0L0MXnucU8jnowFLk7KWK/pnV
-FP0LhQ/ZVIM1sphATxRiJPBpI9X5tQ==
-=emAk
------END PGP SIGNATURE-----
-
---1ccMZA6j1vT5UqiK--
-
+PGRpdiBkaXI9Imx0ciI+PGRpdiBkaXI9Imx0ciI+PGJyPjwvZGl2Pjxicj48ZGl2IGNsYXNzPSJn
+bWFpbF9xdW90ZSI+PGRpdiBkaXI9Imx0ciIgY2xhc3M9ImdtYWlsX2F0dHIiPk9uIE1vbiwgSmFu
+IDYsIDIwMjAgYXQgNzoyOSBQTSBEYW5pZWwgSGVucmlxdWUgQmFyYm96YSAmbHQ7PGEgaHJlZj0i
+bWFpbHRvOmRhbmllbGhiNDEzQGdtYWlsLmNvbSI+ZGFuaWVsaGI0MTNAZ21haWwuY29tPC9hPiZn
+dDsgd3JvdGU6PGJyPjwvZGl2PjxibG9ja3F1b3RlIGNsYXNzPSJnbWFpbF9xdW90ZSIgc3R5bGU9
+Im1hcmdpbjowcHggMHB4IDBweCAwLjhleDtib3JkZXItbGVmdDoxcHggc29saWQgcmdiKDIwNCwy
+MDQsMjA0KTtwYWRkaW5nLWxlZnQ6MWV4Ij5UaGUgbGFiZWwgJiMzOTt1aGlfZG9uZSYjMzk7IGlz
+IGEgc2ltcGxlICYjMzk7cmV0dXJuJiMzOTsgY2FsbCBhbmQgY2FuPGJyPg0KYmUgcmVtb3ZlZCBm
+b3IgYSBiaXQgbW9yZSBjbGFyaXR5IGluIHRoZSBjb2RlLjxicj4NCjxicj4NCkNDOiBBdXJlbGll
+biBKYXJubyAmbHQ7PGEgaHJlZj0ibWFpbHRvOmF1cmVsaWVuQGF1cmVsMzIubmV0IiB0YXJnZXQ9
+Il9ibGFuayI+YXVyZWxpZW5AYXVyZWwzMi5uZXQ8L2E+Jmd0Ozxicj4NCkNDOiBBbGVrc2FuZGFy
+IE1hcmtvdmljICZsdDs8YSBocmVmPSJtYWlsdG86YW1hcmtvdmljQHdhdmVjb21wLmNvbSIgdGFy
+Z2V0PSJfYmxhbmsiPmFtYXJrb3ZpY0B3YXZlY29tcC5jb208L2E+Jmd0Ozxicj4NCkNDOiBBbGVr
+c2FuZGFyIFJpa2FsbyAmbHQ7PGEgaHJlZj0ibWFpbHRvOmFsZWtzYW5kYXIucmlrYWxvQHJ0LXJr
+LmNvbSIgdGFyZ2V0PSJfYmxhbmsiPmFsZWtzYW5kYXIucmlrYWxvQHJ0LXJrLmNvbTwvYT4mZ3Q7
+PGJyPg0KU2lnbmVkLW9mZi1ieTogRGFuaWVsIEhlbnJpcXVlIEJhcmJvemEgJmx0OzxhIGhyZWY9
+Im1haWx0bzpkYW5pZWxoYjQxM0BnbWFpbC5jb20iIHRhcmdldD0iX2JsYW5rIj5kYW5pZWxoYjQx
+M0BnbWFpbC5jb208L2E+Jmd0Ozxicj4NCi0tLTxicj4NCsKgdGFyZ2V0L21pcHMvbWlwcy1zZW1p
+LmMgfCAxNSArKysrKysrLS0tLS0tLS08YnI+DQrCoDEgZmlsZSBjaGFuZ2VkLCA3IGluc2VydGlv
+bnMoKyksIDggZGVsZXRpb25zKC0pPGJyPg0KPGJyPjwvYmxvY2txdW90ZT48ZGl2Pjxicj48L2Rp
+dj48ZGl2PkFwcGxpZWQgdG8gTUlQUyBxdWV1ZS48YnI+PC9kaXY+PGRpdj7CoDwvZGl2PjxibG9j
+a3F1b3RlIGNsYXNzPSJnbWFpbF9xdW90ZSIgc3R5bGU9Im1hcmdpbjowcHggMHB4IDBweCAwLjhl
+eDtib3JkZXItbGVmdDoxcHggc29saWQgcmdiKDIwNCwyMDQsMjA0KTtwYWRkaW5nLWxlZnQ6MWV4
+Ij4NCmRpZmYgLS1naXQgYS90YXJnZXQvbWlwcy9taXBzLXNlbWkuYyBiL3RhcmdldC9taXBzL21p
+cHMtc2VtaS5jPGJyPg0KaW5kZXggMzViZGZkN2M3Ny4uMTBhNzEwYzFlOCAxMDA2NDQ8YnI+DQot
+LS0gYS90YXJnZXQvbWlwcy9taXBzLXNlbWkuYzxicj4NCisrKyBiL3RhcmdldC9taXBzL21pcHMt
+c2VtaS5jPGJyPg0KQEAgLTIxOCw3ICsyMTgsNyBAQCBzdGF0aWMgaW50IGNvcHlfYXJnbl90b190
+YXJnZXQoQ1BVTUlQU1N0YXRlICplbnYsIGludCBhcmdfbnVtLDxicj4NCsKgIMKgIMKgIMKgIMKg
+aWYgKCFwKSB7wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqBc
+PGJyPg0KwqAgwqAgwqAgwqAgwqAgwqAgwqBncHJbMl0gPSAtMTvCoCDCoCDCoCDCoCDCoCDCoCDC
+oCDCoCDCoCDCoCDCoCDCoCBcPGJyPg0KwqAgwqAgwqAgwqAgwqAgwqAgwqBncHJbM10gPSBFRkFV
+TFQ7wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgXDxicj4NCi3CoCDCoCDCoCDCoCDCoCDC
+oCBnb3RvIHVoaV9kb25lO8KgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIFw8YnI+DQor
+wqAgwqAgwqAgwqAgwqAgwqAgcmV0dXJuO8KgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgXDxicj4NCsKgIMKgIMKgIMKgIMKgfcKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgXDxicj4NCsKgIMKgIMKgfSB3aGls
+ZSAoMCk8YnI+DQo8YnI+DQpAQCAtMjI4LDE0ICsyMjgsMTQgQEAgc3RhdGljIGludCBjb3B5X2Fy
+Z25fdG9fdGFyZ2V0KENQVU1JUFNTdGF0ZSAqZW52LCBpbnQgYXJnX251bSw8YnI+DQrCoCDCoCDC
+oCDCoCDCoGlmICghcCkge8KgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgIMKgIMKgXDxicj4NCsKgIMKgIMKgIMKgIMKgIMKgIMKgZ3ByWzJdID0gLTE7
+wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgXDxicj4NCsKg
+IMKgIMKgIMKgIMKgIMKgIMKgZ3ByWzNdID0gRUZBVUxUO8KgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgIMKgIMKgIFw8YnI+DQotwqAgwqAgwqAgwqAgwqAgwqAgZ290byB1aGlfZG9u
+ZTvCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCBcPGJyPg0KK8Kg
+IMKgIMKgIMKgIMKgIMKgIHJldHVybjvCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDC
+oCDCoCDCoCDCoCDCoCDCoCDCoCDCoFw8YnI+DQrCoCDCoCDCoCDCoCDCoH3CoCDCoCDCoCDCoCDC
+oCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDC
+oFw8YnI+DQrCoCDCoCDCoCDCoCDCoHAyID0gbG9ja191c2VyX3N0cmluZyhhZGRyMik7wqAgwqAg
+wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqBcPGJyPg0KwqAgwqAgwqAgwqAgwqBpZiAoIXAyKSB7wqAg
+wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgXDxi
+cj4NCsKgIMKgIMKgIMKgIMKgIMKgIMKgdW5sb2NrX3VzZXIocCwgYWRkciwgMCk7wqAgwqAgwqAg
+wqAgwqAgwqAgwqAgwqAgwqAgwqAgXDxicj4NCsKgIMKgIMKgIMKgIMKgIMKgIMKgZ3ByWzJdID0g
+LTE7wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgXDxicj4N
+CsKgIMKgIMKgIMKgIMKgIMKgIMKgZ3ByWzNdID0gRUZBVUxUO8KgIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIFw8YnI+DQotwqAgwqAgwqAgwqAgwqAgwqAgZ290byB1aGlf
+ZG9uZTvCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCBcPGJyPg0K
+K8KgIMKgIMKgIMKgIMKgIMKgIHJldHVybjvCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDC
+oCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoFw8YnI+DQrCoCDCoCDCoCDCoCDCoH3CoCDCoCDCoCDC
+oCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDC
+oCDCoFw8YnI+DQrCoCDCoCDCoH0gd2hpbGUgKDApPGJyPg0KPGJyPg0KQEAgLTI3Miw3ICsyNzIs
+NyBAQCB2b2lkIGhlbHBlcl9kb19zZW1paG9zdGluZyhDUFVNSVBTU3RhdGUgKmVudik8YnI+DQrC
+oCDCoCDCoCDCoCDCoGlmIChncHJbNF0gJmx0OyAzKSB7PGJyPg0KwqAgwqAgwqAgwqAgwqAgwqAg
+wqAvKiBpZ25vcmUgY2xvc2luZyBzdGRpbi9zdGRvdXQvc3RkZXJyICovPGJyPg0KwqAgwqAgwqAg
+wqAgwqAgwqAgwqBncHJbMl0gPSAwOzxicj4NCi3CoCDCoCDCoCDCoCDCoCDCoCBnb3RvIHVoaV9k
+b25lOzxicj4NCivCoCDCoCDCoCDCoCDCoCDCoCByZXR1cm47PGJyPg0KwqAgwqAgwqAgwqAgwqB9
+PGJyPg0KwqAgwqAgwqAgwqAgwqBncHJbMl0gPSBjbG9zZShncHJbNF0pOzxicj4NCsKgIMKgIMKg
+IMKgIMKgZ3ByWzNdID0gZXJybm9fbWlwcyhlcnJubyk7PGJyPg0KQEAgLTMwMiw3ICszMDIsNyBA
+QCB2b2lkIGhlbHBlcl9kb19zZW1paG9zdGluZyhDUFVNSVBTU3RhdGUgKmVudik8YnI+DQrCoCDC
+oCDCoCDCoCDCoCDCoCDCoGdwclsyXSA9IGZzdGF0KGdwcls0XSwgJmFtcDtzYnVmKTs8YnI+DQrC
+oCDCoCDCoCDCoCDCoCDCoCDCoGdwclszXSA9IGVycm5vX21pcHMoZXJybm8pOzxicj4NCsKgIMKg
+IMKgIMKgIMKgIMKgIMKgaWYgKGdwclsyXSkgezxicj4NCi3CoCDCoCDCoCDCoCDCoCDCoCDCoCDC
+oCBnb3RvIHVoaV9kb25lOzxicj4NCivCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCByZXR1cm47PGJy
+Pg0KwqAgwqAgwqAgwqAgwqAgwqAgwqB9PGJyPg0KwqAgwqAgwqAgwqAgwqAgwqAgwqBncHJbMl0g
+PSBjb3B5X3N0YXRfdG9fdGFyZ2V0KGVudiwgJmFtcDtzYnVmLCBncHJbNV0pOzxicj4NCsKgIMKg
+IMKgIMKgIMKgIMKgIMKgZ3ByWzNdID0gZXJybm9fbWlwcyhlcnJubyk7PGJyPg0KQEAgLTMxNCwx
+NCArMzE0LDE0IEBAIHZvaWQgaGVscGVyX2RvX3NlbWlob3N0aW5nKENQVU1JUFNTdGF0ZSAqZW52
+KTxicj4NCsKgIMKgIMKgY2FzZSBVSElfYXJnbmxlbjo8YnI+DQrCoCDCoCDCoCDCoCDCoGlmIChn
+cHJbNF0gJmd0Oz0gc2VtaWhvc3RpbmdfZ2V0X2FyZ2MoKSkgezxicj4NCsKgIMKgIMKgIMKgIMKg
+IMKgIMKgZ3ByWzJdID0gLTE7PGJyPg0KLcKgIMKgIMKgIMKgIMKgIMKgIGdvdG8gdWhpX2RvbmU7
+PGJyPg0KK8KgIMKgIMKgIMKgIMKgIMKgIHJldHVybjs8YnI+DQrCoCDCoCDCoCDCoCDCoH08YnI+
+DQrCoCDCoCDCoCDCoCDCoGdwclsyXSA9IHN0cmxlbihzZW1paG9zdGluZ19nZXRfYXJnKGdwcls0
+XSkpOzxicj4NCsKgIMKgIMKgIMKgIMKgYnJlYWs7PGJyPg0KwqAgwqAgwqBjYXNlIFVISV9hcmdu
+Ojxicj4NCsKgIMKgIMKgIMKgIMKgaWYgKGdwcls0XSAmZ3Q7PSBzZW1paG9zdGluZ19nZXRfYXJn
+YygpKSB7PGJyPg0KwqAgwqAgwqAgwqAgwqAgwqAgwqBncHJbMl0gPSAtMTs8YnI+DQotwqAgwqAg
+wqAgwqAgwqAgwqAgZ290byB1aGlfZG9uZTs8YnI+DQorwqAgwqAgwqAgwqAgwqAgwqAgcmV0dXJu
+Ozxicj4NCsKgIMKgIMKgIMKgIMKgfTxicj4NCsKgIMKgIMKgIMKgIMKgZ3ByWzJdID0gY29weV9h
+cmduX3RvX3RhcmdldChlbnYsIGdwcls0XSwgZ3ByWzVdKTs8YnI+DQrCoCDCoCDCoCDCoCDCoGJy
+ZWFrOzxicj4NCkBAIC0zNjksNiArMzY5LDUgQEAgdm9pZCBoZWxwZXJfZG9fc2VtaWhvc3Rpbmco
+Q1BVTUlQU1N0YXRlICplbnYpPGJyPg0KwqAgwqAgwqAgwqAgwqBmcHJpbnRmKHN0ZGVyciwgJnF1
+b3Q7VW5rbm93biBVSEkgb3BlcmF0aW9uICVkXG4mcXVvdDssIG9wKTs8YnI+DQrCoCDCoCDCoCDC
+oCDCoGFib3J0KCk7PGJyPg0KwqAgwqAgwqB9PGJyPg0KLXVoaV9kb25lOjxicj4NCsKgIMKgIMKg
+cmV0dXJuOzxicj4NCsKgfTxicj4NCi0tIDxicj4NCjIuMjQuMTxicj4NCjxicj4NCjxicj4NCjwv
+YmxvY2txdW90ZT48L2Rpdj48L2Rpdj4NCg==
+--0000000000000c7124059ce6000e--
 
