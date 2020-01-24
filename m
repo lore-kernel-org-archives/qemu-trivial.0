@@ -1,63 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iv2f7-0002mA-Up
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Jan 2020 12:22:29 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53773)
+	id 1iv3kC-00086z-CR
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Jan 2020 13:31:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41838)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1iv2f5-0002jw-Qn
- for qemu-trivial@nongnu.org; Fri, 24 Jan 2020 12:22:29 -0500
+ (envelope-from <salvador@qindel.com>) id 1iv3k9-00082P-EI
+ for qemu-trivial@nongnu.org; Fri, 24 Jan 2020 13:31:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1iv2f4-0003bG-Di
- for qemu-trivial@nongnu.org; Fri, 24 Jan 2020 12:22:27 -0500
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:45657)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
- id 1iv2f0-0003Xs-4R; Fri, 24 Jan 2020 12:22:22 -0500
-Received: by mail-ot1-x344.google.com with SMTP id 59so2302199otp.12;
- Fri, 24 Jan 2020 09:22:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=rAKShrNxMu3ZVat7CaRPVYDzrzP2/5uHm5ULUp8EUpc=;
- b=c26cwiayGVDPDXdmJFWnl6MmTqthKhfn7DI0vXyZLxAY6dmcloeir5lUzRuFCvplMr
- wWOEs/VH2fQCVghYrXRZwWF25sCmCneo7irwMaMUfQ6NKRjFqrRuOG2C4p+iBFFCVhy4
- 6HPef2jBxh7EWvH34ltMTYGi7WjVoT2NSxWn3qy9kHJcez1Mv22aOgV9APGYjY/ekUWn
- InTY+eyglVjd3Cw2+JOc/pV0s1lwHSRvMS+kF2uxyUJRgiozuYMV6artPZdOXfvU8SwZ
- CT45vaJOijti2jlgGrmNFYT/KWEqFYe2vAL1SSfUt+s8iVhV2JYAllys5bljzoZ9QQbd
- 0/kA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=rAKShrNxMu3ZVat7CaRPVYDzrzP2/5uHm5ULUp8EUpc=;
- b=XmIumVFojWxixHhNk3BWac2jYnbJgequv4p6ex385h9nb6yFj7Q8y0EQZHvGlVN/GD
- EECo4SLJ/Sit28Jgl4wU37bjF/DxvkZgPgM6K+5bB42cVY+oFFRLk1hgsOUL2uqH4WKG
- OKMbmBd9yca/lLmyD84bDeZ9LINLKDgmnLsyajq0TLiDKJLUhKXJlwpCbnuY8kBWHPO+
- a7GI2AvDc1nx+Jp4hB77hI1KR1H1C5ylcdutGKeyFITlIsBZORZMn+DNH+nRihWXHFQL
- ffamDS1qYz9CGPLeDDb/21xCJN5v7nrspnWfL4YlqOFgqc5VxwqA909z7EpkaLmcEc+P
- 2Odg==
-X-Gm-Message-State: APjAAAXiJBngYvimn++cpCNZNHZYnV8Jz7McW1Eo1FDRJ/XUZNz9n3iS
- K49hk8Er2oj1H0xjOkd36C25tWxw9kR2WGOk0uU=
-X-Google-Smtp-Source: APXvYqw9aRbgM81GuxpOj1mlfaj+0Jt4PG+cf1703N0aLzFxN2zps2b6qqJBca9/Wr1sC6qH5iGYAOBN+MPnYIDPzek=
-X-Received: by 2002:a9d:198b:: with SMTP id k11mr3563830otk.295.1579886540773; 
- Fri, 24 Jan 2020 09:22:20 -0800 (PST)
+ (envelope-from <salvador@qindel.com>) id 1iv3k7-0003pe-QO
+ for qemu-trivial@nongnu.org; Fri, 24 Jan 2020 13:31:45 -0500
+Received: from smtp.qindel.com ([89.140.90.34]:44376 helo=thor.qindel.com)
+ by eggs.gnu.org with esmtp (Exim 4.71)
+ (envelope-from <salvador@qindel.com>)
+ id 1iv3jw-0003Yn-Vi; Fri, 24 Jan 2020 13:31:38 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by thor.qindel.com (Postfix) with ESMTP id C9C2760619;
+ Fri, 24 Jan 2020 19:31:27 +0100 (CET)
+Received: from thor.qindel.com ([127.0.0.1])
+ by localhost (thor.qindel.com [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id 8jcJvlVuwB8h; Fri, 24 Jan 2020 19:31:27 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by thor.qindel.com (Postfix) with ESMTP id 8936760620;
+ Fri, 24 Jan 2020 19:31:27 +0100 (CET)
+X-Virus-Scanned: amavisd-new at thor.qindel.com
+Received: from thor.qindel.com ([127.0.0.1])
+ by localhost (thor.qindel.com [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id hCTe-qOpN652; Fri, 24 Jan 2020 19:31:27 +0100 (CET)
+Received: from freeso.my.domain (unknown [82.213.225.96])
+ by thor.qindel.com (Postfix) with ESMTPSA id 2C9B360619;
+ Fri, 24 Jan 2020 19:31:27 +0100 (CET)
+From: salvador@qindel.com
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, sfandino@yahoo.com,
+ Salvador Fandino <salvador@qindel.com>
+Subject: [PATCH] bsd-user: improve support for sparc syscall flags
+Date: Fri, 24 Jan 2020 19:31:13 +0100
+Message-Id: <20200124183113.58039-1-salvador@qindel.com>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-References: <20200106182425.20312-1-danielhb413@gmail.com>
- <20200106182425.20312-7-danielhb413@gmail.com>
-In-Reply-To: <20200106182425.20312-7-danielhb413@gmail.com>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Fri, 24 Jan 2020 18:22:09 +0100
-Message-ID: <CAL1e-=iaSis_dBzA+=GBQq5q24V2r8Tnt6jvQjtKs97RJ4-yJQ@mail.gmail.com>
-Subject: Re: [PATCH v1 06/59] mips-semi.c: remove 'uhi_done' label in
- helper_do_semihosting()
-To: Daniel Henrique Barboza <danielhb413@gmail.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>, 
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>, 
- Aurelien Jarno <aurelien@aurel32.net>
-Content-Type: multipart/alternative; boundary="0000000000000c7124059ce6000e"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::344
+X-Received-From: 89.140.90.34
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,205 +52,222 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Jan 2020 17:22:29 -0000
+X-List-Received-Date: Fri, 24 Jan 2020 18:31:47 -0000
 
---0000000000000c7124059ce6000e
-Content-Type: text/plain; charset="UTF-8"
+From: Salvador Fandino <salvador@qindel.com>
 
-On Mon, Jan 6, 2020 at 7:29 PM Daniel Henrique Barboza <
-danielhb413@gmail.com> wrote:
+Under sparc and sparc64, both NetBSD and OpenSSH use two bits of the
+syscall number as flags. Until now, those bits where only supported
+for sparc64 when emulating OpenBSD.
 
-> The label 'uhi_done' is a simple 'return' call and can
-> be removed for a bit more clarity in the code.
->
-> CC: Aurelien Jarno <aurelien@aurel32.net>
-> CC: Aleksandar Markovic <amarkovic@wavecomp.com>
-> CC: Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
-> Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
-> ---
->  target/mips/mips-semi.c | 15 +++++++--------
->  1 file changed, 7 insertions(+), 8 deletions(-)
->
->
-Applied to MIPS queue.
+This patch extends support for syscall flags to the sparc architecture
+and NetBSD emulation. It had allowed my to run simple NetBSD sparc
+applications with qemu-sparc on a FreeBSD x64 machine.
 
+The code supporting OpenBSD sparc and sparc64 emulation has been
+refactored in order to make it simpler and similar to the new one for
+NetBSD.
 
-> diff --git a/target/mips/mips-semi.c b/target/mips/mips-semi.c
-> index 35bdfd7c77..10a710c1e8 100644
-> --- a/target/mips/mips-semi.c
-> +++ b/target/mips/mips-semi.c
-> @@ -218,7 +218,7 @@ static int copy_argn_to_target(CPUMIPSState *env, int
-> arg_num,
->          if (!p) {                               \
->              gpr[2] = -1;                        \
->              gpr[3] = EFAULT;                    \
-> -            goto uhi_done;                      \
-> +            return;                             \
->          }                                       \
->      } while (0)
->
-> @@ -228,14 +228,14 @@ static int copy_argn_to_target(CPUMIPSState *env,
-> int arg_num,
->          if (!p) {                                       \
->              gpr[2] = -1;                                \
->              gpr[3] = EFAULT;                            \
-> -            goto uhi_done;                              \
-> +            return;                                     \
->          }                                               \
->          p2 = lock_user_string(addr2);                   \
->          if (!p2) {                                      \
->              unlock_user(p, addr, 0);                    \
->              gpr[2] = -1;                                \
->              gpr[3] = EFAULT;                            \
-> -            goto uhi_done;                              \
-> +            return;                                     \
->          }                                               \
->      } while (0)
->
-> @@ -272,7 +272,7 @@ void helper_do_semihosting(CPUMIPSState *env)
->          if (gpr[4] < 3) {
->              /* ignore closing stdin/stdout/stderr */
->              gpr[2] = 0;
-> -            goto uhi_done;
-> +            return;
->          }
->          gpr[2] = close(gpr[4]);
->          gpr[3] = errno_mips(errno);
-> @@ -302,7 +302,7 @@ void helper_do_semihosting(CPUMIPSState *env)
->              gpr[2] = fstat(gpr[4], &sbuf);
->              gpr[3] = errno_mips(errno);
->              if (gpr[2]) {
-> -                goto uhi_done;
-> +                return;
->              }
->              gpr[2] = copy_stat_to_target(env, &sbuf, gpr[5]);
->              gpr[3] = errno_mips(errno);
-> @@ -314,14 +314,14 @@ void helper_do_semihosting(CPUMIPSState *env)
->      case UHI_argnlen:
->          if (gpr[4] >= semihosting_get_argc()) {
->              gpr[2] = -1;
-> -            goto uhi_done;
-> +            return;
->          }
->          gpr[2] = strlen(semihosting_get_arg(gpr[4]));
->          break;
->      case UHI_argn:
->          if (gpr[4] >= semihosting_get_argc()) {
->              gpr[2] = -1;
-> -            goto uhi_done;
-> +            return;
->          }
->          gpr[2] = copy_argn_to_target(env, gpr[4], gpr[5]);
->          break;
-> @@ -369,6 +369,5 @@ void helper_do_semihosting(CPUMIPSState *env)
->          fprintf(stderr, "Unknown UHI operation %d\n", op);
->          abort();
->      }
-> -uhi_done:
->      return;
->  }
-> --
-> 2.24.1
->
->
->
+Signed-off-by: Salvador Fandino <salvador@qindel.com>
+---
+ bsd-user/main.c              | 68 ++++++++++++++++++++++++------------
+ bsd-user/netbsd/syscall_nr.h | 52 +++++++++++++++++++++++++++
+ 2 files changed, 98 insertions(+), 22 deletions(-)
 
---0000000000000c7124059ce6000e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: base64
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index 770c2b267a..e249d66e26 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -491,7 +491,7 @@ static void flush_windows(CPUSPARCState *env)
+ void cpu_loop(CPUSPARCState *env)
+ {
+     CPUState *cs =3D env_cpu(env);
+-    int trapnr, ret, syscall_nr;
++    int trapnr, ret, syscall_nr, syscall_flags;
+     //target_siginfo_t info;
+=20
+     while (1) {
+@@ -511,21 +511,29 @@ void cpu_loop(CPUSPARCState *env)
+         case 0x100:
+ #endif
+             syscall_nr =3D env->gregs[1];
+-            if (bsd_type =3D=3D target_freebsd)
++            if (bsd_type =3D=3D target_freebsd) {
+                 ret =3D do_freebsd_syscall(env, syscall_nr,
+                                          env->regwptr[0], env->regwptr[1=
+],
+                                          env->regwptr[2], env->regwptr[3=
+],
+                                          env->regwptr[4], env->regwptr[5=
+], 0, 0);
+-            else if (bsd_type =3D=3D target_netbsd)
++            }
++            else if (bsd_type =3D=3D target_netbsd) {
++                syscall_flags =3D syscall_nr & (TARGET_NETBSD_SYSCALL_G7=
+RFLAG |
++                                              TARGET_NETBSD_SYSCALL_G5RF=
+LAG |
++                                              TARGET_NETBSD_SYSCALL_G2RF=
+LAG);
++                syscall_nr &=3D ~(TARGET_NETBSD_SYSCALL_G7RFLAG |
++                                TARGET_NETBSD_SYSCALL_G5RFLAG |
++                                TARGET_NETBSD_SYSCALL_G2RFLAG);
+                 ret =3D do_netbsd_syscall(env, syscall_nr,
+                                         env->regwptr[0], env->regwptr[1]=
+,
+                                         env->regwptr[2], env->regwptr[3]=
+,
+                                         env->regwptr[4], env->regwptr[5]=
+);
++            }
+             else { //if (bsd_type =3D=3D target_openbsd)
+-#if defined(TARGET_SPARC64)
+-                syscall_nr &=3D ~(TARGET_OPENBSD_SYSCALL_G7RFLAG |
+-                                TARGET_OPENBSD_SYSCALL_G2RFLAG);
+-#endif
++                syscall_flags =3D syscall_nr & (TARGET_OPENBSD_SYSCALL_G=
+2RFLAG |
++                                              TARGET_OPENBSD_SYSCALL_G7R=
+FLAG);
++                syscall_nr &=3D ~(TARGET_OPENBSD_SYSCALL_G2RFLAG |
++                                TARGET_OPENBSD_SYSCALL_G7RFLAG);
+                 ret =3D do_openbsd_syscall(env, syscall_nr,
+                                          env->regwptr[0], env->regwptr[1=
+],
+                                          env->regwptr[2], env->regwptr[3=
+],
+@@ -547,23 +555,39 @@ void cpu_loop(CPUSPARCState *env)
+             }
+             env->regwptr[0] =3D ret;
+             /* next instruction */
+-#if defined(TARGET_SPARC64)
+-            if (bsd_type =3D=3D target_openbsd &&
+-                env->gregs[1] & TARGET_OPENBSD_SYSCALL_G2RFLAG) {
+-                env->pc =3D env->gregs[2];
+-                env->npc =3D env->pc + 4;
+-            } else if (bsd_type =3D=3D target_openbsd &&
+-                       env->gregs[1] & TARGET_OPENBSD_SYSCALL_G7RFLAG) {
+-                env->pc =3D env->gregs[7];
+-                env->npc =3D env->pc + 4;
+-            } else {
++            if (bsd_type =3D=3D target_openbsd) {
++                switch (syscall_flags) {
++                case 0:
++                    env->pc =3D env->npc;
++                    break;
++                case TARGET_OPENBSD_SYSCALL_G7RFLAG:
++                    env->pc =3D env->gregs[7];
++                    break;
++                default: /* G2 or G2|G7 */
++                    env->pc =3D env->gregs[2];
++                    break;
++                }
++            }
++            else if (bsd_type =3D=3D target_netbsd) {
++                switch (syscall_flags) {
++                case 0:
++                    env->pc =3D env->npc;
++                    break;
++                case TARGET_NETBSD_SYSCALL_G7RFLAG:
++                    env->pc =3D env->gregs[7];
++                    break;
++                case TARGET_NETBSD_SYSCALL_G5RFLAG:
++                    env->pc =3D env->gregs[5];
++                    break;
++                case TARGET_NETBSD_SYSCALL_G2RFLAG:
++                    env->pc =3D env->gregs[2];
++                    break;
++                }
++            }
++            else  {
+                 env->pc =3D env->npc;
+-                env->npc =3D env->npc + 4;
+             }
+-#else
+-            env->pc =3D env->npc;
+-            env->npc =3D env->npc + 4;
+-#endif
++            env->npc =3D env->pc + 4;
+             break;
+         case 0x83: /* flush windows */
+ #ifdef TARGET_ABI32
+diff --git a/bsd-user/netbsd/syscall_nr.h b/bsd-user/netbsd/syscall_nr.h
+index 2e9ab5378e..79022b0b4e 100644
+--- a/bsd-user/netbsd/syscall_nr.h
++++ b/bsd-user/netbsd/syscall_nr.h
+@@ -371,3 +371,55 @@
+ #define TARGET_NETBSD_NR_pset_assign 414
+ #define TARGET_NETBSD_NR__pset_bind  415
+ #define TARGET_NETBSD_NR___posix_fadvise50   416
++
++/*	$NetBSD: trap.h,v 1.18 2011/03/27 18:47:08 martin Exp $ */
++
++/*
++ * Copyright (c) 1992, 1993
++ *	The Regents of the University of California.  All rights reserved.
++ *
++ * This software was developed by the Computer Systems Engineering group
++ * at Lawrence Berkeley Laboratory under DARPA contract BG 91-66 and
++ * contributed to Berkeley.
++ *
++ * All advertising materials mentioning features or use of this software
++ * must display the following acknowledgement:
++ *	This product includes software developed by the University of
++ *	California, Lawrence Berkeley Laboratory.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in th=
+e
++ *    documentation and/or other materials provided with the distributio=
+n.
++ * 3. Neither the name of the University nor the names of its contributo=
+rs
++ *    may be used to endorse or promote products derived from this softw=
+are
++ *    without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' A=
+ND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PU=
+RPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIA=
+BLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUE=
+NTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOO=
+DS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, S=
+TRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY=
+ WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY O=
+F
++ * SUCH DAMAGE.
++ *
++ *	@(#)trap.h	8.1 (Berkeley) 6/11/93
++ */
++/*
++ * Sun4m support by Aaron Brown, Harvard University.
++ * Changes Copyright (c) 1995 The President and Fellows of Harvard Colle=
+ge.
++ * All rights reserved.
++ */
++
++/* flags to system call (flags in %g1 along with syscall number) */
++#define	TARGET_NETBSD_SYSCALL_G2RFLAG	0x400	/* on success, return to %g2=
+ rather than npc */
++#define	TARGET_NETBSD_SYSCALL_G7RFLAG	0x800	/* use %g7 as above (depreca=
+ted) */
++#define	TARGET_NETBSD_SYSCALL_G5RFLAG	0xc00	/* use %g5 as above (only AB=
+I compatible way) */
+--=20
+2.24.1
 
-PGRpdiBkaXI9Imx0ciI+PGRpdiBkaXI9Imx0ciI+PGJyPjwvZGl2Pjxicj48ZGl2IGNsYXNzPSJn
-bWFpbF9xdW90ZSI+PGRpdiBkaXI9Imx0ciIgY2xhc3M9ImdtYWlsX2F0dHIiPk9uIE1vbiwgSmFu
-IDYsIDIwMjAgYXQgNzoyOSBQTSBEYW5pZWwgSGVucmlxdWUgQmFyYm96YSAmbHQ7PGEgaHJlZj0i
-bWFpbHRvOmRhbmllbGhiNDEzQGdtYWlsLmNvbSI+ZGFuaWVsaGI0MTNAZ21haWwuY29tPC9hPiZn
-dDsgd3JvdGU6PGJyPjwvZGl2PjxibG9ja3F1b3RlIGNsYXNzPSJnbWFpbF9xdW90ZSIgc3R5bGU9
-Im1hcmdpbjowcHggMHB4IDBweCAwLjhleDtib3JkZXItbGVmdDoxcHggc29saWQgcmdiKDIwNCwy
-MDQsMjA0KTtwYWRkaW5nLWxlZnQ6MWV4Ij5UaGUgbGFiZWwgJiMzOTt1aGlfZG9uZSYjMzk7IGlz
-IGEgc2ltcGxlICYjMzk7cmV0dXJuJiMzOTsgY2FsbCBhbmQgY2FuPGJyPg0KYmUgcmVtb3ZlZCBm
-b3IgYSBiaXQgbW9yZSBjbGFyaXR5IGluIHRoZSBjb2RlLjxicj4NCjxicj4NCkNDOiBBdXJlbGll
-biBKYXJubyAmbHQ7PGEgaHJlZj0ibWFpbHRvOmF1cmVsaWVuQGF1cmVsMzIubmV0IiB0YXJnZXQ9
-Il9ibGFuayI+YXVyZWxpZW5AYXVyZWwzMi5uZXQ8L2E+Jmd0Ozxicj4NCkNDOiBBbGVrc2FuZGFy
-IE1hcmtvdmljICZsdDs8YSBocmVmPSJtYWlsdG86YW1hcmtvdmljQHdhdmVjb21wLmNvbSIgdGFy
-Z2V0PSJfYmxhbmsiPmFtYXJrb3ZpY0B3YXZlY29tcC5jb208L2E+Jmd0Ozxicj4NCkNDOiBBbGVr
-c2FuZGFyIFJpa2FsbyAmbHQ7PGEgaHJlZj0ibWFpbHRvOmFsZWtzYW5kYXIucmlrYWxvQHJ0LXJr
-LmNvbSIgdGFyZ2V0PSJfYmxhbmsiPmFsZWtzYW5kYXIucmlrYWxvQHJ0LXJrLmNvbTwvYT4mZ3Q7
-PGJyPg0KU2lnbmVkLW9mZi1ieTogRGFuaWVsIEhlbnJpcXVlIEJhcmJvemEgJmx0OzxhIGhyZWY9
-Im1haWx0bzpkYW5pZWxoYjQxM0BnbWFpbC5jb20iIHRhcmdldD0iX2JsYW5rIj5kYW5pZWxoYjQx
-M0BnbWFpbC5jb208L2E+Jmd0Ozxicj4NCi0tLTxicj4NCsKgdGFyZ2V0L21pcHMvbWlwcy1zZW1p
-LmMgfCAxNSArKysrKysrLS0tLS0tLS08YnI+DQrCoDEgZmlsZSBjaGFuZ2VkLCA3IGluc2VydGlv
-bnMoKyksIDggZGVsZXRpb25zKC0pPGJyPg0KPGJyPjwvYmxvY2txdW90ZT48ZGl2Pjxicj48L2Rp
-dj48ZGl2PkFwcGxpZWQgdG8gTUlQUyBxdWV1ZS48YnI+PC9kaXY+PGRpdj7CoDwvZGl2PjxibG9j
-a3F1b3RlIGNsYXNzPSJnbWFpbF9xdW90ZSIgc3R5bGU9Im1hcmdpbjowcHggMHB4IDBweCAwLjhl
-eDtib3JkZXItbGVmdDoxcHggc29saWQgcmdiKDIwNCwyMDQsMjA0KTtwYWRkaW5nLWxlZnQ6MWV4
-Ij4NCmRpZmYgLS1naXQgYS90YXJnZXQvbWlwcy9taXBzLXNlbWkuYyBiL3RhcmdldC9taXBzL21p
-cHMtc2VtaS5jPGJyPg0KaW5kZXggMzViZGZkN2M3Ny4uMTBhNzEwYzFlOCAxMDA2NDQ8YnI+DQot
-LS0gYS90YXJnZXQvbWlwcy9taXBzLXNlbWkuYzxicj4NCisrKyBiL3RhcmdldC9taXBzL21pcHMt
-c2VtaS5jPGJyPg0KQEAgLTIxOCw3ICsyMTgsNyBAQCBzdGF0aWMgaW50IGNvcHlfYXJnbl90b190
-YXJnZXQoQ1BVTUlQU1N0YXRlICplbnYsIGludCBhcmdfbnVtLDxicj4NCsKgIMKgIMKgIMKgIMKg
-aWYgKCFwKSB7wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqBc
-PGJyPg0KwqAgwqAgwqAgwqAgwqAgwqAgwqBncHJbMl0gPSAtMTvCoCDCoCDCoCDCoCDCoCDCoCDC
-oCDCoCDCoCDCoCDCoCDCoCBcPGJyPg0KwqAgwqAgwqAgwqAgwqAgwqAgwqBncHJbM10gPSBFRkFV
-TFQ7wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgXDxicj4NCi3CoCDCoCDCoCDCoCDCoCDC
-oCBnb3RvIHVoaV9kb25lO8KgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIFw8YnI+DQor
-wqAgwqAgwqAgwqAgwqAgwqAgcmV0dXJuO8KgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
-IMKgIMKgIMKgIMKgXDxicj4NCsKgIMKgIMKgIMKgIMKgfcKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
-IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgXDxicj4NCsKgIMKgIMKgfSB3aGls
-ZSAoMCk8YnI+DQo8YnI+DQpAQCAtMjI4LDE0ICsyMjgsMTQgQEAgc3RhdGljIGludCBjb3B5X2Fy
-Z25fdG9fdGFyZ2V0KENQVU1JUFNTdGF0ZSAqZW52LCBpbnQgYXJnX251bSw8YnI+DQrCoCDCoCDC
-oCDCoCDCoGlmICghcCkge8KgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
-IMKgIMKgIMKgIMKgIMKgIMKgXDxicj4NCsKgIMKgIMKgIMKgIMKgIMKgIMKgZ3ByWzJdID0gLTE7
-wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgXDxicj4NCsKg
-IMKgIMKgIMKgIMKgIMKgIMKgZ3ByWzNdID0gRUZBVUxUO8KgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
-IMKgIMKgIMKgIMKgIMKgIMKgIFw8YnI+DQotwqAgwqAgwqAgwqAgwqAgwqAgZ290byB1aGlfZG9u
-ZTvCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCBcPGJyPg0KK8Kg
-IMKgIMKgIMKgIMKgIMKgIHJldHVybjvCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDC
-oCDCoCDCoCDCoCDCoCDCoCDCoCDCoFw8YnI+DQrCoCDCoCDCoCDCoCDCoH3CoCDCoCDCoCDCoCDC
-oCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDC
-oFw8YnI+DQrCoCDCoCDCoCDCoCDCoHAyID0gbG9ja191c2VyX3N0cmluZyhhZGRyMik7wqAgwqAg
-wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqBcPGJyPg0KwqAgwqAgwqAgwqAgwqBpZiAoIXAyKSB7wqAg
-wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgXDxi
-cj4NCsKgIMKgIMKgIMKgIMKgIMKgIMKgdW5sb2NrX3VzZXIocCwgYWRkciwgMCk7wqAgwqAgwqAg
-wqAgwqAgwqAgwqAgwqAgwqAgwqAgXDxicj4NCsKgIMKgIMKgIMKgIMKgIMKgIMKgZ3ByWzJdID0g
-LTE7wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgXDxicj4N
-CsKgIMKgIMKgIMKgIMKgIMKgIMKgZ3ByWzNdID0gRUZBVUxUO8KgIMKgIMKgIMKgIMKgIMKgIMKg
-IMKgIMKgIMKgIMKgIMKgIMKgIMKgIFw8YnI+DQotwqAgwqAgwqAgwqAgwqAgwqAgZ290byB1aGlf
-ZG9uZTvCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCBcPGJyPg0K
-K8KgIMKgIMKgIMKgIMKgIMKgIHJldHVybjvCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDC
-oCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoFw8YnI+DQrCoCDCoCDCoCDCoCDCoH3CoCDCoCDCoCDC
-oCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDC
-oCDCoFw8YnI+DQrCoCDCoCDCoH0gd2hpbGUgKDApPGJyPg0KPGJyPg0KQEAgLTI3Miw3ICsyNzIs
-NyBAQCB2b2lkIGhlbHBlcl9kb19zZW1paG9zdGluZyhDUFVNSVBTU3RhdGUgKmVudik8YnI+DQrC
-oCDCoCDCoCDCoCDCoGlmIChncHJbNF0gJmx0OyAzKSB7PGJyPg0KwqAgwqAgwqAgwqAgwqAgwqAg
-wqAvKiBpZ25vcmUgY2xvc2luZyBzdGRpbi9zdGRvdXQvc3RkZXJyICovPGJyPg0KwqAgwqAgwqAg
-wqAgwqAgwqAgwqBncHJbMl0gPSAwOzxicj4NCi3CoCDCoCDCoCDCoCDCoCDCoCBnb3RvIHVoaV9k
-b25lOzxicj4NCivCoCDCoCDCoCDCoCDCoCDCoCByZXR1cm47PGJyPg0KwqAgwqAgwqAgwqAgwqB9
-PGJyPg0KwqAgwqAgwqAgwqAgwqBncHJbMl0gPSBjbG9zZShncHJbNF0pOzxicj4NCsKgIMKgIMKg
-IMKgIMKgZ3ByWzNdID0gZXJybm9fbWlwcyhlcnJubyk7PGJyPg0KQEAgLTMwMiw3ICszMDIsNyBA
-QCB2b2lkIGhlbHBlcl9kb19zZW1paG9zdGluZyhDUFVNSVBTU3RhdGUgKmVudik8YnI+DQrCoCDC
-oCDCoCDCoCDCoCDCoCDCoGdwclsyXSA9IGZzdGF0KGdwcls0XSwgJmFtcDtzYnVmKTs8YnI+DQrC
-oCDCoCDCoCDCoCDCoCDCoCDCoGdwclszXSA9IGVycm5vX21pcHMoZXJybm8pOzxicj4NCsKgIMKg
-IMKgIMKgIMKgIMKgIMKgaWYgKGdwclsyXSkgezxicj4NCi3CoCDCoCDCoCDCoCDCoCDCoCDCoCDC
-oCBnb3RvIHVoaV9kb25lOzxicj4NCivCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCByZXR1cm47PGJy
-Pg0KwqAgwqAgwqAgwqAgwqAgwqAgwqB9PGJyPg0KwqAgwqAgwqAgwqAgwqAgwqAgwqBncHJbMl0g
-PSBjb3B5X3N0YXRfdG9fdGFyZ2V0KGVudiwgJmFtcDtzYnVmLCBncHJbNV0pOzxicj4NCsKgIMKg
-IMKgIMKgIMKgIMKgIMKgZ3ByWzNdID0gZXJybm9fbWlwcyhlcnJubyk7PGJyPg0KQEAgLTMxNCwx
-NCArMzE0LDE0IEBAIHZvaWQgaGVscGVyX2RvX3NlbWlob3N0aW5nKENQVU1JUFNTdGF0ZSAqZW52
-KTxicj4NCsKgIMKgIMKgY2FzZSBVSElfYXJnbmxlbjo8YnI+DQrCoCDCoCDCoCDCoCDCoGlmIChn
-cHJbNF0gJmd0Oz0gc2VtaWhvc3RpbmdfZ2V0X2FyZ2MoKSkgezxicj4NCsKgIMKgIMKgIMKgIMKg
-IMKgIMKgZ3ByWzJdID0gLTE7PGJyPg0KLcKgIMKgIMKgIMKgIMKgIMKgIGdvdG8gdWhpX2RvbmU7
-PGJyPg0KK8KgIMKgIMKgIMKgIMKgIMKgIHJldHVybjs8YnI+DQrCoCDCoCDCoCDCoCDCoH08YnI+
-DQrCoCDCoCDCoCDCoCDCoGdwclsyXSA9IHN0cmxlbihzZW1paG9zdGluZ19nZXRfYXJnKGdwcls0
-XSkpOzxicj4NCsKgIMKgIMKgIMKgIMKgYnJlYWs7PGJyPg0KwqAgwqAgwqBjYXNlIFVISV9hcmdu
-Ojxicj4NCsKgIMKgIMKgIMKgIMKgaWYgKGdwcls0XSAmZ3Q7PSBzZW1paG9zdGluZ19nZXRfYXJn
-YygpKSB7PGJyPg0KwqAgwqAgwqAgwqAgwqAgwqAgwqBncHJbMl0gPSAtMTs8YnI+DQotwqAgwqAg
-wqAgwqAgwqAgwqAgZ290byB1aGlfZG9uZTs8YnI+DQorwqAgwqAgwqAgwqAgwqAgwqAgcmV0dXJu
-Ozxicj4NCsKgIMKgIMKgIMKgIMKgfTxicj4NCsKgIMKgIMKgIMKgIMKgZ3ByWzJdID0gY29weV9h
-cmduX3RvX3RhcmdldChlbnYsIGdwcls0XSwgZ3ByWzVdKTs8YnI+DQrCoCDCoCDCoCDCoCDCoGJy
-ZWFrOzxicj4NCkBAIC0zNjksNiArMzY5LDUgQEAgdm9pZCBoZWxwZXJfZG9fc2VtaWhvc3Rpbmco
-Q1BVTUlQU1N0YXRlICplbnYpPGJyPg0KwqAgwqAgwqAgwqAgwqBmcHJpbnRmKHN0ZGVyciwgJnF1
-b3Q7VW5rbm93biBVSEkgb3BlcmF0aW9uICVkXG4mcXVvdDssIG9wKTs8YnI+DQrCoCDCoCDCoCDC
-oCDCoGFib3J0KCk7PGJyPg0KwqAgwqAgwqB9PGJyPg0KLXVoaV9kb25lOjxicj4NCsKgIMKgIMKg
-cmV0dXJuOzxicj4NCsKgfTxicj4NCi0tIDxicj4NCjIuMjQuMTxicj4NCjxicj4NCjxicj4NCjwv
-YmxvY2txdW90ZT48L2Rpdj48L2Rpdj4NCg==
---0000000000000c7124059ce6000e--
 
