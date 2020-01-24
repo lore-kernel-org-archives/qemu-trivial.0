@@ -1,47 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iv7QL-0006Ex-4I
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Jan 2020 17:27:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44727)
+	id 1iv7UF-0000uf-Ue
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Jan 2020 17:31:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51910)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <salvador@qindel.com>) id 1iv7QE-0006DT-Tr
- for qemu-trivial@nongnu.org; Fri, 24 Jan 2020 17:27:27 -0500
+ (envelope-from <salvador@qindel.com>) id 1iv7UA-0000q4-CN
+ for qemu-trivial@nongnu.org; Fri, 24 Jan 2020 17:31:31 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <salvador@qindel.com>) id 1iv7QD-00007y-QX
- for qemu-trivial@nongnu.org; Fri, 24 Jan 2020 17:27:26 -0500
-Received: from smtp.qindel.com ([89.140.90.34]:48402 helo=thor.qindel.com)
+ (envelope-from <salvador@qindel.com>) id 1iv7U8-0004jc-Su
+ for qemu-trivial@nongnu.org; Fri, 24 Jan 2020 17:31:30 -0500
+Received: from smtp.qindel.com ([89.140.90.34]:48475 helo=thor.qindel.com)
  by eggs.gnu.org with esmtp (Exim 4.71)
  (envelope-from <salvador@qindel.com>)
- id 1iv7QA-0008Sv-WE; Fri, 24 Jan 2020 17:27:23 -0500
+ id 1iv7U5-0004Z8-8L; Fri, 24 Jan 2020 17:31:25 -0500
 Received: from localhost (localhost [127.0.0.1])
- by thor.qindel.com (Postfix) with ESMTP id 596146068A;
- Fri, 24 Jan 2020 23:27:21 +0100 (CET)
+ by thor.qindel.com (Postfix) with ESMTP id EF38E6068A;
+ Fri, 24 Jan 2020 23:31:22 +0100 (CET)
 Received: from thor.qindel.com ([127.0.0.1])
  by localhost (thor.qindel.com [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id KI7bDLL54LY3; Fri, 24 Jan 2020 23:27:21 +0100 (CET)
+ with ESMTP id 5nU1brbrjbIU; Fri, 24 Jan 2020 23:31:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by thor.qindel.com (Postfix) with ESMTP id 2136D6068C;
- Fri, 24 Jan 2020 23:27:21 +0100 (CET)
+ by thor.qindel.com (Postfix) with ESMTP id C1BE26068C;
+ Fri, 24 Jan 2020 23:31:22 +0100 (CET)
 X-Virus-Scanned: amavisd-new at thor.qindel.com
 Received: from thor.qindel.com ([127.0.0.1])
  by localhost (thor.qindel.com [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id o8WKc5YtLEzB; Fri, 24 Jan 2020 23:27:20 +0100 (CET)
-Received: from [192.168.20.140] (unknown [82.213.225.96])
- by thor.qindel.com (Postfix) with ESMTPSA id D35176068A;
- Fri, 24 Jan 2020 23:27:20 +0100 (CET)
-Subject: Re: [PATCH] bsd-user: improve support for sparc syscall flags
+ with ESMTP id HyoAS4yCBDCN; Fri, 24 Jan 2020 23:31:22 +0100 (CET)
+Received: from freeso.my.domain (unknown [82.213.225.96])
+ by thor.qindel.com (Postfix) with ESMTPSA id 3878E6068A;
+ Fri, 24 Jan 2020 23:31:22 +0100 (CET)
+From: salvador@qindel.com
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, sfandino@yahoo.com
-References: <157989507891.23531.10374377357103915501@f6d1ed32ca6b>
-From: =?UTF-8?Q?Salvador_Fandi=c3=b1o?= <salvador@qindel.com>
-Message-ID: <6cb0886b-2b28-6dd2-92d4-7b524a6b4bf7@qindel.com>
-Date: Fri, 24 Jan 2020 23:27:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+Cc: qemu-trivial@nongnu.org, sfandino@yahoo.com,
+ Salvador Fandino <salvador@qindel.com>
+Subject: [PATCH] bsd-user: improve support for sparc syscall flags
+Date: Fri, 24 Jan 2020 23:31:18 +0100
+Message-Id: <20200124223118.58596-1-salvador@qindel.com>
+X-Mailer: git-send-email 2.24.1
+In-Reply-To: <6cb0886b-2b28-6dd2-92d4-7b524a6b4bf7@qindel.com>
+References: <6cb0886b-2b28-6dd2-92d4-7b524a6b4bf7@qindel.com>
 MIME-Version: 1.0
-In-Reply-To: <157989507891.23531.10374377357103915501@f6d1ed32ca6b>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 89.140.90.34
@@ -56,24 +54,219 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Jan 2020 22:27:28 -0000
+X-List-Received-Date: Fri, 24 Jan 2020 22:31:32 -0000
 
+From: Salvador Fandino <salvador@qindel.com>
 
-On 24/1/20 20:44, no-reply@patchew.org wrote:
-> Patchew URL: https://patchew.org/QEMU/20200124183113.58039-1-salvador@qindel.com/
->
->
->
-> Hi,
->
-> This series seems to have some coding style problems. See output below for
-> more information:
+Under sparc and sparc64, both NetBSD and OpenSSH use two bits of the
+syscall number as flags. Until now, those bits where only supported
+for sparc64 when emulating OpenBSD.
 
-A new patch is coming fixing the errors found by patchew in bsd-user/main.c
+This patch extends support for syscall flags to the sparc architecture
+and NetBSD emulation. It had allowed my to run simple NetBSD sparc
+applications with qemu-sparc on a FreeBSD x64 machine.
 
-I am not changing any of the new code in bsd-user/netbsd/syscall_nr.h as 
-it has been copied from NetBSD source, in the same way it was done for 
-bsd-user/openbsd/syscall_nr.h.
+The code supporting OpenBSD sparc and sparc64 emulation has been
+refactored in order to make it simpler and similar to the new one for
+NetBSD.
 
+Signed-off-by: Salvador Fandino <salvador@qindel.com>
+---
+ bsd-user/main.c              | 66 +++++++++++++++++++++++-------------
+ bsd-user/netbsd/syscall_nr.h | 52 ++++++++++++++++++++++++++++
+ 2 files changed, 95 insertions(+), 23 deletions(-)
+
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index 770c2b267a..9158ecbc5c 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -491,7 +491,7 @@ static void flush_windows(CPUSPARCState *env)
+ void cpu_loop(CPUSPARCState *env)
+ {
+     CPUState *cs =3D env_cpu(env);
+-    int trapnr, ret, syscall_nr;
++    int trapnr, ret, syscall_nr, syscall_flags;
+     //target_siginfo_t info;
+=20
+     while (1) {
+@@ -511,21 +511,27 @@ void cpu_loop(CPUSPARCState *env)
+         case 0x100:
+ #endif
+             syscall_nr =3D env->gregs[1];
+-            if (bsd_type =3D=3D target_freebsd)
++            if (bsd_type =3D=3D target_freebsd) {
+                 ret =3D do_freebsd_syscall(env, syscall_nr,
+                                          env->regwptr[0], env->regwptr[1=
+],
+                                          env->regwptr[2], env->regwptr[3=
+],
+                                          env->regwptr[4], env->regwptr[5=
+], 0, 0);
+-            else if (bsd_type =3D=3D target_netbsd)
++            } else if (bsd_type =3D=3D target_netbsd) {
++                syscall_flags =3D syscall_nr & (TARGET_NETBSD_SYSCALL_G7=
+RFLAG |
++                                              TARGET_NETBSD_SYSCALL_G5RF=
+LAG |
++                                              TARGET_NETBSD_SYSCALL_G2RF=
+LAG);
++                syscall_nr &=3D ~(TARGET_NETBSD_SYSCALL_G7RFLAG |
++                                TARGET_NETBSD_SYSCALL_G5RFLAG |
++                                TARGET_NETBSD_SYSCALL_G2RFLAG);
+                 ret =3D do_netbsd_syscall(env, syscall_nr,
+                                         env->regwptr[0], env->regwptr[1]=
+,
+                                         env->regwptr[2], env->regwptr[3]=
+,
+                                         env->regwptr[4], env->regwptr[5]=
+);
+-            else { //if (bsd_type =3D=3D target_openbsd)
+-#if defined(TARGET_SPARC64)
+-                syscall_nr &=3D ~(TARGET_OPENBSD_SYSCALL_G7RFLAG |
+-                                TARGET_OPENBSD_SYSCALL_G2RFLAG);
+-#endif
++            } else { //if (bsd_type =3D=3D target_openbsd)
++                syscall_flags =3D syscall_nr & (TARGET_OPENBSD_SYSCALL_G=
+2RFLAG |
++                                              TARGET_OPENBSD_SYSCALL_G7R=
+FLAG);
++                syscall_nr &=3D ~(TARGET_OPENBSD_SYSCALL_G2RFLAG |
++                                TARGET_OPENBSD_SYSCALL_G7RFLAG);
+                 ret =3D do_openbsd_syscall(env, syscall_nr,
+                                          env->regwptr[0], env->regwptr[1=
+],
+                                          env->regwptr[2], env->regwptr[3=
+],
+@@ -547,23 +553,37 @@ void cpu_loop(CPUSPARCState *env)
+             }
+             env->regwptr[0] =3D ret;
+             /* next instruction */
+-#if defined(TARGET_SPARC64)
+-            if (bsd_type =3D=3D target_openbsd &&
+-                env->gregs[1] & TARGET_OPENBSD_SYSCALL_G2RFLAG) {
+-                env->pc =3D env->gregs[2];
+-                env->npc =3D env->pc + 4;
+-            } else if (bsd_type =3D=3D target_openbsd &&
+-                       env->gregs[1] & TARGET_OPENBSD_SYSCALL_G7RFLAG) {
+-                env->pc =3D env->gregs[7];
+-                env->npc =3D env->pc + 4;
+-            } else {
++            if (bsd_type =3D=3D target_openbsd) {
++                switch (syscall_flags) {
++                case 0:
++                    env->pc =3D env->npc;
++                    break;
++                case TARGET_OPENBSD_SYSCALL_G7RFLAG:
++                    env->pc =3D env->gregs[7];
++                    break;
++                default: /* G2 or G2|G7 */
++                    env->pc =3D env->gregs[2];
++                    break;
++                }
++            } else if (bsd_type =3D=3D target_netbsd) {
++                switch (syscall_flags) {
++                case 0:
++                    env->pc =3D env->npc;
++                    break;
++                case TARGET_NETBSD_SYSCALL_G7RFLAG:
++                    env->pc =3D env->gregs[7];
++                    break;
++                case TARGET_NETBSD_SYSCALL_G5RFLAG:
++                    env->pc =3D env->gregs[5];
++                    break;
++                case TARGET_NETBSD_SYSCALL_G2RFLAG:
++                    env->pc =3D env->gregs[2];
++                    break;
++                }
++            } else  {  //if (bsd_type =3D=3D target_freebsd)
+                 env->pc =3D env->npc;
+-                env->npc =3D env->npc + 4;
+             }
+-#else
+-            env->pc =3D env->npc;
+-            env->npc =3D env->npc + 4;
+-#endif
++            env->npc =3D env->pc + 4;
+             break;
+         case 0x83: /* flush windows */
+ #ifdef TARGET_ABI32
+diff --git a/bsd-user/netbsd/syscall_nr.h b/bsd-user/netbsd/syscall_nr.h
+index 2e9ab5378e..79022b0b4e 100644
+--- a/bsd-user/netbsd/syscall_nr.h
++++ b/bsd-user/netbsd/syscall_nr.h
+@@ -371,3 +371,55 @@
+ #define TARGET_NETBSD_NR_pset_assign 414
+ #define TARGET_NETBSD_NR__pset_bind  415
+ #define TARGET_NETBSD_NR___posix_fadvise50   416
++
++/*	$NetBSD: trap.h,v 1.18 2011/03/27 18:47:08 martin Exp $ */
++
++/*
++ * Copyright (c) 1992, 1993
++ *	The Regents of the University of California.  All rights reserved.
++ *
++ * This software was developed by the Computer Systems Engineering group
++ * at Lawrence Berkeley Laboratory under DARPA contract BG 91-66 and
++ * contributed to Berkeley.
++ *
++ * All advertising materials mentioning features or use of this software
++ * must display the following acknowledgement:
++ *	This product includes software developed by the University of
++ *	California, Lawrence Berkeley Laboratory.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in th=
+e
++ *    documentation and/or other materials provided with the distributio=
+n.
++ * 3. Neither the name of the University nor the names of its contributo=
+rs
++ *    may be used to endorse or promote products derived from this softw=
+are
++ *    without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' A=
+ND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PU=
+RPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIA=
+BLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUE=
+NTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOO=
+DS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, S=
+TRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY=
+ WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY O=
+F
++ * SUCH DAMAGE.
++ *
++ *	@(#)trap.h	8.1 (Berkeley) 6/11/93
++ */
++/*
++ * Sun4m support by Aaron Brown, Harvard University.
++ * Changes Copyright (c) 1995 The President and Fellows of Harvard Colle=
+ge.
++ * All rights reserved.
++ */
++
++/* flags to system call (flags in %g1 along with syscall number) */
++#define	TARGET_NETBSD_SYSCALL_G2RFLAG	0x400	/* on success, return to %g2=
+ rather than npc */
++#define	TARGET_NETBSD_SYSCALL_G7RFLAG	0x800	/* use %g7 as above (depreca=
+ted) */
++#define	TARGET_NETBSD_SYSCALL_G5RFLAG	0xc00	/* use %g5 as above (only AB=
+I compatible way) */
+--=20
+2.24.1
 
 
