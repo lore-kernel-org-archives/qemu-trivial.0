@@ -1,49 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ivJvE-0005Qj-N5
-	for mharc-qemu-trivial@gnu.org; Sat, 25 Jan 2020 06:48:16 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39688)
+	id 1ivK34-0008Gv-HP
+	for mharc-qemu-trivial@gnu.org; Sat, 25 Jan 2020 06:56:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41995)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <salvador@qindel.com>) id 1ivJvB-0005Ns-K4
- for qemu-trivial@nongnu.org; Sat, 25 Jan 2020 06:48:14 -0500
+ (envelope-from <no-reply@patchew.org>) id 1ivK2x-0008DN-OC
+ for qemu-trivial@nongnu.org; Sat, 25 Jan 2020 06:56:18 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <salvador@qindel.com>) id 1ivJvA-0000ai-7C
- for qemu-trivial@nongnu.org; Sat, 25 Jan 2020 06:48:13 -0500
-Received: from smtp.qindel.com ([89.140.90.34]:59112 helo=thor.qindel.com)
- by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <salvador@qindel.com>)
- id 1ivJv7-0000VL-05; Sat, 25 Jan 2020 06:48:09 -0500
-Received: from localhost (localhost [127.0.0.1])
- by thor.qindel.com (Postfix) with ESMTP id 61AC6601FF;
- Sat, 25 Jan 2020 12:48:06 +0100 (CET)
-Received: from thor.qindel.com ([127.0.0.1])
- by localhost (thor.qindel.com [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id CR8vGCooZGBA; Sat, 25 Jan 2020 12:48:06 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by thor.qindel.com (Postfix) with ESMTP id F3D986022A;
- Sat, 25 Jan 2020 12:48:05 +0100 (CET)
-X-Virus-Scanned: amavisd-new at thor.qindel.com
-Received: from thor.qindel.com ([127.0.0.1])
- by localhost (thor.qindel.com [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id 1KKXiRcrt4K5; Sat, 25 Jan 2020 12:48:05 +0100 (CET)
-Received: from freeso.my.domain (static.96.225.213.82.ibercom.com
- [82.213.225.96])
- by thor.qindel.com (Postfix) with ESMTPSA id 85FB4601FF;
- Sat, 25 Jan 2020 12:48:05 +0100 (CET)
-From: salvador@qindel.com
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, sfandino@yahoo.com,
- Salvador Fandino <salvador@qindel.com>
-Subject: [PATCH] bsd-user: improve support for sparc syscall flags
-Date: Sat, 25 Jan 2020 12:47:53 +0100
-Message-Id: <20200125114753.61820-1-salvador@qindel.com>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <157990614813.23531.11665906860216456443@f6d1ed32ca6b>
-References: <157990614813.23531.11665906860216456443@f6d1ed32ca6b>
+ (envelope-from <no-reply@patchew.org>) id 1ivK2w-00058F-JH
+ for qemu-trivial@nongnu.org; Sat, 25 Jan 2020 06:56:15 -0500
+Resent-Date: Sat, 25 Jan 2020 06:56:15 -0500
+Resent-Message-Id: <E1ivK2w-00058F-JH@eggs.gnu.org>
+Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21199)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1ivK2t-0004zQ-8G; Sat, 25 Jan 2020 06:56:11 -0500
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1579953356428682.6636180370215;
+ Sat, 25 Jan 2020 03:55:56 -0800 (PST)
+In-Reply-To: <20200125114753.61820-1-salvador@qindel.com>
+Reply-To: <qemu-devel@nongnu.org>
+Subject: Re: [PATCH] bsd-user: improve support for sparc syscall flags
+Message-ID: <157995335516.23531.17570150106723039473@f6d1ed32ca6b>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 89.140.90.34
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: salvador@qindel.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, sfandino@yahoo.com,
+ salvador@qindel.com
+Date: Sat, 25 Jan 2020 03:55:56 -0800 (PST)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 136.143.188.51
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -55,219 +44,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 25 Jan 2020 11:48:15 -0000
+X-List-Received-Date: Sat, 25 Jan 2020 11:56:19 -0000
 
-From: Salvador Fandino <salvador@qindel.com>
-
-Under sparc and sparc64, both NetBSD and OpenSSH use two bits of the
-syscall number as flags. Until now, those bits where only supported
-for sparc64 when emulating OpenBSD.
-
-This patch extends support for syscall flags to the sparc architecture
-and NetBSD emulation. It had allowed my to run simple NetBSD sparc
-applications with qemu-sparc on a FreeBSD x64 machine.
-
-The code supporting OpenBSD sparc and sparc64 emulation has been
-refactored in order to make it simpler and similar to the new one for
-NetBSD.
-
-Signed-off-by: Salvador Fandino <salvador@qindel.com>
----
- bsd-user/main.c              | 66 +++++++++++++++++++++++-------------
- bsd-user/netbsd/syscall_nr.h | 52 ++++++++++++++++++++++++++++
- 2 files changed, 95 insertions(+), 23 deletions(-)
-
-diff --git a/bsd-user/main.c b/bsd-user/main.c
-index 770c2b267a..5706261f15 100644
---- a/bsd-user/main.c
-+++ b/bsd-user/main.c
-@@ -491,7 +491,7 @@ static void flush_windows(CPUSPARCState *env)
- void cpu_loop(CPUSPARCState *env)
- {
-     CPUState *cs =3D env_cpu(env);
--    int trapnr, ret, syscall_nr;
-+    int trapnr, ret, syscall_nr, syscall_flags;
-     //target_siginfo_t info;
-=20
-     while (1) {
-@@ -511,21 +511,27 @@ void cpu_loop(CPUSPARCState *env)
-         case 0x100:
- #endif
-             syscall_nr =3D env->gregs[1];
--            if (bsd_type =3D=3D target_freebsd)
-+            if (bsd_type =3D=3D target_freebsd) {
-                 ret =3D do_freebsd_syscall(env, syscall_nr,
-                                          env->regwptr[0], env->regwptr[1=
-],
-                                          env->regwptr[2], env->regwptr[3=
-],
-                                          env->regwptr[4], env->regwptr[5=
-], 0, 0);
--            else if (bsd_type =3D=3D target_netbsd)
-+            } else if (bsd_type =3D=3D target_netbsd) {
-+                syscall_flags =3D syscall_nr & (TARGET_NETBSD_SYSCALL_G7=
-RFLAG |
-+                                              TARGET_NETBSD_SYSCALL_G5RF=
-LAG |
-+                                              TARGET_NETBSD_SYSCALL_G2RF=
-LAG);
-+                syscall_nr &=3D ~(TARGET_NETBSD_SYSCALL_G7RFLAG |
-+                                TARGET_NETBSD_SYSCALL_G5RFLAG |
-+                                TARGET_NETBSD_SYSCALL_G2RFLAG);
-                 ret =3D do_netbsd_syscall(env, syscall_nr,
-                                         env->regwptr[0], env->regwptr[1]=
-,
-                                         env->regwptr[2], env->regwptr[3]=
-,
-                                         env->regwptr[4], env->regwptr[5]=
-);
--            else { //if (bsd_type =3D=3D target_openbsd)
--#if defined(TARGET_SPARC64)
--                syscall_nr &=3D ~(TARGET_OPENBSD_SYSCALL_G7RFLAG |
--                                TARGET_OPENBSD_SYSCALL_G2RFLAG);
--#endif
-+            } else { /* if (bsd_type =3D=3D target_openbsd) */
-+                syscall_flags =3D syscall_nr & (TARGET_OPENBSD_SYSCALL_G=
-2RFLAG |
-+                                              TARGET_OPENBSD_SYSCALL_G7R=
-FLAG);
-+                syscall_nr &=3D ~(TARGET_OPENBSD_SYSCALL_G2RFLAG |
-+                                TARGET_OPENBSD_SYSCALL_G7RFLAG);
-                 ret =3D do_openbsd_syscall(env, syscall_nr,
-                                          env->regwptr[0], env->regwptr[1=
-],
-                                          env->regwptr[2], env->regwptr[3=
-],
-@@ -547,23 +553,37 @@ void cpu_loop(CPUSPARCState *env)
-             }
-             env->regwptr[0] =3D ret;
-             /* next instruction */
--#if defined(TARGET_SPARC64)
--            if (bsd_type =3D=3D target_openbsd &&
--                env->gregs[1] & TARGET_OPENBSD_SYSCALL_G2RFLAG) {
--                env->pc =3D env->gregs[2];
--                env->npc =3D env->pc + 4;
--            } else if (bsd_type =3D=3D target_openbsd &&
--                       env->gregs[1] & TARGET_OPENBSD_SYSCALL_G7RFLAG) {
--                env->pc =3D env->gregs[7];
--                env->npc =3D env->pc + 4;
--            } else {
-+            if (bsd_type =3D=3D target_openbsd) {
-+                switch (syscall_flags) {
-+                case 0:
-+                    env->pc =3D env->npc;
-+                    break;
-+                case TARGET_OPENBSD_SYSCALL_G7RFLAG:
-+                    env->pc =3D env->gregs[7];
-+                    break;
-+                default: /* G2 or G2|G7 */
-+                    env->pc =3D env->gregs[2];
-+                    break;
-+                }
-+            } else if (bsd_type =3D=3D target_netbsd) {
-+                switch (syscall_flags) {
-+                case 0:
-+                    env->pc =3D env->npc;
-+                    break;
-+                case TARGET_NETBSD_SYSCALL_G7RFLAG:
-+                    env->pc =3D env->gregs[7];
-+                    break;
-+                case TARGET_NETBSD_SYSCALL_G5RFLAG:
-+                    env->pc =3D env->gregs[5];
-+                    break;
-+                case TARGET_NETBSD_SYSCALL_G2RFLAG:
-+                    env->pc =3D env->gregs[2];
-+                    break;
-+                }
-+            } else  {  /* if (bsd_type =3D=3D target_freebsd) */
-                 env->pc =3D env->npc;
--                env->npc =3D env->npc + 4;
-             }
--#else
--            env->pc =3D env->npc;
--            env->npc =3D env->npc + 4;
--#endif
-+            env->npc =3D env->pc + 4;
-             break;
-         case 0x83: /* flush windows */
- #ifdef TARGET_ABI32
-diff --git a/bsd-user/netbsd/syscall_nr.h b/bsd-user/netbsd/syscall_nr.h
-index 2e9ab5378e..79022b0b4e 100644
---- a/bsd-user/netbsd/syscall_nr.h
-+++ b/bsd-user/netbsd/syscall_nr.h
-@@ -371,3 +371,55 @@
- #define TARGET_NETBSD_NR_pset_assign 414
- #define TARGET_NETBSD_NR__pset_bind  415
- #define TARGET_NETBSD_NR___posix_fadvise50   416
-+
-+/*	$NetBSD: trap.h,v 1.18 2011/03/27 18:47:08 martin Exp $ */
-+
-+/*
-+ * Copyright (c) 1992, 1993
-+ *	The Regents of the University of California.  All rights reserved.
-+ *
-+ * This software was developed by the Computer Systems Engineering group
-+ * at Lawrence Berkeley Laboratory under DARPA contract BG 91-66 and
-+ * contributed to Berkeley.
-+ *
-+ * All advertising materials mentioning features or use of this software
-+ * must display the following acknowledgement:
-+ *	This product includes software developed by the University of
-+ *	California, Lawrence Berkeley Laboratory.
-+ *
-+ * Redistribution and use in source and binary forms, with or without
-+ * modification, are permitted provided that the following conditions
-+ * are met:
-+ * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer.
-+ * 2. Redistributions in binary form must reproduce the above copyright
-+ *    notice, this list of conditions and the following disclaimer in th=
-e
-+ *    documentation and/or other materials provided with the distributio=
-n.
-+ * 3. Neither the name of the University nor the names of its contributo=
-rs
-+ *    may be used to endorse or promote products derived from this softw=
-are
-+ *    without specific prior written permission.
-+ *
-+ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' A=
-ND
-+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PU=
-RPOSE
-+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIA=
-BLE
-+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUE=
-NTIAL
-+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOO=
-DS
-+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, S=
-TRICT
-+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY=
- WAY
-+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY O=
-F
-+ * SUCH DAMAGE.
-+ *
-+ *	@(#)trap.h	8.1 (Berkeley) 6/11/93
-+ */
-+/*
-+ * Sun4m support by Aaron Brown, Harvard University.
-+ * Changes Copyright (c) 1995 The President and Fellows of Harvard Colle=
-ge.
-+ * All rights reserved.
-+ */
-+
-+/* flags to system call (flags in %g1 along with syscall number) */
-+#define	TARGET_NETBSD_SYSCALL_G2RFLAG	0x400	/* on success, return to %g2=
- rather than npc */
-+#define	TARGET_NETBSD_SYSCALL_G7RFLAG	0x800	/* use %g7 as above (depreca=
-ted) */
-+#define	TARGET_NETBSD_SYSCALL_G5RFLAG	0xc00	/* use %g5 as above (only AB=
-I compatible way) */
---=20
-2.24.1
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDEyNTExNDc1My42MTgy
+MC0xLXNhbHZhZG9yQHFpbmRlbC5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8gaGF2
+ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9yZSBp
+bmZvcm1hdGlvbjoKClR5cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDIwMDEyNTExNDc1My42MTgy
+MC0xLXNhbHZhZG9yQHFpbmRlbC5jb20KU3ViamVjdDogW1BBVENIXSBic2QtdXNlcjogaW1wcm92
+ZSBzdXBwb3J0IGZvciBzcGFyYyBzeXNjYWxsIGZsYWdzCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4g
+PT09CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAK
+Z2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwg
+ZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3Rv
+Z3JhbQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBT
+Q1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRiZDg4
+ODcxMzM4NApGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogLSBb
+dGFnIHVwZGF0ZV0gICAgICBwYXRjaGV3LzIwMjAwMTI0MDA1MTMxLjE2Mjc2LTEtZjRidWdAYW1z
+YXQub3JnIC0+IHBhdGNoZXcvMjAyMDAxMjQwMDUxMzEuMTYyNzYtMS1mNGJ1Z0BhbXNhdC5vcmcK
+ICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8yMDIwMDEyNTExNDc1My42MTgyMC0xLXNhbHZh
+ZG9yQHFpbmRlbC5jb20gLT4gcGF0Y2hldy8yMDIwMDEyNTExNDc1My42MTgyMC0xLXNhbHZhZG9y
+QHFpbmRlbC5jb20KU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0JwplMjU2YTBmIGJzZC11
+c2VyOiBpbXByb3ZlIHN1cHBvcnQgZm9yIHNwYXJjIHN5c2NhbGwgZmxhZ3MKCj09PSBPVVRQVVQg
+QkVHSU4gPT09CkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzEzMjog
+RklMRTogYnNkLXVzZXIvbmV0YnNkL3N5c2NhbGxfbnIuaDozNzU6CisvKl5JJE5ldEJTRDogdHJh
+cC5oLHYgMS4xOCAyMDExLzAzLzI3IDE4OjQ3OjA4IG1hcnRpbiBFeHAgJCAqLyQKCkVSUk9SOiBj
+b2RlIGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzEzNjogRklMRTogYnNkLXVzZXIvbmV0
+YnNkL3N5c2NhbGxfbnIuaDozNzk6CisgKl5JVGhlIFJlZ2VudHMgb2YgdGhlIFVuaXZlcnNpdHkg
+b2YgQ2FsaWZvcm5pYS4gIEFsbCByaWdodHMgcmVzZXJ2ZWQuJAoKRVJST1I6IGNvZGUgaW5kZW50
+IHNob3VsZCBuZXZlciB1c2UgdGFicwojMTQ0OiBGSUxFOiBic2QtdXNlci9uZXRic2Qvc3lzY2Fs
+bF9uci5oOjM4NzoKKyAqXklUaGlzIHByb2R1Y3QgaW5jbHVkZXMgc29mdHdhcmUgZGV2ZWxvcGVk
+IGJ5IHRoZSBVbml2ZXJzaXR5IG9mJAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1
+c2UgdGFicwojMTQ1OiBGSUxFOiBic2QtdXNlci9uZXRic2Qvc3lzY2FsbF9uci5oOjM4ODoKKyAq
+XklDYWxpZm9ybmlhLCBMYXdyZW5jZSBCZXJrZWxleSBMYWJvcmF0b3J5LiQKCkVSUk9SOiBjb2Rl
+IGluZGVudCBzaG91bGQgbmV2ZXIgdXNlIHRhYnMKIzE3MTogRklMRTogYnNkLXVzZXIvbmV0YnNk
+L3N5c2NhbGxfbnIuaDo0MTQ6CisgKl5JQCgjKXRyYXAuaF5JOC4xIChCZXJrZWxleSkgNi8xMS85
+MyQKCkVSUk9SOiBsaW5lIG92ZXIgOTAgY2hhcmFjdGVycwojMTgwOiBGSUxFOiBic2QtdXNlci9u
+ZXRic2Qvc3lzY2FsbF9uci5oOjQyMzoKKyNkZWZpbmUgICAgICAgIFRBUkdFVF9ORVRCU0RfU1lT
+Q0FMTF9HMlJGTEFHICAgMHg0MDAgICAvKiBvbiBzdWNjZXNzLCByZXR1cm4gdG8gJWcyIHJhdGhl
+ciB0aGFuIG5wYyAqLwoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwoj
+MTgwOiBGSUxFOiBic2QtdXNlci9uZXRic2Qvc3lzY2FsbF9uci5oOjQyMzoKKyNkZWZpbmVeSVRB
+UkdFVF9ORVRCU0RfU1lTQ0FMTF9HMlJGTEFHXkkweDQwMF5JLyogb24gc3VjY2VzcywgcmV0dXJu
+IHRvICVnMiByYXRoZXIgdGhhbiBucGMgKi8kCgpXQVJOSU5HOiBsaW5lIG92ZXIgODAgY2hhcmFj
+dGVycwojMTgxOiBGSUxFOiBic2QtdXNlci9uZXRic2Qvc3lzY2FsbF9uci5oOjQyNDoKKyNkZWZp
+bmUgICAgICAgIFRBUkdFVF9ORVRCU0RfU1lTQ0FMTF9HN1JGTEFHICAgMHg4MDAgICAvKiB1c2Ug
+JWc3IGFzIGFib3ZlIChkZXByZWNhdGVkKSAqLwoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBu
+ZXZlciB1c2UgdGFicwojMTgxOiBGSUxFOiBic2QtdXNlci9uZXRic2Qvc3lzY2FsbF9uci5oOjQy
+NDoKKyNkZWZpbmVeSVRBUkdFVF9ORVRCU0RfU1lTQ0FMTF9HN1JGTEFHXkkweDgwMF5JLyogdXNl
+ICVnNyBhcyBhYm92ZSAoZGVwcmVjYXRlZCkgKi8kCgpFUlJPUjogbGluZSBvdmVyIDkwIGNoYXJh
+Y3RlcnMKIzE4MjogRklMRTogYnNkLXVzZXIvbmV0YnNkL3N5c2NhbGxfbnIuaDo0MjU6CisjZGVm
+aW5lICAgICAgICBUQVJHRVRfTkVUQlNEX1NZU0NBTExfRzVSRkxBRyAgIDB4YzAwICAgLyogdXNl
+ICVnNSBhcyBhYm92ZSAob25seSBBQkkgY29tcGF0aWJsZSB3YXkpICovCgpFUlJPUjogY29kZSBp
+bmRlbnQgc2hvdWxkIG5ldmVyIHVzZSB0YWJzCiMxODI6IEZJTEU6IGJzZC11c2VyL25ldGJzZC9z
+eXNjYWxsX25yLmg6NDI1OgorI2RlZmluZV5JVEFSR0VUX05FVEJTRF9TWVNDQUxMX0c1UkZMQUde
+STB4YzAwXkkvKiB1c2UgJWc1IGFzIGFib3ZlIChvbmx5IEFCSSBjb21wYXRpYmxlIHdheSkgKi8k
+Cgp0b3RhbDogMTAgZXJyb3JzLCAxIHdhcm5pbmdzLCAxNDkgbGluZXMgY2hlY2tlZAoKQ29tbWl0
+IGUyNTZhMGZmMjJjYSAoYnNkLXVzZXI6IGltcHJvdmUgc3VwcG9ydCBmb3Igc3BhcmMgc3lzY2Fs
+bCBmbGFncykgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRo
+ZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFp
+bmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KPT09IE9VVFBVVCBFTkQgPT09CgpU
+ZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFi
+bGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDAxMjUxMTQ3NTMuNjE4MjAtMS1zYWx2
+YWRvckBxaW5kZWwuY29tL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1h
+aWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9y
+Zy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNv
+bQ==
 
