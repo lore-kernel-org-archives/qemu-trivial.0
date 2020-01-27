@@ -1,52 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ivQoV-0008Qw-Rt
-	for mharc-qemu-trivial@gnu.org; Sat, 25 Jan 2020 14:09:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37601)
+	id 1iw1xC-000203-Bl
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Jan 2020 05:49:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44846)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <salvador@qindel.com>) id 1ivQoT-0008OW-8s
- for qemu-trivial@nongnu.org; Sat, 25 Jan 2020 14:09:46 -0500
+ (envelope-from <philmd@redhat.com>) id 1iw1x9-0001xR-Eu
+ for qemu-trivial@nongnu.org; Mon, 27 Jan 2020 05:49:12 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <salvador@qindel.com>) id 1ivQoS-0001g5-5C
- for qemu-trivial@nongnu.org; Sat, 25 Jan 2020 14:09:45 -0500
-Received: from smtp.qindel.com ([89.140.90.34]:36527 helo=thor.qindel.com)
- by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <salvador@qindel.com>)
- id 1ivQoO-0001Pl-LT; Sat, 25 Jan 2020 14:09:40 -0500
-Received: from localhost (localhost [127.0.0.1])
- by thor.qindel.com (Postfix) with ESMTP id 86DB76060B;
- Sat, 25 Jan 2020 20:09:35 +0100 (CET)
-Received: from thor.qindel.com ([127.0.0.1])
- by localhost (thor.qindel.com [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id 2eq5uY2aArGN; Sat, 25 Jan 2020 20:09:35 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by thor.qindel.com (Postfix) with ESMTP id 5416160619;
- Sat, 25 Jan 2020 20:09:35 +0100 (CET)
-X-Virus-Scanned: amavisd-new at thor.qindel.com
-Received: from thor.qindel.com ([127.0.0.1])
- by localhost (thor.qindel.com [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id KaKFtQpjPQRm; Sat, 25 Jan 2020 20:09:35 +0100 (CET)
-Received: from [192.168.20.140] (static.96.225.213.82.ibercom.com
- [82.213.225.96])
- by thor.qindel.com (Postfix) with ESMTPSA id F23D66060B;
- Sat, 25 Jan 2020 20:09:34 +0100 (CET)
-Subject: Re: [PATCH] bsd-user: improve support for sparc syscall flags
-To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, sfandino@yahoo.com
-References: <157995335516.23531.17570150106723039473@f6d1ed32ca6b>
- <31af1372-1ef5-27b5-1530-5801aed19982@vivier.eu>
-From: =?UTF-8?Q?Salvador_Fandi=c3=b1o?= <salvador@qindel.com>
-Message-ID: <5c2ac6a7-97f6-c586-40ab-8be192435f16@qindel.com>
-Date: Sat, 25 Jan 2020 20:09:34 +0100
+ (envelope-from <philmd@redhat.com>) id 1iw1x8-0007mq-8N
+ for qemu-trivial@nongnu.org; Mon, 27 Jan 2020 05:49:11 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:41145
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iw1x8-0007md-5H
+ for qemu-trivial@nongnu.org; Mon, 27 Jan 2020 05:49:10 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1580122149;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=1ZGcZobXFPSfW+Y9ZDx4BxNaOVz1JOpgiSu/3hiEJ2I=;
+ b=E+BbNRDX+dMDSZWtmkVXqPrQJQP71ZORj+N+jtIRxcEPWLFv3hyqas28G1lMLqwWP9cCST
+ GBLqxxLetMjUEIGlDYHn0kReHYlnDHSp8X1+LqgP5pgsdUTvu8oPDZcr2oM/2rSWhgQSzI
+ FDXeuolY8ALx59pLgFaVUaoaOt9vowA=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-123-IblQ37RWOn-eVFF5RQniiw-1; Mon, 27 Jan 2020 05:49:07 -0500
+Received: by mail-wm1-f70.google.com with SMTP id s25so1214654wmj.3
+ for <qemu-trivial@nongnu.org>; Mon, 27 Jan 2020 02:49:07 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=HWt5QEKWSaIwB8izXO+a+hyDvNnZfkOHSWr7GgQFrtI=;
+ b=pvASyA2TiMYv43XZ0AsVTIo8HkCSdXyCbYP6oWErsC6uSCvCy6Dt0/RiOH27Id7uUZ
+ Pe2ESSfJJlDllwJd14OOihPOs7J/Bq5EhJhzoWu7GkAzMMJ9ZYXWNEF+kX8G/oKa6iCl
+ IvxBP5MT2drEbmiueiwzvDB2p8UfnvpVQi631jLLY6UZnyCkdRq/6EJJz2Rk5JNEi256
+ z3BXVDZzc+8odEsORfW/8om1kOZ1XqOtFh7OnuE4c3vzTa5NBQ9584i/3vIz4JaV8iFq
+ kUCV6NhUBEFQ/mlvSovrEKAMozIIP0nNqNedaAfDRF9vU3QYLiXv8liQ5KEVjElgSvXK
+ +3BQ==
+X-Gm-Message-State: APjAAAWlMwbUdZa5BgmFZTm0l68IdNxCSF5Y9jM2z4Dot43GZYOgauAw
+ vfnDh0hRMI5IHple8hqzaAtwswc06qyZfZXCaWzpTf9kC1ldjn4xdAOSRoDaiW6Nk5+obrji7Xc
+ CPhSZo3TQ15IvpDIN1g==
+X-Received: by 2002:a05:600c:242:: with SMTP id 2mr11105319wmj.2.1580122145532; 
+ Mon, 27 Jan 2020 02:49:05 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxYU0QQeX1MvnSlyOfGGXAzIazUhdv7afSTWwPmgiDS1CnCpq6bpFnpQnHlpbIxQRk28gtaNQ==
+X-Received: by 2002:a05:600c:242:: with SMTP id 2mr11105287wmj.2.1580122145240; 
+ Mon, 27 Jan 2020 02:49:05 -0800 (PST)
+Received: from [192.168.50.32] (243.red-88-26-246.staticip.rima-tde.net.
+ [88.26.246.243])
+ by smtp.gmail.com with ESMTPSA id y20sm10350484wmi.23.2020.01.27.02.49.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Jan 2020 02:49:04 -0800 (PST)
+Subject: Re: [PATCH v3 01/13] usb/dev-storage: remove unused include
+To: Maxim Levitsky <mlevitsk@redhat.com>, qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Max Reitz
+ <mreitz@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20200127103647.17761-1-mlevitsk@redhat.com>
+ <20200127103647.17761-2-mlevitsk@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <bc640c71-dfec-f2a6-c5d3-f38d8fdbfa00@redhat.com>
+Date: Mon, 27 Jan 2020 11:49:03 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <31af1372-1ef5-27b5-1530-5801aed19982@vivier.eu>
-Content-Type: multipart/alternative;
- boundary="------------246B9A9F366293DB841E3792"
+In-Reply-To: <20200127103647.17761-2-mlevitsk@redhat.com>
 Content-Language: en-US
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 89.140.90.34
+X-MC-Unique: IblQ37RWOn-eVFF5RQniiw-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -58,106 +88,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 25 Jan 2020 19:09:46 -0000
+X-List-Received-Date: Mon, 27 Jan 2020 10:49:12 -0000
 
-This is a multi-part message in MIME format.
---------------246B9A9F366293DB841E3792
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+On 1/27/20 11:36 AM, Maxim Levitsky wrote:
+> Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
+> ---
+>   hw/usb/dev-storage.c | 1 -
+>   1 file changed, 1 deletion(-)
+>=20
+> diff --git a/hw/usb/dev-storage.c b/hw/usb/dev-storage.c
+> index 8545193488..50d12244ab 100644
+> --- a/hw/usb/dev-storage.c
+> +++ b/hw/usb/dev-storage.c
+> @@ -19,7 +19,6 @@
+>   #include "hw/scsi/scsi.h"
+>   #include "ui/console.h"
+>   #include "migration/vmstate.h"
+> -#include "monitor/monitor.h"
+>   #include "sysemu/sysemu.h"
+>   #include "sysemu/block-backend.h"
+>   #include "qapi/visitor.h"
+>=20
 
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-On 25/1/20 16:52, Laurent Vivier wrote:
-> Le 25/01/2020 =C3=A0 12:55, no-reply@patchew.org a =C3=A9crit=C2=A0:
->> Patchew URL: https://patchew.org/QEMU/20200125114753.61820-1-salvador@=
-qindel.com/
->>
->>
->>
->> Hi,
->>
->> This series seems to have some coding style problems. See output below=
- for
->> more information:
->>
-> Salvador,
->
-> you can use scripts/checkpatch.pl in the QEMU directory to check your
-> patch for style before sending them.
->
-> And don't send them as a reply but as a new thread, using versioning in
-> the subject ("[PATCH v4]").
-
-ok, I will do that in the future.
-
-In any case, the style problems found by patchew for the last version of=20
-the patch I have submitted are for a fragment of a file copied verbatim=20
-from the NetBSD source code (in the same way the equivalent fragment was=20
-copied from OpenBSD when support for that OS was added). It is mostly=20
-the copyright header and a few defines. IMO, style shouldn't be=20
-corrected there.
-
-
---------------246B9A9F366293DB841E3792
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-  <head>
-    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF=
--8">
-  </head>
-  <body>
-    <p><br>
-    </p>
-    <div class=3D"moz-cite-prefix">On 25/1/20 16:52, Laurent Vivier wrote=
-:<br>
-    </div>
-    <blockquote type=3D"cite"
-      cite=3D"mid:31af1372-1ef5-27b5-1530-5801aed19982@vivier.eu">
-      <pre class=3D"moz-quote-pre" wrap=3D"">Le 25/01/2020 =C3=A0 12:55, =
-<a class=3D"moz-txt-link-abbreviated" href=3D"mailto:no-reply@patchew.org=
-">no-reply@patchew.org</a> a =C3=A9crit=C2=A0:
-</pre>
-      <blockquote type=3D"cite">
-        <pre class=3D"moz-quote-pre" wrap=3D"">Patchew URL: <a class=3D"m=
-oz-txt-link-freetext" href=3D"https://patchew.org/QEMU/20200125114753.618=
-20-1-salvador@qindel.com/">https://patchew.org/QEMU/20200125114753.61820-=
-1-salvador@qindel.com/</a>
-
-
-
-Hi,
-
-This series seems to have some coding style problems. See output below fo=
-r
-more information:
-
-</pre>
-      </blockquote>
-      <pre class=3D"moz-quote-pre" wrap=3D"">
-Salvador,
-
-you can use scripts/checkpatch.pl in the QEMU directory to check your
-patch for style before sending them.
-
-And don't send them as a reply but as a new thread, using versioning in
-the subject ("[PATCH v4]").
-</pre>
-    </blockquote>
-    <p><span style=3D"white-space: pre-wrap; display: block; width: 98vw;=
-">
-</span>ok, I will do that in the future.<br>
-      <br>
-      In any case, the style problems found by patchew for the last
-      version of the patch I have submitted are for a fragment of a file
-      copied verbatim from the NetBSD source code (in the same way the
-      equivalent fragment was copied from OpenBSD when support for that
-      OS was added). It is mostly the copyright header and a few
-      defines. IMO, style shouldn't be corrected there.<br>
-      <br>
-    </p>
-  </body>
-</html>
-
---------------246B9A9F366293DB841E3792--
 
