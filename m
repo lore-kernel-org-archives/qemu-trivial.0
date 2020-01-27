@@ -1,79 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iw1xC-000203-Bl
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Jan 2020 05:49:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44846)
+	id 1iw4yi-00058m-Mh
+	for mharc-qemu-trivial@gnu.org; Mon, 27 Jan 2020 09:03:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57324)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iw1x9-0001xR-Eu
- for qemu-trivial@nongnu.org; Mon, 27 Jan 2020 05:49:12 -0500
+ (envelope-from <thuth@redhat.com>) id 1iw4yg-00057s-08
+ for qemu-trivial@nongnu.org; Mon, 27 Jan 2020 09:02:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iw1x8-0007mq-8N
- for qemu-trivial@nongnu.org; Mon, 27 Jan 2020 05:49:11 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:41145
+ (envelope-from <thuth@redhat.com>) id 1iw4yd-0001Ea-GW
+ for qemu-trivial@nongnu.org; Mon, 27 Jan 2020 09:02:57 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:48695
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iw1x8-0007md-5H
- for qemu-trivial@nongnu.org; Mon, 27 Jan 2020 05:49:10 -0500
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1iw4yd-0001BA-2M
+ for qemu-trivial@nongnu.org; Mon, 27 Jan 2020 09:02:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580122149;
+ s=mimecast20190719; t=1580133774;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1ZGcZobXFPSfW+Y9ZDx4BxNaOVz1JOpgiSu/3hiEJ2I=;
- b=E+BbNRDX+dMDSZWtmkVXqPrQJQP71ZORj+N+jtIRxcEPWLFv3hyqas28G1lMLqwWP9cCST
- GBLqxxLetMjUEIGlDYHn0kReHYlnDHSp8X1+LqgP5pgsdUTvu8oPDZcr2oM/2rSWhgQSzI
- FDXeuolY8ALx59pLgFaVUaoaOt9vowA=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-123-IblQ37RWOn-eVFF5RQniiw-1; Mon, 27 Jan 2020 05:49:07 -0500
-Received: by mail-wm1-f70.google.com with SMTP id s25so1214654wmj.3
- for <qemu-trivial@nongnu.org>; Mon, 27 Jan 2020 02:49:07 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=HWt5QEKWSaIwB8izXO+a+hyDvNnZfkOHSWr7GgQFrtI=;
- b=pvASyA2TiMYv43XZ0AsVTIo8HkCSdXyCbYP6oWErsC6uSCvCy6Dt0/RiOH27Id7uUZ
- Pe2ESSfJJlDllwJd14OOihPOs7J/Bq5EhJhzoWu7GkAzMMJ9ZYXWNEF+kX8G/oKa6iCl
- IvxBP5MT2drEbmiueiwzvDB2p8UfnvpVQi631jLLY6UZnyCkdRq/6EJJz2Rk5JNEi256
- z3BXVDZzc+8odEsORfW/8om1kOZ1XqOtFh7OnuE4c3vzTa5NBQ9584i/3vIz4JaV8iFq
- kUCV6NhUBEFQ/mlvSovrEKAMozIIP0nNqNedaAfDRF9vU3QYLiXv8liQ5KEVjElgSvXK
- +3BQ==
-X-Gm-Message-State: APjAAAWlMwbUdZa5BgmFZTm0l68IdNxCSF5Y9jM2z4Dot43GZYOgauAw
- vfnDh0hRMI5IHple8hqzaAtwswc06qyZfZXCaWzpTf9kC1ldjn4xdAOSRoDaiW6Nk5+obrji7Xc
- CPhSZo3TQ15IvpDIN1g==
-X-Received: by 2002:a05:600c:242:: with SMTP id 2mr11105319wmj.2.1580122145532; 
- Mon, 27 Jan 2020 02:49:05 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxYU0QQeX1MvnSlyOfGGXAzIazUhdv7afSTWwPmgiDS1CnCpq6bpFnpQnHlpbIxQRk28gtaNQ==
-X-Received: by 2002:a05:600c:242:: with SMTP id 2mr11105287wmj.2.1580122145240; 
- Mon, 27 Jan 2020 02:49:05 -0800 (PST)
-Received: from [192.168.50.32] (243.red-88-26-246.staticip.rima-tde.net.
- [88.26.246.243])
- by smtp.gmail.com with ESMTPSA id y20sm10350484wmi.23.2020.01.27.02.49.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Jan 2020 02:49:04 -0800 (PST)
-Subject: Re: [PATCH v3 01/13] usb/dev-storage: remove unused include
-To: Maxim Levitsky <mlevitsk@redhat.com>, qemu-devel@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
- Markus Armbruster <armbru@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Max Reitz
- <mreitz@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20200127103647.17761-1-mlevitsk@redhat.com>
- <20200127103647.17761-2-mlevitsk@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <bc640c71-dfec-f2a6-c5d3-f38d8fdbfa00@redhat.com>
-Date: Mon, 27 Jan 2020 11:49:03 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
-MIME-Version: 1.0
-In-Reply-To: <20200127103647.17761-2-mlevitsk@redhat.com>
-Content-Language: en-US
-X-MC-Unique: IblQ37RWOn-eVFF5RQniiw-1
+ to:to:cc:cc:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=5LIVx1f+8fMGBTfLAnXnB1uwqs+4uNhf7K1YgWiRV2s=;
+ b=MLUJ2bmLO1YpJRY6KvAiEisi+4GcwU16fec+k+ybPQ51euskJExBklnEXAJW+sxoLYLQDS
+ 6MqfGLo257ET8hhw1oNqv10UBG1R8QPWDnbNQzGtWHmymcl7cAcdC8O8Uo5HgoKgXVGOdn
+ NWJ2AhoqyrKxOf52bk6jax9SQXCh1EQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-295-hhQV-4QGM2WUdlfDj0Ydag-1; Mon, 27 Jan 2020 09:02:52 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D223A1005510;
+ Mon, 27 Jan 2020 14:02:50 +0000 (UTC)
+Received: from thuth.com (ovpn-117-94.ams2.redhat.com [10.36.117.94])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 43F6A86441;
+ Mon, 27 Jan 2020 14:02:48 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH] tests/Makefile: Fix inclusion of the qos dependency files
+Date: Mon, 27 Jan 2020 15:02:45 +0100
+Message-Id: <20200127140245.20065-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: hhQV-4QGM2WUdlfDj0Ydag-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 207.211.31.120
@@ -88,28 +61,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Jan 2020 10:49:12 -0000
+X-List-Received-Date: Mon, 27 Jan 2020 14:02:59 -0000
 
-On 1/27/20 11:36 AM, Maxim Levitsky wrote:
-> Signed-off-by: Maxim Levitsky <mlevitsk@redhat.com>
-> ---
->   hw/usb/dev-storage.c | 1 -
->   1 file changed, 1 deletion(-)
->=20
-> diff --git a/hw/usb/dev-storage.c b/hw/usb/dev-storage.c
-> index 8545193488..50d12244ab 100644
-> --- a/hw/usb/dev-storage.c
-> +++ b/hw/usb/dev-storage.c
-> @@ -19,7 +19,6 @@
->   #include "hw/scsi/scsi.h"
->   #include "ui/console.h"
->   #include "migration/vmstate.h"
-> -#include "monitor/monitor.h"
->   #include "sysemu/sysemu.h"
->   #include "sysemu/block-backend.h"
->   #include "qapi/visitor.h"
->=20
+The qos dependency files can be found under tests/qtest/libqos and
+not under tests/qtest/qos.
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Fixes: 1cf4323ecd0 ("Move the libqos files under tests/qtest/")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/Makefile.include | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index c6827ce8c2..4ee68ca7dd 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -917,6 +917,6 @@ all: $(QEMU_IOTESTS_HELPERS-y)
+=20
+ -include $(wildcard tests/*.d)
+ -include $(wildcard tests/qtest/*.d)
+--include $(wildcard tests/qtest/qos/*.d)
++-include $(wildcard tests/qtest/libqos/*.d)
+=20
+ endif
+--=20
+2.18.1
 
 
