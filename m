@@ -1,87 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1iwldw-0006Sn-CD
-	for mharc-qemu-trivial@gnu.org; Wed, 29 Jan 2020 06:36:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39861)
+	id 1iwscc-00048B-Mk
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Jan 2020 14:03:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38495)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <darren.kenny@oracle.com>) id 1iwldu-0006Sf-3C
- for qemu-trivial@nongnu.org; Wed, 29 Jan 2020 06:36:23 -0500
+ (envelope-from <philmd@redhat.com>) id 1iwsca-00046o-JN
+ for qemu-trivial@nongnu.org; Wed, 29 Jan 2020 14:03:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <darren.kenny@oracle.com>) id 1iwlds-0000gU-L6
- for qemu-trivial@nongnu.org; Wed, 29 Jan 2020 06:36:21 -0500
-Received: from userp2120.oracle.com ([156.151.31.85]:37144)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <darren.kenny@oracle.com>)
- id 1iwlds-0000Z8-7r; Wed, 29 Jan 2020 06:36:20 -0500
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 00TBX7Wc148796;
- Wed, 29 Jan 2020 11:36:11 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2019-08-05;
- bh=jgP2MBoawxu0v45uQoG0HdcSNOOBAku0cKZKrwZwBio=;
- b=E5PW53bSCG3a02+E2OEEYYwo4yjSfBXwcCvlNN6pRXdyWsU7xVRsdS5akdBcd3LVoBEA
- urSSFV0lVoSCDrN6nsgwk8vyqzL6qHFX1EPiRbbwlJW4qB4+x0LNnJoNxVxKzlgWBG2a
- o1MIR5FR4QT39lEb89E5u1VbzK5OtR1WS0LmrRCz1kebrcM0Qf5IKAGU/qzBnLdVotuL
- JnWd818WJcU4PSFnHuHmVP/Ep9zk8tZjpzkQnncGgeSnHy/LIzfm6BqKRz5pPF7/NDlG
- ohDjI2ql+lAp1ExzIhBJyO9jcOImWHQIMoBiae2ZcEJau6USabb9ZWlcIEae4QI+RYa+ Lw== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2120.oracle.com with ESMTP id 2xrearcf63-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 29 Jan 2020 11:36:11 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 00TBXlsq142379;
- Wed, 29 Jan 2020 11:36:10 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3030.oracle.com with ESMTP id 2xtg7x48d2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 29 Jan 2020 11:36:02 +0000
-Received: from abhmp0010.oracle.com (abhmp0010.oracle.com [141.146.116.16])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 00TBZxAU029756;
- Wed, 29 Jan 2020 11:35:59 GMT
-Received: from starbug-mbp.localdomain (/10.175.199.231)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 29 Jan 2020 03:35:59 -0800
-Received: from starbug-mbp (localhost [127.0.0.1])
- by starbug-mbp.localdomain (Postfix) with SMTP id C092657075D8;
- Wed, 29 Jan 2020 11:35:56 +0000 (GMT)
-Date: Wed, 29 Jan 2020 11:35:56 +0000
-From: Darren Kenny <darren.kenny@oracle.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, "Michael S . Tsirkin " <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
-Subject: Re: [PATCH] hw/i386/vmmouse: Fix crash when using the vmmouse on a
- machine without vmport
-Message-ID: <20200129113556.z3wzi6a25w4ffxk6@starbug-mbp>
-Mail-Followup-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- "Michael S . Tsirkin " <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>
-References: <20200129112954.4282-1-thuth@redhat.com>
+ (envelope-from <philmd@redhat.com>) id 1iwscZ-0004Vi-N8
+ for qemu-trivial@nongnu.org; Wed, 29 Jan 2020 14:03:28 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:56078
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iwscZ-0004VL-KD
+ for qemu-trivial@nongnu.org; Wed, 29 Jan 2020 14:03:27 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1580324607;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=VvSpx654IyJy8qtmFIUaAm7UgZeOUHxjzj9bbM4ngkI=;
+ b=SnlS+8lR+K8wKgRLAl7mqHzNT8KYKdY+2vvUWS8ifY9gnAAka4C09yLu6zERdOMDgfvYwd
+ FOOEhgnB+C5R/mFkMgGnr56DV4BfbXSAty6EXyTKDw0bgFQua/mWoo/coj9kkzxt3Y8XvZ
+ HQ2EffYIcfaI5yEGJkDgce6EaM0CCqc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-116-5IbvbSKkNVWBwuP49FokyQ-1; Wed, 29 Jan 2020 14:03:23 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3A8A0107ACC5;
+ Wed, 29 Jan 2020 19:03:22 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-205-184.brq.redhat.com [10.40.205.184])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4FC9D87B06;
+ Wed, 29 Jan 2020 19:03:18 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Helge Deller <deller@gmx.de>, qemu-trivial@nongnu.org,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] MAINTAINERS: Cover hppa-softmmu.mak in the HP-PARISC Machines
+ section
+Date: Wed, 29 Jan 2020 20:03:16 +0100
+Message-Id: <20200129190316.16901-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Disposition: inline
-In-Reply-To: <20200129112954.4282-1-thuth@redhat.com>
-User-Agent: NeoMutt/20180716
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9514
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1911140001 definitions=main-2001290097
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9514
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
- definitions=main-2001290097
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 156.151.31.85
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: 5IbvbSKkNVWBwuP49FokyQ-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -93,62 +63,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 Jan 2020 11:36:23 -0000
+X-List-Received-Date: Wed, 29 Jan 2020 19:03:29 -0000
 
-On Wed, Jan 29, 2020 at 12:29:54PM +0100, Thomas Huth wrote:
->QEMU currently crashes when the user tries to use the "vmmouse" on a
->machine without vmport, e.g.:
->
-> $ x86_64-softmmu/qemu-system-x86_64 -machine microvm -device vmmouse
-> Segmentation fault (core dumped)
->
->or:
->
-> $ x86_64-softmmu/qemu-system-x86_64 -device vmmouse -M pc,vmport=off
-> Segmentation fault (core dumped)
->
->Let's avoid the crash by checking for the vmport device first.
->
->Signed-off-by: Thomas Huth <thuth@redhat.com>
+Modifications to default-configs/hppa-softmmu.mak should be
+reviewed by the hppa-softmmu users (currently a single machine).
 
-Makes sense.
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-Reviewed-by: Darren Kenny <darren.kenny@oracle.com>
+diff --git a/MAINTAINERS b/MAINTAINERS
+index efd3f3875f..2c00a49c42 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -896,6 +896,7 @@ HP B160L
+ M: Richard Henderson <rth@twiddle.net>
+ R: Helge Deller <deller@gmx.de>
+ S: Odd Fixes
++F: default-configs/hppa-softmmu.mak
+ F: hw/hppa/
+ F: pc-bios/hppa-firmware.img
+=20
+--=20
+2.21.1
 
-Thanks,
-
-Darren
-
->---
-> hw/i386/vmmouse.c | 6 ++++++
-> 1 file changed, 6 insertions(+)
->
->diff --git a/hw/i386/vmmouse.c b/hw/i386/vmmouse.c
->index 7c2a375527..e8e62bd96b 100644
->--- a/hw/i386/vmmouse.c
->+++ b/hw/i386/vmmouse.c
->@@ -23,6 +23,7 @@
->  */
->
-> #include "qemu/osdep.h"
->+#include "qapi/error.h"
-> #include "ui/console.h"
-> #include "hw/i386/pc.h"
-> #include "hw/input/i8042.h"
->@@ -269,6 +270,11 @@ static void vmmouse_realizefn(DeviceState *dev, Error **errp)
->
->     DPRINTF("vmmouse_init\n");
->
->+    if (!object_resolve_path_type("", TYPE_VMPORT, NULL)) {
->+        error_setg(errp, "vmmouse needs a machine with vmport");
->+        return;
->+    }
->+
->     vmport_register(VMMOUSE_STATUS, vmmouse_ioport_read, s);
->     vmport_register(VMMOUSE_COMMAND, vmmouse_ioport_read, s);
->     vmport_register(VMMOUSE_DATA, vmmouse_ioport_read, s);
->-- 
->2.18.1
->
->
 
