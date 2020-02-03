@@ -1,95 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ixjl0-0004g8-OO
-	for mharc-qemu-trivial@gnu.org; Fri, 31 Jan 2020 22:47:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51180)
+	id 1iybTG-00079D-JE
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Feb 2020 08:08:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41246)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <LYan@suse.com>) id 1ixjkx-0004Xs-V7
- for qemu-trivial@nongnu.org; Fri, 31 Jan 2020 22:47:41 -0500
+ (envelope-from <drjones@redhat.com>) id 1iybTE-00078C-MS
+ for qemu-trivial@nongnu.org; Mon, 03 Feb 2020 08:08:57 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <LYan@suse.com>) id 1ixjkw-0004UZ-V2
- for qemu-trivial@nongnu.org; Fri, 31 Jan 2020 22:47:39 -0500
-Received: from m9a0013g.houston.softwaregrp.com ([15.124.64.91]:53348)
- by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <LYan@suse.com>)
- id 1ixjkr-0004Li-5p; Fri, 31 Jan 2020 22:47:33 -0500
-Received: FROM m9a0013g.houston.softwaregrp.com (15.121.0.191) BY
- m9a0013g.houston.softwaregrp.com WITH ESMTP; 
- Sat,  1 Feb 2020 03:46:32 +0000
-Received: from M4W0335.microfocus.com (2002:f78:1193::f78:1193) by
- M9W0068.microfocus.com (2002:f79:bf::f79:bf) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10; Sat, 1 Feb 2020 03:47:07 +0000
-Received: from NAM04-BN3-obe.outbound.protection.outlook.com (15.124.8.13) by
- M4W0335.microfocus.com (15.120.17.147) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10 via Frontend Transport; Sat, 1 Feb 2020 03:47:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=g34YlLcHOJFB3y3LX7dZMnoYtyGUhLPOHQFZg59tgIOlJWP8VAo/6vFCt5PZxll+yy4e8bCPxuX4rcm6r5QJRqLaffzDP82wJ3wev9eTGrh/jbD0wIciJmDO7vwcqYPYf2PUrMU2w/o4rVxRMz+WtHw0KXsfOhv7ky/68K02Fu8M5flc42FvTyl93yvXwQiKuXcvC22U5mVwjLGQWexae6Gmlfu/wojTIFrGaH03oPCVlgDT5QD1YVoYOaQNDQYqG7ZyyjwMVlgRBI2eggcV69tZD6AZgg1C5rHKcctmwYoLCU1Yxeqh3ess5cWFQZ9gaNUVtSH+MXeRT7uUtnZoRw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=LxW394MgnPCgp3P0qpFea1TYnNaaKz96+//0F41LRZQ=;
- b=VNSx+BvaDQIOud8B/BvEZmUPHJPZqPIKrAMEgswbSU3m61vnKa1+bz6ROJzd6Wjql3qyW3etRmPqceHAhsOUJOxBJTK69N5et26EER++er5xY/if+2wYH+PYriTF00BVQYkoZZflUNZe6gFZPim5L0MT2iazmKvsX+w4Q8YMdkVqbdge0y5hNff+PQqmbu2JTfA6plEntHIjcmYcmm2gYEGVwtUY6S2tiLmBOuU4kqzkjcMV/p54aGp458/BrRkt8ZzOirOYnQEMFvVMjSSV7sG6M/OwL2kQjEhsnbsGKnVEyEDoDV3xSrmZIWJ8A+8AbheD9mp16YxEem0zurSCqQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
- dkim=pass header.d=suse.com; arc=none
-Authentication-Results: spf=none (sender IP is ) smtp.mailfrom=LYan@suse.com; 
-Received: from BYAPR18MB2888.namprd18.prod.outlook.com (20.179.58.203) by
- BYAPR18MB2664.namprd18.prod.outlook.com (20.179.93.78) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2686.29; Sat, 1 Feb 2020 03:47:04 +0000
-Received: from BYAPR18MB2888.namprd18.prod.outlook.com
- ([fe80::70c4:1802:725e:e829]) by BYAPR18MB2888.namprd18.prod.outlook.com
- ([fe80::70c4:1802:725e:e829%7]) with mapi id 15.20.2686.030; Sat, 1 Feb 2020
- 03:47:03 +0000
-From: Liang Yan <lyan@suse.com>
-To: <peter.maydell@linaro.org>, <qemu-arm@nongnu.org>
-CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-Subject: [PATCH v3] target/arm/monitor: query-cpu-model-expansion crashed qemu
- when using machine type none
-Date: Fri, 31 Jan 2020 22:46:49 -0500
-Message-ID: <20200201034649.26815-1-lyan@suse.com>
-X-Mailer: git-send-email 2.25.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain
-X-ClientProxiedBy: CH2PR19CA0001.namprd19.prod.outlook.com
- (2603:10b6:610:4d::11) To BYAPR18MB2888.namprd18.prod.outlook.com
- (2603:10b6:a03:10d::11)
+ (envelope-from <drjones@redhat.com>) id 1iybTD-0004Nj-Kw
+ for qemu-trivial@nongnu.org; Mon, 03 Feb 2020 08:08:56 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:57334
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <drjones@redhat.com>) id 1iybTD-0004Ms-Hi
+ for qemu-trivial@nongnu.org; Mon, 03 Feb 2020 08:08:55 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1580735335;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Ih3oxg6318zJ96yrlUtKPpx2K+QjGOYF/ly7qqO27KU=;
+ b=NR8ixUaQpwvuSOoB3UtaxYGbjPn/bGgcGX3sP0Wwt36fO0XJu66M5POJlVOGST6tfmWu1e
+ Ah3ns0Um6CasqQwgU4fSHOpdsvhufaLcSs4kj3u4vHnbfXGrBA4CZ+RehthU7bRrbGDv+w
+ 5+73pYe2JNzAiPU6qsBBrLclI3QLafU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-82-UtMkyqPkO-C1GQLX2omQVA-1; Mon, 03 Feb 2020 08:08:51 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 55548800D41;
+ Mon,  3 Feb 2020 13:08:50 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2ECB75DA82;
+ Mon,  3 Feb 2020 13:08:49 +0000 (UTC)
+Date: Mon, 3 Feb 2020 14:08:46 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Liang Yan <lyan@suse.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH v3] target/arm/monitor: query-cpu-model-expansion crashed
+ qemu when using machine type none
+Message-ID: <20200203130846.gihtrf72inyf33wh@kamzik.brq.redhat.com>
+References: <20200201034649.26815-1-lyan@suse.com>
 MIME-Version: 1.0
-Received: from leonstudio.lan (2605:a000:160e:228::7d0) by
- CH2PR19CA0001.namprd19.prod.outlook.com (2603:10b6:610:4d::11) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2686.27 via Frontend Transport; Sat, 1 Feb 2020 03:47:02 +0000
-X-Mailer: git-send-email 2.25.0
-X-Originating-IP: [2605:a000:160e:228::7d0]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 1f699d9e-a772-4a55-26cf-08d7a6c9660c
-X-MS-TrafficTypeDiagnostic: BYAPR18MB2664:
-X-Microsoft-Antispam-PRVS: <BYAPR18MB2664C62557B7137921799D8DBF060@BYAPR18MB2664.namprd18.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:529;
-X-Forefront-PRVS: 03008837BD
-X-Forefront-Antispam-Report: SFV:NSPM;
- SFS:(10019020)(4636009)(346002)(136003)(366004)(376002)(199004)(189003)(36756003)(4326008)(186003)(16526019)(2616005)(8936002)(8886007)(86362001)(6666004)(508600001)(6512007)(6486002)(66946007)(52116002)(81156014)(66476007)(66556008)(6506007)(81166006)(5660300002)(1076003)(2906002)(8676002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BYAPR18MB2664;
- H:BYAPR18MB2888.namprd18.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-Received-SPF: None (protection.outlook.com: suse.com does not designate
- permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: O0T/5TRPQfLs5wW7aO+1KuMy43Ci3tyN/jFp+kKQemDjM+SI3qH35jRG+rdG8ZoHH/LT/Y18tqU24AQvJpRwUOceYfN1u1EjsQa23NPZWkozHjwvKz3gS9KvDh7CsB89C+DBXonjKs1f/uxgb/o86w+KIOHSVcUzsrs07mAYo4rc0wgEyNz4oAepvz1P/KRvegB+5WydMRtHW3AScHWQBP9sq931EXEWPNbDzDDeitYibZuzjnEVCdGi1vr/pcDkU9BeZUIhT91FctF05HjP0A4iHlGFGmb8f/cRGx6vIVLb71+Mzb/WF7IGXJeLw6Z7DwUKW3LAGBJ3oSz7zTX/KNPtZNFfYROoF9DtJCP+vlsrF5Z5n5gqVTvssoxFgJHROwCvyALyyp++Irg/7qIugzQzivaEA4Pn+wMy1undLvcy6/iLpr5yNqD+kMhglxEJ
-X-MS-Exchange-AntiSpam-MessageData: hidOqQBFSBEPQH9/ws/PdKU4cSPGr6QthLPptwXdUSfCwlaoACa6al57Jy42fy+em6uVt3T/pK+hwG9O102jdLcFNtbUgW56dv5pboZuWWpGCFglFG7LcfIMiEyL99gUwG02PkiMPg3UKnJr9dwthRND3wjTw2ARRb3rrzmsQf8=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1f699d9e-a772-4a55-26cf-08d7a6c9660c
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Feb 2020 03:47:03.3130 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 856b813c-16e5-49a5-85ec-6f081e13b527
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: juOk/I7avB6chz6hw3VGZ/HAn4GXQ2EPGyLlLwDsu8hNYP7GXBl3haMojy9IGN0c
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR18MB2664
-X-OriginatorOrg: suse.com
+In-Reply-To: <20200201034649.26815-1-lyan@suse.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: UtMkyqPkO-C1GQLX2omQVA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 15.124.64.91
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -101,60 +66,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 01 Feb 2020 03:47:41 -0000
+X-List-Received-Date: Mon, 03 Feb 2020 13:08:57 -0000
 
-Commit e19afd56 mentioned that target-arm only supports queryable
-cpu models 'max', 'host', and the current type when KVM is in use.
-The logic works well until using machine type none.
+On Fri, Jan 31, 2020 at 10:46:49PM -0500, Liang Yan wrote:
+> Commit e19afd56 mentioned that target-arm only supports queryable
 
-For machine type none, cpu_type will be null if cpu option is not
-set by command line, strlen(cpu_type) will terminate process.
-So We add a check above it.
+Please use more hexdigits. I'm not sure QEMU has a policy for that,
+but I'd go with 12.
 
-This won't affect i386 and s390x since they do not use current_cpu.
+> cpu models 'max', 'host', and the current type when KVM is in use.
+> The logic works well until using machine type none.
+>=20
+> For machine type none, cpu_type will be null if cpu option is not
+> set by command line, strlen(cpu_type) will terminate process.
+> So We add a check above it.
+>=20
+> This won't affect i386 and s390x since they do not use current_cpu.
+>=20
+> Signed-off-by: Liang Yan <lyan@suse.com>
+> ---
+>  v3: change git commit message
+>  v2: fix code style issue
+> ---
+>  target/arm/monitor.c | 14 ++++++++------
+>  1 file changed, 8 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+> index 9725dfff16..3350cd65d0 100644
+> --- a/target/arm/monitor.c
+> +++ b/target/arm/monitor.c
+> @@ -137,17 +137,19 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansio=
+n(CpuModelExpansionType type,
+>      }
+> =20
+>      if (kvm_enabled()) {
+> -        const char *cpu_type =3D current_machine->cpu_type;
+> -        int len =3D strlen(cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
+>          bool supported =3D false;
+> =20
+>          if (!strcmp(model->name, "host") || !strcmp(model->name, "max"))=
+ {
+>              /* These are kvmarm's recommended cpu types */
+>              supported =3D true;
+> -        } else if (strlen(model->name) =3D=3D len &&
+> -                   !strncmp(model->name, cpu_type, len)) {
+> -            /* KVM is enabled and we're using this type, so it works. */
+> -            supported =3D true;
+> +        } else if (current_machine->cpu_type) {
+> +            const char *cpu_type =3D current_machine->cpu_type;
+> +            int len =3D strlen(cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
 
-Signed-off-by: Liang Yan <lyan@suse.com>
----
- v3: change git commit message
- v2: fix code style issue
----
- target/arm/monitor.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+Need a blank line here.
 
-diff --git a/target/arm/monitor.c b/target/arm/monitor.c
-index 9725dfff16..3350cd65d0 100644
---- a/target/arm/monitor.c
-+++ b/target/arm/monitor.c
-@@ -137,17 +137,19 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(=
-CpuModelExpansionType type,
-     }
-=20
-     if (kvm_enabled()) {
--        const char *cpu_type =3D current_machine->cpu_type;
--        int len =3D strlen(cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
-         bool supported =3D false;
-=20
-         if (!strcmp(model->name, "host") || !strcmp(model->name, "max")) {
-             /* These are kvmarm's recommended cpu types */
-             supported =3D true;
--        } else if (strlen(model->name) =3D=3D len &&
--                   !strncmp(model->name, cpu_type, len)) {
--            /* KVM is enabled and we're using this type, so it works. */
--            supported =3D true;
-+        } else if (current_machine->cpu_type) {
-+            const char *cpu_type =3D current_machine->cpu_type;
-+            int len =3D strlen(cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
-+            if (strlen(model->name) =3D=3D len &&
-+                    !strncmp(model->name, cpu_type, len)) {
-+                /* KVM is enabled and we're using this type, so it works. =
-*/
-+                supported =3D true;
-+            }
-         }
-         if (!supported) {
-             error_setg(errp, "We cannot guarantee the CPU type '%s' works =
-"
---=20
-2.25.0
+> +            if (strlen(model->name) =3D=3D len &&
+> +                    !strncmp(model->name, cpu_type, len)) {
+
+Four spaces of indent too many on the line above.
+
+> +                /* KVM is enabled and we're using this type, so it works=
+. */
+> +                supported =3D true;
+> +            }
+>          }
+>          if (!supported) {
+>              error_setg(errp, "We cannot guarantee the CPU type '%s' work=
+s "
+> --=20
+> 2.25.0
+>=20
+>
+
+With the three changes above
+
+
+Reviewed-by: Andrew Jones <drjones@redhat.com>
+Tested-by: Andrew Jones <drjones@redhat.com>
+
+
+It'd be nice to extend tests/qtest/arm-cpu-features.c to also do
+some checks with machine=3D'none' with and without KVM.
+
+Thanks,
+drew
 
 
