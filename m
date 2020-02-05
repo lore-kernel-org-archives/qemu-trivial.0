@@ -1,65 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1izQfd-0004Sf-FR
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Feb 2020 14:49:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36919)
+	id 1izQqg-0000U1-6g
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Feb 2020 15:00:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33948)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <stefanha@gmail.com>) id 1izQfa-0004Qb-Rw
- for qemu-trivial@nongnu.org; Wed, 05 Feb 2020 14:49:07 -0500
+ (envelope-from <jusual@redhat.com>) id 1izPm1-0006mE-Im
+ for qemu-trivial@nongnu.org; Wed, 05 Feb 2020 13:51:42 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <stefanha@gmail.com>) id 1izQfZ-0006ws-Uk
- for qemu-trivial@nongnu.org; Wed, 05 Feb 2020 14:49:06 -0500
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:39392)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <stefanha@gmail.com>)
- id 1izQfW-0006a5-NH; Wed, 05 Feb 2020 14:49:02 -0500
-Received: by mail-wr1-x443.google.com with SMTP id y11so4269387wrt.6;
- Wed, 05 Feb 2020 11:49:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=NNHT8cGbSxUgGFXCRBtSiLeQ66txvza3NgssIEwqfJg=;
- b=H5kGMgLu9EfFTCaq65s9kG0THasop0HUSFe5KZNP7NH30FmgYjVP2sYrOA8YEgup3+
- Imo8tFKv+3iZ7MB6F4J9PXrtgPaUCM3yQaCLIWfBwemt/q7hi18uq5BsUkh+eWQ4+Lpp
- U5XTedrlwFe6/Fy6Pm7ShOmEgM3MSaKvgbj0HFMZptq35XTF+l/5T8zQ+UNBM5zZKv8Z
- CUTDIUQCBkHXY/uUfgx7GlDyaDkSqu2DpQ+i4wDDJx+BTv2iCmPSb96FFEmraN+DHwhY
- 2cMZelyYo9wyl7EQRithgqQv4Md4xcJWu2vO/WNv1OEXkGWOK1rptrj0k8OTzgBSb3+n
- LFRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=NNHT8cGbSxUgGFXCRBtSiLeQ66txvza3NgssIEwqfJg=;
- b=WcusmxehzUooEbHRlw5pLX5vXeeP4SajV2OYmMA3H3MwIrxdAXpS2k8DDrvAWM9EOn
- d3DKR6tgR4du5DwONuSmViR3IzCC7WZ+fxDSX5+1f1ab48ccBd/JqUJgXMYNPwtLZX/d
- o7j9VY3pTG6ATVwlOimWIJgg/YpSgTuKZ0JFzOP5vFTZZwaAK/Na8sEEU2Jkio7+bgNp
- 66Hz9BWnD/YNwWntVFqjMWpO9h1a5UTB5szVIx5MMzOb1D7AEfwOWfbCejtYZZlhVBHc
- UkqcuY4LPQ8MbI9q6W1watWXlOin3gOd77PMhcs2+GGn+kC+4hrk8IvxfImJlpl5dBfa
- weNg==
-X-Gm-Message-State: APjAAAVjWSP02DbONqTUoCdsjfzGrjCDZd+LCokzOkYdRwUWOHtpda1S
- ISybLLtt+/gUjIT/GGGtoYg=
-X-Google-Smtp-Source: APXvYqxefAvt1bV7JB/wBfTTOxAsiQZirU94mnH5FvyXRbP1d27iTZQZdybyICjqqil8VywFSEqNbA==
-X-Received: by 2002:adf:e610:: with SMTP id p16mr128899wrm.81.1580932140925;
- Wed, 05 Feb 2020 11:49:00 -0800 (PST)
-Received: from localhost ([51.15.41.238])
- by smtp.gmail.com with ESMTPSA id c9sm641744wme.41.2020.02.05.11.48.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Feb 2020 11:49:00 -0800 (PST)
-Date: Wed, 5 Feb 2020 19:48:58 +0000
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Julia Suvorova <jusual@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [PATCH] hw/pci/pci_bridge: Fix typo in comment
-Message-ID: <20200205194858.GA69308@stefanha-x1.localdomain>
-References: <20200205185123.210209-1-jusual@redhat.com>
+ (envelope-from <jusual@redhat.com>) id 1izPm0-0005re-7y
+ for qemu-trivial@nongnu.org; Wed, 05 Feb 2020 13:51:41 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:41149
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <jusual@redhat.com>) id 1izPm0-0005nR-3s
+ for qemu-trivial@nongnu.org; Wed, 05 Feb 2020 13:51:40 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1580928699;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=OzZGw3pGQJA9fRYahalq5zdPl+c8vv2sD9FXMnrzKb0=;
+ b=Y9JtJSW1YT3o9yRYJg9adwz6SUgDv1jdiZKskiUBds8A4MfRNa3tDhzILW1UsS8D9nIAy2
+ pba2dgWCrvX3tYPLzK2InkOu/zDeKzkQZsvlVbnxXYdw2xhrj94i1A8FjkVgHLMWzYdtWE
+ bkWcjMZVeA1y1sH5K4j/pwgB/+LYLXg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-103-gtjIdYSBO523jTju9qQRZA-1; Wed, 05 Feb 2020 13:51:37 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 03AC310CE782;
+ Wed,  5 Feb 2020 18:51:36 +0000 (UTC)
+Received: from localhost.localdomain.com (ovpn-204-83.brq.redhat.com
+ [10.40.204.83])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 26CAC60C05;
+ Wed,  5 Feb 2020 18:51:26 +0000 (UTC)
+From: Julia Suvorova <jusual@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Julia Suvorova <jusual@redhat.com>
+Subject: [PATCH] hw/pci/pci_bridge: Fix typo in comment
+Date: Wed,  5 Feb 2020 19:51:23 +0100
+Message-Id: <20200205185123.210209-1-jusual@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="IS0zKkzwUGydFO0o"
-Content-Disposition: inline
-In-Reply-To: <20200205185123.210209-1-jusual@redhat.com>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::443
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: gtjIdYSBO523jTju9qQRZA-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-Mailman-Approved-At: Wed, 05 Feb 2020 15:00:33 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,35 +65,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Feb 2020 19:49:07 -0000
+X-List-Received-Date: Wed, 05 Feb 2020 18:51:42 -0000
 
+Signed-off-by: Julia Suvorova <jusual@redhat.com>
+---
+ include/hw/pci/pci_bridge.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---IS0zKkzwUGydFO0o
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+diff --git a/include/hw/pci/pci_bridge.h b/include/hw/pci/pci_bridge.h
+index ba488818d2..99c674e949 100644
+--- a/include/hw/pci/pci_bridge.h
++++ b/include/hw/pci/pci_bridge.h
+@@ -108,7 +108,7 @@ void pci_bridge_dev_unplug_request_cb(HotplugHandler *h=
+otplug_dev,
+=20
+ /*
+  * before qdev initialization(qdev_init()), this function sets bus_name an=
+d
+- * map_irq callback which are necessry for pci_bridge_initfn() to
++ * map_irq callback which are necessary for pci_bridge_initfn() to
+  * initialize bus.
+  */
+ void pci_bridge_map_irq(PCIBridge *br, const char* bus_name,
+--=20
+2.24.1
 
-On Wed, Feb 05, 2020 at 07:51:23PM +0100, Julia Suvorova wrote:
-> Signed-off-by: Julia Suvorova <jusual@redhat.com>
-> ---
->  include/hw/pci/pci_bridge.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
---IS0zKkzwUGydFO0o
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl47HCoACgkQnKSrs4Gr
-c8hZ3Qf+Jvc6VEBsgdqXkfprAHywACh4UuPqkFAVK6ZdK2hmjh3yNJD3uB020CP7
-bkQ0yGgrHv31WVcUzQdpTnzy96n+3K+FQP9xPNiCwtmLpuDgjZ6VWIT22M7UJji+
-D61djJnv/yJSg6hNi73ZE2y+Mka4jw5slybsSrvVMJR9v6a5lUXDKSCsFMq99oOy
-YnTe6kAHwU9d+3o+kBatYPa4KrnBUhBkVqjaHmewfdO2cxtpEdAEBdED5bMhlbur
-23yV5Pe3iJRT7G45H5hmYz09gZr8ZVRO4spKaxZakn2N62ytX1SDxnTKLOowIbKI
-HmS4warvtbT8hQzgQXo74bwHiYzwPA==
-=79iw
------END PGP SIGNATURE-----
-
---IS0zKkzwUGydFO0o--
 
