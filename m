@@ -1,28 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1izdpa-000889-FG
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 04:52:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43125)
+	id 1izdwU-00047j-G0
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 04:59:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54818)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1izdpX-00085J-Rt
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 04:52:17 -0500
+ (envelope-from <laurent@vivier.eu>) id 1izdwS-00045L-H9
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 04:59:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1izdpW-0000Up-I3
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 04:52:15 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:59699)
+ (envelope-from <laurent@vivier.eu>) id 1izdwQ-0005pq-KD
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 04:59:24 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:36797)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1izdpM-0007dR-NN; Thu, 06 Feb 2020 04:52:04 -0500
+ id 1izdwK-0005Gr-8Z; Thu, 06 Feb 2020 04:59:16 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MBE3k-1ipAmU1YRa-00CiFf; Thu, 06 Feb 2020 10:52:00 +0100
-Subject: Re: [PATCH v3 2/2] hw/timer/m48t59: Convert debug printf()s to trace
- events
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- qemu-ppc@nongnu.org
-References: <20200117165809.31067-1-philmd@redhat.com>
- <20200117165809.31067-3-philmd@redhat.com>
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MCsLu-1iqoEZ1UJM-008oJT; Thu, 06 Feb 2020 10:59:11 +0100
+Subject: Re: [PATCH] hw/bt: Remove empty Kconfig file
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20200123064525.6935-1-thuth@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -66,34 +62,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <266f5004-8245-9a37-34a0-d3bebadf6ef7@vivier.eu>
-Date: Thu, 6 Feb 2020 10:51:59 +0100
+Message-ID: <37d524a2-a67e-6eca-f75e-f9014c4d36b9@vivier.eu>
+Date: Thu, 6 Feb 2020 10:59:10 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.3.1
 MIME-Version: 1.0
-In-Reply-To: <20200117165809.31067-3-philmd@redhat.com>
+In-Reply-To: <20200123064525.6935-1-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:JIpKapatKnxrDxKA0o/8c1XZ9p8SqRTzo5aacvKk+Pu7LyaRmfx
- nqPYuE/B/OCwDGD1fi+WXIKhZI5woSnjwIkbIPRnh3OHrHXMmq0oFfBp5tCefsfpBPrjXEt
- kgtl+HLe2ny7xw2rpJdUBaDYQpj02O8e8UQUiKQHbPSgqibrEaxmPzbmEW3wgG+6ounUFyq
- oxKXZnEInqHMNl3rzBkyg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:DeeSZEVBDyk=:KWuv5EFtOh2xs8CJP3E0s0
- DEPcsArrCosAx/8CvZOxCZGkgg1zMv/zdmACzHJaXx+l8gvBl9xEFpqgKothMzXXLmMP0oNSJ
- dm0Rf9/Lvfp5M6ITT8TqOzr9zOOmCo0nJaZaV+aiJKVkQvqMWpiHn33soKsHqh2c+lmS3mAvI
- 2N+Vcniu5ULhpx6R4ccBRNs9KM4Idt04KubTfiBDF1zQwEO5Ir47mWCDXKSfIazDNgE01oWei
- LluvFKvd9kRDtO3zpSwgWXbzb2J/NMq7r1kpsqTG973hIBliTnap++ESwobc0mr6Uixudx326
- DEYHrJnlmbezlVec9wjTaw9/4P2OBJtrjIKYvtMX9/u7iix4jdS1qdDD2WGl7pUzzOClqnkUV
- oiUNatwIhF6demk4W68CBMR8rZmErSAtrdjj+H0oDdQNpOAj6mR31SjGax2jtNkmtfFvBiLi1
- vNCksol0RpsXRAgAuEZNp/Rs/D0O/+BJNDImIWqELZgm3yC+tgWQCFo4NSh/GRL4egmBgAn8T
- /smzSCepYYrHhzhmoEvwbBMg8uv5D0oVL+J/RT6f9i26YmL3Bol93hTYRWArICAqzqQQzQEEs
- M4zWUw21hq/VVpZUKQ0vJ2cvEGxgM/DRrhO5jVC2Vp9y1YJZTOKMQIrBRv4wWdIm3cp3LBtGK
- OX6rHZobfEn9ak+EyX2I9PNrnTdue5i9rmJZpMOLmHUsmDnn42lBSMRAXsuG1fUinPv2ZCQUu
- hh+Bw2u+wEkSdE+b4uSNVaUAKc13N4qUor3tMQnaT91XVM/P/BrFOHSxb9CJ1CnkEc/YD2YOn
- QNIkzr5Fto77POnRPI9vZX4JxpO2QW6ikH5a9NKY6fzAJUMQ1MxOsm3+YNpw8i44AT7F9Fl
+X-Provags-ID: V03:K1:nDPPkRfjEjaBvHzc2/brdD4FNmE81aq6kWYQk9UQcMsMHedMXUW
+ 4uns5E3088Wj9zfNy89R2cMCBTDGYO2LRUBl3hRKax1d66FgfC70hQFd1f54+7XkA1QerNs
+ p+ssFR8NEf01iNe4JB4V1Eyn8bWkxg01ymjNqB6uP7R+JenWVPihhljMNK2CvBY/w4r16rY
+ rQUBcNE1asN45MGIqwt2A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ne37KLy3NBk=:sk+tu1jgfJSWCHPktWMU/n
+ 0IClP6R500ux970pZlvf5iqotLhbiGxuPA8mh+q2hje30eqF0IMKYVjBGa5vH0jM44f2uIoM6
+ Bg0LiNfjStaeOTvsnB4MH7lh4tZg+YC6yWAj8Ecr+AekcvCMSyA/Ilj7fEsVZV2FgJcHrDp0L
+ wjyDQZ1ovOaHbUcRFDXIz+30lSzDSDt8IzHBlfZu49Fu9gLueS0BSX6AXEuz+hOYuOzLLfntr
+ jLgb3rDxozW/w0sjUK0DpPMrxOiQMUVhFjryOWRJ9FHFowqvFF/wGggMrqqzkNEhcaHNUfSc4
+ URZHOdd08/Guq4wmbDHgs9QoUllSKy1ijjyWgIO/cFxFKMaIuHhTD8jGCKt54hGtq+4D7J0qE
+ cT1afcUTMYh9RmjNaCulXLioN9HxVQ9miicHWagC/aZRrHz2vk0Op+ev61PVrbSvkBA/aOw/5
+ 8Hwk6QCnw9FVS4zDXlxeOcoGL21nLPuAOp9c31kkVfcffopqRj49vfDlbExT62aC3IwbTTE9J
+ gU5QE1xNkIQ+Dt8zO0OaFUDVY1QnDZVGMXpRUz+qUzSUuTHNS+ZaguI+as6vWk4Sw5o/hQQtf
+ eBWuxcz0DA+t+i6V0b5bNKT+peGTJpvOoEbAJ9oA0/iZ+vRaIH2H9vJk0fb83hQ3BX/ZOIZWQ
+ YrTRuoxW1m8Fp10+1YqmfzgtWnrl0l2/BVitUyKwZRWUJk+tQdD3rLeMgJLUmWqfcwKQJj6HO
+ QHTvhsOqe23VYAMHd7SLoZAGZKCNvsluA3pZy8knhtFOWtZlJit4iko+wzwx5oTtqxPA7GiW7
+ XbjBARcrgKpsvXrsozp9AJlPTI7ho6RKC9sBx+Z0lYtjHGwkCPgJJJR6/yhcn8mEoc2mSqu
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.10
+X-Received-From: 217.72.192.75
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,97 +101,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Feb 2020 09:52:17 -0000
+X-List-Received-Date: Thu, 06 Feb 2020 09:59:25 -0000
 
-Le 17/01/2020 à 17:58, Philippe Mathieu-Daudé a écrit :
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Le 23/01/2020 à 07:45, Thomas Huth a écrit :
+> While removing the bluetooth code some weeks ago, I had to leave the
+> hw/bt/Kconfig file around. Otherwise some of the builds would have been
+> broken since the generated dependency files tried to include it before
+> they were rebuilt. Meanwhile, all those dependency files should have
+> been updated, so we can remove the empty Kconfig file now, too.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/rtc/m48t59-internal.h |  5 -----
->  hw/rtc/m48t59.c          | 11 +++++------
->  hw/rtc/trace-events      |  6 ++++++
->  3 files changed, 11 insertions(+), 11 deletions(-)
+>  hw/bt/Kconfig | 0
+>  1 file changed, 0 insertions(+), 0 deletions(-)
+>  delete mode 100644 hw/bt/Kconfig
 > 
-> diff --git a/hw/rtc/m48t59-internal.h b/hw/rtc/m48t59-internal.h
-> index 4d4f2a6fed..cd648241e9 100644
-> --- a/hw/rtc/m48t59-internal.h
-> +++ b/hw/rtc/m48t59-internal.h
-> @@ -26,11 +26,6 @@
->  #ifndef HW_M48T59_INTERNAL_H
->  #define HW_M48T59_INTERNAL_H
->  
-> -#define M48T59_DEBUG 0
-> -
-> -#define NVRAM_PRINTF(fmt, ...) do { \
-> -    if (M48T59_DEBUG) { printf(fmt , ## __VA_ARGS__); } } while (0)
-> -
->  /*
->   * The M48T02, M48T08 and M48T59 chips are very similar. The newer '59 has
->   * alarm and a watchdog timer and related control registers. In the
-> diff --git a/hw/rtc/m48t59.c b/hw/rtc/m48t59.c
-> index fc592b9fb1..ecc92ca476 100644
-> --- a/hw/rtc/m48t59.c
-> +++ b/hw/rtc/m48t59.c
-> @@ -35,6 +35,7 @@
->  #include "exec/address-spaces.h"
->  #include "qemu/bcd.h"
->  #include "qemu/module.h"
-> +#include "trace.h"
->  
->  #include "m48t59-internal.h"
->  #include "migration/vmstate.h"
-> @@ -192,8 +193,7 @@ void m48t59_write(M48t59State *NVRAM, uint32_t addr, uint32_t val)
->      struct tm tm;
->      int tmp;
->  
-> -    if (addr > 0x1FF8 && addr < 0x2000)
-> -	NVRAM_PRINTF("%s: 0x%08x => 0x%08x\n", __func__, addr, val);
-> +    trace_m48txx_nvram_mem_write(addr, val);
->  
->      /* check for NVRAM access */
->      if ((NVRAM->model == 2 && addr < 0x7f8) ||
-> @@ -450,8 +450,7 @@ uint32_t m48t59_read(M48t59State *NVRAM, uint32_t addr)
->  	}
->          break;
->      }
-> -    if (addr > 0x1FF9 && addr < 0x2000)
-> -       NVRAM_PRINTF("%s: 0x%08x <= 0x%08x\n", __func__, addr, retval);
-> +    trace_m48txx_nvram_mem_read(addr, retval);
->  
->      return retval;
->  }
-> @@ -462,7 +461,7 @@ static void NVRAM_writeb(void *opaque, hwaddr addr, uint64_t val,
->  {
->      M48t59State *NVRAM = opaque;
->  
-> -    NVRAM_PRINTF("%s: 0x%"HWADDR_PRIx" => 0x%"PRIx64"\n", __func__, addr, val);
-> +    trace_m48txx_nvram_io_write(addr, val);
->      switch (addr) {
->      case 0:
->          NVRAM->addr &= ~0x00FF;
-> @@ -494,7 +493,7 @@ static uint64_t NVRAM_readb(void *opaque, hwaddr addr, unsigned size)
->          retval = -1;
->          break;
->      }
-> -    NVRAM_PRINTF("%s: 0x%"HWADDR_PRIx" <= 0x%08x\n", __func__, addr, retval);
-> +    trace_m48txx_nvram_io_read(addr, retval);
->  
->      return retval;
->  }
-> diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-> index d6749f4616..52c1566198 100644
-> --- a/hw/rtc/trace-events
-> +++ b/hw/rtc/trace-events
-> @@ -17,3 +17,9 @@ pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
->  # aspeed-rtc.c
->  aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
->  aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
-> +
-> +# m48t59.c
-> +m48txx_nvram_io_read(uint64_t addr, uint64_t value) "io read addr:0x%04" PRIx64 " value:0x%02" PRIx64
-> +m48txx_nvram_io_write(uint64_t addr, uint64_t value) "io write addr:0x%04" PRIx64 " value:0x%02" PRIx64
-> +m48txx_nvram_mem_read(uint32_t addr, uint32_t value) "mem read addr:0x%04x value:0x%02x"
-> +m48txx_nvram_mem_write(uint32_t addr, uint32_t value) "mem write addr:0x%04x value:0x%02x"
+> diff --git a/hw/bt/Kconfig b/hw/bt/Kconfig
+> deleted file mode 100644
+> index e69de29bb2..0000000000
 > 
+
+Reviewed-by: Laurent Vivier <laurent@vivier.Eu>
 
 Applied to my trivial-patches branch.
 
