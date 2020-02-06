@@ -1,24 +1,24 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1izlMX-00050M-LT
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 12:54:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50766)
+	id 1iznkx-0008B5-Ab
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 15:28:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45522)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1izlMU-0004ul-Jy
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 12:54:47 -0500
+ (envelope-from <laurent@vivier.eu>) id 1iznkv-00089H-Kt
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 15:28:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1izlMT-0004o2-Iu
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 12:54:46 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:41057)
+ (envelope-from <laurent@vivier.eu>) id 1iznks-0005fr-9P
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 15:28:09 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:49659)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1izlMO-0004bk-Ow; Thu, 06 Feb 2020 12:54:41 -0500
+ id 1iznkp-0005ZE-Lr; Thu, 06 Feb 2020 15:28:03 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
  (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1N49Ul-1ji8eA2kc5-0104Mk; Thu, 06 Feb 2020 18:54:19 +0100
-Subject: Re: [PATCH] nbd: Fix regression with multiple meta contexts
-To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
-Cc: pannengyuan@huawei.com, qemu-block@nongnu.org, qemu-trivial@nongnu.org
-References: <20200206173832.130004-1-eblake@redhat.com>
+ 1MVubb-1j7fa71gRx-00Rpki; Thu, 06 Feb 2020 21:27:42 +0100
+Subject: Re: [PATCH v2] mailmap: Add entry for Yu-Chen Lin
+To: Yu-Chen Lin <npes87184@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, yuchenlin@synology.com, philmd@redhat.com
+References: <20200206125504.7150-1-npes87184@gmail.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -62,34 +62,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <c28915e5-0387-16af-3154-451029cc8a3a@vivier.eu>
-Date: Thu, 6 Feb 2020 18:54:18 +0100
+Message-ID: <8636785e-a8a9-ac4b-627f-0414f267cbe5@vivier.eu>
+Date: Thu, 6 Feb 2020 21:27:40 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.3.1
 MIME-Version: 1.0
-In-Reply-To: <20200206173832.130004-1-eblake@redhat.com>
+In-Reply-To: <20200206125504.7150-1-npes87184@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:FlCei6F072w0cDtdW7z8w/U7PGgpwgQugYUy4Tc9yL4XRCkJV2M
- fmvgqJNVOf00Ghz61Gj1GkXfW4NFecbXwcHcrkGyRKuc9l+tUsEyR36zHtfLVsB1at2K5Cb
- pjrv4imdFY7mREuIT1cNtYwAEiSUHktN69UpFyUT6vbOuChMo/id5Q77/qzKhXnFPFEoG2w
- Giydx4ftegN9YLg16xEcA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:zqTTsw+8uM8=:7qhgn4nEJiej3ZQLFhitNN
- c/TedTvFewdA7UK5EBsd+a4Z8tj1eD9VzLOruozt1F2jkGM/xh8ofqaiJ6+VdReJRaVH1OWIF
- HuRTpQMBriIR7GSqPtsVDK6cIxxJmT2W/Jki3SzWoAjI7JHLMMg4l3CH7Vbqr/37VKH4Z0+QK
- oDU08JhIKA8LJJ369VlkL6v01GDgajveg7gvGEIqVhIllA5tifQmk/b5H4Fh6xdxftyhT9/NQ
- OZiRNMgtnLBk41ZV+SvvYCpiPN5Na7dSYrNIGb9Lw4/YdO3Fd1jhQ97V5FSqH99yrU1t6Tyfv
- h95GCSsNGApG1SsVxloUwpbqBINTvE/GRZofkEgg8/v/hz0JgnLLnhv9tnDiTk2WWxhlKUDUh
- jpcTzY5XWGQsU+bkq1jTZwOJkyaH2QoU53BmGDZ/nzh253FpjlkEKQ4WFicAphTqX2dzAiFF/
- gR0XNBBQsCQP5VpBwfxurAI7HhBHHdjh4FSEVOL//LkVctwAolGW5eSIo2c1d0haoAXkKN6/K
- g6SYgubqk/6LZgM+PW7kHoivfGYW6HgaWIX8rI+qVZHycuHePRk75wCItNlu1JWZwvhoB+Wi6
- wJt7eP+8QYRbgfQDaLk+msCBh4WgqLXf1/YMwfUBMulstPAzRwKFcmwhhTfP+VLQVUKr1SznD
- B3OtPaxYdn0OOwooD0TwKmsX5d4Z9VOPXKsB97nqU5UgWgDAjOjz8XI8G93+PSMuRgIhIjKgo
- E/wqbo6LtsuufLdmOw13CVslhLZS4z5PmdBz4C6IU7VIXACXayIXuamvsr+goF/9xnTjDUrZa
- 9+msIKTHJdAMaj641pvY+FnZfukFy80HC+jbvu4ZN2x6XhrieI5ums7UBpkJHpBxYel0ied
+X-Provags-ID: V03:K1:rHf92kroGr8cv00jKn+JtlExwGmZd9DGaJ5Rw823fXN4jSWpK7I
+ uygDjQpe+JF0h2x984tuYK1mtcd6Tr1c4hAtvB1xLRMQqMlJm9qyPjv05nsfutHwfYib+Gx
+ XKzNppmbWZXD5a2+o1aI1crpSMbW0irwKLj8SWDvLfoJ2tGY+YnfSL5f1SLRqWWNhwK1ngo
+ SLAZauuW0sWcrNNFhY5TA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:QJGvpz/kxdM=:pyFMtbDAiHcJVlZ0oOIRjQ
+ SljlJw3159BYGmQiWI1oABQ8A4/bN+2fkKu8XEcVr/txCfGXwOpYgl1F9K/Dqy7k95ytlCNJi
+ z9hrkTPjGVQp7MuX81ybjE1dZOMblnAUo5lSHbMpVPajVGnWCLkm6JicJdi/roj1p6x3W20iM
+ vcGyHRPB+Cs8J5qz8RVl9TiQFeUOvL+3M/QkXD6XzlzjMa++s+8jPAVEAv1fqTlkIhuy4t65k
+ LfpuQCY+lBH3+pYgH4jFqCMFP3AgrsltbWxAlhw0fm4r7FFhPvpQ+q0jcinIEqtNwjZpUk8Uy
+ LgbVChXtl6TbCZ9rbE6+f56sSL3KVJqdqeZs/E9gPr7hFldPoEwifXOrOlSfmGGjWBT9AHhSO
+ 4MMSbLQ7TRGkc3U3UUhBSvYgelCduv2FNWeqgatyA0/Zwm4FW4okoujdsx7Q9/JBuWVs1YIO4
+ TumOThqWcC3y4ZUgE5+uCGKEuc+Bm/JOE4SskEPcbUsFUUOwMKn+r7ltmrfYM804rdsJpycFp
+ fkAv1oTo62i93TLV9X3sp6jqhq7iQ6D7xjIryGLrPF26PNki24WvgZ56yJsTdOgqk76ev9MHe
+ AuqoABMSDDQqKX0gUWabj3bRVNZfQqyHpO0kZlIrJEccPiDO8zAdzI2Bd74K01n6oRBvxB8vf
+ Cufg+51NTW7UAi7zDm0rINauedNOQHOC73mMFDq+0ySNa2/ugCPO4PPVMTqEnOVuX+kT12h3U
+ DUDUE2vZ0Qte7IoeAvUrey3iNw4MdaedRtZU2vRpajHT33ZdFpfyYq0cpJpNiuzasgPLA75jD
+ huZVNnFFV2FocbTorLfcN8etLi/Hi3fmEbDO9h4Lrkvz2AUWnmBi6VUedNmGl8FAbdyTqeb
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
+X-Received-From: 212.227.17.13
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -101,68 +101,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Feb 2020 17:54:48 -0000
+X-List-Received-Date: Thu, 06 Feb 2020 20:28:10 -0000
 
-Le 06/02/2020 à 18:38, Eric Blake a écrit :
-> Detected by a hang in the libnbd testsuite.  If a client requests
-> multiple meta contexts (both base:allocation and qemu:dirty-bitmap:x)
-> at the same time, our attempt to silence a false-positive warning
-> about a potential uninitialized variable introduced botched logic: we
-> were short-circuiting the second context, and never sending the
-> NBD_REPLY_FLAG_DONE.  Combining two 'if' into one 'if/else' in
-> bdf200a55 was wrong (I'm a bit embarrassed that such a change was my
-> initial suggestion after the v1 patch, then I did not review the v2
-> patch that actually got committed). Revert that, and instead silence
-> the false positive warning by replacing 'return ret' with 'return 0'
-> (the value it always has at that point in the code, even though it
-> eluded the deduction abilities of the robot that reported the false
-> positive).
+Le 06/02/2020 à 13:55, Yu-Chen Lin a écrit :
+> I have two mail address, add entries for
+> showing author and email correctly.
 > 
-> Fixes: bdf200a5535
-> Signed-off-by: Eric Blake <eblake@redhat.com>
+> Signed-off-by: Yu-Chen Lin <npes87184@gmail.com>
 > ---
+> v1 -> v2:
+> * Change subject
 > 
-> It's never fun when a regression is caused by a patch taken through
-> qemu-trivial, proving that the patch was not trivial after all.
-
-trivial doesn't mean not reviewed...
-The patch v1 was trivial, the v2 wasn't.
-
+>  .mailmap | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
->  nbd/server.c | 12 ++++++++++--
->  1 file changed, 10 insertions(+), 2 deletions(-)
-> 
-> diff --git a/nbd/server.c b/nbd/server.c
-> index 87fcd2e7bfac..11a31094ff83 100644
-> --- a/nbd/server.c
-> +++ b/nbd/server.c
-> @@ -2384,15 +2384,23 @@ static coroutine_fn int nbd_handle_request(NBDClient *client,
->                                                 !client->export_meta.bitmap,
->                                                 NBD_META_ID_BASE_ALLOCATION,
->                                                 errp);
-> -            } else {              /* client->export_meta.bitmap */
-> +                if (ret < 0) {
-> +                    return ret;
-> +                }
-> +            }
-> +
-> +            if (client->export_meta.bitmap) {
->                  ret = nbd_co_send_bitmap(client, request->handle,
->                                           client->exp->export_bitmap,
->                                           request->from, request->len,
->                                           dont_fragment,
->                                           true, NBD_META_ID_DIRTY_BITMAP, errp);
-> +                if (ret < 0) {
-> +                    return ret;
-> +                }
->              }
-> 
-> -            return ret;
-> +            return 0;
->          } else {
->              return nbd_send_generic_reply(client, request->handle, -EINVAL,
->                                            "CMD_BLOCK_STATUS not negotiated",
+> diff --git a/.mailmap b/.mailmap
+> index 3816e4effe..3fbf3902a3 100644
+> --- a/.mailmap
+> +++ b/.mailmap
+> @@ -151,7 +151,8 @@ Xiaoqiang Zhao <zxq_yx_007@163.com>
+>  Xinhua Cao <caoxinhua@huawei.com>
+>  Xiong Zhang <xiong.y.zhang@intel.com>
+>  Yin Yin <yin.yin@cs2c.com.cn>
+> -yuchenlin <npes87184@gmail.com>
+> +Yu-Chen Lin <npes87184@gmail.com>
+> +Yu-Chen Lin <npes87184@gmail.com> <yuchenlin@synology.com>
+>  YunQiang Su <syq@debian.org>
+>  YunQiang Su <ysu@wavecomp.com>
+>  Yuri Pudgorodskiy <yur@virtuozzo.com>
 > 
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Applied to my trivial-patches branch.
+
+Thanks,
+Laurent
 
