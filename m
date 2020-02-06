@@ -1,25 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1izdfv-0002bN-8f
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 04:42:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52009)
+	id 1izdkV-0004on-7w
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 04:47:03 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60494)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1izdfq-0002aA-TD
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 04:42:18 -0500
+ (envelope-from <laurent@vivier.eu>) id 1izdkP-0004kY-Ja
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 04:46:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1izdfp-0007iq-8U
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 04:42:14 -0500
-Received: from mout.kundenserver.de ([212.227.17.24]:41129)
+ (envelope-from <laurent@vivier.eu>) id 1izdkM-000588-Eu
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 04:46:57 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:46301)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1izdfo-0007bO-5w; Thu, 06 Feb 2020 04:42:12 -0500
+ id 1izdkM-00055n-6K; Thu, 06 Feb 2020 04:46:54 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1N8GAQ-1jd30K3HJg-014EvA; Thu, 06 Feb 2020 10:42:00 +0100
-Subject: Re: [PATCH] monitor: fix memory leak in
- monitor_fdset_dup_fd_find_remove
-To: kuhn.chenqun@huawei.com, qemu-devel@nongnu.org, dgilbert@redhat.com
-Cc: qemu-trivial@nongnu.org, zhang.zhanghailiang@huawei.com
-References: <20200115072016.167252-1-kuhn.chenqun@huawei.com>
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1N4yJ8-1jiV6j3gkm-010tiB; Thu, 06 Feb 2020 10:46:50 +0100
+Subject: Re: [EXTERNAL] Re: [PATCH] MAINTAINERS: update Leif Lindholm's address
+To: Leif Lindholm <leif@nuviainc.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, qemu-devel@nongnu.org,
+ Leif Lindholm <leif.lindholm@linaro.org>, qemu-arm@nongnu.org
+References: <20200116174226.4780-1-leif@nuviainc.com>
+ <a2fc8a4f-0b56-7868-0e52-51c2abfd97f7@redhat.com>
+ <20200117131801.GI15141@bivouac.eciton.net>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -63,34 +68,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <7e4fd315-692e-f2f7-17f3-30dff0f29994@vivier.eu>
-Date: Thu, 6 Feb 2020 10:41:59 +0100
+Message-ID: <4ba5872b-f5b2-4c9e-e326-bba6ebb5e58d@vivier.eu>
+Date: Thu, 6 Feb 2020 10:46:48 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.3.1
 MIME-Version: 1.0
-In-Reply-To: <20200115072016.167252-1-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200117131801.GI15141@bivouac.eciton.net>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Nay1P60iK6AqdxDSjSVpf2lHzx28LWBgQ1vjgMuj2bktZI0KIye
- 1WW7VY3LeIUN7vIL4jRhGXCPasvJdaihfL0uT3uaF2+hqtT9JEmz1Ms9iqXavQ9aFGzGC0b
- m+70yvShqVYc++Vb2Vr5qWTexd63tujMs8kIuY5h1fxx/raPdNqNFyoNf3oL6S76FEQb4P4
- 0G9DnpSGLWWm880aQbMQA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:dRo33JFyT6k=:NGFaMHJ906hi0QzO62o3is
- JJ3CvFVOL5UBvW2uHdkzigYkYobFtWti7Ut/Wi+8yW5WGmCYcKeKqUOLHkQ+Nmb2cM/wSanae
- n7qSjWgaeCuvobQYVR7gC/jlmlEyEcEbM2WG7TMeJUupvr0//k3Fs/FwpO8zB0G/fOU0r1t4+
- 77ozb6DJbiBT9+wccsUZHSJMrNRlnzQqZy8hwGKOqoY7sab5p0kj6Diayp0U4YjlWRdgwbapq
- W3dr8TmFJkMAaVz+ptV6yOzWbQqCvoy8Y3+m5VNBQtbJwP/cVnctqqhxbeYcBPLvWDn5GhZYl
- Fj5KBIpjWlCWfJq6XudlppQufhguAjKDppbeKa8ggQSXH9sGCxbqyPJ/iG/bGbW1XD3aXGNM9
- m7l34We8gm5uZVJn+BZA3T2hTD+QGyqBx+8AwbTBZn/2uWpvMn6I7rJUAkVmJdBlkm9VGXIXZ
- O+gnXpu1+TMLCq30DKSP9Dsbc8L8UEkEhCgZ82OAqq9dWhxAtuvgafQ4s5dy8geiZ8tgXm/2h
- mKwOr83B2zgrvu8orcGr58tDcSY8jqz0t/8ZXgXy9qIH3wedjIlghW4ncBSjEZ9O1IZAIcJSJ
- BsNzQWgZCVh+86iiMOtLsfKUsC6AWNnxXpiDSmhl0OL9u9jOEzosTC4xUnVEdS2vZemf/4E3E
- 7Q7xScyx7anrDJbyiG9JxDyJVdYZX7DozCQ4VRE+mHmiHiG5pbvS9ZXGdKy2BIL3ItZM+7Ydg
- vtcGSpB7cgTausAuHzek7BsHk4V8xnyE+y916nWizINvowvi/H2en5PlHJoADYdUQCJGdBtxU
- elqhlSnL5bDkmLhheK2qlkuwwFESsh4vNTJpixfDeeObEuDUA4znwLLW7iHpZpgYPyqanYX
+X-Provags-ID: V03:K1:h1eBbslxj2PhRSy86s1GVveEKLHK36Vhg8hp3pPfWMyNh382zMJ
+ /KxL6QEOJBx5ClWmBWeygU22QRcGkmetioQq7fAY09ygdIjc1vBIbOn3Vh+6iiwm7rF5fwT
+ 6aVdSROen7OjrV+++ZHXQWnYiRALaGgMf4HCYbFmftmVJViBCXHCZloyP+RU3q4eBSP67/u
+ 7mE3376IW/sqRkUqGhq4g==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Q1Vlo0iHVXw=:KOYeNj4vEueQSX39OBLFgk
+ 0nSmVJNSEPJ3gi65Orp4iOQQJA5HKu9PS8bsT53uxvy9uTfJCWRuMfnfGpkShjbssE16BkVWh
+ 5bVmsFMGAQVc12UCGnX9tFmuhKVJjflgkVui0OV35BFMnGWZyveQe/n/Mz5N9CMWTxrG1HnQ6
+ PulUBLdFQBCUIxt/kiCMtqKleUnf3QZroswOm2YFZcIv1x1oju2CFw2V8wn7RP/Lv46NUtC6i
+ lguXdExa7JwEtIyUUog/v2P60El13xO0Y29Un6tYhejo+p2/JA3Pz4jqCzkUq4/+lmdH0QtAd
+ UnnX0qOCnxOyyLsx8ZqfwLb92pjwcc7wqPJ6kuSN7yLl4q4YV2ZdOyTme21kyNr9/W6S/Itls
+ f9sLfbpCdpd1TFfJva/+2NYs5RcBt5XpDtIlCD7bJMZ+2pkSMAe1jO/14uzZEakGXiCnmzj0z
+ XmyKVCkg0zGX69TA8iFx2p2zb1oj2hf32S6W3BaS0EbD0aKx8rHBe08FHUFI62CxlrQpWoOMA
+ mJiaAUZtm1HRZ60BlWovyXWkkaGRcMlMcSgJuXqfIAUB2Ua9HeejFu/cCAl9W4C21QLBAqgrh
+ MBiWWJa14gpuABL97k73aL8K9yzv3lL5M4MiyyTGVQbAQihHtiPFMqW5+H5lbWPNzr7bCRbZp
+ 1gtjK9oHdSM8cthUICYVg8jmaSW86AnZlBVlF2HsGctdn/wRZ3xr4ET/wq8N+SE6KxMCuCpzr
+ igjinDu9oraUTM+5JKaiuLz+anPnOzTO3/8yqx7n3THepEojARoJOW9z/ACq8cJ++zNLavwYl
+ JJBZcDPSg3dlAtvk2cn7H8BNSnO5mAuoWPpDzCyXnTEOVV7xzPqmoPdXs2sz+fLL36ku5F0
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.24
+X-Received-From: 212.227.17.13
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -102,51 +107,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Feb 2020 09:42:18 -0000
+X-List-Received-Date: Thu, 06 Feb 2020 09:47:00 -0000
 
-Le 15/01/2020 à 08:20, kuhn.chenqun@huawei.com a écrit :
-> From: Chen Qun <kuhn.chenqun@huawei.com>
+Le 17/01/2020 à 14:18, Leif Lindholm a écrit :
+> On Thu, Jan 16, 2020 at 19:25:52 +0100, Philippe Mathieu-Daudé wrote:
+>> On 1/16/20 6:42 PM, Leif Lindholm wrote:
+>>> Update address to reflect new employer.
+>>>
+>>> Signed-off-by: Leif Lindholm <leif@nuviainc.com>
+>>> ---
+>>>   MAINTAINERS | 2 +-
+>>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/MAINTAINERS b/MAINTAINERS
+>>> index 483edfbc0b..3c8653f26f 100644
+>>> --- a/MAINTAINERS
+>>> +++ b/MAINTAINERS
+>>> @@ -735,7 +735,7 @@ F: include/hw/ssi/imx_spi.h
+>>>   SBSA-REF
+>>>   M: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+>>>   M: Peter Maydell <peter.maydell@linaro.org>
+>>> -R: Leif Lindholm <leif.lindholm@linaro.org>
+>>> +R: Leif Lindholm <leif@nuviainc.com>
+>>>   L: qemu-arm@nongnu.org
+>>>   S: Maintained
+>>>   F: hw/arm/sbsa-ref.c
+>>>
+>>
+>> You might want to add yourself a .mailmap entry too:
+>>
+>> -- >8 --
+>> diff --git a/.mailmap b/.mailmap
+>> index 3816e4effe..a521c17b44 100644
+>> --- a/.mailmap
+>> +++ b/.mailmap
+>> @@ -44,6 +44,7 @@ Aleksandar Markovic <amarkovic@wavecomp.com>
+>> <aleksandar.markovic@imgtec.com>
+>>  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com> <arikalo@wavecomp.com>
+>>  Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori
+>> <aliguori@us.ibm.com>
+>>  James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
+>> +Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
+>>  Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+>>  Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
+>>  Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
+>> ---
 > 
-> When remove dup_fd in monitor_fdset_dup_fd_find_remove function,
-> we need to free mon_fdset_fd_dup. ASAN shows memory leak stack:
+> If that use of .mailmap is common for QEMU, that sounds like a good
+> idea. And the comment for that section of the file indeed suggests so,
+> so thanks!
 > 
-> Direct leak of 96 byte(s) in 3 object(s) allocated from:
->     #0 0xfffd37b033b3 in __interceptor_calloc (/lib64/libasan.so.4+0xd33b3)
->     #1 0xfffd375c71cb in g_malloc0 (/lib64/libglib-2.0.so.0+0x571cb)
->     #2 0xaaae25bf1c17 in monitor_fdset_dup_fd_add /qemu/monitor/misc.c:1724
->     #3 0xaaae265cfd8f in qemu_open /qemu/util/osdep.c:315
->     #4 0xaaae264e2b2b in qmp_chardev_open_file_source /qemu/chardev/char-fd.c:122
->     #5 0xaaae264e47cf in qmp_chardev_open_file /qemu/chardev/char-file.c:81
->     #6 0xaaae264e118b in qemu_char_open /qemu/chardev/char.c:237
->     #7 0xaaae264e118b in qemu_chardev_new /qemu/chardev/char.c:964
->     #8 0xaaae264e1543 in qemu_chr_new_from_opts /qemu/chardev/char.c:680
->     #9 0xaaae25e12e0f in chardev_init_func /qemu/vl.c:2083
->     #10 0xaaae26603823 in qemu_opts_foreach /qemu/util/qemu-option.c:1170
->     #11 0xaaae258c9787 in main /qemu/vl.c:4089
->     #12 0xfffd35b80b9f in __libc_start_main (/lib64/libc.so.6+0x20b9f)
->     #13 0xaaae258d7b63  (/qemu/build/aarch64-softmmu/qemu-system-aarch64+0x8b7b63)
+>>
+>> If you ack this snippet maybe a maintainer is willing to amend it to your
+>> patch :)
+>>
+>> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
->  monitor/misc.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/monitor/misc.c b/monitor/misc.c
-> index a04d7edde0..cf79d36100 100644
-> --- a/monitor/misc.c
-> +++ b/monitor/misc.c
-> @@ -1744,6 +1744,7 @@ static int64_t monitor_fdset_dup_fd_find_remove(int dup_fd, bool remove)
->              if (mon_fdset_fd_dup->fd == dup_fd) {
->                  if (remove) {
->                      QLIST_REMOVE(mon_fdset_fd_dup, next);
-> +                    g_free(mon_fdset_fd_dup);
->                      if (QLIST_EMPTY(&mon_fdset->dup_fds)) {
->                          monitor_fdset_cleanup(mon_fdset);
->                      }
+> Acked-by: Leif Lindholm <leif@nuviainc.com>
+> (The other guy agrees.)
 > 
 
-Applied to my trivial-patches branch.
+Applied to my trivial-patches branch, including .mailmap changes.
 
 Thanks,
 Laurent
