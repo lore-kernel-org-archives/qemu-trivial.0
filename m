@@ -1,62 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1izeGD-000105-SZ
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 05:19:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55024)
+	id 1izf1F-00039h-97
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 06:08:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55671)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1izeGB-0000wh-IX
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 05:19:48 -0500
+ (envelope-from <philmd@redhat.com>) id 1izf1C-00032v-IQ
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 06:08:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1izeG9-00067h-Nr
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 05:19:46 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:33923
+ (envelope-from <philmd@redhat.com>) id 1izf1A-0005fc-EG
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 06:08:22 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:59890
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1izeG9-00060X-IK
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 05:19:45 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1izf1A-0005bN-9D
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 06:08:20 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1580984384;
+ s=mimecast20190719; t=1580987299;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=aAqlWyoIpQxTSGvdx3xhKNH2/8zol/m6HDWfLkkbzOY=;
- b=JSdO4fD9jjnpkBCQf5y3oCajno+5jQ+KucqmnXy8BNeZRKRjUaneTQSrflRZqBAdvL4PTi
- JgpU5mcTnQkgwbw1V4Qxz+B/EDUAoD+Yeq+DkldhiS32CleUnFIr1Py8W6bYT3VjjUfqck
- d5fNWevgBKPzqDrqsMOANLso7M2MY5M=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-372-hRM8m4EcP_CuZd5_wpqIeA-1; Thu, 06 Feb 2020 05:19:43 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BC25F104FB6D;
- Thu,  6 Feb 2020 10:19:41 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-151.ams2.redhat.com [10.36.116.151])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1EEFA60BEC;
- Thu,  6 Feb 2020 10:19:39 +0000 (UTC)
-Subject: Re: [PATCH] tests/plugin: prevent uninitialized warning
-To: kuhn.chenqun@huawei.com, qemu-devel@nongnu.org, alex.bennee@linaro.org
-Cc: qemu-trivial@nongnu.org, richard.henderson@linaro.org,
- zhang.zhanghailiang@huawei.com
-References: <20200206093238.203984-1-kuhn.chenqun@huawei.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <85dc652f-1a54-bac4-6ed3-f6e6d6dd08a0@redhat.com>
-Date: Thu, 6 Feb 2020 11:19:38 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ in-reply-to:in-reply-to:references:references;
+ bh=AS0nEzYBOWUX42VgZ6/aCvxTM0F6DjJNAL92beNsEFk=;
+ b=Wg1uSo2YsRLWk+GvYaHErh4qjTgy1HdbqJoPSHBZYEyZ3eknK1UiE4ZuxcGJJRH1UmzSwW
+ WP0PtROeEPqBbIddR2QNO7NlbQ2Q25nJUPiWvT6QERERBYgGU234mowbPf4c4ZMcMoehVS
+ NUub9qclu8JZKDczXx+ZD9fCwMN/I7w=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-15-C52IqjuNPRqjV5sAlBD1SQ-1; Thu, 06 Feb 2020 06:08:17 -0500
+Received: by mail-wr1-f69.google.com with SMTP id 90so3207671wrq.6
+ for <qemu-trivial@nongnu.org>; Thu, 06 Feb 2020 03:08:16 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:from:to:references:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Nu5Dy5d0X7tVEgM4PbaK9Aq4Ut1lH3ZTznIj6j1nAIk=;
+ b=H5UL6DacWiMiDkmAmKC7brj6W/Gqh9S8FwvNmVNaMu1+h5uMHUvlMB+R76CDHJpWY8
+ 1r1S6Ch7Pbg+e9wtTSumOw86y1zTFMZXAoCnm5gtTWYrqWBeiRFLVUpWyqoKqPeDvQxH
+ Fa+MRMvCQpr8YIGZVkK1PHC586ytKfzYsnoZRHmh8vg6NEMnOdi1rIvAXSdAY0qqLIH/
+ g62v43ebIjFRrss42v7q5sRZJk+6e2oHvWI2aGFzCRRbGMZpoLPqq8ehV2gbwxypWduO
+ wOsMwEGLM6WRWLel42Cnd5sp6CS+enMhFBctmDjG7AY8II7VCo6zWiYjh8qRz64I2DC/
+ ykWQ==
+X-Gm-Message-State: APjAAAVnWg6lPzh0mBwaFblXXvsXAXXl+dCMbsWMGeBYsQP3SUBy+yzM
+ ytFGeFvd8PW+7maq0IURYXJNFGkp2QGw+ZXEgmdDGrlFV2LbD4SmKrgqVBRram0wsIgUUcWhlkQ
+ tkFqDbW5UO1yCjPNRbw==
+X-Received: by 2002:a1c:4d18:: with SMTP id o24mr3925375wmh.35.1580987295762; 
+ Thu, 06 Feb 2020 03:08:15 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwdotbsdzuJ0QK8GPsLXU10ZT+nTsw0curItafwRoNkY3rDGlXkoT5URdmwyVNG4LK4gAwVjQ==
+X-Received: by 2002:a1c:4d18:: with SMTP id o24mr3925338wmh.35.1580987295463; 
+ Thu, 06 Feb 2020 03:08:15 -0800 (PST)
+Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.78])
+ by smtp.gmail.com with ESMTPSA id b10sm3872007wrt.90.2020.02.06.03.08.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Feb 2020 03:08:14 -0800 (PST)
+Subject: Re: [PATCH] mailmap: Add entry about me
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+To: Yu-Chen Lin <npes87184@gmail.com>, qemu-devel@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20191206140931.14133-1-npes87184@gmail.com>
+ <bd91caac-86c5-54a6-080d-37909b91a656@redhat.com>
+Message-ID: <548b2024-f34e-f4cd-f3b9-c4575c918cbe@redhat.com>
+Date: Thu, 6 Feb 2020 12:08:13 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200206093238.203984-1-kuhn.chenqun@huawei.com>
+In-Reply-To: <bd91caac-86c5-54a6-080d-37909b91a656@redhat.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: hRM8m4EcP_CuZd5_wpqIeA-1
+X-MC-Unique: C52IqjuNPRqjV5sAlBD1SQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=WINDOWS-1252; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -68,61 +85,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Feb 2020 10:19:48 -0000
+X-List-Received-Date: Thu, 06 Feb 2020 11:08:23 -0000
 
-On 06/02/2020 10.32, kuhn.chenqun@huawei.com wrote:
-> From: Chen Qun <kuhn.chenqun@huawei.com>
->=20
-> According to the glibc function requirements, we need initialise
->  the variable. Otherwise there will be compilation warnings:
->=20
-> glib-autocleanups.h:28:3: warning: =E2=80=98out=E2=80=99 may be
-> used uninitialized in this function [-Wmaybe-uninitialized]
->    g_free (*pp);
->    ^~~~~~~~~~~~
->=20
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
->  tests/plugin/bb.c   | 2 +-
->  tests/plugin/insn.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/tests/plugin/bb.c b/tests/plugin/bb.c
-> index f30bea08dc..8b9da23a04 100644
-> --- a/tests/plugin/bb.c
-> +++ b/tests/plugin/bb.c
-> @@ -22,7 +22,7 @@ static bool do_inline;
-> =20
->  static void plugin_exit(qemu_plugin_id_t id, void *p)
->  {
-> -    g_autofree gchar *out;
-> +    g_autofree gchar *out =3D NULL;
->      out =3D g_strdup_printf("bb's: %" PRIu64", insns: %" PRIu64 "\n",
->                            bb_count, insn_count);
->      qemu_plugin_outs(out);
-> diff --git a/tests/plugin/insn.c b/tests/plugin/insn.c
-> index 0a8f5a0000..c83b1c0157 100644
-> --- a/tests/plugin/insn.c
-> +++ b/tests/plugin/insn.c
-> @@ -44,7 +44,7 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct q=
-emu_plugin_tb *tb)
-> =20
->  static void plugin_exit(qemu_plugin_id_t id, void *p)
->  {
-> -    g_autofree gchar *out;
-> +    g_autofree gchar *out =3D NULL;
->      out =3D g_strdup_printf("insns: %" PRIu64 "\n", insn_count);
->      qemu_plugin_outs(out);
->  }
+Hello,
 
-Just a matter of taste, but I think in these simple cases, it would be
-nicer to put everything in one line, e.g.:
+I suggest changing the subject to:
+"mailmap: Add entry for Yu-Chen Lin"
 
-    g_autofree gchar *out =3D g_strdup_printf("insns: %" PRIu64 "\n",
-                                            insn_count);
+On 12/6/19 3:15 PM, Philippe Mathieu-Daud=E9 wrote:
+> Cc'ing qemu-trivial@
+>=20
+> On 12/6/19 3:09 PM, Yu-Chen Lin wrote:
+>> I have two mail address, add entries for
+>> showing author and email correctly.
+>>
+>> Signed-off-by: Yu-Chen Lin <npes87184@gmail.com>
+>> ---
+>> =A0 .mailmap | 3 ++-
+>> =A0 1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/.mailmap b/.mailmap
+>> index 3816e4effe..3fbf3902a3 100644
+>> --- a/.mailmap
+>> +++ b/.mailmap
+>> @@ -151,7 +151,8 @@ Xiaoqiang Zhao <zxq_yx_007@163.com>
+>> =A0 Xinhua Cao <caoxinhua@huawei.com>
+>> =A0 Xiong Zhang <xiong.y.zhang@intel.com>
+>> =A0 Yin Yin <yin.yin@cs2c.com.cn>
+>> -yuchenlin <npes87184@gmail.com>
+>> +Yu-Chen Lin <npes87184@gmail.com>
+>> +Yu-Chen Lin <npes87184@gmail.com> <yuchenlin@synology.com>
 
-Anyway,
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Apparently the mailmap process is getting stricter,
+can you Ack-by this patch from your Synology account?
+
+>=20
+> Thanks for updating your entry in .mailmap!
+>=20
+> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+>=20
+>> =A0 YunQiang Su <syq@debian.org>
+>> =A0 YunQiang Su <ysu@wavecomp.com>
+>> =A0 Yuri Pudgorodskiy <yur@virtuozzo.com>
+>>
 
 
