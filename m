@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1izgce-0001K1-WF
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 07:51:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56526)
+	id 1izgcg-0001Kl-77
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 07:51:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56493)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1izgcc-0001Fy-NE
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 07:51:07 -0500
+ (envelope-from <laurent@vivier.eu>) id 1izgcc-0001Ef-2G
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 07:51:08 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1izgcb-0006Dx-A8
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 07:51:06 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:59267)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (envelope-from <laurent@vivier.eu>) id 1izgca-0006BF-In
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 07:51:05 -0500
+Received: from mout.kundenserver.de ([212.227.126.130]:57897)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1izgca-00069v-Ju; Thu, 06 Feb 2020 07:51:05 -0500
+ id 1izgcW-00060H-G7; Thu, 06 Feb 2020 07:51:00 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MFbBO-1ijmZl2BLC-00H6yf; Thu, 06 Feb 2020 13:50:39 +0100
+ id 1MWitM-1j1zws2frE-00X8C7; Thu, 06 Feb 2020 13:50:46 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
@@ -29,36 +29,34 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
  qemu-block@nongnu.org, Joel Stanley <joel@jms.id.au>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
-Subject: [PULL 04/12] hw/timer/m48t59: Convert debug printf()s to trace events
-Date: Thu,  6 Feb 2020 13:50:19 +0100
-Message-Id: <20200206125027.1926263-5-laurent@vivier.eu>
+ John Snow <jsnow@redhat.com>, Eric Blake <eblake@redhat.com>
+Subject: [PULL 08/12] qemu-options: replace constant 1 with HAS_ARG
+Date: Thu,  6 Feb 2020 13:50:23 +0100
+Message-Id: <20200206125027.1926263-9-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200206125027.1926263-1-laurent@vivier.eu>
 References: <20200206125027.1926263-1-laurent@vivier.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:T8c6Xi4Oh+lSDqXyVGgojm/O13ryMV6fZe0mJQxr7lgwYwLNDL2
- OPTrCUs1HrLJZXsg8f55CFv8TVazxhfgqjs4k40byvJbQAwisPkRO1CrjyMzDXu+lCX6XU9
- JWWaOBO/h7ATGwQGxxdP3w3+C5hMKQ8gIZj6NFyZDS30A22B3UMJxYYvVc+iaza7O6In5LC
- umB7pmXDBD+pIe7t2J1+A==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Ttucs+vMU28=:aj4RgeUwy8Pl2AoIl83l1R
- o+w4GX+B0ADG5h1GjCpT9XWjLHuB5kuO36Sa5QNV4LdD0DpZ0L3mm3JxSiZWFBps91aV+xnC4
- YdsAQotUdSuwS8iUauvhn0mAg0+Mhfe6lt9h4/7/vtocLF5twX3fKwOP8S91M7wb5YIFOKpG4
- 56bEjouLuG3WS3ba3Kz0QH1KdGp1fQIw99Y568CWp7+crG4shypkasoUbT9Es1ue9oRB/NXuo
- XVhhQiWdBZpUmoDIWvkBOPWo/dSGijIy6wkjrz58gSSj+tjjVBLFTkT/4/mukWOQ30LkTlg04
- lJKSTCEI9DOq5sdTPp6HgEWP7Op01nltJWCWxCdRPOwj+8yuBj9rpkw2wgkwFoozR913HHPG4
- ESsEpFUW+AQv8HVOdZWKmtF2eB5IexrQeKaQgy4NI9f7l9Q8G81Iw62A2kd4O7SrcVIqS6hAK
- kG/eg+3c0HUiKy2knnFoxpTIDunBIXbTEPNwk1CKKTeit5ZUA+m4P2T3BKKTTRH03XGA4r7dm
- lkE9PksLUkbYvLKuBU5pr2KH/LwQKtggkcHVvGl9sAMPvWPkCJ7+E70VjNWAZyTKuWsRU4dEg
- YlcZVvj3uN8vyR2bKe0LAsnGco0jo9lbg5ljloLB5sEt6/0QZ+7l5EPPkqeoONmL5iSLl89S8
- Cv+laRz3odlHlv9aboCOi1r+axOUfguz8sP/fuGUI5IL9WWXlR96uFX0sXOIt850vp4nA2SBk
- EmNUJhnBQ+ZGx5ho3A/DrA65LeMvbJ9TcpLAlEYQVXY2aYeC34xaEPPriGNwO68Sp+TulRQ47
- 3v9k+HgTpUKqZbEB6tFVDvmt9c+KGnhyVWZPxM8j8UdqzIDdvZBiUemDBTPHoG5J+BhI7+O
+X-Provags-ID: V03:K1:oUS9/CdvOMTgMQUxXzkvMUnhIKE+wbz8rdCq2y0WIs9E41NNsNp
+ z7d1JpcONN9ivWLRIapo/5quaJv6DrNIaKZhhJwRV7vP/k5OX3aKs9+Lt4LyCf9YrNOIOd2
+ pD0rgm5Oa9kTJdxp7craCW7YYT2zYcPnrvQo+5IP8dtR9Ffw62AKYCvlGHRBAWpjgtb9R/X
+ BoIZL4WhNC2YlTkt6BXiw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:oCwD7SN5neA=:iogWmR6DI49knC4Kql8lrV
+ qb2ZwyQK8f1kCwAYiNIK85dPEBIsxLFMxigtpoWedagIzXgebvoEIUfkcnDWO9vTwQIKWQvIK
+ Yp42cUwMezy8fX+9kei9Kv4R2OQQphB86nC3HJO1EiSp7rnujPeH2tm6PLETYfLEk+OBpIp1Z
+ WfnKCtZI0G2dtUPVsQnm+/kDWPuVg8KUKsYxAEXLnQQY5Mc/pm4stguTiUguAl2XCkThAXcDh
+ C1FVnc77/EJB0M+DSIj/wLXOiLd/mvOWglURLYdElhHHTpNotHzwkdvfhYIWX/N2ILpWJJuwC
+ Iwy26Rcb4SfWxvcWcLyGwTf9Rd6G6YKYrnlMj8Eym/TR2yCU7Jmfm5u4Sq+dJ5Qfmp9DJ72fq
+ uNzYihVBSIJxEfAYKC71rr6T8a25wkQAQ5AS+rQ8QbdrkOwxYDwQK/yp8fuWV5YF3AvAY01Fe
+ /9H1JGnswftqUTibxzSHzYxRUPVl6dHIyM7rZOMpOIlr8VfyqV/b+pAP4mTiL3oIKx4dt41W4
+ bbjr1mKcQzCvQ+Mkaga7LrLWUvt09bkYCkT0p3rn8dvYWCraNAHKC/af9KwlyGUMxx2mANIRq
+ ZcrKW2FpZf7+1R5FN5IGgTWGVbWx1Yti683zkzzakMF4euK3k8dJL8oRzMSkW9nGm93/Vn2le
+ 95h2H4CssrkJpZM1Sy1JPILQIQOYYnN0cehD6rVuK3tS5uDY1kSyrsu8Ei2y8ATvsdWlbN9Po
+ BIb1JUy54dBxydLhm4GLhjxKfus++aSqO2No5UoE6B7z6koGCBjgzLzMuSG+iDZAS0brGL/6G
+ Rz0YQir4oJeGrPuhSzCFo6V4JigyLakHqIdBmmtd5ujgjWp9uLZTAxqH4x8VnwBDMmTv3LP
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
+X-Received-From: 212.227.126.130
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,98 +70,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 06 Feb 2020 12:51:08 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: John Snow <jsnow@redhat.com>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Hervé Poussineau <hpoussin@reactos.org>
-Message-Id: <20200117165809.31067-3-philmd@redhat.com>
+This is the only instance of a non-zero constant not using a symbolic
+constant.
+Reviewed-by: Eric Blake <eblake@redhat.com>
+Signed-off-by: John Snow <jsnow@redhat.com>
+Message-Id: <20200204165638.25051-1-jsnow@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/rtc/m48t59-internal.h |  5 -----
- hw/rtc/m48t59.c          | 11 +++++------
- hw/rtc/trace-events      |  6 ++++++
- 3 files changed, 11 insertions(+), 11 deletions(-)
+ qemu-options.hx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/rtc/m48t59-internal.h b/hw/rtc/m48t59-internal.h
-index 4d4f2a6fed94..cd648241e989 100644
---- a/hw/rtc/m48t59-internal.h
-+++ b/hw/rtc/m48t59-internal.h
-@@ -26,11 +26,6 @@
- #ifndef HW_M48T59_INTERNAL_H
- #define HW_M48T59_INTERNAL_H
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 224a8e8712a4..ff3e806977a8 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -1955,7 +1955,7 @@ STEXI
+ Start in full screen.
+ ETEXI
  
--#define M48T59_DEBUG 0
--
--#define NVRAM_PRINTF(fmt, ...) do { \
--    if (M48T59_DEBUG) { printf(fmt , ## __VA_ARGS__); } } while (0)
--
- /*
-  * The M48T02, M48T08 and M48T59 chips are very similar. The newer '59 has
-  * alarm and a watchdog timer and related control registers. In the
-diff --git a/hw/rtc/m48t59.c b/hw/rtc/m48t59.c
-index 1269134bcbef..47d48054fdc1 100644
---- a/hw/rtc/m48t59.c
-+++ b/hw/rtc/m48t59.c
-@@ -35,6 +35,7 @@
- #include "exec/address-spaces.h"
- #include "qemu/bcd.h"
- #include "qemu/module.h"
-+#include "trace.h"
- 
- #include "m48t59-internal.h"
- #include "migration/vmstate.h"
-@@ -192,8 +193,7 @@ void m48t59_write(M48t59State *NVRAM, uint32_t addr, uint32_t val)
-     struct tm tm;
-     int tmp;
- 
--    if (addr > 0x1FF8 && addr < 0x2000)
--	NVRAM_PRINTF("%s: 0x%08x => 0x%08x\n", __func__, addr, val);
-+    trace_m48txx_nvram_mem_write(addr, val);
- 
-     /* check for NVRAM access */
-     if ((NVRAM->model == 2 && addr < 0x7f8) ||
-@@ -450,8 +450,7 @@ uint32_t m48t59_read(M48t59State *NVRAM, uint32_t addr)
- 	}
-         break;
-     }
--    if (addr > 0x1FF9 && addr < 0x2000)
--       NVRAM_PRINTF("%s: 0x%08x <= 0x%08x\n", __func__, addr, retval);
-+    trace_m48txx_nvram_mem_read(addr, retval);
- 
-     return retval;
- }
-@@ -462,7 +461,7 @@ static void NVRAM_writeb(void *opaque, hwaddr addr, uint64_t val,
- {
-     M48t59State *NVRAM = opaque;
- 
--    NVRAM_PRINTF("%s: 0x%"HWADDR_PRIx" => 0x%"PRIx64"\n", __func__, addr, val);
-+    trace_m48txx_nvram_io_write(addr, val);
-     switch (addr) {
-     case 0:
-         NVRAM->addr &= ~0x00FF;
-@@ -494,7 +493,7 @@ static uint64_t NVRAM_readb(void *opaque, hwaddr addr, unsigned size)
-         retval = -1;
-         break;
-     }
--    NVRAM_PRINTF("%s: 0x%"HWADDR_PRIx" <= 0x%08x\n", __func__, addr, retval);
-+    trace_m48txx_nvram_io_read(addr, retval);
- 
-     return retval;
- }
-diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-index d6749f4616a0..52c1566198e8 100644
---- a/hw/rtc/trace-events
-+++ b/hw/rtc/trace-events
-@@ -17,3 +17,9 @@ pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
- # aspeed-rtc.c
- aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
- aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
-+
-+# m48t59.c
-+m48txx_nvram_io_read(uint64_t addr, uint64_t value) "io read addr:0x%04" PRIx64 " value:0x%02" PRIx64
-+m48txx_nvram_io_write(uint64_t addr, uint64_t value) "io write addr:0x%04" PRIx64 " value:0x%02" PRIx64
-+m48txx_nvram_mem_read(uint32_t addr, uint32_t value) "mem read addr:0x%04x value:0x%02x"
-+m48txx_nvram_mem_write(uint32_t addr, uint32_t value) "mem write addr:0x%04x value:0x%02x"
+-DEF("g", 1, QEMU_OPTION_g ,
++DEF("g", HAS_ARG, QEMU_OPTION_g ,
+     "-g WxH[xDEPTH]  Set the initial graphical resolution and depth\n",
+     QEMU_ARCH_PPC | QEMU_ARCH_SPARC | QEMU_ARCH_M68K)
+ STEXI
 -- 
 2.24.1
 
