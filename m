@@ -1,65 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1izgcv-00025p-BS
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 07:51:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56998)
+	id 1izgh6-0003Nn-HL
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 07:55:44 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60327)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1izgcs-0001wB-BT
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 07:51:23 -0500
+ (envelope-from <npes87184@gmail.com>) id 1izgh4-0003It-HR
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 07:55:43 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1izgcr-00074c-4Q
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 07:51:22 -0500
-Received: from mout.kundenserver.de ([212.227.126.134]:37713)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1izgci-0006Sf-JS; Thu, 06 Feb 2020 07:51:12 -0500
-Received: from localhost.localdomain ([78.238.229.36]) by
- mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MAOeB-1ipXCI3Q7f-00BsBg; Thu, 06 Feb 2020 13:50:54 +0100
-From: Laurent Vivier <laurent@vivier.eu>
+ (envelope-from <npes87184@gmail.com>) id 1izgh3-0007S3-GK
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 07:55:42 -0500
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e]:37850)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <npes87184@gmail.com>)
+ id 1izggr-0006jt-KF; Thu, 06 Feb 2020 07:55:30 -0500
+Received: by mail-pj1-x102e.google.com with SMTP id m13so2520826pjb.2;
+ Thu, 06 Feb 2020 04:55:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=HBKiWyxPOBeQhjpTMCQRY2PgitDnOF2YSfOVmPlQ+rY=;
+ b=ctB7hra7HJBaoU8/+T+Cwmz7JjyT1MbPBewMwTjWd1vpMzmiNSdApSfgLkNZFSP8Ty
+ 7zmbePH/9QtCvB/1TJWykiMN51cMCioSsT97wD5iTDNbLbwXi7b3V8MI2KWy47BZKqtF
+ vZk1Vow5KKU2TUugQEHjuL79I41KY+cBu2T6F9GtlWorj19oqsl6/SxoxUWV7bSPmrVk
+ 1KLni5At3q/QDFFLIndOskd4DN/ZlIJaVKx75q82mXxWnGfqbB93EfBNL+S18Q3GnXpF
+ /B6YLj95PlSPCEQjMUI+my7VUclJ3eBs4jhbxvD/OaXF0EUGHt2I60RZtEo5SCB8PXAa
+ KuzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=HBKiWyxPOBeQhjpTMCQRY2PgitDnOF2YSfOVmPlQ+rY=;
+ b=O2EGTir47ehIlqUaYHFpt+WOYr8AlMOa7gE069jxqwBDy3GeMIHX6EJ6/n2zkjVvzs
+ jusJlozr6VauousMDzPOAvqHZb3/kiY/VcSqKVSRsVAiOsn38sXAKT8SqOPVqS9QwyHQ
+ kWRR3GNGpRYJ3z+81tFjbCO0+SIo5v90+h9p+tVDz2U6pp59MUDRUEZKJCU51/QimSLO
+ tsLhwExwOglYD5i7uGPhOaw3L2xZGLiBb5AaDfYRiOOPwOtmHq7armMVlsKya0zmdvsq
+ KrjhG1PRQI6HZv1cWJObbb0wuVWIEf5PXMK5l/Do38Vdofl/RoMYvC5x6+e+Rfal/SuY
+ /KDQ==
+X-Gm-Message-State: APjAAAUchqaW3jBdk2u5Xmli0zoPd29tEaqjDFLhJy2AzkfssRm7AXJv
+ dc4o/oSSWQfL/oWUln86iOATd9e+gw07MQ==
+X-Google-Smtp-Source: APXvYqyO+LSl0KsZ/fQUDjgH+u0Y50C2MM0pt1VtpY9Yx1bgyohtWTX0iEmpzs3iGp6fzYD5th5dbA==
+X-Received: by 2002:a17:90a:d789:: with SMTP id z9mr4116160pju.5.1580993726567; 
+ Thu, 06 Feb 2020 04:55:26 -0800 (PST)
+Received: from localhost.localdomain (223-136-131-195.emome-ip.hinet.net.
+ [223.136.131.195])
+ by smtp.googlemail.com with ESMTPSA id d4sm3342809pjz.12.2020.02.06.04.55.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 06 Feb 2020 04:55:26 -0800 (PST)
+From: Yu-Chen Lin <npes87184@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Max Reitz <mreitz@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
- qemu-block@nongnu.org, Joel Stanley <joel@jms.id.au>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: [PULL 12/12] MAINTAINERS: Cc the qemu-arm@nongnu.org for the ARM
- machines
-Date: Thu,  6 Feb 2020 13:50:27 +0100
-Message-Id: <20200206125027.1926263-13-laurent@vivier.eu>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20200206125027.1926263-1-laurent@vivier.eu>
-References: <20200206125027.1926263-1-laurent@vivier.eu>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:YjSXEMg85EuQe8WpdOigmHHgR2M7GCMGYoHmBoQQoMd5qPirpPF
- dNHT0XutPVET5RJXlDseqc2xjqeVGPoHp39p419hrt/H8e4Gx+H+wVqSivQyWlBQ86HS6cN
- 19IRjuldxbnvSzBwV3+QNjhOqpn2PhonuhWtqJMzN9GnKSfmNSbXsNP35s9pznv4hGrM8dT
- GX+CVIKyx4pvN/1i5WC0Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:rjQcTHsO2Uk=:GdAH29v1/BasAHa1hwqcXE
- jlmwrX3mD6V7rA9KPG0ElN8oBnZesElcEubbmES99olraZFilAY6kGcz+JcKCbw/4bCl4b9bg
- wfSV3AZzTIfjV9BWYt8D1LoF58rYMPUkWNvWV3CILW9yeOnIIC7AtB6tbFjmP18X5jfczFFx3
- BkGhsr2hz876N68cl5q6R6oemhS/LqvVnQPf9c68yBuhgPTWaKxB12tQyg208NKMEiO6b9UKs
- Ckw0AGc1fE/BKXl3aM1wZVGps59J8VE/IsviDHnPXly+pQAeIdz1tlxHUMzfeW6CAXhP1haqG
- U+atmMvfZ7dRQIt7tbL3eRHUuptw8mZSuPL+CaLsxae0mxgZmBEUP8+3do1B52KzfGHxG9E+F
- O6iDgnAjls5JjClWmtRPDPtvI2hXZHjyUhTh4sUxKxCcIbTVsDRDZ6hCIzs40yyl+SlLXGxJd
- AfQ8V2bjpaIl20JydHxpYEpqn6KeIBGXtGfjgP45jYDAdOXKW9MkDQKwPty63M/V16vfUkxkl
- ZHd6gypPO+0Nu1tqtmKuyovXbAWCugCwQBwk0Ju+gnthMiVNq3waNO2L7E4+O1vPyzzrPEjCV
- j/uUGwPdgmFdwYLlkOoFkbJRZL+4KVZ2N6+uS6AkikYx9kSpyMZJjjPbCgVjafYpVtLVjBKsn
- /wsSTg3lxBBbXETCcwyeNk+xp8gDW8zyyIgJGnqSJTQBXhqlwA09mrPHTkhF1UvYqzmPf5345
- Ldtru3sAOnJikUx6UQeqbFncLlEmO9vYeuw7+UHLfAFqUSve2XHFOMOvjqgUxDrN6E1/t4WhN
- DcQ7tLGyHhPmtkhDnh0krgmi5rfwyiFEl4WD2mm6qJrW1mb9xMSR67yIImvb3qOrid4kh2Y
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.134
+Cc: philmd@redhat.com, qemu-trivial@nongnu.org, yuchenlin@synology.com,
+ Yu-Chen Lin <npes87184@gmail.com>
+Subject: [PATCH v2] mailmap: Add entry for Yu-Chen Lin
+Date: Thu,  6 Feb 2020 20:55:04 +0800
+Message-Id: <20200206125504.7150-1-npes87184@gmail.com>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::102e
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,80 +65,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Feb 2020 12:51:24 -0000
+X-List-Received-Date: Thu, 06 Feb 2020 12:55:44 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+I have two mail address, add entries for
+showing author and email correctly.
 
-Not all ARM machines sections Cc the qemu-arm@nongnu.org list,
-fix this.
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20200120185928.25115-2-philmd@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+Signed-off-by: Yu-Chen Lin <npes87184@gmail.com>
 ---
- MAINTAINERS | 7 +++++++
- 1 file changed, 7 insertions(+)
+v1 -> v2:
+* Change subject
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 9d45ac274ed7..e72b5e5f6968 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -809,6 +809,7 @@ F: hw/arm/virt-acpi-build.c
- STM32F205
- M: Alistair Francis <alistair@alistair23.me>
- M: Peter Maydell <peter.maydell@linaro.org>
-+L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/arm/stm32f205_soc.c
- F: hw/misc/stm32f2xx_syscfg.c
-@@ -821,6 +822,7 @@ F: include/hw/*/stm32*.h
- STM32F405
- M: Alistair Francis <alistair@alistair23.me>
- M: Peter Maydell <peter.maydell@linaro.org>
-+L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/arm/stm32f405_soc.c
- F: hw/misc/stm32f4xx_syscfg.c
-@@ -829,18 +831,21 @@ F: hw/misc/stm32f4xx_exti.c
- Netduino 2
- M: Alistair Francis <alistair@alistair23.me>
- M: Peter Maydell <peter.maydell@linaro.org>
-+L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/arm/netduino2.c
- 
- Netduino Plus 2
- M: Alistair Francis <alistair@alistair23.me>
- M: Peter Maydell <peter.maydell@linaro.org>
-+L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/arm/netduinoplus2.c
- 
- SmartFusion2
- M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
- M: Peter Maydell <peter.maydell@linaro.org>
-+L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/arm/msf2-soc.c
- F: hw/misc/msf2-sysreg.c
-@@ -854,6 +859,7 @@ F: include/hw/ssi/mss-spi.h
- Emcraft M2S-FG484
- M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
- M: Peter Maydell <peter.maydell@linaro.org>
-+L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/arm/msf2-som.c
- 
-@@ -1402,6 +1408,7 @@ T: git https://github.com/jnsnow/qemu.git ide
- 
- OMAP
- M: Peter Maydell <peter.maydell@linaro.org>
-+L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/*/omap*
- F: include/hw/arm/omap.h
+ .mailmap | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/.mailmap b/.mailmap
+index 3816e4effe..3fbf3902a3 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -151,7 +151,8 @@ Xiaoqiang Zhao <zxq_yx_007@163.com>
+ Xinhua Cao <caoxinhua@huawei.com>
+ Xiong Zhang <xiong.y.zhang@intel.com>
+ Yin Yin <yin.yin@cs2c.com.cn>
+-yuchenlin <npes87184@gmail.com>
++Yu-Chen Lin <npes87184@gmail.com>
++Yu-Chen Lin <npes87184@gmail.com> <yuchenlin@synology.com>
+ YunQiang Su <syq@debian.org>
+ YunQiang Su <ysu@wavecomp.com>
+ Yuri Pudgorodskiy <yur@virtuozzo.com>
 -- 
-2.24.1
+2.17.1
 
 
