@@ -1,39 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1izYSg-00074g-6a
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Feb 2020 23:08:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50367)
+	id 1izcQ6-0004hI-Jr
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 03:21:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55640)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1izYSd-000736-Qa
- for qemu-trivial@nongnu.org; Wed, 05 Feb 2020 23:08:16 -0500
+ (envelope-from <thuth@redhat.com>) id 1izcQ3-0004gr-LJ
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 03:21:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1izYSc-0006Qr-TA
- for qemu-trivial@nongnu.org; Wed, 05 Feb 2020 23:08:15 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:49730 helo=huawei.com)
+ (envelope-from <thuth@redhat.com>) id 1izcQ2-0003VJ-KG
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 03:21:51 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:42446
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1izYSa-0005cL-J0; Wed, 05 Feb 2020 23:08:12 -0500
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id A8F8C5063DAE48B9B491;
- Thu,  6 Feb 2020 12:08:04 +0800 (CST)
-Received: from HGHY4C002233111.china.huawei.com (10.133.205.93) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.439.0; Thu, 6 Feb 2020 12:07:56 +0800
-From: <kuhn.chenqun@huawei.com>
-To: <qemu-devel@nongnu.org>, <clg@kaod.org>, <peter.maydell@linaro.org>
-CC: <zhang.zhanghailiang@huawei.com>, <qemu-trivial@nongnu.org>,
- <andrew@aj.id.au>, <joel@jms.id.au>, Chen Qun <kuhn.chenqun@huawei.com>
-Subject: [PATCH] aspeed/i2c:fix uninitialized variable warning
-Date: Thu, 6 Feb 2020 12:07:53 +0800
-Message-ID: <20200206040753.42252-1-kuhn.chenqun@huawei.com>
-X-Mailer: git-send-email 2.14.1.windows.1
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1izcQ2-0003TZ-HK
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 03:21:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1580977310;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=Svt3OhLXhjZrtoDmVyOWrYlykg3MANsPLMLSNro1SiY=;
+ b=T/iVFsjKw0j4Kpacu/brK6qp/fCt6zGhLLqJhDvb4ogYeyyuBJfarl9dkNWa0w5I3GWmGT
+ kpjWNwpNFsmmFFm+bXjHiIlALXxcb53Uy7CH/tyTTBRZ4n6xgJ3ZBgpoGKMHkTNSW2u7rV
+ r6ETAX6FQl4dF8glViyQjxkj+S+TK+M=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-404-rRpghXC3Py-__HNT1RnkZg-1; Thu, 06 Feb 2020 03:21:46 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E99F88010D6;
+ Thu,  6 Feb 2020 08:21:44 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-151.ams2.redhat.com [10.36.116.151])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id BC4025DA7C;
+ Thu,  6 Feb 2020 08:21:42 +0000 (UTC)
+Subject: Re: [PATCH] aspeed/i2c:fix uninitialized variable warning
+To: kuhn.chenqun@huawei.com, qemu-devel@nongnu.org, clg@kaod.org,
+ peter.maydell@linaro.org
+Cc: qemu-trivial@nongnu.org, andrew@aj.id.au, zhang.zhanghailiang@huawei.com, 
+ joel@jms.id.au, Miroslav Rezanina <mrezanin@redhat.com>
+References: <20200206040753.42252-1-kuhn.chenqun@huawei.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <3b091938-34a4-0a75-3a86-93195a2382e2@redhat.com>
+Date: Thu, 6 Feb 2020 09:21:40 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-X-Originating-IP: [10.133.205.93]
-X-CFilter-Loop: Reflected
+In-Reply-To: <20200206040753.42252-1-kuhn.chenqun@huawei.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: rRpghXC3Py-__HNT1RnkZg-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.32
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -45,43 +69,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Feb 2020 04:08:17 -0000
+X-List-Received-Date: Thu, 06 Feb 2020 08:21:52 -0000
 
-From: Chen Qun <kuhn.chenqun@huawei.com>
-
-Fix warning:
-hw/i2c/aspeed_i2c.c: In function =E2=80=98aspeed_i2c_bus_write=E2=80=99:
-glib/glib-autocleanups.h:28:3: warning: =E2=80=98cmd_flags=E2=80=99 may b=
+On 06/02/2020 05.07, kuhn.chenqun@huawei.com wrote:
+> From: Chen Qun <kuhn.chenqun@huawei.com>
+>=20
+> Fix warning:
+> hw/i2c/aspeed_i2c.c: In function =E2=80=98aspeed_i2c_bus_write=E2=80=99:
+> glib/glib-autocleanups.h:28:3: warning: =E2=80=98cmd_flags=E2=80=99 may b=
 e
-used uninitialized in this function [-Wmaybe-uninitialized]
-   g_free (*pp);
-   ^~~~~~~~~~~~
-hw/i2c/aspeed_i2c.c:403:22: note: =E2=80=98cmd_flags=E2=80=99 was declare=
+> used uninitialized in this function [-Wmaybe-uninitialized]
+>    g_free (*pp);
+>    ^~~~~~~~~~~~
+> hw/i2c/aspeed_i2c.c:403:22: note: =E2=80=98cmd_flags=E2=80=99 was declare=
 d here
-     g_autofree char *cmd_flags;
-                      ^~~~~~~~~
+>      g_autofree char *cmd_flags;
+>                       ^~~~~~~~~
+>=20
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> ---
+>  hw/i2c/aspeed_i2c.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index 9cda968501..fb973a983d 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -400,7 +400,7 @@ static bool aspeed_i2c_check_sram(AspeedI2CBus *bus)
+> =20
+>  static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
+>  {
+> -    g_autofree char *cmd_flags;
+> +    g_autofree char *cmd_flags =3D NULL;
+>      uint32_t count;
+> =20
+>      if (bus->cmd & (I2CD_RX_BUFF_ENABLE | I2CD_RX_BUFF_ENABLE)) {
+>=20
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
----
- hw/i2c/aspeed_i2c.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks. Looks like the same patch that has been reported already here:
 
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 9cda968501..fb973a983d 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -400,7 +400,7 @@ static bool aspeed_i2c_check_sram(AspeedI2CBus *bus)
-=20
- static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
- {
--    g_autofree char *cmd_flags;
-+    g_autofree char *cmd_flags =3D NULL;
-     uint32_t count;
-=20
-     if (bus->cmd & (I2CD_RX_BUFF_ENABLE | I2CD_RX_BUFF_ENABLE)) {
---=20
-2.23.0
+https://lists.gnu.org/archive/html/qemu-devel/2020-01/msg04492.html
 
+Could someone please pick this up (e.g. qemu-trivial?)?
+
+ Thomas
 
 
