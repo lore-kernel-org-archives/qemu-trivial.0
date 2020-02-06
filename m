@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1izgcs-0001w5-Dr
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 07:51:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56903)
+	id 1izgct-00020U-KO
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 07:51:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56926)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1izgcp-0001mq-Do
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 07:51:20 -0500
+ (envelope-from <laurent@vivier.eu>) id 1izgcq-0001pX-3W
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 07:51:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1izgco-0006tP-D4
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 07:51:19 -0500
-Received: from mout.kundenserver.de ([212.227.126.133]:58643)
+ (envelope-from <laurent@vivier.eu>) id 1izgcp-0006wo-7K
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 07:51:20 -0500
+Received: from mout.kundenserver.de ([212.227.126.133]:50523)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1izgcj-0006XH-QX; Thu, 06 Feb 2020 07:51:14 -0500
+ id 1izgcm-0006lG-Po; Thu, 06 Feb 2020 07:51:17 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue010 [212.227.15.167]) with ESMTPSA (Nemesis)
- id 1MA7X0-1ipGDR2F8E-00BbCn; Thu, 06 Feb 2020 13:50:43 +0100
+ id 1MC2o9-1intIs39fp-00CPsw; Thu, 06 Feb 2020 13:50:51 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
@@ -29,33 +29,32 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
  qemu-block@nongnu.org, Joel Stanley <joel@jms.id.au>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Thomas Huth <thuth@redhat.com>, Darren Kenny <darren.kenny@oracle.com>
-Subject: [PULL 06/12] hw/i386/vmmouse: Fix crash when using the vmmouse on a
- machine without vmport
-Date: Thu,  6 Feb 2020 13:50:21 +0100
-Message-Id: <20200206125027.1926263-7-laurent@vivier.eu>
+ Miroslav Rezanina <mrezanin@redhat.com>, Thomas Huth <thuth@redhat.com>
+Subject: [PULL 11/12] aspeed/i2c: Prevent uninitialized warning
+Date: Thu,  6 Feb 2020 13:50:26 +0100
+Message-Id: <20200206125027.1926263-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200206125027.1926263-1-laurent@vivier.eu>
 References: <20200206125027.1926263-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:W1eH0lsjt6jCmCVV74la6b76emMsVYrvt3vX9vKnSUbZyYJ1LxV
- vtdSYnTft+amupyioUNYFMtJdy8/g//VcZz7uFPjMidplOCS6YfqZmWLZCwx1ZIWrIYjG9l
- y61aZRme2DuQEx7Zc2iaqSnN89jnovLuJSzXeMci1JUogfrEXnKtjO2S9G1N2AYP9kCXOhj
- bNbhcsMNb4iZUJzDoKmww==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:0MfJi3yqHXI=:USKbxS+q6G353dEWeijF0b
- EK2ts37obxszI2JCLXU29w1ksJwOFewxKDy27S3Q5Xhrz2o3XOTRPZnqfnJ0wzJNTsB3rgiWR
- 6TqZXwqCbvdYxtOswWNyLVVdWtz0b+sjQC2n+9SXSp4D7IvblHcJIUSp0u7d0l/GPP9Zx8BtE
- NoVgoRl9QOqYwjpVYTakhKSa3lfeNuFeeiKgs8MFqlk+OvftJzPP73ARsZ2YeW0BnqvCIYbSR
- CLgvGMjQh0zALkd8NE9jR9UvgVfOEq2cQO9TSCl/TYc8VsSLU65ez21LfxMsRmENo5ZzrjMMV
- ARDecpr+6Irb0aKYvrNMWWFUOXCHLKGBpjrYIgYA6uKezP0MV9xKFG2TKLbL53jmg87r13mhv
- XC/YEKJSZuAqnHTIKeHiNO4sd6IM8Whj3JJBhYHp43ehAP1JnPt8HKX45OXhoTpeErpCniZLC
- bS7sQB8EGFeoXvcp0GD8pSbF1YE3zk7pqGigEarj/wuAY72NG/jeH3IzVuKkKUxjjz3TraUg2
- nihkNBbEvUw3ST+H5po1f7bvGylx6VRsMFd7UZZnWnVgWgiL2UWOiBS8ouEeKVAOiM5ndxOp/
- q6VtFwxOmSoC+ohbaQSpAsaSXG15bct0YGJTVgARmKGPqIksiRQGT1kCTXM9ycJJwHQJdMCXr
- Oudoi5Jyn0xVDGwzQYu4iqnP72/kN5DQEOCphgc1N0oKh7sfLWO2v8wlfREN9Jv3O21gsI8zz
- 63+ggC0DjmAZ7QT1dwlfch+J+nrm0flDRL2BJQnnLRepqPrOK4NZd+VPswVY1saEs7k5lp35z
- iB6j1SDhXFXscf04HhP5cReUpqrgcWMks0qiO373956cMzFE+veARtPMUn8l/PBA0vIakyu
+X-Provags-ID: V03:K1:hsG0MoAZNDkAr6/dAbHU0b2Sd1vXTc5zUe651VUJg4XcNzZ/noC
+ GyERr62exowH3kYsMpw9MdqVw7KaD1QQWEsvZcYMoDNAyxKlNrchzjPhnrV9ReKbkreXy8C
+ cWvgwNp/Qq6946Q4EnrbtStnxh5bQkjSTfTYMcFz59IKpRMQXa1BrPI5YPKPXjd+swOlff8
+ vVvwuO/qtFDx64Iz1eihQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:fO6ol714BUI=:5/cYrGjiGI+7F/ekb3wmpR
+ cryvZx6TRLRy7w3sjFNJDR40r9HuvwueWXLh5nCybya6LIjwj1aMXghCI5huPdqy9ZbJBZOCf
+ KHlHcnaNw2IvAJ/EwbxOk4xUIW2z3aTNHZB2XR8+KXv32ExCDy2Ed56Rz/7DVUG6QcXhefjxF
+ 7mWLVLyBSjtYLqE+vx36em7JcDp4PMuCOnjtAXyT9IYgB4XAT94g2dddTrTrc5is7PxDoXJV9
+ BP4ww0jYNyW8vYXB+Z5C/deWFZLk/WuNf/ueYxh9aAMmTtfYs99Xx11Uku8ayEkcEjXb8/oy0
+ qOLZUi4nFv35zej+g0U/OzkXPawMUSeHaR0Y+WHmrF46+ZAL76oGKrLkiI0RQ6icxcckBQNTt
+ T8mlhE/13BMzi7UTIWcoAoQ9+n3CkM/cL9HsEM9XpNc6ZQhHXU1j6J0YdUqrZCkMLNfv+dS2H
+ RfupBT8Rp7JY6OOf20aLVAa0fNjIfKN6QPonxosGr/m0wcjmMmB1vRq1fQqEWk88ClFE8myUY
+ d3ftJn6S85ct57UhTiFlQvem/CN0u4cPA0cS+sHlvIOr1G2QIzS/eMemHzdzvSijnr2r0yW7E
+ 8DGWrt5SFYB+zFefueSSzxR+/oGh7TCSajVoNjHijoHhgW2OdWKAAhlFTqTRY0JESC+ZKdhLm
+ Y/71hT5TllPxWlpAKjekiyJmPR98d/WI+HyZW8GZVzCpYR1MfVR4OoyjXZOMndAKfkT3bLasc
+ dpUbjxQjuMQBK66G1jx5GxBja5arIA9sR1Ylrd3DrQobJEafLSbMgX4yGQSEAnkg1+5SZ80Bv
+ 8YXJOtYXsBQ79kw7f/R5jHCGq0pHhKx9TuxA5MYxrpEObdH0+ncAUM5rqyeJxN+4D2nS1hy
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.126.133
 X-BeenThere: qemu-trivial@nongnu.org
@@ -69,55 +68,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Feb 2020 12:51:20 -0000
+X-List-Received-Date: Thu, 06 Feb 2020 12:51:21 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Miroslav Rezanina <mrezanin@redhat.com>
 
-QEMU currently crashes when the user tries to use the "vmmouse" on a
-machine without vmport, e.g.:
+Compiler reports uninitialized warning for cmd_flags variable.
 
- $ x86_64-softmmu/qemu-system-x86_64 -machine microvm -device vmmouse
- Segmentation fault (core dumped)
+Adding NULL initialization to prevent this warning.
 
-or:
-
- $ x86_64-softmmu/qemu-system-x86_64 -device vmmouse -M pc,vmport=off
- Segmentation fault (core dumped)
-
-Let's avoid the crash by checking for the vmport device first.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Darren Kenny <darren.kenny@oracle.com>
-Message-Id: <20200129112954.4282-1-thuth@redhat.com>
+Signed-off-by: Miroslav Rezanina <mrezanin@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <07957dcab31f65de3dd30efa91e6b9152ac79879.1579598240.git.mrezanin@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/i386/vmmouse.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ hw/i2c/aspeed_i2c.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/i386/vmmouse.c b/hw/i386/vmmouse.c
-index 7c2a3755271a..e8e62bd96b8c 100644
---- a/hw/i386/vmmouse.c
-+++ b/hw/i386/vmmouse.c
-@@ -23,6 +23,7 @@
-  */
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 9cda9685016c..fb973a983dcd 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -400,7 +400,7 @@ static bool aspeed_i2c_check_sram(AspeedI2CBus *bus)
  
- #include "qemu/osdep.h"
-+#include "qapi/error.h"
- #include "ui/console.h"
- #include "hw/i386/pc.h"
- #include "hw/input/i8042.h"
-@@ -269,6 +270,11 @@ static void vmmouse_realizefn(DeviceState *dev, Error **errp)
+ static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
+ {
+-    g_autofree char *cmd_flags;
++    g_autofree char *cmd_flags = NULL;
+     uint32_t count;
  
-     DPRINTF("vmmouse_init\n");
- 
-+    if (!object_resolve_path_type("", TYPE_VMPORT, NULL)) {
-+        error_setg(errp, "vmmouse needs a machine with vmport");
-+        return;
-+    }
-+
-     vmport_register(VMMOUSE_STATUS, vmmouse_ioport_read, s);
-     vmport_register(VMMOUSE_COMMAND, vmmouse_ioport_read, s);
-     vmport_register(VMMOUSE_DATA, vmmouse_ioport_read, s);
+     if (bus->cmd & (I2CD_RX_BUFF_ENABLE | I2CD_RX_BUFF_ENABLE)) {
 -- 
 2.24.1
 
