@@ -1,67 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1izkQw-0003wo-8A
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 11:55:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58233)
+	id 1izl73-0001Wb-Bd
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 12:38:49 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46027)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1izkQt-0003v2-Vi
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:55:17 -0500
+ (envelope-from <eblake@redhat.com>) id 1izl6z-0001Rd-V6
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 12:38:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1izkQr-00020p-VB
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:55:15 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:43036
+ (envelope-from <eblake@redhat.com>) id 1izl6y-0000ux-QQ
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 12:38:45 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27852
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1izkQr-0001zl-QV
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:55:13 -0500
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1izl6y-0000sM-Mx
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 12:38:44 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581008113;
+ s=mimecast20190719; t=1581010724;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fpToknbMbQO8u6/kOoi+5h/0vxJJu9SJaVqT6g5cPvA=;
- b=gwqWOxL1f1CDN7R11c/3Qlx2qHtWMT+Awov5T+tj7phInB1IZ8xQSZBZXjnOJnUeHO/8ok
- M1ptfC/aUOOLIRBfUoQzL9ZDuvSMW5jaRNsUGg+DFeGosRhJnzetgmC7H7rjiJJo8QZ9U2
- Q0ccOvr89eL7DwZNhWEEnIM7HodNGdE=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=KJx7gNx32V3qHzDazapjQlwfbUrsYLgzxhHy+vzrx90=;
+ b=CzpuUD2v7/1v7bIhSske4Y4tnmRdNSZo6uHN98yMKxwjMgmFb9NVOUmmOoaGaqaHwVxpzm
+ DdQ3/Ag2Op0+ysJu+dyVapCSjQ0roFDllLtMb+vvgqBy5FnuY4qIlekEQUrjw63qHgbUEO
+ e4dnPYsxnelwPsKL5Rtsy5KMSt8Wl0M=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-263-j_V__971NZKok27yX1rxMw-1; Thu, 06 Feb 2020 11:55:11 -0500
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-428-o3jzaSvKPWCImQYyUlT6YQ-1; Thu, 06 Feb 2020 12:38:40 -0500
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2FB06800D54;
- Thu,  6 Feb 2020 16:55:09 +0000 (UTC)
-Received: from [10.3.117.249] (ovpn-117-249.phx2.redhat.com [10.3.117.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 260BF84DB8;
- Thu,  6 Feb 2020 16:55:07 +0000 (UTC)
-Subject: Re: [PULL 3/5] nbd: fix uninitialized variable warning
-To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
- Pan Nengyuan <pannengyuan@huawei.com>, Euler Robot <euler.robot@huawei.com>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20200108160233.991134-1-laurent@vivier.eu>
- <20200108160233.991134-4-laurent@vivier.eu>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 59D75100551A;
+ Thu,  6 Feb 2020 17:38:39 +0000 (UTC)
+Received: from blue.redhat.com (ovpn-117-249.phx2.redhat.com [10.3.117.249])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CD3995DA7D;
+ Thu,  6 Feb 2020 17:38:38 +0000 (UTC)
 From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <1ce40cae-eb8b-a18c-f651-2e6432c1b213@redhat.com>
-Date: Thu, 6 Feb 2020 10:55:06 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+To: qemu-devel@nongnu.org
+Cc: pannengyuan@huawei.com, laurent@vivier.eu, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] nbd: Fix regression with multiple meta contexts
+Date: Thu,  6 Feb 2020 11:38:32 -0600
+Message-Id: <20200206173832.130004-1-eblake@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200108160233.991134-4-laurent@vivier.eu>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-MC-Unique: j_V__971NZKok27yX1rxMw-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MC-Unique: o3jzaSvKPWCImQYyUlT6YQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,66 +61,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Feb 2020 16:55:17 -0000
+X-List-Received-Date: Thu, 06 Feb 2020 17:38:47 -0000
 
-On 1/8/20 10:02 AM, Laurent Vivier wrote:
-> From: Pan Nengyuan <pannengyuan@huawei.com>
-> 
-> Fixes:
-> /mnt/sdb/qemu/nbd/server.c: In function 'nbd_handle_request':
-> /mnt/sdb/qemu/nbd/server.c:2313:9: error: 'ret' may be used uninitialized in this function [-Werror=maybe-uninitialized]
->       int ret;
-> 
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-> Message-Id: <20200108025132.46956-1-pannengyuan@huawei.com>
-> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
-> ---
->   nbd/server.c | 10 +---------
->   1 file changed, 1 insertion(+), 9 deletions(-)
-> 
+Detected by a hang in the libnbd testsuite.  If a client requests
+multiple meta contexts (both base:allocation and qemu:dirty-bitmap:x)
+at the same time, our attempt to silence a false-positive warning
+about a potential uninitialized variable introduced botched logic: we
+were short-circuiting the second context, and never sending the
+NBD_REPLY_FLAG_DONE.  Combining two 'if' into one 'if/else' in
+bdf200a55 was wrong (I'm a bit embarrassed that such a change was my
+initial suggestion after the v1 patch, then I did not review the v2
+patch that actually got committed). Revert that, and instead silence
+the false positive warning by replacing 'return ret' with 'return 0'
+(the value it always has at that point in the code, even though it
+eluded the deduction abilities of the robot that reported the false
+positive).
 
-This patch is broken; I first noticed it when testing libnbd, where the 
-symptoms are a hung interop/dirty-bitmap.sh test.
+Fixes: bdf200a5535
+Signed-off-by: Eric Blake <eblake@redhat.com>
+---
 
-> diff --git a/nbd/server.c b/nbd/server.c
-> index 24ebc1a80571..87fcd2e7bfac 100644
-> --- a/nbd/server.c
-> +++ b/nbd/server.c
-> @@ -2384,20 +2384,12 @@ static coroutine_fn int nbd_handle_request(NBDClient *client,
->                                                  !client->export_meta.bitmap,
->                                                  NBD_META_ID_BASE_ALLOCATION,
->                                                  errp);
-> -                if (ret < 0) {
-> -                    return ret;
-> -                }
-> -            }
-> -
-> -            if (client->export_meta.bitmap) {
-> +            } else {              /* client->export_meta.bitmap */
->                   ret = nbd_co_send_bitmap(client, request->handle,
->                                            client->exp->export_bitmap,
->                                            request->from, request->len,
->                                            dont_fragment,
->                                            true, NBD_META_ID_DIRTY_BITMAP, errp);
-> -                if (ret < 0) {
-> -                    return ret;
-> -                }
->               }
+It's never fun when a regression is caused by a patch taken through
+qemu-trivial, proving that the patch was not trivial after all.
 
-The NBD spec says that clients can request more than one meta context at 
-a time. Qemu does not (and hence we didn't notice the breakage until 
-now), but libnbd does, and this change prevents qemu from obeying the 
-spec (if the client requested both contexts, then we must return both, 
-and not short-circuit after the first).
+ nbd/server.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-I'll post a patch to fix this unintended regression soon.
+diff --git a/nbd/server.c b/nbd/server.c
+index 87fcd2e7bfac..11a31094ff83 100644
+--- a/nbd/server.c
++++ b/nbd/server.c
+@@ -2384,15 +2384,23 @@ static coroutine_fn int nbd_handle_request(NBDClien=
+t *client,
+                                                !client->export_meta.bitmap=
+,
+                                                NBD_META_ID_BASE_ALLOCATION=
+,
+                                                errp);
+-            } else {              /* client->export_meta.bitmap */
++                if (ret < 0) {
++                    return ret;
++                }
++            }
++
++            if (client->export_meta.bitmap) {
+                 ret =3D nbd_co_send_bitmap(client, request->handle,
+                                          client->exp->export_bitmap,
+                                          request->from, request->len,
+                                          dont_fragment,
+                                          true, NBD_META_ID_DIRTY_BITMAP, e=
+rrp);
++                if (ret < 0) {
++                    return ret;
++                }
+             }
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+-            return ret;
++            return 0;
+         } else {
+             return nbd_send_generic_reply(client, request->handle, -EINVAL=
+,
+                                           "CMD_BLOCK_STATUS not negotiated=
+",
+--=20
+2.24.1
 
 
