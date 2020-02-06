@@ -1,77 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1izVoF-0000WA-FB
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Feb 2020 20:18:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53751)
+	id 1izYSg-00074g-6a
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Feb 2020 23:08:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50367)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izVoC-0000S4-UO
- for qemu-trivial@nongnu.org; Wed, 05 Feb 2020 20:18:21 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1izYSd-000736-Qa
+ for qemu-trivial@nongnu.org; Wed, 05 Feb 2020 23:08:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izVoC-0002bo-1w
- for qemu-trivial@nongnu.org; Wed, 05 Feb 2020 20:18:20 -0500
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:55406)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1izVo6-00024a-Na; Wed, 05 Feb 2020 20:18:14 -0500
-Received: by mail-wm1-x343.google.com with SMTP id q9so4473833wmj.5;
- Wed, 05 Feb 2020 17:18:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=W2XB7avCzY/On5eAKW5ymwIRtI2E5aDh8P+f+vF2jdQ=;
- b=Jyc0WFcrxYoKMiOxbcPKERxqQug5mK3/ZyHPNMIW3WFOT8LxPxDcBO17kVpLJlFFIE
- 4hy98q/k4tobPbyxRmDYCWqVd3AxL+HNRy2kLrN4aGUITPthE4J2AZtFqdOFaZaJsqMp
- YY48MZOeKrlqYc1NXqgfM2OvT1RfwQGbdeMfyJk75HBvYkmvvHwXhpBfmuEBSfS2FOdt
- dldFCXO47BnmcK/55UWFP/oo1i7W8qY2cWV73FrXLRzqmmXdG2k9w6otEy7jIN6wSWPA
- o5KpxF355R0rFOmcgP0u6dphHQ2iPGPfg4T7UfCrGZnFkHoGUvaCk65gzNTg9APHTDqW
- fGkA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=W2XB7avCzY/On5eAKW5ymwIRtI2E5aDh8P+f+vF2jdQ=;
- b=Res+HPN/vS/iPwE9GvYW1SX5NhA7o4lYVKNHHxmWBQHiQuRtXR0W4bQ0UPGaENIFFF
- r+bF7BQJRg7bfPrjMXqNjgCtrAY8PR0s3N62Mi2HMksA0syHG4rlv0Lo90ft1eGR6y9d
- IWYIs48t++rVTm7AknrvpwpEns6fdcmjDoGmykKjIAkxXuFqFzSa/rIKAjQON0WlUmqT
- fHY7JFW3/qXqmlmzmmd4AMO1Lz1hfxErbjDKPIkpo3lYYz76fnmYiI136ES3+NqgiVdK
- T76jzl8VQXytdxXCd5mg5zPxInrrcdaKWrnF51+kBbpE0XFxe7+pi2dfXv5rkSX9uB6o
- p6Ug==
-X-Gm-Message-State: APjAAAXCu5JIvlvKgezNJGNAroQURNQlad355xSPb37ZM2PYNvEVWq0o
- aFKW+dcaWrbu2Ydw+cYMrz1HmLdj
-X-Google-Smtp-Source: APXvYqz85deY74w3KyntT+LwF1bq55/fJ8GhkiGkDO9Ok1137DIGA+7gf9B7K+pnFVBNgYF1E/w7lQ==
-X-Received: by 2002:a1c:e488:: with SMTP id b130mr606177wmh.108.1580951893551; 
- Wed, 05 Feb 2020 17:18:13 -0800 (PST)
-Received: from localhost.localdomain (2.red-95-127-156.staticip.rima-tde.net.
- [95.127.156.2])
- by smtp.gmail.com with ESMTPSA id w13sm2053526wru.38.2020.02.05.17.18.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Feb 2020 17:18:12 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Joaquin de Andres <me@xcancerberox.com.ar>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
- Esteban Bosse <estebanbosse@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org (open list:Trivial patches)
-Subject: [PATCH v2 06/30] hw/arm/raspi: Trivial code movement
-Date: Thu,  6 Feb 2020 02:17:32 +0100
-Message-Id: <20200206011756.2413-7-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200206011756.2413-1-f4bug@amsat.org>
-References: <20200206011756.2413-1-f4bug@amsat.org>
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1izYSc-0006Qr-TA
+ for qemu-trivial@nongnu.org; Wed, 05 Feb 2020 23:08:15 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:49730 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1izYSa-0005cL-J0; Wed, 05 Feb 2020 23:08:12 -0500
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id A8F8C5063DAE48B9B491;
+ Thu,  6 Feb 2020 12:08:04 +0800 (CST)
+Received: from HGHY4C002233111.china.huawei.com (10.133.205.93) by
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.439.0; Thu, 6 Feb 2020 12:07:56 +0800
+From: <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <clg@kaod.org>, <peter.maydell@linaro.org>
+CC: <zhang.zhanghailiang@huawei.com>, <qemu-trivial@nongnu.org>,
+ <andrew@aj.id.au>, <joel@jms.id.au>, Chen Qun <kuhn.chenqun@huawei.com>
+Subject: [PATCH] aspeed/i2c:fix uninitialized variable warning
+Date: Thu, 6 Feb 2020 12:07:53 +0800
+Message-ID: <20200206040753.42252-1-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.14.1.windows.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::343
+Content-Type: text/plain; charset="UTF-8"
+X-Originating-IP: [10.133.205.93]
+X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -83,40 +45,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Feb 2020 01:18:22 -0000
+X-List-Received-Date: Thu, 06 Feb 2020 04:08:17 -0000
 
-There is no point in creating the SoC object before allocating the RAM.
-Move the call to keep all the SoC-related calls together.
+From: Chen Qun <kuhn.chenqun@huawei.com>
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Fix warning:
+hw/i2c/aspeed_i2c.c: In function =E2=80=98aspeed_i2c_bus_write=E2=80=99:
+glib/glib-autocleanups.h:28:3: warning: =E2=80=98cmd_flags=E2=80=99 may b=
+e
+used uninitialized in this function [-Wmaybe-uninitialized]
+   g_free (*pp);
+   ^~~~~~~~~~~~
+hw/i2c/aspeed_i2c.c:403:22: note: =E2=80=98cmd_flags=E2=80=99 was declare=
+d here
+     g_autofree char *cmd_flags;
+                      ^~~~~~~~~
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
- hw/arm/raspi.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ hw/i2c/aspeed_i2c.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 20195227eb..fab361939c 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -226,9 +226,6 @@ static void raspi_init(MachineState *machine, uint32_t board_rev)
-         exit(1);
-     }
- 
--    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->soc),
--                            board_soc_type(board_rev), &error_abort, NULL);
--
-     /* Allocate and map RAM */
-     memory_region_allocate_system_memory(&s->ram, OBJECT(machine), "ram",
-                                          machine->ram_size);
-@@ -236,6 +233,8 @@ static void raspi_init(MachineState *machine, uint32_t board_rev)
-     memory_region_add_subregion_overlap(get_system_memory(), 0, &s->ram, 0);
- 
-     /* Setup the SOC */
-+    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->soc),
-+                            board_soc_type(board_rev), &error_abort, NULL);
-     object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(&s->ram),
-                                    &error_abort);
-     object_property_set_int(OBJECT(&s->soc), board_rev, "board-rev",
--- 
-2.21.1
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 9cda968501..fb973a983d 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -400,7 +400,7 @@ static bool aspeed_i2c_check_sram(AspeedI2CBus *bus)
+=20
+ static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
+ {
+-    g_autofree char *cmd_flags;
++    g_autofree char *cmd_flags =3D NULL;
+     uint32_t count;
+=20
+     if (bus->cmd & (I2CD_RX_BUFF_ENABLE | I2CD_RX_BUFF_ENABLE)) {
+--=20
+2.23.0
+
 
 
