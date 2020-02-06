@@ -1,73 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1izjv5-0002lw-HM
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 11:22:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45460)
+	id 1izkQw-0003wo-8A
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 11:55:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58233)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alex.bennee@linaro.org>) id 1izjv2-0002Y3-0A
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:22:21 -0500
+ (envelope-from <eblake@redhat.com>) id 1izkQt-0003v2-Vi
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:55:17 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alex.bennee@linaro.org>) id 1izjv0-0000Uo-QL
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:22:19 -0500
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:55567)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
- id 1izjv0-0000Sh-K5
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:22:18 -0500
-Received: by mail-wm1-x344.google.com with SMTP id q9so623233wmj.5
- for <qemu-trivial@nongnu.org>; Thu, 06 Feb 2020 08:22:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=references:user-agent:from:to:cc:subject:in-reply-to:date
- :message-id:mime-version:content-transfer-encoding;
- bh=xg36Oqft5UpM2R0tq9tEEyPRrWKISNjPrttXE2uphwQ=;
- b=EFJjjzfx/sHkHhIiFFtqXbLO5sQube5RGFQxvtCWtZEq5uNc3YR1RuK5yVdhE/JnEm
- F+7eoKR8YDQbcKQRISBEuSK19Ga3GlxH+e4KyQCBWov3Ws2r2DbbOQsEXiev9cYZ09eI
- 3SpgJuOFlAZXjiCJ7+gdumbVvy9+bJqJA64z77JkQQ5XGvuxjgty0KmumHJZh9DSmo7n
- xZfoSyrczqbU4vKwJUSz0p4Vj4t1X4R72NTzGFlTy94AnkePTaEIl8fiRDcsuVlT0bGF
- cQpHY+4NM8X2NUzfCfqBsb1giNjr+Kw6SVNO9O1sjZQSaqSJdC2/RY6Ov36FaS/Twspv
- VMNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject
- :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
- bh=xg36Oqft5UpM2R0tq9tEEyPRrWKISNjPrttXE2uphwQ=;
- b=DvvqAs9dyFRGPMSG+hbW5s3qTtsXLrKcye/5UvgYK9t8HTuFnRa1yQRt1qP2U6DFD4
- A1OfGDtJSnv3MEJpGPOp3SRfY76gZXB13WYKHtg6MiJIzzCGHXG00Q47mPkBPMqg6gRD
- QHn0aiombPqdY80cxMf06ndR9XfX87kxGDhtds4fwUBKh9pdSL475mTbXEoBf0Tvo9lZ
- 6yN57USBpu49tEcsChbuc7xze7JreSfc7Qha8F0xlX/11R5FHaJ1E2BnJeaS7lqmZo3F
- fy9dsMkel94DfpHAttzfGRTF83PsnqjJNeRydzQrOFllPdgy1DHdj+yEabRYVMR7ZBBe
- JTHw==
-X-Gm-Message-State: APjAAAXVBzgz6XNxqfHfdPpqwnzqIKspsJWCBJyH0w4hbJ9AzOLbqgpf
- 2b6yl5bWcxq7ZpXLH4xGlqFewQ==
-X-Google-Smtp-Source: APXvYqzyU9C3Te1KKU0oaxUpbAUfLGxoZlz+L1Xmphyf4sYtXK4866FC8Ei+20SFr2QNNmpkgxjl/A==
-X-Received: by 2002:a1c:a9c4:: with SMTP id s187mr5241487wme.97.1581006137179; 
- Thu, 06 Feb 2020 08:22:17 -0800 (PST)
-Received: from zen.linaroharston ([51.148.130.216])
- by smtp.gmail.com with ESMTPSA id b13sm5012942wrq.48.2020.02.06.08.22.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Feb 2020 08:22:16 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id 8066B1FF87;
- Thu,  6 Feb 2020 16:22:15 +0000 (GMT)
-References: <20200206093238.203984-1-kuhn.chenqun@huawei.com>
- <87d0ar995e.fsf@linaro.org>
- <7412CDE03601674DA8197E2EBD8937E83B10AD31@dggemm511-mbx.china.huawei.com>
-User-agent: mu4e 1.3.7; emacs 27.0.60
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Zhanghailiang
- <zhang.zhanghailiang@huawei.com>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>, "richard.henderson@linaro.org"
- <richard.henderson@linaro.org>
-Subject: Re: [PATCH] tests/plugin: prevent uninitialized warning
-In-reply-to: <7412CDE03601674DA8197E2EBD8937E83B10AD31@dggemm511-mbx.china.huawei.com>
-Date: Thu, 06 Feb 2020 16:22:15 +0000
-Message-ID: <877e0z8z48.fsf@linaro.org>
+ (envelope-from <eblake@redhat.com>) id 1izkQr-00020p-VB
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:55:15 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:43036
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1izkQr-0001zl-QV
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:55:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581008113;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=fpToknbMbQO8u6/kOoi+5h/0vxJJu9SJaVqT6g5cPvA=;
+ b=gwqWOxL1f1CDN7R11c/3Qlx2qHtWMT+Awov5T+tj7phInB1IZ8xQSZBZXjnOJnUeHO/8ok
+ M1ptfC/aUOOLIRBfUoQzL9ZDuvSMW5jaRNsUGg+DFeGosRhJnzetgmC7H7rjiJJo8QZ9U2
+ Q0ccOvr89eL7DwZNhWEEnIM7HodNGdE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-263-j_V__971NZKok27yX1rxMw-1; Thu, 06 Feb 2020 11:55:11 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2FB06800D54;
+ Thu,  6 Feb 2020 16:55:09 +0000 (UTC)
+Received: from [10.3.117.249] (ovpn-117-249.phx2.redhat.com [10.3.117.249])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 260BF84DB8;
+ Thu,  6 Feb 2020 16:55:07 +0000 (UTC)
+Subject: Re: [PULL 3/5] nbd: fix uninitialized variable warning
+To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+ Pan Nengyuan <pannengyuan@huawei.com>, Euler Robot <euler.robot@huawei.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20200108160233.991134-1-laurent@vivier.eu>
+ <20200108160233.991134-4-laurent@vivier.eu>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <1ce40cae-eb8b-a18c-f651-2e6432c1b213@redhat.com>
+Date: Thu, 6 Feb 2020 10:55:06 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::344
+In-Reply-To: <20200108160233.991134-4-laurent@vivier.eu>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: j_V__971NZKok27yX1rxMw-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,84 +73,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Feb 2020 16:22:21 -0000
+X-List-Received-Date: Thu, 06 Feb 2020 16:55:17 -0000
 
+On 1/8/20 10:02 AM, Laurent Vivier wrote:
+> From: Pan Nengyuan <pannengyuan@huawei.com>
+> 
+> Fixes:
+> /mnt/sdb/qemu/nbd/server.c: In function 'nbd_handle_request':
+> /mnt/sdb/qemu/nbd/server.c:2313:9: error: 'ret' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+>       int ret;
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+> Message-Id: <20200108025132.46956-1-pannengyuan@huawei.com>
+> Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+> ---
+>   nbd/server.c | 10 +---------
+>   1 file changed, 1 insertion(+), 9 deletions(-)
+> 
 
-Chenqun (kuhn) <kuhn.chenqun@huawei.com> writes:
+This patch is broken; I first noticed it when testing libnbd, where the 
+symptoms are a hung interop/dirty-bitmap.sh test.
 
->>-----Original Message-----
->>From: Alex Benn=C3=A9e [mailto:alex.bennee@linaro.org]
->>Sent: Thursday, February 6, 2020 8:46 PM
->>To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>
->>Cc: qemu-devel@nongnu.org; Zhanghailiang
->><zhang.zhanghailiang@huawei.com>; qemu-trivial@nongnu.org;
->>richard.henderson@linaro.org
->>Subject: Re: [PATCH] tests/plugin: prevent uninitialized warning
->>
->>
->>kuhn.chenqun@huawei.com writes:
->>
->>> From: Chen Qun <kuhn.chenqun@huawei.com>
->>>
->>> According to the glibc function requirements, we need initialise  the
->>> variable. Otherwise there will be compilation warnings:
->>>
->>> glib-autocleanups.h:28:3: warning: =E2=80=98out=E2=80=99 may be used un=
-initialized in
->>> this function [-Wmaybe-uninitialized]
->>>    g_free (*pp);
->>>    ^~~~~~~~~~~~
->>>
->>> Reported-by: Euler Robot <euler.robot@huawei.com>
->>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
->>
->>Queued to plugins/next with Thomas' single line suggestion, thanks.
->
-> Thank you!
-> By the way,  what is plugins/next connection address?
+> diff --git a/nbd/server.c b/nbd/server.c
+> index 24ebc1a80571..87fcd2e7bfac 100644
+> --- a/nbd/server.c
+> +++ b/nbd/server.c
+> @@ -2384,20 +2384,12 @@ static coroutine_fn int nbd_handle_request(NBDClient *client,
+>                                                  !client->export_meta.bitmap,
+>                                                  NBD_META_ID_BASE_ALLOCATION,
+>                                                  errp);
+> -                if (ret < 0) {
+> -                    return ret;
+> -                }
+> -            }
+> -
+> -            if (client->export_meta.bitmap) {
+> +            } else {              /* client->export_meta.bitmap */
+>                   ret = nbd_co_send_bitmap(client, request->handle,
+>                                            client->exp->export_bitmap,
+>                                            request->from, request->len,
+>                                            dont_fragment,
+>                                            true, NBD_META_ID_DIRTY_BITMAP, errp);
+> -                if (ret < 0) {
+> -                    return ret;
+> -                }
+>               }
 
-My tree is on github:
+The NBD spec says that clients can request more than one meta context at 
+a time. Qemu does not (and hence we didn't notice the breakage until 
+now), but libnbd does, and this change prevents qemu from obeying the 
+spec (if the client requested both contexts, then we must return both, 
+and not short-circuit after the first).
 
-  https://github.com/stsquad/qemu/tree/plugins/next
+I'll post a patch to fix this unintended regression soon.
 
->
->>
->>> ---
->>>  tests/plugin/bb.c   | 2 +-
->>>  tests/plugin/insn.c | 2 +-
->>>  2 files changed, 2 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/tests/plugin/bb.c b/tests/plugin/bb.c index
->>> f30bea08dc..8b9da23a04 100644
->>> --- a/tests/plugin/bb.c
->>> +++ b/tests/plugin/bb.c
->>> @@ -22,7 +22,7 @@ static bool do_inline;
->>>
->>>  static void plugin_exit(qemu_plugin_id_t id, void *p)  {
->>> -    g_autofree gchar *out;
->>> +    g_autofree gchar *out =3D NULL;
->>>      out =3D g_strdup_printf("bb's: %" PRIu64", insns: %" PRIu64 "\n",
->>>                            bb_count, insn_count);
->>>      qemu_plugin_outs(out);
->>> diff --git a/tests/plugin/insn.c b/tests/plugin/insn.c index
->>> 0a8f5a0000..c83b1c0157 100644
->>> --- a/tests/plugin/insn.c
->>> +++ b/tests/plugin/insn.c
->>> @@ -44,7 +44,7 @@ static void vcpu_tb_trans(qemu_plugin_id_t id,
->>> struct qemu_plugin_tb *tb)
->>>
->>>  static void plugin_exit(qemu_plugin_id_t id, void *p)  {
->>> -    g_autofree gchar *out;
->>> +    g_autofree gchar *out =3D NULL;
->>>      out =3D g_strdup_printf("insns: %" PRIu64 "\n", insn_count);
->>>      qemu_plugin_outs(out);
->>>  }
->>
->>
->>--
->>Alex Benn=C3=A9e
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
-
---=20
-Alex Benn=C3=A9e
 
