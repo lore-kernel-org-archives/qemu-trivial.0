@@ -1,69 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1izjug-0001jY-W5
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 11:21:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45295)
+	id 1izjv5-0002lw-HM
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Feb 2020 11:22:23 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45460)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1izjud-0001h5-Sa
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:21:57 -0500
+ (envelope-from <alex.bennee@linaro.org>) id 1izjv2-0002Y3-0A
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:22:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1izjuc-0007yl-IM
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:21:55 -0500
-Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233]:39863)
+ (envelope-from <alex.bennee@linaro.org>) id 1izjv0-0000Uo-QL
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:22:19 -0500
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:55567)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1izjuc-0007wI-Ad
- for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:21:54 -0500
-Received: by mail-oi1-x233.google.com with SMTP id z2so5151637oih.6
- for <qemu-trivial@nongnu.org>; Thu, 06 Feb 2020 08:21:54 -0800 (PST)
+ (Exim 4.71) (envelope-from <alex.bennee@linaro.org>)
+ id 1izjv0-0000Sh-K5
+ for qemu-trivial@nongnu.org; Thu, 06 Feb 2020 11:22:18 -0500
+Received: by mail-wm1-x344.google.com with SMTP id q9so623233wmj.5
+ for <qemu-trivial@nongnu.org>; Thu, 06 Feb 2020 08:22:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=v96A85hSQsl+Wuu8aZMC3P0Vbqv63ZTHZqXWH6WOBBQ=;
- b=jjExA/+lAdP0GFLnGUlqqZPgju3x+JrwDT4o6ie36ALHBcqxzCHLjHBm0EGKeZUfcR
- BO9xulremVUaVhDuPvmmSsZq8BWbKbVcpHxZGbNnWwbpvfuYTqfZnKTiFzjpueG+iWPI
- GFszHIYEope5cE3Noht9rLCRgxOEu3B2sdurN3vSOaihVSA2pmWrABVKVnvbO2QiOEvN
- Jqg2b+ovWWxYjECDwXdUibpobaj5h0EY4pI8KTZn33dSc6VZJuBSM+ao34/7b/uuzwg6
- P+MDWAhXSUvnO6BiZg3UFry4K/q/5krm+K32neAXKCbRTrgAaghwQ5zTDUr1MJOUOxM9
- Hxyg==
+ h=references:user-agent:from:to:cc:subject:in-reply-to:date
+ :message-id:mime-version:content-transfer-encoding;
+ bh=xg36Oqft5UpM2R0tq9tEEyPRrWKISNjPrttXE2uphwQ=;
+ b=EFJjjzfx/sHkHhIiFFtqXbLO5sQube5RGFQxvtCWtZEq5uNc3YR1RuK5yVdhE/JnEm
+ F+7eoKR8YDQbcKQRISBEuSK19Ga3GlxH+e4KyQCBWov3Ws2r2DbbOQsEXiev9cYZ09eI
+ 3SpgJuOFlAZXjiCJ7+gdumbVvy9+bJqJA64z77JkQQ5XGvuxjgty0KmumHJZh9DSmo7n
+ xZfoSyrczqbU4vKwJUSz0p4Vj4t1X4R72NTzGFlTy94AnkePTaEIl8fiRDcsuVlT0bGF
+ cQpHY+4NM8X2NUzfCfqBsb1giNjr+Kw6SVNO9O1sjZQSaqSJdC2/RY6Ov36FaS/Twspv
+ VMNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=v96A85hSQsl+Wuu8aZMC3P0Vbqv63ZTHZqXWH6WOBBQ=;
- b=A8rnD3KK9kMIPlkYU9AZqoCuM/ZYAuezHSo7re3zoTO7aQn4Z0+xV4y7wFU5x8jUBR
- +2W2D3k0NyniTfSv7lHnSnI3+UsN1ijtVeH3VFNFQOCGQeCjx2hw0nLKZr0PSlkpspWf
- DIzuZMijE//ReWosr7MxfKVgo2KZFPv2ywFXPUHWB5vMlpmEbBulRWpCQb+OV5Dj8yhT
- C2u/msQoft7kXCLUYjUzezmCLpoLzKIgy/IP6obTFER718Axi+TOy7vO9ULsZaW1oVq3
- 1YzPK9MT9MBXc6RnOdcz462NzgDK9B3SfF4QH5KVQNGiLBGbyUBfmL/bfbAycVV3JJ6l
- XtEg==
-X-Gm-Message-State: APjAAAX+UUzvreJS4zZjpjXfyKp0YdDLJtUnffCCefTgtdJehe6wu/+Y
- NQcwF/AfmU6l30tdTqqsyGRP1BaQBugTcXnLtjiClA==
-X-Google-Smtp-Source: APXvYqy4Uiq/2N7lL/jTsZNffY5ATmhKfOfBmT5bOULjNf4D9KjDia8jCfYk39zMf1+BSiqlnoCF7kItsWmVApkUB6w=
-X-Received: by 2002:a05:6808:3b2:: with SMTP id
- n18mr7280033oie.146.1581006113321; 
- Thu, 06 Feb 2020 08:21:53 -0800 (PST)
+ h=x-gm-message-state:references:user-agent:from:to:cc:subject
+ :in-reply-to:date:message-id:mime-version:content-transfer-encoding;
+ bh=xg36Oqft5UpM2R0tq9tEEyPRrWKISNjPrttXE2uphwQ=;
+ b=DvvqAs9dyFRGPMSG+hbW5s3qTtsXLrKcye/5UvgYK9t8HTuFnRa1yQRt1qP2U6DFD4
+ A1OfGDtJSnv3MEJpGPOp3SRfY76gZXB13WYKHtg6MiJIzzCGHXG00Q47mPkBPMqg6gRD
+ QHn0aiombPqdY80cxMf06ndR9XfX87kxGDhtds4fwUBKh9pdSL475mTbXEoBf0Tvo9lZ
+ 6yN57USBpu49tEcsChbuc7xze7JreSfc7Qha8F0xlX/11R5FHaJ1E2BnJeaS7lqmZo3F
+ fy9dsMkel94DfpHAttzfGRTF83PsnqjJNeRydzQrOFllPdgy1DHdj+yEabRYVMR7ZBBe
+ JTHw==
+X-Gm-Message-State: APjAAAXVBzgz6XNxqfHfdPpqwnzqIKspsJWCBJyH0w4hbJ9AzOLbqgpf
+ 2b6yl5bWcxq7ZpXLH4xGlqFewQ==
+X-Google-Smtp-Source: APXvYqzyU9C3Te1KKU0oaxUpbAUfLGxoZlz+L1Xmphyf4sYtXK4866FC8Ei+20SFr2QNNmpkgxjl/A==
+X-Received: by 2002:a1c:a9c4:: with SMTP id s187mr5241487wme.97.1581006137179; 
+ Thu, 06 Feb 2020 08:22:17 -0800 (PST)
+Received: from zen.linaroharston ([51.148.130.216])
+ by smtp.gmail.com with ESMTPSA id b13sm5012942wrq.48.2020.02.06.08.22.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 06 Feb 2020 08:22:16 -0800 (PST)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id 8066B1FF87;
+ Thu,  6 Feb 2020 16:22:15 +0000 (GMT)
+References: <20200206093238.203984-1-kuhn.chenqun@huawei.com>
+ <87d0ar995e.fsf@linaro.org>
+ <7412CDE03601674DA8197E2EBD8937E83B10AD31@dggemm511-mbx.china.huawei.com>
+User-agent: mu4e 1.3.7; emacs 27.0.60
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, "richard.henderson@linaro.org"
+ <richard.henderson@linaro.org>
+Subject: Re: [PATCH] tests/plugin: prevent uninitialized warning
+In-reply-to: <7412CDE03601674DA8197E2EBD8937E83B10AD31@dggemm511-mbx.china.huawei.com>
+Date: Thu, 06 Feb 2020 16:22:15 +0000
+Message-ID: <877e0z8z48.fsf@linaro.org>
 MIME-Version: 1.0
-References: <20200206125027.1926263-1-laurent@vivier.eu>
-In-Reply-To: <20200206125027.1926263-1-laurent@vivier.eu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 6 Feb 2020 16:21:42 +0000
-Message-ID: <CAFEAcA_-8Qzamm7n6WBPZFHuMmMuHQ9fpzKZ+8TnBWQ0g=3vnQ@mail.gmail.com>
-Subject: Re: [PULL 00/12] Trivial branch patches
-To: Laurent Vivier <laurent@vivier.eu>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Andrew Jeffery <andrew@aj.id.au>, 
- qemu-arm <qemu-arm@nongnu.org>, Richard Henderson <rth@twiddle.net>,
- Kevin Wolf <kwolf@redhat.com>, 
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, Max Reitz <mreitz@redhat.com>, 
- Markus Armbruster <armbru@redhat.com>, Igor Mammedov <imammedo@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>, 
- QEMU Trivial <qemu-trivial@nongnu.org>, Qemu-block <qemu-block@nongnu.org>, 
- Joel Stanley <joel@jms.id.au>, "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::233
+X-Received-From: 2a00:1450:4864:20::344
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,32 +79,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Feb 2020 16:21:57 -0000
-
-On Thu, 6 Feb 2020 at 12:50, Laurent Vivier <laurent@vivier.eu> wrote:
->
-> The following changes since commit 7bd9d0a9e26c7a3c67c0f174f0009ba19969b158:
->
->   Merge remote-tracking branch 'remotes/huth-gitlab/tags/pull-request-2020-02-04' into staging (2020-02-04 16:12:31 +0000)
->
-> are available in the Git repository at:
->
->   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
->
-> for you to fetch changes up to 8ef350b32fe08d254f92a3a7efe89809397fff77:
->
->   MAINTAINERS: Cc the qemu-arm@nongnu.org for the ARM machines (2020-02-06 12:32:03 +0100)
->
-> ----------------------------------------------------------------
-> trivial patches 20200206
->
-> ----------------------------------------------------------------
+X-List-Received-Date: Thu, 06 Feb 2020 16:22:21 -0000
 
 
-Applied, thanks.
+Chenqun (kuhn) <kuhn.chenqun@huawei.com> writes:
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/5.0
-for any user-visible changes.
+>>-----Original Message-----
+>>From: Alex Benn=C3=A9e [mailto:alex.bennee@linaro.org]
+>>Sent: Thursday, February 6, 2020 8:46 PM
+>>To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>
+>>Cc: qemu-devel@nongnu.org; Zhanghailiang
+>><zhang.zhanghailiang@huawei.com>; qemu-trivial@nongnu.org;
+>>richard.henderson@linaro.org
+>>Subject: Re: [PATCH] tests/plugin: prevent uninitialized warning
+>>
+>>
+>>kuhn.chenqun@huawei.com writes:
+>>
+>>> From: Chen Qun <kuhn.chenqun@huawei.com>
+>>>
+>>> According to the glibc function requirements, we need initialise  the
+>>> variable. Otherwise there will be compilation warnings:
+>>>
+>>> glib-autocleanups.h:28:3: warning: =E2=80=98out=E2=80=99 may be used un=
+initialized in
+>>> this function [-Wmaybe-uninitialized]
+>>>    g_free (*pp);
+>>>    ^~~~~~~~~~~~
+>>>
+>>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+>>
+>>Queued to plugins/next with Thomas' single line suggestion, thanks.
+>
+> Thank you!
+> By the way,  what is plugins/next connection address?
 
--- PMM
+My tree is on github:
+
+  https://github.com/stsquad/qemu/tree/plugins/next
+
+>
+>>
+>>> ---
+>>>  tests/plugin/bb.c   | 2 +-
+>>>  tests/plugin/insn.c | 2 +-
+>>>  2 files changed, 2 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/tests/plugin/bb.c b/tests/plugin/bb.c index
+>>> f30bea08dc..8b9da23a04 100644
+>>> --- a/tests/plugin/bb.c
+>>> +++ b/tests/plugin/bb.c
+>>> @@ -22,7 +22,7 @@ static bool do_inline;
+>>>
+>>>  static void plugin_exit(qemu_plugin_id_t id, void *p)  {
+>>> -    g_autofree gchar *out;
+>>> +    g_autofree gchar *out =3D NULL;
+>>>      out =3D g_strdup_printf("bb's: %" PRIu64", insns: %" PRIu64 "\n",
+>>>                            bb_count, insn_count);
+>>>      qemu_plugin_outs(out);
+>>> diff --git a/tests/plugin/insn.c b/tests/plugin/insn.c index
+>>> 0a8f5a0000..c83b1c0157 100644
+>>> --- a/tests/plugin/insn.c
+>>> +++ b/tests/plugin/insn.c
+>>> @@ -44,7 +44,7 @@ static void vcpu_tb_trans(qemu_plugin_id_t id,
+>>> struct qemu_plugin_tb *tb)
+>>>
+>>>  static void plugin_exit(qemu_plugin_id_t id, void *p)  {
+>>> -    g_autofree gchar *out;
+>>> +    g_autofree gchar *out =3D NULL;
+>>>      out =3D g_strdup_printf("insns: %" PRIu64 "\n", insn_count);
+>>>      qemu_plugin_outs(out);
+>>>  }
+>>
+>>
+>>--
+>>Alex Benn=C3=A9e
+
+
+--=20
+Alex Benn=C3=A9e
 
