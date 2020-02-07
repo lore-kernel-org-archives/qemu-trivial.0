@@ -1,59 +1,88 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j00uM-0007j7-Gc
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Feb 2020 05:30:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49855)
+	id 1j01JS-0001eY-5G
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Feb 2020 05:56:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55580)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j00uJ-0007h3-D3
- for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 05:30:44 -0500
+ (envelope-from <mreitz@redhat.com>) id 1j01JQ-0001dn-J1
+ for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 05:56:41 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j00uI-000366-51
- for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 05:30:43 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:39714
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <mreitz@redhat.com>) id 1j01JP-0003dv-JY
+ for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 05:56:40 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:52084
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j00uI-00035p-0f
- for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 05:30:42 -0500
+ (Exim 4.71) (envelope-from <mreitz@redhat.com>) id 1j01JP-0003ce-Eg
+ for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 05:56:39 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581071441;
+ s=mimecast20190719; t=1581072999;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=enW1tPpcAJrZx2N0v/mMXAn+oNzX1mtVS1wdDBmvBu8=;
- b=OpfNygEDZsnwWyHcU75pIyIGs+dsr9wIhEUBnPp+DK3+3FUL+3KqccAkfrgCLHjILdHSM8
- I2d3yvc7p91Uao8pgNPHXsZciUywaPmv9Tuz1PuOClaB2693HOE9zFiwE+lydCXn4PPlEy
- ecg/HOp/XVEPp6qWYWMD4KDU3D782VU=
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=g5Tls0xjHoGv5iEkNn6aslQ9JyTFGqA1j2jvrDCK3iI=;
+ b=fIQI4uVGKrYqRR+o81PRIjCQ1A0W1kEx8BbRGOxq+NtospQowDdjekpZ4b6gRlct570Uvn
+ XvZKKNa8im2D9cAIlwpV6JxyzQV/bmvkGsRavzKfxemnS61W6MxfQJzPnZjsov2j/k7XyJ
+ MYuwdU0eICLKF74xSU7jLwgx4ESQG1M=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-194-9RrxIEnBMXmLc-6v6W_Qhg-1; Fri, 07 Feb 2020 05:30:38 -0500
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-272-0lhYKBK2MzqdyhGuz2McQw-1; Fri, 07 Feb 2020 05:56:34 -0500
+X-MC-Unique: 0lhYKBK2MzqdyhGuz2McQw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 359AC1005F74;
- Fri,  7 Feb 2020 10:30:37 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-120.brq.redhat.com [10.40.204.120])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 05A3C87B1C;
- Fri,  7 Feb 2020 10:30:29 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>
-Subject: [PATCH 3/3] MAINTAINERS: Cover qapi/trace.json in 'Tracing' section
-Date: Fri,  7 Feb 2020 11:30:12 +0100
-Message-Id: <20200207103012.27049-4-philmd@redhat.com>
-In-Reply-To: <20200207103012.27049-1-philmd@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 76507100551A;
+ Fri,  7 Feb 2020 10:56:33 +0000 (UTC)
+Received: from dresden.str.redhat.com (ovpn-116-88.ams2.redhat.com
+ [10.36.116.88])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 794B219756;
+ Fri,  7 Feb 2020 10:56:29 +0000 (UTC)
+Subject: Re: [PATCH 2/3] MAINTAINERS: Cover qapi/block{-core}.json in 'Block
+ layer core' section
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+ qemu-block@nongnu.org
 References: <20200207103012.27049-1-philmd@redhat.com>
+ <20200207103012.27049-3-philmd@redhat.com>
+From: Max Reitz <mreitz@redhat.com>
+Autocrypt: addr=mreitz@redhat.com; prefer-encrypt=mutual; keydata=
+ mQENBFXOJlcBCADEyyhOTsoa/2ujoTRAJj4MKA21dkxxELVj3cuILpLTmtachWj7QW+TVG8U
+ /PsMCFbpwsQR7oEy8eHHZwuGQsNpEtNC2G/L8Yka0BIBzv7dEgrPzIu+W3anZXQW4702+uES
+ U29G8TP/NGfXRRHGlbBIH9KNUnOSUD2vRtpOLXkWsV5CN6vQFYgQfFvmp5ZpPeUe6xNplu8V
+ mcTw8OSEDW/ZnxJc8TekCKZSpdzYoxfzjm7xGmZqB18VFwgJZlIibt1HE0EB4w5GsD7x5ekh
+ awIe3RwoZgZDLQMdOitJ1tUc8aqaxvgA4tz6J6st8D8pS//m1gAoYJWGwwIVj1DjTYLtABEB
+ AAG0HU1heCBSZWl0eiA8bXJlaXR6QHJlZGhhdC5jb20+iQFTBBMBCAA9AhsDBQkSzAMABQsJ
+ CAcCBhUICQoLAgQWAgMBAh4BAheABQJVzie5FRhoa3A6Ly9rZXlzLmdudXBnLm5ldAAKCRD0
+ B9sAYdXPQDcIB/9uNkbYEex1rHKz3mr12uxYMwLOOFY9fstP5aoVJQ1nWQVB6m2cfKGdcRe1
+ 2/nFaHSNAzT0NnKz2MjhZVmcrpyd2Gp2QyISCfb1FbT82GMtXFj1wiHmPb3CixYmWGQUUh+I
+ AvUqsevLA+WihgBUyaJq/vuDVM1/K9Un+w+Tz5vpeMidlIsTYhcsMhn0L9wlCjoucljvbDy/
+ 8C9L2DUdgi3XTa0ORKeflUhdL4gucWoAMrKX2nmPjBMKLgU7WLBc8AtV+84b9OWFML6NEyo4
+ 4cP7cM/07VlJK53pqNg5cHtnWwjHcbpGkQvx6RUx6F1My3y52vM24rNUA3+ligVEgPYBuQEN
+ BFXOJlcBCADAmcVUNTWT6yLWQHvxZ0o47KCP8OcLqD+67T0RCe6d0LP8GsWtrJdeDIQk+T+F
+ xO7DolQPS6iQ6Ak2/lJaPX8L0BkEAiMuLCKFU6Bn3lFOkrQeKp3u05wCSV1iKnhg0UPji9V2
+ W5eNfy8F4ZQHpeGUGy+liGXlxqkeRVhLyevUqfU0WgNqAJpfhHSGpBgihUupmyUg7lfUPeRM
+ DzAN1pIqoFuxnN+BRHdAecpsLcbR8sQddXmDg9BpSKozO/JyBmaS1RlquI8HERQoe6EynJhd
+ 64aICHDfj61rp+/0jTIcevxIIAzW70IadoS/y3DVIkuhncgDBvGbF3aBtjrJVP+5ABEBAAGJ
+ ASUEGAEIAA8FAlXOJlcCGwwFCRLMAwAACgkQ9AfbAGHVz0CbFwf9F/PXxQR9i4N0iipISYjU
+ sxVdjJOM2TMut+ZZcQ6NSMvhZ0ogQxJ+iEQ5OjnIputKvPVd5U7WRh+4lF1lB/NQGrGZQ1ic
+ alkj6ocscQyFwfib+xIe9w8TG1CVGkII7+TbS5pXHRxZH1niaRpoi/hYtgzkuOPp35jJyqT/
+ /ELbqQTDAWcqtJhzxKLE/ugcOMK520dJDeb6x2xVES+S5LXby0D4juZlvUj+1fwZu+7Io5+B
+ bkhSVPb/QdOVTpnz7zWNyNw+OONo1aBUKkhq2UIByYXgORPFnbfMY7QWHcjpBVw9MgC4tGeF
+ R4bv+1nAMMxKmb5VvQCExr0eFhJUAHAhVg==
+Message-ID: <9697fd9e-34e2-75ec-da84-1d7979b1ad18@redhat.com>
+Date: Fri, 7 Feb 2020 11:56:27 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-MC-Unique: 9RrxIEnBMXmLc-6v6W_Qhg-1
+In-Reply-To: <20200207103012.27049-3-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="T1hiSBJTwRaKQGaNnrEwYwNXE1K9j3vH2"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -65,31 +94,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Feb 2020 10:30:44 -0000
+X-List-Received-Date: Fri, 07 Feb 2020 10:56:41 -0000
 
-List this file in the proper section, so maintainers get
-notified when it is modified.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--T1hiSBJTwRaKQGaNnrEwYwNXE1K9j3vH2
+Content-Type: multipart/mixed; boundary="iLKsXrrOeVdlJwpevKtXH3EW7OEmgzXdh"
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
-Cc: Stefan Hajnoczi <stefanha@redhat.com>
----
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+--iLKsXrrOeVdlJwpevKtXH3EW7OEmgzXdh
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e269e9092c..d3f8e2eb6c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2205,6 +2205,7 @@ F: qemu-option-trace.texi
- F: scripts/tracetool.py
- F: scripts/tracetool/
- F: scripts/qemu-trace-stap*
-+F: qapi/trace.json
- F: docs/interop/qemu-trace-stap.rst
- F: docs/devel/tracing.txt
- T: git https://github.com/stefanha/qemu.git tracing
---=20
-2.21.1
+On 07.02.20 11:30, Philippe Mathieu-Daud=C3=A9 wrote:
+> List this file in the proper section, so maintainers get
+> notified when it is modified.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> Cc: Kevin Wolf <kwolf@redhat.com>
+> Cc: Max Reitz <mreitz@redhat.com>
+> Cc: qemu-block@nongnu.org
+> ---
+>  MAINTAINERS | 2 ++
+>  1 file changed, 2 insertions(+)
+
+Reviewed-by: Max Reitz <mreitz@redhat.com>
+
+
+--iLKsXrrOeVdlJwpevKtXH3EW7OEmgzXdh--
+
+--T1hiSBJTwRaKQGaNnrEwYwNXE1K9j3vH2
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEkb62CjDbPohX0Rgp9AfbAGHVz0AFAl49QlsACgkQ9AfbAGHV
+z0D+jggAm1Du+vEwUJQxAFKTUi9j0N198irEYDmSKN/pfzxfRu3fTdHYT9sqaS6c
+8NyHjo6w+OrtB3T/n+0TN4zE0ePAqa90jSAgn+zWcLW/RClOMNSJzUIa0MDyBMSI
+mHoxhJEHTlK8qfwIyWtyNUPGjq3dv+rmawRfwbsYco+rR6gXT9aw8ptzYt9whnZJ
+sUed0B7qLO1mHHGuN5BkH0NgZMtjmLmcPEDOciIl+fe/9ja4wW6MPwTEu243sEQp
+UvzFLsy/bpSENYETT6GByOz5eSypxSdsft+CfwhXYncdi1qDWhRlGpWpUddLkYIG
+taNVMnXG2CTEJ4+IP6tU1XNG5ZXAGQ==
+=znAr
+-----END PGP SIGNATURE-----
+
+--T1hiSBJTwRaKQGaNnrEwYwNXE1K9j3vH2--
 
 
