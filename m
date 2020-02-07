@@ -1,85 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j03Kv-0000Kh-Np
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Feb 2020 08:06:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54193)
+	id 1j03oL-0003ef-UA
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Feb 2020 08:36:45 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33891)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j03Kn-0000Ej-53
- for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 08:06:17 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j03oJ-0003dX-R6
+ for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 08:36:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j03Km-0007ye-3K
- for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 08:06:13 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:38803
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j03Kl-0007yH-Uh
- for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 08:06:12 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581080771;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=G95PTwCCtptgBScLxDFzyGKSIIGgkKDhimn6aS+h6BE=;
- b=APWoxhON+Ldd+AxFkT73/PEufnK/1IzT+CZgD4oE5+euAMIWDIO7AM5BERGixkHFVjKgxM
- Tw2lhUp7iynRsQu8GXwivxq2KiOzm8tbX+gNdIMaF9DDwwQJSzrb/tVqzm9c05cMH2ARbl
- S/EU149LzO34DgrOzOb4Jwi/sQWf4FA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-229-0GYQxoM5N3mjwWsInLhiGg-1; Fri, 07 Feb 2020 08:06:08 -0500
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 62BF51081FA2;
- Fri,  7 Feb 2020 13:06:04 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-120.brq.redhat.com [10.40.204.120])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6938E5C28C;
- Fri,  7 Feb 2020 13:05:50 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Alistair Francis <Alistair.Francis@wdc.com>,
- Aurelien Jarno <aurelien@aurel32.net>, qemu-trivial@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Anthony Green <green@moxielogic.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Richard Henderson <rth@twiddle.net>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Michael Walle <michael@walle.cc>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Chris Wulff <crwulff@gmail.com>, qemu-s390x@nongnu.org,
- Cornelia Huck <cohuck@redhat.com>, David Hildenbrand <david@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Helge Deller <deller@gmx.de>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, Marek Vasut <marex@denx.de>,
- Jia Liu <proljc@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
- Thomas Huth <huth@tuxfamily.org>, Magnus Damm <magnus.damm@gmail.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@gmail.com>
-Subject: [PATCH v3 3/3] vl: Abort if multiple machines are registered as
- default
-Date: Fri,  7 Feb 2020 14:04:53 +0100
-Message-Id: <20200207130453.16666-4-philmd@redhat.com>
-In-Reply-To: <20200207130453.16666-1-philmd@redhat.com>
-References: <20200207130453.16666-1-philmd@redhat.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1j03oI-0000wC-Kg
+ for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 08:36:43 -0500
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:33356)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j03oI-0000td-DP
+ for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 08:36:42 -0500
+Received: by mail-ot1-x344.google.com with SMTP id b18so2177036otp.0
+ for <qemu-trivial@nongnu.org>; Fri, 07 Feb 2020 05:36:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=mFKOQXnbjPCOHC53DmP31TRPNZG4/glAvd2SjGayMKQ=;
+ b=Ne83/KJUTxzMZeVvAeY1MQdKNafUoc354vYjf+6GvKHmOObKHGVh/UbNaRXhsA9Ffx
+ wxC99Rmhe+2PFbT+O4evSXYQgVPMIeqSOck0ewEgWmOuJh8iu05pMyN0tQVTLz4IVXmv
+ P3Z5xSySKsApeVYIm7wDCyed+ZNSM77TjI5EX/JyZNFVSCmDn/ES5gSg3f2ofG4pnzNC
+ cqCnj0dX6Pleh+jNj9JemLVu4qF8H1bKtmVTWkPENlj0jyR+hbMSeI0Vlf9QtD+SX1sA
+ nIvQjWBcvlNzVa0n94ZCWkc1Fyl5c3ABn9YkyzbhW6mL+rYt7F9nl26/OwuYvHbhQIqy
+ VH0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=mFKOQXnbjPCOHC53DmP31TRPNZG4/glAvd2SjGayMKQ=;
+ b=ecwAsI628RoUbEHzd5HopL6kvIp1gNxXRfZVMZtq7MUjxMoEieG9WolMG8ThsZjVkc
+ M52QycZ6VkDNmBTlqVxwkcHmZEP9LpWBUQLySKgr6Iw2ls7DGenScha7ZXbCFmpeiwSW
+ DrYcvg0SPXhbTF9m0qpVXv9HgvN7712sY74K0BR6i/z0JOkIvKSSel1+y6RI5Cnphnyv
+ QMBXf9Jn4+d/xW+bSV4v3Gn4mLhKhY9XjneDfOMcLiS5xrA1DYPAn77hvLAF9kWXLOYA
+ d4x7eocC9rw7WduiL/ost6oDUyswJyo9unTBRcmgqTmaNsHcdwXmewzj50qVLfoogOBG
+ nsJg==
+X-Gm-Message-State: APjAAAX9CR841tgs+envnJM4kTuAyTrgOC2sWcocxGMdIBlKrecprrKV
+ u0ZpeuocJ9Ro90bFaChiTiM5WilMQ9yOUfkgCR4s0Q==
+X-Google-Smtp-Source: APXvYqx9NUOLcLAfbtehD1A3zkAZTRwB9DkoJZM4BB7PIadya3BxoP5k8UWCfohLhpOt/PkQbKW/EmKztwAlYBOOkk8=
+X-Received: by 2002:a05:6830:13da:: with SMTP id
+ e26mr2543438otq.97.1581082600069; 
+ Fri, 07 Feb 2020 05:36:40 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-MC-Unique: 0GYQxoM5N3mjwWsInLhiGg-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+References: <20200206225148.23923-1-philmd@redhat.com>
+ <20200207082643.m7pkyjbx5h2o4zh7@kamzik.brq.redhat.com>
+In-Reply-To: <20200207082643.m7pkyjbx5h2o4zh7@kamzik.brq.redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 7 Feb 2020 13:36:29 +0000
+Message-ID: <CAFEAcA_yEgCtTR3MJ6-co0uHbckUkvduHFi3yiqYV-N-M-ZUUw@mail.gmail.com>
+Subject: Re: [PATCH v2] docs/arm-cpu-features: Make kvm-no-adjvtime comment
+ clearer
+To: Andrew Jones <drjones@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::344
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -91,47 +71,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Feb 2020 13:06:18 -0000
+X-List-Received-Date: Fri, 07 Feb 2020 13:36:44 -0000
 
-It would be confusing to have multiple default machines.
-Abort if this ever occurs.
+On Fri, 7 Feb 2020 at 08:26, Andrew Jones <drjones@redhat.com> wrote:
+>
+> On Thu, Feb 06, 2020 at 11:51:48PM +0100, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+> > The bold text sounds like 'knock knock'. Only bolding the
+>
+> Who's there?
+>
+> > second 'not' makes it easier to read.
+> >
+> > Fixes: dea101a1ae
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> > ---
+> > v2: Removed unrelated hunk
+> > ---
+> >  docs/arm-cpu-features.rst | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/docs/arm-cpu-features.rst b/docs/arm-cpu-features.rst
+> > index dbf3b7cf42..fc1623aeca 100644
+> > --- a/docs/arm-cpu-features.rst
+> > +++ b/docs/arm-cpu-features.rst
+> > @@ -185,7 +185,7 @@ the list of KVM VCPU features and their description=
+s.
+> >
+> >    kvm-no-adjvtime          By default kvm-no-adjvtime is disabled.  Th=
+is
+> >                             means that by default the virtual time
+> > -                           adjustment is enabled (vtime is *not not*
+> > +                           adjustment is enabled (vtime is not *not*
+> >                             adjusted).
+> >
+> >                             When virtual time adjustment is enabled eac=
+h
+> > --
+> > 2.21.1
+> >
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
-v2: Use assert() instead of human friendly message (Marc-Andr=C3=A9)
+Applied to target-arm.next.
 
-Cc: Marc-Andr=C3=A9 Lureau <marcandre.lureau@gmail.com>
-Cc: Laurent Vivier <laurent@vivier.eu>
----
- vl.c | 4 ++++
- 1 file changed, 4 insertions(+)
+> Not-Not-Reviewed-by: Andrew Jones <drjones@redhat.com>
 
-diff --git a/vl.c b/vl.c
-index 7dcb0879c4..b3e0f7af25 100644
---- a/vl.c
-+++ b/vl.c
-@@ -2354,6 +2354,8 @@ static MachineClass *machine_parse(const char *name, =
-GSList *machines)
-     GSList *el;
-=20
-     if (is_help_option(name)) {
-+        int default_count =3D 0;
-+
-         printf("Supported machines are:\n");
-         machines =3D g_slist_sort(machines, machine_class_cmp);
-         for (el =3D machines; el; el =3D el->next) {
-@@ -2364,7 +2366,9 @@ static MachineClass *machine_parse(const char *name, =
-GSList *machines)
-             printf("%-20s %s%s%s\n", mc->name, mc->desc,
-                    mc->is_default ? " (default)" : "",
-                    mc->deprecation_reason ? " (deprecated)" : "");
-+            default_count +=3D !!mc->is_default;
-         }
-+        assert(default_count <=3D 1);
-         exit(0);
-     }
-=20
---=20
-2.21.1
+:-)  but for the purpose of the commit message I've dropped
+the 'Not-Not-' prefix, since we want to have a standard set
+of tags in commit message rather than a random accumulation.
+(We really should make checkpatch warn about nonstandard tags.)
 
+thanks
+-- PMM
 
