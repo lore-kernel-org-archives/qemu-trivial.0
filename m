@@ -1,83 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j06TI-00070V-83
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Feb 2020 11:27:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56019)
+	id 1j06YI-0005YW-Ke
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Feb 2020 11:32:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57082)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j06TF-0006tq-Ad
- for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 11:27:10 -0500
+ (envelope-from <marcandre.lureau@gmail.com>) id 1j06YG-0005Qd-Cn
+ for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 11:32:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j06TE-0002Qc-77
- for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 11:27:09 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:35492
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j06TE-0002PJ-4C
- for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 11:27:08 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581092827;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NRew0WM9/hguVVDiQByA4rcgt0exsoGjc2th1JNhHPk=;
- b=PjJpkQjxSLymJxWY0rNrx5/7/4xsSkQ5sjYznEvtOXP1p2EYIyL2y44DLIySRyPxlvX/6j
- j/L6VaRoYU3QypZF4FZICM/8ucHq6NCjdo96ZpLljecMs4bBhiE21//0D9LRgtf3TDCewI
- XFb/hnWbr2N0HHA6Qt34+0aXNfZplrI=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-167-Pi77wbCtP8aeMPdzl2rb2g-1; Fri, 07 Feb 2020 11:27:03 -0500
-Received: by mail-wr1-f70.google.com with SMTP id w6so1503711wrm.16
- for <qemu-trivial@nongnu.org>; Fri, 07 Feb 2020 08:27:03 -0800 (PST)
+ (envelope-from <marcandre.lureau@gmail.com>) id 1j06YE-0002fL-7f
+ for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 11:32:19 -0500
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:40731)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1j06Y8-0002T3-OT; Fri, 07 Feb 2020 11:32:12 -0500
+Received: by mail-wr1-x444.google.com with SMTP id t3so3405026wru.7;
+ Fri, 07 Feb 2020 08:32:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=s8WHZwwsqqzS7ulVZKw3O52kQ41FpfMk1ogLky/AC6c=;
+ b=ajvN/jFpi1dyRMBmxDaZ8MHZBF8OQr9lSq0wznyhRLTZdbySclPB9vAUgfiB/T+UU/
+ mLD7e0s+dO5bqWj0EIcvIRRlEjwkQuhFq6fjjQyooArBlf9ot3MejY+EfurCURR8FRFN
+ x6I/ehM1u9ycdgAGIT8pCygNtFh4OXVCaHeNTTLkGhqD5c5Gp87hMOqtCTKC2Q415ZGc
+ OcKtbOe/Sa7+Ruw+vNsxLCA7YzIY+5CFw/0OlVcJ8/nf1DwgLqknUeRkY67kC3u7lS0r
+ WGIwzmLLPnijo4s/EeJpeu97ktfKDQOwAgsYvBMNGC2UBtlB6TqCNWeWYP+7ivwfGVsO
+ 7X7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=2k/2EJp51nHK080TIi/E0WhhVolewYmzVbUQJs/efd4=;
- b=rkAoGY++1zbs0CVTbTJqX4OWcF/nEIRlRkBfKOUibM/iefEYWFY/HsEp5RX4kHV+OI
- 39SEIOu5XL3QdCEHFswBceslJCH/oyTzwp+CcC8hRexKpaXs/AnTh8q4faYAFuyUMpjI
- tDTBWDv/bGzW781BuvjOPkJzkIfwSJRzZio8N0NSWcqxJd6TN9toivDZQdeEZGPe6r1d
- H7a10mUMC/4tK/st+8U0lGd6VCL0ZjOyV8DeXmrfXTKG785PBhn+YMknLLMon/X77EIY
- PIobOBGRTX1btUXx8gTg2Ugf2FOdWmNkZoBeyDPeSTzFHJ1GWYpu5FWlq6mO8DiQQW8g
- zhqA==
-X-Gm-Message-State: APjAAAVqGVYF7SKM1rFd2TCXEqB4+blQUclw96Iv1UxnHXuIJlXdE1DB
- lkec6rIEjAdh7dVwe43VqHy9gFdzPpSAkUJPG0pJYcDah+U+JOjejntQhqDW6+PihmLtdRexLZt
- YoyrvValizVuIanIlTw==
-X-Received: by 2002:a1c:4d18:: with SMTP id o24mr5090931wmh.35.1581092822772; 
- Fri, 07 Feb 2020 08:27:02 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxok2Nx4s3cjmNK/Gj6cuVv1QGJ68HxLfccaqMLYtgRHntobkykNKitwaJM5TUN/vQdEQAlpw==
-X-Received: by 2002:a1c:4d18:: with SMTP id o24mr5090905wmh.35.1581092822570; 
- Fri, 07 Feb 2020 08:27:02 -0800 (PST)
-Received: from [192.168.254.233] (66.red-217-126-125.staticip.rima-tde.net.
- [217.126.125.66])
- by smtp.gmail.com with ESMTPSA id r1sm3919271wrx.11.2020.02.07.08.27.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 07 Feb 2020 08:27:02 -0800 (PST)
-Subject: Re: [PATCH 2/3] MAINTAINERS: Cover qapi/block{-core}.json in 'Block
- layer core' section
-To: Markus Armbruster <armbru@redhat.com>, Kevin Wolf <kwolf@redhat.com>
-Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- Max Reitz <mreitz@redhat.com>, John Snow <jsnow@redhat.com>
-References: <20200207103012.27049-1-philmd@redhat.com>
- <20200207103012.27049-3-philmd@redhat.com>
- <87blqaqyxi.fsf@dusky.pond.sub.org> <20200207142146.GF6031@linux.fritz.box>
- <87blqapej2.fsf@dusky.pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <6f20c34f-f96e-ad7d-e91c-0863471406d8@redhat.com>
-Date: Fri, 7 Feb 2020 17:27:01 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=s8WHZwwsqqzS7ulVZKw3O52kQ41FpfMk1ogLky/AC6c=;
+ b=PkThbBsWZEz+Cb6z8YXXeF5duU3KrTE1eWi1zVLEKPDwknkTFaEihale+6ya71tT3a
+ 7ZkbXUkhBdWAGPqwOcGzahbUT86gnu2/6Pi5gz+dmBk+aqDbEG+g7PfwgG+TMU6IKyQv
+ H1yOuwU2qOWZxe3GVzdICpWPdck6XsDhzQxWDjXgW/ccYqTH+tL+dVdx5ocVRAKUnADh
+ uSOG3pNoeWDojfLTyGbgNOMcahMgVAs16wti/UfwYjaGXuQQkujzGjRCH2WJgaBrBZ/U
+ U/OI/Of9/9FV9XSKno+4In8Mwa//QLBpCpdoI+0lrrLufn58Gh22djDEUz5kW8WIilNx
+ L/aw==
+X-Gm-Message-State: APjAAAUHReUxQrCPf6avaNuZIiZq2SaUInIEWkOumrNmVXM/Mv9sQipa
+ FjzuABFjf5gAZ/NlD86k4hZ+Qg1istRxF47I4Tk=
+X-Google-Smtp-Source: APXvYqzv046zaGv11f9JP7gkZBskeRRcVF52SNVFTwX6H5KywAmipUHjtHDeeZxucHLm7f0hFKjUIHgpvFB/F31Eibs=
+X-Received: by 2002:a05:6000:1289:: with SMTP id
+ f9mr5269404wrx.381.1581093131486; 
+ Fri, 07 Feb 2020 08:32:11 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <87blqapej2.fsf@dusky.pond.sub.org>
-Content-Language: en-US
-X-MC-Unique: Pi77wbCtP8aeMPdzl2rb2g-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+References: <20200207161948.15972-1-philmd@redhat.com>
+ <20200207161948.15972-4-philmd@redhat.com>
+In-Reply-To: <20200207161948.15972-4-philmd@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Fri, 7 Feb 2020 17:31:59 +0100
+Message-ID: <CAJ+F1CJmFrH7H503cExpR3SVAJ99uGDM_AdkieSwNSh4D859yg@mail.gmail.com>
+Subject: Re: [PATCH v4 3/3] vl: Abort if multiple machines are registered as
+ default
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU <qemu-devel@nongnu.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>, 
+ Guan Xuetao <gxt@mprc.pku.edu.cn>,
+ "open list:sPAPR pseries" <qemu-ppc@nongnu.org>, 
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Gibson <david@gibson.dropbear.id.au>, 
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Eduardo Habkost <ehabkost@redhat.com>, 
+ Laurent Vivier <laurent@vivier.eu>, Anthony Green <green@moxielogic.com>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, 
+ qemu trival <qemu-trivial@nongnu.org>, Cornelia Huck <cohuck@redhat.com>, 
+ Aurelien Jarno <aurelien@aurel32.net>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-riscv@nongnu.org, 
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>, Marek Vasut <marex@denx.de>, 
+ Palmer Dabbelt <palmer@dabbelt.com>, Michael Walle <michael@walle.cc>,
+ Halil Pasic <pasic@linux.ibm.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Qemu-s390x list <qemu-s390x@nongnu.org>, 
+ Richard Henderson <rth@twiddle.net>, Thomas Huth <huth@tuxfamily.org>, 
+ Magnus Damm <magnus.damm@gmail.com>, David Hildenbrand <david@redhat.com>, 
+ Chris Wulff <crwulff@gmail.com>, Stafford Horne <shorne@gmail.com>,
+ Helge Deller <deller@gmx.de>, 
+ Alistair Francis <Alistair.Francis@wdc.com>, Jia Liu <proljc@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::444
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -89,67 +95,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Feb 2020 16:27:10 -0000
+X-List-Received-Date: Fri, 07 Feb 2020 16:32:21 -0000
 
-On 2/7/20 5:07 PM, Markus Armbruster wrote:
-> Kevin Wolf <kwolf@redhat.com> writes:
->=20
->> Am 07.02.2020 um 15:01 hat Markus Armbruster geschrieben:
->>> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
->>>
->>>> List this file in the proper section, so maintainers get
->>>> notified when it is modified.
->>>>
->>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->>>> ---
->>>> Cc: Kevin Wolf <kwolf@redhat.com>
->>>> Cc: Max Reitz <mreitz@redhat.com>
->>>> Cc: qemu-block@nongnu.org
->>>> ---
->>>>   MAINTAINERS | 2 ++
->>>>   1 file changed, 2 insertions(+)
->>>>
->>>> diff --git a/MAINTAINERS b/MAINTAINERS
->>>> index 903831e0a4..e269e9092c 100644
->>>> --- a/MAINTAINERS
->>>> +++ b/MAINTAINERS
->>>> @@ -1842,6 +1842,8 @@ S: Supported
->>>     Block layer core
->>>     M: Kevin Wolf <kwolf@redhat.com>
->>>     M: Max Reitz <mreitz@redhat.com>
->>>     L: qemu-block@nongnu.org
->>>     S: Supported
->>>>   F: block*
->>>>   F: block/
->>>>   F: hw/block/
->>>> +F: qapi/block.json
->>>> +F: qapi/block-core.json
->>>>   F: include/block/
->>>>   F: qemu-img*
->>>>   F: docs/interop/qemu-img.rst
->>>
->>> This is in addition to
->>>
->>>      Block QAPI, monitor, command line
->>>      M: Markus Armbruster <armbru@redhat.com>
->>>      S: Supported
->>>      F: blockdev.c
->>>      F: block/qapi.c
->>>      F: qapi/block*.json
->>>      F: qapi/transaction.json
->>>      T: git https://repo.or.cz/qemu/armbru.git block-next
->>>
->>> I'm not sure this section makes much sense anymore.
->>
->> This is probably for you to decide.
->>
->> Though the block-next branch from the T: line doesn't even exist any
->> more...
->=20
-> I have the questionable habit to delete my -next branches when they're
-> empty.
+On Fri, Feb 7, 2020 at 5:21 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+om> wrote:
+>
+> It would be confusing to have multiple default machines.
+> Abort if this ever occurs.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> v2: Use assert() instead of human friendly message (Marc-Andr=C3=A9)
+> v3: Move the check to find_machine() (Michael)
+>
+> Cc: Marc-Andr=C3=A9 Lureau <marcandre.lureau@gmail.com>
+> Cc: Laurent Vivier <laurent@vivier.eu>
+> Cc: Michael S. Tsirkin <mst@redhat.com>
 
-Having dangling -next branches pointing to something very previous is=20
-also questionable...
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
+
+> ---
+>  vl.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+>
+> diff --git a/vl.c b/vl.c
+> index 7dcb0879c4..ebc203af0d 100644
+> --- a/vl.c
+> +++ b/vl.c
+> @@ -1184,16 +1184,18 @@ static MachineClass *find_machine(const char *nam=
+e, GSList *machines)
+>  static MachineClass *find_default_machine(GSList *machines)
+>  {
+>      GSList *el;
+> +    MachineClass *default_machineclass =3D NULL;
+>
+>      for (el =3D machines; el; el =3D el->next) {
+>          MachineClass *mc =3D el->data;
+>
+>          if (mc->is_default) {
+> -            return mc;
+> +            assert(default_machineclass =3D=3D NULL && "Multiple default=
+ machines");
+> +            default_machineclass =3D mc;
+>          }
+>      }
+>
+> -    return NULL;
+> +    return default_machineclass;
+>  }
+>
+>  static int machine_help_func(QemuOpts *opts, MachineState *machine)
+> --
+> 2.21.1
+>
+
+
+--=20
+Marc-Andr=C3=A9 Lureau
 
