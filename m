@@ -1,65 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j03oL-0003ef-UA
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Feb 2020 08:36:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33891)
+	id 1j04Ci-0002WF-4P
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Feb 2020 09:01:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44840)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j03oJ-0003dX-R6
- for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 08:36:44 -0500
+ (envelope-from <armbru@redhat.com>) id 1j04CZ-0002Ej-A1
+ for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 09:01:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j03oI-0000wC-Kg
- for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 08:36:43 -0500
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:33356)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j03oI-0000td-DP
- for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 08:36:42 -0500
-Received: by mail-ot1-x344.google.com with SMTP id b18so2177036otp.0
- for <qemu-trivial@nongnu.org>; Fri, 07 Feb 2020 05:36:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=mFKOQXnbjPCOHC53DmP31TRPNZG4/glAvd2SjGayMKQ=;
- b=Ne83/KJUTxzMZeVvAeY1MQdKNafUoc354vYjf+6GvKHmOObKHGVh/UbNaRXhsA9Ffx
- wxC99Rmhe+2PFbT+O4evSXYQgVPMIeqSOck0ewEgWmOuJh8iu05pMyN0tQVTLz4IVXmv
- P3Z5xSySKsApeVYIm7wDCyed+ZNSM77TjI5EX/JyZNFVSCmDn/ES5gSg3f2ofG4pnzNC
- cqCnj0dX6Pleh+jNj9JemLVu4qF8H1bKtmVTWkPENlj0jyR+hbMSeI0Vlf9QtD+SX1sA
- nIvQjWBcvlNzVa0n94ZCWkc1Fyl5c3ABn9YkyzbhW6mL+rYt7F9nl26/OwuYvHbhQIqy
- VH0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=mFKOQXnbjPCOHC53DmP31TRPNZG4/glAvd2SjGayMKQ=;
- b=ecwAsI628RoUbEHzd5HopL6kvIp1gNxXRfZVMZtq7MUjxMoEieG9WolMG8ThsZjVkc
- M52QycZ6VkDNmBTlqVxwkcHmZEP9LpWBUQLySKgr6Iw2ls7DGenScha7ZXbCFmpeiwSW
- DrYcvg0SPXhbTF9m0qpVXv9HgvN7712sY74K0BR6i/z0JOkIvKSSel1+y6RI5Cnphnyv
- QMBXf9Jn4+d/xW+bSV4v3Gn4mLhKhY9XjneDfOMcLiS5xrA1DYPAn77hvLAF9kWXLOYA
- d4x7eocC9rw7WduiL/ost6oDUyswJyo9unTBRcmgqTmaNsHcdwXmewzj50qVLfoogOBG
- nsJg==
-X-Gm-Message-State: APjAAAX9CR841tgs+envnJM4kTuAyTrgOC2sWcocxGMdIBlKrecprrKV
- u0ZpeuocJ9Ro90bFaChiTiM5WilMQ9yOUfkgCR4s0Q==
-X-Google-Smtp-Source: APXvYqx9NUOLcLAfbtehD1A3zkAZTRwB9DkoJZM4BB7PIadya3BxoP5k8UWCfohLhpOt/PkQbKW/EmKztwAlYBOOkk8=
-X-Received: by 2002:a05:6830:13da:: with SMTP id
- e26mr2543438otq.97.1581082600069; 
- Fri, 07 Feb 2020 05:36:40 -0800 (PST)
+ (envelope-from <armbru@redhat.com>) id 1j04CX-0008O6-2p
+ for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 09:01:46 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:40258
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1j04CU-0008Le-Qi
+ for qemu-trivial@nongnu.org; Fri, 07 Feb 2020 09:01:44 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581084102;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=CoDS1or+vhNSfw1HUju5r2RTd90BR8aIipjKbTeKoug=;
+ b=DtXQsF9Iw1bBhabTyjpNYhpLbh0RxwISUTpzuy1A5HwKti2lZjChvcwnQLHQO+jHc4oLHj
+ +lKGmWfEz9qWkl57W5geI08eNc2GEoBg2Fmi461Hb6QQ+C/hVwmTpsbXFdxd/9hpnr4UiA
+ KyK2s+GlCo/JNrtGc+xFJrBTull3BGs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-151-A82EdqvvMTaKn2x-ZKYqlw-1; Fri, 07 Feb 2020 09:01:21 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 29FB280256F;
+ Fri,  7 Feb 2020 14:01:20 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-136.ams2.redhat.com
+ [10.36.116.136])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0A652790D7;
+ Fri,  7 Feb 2020 14:01:14 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 8002C11386A7; Fri,  7 Feb 2020 15:01:13 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, John Snow <jsnow@redhat.com>
+Subject: Re: [PATCH 2/3] MAINTAINERS: Cover qapi/block{-core}.json in 'Block
+ layer core' section
+References: <20200207103012.27049-1-philmd@redhat.com>
+ <20200207103012.27049-3-philmd@redhat.com>
+Date: Fri, 07 Feb 2020 15:01:13 +0100
+In-Reply-To: <20200207103012.27049-3-philmd@redhat.com> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 7 Feb 2020 11:30:11
+ +0100")
+Message-ID: <87blqaqyxi.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-References: <20200206225148.23923-1-philmd@redhat.com>
- <20200207082643.m7pkyjbx5h2o4zh7@kamzik.brq.redhat.com>
-In-Reply-To: <20200207082643.m7pkyjbx5h2o4zh7@kamzik.brq.redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 7 Feb 2020 13:36:29 +0000
-Message-ID: <CAFEAcA_yEgCtTR3MJ6-co0uHbckUkvduHFi3yiqYV-N-M-ZUUw@mail.gmail.com>
-Subject: Re: [PATCH v2] docs/arm-cpu-features: Make kvm-no-adjvtime comment
- clearer
-To: Andrew Jones <drjones@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: A82EdqvvMTaKn2x-ZKYqlw-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::344
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,55 +74,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Feb 2020 13:36:44 -0000
+X-List-Received-Date: Fri, 07 Feb 2020 14:01:54 -0000
 
-On Fri, 7 Feb 2020 at 08:26, Andrew Jones <drjones@redhat.com> wrote:
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+
+> List this file in the proper section, so maintainers get
+> notified when it is modified.
 >
-> On Thu, Feb 06, 2020 at 11:51:48PM +0100, Philippe Mathieu-Daud=C3=A9 wro=
-te:
-> > The bold text sounds like 'knock knock'. Only bolding the
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> Cc: Kevin Wolf <kwolf@redhat.com>
+> Cc: Max Reitz <mreitz@redhat.com>
+> Cc: qemu-block@nongnu.org
+> ---
+>  MAINTAINERS | 2 ++
+>  1 file changed, 2 insertions(+)
 >
-> Who's there?
->
-> > second 'not' makes it easier to read.
-> >
-> > Fixes: dea101a1ae
-> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> > ---
-> > v2: Removed unrelated hunk
-> > ---
-> >  docs/arm-cpu-features.rst | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/docs/arm-cpu-features.rst b/docs/arm-cpu-features.rst
-> > index dbf3b7cf42..fc1623aeca 100644
-> > --- a/docs/arm-cpu-features.rst
-> > +++ b/docs/arm-cpu-features.rst
-> > @@ -185,7 +185,7 @@ the list of KVM VCPU features and their description=
-s.
-> >
-> >    kvm-no-adjvtime          By default kvm-no-adjvtime is disabled.  Th=
-is
-> >                             means that by default the virtual time
-> > -                           adjustment is enabled (vtime is *not not*
-> > +                           adjustment is enabled (vtime is not *not*
-> >                             adjusted).
-> >
-> >                             When virtual time adjustment is enabled eac=
-h
-> > --
-> > 2.21.1
-> >
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 903831e0a4..e269e9092c 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1842,6 +1842,8 @@ S: Supported
+   Block layer core
+   M: Kevin Wolf <kwolf@redhat.com>
+   M: Max Reitz <mreitz@redhat.com>
+   L: qemu-block@nongnu.org
+   S: Supported
+>  F: block*
+>  F: block/
+>  F: hw/block/
+> +F: qapi/block.json
+> +F: qapi/block-core.json
+>  F: include/block/
+>  F: qemu-img*
+>  F: docs/interop/qemu-img.rst
 
-Applied to target-arm.next.
+This is in addition to
 
-> Not-Not-Reviewed-by: Andrew Jones <drjones@redhat.com>
+    Block QAPI, monitor, command line
+    M: Markus Armbruster <armbru@redhat.com>
+    S: Supported
+    F: blockdev.c
+    F: block/qapi.c
+    F: qapi/block*.json
+    F: qapi/transaction.json
+    T: git https://repo.or.cz/qemu/armbru.git block-next
 
-:-)  but for the purpose of the commit message I've dropped
-the 'Not-Not-' prefix, since we want to have a standard set
-of tags in commit message rather than a random accumulation.
-(We really should make checkpatch warn about nonstandard tags.)
+I'm not sure this section makes much sense anymore.
 
-thanks
--- PMM
+Should qapi/transaction.json also be added to "Block layer core"?  Or
+should it go into John's section "Block Jobs"?
+
 
