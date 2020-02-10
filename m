@@ -1,89 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j15Tv-0005Vq-BM
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Feb 2020 04:35:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45531)
+	id 1j15q9-0001hl-GP
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Feb 2020 04:58:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47970)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1j15Ts-0005V9-Ts
- for qemu-trivial@nongnu.org; Mon, 10 Feb 2020 04:35:53 -0500
+ (envelope-from <imammedo@redhat.com>) id 1j15q6-0001gN-RY
+ for qemu-trivial@nongnu.org; Mon, 10 Feb 2020 04:58:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1j15Tr-0005A6-QV
- for qemu-trivial@nongnu.org; Mon, 10 Feb 2020 04:35:52 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:57242
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <imammedo@redhat.com>) id 1j15q5-0005Kq-RU
+ for qemu-trivial@nongnu.org; Mon, 10 Feb 2020 04:58:50 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:28380
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1j15Tr-00059V-My
- for qemu-trivial@nongnu.org; Mon, 10 Feb 2020 04:35:51 -0500
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>) id 1j15q5-0005KP-Nh
+ for qemu-trivial@nongnu.org; Mon, 10 Feb 2020 04:58:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581327351;
+ s=mimecast20190719; t=1581328729;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=xuBMgiSqdTSsGF1dZsZw842HHLW31mEJyhLUTT87ehY=;
- b=X+9buSOACrAs+kekRTW79nju+80vxTboJf6At2t7r9MhBPZrP0Ihcl/uVhiUB4qyGjs+hm
- yPHKT+gJGndX+LfsDEdtnvYnrPGKR5LCZNfTzrR5itYUjzYEBPlr+Zu2XKRYn93FWMn7y5
- rCoKkPxndCCwmrdMgv30D7cBNBACa6E=
+ in-reply-to:in-reply-to:references:references;
+ bh=uezzjb/M0zDb4Z6HHFJym8PgOrwYZqphLq4djMxoW/0=;
+ b=AJTnfECbeqNR0+H7nYNrA/l075afj+Kks+76JCPrzCnrIqJBAvUPJSiUCkDYOuSJscNn+m
+ iGlnhYtxFw8967Vz3RnBBWhYE17AWUj8rXg3vQqswUV/7h0DunpeRUlnPlCwvtOCp/nwdf
+ fEJt0pj9Q6qzr9RfYSSKZEpinaM9j14=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-215-Y0kBKoXXPk2KYvYl9-B9LA-1; Mon, 10 Feb 2020 04:35:49 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-416-jNl1hSXDPBaXlunAwCN2AA-1; Mon, 10 Feb 2020 04:58:47 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0CD7E18A6EC2;
- Mon, 10 Feb 2020 09:35:45 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-219.ams2.redhat.com [10.36.116.219])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6EC2960BF1;
- Mon, 10 Feb 2020 09:35:25 +0000 (UTC)
-Subject: Tricore default machine (was: [PATCH v4 1/3] hw: Do not initialize
- MachineClass::is_default to 0)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Chris Wulff <crwulff@gmail.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Anthony Green <green@moxielogic.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
- Jia Liu <proljc@gmail.com>, qemu-trivial@nongnu.org,
- Helge Deller <deller@gmx.de>, David Hildenbrand <david@redhat.com>,
- Magnus Damm <magnus.damm@gmail.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-s390x@nongnu.org,
- Stafford Horne <shorne@gmail.com>, David Gibson
- <david@gibson.dropbear.id.au>, qemu-riscv@nongnu.org,
- Thomas Huth <huth@tuxfamily.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-References: <20200207161948.15972-1-philmd@redhat.com>
- <20200207161948.15972-2-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <9590e020-226d-bc85-e496-95b4f0116f69@redhat.com>
-Date: Mon, 10 Feb 2020 10:35:23 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8276610054E3;
+ Mon, 10 Feb 2020 09:58:44 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BCB14857B4;
+ Mon, 10 Feb 2020 09:58:38 +0000 (UTC)
+Date: Mon, 10 Feb 2020 10:58:37 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, "open
+ list:Trivial patches" <qemu-trivial@nongnu.org>, Joaquin de Andres
+ <me@xcancerberox.com.ar>, Alistair Francis <alistair@alistair23.me>,
+ Michael Tokarev <mjt@tls.msk.ru>, Andrew Baumann
+ <Andrew.Baumann@microsoft.com>, Esteban Bosse <estebanbosse@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org, Philippe
+ =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>, Laurent Vivier
+ <laurent@vivier.eu>
+Subject: Re: [PATCH v3 06/13] hw/arm/raspi: Trivial code movement
+Message-ID: <20200210105837.16cc1c60@redhat.com>
+In-Reply-To: <20200208165645.15657-7-f4bug@amsat.org>
+References: <20200208165645.15657-1-f4bug@amsat.org>
+ <20200208165645.15657-7-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20200207161948.15972-2-philmd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: Y0kBKoXXPk2KYvYl9-B9LA-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: jNl1hSXDPBaXlunAwCN2AA-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -95,45 +71,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Feb 2020 09:35:54 -0000
+X-List-Received-Date: Mon, 10 Feb 2020 09:58:51 -0000
 
-On 07/02/2020 17.19, Philippe Mathieu-Daud=C3=A9 wrote:
-> The MachineClass is already zeroed on creation.
+On Sat,  8 Feb 2020 17:56:38 +0100
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+
+> There is no point in creating the SoC object before allocating the RAM.
+> Move the call to keep all the SoC-related calls together.
 >=20
-> Note: The code setting is_default=3D0 in hw/i386/pc_piix.c is
->       different (related to compat options). When adding a
->       new versioned machine, we want it to be the new default,
->       so we have to mark the previous one as not default.
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Acked-by: Igor Mammedov <imammedo@redhat.com>
+
+> ---
+>  hw/arm/raspi.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
 >=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> v3: new patch
-> ---
->  hw/lm32/lm32_boards.c               | 1 -
->  hw/lm32/milkymist.c                 | 1 -
->  hw/m68k/q800.c                      | 1 -
->  hw/microblaze/petalogix_ml605_mmu.c | 1 -
->  hw/tricore/tricore_testboard.c      | 1 -
->  5 files changed, 5 deletions(-)
-[...]
-> diff --git a/hw/tricore/tricore_testboard.c b/hw/tricore/tricore_testboar=
-d.c
-> index 20c9ccb3ce..8ec2b5bddd 100644
-> --- a/hw/tricore/tricore_testboard.c
-> +++ b/hw/tricore/tricore_testboard.c
-> @@ -105,7 +105,6 @@ static void ttb_machine_init(MachineClass *mc)
->  {
->      mc->desc =3D "a minimal TriCore board";
->      mc->init =3D tricoreboard_init;
-> -    mc->is_default =3D 0;
->      mc->default_cpu_type =3D TRICORE_CPU_TYPE_NAME("tc1796");
->  }
-
-I wonder whether we should simply make that machine the default for
-qemu-system-tricore? There is only one machine here, and not having a
-default machine always causes some headaches in the tests...
-(see e.g. tests/qemu-iotests/check for example)
-
- Thomas
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index 7a2ca97347..b3e6f72b55 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -227,9 +227,6 @@ static void raspi_init(MachineState *machine, uint32_=
+t board_rev)
+>          exit(1);
+>      }
+> =20
+> -    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->s=
+oc),
+> -                            board_soc_type(board_rev), &error_abort, NUL=
+L);
+> -
+>      /* Allocate and map RAM */
+>      memory_region_allocate_system_memory(&s->ram, OBJECT(machine), "ram"=
+,
+>                                           machine->ram_size);
+> @@ -237,6 +234,8 @@ static void raspi_init(MachineState *machine, uint32_=
+t board_rev)
+>      memory_region_add_subregion_overlap(get_system_memory(), 0, &s->ram,=
+ 0);
+> =20
+>      /* Setup the SOC */
+> +    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->s=
+oc),
+> +                            board_soc_type(board_rev), &error_abort, NUL=
+L);
+>      object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(&s->ra=
+m),
+>                                     &error_abort);
+>      object_property_set_int(OBJECT(&s->soc), board_rev, "board-rev",
 
 
