@@ -1,81 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j0TQ3-0006Aw-Qk
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Feb 2020 11:57:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53937)
+	id 1j14np-0001Ki-5M
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Feb 2020 03:52:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39928)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j0TQ1-00063i-Cs
- for qemu-trivial@nongnu.org; Sat, 08 Feb 2020 11:57:22 -0500
+ (envelope-from <cohuck@redhat.com>) id 1j14nl-0001GE-93
+ for qemu-trivial@nongnu.org; Mon, 10 Feb 2020 03:52:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j0TQ0-0001pd-Ai
- for qemu-trivial@nongnu.org; Sat, 08 Feb 2020 11:57:21 -0500
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:42575)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1j0TPs-0001jx-NK; Sat, 08 Feb 2020 11:57:12 -0500
-Received: by mail-wr1-x443.google.com with SMTP id k11so2466698wrd.9;
- Sat, 08 Feb 2020 08:57:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=p0CIm4ZyNmzBVoqBIDDC/4y2EAVfboHjJlAZjEgSztE=;
- b=pnUYEJaVU8+Xl58FKRdO4JOjksL0si64wFTdea5tr+GkVN7pmE2QIAf+bV+fg+90H5
- 9qUKjzAQ0vJg/zb/0xCnlCUP1w3eLIsfs2P1C1EYInLLDyEX7h4Bw/h/DAQV5IFrtF9y
- 8Mhklh94hQCB0WljY8+pbZ5KPDDvj+mYfoYBsQoRRohJaevZ28PqerjMSgIOv46alWHQ
- 31HPUOz1a0f5ens1Sk4YYSf4xPPsqZekq9frznqhUijoAktGzWUo2ZZlNA3ysjhT6CoT
- nWHQACYQe2U5j9dR+BNqzDGl9htsun1eOr6xygkImZdA1DbCfQayKpIzNLTN92d6m0Fs
- BVaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=p0CIm4ZyNmzBVoqBIDDC/4y2EAVfboHjJlAZjEgSztE=;
- b=ZBa2vcueQ5u1xZ+FKk2GkTUSxP0bmwvRGvFiQ+REuk4qP3pIe1Iq7fLiFgiVkIZ7+U
- Isu5DPzHJNuuupm0Fu755ySbCdhnymztdhB9/kTTf5GiN10JF/RV4fu5BNBt/pfmSEzG
- Cf5W5fPwBSRCggXnQDSgXzbzEGbM6pY3FCz6cZldCXrkHlRMa4NXCHB5KN05N79QdNnw
- 1D37KFdBuPmPDqMWIBbP918mlvK7T5DoTJ/q+C/LNvzL6fxlz+I971datzuMO3hslK3I
- BWeNobO0NOhXpTNEs1X06lqepPW2YkMmmsA93wJL5XSr3qVbF8gdE8uu0scCFGGoUKBn
- Itcg==
-X-Gm-Message-State: APjAAAU7wqzAsE3wKRyD0rpaPP2MuI1HVIE3TYFZvjlIip96EPzzKGZw
- oTAhqxO6KgFGLTL2j5ONUOVrYNV1
-X-Google-Smtp-Source: APXvYqzLGb0CHBz/BoAxnqK1EKwMATPdV9oSxFoAOvAy/EA+JA3TYTZWkg8+Ud3g0yUwLClf+nme2g==
-X-Received: by 2002:a5d:4d12:: with SMTP id z18mr6158740wrt.139.1581181031477; 
- Sat, 08 Feb 2020 08:57:11 -0800 (PST)
-Received: from localhost.localdomain (78.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id a5sm7872763wmb.37.2020.02.08.08.57.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 08 Feb 2020 08:57:10 -0800 (PST)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?=
- <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Igor Mammedov <imammedo@redhat.com>,
- Esteban Bosse <estebanbosse@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- Joaquin de Andres <me@xcancerberox.com.ar>,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org (open list:Trivial patches)
-Subject: [PATCH v3 06/13] hw/arm/raspi: Trivial code movement
-Date: Sat,  8 Feb 2020 17:56:38 +0100
-Message-Id: <20200208165645.15657-7-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200208165645.15657-1-f4bug@amsat.org>
-References: <20200208165645.15657-1-f4bug@amsat.org>
+ (envelope-from <cohuck@redhat.com>) id 1j14nj-0006q9-04
+ for qemu-trivial@nongnu.org; Mon, 10 Feb 2020 03:52:19 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:54977
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1j14ni-0006nJ-RM
+ for qemu-trivial@nongnu.org; Mon, 10 Feb 2020 03:52:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581324736;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2qvLKvR6lloHNcabmzeKz5cd3QuLin2gQzKbfn4c1EY=;
+ b=K9JTACotr7DiW/tV5zas8y+F0fw9VjTrBV9UDhOGCsSShOphOCXr5mfSvP39qjmA2mKdZz
+ 1LNN8n2jap4mIIJNWBTQb9p72nlobhRGSCawubwUHojHocSrcDFuyGbjuH2gBrglT7/q/N
+ pDrrvdb1wCtrkPG9j6y2hrrjctipG7A=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-346-vdjG_Zp9MVeI9HmFOvkC0w-1; Mon, 10 Feb 2020 03:52:15 -0500
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F1F6C107ACC7;
+ Mon, 10 Feb 2020 08:52:09 +0000 (UTC)
+Received: from gondolin (ovpn-117-244.ams2.redhat.com [10.36.117.244])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0A4015C1D4;
+ Mon, 10 Feb 2020 08:51:45 +0000 (UTC)
+Date: Mon, 10 Feb 2020 09:51:42 +0100
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, qemu-ppc@nongnu.org, Sagar Karandikar
+ <sagark@eecs.berkeley.edu>, David Gibson <david@gibson.dropbear.id.au>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Eduardo Habkost <ehabkost@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Anthony Green <green@moxielogic.com>, Richard Henderson
+ <richard.henderson@linaro.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ qemu-trivial@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>, "Edgar E.
+ Iglesias" <edgar.iglesias@gmail.com>, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, qemu-riscv@nongnu.org, "Michael S.
+ Tsirkin" <mst@redhat.com>, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Marek Vasut <marex@denx.de>, Palmer Dabbelt <palmer@dabbelt.com>, Michael
+ Walle <michael@walle.cc>, Halil Pasic <pasic@linux.ibm.com>, Marcel
+ Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-s390x@nongnu.org, Richard
+ Henderson <rth@twiddle.net>, Thomas Huth <huth@tuxfamily.org>, Magnus Damm
+ <magnus.damm@gmail.com>, David Hildenbrand <david@redhat.com>, Chris Wulff
+ <crwulff@gmail.com>, Stafford Horne <shorne@gmail.com>, Helge Deller
+ <deller@gmx.de>, Alistair Francis <Alistair.Francis@wdc.com>, Jia Liu
+ <proljc@gmail.com>
+Subject: Re: [PATCH v4 2/3] hw: Make MachineClass::is_default a boolean type
+Message-ID: <20200210095142.7fe048e9.cohuck@redhat.com>
+In-Reply-To: <20200207161948.15972-3-philmd@redhat.com>
+References: <20200207161948.15972-1-philmd@redhat.com>
+ <20200207161948.15972-3-philmd@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MC-Unique: vdjG_Zp9MVeI9HmFOvkC0w-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::443
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,40 +84,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 08 Feb 2020 16:57:22 -0000
+X-List-Received-Date: Mon, 10 Feb 2020 08:52:23 -0000
 
-There is no point in creating the SoC object before allocating the RAM.
-Move the call to keep all the SoC-related calls together.
+On Fri,  7 Feb 2020 17:19:47 +0100
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/raspi.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+> There's no good reason for it to be type int, change it to bool.
+>=20
+> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> v4:
+> - fixed incorrect changes to max_cpus (Laurent)
+> - describe field
+> ---
+>  include/hw/boards.h                      |  4 +++-
+>  hw/alpha/dp264.c                         |  2 +-
+>  hw/cris/axis_dev88.c                     |  2 +-
+>  hw/hppa/machine.c                        |  2 +-
+>  hw/i386/pc_piix.c                        | 10 +++++-----
+>  hw/lm32/lm32_boards.c                    |  2 +-
+>  hw/m68k/mcf5208.c                        |  2 +-
+>  hw/microblaze/petalogix_s3adsp1800_mmu.c |  2 +-
+>  hw/mips/mips_malta.c                     |  2 +-
+>  hw/moxie/moxiesim.c                      |  2 +-
+>  hw/nios2/10m50_devboard.c                |  2 +-
+>  hw/openrisc/openrisc_sim.c               |  2 +-
+>  hw/ppc/mac_oldworld.c                    |  2 +-
+>  hw/ppc/spapr.c                           |  2 +-
+>  hw/riscv/spike.c                         |  2 +-
+>  hw/s390x/s390-virtio-ccw.c               |  2 +-
+>  hw/sh4/shix.c                            |  2 +-
+>  hw/sparc/sun4m.c                         |  2 +-
+>  hw/sparc64/sun4u.c                       |  2 +-
+>  hw/unicore32/puv3.c                      |  2 +-
+>  20 files changed, 26 insertions(+), 24 deletions(-)
 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 7a2ca97347..b3e6f72b55 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -227,9 +227,6 @@ static void raspi_init(MachineState *machine, uint32_t board_rev)
-         exit(1);
-     }
- 
--    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->soc),
--                            board_soc_type(board_rev), &error_abort, NULL);
--
-     /* Allocate and map RAM */
-     memory_region_allocate_system_memory(&s->ram, OBJECT(machine), "ram",
-                                          machine->ram_size);
-@@ -237,6 +234,8 @@ static void raspi_init(MachineState *machine, uint32_t board_rev)
-     memory_region_add_subregion_overlap(get_system_memory(), 0, &s->ram, 0);
- 
-     /* Setup the SOC */
-+    object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->soc),
-+                            board_soc_type(board_rev), &error_abort, NULL);
-     object_property_add_const_link(OBJECT(&s->soc), "ram", OBJECT(&s->ram),
-                                    &error_abort);
-     object_property_set_int(OBJECT(&s->soc), board_rev, "board-rev",
--- 
-2.21.1
+s390 part:
+
+Acked-by: Cornelia Huck <cohuck@redhat.com>
 
 
