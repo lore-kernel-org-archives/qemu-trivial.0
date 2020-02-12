@@ -1,108 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j194E-00045x-BB
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Feb 2020 08:25:38 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47487)
+	id 1j1ipo-0004XC-Jh
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Feb 2020 22:37:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45899)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j194C-00044r-BF
- for qemu-trivial@nongnu.org; Mon, 10 Feb 2020 08:25:37 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j1ipm-0004WJ-Fq
+ for qemu-trivial@nongnu.org; Tue, 11 Feb 2020 22:37:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j194B-00037f-5E
- for qemu-trivial@nongnu.org; Mon, 10 Feb 2020 08:25:36 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:57416
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j1ipl-0008EN-FT
+ for qemu-trivial@nongnu.org; Tue, 11 Feb 2020 22:37:06 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2760 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j194B-000373-1T
- for qemu-trivial@nongnu.org; Mon, 10 Feb 2020 08:25:35 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581341134;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/9oR63gc5Kxstekn/LqUpEIbad1MHfmrO3d4e+XqSqI=;
- b=Z+Vr3vfbTt3ejFIWrrrv1T3e4UcIKznpiwUpOEWAMoNy2vNsmIRcUK5PUba2dLFigUVxDM
- 8oAO20dqnH3Whlt/+c4QrRW/5mgRAvlRP+gDDcPp74sdbNHTxmvykQEPevFnavlo7i+72/
- OSh/QLIe7GljxkgHehz1RwWILf5IbEc=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-332-c5WjXS5uOmaDXEr3W7NenQ-1; Mon, 10 Feb 2020 08:25:32 -0500
-Received: by mail-wr1-f71.google.com with SMTP id 50so5009506wrc.2
- for <qemu-trivial@nongnu.org>; Mon, 10 Feb 2020 05:25:32 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=XKV51D38Ol/2AB+0heBxOtcu0TQX+UzZDuODAQfBuhg=;
- b=Azakb824H6U6WyqSoQx24PiBzXuKlmuH6VeyYW74A1h/5NNklrxivGmBaHMOBV7axe
- 2YngH6ubR9thwrzi1BmRpN201RJDozkJKuM/d/uyvFYlRfZKwBU472eRnalanNA/L/9Z
- EFuSRzS5W9Y65M7bdaWykmAnfs1bkJji8SuPfZd9ovhKpzCxMPWXdcY+a2cOItwvjwxS
- oszOSzzTnV51g6ImrC7/IZuvP564mah2y+rHUd65mwYwml150BsQfKXVLok1aMsFJZYK
- yNbhwt4FxS8fH0ZOgSms8lr9krmyORhaZr7URuuDYm/4ExrGr8WshZ/Plg3nEyDiNvmf
- JvNg==
-X-Gm-Message-State: APjAAAU6geHxTDuBQ56Rkd587RWuWISuf6ggpsmglPQeqQSKBYYzQuyg
- S9KkzzwINHCuXWbnuEYII5WksNj+jhi0mYpKcvy0KKsnj/9o1gz8HhgHay+RLckbrJhHWCCbyPl
- yQZVWFNwNxvqHxJ3ZSA==
-X-Received: by 2002:adf:f886:: with SMTP id u6mr1993888wrp.409.1581341131029; 
- Mon, 10 Feb 2020 05:25:31 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy8Wfn6CHQ6EVXlvZ3QlBX7f+VvahWCpP7bHBG4zcYGigNgUNxKMtGWnU6aHFVeG7tHkJCdBQ==
-X-Received: by 2002:adf:f886:: with SMTP id u6mr1993850wrp.409.1581341130822; 
- Mon, 10 Feb 2020 05:25:30 -0800 (PST)
-Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id d22sm581270wmd.39.2020.02.10.05.25.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 10 Feb 2020 05:25:30 -0800 (PST)
-Subject: Re: Tricore default machine
-To: Peter Maydell <peter.maydell@linaro.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
-Cc: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Chris Wulff <crwulff@gmail.com>, Sagar Karandikar
- <sagark@eecs.berkeley.edu>, "Michael S. Tsirkin" <mst@redhat.com>,
- Anthony Green <green@moxielogic.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Marek Vasut <marex@denx.de>,
- Jia Liu <proljc@gmail.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
- Helge Deller <deller@gmx.de>, David Hildenbrand <david@redhat.com>,
- Magnus Damm <magnus.damm@gmail.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-s390x <qemu-s390x@nongnu.org>, Stafford Horne <shorne@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>, Thomas Huth
- <huth@tuxfamily.org>, Cornelia Huck <cohuck@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, Michael Walle <michael@walle.cc>,
- qemu-ppc <qemu-ppc@nongnu.org>, Aleksandar Markovic
- <amarkovic@wavecomp.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-References: <20200207161948.15972-1-philmd@redhat.com>
- <20200207161948.15972-2-philmd@redhat.com>
- <9590e020-226d-bc85-e496-95b4f0116f69@redhat.com>
- <e4157357-7697-a2d5-8662-f5bd12d74619@redhat.com>
- <f7b72c47-4202-d220-7b29-bd5ad6283700@redhat.com>
- <c775db8c-63ec-e88a-f643-63f31de26f2b@mail.uni-paderborn.de>
- <CAFEAcA_evEqBg160MWASS1izoMkEF7-7nnRn9xhpBJVPb5ehOQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <3c83ea64-179a-db30-1bd0-9d7a495af8d4@redhat.com>
-Date: Mon, 10 Feb 2020 14:25:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1j1ipi-00082Z-OP; Tue, 11 Feb 2020 22:37:03 -0500
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 5118BAA397E7F4F92B6E;
+ Wed, 12 Feb 2020 11:36:55 +0800 (CST)
+Received: from HGHY4C002233111.china.huawei.com (10.133.205.93) by
+ DGGEMS401-HUB.china.huawei.com (10.3.19.201) with Microsoft SMTP Server id
+ 14.3.439.0; Wed, 12 Feb 2020 11:36:45 +0800
+From: <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <i.mitsyanko@gmail.com>,
+ <peter.maydell@linaro.org>
+CC: <zhang.zhanghailiang@huawei.com>, <qemu-trivial@nongnu.org>, Chen Qun
+ <kuhn.chenqun@huawei.com>
+Subject: [PATCH] hw/char/exynos4210_uart: Fix memleaks in exynos4210_uart_init
+Date: Wed, 12 Feb 2020 11:36:41 +0800
+Message-ID: <20200212033641.249560-1-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.14.1.windows.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_evEqBg160MWASS1izoMkEF7-7nnRn9xhpBJVPb5ehOQ@mail.gmail.com>
-Content-Language: en-US
-X-MC-Unique: c5WjXS5uOmaDXEr3W7NenQ-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-Originating-IP: [10.133.205.93]
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+ [fuzzy]
+X-Received-From: 45.249.212.191
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,49 +45,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Feb 2020 13:25:37 -0000
+X-List-Received-Date: Wed, 12 Feb 2020 03:37:07 -0000
 
-On 2/10/20 2:22 PM, Peter Maydell wrote:
-> On Mon, 10 Feb 2020 at 12:33, Bastian Koppelmann
-> <kbastian@mail.uni-paderborn.de> wrote:
->>
->>
->> On 2/10/20 11:26 AM, Thomas Huth wrote:
->>> On 10/02/2020 11.08, Philippe Mathieu-Daud=C3=A9 wrote:
->>>> On 2/10/20 10:35 AM, Thomas Huth wrote:
->>>>> On 07/02/2020 17.19, Philippe Mathieu-Daud=C3=A9 wrote:
->>>>> I wonder whether we should simply make that machine the default for
->>>>> qemu-system-tricore? There is only one machine here, and not having a
->>>>> default machine always causes some headaches in the tests...
->>>>> (see e.g. tests/qemu-iotests/check for example)
->>>> Or make it generic? If a architecture has a single machine, use it by
->>>> default?
->>> Sounds like a good idea, too ... we've got a couple of targets that hav=
-e
->>> only one machine.
->=20
->> As far as I remember, I did not make it the default machine, since Peter
->> Maydell advised against it. His argument was that defaults are really
->> hard to get rid off since external tools (like libvirt) might rely on
->> the defaults and we don't want to break those. Anyways, no objections
->> from my side.
->=20
-> Yes; we have default machines partly for historical reasons
-> and partly because x86 does, but unless there's a good
-> reason for some architecture why this specific machine
-> should be the default, I don't think we should have a default:
-> making the user specify what they actually want helps to nudge
-> them into thinking about what they do want, rather than
-> assuming that QEMU will somehow magically be able to run
-> guest images built for any random machine for the architecture.
+From: Chen Qun <kuhn.chenqun@huawei.com>
 
-OK now it makes sense.
+It's easy to reproduce as follow:
+virsh qemu-monitor-command vm1 --pretty '{"execute": "device-list-properties",
+"arguments":{"typename":"exynos4210.uart"}}'
 
-> Anything in tests or whatever that breaks if there's no default
-> machine for the architecture should be improved to handle that
-> (it already needs to handle that case, though: arm does not
-> have a defined default machine).
+ASAN shows memory leak stack:
+  #1 0xfffd896d71cb in g_malloc0 (/lib64/libglib-2.0.so.0+0x571cb)
+  #2 0xaaad270beee3 in timer_new_full /qemu/include/qemu/timer.h:530
+  #3 0xaaad270beee3 in timer_new /qemu/include/qemu/timer.h:551
+  #4 0xaaad270beee3 in timer_new_ns /qemu/include/qemu/timer.h:569
+  #5 0xaaad270beee3 in exynos4210_uart_init /qemu/hw/char/exynos4210_uart.c:677
+  #6 0xaaad275c8f4f in object_initialize_with_type /qemu/qom/object.c:516
+  #7 0xaaad275c91bb in object_new_with_type /qemu/qom/object.c:684
+  #8 0xaaad2755df2f in qmp_device_list_properties /qemu/qom/qom-qmp-cmds.c:152
 
-I tend to agree here.
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+---
+ hw/char/exynos4210_uart.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
+index 25d6588e41..5048db5410 100644
+--- a/hw/char/exynos4210_uart.c
++++ b/hw/char/exynos4210_uart.c
+@@ -674,10 +674,6 @@ static void exynos4210_uart_init(Object *obj)
+     SysBusDevice *dev = SYS_BUS_DEVICE(obj);
+     Exynos4210UartState *s = EXYNOS4210_UART(dev);
+ 
+-    s->fifo_timeout_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
+-                                         exynos4210_uart_timeout_int, s);
+-    s->wordtime = NANOSECONDS_PER_SECOND * 10 / 9600;
+-
+     /* memory mapping */
+     memory_region_init_io(&s->iomem, obj, &exynos4210_uart_ops, s,
+                           "exynos4210.uart", EXYNOS4210_UART_REGS_MEM_SIZE);
+@@ -691,6 +687,10 @@ static void exynos4210_uart_realize(DeviceState *dev, Error **errp)
+ {
+     Exynos4210UartState *s = EXYNOS4210_UART(dev);
+ 
++    s->fifo_timeout_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
++                                         exynos4210_uart_timeout_int, s);
++    s->wordtime = NANOSECONDS_PER_SECOND * 10 / 9600;
++
+     qemu_chr_fe_set_handlers(&s->chr, exynos4210_uart_can_receive,
+                              exynos4210_uart_receive, exynos4210_uart_event,
+                              NULL, s, NULL, true);
+-- 
+2.23.0
+
 
 
