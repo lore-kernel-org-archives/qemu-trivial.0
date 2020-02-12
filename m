@@ -1,52 +1,88 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j1lli-00014d-AM
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2020 01:45:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49252)
+	id 1j1mcw-0002vC-Ft
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2020 02:40:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57804)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j1llf-00011I-7Q
- for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 01:45:04 -0500
+ (envelope-from <philmd@redhat.com>) id 1j1mct-0002ud-52
+ for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 02:40:04 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j1lld-0000jV-VU
- for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 01:45:03 -0500
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2434 helo=huawei.com)
+ (envelope-from <philmd@redhat.com>) id 1j1mcr-0008Dn-Us
+ for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 02:40:03 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:43832
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j1lla-0000fR-Vv; Wed, 12 Feb 2020 01:44:59 -0500
-Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.56])
- by Forcepoint Email with ESMTP id 0C3219168B9D294B0A53;
- Wed, 12 Feb 2020 14:44:53 +0800 (CST)
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.201]) by
- DGGEMM406-HUB.china.huawei.com ([10.3.20.214]) with mapi id 14.03.0439.000;
- Wed, 12 Feb 2020 14:44:46 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "i.mitsyanko@gmail.com"
- <i.mitsyanko@gmail.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>
-CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, Zhanghailiang
- <zhang.zhanghailiang@huawei.com>
-Subject: RE: [PATCH] hw/char/exynos4210_uart: Fix memleaks in
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j1mcr-0008DW-RK
+ for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 02:40:01 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581493201;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HpHRjErBuwbVX+QKoiwh0sNK8Q8P9VnadKdFm/cEIn0=;
+ b=PmqeqPQLHX8v+CJwn+O+T5EeTBsvmOPbk3dcjCfySTMgPEU/xkTyx/k/krTosOhGFcDQYF
+ l7xdUJvkDZzJp33Q8gXOls32AoOgkIJC0yLVma/adlNJsGQAlP9c2KbJgLHU08SzDzL2QH
+ iHdRPbbrprXeoZvNMFTHS++YweP8GEo=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-383-osYZeAMlMP21Nn36WFlNOg-1; Wed, 12 Feb 2020 02:39:59 -0500
+Received: by mail-wm1-f71.google.com with SMTP id p2so364747wmi.8
+ for <qemu-trivial@nongnu.org>; Tue, 11 Feb 2020 23:39:59 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=e8YmZpINAk7OHaSEhxhUmg8LU/LtLrviIG7JmjcRgNs=;
+ b=ifQz9sJcVUHS5m+7FkI0Wf+w6uT4dKGstD38ZqRAmAjLd37f4H/p3eKVH8RiJ4yPL4
+ 2c9FkWibyhc439bpSLh1zMsShtx2Rq5uegG9YxLMBrP8X6/Vy4EshPXPkXQ6yEZOL6tm
+ uqVLUtPVecQFenAM+deQ3wA/HlqebfMhjEzlvNnfLhEWoevJU5dLg5LrnVgznoi4FPY6
+ UF9oNsKNu3m+TzOkATh9sTYlDLpPBRXPDi+4qknrTz/Zw2fhLw11wpsVTuFZWz5vwUGV
+ e/4N+5kvtwYFY0alZ+BqESjNrHd7Rm0HSKzFK/iDQFRMOlFWuWA2AK1L3YOxhhxZKl/n
+ FZCg==
+X-Gm-Message-State: APjAAAVag/DvQSQlcX8eviPQ9q2430T2d2HZwWWL4BQjm8AASSuJ0+z0
+ mCZ0mBJRRmdHMf0rGcZK20VSaCn7hgs16NYGkfr8lvSjMhfk+gMMak1qWwMAarElyEqBdg6FPwX
+ NRL5kTCKAR9gPtjS+fg==
+X-Received: by 2002:a05:600c:294a:: with SMTP id
+ n10mr11251412wmd.11.1581493198168; 
+ Tue, 11 Feb 2020 23:39:58 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzXNtocGaBI0oWYnXq+BQuIYJnIhKKG50qjNgb9zTM7A79TeQuE8hvmHq0cPVglOfLm2AuoPw==
+X-Received: by 2002:a05:600c:294a:: with SMTP id
+ n10mr11251351wmd.11.1581493197692; 
+ Tue, 11 Feb 2020 23:39:57 -0800 (PST)
+Received: from [192.168.1.35] (78.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.78])
+ by smtp.gmail.com with ESMTPSA id b17sm9022832wrp.49.2020.02.11.23.39.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 11 Feb 2020 23:39:56 -0800 (PST)
+Subject: Re: [PATCH] hw/char/exynos4210_uart: Fix memleaks in
  exynos4210_uart_init
-Thread-Topic: [PATCH] hw/char/exynos4210_uart: Fix memleaks in
- exynos4210_uart_init
-Thread-Index: AQHV4VWsc9vZRGjal0y1pX+CTm1jdKgWjwaAgACIWKA=
-Date: Wed, 12 Feb 2020 06:44:46 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B1163F4@dggemm531-mbx.china.huawei.com>
+To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "i.mitsyanko@gmail.com" <i.mitsyanko@gmail.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Markus Armbruster <armbru@redhat.com>
 References: <20200212033641.249560-1-kuhn.chenqun@huawei.com>
  <ce5d39c0-d532-4b54-a39c-01c9c97cbb59@redhat.com>
-In-Reply-To: <ce5d39c0-d532-4b54-a39c-01c9c97cbb59@redhat.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ <7412CDE03601674DA8197E2EBD8937E83B1163F4@dggemm531-mbx.china.huawei.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <99531e05-f8fc-ef0a-ca62-6d477c899e78@redhat.com>
+Date: Wed, 12 Feb 2020 08:39:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B1163F4@dggemm531-mbx.china.huawei.com>
+Content-Language: en-US
+X-MC-Unique: osYZeAMlMP21Nn36WFlNOg-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.187
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -58,64 +94,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Feb 2020 06:45:04 -0000
+X-List-Received-Date: Wed, 12 Feb 2020 07:40:04 -0000
 
-Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogUGhpbGlwcGUgTWF0aGlldS1EYXVk
-w6kgW21haWx0bzpwaGlsbWRAcmVkaGF0LmNvbV0NCj5TZW50OiBXZWRuZXNkYXksIEZlYnJ1YXJ5
-IDEyLCAyMDIwIDI6MTYgUE0NCj5UbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3
-ZWkuY29tPjsgcWVtdS0NCj5kZXZlbEBub25nbnUub3JnOyBpLm1pdHN5YW5rb0BnbWFpbC5jb207
-IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZw0KPkNjOiBxZW11LXRyaXZpYWxAbm9uZ251Lm9yZzsg
-WmhhbmdoYWlsaWFuZw0KPjx6aGFuZy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20+DQo+U3ViamVj
-dDogUmU6IFtQQVRDSF0gaHcvY2hhci9leHlub3M0MjEwX3VhcnQ6IEZpeCBtZW1sZWFrcyBpbg0K
-PmV4eW5vczQyMTBfdWFydF9pbml0DQo+DQo+T24gMi8xMi8yMCA0OjM2IEFNLCBrdWhuLmNoZW5x
-dW5AaHVhd2VpLmNvbSB3cm90ZToNCj4+IEZyb206IENoZW4gUXVuIDxrdWhuLmNoZW5xdW5AaHVh
-d2VpLmNvbT4NCj4+DQo+PiBJdCdzIGVhc3kgdG8gcmVwcm9kdWNlIGFzIGZvbGxvdzoNCj4+IHZp
-cnNoIHFlbXUtbW9uaXRvci1jb21tYW5kIHZtMSAtLXByZXR0eSAneyJleGVjdXRlIjoNCj4+ICJk
-ZXZpY2UtbGlzdC1wcm9wZXJ0aWVzIiwgImFyZ3VtZW50cyI6eyJ0eXBlbmFtZSI6ImV4eW5vczQy
-MTAudWFydCJ9fScNCj4+DQo+PiBBU0FOIHNob3dzIG1lbW9yeSBsZWFrIHN0YWNrOg0KPj4gICAg
-IzEgMHhmZmZkODk2ZDcxY2IgaW4gZ19tYWxsb2MwICgvbGliNjQvbGliZ2xpYi0yLjAuc28uMCsw
-eDU3MWNiKQ0KPj4gICAgIzIgMHhhYWFkMjcwYmVlZTMgaW4gdGltZXJfbmV3X2Z1bGwgL3FlbXUv
-aW5jbHVkZS9xZW11L3RpbWVyLmg6NTMwDQo+PiAgICAjMyAweGFhYWQyNzBiZWVlMyBpbiB0aW1l
-cl9uZXcgL3FlbXUvaW5jbHVkZS9xZW11L3RpbWVyLmg6NTUxDQo+PiAgICAjNCAweGFhYWQyNzBi
-ZWVlMyBpbiB0aW1lcl9uZXdfbnMgL3FlbXUvaW5jbHVkZS9xZW11L3RpbWVyLmg6NTY5DQo+PiAg
-ICAjNSAweGFhYWQyNzBiZWVlMyBpbiBleHlub3M0MjEwX3VhcnRfaW5pdA0KPi9xZW11L2h3L2No
-YXIvZXh5bm9zNDIxMF91YXJ0LmM6Njc3DQo+PiAgICAjNiAweGFhYWQyNzVjOGY0ZiBpbiBvYmpl
-Y3RfaW5pdGlhbGl6ZV93aXRoX3R5cGUgL3FlbXUvcW9tL29iamVjdC5jOjUxNg0KPj4gICAgIzcg
-MHhhYWFkMjc1YzkxYmIgaW4gb2JqZWN0X25ld193aXRoX3R5cGUgL3FlbXUvcW9tL29iamVjdC5j
-OjY4NA0KPj4gICAgIzggMHhhYWFkMjc1NWRmMmYgaW4gcW1wX2RldmljZV9saXN0X3Byb3BlcnRp
-ZXMNCj4+IC9xZW11L3FvbS9xb20tcW1wLWNtZHMuYzoxNTINCj4+DQo+PiBSZXBvcnRlZC1ieTog
-RXVsZXIgUm9ib3QgPGV1bGVyLnJvYm90QGh1YXdlaS5jb20+DQo+PiBTaWduZWQtb2ZmLWJ5OiBD
-aGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+PiAtLS0NCj4+ICAgaHcvY2hhci9l
-eHlub3M0MjEwX3VhcnQuYyB8IDggKysrKy0tLS0NCj4+ICAgMSBmaWxlIGNoYW5nZWQsIDQgaW5z
-ZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkNCj4+DQo+PiBkaWZmIC0tZ2l0IGEvaHcvY2hhci9l
-eHlub3M0MjEwX3VhcnQuYyBiL2h3L2NoYXIvZXh5bm9zNDIxMF91YXJ0LmMNCj4+IGluZGV4IDI1
-ZDY1ODhlNDEuLjUwNDhkYjU0MTAgMTAwNjQ0DQo+PiAtLS0gYS9ody9jaGFyL2V4eW5vczQyMTBf
-dWFydC5jDQo+PiArKysgYi9ody9jaGFyL2V4eW5vczQyMTBfdWFydC5jDQo+PiBAQCAtNjc0LDEw
-ICs2NzQsNiBAQCBzdGF0aWMgdm9pZCBleHlub3M0MjEwX3VhcnRfaW5pdChPYmplY3QgKm9iaikN
-Cj4+ICAgICAgIFN5c0J1c0RldmljZSAqZGV2ID0gU1lTX0JVU19ERVZJQ0Uob2JqKTsNCj4+ICAg
-ICAgIEV4eW5vczQyMTBVYXJ0U3RhdGUgKnMgPSBFWFlOT1M0MjEwX1VBUlQoZGV2KTsNCj4+DQo+
-PiAtICAgIHMtPmZpZm9fdGltZW91dF90aW1lciA9IHRpbWVyX25ld19ucyhRRU1VX0NMT0NLX1ZJ
-UlRVQUwsDQo+PiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBleHlu
-b3M0MjEwX3VhcnRfdGltZW91dF9pbnQsIHMpOw0KPj4gLSAgICBzLT53b3JkdGltZSA9IE5BTk9T
-RUNPTkRTX1BFUl9TRUNPTkQgKiAxMCAvIDk2MDA7DQo+DQo+V2h5IGFyZSB5b3UgbW92aW5nIHMt
-PndvcmR0aW1lIGZyb20gaW5pdCgpIHRvIHJlYWxpemUoKT8NCj4NCkhpICBQaGlsaXBwZSwgIHRo
-YW5rcyBmb3IgeW91ciByZXBseSENCg0KQmVjYXVzZSBJIGZvdW5kIHRoZSB2YXJpYWJsZSB3b3Jk
-dGltZSBpcyB1c3VhbGx5IHVzZWQgd2l0aCBmaWZvX3RpbWVvdXRfdGltZXIuICAgDQpFZywgdGhl
-eSBhcmUgdXNlZCB0b2dldGhlciBpbiB0aGUgZXh5bm9zNDIxMF91YXJ0X3J4X3RpbWVvdXRfc2V0
-IGZ1bmN0aW9uLg0KDQpJIGRpZG4ndCBmaW5kIGFueXRoaW5nIHdyb25nIHdpdGggd29yZHRpbWUg
-aW4gdGhlIHJlYWxpemUoKS4gIA0KRG9lcyBpdCBoYXZlIGFueSBvdGhlciBlZmZlY3RzPw0KDQpU
-aGFua3MuDQo+PiAtDQo+PiAgICAgICAvKiBtZW1vcnkgbWFwcGluZyAqLw0KPj4gICAgICAgbWVt
-b3J5X3JlZ2lvbl9pbml0X2lvKCZzLT5pb21lbSwgb2JqLCAmZXh5bm9zNDIxMF91YXJ0X29wcywg
-cywNCj4+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiZXh5bm9zNDIxMC51YXJ0IiwNCj4+
-IEVYWU5PUzQyMTBfVUFSVF9SRUdTX01FTV9TSVpFKTsgQEAgLTY5MSw2ICs2ODcsMTAgQEAgc3Rh
-dGljIHZvaWQNCj5leHlub3M0MjEwX3VhcnRfcmVhbGl6ZShEZXZpY2VTdGF0ZSAqZGV2LCBFcnJv
-ciAqKmVycnApDQo+PiAgIHsNCj4+ICAgICAgIEV4eW5vczQyMTBVYXJ0U3RhdGUgKnMgPSBFWFlO
-T1M0MjEwX1VBUlQoZGV2KTsNCj4+DQo+PiArICAgIHMtPmZpZm9fdGltZW91dF90aW1lciA9IHRp
-bWVyX25ld19ucyhRRU1VX0NMT0NLX1ZJUlRVQUwsDQo+PiArICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBleHlub3M0MjEwX3VhcnRfdGltZW91dF9pbnQsIHMpOw0KPj4g
-KyAgICBzLT53b3JkdGltZSA9IE5BTk9TRUNPTkRTX1BFUl9TRUNPTkQgKiAxMCAvIDk2MDA7DQo+
-PiArDQo+PiAgICAgICBxZW11X2Nocl9mZV9zZXRfaGFuZGxlcnMoJnMtPmNociwgZXh5bm9zNDIx
-MF91YXJ0X2Nhbl9yZWNlaXZlLA0KPj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGV4
-eW5vczQyMTBfdWFydF9yZWNlaXZlLCBleHlub3M0MjEwX3VhcnRfZXZlbnQsDQo+PiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgTlVMTCwgcywgTlVMTCwgdHJ1ZSk7DQo+Pg0KDQo=
+Cc'ing Eduardo & Markus.
+
+On 2/12/20 7:44 AM, Chenqun (kuhn) wrote:
+>> -----Original Message-----
+>> From: Philippe Mathieu-Daud=C3=A9 [mailto:philmd@redhat.com]
+>> Sent: Wednesday, February 12, 2020 2:16 PM
+>> To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; qemu-
+>> devel@nongnu.org; i.mitsyanko@gmail.com; peter.maydell@linaro.org
+>> Cc: qemu-trivial@nongnu.org; Zhanghailiang
+>> <zhang.zhanghailiang@huawei.com>
+>> Subject: Re: [PATCH] hw/char/exynos4210_uart: Fix memleaks in
+>> exynos4210_uart_init
+>>
+>> On 2/12/20 4:36 AM, kuhn.chenqun@huawei.com wrote:
+>>> From: Chen Qun <kuhn.chenqun@huawei.com>
+>>>
+>>> It's easy to reproduce as follow:
+>>> virsh qemu-monitor-command vm1 --pretty '{"execute":
+>>> "device-list-properties", "arguments":{"typename":"exynos4210.uart"}}'
+>>>
+>>> ASAN shows memory leak stack:
+>>>     #1 0xfffd896d71cb in g_malloc0 (/lib64/libglib-2.0.so.0+0x571cb)
+>>>     #2 0xaaad270beee3 in timer_new_full /qemu/include/qemu/timer.h:530
+>>>     #3 0xaaad270beee3 in timer_new /qemu/include/qemu/timer.h:551
+>>>     #4 0xaaad270beee3 in timer_new_ns /qemu/include/qemu/timer.h:569
+>>>     #5 0xaaad270beee3 in exynos4210_uart_init
+>> /qemu/hw/char/exynos4210_uart.c:677
+>>>     #6 0xaaad275c8f4f in object_initialize_with_type /qemu/qom/object.c=
+:516
+>>>     #7 0xaaad275c91bb in object_new_with_type /qemu/qom/object.c:684
+>>>     #8 0xaaad2755df2f in qmp_device_list_properties
+>>> /qemu/qom/qom-qmp-cmds.c:152
+>>>
+>>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+>>> ---
+>>>    hw/char/exynos4210_uart.c | 8 ++++----
+>>>    1 file changed, 4 insertions(+), 4 deletions(-)
+>>>
+>>> diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
+>>> index 25d6588e41..5048db5410 100644
+>>> --- a/hw/char/exynos4210_uart.c
+>>> +++ b/hw/char/exynos4210_uart.c
+>>> @@ -674,10 +674,6 @@ static void exynos4210_uart_init(Object *obj)
+>>>        SysBusDevice *dev =3D SYS_BUS_DEVICE(obj);
+>>>        Exynos4210UartState *s =3D EXYNOS4210_UART(dev);
+>>>
+>>> -    s->fifo_timeout_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL,
+>>> -                                         exynos4210_uart_timeout_int, =
+s);
+>>> -    s->wordtime =3D NANOSECONDS_PER_SECOND * 10 / 9600;
+>>
+>> Why are you moving s->wordtime from init() to realize()?
+>>
+> Hi  Philippe,  thanks for your reply!
+>=20
+> Because I found the variable wordtime is usually used with fifo_timeout_t=
+imer.
+> Eg, they are used together in the exynos4210_uart_rx_timeout_set function=
+.
+>=20
+> I didn't find anything wrong with wordtime in the realize().
+> Does it have any other effects?
+
+IIUC when we use both init() and realize(), realize() should only=20
+contains on code that consumes the object properties... But maybe the=20
+design is not clear. Then why not move all the init() code to realize()?
+
+>>> -
+>>>        /* memory mapping */
+>>>        memory_region_init_io(&s->iomem, obj, &exynos4210_uart_ops, s,
+>>>                              "exynos4210.uart",
+>>> EXYNOS4210_UART_REGS_MEM_SIZE); @@ -691,6 +687,10 @@ static void
+>> exynos4210_uart_realize(DeviceState *dev, Error **errp)
+>>>    {
+>>>        Exynos4210UartState *s =3D EXYNOS4210_UART(dev);
+>>>
+>>> +    s->fifo_timeout_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL,
+>>> +                                         exynos4210_uart_timeout_int, =
+s);
+>>> +    s->wordtime =3D NANOSECONDS_PER_SECOND * 10 / 9600;
+>>> +
+>>>        qemu_chr_fe_set_handlers(&s->chr, exynos4210_uart_can_receive,
+>>>                                 exynos4210_uart_receive, exynos4210_uar=
+t_event,
+>>>                                 NULL, s, NULL, true);
+>>>
+>=20
+
 
