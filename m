@@ -1,69 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j1ukQ-0004h3-9Z
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2020 11:20:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33747)
+	id 1j1yne-00077N-Lc
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2020 15:39:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55298)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <ehabkost@redhat.com>) id 1j1ukN-0004a1-OE
- for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 11:20:21 -0500
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1j1wzS-0001Rf-Mv
+ for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 13:44:05 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <ehabkost@redhat.com>) id 1j1ukK-0006NV-V8
- for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 11:20:19 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40508
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <ehabkost@redhat.com>) id 1j1ukK-0006Mz-QX
- for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 11:20:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581524416;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BM6DvFfcyBg0xwynaujoMvVPGVp26/oDIm7OSSoZEOc=;
- b=cIblddEqC7NDS4rZ1oWWSxzBevXGll/JlfuL7QpUZZ5P1mDW/7t0uTJSIUmG8eBBIT+Tcp
- ae8/3cp8BVFj+Lk91MEvHJBDHI5NUm+afmhYUR+JA5H+Rd4HiyDV2Xb4evDfREF7Lu2xKB
- wmF0MOsAWilzRNbRWjb6SHtQOHC53IU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-139-NJbIHmGgPhuyPPC9-Myjyw-1; Wed, 12 Feb 2020 11:20:11 -0500
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 50D61800D48;
- Wed, 12 Feb 2020 16:20:10 +0000 (UTC)
-Received: from localhost (ovpn-126-54.rdu2.redhat.com [10.10.126.54])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DD7645DA8C;
- Wed, 12 Feb 2020 16:19:58 +0000 (UTC)
-Date: Wed, 12 Feb 2020 11:19:57 -0500
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "i.mitsyanko@gmail.com" <i.mitsyanko@gmail.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH] hw/char/exynos4210_uart: Fix memleaks in
- exynos4210_uart_init
-Message-ID: <20200212161957.GA5028@habkost.net>
-References: <20200212033641.249560-1-kuhn.chenqun@huawei.com>
- <ce5d39c0-d532-4b54-a39c-01c9c97cbb59@redhat.com>
- <7412CDE03601674DA8197E2EBD8937E83B1163F4@dggemm531-mbx.china.huawei.com>
- <99531e05-f8fc-ef0a-ca62-6d477c899e78@redhat.com>
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1j1wzQ-00044B-3u
+ for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 13:44:02 -0500
+Received: from mail-yb1-f196.google.com ([209.85.219.196]:45051)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1j1wzQ-00043z-0L; Wed, 12 Feb 2020 13:44:00 -0500
+Received: by mail-yb1-f196.google.com with SMTP id f21so1573364ybg.11;
+ Wed, 12 Feb 2020 10:43:59 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=NL3wXaoIGtWfpUwtqV6fDPmGqSRvZJiQtc632RMh1tY=;
+ b=dbMH2oWjfR402LfJISBGVIBgTw3Av/QEBYgA84B5j+2DYPY/3qNig0cJtrwMFBGnWT
+ YjmTYbwl6/dtA/ARaQnqAALau/XmMj7dh3ZbYFhy+/9tTyoOrpkH1/knCSzaLyzwh8Kr
+ +5Ne9SWRG93V7jecYVN8dNMt1RIQJ9kna/vh9dFv28VnRNbRwecO0dEhLRW5URVJv4fB
+ +YXmHa00eieljh/d9HRtourphNEtoOIfy7OUOrq+YDaDrw59IqhHfGGxb2LmGHISQx9t
+ +IPNzswehMuiyF/8pRhHfoK6sNQEqOZUdpWzeDXEhXeo26D9fiC2uo19wUYvfvAbkBB4
+ qp6A==
+X-Gm-Message-State: APjAAAUByDYjCeNh0Lj6bNla0ek7r2kAyo/0j9+fXSel1XfgYLSFijSS
+ KCdzxjzbHRCArL7z3orsBCJqPQtaHiRqVWYyTI4=
+X-Google-Smtp-Source: APXvYqxeIFOn33/XIvCpydzer3Uz2lL2VzfskxALYaoZ9c9PSc850q5k7+UdKEGm1F6IAxTYXFTRztx98F/flQg47V0=
+X-Received: by 2002:a25:9902:: with SMTP id z2mr11567336ybn.309.1581533039224; 
+ Wed, 12 Feb 2020 10:43:59 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <99531e05-f8fc-ef0a-ca62-6d477c899e78@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-MC-Unique: NJbIHmGgPhuyPPC9-Myjyw-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+References: <20191221155306.49221-1-jhogan@kernel.org>
+In-Reply-To: <20191221155306.49221-1-jhogan@kernel.org>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe@mathieu-daude.net>
+Date: Wed, 12 Feb 2020 19:43:48 +0100
+Message-ID: <CAAdtpL7CrEAZz5GWJoYCegchQ=-hdkcih07icgoFd-ghJ3nMBw@mail.gmail.com>
+Subject: Re: [PATCH] MAINTAINERS: Orphan MIPS KVM CPUs
+To: James Hogan <jhogan@kernel.org>, QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: Aurelien Jarno <aurelien@aurel32.net>, 
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>, 
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paul Burton <paulburton@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 209.85.219.196
+X-Mailman-Approved-At: Wed, 12 Feb 2020 15:39:57 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,94 +62,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Feb 2020 16:20:21 -0000
+X-List-Received-Date: Wed, 12 Feb 2020 18:44:05 -0000
 
-On Wed, Feb 12, 2020 at 08:39:55AM +0100, Philippe Mathieu-Daud=E9 wrote:
-> Cc'ing Eduardo & Markus.
->=20
-> On 2/12/20 7:44 AM, Chenqun (kuhn) wrote:
-> > > -----Original Message-----
-> > > From: Philippe Mathieu-Daud=E9 [mailto:philmd@redhat.com]
-> > > Sent: Wednesday, February 12, 2020 2:16 PM
-> > > To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; qemu-
-> > > devel@nongnu.org; i.mitsyanko@gmail.com; peter.maydell@linaro.org
-> > > Cc: qemu-trivial@nongnu.org; Zhanghailiang
-> > > <zhang.zhanghailiang@huawei.com>
-> > > Subject: Re: [PATCH] hw/char/exynos4210_uart: Fix memleaks in
-> > > exynos4210_uart_init
-> > >=20
-> > > On 2/12/20 4:36 AM, kuhn.chenqun@huawei.com wrote:
-> > > > From: Chen Qun <kuhn.chenqun@huawei.com>
-> > > >=20
-> > > > It's easy to reproduce as follow:
-> > > > virsh qemu-monitor-command vm1 --pretty '{"execute":
-> > > > "device-list-properties", "arguments":{"typename":"exynos4210.uart"=
-}}'
-> > > >=20
-> > > > ASAN shows memory leak stack:
-> > > >     #1 0xfffd896d71cb in g_malloc0 (/lib64/libglib-2.0.so.0+0x571cb=
-)
-> > > >     #2 0xaaad270beee3 in timer_new_full /qemu/include/qemu/timer.h:=
-530
-> > > >     #3 0xaaad270beee3 in timer_new /qemu/include/qemu/timer.h:551
-> > > >     #4 0xaaad270beee3 in timer_new_ns /qemu/include/qemu/timer.h:56=
-9
-> > > >     #5 0xaaad270beee3 in exynos4210_uart_init
-> > > /qemu/hw/char/exynos4210_uart.c:677
-> > > >     #6 0xaaad275c8f4f in object_initialize_with_type /qemu/qom/obje=
-ct.c:516
-> > > >     #7 0xaaad275c91bb in object_new_with_type /qemu/qom/object.c:68=
-4
-> > > >     #8 0xaaad2755df2f in qmp_device_list_properties
-> > > > /qemu/qom/qom-qmp-cmds.c:152
-> > > >=20
-> > > > Reported-by: Euler Robot <euler.robot@huawei.com>
-> > > > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> > > > ---
-> > > >    hw/char/exynos4210_uart.c | 8 ++++----
-> > > >    1 file changed, 4 insertions(+), 4 deletions(-)
-> > > >=20
-> > > > diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
-> > > > index 25d6588e41..5048db5410 100644
-> > > > --- a/hw/char/exynos4210_uart.c
-> > > > +++ b/hw/char/exynos4210_uart.c
-> > > > @@ -674,10 +674,6 @@ static void exynos4210_uart_init(Object *obj)
-> > > >        SysBusDevice *dev =3D SYS_BUS_DEVICE(obj);
-> > > >        Exynos4210UartState *s =3D EXYNOS4210_UART(dev);
-> > > >=20
-> > > > -    s->fifo_timeout_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL,
-> > > > -                                         exynos4210_uart_timeout_i=
-nt, s);
-> > > > -    s->wordtime =3D NANOSECONDS_PER_SECOND * 10 / 9600;
-> > >=20
-> > > Why are you moving s->wordtime from init() to realize()?
-> > >=20
-> > Hi  Philippe,  thanks for your reply!
-> >=20
-> > Because I found the variable wordtime is usually used with fifo_timeout=
-_timer.
-> > Eg, they are used together in the exynos4210_uart_rx_timeout_set functi=
-on.
-> >=20
-> > I didn't find anything wrong with wordtime in the realize().
-> > Does it have any other effects?
->=20
-> IIUC when we use both init() and realize(), realize() should only contain=
-s
-> on code that consumes the object properties... But maybe the design is no=
-t
-> clear. Then why not move all the init() code to realize()?
+Cc'ing qemu-trivial@ & Paolo.
 
-Normally I would recommend the opposite: delay as much as
-possible to realize(), to avoid unwanted side effects when (e.g.)
-running qom-list-properties.
-
-But as s->wordtime is a simple struct field (that we could even
-decide to expose to the outside as a read-only QOM property), it
-doesn't really matter.  Personally, I would keep it where it is
-just to avoid churn.
-
---=20
-Eduardo
-
+On Sat, Dec 21, 2019 at 5:42 PM James Hogan <jhogan@kernel.org> wrote:
+>
+> I haven't been active for 18 months, and don't have the hardware set up
+> to test KVM for MIPS, so mark it as orphaned and remove myself as
+> maintainer. Hopefully somebody from MIPS can pick this up.
+>
+> Signed-off-by: James Hogan <jhogan@kernel.org>
+> Cc: Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
+> Cc: Aurelien Jarno <aurelien@aurel32.net>
+> Cc: Aleksandar Markovic <amarkovic@wavecomp.com>
+> Cc: qemu-devel@nongnu.org
+> ---
+>  MAINTAINERS | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 740401bcbb86..a798ad2b0b8a 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -363,9 +363,8 @@ S: Maintained
+>  F: target/arm/kvm.c
+>
+>  MIPS KVM CPUs
+> -M: James Hogan <jhogan@kernel.org>
+>  R: Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
+> -S: Maintained
+> +S: Orphan
+>  F: target/mips/kvm.c
+>
+>  PPC KVM CPUs
+> --
+> 2.24.0
+>
+>
 
