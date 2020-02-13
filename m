@@ -1,74 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j2HUz-0002uE-MY
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Feb 2020 11:37:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54906)
+	id 1j2OQk-0000P5-8n
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Feb 2020 19:02:02 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37823)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j2HUx-0002tw-S7
- for qemu-trivial@nongnu.org; Thu, 13 Feb 2020 11:37:56 -0500
+ (envelope-from <balaton@eik.bme.hu>) id 1j2OQh-0000JV-Ln
+ for qemu-trivial@nongnu.org; Thu, 13 Feb 2020 19:02:00 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j2HUw-0005vs-VZ
- for qemu-trivial@nongnu.org; Thu, 13 Feb 2020 11:37:55 -0500
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:36059)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j2HUw-0005sg-RH
- for qemu-trivial@nongnu.org; Thu, 13 Feb 2020 11:37:54 -0500
-Received: by mail-ot1-x344.google.com with SMTP id j20so6196261otq.3
- for <qemu-trivial@nongnu.org>; Thu, 13 Feb 2020 08:37:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=hVljpjxOKu8zZchbn5tT/3JBUBI5cy6tSobo0vQSXeM=;
- b=L3nnJqLqpu/qUQXyOCwWVszb4apJqEwuxW1+LjlG16MJld+HWnSjWN+fkf7KgIA0Cy
- hZq7aSDa/wFDmy0Um+tfJgFlDcm+jxTcMacn/Y7w6asUKLdlIsSB23nKqj7FwtGP68sg
- YDTL0EKHyhQtpGCmnT8LO6FhGx7n6JRs75/eg3gO8qip0y3x2LaEEk1i1Gkpgt5Ni91e
- DDoetm5dir9gTenqORPf9pyBVWY1xF1iJtUEisaxvMdX5TGGldpC7oD/guuSXVBRfoVn
- 0rt++FkyHAYAp7NYrlUJH6EghMaKOupXD/d9PtF0EXDgEIdzQqTI/2FqKKt0cTJ1IxyV
- C1Ig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=hVljpjxOKu8zZchbn5tT/3JBUBI5cy6tSobo0vQSXeM=;
- b=MyPDMOxUp7dMJQtVgoIpWugqw474RFMa1GsYSoIXrLqHpB4bDYmdigB+hgrgHu0KQF
- Bxyc6+p+kAePfI/3oFhqKGaru1pgtQbICx6t1ltYYwV/hNaUc8bzyFKX2Olyx77egrtu
- Plk5zPCGXBuWpq/RIDg8x4hSERlH5zF4rfnrRG19RGJf5COC3sTgvh2QT+kHw2NGeVf8
- iQm5GIwCMzGFbufnXgbsVo4MxXR0oa686BclDOyU2aW5Tk62KikK3FpvUY6FPvULmOjC
- hCDQ+midPxJGaKI71iFEpA4uAwpk6ezAd0RAOQyw9MKRpv7Oh0D+au+CtYbMBX42K+/r
- +WHg==
-X-Gm-Message-State: APjAAAWcuHk5h2X+K8zu3okC8k7dvl5rnmBVDWQ6T7y0Zy8FLWaJ/v2I
- qbv8h9rtG/GzQVXo3zgSqLctudKGTMqvctHD8QumVQ==
-X-Google-Smtp-Source: APXvYqxG8OEormYOnBSOmeNiShQntR8YpqzS98pZae0JTWsIm1iNp9e2Fq+fZeWfx2ZcrKWazSYIq2gJ6LqyJBRYtlA=
-X-Received: by 2002:a05:6830:13d3:: with SMTP id
- e19mr14074260otq.135.1581611872788; 
- Thu, 13 Feb 2020 08:37:52 -0800 (PST)
-MIME-Version: 1.0
-References: <20200212033641.249560-1-kuhn.chenqun@huawei.com>
- <ce5d39c0-d532-4b54-a39c-01c9c97cbb59@redhat.com>
- <7412CDE03601674DA8197E2EBD8937E83B1163F4@dggemm531-mbx.china.huawei.com>
- <99531e05-f8fc-ef0a-ca62-6d477c899e78@redhat.com>
- <20200212161957.GA5028@habkost.net>
- <87r1yy4l4g.fsf@dusky.pond.sub.org>
- <24243b1d-f3a1-1778-8b50-4d4776393cdf@redhat.com>
-In-Reply-To: <24243b1d-f3a1-1778-8b50-4d4776393cdf@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 13 Feb 2020 16:37:41 +0000
-Message-ID: <CAFEAcA8n1pFFTw7EhV5b8UE+XGWgVsxma++SHuh=ns7VeCPNjA@mail.gmail.com>
-Subject: Re: [PATCH] hw/char/exynos4210_uart: Fix memleaks in
- exynos4210_uart_init
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, 
- Zhanghailiang <zhang.zhanghailiang@huawei.com>, 
- "i.mitsyanko@gmail.com" <i.mitsyanko@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+ (envelope-from <balaton@eik.bme.hu>) id 1j2OQg-0001Hz-EE
+ for qemu-trivial@nongnu.org; Thu, 13 Feb 2020 19:01:59 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:51035)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+ id 1j2OQd-0000o1-Kk; Thu, 13 Feb 2020 19:01:55 -0500
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 8B73C747DF7;
+ Fri, 14 Feb 2020 01:01:43 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 6D67F747DCF; Fri, 14 Feb 2020 01:01:43 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+Date: Fri, 14 Feb 2020 00:57:34 +0100
+Subject: [PATCH] target/ppc: Fix typo in comments
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+    David Gibson <david@gibson.dropbear.id.au>
+Message-Id: <20200214000143.6D67F747DCF@zero.eik.bme.hu>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::344
+X-Received-From: 2001:738:2001:2001::2001
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -80,21 +38,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Feb 2020 16:37:56 -0000
+X-List-Received-Date: Fri, 14 Feb 2020 00:02:00 -0000
 
-On Thu, 13 Feb 2020 at 16:33, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
-> > * unrealize() must clean up everything realize() creates.
->
-> Hmm I guess remember someone once said "only for hot-pluggable objects,
-> else don't bother". But then we make a non-hot-pluggable object as
-> hot-pluggable and have to fix leaks. Or we start a new hot-pluggable
-> device based on some code without unrealize()...
+"Deferred" was misspelled as "differed" in some comments, correct this
+typo,
 
-Yeah. Almost all our devices are not hot-pluggable and don't
-have unrealize code. Better to just have them stay that way,
-or to add untested unreachable code in an unrealize method? Dunno.
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+---
+ target/ppc/fpu_helper.c            | 2 +-
+ target/ppc/translate/fp-impl.inc.c | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-thanks
--- PMM
+diff --git a/target/ppc/fpu_helper.c b/target/ppc/fpu_helper.c
+index dc383242f7..5182764df3 100644
+--- a/target/ppc/fpu_helper.c
++++ b/target/ppc/fpu_helper.c
+@@ -293,7 +293,7 @@ static void float_invalid_op_vxvc(CPUPPCState *env, bool set_fpcc,
+         env->error_code = POWERPC_EXCP_FP | POWERPC_EXCP_FP_VXVC;
+         /* Update the floating-point enabled exception summary */
+         env->fpscr |= FP_FEX;
+-        /* Exception is differed */
++        /* Exception is deferred */
+     }
+ }
+ 
+diff --git a/target/ppc/translate/fp-impl.inc.c b/target/ppc/translate/fp-impl.inc.c
+index d8e27bf4d5..9f7868ee28 100644
+--- a/target/ppc/translate/fp-impl.inc.c
++++ b/target/ppc/translate/fp-impl.inc.c
+@@ -781,7 +781,7 @@ static void gen_mtfsb1(DisasContext *ctx)
+         tcg_gen_trunc_tl_i32(cpu_crf[1], cpu_fpscr);
+         tcg_gen_shri_i32(cpu_crf[1], cpu_crf[1], FPSCR_OX);
+     }
+-    /* We can raise a differed exception */
++    /* We can raise a deferred exception */
+     gen_helper_float_check_status(cpu_env);
+ }
+ 
+@@ -817,7 +817,7 @@ static void gen_mtfsf(DisasContext *ctx)
+         tcg_gen_trunc_tl_i32(cpu_crf[1], cpu_fpscr);
+         tcg_gen_shri_i32(cpu_crf[1], cpu_crf[1], FPSCR_OX);
+     }
+-    /* We can raise a differed exception */
++    /* We can raise a deferred exception */
+     gen_helper_float_check_status(cpu_env);
+     tcg_temp_free_i64(t1);
+ }
+@@ -850,7 +850,7 @@ static void gen_mtfsfi(DisasContext *ctx)
+         tcg_gen_trunc_tl_i32(cpu_crf[1], cpu_fpscr);
+         tcg_gen_shri_i32(cpu_crf[1], cpu_crf[1], FPSCR_OX);
+     }
+-    /* We can raise a differed exception */
++    /* We can raise a deferred exception */
+     gen_helper_float_check_status(cpu_env);
+ }
+ 
+-- 
+2.21.1
+
 
