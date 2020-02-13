@@ -1,66 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j2ELp-0004Pl-QU
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Feb 2020 08:16:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46421)
+	id 1j2FU7-0003eN-Nl
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Feb 2020 09:28:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57662)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1j2ELn-0004PE-E0
- for qemu-trivial@nongnu.org; Thu, 13 Feb 2020 08:16:16 -0500
+ (envelope-from <armbru@redhat.com>) id 1j2FU5-0003Z2-Af
+ for qemu-trivial@nongnu.org; Thu, 13 Feb 2020 09:28:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1j2ELm-0006Q8-Da
- for qemu-trivial@nongnu.org; Thu, 13 Feb 2020 08:16:15 -0500
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:33164)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1j2ELm-0006Pr-8T
- for qemu-trivial@nongnu.org; Thu, 13 Feb 2020 08:16:14 -0500
-Received: by mail-oi1-x242.google.com with SMTP id q81so5729094oig.0
- for <qemu-trivial@nongnu.org>; Thu, 13 Feb 2020 05:16:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=wVx3wzehpduoSQv0gmHbt4XIlHdewkwFImduFZOCOho=;
- b=RmRZBBY3IRbNK8d3pieTIoU077aYA+YHNbHpoOTXw5UufRmtHGxLVS+jPVbKgbUSsl
- WxOardz0b8idC/1vmIMTbZQVHz37g/l7q6fgLsB2v0fwfl15pNlglQkQqt+jiujWuhwP
- /fKWpqAcst8dXlnrsD5DaubaopP0Ve0MHLxdjjrrAKXCQdyfs4xon5itn278X8WGjKZT
- nsMnY2zEM3ApHflzDqmnyisHue2oYxHGStwe0CAkg6c3rpmlzZ49qbQMIbep7hFUidMp
- pUDNwM5+bKRa4c7Nfa/Yy56OEz9HvdiTr0m4hsOB2OgvtiHdNM4JaBBUaH+oOxX+4jmr
- 3oUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=wVx3wzehpduoSQv0gmHbt4XIlHdewkwFImduFZOCOho=;
- b=EptFx3FDbgbBmqUWOKq19VgRQ2wwECahfGyHkPw8zGRgkPGmpeE07dQymYV/ZAEbh3
- Ny/+XZ/piw/3ulF2Uxysumr6Sq18zkhUu7E/UFD7wqBhxSyRemSTOGnFFT0k5rTfilLQ
- eG67U6rChdEl8qKjaDDBpK7uovHtBW3mrOVeUUOX1s12IEM6MGefDSONyzLny1z5o8NP
- IXDm72Um9kt2NPTv2HEFo4ajEab+1evjyKgjF4PO/H4D2/uMYvduwrFoI4HFCtzIEluz
- xYhyX53sd1BkjQJE0/4TBVbbaPcgaK4b6HeuAWWdkkt1GR1bfj1huS/+N+h4N3yMjMxL
- fuvA==
-X-Gm-Message-State: APjAAAXlBP5oQTuLL996qvsBdKfhITDJhgUQ81MfGsZADMYPwvTbwwSk
- Y8UWBHhPlrBO9TjKu/KziPM4tFepcYnlOhGZ9lyn2g==
-X-Google-Smtp-Source: APXvYqxtZNtes+kLRgHkQOFx5mP457m+KNtH5aOODdohWiEwGwVztzU6lDV2XQTuIAMD2eczvbrB2lJGKOagifv3bFY=
-X-Received: by 2002:a54:4f16:: with SMTP id e22mr2913102oiy.170.1581599773558; 
- Thu, 13 Feb 2020 05:16:13 -0800 (PST)
-MIME-Version: 1.0
-References: <20200213025603.149432-1-kuhn.chenqun@huawei.com>
- <17ae20f0-fcf6-f9a0-b8e3-808255994dfb@redhat.com>
-In-Reply-To: <17ae20f0-fcf6-f9a0-b8e3-808255994dfb@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 13 Feb 2020 13:16:02 +0000
-Message-ID: <CAFEAcA9OkOn6icoyLFi8Di6iY_PjtnQjKnjqeDgd7UCAPsMhNw@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/char/exynos4210_uart: Fix memleaks in
+ (envelope-from <armbru@redhat.com>) id 1j2FU4-0005Lo-0D
+ for qemu-trivial@nongnu.org; Thu, 13 Feb 2020 09:28:53 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:31565
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1j2FU3-0005JB-Sn
+ for qemu-trivial@nongnu.org; Thu, 13 Feb 2020 09:28:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581604131;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=RBSzIVY1Yxxy+SMOPuUm9xVNxtbGI4btvDOaPLwtk5s=;
+ b=RsyVf6smgpruS4YBMdG5p6MvafqCFeTLVj8JXh68Rs0xsOlL4KUS5TuIP70aeh+OYrS/RR
+ 2AcS1Hc5Qv5bNdpjOlOKL0TwPwVoIkWVMcWIeN2uzQtGJL6Jb+aFKLehe1hAw0+pAeDz0H
+ 3rAPN7RR05v8fY4LFJideh1q1lhiSOs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-210-sZg428NbOd2-gaHU3wFEDg-1; Thu, 13 Feb 2020 09:28:46 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 09F1B8E9EBA;
+ Thu, 13 Feb 2020 14:28:45 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-117-234.ams2.redhat.com
+ [10.36.117.234])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9F01919C70;
+ Thu, 13 Feb 2020 14:28:32 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 19BB911385C9; Thu, 13 Feb 2020 15:28:31 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ "peter.maydell\@linaro.org" <peter.maydell@linaro.org>,  Zhanghailiang
+ <zhang.zhanghailiang@huawei.com>,  "i.mitsyanko\@gmail.com"
+ <i.mitsyanko@gmail.com>,  "qemu-devel\@nongnu.org"
+ <qemu-devel@nongnu.org>,  "qemu-trivial\@nongnu.org"
+ <qemu-trivial@nongnu.org>,  "Chenqun \(kuhn\)" <kuhn.chenqun@huawei.com>
+Subject: Re: [PATCH] hw/char/exynos4210_uart: Fix memleaks in
  exynos4210_uart_init
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: kuhn.chenqun@huawei.com, QEMU Developers <qemu-devel@nongnu.org>, 
- Igor Mitsyanko <i.mitsyanko@gmail.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- zhanghailiang <zhang.zhanghailiang@huawei.com>, 
- Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+References: <20200212033641.249560-1-kuhn.chenqun@huawei.com>
+ <ce5d39c0-d532-4b54-a39c-01c9c97cbb59@redhat.com>
+ <7412CDE03601674DA8197E2EBD8937E83B1163F4@dggemm531-mbx.china.huawei.com>
+ <99531e05-f8fc-ef0a-ca62-6d477c899e78@redhat.com>
+ <20200212161957.GA5028@habkost.net>
+Date: Thu, 13 Feb 2020 15:28:31 +0100
+In-Reply-To: <20200212161957.GA5028@habkost.net> (Eduardo Habkost's message of
+ "Wed, 12 Feb 2020 11:19:57 -0500")
+Message-ID: <87r1yy4l4g.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: sZg428NbOd2-gaHU3wFEDg-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::242
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,46 +78,116 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Feb 2020 13:16:16 -0000
+X-List-Received-Date: Thu, 13 Feb 2020 14:28:54 -0000
 
-On Thu, 13 Feb 2020 at 10:09, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
+Eduardo Habkost <ehabkost@redhat.com> writes:
+
+> On Wed, Feb 12, 2020 at 08:39:55AM +0100, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+>> Cc'ing Eduardo & Markus.
+>>=20
+>> On 2/12/20 7:44 AM, Chenqun (kuhn) wrote:
+>> > > -----Original Message-----
+>> > > From: Philippe Mathieu-Daud=C3=A9 [mailto:philmd@redhat.com]
+>> > > Sent: Wednesday, February 12, 2020 2:16 PM
+>> > > To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>; qemu-
+>> > > devel@nongnu.org; i.mitsyanko@gmail.com; peter.maydell@linaro.org
+>> > > Cc: qemu-trivial@nongnu.org; Zhanghailiang
+>> > > <zhang.zhanghailiang@huawei.com>
+>> > > Subject: Re: [PATCH] hw/char/exynos4210_uart: Fix memleaks in
+>> > > exynos4210_uart_init
+>> > >=20
+>> > > On 2/12/20 4:36 AM, kuhn.chenqun@huawei.com wrote:
+>> > > > From: Chen Qun <kuhn.chenqun@huawei.com>
+>> > > >=20
+>> > > > It's easy to reproduce as follow:
+>> > > > virsh qemu-monitor-command vm1 --pretty '{"execute":
+>> > > > "device-list-properties", "arguments":{"typename":"exynos4210.uart=
+"}}'
+>> > > >=20
+>> > > > ASAN shows memory leak stack:
+>> > > >     #1 0xfffd896d71cb in g_malloc0 (/lib64/libglib-2.0.so.0+0x571c=
+b)
+>> > > >     #2 0xaaad270beee3 in timer_new_full /qemu/include/qemu/timer.h=
+:530
+>> > > >     #3 0xaaad270beee3 in timer_new /qemu/include/qemu/timer.h:551
+>> > > >     #4 0xaaad270beee3 in timer_new_ns /qemu/include/qemu/timer.h:5=
+69
+>> > > >     #5 0xaaad270beee3 in exynos4210_uart_init
+>> > > /qemu/hw/char/exynos4210_uart.c:677
+>> > > >     #6 0xaaad275c8f4f in object_initialize_with_type /qemu/qom/obj=
+ect.c:516
+>> > > >     #7 0xaaad275c91bb in object_new_with_type /qemu/qom/object.c:6=
+84
+>> > > >     #8 0xaaad2755df2f in qmp_device_list_properties
+>> > > > /qemu/qom/qom-qmp-cmds.c:152
+>> > > >=20
+>> > > > Reported-by: Euler Robot <euler.robot@huawei.com>
+>> > > > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+>> > > > ---
+>> > > >    hw/char/exynos4210_uart.c | 8 ++++----
+>> > > >    1 file changed, 4 insertions(+), 4 deletions(-)
+>> > > >=20
+>> > > > diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
+>> > > > index 25d6588e41..5048db5410 100644
+>> > > > --- a/hw/char/exynos4210_uart.c
+>> > > > +++ b/hw/char/exynos4210_uart.c
+>> > > > @@ -674,10 +674,6 @@ static void exynos4210_uart_init(Object *obj)
+>> > > >        SysBusDevice *dev =3D SYS_BUS_DEVICE(obj);
+>> > > >        Exynos4210UartState *s =3D EXYNOS4210_UART(dev);
+>> > > >=20
+>> > > > -    s->fifo_timeout_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL,
+>> > > > -                                         exynos4210_uart_timeout_=
+int, s);
+>> > > > -    s->wordtime =3D NANOSECONDS_PER_SECOND * 10 / 9600;
+>> > >=20
+>> > > Why are you moving s->wordtime from init() to realize()?
+>> > >=20
+>> > Hi  Philippe,  thanks for your reply!
+>> >=20
+>> > Because I found the variable wordtime is usually used with fifo_timeou=
+t_timer.
+>> > Eg, they are used together in the exynos4210_uart_rx_timeout_set funct=
+ion.
+>> >=20
+>> > I didn't find anything wrong with wordtime in the realize().
+>> > Does it have any other effects?
+>>=20
+>> IIUC when we use both init() and realize(), realize() should only contai=
+ns
+>> on code that consumes the object properties... But maybe the design is n=
+ot
+>> clear. Then why not move all the init() code to realize()?
 >
-> On 2/13/20 3:56 AM, kuhn.chenqun@huawei.com wrote:
-> > From: Chen Qun <kuhn.chenqun@huawei.com>
-> >
-> > It's easy to reproduce as follow:
-> > virsh qemu-monitor-command vm1 --pretty '{"execute": "device-list-prope=
-rties",
-> > "arguments":{"typename":"exynos4210.uart"}}'
-> >
-> > ASAN shows memory leak stack:
-> >    #1 0xfffd896d71cb in g_malloc0 (/lib64/libglib-2.0.so.0+0x571cb)
-> >    #2 0xaaad270beee3 in timer_new_full /qemu/include/qemu/timer.h:530
-> >    #3 0xaaad270beee3 in timer_new /qemu/include/qemu/timer.h:551
-> >    #4 0xaaad270beee3 in timer_new_ns /qemu/include/qemu/timer.h:569
-> >    #5 0xaaad270beee3 in exynos4210_uart_init /qemu/hw/char/exynos4210_u=
-art.c:677
-> >    #6 0xaaad275c8f4f in object_initialize_with_type /qemu/qom/object.c:=
-516
-> >    #7 0xaaad275c91bb in object_new_with_type /qemu/qom/object.c:684
-> >    #8 0xaaad2755df2f in qmp_device_list_properties /qemu/qom/qom-qmp-cm=
-ds.c:152
-> >
-> > Reported-by: Euler Robot <euler.robot@huawei.com>
-> > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> > ---
-> > Changes V2 to V1:
-> > -Keep s->wordtime in exynos4210_uart_init (Base on Eduardo and Philippe=
-'s comments).
->
-> Thanks.
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Normally I would recommend the opposite: delay as much as
+> possible to realize(), to avoid unwanted side effects when (e.g.)
+> running qom-list-properties.
 
+Sadly, our documentation on device initialization and realization is
+rather sparse, and developers are left guessing.  Their guesses are
+often based on what existing code does.  Some of the existing code even
+gets things right.
 
+A few rules from the top of my head:
 
-Applied to target-arm.next, thanks.
+* Creating and immediately destroying an object must be safe and free of
+  side effects: initialization may only touch the object itself, and
+  finalization must clean up everything initialization creates.
 
--- PMM
+* unrealize() must clean up everything realize() creates.
+
+* Since initialization cannot fail, code that needs to fail gracefully
+  must live in realize().
+
+* Since property values get set between initialization and realization,
+  code that uses property values must live in realize().
+
+* Dynamic properties have to be created in initialization to be visible
+  in introspection.
+
+> But as s->wordtime is a simple struct field (that we could even
+> decide to expose to the outside as a read-only QOM property), it
+> doesn't really matter.  Personally, I would keep it where it is
+> just to avoid churn.
+
 
