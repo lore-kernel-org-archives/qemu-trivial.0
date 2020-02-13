@@ -1,42 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j21mi-0000tR-Df
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2020 18:51:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60680)
+	id 1j22Ta-0001Cb-Jh
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2020 19:35:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38745)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1j21me-0000na-SI
- for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 18:51:10 -0500
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1j22TQ-0001BT-8E
+ for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 19:35:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1j21md-0004s1-MU
- for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 18:51:08 -0500
-Received: from ozlabs.org ([203.11.71.1]:45405)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1j21mZ-0004nb-Hq; Wed, 12 Feb 2020 18:51:04 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 48HxH73r17z9sPF; Thu, 13 Feb 2020 10:50:59 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1581551459;
- bh=9AaV8EIijB3c/HD+ZEBPRd/vUs+20dxRBeRLER7h4x4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=gmSEyH34vGlyEhAJzh+WSfoOI6uF+XUoxrpgz4GhVrUhW6RYqFOiV3prrMDy9c0ml
- UjeE04sx4q5c6VjJ1JflfhWAHydj3Ym7SZy7suBI5ThuCInUFMWIeaoecpnfCcJAEa
- g0qJtJgXdL9qPFK16A5yuoTYJ1vncS1tgPLItUOY=
-Date: Thu, 13 Feb 2020 10:48:13 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH] target/ppc/cpu.h: Remove duplicate includes
-Message-ID: <20200212234813.GA124369@umbus.fritz.box>
-References: <20200212223207.5A37574637F@zero.eik.bme.hu>
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1j22TF-0002PT-AB
+ for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 19:35:11 -0500
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:36525)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1j22TF-0002OZ-3O; Wed, 12 Feb 2020 19:35:09 -0500
+Received: by mail-oi1-x244.google.com with SMTP id c16so4027017oic.3;
+ Wed, 12 Feb 2020 16:35:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=neCJl8v2+5Bvn9SnpKvBpQ8bVOHvbi7jlXoVjtff8vg=;
+ b=lre//vQxJjPmaNAlx+N+DcgavsifRIRr9JJDazR3zVybwkG0DXrwHuEEqrr7qAIS9G
+ J/P2dZGxnfOYMN2N/RHBQ1aOQV5OHObLLeJYJ+yMSsuAZTMg1e0iTjjdoNhJF2819cEO
+ /wtb/ZhOJzBc3u8spVaLI8vBZH5mkXi9wpBuGChgQ4zS/wEkqDpi7QLbMwrALueUlJc8
+ EdAOcaYKwQCdjPLeIHzE0sl4oWzULfAO73+u9/udFU/T/O9AOjcIb0xqpUnvJ0v/+Fvx
+ RoHxD2xMr5kf/rDp36giD/2jC/VJeQtmJIayBwVch3ef1CNBkjI6829tb07uZP6uVCed
+ 5cVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=neCJl8v2+5Bvn9SnpKvBpQ8bVOHvbi7jlXoVjtff8vg=;
+ b=lNBjPdK1yB347LSWpW/C2KrWujtznY0bcFK7mXS7HBFlfLH8wb8SOhY2kkx3HZzUgi
+ Z5dZ+1w5ZvWfzlelKYjyhlSZryTG934Bu8i9cGSKPpl6ctOQYbIbKi8XQiTXHAAuLay4
+ rnlDagW2MO0OW5/+zokUh9kpoEF16/DsRDxrQkGtQmQ4Qi4uV9kWZZH/h9Vwbpa6IvoK
+ +X1lhZ3MzrnputQVXMW9CBdmNq5c4l1Yk9SSYxUunA+90qgwUxWdmHNngNGss1dGy6+1
+ xGNjV/bY4YSakKmIw81nDACCrW88xwKdoiucjwcpFXaxKvgstTPJshR2QvJPAkzRsL92
+ YZvw==
+X-Gm-Message-State: APjAAAVYaNwonaFy6rJR2Y3tqklTum7VW6EtIHMP4d+Zfxe/M1RlnXt2
+ 7TKyHQcy/dhHh3S6u3hbSseJDv3yERSV+I//vkQ=
+X-Google-Smtp-Source: APXvYqziMD6I7xYH3SY9CT1q5q7ho+oW+jLGz0Put8FIV24y21BzE8BOS7xfWtWWvveKK2ZZCtrbWKOwiR6ql2AseKA=
+X-Received: by 2002:aca:5248:: with SMTP id g69mr1196391oib.106.1581554107911; 
+ Wed, 12 Feb 2020 16:35:07 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="jI8keyz6grp/JLjh"
-Content-Disposition: inline
-In-Reply-To: <20200212223207.5A37574637F@zero.eik.bme.hu>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 203.11.71.1
+References: <20191221155306.49221-1-jhogan@kernel.org>
+ <CAAdtpL7CrEAZz5GWJoYCegchQ=-hdkcih07icgoFd-ghJ3nMBw@mail.gmail.com>
+In-Reply-To: <CAAdtpL7CrEAZz5GWJoYCegchQ=-hdkcih07icgoFd-ghJ3nMBw@mail.gmail.com>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Thu, 13 Feb 2020 01:34:57 +0100
+Message-ID: <CAL1e-=jdpp2W-B1cERU4srRQUkPTjewM3hVrndoh4nr-vPSRGA@mail.gmail.com>
+Subject: Re: [PATCH] MAINTAINERS: Orphan MIPS KVM CPUs
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe@mathieu-daude.net>
+Cc: James Hogan <jhogan@kernel.org>, QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>, 
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Paul Burton <paulburton@kernel.org>, 
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Aurelien Jarno <aurelien@aurel32.net>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::244
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -48,66 +72,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Feb 2020 23:51:10 -0000
+X-List-Received-Date: Thu, 13 Feb 2020 00:35:26 -0000
+
+On Wed, Feb 12, 2020 at 7:44 PM Philippe Mathieu-Daud=C3=A9
+<philippe@mathieu-daude.net> wrote:
+>
+> Cc'ing qemu-trivial@ & Paolo.
+>
+
+We are in the process of handling this within the company, and this
+patch should go via MIPS tree, not trivial tree - will be updated when
+the opinions are crystallized, and all consultations with others were
+done. There is no rush.
+
+Thanks,
+Aleksandar
 
 
---jI8keyz6grp/JLjh
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Feb 12, 2020 at 11:26:14PM +0100, BALATON Zoltan wrote:
-> Commit 74433bf083b added some includes but added them twice. Since
-> these are guarded against multiple inclusion including them once is
-> enough.
->=20
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-
-Applied to ppc-for-5.0, thanks.
-
-> ---
->  target/ppc/cpu.h | 2 --
->  1 file changed, 2 deletions(-)
->=20
-> diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-> index 3a1eb76004..07dd2b4da7 100644
-> --- a/target/ppc/cpu.h
-> +++ b/target/ppc/cpu.h
-> @@ -23,8 +23,6 @@
->  #include "qemu/int128.h"
->  #include "exec/cpu-defs.h"
->  #include "cpu-qom.h"
-> -#include "exec/cpu-defs.h"
-> -#include "cpu-qom.h"
-> =20
->  /* #define PPC_EMULATE_32BITS_HYPV */
-> =20
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---jI8keyz6grp/JLjh
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl5Ejr0ACgkQbDjKyiDZ
-s5K1uBAAi4YYocwjXtjZZoa5hUG7QG2n6wSmTF1/eUw/KIrF4jIQm2y5DwxkWq+w
-FWtPVbMPit//jrbyvtzmpzHMQbiDbnePP5zfaySl7dDJbrw3nkErJF8YyCMIhQpM
-ohVIjTwcFj0PqVFv65vlHo2ecwFh26oXe3BX5foUtb3XSBNrrMeyQwaP6xYmyQtd
-wdsa3d0BRlkZIAhtRiceVel4rcB3HXQ5kxNaTmaNDAtkTNp/LKXpTSYvfEJMAK2N
-28Z89k6tdC9dYJ0FhX6tj4EJCAr1YjUTWwSgwmE3WyYxK5w/jF5N2bklQ0IGAM76
-5r8MZcWpqvlr69nw8JZfVPI3F4Ee1zEuY8HkW1fvw+u5W5griWaBNpn16TZncP2z
-YTZJqhf+CwTCNgop+XrFJrBdfnUur9w8bSkoyhuk7KdebPWp9XLxTOE51/CTtaXG
-NNGs81V6MuCxcEQGi8yl9dU2wfHSFcwKmV+bWziAWoOUA4V3WOzltJm+2K9QZHAO
-HQDrrX0zwRJ9AXB6GD9qcZDlA4UW64Mdgo+/73eoRw5ByIcjo5T8KyTo7LB20yK0
-FF/49l+Vj61LwSi9aoqrNQSME+/LzS6H5LoOQhx/DCj3aD7aWYJjHZaGBMbvBiKE
-UykmQt8bIIrCzD6nwsdo1crnsbeKq2ImPwinJ8UMuO653RUH3BI=
-=/MHu
------END PGP SIGNATURE-----
-
---jI8keyz6grp/JLjh--
+> On Sat, Dec 21, 2019 at 5:42 PM James Hogan <jhogan@kernel.org> wrote:
+> >
+> > I haven't been active for 18 months, and don't have the hardware set up
+> > to test KVM for MIPS, so mark it as orphaned and remove myself as
+> > maintainer. Hopefully somebody from MIPS can pick this up.
+> >
+> > Signed-off-by: James Hogan <jhogan@kernel.org>
+> > Cc: Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
+> > Cc: Aurelien Jarno <aurelien@aurel32.net>
+> > Cc: Aleksandar Markovic <amarkovic@wavecomp.com>
+> > Cc: qemu-devel@nongnu.org
+> > ---
+> >  MAINTAINERS | 3 +--
+> >  1 file changed, 1 insertion(+), 2 deletions(-)
+> >
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index 740401bcbb86..a798ad2b0b8a 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -363,9 +363,8 @@ S: Maintained
+> >  F: target/arm/kvm.c
+> >
+> >  MIPS KVM CPUs
+> > -M: James Hogan <jhogan@kernel.org>
+> >  R: Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
+> > -S: Maintained
+> > +S: Orphan
+> >  F: target/mips/kvm.c
+> >
+> >  PPC KVM CPUs
+> > --
+> > 2.24.0
+> >
+> >
+>
 
