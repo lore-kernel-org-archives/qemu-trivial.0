@@ -1,66 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j22Ta-0001Cb-Jh
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2020 19:35:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38745)
+	id 1j23xU-00011U-LG
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Feb 2020 21:10:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52894)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1j22TQ-0001BT-8E
- for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 19:35:26 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j23xR-0000x3-1r
+ for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 21:10:26 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1j22TF-0002PT-AB
- for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 19:35:11 -0500
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:36525)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
- id 1j22TF-0002OZ-3O; Wed, 12 Feb 2020 19:35:09 -0500
-Received: by mail-oi1-x244.google.com with SMTP id c16so4027017oic.3;
- Wed, 12 Feb 2020 16:35:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=neCJl8v2+5Bvn9SnpKvBpQ8bVOHvbi7jlXoVjtff8vg=;
- b=lre//vQxJjPmaNAlx+N+DcgavsifRIRr9JJDazR3zVybwkG0DXrwHuEEqrr7qAIS9G
- J/P2dZGxnfOYMN2N/RHBQ1aOQV5OHObLLeJYJ+yMSsuAZTMg1e0iTjjdoNhJF2819cEO
- /wtb/ZhOJzBc3u8spVaLI8vBZH5mkXi9wpBuGChgQ4zS/wEkqDpi7QLbMwrALueUlJc8
- EdAOcaYKwQCdjPLeIHzE0sl4oWzULfAO73+u9/udFU/T/O9AOjcIb0xqpUnvJ0v/+Fvx
- RoHxD2xMr5kf/rDp36giD/2jC/VJeQtmJIayBwVch3ef1CNBkjI6829tb07uZP6uVCed
- 5cVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=neCJl8v2+5Bvn9SnpKvBpQ8bVOHvbi7jlXoVjtff8vg=;
- b=lNBjPdK1yB347LSWpW/C2KrWujtznY0bcFK7mXS7HBFlfLH8wb8SOhY2kkx3HZzUgi
- Z5dZ+1w5ZvWfzlelKYjyhlSZryTG934Bu8i9cGSKPpl6ctOQYbIbKi8XQiTXHAAuLay4
- rnlDagW2MO0OW5/+zokUh9kpoEF16/DsRDxrQkGtQmQ4Qi4uV9kWZZH/h9Vwbpa6IvoK
- +X1lhZ3MzrnputQVXMW9CBdmNq5c4l1Yk9SSYxUunA+90qgwUxWdmHNngNGss1dGy6+1
- xGNjV/bY4YSakKmIw81nDACCrW88xwKdoiucjwcpFXaxKvgstTPJshR2QvJPAkzRsL92
- YZvw==
-X-Gm-Message-State: APjAAAVYaNwonaFy6rJR2Y3tqklTum7VW6EtIHMP4d+Zfxe/M1RlnXt2
- 7TKyHQcy/dhHh3S6u3hbSseJDv3yERSV+I//vkQ=
-X-Google-Smtp-Source: APXvYqziMD6I7xYH3SY9CT1q5q7ho+oW+jLGz0Put8FIV24y21BzE8BOS7xfWtWWvveKK2ZZCtrbWKOwiR6ql2AseKA=
-X-Received: by 2002:aca:5248:: with SMTP id g69mr1196391oib.106.1581554107911; 
- Wed, 12 Feb 2020 16:35:07 -0800 (PST)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j23xP-0000sB-Nk
+ for qemu-trivial@nongnu.org; Wed, 12 Feb 2020 21:10:24 -0500
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2436 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1j23xM-0000l9-NL; Wed, 12 Feb 2020 21:10:21 -0500
+Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.57])
+ by Forcepoint Email with ESMTP id 7BD41A594BC1037DAB50;
+ Thu, 13 Feb 2020 10:10:17 +0800 (CST)
+Received: from DGGEMM422-HUB.china.huawei.com (10.1.198.39) by
+ DGGEMM404-HUB.china.huawei.com (10.3.20.212) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 13 Feb 2020 10:10:16 +0800
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.201]) by
+ dggemm422-hub.china.huawei.com ([10.1.198.39]) with mapi id 14.03.0439.000;
+ Thu, 13 Feb 2020 10:10:10 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Eduardo Habkost <ehabkost@redhat.com>,
+ =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "i.mitsyanko@gmail.com"
+ <i.mitsyanko@gmail.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ Markus Armbruster <armbru@redhat.com>
+Subject: RE: [PATCH] hw/char/exynos4210_uart: Fix memleaks in
+ exynos4210_uart_init
+Thread-Topic: [PATCH] hw/char/exynos4210_uart: Fix memleaks in
+ exynos4210_uart_init
+Thread-Index: AQHV4VWsc9vZRGjal0y1pX+CTm1jdKgWjwaAgACIWKD//48WgIAAkUyAgAEnmAA=
+Date: Thu, 13 Feb 2020 02:10:09 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B116A87@dggemm531-mbx.china.huawei.com>
+References: <20200212033641.249560-1-kuhn.chenqun@huawei.com>
+ <ce5d39c0-d532-4b54-a39c-01c9c97cbb59@redhat.com>
+ <7412CDE03601674DA8197E2EBD8937E83B1163F4@dggemm531-mbx.china.huawei.com>
+ <99531e05-f8fc-ef0a-ca62-6d477c899e78@redhat.com>
+ <20200212161957.GA5028@habkost.net>
+In-Reply-To: <20200212161957.GA5028@habkost.net>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20191221155306.49221-1-jhogan@kernel.org>
- <CAAdtpL7CrEAZz5GWJoYCegchQ=-hdkcih07icgoFd-ghJ3nMBw@mail.gmail.com>
-In-Reply-To: <CAAdtpL7CrEAZz5GWJoYCegchQ=-hdkcih07icgoFd-ghJ3nMBw@mail.gmail.com>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Thu, 13 Feb 2020 01:34:57 +0100
-Message-ID: <CAL1e-=jdpp2W-B1cERU4srRQUkPTjewM3hVrndoh4nr-vPSRGA@mail.gmail.com>
-Subject: Re: [PATCH] MAINTAINERS: Orphan MIPS KVM CPUs
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe@mathieu-daude.net>
-Cc: James Hogan <jhogan@kernel.org>, QEMU Trivial <qemu-trivial@nongnu.org>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>, 
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Paul Burton <paulburton@kernel.org>, 
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Aurelien Jarno <aurelien@aurel32.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::244
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 45.249.212.187
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,56 +65,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Feb 2020 00:35:26 -0000
+X-List-Received-Date: Thu, 13 Feb 2020 02:10:26 -0000
 
-On Wed, Feb 12, 2020 at 7:44 PM Philippe Mathieu-Daud=C3=A9
-<philippe@mathieu-daude.net> wrote:
->
-> Cc'ing qemu-trivial@ & Paolo.
->
-
-We are in the process of handling this within the company, and this
-patch should go via MIPS tree, not trivial tree - will be updated when
-the opinions are crystallized, and all consultations with others were
-done. There is no rush.
-
-Thanks,
-Aleksandar
-
-
-> On Sat, Dec 21, 2019 at 5:42 PM James Hogan <jhogan@kernel.org> wrote:
-> >
-> > I haven't been active for 18 months, and don't have the hardware set up
-> > to test KVM for MIPS, so mark it as orphaned and remove myself as
-> > maintainer. Hopefully somebody from MIPS can pick this up.
-> >
-> > Signed-off-by: James Hogan <jhogan@kernel.org>
-> > Cc: Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
-> > Cc: Aurelien Jarno <aurelien@aurel32.net>
-> > Cc: Aleksandar Markovic <amarkovic@wavecomp.com>
-> > Cc: qemu-devel@nongnu.org
-> > ---
-> >  MAINTAINERS | 3 +--
-> >  1 file changed, 1 insertion(+), 2 deletions(-)
-> >
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index 740401bcbb86..a798ad2b0b8a 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -363,9 +363,8 @@ S: Maintained
-> >  F: target/arm/kvm.c
-> >
-> >  MIPS KVM CPUs
-> > -M: James Hogan <jhogan@kernel.org>
-> >  R: Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>
-> > -S: Maintained
-> > +S: Orphan
-> >  F: target/mips/kvm.c
-> >
-> >  PPC KVM CPUs
-> > --
-> > 2.24.0
-> >
-> >
->
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogRWR1YXJkbyBIYWJrb3N0IFttYWls
+dG86ZWhhYmtvc3RAcmVkaGF0LmNvbV0NCj5TZW50OiBUaHVyc2RheSwgRmVicnVhcnkgMTMsIDIw
+MjAgMTI6MjAgQU0NCj5UbzogUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kgPHBoaWxtZEByZWRoYXQu
+Y29tPg0KPkNjOiBDaGVucXVuIChrdWhuKSA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+OyBxZW11
+LQ0KPmRldmVsQG5vbmdudS5vcmc7IGkubWl0c3lhbmtvQGdtYWlsLmNvbTsgcGV0ZXIubWF5ZGVs
+bEBsaW5hcm8ub3JnOw0KPnFlbXUtdHJpdmlhbEBub25nbnUub3JnOyBaaGFuZ2hhaWxpYW5nDQo+
+PHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IE1hcmt1cyBBcm1icnVzdGVyDQo+PGFy
+bWJydUByZWRoYXQuY29tPg0KPlN1YmplY3Q6IFJlOiBbUEFUQ0hdIGh3L2NoYXIvZXh5bm9zNDIx
+MF91YXJ0OiBGaXggbWVtbGVha3MgaW4NCj5leHlub3M0MjEwX3VhcnRfaW5pdA0KPg0KPk9uIFdl
+ZCwgRmViIDEyLCAyMDIwIGF0IDA4OjM5OjU1QU0gKzAxMDAsIFBoaWxpcHBlIE1hdGhpZXUtRGF1
+ZMOpIHdyb3RlOg0KPj4gQ2MnaW5nIEVkdWFyZG8gJiBNYXJrdXMuDQo+Pg0KPj4gT24gMi8xMi8y
+MCA3OjQ0IEFNLCBDaGVucXVuIChrdWhuKSB3cm90ZToNCj4+ID4gPiAtLS0tLU9yaWdpbmFsIE1l
+c3NhZ2UtLS0tLQ0KPj4gPiA+IEZyb206IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMOpIFttYWlsdG86
+cGhpbG1kQHJlZGhhdC5jb21dDQo+PiA+ID4gU2VudDogV2VkbmVzZGF5LCBGZWJydWFyeSAxMiwg
+MjAyMCAyOjE2IFBNDQo+PiA+ID4gVG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVh
+d2VpLmNvbT47IHFlbXUtDQo+PiA+ID4gZGV2ZWxAbm9uZ251Lm9yZzsgaS5taXRzeWFua29AZ21h
+aWwuY29tOyBwZXRlci5tYXlkZWxsQGxpbmFyby5vcmcNCj4+ID4gPiBDYzogcWVtdS10cml2aWFs
+QG5vbmdudS5vcmc7IFpoYW5naGFpbGlhbmcNCj4+ID4gPiA8emhhbmcuemhhbmdoYWlsaWFuZ0Bo
+dWF3ZWkuY29tPg0KPj4gPiA+IFN1YmplY3Q6IFJlOiBbUEFUQ0hdIGh3L2NoYXIvZXh5bm9zNDIx
+MF91YXJ0OiBGaXggbWVtbGVha3MgaW4NCj4+ID4gPiBleHlub3M0MjEwX3VhcnRfaW5pdA0KPj4g
+PiA+DQo+PiA+ID4gT24gMi8xMi8yMCA0OjM2IEFNLCBrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbSB3
+cm90ZToNCj4+ID4gPiA+IEZyb206IENoZW4gUXVuIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4N
+Cj4+ID4gPiA+DQo+PiA+ID4gPiBJdCdzIGVhc3kgdG8gcmVwcm9kdWNlIGFzIGZvbGxvdzoNCj4+
+ID4gPiA+IHZpcnNoIHFlbXUtbW9uaXRvci1jb21tYW5kIHZtMSAtLXByZXR0eSAneyJleGVjdXRl
+IjoNCj4+ID4gPiA+ICJkZXZpY2UtbGlzdC1wcm9wZXJ0aWVzIiwNCj4iYXJndW1lbnRzIjp7InR5
+cGVuYW1lIjoiZXh5bm9zNDIxMC51YXJ0In19Jw0KPj4gPiA+ID4NCj4+ID4gPiA+IEFTQU4gc2hv
+d3MgbWVtb3J5IGxlYWsgc3RhY2s6DQo+PiA+ID4gPiAgICAgIzEgMHhmZmZkODk2ZDcxY2IgaW4g
+Z19tYWxsb2MwICgvbGliNjQvbGliZ2xpYi0yLjAuc28uMCsweDU3MWNiKQ0KPj4gPiA+ID4gICAg
+ICMyIDB4YWFhZDI3MGJlZWUzIGluIHRpbWVyX25ld19mdWxsDQo+L3FlbXUvaW5jbHVkZS9xZW11
+L3RpbWVyLmg6NTMwDQo+PiA+ID4gPiAgICAgIzMgMHhhYWFkMjcwYmVlZTMgaW4gdGltZXJfbmV3
+IC9xZW11L2luY2x1ZGUvcWVtdS90aW1lci5oOjU1MQ0KPj4gPiA+ID4gICAgICM0IDB4YWFhZDI3
+MGJlZWUzIGluIHRpbWVyX25ld19ucw0KPi9xZW11L2luY2x1ZGUvcWVtdS90aW1lci5oOjU2OQ0K
+Pj4gPiA+ID4gICAgICM1IDB4YWFhZDI3MGJlZWUzIGluIGV4eW5vczQyMTBfdWFydF9pbml0DQo+
+PiA+ID4gL3FlbXUvaHcvY2hhci9leHlub3M0MjEwX3VhcnQuYzo2NzcNCj4+ID4gPiA+ICAgICAj
+NiAweGFhYWQyNzVjOGY0ZiBpbiBvYmplY3RfaW5pdGlhbGl6ZV93aXRoX3R5cGUNCj4vcWVtdS9x
+b20vb2JqZWN0LmM6NTE2DQo+PiA+ID4gPiAgICAgIzcgMHhhYWFkMjc1YzkxYmIgaW4gb2JqZWN0
+X25ld193aXRoX3R5cGUNCj4vcWVtdS9xb20vb2JqZWN0LmM6Njg0DQo+PiA+ID4gPiAgICAgIzgg
+MHhhYWFkMjc1NWRmMmYgaW4gcW1wX2RldmljZV9saXN0X3Byb3BlcnRpZXMNCj4+ID4gPiA+IC9x
+ZW11L3FvbS9xb20tcW1wLWNtZHMuYzoxNTINCj4+ID4gPiA+DQo+PiA+ID4gPiBSZXBvcnRlZC1i
+eTogRXVsZXIgUm9ib3QgPGV1bGVyLnJvYm90QGh1YXdlaS5jb20+DQo+PiA+ID4gPiBTaWduZWQt
+b2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+PiA+ID4gPiAtLS0N
+Cj4+ID4gPiA+ICAgIGh3L2NoYXIvZXh5bm9zNDIxMF91YXJ0LmMgfCA4ICsrKystLS0tDQo+PiA+
+ID4gPiAgICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQ0K
+Pj4gPiA+ID4NCj4+ID4gPiA+IGRpZmYgLS1naXQgYS9ody9jaGFyL2V4eW5vczQyMTBfdWFydC5j
+DQo+PiA+ID4gPiBiL2h3L2NoYXIvZXh5bm9zNDIxMF91YXJ0LmMgaW5kZXggMjVkNjU4OGU0MS4u
+NTA0OGRiNTQxMCAxMDA2NDQNCj4+ID4gPiA+IC0tLSBhL2h3L2NoYXIvZXh5bm9zNDIxMF91YXJ0
+LmMNCj4+ID4gPiA+ICsrKyBiL2h3L2NoYXIvZXh5bm9zNDIxMF91YXJ0LmMNCj4+ID4gPiA+IEBA
+IC02NzQsMTAgKzY3NCw2IEBAIHN0YXRpYyB2b2lkIGV4eW5vczQyMTBfdWFydF9pbml0KE9iamVj
+dCAqb2JqKQ0KPj4gPiA+ID4gICAgICAgIFN5c0J1c0RldmljZSAqZGV2ID0gU1lTX0JVU19ERVZJ
+Q0Uob2JqKTsNCj4+ID4gPiA+ICAgICAgICBFeHlub3M0MjEwVWFydFN0YXRlICpzID0gRVhZTk9T
+NDIxMF9VQVJUKGRldik7DQo+PiA+ID4gPg0KPj4gPiA+ID4gLSAgICBzLT5maWZvX3RpbWVvdXRf
+dGltZXIgPSB0aW1lcl9uZXdfbnMoUUVNVV9DTE9DS19WSVJUVUFMLA0KPj4gPiA+ID4gLSAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZXh5bm9zNDIxMF91YXJ0X3RpbWVv
+dXRfaW50LCBzKTsNCj4+ID4gPiA+IC0gICAgcy0+d29yZHRpbWUgPSBOQU5PU0VDT05EU19QRVJf
+U0VDT05EICogMTAgLyA5NjAwOw0KPj4gPiA+DQo+PiA+ID4gV2h5IGFyZSB5b3UgbW92aW5nIHMt
+PndvcmR0aW1lIGZyb20gaW5pdCgpIHRvIHJlYWxpemUoKT8NCj4+ID4gPg0KPj4gPiBIaSAgUGhp
+bGlwcGUsICB0aGFua3MgZm9yIHlvdXIgcmVwbHkhDQo+PiA+DQo+PiA+IEJlY2F1c2UgSSBmb3Vu
+ZCB0aGUgdmFyaWFibGUgd29yZHRpbWUgaXMgdXN1YWxseSB1c2VkIHdpdGgNCj5maWZvX3RpbWVv
+dXRfdGltZXIuDQo+PiA+IEVnLCB0aGV5IGFyZSB1c2VkIHRvZ2V0aGVyIGluIHRoZSBleHlub3M0
+MjEwX3VhcnRfcnhfdGltZW91dF9zZXQNCj5mdW5jdGlvbi4NCj4+ID4NCj4+ID4gSSBkaWRuJ3Qg
+ZmluZCBhbnl0aGluZyB3cm9uZyB3aXRoIHdvcmR0aW1lIGluIHRoZSByZWFsaXplKCkuDQo+PiA+
+IERvZXMgaXQgaGF2ZSBhbnkgb3RoZXIgZWZmZWN0cz8NCj4+DQo+PiBJSVVDIHdoZW4gd2UgdXNl
+IGJvdGggaW5pdCgpIGFuZCByZWFsaXplKCksIHJlYWxpemUoKSBzaG91bGQgb25seQ0KPj4gY29u
+dGFpbnMgb24gY29kZSB0aGF0IGNvbnN1bWVzIHRoZSBvYmplY3QgcHJvcGVydGllcy4uLiBCdXQg
+bWF5YmUgdGhlDQo+PiBkZXNpZ24gaXMgbm90IGNsZWFyLiBUaGVuIHdoeSBub3QgbW92ZSBhbGwg
+dGhlIGluaXQoKSBjb2RlIHRvIHJlYWxpemUoKT8NCj4NCj5Ob3JtYWxseSBJIHdvdWxkIHJlY29t
+bWVuZCB0aGUgb3Bwb3NpdGU6IGRlbGF5IGFzIG11Y2ggYXMgcG9zc2libGUgdG8NCj5yZWFsaXpl
+KCksIHRvIGF2b2lkIHVud2FudGVkIHNpZGUgZWZmZWN0cyB3aGVuIChlLmcuKSBydW5uaW5nIHFv
+bS1saXN0LQ0KPnByb3BlcnRpZXMuDQo+DQo+QnV0IGFzIHMtPndvcmR0aW1lIGlzIGEgc2ltcGxl
+IHN0cnVjdCBmaWVsZCAodGhhdCB3ZSBjb3VsZCBldmVuIGRlY2lkZSB0bw0KPmV4cG9zZSB0byB0
+aGUgb3V0c2lkZSBhcyBhIHJlYWQtb25seSBRT00gcHJvcGVydHkpLCBpdCBkb2Vzbid0IHJlYWxs
+eSBtYXR0ZXIuDQo+UGVyc29uYWxseSwgSSB3b3VsZCBrZWVwIGl0IHdoZXJlIGl0IGlzIGp1c3Qg
+dG8gYXZvaWQgY2h1cm4uDQo+DQpPSywgIExldCdzIGtlZXAgcy0+d29yZHRpbWUgIGluIGluaXQo
+KS4gDQpJIHdpbGwgY2hhbmdlIGl0IGluIG5leHQgdmVyc2lvbi4NCg0KVGhhbmtzLg0KPi0tDQo+
+RWR1YXJkbw0KDQo=
 
