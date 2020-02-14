@@ -1,41 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j2Ozy-0000FZ-3Z
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Feb 2020 19:38:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53326)
+	id 1j2Wdp-0007aV-20
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Feb 2020 03:48:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40884)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1j2Ozv-0000Cb-Ce
- for qemu-trivial@nongnu.org; Thu, 13 Feb 2020 19:38:24 -0500
+ (envelope-from <mprivozn@redhat.com>) id 1j2Wdl-0007X2-MD
+ for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 03:48:02 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1j2Ozu-0008AS-8t
- for qemu-trivial@nongnu.org; Thu, 13 Feb 2020 19:38:23 -0500
-Received: from ozlabs.org ([203.11.71.1]:58495)
+ (envelope-from <mprivozn@redhat.com>) id 1j2Wdj-00041K-Oh
+ for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 03:48:00 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:45484
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1j2Ozp-00082l-4I; Thu, 13 Feb 2020 19:38:18 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 48JZH84Q4Mz9sRQ; Fri, 14 Feb 2020 11:38:12 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1581640692;
- bh=kI6wB6nLJa7eJxKlfnD/onqNcUOwyyqXmoPvcV8+QyA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=opTl+bTqpw05z8NXQoXLorjq+yrk0xm4/JsO1z8xsnML4RSIPqUa67bvc0mYQyDGy
- r36o+nIMtFgzTwd7SndgpAtyFyCNin003Fmrs/WyuNoBmxz7m175aI7pz+mmS9+JIw
- mELYo9vP9H9n29stqtQf/8H6A9AoDTeXZ82TmKQI=
-Date: Fri, 14 Feb 2020 11:37:40 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] target/ppc: Fix typo in comments
-Message-ID: <20200214003740.GJ124369@umbus.fritz.box>
-References: <20200214000143.6D67F747DCF@zero.eik.bme.hu>
+ (Exim 4.71) (envelope-from <mprivozn@redhat.com>) id 1j2Wdj-0003yj-L0
+ for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 03:47:59 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581670078;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Bwu+4t0/HKzEP8pExfC2i6Q4uBXSErdypIyIiP5+nOo=;
+ b=bZhL3a9FLq2x2OYv2/6TqTY5EzlPx2Anhr0ZGkGpIy8fjWMvmIpEhWZNC2Fo8FKbvPEVJv
+ ogfsahMSQ34tV6SPwDzDjwyZn1CAEY/875qJ1DPpoUDxO4OdL4YgOaBpEFgg6UyfFs49o9
+ v1tNf3LnMOggOMqOZ3vIMVptgoClYSU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-412-PQzo0OSRMDOKwEckNCSMlg-1; Fri, 14 Feb 2020 03:47:56 -0500
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9A71B800D5A;
+ Fri, 14 Feb 2020 08:47:55 +0000 (UTC)
+Received: from moe.redhat.com (unknown [10.43.2.30])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 135BB6031D;
+ Fri, 14 Feb 2020 08:47:51 +0000 (UTC)
+From: Michal Privoznik <mprivozn@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: alex.williamson@redhat.com,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] Report stringified errno in VFIO related errors
+Date: Fri, 14 Feb 2020 09:47:39 +0100
+Message-Id: <2dc5a0962a38b912e4fa4900f9813b7ea1a9273c.1581670009.git.mprivozn@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="qD3brAgIG4LbUq6d"
-Content-Disposition: inline
-In-Reply-To: <20200214000143.6D67F747DCF@zero.eik.bme.hu>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-MC-Unique: PQzo0OSRMDOKwEckNCSMlg-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 203.11.71.1
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -47,99 +61,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Feb 2020 00:38:24 -0000
+X-List-Received-Date: Fri, 14 Feb 2020 08:48:02 -0000
 
+In a few places we report errno formatted as a negative integer.
+This is not as user friendly as it can be. Use strerror() and/or
+error_setg_errno() instead.
 
---qD3brAgIG4LbUq6d
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ hw/vfio/common.c    | 2 +-
+ util/vfio-helpers.c | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-On Fri, Feb 14, 2020 at 12:57:34AM +0100, BALATON Zoltan wrote:
-> "Deferred" was misspelled as "differed" in some comments, correct this
-> typo,
->=20
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-
-Applied to ppc-for-5.0, thanks.
-
-> ---
->  target/ppc/fpu_helper.c            | 2 +-
->  target/ppc/translate/fp-impl.inc.c | 6 +++---
->  2 files changed, 4 insertions(+), 4 deletions(-)
->=20
-> diff --git a/target/ppc/fpu_helper.c b/target/ppc/fpu_helper.c
-> index dc383242f7..5182764df3 100644
-> --- a/target/ppc/fpu_helper.c
-> +++ b/target/ppc/fpu_helper.c
-> @@ -293,7 +293,7 @@ static void float_invalid_op_vxvc(CPUPPCState *env, b=
-ool set_fpcc,
->          env->error_code =3D POWERPC_EXCP_FP | POWERPC_EXCP_FP_VXVC;
->          /* Update the floating-point enabled exception summary */
->          env->fpscr |=3D FP_FEX;
-> -        /* Exception is differed */
-> +        /* Exception is deferred */
->      }
->  }
-> =20
-> diff --git a/target/ppc/translate/fp-impl.inc.c b/target/ppc/translate/fp=
--impl.inc.c
-> index d8e27bf4d5..9f7868ee28 100644
-> --- a/target/ppc/translate/fp-impl.inc.c
-> +++ b/target/ppc/translate/fp-impl.inc.c
-> @@ -781,7 +781,7 @@ static void gen_mtfsb1(DisasContext *ctx)
->          tcg_gen_trunc_tl_i32(cpu_crf[1], cpu_fpscr);
->          tcg_gen_shri_i32(cpu_crf[1], cpu_crf[1], FPSCR_OX);
->      }
-> -    /* We can raise a differed exception */
-> +    /* We can raise a deferred exception */
->      gen_helper_float_check_status(cpu_env);
->  }
-> =20
-> @@ -817,7 +817,7 @@ static void gen_mtfsf(DisasContext *ctx)
->          tcg_gen_trunc_tl_i32(cpu_crf[1], cpu_fpscr);
->          tcg_gen_shri_i32(cpu_crf[1], cpu_crf[1], FPSCR_OX);
->      }
-> -    /* We can raise a differed exception */
-> +    /* We can raise a deferred exception */
->      gen_helper_float_check_status(cpu_env);
->      tcg_temp_free_i64(t1);
->  }
-> @@ -850,7 +850,7 @@ static void gen_mtfsfi(DisasContext *ctx)
->          tcg_gen_trunc_tl_i32(cpu_crf[1], cpu_fpscr);
->          tcg_gen_shri_i32(cpu_crf[1], cpu_crf[1], FPSCR_OX);
->      }
-> -    /* We can raise a differed exception */
-> +    /* We can raise a deferred exception */
->      gen_helper_float_check_status(cpu_env);
->  }
-> =20
-
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 5ca11488d6..a3a2a82d99 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -352,7 +352,7 @@ static int vfio_dma_map(VFIOContainer *container, hwadd=
+r iova,
+         return 0;
+     }
+=20
+-    error_report("VFIO_MAP_DMA: %d", -errno);
++    error_report("VFIO_MAP_DMA failed: %s", strerror(errno));
+     return -errno;
+ }
+=20
+diff --git a/util/vfio-helpers.c b/util/vfio-helpers.c
+index 813f7ec564..ddd9a96e76 100644
+--- a/util/vfio-helpers.c
++++ b/util/vfio-helpers.c
+@@ -545,7 +545,7 @@ static int qemu_vfio_do_mapping(QEMUVFIOState *s, void =
+*host, size_t size,
+     trace_qemu_vfio_do_mapping(s, host, size, iova);
+=20
+     if (ioctl(s->container, VFIO_IOMMU_MAP_DMA, &dma_map)) {
+-        error_report("VFIO_MAP_DMA: %d", -errno);
++        error_report("VFIO_MAP_DMA failed: %s", strerror(errno));
+         return -errno;
+     }
+     return 0;
+@@ -570,7 +570,7 @@ static void qemu_vfio_undo_mapping(QEMUVFIOState *s, IO=
+VAMapping *mapping,
+     assert(QEMU_IS_ALIGNED(mapping->size, qemu_real_host_page_size));
+     assert(index >=3D 0 && index < s->nr_mappings);
+     if (ioctl(s->container, VFIO_IOMMU_UNMAP_DMA, &unmap)) {
+-        error_setg(errp, "VFIO_UNMAP_DMA failed: %d", -errno);
++        error_setg_errno(errp, errno, "VFIO_UNMAP_DMA failed");
+     }
+     memmove(mapping, &s->mappings[index + 1],
+             sizeof(s->mappings[0]) * (s->nr_mappings - index - 1));
+@@ -669,7 +669,7 @@ int qemu_vfio_dma_reset_temporary(QEMUVFIOState *s)
+     trace_qemu_vfio_dma_reset_temporary(s);
+     qemu_mutex_lock(&s->lock);
+     if (ioctl(s->container, VFIO_IOMMU_UNMAP_DMA, &unmap)) {
+-        error_report("VFIO_UNMAP_DMA: %d", -errno);
++        error_report("VFIO_UNMAP_DMA failed: %s", strerror(errno));
+         qemu_mutex_unlock(&s->lock);
+         return -errno;
+     }
 --=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+2.24.1
 
---qD3brAgIG4LbUq6d
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl5F688ACgkQbDjKyiDZ
-s5JMJxAA4VtPVgBmy8q1eJDNj1PWpPv9g0fPrZvK/HzwWnCOqH9No6ZMGy9FrO3l
-ETIRRz2oIFdhbjSKGft6X9HGHyYmDbPBiuLQ6aPEzn9P7sE0vnP4MyPt4povaAQY
-+vzApV135ZZHWx9oYvM7ZkYtFGoshbiPEKaRRqUIuFW/WKyB5U/PI5cFu+7sBys/
-LEDa5wkjqzo4CLZ4rc5042E+40PagKHrINLdZijiIUr7PbDAgSxxQLB/S5nYVyTz
-0AIcXlogMrY7/VdYOqcNq8AT4eqYarwk0y6ySKTq5hbPQ9vv4cuXuJAtStLArjJW
-l3CEu2bbQT/uZTHb3XHJwuc/sXtv4B4Gjbbpy/hUG9r7RQxzWF95ym3NYlMQW4nm
-A8CtKZyi+md/osLNwjYOUmFT8HbWSDZyE1DYyO7uV4r63CJWW4bcwN6sivT4QLWd
-2ZA5y4pbZ8Rs1sWymvlPeE971YN621GzF2R+ot29RZ7bK/e4FMY7KuykSA2VxyFM
-8e4ubz92D2lzSdnSBSnwzZe1+1uLz2Tfmkih3RTAMUcZUrs7PdCvzZSCtghpFLsL
-NfYrdZ2sXIVm61Jk8OSxXELBdaVrDGglTQSkAbzaaD0xE2utfrNLQVSR/7K9SIQ2
-H0EyRYmuiZr9W3KJmJHPjEc+AnxDSq22tDGHgt/P2QAdOJIs1As=
-=Be9X
------END PGP SIGNATURE-----
-
---qD3brAgIG4LbUq6d--
 
