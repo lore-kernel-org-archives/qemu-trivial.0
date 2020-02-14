@@ -1,56 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j2XhM-0007VV-3R
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Feb 2020 04:55:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56417)
+	id 1j2YM8-00044K-I4
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Feb 2020 05:37:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38697)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <mprivozn@redhat.com>) id 1j2XhJ-0007Ur-BS
- for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 04:55:46 -0500
+ (envelope-from <cohuck@redhat.com>) id 1j2YM6-0003z2-3R
+ for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 05:37:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mprivozn@redhat.com>) id 1j2XhI-0005Qj-9n
- for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 04:55:45 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:26814
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <cohuck@redhat.com>) id 1j2YM4-0005Ea-VJ
+ for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 05:37:53 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:38430
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <mprivozn@redhat.com>) id 1j2XhI-0005PO-6d
- for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 04:55:44 -0500
+ (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1j2YM4-0005DJ-Qw
+ for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 05:37:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581674143;
+ s=mimecast20190719; t=1581676671;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=RupjMK2l9WVxD6SpZP0eN3EWXeXVotHyJJjTy1nrhV0=;
- b=ejZhdB5trXvG6ClZhmyRLtPfBo2vmX0bp8ZpIPJx9CubVn9DCcLGmaphmyvG+jgAxF32nK
- Wu9bwmB5UrRwKrz/ljo53xsD7HXrDycIcprRuR59RZo0b1XRrAZuQ3EVsS/aj6lviWoOTI
- uIyFz/WfBZ7KjbMoWUnUkuyrIgv5Uxc=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=UWyq4h0NgncesMDM0Z4Cqn9MVDdOhS+F7Q564s5JckI=;
+ b=Wi1advPJyp1poXZy+XsqXLDA1vvehhaTRPDM4SCujm89pidzwsh9OE1AXS1Ro/RYt/G6uA
+ c7g7sVrdfEuF52ZHpey5MkYkcUGaufN9i6tLq74jsM7YWrZhpCc40Zr2/H61uxMm4redOi
+ x1RwuiznnwwwmI5TpyHkRqRLrSGOW2g=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-307-NoQvLwSrMbupKt0E_VJX0g-1; Fri, 14 Feb 2020 04:55:35 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-157-YciX6dN-Nr6Y-PROndN8jQ-1; Fri, 14 Feb 2020 05:37:45 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3BE261085959;
- Fri, 14 Feb 2020 09:55:34 +0000 (UTC)
-Received: from moe.redhat.com (unknown [10.43.2.30])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D1A9060BE2;
- Fri, 14 Feb 2020 09:55:30 +0000 (UTC)
-From: Michal Privoznik <mprivozn@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: alex.williamson@redhat.com,
-	qemu-trivial@nongnu.org
-Subject: [PATCH v2] Report stringified errno in VFIO related errors
-Date: Fri, 14 Feb 2020 10:55:19 +0100
-Message-Id: <4949c3ecf1a32189b8a4b5eb4b0fd04c1122501d.1581674006.git.mprivozn@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D7B5E18AB2C2;
+ Fri, 14 Feb 2020 10:37:44 +0000 (UTC)
+Received: from gondolin (dhcp-192-195.str.redhat.com [10.33.192.195])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A16905C115;
+ Fri, 14 Feb 2020 10:37:41 +0000 (UTC)
+Date: Fri, 14 Feb 2020 11:37:39 +0100
+From: Cornelia Huck <cohuck@redhat.com>
+To: Michal Privoznik <mprivozn@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, alex.williamson@redhat.com
+Subject: Re: [PATCH v2] Report stringified errno in VFIO related errors
+Message-ID: <20200214113739.7969d81a.cohuck@redhat.com>
+In-Reply-To: <4949c3ecf1a32189b8a4b5eb4b0fd04c1122501d.1581674006.git.mprivozn@redhat.com>
+References: <4949c3ecf1a32189b8a4b5eb4b0fd04c1122501d.1581674006.git.mprivozn@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: NoQvLwSrMbupKt0E_VJX0g-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: YciX6dN-Nr6Y-PROndN8jQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -62,83 +65,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Feb 2020 09:55:46 -0000
+X-List-Received-Date: Fri, 14 Feb 2020 10:37:55 -0000
 
-In a few places we report errno formatted as a negative integer.
-This is not as user friendly as it can be. Use strerror() and/or
-error_setg_errno() instead.
+On Fri, 14 Feb 2020 10:55:19 +0100
+Michal Privoznik <mprivozn@redhat.com> wrote:
 
-Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
----
+> In a few places we report errno formatted as a negative integer.
+> This is not as user friendly as it can be. Use strerror() and/or
+> error_setg_errno() instead.
+> 
+> Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+> ---
+> 
+> v1 posted here:
+> 
+> https://lists.nongnu.org/archive/html/qemu-devel/2020-02/msg03623.html
+> 
+> diff to v1:
+>  - Change error reporting in vfio_dma_unmap() too as I missed it in v1.
+> 
+>  hw/vfio/common.c    | 4 ++--
+>  util/vfio-helpers.c | 6 +++---
+>  2 files changed, 5 insertions(+), 5 deletions(-)
 
-v1 posted here:
-
-https://lists.nongnu.org/archive/html/qemu-devel/2020-02/msg03623.html
-
-diff to v1:
- - Change error reporting in vfio_dma_unmap() too as I missed it in v1.
-
- hw/vfio/common.c    | 4 ++--
- util/vfio-helpers.c | 6 +++---
- 2 files changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 5ca11488d6..0b3593b3c0 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -319,7 +319,7 @@ static int vfio_dma_unmap(VFIOContainer *container,
-             unmap.size -=3D 1ULL << ctz64(container->pgsizes);
-             continue;
-         }
--        error_report("VFIO_UNMAP_DMA: %d", -errno);
-+        error_report("VFIO_UNMAP_DMA failed: %s", strerror(errno));
-         return -errno;
-     }
-=20
-@@ -352,7 +352,7 @@ static int vfio_dma_map(VFIOContainer *container, hwadd=
-r iova,
-         return 0;
-     }
-=20
--    error_report("VFIO_MAP_DMA: %d", -errno);
-+    error_report("VFIO_MAP_DMA failed: %s", strerror(errno));
-     return -errno;
- }
-=20
-diff --git a/util/vfio-helpers.c b/util/vfio-helpers.c
-index 813f7ec564..ddd9a96e76 100644
---- a/util/vfio-helpers.c
-+++ b/util/vfio-helpers.c
-@@ -545,7 +545,7 @@ static int qemu_vfio_do_mapping(QEMUVFIOState *s, void =
-*host, size_t size,
-     trace_qemu_vfio_do_mapping(s, host, size, iova);
-=20
-     if (ioctl(s->container, VFIO_IOMMU_MAP_DMA, &dma_map)) {
--        error_report("VFIO_MAP_DMA: %d", -errno);
-+        error_report("VFIO_MAP_DMA failed: %s", strerror(errno));
-         return -errno;
-     }
-     return 0;
-@@ -570,7 +570,7 @@ static void qemu_vfio_undo_mapping(QEMUVFIOState *s, IO=
-VAMapping *mapping,
-     assert(QEMU_IS_ALIGNED(mapping->size, qemu_real_host_page_size));
-     assert(index >=3D 0 && index < s->nr_mappings);
-     if (ioctl(s->container, VFIO_IOMMU_UNMAP_DMA, &unmap)) {
--        error_setg(errp, "VFIO_UNMAP_DMA failed: %d", -errno);
-+        error_setg_errno(errp, errno, "VFIO_UNMAP_DMA failed");
-     }
-     memmove(mapping, &s->mappings[index + 1],
-             sizeof(s->mappings[0]) * (s->nr_mappings - index - 1));
-@@ -669,7 +669,7 @@ int qemu_vfio_dma_reset_temporary(QEMUVFIOState *s)
-     trace_qemu_vfio_dma_reset_temporary(s);
-     qemu_mutex_lock(&s->lock);
-     if (ioctl(s->container, VFIO_IOMMU_UNMAP_DMA, &unmap)) {
--        error_report("VFIO_UNMAP_DMA: %d", -errno);
-+        error_report("VFIO_UNMAP_DMA failed: %s", strerror(errno));
-         qemu_mutex_unlock(&s->lock);
-         return -errno;
-     }
---=20
-2.24.1
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
 
