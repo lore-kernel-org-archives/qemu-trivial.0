@@ -1,41 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j2pC7-0006J6-Pm
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Feb 2020 23:36:43 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47895)
+	id 1j3070-0002Dj-OJ
+	for mharc-qemu-trivial@gnu.org; Sat, 15 Feb 2020 11:16:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47675)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1j2pC5-0006IK-Jj
- for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 23:36:42 -0500
+ (envelope-from <philmd@redhat.com>) id 1j306y-0002A3-6Y
+ for qemu-trivial@nongnu.org; Sat, 15 Feb 2020 11:16:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1j2pC4-0007qz-EC
- for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 23:36:41 -0500
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:59685 helo=ozlabs.org)
+ (envelope-from <philmd@redhat.com>) id 1j306x-0005d8-9q
+ for qemu-trivial@nongnu.org; Sat, 15 Feb 2020 11:16:08 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:27309
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1j2pC0-0007ew-3B; Fri, 14 Feb 2020 23:36:36 -0500
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 48KHWd0MN1z9sRJ; Sat, 15 Feb 2020 15:36:28 +1100 (AEDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1581741389;
- bh=iAlcM+L8JKoI0x2+hNvVdSxxP898sb+Akh+pGsuFj6Y=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=a8CBr+ES5HxQVCJsUBY7I/oFBuEJ7DaJ9Jg6eCOa7Uy++QAXEzHmgiOqWcjMG6TVH
- ML8MBdmjHi2UTOU2+1EsyP5GrdEsoyYxx4UuVrhbCri9bnmh2j0BRWEvIRnh8h17xV
- ajLWWczk+GJdkTz767ykKhV29CZh9daDBYfJyr88=
-Date: Sat, 15 Feb 2020 15:13:14 +1100
-From: David Gibson <david@gibson.dropbear.id.au>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH v2] target/ppc: Fix typo in comments
-Message-ID: <20200215041314.GA2156@umbus.fritz.box>
-References: <20200214155748.0896B745953@zero.eik.bme.hu>
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j306x-0005d0-6T
+ for qemu-trivial@nongnu.org; Sat, 15 Feb 2020 11:16:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581783366;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2W2KV5vhhaOPypV6UoE9INvWUy7cADf9BtseHUCCnZ8=;
+ b=fw07wps40WUgnHMdeRLGNbPUZf+qcpJB64lpQB5xyIjfsIHroYXb46nljYZ3heScN2vZ/x
+ 022SeKo3iEB80sR9+ZAHVsRigBNBmCC59/NaffNdn3ORbPb3sXbr1pKywWmcfHgmJ8rfDS
+ tsJ2R0NJGVZTyx5kUunjG/jx4qNk9YE=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-222-41haCuugOeSm6jfZMYwF0g-1; Sat, 15 Feb 2020 11:16:04 -0500
+Received: by mail-wr1-f71.google.com with SMTP id r1so5907149wrc.15
+ for <qemu-trivial@nongnu.org>; Sat, 15 Feb 2020 08:16:04 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=t93RD3b9dRJMk744Iwvg4Pa/O1lItTONfyZhiaohMVU=;
+ b=g5SMyztyZUn7eLkc6YPi3Vso65iAUN2i15YH4xkGA9UxaAgq5EFLAzUDbT4nIPsPhp
+ meViEHuHrn1w1f5jidPcowjoSsndICqVJVGkcFMEZq3wro0J4oqd7NYPFfRWEbAhywn+
+ xyugByfCwYROc5+VqNB1RFMdd79ABwKXtNzanNM5uDOkmPcDeNhsZZ3sYMxLEk7KRbvT
+ p/RbMOOqFhhNXsO8bBAnl6wZBVohJ8JYOBcFT26sTheNHaDrTrNnEHfobeM4Cy4A5+NU
+ ZWqHcQukoGnnhvGpzWF9sQtyJzI5RB01Ii+GPFG0OGRusA0w2/YvBjN4/JxtSp5U74dj
+ eLjQ==
+X-Gm-Message-State: APjAAAWfLAnCByZ5twAT66MyHkFWH8NmXaRy0pNDaA8B4EgyTKCNXGGj
+ dF5pFuQu5XYxCQhOQ/+j9ZOj1aBfAZvIJ/EU7/4OISTPt6BuQ3klj4ue4FKM7T4MNuNh/PfYiN5
+ twFeMWPna4FqVZ/+Kow==
+X-Received: by 2002:a05:6000:192:: with SMTP id
+ p18mr10610938wrx.218.1581783363449; 
+ Sat, 15 Feb 2020 08:16:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwj+7l1rgw3xDAlzv9WUiiMsr0WEM7lX9ZCD/FFnzJs4cYtMVSolk6GYqoQJdpfzWpU1SzzAw==
+X-Received: by 2002:a05:6000:192:: with SMTP id
+ p18mr10610917wrx.218.1581783363170; 
+ Sat, 15 Feb 2020 08:16:03 -0800 (PST)
+Received: from localhost.localdomain (78.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.78])
+ by smtp.gmail.com with ESMTPSA id w26sm11855872wmi.8.2020.02.15.08.16.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 15 Feb 2020 08:16:02 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ qemu-block@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ John Snow <jsnow@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>
+Subject: [PATCH 2/3] hw/display/qxl: Remove unneeded variable assignment
+Date: Sat, 15 Feb 2020 17:15:56 +0100
+Message-Id: <20200215161557.4077-3-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200215161557.4077-1-philmd@redhat.com>
+References: <20200215161557.4077-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="wRRV7LY7NUeQGEoC"
-Content-Disposition: inline
-In-Reply-To: <20200214155748.0896B745953@zero.eik.bme.hu>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2401:3900:2:1::2
+X-MC-Unique: 41haCuugOeSm6jfZMYwF0g-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -47,111 +87,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 Feb 2020 04:36:42 -0000
+X-List-Received-Date: Sat, 15 Feb 2020 16:16:09 -0000
 
+Fix warning reported by Clang static code analyzer:
 
---wRRV7LY7NUeQGEoC
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+  hw/display/qxl.c:1634:14: warning: Value stored to 'orig_io_port' during =
+its initialization is never read
+      uint32_t orig_io_port =3D io_port;
+               ^~~~~~~~~~~~   ~~~~~~~
 
-On Fri, Feb 14, 2020 at 12:57:34AM +0100, BALATON Zoltan wrote:
-> "Deferred" was misspelled as "differed" in some comments, correct this
-> typo,
->=20
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+Reported-by: Clang Static Analyzer
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/display/qxl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I've replaced the earlier version in my tree.
-
-> ---
-> v2: Found one more where even the typo was misspelled
->=20
-> target/ppc/fpu_helper.c            | 4 ++--
->  target/ppc/translate/fp-impl.inc.c | 6 +++---
->  2 files changed, 5 insertions(+), 5 deletions(-)
->=20
-> diff --git a/target/ppc/fpu_helper.c b/target/ppc/fpu_helper.c
-> index dc383242f7..ae43b08eb5 100644
-> --- a/target/ppc/fpu_helper.c
-> +++ b/target/ppc/fpu_helper.c
-> @@ -293,7 +293,7 @@ static void float_invalid_op_vxvc(CPUPPCState *env, b=
-ool set_fpcc,
->          env->error_code =3D POWERPC_EXCP_FP | POWERPC_EXCP_FP_VXVC;
->          /* Update the floating-point enabled exception summary */
->          env->fpscr |=3D FP_FEX;
-> -        /* Exception is differed */
-> +        /* Exception is deferred */
->      }
->  }
-> =20
-> @@ -644,7 +644,7 @@ static void do_float_check_status(CPUPPCState *env, u=
-intptr_t raddr)
-> =20
->      if (cs->exception_index =3D=3D POWERPC_EXCP_PROGRAM &&
->          (env->error_code & POWERPC_EXCP_FP)) {
-> -        /* Differred floating-point exception after target FPR update */
-> +        /* Deferred floating-point exception after target FPR update */
->          if (fp_exceptions_enabled(env)) {
->              raise_exception_err_ra(env, cs->exception_index,
->                                     env->error_code, raddr);
-> diff --git a/target/ppc/translate/fp-impl.inc.c b/target/ppc/translate/fp=
--impl.inc.c
-> index d8e27bf4d5..9f7868ee28 100644
-> --- a/target/ppc/translate/fp-impl.inc.c
-> +++ b/target/ppc/translate/fp-impl.inc.c
-> @@ -781,7 +781,7 @@ static void gen_mtfsb1(DisasContext *ctx)
->          tcg_gen_trunc_tl_i32(cpu_crf[1], cpu_fpscr);
->          tcg_gen_shri_i32(cpu_crf[1], cpu_crf[1], FPSCR_OX);
->      }
-> -    /* We can raise a differed exception */
-> +    /* We can raise a deferred exception */
->      gen_helper_float_check_status(cpu_env);
->  }
-> =20
-> @@ -817,7 +817,7 @@ static void gen_mtfsf(DisasContext *ctx)
->          tcg_gen_trunc_tl_i32(cpu_crf[1], cpu_fpscr);
->          tcg_gen_shri_i32(cpu_crf[1], cpu_crf[1], FPSCR_OX);
->      }
-> -    /* We can raise a differed exception */
-> +    /* We can raise a deferred exception */
->      gen_helper_float_check_status(cpu_env);
->      tcg_temp_free_i64(t1);
->  }
-> @@ -850,7 +850,7 @@ static void gen_mtfsfi(DisasContext *ctx)
->          tcg_gen_trunc_tl_i32(cpu_crf[1], cpu_fpscr);
->          tcg_gen_shri_i32(cpu_crf[1], cpu_crf[1], FPSCR_OX);
->      }
-> -    /* We can raise a differed exception */
-> +    /* We can raise a deferred exception */
->      gen_helper_float_check_status(cpu_env);
->  }
-> =20
-
+diff --git a/hw/display/qxl.c b/hw/display/qxl.c
+index 64884da708..21a43a1d5e 100644
+--- a/hw/display/qxl.c
++++ b/hw/display/qxl.c
+@@ -1631,7 +1631,7 @@ static void ioport_write(void *opaque, hwaddr addr,
+     PCIQXLDevice *d =3D opaque;
+     uint32_t io_port =3D addr;
+     qxl_async_io async =3D QXL_SYNC;
+-    uint32_t orig_io_port =3D io_port;
++    uint32_t orig_io_port;
+=20
+     if (d->guest_bug && io_port !=3D QXL_IO_RESET) {
+         return;
 --=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+2.21.1
 
---wRRV7LY7NUeQGEoC
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl5Hb9gACgkQbDjKyiDZ
-s5LYBg//UcuNfbf53RAkexJdR+zbp815rn0v45N0Ajf6R4sGKrRUy7IF/QmAZ2Vr
-huHYefwPhb5+tNft9pJNTvIYY5R2PZscGJ1b+jAxbb+mCykCloAlB7Chpw7I2Ofe
-7bWp7+6fXdG1Tq2JMoUnPK9sdMOkJa2TzK2DrKNtafISohcKrzvqPLSXL0JspFVq
-2ew+3+82d8poZDhwzH8awsF9R/lCDvu+EWMzLG12jEoN9s/Q6tvquqmKMZQoCeMW
-mrFb1vgSg5Xs+rh3CjXRGYmd3yjp1M15BNVa7y/Lm8vXYtoexuXrq/UBuxdHpWJ2
-kPZgwa/seKu/ofR2Pfr8QIlB5eJWLrPT948QG80SgAGIoQgLvvSw5GId3ph2dXij
-JXi/11oNSvY+Az05PbdObKbubwK7y0C4JFMdU8tMM4F3SdvpnwDXFXg53KopdaAE
-N2F/JQ0m0v8JQ5AR+fMs2o4dvn/Y11aYMVEU2vsbNZO0y+Afk6pLmY3XCk4qrcZ+
-3uNyCheIsjSOYUHenXMWQ7NTc6fPXSVI/ziAajt2bMwb5u64lT+vK2Ytra/3Fv0B
-R6ZO6YwQxUvcNgag1PgcMnphD1JmXjZT+ImJNhkHEi4W3TgitwDItxZCFfSoWAEY
-KKs3i29IgzVvUPPZfbd9Xjp4FCi06FFJ4RH4OZK7CVSg/bteH0s=
-=AroX
------END PGP SIGNATURE-----
-
---wRRV7LY7NUeQGEoC--
 
