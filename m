@@ -1,56 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j307Q-0002tA-Q8
-	for mharc-qemu-trivial@gnu.org; Sat, 15 Feb 2020 11:16:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47757)
+	id 1j307U-000319-7s
+	for mharc-qemu-trivial@gnu.org; Sat, 15 Feb 2020 11:16:40 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47800)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j307O-0002pU-Ci
- for qemu-trivial@nongnu.org; Sat, 15 Feb 2020 11:16:35 -0500
+ (envelope-from <philmd@redhat.com>) id 1j307S-0002wj-5y
+ for qemu-trivial@nongnu.org; Sat, 15 Feb 2020 11:16:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j307N-00064m-CE
- for qemu-trivial@nongnu.org; Sat, 15 Feb 2020 11:16:34 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:39790
+ (envelope-from <philmd@redhat.com>) id 1j307Q-00069n-Vw
+ for qemu-trivial@nongnu.org; Sat, 15 Feb 2020 11:16:38 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:23972
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j306u-0005Xr-Jo
- for qemu-trivial@nongnu.org; Sat, 15 Feb 2020 11:16:33 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j306y-0005dY-BK
+ for qemu-trivial@nongnu.org; Sat, 15 Feb 2020 11:16:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1581783363;
+ s=mimecast20190719; t=1581783368;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=rGxu2WAKHmWrsK5i7B1ITlPmz0WbEXAEhhFZo5Btr6I=;
- b=FUcDHnBDwXhqSHy5iRUT2w581OdwVUJeTpcdqsuQu1uiTImmfoxbplPawllaseidW5hdak
- u/wbnvnKJEqErpRPbx8iVIjiiWDxV/WZFax08EbSuN2dJ6BBJYdzCsrTDlGGsRdRdSS7Bv
- Kzv00aGc471fTCxJXIkmML3MpkV6ZpE=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-3-Q9u1NRuGNDSu95UFFah2bA-1; Sat, 15 Feb 2020 11:16:01 -0500
-Received: by mail-wr1-f71.google.com with SMTP id t6so5950477wru.3
- for <qemu-trivial@nongnu.org>; Sat, 15 Feb 2020 08:16:01 -0800 (PST)
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Z2UBuAZivxQ/t2LSYWdCfVvdvGAny5juqMvDOKi7+08=;
+ b=Y7XKb4dQfVlD50LPH1gS2bMzGokjvRjxM1VLR/8RRTRpj3NWvTamL8/SzonRtOp9u4Pt3r
+ 8gJ+V/ZdX4wKNZQIMvk9VKirY0KlbjOeAgl/O3Xp/FIL07QBCxUAGRLsNmAHVyoLxYPoH+
+ nqPNSoDz6bq6/YxlBDyHirFxoXWjAPI=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-13-HHSAe34yPHiH9sKRaOnIjg-1; Sat, 15 Feb 2020 11:16:03 -0500
+Received: by mail-wm1-f70.google.com with SMTP id z7so5484762wmi.0
+ for <qemu-trivial@nongnu.org>; Sat, 15 Feb 2020 08:16:02 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=I8Qt4eqntsRD4P75qFlC97N/QHEJ2WA+14+XeTDgAcQ=;
- b=bZrYoM1VsIcuOyZzzXn8b0+GhgKgjP6SdvcTe0Td7siShc+9HLb5mIMsVkD8qJkDjR
- mvG5Cp7vyY4N3hwW7tS8tarF2+HX1s4fdM89AD2PrRrD+FdDpOWa1eXVy/c9Lyv1O2PC
- p1vO+jSFR5KHc/ccZQNMfMba9UQ+ce4//pkAY9yxh4/d3IFneYFUsFKhVeCTPRPw3cMW
- Q65dKZKXucliuAo0yRQBXBrMpagWHd5dTDRooCsGVnFgPBWhlTcNPwSn7wTbs1tiy+nw
- DM/EmrKbkQdRxJXrfmNSxOOaKLsgcdkRmwSpsjbYsfRXckVv98VgB525GIeAbD4atzL5
- /ZuA==
-X-Gm-Message-State: APjAAAWKAlWosFiGDsZWXJhEFsAqwdTn7cgreEsLyq4+y0h25e/xNXdY
- cdF2GXXY8QEyFpsj6gP13th//fwYsOZiC/e5B/n8erg7eSbkZFiajn1BuXna95XNrLIRf9Dgu9G
- FXt3WapmMT7AhGRFoDg==
-X-Received: by 2002:a7b:c38c:: with SMTP id s12mr11241100wmj.96.1581783360549; 
- Sat, 15 Feb 2020 08:16:00 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwR7Jcu6Rjjh6mJ2IoDSuorj+uiRsbXaSzmeAatmVqX2SdSszjnTOrDW8nSYrMCF94WHKpAfw==
-X-Received: by 2002:a7b:c38c:: with SMTP id s12mr11241086wmj.96.1581783360302; 
- Sat, 15 Feb 2020 08:16:00 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=1vNqWmtTfqRpFkSvpFeliBtBQdDhN9OVYIDlRsAhO9E=;
+ b=ijrJj41EipGD4+ehUAJ1xpxf6A7Blr5bgpC0+SoaEwf6vOCYWzwJM4NyRlrHmOd3xi
+ gnZnN4iLYt9PQTrr0+aNINrqr4enOxO13ri98xF1SzyP+1mLqV5yyMQR4yoab3oBSdDs
+ Z6uIEu16PI1BqUkvEJZR+p5xnDjXBpyxGI6ffquoLcAlOAcu5UH4oTzFjKC6899BVDb2
+ 9x/OSMIHzDWLcLrsw3v01d+rbGg5dRNg4fk5r1tvRko8HPDFMg6t0d+T6a0tSdaEM9Wd
+ 39606eaEb267fdICg/eVqAMieptJJpfpPT0mAXyJxqG+Ox33OHenqw7Oj1E1n7p5isM3
+ dHwA==
+X-Gm-Message-State: APjAAAUZpn42OXTWY3fKyiDk8EL4jnLhIFesOFlyNH0D06Yjz29emXy6
+ 6ngUJGwno8ROin7y7oShDcWFFqjIU+noXXtINhyR/2JSF/sAfYnTsyDthIeHGhu7xjq5KvYwyax
+ //+JSotxGqLlAgeAJ8w==
+X-Received: by 2002:a1c:f60e:: with SMTP id w14mr11469969wmc.188.1581783361889; 
+ Sat, 15 Feb 2020 08:16:01 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyHKeFfmpvOVz4HkZc7Il/FeQ6MQBGmlkbYvmqQyW1P76z6ZX7+OATJk6WrR8Udh7QO5nTWmA==
+X-Received: by 2002:a1c:f60e:: with SMTP id w14mr11469954wmc.188.1581783361731; 
+ Sat, 15 Feb 2020 08:16:01 -0800 (PST)
 Received: from localhost.localdomain (78.red-88-21-202.staticip.rima-tde.net.
  [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id w26sm11855872wmi.8.2020.02.15.08.15.58
+ by smtp.gmail.com with ESMTPSA id w26sm11855872wmi.8.2020.02.15.08.16.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 15 Feb 2020 08:15:59 -0800 (PST)
+ Sat, 15 Feb 2020 08:16:01 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
@@ -58,12 +59,14 @@ Cc: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  John Snow <jsnow@redhat.com>, Max Reitz <mreitz@redhat.com>,
  qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>
-Subject: [PATCH 0/3] hw: Remove unneeded variable assignment
-Date: Sat, 15 Feb 2020 17:15:54 +0100
-Message-Id: <20200215161557.4077-1-philmd@redhat.com>
+Subject: [PATCH 1/3] block/qcow2-bitmap: Remove unneeded variable assignment
+Date: Sat, 15 Feb 2020 17:15:55 +0100
+Message-Id: <20200215161557.4077-2-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200215161557.4077-1-philmd@redhat.com>
+References: <20200215161557.4077-1-philmd@redhat.com>
 MIME-Version: 1.0
-X-MC-Unique: Q9u1NRuGNDSu95UFFah2bA-1
+X-MC-Unique: HHSAe34yPHiH9sKRaOnIjg-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8;
@@ -83,20 +86,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 Feb 2020 16:16:35 -0000
+X-List-Received-Date: Sat, 15 Feb 2020 16:16:39 -0000
 
-Fix few warnings reported by Clang static code analyzer.
+Fix warning reported by Clang static code analyzer:
 
-Philippe Mathieu-Daud=C3=A9 (3):
-  block/qcow2-bitmap: Remove unneeded variable assignment
-  hw/display/qxl: Remove unneeded variable assignment
-  hw/block/pflash_cfi02: Remove unneeded variable assignment
+    CC      block/qcow2-bitmap.o
+  block/qcow2-bitmap.c:650:5: warning: Value stored to 'ret' is never read
+      ret =3D -EINVAL;
+      ^     ~~~~~~~
 
- block/qcow2-bitmap.c    | 1 -
- hw/block/pflash_cfi02.c | 1 -
- hw/display/qxl.c        | 2 +-
- 3 files changed, 1 insertion(+), 3 deletions(-)
+Reported-by: Clang Static Analyzer
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ block/qcow2-bitmap.c | 1 -
+ 1 file changed, 1 deletion(-)
 
+diff --git a/block/qcow2-bitmap.c b/block/qcow2-bitmap.c
+index d41f5d049b..8cccc2c9f3 100644
+--- a/block/qcow2-bitmap.c
++++ b/block/qcow2-bitmap.c
+@@ -647,7 +647,6 @@ static Qcow2BitmapList *bitmap_list_load(BlockDriverSta=
+te *bs, uint64_t offset,
+     return bm_list;
+=20
+ broken_dir:
+-    ret =3D -EINVAL;
+     error_setg(errp, "Broken bitmap directory");
+=20
+ fail:
 --=20
 2.21.1
 
