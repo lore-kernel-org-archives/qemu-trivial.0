@@ -1,97 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j2eAO-0001B0-IE
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Feb 2020 11:50:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40365)
+	id 1j2p7B-0004Vn-8K
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Feb 2020 23:31:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47572)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j2eAK-000170-Ub
- for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 11:50:10 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j2p78-0004UB-PL
+ for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 23:31:35 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j2eAJ-0008PM-H2
- for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 11:50:08 -0500
-Received: from mout.kundenserver.de ([212.227.126.187]:58955)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j2eAJ-0008MZ-7B; Fri, 14 Feb 2020 11:50:07 -0500
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MTiDV-1ivAqy4B5h-00TyPz; Fri, 14 Feb 2020 17:50:02 +0100
-Subject: Re: [PATCH v2] Report stringified errno in VFIO related errors
-To: Alex Williamson <alex.williamson@redhat.com>,
- Michal Privoznik <mprivozn@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <4949c3ecf1a32189b8a4b5eb4b0fd04c1122501d.1581674006.git.mprivozn@redhat.com>
- <20200214083515.15b94be8@x1.home>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <3ffa0f2f-eb74-381f-e76d-ae49ff091e61@vivier.eu>
-Date: Fri, 14 Feb 2020 17:50:01 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j2p77-000441-T7
+ for qemu-trivial@nongnu.org; Fri, 14 Feb 2020 23:31:34 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:41510 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1j2p74-0003sf-9z; Fri, 14 Feb 2020 23:31:30 -0500
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 0CEC5421EFC3463572B1;
+ Sat, 15 Feb 2020 12:31:20 +0800 (CST)
+Received: from HGHY4C002233111.china.huawei.com (10.133.205.93) by
+ DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
+ 14.3.439.0; Sat, 15 Feb 2020 12:31:13 +0800
+From: <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <ehabkost@redhat.com>, <quintela@redhat.com>,
+ <thuth@redhat.com>
+CC: <zhang.zhanghailiang@huawei.com>, <qemu-trivial@nongnu.org>, Chen Qun
+ <kuhn.chenqun@huawei.com>
+Subject: [PATCH] test-vmstate: Fix memleaks in test_load_qlist
+Date: Sat, 15 Feb 2020 12:31:09 +0800
+Message-ID: <20200215043109.13688-1-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.14.1.windows.1
 MIME-Version: 1.0
-In-Reply-To: <20200214083515.15b94be8@x1.home>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:b7sSJCTzU+dYJwgchA16OKWtdGDGXTLSR4w5QmvysWdDeTHe1Gp
- iIdZufY0EuWFkah4t3SqpqsGwyknZZL1PmzirJQADnjzreuzDJ+t8JaZHbI+v4rcnQUFw08
- rnsBT0bi3wM0YW5QI3gttcGhQdgLFDb7sl9WaTMikmwNqfa1WDCMgcn3i1qa7ZH0wrmvSsF
- 8A6/qZ9YIIdiBE52l/y1Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:KVirG8aMmc0=:rBACIVGmhAx+hUDBbbyay9
- 6eMUai4KIIVagd6kG5CkZGvYJW/w2WeHr4zclH+5zmKoqrTe+EOJcl+EjRbePkTnaOVftN3MY
- 9JA3ltLCVC8AI7H32aCLwp+7fAS8VQVglOf7Rprn2pR+qj5KQDI6UNZEF66EOVsrmFMUggcxk
- l8BHQ5kEb7jul9DZVtqMquCMJSE9AzOL4fjJ+m+D6D6ZaNoc/HohkzscvEdsimdHlW8BlMZJr
- nZQrlOLN5Rfqykjz9GWawH1QSFitqremaintvCG+H9j0uVALIe61g5MApIt4whuSyYbw0vWQN
- HimKyMYUdXkqHtdWL4qLI8hvxahSFy7Js/9Fa4XhqyNHsMxr4cOXAfMJi33uAYcgDqKcgBAGW
- nMA3RbKgkyTAVBkqk+Huyoiq6m3o1BGdqLI3g1xZHmxUhDDfrMbUf47SYFnZmrCQTzThug+iH
- 59VEEWWMJxDpd0DS/Q4ZBSk7NsR+nRCWPflGrSS76el6HRA/JgMzqDs6ieA4zI5Pg/gHJcyBC
- ZGcpX9jbmLhxRTGHlWoYRnCUMIUBDqrL6p8w2o7SnGwPZEzsTA5O0GinewetTWBaB+bKXIB88
- 4lZyLGAvFNAtDov8vCeI0SA5ouSaDDPp/8J2+OtWPgWaJKuJbxFARUFKrPfCEiUNkirtfBlDv
- 6bBUVya4MuoBMbH1MhwPmxoDUIEtvRJHpa1HsJOUx4A8eCc4PXY7MoeeHrReY3ribJeQ4T6r8
- 33hjcKNpsZZ0yg9fR8/5ypJ+9KMTf6A7QWxrV1trDcZafmPrbI3eEjXUU1leLBR+kDs24mKgr
- jBX/6/bRuBFgqLIGW2GavwNiCom3iPBAGGZ4b5tuT5GrsftHQoYY3WavXqyXOTRUzupKZmk
+Content-Type: text/plain
+X-Originating-IP: [10.133.205.93]
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.187
+ [fuzzy]
+X-Received-From: 45.249.212.32
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,92 +45,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Feb 2020 16:50:10 -0000
+X-List-Received-Date: Sat, 15 Feb 2020 04:31:35 -0000
 
-Le 14/02/2020 à 16:35, Alex Williamson a écrit :
-> On Fri, 14 Feb 2020 10:55:19 +0100
-> Michal Privoznik <mprivozn@redhat.com> wrote:
-> 
->> In a few places we report errno formatted as a negative integer.
->> This is not as user friendly as it can be. Use strerror() and/or
->> error_setg_errno() instead.
->>
->> Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
->> ---
->>
->> v1 posted here:
->>
->> https://lists.nongnu.org/archive/html/qemu-devel/2020-02/msg03623.html
->>
->> diff to v1:
->>  - Change error reporting in vfio_dma_unmap() too as I missed it in v1.
->>
->>  hw/vfio/common.c    | 4 ++--
->>  util/vfio-helpers.c | 6 +++---
->>  2 files changed, 5 insertions(+), 5 deletions(-)
->>
->> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
->> index 5ca11488d6..0b3593b3c0 100644
->> --- a/hw/vfio/common.c
->> +++ b/hw/vfio/common.c
->> @@ -319,7 +319,7 @@ static int vfio_dma_unmap(VFIOContainer *container,
->>              unmap.size -= 1ULL << ctz64(container->pgsizes);
->>              continue;
->>          }
->> -        error_report("VFIO_UNMAP_DMA: %d", -errno);
->> +        error_report("VFIO_UNMAP_DMA failed: %s", strerror(errno));
->>          return -errno;
->>      }
->>  
->> @@ -352,7 +352,7 @@ static int vfio_dma_map(VFIOContainer *container, hwaddr iova,
->>          return 0;
->>      }
->>  
->> -    error_report("VFIO_MAP_DMA: %d", -errno);
->> +    error_report("VFIO_MAP_DMA failed: %s", strerror(errno));
->>      return -errno;
->>  }
->>  
->> diff --git a/util/vfio-helpers.c b/util/vfio-helpers.c
->> index 813f7ec564..ddd9a96e76 100644
->> --- a/util/vfio-helpers.c
->> +++ b/util/vfio-helpers.c
->> @@ -545,7 +545,7 @@ static int qemu_vfio_do_mapping(QEMUVFIOState *s, void *host, size_t size,
->>      trace_qemu_vfio_do_mapping(s, host, size, iova);
->>  
->>      if (ioctl(s->container, VFIO_IOMMU_MAP_DMA, &dma_map)) {
->> -        error_report("VFIO_MAP_DMA: %d", -errno);
->> +        error_report("VFIO_MAP_DMA failed: %s", strerror(errno));
->>          return -errno;
->>      }
->>      return 0;
->> @@ -570,7 +570,7 @@ static void qemu_vfio_undo_mapping(QEMUVFIOState *s, IOVAMapping *mapping,
->>      assert(QEMU_IS_ALIGNED(mapping->size, qemu_real_host_page_size));
->>      assert(index >= 0 && index < s->nr_mappings);
->>      if (ioctl(s->container, VFIO_IOMMU_UNMAP_DMA, &unmap)) {
->> -        error_setg(errp, "VFIO_UNMAP_DMA failed: %d", -errno);
->> +        error_setg_errno(errp, errno, "VFIO_UNMAP_DMA failed");
->>      }
->>      memmove(mapping, &s->mappings[index + 1],
->>              sizeof(s->mappings[0]) * (s->nr_mappings - index - 1));
->> @@ -669,7 +669,7 @@ int qemu_vfio_dma_reset_temporary(QEMUVFIOState *s)
->>      trace_qemu_vfio_dma_reset_temporary(s);
->>      qemu_mutex_lock(&s->lock);
->>      if (ioctl(s->container, VFIO_IOMMU_UNMAP_DMA, &unmap)) {
->> -        error_report("VFIO_UNMAP_DMA: %d", -errno);
->> +        error_report("VFIO_UNMAP_DMA failed: %s", strerror(errno));
->>          qemu_mutex_unlock(&s->lock);
->>          return -errno;
->>      }
-> 
-> Reviewed-by: Alex Williamson <alex.williamson@redhat.com>
-> 
-> (hoping this gets grabbed by trivial)
-> 
+From: Chen Qun <kuhn.chenqun@huawei.com>
 
-Applied to my trivial patches branch.
+We may forget to free fload. ASAN spotted it.
 
-Thanks,
-Laurent
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+---
+ tests/test-vmstate.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/test-vmstate.c b/tests/test-vmstate.c
+index cea363dd69..5b2743121b 100644
+--- a/tests/test-vmstate.c
++++ b/tests/test-vmstate.c
+@@ -1395,6 +1395,7 @@ static void test_load_qlist(void)
+     compare_containers(orig_container, dest_container);
+     free_container(orig_container);
+     free_container(dest_container);
++    qemu_fclose(fload);
+ }
+ 
+ typedef struct TmpTestStruct {
+-- 
+2.23.0
+
 
 
