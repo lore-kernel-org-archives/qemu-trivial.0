@@ -1,71 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j3Mrf-0006M8-QD
-	for mharc-qemu-trivial@gnu.org; Sun, 16 Feb 2020 11:33:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45016)
+	id 1j3RDl-000891-Sk
+	for mharc-qemu-trivial@gnu.org; Sun, 16 Feb 2020 16:12:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43874)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1j3Mrb-0006JS-LZ
- for qemu-trivial@nongnu.org; Sun, 16 Feb 2020 11:33:49 -0500
+ (envelope-from <jtomko@redhat.com>) id 1j3RDj-000854-Sw
+ for qemu-trivial@nongnu.org; Sun, 16 Feb 2020 16:12:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aleksandar.m.mail@gmail.com>) id 1j3Mra-0006UT-9u
- for qemu-trivial@nongnu.org; Sun, 16 Feb 2020 11:33:47 -0500
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:46266)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
- id 1j3Mra-0006Su-41; Sun, 16 Feb 2020 11:33:46 -0500
-Received: by mail-ot1-x343.google.com with SMTP id g64so13757401otb.13;
- Sun, 16 Feb 2020 08:33:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc; bh=jjiOrwJRRAMj7gIfQJhT4gzUmxZsbZHIt0MGEMIWTAY=;
- b=QnllPJWyFue6qsWs5dueBN8+AwLweKv/j16ftKkxRiV+fjVgMgKOtk9lT5Aikhwlul
- k3PCNRAgIw52orFA8GuDp6LcAzJdIoMUhJByTdmeIZzrmFY0i2akzcpkSiy/3wCnr9AY
- 6Mg3V/siNKNKWxE3qkEzokw7ByUdveTZVXnj0GtQhrwYb/dRKJzF3WFlNYVAu+2VbgTJ
- 0OLnDbC053cpaX/HcO4eJUCr+UuUUzy5IeRddU+B2dAeAAMeDYZDDEV5XU9akc/Pr6gR
- SmbQbXL+EpJeLdqnNcsxsVN4Yk5vwLv3zziDoQWja2PO5jZZ3mfzcLIlwq4cWajBVqy3
- eRfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:cc;
- bh=jjiOrwJRRAMj7gIfQJhT4gzUmxZsbZHIt0MGEMIWTAY=;
- b=sKAbYQXAY6HuqyD2dFLWQ1D/E9dSHgt0ZQkogENw+F8eYWBMd5xNQMVjqCwFV+r3Ch
- WfVqOo2esvPmU2lPrqCpvjKKrfD8rjZ5pfHcILr0DvsR6igKjsKVvyJvSaWyxTeHlYUL
- gPVvR3aYJHob3xrQPR2xYcJaAcnwLAid3Dx5095nQgBVDyLwBU1m2N0t33KZNBMPoTzB
- suv5M5SP2EYg62iQ9sIXciSLvFaXlaqAQkrM716SbEsndRjSdwk2kL0xX8lGo5bwDcWv
- 3gulSuNik2gcqRzm55H7IVOSxiVf0pg6zgojAGi4mIoYjBZYq2OS9Xj1K7H5svzfI2FO
- uMDQ==
-X-Gm-Message-State: APjAAAU0E9pWCGezHtQPr8G1a8C32uJ7kg0nq4wuzq60VoUKBjqvzpW3
- q7PsxGXvYfWsMc+xynNliafzJuFuG0iVtSLgFdw=
-X-Google-Smtp-Source: APXvYqyIp5Cqk5i1fM49BBWskn92JhX8OJlDZ1akx4W5lwgl8krMX2FfdJvqeNSeFZ+it/cKeM2ZS2OxuErpUilvaxY=
-X-Received: by 2002:a05:6830:1e76:: with SMTP id
- m22mr3938941otr.295.1581870824880; 
- Sun, 16 Feb 2020 08:33:44 -0800 (PST)
+ (envelope-from <jtomko@redhat.com>) id 1j3RDi-0001ZZ-G2
+ for qemu-trivial@nongnu.org; Sun, 16 Feb 2020 16:12:55 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:43826
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <jtomko@redhat.com>) id 1j3RDi-0001Xz-6z
+ for qemu-trivial@nongnu.org; Sun, 16 Feb 2020 16:12:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1581887573;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=9XlwZOd5fe0GZQTmBbLgJeGV8Rplg/r0Y2wPRswr96I=;
+ b=ipeA1DHYgOmNbJ7RxT6Uo70n367TjZXUT2lS5QeQNzVYrSHtHW7hj5X+k+MrWRWZlVsykJ
+ mahQkiQIcRQkdM1uNktJHd1gz/oIkSdoz/SzEUS2hqNTpBvfAa4jrzWXJa1hl+1NdRK0d1
+ U77mAW1iKDG+mhSHcHuAOaW+IFfHObw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-308-trySBYpoO-CvTOrVVIyP-A-1; Sun, 16 Feb 2020 16:12:48 -0500
+X-MC-Unique: trySBYpoO-CvTOrVVIyP-A-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0BA8C1005516;
+ Sun, 16 Feb 2020 21:12:47 +0000 (UTC)
+Received: from lpt (ovpn-200-18.brq.redhat.com [10.40.200.18])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4D23F1001B2C;
+ Sun, 16 Feb 2020 21:12:38 +0000 (UTC)
+Date: Sun, 16 Feb 2020 22:12:35 +0100
+From: =?iso-8859-1?B?SuFu?= Tomko <jtomko@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ John Snow <jsnow@redhat.com>
+Subject: Re: [PATCH 1/3] block/qcow2-bitmap: Remove unneeded variable
+ assignment
+Message-ID: <20200216211235.GA745061@lpt>
+References: <20200215161557.4077-1-philmd@redhat.com>
+ <20200215161557.4077-2-philmd@redhat.com>
 MIME-Version: 1.0
-Received: by 2002:a9d:d21:0:0:0:0:0 with HTTP;
- Sun, 16 Feb 2020 08:33:44 -0800 (PST)
-In-Reply-To: <ba671393-7960-1234-6c40-9a8ce29e108a@redhat.com>
-References: <20191221155306.49221-1-jhogan@kernel.org>
- <CAAdtpL7CrEAZz5GWJoYCegchQ=-hdkcih07icgoFd-ghJ3nMBw@mail.gmail.com>
- <CAL1e-=jdpp2W-B1cERU4srRQUkPTjewM3hVrndoh4nr-vPSRGA@mail.gmail.com>
- <20200216065717.GA145683@jamesdev>
- <ba671393-7960-1234-6c40-9a8ce29e108a@redhat.com>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Sun, 16 Feb 2020 17:33:44 +0100
-Message-ID: <CAL1e-=hOAs3xmpcyKz2cMQhGaW1J-PntuA9RmHb94vQgc31ttg@mail.gmail.com>
-Subject: Re: [PATCH] MAINTAINERS: Orphan MIPS KVM CPUs
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: James Hogan <jhogan@kernel.org>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe@mathieu-daude.net>, 
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Aleksandar Markovic <amarkovic@wavecomp.com>, 
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Paul Burton <paulburton@kernel.org>, 
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Aurelien Jarno <aurelien@aurel32.net>
-Content-Type: multipart/alternative; boundary="000000000000990197059eb400de"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::343
+In-Reply-To: <20200215161557.4077-2-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="fdj2RfSjLxBAspz7"
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -77,145 +69,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 16 Feb 2020 16:33:49 -0000
+X-List-Received-Date: Sun, 16 Feb 2020 21:12:57 -0000
 
---000000000000990197059eb400de
-Content-Type: text/plain; charset="UTF-8"
-
-On Sunday, February 16, 2020, Paolo Bonzini <pbonzini@redhat.com> wrote:
-
-> On 16/02/20 07:57, James Hogan wrote:
-> >> We are in the process of handling this within the company, and this
-> >> patch should go via MIPS tree, not trivial tree - will be updated when
-> >> the opinions are crystallized, and all consultations with others were
-> >> done. There is no rush.
-> > Hi Aleksandar,
-> >
-> > I respectfully disagree. In the mean time I am still listed as
-> > maintainer even though this patch has reflected reality for more than 18
-> > months since the 2018 closure of the MIPS UK offices.
-> >
-> > If "the company" wish to eventually crystalize their opinion and assign
-> > someone else this role (which they've had at least 6 weeks to do even
-> > since I sent the patch) they can always submit a new patch.
-> >
-> > In the mean time I'd appreciate if somebody could take the patch ASAP.
->
-> I agree with James, the situation has already crystallized long before
-> the opinions will have.  You have done excellent work on the TCG side,
-> but neither the kernel nor the QEMU side of KVM have seen any
-> significant activity.  If your employer becomes more interested in KVM
-> then the status can be changed.
->
-> I think it's okay if we delay the patch a couple weeks more (which is
-> more or less when Laurent or I will send the next pull request), but
-> certainly not past 5.0 soft freeze.
->
->
-OK, I will add the patch in the next MIPS queue, since I think its
-significance is more than trivial. It will be sent no later than two weeks
-from now. I just wanted the patch to be in the same queue when we will
-provide replacement. But, honestly, if the factual state lasted that long,
-I don't see the reason for such sudden hurry, do you?
-
-I do not act alone (as an independant person) in this community, I
-represent the company I am working for (in this case Wave, the owner of
-MIPS), and of course I need from time to time to consult other people,
-which takes some tome sometimes. Most of you are, I guess, in the same
-situation from time to time.
-
-Of course I respect James' decision, although I am trully sorry about it.
-My only slight objection is that James should have sent this patch sooner,
-rather than just leave an impression that there is a maintainer, while in
-fact there wasn't. What did you wait? But, never mind, I understand your
-hesitation. The best outcome would be that James remained in that role (I
-do remember him as an excellent, thorough engineer, that is approachable
-and very helpful to others), but what can we do now. I wish we work
-together in future, who knows? Thanks, James, for taking care of KVM for
-MIPS for number of years!
-
-Thanks to all too,
-Aleksandar
-
-
-
-
-> Thanks,
->
-> Paolo
->
->
-
---000000000000990197059eb400de
-Content-Type: text/html; charset="UTF-8"
+--fdj2RfSjLxBAspz7
+Content-Type: text/plain; charset=iso-8859-1; format=flowed
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-<br><br>On Sunday, February 16, 2020, Paolo Bonzini &lt;<a href=3D"mailto:p=
-bonzini@redhat.com">pbonzini@redhat.com</a>&gt; wrote:<br><blockquote class=
-=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
-ing-left:1ex">On 16/02/20 07:57, James Hogan wrote:<br>
-&gt;&gt; We are in the process of handling this within the company, and thi=
-s<br>
-&gt;&gt; patch should go via MIPS tree, not trivial tree - will be updated =
-when<br>
-&gt;&gt; the opinions are crystallized, and all consultations with others w=
-ere<br>
-&gt;&gt; done. There is no rush.<br>
-&gt; Hi Aleksandar,<br>
-&gt; <br>
-&gt; I respectfully disagree. In the mean time I am still listed as<br>
-&gt; maintainer even though this patch has reflected reality for more than =
-18<br>
-&gt; months since the 2018 closure of the MIPS UK offices.<br>
-&gt; <br>
-&gt; If &quot;the company&quot; wish to eventually crystalize their opinion=
- and assign<br>
-&gt; someone else this role (which they&#39;ve had at least 6 weeks to do e=
-ven<br>
-&gt; since I sent the patch) they can always submit a new patch.<br>
-&gt; <br>
-&gt; In the mean time I&#39;d appreciate if somebody could take the patch A=
-SAP.<br>
-<br>
-I agree with James, the situation has already crystallized long before<br>
-the opinions will have.=C2=A0 You have done excellent work on the TCG side,=
-<br>
-but neither the kernel nor the QEMU side of KVM have seen any<br>
-significant activity.=C2=A0 If your employer becomes more interested in KVM=
-<br>
-then the status can be changed.<br>
-<br>
-I think it&#39;s okay if we delay the patch a couple weeks more (which is<b=
-r>
-more or less when Laurent or I will send the next pull request), but<br>
-certainly not past 5.0 soft freeze.<br>
-<br></blockquote><div><br></div><div>OK, I will add the patch in the next M=
-IPS queue, since I think its significance is more than trivial. It will be =
-sent no later than two weeks from now. I just wanted the patch to be in the=
- same queue when we will provide replacement. But, honestly, if the factual=
- state lasted that long, I don&#39;t see the reason for such sudden hurry, =
-do you?</div><div><br></div><div>I do not act alone (as an independant pers=
-on) in this community, I represent the company I am working for (in this ca=
-se Wave, the owner of MIPS), and of course I need from time to time to cons=
-ult other people, which takes some tome sometimes. Most of you are, I guess=
-, in the same situation from time to time.</div><div><br></div><div>Of cour=
-se I respect James&#39; decision, although I am trully sorry about it. My o=
-nly slight objection is that James should have sent this patch sooner, rath=
-er than just leave an impression that there is a maintainer, while in fact =
-there wasn&#39;t. What did you wait? But, never mind, I understand your hes=
-itation. The best outcome would be that James remained in that role (I do r=
-emember him as an excellent, thorough engineer, that is approachable and ve=
-ry helpful to others), but what can we do now. I wish we work together in f=
-uture, who knows? Thanks, James, for taking care of KVM for MIPS for number=
- of years!</div><div><br></div><div>Thanks to all too,</div><div>Aleksandar=
-</div><div><br></div><div><br></div><div>=C2=A0</div><blockquote class=3D"g=
-mail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-l=
-eft:1ex">
-Thanks,<br>
-<br>
-Paolo<br>
-<br>
-</blockquote>
+On Sat, Feb 15, 2020 at 05:15:55PM +0100, Philippe Mathieu-Daud=E9 wrote:
+>Fix warning reported by Clang static code analyzer:
+>
+>    CC      block/qcow2-bitmap.o
+>  block/qcow2-bitmap.c:650:5: warning: Value stored to 'ret' is never read
+>      ret =3D -EINVAL;
+>      ^     ~~~~~~~
+>
+>Reported-by: Clang Static Analyzer
+>Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+>---
+> block/qcow2-bitmap.c | 1 -
+> 1 file changed, 1 deletion(-)
+>
 
---000000000000990197059eb400de--
+Reviewed-by: J=E1n Tomko <jtomko@redhat.com>
+
+Unused since its introduction in 88ddffae8fc1e30cc907c2dbb989b7eba9e62319
+
+Jano
+
+--fdj2RfSjLxBAspz7
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEQeJGMrnL0ADuclbP+YPwO/Mat50FAl5JsD8ACgkQ+YPwO/Ma
+t51NgQgArr2H7dAcPdCRtNPcIVZY5MMCMNi3sqT2HIK9T8Cuc/Uu3Ep3TcgmrS3L
+tsmuM0q/Y8PnPuX6X8qq3q4wU3jd3jerHkXjGCE6wUalE0hz1TI9CprHW9an/SmJ
+BKtjE3huUeTglhz9WqPBjlKU2psJ1AxuZ2MR4evifyI4gKPV678rRvRlLxvu+LiS
+qPCOPxu7EPOUKkziz0nh2pkD8fGShRYBRp43lzopd3sDk/LAkGFJikPw2kdP5tPb
+FKpnK9HHG0iKj6YeUvlI7CtIN1+C/nQOd+RHAEIe2oyMPw/OwO5/pSJDHg+kmQ7k
+CGhNi1gcGwviEWJdEZPRrn9uGJJhYg==
+=7drt
+-----END PGP SIGNATURE-----
+
+--fdj2RfSjLxBAspz7--
+
 
