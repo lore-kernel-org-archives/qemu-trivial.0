@@ -1,54 +1,99 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j3Sp3-0000Hc-N0
-	for mharc-qemu-trivial@gnu.org; Sun, 16 Feb 2020 17:55:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54626)
+	id 1j3bi1-0007Xu-NM
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Feb 2020 03:24:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44429)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jhogan@kernel.org>) id 1j3Sp0-0000E7-Gv
- for qemu-trivial@nongnu.org; Sun, 16 Feb 2020 17:55:31 -0500
+ (envelope-from <vsementsov@virtuozzo.com>) id 1j3bhy-0007XD-A8
+ for qemu-trivial@nongnu.org; Mon, 17 Feb 2020 03:24:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jhogan@kernel.org>) id 1j3Soz-0007Cl-Ds
- for qemu-trivial@nongnu.org; Sun, 16 Feb 2020 17:55:30 -0500
-Received: from mail.kernel.org ([198.145.29.99]:51062)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jhogan@kernel.org>)
- id 1j3Sow-00078V-Ap; Sun, 16 Feb 2020 17:55:26 -0500
-Received: from jamesdev (jahogan.plus.com [212.159.75.221])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7FB03206E2;
- Sun, 16 Feb 2020 22:55:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1581893725;
- bh=3NggaOmvOXw2MqkIt726jfs9MLPEIRM1dKQP3jT9fSM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=B1yefkV9poGFm8rJsCamg3txnV3Qkr2nVEwhC9Ux80NGYlzfP2EVcHymL/6fUDep1
- nbw7wKm90tR2NfWyicx4PJm90cOngqJr26ZayPgqHsPMdkppwRamRVrBVvbAgrycYs
- MyLku/prkJdKnmMUyN7nzYqJH5Jj+jY7mrdEXCoI=
-Date: Sun, 16 Feb 2020 22:55:20 +0000
-From: James Hogan <jhogan@kernel.org>
-To: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philippe@mathieu-daude.net>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Paul Burton <paulburton@kernel.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Aurelien Jarno <aurelien@aurel32.net>
-Subject: Re: [PATCH] MAINTAINERS: Orphan MIPS KVM CPUs
-Message-ID: <20200216225520.GB145683@jamesdev>
-References: <20191221155306.49221-1-jhogan@kernel.org>
- <CAAdtpL7CrEAZz5GWJoYCegchQ=-hdkcih07icgoFd-ghJ3nMBw@mail.gmail.com>
- <CAL1e-=jdpp2W-B1cERU4srRQUkPTjewM3hVrndoh4nr-vPSRGA@mail.gmail.com>
- <20200216065717.GA145683@jamesdev>
- <ba671393-7960-1234-6c40-9a8ce29e108a@redhat.com>
- <CAL1e-=hOAs3xmpcyKz2cMQhGaW1J-PntuA9RmHb94vQgc31ttg@mail.gmail.com>
+ (envelope-from <vsementsov@virtuozzo.com>) id 1j3bhx-00046E-1V
+ for qemu-trivial@nongnu.org; Mon, 17 Feb 2020 03:24:49 -0500
+Received: from mail-eopbgr30124.outbound.protection.outlook.com
+ ([40.107.3.124]:22241 helo=EUR03-AM5-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
+ id 1j3bhw-00044q-Av; Mon, 17 Feb 2020 03:24:48 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WlcWtI8YYN7AaspmyOLjsjfeQwEBBBDreBPgvgm8o08m0frw5gpPoHzqMIWxXxY9GmzU9rgx8mJvei9UJ9+l1AARgKRSMx4HyGEETVnJjWMApkoB+qLP5mS9m8BxKjiu5pXAbegkgUOkMn2zTSSt7OhqGb+LFhyuEQ7Cu6i96oGi3zt2F5I8uFGtYXzffChe58n82VRhCQzrlYTaICYgZG7FzqPIx2J9Fp8biMe9sPLLNGm4EdBXQaFXIo7GTemsLXtPfO3TFRGDWV9c7merPyIKFqIHM6G56gRhbZeXaisZgkP/t9yK+MFp1MdsHbRACq3x2SF62tCEkAhtMUYyzw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ogyXJWWRYkZk566vQS+QMc+N1fsV9bVh5lMcBy65yyY=;
+ b=Z3ee9Smsbzp4bX1Z8nDGrFiE9CKYcul3Rbkc8QkLub6pcBeH++KgCgYPtn/GBPnhuA5CAPgowRnYtrNjcAkB+hGe7FEajJzSvirTASy/KAEII9rbwyGMYWnOYQB5Tp03OWxlkwFysaiEGsDZ0eQV7dgUhGYolnJWMaKGmdWnKMHiscuRlzbnVk3nGCM64ga1Yu9x0WFEUJqFCZ4bcM4ppQNA3D9JmWIQplQs08lh7lyuAI33FWL7ipq4z1vrdPsb5HrwA9zYZGiMauQWPEh5k5JpfZR1CPahuZZZcwWrNlWLfBfARvsIja3jYUya2usnuRRFbtuTwIcgiejEm+UI/w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
+ header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ogyXJWWRYkZk566vQS+QMc+N1fsV9bVh5lMcBy65yyY=;
+ b=oy+hqG2TJL4QIbL4yc29PTgATcUj/TMpNWSEvS91S50fUQHCd3RrXzGIDkwWI00v7HaTK2rGgUU/saoFCDHgsn3SyAXD18pXGKeAfHEX3O9e8/m8LUUfsPckrlKpQaV5ZBmJH0iHWiweK7yGwrDUWKh4szbkHeHShqgHrPYeij0=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=vsementsov@virtuozzo.com; 
+Received: from AM6PR08MB4423.eurprd08.prod.outlook.com (20.179.7.140) by
+ AM6PR08MB3573.eurprd08.prod.outlook.com (20.177.114.218) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2729.31; Mon, 17 Feb 2020 08:24:45 +0000
+Received: from AM6PR08MB4423.eurprd08.prod.outlook.com
+ ([fe80::e05a:63af:818c:b664]) by AM6PR08MB4423.eurprd08.prod.outlook.com
+ ([fe80::e05a:63af:818c:b664%4]) with mapi id 15.20.2729.032; Mon, 17 Feb 2020
+ 08:24:45 +0000
+Subject: Re: [PATCH 1/3] block/qcow2-bitmap: Remove unneeded variable
+ assignment
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+CC: qemu-block@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ John Snow <jsnow@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ qemu-trivial@nongnu.org, Kevin Wolf <kwolf@redhat.com>
+References: <20200215161557.4077-1-philmd@redhat.com>
+ <20200215161557.4077-2-philmd@redhat.com>
+From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+X-Tagtoolbar-Keys: D20200217112443341
+Message-ID: <3cd0f14c-38aa-cb6e-fd5b-ac3a35aaade0@virtuozzo.com>
+Date: Mon, 17 Feb 2020 11:24:43 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.2.1
+In-Reply-To: <20200215161557.4077-2-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+X-ClientProxiedBy: HE1PR05CA0245.eurprd05.prod.outlook.com
+ (2603:10a6:3:fb::21) To AM6PR08MB4423.eurprd08.prod.outlook.com
+ (2603:10a6:20b:bf::12)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAL1e-=hOAs3xmpcyKz2cMQhGaW1J-PntuA9RmHb94vQgc31ttg@mail.gmail.com>
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 198.145.29.99
+Received: from [172.16.24.200] (185.231.240.5) by
+ HE1PR05CA0245.eurprd05.prod.outlook.com (2603:10a6:3:fb::21) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2729.22 via Frontend Transport; Mon, 17 Feb 2020 08:24:45 +0000
+X-Tagtoolbar-Keys: D20200217112443341
+X-Originating-IP: [185.231.240.5]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 7fc0bc13-70c3-4b68-0cd1-08d7b382d889
+X-MS-TrafficTypeDiagnostic: AM6PR08MB3573:
+X-Microsoft-Antispam-PRVS: <AM6PR08MB35735B10BBC49DB9C6EB8778C1160@AM6PR08MB3573.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:277;
+X-Forefront-PRVS: 0316567485
+X-Forefront-Antispam-Report: SFV:NSPM;
+ SFS:(10019020)(346002)(396003)(136003)(366004)(376002)(39840400004)(189003)(199004)(26005)(956004)(186003)(478600001)(36756003)(31696002)(8936002)(16526019)(66476007)(66556008)(2616005)(66946007)(16576012)(6486002)(316002)(4326008)(52116002)(2906002)(86362001)(5660300002)(4744005)(81156014)(8676002)(31686004)(54906003)(81166006);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:AM6PR08MB3573;
+ H:AM6PR08MB4423.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+Received-SPF: None (protection.outlook.com: virtuozzo.com does not designate
+ permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Dxf9bztUzioFxlF4n0VnlMaapsp9KwFeRyyg/JuE6oDI5OeQyI1r7Nqx8oCtxgyFt9j4soJ7wwLynOhB+u3WPvygSnjbWoiLMzru6MyzedJU2pjFtQrva24o5VNxfxR5TW96/VmNllCp3xYIU/l7263WTZ/b7hJySQiBULg2UKkKMVQSvvXXze+tCbun0Qemrsnp4gNY6wgc5Y7Q+blmGmavcsuig2+VMcdh5JQ2l8nezH8KPJp/gPcuC5eC7cXM909yWfYn9Kg/gZT6yizfsoKj2FLrT6XkMCC0XKid3u9k2r55j3GVQpQxq78+VPCnhuD3Y/knTroD/ghBOAn1fwwktVdBLVzEzsxi3vsE26MQjmOZZqENCYvkjJONHQqm44aVZmQOAjcS6KiwS53z8Hbp6CMtvTOtHxZZp43dEBhQLQp/70SK55AgMBHt7RV2
+X-MS-Exchange-AntiSpam-MessageData: oo+Q2uX/oxBn/qsFavzhGgES2nLoIrZEwi35m0p8mQ+yUjnL05kKTf0Dhk4oORcceUbivbzXzlplZujI/ARaJ5dhwQq06Qz6aZVpIv8baRjlr+b5dl66BxfnEmwvvXZ4lZB1Nq5jPbfrCSnzJHh5Nw==
+X-OriginatorOrg: virtuozzo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7fc0bc13-70c3-4b68-0cd1-08d7b382d889
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Feb 2020 08:24:45.7424 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 2UmPSdXVrs6xwNvJH3HqlLGRB8W05+sQapY3TEdJGx/RAS2sRqzl4E9JniyA7Bkodxq2YGzgocplO1t+8ua8TCQAzAloxMfpNnSzCu93Oko=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR08MB3573
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.3.124
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -60,68 +105,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 16 Feb 2020 22:55:32 -0000
+X-List-Received-Date: Mon, 17 Feb 2020 08:24:51 -0000
 
-On Sun, Feb 16, 2020 at 05:33:44PM +0100, Aleksandar Markovic wrote:
-> OK, I will add the patch in the next MIPS queue, since I think its
-> significance is more than trivial. It will be sent no later than two weeks
-> from now.
+15.02.2020 19:15, Philippe Mathieu-Daud=C3=A9 wrote:
+> Fix warning reported by Clang static code analyzer:
+>=20
+>      CC      block/qcow2-bitmap.o
+>    block/qcow2-bitmap.c:650:5: warning: Value stored to 'ret' is never re=
+ad
+>        ret =3D -EINVAL;
+>        ^     ~~~~~~~
+>=20
+> Reported-by: Clang Static Analyzer
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>   block/qcow2-bitmap.c | 1 -
+>   1 file changed, 1 deletion(-)
+>=20
+> diff --git a/block/qcow2-bitmap.c b/block/qcow2-bitmap.c
+> index d41f5d049b..8cccc2c9f3 100644
+> --- a/block/qcow2-bitmap.c
+> +++ b/block/qcow2-bitmap.c
+> @@ -647,7 +647,6 @@ static Qcow2BitmapList *bitmap_list_load(BlockDriverS=
+tate *bs, uint64_t offset,
+>       return bm_list;
+>  =20
+>   broken_dir:
+> -    ret =3D -EINVAL;
+>       error_setg(errp, "Broken bitmap directory");
+>  =20
+>   fail:
+>=20
 
-Thanks Aleksandar.
+Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 
-> I just wanted the patch to be in the same queue when we will
-> provide replacement. But, honestly, if the factual state lasted that long,
-> I don't see the reason for such sudden hurry, do you?
 
-Yes.
-
-My main reasons for not wanting this dragged out any longer are:
-
-1) Personally, I just want to let go of it now, and that's slightly
-   harder to do when I'm still keeping an eye on whether this patch is
-   merged yet, or worse, waiting for Wave to act.
-
-2) In principle it feels wrong to delay a maintainer's name being
-   removed at their own request (even if it came late!) for an
-   indeterminate amount of time. This patch simply shouldn't be blocked
-   waiting for Wave to make a decision I've been waiting to see if it
-   would make for too long already.
-
-3) Maybe publicly recognising the orphaned state might motivate Wave or
-   others to step up and take a lead with further development.
-
-> Of course I respect James' decision, although I am trully sorry about it.
-> My only slight objection is that James should have sent this patch sooner,
-> rather than just leave an impression that there is a maintainer, while in
-> fact there wasn't. What did you wait?
-
-LOL, well I doubt MIPS (as a company) was under any illusion since they
-pulled the trigger :-P
-
-Seriously though, I intended to keep an eye on things in my own time
-(both on kernel & QEMU side) and just be ready to answer questions and
-hand over the reigns if/when somebody from Wave got up to speed. I was
-probably also wary of making MIPS look bad for closing their UK
-operation (again) and "orphaning" my code (that I was probably too
-emotionally invested in, LOL!).
-
-In practice Paul took care of the MIPS arch stuff and there was
-virtually no activity on the MIPS KVM front from Wave so real life
-mostly pushed it off my radar. I did discuss orphaning it with Paul last
-year but there was mention of Wave folk getting up to speed with it so I
-held off for a bit longer.
-
-Anyway FWIW I'm sorry for any confusion caused by my hesitation.
-
-> But, never mind, I understand your
-> hesitation. The best outcome would be that James remained in that role (I
-> do remember him as an excellent, thorough engineer, that is approachable
-> and very helpful to others), but what can we do now. I wish we work
-> together in future, who knows? Thanks, James, for taking care of KVM for
-> MIPS for number of years!
-
-Thanks, my pleasure.
-
-Cheers
-James
+--=20
+Best regards,
+Vladimir
 
