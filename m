@@ -1,60 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j40YL-0005UY-R3
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Feb 2020 05:56:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55362)
+	id 1j45r8-0005kJ-Ml
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Feb 2020 11:36:18 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46455)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <stefanha@redhat.com>) id 1j40YJ-0005UI-Kj
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 05:56:32 -0500
+ (envelope-from <jcmvbkbc@gmail.com>) id 1j45r5-0005iR-Uq
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 11:36:16 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <stefanha@redhat.com>) id 1j40YI-0001Kh-3a
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 05:56:31 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:45683
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <stefanha@redhat.com>) id 1j40YH-0001Je-VS
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 05:56:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582023389;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=7AcpjIQ4pDW1sZUuaTAPb1emcrjEToud4U8eecjban0=;
- b=X3wCJ7fOyPgiP61P9MLwuGQ8owq8kwLRfr/ATKpgrmlG2BrMqw8q3SUIS19ABey3ET0Zbd
- 2taKOLzr8xHeMRiIJwtPNvNeVbU1U/lxin5fUfWDvDhUiOLOXW1Bw0fwyOTquiL+vdbU2J
- Jqeg7GGoK9802Zv4xyALvR/8k4qcd8I=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-273-QraJwdcuN--ERTVEBDDYEg-1; Tue, 18 Feb 2020 05:56:24 -0500
-X-MC-Unique: QraJwdcuN--ERTVEBDDYEg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B5C6E801E5C;
- Tue, 18 Feb 2020 10:56:23 +0000 (UTC)
-Received: from localhost (unknown [10.36.118.13])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A8E575C1B2;
- Tue, 18 Feb 2020 10:56:19 +0000 (UTC)
-Date: Tue, 18 Feb 2020 10:56:18 +0000
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
- Jiri Pirko <jiri@resnulli.us>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/net/rocker: Report unimplemented feature with
- qemu_log_mask(UNIMP)
-Message-ID: <20200218105618.GD786556@stefanha-x1.localdomain>
-References: <20200217101637.27558-1-philmd@redhat.com>
+ (envelope-from <jcmvbkbc@gmail.com>) id 1j45r5-0000aU-2B
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 11:36:15 -0500
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:45771)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <jcmvbkbc@gmail.com>)
+ id 1j45r0-0000U9-Tp; Tue, 18 Feb 2020 11:36:11 -0500
+Received: by mail-pl1-x643.google.com with SMTP id b22so8278229pls.12;
+ Tue, 18 Feb 2020 08:36:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=nRuzn8UKnTQ2cmdcyxv/wn2ocH2dZ8wVICl5F0i38wM=;
+ b=FGOJyEDsRuiAt41/y0u01ygmLRCPE6mDOVZBTNJeYe1eZfTI3RULsmnDlAHJePgfOn
+ JYkY6ZkcLg1r95J4TJnW5sx00EPaCkrJ4fqfSYu8I36eofJwsQcjXmk7vY3l6Whq2i4S
+ oV2ap2M7OhWF29sGWsdNJ4KmMpxJAtFwGyw7s8u631YOK+Hi9jMQ0KFWGgH7dq3/ZVia
+ gKHbjG3jwJEIJEzJDBQL1/3tyMVEPbKnsxViKFgTntd6Jrh5eHWcEjedhMH/Y2DgRwgF
+ kxkhI7mlvHwuKPc1+2cu3Vu2Iu5xhSt8xV1p7oCTA2tThhlPLZJyUePiL7wj5VOAYriz
+ bjYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=nRuzn8UKnTQ2cmdcyxv/wn2ocH2dZ8wVICl5F0i38wM=;
+ b=TNzVdLuzE/nJzehPlDkyDeNkAkTNK2MGZV+O3orYtsZmSgGUfQHZopJzr7IZUYK5Br
+ H8ARHRg8IlrZ+VzqTVdrxB4hVVjX6DKpABwLtWTIt7P8O3LKLlYiG0ba/dDS7G3dqhtL
+ gewxiYMtjadhkj2lqEdOH4ITNdwgf432JrXh27GZgUcST0Hjus0L2H5P9j/Aeb/rWnDS
+ zFV5vi8BR6ZLmfuVW3AhUek7KoP2mPl69iXb/J9gqg4HbKq/R8/La1CeSybRGcIuyhE5
+ cUHsdvuz1gkKmIsIZ23g06nleYeZLvAfGoPe11vJ1GwUulz8NjjWfk+gGiPeU8HRt48c
+ KJAg==
+X-Gm-Message-State: APjAAAVYLjRom4NeMe0Ur644ttESOIv8fn2VzWcdi3gQXyZ/G5Q/O4/F
+ gZgii/hrwCEq79+5gEadge/5xAri6AwpoEPEfak=
+X-Google-Smtp-Source: APXvYqx+7gf9qXpxdpkBWNplw/D0Bs1+zafiZ0iBKU526ksLFZFMcMuvlYpSyUOVqGDHtd7h8g7/nzB0kPfiEBIeJ84=
+X-Received: by 2002:a17:90a:db0f:: with SMTP id
+ g15mr3518389pjv.40.1582043769392; 
+ Tue, 18 Feb 2020 08:36:09 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200217101637.27558-1-philmd@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="48TaNjbzBVislYPb"
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+References: <20200218091154.21696-1-kuhn.chenqun@huawei.com>
+ <20200218091154.21696-4-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200218091154.21696-4-kuhn.chenqun@huawei.com>
+From: Max Filippov <jcmvbkbc@gmail.com>
+Date: Tue, 18 Feb 2020 08:35:58 -0800
+Message-ID: <CAMo8BfJ1Jc2_+wMcKK9PZPXidczbQJ04N+3kMx7zV=KpDK__sQ@mail.gmail.com>
+Subject: Re: [PATCH 3/3] hw/xtensa/xtfpga:fix leak of fdevice tree blob
+To: kuhn.chenqun@huawei.com
+Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>, 
+ Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, 
+ zhang.zhanghailiang@huawei.com, QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, pannengyuan@huawei.com
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::643
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -66,57 +70,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Feb 2020 10:56:32 -0000
+X-List-Received-Date: Tue, 18 Feb 2020 16:36:17 -0000
 
---48TaNjbzBVislYPb
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Feb 17, 2020 at 11:16:37AM +0100, Philippe Mathieu-Daud=E9 wrote:
-> Fix warnings reported by Clang static code analyzer:
->=20
->     CC      hw/net/rocker/rocker.o
->   hw/net/rocker/rocker.c:213:9: warning: Value stored to 'tx_tso_mss' is =
-never read
->           tx_tso_mss =3D rocker_tlv_get_le16(tlvs[ROCKER_TLV_TX_TSO_MSS])=
-;
->           ^            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->   hw/net/rocker/rocker.c:217:9: warning: Value stored to 'tx_tso_hdr_len'=
- is never read
->           tx_tso_hdr_len =3D rocker_tlv_get_le16(tlvs[ROCKER_TLV_TX_TSO_H=
-DR_LEN]);
->           ^                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
-~~~~~~
->   hw/net/rocker/rocker.c:255:9: warning: Value stored to 'tx_l3_csum_off'=
- is never read
->           tx_l3_csum_off +=3D tx_tso_mss =3D tx_tso_hdr_len =3D 0;
->           ^                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->=20
-> Fixes: dc488f888
-> Reported-by: Clang Static Analyzer
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+On Tue, Feb 18, 2020 at 1:14 AM <kuhn.chenqun@huawei.com> wrote:
+>
+> From: Chen Qun <kuhn.chenqun@huawei.com>
+>
+> The device tree blob returned by load_device_tree is malloced.
+> We should free it after cpu_physical_memory_write().
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 > ---
->  hw/net/rocker/rocker.c | 15 +++++++++------
->  1 file changed, 9 insertions(+), 6 deletions(-)
+>  hw/xtensa/xtfpga.c | 1 +
+>  1 file changed, 1 insertion(+)
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Acked-by: Max Filippov <jcmvbkbc@gmail.com>
 
---48TaNjbzBVislYPb
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl5LwtIACgkQnKSrs4Gr
-c8gHMwf9HO+0vNBixiIuX3+LXl/msHa7IP8K7GJH3aBJpZzYP2JS2SCHni9l54Eq
-oJAyO0ieWq47oouB4dVmw5dOafqjVvTQeDSKzRhAMrDOUf4bafKrhHPx64e+H7xz
-wEPJeH+/2rY/rQfNdFFvMyyWHdQQhMwJNv2r3su2DxvSVFWj4NiA37q4dP8k6QDW
-WA9sKkVwAAR0cqjq4xkIXC3qkN4cyNxb8kMADGyCO2zSsqhSXfZROS6hWKaUE9YH
-G5eh9LtsF/R1A9soBgHMa8kE1wv9I7zBZKNezmePi38jtQqsmm6/OMwCkXmn5oyO
-pJwQsJHoUuVjJxyuDYPjC3Fd+AFtHg==
-=wbm4
------END PGP SIGNATURE-----
-
---48TaNjbzBVislYPb--
-
+-- 
+Thanks.
+-- Max
 
