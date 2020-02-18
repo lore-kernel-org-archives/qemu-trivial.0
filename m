@@ -1,64 +1,97 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j45r8-0005kJ-Ml
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Feb 2020 11:36:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46455)
+	id 1j46Il-0001Sw-By
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Feb 2020 12:04:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50234)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jcmvbkbc@gmail.com>) id 1j45r5-0005iR-Uq
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 11:36:16 -0500
+ (envelope-from <pbonzini@redhat.com>) id 1j46Ii-0001PH-Cd
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 12:04:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jcmvbkbc@gmail.com>) id 1j45r5-0000aU-2B
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 11:36:15 -0500
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:45771)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <jcmvbkbc@gmail.com>)
- id 1j45r0-0000U9-Tp; Tue, 18 Feb 2020 11:36:11 -0500
-Received: by mail-pl1-x643.google.com with SMTP id b22so8278229pls.12;
- Tue, 18 Feb 2020 08:36:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nRuzn8UKnTQ2cmdcyxv/wn2ocH2dZ8wVICl5F0i38wM=;
- b=FGOJyEDsRuiAt41/y0u01ygmLRCPE6mDOVZBTNJeYe1eZfTI3RULsmnDlAHJePgfOn
- JYkY6ZkcLg1r95J4TJnW5sx00EPaCkrJ4fqfSYu8I36eofJwsQcjXmk7vY3l6Whq2i4S
- oV2ap2M7OhWF29sGWsdNJ4KmMpxJAtFwGyw7s8u631YOK+Hi9jMQ0KFWGgH7dq3/ZVia
- gKHbjG3jwJEIJEzJDBQL1/3tyMVEPbKnsxViKFgTntd6Jrh5eHWcEjedhMH/Y2DgRwgF
- kxkhI7mlvHwuKPc1+2cu3Vu2Iu5xhSt8xV1p7oCTA2tThhlPLZJyUePiL7wj5VOAYriz
- bjYg==
+ (envelope-from <pbonzini@redhat.com>) id 1j46If-0000AA-8U
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 12:04:46 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:42781
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1j46If-00008Y-5R
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 12:04:45 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582045483;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2544dIPgl1aKA4Z7K5Z4971BiGCIl2iah54j9kjCL4E=;
+ b=aqMRnoRnnLWvYfkehrrkmYYhxkFheCNpyYLGxvDKjeXGBWpW2jkgk1PXJiGkkFKfWCls+F
+ bU3lmpkC7a3STGsY5IMic7Tsrwh/MiaCR1izd7BZVCdzsZOoGjXCSZ0x+pjNoQVrIFut1s
+ 55BWSiYkJaJ6H7rcHWDhzhk3azRCoOI=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-269-hl9ELWSAOGe6au0JwxShSQ-1; Tue, 18 Feb 2020 12:04:30 -0500
+Received: by mail-wm1-f71.google.com with SMTP id f66so302427wmf.9
+ for <qemu-trivial@nongnu.org>; Tue, 18 Feb 2020 09:04:30 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=nRuzn8UKnTQ2cmdcyxv/wn2ocH2dZ8wVICl5F0i38wM=;
- b=TNzVdLuzE/nJzehPlDkyDeNkAkTNK2MGZV+O3orYtsZmSgGUfQHZopJzr7IZUYK5Br
- H8ARHRg8IlrZ+VzqTVdrxB4hVVjX6DKpABwLtWTIt7P8O3LKLlYiG0ba/dDS7G3dqhtL
- gewxiYMtjadhkj2lqEdOH4ITNdwgf432JrXh27GZgUcST0Hjus0L2H5P9j/Aeb/rWnDS
- zFV5vi8BR6ZLmfuVW3AhUek7KoP2mPl69iXb/J9gqg4HbKq/R8/La1CeSybRGcIuyhE5
- cUHsdvuz1gkKmIsIZ23g06nleYeZLvAfGoPe11vJ1GwUulz8NjjWfk+gGiPeU8HRt48c
- KJAg==
-X-Gm-Message-State: APjAAAVYLjRom4NeMe0Ur644ttESOIv8fn2VzWcdi3gQXyZ/G5Q/O4/F
- gZgii/hrwCEq79+5gEadge/5xAri6AwpoEPEfak=
-X-Google-Smtp-Source: APXvYqx+7gf9qXpxdpkBWNplw/D0Bs1+zafiZ0iBKU526ksLFZFMcMuvlYpSyUOVqGDHtd7h8g7/nzB0kPfiEBIeJ84=
-X-Received: by 2002:a17:90a:db0f:: with SMTP id
- g15mr3518389pjv.40.1582043769392; 
- Tue, 18 Feb 2020 08:36:09 -0800 (PST)
-MIME-Version: 1.0
-References: <20200218091154.21696-1-kuhn.chenqun@huawei.com>
- <20200218091154.21696-4-kuhn.chenqun@huawei.com>
-In-Reply-To: <20200218091154.21696-4-kuhn.chenqun@huawei.com>
-From: Max Filippov <jcmvbkbc@gmail.com>
-Date: Tue, 18 Feb 2020 08:35:58 -0800
-Message-ID: <CAMo8BfJ1Jc2_+wMcKK9PZPXidczbQJ04N+3kMx7zV=KpDK__sQ@mail.gmail.com>
-Subject: Re: [PATCH 3/3] hw/xtensa/xtfpga:fix leak of fdevice tree blob
-To: kuhn.chenqun@huawei.com
-Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>, 
- Chris Wulff <crwulff@gmail.com>, Marek Vasut <marex@denx.de>, 
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Jf3dlEYrCzOw89Pny9+wuZ6snqo+K0B74r4yZz2W9gY=;
+ b=aA/5HrOdRnya6eTqpOWuKdHtiTkMibeS+gxDKZ4dgczzK5ldDT+KE5fCLst/zMOn3x
+ 9JrWh8dzkOlL6XGKRuY6UMwEhxqoVcgl8cxU6aTcwUcqu5OskNMhPgBOGGr6xh3RU+Sj
+ uafx2IPgxwTHWo09iDbtp1ONlSGJWLtAEn/f5lGMXEOr15ljrhST2XAdbBVqAbXYlwR1
+ K2XK4MLjhJrNqJNdlPdaXbD/siilDc34IBZ2wWimDOeyBhC868EZ5GHJSBnix7HqAcmz
+ oQPN6hNKSwUNgYY/sXo5UR2MZ3uYiHaB8xhv22raCNVJP/1BULUyIGSUS1y/NhFBcP9O
+ dhzw==
+X-Gm-Message-State: APjAAAWNWMt4CabmKDfJewKvMrVTVTBhxmqTcAuQQPZ7PaDGJwkF+3lj
+ WM9l2Sp8zpJ8J4sb9J9KyR5HwL021IjuujngMDP6jiB0vxQ7UEpHIFKGTMCSmEVkJh81ny9brB9
+ 5priIWcbFV7zdt+tHKQ==
+X-Received: by 2002:adf:f80c:: with SMTP id s12mr30272986wrp.1.1582045469025; 
+ Tue, 18 Feb 2020 09:04:29 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyw9dUela3NtrkDeg0CyJlDb3coV6O3bBYGN64fh+CVkb+urV5Aj5z58vwpPB/Qnk2J8h/55A==
+X-Received: by 2002:adf:f80c:: with SMTP id s12mr30272937wrp.1.1582045468711; 
+ Tue, 18 Feb 2020 09:04:28 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:59c7:c3ee:2dec:d2b4?
+ ([2001:b07:6468:f312:59c7:c3ee:2dec:d2b4])
+ by smtp.gmail.com with ESMTPSA id a16sm7026333wrt.30.2020.02.18.09.04.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 18 Feb 2020 09:04:28 -0800 (PST)
+Subject: Re: [PATCH RESEND 00/13] trivial: Detect and remove superfluous
+ semicolons in C code
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Richard Henderson <rth@twiddle.net>, Julia Suvorova <jusual@redhat.com>,
+ Thomas Huth <huth@tuxfamily.org>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, 
- zhang.zhanghailiang@huawei.com, QEMU Trivial <qemu-trivial@nongnu.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, pannengyuan@huawei.com
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::643
+ Aarushi Mehta <mehta.aaru20@gmail.com>, qemu-trivial@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Gerd Hoffmann
+ <kraxel@redhat.com>, Luc Michel <luc.michel@greensocs.com>,
+ Laurent Vivier <lvivier@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <20200218094402.26625-1-philmd@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <55411270-83ae-d6aa-362f-07018b44c0e1@redhat.com>
+Date: Tue, 18 Feb 2020 18:04:25 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
+MIME-Version: 1.0
+In-Reply-To: <20200218094402.26625-1-philmd@redhat.com>
+Content-Language: en-US
+X-MC-Unique: hl9ELWSAOGe6au0JwxShSQ-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -70,24 +103,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Feb 2020 16:36:17 -0000
+X-List-Received-Date: Tue, 18 Feb 2020 17:04:50 -0000
 
-On Tue, Feb 18, 2020 at 1:14 AM <kuhn.chenqun@huawei.com> wrote:
->
-> From: Chen Qun <kuhn.chenqun@huawei.com>
->
-> The device tree blob returned by load_device_tree is malloced.
-> We should free it after cpu_physical_memory_write().
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
->  hw/xtensa/xtfpga.c | 1 +
->  1 file changed, 1 insertion(+)
+On 18/02/20 10:43, Philippe Mathieu-Daud=C3=A9 wrote:
+> Luc noticed a superfluous trailing semicolon:
+> https://lists.gnu.org/archive/html/qemu-devel/2020-02/msg04593.html
+>=20
+> Prevent that by modifying checkpatch.pl and clean the codebase.
+>=20
+> Philippe Mathieu-Daud=C3=A9 (13):
+>   scripts/checkpatch.pl: Detect superfluous semicolon in C code
+>   audio/alsaaudio: Remove superfluous semicolons
+>   block: Remove superfluous semicolons
+>   block/io_uring: Remove superfluous semicolon
+>   hw/arm/xlnx-versal: Remove superfluous semicolon
+>   hw/m68k/next-cube: Remove superfluous semicolon
+>   hw/scsi/esp: Remove superfluous semicolon
+>   hw/vfio/display: Remove superfluous semicolon
+>   migration/multifd: Remove superfluous semicolon
+>   ui/input-barrier: Remove superfluous semicolon
+>   target/i386/whpx: Remove superfluous semicolon
+>   tests/qtest/libqos/qgraph: Remove superfluous semicolons
+>   contrib/rdmacm-mux: Remove superfluous semicolon
+>=20
+>  audio/alsaaudio.c           | 4 ++--
+>  block.c                     | 4 ++--
+>  block/io_uring.c            | 2 +-
+>  contrib/rdmacm-mux/main.c   | 2 +-
+>  hw/arm/xlnx-versal-virt.c   | 2 +-
+>  hw/m68k/next-cube.c         | 2 +-
+>  hw/scsi/esp.c               | 2 +-
+>  hw/vfio/display.c           | 2 +-
+>  migration/multifd.c         | 2 +-
+>  target/i386/whpx-all.c      | 2 +-
+>  tests/qtest/libqos/qgraph.c | 4 ++--
+>  ui/input-barrier.c          | 2 +-
+>  scripts/checkpatch.pl       | 5 +++++
+>  13 files changed, 20 insertions(+), 15 deletions(-)
+>=20
 
-Acked-by: Max Filippov <jcmvbkbc@gmail.com>
+Acked-by: Paolo Bonzini <pbonzini@redhat.com>
 
--- 
-Thanks.
--- Max
+Laurent, can you queue this in qemu-trivial?
+
 
