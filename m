@@ -1,57 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j3zQX-0001ev-T7
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Feb 2020 04:44:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43429)
+	id 1j3zQZ-0001iQ-32
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Feb 2020 04:44:27 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43460)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j3zQV-0001Ub-3Y
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 04:44:24 -0500
+ (envelope-from <philmd@redhat.com>) id 1j3zQW-0001aT-Jv
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 04:44:25 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j3zQT-0005wd-Vy
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 04:44:23 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:46488
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1j3zQV-0005y1-L1
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 04:44:24 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:24908
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j3zQT-0005w8-S6
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 04:44:21 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j3zQV-0005xl-HI
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 04:44:23 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582019061;
+ s=mimecast20190719; t=1582019063;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=XCQCf8OR1kY+/p5b4mHJ3QG09v3lGeftuZ/e10MXqmo=;
- b=gNGybkKMcE9IS/zPnK3Hlkc7seItCheHZABrF0jHVtNA/aU2SnTRaArdq55SM0NkGE+iEV
- Q2KStO9Z2yz/bmm+9gg9PSGGxXx4S2CTbRlsuHppbwhXRn28epHUduxeram2koKpkWKled
- qzAmlVV6sgcuWabWVHhkYCrGjJDYOe8=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-13-KSYeswstODevehzpYv4mRA-1; Tue, 18 Feb 2020 04:44:16 -0500
-Received: by mail-wr1-f70.google.com with SMTP id d8so10456803wrq.12
- for <qemu-trivial@nongnu.org>; Tue, 18 Feb 2020 01:44:16 -0800 (PST)
+ bh=aFwSqFOqQSCSww1xvrmrTjGR2tB5knkZUpnBFKdTlOc=;
+ b=Pg2xzB+GFwXNnz2ELBVPqPZmUDpISaWHyPO+QDWtq5gp1+RfBJXS/s/wiSnNSAZSAw83x3
+ EY5FIzyddITCBLT7muEKaZOQTLPE7vGuPW2kJr+NhV63k7OHBwYw/CFjQWdkCJoQx/38oL
+ oLE//XP5K6eP5neE3eJMgBMsrrBUjyI=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-404-QT4HKdmVPveSnsibW4TzsQ-1; Tue, 18 Feb 2020 04:44:21 -0500
+Received: by mail-wm1-f69.google.com with SMTP id y125so691333wmg.1
+ for <qemu-trivial@nongnu.org>; Tue, 18 Feb 2020 01:44:20 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=JTAYCeyl+pNe1lk0kNlsj14Fj0ev9DGEUp2oxJFg1Hs=;
- b=icPMV06fYvPDBXV24dFsRMFIYJ4D3DonkhDpY17p4WmUg5VGmy7mgGSTytkqXDikGf
- SSCVgH+bHHa4eGSwQAveS/TXCebgOCWwj4sGtFky0udF4luHV74H0vg6Jnc5i2QpKjr+
- iIcOfMYRgBLVqDqq7iW99cfSbRWoLgYPFkkcoJpJAoWNyiKsLtI3h4fKHIJAhNLj2nNG
- 09euP7c2asbFiEW3/4/JvpmU6EEAq4VapyATCzuB6LVpAulE6lGxXwSOG1TiwsnjYYUq
- PR61htEFt+OSIrmwVlp8Tubc0sA4289jhWV35/EflZcFKrPFlGuePXAGOqzYwYWnwBmM
- xGpg==
-X-Gm-Message-State: APjAAAWT7MOjLg2x79YHWXd8av/Gx+MsJc5+4GLUDkFZLqrFvyL5jeiF
- XYv+p3R/5991gXkvOeLH6EY67YAEjccPYkiEhHBOOTbenLREBipZDQCenhg7DPVJrpv5p2S3BXr
- bVuFqab7wTjVSXnwr/g==
-X-Received: by 2002:adf:de86:: with SMTP id w6mr29018432wrl.115.1582019055864; 
- Tue, 18 Feb 2020 01:44:15 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxzD3WAqCTdNNHxCg7SaFclNwM4okabSxUgrIr/k78N7Ojb2sIYWq5/FjLXEWQXGej3Q7K1WA==
-X-Received: by 2002:adf:de86:: with SMTP id w6mr29018383wrl.115.1582019055600; 
- Tue, 18 Feb 2020 01:44:15 -0800 (PST)
+ bh=EdIcfUQ/U2hHF17TjP9T3eQu8UrcSLlBv6lIHRbb1ng=;
+ b=fYpFEaau86TFTfYrzu2EhjAckWyGbUwMagFNmEF1IGjKH6N9Zvfc2Uj4Ey7oRkQO8e
+ gbqn7TG9RZAg0Ro8PJZAA3ty3PcWXir+7CAqgo1xAye8khkjRX5qiUj5KHQwgQCo/1PN
+ lXwU7j2ATqV6qgSIDWYjqzzaQ+BA9fqIUKQjtbTREOYQkDNaUvEBJR62/4rH7CizXebX
+ Oqhja1n+VSvG/JhX4WDtVKTbEtRBHaZUxRtjrl1PhjCwAHzaxQT6yOCYDW/GtHP4XwmN
+ quoRqmKSb056t/1PfPh61hewKRerxDLE6U/bx/sGnaS+uB4YH911bnbPNl2ebIdGC6tI
+ YsjQ==
+X-Gm-Message-State: APjAAAVuAgDfPZSRiefxFdOz1BbFEWM1Oo/1akQgUgpB9h2G8ja2kTq8
+ vkptJR+Vxo/imt6SKM9jsfOsJABPo+IDkv59fvq/1X6ue7HY+GwWZSCzbpJIyVyakr4agJBI8bj
+ PTA/p/kkL6Y+mkn8Zkw==
+X-Received: by 2002:a05:600c:299:: with SMTP id
+ 25mr2223547wmk.68.1582019059915; 
+ Tue, 18 Feb 2020 01:44:19 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxKMOFmz8WuMxWwTBTyCBST4g/cP1AY409LS+ZZl+FoOdhI+u7Ak15lTGc2mNST2Qgj7Z9wbg==
+X-Received: by 2002:a05:600c:299:: with SMTP id
+ 25mr2223512wmk.68.1582019059684; 
+ Tue, 18 Feb 2020 01:44:19 -0800 (PST)
 Received: from x1w.redhat.com (78.red-88-21-202.staticip.rima-tde.net.
  [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id z10sm2735588wmk.31.2020.02.18.01.44.13
+ by smtp.gmail.com with ESMTPSA id z10sm2735588wmk.31.2020.02.18.01.44.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Feb 2020 01:44:15 -0800 (PST)
+ Tue, 18 Feb 2020 01:44:19 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
@@ -72,23 +74,23 @@ Cc: Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Yuval Shaia <yuval.shaia.ml@gmail.com>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH RESEND 05/13] hw/arm/xlnx-versal: Remove superfluous semicolon
-Date: Tue, 18 Feb 2020 10:43:54 +0100
-Message-Id: <20200218094402.26625-6-philmd@redhat.com>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: [PATCH RESEND 07/13] hw/scsi/esp: Remove superfluous semicolon
+Date: Tue, 18 Feb 2020 10:43:56 +0100
+Message-Id: <20200218094402.26625-8-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200218094402.26625-1-philmd@redhat.com>
 References: <20200218094402.26625-1-philmd@redhat.com>
 MIME-Version: 1.0
-X-MC-Unique: KSYeswstODevehzpYv4mRA-1
+X-MC-Unique: QT4HKdmVPveSnsibW4TzsQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8;
 	text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -100,27 +102,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Feb 2020 09:44:24 -0000
+X-List-Received-Date: Tue, 18 Feb 2020 09:44:26 -0000
 
-Fixes: 6f16da53ffe
+Fixes: 74d71ea16bc
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/arm/xlnx-versal-virt.c | 2 +-
+Cc: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: Laurent Vivier <laurent@vivier.eu>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+---
+ hw/scsi/esp.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-index 462493c467..0d2e3bdda1 100644
---- a/hw/arm/xlnx-versal-virt.c
-+++ b/hw/arm/xlnx-versal-virt.c
-@@ -350,7 +350,7 @@ static void create_virtio_regions(VersalVirt *s)
-     int i;
-=20
-     for (i =3D 0; i < NUM_VIRTIO_TRANSPORT; i++) {
--        char *name =3D g_strdup_printf("virtio%d", i);;
-+        char *name =3D g_strdup_printf("virtio%d", i);
-         hwaddr base =3D MM_TOP_RSVD + i * virtio_mmio_size;
-         int irq =3D VERSAL_RSVD_IRQ_FIRST + i;
-         MemoryRegion *mr;
+diff --git a/hw/scsi/esp.c b/hw/scsi/esp.c
+index f8fc30cccb..405f8b7cbc 100644
+--- a/hw/scsi/esp.c
++++ b/hw/scsi/esp.c
+@@ -293,7 +293,7 @@ static void handle_satn_stop(ESPState *s)
+         s->dma_cb =3D handle_satn_stop;
+         return;
+     }
+-    s->pdma_cb =3D satn_stop_pdma_cb;;
++    s->pdma_cb =3D satn_stop_pdma_cb;
+     s->cmdlen =3D get_cmd(s, s->cmdbuf, sizeof(s->cmdbuf));
+     if (s->cmdlen) {
+         trace_esp_handle_satn_stop(s->cmdlen);
 --=20
 2.21.1
 
