@@ -1,41 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j409T-0002So-DV
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Feb 2020 05:30:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50987)
+	id 1j409y-0003DV-Ge
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Feb 2020 05:31:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51087)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1j409Q-0002QF-Gl
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 05:30:49 -0500
+ (envelope-from <quintela@redhat.com>) id 1j409w-00039G-CE
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 05:31:21 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1j409P-0005h7-JI
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 05:30:48 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:28478
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <quintela@redhat.com>) id 1j409v-0005yS-Gd
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 05:31:20 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:22626
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1j409P-0005gl-Ej
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 05:30:47 -0500
+ (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1j409v-0005y0-D0
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 05:31:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582021847;
+ s=mimecast20190719; t=1582021879;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=AM0HGPZD+Ex5WWLbIDoA83h03b95yxVKJplIappPJrw=;
- b=V8Tyc+jhFsADPLY5ekxqOWD9iI5muFc+G4eIpknWgAc/8fUAEeM5E/J6701U669BEj8IyN
- 38tcpFI/qHjHeFDYFHGVwn5cYLKHFZ3xIcHWyRzjXOYIokAN5UG6ppANXqTQ4R9iPZ0NYA
- U5F/WLK4AV7E/eOK74OWaK0QSKbL7fE=
+ bh=j32x0zvinhdY5/GKyI+CL3xHypBWnu3J08EDk79NRFI=;
+ b=KEe/G4dStGjZzmOOBFfRrYJA9Ag7hUX8yBJeKqFv6EjAlIPMfuW8DRbDD6gO4OUhhLtO2y
+ j9tm5IgMJN9ZlloAA5CHdzEv9rADSamYn1OZU3nP/6UVKAG1jS/wRHEgW0wBwBw9EKS1Pz
+ e0BsPYqkdlXoEgAZxtcrDyJCMAxXm1A=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-226-WDe4YRMXOSGRRbzIVm6wbQ-1; Tue, 18 Feb 2020 05:30:45 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-379-MqLd1LxWNyaWRpuBbJJt5Q-1; Tue, 18 Feb 2020 05:31:17 -0500
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2CE40100550E;
- Tue, 18 Feb 2020 10:30:43 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D55A28017DF;
+ Tue, 18 Feb 2020 10:31:14 +0000 (UTC)
 Received: from redhat.com (ovpn-116-49.ams2.redhat.com [10.36.116.49])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D405C60BE1;
- Tue, 18 Feb 2020 10:30:30 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 96D9E87B32;
+ Tue, 18 Feb 2020 10:31:02 +0000 (UTC)
 From: Juan Quintela <quintela@redhat.com>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Cc: qemu-devel@nongnu.org,  Max Reitz <mreitz@redhat.com>,  Kevin Wolf
@@ -52,27 +52,28 @@ Cc: qemu-devel@nongnu.org,  Max Reitz <mreitz@redhat.com>,  Kevin Wolf
  Laurent Vivier <laurent@vivier.eu>,  Paolo Bonzini <pbonzini@redhat.com>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,  Yuval Shaia
  <yuval.shaia.ml@gmail.com>,  qemu-arm@nongnu.org,  Peter Maydell
- <peter.maydell@linaro.org>,  qemu-block@nongnu.org
-Subject: Re: [PATCH RESEND 06/13] hw/m68k/next-cube: Remove superfluous
- semicolon
-In-Reply-To: <20200218094402.26625-7-philmd@redhat.com> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 18 Feb 2020 10:43:55
+ <peter.maydell@linaro.org>,  qemu-block@nongnu.org,  Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>
+Subject: Re: [PATCH RESEND 07/13] hw/scsi/esp: Remove superfluous semicolon
+In-Reply-To: <20200218094402.26625-8-philmd@redhat.com> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 18 Feb 2020 10:43:56
  +0100")
 References: <20200218094402.26625-1-philmd@redhat.com>
- <20200218094402.26625-7-philmd@redhat.com>
+ <20200218094402.26625-8-philmd@redhat.com>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 Reply-To: quintela@redhat.com
-Date: Tue, 18 Feb 2020 11:30:27 +0100
-Message-ID: <875zg4nq64.fsf@secure.laptop>
+Date: Tue, 18 Feb 2020 11:30:59 +0100
+Message-ID: <871rqsnq58.fsf@secure.laptop>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: WDe4YRMXOSGRRbzIVm6wbQ-1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-MC-Unique: MqLd1LxWNyaWRpuBbJJt5Q-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -84,10 +85,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Feb 2020 10:30:49 -0000
+X-List-Received-Date: Tue, 18 Feb 2020 10:31:21 -0000
 
 Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
-> Fixes: 956a78118bf
+> Fixes: 74d71ea16bc
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
 Reviewed-by: Juan Quintela <quintela@redhat.com>
