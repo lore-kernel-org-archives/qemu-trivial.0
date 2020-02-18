@@ -1,23 +1,23 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j3yxT-0001b0-S6
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Feb 2020 04:14:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39096)
+	id 1j3yxU-0001fE-NY
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Feb 2020 04:14:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39107)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j3yxR-0001Uq-B0
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j3yxS-0001W6-4l
  for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 04:14:22 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j3yxQ-0000wV-DO
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 04:14:21 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:43356 helo=huawei.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j3yxR-0000x2-9z
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 04:14:22 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2720 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j3yxM-0000s0-7R; Tue, 18 Feb 2020 04:14:16 -0500
+ id 1j3yxN-0000s2-Dj; Tue, 18 Feb 2020 04:14:17 -0500
 Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 0B5C2A03D0A6D8553D26;
+ by Forcepoint Email with ESMTP id 2D45E954C01F7FFF97C4;
  Tue, 18 Feb 2020 17:14:08 +0800 (CST)
 Received: from HGHY4C002233111.china.huawei.com (10.133.205.93) by
  DGGEMS401-HUB.china.huawei.com (10.3.19.201) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 18 Feb 2020 17:13:59 +0800
+ 14.3.439.0; Tue, 18 Feb 2020 17:14:01 +0800
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-ppc@nongnu.org>, <jcmvbkbc@gmail.com>,
  <crwulff@gmail.com>, <marex@denx.de>, <edgar.iglesias@gmail.com>,
@@ -25,9 +25,9 @@ To: <qemu-devel@nongnu.org>, <qemu-ppc@nongnu.org>, <jcmvbkbc@gmail.com>,
 CC: <zhang.zhanghailiang@huawei.com>, <qemu-trivial@nongnu.org>,
  <pbonzini@redhat.com>, <pannengyuan@huawei.com>, Chen Qun
  <kuhn.chenqun@huawei.com>
-Subject: [PATCH 1/3] hw/nios2:fix leak of fdevice tree blob
-Date: Tue, 18 Feb 2020 17:11:52 +0800
-Message-ID: <20200218091154.21696-2-kuhn.chenqun@huawei.com>
+Subject: [PATCH 3/3] hw/xtensa/xtfpga:fix leak of fdevice tree blob
+Date: Tue, 18 Feb 2020 17:11:54 +0800
+Message-ID: <20200218091154.21696-4-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.14.1.windows.1
 In-Reply-To: <20200218091154.21696-1-kuhn.chenqun@huawei.com>
 References: <20200218091154.21696-1-kuhn.chenqun@huawei.com>
@@ -37,7 +37,7 @@ X-Originating-IP: [10.133.205.93]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.32
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -49,7 +49,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Feb 2020 09:14:22 -0000
+X-List-Received-Date: Tue, 18 Feb 2020 09:14:23 -0000
 
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
@@ -59,21 +59,21 @@ We should free it after cpu_physical_memory_write().
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
- hw/nios2/boot.c | 1 +
+ hw/xtensa/xtfpga.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/nios2/boot.c b/hw/nios2/boot.c
-index 46b8349876..88224aa84c 100644
---- a/hw/nios2/boot.c
-+++ b/hw/nios2/boot.c
-@@ -109,6 +109,7 @@ static int nios2_load_dtb(struct nios2_boot_info bi, const uint32_t ramsize,
-     }
- 
-     cpu_physical_memory_write(bi.fdt, fdt, fdt_size);
-+    g_free(fdt);
-     return fdt_size;
- }
- 
+diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
+index 8e2dd1327a..60ccc74f5f 100644
+--- a/hw/xtensa/xtfpga.c
++++ b/hw/xtensa/xtfpga.c
+@@ -380,6 +380,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
+             cur_tagptr = put_tag(cur_tagptr, BP_TAG_FDT,
+                                  sizeof(dtb_addr), &dtb_addr);
+             cur_lowmem = QEMU_ALIGN_UP(cur_lowmem + fdt_size, 4 * KiB);
++            g_free(fdt);
+         }
+ #else
+         if (dtb_filename) {
 -- 
 2.23.0
 
