@@ -1,44 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j48FU-0004CP-O4
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Feb 2020 14:09:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45310)
+	id 1j48Lu-0005pP-2A
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Feb 2020 14:16:14 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58738)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j48FO-00043j-Gu
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 14:09:31 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j48Lq-0005l4-Qs
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 14:16:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j48FN-0000VV-GD
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 14:09:30 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:40731)
+ (envelope-from <laurent@vivier.eu>) id 1j48Lp-0003t9-Tg
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 14:16:10 -0500
+Received: from mout.kundenserver.de ([212.227.126.187]:38981)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j48FI-0000IP-EP; Tue, 18 Feb 2020 14:09:24 -0500
+ id 1j48Lb-0003R5-JB; Tue, 18 Feb 2020 14:15:55 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N0G5n-1jQ2Vn41Wp-00xGFd; Tue, 18 Feb 2020 20:09:01 +0100
-Subject: Re: [PATCH RESEND 00/13] trivial: Detect and remove superfluous
- semicolons in C code
-To: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1N3bjH-1jVWaH3RR5-010fw9; Tue, 18 Feb 2020 20:15:47 +0100
+Subject: Re: [PATCH 2/3] hw/display/qxl: Remove unneeded variable assignment
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Cc: Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Fam Zheng <fam@euphon.net>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Richard Henderson <rth@twiddle.net>, Julia Suvorova <jusual@redhat.com>,
- Thomas Huth <huth@tuxfamily.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Aarushi Mehta <mehta.aaru20@gmail.com>, qemu-trivial@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Gerd Hoffmann
- <kraxel@redhat.com>, Luc Michel <luc.michel@greensocs.com>,
- Laurent Vivier <lvivier@redhat.com>, Juan Quintela <quintela@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org
-References: <20200218094402.26625-1-philmd@redhat.com>
- <55411270-83ae-d6aa-362f-07018b44c0e1@redhat.com>
+Cc: Kevin Wolf <kwolf@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org, Max Reitz
+ <mreitz@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ John Snow <jsnow@redhat.com>
+References: <20200215161557.4077-1-philmd@redhat.com>
+ <20200215161557.4077-3-philmd@redhat.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -82,34 +68,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <99f23c4c-5dd1-bc83-f881-a45e11fc2b37@vivier.eu>
-Date: Tue, 18 Feb 2020 20:08:57 +0100
+Message-ID: <b23eaa2a-6400-cf36-484b-230ac502f64d@vivier.eu>
+Date: Tue, 18 Feb 2020 20:15:45 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <55411270-83ae-d6aa-362f-07018b44c0e1@redhat.com>
+In-Reply-To: <20200215161557.4077-3-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:hG58ZJcFDBSamg2vHnxkdja47JKwwYVIDT8w7JxDEtE2MS+80Gw
- nLOziodEM72gdK8MVQWm2x+MHshhRX3bPhy1rIxw7WfSJVMIIOlw2iXMhaG+Yk5HW0ixq4U
- 3omQy/+cLlCTt0QCZWIRkeWovMf5D5Q2IKsGbfZRqONKYeJ3a/YydtIgooJKGXpVgE2CR7G
- 3fs7bXzf+wxIy9p+/oDYQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:RIk19QkihUQ=:o7hQmilc1dsrStY9EUYqFf
- i0ECaRBIWSSqf8zpJZ56jdr4U2lCuVkUcYahwT9219qdILNOhVwvThA8KVQwaRJ4WIkqv4Ihj
- S5o+S6vRwYd19NiWMrw7kk/3i0wQ8CYS9JgGVXxenm0QAQQZ/HihU8/lLLvTy/SJWDejxqrxG
- RyrHjqxQGUAhcATVBqI9CrdV8XjmC8w8HRGKb+bZ+qGPJcSCBJkgHy/18AdayDgr5ngQPe5EN
- 3qCB0KIhhsuLK2UyrXJVZOgr603zhMjO/POMTdK3YfUS9MbDSCyNEOG0hWrvYqkNOAq9KwMFD
- L/FgA0+5K6q03uLrotCqBKpLIJThH+ntgu6blFW1dVxf5qLyPbieACYk4nMOQy1NALvI2Rc/7
- 8XZkXDOzR3cHuvUar/dtGWvzNODuajck4vKrdjJspHJ01/cG2HmvWGS97Q36rpkJZe2gbr2Vz
- ndY1Hl5o/cKlCTzUETnkVkVBghlnY0yDOLW0OxB0nkaV0ZNCQXUm+rAdmXKavWY86VOoUiQj6
- b1ctfnCIJNnaJ87n6La9oQOSODUZy1Xpxnk4ZMfV3sBg3xPgeEIqEsWAtk3X4AE6ffMkhKtnN
- P7NN90W9PhZgR6jREMiw810+Tt0UJcS0wfi9D1ESsc4+HdNoHRvJXcGi8XqrJywkJ8wJXXmRh
- fev3BtOhrpXO3vogYcAGXhU9KSfT94ko1ltD057vqNfHlGT+ldH5M5tv0JCus6Mg7vqCWN81E
- DnDsNaCQomG5/Ag0I+pdz4wK12FDcwvXjS6o0htzBfbZYXc6JcRr+uGBh3gKA2wRW261DEZ5S
- bxH7ca8/dirOd+R4fOv/1L5aScBHFHF5fFwyjTdVyynNAaLIq8+8ZQ2RJjIp+AgRdUDAybX
+X-Provags-ID: V03:K1:TBdtUz+1MSKiCBFTCdmdtqkzFrlQ6J36Ol9im0NOlKNdYHnjtKR
+ m7HQhBRjniSIIrJV58ABEABvNtU1HaPqL1Y6JFs8aLfEEFHVoY59CDDDrOOSVgW7ksPxZSS
+ UnLwOGj2i2Fxy6YG72kw23o+xTSaxxzOVKKtTi+mNwGz2FeXprhYlRuBS54t4nKyc/uQSgf
+ DdKcu1BRWaGej6I0m6q1w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:5zqEhyqnyqc=:qzBBzpVSLJ611GyQKf+6mp
+ QO7By5BaZirhTkbZwvysd6MyYf2B5B046L5yrjlCVbow/8gsPTKqFF2MAPHT0v5D3SYRoOzov
+ sIe9trw2iEU6jd9vN06t9eZyY/IQmcDrZMMFUpBgkDADeQMxJmixQvg8tQhRlXoSTnETM4HK3
+ msX8+RZ2Ot4tVPzCoSyiVm3c9BQH5UnA8VVjKTf/dJAWkrAwEoyVK8BMHu426JNGtisXPgRTk
+ Z8jEEzwcoLBEGFuHJXlwJVbuwz/ijzyKdi6qJaf8o1t42555I3gvfVfDzewIKJxMThlqkGf9g
+ rN8Ll5d4BTs5RJSc8gvHL4wzBodn0hyPGHsXmCTvHlgY9WoOGL76aN6Lk0o5Ay3x0iE5ZPPjT
+ GfxrZa+KOxc5PwHTz1NfJ75poNOoumk1B06PpTNvKGb/R+j4OcSNPgszLwQdfCRR1PGglXFUQ
+ pYBMg2VxpkER+RxQaI1HsM0QFMln6Mtc32aoUaIMARpsLvNKV5uu9TzMNKJN6/ApHEVDprJgO
+ OsrhtP6N2nHXQ5CaaJNDqA5gkdqzURNuBXdYYHuZXktUA9u0wzIwQU0rNICeD5a300GETckbU
+ 6x8BLa25Ag6r5ZNE5/KZntZWRLfcxAxU5rELCgZlldbe5M5Nw9dsKUV5CTm2RdZl9h1qg7Hu5
+ ft/MRMXRNTLsMvAFLa8GY0ceUxAC2LXazYsKJWl9vYPGoydgCZ/mrWrFZvVvNS/BxEd5x6Yy6
+ YClfVTP1kNVjcVYCydXV9B4jjBHeBYiwDX8WoBAumWayXyHnSlH5ovTRU7IREcm66Fj7BfJbz
+ ZqPLfPb3QwrLN+zDr+TIIU5uO6UGheCtw721b4u1WGQTi6d8UqodWADBmnn43h7P4+vciDT
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
+X-Received-From: 212.227.126.187
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -121,52 +107,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Feb 2020 19:09:31 -0000
+X-List-Received-Date: Tue, 18 Feb 2020 19:16:12 -0000
 
-Le 18/02/2020 à 18:04, Paolo Bonzini a écrit :
-> On 18/02/20 10:43, Philippe Mathieu-Daudé wrote:
->> Luc noticed a superfluous trailing semicolon:
->> https://lists.gnu.org/archive/html/qemu-devel/2020-02/msg04593.html
->>
->> Prevent that by modifying checkpatch.pl and clean the codebase.
->>
->> Philippe Mathieu-Daudé (13):
->>   scripts/checkpatch.pl: Detect superfluous semicolon in C code
->>   audio/alsaaudio: Remove superfluous semicolons
->>   block: Remove superfluous semicolons
->>   block/io_uring: Remove superfluous semicolon
->>   hw/arm/xlnx-versal: Remove superfluous semicolon
->>   hw/m68k/next-cube: Remove superfluous semicolon
->>   hw/scsi/esp: Remove superfluous semicolon
->>   hw/vfio/display: Remove superfluous semicolon
->>   migration/multifd: Remove superfluous semicolon
->>   ui/input-barrier: Remove superfluous semicolon
->>   target/i386/whpx: Remove superfluous semicolon
->>   tests/qtest/libqos/qgraph: Remove superfluous semicolons
->>   contrib/rdmacm-mux: Remove superfluous semicolon
->>
->>  audio/alsaaudio.c           | 4 ++--
->>  block.c                     | 4 ++--
->>  block/io_uring.c            | 2 +-
->>  contrib/rdmacm-mux/main.c   | 2 +-
->>  hw/arm/xlnx-versal-virt.c   | 2 +-
->>  hw/m68k/next-cube.c         | 2 +-
->>  hw/scsi/esp.c               | 2 +-
->>  hw/vfio/display.c           | 2 +-
->>  migration/multifd.c         | 2 +-
->>  target/i386/whpx-all.c      | 2 +-
->>  tests/qtest/libqos/qgraph.c | 4 ++--
->>  ui/input-barrier.c          | 2 +-
->>  scripts/checkpatch.pl       | 5 +++++
->>  13 files changed, 20 insertions(+), 15 deletions(-)
->>
+Le 15/02/2020 à 17:15, Philippe Mathieu-Daudé a écrit :
+> Fix warning reported by Clang static code analyzer:
 > 
-> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+>   hw/display/qxl.c:1634:14: warning: Value stored to 'orig_io_port' during its initialization is never read
+>       uint32_t orig_io_port = io_port;
+>                ^~~~~~~~~~~~   ~~~~~~~
 > 
-> Laurent, can you queue this in qemu-trivial?
+> Reported-by: Clang Static Analyzer
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  hw/display/qxl.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/display/qxl.c b/hw/display/qxl.c
+> index 64884da708..21a43a1d5e 100644
+> --- a/hw/display/qxl.c
+> +++ b/hw/display/qxl.c
+> @@ -1631,7 +1631,7 @@ static void ioport_write(void *opaque, hwaddr addr,
+>      PCIQXLDevice *d = opaque;
+>      uint32_t io_port = addr;
+>      qxl_async_io async = QXL_SYNC;
+> -    uint32_t orig_io_port = io_port;
+> +    uint32_t orig_io_port;
+>  
+>      if (d->guest_bug && io_port != QXL_IO_RESET) {
+>          return;
 > 
 
-Queued, except patches 3, 4 (taken by Kevin) and 9 (by Juan)
+Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
