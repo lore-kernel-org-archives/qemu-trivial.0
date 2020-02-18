@@ -1,81 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j40PD-0007lI-CJ
-	for mharc-qemu-trivial@gnu.org; Tue, 18 Feb 2020 05:47:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54212)
+	id 1j40YL-0005UY-R3
+	for mharc-qemu-trivial@gnu.org; Tue, 18 Feb 2020 05:56:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55362)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1j40PA-0007iU-Qz
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 05:47:06 -0500
+ (envelope-from <stefanha@redhat.com>) id 1j40YJ-0005UI-Kj
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 05:56:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <luc.michel@greensocs.com>) id 1j40P9-0004bH-Q9
- for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 05:47:04 -0500
-Received: from beetle.greensocs.com ([5.135.226.135]:38488)
+ (envelope-from <stefanha@redhat.com>) id 1j40YI-0001Kh-3a
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 05:56:31 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:45683
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <luc.michel@greensocs.com>)
- id 1j40P0-0004Tu-PC; Tue, 18 Feb 2020 05:46:55 -0500
-Received: from [172.16.11.100] (tiramisu.bar.greensocs.com [172.16.11.100])
- by beetle.greensocs.com (Postfix) with ESMTPSA id E3FA896EF0;
- Tue, 18 Feb 2020 10:46:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1582022812;
+ (Exim 4.71) (envelope-from <stefanha@redhat.com>) id 1j40YH-0001Je-VS
+ for qemu-trivial@nongnu.org; Tue, 18 Feb 2020 05:56:30 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582023389;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=EDbOYa/JAH7yg067XMLutHKJFAx6JLL7i8d5AJAHhBU=;
- b=3CxCfbTASOD7oAMD7zpwgwl5e0pN9Yx4Y9Z82yjKR9e76k11LxKPRYIaQ5KjHcbYetXC9w
- 0pGdjv8ROjqYwCCzQtD55n8G1b4roEGp7GN9jzZ1PS3zvPKoo9Cq+wM+IcYS3Cf1jK/Fqy
- szHViB5/3gOW1Ev/2IEn2IYoWD16Klw=
-Subject: Re: [PATCH RESEND 01/13] scripts/checkpatch.pl: Detect superfluous
- semicolon in C code
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Fam Zheng <fam@euphon.net>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Richard Henderson <rth@twiddle.net>, Julia Suvorova <jusual@redhat.com>,
- Thomas Huth <huth@tuxfamily.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Aarushi Mehta <mehta.aaru20@gmail.com>, qemu-trivial@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Gerd Hoffmann
- <kraxel@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Juan Quintela <quintela@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org
-References: <20200218094402.26625-1-philmd@redhat.com>
- <20200218094402.26625-2-philmd@redhat.com>
-From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <b6a9843f-b47d-b560-7726-4aee0de5d6be@greensocs.com>
-Date: Tue, 18 Feb 2020 11:46:50 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ bh=7AcpjIQ4pDW1sZUuaTAPb1emcrjEToud4U8eecjban0=;
+ b=X3wCJ7fOyPgiP61P9MLwuGQ8owq8kwLRfr/ATKpgrmlG2BrMqw8q3SUIS19ABey3ET0Zbd
+ 2taKOLzr8xHeMRiIJwtPNvNeVbU1U/lxin5fUfWDvDhUiOLOXW1Bw0fwyOTquiL+vdbU2J
+ Jqeg7GGoK9802Zv4xyALvR/8k4qcd8I=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-273-QraJwdcuN--ERTVEBDDYEg-1; Tue, 18 Feb 2020 05:56:24 -0500
+X-MC-Unique: QraJwdcuN--ERTVEBDDYEg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B5C6E801E5C;
+ Tue, 18 Feb 2020 10:56:23 +0000 (UTC)
+Received: from localhost (unknown [10.36.118.13])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A8E575C1B2;
+ Tue, 18 Feb 2020 10:56:19 +0000 (UTC)
+Date: Tue, 18 Feb 2020 10:56:18 +0000
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ Jiri Pirko <jiri@resnulli.us>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] hw/net/rocker: Report unimplemented feature with
+ qemu_log_mask(UNIMP)
+Message-ID: <20200218105618.GD786556@stefanha-x1.localdomain>
+References: <20200217101637.27558-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200218094402.26625-2-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-PH
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1582022812;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=EDbOYa/JAH7yg067XMLutHKJFAx6JLL7i8d5AJAHhBU=;
- b=bZvQbNecuHPdG/OXYa6LCUxxdHBNjrwPKgpDHOrbEGqAZS4Pb4dZvcKvNaV2kJme0PnKUA
- GYK3hqsigffx7nOhFbI72L72K9a9CDIDJSTsFREDDgPaD573EHbneMAe1BGMnw6vKMfU9+
- FdYKok427AHD6CLdlgm4gj7ZJ/gQ7xo=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1582022812; a=rsa-sha256; cv=none;
- b=r0R5VHq2RIdaP/BS6iiIvdj3LI5YGhOMB/Z+9EYwiSYy83f8hsKx1zgZ2dcTlymZfCgY0e
- exEr5+VtPZUUaKVUJ5ZEtSxButUYMG3CstxHQ6sM8d/XkWaE6bXBlKUHMttrEKWbNs9NTg
- 6iSg8JOSqNOh1EaStmmLWsHNueOm+Vg=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20200217101637.27558-1-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="48TaNjbzBVislYPb"
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,44 +66,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 18 Feb 2020 10:47:06 -0000
+X-List-Received-Date: Tue, 18 Feb 2020 10:56:32 -0000
 
-On 2/18/20 10:43 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Display error when a commit contains superfluous semicolon:
+--48TaNjbzBVislYPb
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Feb 17, 2020 at 11:16:37AM +0100, Philippe Mathieu-Daud=E9 wrote:
+> Fix warnings reported by Clang static code analyzer:
 >=20
->   $ git show 6663a0a3376 | scripts/checkpatch.pl -q -
->   ERROR: superfluous trailing semicolon
->   #276: FILE: block/io_uring.c:186:
->   +                ret =3D -ENOSPC;;
->   total: 1 errors, 1 warnings, 485 lines checked
+>     CC      hw/net/rocker/rocker.o
+>   hw/net/rocker/rocker.c:213:9: warning: Value stored to 'tx_tso_mss' is =
+never read
+>           tx_tso_mss =3D rocker_tlv_get_le16(tlvs[ROCKER_TLV_TX_TSO_MSS])=
+;
+>           ^            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>   hw/net/rocker/rocker.c:217:9: warning: Value stored to 'tx_tso_hdr_len'=
+ is never read
+>           tx_tso_hdr_len =3D rocker_tlv_get_le16(tlvs[ROCKER_TLV_TX_TSO_H=
+DR_LEN]);
+>           ^                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~
+>   hw/net/rocker/rocker.c:255:9: warning: Value stored to 'tx_l3_csum_off'=
+ is never read
+>           tx_l3_csum_off +=3D tx_tso_mss =3D tx_tso_hdr_len =3D 0;
+>           ^                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 >=20
-> Reported-by: Luc Michel <luc.michel@greensocs.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
-Reviewed-by: Luc Michel <luc.michel@greensocs.com>
-
+> Fixes: dc488f888
+> Reported-by: Clang Static Analyzer
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 > ---
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> ---
->  scripts/checkpatch.pl | 5 +++++
->  1 file changed, 5 insertions(+)
->=20
-> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-> index ce43a306f8..11512a8a09 100755
-> --- a/scripts/checkpatch.pl
-> +++ b/scripts/checkpatch.pl
-> @@ -1830,6 +1830,11 @@ sub process {
->  			ERROR("suspicious ; after while (0)\n" . $herecurr);
->  		}
-> =20
-> +# Check superfluous trailing ';'
-> +		if ($line =3D~ /;;$/) {
-> +			ERROR("superfluous trailing semicolon\n" . $herecurr);
-> +		}
-> +
->  # Check relative indent for conditionals and blocks.
->  		if ($line =3D~ /\b(?:(?:if|while|for)\s*\(|do\b)/ && $line !~ /^.\s*=
-#/ && $line !~ /\}\s*while\s*/) {
->  			my ($s, $c) =3D ($stat, $cond);
->=20
+>  hw/net/rocker/rocker.c | 15 +++++++++------
+>  1 file changed, 9 insertions(+), 6 deletions(-)
+
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+
+--48TaNjbzBVislYPb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl5LwtIACgkQnKSrs4Gr
+c8gHMwf9HO+0vNBixiIuX3+LXl/msHa7IP8K7GJH3aBJpZzYP2JS2SCHni9l54Eq
+oJAyO0ieWq47oouB4dVmw5dOafqjVvTQeDSKzRhAMrDOUf4bafKrhHPx64e+H7xz
+wEPJeH+/2rY/rQfNdFFvMyyWHdQQhMwJNv2r3su2DxvSVFWj4NiA37q4dP8k6QDW
+WA9sKkVwAAR0cqjq4xkIXC3qkN4cyNxb8kMADGyCO2zSsqhSXfZROS6hWKaUE9YH
+G5eh9LtsF/R1A9soBgHMa8kE1wv9I7zBZKNezmePi38jtQqsmm6/OMwCkXmn5oyO
+pJwQsJHoUuVjJxyuDYPjC3Fd+AFtHg==
+=wbm4
+-----END PGP SIGNATURE-----
+
+--48TaNjbzBVislYPb--
+
 
