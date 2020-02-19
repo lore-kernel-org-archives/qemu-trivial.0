@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j4MQ2-0003sX-HS
+	id 1j4MQ2-0003tA-Oo
 	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 05:17:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53349)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53428)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4MPk-0003dO-Fv
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:10 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j4MPn-0003eq-N8
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4MPi-0005DP-Hs
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:08 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:53445)
+ (envelope-from <laurent@vivier.eu>) id 1j4MPm-0005IX-5k
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:11 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:44969)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j4MPg-00058H-Mq; Wed, 19 Feb 2020 05:17:06 -0500
+ id 1j4MPl-0005Gl-TE; Wed, 19 Feb 2020 05:17:10 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MgNxZ-1jf54V1bP5-00htd2; Wed, 19 Feb 2020 11:16:44 +0100
+ id 1Mk178-1jkK0e0YCu-00kMBz; Wed, 19 Feb 2020 11:16:48 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>,
@@ -34,33 +34,34 @@ Cc: Kevin Wolf <kwolf@redhat.com>,
  qemu-block@nongnu.org, Chris Wulff <crwulff@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
  Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 13/17] hw/display/qxl: Remove unneeded variable assignment
-Date: Wed, 19 Feb 2020 11:16:08 +0100
-Message-Id: <20200219101612.1033925-14-laurent@vivier.eu>
+ Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [PULL 15/17] hw/net/rocker: Report unimplemented feature with
+ qemu_log_mask(UNIMP)
+Date: Wed, 19 Feb 2020 11:16:10 +0100
+Message-Id: <20200219101612.1033925-16-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
 References: <20200219101612.1033925-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:xmLVze4fF2jn6gChYFmBkC8c3RIbPEY5H4J7Y5UtgnxBWgF54AD
- Ag+q0XW/9deubnLuPJBpDdoCAX6siUjw26WVfuE9L3m9B5PbLPCZ6zUXmhCZy6neiMYW3vw
- 97AZdpCVPLOwz0axZF79dSOpgOu+iRs+yVSUpeQ+TOztIzY0JMz6SgbKCYGM1UTlLcy47gH
- Ga05RO73lqgiGlq6ez7bg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:D8XpsZO1UK8=:OIz4CJMjqrC+YhdCUvi4EU
- wRh1hONtNA3tWUsqmkvPhVk4IqAC2jW7SAbZxSXeTCrZyoGg9TpK8hSPa6MHGkiQDnMHv9Dkr
- to9LU0Sdza4sxyIAvx+IJYdfmuuKMZltaI7xtiOLbxjFjz3kLiB6Ly0NG3TwrJwP+c/1ziT8c
- 5Ph/d8cc2Z3cffAPTIBzc29NEbn78Sjv6zFF+JfhgRG/BUTYA51OmMpAQ7xQl3VoeQWO/QcNI
- mwhG3bXAJxtGKfqPUDJKKLC8ryhlt+rrpvaEEnz8bQkw96Zvq4GnaN+vdRVYDt5kxHnwMo8Rv
- DR7f5fiov5m1NU46nH7vh8piupQNWIVlIlMhsUUon1TUKbPnBdLZTVxaHGfHZ06uqK2OnM9GO
- pu4fYTV2uHgNWljCeKCJz/x3x/q1cWRd+IWxbMPLXG+aKbg0J4Qds8szTat/34jiXN2DLKrkR
- dxbIDw9KJrFSxfOsajRByGEwqNcPzgGi4+BCgQxyzkYqj0fPAHuGMUd4Kxh8cYfyJSpuYOpGr
- WScn+8yAbtm/tgCINF4WJbw609cuMiEPYmsLSpNCEUd+zfVCu2AcgJXmb2mpnYyx+GFqrUhTy
- jT0bW5KqrpD/D8aYjcu9LQ7muGIuLi7NMEAqsdkMsbYTMpQjMr9L1hiPBksrEIJ0AWqP2lcsd
- iY1uNT0Fbr81OnsvAcElMtEMba/tCGb55F8CdzyCZXJmCfieybKUbWbDKcTXkP90xgonfoni6
- LJxU0aw7OFS75n2E7D52tlGj3jxF9vzgGZ7eQXDcQ9SGKTjDfySF6/Yi1nhBSwzg6/t8w6EqT
- nIxwqZX1SWyatARb+OFh80FtKS6YdPpQ3TPn76Mh2lbWW5Rn7Zz3WwtDIJjZmQAMlLWdWNl
+X-Provags-ID: V03:K1:duAcb355ECFPnNuZgkT11wz2BIZvCxzcAZlcm39hkXWB3RYN+Lv
+ 1TbbRN/Dcextyh8eKlj0fCir7CJsYi4jJCFxLZd/CC41HCDKH1Xi0fuZ4NCIO5/+U9jDEal
+ nLPv2L1ODWfjOK4qBrLi8uBfCBKlUMSqA3cSG4CiGIYyO5ssOxc5skVMs+bH7moZS8+AcS3
+ rmM7+LpOPDntiil4qFaeA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:mdaeES3PDsM=:b/BG0e9SXww0sJCuQ8MCTT
+ QE2qVIEL0RXs+i+4U7i4jL4h/89O+KyO8qx/A6rQ5h/dQFLi7y9PFLnj2xmBfRyl35p/jNb3l
+ 9vD9yVvPaB1D7uqmWfl1r/WtOvekYFyKf8i45MzHqlVc7+WiSuftQFQ633w/efaU1SAYdliU+
+ SzpuvRuwV0HI3BqhV8GDORTCoP/6lNsNn1IN+52LM0B0Mnhks/NBDwvHGHif2DFE4SmrTxV/h
+ ZdGwHSLO0ry/aQ8qcxBQ6ok0ExT+9WoOZ53zqC4hVjqmWSN816ga2+THoye/q+St54pc83E1/
+ WLfS9B7ZXWdSDgHNqtGCbTByX671QeBr3QZRrBOEOuKiDtcpNNtv1tSTfxuCQm81xBSegV08j
+ a4pUE0MFRYqYc9Z3r+Hh0WtgLsIRfnsHzErw/Y662EgJO+mxyxiakpV1x4Yl2Rx5nVcXV2D2H
+ yvSothDc4Y2+t+7VGS/WciPGQ6W5e6OZMFK56uJ6lchoK+KBYEYJaqXeFW40Qh71bciPFmVA8
+ DEvfXicO6fGUMwNAwhMvU8yysxwz/58cNwpsY3t/oUHIO+/j0eJ4dlfN2GfEaa64+vp7HOmh2
+ q2DvY/zXXc8b4bZId+8lmUcA4kMUrwyw9/djxXxGB6CFxvZP9Tr+XQb3+eFfvBmkCp5aGC4Ij
+ OuRZA8ctEAr0Kc8c+an1K5++Jbm8vHCyeVjS0H8RK61NJN05sjP3+7DioMy5pPvW8yPeC9oNw
+ Ov4UtfGU+YCeQQeBGk7s2JviPBDplQ6E/0EUk4kbQzAtm6uCXsZi8kzYrk+jEipn+K5gyCDn0
+ 54IW3HB8kmuL1fR0JNwL6XXXgVB2ee7Yglcx/gXwHmUlYSxTW//aAw+Lkylt8XfmqObunby
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 217.72.192.74
 X-BeenThere: qemu-trivial@nongnu.org
@@ -74,38 +75,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Feb 2020 10:17:15 -0000
+X-List-Received-Date: Wed, 19 Feb 2020 10:17:16 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Fix warning reported by Clang static code analyzer:
+Fix warnings reported by Clang static code analyzer:
 
-  hw/display/qxl.c:1634:14: warning: Value stored to 'orig_io_port' during its initialization is never read
-      uint32_t orig_io_port = io_port;
-               ^~~~~~~~~~~~   ~~~~~~~
+    CC      hw/net/rocker/rocker.o
+  hw/net/rocker/rocker.c:213:9: warning: Value stored to 'tx_tso_mss' is never read
+          tx_tso_mss = rocker_tlv_get_le16(tlvs[ROCKER_TLV_TX_TSO_MSS]);
+          ^            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  hw/net/rocker/rocker.c:217:9: warning: Value stored to 'tx_tso_hdr_len' is never read
+          tx_tso_hdr_len = rocker_tlv_get_le16(tlvs[ROCKER_TLV_TX_TSO_HDR_LEN]);
+          ^                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  hw/net/rocker/rocker.c:255:9: warning: Value stored to 'tx_l3_csum_off' is never read
+          tx_l3_csum_off += tx_tso_mss = tx_tso_hdr_len = 0;
+          ^                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Fixes: dc488f888
 Reported-by: Clang Static Analyzer
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200215161557.4077-3-philmd@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Message-Id: <20200217101637.27558-1-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/display/qxl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/net/rocker/rocker.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/hw/display/qxl.c b/hw/display/qxl.c
-index 64884da70857..21a43a1d5ec2 100644
---- a/hw/display/qxl.c
-+++ b/hw/display/qxl.c
-@@ -1631,7 +1631,7 @@ static void ioport_write(void *opaque, hwaddr addr,
-     PCIQXLDevice *d = opaque;
-     uint32_t io_port = addr;
-     qxl_async_io async = QXL_SYNC;
--    uint32_t orig_io_port = io_port;
-+    uint32_t orig_io_port;
+diff --git a/hw/net/rocker/rocker.c b/hw/net/rocker/rocker.c
+index 81dd3b5f141d..15d66f6cbcf0 100644
+--- a/hw/net/rocker/rocker.c
++++ b/hw/net/rocker/rocker.c
+@@ -27,6 +27,7 @@
+ #include "qemu/iov.h"
+ #include "qemu/module.h"
+ #include "qemu/bitops.h"
++#include "qemu/log.h"
  
-     if (d->guest_bug && io_port != QXL_IO_RESET) {
-         return;
+ #include "rocker.h"
+ #include "rocker_hw.h"
+@@ -207,14 +208,22 @@ static int tx_consume(Rocker *r, DescInfo *info)
+ 
+     if (tlvs[ROCKER_TLV_TX_L3_CSUM_OFF]) {
+         tx_l3_csum_off = rocker_tlv_get_le16(tlvs[ROCKER_TLV_TX_L3_CSUM_OFF]);
++        qemu_log_mask(LOG_UNIMP, "rocker %s: L3 not implemented"
++                                 " (cksum off: %u)\n",
++                      __func__, tx_l3_csum_off);
+     }
+ 
+     if (tlvs[ROCKER_TLV_TX_TSO_MSS]) {
+         tx_tso_mss = rocker_tlv_get_le16(tlvs[ROCKER_TLV_TX_TSO_MSS]);
++        qemu_log_mask(LOG_UNIMP, "rocker %s: TSO not implemented (MSS: %u)\n",
++                      __func__, tx_tso_mss);
+     }
+ 
+     if (tlvs[ROCKER_TLV_TX_TSO_HDR_LEN]) {
+         tx_tso_hdr_len = rocker_tlv_get_le16(tlvs[ROCKER_TLV_TX_TSO_HDR_LEN]);
++        qemu_log_mask(LOG_UNIMP, "rocker %s: TSO not implemented"
++                                 " (hdr length: %u)\n",
++                      __func__, tx_tso_hdr_len);
+     }
+ 
+     rocker_tlv_for_each_nested(tlv_frag, tlvs[ROCKER_TLV_TX_FRAGS], rem) {
+@@ -249,12 +258,6 @@ static int tx_consume(Rocker *r, DescInfo *info)
+         iovcnt++;
+     }
+ 
+-    if (iovcnt) {
+-        /* XXX perform Tx offloads */
+-        /* XXX   silence compiler for now */
+-        tx_l3_csum_off += tx_tso_mss = tx_tso_hdr_len = 0;
+-    }
+-
+     err = fp_port_eg(r->fp_port[port], iov, iovcnt);
+ 
+ err_too_many_frags:
 -- 
 2.24.1
 
