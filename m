@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j4MPV-0003HC-7S
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 05:16:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53036)
+	id 1j4MPc-0003Sq-BH
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 05:17:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53095)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4MPQ-0003FA-As
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:16:49 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j4MPV-0003HX-8y
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:16:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4MPP-0004kx-7F
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:16:48 -0500
-Received: from mout.kundenserver.de ([212.227.17.10]:39483)
+ (envelope-from <laurent@vivier.eu>) id 1j4MPS-0004pS-Pk
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:16:52 -0500
+Received: from mout.kundenserver.de ([212.227.17.10]:47483)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j4MPM-0004fm-Be; Wed, 19 Feb 2020 05:16:44 -0500
+ id 1j4MPO-0004iN-2Z; Wed, 19 Feb 2020 05:16:46 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1Mlvr3-1jmnp73uK3-00izXo; Wed, 19 Feb 2020 11:16:23 +0100
+ id 1Mofx1-1joSmR1F6H-00p0ta; Wed, 19 Feb 2020 11:16:18 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>,
@@ -33,36 +33,31 @@ Cc: Kevin Wolf <kwolf@redhat.com>,
  Yuval Shaia <yuval.shaia.ml@gmail.com>, Thomas Huth <huth@tuxfamily.org>,
  qemu-block@nongnu.org, Chris Wulff <crwulff@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
- Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Michal Privoznik <mprivozn@redhat.com>,
- =?UTF-8?q?J=C3=A1n=20Tomko?= <jtomko@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, Eric Auger <eric.auger@redhat.com>
-Subject: [PULL 02/17] Report stringified errno in VFIO related errors
-Date: Wed, 19 Feb 2020 11:15:57 +0100
-Message-Id: <20200219101612.1033925-3-laurent@vivier.eu>
+ Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PULL 00/17] Trivial branch patches
+Date: Wed, 19 Feb 2020 11:15:55 +0100
+Message-Id: <20200219101612.1033925-1-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
-References: <20200219101612.1033925-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:miPo9U9LAl1Ujii2RdLcxD7t6u0nbFV+zUNhKL3bUOy6NDQLW6M
- WgSi9GpEHUhpHY6FReWRSUkroA0zSIIdSyc0iQP/1jVpYr5ApvmA5s+KGhmQe+4zifk7Bor
- 1o1ylaglGus+mK9pJI/hcE6ir80i9DXC6UN4xmVtW+UaRJHY1e60w7CJrzXrZQPh8NIUx8W
- zV8BdzIxTnZJUFC6FwCug==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:PXnS0Dt/Mp4=:dkbX1XKRpRMA+9rNWq+fep
- jEma+G0M+/EowwBHs/FqfrLGthF55WVBUlKbN5KnI7hnqp5GLWbbwXPG48OaEjSUBFKfFmo+E
- gWrtkpSz41yd66SQ7h0JSrIurSnYmQWdiga/UBJEKRoJEl4SVlK378Jn1gLxkEwBUNqINXSqx
- lrS5BKwEyLwzVYbS54uG8paf9w0385e7CdyAA1JQE6EdpX07+Y/bYPs4lsa9uoK2xLpEH1gqn
- hYG4bGo1XH7IaOmlAt8Z5FPNceSuo252ZlEe+9bqJRgS0GLufm/vU4mF/aGLScR8wM7OUXlc0
- fAXy1nC2e7ID74YhEi9aj07NFPtvtx2y7519o/4LvKniAfmatsZajwZDV51LTYtz/4CXpWj6K
- X1Ifppz9rhBoQEKUEbbL7swbevK/Zt3zajGjeJ+AQOArVOkbScndKoaY5eVlwZLxGNIDaOBtt
- KL1GKTFx/1IEsvAa2FhgEj1V9FdAe8Y8U2+sOlNQjEVmZztj3dtlYP4KDH8edMdZk4W2nAZ3h
- G4ahhtqZyZOBDd/pqQaGza7FPWmhtfGvhAvbsP53+hHJQVywnun/uzXRMG+nT/roXm18BYR0Z
- vo8ftv4bR84REP69K2kVfv88ifphKm9GM+fcp09kniIikfN9ig1Iegblh6mvueH6UvqHm3j8L
- PKHUjgdOn6ugn9ZWWzDvscX6Tn3gQqBQWN3oH9V5kWMMMQvzsCE6ss5W6GFFbUXsbXouJKsj4
- Vlr8YOhE5Dw/WZDpF3Hwd5x/wafBUESzYQCx1bbeXuknvlHxNMmlJ9SttHRwvdACNElHVwIHg
- FJr0iAOF69FLMmfgItrMYTTLpk/6Ycqt09ME+3yBDs7ERNDxEUG5KP8NS2N8ORECAX593F8
+X-Provags-ID: V03:K1:DWEuROI5o9vosqpwP6BG19STXPZ1c4bZ1l3abFEEupUeGg/SHvn
+ U2YGGOh5iF2r+VpvOaCT1Sjrbi0fgTB3746shs+yzKNSymH/BBC8plpl4GOHd2MQ0sFNjUO
+ p1AzteCY56soEvXbcQWA3Cx+V/noL4Hf61nWZWA9MQvRm+PQEYLVR4zRnV9inDDdY5j+v0e
+ xkZbfp7ArBmH1Vny41sBw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:5fVKbgXp3F4=:SDsfwZoehH39+FEyAxja5Q
+ 7Pd5UseZANsDD0GggysiWrTvsBUVNVrNgdXB2TV81wEgy23tCUJGCG0DPgvfAO9d3zLMIqOJD
+ ehzsj7Pi3bWz6tP7sC4dnZPw8FFf8q0510KHVr5KFZ6NVRqVPatPMHIrTTWuE5y4Bolt2EeyB
+ AXipSLiXLgQSgBHol0exaXKhCLPTYvaNC75J4BPidwaSySph1hM+7X/orL5cgL4254mBOe9BF
+ JcMD4VpxRR5e5brdNZduIs/zY5SW3t370Q6AILpm4m8+0Lar9PRe0FowX/cWKQGIhBdEk+rHm
+ hCTNz8DQpIaBTWcIoHI21I55fDpdfzFfUTlrqvFjcvGN7sc+t9kTQ1pra9nyKRWnKeMXcLeWs
+ 71TuzfpfaJ3qfxOvgAcq3H1jgnfuOkqSzPKAUp6pCpIkUJ8gWWoPXx+ALjrpgh1VPVUbfz0GX
+ n1d1qmlwyxxmqDYUA+NSTsRPsCEeKFokLAxeZ78TiZJS0Sg+sppSXN6gPSOTqMJKcz2whC0ua
+ i4yIaj+hLEUhM2ZvKoqK9wx8HyEENy5Sz82I3CzWntDxEn/1Q4S7pXmK+TyCDRvD4JFwQSOY2
+ JgARlTiSPjsSX+rV0RXLIMncdR5hZYudg/RXnXt0AGYlkT1ald7h/Losnew2DfHEShj5IAzoH
+ kJ1/JWNpo4YIMNtqCKHyc9aoKMaVtuTQgBgjhL4/NTpCZj+ON+ZMrsWwhvbkV2E1BFlEBn9G5
+ Av3hO0OVIQxHcjY5sKHmuYvgh6lAkQokKlH5hN+iyTjZILxXOpxn60NkasKb2iG1ZTlM1zUM7
+ KX2I6w/IjoAgCAtmbWKUDJr6ZgVuUWo0/PI8E4AXRTIHcRD00Wr/HpK/qT16MLiIQhRr4IQ
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.10
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,80 +71,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Feb 2020 10:16:49 -0000
+X-List-Received-Date: Wed, 19 Feb 2020 10:16:56 -0000
 
-From: Michal Privoznik <mprivozn@redhat.com>
+The following changes since commit 6c599282f8ab382fe59f03a6cae755b89561a7b3:
 
-In a few places we report errno formatted as a negative integer.
-This is not as user friendly as it can be. Use strerror() and/or
-error_setg_errno() instead.
+  Merge remote-tracking branch 'remotes/armbru/tags/pull-monitor-2020-02-15-v2' into staging (2020-02-17 13:32:25 +0000)
 
-Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
-Reviewed-by: Ján Tomko <jtomko@redhat.com>
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Alex Williamson <alex.williamson@redhat.com>
-Message-Id: <4949c3ecf1a32189b8a4b5eb4b0fd04c1122501d.1581674006.git.mprivozn@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
----
- hw/vfio/common.c    | 4 ++--
- util/vfio-helpers.c | 6 +++---
- 2 files changed, 5 insertions(+), 5 deletions(-)
+are available in the Git repository at:
 
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 5ca11488d676..0b3593b3c0c4 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -319,7 +319,7 @@ static int vfio_dma_unmap(VFIOContainer *container,
-             unmap.size -= 1ULL << ctz64(container->pgsizes);
-             continue;
-         }
--        error_report("VFIO_UNMAP_DMA: %d", -errno);
-+        error_report("VFIO_UNMAP_DMA failed: %s", strerror(errno));
-         return -errno;
-     }
- 
-@@ -352,7 +352,7 @@ static int vfio_dma_map(VFIOContainer *container, hwaddr iova,
-         return 0;
-     }
- 
--    error_report("VFIO_MAP_DMA: %d", -errno);
-+    error_report("VFIO_MAP_DMA failed: %s", strerror(errno));
-     return -errno;
- }
- 
-diff --git a/util/vfio-helpers.c b/util/vfio-helpers.c
-index 813f7ec56427..ddd9a96e7672 100644
---- a/util/vfio-helpers.c
-+++ b/util/vfio-helpers.c
-@@ -545,7 +545,7 @@ static int qemu_vfio_do_mapping(QEMUVFIOState *s, void *host, size_t size,
-     trace_qemu_vfio_do_mapping(s, host, size, iova);
- 
-     if (ioctl(s->container, VFIO_IOMMU_MAP_DMA, &dma_map)) {
--        error_report("VFIO_MAP_DMA: %d", -errno);
-+        error_report("VFIO_MAP_DMA failed: %s", strerror(errno));
-         return -errno;
-     }
-     return 0;
-@@ -570,7 +570,7 @@ static void qemu_vfio_undo_mapping(QEMUVFIOState *s, IOVAMapping *mapping,
-     assert(QEMU_IS_ALIGNED(mapping->size, qemu_real_host_page_size));
-     assert(index >= 0 && index < s->nr_mappings);
-     if (ioctl(s->container, VFIO_IOMMU_UNMAP_DMA, &unmap)) {
--        error_setg(errp, "VFIO_UNMAP_DMA failed: %d", -errno);
-+        error_setg_errno(errp, errno, "VFIO_UNMAP_DMA failed");
-     }
-     memmove(mapping, &s->mappings[index + 1],
-             sizeof(s->mappings[0]) * (s->nr_mappings - index - 1));
-@@ -669,7 +669,7 @@ int qemu_vfio_dma_reset_temporary(QEMUVFIOState *s)
-     trace_qemu_vfio_dma_reset_temporary(s);
-     qemu_mutex_lock(&s->lock);
-     if (ioctl(s->container, VFIO_IOMMU_UNMAP_DMA, &unmap)) {
--        error_report("VFIO_UNMAP_DMA: %d", -errno);
-+        error_report("VFIO_UNMAP_DMA failed: %s", strerror(errno));
-         qemu_mutex_unlock(&s->lock);
-         return -errno;
-     }
+  git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+
+for you to fetch changes up to d1cb67841ca213802ee789957188ec87e8b7996d:
+
+  hw/xtensa/xtfpga:fix leak of fdevice tree blob (2020-02-19 10:33:38 +0100)
+
+----------------------------------------------------------------
+Fix memory leak with fdt
+cosmetic change in code and logs
+update mailmap
+
+----------------------------------------------------------------
+
+Chen Qun (2):
+  hw/nios2:fix leak of fdevice tree blob
+  hw/xtensa/xtfpga:fix leak of fdevice tree blob
+
+Michal Privoznik (1):
+  Report stringified errno in VFIO related errors
+
+Philippe Mathieu-Daudé (13):
+  scripts/checkpatch.pl: Detect superfluous semicolon in C code
+  audio/alsaaudio: Remove superfluous semicolons
+  hw/arm/xlnx-versal: Remove superfluous semicolon
+  hw/m68k/next-cube: Remove superfluous semicolon
+  hw/scsi/esp: Remove superfluous semicolon
+  hw/vfio/display: Remove superfluous semicolon
+  ui/input-barrier: Remove superfluous semicolon
+  target/i386/whpx: Remove superfluous semicolon
+  tests/qtest/libqos/qgraph: Remove superfluous semicolons
+  contrib/rdmacm-mux: Remove superfluous semicolon
+  hw/display/qxl: Remove unneeded variable assignment
+  hw/block/pflash_cfi02: Remove unneeded variable assignment
+  hw/net/rocker: Report unimplemented feature with qemu_log_mask(UNIMP)
+
+Yu-Chen Lin (1):
+  mailmap: Add entry for Yu-Chen Lin
+
+ .mailmap                    |  3 ++-
+ audio/alsaaudio.c           |  4 ++--
+ contrib/rdmacm-mux/main.c   |  2 +-
+ hw/arm/xlnx-versal-virt.c   |  2 +-
+ hw/block/pflash_cfi02.c     |  1 -
+ hw/display/qxl.c            |  2 +-
+ hw/m68k/next-cube.c         |  2 +-
+ hw/net/rocker/rocker.c      | 15 +++++++++------
+ hw/nios2/boot.c             |  1 +
+ hw/scsi/esp.c               |  2 +-
+ hw/vfio/common.c            |  4 ++--
+ hw/vfio/display.c           |  2 +-
+ hw/xtensa/xtfpga.c          |  1 +
+ scripts/checkpatch.pl       |  5 +++++
+ target/i386/whpx-all.c      |  2 +-
+ tests/qtest/libqos/qgraph.c |  4 ++--
+ ui/input-barrier.c          |  2 +-
+ util/vfio-helpers.c         |  6 +++---
+ 18 files changed, 35 insertions(+), 25 deletions(-)
+
 -- 
 2.24.1
 
