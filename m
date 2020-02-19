@@ -1,69 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j4MQC-0004NQ-Un
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 05:17:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53661)
+	id 1j4QXL-0003r7-Qe
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 09:41:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51498)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4MPz-0003km-2z
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:24 -0500
+ (envelope-from <eblake@redhat.com>) id 1j4QXK-0003qq-2t
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 09:41:15 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4MPx-0005bY-2u
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:22 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:37233)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j4MPr-0005QD-OV; Wed, 19 Feb 2020 05:17:17 -0500
-Received: from localhost.localdomain ([78.238.229.36]) by
- mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1Ma1D8-1iyzBS13pM-00VyXT; Wed, 19 Feb 2020 11:16:46 +0100
-From: Laurent Vivier <laurent@vivier.eu>
+ (envelope-from <eblake@redhat.com>) id 1j4QXJ-0004sD-5k
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 09:41:14 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:46023
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1j4QXJ-0004oE-2H
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 09:41:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582123271;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=TNZGMq3v5Sfpze0h3lmh7dsr8i5R1MRQMTFOSQ6ZVi0=;
+ b=freBB3zGPvrWjJ+PBEjBIk5KnVrVeCJAWVznxqtZCQ8CGMIKwZG68dvyVuMFkCKXurRE8L
+ bflnXA5S1O0WhuNk6lDdi+reKLsj+X9uwSdmMqFgOPCOAsm+UwGyG0UB3uhH0tB69PD67Z
+ VDMeSmw9TBWYP1uQudfnO+ZIgJ1IPRc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-424-maQGhvMLPd-xKWrrTBRPbQ-1; Wed, 19 Feb 2020 09:41:07 -0500
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C046C1088386;
+ Wed, 19 Feb 2020 14:41:05 +0000 (UTC)
+Received: from blue.redhat.com (ovpn-116-180.phx2.redhat.com [10.3.116.180])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 27FDF60C84;
+ Wed, 19 Feb 2020 14:41:05 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Marek Vasut <marex@denx.de>,
- Thomas Huth <thuth@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Jiri Pirko <jiri@resnulli.us>, qemu-arm@nongnu.org,
- Alistair Francis <alistair@alistair23.me>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Richard Henderson <rth@twiddle.net>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- qemu-trivial@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Yuval Shaia <yuval.shaia.ml@gmail.com>, Thomas Huth <huth@tuxfamily.org>,
- qemu-block@nongnu.org, Chris Wulff <crwulff@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
- Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 14/17] hw/block/pflash_cfi02: Remove unneeded variable
- assignment
-Date: Wed, 19 Feb 2020 11:16:09 +0100
-Message-Id: <20200219101612.1033925-15-laurent@vivier.eu>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
-References: <20200219101612.1033925-1-laurent@vivier.eu>
+Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org, mreitz@redhat.com,
+ andrey.shinkevich@virtuozzo.com, Kevin Wolf <kwolf@redhat.com>
+Subject: [PATCH] iotests: Fix nonportable use of od --endian
+Date: Wed, 19 Feb 2020 08:41:03 -0600
+Message-Id: <20200219144103.2919292-1-eblake@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:Dxie9fE4aO1Ap0NisYSSBxy1S8tUWdf5yk3MyaM9JfKjnFxYqoq
- 2hD7PVg0NFuZgkpFhsQ9yGop0OcjPSh799HgFs4FOxnuh0lSPSJreYzn6ekmaS0kbqjljfp
- zZh6jYCAP8ux/OM0pZ0rXy3/PzwOTJmRdz8QQZvyyfaGXgK7RhUnUovQX2suG4JQjIx8eIt
- yHeNWFbU3BHEJAXoCNrUw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:B3IAv8Co/H8=:HPzUeOqRPMojhWZUq0apTr
- YQj3hqnC0QXlquy3P7xVyk+XN2A81PY+iAL1ItvyyccFCa2sy+WQzd6RV83py4i42HNdGEWxv
- WudIrRWKMgrHsEEe8K3Gyi5UIxypp9eNZ5vkeKqpTjJsjzPScH6jQG/tDKHID/dmWYIkIZjTw
- Og3dtMHQ2xjjvBhZ/REFQ2vgWg/AX/28uurrrQjl4lQopYyDOhdOgIKtmPCq7hvNeTod0YOJj
- CyxRg0Qr95YUmgGSnO10N4zFe0Ixp4vkykIDZYip/HrAcpMgGTN2V/MOnFd1qYQeDWyX9/af4
- 2d4GO/G1TCSspasET1Q3sKYDHSntz7Rc4t7x0pwEDkp1VWbeW7wN5qCJatoX54w6Q85CwCqWe
- M2M208JGIs364I25O2fqlY37ytmg7alT4r7M3s/yAOn4e1j3IqfpUI2xbSmHifZ8uc+n6d7ez
- Eq+ynJaMJ963Xz/3kL3k50NRiu5GGCgSNqy90+LrmOhFOddXhNM8hicyK5fMMoxUXz/Qfd7jT
- NeDOdZGtCGSNcS7FKPfxUUo3cgPBPiDEwh+GAMSxqm/sTduM6l0ZV5n26xphaSCXXxvlcody3
- aQSmicRXnnf1vAM1LwiSdqcZaTY3coZ/1cQoVvJVLbu9ccAYsG5/l4vp4iSiS2rnITiG5mtIr
- T7EDFWvbG+dWclZF4o8me0fL4sILFLmYHCf3EerGMdhGdpvmlNXJaruLxpIIUEZjMl7qftILS
- Z8xpX6fhLSOH2r01xG//IEcDWHqIRT2WfjkFWd9cxFy/bwM7h0QVK7T8+75RRRgC0JSvOEz7c
- bdAIhZSJ4G7Xkxo9SBOuzsE7XySRoPxkmNJUeJTRdHX5kMpf7KvTiWTb0ck1KxwUzC+HMbt
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-MC-Unique: maQGhvMLPd-xKWrrTBRPbQ-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,39 +61,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Feb 2020 10:17:24 -0000
+X-List-Received-Date: Wed, 19 Feb 2020 14:41:15 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tests 261 and 272 fail on RHEL 7 with coreutils 8.22, since od
+--endian was not added until coreutils 8.23.  Fix this by manually
+constructing the final value one byte at a time.
 
-Fix warning reported by Clang static code analyzer:
-
-    CC      hw/block/pflash_cfi02.o
-  hw/block/pflash_cfi02.c:311:5: warning: Value stored to 'ret' is never read
-      ret = -1;
-      ^     ~~
-
-Reported-by: Clang Static Analyzer
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200215161557.4077-4-philmd@redhat.com>
-Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+Fixes: fc8ba423
+Reported-by: Andrey Shinkevich <andrey.shinkevich@virtuozzo.com>
+Signed-off-by: Eric Blake <eblake@redhat.com>
 ---
- hw/block/pflash_cfi02.c | 1 -
- 1 file changed, 1 deletion(-)
+ tests/qemu-iotests/common.rc | 22 +++++++++++++++++-----
+ 1 file changed, 17 insertions(+), 5 deletions(-)
 
-diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-index 7c4744c020c1..12f18d401a85 100644
---- a/hw/block/pflash_cfi02.c
-+++ b/hw/block/pflash_cfi02.c
-@@ -308,7 +308,6 @@ static uint64_t pflash_read(void *opaque, hwaddr offset, unsigned int width)
-     hwaddr boff;
-     uint64_t ret;
- 
--    ret = -1;
-     /* Lazy reset to ROMD mode after a certain amount of read accesses */
-     if (!pfl->rom_mode && pfl->wcycle == 0 &&
-         ++pfl->read_counter > PFLASH_LAZY_ROMD_THRESHOLD) {
--- 
+diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
+index 8a6366c09daf..b77ef3d22cd1 100644
+--- a/tests/qemu-iotests/common.rc
++++ b/tests/qemu-iotests/common.rc
+@@ -56,6 +56,12 @@ poke_file()
+ # peek_file_le 'test.img' 512 2 =3D> 65534
+ peek_file_le()
+ {
+-    # Wrap in echo $() to strip spaces
+-    echo $(od -j"$2" -N"$3" --endian=3Dlittle -An -vtu"$3" "$1")
++    local val=3D0 shift=3D0 i
++
++    # coreutils' od --endian is not portable, so manually assemble bytes.
++    for i in $(od -j"$2" -N"$3" -An -v -tu1 "$1"); do
++        val=3D$(( val | (i << shift) ))
++        shift=3D$((shift + 8))
++    done
++    echo $val
+ }
+
+ # peek_file_be 'test.img' 512 2 =3D> 65279
+ peek_file_be()
+ {
+-    # Wrap in echo $() to strip spaces
+-    echo $(od -j"$2" -N"$3" --endian=3Dbig -An -vtu"$3" "$1")
++    local val=3D0 i
++
++    # coreutils' od --endian is not portable, so manually assemble bytes.
++    for i in $(od -j"$2" -N"$3" -An -v -tu1 "$1"); do
++        val=3D$(( (val << 8) | i ))
++    done
++    echo $val
+ }
+
+-# peek_file_raw 'test.img' 512 2 =3D> '\xff\xfe'
++# peek_file_raw 'test.img' 512 2 =3D> '\xff\xfe'. Do not use if the raw da=
+ta
++# is likely to contain \0 or trailing \n.
+ peek_file_raw()
+ {
+     dd if=3D"$1" bs=3D1 skip=3D"$2" count=3D"$3" status=3Dnone
+--=20
 2.24.1
 
 
