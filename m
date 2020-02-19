@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j4MQ8-00048U-1n
+	id 1j4MQ8-00049B-8r
 	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 05:17:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53368)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53369)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4MPl-0003dP-Ii
+ (envelope-from <laurent@vivier.eu>) id 1j4MPl-0003dQ-J6
  for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4MPk-0005Fe-Ek
+ (envelope-from <laurent@vivier.eu>) id 1j4MPk-0005FW-Dz
  for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:09 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:37851)
+Received: from mout.kundenserver.de ([217.72.192.74]:48735)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j4MPa-00050Z-Pg; Wed, 19 Feb 2020 05:16:59 -0500
+ id 1j4MPY-0004wJ-KJ; Wed, 19 Feb 2020 05:16:57 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MHnZQ-1jH4062Uz8-00ErOT; Wed, 19 Feb 2020 11:16:40 +0100
+ id 1MA844-1jBX864Afq-00BZbZ; Wed, 19 Feb 2020 11:16:25 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>,
@@ -34,36 +34,38 @@ Cc: Kevin Wolf <kwolf@redhat.com>,
  qemu-block@nongnu.org, Chris Wulff <crwulff@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
  Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>,
  "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
  Juan Quintela <quintela@redhat.com>
-Subject: [PULL 11/17] tests/qtest/libqos/qgraph: Remove superfluous semicolons
-Date: Wed, 19 Feb 2020 11:16:06 +0100
-Message-Id: <20200219101612.1033925-12-laurent@vivier.eu>
+Subject: [PULL 03/17] scripts/checkpatch.pl: Detect superfluous semicolon in C
+ code
+Date: Wed, 19 Feb 2020 11:15:58 +0100
+Message-Id: <20200219101612.1033925-4-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
 References: <20200219101612.1033925-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:JpUVUNN+S0+cpEQ7Ukn+HanppYJnz1MOzhIPtY9bWWbtdRnlNeW
- fjmIzxWyibl5/aaGjt/3Edg+TX35x3OMfs9jkkp0lWrOWeKWGYYZEV71XfZUHhO+kXj5IpG
- RsVNYTu7vEFqBSZVfY0U66m6UasYctRfJOKM5sGpObgMNIORDVcSsWjUhqWHysEREbhwSrf
- 0lynHRHLcq1aaZsVnYy1w==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:6VzeMLdb83I=:dcixetq2v7BjSE39LhHLZb
- SlPSv938kldCjaw+Xl59xA+Rm9aVV5LXOfkqnNkyCd87DhhVd3KamGTTd+g2dEpgzO9te7K9n
- hVRXu6w+f0cSHsZ3GwaA33nYwh/AEMzvONqlzTfvHoNpSdCEXOSM/Vaf3Ce9JoDCiOyN/wRVE
- BdOLErc7SNcstp0jMxWpHcjjJzztxbdLclwsavzuN1q2Q4y11QzMsNipswGU4RnOxjFj9j1aI
- QzX4V8v1oUHkwn5cqAoPiElHcbQfiM6VLRSucLIcBD8oz8y6yv5WNQKbCk6Fk49bc1cIreuEn
- GPFrCXvgSUwe97hka79PZPYsy+TsX3EBiwIm02KbsgeO9j+GKDf+fzCk39BIJeT9tl2vVR8N9
- eNs9Uajobg3xnXyZE+ZtDvnJIRygUK5uoM0zeh3UALO5HiMxRdg6IirDfSTPb5WfTcP4FaM7j
- o1/mG70nIXVB4Wcy7muuUGYgA0fBLR62JY4X5AsRZSxKUCR62XcTZj3eiouOSFGuugGL/50It
- ZPekopFAG5wSLpaBg4rYHO/usOnN4lwujP7tyQiauBwoW8twayiYIoFftGoCt9oN6dH/M8vj2
- 07/7nr1sicikV0dFEk/YIRoMx36A5wByLNe4WYgtqqewoh4AY/paHJJQxQZDeuDwGxh+qIRnC
- +pmkzVmKVRgSDy9qGDYeqBCw/ZVy5Wqwc1PnbOmho8/T+qui8Z7t+DI8VutZ45Q+MJVb7HqoM
- Uv38HchWPngc6lP05zNTVvcfXShsesjscX0EcalDZBNrCkz6fn1Y18hFZPkP3tJFqGvoXpRfy
- nV8h3JikpueruaW4d7qFy1gsgqyhIUGNZmgAh5psE9B0iwJoV93UHcDYcYqqixG/zvG7zLP
+X-Provags-ID: V03:K1:IXjQSl0/la5Z164rm+NUocD7xxaoxaSU6n1TNuuHRPZySrnB6ZK
+ ERe9mV2ShoYfilQNcB/XWW26hyR3PLF4xK4+AmGpRcGl3/5CD9liea+WM0dbL9DOi+qkCeP
+ QuR2bJN3cFWKOsZNa6YfHyJndq8+/GWKYzTDzP5C74KkPHePbTCmVZg4fwhAC7USJnIHXFj
+ bF47FrPpZzFc5ljlKUGag==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:AkDA87X+Y5E=:6ksXsQXRv/pp0BO0P6vdkL
+ o/cUtpoes6GpFbmnioboLNgjaKlV4Dhc7/87lXiP++/TDvJGwn5TySJ3ZoJM69bl67Uh0L4S7
+ jALtHU25lPO1+uif/yuHJBLir6mDnfGbLhezdXcuHLwhv7m4sTS2PWIWA3A9burkzV0jGmMC+
+ OvAQumCZj8zS1BuLtg8cQFGFb6tB4qiMXbtACVYcMIo5t7lKDLgirJOrZ2GXpg/6To6V6GCwF
+ //Gs7Tp0epABuZsTCsxeQJNIT/qJjsiMq2MSpvHIATR+mTIXkPYIfHLQjWliyKmGHhAS5g3ca
+ Jj/Xh0A3fl1J0myDlkrFjVXprYc5IfWmYhS7AmRnDtzclQI07atDTXK6YE6njQVBwPgA2geLK
+ zFi+sZgY2L4uEo17kUiNm2dIDEVRWTDQMEeg9UQd3hzictBTULpxJdYGpMhIY34AQ9s12AHx9
+ dgqfVWxZ0AGDHeOPn+P9LEaQ0CleOfpuIBsvPElMrw4IMKQHAr1/HKx7cm/SjOlxf2smfsDbR
+ 4s7qJQPn/vvxXvJSVacsEJTUoCp+3e036hYnbqNVlKfi4WkhU3puasGfDAk0K/1sdsmm3cHVE
+ xdz7EdAhPu2HxPg9px1WILlj5xJ+pRFKhxYE9Rf30RkFDxdTw9u1SaXt0sg+dbQD5fErstm6B
+ s4UEzPDCssKhyJyvhJfYAvLgvuZi1C6DChw1wk8ZjtKIW1C5agBWBcnKXk2nIHwW4LdwgqJYv
+ oUniudlqOJq5RndusmdFVoHV7eGkkfZb83gISD1duhCvAxvXycl/OXK3DYnbC/cIe+awVbCt2
+ ixwyqBRUOydiBRtsVzi6p/iMLnqGZ0FzObvMiR2E1DbfNcJkGXVSIVOF1xqOebA0tj8uUrj
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
+X-Received-From: 217.72.192.74
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,39 +81,42 @@ X-List-Received-Date: Wed, 19 Feb 2020 10:17:15 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Fixes: fc281c80202
+Display error when a commit contains superfluous semicolon:
+
+  $ git show 6663a0a3376 | scripts/checkpatch.pl -q -
+  ERROR: superfluous trailing semicolon
+  #276: FILE: block/io_uring.c:186:
+  +                ret = -ENOSPC;;
+  total: 1 errors, 1 warnings, 485 lines checked
+
+Reported-by: Luc Michel <luc.michel@greensocs.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Acked-by: Paolo Bonzini <pbonzini@redhat.com>
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
-Message-Id: <20200218094402.26625-13-philmd@redhat.com>
+Reviewed-by: Luc Michel <luc.michel@greensocs.com>
+Message-Id: <20200218094402.26625-2-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- tests/qtest/libqos/qgraph.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ scripts/checkpatch.pl | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/tests/qtest/libqos/qgraph.c b/tests/qtest/libqos/qgraph.c
-index 7a7ae2a19edc..ca01de07437b 100644
---- a/tests/qtest/libqos/qgraph.c
-+++ b/tests/qtest/libqos/qgraph.c
-@@ -474,7 +474,7 @@ QOSEdgeType qos_graph_edge_get_type(QOSGraphEdge *edge)
-     if (!edge) {
-         return -1;
-     }
--    return edge->type;;
-+    return edge->type;
- }
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index ce43a306f867..11512a8a09b8 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -1830,6 +1830,11 @@ sub process {
+ 			ERROR("suspicious ; after while (0)\n" . $herecurr);
+ 		}
  
- char *qos_graph_edge_get_dest(QOSGraphEdge *edge)
-@@ -590,7 +590,7 @@ void qos_add_test(const char *name, const char *interface,
-                   QOSTestFunc test_func, QOSGraphTestOptions *opts)
- {
-     QOSGraphNode *node;
--    char *test_name = g_strdup_printf("%s-tests/%s", interface, name);;
-+    char *test_name = g_strdup_printf("%s-tests/%s", interface, name);
-     QOSGraphTestOptions def_opts = { };
- 
-     if (!opts) {
++# Check superfluous trailing ';'
++		if ($line =~ /;;$/) {
++			ERROR("superfluous trailing semicolon\n" . $herecurr);
++		}
++
+ # Check relative indent for conditionals and blocks.
+ 		if ($line =~ /\b(?:(?:if|while|for)\s*\(|do\b)/ && $line !~ /^.\s*#/ && $line !~ /\}\s*while\s*/) {
+ 			my ($s, $c) = ($stat, $cond);
 -- 
 2.24.1
 
