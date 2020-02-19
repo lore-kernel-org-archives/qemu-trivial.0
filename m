@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j4MPd-0003We-LS
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 05:17:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53156)
+	id 1j4MPh-0003bJ-Id
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 05:17:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53157)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4MPZ-0003Nj-Kn
+ (envelope-from <laurent@vivier.eu>) id 1j4MPZ-0003Nk-LH
  for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:16:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4MPX-0004wY-Ud
+ (envelope-from <laurent@vivier.eu>) id 1j4MPY-0004wi-1E
  for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:16:57 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:40357)
+Received: from mout.kundenserver.de ([212.227.17.13]:48843)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j4MPX-0004s3-Lj; Wed, 19 Feb 2020 05:16:55 -0500
+ id 1j4MPS-0004nj-4N; Wed, 19 Feb 2020 05:16:50 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1Mjjzx-1jkar72j4F-00lBPA; Wed, 19 Feb 2020 11:16:38 +0100
+ id 1MX0Xf-1ixb8x3bzt-00XLSA; Wed, 19 Feb 2020 11:16:31 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>,
@@ -36,34 +36,34 @@ Cc: Kevin Wolf <kwolf@redhat.com>,
  Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>,
  "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
  Juan Quintela <quintela@redhat.com>
-Subject: [PULL 10/17] target/i386/whpx: Remove superfluous semicolon
-Date: Wed, 19 Feb 2020 11:16:05 +0100
-Message-Id: <20200219101612.1033925-11-laurent@vivier.eu>
+Subject: [PULL 06/17] hw/m68k/next-cube: Remove superfluous semicolon
+Date: Wed, 19 Feb 2020 11:16:01 +0100
+Message-Id: <20200219101612.1033925-7-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
 References: <20200219101612.1033925-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:fkHa02snvuJQT1kC46g80W+yqWWgilAKPwOIMaZZ0rfIXJl3zFW
- BRJvL0sHaJrlWTI636tFdxcZk5MTKE89WpJPgkNQxOo6QmkNuaepT2apNVG15I+aeSNIcKf
- LjjKWDkYdoau+4cpLTeelCwYHvIb9K5rYa34X9tBOxd2+bn556wXIajXdo+idIXme71V8lU
- ZUjWu+EP17IbBWUUsyovw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:6lzzjanm2QQ=:GUiRVkqhwiQKhZZmYv4lUz
- U3WJdTbu7Sm1xzFslXtWrl2dGKXZjuJI/gfSKA3lWa4Djwbn6c1gLkvn4NjLry0/TgoZE5uus
- T+Dkq+9LdXJrZKXyDQ89NSe9e6B1IAK/XfYlZZa4svjg8tlOoU94rJXRO+2IuvDs+c0c8M7yU
- DMGiMjdsvuOknedGzkdVUh3ZkK6l8z+7ESIfizC4efHlnAAT6q8ICGEXbdlFK/j7fUyUp3Z1j
- UKYK2lzZCwtFZVRG6YTIzGq2V/wnOlexUhaoMYAcs9Az/GcC9p8LwdXLjsUPJDfDSZ9JF8Kou
- O2VOGDydoEKmrv9NbqkbxgElieYDApDsS0VnR5GlpR5OgPu0mWg7w/nO4mI/mOTZ9lSYPnGxX
- zV5rREj1/OBGQi6gzN2kUtk1dkWjrOZGrCTbtTgCIoWktELxRRx/f7qCi/bWwYA59e9sPGrbl
- r56Sgj2gxf512cWEXP59/lywJpIyO5IV/ksWtjYIejW9+qtPZtnuldnrAu0LbFVcy1W/FQfrz
- e9NjEj++O60GnQhzzSIYo6111ZYgUwXJtFj7M7ODXM+2h+qYa8kx0ywWJ9NhLpnIr1yWI2HFe
- JBRUjFcqazlogaHqUo5sOTreud4/PxK/2lP44riO3hnsf2HUyGkpel1rfFydlvVb14hnciFeC
- qQ6jBqPgBhpeyVuXNOMNXIqv5GHF1kxguLX4kUy+VP8wTrKHTgoidL1kX/mMBkpVQ6TFioj5k
- BjcdOi7RBDOTJkfh42BuYyUmHz2LCaz/jnptSMV4H3ebAvcW6qEvJcGfO5xJU+F08ocpnECy6
- +Oo47RPX0K+S00CYoNmcaw3I3rVYgdDFvCOlBdCV13c2PqYLFxEy5uXrQNvs5+LA63MBAoK
+X-Provags-ID: V03:K1:YwU/YVllBHraEo0Cl8lzUR9IjE0X30kvnGnRfWTuXIFMN2jYT7O
+ XrRa4UbDum2mg5AgM704YkBwjUL7jVd7UXk5rBz3BWJQlaFpZ5EwIQs4N5qr0d106HQtpUn
+ LMkn+IN+eRdJBgxUOeW/jBH8U0FjMbuD4qT46mC46Zuhzi3qBYJnrdIIhuJSj+mo23nW7Ue
+ CGcxfihqg5LiTzw7PX/hg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:GditWF4XCtQ=:lufd1/0JL3gK9oH6/mi4XW
+ n/nIxxMlhQP6oUwHoFT6KhXpVzEZMd5hV52T6YO1hd2mVuJ3JkCuSlB5V/wzj5TUtF5Ar3EB9
+ 8ma888wx0hkbC0SlRC5n4Z1N8TUMVlWzS+2t3YrA/6Ggj0EO8rSU06xzfZBEgFO+/rqWKR7PO
+ qpVudWx/PItAVnk1z9PtdzTMa9VmQOzTFdHYOt1f7Aif/fvE2qMYcExF1l30SxVW2YK4YZhv/
+ dM+X0jCtT6MdWKA3Ci5IqfK4Eq3Fu2e2H4fobysDmYf8ImaFG083KETrNurgRavkpetbxmk32
+ bwB0glkkvx7H7Y/gK74mLVD+id31/3iaZ//caUCUqYFBu4AmOeEv/Unv2FnEQ5VD7K9ymNVVM
+ /TUB5UAahLSujwjnoVkobFyc0GjmwVYOy0KogqW03zBGIskT9NOWVibdUkSkQUzvVFyhjFvyg
+ nr3DC6IkcSwAUkXwsHq3RAWvCm77nsF5ljN66IJ5nkwPvtbynn3VX5KJ2RLRZUvxKlpRNGCiU
+ aAxSOzXwl9BxkCNDCDApct6iLN+uAO20P3Nci6zLZAeVvhiAASzJ/rkdQxAEUxmX/a0Ak8SHw
+ 4jcYWo9y7wzMAmK9XC7ukOBL+vp1g9bn9Kmr8hwRS0ORCipP5zof05FWG2IBq8TRcYF5Tq6Ap
+ gii4VdzQbsoqV8aKCqz0lnECnDk6/2z66JuvQAJs/oL9AUi/37vvUSD8ohIL/sdTb7951YDTW
+ XXJncEPhNolYEP8CK7Q0hEK5ECPmOfSFs5k5Iu63+/My8V+XH+cEhYw80q2E+/Ukpdzkk72n0
+ yTVwzDHyU4C8zUK+aWJiw1GGH5IabmOLn7xOq2oP7Mu/SuNynbsPNVV1GKmYa/4fc7jns3I
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
+X-Received-From: 212.227.17.13
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,30 +79,30 @@ X-List-Received-Date: Wed, 19 Feb 2020 10:16:59 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Fixes: 812d49f2a3e
+Fixes: 956a78118bf
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Acked-by: Paolo Bonzini <pbonzini@redhat.com>
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
-Message-Id: <20200218094402.26625-12-philmd@redhat.com>
+Message-Id: <20200218094402.26625-7-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- target/i386/whpx-all.c | 2 +-
+ hw/m68k/next-cube.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/i386/whpx-all.c b/target/i386/whpx-all.c
-index 3ed2aa1892a1..35601b81766f 100644
---- a/target/i386/whpx-all.c
-+++ b/target/i386/whpx-all.c
-@@ -511,7 +511,7 @@ static void whpx_get_registers(CPUState *cpu)
-     /* WHvX64RegisterPat - Skipped */
- 
-     assert(whpx_register_names[idx] == WHvX64RegisterSysenterCs);
--    env->sysenter_cs = vcxt.values[idx++].Reg64;;
-+    env->sysenter_cs = vcxt.values[idx++].Reg64;
-     assert(whpx_register_names[idx] == WHvX64RegisterSysenterEip);
-     env->sysenter_eip = vcxt.values[idx++].Reg64;
-     assert(whpx_register_names[idx] == WHvX64RegisterSysenterEsp);
+diff --git a/hw/m68k/next-cube.c b/hw/m68k/next-cube.c
+index e5343348d076..350c6fec78f9 100644
+--- a/hw/m68k/next-cube.c
++++ b/hw/m68k/next-cube.c
+@@ -734,7 +734,7 @@ void next_irq(void *opaque, int number, int level)
+     switch (number) {
+     /* level 3 - floppy, kbd/mouse, power, ether rx/tx, scsi, clock */
+     case NEXT_FD_I:
+-        shift = 7;;
++        shift = 7;
+         break;
+     case NEXT_KBD_I:
+         shift = 3;
 -- 
 2.24.1
 
