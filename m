@@ -1,25 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j4LfZ-0008Qo-Kh
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 04:29:25 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45271)
+	id 1j4Lgn-0000It-UL
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 04:30:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45589)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4LfX-0008QF-5x
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 04:29:24 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j4Lgl-0000Fn-Kw
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 04:30:40 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4LfW-0004S1-3N
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 04:29:23 -0500
-Received: from mout.kundenserver.de ([212.227.126.135]:54603)
+ (envelope-from <laurent@vivier.eu>) id 1j4Lgk-0005z9-LM
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 04:30:39 -0500
+Received: from mout.kundenserver.de ([212.227.126.134]:56939)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent@vivier.eu>) id 1j4LfV-0004QA-Qc
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 04:29:22 -0500
+ (Exim 4.71) (envelope-from <laurent@vivier.eu>)
+ id 1j4Lgh-0005tP-4K; Wed, 19 Feb 2020 04:30:36 -0500
 Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1M3Eqr-1j1JGf0EJx-003dek for <qemu-trivial@nongnu.org>; Wed, 19 Feb 2020
- 10:29:20 +0100
-Subject: Re: [PATCH 1/3] hw/nios2:fix leak of fdevice tree blob
-To: qemu-trivial@nongnu.org
+ (mreue011 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1McpeM-1jeEjN3zuM-00Zu53; Wed, 19 Feb 2020 10:30:16 +0100
+Subject: Re: [PATCH 3/3] hw/xtensa/xtfpga:fix leak of fdevice tree blob
+To: kuhn.chenqun@huawei.com, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+ jcmvbkbc@gmail.com, crwulff@gmail.com, marex@denx.de,
+ edgar.iglesias@gmail.com, david@gibson.dropbear.id.au
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, pannengyuan@huawei.com,
+ zhang.zhanghailiang@huawei.com
 References: <20200218091154.21696-1-kuhn.chenqun@huawei.com>
- <20200218091154.21696-2-kuhn.chenqun@huawei.com>
+ <20200218091154.21696-4-kuhn.chenqun@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -63,34 +66,34 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <17828312-a87d-77a5-738f-a8fb6a7cef4d@vivier.eu>
-Date: Wed, 19 Feb 2020 10:29:19 +0100
+Message-ID: <43b55e06-cc95-9e12-d3f6-fc03a702d28b@vivier.eu>
+Date: Wed, 19 Feb 2020 10:30:12 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200218091154.21696-2-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200218091154.21696-4-kuhn.chenqun@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:7QGstJXg+87B31+AbRCYTEVdidWmD9mwUVTZZwdqcAOiUiHFl+G
- DOgfhHwvikjzHbueeqvN1l2vKssxJhMLb2ScC3ivV11jJ1l1jyq9AMAoTiN9I7dCTgGaqI6
- C+DG/Ux/S2XIOVxyD2et5NdgZvLMu0PW+7zX6LVQ8sYKChLtSl0iDoe4kiAyTnejX8x66yS
- /eLgRfpX+Dchb8XCcbdFA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:JphDepAdO70=:vIaH0dSMGWSaBmnPNOzewS
- uupMqgrIjoREJJOaSypK0ZZh4UrefVA8c00rn8Mxit1mQwzvRY+zXh4cob7S7IC9ikadA51ed
- gKQ7OhFROCL6CUPpng6+EoP6vWB07ECK/8wQiSbh/ad28IbYSUfBe8pbzo3incv+nGB5MT4cE
- INbTwL4a/Q0QJlvTQlq3d80aA7IvhQKVoPwBXzwyuxjDOCCgmc+UoSLt8gXkqdGJwv/oa5F3h
- 0Q+yTYjTezt6zaMkaOSiMh9ek9ZvAw+pV9Y8PbWremcztz4OC/cljpKyk7abvC8Ogm6hWvoLR
- 6AJkkgkpBbK9aQgOIKDhdut5tZ6fEahdL0afNLGITki1ED/hC8CU2B/Xry0P8zGKS6lUCOtj5
- 0va18qwt0HDl6OEWSUWRjne4UTDl1zo30s6ld9P21hB+MGOl4munTNlZsn23iNCUd1LnIfS5p
- +yy62/QHNptXGykdwyrFVAOnyL4FHg0lzo7/j9bheAUDd3xii0Efvgyvx7FOUo0rmK9G9mUUv
- Rb0QtMfqzQIChcTfvbxZFbOJVBg2vC4UUZ2LtEiE1iQxENhbjVx2B4oU+0vQqqB9nm5CjEobK
- ZbW0vVKwcGE50iQpaO26Omtf4b+6kqdtNlm962sWXAaIMOTczc3ZIEFMF6iW8wAZLtJD3oY0Y
- onqw/TZAUKtKIYRfDCbQSvRz5qTRf8hK9rrKs1SwUbyLA2Ac5SBShguUmV+tS02N+/1x8Ggt7
- R7eO1gc27v41K5qgqXd4XSiqgTdObS6mRWow2w/Mu4TrVZTz9R8///vvraR/eoxMSg12OT88k
- fHBmul41oOlHPCuAjmKMON4ibWGuim2UrRqNgfEPRuYwKorLD6P8SM18YY1vYk/Tt9xMOH0
+X-Provags-ID: V03:K1:D6msGcNANjzeYJ5v+VJqXTreD9w9Qa4GTl4jc7ysJqV8X2PcF/W
+ FQ1vXqLzEU/Z9eNhvW1oWpgAXBCGGGvzhGuHK2meubolzXEktG0E6gVEWXjpfnT2aPLzPjG
+ 7mXLdSswycst93uLLHPcM/n71rmfmuSZtyr3bza4l+cbkAoYe1QGs2evdgB7lFvjVNk5/gD
+ pBnibNnPxapQqcZBhFVbQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:OA7l5i/EMx0=:RCgOQyMral7F96SojKWOkQ
+ Ho8sy2CQBbfgzninxK4dDMOYYToaUylv+Crhije/4vNYYNDGoaK1V5BrInxPpL4PpMB051/LR
+ wzuoeaGltgu2ZKo+4q/jCwMWTUnwuHhQRQLKoaXvLbD3HlDBj7Jy5V8qZX4kKRqCrAH9nwrWw
+ /QYX1GTkUExIO46EmOSPzyWgzTm0RQKs6ZZCMTG2elIscyIkGRuOItATHIj36tgaPybcmsGdE
+ I5Db3XrRkmK1EgHhiSctqwMmPIA/x716owDt3QACApWNLbGwdxfh9LwwEnBAdi979XWh0E1VA
+ BAfTpUtX4GRsSCtCT18mUqJmVrsNS01PF+35U+9rhAoXIcby8fUxdJIXKsmgPyGXCEUvyCA2s
+ ClL7wtrE6iu2M6c8aEMy6ICGyzIzGdXw77KNobln83aK+V2yMxQcvwkpnsO0J5ObdBxImrlJR
+ 7dbp+3lon4M3+F+g7/j+8sRY5cXTMLedNNwGPBq+wlbb/geUbGe6NThL4eK7qZls0HurgkrmQ
+ JxwE3yH79pIsuAoG2EZNin00VdyWq/XJCGxE+8VYVsRaMKkvUWYQQYGawY/TwxIFOyqMjVCGf
+ gd5KgTFhOPava+4DxJcUBBl9TSN73GEGaVj6GIgaINkzlcWK0gJa6Z0vq0T0edeEWgGFYxOMY
+ eZwwkc9+BRISeH+AamQ+PO05QTFhZQJIctDakjc7QIT37uW1DT+M+4OKpzDaqVdK7C9/1VXXc
+ JXABc+xiALwe95+CBFqHclFfUm2xa6U1AWPZTn5fWHGB/Bdquq3uOwEveSqXIoWyYEFUwF6lA
+ ywA8zmvXFdKfnlHeTCMICozayN8CvmV09Mfqx8tY6CGCiBQqN/xhWCGDhx26gBA6yus77rV
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.126.135
+X-Received-From: 212.227.126.134
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -102,7 +105,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Feb 2020 09:29:24 -0000
+X-List-Received-Date: Wed, 19 Feb 2020 09:30:40 -0000
 
 Le 18/02/2020 à 10:11, kuhn.chenqun@huawei.com a écrit :
 > From: Chen Qun <kuhn.chenqun@huawei.com>
@@ -113,21 +116,21 @@ Le 18/02/2020 à 10:11, kuhn.chenqun@huawei.com a écrit :
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 > ---
->  hw/nios2/boot.c | 1 +
+>  hw/xtensa/xtfpga.c | 1 +
 >  1 file changed, 1 insertion(+)
 > 
-> diff --git a/hw/nios2/boot.c b/hw/nios2/boot.c
-> index 46b8349876..88224aa84c 100644
-> --- a/hw/nios2/boot.c
-> +++ b/hw/nios2/boot.c
-> @@ -109,6 +109,7 @@ static int nios2_load_dtb(struct nios2_boot_info bi, const uint32_t ramsize,
->      }
->  
->      cpu_physical_memory_write(bi.fdt, fdt, fdt_size);
-> +    g_free(fdt);
->      return fdt_size;
->  }
->  
+> diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
+> index 8e2dd1327a..60ccc74f5f 100644
+> --- a/hw/xtensa/xtfpga.c
+> +++ b/hw/xtensa/xtfpga.c
+> @@ -380,6 +380,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
+>              cur_tagptr = put_tag(cur_tagptr, BP_TAG_FDT,
+>                                   sizeof(dtb_addr), &dtb_addr);
+>              cur_lowmem = QEMU_ALIGN_UP(cur_lowmem + fdt_size, 4 * KiB);
+> +            g_free(fdt);
+>          }
+>  #else
+>          if (dtb_filename) {
 > 
 
 Reviewed-by: Laurent Vivier <laurent@vivier.eu>
