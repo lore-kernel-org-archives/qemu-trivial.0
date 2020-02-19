@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j4MQ2-0003rm-AB
+	id 1j4MQ2-0003sX-HS
 	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 05:17:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53330)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53349)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4MPg-0003bG-OZ
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:06 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j4MPk-0003dO-Fv
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4MPd-000560-Bg
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:04 -0500
-Received: from mout.kundenserver.de ([217.72.192.75]:56387)
+ (envelope-from <laurent@vivier.eu>) id 1j4MPi-0005DP-Hs
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:08 -0500
+Received: from mout.kundenserver.de ([217.72.192.74]:53445)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j4MPd-000543-2c; Wed, 19 Feb 2020 05:17:01 -0500
+ id 1j4MPg-00058H-Mq; Wed, 19 Feb 2020 05:17:06 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MK3iK-1ik4d83kmE-00LZU1; Wed, 19 Feb 2020 11:16:21 +0100
+ id 1MgNxZ-1jf54V1bP5-00htd2; Wed, 19 Feb 2020 11:16:44 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>,
@@ -34,35 +34,35 @@ Cc: Kevin Wolf <kwolf@redhat.com>,
  qemu-block@nongnu.org, Chris Wulff <crwulff@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
  Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Yu-Chen Lin <npes87184@gmail.com>, Yu-Chen Lin <yuchenlin@synology.com>
-Subject: [PULL 01/17] mailmap: Add entry for Yu-Chen Lin
-Date: Wed, 19 Feb 2020 11:15:56 +0100
-Message-Id: <20200219101612.1033925-2-laurent@vivier.eu>
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 13/17] hw/display/qxl: Remove unneeded variable assignment
+Date: Wed, 19 Feb 2020 11:16:08 +0100
+Message-Id: <20200219101612.1033925-14-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
 References: <20200219101612.1033925-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:xe7wKhpW7sXLoo199dRB/P1e4/7TgICYuBSsWrRJup5IcV/QJDq
- a3CtbgancMWpc6D9W43PZRdAidSaEqYjrGaO4EZABDLuWLwsZGVSKhanQtrmHNUkoSY71Yw
- X+7zg2yuL6+yQzXjWqm4g8ZhUAo8qffqJAtPZOMDtVxO1JY7tHz68pHonIULRpI+U9wIyBt
- GcBjEZwc7K2b2iiwySwdg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:zqlyOD3cVig=:l34FrFYAmNKubln+sQibfc
- nXhE9k6YREHjSeSHnh4MWVUiIXIUevjWujFUVpGLzOhtomdgDjl9pDfDrEWGGcxnZYPGz2klw
- A//D1MYnxLZb0Ay/u2BpAI45opHZPxf/puY365Ns0yQMyGck69mRumDbRi7qd759wPVtvCL8q
- Hrg+ofqGj7v+oFcaVRXOUtsj4yas0TIN2wMRzxEv6DjSNRIaa8xXWv9+KUYgNimV2+BBHOHZs
- 3vt5fczORZqIeUisPGwZUeEYr2rWbN6A62APLezlVZB8Fc4fP/jXWU6i5rOumcJxlvosbsPDH
- hEnVjem8OdItiiBliC2UOGjUa9AW0ykME1aNrQD9c3vpZFRLljALG/ls6rPT88g1DBTILJ7iE
- UosapGHp263xeQj2mWwCpZyzQVZKpH65urLNOwHhWWcqoVBNQ23QPoJCfflADQElXKngsCLVs
- c3HMxrosmjkOGA+XmqADp3QA8QLSIIwbY4JaXxyzQUTCV0Au0iE/+jdlSCZQ8k4FAq8ECMrpJ
- c7k64HtgDklPEbHEpOG1USZuGfhkxDsMms1t/SpUNuao1mMMKDG5gpfp3pccRTv7X729zVgRK
- 2q/TINmzLbrtVw2qNSdoC/2PDmeU1IdomReLLCuSOiCbMZYneiQxj9bw9uvji/eKErbuyboFb
- VoaUWrn199W8euBQzIS9a+TIp2S5EKZF0wnTtIz6+xcFVH7nV6HVwpdASnnTSZYq5JDbtymVV
- MjZuHgohszDDcHlKk1dN2dQZrybMitFg0QjCnfv0vU6uPoJH0yd641DUth01GIL7g96OScKnt
- 2xLZegXgl5Mh7Y3xrKZmwVmw8t+VLvxafTDkiFlgJ6nSwD++/Gzg0MXJ1hyu4mjRxzwfTme
+X-Provags-ID: V03:K1:xmLVze4fF2jn6gChYFmBkC8c3RIbPEY5H4J7Y5UtgnxBWgF54AD
+ Ag+q0XW/9deubnLuPJBpDdoCAX6siUjw26WVfuE9L3m9B5PbLPCZ6zUXmhCZy6neiMYW3vw
+ 97AZdpCVPLOwz0axZF79dSOpgOu+iRs+yVSUpeQ+TOztIzY0JMz6SgbKCYGM1UTlLcy47gH
+ Ga05RO73lqgiGlq6ez7bg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:D8XpsZO1UK8=:OIz4CJMjqrC+YhdCUvi4EU
+ wRh1hONtNA3tWUsqmkvPhVk4IqAC2jW7SAbZxSXeTCrZyoGg9TpK8hSPa6MHGkiQDnMHv9Dkr
+ to9LU0Sdza4sxyIAvx+IJYdfmuuKMZltaI7xtiOLbxjFjz3kLiB6Ly0NG3TwrJwP+c/1ziT8c
+ 5Ph/d8cc2Z3cffAPTIBzc29NEbn78Sjv6zFF+JfhgRG/BUTYA51OmMpAQ7xQl3VoeQWO/QcNI
+ mwhG3bXAJxtGKfqPUDJKKLC8ryhlt+rrpvaEEnz8bQkw96Zvq4GnaN+vdRVYDt5kxHnwMo8Rv
+ DR7f5fiov5m1NU46nH7vh8piupQNWIVlIlMhsUUon1TUKbPnBdLZTVxaHGfHZ06uqK2OnM9GO
+ pu4fYTV2uHgNWljCeKCJz/x3x/q1cWRd+IWxbMPLXG+aKbg0J4Qds8szTat/34jiXN2DLKrkR
+ dxbIDw9KJrFSxfOsajRByGEwqNcPzgGi4+BCgQxyzkYqj0fPAHuGMUd4Kxh8cYfyJSpuYOpGr
+ WScn+8yAbtm/tgCINF4WJbw609cuMiEPYmsLSpNCEUd+zfVCu2AcgJXmb2mpnYyx+GFqrUhTy
+ jT0bW5KqrpD/D8aYjcu9LQ7muGIuLi7NMEAqsdkMsbYTMpQjMr9L1hiPBksrEIJ0AWqP2lcsd
+ iY1uNT0Fbr81OnsvAcElMtEMba/tCGb55F8CdzyCZXJmCfieybKUbWbDKcTXkP90xgonfoni6
+ LJxU0aw7OFS75n2E7D52tlGj3jxF9vzgGZ7eQXDcQ9SGKTjDfySF6/Yi1nhBSwzg6/t8w6EqT
+ nIxwqZX1SWyatARb+OFh80FtKS6YdPpQ3TPn76Mh2lbWW5Rn7Zz3WwtDIJjZmQAMlLWdWNl
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.75
+X-Received-From: 217.72.192.74
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,36 +74,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Feb 2020 10:17:10 -0000
+X-List-Received-Date: Wed, 19 Feb 2020 10:17:15 -0000
 
-From: Yu-Chen Lin <npes87184@gmail.com>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-I have two mail address, add entries for
-showing author and email correctly.
+Fix warning reported by Clang static code analyzer:
 
-Signed-off-by: Yu-Chen Lin <npes87184@gmail.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Acked-by: Yu-Chen Lin <yuchenlin@synology.com>
-Message-Id: <20200206125504.7150-1-npes87184@gmail.com>
+  hw/display/qxl.c:1634:14: warning: Value stored to 'orig_io_port' during its initialization is never read
+      uint32_t orig_io_port = io_port;
+               ^~~~~~~~~~~~   ~~~~~~~
+
+Reported-by: Clang Static Analyzer
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20200215161557.4077-3-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- .mailmap | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/display/qxl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/.mailmap b/.mailmap
-index a521c17b4430..76154c7d8abc 100644
---- a/.mailmap
-+++ b/.mailmap
-@@ -152,7 +152,8 @@ Xiaoqiang Zhao <zxq_yx_007@163.com>
- Xinhua Cao <caoxinhua@huawei.com>
- Xiong Zhang <xiong.y.zhang@intel.com>
- Yin Yin <yin.yin@cs2c.com.cn>
--yuchenlin <npes87184@gmail.com>
-+Yu-Chen Lin <npes87184@gmail.com>
-+Yu-Chen Lin <npes87184@gmail.com> <yuchenlin@synology.com>
- YunQiang Su <syq@debian.org>
- YunQiang Su <ysu@wavecomp.com>
- Yuri Pudgorodskiy <yur@virtuozzo.com>
+diff --git a/hw/display/qxl.c b/hw/display/qxl.c
+index 64884da70857..21a43a1d5ec2 100644
+--- a/hw/display/qxl.c
++++ b/hw/display/qxl.c
+@@ -1631,7 +1631,7 @@ static void ioport_write(void *opaque, hwaddr addr,
+     PCIQXLDevice *d = opaque;
+     uint32_t io_port = addr;
+     qxl_async_io async = QXL_SYNC;
+-    uint32_t orig_io_port = io_port;
++    uint32_t orig_io_port;
+ 
+     if (d->guest_bug && io_port != QXL_IO_RESET) {
+         return;
 -- 
 2.24.1
 
