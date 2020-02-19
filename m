@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j4MPu-0003hr-N2
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 05:17:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53244)
+	id 1j4MQ2-0003rm-AB
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 05:17:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53330)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4MPd-0003V0-1O
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:02 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j4MPg-0003bG-OZ
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4MPb-00053P-TY
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:00 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:39821)
+ (envelope-from <laurent@vivier.eu>) id 1j4MPd-000560-Bg
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:04 -0500
+Received: from mout.kundenserver.de ([217.72.192.75]:56387)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j4MPU-0004pI-UQ; Wed, 19 Feb 2020 05:16:53 -0500
+ id 1j4MPd-000543-2c; Wed, 19 Feb 2020 05:17:01 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MNLVU-1ipaRu3OTC-00OrHB; Wed, 19 Feb 2020 11:16:33 +0100
+ id 1MK3iK-1ik4d83kmE-00LZU1; Wed, 19 Feb 2020 11:16:21 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>,
@@ -34,36 +34,35 @@ Cc: Kevin Wolf <kwolf@redhat.com>,
  qemu-block@nongnu.org, Chris Wulff <crwulff@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>, Max Reitz <mreitz@redhat.com>,
  Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Juan Quintela <quintela@redhat.com>
-Subject: [PULL 07/17] hw/scsi/esp: Remove superfluous semicolon
-Date: Wed, 19 Feb 2020 11:16:02 +0100
-Message-Id: <20200219101612.1033925-8-laurent@vivier.eu>
+ Yu-Chen Lin <npes87184@gmail.com>, Yu-Chen Lin <yuchenlin@synology.com>
+Subject: [PULL 01/17] mailmap: Add entry for Yu-Chen Lin
+Date: Wed, 19 Feb 2020 11:15:56 +0100
+Message-Id: <20200219101612.1033925-2-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
 References: <20200219101612.1033925-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:TtUMqIvOygZSymGVXMgCdx69WEZpgE/60FDyGgBnut0oG2qBKNX
- IjpJvMfk3WcIcJMX2pv73EcYhJJBxWkXQfWCpVuJ4lxgwpa71bx+RJymoAQYdgpYcsoocRB
- e5HzwrFY1TnYnKZMsCBOQD9dM8hNfWqwPygBt1VNfyaTzEM0wQCB8SnbM9MxhsumPWgUA33
- 3d6YoHYAhx6AwI+W8+Unw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ZOSx72c1NTU=:D8XcRDDw6YAzHMq+3s+jZ1
- O625pkQiV+N3S6T7Tfsr1mvkhioE4q9g/tp04AN2nYBGao5CnpPaIsj/S6WFcq9aJjOEC3HKw
- l6x2lg+dNbUdFn5sUUm+JC+AUndhMu/cT7XhrgJb/MHXw02ixML/3ENh92k+fovVR3WwuLN68
- EQdtLAkLtHnqG4LBaAieG/MJOcTE3g13netwq+F6mxC/AqzmakvW9PBH3qZMWRMFRGDxXvWK8
- 2zgO7saXY6zP16b+TSQXhn8Omho4PJE0p/JLQTRsniVMHGMNls8btqjPU3VcP9F1XlMNSRjb4
- lKrm7l96mF2fj4TDg9mFwEWJC3WiDXXnZ+VOFrpu2hv2C0X+WTJxroxmm6szo0EpfIu03fI0U
- VmKZFkcIoHGvpc/wsXMqoU+33eiW+xBPBBjXHcgV727nIHe/sCVJwrZpbmHqAG/q1BP5IlYm/
- whlMR06Y5FxiOQJ008ZJo36edrsGTVVJG/X/SLkz6I/BY7/GnI6LElXVQUZDVQvBvjptrRbUf
- TE0f4TmFLP+cOwoBe65cg5CVs2K0uAULabKHyBrUo4fsb16McO6j7h4ApYX/VgcZW2FiCizou
- aR29g/z1SKxjhwY/Sa73hNMRTLFUVz3pOCJdzUXTuV8GGcMJ7m+uf2oMF2BFQMp1vJSMuaekB
- bLm4lGTTOpKdQ4Bx1jAVQqUkxx9GB/8h0tyP8tyFj8HeN7jYz91OUZZSuEo3wrOpu9WSE4R8Q
- azrIseUmAB9+n/odRWdoAxXEaluslyPek0wVnGWVCnNuaNcoxtlHAIqTNQRUJG8WdbgwwAbh3
- 6Yvyc5c7bm64lTgTUrxVfcM+mx9AKD7v5IJ6cv14n3e5uhL7g239arj7nzFOpwXNonY+6l3
+X-Provags-ID: V03:K1:xe7wKhpW7sXLoo199dRB/P1e4/7TgICYuBSsWrRJup5IcV/QJDq
+ a3CtbgancMWpc6D9W43PZRdAidSaEqYjrGaO4EZABDLuWLwsZGVSKhanQtrmHNUkoSY71Yw
+ X+7zg2yuL6+yQzXjWqm4g8ZhUAo8qffqJAtPZOMDtVxO1JY7tHz68pHonIULRpI+U9wIyBt
+ GcBjEZwc7K2b2iiwySwdg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:zqlyOD3cVig=:l34FrFYAmNKubln+sQibfc
+ nXhE9k6YREHjSeSHnh4MWVUiIXIUevjWujFUVpGLzOhtomdgDjl9pDfDrEWGGcxnZYPGz2klw
+ A//D1MYnxLZb0Ay/u2BpAI45opHZPxf/puY365Ns0yQMyGck69mRumDbRi7qd759wPVtvCL8q
+ Hrg+ofqGj7v+oFcaVRXOUtsj4yas0TIN2wMRzxEv6DjSNRIaa8xXWv9+KUYgNimV2+BBHOHZs
+ 3vt5fczORZqIeUisPGwZUeEYr2rWbN6A62APLezlVZB8Fc4fP/jXWU6i5rOumcJxlvosbsPDH
+ hEnVjem8OdItiiBliC2UOGjUa9AW0ykME1aNrQD9c3vpZFRLljALG/ls6rPT88g1DBTILJ7iE
+ UosapGHp263xeQj2mWwCpZyzQVZKpH65urLNOwHhWWcqoVBNQ23QPoJCfflADQElXKngsCLVs
+ c3HMxrosmjkOGA+XmqADp3QA8QLSIIwbY4JaXxyzQUTCV0Au0iE/+jdlSCZQ8k4FAq8ECMrpJ
+ c7k64HtgDklPEbHEpOG1USZuGfhkxDsMms1t/SpUNuao1mMMKDG5gpfp3pccRTv7X729zVgRK
+ 2q/TINmzLbrtVw2qNSdoC/2PDmeU1IdomReLLCuSOiCbMZYneiQxj9bw9uvji/eKErbuyboFb
+ VoaUWrn199W8euBQzIS9a+TIp2S5EKZF0wnTtIz6+xcFVH7nV6HVwpdASnnTSZYq5JDbtymVV
+ MjZuHgohszDDcHlKk1dN2dQZrybMitFg0QjCnfv0vU6uPoJH0yd641DUth01GIL7g96OScKnt
+ 2xLZegXgl5Mh7Y3xrKZmwVmw8t+VLvxafTDkiFlgJ6nSwD++/Gzg0MXJ1hyu4mjRxzwfTme
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 212.227.17.13
+X-Received-From: 217.72.192.75
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,34 +74,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Feb 2020 10:17:02 -0000
+X-List-Received-Date: Wed, 19 Feb 2020 10:17:10 -0000
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+From: Yu-Chen Lin <npes87184@gmail.com>
 
-Fixes: 74d71ea16bc
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
-Reviewed-by: Juan Quintela <quintela@redhat.com>
-Message-Id: <20200218094402.26625-8-philmd@redhat.com>
+I have two mail address, add entries for
+showing author and email correctly.
+
+Signed-off-by: Yu-Chen Lin <npes87184@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Acked-by: Yu-Chen Lin <yuchenlin@synology.com>
+Message-Id: <20200206125504.7150-1-npes87184@gmail.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/scsi/esp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .mailmap | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/scsi/esp.c b/hw/scsi/esp.c
-index f8fc30cccbd4..405f8b7cbcf7 100644
---- a/hw/scsi/esp.c
-+++ b/hw/scsi/esp.c
-@@ -293,7 +293,7 @@ static void handle_satn_stop(ESPState *s)
-         s->dma_cb = handle_satn_stop;
-         return;
-     }
--    s->pdma_cb = satn_stop_pdma_cb;;
-+    s->pdma_cb = satn_stop_pdma_cb;
-     s->cmdlen = get_cmd(s, s->cmdbuf, sizeof(s->cmdbuf));
-     if (s->cmdlen) {
-         trace_esp_handle_satn_stop(s->cmdlen);
+diff --git a/.mailmap b/.mailmap
+index a521c17b4430..76154c7d8abc 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -152,7 +152,8 @@ Xiaoqiang Zhao <zxq_yx_007@163.com>
+ Xinhua Cao <caoxinhua@huawei.com>
+ Xiong Zhang <xiong.y.zhang@intel.com>
+ Yin Yin <yin.yin@cs2c.com.cn>
+-yuchenlin <npes87184@gmail.com>
++Yu-Chen Lin <npes87184@gmail.com>
++Yu-Chen Lin <npes87184@gmail.com> <yuchenlin@synology.com>
+ YunQiang Su <syq@debian.org>
+ YunQiang Su <ysu@wavecomp.com>
+ Yuri Pudgorodskiy <yur@virtuozzo.com>
 -- 
 2.24.1
 
