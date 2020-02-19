@@ -1,55 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j4QXL-0003r7-Qe
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 09:41:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51498)
+	id 1j4QcT-0006aV-5B
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 09:46:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52533)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1j4QXK-0003qq-2t
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 09:41:15 -0500
+ (envelope-from <eblake@redhat.com>) id 1j4QcR-0006Xt-1T
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 09:46:32 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1j4QXJ-0004sD-5k
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 09:41:14 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:46023
+ (envelope-from <eblake@redhat.com>) id 1j4QcQ-0004Ho-0A
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 09:46:30 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:57606
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1j4QXJ-0004oE-2H
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 09:41:13 -0500
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1j4QcP-0004HK-SY
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 09:46:29 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582123271;
+ s=mimecast20190719; t=1582123589;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=TNZGMq3v5Sfpze0h3lmh7dsr8i5R1MRQMTFOSQ6ZVi0=;
- b=freBB3zGPvrWjJ+PBEjBIk5KnVrVeCJAWVznxqtZCQ8CGMIKwZG68dvyVuMFkCKXurRE8L
- bflnXA5S1O0WhuNk6lDdi+reKLsj+X9uwSdmMqFgOPCOAsm+UwGyG0UB3uhH0tB69PD67Z
- VDMeSmw9TBWYP1uQudfnO+ZIgJ1IPRc=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HvehIyGQR3ja5S1xooLkob0f2DnC2fXaXKZlp/JUdqI=;
+ b=BIeXwkuvYrTmE03qF1oTuSfQ9zbVq9UiqAd6DU4qIleVSIx8POh4Kc2vfbRxZ/ZDiuVIBT
+ ICWaORiRprMW8WAMT0YHAJA/vEk9hKlo2uibrq5QFUx7tQ4La8Q8mZyj7cSbtwsFnfLRgN
+ cUK37vaxanIBkBOudhcSndd4mEOllSc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-424-maQGhvMLPd-xKWrrTBRPbQ-1; Wed, 19 Feb 2020 09:41:07 -0500
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-295-vyzavkRHNYau_g_s0J47dQ-1; Wed, 19 Feb 2020 09:46:18 -0500
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C046C1088386;
- Wed, 19 Feb 2020 14:41:05 +0000 (UTC)
-Received: from blue.redhat.com (ovpn-116-180.phx2.redhat.com [10.3.116.180])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 27FDF60C84;
- Wed, 19 Feb 2020 14:41:05 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 718E113FB;
+ Wed, 19 Feb 2020 14:46:15 +0000 (UTC)
+Received: from [10.3.116.180] (ovpn-116-180.phx2.redhat.com [10.3.116.180])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B481319756;
+ Wed, 19 Feb 2020 14:46:14 +0000 (UTC)
+Subject: Re: [PATCH] iotests: Fix nonportable use of od --endian
 From: Eric Blake <eblake@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org, mreitz@redhat.com,
- andrey.shinkevich@virtuozzo.com, Kevin Wolf <kwolf@redhat.com>
-Subject: [PATCH] iotests: Fix nonportable use of od --endian
-Date: Wed, 19 Feb 2020 08:41:03 -0600
-Message-Id: <20200219144103.2919292-1-eblake@redhat.com>
+Cc: qemu-trivial@nongnu.org, andrey.shinkevich@virtuozzo.com,
+ Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org, mreitz@redhat.com
+References: <20200219144103.2919292-1-eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <596f14e4-8412-f984-8bcc-6140a914bb31@redhat.com>
+Date: Wed, 19 Feb 2020 08:46:14 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-MC-Unique: maQGhvMLPd-xKWrrTBRPbQ-1
+In-Reply-To: <20200219144103.2919292-1-eblake@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-MC-Unique: vyzavkRHNYau_g_s0J47dQ-1
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -61,61 +69,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Feb 2020 14:41:15 -0000
+X-List-Received-Date: Wed, 19 Feb 2020 14:46:32 -0000
 
-Tests 261 and 272 fail on RHEL 7 with coreutils 8.22, since od
---endian was not added until coreutils 8.23.  Fix this by manually
-constructing the final value one byte at a time.
+On 2/19/20 8:41 AM, Eric Blake wrote:
+> Tests 261 and 272 fail on RHEL 7 with coreutils 8.22, since od
+> --endian was not added until coreutils 8.23.  Fix this by manually
+> constructing the final value one byte at a time.
+> 
+> Fixes: fc8ba423
+> Reported-by: Andrey Shinkevich <andrey.shinkevich@virtuozzo.com>
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
+>   tests/qemu-iotests/common.rc | 22 +++++++++++++++++-----
+>   1 file changed, 17 insertions(+), 5 deletions(-)
+> 
+> diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
+> index 8a6366c09daf..b77ef3d22cd1 100644
+> --- a/tests/qemu-iotests/common.rc
+> +++ b/tests/qemu-iotests/common.rc
+> @@ -56,6 +56,12 @@ poke_file()
+>   # peek_file_le 'test.img' 512 2 => 65534
+>   peek_file_le()
+>   {
+> -    # Wrap in echo $() to strip spaces
+> -    echo $(od -j"$2" -N"$3" --endian=little -An -vtu"$3" "$1")
+> +    local val=0 shift=0 i
+> +
+> +    # coreutils' od --endian is not portable, so manually assemble bytes.
+> +    for i in $(od -j"$2" -N"$3" -An -v -tu1 "$1"); do
+> +        val=$(( val | (i << shift) ))
+> +        shift=$((shift + 8))
+> +    done
+> +    echo $val
 
-Fixes: fc8ba423
-Reported-by: Andrey Shinkevich <andrey.shinkevich@virtuozzo.com>
-Signed-off-by: Eric Blake <eblake@redhat.com>
----
- tests/qemu-iotests/common.rc | 22 +++++++++++++++++-----
- 1 file changed, 17 insertions(+), 5 deletions(-)
+Reports large 8-byte values as negative, whereas the pre-patch version 
+reported them as positive.  To preserve behavior, we should squash in:
 
-diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
-index 8a6366c09daf..b77ef3d22cd1 100644
---- a/tests/qemu-iotests/common.rc
-+++ b/tests/qemu-iotests/common.rc
-@@ -56,6 +56,12 @@ poke_file()
- # peek_file_le 'test.img' 512 2 =3D> 65534
- peek_file_le()
- {
--    # Wrap in echo $() to strip spaces
--    echo $(od -j"$2" -N"$3" --endian=3Dlittle -An -vtu"$3" "$1")
-+    local val=3D0 shift=3D0 i
-+
-+    # coreutils' od --endian is not portable, so manually assemble bytes.
-+    for i in $(od -j"$2" -N"$3" -An -v -tu1 "$1"); do
-+        val=3D$(( val | (i << shift) ))
-+        shift=3D$((shift + 8))
-+    done
-+    echo $val
- }
+diff --git i/tests/qemu-iotests/common.rc w/tests/qemu-iotests/common.rc
+index 8966ad5cde78..a596856d4d8c 100644
+--- i/tests/qemu-iotests/common.rc
++++ w/tests/qemu-iotests/common.rc
+@@ -63,7 +63,7 @@ peek_file_le()
+          val=$(( val | (i << shift) ))
+          shift=$((shift + 8))
+      done
+-    echo $val
++    printf %llu $val
+  }
 
- # peek_file_be 'test.img' 512 2 =3D> 65279
- peek_file_be()
- {
--    # Wrap in echo $() to strip spaces
--    echo $(od -j"$2" -N"$3" --endian=3Dbig -An -vtu"$3" "$1")
-+    local val=3D0 i
-+
-+    # coreutils' od --endian is not portable, so manually assemble bytes.
-+    for i in $(od -j"$2" -N"$3" -An -v -tu1 "$1"); do
-+        val=3D$(( (val << 8) | i ))
-+    done
-+    echo $val
- }
+  # peek_file_be 'test.img' 512 2 => 65279
+@@ -75,7 +75,7 @@ peek_file_be()
+      for i in $(od -j"$2" -N"$3" -An -v -tu1 "$1"); do
+          val=$(( (val << 8) | i ))
+      done
+-    echo $val
++    printf %llu $val
+  }
 
--# peek_file_raw 'test.img' 512 2 =3D> '\xff\xfe'
-+# peek_file_raw 'test.img' 512 2 =3D> '\xff\xfe'. Do not use if the raw da=
-ta
-+# is likely to contain \0 or trailing \n.
- peek_file_raw()
- {
-     dd if=3D"$1" bs=3D1 skip=3D"$2" count=3D"$3" status=3Dnone
---=20
-2.24.1
+  # peek_file_raw 'test.img' 512 2 => '\xff\xfe'. Do not use if the raw data
+
+
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
 
