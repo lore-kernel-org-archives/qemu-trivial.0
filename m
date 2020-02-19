@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j4MQ6-00046d-NY
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 05:17:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53763)
+	id 1j4MQ7-00047g-FY
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 05:17:31 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53233)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4MQ1-0003pJ-82
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:26 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j4MPc-0003U2-MD
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:01 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4MQ0-0005gH-69
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:25 -0500
-Received: from mout.kundenserver.de ([217.72.192.74]:47379)
+ (envelope-from <laurent@vivier.eu>) id 1j4MPb-00052s-L7
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:00 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:44133)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j4MPk-0005Cd-Fh; Wed, 19 Feb 2020 05:17:08 -0500
+ id 1j4MPP-0004kW-U2; Wed, 19 Feb 2020 05:16:48 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1MeTD8-1jcbIM37AK-00aUpn; Wed, 19 Feb 2020 11:16:35 +0100
+ id 1M5g68-1j77Hq3oh0-007Btt; Wed, 19 Feb 2020 11:16:29 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>,
@@ -36,34 +36,34 @@ Cc: Kevin Wolf <kwolf@redhat.com>,
  Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>,
  "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
  Juan Quintela <quintela@redhat.com>
-Subject: [PULL 08/17] hw/vfio/display: Remove superfluous semicolon
-Date: Wed, 19 Feb 2020 11:16:03 +0100
-Message-Id: <20200219101612.1033925-9-laurent@vivier.eu>
+Subject: [PULL 05/17] hw/arm/xlnx-versal: Remove superfluous semicolon
+Date: Wed, 19 Feb 2020 11:16:00 +0100
+Message-Id: <20200219101612.1033925-6-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
 References: <20200219101612.1033925-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:zTkAU/Y8DhwEahyBf+WI8UH2+PM9/HQTnyCeb+8pYDSKsPZVc8R
- UdeMGG5+v8QDNdoLf8CpwFv7IWZPpPW437QYyWwINbsgHsv/vzz7OQQFxbkmgpySroP32k5
- tTIb57Kebi2NxYeHdZXn/Pgq7YOxe3lbvfNKd/Rk/vdZSwJX70BZBvZvVHEb/dQYktbC/LO
- EQoYavwKZwfRddx39/FUQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:CMWDfnhlzHo=:Fk6+tD8YC2b79OdA3FSIAY
- Qr9u7JHF/1bwjF4205hQIME/Kv1eSl1wTsDsPprrhvzmsYT5QLCQuNjR/gYNj/s8dl+Gggf6y
- gYJxb/iR0BDR2gObls55LSi3NGnHXpXX+GFwvczFvqtJrc6zjTTjcKivk+D+Ul65PhDBqxDFe
- K1pPT7Q95IFuvbL2X0zwiA0KOAAoprPdktxYPalrbuJ9XMhLjrJFvswQt6AbPVBjQgyaPc+qb
- tMUidHOVAyGqmA8nxjQqAn11RNlnoFhBEjDTjkqVKkFYXAqZWMz5pLZlMxVzZiKHUhlb7hBON
- j9mTS+Hdqdg3tAfAJxYj6+v+kEu2ijAJJHJZe/ZJIjS2ZRkpFqwr8IIZszUcB46Mqhz6ryGsZ
- xsZBuSQPui+iIF6pcWESPZRDAuWHROE0kpKoVryX1+s5jIBJ7X/nRMZRizP5xt83EhSATRy4V
- u8YKu28FC0zRUmkhCT1MeU8+BQhO1kWnC7N8SgSTKKkGlRknNfZC/DWs3PjLfx6oymwMtkzwp
- fa4VNj5zGIqvhnGcIkB11deuu8ggOOyLiTpvz2IX376ZCyKps3EHQgSkGRJeuftB/z3Drz2rV
- O33qqdZLtdhFZEfJP8NDCFwN+ykNbysnM4G8p42R/Cc+RdUnhdAlWd5+cyUBL/0jnGHcPFJnM
- MbziFqHCsvsUvpC6ZW3eXV1yZSaj72UF5CZa6Mgwc6bkgBrYK+G3fQcNAnDyflzoa3VlrS9Fg
- PPyq38I0xtNbA4QDIVNtEyzm0xBTd02LDTsxUt4Y1uejXw8oUTlFMg1TJ8yyeyu6jC2RmdMSy
- 3UrePCuTW9EvMlR/yo9enR/J5PLAGytjfO6P3L03rfVhtRYPEou/OdBrbWUu5sLx2Hx981P
+X-Provags-ID: V03:K1:0UIaGymRkHOi2DF4lkrvQbjocJ0VXLaz83FHsdOiumnOiiA1zHi
+ LIhV4jNl/px6A4GtPrTRho0kYUTAI3Od93K1c5BZ5afLvIEVCAAeJA6HIwgsBN0dlKUvT6k
+ aO99u8WR0pGgEZOuXBOakFLhxtsGMsbyTvGANEx5N33KelG6S/Rc16t1m8qj5SQnMAGhz4E
+ QprhmyVDnmkWg8o7b64ZA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:LErVUMfUeNE=:hppZXitRdXM4wjlR2gIdh2
+ 1dtI5dXUv9Jp8Nx04NdkI3sNFJrTldxXXwJoYlirzeUbtFGtk09k3+6+qwcmql4QBYgbDuJGM
+ WxETmvirw4SeR1UEmDyTBBdZpg5eVgGHaxc3iz9NvilcIG3VRhvuPr7HycSGUH0398r8Vf4Vl
+ kStSX/o7ZES/Y5PU0zkvQ2QInxtvHLsQMSZVayvyhhAQJT44LUcUbz1DJI64XZXpUTvi5SPng
+ izJmUHcR5qMAZBQSXBCp6tnGo1hG77j581TA2RmwxoeDoWjx2DmXhEcZHGnxUYRLx55mKoWys
+ 6kXiE80W2NGo4UUIsrQY9/Djf7XHDyBg6Y8Aw/dRt2rp9IqXfJsgtBGpK54pDyO1/BBVGVrUZ
+ NDOzFSM8f/wPxnp86YWToEI/wNWU0hRqZCju5W6kACXRF3zQxalk9DTMB8AwALyKf/vIFedCc
+ ImikLPDOZRgz8xM1+Z0Y7TFkFMmEbTsPFVg9wLaApsM6JgGiMi63rYfP8R9V06eWEiMvrE5lc
+ oUngbJUHs5xVzWP8ViZBXKBk7wI2t2oNHM7q3Cj/s+ta4L9P4MTdjmcowjDyLiCtMnTJ4U5eN
+ ORcrSjOmsCMNATt3DQYPw1fQJZqMac1wULduwNmilKWL8OK1FfMR+lASbP9H1ayxDoNwEUvoI
+ o+A1MG7UMVQLPoPuAzz4D8EXGaz3T42WSoU/Pd1b2bHXV1QQ13CihydIrEpq+UFtwXYLi5jI7
+ Qdmso8A+sgnXYQ+uxr53REL9d7ZfJ0XZy7Hdp118kx8f1D4VEifE+WmKcJ1Tcp5GRKwbH0f6j
+ 1MJ/lenEmsPcgHBjHLNHFLQubrWkIMsMbG/zqSLnlD7+fAtTDckpE40JELJDFSbpDWgQjtr
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.72.192.74
+X-Received-From: 212.227.17.13
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -75,34 +75,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Feb 2020 10:17:27 -0000
+X-List-Received-Date: Wed, 19 Feb 2020 10:17:02 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Fixes: 8b818e059bf
+Fixes: 6f16da53ffe
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Acked-by: Paolo Bonzini <pbonzini@redhat.com>
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
-Message-Id: <20200218094402.26625-9-philmd@redhat.com>
+Message-Id: <20200218094402.26625-6-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/vfio/display.c | 2 +-
+ hw/arm/xlnx-versal-virt.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/vfio/display.c b/hw/vfio/display.c
-index a5a608c5b226..f4977c66e1b5 100644
---- a/hw/vfio/display.c
-+++ b/hw/vfio/display.c
-@@ -287,7 +287,7 @@ static void vfio_display_dmabuf_update(void *opaque)
-     VFIOPCIDevice *vdev = opaque;
-     VFIODisplay *dpy = vdev->dpy;
-     VFIODMABuf *primary, *cursor;
--    bool free_bufs = false, new_cursor = false;;
-+    bool free_bufs = false, new_cursor = false;
+diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
+index 462493c46711..0d2e3bdda169 100644
+--- a/hw/arm/xlnx-versal-virt.c
++++ b/hw/arm/xlnx-versal-virt.c
+@@ -350,7 +350,7 @@ static void create_virtio_regions(VersalVirt *s)
+     int i;
  
-     primary = vfio_display_get_dmabuf(vdev, DRM_PLANE_TYPE_PRIMARY);
-     if (primary == NULL) {
+     for (i = 0; i < NUM_VIRTIO_TRANSPORT; i++) {
+-        char *name = g_strdup_printf("virtio%d", i);;
++        char *name = g_strdup_printf("virtio%d", i);
+         hwaddr base = MM_TOP_RSVD + i * virtio_mmio_size;
+         int irq = VERSAL_RSVD_IRQ_FIRST + i;
+         MemoryRegion *mr;
 -- 
 2.24.1
 
