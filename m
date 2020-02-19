@@ -1,20 +1,20 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j4MQ7-00047g-FY
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 05:17:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53233)
+	id 1j4MQ8-00048U-1n
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 05:17:32 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53368)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent@vivier.eu>) id 1j4MPc-0003U2-MD
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:01 -0500
+ (envelope-from <laurent@vivier.eu>) id 1j4MPl-0003dP-Ii
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent@vivier.eu>) id 1j4MPb-00052s-L7
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:00 -0500
-Received: from mout.kundenserver.de ([212.227.17.13]:44133)
+ (envelope-from <laurent@vivier.eu>) id 1j4MPk-0005Fe-Ek
+ for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 05:17:09 -0500
+Received: from mout.kundenserver.de ([212.227.17.13]:37851)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <laurent@vivier.eu>)
- id 1j4MPP-0004kW-U2; Wed, 19 Feb 2020 05:16:48 -0500
+ id 1j4MPa-00050Z-Pg; Wed, 19 Feb 2020 05:16:59 -0500
 Received: from localhost.localdomain ([78.238.229.36]) by
  mrelayeu.kundenserver.de (mreue106 [212.227.15.183]) with ESMTPSA (Nemesis)
- id 1M5g68-1j77Hq3oh0-007Btt; Wed, 19 Feb 2020 11:16:29 +0100
+ id 1MHnZQ-1jH4062Uz8-00ErOT; Wed, 19 Feb 2020 11:16:40 +0100
 From: Laurent Vivier <laurent@vivier.eu>
 To: qemu-devel@nongnu.org
 Cc: Kevin Wolf <kwolf@redhat.com>,
@@ -36,32 +36,32 @@ Cc: Kevin Wolf <kwolf@redhat.com>,
  Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>,
  "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
  Juan Quintela <quintela@redhat.com>
-Subject: [PULL 05/17] hw/arm/xlnx-versal: Remove superfluous semicolon
-Date: Wed, 19 Feb 2020 11:16:00 +0100
-Message-Id: <20200219101612.1033925-6-laurent@vivier.eu>
+Subject: [PULL 11/17] tests/qtest/libqos/qgraph: Remove superfluous semicolons
+Date: Wed, 19 Feb 2020 11:16:06 +0100
+Message-Id: <20200219101612.1033925-12-laurent@vivier.eu>
 X-Mailer: git-send-email 2.24.1
 In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
 References: <20200219101612.1033925-1-laurent@vivier.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:0UIaGymRkHOi2DF4lkrvQbjocJ0VXLaz83FHsdOiumnOiiA1zHi
- LIhV4jNl/px6A4GtPrTRho0kYUTAI3Od93K1c5BZ5afLvIEVCAAeJA6HIwgsBN0dlKUvT6k
- aO99u8WR0pGgEZOuXBOakFLhxtsGMsbyTvGANEx5N33KelG6S/Rc16t1m8qj5SQnMAGhz4E
- QprhmyVDnmkWg8o7b64ZA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:LErVUMfUeNE=:hppZXitRdXM4wjlR2gIdh2
- 1dtI5dXUv9Jp8Nx04NdkI3sNFJrTldxXXwJoYlirzeUbtFGtk09k3+6+qwcmql4QBYgbDuJGM
- WxETmvirw4SeR1UEmDyTBBdZpg5eVgGHaxc3iz9NvilcIG3VRhvuPr7HycSGUH0398r8Vf4Vl
- kStSX/o7ZES/Y5PU0zkvQ2QInxtvHLsQMSZVayvyhhAQJT44LUcUbz1DJI64XZXpUTvi5SPng
- izJmUHcR5qMAZBQSXBCp6tnGo1hG77j581TA2RmwxoeDoWjx2DmXhEcZHGnxUYRLx55mKoWys
- 6kXiE80W2NGo4UUIsrQY9/Djf7XHDyBg6Y8Aw/dRt2rp9IqXfJsgtBGpK54pDyO1/BBVGVrUZ
- NDOzFSM8f/wPxnp86YWToEI/wNWU0hRqZCju5W6kACXRF3zQxalk9DTMB8AwALyKf/vIFedCc
- ImikLPDOZRgz8xM1+Z0Y7TFkFMmEbTsPFVg9wLaApsM6JgGiMi63rYfP8R9V06eWEiMvrE5lc
- oUngbJUHs5xVzWP8ViZBXKBk7wI2t2oNHM7q3Cj/s+ta4L9P4MTdjmcowjDyLiCtMnTJ4U5eN
- ORcrSjOmsCMNATt3DQYPw1fQJZqMac1wULduwNmilKWL8OK1FfMR+lASbP9H1ayxDoNwEUvoI
- o+A1MG7UMVQLPoPuAzz4D8EXGaz3T42WSoU/Pd1b2bHXV1QQ13CihydIrEpq+UFtwXYLi5jI7
- Qdmso8A+sgnXYQ+uxr53REL9d7ZfJ0XZy7Hdp118kx8f1D4VEifE+WmKcJ1Tcp5GRKwbH0f6j
- 1MJ/lenEmsPcgHBjHLNHFLQubrWkIMsMbG/zqSLnlD7+fAtTDckpE40JELJDFSbpDWgQjtr
+X-Provags-ID: V03:K1:JpUVUNN+S0+cpEQ7Ukn+HanppYJnz1MOzhIPtY9bWWbtdRnlNeW
+ fjmIzxWyibl5/aaGjt/3Edg+TX35x3OMfs9jkkp0lWrOWeKWGYYZEV71XfZUHhO+kXj5IpG
+ RsVNYTu7vEFqBSZVfY0U66m6UasYctRfJOKM5sGpObgMNIORDVcSsWjUhqWHysEREbhwSrf
+ 0lynHRHLcq1aaZsVnYy1w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:6VzeMLdb83I=:dcixetq2v7BjSE39LhHLZb
+ SlPSv938kldCjaw+Xl59xA+Rm9aVV5LXOfkqnNkyCd87DhhVd3KamGTTd+g2dEpgzO9te7K9n
+ hVRXu6w+f0cSHsZ3GwaA33nYwh/AEMzvONqlzTfvHoNpSdCEXOSM/Vaf3Ce9JoDCiOyN/wRVE
+ BdOLErc7SNcstp0jMxWpHcjjJzztxbdLclwsavzuN1q2Q4y11QzMsNipswGU4RnOxjFj9j1aI
+ QzX4V8v1oUHkwn5cqAoPiElHcbQfiM6VLRSucLIcBD8oz8y6yv5WNQKbCk6Fk49bc1cIreuEn
+ GPFrCXvgSUwe97hka79PZPYsy+TsX3EBiwIm02KbsgeO9j+GKDf+fzCk39BIJeT9tl2vVR8N9
+ eNs9Uajobg3xnXyZE+ZtDvnJIRygUK5uoM0zeh3UALO5HiMxRdg6IirDfSTPb5WfTcP4FaM7j
+ o1/mG70nIXVB4Wcy7muuUGYgA0fBLR62JY4X5AsRZSxKUCR62XcTZj3eiouOSFGuugGL/50It
+ ZPekopFAG5wSLpaBg4rYHO/usOnN4lwujP7tyQiauBwoW8twayiYIoFftGoCt9oN6dH/M8vj2
+ 07/7nr1sicikV0dFEk/YIRoMx36A5wByLNe4WYgtqqewoh4AY/paHJJQxQZDeuDwGxh+qIRnC
+ +pmkzVmKVRgSDy9qGDYeqBCw/ZVy5Wqwc1PnbOmho8/T+qui8Z7t+DI8VutZ45Q+MJVb7HqoM
+ Uv38HchWPngc6lP05zNTVvcfXShsesjscX0EcalDZBNrCkz6fn1Y18hFZPkP3tJFqGvoXpRfy
+ nV8h3JikpueruaW4d7qFy1gsgqyhIUGNZmgAh5psE9B0iwJoV93UHcDYcYqqixG/zvG7zLP
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 212.227.17.13
 X-BeenThere: qemu-trivial@nongnu.org
@@ -75,34 +75,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Feb 2020 10:17:02 -0000
+X-List-Received-Date: Wed, 19 Feb 2020 10:17:15 -0000
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Fixes: 6f16da53ffe
+Fixes: fc281c80202
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Acked-by: Paolo Bonzini <pbonzini@redhat.com>
 Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
 Reviewed-by: Juan Quintela <quintela@redhat.com>
-Message-Id: <20200218094402.26625-6-philmd@redhat.com>
+Message-Id: <20200218094402.26625-13-philmd@redhat.com>
 Signed-off-by: Laurent Vivier <laurent@vivier.eu>
 ---
- hw/arm/xlnx-versal-virt.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/qtest/libqos/qgraph.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-index 462493c46711..0d2e3bdda169 100644
---- a/hw/arm/xlnx-versal-virt.c
-+++ b/hw/arm/xlnx-versal-virt.c
-@@ -350,7 +350,7 @@ static void create_virtio_regions(VersalVirt *s)
-     int i;
+diff --git a/tests/qtest/libqos/qgraph.c b/tests/qtest/libqos/qgraph.c
+index 7a7ae2a19edc..ca01de07437b 100644
+--- a/tests/qtest/libqos/qgraph.c
++++ b/tests/qtest/libqos/qgraph.c
+@@ -474,7 +474,7 @@ QOSEdgeType qos_graph_edge_get_type(QOSGraphEdge *edge)
+     if (!edge) {
+         return -1;
+     }
+-    return edge->type;;
++    return edge->type;
+ }
  
-     for (i = 0; i < NUM_VIRTIO_TRANSPORT; i++) {
--        char *name = g_strdup_printf("virtio%d", i);;
-+        char *name = g_strdup_printf("virtio%d", i);
-         hwaddr base = MM_TOP_RSVD + i * virtio_mmio_size;
-         int irq = VERSAL_RSVD_IRQ_FIRST + i;
-         MemoryRegion *mr;
+ char *qos_graph_edge_get_dest(QOSGraphEdge *edge)
+@@ -590,7 +590,7 @@ void qos_add_test(const char *name, const char *interface,
+                   QOSTestFunc test_func, QOSGraphTestOptions *opts)
+ {
+     QOSGraphNode *node;
+-    char *test_name = g_strdup_printf("%s-tests/%s", interface, name);;
++    char *test_name = g_strdup_printf("%s-tests/%s", interface, name);
+     QOSGraphTestOptions def_opts = { };
+ 
+     if (!opts) {
 -- 
 2.24.1
 
