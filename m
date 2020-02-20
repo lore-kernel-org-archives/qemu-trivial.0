@@ -1,55 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j4oat-0001C9-W8
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Feb 2020 11:22:32 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56539)
+	id 1j4pjr-0005ps-98
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Feb 2020 12:35:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41984)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1j4oas-0001A7-2f
- for qemu-trivial@nongnu.org; Thu, 20 Feb 2020 11:22:31 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j4pjm-0005om-6b
+ for qemu-trivial@nongnu.org; Thu, 20 Feb 2020 12:35:47 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1j4oar-00013n-0y
- for qemu-trivial@nongnu.org; Thu, 20 Feb 2020 11:22:30 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:33330
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1j4oaq-000124-TK
- for qemu-trivial@nongnu.org; Thu, 20 Feb 2020 11:22:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582215746;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=90XxUVJClHVX9ZIEzjbVDV0xE3nAzZrkmioDqBw5JMg=;
- b=GNp961L2s4a3/Z3UJ9N0Lavse1ysXMEdaOxAtd2/ui9N/74W6VM/vikJZvC1z7kLji5Qzk
- GBH+UJS7lMgdnB1ISul2sCcAWE9gjTwxy9dsoqZP39SUx4aZ7I8dTsdz17GBGPe4Cnmjia
- kqAF/g8qlsxtYTK1ukSHZ9A6IGWIBi0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-224--lql1mL2MGG7MLX7ZDDmeA-1; Thu, 20 Feb 2020 11:22:19 -0500
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F40A4800D5A;
- Thu, 20 Feb 2020 16:22:17 +0000 (UTC)
-Received: from blue.redhat.com (ovpn-116-180.phx2.redhat.com [10.3.116.180])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9F0CD1001281;
- Thu, 20 Feb 2020 16:22:17 +0000 (UTC)
-From: Eric Blake <eblake@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	peter.maydell@linaro.org
-Subject: [PATCH] maint: Include top-level *.rst files early in git diff
-Date: Thu, 20 Feb 2020 10:22:13 -0600
-Message-Id: <20200220162214.3474280-1-eblake@redhat.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1j4pjk-0001LW-Vv
+ for qemu-trivial@nongnu.org; Thu, 20 Feb 2020 12:35:46 -0500
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f]:33413)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j4pjk-0001LA-QC
+ for qemu-trivial@nongnu.org; Thu, 20 Feb 2020 12:35:44 -0500
+Received: by mail-oi1-x22f.google.com with SMTP id q81so28411391oig.0
+ for <qemu-trivial@nongnu.org>; Thu, 20 Feb 2020 09:35:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=g3Q2fkCcFtALG4YlComMunPy5B22O7Kd3mD1z1ByAOo=;
+ b=p17McKuk4SBntEB9/h3/rGj0w290mFAxMu1QNUGgm7EngzxPTAGlcWhyq2D/JtluJ/
+ SPHce6349p3NTsEA+9oEtlYeuzR6pXqgufeRQ4vcahrlbQcxAOvXQBS0hwbiLTYta4P2
+ jvtagr4h4netvD8i16/H4eNUj3Pzi5QHWmfVxFVHIqOY1a+psIzSiNR5Mij1ArxfuVo+
+ bDPh78BYwjEn2iWKh6it7dxNm13LDZ7MxwBcKkS4aj8M+HtI3Mf7DdTCWTzWy6KyCZkw
+ cw0b1+PlEY8uTOgNnSzxWWvWeO4uW1h/XGSLIpcU4PelDpvLKrxHY/kzPzydDD/vmNp2
+ WW/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=g3Q2fkCcFtALG4YlComMunPy5B22O7Kd3mD1z1ByAOo=;
+ b=JIElkwVQMzZ+hv8N+TmIIKThHYNUH5QU+JHo4WIXm94w8QsgHCgMkN6CkBa/5rkYTi
+ 4CrLeCkVZWu0pOyPba99yHzAbRIGvKdXDIlGicCaPjApCXBqeR7v7aBsbwT6zngBLQmJ
+ Rd9zTTyLrVehn4HlhjJ898wvv7N2+D20ZzdKbz9D6Z3Gnk15FHQo8ReNEoLcs2P0vpQK
+ R0oZtbF/AfqOmRT3TF4k/2DWYKC665MZ9v78sdqaoHVDJC0unLKC4KWwBxsGuKcWAMcy
+ TCUb/V5EP03HoqZto1XMY6D9+J+4pS35ElUfd4xa0Os21rX5EF55td043GXdUqZBo7Ui
+ SUSw==
+X-Gm-Message-State: APjAAAUBmSDl4wXE6oyV3kCVDrpCpcVrYJh7QcSbec/OyIV758J32IaC
+ oYZ1AOt5Jw77x0fs3zsNq3vJu1+/h85KarHMnNFwvw==
+X-Google-Smtp-Source: APXvYqxFCqcIa05VefrONofkmb52EHhLstjavsOyQ8HlOfPI3cLU4hqm5lnxXtn6gx/bq/pJY/qnnclfJaQLI3SV8c4=
+X-Received: by 2002:a54:4f16:: with SMTP id e22mr2994886oiy.170.1582220143945; 
+ Thu, 20 Feb 2020 09:35:43 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-MC-Unique: -lql1mL2MGG7MLX7ZDDmeA-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+References: <20200219101612.1033925-1-laurent@vivier.eu>
+In-Reply-To: <20200219101612.1033925-1-laurent@vivier.eu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 20 Feb 2020 17:35:33 +0000
+Message-ID: <CAFEAcA-gVy=KkOnjo7b4EsaetNKo_CPYA1WFwZYJT1vZVNao9A@mail.gmail.com>
+Subject: Re: [PULL 00/17] Trivial branch patches
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Marek Vasut <marex@denx.de>, 
+ Thomas Huth <thuth@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Jiri Pirko <jiri@resnulli.us>, 
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair@alistair23.me>, 
+ Gerd Hoffmann <kraxel@redhat.com>, Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+ Richard Henderson <rth@twiddle.net>, Jason Wang <jasowang@redhat.com>, 
+ QEMU Trivial <qemu-trivial@nongnu.org>, Laurent Vivier <lvivier@redhat.com>, 
+ Eduardo Habkost <ehabkost@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Yuval Shaia <yuval.shaia.ml@gmail.com>, 
+ Thomas Huth <huth@tuxfamily.org>, Qemu-block <qemu-block@nongnu.org>, 
+ Chris Wulff <crwulff@gmail.com>, Max Reitz <mreitz@redhat.com>,
+ Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::22f
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -61,35 +78,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Feb 2020 16:22:31 -0000
+X-List-Received-Date: Thu, 20 Feb 2020 17:35:48 -0000
 
-We are converting more doc files to *.rst rather than *.texi.  Most
-doc files are already listed early in diffs due to our catchall
-docs/*, but a few top-level files get missed by that glob.
+On Wed, 19 Feb 2020 at 10:16, Laurent Vivier <laurent@vivier.eu> wrote:
+>
+> The following changes since commit 6c599282f8ab382fe59f03a6cae755b89561a7b3:
+>
+>   Merge remote-tracking branch 'remotes/armbru/tags/pull-monitor-2020-02-15-v2' into staging (2020-02-17 13:32:25 +0000)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/vivier/qemu.git tags/trivial-branch-pull-request
+>
+> for you to fetch changes up to d1cb67841ca213802ee789957188ec87e8b7996d:
+>
+>   hw/xtensa/xtfpga:fix leak of fdevice tree blob (2020-02-19 10:33:38 +0100)
+>
+> ----------------------------------------------------------------
+> Fix memory leak with fdt
+> cosmetic change in code and logs
+> update mailmap
+>
 
-Signed-off-by: Eric Blake <eblake@redhat.com>
----
 
-Both *.texi and *.rst entries make sense while we are still converting
-things, but we'll need a followup to drop *.texi when the conversion
-is complete...
+Applied, thanks.
 
- scripts/git.orderfile | 1 +
- 1 file changed, 1 insertion(+)
+Please update the changelog at https://wiki.qemu.org/ChangeLog/5.0
+for any user-visible changes.
 
-diff --git a/scripts/git.orderfile b/scripts/git.orderfile
-index 1f747b583a9e..abd8a67a2b4e 100644
---- a/scripts/git.orderfile
-+++ b/scripts/git.orderfile
-@@ -11,6 +11,7 @@
-
- # Documentation
- docs/*
-+*.rst
- *.texi
-
- # build system
---=20
-2.24.1
-
+-- PMM
 
