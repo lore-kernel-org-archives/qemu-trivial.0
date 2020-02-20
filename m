@@ -1,63 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j4QcT-0006aV-5B
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Feb 2020 09:46:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52533)
+	id 1j4m54-0007Uc-U6
+	for mharc-qemu-trivial@gnu.org; Thu, 20 Feb 2020 08:41:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34311)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1j4QcR-0006Xt-1T
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 09:46:32 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j4m52-0007TK-53
+ for qemu-trivial@nongnu.org; Thu, 20 Feb 2020 08:41:29 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1j4QcQ-0004Ho-0A
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 09:46:30 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:57606
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j4m51-00082S-4e
+ for qemu-trivial@nongnu.org; Thu, 20 Feb 2020 08:41:28 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3239 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1j4QcP-0004HK-SY
- for qemu-trivial@nongnu.org; Wed, 19 Feb 2020 09:46:29 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582123589;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HvehIyGQR3ja5S1xooLkob0f2DnC2fXaXKZlp/JUdqI=;
- b=BIeXwkuvYrTmE03qF1oTuSfQ9zbVq9UiqAd6DU4qIleVSIx8POh4Kc2vfbRxZ/ZDiuVIBT
- ICWaORiRprMW8WAMT0YHAJA/vEk9hKlo2uibrq5QFUx7tQ4La8Q8mZyj7cSbtwsFnfLRgN
- cUK37vaxanIBkBOudhcSndd4mEOllSc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-295-vyzavkRHNYau_g_s0J47dQ-1; Wed, 19 Feb 2020 09:46:18 -0500
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 718E113FB;
- Wed, 19 Feb 2020 14:46:15 +0000 (UTC)
-Received: from [10.3.116.180] (ovpn-116-180.phx2.redhat.com [10.3.116.180])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B481319756;
- Wed, 19 Feb 2020 14:46:14 +0000 (UTC)
-Subject: Re: [PATCH] iotests: Fix nonportable use of od --endian
-From: Eric Blake <eblake@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, andrey.shinkevich@virtuozzo.com,
- Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org, mreitz@redhat.com
-References: <20200219144103.2919292-1-eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <596f14e4-8412-f984-8bcc-6140a914bb31@redhat.com>
-Date: Wed, 19 Feb 2020 08:46:14 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1j4m4y-0007pi-He; Thu, 20 Feb 2020 08:41:24 -0500
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id CABEFBD4CB1A8257D996;
+ Thu, 20 Feb 2020 21:41:14 +0800 (CST)
+Received: from HGHY4C002233111.china.huawei.com (10.133.205.93) by
+ DGGEMS413-HUB.china.huawei.com (10.3.19.213) with Microsoft SMTP Server id
+ 14.3.439.0; Thu, 20 Feb 2020 21:41:07 +0800
+From: <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>
+CC: <ehabkost@redhat.com>, <quintela@redhat.com>, <thuth@redhat.com>,
+ <dgilbert@redhat.com>, <qemu-trivial@nongnu.org>,
+ <zhang.zhanghailiang@huawei.com>, Chen Qun <kuhn.chenqun@huawei.com>
+Subject: [PATCH v2] test-vmstate: Fix memleaks in test_load_qlist
+Date: Thu, 20 Feb 2020 21:41:03 +0800
+Message-ID: <20200220134103.26224-1-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.14.1.windows.1
 MIME-Version: 1.0
-In-Reply-To: <20200219144103.2919292-1-eblake@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-MC-Unique: vyzavkRHNYau_g_s0J47dQ-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-Originating-IP: [10.133.205.93]
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 45.249.212.191
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,70 +45,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Feb 2020 14:46:32 -0000
+X-List-Received-Date: Thu, 20 Feb 2020 13:41:29 -0000
 
-On 2/19/20 8:41 AM, Eric Blake wrote:
-> Tests 261 and 272 fail on RHEL 7 with coreutils 8.22, since od
-> --endian was not added until coreutils 8.23.  Fix this by manually
-> constructing the final value one byte at a time.
-> 
-> Fixes: fc8ba423
-> Reported-by: Andrey Shinkevich <andrey.shinkevich@virtuozzo.com>
-> Signed-off-by: Eric Blake <eblake@redhat.com>
-> ---
->   tests/qemu-iotests/common.rc | 22 +++++++++++++++++-----
->   1 file changed, 17 insertions(+), 5 deletions(-)
-> 
-> diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
-> index 8a6366c09daf..b77ef3d22cd1 100644
-> --- a/tests/qemu-iotests/common.rc
-> +++ b/tests/qemu-iotests/common.rc
-> @@ -56,6 +56,12 @@ poke_file()
->   # peek_file_le 'test.img' 512 2 => 65534
->   peek_file_le()
->   {
-> -    # Wrap in echo $() to strip spaces
-> -    echo $(od -j"$2" -N"$3" --endian=little -An -vtu"$3" "$1")
-> +    local val=0 shift=0 i
-> +
-> +    # coreutils' od --endian is not portable, so manually assemble bytes.
-> +    for i in $(od -j"$2" -N"$3" -An -v -tu1 "$1"); do
-> +        val=$(( val | (i << shift) ))
-> +        shift=$((shift + 8))
-> +    done
-> +    echo $val
+From: Chen Qun <kuhn.chenqun@huawei.com>
 
-Reports large 8-byte values as negative, whereas the pre-patch version 
-reported them as positive.  To preserve behavior, we should squash in:
+There is memleak in test_load_qlist().It's not a big deal,
+but test-vmstate will fail if sanitizers is enabled.
 
-diff --git i/tests/qemu-iotests/common.rc w/tests/qemu-iotests/common.rc
-index 8966ad5cde78..a596856d4d8c 100644
---- i/tests/qemu-iotests/common.rc
-+++ w/tests/qemu-iotests/common.rc
-@@ -63,7 +63,7 @@ peek_file_le()
-          val=$(( val | (i << shift) ))
-          shift=$((shift + 8))
-      done
--    echo $val
-+    printf %llu $val
-  }
+In addition, "ret" is written twice with the same value
+ in test_gtree_load_iommu().
 
-  # peek_file_be 'test.img' 512 2 => 65279
-@@ -75,7 +75,7 @@ peek_file_be()
-      for i in $(od -j"$2" -N"$3" -An -v -tu1 "$1"); do
-          val=$(( (val << 8) | i ))
-      done
--    echo $val
-+    printf %llu $val
-  }
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+---
+ tests/test-vmstate.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-  # peek_file_raw 'test.img' 512 2 => '\xff\xfe'. Do not use if the raw data
-
-
-
+diff --git a/tests/test-vmstate.c b/tests/test-vmstate.c
+index cea363dd69..f7b3868881 100644
+--- a/tests/test-vmstate.c
++++ b/tests/test-vmstate.c
+@@ -1241,7 +1241,6 @@ static void test_gtree_load_iommu(void)
+     TestGTreeIOMMU *orig_iommu = create_iommu();
+     QEMUFile *fsave, *fload;
+     char eof;
+-    int ret;
+ 
+     fsave = open_test_file(true);
+     qemu_put_buffer(fsave, iommu_dump, sizeof(iommu_dump));
+@@ -1250,10 +1249,8 @@ static void test_gtree_load_iommu(void)
+ 
+     fload = open_test_file(false);
+     vmstate_load_state(fload, &vmstate_iommu, dest_iommu, 1);
+-    ret = qemu_file_get_error(fload);
+     eof = qemu_get_byte(fload);
+-    ret = qemu_file_get_error(fload);
+-    g_assert(!ret);
++    g_assert(!qemu_file_get_error(fload));
+     g_assert_cmpint(orig_iommu->id, ==, dest_iommu->id);
+     g_assert_cmpint(eof, ==, QEMU_VM_EOF);
+ 
+@@ -1395,6 +1392,7 @@ static void test_load_qlist(void)
+     compare_containers(orig_container, dest_container);
+     free_container(orig_container);
+     free_container(dest_container);
++    qemu_fclose(fload);
+ }
+ 
+ typedef struct TmpTestStruct {
 -- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+2.23.0
+
 
 
