@@ -1,121 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j4zVv-0005o2-2N
-	for mharc-qemu-trivial@gnu.org; Thu, 20 Feb 2020 23:02:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41162)
+	id 1j53pe-0005ha-R4
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2020 03:38:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51082)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <juterry@microsoft.com>) id 1j4pei-00017D-FF
- for qemu-trivial@nongnu.org; Thu, 20 Feb 2020 12:30:33 -0500
+ (envelope-from <sgarzare@redhat.com>) id 1j53pc-0005gx-07
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 03:38:44 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <juterry@microsoft.com>) id 1j4peh-0007OT-5p
- for qemu-trivial@nongnu.org; Thu, 20 Feb 2020 12:30:32 -0500
-Received: from mail-dm6nam11on2134.outbound.protection.outlook.com
- ([40.107.223.134]:60001 helo=NAM11-DM6-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <juterry@microsoft.com>)
- id 1j4peb-0007KQ-Eo; Thu, 20 Feb 2020 12:30:25 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=H/o0efGE2qA8sZn5UwfSrqfsqva7u1H60DJJH9uL28fmGBb52H+30tT/62bi/u3UyhWZfdTLGAJYedKaj2YQYYXo7M8fkbGwAtOrV5dUoJZkRiGBsfUUUY2FKrwBRaGfhuTx9il8ncnNMh5SFG85kyZ7SLTmJRAWhO4PheRN6trzkhBoL74EBFYJy8XuV+hk15ns29Ndrymwh5iwkTaB5EXu/O/7hG1SXjuENaKTdxp8Cir7kRotPrX1yENJ3mnOAOh8NAmR1djYTdOey0QjQOqIhyawWZq08lejGdqdpjH4X83gRHcobB79h1Sxg1zK0sBiuzHfQJhGCmNJITtnbQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/H+XiFxtVKVi6mcA3j5F6siX42P6ZkUhLbMWPyWe8Lo=;
- b=kcDFsiaJh9M2QXSEkkV7H3rfks2scOuEkyGLicLR3UhngazTAOwBWgSDUF+UDnzgo0SpesBG8Sjtsxqw9LsMHBMGnGPOL5ltYGvTcYnXLuSm7MohJB6jPqmMWjwyI19oMql1HAcFLmY7yYfo8rb8zwG79QT/WDX4ub3PEeh8PQMLq2pSmNWVHBoTTM9TBHD+6NEch9vHGMb38AFT63efxjlezxBbCSpAH7qNIoBYVwYkx4ZiU8x5bqHIItm1wb0YHKVm0v++75/9/lecibp6Z2J9t3jNlZOfd4zk2aF7oYZToWcG4maZnOkCEslOaxdNQ7XjjmNpkR6xWYKRJRXF1w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microsoft.com; dmarc=pass action=none
- header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/H+XiFxtVKVi6mcA3j5F6siX42P6ZkUhLbMWPyWe8Lo=;
- b=SLy5T073yXYsUBT6pBAAW4d7kVvbOZcepYJmYydDdL9Vl6Bho3O6IwBjDT3+tA9WRUKDFZnI/P1lD5rYtI5osxYCHbRSPmIztR3HUFu/+24oRd5tXq34HlY3gUAgAuGHbCkDkIurEVdJHvW0K97GIlPnmA4GCFpb1CYIkbM0bn0=
-Received: from BN8PR21MB1297.namprd21.prod.outlook.com (20.179.74.207) by
- BN8PR21MB1265.namprd21.prod.outlook.com (20.179.74.86) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2772.4; Thu, 20 Feb 2020 17:30:22 +0000
-Received: from BN8PR21MB1297.namprd21.prod.outlook.com
- ([fe80::b03c:f27:72c7:8b9b]) by BN8PR21MB1297.namprd21.prod.outlook.com
- ([fe80::b03c:f27:72c7:8b9b%7]) with mapi id 15.20.2772.004; Thu, 20 Feb 2020
- 17:30:22 +0000
-From: "Justin Terry (SF)" <juterry@microsoft.com>
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>, Sunil
- Muthuswamy <sunilmut@microsoft.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Max Reitz
- <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>, Thomas Huth
- <thuth@redhat.com>, Fam Zheng <fam@euphon.net>, Eduardo Habkost
- <ehabkost@redhat.com>, Alex Williamson <alex.williamson@redhat.com>, Marcel
- Apfelbaum <marcel.apfelbaum@gmail.com>, Richard Henderson <rth@twiddle.net>,
- Julia Suvorova <jusual@redhat.com>, Thomas Huth <huth@tuxfamily.org>, "Edgar
- E. Iglesias" <edgar.iglesias@gmail.com>, Aarushi Mehta
- <mehta.aaru20@gmail.com>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>, Alistair
- Francis <alistair@alistair23.me>, Gerd Hoffmann <kraxel@redhat.com>, Luc
- Michel <luc.michel@greensocs.com>, Laurent Vivier <lvivier@redhat.com>, Juan
- Quintela <quintela@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, Laurent
- Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>, Yuval Shaia
- <yuval.shaia.ml@gmail.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, "qemu-block@nongnu.org"
- <qemu-block@nongnu.org>
-Subject: RE: [EXTERNAL] Re: [PATCH RESEND 11/13] target/i386/whpx: Remove
- superfluous semicolon
-Thread-Topic: [EXTERNAL] Re: [PATCH RESEND 11/13] target/i386/whpx: Remove
- superfluous semicolon
-Thread-Index: AQHV5kJPYeMUg9xD2U6kjYYIlU3R0KgkWeyQ
-Date: Thu, 20 Feb 2020 17:30:22 +0000
-Message-ID: <BN8PR21MB12975CD3759819BAEC6D106DB6130@BN8PR21MB1297.namprd21.prod.outlook.com>
-References: <20200218094402.26625-1-philmd@redhat.com>
- <20200218094402.26625-12-philmd@redhat.com> <20200218100029.GN3080@work-vm>
-In-Reply-To: <20200218100029.GN3080@work-vm>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Enabled=True;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SiteId=72f988bf-86f1-41af-91ab-2d7cd011db47;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Owner=juterry@microsoft.com;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_SetDate=2020-02-20T17:30:21.0165359Z;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Name=General;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Application=Microsoft Azure
- Information Protection;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_ActionId=d12cbcb7-1b50-4bb7-8b77-955dd54347ba;
- MSIP_Label_f42aa342-8706-4288-bd11-ebb85995028c_Extended_MSFT_Method=Automatic
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=juterry@microsoft.com; 
-x-originating-ip: [67.185.128.72]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: b6bb9039-7b5a-4f8a-778b-08d7b62a90a6
-x-ms-traffictypediagnostic: BN8PR21MB1265:|BN8PR21MB1265:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BN8PR21MB12651F137C4B758D71FC6FEFB6130@BN8PR21MB1265.namprd21.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:139;
-x-forefront-prvs: 031996B7EF
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(346002)(39860400002)(366004)(136003)(396003)(376002)(199004)(189003)(110136005)(7696005)(478600001)(316002)(9686003)(55016002)(33656002)(2906002)(8936002)(81166006)(81156014)(10290500003)(8676002)(4326008)(66476007)(52536014)(5660300002)(66446008)(6636002)(86362001)(8990500004)(7416002)(186003)(26005)(71200400001)(6506007)(53546011)(64756008)(54906003)(66946007)(66556008)(76116006);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BN8PR21MB1265;
- H:BN8PR21MB1297.namprd21.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: microsoft.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: Gmt7BNfX05hzuLHGF4proO8Uva3fJMN7cHv6mpsZbCx0F50BkShvHMch5p/M1bYfcDOlYueo1/iQxghcHHsedrk+nnWK71x8oEQd+SRlN9GiYY5qfcDWvDCYvOw+eqp11WFM2m/nPKpv6rBBUtDIbACi6s92qrLUXWuQMQ5dyy/2tTX2eCOalGlmb04eWJgIWDcLGPrAbTfcewgBQzxjbmXqTfA9hfjQsNqY9qmp3sZPSmBm5NS4AloXk597+jCVw5U0eSKNO3x2QRhR1nsBLRptD338X/8HY6akJXbbbHtUJLc2Bn0RWrm0f5MLvFmJreRsaRJBWagQjGWALDoBlbVTw0lfNc3HGWd5KHWiSY/zThtYi9XrOZqqaP8IUx5dU4GJ2h5t8QH1++g+YEJiH5JATm8Rr/Osvb51EXVVb2Wm/VM8qDvcVfJhnk9/Oxjm
-x-ms-exchange-antispam-messagedata: p/uvQ37W3KAJwJWaReveOlTxhBhB0nYuj1EzpPR7myk5pg8skiRr3kD3Pp+B9xCoNqq/449dgQEeWmARsBoU4JgRDLSdu/1HHrIlqZgbUvW9OTjIUyDQJM3wPsstVNNBeirzf3GTAS+xo925liHADw==
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (envelope-from <sgarzare@redhat.com>) id 1j53pa-000594-Va
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 03:38:43 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:47496
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1j53pa-00056M-Ru
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 03:38:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582274321;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BBAct6Z9OiV68TaWEqvLLVbwoKPlKy80g5pl+xUlkSE=;
+ b=Q6whyGGxPK4GBJsi/6pPAd+/7FE6V4fcbtHTx7K/7878WoiXOOJ6K1kVp3Nk6624d3ubsw
+ UVdTKeVbxH8EKSzdavkG7kp1BvZ2Fz9tTMl2kRaiNGiENXySRkxOzFfnWur+4MStcYFnMG
+ /fA6vbWcmiMgpJnh/yt6KC/8bf8ERmU=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-370-29GO6mSYPfWmXQaNmcILxg-1; Fri, 21 Feb 2020 03:38:39 -0500
+Received: by mail-wm1-f70.google.com with SMTP id t17so317056wmi.7
+ for <qemu-trivial@nongnu.org>; Fri, 21 Feb 2020 00:38:39 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=H9vErtnKYlYy6wFbuRMHoCpDJR+/+RmgsfPlLs55K8I=;
+ b=W7jiOXmp9IDOJNT7UFrbLancyxyJn4abiKi0DqslpFtXlI2nyxBbRtv39EEOScz7Yj
+ 9tQmKBcd1OdIkvylsmT/3C4lI/7gh1Suibq48C+QrqBaQNgAie26t7aFUouZ+ceyTbbq
+ 84KTWF0+PR46rOg4lYMZnoFI4TTFXv9Fifl4YJh5EWu4lhjThp/4d4mhZ+VHv9pbwYTv
+ dvjDQ0XeYmoSGjNMXKuAi/fpaIZSLO1ADOWX6kKvDaWJ+6F0DpypEOJl1yOpuzD05lrX
+ UlfBsmzNqcT0ye9gNaNnlSEFV87nm61VSk0oC25H6KnNRhEyKxMvynjgZuSa8VwzBrmc
+ 2DaA==
+X-Gm-Message-State: APjAAAVX5qbiiRnQjqbv4xs6Kmy98+A+phPlPtEV92UucbnSnP9qoC6/
+ tVPWfzfy/9t/nw4A5cf5+PbKVk216pp2TU/Osf6XBHLskZljol3/8jguN/yEiH1TjVK5UKY67CU
+ tinfF6xQi6XlwZmfUtQ==
+X-Received: by 2002:adf:f401:: with SMTP id g1mr46449545wro.129.1582274318634; 
+ Fri, 21 Feb 2020 00:38:38 -0800 (PST)
+X-Google-Smtp-Source: APXvYqzFigIyMxkF6U99YhEsl22THDxvi64Ti9uHBBPsqvCKlRnEC/kh00SSqjEAjxmiHPh1N/qE+Q==
+X-Received: by 2002:adf:f401:: with SMTP id g1mr46449519wro.129.1582274318340; 
+ Fri, 21 Feb 2020 00:38:38 -0800 (PST)
+Received: from steredhat (host209-4-dynamic.27-79-r.retail.telecomitalia.it.
+ [79.27.4.209])
+ by smtp.gmail.com with ESMTPSA id q14sm3144766wrj.81.2020.02.21.00.38.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 Feb 2020 00:38:37 -0800 (PST)
+Date: Fri, 21 Feb 2020 09:38:35 +0100
+From: Stefano Garzarella <sgarzare@redhat.com>
+To: Eric Blake <eblake@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+	peter.maydell@linaro.org
+Subject: Re: [PATCH] maint: Include top-level *.rst files early in git diff
+Message-ID: <20200221083835.qielytbcsymbolrw@steredhat>
+References: <20200220162214.3474280-1-eblake@redhat.com>
 MIME-Version: 1.0
-X-OriginatorOrg: microsoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b6bb9039-7b5a-4f8a-778b-08d7b62a90a6
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Feb 2020 17:30:22.5466 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: acmujX9qQ5u1h6ziFBi9N9cwVAnVzQ4lur+3wox6qyZ1rPBa+bs8KMrYwGYzzX6plaUMNhUMY5cJAMN4XdZi8w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN8PR21MB1265
-X-detected-operating-system: by eggs.gnu.org: Windows NT kernel [generic]
- [fuzzy]
-X-Received-From: 40.107.223.134
-X-Mailman-Approved-At: Thu, 20 Feb 2020 23:02:05 -0500
+In-Reply-To: <20200220162214.3474280-1-eblake@redhat.com>
+X-MC-Unique: 29GO6mSYPfWmXQaNmcILxg-1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -127,66 +81,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 20 Feb 2020 17:30:34 -0000
+X-List-Received-Date: Fri, 21 Feb 2020 08:38:45 -0000
 
-+Sunil Muthuswamy <sunilmut@microsoft.com>
-
-LGTM. Thanks!
-
-Reviewed-by: Justin Terry (VM) <juterry@microsoft.com>
-
-> -----Original Message-----
-> From: Dr. David Alan Gilbert <dgilbert@redhat.com>
-> Sent: Tuesday, February 18, 2020 2:00 AM
-> To: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> Cc: qemu-devel@nongnu.org; Max Reitz <mreitz@redhat.com>; Kevin Wolf
-> <kwolf@redhat.com>; Thomas Huth <thuth@redhat.com>; Fam Zheng
-> <fam@euphon.net>; Eduardo Habkost <ehabkost@redhat.com>; Alex
-> Williamson <alex.williamson@redhat.com>; Marcel Apfelbaum
-> <marcel.apfelbaum@gmail.com>; Richard Henderson <rth@twiddle.net>;
-> Julia Suvorova <jusual@redhat.com>; Thomas Huth <huth@tuxfamily.org>;
-> Edgar E. Iglesias <edgar.iglesias@gmail.com>; Aarushi Mehta
-> <mehta.aaru20@gmail.com>; qemu-trivial@nongnu.org; Stefan Hajnoczi
-> <stefanha@redhat.com>; Alistair Francis <alistair@alistair23.me>; Gerd
-> Hoffmann <kraxel@redhat.com>; Luc Michel <luc.michel@greensocs.com>;
-> Laurent Vivier <lvivier@redhat.com>; Juan Quintela
-> <quintela@redhat.com>; Michael Tokarev <mjt@tls.msk.ru>; Laurent Vivier
-> <laurent@vivier.eu>; Paolo Bonzini <pbonzini@redhat.com>; Yuval Shaia
-> <yuval.shaia.ml@gmail.com>; qemu-arm@nongnu.org; Peter Maydell
-> <peter.maydell@linaro.org>; qemu-block@nongnu.org; Justin Terry (SF)
-> <juterry@microsoft.com>
-> Subject: [EXTERNAL] Re: [PATCH RESEND 11/13] target/i386/whpx: Remove
-> superfluous semicolon
+On Thu, Feb 20, 2020 at 10:22:13AM -0600, Eric Blake wrote:
+> We are converting more doc files to *.rst rather than *.texi.  Most
+> doc files are already listed early in diffs due to our catchall
+> docs/*, but a few top-level files get missed by that glob.
 >=20
-> * Philippe Mathieu-Daud=E9 (philmd@redhat.com) wrote:
-> > Fixes: 812d49f2a3e
-> > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
 >=20
-> Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> Both *.texi and *.rst entries make sense while we are still converting
+> things, but we'll need a followup to drop *.texi when the conversion
+> is complete...
 >=20
-> > ---
-> > Cc: Justin Terry (VM) <juterry@microsoft.com>
-> > ---
-> >  target/i386/whpx-all.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/target/i386/whpx-all.c b/target/i386/whpx-all.c index
-> > 3ed2aa1892..35601b8176 100644
-> > --- a/target/i386/whpx-all.c
-> > +++ b/target/i386/whpx-all.c
-> > @@ -511,7 +511,7 @@ static void whpx_get_registers(CPUState *cpu)
-> >      /* WHvX64RegisterPat - Skipped */
-> >
-> >      assert(whpx_register_names[idx] =3D=3D WHvX64RegisterSysenterCs);
-> > -    env->sysenter_cs =3D vcxt.values[idx++].Reg64;;
-> > +    env->sysenter_cs =3D vcxt.values[idx++].Reg64;
-> >      assert(whpx_register_names[idx] =3D=3D WHvX64RegisterSysenterEip);
-> >      env->sysenter_eip =3D vcxt.values[idx++].Reg64;
-> >      assert(whpx_register_names[idx] =3D=3D WHvX64RegisterSysenterEsp);
-> > --
-> > 2.21.1
-> >
-> --
-> Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+>  scripts/git.orderfile | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/scripts/git.orderfile b/scripts/git.orderfile
+> index 1f747b583a9e..abd8a67a2b4e 100644
+> --- a/scripts/git.orderfile
+> +++ b/scripts/git.orderfile
+> @@ -11,6 +11,7 @@
+>=20
+>  # Documentation
+>  docs/*
+> +*.rst
+>  *.texi
+>=20
+>  # build system
+
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
 
 
