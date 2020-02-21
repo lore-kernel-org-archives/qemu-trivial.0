@@ -1,65 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j5BLv-0004yX-Ne
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2020 11:40:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51750)
+	id 1j5Ed7-0003ie-0Q
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2020 15:10:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48911)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1j5BLt-0004w3-9a
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 11:40:34 -0500
+ (envelope-from <eblake@redhat.com>) id 1j5Ed3-0003a8-JY
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 15:10:30 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1j5BLs-0004aG-5U
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 11:40:33 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:32052
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <eblake@redhat.com>) id 1j5Ed2-0007zm-Ev
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 15:10:29 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:25369
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1j5BLs-0004ZM-0a
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 11:40:32 -0500
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1j5Ed2-0007zU-B7
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 15:10:28 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582303230;
+ s=mimecast20190719; t=1582315827;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=5m45+iI9fwusuKb+VopaNjfyolvGlQWvmOpBl4B9YxI=;
- b=gOolDmfVWyHxFIuBZikVkuWYrgaBnO2xsJldODN80cIs15wcAkcjYus3+2zzMQB8HtY7Xp
- 43C5puxxbjIfxRMMKfZdSnXUYH69dnNifi7tU6OGLpjTa5q6Mo/ZH2ulno7KMyrp0jDHJh
- jRNL7dmmazrIj0GGEvbfIcTOMlxPVcc=
+ bh=WasyKTLNX156llRoyrshOAOea3ULgaG5bG4wy7/RODk=;
+ b=ZhsMC/4au6YX2rILquqfF/5xoiVZtzZ47EB8HDqMBo2Gv/ttncPJb5rV0wtZL3vy1LDI4Z
+ pPI+MRoFCl3hEKAyWURCyRrwYYlBrTs86PjPPT+5paQz2QamEHERibRYDMVsDuTKkOfiMb
+ kXP/+vtHnMKpt/T8fcskchgdfPE45e0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-475-vcnuk47LNzKZ1oLgC4uIKw-1; Fri, 21 Feb 2020 11:40:28 -0500
-X-MC-Unique: vcnuk47LNzKZ1oLgC4uIKw-1
+ us-mta-319-7_2tcSxqOXeMiokG8e6nuQ-1; Fri, 21 Feb 2020 15:10:24 -0500
+X-MC-Unique: 7_2tcSxqOXeMiokG8e6nuQ-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 94ECA107ACC5;
- Fri, 21 Feb 2020 16:40:27 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-129.ams2.redhat.com
- [10.36.116.129])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 63B988B570;
- Fri, 21 Feb 2020 16:40:27 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id D964411386A6; Fri, 21 Feb 2020 17:40:25 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Eric Blake <eblake@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D9B3C100DFC7;
+ Fri, 21 Feb 2020 20:10:22 +0000 (UTC)
+Received: from [10.3.116.90] (ovpn-116-90.phx2.redhat.com [10.3.116.90])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 91B5860499;
+ Fri, 21 Feb 2020 20:10:22 +0000 (UTC)
 Subject: Re: [PATCH] maint: Include top-level *.rst files early in git diff
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
 References: <20200220162214.3474280-1-eblake@redhat.com>
  <CAFEAcA8p7D_XFZ9e66wWHNSD6fh2yUvFyAM3QVrwBP7oonoCjQ@mail.gmail.com>
-Date: Fri, 21 Feb 2020 17:40:25 +0100
-In-Reply-To: <CAFEAcA8p7D_XFZ9e66wWHNSD6fh2yUvFyAM3QVrwBP7oonoCjQ@mail.gmail.com>
- (Peter Maydell's message of "Fri, 21 Feb 2020 10:17:36 +0000")
-Message-ID: <87wo8f51xi.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <7ffc8c30-020e-ebcc-94d9-70ced216352f@redhat.com>
+Date: Fri, 21 Feb 2020 08:33:43 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8p7D_XFZ9e66wWHNSD6fh2yUvFyAM3QVrwBP7oonoCjQ@mail.gmail.com>
+Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -71,10 +70,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Feb 2020 16:40:34 -0000
+X-List-Received-Date: Fri, 21 Feb 2020 20:10:31 -0000
 
-Peter Maydell <peter.maydell@linaro.org> writes:
-
+On 2/21/20 4:17 AM, Peter Maydell wrote:
 > On Thu, 20 Feb 2020 at 16:22, Eric Blake <eblake@redhat.com> wrote:
 >>
 >> We are converting more doc files to *.rst rather than *.texi.  Most
@@ -87,19 +85,27 @@ Peter Maydell <peter.maydell@linaro.org> writes:
 >> Both *.texi and *.rst entries make sense while we are still converting
 >> things, but we'll need a followup to drop *.texi when the conversion
 >> is complete...
->
+> 
 > I was wondering what rst files we had outside docs, and
 > the answer is "README.rst, CODING_STYLE.rst and
 > tests/acceptance/README.rst".
->
+> 
 > (There's a reasonable argument for moving CODING_STYLE.rst to
 > docs/devel now; depends how highly you rate having it more
 > "discoverable" to new contributors.)
 
-The little cynic in the back of my head cackles and points out that
-CODING_STYLE.rst exists not for new contributors to discover, but so
-that old contributors have something to smack on new heads.
+Or even:
+git mv CODING_STYLE.rst docs/devel/CODING_STYLE.rst
+ln -s docs/devel/CODING_STYLE.rst .
+git add CODING_STYLE.rst
 
-SCNR :)
+to turn it into a git link in the top level for easy discoverabilty on a 
+fresh checkout, while still making it part of our overall built 
+documentation.
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 
 
