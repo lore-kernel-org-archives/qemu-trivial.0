@@ -1,75 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j53pe-0005ha-R4
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2020 03:38:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51082)
+	id 1j55Na-0005z6-On
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2020 05:17:54 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43817)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <sgarzare@redhat.com>) id 1j53pc-0005gx-07
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 03:38:44 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j55NW-0005ua-FH
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 05:17:51 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <sgarzare@redhat.com>) id 1j53pa-000594-Va
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 03:38:43 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:47496
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1j53pa-00056M-Ru
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 03:38:42 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582274321;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BBAct6Z9OiV68TaWEqvLLVbwoKPlKy80g5pl+xUlkSE=;
- b=Q6whyGGxPK4GBJsi/6pPAd+/7FE6V4fcbtHTx7K/7878WoiXOOJ6K1kVp3Nk6624d3ubsw
- UVdTKeVbxH8EKSzdavkG7kp1BvZ2Fz9tTMl2kRaiNGiENXySRkxOzFfnWur+4MStcYFnMG
- /fA6vbWcmiMgpJnh/yt6KC/8bf8ERmU=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-370-29GO6mSYPfWmXQaNmcILxg-1; Fri, 21 Feb 2020 03:38:39 -0500
-Received: by mail-wm1-f70.google.com with SMTP id t17so317056wmi.7
- for <qemu-trivial@nongnu.org>; Fri, 21 Feb 2020 00:38:39 -0800 (PST)
+ (envelope-from <peter.maydell@linaro.org>) id 1j55NV-0006SO-AT
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 05:17:50 -0500
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:34019)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j55NV-0006Rs-3Q
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 05:17:49 -0500
+Received: by mail-oi1-x243.google.com with SMTP id l136so1100948oig.1
+ for <qemu-trivial@nongnu.org>; Fri, 21 Feb 2020 02:17:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=u7wavj6OThSCoxCraTdF4zstIocPhDT1vEefuSemLQM=;
+ b=IMCjdzOaRVvTNxJlhbJ+PJFDY/VqCRs3VD9KJzroBG8tMZUY/YhQbX1zJ2ZmLmzCpJ
+ KWxLNY0qJLNp4ftTVe/oVFURZ95nFqDKoraWjorCQqIcYA68UgUyftSbre/UQf55jBVC
+ VY+EHvurwE2GSLw9crQ+9E5zHMdYKcc8O8OzkiWbR1OOalJgqlU3d8T7IK+SIydk5ksh
+ T8+EatJnPID4mARinMxQxD9iTnsviR/RHpDHPd+7fcmiM0+S3BNDDawor3nj4qQftEcI
+ /ssORGJsooxHQCGbE/j/3eh3oXxL1liTzPx+5QeREwJgormoqjuwRWtmreTWvGDb1YI3
+ PUTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=H9vErtnKYlYy6wFbuRMHoCpDJR+/+RmgsfPlLs55K8I=;
- b=W7jiOXmp9IDOJNT7UFrbLancyxyJn4abiKi0DqslpFtXlI2nyxBbRtv39EEOScz7Yj
- 9tQmKBcd1OdIkvylsmT/3C4lI/7gh1Suibq48C+QrqBaQNgAie26t7aFUouZ+ceyTbbq
- 84KTWF0+PR46rOg4lYMZnoFI4TTFXv9Fifl4YJh5EWu4lhjThp/4d4mhZ+VHv9pbwYTv
- dvjDQ0XeYmoSGjNMXKuAi/fpaIZSLO1ADOWX6kKvDaWJ+6F0DpypEOJl1yOpuzD05lrX
- UlfBsmzNqcT0ye9gNaNnlSEFV87nm61VSk0oC25H6KnNRhEyKxMvynjgZuSa8VwzBrmc
- 2DaA==
-X-Gm-Message-State: APjAAAVX5qbiiRnQjqbv4xs6Kmy98+A+phPlPtEV92UucbnSnP9qoC6/
- tVPWfzfy/9t/nw4A5cf5+PbKVk216pp2TU/Osf6XBHLskZljol3/8jguN/yEiH1TjVK5UKY67CU
- tinfF6xQi6XlwZmfUtQ==
-X-Received: by 2002:adf:f401:: with SMTP id g1mr46449545wro.129.1582274318634; 
- Fri, 21 Feb 2020 00:38:38 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzFigIyMxkF6U99YhEsl22THDxvi64Ti9uHBBPsqvCKlRnEC/kh00SSqjEAjxmiHPh1N/qE+Q==
-X-Received: by 2002:adf:f401:: with SMTP id g1mr46449519wro.129.1582274318340; 
- Fri, 21 Feb 2020 00:38:38 -0800 (PST)
-Received: from steredhat (host209-4-dynamic.27-79-r.retail.telecomitalia.it.
- [79.27.4.209])
- by smtp.gmail.com with ESMTPSA id q14sm3144766wrj.81.2020.02.21.00.38.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Feb 2020 00:38:37 -0800 (PST)
-Date: Fri, 21 Feb 2020 09:38:35 +0100
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
-	peter.maydell@linaro.org
-Subject: Re: [PATCH] maint: Include top-level *.rst files early in git diff
-Message-ID: <20200221083835.qielytbcsymbolrw@steredhat>
-References: <20200220162214.3474280-1-eblake@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=u7wavj6OThSCoxCraTdF4zstIocPhDT1vEefuSemLQM=;
+ b=UHw5Dou+UxV264SmrkFkAx79rJjDRPoi/tNnvfmHyefiSc337VIP8RdpbhW4NMUMLn
+ /vkHyu/YYNHqIHB/MsZWDEagu44xSkO5T2memRruhuRXW1qL8Yz86uBuS/mui2RblO32
+ rq6h3fad32NfOA0dsb9FJUAj3EsWwAvMwrrOHI1iUvDYwZcJKUy4voTMsB5LYDp93xvg
+ xBojcEZEUCLHoOM7oMAC1nCLMwb03mAJldwsF/9Kwy6Djgc6JahkBwmhoXjfj4g/oSGX
+ 1Ni0xu/vZPwOAnGi0MTWI2MIjazr5t6G9J3HscZvMVnwbqaS/ZUr+Ol/D/QCCDXeBQ3S
+ qo6w==
+X-Gm-Message-State: APjAAAV6rV5up59tMdERcGdXdwAy/gVAVhFRr7M1eawr5D+L7XAxFxdw
+ 3HrIRRxJU6TLuIp6sKZuHLdpK7D1cY7tSzs4awwalg==
+X-Google-Smtp-Source: APXvYqyj09GbiRvPOtWk+5gZhF/astt9hYzAc+AVr9Uusy5ZsHYGNqLSIciLfGRfb7vv4qSF5K+1e+c+q1OQqKz6okE=
+X-Received: by 2002:a54:4f16:: with SMTP id e22mr1398024oiy.170.1582280267863; 
+ Fri, 21 Feb 2020 02:17:47 -0800 (PST)
 MIME-Version: 1.0
+References: <20200220162214.3474280-1-eblake@redhat.com>
 In-Reply-To: <20200220162214.3474280-1-eblake@redhat.com>
-X-MC-Unique: 29GO6mSYPfWmXQaNmcILxg-1
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 21 Feb 2020 10:17:36 +0000
+Message-ID: <CAFEAcA8p7D_XFZ9e66wWHNSD6fh2yUvFyAM3QVrwBP7oonoCjQ@mail.gmail.com>
+Subject: Re: [PATCH] maint: Include top-level *.rst files early in git diff
+To: Eric Blake <eblake@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::243
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -81,36 +65,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Feb 2020 08:38:45 -0000
+X-List-Received-Date: Fri, 21 Feb 2020 10:17:51 -0000
 
-On Thu, Feb 20, 2020 at 10:22:13AM -0600, Eric Blake wrote:
+On Thu, 20 Feb 2020 at 16:22, Eric Blake <eblake@redhat.com> wrote:
+>
 > We are converting more doc files to *.rst rather than *.texi.  Most
 > doc files are already listed early in diffs due to our catchall
 > docs/*, but a few top-level files get missed by that glob.
->=20
+>
 > Signed-off-by: Eric Blake <eblake@redhat.com>
 > ---
->=20
+>
 > Both *.texi and *.rst entries make sense while we are still converting
 > things, but we'll need a followup to drop *.texi when the conversion
 > is complete...
->=20
->  scripts/git.orderfile | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/scripts/git.orderfile b/scripts/git.orderfile
-> index 1f747b583a9e..abd8a67a2b4e 100644
-> --- a/scripts/git.orderfile
-> +++ b/scripts/git.orderfile
-> @@ -11,6 +11,7 @@
->=20
->  # Documentation
->  docs/*
-> +*.rst
->  *.texi
->=20
->  # build system
 
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+I was wondering what rst files we had outside docs, and
+the answer is "README.rst, CODING_STYLE.rst and
+tests/acceptance/README.rst".
 
+(There's a reasonable argument for moving CODING_STYLE.rst to
+docs/devel now; depends how highly you rate having it more
+"discoverable" to new contributors.)
+
+thanks
+-- PMM
 
