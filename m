@@ -1,77 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j5B5S-0004RK-53
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2020 11:23:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46430)
+	id 1j5BLv-0004yX-Ne
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2020 11:40:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51750)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j5B5P-0004PH-Ss
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 11:23:32 -0500
+ (envelope-from <armbru@redhat.com>) id 1j5BLt-0004w3-9a
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 11:40:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j5B5O-0003Zd-QD
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 11:23:31 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:57632
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <armbru@redhat.com>) id 1j5BLs-0004aG-5U
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 11:40:33 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:32052
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j5B5O-0003ZO-LI
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 11:23:30 -0500
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1j5BLs-0004ZM-0a
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 11:40:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582302209;
+ s=mimecast20190719; t=1582303230;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=vFiPRvFKVsbNzmJDjMRO2L9Swvm9SGW0hfm4mbSD9HI=;
- b=YW/i+5dfh2Gdx8Z1kdxgkhFgPVxQsWyYl4ZtatLfWLKQrGOOpLZCtCOJ+hqca48n1/KxdS
- sJObzTbuuOPynIn4zvvR8RGupJH6lnS7XsZrUmQdfsZzCKgq0zz86vCAF/oFDeTLFjAEr5
- mAo48T5Bno5fI4C+mafoAPD4+i5PM9s=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-98-rQOMd20pMri7-oWfbHaQ-A-1; Fri, 21 Feb 2020 11:23:28 -0500
-X-MC-Unique: rQOMd20pMri7-oWfbHaQ-A-1
-Received: by mail-wr1-f70.google.com with SMTP id 50so1250160wrc.2
- for <qemu-trivial@nongnu.org>; Fri, 21 Feb 2020 08:23:27 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=NcTfhGykjxqUJHmU3wSmXTaQacdRKcUuYEHPVWON51c=;
- b=teSC3DSd/TStMwl4tgZ62Usdu/6sTFP1MnhSr8Co7FNGg9GMLMrQ1SaJQstWudTOE1
- 76oiagtvGCp2FQPBjbPNqdOO9OSU0QqZ3grMEn8ohXP2vZS60+D4RNvcuUoFAsMRKeOp
- qA8C51vV2mLPbSYnb0BFsGIIo3S5kvspcHfzlyoZTpKI/7ombGUCfu4029s8fnJPDtBS
- +jVzRevrltAQXNfw81Ulf3pWLnL5F9OtGoDL22GgXorkQeWd4WzFTVv2Y03coX4I6KY3
- UMPl53KGVpJJfh3fct74qQrWXMjhwdMA9+m9EdAIWWdneN7sAWpLuZUQg86DJr/goN/g
- 30vw==
-X-Gm-Message-State: APjAAAUD/NdOvJiNfrY3r9fv5We/jBuloGtiioZj7EZ/eoPlU3E583+J
- 8Xb7MRSdiK9KCHcRWjEPO7F96A0c+56BR8b3Adv0FfBrHywIBB50Y71Uj+B8J3aFQ5DEsrK/yNs
- IYhtsjUNKzoToTC9C4Q==
-X-Received: by 2002:a05:600c:34b:: with SMTP id
- u11mr4630261wmd.69.1582302206929; 
- Fri, 21 Feb 2020 08:23:26 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzPW6MlDqjpVahUai1trotfdKv5CNBBce8BJNdWrULkYlCfHaQVRs9HWS27lBbyek3/wKN6Lg==
-X-Received: by 2002:a05:600c:34b:: with SMTP id
- u11mr4630240wmd.69.1582302206723; 
- Fri, 21 Feb 2020 08:23:26 -0800 (PST)
-Received: from x1w.redhat.com (78.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.78])
- by smtp.gmail.com with ESMTPSA id t81sm4367414wmg.6.2020.02.21.08.23.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Feb 2020 08:23:26 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-trivial@nongnu.org,
- Guan Xuetao <gxt@mprc.pku.edu.cn>,
- Alistair Francis <alistair.francis@wdc.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] hw/unicore32/puv3: Simplify puv3_soc_init()
-Date: Fri, 21 Feb 2020 17:23:25 +0100
-Message-Id: <20200221162325.28194-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.1
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5m45+iI9fwusuKb+VopaNjfyolvGlQWvmOpBl4B9YxI=;
+ b=gOolDmfVWyHxFIuBZikVkuWYrgaBnO2xsJldODN80cIs15wcAkcjYus3+2zzMQB8HtY7Xp
+ 43C5puxxbjIfxRMMKfZdSnXUYH69dnNifi7tU6OGLpjTa5q6Mo/ZH2ulno7KMyrp0jDHJh
+ jRNL7dmmazrIj0GGEvbfIcTOMlxPVcc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-475-vcnuk47LNzKZ1oLgC4uIKw-1; Fri, 21 Feb 2020 11:40:28 -0500
+X-MC-Unique: vcnuk47LNzKZ1oLgC4uIKw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 94ECA107ACC5;
+ Fri, 21 Feb 2020 16:40:27 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-129.ams2.redhat.com
+ [10.36.116.129])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 63B988B570;
+ Fri, 21 Feb 2020 16:40:27 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id D964411386A6; Fri, 21 Feb 2020 17:40:25 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Eric Blake <eblake@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Subject: Re: [PATCH] maint: Include top-level *.rst files early in git diff
+References: <20200220162214.3474280-1-eblake@redhat.com>
+ <CAFEAcA8p7D_XFZ9e66wWHNSD6fh2yUvFyAM3QVrwBP7oonoCjQ@mail.gmail.com>
+Date: Fri, 21 Feb 2020 17:40:25 +0100
+In-Reply-To: <CAFEAcA8p7D_XFZ9e66wWHNSD6fh2yUvFyAM3QVrwBP7oonoCjQ@mail.gmail.com>
+ (Peter Maydell's message of "Fri, 21 Feb 2020 10:17:36 +0000")
+Message-ID: <87wo8f51xi.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
+Content-Type: text/plain
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -83,51 +71,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Feb 2020 16:23:33 -0000
+X-List-Received-Date: Fri, 21 Feb 2020 16:40:34 -0000
 
-Since commit d8ed887bdc, the puv3_intc_cpu_handler handler takes
-a pointer to UniCore32CPU in its opaque argument.  Directly pass
-the cpu pointer.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/unicore32/puv3.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+> On Thu, 20 Feb 2020 at 16:22, Eric Blake <eblake@redhat.com> wrote:
+>>
+>> We are converting more doc files to *.rst rather than *.texi.  Most
+>> doc files are already listed early in diffs due to our catchall
+>> docs/*, but a few top-level files get missed by that glob.
+>>
+>> Signed-off-by: Eric Blake <eblake@redhat.com>
+>> ---
+>>
+>> Both *.texi and *.rst entries make sense while we are still converting
+>> things, but we'll need a followup to drop *.texi when the conversion
+>> is complete...
+>
+> I was wondering what rst files we had outside docs, and
+> the answer is "README.rst, CODING_STYLE.rst and
+> tests/acceptance/README.rst".
+>
+> (There's a reasonable argument for moving CODING_STYLE.rst to
+> docs/devel now; depends how highly you rate having it more
+> "discoverable" to new contributors.)
 
-diff --git a/hw/unicore32/puv3.c b/hw/unicore32/puv3.c
-index 7e933de228..eec7f561eb 100644
---- a/hw/unicore32/puv3.c
-+++ b/hw/unicore32/puv3.c
-@@ -48,7 +48,7 @@ static void puv3_intc_cpu_handler(void *opaque, int irq, =
-int level)
-     }
- }
-=20
--static void puv3_soc_init(CPUUniCore32State *env)
-+static void puv3_soc_init(UniCore32CPU *cpu)
- {
-     qemu_irq cpu_intc, irqs[PUV3_IRQS_NR];
-     DeviceState *dev;
-@@ -56,8 +56,7 @@ static void puv3_soc_init(CPUUniCore32State *env)
-     int i;
-=20
-     /* Initialize interrupt controller */
--    cpu_intc =3D qemu_allocate_irq(puv3_intc_cpu_handler,
--                                 env_archcpu(env), 0);
-+    cpu_intc =3D qemu_allocate_irq(puv3_intc_cpu_handler, cpu, 0);
-     dev =3D sysbus_create_simple("puv3_intc", PUV3_INTC_BASE, cpu_intc);
-     for (i =3D 0; i < PUV3_IRQS_NR; i++) {
-         irqs[i] =3D qdev_get_gpio_in(dev, i);
-@@ -131,7 +130,7 @@ static void puv3_init(MachineState *machine)
-     cpu =3D UNICORE32_CPU(cpu_create(machine->cpu_type));
-     env =3D &cpu->env;
-=20
--    puv3_soc_init(env);
-+    puv3_soc_init(cpu);
-     puv3_board_init(env, ram_size);
-     puv3_load_kernel(kernel_filename);
- }
---=20
-2.21.1
+The little cynic in the back of my head cackles and points out that
+CODING_STYLE.rst exists not for new contributors to discover, but so
+that old contributors have something to smack on new heads.
+
+SCNR :)
 
 
