@@ -1,54 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j5GsK-0005Gs-Pi
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2020 17:34:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36481)
+	id 1j5GsM-0005JK-Vt
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2020 17:34:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52700)
  by lists.gnu.org with esmtp (Exim 4.90_1) (envelope-from
- <3qk9QXgYKDIM51hu6pnvvnsl.jvtxlt1-0yp2phsuvunu1.vyn@flex--yuanzi.bounces.google.com>)
- id 1j5G7q-0004ie-0X
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 16:46:23 -0500
+ <3jT1QXgYKDEI2yer3mksskpi.gsquiqy-xvmzmeprsrkry.svk@flex--yuanzi.bounces.google.com>)
+ id 1j5Ev2-0002ee-DK
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 15:29:07 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from
- <3qk9QXgYKDIM51hu6pnvvnsl.jvtxlt1-0yp2phsuvunu1.vyn@flex--yuanzi.bounces.google.com>)
- id 1j5G7o-0000xO-PO
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 16:46:21 -0500
-Received: from mail-pj1-x104a.google.com ([2607:f8b0:4864:20::104a]:41278)
+ <3jT1QXgYKDEI2yer3mksskpi.gsquiqy-xvmzmeprsrkry.svk@flex--yuanzi.bounces.google.com>)
+ id 1j5Ev1-0001sw-Bj
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 15:29:04 -0500
+Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a]:33074)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from
- <3qk9QXgYKDIM51hu6pnvvnsl.jvtxlt1-0yp2phsuvunu1.vyn@flex--yuanzi.bounces.google.com>)
- id 1j5G7o-0000wV-GU
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 16:46:20 -0500
-Received: by mail-pj1-x104a.google.com with SMTP id ds13so1737775pjb.6
- for <qemu-trivial@nongnu.org>; Fri, 21 Feb 2020 13:46:19 -0800 (PST)
+ <3jT1QXgYKDEI2yer3mksskpi.gsquiqy-xvmzmeprsrkry.svk@flex--yuanzi.bounces.google.com>)
+ id 1j5Ev1-0001qE-3o
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 15:29:03 -0500
+Received: by mail-pg1-x54a.google.com with SMTP id 37so1797345pgq.0
+ for <qemu-trivial@nongnu.org>; Fri, 21 Feb 2020 12:29:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=date:message-id:mime-version:subject:from:to:cc;
- bh=fi959EXaB76t7wi24tDnZlL6uaaa5akWttvkNwT+h64=;
- b=DAUH0UAMT1iFtOKftRl9dIIFU218ii2cFaDaBwGaurXqo/naafK7HPqtXRAQ7jaL5x
- tukWZUUfuQlA5y/fNpsRhy5ezbQ6zT9yTQycLrulKUgOxpPpH9K17qKBDV11qSw7Ec2Y
- YpiWuyxAiEpAgvennsi7+2UtZaMKlzgnuOfqeqa4qWgNXAJy9TF7hKKgL7ygzNge3Rzq
- l9LVwQnzi6Fnx0YeRyi2GaWT3IVijmZPcPZghtEC24NasI7xoIOo0hCLpotl/9yLq9i+
- GwP+cGbPUsuw7inllupyYYQP5088JS+Iy4FqIeobtfe+Pc9IQL2oaKpeu+yUDb/o+oJf
- Ke7Q==
+ bh=vmCGU9QmZGdVmAO0sJELwZM+WuL2wGHuNd0ACEynasA=;
+ b=tKADRVynkJZ6Nwr9JX4SPWXXm+gRY6eeDKHardg/N+ZHAJDyvZwK2DmcB17XfEeQ12
+ N/wo7Fj6wKEHgfx/mCP2HjGQu+1CYbIeeWq/l9vKZSEm7JpT2EivSVKITB4o1ftZ9kXj
+ gxwIzHjfPuc6xMuRacCab0M5dhk+nYdLSiXH8q46Q5gj/DDO4v+YlSWNSeEHFCUZ61q8
+ aCg+sL1nPY8PnfsD6pz74y5bysx1dacir4EnV1VGa+aEcYieyv2mXyCOEXhEug2G/eCE
+ PnHF2yigVDK2xBl1OR0AQkEnHafB83xQ2ssHzoMAelIzu2r7TT48IkEO9Dc1bnssgeJ+
+ XvZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=fi959EXaB76t7wi24tDnZlL6uaaa5akWttvkNwT+h64=;
- b=U8Crav8SOakg1ampCM5kS4SgXLWX69BtjiqKoMC5dgTa9Q6mIFffFzAepuQMoNfkSy
- 1FxMuuc4c6kfXcQ+KkdkEzjukS8pjOw0SnA82jwpW2QJSPjNbjC1ZJsGM3Ampt2pEE/S
- Bpgp60LglPnBc+r/yQGGgWs0VoH8J9qy9Oz9w+8Ecw5Q2M4InzL/8U0atkW9yFA+ehh0
- 4KCqD60bvifx6nFH68c8JEfimVV97PhkLBcpytvtNbfEHQ8/ibH2nz4cH5erq3mLL6Vh
- lZiw0WY03OERHcEvec2AR1rb0rxyvZiw+r4uUm5SFdJchktMB0XBKtuYh/vQ0PAufGgU
- mNdA==
-X-Gm-Message-State: APjAAAXSdiS/LM9il2tzslc0X2I292XbmexZsucABcJBRRlwAW7jZB9e
- ukskj4d2OANkcUnm8eD7IiMSt4CktI8=
-X-Google-Smtp-Source: APXvYqyvFZLNhABUFu6QYlAbvf/POMbpw5g8kvYFpbfqu7tcHhqT80U27HqP+e/ADSd1G/VbNQjDQRcBCog=
-X-Received: by 2002:a65:5c44:: with SMTP id v4mr42131361pgr.340.1582321578537; 
- Fri, 21 Feb 2020 13:46:18 -0800 (PST)
-Date: Fri, 21 Feb 2020 13:46:14 -0800
-Message-Id: <20200221214614.165338-1-yuanzi@google.com>
+ bh=vmCGU9QmZGdVmAO0sJELwZM+WuL2wGHuNd0ACEynasA=;
+ b=bewPDpiLIxAT8R7xTVFQz4oZPTEi3Cy9G+R0N815oQM/mWOLlBQRUDFDEYGFv/sU+B
+ 2CbqGMlwZpeFehWPa32NFkG4QxSe7+/qa8tdAwhuuOhoNJO+Sh4gHBRQiKGABc30xvjS
+ Xi6v9Mi+SsztdLhVLLGBjSwlM+qVbFZKm+LwDfaWm8wCXlHQ0e8JJMUXQBimx1AnpHlC
+ wZ6i6/JS5mQY099Y/wnUBEy8MXkq+ibSM14NaFupmCL5IPY4ThBbjJwRNURu3T4kXwob
+ rfngIJWdClal+fXuvv3DTBJbGfuCjUFXH7CWnEWBaFHFpTOnvUK3m0IfhDPHx5P6fl+t
+ syEg==
+X-Gm-Message-State: APjAAAUksInpyc4fWJTgUfGYi6y0Bll3yqNVWMFiYHm5BMYXTfh+4lnz
+ +G6+b1D2oKyjQ0eS+3q/VSh+Oo8PchA=
+X-Google-Smtp-Source: APXvYqzjKiIZCAUDVef4jNgzi8UvFJRgtdkSwcXyEl699oJxpYvbxv8mTqf50+TkHnYIE9ejQVwd+y+RAh8=
+X-Received: by 2002:a63:2842:: with SMTP id o63mr41124550pgo.317.1582316941485; 
+ Fri, 21 Feb 2020 12:29:01 -0800 (PST)
+Date: Fri, 21 Feb 2020 12:28:57 -0800
+Message-Id: <20200221202857.126170-1-yuanzi@google.com>
 Mime-Version: 1.0
 X-Mailer: git-send-email 2.25.0.265.gbab2e86ba0-goog
-Subject: [PATCH] linux-user: Add an argument QEMU_MMAP_BASE to set custom mmap
- base address in qemu user mode
+Subject: [PATCH] linux-user: Add AT_EXECFN and AT_EXECFD auxval
 From: Lirong Yuan <yuanzi@google.com>
 To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 Cc: Lirong Yuan <yuanzi@google.com>, Riku Voipio <riku.voipio@iki.fi>, 
@@ -56,7 +55,7 @@ Cc: Lirong Yuan <yuanzi@google.com>, Riku Voipio <riku.voipio@iki.fi>,
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::104a
+X-Received-From: 2607:f8b0:4864:20::54a
 X-Mailman-Approved-At: Fri, 21 Feb 2020 17:34:24 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -69,85 +68,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Feb 2020 21:46:23 -0000
+X-List-Received-Date: Fri, 21 Feb 2020 20:29:07 -0000
 
-This change allows us to set custom base address for guest programs. It is needed to allow qemu to work with Thread Sanitizer (TSan), which has specific boundary definitions for memory mappings on different platforms:
-https://github.com/llvm/llvm-project/blob/master/compiler-rt/lib/tsan/rtl/tsan_platform.h
+This change adds the support for AT_EXECFN and AT_EXECFD auxval.
 
 Signed-off-by: Lirong Yuan <yuanzi@google.com>
 ---
- linux-user/main.c | 12 ++++++++++++
- linux-user/mmap.c |  3 ++-
- linux-user/qemu.h |  5 +++++
- 3 files changed, 19 insertions(+), 1 deletion(-)
+ linux-user/elfload.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/linux-user/main.c b/linux-user/main.c
-index fba833aac9..dfcd867399 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -336,6 +336,16 @@ static void handle_arg_guest_base(const char *arg)
-     have_guest_base = 1;
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index f3080a1635..7e0f3042f1 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -1568,7 +1568,7 @@ struct exec
+                                  ~(abi_ulong)(TARGET_ELF_EXEC_PAGESIZE-1))
+ #define TARGET_ELF_PAGEOFFSET(_v) ((_v) & (TARGET_ELF_EXEC_PAGESIZE-1))
+ 
+-#define DLINFO_ITEMS 15
++#define DLINFO_ITEMS 17
+ 
+ static inline void memcpy_fromfs(void * to, const void * from, unsigned long n)
+ {
+@@ -1888,11 +1888,14 @@ static abi_ulong loader_build_fdpic_loadmap(struct image_info *info, abi_ulong s
+     return sp;
  }
  
-+static void handle_arg_mmap_base(const char *arg)
-+{
-+    mmap_base = strtoul(arg, NULL, 0);
-+    if (mmap_base == 0) {
-+        fprintf(stderr, "Invalid mmap_base: %s\n", arg);
-+        exit(EXIT_FAILURE);
-+    }
-+    mmap_next_start = mmap_base;
-+}
-+
- static void handle_arg_reserved_va(const char *arg)
+-static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
++static abi_ulong create_elf_tables(struct linux_binprm *bprm,
+                                    struct elfhdr *exec,
+                                    struct image_info *info,
+                                    struct image_info *interp_info)
  {
-     char *p;
-@@ -440,6 +450,8 @@ static const struct qemu_argument arg_table[] = {
-      "uname",      "set qemu uname release string to 'uname'"},
-     {"B",          "QEMU_GUEST_BASE",  true,  handle_arg_guest_base,
-      "address",    "set guest_base address to 'address'"},
-+    {"mmap_base",  "QEMU_MMAP_BASE",   true,  handle_arg_mmap_base,
-+     "",           "begin allocating guest pages at this host address"},
-     {"R",          "QEMU_RESERVED_VA", true,  handle_arg_reserved_va,
-      "size",       "reserve 'size' bytes for guest virtual address space"},
-     {"d",          "QEMU_LOG",         true,  handle_arg_log,
-diff --git a/linux-user/mmap.c b/linux-user/mmap.c
-index 8685f02e7e..3f35543acf 100644
---- a/linux-user/mmap.c
-+++ b/linux-user/mmap.c
-@@ -189,6 +189,7 @@ static int mmap_frag(abi_ulong real_start,
- # define TASK_UNMAPPED_BASE  0x40000000
++    abi_ulong p = bprm->p;
++    int argc = bprm->argc;
++    int envc = bprm->envc;
+     abi_ulong sp;
+     abi_ulong u_argc, u_argv, u_envp, u_auxv;
+     int size;
+@@ -2032,6 +2035,8 @@ static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
+     NEW_AUX_ENT(AT_CLKTCK, (abi_ulong) sysconf(_SC_CLK_TCK));
+     NEW_AUX_ENT(AT_RANDOM, (abi_ulong) u_rand_bytes);
+     NEW_AUX_ENT(AT_SECURE, (abi_ulong) qemu_getauxval(AT_SECURE));
++    NEW_AUX_ENT(AT_EXECFN, info->file_string);
++    NEW_AUX_ENT(AT_EXECFD, bprm->fd);
+ 
+ #ifdef ELF_HWCAP2
+     NEW_AUX_ENT(AT_HWCAP2, (abi_ulong) ELF_HWCAP2);
+@@ -2870,8 +2875,8 @@ int load_elf_binary(struct linux_binprm *bprm, struct image_info *info)
  #endif
- abi_ulong mmap_next_start = TASK_UNMAPPED_BASE;
-+abi_ulong mmap_base = TASK_UNMAPPED_BASE;
+     }
  
- unsigned long last_brk;
+-    bprm->p = create_elf_tables(bprm->p, bprm->argc, bprm->envc, &elf_ex,
+-                                info, (elf_interpreter ? &interp_info : NULL));
++    bprm->p = create_elf_tables(bprm, &elf_ex, info,
++                                (elf_interpreter ? &interp_info : NULL));
+     info->start_stack = bprm->p;
  
-@@ -299,7 +300,7 @@ abi_ulong mmap_find_vma(abi_ulong start, abi_ulong size, abi_ulong align)
- 
-             if ((addr & (align - 1)) == 0) {
-                 /* Success.  */
--                if (start == mmap_next_start && addr >= TASK_UNMAPPED_BASE) {
-+                if (start == mmap_next_start && addr >= mmap_base) {
-                     mmap_next_start = addr + size;
-                 }
-                 return addr;
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 560a68090e..83c00cfea2 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -161,6 +161,11 @@ void task_settid(TaskState *);
- void stop_all_tasks(void);
- extern const char *qemu_uname_release;
- extern unsigned long mmap_min_addr;
-+/*
-+ * mmap_base is minimum address to use when allocating guest pages. All guest
-+ * pages will be allocated at this (guest) address or higher addresses.
-+ */
-+extern abi_ulong mmap_base;
- 
- /* ??? See if we can avoid exposing so much of the loader internals.  */
- 
+     /* If we have an interpreter, set that as the program's entry point.
 -- 
 2.25.0.265.gbab2e86ba0-goog
 
