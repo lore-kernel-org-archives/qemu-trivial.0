@@ -1,53 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j5Hot-00069f-Gf
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2020 18:34:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49272)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1j5Hoq-000689-KJ
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 18:34:54 -0500
+	id 1j5JIb-0004W4-Nt
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2020 20:09:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59614)
+ by lists.gnu.org with esmtp (Exim 4.90_1) (envelope-from
+ <3Tn9QXgYKDIc95lyAtrzzrwp.nzx1px5-42t6tlwyzyry5.z2r@flex--yuanzi.bounces.google.com>)
+ id 1j5JIY-0004Pu-7F
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 20:09:39 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1j5Hoo-0002Ia-Qb
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 18:34:52 -0500
-Resent-Date: Fri, 21 Feb 2020 18:34:51 -0500
-Resent-Message-Id: <E1j5Hoo-0002Ia-Qb@eggs.gnu.org>
-Received: from sender4-of-o51.zoho.com ([136.143.188.51]:21178)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1j5Hol-0002Fs-3F; Fri, 21 Feb 2020 18:34:47 -0500
-ARC-Seal: i=1; a=rsa-sha256; t=1582328073; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=aI55EWbh5b66yZxUDweMGCWrt1A1a3HOzDPGmoUtL7IMvk57o0GQYerG54xBSaEWwolwSmYF7hyfoMhoV5lGINj36MrcjWV8rdjEaX06RZhTst05kwvZFxEDfpDUGVA5tJu9LUlohespTbpdhVlfojqJ72qrgRTy9Fc8ISc/Z6w=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1582328073;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=ghN4ws2uEXMObGqTvihPhKpJOiNkzVgGNdcU9XW+jHo=; 
- b=NMh875Arxms7XPI2MFN7sHhUTjPxuljnBqPb3sKkoA7RavYjuZdqVBLi47Ku5IF6xk+JhM2PcFh2exIubzh5AEUQe0WIZ2YYQ37c4ZPbLoW7ppFOukSQ9qefUAvvkGUQ0RIHF/2BuRc0o44Beu7F+rAOJxs9vj0gPSTsDzk3uIA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1582328071440653.6541397147328;
- Fri, 21 Feb 2020 15:34:31 -0800 (PST)
-Reply-To: <qemu-devel@nongnu.org>
-In-Reply-To: <20200221214614.165338-1-yuanzi@google.com>
-Subject: Re: [PATCH] linux-user: Add an argument QEMU_MMAP_BASE to set custom
- mmap base address in qemu user mode
-Message-ID: <158232807018.7375.14785893323426850227@a1bbccc8075a>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: yuanzi@google.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, yuanzi@google.com,
- riku.voipio@iki.fi, laurent@vivier.eu
-Date: Fri, 21 Feb 2020 15:34:31 -0800 (PST)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.51
+ (envelope-from
+ <3Tn9QXgYKDIc95lyAtrzzrwp.nzx1px5-42t6tlwyzyry5.z2r@flex--yuanzi.bounces.google.com>)
+ id 1j5JIX-0007HA-06
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 20:09:38 -0500
+Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a]:43902)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from
+ <3Tn9QXgYKDIc95lyAtrzzrwp.nzx1px5-42t6tlwyzyry5.z2r@flex--yuanzi.bounces.google.com>)
+ id 1j5JIW-0007Fi-RM
+ for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 20:09:36 -0500
+Received: by mail-pg1-x54a.google.com with SMTP id v14so2100538pgo.10
+ for <qemu-trivial@nongnu.org>; Fri, 21 Feb 2020 17:09:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=IPQGrQZvhAVz0CMsHJCJGfpioyE2Bf7rrjMbPG/+q4w=;
+ b=V0AJGBZe5Fj4mM2MGmKdci64gEjR3Srxj2sp+1WG2k/I86aCkiBTN1CUz2ihQpeXKc
+ OfagAhLpGniCKp6TlZKLuX3rhp1EP+pnSlyzm68i84IbG6+SACB3iBH5oU+Py9QQzPzh
+ bopHyuU/B8TIOy/t3qFHFUrp/rt9P1qszXjBZr2rRTtzhroKBvgwXsLEpZlu0xjvVu2h
+ VpdJUzTeZ2FBRuGVda9x5cZ7RI9110iyw9FatZpTQ504HU72ISwzvIb/PWHDp3TRI94x
+ jnqdoj+73ukFWftPOonxacMmGPumtZXM6YIhONMs4+WUQ7znrcpv2elBF6Rf8OmlUHSC
+ jUDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=IPQGrQZvhAVz0CMsHJCJGfpioyE2Bf7rrjMbPG/+q4w=;
+ b=XldZ1yoExtWVqL5CJUF7Hw6IENRMBEZPFl+1iw3H8N8J9+BDWtyJhHT7dDVSHEEeO0
+ TspK4dOM351bbJLO5xdA5qA6l53cDsFYXLa6978EB0v3x6fPbMcxVcfA68RM1DPB+UfV
+ MZ6AhT8bSmO5XZMbcbcuCnnAYgMfLW+xi1pSCj95+3ew1sUTVWJ8kvduAoY6TA99hZ8W
+ 1qZJafXdtGpuPy2O7YvZUf+pMA2bPlgT5xrQt5b1P+Tr3oVyAcF0FwSq6b28flnHvVfg
+ WOfZMfZ4ZVEaYP3CZpWPzzEiNl62CuDN3gnt9HVqFn8QFNuN1zvyoqaC3SkPpN2HYIvV
+ nHJA==
+X-Gm-Message-State: APjAAAVbQkBfO/G6AItZcIvl3vPK1jN3KHTXN4X7vZ2GxJCtTxaQRExW
+ DZyKbNC/UUcs3gVR06hWIBRnDDfJHpI=
+X-Google-Smtp-Source: APXvYqzLyJbBGJPDEELM/tnm0Gbd5huliVOlizwLTgYKttqEYg1WQs2TvWvaO9OEBNlG4xIKQkIxBAaG2QU=
+X-Received: by 2002:a63:7e56:: with SMTP id o22mr16265407pgn.136.1582333774523; 
+ Fri, 21 Feb 2020 17:09:34 -0800 (PST)
+Date: Fri, 21 Feb 2020 17:09:25 -0800
+Message-Id: <20200222010925.32858-1-yuanzi@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.25.0.265.gbab2e86ba0-goog
+Subject: [PATCH] linux-user: Add an argument QEMU_MMAP_BASE to set custom mmap
+ base address in qemu user mode
+From: Lirong Yuan <yuanzi@google.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: Lirong Yuan <yuanzi@google.com>, Riku Voipio <riku.voipio@iki.fi>, 
+ Laurent Vivier <laurent@vivier.eu>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::54a
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -59,34 +68,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Feb 2020 23:34:54 -0000
+X-List-Received-Date: Sat, 22 Feb 2020 01:09:39 -0000
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDIyMTIxNDYxNC4xNjUz
-MzgtMS15dWFuemlAZ29vZ2xlLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBoYXZl
-IHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3JlIGlu
-Zm9ybWF0aW9uOgoKU3ViamVjdDogW1BBVENIXSBsaW51eC11c2VyOiBBZGQgYW4gYXJndW1lbnQg
-UUVNVV9NTUFQX0JBU0UgdG8gc2V0IGN1c3RvbSBtbWFwIGJhc2UgYWRkcmVzcyBpbiBxZW11IHVz
-ZXIgbW9kZQpNZXNzYWdlLWlkOiAyMDIwMDIyMTIxNDYxNC4xNjUzMzgtMS15dWFuemlAZ29vZ2xl
-LmNvbQpUeXBlOiBzZXJpZXMKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gK
-Z2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9j
-YWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1
-ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9j
-aGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpV
-cGRhdGluZyAzYzhjZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0ClN3aXRjaGVk
-IHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKMzhhN2IwNCBsaW51eC11c2VyOiBBZGQgYW4gYXJndW1l
-bnQgUUVNVV9NTUFQX0JBU0UgdG8gc2V0IGN1c3RvbSBtbWFwIGJhc2UgYWRkcmVzcyBpbiBxZW11
-IHVzZXIgbW9kZQoKPT09IE9VVFBVVCBCRUdJTiA9PT0KRVJST1I6IGNvbnNpZGVyIHVzaW5nIHFl
-bXVfc3RydG91bCBpbiBwcmVmZXJlbmNlIHRvIHN0cnRvdWwKIzIzOiBGSUxFOiBsaW51eC11c2Vy
-L21haW4uYzozNDE6CisgICAgbW1hcF9iYXNlID0gc3RydG91bChhcmcsIE5VTEwsIDApOwoKdG90
-YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCA1MCBsaW5lcyBjaGVja2VkCgpDb21taXQgMzhhN2Iw
-NDlhN2Y4IChsaW51eC11c2VyOiBBZGQgYW4gYXJndW1lbnQgUUVNVV9NTUFQX0JBU0UgdG8gc2V0
-IGN1c3RvbSBtbWFwIGJhc2UgYWRkcmVzcyBpbiBxZW11IHVzZXIgbW9kZSkgaGFzIHN0eWxlIHBy
-b2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2Ug
-cG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBp
-biBNQUlOVEFJTkVSUy4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdp
-dGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcu
-b3JnL2xvZ3MvMjAyMDAyMjEyMTQ2MTQuMTY1MzM4LTEteXVhbnppQGdvb2dsZS5jb20vdGVzdGlu
-Zy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGlj
-YWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIg
-ZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
+This change allows us to set custom base address for guest programs. It is needed to allow qemu to work with Thread Sanitizer (TSan), which has specific boundary definitions for memory mappings on different platforms:
+https://github.com/llvm/llvm-project/blob/master/compiler-rt/lib/tsan/rtl/tsan_platform.h
+
+Signed-off-by: Lirong Yuan <yuanzi@google.com>
+---
+ linux-user/main.c | 12 ++++++++++++
+ linux-user/mmap.c |  3 ++-
+ linux-user/qemu.h |  5 +++++
+ 3 files changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/linux-user/main.c b/linux-user/main.c
+index fba833aac9..c01af6bfee 100644
+--- a/linux-user/main.c
++++ b/linux-user/main.c
+@@ -336,6 +336,16 @@ static void handle_arg_guest_base(const char *arg)
+     have_guest_base = 1;
+ }
+ 
++static void handle_arg_mmap_base(const char *arg)
++{
++    int err = qemu_strtoul(arg, NULL, 0, &mmap_base);
++    if (err) {
++        fprintf(stderr, "Invalid mmap_base: %s, err: %d\n", arg, err);
++        exit(EXIT_FAILURE);
++    }
++    mmap_next_start = mmap_base;
++}
++
+ static void handle_arg_reserved_va(const char *arg)
+ {
+     char *p;
+@@ -440,6 +450,8 @@ static const struct qemu_argument arg_table[] = {
+      "uname",      "set qemu uname release string to 'uname'"},
+     {"B",          "QEMU_GUEST_BASE",  true,  handle_arg_guest_base,
+      "address",    "set guest_base address to 'address'"},
++    {"mmap_base",  "QEMU_MMAP_BASE",   true,  handle_arg_mmap_base,
++     "",           "begin allocating guest pages at this host address"},
+     {"R",          "QEMU_RESERVED_VA", true,  handle_arg_reserved_va,
+      "size",       "reserve 'size' bytes for guest virtual address space"},
+     {"d",          "QEMU_LOG",         true,  handle_arg_log,
+diff --git a/linux-user/mmap.c b/linux-user/mmap.c
+index 8685f02e7e..3f35543acf 100644
+--- a/linux-user/mmap.c
++++ b/linux-user/mmap.c
+@@ -189,6 +189,7 @@ static int mmap_frag(abi_ulong real_start,
+ # define TASK_UNMAPPED_BASE  0x40000000
+ #endif
+ abi_ulong mmap_next_start = TASK_UNMAPPED_BASE;
++abi_ulong mmap_base = TASK_UNMAPPED_BASE;
+ 
+ unsigned long last_brk;
+ 
+@@ -299,7 +300,7 @@ abi_ulong mmap_find_vma(abi_ulong start, abi_ulong size, abi_ulong align)
+ 
+             if ((addr & (align - 1)) == 0) {
+                 /* Success.  */
+-                if (start == mmap_next_start && addr >= TASK_UNMAPPED_BASE) {
++                if (start == mmap_next_start && addr >= mmap_base) {
+                     mmap_next_start = addr + size;
+                 }
+                 return addr;
+diff --git a/linux-user/qemu.h b/linux-user/qemu.h
+index 560a68090e..83c00cfea2 100644
+--- a/linux-user/qemu.h
++++ b/linux-user/qemu.h
+@@ -161,6 +161,11 @@ void task_settid(TaskState *);
+ void stop_all_tasks(void);
+ extern const char *qemu_uname_release;
+ extern unsigned long mmap_min_addr;
++/*
++ * mmap_base is minimum address to use when allocating guest pages. All guest
++ * pages will be allocated at this (guest) address or higher addresses.
++ */
++extern abi_ulong mmap_base;
+ 
+ /* ??? See if we can avoid exposing so much of the loader internals.  */
+ 
+-- 
+2.25.0.265.gbab2e86ba0-goog
+
 
