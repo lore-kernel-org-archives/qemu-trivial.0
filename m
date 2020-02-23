@@ -1,62 +1,105 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j5JIb-0004W4-Nt
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Feb 2020 20:09:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59614)
- by lists.gnu.org with esmtp (Exim 4.90_1) (envelope-from
- <3Tn9QXgYKDIc95lyAtrzzrwp.nzx1px5-42t6tlwyzyry5.z2r@flex--yuanzi.bounces.google.com>)
- id 1j5JIY-0004Pu-7F
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 20:09:39 -0500
+	id 1j5nCJ-0000vY-G9
+	for mharc-qemu-trivial@gnu.org; Sun, 23 Feb 2020 04:05:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49111)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <pbonzini@redhat.com>) id 1j5nCH-0000s5-6n
+ for qemu-trivial@nongnu.org; Sun, 23 Feb 2020 04:05:10 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from
- <3Tn9QXgYKDIc95lyAtrzzrwp.nzx1px5-42t6tlwyzyry5.z2r@flex--yuanzi.bounces.google.com>)
- id 1j5JIX-0007HA-06
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 20:09:38 -0500
-Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a]:43902)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from
- <3Tn9QXgYKDIc95lyAtrzzrwp.nzx1px5-42t6tlwyzyry5.z2r@flex--yuanzi.bounces.google.com>)
- id 1j5JIW-0007Fi-RM
- for qemu-trivial@nongnu.org; Fri, 21 Feb 2020 20:09:36 -0500
-Received: by mail-pg1-x54a.google.com with SMTP id v14so2100538pgo.10
- for <qemu-trivial@nongnu.org>; Fri, 21 Feb 2020 17:09:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=IPQGrQZvhAVz0CMsHJCJGfpioyE2Bf7rrjMbPG/+q4w=;
- b=V0AJGBZe5Fj4mM2MGmKdci64gEjR3Srxj2sp+1WG2k/I86aCkiBTN1CUz2ihQpeXKc
- OfagAhLpGniCKp6TlZKLuX3rhp1EP+pnSlyzm68i84IbG6+SACB3iBH5oU+Py9QQzPzh
- bopHyuU/B8TIOy/t3qFHFUrp/rt9P1qszXjBZr2rRTtzhroKBvgwXsLEpZlu0xjvVu2h
- VpdJUzTeZ2FBRuGVda9x5cZ7RI9110iyw9FatZpTQ504HU72ISwzvIb/PWHDp3TRI94x
- jnqdoj+73ukFWftPOonxacMmGPumtZXM6YIhONMs4+WUQ7znrcpv2elBF6Rf8OmlUHSC
- jUDg==
+ (envelope-from <pbonzini@redhat.com>) id 1j5nCG-0000U8-Bc
+ for qemu-trivial@nongnu.org; Sun, 23 Feb 2020 04:05:09 -0500
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:21935
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1j5nCG-0000Tm-8H
+ for qemu-trivial@nongnu.org; Sun, 23 Feb 2020 04:05:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582448707;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9+qfRDJ631+3BrpIbQmZINXk2gQQnyP0CW4SShz+z8s=;
+ b=LfySfidLHfJ0fBl48Hqbn34lTGJWUw7y19PRxgLAOiVPQ7fPm2ibBh3L78cxg/uavG9YIc
+ 7k4R87okHcZl+myXlSwXjTIJj5fTAHybDZBjHP2D7uZ9q3cPRwwOZHY10+bA21BE/AVI8D
+ dU24LzuAPNrGyedv5RFZOx1icnjCDcE=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-11-8o4tmaVQMIaDVsOdEPfMXg-1; Sun, 23 Feb 2020 04:05:04 -0500
+X-MC-Unique: 8o4tmaVQMIaDVsOdEPfMXg-1
+Received: by mail-wr1-f72.google.com with SMTP id d15so3720010wru.1
+ for <qemu-trivial@nongnu.org>; Sun, 23 Feb 2020 01:05:04 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=IPQGrQZvhAVz0CMsHJCJGfpioyE2Bf7rrjMbPG/+q4w=;
- b=XldZ1yoExtWVqL5CJUF7Hw6IENRMBEZPFl+1iw3H8N8J9+BDWtyJhHT7dDVSHEEeO0
- TspK4dOM351bbJLO5xdA5qA6l53cDsFYXLa6978EB0v3x6fPbMcxVcfA68RM1DPB+UfV
- MZ6AhT8bSmO5XZMbcbcuCnnAYgMfLW+xi1pSCj95+3ew1sUTVWJ8kvduAoY6TA99hZ8W
- 1qZJafXdtGpuPy2O7YvZUf+pMA2bPlgT5xrQt5b1P+Tr3oVyAcF0FwSq6b28flnHvVfg
- WOfZMfZ4ZVEaYP3CZpWPzzEiNl62CuDN3gnt9HVqFn8QFNuN1zvyoqaC3SkPpN2HYIvV
- nHJA==
-X-Gm-Message-State: APjAAAVbQkBfO/G6AItZcIvl3vPK1jN3KHTXN4X7vZ2GxJCtTxaQRExW
- DZyKbNC/UUcs3gVR06hWIBRnDDfJHpI=
-X-Google-Smtp-Source: APXvYqzLyJbBGJPDEELM/tnm0Gbd5huliVOlizwLTgYKttqEYg1WQs2TvWvaO9OEBNlG4xIKQkIxBAaG2QU=
-X-Received: by 2002:a63:7e56:: with SMTP id o22mr16265407pgn.136.1582333774523; 
- Fri, 21 Feb 2020 17:09:34 -0800 (PST)
-Date: Fri, 21 Feb 2020 17:09:25 -0800
-Message-Id: <20200222010925.32858-1-yuanzi@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.25.0.265.gbab2e86ba0-goog
-Subject: [PATCH] linux-user: Add an argument QEMU_MMAP_BASE to set custom mmap
- base address in qemu user mode
-From: Lirong Yuan <yuanzi@google.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: Lirong Yuan <yuanzi@google.com>, Riku Voipio <riku.voipio@iki.fi>, 
- Laurent Vivier <laurent@vivier.eu>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::54a
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=9+qfRDJ631+3BrpIbQmZINXk2gQQnyP0CW4SShz+z8s=;
+ b=tscrsp3yaR/kxR9T5xt9DVdtGTCJCEn8QX1Rg+a0sct9Jrr8G7/w/fW2Mr2TuHJbz2
+ qD7sU8jMAGmtwlM6qr4nzVR/oyxXxndZAeC7HJm13vehvTihI71wou1HeY3E2/uAS7rN
+ WwxzMq8Kc9jYd09nzS9EUYYiQtwYusZZyYXJbs78MIdzD0Kk5RR9bflsBMAxbBZSVCbE
+ FzyUH3o6RjU4cxnbhXOOUKxmgcon9GpA2ZoC2rG5CMnv5Guai7rFyRd49HBydUDDLE4l
+ 3dmztft7xBdybHnVxnvssHejOYgbh66rWWmNzoHyVFI18mBwUYeUw8i1tH0GISRL8BZS
+ BHDQ==
+X-Gm-Message-State: APjAAAVmyJOIt1HDF7LSpI2wDlV6Fo8U5eT/s8+Vdesc9e9EFgpkCOSw
+ zgGpuDhw4ADXhB4ueYm/8OKvg8TPS/4WCBxXnXzp9v2wjljHmRkoUbDZkvapoPZ9gFB7uXiPH77
+ ui6cIQfJjT3ubZ9XXBw==
+X-Received: by 2002:a7b:c416:: with SMTP id k22mr15868211wmi.10.1582448703172; 
+ Sun, 23 Feb 2020 01:05:03 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyITY7Qxt5lA0/QWLVp60oNQOPXzXfoCcVMOHbTs40SM+MbNUVweR2hRsFcxTU3r5XAUUkhWg==
+X-Received: by 2002:a7b:c416:: with SMTP id k22mr15868151wmi.10.1582448702893; 
+ Sun, 23 Feb 2020 01:05:02 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:ec41:5e57:ff4d:8e51?
+ ([2001:b07:6468:f312:ec41:5e57:ff4d:8e51])
+ by smtp.gmail.com with ESMTPSA id o2sm12051784wmh.46.2020.02.23.01.04.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 23 Feb 2020 01:05:02 -0800 (PST)
+Subject: Re: [PATCH v3 2/3] hw: Make MachineClass::is_default a boolean type
+To: "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier <laurent@vivier.eu>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, qemu-trivial@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Anthony Green <green@moxielogic.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Richard Henderson <rth@twiddle.net>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Stafford Horne <shorne@gmail.com>, David Gibson
+ <david@gibson.dropbear.id.au>, Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ Michael Walle <michael@walle.cc>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Chris Wulff <crwulff@gmail.com>, qemu-s390x@nongnu.org,
+ Cornelia Huck <cohuck@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Helge Deller <deller@gmx.de>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, Marek Vasut <marex@denx.de>,
+ Jia Liu <proljc@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Thomas Huth <huth@tuxfamily.org>, Magnus Damm <magnus.damm@gmail.com>
+References: <20200207130453.16666-1-philmd@redhat.com>
+ <20200207130453.16666-3-philmd@redhat.com>
+ <20200207091138-mutt-send-email-mst@kernel.org>
+ <16ec9b38-94e4-bd2d-a47f-83a27289ab47@vivier.eu>
+ <20200207092450-mutt-send-email-mst@kernel.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <9dfd96b4-e924-5803-2d8b-182458fc936b@redhat.com>
+Date: Sun, 23 Feb 2020 10:04:58 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
+MIME-Version: 1.0
+In-Reply-To: <20200207092450-mutt-send-email-mst@kernel.org>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -68,86 +111,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 22 Feb 2020 01:09:39 -0000
+X-List-Received-Date: Sun, 23 Feb 2020 09:05:10 -0000
 
-This change allows us to set custom base address for guest programs. It is needed to allow qemu to work with Thread Sanitizer (TSan), which has specific boundary definitions for memory mappings on different platforms:
-https://github.com/llvm/llvm-project/blob/master/compiler-rt/lib/tsan/rtl/tsan_platform.h
+On 07/02/20 15:25, Michael S. Tsirkin wrote:
+>>>> @@ -841,7 +841,7 @@ static void sun4v_class_init(ObjectClass *oc, void *data)
+>>>>      mc->desc = "Sun4v platform";
+>>>>      mc->init = sun4v_init;
+>>>>      mc->block_default_type = IF_IDE;
+>>>> -    mc->max_cpus = 1; /* XXX for now */
+>>>> +    mc->max_cpus = true; /* XXX for now */
+>>
+>> and here ^^
+>>
+>> Thanks,
+>> Laurent
+> 
+> Ooh good catch. Which probably means we don't have a unit test for these
 
-Signed-off-by: Lirong Yuan <yuanzi@google.com>
----
- linux-user/main.c | 12 ++++++++++++
- linux-user/mmap.c |  3 ++-
- linux-user/qemu.h |  5 +++++
- 3 files changed, 19 insertions(+), 1 deletion(-)
+"= true" just becomes "= 1".
 
-diff --git a/linux-user/main.c b/linux-user/main.c
-index fba833aac9..c01af6bfee 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -336,6 +336,16 @@ static void handle_arg_guest_base(const char *arg)
-     have_guest_base = 1;
- }
- 
-+static void handle_arg_mmap_base(const char *arg)
-+{
-+    int err = qemu_strtoul(arg, NULL, 0, &mmap_base);
-+    if (err) {
-+        fprintf(stderr, "Invalid mmap_base: %s, err: %d\n", arg, err);
-+        exit(EXIT_FAILURE);
-+    }
-+    mmap_next_start = mmap_base;
-+}
-+
- static void handle_arg_reserved_va(const char *arg)
- {
-     char *p;
-@@ -440,6 +450,8 @@ static const struct qemu_argument arg_table[] = {
-      "uname",      "set qemu uname release string to 'uname'"},
-     {"B",          "QEMU_GUEST_BASE",  true,  handle_arg_guest_base,
-      "address",    "set guest_base address to 'address'"},
-+    {"mmap_base",  "QEMU_MMAP_BASE",   true,  handle_arg_mmap_base,
-+     "",           "begin allocating guest pages at this host address"},
-     {"R",          "QEMU_RESERVED_VA", true,  handle_arg_reserved_va,
-      "size",       "reserve 'size' bytes for guest virtual address space"},
-     {"d",          "QEMU_LOG",         true,  handle_arg_log,
-diff --git a/linux-user/mmap.c b/linux-user/mmap.c
-index 8685f02e7e..3f35543acf 100644
---- a/linux-user/mmap.c
-+++ b/linux-user/mmap.c
-@@ -189,6 +189,7 @@ static int mmap_frag(abi_ulong real_start,
- # define TASK_UNMAPPED_BASE  0x40000000
- #endif
- abi_ulong mmap_next_start = TASK_UNMAPPED_BASE;
-+abi_ulong mmap_base = TASK_UNMAPPED_BASE;
- 
- unsigned long last_brk;
- 
-@@ -299,7 +300,7 @@ abi_ulong mmap_find_vma(abi_ulong start, abi_ulong size, abi_ulong align)
- 
-             if ((addr & (align - 1)) == 0) {
-                 /* Success.  */
--                if (start == mmap_next_start && addr >= TASK_UNMAPPED_BASE) {
-+                if (start == mmap_next_start && addr >= mmap_base) {
-                     mmap_next_start = addr + size;
-                 }
-                 return addr;
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 560a68090e..83c00cfea2 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -161,6 +161,11 @@ void task_settid(TaskState *);
- void stop_all_tasks(void);
- extern const char *qemu_uname_release;
- extern unsigned long mmap_min_addr;
-+/*
-+ * mmap_base is minimum address to use when allocating guest pages. All guest
-+ * pages will be allocated at this (guest) address or higher addresses.
-+ */
-+extern abi_ulong mmap_base;
- 
- /* ??? See if we can avoid exposing so much of the loader internals.  */
- 
--- 
-2.25.0.265.gbab2e86ba0-goog
+Paolo
 
 
