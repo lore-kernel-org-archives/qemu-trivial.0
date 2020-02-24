@@ -1,78 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j60Op-0001QL-C0
-	for mharc-qemu-trivial@gnu.org; Sun, 23 Feb 2020 18:10:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36646)
+	id 1j67Lu-0004ky-Ha
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Feb 2020 01:36:26 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47034)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j60Ok-0001Hv-FB
- for qemu-trivial@nongnu.org; Sun, 23 Feb 2020 18:10:55 -0500
+ (envelope-from <pannengyuan@huawei.com>) id 1j67Lr-0004hg-IF
+ for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 01:36:24 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j60Oj-0008AC-G1
- for qemu-trivial@nongnu.org; Sun, 23 Feb 2020 18:10:54 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:22313
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <pannengyuan@huawei.com>) id 1j67Lq-0003uj-Ap
+ for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 01:36:23 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2726 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j60Oj-00089u-D2
- for qemu-trivial@nongnu.org; Sun, 23 Feb 2020 18:10:53 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582499453;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=2JtFWCLlvKrPzw6359S9afKJXhhVBFgj6XfWSRDbCzY=;
- b=FKBO/yn5IUlM4D1Lb8RgKMTCeS6yhOvnSIXzEoPdRMNasarIpVXMrnA8Rt4AMP4/9tgtW+
- 0hyV9LIg5B1hiywcOBnrLHuLAUMMuHjZCrOyMyAVNHSz4aWCyUon3HQcJ0KnRdgKsz1XDe
- Gi7z1VqZZdP2z2crrSfSLyLLu/WtOcY=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-108-UTAs4BMCOQ630i0nd-VG2w-1; Sun, 23 Feb 2020 18:10:49 -0500
-X-MC-Unique: UTAs4BMCOQ630i0nd-VG2w-1
-Received: by mail-wr1-f69.google.com with SMTP id d15so4648194wru.1
- for <qemu-trivial@nongnu.org>; Sun, 23 Feb 2020 15:10:48 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=r73RMxZRMG+NmOKyR3pA63JKzPvw0kuX26+4+fo0u6k=;
- b=R5QlbwdXbjZsmmnfVQTqkNb8gc+UUoJLCcA94ThPUhAQXkp/xVBaPRHWEMZ7XHLbKW
- 6eYWbf3QqdQfSXADHMm627+fTb37ZivVeMXlpVl7Sr4En7UOt8WvwNsgC3TQiipEyPvl
- ytb1+O9NJuIYIHrGNOTzxjDaHx0rKPhLF9TbRb/P3kGHPLvHjBTzTTDNKiDU2ybWnXrS
- RMiH6UpJO8d9Gz+Bq8qUSX9BUfoN2VKt8YYTC4feci42oh395Vjma5ec2s2N4P4Q95hA
- /JEjOrqQjy4GW/ZEYSmJYRHrGv3Q+T8KbanImNNrVTVBlYDfZIkSO0AnA/20PhdqVqoB
- W1Cw==
-X-Gm-Message-State: APjAAAUZfEw54KqZx5SuyILMBryXvdwpN149qzsjLGXkJjJXwCDKJC80
- s0nawoqz8CH9omCQWrh/8gErddtud4vEy3+uO4fuBLNuO/eStJLUKJp3wTgeeRoqOlbb9zYJxcI
- kmTqjl74xLv5/y3UpEw==
-X-Received: by 2002:a05:600c:299:: with SMTP id
- 25mr18350036wmk.68.1582499447809; 
- Sun, 23 Feb 2020 15:10:47 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwRR2QcjHY5wzv5ITqtwhlIu6dQ65kERAg2OHxjt7EdpPNvV+QAqS1dn4GqrazGjFTftx5m+w==
-X-Received: by 2002:a05:600c:299:: with SMTP id
- 25mr18350022wmk.68.1582499447603; 
- Sun, 23 Feb 2020 15:10:47 -0800 (PST)
-Received: from localhost.localdomain (47.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id r6sm15777598wrp.95.2020.02.23.15.10.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 23 Feb 2020 15:10:47 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>,
- Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 0/2] hw/arm/gumstix: Trivial cleanups
-Date: Mon, 24 Feb 2020 00:10:42 +0100
-Message-Id: <20200223231044.8003-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.1
+ (Exim 4.71) (envelope-from <pannengyuan@huawei.com>)
+ id 1j67Ln-0003fO-Cu; Mon, 24 Feb 2020 01:36:19 -0500
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id DF75691D35F7E514D6B0;
+ Mon, 24 Feb 2020 14:36:12 +0800 (CST)
+Received: from localhost.localdomain (10.175.104.216) by
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.439.0; Mon, 24 Feb 2020 14:36:03 +0800
+From: <pannengyuan@huawei.com>
+To: <pbonzini@redhat.com>, <rth@twiddle.net>, <ehabkost@redhat.com>
+CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>,
+ <zhang.zhanghailiang@huawei.com>, <euler.robot@huawei.com>, Pan Nengyuan
+ <pannengyuan@huawei.com>
+Subject: [PATCH] target/i386/hax-posix: fix two 'format-truncation' compile
+ warnings
+Date: Mon, 24 Feb 2020 14:51:39 +0800
+Message-ID: <20200224065139.19567-1-pannengyuan@huawei.com>
+X-Mailer: git-send-email 2.18.2
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
+Content-Type: text/plain; charset="UTF-8"
+X-Originating-IP: [10.175.104.216]
+X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+ [fuzzy]
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -84,21 +47,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 23 Feb 2020 23:10:55 -0000
+X-List-Received-Date: Mon, 24 Feb 2020 06:36:25 -0000
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+From: Pan Nengyuan <pannengyuan@huawei.com>
 
-Two house keeping patches while looking at the Gumstix boards,
-to make the code slightly more readable/documented.
+Fix compile warnings:
+/mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:124:56: error: =E2=
+=80=98%02d=E2=80=99 directive output may be truncated writing between 2 a=
+nd 11 bytes into a region of size 3 [-Werror=3Dformat-truncation=3D]
+     snprintf(name, sizeof HAX_VM_DEVFS, "/dev/hax_vm/vm%02d", vm_id);
+                                                        ^~~~
+/mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:124:41: note: di=
+rective argument in the range [-2147483648, 64]
+     snprintf(name, sizeof HAX_VM_DEVFS, "/dev/hax_vm/vm%02d", vm_id);
+                                         ^~~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/stdio.h:873,
+                 from /mnt/sdb/qemu-new/qemu_test/qemu/include/qemu/osdep=
+.h:99,
+                 from /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-po=
+six.c:14:
+/usr/include/bits/stdio2.h:67:10: note: =E2=80=98__builtin___snprintf_chk=
+=E2=80=99 output between 17 and 26 bytes into a destination of size 17
+   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        __bos (__s), __fmt, __va_arg_pack ());
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c: In function =E2=
+=80=98hax_vcpu_devfs_string=E2=80=99:
+/mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:143:55: error: =E2=
+=80=98%02d=E2=80=99 directive output may be truncated writing between 2 a=
+nd 11 bytes into a region of size 10 [-Werror=3Dformat-truncation=3D]
+     snprintf(name, sizeof HAX_VCPU_DEVFS, "/dev/hax_vm%02d/vcpu%02d",
+                                                       ^~~~
+/mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:143:43: note: di=
+rective argument in the range [-2147483648, 64]
+     snprintf(name, sizeof HAX_VCPU_DEVFS, "/dev/hax_vm%02d/vcpu%02d",
+                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-posix.c:143:43: note: di=
+rective argument in the range [-2147483648, 64]
+In file included from /usr/include/stdio.h:873,
+                 from /mnt/sdb/qemu-new/qemu_test/qemu/include/qemu/osdep=
+.h:99,
+                 from /mnt/sdb/qemu-new/qemu_test/qemu/target/i386/hax-po=
+six.c:14:
+/usr/include/bits/stdio2.h:67:10: note: =E2=80=98__builtin___snprintf_chk=
+=E2=80=99 output between 21 and 39 bytes into a destination of size 21
+   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        __bos (__s), __fmt, __va_arg_pack ());
 
-Philippe Mathieu-Daud=C3=A9 (2):
-  hw/arm/gumstix: Simplify since the machines are little-endian only
-  hw/arm/gumstix: Use the IEC binary prefix definitions
+We know that we have checked the vm_id and vcpu_id in the first(less than=
+ 0x40), it will never be truncated in snprintf().
+Thus, this patch add an assertion to clear this false-positive warning.
 
- hw/arm/gumstix.c | 42 ++++++++++++++----------------------------
- 1 file changed, 14 insertions(+), 28 deletions(-)
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Pan Nengyuan <pannengyuan@huawei.com>
+---
+ target/i386/hax-posix.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
+diff --git a/target/i386/hax-posix.c b/target/i386/hax-posix.c
+index a5426a6dac..197d5bc0f9 100644
+--- a/target/i386/hax-posix.c
++++ b/target/i386/hax-posix.c
+@@ -121,7 +121,8 @@ static char *hax_vm_devfs_string(int vm_id)
+         return NULL;
+     }
+=20
+-    snprintf(name, sizeof HAX_VM_DEVFS, "/dev/hax_vm/vm%02d", vm_id);
++    int len =3D snprintf(name, sizeof HAX_VM_DEVFS, "/dev/hax_vm/vm%02d"=
+, vm_id);
++    assert(len < sizeof HAX_VM_DEVFS);
+     return name;
+ }
+=20
+@@ -140,8 +141,9 @@ static char *hax_vcpu_devfs_string(int vm_id, int vcp=
+u_id)
+         return NULL;
+     }
+=20
+-    snprintf(name, sizeof HAX_VCPU_DEVFS, "/dev/hax_vm%02d/vcpu%02d",
+-             vm_id, vcpu_id);
++    int len =3D snprintf(name, sizeof HAX_VCPU_DEVFS, "/dev/hax_vm%02d/v=
+cpu%02d",
++                       vm_id, vcpu_id);
++    assert(len < sizeof HAX_VCPU_DEVFS);
+     return name;
+ }
+=20
 --=20
-2.21.1
+2.18.2
 
 
