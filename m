@@ -1,32 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6PgV-00079I-8a
+	id 1j6PgV-0007Ai-Mw
 	for mharc-qemu-trivial@gnu.org; Mon, 24 Feb 2020 21:10:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38515)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38516)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgP-0006ul-Ea
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgP-0006ur-Fo
  for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgO-00088o-0e
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgO-00089D-4O
  for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:49 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3244 helo=huawei.com)
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3245 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6PgL-0007zT-AK; Mon, 24 Feb 2020 21:10:45 -0500
+ id 1j6PgL-0007zU-CX; Mon, 24 Feb 2020 21:10:45 -0500
 Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 99A35544E8D56BA7C4C5;
+ by Forcepoint Email with ESMTP id 9E7248434096C9F3081A;
  Tue, 25 Feb 2020 10:10:42 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS412-HUB.china.huawei.com
  (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Tue, 25 Feb 2020
- 10:10:34 +0800
+ 10:10:35 +0800
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Juan Quintela <quintela@redhat.com>, "Dr. David
- Alan Gilbert" <dgilbert@redhat.com>
-Subject: [PATCH 10/13] migration/vmstate: Remove redundant statement in
- vmstate_save_state_v()
-Date: Tue, 25 Feb 2020 10:09:34 +0800
-Message-ID: <20200225020937.25028-11-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Subject: [PATCH 13/13] monitor/hmp-cmds: Remove redundant statement in
+ hmp_rocker_of_dpa_groups()
+Date: Tue, 25 Feb 2020 10:09:37 +0800
+Message-ID: <20200225020937.25028-14-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.14.1.windows.1
 In-Reply-To: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
 References: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
@@ -48,39 +47,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Feb 2020 02:10:50 -0000
+X-List-Received-Date: Tue, 25 Feb 2020 02:10:51 -0000
 
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
-The "ret" has been assigned in all branches. It didn't need to be
- assigned separately.
-
 Clang static code analyzer show warning:
-  migration/vmstate.c:365:17: warning: Value stored to 'ret' is never read
-                ret = 0;
-                ^     ~
+monitor/hmp-cmds.c:2867:17: warning: Value stored to 'set' is never read
+                set = true;
+                ^     ~~~~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Juan Quintela <quintela@redhat.com>
 Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 ---
- migration/vmstate.c | 1 -
+ monitor/hmp-cmds.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/migration/vmstate.c b/migration/vmstate.c
-index 7dd8ef66c6..bafa890384 100644
---- a/migration/vmstate.c
-+++ b/migration/vmstate.c
-@@ -362,7 +362,6 @@ int vmstate_save_state_v(QEMUFile *f, const VMStateDescription *vmsd,
-             }
-             for (i = 0; i < n_elems; i++) {
-                 void *curr_elem = first_elem + size * i;
--                ret = 0;
+diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+index 53bc3f76c4..84f94647cd 100644
+--- a/monitor/hmp-cmds.c
++++ b/monitor/hmp-cmds.c
+@@ -2864,7 +2864,6 @@ void hmp_rocker_of_dpa_groups(Monitor *mon, const QDict *qdict)
  
-                 vmsd_desc_field_start(vmsd, vmdesc_loop, field, i, n_elems);
-                 old_offset = qemu_ftell_fast(f);
+         if (group->has_set_eth_dst) {
+             if (!set) {
+-                set = true;
+                 monitor_printf(mon, " set");
+             }
+             monitor_printf(mon, " dst %s", group->set_eth_dst);
 -- 
 2.23.0
 
