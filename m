@@ -1,19 +1,19 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6PgW-0007CE-4z
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Feb 2020 21:10:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38616)
+	id 1j6PgY-0007Hb-3w
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Feb 2020 21:10:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38535)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgR-0006yu-5M
- for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:52 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgP-0006vF-Ly
+ for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgQ-0008CA-3k
- for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:51 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:59806 helo=huawei.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgO-00089q-El
+ for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:49 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:59814 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6PgL-0007vn-0o; Mon, 24 Feb 2020 21:10:45 -0500
+ id 1j6PgL-0007vq-0W; Mon, 24 Feb 2020 21:10:45 -0500
 Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 98AC6616BF2A3398F797;
+ by Forcepoint Email with ESMTP id A8DD541B76545289C6E1;
  Tue, 25 Feb 2020 10:10:37 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS412-HUB.china.huawei.com
  (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Tue, 25 Feb 2020
@@ -21,12 +21,12 @@ Received: from huawei.com (10.133.205.93) by DGGEMS412-HUB.china.huawei.com
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Kevin Wolf <kwolf@redhat.com>, Max Reitz
- <mreitz@redhat.com>, <qemu-block@nongnu.org>
-Subject: [PATCH 03/13] block/file-posix: Remove redundant statement in
- raw_handle_perm_lock()
-Date: Tue, 25 Feb 2020 10:09:27 +0800
-Message-ID: <20200225020937.25028-4-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng
+ <fam@euphon.net>
+Subject: [PATCH 04/13] scsi/esp-pci: Remove redundant statement in
+ esp_pci_io_write()
+Date: Tue, 25 Feb 2020 10:09:28 +0800
+Message-ID: <20200225020937.25028-5-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.14.1.windows.1
 In-Reply-To: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
 References: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
@@ -48,37 +48,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Feb 2020 02:10:52 -0000
+X-List-Received-Date: Tue, 25 Feb 2020 02:10:51 -0000
 
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
 Clang static code analyzer show warning:
-  block/file-posix.c:891:9: warning: Value stored to 'op' is never read
-        op = RAW_PL_ABORT;
-        ^    ~~~~~~~~~~~~
+  hw/scsi/esp-pci.c:198:9: warning: Value stored to 'size' is never read
+        size = 4;
+        ^      ~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Kevin Wolf <kwolf@redhat.com>
-Cc: Max Reitz <mreitz@redhat.com>
-Cc: qemu-block@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Fam Zheng <fam@euphon.net>
 ---
- block/file-posix.c | 1 -
+ hw/scsi/esp-pci.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/block/file-posix.c b/block/file-posix.c
-index 6345477112..0f77447a25 100644
---- a/block/file-posix.c
-+++ b/block/file-posix.c
-@@ -888,7 +888,6 @@ static int raw_handle_perm_lock(BlockDriverState *bs,
-                               "Is another process using the image [%s]?\n",
-                               bs->filename);
-         }
--        op = RAW_PL_ABORT;
-         /* fall through to unlock bytes. */
-     case RAW_PL_ABORT:
-         raw_apply_lock_bytes(s, s->fd, s->perm, ~s->shared_perm,
+diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
+index d5a1f9e017..2e6cc07d4e 100644
+--- a/hw/scsi/esp-pci.c
++++ b/hw/scsi/esp-pci.c
+@@ -195,7 +195,6 @@ static void esp_pci_io_write(void *opaque, hwaddr addr,
+         val <<= shift;
+         val |= current & ~(mask << shift);
+         addr &= ~3;
+-        size = 4;
+     }
+ 
+     if (addr < 0x40) {
 -- 
 2.23.0
 
