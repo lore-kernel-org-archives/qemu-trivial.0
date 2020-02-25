@@ -1,32 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6Pga-0007NI-G5
+	id 1j6Pga-0007OT-Rf
 	for mharc-qemu-trivial@gnu.org; Mon, 24 Feb 2020 21:11:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38717)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38728)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgU-000768-6t
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgU-000787-RO
  for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgT-0008FC-5D
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgT-0008Fl-QC
  for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:54 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3247 helo=huawei.com)
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3249 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6PgN-00085s-KB; Mon, 24 Feb 2020 21:10:47 -0500
+ id 1j6PgN-00085x-Nz; Mon, 24 Feb 2020 21:10:48 -0500
 Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id A78BD7B223F2D41E97D7;
+ by Forcepoint Email with ESMTP id C8804C6C5159483D681F;
  Tue, 25 Feb 2020 10:10:42 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS412-HUB.china.huawei.com
  (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Tue, 25 Feb 2020
- 10:10:34 +0800
+ 10:10:32 +0800
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ <kuhn.chenqun@huawei.com>, Andrzej Zaborowski <balrogg@gmail.com>,
  <qemu-arm@nongnu.org>
-Subject: [PATCH 11/13] timer/exynos4210_mct: Remove redundant statement in
- exynos4210_mct_write()
-Date: Tue, 25 Feb 2020 10:09:35 +0800
-Message-ID: <20200225020937.25028-12-kuhn.chenqun@huawei.com>
+Subject: [PATCH 06/13] display/pxa2xx_lcd: Remove redundant statement in
+ pxa2xx_palette_parse()
+Date: Tue, 25 Feb 2020 10:09:30 +0800
+Message-ID: <20200225020937.25028-7-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.14.1.windows.1
 In-Reply-To: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
 References: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
@@ -48,60 +48,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Feb 2020 02:10:55 -0000
+X-List-Received-Date: Tue, 25 Feb 2020 02:10:56 -0000
 
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
 Clang static code analyzer show warning:
-hw/timer/exynos4210_mct.c:1370:9: warning: Value stored to 'index' is never read
-        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
-        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-hw/timer/exynos4210_mct.c:1399:9: warning: Value stored to 'index' is never read
-        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
-        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-hw/timer/exynos4210_mct.c:1441:9: warning: Value stored to 'index' is never read
-        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
-        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hw/display/pxa2xx_lcd.c:596:9: warning: Value stored to 'format' is never read
+        format = 0;
+        ^        ~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org
 ---
- hw/timer/exynos4210_mct.c | 4 ----
- 1 file changed, 4 deletions(-)
+ hw/display/pxa2xx_lcd.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
-index 944120aea5..570cf7075b 100644
---- a/hw/timer/exynos4210_mct.c
-+++ b/hw/timer/exynos4210_mct.c
-@@ -1367,7 +1367,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+diff --git a/hw/display/pxa2xx_lcd.c b/hw/display/pxa2xx_lcd.c
+index 05f5f84671..464e93161a 100644
+--- a/hw/display/pxa2xx_lcd.c
++++ b/hw/display/pxa2xx_lcd.c
+@@ -593,7 +593,6 @@ static void pxa2xx_palette_parse(PXA2xxLCDState *s, int ch, int bpp)
+         n = 256;
+         break;
+     default:
+-        format = 0;
+         return;
+     }
  
-     case L0_TCNTB: case L1_TCNTB:
-         lt_i = GET_L_TIMER_IDX(offset);
--        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
- 
-         /*
-          * TCNTB is updated to internal register only after CNT expired.
-@@ -1396,7 +1395,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
- 
-     case L0_ICNTB: case L1_ICNTB:
-         lt_i = GET_L_TIMER_IDX(offset);
--        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
- 
-         s->l_timer[lt_i].reg.wstat |= L_WSTAT_ICNTB_WRITE;
-         s->l_timer[lt_i].reg.cnt[L_REG_CNT_ICNTB] = value &
-@@ -1438,8 +1436,6 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
- 
-     case L0_FRCNTB: case L1_FRCNTB:
-         lt_i = GET_L_TIMER_IDX(offset);
--        index = GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
--
-         DPRINTF("local timer[%d] FRCNTB write %llx\n", lt_i, value);
- 
-         s->l_timer[lt_i].reg.wstat |= L_WSTAT_FRCCNTB_WRITE;
 -- 
 2.23.0
 
