@@ -1,31 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6PgZ-0007KC-LS
+	id 1j6PgZ-0007L9-SU
 	for mharc-qemu-trivial@gnu.org; Mon, 24 Feb 2020 21:10:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38680)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38730)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgS-000722-SX
- for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:53 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgU-00078Z-Ut
+ for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:55 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgQ-0008Cl-OD
- for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:52 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:59816 helo=huawei.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgU-0008Fv-0K
+ for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:54 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3248 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6PgL-0007vr-0q; Mon, 24 Feb 2020 21:10:45 -0500
+ id 1j6PgN-00085t-N9; Mon, 24 Feb 2020 21:10:48 -0500
 Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id AF84BE1648301EFB36CC;
- Tue, 25 Feb 2020 10:10:37 +0800 (CST)
+ by Forcepoint Email with ESMTP id C36695B1E644EC59BFDE;
+ Tue, 25 Feb 2020 10:10:42 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS412-HUB.china.huawei.com
  (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Tue, 25 Feb 2020
- 10:10:28 +0800
+ 10:10:33 +0800
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, John Snow <jsnow@redhat.com>, Kevin Wolf
- <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>, <qemu-block@nongnu.org>
-Subject: [PATCH 01/13] block/stream: Remove redundant statement in stream_run()
-Date: Tue, 25 Feb 2020 10:09:25 +0800
-Message-ID: <20200225020937.25028-2-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Alistair Francis <alistair@alistair23.me>, "Edgar
+ E. Iglesias" <edgar.iglesias@gmail.com>, <qemu-arm@nongnu.org>
+Subject: [PATCH 09/13] dma/xlnx-zdma: Remove redundant statement in
+ zdma_write_dst()
+Date: Tue, 25 Feb 2020 10:09:33 +0800
+Message-ID: <20200225020937.25028-10-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.14.1.windows.1
 In-Reply-To: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
 References: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
@@ -35,7 +36,7 @@ X-Originating-IP: [10.133.205.93]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.35
+X-Received-From: 45.249.212.191
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -47,37 +48,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Feb 2020 02:10:54 -0000
+X-List-Received-Date: Tue, 25 Feb 2020 02:10:56 -0000
 
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
 Clang static code analyzer show warning:
-  block/stream.c:186:9: warning: Value stored to 'ret' is never read
-        ret = 0;
-        ^     ~
+hw/dma/xlnx-zdma.c:399:13: warning: Value stored to 'dst_type' is never read
+            dst_type = FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WORD3,
+            ^          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: John Snow <jsnow@redhat.com>
-Cc: Kevin Wolf <kwolf@redhat.com>
-Cc: Max Reitz <mreitz@redhat.com>
-Cc: qemu-block@nongnu.org
+Cc: Alistair Francis <alistair@alistair23.me>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
 ---
- block/stream.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/dma/xlnx-zdma.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/block/stream.c b/block/stream.c
-index 5562ccbf57..d78074ac80 100644
---- a/block/stream.c
-+++ b/block/stream.c
-@@ -183,7 +183,6 @@ static int coroutine_fn stream_run(Job *job, Error **errp)
-                 break;
-             }
+diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
+index 8fb83f5b07..45355c5d59 100644
+--- a/hw/dma/xlnx-zdma.c
++++ b/hw/dma/xlnx-zdma.c
+@@ -396,8 +396,6 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
+             zdma_load_descriptor(s, next, &s->dsc_dst);
+             dst_size = FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WORD2,
+                                   SIZE);
+-            dst_type = FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WORD3,
+-                                  TYPE);
          }
--        ret = 0;
  
-         /* Publish progress */
-         job_progress_update(&s->common.job, n);
+         /* Match what hardware does by ignoring the dst_size and only using
 -- 
 2.23.0
 
