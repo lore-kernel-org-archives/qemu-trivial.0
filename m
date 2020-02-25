@@ -1,56 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6XCc-00083C-KF
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Feb 2020 05:12:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59954)
+	id 1j6XJ5-0004UV-9U
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Feb 2020 05:19:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32871)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6XCZ-0007yP-4w
- for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 05:12:32 -0500
+ (envelope-from <peter.maydell@linaro.org>) id 1j6XJ2-0004QU-75
+ for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 05:19:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6XCW-0000Bm-0r
- for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 05:12:31 -0500
-Received: from szxga08-in.huawei.com ([45.249.212.255]:50774 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6XCT-00008p-Cx; Tue, 25 Feb 2020 05:12:25 -0500
-Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.53])
- by Forcepoint Email with ESMTP id C208D19239E6CADF7304;
- Tue, 25 Feb 2020 18:12:19 +0800 (CST)
-Received: from DGGEMM422-HUB.china.huawei.com (10.1.198.39) by
- DGGEMM403-HUB.china.huawei.com (10.3.20.211) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 25 Feb 2020 18:12:19 +0800
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
- dggemm422-hub.china.huawei.com ([10.1.198.39]) with mapi id 14.03.0439.000;
- Tue, 25 Feb 2020 18:12:09 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>
-CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Zhanghailiang
- <zhang.zhanghailiang@huawei.com>, "Dr. David Alan Gilbert"
- <dgilbert@redhat.com>
-Subject: RE: [PATCH 13/13] monitor/hmp-cmds: Remove redundant statement in
- hmp_rocker_of_dpa_groups()
-Thread-Topic: [PATCH 13/13] monitor/hmp-cmds: Remove redundant statement in
- hmp_rocker_of_dpa_groups()
-Thread-Index: AQHV64DJGO7qJyDt3kiSwvqgJy15P6grIz2AgACK+hA=
-Date: Tue, 25 Feb 2020 10:12:09 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B661C02@dggemm531-mbx.china.huawei.com>
-References: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
- <20200225020937.25028-14-kuhn.chenqun@huawei.com>
- <1f4c5308-4a6f-fe1f-3832-f1c762b4c4c2@redhat.com>
-In-Reply-To: <1f4c5308-4a6f-fe1f-3832-f1c762b4c4c2@redhat.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (envelope-from <peter.maydell@linaro.org>) id 1j6XJ0-0002ls-Tl
+ for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 05:19:11 -0500
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:35899)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1j6XJ0-0002lU-NP
+ for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 05:19:10 -0500
+Received: by mail-oi1-x241.google.com with SMTP id c16so12047651oic.3
+ for <qemu-trivial@nongnu.org>; Tue, 25 Feb 2020 02:19:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=TdkyP/waG7yMrG/55LzQ/BCApLNTU/cpSkgd5WpaZ5s=;
+ b=aJWGuqcsByu/PctTrI4xgpYxuFAB4bA2DPvEp3HYGzFo5ooSb3oYOA9ZD3ooOz8jTZ
+ Y0fCOWTOpLCQwEx6se80O62AQIFRkGDPjvvupqwQ/rz59l9S4EKjaJJE15ywIBHDcEyn
+ ZuTStkywfr+S7igr9M8vyOiyfiEzwtS9FQY7mm3gvJvwJoQf3j9LWJCtn7YQVwteQAm6
+ tf49t02Hsdr8klM5iUQPvGSGOpa6EMJRKiqS8X6GrlFdAvy7tA3SfcXcTv4fFw7kzgBG
+ 4itfHuaO9EDGCfMZuOafXebRWkDoQJiVwT53U8JHN0kfXuxk2gLA0qZEN4zZY5FXfWSK
+ f+SQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=TdkyP/waG7yMrG/55LzQ/BCApLNTU/cpSkgd5WpaZ5s=;
+ b=dBwcR+VdTV4oumdt+zrsafMuE1z+w5dQ3uB65aUMXSY1ipkQVaGkAx2V4zgVNkPBpr
+ Z/pfy4alI22YS0fDQHqFOES1Qt7k4UgClcyw7Ub41OZZK77+1Qi6q70K/T0H1GvpzzVQ
+ YwXwq4e5X75YRYb2uNI1/Kz1BUhfKSL5koLYT28c7XAEVVmSf0WVSIJLodBxO8Q+w/vu
+ xu6xHoEAyOdk1rm2FK0iSg0aE/t16YrTFHmHa3N8i+jma+wSo6eBIGIi0AqYoB2jGkdq
+ 6Kvd+ZLmCdHesRks90Fe5akd5gSojUynURbESt5kS11b6k/GlSegLohau3MUMvqsQbmq
+ RxXw==
+X-Gm-Message-State: APjAAAUL7hCb+DhRx4RIQhS/zoWeLhr+bwOEc/K8Xu/8pra+EwNR5zJY
+ 0k5obtQfSnFZODA+XZ8Dd/2hu3o7gaFYTrlIgD1hFQ==
+X-Google-Smtp-Source: APXvYqwgO0aXqWFccuXt5YmWKmc41+jx8r1lIOxjxHtWt1MJgvvcFotRzD5SJ35lz+QWcUVfX/bl1EKJY6LGAfDm0zo=
+X-Received: by 2002:a54:4f16:: with SMTP id e22mr3029042oiy.170.1582625949753; 
+ Tue, 25 Feb 2020 02:19:09 -0800 (PST)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.255
+References: <20200225025923.19328-1-kuhn.chenqun@huawei.com>
+ <9206dda7-0e12-b68e-87ca-1985b61381bc@redhat.com>
+In-Reply-To: <9206dda7-0e12-b68e-87ca-1985b61381bc@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 25 Feb 2020 10:18:58 +0000
+Message-ID: <CAFEAcA-W+brVEmGr29i6JO4GFrnoLAce-qoMQpQc56x6B4BY3A@mail.gmail.com>
+Subject: Re: [PATCH] hw/net/imx_fec: write TGSR and TCSR3 in imx_enet_write()
+To: Jason Wang <jasowang@redhat.com>
+Cc: Chen Qun <kuhn.chenqun@huawei.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ zhanghailiang <zhang.zhanghailiang@huawei.com>, 
+ Peter Chubb <peter.chubb@nicta.com.au>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::241
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -62,36 +70,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Feb 2020 10:12:32 -0000
+X-List-Received-Date: Tue, 25 Feb 2020 10:19:14 -0000
 
-Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogUGhpbGlwcGUgTWF0aGlldS1EYXVk
-w6kgW21haWx0bzpwaGlsbWRAcmVkaGF0LmNvbV0NCj5TZW50OiBUdWVzZGF5LCBGZWJydWFyeSAy
-NSwgMjAyMCA1OjQ1IFBNDQo+VG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2Vp
-LmNvbT47IHFlbXUtDQo+ZGV2ZWxAbm9uZ251Lm9yZzsgcWVtdS10cml2aWFsQG5vbmdudS5vcmcN
-Cj5DYzogcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBaaGFuZ2hhaWxpYW5nDQo+PHpoYW5nLnpo
-YW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IERyLiBEYXZpZCBBbGFuIEdpbGJlcnQNCj48ZGdpbGJl
-cnRAcmVkaGF0LmNvbT4NCj5TdWJqZWN0OiBSZTogW1BBVENIIDEzLzEzXSBtb25pdG9yL2htcC1j
-bWRzOiBSZW1vdmUgcmVkdW5kYW50DQo+c3RhdGVtZW50IGluIGhtcF9yb2NrZXJfb2ZfZHBhX2dy
-b3VwcygpDQo+DQo+T24gMi8yNS8yMCAzOjA5IEFNLCBrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbSB3
-cm90ZToNCj4+IEZyb206IENoZW4gUXVuIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4+DQo+
-PiBDbGFuZyBzdGF0aWMgY29kZSBhbmFseXplciBzaG93IHdhcm5pbmc6DQo+PiBtb25pdG9yL2ht
-cC1jbWRzLmM6Mjg2NzoxNzogd2FybmluZzogVmFsdWUgc3RvcmVkIHRvICdzZXQnIGlzIG5ldmVy
-IHJlYWQNCj4+ICAgICAgICAgICAgICAgICAgc2V0ID0gdHJ1ZTsNCj4+ICAgICAgICAgICAgICAg
-ICAgXiAgICAgfn5+fg0KPj4NCj4+IFJlcG9ydGVkLWJ5OiBFdWxlciBSb2JvdCA8ZXVsZXIucm9i
-b3RAaHVhd2VpLmNvbT4NCj4+IFNpZ25lZC1vZmYtYnk6IENoZW4gUXVuIDxrdWhuLmNoZW5xdW5A
-aHVhd2VpLmNvbT4NCj4+IC0tLQ0KPj4gQ2M6ICJEci4gRGF2aWQgQWxhbiBHaWxiZXJ0IiA8ZGdp
-bGJlcnRAcmVkaGF0LmNvbT4NCj4+IC0tLQ0KPj4gICBtb25pdG9yL2htcC1jbWRzLmMgfCAxIC0N
-Cj4+ICAgMSBmaWxlIGNoYW5nZWQsIDEgZGVsZXRpb24oLSkNCj4+DQo+PiBkaWZmIC0tZ2l0IGEv
-bW9uaXRvci9obXAtY21kcy5jIGIvbW9uaXRvci9obXAtY21kcy5jIGluZGV4DQo+PiA1M2JjM2Y3
-NmM0Li44NGY5NDY0N2NkIDEwMDY0NA0KPj4gLS0tIGEvbW9uaXRvci9obXAtY21kcy5jDQo+PiAr
-KysgYi9tb25pdG9yL2htcC1jbWRzLmMNCj4+IEBAIC0yODY0LDcgKzI4NjQsNiBAQCB2b2lkIGht
-cF9yb2NrZXJfb2ZfZHBhX2dyb3VwcyhNb25pdG9yICptb24sDQo+PiBjb25zdCBRRGljdCAqcWRp
-Y3QpDQo+Pg0KPj4gICAgICAgICAgIGlmIChncm91cC0+aGFzX3NldF9ldGhfZHN0KSB7DQo+PiAg
-ICAgICAgICAgICAgIGlmICghc2V0KSB7DQo+PiAtICAgICAgICAgICAgICAgIHNldCA9IHRydWU7
-DQo+PiAgICAgICAgICAgICAgICAgICBtb25pdG9yX3ByaW50Zihtb24sICIgc2V0Iik7DQo+PiAg
-ICAgICAgICAgICAgIH0NCj4+ICAgICAgICAgICAgICAgbW9uaXRvcl9wcmludGYobW9uLCAiIGRz
-dCAlcyIsIGdyb3VwLT5zZXRfZXRoX2RzdCk7DQo+Pg0KPg0KPkNhbiB5b3UgbW92ZSB0aGUgJ3Nl
-dCcgZGVjbGFyYXRpb24gdG8gdGhlIGZvcigpIHN0YXRlbWVudCBhbmQgYWxzbyByZW1vdmUgdGhl
-DQo+bGFzdCAic2V0ID0gZmFsc2U7Ij8NClllcywgIHlvdSBhcmUgcmlnaHQhICAgSXQgd2lsbCBi
-ZSBiZXR0ZXIhICAgIEkgd2lsbCBtb2RpZnkgaXQgbGF0ZXIgaW4gVjIuDQoNClRoYW5rcy4NCg0K
+On Tue, 25 Feb 2020 at 05:41, Jason Wang <jasowang@redhat.com> wrote:
+>
+>
+> On 2020/2/25 =E4=B8=8A=E5=8D=8810:59, Chen Qun wrote:
+> > The current code causes clang static code analyzer generate warning:
+> > hw/net/imx_fec.c:858:9: warning: Value stored to 'value' is never read
+> >          value =3D value & 0x0000000f;
+> >          ^       ~~~~~~~~~~~~~~~~~~
+> > hw/net/imx_fec.c:864:9: warning: Value stored to 'value' is never read
+> >          value =3D value & 0x000000fd;
+> >          ^       ~~~~~~~~~~~~~~~~~~
+> >
+> > According to the definition of the function, the two =E2=80=9Cvalue=E2=
+=80=9D assignments
+> >   should be written to registers.
+> >
+> > Reported-by: Euler Robot <euler.robot@huawei.com>
+> > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> > ---
+> > I'm not sure if this modification is correct, just from the function
+> >   definition, it is correct.
+> > ---
+> >   hw/net/imx_fec.c | 4 ++--
+> >   1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+> > index 6a124a154a..92f6215712 100644
+> > --- a/hw/net/imx_fec.c
+> > +++ b/hw/net/imx_fec.c
+> > @@ -855,13 +855,13 @@ static void imx_enet_write(IMXFECState *s, uint32=
+_t index, uint32_t value)
+> >           break;
+> >       case ENET_TGSR:
+> >           /* implement clear timer flag */
+> > -        value =3D value & 0x0000000f;
+> > +        s->regs[index] =3D value & 0x0000000f;
+> >           break;
+
+Hi; the datasheet for this SoC says that these bits
+of the register are write-1-to-clear, so while this
+is definitely a bug I don't think this is the right fix.
+
+> >       case ENET_TCSR0:
+> >       case ENET_TCSR1:
+> >       case ENET_TCSR2:
+> >       case ENET_TCSR3:
+> > -        value =3D value & 0x000000fd;
+> > +        s->regs[index] =3D value & 0x000000fd;
+> >           break;
+
+Here bit 7 is write-1-to-clear, though bits 0 and
+2..5 are simple write-the-value.
+
+> >       case ENET_TCCR0:
+> >       case ENET_TCCR1:
+>
+>
+> Applied.
+
+Could you drop this from your queue, please?
+
+thanks
+-- PMM
 
