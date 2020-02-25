@@ -1,61 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6Ykk-0000uJ-S5
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Feb 2020 06:51:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49521)
+	id 1j6eFR-0001qk-A5
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Feb 2020 12:43:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41854)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j6Ykh-0000rF-Kn
- for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 06:51:52 -0500
+ (envelope-from <mreitz@redhat.com>) id 1j6eFO-0001or-E7
+ for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 12:43:56 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j6Ykg-0007mj-JB
- for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 06:51:51 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:42809
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <mreitz@redhat.com>) id 1j6eFM-0007kE-Gl
+ for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 12:43:53 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:46005
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6Ykg-0007fo-F5
- for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 06:51:50 -0500
+ (Exim 4.71) (envelope-from <mreitz@redhat.com>) id 1j6eFM-0007ie-8s
+ for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 12:43:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582631509;
+ s=mimecast20190719; t=1582652631;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=NPFWnv/Ef9WwpSuw1jcfq/YK7QkVuPURI5RaLd84Zyc=;
- b=MJbJZ3kuQq0xd2ZQIn3gRkSJ12Tnh9Cz1Op+njpXfvzaW1F7KOCWyJ20maUCotSTZc7LhK
- EbAWL4vgQ6HQE/C2rC5Mb8V59jrUPAHDAvN8iwbr4ZGb1t0lYHxJ+rbORRD5BifkTZ4u9k
- 76DorZocLmv88PWvZekyyYxvjo3T+30=
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=Gd/xI8JgucqpJBV8ygCv+8M1Rjwau3tTd2+xzioA9y8=;
+ b=NC68nidhuiADlkcampPEB6n27/C7z6Zt1VjQ5XPeH80HKUC3Q5PrTuuFM2RJrmiUNcT5gR
+ DQn3ClUe3HVUuoGCKpgF2GMkhyP5Za/HFM8cOQQhPEZz1yBAsvtZVD6FtsmZzRFU9aWF08
+ Zy0vecyIv7pLjmFYV5GmVTQh7UFBahE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-303-pC-yLtEAOY-oAKrYQ58sEQ-1; Tue, 25 Feb 2020 06:51:48 -0500
-X-MC-Unique: pC-yLtEAOY-oAKrYQ58sEQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-440-kbqdAqn8MV669ITJeTlqkA-1; Tue, 25 Feb 2020 12:43:49 -0500
+X-MC-Unique: kbqdAqn8MV669ITJeTlqkA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 40A07800D5B;
- Tue, 25 Feb 2020 11:51:46 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-205-195.brq.redhat.com [10.40.205.195])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2B10A1001DC2;
- Tue, 25 Feb 2020 11:51:42 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Chris Wulff <crwulff@gmail.com>, qemu-trivial@nongnu.org,
- Richard Henderson <rth@twiddle.net>,
- Julian Brown <julian@codesourcery.com>, Marek Vasut <marex@denx.de>,
- Sandra Loosemore <sandra@codesourcery.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jenner <andrew@codesourcery.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] hw/nios2/boot: Remove dead code (big endian check)
-Date: Tue, 25 Feb 2020 12:51:40 +0100
-Message-Id: <20200225115140.10023-1-philmd@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 745D68017DF;
+ Tue, 25 Feb 2020 17:43:48 +0000 (UTC)
+Received: from dresden.str.redhat.com (ovpn-117-215.ams2.redhat.com
+ [10.36.117.215])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0AE4227181;
+ Tue, 25 Feb 2020 17:43:46 +0000 (UTC)
+Subject: Re: [PATCH] iotests: Fix nonportable use of od --endian
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ andrey.shinkevich@virtuozzo.com, Kevin Wolf <kwolf@redhat.com>
+References: <20200219144103.2919292-1-eblake@redhat.com>
+From: Max Reitz <mreitz@redhat.com>
+Autocrypt: addr=mreitz@redhat.com; prefer-encrypt=mutual; keydata=
+ mQENBFXOJlcBCADEyyhOTsoa/2ujoTRAJj4MKA21dkxxELVj3cuILpLTmtachWj7QW+TVG8U
+ /PsMCFbpwsQR7oEy8eHHZwuGQsNpEtNC2G/L8Yka0BIBzv7dEgrPzIu+W3anZXQW4702+uES
+ U29G8TP/NGfXRRHGlbBIH9KNUnOSUD2vRtpOLXkWsV5CN6vQFYgQfFvmp5ZpPeUe6xNplu8V
+ mcTw8OSEDW/ZnxJc8TekCKZSpdzYoxfzjm7xGmZqB18VFwgJZlIibt1HE0EB4w5GsD7x5ekh
+ awIe3RwoZgZDLQMdOitJ1tUc8aqaxvgA4tz6J6st8D8pS//m1gAoYJWGwwIVj1DjTYLtABEB
+ AAG0HU1heCBSZWl0eiA8bXJlaXR6QHJlZGhhdC5jb20+iQFTBBMBCAA9AhsDBQkSzAMABQsJ
+ CAcCBhUICQoLAgQWAgMBAh4BAheABQJVzie5FRhoa3A6Ly9rZXlzLmdudXBnLm5ldAAKCRD0
+ B9sAYdXPQDcIB/9uNkbYEex1rHKz3mr12uxYMwLOOFY9fstP5aoVJQ1nWQVB6m2cfKGdcRe1
+ 2/nFaHSNAzT0NnKz2MjhZVmcrpyd2Gp2QyISCfb1FbT82GMtXFj1wiHmPb3CixYmWGQUUh+I
+ AvUqsevLA+WihgBUyaJq/vuDVM1/K9Un+w+Tz5vpeMidlIsTYhcsMhn0L9wlCjoucljvbDy/
+ 8C9L2DUdgi3XTa0ORKeflUhdL4gucWoAMrKX2nmPjBMKLgU7WLBc8AtV+84b9OWFML6NEyo4
+ 4cP7cM/07VlJK53pqNg5cHtnWwjHcbpGkQvx6RUx6F1My3y52vM24rNUA3+ligVEgPYBuQEN
+ BFXOJlcBCADAmcVUNTWT6yLWQHvxZ0o47KCP8OcLqD+67T0RCe6d0LP8GsWtrJdeDIQk+T+F
+ xO7DolQPS6iQ6Ak2/lJaPX8L0BkEAiMuLCKFU6Bn3lFOkrQeKp3u05wCSV1iKnhg0UPji9V2
+ W5eNfy8F4ZQHpeGUGy+liGXlxqkeRVhLyevUqfU0WgNqAJpfhHSGpBgihUupmyUg7lfUPeRM
+ DzAN1pIqoFuxnN+BRHdAecpsLcbR8sQddXmDg9BpSKozO/JyBmaS1RlquI8HERQoe6EynJhd
+ 64aICHDfj61rp+/0jTIcevxIIAzW70IadoS/y3DVIkuhncgDBvGbF3aBtjrJVP+5ABEBAAGJ
+ ASUEGAEIAA8FAlXOJlcCGwwFCRLMAwAACgkQ9AfbAGHVz0CbFwf9F/PXxQR9i4N0iipISYjU
+ sxVdjJOM2TMut+ZZcQ6NSMvhZ0ogQxJ+iEQ5OjnIputKvPVd5U7WRh+4lF1lB/NQGrGZQ1ic
+ alkj6ocscQyFwfib+xIe9w8TG1CVGkII7+TbS5pXHRxZH1niaRpoi/hYtgzkuOPp35jJyqT/
+ /ELbqQTDAWcqtJhzxKLE/ugcOMK520dJDeb6x2xVES+S5LXby0D4juZlvUj+1fwZu+7Io5+B
+ bkhSVPb/QdOVTpnz7zWNyNw+OONo1aBUKkhq2UIByYXgORPFnbfMY7QWHcjpBVw9MgC4tGeF
+ R4bv+1nAMMxKmb5VvQCExr0eFhJUAHAhVg==
+Message-ID: <4a50da40-5a01-e597-b136-1be62994b2a2@redhat.com>
+Date: Tue, 25 Feb 2020 18:43:45 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <20200219144103.2919292-1-eblake@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="NKUr5LFGQbGwODBlqq3Cm5DfAUcOVcPlB"
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -67,50 +91,126 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Feb 2020 11:51:52 -0000
+X-List-Received-Date: Tue, 25 Feb 2020 17:43:56 -0000
 
-We only build the little-endian softmmu configuration (all
-Nios II processors are only little endian). Checking for
-big endian is pointless, remove the unused code.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--NKUr5LFGQbGwODBlqq3Cm5DfAUcOVcPlB
+Content-Type: multipart/mixed; boundary="4GDF1HxE34OHdehYJWokpWYbNbIqrFumC"
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/nios2/boot.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+--4GDF1HxE34OHdehYJWokpWYbNbIqrFumC
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/hw/nios2/boot.c b/hw/nios2/boot.c
-index 88224aa84c..000f8205d6 100644
---- a/hw/nios2/boot.c
-+++ b/hw/nios2/boot.c
-@@ -140,16 +140,11 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr ddr_base=
-,
-     if (kernel_filename) {
-         int kernel_size, fdt_size;
-         uint64_t entry, low, high;
--        int big_endian =3D 0;
--
--#ifdef TARGET_WORDS_BIGENDIAN
--        big_endian =3D 1;
--#endif
-=20
-         /* Boots a kernel elf binary. */
-         kernel_size =3D load_elf(kernel_filename, NULL, NULL, NULL,
-                                &entry, &low, &high, NULL,
--                               big_endian, EM_ALTERA_NIOS2, 0, 0);
-+                               0, EM_ALTERA_NIOS2, 0, 0);
-         if ((uint32_t)entry =3D=3D 0xc0000000) {
-             /*
-              * The Nios II processor reference guide documents that the
-@@ -160,7 +155,7 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr ddr_base,
-             kernel_size =3D load_elf(kernel_filename, NULL,
-                                    translate_kernel_address, NULL,
-                                    &entry, NULL, NULL, NULL,
--                                   big_endian, EM_ALTERA_NIOS2, 0, 0);
-+                                   0, EM_ALTERA_NIOS2, 0, 0);
-             boot_info.bootstrap_pc =3D ddr_base + 0xc0000000 +
-                 (entry & 0x07ffffff);
-         } else {
---=20
-2.21.1
+On 19.02.20 15:41, Eric Blake wrote:
+> Tests 261 and 272 fail on RHEL 7 with coreutils 8.22, since od
+> --endian was not added until coreutils 8.23.  Fix this by manually
+> constructing the final value one byte at a time.
+>=20
+> Fixes: fc8ba423
+> Reported-by: Andrey Shinkevich <andrey.shinkevich@virtuozzo.com>
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
+>  tests/qemu-iotests/common.rc | 22 +++++++++++++++++-----
+>  1 file changed, 17 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
+> index 8a6366c09daf..b77ef3d22cd1 100644
+> --- a/tests/qemu-iotests/common.rc
+> +++ b/tests/qemu-iotests/common.rc
+> @@ -56,6 +56,12 @@ poke_file()
+
+I don=E2=80=99t know how you did it, but something in your workflow broke t=
+his
+patch.  This should be -56,18 +56,30.
+
+(Note that git accepts this patch without error, but it drops everything
+after the first part.  I noticed because your squash-in failed to apply.
+ I suppose I might have noticed later when reviewing, because only
+peek_file_le() was touched, but who knows.)
+
+>  # peek_file_le 'test.img' 512 2 =3D> 65534
+>  peek_file_le()
+>  {
+> -    # Wrap in echo $() to strip spaces
+> -    echo $(od -j"$2" -N"$3" --endian=3Dlittle -An -vtu"$3" "$1")
+> +    local val=3D0 shift=3D0 i
+> +
+> +    # coreutils' od --endian is not portable, so manually assemble bytes=
+.
+> +    for i in $(od -j"$2" -N"$3" -An -v -tu1 "$1"); do
+
+=E2=80=9Ci=E2=80=9D is a weird name for something that isn=E2=80=99t an ind=
+ex.
+
+> +        val=3D$(( val | (i << shift) ))
+> +        shift=3D$((shift + 8))
+> +    done
+> +    echo $val
+>  }
+>=20
+
+Regarding the broken patch format again: There are no spaces here...
+
+>  # peek_file_be 'test.img' 512 2 =3D> 65279
+>  peek_file_be()
+>  {
+> -    # Wrap in echo $() to strip spaces
+> -    echo $(od -j"$2" -N"$3" --endian=3Dbig -An -vtu"$3" "$1")
+> +    local val=3D0 i
+> +
+> +    # coreutils' od --endian is not portable, so manually assemble bytes=
+.
+> +    for i in $(od -j"$2" -N"$3" -An -v -tu1 "$1"); do
+> +        val=3D$(( (val << 8) | i ))
+> +    done
+> +    echo $val
+>  }
+>=20
+
+...and here like there normally would be.
+
+With the patch format fixed, and your proposed to-be-squashed patch
+squashed in, there isn=E2=80=99t anything wrong, so:
+
+Reviewed-by: Max Reitz <mreitz@redhat.com>
+
+But if I=E2=80=99m already about to squash something in, would you allow me=
+ to
+rename all instances of =E2=80=9Ci=E2=80=9D to e.g. =E2=80=9Cbyte=E2=80=9D?
+
+Max
+
+> -# peek_file_raw 'test.img' 512 2 =3D> '\xff\xfe'
+> +# peek_file_raw 'test.img' 512 2 =3D> '\xff\xfe'. Do not use if the raw =
+data
+> +# is likely to contain \0 or trailing \n.
+>  peek_file_raw()
+>  {
+>      dd if=3D"$1" bs=3D1 skip=3D"$2" count=3D"$3" status=3Dnone
+>=20
+
+
+
+--4GDF1HxE34OHdehYJWokpWYbNbIqrFumC--
+
+--NKUr5LFGQbGwODBlqq3Cm5DfAUcOVcPlB
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEkb62CjDbPohX0Rgp9AfbAGHVz0AFAl5VXNEACgkQ9AfbAGHV
+z0D93Af7BzoMeAZD8ZM2Hfc9bp/ObX/Ih94v8qF4e5phd8eMZ4m/zUWjAI1tZ4zx
++V2LH3RTMOmxzfiIzMaLCphO2x8rXp4eGNGj0JBp3jPCVYwMnPSXCr0qejfHShAz
+LhkiR+QgpzzK4EXE3JdJJSNH3EgIO6yNKH9Z6wMwJ1g9ui5xHcn3VMHobZsomz1d
+GWnY2wOjneMy7wj+svD6/2B6sGwzb/1PZssPJ+jB1aQQJQ41BuXfYDQOXdHv/4pc
+VZsV5sIg0d6PwbD7ZFx32SlHnNthZuEKEktEOKIfvE92+q7ZGcEeDRhTvPBoiIq/
+pUcavXhDsHs9PvH8O/taz4ohc3bITw==
+=8PDB
+-----END PGP SIGNATURE-----
+
+--NKUr5LFGQbGwODBlqq3Cm5DfAUcOVcPlB--
 
 
