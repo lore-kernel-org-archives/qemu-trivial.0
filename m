@@ -1,35 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6PgY-0007Hb-3w
+	id 1j6PgY-0007Ht-9f
 	for mharc-qemu-trivial@gnu.org; Mon, 24 Feb 2020 21:10:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38535)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38527)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgP-0006vF-Ly
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgP-0006v1-IH
  for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgO-00089q-El
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgO-00089N-4Y
  for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:49 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:59814 helo=huawei.com)
+Received: from szxga07-in.huawei.com ([45.249.212.35]:59810 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6PgL-0007vq-0W; Mon, 24 Feb 2020 21:10:45 -0500
+ id 1j6PgL-0007vo-0L; Mon, 24 Feb 2020 21:10:45 -0500
 Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id A8DD541B76545289C6E1;
+ by Forcepoint Email with ESMTP id 930FC2697C0897E0771B;
  Tue, 25 Feb 2020 10:10:37 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS412-HUB.china.huawei.com
  (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Tue, 25 Feb 2020
- 10:10:30 +0800
+ 10:10:27 +0800
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng
- <fam@euphon.net>
-Subject: [PATCH 04/13] scsi/esp-pci: Remove redundant statement in
- esp_pci_io_write()
-Date: Tue, 25 Feb 2020 10:09:28 +0800
-Message-ID: <20200225020937.25028-5-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>
+Subject: [PATCH 00/13]redundant code: Fix warnings reported by Clang static
+ code analyzer
+Date: Tue, 25 Feb 2020 10:09:24 +0800
+Message-ID: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.14.1.windows.1
-In-Reply-To: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
-References: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.133.205.93]
@@ -52,32 +49,48 @@ X-List-Received-Date: Tue, 25 Feb 2020 02:10:51 -0000
 
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
-Clang static code analyzer show warning:
-  hw/scsi/esp-pci.c:198:9: warning: Value stored to 'size' is never read
-        size = 4;
-        ^      ~
+Hi all, our EulerRobot integrates clang static code analyzer tools and
+found a lot of warnings. They are mainly redundant variable assignments.
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
----
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Fam Zheng <fam@euphon.net>
----
- hw/scsi/esp-pci.c | 1 -
- 1 file changed, 1 deletion(-)
+This series fixes the warnings.
 
-diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
-index d5a1f9e017..2e6cc07d4e 100644
---- a/hw/scsi/esp-pci.c
-+++ b/hw/scsi/esp-pci.c
-@@ -195,7 +195,6 @@ static void esp_pci_io_write(void *opaque, hwaddr addr,
-         val <<= shift;
-         val |= current & ~(mask << shift);
-         addr &= ~3;
--        size = 4;
-     }
- 
-     if (addr < 0x40) {
+Chen Qun (13):
+  block/stream: Remove redundant statement in stream_run()
+  block/iscsi:Remove redundant statement in iscsi_open()
+  block/file-posix: Remove redundant statement in raw_handle_perm_lock()
+  scsi/esp-pci: Remove redundant statement in esp_pci_io_write()
+  scsi/scsi-disk: Remove redundant statement in
+    scsi_disk_emulate_command()
+  display/pxa2xx_lcd: Remove redundant statement in
+    pxa2xx_palette_parse()
+  display/exynos4210_fimd: Remove redundant statement in
+    exynos4210_fimd_update()
+  display/blizzard: Remove redundant statement in
+    blizzard_draw_line16_32()
+  dma/xlnx-zdma: Remove redundant statement in zdma_write_dst()
+  migration/vmstate: Remove redundant statement in
+    vmstate_save_state_v()
+  timer/exynos4210_mct: Remove redundant statement in
+    exynos4210_mct_write()
+  usb/hcd-ehci: Remove redundant statements
+  monitor/hmp-cmds: Remove redundant statement in
+    hmp_rocker_of_dpa_groups()
+
+ block/file-posix.c           | 1 -
+ block/iscsi.c                | 1 -
+ block/stream.c               | 1 -
+ hw/display/blizzard.c        | 1 -
+ hw/display/exynos4210_fimd.c | 1 -
+ hw/display/pxa2xx_lcd.c      | 1 -
+ hw/dma/xlnx-zdma.c           | 2 --
+ hw/scsi/esp-pci.c            | 1 -
+ hw/scsi/scsi-disk.c          | 1 -
+ hw/timer/exynos4210_mct.c    | 4 ----
+ hw/usb/hcd-ehci.c            | 3 ---
+ migration/vmstate.c          | 1 -
+ monitor/hmp-cmds.c           | 1 -
+ 13 files changed, 19 deletions(-)
+
 -- 
 2.23.0
 
