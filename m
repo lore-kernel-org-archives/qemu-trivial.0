@@ -1,32 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6PgV-0007BX-UZ
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Feb 2020 21:10:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38625)
+	id 1j6PgW-0007CE-4z
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Feb 2020 21:10:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38616)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgR-0006zK-DS
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgR-0006yu-5M
  for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgQ-0008CL-9n
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgQ-0008CA-3k
  for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:51 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3243 helo=huawei.com)
+Received: from szxga07-in.huawei.com ([45.249.212.35]:59806 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6PgL-0007zR-Bp; Mon, 24 Feb 2020 21:10:45 -0500
+ id 1j6PgL-0007vn-0o; Mon, 24 Feb 2020 21:10:45 -0500
 Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 951B57892CD99F11857F;
- Tue, 25 Feb 2020 10:10:42 +0800 (CST)
+ by Forcepoint Email with ESMTP id 98AC6616BF2A3398F797;
+ Tue, 25 Feb 2020 10:10:37 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS412-HUB.china.huawei.com
  (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Tue, 25 Feb 2020
- 10:10:33 +0800
+ 10:10:30 +0800
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Andrzej Zaborowski <balrogg@gmail.com>,
- <qemu-arm@nongnu.org>
-Subject: [PATCH 08/13] display/blizzard: Remove redundant statement in
- blizzard_draw_line16_32()
-Date: Tue, 25 Feb 2020 10:09:32 +0800
-Message-ID: <20200225020937.25028-9-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Kevin Wolf <kwolf@redhat.com>, Max Reitz
+ <mreitz@redhat.com>, <qemu-block@nongnu.org>
+Subject: [PATCH 03/13] block/file-posix: Remove redundant statement in
+ raw_handle_perm_lock()
+Date: Tue, 25 Feb 2020 10:09:27 +0800
+Message-ID: <20200225020937.25028-4-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.14.1.windows.1
 In-Reply-To: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
 References: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
@@ -36,7 +36,7 @@ X-Originating-IP: [10.133.205.93]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.191
+X-Received-From: 45.249.212.35
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -53,31 +53,32 @@ X-List-Received-Date: Tue, 25 Feb 2020 02:10:52 -0000
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
 Clang static code analyzer show warning:
-  hw/display/blizzard.c:940:9: warning: Value stored to 'data' is never read
-        data >>= 5;
-        ^        ~
+  block/file-posix.c:891:9: warning: Value stored to 'op' is never read
+        op = RAW_PL_ABORT;
+        ^    ~~~~~~~~~~~~
+
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Andrzej Zaborowski <balrogg@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>
+Cc: Max Reitz <mreitz@redhat.com>
+Cc: qemu-block@nongnu.org
 ---
- hw/display/blizzard.c | 1 -
+ block/file-posix.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/hw/display/blizzard.c b/hw/display/blizzard.c
-index 359e399c2a..62517bdf75 100644
---- a/hw/display/blizzard.c
-+++ b/hw/display/blizzard.c
-@@ -937,7 +937,6 @@ static void blizzard_draw_line16_32(uint32_t *dest,
-         g = (data & 0x3f) << 2;
-         data >>= 6;
-         r = (data & 0x1f) << 3;
--        data >>= 5;
-         *dest++ = rgb_to_pixel32(r, g, b);
-     }
- }
+diff --git a/block/file-posix.c b/block/file-posix.c
+index 6345477112..0f77447a25 100644
+--- a/block/file-posix.c
++++ b/block/file-posix.c
+@@ -888,7 +888,6 @@ static int raw_handle_perm_lock(BlockDriverState *bs,
+                               "Is another process using the image [%s]?\n",
+                               bs->filename);
+         }
+-        op = RAW_PL_ABORT;
+         /* fall through to unlock bytes. */
+     case RAW_PL_ABORT:
+         raw_apply_lock_bytes(s, s->fd, s->perm, ~s->shared_perm,
 -- 
 2.23.0
 
