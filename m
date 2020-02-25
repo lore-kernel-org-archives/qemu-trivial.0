@@ -1,30 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6PgZ-0007Jb-Dj
+	id 1j6PgZ-0007KC-LS
 	for mharc-qemu-trivial@gnu.org; Mon, 24 Feb 2020 21:10:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38545)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38680)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgP-0006vX-Rj
- for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:50 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgS-000722-SX
+ for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgO-0008A7-Nw
- for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:49 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3242 helo=huawei.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgQ-0008Cl-OD
+ for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:52 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:59816 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6PgL-0007zQ-D6; Mon, 24 Feb 2020 21:10:45 -0500
+ id 1j6PgL-0007vr-0q; Mon, 24 Feb 2020 21:10:45 -0500
 Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 9018B2E2D7E06BA90EA8;
- Tue, 25 Feb 2020 10:10:42 +0800 (CST)
+ by Forcepoint Email with ESMTP id AF84BE1648301EFB36CC;
+ Tue, 25 Feb 2020 10:10:37 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS412-HUB.china.huawei.com
  (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Tue, 25 Feb 2020
- 10:10:35 +0800
+ 10:10:28 +0800
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH 12/13] usb/hcd-ehci: Remove redundant statements
-Date: Tue, 25 Feb 2020 10:09:36 +0800
-Message-ID: <20200225020937.25028-13-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, John Snow <jsnow@redhat.com>, Kevin Wolf
+ <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>, <qemu-block@nongnu.org>
+Subject: [PATCH 01/13] block/stream: Remove redundant statement in stream_run()
+Date: Tue, 25 Feb 2020 10:09:25 +0800
+Message-ID: <20200225020937.25028-2-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.14.1.windows.1
 In-Reply-To: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
 References: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
@@ -34,7 +35,7 @@ X-Originating-IP: [10.133.205.93]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.191
+X-Received-From: 45.249.212.35
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -46,49 +47,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Feb 2020 02:10:51 -0000
+X-List-Received-Date: Tue, 25 Feb 2020 02:10:54 -0000
 
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
-The "again" assignment is meaningless before g_assert_not_reached.
-In addition, the break statements no longer needs to be after
-g_assert_not_reached.
-
 Clang static code analyzer show warning:
-hw/usb/hcd-ehci.c:2108:13: warning: Value stored to 'again' is never read
-            again = -1;
-            ^       ~~
-
+  block/stream.c:186:9: warning: Value stored to 'ret' is never read
+        ret = 0;
+        ^     ~
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: John Snow <jsnow@redhat.com>
+Cc: Kevin Wolf <kwolf@redhat.com>
+Cc: Max Reitz <mreitz@redhat.com>
+Cc: qemu-block@nongnu.org
 ---
- hw/usb/hcd-ehci.c | 3 ---
- 1 file changed, 3 deletions(-)
+ block/stream.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-index 56ab2f457f..29d49c2d7e 100644
---- a/hw/usb/hcd-ehci.c
-+++ b/hw/usb/hcd-ehci.c
-@@ -1301,7 +1301,6 @@ static void ehci_execute_complete(EHCIQueue *q)
-         /* should not be triggerable */
-         fprintf(stderr, "USB invalid response %d\n", p->packet.status);
-         g_assert_not_reached();
--        break;
-     }
- 
-     /* TODO check 4.12 for splits */
-@@ -2105,9 +2104,7 @@ static void ehci_advance_state(EHCIState *ehci, int async)
- 
-         default:
-             fprintf(stderr, "Bad state!\n");
--            again = -1;
-             g_assert_not_reached();
--            break;
+diff --git a/block/stream.c b/block/stream.c
+index 5562ccbf57..d78074ac80 100644
+--- a/block/stream.c
++++ b/block/stream.c
+@@ -183,7 +183,6 @@ static int coroutine_fn stream_run(Job *job, Error **errp)
+                 break;
+             }
          }
+-        ret = 0;
  
-         if (again < 0 || itd_count > 16) {
+         /* Publish progress */
+         job_progress_update(&s->common.job, n);
 -- 
 2.23.0
 
