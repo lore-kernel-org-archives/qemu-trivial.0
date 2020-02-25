@@ -1,32 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6PgZ-0007JC-1G
+	id 1j6PgZ-0007JN-6I
 	for mharc-qemu-trivial@gnu.org; Mon, 24 Feb 2020 21:10:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38620)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38649)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgR-0006z2-74
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgR-0006zY-Vk
  for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgQ-0008CG-90
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgQ-0008DD-WB
  for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:51 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:59894 helo=huawei.com)
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3246 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6PgN-00085G-Cv; Mon, 24 Feb 2020 21:10:47 -0500
+ id 1j6PgL-0007zV-D8; Mon, 24 Feb 2020 21:10:45 -0500
 Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id B9A09D269BD14660E0AF;
- Tue, 25 Feb 2020 10:10:37 +0800 (CST)
+ by Forcepoint Email with ESMTP id A2C5BDFDBD7D69E87A5D;
+ Tue, 25 Feb 2020 10:10:42 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS412-HUB.china.huawei.com
  (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Tue, 25 Feb 2020
- 10:10:31 +0800
+ 10:10:32 +0800
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng
- <fam@euphon.net>
-Subject: [PATCH 05/13] scsi/scsi-disk: Remove redundant statement in
- scsi_disk_emulate_command()
-Date: Tue, 25 Feb 2020 10:09:29 +0800
-Message-ID: <20200225020937.25028-6-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ <qemu-arm@nongnu.org>
+Subject: [PATCH 07/13] display/exynos4210_fimd: Remove redundant statement in
+ exynos4210_fimd_update()
+Date: Tue, 25 Feb 2020 10:09:31 +0800
+Message-ID: <20200225020937.25028-8-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.14.1.windows.1
 In-Reply-To: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
 References: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
@@ -36,7 +36,7 @@ X-Originating-IP: [10.133.205.93]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.35
+X-Received-From: 45.249.212.191
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -48,36 +48,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Feb 2020 02:10:52 -0000
+X-List-Received-Date: Tue, 25 Feb 2020 02:10:53 -0000
 
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
 Clang static code analyzer show warning:
-scsi/scsi-disk.c:1918:5: warning: Value stored to 'buflen' is never read
-    buflen = req->cmd.xfer;
-    ^        ~~~~~~~~~~~~~
+hw/display/exynos4210_fimd.c:1313:17: warning: Value stored to 'is_dirty' is never read
+                is_dirty = false;
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Fam Zheng <fam@euphon.net>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
 ---
- hw/scsi/scsi-disk.c | 1 -
+ hw/display/exynos4210_fimd.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
-index 10d0794d60..1c0cb63a6f 100644
---- a/hw/scsi/scsi-disk.c
-+++ b/hw/scsi/scsi-disk.c
-@@ -1915,7 +1915,6 @@ static int32_t scsi_disk_emulate_command(SCSIRequest *req, uint8_t *buf)
-         r->iov.iov_base = blk_blockalign(s->qdev.conf.blk, r->buflen);
-     }
- 
--    buflen = req->cmd.xfer;
-     outbuf = r->iov.iov_base;
-     memset(outbuf, 0, r->buflen);
-     switch (req->cmd.buf[0]) {
+diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
+index c1071ecd46..05d3265b76 100644
+--- a/hw/display/exynos4210_fimd.c
++++ b/hw/display/exynos4210_fimd.c
+@@ -1310,7 +1310,6 @@ static void exynos4210_fimd_update(void *opaque)
+                 }
+                 host_fb_addr += inc_size;
+                 fb_line_addr += inc_size;
+-                is_dirty = false;
+             }
+             g_free(snap);
+             blend = true;
 -- 
 2.23.0
 
