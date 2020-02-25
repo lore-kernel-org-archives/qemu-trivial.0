@@ -1,32 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6PgZ-0007JN-6I
+	id 1j6PgZ-0007Jb-Dj
 	for mharc-qemu-trivial@gnu.org; Mon, 24 Feb 2020 21:10:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38649)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38545)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgR-0006zY-Vk
- for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:52 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgP-0006vX-Rj
+ for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:50 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgQ-0008DD-WB
- for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:51 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3246 helo=huawei.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6PgO-0008A7-Nw
+ for qemu-trivial@nongnu.org; Mon, 24 Feb 2020 21:10:49 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3242 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6PgL-0007zV-D8; Mon, 24 Feb 2020 21:10:45 -0500
+ id 1j6PgL-0007zQ-D6; Mon, 24 Feb 2020 21:10:45 -0500
 Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id A2C5BDFDBD7D69E87A5D;
+ by Forcepoint Email with ESMTP id 9018B2E2D7E06BA90EA8;
  Tue, 25 Feb 2020 10:10:42 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS412-HUB.china.huawei.com
  (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Tue, 25 Feb 2020
- 10:10:32 +0800
+ 10:10:35 +0800
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- <qemu-arm@nongnu.org>
-Subject: [PATCH 07/13] display/exynos4210_fimd: Remove redundant statement in
- exynos4210_fimd_update()
-Date: Tue, 25 Feb 2020 10:09:31 +0800
-Message-ID: <20200225020937.25028-8-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>
+Subject: [PATCH 12/13] usb/hcd-ehci: Remove redundant statements
+Date: Tue, 25 Feb 2020 10:09:36 +0800
+Message-ID: <20200225020937.25028-13-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.14.1.windows.1
 In-Reply-To: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
 References: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
@@ -48,36 +46,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Feb 2020 02:10:53 -0000
+X-List-Received-Date: Tue, 25 Feb 2020 02:10:51 -0000
 
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
+The "again" assignment is meaningless before g_assert_not_reached.
+In addition, the break statements no longer needs to be after
+g_assert_not_reached.
+
 Clang static code analyzer show warning:
-hw/display/exynos4210_fimd.c:1313:17: warning: Value stored to 'is_dirty' is never read
-                is_dirty = false;
+hw/usb/hcd-ehci.c:2108:13: warning: Value stored to 'again' is never read
+            again = -1;
+            ^       ~~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/display/exynos4210_fimd.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/usb/hcd-ehci.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-index c1071ecd46..05d3265b76 100644
---- a/hw/display/exynos4210_fimd.c
-+++ b/hw/display/exynos4210_fimd.c
-@@ -1310,7 +1310,6 @@ static void exynos4210_fimd_update(void *opaque)
-                 }
-                 host_fb_addr += inc_size;
-                 fb_line_addr += inc_size;
--                is_dirty = false;
-             }
-             g_free(snap);
-             blend = true;
+diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+index 56ab2f457f..29d49c2d7e 100644
+--- a/hw/usb/hcd-ehci.c
++++ b/hw/usb/hcd-ehci.c
+@@ -1301,7 +1301,6 @@ static void ehci_execute_complete(EHCIQueue *q)
+         /* should not be triggerable */
+         fprintf(stderr, "USB invalid response %d\n", p->packet.status);
+         g_assert_not_reached();
+-        break;
+     }
+ 
+     /* TODO check 4.12 for splits */
+@@ -2105,9 +2104,7 @@ static void ehci_advance_state(EHCIState *ehci, int async)
+ 
+         default:
+             fprintf(stderr, "Bad state!\n");
+-            again = -1;
+             g_assert_not_reached();
+-            break;
+         }
+ 
+         if (again < 0 || itd_count > 16) {
 -- 
 2.23.0
 
