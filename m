@@ -1,82 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6YGb-0001yg-5F
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Feb 2020 06:20:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41379)
+	id 1j6Ykk-0000uJ-S5
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Feb 2020 06:51:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49521)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j6YGZ-0001xr-0V
- for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 06:20:44 -0500
+ (envelope-from <philmd@redhat.com>) id 1j6Ykh-0000rF-Kn
+ for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 06:51:52 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j6YGV-00078M-7R
- for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 06:20:42 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:28129
+ (envelope-from <philmd@redhat.com>) id 1j6Ykg-0007mj-JB
+ for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 06:51:51 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:42809
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6YGT-00077Q-Ci
- for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 06:20:38 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j6Ykg-0007fo-F5
+ for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 06:51:50 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582629636;
+ s=mimecast20190719; t=1582631509;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1LlKKdL4DaKWeVsmQPadwMBS4Z8kHikh7mfaA90+CJc=;
- b=HFGF8UaxXmlOmO4lZofm7ss03swDtS4Pc0ByuI3Vxx0b1rjNhZ/Yyf3lT8qwmyQYJFW1E6
- iDQJjWpD+mwFc3qihGUj9SWnKDshas36mR2w3sYAj9tYUFUpx0SSmVubeVrfzzKhsEI0tm
- mM5NLR1ef3UYf1Qwn0vYYt3k3BcAHlE=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-414-yPtS__V8O0SDu5NL4SuXXA-1; Tue, 25 Feb 2020 06:20:34 -0500
-X-MC-Unique: yPtS__V8O0SDu5NL4SuXXA-1
-Received: by mail-wr1-f70.google.com with SMTP id m13so47234wrw.3
- for <qemu-trivial@nongnu.org>; Tue, 25 Feb 2020 03:20:34 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=vvCfD7/rNLbdZdQItEDS2uieFhqDbYFswtqRvUcezs8=;
- b=FwrSwzV7h4xsd3lzhJAsmIwsaPwJAqnA/bLAZIgCdaGqoSGhyjx3dHrWf+v3ZBQdZo
- L3MmeWv9hjPzruBsnmZ/roprGJWZGr8iT67qUbt3D/QFEZJ5CxvjUdesYvBgywLNP9Sj
- jRfOoY4H1V+7KKz+W0wVrQQmQgVFWyE5xo8qosR2Z0AwUZO9JoiI/iaRn+IMcKHHDRTc
- h0IMZcGBzbERIFeXYYJNcNEH2ruTmYtUeOXqQK0/JnD9Wxsdy+iaTR6s8gHbk1fKSRg/
- lUns2u9KvSJAksykDuXAa79EZeJGQ4HW82z1g6fJrHtUMyFr+X7xm8YqVgnqHgTLPls0
- nDXQ==
-X-Gm-Message-State: APjAAAUX5TXU7nsXrY4fkO42B9Ioo0w0Vdqpr1H0TIruZYZ7GrstNThy
- 8bv3zGuuecUneUg+p2FVHEOl6UsECyvJuZNWyN/TjVYJjEY2Oi7DN+yBVm5POjp+kFmB+E5WBL1
- UPZiMZuSVMybObw2T7w==
-X-Received: by 2002:a5d:514b:: with SMTP id u11mr72026911wrt.322.1582629633359; 
- Tue, 25 Feb 2020 03:20:33 -0800 (PST)
-X-Google-Smtp-Source: APXvYqy2W6aGoNtSV6nnZeAHGWDrDD0iU4TeJXDpKsJBuGhP39N9z3y6xfvHeIwr7Az73oRRWhLLpQ==
-X-Received: by 2002:a5d:514b:: with SMTP id u11mr72026882wrt.322.1582629633073; 
- Tue, 25 Feb 2020 03:20:33 -0800 (PST)
-Received: from [192.168.1.35] (47.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.47])
- by smtp.gmail.com with ESMTPSA id y8sm3631022wma.10.2020.02.25.03.20.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Feb 2020 03:20:32 -0800 (PST)
-Subject: Re: [PATCH 2/2] hw/arm/gumstix: Use the IEC binary prefix definitions
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
- QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <20200223231044.8003-1-philmd@redhat.com>
- <20200223231044.8003-3-philmd@redhat.com>
- <CAFEAcA8MSO4YMEq2FqvpJKUVYE_1CqaB2KLD1YN-YebOhJVgEg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <63b97fb9-02c9-2be4-73e7-19807a2d6aeb@redhat.com>
-Date: Tue, 25 Feb 2020 12:20:31 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ content-transfer-encoding:content-transfer-encoding;
+ bh=NPFWnv/Ef9WwpSuw1jcfq/YK7QkVuPURI5RaLd84Zyc=;
+ b=MJbJZ3kuQq0xd2ZQIn3gRkSJ12Tnh9Cz1Op+njpXfvzaW1F7KOCWyJ20maUCotSTZc7LhK
+ EbAWL4vgQ6HQE/C2rC5Mb8V59jrUPAHDAvN8iwbr4ZGb1t0lYHxJ+rbORRD5BifkTZ4u9k
+ 76DorZocLmv88PWvZekyyYxvjo3T+30=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-303-pC-yLtEAOY-oAKrYQ58sEQ-1; Tue, 25 Feb 2020 06:51:48 -0500
+X-MC-Unique: pC-yLtEAOY-oAKrYQ58sEQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 40A07800D5B;
+ Tue, 25 Feb 2020 11:51:46 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-205-195.brq.redhat.com [10.40.205.195])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2B10A1001DC2;
+ Tue, 25 Feb 2020 11:51:42 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Chris Wulff <crwulff@gmail.com>, qemu-trivial@nongnu.org,
+ Richard Henderson <rth@twiddle.net>,
+ Julian Brown <julian@codesourcery.com>, Marek Vasut <marex@denx.de>,
+ Sandra Loosemore <sandra@codesourcery.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jenner <andrew@codesourcery.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] hw/nios2/boot: Remove dead code (big endian check)
+Date: Tue, 25 Feb 2020 12:51:40 +0100
+Message-Id: <20200225115140.10023-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8MSO4YMEq2FqvpJKUVYE_1CqaB2KLD1YN-YebOhJVgEg@mail.gmail.com>
-Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,136 +67,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Feb 2020 11:20:44 -0000
+X-List-Received-Date: Tue, 25 Feb 2020 11:51:52 -0000
 
-On 2/25/20 12:16 PM, Peter Maydell wrote:
-> On Sun, 23 Feb 2020 at 23:10, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
-com> wrote:
->>
->> From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->>
->> IEC binary prefixes ease code review: the unit is explicit.
->>
->> Add a comment describing the Connex uses a Numonyx RC28F128J3F75
->> flash, and the Verdex uses a Micron RC28F256P30TFA.
->>
->> Correct the Verdex machine description (we model the 'Pro' board).
->>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->=20
-> This patch is doing somewhat more than the commit Subject line
-> suggests. I don't think it's particularly strongly in need
-> of splitting into more patches, but could you make the
-> subject line a bit closer to what the patch is doing?
->=20
->> ---
->>   hw/arm/gumstix.c | 23 +++++++++--------------
->>   1 file changed, 9 insertions(+), 14 deletions(-)
->>
->> diff --git a/hw/arm/gumstix.c b/hw/arm/gumstix.c
->> index 94904d717b..ca918fda0c 100644
->> --- a/hw/arm/gumstix.c
->> +++ b/hw/arm/gumstix.c
->> @@ -35,6 +35,7 @@
->>    */
->>
->>   #include "qemu/osdep.h"
->> +#include "qemu/units.h"
->>   #include "qemu/error-report.h"
->>   #include "hw/arm/pxa.h"
->>   #include "net/net.h"
->> @@ -45,18 +46,14 @@
->>   #include "sysemu/qtest.h"
->>   #include "cpu.h"
->>
->> -static const int sector_len =3D 128 * 1024;
->> +static const int sector_len =3D 128 * KiB;
->>
->>   static void connex_init(MachineState *machine)
->>   {
->>       PXA2xxState *cpu;
->>       DriveInfo *dinfo;
->> -    MemoryRegion *address_space_mem =3D get_system_memory();
->>
->> -    uint32_t connex_rom =3D 0x01000000;
->> -    uint32_t connex_ram =3D 0x04000000;
->> -
->> -    cpu =3D pxa255_init(address_space_mem, connex_ram);
->> +    cpu =3D pxa255_init(get_system_memory(), 64 * MiB);
->>
->>       dinfo =3D drive_get(IF_PFLASH, 0, 0);
->>       if (!dinfo && !qtest_enabled()) {
->> @@ -65,7 +62,8 @@ static void connex_init(MachineState *machine)
->>           exit(1);
->>       }
->>
->> -    if (!pflash_cfi01_register(0x00000000, "connext.rom", connex_rom,
->> +    /* Numonyx RC28F128J3F75 */
->> +    if (!pflash_cfi01_register(0x00000000, "connext.rom", 16 * MiB,
->>                                  dinfo ? blk_by_legacy_dinfo(dinfo) : NU=
-LL,
->>                                  sector_len, 2, 0, 0, 0, 0, 0)) {
->>           error_report("Error registering flash memory");
->=20
-> Previously the variable names were helpfully acting as a
-> bit of documentation of what the 64MB and 16MB things were.
-> Perhaps we could instead have
->=20
-> #define CONNEX_ROM_SIZE (16 * MiB)
-> #define CONNEX_RAM_SIZE (64 * MiB)
->=20
-> and then use those?
+We only build the little-endian softmmu configuration (all
+Nios II processors are only little endian). Checking for
+big endian is pointless, remove the unused code.
 
-OK.
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/nios2/boot.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-FYI long term plan for the pflash API is to use a white-list of tested=20
-flash models, and restrict models when boards have flash soldered.
-
->=20
->> @@ -81,12 +79,8 @@ static void verdex_init(MachineState *machine)
->>   {
->>       PXA2xxState *cpu;
->>       DriveInfo *dinfo;
->> -    MemoryRegion *address_space_mem =3D get_system_memory();
->>
->> -    uint32_t verdex_rom =3D 0x02000000;
->> -    uint32_t verdex_ram =3D 0x10000000;
->> -
->> -    cpu =3D pxa270_init(address_space_mem, verdex_ram, machine->cpu_typ=
-e);
->> +    cpu =3D pxa270_init(get_system_memory(), 256 * MiB, machine->cpu_ty=
-pe);
->>
->>       dinfo =3D drive_get(IF_PFLASH, 0, 0);
->>       if (!dinfo && !qtest_enabled()) {
->> @@ -95,7 +89,8 @@ static void verdex_init(MachineState *machine)
->>           exit(1);
->>       }
->>
->> -    if (!pflash_cfi01_register(0x00000000, "verdex.rom", verdex_rom,
->> +    /* Micron RC28F256P30TFA */
->> +    if (!pflash_cfi01_register(0x00000000, "verdex.rom", 32 * MiB,
->>                                  dinfo ? blk_by_legacy_dinfo(dinfo) : NU=
-LL,
->>                                  sector_len, 2, 0, 0, 0, 0, 0)) {
->>           error_report("Error registering flash memory");
->=20
-> Similarly here.
->=20
->> @@ -126,7 +121,7 @@ static void verdex_class_init(ObjectClass *oc, void =
-*data)
->>   {
->>       MachineClass *mc =3D MACHINE_CLASS(oc);
->>
->> -    mc->desc =3D "Gumstix Verdex (PXA270)";
->> +    mc->desc =3D "Gumstix Verdex Pro XL6P COMs (PXA270)";
->>       mc->init =3D verdex_init;
->>       mc->ignore_memory_transaction_failures =3D true;
->>       mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("pxa270-c0");
->> --
->=20
-> thanks
-> -- PMM
->=20
+diff --git a/hw/nios2/boot.c b/hw/nios2/boot.c
+index 88224aa84c..000f8205d6 100644
+--- a/hw/nios2/boot.c
++++ b/hw/nios2/boot.c
+@@ -140,16 +140,11 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr ddr_base=
+,
+     if (kernel_filename) {
+         int kernel_size, fdt_size;
+         uint64_t entry, low, high;
+-        int big_endian =3D 0;
+-
+-#ifdef TARGET_WORDS_BIGENDIAN
+-        big_endian =3D 1;
+-#endif
+=20
+         /* Boots a kernel elf binary. */
+         kernel_size =3D load_elf(kernel_filename, NULL, NULL, NULL,
+                                &entry, &low, &high, NULL,
+-                               big_endian, EM_ALTERA_NIOS2, 0, 0);
++                               0, EM_ALTERA_NIOS2, 0, 0);
+         if ((uint32_t)entry =3D=3D 0xc0000000) {
+             /*
+              * The Nios II processor reference guide documents that the
+@@ -160,7 +155,7 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr ddr_base,
+             kernel_size =3D load_elf(kernel_filename, NULL,
+                                    translate_kernel_address, NULL,
+                                    &entry, NULL, NULL, NULL,
+-                                   big_endian, EM_ALTERA_NIOS2, 0, 0);
++                                   0, EM_ALTERA_NIOS2, 0, 0);
+             boot_info.bootstrap_pc =3D ddr_base + 0xc0000000 +
+                 (entry & 0x07ffffff);
+         } else {
+--=20
+2.21.1
 
 
