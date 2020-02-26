@@ -1,53 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6qIk-0003AI-R0
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 01:36:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53391)
+	id 1j6sM8-0000SX-8P
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 03:47:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44540)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6qIh-000362-Op
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 01:36:09 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM5-0000Oq-Gz
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:46 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6qIg-0002CV-8d
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 01:36:07 -0500
-Received: from szxga03-in.huawei.com ([45.249.212.189]:2070 helo=huawei.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM4-0007Rw-FF
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:45 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:45806 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6qIY-0001vS-Uc; Wed, 26 Feb 2020 01:35:59 -0500
-Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.55])
- by Forcepoint Email with ESMTP id 3D3F2FAAF39E4F860F97;
- Wed, 26 Feb 2020 14:35:49 +0800 (CST)
-Received: from DGGEMM424-HUB.china.huawei.com (10.1.198.41) by
- DGGEMM406-HUB.china.huawei.com (10.3.20.214) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 26 Feb 2020 14:35:44 +0800
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
- dggemm424-hub.china.huawei.com ([10.1.198.41]) with mapi id 14.03.0439.000;
- Wed, 26 Feb 2020 14:35:38 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Jason Wang <jasowang@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
- <qemu-trivial@nongnu.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- Peter Chubb <peter.chubb@nicta.com.au>, qemu-arm <qemu-arm@nongnu.org>
-Subject: RE: [PATCH] hw/net/imx_fec: write TGSR and TCSR3 in imx_enet_write()
-Thread-Topic: [PATCH] hw/net/imx_fec: write TGSR and TCSR3 in imx_enet_write()
-Thread-Index: AQHV64ecnD2knEVSV0edVn6KHPMEf6gq31MAgABNfACAARiLAIAAvtHw
-Date: Wed, 26 Feb 2020 06:35:37 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B662AA1@dggemm531-mbx.china.huawei.com>
-References: <20200225025923.19328-1-kuhn.chenqun@huawei.com>
- <9206dda7-0e12-b68e-87ca-1985b61381bc@redhat.com>
- <CAFEAcA-W+brVEmGr29i6JO4GFrnoLAce-qoMQpQc56x6B4BY3A@mail.gmail.com>
- <9fc2581c-56a1-0969-6a13-1454a1865264@redhat.com>
-In-Reply-To: <9fc2581c-56a1-0969-6a13-1454a1865264@redhat.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ id 1j6sM1-00073q-OX; Wed, 26 Feb 2020 03:47:42 -0500
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 3DC5F2A4522DC625B0A0;
+ Wed, 26 Feb 2020 16:47:37 +0800 (CST)
+Received: from huawei.com (10.133.205.93) by DGGEMS411-HUB.china.huawei.com
+ (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Wed, 26 Feb 2020
+ 16:47:29 +0800
+From: <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
+ <kuhn.chenqun@huawei.com>
+Subject: [PATCH v2 00/13] redundant code: Fix warnings reported by Clang
+ static code analyzer
+Date: Wed, 26 Feb 2020 16:46:34 +0800
+Message-ID: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.21.0.windows.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+X-Originating-IP: [10.133.205.93]
 X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.189
+X-Received-From: 45.249.212.35
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -59,58 +46,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2020 06:36:09 -0000
+X-List-Received-Date: Wed, 26 Feb 2020 08:47:46 -0000
 
-DQo+LS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj5Gcm9tOiBKYXNvbiBXYW5nIFttYWlsdG86
-amFzb3dhbmdAcmVkaGF0LmNvbV0NCj5TZW50OiBXZWRuZXNkYXksIEZlYnJ1YXJ5IDI2LCAyMDIw
-IDExOjAzIEFNDQo+VG86IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz4N
-Cj5DYzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPjsgUUVNVSBEZXZl
-bG9wZXJzDQo+PHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz47IFFFTVUgVHJpdmlhbCA8cWVtdS10cml2
-aWFsQG5vbmdudS5vcmc+Ow0KPlpoYW5naGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVh
-d2VpLmNvbT47IFBldGVyIENodWJiDQo+PHBldGVyLmNodWJiQG5pY3RhLmNvbS5hdT47IHFlbXUt
-YXJtIDxxZW11LWFybUBub25nbnUub3JnPg0KPlN1YmplY3Q6IFJlOiBbUEFUQ0hdIGh3L25ldC9p
-bXhfZmVjOiB3cml0ZSBUR1NSIGFuZCBUQ1NSMyBpbg0KPmlteF9lbmV0X3dyaXRlKCkNCj4NCj4N
-Cj5PbiAyMDIwLzIvMjUg5LiL5Y2INjoxOCwgUGV0ZXIgTWF5ZGVsbCB3cm90ZToNCj4+IE9uIFR1
-ZSwgMjUgRmViIDIwMjAgYXQgMDU6NDEsIEphc29uIFdhbmcgPGphc293YW5nQHJlZGhhdC5jb20+
-IHdyb3RlOg0KPj4+DQo+Pj4gT24gMjAyMC8yLzI1IOS4iuWNiDEwOjU5LCBDaGVuIFF1biB3cm90
-ZToNCj4+Pj4gVGhlIGN1cnJlbnQgY29kZSBjYXVzZXMgY2xhbmcgc3RhdGljIGNvZGUgYW5hbHl6
-ZXIgZ2VuZXJhdGUgd2FybmluZzoNCj4+Pj4gaHcvbmV0L2lteF9mZWMuYzo4NTg6OTogd2Fybmlu
-ZzogVmFsdWUgc3RvcmVkIHRvICd2YWx1ZScgaXMgbmV2ZXIgcmVhZA0KPj4+PiAgICAgICAgICAg
-dmFsdWUgPSB2YWx1ZSAmIDB4MDAwMDAwMGY7DQo+Pj4+ICAgICAgICAgICBeICAgICAgIH5+fn5+
-fn5+fn5+fn5+fn5+fg0KPj4+PiBody9uZXQvaW14X2ZlYy5jOjg2NDo5OiB3YXJuaW5nOiBWYWx1
-ZSBzdG9yZWQgdG8gJ3ZhbHVlJyBpcyBuZXZlciByZWFkDQo+Pj4+ICAgICAgICAgICB2YWx1ZSA9
-IHZhbHVlICYgMHgwMDAwMDBmZDsNCj4+Pj4gICAgICAgICAgIF4gICAgICAgfn5+fn5+fn5+fn5+
-fn5+fn5+DQo+Pj4+DQo+Pj4+IEFjY29yZGluZyB0byB0aGUgZGVmaW5pdGlvbiBvZiB0aGUgZnVu
-Y3Rpb24sIHRoZSB0d28g4oCcdmFsdWXigJ0gYXNzaWdubWVudHMNCj4+Pj4gICAgc2hvdWxkIGJl
-IHdyaXR0ZW4gdG8gcmVnaXN0ZXJzLg0KPj4+Pg0KPj4+PiBSZXBvcnRlZC1ieTogRXVsZXIgUm9i
-b3QgPGV1bGVyLnJvYm90QGh1YXdlaS5jb20+DQo+Pj4+IFNpZ25lZC1vZmYtYnk6IENoZW4gUXVu
-IDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4+Pj4gLS0tDQo+Pj4+IEknbSBub3Qgc3VyZSBp
-ZiB0aGlzIG1vZGlmaWNhdGlvbiBpcyBjb3JyZWN0LCBqdXN0IGZyb20gdGhlIGZ1bmN0aW9uDQo+
-Pj4+ICAgIGRlZmluaXRpb24sIGl0IGlzIGNvcnJlY3QuDQo+Pj4+IC0tLQ0KPj4+PiAgICBody9u
-ZXQvaW14X2ZlYy5jIHwgNCArKy0tDQo+Pj4+ICAgIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlv
-bnMoKyksIDIgZGVsZXRpb25zKC0pDQo+Pj4+DQo+Pj4+IGRpZmYgLS1naXQgYS9ody9uZXQvaW14
-X2ZlYy5jIGIvaHcvbmV0L2lteF9mZWMuYyBpbmRleA0KPj4+PiA2YTEyNGExNTRhLi45MmY2MjE1
-NzEyIDEwMDY0NA0KPj4+PiAtLS0gYS9ody9uZXQvaW14X2ZlYy5jDQo+Pj4+ICsrKyBiL2h3L25l
-dC9pbXhfZmVjLmMNCj4+Pj4gQEAgLTg1NSwxMyArODU1LDEzIEBAIHN0YXRpYyB2b2lkIGlteF9l
-bmV0X3dyaXRlKElNWEZFQ1N0YXRlICpzLA0KPnVpbnQzMl90IGluZGV4LCB1aW50MzJfdCB2YWx1
-ZSkNCj4+Pj4gICAgICAgICAgICBicmVhazsNCj4+Pj4gICAgICAgIGNhc2UgRU5FVF9UR1NSOg0K
-Pj4+PiAgICAgICAgICAgIC8qIGltcGxlbWVudCBjbGVhciB0aW1lciBmbGFnICovDQo+Pj4+IC0g
-ICAgICAgIHZhbHVlID0gdmFsdWUgJiAweDAwMDAwMDBmOw0KPj4+PiArICAgICAgICBzLT5yZWdz
-W2luZGV4XSA9IHZhbHVlICYgMHgwMDAwMDAwZjsNCj4+Pj4gICAgICAgICAgICBicmVhazsNCj4+
-IEhpOyB0aGUgZGF0YXNoZWV0IGZvciB0aGlzIFNvQyBzYXlzIHRoYXQgdGhlc2UgYml0cyBvZiB0
-aGUgcmVnaXN0ZXINCj4+IGFyZSB3cml0ZS0xLXRvLWNsZWFyLCBzbyB3aGlsZSB0aGlzIGlzIGRl
-ZmluaXRlbHkgYSBidWcgSSBkb24ndCB0aGluaw0KPj4gdGhpcyBpcyB0aGUgcmlnaHQgZml4Lg0K
-Pj4NCj4+Pj4gICAgICAgIGNhc2UgRU5FVF9UQ1NSMDoNCj4+Pj4gICAgICAgIGNhc2UgRU5FVF9U
-Q1NSMToNCj4+Pj4gICAgICAgIGNhc2UgRU5FVF9UQ1NSMjoNCj4+Pj4gICAgICAgIGNhc2UgRU5F
-VF9UQ1NSMzoNCj4+Pj4gLSAgICAgICAgdmFsdWUgPSB2YWx1ZSAmIDB4MDAwMDAwZmQ7DQo+Pj4+
-ICsgICAgICAgIHMtPnJlZ3NbaW5kZXhdID0gdmFsdWUgJiAweDAwMDAwMGZkOw0KPj4+PiAgICAg
-ICAgICAgIGJyZWFrOw0KPj4gSGVyZSBiaXQgNyBpcyB3cml0ZS0xLXRvLWNsZWFyLCB0aG91Z2gg
-Yml0cyAwIGFuZA0KPj4gMi4uNSBhcmUgc2ltcGxlIHdyaXRlLXRoZS12YWx1ZS4NCj4+DQo+Pj4+
-ICAgICAgICBjYXNlIEVORVRfVENDUjA6DQo+Pj4+ICAgICAgICBjYXNlIEVORVRfVENDUjE6DQo+
-Pj4NCj4+PiBBcHBsaWVkLg0KPj4gQ291bGQgeW91IGRyb3AgdGhpcyBmcm9tIHlvdXIgcXVldWUs
-IHBsZWFzZT8NCj4+DQo+PiB0aGFua3MNCj4+IC0tIFBNTQ0KPg0KPg0KPlN1cmUsIENoZW4gcGxl
-YXNlIHNlbmQgVjIgdG8gYWRkcmVzcyBQZXRlcidzIGNvbW1lbnQuDQpPSywgIGJ1dCBJIGRpZG4n
-dCBmaW5kIHRoZSBkYXRhc2hlZXQgdGhhdCBjb250YWlucyB0aGVzZSB0d28gcmVnaXN0ZXJzIGRl
-c2NyaXB0aW9uLg0KQ291bGQgc29tZW9uZSBwcm92aWRlIG1lIHdpdGggYSAgY29ubmVjdGlvbiBm
-b3IgdGhlIGRhdGFzaGVldCA/DQoNCg==
+From: Chen Qun <kuhn.chenqun@huawei.com>
+
+Since v1:
+- Patch1: Addressed John Snow review comment.
+- Patch12=EF=BC=9AAddressed Philippe Mathieu-Daud=C3=A9 review comment.
+- Patch9: Move the 'dst_type' declaration to while() statement.
+- Patch13: Move the 'set' declaration to the for() statement.
+
+Chen Qun (13):
+  block/stream: Remove redundant statement in stream_run()
+  block/iscsi:Remove redundant statement in iscsi_open()
+  block/file-posix: Remove redundant statement in raw_handle_perm_lock()
+  scsi/esp-pci: Remove redundant statement in esp_pci_io_write()
+  scsi/scsi-disk: Remove redundant statement in
+    scsi_disk_emulate_command()
+  display/pxa2xx_lcd: Remove redundant statement in
+    pxa2xx_palette_parse()
+  display/exynos4210_fimd: Remove redundant statement in
+    exynos4210_fimd_update()
+  display/blizzard: Remove redundant statement in
+    blizzard_draw_line16_32()
+  dma/xlnx-zdma: Remove redundant statement in zdma_write_dst()
+  migration/vmstate: Remove redundant statement in
+    vmstate_save_state_v()
+  timer/exynos4210_mct: Remove redundant statement in
+    exynos4210_mct_write()
+  usb/hcd-ehci: Remove redundant statements
+  monitor/hmp-cmds: Remove redundant statement in
+    hmp_rocker_of_dpa_groups()
+
+ block/file-posix.c           |  1 -
+ block/iscsi.c                |  1 -
+ block/stream.c               |  1 -
+ hw/display/blizzard.c        |  1 -
+ hw/display/exynos4210_fimd.c |  1 -
+ hw/display/pxa2xx_lcd.c      |  1 -
+ hw/dma/xlnx-zdma.c           | 10 +++++-----
+ hw/scsi/esp-pci.c            |  1 -
+ hw/scsi/scsi-disk.c          |  1 -
+ hw/timer/exynos4210_mct.c    |  4 ----
+ hw/usb/hcd-ehci.c            |  3 ---
+ migration/vmstate.c          |  1 -
+ monitor/hmp-cmds.c           |  5 +----
+ 13 files changed, 6 insertions(+), 25 deletions(-)
+
+--=20
+2.23.0
+
+
 
