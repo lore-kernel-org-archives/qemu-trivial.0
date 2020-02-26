@@ -1,66 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6myw-0003qy-I9
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Feb 2020 22:03:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38486)
+	id 1j6qIk-0003AI-R0
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 01:36:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53391)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jasowang@redhat.com>) id 1j6myt-0003qg-TD
- for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 22:03:28 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6qIh-000362-Op
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 01:36:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jasowang@redhat.com>) id 1j6myr-0004l6-Pl
- for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 22:03:27 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:25465
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6qIg-0002CV-8d
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 01:36:07 -0500
+Received: from szxga03-in.huawei.com ([45.249.212.189]:2070 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jasowang@redhat.com>) id 1j6myr-0004e0-H5
- for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 22:03:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582686204;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2zKs5bLq9Rp65Ty9SQjKjFhjAMDJT91D9JmD0xAKM+4=;
- b=gdrwcdE2YbC960vEOQLeC2NBgIg4ANf3d7NwUZjwxOioZe3bdgjhs/fqIIenGJTWHxyhFB
- NleZKBUS2v9ek8BduUR1zvJ+zie9HXNk6DVW3jLwumfbVGTH4tUeXYV2snegyKn0yblGf5
- 0p43/31uk8/ZSXLHKZVO32Pc6re5fwY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-294-NVg7D-73NpOG-lInkh4Hvw-1; Tue, 25 Feb 2020 22:03:20 -0500
-X-MC-Unique: NVg7D-73NpOG-lInkh4Hvw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1164313E4;
- Wed, 26 Feb 2020 03:03:19 +0000 (UTC)
-Received: from [10.72.13.217] (ovpn-13-217.pek2.redhat.com [10.72.13.217])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BC29760BE1;
- Wed, 26 Feb 2020 03:03:09 +0000 (UTC)
-Subject: Re: [PATCH] hw/net/imx_fec: write TGSR and TCSR3 in imx_enet_write()
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Chen Qun <kuhn.chenqun@huawei.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1j6qIY-0001vS-Uc; Wed, 26 Feb 2020 01:35:59 -0500
+Received: from DGGEMM406-HUB.china.huawei.com (unknown [172.30.72.55])
+ by Forcepoint Email with ESMTP id 3D3F2FAAF39E4F860F97;
+ Wed, 26 Feb 2020 14:35:49 +0800 (CST)
+Received: from DGGEMM424-HUB.china.huawei.com (10.1.198.41) by
+ DGGEMM406-HUB.china.huawei.com (10.3.20.214) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 26 Feb 2020 14:35:44 +0800
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
+ dggemm424-hub.china.huawei.com ([10.1.198.41]) with mapi id 14.03.0439.000;
+ Wed, 26 Feb 2020 14:35:38 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Jason Wang <jasowang@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+CC: QEMU Developers <qemu-devel@nongnu.org>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
  Peter Chubb <peter.chubb@nicta.com.au>, qemu-arm <qemu-arm@nongnu.org>
+Subject: RE: [PATCH] hw/net/imx_fec: write TGSR and TCSR3 in imx_enet_write()
+Thread-Topic: [PATCH] hw/net/imx_fec: write TGSR and TCSR3 in imx_enet_write()
+Thread-Index: AQHV64ecnD2knEVSV0edVn6KHPMEf6gq31MAgABNfACAARiLAIAAvtHw
+Date: Wed, 26 Feb 2020 06:35:37 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B662AA1@dggemm531-mbx.china.huawei.com>
 References: <20200225025923.19328-1-kuhn.chenqun@huawei.com>
  <9206dda7-0e12-b68e-87ca-1985b61381bc@redhat.com>
  <CAFEAcA-W+brVEmGr29i6JO4GFrnoLAce-qoMQpQc56x6B4BY3A@mail.gmail.com>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <9fc2581c-56a1-0969-6a13-1454a1865264@redhat.com>
-Date: Wed, 26 Feb 2020 11:03:04 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ <9fc2581c-56a1-0969-6a13-1454a1865264@redhat.com>
+In-Reply-To: <9fc2581c-56a1-0969-6a13-1454a1865264@redhat.com>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-W+brVEmGr29i6JO4GFrnoLAce-qoMQpQc56x6B4BY3A@mail.gmail.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+ [fuzzy]
+X-Received-From: 45.249.212.189
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -72,72 +59,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2020 03:03:29 -0000
+X-List-Received-Date: Wed, 26 Feb 2020 06:36:09 -0000
 
-
-On 2020/2/25 =E4=B8=8B=E5=8D=886:18, Peter Maydell wrote:
-> On Tue, 25 Feb 2020 at 05:41, Jason Wang <jasowang@redhat.com> wrote:
->>
->> On 2020/2/25 =E4=B8=8A=E5=8D=8810:59, Chen Qun wrote:
->>> The current code causes clang static code analyzer generate warning:
->>> hw/net/imx_fec.c:858:9: warning: Value stored to 'value' is never read
->>>           value =3D value & 0x0000000f;
->>>           ^       ~~~~~~~~~~~~~~~~~~
->>> hw/net/imx_fec.c:864:9: warning: Value stored to 'value' is never read
->>>           value =3D value & 0x000000fd;
->>>           ^       ~~~~~~~~~~~~~~~~~~
->>>
->>> According to the definition of the function, the two =E2=80=9Cvalue=E2=
-=80=9D assignments
->>>    should be written to registers.
->>>
->>> Reported-by: Euler Robot <euler.robot@huawei.com>
->>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
->>> ---
->>> I'm not sure if this modification is correct, just from the function
->>>    definition, it is correct.
->>> ---
->>>    hw/net/imx_fec.c | 4 ++--
->>>    1 file changed, 2 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
->>> index 6a124a154a..92f6215712 100644
->>> --- a/hw/net/imx_fec.c
->>> +++ b/hw/net/imx_fec.c
->>> @@ -855,13 +855,13 @@ static void imx_enet_write(IMXFECState *s, uint32=
-_t index, uint32_t value)
->>>            break;
->>>        case ENET_TGSR:
->>>            /* implement clear timer flag */
->>> -        value =3D value & 0x0000000f;
->>> +        s->regs[index] =3D value & 0x0000000f;
->>>            break;
-> Hi; the datasheet for this SoC says that these bits
-> of the register are write-1-to-clear, so while this
-> is definitely a bug I don't think this is the right fix.
->
->>>        case ENET_TCSR0:
->>>        case ENET_TCSR1:
->>>        case ENET_TCSR2:
->>>        case ENET_TCSR3:
->>> -        value =3D value & 0x000000fd;
->>> +        s->regs[index] =3D value & 0x000000fd;
->>>            break;
-> Here bit 7 is write-1-to-clear, though bits 0 and
-> 2..5 are simple write-the-value.
->
->>>        case ENET_TCCR0:
->>>        case ENET_TCCR1:
->>
->> Applied.
-> Could you drop this from your queue, please?
->
-> thanks
-> -- PMM
-
-
-Sure, Chen please send V2 to address Peter's comment.
-
-Thanks
-
+DQo+LS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj5Gcm9tOiBKYXNvbiBXYW5nIFttYWlsdG86
+amFzb3dhbmdAcmVkaGF0LmNvbV0NCj5TZW50OiBXZWRuZXNkYXksIEZlYnJ1YXJ5IDI2LCAyMDIw
+IDExOjAzIEFNDQo+VG86IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz4N
+Cj5DYzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPjsgUUVNVSBEZXZl
+bG9wZXJzDQo+PHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz47IFFFTVUgVHJpdmlhbCA8cWVtdS10cml2
+aWFsQG5vbmdudS5vcmc+Ow0KPlpoYW5naGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVh
+d2VpLmNvbT47IFBldGVyIENodWJiDQo+PHBldGVyLmNodWJiQG5pY3RhLmNvbS5hdT47IHFlbXUt
+YXJtIDxxZW11LWFybUBub25nbnUub3JnPg0KPlN1YmplY3Q6IFJlOiBbUEFUQ0hdIGh3L25ldC9p
+bXhfZmVjOiB3cml0ZSBUR1NSIGFuZCBUQ1NSMyBpbg0KPmlteF9lbmV0X3dyaXRlKCkNCj4NCj4N
+Cj5PbiAyMDIwLzIvMjUg5LiL5Y2INjoxOCwgUGV0ZXIgTWF5ZGVsbCB3cm90ZToNCj4+IE9uIFR1
+ZSwgMjUgRmViIDIwMjAgYXQgMDU6NDEsIEphc29uIFdhbmcgPGphc293YW5nQHJlZGhhdC5jb20+
+IHdyb3RlOg0KPj4+DQo+Pj4gT24gMjAyMC8yLzI1IOS4iuWNiDEwOjU5LCBDaGVuIFF1biB3cm90
+ZToNCj4+Pj4gVGhlIGN1cnJlbnQgY29kZSBjYXVzZXMgY2xhbmcgc3RhdGljIGNvZGUgYW5hbHl6
+ZXIgZ2VuZXJhdGUgd2FybmluZzoNCj4+Pj4gaHcvbmV0L2lteF9mZWMuYzo4NTg6OTogd2Fybmlu
+ZzogVmFsdWUgc3RvcmVkIHRvICd2YWx1ZScgaXMgbmV2ZXIgcmVhZA0KPj4+PiAgICAgICAgICAg
+dmFsdWUgPSB2YWx1ZSAmIDB4MDAwMDAwMGY7DQo+Pj4+ICAgICAgICAgICBeICAgICAgIH5+fn5+
+fn5+fn5+fn5+fn5+fg0KPj4+PiBody9uZXQvaW14X2ZlYy5jOjg2NDo5OiB3YXJuaW5nOiBWYWx1
+ZSBzdG9yZWQgdG8gJ3ZhbHVlJyBpcyBuZXZlciByZWFkDQo+Pj4+ICAgICAgICAgICB2YWx1ZSA9
+IHZhbHVlICYgMHgwMDAwMDBmZDsNCj4+Pj4gICAgICAgICAgIF4gICAgICAgfn5+fn5+fn5+fn5+
+fn5+fn5+DQo+Pj4+DQo+Pj4+IEFjY29yZGluZyB0byB0aGUgZGVmaW5pdGlvbiBvZiB0aGUgZnVu
+Y3Rpb24sIHRoZSB0d28g4oCcdmFsdWXigJ0gYXNzaWdubWVudHMNCj4+Pj4gICAgc2hvdWxkIGJl
+IHdyaXR0ZW4gdG8gcmVnaXN0ZXJzLg0KPj4+Pg0KPj4+PiBSZXBvcnRlZC1ieTogRXVsZXIgUm9i
+b3QgPGV1bGVyLnJvYm90QGh1YXdlaS5jb20+DQo+Pj4+IFNpZ25lZC1vZmYtYnk6IENoZW4gUXVu
+IDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4+Pj4gLS0tDQo+Pj4+IEknbSBub3Qgc3VyZSBp
+ZiB0aGlzIG1vZGlmaWNhdGlvbiBpcyBjb3JyZWN0LCBqdXN0IGZyb20gdGhlIGZ1bmN0aW9uDQo+
+Pj4+ICAgIGRlZmluaXRpb24sIGl0IGlzIGNvcnJlY3QuDQo+Pj4+IC0tLQ0KPj4+PiAgICBody9u
+ZXQvaW14X2ZlYy5jIHwgNCArKy0tDQo+Pj4+ICAgIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlv
+bnMoKyksIDIgZGVsZXRpb25zKC0pDQo+Pj4+DQo+Pj4+IGRpZmYgLS1naXQgYS9ody9uZXQvaW14
+X2ZlYy5jIGIvaHcvbmV0L2lteF9mZWMuYyBpbmRleA0KPj4+PiA2YTEyNGExNTRhLi45MmY2MjE1
+NzEyIDEwMDY0NA0KPj4+PiAtLS0gYS9ody9uZXQvaW14X2ZlYy5jDQo+Pj4+ICsrKyBiL2h3L25l
+dC9pbXhfZmVjLmMNCj4+Pj4gQEAgLTg1NSwxMyArODU1LDEzIEBAIHN0YXRpYyB2b2lkIGlteF9l
+bmV0X3dyaXRlKElNWEZFQ1N0YXRlICpzLA0KPnVpbnQzMl90IGluZGV4LCB1aW50MzJfdCB2YWx1
+ZSkNCj4+Pj4gICAgICAgICAgICBicmVhazsNCj4+Pj4gICAgICAgIGNhc2UgRU5FVF9UR1NSOg0K
+Pj4+PiAgICAgICAgICAgIC8qIGltcGxlbWVudCBjbGVhciB0aW1lciBmbGFnICovDQo+Pj4+IC0g
+ICAgICAgIHZhbHVlID0gdmFsdWUgJiAweDAwMDAwMDBmOw0KPj4+PiArICAgICAgICBzLT5yZWdz
+W2luZGV4XSA9IHZhbHVlICYgMHgwMDAwMDAwZjsNCj4+Pj4gICAgICAgICAgICBicmVhazsNCj4+
+IEhpOyB0aGUgZGF0YXNoZWV0IGZvciB0aGlzIFNvQyBzYXlzIHRoYXQgdGhlc2UgYml0cyBvZiB0
+aGUgcmVnaXN0ZXINCj4+IGFyZSB3cml0ZS0xLXRvLWNsZWFyLCBzbyB3aGlsZSB0aGlzIGlzIGRl
+ZmluaXRlbHkgYSBidWcgSSBkb24ndCB0aGluaw0KPj4gdGhpcyBpcyB0aGUgcmlnaHQgZml4Lg0K
+Pj4NCj4+Pj4gICAgICAgIGNhc2UgRU5FVF9UQ1NSMDoNCj4+Pj4gICAgICAgIGNhc2UgRU5FVF9U
+Q1NSMToNCj4+Pj4gICAgICAgIGNhc2UgRU5FVF9UQ1NSMjoNCj4+Pj4gICAgICAgIGNhc2UgRU5F
+VF9UQ1NSMzoNCj4+Pj4gLSAgICAgICAgdmFsdWUgPSB2YWx1ZSAmIDB4MDAwMDAwZmQ7DQo+Pj4+
+ICsgICAgICAgIHMtPnJlZ3NbaW5kZXhdID0gdmFsdWUgJiAweDAwMDAwMGZkOw0KPj4+PiAgICAg
+ICAgICAgIGJyZWFrOw0KPj4gSGVyZSBiaXQgNyBpcyB3cml0ZS0xLXRvLWNsZWFyLCB0aG91Z2gg
+Yml0cyAwIGFuZA0KPj4gMi4uNSBhcmUgc2ltcGxlIHdyaXRlLXRoZS12YWx1ZS4NCj4+DQo+Pj4+
+ICAgICAgICBjYXNlIEVORVRfVENDUjA6DQo+Pj4+ICAgICAgICBjYXNlIEVORVRfVENDUjE6DQo+
+Pj4NCj4+PiBBcHBsaWVkLg0KPj4gQ291bGQgeW91IGRyb3AgdGhpcyBmcm9tIHlvdXIgcXVldWUs
+IHBsZWFzZT8NCj4+DQo+PiB0aGFua3MNCj4+IC0tIFBNTQ0KPg0KPg0KPlN1cmUsIENoZW4gcGxl
+YXNlIHNlbmQgVjIgdG8gYWRkcmVzcyBQZXRlcidzIGNvbW1lbnQuDQpPSywgIGJ1dCBJIGRpZG4n
+dCBmaW5kIHRoZSBkYXRhc2hlZXQgdGhhdCBjb250YWlucyB0aGVzZSB0d28gcmVnaXN0ZXJzIGRl
+c2NyaXB0aW9uLg0KQ291bGQgc29tZW9uZSBwcm92aWRlIG1lIHdpdGggYSAgY29ubmVjdGlvbiBm
+b3IgdGhlIGRhdGFzaGVldCA/DQoNCg==
 
