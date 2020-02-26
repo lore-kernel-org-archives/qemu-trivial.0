@@ -1,58 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6u81-0003mD-Mp
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 05:41:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60148)
+	id 1j6w7n-0003JU-OL
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 07:49:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42059)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6u7z-0003jQ-4F
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 05:41:20 -0500
+ (envelope-from <eblake@redhat.com>) id 1j6w7l-0003JC-PX
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 07:49:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6u7y-0004uO-1h
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 05:41:19 -0500
-Received: from szxga08-in.huawei.com ([45.249.212.255]:42098 helo=huawei.com)
+ (envelope-from <eblake@redhat.com>) id 1j6w7k-0001qf-CH
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 07:49:13 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:20322
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6u7v-0004kA-2d; Wed, 26 Feb 2020 05:41:15 -0500
-Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.56])
- by Forcepoint Email with ESMTP id 7148DECA367947E9CA2D;
- Wed, 26 Feb 2020 18:41:11 +0800 (CST)
-Received: from DGGEMM421-HUB.china.huawei.com (10.1.198.38) by
- DGGEMM403-HUB.china.huawei.com (10.3.20.211) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 26 Feb 2020 18:41:10 +0800
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
- dggemm421-hub.china.huawei.com ([10.1.198.38]) with mapi id 14.03.0439.000;
- Wed, 26 Feb 2020 18:41:00 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Kevin Wolf <kwolf@redhat.com>
-CC: John Snow <jsnow@redhat.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, 
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Zhanghailiang
- <zhang.zhanghailiang@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Max
- Reitz" <mreitz@redhat.com>
-Subject: RE: [PATCH v2 01/13] block/stream: Remove redundant statement in
- stream_run()
-Thread-Topic: [PATCH v2 01/13] block/stream: Remove redundant statement in
- stream_run()
-Thread-Index: AQHV7IFlUj7vrN4bEEyjDb3dOy8EkKgstWMAgACNqjD//37wAIAAht+A
-Date: Wed, 26 Feb 2020 10:41:00 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B662BF9@dggemm531-mbx.china.huawei.com>
-References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
- <20200226084647.20636-2-kuhn.chenqun@huawei.com>
- <20200226095102.GA6096@linux.fritz.box>
- <7412CDE03601674DA8197E2EBD8937E83B662BBF@dggemm531-mbx.china.huawei.com>
- <20200226103608.GC6096@linux.fritz.box>
-In-Reply-To: <20200226103608.GC6096@linux.fritz.box>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1j6w7k-0001qH-8X
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 07:49:12 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582721351;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=bRyGkK/CrkeYoqJ1WgOBtP3V7MvLai0QK0NfAkqvHdU=;
+ b=A1FNs6K1BSrq2+yCG57uIeEI93LPotLo7ObLSkldJpXiEbkPrePMEi2I8C3D00AL3wysiV
+ jtH7vsIxEKCloxbCoavOxQTFtWq2AVgd9L8LSnwKSPooqg4j0KN++gKmEdpTDQMwIFlYD3
+ M7FGQgF+lDrdJTzVCLS/zDlYNp40EXI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-76-D6PwVNRYOy2ki0BK6UFOuA-1; Wed, 26 Feb 2020 07:49:09 -0500
+X-MC-Unique: D6PwVNRYOy2ki0BK6UFOuA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6881018A8C81;
+ Wed, 26 Feb 2020 12:49:08 +0000 (UTC)
+Received: from [10.3.116.57] (ovpn-116-57.phx2.redhat.com [10.3.116.57])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6D7C692966;
+ Wed, 26 Feb 2020 12:49:05 +0000 (UTC)
+Subject: Re: [PATCH] iotests: Fix nonportable use of od --endian
+To: Max Reitz <mreitz@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ andrey.shinkevich@virtuozzo.com, Kevin Wolf <kwolf@redhat.com>
+References: <20200219144103.2919292-1-eblake@redhat.com>
+ <4a50da40-5a01-e597-b136-1be62994b2a2@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <a4b352d5-e05f-885d-705e-b4b28a43518f@redhat.com>
+Date: Wed, 26 Feb 2020 06:49:04 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <4a50da40-5a01-e597-b136-1be62994b2a2@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.255
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -64,60 +69,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2020 10:41:20 -0000
+X-List-Received-Date: Wed, 26 Feb 2020 12:49:14 -0000
 
-Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogS2V2aW4gV29sZiBbbWFpbHRvOmt3
-b2xmQHJlZGhhdC5jb21dDQo+U2VudDogV2VkbmVzZGF5LCBGZWJydWFyeSAyNiwgMjAyMCA2OjM2
-IFBNDQo+VG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj5DYzog
-Sm9obiBTbm93IDxqc25vd0ByZWRoYXQuY29tPjsgcWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11
-LQ0KPnRyaXZpYWxAbm9uZ251Lm9yZzsgcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBaaGFuZ2hh
-aWxpYW5nDQo+PHpoYW5nLnpoYW5naGFpbGlhbmdAaHVhd2VpLmNvbT47IEV1bGVyIFJvYm90DQo+
-PGV1bGVyLnJvYm90QGh1YXdlaS5jb20+OyBNYXggUmVpdHogPG1yZWl0ekByZWRoYXQuY29tPg0K
-PlN1YmplY3Q6IFJlOiBbUEFUQ0ggdjIgMDEvMTNdIGJsb2NrL3N0cmVhbTogUmVtb3ZlIHJlZHVu
-ZGFudCBzdGF0ZW1lbnQgaW4NCj5zdHJlYW1fcnVuKCkNCj4NCj5BbSAyNi4wMi4yMDIwIHVtIDEx
-OjIxIGhhdCBDaGVucXVuIChrdWhuKSBnZXNjaHJpZWJlbjoNCj4+DQo+Pg0KPj4gPi0tLS0tT3Jp
-Z2luYWwgTWVzc2FnZS0tLS0tDQo+PiA+RnJvbTogS2V2aW4gV29sZiBbbWFpbHRvOmt3b2xmQHJl
-ZGhhdC5jb21dDQo+PiA+U2VudDogV2VkbmVzZGF5LCBGZWJydWFyeSAyNiwgMjAyMCA1OjUxIFBN
-DQo+PiA+VG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4+ID5D
-YzogcWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11LXRyaXZpYWxAbm9uZ251Lm9yZzsNCj4+ID5w
-ZXRlci5tYXlkZWxsQGxpbmFyby5vcmc7IFpoYW5naGFpbGlhbmcNCj4+ID48emhhbmcuemhhbmdo
-YWlsaWFuZ0BodWF3ZWkuY29tPjsgRXVsZXIgUm9ib3QNCj4+ID48ZXVsZXIucm9ib3RAaHVhd2Vp
-LmNvbT47IEpvaG4gU25vdyA8anNub3dAcmVkaGF0LmNvbT47IE1heCBSZWl0eg0KPj4gPjxtcmVp
-dHpAcmVkaGF0LmNvbT4NCj4+ID5TdWJqZWN0OiBSZTogW1BBVENIIHYyIDAxLzEzXSBibG9jay9z
-dHJlYW06IFJlbW92ZSByZWR1bmRhbnQNCj4+ID5zdGF0ZW1lbnQgaW4NCj4+ID5zdHJlYW1fcnVu
-KCkNCj4+ID4NCj4+ID5BbSAyNi4wMi4yMDIwIHVtIDA5OjQ2IGhhdCBrdWhuLmNoZW5xdW5AaHVh
-d2VpLmNvbSBnZXNjaHJpZWJlbjoNCj4+ID4+IEZyb206IENoZW4gUXVuIDxrdWhuLmNoZW5xdW5A
-aHVhd2VpLmNvbT4NCj4+ID4+DQo+PiA+PiBDbGFuZyBzdGF0aWMgY29kZSBhbmFseXplciBzaG93
-IHdhcm5pbmc6DQo+PiA+PiAgIGJsb2NrL3N0cmVhbS5jOjE4Njo5OiB3YXJuaW5nOiBWYWx1ZSBz
-dG9yZWQgdG8gJ3JldCcgaXMgbmV2ZXIgcmVhZA0KPj4gPj4gICAgICAgICByZXQgPSAwOw0KPj4g
-Pj4gICAgICAgICBeICAgICB+DQo+PiA+PiBSZXBvcnRlZC1ieTogRXVsZXIgUm9ib3QgPGV1bGVy
-LnJvYm90QGh1YXdlaS5jb20+DQo+PiA+PiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5j
-aGVucXVuQGh1YXdlaS5jb20+DQo+PiA+PiBSZXZpZXdlZC1ieTogSm9obiBTbm93IDxqc25vd0By
-ZWRoYXQuY29tPg0KPj4gPg0KPj4gPkxldCdzIG1lbnRpb24gdGhhdCB0aGlzIGlzIHVubmVjZXNz
-YXJ5IHNpbmNlIGNvbW1pdCAxZDgwOTA5OGFhOS4NCj4+ID4NCj4+ID5TaW5jZSB0aGUgc2FtZSBj
-b21taXQsIHRoZSBpbml0aWFsaXNhdGlvbiAnaW50IHJldCA9IDA7JyBpcw0KPj4gPnVubmVjZXNz
-YXJ5IGJlY2F1c2Ugd2UgbmV2ZXIgcmVhZCByZXQgYmVmb3JlIG92ZXJ3cml0aW5nIHRoZSBpbml0
-aWFsDQo+PiA+dmFsdWUuIFdlIGNvdWxkIGNsZWFuIHRoaXMgdXAgaW4gdGhlIHNhbWUgcGF0Y2gu
-DQo+Pg0KPj4gWWVzLCB3ZSBjYW4gY2xlYW4gaXQgYW5kIG1vdmUgJ3JldCcgIGRlY2xhcmF0aW9u
-IHRvIHRoZSBmb3IoKSBzdGF0ZW1lbnQuDQo+Pg0KPj4gTW9kaWZ5IGp1c3QgTGlrZSB0aGlz77ya
-DQo+PiBbLi4uXQ0KPg0KPkdvZGQgcG9pbnQsIG1ha2VzIHNlbnNlIHRvIG1lLiBQbGVhc2Uga2Vl
-cCBteSBSLWIgaWYgeW91IG1ha2UgdGhpcyBjaGFuZ2UuDQpPSywgbm8gcHJvYmxlbe+8gQ0KDQpU
-aGFua3MuDQo+DQo+S2V2aW4NCj4NCj4+IEBAIC0xMTQsNyArMTE0LDYgQEAgc3RhdGljIGludCBj
-b3JvdXRpbmVfZm4gc3RyZWFtX3J1bihKb2IgKmpvYiwgRXJyb3INCj4qKmVycnApDQo+PiAgICAg
-IGludDY0X3Qgb2Zmc2V0ID0gMDsNCj4+ICAgICAgdWludDY0X3QgZGVsYXlfbnMgPSAwOw0KPj4g
-ICAgICBpbnQgZXJyb3IgPSAwOw0KPj4gLSAgICBpbnQgcmV0ID0gMDsNCj4+ICAgICAgaW50NjRf
-dCBuID0gMDsgLyogYnl0ZXMgKi8NCj4+DQo+PiAgICAgIGlmIChicyA9PSBzLT5ib3R0b20pIHsN
-Cj4+IEBAIC0xMzksNiArMTM4LDcgQEAgc3RhdGljIGludCBjb3JvdXRpbmVfZm4gc3RyZWFtX3J1
-bihKb2IgKmpvYiwgRXJyb3INCj4+ICoqZXJycCkNCj4+DQo+PiAgICAgIGZvciAoIDsgb2Zmc2V0
-IDwgbGVuOyBvZmZzZXQgKz0gbikgew0KPj4gICAgICAgICAgYm9vbCBjb3B5Ow0KPj4gKyAgICAg
-ICAgaW50IHJldDsNCj4+DQo+PiAgICAgICAgICAvKiBOb3RlIHRoYXQgZXZlbiB3aGVuIG5vIHJh
-dGUgbGltaXQgaXMgYXBwbGllZCB3ZSBuZWVkIHRvIHlpZWxkDQo+PiAgICAgICAgICAgKiB3aXRo
-IG5vIHBlbmRpbmcgSS9PIGhlcmUgc28gdGhhdCBiZHJ2X2RyYWluX2FsbCgpIHJldHVybnMuDQo+
-PiBAQCAtMTgzLDcgKzE4Myw2IEBAIHN0YXRpYyBpbnQgY29yb3V0aW5lX2ZuIHN0cmVhbV9ydW4o
-Sm9iICpqb2IsIEVycm9yDQo+KiplcnJwKQ0KPj4gICAgICAgICAgICAgICAgICBicmVhazsNCj4+
-ICAgICAgICAgICAgICB9DQo+PiAgICAgICAgICB9DQo+PiAtICAgICAgICByZXQgPSAwOw0KPj4N
-Cj4+ICAgICAgICAgIC8qIFB1Ymxpc2ggcHJvZ3Jlc3MgKi8NCj4+ICAgICAgICAgIGpvYl9wcm9n
-cmVzc191cGRhdGUoJnMtPmNvbW1vbi5qb2IsIG4pOw0KPj4NCj4+ID4NCj4+ID5XaXRoIG9yIHdp
-dGhvdXQgdGhlIGNoYW5nZXM6DQo+PiA+DQo+PiA+UmV2aWV3ZWQtYnk6IEtldmluIFdvbGYgPGt3
-b2xmQHJlZGhhdC5jb20+DQo+Pg0KDQo=
+On 2/25/20 11:43 AM, Max Reitz wrote:
+> On 19.02.20 15:41, Eric Blake wrote:
+>> Tests 261 and 272 fail on RHEL 7 with coreutils 8.22, since od
+>> --endian was not added until coreutils 8.23.  Fix this by manually
+>> constructing the final value one byte at a time.
+>>
+>> Fixes: fc8ba423
+>> Reported-by: Andrey Shinkevich <andrey.shinkevich@virtuozzo.com>
+>> Signed-off-by: Eric Blake <eblake@redhat.com>
+>> ---
+>>   tests/qemu-iotests/common.rc | 22 +++++++++++++++++-----
+>>   1 file changed, 17 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
+>> index 8a6366c09daf..b77ef3d22cd1 100644
+>> --- a/tests/qemu-iotests/common.rc
+>> +++ b/tests/qemu-iotests/common.rc
+>> @@ -56,6 +56,12 @@ poke_file()
+>=20
+> I don=E2=80=99t know how you did it, but something in your workflow broke=
+ this
+> patch.  This should be -56,18 +56,30.
+
+I'm not sure, either.  Would me sending a v2 make it easier?
+
+>=20
+> (Note that git accepts this patch without error, but it drops everything
+> after the first part.  I noticed because your squash-in failed to apply.
+>   I suppose I might have noticed later when reviewing, because only
+> peek_file_le() was touched, but who knows.)
+>=20
+
+>=20
+> With the patch format fixed, and your proposed to-be-squashed patch
+> squashed in, there isn=E2=80=99t anything wrong, so:
+>=20
+> Reviewed-by: Max Reitz <mreitz@redhat.com>
+>=20
+> But if I=E2=80=99m already about to squash something in, would you allow =
+me to
+> rename all instances of =E2=80=9Ci=E2=80=9D to e.g. =E2=80=9Cbyte=E2=80=
+=9D?
+
+I'll do that on a v2.
+
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
+
 
