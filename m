@@ -1,43 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6sMH-0000sj-Ad
+	id 1j6sMH-0000ul-Uc
 	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 03:47:57 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44767)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44907)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM9-0000WI-H7
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:50 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sMD-0000he-By
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM8-0007kG-E1
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:49 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3167 helo=huawei.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sMC-000851-7s
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:53 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:46022 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6sM5-0007Nh-KP; Wed, 26 Feb 2020 03:47:45 -0500
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 890FFA42264ED9080070;
- Wed, 26 Feb 2020 16:47:42 +0800 (CST)
+ id 1j6sM9-0007it-Iw; Wed, 26 Feb 2020 03:47:49 -0500
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 6964B7A0165D9F31CFF8;
+ Wed, 26 Feb 2020 16:47:47 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS411-HUB.china.huawei.com
  (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Wed, 26 Feb 2020
- 16:47:33 +0800
+ 16:47:38 +0800
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Andrzej
- Zaborowski" <balrogg@gmail.com>
-Subject: [PATCH v2 06/13] display/pxa2xx_lcd: Remove redundant statement in
- pxa2xx_palette_parse()
-Date: Wed, 26 Feb 2020 16:46:40 +0800
-Message-ID: <20200226084647.20636-7-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Dr. David
+ Alan Gilbert" <dgilbert@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v2 13/13] monitor/hmp-cmds: Remove redundant statement in
+ hmp_rocker_of_dpa_groups()
+Date: Wed, 26 Feb 2020 16:46:47 +0800
+Message-ID: <20200226084647.20636-14-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.21.0.windows.1
 In-Reply-To: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
 References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
 X-Originating-IP: [10.133.205.93]
 X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.190
+X-Received-From: 45.249.212.35
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -49,38 +50,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2020 08:47:50 -0000
+X-List-Received-Date: Wed, 26 Feb 2020 08:47:54 -0000
 
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
 Clang static code analyzer show warning:
-hw/display/pxa2xx_lcd.c:596:9: warning: Value stored to 'format' is never=
- read
-        format =3D 0;
-        ^        ~
+monitor/hmp-cmds.c:2867:17: warning: Value stored to 'set' is never read
+                set =3D true;
+                ^     ~~~~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Andrzej Zaborowski <balrogg@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
----
- hw/display/pxa2xx_lcd.c | 1 -
- 1 file changed, 1 deletion(-)
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-diff --git a/hw/display/pxa2xx_lcd.c b/hw/display/pxa2xx_lcd.c
-index 05f5f84671..464e93161a 100644
---- a/hw/display/pxa2xx_lcd.c
-+++ b/hw/display/pxa2xx_lcd.c
-@@ -593,7 +593,6 @@ static void pxa2xx_palette_parse(PXA2xxLCDState *s, i=
-nt ch, int bpp)
-         n =3D 256;
-         break;
-     default:
--        format =3D 0;
-         return;
-     }
+v1->v2: move the 'set' declaration to the for() statement(Base on Philipp=
+e's suggestion).
+---
+ monitor/hmp-cmds.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+index 53bc3f76c4..c6b0495822 100644
+--- a/monitor/hmp-cmds.c
++++ b/monitor/hmp-cmds.c
+@@ -2808,7 +2808,6 @@ void hmp_rocker_of_dpa_groups(Monitor *mon, const Q=
+Dict *qdict)
+     const char *name =3D qdict_get_str(qdict, "name");
+     uint8_t type =3D qdict_get_try_int(qdict, "type", 9);
+     Error *err =3D NULL;
+-    bool set =3D false;
 =20
+     list =3D qmp_query_rocker_of_dpa_groups(name, type !=3D 9, type, &er=
+r);
+     if (err !=3D NULL) {
+@@ -2820,6 +2819,7 @@ void hmp_rocker_of_dpa_groups(Monitor *mon, const Q=
+Dict *qdict)
+=20
+     for (g =3D list; g; g =3D g->next) {
+         RockerOfDpaGroup *group =3D g->value;
++        bool set =3D false;
+=20
+         monitor_printf(mon, "0x%08x", group->id);
+=20
+@@ -2864,14 +2864,11 @@ void hmp_rocker_of_dpa_groups(Monitor *mon, const=
+ QDict *qdict)
+=20
+         if (group->has_set_eth_dst) {
+             if (!set) {
+-                set =3D true;
+                 monitor_printf(mon, " set");
+             }
+             monitor_printf(mon, " dst %s", group->set_eth_dst);
+         }
+=20
+-        set =3D false;
+-
+         if (group->has_ttl_check && group->ttl_check) {
+             monitor_printf(mon, " check TTL");
+         }
 --=20
 2.23.0
 
