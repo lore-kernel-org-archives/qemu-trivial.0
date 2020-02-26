@@ -1,63 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6w7n-0003JU-OL
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 07:49:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42059)
+	id 1j6xT6-0002IL-Vf
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 09:15:20 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39284)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1j6w7l-0003JC-PX
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 07:49:14 -0500
+ (envelope-from <frasse.iglesias@gmail.com>) id 1j6xT4-0002GP-PV
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 09:15:19 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1j6w7k-0001qf-CH
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 07:49:13 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:20322
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>) id 1j6w7k-0001qH-8X
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 07:49:12 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582721351;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bRyGkK/CrkeYoqJ1WgOBtP3V7MvLai0QK0NfAkqvHdU=;
- b=A1FNs6K1BSrq2+yCG57uIeEI93LPotLo7ObLSkldJpXiEbkPrePMEi2I8C3D00AL3wysiV
- jtH7vsIxEKCloxbCoavOxQTFtWq2AVgd9L8LSnwKSPooqg4j0KN++gKmEdpTDQMwIFlYD3
- M7FGQgF+lDrdJTzVCLS/zDlYNp40EXI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-76-D6PwVNRYOy2ki0BK6UFOuA-1; Wed, 26 Feb 2020 07:49:09 -0500
-X-MC-Unique: D6PwVNRYOy2ki0BK6UFOuA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6881018A8C81;
- Wed, 26 Feb 2020 12:49:08 +0000 (UTC)
-Received: from [10.3.116.57] (ovpn-116-57.phx2.redhat.com [10.3.116.57])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6D7C692966;
- Wed, 26 Feb 2020 12:49:05 +0000 (UTC)
-Subject: Re: [PATCH] iotests: Fix nonportable use of od --endian
-To: Max Reitz <mreitz@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org,
- andrey.shinkevich@virtuozzo.com, Kevin Wolf <kwolf@redhat.com>
-References: <20200219144103.2919292-1-eblake@redhat.com>
- <4a50da40-5a01-e597-b136-1be62994b2a2@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <a4b352d5-e05f-885d-705e-b4b28a43518f@redhat.com>
-Date: Wed, 26 Feb 2020 06:49:04 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (envelope-from <frasse.iglesias@gmail.com>) id 1j6xT3-0006UE-Nn
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 09:15:18 -0500
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:39256)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1j6xT1-0006M7-Ck; Wed, 26 Feb 2020 09:15:15 -0500
+Received: by mail-lj1-x242.google.com with SMTP id o15so3269726ljg.6;
+ Wed, 26 Feb 2020 06:15:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=NoslDEA1NYRcm1J+wN+Jn1HI8r/5R/eVtS142rhhQFs=;
+ b=HqTl5J/uPPcs0qaM5njuye4hzxOdSC1vWGrvpjs0BhvN5EWTxf3R10eK8PcouY19Yv
+ gdTYtsNHZBoB+EQy++X8VbK05yJkPd2jgptcG1Lz/N+OzvIwF8RMwQFvB8hpy7Sy2oK7
+ QS7y4eg7KxaKWPfTgKxdFA5ra+t2tTTBUOyfc8YYhG7BPOHsbioGpCESwPBF75Zj/Sfv
+ RoTP0AqCbK5K11y214nwpwMsGnQzkwaO0w2kPTkuefYAugs9T/X9OQXKM4ttYcyWK5Tz
+ mgThrUsGTMDkuVqCbJ5g7WOqnvVG5jQ6GElfquwPY+52nZQb2jlkHOUIahHFJaa1oHWn
+ o9/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=NoslDEA1NYRcm1J+wN+Jn1HI8r/5R/eVtS142rhhQFs=;
+ b=lbInv0OOtpGuPs8l8QssE1d9BAjmTqmmdqBiTVV5ho6dh4iBHY3aAhk7rPidNVzVKa
+ K1FmgfT7vN/wYsKpAFix3Yt4a8T72UvmryV6w8gBH2rpzcGRE/KyFSj5hO8K93jB52xq
+ U6JG4pvU5F0pdzYy7aF0izENevGrbuWzaeiXSfaOO52jzrPkx3bNKbut4AdjheoaxmFR
+ pdSXlgQDukujOl/xbOLTeVCUsTZK1ClJl8qGu3G3IljwLF2ZhqUpJS35Tf4+Inb/C/Sr
+ yHkWo7ncn4nNbm2pTlsS9Cwe5n7SSx4vS2iTd1V7U3PVCKqE2K75iheT7Ca/sKrdsa02
+ j+Xg==
+X-Gm-Message-State: ANhLgQ3Ih163Ovk73ZEK/flwl5dioveMHCAwoRRR5R8pTzY8P9tZ/LM6
+ 33210sdDL+MHcj8Nrvaq2UM=
+X-Google-Smtp-Source: ADFU+vtljQR17EBpwj1G4m2tKaU9Ndw06+2ySLjKbkAE/iEcWtDTkn468EwTzGv445HNY9AkcZBGEw==
+X-Received: by 2002:a2e:9e55:: with SMTP id g21mr3218379ljk.245.1582726513738; 
+ Wed, 26 Feb 2020 06:15:13 -0800 (PST)
+Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
+ by smtp.gmail.com with ESMTPSA id
+ l7sm1068670lfc.80.2020.02.26.06.15.11
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Wed, 26 Feb 2020 06:15:12 -0800 (PST)
+Date: Wed, 26 Feb 2020 15:15:10 +0100
+From: Francisco Iglesias <frasse.iglesias@gmail.com>
+To: kuhn.chenqun@huawei.com
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
+ Alistair Francis <alistair@alistair23.me>,
+ Euler Robot <euler.robot@huawei.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Subject: Re: [PATCH v2 09/13] dma/xlnx-zdma: Remove redundant statement in
+ zdma_write_dst()
+Message-ID: <20200226141509.6kg3eyrexv73mgop@fralle-msi>
+References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
+ <20200226084647.20636-10-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <4a50da40-5a01-e597-b136-1be62994b2a2@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20200226084647.20636-10-kuhn.chenqun@huawei.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::242
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,57 +80,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2020 12:49:14 -0000
+X-List-Received-Date: Wed, 26 Feb 2020 14:15:20 -0000
 
-On 2/25/20 11:43 AM, Max Reitz wrote:
-> On 19.02.20 15:41, Eric Blake wrote:
->> Tests 261 and 272 fail on RHEL 7 with coreutils 8.22, since od
->> --endian was not added until coreutils 8.23.  Fix this by manually
->> constructing the final value one byte at a time.
->>
->> Fixes: fc8ba423
->> Reported-by: Andrey Shinkevich <andrey.shinkevich@virtuozzo.com>
->> Signed-off-by: Eric Blake <eblake@redhat.com>
->> ---
->>   tests/qemu-iotests/common.rc | 22 +++++++++++++++++-----
->>   1 file changed, 17 insertions(+), 5 deletions(-)
->>
->> diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
->> index 8a6366c09daf..b77ef3d22cd1 100644
->> --- a/tests/qemu-iotests/common.rc
->> +++ b/tests/qemu-iotests/common.rc
->> @@ -56,6 +56,12 @@ poke_file()
->=20
-> I don=E2=80=99t know how you did it, but something in your workflow broke=
- this
-> patch.  This should be -56,18 +56,30.
+On [2020 Feb 26] Wed 16:46:43, kuhn.chenqun@huawei.com wrote:
+> From: Chen Qun <kuhn.chenqun@huawei.com>
+> 
+> Clang static code analyzer show warning:
+> hw/dma/xlnx-zdma.c:399:13: warning: Value stored to 'dst_type' is never read
+>             dst_type = FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WORD3,
+>             ^          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 
-I'm not sure, either.  Would me sending a v2 make it easier?
+Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 
->=20
-> (Note that git accepts this patch without error, but it drops everything
-> after the first part.  I noticed because your squash-in failed to apply.
->   I suppose I might have noticed later when reviewing, because only
-> peek_file_le() was touched, but who knows.)
->=20
-
->=20
-> With the patch format fixed, and your proposed to-be-squashed patch
-> squashed in, there isn=E2=80=99t anything wrong, so:
->=20
-> Reviewed-by: Max Reitz <mreitz@redhat.com>
->=20
-> But if I=E2=80=99m already about to squash something in, would you allow =
-me to
-> rename all instances of =E2=80=9Ci=E2=80=9D to e.g. =E2=80=9Cbyte=E2=80=
-=9D?
-
-I'll do that on a v2.
-
-
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
+> ---
+> Cc: Alistair Francis <alistair@alistair23.me>
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Philippe Mathieu-Daudé <philmd@redhat.com>
+> 
+> v1->v2: move the 'dst_type' declaration.(Base on Philippe's suggestion).
+> ---
+>  hw/dma/xlnx-zdma.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
+> index 8fb83f5b07..eeacad59ce 100644
+> --- a/hw/dma/xlnx-zdma.c
+> +++ b/hw/dma/xlnx-zdma.c
+> @@ -373,7 +373,7 @@ static uint64_t zdma_update_descr_addr(XlnxZDMA *s, bool type,
+>  static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
+>  {
+>      uint32_t dst_size, dlen;
+> -    bool dst_intr, dst_type;
+> +    bool dst_intr;
+>      unsigned int ptype = ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0, POINT_TYPE);
+>      unsigned int rw_mode = ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0, MODE);
+>      unsigned int burst_type = ARRAY_FIELD_EX32(s->regs, ZDMA_CH_DATA_ATTR,
+> @@ -387,17 +387,17 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
+>      while (len) {
+>          dst_size = FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WORD2,
+>                                SIZE);
+> -        dst_type = FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WORD3,
+> -                              TYPE);
+>          if (dst_size == 0 && ptype == PT_MEM) {
+>              uint64_t next;
+> +            bool dst_type = FIELD_EX32(s->dsc_dst.words[3],
+> +                                       ZDMA_CH_DST_DSCR_WORD3,
+> +                                       TYPE);
+> +
+>              next = zdma_update_descr_addr(s, dst_type,
+>                                            R_ZDMA_CH_DST_CUR_DSCR_LSB);
+>              zdma_load_descriptor(s, next, &s->dsc_dst);
+>              dst_size = FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WORD2,
+>                                    SIZE);
+> -            dst_type = FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WORD3,
+> -                                  TYPE);
+>          }
+>  
+>          /* Match what hardware does by ignoring the dst_size and only using
+> -- 
+> 2.23.0
+> 
+> 
+> 
 
