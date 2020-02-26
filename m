@@ -1,139 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6i5K-0007dB-Vm
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Feb 2020 16:49:46 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40072)
+	id 1j6myw-0003qy-I9
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Feb 2020 22:03:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38486)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jsnow@redhat.com>) id 1j6i5I-0007cp-RO
- for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 16:49:45 -0500
+ (envelope-from <jasowang@redhat.com>) id 1j6myt-0003qg-TD
+ for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 22:03:28 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jsnow@redhat.com>) id 1j6i5H-0000TV-G8
- for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 16:49:44 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:55668
+ (envelope-from <jasowang@redhat.com>) id 1j6myr-0004l6-Pl
+ for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 22:03:27 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:25465
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jsnow@redhat.com>) id 1j6i5H-0000PQ-AZ
- for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 16:49:43 -0500
+ (Exim 4.71) (envelope-from <jasowang@redhat.com>) id 1j6myr-0004e0-H5
+ for qemu-trivial@nongnu.org; Tue, 25 Feb 2020 22:03:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582667382;
+ s=mimecast20190719; t=1582686204;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=+RNj6zVZGPdK8JvJlbiWuwyfPqk01ZmSG49JZnF3pQY=;
- b=eM4GTVjsYGQ3j9PmdYFByeFWHSPaoh0zBo89I3fvhXXpfuwm3uJflRV5jpKSgSkILUoeeP
- A4k+797/lTW209B8RApeHCDZBC/6Qk/xJb1iS+UwpIjnrtbwkDd2o7kvROizAQwNfIkcLA
- YWqBxNS1s501SjfxJMeeaiX7niR/js0=
+ in-reply-to:in-reply-to:references:references;
+ bh=2zKs5bLq9Rp65Ty9SQjKjFhjAMDJT91D9JmD0xAKM+4=;
+ b=gdrwcdE2YbC960vEOQLeC2NBgIg4ANf3d7NwUZjwxOioZe3bdgjhs/fqIIenGJTWHxyhFB
+ NleZKBUS2v9ek8BduUR1zvJ+zie9HXNk6DVW3jLwumfbVGTH4tUeXYV2snegyKn0yblGf5
+ 0p43/31uk8/ZSXLHKZVO32Pc6re5fwY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-143-tqN0DKayM7yAim9fDMzJ2g-1; Tue, 25 Feb 2020 16:49:38 -0500
-X-MC-Unique: tqN0DKayM7yAim9fDMzJ2g-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-294-NVg7D-73NpOG-lInkh4Hvw-1; Tue, 25 Feb 2020 22:03:20 -0500
+X-MC-Unique: NVg7D-73NpOG-lInkh4Hvw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1F557107ACC5;
- Tue, 25 Feb 2020 21:49:37 +0000 (UTC)
-Received: from [10.18.17.182] (dhcp-17-182.bos.redhat.com [10.18.17.182])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E97505C21B;
- Tue, 25 Feb 2020 21:49:35 +0000 (UTC)
-Subject: Re: [PATCH 01/13] block/stream: Remove redundant statement in
- stream_run()
-To: kuhn.chenqun@huawei.com, qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
- Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
- qemu-block@nongnu.org
-References: <20200225020937.25028-1-kuhn.chenqun@huawei.com>
- <20200225020937.25028-2-kuhn.chenqun@huawei.com>
-From: John Snow <jsnow@redhat.com>
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <c0f26ff5-fee8-aa5a-a245-24f610be1ed0@redhat.com>
-Date: Tue, 25 Feb 2020 16:49:35 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1164313E4;
+ Wed, 26 Feb 2020 03:03:19 +0000 (UTC)
+Received: from [10.72.13.217] (ovpn-13-217.pek2.redhat.com [10.72.13.217])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BC29760BE1;
+ Wed, 26 Feb 2020 03:03:09 +0000 (UTC)
+Subject: Re: [PATCH] hw/net/imx_fec: write TGSR and TCSR3 in imx_enet_write()
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Chen Qun <kuhn.chenqun@huawei.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ Peter Chubb <peter.chubb@nicta.com.au>, qemu-arm <qemu-arm@nongnu.org>
+References: <20200225025923.19328-1-kuhn.chenqun@huawei.com>
+ <9206dda7-0e12-b68e-87ca-1985b61381bc@redhat.com>
+ <CAFEAcA-W+brVEmGr29i6JO4GFrnoLAce-qoMQpQc56x6B4BY3A@mail.gmail.com>
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <9fc2581c-56a1-0969-6a13-1454a1865264@redhat.com>
+Date: Wed, 26 Feb 2020 11:03:04 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200225020937.25028-2-kuhn.chenqun@huawei.com>
+In-Reply-To: <CAFEAcA-W+brVEmGr29i6JO4GFrnoLAce-qoMQpQc56x6B4BY3A@mail.gmail.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -145,42 +72,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Feb 2020 21:49:46 -0000
+X-List-Received-Date: Wed, 26 Feb 2020 03:03:29 -0000
 
 
+On 2020/2/25 =E4=B8=8B=E5=8D=886:18, Peter Maydell wrote:
+> On Tue, 25 Feb 2020 at 05:41, Jason Wang <jasowang@redhat.com> wrote:
+>>
+>> On 2020/2/25 =E4=B8=8A=E5=8D=8810:59, Chen Qun wrote:
+>>> The current code causes clang static code analyzer generate warning:
+>>> hw/net/imx_fec.c:858:9: warning: Value stored to 'value' is never read
+>>>           value =3D value & 0x0000000f;
+>>>           ^       ~~~~~~~~~~~~~~~~~~
+>>> hw/net/imx_fec.c:864:9: warning: Value stored to 'value' is never read
+>>>           value =3D value & 0x000000fd;
+>>>           ^       ~~~~~~~~~~~~~~~~~~
+>>>
+>>> According to the definition of the function, the two =E2=80=9Cvalue=E2=
+=80=9D assignments
+>>>    should be written to registers.
+>>>
+>>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>>> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+>>> ---
+>>> I'm not sure if this modification is correct, just from the function
+>>>    definition, it is correct.
+>>> ---
+>>>    hw/net/imx_fec.c | 4 ++--
+>>>    1 file changed, 2 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+>>> index 6a124a154a..92f6215712 100644
+>>> --- a/hw/net/imx_fec.c
+>>> +++ b/hw/net/imx_fec.c
+>>> @@ -855,13 +855,13 @@ static void imx_enet_write(IMXFECState *s, uint32=
+_t index, uint32_t value)
+>>>            break;
+>>>        case ENET_TGSR:
+>>>            /* implement clear timer flag */
+>>> -        value =3D value & 0x0000000f;
+>>> +        s->regs[index] =3D value & 0x0000000f;
+>>>            break;
+> Hi; the datasheet for this SoC says that these bits
+> of the register are write-1-to-clear, so while this
+> is definitely a bug I don't think this is the right fix.
+>
+>>>        case ENET_TCSR0:
+>>>        case ENET_TCSR1:
+>>>        case ENET_TCSR2:
+>>>        case ENET_TCSR3:
+>>> -        value =3D value & 0x000000fd;
+>>> +        s->regs[index] =3D value & 0x000000fd;
+>>>            break;
+> Here bit 7 is write-1-to-clear, though bits 0 and
+> 2..5 are simple write-the-value.
+>
+>>>        case ENET_TCCR0:
+>>>        case ENET_TCCR1:
+>>
+>> Applied.
+> Could you drop this from your queue, please?
+>
+> thanks
+> -- PMM
 
-On 2/24/20 9:09 PM, kuhn.chenqun@huawei.com wrote:
-> From: Chen Qun <kuhn.chenqun@huawei.com>
-> 
-> Clang static code analyzer show warning:
->   block/stream.c:186:9: warning: Value stored to 'ret' is never read
->         ret = 0;
->         ^     ~
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> ---
-> Cc: John Snow <jsnow@redhat.com>
-> Cc: Kevin Wolf <kwolf@redhat.com>
-> Cc: Max Reitz <mreitz@redhat.com>
-> Cc: qemu-block@nongnu.org
-> ---
->  block/stream.c | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/block/stream.c b/block/stream.c
-> index 5562ccbf57..d78074ac80 100644
-> --- a/block/stream.c
-> +++ b/block/stream.c
-> @@ -183,7 +183,6 @@ static int coroutine_fn stream_run(Job *job, Error **errp)
->                  break;
->              }
->          }
-> -        ret = 0;
->  
->          /* Publish progress */
->          job_progress_update(&s->common.job, n);
-> 
 
-Reviewed-by: John Snow <jsnow@redhat.com>
+Sure, Chen please send V2 to address Peter's comment.
+
+Thanks
 
 
