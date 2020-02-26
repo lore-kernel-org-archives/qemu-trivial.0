@@ -1,32 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6sMB-0000cV-S6
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 03:47:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44693)
+	id 1j6sMC-0000dR-2i
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 03:47:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44702)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM8-0000Sj-78
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM8-0000TF-F1
  for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM7-0007gH-6A
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM7-0007gq-An
  for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:48 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:58948 helo=huawei.com)
+Received: from szxga06-in.huawei.com ([45.249.212.32]:58922 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6sM4-0007Mf-Fd; Wed, 26 Feb 2020 03:47:44 -0500
+ id 1j6sM4-0007Mg-G3; Wed, 26 Feb 2020 03:47:44 -0500
 Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 65F9A855B94B2C5D2408;
+ by Forcepoint Email with ESMTP id 619DE51D9CD8B5E24CD;
  Wed, 26 Feb 2020 16:47:42 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS411-HUB.china.huawei.com
  (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Wed, 26 Feb 2020
- 16:47:34 +0800
+ 16:47:31 +0800
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Igor
- Mitsyanko" <i.mitsyanko@gmail.com>
-Subject: [PATCH v2 07/13] display/exynos4210_fimd: Remove redundant statement
- in exynos4210_fimd_update()
-Date: Wed, 26 Feb 2020 16:46:41 +0800
-Message-ID: <20200226084647.20636-8-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, Kevin Wolf
+ <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>
+Subject: [PATCH v2 03/13] block/file-posix: Remove redundant statement in
+ raw_handle_perm_lock()
+Date: Wed, 26 Feb 2020 16:46:37 +0800
+Message-ID: <20200226084647.20636-4-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.21.0.windows.1
 In-Reply-To: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
 References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
@@ -54,31 +54,32 @@ X-List-Received-Date: Wed, 26 Feb 2020 08:47:49 -0000
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
 Clang static code analyzer show warning:
-hw/display/exynos4210_fimd.c:1313:17: warning: Value stored to 'is_dirty'=
- is never read
-                is_dirty =3D false;
+  block/file-posix.c:891:9: warning: Value stored to 'op' is never read
+        op =3D RAW_PL_ABORT;
+        ^    ~~~~~~~~~~~~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Kevin Wolf <kwolf@redhat.com>
+Cc: Max Reitz <mreitz@redhat.com>
 ---
- hw/display/exynos4210_fimd.c | 1 -
+ block/file-posix.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-index c1071ecd46..05d3265b76 100644
---- a/hw/display/exynos4210_fimd.c
-+++ b/hw/display/exynos4210_fimd.c
-@@ -1310,7 +1310,6 @@ static void exynos4210_fimd_update(void *opaque)
-                 }
-                 host_fb_addr +=3D inc_size;
-                 fb_line_addr +=3D inc_size;
--                is_dirty =3D false;
-             }
-             g_free(snap);
-             blend =3D true;
+diff --git a/block/file-posix.c b/block/file-posix.c
+index 6345477112..0f77447a25 100644
+--- a/block/file-posix.c
++++ b/block/file-posix.c
+@@ -888,7 +888,6 @@ static int raw_handle_perm_lock(BlockDriverState *bs,
+                               "Is another process using the image [%s]?\=
+n",
+                               bs->filename);
+         }
+-        op =3D RAW_PL_ABORT;
+         /* fall through to unlock bytes. */
+     case RAW_PL_ABORT:
+         raw_apply_lock_bytes(s, s->fd, s->perm, ~s->shared_perm,
 --=20
 2.23.0
 
