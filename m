@@ -1,37 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6sMI-0000vR-4U
+	id 1j6sMI-0000w4-Br
 	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 03:47:58 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44906)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44910)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sMD-0000hc-AE
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sMD-0000hn-Cj
  for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sMC-00085b-Bu
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sMC-00084s-7E
  for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:53 -0500
-Received: from szxga07-in.huawei.com ([45.249.212.35]:46048 helo=huawei.com)
+Received: from szxga07-in.huawei.com ([45.249.212.35]:46018 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6sM9-0007jV-Nr; Wed, 26 Feb 2020 03:47:50 -0500
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 9221BA449786916D8ADB;
+ id 1j6sM9-0007ii-Hb; Wed, 26 Feb 2020 03:47:49 -0500
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 6538763AA6C33F9451EE;
  Wed, 26 Feb 2020 16:47:47 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS411-HUB.china.huawei.com
  (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Wed, 26 Feb 2020
- 16:47:37 +0800
+ 16:47:36 +0800
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>, Gerd Hoffmann
- <kraxel@redhat.com>
-Subject: [PATCH v2 12/13] usb/hcd-ehci: Remove redundant statements
-Date: Wed, 26 Feb 2020 16:46:46 +0800
-Message-ID: <20200226084647.20636-13-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Igor
+ Mitsyanko" <i.mitsyanko@gmail.com>
+Subject: [PATCH v2 11/13] timer/exynos4210_mct: Remove redundant statement in
+ exynos4210_mct_write()
+Date: Wed, 26 Feb 2020 16:46:45 +0800
+Message-ID: <20200226084647.20636-12-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.21.0.windows.1
 In-Reply-To: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
 References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain
 X-Originating-IP: [10.133.205.93]
 X-CFilter-Loop: Reflected
 Content-Transfer-Encoding: quoted-printable
@@ -53,48 +53,61 @@ X-List-Received-Date: Wed, 26 Feb 2020 08:47:54 -0000
 
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
-The "again" assignment is meaningless before g_assert_not_reached.
-In addition, the break statements no longer needs to be after
-g_assert_not_reached.
-
 Clang static code analyzer show warning:
-hw/usb/hcd-ehci.c:2108:13: warning: Value stored to 'again' is never read
-            again =3D -1;
-            ^       ~~
+hw/timer/exynos4210_mct.c:1370:9: warning: Value stored to 'index' is nev=
+er read
+        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hw/timer/exynos4210_mct.c:1399:9: warning: Value stored to 'index' is nev=
+er read
+        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hw/timer/exynos4210_mct.c:1441:9: warning: Value stored to 'index' is nev=
+er read
+        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+        ^       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
-Cc: Gerd Hoffmann <kraxel@redhat.com>
-Cc: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/usb/hcd-ehci.c | 3 ---
- 1 file changed, 3 deletions(-)
+ hw/timer/exynos4210_mct.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-index 56ab2f457f..29d49c2d7e 100644
---- a/hw/usb/hcd-ehci.c
-+++ b/hw/usb/hcd-ehci.c
-@@ -1301,7 +1301,6 @@ static void ehci_execute_complete(EHCIQueue *q)
-         /* should not be triggerable */
-         fprintf(stderr, "USB invalid response %d\n", p->packet.status);
-         g_assert_not_reached();
--        break;
-     }
+diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
+index 944120aea5..570cf7075b 100644
+--- a/hw/timer/exynos4210_mct.c
++++ b/hw/timer/exynos4210_mct.c
+@@ -1367,7 +1367,6 @@ static void exynos4210_mct_write(void *opaque, hwad=
+dr offset,
 =20
-     /* TODO check 4.12 for splits */
-@@ -2105,9 +2104,7 @@ static void ehci_advance_state(EHCIState *ehci, int=
- async)
+     case L0_TCNTB: case L1_TCNTB:
+         lt_i =3D GET_L_TIMER_IDX(offset);
+-        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
 =20
-         default:
-             fprintf(stderr, "Bad state!\n");
--            again =3D -1;
-             g_assert_not_reached();
--            break;
-         }
+         /*
+          * TCNTB is updated to internal register only after CNT expired.
+@@ -1396,7 +1395,6 @@ static void exynos4210_mct_write(void *opaque, hwad=
+dr offset,
 =20
-         if (again < 0 || itd_count > 16) {
+     case L0_ICNTB: case L1_ICNTB:
+         lt_i =3D GET_L_TIMER_IDX(offset);
+-        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+=20
+         s->l_timer[lt_i].reg.wstat |=3D L_WSTAT_ICNTB_WRITE;
+         s->l_timer[lt_i].reg.cnt[L_REG_CNT_ICNTB] =3D value &
+@@ -1438,8 +1436,6 @@ static void exynos4210_mct_write(void *opaque, hwad=
+dr offset,
+=20
+     case L0_FRCNTB: case L1_FRCNTB:
+         lt_i =3D GET_L_TIMER_IDX(offset);
+-        index =3D GET_L_TIMER_CNT_REG_IDX(offset, lt_i);
+-
+         DPRINTF("local timer[%d] FRCNTB write %llx\n", lt_i, value);
+=20
+         s->l_timer[lt_i].reg.wstat |=3D L_WSTAT_FRCCNTB_WRITE;
 --=20
 2.23.0
 
