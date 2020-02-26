@@ -1,52 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6tou-00023X-8C
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 05:21:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49488)
+	id 1j6u3B-0000CV-W9
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 05:36:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57810)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6top-0001wL-0t
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 05:21:34 -0500
+ (envelope-from <kwolf@redhat.com>) id 1j6u39-0000Az-Dq
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 05:36:20 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6tol-0002m8-1j
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 05:21:30 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2505 helo=huawei.com)
+ (envelope-from <kwolf@redhat.com>) id 1j6u38-0002Ab-91
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 05:36:19 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:37046
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6toc-0001Td-JP; Wed, 26 Feb 2020 05:21:18 -0500
-Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.54])
- by Forcepoint Email with ESMTP id 6D380985A0725E50E009;
- Wed, 26 Feb 2020 18:21:13 +0800 (CST)
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
- DGGEMM405-HUB.china.huawei.com ([10.3.20.213]) with mapi id 14.03.0439.000;
- Wed, 26 Feb 2020 18:21:04 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Kevin Wolf <kwolf@redhat.com>, John Snow <jsnow@redhat.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ (Exim 4.71) (envelope-from <kwolf@redhat.com>) id 1j6u38-000291-5J
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 05:36:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582713376;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ODLEvxrJOLvP0jliU5YyCcs7Etg2vs0tTEaqV0F4UJk=;
+ b=VD9KGIdMDtA+sEpvviyLz0AAMDLJ8I2iblrKMUOiEWlakFYJjxMhvGgb793jkyKFqztXW0
+ B62ttVZ8t7x7EpetlbNRVFccSYxyBlEIy1fNb0K3/nnC8rbokClSdp8eoSBSP8KLa+lKyO
+ bly+YkvkW6YaRTkOeEUfxDqDxXMQZzg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-405-jtTEHQgoOwa87HA6dTQocw-1; Wed, 26 Feb 2020 05:36:13 -0500
+X-MC-Unique: jtTEHQgoOwa87HA6dTQocw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B27BE2F60;
+ Wed, 26 Feb 2020 10:36:11 +0000 (UTC)
+Received: from linux.fritz.box (ovpn-117-170.ams2.redhat.com [10.36.117.170])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 08ACA60BE2;
+ Wed, 26 Feb 2020 10:36:09 +0000 (UTC)
+Date: Wed, 26 Feb 2020 11:36:08 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+Cc: John Snow <jsnow@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>,
  Euler Robot <euler.robot@huawei.com>, Max Reitz <mreitz@redhat.com>
-Subject: RE: [PATCH v2 01/13] block/stream: Remove redundant statement in
+Subject: Re: [PATCH v2 01/13] block/stream: Remove redundant statement in
  stream_run()
-Thread-Topic: [PATCH v2 01/13] block/stream: Remove redundant statement in
- stream_run()
-Thread-Index: AQHV7IFlUj7vrN4bEEyjDb3dOy8EkKgstWMAgACNqjA=
-Date: Wed, 26 Feb 2020 10:21:03 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B662BBF@dggemm531-mbx.china.huawei.com>
+Message-ID: <20200226103608.GC6096@linux.fritz.box>
 References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
  <20200226084647.20636-2-kuhn.chenqun@huawei.com>
  <20200226095102.GA6096@linux.fritz.box>
-In-Reply-To: <20200226095102.GA6096@linux.fritz.box>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ <7412CDE03601674DA8197E2EBD8937E83B662BBF@dggemm531-mbx.china.huawei.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B662BBF@dggemm531-mbx.china.huawei.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.188
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -58,44 +75,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2020 10:21:35 -0000
+X-List-Received-Date: Wed, 26 Feb 2020 10:36:20 -0000
 
-DQoNCj4tLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPkZyb206IEtldmluIFdvbGYgW21haWx0
-bzprd29sZkByZWRoYXQuY29tXQ0KPlNlbnQ6IFdlZG5lc2RheSwgRmVicnVhcnkgMjYsIDIwMjAg
-NTo1MSBQTQ0KPlRvOiBDaGVucXVuIChrdWhuKSA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+
-Q2M6IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsgcWVtdS10cml2aWFsQG5vbmdudS5vcmc7DQo+cGV0
-ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBaaGFuZ2hhaWxpYW5nIDx6aGFuZy56aGFuZ2hhaWxpYW5n
-QGh1YXdlaS5jb20+Ow0KPkV1bGVyIFJvYm90IDxldWxlci5yb2JvdEBodWF3ZWkuY29tPjsgSm9o
-biBTbm93IDxqc25vd0ByZWRoYXQuY29tPjsNCj5NYXggUmVpdHogPG1yZWl0ekByZWRoYXQuY29t
-Pg0KPlN1YmplY3Q6IFJlOiBbUEFUQ0ggdjIgMDEvMTNdIGJsb2NrL3N0cmVhbTogUmVtb3ZlIHJl
-ZHVuZGFudCBzdGF0ZW1lbnQgaW4NCj5zdHJlYW1fcnVuKCkNCj4NCj5BbSAyNi4wMi4yMDIwIHVt
-IDA5OjQ2IGhhdCBrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbSBnZXNjaHJpZWJlbjoNCj4+IEZyb206
-IENoZW4gUXVuIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4+DQo+PiBDbGFuZyBzdGF0aWMg
-Y29kZSBhbmFseXplciBzaG93IHdhcm5pbmc6DQo+PiAgIGJsb2NrL3N0cmVhbS5jOjE4Njo5OiB3
-YXJuaW5nOiBWYWx1ZSBzdG9yZWQgdG8gJ3JldCcgaXMgbmV2ZXIgcmVhZA0KPj4gICAgICAgICBy
-ZXQgPSAwOw0KPj4gICAgICAgICBeICAgICB+DQo+PiBSZXBvcnRlZC1ieTogRXVsZXIgUm9ib3Qg
-PGV1bGVyLnJvYm90QGh1YXdlaS5jb20+DQo+PiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vo
-bi5jaGVucXVuQGh1YXdlaS5jb20+DQo+PiBSZXZpZXdlZC1ieTogSm9obiBTbm93IDxqc25vd0By
-ZWRoYXQuY29tPg0KPg0KPkxldCdzIG1lbnRpb24gdGhhdCB0aGlzIGlzIHVubmVjZXNzYXJ5IHNp
-bmNlIGNvbW1pdCAxZDgwOTA5OGFhOS4NCj4NCj5TaW5jZSB0aGUgc2FtZSBjb21taXQsIHRoZSBp
-bml0aWFsaXNhdGlvbiAnaW50IHJldCA9IDA7JyBpcyB1bm5lY2Vzc2FyeSBiZWNhdXNlDQo+d2Ug
-bmV2ZXIgcmVhZCByZXQgYmVmb3JlIG92ZXJ3cml0aW5nIHRoZSBpbml0aWFsIHZhbHVlLiBXZSBj
-b3VsZCBjbGVhbiB0aGlzIHVwDQo+aW4gdGhlIHNhbWUgcGF0Y2guDQoNClllcywgd2UgY2FuIGNs
-ZWFuIGl0IGFuZCBtb3ZlICdyZXQnICBkZWNsYXJhdGlvbiB0byB0aGUgZm9yKCkgc3RhdGVtZW50
-Lg0KDQpNb2RpZnkganVzdCBMaWtlIHRoaXPvvJoNCkBAIC0xMTQsNyArMTE0LDYgQEAgc3RhdGlj
-IGludCBjb3JvdXRpbmVfZm4gc3RyZWFtX3J1bihKb2IgKmpvYiwgRXJyb3IgKiplcnJwKQ0KICAg
-ICBpbnQ2NF90IG9mZnNldCA9IDA7DQogICAgIHVpbnQ2NF90IGRlbGF5X25zID0gMDsNCiAgICAg
-aW50IGVycm9yID0gMDsNCi0gICAgaW50IHJldCA9IDA7DQogICAgIGludDY0X3QgbiA9IDA7IC8q
-IGJ5dGVzICovDQoNCiAgICAgaWYgKGJzID09IHMtPmJvdHRvbSkgew0KQEAgLTEzOSw2ICsxMzgs
-NyBAQCBzdGF0aWMgaW50IGNvcm91dGluZV9mbiBzdHJlYW1fcnVuKEpvYiAqam9iLCBFcnJvciAq
-KmVycnApDQoNCiAgICAgZm9yICggOyBvZmZzZXQgPCBsZW47IG9mZnNldCArPSBuKSB7DQogICAg
-ICAgICBib29sIGNvcHk7DQorICAgICAgICBpbnQgcmV0Ow0KDQogICAgICAgICAvKiBOb3RlIHRo
-YXQgZXZlbiB3aGVuIG5vIHJhdGUgbGltaXQgaXMgYXBwbGllZCB3ZSBuZWVkIHRvIHlpZWxkDQog
-ICAgICAgICAgKiB3aXRoIG5vIHBlbmRpbmcgSS9PIGhlcmUgc28gdGhhdCBiZHJ2X2RyYWluX2Fs
-bCgpIHJldHVybnMuDQpAQCAtMTgzLDcgKzE4Myw2IEBAIHN0YXRpYyBpbnQgY29yb3V0aW5lX2Zu
-IHN0cmVhbV9ydW4oSm9iICpqb2IsIEVycm9yICoqZXJycCkNCiAgICAgICAgICAgICAgICAgYnJl
-YWs7DQogICAgICAgICAgICAgfQ0KICAgICAgICAgfQ0KLSAgICAgICAgcmV0ID0gMDsNCg0KICAg
-ICAgICAgLyogUHVibGlzaCBwcm9ncmVzcyAqLw0KICAgICAgICAgam9iX3Byb2dyZXNzX3VwZGF0
-ZSgmcy0+Y29tbW9uLmpvYiwgbik7DQoNCj4NCj5XaXRoIG9yIHdpdGhvdXQgdGhlIGNoYW5nZXM6
-DQo+DQo+UmV2aWV3ZWQtYnk6IEtldmluIFdvbGYgPGt3b2xmQHJlZGhhdC5jb20+DQoNCg==
+Am 26.02.2020 um 11:21 hat Chenqun (kuhn) geschrieben:
+>=20
+>=20
+> >-----Original Message-----
+> >From: Kevin Wolf [mailto:kwolf@redhat.com]
+> >Sent: Wednesday, February 26, 2020 5:51 PM
+> >To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>
+> >Cc: qemu-devel@nongnu.org; qemu-trivial@nongnu.org;
+> >peter.maydell@linaro.org; Zhanghailiang <zhang.zhanghailiang@huawei.com>=
+;
+> >Euler Robot <euler.robot@huawei.com>; John Snow <jsnow@redhat.com>;
+> >Max Reitz <mreitz@redhat.com>
+> >Subject: Re: [PATCH v2 01/13] block/stream: Remove redundant statement i=
+n
+> >stream_run()
+> >
+> >Am 26.02.2020 um 09:46 hat kuhn.chenqun@huawei.com geschrieben:
+> >> From: Chen Qun <kuhn.chenqun@huawei.com>
+> >>
+> >> Clang static code analyzer show warning:
+> >>   block/stream.c:186:9: warning: Value stored to 'ret' is never read
+> >>         ret =3D 0;
+> >>         ^     ~
+> >> Reported-by: Euler Robot <euler.robot@huawei.com>
+> >> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> >> Reviewed-by: John Snow <jsnow@redhat.com>
+> >
+> >Let's mention that this is unnecessary since commit 1d809098aa9.
+> >
+> >Since the same commit, the initialisation 'int ret =3D 0;' is unnecessar=
+y because
+> >we never read ret before overwriting the initial value. We could clean t=
+his up
+> >in the same patch.
+>=20
+> Yes, we can clean it and move 'ret'  declaration to the for() statement.
+>=20
+> Modify just Like this=EF=BC=9A
+> [...]
+
+Godd point, makes sense to me. Please keep my R-b if you make this
+change.
+
+Kevin
+
+> @@ -114,7 +114,6 @@ static int coroutine_fn stream_run(Job *job, Error **=
+errp)
+>      int64_t offset =3D 0;
+>      uint64_t delay_ns =3D 0;
+>      int error =3D 0;
+> -    int ret =3D 0;
+>      int64_t n =3D 0; /* bytes */
+>=20
+>      if (bs =3D=3D s->bottom) {
+> @@ -139,6 +138,7 @@ static int coroutine_fn stream_run(Job *job, Error **=
+errp)
+>=20
+>      for ( ; offset < len; offset +=3D n) {
+>          bool copy;
+> +        int ret;
+>=20
+>          /* Note that even when no rate limit is applied we need to yield
+>           * with no pending I/O here so that bdrv_drain_all() returns.
+> @@ -183,7 +183,6 @@ static int coroutine_fn stream_run(Job *job, Error **=
+errp)
+>                  break;
+>              }
+>          }
+> -        ret =3D 0;
+>=20
+>          /* Publish progress */
+>          job_progress_update(&s->common.job, n);
+>=20
+> >
+> >With or without the changes:
+> >
+> >Reviewed-by: Kevin Wolf <kwolf@redhat.com>
+>=20
+
 
