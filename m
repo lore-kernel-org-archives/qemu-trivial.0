@@ -1,34 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6sMC-0000fj-Qp
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 03:47:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44529)
+	id 1j6sMD-0000ia-Ov
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 03:47:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44704)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM5-0000Op-Bx
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:46 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM8-0000TH-F4
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:49 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM4-0007Rn-EW
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:45 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:58666 helo=huawei.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM7-0007h3-Bg
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:48 -0500
+Received: from szxga06-in.huawei.com ([45.249.212.32]:59038 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6sM2-00075r-44; Wed, 26 Feb 2020 03:47:42 -0500
+ id 1j6sM4-0007Nj-Ks; Wed, 26 Feb 2020 03:47:44 -0500
 Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 7AAE71286B2955C92B63;
- Wed, 26 Feb 2020 16:47:37 +0800 (CST)
+ by Forcepoint Email with ESMTP id 69975A471B758272973D;
+ Wed, 26 Feb 2020 16:47:42 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS411-HUB.china.huawei.com
  (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Wed, 26 Feb 2020
- 16:47:31 +0800
+ 16:47:35 +0800
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Ronnie
- Sahlberg" <ronniesahlberg@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Lieven <pl@kamp.de>, Kevin Wolf <kwolf@redhat.com>, Max Reitz
- <mreitz@redhat.com>
-Subject: [PATCH v2 02/13] block/iscsi:Remove redundant statement in
- iscsi_open()
-Date: Wed, 26 Feb 2020 16:46:36 +0800
-Message-ID: <20200226084647.20636-3-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Andrzej
+ Zaborowski" <balrogg@gmail.com>
+Subject: [PATCH v2 08/13] display/blizzard: Remove redundant statement in
+ blizzard_draw_line16_32()
+Date: Wed, 26 Feb 2020 16:46:42 +0800
+Message-ID: <20200226084647.20636-9-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.21.0.windows.1
 In-Reply-To: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
 References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
@@ -51,40 +49,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2020 08:47:46 -0000
+X-List-Received-Date: Wed, 26 Feb 2020 08:47:49 -0000
 
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
 Clang static code analyzer show warning:
-  block/iscsi.c:1920:9: warning: Value stored to 'flags' is never read
-        flags &=3D ~BDRV_O_RDWR;
-        ^        ~~~~~~~~~~~~
-
+  hw/display/blizzard.c:940:9: warning: Value stored to 'data' is never r=
+ead
+        data >>=3D 5;
+        ^        ~
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Peter Lieven <pl@kamp.de>
-Cc: Kevin Wolf <kwolf@redhat.com>
-Cc: Max Reitz <mreitz@redhat.com>
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
 ---
- block/iscsi.c | 1 -
+ hw/display/blizzard.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/block/iscsi.c b/block/iscsi.c
-index 682abd8e09..ed88479ede 100644
---- a/block/iscsi.c
-+++ b/block/iscsi.c
-@@ -1917,7 +1917,6 @@ static int iscsi_open(BlockDriverState *bs, QDict *=
-options, int flags,
-         if (ret < 0) {
-             goto out;
-         }
--        flags &=3D ~BDRV_O_RDWR;
+diff --git a/hw/display/blizzard.c b/hw/display/blizzard.c
+index 359e399c2a..62517bdf75 100644
+--- a/hw/display/blizzard.c
++++ b/hw/display/blizzard.c
+@@ -937,7 +937,6 @@ static void blizzard_draw_line16_32(uint32_t *dest,
+         g =3D (data & 0x3f) << 2;
+         data >>=3D 6;
+         r =3D (data & 0x1f) << 3;
+-        data >>=3D 5;
+         *dest++ =3D rgb_to_pixel32(r, g, b);
      }
-=20
-     iscsi_readcapacity_sync(iscsilun, &local_err);
+ }
 --=20
 2.23.0
 
