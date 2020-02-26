@@ -1,67 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6tP6-0000Ql-Jo
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 04:54:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33460)
+	id 1j6tou-00023X-8C
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 05:21:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49488)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kwolf@redhat.com>) id 1j6tP3-0000QB-RN
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 04:54:54 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6top-0001wL-0t
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 05:21:34 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kwolf@redhat.com>) id 1j6tP2-0003vV-Ow
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 04:54:53 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:43038
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6tol-0002m8-1j
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 05:21:30 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2505 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kwolf@redhat.com>) id 1j6tP2-0003uo-Kr
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 04:54:52 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582710892;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Xp3xeOqaNDoIa9NTtOqILdHbwFkwRlALmAsN/itNMrk=;
- b=IqZJCkc8KB+7qNPP8sKQ1N4XncjQkrAYs98OOLu/jzCzWXL4JbM/MWVHhdFZKNmrKMiyOz
- mY+LDWNsSneD4/Ry7DH0MAdZrOe9C99APDChFmVpwMruC754erlQ9gCdn703M9xRB/YATJ
- tiWMhtyek6WBTMrEk5q3Ymm/NDtXqPA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-273-FHEosH-SM6y5q0jGG00A3g-1; Wed, 26 Feb 2020 04:54:50 -0500
-X-MC-Unique: FHEosH-SM6y5q0jGG00A3g-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A70C1DBA3;
- Wed, 26 Feb 2020 09:54:48 +0000 (UTC)
-Received: from linux.fritz.box (ovpn-117-170.ams2.redhat.com [10.36.117.170])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 872345C13D;
- Wed, 26 Feb 2020 09:54:46 +0000 (UTC)
-Date: Wed, 26 Feb 2020 10:54:44 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: kuhn.chenqun@huawei.com
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
- Euler Robot <euler.robot@huawei.com>,
- Ronnie Sahlberg <ronniesahlberg@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Lieven <pl@kamp.de>,
- Max Reitz <mreitz@redhat.com>
-Subject: Re: [PATCH v2 02/13] block/iscsi:Remove redundant statement in
- iscsi_open()
-Message-ID: <20200226095444.GB6096@linux.fritz.box>
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1j6toc-0001Td-JP; Wed, 26 Feb 2020 05:21:18 -0500
+Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.54])
+ by Forcepoint Email with ESMTP id 6D380985A0725E50E009;
+ Wed, 26 Feb 2020 18:21:13 +0800 (CST)
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
+ DGGEMM405-HUB.china.huawei.com ([10.3.20.213]) with mapi id 14.03.0439.000;
+ Wed, 26 Feb 2020 18:21:04 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Kevin Wolf <kwolf@redhat.com>, John Snow <jsnow@redhat.com>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>, Max Reitz <mreitz@redhat.com>
+Subject: RE: [PATCH v2 01/13] block/stream: Remove redundant statement in
+ stream_run()
+Thread-Topic: [PATCH v2 01/13] block/stream: Remove redundant statement in
+ stream_run()
+Thread-Index: AQHV7IFlUj7vrN4bEEyjDb3dOy8EkKgstWMAgACNqjA=
+Date: Wed, 26 Feb 2020 10:21:03 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B662BBF@dggemm531-mbx.china.huawei.com>
 References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
- <20200226084647.20636-3-kuhn.chenqun@huawei.com>
+ <20200226084647.20636-2-kuhn.chenqun@huawei.com>
+ <20200226095102.GA6096@linux.fritz.box>
+In-Reply-To: <20200226095102.GA6096@linux.fritz.box>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <20200226084647.20636-3-kuhn.chenqun@huawei.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 45.249.212.188
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,50 +58,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2020 09:54:55 -0000
+X-List-Received-Date: Wed, 26 Feb 2020 10:21:35 -0000
 
-Am 26.02.2020 um 09:46 hat kuhn.chenqun@huawei.com geschrieben:
-> From: Chen Qun <kuhn.chenqun@huawei.com>
->=20
-> Clang static code analyzer show warning:
->   block/iscsi.c:1920:9: warning: Value stored to 'flags' is never read
->         flags &=3D ~BDRV_O_RDWR;
->         ^        ~~~~~~~~~~~~
->=20
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-
-Hmm, I'm not so sure about this one because if we remove the line, flags
-will be inconsistent with bs->open_flags. It feels like setting a trap
-for anyone who wants to add code using flags in the future.
-
-Kevin
-
-> Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Peter Lieven <pl@kamp.de>
-> Cc: Kevin Wolf <kwolf@redhat.com>
-> Cc: Max Reitz <mreitz@redhat.com>
-> ---
->  block/iscsi.c | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/block/iscsi.c b/block/iscsi.c
-> index 682abd8e09..ed88479ede 100644
-> --- a/block/iscsi.c
-> +++ b/block/iscsi.c
-> @@ -1917,7 +1917,6 @@ static int iscsi_open(BlockDriverState *bs, QDict *=
-options, int flags,
->          if (ret < 0) {
->              goto out;
->          }
-> -        flags &=3D ~BDRV_O_RDWR;
->      }
-> =20
->      iscsi_readcapacity_sync(iscsilun, &local_err);
-> --=20
-> 2.23.0
->=20
->=20
-
+DQoNCj4tLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPkZyb206IEtldmluIFdvbGYgW21haWx0
+bzprd29sZkByZWRoYXQuY29tXQ0KPlNlbnQ6IFdlZG5lc2RheSwgRmVicnVhcnkgMjYsIDIwMjAg
+NTo1MSBQTQ0KPlRvOiBDaGVucXVuIChrdWhuKSA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+
+Q2M6IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsgcWVtdS10cml2aWFsQG5vbmdudS5vcmc7DQo+cGV0
+ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBaaGFuZ2hhaWxpYW5nIDx6aGFuZy56aGFuZ2hhaWxpYW5n
+QGh1YXdlaS5jb20+Ow0KPkV1bGVyIFJvYm90IDxldWxlci5yb2JvdEBodWF3ZWkuY29tPjsgSm9o
+biBTbm93IDxqc25vd0ByZWRoYXQuY29tPjsNCj5NYXggUmVpdHogPG1yZWl0ekByZWRoYXQuY29t
+Pg0KPlN1YmplY3Q6IFJlOiBbUEFUQ0ggdjIgMDEvMTNdIGJsb2NrL3N0cmVhbTogUmVtb3ZlIHJl
+ZHVuZGFudCBzdGF0ZW1lbnQgaW4NCj5zdHJlYW1fcnVuKCkNCj4NCj5BbSAyNi4wMi4yMDIwIHVt
+IDA5OjQ2IGhhdCBrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbSBnZXNjaHJpZWJlbjoNCj4+IEZyb206
+IENoZW4gUXVuIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4+DQo+PiBDbGFuZyBzdGF0aWMg
+Y29kZSBhbmFseXplciBzaG93IHdhcm5pbmc6DQo+PiAgIGJsb2NrL3N0cmVhbS5jOjE4Njo5OiB3
+YXJuaW5nOiBWYWx1ZSBzdG9yZWQgdG8gJ3JldCcgaXMgbmV2ZXIgcmVhZA0KPj4gICAgICAgICBy
+ZXQgPSAwOw0KPj4gICAgICAgICBeICAgICB+DQo+PiBSZXBvcnRlZC1ieTogRXVsZXIgUm9ib3Qg
+PGV1bGVyLnJvYm90QGh1YXdlaS5jb20+DQo+PiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vo
+bi5jaGVucXVuQGh1YXdlaS5jb20+DQo+PiBSZXZpZXdlZC1ieTogSm9obiBTbm93IDxqc25vd0By
+ZWRoYXQuY29tPg0KPg0KPkxldCdzIG1lbnRpb24gdGhhdCB0aGlzIGlzIHVubmVjZXNzYXJ5IHNp
+bmNlIGNvbW1pdCAxZDgwOTA5OGFhOS4NCj4NCj5TaW5jZSB0aGUgc2FtZSBjb21taXQsIHRoZSBp
+bml0aWFsaXNhdGlvbiAnaW50IHJldCA9IDA7JyBpcyB1bm5lY2Vzc2FyeSBiZWNhdXNlDQo+d2Ug
+bmV2ZXIgcmVhZCByZXQgYmVmb3JlIG92ZXJ3cml0aW5nIHRoZSBpbml0aWFsIHZhbHVlLiBXZSBj
+b3VsZCBjbGVhbiB0aGlzIHVwDQo+aW4gdGhlIHNhbWUgcGF0Y2guDQoNClllcywgd2UgY2FuIGNs
+ZWFuIGl0IGFuZCBtb3ZlICdyZXQnICBkZWNsYXJhdGlvbiB0byB0aGUgZm9yKCkgc3RhdGVtZW50
+Lg0KDQpNb2RpZnkganVzdCBMaWtlIHRoaXPvvJoNCkBAIC0xMTQsNyArMTE0LDYgQEAgc3RhdGlj
+IGludCBjb3JvdXRpbmVfZm4gc3RyZWFtX3J1bihKb2IgKmpvYiwgRXJyb3IgKiplcnJwKQ0KICAg
+ICBpbnQ2NF90IG9mZnNldCA9IDA7DQogICAgIHVpbnQ2NF90IGRlbGF5X25zID0gMDsNCiAgICAg
+aW50IGVycm9yID0gMDsNCi0gICAgaW50IHJldCA9IDA7DQogICAgIGludDY0X3QgbiA9IDA7IC8q
+IGJ5dGVzICovDQoNCiAgICAgaWYgKGJzID09IHMtPmJvdHRvbSkgew0KQEAgLTEzOSw2ICsxMzgs
+NyBAQCBzdGF0aWMgaW50IGNvcm91dGluZV9mbiBzdHJlYW1fcnVuKEpvYiAqam9iLCBFcnJvciAq
+KmVycnApDQoNCiAgICAgZm9yICggOyBvZmZzZXQgPCBsZW47IG9mZnNldCArPSBuKSB7DQogICAg
+ICAgICBib29sIGNvcHk7DQorICAgICAgICBpbnQgcmV0Ow0KDQogICAgICAgICAvKiBOb3RlIHRo
+YXQgZXZlbiB3aGVuIG5vIHJhdGUgbGltaXQgaXMgYXBwbGllZCB3ZSBuZWVkIHRvIHlpZWxkDQog
+ICAgICAgICAgKiB3aXRoIG5vIHBlbmRpbmcgSS9PIGhlcmUgc28gdGhhdCBiZHJ2X2RyYWluX2Fs
+bCgpIHJldHVybnMuDQpAQCAtMTgzLDcgKzE4Myw2IEBAIHN0YXRpYyBpbnQgY29yb3V0aW5lX2Zu
+IHN0cmVhbV9ydW4oSm9iICpqb2IsIEVycm9yICoqZXJycCkNCiAgICAgICAgICAgICAgICAgYnJl
+YWs7DQogICAgICAgICAgICAgfQ0KICAgICAgICAgfQ0KLSAgICAgICAgcmV0ID0gMDsNCg0KICAg
+ICAgICAgLyogUHVibGlzaCBwcm9ncmVzcyAqLw0KICAgICAgICAgam9iX3Byb2dyZXNzX3VwZGF0
+ZSgmcy0+Y29tbW9uLmpvYiwgbik7DQoNCj4NCj5XaXRoIG9yIHdpdGhvdXQgdGhlIGNoYW5nZXM6
+DQo+DQo+UmV2aWV3ZWQtYnk6IEtldmluIFdvbGYgPGt3b2xmQHJlZGhhdC5jb20+DQoNCg==
 
