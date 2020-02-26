@@ -1,32 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6sMG-0000qO-Hp
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 03:47:56 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44803)
+	id 1j6sMH-0000sj-Ad
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 03:47:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44767)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sMA-0000Ye-EU
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:51 -0500
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM9-0007qb-Bp
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM9-0000WI-H7
  for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:50 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3168 helo=huawei.com)
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j6sM8-0007kG-E1
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 03:47:49 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3167 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j6sM5-0007Nq-Io; Wed, 26 Feb 2020 03:47:45 -0500
+ id 1j6sM5-0007Nh-KP; Wed, 26 Feb 2020 03:47:45 -0500
 Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 8E58772E53651F266B31;
+ by Forcepoint Email with ESMTP id 890FFA42264ED9080070;
  Wed, 26 Feb 2020 16:47:42 +0800 (CST)
 Received: from huawei.com (10.133.205.93) by DGGEMS411-HUB.china.huawei.com
  (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Wed, 26 Feb 2020
- 16:47:32 +0800
+ 16:47:33 +0800
 From: <kuhn.chenqun@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
 CC: <peter.maydell@linaro.org>, <zhang.zhanghailiang@huawei.com>, Chen Qun
- <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Paolo
- Bonzini" <pbonzini@redhat.com>
-Subject: [PATCH v2 04/13] scsi/esp-pci: Remove redundant statement in
- esp_pci_io_write()
-Date: Wed, 26 Feb 2020 16:46:38 +0800
-Message-ID: <20200226084647.20636-5-kuhn.chenqun@huawei.com>
+ <kuhn.chenqun@huawei.com>, Euler Robot <euler.robot@huawei.com>, "Andrzej
+ Zaborowski" <balrogg@gmail.com>
+Subject: [PATCH v2 06/13] display/pxa2xx_lcd: Remove redundant statement in
+ pxa2xx_palette_parse()
+Date: Wed, 26 Feb 2020 16:46:40 +0800
+Message-ID: <20200226084647.20636-7-kuhn.chenqun@huawei.com>
 X-Mailer: git-send-email 2.21.0.windows.1
 In-Reply-To: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
 References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
@@ -49,37 +49,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2020 08:47:51 -0000
+X-List-Received-Date: Wed, 26 Feb 2020 08:47:50 -0000
 
 From: Chen Qun <kuhn.chenqun@huawei.com>
 
 Clang static code analyzer show warning:
-  hw/scsi/esp-pci.c:198:9: warning: Value stored to 'size' is never read
-        size =3D 4;
-        ^      ~
+hw/display/pxa2xx_lcd.c:596:9: warning: Value stored to 'format' is never=
+ read
+        format =3D 0;
+        ^        ~
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc:Fam Zheng <fam@euphon.net>
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/scsi/esp-pci.c | 1 -
+ hw/display/pxa2xx_lcd.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/hw/scsi/esp-pci.c b/hw/scsi/esp-pci.c
-index d5a1f9e017..2e6cc07d4e 100644
---- a/hw/scsi/esp-pci.c
-+++ b/hw/scsi/esp-pci.c
-@@ -195,7 +195,6 @@ static void esp_pci_io_write(void *opaque, hwaddr add=
-r,
-         val <<=3D shift;
-         val |=3D current & ~(mask << shift);
-         addr &=3D ~3;
--        size =3D 4;
+diff --git a/hw/display/pxa2xx_lcd.c b/hw/display/pxa2xx_lcd.c
+index 05f5f84671..464e93161a 100644
+--- a/hw/display/pxa2xx_lcd.c
++++ b/hw/display/pxa2xx_lcd.c
+@@ -593,7 +593,6 @@ static void pxa2xx_palette_parse(PXA2xxLCDState *s, i=
+nt ch, int bpp)
+         n =3D 256;
+         break;
+     default:
+-        format =3D 0;
+         return;
      }
 =20
-     if (addr < 0x40) {
 --=20
 2.23.0
 
