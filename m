@@ -1,81 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j710d-00081J-2K
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 13:02:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35901)
+	id 1j712n-0001qw-Lz
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 13:04:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37054)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peterx@redhat.com>) id 1j710Y-00080W-Mq
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 13:02:09 -0500
+ (envelope-from <alistair23@gmail.com>) id 1j712k-0001o9-QH
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 13:04:23 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1j710W-00029n-QG
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 13:02:06 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:48913
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1j710U-00026C-Tf
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 13:02:02 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582740121;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=A+8Fj6KLqXuPf3Au4e0QGr5vSbTdDSgY5sBqllU3PRY=;
- b=ZyVsOW4c+RXWeX9ihng66XQkDUOD4TydjyjodOyOIUjHAZhALJDP5HbKhI1b/LgUitJLrN
- vETfxvOM7m7A1fbfMBvENKBlpY35sKKHeCGNM4MEU/ARu6RKz096eLqWDvfiSI7aO4dF4F
- wO2mGGUQNEg1Hu7kfsmQKa+8qMPpDCg=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-454-NcIFxZOlMSeaV3cnWWxzRw-1; Wed, 26 Feb 2020 13:01:59 -0500
-X-MC-Unique: NcIFxZOlMSeaV3cnWWxzRw-1
-Received: by mail-qk1-f198.google.com with SMTP id h6so168235qkj.14
- for <qemu-trivial@nongnu.org>; Wed, 26 Feb 2020 10:01:59 -0800 (PST)
+ (envelope-from <alistair23@gmail.com>) id 1j712j-0006X3-LL
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 13:04:22 -0500
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:45450)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1j712g-0006I0-UU; Wed, 26 Feb 2020 13:04:19 -0500
+Received: by mail-lf1-x144.google.com with SMTP id z5so2658403lfd.12;
+ Wed, 26 Feb 2020 10:04:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=qixnKNDx/RlczFUjx2kQ4GPdxbg9OO/em4zJMw/98xY=;
+ b=WYW3zHJahNRFNx36YyFvX9VuUOmpfB0jWolHG541Oxf1+46H9eN5X1a5rm4tHXT2Jn
+ 3+zrNn22JuQpVPex/0u5RVUmVf/z7HC8BeSNxX60HZcfr4PNQtmF5eRDpr9bzB2Xm2Rj
+ Mq10/UV/KQS8O6hskJc5IcJGcuJSVe1rzr9cgxLK5ea/PSTfmmCMletmP/HZk7mRGX1f
+ 8H2PYw3PgumRuBdMAIFmG1EeYNKY7nGCcqJBh3olb08N28ln1qxbqcoskVr+yQ2SX6+s
+ 4cCu4vVpvj3LgLtttSQk0CSptFEXws5kKydSOrK4Yf4zlrizgTiJcrzT3cyxJL75oB8c
+ 69dQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=J//p7ec8pBvmNZvIE0gq8BxamWTkgi696RXVTLV621U=;
- b=mQFU29CLhpVdmyhBvgfKn5y/IIv7sVX5fBVe7T3xjJvyF7BEcJeaThwZ8FdTWjs7K2
- Ty1u7prh/jBoXGkhuzzZjxeAbcLCCStZqaU2L+vgHtQMpAAffv3GDBLf8Js05cImhPI5
- LnW6aXSbgLmAZhfW8X12N5dCNQNUjHbwnGLDOS/gdM2Sp1uZtsDEO+mFCgJwU0nbkg5U
- i21ouhJ844VSlfGVhfS91k23Ft7D+D+J2j04hs93BCYiZSa+j98bNoqwkdxeLl372fcD
- xaZhQgVpOQJAUOHHwjYgYgU7f5DWt3+MvpLcsn7DIGs+rroewcNMi5F1VttP5vDv/yDN
- pnxg==
-X-Gm-Message-State: APjAAAVSl2Qrzk2vJgFEfyD6bjw/dbYPMmIiwI6Lm1s639oI3tFVRX/1
- yx8vrlkXLbULqIuGET3NjNB5z4xKiXC+A+OAoylxwcJMkycWx9WO7H/B4Xo9hRNU2J+GwkWr1Ko
- w3f2rKwsjBy6mhKwdSw==
-X-Received: by 2002:ad4:5a48:: with SMTP id ej8mr272519qvb.187.1582740113963; 
- Wed, 26 Feb 2020 10:01:53 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzYE34PPfAzlFrzG0f5aw/8Q0dGbe/tlpVkpxmZzYDjfl30vbyPoZZk6q1vnhumyEO0XiDy8A==
-X-Received: by 2002:ad4:5a48:: with SMTP id ej8mr272470qvb.187.1582740113490; 
- Wed, 26 Feb 2020 10:01:53 -0800 (PST)
-Received: from xz-x1 (CPEf81d0fb19163-CMf81d0fb19160.cpe.net.fido.ca.
- [72.137.123.47])
- by smtp.gmail.com with ESMTPSA id u2sm1550500qtd.72.2020.02.26.10.01.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Feb 2020 10:01:52 -0800 (PST)
-Date: Wed, 26 Feb 2020 13:01:50 -0500
-From: Peter Xu <peterx@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Liu Yi L <yi.l.liu@intel.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
- Yi Sun <yi.y.sun@linux.intel.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Eric Auger <eric.auger@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
-Subject: Re: [PATCH] hw/i386/intel_iommu: Simplify vtd_find_as_from_bus_num()
- logic
-Message-ID: <20200226180150.GF140200@xz-x1>
-References: <20200226174956.17018-1-philmd@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=qixnKNDx/RlczFUjx2kQ4GPdxbg9OO/em4zJMw/98xY=;
+ b=OiFh3louYkLPZABc6GYk1+bDIG4+45zRqwRoiVUc2+sD2fAtenRlq6Vawv0NHqv55z
+ al+wNPNvleNbNXDOi/66dVcHtP5e5Goe3HB2qJSmJsgJt7ni6J8w+9jkn4T8mCrdkLgv
+ GA9vA+SoagUuiJJJJ3kt3mNMxRleI81Pu0u4wwNjtYTGDzwQUHZvB1qJfG8HMeSWFL3b
+ ey6DKiGGzobdlWSIwva3tAtHkrGqUlpxwcVNErqJsrqwZ/3Uj3MSkdCe7KatHrm7j6Ic
+ EvML13uHhg/XVHBP4+QYVvYPQ7CuxGjoraw6PvipHlN+O1x+7v271//Y6PHbsiel64Fo
+ +cXg==
+X-Gm-Message-State: APjAAAXb3qO/80SQ9tTF3g3qu9WR7Uo2/n2v7cYvCapK5i67JrmcWLid
+ XX2XwONVpCuCH9+hVXJVTGbG9GheIlIdvpfPcCY=
+X-Google-Smtp-Source: APXvYqyDanTj6CItMlrP64oyBagwZRXSbl/vGnd7PIN+4JPKOk9K3Vwq46hSueuBS/6BUAtFoatDpvloQJ8wbhsttn8=
+X-Received: by 2002:ac2:5111:: with SMTP id q17mr1159513lfb.51.1582740257474; 
+ Wed, 26 Feb 2020 10:04:17 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20200226174956.17018-1-philmd@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
+ <20200226084647.20636-10-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200226084647.20636-10-kuhn.chenqun@huawei.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Wed, 26 Feb 2020 09:56:38 -0800
+Message-ID: <CAKmqyKNLKkjxwEZaL88a1PY2ZMOF9oZQvOWzrMFyCUz84-bjbA@mail.gmail.com>
+Subject: Re: [PATCH v2 09/13] dma/xlnx-zdma: Remove redundant statement in
+ zdma_write_dst()
+To: kuhn.chenqun@huawei.com
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, zhang.zhanghailiang@huawei.com, 
+ Alistair Francis <alistair@alistair23.me>, Euler Robot <euler.robot@huawei.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::144
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,74 +72,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2020 18:02:09 -0000
+X-List-Received-Date: Wed, 26 Feb 2020 18:04:24 -0000
 
-On Wed, Feb 26, 2020 at 06:49:56PM +0100, Philippe Mathieu-Daud=C3=A9 wrote=
-:
-> Reorder the if() statement to simplify the function.
-> This avoid bugs like the one fixed by commit a2e1cd41ccf.
-
-This seems to hint that this patch fixes a problem, but it's pure
-refactoring, right?
-
-And I'm not sure about git-diff -w or so, but... I can't apply such a
-patch cleanly using "git am".  Are you sure a patch like this would
-work (without space change information)?
-
-Thanks,
-
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+On Wed, Feb 26, 2020 at 12:52 AM <kuhn.chenqun@huawei.com> wrote:
+>
+> From: Chen Qun <kuhn.chenqun@huawei.com>
+>
+> Clang static code analyzer show warning:
+> hw/dma/xlnx-zdma.c:399:13: warning: Value stored to 'dst_type' is never r=
+ead
+>             dst_type =3D FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR=
+_WORD3,
+>             ^          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 > ---
->  hw/i386/intel_iommu.c | 14 ++++++++------
->  1 file changed, 8 insertions(+), 6 deletions(-)
->=20
-> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-> index 6258c58ac9..e720a8939c 100644
-> --- a/hw/i386/intel_iommu.c
-> +++ b/hw/i386/intel_iommu.c
-> @@ -987,14 +987,17 @@ static bool vtd_slpte_nonzero_rsvd(uint64_t slpte, =
-uint32_t level)
->  static VTDBus *vtd_find_as_from_bus_num(IntelIOMMUState *s, uint8_t bus_=
-num)
+> Cc: Alistair Francis <alistair@alistair23.me>
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
+>
+> v1->v2: move the 'dst_type' declaration.(Base on Philippe's suggestion).
+> ---
+>  hw/dma/xlnx-zdma.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/dma/xlnx-zdma.c b/hw/dma/xlnx-zdma.c
+> index 8fb83f5b07..eeacad59ce 100644
+> --- a/hw/dma/xlnx-zdma.c
+> +++ b/hw/dma/xlnx-zdma.c
+> @@ -373,7 +373,7 @@ static uint64_t zdma_update_descr_addr(XlnxZDMA *s, b=
+ool type,
+>  static void zdma_write_dst(XlnxZDMA *s, uint8_t *buf, uint32_t len)
 >  {
->      VTDBus *vtd_bus =3D s->vtd_as_by_bus_num[bus_num];
-> -    if (!vtd_bus) {
-> +    GHashTableIter iter;
+>      uint32_t dst_size, dlen;
+> -    bool dst_intr, dst_type;
+> +    bool dst_intr;
+>      unsigned int ptype =3D ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0, POIN=
+T_TYPE);
+>      unsigned int rw_mode =3D ARRAY_FIELD_EX32(s->regs, ZDMA_CH_CTRL0, MO=
+DE);
+>      unsigned int burst_type =3D ARRAY_FIELD_EX32(s->regs, ZDMA_CH_DATA_A=
+TTR,
+> @@ -387,17 +387,17 @@ static void zdma_write_dst(XlnxZDMA *s, uint8_t *bu=
+f, uint32_t len)
+>      while (len) {
+>          dst_size =3D FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSCR_WO=
+RD2,
+>                                SIZE);
+> -        dst_type =3D FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSCR_WO=
+RD3,
+> -                              TYPE);
+>          if (dst_size =3D=3D 0 && ptype =3D=3D PT_MEM) {
+>              uint64_t next;
+> +            bool dst_type =3D FIELD_EX32(s->dsc_dst.words[3],
+> +                                       ZDMA_CH_DST_DSCR_WORD3,
+> +                                       TYPE);
 > +
-> +    if (vtd_bus) {
-> +        return vtd_bus;
-> +    }
-> +
->      /*
->       * Iterate over the registered buses to find the one which
->       * currently hold this bus number, and update the bus_num
->       * lookup table:
->       */
-> -        GHashTableIter iter;
-> -
->      g_hash_table_iter_init(&iter, s->vtd_as_by_busptr);
->      while (g_hash_table_iter_next(&iter, NULL, (void **)&vtd_bus)) {
->          if (pci_bus_num(vtd_bus->bus) =3D=3D bus_num) {
-> @@ -1002,9 +1005,8 @@ static VTDBus *vtd_find_as_from_bus_num(IntelIOMMUS=
-tate *s, uint8_t bus_num)
->              return vtd_bus;
+>              next =3D zdma_update_descr_addr(s, dst_type,
+>                                            R_ZDMA_CH_DST_CUR_DSCR_LSB);
+>              zdma_load_descriptor(s, next, &s->dsc_dst);
+>              dst_size =3D FIELD_EX32(s->dsc_dst.words[2], ZDMA_CH_DST_DSC=
+R_WORD2,
+>                                    SIZE);
+> -            dst_type =3D FIELD_EX32(s->dsc_dst.words[3], ZDMA_CH_DST_DSC=
+R_WORD3,
+> -                                  TYPE);
 >          }
->      }
-> -        vtd_bus =3D NULL;
-> -    }
-> -    return vtd_bus;
-> +
-> +    return NULL;
->  }
-> =20
->  /* Given the @iova, get relevant @slptep. @slpte_level will be the last =
-level
-> --=20
-> 2.21.1
->=20
-
---=20
-Peter Xu
-
+>
+>          /* Match what hardware does by ignoring the dst_size and only us=
+ing
+> --
+> 2.23.0
+>
+>
+>
 
