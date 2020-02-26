@@ -1,57 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j6tLf-0006aZ-Nq
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 04:51:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59972)
+	id 1j6tP6-0000Ql-Jo
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 04:54:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33460)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kwolf@redhat.com>) id 1j6tLa-0006ZD-EV
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 04:51:21 -0500
+ (envelope-from <kwolf@redhat.com>) id 1j6tP3-0000QB-RN
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 04:54:54 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kwolf@redhat.com>) id 1j6tLW-00031f-TE
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 04:51:18 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:25959
+ (envelope-from <kwolf@redhat.com>) id 1j6tP2-0003vV-Ow
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 04:54:53 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:43038
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kwolf@redhat.com>) id 1j6tLW-00030b-Pv
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 04:51:14 -0500
+ (Exim 4.71) (envelope-from <kwolf@redhat.com>) id 1j6tP2-0003uo-Kr
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 04:54:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582710671;
+ s=mimecast20190719; t=1582710892;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=iE6mLSQBGZOcVUs0eycAMzi27bNQgTlJa0yUROcuXvM=;
- b=HDWSb4n3cwZiFrme3wEtD+cOzFGOzdNWFRS8F0k2DpNmWxzuIZzcn1/r7/oPf7uD2jAI6p
- fNi64eiVFWI9sho2MVv5RLZ1UxzhEv+eZXKDyEabJyMR2uMgX7Avd+4i6TdupIVTzZpUJ/
- k/SdxmMqfKAmx0Wmnwl7kjuYYv1gIU0=
+ bh=Xp3xeOqaNDoIa9NTtOqILdHbwFkwRlALmAsN/itNMrk=;
+ b=IqZJCkc8KB+7qNPP8sKQ1N4XncjQkrAYs98OOLu/jzCzWXL4JbM/MWVHhdFZKNmrKMiyOz
+ mY+LDWNsSneD4/Ry7DH0MAdZrOe9C99APDChFmVpwMruC754erlQ9gCdn703M9xRB/YATJ
+ tiWMhtyek6WBTMrEk5q3Ymm/NDtXqPA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-179-na-B67iCPtGXhQd8SDbFqA-1; Wed, 26 Feb 2020 04:51:08 -0500
-X-MC-Unique: na-B67iCPtGXhQd8SDbFqA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-273-FHEosH-SM6y5q0jGG00A3g-1; Wed, 26 Feb 2020 04:54:50 -0500
+X-MC-Unique: FHEosH-SM6y5q0jGG00A3g-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E17A08017CC;
- Wed, 26 Feb 2020 09:51:05 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A70C1DBA3;
+ Wed, 26 Feb 2020 09:54:48 +0000 (UTC)
 Received: from linux.fritz.box (ovpn-117-170.ams2.redhat.com [10.36.117.170])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 22273385;
- Wed, 26 Feb 2020 09:51:03 +0000 (UTC)
-Date: Wed, 26 Feb 2020 10:51:02 +0100
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 872345C13D;
+ Wed, 26 Feb 2020 09:54:46 +0000 (UTC)
+Date: Wed, 26 Feb 2020 10:54:44 +0100
 From: Kevin Wolf <kwolf@redhat.com>
 To: kuhn.chenqun@huawei.com
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
  peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
- Euler Robot <euler.robot@huawei.com>, John Snow <jsnow@redhat.com>,
+ Euler Robot <euler.robot@huawei.com>,
+ Ronnie Sahlberg <ronniesahlberg@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Lieven <pl@kamp.de>,
  Max Reitz <mreitz@redhat.com>
-Subject: Re: [PATCH v2 01/13] block/stream: Remove redundant statement in
- stream_run()
-Message-ID: <20200226095102.GA6096@linux.fritz.box>
+Subject: Re: [PATCH v2 02/13] block/iscsi:Remove redundant statement in
+ iscsi_open()
+Message-ID: <20200226095444.GB6096@linux.fritz.box>
 References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
- <20200226084647.20636-2-kuhn.chenqun@huawei.com>
+ <20200226084647.20636-3-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200226084647.20636-2-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200226084647.20636-3-kuhn.chenqun@huawei.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
@@ -71,27 +73,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2020 09:51:22 -0000
+X-List-Received-Date: Wed, 26 Feb 2020 09:54:55 -0000
 
 Am 26.02.2020 um 09:46 hat kuhn.chenqun@huawei.com geschrieben:
 > From: Chen Qun <kuhn.chenqun@huawei.com>
 >=20
 > Clang static code analyzer show warning:
->   block/stream.c:186:9: warning: Value stored to 'ret' is never read
->         ret =3D 0;
->         ^     ~
+>   block/iscsi.c:1920:9: warning: Value stored to 'flags' is never read
+>         flags &=3D ~BDRV_O_RDWR;
+>         ^        ~~~~~~~~~~~~
+>=20
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> Reviewed-by: John Snow <jsnow@redhat.com>
 
-Let's mention that this is unnecessary since commit 1d809098aa9.
+Hmm, I'm not so sure about this one because if we remove the line, flags
+will be inconsistent with bs->open_flags. It feels like setting a trap
+for anyone who wants to add code using flags in the future.
 
-Since the same commit, the initialisation 'int ret =3D 0;' is unnecessary
-because we never read ret before overwriting the initial value. We could
-clean this up in the same patch.
+Kevin
 
-With or without the changes:
-
-Reviewed-by: Kevin Wolf <kwolf@redhat.com>
+> Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Peter Lieven <pl@kamp.de>
+> Cc: Kevin Wolf <kwolf@redhat.com>
+> Cc: Max Reitz <mreitz@redhat.com>
+> ---
+>  block/iscsi.c | 1 -
+>  1 file changed, 1 deletion(-)
+>=20
+> diff --git a/block/iscsi.c b/block/iscsi.c
+> index 682abd8e09..ed88479ede 100644
+> --- a/block/iscsi.c
+> +++ b/block/iscsi.c
+> @@ -1917,7 +1917,6 @@ static int iscsi_open(BlockDriverState *bs, QDict *=
+options, int flags,
+>          if (ret < 0) {
+>              goto out;
+>          }
+> -        flags &=3D ~BDRV_O_RDWR;
+>      }
+> =20
+>      iscsi_readcapacity_sync(iscsilun, &local_err);
+> --=20
+> 2.23.0
+>=20
+>=20
 
 
