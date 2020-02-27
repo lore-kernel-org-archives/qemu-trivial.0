@@ -1,63 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j7NVP-00065x-J9
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Feb 2020 13:03:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58739)
+	id 1j7OXj-0005a8-1Z
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Feb 2020 14:09:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42228)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <quintela@redhat.com>) id 1j7NVN-00063d-9z
- for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 13:03:26 -0500
+ (envelope-from <philmd@redhat.com>) id 1j7OXg-0005Yt-JZ
+ for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 14:09:53 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <quintela@redhat.com>) id 1j7NVM-0000c3-CK
- for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 13:03:25 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:41679
+ (envelope-from <philmd@redhat.com>) id 1j7OXf-0002ie-KJ
+ for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 14:09:52 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:35308
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <quintela@redhat.com>) id 1j7NVM-0000bt-95
- for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 13:03:24 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j7OXf-0002iE-Gi
+ for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 14:09:51 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582826603;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=vXcoFIKfdayPp5Ufj0uzs8sJ+k93gtb12lIAf/a5BIY=;
- b=hSp1G7DfSP6gvXLy9hL/jQd2VJp4XIbx0VwK9ISRX9RaX18Mpx2ayDBV/XUr39J/xq5aN/
- /1jKKBgiNtU4d6HyVx0/FCBDXHNOWZ2Ab0RhN5JqCwLaFSfGed+dmdhRftVB6b+67Ag+pm
- IW0kBV5IEV0mVDNBjQDAWMOzFd+Ndo0=
+ s=mimecast20190719; t=1582830590;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=8JrELPM42f56E7q79C9gTRfwQ6hDBnTqR4QEUvYMZ44=;
+ b=i5Wmp/BPUuzFOVsp1s7lOibpQMKKq6PAfghxnw2OpxYGmJf42BWx+J9MgE1d8zpnDqjHEs
+ Zaisl7+88t4XNBxtVM9Q25q1cB4KFYyFnr0pUYp2My2XppUX9Pf+QfCQQanAUaQ1D8fMer
+ NfYgiruHWuMmbi5Krd8wyO7IqDMg5Cw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-266-xEpoaVMmOxWd3FwjgR43ow-1; Thu, 27 Feb 2020 13:03:16 -0500
-X-MC-Unique: xEpoaVMmOxWd3FwjgR43ow-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-235-G8ooeuq4NraYOrAX4nfEtQ-1; Thu, 27 Feb 2020 14:09:48 -0500
+X-MC-Unique: G8ooeuq4NraYOrAX4nfEtQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DA55D100DFC4;
- Thu, 27 Feb 2020 18:03:14 +0000 (UTC)
-Received: from redhat.com (ovpn-116-72.ams2.redhat.com [10.36.116.72])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9AAF55DA7B;
- Thu, 27 Feb 2020 18:03:14 +0000 (UTC)
-From: Juan Quintela <quintela@redhat.com>
-To: <kuhn.chenqun@huawei.com>
-Cc: <qemu-devel@nongnu.org>, <ehabkost@redhat.com>, <thuth@redhat.com>,
- <dgilbert@redhat.com>, <qemu-trivial@nongnu.org>,
- <zhang.zhanghailiang@huawei.com>
-Subject: Re: [PATCH v2] test-vmstate: Fix memleaks in test_load_qlist
-In-Reply-To: <20200220134103.26224-1-kuhn.chenqun@huawei.com> (kuhn chenqun's
- message of "Thu, 20 Feb 2020 21:41:03 +0800")
-References: <20200220134103.26224-1-kuhn.chenqun@huawei.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
-Reply-To: quintela@redhat.com
-Date: Thu, 27 Feb 2020 19:03:12 +0100
-Message-ID: <87k147di1r.fsf@secure.laptop>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AA8CC800D5A;
+ Thu, 27 Feb 2020 19:09:47 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-205-195.brq.redhat.com [10.40.205.195])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 591A05C54A;
+ Thu, 27 Feb 2020 19:09:45 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Pan Nengyuan <pannengyuan@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] qom/object: Comment to use g_slist_free on
+ object_class_get_list result
+Date: Thu, 27 Feb 2020 20:09:42 +0100
+Message-Id: <20200227190942.8834-1-philmd@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -69,22 +66,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Feb 2020 18:03:26 -0000
+X-List-Received-Date: Thu, 27 Feb 2020 19:09:53 -0000
 
-<kuhn.chenqun@huawei.com> wrote:
-> From: Chen Qun <kuhn.chenqun@huawei.com>
->
-> There is memleak in test_load_qlist().It's not a big deal,
-> but test-vmstate will fail if sanitizers is enabled.
->
-> In addition, "ret" is written twice with the same value
->  in test_gtree_load_iommu().
->
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+Document the list returned by object_class_get_list() must be
+released with g_slist_free() to avoid memory leaks.
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ include/qom/object.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-queued
+diff --git a/include/qom/object.h b/include/qom/object.h
+index 29546496c1..5517b56508 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -984,6 +984,9 @@ void object_class_foreach(void (*fn)(ObjectClass *klass=
+, void *opaque),
+  * @include_abstract: Whether to include abstract classes.
+  *
+  * Returns: A singly-linked list of the classes in reverse hashtable order=
+.
++ *
++ * The returned list must be released with g_slist_free()
++ * when no longer required.
+  */
+ GSList *object_class_get_list(const char *implements_type,
+                               bool include_abstract);
+@@ -995,6 +998,9 @@ GSList *object_class_get_list(const char *implements_ty=
+pe,
+  *
+  * Returns: A singly-linked list of the classes in alphabetical
+  * case-insensitive order.
++ *
++ * The returned list must be released with g_slist_free()
++ * when no longer required.
+  */
+ GSList *object_class_get_list_sorted(const char *implements_type,
+                               bool include_abstract);
+--=20
+2.21.1
 
 
