@@ -1,67 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j7EOa-0003SF-IY
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Feb 2020 03:19:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41162)
+	id 1j7G0a-0001hl-Fn
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Feb 2020 05:03:08 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35334)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1j7EOX-0003RK-NB
- for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 03:19:46 -0500
+ (envelope-from <philmd@redhat.com>) id 1j7G0X-0001cx-IH
+ for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 05:03:06 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1j7EOW-0000S7-MC
- for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 03:19:45 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:39168
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1j7G0V-0002W6-Fj
+ for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 05:03:05 -0500
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:56162
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1j7EOW-0000Qt-8M
- for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 03:19:44 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j7G0V-0002UM-C9
+ for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 05:03:03 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582791583;
+ s=mimecast20190719; t=1582797782;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=+RObblKBf6mrz+eA4PkPspRr4IMEeVMvSrywem5dXJs=;
- b=IIgYyIAAoG+KS+Tp5v5elp9v57aO91FTUPwEsTAg0+Cu7x+ZqEkenSjBUwlsv8VgE3G2Cr
- oixRUHQgTK1e4VXnDfhXmH6AcDxLWMfbK0H4JI/fnLOMB6lZVYtfnTC2EApmla0oAPhlly
- Kh5PzuhGm1V3fZelEYRAAShMcQPTji4=
+ bh=kw98pB1tWPGUjfZgZz7G2e/0ArOYvHoL2Mljit+/yGw=;
+ b=Vj/f8n7GQhlbCaefFWdD+BYzNX9znSRJRY5Q9ej2scyJceydkxTm7v4CHf/keLIGXzBrhe
+ FVYwrpyCIAnhag341zUbthKIkQvcyrQIJWRI5qFEXITm+dIVpW0FUSUVk4jMXEO5ddDmQ2
+ UvU82QTajlevIate2PzQFkdtbQEzw9Y=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-253-HyYjPEu_M0-PkNobTuti7Q-1; Thu, 27 Feb 2020 03:19:39 -0500
-X-MC-Unique: HyYjPEu_M0-PkNobTuti7Q-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-479-vn8IZvRvOS-S3RIbMPaKUw-1; Thu, 27 Feb 2020 05:03:01 -0500
+X-MC-Unique: vn8IZvRvOS-S3RIbMPaKUw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9F2328017CC;
- Thu, 27 Feb 2020 08:19:38 +0000 (UTC)
-Received: from [10.36.116.59] (ovpn-116-59.ams2.redhat.com [10.36.116.59])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B6E1077945;
- Thu, 27 Feb 2020 08:19:30 +0000 (UTC)
-Subject: Re: [PATCH v3] hw/i386/intel_iommu: Simplify
- vtd_find_as_from_bus_num() logic
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Liu Yi L <yi.l.liu@intel.com>, Yi Sun <yi.y.sun@linux.intel.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, qemu-trivial@nongnu.org, Peter Xu <peterx@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-References: <20200227074606.14272-1-philmd@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <782a5549-0b83-443c-6927-8cdbc03b1155@redhat.com>
-Date: Thu, 27 Feb 2020 09:19:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4159913F6;
+ Thu, 27 Feb 2020 10:03:00 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-205-195.brq.redhat.com [10.40.205.195])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4B0948B779;
+ Thu, 27 Feb 2020 10:02:58 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ "Daniel P . Berrange" <berrange@redhat.com>, Stefan Weil <sw@weilnetz.de>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH 1/2] chardev: Improve error report by calling
+ error_setg_win32()
+Date: Thu, 27 Feb 2020 11:02:49 +0100
+Message-Id: <20200227100250.20514-2-philmd@redhat.com>
+In-Reply-To: <20200227100250.20514-1-philmd@redhat.com>
+References: <20200227100250.20514-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200227074606.14272-1-philmd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,95 +69,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Feb 2020 08:19:47 -0000
+X-List-Received-Date: Thu, 27 Feb 2020 10:03:06 -0000
 
-Hi Philippe,
+Use error_setg_win32() which adds a hint similar to strerror(errno)).
 
-On 2/27/20 8:46 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> The vtd_find_as_from_bus_num() function was introduced (in commit
-> dbaabb25f) in a code format that could return an incorrect pointer,
-> which was later fixed by commit a2e1cd41ccf.
-> We could have avoid this by writing the if() statement differently.
-s/avoid/avoided
-> Do it now, in case this function is re-used. The code is easier to
-> review (harder to miss bugs).
->=20
-> Reviewed-by: Peter Xu <peterx@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> Since v2: Re-worded commit description, patch sent without -w.
-> Since v3: patch send without diff
->=20
-> This patch is easier to review with 'git-diff -w' (--ignore-all-space)
-> ---
->  hw/i386/intel_iommu.c | 34 ++++++++++++++++++----------------
->  1 file changed, 18 insertions(+), 16 deletions(-)
->=20
-> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-> index 6258c58ac9..e720a8939c 100644
-> --- a/hw/i386/intel_iommu.c
-> +++ b/hw/i386/intel_iommu.c
-> @@ -987,24 +987,26 @@ static bool vtd_slpte_nonzero_rsvd(uint64_t slpte, =
-uint32_t level)
->  static VTDBus *vtd_find_as_from_bus_num(IntelIOMMUState *s, uint8_t bus_=
-num)
->  {
->      VTDBus *vtd_bus =3D s->vtd_as_by_bus_num[bus_num];
-> -    if (!vtd_bus) {
-> -        /*
-> -         * Iterate over the registered buses to find the one which
-> -         * currently hold this bus number, and update the bus_num
-s/hold/holds
-> -         * lookup table:
-I would change the comment that way
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ chardev/char-pipe.c | 2 +-
+ chardev/char-win.c  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Iterate over the registered buses to find the one which
-currently holds this bus number and update the bus_num
-lookup table
-
-> -         */
-> -        GHashTableIter iter;
-> +    GHashTableIter iter;
-> =20
-> -        g_hash_table_iter_init(&iter, s->vtd_as_by_busptr);
-> -        while (g_hash_table_iter_next(&iter, NULL, (void **)&vtd_bus)) {
-> -            if (pci_bus_num(vtd_bus->bus) =3D=3D bus_num) {
-> -                s->vtd_as_by_bus_num[bus_num] =3D vtd_bus;
-> -                return vtd_bus;
-> -            }
-> -        }
-> -        vtd_bus =3D NULL;
-> +    if (vtd_bus) {
-> +        return vtd_bus;
->      }
-> -    return vtd_bus;
-> +
-> +    /*
-> +     * Iterate over the registered buses to find the one which
-> +     * currently hold this bus number, and update the bus_num
-> +     * lookup table:
-> +     */
-> +    g_hash_table_iter_init(&iter, s->vtd_as_by_busptr);
-> +    while (g_hash_table_iter_next(&iter, NULL, (void **)&vtd_bus)) {
-> +        if (pci_bus_num(vtd_bus->bus) =3D=3D bus_num) {
-> +            s->vtd_as_by_bus_num[bus_num] =3D vtd_bus;
-> +            return vtd_bus;
-> +        }
-> +    }
-> +
-> +    return NULL;
->  }
-> =20
->  /* Given the @iova, get relevant @slptep. @slpte_level will be the last =
-level
->=20
-
-Besides
-
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Thanks
-
-Eric
+diff --git a/chardev/char-pipe.c b/chardev/char-pipe.c
+index 94d714ffcd..fd12c9e63b 100644
+--- a/chardev/char-pipe.c
++++ b/chardev/char-pipe.c
+@@ -70,7 +70,7 @@ static int win_chr_pipe_init(Chardev *chr, const char *fi=
+lename,
+                               MAXCONNECT, NSENDBUF, NRECVBUF, NTIMEOUT, NU=
+LL);
+     g_free(openname);
+     if (s->file =3D=3D INVALID_HANDLE_VALUE) {
+-        error_setg(errp, "Failed CreateNamedPipe (%lu)", GetLastError());
++        error_setg_win32(errp, GetLastError(), "Failed CreateNamedPipe");
+         s->file =3D NULL;
+         goto fail;
+     }
+diff --git a/chardev/char-win.c b/chardev/char-win.c
+index 34825f683d..d4fb44c4dc 100644
+--- a/chardev/char-win.c
++++ b/chardev/char-win.c
+@@ -96,7 +96,7 @@ int win_chr_serial_init(Chardev *chr, const char *filenam=
+e, Error **errp)
+     s->file =3D CreateFile(filename, GENERIC_READ | GENERIC_WRITE, 0, NULL=
+,
+                       OPEN_EXISTING, FILE_FLAG_OVERLAPPED, 0);
+     if (s->file =3D=3D INVALID_HANDLE_VALUE) {
+-        error_setg(errp, "Failed CreateFile (%lu)", GetLastError());
++        error_setg_win32(errp, GetLastError(), "Failed CreateFile");
+         s->file =3D NULL;
+         goto fail;
+     }
+--=20
+2.21.1
 
 
