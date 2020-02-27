@@ -1,84 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j74SY-0003Sl-Ig
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 16:43:14 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40543)
+	id 1j78JY-0003EO-VR
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 20:50:12 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34150)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peterx@redhat.com>) id 1j74SV-0003SH-TG
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 16:43:12 -0500
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j78JW-0003CX-VB
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 20:50:11 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1j74SU-0001WE-0a
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 16:43:11 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:39367
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <kuhn.chenqun@huawei.com>) id 1j78JV-0000bX-SE
+ for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 20:50:10 -0500
+Received: from szxga02-in.huawei.com ([45.249.212.188]:2506 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1j74ST-0001SP-Jv
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 16:43:09 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582753388;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=d8UFU7LACjbl7GOakU0eK1xtN0+bkdSm5FZppkMQJcA=;
- b=MJHEDmDVgVszHBtEmmteZiT03D0AC3UBf8rMPr751qSXZcWXoOedHAVQT6d0YWxaKCCuEy
- Zl48GUTSqEXAfpXMqHTZ+0od3qP1P1UoNqY0q7r83inhYjcDGpJrkQc3L2QbRce2Fk0qa3
- kpLfSWx8VJ7d8OVpIcH7uBgzcRJJ4xU=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-467-veZ2tfu_NASNH9NKm8MNfw-1; Wed, 26 Feb 2020 16:43:07 -0500
-X-MC-Unique: veZ2tfu_NASNH9NKm8MNfw-1
-Received: by mail-qk1-f198.google.com with SMTP id v189so386191qkb.16
- for <qemu-trivial@nongnu.org>; Wed, 26 Feb 2020 13:43:07 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=FTPRBXY2Ub1X/FK6561PHf1BKgQVQN/ZdThkc+uN2Ec=;
- b=OcOOEQ5Wrfh+JuknNUvqI450NAPPh9q2V0TSRgrmaUnTFCI6rZlnwxKPyXmvabLV4e
- AA4XrSTNseBXPmdWkVmA1MovSsGT9wUF7e8TFXdxe6tNpV4lX8AuL75rxcWfKe/WFRUo
- AeOQ9YA18d6WwaRfhxTpurYTFLTEci9hvjWKB2OSQM9Xci3ZeW0MJcMfADazNwqREThb
- qvLejpaHnHPvXEVGromuQOq0tpSOTas59mbFZfZczznhWmKQa5b06Qd4Cx0/QpDxKhUF
- T0tQAy9cquRdvGc3VU5ZKRBPw9AS3uKb39NN+Sfw8IVeDexm+W61teI/7a7t2JfEXyXj
- ozTA==
-X-Gm-Message-State: APjAAAUF4mcyjMU1MTUSwQhsUVho3b7hVFjdFDt6dqt+tuP6qcSUjvcK
- kFpul5729EVZ4mOBX1Gtkm4ygMdBThsnN2++FuqvL0aFnLvzSlHxpVYGV28VLoW/BK2b1512Ajo
- GhniRwbGpRgTtWi3CXA==
-X-Received: by 2002:a05:6214:a48:: with SMTP id
- ee8mr1340943qvb.90.1582753386527; 
- Wed, 26 Feb 2020 13:43:06 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwXoYRp8cm5ORMAV4UDyxKHuAm4M6pgK2T42Gzs6Wq2yVGDgkWh8H3Es/y3o0kkjYFkfS67bw==
-X-Received: by 2002:a05:6214:a48:: with SMTP id
- ee8mr1340921qvb.90.1582753386334; 
- Wed, 26 Feb 2020 13:43:06 -0800 (PST)
-Received: from xz-x1 (CPEf81d0fb19163-CMf81d0fb19160.cpe.net.fido.ca.
- [72.137.123.47])
- by smtp.gmail.com with ESMTPSA id v10sm1847664qtj.26.2020.02.26.13.43.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Feb 2020 13:43:05 -0800 (PST)
-Date: Wed, 26 Feb 2020 16:43:04 -0500
-From: Peter Xu <peterx@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eric Auger <eric.auger@redhat.com>, Yi Sun <yi.y.sun@linux.intel.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <rth@twiddle.net>, qemu-trivial@nongnu.org,
- Eduardo Habkost <ehabkost@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Liu Yi L <yi.l.liu@intel.com>
-Subject: Re: [PATCH v2] hw/i386/intel_iommu: Simplify
- vtd_find_as_from_bus_num() logic
-Message-ID: <20200226214304.GC180973@xz-x1>
-References: <20200226201030.22583-1-philmd@redhat.com>
- <20200226202054.GA180973@xz-x1>
+ (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1j78JT-0000Ti-5t; Wed, 26 Feb 2020 20:50:07 -0500
+Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.56])
+ by Forcepoint Email with ESMTP id 2A28962E71BFD1CE1EF5;
+ Thu, 27 Feb 2020 09:50:01 +0800 (CST)
+Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
+ DGGEMM403-HUB.china.huawei.com ([10.3.20.211]) with mapi id 14.03.0439.000;
+ Thu, 27 Feb 2020 09:49:51 +0800
+From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
+To: Kevin Wolf <kwolf@redhat.com>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ Euler Robot <euler.robot@huawei.com>, Ronnie Sahlberg
+ <ronniesahlberg@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Lieven
+ <pl@kamp.de>, Max Reitz <mreitz@redhat.com>
+Subject: RE: [PATCH v2 02/13] block/iscsi:Remove redundant statement in
+ iscsi_open()
+Thread-Topic: [PATCH v2 02/13] block/iscsi:Remove redundant statement in
+ iscsi_open()
+Thread-Index: AQHV7IFlkw7HklI9YUytmY61YTlYXagstmsAgAGL6HA=
+Date: Thu, 27 Feb 2020 01:49:50 +0000
+Message-ID: <7412CDE03601674DA8197E2EBD8937E83B6638BE@dggemm531-mbx.china.huawei.com>
+References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
+ <20200226084647.20636-3-kuhn.chenqun@huawei.com>
+ <20200226095444.GB6096@linux.fritz.box>
+In-Reply-To: <20200226095444.GB6096@linux.fritz.box>
+Accept-Language: en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.133.205.93]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <20200226202054.GA180973@xz-x1>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 45.249.212.188
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,25 +60,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Feb 2020 21:43:12 -0000
+X-List-Received-Date: Thu, 27 Feb 2020 01:50:12 -0000
 
-On Wed, Feb 26, 2020 at 03:20:54PM -0500, Peter Xu wrote:
-
-[...]
-
-> (However we'll need to read below after all... :)
->=20
-> Reviewed-by: Peter Xu <peterx@redhat.com>
-
-As pointed out by Eric: it seems this patch cannot apply too...  I
-think it's the extra "git diff -w" output that confused git-am.
-
-Phil, would you mind repost without those?  My r-b stands if the
-content keeps the same.
-
-Thanks,
-
---=20
-Peter Xu
-
+Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogS2V2aW4gV29sZiBbbWFpbHRvOmt3
+b2xmQHJlZGhhdC5jb21dDQo+U2VudDogV2VkbmVzZGF5LCBGZWJydWFyeSAyNiwgMjAyMCA1OjU1
+IFBNDQo+VG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj5DYzog
+cWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11LXRyaXZpYWxAbm9uZ251Lm9yZzsNCj5wZXRlci5t
+YXlkZWxsQGxpbmFyby5vcmc7IFpoYW5naGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVh
+d2VpLmNvbT47DQo+RXVsZXIgUm9ib3QgPGV1bGVyLnJvYm90QGh1YXdlaS5jb20+OyBSb25uaWUg
+U2FobGJlcmcNCj48cm9ubmllc2FobGJlcmdAZ21haWwuY29tPjsgUGFvbG8gQm9uemluaSA8cGJv
+bnppbmlAcmVkaGF0LmNvbT47IFBldGVyDQo+TGlldmVuIDxwbEBrYW1wLmRlPjsgTWF4IFJlaXR6
+IDxtcmVpdHpAcmVkaGF0LmNvbT4NCj5TdWJqZWN0OiBSZTogW1BBVENIIHYyIDAyLzEzXSBibG9j
+ay9pc2NzaTpSZW1vdmUgcmVkdW5kYW50IHN0YXRlbWVudCBpbg0KPmlzY3NpX29wZW4oKQ0KPg0K
+PkFtIDI2LjAyLjIwMjAgdW0gMDk6NDYgaGF0IGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tIGdlc2No
+cmllYmVuOg0KPj4gRnJvbTogQ2hlbiBRdW4gPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPg0KPj4N
+Cj4+IENsYW5nIHN0YXRpYyBjb2RlIGFuYWx5emVyIHNob3cgd2FybmluZzoNCj4+ICAgYmxvY2sv
+aXNjc2kuYzoxOTIwOjk6IHdhcm5pbmc6IFZhbHVlIHN0b3JlZCB0byAnZmxhZ3MnIGlzIG5ldmVy
+IHJlYWQNCj4+ICAgICAgICAgZmxhZ3MgJj0gfkJEUlZfT19SRFdSOw0KPj4gICAgICAgICBeICAg
+ICAgICB+fn5+fn5+fn5+fn4NCj4+DQo+PiBSZXBvcnRlZC1ieTogRXVsZXIgUm9ib3QgPGV1bGVy
+LnJvYm90QGh1YXdlaS5jb20+DQo+PiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVu
+cXVuQGh1YXdlaS5jb20+DQo+DQo+SG1tLCBJJ20gbm90IHNvIHN1cmUgYWJvdXQgdGhpcyBvbmUg
+YmVjYXVzZSBpZiB3ZSByZW1vdmUgdGhlIGxpbmUsIGZsYWdzIHdpbGwNCj5iZSBpbmNvbnNpc3Rl
+bnQgd2l0aCBicy0+b3Blbl9mbGFncy4gSXQgZmVlbHMgbGlrZSBzZXR0aW5nIGEgdHJhcCBmb3Ig
+YW55b25lDQo+d2hvIHdhbnRzIHRvIGFkZCBjb2RlIHVzaW5nIGZsYWdzIGluIHRoZSBmdXR1cmUu
+DQpIaSBLZXZpbiwgIA0KSSBmaW5kIGl0IGV4aXN0cyBzaW5jZSA4ZjNiZjUwZDM0MDM3MjY2LiAg
+IDogICkgIA0KSXQncyBub3QgYSBiaWcgZGVhbCwgIGp1c3QgdXBzZXQgY2xhbmcgc3RhdGljIGNv
+ZGUgYW5hbHl6ZXIuIA0KQXMgeW91IHNhaWQsIGl0IGNvdWxkIGJlIGEgdHJhcCBmb3IgdGhlIGZ1
+dHVyZS4gDQoNCkl0IOKAmXMgb2theSwgd2hldGhlciBpdCBleGlzdHMgb3Igbm90Lg0KDQpUaGFu
+a3MuDQo+DQo+S2V2aW4NCj4NCj4+IENjOiBSb25uaWUgU2FobGJlcmcgPHJvbm5pZXNhaGxiZXJn
+QGdtYWlsLmNvbT4NCj4+IENjOiBQYW9sbyBCb256aW5pIDxwYm9uemluaUByZWRoYXQuY29tPg0K
+Pj4gQ2M6IFBldGVyIExpZXZlbiA8cGxAa2FtcC5kZT4NCj4+IENjOiBLZXZpbiBXb2xmIDxrd29s
+ZkByZWRoYXQuY29tPg0KPj4gQ2M6IE1heCBSZWl0eiA8bXJlaXR6QHJlZGhhdC5jb20+DQo+PiAt
+LS0NCj4+ICBibG9jay9pc2NzaS5jIHwgMSAtDQo+PiAgMSBmaWxlIGNoYW5nZWQsIDEgZGVsZXRp
+b24oLSkNCj4+DQo+PiBkaWZmIC0tZ2l0IGEvYmxvY2svaXNjc2kuYyBiL2Jsb2NrL2lzY3NpLmMg
+aW5kZXgNCj4+IDY4MmFiZDhlMDkuLmVkODg0NzllZGUgMTAwNjQ0DQo+PiAtLS0gYS9ibG9jay9p
+c2NzaS5jDQo+PiArKysgYi9ibG9jay9pc2NzaS5jDQo+PiBAQCAtMTkxNyw3ICsxOTE3LDYgQEAg
+c3RhdGljIGludCBpc2NzaV9vcGVuKEJsb2NrRHJpdmVyU3RhdGUgKmJzLCBRRGljdA0KPipvcHRp
+b25zLCBpbnQgZmxhZ3MsDQo+PiAgICAgICAgICBpZiAocmV0IDwgMCkgew0KPj4gICAgICAgICAg
+ICAgIGdvdG8gb3V0Ow0KPj4gICAgICAgICAgfQ0KPj4gLSAgICAgICAgZmxhZ3MgJj0gfkJEUlZf
+T19SRFdSOw0KPj4gICAgICB9DQo+Pg0KPj4gICAgICBpc2NzaV9yZWFkY2FwYWNpdHlfc3luYyhp
+c2NzaWx1biwgJmxvY2FsX2Vycik7DQo+PiAtLQ0KPj4gMi4yMy4wDQo+Pg0KPj4NCg0K
 
