@@ -1,54 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j78JY-0003EO-VR
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Feb 2020 20:50:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34150)
+	id 1j7DsX-0003IS-9n
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Feb 2020 02:46:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50960)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j78JW-0003CX-VB
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 20:50:11 -0500
+ (envelope-from <philmd@redhat.com>) id 1j7DsR-0003CS-Ae
+ for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 02:46:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j78JV-0000bX-SE
- for qemu-trivial@nongnu.org; Wed, 26 Feb 2020 20:50:10 -0500
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2506 helo=huawei.com)
+ (envelope-from <philmd@redhat.com>) id 1j7DsK-0007KA-3U
+ for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 02:46:34 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:25635
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j78JT-0000Ti-5t; Wed, 26 Feb 2020 20:50:07 -0500
-Received: from DGGEMM403-HUB.china.huawei.com (unknown [172.30.72.56])
- by Forcepoint Email with ESMTP id 2A28962E71BFD1CE1EF5;
- Thu, 27 Feb 2020 09:50:01 +0800 (CST)
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
- DGGEMM403-HUB.china.huawei.com ([10.3.20.211]) with mapi id 14.03.0439.000;
- Thu, 27 Feb 2020 09:49:51 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Kevin Wolf <kwolf@redhat.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- Euler Robot <euler.robot@huawei.com>, Ronnie Sahlberg
- <ronniesahlberg@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Lieven
- <pl@kamp.de>, Max Reitz <mreitz@redhat.com>
-Subject: RE: [PATCH v2 02/13] block/iscsi:Remove redundant statement in
- iscsi_open()
-Thread-Topic: [PATCH v2 02/13] block/iscsi:Remove redundant statement in
- iscsi_open()
-Thread-Index: AQHV7IFlkw7HklI9YUytmY61YTlYXagstmsAgAGL6HA=
-Date: Thu, 27 Feb 2020 01:49:50 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B6638BE@dggemm531-mbx.china.huawei.com>
-References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
- <20200226084647.20636-3-kuhn.chenqun@huawei.com>
- <20200226095444.GB6096@linux.fritz.box>
-In-Reply-To: <20200226095444.GB6096@linux.fritz.box>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j7DsJ-0007FT-N0
+ for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 02:46:27 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582789582;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=fwHz2SdtuNgyNWNx9B+29nyE7gitAGyx1LNxplUqo0c=;
+ b=h8T7NuP+SEJRmtp4UhuDYeklzDm+eEy/0TSeYr4Unz6mvqcgnVI6JL0AAKdrSoVuhfT+tA
+ K/+9oC/WaAMpafxSGrnoQaDEq5sljE1zzpww5+L/3lqgA58zfx2Q8LKj5BAlTxf2LkZ7J4
+ R9Ro8VI9ZUWDHpuvSF/bdwbKpGGKJYM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-38-nw9EL3WQPWyOq2hgBLvTeA-1; Thu, 27 Feb 2020 02:46:21 -0500
+X-MC-Unique: nw9EL3WQPWyOq2hgBLvTeA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 81EC81005514;
+ Thu, 27 Feb 2020 07:46:19 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-205-195.brq.redhat.com [10.40.205.195])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E7F025C545;
+ Thu, 27 Feb 2020 07:46:08 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Liu Yi L <yi.l.liu@intel.com>, Peter Xu <peterx@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+ Eduardo Habkost <ehabkost@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yi Sun <yi.y.sun@linux.intel.com>, Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v3] hw/i386/intel_iommu: Simplify vtd_find_as_from_bus_num()
+ logic
+Date: Thu, 27 Feb 2020 08:46:06 +0100
+Message-Id: <20200227074606.14272-1-philmd@redhat.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.188
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -60,44 +67,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Feb 2020 01:50:12 -0000
+X-List-Received-Date: Thu, 27 Feb 2020 07:46:38 -0000
 
-Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogS2V2aW4gV29sZiBbbWFpbHRvOmt3
-b2xmQHJlZGhhdC5jb21dDQo+U2VudDogV2VkbmVzZGF5LCBGZWJydWFyeSAyNiwgMjAyMCA1OjU1
-IFBNDQo+VG86IENoZW5xdW4gKGt1aG4pIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj5DYzog
-cWVtdS1kZXZlbEBub25nbnUub3JnOyBxZW11LXRyaXZpYWxAbm9uZ251Lm9yZzsNCj5wZXRlci5t
-YXlkZWxsQGxpbmFyby5vcmc7IFpoYW5naGFpbGlhbmcgPHpoYW5nLnpoYW5naGFpbGlhbmdAaHVh
-d2VpLmNvbT47DQo+RXVsZXIgUm9ib3QgPGV1bGVyLnJvYm90QGh1YXdlaS5jb20+OyBSb25uaWUg
-U2FobGJlcmcNCj48cm9ubmllc2FobGJlcmdAZ21haWwuY29tPjsgUGFvbG8gQm9uemluaSA8cGJv
-bnppbmlAcmVkaGF0LmNvbT47IFBldGVyDQo+TGlldmVuIDxwbEBrYW1wLmRlPjsgTWF4IFJlaXR6
-IDxtcmVpdHpAcmVkaGF0LmNvbT4NCj5TdWJqZWN0OiBSZTogW1BBVENIIHYyIDAyLzEzXSBibG9j
-ay9pc2NzaTpSZW1vdmUgcmVkdW5kYW50IHN0YXRlbWVudCBpbg0KPmlzY3NpX29wZW4oKQ0KPg0K
-PkFtIDI2LjAyLjIwMjAgdW0gMDk6NDYgaGF0IGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tIGdlc2No
-cmllYmVuOg0KPj4gRnJvbTogQ2hlbiBRdW4gPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPg0KPj4N
-Cj4+IENsYW5nIHN0YXRpYyBjb2RlIGFuYWx5emVyIHNob3cgd2FybmluZzoNCj4+ICAgYmxvY2sv
-aXNjc2kuYzoxOTIwOjk6IHdhcm5pbmc6IFZhbHVlIHN0b3JlZCB0byAnZmxhZ3MnIGlzIG5ldmVy
-IHJlYWQNCj4+ICAgICAgICAgZmxhZ3MgJj0gfkJEUlZfT19SRFdSOw0KPj4gICAgICAgICBeICAg
-ICAgICB+fn5+fn5+fn5+fn4NCj4+DQo+PiBSZXBvcnRlZC1ieTogRXVsZXIgUm9ib3QgPGV1bGVy
-LnJvYm90QGh1YXdlaS5jb20+DQo+PiBTaWduZWQtb2ZmLWJ5OiBDaGVuIFF1biA8a3Vobi5jaGVu
-cXVuQGh1YXdlaS5jb20+DQo+DQo+SG1tLCBJJ20gbm90IHNvIHN1cmUgYWJvdXQgdGhpcyBvbmUg
-YmVjYXVzZSBpZiB3ZSByZW1vdmUgdGhlIGxpbmUsIGZsYWdzIHdpbGwNCj5iZSBpbmNvbnNpc3Rl
-bnQgd2l0aCBicy0+b3Blbl9mbGFncy4gSXQgZmVlbHMgbGlrZSBzZXR0aW5nIGEgdHJhcCBmb3Ig
-YW55b25lDQo+d2hvIHdhbnRzIHRvIGFkZCBjb2RlIHVzaW5nIGZsYWdzIGluIHRoZSBmdXR1cmUu
-DQpIaSBLZXZpbiwgIA0KSSBmaW5kIGl0IGV4aXN0cyBzaW5jZSA4ZjNiZjUwZDM0MDM3MjY2LiAg
-IDogICkgIA0KSXQncyBub3QgYSBiaWcgZGVhbCwgIGp1c3QgdXBzZXQgY2xhbmcgc3RhdGljIGNv
-ZGUgYW5hbHl6ZXIuIA0KQXMgeW91IHNhaWQsIGl0IGNvdWxkIGJlIGEgdHJhcCBmb3IgdGhlIGZ1
-dHVyZS4gDQoNCkl0IOKAmXMgb2theSwgd2hldGhlciBpdCBleGlzdHMgb3Igbm90Lg0KDQpUaGFu
-a3MuDQo+DQo+S2V2aW4NCj4NCj4+IENjOiBSb25uaWUgU2FobGJlcmcgPHJvbm5pZXNhaGxiZXJn
-QGdtYWlsLmNvbT4NCj4+IENjOiBQYW9sbyBCb256aW5pIDxwYm9uemluaUByZWRoYXQuY29tPg0K
-Pj4gQ2M6IFBldGVyIExpZXZlbiA8cGxAa2FtcC5kZT4NCj4+IENjOiBLZXZpbiBXb2xmIDxrd29s
-ZkByZWRoYXQuY29tPg0KPj4gQ2M6IE1heCBSZWl0eiA8bXJlaXR6QHJlZGhhdC5jb20+DQo+PiAt
-LS0NCj4+ICBibG9jay9pc2NzaS5jIHwgMSAtDQo+PiAgMSBmaWxlIGNoYW5nZWQsIDEgZGVsZXRp
-b24oLSkNCj4+DQo+PiBkaWZmIC0tZ2l0IGEvYmxvY2svaXNjc2kuYyBiL2Jsb2NrL2lzY3NpLmMg
-aW5kZXgNCj4+IDY4MmFiZDhlMDkuLmVkODg0NzllZGUgMTAwNjQ0DQo+PiAtLS0gYS9ibG9jay9p
-c2NzaS5jDQo+PiArKysgYi9ibG9jay9pc2NzaS5jDQo+PiBAQCAtMTkxNyw3ICsxOTE3LDYgQEAg
-c3RhdGljIGludCBpc2NzaV9vcGVuKEJsb2NrRHJpdmVyU3RhdGUgKmJzLCBRRGljdA0KPipvcHRp
-b25zLCBpbnQgZmxhZ3MsDQo+PiAgICAgICAgICBpZiAocmV0IDwgMCkgew0KPj4gICAgICAgICAg
-ICAgIGdvdG8gb3V0Ow0KPj4gICAgICAgICAgfQ0KPj4gLSAgICAgICAgZmxhZ3MgJj0gfkJEUlZf
-T19SRFdSOw0KPj4gICAgICB9DQo+Pg0KPj4gICAgICBpc2NzaV9yZWFkY2FwYWNpdHlfc3luYyhp
-c2NzaWx1biwgJmxvY2FsX2Vycik7DQo+PiAtLQ0KPj4gMi4yMy4wDQo+Pg0KPj4NCg0K
+The vtd_find_as_from_bus_num() function was introduced (in commit
+dbaabb25f) in a code format that could return an incorrect pointer,
+which was later fixed by commit a2e1cd41ccf.
+We could have avoid this by writing the if() statement differently.
+Do it now, in case this function is re-used. The code is easier to
+review (harder to miss bugs).
+
+Reviewed-by: Peter Xu <peterx@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+Since v2: Re-worded commit description, patch sent without -w.
+Since v3: patch send without diff
+
+This patch is easier to review with 'git-diff -w' (--ignore-all-space)
+---
+ hw/i386/intel_iommu.c | 34 ++++++++++++++++++----------------
+ 1 file changed, 18 insertions(+), 16 deletions(-)
+
+diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+index 6258c58ac9..e720a8939c 100644
+--- a/hw/i386/intel_iommu.c
++++ b/hw/i386/intel_iommu.c
+@@ -987,24 +987,26 @@ static bool vtd_slpte_nonzero_rsvd(uint64_t slpte, ui=
+nt32_t level)
+ static VTDBus *vtd_find_as_from_bus_num(IntelIOMMUState *s, uint8_t bus_nu=
+m)
+ {
+     VTDBus *vtd_bus =3D s->vtd_as_by_bus_num[bus_num];
+-    if (!vtd_bus) {
+-        /*
+-         * Iterate over the registered buses to find the one which
+-         * currently hold this bus number, and update the bus_num
+-         * lookup table:
+-         */
+-        GHashTableIter iter;
++    GHashTableIter iter;
+=20
+-        g_hash_table_iter_init(&iter, s->vtd_as_by_busptr);
+-        while (g_hash_table_iter_next(&iter, NULL, (void **)&vtd_bus)) {
+-            if (pci_bus_num(vtd_bus->bus) =3D=3D bus_num) {
+-                s->vtd_as_by_bus_num[bus_num] =3D vtd_bus;
+-                return vtd_bus;
+-            }
+-        }
+-        vtd_bus =3D NULL;
++    if (vtd_bus) {
++        return vtd_bus;
+     }
+-    return vtd_bus;
++
++    /*
++     * Iterate over the registered buses to find the one which
++     * currently hold this bus number, and update the bus_num
++     * lookup table:
++     */
++    g_hash_table_iter_init(&iter, s->vtd_as_by_busptr);
++    while (g_hash_table_iter_next(&iter, NULL, (void **)&vtd_bus)) {
++        if (pci_bus_num(vtd_bus->bus) =3D=3D bus_num) {
++            s->vtd_as_by_bus_num[bus_num] =3D vtd_bus;
++            return vtd_bus;
++        }
++    }
++
++    return NULL;
+ }
+=20
+ /* Given the @iova, get relevant @slptep. @slpte_level will be the last le=
+vel
+--=20
+2.21.1
+
 
