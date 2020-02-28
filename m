@@ -1,73 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j7dIg-0000TQ-UW
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 05:55:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34663)
+	id 1j7dO8-0002rG-I9
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 06:01:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35245)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kwolf@redhat.com>) id 1j7dId-0000RY-G1
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 05:55:20 -0500
+ (envelope-from <pbonzini@redhat.com>) id 1j7dO6-0002pb-8L
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:00:59 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kwolf@redhat.com>) id 1j7dIc-0004NJ-4R
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 05:55:19 -0500
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:40486
+ (envelope-from <pbonzini@redhat.com>) id 1j7dO5-0000SV-6N
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:00:58 -0500
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:46842
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kwolf@redhat.com>) id 1j7dIb-0004Me-W3
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 05:55:18 -0500
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1j7dO5-0000Qu-2A
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:00:57 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582887317;
+ s=mimecast20190719; t=1582887656;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zvnElAPP5HAL5nqrU6/6YvEE4v3u0M9bgUvkSNi/DuI=;
- b=He25rWxQcpus7lEiMy7g63To0s8Pv8L+lKdLtJWt+hxTuD4+lF4l/W+v3ULlnoV2JXgEJx
- oStsyw1JexQV7FDrgnzxMItLv1uXzylMxVDff1zrJqEQzIhFJfqM+22LfQdO+2YA0/Cwsz
- xhak0391rOSjOsPo3Lkji9udtYZJqoU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-455-9IByQCJrN8-EUjU8dSaPqg-1; Fri, 28 Feb 2020 05:55:15 -0500
-X-MC-Unique: 9IByQCJrN8-EUjU8dSaPqg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1E8DCDBA3;
- Fri, 28 Feb 2020 10:55:14 +0000 (UTC)
-Received: from linux.fritz.box (unknown [10.36.118.7])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4110819C7F;
- Fri, 28 Feb 2020 10:55:11 +0000 (UTC)
-Date: Fri, 28 Feb 2020 11:55:09 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- Euler Robot <euler.robot@huawei.com>,
- Ronnie Sahlberg <ronniesahlberg@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Lieven <pl@kamp.de>,
- Max Reitz <mreitz@redhat.com>
-Subject: Re: [PATCH v2 02/13] block/iscsi:Remove redundant statement in
- iscsi_open()
-Message-ID: <20200228105509.GB5274@linux.fritz.box>
-References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
- <20200226084647.20636-3-kuhn.chenqun@huawei.com>
- <20200226095444.GB6096@linux.fritz.box>
- <7412CDE03601674DA8197E2EBD8937E83B6638BE@dggemm531-mbx.china.huawei.com>
- <20200227103054.GB7493@linux.fritz.box>
- <7412CDE03601674DA8197E2EBD8937E83B664140@dggemm531-mbx.china.huawei.com>
+ bh=jfZmSGFNoPSeMpuEFjx9/0pexvj/cvJVsdMXjMUDfnE=;
+ b=FtkhNpNTgB1Y1esuGLhit/vglDrsnHdODhfI5gsEV0Ov65deBzQ0vgkPaV1LarUmIywyE6
+ SWjl4ygitrKb5+8cPdiu9dItMJLvePdW9W3n7HGAZFqz+TqsT0K04lr7Ku4XcH/OYq2QLs
+ lspKuFLJYTsT8PU8Ej3guB3B/W1vuYo=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-346-ecNWX04iOU6urCsyEIk7Hg-1; Fri, 28 Feb 2020 06:00:53 -0500
+X-MC-Unique: ecNWX04iOU6urCsyEIk7Hg-1
+Received: by mail-wr1-f70.google.com with SMTP id p11so1176559wrn.10
+ for <qemu-trivial@nongnu.org>; Fri, 28 Feb 2020 03:00:53 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=jfZmSGFNoPSeMpuEFjx9/0pexvj/cvJVsdMXjMUDfnE=;
+ b=H8amXf3A6sdT6eV2U4XvFRMRaBMicgq+8eXXnybandHo/iID10nRUBV0rbDi9RkLML
+ tdskD2rjnlhXGxyeixDqaJFP1Zvt9g+AlSaUr284xvDo1naxG5n6UkNEDNultblTPExX
+ q2tyo08+q8KdHJ9AVfhCqadKn4lT5QDI7VvXYTGe8PyYmJ7Gu6FTqSoJ8tSHqXMZPS4o
+ 5aG00HBMHBv2Jyk1EiYZNtxgXUAe9dNSrrihYDbdMI51qVN7g2Q4LGwe7Ct2y/Bbn4bJ
+ 5tYiEbLG0wD1rq41ixeWMITKco1TfMn+JNyGO/7Zk36IMoArzqyxI3R8r8wGag8CVKki
+ Bl5g==
+X-Gm-Message-State: APjAAAXWqBq9t2XdO8WEdupy0DF7LcWfnKdxzxvhCMcTUfUFpPjgjs3T
+ jkLDqgdjzUh5yk2/aI6Zy2MNDxMpe0ioRI0KWERj5vwVSuJxP85ihb+jfUTs42OgLkxFmH+HEDn
+ rEF6U0QOxWvh1FcEjXw==
+X-Received: by 2002:a7b:c216:: with SMTP id x22mr4461793wmi.51.1582887652096; 
+ Fri, 28 Feb 2020 03:00:52 -0800 (PST)
+X-Google-Smtp-Source: APXvYqwWw8dbOB0STLUEq7UjBJN1f7pRWXqGPjgsHntMIKXGzkvYp/c5ys8zVacZjYJC+OQqNNyCng==
+X-Received: by 2002:a7b:c216:: with SMTP id x22mr4461769wmi.51.1582887651782; 
+ Fri, 28 Feb 2020 03:00:51 -0800 (PST)
+Received: from ?IPv6:2001:b07:6468:f312:d0d9:ea10:9775:f33f?
+ ([2001:b07:6468:f312:d0d9:ea10:9775:f33f])
+ by smtp.gmail.com with ESMTPSA id y7sm15117834wmd.1.2020.02.28.03.00.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 28 Feb 2020 03:00:51 -0800 (PST)
+Subject: Re: [PATCH V2] MAINTAINERS: Add entry for Guest X86 HAXM CPUs
+To: Colin Xu <colin.xu@intel.com>, qemu-devel@nongnu.org, philmd@redhat.com
+Cc: wenchao.wang@intel.com, hang.yuan@intel.com, qemu-trivial@nongnu.org
+References: <20200228012046.6629-1-colin.xu@intel.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <9c32d7c2-d8af-45c6-4578-34c79bd7a2a0@redhat.com>
+Date: Fri, 28 Feb 2020 12:00:50 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <7412CDE03601674DA8197E2EBD8937E83B664140@dggemm531-mbx.china.huawei.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+In-Reply-To: <20200228012046.6629-1-colin.xu@intel.com>
+Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,119 +83,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Feb 2020 10:55:20 -0000
+X-List-Received-Date: Fri, 28 Feb 2020 11:00:59 -0000
 
-Am 28.02.2020 um 08:30 hat Chenqun (kuhn) geschrieben:
-> >-----Original Message-----
-> >From: Kevin Wolf [mailto:kwolf@redhat.com]
-> >Sent: Thursday, February 27, 2020 6:31 PM
-> >To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>
-> >Cc: qemu-devel@nongnu.org; qemu-trivial@nongnu.org;
-> >peter.maydell@linaro.org; Zhanghailiang <zhang.zhanghailiang@huawei.com>=
-;
-> >Euler Robot <euler.robot@huawei.com>; Ronnie Sahlberg
-> ><ronniesahlberg@gmail.com>; Paolo Bonzini <pbonzini@redhat.com>; Peter
-> >Lieven <pl@kamp.de>; Max Reitz <mreitz@redhat.com>
-> >Subject: Re: [PATCH v2 02/13] block/iscsi:Remove redundant statement in
-> >iscsi_open()
-> >
-> >Am 27.02.2020 um 02:49 hat Chenqun (kuhn) geschrieben:
-> >> >-----Original Message-----
-> >> >From: Kevin Wolf [mailto:kwolf@redhat.com]
-> >> >Sent: Wednesday, February 26, 2020 5:55 PM
-> >> >To: Chenqun (kuhn) <kuhn.chenqun@huawei.com>
-> >> >Cc: qemu-devel@nongnu.org; qemu-trivial@nongnu.org;
-> >> >peter.maydell@linaro.org; Zhanghailiang
-> >> ><zhang.zhanghailiang@huawei.com>; Euler Robot
-> >> ><euler.robot@huawei.com>; Ronnie Sahlberg
-> ><ronniesahlberg@gmail.com>;
-> >> >Paolo Bonzini <pbonzini@redhat.com>; Peter Lieven <pl@kamp.de>; Max
-> >> >Reitz <mreitz@redhat.com>
-> >> >Subject: Re: [PATCH v2 02/13] block/iscsi:Remove redundant statement
-> >> >in
-> >> >iscsi_open()
-> >> >
-> >> >Am 26.02.2020 um 09:46 hat kuhn.chenqun@huawei.com geschrieben:
-> >> >> From: Chen Qun <kuhn.chenqun@huawei.com>
-> >> >>
-> >> >> Clang static code analyzer show warning:
-> >> >>   block/iscsi.c:1920:9: warning: Value stored to 'flags' is never r=
-ead
-> >> >>         flags &=3D ~BDRV_O_RDWR;
-> >> >>         ^        ~~~~~~~~~~~~
-> >> >>
-> >> >> Reported-by: Euler Robot <euler.robot@huawei.com>
-> >> >> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
-> >> >
-> >> >Hmm, I'm not so sure about this one because if we remove the line,
-> >> >flags will be inconsistent with bs->open_flags. It feels like setting
-> >> >a trap for anyone who wants to add code using flags in the future.
-> >> Hi Kevin,
-> >> I find it exists since 8f3bf50d34037266.   :  )
-> >
-> >Yes, it has existed from the start with auto-read-only.
-> >
-> >> It's not a big deal,  just upset clang static code analyzer.
-> >> As you said, it could be a trap for the future.
-> >
-> >What's interesting is that we do have one user of the flags later in the=
- function,
-> >but it uses bs->open_flags instead:
-> >
-> >    ret =3D iscsi_allocmap_init(iscsilun, bs->open_flags);
-> >
-> >Maybe this should be using flags? (The value of the bits we're intereste=
-d in is
-> >the same, but when flags is passed as a parameter, I would expect it to =
-be
-> >used.)
-> >
-> Hi Kevin,
-> I have a question: are 'flags' exactly the same as 'bs-> open_flags'?=20
-> In the function bdrv_open_common() at block.c file,  the existence of sta=
-tement( open_flags =3D bdrv_open_flags(bs, bs->open_flags); ) makes them a =
-little different.
-> Will this place affect them inconsistently ?
+On 28/02/20 02:20, Colin Xu wrote:
+> HAXM covers below files:
+> include/sysemu/hax.h
+> target/i386/hax-*
+> 
+> V2: Add HAXM github page for wiki and issue tracking.
+> 
+> Cc: Wenchao Wang <wenchao.wang@intel.com>
+> Cc: Hang Yuan <hang.yuan@intel.com>
+> Reviewed-by: Hang Yuan <hang.yuan@intel.com>
+> Signed-off-by: Colin Xu <colin.xu@intel.com>
+> ---
+>  MAINTAINERS | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index df1786db3207..c45f1421eab5 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -435,6 +435,17 @@ F: include/hw/block/dataplane/xen*
+>  F: include/hw/xen/
+>  F: include/sysemu/xen-mapcache.h
+>  
+> +Guest CPU Cores (HAXM)
+> +---------------------
+> +X86 HAXM CPUs
+> +M: Wenchao Wang <wenchao.wang@intel.com>
+> +M: Colin Xu <colin.xu@intel.com>
+> +L: haxm-team@intel.com
+> +W: https://github.com/intel/haxm/issues
+> +S: Maintained
+> +F: include/sysemu/hax.h
+> +F: target/i386/hax-*
+> +
+>  Hosts
+>  -----
+>  LINUX
+> 
 
-Not exactly the same, that's why I said "value of the bits we're
-interested in is the same". bdrv_open_flags() basically just filters out
-things that are handled by the generic block layer and none of the block
-driver's business.
+Queued, thanks.
 
-To be precise, iscsi_allocmap_init() only checks BDRV_O_NOCACHE, which
-is the same in both.
-
-> Is it safer if we assign bs-> open_flags to flags?
-
-This would add back the flags that we consciously filtered out before,
-so I would say no.
-
-Kevin
-
-> Modify just like=EF=BC=9A
-> @@ -1917,7 +1917,7 @@ static int iscsi_open(BlockDriverState *bs, QDict *=
-options, int flags,
->          if (ret < 0) {
->              goto out;
->          }
-> -        flags &=3D ~BDRV_O_RDWR;
-> +        flags =3D bs->open_flags;
->      }
->=20
->      iscsi_readcapacity_sync(iscsilun, &local_err);
-> @@ -2002,7 +2002,7 @@ static int iscsi_open(BlockDriverState *bs, QDict *=
-options, int flags,
->          iscsilun->cluster_size =3D iscsilun->bl.opt_unmap_gran *
->              iscsilun->block_size;
->          if (iscsilun->lbprz) {
-> -            ret =3D iscsi_allocmap_init(iscsilun, bs->open_flags);
-> +            ret =3D iscsi_allocmap_init(iscsilun, flags);
->          }
->      }
->=20
-> Thanks.
->=20
->=20
->=20
+Paolo
 
 
