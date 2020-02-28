@@ -1,56 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j7a6z-0000La-B0
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 02:31:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34581)
+	id 1j7cEl-00019u-UG
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 04:47:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53366)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j7a6w-0000JQ-L2
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 02:31:03 -0500
+ (envelope-from <berrange@redhat.com>) id 1j7cEj-00018l-E8
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 04:47:14 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kuhn.chenqun@huawei.com>) id 1j7a6v-0005Dd-El
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 02:31:02 -0500
-Received: from szxga08-in.huawei.com ([45.249.212.255]:42278 helo=huawei.com)
+ (envelope-from <berrange@redhat.com>) id 1j7cEi-0008B6-9J
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 04:47:13 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35930
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1j7a6s-00058U-Jq; Fri, 28 Feb 2020 02:30:58 -0500
-Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.57])
- by Forcepoint Email with ESMTP id CAAAC499E2684A517B1A;
- Fri, 28 Feb 2020 15:30:49 +0800 (CST)
-Received: from DGGEMM531-MBX.china.huawei.com ([169.254.5.163]) by
- DGGEMM405-HUB.china.huawei.com ([10.3.20.213]) with mapi id 14.03.0439.000;
- Fri, 28 Feb 2020 15:30:40 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Kevin Wolf <kwolf@redhat.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- Euler Robot <euler.robot@huawei.com>, Ronnie Sahlberg
- <ronniesahlberg@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Lieven
- <pl@kamp.de>, Max Reitz <mreitz@redhat.com>
-Subject: RE: [PATCH v2 02/13] block/iscsi:Remove redundant statement in
- iscsi_open()
-Thread-Topic: [PATCH v2 02/13] block/iscsi:Remove redundant statement in
- iscsi_open()
-Thread-Index: AQHV7IFlkw7HklI9YUytmY61YTlYXagstmsAgAGL6HCAABCIAIABhb7g
-Date: Fri, 28 Feb 2020 07:30:40 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B664140@dggemm531-mbx.china.huawei.com>
-References: <20200226084647.20636-1-kuhn.chenqun@huawei.com>
- <20200226084647.20636-3-kuhn.chenqun@huawei.com>
- <20200226095444.GB6096@linux.fritz.box>
- <7412CDE03601674DA8197E2EBD8937E83B6638BE@dggemm531-mbx.china.huawei.com>
- <20200227103054.GB7493@linux.fritz.box>
-In-Reply-To: <20200227103054.GB7493@linux.fritz.box>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.133.205.93]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.71) (envelope-from <berrange@redhat.com>) id 1j7cEi-0008Aj-5K
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 04:47:12 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1582883231;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9zcHGnT+0ej7x7ymTp0/o65Dkz8UctCjtp7boL5bY7k=;
+ b=UPtGEmbO9XDynSjNBG9t1w66xbFijDbZmKIzT3/BNzq5BT0/yGuRMuWlmaWAO8KzOxp71p
+ 8tm/JHmO5Bavx3nPArEQuzkIgArukoGuw0AtAmwez9Gtv8+BP9YZwwpcpRPizRHiYQeSeP
+ xjUm0uUDKVS6US03h+raXoh9OZT4Ixw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-494-OU2dA_BfNHqnSc5oqScfFQ-1; Fri, 28 Feb 2020 04:47:01 -0500
+X-MC-Unique: OU2dA_BfNHqnSc5oqScfFQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EAB38DB61;
+ Fri, 28 Feb 2020 09:46:59 +0000 (UTC)
+Received: from redhat.com (unknown [10.36.112.11])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3070C6E3EE;
+ Fri, 28 Feb 2020 09:46:54 +0000 (UTC)
+Date: Fri, 28 Feb 2020 09:46:52 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
+ qemu-trivial@nongnu.org, Pan Nengyuan <pannengyuan@huawei.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH] qom/object: Comment to use g_slist_free on
+ object_class_get_list result
+Message-ID: <20200228094652.GB1657361@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20200227190942.8834-1-philmd@redhat.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+In-Reply-To: <20200227190942.8834-1-philmd@redhat.com>
+User-Agent: Mutt/1.13.3 (2020-01-12)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.255
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -62,69 +71,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Feb 2020 07:31:04 -0000
+X-List-Received-Date: Fri, 28 Feb 2020 09:47:14 -0000
 
-Pi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+RnJvbTogS2V2aW4gV29sZiBbbWFpbHRvOmt3
-b2xmQHJlZGhhdC5jb21dDQo+U2VudDogVGh1cnNkYXksIEZlYnJ1YXJ5IDI3LCAyMDIwIDY6MzEg
-UE0NCj5UbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWkuY29tPg0KPkNjOiBx
-ZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUtdHJpdmlhbEBub25nbnUub3JnOw0KPnBldGVyLm1h
-eWRlbGxAbGluYXJvLm9yZzsgWmhhbmdoYWlsaWFuZyA8emhhbmcuemhhbmdoYWlsaWFuZ0BodWF3
-ZWkuY29tPjsNCj5FdWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT47IFJvbm5pZSBT
-YWhsYmVyZw0KPjxyb25uaWVzYWhsYmVyZ0BnbWFpbC5jb20+OyBQYW9sbyBCb256aW5pIDxwYm9u
-emluaUByZWRoYXQuY29tPjsgUGV0ZXINCj5MaWV2ZW4gPHBsQGthbXAuZGU+OyBNYXggUmVpdHog
-PG1yZWl0ekByZWRoYXQuY29tPg0KPlN1YmplY3Q6IFJlOiBbUEFUQ0ggdjIgMDIvMTNdIGJsb2Nr
-L2lzY3NpOlJlbW92ZSByZWR1bmRhbnQgc3RhdGVtZW50IGluDQo+aXNjc2lfb3BlbigpDQo+DQo+
-QW0gMjcuMDIuMjAyMCB1bSAwMjo0OSBoYXQgQ2hlbnF1biAoa3VobikgZ2VzY2hyaWViZW46DQo+
-PiA+LS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4+ID5Gcm9tOiBLZXZpbiBXb2xmIFttYWls
-dG86a3dvbGZAcmVkaGF0LmNvbV0NCj4+ID5TZW50OiBXZWRuZXNkYXksIEZlYnJ1YXJ5IDI2LCAy
-MDIwIDU6NTUgUE0NCj4+ID5UbzogQ2hlbnF1biAoa3VobikgPGt1aG4uY2hlbnF1bkBodWF3ZWku
-Y29tPg0KPj4gPkNjOiBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUtdHJpdmlhbEBub25nbnUu
-b3JnOw0KPj4gPnBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgWmhhbmdoYWlsaWFuZw0KPj4gPjx6
-aGFuZy56aGFuZ2hhaWxpYW5nQGh1YXdlaS5jb20+OyBFdWxlciBSb2JvdA0KPj4gPjxldWxlci5y
-b2JvdEBodWF3ZWkuY29tPjsgUm9ubmllIFNhaGxiZXJnDQo+PHJvbm5pZXNhaGxiZXJnQGdtYWls
-LmNvbT47DQo+PiA+UGFvbG8gQm9uemluaSA8cGJvbnppbmlAcmVkaGF0LmNvbT47IFBldGVyIExp
-ZXZlbiA8cGxAa2FtcC5kZT47IE1heA0KPj4gPlJlaXR6IDxtcmVpdHpAcmVkaGF0LmNvbT4NCj4+
-ID5TdWJqZWN0OiBSZTogW1BBVENIIHYyIDAyLzEzXSBibG9jay9pc2NzaTpSZW1vdmUgcmVkdW5k
-YW50IHN0YXRlbWVudA0KPj4gPmluDQo+PiA+aXNjc2lfb3BlbigpDQo+PiA+DQo+PiA+QW0gMjYu
-MDIuMjAyMCB1bSAwOTo0NiBoYXQga3Vobi5jaGVucXVuQGh1YXdlaS5jb20gZ2VzY2hyaWViZW46
-DQo+PiA+PiBGcm9tOiBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1YXdlaS5jb20+DQo+PiA+Pg0K
-Pj4gPj4gQ2xhbmcgc3RhdGljIGNvZGUgYW5hbHl6ZXIgc2hvdyB3YXJuaW5nOg0KPj4gPj4gICBi
-bG9jay9pc2NzaS5jOjE5MjA6OTogd2FybmluZzogVmFsdWUgc3RvcmVkIHRvICdmbGFncycgaXMg
-bmV2ZXIgcmVhZA0KPj4gPj4gICAgICAgICBmbGFncyAmPSB+QkRSVl9PX1JEV1I7DQo+PiA+PiAg
-ICAgICAgIF4gICAgICAgIH5+fn5+fn5+fn5+fg0KPj4gPj4NCj4+ID4+IFJlcG9ydGVkLWJ5OiBF
-dWxlciBSb2JvdCA8ZXVsZXIucm9ib3RAaHVhd2VpLmNvbT4NCj4+ID4+IFNpZ25lZC1vZmYtYnk6
-IENoZW4gUXVuIDxrdWhuLmNoZW5xdW5AaHVhd2VpLmNvbT4NCj4+ID4NCj4+ID5IbW0sIEknbSBu
-b3Qgc28gc3VyZSBhYm91dCB0aGlzIG9uZSBiZWNhdXNlIGlmIHdlIHJlbW92ZSB0aGUgbGluZSwN
-Cj4+ID5mbGFncyB3aWxsIGJlIGluY29uc2lzdGVudCB3aXRoIGJzLT5vcGVuX2ZsYWdzLiBJdCBm
-ZWVscyBsaWtlIHNldHRpbmcNCj4+ID5hIHRyYXAgZm9yIGFueW9uZSB3aG8gd2FudHMgdG8gYWRk
-IGNvZGUgdXNpbmcgZmxhZ3MgaW4gdGhlIGZ1dHVyZS4NCj4+IEhpIEtldmluLA0KPj4gSSBmaW5k
-IGl0IGV4aXN0cyBzaW5jZSA4ZjNiZjUwZDM0MDM3MjY2LiAgIDogICkNCj4NCj5ZZXMsIGl0IGhh
-cyBleGlzdGVkIGZyb20gdGhlIHN0YXJ0IHdpdGggYXV0by1yZWFkLW9ubHkuDQo+DQo+PiBJdCdz
-IG5vdCBhIGJpZyBkZWFsLCAganVzdCB1cHNldCBjbGFuZyBzdGF0aWMgY29kZSBhbmFseXplci4N
-Cj4+IEFzIHlvdSBzYWlkLCBpdCBjb3VsZCBiZSBhIHRyYXAgZm9yIHRoZSBmdXR1cmUuDQo+DQo+
-V2hhdCdzIGludGVyZXN0aW5nIGlzIHRoYXQgd2UgZG8gaGF2ZSBvbmUgdXNlciBvZiB0aGUgZmxh
-Z3MgbGF0ZXIgaW4gdGhlIGZ1bmN0aW9uLA0KPmJ1dCBpdCB1c2VzIGJzLT5vcGVuX2ZsYWdzIGlu
-c3RlYWQ6DQo+DQo+ICAgIHJldCA9IGlzY3NpX2FsbG9jbWFwX2luaXQoaXNjc2lsdW4sIGJzLT5v
-cGVuX2ZsYWdzKTsNCj4NCj5NYXliZSB0aGlzIHNob3VsZCBiZSB1c2luZyBmbGFncz8gKFRoZSB2
-YWx1ZSBvZiB0aGUgYml0cyB3ZSdyZSBpbnRlcmVzdGVkIGluIGlzDQo+dGhlIHNhbWUsIGJ1dCB3
-aGVuIGZsYWdzIGlzIHBhc3NlZCBhcyBhIHBhcmFtZXRlciwgSSB3b3VsZCBleHBlY3QgaXQgdG8g
-YmUNCj51c2VkLikNCj4NCkhpIEtldmluLA0KSSBoYXZlIGEgcXVlc3Rpb246IGFyZSAnZmxhZ3Mn
-IGV4YWN0bHkgdGhlIHNhbWUgYXMgJ2JzLT4gb3Blbl9mbGFncyc/IA0KSW4gdGhlIGZ1bmN0aW9u
-IGJkcnZfb3Blbl9jb21tb24oKSBhdCBibG9jay5jIGZpbGUsICB0aGUgZXhpc3RlbmNlIG9mIHN0
-YXRlbWVudCggb3Blbl9mbGFncyA9IGJkcnZfb3Blbl9mbGFncyhicywgYnMtPm9wZW5fZmxhZ3Mp
-OyApIG1ha2VzIHRoZW0gYSBsaXR0bGUgZGlmZmVyZW50Lg0KV2lsbCB0aGlzIHBsYWNlIGFmZmVj
-dCB0aGVtIGluY29uc2lzdGVudGx5ID8NCg0KSXMgaXQgc2FmZXIgaWYgd2UgYXNzaWduIGJzLT4g
-b3Blbl9mbGFncyB0byBmbGFncz8NCk1vZGlmeSBqdXN0IGxpa2XvvJoNCkBAIC0xOTE3LDcgKzE5
-MTcsNyBAQCBzdGF0aWMgaW50IGlzY3NpX29wZW4oQmxvY2tEcml2ZXJTdGF0ZSAqYnMsIFFEaWN0
-ICpvcHRpb25zLCBpbnQgZmxhZ3MsDQogICAgICAgICBpZiAocmV0IDwgMCkgew0KICAgICAgICAg
-ICAgIGdvdG8gb3V0Ow0KICAgICAgICAgfQ0KLSAgICAgICAgZmxhZ3MgJj0gfkJEUlZfT19SRFdS
-Ow0KKyAgICAgICAgZmxhZ3MgPSBicy0+b3Blbl9mbGFnczsNCiAgICAgfQ0KDQogICAgIGlzY3Np
-X3JlYWRjYXBhY2l0eV9zeW5jKGlzY3NpbHVuLCAmbG9jYWxfZXJyKTsNCkBAIC0yMDAyLDcgKzIw
-MDIsNyBAQCBzdGF0aWMgaW50IGlzY3NpX29wZW4oQmxvY2tEcml2ZXJTdGF0ZSAqYnMsIFFEaWN0
-ICpvcHRpb25zLCBpbnQgZmxhZ3MsDQogICAgICAgICBpc2NzaWx1bi0+Y2x1c3Rlcl9zaXplID0g
-aXNjc2lsdW4tPmJsLm9wdF91bm1hcF9ncmFuICoNCiAgICAgICAgICAgICBpc2NzaWx1bi0+Ymxv
-Y2tfc2l6ZTsNCiAgICAgICAgIGlmIChpc2NzaWx1bi0+bGJwcnopIHsNCi0gICAgICAgICAgICBy
-ZXQgPSBpc2NzaV9hbGxvY21hcF9pbml0KGlzY3NpbHVuLCBicy0+b3Blbl9mbGFncyk7DQorICAg
-ICAgICAgICAgcmV0ID0gaXNjc2lfYWxsb2NtYXBfaW5pdChpc2NzaWx1biwgZmxhZ3MpOw0KICAg
-ICAgICAgfQ0KICAgICB9DQoNClRoYW5rcy4NCg0KDQoNCg==
+On Thu, Feb 27, 2020 at 08:09:42PM +0100, Philippe Mathieu-Daud=C3=A9 wrote=
+:
+> Document the list returned by object_class_get_list() must be
+> released with g_slist_free() to avoid memory leaks.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  include/qom/object.h | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>=20
+> diff --git a/include/qom/object.h b/include/qom/object.h
+> index 29546496c1..5517b56508 100644
+> --- a/include/qom/object.h
+> +++ b/include/qom/object.h
+> @@ -984,6 +984,9 @@ void object_class_foreach(void (*fn)(ObjectClass *kla=
+ss, void *opaque),
+>   * @include_abstract: Whether to include abstract classes.
+>   *
+>   * Returns: A singly-linked list of the classes in reverse hashtable ord=
+er.
+> + *
+> + * The returned list must be released with g_slist_free()
+> + * when no longer required.
+
+I'd suggest
+
+  "The returned list, but not its elements, must be released with
+   g_slist_free() or g_autoptr when no longer required"
+
+>   */
+>  GSList *object_class_get_list(const char *implements_type,
+>                                bool include_abstract);
+> @@ -995,6 +998,9 @@ GSList *object_class_get_list(const char *implements_=
+type,
+>   *
+>   * Returns: A singly-linked list of the classes in alphabetical
+>   * case-insensitive order.
+> + *
+> + * The returned list must be released with g_slist_free()
+> + * when no longer required.
+>   */
+>  GSList *object_class_get_list_sorted(const char *implements_type,
+>                                bool include_abstract);
+> --=20
+> 2.21.1
+>=20
+>=20
+
+Regards,
+Daniel
+--=20
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange=
+ :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com=
+ :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange=
+ :|
+
 
