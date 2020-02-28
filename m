@@ -1,70 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j7e8G-0001gF-1W
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 06:48:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41603)
+	id 1j7e8H-0001j7-63
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 06:48:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41602)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j7e8D-0001bi-Hu
+ (envelope-from <philmd@redhat.com>) id 1j7e8D-0001bh-HS
  for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:48:38 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j7e8B-0001ZC-Mn
+ (envelope-from <philmd@redhat.com>) id 1j7e88-0001Yh-JM
  for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:48:37 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:45895
- helo=us-smtp-delivery-1.mimecast.com)
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:40817
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j7e8B-0001Yx-2g
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:48:35 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j7e88-0001Y6-1V
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:48:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582890513;
+ s=mimecast20190719; t=1582890510;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=a8BGhqYvAxWxH9RR4HNdmBjAggFWzcDPf58d0HXElA0=;
- b=DuoicvW3PmlexqPMhZY8s2aZ722x1GIQEUUbuDs8Bi86j8E/x8hZM/mt8zlas+T/K+enzU
- faBINFLteVjPZwuBfLur3fr14bPPxhHMcZdSWnkWwIImzOWdXlwDSi5/Qd0N5uSgRuT9kn
- VRZ90d6CH/7hNg8XosF7kRyJzdwAx0s=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-440-ODTrQkUVMvy3IBRiAacLYA-1; Fri, 28 Feb 2020 06:48:31 -0500
-X-MC-Unique: ODTrQkUVMvy3IBRiAacLYA-1
-Received: by mail-wr1-f70.google.com with SMTP id t14so1215880wrs.12
- for <qemu-trivial@nongnu.org>; Fri, 28 Feb 2020 03:48:30 -0800 (PST)
+ bh=cEF3Qmm6bE7IZabHdbGWU2GA8rYBohVngOoUCB4NjXg=;
+ b=ZxjEki9NILGxicYSVqdKrkAdZr8RnB1JOAOlo7H5PhKEJDa8pEbMOXL5jB/tv3YaBpEoUG
+ cV9Zj1SXrkqYZF8lR/ViHW4MLMwVPvhybAgXKBoNyysFJaKToF89GCUu9QyRoTSwAa6ITZ
+ fmTvKpSRph6vFY9vU/dDDs0v3E7RqX8=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-230-y6_4XUKUOqetOrioKJDKUQ-1; Fri, 28 Feb 2020 06:48:29 -0500
+X-MC-Unique: y6_4XUKUOqetOrioKJDKUQ-1
+Received: by mail-wr1-f71.google.com with SMTP id p11so1223300wrn.10
+ for <qemu-trivial@nongnu.org>; Fri, 28 Feb 2020 03:48:28 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=XJL8zcwpbbfm3fUEVt8ZadYdnagmELDf/cCcBxJaPzQ=;
- b=pO8Mg6ucMVSVHQEjxy4A8cxFhbMDo5xo5zpMzpFcu6cDTc6JJy2cUS5FmC/MApJjSH
- VXt59A2c+42PkfMFEEZJzbADoQKWu6jBtPHp1LLVJ/zAwIZR3PWGQzi1e4Np75Jz/iLP
- pfueDF95LJSGSoOpJNBcjK6qi5CY0IeskdQk421cFZeYU/4fjXdX+i/qyrIprKNDcArt
- WwSedvG9q3irs8AgBA/RUgj3PDGAdEv6w44/A0oIi5OPA0Olg+z33Pg7d3x5aOoxmWIP
- PUexsR7exuPw4RLHvfRoyzKaIOD16l04xjOoM1REUvYHCk68Mo7eSGcXfVW9wFrZCVgM
- FqTA==
-X-Gm-Message-State: APjAAAXSzSm+GU/RD+FUOTWJKiF85MxRpfK98LamlKV1TNcDrOmUgIUD
- eEHwEB6rJfS8imwlCyl2D3g/ThtT/yJ8V8OUDz8FP5HckDlLtTG4ZOy28QHIvCPbMqNlWRExSB/
- +Kw8jVauGP78kVAB77A==
-X-Received: by 2002:adf:f641:: with SMTP id x1mr4461372wrp.248.1582890510051; 
- Fri, 28 Feb 2020 03:48:30 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxLCjRs3+/wwxvobfNEWrKhWYJfIhitg7qQUMnrsXNtIKgKBTusamdzSQfoVvo9B6Zs8pZyMg==
-X-Received: by 2002:adf:f641:: with SMTP id x1mr4461361wrp.248.1582890509891; 
- Fri, 28 Feb 2020 03:48:29 -0800 (PST)
+ bh=6DEmu3UhSlAtdyxITMuOrN+F2EwIEtEtHDhOq1i9rRk=;
+ b=DbTDOnE8qK4AWu0D2AXPi0louAcz9pVjH+FLh5gwgwPngDIOwGgHgk6kSX8x7nEf+l
+ UxqkyojvH+tWu5ZtaJ/IrGGp5FURATWdwBRObQidmu5mYoqF03kn3xY1KgrQITwn6Sor
+ s7ufsFpymji5GP+eKOI+vcmzdqmqqDAc3POuBLc1DtqAMYBGVg/sl4dvBsFUUaxeetW5
+ AZ9wolqjde78mLVFLi3e3qTA3PlvZpD02I/xvTQZ5XksTCJdt/ji4vvKYTPRy6BB28B1
+ +zbcdxCf/Rj7WxISwJTRvbWFT4hYzqBjVxAK1qRrNcAJiB25x7qG91aYMA0nTZ/NduCp
+ DKgg==
+X-Gm-Message-State: APjAAAUHrOEp04K6oJt7mlfrz2wzKZonMNoVrKWcT3DRHXPJSgCK18i/
+ x1s8DAbZAiysUvpQTFF8GN7GdK9IxfEngIgXOwOF0vFWIkmbhseCHTvGZzszZqePXo8VwHUZnTo
+ UV6tIQj+Ix69Y5CF7vg==
+X-Received: by 2002:a5d:4807:: with SMTP id l7mr4517286wrq.250.1582890507730; 
+ Fri, 28 Feb 2020 03:48:27 -0800 (PST)
+X-Google-Smtp-Source: APXvYqyNYVNMWTQjegzutGFS+8XkogW6S5ZGVDfIKgqyfXf0BvGfRQWXe6SPhJap5Z/7qIyfYFZGOA==
+X-Received: by 2002:a5d:4807:: with SMTP id l7mr4517268wrq.250.1582890507564; 
+ Fri, 28 Feb 2020 03:48:27 -0800 (PST)
 Received: from x1w.moovbox.local ([185.102.219.36])
- by smtp.gmail.com with ESMTPSA id a7sm1736226wmj.12.2020.02.28.03.48.27
+ by smtp.gmail.com with ESMTPSA id a7sm1736226wmj.12.2020.02.28.03.48.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Feb 2020 03:48:29 -0800 (PST)
+ Fri, 28 Feb 2020 03:48:27 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- John Snow <jsnow@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Subject: [PATCH v2 15/18] hw/acpi: Include "hw/mem/nvdimm.h"
-Date: Fri, 28 Feb 2020 12:46:46 +0100
-Message-Id: <20200228114649.12818-16-philmd@redhat.com>
+ John Snow <jsnow@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: [PATCH v2 14/18] hw/pci-host/piix: Include "qemu/range.h"
+Date: Fri, 28 Feb 2020 12:46:45 +0100
+Message-Id: <20200228114649.12818-15-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200228114649.12818-1-philmd@redhat.com>
 References: <20200228114649.12818-1-philmd@redhat.com>
@@ -75,7 +71,7 @@ Content-Type: text/plain; charset=UTF-8;
 	text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -89,57 +85,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 28 Feb 2020 11:48:38 -0000
 
-Both ich9.c and piix4.c use methods/definitions declared in the
-NVDIMM device header. Include it.
+hw/pci-host/piix.c calls various functions from the Range API.
+Include "qemu/range.h" which declares them.
 
 This fixes (when modifying unrelated headers):
 
-  hw/acpi/ich9.c:507:46: error: use of undeclared identifier 'TYPE_NVDIMM'
-        if (object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM)) {
-                                             ^
-  hw/acpi/ich9.c:508:13: error: implicit declaration of function 'nvdimm_ac=
-pi_plug_cb' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-            nvdimm_acpi_plug_cb(hotplug_dev, dev);
-            ^
-  hw/acpi/piix4.c:403:46: error: use of undeclared identifier 'TYPE_NVDIMM'
-        if (object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM)) {
-                                             ^
-  hw/acpi/piix4.c:404:13: error: implicit declaration of function 'nvdimm_a=
-cpi_plug_cb' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
-            nvdimm_acpi_plug_cb(hotplug_dev, dev);
-            ^
+  hw/pci-host/i440fx.c:54:11: error: field has incomplete type 'Range' (aka=
+ 'struct Range')
+      Range pci_hole;
+           ^
+  include/qemu/typedefs.h:116:16: note: forward declaration of 'struct Rang=
+e'
+  typedef struct Range Range;
+                 ^
+  hw/pci-host/i440fx.c:126:9: error: implicit declaration of function 'rang=
+es_overlap' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+      if (ranges_overlap(address, len, I440FX_PAM, I440FX_PAM_SIZE) ||
+          ^
+  hw/pci-host/i440fx.c:126:9: error: this function declaration is not a pro=
+totype [-Werror,-Wstrict-prototypes]
+  hw/pci-host/i440fx.c:127:9: error: implicit declaration of function 'rang=
+e_covers_byte' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+          range_covers_byte(address, len, I440FX_SMRAM)) {
+          ^
+  hw/pci-host/i440fx.c:127:9: error: this function declaration is not a pro=
+totype [-Werror,-Wstrict-prototypes]
+  hw/pci-host/i440fx.c:189:13: error: implicit declaration of function 'ran=
+ge_is_empty' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+      val64 =3D range_is_empty(&s->pci_hole) ? 0 : range_lob(&s->pci_hole);
+              ^
 
 Acked-by: John Snow <jsnow@redhat.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/acpi/ich9.c  | 1 +
- hw/acpi/piix4.c | 1 +
- 2 files changed, 2 insertions(+)
+ hw/pci-host/i440fx.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
-index fdd0a6c79e..4e74284b65 100644
---- a/hw/acpi/ich9.c
-+++ b/hw/acpi/ich9.c
-@@ -39,6 +39,7 @@
+diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
+index 11050a0f8b..d980c97049 100644
+--- a/hw/pci-host/i440fx.c
++++ b/hw/pci-host/i440fx.c
+@@ -23,6 +23,7 @@
+  */
 =20
- #include "hw/i386/ich9.h"
- #include "hw/mem/pc-dimm.h"
-+#include "hw/mem/nvdimm.h"
-=20
- //#define DEBUG
-=20
-diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
-index 6d621c31e7..b84dbba2c3 100644
---- a/hw/acpi/piix4.c
-+++ b/hw/acpi/piix4.c
-@@ -38,6 +38,7 @@
- #include "hw/acpi/cpu.h"
- #include "hw/hotplug.h"
- #include "hw/mem/pc-dimm.h"
-+#include "hw/mem/nvdimm.h"
- #include "hw/acpi/memory_hotplug.h"
- #include "hw/acpi/acpi_dev_interface.h"
- #include "hw/xen/xen.h"
+ #include "qemu/osdep.h"
++#include "qemu/range.h"
+ #include "hw/i386/pc.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pci_host.h"
 --=20
 2.21.1
 
