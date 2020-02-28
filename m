@@ -1,69 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j7e8l-0002PR-B9
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 06:49:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41700)
+	id 1j7epP-0002BH-61
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 07:33:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47527)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j7e8e-0002Ek-N5
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:49:06 -0500
+ (envelope-from <philmd@redhat.com>) id 1j7epM-00029T-3h
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 07:33:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j7e8d-0001hV-Mt
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:49:04 -0500
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:56434
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1j7epK-00042h-T2
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 07:33:11 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:25811
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j7e8d-0001gd-IT
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:49:03 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j7epK-00042E-OJ
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 07:33:10 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582890542;
+ s=mimecast20190719; t=1582893189;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qTdLeO/j/e6eP/jAK/QSTo2ZeP6lsa0GUR9L2pxBWEY=;
- b=eoMCN7fPsch90+bZG5+w29u3uYAC8wpbWi9a7VhGw2RzJotrd9O+ePJyf+dbPMNl0lXf52
- SZE+TfbRyEWRiYK6s6Iip5anUAhBc9I07zHP193AF/NfzodcJnLCmmsPQoaDeMj0ae0Ekx
- /WQwTHS/tZ6vo/l3xBdlk66YdN4ovfM=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-106-ltbOhRCcPomOy9PAz_nFHw-1; Fri, 28 Feb 2020 06:48:59 -0500
-X-MC-Unique: ltbOhRCcPomOy9PAz_nFHw-1
-Received: by mail-wm1-f71.google.com with SMTP id w12so607886wmc.3
- for <qemu-trivial@nongnu.org>; Fri, 28 Feb 2020 03:48:59 -0800 (PST)
+ content-transfer-encoding:content-transfer-encoding;
+ bh=vm+aNNOWd75exghh6UEIZXw8DMFqqm4EGT73R+r5OW0=;
+ b=SJVWVnfXKJ5PmwSniITMg8LJ+Lm3FhzTcnD2vfCvrhsISOoWZsnKW13uurWHPQi5/8FroV
+ EdnMXspUlphtn0X5wrOwCG+q9S7N/hpIHlwIqNj8Uip85dlvi8wsJpvkghEl9wjeGa4vzU
+ 3ONQARuUcf7/EfoG28tfBNBBNP9td8s=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-376-WKA9G6czPIubPAoqS3gO9w-1; Fri, 28 Feb 2020 07:33:07 -0500
+X-MC-Unique: WKA9G6czPIubPAoqS3gO9w-1
+Received: by mail-wr1-f70.google.com with SMTP id r1so1257838wrc.15
+ for <qemu-trivial@nongnu.org>; Fri, 28 Feb 2020 04:33:07 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=dgOorqpkh3gN4b7sAM5gmxbiZ9joAGYWI1QUJBzOx9g=;
- b=bp9aNHFUWASTgeJp6tKe3zF1fs5hIdkUEn2WwiZZ7nY169YhNTAUNDj4+MpCkuv4cg
- BEdsxYbFh9ge6Tz+4FkmVxFZyYN2iiejnsq70+DwWhCWH4mMeK67AwtmISCBmq86B+fs
- 45FSSbVkymwwVrf/B09Ogz2VDVJ/xYsIOqbMsqspUgr1I0XEDNXgg+oZo7Eoo1+xGboT
- aMixIbKkb8mBTX1zO1sNJzUyeUGXUnAuaqMj3MIx6M1t9XKOdIlf7hU5OG6ZVMhQNQmN
- G/j0yaxmC+o6KPqrZJUuJyrSNikoWjScE/KdivBhzkC5IaE6lQFm0WOnrR7XBJHeJYB4
- 6HWw==
-X-Gm-Message-State: APjAAAUi3mhQ2wJjdwYhFQszlWUti7GUPbcLtZgyDx0Ev6oRNbU9ogwi
- aaJpwz/+H4/EVO4b9WQ/2NaekrYBuFsCWZO7Uk9sN2jpY2nFrTYGKBfKQCxa40TCHJeY8WgobWB
- 2c/+l+JYu4kNtem8wSA==
-X-Received: by 2002:a7b:cf39:: with SMTP id m25mr4483313wmg.146.1582890538277; 
- Fri, 28 Feb 2020 03:48:58 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzSECnXVOCZYvsdQaRgO3slzYjheg1QWBdEwrqqjtLopf28EMMyXYnzPgpXVuQahIv26lkZyQ==
-X-Received: by 2002:a7b:cf39:: with SMTP id m25mr4483298wmg.146.1582890538096; 
- Fri, 28 Feb 2020 03:48:58 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Rhr6+r2tfY9AQJ5VKaVuxzDS32T1jjUavdB/SnDaCLY=;
+ b=C/GKtE/KEvv1n7lbjhjV7kz/wgn6JUsex2GmG0G7UNzTIz8TX8LdTWpQjjHwCnR9Zl
+ GMIhwpuWPHqqv+ekgaK505kwlqj65DtSeQMAR3zuAc6zqR+ntl2vTgUFsIDvogR2YpMr
+ fFes4aUToSVj+koywpig5gEY5qFIJrjc9DqjmyswAveTJKtF2Hc1izS+U3Y0oNJn8RPA
+ 8zn+cPwLCGL6o8B4O1j/jht18Y8jUtIXnqwiRl/RKMo1NBhpDfpElW5uz/MDz/FbuWwP
+ hvkj8+6F+4jpcYeUIehwc6MCANTc+Lwpy/JCylcrGSiNXjFdRQTTENpEEWVy8+gmZ/ar
+ Fncg==
+X-Gm-Message-State: APjAAAVfkKUCiTF+1JqZ8Wxfdhm0kPDZB6w4Fl0GPJur94Tizx5ZXJfU
+ oK9wtxqRId39GzpOe90Nro+ema85fBkGkyrmUi5ttR8bIzK7NBnJyuFm/Iw/uwiwHd1xwJ+Z4ty
+ M5JvxuDSAaHcBUKEYfA==
+X-Received: by 2002:a1c:9a13:: with SMTP id c19mr4584486wme.134.1582893186746; 
+ Fri, 28 Feb 2020 04:33:06 -0800 (PST)
+X-Google-Smtp-Source: APXvYqw2Ef8TpQQT+Wdpy+qlrAYFnikp8Q+5VIeOArFBRmanDvK4L9Z6oFZXNDdcmwtW4ChwSCpy+w==
+X-Received: by 2002:a1c:9a13:: with SMTP id c19mr4584460wme.134.1582893186460; 
+ Fri, 28 Feb 2020 04:33:06 -0800 (PST)
 Received: from x1w.moovbox.local ([185.102.219.36])
- by smtp.gmail.com with ESMTPSA id 133sm2082799wmd.5.2020.02.28.03.48.56
+ by smtp.gmail.com with ESMTPSA id z16sm12054016wrp.33.2020.02.28.04.33.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Feb 2020 03:48:57 -0800 (PST)
+ Fri, 28 Feb 2020 04:33:05 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- John Snow <jsnow@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [PATCH v2 18/18] hw/i386/pc: Clean up includes
-Date: Fri, 28 Feb 2020 12:46:49 +0100
-Message-Id: <20200228114649.12818-19-philmd@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-trivial@nongnu.org,
+ qemu-ppc@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH] hw/ppc/pnv: Fix typo in comment
+Date: Fri, 28 Feb 2020 13:33:03 +0100
+Message-Id: <20200228123303.14540-1-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200228114649.12818-1-philmd@redhat.com>
-References: <20200228114649.12818-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
@@ -71,7 +68,7 @@ Content-Type: text/plain; charset=UTF-8;
 	text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -83,69 +80,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Feb 2020 11:49:07 -0000
+X-List-Received-Date: Fri, 28 Feb 2020 12:33:13 -0000
 
-Various headers are not required by hw/i386/pc.h:
-
- - "qemu/range.h"
- - "qemu/bitmap.h"
- - "qemu/module.h"
- - "exec/memory.h"
- - "hw/pci/pci.h"
- - "hw/mem/pc-dimm.h"
- - "hw/mem/nvdimm.h"
- - "net/net.h"
-
-Remove them.
-
-Add 3 headers that were missing:
-
- - "hw/hotplug.h"
-
-   PCMachineState::acpi_dev is of type HotplugHandler
-
- - "qemu/notify.h"
-
-   PCMachineState::machine_done is of type Notifier
-
- - "qapi/qapi-types-common.h"
-
-   PCMachineState::vmport/smm is of type OnOffAuto
-
-Acked-by: John Snow <jsnow@redhat.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- include/hw/i386/pc.h | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
+ hw/ppc/pnv_lpc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index d5ac76d54e..6ab6eda046 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -1,20 +1,15 @@
- #ifndef HW_PC_H
- #define HW_PC_H
+diff --git a/hw/ppc/pnv_lpc.c b/hw/ppc/pnv_lpc.c
+index f150deca34..b5ffa48dac 100644
+--- a/hw/ppc/pnv_lpc.c
++++ b/hw/ppc/pnv_lpc.c
+@@ -829,7 +829,7 @@ ISABus *pnv_lpc_isa_create(PnvLpcController *lpc, bool =
+use_cpld, Error **errp)
+     bool hostboot_mode =3D !!pnv->fw_load_addr;
 =20
--#include "exec/memory.h"
-+#include "qemu/notify.h"
-+#include "qapi/qapi-types-common.h"
- #include "hw/boards.h"
- #include "hw/block/fdc.h"
- #include "hw/block/flash.h"
--#include "net/net.h"
- #include "hw/i386/x86.h"
-=20
--#include "qemu/range.h"
--#include "qemu/bitmap.h"
--#include "qemu/module.h"
--#include "hw/pci/pci.h"
--#include "hw/mem/pc-dimm.h"
--#include "hw/mem/nvdimm.h"
- #include "hw/acpi/acpi_dev_interface.h"
-+#include "hw/hotplug.h"
-=20
- #define HPET_INTCAP "hpet-intcap"
-=20
+     /* let isa_bus_new() create its own bridge on SysBus otherwise
+-     * devices speficied on the command line won't find the bus and
++     * devices specified on the command line won't find the bus and
+      * will fail to create.
+      */
+     isa_bus =3D isa_bus_new(NULL, &lpc->isa_mem, &lpc->isa_io, &local_err)=
+;
 --=20
 2.21.1
 
