@@ -1,75 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j7dO8-0002rG-I9
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 06:01:00 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35245)
+	id 1j7e6j-0007Lb-3k
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 06:47:05 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41117)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1j7dO6-0002pb-8L
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:00:59 -0500
+ (envelope-from <philmd@redhat.com>) id 1j7e6g-0007L6-5h
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:47:03 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1j7dO5-0000SV-6N
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:00:58 -0500
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:46842
+ (envelope-from <philmd@redhat.com>) id 1j7e6d-00018P-U3
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:47:01 -0500
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:59593
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1j7dO5-0000Qu-2A
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:00:57 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j7e6d-00018A-Qq
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:46:59 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582887656;
+ s=mimecast20190719; t=1582890418;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=jfZmSGFNoPSeMpuEFjx9/0pexvj/cvJVsdMXjMUDfnE=;
- b=FtkhNpNTgB1Y1esuGLhit/vglDrsnHdODhfI5gsEV0Ov65deBzQ0vgkPaV1LarUmIywyE6
- SWjl4ygitrKb5+8cPdiu9dItMJLvePdW9W3n7HGAZFqz+TqsT0K04lr7Ku4XcH/OYq2QLs
- lspKuFLJYTsT8PU8Ej3guB3B/W1vuYo=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-346-ecNWX04iOU6urCsyEIk7Hg-1; Fri, 28 Feb 2020 06:00:53 -0500
-X-MC-Unique: ecNWX04iOU6urCsyEIk7Hg-1
-Received: by mail-wr1-f70.google.com with SMTP id p11so1176559wrn.10
- for <qemu-trivial@nongnu.org>; Fri, 28 Feb 2020 03:00:53 -0800 (PST)
+ bh=JwOs2po6nVBrNz+DhsO8Xnl0PhYikRZa4JYienbwBPU=;
+ b=GMgxbPb3n2MdhM8CgbEy3r8SqEfDxu99xPdZD7iR14ejrxew27jAuKPhWZ6RzbrYm+Yyvd
+ aNGB2txh2UWGbO2tgqnSYlSUiVyDQU+AduSfARpJ6R6fj8LV40QTKB8oKogpJq40NKvAC3
+ pCpJdbGAambfyp0nqHu1/qC9ZglSy+g=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-366-yhhrPYDoPFGWLsKLQ4Sxuw-1; Fri, 28 Feb 2020 06:46:57 -0500
+X-MC-Unique: yhhrPYDoPFGWLsKLQ4Sxuw-1
+Received: by mail-wm1-f69.google.com with SMTP id j130so1044452wmj.9
+ for <qemu-trivial@nongnu.org>; Fri, 28 Feb 2020 03:46:57 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=jfZmSGFNoPSeMpuEFjx9/0pexvj/cvJVsdMXjMUDfnE=;
- b=H8amXf3A6sdT6eV2U4XvFRMRaBMicgq+8eXXnybandHo/iID10nRUBV0rbDi9RkLML
- tdskD2rjnlhXGxyeixDqaJFP1Zvt9g+AlSaUr284xvDo1naxG5n6UkNEDNultblTPExX
- q2tyo08+q8KdHJ9AVfhCqadKn4lT5QDI7VvXYTGe8PyYmJ7Gu6FTqSoJ8tSHqXMZPS4o
- 5aG00HBMHBv2Jyk1EiYZNtxgXUAe9dNSrrihYDbdMI51qVN7g2Q4LGwe7Ct2y/Bbn4bJ
- 5tYiEbLG0wD1rq41ixeWMITKco1TfMn+JNyGO/7Zk36IMoArzqyxI3R8r8wGag8CVKki
- Bl5g==
-X-Gm-Message-State: APjAAAXWqBq9t2XdO8WEdupy0DF7LcWfnKdxzxvhCMcTUfUFpPjgjs3T
- jkLDqgdjzUh5yk2/aI6Zy2MNDxMpe0ioRI0KWERj5vwVSuJxP85ihb+jfUTs42OgLkxFmH+HEDn
- rEF6U0QOxWvh1FcEjXw==
-X-Received: by 2002:a7b:c216:: with SMTP id x22mr4461793wmi.51.1582887652096; 
- Fri, 28 Feb 2020 03:00:52 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwWw8dbOB0STLUEq7UjBJN1f7pRWXqGPjgsHntMIKXGzkvYp/c5ys8zVacZjYJC+OQqNNyCng==
-X-Received: by 2002:a7b:c216:: with SMTP id x22mr4461769wmi.51.1582887651782; 
- Fri, 28 Feb 2020 03:00:51 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:d0d9:ea10:9775:f33f?
- ([2001:b07:6468:f312:d0d9:ea10:9775:f33f])
- by smtp.gmail.com with ESMTPSA id y7sm15117834wmd.1.2020.02.28.03.00.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 28 Feb 2020 03:00:51 -0800 (PST)
-Subject: Re: [PATCH V2] MAINTAINERS: Add entry for Guest X86 HAXM CPUs
-To: Colin Xu <colin.xu@intel.com>, qemu-devel@nongnu.org, philmd@redhat.com
-Cc: wenchao.wang@intel.com, hang.yuan@intel.com, qemu-trivial@nongnu.org
-References: <20200228012046.6629-1-colin.xu@intel.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <9c32d7c2-d8af-45c6-4578-34c79bd7a2a0@redhat.com>
-Date: Fri, 28 Feb 2020 12:00:50 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=CpNdsjNPiC6/DnLPjwvW92rGWlXZRi+/lAbWPRuMDaY=;
+ b=s7ngFtyHEBpUtApzGrdEIxuS4o4z5+1OIKEZGPdlgttF9vbA1VilZdTlB79RYWvMbF
+ D2BXsqIR9/DauSYPIRlpifjoXoOj4Y47VYgXw4Xlo7C7D10XpnBOqbgRRH0BNkrTJtd2
+ B0Lk7vG8Tb9nP3OzLd2xmjxncqhxyLc8yf+Z2nG1VAyqhYqR1Yx10yuUYCEgdaume+s2
+ X5kr/JrPtORwUPcnLe8iqW9pybvg3Aw6FcQ/bJYpjj4qLuFdMaQcqg4e38vyp7atODpi
+ n3lZPHTzI6U1GuQwztZ9KPP/vSiEN6py2ASAPDQiS4UxD2iIXS/fRWZUmw847NYTLf5x
+ Iiaw==
+X-Gm-Message-State: APjAAAVPtQk6mOY58TRlLTuMc0svBez9PAQVOJ4P6vhaqaJetDDUEdYi
+ bOWR3+CnmhZbi7/Cln3zG3xo+JQtxpqx0I0ILcXcGOccNkkP4z6wthxJWtmeiegGBTc+A1sNV9J
+ hsuKX6QAplf6Ql9iX6w==
+X-Received: by 2002:a5d:4b03:: with SMTP id v3mr4785712wrq.81.1582890415984;
+ Fri, 28 Feb 2020 03:46:55 -0800 (PST)
+X-Google-Smtp-Source: APXvYqxM2/smC26C3TpXbjvfNECRInDeKtZIZJPjM3yZ9lkl22pRKcGsi5IATwr0AxhD1KPwzkMb6w==
+X-Received: by 2002:a5d:4b03:: with SMTP id v3mr4785695wrq.81.1582890415762;
+ Fri, 28 Feb 2020 03:46:55 -0800 (PST)
+Received: from x1w.moovbox.local ([185.102.219.36])
+ by smtp.gmail.com with ESMTPSA id q138sm1127219wme.41.2020.02.28.03.46.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 28 Feb 2020 03:46:55 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ John Snow <jsnow@redhat.com>
+Subject: [PATCH v2 01/18] vl: Add missing "hw/boards.h" include
+Date: Fri, 28 Feb 2020 12:46:32 +0100
+Message-Id: <20200228114649.12818-2-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200228114649.12818-1-philmd@redhat.com>
+References: <20200228114649.12818-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200228012046.6629-1-colin.xu@intel.com>
-Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 205.139.110.61
 X-BeenThere: qemu-trivial@nongnu.org
@@ -83,49 +83,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Feb 2020 11:00:59 -0000
+X-List-Received-Date: Fri, 28 Feb 2020 11:47:03 -0000
 
-On 28/02/20 02:20, Colin Xu wrote:
-> HAXM covers below files:
-> include/sysemu/hax.h
-> target/i386/hax-*
-> 
-> V2: Add HAXM github page for wiki and issue tracking.
-> 
-> Cc: Wenchao Wang <wenchao.wang@intel.com>
-> Cc: Hang Yuan <hang.yuan@intel.com>
-> Reviewed-by: Hang Yuan <hang.yuan@intel.com>
-> Signed-off-by: Colin Xu <colin.xu@intel.com>
-> ---
->  MAINTAINERS | 11 +++++++++++
->  1 file changed, 11 insertions(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index df1786db3207..c45f1421eab5 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -435,6 +435,17 @@ F: include/hw/block/dataplane/xen*
->  F: include/hw/xen/
->  F: include/sysemu/xen-mapcache.h
->  
-> +Guest CPU Cores (HAXM)
-> +---------------------
-> +X86 HAXM CPUs
-> +M: Wenchao Wang <wenchao.wang@intel.com>
-> +M: Colin Xu <colin.xu@intel.com>
-> +L: haxm-team@intel.com
-> +W: https://github.com/intel/haxm/issues
-> +S: Maintained
-> +F: include/sysemu/hax.h
-> +F: target/i386/hax-*
-> +
->  Hosts
->  -----
->  LINUX
-> 
+vl.c calls machine_usb() declared in "hw/boards.h". Include it.
 
-Queued, thanks.
+This fixes (when modifying unrelated headers):
 
-Paolo
+  vl.c:1283:10: error: implicit declaration of function 'machine_usb' is in=
+valid in C99 [-Werror,-Wimplicit-function-declaration]
+      if (!machine_usb(current_machine)) {
+           ^
+  vl.c:1283:10: error: this function declaration is not a prototype [-Werro=
+r,-Wstrict-prototypes]
+  vl.c:1283:22: error: use of undeclared identifier 'current_machine'
+      if (!machine_usb(current_machine)) {
+                       ^
+
+Acked-by: John Snow <jsnow@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ softmmu/vl.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/softmmu/vl.c b/softmmu/vl.c
+index 16ff5a16a3..20b7201451 100644
+--- a/softmmu/vl.c
++++ b/softmmu/vl.c
+@@ -25,6 +25,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu-common.h"
+ #include "qemu/units.h"
++#include "hw/boards.h"
+ #include "hw/qdev-properties.h"
+ #include "qapi/error.h"
+ #include "qemu-version.h"
+--=20
+2.21.1
 
 
