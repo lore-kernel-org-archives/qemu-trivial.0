@@ -1,73 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j7e6o-0007VY-Ro
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 06:47:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41171)
+	id 1j7e6p-0007Wv-9x
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 06:47:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41195)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j7e6j-0007La-0a
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:47:06 -0500
+ (envelope-from <philmd@redhat.com>) id 1j7e6m-0007QE-JV
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:47:09 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j7e6h-00019j-Qv
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:47:04 -0500
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:49560
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1j7e6l-0001AZ-KN
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:47:08 -0500
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:44557
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j7e6h-00019X-O8
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:47:03 -0500
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j7e6l-0001AU-HW
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 06:47:07 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582890423;
+ s=mimecast20190719; t=1582890427;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=AmxNuFC3e6lYnUMNlpXbB6JPWDYdS6Xlgt71LjznSWc=;
- b=f/iv7xeSBcTYgwkMxMfOmkIjwsN9ZCF/v88FinJZE7Cz0N1FqcaV5yju017qpIPAVL2Woz
- VIIqq+sQ8BndXvaEGx+77wy02POBb5klk4TAHpNeXASIu4Dyg5l7OzV+UDJid8EfIQYN8J
- tr+E86Ce/5e1HiX8xOniEuP4pGjjgvI=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-323-UL0sVwjcNzaV_-Odnla3bQ-1; Fri, 28 Feb 2020 06:46:54 -0500
-X-MC-Unique: UL0sVwjcNzaV_-Odnla3bQ-1
-Received: by mail-wr1-f70.google.com with SMTP id o9so1224122wrw.14
- for <qemu-trivial@nongnu.org>; Fri, 28 Feb 2020 03:46:54 -0800 (PST)
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Lu32hqItUP7dM4PGcIuD4sRgE5GBtRTQN7Q926tcd10=;
+ b=PgSZ8uQz+EzwF0zTI1x4yZk5orHkJkYw8QQM1nJdBhXx4SmQTN5wx0ZyB0C8GNywbkqtx5
+ KRMmafVtDX3xy1Iw5b3B995CJ5fpxypvYWla+JHlxZhwduKISvxk+hulVSO52mF2wr1NkM
+ /x6Kmk972Mtp51kUEg26onWHOGv7wJo=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-473-FCjVWTvrNMOx-cKQNLRQmA-1; Fri, 28 Feb 2020 06:47:02 -0500
+X-MC-Unique: FCjVWTvrNMOx-cKQNLRQmA-1
+Received: by mail-wm1-f72.google.com with SMTP id p4so222721wmp.0
+ for <qemu-trivial@nongnu.org>; Fri, 28 Feb 2020 03:47:02 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=yuQOAGBwnnozKVeLt+LTAi2McDFqWK9ifpJf4wdoSwk=;
- b=tlkUXBzCKQmFZyhDwItFyxtW8kahwIYAWJtcpQqtiOMg4C0ot/4Gl8Ma4eIguRGUeP
- EWoiM6QmCjUg2kNKPnluegKhcbYsREJPNudoRMshCC1pFOhQ69IJXIw/5nYFQGlNyZjy
- 9QO7QpV8yC1+g996WD4TIQxLgJfelwIwLh34oygaMNDUGMeP1ry6wimK9vKXsmtxagLE
- f9Wv5K4iIHr+u1hnoMC0r0mgSujDXHc4D78M6gU05S9NWW1ifOc9uyJjIsoVLFyORga2
- lKdaTOaveq3is63QDYGrQR04F6jK2GoMVI/BA7/IZC2mKz6WMt2cWDM3mqj0uly1+Gmp
- GIhA==
-X-Gm-Message-State: APjAAAXvCjvoY8Bha8IokLox8oLUn32ZnLS24BLVVxGrS9djnbApPzFP
- w8k8sRlaxc1JVyUSBQigGGOAlpEBVAofQzCOEIKwWaVmsWQr49v0n/1JprOv1BKCiBYDDezwAq2
- hnsPM0lURuz6A9pogrg==
-X-Received: by 2002:adf:d4d2:: with SMTP id w18mr4808772wrk.180.1582890413643; 
- Fri, 28 Feb 2020 03:46:53 -0800 (PST)
-X-Google-Smtp-Source: APXvYqwN6gIsA/l0Pj7FF9JVSiXFX66nvRoBFxr3C1FT2WelKnn338ckD0zAyyRGpALF7mj+t2NkNg==
-X-Received: by 2002:adf:d4d2:: with SMTP id w18mr4808748wrk.180.1582890413322; 
- Fri, 28 Feb 2020 03:46:53 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=BP6/+KyIobA7aYPnUFr/bb+oOTNiJS/7LfeIG0A45xo=;
+ b=KvI+yBuoOuxaYJLijm6e0g7O0VpXS92WgU11Eoyg5/ua2PxYF6LUQNLP5L7R8OljK/
+ 7+omhtLxrOn2TeHiBYsBROhSKSBESIyV+lU3LH8+W9AYQEXjOvSg1F5jAA1w4rRJ6DO7
+ YA4xyHBoCmjfwpbKU7sgY9XRH8KOcleplefK5YHGkdlKTVA1J7Kxg11hnRY7/Ky66jM7
+ 6t4BAz2utX5EzxHMv+yTIGWxFCozvV3PIio1cAKAOICCQ7UDuWsHBh33Dsb8RoaYcHx1
+ Jaej7hmILwt+UEgZ/xYk2KOG0Vvbknw8w178sKTgyB5CwGnlQmVuWtQymdoKHgRnVkIO
+ Xlnw==
+X-Gm-Message-State: APjAAAXSYopibPxpy81xqI5cuabjN8payLCgPRnL5F/UM0+selvNra9c
+ B02vK5Sh3tlq80pu/iMIkGJjy7BOd3EWqiVJxyR1bEEIlaaEiUcZ+pnFwzDu0IlTC/PzYCejoCY
+ x21qQ5rPrdoDl9MdxwQ==
+X-Received: by 2002:adf:a18b:: with SMTP id u11mr4669735wru.148.1582890421504; 
+ Fri, 28 Feb 2020 03:47:01 -0800 (PST)
+X-Google-Smtp-Source: APXvYqz0BAxZC0vuVfdrKTugBW7uZS7nErJ64gXrD9UqgMAY8B2pOEjTh7K/y8dhhzFCNjK3dECNSw==
+X-Received: by 2002:adf:a18b:: with SMTP id u11mr4669648wru.148.1582890419862; 
+ Fri, 28 Feb 2020 03:46:59 -0800 (PST)
 Received: from x1w.moovbox.local ([185.102.219.36])
- by smtp.gmail.com with ESMTPSA id q138sm1127219wme.41.2020.02.28.03.46.51
+ by smtp.gmail.com with ESMTPSA id q138sm1127219wme.41.2020.02.28.03.46.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Feb 2020 03:46:52 -0800 (PST)
+ Fri, 28 Feb 2020 03:46:59 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v2 00/18] hw: Clean up hw/i386 headers (and few alpha/hppa)
-Date: Fri, 28 Feb 2020 12:46:31 +0100
-Message-Id: <20200228114649.12818-1-philmd@redhat.com>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ John Snow <jsnow@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: [PATCH v2 03/18] hw/i386/ioapic_internal: Remove unused
+ "hw/i386/ioapic.h" header
+Date: Fri, 28 Feb 2020 12:46:34 +0100
+Message-Id: <20200228114649.12818-4-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200228114649.12818-1-philmd@redhat.com>
+References: <20200228114649.12818-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 207.211.31.81
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -79,71 +85,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Feb 2020 11:47:06 -0000
+X-List-Received-Date: Fri, 28 Feb 2020 11:47:09 -0000
 
-[Rebased since v1]:
-https://www.mail-archive.com/qemu-block@nongnu.org/msg57485.html
+The "ioapic_internal.h" does not use anything from
+"hw/i386/ioapic.h", remove it.
 
-This is a follow-up of Markus's cleanup series:
-Tame a few "touch this, recompile the world"
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg635748.html
+Acked-by: John Snow <jsnow@redhat.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ include/hw/i386/ioapic_internal.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-This part is mostly restricted to X86, but since some file from the
-Alpha/PA-RISC machines include "hw/i386/pc.h" I had to fix them
-too.
-
-Eventually I'll succeed at removing hw/i386/ dependency on non-X86
-platforms (Quest I started 2 years ago...).
-
-Regards,
-
-Phil.
-
-Philippe Mathieu-Daud=C3=A9 (18):
-  vl: Add missing "hw/boards.h" include
-  hw/southbridge/ich9: Removed unused headers
-  hw/i386/ioapic_internal: Remove unused "hw/i386/ioapic.h" header
-  hw/timer: Remove unused "ui/console.h" header
-  hw/usb/dev-storage: Remove unused "ui/console.h" header
-  hw/i386/intel_iommu: Remove unused includes
-  hw/alpha/alpha_sys: Remove unused "hw/ide.h" header
-  hw/alpha/dp264: Include "net/net.h"
-  hw/hppa/machine: Include "net/net.h"
-  hw/acpi/cpu_hotplug: Include "hw/pci/pci.h"
-  hw/timer/hpet: Include "exec/address-spaces.h"
-  hw/pci-host/q35: Include "qemu/range.h"
-  hw/i2c/smbus_ich9: Include "qemu/range.h"
-  hw/pci-host/piix: Include "qemu/range.h"
-  hw/acpi: Include "hw/mem/nvdimm.h"
-  hw/i386: Include "hw/mem/nvdimm.h"
-  hw/pci-host/q35: Remove unused includes
-  hw/i386/pc: Clean up includes
-
- hw/alpha/alpha_sys.h              |  1 -
- include/hw/i386/ich9.h            |  1 -
- include/hw/i386/intel_iommu.h     |  4 ----
- include/hw/i386/ioapic_internal.h |  1 -
- include/hw/i386/pc.h              | 11 +++--------
- include/hw/pci-host/q35.h         |  8 +-------
- hw/acpi/cpu_hotplug.c             |  1 +
- hw/acpi/ich9.c                    |  2 +-
- hw/acpi/piix4.c                   |  1 +
- hw/alpha/dp264.c                  |  1 +
- hw/hppa/machine.c                 |  1 +
- hw/i2c/smbus_ich9.c               |  1 +
- hw/i386/acpi-build.c              |  1 +
- hw/i386/pc.c                      |  1 +
- hw/i386/pc_piix.c                 |  1 +
- hw/i386/pc_q35.c                  |  1 +
- hw/isa/lpc_ich9.c                 |  1 -
- hw/pci-host/i440fx.c              |  1 +
- hw/pci-host/q35.c                 |  1 +
- hw/rtc/twl92230.c                 |  1 -
- hw/timer/hpet.c                   |  2 +-
- hw/usb/dev-storage.c              |  1 -
- softmmu/vl.c                      |  1 +
- 23 files changed, 18 insertions(+), 27 deletions(-)
-
+diff --git a/include/hw/i386/ioapic_internal.h b/include/hw/i386/ioapic_int=
+ernal.h
+index d46c87c510..fe06938bda 100644
+--- a/include/hw/i386/ioapic_internal.h
++++ b/include/hw/i386/ioapic_internal.h
+@@ -23,7 +23,6 @@
+ #define QEMU_IOAPIC_INTERNAL_H
+=20
+ #include "exec/memory.h"
+-#include "hw/i386/ioapic.h"
+ #include "hw/sysbus.h"
+ #include "qemu/notify.h"
+=20
 --=20
 2.21.1
 
