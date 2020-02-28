@@ -1,60 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j7OXj-0005a8-1Z
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Feb 2020 14:09:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42228)
+	id 1j7USz-0002du-LS
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Feb 2020 20:29:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47094)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1j7OXg-0005Yt-JZ
- for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 14:09:53 -0500
+ (envelope-from <colin.xu@intel.com>) id 1j7UKn-0008Pa-6N
+ for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 20:20:58 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1j7OXf-0002ie-KJ
- for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 14:09:52 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:35308
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <colin.xu@intel.com>) id 1j7UKl-0000SY-Pl
+ for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 20:20:56 -0500
+Received: from mga04.intel.com ([192.55.52.120]:46102)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1j7OXf-0002iE-Gi
- for qemu-trivial@nongnu.org; Thu, 27 Feb 2020 14:09:51 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582830590;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=8JrELPM42f56E7q79C9gTRfwQ6hDBnTqR4QEUvYMZ44=;
- b=i5Wmp/BPUuzFOVsp1s7lOibpQMKKq6PAfghxnw2OpxYGmJf42BWx+J9MgE1d8zpnDqjHEs
- Zaisl7+88t4XNBxtVM9Q25q1cB4KFYyFnr0pUYp2My2XppUX9Pf+QfCQQanAUaQ1D8fMer
- NfYgiruHWuMmbi5Krd8wyO7IqDMg5Cw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-235-G8ooeuq4NraYOrAX4nfEtQ-1; Thu, 27 Feb 2020 14:09:48 -0500
-X-MC-Unique: G8ooeuq4NraYOrAX4nfEtQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AA8CC800D5A;
- Thu, 27 Feb 2020 19:09:47 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-205-195.brq.redhat.com [10.40.205.195])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 591A05C54A;
- Thu, 27 Feb 2020 19:09:45 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Pan Nengyuan <pannengyuan@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-trivial@nongnu.org,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH] qom/object: Comment to use g_slist_free on
- object_class_get_list result
-Date: Thu, 27 Feb 2020 20:09:42 +0100
-Message-Id: <20200227190942.8834-1-philmd@redhat.com>
+ (Exim 4.71) (envelope-from <colin.xu@intel.com>)
+ id 1j7UKl-0000QY-IM; Thu, 27 Feb 2020 20:20:55 -0500
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 27 Feb 2020 17:20:51 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,493,1574150400"; d="scan'208";a="232074795"
+Received: from unknown (HELO coxu-arch-shz.sh.intel.com) ([10.239.160.37])
+ by orsmga008.jf.intel.com with ESMTP; 27 Feb 2020 17:20:48 -0800
+From: Colin Xu <colin.xu@intel.com>
+To: qemu-devel@nongnu.org,
+	philmd@redhat.com,
+	pbonzini@redhat.com
+Cc: colin.xu@intel.com, wenchao.wang@intel.com, hang.yuan@intel.com,
+ qemu-trivial@nongnu.org
+Subject: [PATCH V2] MAINTAINERS: Add entry for Guest X86 HAXM CPUs
+Date: Fri, 28 Feb 2020 09:20:46 +0800
+Message-Id: <20200228012046.6629-1-colin.xu@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 192.55.52.120
+X-Mailman-Approved-At: Thu, 27 Feb 2020 20:29:24 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -66,44 +48,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Feb 2020 19:09:53 -0000
+X-List-Received-Date: Fri, 28 Feb 2020 01:20:58 -0000
 
-Document the list returned by object_class_get_list() must be
-released with g_slist_free() to avoid memory leaks.
+HAXM covers below files:
+include/sysemu/hax.h
+target/i386/hax-*
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+V2: Add HAXM github page for wiki and issue tracking.
+
+Cc: Wenchao Wang <wenchao.wang@intel.com>
+Cc: Hang Yuan <hang.yuan@intel.com>
+Reviewed-by: Hang Yuan <hang.yuan@intel.com>
+Signed-off-by: Colin Xu <colin.xu@intel.com>
 ---
- include/qom/object.h | 6 ++++++
- 1 file changed, 6 insertions(+)
+ MAINTAINERS | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/include/qom/object.h b/include/qom/object.h
-index 29546496c1..5517b56508 100644
---- a/include/qom/object.h
-+++ b/include/qom/object.h
-@@ -984,6 +984,9 @@ void object_class_foreach(void (*fn)(ObjectClass *klass=
-, void *opaque),
-  * @include_abstract: Whether to include abstract classes.
-  *
-  * Returns: A singly-linked list of the classes in reverse hashtable order=
-.
-+ *
-+ * The returned list must be released with g_slist_free()
-+ * when no longer required.
-  */
- GSList *object_class_get_list(const char *implements_type,
-                               bool include_abstract);
-@@ -995,6 +998,9 @@ GSList *object_class_get_list(const char *implements_ty=
-pe,
-  *
-  * Returns: A singly-linked list of the classes in alphabetical
-  * case-insensitive order.
-+ *
-+ * The returned list must be released with g_slist_free()
-+ * when no longer required.
-  */
- GSList *object_class_get_list_sorted(const char *implements_type,
-                               bool include_abstract);
---=20
-2.21.1
+diff --git a/MAINTAINERS b/MAINTAINERS
+index df1786db3207..c45f1421eab5 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -435,6 +435,17 @@ F: include/hw/block/dataplane/xen*
+ F: include/hw/xen/
+ F: include/sysemu/xen-mapcache.h
+ 
++Guest CPU Cores (HAXM)
++---------------------
++X86 HAXM CPUs
++M: Wenchao Wang <wenchao.wang@intel.com>
++M: Colin Xu <colin.xu@intel.com>
++L: haxm-team@intel.com
++W: https://github.com/intel/haxm/issues
++S: Maintained
++F: include/sysemu/hax.h
++F: target/i386/hax-*
++
+ Hosts
+ -----
+ LINUX
+-- 
+2.25.1
 
 
