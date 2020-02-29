@@ -1,67 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1j7jV4-0005Sb-KX
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 12:32:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37873)
+	id 1j7rIB-0003yo-2D
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Feb 2020 20:51:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33120)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1j7jV2-0005MZ-8D
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 12:32:33 -0500
+ (envelope-from <yuanzi@google.com>) id 1j7qCq-00076x-15
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 19:42:13 -0500
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1j7jV0-0000Ei-Ua
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 12:32:31 -0500
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:33411
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1j7jV0-0000E8-QY
- for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 12:32:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582911149;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Squ6pGWB11hdGkXQO1sJedXghdv/p4Sv54dlWAx6OqA=;
- b=R9LRZotArotmPwl2On5jMe131k4WCIBHYWsXapaQmC8QNtu3PIqSuTWivfMH5vS6Vd9hcr
- nKIYYuf9F2usdPfmLgq8okyW4KRXH1cnqoNI3BZc7qN1awrrHQdhBm1nktrf12nkCAKlXG
- 8+7Huxp5JFtsvzBfz6Ja89Q7c2t0JcM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-125-g9_sL8ZbO4ypWmoZdf4aPA-1; Fri, 28 Feb 2020 12:32:28 -0500
-X-MC-Unique: g9_sL8ZbO4ypWmoZdf4aPA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E15B2100550E;
- Fri, 28 Feb 2020 17:32:25 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-129.ams2.redhat.com
- [10.36.116.129])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id AFB1A5C21A;
- Fri, 28 Feb 2020 17:32:25 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 3D19211386A6; Fri, 28 Feb 2020 18:32:24 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
- Max Reitz <mreitz@redhat.com>, John Snow <jsnow@redhat.com>
-Subject: Re: [PATCH] block: Remove trailing newline in format used by
- error_report API
-References: <20200228123637.15160-1-philmd@redhat.com>
-Date: Fri, 28 Feb 2020 18:32:24 +0100
-In-Reply-To: <20200228123637.15160-1-philmd@redhat.com> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 28 Feb 2020 13:36:37
- +0100")
-Message-ID: <8736auipnb.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ (envelope-from <yuanzi@google.com>) id 1j7qCo-0008Q3-R2
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 19:42:11 -0500
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:37265)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <yuanzi@google.com>) id 1j7qCo-0008Pi-MF
+ for qemu-trivial@nongnu.org; Fri, 28 Feb 2020 19:42:10 -0500
+Received: by mail-oi1-x242.google.com with SMTP id q84so4692686oic.4
+ for <qemu-trivial@nongnu.org>; Fri, 28 Feb 2020 16:42:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=bOTAZ72S4BxiMUVQGedOTo/Ps06UvEykG+uLwd9EUa4=;
+ b=EseKrCfAuuZuX5rsUG+BlbcWBcYrhwAcfoXktNYiO3C0Ie+Vyvt4ve+luMJUEFRv7P
+ IwcgWFMNrFTYWc+oGNYS8Jv6B2CyikEGze4JcYbrXTwK8UV+7StHMxi+q6u8E42xNV/k
+ mdHZZ0mFMkNqRu3i/fPSUnhQfs+AGcjzM2Fs+DgUWofoKKyRSqf02NH4XqMgoVie7SnX
+ rRx+DxG4hruS+q7jwS6gKtXpJZ89MMlG/1zGst7+y6f8A5HP+I9b33Mn+F0+bMzEhEIO
+ uQlxj+vwiSHZobUvaIrZ8TNooxC6B845melXXZEg7TTAdSL/6eNQbeGI/mbFN2RrT6E8
+ axIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=bOTAZ72S4BxiMUVQGedOTo/Ps06UvEykG+uLwd9EUa4=;
+ b=ruuijW4NJkfOG7rpCQd5TTsQGXZRs5miXq+LNsHObxdMFme8YlpXgEArJED4vLj3dD
+ E7hbQUbRGP80BXe5fKPOxnDqrLPWZl3s27VvUlXpy2HkydfMmTRvj+fJH0fiERdzQ8Vs
+ 4DwjcN+W1g/qdtFLPHm5AV7JDwY4N1KU3YEdWgJjJ879grR5HM96ZPec/74QE56RKgNp
+ ohkbkY/hwNRuFA0NI/s6ZP89GAB0frwxOz1cde/Ea2iuB1la5cwA8zfXJFQH86z9PeQX
+ Rmp8nBqyW0ZkdjXVdXiv3SkSUcdRZLkLC6dUpqUFS0RgAsAAJcqJyUgONjolyoGMP73u
+ 8QUA==
+X-Gm-Message-State: APjAAAXHK8Ct78bB8hwdUtNcq2bNwW8dPlVoQkapdKr6l7PPwNFGrVp0
+ zXvB+TZPaCyXcIUZ0nxADW9dZb4QtPqTvrs5sIk32g==
+X-Google-Smtp-Source: APXvYqxQRgLB/F9XVRV9HyUXo6q5moy/43yeD27t2ZqNMOJLykoXA3CiRtdOkcBw8u2r+01P0GDcpDV88WFidMK+CXU=
+X-Received: by 2002:aca:4a0b:: with SMTP id x11mr338077oia.37.1582936929036;
+ Fri, 28 Feb 2020 16:42:09 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+References: <20200221202857.126170-1-yuanzi@google.com>
+In-Reply-To: <20200221202857.126170-1-yuanzi@google.com>
+From: Lirong Yuan <yuanzi@google.com>
+Date: Fri, 28 Feb 2020 16:41:58 -0800
+Message-ID: <CADjx4CLVufciu=Qtte7x6+JDDWeigzQ3XoepFQFeguJtfcHfYg@mail.gmail.com>
+Subject: Re: [PATCH] linux-user: Add AT_EXECFN and AT_EXECFD auxval
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::242
+X-Mailman-Approved-At: Fri, 28 Feb 2020 20:51:45 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,75 +64,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Feb 2020 17:32:33 -0000
+X-List-Received-Date: Sat, 29 Feb 2020 00:42:13 -0000
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
-
-> The error_report API doesn't want trailing newline characters.
-> Remove it, to avoid and error when moving the code around:
+On Fri, Feb 21, 2020 at 12:29 PM Lirong Yuan <yuanzi@google.com> wrote:
 >
->   ERROR: Error messages should not contain newlines
-
-Commit 312fd5f2909 has a Coccinelle script.  It should be committed and
-re-run.
-
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> This change adds the support for AT_EXECFN and AT_EXECFD auxval.
+>
+> Signed-off-by: Lirong Yuan <yuanzi@google.com>
 > ---
->  block.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  linux-user/elfload.c | 13 +++++++++----
+>  1 file changed, 9 insertions(+), 4 deletions(-)
 >
-> diff --git a/block.c b/block.c
-> index 1bdb9c679d..e466d15914 100644
-> --- a/block.c
-> +++ b/block.c
-> @@ -5994,7 +5994,7 @@ void bdrv_img_create(const char *filename, const ch=
-ar *fmt,
-           bs =3D bdrv_open(full_backing, NULL, backing_options, back_flags=
-,
-                          &local_err);
-           g_free(full_backing);
-           if (!bs && size !=3D -1) {
->              /* Couldn't open BS, but we have a size, so it's nonfatal */
->              warn_reportf_err(local_err,
->                              "Could not verify backing image. "
-> -                            "This may become an error in future versions=
-.\n");
-> +                            "This may become an error in future versions=
-.");
->              local_err =3D NULL;
->          } else if (!bs) {
->              /* Couldn't open bs, do not have size */
+> diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+> index f3080a1635..7e0f3042f1 100644
+> --- a/linux-user/elfload.c
+> +++ b/linux-user/elfload.c
+> @@ -1568,7 +1568,7 @@ struct exec
+>                                   ~(abi_ulong)(TARGET_ELF_EXEC_PAGESIZE-1))
+>  #define TARGET_ELF_PAGEOFFSET(_v) ((_v) & (TARGET_ELF_EXEC_PAGESIZE-1))
+>
+> -#define DLINFO_ITEMS 15
+> +#define DLINFO_ITEMS 17
+>
+>  static inline void memcpy_fromfs(void * to, const void * from, unsigned long n)
+>  {
+> @@ -1888,11 +1888,14 @@ static abi_ulong loader_build_fdpic_loadmap(struct image_info *info, abi_ulong s
+>      return sp;
+>  }
+>
+> -static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
+> +static abi_ulong create_elf_tables(struct linux_binprm *bprm,
+>                                     struct elfhdr *exec,
+>                                     struct image_info *info,
+>                                     struct image_info *interp_info)
+>  {
+> +    abi_ulong p = bprm->p;
+> +    int argc = bprm->argc;
+> +    int envc = bprm->envc;
+>      abi_ulong sp;
+>      abi_ulong u_argc, u_argv, u_envp, u_auxv;
+>      int size;
+> @@ -2032,6 +2035,8 @@ static abi_ulong create_elf_tables(abi_ulong p, int argc, int envc,
+>      NEW_AUX_ENT(AT_CLKTCK, (abi_ulong) sysconf(_SC_CLK_TCK));
+>      NEW_AUX_ENT(AT_RANDOM, (abi_ulong) u_rand_bytes);
+>      NEW_AUX_ENT(AT_SECURE, (abi_ulong) qemu_getauxval(AT_SECURE));
+> +    NEW_AUX_ENT(AT_EXECFN, info->file_string);
+> +    NEW_AUX_ENT(AT_EXECFD, bprm->fd);
+>
+>  #ifdef ELF_HWCAP2
+>      NEW_AUX_ENT(AT_HWCAP2, (abi_ulong) ELF_HWCAP2);
+> @@ -2870,8 +2875,8 @@ int load_elf_binary(struct linux_binprm *bprm, struct image_info *info)
+>  #endif
+>      }
+>
+> -    bprm->p = create_elf_tables(bprm->p, bprm->argc, bprm->envc, &elf_ex,
+> -                                info, (elf_interpreter ? &interp_info : NULL));
+> +    bprm->p = create_elf_tables(bprm, &elf_ex, info,
+> +                                (elf_interpreter ? &interp_info : NULL));
+>      info->start_stack = bprm->p;
+>
+>      /* If we have an interpreter, set that as the program's entry point.
+> --
+> 2.25.0.265.gbab2e86ba0-goog
+>
 
-warn_reportf_err() is a convenience function to error_prepend(),
-warn_report() and free @local_err.
+Friendly ping~
 
-When @local_err holds a message like "pants on fire", the code before
-the patch prints something like
-
-    qemu-system-x86_64: warning: Could not verify backing image. This may b=
-ecome an error in future versions.
-    pants on fire
-
-The patch "improves" it to
-
-    qemu-system-x86_64: warning: Could not verify backing image. This may b=
-ecome an error in future versions.pants on fire
-
-General advice: this misuse of warn_reportf_err() is an excusable
-mistake, but when you *test* the error path, you can't *not* see that
-the actual message is crap.  Test your errors!
-
-Actual improvement:
-
-               warn_reportf_err(local_err, "Could not verify backing image:=
- ");
-               error_printf("This may become an error in future versions.\n=
-");
-
-This should print
-
-    qemu-system-x86_64: warning: Could not verify backing image: pants on f=
-ire
-    This may become an error in future versions.
-
+Link to the page for the patch on patchwork:
+http://patchwork.ozlabs.org/patch/1242331/
 
